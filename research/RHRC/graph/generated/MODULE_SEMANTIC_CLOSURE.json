@@ -400,7 +400,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 9,
+      "compiler_dependency_surface_declaration_count": 12,
       "file_id": "rh:file:Zeta23/CCM/CanonicalApertureArchDomain.lean",
       "module": "Zeta23.CCM.CanonicalApertureArchDomain",
       "module_id": "rh:module:Zeta23.CCM.CanonicalApertureArchDomain",
@@ -480,6 +480,21 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
+      "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/CCM/CanonicalApertureLocation.lean",
+      "module": "Zeta23.CCM.CanonicalApertureLocation",
+      "module_id": "rh:module:Zeta23.CCM.CanonicalApertureLocation",
+      "named_source_declaration_count": 4,
+      "path": "Zeta23/CCM/CanonicalApertureLocation.lean",
+      "reachability": "ENTRYPOINT_REACHABLE",
+      "reachable_from": [
+        "Zeta23.CCM"
+      ],
+      "registered_root_count": 0,
+      "standalone_role": null,
+      "trust_zone": "RH_FORMAL_CORE"
+    },
+    {
       "compiler_dependency_surface_declaration_count": 24,
       "file_id": "rh:file:Zeta23/CCM/CanonicalApertureParameterHolomorphy.lean",
       "module": "Zeta23.CCM.CanonicalApertureParameterHolomorphy",
@@ -496,7 +511,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 10,
+      "compiler_dependency_surface_declaration_count": 13,
       "file_id": "rh:file:Zeta23/CCM/CanonicalApertureRegularityScaffold.lean",
       "module": "Zeta23.CCM.CanonicalApertureRegularityScaffold",
       "module_id": "rh:module:Zeta23.CCM.CanonicalApertureRegularityScaffold",
@@ -528,7 +543,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 18,
+      "compiler_dependency_surface_declaration_count": 20,
       "file_id": "rh:file:Zeta23/CCM/CanonicalApertureSourceHolomorphy.lean",
       "module": "Zeta23.CCM.CanonicalApertureSourceHolomorphy",
       "module_id": "rh:module:Zeta23.CCM.CanonicalApertureSourceHolomorphy",
@@ -552,7 +567,8 @@
       "path": "Zeta23/CCM/CanonicalArchDensityClosure.lean",
       "reachability": "ENTRYPOINT_REACHABLE",
       "reachable_from": [
-        "Zeta23.CCM"
+        "Zeta23.CCM",
+        "Zeta23.ExceptionalZero"
       ],
       "registered_root_count": 1,
       "standalone_role": null,
@@ -567,7 +583,8 @@
       "path": "Zeta23/CCM/CanonicalArchUpperBound.lean",
       "reachability": "ENTRYPOINT_REACHABLE",
       "reachable_from": [
-        "Zeta23.CCM"
+        "Zeta23.CCM",
+        "Zeta23.ExceptionalZero"
       ],
       "registered_root_count": 0,
       "standalone_role": null,
@@ -604,6 +621,51 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
+      "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/CCM/CanonicalCenteredIndexCoercivity.lean",
+      "module": "Zeta23.CCM.CanonicalCenteredIndexCoercivity",
+      "module_id": "rh:module:Zeta23.CCM.CanonicalCenteredIndexCoercivity",
+      "named_source_declaration_count": 16,
+      "path": "Zeta23/CCM/CanonicalCenteredIndexCoercivity.lean",
+      "reachability": "ENTRYPOINT_REACHABLE",
+      "reachable_from": [
+        "Zeta23.CCM"
+      ],
+      "registered_root_count": 0,
+      "standalone_role": null,
+      "trust_zone": "RH_FORMAL_CORE"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 25,
+      "file_id": "rh:file:Zeta23/CCM/CanonicalCompressedApertureC2.lean",
+      "module": "Zeta23.CCM.CanonicalCompressedApertureC2",
+      "module_id": "rh:module:Zeta23.CCM.CanonicalCompressedApertureC2",
+      "named_source_declaration_count": 27,
+      "path": "Zeta23/CCM/CanonicalCompressedApertureC2.lean",
+      "reachability": "ENTRYPOINT_REACHABLE",
+      "reachable_from": [
+        "Zeta23.CCM"
+      ],
+      "registered_root_count": 1,
+      "standalone_role": null,
+      "trust_zone": "RH_FORMAL_CORE"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 17,
+      "file_id": "rh:file:Zeta23/CCM/CanonicalCompressedSeamJets.lean",
+      "module": "Zeta23.CCM.CanonicalCompressedSeamJets",
+      "module_id": "rh:module:Zeta23.CCM.CanonicalCompressedSeamJets",
+      "named_source_declaration_count": 21,
+      "path": "Zeta23/CCM/CanonicalCompressedSeamJets.lean",
+      "reachability": "ENTRYPOINT_REACHABLE",
+      "reachable_from": [
+        "Zeta23.CCM"
+      ],
+      "registered_root_count": 0,
+      "standalone_role": null,
+      "trust_zone": "RH_FORMAL_CORE"
+    },
+    {
       "compiler_dependency_surface_declaration_count": 41,
       "file_id": "rh:file:Zeta23/CCM/CanonicalConjugationGeometry.lean",
       "module": "Zeta23.CCM.CanonicalConjugationGeometry",
@@ -614,6 +676,36 @@
       "reachable_from": [
         "Zeta23.CCM",
         "Zeta23.ExceptionalZero"
+      ],
+      "registered_root_count": 0,
+      "standalone_role": null,
+      "trust_zone": "RH_FORMAL_CORE"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/CCM/CanonicalFirstCrossingBarrier.lean",
+      "module": "Zeta23.CCM.CanonicalFirstCrossingBarrier",
+      "module_id": "rh:module:Zeta23.CCM.CanonicalFirstCrossingBarrier",
+      "named_source_declaration_count": 1,
+      "path": "Zeta23/CCM/CanonicalFirstCrossingBarrier.lean",
+      "reachability": "ENTRYPOINT_REACHABLE",
+      "reachable_from": [
+        "Zeta23.CCM"
+      ],
+      "registered_root_count": 0,
+      "standalone_role": null,
+      "trust_zone": "RH_FORMAL_CORE"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 87,
+      "file_id": "rh:file:Zeta23/CCM/CanonicalFrozenApertureC2.lean",
+      "module": "Zeta23.CCM.CanonicalFrozenApertureC2",
+      "module_id": "rh:module:Zeta23.CCM.CanonicalFrozenApertureC2",
+      "named_source_declaration_count": 49,
+      "path": "Zeta23/CCM/CanonicalFrozenApertureC2.lean",
+      "reachability": "ENTRYPOINT_REACHABLE",
+      "reachable_from": [
+        "Zeta23.CCM"
       ],
       "registered_root_count": 0,
       "standalone_role": null,
@@ -649,7 +741,23 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 27,
+      "file_id": "rh:file:Zeta23/CCM/CanonicalGroundContinuity.lean",
+      "module": "Zeta23.CCM.CanonicalGroundContinuity",
+      "module_id": "rh:module:Zeta23.CCM.CanonicalGroundContinuity",
+      "named_source_declaration_count": 17,
+      "path": "Zeta23/CCM/CanonicalGroundContinuity.lean",
+      "reachability": "ENTRYPOINT_REACHABLE",
+      "reachable_from": [
+        "Zeta23.CCM",
+        "Zeta23.ExceptionalZero"
+      ],
+      "registered_root_count": 1,
+      "standalone_role": null,
+      "trust_zone": "RH_FORMAL_CORE"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 1,
       "file_id": "rh:file:Zeta23/CCM/CanonicalGroundPropagation.lean",
       "module": "Zeta23.CCM.CanonicalGroundPropagation",
       "module_id": "rh:module:Zeta23.CCM.CanonicalGroundPropagation",
@@ -659,6 +767,36 @@
       "reachable_from": [],
       "registered_root_count": 0,
       "standalone_role": "CLOSURE_CAMPAIGN_TARGET_INTERFACE",
+      "trust_zone": "RH_FORMAL_CORE"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/CCM/CanonicalInteriorFirstCrossingBarrier.lean",
+      "module": "Zeta23.CCM.CanonicalInteriorFirstCrossingBarrier",
+      "module_id": "rh:module:Zeta23.CCM.CanonicalInteriorFirstCrossingBarrier",
+      "named_source_declaration_count": 3,
+      "path": "Zeta23/CCM/CanonicalInteriorFirstCrossingBarrier.lean",
+      "reachability": "ENTRYPOINT_REACHABLE",
+      "reachable_from": [
+        "Zeta23.CCM"
+      ],
+      "registered_root_count": 0,
+      "standalone_role": null,
+      "trust_zone": "RH_FORMAL_CORE"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/CCM/CanonicalK2SourceSignInterval.lean",
+      "module": "Zeta23.CCM.CanonicalK2SourceSignInterval",
+      "module_id": "rh:module:Zeta23.CCM.CanonicalK2SourceSignInterval",
+      "named_source_declaration_count": 19,
+      "path": "Zeta23/CCM/CanonicalK2SourceSignInterval.lean",
+      "reachability": "ENTRYPOINT_REACHABLE",
+      "reachable_from": [
+        "Zeta23.CCM"
+      ],
+      "registered_root_count": 0,
+      "standalone_role": null,
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
@@ -675,12 +813,28 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 1,
+      "compiler_dependency_surface_declaration_count": 13,
       "file_id": "rh:file:Zeta23/CCM/CanonicalOneStepDomination.lean",
       "module": "Zeta23.CCM.CanonicalOneStepDomination",
       "module_id": "rh:module:Zeta23.CCM.CanonicalOneStepDomination",
       "named_source_declaration_count": 19,
       "path": "Zeta23/CCM/CanonicalOneStepDomination.lean",
+      "reachability": "ENTRYPOINT_REACHABLE",
+      "reachable_from": [
+        "Zeta23.CCM",
+        "Zeta23.ExceptionalZero"
+      ],
+      "registered_root_count": 0,
+      "standalone_role": null,
+      "trust_zone": "RH_FORMAL_CORE"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 7,
+      "file_id": "rh:file:Zeta23/CCM/CanonicalParityFirstCrossingShell.lean",
+      "module": "Zeta23.CCM.CanonicalParityFirstCrossingShell",
+      "module_id": "rh:module:Zeta23.CCM.CanonicalParityFirstCrossingShell",
+      "named_source_declaration_count": 4,
+      "path": "Zeta23/CCM/CanonicalParityFirstCrossingShell.lean",
       "reachability": "ENTRYPOINT_REACHABLE",
       "reachable_from": [
         "Zeta23.CCM",
@@ -747,7 +901,8 @@
       "path": "Zeta23/CCM/CanonicalPoleSourceBound.lean",
       "reachability": "ENTRYPOINT_REACHABLE",
       "reachable_from": [
-        "Zeta23.CCM"
+        "Zeta23.CCM",
+        "Zeta23.ExceptionalZero"
       ],
       "registered_root_count": 0,
       "standalone_role": null,
@@ -760,6 +915,22 @@
       "module_id": "rh:module:Zeta23.CCM.CanonicalPoleUniformBound",
       "named_source_declaration_count": 1,
       "path": "Zeta23/CCM/CanonicalPoleUniformBound.lean",
+      "reachability": "ENTRYPOINT_REACHABLE",
+      "reachable_from": [
+        "Zeta23.CCM",
+        "Zeta23.ExceptionalZero"
+      ],
+      "registered_root_count": 0,
+      "standalone_role": null,
+      "trust_zone": "RH_FORMAL_CORE"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/CCM/CanonicalPrimeFreeSecondTest.lean",
+      "module": "Zeta23.CCM.CanonicalPrimeFreeSecondTest",
+      "module_id": "rh:module:Zeta23.CCM.CanonicalPrimeFreeSecondTest",
+      "named_source_declaration_count": 11,
+      "path": "Zeta23/CCM/CanonicalPrimeFreeSecondTest.lean",
       "reachability": "ENTRYPOINT_REACHABLE",
       "reachable_from": [
         "Zeta23.CCM"
@@ -791,10 +962,12 @@
       "module_id": "rh:module:Zeta23.CCM.CanonicalPrimeSeamTaylor",
       "named_source_declaration_count": 5,
       "path": "Zeta23/CCM/CanonicalPrimeSeamTaylor.lean",
-      "reachability": "STANDALONE_OR_AUXILIARY",
-      "reachable_from": [],
+      "reachability": "ENTRYPOINT_REACHABLE",
+      "reachable_from": [
+        "Zeta23.CCM"
+      ],
       "registered_root_count": 0,
-      "standalone_role": "CLOSURE_CAMPAIGN_FORMAL_SUPPORT",
+      "standalone_role": null,
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
@@ -831,6 +1004,21 @@
     },
     {
       "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/CCM/CanonicalRegularizedEnergyIdentity.lean",
+      "module": "Zeta23.CCM.CanonicalRegularizedEnergyIdentity",
+      "module_id": "rh:module:Zeta23.CCM.CanonicalRegularizedEnergyIdentity",
+      "named_source_declaration_count": 6,
+      "path": "Zeta23/CCM/CanonicalRegularizedEnergyIdentity.lean",
+      "reachability": "ENTRYPOINT_REACHABLE",
+      "reachable_from": [
+        "Zeta23.CCM"
+      ],
+      "registered_root_count": 0,
+      "standalone_role": null,
+      "trust_zone": "RH_FORMAL_CORE"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 0,
       "file_id": "rh:file:Zeta23/CCM/CanonicalRieszBoundary.lean",
       "module": "Zeta23.CCM.CanonicalRieszBoundary",
       "module_id": "rh:module:Zeta23.CCM.CanonicalRieszBoundary",
@@ -846,7 +1034,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 1,
       "file_id": "rh:file:Zeta23/CCM/CanonicalSchurCertificate.lean",
       "module": "Zeta23.CCM.CanonicalSchurCertificate",
       "module_id": "rh:module:Zeta23.CCM.CanonicalSchurCertificate",
@@ -856,6 +1044,21 @@
       "reachable_from": [],
       "registered_root_count": 0,
       "standalone_role": "CLOSURE_CAMPAIGN_FORMAL_SUPPORT",
+      "trust_zone": "RH_FORMAL_CORE"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/CCM/CanonicalSeamFirstCrossingBarrier.lean",
+      "module": "Zeta23.CCM.CanonicalSeamFirstCrossingBarrier",
+      "module_id": "rh:module:Zeta23.CCM.CanonicalSeamFirstCrossingBarrier",
+      "named_source_declaration_count": 3,
+      "path": "Zeta23/CCM/CanonicalSeamFirstCrossingBarrier.lean",
+      "reachability": "ENTRYPOINT_REACHABLE",
+      "reachable_from": [
+        "Zeta23.CCM"
+      ],
+      "registered_root_count": 0,
+      "standalone_role": null,
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
@@ -896,9 +1099,26 @@
       "path": "Zeta23/CCM/CanonicalSmallApertureCoercivity.lean",
       "reachability": "ENTRYPOINT_REACHABLE",
       "reachable_from": [
-        "Zeta23.CCM"
+        "Zeta23.CCM",
+        "Zeta23.ExceptionalZero"
       ],
       "registered_root_count": 0,
+      "standalone_role": null,
+      "trust_zone": "RH_FORMAL_CORE"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 6,
+      "file_id": "rh:file:Zeta23/CCM/CanonicalSmallApertureGroundSpectrum.lean",
+      "module": "Zeta23.CCM.CanonicalSmallApertureGroundSpectrum",
+      "module_id": "rh:module:Zeta23.CCM.CanonicalSmallApertureGroundSpectrum",
+      "named_source_declaration_count": 3,
+      "path": "Zeta23/CCM/CanonicalSmallApertureGroundSpectrum.lean",
+      "reachability": "ENTRYPOINT_REACHABLE",
+      "reachable_from": [
+        "Zeta23.CCM",
+        "Zeta23.ExceptionalZero"
+      ],
+      "registered_root_count": 1,
       "standalone_role": null,
       "trust_zone": "RH_FORMAL_CORE"
     },
@@ -919,7 +1139,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 23,
+      "compiler_dependency_surface_declaration_count": 24,
       "file_id": "rh:file:Zeta23/CCM/CanonicalSourceEnergy.lean",
       "module": "Zeta23.CCM.CanonicalSourceEnergy",
       "module_id": "rh:module:Zeta23.CCM.CanonicalSourceEnergy",
@@ -1016,6 +1236,21 @@
     },
     {
       "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/CCM/CanonicalSourceWeightedIntegral.lean",
+      "module": "Zeta23.CCM.CanonicalSourceWeightedIntegral",
+      "module_id": "rh:module:Zeta23.CCM.CanonicalSourceWeightedIntegral",
+      "named_source_declaration_count": 20,
+      "path": "Zeta23/CCM/CanonicalSourceWeightedIntegral.lean",
+      "reachability": "ENTRYPOINT_REACHABLE",
+      "reachable_from": [
+        "Zeta23.CCM"
+      ],
+      "registered_root_count": 0,
+      "standalone_role": null,
+      "trust_zone": "RH_FORMAL_CORE"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 2,
       "file_id": "rh:file:Zeta23/CCM/CanonicalUniformDomination.lean",
       "module": "Zeta23.CCM.CanonicalUniformDomination",
       "module_id": "rh:module:Zeta23.CCM.CanonicalUniformDomination",
@@ -1234,6 +1469,21 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
+      "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/CCM/ContactNinthJumpGapBound.lean",
+      "module": "Zeta23.CCM.ContactNinthJumpGapBound",
+      "module_id": "rh:module:Zeta23.CCM.ContactNinthJumpGapBound",
+      "named_source_declaration_count": 4,
+      "path": "Zeta23/CCM/ContactNinthJumpGapBound.lean",
+      "reachability": "ENTRYPOINT_REACHABLE",
+      "reachable_from": [
+        "Zeta23.CCM"
+      ],
+      "registered_root_count": 0,
+      "standalone_role": null,
+      "trust_zone": "RH_FORMAL_CORE"
+    },
+    {
       "compiler_dependency_surface_declaration_count": 1,
       "file_id": "rh:file:Zeta23/CCM/CrossParityCorrectionFunctionalCollapse.lean",
       "module": "Zeta23.CCM.CrossParityCorrectionFunctionalCollapse",
@@ -1441,7 +1691,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 16,
+      "compiler_dependency_surface_declaration_count": 17,
       "file_id": "rh:file:Zeta23/CCM/CubicNormalizedSchur.lean",
       "module": "Zeta23.CCM.CubicNormalizedSchur",
       "module_id": "rh:module:Zeta23.CCM.CubicNormalizedSchur",
@@ -1705,7 +1955,8 @@
       "path": "Zeta23/CCM/DictionaryArchFiniteDensity.lean",
       "reachability": "ENTRYPOINT_REACHABLE",
       "reachable_from": [
-        "Zeta23.CCM"
+        "Zeta23.CCM",
+        "Zeta23.ExceptionalZero"
       ],
       "registered_root_count": 0,
       "standalone_role": null,
@@ -2606,7 +2857,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 21,
+      "compiler_dependency_surface_declaration_count": 25,
       "file_id": "rh:file:Zeta23/CCM/FirstBadIntrinsicBlock.lean",
       "module": "Zeta23.CCM.FirstBadIntrinsicBlock",
       "module_id": "rh:module:Zeta23.CCM.FirstBadIntrinsicBlock",
@@ -2638,7 +2889,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 30,
+      "compiler_dependency_surface_declaration_count": 32,
       "file_id": "rh:file:Zeta23/CCM/FirstBadShiftedSchur.lean",
       "module": "Zeta23.CCM.FirstBadShiftedSchur",
       "module_id": "rh:module:Zeta23.CCM.FirstBadShiftedSchur",
@@ -2664,6 +2915,369 @@
       "reachable_from": [
         "Zeta23.CCM",
         "Zeta23.ExceptionalZero"
+      ],
+      "registered_root_count": 0,
+      "standalone_role": null,
+      "trust_zone": "RH_FORMAL_CORE"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/CCM/FirstCrossingArithmeticCompatibility.lean",
+      "module": "Zeta23.CCM.FirstCrossingArithmeticCompatibility",
+      "module_id": "rh:module:Zeta23.CCM.FirstCrossingArithmeticCompatibility",
+      "named_source_declaration_count": 6,
+      "path": "Zeta23/CCM/FirstCrossingArithmeticCompatibility.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 0,
+      "standalone_role": "CONTACT_QUOTIENT_FORMAL_SUPPORT",
+      "trust_zone": "RH_FORMAL_CORE"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/CCM/FirstCrossingBranchBridge.lean",
+      "module": "Zeta23.CCM.FirstCrossingBranchBridge",
+      "module_id": "rh:module:Zeta23.CCM.FirstCrossingBranchBridge",
+      "named_source_declaration_count": 3,
+      "path": "Zeta23/CCM/FirstCrossingBranchBridge.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 0,
+      "standalone_role": "CONTACT_QUOTIENT_FORMAL_SUPPORT",
+      "trust_zone": "RH_FORMAL_CORE"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/CCM/FirstCrossingContactEquations.lean",
+      "module": "Zeta23.CCM.FirstCrossingContactEquations",
+      "module_id": "rh:module:Zeta23.CCM.FirstCrossingContactEquations",
+      "named_source_declaration_count": 4,
+      "path": "Zeta23/CCM/FirstCrossingContactEquations.lean",
+      "reachability": "ENTRYPOINT_REACHABLE",
+      "reachable_from": [
+        "Zeta23.CCM"
+      ],
+      "registered_root_count": 0,
+      "standalone_role": null,
+      "trust_zone": "RH_FORMAL_CORE"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/CCM/FirstCrossingContactRegime.lean",
+      "module": "Zeta23.CCM.FirstCrossingContactRegime",
+      "module_id": "rh:module:Zeta23.CCM.FirstCrossingContactRegime",
+      "named_source_declaration_count": 4,
+      "path": "Zeta23/CCM/FirstCrossingContactRegime.lean",
+      "reachability": "ENTRYPOINT_REACHABLE",
+      "reachable_from": [
+        "Zeta23.CCM"
+      ],
+      "registered_root_count": 0,
+      "standalone_role": null,
+      "trust_zone": "RH_FORMAL_CORE"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 12,
+      "file_id": "rh:file:Zeta23/CCM/FirstCrossingGeneratedStrictEvenFrontier.lean",
+      "module": "Zeta23.CCM.FirstCrossingGeneratedStrictEvenFrontier",
+      "module_id": "rh:module:Zeta23.CCM.FirstCrossingGeneratedStrictEvenFrontier",
+      "named_source_declaration_count": 32,
+      "path": "Zeta23/CCM/FirstCrossingGeneratedStrictEvenFrontier.lean",
+      "reachability": "ENTRYPOINT_REACHABLE",
+      "reachable_from": [
+        "Zeta23.CCM"
+      ],
+      "registered_root_count": 1,
+      "standalone_role": null,
+      "trust_zone": "RH_FORMAL_CORE"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 8,
+      "file_id": "rh:file:Zeta23/CCM/FirstCrossingGlobalAlignment.lean",
+      "module": "Zeta23.CCM.FirstCrossingGlobalAlignment",
+      "module_id": "rh:module:Zeta23.CCM.FirstCrossingGlobalAlignment",
+      "named_source_declaration_count": 9,
+      "path": "Zeta23/CCM/FirstCrossingGlobalAlignment.lean",
+      "reachability": "ENTRYPOINT_REACHABLE",
+      "reachable_from": [
+        "Zeta23.CCM"
+      ],
+      "registered_root_count": 0,
+      "standalone_role": null,
+      "trust_zone": "RH_FORMAL_CORE"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 3,
+      "file_id": "rh:file:Zeta23/CCM/FirstCrossingInheritedStationarity.lean",
+      "module": "Zeta23.CCM.FirstCrossingInheritedStationarity",
+      "module_id": "rh:module:Zeta23.CCM.FirstCrossingInheritedStationarity",
+      "named_source_declaration_count": 11,
+      "path": "Zeta23/CCM/FirstCrossingInheritedStationarity.lean",
+      "reachability": "ENTRYPOINT_REACHABLE",
+      "reachable_from": [
+        "Zeta23.CCM"
+      ],
+      "registered_root_count": 0,
+      "standalone_role": null,
+      "trust_zone": "RH_FORMAL_CORE"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/CCM/FirstCrossingLiftedFeatures.lean",
+      "module": "Zeta23.CCM.FirstCrossingLiftedFeatures",
+      "module_id": "rh:module:Zeta23.CCM.FirstCrossingLiftedFeatures",
+      "named_source_declaration_count": 6,
+      "path": "Zeta23/CCM/FirstCrossingLiftedFeatures.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 0,
+      "standalone_role": "CONTACT_QUOTIENT_FORMAL_SUPPORT",
+      "trust_zone": "RH_FORMAL_CORE"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/CCM/FirstCrossingOptimizedCurvatureAlgebra.lean",
+      "module": "Zeta23.CCM.FirstCrossingOptimizedCurvatureAlgebra",
+      "module_id": "rh:module:Zeta23.CCM.FirstCrossingOptimizedCurvatureAlgebra",
+      "named_source_declaration_count": 9,
+      "path": "Zeta23/CCM/FirstCrossingOptimizedCurvatureAlgebra.lean",
+      "reachability": "ENTRYPOINT_REACHABLE",
+      "reachable_from": [
+        "Zeta23.CCM"
+      ],
+      "registered_root_count": 0,
+      "standalone_role": null,
+      "trust_zone": "RH_FORMAL_CORE"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/CCM/FirstCrossingProductionArithmetic.lean",
+      "module": "Zeta23.CCM.FirstCrossingProductionArithmetic",
+      "module_id": "rh:module:Zeta23.CCM.FirstCrossingProductionArithmetic",
+      "named_source_declaration_count": 9,
+      "path": "Zeta23/CCM/FirstCrossingProductionArithmetic.lean",
+      "reachability": "ENTRYPOINT_REACHABLE",
+      "reachable_from": [
+        "Zeta23.CCM"
+      ],
+      "registered_root_count": 0,
+      "standalone_role": null,
+      "trust_zone": "RH_FORMAL_CORE"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/CCM/FirstCrossingProductionCurvatureBridge.lean",
+      "module": "Zeta23.CCM.FirstCrossingProductionCurvatureBridge",
+      "module_id": "rh:module:Zeta23.CCM.FirstCrossingProductionCurvatureBridge",
+      "named_source_declaration_count": 24,
+      "path": "Zeta23/CCM/FirstCrossingProductionCurvatureBridge.lean",
+      "reachability": "ENTRYPOINT_REACHABLE",
+      "reachable_from": [
+        "Zeta23.CCM"
+      ],
+      "registered_root_count": 0,
+      "standalone_role": null,
+      "trust_zone": "RH_FORMAL_CORE"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 6,
+      "file_id": "rh:file:Zeta23/CCM/FirstCrossingProductionFirstVariation.lean",
+      "module": "Zeta23.CCM.FirstCrossingProductionFirstVariation",
+      "module_id": "rh:module:Zeta23.CCM.FirstCrossingProductionFirstVariation",
+      "named_source_declaration_count": 42,
+      "path": "Zeta23/CCM/FirstCrossingProductionFirstVariation.lean",
+      "reachability": "ENTRYPOINT_REACHABLE",
+      "reachable_from": [
+        "Zeta23.CCM"
+      ],
+      "registered_root_count": 0,
+      "standalone_role": null,
+      "trust_zone": "RH_FORMAL_CORE"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/CCM/FirstCrossingProductionRemainder.lean",
+      "module": "Zeta23.CCM.FirstCrossingProductionRemainder",
+      "module_id": "rh:module:Zeta23.CCM.FirstCrossingProductionRemainder",
+      "named_source_declaration_count": 27,
+      "path": "Zeta23/CCM/FirstCrossingProductionRemainder.lean",
+      "reachability": "ENTRYPOINT_REACHABLE",
+      "reachable_from": [
+        "Zeta23.CCM"
+      ],
+      "registered_root_count": 0,
+      "standalone_role": null,
+      "trust_zone": "RH_FORMAL_CORE"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/CCM/FirstCrossingProductionRemainderAuthority.lean",
+      "module": "Zeta23.CCM.FirstCrossingProductionRemainderAuthority",
+      "module_id": "rh:module:Zeta23.CCM.FirstCrossingProductionRemainderAuthority",
+      "named_source_declaration_count": 6,
+      "path": "Zeta23/CCM/FirstCrossingProductionRemainderAuthority.lean",
+      "reachability": "ENTRYPOINT_REACHABLE",
+      "reachable_from": [
+        "Zeta23.CCM"
+      ],
+      "registered_root_count": 0,
+      "standalone_role": null,
+      "trust_zone": "RH_FORMAL_CORE"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/CCM/FirstCrossingProductionRemainderValueAuthority.lean",
+      "module": "Zeta23.CCM.FirstCrossingProductionRemainderValueAuthority",
+      "module_id": "rh:module:Zeta23.CCM.FirstCrossingProductionRemainderValueAuthority",
+      "named_source_declaration_count": 2,
+      "path": "Zeta23/CCM/FirstCrossingProductionRemainderValueAuthority.lean",
+      "reachability": "ENTRYPOINT_REACHABLE",
+      "reachable_from": [
+        "Zeta23.CCM"
+      ],
+      "registered_root_count": 0,
+      "standalone_role": null,
+      "trust_zone": "RH_FORMAL_CORE"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 1,
+      "file_id": "rh:file:Zeta23/CCM/FirstCrossingProductionResponse.lean",
+      "module": "Zeta23.CCM.FirstCrossingProductionResponse",
+      "module_id": "rh:module:Zeta23.CCM.FirstCrossingProductionResponse",
+      "named_source_declaration_count": 15,
+      "path": "Zeta23/CCM/FirstCrossingProductionResponse.lean",
+      "reachability": "ENTRYPOINT_REACHABLE",
+      "reachable_from": [
+        "Zeta23.CCM"
+      ],
+      "registered_root_count": 0,
+      "standalone_role": null,
+      "trust_zone": "RH_FORMAL_CORE"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/CCM/FirstCrossingProductionSaturation.lean",
+      "module": "Zeta23.CCM.FirstCrossingProductionSaturation",
+      "module_id": "rh:module:Zeta23.CCM.FirstCrossingProductionSaturation",
+      "named_source_declaration_count": 5,
+      "path": "Zeta23/CCM/FirstCrossingProductionSaturation.lean",
+      "reachability": "ENTRYPOINT_REACHABLE",
+      "reachable_from": [
+        "Zeta23.CCM"
+      ],
+      "registered_root_count": 0,
+      "standalone_role": null,
+      "trust_zone": "RH_FORMAL_CORE"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/CCM/FirstCrossingProductionTests.lean",
+      "module": "Zeta23.CCM.FirstCrossingProductionTests",
+      "module_id": "rh:module:Zeta23.CCM.FirstCrossingProductionTests",
+      "named_source_declaration_count": 9,
+      "path": "Zeta23/CCM/FirstCrossingProductionTests.lean",
+      "reachability": "ENTRYPOINT_REACHABLE",
+      "reachable_from": [
+        "Zeta23.CCM"
+      ],
+      "registered_root_count": 0,
+      "standalone_role": null,
+      "trust_zone": "RH_FORMAL_CORE"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/CCM/FirstCrossingSchurReduction.lean",
+      "module": "Zeta23.CCM.FirstCrossingSchurReduction",
+      "module_id": "rh:module:Zeta23.CCM.FirstCrossingSchurReduction",
+      "named_source_declaration_count": 7,
+      "path": "Zeta23/CCM/FirstCrossingSchurReduction.lean",
+      "reachability": "ENTRYPOINT_REACHABLE",
+      "reachable_from": [
+        "Zeta23.CCM"
+      ],
+      "registered_root_count": 0,
+      "standalone_role": null,
+      "trust_zone": "RH_FORMAL_CORE"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/CCM/FirstCrossingSourceCertificate.lean",
+      "module": "Zeta23.CCM.FirstCrossingSourceCertificate",
+      "module_id": "rh:module:Zeta23.CCM.FirstCrossingSourceCertificate",
+      "named_source_declaration_count": 2,
+      "path": "Zeta23/CCM/FirstCrossingSourceCertificate.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 0,
+      "standalone_role": "CONTACT_QUOTIENT_FORMAL_SUPPORT",
+      "trust_zone": "RH_FORMAL_CORE"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/CCM/FirstCrossingSourceDynamics.lean",
+      "module": "Zeta23.CCM.FirstCrossingSourceDynamics",
+      "module_id": "rh:module:Zeta23.CCM.FirstCrossingSourceDynamics",
+      "named_source_declaration_count": 7,
+      "path": "Zeta23/CCM/FirstCrossingSourceDynamics.lean",
+      "reachability": "ENTRYPOINT_REACHABLE",
+      "reachable_from": [
+        "Zeta23.CCM"
+      ],
+      "registered_root_count": 0,
+      "standalone_role": null,
+      "trust_zone": "RH_FORMAL_CORE"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/CCM/FirstCrossingSourceQuotient.lean",
+      "module": "Zeta23.CCM.FirstCrossingSourceQuotient",
+      "module_id": "rh:module:Zeta23.CCM.FirstCrossingSourceQuotient",
+      "named_source_declaration_count": 5,
+      "path": "Zeta23/CCM/FirstCrossingSourceQuotient.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 0,
+      "standalone_role": "CONTACT_QUOTIENT_TARGET_INTERFACE",
+      "trust_zone": "RH_FORMAL_CORE"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/CCM/FirstCrossingStrictEvenSourceEnergy.lean",
+      "module": "Zeta23.CCM.FirstCrossingStrictEvenSourceEnergy",
+      "module_id": "rh:module:Zeta23.CCM.FirstCrossingStrictEvenSourceEnergy",
+      "named_source_declaration_count": 4,
+      "path": "Zeta23/CCM/FirstCrossingStrictEvenSourceEnergy.lean",
+      "reachability": "ENTRYPOINT_REACHABLE",
+      "reachable_from": [
+        "Zeta23.CCM"
+      ],
+      "registered_root_count": 0,
+      "standalone_role": null,
+      "trust_zone": "RH_FORMAL_CORE"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/CCM/FirstCrossingStructuralCompatibility.lean",
+      "module": "Zeta23.CCM.FirstCrossingStructuralCompatibility",
+      "module_id": "rh:module:Zeta23.CCM.FirstCrossingStructuralCompatibility",
+      "named_source_declaration_count": 4,
+      "path": "Zeta23/CCM/FirstCrossingStructuralCompatibility.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 0,
+      "standalone_role": "CONTACT_QUOTIENT_FORMAL_SUPPORT",
+      "trust_zone": "RH_FORMAL_CORE"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/CCM/FirstCrossingSuccessorDeterminant.lean",
+      "module": "Zeta23.CCM.FirstCrossingSuccessorDeterminant",
+      "module_id": "rh:module:Zeta23.CCM.FirstCrossingSuccessorDeterminant",
+      "named_source_declaration_count": 3,
+      "path": "Zeta23/CCM/FirstCrossingSuccessorDeterminant.lean",
+      "reachability": "ENTRYPOINT_REACHABLE",
+      "reachable_from": [
+        "Zeta23.CCM"
       ],
       "registered_root_count": 0,
       "standalone_role": null,
@@ -2845,6 +3459,22 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
+      "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/CCM/GlobalParityBottomContactNormalForm.lean",
+      "module": "Zeta23.CCM.GlobalParityBottomContactNormalForm",
+      "module_id": "rh:module:Zeta23.CCM.GlobalParityBottomContactNormalForm",
+      "named_source_declaration_count": 7,
+      "path": "Zeta23/CCM/GlobalParityBottomContactNormalForm.lean",
+      "reachability": "ENTRYPOINT_REACHABLE",
+      "reachable_from": [
+        "Zeta23.CCM",
+        "Zeta23.ExceptionalZero"
+      ],
+      "registered_root_count": 0,
+      "standalone_role": null,
+      "trust_zone": "RH_FORMAL_CORE"
+    },
+    {
       "compiler_dependency_surface_declaration_count": 5,
       "file_id": "rh:file:Zeta23/CCM/GlobalParityBottomCrossParity.lean",
       "module": "Zeta23.CCM.GlobalParityBottomCrossParity",
@@ -2867,6 +3497,22 @@
       "module_id": "rh:module:Zeta23.CCM.GlobalParityBottomEvenStrictNormalForm",
       "named_source_declaration_count": 4,
       "path": "Zeta23/CCM/GlobalParityBottomEvenStrictNormalForm.lean",
+      "reachability": "ENTRYPOINT_REACHABLE",
+      "reachable_from": [
+        "Zeta23.CCM",
+        "Zeta23.ExceptionalZero"
+      ],
+      "registered_root_count": 0,
+      "standalone_role": null,
+      "trust_zone": "RH_FORMAL_CORE"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 6,
+      "file_id": "rh:file:Zeta23/CCM/GlobalParityBottomFirstContact.lean",
+      "module": "Zeta23.CCM.GlobalParityBottomFirstContact",
+      "module_id": "rh:module:Zeta23.CCM.GlobalParityBottomFirstContact",
+      "named_source_declaration_count": 2,
+      "path": "Zeta23/CCM/GlobalParityBottomFirstContact.lean",
       "reachability": "ENTRYPOINT_REACHABLE",
       "reachable_from": [
         "Zeta23.CCM",
@@ -2932,7 +3578,8 @@
       "path": "Zeta23/CCM/GlobalParityBottomNFlow.lean",
       "reachability": "ENTRYPOINT_REACHABLE",
       "reachable_from": [
-        "Zeta23.CCM"
+        "Zeta23.CCM",
+        "Zeta23.ExceptionalZero"
       ],
       "registered_root_count": 1,
       "standalone_role": null,
@@ -3074,7 +3721,8 @@
       "path": "Zeta23/CCM/GlobalParityBottomSimplicity.lean",
       "reachability": "ENTRYPOINT_REACHABLE",
       "reachable_from": [
-        "Zeta23.CCM"
+        "Zeta23.CCM",
+        "Zeta23.ExceptionalZero"
       ],
       "registered_root_count": 0,
       "standalone_role": null,
@@ -3097,7 +3745,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 36,
+      "compiler_dependency_surface_declaration_count": 37,
       "file_id": "rh:file:Zeta23/CCM/GlobalParityBottomSpectrum.lean",
       "module": "Zeta23.CCM.GlobalParityBottomSpectrum",
       "module_id": "rh:module:Zeta23.CCM.GlobalParityBottomSpectrum",
@@ -3123,6 +3771,21 @@
       "reachable_from": [
         "Zeta23.CCM",
         "Zeta23.ExceptionalZero"
+      ],
+      "registered_root_count": 0,
+      "standalone_role": null,
+      "trust_zone": "RH_FORMAL_CORE"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 9,
+      "file_id": "rh:file:Zeta23/CCM/GlobalParityFirstNegativeBoundary.lean",
+      "module": "Zeta23.CCM.GlobalParityFirstNegativeBoundary",
+      "module_id": "rh:module:Zeta23.CCM.GlobalParityFirstNegativeBoundary",
+      "named_source_declaration_count": 5,
+      "path": "Zeta23/CCM/GlobalParityFirstNegativeBoundary.lean",
+      "reachability": "ENTRYPOINT_REACHABLE",
+      "reachable_from": [
+        "Zeta23.CCM"
       ],
       "registered_root_count": 0,
       "standalone_role": null,
@@ -3348,7 +4011,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 34,
+      "compiler_dependency_surface_declaration_count": 35,
       "file_id": "rh:file:Zeta23/CCM/ParityBadness.lean",
       "module": "Zeta23.CCM.ParityBadness",
       "module_id": "rh:module:Zeta23.CCM.ParityBadness",
@@ -3396,6 +4059,22 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
+      "compiler_dependency_surface_declaration_count": 11,
+      "file_id": "rh:file:Zeta23/CCM/ParityFirstNegativeBoundary.lean",
+      "module": "Zeta23.CCM.ParityFirstNegativeBoundary",
+      "module_id": "rh:module:Zeta23.CCM.ParityFirstNegativeBoundary",
+      "named_source_declaration_count": 5,
+      "path": "Zeta23/CCM/ParityFirstNegativeBoundary.lean",
+      "reachability": "ENTRYPOINT_REACHABLE",
+      "reachable_from": [
+        "Zeta23.CCM",
+        "Zeta23.ExceptionalZero"
+      ],
+      "registered_root_count": 0,
+      "standalone_role": null,
+      "trust_zone": "RH_FORMAL_CORE"
+    },
+    {
       "compiler_dependency_surface_declaration_count": 0,
       "file_id": "rh:file:Zeta23/CCM/ParityGroundPerturbation.lean",
       "module": "Zeta23.CCM.ParityGroundPerturbation",
@@ -3406,6 +4085,22 @@
       "reachable_from": [],
       "registered_root_count": 0,
       "standalone_role": "CLOSURE_CAMPAIGN_FORMAL_SUPPORT",
+      "trust_zone": "RH_FORMAL_CORE"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 10,
+      "file_id": "rh:file:Zeta23/CCM/ParityKernelTower.lean",
+      "module": "Zeta23.CCM.ParityKernelTower",
+      "module_id": "rh:module:Zeta23.CCM.ParityKernelTower",
+      "named_source_declaration_count": 4,
+      "path": "Zeta23/CCM/ParityKernelTower.lean",
+      "reachability": "ENTRYPOINT_REACHABLE",
+      "reachable_from": [
+        "Zeta23.CCM",
+        "Zeta23.ExceptionalZero"
+      ],
+      "registered_root_count": 0,
+      "standalone_role": null,
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
@@ -3425,16 +4120,19 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 6,
       "file_id": "rh:file:Zeta23/CCM/ParityRayleighPerturbation.lean",
       "module": "Zeta23.CCM.ParityRayleighPerturbation",
       "module_id": "rh:module:Zeta23.CCM.ParityRayleighPerturbation",
-      "named_source_declaration_count": 6,
+      "named_source_declaration_count": 7,
       "path": "Zeta23/CCM/ParityRayleighPerturbation.lean",
-      "reachability": "STANDALONE_OR_AUXILIARY",
-      "reachable_from": [],
+      "reachability": "ENTRYPOINT_REACHABLE",
+      "reachable_from": [
+        "Zeta23.CCM",
+        "Zeta23.ExceptionalZero"
+      ],
       "registered_root_count": 0,
-      "standalone_role": "CLOSURE_CAMPAIGN_FORMAL_SUPPORT",
+      "standalone_role": null,
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
@@ -3464,6 +4162,82 @@
       "reachable_from": [
         "Zeta23.CCM",
         "Zeta23.ExceptionalZero"
+      ],
+      "registered_root_count": 0,
+      "standalone_role": null,
+      "trust_zone": "RH_FORMAL_CORE"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 6,
+      "file_id": "rh:file:Zeta23/CCM/ParityZeroPlateau.lean",
+      "module": "Zeta23.CCM.ParityZeroPlateau",
+      "module_id": "rh:module:Zeta23.CCM.ParityZeroPlateau",
+      "named_source_declaration_count": 2,
+      "path": "Zeta23/CCM/ParityZeroPlateau.lean",
+      "reachability": "ENTRYPOINT_REACHABLE",
+      "reachable_from": [
+        "Zeta23.CCM",
+        "Zeta23.ExceptionalZero"
+      ],
+      "registered_root_count": 0,
+      "standalone_role": null,
+      "trust_zone": "RH_FORMAL_CORE"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/CCM/ProductionNormalSourceAuthority.lean",
+      "module": "Zeta23.CCM.ProductionNormalSourceAuthority",
+      "module_id": "rh:module:Zeta23.CCM.ProductionNormalSourceAuthority",
+      "named_source_declaration_count": 8,
+      "path": "Zeta23/CCM/ProductionNormalSourceAuthority.lean",
+      "reachability": "ENTRYPOINT_REACHABLE",
+      "reachable_from": [
+        "Zeta23.CCM"
+      ],
+      "registered_root_count": 0,
+      "standalone_role": null,
+      "trust_zone": "RH_FORMAL_CORE"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/CCM/ProductionPhysicalFunctionalCongruence.lean",
+      "module": "Zeta23.CCM.ProductionPhysicalFunctionalCongruence",
+      "module_id": "rh:module:Zeta23.CCM.ProductionPhysicalFunctionalCongruence",
+      "named_source_declaration_count": 2,
+      "path": "Zeta23/CCM/ProductionPhysicalFunctionalCongruence.lean",
+      "reachability": "ENTRYPOINT_REACHABLE",
+      "reachable_from": [
+        "Zeta23.CCM"
+      ],
+      "registered_root_count": 0,
+      "standalone_role": null,
+      "trust_zone": "RH_FORMAL_CORE"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/CCM/ProductionWeightedGlobalTests.lean",
+      "module": "Zeta23.CCM.ProductionWeightedGlobalTests",
+      "module_id": "rh:module:Zeta23.CCM.ProductionWeightedGlobalTests",
+      "named_source_declaration_count": 51,
+      "path": "Zeta23/CCM/ProductionWeightedGlobalTests.lean",
+      "reachability": "ENTRYPOINT_REACHABLE",
+      "reachable_from": [
+        "Zeta23.CCM"
+      ],
+      "registered_root_count": 0,
+      "standalone_role": null,
+      "trust_zone": "RH_FORMAL_CORE"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/CCM/ProductionWeightedTestCalculus.lean",
+      "module": "Zeta23.CCM.ProductionWeightedTestCalculus",
+      "module_id": "rh:module:Zeta23.CCM.ProductionWeightedTestCalculus",
+      "named_source_declaration_count": 54,
+      "path": "Zeta23/CCM/ProductionWeightedTestCalculus.lean",
+      "reachability": "ENTRYPOINT_REACHABLE",
+      "reachable_from": [
+        "Zeta23.CCM"
       ],
       "registered_root_count": 0,
       "standalone_role": null,
@@ -3510,7 +4284,8 @@
       "path": "Zeta23/CCM/RankOneEigenline.lean",
       "reachability": "ENTRYPOINT_REACHABLE",
       "reachable_from": [
-        "Zeta23.CCM"
+        "Zeta23.CCM",
+        "Zeta23.ExceptionalZero"
       ],
       "registered_root_count": 0,
       "standalone_role": null,
@@ -3911,6 +4686,21 @@
     },
     {
       "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/CCM/SecularDeterminantKernel.lean",
+      "module": "Zeta23.CCM.SecularDeterminantKernel",
+      "module_id": "rh:module:Zeta23.CCM.SecularDeterminantKernel",
+      "named_source_declaration_count": 30,
+      "path": "Zeta23/CCM/SecularDeterminantKernel.lean",
+      "reachability": "ENTRYPOINT_REACHABLE",
+      "reachable_from": [
+        "Zeta23.CCM"
+      ],
+      "registered_root_count": 0,
+      "standalone_role": null,
+      "trust_zone": "RH_FORMAL_CORE"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 0,
       "file_id": "rh:file:Zeta23/CCM/SecularRootRieszBoundary.lean",
       "module": "Zeta23.CCM.SecularRootRieszBoundary",
       "module_id": "rh:module:Zeta23.CCM.SecularRootRieszBoundary",
@@ -3950,7 +4740,8 @@
       "path": "Zeta23/CCM/SourceContraction.lean",
       "reachability": "ENTRYPOINT_REACHABLE",
       "reachable_from": [
-        "Zeta23.CCM"
+        "Zeta23.CCM",
+        "Zeta23.ExceptionalZero"
       ],
       "registered_root_count": 0,
       "standalone_role": null,
@@ -3965,7 +4756,8 @@
       "path": "Zeta23/CCM/SourceContractionLocalized.lean",
       "reachability": "ENTRYPOINT_REACHABLE",
       "reachable_from": [
-        "Zeta23.CCM"
+        "Zeta23.CCM",
+        "Zeta23.ExceptionalZero"
       ],
       "registered_root_count": 0,
       "standalone_role": null,
@@ -4004,6 +4796,21 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
+      "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/CCM/SourceFourierConvolution.lean",
+      "module": "Zeta23.CCM.SourceFourierConvolution",
+      "module_id": "rh:module:Zeta23.CCM.SourceFourierConvolution",
+      "named_source_declaration_count": 5,
+      "path": "Zeta23/CCM/SourceFourierConvolution.lean",
+      "reachability": "ENTRYPOINT_REACHABLE",
+      "reachable_from": [
+        "Zeta23.CCM"
+      ],
+      "registered_root_count": 0,
+      "standalone_role": null,
+      "trust_zone": "RH_FORMAL_CORE"
+    },
+    {
       "compiler_dependency_surface_declaration_count": 10,
       "file_id": "rh:file:Zeta23/CCM/SourceKappa.lean",
       "module": "Zeta23.CCM.SourceKappa",
@@ -4015,6 +4822,21 @@
         "Zeta23.CCM"
       ],
       "registered_root_count": 1,
+      "standalone_role": null,
+      "trust_zone": "RH_FORMAL_CORE"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/CCM/SourceLatticeCoordinates.lean",
+      "module": "Zeta23.CCM.SourceLatticeCoordinates",
+      "module_id": "rh:module:Zeta23.CCM.SourceLatticeCoordinates",
+      "named_source_declaration_count": 51,
+      "path": "Zeta23/CCM/SourceLatticeCoordinates.lean",
+      "reachability": "ENTRYPOINT_REACHABLE",
+      "reachable_from": [
+        "Zeta23.CCM"
+      ],
+      "registered_root_count": 0,
       "standalone_role": null,
       "trust_zone": "RH_FORMAL_CORE"
     },
@@ -4051,6 +4873,36 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
+      "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/CCM/SourceMomentFilteredInertia.lean",
+      "module": "Zeta23.CCM.SourceMomentFilteredInertia",
+      "module_id": "rh:module:Zeta23.CCM.SourceMomentFilteredInertia",
+      "named_source_declaration_count": 64,
+      "path": "Zeta23/CCM/SourceMomentFilteredInertia.lean",
+      "reachability": "ENTRYPOINT_REACHABLE",
+      "reachable_from": [
+        "Zeta23.CCM"
+      ],
+      "registered_root_count": 0,
+      "standalone_role": null,
+      "trust_zone": "RH_FORMAL_CORE"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/CCM/SourceMomentVandermondeFiltration.lean",
+      "module": "Zeta23.CCM.SourceMomentVandermondeFiltration",
+      "module_id": "rh:module:Zeta23.CCM.SourceMomentVandermondeFiltration",
+      "named_source_declaration_count": 20,
+      "path": "Zeta23/CCM/SourceMomentVandermondeFiltration.lean",
+      "reachability": "ENTRYPOINT_REACHABLE",
+      "reachable_from": [
+        "Zeta23.CCM"
+      ],
+      "registered_root_count": 0,
+      "standalone_role": null,
+      "trust_zone": "RH_FORMAL_CORE"
+    },
+    {
       "compiler_dependency_surface_declaration_count": 13,
       "file_id": "rh:file:Zeta23/CCM/SourceNormalizationRepair.lean",
       "module": "Zeta23.CCM.SourceNormalizationRepair",
@@ -4063,6 +4915,51 @@
         "Zeta23.ExceptionalZero"
       ],
       "registered_root_count": 2,
+      "standalone_role": null,
+      "trust_zone": "RH_FORMAL_CORE"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/CCM/SourceParityExactInertia.lean",
+      "module": "Zeta23.CCM.SourceParityExactInertia",
+      "module_id": "rh:module:Zeta23.CCM.SourceParityExactInertia",
+      "named_source_declaration_count": 54,
+      "path": "Zeta23/CCM/SourceParityExactInertia.lean",
+      "reachability": "ENTRYPOINT_REACHABLE",
+      "reachable_from": [
+        "Zeta23.CCM"
+      ],
+      "registered_root_count": 0,
+      "standalone_role": null,
+      "trust_zone": "RH_FORMAL_CORE"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/CCM/SourceParityPolynomialCoordinates.lean",
+      "module": "Zeta23.CCM.SourceParityPolynomialCoordinates",
+      "module_id": "rh:module:Zeta23.CCM.SourceParityPolynomialCoordinates",
+      "named_source_declaration_count": 69,
+      "path": "Zeta23/CCM/SourceParityPolynomialCoordinates.lean",
+      "reachability": "ENTRYPOINT_REACHABLE",
+      "reachable_from": [
+        "Zeta23.CCM"
+      ],
+      "registered_root_count": 0,
+      "standalone_role": null,
+      "trust_zone": "RH_FORMAL_CORE"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/CCM/SourceSignCountermodels.lean",
+      "module": "Zeta23.CCM.SourceSignCountermodels",
+      "module_id": "rh:module:Zeta23.CCM.SourceSignCountermodels",
+      "named_source_declaration_count": 23,
+      "path": "Zeta23/CCM/SourceSignCountermodels.lean",
+      "reachability": "ENTRYPOINT_REACHABLE",
+      "reachable_from": [
+        "Zeta23.CCM"
+      ],
+      "registered_root_count": 0,
       "standalone_role": null,
       "trust_zone": "RH_FORMAL_CORE"
     },
@@ -4092,6 +4989,36 @@
         "Zeta23.ExceptionalZero"
       ],
       "registered_root_count": 1,
+      "standalone_role": null,
+      "trust_zone": "RH_FORMAL_CORE"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/CCM/StationarySchurContact.lean",
+      "module": "Zeta23.CCM.StationarySchurContact",
+      "module_id": "rh:module:Zeta23.CCM.StationarySchurContact",
+      "named_source_declaration_count": 45,
+      "path": "Zeta23/CCM/StationarySchurContact.lean",
+      "reachability": "ENTRYPOINT_REACHABLE",
+      "reachable_from": [
+        "Zeta23.CCM"
+      ],
+      "registered_root_count": 0,
+      "standalone_role": null,
+      "trust_zone": "RH_FORMAL_CORE"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/CCM/StrictEvenPrimeSeamDichotomy.lean",
+      "module": "Zeta23.CCM.StrictEvenPrimeSeamDichotomy",
+      "module_id": "rh:module:Zeta23.CCM.StrictEvenPrimeSeamDichotomy",
+      "named_source_declaration_count": 10,
+      "path": "Zeta23/CCM/StrictEvenPrimeSeamDichotomy.lean",
+      "reachability": "ENTRYPOINT_REACHABLE",
+      "reachable_from": [
+        "Zeta23.CCM"
+      ],
+      "registered_root_count": 0,
       "standalone_role": null,
       "trust_zone": "RH_FORMAL_CORE"
     },
@@ -4189,7 +5116,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 8,
       "file_id": "rh:file:Zeta23/CCM/ZeroShiftSchurDichotomy.lean",
       "module": "Zeta23.CCM.ZeroShiftSchurDichotomy",
       "module_id": "rh:module:Zeta23.CCM.ZeroShiftSchurDichotomy",
@@ -4346,9 +5273,10 @@
       "path": "Zeta23/ExceptionalZero/ApertureFreedom.lean",
       "reachability": "ENTRYPOINT_REACHABLE",
       "reachable_from": [
+        "Zeta23.CCM",
         "Zeta23.ExceptionalZero"
       ],
-      "registered_root_count": 0,
+      "registered_root_count": 1,
       "standalone_role": null,
       "trust_zone": "RH_FORMAL_CORE"
     },
@@ -4411,6 +5339,34 @@
         "Zeta23.ExceptionalZero"
       ],
       "registered_root_count": 1,
+      "standalone_role": null,
+      "trust_zone": "RH_FORMAL_CORE"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/ExceptionalZero/CanonicalFirstCrossingConditionalRH.lean",
+      "module": "Zeta23.ExceptionalZero.CanonicalFirstCrossingConditionalRH",
+      "module_id": "rh:module:Zeta23.ExceptionalZero.CanonicalFirstCrossingConditionalRH",
+      "named_source_declaration_count": 2,
+      "path": "Zeta23/ExceptionalZero/CanonicalFirstCrossingConditionalRH.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 0,
+      "standalone_role": "QUARANTINED_CONDITIONAL_RH_SEAM",
+      "trust_zone": "RH_FORMAL_CORE"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/ExceptionalZero/CanonicalParityFirstCrossingShell.lean",
+      "module": "Zeta23.ExceptionalZero.CanonicalParityFirstCrossingShell",
+      "module_id": "rh:module:Zeta23.ExceptionalZero.CanonicalParityFirstCrossingShell",
+      "named_source_declaration_count": 4,
+      "path": "Zeta23/ExceptionalZero/CanonicalParityFirstCrossingShell.lean",
+      "reachability": "ENTRYPOINT_REACHABLE",
+      "reachable_from": [
+        "Zeta23.ExceptionalZero"
+      ],
+      "registered_root_count": 0,
       "standalone_role": null,
       "trust_zone": "RH_FORMAL_CORE"
     },
@@ -4800,7 +5756,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 1,
       "file_id": "rh:file:Zeta23/ExceptionalZero/GlobalFirstBadCubicExplicitSecular.lean",
       "module": "Zeta23.ExceptionalZero.GlobalFirstBadCubicExplicitSecular",
       "module_id": "rh:module:Zeta23.ExceptionalZero.GlobalFirstBadCubicExplicitSecular",
@@ -4808,6 +5764,7 @@
       "path": "Zeta23/ExceptionalZero/GlobalFirstBadCubicExplicitSecular.lean",
       "reachability": "ENTRYPOINT_REACHABLE",
       "reachable_from": [
+        "Zeta23.CCM",
         "Zeta23.ExceptionalZero"
       ],
       "registered_root_count": 0,
@@ -4830,7 +5787,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 1,
       "file_id": "rh:file:Zeta23/ExceptionalZero/GlobalFirstBadCubicNormalizedSchur.lean",
       "module": "Zeta23.ExceptionalZero.GlobalFirstBadCubicNormalizedSchur",
       "module_id": "rh:module:Zeta23.ExceptionalZero.GlobalFirstBadCubicNormalizedSchur",
@@ -4838,6 +5795,7 @@
       "path": "Zeta23/ExceptionalZero/GlobalFirstBadCubicNormalizedSchur.lean",
       "reachability": "ENTRYPOINT_REACHABLE",
       "reachable_from": [
+        "Zeta23.CCM",
         "Zeta23.ExceptionalZero"
       ],
       "registered_root_count": 0,
@@ -4845,7 +5803,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 1,
       "file_id": "rh:file:Zeta23/ExceptionalZero/GlobalFirstBadCubicSecularEquation.lean",
       "module": "Zeta23.ExceptionalZero.GlobalFirstBadCubicSecularEquation",
       "module_id": "rh:module:Zeta23.ExceptionalZero.GlobalFirstBadCubicSecularEquation",
@@ -4853,6 +5811,7 @@
       "path": "Zeta23/ExceptionalZero/GlobalFirstBadCubicSecularEquation.lean",
       "reachability": "ENTRYPOINT_REACHABLE",
       "reachable_from": [
+        "Zeta23.CCM",
         "Zeta23.ExceptionalZero"
       ],
       "registered_root_count": 0,
@@ -4860,7 +5819,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 1,
       "file_id": "rh:file:Zeta23/ExceptionalZero/GlobalFirstBadCubicShell.lean",
       "module": "Zeta23.ExceptionalZero.GlobalFirstBadCubicShell",
       "module_id": "rh:module:Zeta23.ExceptionalZero.GlobalFirstBadCubicShell",
@@ -4868,6 +5827,7 @@
       "path": "Zeta23/ExceptionalZero/GlobalFirstBadCubicShell.lean",
       "reachability": "ENTRYPOINT_REACHABLE",
       "reachable_from": [
+        "Zeta23.CCM",
         "Zeta23.ExceptionalZero"
       ],
       "registered_root_count": 0,
@@ -4875,7 +5835,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 1,
       "file_id": "rh:file:Zeta23/ExceptionalZero/GlobalFirstBadOneStepDomination.lean",
       "module": "Zeta23.ExceptionalZero.GlobalFirstBadOneStepDomination",
       "module_id": "rh:module:Zeta23.ExceptionalZero.GlobalFirstBadOneStepDomination",
@@ -4883,14 +5843,15 @@
       "path": "Zeta23/ExceptionalZero/GlobalFirstBadOneStepDomination.lean",
       "reachability": "ENTRYPOINT_REACHABLE",
       "reachable_from": [
+        "Zeta23.CCM",
         "Zeta23.ExceptionalZero"
       ],
-      "registered_root_count": 0,
+      "registered_root_count": 1,
       "standalone_role": null,
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 4,
       "file_id": "rh:file:Zeta23/ExceptionalZero/GlobalFirstBadRigidity.lean",
       "module": "Zeta23.ExceptionalZero.GlobalFirstBadRigidity",
       "module_id": "rh:module:Zeta23.ExceptionalZero.GlobalFirstBadRigidity",
@@ -4898,6 +5859,7 @@
       "path": "Zeta23/ExceptionalZero/GlobalFirstBadRigidity.lean",
       "reachability": "ENTRYPOINT_REACHABLE",
       "reachable_from": [
+        "Zeta23.CCM",
         "Zeta23.ExceptionalZero"
       ],
       "registered_root_count": 0,
@@ -4905,7 +5867,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 1,
       "file_id": "rh:file:Zeta23/ExceptionalZero/GlobalFirstBadShiftedSchur.lean",
       "module": "Zeta23.ExceptionalZero.GlobalFirstBadShiftedSchur",
       "module_id": "rh:module:Zeta23.ExceptionalZero.GlobalFirstBadShiftedSchur",
@@ -4913,6 +5875,7 @@
       "path": "Zeta23/ExceptionalZero/GlobalFirstBadShiftedSchur.lean",
       "reachability": "ENTRYPOINT_REACHABLE",
       "reachable_from": [
+        "Zeta23.CCM",
         "Zeta23.ExceptionalZero"
       ],
       "registered_root_count": 0,
@@ -5006,6 +5969,22 @@
       "trust_zone": "AUDIT_ONLY"
     },
     {
+      "compiler_dependency_surface_declaration_count": 2,
+      "file_id": "rh:file:Zeta23/ExceptionalZero/GlobalParityBottomFirstContact.lean",
+      "module": "Zeta23.ExceptionalZero.GlobalParityBottomFirstContact",
+      "module_id": "rh:module:Zeta23.ExceptionalZero.GlobalParityBottomFirstContact",
+      "named_source_declaration_count": 4,
+      "path": "Zeta23/ExceptionalZero/GlobalParityBottomFirstContact.lean",
+      "reachability": "ENTRYPOINT_REACHABLE",
+      "reachable_from": [
+        "Zeta23.CCM",
+        "Zeta23.ExceptionalZero"
+      ],
+      "registered_root_count": 1,
+      "standalone_role": null,
+      "trust_zone": "RH_FORMAL_CORE"
+    },
+    {
       "compiler_dependency_surface_declaration_count": 1,
       "file_id": "rh:file:Zeta23/ExceptionalZero/GlobalParityBottomGeneratedState.lean",
       "module": "Zeta23.ExceptionalZero.GlobalParityBottomGeneratedState",
@@ -5034,6 +6013,22 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
+      "compiler_dependency_surface_declaration_count": 3,
+      "file_id": "rh:file:Zeta23/ExceptionalZero/GlobalParityBottomSignOpposition.lean",
+      "module": "Zeta23.ExceptionalZero.GlobalParityBottomSignOpposition",
+      "module_id": "rh:module:Zeta23.ExceptionalZero.GlobalParityBottomSignOpposition",
+      "named_source_declaration_count": 2,
+      "path": "Zeta23/ExceptionalZero/GlobalParityBottomSignOpposition.lean",
+      "reachability": "ENTRYPOINT_REACHABLE",
+      "reachable_from": [
+        "Zeta23.CCM",
+        "Zeta23.ExceptionalZero"
+      ],
+      "registered_root_count": 1,
+      "standalone_role": null,
+      "trust_zone": "RH_FORMAL_CORE"
+    },
+    {
       "compiler_dependency_surface_declaration_count": 1,
       "file_id": "rh:file:Zeta23/ExceptionalZero/GlobalParityBottomTerminalTarget.lean",
       "module": "Zeta23.ExceptionalZero.GlobalParityBottomTerminalTarget",
@@ -5046,6 +6041,19 @@
       ],
       "registered_root_count": 1,
       "standalone_role": null,
+      "trust_zone": "RH_FORMAL_CORE"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/ExceptionalZero/GlobalParityFirstNegativeBoundary.lean",
+      "module": "Zeta23.ExceptionalZero.GlobalParityFirstNegativeBoundary",
+      "module_id": "rh:module:Zeta23.ExceptionalZero.GlobalParityFirstNegativeBoundary",
+      "named_source_declaration_count": 2,
+      "path": "Zeta23/ExceptionalZero/GlobalParityFirstNegativeBoundary.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 0,
+      "standalone_role": "GENERATED_CONTACT_PROVENANCE",
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
@@ -6993,6 +8001,32 @@
       "reachable_from": [],
       "registered_root_count": 0,
       "standalone_role": "CLOSURE_CAMPAIGN_PROOF_OBLIGATION_BINDING",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 2,
+      "file_id": "rh:file:Zeta23/RHRC/ClosureStrengthAudit.lean",
+      "module": "Zeta23.RHRC.ClosureStrengthAudit",
+      "module_id": "rh:module:Zeta23.RHRC.ClosureStrengthAudit",
+      "named_source_declaration_count": 3,
+      "path": "Zeta23/RHRC/ClosureStrengthAudit.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 2,
+      "standalone_role": "QUARANTINED_CLOSURE_STRENGTH_AUDIT",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/RHRC/ContactCalculusContract.lean",
+      "module": "Zeta23.RHRC.ContactCalculusContract",
+      "module_id": "rh:module:Zeta23.RHRC.ContactCalculusContract",
+      "named_source_declaration_count": 0,
+      "path": "Zeta23/RHRC/ContactCalculusContract.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 0,
+      "standalone_role": "CONTACT_CALCULUS_SCOPE_AUDIT",
       "trust_zone": "AUDIT_ONLY"
     },
     {
@@ -10689,7 +11723,7 @@
       "trust_zone": "AUXILIARY_FORMALIZATION"
     }
   ],
-  "entry_count": 677,
+  "entry_count": 745,
   "graph_theorem_promotion": false,
   "schema_version": "RHKG-final-module-closure-1.0",
   "scope": "ALL_LOCAL_LEAN_MODULES",

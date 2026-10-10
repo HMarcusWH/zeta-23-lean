@@ -326,6 +326,17 @@ consumes it. Generated graph products remain non-authoritative views and mirrors
 If a generated record disagrees with an authoritative or compiler-derived source,
 the generated graph is wrong.
 
+Relations are one logical dataset stored as 16 fixed shards,
+`generated/relations/relations-<k>.jsonl` for `k` in `0123456789abcdef`. A
+relation goes to the shard named by the first hex digit of its sha256 id, and
+each shard is sorted by id. Concatenating the shards in key order therefore
+gives the single sorted relation stream that used to be `relations.jsonl`. The
+split keeps every file far below GitHub's 100 MiB per-file limit. `build.py`
+always writes all 16 shards, even empty ones. `validate.py` reads them as one
+set and checks that each row is in its key shard, that ids are strictly
+increasing within a shard, that each shard stays under 50 MiB, and that the
+legacy monolithic file is absent.
+
 
 ## Final semantic-closure pass
 

@@ -42,13 +42,27 @@ REPOSITORY_NAME = "HMarcusWH/zeta-23-lean"
 REPOSITORY_ID = "rh:repository:" + REPOSITORY_NAME
 FILE_CLASSES_PATH = GRAPH / "FILE_CLASSES.json"
 
+# Relations are one logical dataset stored as 16 fixed shards keyed on the
+# first hex digit of the sha256 relation id. Each shard is id-sorted, so
+# concatenating the shards in key order gives the single sorted relation
+# stream (the former relations.jsonl) byte for byte. The split keeps every
+# file far below GitHub's 100 MiB per-file limit.
+RELATION_SHARD_KEYS = "0123456789abcdef"
+RELATION_SHARD_DIR = "research/RHRC/graph/generated/relations"
+RELATION_SHARD_PATHS = [
+    f"{RELATION_SHARD_DIR}/relations-{key}.jsonl" for key in RELATION_SHARD_KEYS
+]
+LEGACY_RELATIONS_PATH = "research/RHRC/graph/generated/relations.jsonl"
+RELATION_SHARD_MAX_BYTES = 50 * 1024 * 1024
+RELATION_ID_PREFIX = "rh:rel:"
+
 DECLARED_GENERATED_PRODUCTS = [
     "research/RHRC/graph/generated/repository_files.jsonl",
     "research/RHRC/graph/generated/lean_modules.jsonl",
     "research/RHRC/graph/generated/registry_nodes.jsonl",
     "research/RHRC/graph/generated/lean_declarations.jsonl",
     "research/RHRC/graph/generated/lean_source_declarations.jsonl",
-    "research/RHRC/graph/generated/relations.jsonl",
+    *RELATION_SHARD_PATHS,
     "research/RHRC/graph/generated/THEOREM_CLAIM_MAP.json",
     "research/RHRC/graph/generated/THEOREM_DEPENDENCY_CLOSURE.json",
     "research/RHRC/graph/generated/DEPENDENCY_KERNEL_ATLAS.json",
@@ -165,6 +179,11 @@ def _git(*args: str) -> str:
 def tracked_files() -> list[str]:
     raw = subprocess.check_output(["git", "ls-files", "-z"], cwd=REPO)
     tracked = {p.decode("utf-8") for p in raw.split(b"\0") if p}
+    if LEGACY_RELATIONS_PATH in tracked:
+        raise RuntimeError(
+            f"{LEGACY_RELATIONS_PATH} is still tracked; relations are sharded "
+            f"under {RELATION_SHARD_DIR}/, so git rm the monolithic file"
+        )
     # Generated RHKG products belong to physical coverage even during the
     # first bootstrap before they have been added to Git.
     tracked.update(ALL_DECLARED_GENERATED_PRODUCTS)
@@ -333,6 +352,29 @@ def _jsonl(rows: list[dict]) -> bytes:
         for row in ordered
     )
     return text.encode("utf-8")
+
+
+def relation_shard_key(rel_id: str) -> str:
+    digest = rel_id[len(RELATION_ID_PREFIX):]
+    if (
+        not rel_id.startswith(RELATION_ID_PREFIX)
+        or len(digest) != 64
+        or any(ch not in RELATION_SHARD_KEYS for ch in digest)
+    ):
+        raise RuntimeError(f"malformed relation id: {rel_id!r}")
+    return digest[0]
+
+
+def render_relation_shards(rows: list[dict]) -> dict[str, bytes]:
+    buckets: dict[str, list[dict]] = {key: [] for key in RELATION_SHARD_KEYS}
+    for row in rows:
+        buckets[relation_shard_key(row["id"])].append(row)
+    # Every shard is emitted, even an empty one, so the declared file set is
+    # independent of the relation content.
+    return {
+        path: _jsonl(buckets[key])
+        for key, path in zip(RELATION_SHARD_KEYS, RELATION_SHARD_PATHS)
+    }
 
 
 def _pretty(obj: dict) -> bytes:
@@ -984,13 +1026,13 @@ def build_records() -> dict[str, object]:
 
 def rendered_outputs() -> dict[str, bytes]:
     records = build_records()
-    return {
+    outputs = {
         "research/RHRC/graph/generated/repository_files.jsonl": _jsonl(records["repo_files"]),
         "research/RHRC/graph/generated/lean_modules.jsonl": _jsonl(records["lean_modules"]),
         "research/RHRC/graph/generated/lean_declarations.jsonl": _jsonl(records["lean_declarations"]),
         "research/RHRC/graph/generated/lean_source_declarations.jsonl": _jsonl(records["lean_source_declarations"]),
         "research/RHRC/graph/generated/registry_nodes.jsonl": _jsonl(records["registry_nodes"]),
-        "research/RHRC/graph/generated/relations.jsonl": _jsonl(records["relations"]),
+        **render_relation_shards(records["relations"]),
         "research/RHRC/graph/generated/REPOSITORY_COVERAGE.json": _pretty(records["coverage"]),
         "research/RHRC/graph/generated/ENTRYPOINT_REACHABILITY.json": _pretty(records["reachability"]),
         "research/RHRC/graph/generated/THEOREM_CLAIM_MAP.json": _pretty(records["theorem_claim_map"]),
@@ -1008,10 +1050,27 @@ def rendered_outputs() -> dict[str, bytes]:
         "research/RHRC/graph/generated/MODULE_SEMANTIC_CLOSURE.json": _pretty(records["module_semantic_closure"]),
         "research/RHRC/graph/generated/DOCUMENT_SEMANTIC_CLOSURE.json": _pretty(records["document_semantic_closure"]),
     }
+    if set(outputs) != set(DECLARED_GENERATED_PRODUCTS):
+        raise RuntimeError(
+            "rendered/declared product drift: "
+            f"undeclared={sorted(set(outputs) - set(DECLARED_GENERATED_PRODUCTS))} "
+            f"unrendered={sorted(set(DECLARED_GENERATED_PRODUCTS) - set(outputs))}"
+        )
+    return outputs
 
 
 def write_outputs(outputs: dict[str, bytes]) -> None:
     GENERATED.mkdir(parents=True, exist_ok=True)
+    # Shards are fixed by name; drop any stray file in the shard directory and
+    # an untracked leftover monolith (tracked_files() already refused a
+    # tracked one) so a local --write cannot leave product-set drift behind.
+    shard_dir = REPO / RELATION_SHARD_DIR
+    if shard_dir.exists():
+        declared_shards = {REPO / path for path in RELATION_SHARD_PATHS}
+        for stray in shard_dir.iterdir():
+            if stray.is_file() and stray not in declared_shards:
+                stray.unlink()
+    (REPO / LEGACY_RELATIONS_PATH).unlink(missing_ok=True)
     for path, data in outputs.items():
         target = REPO / path
         target.parent.mkdir(parents=True, exist_ok=True)

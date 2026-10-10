@@ -3255,7 +3255,7 @@
           "used_in_value": true
         },
         {
-          "bridge_candidate_eligible": true,
+          "bridge_candidate_eligible": false,
           "source": "Zeta23.ExceptionalZero.exists_regularFirstBad_negativeEnergyCertificate_of_offLine_zero",
           "source_atom": "B",
           "source_module": "Zeta23.ExceptionalZero.RegularFirstBadClosure",
@@ -3265,7 +3265,7 @@
           "target_atom": "BC",
           "target_module": "Zeta23.ExceptionalZero.ApertureFreedom",
           "target_private_or_internal": false,
-          "target_registered_root": false,
+          "target_registered_root": true,
           "transition": "B->BC",
           "used_in_structure": false,
           "used_in_type": false,
@@ -6162,12 +6162,12 @@
           "used_in_value": true
         },
         {
-          "bridge_candidate_eligible": true,
+          "bridge_candidate_eligible": false,
           "source": "Zeta23.ExceptionalZero.eventually_all_apertures_have_anyParityBad_of_offLine_zero",
           "source_atom": "BC",
           "source_module": "Zeta23.ExceptionalZero.ApertureFreedom",
           "source_private_or_internal": false,
-          "source_registered_root": false,
+          "source_registered_root": true,
           "target": "Zeta23.ZeroConfig.carrier",
           "target_atom": "ABC",
           "target_module": "Zeta23.Defs",
@@ -6179,12 +6179,12 @@
           "used_in_value": true
         },
         {
-          "bridge_candidate_eligible": true,
+          "bridge_candidate_eligible": false,
           "source": "Zeta23.ExceptionalZero.eventually_all_apertures_have_anyParityBad_of_offLine_zero",
           "source_atom": "BC",
           "source_module": "Zeta23.ExceptionalZero.ApertureFreedom",
           "source_private_or_internal": false,
-          "source_registered_root": false,
+          "source_registered_root": true,
           "target": "Zeta23.zetaZeroConfig",
           "target_atom": "ABC",
           "target_module": "Zeta23.Statement.SeamClosed",
@@ -17025,7 +17025,7 @@
           "used_in_value": true
         },
         {
-          "bridge_candidate_eligible": true,
+          "bridge_candidate_eligible": false,
           "source": "Zeta23.ExceptionalZero.eventually_all_cutoffCells_have_wholeCellBiRegular_negativeEnergyCertificate_of_offLine_zero",
           "source_atom": "C",
           "source_module": "Zeta23.ExceptionalZero.OffLineGeneratedRetainedFamily",
@@ -17035,7 +17035,7 @@
           "target_atom": "BC",
           "target_module": "Zeta23.ExceptionalZero.ApertureFreedom",
           "target_private_or_internal": false,
-          "target_registered_root": false,
+          "target_registered_root": true,
           "transition": "C->BC",
           "used_in_structure": false,
           "used_in_type": false,
@@ -31887,12 +31887,12 @@
             "used_in_value": true
           },
           {
-            "bridge_candidate_eligible": true,
+            "bridge_candidate_eligible": false,
             "source": "Zeta23.ExceptionalZero.eventually_all_apertures_have_anyParityBad_of_offLine_zero",
             "source_atom": "RIGHT_ONLY",
             "source_module": "Zeta23.ExceptionalZero.ApertureFreedom",
             "source_private_or_internal": false,
-            "source_registered_root": false,
+            "source_registered_root": true,
             "target": "Zeta23.CCM.quadraticForm",
             "target_atom": "SHARED",
             "target_module": "Zeta23.CCM.FiniteDictionary",
@@ -34012,7 +34012,7 @@
             "used_in_value": true
           }
         ],
-        "eligible_cross_region_edge_count": 951,
+        "eligible_cross_region_edge_count": 950,
         "left_claim_id": "R003_CANONICAL_PRIME_REMAINDER_NORMAL_FORM",
         "left_count": 224,
         "left_only_count": 0,
@@ -34029,7 +34029,7 @@
         "transition_frontiers": [
           {
             "edge_count": 974,
-            "eligible_edge_count": 951,
+            "eligible_edge_count": 950,
             "eligible_source_declarations": [
               "Zeta23.CCM.GlobalBottomArithmeticResidual.mk",
               "Zeta23.CCM.GlobalBottomResidualState.groundTrial_channelEnergy_neg",
@@ -34438,7 +34438,6 @@
               "Zeta23.ExceptionalZero.W_translateRight_both",
               "Zeta23.ExceptionalZero.absolutelySummableZeroFilter_squaredWeil",
               "Zeta23.ExceptionalZero.absolutelySummableZeroFilter_weil",
-              "Zeta23.ExceptionalZero.eventually_all_apertures_have_anyParityBad_of_offLine_zero",
               "Zeta23.ExceptionalZero.eventually_all_apertures_have_negativeCanonicalSourceWitness_of_offLine_zero",
               "Zeta23.ExceptionalZero.exists_realEven_contDiff_visible_test",
               "Zeta23.ExceptionalZero.exists_realEven_poleKilled_twoTranslate_negativeWitness_of_offLine_zero",
@@ -35388,7 +35387,7 @@
         },
         {
           "edge_count": 130,
-          "eligible_edge_count": 125,
+          "eligible_edge_count": 124,
           "eligible_source_declarations": [
             "Zeta23.CCM.canonicalPrimeFreeBudget",
             "Zeta23.CCM.canonicalSourceChannelEnergy_eq_discrepancy",
@@ -35482,7 +35481,6 @@
             "Zeta23.CCM.sourcePotential",
             "Zeta23.CCM.sourcePotential._proof_1",
             "Zeta23.ExceptionalZero.canonicalSourceChannelEnergy_nonnegative_of_criticalLine",
-            "Zeta23.ExceptionalZero.eventually_all_apertures_have_anyParityBad_of_offLine_zero",
             "Zeta23.ExceptionalZero.isNontrivialZero_of_mathlib_nontrivialZero",
             "Zeta23.RH_implies_on_line"
           ],
@@ -35588,7 +35586,7 @@
         },
         {
           "edge_count": 449,
-          "eligible_edge_count": 427,
+          "eligible_edge_count": 425,
           "eligible_source_declarations": [
             "Zeta23.CCM.aestronglyMeasurable_archDensityFubiniIntegrand",
             "Zeta23.CCM.archDensityFubiniIntegrand",
@@ -35660,7 +35658,6 @@
             "Zeta23.ExceptionalZero.absolutelySummableZeroFilter_squaredWeil",
             "Zeta23.ExceptionalZero.canonicalSourceChannelEnergy_nonnegative_of_criticalLine",
             "Zeta23.ExceptionalZero.canonicalSourceQuadraticForm_re_nonnegative_of_criticalLine",
-            "Zeta23.ExceptionalZero.eventually_all_apertures_have_anyParityBad_of_offLine_zero",
             "Zeta23.ExceptionalZero.eventually_all_apertures_have_negativeCanonicalSourceWitness_of_offLine_zero",
             "Zeta23.ExceptionalZero.exists_nonneg_gt_of_not_subexponential",
             "Zeta23.ExceptionalZero.exists_realEven_contDiff_visible_test",
@@ -36118,7 +36115,7 @@
         },
         {
           "edge_count": 335,
-          "eligible_edge_count": 333,
+          "eligible_edge_count": 332,
           "eligible_source_declarations": [
             "Zeta23.CCM.BiRegularCellMinimalFirstBadCertificate.firstBad",
             "Zeta23.CCM.BiRegularCellMinimalFirstBadCertificate.mk",
@@ -36253,7 +36250,6 @@
             "Zeta23.CCM.quadraticForm",
             "Zeta23.CCM.re_inner_parityCompressedCanonical_self",
             "Zeta23.ExceptionalZero.canonicalSourceChannelEnergy_nonnegative_of_criticalLine",
-            "Zeta23.ExceptionalZero.eventually_all_apertures_have_anyParityBad_of_offLine_zero",
             "Zeta23.ExceptionalZero.isNontrivialZero_of_mathlib_nontrivialZero",
             "Zeta23.RH_implies_on_line"
           ],
@@ -39609,7 +39605,7 @@
           "used_in_value": true
         },
         {
-          "bridge_candidate_eligible": true,
+          "bridge_candidate_eligible": false,
           "source": "Zeta23.ExceptionalZero.exists_regularFirstBad_negativeEnergyCertificate_of_offLine_zero",
           "source_atom": "B",
           "source_module": "Zeta23.ExceptionalZero.RegularFirstBadClosure",
@@ -39619,7 +39615,7 @@
           "target_atom": "BC",
           "target_module": "Zeta23.ExceptionalZero.ApertureFreedom",
           "target_private_or_internal": false,
-          "target_registered_root": false,
+          "target_registered_root": true,
           "transition": "B->BC",
           "used_in_structure": false,
           "used_in_type": false,
@@ -42465,12 +42461,12 @@
           "used_in_value": true
         },
         {
-          "bridge_candidate_eligible": true,
+          "bridge_candidate_eligible": false,
           "source": "Zeta23.ExceptionalZero.eventually_all_apertures_have_anyParityBad_of_offLine_zero",
           "source_atom": "BC",
           "source_module": "Zeta23.ExceptionalZero.ApertureFreedom",
           "source_private_or_internal": false,
-          "source_registered_root": false,
+          "source_registered_root": true,
           "target": "Zeta23.ZeroConfig.carrier",
           "target_atom": "ABC",
           "target_module": "Zeta23.Defs",
@@ -42482,12 +42478,12 @@
           "used_in_value": true
         },
         {
-          "bridge_candidate_eligible": true,
+          "bridge_candidate_eligible": false,
           "source": "Zeta23.ExceptionalZero.eventually_all_apertures_have_anyParityBad_of_offLine_zero",
           "source_atom": "BC",
           "source_module": "Zeta23.ExceptionalZero.ApertureFreedom",
           "source_private_or_internal": false,
-          "source_registered_root": false,
+          "source_registered_root": true,
           "target": "Zeta23.zetaZeroConfig",
           "target_atom": "ABC",
           "target_module": "Zeta23.Statement.SeamClosed",
@@ -51832,7 +51828,7 @@
           "used_in_value": true
         },
         {
-          "bridge_candidate_eligible": true,
+          "bridge_candidate_eligible": false,
           "source": "Zeta23.ExceptionalZero.eventually_all_cutoffCells_have_wholeCellBiRegular_negativeEnergyCertificate_of_offLine_zero",
           "source_atom": "C",
           "source_module": "Zeta23.ExceptionalZero.OffLineGeneratedRetainedFamily",
@@ -51842,7 +51838,7 @@
           "target_atom": "BC",
           "target_module": "Zeta23.ExceptionalZero.ApertureFreedom",
           "target_private_or_internal": false,
-          "target_registered_root": false,
+          "target_registered_root": true,
           "transition": "C->BC",
           "used_in_structure": false,
           "used_in_type": false,
@@ -66048,12 +66044,12 @@
             "used_in_value": true
           },
           {
-            "bridge_candidate_eligible": true,
+            "bridge_candidate_eligible": false,
             "source": "Zeta23.ExceptionalZero.eventually_all_apertures_have_anyParityBad_of_offLine_zero",
             "source_atom": "RIGHT_ONLY",
             "source_module": "Zeta23.ExceptionalZero.ApertureFreedom",
             "source_private_or_internal": false,
-            "source_registered_root": false,
+            "source_registered_root": true,
             "target": "Zeta23.CCM.quadraticForm",
             "target_atom": "SHARED",
             "target_module": "Zeta23.CCM.FiniteDictionary",
@@ -68156,7 +68152,7 @@
             "used_in_value": true
           }
         ],
-        "eligible_cross_region_edge_count": 912,
+        "eligible_cross_region_edge_count": 911,
         "left_claim_id": "R003_CANONICAL_PRIME_REMAINDER_NORMAL_FORM",
         "left_count": 224,
         "left_only_count": 0,
@@ -68173,7 +68169,7 @@
         "transition_frontiers": [
           {
             "edge_count": 935,
-            "eligible_edge_count": 912,
+            "eligible_edge_count": 911,
             "eligible_source_declarations": [
               "Zeta23.CCM.GlobalBottomResidualState.groundTrial_channelEnergy_neg",
               "Zeta23.CCM.GlobalBottomResidualState.groundTrial_primeRemainder_failure",
@@ -68562,7 +68558,6 @@
               "Zeta23.ExceptionalZero.W_translateRight_both",
               "Zeta23.ExceptionalZero.absolutelySummableZeroFilter_squaredWeil",
               "Zeta23.ExceptionalZero.absolutelySummableZeroFilter_weil",
-              "Zeta23.ExceptionalZero.eventually_all_apertures_have_anyParityBad_of_offLine_zero",
               "Zeta23.ExceptionalZero.eventually_all_apertures_have_negativeCanonicalSourceWitness_of_offLine_zero",
               "Zeta23.ExceptionalZero.exists_realEven_contDiff_visible_test",
               "Zeta23.ExceptionalZero.exists_realEven_poleKilled_twoTranslate_negativeWitness_of_offLine_zero",
@@ -69490,7 +69485,7 @@
         },
         {
           "edge_count": 130,
-          "eligible_edge_count": 125,
+          "eligible_edge_count": 124,
           "eligible_source_declarations": [
             "Zeta23.CCM.canonicalPrimeFreeBudget",
             "Zeta23.CCM.canonicalSourceChannelEnergy_eq_discrepancy",
@@ -69584,7 +69579,6 @@
             "Zeta23.CCM.sourcePotential",
             "Zeta23.CCM.sourcePotential._proof_1",
             "Zeta23.ExceptionalZero.canonicalSourceChannelEnergy_nonnegative_of_criticalLine",
-            "Zeta23.ExceptionalZero.eventually_all_apertures_have_anyParityBad_of_offLine_zero",
             "Zeta23.ExceptionalZero.isNontrivialZero_of_mathlib_nontrivialZero",
             "Zeta23.RH_implies_on_line"
           ],
@@ -69690,7 +69684,7 @@
         },
         {
           "edge_count": 430,
-          "eligible_edge_count": 410,
+          "eligible_edge_count": 408,
           "eligible_source_declarations": [
             "Zeta23.CCM.aestronglyMeasurable_archDensityFubiniIntegrand",
             "Zeta23.CCM.archDensityFubiniIntegrand",
@@ -69760,7 +69754,6 @@
             "Zeta23.ExceptionalZero.absolutelySummableZeroFilter_squaredWeil",
             "Zeta23.ExceptionalZero.canonicalSourceChannelEnergy_nonnegative_of_criticalLine",
             "Zeta23.ExceptionalZero.canonicalSourceQuadraticForm_re_nonnegative_of_criticalLine",
-            "Zeta23.ExceptionalZero.eventually_all_apertures_have_anyParityBad_of_offLine_zero",
             "Zeta23.ExceptionalZero.eventually_all_apertures_have_negativeCanonicalSourceWitness_of_offLine_zero",
             "Zeta23.ExceptionalZero.exists_nonneg_gt_of_not_subexponential",
             "Zeta23.ExceptionalZero.exists_realEven_contDiff_visible_test",
@@ -70206,7 +70199,7 @@
         },
         {
           "edge_count": 263,
-          "eligible_edge_count": 261,
+          "eligible_edge_count": 260,
           "eligible_source_declarations": [
             "Zeta23.CCM.BiRegularCellMinimalFirstBadCertificate.reselectParity",
             "Zeta23.CCM.BiRegularCellMinimalFirstBadCertificate.reselectParity._proof_1",
@@ -70323,7 +70316,6 @@
             "Zeta23.CCM.quadraticForm",
             "Zeta23.CCM.re_inner_parityCompressedCanonical_self",
             "Zeta23.ExceptionalZero.canonicalSourceChannelEnergy_nonnegative_of_criticalLine",
-            "Zeta23.ExceptionalZero.eventually_all_apertures_have_anyParityBad_of_offLine_zero",
             "Zeta23.ExceptionalZero.isNontrivialZero_of_mathlib_nontrivialZero",
             "Zeta23.RH_implies_on_line"
           ],

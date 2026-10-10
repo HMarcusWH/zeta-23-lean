@@ -82,7 +82,7 @@
       "document_role": "DOCUMENTATION_ARTIFACT",
       "file_class": "DOCUMENTATION",
       "file_id": "rh:file:research/RHRC/CURRENT_RESEARCH_PLAN.md",
-      "heading_count": 59,
+      "heading_count": 68,
       "path": "research/RHRC/CURRENT_RESEARCH_PLAN.md",
       "route_mentions": [
         "R003_ccm_bridge"
@@ -96,7 +96,7 @@
       "document_role": "DOCUMENTATION_ARTIFACT",
       "file_class": "DOCUMENTATION",
       "file_id": "rh:file:research/RHRC/DEAD_ROUTES.md",
-      "heading_count": 44,
+      "heading_count": 51,
       "path": "research/RHRC/DEAD_ROUTES.md",
       "route_mentions": [
         "R002_multi_probe",
@@ -109,7 +109,7 @@
       "document_role": "LIVING_AUTHORITY_INDEX",
       "file_class": "LIVING_SSOT",
       "file_id": "rh:file:research/RHRC/DOCUMENTATION_AUTHORITY.md",
-      "heading_count": 40,
+      "heading_count": 41,
       "path": "research/RHRC/DOCUMENTATION_AUTHORITY.md",
       "route_mentions": [
         "R003_ccm_bridge"
@@ -159,11 +159,21 @@
     },
     {
       "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/LIFTED_CONTACT_QUOTIENT_PROGRAM.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/LIFTED_CONTACT_QUOTIENT_PROGRAM.md",
+      "heading_count": 1,
+      "path": "research/RHRC/LIFTED_CONTACT_QUOTIENT_PROGRAM.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
       "document_id": "rh:document:research/RHRC/OBSTRUCTION_LEDGER.md",
       "document_role": "LIVING_OBSTRUCTION_LEDGER",
       "file_class": "LIVING_SSOT",
       "file_id": "rh:file:research/RHRC/OBSTRUCTION_LEDGER.md",
-      "heading_count": 65,
+      "heading_count": 72,
       "path": "research/RHRC/OBSTRUCTION_LEDGER.md",
       "route_mentions": [
         "R003_ccm_bridge"
@@ -207,7 +217,7 @@
       "document_role": "LIVING_RESEARCH_LEADS",
       "file_class": "LIVING_SSOT",
       "file_id": "rh:file:research/RHRC/RESEARCH_LEADS.md",
-      "heading_count": 67,
+      "heading_count": 75,
       "path": "research/RHRC/RESEARCH_LEADS.md",
       "route_mentions": [
         "R003_ccm_bridge"
@@ -246,7 +256,7 @@
       "document_role": "LIVING_VALIDATION_PROTOCOL",
       "file_class": "LIVING_SSOT",
       "file_id": "rh:file:research/RHRC/VALIDATION_PROTOCOL.md",
-      "heading_count": 38,
+      "heading_count": 41,
       "path": "research/RHRC/VALIDATION_PROTOCOL.md",
       "route_mentions": [
         "R003_ccm_bridge"
@@ -397,7 +407,7 @@
       "document_role": "DOCUMENTATION_ARTIFACT",
       "file_class": "DOCUMENTATION",
       "file_id": "rh:file:research/RHRC/graph/README.md",
-      "heading_count": 11,
+      "heading_count": 12,
       "path": "research/RHRC/graph/README.md",
       "route_mentions": []
     },
@@ -409,6 +419,19 @@
       "file_id": "rh:file:research/RHRC/integration/README.md",
       "heading_count": 6,
       "path": "research/RHRC/integration/README.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [
+        "R003_COMPRESSED_PRODUCTION_C2",
+        "R003_INHERITED_FIRST_VARIATION_RESTRICTION"
+      ],
+      "document_id": "rh:document:research/RHRC/integration/post284/POST_GREEN_RESEARCH.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/post284/POST_GREEN_RESEARCH.md",
+      "heading_count": 7,
+      "path": "research/RHRC/integration/post284/POST_GREEN_RESEARCH.md",
       "route_mentions": []
     },
     {
@@ -711,12 +734,104 @@
     },
     {
       "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/routes/R003_ccm_bridge/POST279_LIFTED_CONTACT_QUOTIENT.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/routes/R003_ccm_bridge/POST279_LIFTED_CONTACT_QUOTIENT.md",
+      "heading_count": 1,
+      "path": "research/RHRC/routes/R003_ccm_bridge/POST279_LIFTED_CONTACT_QUOTIENT.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/routes/R003_ccm_bridge/POST280_PRODUCTION_SATURATION_FRONTIER.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/routes/R003_ccm_bridge/POST280_PRODUCTION_SATURATION_FRONTIER.md",
+      "heading_count": 4,
+      "path": "research/RHRC/routes/R003_ccm_bridge/POST280_PRODUCTION_SATURATION_FRONTIER.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/routes/R003_ccm_bridge/POST281_GENERATED_CONTACT_FRONTIER_PROTOCOL.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/routes/R003_ccm_bridge/POST281_GENERATED_CONTACT_FRONTIER_PROTOCOL.md",
+      "heading_count": 4,
+      "path": "research/RHRC/routes/R003_ccm_bridge/POST281_GENERATED_CONTACT_FRONTIER_PROTOCOL.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/routes/R003_ccm_bridge/POST281_PR282_REPAIR_AUDIT.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/routes/R003_ccm_bridge/POST281_PR282_REPAIR_AUDIT.md",
+      "heading_count": 1,
+      "path": "research/RHRC/routes/R003_ccm_bridge/POST281_PR282_REPAIR_AUDIT.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [
+        "R003_COMPLETED_STRICT_EVEN_CONTACT_FRONTIER",
+        "R003_COMPRESSED_PRODUCTION_C2",
+        "R003_INHERITED_FIRST_VARIATION_RESTRICTION",
+        "R003_WEIGHTED_PRODUCTION_PAIR_BALANCE"
+      ],
+      "document_id": "rh:document:research/RHRC/routes/R003_ccm_bridge/POST282_CONTACT_CALCULUS_BUILD_SPEC.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/routes/R003_ccm_bridge/POST282_CONTACT_CALCULUS_BUILD_SPEC.md",
+      "heading_count": 54,
+      "path": "research/RHRC/routes/R003_ccm_bridge/POST282_CONTACT_CALCULUS_BUILD_SPEC.md",
+      "route_mentions": [
+        "R003_ccm_bridge"
+      ]
+    },
+    {
+      "claim_mentions": [
+        "R003_COMPLETED_STRICT_EVEN_CONTACT_FRONTIER",
+        "R003_COMPRESSED_PRODUCTION_C2",
+        "R003_INHERITED_FIRST_VARIATION_RESTRICTION",
+        "R003_WEIGHTED_PRODUCTION_PAIR_BALANCE"
+      ],
+      "document_id": "rh:document:research/RHRC/routes/R003_ccm_bridge/POST282_CONTACT_CALCULUS_POST_GREEN.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/routes/R003_ccm_bridge/POST282_CONTACT_CALCULUS_POST_GREEN.md",
+      "heading_count": 4,
+      "path": "research/RHRC/routes/R003_ccm_bridge/POST282_CONTACT_CALCULUS_POST_GREEN.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/routes/R003_ccm_bridge/POST282_CONTACT_CALCULUS_PROTOCOL.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/routes/R003_ccm_bridge/POST282_CONTACT_CALCULUS_PROTOCOL.md",
+      "heading_count": 1,
+      "path": "research/RHRC/routes/R003_ccm_bridge/POST282_CONTACT_CALCULUS_PROTOCOL.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
       "document_id": "rh:document:research/RHRC/routes/R003_ccm_bridge/POST_247_RIEMANN_WEARING_GLASSES_PROGRAM.md",
       "document_role": "DOCUMENTATION_ARTIFACT",
       "file_class": "DOCUMENTATION",
       "file_id": "rh:file:research/RHRC/routes/R003_ccm_bridge/POST_247_RIEMANN_WEARING_GLASSES_PROGRAM.md",
       "heading_count": 36,
       "path": "research/RHRC/routes/R003_ccm_bridge/POST_247_RIEMANN_WEARING_GLASSES_PROGRAM.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/routes/R003_ccm_bridge/PR284_CONTACT_CALCULUS_REPAIR_AUDIT.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/routes/R003_ccm_bridge/PR284_CONTACT_CALCULUS_REPAIR_AUDIT.md",
+      "heading_count": 9,
+      "path": "research/RHRC/routes/R003_ccm_bridge/PR284_CONTACT_CALCULUS_REPAIR_AUDIT.md",
       "route_mentions": []
     },
     {
@@ -773,12 +888,17 @@
       ]
     },
     {
-      "claim_mentions": [],
+      "claim_mentions": [
+        "R003_COMPLETED_STRICT_EVEN_CONTACT_FRONTIER",
+        "R003_COMPRESSED_PRODUCTION_C2",
+        "R003_INHERITED_FIRST_VARIATION_RESTRICTION",
+        "R003_WEIGHTED_PRODUCTION_PAIR_BALANCE"
+      ],
       "document_id": "rh:document:research/RHRC/routes/R003_ccm_bridge/README.md",
       "document_role": "DOCUMENTATION_ARTIFACT",
       "file_class": "DOCUMENTATION",
       "file_id": "rh:file:research/RHRC/routes/R003_ccm_bridge/README.md",
-      "heading_count": 25,
+      "heading_count": 32,
       "path": "research/RHRC/routes/R003_ccm_bridge/README.md",
       "route_mentions": [
         "R003_ccm_bridge"
@@ -829,6 +949,16 @@
     },
     {
       "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/routes/R003_ccm_bridge/contact_quotient/README.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/routes/R003_ccm_bridge/contact_quotient/README.md",
+      "heading_count": 1,
+      "path": "research/RHRC/routes/R003_ccm_bridge/contact_quotient/README.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
       "document_id": "rh:document:research/RHRC/routes/R004_prolate_v2/README.md",
       "document_role": "DOCUMENTATION_ARTIFACT",
       "file_class": "DOCUMENTATION",
@@ -854,7 +984,7 @@
       ]
     }
   ],
-  "entry_count": 72,
+  "entry_count": 83,
   "graph_theorem_promotion": false,
   "mention_semantics": "claim_mentions and route_mentions are exact textual-token navigation hints only; they do not establish support, implication, supersession, or theorem authority.",
   "schema_version": "RHKG-final-document-closure-1.0",

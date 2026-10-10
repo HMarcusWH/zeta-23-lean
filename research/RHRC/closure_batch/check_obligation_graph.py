@@ -21,7 +21,8 @@ def main() -> int:
     )
     ap.add_argument(
         "--relations",
-        default="research/RHRC/graph/generated/relations.jsonl",
+        default="research/RHRC/graph/generated/relations",
+        help="relation shard directory (relations-<hex>.jsonl) or a single JSONL file",
     )
     args = ap.parse_args()
 
@@ -32,20 +33,27 @@ def main() -> int:
     }
 
     path = Path(args.relations)
-    if not path.is_file():
+    if path.is_dir():
+        files = sorted(path.glob("relations-*.jsonl"))
+    elif path.is_file():
+        files = [path]
+    else:
+        files = []
+    if not files:
         raise SystemExit(f"missing generated relation graph: {path}")
 
     bad: list[str] = []
-    for lineno, line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
-        if not line.strip():
-            continue
-        row = json.loads(line)
-        if relation_kind(row) != "PROVES":
-            continue
-        serialized = json.dumps(row, sort_keys=True)
-        touched = sorted(oid for oid in open_ids if oid in serialized)
-        if touched:
-            bad.append(f"line {lineno}: PROVES touches open obligation(s) {touched}")
+    for file in files:
+        for lineno, line in enumerate(file.read_text(encoding="utf-8").splitlines(), 1):
+            if not line.strip():
+                continue
+            row = json.loads(line)
+            if relation_kind(row) != "PROVES":
+                continue
+            serialized = json.dumps(row, sort_keys=True)
+            touched = sorted(oid for oid in open_ids if oid in serialized)
+            if touched:
+                bad.append(f"{file}:{lineno}: PROVES touches open obligation(s) {touched}")
 
     if bad:
         raise SystemExit(

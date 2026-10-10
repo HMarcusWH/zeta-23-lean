@@ -420,7 +420,6 @@
       "lean-source-inertia": "success: every post-284 Lean target built; axiom_audit and the promoted-scope proof-escape check passed",
       "source-falsifier-research": "success: attached SymPy falsifier, F01-F12 suite, disposition firewall, log3 certificate, follow-up regressions (M24/M30/M47 exact, M41/M43 interval evidence, M42 sanity)"
     },
-    "open_review_item": "Codex P1 on research/RHRC/graph/validate.py: the committed RHKG snapshot is stale (pre-existing on main); regenerating it makes graph/generated/relations.jsonl 107 MiB, above GitHub's 100 MiB limit. Needs a repository storage decision; CI materializes and checks the derived state itself (rhkg-compiler-receipt green).",
     "terminal_claim": "RH_OPEN",
     "check_runs": [
       {
@@ -703,6 +702,38 @@
         "conclusion": "success",
         "category": "FORMAL_VALIDITY"
       }
-    ]
+    ],
+    "review_resolution": "Codex P1 on research/RHRC/graph/validate.py (committed RHKG snapshot stale; pre-existing on main) is resolved in the follow-up commit. Relations are stored as 16 fixed shards research/RHRC/graph/generated/relations/relations-<0-f>.jsonl keyed on the first hex digit of the sha256 relation id. Serialization equivalence: on the pre-regeneration 311,817-row snapshot, the key-order concatenation of the shards is byte-identical to the former relations.jsonl. Committed state: the full derived state is re-materialized from this tree, so a standalone validate.py and materialize_derived_state.py --check pass on it. The regenerated relation set has about 338k rows (REPOSITORY_COVERAGE.json relation_count is authoritative), and each shard is about 6.6-6.8 MiB.",
+    "path_filtered_dispatch": {
+      "head": "fc14e257d4150302589ae0dc935f07a133bbb62c",
+      "reason": "path-filtered workflows that did not trigger on the PR, dispatched with workflow_dispatch on the PR branch",
+      "runs": [
+        {
+          "workflow": "rhrc_contact_quotient.yml",
+          "run_id": 38052896435,
+          "conclusion": "success"
+        },
+        {
+          "workflow": "rhrc_post204_pair_d_structural_countermodel.yml",
+          "run_id": 38052898239,
+          "conclusion": "success"
+        },
+        {
+          "workflow": "rhrc_post272_first_contact_atlas.yml",
+          "run_id": 38052899837,
+          "conclusion": "success"
+        },
+        {
+          "workflow": "rhrc_post280_saturation_frontier.yml",
+          "run_id": 38052901806,
+          "conclusion": "success"
+        },
+        {
+          "workflow": "rhrc_post281_generated_contact_frontier.yml",
+          "run_id": 38052903528,
+          "conclusion": "success"
+        }
+      ]
+    }
   }
 }

@@ -88,6 +88,7 @@
             "R003_CCM_BRIDGE",
             "R003_CCM_RHS_IDENTITY",
             "R003_COFINAL_BOTTOM_NONNEGATIVITY",
+            "R003_COMPRESSED_PRODUCTION_C2",
             "R003_CONSTRAINED_CANONICAL_DISPLACEMENT",
             "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
             "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
@@ -97,6 +98,7 @@
             "R003_EUCLIDEAN_BOUNDARY_FLAT_SECTOR",
             "R003_EUCLIDEAN_CONSTRAINED_NEGATIVE_OBSTRUCTION",
             "R003_EUCLIDEAN_CONSTRAINED_NESTING",
+            "R003_EVENTUAL_APERTURE_PARITY_BADNESS_FROM_OFFLINE_ZERO",
             "R003_EVEN_CONSTRAINED_DISPLACEMENT_COLLAPSE",
             "R003_EXACT_CENTERED_FINITE_NESTING",
             "R003_FINITE_CANONICAL_NEGATIVE_OBSTRUCTION",
@@ -105,7 +107,10 @@
             "R003_FIRST_BAD_PARITY_ONE_DIM_SHELL",
             "R003_FIRST_BAD_SHELL_KKT_FROM_OFFLINE_ZERO",
             "R003_FIRST_BAD_SHELL_PROJECTION",
+            "R003_FIXED_N_GROUND_CONTINUITY",
+            "R003_FIXED_N_GROUND_SIGN_OPPOSITION",
             "R003_FIXED_PARITY_BAD_TAIL_FROM_OFFLINE_ZERO",
+            "R003_INHERITED_FIRST_VARIATION_RESTRICTION",
             "R003_KERNEL_EF_EXTENSION",
             "R003_LEAST_PARITY_BAD_SHELL",
             "R003_LOCALIZED_ADDITIVE_RHS_RESTRICTION",
@@ -114,6 +119,8 @@
             "R003_LOCALIZED_UNIFORM_C2_APPROXIMATION",
             "R003_NEGATIVE_WEIL_TEST_CONTRACTION",
             "R003_NESTED_EUCLIDEAN_NEGATIVE_OBSTRUCTION",
+            "R003_OFFLINE_ZERO_FIXED_N_ZERO_CONTACT",
+            "R003_OFFLINE_ZERO_ONE_STEP_DOMINATION_FAILURE",
             "R003_PARITY_BAD_NEGATIVE_EIGENMODE",
             "R003_PARITY_BAD_NFLOW",
             "R003_PARITY_COMPRESSION_RANK_ONE_DEFECT",
@@ -124,6 +131,7 @@
             "R003_PARITY_SPLIT_GROUND_SIMPLICITY",
             "R003_PARITY_TIE_GROUND_MULTIPLICITY",
             "R003_RESIDUAL_C2",
+            "R003_SMALL_APERTURE_GROUND_SPECTRUM",
             "R003_SMALL_APERTURE_POSITIVE_BASE",
             "R003_SOURCE_KAPPA_FINITE_SECTOR",
             "R003_SOURCE_NORMALIZATION_REPAIR",
@@ -144,8 +152,8 @@
           "cohort_id": "ROUTE_R003",
           "intersection_count": 0,
           "intersection_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-          "union_count": 2256,
-          "union_sha256": "c5ea624011147da8eefd767331db764a94584315922bb026480cde682ce78bdf"
+          "union_count": 2877,
+          "union_sha256": "9ae9e9eedf92e3dfc341f702632064356c931bbfd3ff85e1ea94e3d7b60d12a1"
         },
         {
           "claim_ids": [
@@ -199,6 +207,22 @@
           "local_dependency_count": 2134,
           "local_dependency_sha256": "43b932b1e11397f6a846870a8e0accd586e9f821c6e2ce9b26ea160350911beb",
           "root_theorem": "Zeta23.ExceptionalZero.globalBottomResidualExclusion_iff_riemannHypothesis"
+        },
+        {
+          "claim_id": "AUDIT_GLOBAL_GROUND_PROPAGATION_IMPLIES_RH",
+          "external_boundary_count": 3850,
+          "external_boundary_sha256": "2e314b0549eaed6ec49d8650ce1374630426d6361b07dc6af4b22523b9a676d9",
+          "local_dependency_count": 1581,
+          "local_dependency_sha256": "6ba1c5f4b7a215f429b176213f4b8984dd57afb18dcf5fbb24bc365b29e81960",
+          "root_theorem": "Zeta23.RHRC.riemannHypothesis_of_canonicalGlobalGroundPropagation_smallAperture"
+        },
+        {
+          "claim_id": "AUDIT_UNIFORM_DOMINATION_IMPLIES_RH",
+          "external_boundary_count": 3957,
+          "external_boundary_sha256": "90d9b54e1c5f5d2e1ffd6185e0639a22e53a6fb150b2ddbaae9af4454f9546a3",
+          "local_dependency_count": 1791,
+          "local_dependency_sha256": "09025c4c022c534f8ca9542038a4ac82a29e44d482e90e941d0d4409e22c59ab",
+          "root_theorem": "Zeta23.RHRC.riemannHypothesis_of_canonicalUniformDomination"
         },
         {
           "claim_id": "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
@@ -385,6 +409,14 @@
           "root_theorem": "Zeta23.CCM.globalParitySuccessorBottom_nonneg_of_jointCofinal_lowerBounds"
         },
         {
+          "claim_id": "R003_COMPRESSED_PRODUCTION_C2",
+          "external_boundary_count": 1521,
+          "external_boundary_sha256": "a9eff2cd3802c7d29808f1ddb8d8de148dad2cffb84b2877e0a9aad80d24c84d",
+          "local_dependency_count": 460,
+          "local_dependency_sha256": "2d6998c6dc06f80b4a6d305487934ab2e1c8ea4b67ab5f92b90580c45a70ace0",
+          "root_theorem": "Zeta23.CCM.canonicalEvenCompressedC2_with_jets"
+        },
+        {
           "claim_id": "R003_CONSTRAINED_CANONICAL_DISPLACEMENT",
           "external_boundary_count": 526,
           "external_boundary_sha256": "6343c0d917057e45d994065b83d6cb6a9f8fbd4214b8822d23878c3b753dc506",
@@ -457,6 +489,14 @@
           "root_theorem": "Zeta23.CCM.euclideanCenteredZeroExtend_mem_euclideanBoundaryFlatSubspace"
         },
         {
+          "claim_id": "R003_EVENTUAL_APERTURE_PARITY_BADNESS_FROM_OFFLINE_ZERO",
+          "external_boundary_count": 3599,
+          "external_boundary_sha256": "5cb0b78be7e446607fee9ea9989d60b93d22956a030d3326c205b394f7d9647c",
+          "local_dependency_count": 1320,
+          "local_dependency_sha256": "4323fbfbc6d472002c1130b94b235babc4c0b8cb12410a40df42e28c44622bb4",
+          "root_theorem": "Zeta23.ExceptionalZero.eventually_all_apertures_have_anyParityBad_of_offLine_zero"
+        },
+        {
           "claim_id": "R003_EVEN_CONSTRAINED_DISPLACEMENT_COLLAPSE",
           "external_boundary_count": 614,
           "external_boundary_sha256": "51b30d0b09f2cc8a101abe0e2e0781aa3247fbfbb525b89e4f53551c5ca683f8",
@@ -521,6 +561,22 @@
           "root_theorem": "Zeta23.CCM.negative_eigenmode_paritySuccShell_projection_ne_zero"
         },
         {
+          "claim_id": "R003_FIXED_N_GROUND_CONTINUITY",
+          "external_boundary_count": 1434,
+          "external_boundary_sha256": "b14a4163eb5db87dfaa81d842b7b05f4c38c13e5cb9e3616fb50ece0449089bd",
+          "local_dependency_count": 428,
+          "local_dependency_sha256": "7595698a3496743987127beef5f2950c5ac1252a7cef2f66972bf7fa9fe1bde6",
+          "root_theorem": "Zeta23.CCM.canonicalFixedNGroundContinuity_proved"
+        },
+        {
+          "claim_id": "R003_FIXED_N_GROUND_SIGN_OPPOSITION",
+          "external_boundary_count": 3837,
+          "external_boundary_sha256": "4d8ee4a220585c229eb505e9f0bbfa1cafb632f902727b03dca08e2486ddd3ad",
+          "local_dependency_count": 1572,
+          "local_dependency_sha256": "01d7eae81b55ab31f7985a07823b332c7355691c550bf280acfcfdabe064829d",
+          "root_theorem": "Zeta23.ExceptionalZero.exists_fixedN_ground_sign_opposition_of_offLine_zero"
+        },
+        {
           "claim_id": "R003_FIXED_PARITY_BAD_TAIL_FROM_OFFLINE_ZERO",
           "external_boundary_count": 3648,
           "external_boundary_sha256": "b49be3e0dc04e71e98a5ea8d02a9973d331a6857248347b35e31e1e98620cf91",
@@ -575,6 +631,14 @@
           "local_dependency_count": 315,
           "local_dependency_sha256": "0a5bf90e19fd39dc576a8074a8230b7d48ae25e8474b360fb1ed0215b5200617",
           "root_theorem": "Zeta23.CCM.globalParitySuccessorBottom_neg_iff_anyParityBad"
+        },
+        {
+          "claim_id": "R003_INHERITED_FIRST_VARIATION_RESTRICTION",
+          "external_boundary_count": 2618,
+          "external_boundary_sha256": "16cf35e6cbf64de58a80755a25c9aa39a50987c475709870eed41934aa3a67ec",
+          "local_dependency_count": 1197,
+          "local_dependency_sha256": "0e35083a69bcecad468562aa1cdb35d4e51477aa778d97b6e24a85f99805fe44",
+          "root_theorem": "Zeta23.CCM.GeneratedStrictEvenContact.firstVariation_eq_zero_of_inherited"
         },
         {
           "claim_id": "R003_KERNEL_EF_EXTENSION",
@@ -639,6 +703,22 @@
           "local_dependency_count": 1320,
           "local_dependency_sha256": "7ba1e421b721e205a64d41a4cd1bdbaadd287abc90dd79ca0730805a4d991e25",
           "root_theorem": "Zeta23.ExceptionalZero.exists_fixedAperture_forall_ge_ne_zero_mem_euclideanBoundaryFlatSubspace_negativeCanonicalInnerSelf_of_offLine_zero"
+        },
+        {
+          "claim_id": "R003_OFFLINE_ZERO_FIXED_N_ZERO_CONTACT",
+          "external_boundary_count": 4040,
+          "external_boundary_sha256": "a1927da411fc22d4453d4110ef9331a8256d56eea20000776b508e54d405ac48",
+          "local_dependency_count": 1805,
+          "local_dependency_sha256": "11711326ab8908e363835225150ff44693f8fe7ceaf69e8ccf0d71f92b377517",
+          "root_theorem": "Zeta23.ExceptionalZero.nonempty_globalParityBottomZeroContact_proved_of_offLine_zero"
+        },
+        {
+          "claim_id": "R003_OFFLINE_ZERO_ONE_STEP_DOMINATION_FAILURE",
+          "external_boundary_count": 3945,
+          "external_boundary_sha256": "c7d5463faa4351e07ef8cb810c3fa35596181e58a77d96adba961401bed82017",
+          "local_dependency_count": 1780,
+          "local_dependency_sha256": "ed26e7ab8993707d3155a8fbdb75c44e94481bebe960d583d6810c37eae5cd2b",
+          "root_theorem": "Zeta23.ExceptionalZero.exists_globalFirstBad_not_canonicalOneStepDomination_of_offLine_zero"
         },
         {
           "claim_id": "R003_PARITY_BAD_NEGATIVE_EIGENMODE",
@@ -719,6 +799,14 @@
           "local_dependency_count": 130,
           "local_dependency_sha256": "dc0f9f1040fe1dc0f6a692d4469213db1136e5fc3e6b12947276ada8a64441f1",
           "root_theorem": "Zeta23.CCM.dictionaryResidualTest_admissible"
+        },
+        {
+          "claim_id": "R003_SMALL_APERTURE_GROUND_SPECTRUM",
+          "external_boundary_count": 2176,
+          "external_boundary_sha256": "14a135d02c99a3baab3b4a71f1194d018060b9da5fdb83aa1fbcb818800248c3",
+          "local_dependency_count": 700,
+          "local_dependency_sha256": "919690451a625c11a399569d2d199e863f51e6380d49d562dda593be8ae2f29d",
+          "root_theorem": "Zeta23.CCM.one_le_globalParitySuccessorBottom_of_smallAperture"
         },
         {
           "claim_id": "R003_SMALL_APERTURE_POSITIVE_BASE",
@@ -946,6 +1034,7 @@
             "R003_CCM_BRIDGE",
             "R003_CCM_RHS_IDENTITY",
             "R003_COFINAL_BOTTOM_NONNEGATIVITY",
+            "R003_COMPRESSED_PRODUCTION_C2",
             "R003_CONSTRAINED_CANONICAL_DISPLACEMENT",
             "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
             "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
@@ -955,6 +1044,7 @@
             "R003_EUCLIDEAN_BOUNDARY_FLAT_SECTOR",
             "R003_EUCLIDEAN_CONSTRAINED_NEGATIVE_OBSTRUCTION",
             "R003_EUCLIDEAN_CONSTRAINED_NESTING",
+            "R003_EVENTUAL_APERTURE_PARITY_BADNESS_FROM_OFFLINE_ZERO",
             "R003_EVEN_CONSTRAINED_DISPLACEMENT_COLLAPSE",
             "R003_EXACT_CENTERED_FINITE_NESTING",
             "R003_FINITE_CANONICAL_NEGATIVE_OBSTRUCTION",
@@ -963,7 +1053,10 @@
             "R003_FIRST_BAD_PARITY_ONE_DIM_SHELL",
             "R003_FIRST_BAD_SHELL_KKT_FROM_OFFLINE_ZERO",
             "R003_FIRST_BAD_SHELL_PROJECTION",
+            "R003_FIXED_N_GROUND_CONTINUITY",
+            "R003_FIXED_N_GROUND_SIGN_OPPOSITION",
             "R003_FIXED_PARITY_BAD_TAIL_FROM_OFFLINE_ZERO",
+            "R003_INHERITED_FIRST_VARIATION_RESTRICTION",
             "R003_KERNEL_EF_EXTENSION",
             "R003_LEAST_PARITY_BAD_SHELL",
             "R003_LOCALIZED_ADDITIVE_RHS_RESTRICTION",
@@ -972,6 +1065,8 @@
             "R003_LOCALIZED_UNIFORM_C2_APPROXIMATION",
             "R003_NEGATIVE_WEIL_TEST_CONTRACTION",
             "R003_NESTED_EUCLIDEAN_NEGATIVE_OBSTRUCTION",
+            "R003_OFFLINE_ZERO_FIXED_N_ZERO_CONTACT",
+            "R003_OFFLINE_ZERO_ONE_STEP_DOMINATION_FAILURE",
             "R003_PARITY_BAD_NEGATIVE_EIGENMODE",
             "R003_PARITY_BAD_NFLOW",
             "R003_PARITY_COMPRESSION_RANK_ONE_DEFECT",
@@ -982,6 +1077,7 @@
             "R003_PARITY_SPLIT_GROUND_SIMPLICITY",
             "R003_PARITY_TIE_GROUND_MULTIPLICITY",
             "R003_RESIDUAL_C2",
+            "R003_SMALL_APERTURE_GROUND_SPECTRUM",
             "R003_SMALL_APERTURE_POSITIVE_BASE",
             "R003_SOURCE_KAPPA_FINITE_SECTOR",
             "R003_SOURCE_NORMALIZATION_REPAIR",
@@ -1002,8 +1098,8 @@
           "cohort_id": "ROUTE_R003",
           "intersection_count": 0,
           "intersection_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-          "union_count": 76,
-          "union_sha256": "fd08afe8578111e41b51e0f49ce46f398709861f0454ebad29277512e6a86df2"
+          "union_count": 100,
+          "union_sha256": "b98048d25f6ce058bbd59887fa238a78ec32291c0337e043742366cb695a3eee"
         },
         {
           "claim_ids": [
@@ -1057,6 +1153,22 @@
           "local_dependency_count": 1,
           "local_dependency_sha256": "f2107549c8331c9cd3a3f43798d0eb482a5ae53d536536abf7aed37176052b2e",
           "root_theorem": "Zeta23.ExceptionalZero.globalBottomResidualExclusion_iff_riemannHypothesis"
+        },
+        {
+          "claim_id": "AUDIT_GLOBAL_GROUND_PROPAGATION_IMPLIES_RH",
+          "external_boundary_count": 15,
+          "external_boundary_sha256": "4b3fbc9c057bbf04afb74717d999291cc7a528fd236b2695f9dac8d14f1f70ec",
+          "local_dependency_count": 1,
+          "local_dependency_sha256": "be1867b4d642c8fdf6f87bce56e7c556b152e32ad718d937b03bc1dcb0073ef5",
+          "root_theorem": "Zeta23.RHRC.riemannHypothesis_of_canonicalGlobalGroundPropagation_smallAperture"
+        },
+        {
+          "claim_id": "AUDIT_UNIFORM_DOMINATION_IMPLIES_RH",
+          "external_boundary_count": 1,
+          "external_boundary_sha256": "73d2a02eb216b8be09c49f4d83364d8f31c0170a6793e8de83c970ff9c4a757a",
+          "local_dependency_count": 1,
+          "local_dependency_sha256": "a03948d34cd40f1ec9b9aa006d170365a8592333d0827360a1adb0e88531df84",
+          "root_theorem": "Zeta23.RHRC.riemannHypothesis_of_canonicalUniformDomination"
         },
         {
           "claim_id": "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
@@ -1243,6 +1355,14 @@
           "root_theorem": "Zeta23.CCM.globalParitySuccessorBottom_nonneg_of_jointCofinal_lowerBounds"
         },
         {
+          "claim_id": "R003_COMPRESSED_PRODUCTION_C2",
+          "external_boundary_count": 135,
+          "external_boundary_sha256": "8e3f0764b2036154482ccf249d01df45e29d7b169ad5dd6736c226ada5baa247",
+          "local_dependency_count": 8,
+          "local_dependency_sha256": "4209719266fd0db42bcddcc03a7bc61fd585a3ddab7b93d2a6ddeba86edc177d",
+          "root_theorem": "Zeta23.CCM.canonicalEvenCompressedC2_with_jets"
+        },
+        {
           "claim_id": "R003_CONSTRAINED_CANONICAL_DISPLACEMENT",
           "external_boundary_count": 34,
           "external_boundary_sha256": "25be4f4fe835b0d7a976ae58f07dd831a850334714b6308edf019f859dcb9b0b",
@@ -1315,6 +1435,14 @@
           "root_theorem": "Zeta23.CCM.euclideanCenteredZeroExtend_mem_euclideanBoundaryFlatSubspace"
         },
         {
+          "claim_id": "R003_EVENTUAL_APERTURE_PARITY_BADNESS_FROM_OFFLINE_ZERO",
+          "external_boundary_count": 28,
+          "external_boundary_sha256": "6dc2ac2233ec63321749c86895b9a5a47770fdc474a9ad0cab34e6e85a3dd46c",
+          "local_dependency_count": 4,
+          "local_dependency_sha256": "96cfb7539b5a68b29380f961156a19ed61f116e4d3a55611686f1a34eaaedbe9",
+          "root_theorem": "Zeta23.ExceptionalZero.eventually_all_apertures_have_anyParityBad_of_offLine_zero"
+        },
+        {
           "claim_id": "R003_EVEN_CONSTRAINED_DISPLACEMENT_COLLAPSE",
           "external_boundary_count": 41,
           "external_boundary_sha256": "ac2da494bb973a5251ef225047b89f117348dbfe14fdf1e50f970390b5b3e356",
@@ -1379,6 +1507,22 @@
           "root_theorem": "Zeta23.CCM.negative_eigenmode_paritySuccShell_projection_ne_zero"
         },
         {
+          "claim_id": "R003_FIXED_N_GROUND_CONTINUITY",
+          "external_boundary_count": 0,
+          "external_boundary_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "local_dependency_count": 1,
+          "local_dependency_sha256": "2a525cc2d6763347571f379736a1dc6c9c932c1560f700285c0d47a1f24d05c0",
+          "root_theorem": "Zeta23.CCM.canonicalFixedNGroundContinuity_proved"
+        },
+        {
+          "claim_id": "R003_FIXED_N_GROUND_SIGN_OPPOSITION",
+          "external_boundary_count": 31,
+          "external_boundary_sha256": "ecc699f98258c52936d354094f74b8e45187ea448b5c21aec2df0cbc5e687977",
+          "local_dependency_count": 4,
+          "local_dependency_sha256": "8b6dfa0ffb43b309ba24fec27dd214cbbc10929e68b668aa4b1df6f30a012e22",
+          "root_theorem": "Zeta23.ExceptionalZero.exists_fixedN_ground_sign_opposition_of_offLine_zero"
+        },
+        {
           "claim_id": "R003_FIXED_PARITY_BAD_TAIL_FROM_OFFLINE_ZERO",
           "external_boundary_count": 30,
           "external_boundary_sha256": "57a49c1366fc5fab4b92fad675038fa6371568dd441251e6a093093ef176ae3d",
@@ -1433,6 +1577,14 @@
           "local_dependency_count": 2,
           "local_dependency_sha256": "540b682687a61acd6e6828531da4b685ae4d578684ef0a77032146a1e3f714e4",
           "root_theorem": "Zeta23.CCM.globalParitySuccessorBottom_neg_iff_anyParityBad"
+        },
+        {
+          "claim_id": "R003_INHERITED_FIRST_VARIATION_RESTRICTION",
+          "external_boundary_count": 38,
+          "external_boundary_sha256": "5983aa1224446ede986325871e6e844a05f74159c0003af59280ed6890044c6c",
+          "local_dependency_count": 20,
+          "local_dependency_sha256": "fc84a45bac5e6c6dbb8769a456ffdbc154083922c268a98d3846708641a8a8c8",
+          "root_theorem": "Zeta23.CCM.GeneratedStrictEvenContact.firstVariation_eq_zero_of_inherited"
         },
         {
           "claim_id": "R003_KERNEL_EF_EXTENSION",
@@ -1497,6 +1649,22 @@
           "local_dependency_count": 5,
           "local_dependency_sha256": "e8472034c14bb1f599af232ca1570d71ba9bd3b430745a88a03e478855021b52",
           "root_theorem": "Zeta23.ExceptionalZero.exists_fixedAperture_forall_ge_ne_zero_mem_euclideanBoundaryFlatSubspace_negativeCanonicalInnerSelf_of_offLine_zero"
+        },
+        {
+          "claim_id": "R003_OFFLINE_ZERO_FIXED_N_ZERO_CONTACT",
+          "external_boundary_count": 23,
+          "external_boundary_sha256": "0a636b44f8511457032b9228a5f45658d3e5a672dfa075c8a30a583b84b552ae",
+          "local_dependency_count": 4,
+          "local_dependency_sha256": "01fcef46d03082574367f5aa36f1e2d0eebfa7089e40a99525ab3831cfa05dac",
+          "root_theorem": "Zeta23.ExceptionalZero.nonempty_globalParityBottomZeroContact_proved_of_offLine_zero"
+        },
+        {
+          "claim_id": "R003_OFFLINE_ZERO_ONE_STEP_DOMINATION_FAILURE",
+          "external_boundary_count": 111,
+          "external_boundary_sha256": "7b3f40c1611c390cc277c890e2f5c2a102ce41941521c7e3f938d3f227b7c88d",
+          "local_dependency_count": 8,
+          "local_dependency_sha256": "1f893a4905fa6efe0cc71a71a584e2d3ae56ef80ca3455207a9ca74a8b0dec85",
+          "root_theorem": "Zeta23.ExceptionalZero.exists_globalFirstBad_not_canonicalOneStepDomination_of_offLine_zero"
         },
         {
           "claim_id": "R003_PARITY_BAD_NEGATIVE_EIGENMODE",
@@ -1577,6 +1745,14 @@
           "local_dependency_count": 1,
           "local_dependency_sha256": "b398884c847c40ebec9659e66adbb75d3b4bebe1d0710a666071dc5a49602993",
           "root_theorem": "Zeta23.CCM.dictionaryResidualTest_admissible"
+        },
+        {
+          "claim_id": "R003_SMALL_APERTURE_GROUND_SPECTRUM",
+          "external_boundary_count": 21,
+          "external_boundary_sha256": "49963aaadc5a81094373d41f7b933f8051fa46aee7a102c8a000406b8baa2189",
+          "local_dependency_count": 1,
+          "local_dependency_sha256": "b3f1999b938ae93deb8115036018fb5f2790f7ab323fee41e6a622fb6061d570",
+          "root_theorem": "Zeta23.CCM.one_le_globalParitySuccessorBottom_of_smallAperture"
         },
         {
           "claim_id": "R003_SMALL_APERTURE_POSITIVE_BASE",
@@ -1804,6 +1980,7 @@
             "R003_CCM_BRIDGE",
             "R003_CCM_RHS_IDENTITY",
             "R003_COFINAL_BOTTOM_NONNEGATIVITY",
+            "R003_COMPRESSED_PRODUCTION_C2",
             "R003_CONSTRAINED_CANONICAL_DISPLACEMENT",
             "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
             "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
@@ -1813,6 +1990,7 @@
             "R003_EUCLIDEAN_BOUNDARY_FLAT_SECTOR",
             "R003_EUCLIDEAN_CONSTRAINED_NEGATIVE_OBSTRUCTION",
             "R003_EUCLIDEAN_CONSTRAINED_NESTING",
+            "R003_EVENTUAL_APERTURE_PARITY_BADNESS_FROM_OFFLINE_ZERO",
             "R003_EVEN_CONSTRAINED_DISPLACEMENT_COLLAPSE",
             "R003_EXACT_CENTERED_FINITE_NESTING",
             "R003_FINITE_CANONICAL_NEGATIVE_OBSTRUCTION",
@@ -1821,7 +1999,10 @@
             "R003_FIRST_BAD_PARITY_ONE_DIM_SHELL",
             "R003_FIRST_BAD_SHELL_KKT_FROM_OFFLINE_ZERO",
             "R003_FIRST_BAD_SHELL_PROJECTION",
+            "R003_FIXED_N_GROUND_CONTINUITY",
+            "R003_FIXED_N_GROUND_SIGN_OPPOSITION",
             "R003_FIXED_PARITY_BAD_TAIL_FROM_OFFLINE_ZERO",
+            "R003_INHERITED_FIRST_VARIATION_RESTRICTION",
             "R003_KERNEL_EF_EXTENSION",
             "R003_LEAST_PARITY_BAD_SHELL",
             "R003_LOCALIZED_ADDITIVE_RHS_RESTRICTION",
@@ -1830,6 +2011,8 @@
             "R003_LOCALIZED_UNIFORM_C2_APPROXIMATION",
             "R003_NEGATIVE_WEIL_TEST_CONTRACTION",
             "R003_NESTED_EUCLIDEAN_NEGATIVE_OBSTRUCTION",
+            "R003_OFFLINE_ZERO_FIXED_N_ZERO_CONTACT",
+            "R003_OFFLINE_ZERO_ONE_STEP_DOMINATION_FAILURE",
             "R003_PARITY_BAD_NEGATIVE_EIGENMODE",
             "R003_PARITY_BAD_NFLOW",
             "R003_PARITY_COMPRESSION_RANK_ONE_DEFECT",
@@ -1840,6 +2023,7 @@
             "R003_PARITY_SPLIT_GROUND_SIMPLICITY",
             "R003_PARITY_TIE_GROUND_MULTIPLICITY",
             "R003_RESIDUAL_C2",
+            "R003_SMALL_APERTURE_GROUND_SPECTRUM",
             "R003_SMALL_APERTURE_POSITIVE_BASE",
             "R003_SOURCE_KAPPA_FINITE_SECTOR",
             "R003_SOURCE_NORMALIZATION_REPAIR",
@@ -1860,8 +2044,8 @@
           "cohort_id": "ROUTE_R003",
           "intersection_count": 0,
           "intersection_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-          "union_count": 2246,
-          "union_sha256": "468e777e4a66c85ced949342aa4f634818e8db3a9f03688f9290e1bd71ce2569"
+          "union_count": 2846,
+          "union_sha256": "81e24a15544e11ad0c1ed3d8612167b6cee9b56d608efd33bc4d6955f5321717"
         },
         {
           "claim_ids": [
@@ -1915,6 +2099,22 @@
           "local_dependency_count": 2118,
           "local_dependency_sha256": "780517be601bd7847a29cadace6d0fd63129e79b7638738023eef6bf58511292",
           "root_theorem": "Zeta23.ExceptionalZero.globalBottomResidualExclusion_iff_riemannHypothesis"
+        },
+        {
+          "claim_id": "AUDIT_GLOBAL_GROUND_PROPAGATION_IMPLIES_RH",
+          "external_boundary_count": 3837,
+          "external_boundary_sha256": "2c5f28eac3ed3e5f8e97de189c3c2b7277056d9a20aeb881a137517722c0d2ed",
+          "local_dependency_count": 1574,
+          "local_dependency_sha256": "19e832cb2a381a518ce217ef85fbf7ea83fe55d05beeccf13ae96e61949706e7",
+          "root_theorem": "Zeta23.RHRC.riemannHypothesis_of_canonicalGlobalGroundPropagation_smallAperture"
+        },
+        {
+          "claim_id": "AUDIT_UNIFORM_DOMINATION_IMPLIES_RH",
+          "external_boundary_count": 3943,
+          "external_boundary_sha256": "285dcd2f7079a29ac035faa95c377cbec009f9c17617830bce8f96678715220c",
+          "local_dependency_count": 1776,
+          "local_dependency_sha256": "95d62c5effd83b42db11c582cdea720ffdb1a160bd44ca7968d1a447898da04a",
+          "root_theorem": "Zeta23.RHRC.riemannHypothesis_of_canonicalUniformDomination"
         },
         {
           "claim_id": "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
@@ -2101,6 +2301,14 @@
           "root_theorem": "Zeta23.CCM.globalParitySuccessorBottom_nonneg_of_jointCofinal_lowerBounds"
         },
         {
+          "claim_id": "R003_COMPRESSED_PRODUCTION_C2",
+          "external_boundary_count": 1504,
+          "external_boundary_sha256": "7e225ce05427c13aae44336617c1e13d8ac76311dab595522afbccbf4b98ecc8",
+          "local_dependency_count": 457,
+          "local_dependency_sha256": "3b9fce4d3cd87adc23d192bc1d7387f41546717013ff92c3f6e110189389e49c",
+          "root_theorem": "Zeta23.CCM.canonicalEvenCompressedC2_with_jets"
+        },
+        {
           "claim_id": "R003_CONSTRAINED_CANONICAL_DISPLACEMENT",
           "external_boundary_count": 524,
           "external_boundary_sha256": "fcaf08e0b8d37c8d8aaeb6f3b5e308d34aa8babbd24b1efda978351457d1e007",
@@ -2173,6 +2381,14 @@
           "root_theorem": "Zeta23.CCM.euclideanCenteredZeroExtend_mem_euclideanBoundaryFlatSubspace"
         },
         {
+          "claim_id": "R003_EVENTUAL_APERTURE_PARITY_BADNESS_FROM_OFFLINE_ZERO",
+          "external_boundary_count": 3594,
+          "external_boundary_sha256": "4b993a5bc8c887abecd465cff2d9ee6a95c94505ddd9120b361c324c1d3de825",
+          "local_dependency_count": 1319,
+          "local_dependency_sha256": "5dc07770252a2f89acfe8186a269339aadb9ef75443ad26c38360250c3755e63",
+          "root_theorem": "Zeta23.ExceptionalZero.eventually_all_apertures_have_anyParityBad_of_offLine_zero"
+        },
+        {
           "claim_id": "R003_EVEN_CONSTRAINED_DISPLACEMENT_COLLAPSE",
           "external_boundary_count": 612,
           "external_boundary_sha256": "6a6631999cb399f813c6fd683ce2ca019de8d95e54d495a1112915318d5e5737",
@@ -2237,6 +2453,22 @@
           "root_theorem": "Zeta23.CCM.negative_eigenmode_paritySuccShell_projection_ne_zero"
         },
         {
+          "claim_id": "R003_FIXED_N_GROUND_CONTINUITY",
+          "external_boundary_count": 1420,
+          "external_boundary_sha256": "07980d492300a9106f4a5fc8ef68e6b225f3db49cd9c1506fce717ee15af38fe",
+          "local_dependency_count": 421,
+          "local_dependency_sha256": "3783047d6372873f2ea68a89a8d9b1a5b3a72de9c3301ee3a2ca71dd2c8d859d",
+          "root_theorem": "Zeta23.CCM.canonicalFixedNGroundContinuity_proved"
+        },
+        {
+          "claim_id": "R003_FIXED_N_GROUND_SIGN_OPPOSITION",
+          "external_boundary_count": 3825,
+          "external_boundary_sha256": "911e90b35d83d5225d11a60cdfb7d4a71b730d1192b87adc69fed990cb70ec23",
+          "local_dependency_count": 1565,
+          "local_dependency_sha256": "075c6b9f822bc08941d162824e743315033edb7d1e25b9613a478bb894a1d869",
+          "root_theorem": "Zeta23.ExceptionalZero.exists_fixedN_ground_sign_opposition_of_offLine_zero"
+        },
+        {
           "claim_id": "R003_FIXED_PARITY_BAD_TAIL_FROM_OFFLINE_ZERO",
           "external_boundary_count": 3643,
           "external_boundary_sha256": "f9b4928e6f6970f35492aa1ac9285b7d642caec5a85062e9a690411d23bc91a5",
@@ -2291,6 +2523,14 @@
           "local_dependency_count": 309,
           "local_dependency_sha256": "d974641d554a7c2b5c10b8f723bbd5ac4ed42c884a92cff3fd66b607c13fcd50",
           "root_theorem": "Zeta23.CCM.globalParitySuccessorBottom_neg_iff_anyParityBad"
+        },
+        {
+          "claim_id": "R003_INHERITED_FIRST_VARIATION_RESTRICTION",
+          "external_boundary_count": 2602,
+          "external_boundary_sha256": "3784c72d525d7d2a4daa4b839800e1e2c6ef9ce9bea738edc676ecfc1d590e96",
+          "local_dependency_count": 1179,
+          "local_dependency_sha256": "77dc16fdb5d2ea4af0570f3bfe59b009ad005cf4b353e5689faf9f3066485682",
+          "root_theorem": "Zeta23.CCM.GeneratedStrictEvenContact.firstVariation_eq_zero_of_inherited"
         },
         {
           "claim_id": "R003_KERNEL_EF_EXTENSION",
@@ -2355,6 +2595,22 @@
           "local_dependency_count": 1319,
           "local_dependency_sha256": "1a877bd17a3bf171b5f25daa57a6b39ec367b42bafeed4bee4536140abad152b",
           "root_theorem": "Zeta23.ExceptionalZero.exists_fixedAperture_forall_ge_ne_zero_mem_euclideanBoundaryFlatSubspace_negativeCanonicalInnerSelf_of_offLine_zero"
+        },
+        {
+          "claim_id": "R003_OFFLINE_ZERO_FIXED_N_ZERO_CONTACT",
+          "external_boundary_count": 4027,
+          "external_boundary_sha256": "caa0371c236c3968ac097a61eb70fbfb30f8abbf12c55fdd83c19971565f7daa",
+          "local_dependency_count": 1795,
+          "local_dependency_sha256": "e17f856d1a1cd52f51504d890a37a26c259e7ea625d11238497fe06c8ff8fb68",
+          "root_theorem": "Zeta23.ExceptionalZero.nonempty_globalParityBottomZeroContact_proved_of_offLine_zero"
+        },
+        {
+          "claim_id": "R003_OFFLINE_ZERO_ONE_STEP_DOMINATION_FAILURE",
+          "external_boundary_count": 3932,
+          "external_boundary_sha256": "e3463988ced2faa7401e8fe0b607ad39c57a7b91d0cccd888e899a3884c5fc9f",
+          "local_dependency_count": 1765,
+          "local_dependency_sha256": "a8bf1d2c93ba133056a928db0a9012f7ba6a70a3049c3d9f40e121f115eb5cbf",
+          "root_theorem": "Zeta23.ExceptionalZero.exists_globalFirstBad_not_canonicalOneStepDomination_of_offLine_zero"
         },
         {
           "claim_id": "R003_PARITY_BAD_NEGATIVE_EIGENMODE",
@@ -2435,6 +2691,14 @@
           "local_dependency_count": 130,
           "local_dependency_sha256": "dc0f9f1040fe1dc0f6a692d4469213db1136e5fc3e6b12947276ada8a64441f1",
           "root_theorem": "Zeta23.CCM.dictionaryResidualTest_admissible"
+        },
+        {
+          "claim_id": "R003_SMALL_APERTURE_GROUND_SPECTRUM",
+          "external_boundary_count": 2161,
+          "external_boundary_sha256": "39d24d9434aab86ab722b4e77b553ffd039d4c86a82a51227367b5afdd0b56d8",
+          "local_dependency_count": 694,
+          "local_dependency_sha256": "c8241cd904e2d2df13a30fc41869273a558ad409298532cc81cc0307790b87e7",
+          "root_theorem": "Zeta23.CCM.one_le_globalParitySuccessorBottom_of_smallAperture"
         },
         {
           "claim_id": "R003_SMALL_APERTURE_POSITIVE_BASE",
@@ -2662,6 +2926,7 @@
             "R003_CCM_BRIDGE",
             "R003_CCM_RHS_IDENTITY",
             "R003_COFINAL_BOTTOM_NONNEGATIVITY",
+            "R003_COMPRESSED_PRODUCTION_C2",
             "R003_CONSTRAINED_CANONICAL_DISPLACEMENT",
             "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
             "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
@@ -2671,6 +2936,7 @@
             "R003_EUCLIDEAN_BOUNDARY_FLAT_SECTOR",
             "R003_EUCLIDEAN_CONSTRAINED_NEGATIVE_OBSTRUCTION",
             "R003_EUCLIDEAN_CONSTRAINED_NESTING",
+            "R003_EVENTUAL_APERTURE_PARITY_BADNESS_FROM_OFFLINE_ZERO",
             "R003_EVEN_CONSTRAINED_DISPLACEMENT_COLLAPSE",
             "R003_EXACT_CENTERED_FINITE_NESTING",
             "R003_FINITE_CANONICAL_NEGATIVE_OBSTRUCTION",
@@ -2679,7 +2945,10 @@
             "R003_FIRST_BAD_PARITY_ONE_DIM_SHELL",
             "R003_FIRST_BAD_SHELL_KKT_FROM_OFFLINE_ZERO",
             "R003_FIRST_BAD_SHELL_PROJECTION",
+            "R003_FIXED_N_GROUND_CONTINUITY",
+            "R003_FIXED_N_GROUND_SIGN_OPPOSITION",
             "R003_FIXED_PARITY_BAD_TAIL_FROM_OFFLINE_ZERO",
+            "R003_INHERITED_FIRST_VARIATION_RESTRICTION",
             "R003_KERNEL_EF_EXTENSION",
             "R003_LEAST_PARITY_BAD_SHELL",
             "R003_LOCALIZED_ADDITIVE_RHS_RESTRICTION",
@@ -2688,6 +2957,8 @@
             "R003_LOCALIZED_UNIFORM_C2_APPROXIMATION",
             "R003_NEGATIVE_WEIL_TEST_CONTRACTION",
             "R003_NESTED_EUCLIDEAN_NEGATIVE_OBSTRUCTION",
+            "R003_OFFLINE_ZERO_FIXED_N_ZERO_CONTACT",
+            "R003_OFFLINE_ZERO_ONE_STEP_DOMINATION_FAILURE",
             "R003_PARITY_BAD_NEGATIVE_EIGENMODE",
             "R003_PARITY_BAD_NFLOW",
             "R003_PARITY_COMPRESSION_RANK_ONE_DEFECT",
@@ -2698,6 +2969,7 @@
             "R003_PARITY_SPLIT_GROUND_SIMPLICITY",
             "R003_PARITY_TIE_GROUND_MULTIPLICITY",
             "R003_RESIDUAL_C2",
+            "R003_SMALL_APERTURE_GROUND_SPECTRUM",
             "R003_SMALL_APERTURE_POSITIVE_BASE",
             "R003_SOURCE_KAPPA_FINITE_SECTOR",
             "R003_SOURCE_NORMALIZATION_REPAIR",
@@ -2718,8 +2990,8 @@
           "cohort_id": "ROUTE_R003",
           "intersection_count": 0,
           "intersection_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-          "union_count": 284,
-          "union_sha256": "ac94bb2b017e387fc40bb3138341c54cc8b8cf90ff603dd8389a0715ad537be3"
+          "union_count": 395,
+          "union_sha256": "cccf81b1b5ac2cdc335b1b0c1943cd746fecb2b10a4b86c716d8589c2c9cfcbc"
         },
         {
           "claim_ids": [
@@ -2773,6 +3045,22 @@
           "local_dependency_count": 182,
           "local_dependency_sha256": "68691d40a7d0a9a190506b289b140cb840498573f71e09e9ff15bbd62a741345",
           "root_theorem": "Zeta23.ExceptionalZero.globalBottomResidualExclusion_iff_riemannHypothesis"
+        },
+        {
+          "claim_id": "AUDIT_GLOBAL_GROUND_PROPAGATION_IMPLIES_RH",
+          "external_boundary_count": 254,
+          "external_boundary_sha256": "8f1b66b23d986406fd3f37bfbbfee0db533131c0a19fda1cd46f386f0a0b4058",
+          "local_dependency_count": 63,
+          "local_dependency_sha256": "4c5d3882daca159a1c7e640f1bed75c165ac1160c3ed04f43f79539d9ab27cb9",
+          "root_theorem": "Zeta23.RHRC.riemannHypothesis_of_canonicalGlobalGroundPropagation_smallAperture"
+        },
+        {
+          "claim_id": "AUDIT_UNIFORM_DOMINATION_IMPLIES_RH",
+          "external_boundary_count": 287,
+          "external_boundary_sha256": "8afc07c8830d7fa7fadc9aec5fcab65b8688e9d215bca8647c511f70d46796e1",
+          "local_dependency_count": 116,
+          "local_dependency_sha256": "6f76c79385587b966facb69a22ccc4b072c9979de24be403c0b784fce91a11b5",
+          "root_theorem": "Zeta23.RHRC.riemannHypothesis_of_canonicalUniformDomination"
         },
         {
           "claim_id": "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
@@ -2959,6 +3247,14 @@
           "root_theorem": "Zeta23.CCM.globalParitySuccessorBottom_nonneg_of_jointCofinal_lowerBounds"
         },
         {
+          "claim_id": "R003_COMPRESSED_PRODUCTION_C2",
+          "external_boundary_count": 334,
+          "external_boundary_sha256": "ea911b78498b5b7f30a99bf2ded6cfa2ff3298eca48ac9ae57b243088eace3ce",
+          "local_dependency_count": 119,
+          "local_dependency_sha256": "30ab21749e98914b0c3630f5c4e2438fb137d968e9a8a0e20bce03286c4f6e3e",
+          "root_theorem": "Zeta23.CCM.canonicalEvenCompressedC2_with_jets"
+        },
+        {
           "claim_id": "R003_CONSTRAINED_CANONICAL_DISPLACEMENT",
           "external_boundary_count": 104,
           "external_boundary_sha256": "0de5432ebe3bdfa2e8f14694246533b04ae6222b70a494439b410f4c8611bfcb",
@@ -3031,6 +3327,14 @@
           "root_theorem": "Zeta23.CCM.euclideanCenteredZeroExtend_mem_euclideanBoundaryFlatSubspace"
         },
         {
+          "claim_id": "R003_EVENTUAL_APERTURE_PARITY_BADNESS_FROM_OFFLINE_ZERO",
+          "external_boundary_count": 167,
+          "external_boundary_sha256": "5013c47f82e2ab86bcea2c65783b00a6be050516bc64942c9533827a0f46ed99",
+          "local_dependency_count": 61,
+          "local_dependency_sha256": "e0c49582ac75fbdd9360dd475ee3b7887c7ba3ed5ef3532a91b9569d1e07aac6",
+          "root_theorem": "Zeta23.ExceptionalZero.eventually_all_apertures_have_anyParityBad_of_offLine_zero"
+        },
+        {
           "claim_id": "R003_EVEN_CONSTRAINED_DISPLACEMENT_COLLAPSE",
           "external_boundary_count": 138,
           "external_boundary_sha256": "c44fe391c186175a8ffa3626245fdc18a0d03f78c23d9bedb81acab5090c5fdd",
@@ -3095,6 +3399,22 @@
           "root_theorem": "Zeta23.CCM.negative_eigenmode_paritySuccShell_projection_ne_zero"
         },
         {
+          "claim_id": "R003_FIXED_N_GROUND_CONTINUITY",
+          "external_boundary_count": 254,
+          "external_boundary_sha256": "9c5ed7fe84e62037d483b6e181b64cf6df58c9b346682d5f309c5a0d24f3d772",
+          "local_dependency_count": 63,
+          "local_dependency_sha256": "cae9d2908a6ed1e7fcb95775f2f9c7f40192091e8e585722b6c70222629b33da",
+          "root_theorem": "Zeta23.CCM.canonicalFixedNGroundContinuity_proved"
+        },
+        {
+          "claim_id": "R003_FIXED_N_GROUND_SIGN_OPPOSITION",
+          "external_boundary_count": 279,
+          "external_boundary_sha256": "9de4fc0904ef5f806c6036eac3a596d7f59802f92a571f799fd4c15cd63de3d7",
+          "local_dependency_count": 78,
+          "local_dependency_sha256": "2759f0534a607d3fc944ef9a901a2f8d752291d349c51484308b43c9544031ae",
+          "root_theorem": "Zeta23.ExceptionalZero.exists_fixedN_ground_sign_opposition_of_offLine_zero"
+        },
+        {
           "claim_id": "R003_FIXED_PARITY_BAD_TAIL_FROM_OFFLINE_ZERO",
           "external_boundary_count": 166,
           "external_boundary_sha256": "01c09d3100edadcc5292bd2b84b80df718351d9b5881cfd1daed3368accfabb4",
@@ -3149,6 +3469,14 @@
           "local_dependency_count": 66,
           "local_dependency_sha256": "fc04023a47281c9820552605a53675059f392fc908b06284ef56623a269319b2",
           "root_theorem": "Zeta23.CCM.globalParitySuccessorBottom_neg_iff_anyParityBad"
+        },
+        {
+          "claim_id": "R003_INHERITED_FIRST_VARIATION_RESTRICTION",
+          "external_boundary_count": 280,
+          "external_boundary_sha256": "e3a1cbb742a0852a508ef2b60024c144dd2e326be5abdf19b13a5115014b5a56",
+          "local_dependency_count": 114,
+          "local_dependency_sha256": "30bcdd783ce44801bfd44e07bc4a536826e6d77145e5fd1d5d2bb9c3b552d448",
+          "root_theorem": "Zeta23.CCM.GeneratedStrictEvenContact.firstVariation_eq_zero_of_inherited"
         },
         {
           "claim_id": "R003_KERNEL_EF_EXTENSION",
@@ -3213,6 +3541,22 @@
           "local_dependency_count": 45,
           "local_dependency_sha256": "e1c40152cb23159e57297f3327cb5db9df504f26104b9062cd2a1028e8f2b229",
           "root_theorem": "Zeta23.ExceptionalZero.exists_fixedAperture_forall_ge_ne_zero_mem_euclideanBoundaryFlatSubspace_negativeCanonicalInnerSelf_of_offLine_zero"
+        },
+        {
+          "claim_id": "R003_OFFLINE_ZERO_FIXED_N_ZERO_CONTACT",
+          "external_boundary_count": 279,
+          "external_boundary_sha256": "1475a7e730a7aa1f5de59de5d3b5e5160d906caf365efe9e866c3248e1cf6c3b",
+          "local_dependency_count": 80,
+          "local_dependency_sha256": "8a35afb2bca6d382abec91dce0a3dca4ad1409f473050b18719d7d542a0048f9",
+          "root_theorem": "Zeta23.ExceptionalZero.nonempty_globalParityBottomZeroContact_proved_of_offLine_zero"
+        },
+        {
+          "claim_id": "R003_OFFLINE_ZERO_ONE_STEP_DOMINATION_FAILURE",
+          "external_boundary_count": 317,
+          "external_boundary_sha256": "7d11c40ac79e640e2eb1453a96c8780100a1547777fe9612c99ba4f4f0a35fb9",
+          "local_dependency_count": 134,
+          "local_dependency_sha256": "ba18b5d73e930d158adeae6742462c9201c404c6c36d5781adf5b1be461e813f",
+          "root_theorem": "Zeta23.ExceptionalZero.exists_globalFirstBad_not_canonicalOneStepDomination_of_offLine_zero"
         },
         {
           "claim_id": "R003_PARITY_BAD_NEGATIVE_EIGENMODE",
@@ -3293,6 +3637,14 @@
           "local_dependency_count": 11,
           "local_dependency_sha256": "e067d8abcb25781bf7a2bde8ddb1cfc25c2da031c321a4dd9807024636868434",
           "root_theorem": "Zeta23.CCM.dictionaryResidualTest_admissible"
+        },
+        {
+          "claim_id": "R003_SMALL_APERTURE_GROUND_SPECTRUM",
+          "external_boundary_count": 255,
+          "external_boundary_sha256": "11787d61d417886ea5eef6c566313338f4d429bc0c1671a060bb2794b0c4ec91",
+          "local_dependency_count": 62,
+          "local_dependency_sha256": "dfaeb8125517295043c913b07843be78ece5e828fe87b12a76743be453523b6e",
+          "root_theorem": "Zeta23.CCM.one_le_globalParitySuccessorBottom_of_smallAperture"
         },
         {
           "claim_id": "R003_SMALL_APERTURE_POSITIVE_BASE",

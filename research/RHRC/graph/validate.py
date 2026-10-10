@@ -21,16 +21,89 @@ FORBIDDEN_CURRENT_RELATIONS = {
 
 
 def read_jsonl(name: str) -> list[dict]:
-    path = GENERATED / name
+    return read_jsonl_path(GENERATED / name)
+
+
+def read_jsonl_path(path: Path) -> list[dict]:
+    return parse_jsonl(path.read_text(encoding="utf-8"), str(path))
+
+
+def parse_jsonl(text: str, origin: str) -> list[dict]:
     rows: list[dict] = []
-    for number, line in enumerate(path.read_text(encoding="utf-8").splitlines(), start=1):
+    for number, line in enumerate(text.splitlines(), start=1):
         if not line.strip():
             continue
         try:
             rows.append(json.loads(line))
         except json.JSONDecodeError as exc:
-            raise ValueError(f"{path}:{number}: invalid JSON: {exc}") from exc
+            raise ValueError(f"{origin}:{number}: invalid JSON: {exc}") from exc
     return rows
+
+
+def read_relation_shards(errors: list[str]) -> list[tuple[str, list[dict]]]:
+    """Read the fixed relation shards in key order as one logical dataset."""
+    shards: list[tuple[str, list[dict]]] = []
+    for path in graph_build.RELATION_SHARD_PATHS:
+        if not (REPO / path).is_file():
+            errors.append(f"missing relation shard: {path}")
+            shards.append((path, []))
+            continue
+        shards.append((path, read_jsonl_path(REPO / path)))
+    return shards
+
+
+def relation_shard_file_errors() -> list[str]:
+    errors: list[str] = []
+    shard_dir = REPO / graph_build.RELATION_SHARD_DIR
+    declared = set(graph_build.RELATION_SHARD_PATHS)
+    actual = (
+        {
+            str(p.relative_to(REPO)).replace("\\", "/")
+            for p in shard_dir.rglob("*")
+            if p.is_file()
+        }
+        if shard_dir.exists()
+        else set()
+    )
+    if actual != declared:
+        errors.append(
+            "relation shard set drift: "
+            f"missing={sorted(declared - actual)} extra={sorted(actual - declared)}"
+        )
+    if (REPO / graph_build.LEGACY_RELATIONS_PATH).exists():
+        errors.append(
+            f"legacy monolithic relation file present: {graph_build.LEGACY_RELATIONS_PATH}"
+        )
+    for path in graph_build.RELATION_SHARD_PATHS:
+        full = REPO / path
+        if full.is_file() and full.stat().st_size >= graph_build.RELATION_SHARD_MAX_BYTES:
+            errors.append(
+                f"relation shard too large: {path} ({full.stat().st_size} bytes, "
+                f"limit {graph_build.RELATION_SHARD_MAX_BYTES})"
+            )
+    return errors
+
+
+def relation_shard_row_errors(shards: list[tuple[str, list[dict]]]) -> list[str]:
+    """Each row sits in the shard named by its id key, strictly id-ordered."""
+    errors: list[str] = []
+    if [path for path, _ in shards] != graph_build.RELATION_SHARD_PATHS:
+        errors.append("relation shards are not in canonical key order")
+    for (path, rows), key in zip(shards, graph_build.RELATION_SHARD_KEYS):
+        previous = None
+        for index, row in enumerate(rows, start=1):
+            rid = row.get("id")
+            try:
+                row_key = graph_build.relation_shard_key(rid) if isinstance(rid, str) else None
+            except RuntimeError:
+                row_key = None
+            if row_key != key:
+                errors.append(f"{path}:{index}: relation id {rid!r} does not belong to shard {key}")
+                continue
+            if previous is not None and rid <= previous:
+                errors.append(f"{path}:{index}: relation ids not strictly increasing")
+            previous = rid
+    return errors
 
 
 SUPPORTED_SCHEMA_KEYS = {
@@ -162,6 +235,13 @@ def validate_schema_value(
     return errors
 
 
+def report_failure(errors: list[str]) -> int:
+    print("RHKG VALIDATION: FAIL")
+    for error in errors:
+        print(" -", error)
+    return 1
+
+
 def main() -> int:
     errors: list[str] = []
 
@@ -170,7 +250,10 @@ def main() -> int:
     lean_declarations = read_jsonl("lean_declarations.jsonl")
     lean_source_declarations = read_jsonl("lean_source_declarations.jsonl")
     registry_nodes = read_jsonl("registry_nodes.jsonl")
-    relations = read_jsonl("relations.jsonl")
+    relation_shards = read_relation_shards(errors)
+    relations = [row for _, rows in relation_shards for row in rows]
+    errors.extend(relation_shard_file_errors())
+    errors.extend(relation_shard_row_errors(relation_shards))
 
     schema = json.loads(GRAPH_SCHEMA.read_text(encoding="utf-8"))
     for error in schema_definition_errors(schema):
@@ -182,7 +265,7 @@ def main() -> int:
             ("lean_declarations.jsonl", lean_declarations),
             ("lean_source_declarations.jsonl", lean_source_declarations),
             ("registry_nodes.jsonl", registry_nodes),
-            ("relations.jsonl", relations),
+            *relation_shards,
         ):
             for index, row in enumerate(rows, start=1):
                 for error in validate_schema_value(row, schema, schema):
@@ -755,8 +838,23 @@ def main() -> int:
     )
     if dependency_closure.get("scope") != "ALL_PROVED_UNCONDITIONAL_REGISTERED_CLAIMS":
         errors.append("THEOREM_DEPENDENCY_CLOSURE scope drift")
-    if {row["claim_id"] for row in dependency_closure.get("entries", [])} != set(binding_by_id):
-        errors.append("THEOREM_DEPENDENCY_CLOSURE registered-root coverage drift")
+    closure_claim_ids = {row["claim_id"] for row in dependency_closure.get("entries", [])}
+    if closure_claim_ids != set(binding_by_id):
+        errors.append(
+            "THEOREM_DEPENDENCY_CLOSURE registered-root coverage drift: "
+            f"missing={sorted(set(binding_by_id) - closure_claim_ids)} "
+            f"extra={sorted(closure_claim_ids - set(binding_by_id))}"
+        )
+    if closure_claim_ids != set(binding_by_id) or receipt_root_names != set(binding_by_theorem):
+        # Every dependency view below is recomputed from this closure and the
+        # compiler receipt, indexed by registered claim and root theorem; on a
+        # stale snapshot that raises KeyError or ValueError. Fail closed with
+        # the drift already recorded instead.
+        errors.append(
+            "derived state is stale relative to the registries; regenerate it "
+            "with research/RHRC/tools/materialize_derived_state.py --write"
+        )
+        return report_failure(errors)
     if dependency_closure.get("terminal_claim") != "RH_OPEN":
         errors.append("THEOREM_DEPENDENCY_CLOSURE does not preserve RH_OPEN")
     if dependency_closure.get("graph_theorem_promotion") is not False:
@@ -1304,10 +1402,7 @@ def main() -> int:
         errors.append("coverage view reports unclassified files")
 
     if errors:
-        print("RHKG VALIDATION: FAIL")
-        for error in errors:
-            print(" -", error)
-        return 1
+        return report_failure(errors)
 
     print(
         "RHKG VALIDATION: PASS "
