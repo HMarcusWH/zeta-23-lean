@@ -101,6 +101,9 @@ jobs:
           python research/RHRC/routes/R003_ccm_bridge/post284/check_post284_dispositions.py \
             --suite /tmp/POST284_SOURCE_FALSIFIER_SUITE.json
       - name: Attached log3 K=2 interval certificate (falsifier receipt; research evidence only)
+        # Explicit bash runs with -o pipefail, so a failing certificate fails
+        # the step instead of being masked by tee's exit status.
+        shell: bash
         run: python research/RHRC/routes/R003_ccm_bridge/post284/birdfishie_log3_K2_certificate.py | tee /tmp/POST284_LOG3_K2_CERTIFICATE.txt
       - name: Follow-up regressions (M24/M30 exact, M41/M43 interval signs, M42 sanity, M47 formula)
         run: |
