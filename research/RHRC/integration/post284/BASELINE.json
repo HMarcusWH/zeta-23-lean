@@ -1,0 +1,72 @@
+{
+  "schema": "post284.baseline.v1",
+  "authority": "PROVENANCE_ONLY_NO_MATH_CLAIM",
+  "terminal_claim": "RH_OPEN",
+  "prepared": "2026-10-10",
+  "handoff": {
+    "file": "POST284_GIANT_PR_CLAUDE_CODE_HANDOFF_v0_4_SOURCE_INERTIA_AUDITED_2026-10-10.md",
+    "sha256": "bfa76d41e212427ade3acd560bba6a039a5dbdb8c8a71fcb7214510f328e807a",
+    "role": "EXECUTION_PLAN_ONLY"
+  },
+  "attached_falsifier": {
+    "file": "research/RHRC/routes/R003_ccm_bridge/post284/POST284_SOURCE_INERTIA_EXACT_FALSIFIER_2026-10-10.py",
+    "sha256": "81008d9f87ef852e6238cb98a3115263cdb859d0851411318e26260edc3e81af",
+    "stored_verbatim": true
+  },
+  "zeta23": {
+    "repository": "HMarcusWH/zeta-23-lean",
+    "main_head_verified": "5e7253bffa570c0e07052b8d59a0949cdbcabdbe",
+    "main_tree_verified": "96f851b45af4d3b11fef699fbd5cb274f60a9f6c",
+    "pr284_checked_head": "7225489a1d60812743e419d5b9042c8dca7eef53",
+    "open_prs_at_branch_time": [],
+    "working_branch": "claude/relaxed-babbage-uf9fc9",
+    "lean_toolchain": "leanprover/lean4:v4.33.0-rc2",
+    "lean_commit_local": "d8b18978322de05a8f3dba51ef03cf5461676c17",
+    "mathlib_rev": "51e6992efd06126df61a496bebf8f49482a4e129",
+    "matches_handoff_snapshot": true
+  },
+  "source_pins": {
+    "Zeta23/CCM/FirstCrossingProductionCurvatureBridge.lean": "9bfc2dd545c934252065116f9504712f593e32c1",
+    "Zeta23/CCM/FirstCrossingGeneratedStrictEvenFrontier.lean": "fd2622c7bff6faa2f3221a9288925a0a8d912b50",
+    "Zeta23/CCM/SourceMatrix.lean": "45125dbe9bb484b132c2d43213d67f7916148ea0",
+    "Zeta23/CCM/CanonicalSourceMomentJets.lean": "94e325805f6a7cc0978c76d431bde16dc6af1844",
+    "Zeta23/CCM/CanonicalSourceChannels.lean": "6d517c3066cd198bd590bc6d74ff47a14621a608",
+    "Zeta23/CCM/SourceNormalizationRepair.lean": "07efc5cb6e202e6ae176eed5ed14f3f19e90db00",
+    "Zeta23/CCM/Components.lean": "e682bffd9f87ebb12afa606c0c810ba79e35681b",
+    "Zeta23/CCM/CutoffFreeMatrix.lean": "48023a2694ef2892191f615bc42fdbc1a2ecc393",
+    "research/RHRC/CLAIM_REGISTRY.json": "221a6c9c8aa127f783a93f407d3e382642c372a5",
+    "_note": "git blob ids at the verified main head"
+  },
+  "verified_definitions": {
+    "ProductionContactF04DerivativeAuthority": "Prop structure with exactly three fields first, fixedSecondEuler, mixed; no constructor theorem exists in the tree",
+    "sourceMatrix": "dividedDifferenceMatrix (sin(2 pi omega n)/pi) (2 omega cos(2 pi omega n)); sourceMatrix_one = 2 I",
+    "canonicalSourceMatrix": "cutoffFreeMatrix = pole - cutoffFreeArch - prime, cutoffFreeArch diagonal = 2(gammaL - cCorrection) - 2 betaL",
+    "wCorrection": "(gamma_E + log(4 pi))/2 - log((e^L + 1)/(e^L - 1))/2",
+    "canonicalArchScalarCorrection": "2 (sourceEq411DerivedCorrection + wCorrection), reduced normalization only"
+  },
+  "openai_math": {
+    "repository": "HMarcusWH/math (fork of the OpenAI manuscript collection)",
+    "head_verified": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+    "root_theorem_file": "lean/OAI/NumberTheory/DirichletL/Nonvanishing.lean",
+    "root_theorem_blob": "46c67f4000906b1391a471d6e6396ac0da3c16a5",
+    "lean_toolchain": "leanprover/lean4:v4.34.1",
+    "mathlib_rev": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+    "matches_handoff_snapshot": true
+  },
+  "environment_limits": {
+    "release.lean-lang.org": "BLOCKED_BY_NETWORK_POLICY (toolchain installed from GitHub release asset instead)",
+    "lakecache.blob.core.windows.net": "BLOCKED_BY_NETWORK_POLICY (Mathlib compiled from source for the needed import slice)",
+    "independent_QRH_receipt_repository": "NOT_INSPECTED (outside this session's repository scope)"
+  },
+  "followup_handoff": {
+    "file": "POST284_CLAUDE_CODE_UNIFIED_FOLLOWUP_STEPS49_107_LOCAL_BIRDFISH_AUDITED_2026-10-10.md",
+    "sha256": "1e7653d8102f20bef871f2e08a58777b35d8526a7f6a7ad688a5eae9cf4dcad6",
+    "role": "EXECUTION_PLAN_ONLY (packages M20-M69)"
+  },
+  "followup_log3_script": {
+    "file": "research/RHRC/routes/R003_ccm_bridge/post284/birdfishie_log3_K2_certificate.py",
+    "sha256": "54531b0ab503e8a5264cc25cb9c99ef915c92128df89e49fc51040e886192855",
+    "stored_verbatim": true,
+    "local_run": "lower 0.0344452849018321708 > 0, upper 0.0483121512466286480; matches the audit output"
+  }
+}

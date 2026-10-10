@@ -1,0 +1,739 @@
+{
+  "schema": "post284.workflow_harvest.v1",
+  "authority": "REPORTING_ONLY",
+  "subject": {
+    "pr": 284,
+    "checked_head": "7225489a1d60812743e419d5b9042c8dca7eef53",
+    "merge_commit": "5e7253bffa570c0e07052b8d59a0949cdbcabdbe",
+    "source": "GitHub check-runs API via MCP, harvested 2026-10-10"
+  },
+  "totals": {
+    "check_runs": 56,
+    "distinct_workflow_runs": 18,
+    "success": 56
+  },
+  "note": "Green means workflow correctness only. RESEARCH_PRODUCING jobs may succeed while recording negative or unknown dispositions; their numerical content is not re-derived here. Categories are assigned by job name and are a reporting convenience, not an authority claim.",
+  "check_runs": [
+    {
+      "check_run_id": 114049916763,
+      "job": "Complete 44-check execution harvest",
+      "workflow_run_id": 37997893784,
+      "conclusion": "success",
+      "category": "REGRESSION"
+    },
+    {
+      "check_run_id": 114048487495,
+      "job": "Extended audit shard 7",
+      "workflow_run_id": 37997893784,
+      "conclusion": "success",
+      "category": "REGRESSION"
+    },
+    {
+      "check_run_id": 114048487322,
+      "job": "Extended audit shard 4",
+      "workflow_run_id": 37997893784,
+      "conclusion": "success",
+      "category": "REGRESSION"
+    },
+    {
+      "check_run_id": 114048487286,
+      "job": "Extended audit shard 1",
+      "workflow_run_id": 37997893784,
+      "conclusion": "success",
+      "category": "REGRESSION"
+    },
+    {
+      "check_run_id": 114048487257,
+      "job": "Extended audit shard 0",
+      "workflow_run_id": 37997893784,
+      "conclusion": "success",
+      "category": "REGRESSION"
+    },
+    {
+      "check_run_id": 114048487238,
+      "job": "Extended audit shard 2",
+      "workflow_run_id": 37997893784,
+      "conclusion": "success",
+      "category": "REGRESSION"
+    },
+    {
+      "check_run_id": 114048487192,
+      "job": "Extended audit shard 5",
+      "workflow_run_id": 37997893784,
+      "conclusion": "success",
+      "category": "REGRESSION"
+    },
+    {
+      "check_run_id": 114048487157,
+      "job": "Extended audit shard 6",
+      "workflow_run_id": 37997893784,
+      "conclusion": "success",
+      "category": "REGRESSION"
+    },
+    {
+      "check_run_id": 114048487041,
+      "job": "Extended audit shard 3",
+      "workflow_run_id": 37997893784,
+      "conclusion": "success",
+      "category": "REGRESSION"
+    },
+    {
+      "check_run_id": 114048486775,
+      "job": "Audit runner adversarial regressions",
+      "workflow_run_id": 37997893784,
+      "conclusion": "success",
+      "category": "REGRESSION"
+    },
+    {
+      "check_run_id": 114011661374,
+      "job": "contact-calculus-complete",
+      "workflow_run_id": 37982226846,
+      "conclusion": "success",
+      "category": "REGRESSION"
+    },
+    {
+      "check_run_id": 114009506530,
+      "job": "campaign-complete",
+      "workflow_run_id": 37982226850,
+      "conclusion": "success",
+      "category": "REGRESSION"
+    },
+    {
+      "check_run_id": 114007788074,
+      "job": "arb-contact-balance",
+      "workflow_run_id": 37982226846,
+      "conclusion": "success",
+      "category": "RESEARCH_PRODUCING"
+    },
+    {
+      "check_run_id": 114000934821,
+      "job": "generated-contact-complete",
+      "workflow_run_id": 37982226794,
+      "conclusion": "success",
+      "category": "REGRESSION"
+    },
+    {
+      "check_run_id": 113998981452,
+      "job": "Complete 44-check execution harvest",
+      "workflow_run_id": 37982226957,
+      "conclusion": "success",
+      "category": "REGRESSION"
+    },
+    {
+      "check_run_id": 113995933552,
+      "job": "lean-compressed-calculus",
+      "workflow_run_id": 37982226846,
+      "conclusion": "success",
+      "category": "FORMAL_VALIDITY"
+    },
+    {
+      "check_run_id": 113995933509,
+      "job": "research-calibration",
+      "workflow_run_id": 37982226846,
+      "conclusion": "success",
+      "category": "RESEARCH_PRODUCING"
+    },
+    {
+      "check_run_id": 113995933136,
+      "job": "lean-contact-completion",
+      "workflow_run_id": 37982226846,
+      "conclusion": "success",
+      "category": "FORMAL_VALIDITY"
+    },
+    {
+      "check_run_id": 113995899068,
+      "job": "arb-generated-contact",
+      "workflow_run_id": 37982226794,
+      "conclusion": "success",
+      "category": "RESEARCH_PRODUCING"
+    },
+    {
+      "check_run_id": 113995784793,
+      "job": "post200-q14-discrepancy-mechanism",
+      "workflow_run_id": 37982226892,
+      "conclusion": "success",
+      "category": "RESEARCH_PRODUCING"
+    },
+    {
+      "check_run_id": 113995713708,
+      "job": "lean",
+      "workflow_run_id": 37982227149,
+      "conclusion": "success",
+      "category": "FORMAL_VALIDITY"
+    },
+    {
+      "check_run_id": 113995713642,
+      "job": "python-rhrc",
+      "workflow_run_id": 37982227149,
+      "conclusion": "success",
+      "category": "REGRESSION"
+    },
+    {
+      "check_run_id": 113995713583,
+      "job": "r003-normalization-audit",
+      "workflow_run_id": 37982227149,
+      "conclusion": "success",
+      "category": "REGRESSION"
+    },
+    {
+      "check_run_id": 113995713351,
+      "job": "rhkg-compiler-receipt",
+      "workflow_run_id": 37982227149,
+      "conclusion": "success",
+      "category": "FORMAL_VALIDITY"
+    },
+    {
+      "check_run_id": 113995331460,
+      "job": "Extended audit shard 7",
+      "workflow_run_id": 37982226957,
+      "conclusion": "success",
+      "category": "REGRESSION"
+    },
+    {
+      "check_run_id": 113995331459,
+      "job": "Extended audit shard 6",
+      "workflow_run_id": 37982226957,
+      "conclusion": "success",
+      "category": "REGRESSION"
+    },
+    {
+      "check_run_id": 113995331445,
+      "job": "Extended audit shard 2",
+      "workflow_run_id": 37982226957,
+      "conclusion": "success",
+      "category": "REGRESSION"
+    },
+    {
+      "check_run_id": 113995331410,
+      "job": "Extended audit shard 4",
+      "workflow_run_id": 37982226957,
+      "conclusion": "success",
+      "category": "REGRESSION"
+    },
+    {
+      "check_run_id": 113995331388,
+      "job": "Extended audit shard 3",
+      "workflow_run_id": 37982226957,
+      "conclusion": "success",
+      "category": "REGRESSION"
+    },
+    {
+      "check_run_id": 113995331304,
+      "job": "Extended audit shard 1",
+      "workflow_run_id": 37982226957,
+      "conclusion": "success",
+      "category": "REGRESSION"
+    },
+    {
+      "check_run_id": 113995331270,
+      "job": "Extended audit shard 5",
+      "workflow_run_id": 37982226957,
+      "conclusion": "success",
+      "category": "REGRESSION"
+    },
+    {
+      "check_run_id": 113995331128,
+      "job": "Extended audit shard 0",
+      "workflow_run_id": 37982226957,
+      "conclusion": "success",
+      "category": "REGRESSION"
+    },
+    {
+      "check_run_id": 113995330890,
+      "job": "Audit runner adversarial regressions",
+      "workflow_run_id": 37982226957,
+      "conclusion": "success",
+      "category": "REGRESSION"
+    },
+    {
+      "check_run_id": 113995329435,
+      "job": "post196-q14-residual-cell-replay",
+      "workflow_run_id": 37982227004,
+      "conclusion": "success",
+      "category": "RESEARCH_PRODUCING"
+    },
+    {
+      "check_run_id": 113995329403,
+      "job": "lean-production-frontier",
+      "workflow_run_id": 37982226923,
+      "conclusion": "success",
+      "category": "FORMAL_VALIDITY"
+    },
+    {
+      "check_run_id": 113995329339,
+      "job": "post192-parity-trajectory-rigidity",
+      "workflow_run_id": 37982226944,
+      "conclusion": "success",
+      "category": "RESEARCH_PRODUCING"
+    },
+    {
+      "check_run_id": 113995329273,
+      "job": "post198-q14-source-mechanism",
+      "workflow_run_id": 37982226834,
+      "conclusion": "success",
+      "category": "RESEARCH_PRODUCING"
+    },
+    {
+      "check_run_id": 113995329249,
+      "job": "post214-kernel-dual-geometry",
+      "workflow_run_id": 37982226840,
+      "conclusion": "success",
+      "category": "RESEARCH_PRODUCING"
+    },
+    {
+      "check_run_id": 113995329236,
+      "job": "lean-strength-audit",
+      "workflow_run_id": 37982226850,
+      "conclusion": "success",
+      "category": "FORMAL_VALIDITY"
+    },
+    {
+      "check_run_id": 113995329219,
+      "job": "lean-first-crossing",
+      "workflow_run_id": 37982226850,
+      "conclusion": "success",
+      "category": "FORMAL_VALIDITY"
+    },
+    {
+      "check_run_id": 113995329182,
+      "job": "lean-contact",
+      "workflow_run_id": 37982226850,
+      "conclusion": "success",
+      "category": "FORMAL_VALIDITY"
+    },
+    {
+      "check_run_id": 113995329174,
+      "job": "lean-d-bindings",
+      "workflow_run_id": 37982226850,
+      "conclusion": "success",
+      "category": "FORMAL_VALIDITY"
+    },
+    {
+      "check_run_id": 113995329122,
+      "job": "lean-b",
+      "workflow_run_id": 37982226850,
+      "conclusion": "success",
+      "category": "FORMAL_VALIDITY"
+    },
+    {
+      "check_run_id": 113995329103,
+      "job": "post222-biregular-zero-shift-scalar",
+      "workflow_run_id": 37982226811,
+      "conclusion": "success",
+      "category": "RESEARCH_PRODUCING"
+    },
+    {
+      "check_run_id": 113995329100,
+      "job": "lean-c",
+      "workflow_run_id": 37982226850,
+      "conclusion": "success",
+      "category": "FORMAL_VALIDITY"
+    },
+    {
+      "check_run_id": 113995329057,
+      "job": "lean-a",
+      "workflow_run_id": 37982226850,
+      "conclusion": "success",
+      "category": "FORMAL_VALIDITY"
+    },
+    {
+      "check_run_id": 113995329005,
+      "job": "post190-canonical-realizability",
+      "workflow_run_id": 37982226875,
+      "conclusion": "success",
+      "category": "RESEARCH_PRODUCING"
+    },
+    {
+      "check_run_id": 113995328981,
+      "job": "research-frontier-measurement",
+      "workflow_run_id": 37982226923,
+      "conclusion": "success",
+      "category": "RESEARCH_PRODUCING"
+    },
+    {
+      "check_run_id": 113995328847,
+      "job": "post194-parity-trajectory-sharp-enclosure",
+      "workflow_run_id": 37982226843,
+      "conclusion": "success",
+      "category": "RESEARCH_PRODUCING"
+    },
+    {
+      "check_run_id": 113995328738,
+      "job": "fast-integrity",
+      "workflow_run_id": 37982226850,
+      "conclusion": "success",
+      "category": "FORMAL_VALIDITY"
+    },
+    {
+      "check_run_id": 113995328587,
+      "job": "contact-quotient-research",
+      "workflow_run_id": 37982226833,
+      "conclusion": "success",
+      "category": "RESEARCH_PRODUCING"
+    },
+    {
+      "check_run_id": 113995328530,
+      "job": "post202-q14-composite-parity-gap",
+      "workflow_run_id": 37982226789,
+      "conclusion": "success",
+      "category": "RESEARCH_PRODUCING"
+    },
+    {
+      "check_run_id": 113995328463,
+      "job": "research-generated-contact",
+      "workflow_run_id": 37982226794,
+      "conclusion": "success",
+      "category": "RESEARCH_PRODUCING"
+    },
+    {
+      "check_run_id": 113995328457,
+      "job": "lean-production-contact",
+      "workflow_run_id": 37982226794,
+      "conclusion": "success",
+      "category": "FORMAL_VALIDITY"
+    },
+    {
+      "check_run_id": 113995328187,
+      "job": "lean-permansson",
+      "workflow_run_id": 37982226803,
+      "conclusion": "success",
+      "category": "FORMAL_VALIDITY"
+    },
+    {
+      "check_run_id": 113995328093,
+      "job": "lean-generated-contact",
+      "workflow_run_id": 37982226794,
+      "conclusion": "success",
+      "category": "FORMAL_VALIDITY"
+    }
+  ],
+  "post284_branch_harvest": {
+    "pr": 285,
+    "checked_head": "7ec7bceff8222b97dfa986e3b2479d3d229f6081",
+    "source": "GitHub check-runs API via MCP, harvested 2026-10-10 after the check suite on 7ec7bce completed",
+    "totals": {
+      "check_runs": 40,
+      "distinct_workflow_runs": 15,
+      "success": 40
+    },
+    "post284_jobs": {
+      "lean-source-inertia": "success: every post-284 Lean target built; axiom_audit and the promoted-scope proof-escape check passed",
+      "source-falsifier-research": "success: attached SymPy falsifier, F01-F12 suite, disposition firewall, log3 certificate, follow-up regressions (M24/M30/M47 exact, M41/M43 interval evidence, M42 sanity)"
+    },
+    "terminal_claim": "RH_OPEN",
+    "check_runs": [
+      {
+        "check_run_id": 114148028923,
+        "job": "contact-calculus-complete",
+        "workflow_run_id": 38027779919,
+        "conclusion": "success",
+        "category": "REGRESSION"
+      },
+      {
+        "check_run_id": 114147825819,
+        "job": "campaign-complete",
+        "workflow_run_id": 38027779937,
+        "conclusion": "success",
+        "category": "REGRESSION"
+      },
+      {
+        "check_run_id": 114145802640,
+        "job": "arb-contact-balance",
+        "workflow_run_id": 38027779919,
+        "conclusion": "success",
+        "category": "RESEARCH_PRODUCING"
+      },
+      {
+        "check_run_id": 114143161546,
+        "job": "Complete 44-check execution harvest",
+        "workflow_run_id": 38027779927,
+        "conclusion": "success",
+        "category": "REGRESSION"
+      },
+      {
+        "check_run_id": 114142192397,
+        "job": "Extended audit shard 7",
+        "workflow_run_id": 38027779927,
+        "conclusion": "success",
+        "category": "REGRESSION"
+      },
+      {
+        "check_run_id": 114142192169,
+        "job": "Extended audit shard 5",
+        "workflow_run_id": 38027779927,
+        "conclusion": "success",
+        "category": "REGRESSION"
+      },
+      {
+        "check_run_id": 114142192140,
+        "job": "Extended audit shard 1",
+        "workflow_run_id": 38027779927,
+        "conclusion": "success",
+        "category": "REGRESSION"
+      },
+      {
+        "check_run_id": 114142192125,
+        "job": "Extended audit shard 6",
+        "workflow_run_id": 38027779927,
+        "conclusion": "success",
+        "category": "REGRESSION"
+      },
+      {
+        "check_run_id": 114142192109,
+        "job": "Extended audit shard 0",
+        "workflow_run_id": 38027779927,
+        "conclusion": "success",
+        "category": "REGRESSION"
+      },
+      {
+        "check_run_id": 114142192107,
+        "job": "Extended audit shard 2",
+        "workflow_run_id": 38027779927,
+        "conclusion": "success",
+        "category": "REGRESSION"
+      },
+      {
+        "check_run_id": 114142192097,
+        "job": "Extended audit shard 3",
+        "workflow_run_id": 38027779927,
+        "conclusion": "success",
+        "category": "REGRESSION"
+      },
+      {
+        "check_run_id": 114142192089,
+        "job": "Extended audit shard 4",
+        "workflow_run_id": 38027779927,
+        "conclusion": "success",
+        "category": "REGRESSION"
+      },
+      {
+        "check_run_id": 114142192043,
+        "job": "source-falsifier-research",
+        "workflow_run_id": 38027779993,
+        "conclusion": "success",
+        "category": "RESEARCH_PRODUCING"
+      },
+      {
+        "check_run_id": 114142191936,
+        "job": "post196-q14-residual-cell-replay",
+        "workflow_run_id": 38027779913,
+        "conclusion": "success",
+        "category": "RESEARCH_PRODUCING"
+      },
+      {
+        "check_run_id": 114142191926,
+        "job": "lean-d-bindings",
+        "workflow_run_id": 38027779937,
+        "conclusion": "success",
+        "category": "FORMAL_VALIDITY"
+      },
+      {
+        "check_run_id": 114142191922,
+        "job": "Audit runner adversarial regressions",
+        "workflow_run_id": 38027779927,
+        "conclusion": "success",
+        "category": "REGRESSION"
+      },
+      {
+        "check_run_id": 114142191918,
+        "job": "fast-integrity",
+        "workflow_run_id": 38027779937,
+        "conclusion": "success",
+        "category": "FORMAL_VALIDITY"
+      },
+      {
+        "check_run_id": 114142191902,
+        "job": "lean-contact",
+        "workflow_run_id": 38027779937,
+        "conclusion": "success",
+        "category": "FORMAL_VALIDITY"
+      },
+      {
+        "check_run_id": 114142191880,
+        "job": "lean-a",
+        "workflow_run_id": 38027779937,
+        "conclusion": "success",
+        "category": "FORMAL_VALIDITY"
+      },
+      {
+        "check_run_id": 114142191871,
+        "job": "lean-first-crossing",
+        "workflow_run_id": 38027779937,
+        "conclusion": "success",
+        "category": "FORMAL_VALIDITY"
+      },
+      {
+        "check_run_id": 114142191865,
+        "job": "lean-source-inertia",
+        "workflow_run_id": 38027779993,
+        "conclusion": "success",
+        "category": "FORMAL_VALIDITY"
+      },
+      {
+        "check_run_id": 114142191853,
+        "job": "lean-strength-audit",
+        "workflow_run_id": 38027779937,
+        "conclusion": "success",
+        "category": "FORMAL_VALIDITY"
+      },
+      {
+        "check_run_id": 114142191845,
+        "job": "lean-c",
+        "workflow_run_id": 38027779937,
+        "conclusion": "success",
+        "category": "FORMAL_VALIDITY"
+      },
+      {
+        "check_run_id": 114142191835,
+        "job": "post190-canonical-realizability",
+        "workflow_run_id": 38027779981,
+        "conclusion": "success",
+        "category": "RESEARCH_PRODUCING"
+      },
+      {
+        "check_run_id": 114142191783,
+        "job": "post214-kernel-dual-geometry",
+        "workflow_run_id": 38027779929,
+        "conclusion": "success",
+        "category": "RESEARCH_PRODUCING"
+      },
+      {
+        "check_run_id": 114142191781,
+        "job": "lean-compressed-calculus",
+        "workflow_run_id": 38027779919,
+        "conclusion": "success",
+        "category": "FORMAL_VALIDITY"
+      },
+      {
+        "check_run_id": 114142191766,
+        "job": "post198-q14-source-mechanism",
+        "workflow_run_id": 38027779926,
+        "conclusion": "success",
+        "category": "RESEARCH_PRODUCING"
+      },
+      {
+        "check_run_id": 114142191736,
+        "job": "lean-contact-completion",
+        "workflow_run_id": 38027779919,
+        "conclusion": "success",
+        "category": "FORMAL_VALIDITY"
+      },
+      {
+        "check_run_id": 114142191731,
+        "job": "lean-b",
+        "workflow_run_id": 38027779937,
+        "conclusion": "success",
+        "category": "FORMAL_VALIDITY"
+      },
+      {
+        "check_run_id": 114142191721,
+        "job": "post200-q14-discrepancy-mechanism",
+        "workflow_run_id": 38027779924,
+        "conclusion": "success",
+        "category": "RESEARCH_PRODUCING"
+      },
+      {
+        "check_run_id": 114142191677,
+        "job": "rhkg-compiler-receipt",
+        "workflow_run_id": 38027779900,
+        "conclusion": "success",
+        "category": "FORMAL_VALIDITY"
+      },
+      {
+        "check_run_id": 114142191665,
+        "job": "python-rhrc",
+        "workflow_run_id": 38027779900,
+        "conclusion": "success",
+        "category": "REGRESSION"
+      },
+      {
+        "check_run_id": 114142191662,
+        "job": "post222-biregular-zero-shift-scalar",
+        "workflow_run_id": 38027779908,
+        "conclusion": "success",
+        "category": "RESEARCH_PRODUCING"
+      },
+      {
+        "check_run_id": 114142191657,
+        "job": "r003-normalization-audit",
+        "workflow_run_id": 38027779900,
+        "conclusion": "success",
+        "category": "REGRESSION"
+      },
+      {
+        "check_run_id": 114142191646,
+        "job": "post202-q14-composite-parity-gap",
+        "workflow_run_id": 38027779902,
+        "conclusion": "success",
+        "category": "RESEARCH_PRODUCING"
+      },
+      {
+        "check_run_id": 114142191631,
+        "job": "research-calibration",
+        "workflow_run_id": 38027779919,
+        "conclusion": "success",
+        "category": "RESEARCH_PRODUCING"
+      },
+      {
+        "check_run_id": 114142191510,
+        "job": "post192-parity-trajectory-rigidity",
+        "workflow_run_id": 38027779897,
+        "conclusion": "success",
+        "category": "RESEARCH_PRODUCING"
+      },
+      {
+        "check_run_id": 114142191488,
+        "job": "lean",
+        "workflow_run_id": 38027779900,
+        "conclusion": "success",
+        "category": "FORMAL_VALIDITY"
+      },
+      {
+        "check_run_id": 114142191450,
+        "job": "post194-parity-trajectory-sharp-enclosure",
+        "workflow_run_id": 38027779905,
+        "conclusion": "success",
+        "category": "RESEARCH_PRODUCING"
+      },
+      {
+        "check_run_id": 114142191265,
+        "job": "lean-permansson",
+        "workflow_run_id": 38027779911,
+        "conclusion": "success",
+        "category": "FORMAL_VALIDITY"
+      }
+    ],
+    "review_resolution": "Codex P1 on research/RHRC/graph/validate.py (committed RHKG snapshot stale; pre-existing on main) is resolved in the follow-up commit. Relations are stored as 16 fixed shards research/RHRC/graph/generated/relations/relations-<0-f>.jsonl keyed on the first hex digit of the sha256 relation id. Serialization equivalence: on the pre-regeneration 311,817-row snapshot, the key-order concatenation of the shards is byte-identical to the former relations.jsonl. Committed state: the full derived state is re-materialized from this tree, so a standalone validate.py and materialize_derived_state.py --check pass on it. The regenerated relation set has about 338k rows (REPOSITORY_COVERAGE.json relation_count is authoritative), and each shard is about 6.6-6.8 MiB.",
+    "path_filtered_dispatch": {
+      "head": "fc14e257d4150302589ae0dc935f07a133bbb62c",
+      "reason": "path-filtered workflows that did not trigger on the PR, dispatched with workflow_dispatch on the PR branch",
+      "runs": [
+        {
+          "workflow": "rhrc_contact_quotient.yml",
+          "run_id": 38052896435,
+          "conclusion": "success"
+        },
+        {
+          "workflow": "rhrc_post204_pair_d_structural_countermodel.yml",
+          "run_id": 38052898239,
+          "conclusion": "success"
+        },
+        {
+          "workflow": "rhrc_post272_first_contact_atlas.yml",
+          "run_id": 38052899837,
+          "conclusion": "success"
+        },
+        {
+          "workflow": "rhrc_post280_saturation_frontier.yml",
+          "run_id": 38052901806,
+          "conclusion": "success"
+        },
+        {
+          "workflow": "rhrc_post281_generated_contact_frontier.yml",
+          "run_id": 38052903528,
+          "conclusion": "success"
+        }
+      ]
+    }
+  }
+}

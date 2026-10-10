@@ -130,11 +130,25 @@ class ContactCalculusTests(unittest.TestCase):
         rec["sign"]="NEGATIVE" if rec["sign"]!="NEGATIVE" else "POSITIVE"
         with self.assertRaises(SystemExit): contract.validate_results_dict(out)
 
-    def test_post282_claims_are_candidate_bound_not_promoted(self):
-        expected={
-            "R003_COMPRESSED_PRODUCTION_C2":"Zeta23.CCM.canonicalEvenCompressedC2_proved",
-            "R003_WEIGHTED_PRODUCTION_PAIR_BALANCE":"Zeta23.CCM.canonicalSecondPairing_euler_eq_productionSaturationGap",
+    def test_post284_premise_free_claims_promoted_individually(self):
+        promoted={
+            "R003_COMPRESSED_PRODUCTION_C2":"Zeta23.CCM.canonicalEvenCompressedC2_with_jets",
             "R003_INHERITED_FIRST_VARIATION_RESTRICTION":"Zeta23.CCM.GeneratedStrictEvenContact.firstVariation_eq_zero_of_inherited",
+        }
+        registry=json.loads((RHRC/"CLAIM_REGISTRY.json").read_text())
+        claims={x["id"]:x for x in registry["claims"]}
+        registered=json.loads((RHRC/"REGISTERED_THEOREM_BINDINGS.json").read_text())
+        r003=json.loads((RHRC/"R003_PROMOTED_BINDINGS.json").read_text())
+        for cid,theorem in promoted.items():
+            self.assertEqual(claims[cid]["status"],"PROVED_UNCONDITIONAL")
+            self.assertNotIn("candidate_binding",claims[cid])
+            self.assertEqual(claims[cid]["theorem"],theorem)
+            self.assertIn(cid,{x["id"] for x in registered["bindings"]})
+            self.assertIn(cid,{x["id"] for x in r003["bindings"]})
+
+    def test_post282_f04_conditional_claims_are_candidate_bound_not_promoted(self):
+        expected={
+            "R003_WEIGHTED_PRODUCTION_PAIR_BALANCE":"Zeta23.CCM.canonicalSecondPairing_euler_eq_productionSaturationGap",
             "R003_COMPLETED_STRICT_EVEN_CONTACT_FRONTIER":"Zeta23.CCM.GeneratedStrictEvenContact.completed_production_frontier",
         }
         registry=json.loads((RHRC/"CLAIM_REGISTRY.json").read_text())

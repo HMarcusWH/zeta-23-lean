@@ -31,6 +31,18 @@
       "root_theorem": "Zeta23.ExceptionalZero.globalBottomResidualExclusion_iff_riemannHypothesis"
     },
     {
+      "claim_id": "AUDIT_GLOBAL_GROUND_PROPAGATION_IMPLIES_RH",
+      "closure_sha256": "6ba1c5f4b7a215f429b176213f4b8984dd57afb18dcf5fbb24bc365b29e81960",
+      "local_dependency_count": 1581,
+      "root_theorem": "Zeta23.RHRC.riemannHypothesis_of_canonicalGlobalGroundPropagation_smallAperture"
+    },
+    {
+      "claim_id": "AUDIT_UNIFORM_DOMINATION_IMPLIES_RH",
+      "closure_sha256": "09025c4c022c534f8ca9542038a4ac82a29e44d482e90e941d0d4409e22c59ab",
+      "local_dependency_count": 1791,
+      "root_theorem": "Zeta23.RHRC.riemannHypothesis_of_canonicalUniformDomination"
+    },
+    {
       "claim_id": "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
       "closure_sha256": "a995bc099cd3c1f9b450bb6650e00e43aee18b73d8a33c1a7efe534118de5322",
       "local_dependency_count": 2660,
@@ -169,6 +181,12 @@
       "root_theorem": "Zeta23.CCM.globalParitySuccessorBottom_nonneg_of_jointCofinal_lowerBounds"
     },
     {
+      "claim_id": "R003_COMPRESSED_PRODUCTION_C2",
+      "closure_sha256": "2d6998c6dc06f80b4a6d305487934ab2e1c8ea4b67ab5f92b90580c45a70ace0",
+      "local_dependency_count": 460,
+      "root_theorem": "Zeta23.CCM.canonicalEvenCompressedC2_with_jets"
+    },
+    {
       "claim_id": "R003_CONSTRAINED_CANONICAL_DISPLACEMENT",
       "closure_sha256": "71bcade8a8b47b0fdaaa70731f01e42d134ab7743ddb7e71524caf4d1ef1c52a",
       "local_dependency_count": 83,
@@ -223,6 +241,12 @@
       "root_theorem": "Zeta23.CCM.euclideanCenteredZeroExtend_mem_euclideanBoundaryFlatSubspace"
     },
     {
+      "claim_id": "R003_EVENTUAL_APERTURE_PARITY_BADNESS_FROM_OFFLINE_ZERO",
+      "closure_sha256": "4323fbfbc6d472002c1130b94b235babc4c0b8cb12410a40df42e28c44622bb4",
+      "local_dependency_count": 1320,
+      "root_theorem": "Zeta23.ExceptionalZero.eventually_all_apertures_have_anyParityBad_of_offLine_zero"
+    },
+    {
       "claim_id": "R003_EVEN_CONSTRAINED_DISPLACEMENT_COLLAPSE",
       "closure_sha256": "0ee0d1a65ae58ba7f0e93964455153f9f65df3f1eb16cee807840c194cbef20b",
       "local_dependency_count": 95,
@@ -271,6 +295,18 @@
       "root_theorem": "Zeta23.CCM.negative_eigenmode_paritySuccShell_projection_ne_zero"
     },
     {
+      "claim_id": "R003_FIXED_N_GROUND_CONTINUITY",
+      "closure_sha256": "7595698a3496743987127beef5f2950c5ac1252a7cef2f66972bf7fa9fe1bde6",
+      "local_dependency_count": 428,
+      "root_theorem": "Zeta23.CCM.canonicalFixedNGroundContinuity_proved"
+    },
+    {
+      "claim_id": "R003_FIXED_N_GROUND_SIGN_OPPOSITION",
+      "closure_sha256": "01d7eae81b55ab31f7985a07823b332c7355691c550bf280acfcfdabe064829d",
+      "local_dependency_count": 1572,
+      "root_theorem": "Zeta23.ExceptionalZero.exists_fixedN_ground_sign_opposition_of_offLine_zero"
+    },
+    {
       "claim_id": "R003_FIXED_PARITY_BAD_TAIL_FROM_OFFLINE_ZERO",
       "closure_sha256": "d15b9757a45390aa73814677c7de0f8525838cc5ae7709da5ae8c66183b2e6d1",
       "local_dependency_count": 1355,
@@ -311,6 +347,12 @@
       "closure_sha256": "0a5bf90e19fd39dc576a8074a8230b7d48ae25e8474b360fb1ed0215b5200617",
       "local_dependency_count": 315,
       "root_theorem": "Zeta23.CCM.globalParitySuccessorBottom_neg_iff_anyParityBad"
+    },
+    {
+      "claim_id": "R003_INHERITED_FIRST_VARIATION_RESTRICTION",
+      "closure_sha256": "0e35083a69bcecad468562aa1cdb35d4e51477aa778d97b6e24a85f99805fe44",
+      "local_dependency_count": 1197,
+      "root_theorem": "Zeta23.CCM.GeneratedStrictEvenContact.firstVariation_eq_zero_of_inherited"
     },
     {
       "claim_id": "R003_KERNEL_EF_EXTENSION",
@@ -359,6 +401,18 @@
       "closure_sha256": "7ba1e421b721e205a64d41a4cd1bdbaadd287abc90dd79ca0730805a4d991e25",
       "local_dependency_count": 1320,
       "root_theorem": "Zeta23.ExceptionalZero.exists_fixedAperture_forall_ge_ne_zero_mem_euclideanBoundaryFlatSubspace_negativeCanonicalInnerSelf_of_offLine_zero"
+    },
+    {
+      "claim_id": "R003_OFFLINE_ZERO_FIXED_N_ZERO_CONTACT",
+      "closure_sha256": "11711326ab8908e363835225150ff44693f8fe7ceaf69e8ccf0d71f92b377517",
+      "local_dependency_count": 1805,
+      "root_theorem": "Zeta23.ExceptionalZero.nonempty_globalParityBottomZeroContact_proved_of_offLine_zero"
+    },
+    {
+      "claim_id": "R003_OFFLINE_ZERO_ONE_STEP_DOMINATION_FAILURE",
+      "closure_sha256": "ed26e7ab8993707d3155a8fbdb75c44e94481bebe960d583d6810c37eae5cd2b",
+      "local_dependency_count": 1780,
+      "root_theorem": "Zeta23.ExceptionalZero.exists_globalFirstBad_not_canonicalOneStepDomination_of_offLine_zero"
     },
     {
       "claim_id": "R003_PARITY_BAD_NEGATIVE_EIGENMODE",
@@ -419,6 +473,12 @@
       "closure_sha256": "dc0f9f1040fe1dc0f6a692d4469213db1136e5fc3e6b12947276ada8a64441f1",
       "local_dependency_count": 130,
       "root_theorem": "Zeta23.CCM.dictionaryResidualTest_admissible"
+    },
+    {
+      "claim_id": "R003_SMALL_APERTURE_GROUND_SPECTRUM",
+      "closure_sha256": "919690451a625c11a399569d2d199e863f51e6380d49d562dda593be8ae2f29d",
+      "local_dependency_count": 700,
+      "root_theorem": "Zeta23.CCM.one_le_globalParitySuccessorBottom_of_smallAperture"
     },
     {
       "claim_id": "R003_SMALL_APERTURE_POSITIVE_BASE",
@@ -591,6 +651,20 @@
       "superset_count": 2134
     },
     {
+      "difference_count": 1466,
+      "subset_claim_id": "R001_FILTERED_ZERO_POLE",
+      "subset_count": 115,
+      "superset_claim_id": "AUDIT_GLOBAL_GROUND_PROPAGATION_IMPLIES_RH",
+      "superset_count": 1581
+    },
+    {
+      "difference_count": 1676,
+      "subset_claim_id": "R001_FILTERED_ZERO_POLE",
+      "subset_count": 115,
+      "superset_claim_id": "AUDIT_UNIFORM_DOMINATION_IMPLIES_RH",
+      "superset_count": 1791
+    },
+    {
       "difference_count": 2545,
       "subset_claim_id": "R001_FILTERED_ZERO_POLE",
       "subset_count": 115,
@@ -617,6 +691,13 @@
       "subset_count": 115,
       "superset_claim_id": "R003_EUCLIDEAN_CONSTRAINED_NEGATIVE_OBSTRUCTION",
       "superset_count": 1288
+    },
+    {
+      "difference_count": 1205,
+      "subset_claim_id": "R001_FILTERED_ZERO_POLE",
+      "subset_count": 115,
+      "superset_claim_id": "R003_EVENTUAL_APERTURE_PARITY_BADNESS_FROM_OFFLINE_ZERO",
+      "superset_count": 1320
     },
     {
       "difference_count": 1146,
@@ -647,6 +728,13 @@
       "superset_count": 1526
     },
     {
+      "difference_count": 1457,
+      "subset_claim_id": "R001_FILTERED_ZERO_POLE",
+      "subset_count": 115,
+      "superset_claim_id": "R003_FIXED_N_GROUND_SIGN_OPPOSITION",
+      "superset_count": 1572
+    },
+    {
       "difference_count": 1240,
       "subset_claim_id": "R001_FILTERED_ZERO_POLE",
       "subset_count": 115,
@@ -666,6 +754,20 @@
       "subset_count": 115,
       "superset_claim_id": "R003_NESTED_EUCLIDEAN_NEGATIVE_OBSTRUCTION",
       "superset_count": 1320
+    },
+    {
+      "difference_count": 1690,
+      "subset_claim_id": "R001_FILTERED_ZERO_POLE",
+      "subset_count": 115,
+      "superset_claim_id": "R003_OFFLINE_ZERO_FIXED_N_ZERO_CONTACT",
+      "superset_count": 1805
+    },
+    {
+      "difference_count": 1665,
+      "subset_claim_id": "R001_FILTERED_ZERO_POLE",
+      "subset_count": 115,
+      "superset_claim_id": "R003_OFFLINE_ZERO_ONE_STEP_DOMINATION_FAILURE",
+      "superset_count": 1780
     },
     {
       "difference_count": 592,
@@ -724,6 +826,20 @@
       "superset_count": 2134
     },
     {
+      "difference_count": 1053,
+      "subset_claim_id": "R001_WEIL_BRIDGE",
+      "subset_count": 528,
+      "superset_claim_id": "AUDIT_GLOBAL_GROUND_PROPAGATION_IMPLIES_RH",
+      "superset_count": 1581
+    },
+    {
+      "difference_count": 1263,
+      "subset_claim_id": "R001_WEIL_BRIDGE",
+      "subset_count": 528,
+      "superset_claim_id": "AUDIT_UNIFORM_DOMINATION_IMPLIES_RH",
+      "superset_count": 1791
+    },
+    {
       "difference_count": 2132,
       "subset_claim_id": "R001_WEIL_BRIDGE",
       "subset_count": 528,
@@ -750,6 +866,13 @@
       "subset_count": 528,
       "superset_claim_id": "R003_EUCLIDEAN_CONSTRAINED_NEGATIVE_OBSTRUCTION",
       "superset_count": 1288
+    },
+    {
+      "difference_count": 792,
+      "subset_claim_id": "R001_WEIL_BRIDGE",
+      "subset_count": 528,
+      "superset_claim_id": "R003_EVENTUAL_APERTURE_PARITY_BADNESS_FROM_OFFLINE_ZERO",
+      "superset_count": 1320
     },
     {
       "difference_count": 733,
@@ -780,6 +903,13 @@
       "superset_count": 1526
     },
     {
+      "difference_count": 1044,
+      "subset_claim_id": "R001_WEIL_BRIDGE",
+      "subset_count": 528,
+      "superset_claim_id": "R003_FIXED_N_GROUND_SIGN_OPPOSITION",
+      "superset_count": 1572
+    },
+    {
       "difference_count": 827,
       "subset_claim_id": "R001_WEIL_BRIDGE",
       "subset_count": 528,
@@ -799,6 +929,20 @@
       "subset_count": 528,
       "superset_claim_id": "R003_NESTED_EUCLIDEAN_NEGATIVE_OBSTRUCTION",
       "superset_count": 1320
+    },
+    {
+      "difference_count": 1277,
+      "subset_claim_id": "R001_WEIL_BRIDGE",
+      "subset_count": 528,
+      "superset_claim_id": "R003_OFFLINE_ZERO_FIXED_N_ZERO_CONTACT",
+      "superset_count": 1805
+    },
+    {
+      "difference_count": 1252,
+      "subset_claim_id": "R001_WEIL_BRIDGE",
+      "subset_count": 528,
+      "superset_claim_id": "R003_OFFLINE_ZERO_ONE_STEP_DOMINATION_FAILURE",
+      "superset_count": 1780
     },
     {
       "difference_count": 179,
@@ -862,6 +1006,20 @@
       "subset_count": 27,
       "superset_claim_id": "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
       "superset_count": 2134
+    },
+    {
+      "difference_count": 1554,
+      "subset_claim_id": "R003_BOUNDARY_FLAT_EXACT_DIMENSION",
+      "subset_count": 27,
+      "superset_claim_id": "AUDIT_GLOBAL_GROUND_PROPAGATION_IMPLIES_RH",
+      "superset_count": 1581
+    },
+    {
+      "difference_count": 1764,
+      "subset_claim_id": "R003_BOUNDARY_FLAT_EXACT_DIMENSION",
+      "subset_count": 27,
+      "superset_claim_id": "AUDIT_UNIFORM_DOMINATION_IMPLIES_RH",
+      "superset_count": 1791
     },
     {
       "difference_count": 2633,
@@ -934,6 +1092,20 @@
       "superset_count": 1526
     },
     {
+      "difference_count": 401,
+      "subset_claim_id": "R003_BOUNDARY_FLAT_EXACT_DIMENSION",
+      "subset_count": 27,
+      "superset_claim_id": "R003_FIXED_N_GROUND_CONTINUITY",
+      "superset_count": 428
+    },
+    {
+      "difference_count": 1545,
+      "subset_claim_id": "R003_BOUNDARY_FLAT_EXACT_DIMENSION",
+      "subset_count": 27,
+      "superset_claim_id": "R003_FIXED_N_GROUND_SIGN_OPPOSITION",
+      "superset_count": 1572
+    },
+    {
       "difference_count": 1328,
       "subset_claim_id": "R003_BOUNDARY_FLAT_EXACT_DIMENSION",
       "subset_count": 27,
@@ -983,6 +1155,13 @@
       "superset_count": 315
     },
     {
+      "difference_count": 1170,
+      "subset_claim_id": "R003_BOUNDARY_FLAT_EXACT_DIMENSION",
+      "subset_count": 27,
+      "superset_claim_id": "R003_INHERITED_FIRST_VARIATION_RESTRICTION",
+      "superset_count": 1197
+    },
+    {
       "difference_count": 122,
       "subset_claim_id": "R003_BOUNDARY_FLAT_EXACT_DIMENSION",
       "subset_count": 27,
@@ -995,6 +1174,20 @@
       "subset_count": 27,
       "superset_claim_id": "R003_NESTED_EUCLIDEAN_NEGATIVE_OBSTRUCTION",
       "superset_count": 1320
+    },
+    {
+      "difference_count": 1778,
+      "subset_claim_id": "R003_BOUNDARY_FLAT_EXACT_DIMENSION",
+      "subset_count": 27,
+      "superset_claim_id": "R003_OFFLINE_ZERO_FIXED_N_ZERO_CONTACT",
+      "superset_count": 1805
+    },
+    {
+      "difference_count": 1753,
+      "subset_claim_id": "R003_BOUNDARY_FLAT_EXACT_DIMENSION",
+      "subset_count": 27,
+      "superset_claim_id": "R003_OFFLINE_ZERO_ONE_STEP_DOMINATION_FAILURE",
+      "superset_count": 1780
     },
     {
       "difference_count": 246,
@@ -1016,6 +1209,13 @@
       "subset_count": 27,
       "superset_claim_id": "R003_PARITY_TIE_GROUND_MULTIPLICITY",
       "superset_count": 299
+    },
+    {
+      "difference_count": 673,
+      "subset_claim_id": "R003_BOUNDARY_FLAT_EXACT_DIMENSION",
+      "subset_count": 27,
+      "superset_claim_id": "R003_SMALL_APERTURE_GROUND_SPECTRUM",
+      "superset_count": 700
     },
     {
       "difference_count": 1147,
@@ -1053,6 +1253,20 @@
       "superset_count": 2134
     },
     {
+      "difference_count": 588,
+      "subset_claim_id": "R003_BOUNDARY_FLAT_FINITE_WEIL_RESTRICTION",
+      "subset_count": 993,
+      "superset_claim_id": "AUDIT_GLOBAL_GROUND_PROPAGATION_IMPLIES_RH",
+      "superset_count": 1581
+    },
+    {
+      "difference_count": 798,
+      "subset_claim_id": "R003_BOUNDARY_FLAT_FINITE_WEIL_RESTRICTION",
+      "subset_count": 993,
+      "superset_claim_id": "AUDIT_UNIFORM_DOMINATION_IMPLIES_RH",
+      "superset_count": 1791
+    },
+    {
       "difference_count": 1667,
       "subset_claim_id": "R003_BOUNDARY_FLAT_FINITE_WEIL_RESTRICTION",
       "subset_count": 993,
@@ -1065,6 +1279,13 @@
       "subset_count": 993,
       "superset_claim_id": "R003_EUCLIDEAN_CONSTRAINED_NEGATIVE_OBSTRUCTION",
       "superset_count": 1288
+    },
+    {
+      "difference_count": 327,
+      "subset_claim_id": "R003_BOUNDARY_FLAT_FINITE_WEIL_RESTRICTION",
+      "subset_count": 993,
+      "superset_claim_id": "R003_EVENTUAL_APERTURE_PARITY_BADNESS_FROM_OFFLINE_ZERO",
+      "superset_count": 1320
     },
     {
       "difference_count": 268,
@@ -1095,6 +1316,13 @@
       "superset_count": 1526
     },
     {
+      "difference_count": 579,
+      "subset_claim_id": "R003_BOUNDARY_FLAT_FINITE_WEIL_RESTRICTION",
+      "subset_count": 993,
+      "superset_claim_id": "R003_FIXED_N_GROUND_SIGN_OPPOSITION",
+      "superset_count": 1572
+    },
+    {
       "difference_count": 362,
       "subset_claim_id": "R003_BOUNDARY_FLAT_FINITE_WEIL_RESTRICTION",
       "subset_count": 993,
@@ -1107,6 +1335,20 @@
       "subset_count": 993,
       "superset_claim_id": "R003_NESTED_EUCLIDEAN_NEGATIVE_OBSTRUCTION",
       "superset_count": 1320
+    },
+    {
+      "difference_count": 812,
+      "subset_claim_id": "R003_BOUNDARY_FLAT_FINITE_WEIL_RESTRICTION",
+      "subset_count": 993,
+      "superset_claim_id": "R003_OFFLINE_ZERO_FIXED_N_ZERO_CONTACT",
+      "superset_count": 1805
+    },
+    {
+      "difference_count": 787,
+      "subset_claim_id": "R003_BOUNDARY_FLAT_FINITE_WEIL_RESTRICTION",
+      "subset_count": 993,
+      "superset_claim_id": "R003_OFFLINE_ZERO_ONE_STEP_DOMINATION_FAILURE",
+      "superset_count": 1780
     },
     {
       "difference_count": 280,
@@ -1158,6 +1400,20 @@
       "superset_count": 2134
     },
     {
+      "difference_count": 1555,
+      "subset_claim_id": "R003_BOUNDARY_FLAT_PROJECTION",
+      "subset_count": 26,
+      "superset_claim_id": "AUDIT_GLOBAL_GROUND_PROPAGATION_IMPLIES_RH",
+      "superset_count": 1581
+    },
+    {
+      "difference_count": 1765,
+      "subset_claim_id": "R003_BOUNDARY_FLAT_PROJECTION",
+      "subset_count": 26,
+      "superset_claim_id": "AUDIT_UNIFORM_DOMINATION_IMPLIES_RH",
+      "superset_count": 1791
+    },
+    {
       "difference_count": 2634,
       "subset_claim_id": "R003_BOUNDARY_FLAT_PROJECTION",
       "subset_count": 26,
@@ -1177,6 +1433,13 @@
       "subset_count": 26,
       "superset_claim_id": "R003_EUCLIDEAN_CONSTRAINED_NEGATIVE_OBSTRUCTION",
       "superset_count": 1288
+    },
+    {
+      "difference_count": 1294,
+      "subset_claim_id": "R003_BOUNDARY_FLAT_PROJECTION",
+      "subset_count": 26,
+      "superset_claim_id": "R003_EVENTUAL_APERTURE_PARITY_BADNESS_FROM_OFFLINE_ZERO",
+      "superset_count": 1320
     },
     {
       "difference_count": 1235,
@@ -1207,6 +1470,13 @@
       "superset_count": 1526
     },
     {
+      "difference_count": 1546,
+      "subset_claim_id": "R003_BOUNDARY_FLAT_PROJECTION",
+      "subset_count": 26,
+      "superset_claim_id": "R003_FIXED_N_GROUND_SIGN_OPPOSITION",
+      "superset_count": 1572
+    },
+    {
       "difference_count": 1329,
       "subset_claim_id": "R003_BOUNDARY_FLAT_PROJECTION",
       "subset_count": 26,
@@ -1219,6 +1489,20 @@
       "subset_count": 26,
       "superset_claim_id": "R003_NESTED_EUCLIDEAN_NEGATIVE_OBSTRUCTION",
       "superset_count": 1320
+    },
+    {
+      "difference_count": 1779,
+      "subset_claim_id": "R003_BOUNDARY_FLAT_PROJECTION",
+      "subset_count": 26,
+      "superset_claim_id": "R003_OFFLINE_ZERO_FIXED_N_ZERO_CONTACT",
+      "superset_count": 1805
+    },
+    {
+      "difference_count": 1754,
+      "subset_claim_id": "R003_BOUNDARY_FLAT_PROJECTION",
+      "subset_count": 26,
+      "superset_claim_id": "R003_OFFLINE_ZERO_ONE_STEP_DOMINATION_FAILURE",
+      "superset_count": 1780
     },
     {
       "difference_count": 674,
@@ -1270,6 +1554,20 @@
       "superset_count": 2134
     },
     {
+      "difference_count": 1430,
+      "subset_claim_id": "R003_BOUNDARY_FLAT_WCONT_APPROXIMATION",
+      "subset_count": 151,
+      "superset_claim_id": "AUDIT_GLOBAL_GROUND_PROPAGATION_IMPLIES_RH",
+      "superset_count": 1581
+    },
+    {
+      "difference_count": 1640,
+      "subset_claim_id": "R003_BOUNDARY_FLAT_WCONT_APPROXIMATION",
+      "subset_count": 151,
+      "superset_claim_id": "AUDIT_UNIFORM_DOMINATION_IMPLIES_RH",
+      "superset_count": 1791
+    },
+    {
       "difference_count": 2509,
       "subset_claim_id": "R003_BOUNDARY_FLAT_WCONT_APPROXIMATION",
       "subset_count": 151,
@@ -1282,6 +1580,13 @@
       "subset_count": 151,
       "superset_claim_id": "R003_EUCLIDEAN_CONSTRAINED_NEGATIVE_OBSTRUCTION",
       "superset_count": 1288
+    },
+    {
+      "difference_count": 1169,
+      "subset_claim_id": "R003_BOUNDARY_FLAT_WCONT_APPROXIMATION",
+      "subset_count": 151,
+      "superset_claim_id": "R003_EVENTUAL_APERTURE_PARITY_BADNESS_FROM_OFFLINE_ZERO",
+      "superset_count": 1320
     },
     {
       "difference_count": 1110,
@@ -1312,6 +1617,13 @@
       "superset_count": 1526
     },
     {
+      "difference_count": 1421,
+      "subset_claim_id": "R003_BOUNDARY_FLAT_WCONT_APPROXIMATION",
+      "subset_count": 151,
+      "superset_claim_id": "R003_FIXED_N_GROUND_SIGN_OPPOSITION",
+      "superset_count": 1572
+    },
+    {
       "difference_count": 1204,
       "subset_claim_id": "R003_BOUNDARY_FLAT_WCONT_APPROXIMATION",
       "subset_count": 151,
@@ -1324,6 +1636,20 @@
       "subset_count": 151,
       "superset_claim_id": "R003_NESTED_EUCLIDEAN_NEGATIVE_OBSTRUCTION",
       "superset_count": 1320
+    },
+    {
+      "difference_count": 1654,
+      "subset_claim_id": "R003_BOUNDARY_FLAT_WCONT_APPROXIMATION",
+      "subset_count": 151,
+      "superset_claim_id": "R003_OFFLINE_ZERO_FIXED_N_ZERO_CONTACT",
+      "superset_count": 1805
+    },
+    {
+      "difference_count": 1629,
+      "subset_claim_id": "R003_BOUNDARY_FLAT_WCONT_APPROXIMATION",
+      "subset_count": 151,
+      "superset_claim_id": "R003_OFFLINE_ZERO_ONE_STEP_DOMINATION_FAILURE",
+      "superset_count": 1780
     },
     {
       "difference_count": 549,
@@ -1389,11 +1715,39 @@
       "superset_count": 1745
     },
     {
+      "difference_count": 1383,
+      "subset_claim_id": "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
+      "subset_count": 198,
+      "superset_claim_id": "AUDIT_GLOBAL_GROUND_PROPAGATION_IMPLIES_RH",
+      "superset_count": 1581
+    },
+    {
       "difference_count": 323,
       "subset_claim_id": "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
       "subset_count": 198,
       "superset_claim_id": "R003_CANONICAL_ARITHMETIC_GLOBAL_BOTTOM_LOWER_BOUND",
       "superset_count": 521
+    },
+    {
+      "difference_count": 1374,
+      "subset_claim_id": "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
+      "subset_count": 198,
+      "superset_claim_id": "R003_FIXED_N_GROUND_SIGN_OPPOSITION",
+      "superset_count": 1572
+    },
+    {
+      "difference_count": 1607,
+      "subset_claim_id": "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
+      "subset_count": 198,
+      "superset_claim_id": "R003_OFFLINE_ZERO_FIXED_N_ZERO_CONTACT",
+      "superset_count": 1805
+    },
+    {
+      "difference_count": 502,
+      "subset_claim_id": "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
+      "subset_count": 198,
+      "superset_claim_id": "R003_SMALL_APERTURE_GROUND_SPECTRUM",
+      "superset_count": 700
     },
     {
       "difference_count": 2137,
@@ -1429,6 +1783,20 @@
       "subset_count": 3,
       "superset_claim_id": "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
       "superset_count": 2134
+    },
+    {
+      "difference_count": 1578,
+      "subset_claim_id": "R003_CANONICAL_EUCLIDEAN_QUADRATIC_BRIDGE",
+      "subset_count": 3,
+      "superset_claim_id": "AUDIT_GLOBAL_GROUND_PROPAGATION_IMPLIES_RH",
+      "superset_count": 1581
+    },
+    {
+      "difference_count": 1788,
+      "subset_claim_id": "R003_CANONICAL_EUCLIDEAN_QUADRATIC_BRIDGE",
+      "subset_count": 3,
+      "superset_claim_id": "AUDIT_UNIFORM_DOMINATION_IMPLIES_RH",
+      "superset_count": 1791
     },
     {
       "difference_count": 2657,
@@ -1501,6 +1869,13 @@
       "superset_count": 527
     },
     {
+      "difference_count": 1569,
+      "subset_claim_id": "R003_CANONICAL_EUCLIDEAN_QUADRATIC_BRIDGE",
+      "subset_count": 3,
+      "superset_claim_id": "R003_FIXED_N_GROUND_SIGN_OPPOSITION",
+      "superset_count": 1572
+    },
+    {
       "difference_count": 1380,
       "subset_claim_id": "R003_CANONICAL_EUCLIDEAN_QUADRATIC_BRIDGE",
       "subset_count": 3,
@@ -1543,6 +1918,13 @@
       "superset_count": 315
     },
     {
+      "difference_count": 1194,
+      "subset_claim_id": "R003_CANONICAL_EUCLIDEAN_QUADRATIC_BRIDGE",
+      "subset_count": 3,
+      "superset_claim_id": "R003_INHERITED_FIRST_VARIATION_RESTRICTION",
+      "superset_count": 1197
+    },
+    {
       "difference_count": 1317,
       "subset_claim_id": "R003_CANONICAL_EUCLIDEAN_QUADRATIC_BRIDGE",
       "subset_count": 3,
@@ -1550,11 +1932,32 @@
       "superset_count": 1320
     },
     {
+      "difference_count": 1802,
+      "subset_claim_id": "R003_CANONICAL_EUCLIDEAN_QUADRATIC_BRIDGE",
+      "subset_count": 3,
+      "superset_claim_id": "R003_OFFLINE_ZERO_FIXED_N_ZERO_CONTACT",
+      "superset_count": 1805
+    },
+    {
+      "difference_count": 1777,
+      "subset_claim_id": "R003_CANONICAL_EUCLIDEAN_QUADRATIC_BRIDGE",
+      "subset_count": 3,
+      "superset_claim_id": "R003_OFFLINE_ZERO_ONE_STEP_DOMINATION_FAILURE",
+      "superset_count": 1780
+    },
+    {
       "difference_count": 98,
       "subset_claim_id": "R003_CANONICAL_EUCLIDEAN_QUADRATIC_BRIDGE",
       "subset_count": 3,
       "superset_claim_id": "R003_PARITY_BAD_NEGATIVE_EIGENMODE",
       "superset_count": 101
+    },
+    {
+      "difference_count": 697,
+      "subset_claim_id": "R003_CANONICAL_EUCLIDEAN_QUADRATIC_BRIDGE",
+      "subset_count": 3,
+      "superset_claim_id": "R003_SMALL_APERTURE_GROUND_SPECTRUM",
+      "superset_count": 700
     },
     {
       "difference_count": 518,
@@ -1606,6 +2009,13 @@
       "superset_count": 2134
     },
     {
+      "difference_count": 1740,
+      "subset_claim_id": "R003_CANONICAL_EUCLIDEAN_SYMMETRIC",
+      "subset_count": 51,
+      "superset_claim_id": "AUDIT_UNIFORM_DOMINATION_IMPLIES_RH",
+      "superset_count": 1791
+    },
+    {
       "difference_count": 2609,
       "subset_claim_id": "R003_CANONICAL_EUCLIDEAN_SYMMETRIC",
       "subset_count": 51,
@@ -1632,6 +2042,13 @@
       "subset_count": 51,
       "superset_claim_id": "R003_FIRST_BAD_SHELL_KKT_FROM_OFFLINE_ZERO",
       "superset_count": 1526
+    },
+    {
+      "difference_count": 377,
+      "subset_claim_id": "R003_CANONICAL_EUCLIDEAN_SYMMETRIC",
+      "subset_count": 51,
+      "superset_claim_id": "R003_FIXED_N_GROUND_CONTINUITY",
+      "superset_count": 428
     },
     {
       "difference_count": 1332,
@@ -1667,6 +2084,27 @@
       "subset_count": 51,
       "superset_claim_id": "R003_GLOBAL_PARITY_BOTTOM_SPECTRUM",
       "superset_count": 315
+    },
+    {
+      "difference_count": 1146,
+      "subset_claim_id": "R003_CANONICAL_EUCLIDEAN_SYMMETRIC",
+      "subset_count": 51,
+      "superset_claim_id": "R003_INHERITED_FIRST_VARIATION_RESTRICTION",
+      "superset_count": 1197
+    },
+    {
+      "difference_count": 1754,
+      "subset_claim_id": "R003_CANONICAL_EUCLIDEAN_SYMMETRIC",
+      "subset_count": 51,
+      "superset_claim_id": "R003_OFFLINE_ZERO_FIXED_N_ZERO_CONTACT",
+      "superset_count": 1805
+    },
+    {
+      "difference_count": 1729,
+      "subset_claim_id": "R003_CANONICAL_EUCLIDEAN_SYMMETRIC",
+      "subset_count": 51,
+      "superset_claim_id": "R003_OFFLINE_ZERO_ONE_STEP_DOMINATION_FAILURE",
+      "superset_count": 1780
     },
     {
       "difference_count": 50,
@@ -1774,6 +2212,13 @@
       "superset_count": 2134
     },
     {
+      "difference_count": 1741,
+      "subset_claim_id": "R003_CANONICAL_SOURCE_HERMITIAN",
+      "subset_count": 50,
+      "superset_claim_id": "AUDIT_UNIFORM_DOMINATION_IMPLIES_RH",
+      "superset_count": 1791
+    },
+    {
       "difference_count": 2610,
       "subset_claim_id": "R003_CANONICAL_SOURCE_HERMITIAN",
       "subset_count": 50,
@@ -1809,6 +2254,13 @@
       "superset_count": 1526
     },
     {
+      "difference_count": 378,
+      "subset_claim_id": "R003_CANONICAL_SOURCE_HERMITIAN",
+      "subset_count": 50,
+      "superset_claim_id": "R003_FIXED_N_GROUND_CONTINUITY",
+      "superset_count": 428
+    },
+    {
       "difference_count": 1333,
       "subset_claim_id": "R003_CANONICAL_SOURCE_HERMITIAN",
       "subset_count": 50,
@@ -1842,6 +2294,27 @@
       "subset_count": 50,
       "superset_claim_id": "R003_GLOBAL_PARITY_BOTTOM_SPECTRUM",
       "superset_count": 315
+    },
+    {
+      "difference_count": 1147,
+      "subset_claim_id": "R003_CANONICAL_SOURCE_HERMITIAN",
+      "subset_count": 50,
+      "superset_claim_id": "R003_INHERITED_FIRST_VARIATION_RESTRICTION",
+      "superset_count": 1197
+    },
+    {
+      "difference_count": 1755,
+      "subset_claim_id": "R003_CANONICAL_SOURCE_HERMITIAN",
+      "subset_count": 50,
+      "superset_claim_id": "R003_OFFLINE_ZERO_FIXED_N_ZERO_CONTACT",
+      "superset_count": 1805
+    },
+    {
+      "difference_count": 1730,
+      "subset_claim_id": "R003_CANONICAL_SOURCE_HERMITIAN",
+      "subset_count": 50,
+      "superset_claim_id": "R003_OFFLINE_ZERO_ONE_STEP_DOMINATION_FAILURE",
+      "superset_count": 1780
     },
     {
       "difference_count": 51,
@@ -1935,6 +2408,20 @@
       "superset_count": 2134
     },
     {
+      "difference_count": 1208,
+      "subset_claim_id": "R003_CCM_RHS_IDENTITY",
+      "subset_count": 373,
+      "superset_claim_id": "AUDIT_GLOBAL_GROUND_PROPAGATION_IMPLIES_RH",
+      "superset_count": 1581
+    },
+    {
+      "difference_count": 1418,
+      "subset_claim_id": "R003_CCM_RHS_IDENTITY",
+      "subset_count": 373,
+      "superset_claim_id": "AUDIT_UNIFORM_DOMINATION_IMPLIES_RH",
+      "superset_count": 1791
+    },
+    {
       "difference_count": 2287,
       "subset_claim_id": "R003_CCM_RHS_IDENTITY",
       "subset_count": 373,
@@ -1984,6 +2471,13 @@
       "superset_count": 1288
     },
     {
+      "difference_count": 947,
+      "subset_claim_id": "R003_CCM_RHS_IDENTITY",
+      "subset_count": 373,
+      "superset_claim_id": "R003_EVENTUAL_APERTURE_PARITY_BADNESS_FROM_OFFLINE_ZERO",
+      "superset_count": 1320
+    },
+    {
       "difference_count": 888,
       "subset_claim_id": "R003_CCM_RHS_IDENTITY",
       "subset_count": 373,
@@ -2024,6 +2518,13 @@
       "subset_count": 373,
       "superset_claim_id": "R003_FIRST_BAD_SHELL_PROJECTION",
       "superset_count": 527
+    },
+    {
+      "difference_count": 1199,
+      "subset_claim_id": "R003_CCM_RHS_IDENTITY",
+      "subset_count": 373,
+      "superset_claim_id": "R003_FIXED_N_GROUND_SIGN_OPPOSITION",
+      "superset_count": 1572
     },
     {
       "difference_count": 982,
@@ -2068,6 +2569,13 @@
       "superset_count": 704
     },
     {
+      "difference_count": 824,
+      "subset_claim_id": "R003_CCM_RHS_IDENTITY",
+      "subset_count": 373,
+      "superset_claim_id": "R003_INHERITED_FIRST_VARIATION_RESTRICTION",
+      "superset_count": 1197
+    },
+    {
       "difference_count": 788,
       "subset_claim_id": "R003_CCM_RHS_IDENTITY",
       "subset_count": 373,
@@ -2087,6 +2595,20 @@
       "subset_count": 373,
       "superset_claim_id": "R003_NESTED_EUCLIDEAN_NEGATIVE_OBSTRUCTION",
       "superset_count": 1320
+    },
+    {
+      "difference_count": 1432,
+      "subset_claim_id": "R003_CCM_RHS_IDENTITY",
+      "subset_count": 373,
+      "superset_claim_id": "R003_OFFLINE_ZERO_FIXED_N_ZERO_CONTACT",
+      "superset_count": 1805
+    },
+    {
+      "difference_count": 1407,
+      "subset_claim_id": "R003_CCM_RHS_IDENTITY",
+      "subset_count": 373,
+      "superset_claim_id": "R003_OFFLINE_ZERO_ONE_STEP_DOMINATION_FAILURE",
+      "superset_count": 1780
     },
     {
       "difference_count": 108,
@@ -2173,6 +2695,20 @@
       "superset_count": 2134
     },
     {
+      "difference_count": 1484,
+      "subset_claim_id": "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
+      "subset_count": 97,
+      "superset_claim_id": "AUDIT_GLOBAL_GROUND_PROPAGATION_IMPLIES_RH",
+      "superset_count": 1581
+    },
+    {
+      "difference_count": 1694,
+      "subset_claim_id": "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
+      "subset_count": 97,
+      "superset_claim_id": "AUDIT_UNIFORM_DOMINATION_IMPLIES_RH",
+      "superset_count": 1791
+    },
+    {
       "difference_count": 2563,
       "subset_claim_id": "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
       "subset_count": 97,
@@ -2222,6 +2758,20 @@
       "superset_count": 1526
     },
     {
+      "difference_count": 331,
+      "subset_claim_id": "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
+      "subset_count": 97,
+      "superset_claim_id": "R003_FIXED_N_GROUND_CONTINUITY",
+      "superset_count": 428
+    },
+    {
+      "difference_count": 1475,
+      "subset_claim_id": "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
+      "subset_count": 97,
+      "superset_claim_id": "R003_FIXED_N_GROUND_SIGN_OPPOSITION",
+      "superset_count": 1572
+    },
+    {
       "difference_count": 1286,
       "subset_claim_id": "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
       "subset_count": 97,
@@ -2264,11 +2814,32 @@
       "superset_count": 315
     },
     {
+      "difference_count": 1100,
+      "subset_claim_id": "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
+      "subset_count": 97,
+      "superset_claim_id": "R003_INHERITED_FIRST_VARIATION_RESTRICTION",
+      "superset_count": 1197
+    },
+    {
       "difference_count": 52,
       "subset_claim_id": "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
       "subset_count": 97,
       "superset_claim_id": "R003_LEAST_PARITY_BAD_SHELL",
       "superset_count": 149
+    },
+    {
+      "difference_count": 1708,
+      "subset_claim_id": "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
+      "subset_count": 97,
+      "superset_claim_id": "R003_OFFLINE_ZERO_FIXED_N_ZERO_CONTACT",
+      "superset_count": 1805
+    },
+    {
+      "difference_count": 1683,
+      "subset_claim_id": "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
+      "subset_count": 97,
+      "superset_claim_id": "R003_OFFLINE_ZERO_ONE_STEP_DOMINATION_FAILURE",
+      "superset_count": 1780
     },
     {
       "difference_count": 176,
@@ -2290,6 +2861,13 @@
       "subset_count": 97,
       "superset_claim_id": "R003_PARITY_TIE_GROUND_MULTIPLICITY",
       "superset_count": 299
+    },
+    {
+      "difference_count": 603,
+      "subset_claim_id": "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
+      "subset_count": 97,
+      "superset_claim_id": "R003_SMALL_APERTURE_GROUND_SPECTRUM",
+      "superset_count": 700
     },
     {
       "difference_count": 2080,
@@ -2325,6 +2903,20 @@
       "subset_count": 60,
       "superset_claim_id": "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
       "superset_count": 2134
+    },
+    {
+      "difference_count": 1521,
+      "subset_claim_id": "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
+      "subset_count": 60,
+      "superset_claim_id": "AUDIT_GLOBAL_GROUND_PROPAGATION_IMPLIES_RH",
+      "superset_count": 1581
+    },
+    {
+      "difference_count": 1731,
+      "subset_claim_id": "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
+      "subset_count": 60,
+      "superset_claim_id": "AUDIT_UNIFORM_DOMINATION_IMPLIES_RH",
+      "superset_count": 1791
     },
     {
       "difference_count": 2600,
@@ -2383,6 +2975,20 @@
       "superset_count": 1526
     },
     {
+      "difference_count": 368,
+      "subset_claim_id": "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
+      "subset_count": 60,
+      "superset_claim_id": "R003_FIXED_N_GROUND_CONTINUITY",
+      "superset_count": 428
+    },
+    {
+      "difference_count": 1512,
+      "subset_claim_id": "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
+      "subset_count": 60,
+      "superset_claim_id": "R003_FIXED_N_GROUND_SIGN_OPPOSITION",
+      "superset_count": 1572
+    },
+    {
       "difference_count": 1323,
       "subset_claim_id": "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
       "subset_count": 60,
@@ -2425,11 +3031,32 @@
       "superset_count": 315
     },
     {
+      "difference_count": 1137,
+      "subset_claim_id": "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
+      "subset_count": 60,
+      "superset_claim_id": "R003_INHERITED_FIRST_VARIATION_RESTRICTION",
+      "superset_count": 1197
+    },
+    {
       "difference_count": 89,
       "subset_claim_id": "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
       "subset_count": 60,
       "superset_claim_id": "R003_LEAST_PARITY_BAD_SHELL",
       "superset_count": 149
+    },
+    {
+      "difference_count": 1745,
+      "subset_claim_id": "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
+      "subset_count": 60,
+      "superset_claim_id": "R003_OFFLINE_ZERO_FIXED_N_ZERO_CONTACT",
+      "superset_count": 1805
+    },
+    {
+      "difference_count": 1720,
+      "subset_claim_id": "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
+      "subset_count": 60,
+      "superset_claim_id": "R003_OFFLINE_ZERO_ONE_STEP_DOMINATION_FAILURE",
+      "superset_count": 1780
     },
     {
       "difference_count": 213,
@@ -2451,6 +3078,13 @@
       "subset_count": 60,
       "superset_claim_id": "R003_PARITY_TIE_GROUND_MULTIPLICITY",
       "superset_count": 299
+    },
+    {
+      "difference_count": 640,
+      "subset_claim_id": "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
+      "subset_count": 60,
+      "superset_claim_id": "R003_SMALL_APERTURE_GROUND_SPECTRUM",
+      "superset_count": 700
     },
     {
       "difference_count": 2103,
@@ -2488,6 +3122,20 @@
       "superset_count": 2134
     },
     {
+      "difference_count": 1544,
+      "subset_claim_id": "R003_CONSTRAINED_REVERSAL_SYMMETRY",
+      "subset_count": 37,
+      "superset_claim_id": "AUDIT_GLOBAL_GROUND_PROPAGATION_IMPLIES_RH",
+      "superset_count": 1581
+    },
+    {
+      "difference_count": 1754,
+      "subset_claim_id": "R003_CONSTRAINED_REVERSAL_SYMMETRY",
+      "subset_count": 37,
+      "superset_claim_id": "AUDIT_UNIFORM_DOMINATION_IMPLIES_RH",
+      "superset_count": 1791
+    },
+    {
       "difference_count": 2623,
       "subset_claim_id": "R003_CONSTRAINED_REVERSAL_SYMMETRY",
       "subset_count": 37,
@@ -2507,6 +3155,13 @@
       "subset_count": 37,
       "superset_claim_id": "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
       "superset_count": 198
+    },
+    {
+      "difference_count": 1283,
+      "subset_claim_id": "R003_CONSTRAINED_REVERSAL_SYMMETRY",
+      "subset_count": 37,
+      "superset_claim_id": "R003_EVENTUAL_APERTURE_PARITY_BADNESS_FROM_OFFLINE_ZERO",
+      "superset_count": 1320
     },
     {
       "difference_count": 1442,
@@ -2530,6 +3185,13 @@
       "superset_count": 1526
     },
     {
+      "difference_count": 1535,
+      "subset_claim_id": "R003_CONSTRAINED_REVERSAL_SYMMETRY",
+      "subset_count": 37,
+      "superset_claim_id": "R003_FIXED_N_GROUND_SIGN_OPPOSITION",
+      "superset_count": 1572
+    },
+    {
       "difference_count": 1318,
       "subset_claim_id": "R003_CONSTRAINED_REVERSAL_SYMMETRY",
       "subset_count": 37,
@@ -2549,6 +3211,27 @@
       "subset_count": 37,
       "superset_claim_id": "R003_GLOBAL_BOTTOM_PRIME_WEIGHT_ENDPOINT_JETS",
       "superset_count": 1167
+    },
+    {
+      "difference_count": 1160,
+      "subset_claim_id": "R003_CONSTRAINED_REVERSAL_SYMMETRY",
+      "subset_count": 37,
+      "superset_claim_id": "R003_INHERITED_FIRST_VARIATION_RESTRICTION",
+      "superset_count": 1197
+    },
+    {
+      "difference_count": 1768,
+      "subset_claim_id": "R003_CONSTRAINED_REVERSAL_SYMMETRY",
+      "subset_count": 37,
+      "superset_claim_id": "R003_OFFLINE_ZERO_FIXED_N_ZERO_CONTACT",
+      "superset_count": 1805
+    },
+    {
+      "difference_count": 1743,
+      "subset_claim_id": "R003_CONSTRAINED_REVERSAL_SYMMETRY",
+      "subset_count": 37,
+      "superset_claim_id": "R003_OFFLINE_ZERO_ONE_STEP_DOMINATION_FAILURE",
+      "superset_count": 1780
     },
     {
       "difference_count": 236,
@@ -2579,6 +3262,13 @@
       "superset_count": 438
     },
     {
+      "difference_count": 663,
+      "subset_claim_id": "R003_CONSTRAINED_REVERSAL_SYMMETRY",
+      "subset_count": 37,
+      "superset_claim_id": "R003_SMALL_APERTURE_GROUND_SPECTRUM",
+      "superset_count": 700
+    },
+    {
       "difference_count": 1179,
       "subset_claim_id": "R003_DISPLACEMENT_TRANSFER",
       "subset_count": 10,
@@ -2607,6 +3297,13 @@
       "superset_count": 1745
     },
     {
+      "difference_count": 1551,
+      "subset_claim_id": "R003_EUCLIDEAN_BOUNDARY_FLAT_SECTOR",
+      "subset_count": 30,
+      "superset_claim_id": "AUDIT_GLOBAL_GROUND_PROPAGATION_IMPLIES_RH",
+      "superset_count": 1581
+    },
+    {
       "difference_count": 491,
       "subset_claim_id": "R003_EUCLIDEAN_BOUNDARY_FLAT_SECTOR",
       "subset_count": 30,
@@ -2628,11 +3325,32 @@
       "superset_count": 1288
     },
     {
+      "difference_count": 1542,
+      "subset_claim_id": "R003_EUCLIDEAN_BOUNDARY_FLAT_SECTOR",
+      "subset_count": 30,
+      "superset_claim_id": "R003_FIXED_N_GROUND_SIGN_OPPOSITION",
+      "superset_count": 1572
+    },
+    {
       "difference_count": 1290,
       "subset_claim_id": "R003_EUCLIDEAN_BOUNDARY_FLAT_SECTOR",
       "subset_count": 30,
       "superset_claim_id": "R003_NESTED_EUCLIDEAN_NEGATIVE_OBSTRUCTION",
       "superset_count": 1320
+    },
+    {
+      "difference_count": 1775,
+      "subset_claim_id": "R003_EUCLIDEAN_BOUNDARY_FLAT_SECTOR",
+      "subset_count": 30,
+      "superset_claim_id": "R003_OFFLINE_ZERO_FIXED_N_ZERO_CONTACT",
+      "superset_count": 1805
+    },
+    {
+      "difference_count": 670,
+      "subset_claim_id": "R003_EUCLIDEAN_BOUNDARY_FLAT_SECTOR",
+      "subset_count": 30,
+      "superset_claim_id": "R003_SMALL_APERTURE_GROUND_SPECTRUM",
+      "superset_count": 700
     },
     {
       "difference_count": 32,
@@ -2663,6 +3381,83 @@
       "superset_count": 1320
     },
     {
+      "difference_count": 1770,
+      "subset_claim_id": "R003_EUCLIDEAN_CONSTRAINED_NESTING",
+      "subset_count": 35,
+      "superset_claim_id": "R003_OFFLINE_ZERO_FIXED_N_ZERO_CONTACT",
+      "superset_count": 1805
+    },
+    {
+      "difference_count": 820,
+      "subset_claim_id": "R003_EVENTUAL_APERTURE_PARITY_BADNESS_FROM_OFFLINE_ZERO",
+      "subset_count": 1320,
+      "superset_claim_id": "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
+      "superset_count": 2140
+    },
+    {
+      "difference_count": 412,
+      "subset_claim_id": "R003_EVENTUAL_APERTURE_PARITY_BADNESS_FROM_OFFLINE_ZERO",
+      "subset_count": 1320,
+      "superset_claim_id": "AUDIT_COFINAL_ARITHMETIC_CERTIFICATES_IMPLY_RH",
+      "superset_count": 1732
+    },
+    {
+      "difference_count": 425,
+      "subset_claim_id": "R003_EVENTUAL_APERTURE_PARITY_BADNESS_FROM_OFFLINE_ZERO",
+      "subset_count": 1320,
+      "superset_claim_id": "AUDIT_COFINAL_ARITHMETIC_CERTIFICATES_RH_EQUIVALENCE",
+      "superset_count": 1745
+    },
+    {
+      "difference_count": 248,
+      "subset_claim_id": "R003_EVENTUAL_APERTURE_PARITY_BADNESS_FROM_OFFLINE_ZERO",
+      "subset_count": 1320,
+      "superset_claim_id": "AUDIT_COFINAL_LOWER_CERTIFICATES_IMPLY_RH",
+      "superset_count": 1568
+    },
+    {
+      "difference_count": 814,
+      "subset_claim_id": "R003_EVENTUAL_APERTURE_PARITY_BADNESS_FROM_OFFLINE_ZERO",
+      "subset_count": 1320,
+      "superset_claim_id": "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
+      "superset_count": 2134
+    },
+    {
+      "difference_count": 261,
+      "subset_claim_id": "R003_EVENTUAL_APERTURE_PARITY_BADNESS_FROM_OFFLINE_ZERO",
+      "subset_count": 1320,
+      "superset_claim_id": "AUDIT_GLOBAL_GROUND_PROPAGATION_IMPLIES_RH",
+      "superset_count": 1581
+    },
+    {
+      "difference_count": 1340,
+      "subset_claim_id": "R003_EVENTUAL_APERTURE_PARITY_BADNESS_FROM_OFFLINE_ZERO",
+      "subset_count": 1320,
+      "superset_claim_id": "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+      "superset_count": 2660
+    },
+    {
+      "difference_count": 252,
+      "subset_claim_id": "R003_EVENTUAL_APERTURE_PARITY_BADNESS_FROM_OFFLINE_ZERO",
+      "subset_count": 1320,
+      "superset_claim_id": "R003_FIXED_N_GROUND_SIGN_OPPOSITION",
+      "superset_count": 1572
+    },
+    {
+      "difference_count": 485,
+      "subset_claim_id": "R003_EVENTUAL_APERTURE_PARITY_BADNESS_FROM_OFFLINE_ZERO",
+      "subset_count": 1320,
+      "superset_claim_id": "R003_OFFLINE_ZERO_FIXED_N_ZERO_CONTACT",
+      "superset_count": 1805
+    },
+    {
+      "difference_count": 1696,
+      "subset_claim_id": "R003_EVEN_CONSTRAINED_DISPLACEMENT_COLLAPSE",
+      "subset_count": 95,
+      "superset_claim_id": "AUDIT_UNIFORM_DOMINATION_IMPLIES_RH",
+      "superset_count": 1791
+    },
+    {
       "difference_count": 2565,
       "subset_claim_id": "R003_EVEN_CONSTRAINED_DISPLACEMENT_COLLAPSE",
       "subset_count": 95,
@@ -2682,6 +3477,20 @@
       "subset_count": 95,
       "superset_claim_id": "R003_GLOBAL_BOTTOM_PRIME_WEIGHT_ENDPOINT_JETS",
       "superset_count": 1167
+    },
+    {
+      "difference_count": 1102,
+      "subset_claim_id": "R003_EVEN_CONSTRAINED_DISPLACEMENT_COLLAPSE",
+      "subset_count": 95,
+      "superset_claim_id": "R003_INHERITED_FIRST_VARIATION_RESTRICTION",
+      "superset_count": 1197
+    },
+    {
+      "difference_count": 1685,
+      "subset_claim_id": "R003_EVEN_CONSTRAINED_DISPLACEMENT_COLLAPSE",
+      "subset_count": 95,
+      "superset_claim_id": "R003_OFFLINE_ZERO_ONE_STEP_DOMINATION_FAILURE",
+      "superset_count": 1780
     },
     {
       "difference_count": 178,
@@ -2733,6 +3542,13 @@
       "superset_count": 2134
     },
     {
+      "difference_count": 1762,
+      "subset_claim_id": "R003_EXACT_CENTERED_FINITE_NESTING",
+      "subset_count": 29,
+      "superset_claim_id": "AUDIT_UNIFORM_DOMINATION_IMPLIES_RH",
+      "superset_count": 1791
+    },
+    {
       "difference_count": 2631,
       "subset_claim_id": "R003_EXACT_CENTERED_FINITE_NESTING",
       "subset_count": 29,
@@ -2780,6 +3596,13 @@
       "subset_count": 29,
       "superset_claim_id": "R003_FIRST_BAD_SHELL_PROJECTION",
       "superset_count": 527
+    },
+    {
+      "difference_count": 399,
+      "subset_claim_id": "R003_EXACT_CENTERED_FINITE_NESTING",
+      "subset_count": 29,
+      "superset_claim_id": "R003_FIXED_N_GROUND_CONTINUITY",
+      "superset_count": 428
     },
     {
       "difference_count": 1326,
@@ -2831,11 +3654,32 @@
       "superset_count": 315
     },
     {
+      "difference_count": 1168,
+      "subset_claim_id": "R003_EXACT_CENTERED_FINITE_NESTING",
+      "subset_count": 29,
+      "superset_claim_id": "R003_INHERITED_FIRST_VARIATION_RESTRICTION",
+      "superset_count": 1197
+    },
+    {
       "difference_count": 1291,
       "subset_claim_id": "R003_EXACT_CENTERED_FINITE_NESTING",
       "subset_count": 29,
       "superset_claim_id": "R003_NESTED_EUCLIDEAN_NEGATIVE_OBSTRUCTION",
       "superset_count": 1320
+    },
+    {
+      "difference_count": 1776,
+      "subset_claim_id": "R003_EXACT_CENTERED_FINITE_NESTING",
+      "subset_count": 29,
+      "superset_claim_id": "R003_OFFLINE_ZERO_FIXED_N_ZERO_CONTACT",
+      "superset_count": 1805
+    },
+    {
+      "difference_count": 1751,
+      "subset_claim_id": "R003_EXACT_CENTERED_FINITE_NESTING",
+      "subset_count": 29,
+      "superset_claim_id": "R003_OFFLINE_ZERO_ONE_STEP_DOMINATION_FAILURE",
+      "superset_count": 1780
     },
     {
       "difference_count": 452,
@@ -2864,6 +3708,13 @@
       "subset_count": 29,
       "superset_claim_id": "R003_SUCCESSOR_PREDECESSOR_NONNEGATIVITY",
       "superset_count": 485
+    },
+    {
+      "difference_count": 530,
+      "subset_claim_id": "R003_FINITE_CANONICAL_NEGATIVE_OBSTRUCTION",
+      "subset_count": 1261,
+      "superset_claim_id": "AUDIT_UNIFORM_DOMINATION_IMPLIES_RH",
+      "superset_count": 1791
     },
     {
       "difference_count": 27,
@@ -2908,6 +3759,13 @@
       "superset_count": 1320
     },
     {
+      "difference_count": 519,
+      "subset_claim_id": "R003_FINITE_CANONICAL_NEGATIVE_OBSTRUCTION",
+      "subset_count": 1261,
+      "superset_claim_id": "R003_OFFLINE_ZERO_ONE_STEP_DOMINATION_FAILURE",
+      "superset_count": 1780
+    },
+    {
       "difference_count": 12,
       "subset_claim_id": "R003_FINITE_CANONICAL_NEGATIVE_OBSTRUCTION",
       "subset_count": 1261,
@@ -2927,6 +3785,13 @@
       "subset_count": 503,
       "superset_claim_id": "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
       "superset_count": 2134
+    },
+    {
+      "difference_count": 1288,
+      "subset_claim_id": "R003_FIRST_BAD_NEGATIVE_EIGENMODE_NOT_INHERITED",
+      "subset_count": 503,
+      "superset_claim_id": "AUDIT_UNIFORM_DOMINATION_IMPLIES_RH",
+      "superset_count": 1791
     },
     {
       "difference_count": 2157,
@@ -2985,6 +3850,13 @@
       "superset_count": 1167
     },
     {
+      "difference_count": 1277,
+      "subset_claim_id": "R003_FIRST_BAD_NEGATIVE_EIGENMODE_NOT_INHERITED",
+      "subset_count": 503,
+      "superset_claim_id": "R003_OFFLINE_ZERO_ONE_STEP_DOMINATION_FAILURE",
+      "superset_count": 1780
+    },
+    {
       "difference_count": 47,
       "subset_claim_id": "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
       "subset_count": 1479,
@@ -3011,6 +3883,27 @@
       "subset_count": 527,
       "superset_claim_id": "R003_FIRST_BAD_SHELL_KKT_FROM_OFFLINE_ZERO",
       "superset_count": 1526
+    },
+    {
+      "difference_count": 1377,
+      "subset_claim_id": "R003_FIXED_N_GROUND_CONTINUITY",
+      "subset_count": 428,
+      "superset_claim_id": "R003_OFFLINE_ZERO_FIXED_N_ZERO_CONTACT",
+      "superset_count": 1805
+    },
+    {
+      "difference_count": 9,
+      "subset_claim_id": "R003_FIXED_N_GROUND_SIGN_OPPOSITION",
+      "subset_count": 1572,
+      "superset_claim_id": "AUDIT_GLOBAL_GROUND_PROPAGATION_IMPLIES_RH",
+      "superset_count": 1581
+    },
+    {
+      "difference_count": 233,
+      "subset_claim_id": "R003_FIXED_N_GROUND_SIGN_OPPOSITION",
+      "subset_count": 1572,
+      "superset_claim_id": "R003_OFFLINE_ZERO_FIXED_N_ZERO_CONTACT",
+      "superset_count": 1805
     },
     {
       "difference_count": 124,
@@ -3076,6 +3969,13 @@
       "superset_count": 707
     },
     {
+      "difference_count": 493,
+      "subset_claim_id": "R003_GLOBAL_PARITY_BOTTOM_NFLOW",
+      "subset_count": 704,
+      "superset_claim_id": "R003_INHERITED_FIRST_VARIATION_RESTRICTION",
+      "superset_count": 1197
+    },
+    {
       "difference_count": 1819,
       "subset_claim_id": "R003_GLOBAL_PARITY_BOTTOM_SPECTRUM",
       "subset_count": 315,
@@ -3102,6 +4002,13 @@
       "subset_count": 149,
       "superset_claim_id": "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
       "superset_count": 2134
+    },
+    {
+      "difference_count": 1642,
+      "subset_claim_id": "R003_LEAST_PARITY_BAD_SHELL",
+      "subset_count": 149,
+      "superset_claim_id": "AUDIT_UNIFORM_DOMINATION_IMPLIES_RH",
+      "superset_count": 1791
     },
     {
       "difference_count": 2511,
@@ -3153,6 +4060,13 @@
       "superset_count": 1167
     },
     {
+      "difference_count": 1631,
+      "subset_claim_id": "R003_LEAST_PARITY_BAD_SHELL",
+      "subset_count": 149,
+      "superset_claim_id": "R003_OFFLINE_ZERO_ONE_STEP_DOMINATION_FAILURE",
+      "superset_count": 1780
+    },
+    {
       "difference_count": 1709,
       "subset_claim_id": "R003_LOCALIZED_ADDITIVE_RHS_RESTRICTION",
       "subset_count": 431,
@@ -3188,6 +4102,20 @@
       "superset_count": 2134
     },
     {
+      "difference_count": 1150,
+      "subset_claim_id": "R003_LOCALIZED_ADDITIVE_RHS_RESTRICTION",
+      "subset_count": 431,
+      "superset_claim_id": "AUDIT_GLOBAL_GROUND_PROPAGATION_IMPLIES_RH",
+      "superset_count": 1581
+    },
+    {
+      "difference_count": 1360,
+      "subset_claim_id": "R003_LOCALIZED_ADDITIVE_RHS_RESTRICTION",
+      "subset_count": 431,
+      "superset_claim_id": "AUDIT_UNIFORM_DOMINATION_IMPLIES_RH",
+      "superset_count": 1791
+    },
+    {
       "difference_count": 2229,
       "subset_claim_id": "R003_LOCALIZED_ADDITIVE_RHS_RESTRICTION",
       "subset_count": 431,
@@ -3214,6 +4142,13 @@
       "subset_count": 431,
       "superset_claim_id": "R003_EUCLIDEAN_CONSTRAINED_NEGATIVE_OBSTRUCTION",
       "superset_count": 1288
+    },
+    {
+      "difference_count": 889,
+      "subset_claim_id": "R003_LOCALIZED_ADDITIVE_RHS_RESTRICTION",
+      "subset_count": 431,
+      "superset_claim_id": "R003_EVENTUAL_APERTURE_PARITY_BADNESS_FROM_OFFLINE_ZERO",
+      "superset_count": 1320
     },
     {
       "difference_count": 830,
@@ -3258,6 +4193,13 @@
       "superset_count": 527
     },
     {
+      "difference_count": 1141,
+      "subset_claim_id": "R003_LOCALIZED_ADDITIVE_RHS_RESTRICTION",
+      "subset_count": 431,
+      "superset_claim_id": "R003_FIXED_N_GROUND_SIGN_OPPOSITION",
+      "superset_count": 1572
+    },
+    {
       "difference_count": 924,
       "subset_claim_id": "R003_LOCALIZED_ADDITIVE_RHS_RESTRICTION",
       "subset_count": 431,
@@ -3300,11 +4242,32 @@
       "superset_count": 704
     },
     {
+      "difference_count": 766,
+      "subset_claim_id": "R003_LOCALIZED_ADDITIVE_RHS_RESTRICTION",
+      "subset_count": 431,
+      "superset_claim_id": "R003_INHERITED_FIRST_VARIATION_RESTRICTION",
+      "superset_count": 1197
+    },
+    {
       "difference_count": 889,
       "subset_claim_id": "R003_LOCALIZED_ADDITIVE_RHS_RESTRICTION",
       "subset_count": 431,
       "superset_claim_id": "R003_NESTED_EUCLIDEAN_NEGATIVE_OBSTRUCTION",
       "superset_count": 1320
+    },
+    {
+      "difference_count": 1374,
+      "subset_claim_id": "R003_LOCALIZED_ADDITIVE_RHS_RESTRICTION",
+      "subset_count": 431,
+      "superset_claim_id": "R003_OFFLINE_ZERO_FIXED_N_ZERO_CONTACT",
+      "superset_count": 1805
+    },
+    {
+      "difference_count": 1349,
+      "subset_claim_id": "R003_LOCALIZED_ADDITIVE_RHS_RESTRICTION",
+      "subset_count": 431,
+      "superset_claim_id": "R003_OFFLINE_ZERO_ONE_STEP_DOMINATION_FAILURE",
+      "superset_count": 1780
     },
     {
       "difference_count": 50,
@@ -3363,6 +4326,20 @@
       "superset_count": 2134
     },
     {
+      "difference_count": 1575,
+      "subset_claim_id": "R003_LOCALIZED_BASIS_CORRELATION",
+      "subset_count": 6,
+      "superset_claim_id": "AUDIT_GLOBAL_GROUND_PROPAGATION_IMPLIES_RH",
+      "superset_count": 1581
+    },
+    {
+      "difference_count": 1785,
+      "subset_claim_id": "R003_LOCALIZED_BASIS_CORRELATION",
+      "subset_count": 6,
+      "superset_claim_id": "AUDIT_UNIFORM_DOMINATION_IMPLIES_RH",
+      "superset_count": 1791
+    },
+    {
       "difference_count": 2654,
       "subset_claim_id": "R003_LOCALIZED_BASIS_CORRELATION",
       "subset_count": 6,
@@ -3389,6 +4366,13 @@
       "subset_count": 6,
       "superset_claim_id": "R003_EUCLIDEAN_CONSTRAINED_NEGATIVE_OBSTRUCTION",
       "superset_count": 1288
+    },
+    {
+      "difference_count": 1314,
+      "subset_claim_id": "R003_LOCALIZED_BASIS_CORRELATION",
+      "subset_count": 6,
+      "superset_claim_id": "R003_EVENTUAL_APERTURE_PARITY_BADNESS_FROM_OFFLINE_ZERO",
+      "superset_count": 1320
     },
     {
       "difference_count": 1255,
@@ -3433,6 +4417,13 @@
       "superset_count": 527
     },
     {
+      "difference_count": 1566,
+      "subset_claim_id": "R003_LOCALIZED_BASIS_CORRELATION",
+      "subset_count": 6,
+      "superset_claim_id": "R003_FIXED_N_GROUND_SIGN_OPPOSITION",
+      "superset_count": 1572
+    },
+    {
       "difference_count": 1349,
       "subset_claim_id": "R003_LOCALIZED_BASIS_CORRELATION",
       "subset_count": 6,
@@ -3475,6 +4466,13 @@
       "superset_count": 704
     },
     {
+      "difference_count": 1191,
+      "subset_claim_id": "R003_LOCALIZED_BASIS_CORRELATION",
+      "subset_count": 6,
+      "superset_claim_id": "R003_INHERITED_FIRST_VARIATION_RESTRICTION",
+      "superset_count": 1197
+    },
+    {
       "difference_count": 425,
       "subset_claim_id": "R003_LOCALIZED_BASIS_CORRELATION",
       "subset_count": 6,
@@ -3496,11 +4494,32 @@
       "superset_count": 1320
     },
     {
+      "difference_count": 1799,
+      "subset_claim_id": "R003_LOCALIZED_BASIS_CORRELATION",
+      "subset_count": 6,
+      "superset_claim_id": "R003_OFFLINE_ZERO_FIXED_N_ZERO_CONTACT",
+      "superset_count": 1805
+    },
+    {
+      "difference_count": 1774,
+      "subset_claim_id": "R003_LOCALIZED_BASIS_CORRELATION",
+      "subset_count": 6,
+      "superset_claim_id": "R003_OFFLINE_ZERO_ONE_STEP_DOMINATION_FAILURE",
+      "superset_count": 1780
+    },
+    {
       "difference_count": 475,
       "subset_claim_id": "R003_LOCALIZED_BASIS_CORRELATION",
       "subset_count": 6,
       "superset_claim_id": "R003_PARITY_BAD_NFLOW",
       "superset_count": 481
+    },
+    {
+      "difference_count": 694,
+      "subset_claim_id": "R003_LOCALIZED_BASIS_CORRELATION",
+      "subset_count": 6,
+      "superset_claim_id": "R003_SMALL_APERTURE_GROUND_SPECTRUM",
+      "superset_count": 700
     },
     {
       "difference_count": 515,
@@ -3559,6 +4578,20 @@
       "superset_count": 2134
     },
     {
+      "difference_count": 1514,
+      "subset_claim_id": "R003_LOCALIZED_FINITE_SPACE_CORRELATION",
+      "subset_count": 67,
+      "superset_claim_id": "AUDIT_GLOBAL_GROUND_PROPAGATION_IMPLIES_RH",
+      "superset_count": 1581
+    },
+    {
+      "difference_count": 1724,
+      "subset_claim_id": "R003_LOCALIZED_FINITE_SPACE_CORRELATION",
+      "subset_count": 67,
+      "superset_claim_id": "AUDIT_UNIFORM_DOMINATION_IMPLIES_RH",
+      "superset_count": 1791
+    },
+    {
       "difference_count": 2593,
       "subset_claim_id": "R003_LOCALIZED_FINITE_SPACE_CORRELATION",
       "subset_count": 67,
@@ -3585,6 +4618,13 @@
       "subset_count": 67,
       "superset_claim_id": "R003_EUCLIDEAN_CONSTRAINED_NEGATIVE_OBSTRUCTION",
       "superset_count": 1288
+    },
+    {
+      "difference_count": 1253,
+      "subset_claim_id": "R003_LOCALIZED_FINITE_SPACE_CORRELATION",
+      "subset_count": 67,
+      "superset_claim_id": "R003_EVENTUAL_APERTURE_PARITY_BADNESS_FROM_OFFLINE_ZERO",
+      "superset_count": 1320
     },
     {
       "difference_count": 1194,
@@ -3629,6 +4669,13 @@
       "superset_count": 527
     },
     {
+      "difference_count": 1505,
+      "subset_claim_id": "R003_LOCALIZED_FINITE_SPACE_CORRELATION",
+      "subset_count": 67,
+      "superset_claim_id": "R003_FIXED_N_GROUND_SIGN_OPPOSITION",
+      "superset_count": 1572
+    },
+    {
       "difference_count": 1288,
       "subset_claim_id": "R003_LOCALIZED_FINITE_SPACE_CORRELATION",
       "subset_count": 67,
@@ -3671,6 +4718,13 @@
       "superset_count": 704
     },
     {
+      "difference_count": 1130,
+      "subset_claim_id": "R003_LOCALIZED_FINITE_SPACE_CORRELATION",
+      "subset_count": 67,
+      "superset_claim_id": "R003_INHERITED_FIRST_VARIATION_RESTRICTION",
+      "superset_count": 1197
+    },
+    {
       "difference_count": 364,
       "subset_claim_id": "R003_LOCALIZED_FINITE_SPACE_CORRELATION",
       "subset_count": 67,
@@ -3685,11 +4739,32 @@
       "superset_count": 1320
     },
     {
+      "difference_count": 1738,
+      "subset_claim_id": "R003_LOCALIZED_FINITE_SPACE_CORRELATION",
+      "subset_count": 67,
+      "superset_claim_id": "R003_OFFLINE_ZERO_FIXED_N_ZERO_CONTACT",
+      "superset_count": 1805
+    },
+    {
+      "difference_count": 1713,
+      "subset_claim_id": "R003_LOCALIZED_FINITE_SPACE_CORRELATION",
+      "subset_count": 67,
+      "superset_claim_id": "R003_OFFLINE_ZERO_ONE_STEP_DOMINATION_FAILURE",
+      "superset_count": 1780
+    },
+    {
       "difference_count": 414,
       "subset_claim_id": "R003_LOCALIZED_FINITE_SPACE_CORRELATION",
       "subset_count": 67,
       "superset_claim_id": "R003_PARITY_BAD_NFLOW",
       "superset_count": 481
+    },
+    {
+      "difference_count": 633,
+      "subset_claim_id": "R003_LOCALIZED_FINITE_SPACE_CORRELATION",
+      "subset_count": 67,
+      "superset_claim_id": "R003_SMALL_APERTURE_GROUND_SPECTRUM",
+      "superset_count": 700
     },
     {
       "difference_count": 454,
@@ -3748,6 +4823,20 @@
       "superset_count": 2134
     },
     {
+      "difference_count": 1513,
+      "subset_claim_id": "R003_LOCALIZED_UNIFORM_C2_APPROXIMATION",
+      "subset_count": 68,
+      "superset_claim_id": "AUDIT_GLOBAL_GROUND_PROPAGATION_IMPLIES_RH",
+      "superset_count": 1581
+    },
+    {
+      "difference_count": 1723,
+      "subset_claim_id": "R003_LOCALIZED_UNIFORM_C2_APPROXIMATION",
+      "subset_count": 68,
+      "superset_claim_id": "AUDIT_UNIFORM_DOMINATION_IMPLIES_RH",
+      "superset_count": 1791
+    },
+    {
       "difference_count": 2592,
       "subset_claim_id": "R003_LOCALIZED_UNIFORM_C2_APPROXIMATION",
       "subset_count": 68,
@@ -3767,6 +4856,13 @@
       "subset_count": 68,
       "superset_claim_id": "R003_EUCLIDEAN_CONSTRAINED_NEGATIVE_OBSTRUCTION",
       "superset_count": 1288
+    },
+    {
+      "difference_count": 1252,
+      "subset_claim_id": "R003_LOCALIZED_UNIFORM_C2_APPROXIMATION",
+      "subset_count": 68,
+      "superset_claim_id": "R003_EVENTUAL_APERTURE_PARITY_BADNESS_FROM_OFFLINE_ZERO",
+      "superset_count": 1320
     },
     {
       "difference_count": 1193,
@@ -3797,6 +4893,13 @@
       "superset_count": 1526
     },
     {
+      "difference_count": 1504,
+      "subset_claim_id": "R003_LOCALIZED_UNIFORM_C2_APPROXIMATION",
+      "subset_count": 68,
+      "superset_claim_id": "R003_FIXED_N_GROUND_SIGN_OPPOSITION",
+      "superset_count": 1572
+    },
+    {
       "difference_count": 1287,
       "subset_claim_id": "R003_LOCALIZED_UNIFORM_C2_APPROXIMATION",
       "subset_count": 68,
@@ -3809,6 +4912,20 @@
       "subset_count": 68,
       "superset_claim_id": "R003_NESTED_EUCLIDEAN_NEGATIVE_OBSTRUCTION",
       "superset_count": 1320
+    },
+    {
+      "difference_count": 1737,
+      "subset_claim_id": "R003_LOCALIZED_UNIFORM_C2_APPROXIMATION",
+      "subset_count": 68,
+      "superset_claim_id": "R003_OFFLINE_ZERO_FIXED_N_ZERO_CONTACT",
+      "superset_count": 1805
+    },
+    {
+      "difference_count": 1712,
+      "subset_claim_id": "R003_LOCALIZED_UNIFORM_C2_APPROXIMATION",
+      "subset_count": 68,
+      "superset_claim_id": "R003_OFFLINE_ZERO_ONE_STEP_DOMINATION_FAILURE",
+      "superset_count": 1780
     },
     {
       "difference_count": 632,
@@ -3860,6 +4977,20 @@
       "superset_count": 2134
     },
     {
+      "difference_count": 915,
+      "subset_claim_id": "R003_NEGATIVE_WEIL_TEST_CONTRACTION",
+      "subset_count": 666,
+      "superset_claim_id": "AUDIT_GLOBAL_GROUND_PROPAGATION_IMPLIES_RH",
+      "superset_count": 1581
+    },
+    {
+      "difference_count": 1125,
+      "subset_claim_id": "R003_NEGATIVE_WEIL_TEST_CONTRACTION",
+      "subset_count": 666,
+      "superset_claim_id": "AUDIT_UNIFORM_DOMINATION_IMPLIES_RH",
+      "superset_count": 1791
+    },
+    {
       "difference_count": 1994,
       "subset_claim_id": "R003_NEGATIVE_WEIL_TEST_CONTRACTION",
       "subset_count": 666,
@@ -3872,6 +5003,13 @@
       "subset_count": 666,
       "superset_claim_id": "R003_EUCLIDEAN_CONSTRAINED_NEGATIVE_OBSTRUCTION",
       "superset_count": 1288
+    },
+    {
+      "difference_count": 654,
+      "subset_claim_id": "R003_NEGATIVE_WEIL_TEST_CONTRACTION",
+      "subset_count": 666,
+      "superset_claim_id": "R003_EVENTUAL_APERTURE_PARITY_BADNESS_FROM_OFFLINE_ZERO",
+      "superset_count": 1320
     },
     {
       "difference_count": 595,
@@ -3902,6 +5040,13 @@
       "superset_count": 1526
     },
     {
+      "difference_count": 906,
+      "subset_claim_id": "R003_NEGATIVE_WEIL_TEST_CONTRACTION",
+      "subset_count": 666,
+      "superset_claim_id": "R003_FIXED_N_GROUND_SIGN_OPPOSITION",
+      "superset_count": 1572
+    },
+    {
       "difference_count": 689,
       "subset_claim_id": "R003_NEGATIVE_WEIL_TEST_CONTRACTION",
       "subset_count": 666,
@@ -3914,6 +5059,20 @@
       "subset_count": 666,
       "superset_claim_id": "R003_NESTED_EUCLIDEAN_NEGATIVE_OBSTRUCTION",
       "superset_count": 1320
+    },
+    {
+      "difference_count": 1139,
+      "subset_claim_id": "R003_NEGATIVE_WEIL_TEST_CONTRACTION",
+      "subset_count": 666,
+      "superset_claim_id": "R003_OFFLINE_ZERO_FIXED_N_ZERO_CONTACT",
+      "superset_count": 1805
+    },
+    {
+      "difference_count": 1114,
+      "subset_claim_id": "R003_NEGATIVE_WEIL_TEST_CONTRACTION",
+      "subset_count": 666,
+      "superset_claim_id": "R003_OFFLINE_ZERO_ONE_STEP_DOMINATION_FAILURE",
+      "superset_count": 1780
     },
     {
       "difference_count": 41,
@@ -3935,6 +5094,13 @@
       "subset_count": 666,
       "superset_claim_id": "R003_UNIT_CONSTRAINED_CANONICAL_NEGATIVE_OBSTRUCTION",
       "superset_count": 1273
+    },
+    {
+      "difference_count": 11,
+      "subset_claim_id": "R003_OFFLINE_ZERO_ONE_STEP_DOMINATION_FAILURE",
+      "subset_count": 1780,
+      "superset_claim_id": "AUDIT_UNIFORM_DOMINATION_IMPLIES_RH",
+      "superset_count": 1791
     },
     {
       "difference_count": 2039,
@@ -3972,6 +5138,13 @@
       "superset_count": 2134
     },
     {
+      "difference_count": 1690,
+      "subset_claim_id": "R003_PARITY_BAD_NEGATIVE_EIGENMODE",
+      "subset_count": 101,
+      "superset_claim_id": "AUDIT_UNIFORM_DOMINATION_IMPLIES_RH",
+      "superset_count": 1791
+    },
+    {
       "difference_count": 2559,
       "subset_claim_id": "R003_PARITY_BAD_NEGATIVE_EIGENMODE",
       "subset_count": 101,
@@ -4005,6 +5178,20 @@
       "subset_count": 101,
       "superset_claim_id": "R003_GLOBAL_PARITY_BOTTOM_SPECTRUM",
       "superset_count": 315
+    },
+    {
+      "difference_count": 1704,
+      "subset_claim_id": "R003_PARITY_BAD_NEGATIVE_EIGENMODE",
+      "subset_count": 101,
+      "superset_claim_id": "R003_OFFLINE_ZERO_FIXED_N_ZERO_CONTACT",
+      "superset_count": 1805
+    },
+    {
+      "difference_count": 1679,
+      "subset_claim_id": "R003_PARITY_BAD_NEGATIVE_EIGENMODE",
+      "subset_count": 101,
+      "superset_claim_id": "R003_OFFLINE_ZERO_ONE_STEP_DOMINATION_FAILURE",
+      "superset_count": 1780
     },
     {
       "difference_count": 998,
@@ -4070,6 +5257,13 @@
       "superset_count": 2134
     },
     {
+      "difference_count": 1701,
+      "subset_claim_id": "R003_PARITY_CONSTRAINED_SPECTRAL_COMPRESSION",
+      "subset_count": 90,
+      "superset_claim_id": "AUDIT_UNIFORM_DOMINATION_IMPLIES_RH",
+      "superset_count": 1791
+    },
+    {
       "difference_count": 2570,
       "subset_claim_id": "R003_PARITY_CONSTRAINED_SPECTRAL_COMPRESSION",
       "subset_count": 90,
@@ -4096,6 +5290,13 @@
       "subset_count": 90,
       "superset_claim_id": "R003_FIRST_BAD_SHELL_KKT_FROM_OFFLINE_ZERO",
       "superset_count": 1526
+    },
+    {
+      "difference_count": 338,
+      "subset_claim_id": "R003_PARITY_CONSTRAINED_SPECTRAL_COMPRESSION",
+      "subset_count": 90,
+      "superset_claim_id": "R003_FIXED_N_GROUND_CONTINUITY",
+      "superset_count": 428
     },
     {
       "difference_count": 1293,
@@ -4133,6 +5334,27 @@
       "superset_count": 315
     },
     {
+      "difference_count": 1107,
+      "subset_claim_id": "R003_PARITY_CONSTRAINED_SPECTRAL_COMPRESSION",
+      "subset_count": 90,
+      "superset_claim_id": "R003_INHERITED_FIRST_VARIATION_RESTRICTION",
+      "superset_count": 1197
+    },
+    {
+      "difference_count": 1715,
+      "subset_claim_id": "R003_PARITY_CONSTRAINED_SPECTRAL_COMPRESSION",
+      "subset_count": 90,
+      "superset_claim_id": "R003_OFFLINE_ZERO_FIXED_N_ZERO_CONTACT",
+      "superset_count": 1805
+    },
+    {
+      "difference_count": 1690,
+      "subset_claim_id": "R003_PARITY_CONSTRAINED_SPECTRAL_COMPRESSION",
+      "subset_count": 90,
+      "superset_claim_id": "R003_OFFLINE_ZERO_ONE_STEP_DOMINATION_FAILURE",
+      "superset_count": 1780
+    },
+    {
       "difference_count": 11,
       "subset_claim_id": "R003_PARITY_CONSTRAINED_SPECTRAL_COMPRESSION",
       "subset_count": 90,
@@ -4154,11 +5376,25 @@
       "superset_count": 299
     },
     {
+      "difference_count": 1670,
+      "subset_claim_id": "R003_PARITY_NORMAL_KKT",
+      "subset_count": 121,
+      "superset_claim_id": "AUDIT_UNIFORM_DOMINATION_IMPLIES_RH",
+      "superset_count": 1791
+    },
+    {
       "difference_count": 1405,
       "subset_claim_id": "R003_PARITY_NORMAL_KKT",
       "subset_count": 121,
       "superset_claim_id": "R003_FIRST_BAD_SHELL_KKT_FROM_OFFLINE_ZERO",
       "superset_count": 1526
+    },
+    {
+      "difference_count": 1659,
+      "subset_claim_id": "R003_PARITY_NORMAL_KKT",
+      "subset_count": 121,
+      "superset_claim_id": "R003_OFFLINE_ZERO_ONE_STEP_DOMINATION_FAILURE",
+      "superset_count": 1780
     },
     {
       "difference_count": 2093,
@@ -4194,6 +5430,13 @@
       "subset_count": 47,
       "superset_claim_id": "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
       "superset_count": 2134
+    },
+    {
+      "difference_count": 1744,
+      "subset_claim_id": "R003_PARITY_PRESERVING_EUCLIDEAN_NFLOW",
+      "subset_count": 47,
+      "superset_claim_id": "AUDIT_UNIFORM_DOMINATION_IMPLIES_RH",
+      "superset_count": 1791
     },
     {
       "difference_count": 2613,
@@ -4238,6 +5481,13 @@
       "superset_count": 527
     },
     {
+      "difference_count": 381,
+      "subset_claim_id": "R003_PARITY_PRESERVING_EUCLIDEAN_NFLOW",
+      "subset_count": 47,
+      "superset_claim_id": "R003_FIXED_N_GROUND_CONTINUITY",
+      "superset_count": 428
+    },
+    {
       "difference_count": 1336,
       "subset_claim_id": "R003_PARITY_PRESERVING_EUCLIDEAN_NFLOW",
       "subset_count": 47,
@@ -4280,11 +5530,32 @@
       "superset_count": 315
     },
     {
+      "difference_count": 1150,
+      "subset_claim_id": "R003_PARITY_PRESERVING_EUCLIDEAN_NFLOW",
+      "subset_count": 47,
+      "superset_claim_id": "R003_INHERITED_FIRST_VARIATION_RESTRICTION",
+      "superset_count": 1197
+    },
+    {
       "difference_count": 102,
       "subset_claim_id": "R003_PARITY_PRESERVING_EUCLIDEAN_NFLOW",
       "subset_count": 47,
       "superset_claim_id": "R003_LEAST_PARITY_BAD_SHELL",
       "superset_count": 149
+    },
+    {
+      "difference_count": 1758,
+      "subset_claim_id": "R003_PARITY_PRESERVING_EUCLIDEAN_NFLOW",
+      "subset_count": 47,
+      "superset_claim_id": "R003_OFFLINE_ZERO_FIXED_N_ZERO_CONTACT",
+      "superset_count": 1805
+    },
+    {
+      "difference_count": 1733,
+      "subset_claim_id": "R003_PARITY_PRESERVING_EUCLIDEAN_NFLOW",
+      "subset_count": 47,
+      "superset_claim_id": "R003_OFFLINE_ZERO_ONE_STEP_DOMINATION_FAILURE",
+      "superset_count": 1780
     },
     {
       "difference_count": 391,
@@ -4336,6 +5607,20 @@
       "superset_count": 2134
     },
     {
+      "difference_count": 1536,
+      "subset_claim_id": "R003_PARITY_QUADRATIC_SPLIT",
+      "subset_count": 45,
+      "superset_claim_id": "AUDIT_GLOBAL_GROUND_PROPAGATION_IMPLIES_RH",
+      "superset_count": 1581
+    },
+    {
+      "difference_count": 1746,
+      "subset_claim_id": "R003_PARITY_QUADRATIC_SPLIT",
+      "subset_count": 45,
+      "superset_claim_id": "AUDIT_UNIFORM_DOMINATION_IMPLIES_RH",
+      "superset_count": 1791
+    },
+    {
       "difference_count": 2615,
       "subset_claim_id": "R003_PARITY_QUADRATIC_SPLIT",
       "subset_count": 45,
@@ -4355,6 +5640,13 @@
       "subset_count": 45,
       "superset_claim_id": "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
       "superset_count": 198
+    },
+    {
+      "difference_count": 1275,
+      "subset_claim_id": "R003_PARITY_QUADRATIC_SPLIT",
+      "subset_count": 45,
+      "superset_claim_id": "R003_EVENTUAL_APERTURE_PARITY_BADNESS_FROM_OFFLINE_ZERO",
+      "superset_count": 1320
     },
     {
       "difference_count": 1434,
@@ -4378,11 +5670,39 @@
       "superset_count": 1526
     },
     {
+      "difference_count": 1527,
+      "subset_claim_id": "R003_PARITY_QUADRATIC_SPLIT",
+      "subset_count": 45,
+      "superset_claim_id": "R003_FIXED_N_GROUND_SIGN_OPPOSITION",
+      "superset_count": 1572
+    },
+    {
       "difference_count": 1310,
       "subset_claim_id": "R003_PARITY_QUADRATIC_SPLIT",
       "subset_count": 45,
       "superset_claim_id": "R003_FIXED_PARITY_BAD_TAIL_FROM_OFFLINE_ZERO",
       "superset_count": 1355
+    },
+    {
+      "difference_count": 1760,
+      "subset_claim_id": "R003_PARITY_QUADRATIC_SPLIT",
+      "subset_count": 45,
+      "superset_claim_id": "R003_OFFLINE_ZERO_FIXED_N_ZERO_CONTACT",
+      "superset_count": 1805
+    },
+    {
+      "difference_count": 1735,
+      "subset_claim_id": "R003_PARITY_QUADRATIC_SPLIT",
+      "subset_count": 45,
+      "superset_claim_id": "R003_OFFLINE_ZERO_ONE_STEP_DOMINATION_FAILURE",
+      "superset_count": 1780
+    },
+    {
+      "difference_count": 655,
+      "subset_claim_id": "R003_PARITY_QUADRATIC_SPLIT",
+      "subset_count": 45,
+      "superset_claim_id": "R003_SMALL_APERTURE_GROUND_SPECTRUM",
+      "superset_count": 700
     },
     {
       "difference_count": 139,
@@ -4427,6 +5747,55 @@
       "superset_count": 1189
     },
     {
+      "difference_count": 881,
+      "subset_claim_id": "R003_SMALL_APERTURE_GROUND_SPECTRUM",
+      "subset_count": 700,
+      "superset_claim_id": "AUDIT_GLOBAL_GROUND_PROPAGATION_IMPLIES_RH",
+      "superset_count": 1581
+    },
+    {
+      "difference_count": 872,
+      "subset_claim_id": "R003_SMALL_APERTURE_GROUND_SPECTRUM",
+      "subset_count": 700,
+      "superset_claim_id": "R003_FIXED_N_GROUND_SIGN_OPPOSITION",
+      "superset_count": 1572
+    },
+    {
+      "difference_count": 1105,
+      "subset_claim_id": "R003_SMALL_APERTURE_GROUND_SPECTRUM",
+      "subset_count": 700,
+      "superset_claim_id": "R003_OFFLINE_ZERO_FIXED_N_ZERO_CONTACT",
+      "superset_count": 1805
+    },
+    {
+      "difference_count": 1060,
+      "subset_claim_id": "R003_SMALL_APERTURE_POSITIVE_BASE",
+      "subset_count": 521,
+      "superset_claim_id": "AUDIT_GLOBAL_GROUND_PROPAGATION_IMPLIES_RH",
+      "superset_count": 1581
+    },
+    {
+      "difference_count": 1051,
+      "subset_claim_id": "R003_SMALL_APERTURE_POSITIVE_BASE",
+      "subset_count": 521,
+      "superset_claim_id": "R003_FIXED_N_GROUND_SIGN_OPPOSITION",
+      "superset_count": 1572
+    },
+    {
+      "difference_count": 1284,
+      "subset_claim_id": "R003_SMALL_APERTURE_POSITIVE_BASE",
+      "subset_count": 521,
+      "superset_claim_id": "R003_OFFLINE_ZERO_FIXED_N_ZERO_CONTACT",
+      "superset_count": 1805
+    },
+    {
+      "difference_count": 179,
+      "subset_claim_id": "R003_SMALL_APERTURE_POSITIVE_BASE",
+      "subset_count": 521,
+      "superset_claim_id": "R003_SMALL_APERTURE_GROUND_SPECTRUM",
+      "superset_count": 700
+    },
+    {
       "difference_count": 2107,
       "subset_claim_id": "R003_SOURCE_WEIL_NORMALIZATION_FIREWALL",
       "subset_count": 33,
@@ -4455,6 +5824,13 @@
       "superset_count": 2134
     },
     {
+      "difference_count": 1548,
+      "subset_claim_id": "R003_SOURCE_WEIL_NORMALIZATION_FIREWALL",
+      "subset_count": 33,
+      "superset_claim_id": "AUDIT_GLOBAL_GROUND_PROPAGATION_IMPLIES_RH",
+      "superset_count": 1581
+    },
+    {
       "difference_count": 2627,
       "subset_claim_id": "R003_SOURCE_WEIL_NORMALIZATION_FIREWALL",
       "subset_count": 33,
@@ -4469,6 +5845,27 @@
       "superset_count": 521
     },
     {
+      "difference_count": 427,
+      "subset_claim_id": "R003_SOURCE_WEIL_NORMALIZATION_FIREWALL",
+      "subset_count": 33,
+      "superset_claim_id": "R003_COMPRESSED_PRODUCTION_C2",
+      "superset_count": 460
+    },
+    {
+      "difference_count": 395,
+      "subset_claim_id": "R003_SOURCE_WEIL_NORMALIZATION_FIREWALL",
+      "subset_count": 33,
+      "superset_claim_id": "R003_FIXED_N_GROUND_CONTINUITY",
+      "superset_count": 428
+    },
+    {
+      "difference_count": 1539,
+      "subset_claim_id": "R003_SOURCE_WEIL_NORMALIZATION_FIREWALL",
+      "subset_count": 33,
+      "superset_claim_id": "R003_FIXED_N_GROUND_SIGN_OPPOSITION",
+      "superset_count": 1572
+    },
+    {
       "difference_count": 1350,
       "subset_claim_id": "R003_SOURCE_WEIL_NORMALIZATION_FIREWALL",
       "subset_count": 33,
@@ -4481,6 +5878,27 @@
       "subset_count": 33,
       "superset_claim_id": "R003_GLOBAL_BOTTOM_PRIME_WEIGHT_ENDPOINT_JETS",
       "superset_count": 1167
+    },
+    {
+      "difference_count": 1164,
+      "subset_claim_id": "R003_SOURCE_WEIL_NORMALIZATION_FIREWALL",
+      "subset_count": 33,
+      "superset_claim_id": "R003_INHERITED_FIRST_VARIATION_RESTRICTION",
+      "superset_count": 1197
+    },
+    {
+      "difference_count": 1772,
+      "subset_claim_id": "R003_SOURCE_WEIL_NORMALIZATION_FIREWALL",
+      "subset_count": 33,
+      "superset_claim_id": "R003_OFFLINE_ZERO_FIXED_N_ZERO_CONTACT",
+      "superset_count": 1805
+    },
+    {
+      "difference_count": 667,
+      "subset_claim_id": "R003_SOURCE_WEIL_NORMALIZATION_FIREWALL",
+      "subset_count": 33,
+      "superset_claim_id": "R003_SMALL_APERTURE_GROUND_SPECTRUM",
+      "superset_count": 700
     },
     {
       "difference_count": 488,
@@ -4525,6 +5943,20 @@
       "superset_count": 2134
     },
     {
+      "difference_count": 874,
+      "subset_claim_id": "R003_STRICT_APERTURE_NEGATIVE_LOCALIZED_ADDITIVE_WITNESS",
+      "subset_count": 707,
+      "superset_claim_id": "AUDIT_GLOBAL_GROUND_PROPAGATION_IMPLIES_RH",
+      "superset_count": 1581
+    },
+    {
+      "difference_count": 1084,
+      "subset_claim_id": "R003_STRICT_APERTURE_NEGATIVE_LOCALIZED_ADDITIVE_WITNESS",
+      "subset_count": 707,
+      "superset_claim_id": "AUDIT_UNIFORM_DOMINATION_IMPLIES_RH",
+      "superset_count": 1791
+    },
+    {
       "difference_count": 1953,
       "subset_claim_id": "R003_STRICT_APERTURE_NEGATIVE_LOCALIZED_ADDITIVE_WITNESS",
       "subset_count": 707,
@@ -4537,6 +5969,13 @@
       "subset_count": 707,
       "superset_claim_id": "R003_EUCLIDEAN_CONSTRAINED_NEGATIVE_OBSTRUCTION",
       "superset_count": 1288
+    },
+    {
+      "difference_count": 613,
+      "subset_claim_id": "R003_STRICT_APERTURE_NEGATIVE_LOCALIZED_ADDITIVE_WITNESS",
+      "subset_count": 707,
+      "superset_claim_id": "R003_EVENTUAL_APERTURE_PARITY_BADNESS_FROM_OFFLINE_ZERO",
+      "superset_count": 1320
     },
     {
       "difference_count": 554,
@@ -4567,6 +6006,13 @@
       "superset_count": 1526
     },
     {
+      "difference_count": 865,
+      "subset_claim_id": "R003_STRICT_APERTURE_NEGATIVE_LOCALIZED_ADDITIVE_WITNESS",
+      "subset_count": 707,
+      "superset_claim_id": "R003_FIXED_N_GROUND_SIGN_OPPOSITION",
+      "superset_count": 1572
+    },
+    {
       "difference_count": 648,
       "subset_claim_id": "R003_STRICT_APERTURE_NEGATIVE_LOCALIZED_ADDITIVE_WITNESS",
       "subset_count": 707,
@@ -4579,6 +6025,20 @@
       "subset_count": 707,
       "superset_claim_id": "R003_NESTED_EUCLIDEAN_NEGATIVE_OBSTRUCTION",
       "superset_count": 1320
+    },
+    {
+      "difference_count": 1098,
+      "subset_claim_id": "R003_STRICT_APERTURE_NEGATIVE_LOCALIZED_ADDITIVE_WITNESS",
+      "subset_count": 707,
+      "superset_claim_id": "R003_OFFLINE_ZERO_FIXED_N_ZERO_CONTACT",
+      "superset_count": 1805
+    },
+    {
+      "difference_count": 1073,
+      "subset_claim_id": "R003_STRICT_APERTURE_NEGATIVE_LOCALIZED_ADDITIVE_WITNESS",
+      "subset_count": 707,
+      "superset_claim_id": "R003_OFFLINE_ZERO_ONE_STEP_DOMINATION_FAILURE",
+      "superset_count": 1780
     },
     {
       "difference_count": 566,
@@ -4623,6 +6083,20 @@
       "superset_count": 2134
     },
     {
+      "difference_count": 909,
+      "subset_claim_id": "R003_STRICT_APERTURE_NEGATIVE_WEIL_TEST",
+      "subset_count": 672,
+      "superset_claim_id": "AUDIT_GLOBAL_GROUND_PROPAGATION_IMPLIES_RH",
+      "superset_count": 1581
+    },
+    {
+      "difference_count": 1119,
+      "subset_claim_id": "R003_STRICT_APERTURE_NEGATIVE_WEIL_TEST",
+      "subset_count": 672,
+      "superset_claim_id": "AUDIT_UNIFORM_DOMINATION_IMPLIES_RH",
+      "superset_count": 1791
+    },
+    {
       "difference_count": 1988,
       "subset_claim_id": "R003_STRICT_APERTURE_NEGATIVE_WEIL_TEST",
       "subset_count": 672,
@@ -4635,6 +6109,13 @@
       "subset_count": 672,
       "superset_claim_id": "R003_EUCLIDEAN_CONSTRAINED_NEGATIVE_OBSTRUCTION",
       "superset_count": 1288
+    },
+    {
+      "difference_count": 648,
+      "subset_claim_id": "R003_STRICT_APERTURE_NEGATIVE_WEIL_TEST",
+      "subset_count": 672,
+      "superset_claim_id": "R003_EVENTUAL_APERTURE_PARITY_BADNESS_FROM_OFFLINE_ZERO",
+      "superset_count": 1320
     },
     {
       "difference_count": 589,
@@ -4665,6 +6146,13 @@
       "superset_count": 1526
     },
     {
+      "difference_count": 900,
+      "subset_claim_id": "R003_STRICT_APERTURE_NEGATIVE_WEIL_TEST",
+      "subset_count": 672,
+      "superset_claim_id": "R003_FIXED_N_GROUND_SIGN_OPPOSITION",
+      "superset_count": 1572
+    },
+    {
       "difference_count": 683,
       "subset_claim_id": "R003_STRICT_APERTURE_NEGATIVE_WEIL_TEST",
       "subset_count": 672,
@@ -4677,6 +6165,20 @@
       "subset_count": 672,
       "superset_claim_id": "R003_NESTED_EUCLIDEAN_NEGATIVE_OBSTRUCTION",
       "superset_count": 1320
+    },
+    {
+      "difference_count": 1133,
+      "subset_claim_id": "R003_STRICT_APERTURE_NEGATIVE_WEIL_TEST",
+      "subset_count": 672,
+      "superset_claim_id": "R003_OFFLINE_ZERO_FIXED_N_ZERO_CONTACT",
+      "superset_count": 1805
+    },
+    {
+      "difference_count": 1108,
+      "subset_claim_id": "R003_STRICT_APERTURE_NEGATIVE_WEIL_TEST",
+      "subset_count": 672,
+      "superset_claim_id": "R003_OFFLINE_ZERO_ONE_STEP_DOMINATION_FAILURE",
+      "superset_count": 1780
     },
     {
       "difference_count": 35,
@@ -4728,6 +6230,20 @@
       "superset_count": 2134
     },
     {
+      "difference_count": 881,
+      "subset_claim_id": "R003_STRICT_FINITE_NEGATIVE_WEIL_TRANSFER",
+      "subset_count": 700,
+      "superset_claim_id": "AUDIT_GLOBAL_GROUND_PROPAGATION_IMPLIES_RH",
+      "superset_count": 1581
+    },
+    {
+      "difference_count": 1091,
+      "subset_claim_id": "R003_STRICT_FINITE_NEGATIVE_WEIL_TRANSFER",
+      "subset_count": 700,
+      "superset_claim_id": "AUDIT_UNIFORM_DOMINATION_IMPLIES_RH",
+      "superset_count": 1791
+    },
+    {
       "difference_count": 1960,
       "subset_claim_id": "R003_STRICT_FINITE_NEGATIVE_WEIL_TRANSFER",
       "subset_count": 700,
@@ -4740,6 +6256,13 @@
       "subset_count": 700,
       "superset_claim_id": "R003_EUCLIDEAN_CONSTRAINED_NEGATIVE_OBSTRUCTION",
       "superset_count": 1288
+    },
+    {
+      "difference_count": 620,
+      "subset_claim_id": "R003_STRICT_FINITE_NEGATIVE_WEIL_TRANSFER",
+      "subset_count": 700,
+      "superset_claim_id": "R003_EVENTUAL_APERTURE_PARITY_BADNESS_FROM_OFFLINE_ZERO",
+      "superset_count": 1320
     },
     {
       "difference_count": 561,
@@ -4770,6 +6293,13 @@
       "superset_count": 1526
     },
     {
+      "difference_count": 872,
+      "subset_claim_id": "R003_STRICT_FINITE_NEGATIVE_WEIL_TRANSFER",
+      "subset_count": 700,
+      "superset_claim_id": "R003_FIXED_N_GROUND_SIGN_OPPOSITION",
+      "superset_count": 1572
+    },
+    {
       "difference_count": 655,
       "subset_claim_id": "R003_STRICT_FINITE_NEGATIVE_WEIL_TRANSFER",
       "subset_count": 700,
@@ -4782,6 +6312,20 @@
       "subset_count": 700,
       "superset_claim_id": "R003_NESTED_EUCLIDEAN_NEGATIVE_OBSTRUCTION",
       "superset_count": 1320
+    },
+    {
+      "difference_count": 1105,
+      "subset_claim_id": "R003_STRICT_FINITE_NEGATIVE_WEIL_TRANSFER",
+      "subset_count": 700,
+      "superset_claim_id": "R003_OFFLINE_ZERO_FIXED_N_ZERO_CONTACT",
+      "superset_count": 1805
+    },
+    {
+      "difference_count": 1080,
+      "subset_claim_id": "R003_STRICT_FINITE_NEGATIVE_WEIL_TRANSFER",
+      "subset_count": 700,
+      "superset_claim_id": "R003_OFFLINE_ZERO_ONE_STEP_DOMINATION_FAILURE",
+      "superset_count": 1780
     },
     {
       "difference_count": 573,
@@ -4824,6 +6368,13 @@
       "subset_count": 485,
       "superset_claim_id": "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
       "superset_count": 2134
+    },
+    {
+      "difference_count": 1306,
+      "subset_claim_id": "R003_SUCCESSOR_PREDECESSOR_NONNEGATIVITY",
+      "subset_count": 485,
+      "superset_claim_id": "AUDIT_UNIFORM_DOMINATION_IMPLIES_RH",
+      "superset_count": 1791
     },
     {
       "difference_count": 2175,
@@ -4903,6 +6454,20 @@
       "superset_count": 704
     },
     {
+      "difference_count": 712,
+      "subset_claim_id": "R003_SUCCESSOR_PREDECESSOR_NONNEGATIVITY",
+      "subset_count": 485,
+      "superset_claim_id": "R003_INHERITED_FIRST_VARIATION_RESTRICTION",
+      "superset_count": 1197
+    },
+    {
+      "difference_count": 1295,
+      "subset_claim_id": "R003_SUCCESSOR_PREDECESSOR_NONNEGATIVITY",
+      "subset_count": 485,
+      "superset_claim_id": "R003_OFFLINE_ZERO_ONE_STEP_DOMINATION_FAILURE",
+      "superset_count": 1780
+    },
+    {
       "difference_count": 500,
       "subset_claim_id": "R003_TENT_EF_EXTENSION",
       "subset_count": 665,
@@ -4973,6 +6538,20 @@
       "superset_count": 2134
     },
     {
+      "difference_count": 1336,
+      "subset_claim_id": "R003_WEIL_COMMON_SUPPORT_BOUND",
+      "subset_count": 245,
+      "superset_claim_id": "AUDIT_GLOBAL_GROUND_PROPAGATION_IMPLIES_RH",
+      "superset_count": 1581
+    },
+    {
+      "difference_count": 1546,
+      "subset_claim_id": "R003_WEIL_COMMON_SUPPORT_BOUND",
+      "subset_count": 245,
+      "superset_claim_id": "AUDIT_UNIFORM_DOMINATION_IMPLIES_RH",
+      "superset_count": 1791
+    },
+    {
       "difference_count": 2415,
       "subset_claim_id": "R003_WEIL_COMMON_SUPPORT_BOUND",
       "subset_count": 245,
@@ -4985,6 +6564,13 @@
       "subset_count": 245,
       "superset_claim_id": "R003_EUCLIDEAN_CONSTRAINED_NEGATIVE_OBSTRUCTION",
       "superset_count": 1288
+    },
+    {
+      "difference_count": 1075,
+      "subset_claim_id": "R003_WEIL_COMMON_SUPPORT_BOUND",
+      "subset_count": 245,
+      "superset_claim_id": "R003_EVENTUAL_APERTURE_PARITY_BADNESS_FROM_OFFLINE_ZERO",
+      "superset_count": 1320
     },
     {
       "difference_count": 1016,
@@ -5015,6 +6601,13 @@
       "superset_count": 1526
     },
     {
+      "difference_count": 1327,
+      "subset_claim_id": "R003_WEIL_COMMON_SUPPORT_BOUND",
+      "subset_count": 245,
+      "superset_claim_id": "R003_FIXED_N_GROUND_SIGN_OPPOSITION",
+      "superset_count": 1572
+    },
+    {
       "difference_count": 1110,
       "subset_claim_id": "R003_WEIL_COMMON_SUPPORT_BOUND",
       "subset_count": 245,
@@ -5027,6 +6620,20 @@
       "subset_count": 245,
       "superset_claim_id": "R003_NESTED_EUCLIDEAN_NEGATIVE_OBSTRUCTION",
       "superset_count": 1320
+    },
+    {
+      "difference_count": 1560,
+      "subset_claim_id": "R003_WEIL_COMMON_SUPPORT_BOUND",
+      "subset_count": 245,
+      "superset_claim_id": "R003_OFFLINE_ZERO_FIXED_N_ZERO_CONTACT",
+      "superset_count": 1805
+    },
+    {
+      "difference_count": 1535,
+      "subset_claim_id": "R003_WEIL_COMMON_SUPPORT_BOUND",
+      "subset_count": 245,
+      "superset_claim_id": "R003_OFFLINE_ZERO_ONE_STEP_DOMINATION_FAILURE",
+      "superset_count": 1780
     },
     {
       "difference_count": 455,
@@ -5078,6 +6685,20 @@
       "superset_count": 2134
     },
     {
+      "difference_count": 1014,
+      "subset_claim_id": "R003_WEIL_LOCALIZED_ADDITIVE_SELF_BRIDGE",
+      "subset_count": 567,
+      "superset_claim_id": "AUDIT_GLOBAL_GROUND_PROPAGATION_IMPLIES_RH",
+      "superset_count": 1581
+    },
+    {
+      "difference_count": 1224,
+      "subset_claim_id": "R003_WEIL_LOCALIZED_ADDITIVE_SELF_BRIDGE",
+      "subset_count": 567,
+      "superset_claim_id": "AUDIT_UNIFORM_DOMINATION_IMPLIES_RH",
+      "superset_count": 1791
+    },
+    {
       "difference_count": 2093,
       "subset_claim_id": "R003_WEIL_LOCALIZED_ADDITIVE_SELF_BRIDGE",
       "subset_count": 567,
@@ -5097,6 +6718,13 @@
       "subset_count": 567,
       "superset_claim_id": "R003_EUCLIDEAN_CONSTRAINED_NEGATIVE_OBSTRUCTION",
       "superset_count": 1288
+    },
+    {
+      "difference_count": 753,
+      "subset_claim_id": "R003_WEIL_LOCALIZED_ADDITIVE_SELF_BRIDGE",
+      "subset_count": 567,
+      "superset_claim_id": "R003_EVENTUAL_APERTURE_PARITY_BADNESS_FROM_OFFLINE_ZERO",
+      "superset_count": 1320
     },
     {
       "difference_count": 694,
@@ -5127,6 +6755,13 @@
       "superset_count": 1526
     },
     {
+      "difference_count": 1005,
+      "subset_claim_id": "R003_WEIL_LOCALIZED_ADDITIVE_SELF_BRIDGE",
+      "subset_count": 567,
+      "superset_claim_id": "R003_FIXED_N_GROUND_SIGN_OPPOSITION",
+      "superset_count": 1572
+    },
+    {
       "difference_count": 788,
       "subset_claim_id": "R003_WEIL_LOCALIZED_ADDITIVE_SELF_BRIDGE",
       "subset_count": 567,
@@ -5139,6 +6774,20 @@
       "subset_count": 567,
       "superset_claim_id": "R003_NESTED_EUCLIDEAN_NEGATIVE_OBSTRUCTION",
       "superset_count": 1320
+    },
+    {
+      "difference_count": 1238,
+      "subset_claim_id": "R003_WEIL_LOCALIZED_ADDITIVE_SELF_BRIDGE",
+      "subset_count": 567,
+      "superset_claim_id": "R003_OFFLINE_ZERO_FIXED_N_ZERO_CONTACT",
+      "superset_count": 1805
+    },
+    {
+      "difference_count": 1213,
+      "subset_claim_id": "R003_WEIL_LOCALIZED_ADDITIVE_SELF_BRIDGE",
+      "subset_count": 567,
+      "superset_claim_id": "R003_OFFLINE_ZERO_ONE_STEP_DOMINATION_FAILURE",
+      "superset_count": 1780
     },
     {
       "difference_count": 140,
@@ -5190,6 +6839,20 @@
       "superset_count": 2134
     },
     {
+      "difference_count": 1048,
+      "subset_claim_id": "R003_WEIL_PAIR_LITERATURE_BRIDGE",
+      "subset_count": 533,
+      "superset_claim_id": "AUDIT_GLOBAL_GROUND_PROPAGATION_IMPLIES_RH",
+      "superset_count": 1581
+    },
+    {
+      "difference_count": 1258,
+      "subset_claim_id": "R003_WEIL_PAIR_LITERATURE_BRIDGE",
+      "subset_count": 533,
+      "superset_claim_id": "AUDIT_UNIFORM_DOMINATION_IMPLIES_RH",
+      "superset_count": 1791
+    },
+    {
       "difference_count": 2127,
       "subset_claim_id": "R003_WEIL_PAIR_LITERATURE_BRIDGE",
       "subset_count": 533,
@@ -5209,6 +6872,13 @@
       "subset_count": 533,
       "superset_claim_id": "R003_EUCLIDEAN_CONSTRAINED_NEGATIVE_OBSTRUCTION",
       "superset_count": 1288
+    },
+    {
+      "difference_count": 787,
+      "subset_claim_id": "R003_WEIL_PAIR_LITERATURE_BRIDGE",
+      "subset_count": 533,
+      "superset_claim_id": "R003_EVENTUAL_APERTURE_PARITY_BADNESS_FROM_OFFLINE_ZERO",
+      "superset_count": 1320
     },
     {
       "difference_count": 728,
@@ -5239,6 +6909,13 @@
       "superset_count": 1526
     },
     {
+      "difference_count": 1039,
+      "subset_claim_id": "R003_WEIL_PAIR_LITERATURE_BRIDGE",
+      "subset_count": 533,
+      "superset_claim_id": "R003_FIXED_N_GROUND_SIGN_OPPOSITION",
+      "superset_count": 1572
+    },
+    {
       "difference_count": 822,
       "subset_claim_id": "R003_WEIL_PAIR_LITERATURE_BRIDGE",
       "subset_count": 533,
@@ -5258,6 +6935,20 @@
       "subset_count": 533,
       "superset_claim_id": "R003_NESTED_EUCLIDEAN_NEGATIVE_OBSTRUCTION",
       "superset_count": 1320
+    },
+    {
+      "difference_count": 1272,
+      "subset_claim_id": "R003_WEIL_PAIR_LITERATURE_BRIDGE",
+      "subset_count": 533,
+      "superset_claim_id": "R003_OFFLINE_ZERO_FIXED_N_ZERO_CONTACT",
+      "superset_count": 1805
+    },
+    {
+      "difference_count": 1247,
+      "subset_claim_id": "R003_WEIL_PAIR_LITERATURE_BRIDGE",
+      "subset_count": 533,
+      "superset_claim_id": "R003_OFFLINE_ZERO_ONE_STEP_DOMINATION_FAILURE",
+      "superset_count": 1780
     },
     {
       "difference_count": 174,
@@ -5302,6 +6993,8 @@
     "AUDIT_COFINAL_ARITHMETIC_CERTIFICATES_RH_EQUIVALENCE",
     "AUDIT_COFINAL_LOWER_CERTIFICATES_IMPLY_RH",
     "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
+    "AUDIT_GLOBAL_GROUND_PROPAGATION_IMPLIES_RH",
+    "AUDIT_UNIFORM_DOMINATION_IMPLIES_RH",
     "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
     "OBS_TIGHTMULT",
     "R001_FILTERED_ZERO_POLE",
@@ -5325,6 +7018,7 @@
     "R003_CCM_BRIDGE",
     "R003_CCM_RHS_IDENTITY",
     "R003_COFINAL_BOTTOM_NONNEGATIVITY",
+    "R003_COMPRESSED_PRODUCTION_C2",
     "R003_CONSTRAINED_CANONICAL_DISPLACEMENT",
     "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
     "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
@@ -5334,6 +7028,7 @@
     "R003_EUCLIDEAN_BOUNDARY_FLAT_SECTOR",
     "R003_EUCLIDEAN_CONSTRAINED_NEGATIVE_OBSTRUCTION",
     "R003_EUCLIDEAN_CONSTRAINED_NESTING",
+    "R003_EVENTUAL_APERTURE_PARITY_BADNESS_FROM_OFFLINE_ZERO",
     "R003_EVEN_CONSTRAINED_DISPLACEMENT_COLLAPSE",
     "R003_EXACT_CENTERED_FINITE_NESTING",
     "R003_FINITE_CANONICAL_NEGATIVE_OBSTRUCTION",
@@ -5342,6 +7037,8 @@
     "R003_FIRST_BAD_PARITY_ONE_DIM_SHELL",
     "R003_FIRST_BAD_SHELL_KKT_FROM_OFFLINE_ZERO",
     "R003_FIRST_BAD_SHELL_PROJECTION",
+    "R003_FIXED_N_GROUND_CONTINUITY",
+    "R003_FIXED_N_GROUND_SIGN_OPPOSITION",
     "R003_FIXED_PARITY_BAD_TAIL_FROM_OFFLINE_ZERO",
     "R003_GLOBAL_BOTTOM_BRANCH_PACKAGE",
     "R003_GLOBAL_BOTTOM_GROUND_TRIAL",
@@ -5349,6 +7046,7 @@
     "R003_GLOBAL_BOTTOM_PRIME_WEIGHT_ENDPOINT_JETS",
     "R003_GLOBAL_PARITY_BOTTOM_NFLOW",
     "R003_GLOBAL_PARITY_BOTTOM_SPECTRUM",
+    "R003_INHERITED_FIRST_VARIATION_RESTRICTION",
     "R003_KERNEL_EF_EXTENSION",
     "R003_LEAST_PARITY_BAD_SHELL",
     "R003_LOCALIZED_ADDITIVE_RHS_RESTRICTION",
@@ -5357,6 +7055,8 @@
     "R003_LOCALIZED_UNIFORM_C2_APPROXIMATION",
     "R003_NEGATIVE_WEIL_TEST_CONTRACTION",
     "R003_NESTED_EUCLIDEAN_NEGATIVE_OBSTRUCTION",
+    "R003_OFFLINE_ZERO_FIXED_N_ZERO_CONTACT",
+    "R003_OFFLINE_ZERO_ONE_STEP_DOMINATION_FAILURE",
     "R003_PARITY_BAD_NEGATIVE_EIGENMODE",
     "R003_PARITY_BAD_NFLOW",
     "R003_PARITY_COMPRESSION_RANK_ONE_DEFECT",
@@ -5367,6 +7067,7 @@
     "R003_PARITY_SPLIT_GROUND_SIMPLICITY",
     "R003_PARITY_TIE_GROUND_MULTIPLICITY",
     "R003_RESIDUAL_C2",
+    "R003_SMALL_APERTURE_GROUND_SPECTRUM",
     "R003_SMALL_APERTURE_POSITIVE_BASE",
     "R003_SOURCE_KAPPA_FINITE_SECTOR",
     "R003_SOURCE_NORMALIZATION_REPAIR",

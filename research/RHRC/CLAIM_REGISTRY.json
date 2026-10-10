@@ -1334,16 +1334,15 @@
     {
       "id": "R003_COMPRESSED_PRODUCTION_C2",
       "statement": "For every finite even boundary-flat carrier size K, the actual parity-compressed canonical production family is C2 on the positive aperture axis, with the production first and second aperture jets as its derivatives.",
-      "status": "OPEN",
+      "status": "PROVED_UNCONDITIONAL",
       "dependencies": [
         "R003_PARITY_CONSTRAINED_SPECTRAL_COMPRESSION"
       ],
       "source": "Zeta23/CCM/CanonicalCompressedApertureC2.lean",
-      "theorem": "Zeta23.CCM.canonicalEvenCompressedC2_proved",
+      "theorem": "Zeta23.CCM.canonicalEvenCompressedC2_with_jets",
       "route": "R003_ccm_bridge",
-      "promotion_cap": "OPEN",
-      "candidate_binding": true,
-      "note": "PR #283 candidate theorem. Exact-head compiler/axiom/proof-escape validation is still pending, so this claim remains OPEN and is candidate-bound only. No RH or all-aperture positivity conclusion is asserted."
+      "promotion_cap": "PROVED_UNCONDITIONAL",
+      "note": "Promoted individually in the post-284 campaign. Bound to canonicalEvenCompressedC2_with_jets, which conjoins the C2 regularity theorem canonicalEvenCompressedC2_proved with the derivative identities canonicalParityCompressedFamily_deriv and canonicalParityCompressedFamily_secondDeriv (all three merged-green in PR #284, checked head 7225489a1d60812743e419d5b9042c8dca7eef53, 56/56 jobs green including the dedicated axiom audit of CanonicalCompressedApertureC2.lean), so the binding covers both clauses of the claim text: C2 and the production first/second jets as derivatives. Fixed-K compressed-family C2 only; no smoothness of the optimized ground value at multiplicities, no all-aperture positivity, no RH."
     },
     {
       "id": "R003_WEIGHTED_PRODUCTION_PAIR_BALANCE",
@@ -1358,12 +1357,12 @@
       "route": "R003_ccm_bridge",
       "promotion_cap": "OPEN",
       "candidate_binding": true,
-      "note": "PR #283 candidate theorem. The claim is intentionally OPEN until the exact PR head passes the dedicated formal gates. The theorem has no contact, response, curvature-bridge, endpoint-barrier, or RH premise."
+      "note": "PR #283 candidate theorem. The claim is intentionally OPEN until the exact PR head passes the dedicated formal gates. The theorem has no contact, response, curvature-bridge, endpoint-barrier, or RH premise, but it DOES take the explicit premise hF04 : ProductionContactF04DerivativeAuthority L K (post-284 audit); the claim text is unconditional, so it stays OPEN until F04 is constructed."
     },
     {
       "id": "R003_INHERITED_FIRST_VARIATION_RESTRICTION",
       "statement": "At a generated strict-even contact with inherited index n<k, the actual production first variation of the selected normalized kernel vector is zero; hence inherited strict-even transverse crossing is excluded.",
-      "status": "OPEN",
+      "status": "PROVED_UNCONDITIONAL",
       "dependencies": [
         "R003_COMPRESSED_PRODUCTION_C2",
         "R003_SUCCESSOR_PREDECESSOR_NONNEGATIVITY"
@@ -1371,9 +1370,8 @@
       "source": "Zeta23/CCM/FirstCrossingGeneratedStrictEvenFrontier.lean",
       "theorem": "Zeta23.CCM.GeneratedStrictEvenContact.firstVariation_eq_zero_of_inherited",
       "route": "R003_ccm_bridge",
-      "promotion_cap": "OPEN",
-      "candidate_binding": true,
-      "note": "PR #283 candidate theorem. This is a strict-even inherited-contact restriction only; it does not claim E1 annihilates the full inherited subspace, and it remains OPEN pending exact-head validation."
+      "promotion_cap": "PROVED_UNCONDITIONAL",
+      "note": "Merged-green PR #284 (checked head 7225489a1d60812743e419d5b9042c8dca7eef53; 56/56 jobs green; axiom_audit EXPECTED_REPORTS covers this declaration). Promoted individually in the post-284 campaign: the bound theorem's hypotheses are exactly the generated strict-even contact and n<k, matching the claim text, with no F04 premise. It does not claim E1 annihilates the full inherited subspace, and it does not exclude the stationary branch, odd/tied contacts, or RH."
     },
     {
       "id": "R003_COMPLETED_STRICT_EVEN_CONTACT_FRONTIER",
@@ -1389,7 +1387,7 @@
       "route": "R003_ccm_bridge",
       "promotion_cap": "OPEN",
       "candidate_binding": true,
-      "note": "PR #283 candidate theorem. The endpoint is candidate-bound but not promoted before exact-head CI. It does not eliminate the stationary saturation branch, odd-selected contacts, parity ties/multiple kernels, or RH."
+      "note": "PR #283 candidate theorem. The endpoint is candidate-bound but not promoted before exact-head CI. It does not eliminate the stationary saturation branch, odd-selected contacts, parity ties/multiple kernels, or RH. Post-284 audit: the bound theorem takes the explicit premise hF04 : ProductionContactF04DerivativeAuthority at the contact aperture, so the unconditional claim text stays OPEN until F04 is constructed."
     }
   ]
 }

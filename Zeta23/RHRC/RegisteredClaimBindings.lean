@@ -477,7 +477,9 @@ import Zeta23.CCM.FirstCrossingGeneratedStrictEvenFrontier
 -- registered theorem authority until exact-head validation succeeds and the
 -- corresponding registry statuses are explicitly promoted.
 
--- R003_COMPRESSED_PRODUCTION_C2
+-- R003_COMPRESSED_PRODUCTION_C2 (bound: C2 regularity and both jet identities)
+#check Zeta23.CCM.canonicalEvenCompressedC2_with_jets
+#print axioms Zeta23.CCM.canonicalEvenCompressedC2_with_jets
 #check Zeta23.CCM.canonicalEvenCompressedC2_proved
 #print axioms Zeta23.CCM.canonicalEvenCompressedC2_proved
 

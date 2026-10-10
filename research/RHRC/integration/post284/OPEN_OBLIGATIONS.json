@@ -1,0 +1,325 @@
+{
+ "schema": "post284.open_obligations.v1",
+ "terminal_claim": "RH_OPEN",
+ "authority": "LEDGER_ONLY",
+ "obligations": [
+  {
+   "id": "F04_PRODUCTION_DERIVATIVE_AUTHORITY",
+   "package": "M06",
+   "status": "OPEN",
+   "detail": "ProductionContactF04DerivativeAuthority has no proof constructor. M05 (fixed-L regularized energy identity) is now compiled, which is the prerequisite; moving-aperture differentiation of the prime staircase cells, the pole upper endpoint and the singular regularized arch integral (locally uniform domination near t=0) remains to be proved."
+  },
+  {
+   "id": "M03_TWO_SCALAR_CONTACT_TRANSPORT",
+   "package": "M03",
+   "status": "OPEN",
+   "detail": "conditional two-scalar stationary contact theorem not formalized in this campaign."
+  },
+  {
+   "id": "M03_RANK_TWO_LAPLACE",
+   "package": "M03",
+   "status": "OPEN",
+   "detail": "closed form int_0^inf e^{-t/2} S_K(t/L) dt = (8/L)(uu^T - a^2 vv^T) verified numerically to 5e-29 (falsifier F07); Lean proof (improper oscillatory integrals) not attempted."
+  },
+  {
+   "id": "M03_WEIGHTED_STAIRCASE_REEXPRESSION",
+   "package": "M03",
+   "status": "OPEN",
+   "detail": "B_L(t)=B(t) and D(t)=4 sinh(t/2)-B(t) reexpression of the pole-prime discrepancy not formalized here."
+  },
+  {
+   "id": "M07_OPERATOR_LEVEL_HIGHER_SEAM_GLUING",
+   "package": "M07",
+   "status": "OPEN",
+   "detail": "fixed-K compressed C6/C8 operator gluing and one-sided order-7/9 jumps not formalized; existing merged authority remains C2."
+  },
+  {
+   "id": "M08_ABSTRACT_CUBIC_SCHUR",
+   "package": "M08",
+   "status": "OPEN",
+   "detail": "third-order Schur formula s''' = a''' - 6 Re(b'^T R b'') + 6 b'^T R H' R b' not formalized."
+  },
+  {
+   "id": "M09_WEIGHTED_REMAINDER_IDENTITY",
+   "package": "M09",
+   "status": "OPEN",
+   "detail": "zero-endpoint summation-by-parts identity and the F04-conditional contact-weighted balance not formalized."
+  },
+  {
+   "id": "M10_NINTH_ORDER_OPTIMIZED_SCHUR_JUMP",
+   "package": "M10",
+   "status": "OPEN",
+   "detail": "operator O(h^9) perturbation and resolvent/Schur comparison not proved; ContactNinthJumpGapBound takes the jump formula as an explicit premise."
+  },
+  {
+   "id": "M11_FROZEN_BRANCH_ANALYTICITY",
+   "package": "M11",
+   "status": "OPEN",
+   "detail": "StrictEvenPrimeSeamDichotomy compiles the abstract LOW/HIGH classification from explicit degree-9 expansion premises; real analyticity of the actual frozen canonical branch and the same-zero-mode continuation are not proved."
+  },
+  {
+   "id": "M13_SOURCE_SPECIFIC_CONTACT_EXCLUSION",
+   "package": "M13",
+   "status": "OPEN",
+   "detail": "no LOW/HIGH/interior arithmetic exclusion obtained."
+  },
+  {
+   "id": "M14_OTHER_BRANCHES",
+   "package": "M14",
+   "status": "OPEN",
+   "detail": "fresh-born, odd, tied, interior branches untouched."
+  },
+  {
+   "id": "M16_SMALL_OMEGA_LEGAL_FORM_INDEFINITENESS",
+   "package": "M16",
+   "status": "OPEN",
+   "detail": "moving-vector rational asymptotics are exact SymPy/mpmath controls only; small-omega indefiniteness is not a Lean theorem."
+  },
+  {
+   "id": "M17_GENERAL_OMEGA_ANDREIEF_INERTIA",
+   "package": "M17",
+   "status": "OPEN",
+   "detail": "Exact inertia is Lean-compiled at omega=1/2 for every K>=2 (SourceParityExactInertia). The strict signed-minor (Andreief) lemma for 0<omega<1/2 is OPEN; F06 samples omega in {0.05,0.25,1/3,0.45} for K<=9 and leading-minor signs at a in {2pi*0.05, pi/2, pi}."
+  },
+  {
+   "id": "M18_FILTERED_INERTIA",
+   "package": "M18",
+   "status": "DISCHARGED_AT_HALF_APERTURE_PENDING_CI",
+   "detail": "SourceMomentFilteredInertia: at omega=1/2 the even filtered carrier evenFilteredCarrier (m+s) s (even, M_0..M_{2s-1}=0) splits orthogonally with exact definite dimensions (m/2+1, (m+1)/2) and the odd filtered carrier oddFilteredCarrier (m+s+1) s with ((m+1)/2, m/2+1); both are indefinite for m>=1. Filtered inertia for 0<omega<1/2 remains OPEN (see M17_GENERAL_OMEGA_ANDREIEF_INERTIA)."
+  },
+  {
+   "id": "M18_SPECTRAL_FLOW_PASSAGES",
+   "package": "M18",
+   "status": "OPEN",
+   "detail": "counting-with-multiplicity zero-level passages on (1/2,1) not formalized; F08 grid discovery shows passages are generally NOT monotone (more change points than the lower bound for K>=4)."
+  },
+  {
+   "id": "M19_PARITY_GROUND_IDENTITY",
+   "package": "M19",
+   "status": "INEQUALITY_FORM_DISCHARGED_PENDING_CI",
+   "detail": "The premise used by ContactNinthJumpGapBound is now derived at even ground eigenvectors: parityGap_mul_norm_sq_le_coercivity_mul_source_mul_momentFour (CanonicalCenteredIndexCoercivity) composes the pre-existing parityGap_mul_evenIndex_norm_sq_le_re_star_source_mul_momentFour with the K-uniform coercivity C_K<5, giving delta*||v||^2 <= C_K*|H(v)|*|M4(v)| for delta>=0. The exact identity form and the M10 ninth-order jump premise remain OPEN."
+  },
+  {
+   "id": "OAI_SEVEN_EIGHTHS_LOCAL_IMPORT",
+   "package": "M02",
+   "status": "OPEN",
+   "detail": "provenance-only; see SOURCE_CLOSURE_AUDIT.json."
+  },
+  {
+   "id": "OBS060O_STATIONARY_SATURATION_EXCLUSION",
+   "package": "M13",
+   "status": "OPEN",
+   "detail": "unchanged."
+  },
+  {
+   "id": "F_M20_SECULAR_KERNEL",
+   "package": "F-M20",
+   "status": "PROVED_ABSTRACT_PENDING_CI",
+   "detail": "SecularDeterminantKernel: det A = det B (1-T), A x = (1-T) D^{-1} g, ker A = span x, T=1 iff ker A nonzero (g != 0), over any field. Instantiation to the actual compressed canonical A_L, B_L, D, g, H_L (via ParityCompressionRankOne) is not yet a separate declaration."
+  },
+  {
+   "id": "F_M21_PHASE_LOCK",
+   "package": "F-M21/F-M58",
+   "status": "OPEN",
+   "detail": "needs the exported normalization <g, Dz> = M4(z) for the projected cubic and the actual odd-positive resolvent; then M4(z) = gamma H(z), gamma>0."
+  },
+  {
+   "id": "F_M22_SCHUR_SECULAR_JETS",
+   "package": "F-M22",
+   "status": "OPEN",
+   "detail": "1-T = c s with c = det Q / det B near a simple contact; T' = -c* <A'z,z>; requires C^3 cells for third derivatives."
+  },
+  {
+   "id": "F_M23_M24_OPERATOR_SEAM_GERMS",
+   "package": "F-M23/F-M24",
+   "status": "OPEN",
+   "detail": "operator-norm seventh/ninth seam germs from scalar jets (polarization, Taylor majorants). The abstract matched Sherman-Morrison update (1-T')(1+t gamma) = 1-T is PROVED (matched_update); the fast falsifier T+-T- = d h^9 - c h^10 is an exact SymPy regression."
+  },
+  {
+   "id": "F_M25_DIRECT_ARITHMETIC",
+   "package": "F-M25",
+   "status": "OPEN",
+   "detail": "research."
+  },
+  {
+   "id": "F_M26_SHIFTED_SECULAR",
+   "package": "F-M26",
+   "status": "PROVED_ABSTRACT_PENDING_CI",
+   "detail": "shifted_secular / shifted_eigenvector_eq_smul: det(A-mu) = det(B-mu)(1-T(mu)), (A-mu)v(mu) = (1-T(mu))D^{-1}g, eigenspaces below the odd spectrum are lines."
+  },
+  {
+   "id": "F_M27_ALTERNATING_SLOPES",
+   "package": "F-M27",
+   "status": "OPEN",
+   "detail": "d_lambda T(a_j) = prod_{i!=j}(a_i-a_j)/prod_k(b_k-a_j), sign (-1)^{j-1}: only the 2x2 instance (+1/12, -1/6) is an exact SymPy regression."
+  },
+  {
+   "id": "F_M28_RESOLVENT_OVERLAP",
+   "package": "F-M28",
+   "status": "OPEN",
+   "detail": "<v,d> = ||v||^2/c* > 0 at a simple contact."
+  },
+  {
+   "id": "F_M29_SOURCE_RESOLVENT_DERIVATIVES",
+   "package": "F-M29",
+   "status": "OPEN",
+   "detail": "H_L recovered from A,B by the rank-one factorization; C^2 via CanonicalCompressedApertureC2; third derivative only in C^3 cells."
+  },
+  {
+   "id": "F_M30_CROSSING_CONTROL",
+   "package": "F-M30",
+   "status": "PROVED_PENDING_CI",
+   "detail": "crossing_rankOne / crossing_secular / crossingB_zero_posDef / crossingA_negative plus exact SymPy regression (T(0)=1, T'=T''=0, T'''=1/2, lambda slopes 1/12, -1/6). Permanent negative control: rank-one + stationary geometry alone do not exclude a first crossing."
+  },
+  {
+   "id": "F_M31_ABSTRACT_GRONWALL",
+   "package": "F-M31",
+   "status": "OPEN",
+   "detail": "not formalized."
+  },
+  {
+   "id": "F_M32_CANONICAL_GRONWALL_INEQUALITY",
+   "package": "F-M32",
+   "status": "OPEN",
+   "detail": "(67.1) with independent integrable C_K; prime-free counterexamples (M41/M43) show all-vector second-order positivity fails before primes."
+  },
+  {
+   "id": "F_M33_M34_CONTACT_SOURCE_SIGN_AND_BUDGET",
+   "package": "F-M33/F-M34",
+   "status": "OPEN",
+   "detail": "F04 at the contact boundary."
+  },
+  {
+   "id": "F_M35_M40_M54_INTEGRATED_SOURCE",
+   "package": "F-M35/F-M40/F-M54",
+   "status": "PROVED_PENDING_CI",
+   "detail": "CanonicalSourceWeightedIntegral: int_0^1 S = P_0; int_0^1 (1-w) S_nm = -(1/(2pi^2))(1/(nm)+delta/n^2); int_0^1 (1-w) e_u = -(1/(2pi^2))(sum|u_n|^2/n^2 + |sum u_n/n|^2) for u_0=0; = -||z||^2/(2pi^2) for u=Dz, sum z=0; <= -||u||^2/(2pi^2 K^2); every nonzero u with u_0=0 has a negative source coordinate and a zero of Re e_u in (0,1)."
+  },
+  {
+   "id": "F_M36_M42_SMALL_APERTURE_RADIUS",
+   "package": "F-M36/F-M42",
+   "status": "FIXED_VECTOR_TEST_PROVED_PENDING_CI",
+   "detail": "CanonicalPrimeFreeSecondTest: for sum z = 0 and 0 < L <= log 2, primeFreeSecondTest N z L = int_0^L t^2 (W - rho) Re e_{Dz}(1 - t/L) dt >= L^2 ||z||^2 [1/(4 pi^2) - L(2N+1)N^2/2], and it is positive for z != 0, 0 < L < 1/(2 pi^2 (2N+1) N^2). Ingredients proved: |S_nm(w)| <= 2w, |e_{Dz}(w)| <= 2w(2N+1)N^2||z||^2, |t^2(W-rho)+t/2| <= 3t^2 on (0, log 2]. OPEN: identification of this test with the production second variation / E_z''+(2/L)E_z' (M65)."
+  },
+  {
+   "id": "F_M37_LOCAL_EXCLUSION",
+   "package": "F-M37/F-M66",
+   "status": "CONDITIONAL_OPEN",
+   "detail": "needs prime-free F04 (M65), contact saturation and one-sided crossing geometry."
+  },
+  {
+   "id": "F_M38_REMAINDER_EXTREMA",
+   "package": "F-M38",
+   "status": "OPEN",
+   "detail": "not started in this PR."
+  },
+  {
+   "id": "F_M39_PRIME_SEAM_PROPAGATION",
+   "package": "F-M39",
+   "status": "OPEN",
+   "detail": "research."
+  },
+  {
+   "id": "F_M41_PRIME_FREE_SIGN_CHANGE",
+   "package": "F-M41",
+   "status": "INTERVAL_EVIDENCE",
+   "detail": "outward-rounded enclosures: Q_{2,z}(0.5) in [0.0380, 0.0407], Q_{2,z}(0.6) in [-0.0654, -0.0606]; sign change in (0.5, 0.6) < log 2. Research evidence, not Lean/Arb authority."
+  },
+  {
+   "id": "F_M43_PRIME_FREE_INDEFINITE",
+   "package": "F-M43",
+   "status": "INTERVAL_EVIDENCE",
+   "detail": "Q_{3,z_minus}(2/3) in [-0.1809,-0.1740], Q_{3,z_plus}(2/3) in [0.2484, 0.3508]: fixed-vector indefiniteness before the first prime seam. Not canonical eigenvectors."
+  },
+  {
+   "id": "F_M44_ENTERING_PRIME_SEVENTH",
+   "package": "F-M44",
+   "status": "OPEN",
+   "detail": "needs Taylor remainder authority on the seventh source jet."
+  },
+  {
+   "id": "F_M45_ODD_ENDPOINT_QUANTITATIVE",
+   "package": "F-M45",
+   "status": "OPEN",
+   "detail": "-e_u(w) >= (pi^6/90) m^2 w^7 on 0<w<=theta(u): not formalized."
+  },
+  {
+   "id": "F_M46_COERCIVITY",
+   "package": "F-M46",
+   "status": "PROVED_PENDING_CI",
+   "detail": "CanonicalCenteredIndexCoercivity: ||z||^2 <= C_K ||Dz||^2 for sum z = 0, C_K = 1 + sum_{0<|n|<=K} 1/n^2 <= 5 - 4/(K+1) < 5, C_K <= 2K+1; contact corollary from the existing parity-gap theorem."
+  },
+  {
+   "id": "F_M47_K2_SOURCE_SIGN",
+   "package": "F-M47",
+   "status": "PROVED_PENDING_CI",
+   "detail": "CanonicalK2SourceSignInterval: Re e_u(w) < 0 for every nonzero legal odd K=2 u and Re e_{Dz}(w) < 0 for every nonzero legal even K=2 z, 0 < w <= 3/4; e_{u0}(1) = 20 > 0 regression edge."
+  },
+  {
+   "id": "F_M48_K2_PRIME_SAMPLES",
+   "package": "F-M48",
+   "status": "SOURCE_SIDE_PROVED_PENDING_CI",
+   "detail": "every prime sample 2<=q<=e^L with 0<L<=log 16 has w_q in [0,3/4] and nonpositive (strict unless entering) K=2 source energy; prime terms -beta e >= 0. The F04-conditional contact consequence P = -F <= 0 stays OPEN."
+  },
+  {
+   "id": "F_M49_M51_NEAR_EDGE_AND_OLDER_PRIME",
+   "package": "F-M49/F-M50/F-M51",
+   "status": "OPEN",
+   "detail": "depend on M45 and on F04 for the contact budget."
+  },
+  {
+   "id": "F_M52_M64_FULL_REGULARIZED_ENERGY",
+   "package": "F-M52/F-M64",
+   "status": "PROVED_PENDING_CI",
+   "detail": "identical to M05 quadraticForm_canonicalSourceMatrix_eq_regularizedEnergy (actual canonicalSourceMatrix via canonicalSourceMatrix_eq_dictionaryMatrix; repository wCorrection equals the handoff's w(L) term by term). HARD GATE satisfied at matrix level."
+  },
+  {
+   "id": "F_M53_M65_F04_DERIVATIVES",
+   "package": "F-M53/F-M65",
+   "status": "OPEN",
+   "detail": "prime-free moving-aperture first/second derivative of the M05 identity (t=Lx, removable singularity, w'(L)=e^{-L/2} rho(L)) not yet formalized; ProductionContactF04DerivativeAuthority stays an open interface."
+  },
+  {
+   "id": "F_M55_ABEL_SUMMATION",
+   "package": "F-M55",
+   "status": "OPEN",
+   "detail": "not started."
+  },
+  {
+   "id": "F_M56_M57_CONTACT_POSITIVITY",
+   "package": "F-M56/F-M57",
+   "status": "OPEN",
+   "detail": "research."
+  },
+  {
+   "id": "F_M58_M63_SOURCE_MOMENT_BIRDFISHIE",
+   "package": "F-M58..F-M63",
+   "status": "OPEN",
+   "detail": "phase lock, near/old prime partition, opposite-side inequalities: OPEN; M59 reuses the existing explicit source-moment kernel."
+  },
+  {
+   "id": "F_M66_NEG_EULER_AND_LOCAL_EXCLUSION",
+   "package": "F-M66",
+   "status": "CONDITIONAL_OPEN",
+   "detail": "(Q-NEG-EULER) and the no-stationary-first-contact consequence on (0, eps_K) depend on M65."
+  },
+  {
+   "id": "F_M67_LOG3_CERTIFICATE",
+   "package": "F-M67",
+   "status": "INTERVAL_EVIDENCE",
+   "detail": "birdfishie_log3_K2_certificate.py runs in CI; H(log3,z) in [0.0344, 0.0483]; falsifies only a universal nonpositive source-pairing claim on arbitrary legal vectors."
+  },
+  {
+   "id": "F_M68_GENERALIZATION",
+   "package": "F-M68",
+   "status": "OPEN",
+   "detail": "research."
+  },
+  {
+   "id": "RH",
+   "package": "terminal",
+   "status": "OPEN",
+   "detail": "RH_OPEN."
+  }
+ ]
+}

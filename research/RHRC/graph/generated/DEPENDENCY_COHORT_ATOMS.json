@@ -1767,8 +1767,8 @@
         "_private.Zeta23.GammaFacts.0.Zeta23.gamma_ne_neg_nat"
       ],
       "graph_role_counts": {
-        "LOCAL_DEPENDENCY": 1436,
-        "REGISTERED_CLAIM_ROOT": 27
+        "LOCAL_DEPENDENCY": 1435,
+        "REGISTERED_CLAIM_ROOT": 28
       },
       "member_labels": [
         "B",
@@ -1898,7 +1898,7 @@
       },
       "private_or_internal_count": 379,
       "public_count": 1084,
-      "registered_root_count": 27,
+      "registered_root_count": 28,
       "sha256": "e1691de90c4b1dc767266818db36baec9335cadf8be1535955e22949b1f34485",
       "signature": "BC"
     },
