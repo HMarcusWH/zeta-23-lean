@@ -6,7 +6,7 @@ evidence. Theorem authority comes only from the Lean roots listed in
 
 ## Scripts
 
-All five scripts live in `research/RHRC/routes/R003_ccm_bridge/post285/` and
+All eight scripts live in `research/RHRC/routes/R003_ccm_bridge/post285/` and
 run in the `source-falsifier-research` job of
 `.github/workflows/rhrc_post284_source_inertia.yml`. Each one runs in seconds.
 
@@ -17,6 +17,9 @@ run in the `source-falsifier-research` job of
 | `post285_m76_secular_margin.py` | M76 | Experimental signal (see below) |
 | `post285_f04_falsifier.py` | F04 (M65), M66 | Pass, with both negative controls failing as predicted |
 | `post285_m55_abel_falsifier.py` | M55, M38 | Pass, with both negative controls failing as predicted |
+| `post285_m71_andreief_falsifier.py` | M71 | Pass (Arb-certified signs), with both aperture controls failing as predicted |
+| `post285_m27_root_slope_falsifier.py` | M27 | Pass, with both negative controls failing as predicted |
+| `post285_m08_cubic_schur_falsifier.py` | M08 | Exact pass, with all three controls behaving as predicted |
 
 ## M74: canonical secular resolvent
 
@@ -182,6 +185,63 @@ evaluated exactly cell by cell rather than by quadrature.
   formula matches dense sampling exactly, and the finite infimum formula is
   approached from above (a left limit). **Control:** dropping the cut
   `min(m+1, X)` undershoots the infimum at non-integer `X`.
+
+## M71: Andréief interior inertia (Steps 44, 109)
+
+`post285_m71_andreief_falsifier.py` builds the even and odd carrier Gram
+matrices in the cosine-power bases from exact rational lattice coefficients and
+the elementary source entries, in python-flint Arb balls.
+
+- **Certified signs.** For `K = 2..9` and 14 apertures
+  `ω ∈ {1/1000, 1/200, 1/50, 1/20, 1/10, 1/8, 1/6, 1/5, 1/4, 1/3, 2/5, 9/20, 49/100, 1/2}`,
+  every leading minor has the proved sign: `(−1)^{r(r−1)/2}` (even) and
+  `(−1)^{r(r+1)/2}` (odd). That is 224 cells at 512-bit precision, none
+  unresolved, with minors as small as about `10^{-488}` at `ω = 1/1000`.
+- **Inertia.** The Jacobi counts equal the proved inertia, and an independent
+  120-digit eigenvalue count agrees for `K = 2..7` at `ω = 1/20, 1/5, 1/3, 1/2`.
+- **Gram identity.** The carrier Gram entries equal the Andréief convolution
+  integrals `±π⁻¹ ∫_0^a w(t) cos^k t · w(a−t) cos^l(a−t) dt` to `10^{-40}`.
+- **Controls.** For `ω ∈ (1/2, 1)` the certified signs break the pattern (for
+  example `K = 3` at `ω = 4/5` and `9/10`), and at `a = 3π/2` a pair factor is
+  positive. Both fail as predicted, so the hypothesis `ω ≤ 1/2` is needed.
+
+## M27: alternating root slopes (Step 59)
+
+`post285_m27_root_slope_falsifier.py` uses the same float canonical source
+matrices as the M76 probe (`K = 2..5`, `L = 0.5..6` in steps of `0.5`).
+
+- **Slope formula.** At all 22 resolved even eigenvalues below the odd floor,
+  the resolvent derivative `H(D⁻¹(B − a)⁻² g)` matches
+  `∏_{i≠j}(a_i − a_j)/∏_k(b_k − a_j)` to a relative `7·10⁻⁹`. A central
+  difference of `T`, with its step scaled to the distance to the nearest root
+  or odd eigenvalue, agrees to `2·10⁻⁵`.
+- **Sign.** The rule `(−1)^{#{i : a_i < a_j}}` holds at every root.
+- **Determinant form.** `1 − T(λ)` equals the eigenvalue-product ratio to
+  `4·10⁻¹⁵` at a point below every root.
+- **Coverage.** No sampled row has more than one even eigenvalue below the odd
+  floor. Only the first slope, which is positive, is exercised. The alternation
+  at later roots is proved in Lean and not seen numerically on this grid.
+- **Controls.** C1 perturbs `B_L` off the rank-one relation `BD − DA = g Hᵀ`
+  while keeping `H`: the product formula then misses the resolvent derivative
+  by up to a relative `4.6·10⁸`. C2 counts larger eigenvalues instead of smaller
+  ones (Mathlib's decreasing order): that sign rule fails at 7 roots. Both fail
+  as predicted.
+
+## M08: abstract cubic Schur (Step 34)
+
+`post285_m08_cubic_schur_falsifier.py` works in exact SymPy rationals. It
+expands `H(t)⁻¹` by the Neumann series around `H(t₀)` and reads `s'''(t₀)` off
+the exact third Taylor coefficient of `s = a − b* H⁻¹ b`.
+
+- **Formula.** On 18 seeded families the general, symmetric and response forms
+  all equal the exact `s'''(t₀)`. The families are real symmetric with
+  complement dimension 1 to 4, where dimension 1 is the 2×2 Schur toy model, and
+  complex Hermitian with dimension 1 or 2, using the real-part form.
+- **Controls.** C1 uses coefficient 3 instead of 6 on `⟪b', R H' R b'⟫` and
+  fails on all 18 families. C2 lets `b(t₀) ≠ 0` and breaks the formula on all
+  12 real families. C3 builds `s = s' = s'' = 0` with `s''' = ±1`: `s` is
+  positive just to the right for `+1` and negative for `−1`, as the necessary
+  sign predicts.
 
 ## Inherited regressions kept running
 

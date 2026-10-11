@@ -39,6 +39,9 @@ The machine-readable versions are:
 | M66, Step 103, F07 | `CanonicalLocalBirdfishie` | `productionSecondDerivativePhysicalValue_eq_neg_primeFreeSecondTest`, `productionContactEulerCurvature_le`, `productionContactEulerCurvature_neg`, `GeneratedStrictEvenContact.secondPhysicalValue_eq_two_mul_responseCost`, `GeneratedStrictEvenContact.fresh_of_lt_primeFreeRadius`, `GeneratedStrictEvenContact.completed_production_frontier_unconditional` | 19, 27, 74, 102–104 |
 | M31 (conditional barrier) | `CanonicalSecularGronwall` | `gronwall_lower_bound`, `gronwall_pos`, `evenCompressedCanonical_det_eq_zero_of_bottom_eq_zero`, `canonical_evenBottom_pos_of_gronwall` | 66 |
 | M55, M38 | `CanonicalWeightedChebyshevAbel` | `psi_sub_self_eq_weightedRemainder`, `abs_psi_sub_self_sub_one_le`, `isGreatest_weightedRemainder`, `isGLB_weightedRemainder` | 75, 96 |
+| M71 | `CanonicalAndreiefInertia` | `det_integral_eq_integral_det_mul_prod`, `integral_det_mul_prod_eq`, `andreiefSign_mul_det_gram_pos`, `jacobi_alternating_split`, `sourceSesq_eq_convolution`, `sourceSesq_evenCarrier_cosPow`, `sourceSesq_oddCarrier_cosPow`, `evenBoundaryFlat_source_exactInertia`, `oddBoundaryFlat_source_exactInertia`, `parityBoundaryFlat_source_indefinite` | 44, 109 |
+| M27 | `CanonicalAlternatingRootSlopes` | `det_sub_smul_eq_prod_eigenvalues`, `one_sub_canonicalSecularFunction_eq`, `canonical_secular_hasDerivAt_root`, `canonical_secular_root_slope_sign` | 59 (root slopes) |
+| M08 (abstract) | `AbstractCubicSchur` | `cubic_schur_third_deriv`, `cubic_schur_third_deriv_response`, `cubic_schur_third_nonpos_of_right_negative` | 34 (abstract part) |
 
 ### What these results do not say
 
@@ -57,8 +60,8 @@ The machine-readable versions are:
   `3.7·10³` at `K = 2`, so the theorem only applies at very large apertures.
 - **`CanonicalShiftedSecular`** proves that every even eigenvalue below the odd
   floor is simple, and the exact Step 60 overlap identity
-  `⟪x_L, D⁻¹g⟫ · S_L(w_L) = ‖x_L‖²` at an even contact. It does not prove the
-  alternating root slopes. The odd-first and tied statements are identities.
+  `⟪x_L, D⁻¹g⟫ · S_L(w_L) = ‖x_L‖²` at an even contact. The alternating root
+  slopes are a separate module (M27). The odd-first and tied statements are identities.
   They exclude no branch.
 - **`CanonicalContactOverlapSign`** proves that both `S_L(w_L)` and
   `⟪x_L, D⁻¹g⟫` are real and strictly positive at an even contact, given an
@@ -103,6 +106,61 @@ The machine-readable versions are:
 - **M72** proves a first degenerate passage on `(1/2, 1)` whenever the
   half-aperture form has a negative vector. The multiplicity count, which needs
   continuous eigenvalue branches, is still OPEN.
+- **M71** is about the elementary `sourceMatrix ω` on the even and odd
+  boundary-flat carriers. For every `0 < ω ≤ 1/2` and `K ≥ 2` it gives exact
+  inertia `(K/2, (K−1)/2, 0)` (even) and `((K−1)/2, K/2, 0)` (odd), with
+  nondegeneracy and maximality of the definite dimensions. The bound `ω ≤ 1/2`
+  (aperture `a ≤ π`) is used and cannot be dropped: on `(1/2, 1)` the inertia
+  changes (M72). The moment-filtered carriers of post-284 M18 are not covered,
+  and nothing here concerns the canonical operator or its contacts.
+- **M27** is about the secular function `T_L(λ)` at a fixed aperture `L`, for
+  real `λ` below the odd Rayleigh bottom. There
+  `1 − T_L(λ) = ∏(a_i − λ)/∏(b_k − λ)` over the eigenvalues of `A_L` and `B_L`,
+  and at each even eigenvalue `a_j` below the odd floor the slope
+  `T_L'(a_j) = ∏_{i≠j}(a_i − a_j)/∏_k(b_k − a_j)` is nonzero with sign
+  `(−1)^{#{i : a_i < a_j}}`, so `+, −, +, …` with the roots numbered
+  increasingly. It says nothing about `∂_L T_L`, about `T_L` between roots, or
+  about whether a contact occurs. With the M28 overlap positivity it is
+  consistent: a contact at the bottom of a positive semidefinite `A_L` is the
+  first root, where the slope is positive. On the sampled float grid at most one
+  even eigenvalue lies below the odd floor, so the alternation beyond the first
+  root is proved but not exercised numerically.
+- **M08** is abstract calculus for a block family `a(t)`, `b(t)`, `H(t)` with
+  `b(t₀) = 0` and `H(t₀)` invertible: `s''' = a''' − 3⟪b', R b''⟫ − 3⟪b'', R b'⟫
+  + 6⟪b', R H' R b'⟫`, the symmetric and response forms
+  `a''' + 6⟪b'', w⟫ + 6⟪H' w, w⟫` with `w = −R b'`, and `s''' ≤ 0` at a zero of
+  order three that turns negative to the right. That sign is necessary, not
+  contradictory. The arithmetic third identity for `⟨F''' z, z⟩` needs
+  moving-aperture `C³` transport of the full source and stays OPEN.
+
+### Proof outline for M71
+
+1. **Andréief.** Expanding `det[∫ f_i g_j dμ]` by Leibniz and
+   `integral_fintype_prod_eq_prod` gives `∫ det[f_m(x_i)] ∏ g_i(x_i) dμ^r`.
+   Averaging over the coordinate permutations (`measurePreserving_piCongrLeft`)
+   gives `(1/r!) ∫ det[f_m(x_i)] det[g_m(x_i)] dμ^r`.
+2. **Signed minors.** With `f_k = w cos^k` and `g_k(t) = f_k(a − t)`, both
+   determinants factor as weights times Vandermonde determinants in `cos x_i`
+   and `cos(a − x_i)`. For `0 < a ≤ π`, `cos` is strictly decreasing on
+   `[0, a]`, so every pair factor `(cos x_j − cos x_i)(cos(a − x_j) − cos(a − x_i))`
+   is `≤ 0`, and `< 0` when `x_i ≠ x_j`. Clamping the variables to `[0, a]`
+   makes the integrand sign-definite on all of `ℝ^r`, and a box of `r` disjoint
+   subintervals of `(0, a)` has positive measure. Hence
+   `(−1)^{r(r−1)/2} D_r > 0` for the Gram matrix
+   `G_kl = ∫_0^a w(t) cos^k t · w(a−t) cos^l(a−t) dt`.
+3. **Jacobi by Cramer vectors.** `w_k = ∑_{l ≤ k} adj(G_{k+1})_{l,k} e_l`
+   satisfies `B(e_i, w_k) = 0` for `i < k` and `B(e_k, w_k) = D_{k+1}`, so the
+   `w_k` are mutually orthogonal with `B(w_k, w_k) = D_k D_{k+1}`. Pivot signs
+   `(−1)^k` put the even-index `w_k` in a positive definite subspace and the
+   odd-index ones in a negative definite subspace, and
+   `exactInertia_of_orthogonal_split` gives exact inertia.
+4. **Carrier Gram.** The sesquilinear form of the Fourier convolution
+   representation and the lattice character identities
+   (`latticeCos(cos(n·t)) = cos t · cos(n·t)`, and so on) give
+   `B(e_k, e_l) = π⁻¹ G_kl` with `w = (1 − cos)²` on the even carrier basis
+   `evenCarrierMap m (cos^k)`, and `−π⁻¹ G_kl` with `w = sin · (1 − cos)` on the
+   odd basis `oddCarrierMap m (cos^k)`, `k ≤ m = K − 2`. Their span is the whole
+   carrier by dimension count.
 
 ### Proof outline for F04 and M66
 
@@ -153,27 +211,14 @@ existing M42 lower bound `primeFreeSecondTest_ge`,
     `…inherited_completed_production_frontier_unconditional`.
 - **Not changed.** The eight claim-contract wrappers in
   `Zeta23/RHRC/ContactCalculusContract.lean` still take `hF04` as a parameter.
-  They can be instantiated with the constructor; rebinding the registered
-  claims waits for the #286 registry. The structure's docstring in
+  They can be instantiated with the constructor. #286 has merged and kept the
+  two F04-bound registered claims OPEN; they are promoted one at a time only
+  after CI is green on this head. The structure's docstring in
   `FirstCrossingProductionCurvatureBridge.lean` still calls F04 "presently
   OPEN". It is left as written to avoid editing #284 sources, and this ledger
   is the authority.
 
 ## 2. DERIVED (not formalized)
-
-### M71: Andréief interior inertia (Step 109)
-
-The planned route has these steps:
-1. Prove the Andréief identity by Leibniz expansion and
-   `integral_fintype_prod_eq_prod`.
-2. Factor the Vandermonde (`Matrix.det_vandermonde`).
-3. Get the sign of the kernel determinant from the monotonicity of `cos t` and
-   `cos(a − t)` on the relevant ranges.
-4. Turn signed leading minors into exact inertia, using a B-orthogonal
-   Gram–Schmidt basis with pivots `D_k/D_{k−1}` and
-   `exactInertia_of_orthogonal_split`.
-
-**Status: OPEN.** Exact inertia is proved only at `ω = 1/2` (PR #285).
 
 ### M72 multiplicity
 
@@ -262,8 +307,9 @@ falls into one of these classes:
 | Operator seam germs | M07, M10, M11, F_M23_M24, F_M44 | Need operator-norm Taylor majorants at frozen prime seams |
 | Classical arithmetic | F_M38, F_M55 | Proved here (M38, M55) |
 | Abstract analysis | F_M31 | Proved here as a conditional barrier (M31); the coefficient bound M32 stays OPEN |
-| Abstract algebra, provable now | M08_ABSTRACT_CUBIC_SCHUR, M03_RANK_TWO_LAPLACE, M03_WEIGHTED_STAIRCASE_REEXPRESSION | Candidates for the next pushes |
-| Partly addressed here | M17 (→M71), M18 (first passage), F_M21 (phase identity), F_M46 (constant 4), F_M58_M63 (phase lock), F_M27 (simplicity), F_M28 (overlap identity and sign), M14 (odd-first and tied algebra) | See the cross-references |
+| Abstract algebra, provable now | M03_RANK_TWO_LAPLACE, M03_WEIGHTED_STAIRCASE_REEXPRESSION | Candidates for the next pushes |
+| Proved here | M17 (as M71, on the boundary-flat carriers for every `0 < ω ≤ 1/2`), F_M27 (simplicity, and the alternating root slopes as M27), M08_ABSTRACT_CUBIC_SCHUR (as M08; the arithmetic third identity stays OPEN) | The post-284 rows are historical and stay as they were; filtered carriers stay OPEN |
+| Partly addressed here | M18 (first passage), F_M21 (phase identity), F_M46 (constant 4), F_M58_M63 (phase lock), F_M28 (overlap identity and sign), M14 (odd-first and tied algebra) | See the cross-references |
 | Research or contact-conditioned | M03_TWO_SCALAR, M13, M16, F_M22, F_M25, F_M29, F_M32, F_M39, F_M45, F_M56_M57, F_M68, OBS060O | No viable proof route identified in this PR |
 | Provenance | OAI_SEVEN_EIGHTHS_LOCAL_IMPORT | Audit only |
 | Terminal | RH | RH_OPEN |

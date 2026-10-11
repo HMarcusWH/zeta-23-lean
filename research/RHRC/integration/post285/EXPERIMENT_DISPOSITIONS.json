@@ -110,6 +110,48 @@
       "package": "M38_REMAINDER_EXTREMA",
       "disposition": "EXACT_THEOREM_REGRESSION_PASS",
       "summary": "finite sup and inf formulas agree with dense sampling for X just below, at and just after 2, 3, 4, 5, 8, 9, 16, 25, 27, 32, 49, 97, 128, 500; control: dropping the cut min(m+1, X) undershoots the infimum at non-integer X"
+    },
+    {
+      "id": "X285_M71_SIGNS",
+      "script": "post285_m71_andreief_falsifier.py",
+      "package": "M71_SIGNED_MINORS",
+      "disposition": "EXACT_THEOREM_REGRESSION_PASS",
+      "summary": "Arb-certified leading-minor signs of the even and odd carrier Gram matrices for K = 2..9 at 14 apertures omega in [1/1000, 1/2] (224 cells, 512-bit balls, none unresolved) match (-1)^{r(r-1)/2} and (-1)^{r(r+1)/2}; Jacobi counts equal the proved inertia; mpmath eigenvalue inertia agrees for K = 2..7 at omega = 1/20, 1/5, 1/3, 1/2; carrier Gram entries equal the Andreief convolution integrals to 1e-40"
+    },
+    {
+      "id": "X285_M71_CONTROLS",
+      "script": "post285_m71_andreief_falsifier.py",
+      "package": "M71_APERTURE_CONTROLS",
+      "disposition": "NEGATIVE_CONTROL_FAILS_AS_EXPECTED",
+      "summary": "beyond the half aperture certified minor signs break the pattern (e.g. K = 3 at omega = 4/5 and 9/10), and at a = 3 pi/2 a pair factor is positive: the hypothesis omega <= 1/2 is not removable"
+    },
+    {
+      "id": "X285_M27_SLOPES",
+      "script": "post285_m27_root_slope_falsifier.py",
+      "package": "M27_ALTERNATING_ROOT_SLOPES",
+      "disposition": "EXACT_THEOREM_REGRESSION_PASS",
+      "summary": "on the float canonical operator (K = 2..5, L = 0.5..6 step 0.5) the resolvent derivative H(D^-1 (B - a)^-2 g) matches the product formula at all 22 resolved even roots below the odd floor (relative residual < 1e-8), a central difference agrees (< 2e-5), the sign rule holds at every root and 1 - T equals the eigenvalue-product ratio to 4e-15. At most one even root lies below the odd floor on this grid, so only the first (+) slope is exercised numerically."
+    },
+    {
+      "id": "X285_M27_CONTROLS",
+      "script": "post285_m27_root_slope_falsifier.py",
+      "package": "M27_CONTROLS",
+      "disposition": "NEGATIVE_CONTROL_FAILS_AS_EXPECTED",
+      "summary": "C1: perturbing B_L off the rank-one relation breaks the product formula (relative residual up to 4.6e8); C2: the decreasing-order sign rule (-1)^{#{i : a_i > a_j}} fails at 7 roots, so the increasing count is the right convention"
+    },
+    {
+      "id": "X285_M08_CUBIC_SCHUR",
+      "script": "post285_m08_cubic_schur_falsifier.py",
+      "package": "M08_ABSTRACT_CUBIC_SCHUR",
+      "disposition": "EXACT_THEOREM_REGRESSION_PASS",
+      "summary": "exact SymPy third Taylor coefficient of s = a - b* H^-1 b equals the general, symmetric and response forms on 18 seeded families: real symmetric of complement dimension 1..4 (dimension 1 is the 2x2 Schur toy model) and complex Hermitian of dimension 1..2 with the real-part form"
+    },
+    {
+      "id": "X285_M08_CONTROLS",
+      "script": "post285_m08_cubic_schur_falsifier.py",
+      "package": "M08_CONTROLS",
+      "disposition": "NEGATIVE_CONTROL_FAILS_AS_EXPECTED",
+      "summary": "C1: coefficient 3 instead of 6 on <b', R H' R b'> fails on all 18 families; C2: b(t0) != 0 breaks the formula on all 12 real families; C3: with s = s' = s'' = 0 at t0, s''' = 1 gives s > 0 and s''' = -1 gives s < 0 just to the right, matching the necessary sign"
     }
   ]
 }

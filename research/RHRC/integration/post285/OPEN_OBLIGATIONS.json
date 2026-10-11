@@ -2,7 +2,7 @@
   "schema": "post285.open_obligations.v1",
   "terminal_claim": "RH_OPEN",
   "authority": "REPORTING_LEDGER",
-  "note": "The post-284 ledger is not edited by this PR; promotion of its PR #285 *_PENDING_CI rows belongs to the separate #285 cleanup PR.",
+  "note": "The post-284 ledger is not edited by this PR. Its PR #285 rows were promoted by the merged #285 cleanup PR #286, whose statuses are authoritative for every #285 entry.",
   "obligations": [
     {
       "id": "M70_SOURCE_EXCURSIONS",
@@ -15,8 +15,8 @@
       "id": "M71_INTERIOR_ANDREIEF_INERTIA",
       "package": "M71",
       "steps": "44, 109",
-      "status": "OPEN",
-      "detail": "Exact parity inertia for 0 < omega < 1/2 (Andreief signed leading minors, Jacobi/Sylvester signature, polynomial-carrier equivalence) is not formalized. Half-aperture inertia stays PROVED from PR #285; interior inertia has numerical evidence only (no authority)."
+      "status": "PROVED_PENDING_CI",
+      "detail": "evenBoundaryFlat_source_exactInertia / oddBoundaryFlat_source_exactInertia: for every 0 < omega <= 1/2 and K >= 2 the elementary source form on the even (odd) boundary-flat carrier is nondegenerate with exact inertia (K/2, (K-1)/2, 0) ((K-1)/2, K/2, 0). Proof: Andreief identity, signed leading minors (-1)^{r(r-1)/2} D_r > 0 in the cosine-power carrier basis (andreiefSign_mul_det_gram_pos), Jacobi split by Cramer vectors (jacobi_alternating_split), carrier Gram = Andreief convolution (sourceSesq_evenCarrier_cosPow, sourceSesq_oddCarrier_cosPow). Elementary sourceMatrix only; omega <= 1/2 (aperture a <= pi) is used and is not removable. Moment-filtered carriers (post-284 M18) are not covered."
     },
     {
       "id": "M72_SOURCE_SPECTRAL_FLOW_FIRST_PASSAGE",
@@ -78,8 +78,8 @@
       "id": "M27_ALTERNATING_ROOT_SLOPES",
       "package": "M27",
       "steps": "59",
-      "status": "OPEN",
-      "detail": "d_lambda T_L(a_j) = prod_{i != j}(a_i - a_j) / prod_k(b_k - a_j) with sign (-1)^(j-1) is not formalized (needs eigenvalue-product determinant expansions). No lambda-monotonicity and no aperture-derivative sign is claimed."
+      "status": "PROVED_PENDING_CI",
+      "detail": "one_sub_canonicalSecularFunction_eq: below the odd Rayleigh bottom 1 - T_L(lambda) = prod_i(a_i - lambda)/prod_k(b_k - lambda) over the eigenvalues of A_L and B_L. canonical_secular_hasDerivAt_root: at every even eigenvalue a_j below the odd floor T_L'(a_j) = prod_{i != j}(a_i - a_j)/prod_k(b_k - a_j). canonical_secular_root_slope_sign: that slope is nonzero with sign (-1)^{#{i : a_i < a_j}}, i.e. (-1)^(j-1) for the roots numbered increasingly. Fixed L only: no lambda-monotonicity away from the roots and no aperture-derivative sign is claimed."
     },
     {
       "id": "M28_CONTACT_OVERLAP_IDENTITY",
@@ -180,6 +180,20 @@
       "detail": "gronwall_lower_bound / gronwall_pos: y' >= -C y on (a, b) with C continuous gives y(t) >= y(a) exp(-int_a^t C). canonical_evenBottom_pos_of_gronwall (CONDITIONAL): odd bottom > 0 on [L0, L1], even bottom > 0 at L0, det A_L = det B_L y(L), and y' >= -C y imply the even bottom stays positive on [L0, L1]. The Gronwall inequality is a hypothesis; it is the OPEN M32 target. Not an exclusion theorem."
     },
     {
+      "id": "M08_ABSTRACT_CUBIC_SCHUR",
+      "package": "M08",
+      "steps": "34",
+      "status": "PROVED_PENDING_CI",
+      "detail": "cubic_schur_third_deriv: for C^3 families a, b, H (real inner product space; complex Hermitian through Re<.,.>) with H(t0) invertible, R = H(t0)^-1 and b(t0) = 0, s = a - <b, H^-1 b> has s'''(t0) = a''' - 3<b', R b''> - 3<b'', R b'> + 6<b', R H' R b'>. cubic_schur_third_deriv_response: for symmetric H(t0), s''' = a''' - 6<b', R b''> + 6<R b', H' R b'> = a''' + 6<b'', w> + 6<H' w, w> with w = -R b'. cubic_schur_third_nonpos_of_right_negative: a zero of order three that turns negative to the right has s''' <= 0 (necessary only)."
+    },
+    {
+      "id": "M08_ARITHMETIC_THIRD_IDENTITY",
+      "package": "M08",
+      "steps": "34",
+      "status": "OPEN",
+      "detail": "<F''' z, z> = -(2 pi)^2 A_L[t^3 e'_{Dz}(1 - t/L)]/L^6 - 12 C/L and the conditional necessary inequality need moving-aperture C^3 transport of the full source on a neighborhood; not formalized."
+    },
+    {
       "id": "M32_CANONICAL_GRONWALL_COEFFICIENT",
       "package": "M32",
       "steps": "66, 67",
@@ -205,7 +219,7 @@
       "package": "M77",
       "steps": "107, 114",
       "status": "IN_PROGRESS",
-      "detail": "Ledgers, workflow targets, axiom audit and proof-escape receipts for M70-M75, M26-M28, M65, M66 and the branch algebra in this PR; claim-registry binding of the new roots deferred until the #285 cleanup PR (which edits the registry) lands."
+      "detail": "Ledgers, workflow targets, axiom audit and proof-escape receipts for M70-M75, M26-M28, M65, M66 and the branch algebra in this PR; the #285 cleanup PR #286 has merged and this branch is rebased on it. The two F04-bound #284 claims (R003_WEIGHTED_PRODUCTION_PAIR_BALANCE, R003_COMPLETED_STRICT_EVEN_CONTACT_FRONTIER) stay OPEN in the registry until CI is green on this head; their unconditional versions are canonicalSecondPairing_euler_eq_productionSaturationGap_of_pos and GeneratedStrictEvenContact.completed_production_frontier_unconditional."
     },
     {
       "id": "RH",
@@ -218,7 +232,7 @@
   "post284_cross_references": [
     {
       "post284_id": "M17_GENERAL_OMEGA_ANDREIEF_INERTIA",
-      "effect": "unchanged (OPEN); see M71_INTERIOR_ANDREIEF_INERTIA"
+      "effect": "proved here for every 0 < omega <= 1/2 on the even and odd boundary-flat carriers (M71_INTERIOR_ANDREIEF_INERTIA, pending CI); the post-284 ledger entry is historical and unchanged; filtered carriers stay OPEN"
     },
     {
       "post284_id": "M18_SPECTRAL_FLOW_PASSAGES",
@@ -270,7 +284,7 @@
     },
     {
       "post284_id": "F_M27_ALTERNATING_SLOPES",
-      "effect": "canonical shifted secular equation and simple even roots below the odd floor proved here (M26_M27_CANONICAL_SHIFTED_SECULAR); alternating slope formula still OPEN"
+      "effect": "proved here: canonical shifted secular equation and simple even roots below the odd floor (M26_M27_CANONICAL_SHIFTED_SECULAR) and the alternating root-slope formula (M27_ALTERNATING_ROOT_SLOPES, pending CI)"
     },
     {
       "post284_id": "F_M28_RESOLVENT_OVERLAP",
@@ -291,6 +305,10 @@
     {
       "post284_id": "M14_OTHER_BRANCHES",
       "effect": "odd-first and tied branch algebra proved here (M14_ODD_FIRST_AND_TIED_BRANCH_ALGEBRA); no branch excluded"
+    },
+    {
+      "post284_id": "M08_ABSTRACT_CUBIC_SCHUR",
+      "effect": "abstract cubic Schur formula, response form and necessary sign proved here (M08_ABSTRACT_CUBIC_SCHUR, pending CI); the arithmetic third identity stays OPEN (M08_ARITHMETIC_THIRD_IDENTITY)"
     }
   ]
 }
