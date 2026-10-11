@@ -13,7 +13,8 @@ Ledgers written:
                             edited here; its #285 promotion belongs to the
                             separate #285 cleanup PR);
 * STEP_STATUS_MATRIX.json   Steps 18-120, one row per step;
-* WORKFLOW_HARVEST.json     PR #285 exact-head check runs;
+* WORKFLOW_HARVEST.json     PR #285 exact-head check runs, and the workflow runs
+                            of the green #287 heads behind the CI receipts;
 * EXPERIMENT_DISPOSITIONS.json  post-285 falsifier dispositions.
 """
 from __future__ import annotations
@@ -96,6 +97,24 @@ CI_E3C7769 = {
     "pr_check_runs": "40 of 40 success",
 }
 
+CI_9EA3A4C = {
+    "pr": 287,
+    "head": "9ea3a4c4a0d20e0d6cd7ea16383f927fa72d984a",
+    "workflow_run": 38132218296,
+    "lean_source_inertia_check_run": 114448711253,
+    "source_falsifier_research_check_run": 114448711457,
+    "pr_check_runs": "40 of 40 success",
+}
+
+CI_2E32E59 = {
+    "pr": 287,
+    "head": "2e32e595f37ceebfaac7c4fca4ab2b8450344a29",
+    "workflow_run": 38141356135,
+    "lean_source_inertia_check_run": 114475717910,
+    "source_falsifier_research_check_run": 114475718192,
+    "pr_check_runs": "40 of 40 success",
+}
+
 PROMOTED_MODULES = {
     "Zeta23/CCM/CanonicalSecularResolvent.lean": CI_E3C7769,
     "Zeta23/CCM/CanonicalSourceExcursion.lean": CI_E3C7769,
@@ -112,6 +131,15 @@ PROMOTED_MODULES = {
     "Zeta23/CCM/CanonicalAndreiefInertia.lean": CI_E3C7769,
     "Zeta23/CCM/CanonicalAlternatingRootSlopes.lean": CI_E3C7769,
     "Zeta23/CCM/AbstractCubicSchur.lean": CI_E3C7769,
+    "Zeta23/CCM/WeightedRemainderIdentity.lean": CI_9EA3A4C,
+    "Zeta23/CCM/SourceRankTwoLaplace.lean": CI_9EA3A4C,
+    "Zeta23/CCM/CanonicalSourceOddEndpointQuantitative.lean": CI_9EA3A4C,
+    "Zeta23/CCM/CanonicalRecentPrimeSecondVariation.lean": CI_9EA3A4C,
+    "Zeta23/CCM/CanonicalContactOlderPrimeBudget.lean": CI_9EA3A4C,
+    "Zeta23/CCM/CanonicalContactSourceOlderPrimeBalance.lean": CI_9EA3A4C,
+    "Zeta23/CCM/CanonicalContactRemainderOscillation.lean": CI_9EA3A4C,
+    "Zeta23/CCM/CanonicalEnteringPrimePhysicalJet.lean": CI_9EA3A4C,
+    "Zeta23/CCM/CanonicalSourceResolventDerivatives.lean": CI_2E32E59,
 }
 
 PROMOTED_OBLIGATIONS = {
@@ -137,6 +165,17 @@ PROMOTED_OBLIGATIONS = {
     "M38_FINITE_REMAINDER_EXTREMA": CI_E3C7769,
     "M31_GRONWALL_BARRIER": CI_E3C7769,
     "M08_ABSTRACT_CUBIC_SCHUR": CI_E3C7769,
+    "M09_ZERO_ENDPOINT_WEIGHTED_REMAINDER": CI_9EA3A4C,
+    "M09_CONTACT_WEIGHTED_BALANCE": CI_9EA3A4C,
+    "M03_FIXED_STAIRCASE_REEXPRESSION": CI_9EA3A4C,
+    "M03_RANK_TWO_LAPLACE_TRANSFORM": CI_9EA3A4C,
+    "M45_ODD_ENDPOINT_QUANTITATIVE": CI_9EA3A4C,
+    "M49_NEAR_EDGE_PRIME_BENEFIT": CI_9EA3A4C,
+    "M50_OLDER_PRIME_BUDGET": CI_9EA3A4C,
+    "M61_SOURCE_OLDER_PRIME_BALANCE": CI_9EA3A4C,
+    "M33_M34_SIGN_REVERSAL_AND_OSCILLATION": CI_9EA3A4C,
+    "M44_ENTERING_PRIME_PHYSICAL_JET": CI_9EA3A4C,
+    "M29_SOURCE_RESOLVENT_DERIVATIVES": CI_2E32E59,
 }
 
 # M31 is a barrier with the Gronwall inequality as an explicit hypothesis (the OPEN
@@ -258,7 +297,7 @@ OBLIGATIONS = [
      "detail": "regularizedCompletePhysicalRHS_eq_weightedRemainder (integrability premises explicit) and the C^1 forms productionArithmeticComplexValue_eq_weightedRemainder / productionArithmeticRealValue_eq_weightedRemainder: for h(0) = h(L) = 0, A_L[h] = int_0^L R(e^t) h'(t) dt + int_0^L (e^{-t/2} - rho(t)) h(t) dt with R(x) = sum_{n <= x} Lambda(n)/sqrt n - 2 sqrt x. Finite summation by parts on the prime staircase plus one integration by parts on the pole main term. The endpoint h(0) = 0 removes the M05 scalar correction; nonzero-endpoint energies keep it. productionArithmeticRealValue_sq_mul_indexEnergy_eq_weightedRemainder specializes to t^2 e_{Dz}(1 - t/L)."},
     {"id": "M09_CONTACT_WEIGHTED_BALANCE", "package": "M09", "steps": "32",
      "status": "PROVED_PENDING_CI",
-     "detail": "GeneratedStrictEvenContact.indexEnergyValue_eq_neg_responseCost / indexEnergyValue_nonpos / weightedRemainder_balance: at a stationary generated strict-even contact (simple even kernel, positive odd complement, normalized z, stationary response w with A w = -A' z) A_{L*}[t^2 e_{Dz}(1 - t/L*)] = -2 L*^4 C/(2 pi)^2 <= 0 with C = <A w, w> >= 0, and the same value equals int R(e^t)(2t e_{Dz} - (t^2/L*) e'_{Dz}) + int (e^{-t/2} - rho) t^2 e_{Dz}. Uses F04 at every L > 0 (CanonicalGlobalF04, pending CI). A necessary condition, not a contradiction; no sign of R is used."},
+     "detail": "GeneratedStrictEvenContact.indexEnergyValue_eq_neg_responseCost / indexEnergyValue_nonpos / weightedRemainder_balance: at a stationary generated strict-even contact (simple even kernel, positive odd complement, normalized z, stationary response w with A w = -A' z) A_{L*}[t^2 e_{Dz}(1 - t/L*)] = -2 L*^4 C/(2 pi)^2 <= 0 with C = <A w, w> >= 0, and the same value equals int R(e^t)(2t e_{Dz} - (t^2/L*) e'_{Dz}) + int (e^{-t/2} - rho) t^2 e_{Dz}. Uses F04 at every L > 0 (CanonicalGlobalF04). A necessary condition, not a contradiction; no sign of R is used."},
     {"id": "M03_FIXED_STAIRCASE_REEXPRESSION", "package": "M03", "steps": "M03 (no separate step row)",
      "status": "PROVED_PENDING_CI",
      "detail": "canonicalPolePrimeDiscrepancy_eq_fixedStaircase: for t <= L the canonical pole-prime discrepancy is D(t) = 4 sinh(t/2) - B(t) with the aperture-free staircase B(t) = weightedVonMangoldtSqrtSum (e^t) (right-continuous: q counted at log q <= t; zero-von-Mangoldt integers contribute nothing). matrixRealEnergy_pole_sub_prime_eq_fixedStaircase: the pole-minus-prime energy is (1/L) int_0^L D(t) e'_u(1 - t/L) dt in the existing normalization. Reuses CanonicalPrimeRemainder and CanonicalPolePrimeDiscrepancy; no new staircase object."},
@@ -311,7 +350,7 @@ OBLIGATIONS = [
      "status": "OPEN", "detail": "Unchanged by this PR."},
     {"id": "M77_INTEGRATION", "package": "M77", "steps": "107, 114",
      "status": "IN_PROGRESS",
-     "detail": "Ledgers, workflow targets, axiom audit and proof-escape receipts for M70-M75, M26-M28, M65, M66 and the branch algebra in this PR; the #285 cleanup PR #286 has merged and this branch is rebased on it. The two F04-bound #284 claims (R003_WEIGHTED_PRODUCTION_PAIR_BALANCE, R003_COMPLETED_STRICT_EVEN_CONTACT_FRONTIER) stay OPEN in the registry until CI is green on this head; their unconditional versions are canonicalSecondPairing_euler_eq_productionSaturationGap_of_pos and GeneratedStrictEvenContact.completed_production_frontier_unconditional."},
+     "detail": "Ledgers, workflow targets, axiom audit and proof-escape receipts for every new Lean module of this PR; the #285 cleanup PR #286 has merged and this branch is rebased on it. Each proof root and obligation names the green #287 head that carried it (CI_E3C7769, CI_9EA3A4C, CI_2E32E59; workflow runs in WORKFLOW_HARVEST.json candidate_pr287), and none is promoted by default. The two F04-bound #284 claims (R003_WEIGHTED_PRODUCTION_PAIR_BALANCE, R003_COMPLETED_STRICT_EVEN_CONTACT_FRONTIER) stay OPEN in the registry, and CONTROL_STATE keeps #287 as the open candidate: both change in the post-merge cleanup, as #286 did for #285. Their unconditional versions, canonicalSecondPairing_euler_eq_productionSaturationGap_of_pos and GeneratedStrictEvenContact.completed_production_frontier_unconditional, passed CI on e3c7769."},
     {"id": "RH", "package": "terminal", "steps": "-", "status": "OPEN", "detail": "RH_OPEN."},
 ]
 
@@ -319,28 +358,28 @@ POST284_CROSS_REFERENCES = [
     {"post284_id": "M17_GENERAL_OMEGA_ANDREIEF_INERTIA", "effect": "proved here for every 0 < omega <= 1/2 on the even and odd boundary-flat carriers (M71_INTERIOR_ANDREIEF_INERTIA, CI green on e3c7769); the post-284 ledger entry is historical and unchanged; filtered carriers stay OPEN"},
     {"post284_id": "M18_SPECTRAL_FLOW_PASSAGES", "effect": "first passage proved here (M72_SOURCE_SPECTRAL_FLOW_FIRST_PASSAGE); multiplicity count still OPEN"},
     {"post284_id": "F_M21_PHASE_LOCK", "effect": "canonical contact phase identity proved here (canonical_contact_phase, M74); contact existence and its sign consequences still OPEN"},
-    {"post284_id": "F_M58_M63_SOURCE_MOMENT_BIRDFISHIE", "effect": "M58 phase-lock component discharged by M74; the M59 real pairing (98B) and the M61 exact older-prime balance with its gap are proved here (M61_SOURCE_OLDER_PRIME_BALANCE, pending CI); the near-edge sign of p_z, the M62 opposite side (99C) stays OPEN; the M63 comparison is recorded as M63_ROUTE_COMPARISON"},
+    {"post284_id": "F_M58_M63_SOURCE_MOMENT_BIRDFISHIE", "effect": "M58 phase-lock component discharged by M74; the M59 real pairing (98B) and the M61 exact older-prime balance with its gap are proved here (M61_SOURCE_OLDER_PRIME_BALANCE, CI green on 9ea3a4c); the near-edge sign of p_z, the M62 opposite side (99C) stays OPEN; the M63 comparison is recorded as M63_ROUTE_COMPARISON"},
     {"post284_id": "F_M46_COERCIVITY", "effect": "constant improved from C_K < 5 to 4 (M73)"},
     {"post284_id": "F_M53_M65_F04_DERIVATIVES", "effect": "proved here: prime-free (M65_PRIME_FREE_F04) and at every L > 0 (F04_GLOBAL_PRODUCTION_DERIVATIVE_AUTHORITY)"},
     {"post284_id": "F04_PRODUCTION_DERIVATIVE_AUTHORITY", "effect": "proof constructor productionContactF04DerivativeAuthority_of_pos proved here for every L > 0 and K"},
-    {"post284_id": "F_M33_M34_CONTACT_SOURCE_SIGN_AND_BUDGET", "effect": "F04 at the contact boundary now available (F04_GLOBAL_PRODUCTION_DERIVATIVE_AUTHORITY); the source sign reversal (Step 68), the remainder representation (Step 70) and the oscillation budget (71.2) are proved here (M33_M34_SIGN_REVERSAL_AND_OSCILLATION, pending CI); the physical-test turning points (Step 69) stay interval evidence"},
+    {"post284_id": "F_M33_M34_CONTACT_SOURCE_SIGN_AND_BUDGET", "effect": "F04 at the contact boundary now available (F04_GLOBAL_PRODUCTION_DERIVATIVE_AUTHORITY); the source sign reversal (Step 68), the remainder representation (Step 70) and the oscillation budget (71.2) are proved here (M33_M34_SIGN_REVERSAL_AND_OSCILLATION, CI green on 9ea3a4c); the physical-test turning points (Step 69) stay interval evidence"},
     {"post284_id": "F_M48_K2_PRIME_SAMPLES", "effect": "F04 premise of the contact consequence P = -F <= 0 discharged; the consequence itself is not formalized here"},
-    {"post284_id": "F_M49_M51_NEAR_EDGE_AND_OLDER_PRIME", "effect": "F04 dependency discharged; the M45 elementary source bound, the M49 near-edge contact-angle bound and the M50 older-prime budget (as a necessary condition at every stationary generated contact) are proved here (M45_ODD_ENDPOINT_QUANTITATIVE, M49_NEAR_EDGE_PRIME_BENEFIT, M50_OLDER_PRIME_BUDGET, pending CI); M51 stays OPEN, with a K = 2 interval certificate that no even contact occurs on [1/400, log 16] (M51_K2_EVEN_BOTTOM_CERTIFICATE)"},
-    {"post284_id": "F_M45_ODD_ENDPOINT_QUANTITATIVE", "effect": "proved here (M45_ODD_ENDPOINT_QUANTITATIVE, pending CI) on the actual sourceMatrix and sourceAtomRealEnergy, with the plan's angle theta(u) and constant pi^6/90"},
+    {"post284_id": "F_M49_M51_NEAR_EDGE_AND_OLDER_PRIME", "effect": "F04 dependency discharged; the M45 elementary source bound, the M49 near-edge contact-angle bound and the M50 older-prime budget (as a necessary condition at every stationary generated contact) are proved here (M45_ODD_ENDPOINT_QUANTITATIVE, M49_NEAR_EDGE_PRIME_BENEFIT, M50_OLDER_PRIME_BUDGET, CI green on 9ea3a4c); M51 stays OPEN, with a K = 2 interval certificate that no even contact occurs on [1/400, log 16] (M51_K2_EVEN_BOTTOM_CERTIFICATE)"},
+    {"post284_id": "F_M45_ODD_ENDPOINT_QUANTITATIVE", "effect": "proved here (M45_ODD_ENDPOINT_QUANTITATIVE, CI green on 9ea3a4c) on the actual sourceMatrix and sourceAtomRealEnergy, with the plan's angle theta(u) and constant pi^6/90"},
     {"post284_id": "F_M37_LOCAL_EXCLUSION", "effect": "F04 premise discharged below log 2; unconditional stationary exclusion below eps_K proved here (M66_LOCAL_STATIONARY_EXCLUSION, possibly vacuous)"},
     {"post284_id": "F_M66_NEG_EULER_AND_LOCAL_EXCLUSION", "effect": "proved here (M66_PRIME_FREE_EULER_NEGATIVITY, M66_LOCAL_STATIONARY_EXCLUSION)"},
-    {"post284_id": "M09_WEIGHTED_REMAINDER_IDENTITY", "effect": "proved here (M09_ZERO_ENDPOINT_WEIGHTED_REMAINDER, M09_CONTACT_WEIGHTED_BALANCE, pending CI); the contact-weighted balance uses F04 at every L > 0 and is a necessary condition, not an exclusion"},
-    {"post284_id": "M03_WEIGHTED_STAIRCASE_REEXPRESSION", "effect": "proved here (M03_FIXED_STAIRCASE_REEXPRESSION, pending CI)"},
+    {"post284_id": "M09_WEIGHTED_REMAINDER_IDENTITY", "effect": "proved here (M09_ZERO_ENDPOINT_WEIGHTED_REMAINDER, M09_CONTACT_WEIGHTED_BALANCE, CI green on 9ea3a4c); the contact-weighted balance uses F04 at every L > 0 and is a necessary condition, not an exclusion"},
+    {"post284_id": "M03_WEIGHTED_STAIRCASE_REEXPRESSION", "effect": "proved here (M03_FIXED_STAIRCASE_REEXPRESSION, CI green on 9ea3a4c)"},
     {"post284_id": "M16_SMALL_OMEGA_LEGAL_FORM_INDEFINITENESS", "effect": "subsumed here by M71: parityBoundaryFlat_source_indefinite gives positive and negative even and odd boundary-flat vectors at every 0 < omega <= 1/2 for K >= 3 (CI green on e3c7769); the K3 moving-vector coefficients stay exact controls"},
-    {"post284_id": "M03_RANK_TWO_LAPLACE", "effect": "proved here (M03_RANK_TWO_LAPLACE_TRANSFORM, pending CI); the post-284 F07 regression (5e-29) stays the numerical check"},
+    {"post284_id": "M03_RANK_TWO_LAPLACE", "effect": "proved here (M03_RANK_TWO_LAPLACE_TRANSFORM, CI green on 9ea3a4c); the post-284 F07 regression (5e-29) stays the numerical check"},
     {"post284_id": "F_M27_ALTERNATING_SLOPES", "effect": "proved here: canonical shifted secular equation and simple even roots below the odd floor (M26_M27_CANONICAL_SHIFTED_SECULAR) and the alternating root-slope formula (M27_ALTERNATING_ROOT_SLOPES, CI green on e3c7769)"},
     {"post284_id": "F_M28_RESOLVENT_OVERLAP", "effect": "exact overlap identity (M28_CONTACT_OVERLAP_IDENTITY) and positivity when A_L is positive semidefinite and B_L positive definite (M28_OVERLAP_POSITIVITY) proved here"},
     {"post284_id": "F_M55_ABEL_SUMMATION", "effect": "proved here (M55_WEIGHTED_CHEBYSHEV_PARTIAL_SUMMATION), with the transfer bound that makes the RH-strength firewall explicit"},
     {"post284_id": "F_M38_REMAINDER_EXTREMA", "effect": "proved here (M38_FINITE_REMAINDER_EXTREMA)"},
     {"post284_id": "F_M31_ABSTRACT_GRONWALL", "effect": "abstract Gronwall bound and the canonical even-bottom barrier proved here (M31_GRONWALL_BARRIER); the barrier is conditional on the OPEN inequality (M32_CANONICAL_GRONWALL_COEFFICIENT)"},
     {"post284_id": "M14_OTHER_BRANCHES", "effect": "odd-first and tied branch algebra proved here (M14_ODD_FIRST_AND_TIED_BRANCH_ALGEBRA); no branch excluded"},
-    {"post284_id": "F_M44_ENTERING_PRIME_SEVENTH", "effect": "fixed-vector physical jet proved here with the Taylor remainder on the seventh source jet (M44_ENTERING_PRIME_PHYSICAL_JET, pending CI): |Delta Q - a h^7| <= C h^8 with a > 0; the operator-level seam germ stays OPEN"},
-    {"post284_id": "F_M29_SOURCE_RESOLVENT_DERIVATIVES", "effect": "first and second derivative formulas of T = H_L(x_L) at every L > 0 with lambda_odd(L) > 0, and C^2 of L -> H_L(z), proved here from the merged compressed C^2 jets (M29_SOURCE_RESOLVENT_DERIVATIVES, pending CI); the third derivative (Step 63) stays OPEN"},
+    {"post284_id": "F_M44_ENTERING_PRIME_SEVENTH", "effect": "fixed-vector physical jet proved here with the Taylor remainder on the seventh source jet (M44_ENTERING_PRIME_PHYSICAL_JET, CI green on 9ea3a4c): |Delta Q - a h^7| <= C h^8 with a > 0; the operator-level seam germ stays OPEN"},
+    {"post284_id": "F_M29_SOURCE_RESOLVENT_DERIVATIVES", "effect": "first and second derivative formulas of T = H_L(x_L) at every L > 0 with lambda_odd(L) > 0, and C^2 of L -> H_L(z), proved here from the merged compressed C^2 jets (M29_SOURCE_RESOLVENT_DERIVATIVES, CI green on 2e32e59); the third derivative (Step 63) stays OPEN"},
     {"post284_id": "M08_ABSTRACT_CUBIC_SCHUR", "effect": "abstract cubic Schur formula, response form and necessary sign proved here (M08_ABSTRACT_CUBIC_SCHUR, CI green on e3c7769); the arithmetic third identity stays OPEN (M08_ARITHMETIC_THIRD_IDENTITY)"},
 ]
 
@@ -520,7 +559,24 @@ def workflow_harvest() -> dict:
         "python_rhrc": next(r for r in runs if r["job"] == "python-rhrc"),
         "note": "Green means workflow correctness only. CI runs on pull_request and workflow_dispatch, not on main pushes, so this exact-head PR receipt is the authority for #285.",
         "check_runs": runs,
+        "candidate_pr287": candidate_harvest(),
     }
+
+
+def candidate_harvest() -> dict:
+    raw = json.loads((HERE / "pr287_check_runs.json").read_text(encoding="utf-8"))
+    heads = []
+    for h in raw["heads"]:
+        heads.append({"head": h["head"], "harvested": h["harvested"],
+                      "check_runs": h["check_runs_total"],
+                      "workflow_runs": len(h["workflow_runs"]),
+                      "all_workflow_runs_success": all(c == "success" for _, _, c in h["workflow_runs"]),
+                      "runs": [{"workflow": n, "workflow_run_id": i, "conclusion": c}
+                               for n, i, c in h["workflow_runs"]]})
+    return {"pr": raw["pr"], "branch": raw["branch"], "authority": "REPORTING_ONLY",
+            "note": "Each green head here is the receipt named by the ledger entries it promotes; "
+                    "entries added after the last green head stay PROVED_PENDING_CI.",
+            "heads": heads}
 
 
 DISPOSITIONS = [

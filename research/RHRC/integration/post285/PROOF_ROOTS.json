@@ -2770,10 +2770,18 @@
       "package": "M09/M03",
       "steps": "Step 32; M03 staircase",
       "module_scope": "fixed staircase D(t) = 4 sinh(t/2) - B(t) for the pole-prime discrepancy (M03); zero-endpoint weighted remainder identity A_L[h] = int R(e^t) h' + int (e^{-t/2} - rho) h for C^1 tests with h(0) = h(L) = 0; at a stationary generated strict-even contact A_{L*}[t^2 e_{Dz}(1 - t/L*)] = -2 L*^4 C/(2 pi)^2 <= 0 with C = <A w, w>, and the exact contact-weighted remainder balance",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "9ea3a4c4a0d20e0d6cd7ea16383f927fa72d984a",
+        "workflow_run": 38132218296,
+        "lean_source_inertia_check_run": 114448711253,
+        "source_falsifier_research_check_run": 114448711457,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.intervalIntegral_ite_le_mul",
@@ -2782,10 +2790,18 @@
       "package": "M09/M03",
       "steps": "Step 32; M03 staircase",
       "module_scope": "fixed staircase D(t) = 4 sinh(t/2) - B(t) for the pole-prime discrepancy (M03); zero-endpoint weighted remainder identity A_L[h] = int R(e^t) h' + int (e^{-t/2} - rho) h for C^1 tests with h(0) = h(L) = 0; at a stationary generated strict-even contact A_{L*}[t^2 e_{Dz}(1 - t/L*)] = -2 L*^4 C/(2 pi)^2 <= 0 with C = <A w, w>, and the exact contact-weighted remainder balance",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "9ea3a4c4a0d20e0d6cd7ea16383f927fa72d984a",
+        "workflow_run": 38132218296,
+        "lean_source_inertia_check_run": 114448711253,
+        "source_falsifier_research_check_run": 114448711457,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.weightedSum_exp_mul_eq_sum_ite",
@@ -2794,10 +2810,18 @@
       "package": "M09/M03",
       "steps": "Step 32; M03 staircase",
       "module_scope": "fixed staircase D(t) = 4 sinh(t/2) - B(t) for the pole-prime discrepancy (M03); zero-endpoint weighted remainder identity A_L[h] = int R(e^t) h' + int (e^{-t/2} - rho) h for C^1 tests with h(0) = h(L) = 0; at a stationary generated strict-even contact A_{L*}[t^2 e_{Dz}(1 - t/L*)] = -2 L*^4 C/(2 pi)^2 <= 0 with C = <A w, w>, and the exact contact-weighted remainder balance",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "9ea3a4c4a0d20e0d6cd7ea16383f927fa72d984a",
+        "workflow_run": 38132218296,
+        "lean_source_inertia_check_run": 114448711253,
+        "source_falsifier_research_check_run": 114448711457,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.intervalIntegrable_weightedSum_exp_mul",
@@ -2806,10 +2830,18 @@
       "package": "M09/M03",
       "steps": "Step 32; M03 staircase",
       "module_scope": "fixed staircase D(t) = 4 sinh(t/2) - B(t) for the pole-prime discrepancy (M03); zero-endpoint weighted remainder identity A_L[h] = int R(e^t) h' + int (e^{-t/2} - rho) h for C^1 tests with h(0) = h(L) = 0; at a stationary generated strict-even contact A_{L*}[t^2 e_{Dz}(1 - t/L*)] = -2 L*^4 C/(2 pi)^2 <= 0 with C = <A w, w>, and the exact contact-weighted remainder balance",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "9ea3a4c4a0d20e0d6cd7ea16383f927fa72d984a",
+        "workflow_run": 38132218296,
+        "lean_source_inertia_check_run": 114448711253,
+        "source_falsifier_research_check_run": 114448711457,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.sum_primeSourceWeight_eq_neg_integral_weightedSum",
@@ -2818,10 +2850,18 @@
       "package": "M09/M03",
       "steps": "Step 32; M03 staircase",
       "module_scope": "fixed staircase D(t) = 4 sinh(t/2) - B(t) for the pole-prime discrepancy (M03); zero-endpoint weighted remainder identity A_L[h] = int R(e^t) h' + int (e^{-t/2} - rho) h for C^1 tests with h(0) = h(L) = 0; at a stationary generated strict-even contact A_{L*}[t^2 e_{Dz}(1 - t/L*)] = -2 L*^4 C/(2 pi)^2 <= 0 with C = <A w, w>, and the exact contact-weighted remainder balance",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "9ea3a4c4a0d20e0d6cd7ea16383f927fa72d984a",
+        "workflow_run": 38132218296,
+        "lean_source_inertia_check_run": 114448711253,
+        "source_falsifier_research_check_run": 114448711457,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.integral_two_exp_half_mul_deriv",
@@ -2830,10 +2870,18 @@
       "package": "M09/M03",
       "steps": "Step 32; M03 staircase",
       "module_scope": "fixed staircase D(t) = 4 sinh(t/2) - B(t) for the pole-prime discrepancy (M03); zero-endpoint weighted remainder identity A_L[h] = int R(e^t) h' + int (e^{-t/2} - rho) h for C^1 tests with h(0) = h(L) = 0; at a stationary generated strict-even contact A_{L*}[t^2 e_{Dz}(1 - t/L*)] = -2 L*^4 C/(2 pi)^2 <= 0 with C = <A w, w>, and the exact contact-weighted remainder balance",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "9ea3a4c4a0d20e0d6cd7ea16383f927fa72d984a",
+        "workflow_run": 38132218296,
+        "lean_source_inertia_check_run": 114448711253,
+        "source_falsifier_research_check_run": 114448711457,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.regularizedCompletePhysicalRHS_eq_weightedRemainder",
@@ -2842,10 +2890,18 @@
       "package": "M09/M03",
       "steps": "Step 32; M03 staircase",
       "module_scope": "fixed staircase D(t) = 4 sinh(t/2) - B(t) for the pole-prime discrepancy (M03); zero-endpoint weighted remainder identity A_L[h] = int R(e^t) h' + int (e^{-t/2} - rho) h for C^1 tests with h(0) = h(L) = 0; at a stationary generated strict-even contact A_{L*}[t^2 e_{Dz}(1 - t/L*)] = -2 L*^4 C/(2 pi)^2 <= 0 with C = <A w, w>, and the exact contact-weighted remainder balance",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "9ea3a4c4a0d20e0d6cd7ea16383f927fa72d984a",
+        "workflow_run": 38132218296,
+        "lean_source_inertia_check_run": 114448711253,
+        "source_falsifier_research_check_run": 114448711457,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.intervalIntegrable_mul_archDensity_of_hasDerivAt",
@@ -2854,10 +2910,18 @@
       "package": "M09/M03",
       "steps": "Step 32; M03 staircase",
       "module_scope": "fixed staircase D(t) = 4 sinh(t/2) - B(t) for the pole-prime discrepancy (M03); zero-endpoint weighted remainder identity A_L[h] = int R(e^t) h' + int (e^{-t/2} - rho) h for C^1 tests with h(0) = h(L) = 0; at a stationary generated strict-even contact A_{L*}[t^2 e_{Dz}(1 - t/L*)] = -2 L*^4 C/(2 pi)^2 <= 0 with C = <A w, w>, and the exact contact-weighted remainder balance",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "9ea3a4c4a0d20e0d6cd7ea16383f927fa72d984a",
+        "workflow_run": 38132218296,
+        "lean_source_inertia_check_run": 114448711253,
+        "source_falsifier_research_check_run": 114448711457,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.regularizedCompletePhysicalRHS_eq_weightedRemainder_of_continuousOn",
@@ -2866,10 +2930,18 @@
       "package": "M09/M03",
       "steps": "Step 32; M03 staircase",
       "module_scope": "fixed staircase D(t) = 4 sinh(t/2) - B(t) for the pole-prime discrepancy (M03); zero-endpoint weighted remainder identity A_L[h] = int R(e^t) h' + int (e^{-t/2} - rho) h for C^1 tests with h(0) = h(L) = 0; at a stationary generated strict-even contact A_{L*}[t^2 e_{Dz}(1 - t/L*)] = -2 L*^4 C/(2 pi)^2 <= 0 with C = <A w, w>, and the exact contact-weighted remainder balance",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "9ea3a4c4a0d20e0d6cd7ea16383f927fa72d984a",
+        "workflow_run": 38132218296,
+        "lean_source_inertia_check_run": 114448711253,
+        "source_falsifier_research_check_run": 114448711457,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.regularizedCompletePhysicalRHS_eq_dictionary_of_zero",
@@ -2878,10 +2950,18 @@
       "package": "M09/M03",
       "steps": "Step 32; M03 staircase",
       "module_scope": "fixed staircase D(t) = 4 sinh(t/2) - B(t) for the pole-prime discrepancy (M03); zero-endpoint weighted remainder identity A_L[h] = int R(e^t) h' + int (e^{-t/2} - rho) h for C^1 tests with h(0) = h(L) = 0; at a stationary generated strict-even contact A_{L*}[t^2 e_{Dz}(1 - t/L*)] = -2 L*^4 C/(2 pi)^2 <= 0 with C = <A w, w>, and the exact contact-weighted remainder balance",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "9ea3a4c4a0d20e0d6cd7ea16383f927fa72d984a",
+        "workflow_run": 38132218296,
+        "lean_source_inertia_check_run": 114448711253,
+        "source_falsifier_research_check_run": 114448711457,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.productionArithmeticComplexValue_eq_weightedRemainder",
@@ -2890,10 +2970,18 @@
       "package": "M09/M03",
       "steps": "Step 32; M03 staircase",
       "module_scope": "fixed staircase D(t) = 4 sinh(t/2) - B(t) for the pole-prime discrepancy (M03); zero-endpoint weighted remainder identity A_L[h] = int R(e^t) h' + int (e^{-t/2} - rho) h for C^1 tests with h(0) = h(L) = 0; at a stationary generated strict-even contact A_{L*}[t^2 e_{Dz}(1 - t/L*)] = -2 L*^4 C/(2 pi)^2 <= 0 with C = <A w, w>, and the exact contact-weighted remainder balance",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "9ea3a4c4a0d20e0d6cd7ea16383f927fa72d984a",
+        "workflow_run": 38132218296,
+        "lean_source_inertia_check_run": 114448711253,
+        "source_falsifier_research_check_run": 114448711457,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.productionArithmeticRealValue_eq_weightedRemainder",
@@ -2902,10 +2990,18 @@
       "package": "M09/M03",
       "steps": "Step 32; M03 staircase",
       "module_scope": "fixed staircase D(t) = 4 sinh(t/2) - B(t) for the pole-prime discrepancy (M03); zero-endpoint weighted remainder identity A_L[h] = int R(e^t) h' + int (e^{-t/2} - rho) h for C^1 tests with h(0) = h(L) = 0; at a stationary generated strict-even contact A_{L*}[t^2 e_{Dz}(1 - t/L*)] = -2 L*^4 C/(2 pi)^2 <= 0 with C = <A w, w>, and the exact contact-weighted remainder balance",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "9ea3a4c4a0d20e0d6cd7ea16383f927fa72d984a",
+        "workflow_run": 38132218296,
+        "lean_source_inertia_check_run": 114448711253,
+        "source_falsifier_research_check_run": 114448711457,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.productionArithmeticRealValue_sq_mul_indexEnergy_eq_weightedRemainder",
@@ -2914,10 +3010,18 @@
       "package": "M09/M03",
       "steps": "Step 32; M03 staircase",
       "module_scope": "fixed staircase D(t) = 4 sinh(t/2) - B(t) for the pole-prime discrepancy (M03); zero-endpoint weighted remainder identity A_L[h] = int R(e^t) h' + int (e^{-t/2} - rho) h for C^1 tests with h(0) = h(L) = 0; at a stationary generated strict-even contact A_{L*}[t^2 e_{Dz}(1 - t/L*)] = -2 L*^4 C/(2 pi)^2 <= 0 with C = <A w, w>, and the exact contact-weighted remainder balance",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "9ea3a4c4a0d20e0d6cd7ea16383f927fa72d984a",
+        "workflow_run": 38132218296,
+        "lean_source_inertia_check_run": 114448711253,
+        "source_falsifier_research_check_run": 114448711457,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.productionArithmeticRealValue_const_mul",
@@ -2926,10 +3030,18 @@
       "package": "M09/M03",
       "steps": "Step 32; M03 staircase",
       "module_scope": "fixed staircase D(t) = 4 sinh(t/2) - B(t) for the pole-prime discrepancy (M03); zero-endpoint weighted remainder identity A_L[h] = int R(e^t) h' + int (e^{-t/2} - rho) h for C^1 tests with h(0) = h(L) = 0; at a stationary generated strict-even contact A_{L*}[t^2 e_{Dz}(1 - t/L*)] = -2 L*^4 C/(2 pi)^2 <= 0 with C = <A w, w>, and the exact contact-weighted remainder balance",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "9ea3a4c4a0d20e0d6cd7ea16383f927fa72d984a",
+        "workflow_run": 38132218296,
+        "lean_source_inertia_check_run": 114448711253,
+        "source_falsifier_research_check_run": 114448711457,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.GeneratedStrictEvenContact.indexEnergyValue_eq_neg_responseCost",
@@ -2938,10 +3050,18 @@
       "package": "M09/M03",
       "steps": "Step 32; M03 staircase",
       "module_scope": "fixed staircase D(t) = 4 sinh(t/2) - B(t) for the pole-prime discrepancy (M03); zero-endpoint weighted remainder identity A_L[h] = int R(e^t) h' + int (e^{-t/2} - rho) h for C^1 tests with h(0) = h(L) = 0; at a stationary generated strict-even contact A_{L*}[t^2 e_{Dz}(1 - t/L*)] = -2 L*^4 C/(2 pi)^2 <= 0 with C = <A w, w>, and the exact contact-weighted remainder balance",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "9ea3a4c4a0d20e0d6cd7ea16383f927fa72d984a",
+        "workflow_run": 38132218296,
+        "lean_source_inertia_check_run": 114448711253,
+        "source_falsifier_research_check_run": 114448711457,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.GeneratedStrictEvenContact.indexEnergyValue_nonpos",
@@ -2950,10 +3070,18 @@
       "package": "M09/M03",
       "steps": "Step 32; M03 staircase",
       "module_scope": "fixed staircase D(t) = 4 sinh(t/2) - B(t) for the pole-prime discrepancy (M03); zero-endpoint weighted remainder identity A_L[h] = int R(e^t) h' + int (e^{-t/2} - rho) h for C^1 tests with h(0) = h(L) = 0; at a stationary generated strict-even contact A_{L*}[t^2 e_{Dz}(1 - t/L*)] = -2 L*^4 C/(2 pi)^2 <= 0 with C = <A w, w>, and the exact contact-weighted remainder balance",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "9ea3a4c4a0d20e0d6cd7ea16383f927fa72d984a",
+        "workflow_run": 38132218296,
+        "lean_source_inertia_check_run": 114448711253,
+        "source_falsifier_research_check_run": 114448711457,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.GeneratedStrictEvenContact.weightedRemainder_balance",
@@ -2962,10 +3090,18 @@
       "package": "M09/M03",
       "steps": "Step 32; M03 staircase",
       "module_scope": "fixed staircase D(t) = 4 sinh(t/2) - B(t) for the pole-prime discrepancy (M03); zero-endpoint weighted remainder identity A_L[h] = int R(e^t) h' + int (e^{-t/2} - rho) h for C^1 tests with h(0) = h(L) = 0; at a stationary generated strict-even contact A_{L*}[t^2 e_{Dz}(1 - t/L*)] = -2 L*^4 C/(2 pi)^2 <= 0 with C = <A w, w>, and the exact contact-weighted remainder balance",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "9ea3a4c4a0d20e0d6cd7ea16383f927fa72d984a",
+        "workflow_run": 38132218296,
+        "lean_source_inertia_check_run": 114448711253,
+        "source_falsifier_research_check_run": 114448711457,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.canonicalPolePrimeDiscrepancy_eq_fixedStaircase",
@@ -2974,10 +3110,18 @@
       "package": "M09/M03",
       "steps": "Step 32; M03 staircase",
       "module_scope": "fixed staircase D(t) = 4 sinh(t/2) - B(t) for the pole-prime discrepancy (M03); zero-endpoint weighted remainder identity A_L[h] = int R(e^t) h' + int (e^{-t/2} - rho) h for C^1 tests with h(0) = h(L) = 0; at a stationary generated strict-even contact A_{L*}[t^2 e_{Dz}(1 - t/L*)] = -2 L*^4 C/(2 pi)^2 <= 0 with C = <A w, w>, and the exact contact-weighted remainder balance",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "9ea3a4c4a0d20e0d6cd7ea16383f927fa72d984a",
+        "workflow_run": 38132218296,
+        "lean_source_inertia_check_run": 114448711253,
+        "source_falsifier_research_check_run": 114448711457,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.matrixRealEnergy_pole_sub_prime_eq_fixedStaircase",
@@ -2986,10 +3130,18 @@
       "package": "M09/M03",
       "steps": "Step 32; M03 staircase",
       "module_scope": "fixed staircase D(t) = 4 sinh(t/2) - B(t) for the pole-prime discrepancy (M03); zero-endpoint weighted remainder identity A_L[h] = int R(e^t) h' + int (e^{-t/2} - rho) h for C^1 tests with h(0) = h(L) = 0; at a stationary generated strict-even contact A_{L*}[t^2 e_{Dz}(1 - t/L*)] = -2 L*^4 C/(2 pi)^2 <= 0 with C = <A w, w>, and the exact contact-weighted remainder balance",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "9ea3a4c4a0d20e0d6cd7ea16383f927fa72d984a",
+        "workflow_run": 38132218296,
+        "lean_source_inertia_check_run": 114448711253,
+        "source_falsifier_research_check_run": 114448711457,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.cos_le_one_sub_sq_div_two_add_pow_four",
@@ -2998,10 +3150,18 @@
       "package": "M45",
       "steps": "Step 82",
       "module_scope": "fifth-order sine Taylor bound; odd profile T_u = -M_3 t^3/6 + R_u with |R_u| <= B(u)|t|^5/120; 7/16 product bound; int t^3(a-t)^3 = a^7/140; Re e_u(omega) <= -(pi^6/90) |M_3(u)|^2 omega^7 for legal odd u when (2 pi omega)^2 B(u) <= 5|M_3(u)|, and on sourceAtomRealEnergy for 0 <= omega <= theta(u) = (1/2pi) sqrt(5|M_3|/(A_K ||u||)), A_K^2 = 2 sum n^10",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "9ea3a4c4a0d20e0d6cd7ea16383f927fa72d984a",
+        "workflow_run": 38132218296,
+        "lean_source_inertia_check_run": 114448711253,
+        "source_falsifier_research_check_run": 114448711457,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.sin_le_sub_cube_add_pow_five",
@@ -3010,10 +3170,18 @@
       "package": "M45",
       "steps": "Step 82",
       "module_scope": "fifth-order sine Taylor bound; odd profile T_u = -M_3 t^3/6 + R_u with |R_u| <= B(u)|t|^5/120; 7/16 product bound; int t^3(a-t)^3 = a^7/140; Re e_u(omega) <= -(pi^6/90) |M_3(u)|^2 omega^7 for legal odd u when (2 pi omega)^2 B(u) <= 5|M_3(u)|, and on sourceAtomRealEnergy for 0 <= omega <= theta(u) = (1/2pi) sqrt(5|M_3|/(A_K ||u||)), A_K^2 = 2 sum n^10",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "9ea3a4c4a0d20e0d6cd7ea16383f927fa72d984a",
+        "workflow_run": 38132218296,
+        "lean_source_inertia_check_run": 114448711253,
+        "source_falsifier_research_check_run": 114448711457,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.abs_sin_sub_sub_cube_le",
@@ -3022,10 +3190,18 @@
       "package": "M45",
       "steps": "Step 82",
       "module_scope": "fifth-order sine Taylor bound; odd profile T_u = -M_3 t^3/6 + R_u with |R_u| <= B(u)|t|^5/120; 7/16 product bound; int t^3(a-t)^3 = a^7/140; Re e_u(omega) <= -(pi^6/90) |M_3(u)|^2 omega^7 for legal odd u when (2 pi omega)^2 B(u) <= 5|M_3(u)|, and on sourceAtomRealEnergy for 0 <= omega <= theta(u) = (1/2pi) sqrt(5|M_3|/(A_K ||u||)), A_K^2 = 2 sum n^10",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "9ea3a4c4a0d20e0d6cd7ea16383f927fa72d984a",
+        "workflow_run": 38132218296,
+        "lean_source_inertia_check_run": 114448711253,
+        "source_falsifier_research_check_run": 114448711457,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.sourceCosProfile_eq_zero_of_mem_odd",
@@ -3034,10 +3210,18 @@
       "package": "M45",
       "steps": "Step 82",
       "module_scope": "fifth-order sine Taylor bound; odd profile T_u = -M_3 t^3/6 + R_u with |R_u| <= B(u)|t|^5/120; 7/16 product bound; int t^3(a-t)^3 = a^7/140; Re e_u(omega) <= -(pi^6/90) |M_3(u)|^2 omega^7 for legal odd u when (2 pi omega)^2 B(u) <= 5|M_3(u)|, and on sourceAtomRealEnergy for 0 <= omega <= theta(u) = (1/2pi) sqrt(5|M_3|/(A_K ||u||)), A_K^2 = 2 sum n^10",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "9ea3a4c4a0d20e0d6cd7ea16383f927fa72d984a",
+        "workflow_run": 38132218296,
+        "lean_source_inertia_check_run": 114448711253,
+        "source_falsifier_research_check_run": 114448711457,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.sourceSinProfile_eq_cubic_add_remainder",
@@ -3046,10 +3230,18 @@
       "package": "M45",
       "steps": "Step 82",
       "module_scope": "fifth-order sine Taylor bound; odd profile T_u = -M_3 t^3/6 + R_u with |R_u| <= B(u)|t|^5/120; 7/16 product bound; int t^3(a-t)^3 = a^7/140; Re e_u(omega) <= -(pi^6/90) |M_3(u)|^2 omega^7 for legal odd u when (2 pi omega)^2 B(u) <= 5|M_3(u)|, and on sourceAtomRealEnergy for 0 <= omega <= theta(u) = (1/2pi) sqrt(5|M_3|/(A_K ||u||)), A_K^2 = 2 sum n^10",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "9ea3a4c4a0d20e0d6cd7ea16383f927fa72d984a",
+        "workflow_run": 38132218296,
+        "lean_source_inertia_check_run": 114448711253,
+        "source_falsifier_research_check_run": 114448711457,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.sourceOddTaylorWeight_nonneg",
@@ -3058,10 +3250,18 @@
       "package": "M45",
       "steps": "Step 82",
       "module_scope": "fifth-order sine Taylor bound; odd profile T_u = -M_3 t^3/6 + R_u with |R_u| <= B(u)|t|^5/120; 7/16 product bound; int t^3(a-t)^3 = a^7/140; Re e_u(omega) <= -(pi^6/90) |M_3(u)|^2 omega^7 for legal odd u when (2 pi omega)^2 B(u) <= 5|M_3(u)|, and on sourceAtomRealEnergy for 0 <= omega <= theta(u) = (1/2pi) sqrt(5|M_3|/(A_K ||u||)), A_K^2 = 2 sum n^10",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "9ea3a4c4a0d20e0d6cd7ea16383f927fa72d984a",
+        "workflow_run": 38132218296,
+        "lean_source_inertia_check_run": 114448711253,
+        "source_falsifier_research_check_run": 114448711457,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.norm_sourceSinTaylorRemainder_le",
@@ -3070,10 +3270,18 @@
       "package": "M45",
       "steps": "Step 82",
       "module_scope": "fifth-order sine Taylor bound; odd profile T_u = -M_3 t^3/6 + R_u with |R_u| <= B(u)|t|^5/120; 7/16 product bound; int t^3(a-t)^3 = a^7/140; Re e_u(omega) <= -(pi^6/90) |M_3(u)|^2 omega^7 for legal odd u when (2 pi omega)^2 B(u) <= 5|M_3(u)|, and on sourceAtomRealEnergy for 0 <= omega <= theta(u) = (1/2pi) sqrt(5|M_3|/(A_K ||u||)), A_K^2 = 2 sum n^10",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "9ea3a4c4a0d20e0d6cd7ea16383f927fa72d984a",
+        "workflow_run": 38132218296,
+        "lean_source_inertia_check_run": 114448711253,
+        "source_falsifier_research_check_run": 114448711457,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.seven_sixteenths_le_re_conj_add_mul_add",
@@ -3082,10 +3290,18 @@
       "package": "M45",
       "steps": "Step 82",
       "module_scope": "fifth-order sine Taylor bound; odd profile T_u = -M_3 t^3/6 + R_u with |R_u| <= B(u)|t|^5/120; 7/16 product bound; int t^3(a-t)^3 = a^7/140; Re e_u(omega) <= -(pi^6/90) |M_3(u)|^2 omega^7 for legal odd u when (2 pi omega)^2 B(u) <= 5|M_3(u)|, and on sourceAtomRealEnergy for 0 <= omega <= theta(u) = (1/2pi) sqrt(5|M_3|/(A_K ||u||)), A_K^2 = 2 sum n^10",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "9ea3a4c4a0d20e0d6cd7ea16383f927fa72d984a",
+        "workflow_run": 38132218296,
+        "lean_source_inertia_check_run": 114448711253,
+        "source_falsifier_research_check_run": 114448711457,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.integral_cube_mul_cube",
@@ -3094,10 +3310,18 @@
       "package": "M45",
       "steps": "Step 82",
       "module_scope": "fifth-order sine Taylor bound; odd profile T_u = -M_3 t^3/6 + R_u with |R_u| <= B(u)|t|^5/120; 7/16 product bound; int t^3(a-t)^3 = a^7/140; Re e_u(omega) <= -(pi^6/90) |M_3(u)|^2 omega^7 for legal odd u when (2 pi omega)^2 B(u) <= 5|M_3(u)|, and on sourceAtomRealEnergy for 0 <= omega <= theta(u) = (1/2pi) sqrt(5|M_3|/(A_K ||u||)), A_K^2 = 2 sum n^10",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "9ea3a4c4a0d20e0d6cd7ea16383f927fa72d984a",
+        "workflow_run": 38132218296,
+        "lean_source_inertia_check_run": 114448711253,
+        "source_falsifier_research_check_run": 114448711457,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.re_conj_sourceSinProfile_mul_ge",
@@ -3106,10 +3330,18 @@
       "package": "M45",
       "steps": "Step 82",
       "module_scope": "fifth-order sine Taylor bound; odd profile T_u = -M_3 t^3/6 + R_u with |R_u| <= B(u)|t|^5/120; 7/16 product bound; int t^3(a-t)^3 = a^7/140; Re e_u(omega) <= -(pi^6/90) |M_3(u)|^2 omega^7 for legal odd u when (2 pi omega)^2 B(u) <= 5|M_3(u)|, and on sourceAtomRealEnergy for 0 <= omega <= theta(u) = (1/2pi) sqrt(5|M_3|/(A_K ||u||)), A_K^2 = 2 sum n^10",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "9ea3a4c4a0d20e0d6cd7ea16383f927fa72d984a",
+        "workflow_run": 38132218296,
+        "lean_source_inertia_check_run": 114448711253,
+        "source_falsifier_research_check_run": 114448711457,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.re_quadraticForm_sourceMatrix_le_of_mem_oddBoundaryFlat",
@@ -3118,10 +3350,18 @@
       "package": "M45",
       "steps": "Step 82",
       "module_scope": "fifth-order sine Taylor bound; odd profile T_u = -M_3 t^3/6 + R_u with |R_u| <= B(u)|t|^5/120; 7/16 product bound; int t^3(a-t)^3 = a^7/140; Re e_u(omega) <= -(pi^6/90) |M_3(u)|^2 omega^7 for legal odd u when (2 pi omega)^2 B(u) <= 5|M_3(u)|, and on sourceAtomRealEnergy for 0 <= omega <= theta(u) = (1/2pi) sqrt(5|M_3|/(A_K ||u||)), A_K^2 = 2 sum n^10",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "9ea3a4c4a0d20e0d6cd7ea16383f927fa72d984a",
+        "workflow_run": 38132218296,
+        "lean_source_inertia_check_run": 114448711253,
+        "source_falsifier_research_check_run": 114448711457,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.re_quadraticForm_sourceMatrix_neg_of_mem_oddBoundaryFlat",
@@ -3130,10 +3370,18 @@
       "package": "M45",
       "steps": "Step 82",
       "module_scope": "fifth-order sine Taylor bound; odd profile T_u = -M_3 t^3/6 + R_u with |R_u| <= B(u)|t|^5/120; 7/16 product bound; int t^3(a-t)^3 = a^7/140; Re e_u(omega) <= -(pi^6/90) |M_3(u)|^2 omega^7 for legal odd u when (2 pi omega)^2 B(u) <= 5|M_3(u)|, and on sourceAtomRealEnergy for 0 <= omega <= theta(u) = (1/2pi) sqrt(5|M_3|/(A_K ||u||)), A_K^2 = 2 sum n^10",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "9ea3a4c4a0d20e0d6cd7ea16383f927fa72d984a",
+        "workflow_run": 38132218296,
+        "lean_source_inertia_check_run": 114448711253,
+        "source_falsifier_research_check_run": 114448711457,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.re_quadraticForm_sourceMatrix_aperture_le_of_mem_oddBoundaryFlat",
@@ -3142,10 +3390,18 @@
       "package": "M45",
       "steps": "Step 82",
       "module_scope": "fifth-order sine Taylor bound; odd profile T_u = -M_3 t^3/6 + R_u with |R_u| <= B(u)|t|^5/120; 7/16 product bound; int t^3(a-t)^3 = a^7/140; Re e_u(omega) <= -(pi^6/90) |M_3(u)|^2 omega^7 for legal odd u when (2 pi omega)^2 B(u) <= 5|M_3(u)|, and on sourceAtomRealEnergy for 0 <= omega <= theta(u) = (1/2pi) sqrt(5|M_3|/(A_K ||u||)), A_K^2 = 2 sum n^10",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "9ea3a4c4a0d20e0d6cd7ea16383f927fa72d984a",
+        "workflow_run": 38132218296,
+        "lean_source_inertia_check_run": 114448711253,
+        "source_falsifier_research_check_run": 114448711457,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.sourceOddTaylorConstant_nonneg",
@@ -3154,10 +3410,18 @@
       "package": "M45",
       "steps": "Step 82",
       "module_scope": "fifth-order sine Taylor bound; odd profile T_u = -M_3 t^3/6 + R_u with |R_u| <= B(u)|t|^5/120; 7/16 product bound; int t^3(a-t)^3 = a^7/140; Re e_u(omega) <= -(pi^6/90) |M_3(u)|^2 omega^7 for legal odd u when (2 pi omega)^2 B(u) <= 5|M_3(u)|, and on sourceAtomRealEnergy for 0 <= omega <= theta(u) = (1/2pi) sqrt(5|M_3|/(A_K ||u||)), A_K^2 = 2 sum n^10",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "9ea3a4c4a0d20e0d6cd7ea16383f927fa72d984a",
+        "workflow_run": 38132218296,
+        "lean_source_inertia_check_run": 114448711253,
+        "source_falsifier_research_check_run": 114448711457,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.sourceOddTaylorConstant_sq",
@@ -3166,10 +3430,18 @@
       "package": "M45",
       "steps": "Step 82",
       "module_scope": "fifth-order sine Taylor bound; odd profile T_u = -M_3 t^3/6 + R_u with |R_u| <= B(u)|t|^5/120; 7/16 product bound; int t^3(a-t)^3 = a^7/140; Re e_u(omega) <= -(pi^6/90) |M_3(u)|^2 omega^7 for legal odd u when (2 pi omega)^2 B(u) <= 5|M_3(u)|, and on sourceAtomRealEnergy for 0 <= omega <= theta(u) = (1/2pi) sqrt(5|M_3|/(A_K ||u||)), A_K^2 = 2 sum n^10",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "9ea3a4c4a0d20e0d6cd7ea16383f927fa72d984a",
+        "workflow_run": 38132218296,
+        "lean_source_inertia_check_run": 114448711253,
+        "source_falsifier_research_check_run": 114448711457,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.sourceOddTaylorWeight_le",
@@ -3178,10 +3450,18 @@
       "package": "M45",
       "steps": "Step 82",
       "module_scope": "fifth-order sine Taylor bound; odd profile T_u = -M_3 t^3/6 + R_u with |R_u| <= B(u)|t|^5/120; 7/16 product bound; int t^3(a-t)^3 = a^7/140; Re e_u(omega) <= -(pi^6/90) |M_3(u)|^2 omega^7 for legal odd u when (2 pi omega)^2 B(u) <= 5|M_3(u)|, and on sourceAtomRealEnergy for 0 <= omega <= theta(u) = (1/2pi) sqrt(5|M_3|/(A_K ||u||)), A_K^2 = 2 sum n^10",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "9ea3a4c4a0d20e0d6cd7ea16383f927fa72d984a",
+        "workflow_run": 38132218296,
+        "lean_source_inertia_check_run": 114448711253,
+        "source_falsifier_research_check_run": 114448711457,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.sourceAtomRealEnergy_le_of_le_oddEndpointAngle",
@@ -3190,10 +3470,18 @@
       "package": "M45",
       "steps": "Step 82",
       "module_scope": "fifth-order sine Taylor bound; odd profile T_u = -M_3 t^3/6 + R_u with |R_u| <= B(u)|t|^5/120; 7/16 product bound; int t^3(a-t)^3 = a^7/140; Re e_u(omega) <= -(pi^6/90) |M_3(u)|^2 omega^7 for legal odd u when (2 pi omega)^2 B(u) <= 5|M_3(u)|, and on sourceAtomRealEnergy for 0 <= omega <= theta(u) = (1/2pi) sqrt(5|M_3|/(A_K ||u||)), A_K^2 = 2 sum n^10",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "9ea3a4c4a0d20e0d6cd7ea16383f927fa72d984a",
+        "workflow_run": 38132218296,
+        "lean_source_inertia_check_run": 114448711253,
+        "source_falsifier_research_check_run": 114448711457,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.indexMatrix_mulVec_mem_oddBoundaryFlat",
@@ -3202,10 +3490,18 @@
       "package": "M49",
       "steps": "Steps 84, 90",
       "module_scope": "at an even ground eigenvector with parity gap delta > 0, |v| = 1 and coercivity |v|^2 <= c |Dz|^2 (c = C_K or 4): for 0 <= omega with (2 pi omega)^2 A_K |H(v)| sqrt c <= 5 delta, e_{Dz}(omega) <= -(pi^6/90) |M_4|^2 omega^7 <= -(pi^6/90) (delta/(c |H(v)|))^2 omega^7; prime-term form on productionContactIndexEnergy",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "9ea3a4c4a0d20e0d6cd7ea16383f927fa72d984a",
+        "workflow_run": 38132218296,
+        "lean_source_inertia_check_run": 114448711253,
+        "source_falsifier_research_check_run": 114448711457,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.centeredMoment_three_indexMatrix_mulVec",
@@ -3214,10 +3510,18 @@
       "package": "M49",
       "steps": "Steps 84, 90",
       "module_scope": "at an even ground eigenvector with parity gap delta > 0, |v| = 1 and coercivity |v|^2 <= c |Dz|^2 (c = C_K or 4): for 0 <= omega with (2 pi omega)^2 A_K |H(v)| sqrt c <= 5 delta, e_{Dz}(omega) <= -(pi^6/90) |M_4|^2 omega^7 <= -(pi^6/90) (delta/(c |H(v)|))^2 omega^7; prime-term form on productionContactIndexEnergy",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "9ea3a4c4a0d20e0d6cd7ea16383f927fa72d984a",
+        "workflow_run": 38132218296,
+        "lean_source_inertia_check_run": 114448711253,
+        "source_falsifier_research_check_run": 114448711457,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.sourceIndexAction_eq_euclideanIndexLinearMap",
@@ -3226,10 +3530,18 @@
       "package": "M49",
       "steps": "Steps 84, 90",
       "module_scope": "at an even ground eigenvector with parity gap delta > 0, |v| = 1 and coercivity |v|^2 <= c |Dz|^2 (c = C_K or 4): for 0 <= omega with (2 pi omega)^2 A_K |H(v)| sqrt c <= 5 delta, e_{Dz}(omega) <= -(pi^6/90) |M_4|^2 omega^7 <= -(pi^6/90) (delta/(c |H(v)|))^2 omega^7; prime-term form on productionContactIndexEnergy",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "9ea3a4c4a0d20e0d6cd7ea16383f927fa72d984a",
+        "workflow_run": 38132218296,
+        "lean_source_inertia_check_run": 114448711253,
+        "source_falsifier_research_check_run": 114448711457,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.re_quadraticForm_index_le_of_mem_evenBoundaryFlat",
@@ -3238,10 +3550,18 @@
       "package": "M49",
       "steps": "Steps 84, 90",
       "module_scope": "at an even ground eigenvector with parity gap delta > 0, |v| = 1 and coercivity |v|^2 <= c |Dz|^2 (c = C_K or 4): for 0 <= omega with (2 pi omega)^2 A_K |H(v)| sqrt c <= 5 delta, e_{Dz}(omega) <= -(pi^6/90) |M_4|^2 omega^7 <= -(pi^6/90) (delta/(c |H(v)|))^2 omega^7; prime-term form on productionContactIndexEnergy",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "9ea3a4c4a0d20e0d6cd7ea16383f927fa72d984a",
+        "workflow_run": 38132218296,
+        "lean_source_inertia_check_run": 114448711253,
+        "source_falsifier_research_check_run": 114448711457,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.sourceAtomRealEnergy_index_le_of_contactAngle",
@@ -3250,10 +3570,18 @@
       "package": "M49",
       "steps": "Steps 84, 90",
       "module_scope": "at an even ground eigenvector with parity gap delta > 0, |v| = 1 and coercivity |v|^2 <= c |Dz|^2 (c = C_K or 4): for 0 <= omega with (2 pi omega)^2 A_K |H(v)| sqrt c <= 5 delta, e_{Dz}(omega) <= -(pi^6/90) |M_4|^2 omega^7 <= -(pi^6/90) (delta/(c |H(v)|))^2 omega^7; prime-term form on productionContactIndexEnergy",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "9ea3a4c4a0d20e0d6cd7ea16383f927fa72d984a",
+        "workflow_run": 38132218296,
+        "lean_source_inertia_check_run": 114448711253,
+        "source_falsifier_research_check_run": 114448711457,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.sourceAtomRealEnergy_index_le_of_contactAngle_coercivity",
@@ -3262,10 +3590,18 @@
       "package": "M49",
       "steps": "Steps 84, 90",
       "module_scope": "at an even ground eigenvector with parity gap delta > 0, |v| = 1 and coercivity |v|^2 <= c |Dz|^2 (c = C_K or 4): for 0 <= omega with (2 pi omega)^2 A_K |H(v)| sqrt c <= 5 delta, e_{Dz}(omega) <= -(pi^6/90) |M_4|^2 omega^7 <= -(pi^6/90) (delta/(c |H(v)|))^2 omega^7; prime-term form on productionContactIndexEnergy",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "9ea3a4c4a0d20e0d6cd7ea16383f927fa72d984a",
+        "workflow_run": 38132218296,
+        "lean_source_inertia_check_run": 114448711253,
+        "source_falsifier_research_check_run": 114448711457,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.sourceAtomRealEnergy_index_le_of_contactAngle_four",
@@ -3274,10 +3610,18 @@
       "package": "M49",
       "steps": "Steps 84, 90",
       "module_scope": "at an even ground eigenvector with parity gap delta > 0, |v| = 1 and coercivity |v|^2 <= c |Dz|^2 (c = C_K or 4): for 0 <= omega with (2 pi omega)^2 A_K |H(v)| sqrt c <= 5 delta, e_{Dz}(omega) <= -(pi^6/90) |M_4|^2 omega^7 <= -(pi^6/90) (delta/(c |H(v)|))^2 omega^7; prime-term form on productionContactIndexEnergy",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "9ea3a4c4a0d20e0d6cd7ea16383f927fa72d984a",
+        "workflow_run": 38132218296,
+        "lean_source_inertia_check_run": 114448711253,
+        "source_falsifier_research_check_run": 114448711457,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.primeTerm_ge_of_contactAngle_four",
@@ -3286,10 +3630,18 @@
       "package": "M49",
       "steps": "Steps 84, 90",
       "module_scope": "at an even ground eigenvector with parity gap delta > 0, |v| = 1 and coercivity |v|^2 <= c |Dz|^2 (c = C_K or 4): for 0 <= omega with (2 pi omega)^2 A_K |H(v)| sqrt c <= 5 delta, e_{Dz}(omega) <= -(pi^6/90) |M_4|^2 omega^7 <= -(pi^6/90) (delta/(c |H(v)|))^2 omega^7; prime-term form on productionContactIndexEnergy",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "9ea3a4c4a0d20e0d6cd7ea16383f927fa72d984a",
+        "workflow_run": 38132218296,
+        "lean_source_inertia_check_run": 114448711253,
+        "source_falsifier_research_check_run": 114448711457,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.productionArithmeticRealValue_eq_poleArch_sub_primes",
@@ -3298,10 +3650,18 @@
       "package": "M50",
       "steps": "Step 91",
       "module_scope": "at a stationary generated strict-even contact: P - sum_q beta_q e_{Dz}(omega_q) = -kappa C with kappa = 2 L^4/(2 pi)^2 and C >= 0; (91.1) for theta inside the M49 contact angle the older samples carry >= P + kappa C + b sum_N beta_q omega_q^7; (91.2) that quantity is <= 2(2K+1)K^2 sum_O beta_q omega_q; necessary conditions only",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "9ea3a4c4a0d20e0d6cd7ea16383f927fa72d984a",
+        "workflow_run": 38132218296,
+        "lean_source_inertia_check_run": 114448711253,
+        "source_falsifier_research_check_run": 114448711457,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.contactPrimeWeight_nonneg",
@@ -3310,10 +3670,18 @@
       "package": "M50",
       "steps": "Step 91",
       "module_scope": "at a stationary generated strict-even contact: P - sum_q beta_q e_{Dz}(omega_q) = -kappa C with kappa = 2 L^4/(2 pi)^2 and C >= 0; (91.1) for theta inside the M49 contact angle the older samples carry >= P + kappa C + b sum_N beta_q omega_q^7; (91.2) that quantity is <= 2(2K+1)K^2 sum_O beta_q omega_q; necessary conditions only",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "9ea3a4c4a0d20e0d6cd7ea16383f927fa72d984a",
+        "workflow_run": 38132218296,
+        "lean_source_inertia_check_run": 114448711253,
+        "source_falsifier_research_check_run": 114448711457,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.primeSourceCoordinate_mem_of_mem_Icc",
@@ -3322,10 +3690,18 @@
       "package": "M50",
       "steps": "Step 91",
       "module_scope": "at a stationary generated strict-even contact: P - sum_q beta_q e_{Dz}(omega_q) = -kappa C with kappa = 2 L^4/(2 pi)^2 and C >= 0; (91.1) for theta inside the M49 contact angle the older samples carry >= P + kappa C + b sum_N beta_q omega_q^7; (91.2) that quantity is <= 2(2K+1)K^2 sum_O beta_q omega_q; necessary conditions only",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "9ea3a4c4a0d20e0d6cd7ea16383f927fa72d984a",
+        "workflow_run": 38132218296,
+        "lean_source_inertia_check_run": 114448711253,
+        "source_falsifier_research_check_run": 114448711457,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.productionContactIndexEnergy_le_of_norm_eq_one",
@@ -3334,10 +3710,18 @@
       "package": "M50",
       "steps": "Step 91",
       "module_scope": "at a stationary generated strict-even contact: P - sum_q beta_q e_{Dz}(omega_q) = -kappa C with kappa = 2 L^4/(2 pi)^2 and C >= 0; (91.1) for theta inside the M49 contact angle the older samples carry >= P + kappa C + b sum_N beta_q omega_q^7; (91.2) that quantity is <= 2(2K+1)K^2 sum_O beta_q omega_q; necessary conditions only",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "9ea3a4c4a0d20e0d6cd7ea16383f927fa72d984a",
+        "workflow_run": 38132218296,
+        "lean_source_inertia_check_run": 114448711253,
+        "source_falsifier_research_check_run": 114448711457,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.GeneratedStrictEvenContact.stationaryResponseCost_nonneg",
@@ -3346,10 +3730,18 @@
       "package": "M50",
       "steps": "Step 91",
       "module_scope": "at a stationary generated strict-even contact: P - sum_q beta_q e_{Dz}(omega_q) = -kappa C with kappa = 2 L^4/(2 pi)^2 and C >= 0; (91.1) for theta inside the M49 contact angle the older samples carry >= P + kappa C + b sum_N beta_q omega_q^7; (91.2) that quantity is <= 2(2K+1)K^2 sum_O beta_q omega_q; necessary conditions only",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "9ea3a4c4a0d20e0d6cd7ea16383f927fa72d984a",
+        "workflow_run": 38132218296,
+        "lean_source_inertia_check_run": 114448711253,
+        "source_falsifier_research_check_run": 114448711457,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.GeneratedStrictEvenContact.poleArch_sub_primeSamples_eq",
@@ -3358,10 +3750,18 @@
       "package": "M50",
       "steps": "Step 91",
       "module_scope": "at a stationary generated strict-even contact: P - sum_q beta_q e_{Dz}(omega_q) = -kappa C with kappa = 2 L^4/(2 pi)^2 and C >= 0; (91.1) for theta inside the M49 contact angle the older samples carry >= P + kappa C + b sum_N beta_q omega_q^7; (91.2) that quantity is <= 2(2K+1)K^2 sum_O beta_q omega_q; necessary conditions only",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "9ea3a4c4a0d20e0d6cd7ea16383f927fa72d984a",
+        "workflow_run": 38132218296,
+        "lean_source_inertia_check_run": 114448711253,
+        "source_falsifier_research_check_run": 114448711457,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.GeneratedStrictEvenContact.olderPrimeBudget",
@@ -3370,10 +3770,18 @@
       "package": "M50",
       "steps": "Step 91",
       "module_scope": "at a stationary generated strict-even contact: P - sum_q beta_q e_{Dz}(omega_q) = -kappa C with kappa = 2 L^4/(2 pi)^2 and C >= 0; (91.1) for theta inside the M49 contact angle the older samples carry >= P + kappa C + b sum_N beta_q omega_q^7; (91.2) that quantity is <= 2(2K+1)K^2 sum_O beta_q omega_q; necessary conditions only",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "9ea3a4c4a0d20e0d6cd7ea16383f927fa72d984a",
+        "workflow_run": 38132218296,
+        "lean_source_inertia_check_run": 114448711253,
+        "source_falsifier_research_check_run": 114448711457,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.GeneratedStrictEvenContact.olderPrimeBudget_finite",
@@ -3382,10 +3790,18 @@
       "package": "M50",
       "steps": "Step 91",
       "module_scope": "at a stationary generated strict-even contact: P - sum_q beta_q e_{Dz}(omega_q) = -kappa C with kappa = 2 L^4/(2 pi)^2 and C >= 0; (91.1) for theta inside the M49 contact angle the older samples carry >= P + kappa C + b sum_N beta_q omega_q^7; (91.2) that quantity is <= 2(2K+1)K^2 sum_O beta_q omega_q; necessary conditions only",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "9ea3a4c4a0d20e0d6cd7ea16383f927fa72d984a",
+        "workflow_run": 38132218296,
+        "lean_source_inertia_check_run": 114448711253,
+        "source_falsifier_research_check_run": 114448711457,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.contactSourcePairing_zero",
@@ -3394,10 +3810,18 @@
       "package": "M59/M61",
       "steps": "Steps 98, 99",
       "module_scope": "at an even contact (A_L z = 0, z != 0, lambda_odd > 0): I - sum_q (Lambda(q)/sqrt q) p_z(omega_q) = |M_4|^2/gamma with p_z = Re(conj(M_4) h_z) for the mixed atom h_z; for every split theta, I - O + N = |M_4|^2/gamma; gamma <= |g|^2/lambda_odd, so O <= I + N - lambda_odd |M_4|^2/|g|^2; no F04; necessary conditions only",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "9ea3a4c4a0d20e0d6cd7ea16383f927fa72d984a",
+        "workflow_run": 38132218296,
+        "lean_source_inertia_check_run": 114448711253,
+        "source_falsifier_research_check_run": 114448711457,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.contactSourcePairing_balance",
@@ -3406,10 +3830,18 @@
       "package": "M59/M61",
       "steps": "Steps 98, 99",
       "module_scope": "at an even contact (A_L z = 0, z != 0, lambda_odd > 0): I - sum_q (Lambda(q)/sqrt q) p_z(omega_q) = |M_4|^2/gamma with p_z = Re(conj(M_4) h_z) for the mixed atom h_z; for every split theta, I - O + N = |M_4|^2/gamma; gamma <= |g|^2/lambda_odd, so O <= I + N - lambda_odd |M_4|^2/|g|^2; no F04; necessary conditions only",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "9ea3a4c4a0d20e0d6cd7ea16383f927fa72d984a",
+        "workflow_run": 38132218296,
+        "lean_source_inertia_check_run": 114448711253,
+        "source_falsifier_research_check_run": 114448711457,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.contactSourcePairing_nearOld_balance",
@@ -3418,10 +3850,18 @@
       "package": "M59/M61",
       "steps": "Steps 98, 99",
       "module_scope": "at an even contact (A_L z = 0, z != 0, lambda_odd > 0): I - sum_q (Lambda(q)/sqrt q) p_z(omega_q) = |M_4|^2/gamma with p_z = Re(conj(M_4) h_z) for the mixed atom h_z; for every split theta, I - O + N = |M_4|^2/gamma; gamma <= |g|^2/lambda_odd, so O <= I + N - lambda_odd |M_4|^2/|g|^2; no F04; necessary conditions only",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "9ea3a4c4a0d20e0d6cd7ea16383f927fa72d984a",
+        "workflow_run": 38132218296,
+        "lean_source_inertia_check_run": 114448711253,
+        "source_falsifier_research_check_run": 114448711457,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.canonicalResolventGamma_le",
@@ -3430,10 +3870,18 @@
       "package": "M59/M61",
       "steps": "Steps 98, 99",
       "module_scope": "at an even contact (A_L z = 0, z != 0, lambda_odd > 0): I - sum_q (Lambda(q)/sqrt q) p_z(omega_q) = |M_4|^2/gamma with p_z = Re(conj(M_4) h_z) for the mixed atom h_z; for every split theta, I - O + N = |M_4|^2/gamma; gamma <= |g|^2/lambda_odd, so O <= I + N - lambda_odd |M_4|^2/|g|^2; no F04; necessary conditions only",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "9ea3a4c4a0d20e0d6cd7ea16383f927fa72d984a",
+        "workflow_run": 38132218296,
+        "lean_source_inertia_check_run": 114448711253,
+        "source_falsifier_research_check_run": 114448711457,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.contactSourceMargin_ge",
@@ -3442,10 +3890,18 @@
       "package": "M59/M61",
       "steps": "Steps 98, 99",
       "module_scope": "at an even contact (A_L z = 0, z != 0, lambda_odd > 0): I - sum_q (Lambda(q)/sqrt q) p_z(omega_q) = |M_4|^2/gamma with p_z = Re(conj(M_4) h_z) for the mixed atom h_z; for every split theta, I - O + N = |M_4|^2/gamma; gamma <= |g|^2/lambda_odd, so O <= I + N - lambda_odd |M_4|^2/|g|^2; no F04; necessary conditions only",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "9ea3a4c4a0d20e0d6cd7ea16383f927fa72d984a",
+        "workflow_run": 38132218296,
+        "lean_source_inertia_check_run": 114448711253,
+        "source_falsifier_research_check_run": 114448711457,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.contactSourcePairing_older_le",
@@ -3454,10 +3910,18 @@
       "package": "M59/M61",
       "steps": "Steps 98, 99",
       "module_scope": "at an even contact (A_L z = 0, z != 0, lambda_odd > 0): I - sum_q (Lambda(q)/sqrt q) p_z(omega_q) = |M_4|^2/gamma with p_z = Re(conj(M_4) h_z) for the mixed atom h_z; for every split theta, I - O + N = |M_4|^2/gamma; gamma <= |g|^2/lambda_odd, so O <= I + N - lambda_odd |M_4|^2/|g|^2; no F04; necessary conditions only",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "9ea3a4c4a0d20e0d6cd7ea16383f927fa72d984a",
+        "workflow_run": 38132218296,
+        "lean_source_inertia_check_run": 114448711253,
+        "source_falsifier_research_check_run": 114448711457,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.weightedVonMangoldtSqrtSum_mono",
@@ -3466,10 +3930,18 @@
       "package": "M33/M34",
       "steps": "Steps 68, 70, 71",
       "module_scope": "Step 68: at a normalized even ground eigenvector with positive parity gap, H(v) != 0, e_{Dz} < 0 on (0, theta], e_{Dz}(1) = 2|Dz|^2 > 0 and e_{Dz} vanishes in (theta, 1); Step 70: R(e^t) is interval integrable against continuous tests; Step 71: |int R f'| <= (M - m)/2 int |f'| when int f' = 0 and m <= R <= M, and the stationary-contact oscillation budget; necessary conditions only",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "9ea3a4c4a0d20e0d6cd7ea16383f927fa72d984a",
+        "workflow_run": 38132218296,
+        "lean_source_inertia_check_run": 114448711253,
+        "source_falsifier_research_check_run": 114448711457,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.intervalIntegrable_weightedRemainder_exp",
@@ -3478,10 +3950,18 @@
       "package": "M33/M34",
       "steps": "Steps 68, 70, 71",
       "module_scope": "Step 68: at a normalized even ground eigenvector with positive parity gap, H(v) != 0, e_{Dz} < 0 on (0, theta], e_{Dz}(1) = 2|Dz|^2 > 0 and e_{Dz} vanishes in (theta, 1); Step 70: R(e^t) is interval integrable against continuous tests; Step 71: |int R f'| <= (M - m)/2 int |f'| when int f' = 0 and m <= R <= M, and the stationary-contact oscillation budget; necessary conditions only",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "9ea3a4c4a0d20e0d6cd7ea16383f927fa72d984a",
+        "workflow_run": 38132218296,
+        "lean_source_inertia_check_run": 114448711253,
+        "source_falsifier_research_check_run": 114448711457,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.intervalIntegrable_weightedRemainder_exp_mul",
@@ -3490,10 +3970,18 @@
       "package": "M33/M34",
       "steps": "Steps 68, 70, 71",
       "module_scope": "Step 68: at a normalized even ground eigenvector with positive parity gap, H(v) != 0, e_{Dz} < 0 on (0, theta], e_{Dz}(1) = 2|Dz|^2 > 0 and e_{Dz} vanishes in (theta, 1); Step 70: R(e^t) is interval integrable against continuous tests; Step 71: |int R f'| <= (M - m)/2 int |f'| when int f' = 0 and m <= R <= M, and the stationary-contact oscillation budget; necessary conditions only",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "9ea3a4c4a0d20e0d6cd7ea16383f927fa72d984a",
+        "workflow_run": 38132218296,
+        "lean_source_inertia_check_run": 114448711253,
+        "source_falsifier_research_check_run": 114448711457,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.abs_integral_mul_le_half_oscillation",
@@ -3502,10 +3990,18 @@
       "package": "M33/M34",
       "steps": "Steps 68, 70, 71",
       "module_scope": "Step 68: at a normalized even ground eigenvector with positive parity gap, H(v) != 0, e_{Dz} < 0 on (0, theta], e_{Dz}(1) = 2|Dz|^2 > 0 and e_{Dz} vanishes in (theta, 1); Step 70: R(e^t) is interval integrable against continuous tests; Step 71: |int R f'| <= (M - m)/2 int |f'| when int f' = 0 and m <= R <= M, and the stationary-contact oscillation budget; necessary conditions only",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "9ea3a4c4a0d20e0d6cd7ea16383f927fa72d984a",
+        "workflow_run": 38132218296,
+        "lean_source_inertia_check_run": 114448711253,
+        "source_falsifier_research_check_run": 114448711457,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.hasDerivAt_productionContactTest",
@@ -3514,10 +4010,18 @@
       "package": "M33/M34",
       "steps": "Steps 68, 70, 71",
       "module_scope": "Step 68: at a normalized even ground eigenvector with positive parity gap, H(v) != 0, e_{Dz} < 0 on (0, theta], e_{Dz}(1) = 2|Dz|^2 > 0 and e_{Dz} vanishes in (theta, 1); Step 70: R(e^t) is interval integrable against continuous tests; Step 71: |int R f'| <= (M - m)/2 int |f'| when int f' = 0 and m <= R <= M, and the stationary-contact oscillation budget; necessary conditions only",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "9ea3a4c4a0d20e0d6cd7ea16383f927fa72d984a",
+        "workflow_run": 38132218296,
+        "lean_source_inertia_check_run": 114448711253,
+        "source_falsifier_research_check_run": 114448711457,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.continuous_productionContactTestDeriv",
@@ -3526,10 +4030,18 @@
       "package": "M33/M34",
       "steps": "Steps 68, 70, 71",
       "module_scope": "Step 68: at a normalized even ground eigenvector with positive parity gap, H(v) != 0, e_{Dz} < 0 on (0, theta], e_{Dz}(1) = 2|Dz|^2 > 0 and e_{Dz} vanishes in (theta, 1); Step 70: R(e^t) is interval integrable against continuous tests; Step 71: |int R f'| <= (M - m)/2 int |f'| when int f' = 0 and m <= R <= M, and the stationary-contact oscillation budget; necessary conditions only",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "9ea3a4c4a0d20e0d6cd7ea16383f927fa72d984a",
+        "workflow_run": 38132218296,
+        "lean_source_inertia_check_run": 114448711253,
+        "source_falsifier_research_check_run": 114448711457,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.integral_productionContactTestDeriv",
@@ -3538,10 +4050,18 @@
       "package": "M33/M34",
       "steps": "Steps 68, 70, 71",
       "module_scope": "Step 68: at a normalized even ground eigenvector with positive parity gap, H(v) != 0, e_{Dz} < 0 on (0, theta], e_{Dz}(1) = 2|Dz|^2 > 0 and e_{Dz} vanishes in (theta, 1); Step 70: R(e^t) is interval integrable against continuous tests; Step 71: |int R f'| <= (M - m)/2 int |f'| when int f' = 0 and m <= R <= M, and the stationary-contact oscillation budget; necessary conditions only",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "9ea3a4c4a0d20e0d6cd7ea16383f927fa72d984a",
+        "workflow_run": 38132218296,
+        "lean_source_inertia_check_run": 114448711253,
+        "source_falsifier_research_check_run": 114448711457,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.GeneratedStrictEvenContact.remainderOscillation_budget",
@@ -3550,10 +4070,18 @@
       "package": "M33/M34",
       "steps": "Steps 68, 70, 71",
       "module_scope": "Step 68: at a normalized even ground eigenvector with positive parity gap, H(v) != 0, e_{Dz} < 0 on (0, theta], e_{Dz}(1) = 2|Dz|^2 > 0 and e_{Dz} vanishes in (theta, 1); Step 70: R(e^t) is interval integrable against continuous tests; Step 71: |int R f'| <= (M - m)/2 int |f'| when int f' = 0 and m <= R <= M, and the stationary-contact oscillation budget; necessary conditions only",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "9ea3a4c4a0d20e0d6cd7ea16383f927fa72d984a",
+        "workflow_run": 38132218296,
+        "lean_source_inertia_check_run": 114448711253,
+        "source_falsifier_research_check_run": 114448711457,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.explicitCanonicalSourceMoment_ne_zero_of_parityGap",
@@ -3562,10 +4090,18 @@
       "package": "M33/M34",
       "steps": "Steps 68, 70, 71",
       "module_scope": "Step 68: at a normalized even ground eigenvector with positive parity gap, H(v) != 0, e_{Dz} < 0 on (0, theta], e_{Dz}(1) = 2|Dz|^2 > 0 and e_{Dz} vanishes in (theta, 1); Step 70: R(e^t) is interval integrable against continuous tests; Step 71: |int R f'| <= (M - m)/2 int |f'| when int f' = 0 and m <= R <= M, and the stationary-contact oscillation budget; necessary conditions only",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "9ea3a4c4a0d20e0d6cd7ea16383f927fa72d984a",
+        "workflow_run": 38132218296,
+        "lean_source_inertia_check_run": 114448711253,
+        "source_falsifier_research_check_run": 114448711457,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.sourceAtomRealEnergy_index_signReversal",
@@ -3574,10 +4110,18 @@
       "package": "M33/M34",
       "steps": "Steps 68, 70, 71",
       "module_scope": "Step 68: at a normalized even ground eigenvector with positive parity gap, H(v) != 0, e_{Dz} < 0 on (0, theta], e_{Dz}(1) = 2|Dz|^2 > 0 and e_{Dz} vanishes in (theta, 1); Step 70: R(e^t) is interval integrable against continuous tests; Step 71: |int R f'| <= (M - m)/2 int |f'| when int f' = 0 and m <= R <= M, and the stationary-contact oscillation budget; necessary conditions only",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "9ea3a4c4a0d20e0d6cd7ea16383f927fa72d984a",
+        "workflow_run": 38132218296,
+        "lean_source_inertia_check_run": 114448711253,
+        "source_falsifier_research_check_run": 114448711457,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.mem_Icc_floor_exp_of_log_le",
@@ -3586,10 +4130,18 @@
       "package": "M44",
       "steps": "Step 81",
       "module_scope": "fixed legal even vector z: the q-atom of the physical scalar A_L[t^2 e_{Dz}(1 - t/L)] is exactly -beta_q e_{Dz}(h/(log q + h)) at L = log q + h, and |Delta Q - a h^7| <= C h^8 with a = 2 Lambda(q)(2 pi)^6 |M_4(z)|^2/(7! sqrt q (log q)^5) > 0; one-sided, fixed vector, not total Q",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "9ea3a4c4a0d20e0d6cd7ea16383f927fa72d984a",
+        "workflow_run": 38132218296,
+        "lean_source_inertia_check_run": 114448711253,
+        "source_falsifier_research_check_run": 114448711457,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.productionContactValue_eq_withoutAtom_add_jump",
@@ -3598,10 +4150,18 @@
       "package": "M44",
       "steps": "Step 81",
       "module_scope": "fixed legal even vector z: the q-atom of the physical scalar A_L[t^2 e_{Dz}(1 - t/L)] is exactly -beta_q e_{Dz}(h/(log q + h)) at L = log q + h, and |Delta Q - a h^7| <= C h^8 with a = 2 Lambda(q)(2 pi)^6 |M_4(z)|^2/(7! sqrt q (log q)^5) > 0; one-sided, fixed vector, not total Q",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "9ea3a4c4a0d20e0d6cd7ea16383f927fa72d984a",
+        "workflow_run": 38132218296,
+        "lean_source_inertia_check_run": 114448711253,
+        "source_falsifier_research_check_run": 114448711457,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.enteringPrimePhysicalJump_log_add",
@@ -3610,10 +4170,18 @@
       "package": "M44",
       "steps": "Step 81",
       "module_scope": "fixed legal even vector z: the q-atom of the physical scalar A_L[t^2 e_{Dz}(1 - t/L)] is exactly -beta_q e_{Dz}(h/(log q + h)) at L = log q + h, and |Delta Q - a h^7| <= C h^8 with a = 2 Lambda(q)(2 pi)^6 |M_4(z)|^2/(7! sqrt q (log q)^5) > 0; one-sided, fixed vector, not total Q",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "9ea3a4c4a0d20e0d6cd7ea16383f927fa72d984a",
+        "workflow_run": 38132218296,
+        "lean_source_inertia_check_run": 114448711253,
+        "source_falsifier_research_check_run": 114448711457,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.sourceIndexAction_boundaryFlat",
@@ -3622,10 +4190,18 @@
       "package": "M44",
       "steps": "Step 81",
       "module_scope": "fixed legal even vector z: the q-atom of the physical scalar A_L[t^2 e_{Dz}(1 - t/L)] is exactly -beta_q e_{Dz}(h/(log q + h)) at L = log q + h, and |Delta Q - a h^7| <= C h^8 with a = 2 Lambda(q)(2 pi)^6 |M_4(z)|^2/(7! sqrt q (log q)^5) > 0; one-sided, fixed vector, not total Q",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "9ea3a4c4a0d20e0d6cd7ea16383f927fa72d984a",
+        "workflow_run": 38132218296,
+        "lean_source_inertia_check_run": 114448711253,
+        "source_falsifier_research_check_run": 114448711457,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.normSq_centeredMoment_three_sourceIndexAction",
@@ -3634,10 +4210,18 @@
       "package": "M44",
       "steps": "Step 81",
       "module_scope": "fixed legal even vector z: the q-atom of the physical scalar A_L[t^2 e_{Dz}(1 - t/L)] is exactly -beta_q e_{Dz}(h/(log q + h)) at L = log q + h, and |Delta Q - a h^7| <= C h^8 with a = 2 Lambda(q)(2 pi)^6 |M_4(z)|^2/(7! sqrt q (log q)^5) > 0; one-sided, fixed vector, not total Q",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "9ea3a4c4a0d20e0d6cd7ea16383f927fa72d984a",
+        "workflow_run": 38132218296,
+        "lean_source_inertia_check_run": 114448711253,
+        "source_falsifier_research_check_run": 114448711457,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.sourceAtomRealEnergy_seventh_taylor",
@@ -3646,10 +4230,18 @@
       "package": "M44",
       "steps": "Step 81",
       "module_scope": "fixed legal even vector z: the q-atom of the physical scalar A_L[t^2 e_{Dz}(1 - t/L)] is exactly -beta_q e_{Dz}(h/(log q + h)) at L = log q + h, and |Delta Q - a h^7| <= C h^8 with a = 2 Lambda(q)(2 pi)^6 |M_4(z)|^2/(7! sqrt q (log q)^5) > 0; one-sided, fixed vector, not total Q",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "9ea3a4c4a0d20e0d6cd7ea16383f927fa72d984a",
+        "workflow_run": 38132218296,
+        "lean_source_inertia_check_run": 114448711253,
+        "source_falsifier_research_check_run": 114448711457,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.enteringPrimeLeadingCoefficient_pos",
@@ -3658,10 +4250,18 @@
       "package": "M44",
       "steps": "Step 81",
       "module_scope": "fixed legal even vector z: the q-atom of the physical scalar A_L[t^2 e_{Dz}(1 - t/L)] is exactly -beta_q e_{Dz}(h/(log q + h)) at L = log q + h, and |Delta Q - a h^7| <= C h^8 with a = 2 Lambda(q)(2 pi)^6 |M_4(z)|^2/(7! sqrt q (log q)^5) > 0; one-sided, fixed vector, not total Q",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "9ea3a4c4a0d20e0d6cd7ea16383f927fa72d984a",
+        "workflow_run": 38132218296,
+        "lean_source_inertia_check_run": 114448711253,
+        "source_falsifier_research_check_run": 114448711457,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.enteringPrimePhysicalJump_seventh_order",
@@ -3670,10 +4270,18 @@
       "package": "M44",
       "steps": "Step 81",
       "module_scope": "fixed legal even vector z: the q-atom of the physical scalar A_L[t^2 e_{Dz}(1 - t/L)] is exactly -beta_q e_{Dz}(h/(log q + h)) at L = log q + h, and |Delta Q - a h^7| <= C h^8 with a = 2 Lambda(q)(2 pi)^6 |M_4(z)|^2/(7! sqrt q (log q)^5) > 0; one-sided, fixed vector, not total Q",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "9ea3a4c4a0d20e0d6cd7ea16383f927fa72d984a",
+        "workflow_run": 38132218296,
+        "lean_source_inertia_check_run": 114448711253,
+        "source_falsifier_research_check_run": 114448711457,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.enteringPrimePhysicalJump_ge_of_angle",
@@ -3682,10 +4290,18 @@
       "package": "M44",
       "steps": "Step 81",
       "module_scope": "fixed legal even vector z: the q-atom of the physical scalar A_L[t^2 e_{Dz}(1 - t/L)] is exactly -beta_q e_{Dz}(h/(log q + h)) at L = log q + h, and |Delta Q - a h^7| <= C h^8 with a = 2 Lambda(q)(2 pi)^6 |M_4(z)|^2/(7! sqrt q (log q)^5) > 0; one-sided, fixed vector, not total Q",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "9ea3a4c4a0d20e0d6cd7ea16383f927fa72d984a",
+        "workflow_run": 38132218296,
+        "lean_source_inertia_check_run": 114448711253,
+        "source_falsifier_research_check_run": 114448711457,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.enteringPrimePhysicalJump_pos_near_seam",
@@ -3694,10 +4310,18 @@
       "package": "M44",
       "steps": "Step 81",
       "module_scope": "fixed legal even vector z: the q-atom of the physical scalar A_L[t^2 e_{Dz}(1 - t/L)] is exactly -beta_q e_{Dz}(h/(log q + h)) at L = log q + h, and |Delta Q - a h^7| <= C h^8 with a = 2 Lambda(q)(2 pi)^6 |M_4(z)|^2/(7! sqrt q (log q)^5) > 0; one-sided, fixed vector, not total Q",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "9ea3a4c4a0d20e0d6cd7ea16383f927fa72d984a",
+        "workflow_run": 38132218296,
+        "lean_source_inertia_check_run": 114448711253,
+        "source_falsifier_research_check_run": 114448711457,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.hasDerivAt_complexCLM_apply_real",
@@ -3706,10 +4330,18 @@
       "package": "M29",
       "steps": "Steps 61, 62",
       "module_scope": "with H_L(z) = <g, (B_L D - D A_L) z>/<g, g>, R = B_L^{-1}, x = D^{-1} R g and T = H_L(x_L): at every L > 0 with lambda_odd(L) > 0, T' = H'(x) + H(x') and T'' = H''(x) + 2 H'(x') + H(x''), x' = -D^{-1} R B' r, x'' = D^{-1}(2 R B' R B' r - R B'' r); L -> H_L(z) is C^2 on (0, infinity); at T' = 0 (and T'' = 0) the stationary identities; the third derivative (Step 63) stays OPEN",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "2e32e595f37ceebfaac7c4fca4ab2b8450344a29",
+        "workflow_run": 38141356135,
+        "lean_source_inertia_check_run": 114475717910,
+        "source_falsifier_research_check_run": 114475718192,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.hasDerivAt_ringInverse_complexCLM",
@@ -3718,10 +4350,18 @@
       "package": "M29",
       "steps": "Steps 61, 62",
       "module_scope": "with H_L(z) = <g, (B_L D - D A_L) z>/<g, g>, R = B_L^{-1}, x = D^{-1} R g and T = H_L(x_L): at every L > 0 with lambda_odd(L) > 0, T' = H'(x) + H(x') and T'' = H''(x) + 2 H'(x') + H(x''), x' = -D^{-1} R B' r, x'' = D^{-1}(2 R B' R B' r - R B'' r); L -> H_L(z) is C^2 on (0, infinity); at T' = 0 (and T'' = 0) the stationary identities; the third derivative (Step 63) stays OPEN",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "2e32e595f37ceebfaac7c4fca4ab2b8450344a29",
+        "workflow_run": 38141356135,
+        "lean_source_inertia_check_run": 114475717910,
+        "source_falsifier_research_check_run": 114475718192,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.hasDerivAt_secularDefectScalar",
@@ -3730,10 +4370,18 @@
       "package": "M29",
       "steps": "Steps 61, 62",
       "module_scope": "with H_L(z) = <g, (B_L D - D A_L) z>/<g, g>, R = B_L^{-1}, x = D^{-1} R g and T = H_L(x_L): at every L > 0 with lambda_odd(L) > 0, T' = H'(x) + H(x') and T'' = H''(x) + 2 H'(x') + H(x''), x' = -D^{-1} R B' r, x'' = D^{-1}(2 R B' R B' r - R B'' r); L -> H_L(z) is C^2 on (0, infinity); at T' = 0 (and T'' = 0) the stationary identities; the third derivative (Step 63) stays OPEN",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "2e32e595f37ceebfaac7c4fca4ab2b8450344a29",
+        "workflow_run": 38141356135,
+        "lean_source_inertia_check_run": 114475717910,
+        "source_falsifier_research_check_run": 114475718192,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.hasDerivAt_secularDefectScalar_const",
@@ -3742,10 +4390,18 @@
       "package": "M29",
       "steps": "Steps 61, 62",
       "module_scope": "with H_L(z) = <g, (B_L D - D A_L) z>/<g, g>, R = B_L^{-1}, x = D^{-1} R g and T = H_L(x_L): at every L > 0 with lambda_odd(L) > 0, T' = H'(x) + H(x') and T'' = H''(x) + 2 H'(x') + H(x''), x' = -D^{-1} R B' r, x'' = D^{-1}(2 R B' R B' r - R B'' r); L -> H_L(z) is C^2 on (0, infinity); at T' = 0 (and T'' = 0) the stationary identities; the third derivative (Step 63) stays OPEN",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "2e32e595f37ceebfaac7c4fca4ab2b8450344a29",
+        "workflow_run": 38141356135,
+        "lean_source_inertia_check_run": 114475717910,
+        "source_falsifier_research_check_run": 114475718192,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.hasDerivAt_secularRayFamily",
@@ -3754,10 +4410,18 @@
       "package": "M29",
       "steps": "Steps 61, 62",
       "module_scope": "with H_L(z) = <g, (B_L D - D A_L) z>/<g, g>, R = B_L^{-1}, x = D^{-1} R g and T = H_L(x_L): at every L > 0 with lambda_odd(L) > 0, T' = H'(x) + H(x') and T'' = H''(x) + 2 H'(x') + H(x''), x' = -D^{-1} R B' r, x'' = D^{-1}(2 R B' R B' r - R B'' r); L -> H_L(z) is C^2 on (0, infinity); at T' = 0 (and T'' = 0) the stationary identities; the third derivative (Step 63) stays OPEN",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "2e32e595f37ceebfaac7c4fca4ab2b8450344a29",
+        "workflow_run": 38141356135,
+        "lean_source_inertia_check_run": 114475717910,
+        "source_falsifier_research_check_run": 114475718192,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.hasDerivAt_secularRayFirst",
@@ -3766,10 +4430,18 @@
       "package": "M29",
       "steps": "Steps 61, 62",
       "module_scope": "with H_L(z) = <g, (B_L D - D A_L) z>/<g, g>, R = B_L^{-1}, x = D^{-1} R g and T = H_L(x_L): at every L > 0 with lambda_odd(L) > 0, T' = H'(x) + H(x') and T'' = H''(x) + 2 H'(x') + H(x''), x' = -D^{-1} R B' r, x'' = D^{-1}(2 R B' R B' r - R B'' r); L -> H_L(z) is C^2 on (0, infinity); at T' = 0 (and T'' = 0) the stationary identities; the third derivative (Step 63) stays OPEN",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "2e32e595f37ceebfaac7c4fca4ab2b8450344a29",
+        "workflow_run": 38141356135,
+        "lean_source_inertia_check_run": 114475717910,
+        "source_falsifier_research_check_run": 114475718192,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.hasDerivAt_secularScalarFamily",
@@ -3778,10 +4450,18 @@
       "package": "M29",
       "steps": "Steps 61, 62",
       "module_scope": "with H_L(z) = <g, (B_L D - D A_L) z>/<g, g>, R = B_L^{-1}, x = D^{-1} R g and T = H_L(x_L): at every L > 0 with lambda_odd(L) > 0, T' = H'(x) + H(x') and T'' = H''(x) + 2 H'(x') + H(x''), x' = -D^{-1} R B' r, x'' = D^{-1}(2 R B' R B' r - R B'' r); L -> H_L(z) is C^2 on (0, infinity); at T' = 0 (and T'' = 0) the stationary identities; the third derivative (Step 63) stays OPEN",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "2e32e595f37ceebfaac7c4fca4ab2b8450344a29",
+        "workflow_run": 38141356135,
+        "lean_source_inertia_check_run": 114475717910,
+        "source_falsifier_research_check_run": 114475718192,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.hasDerivAt_secularScalarFirst",
@@ -3790,10 +4470,18 @@
       "package": "M29",
       "steps": "Steps 61, 62",
       "module_scope": "with H_L(z) = <g, (B_L D - D A_L) z>/<g, g>, R = B_L^{-1}, x = D^{-1} R g and T = H_L(x_L): at every L > 0 with lambda_odd(L) > 0, T' = H'(x) + H(x') and T'' = H''(x) + 2 H'(x') + H(x''), x' = -D^{-1} R B' r, x'' = D^{-1}(2 R B' R B' r - R B'' r); L -> H_L(z) is C^2 on (0, infinity); at T' = 0 (and T'' = 0) the stationary identities; the third derivative (Step 63) stays OPEN",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "2e32e595f37ceebfaac7c4fca4ab2b8450344a29",
+        "workflow_run": 38141356135,
+        "lean_source_inertia_check_run": 114475717910,
+        "source_falsifier_research_check_run": 114475718192,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.secularScalar_stationary",
@@ -3802,10 +4490,18 @@
       "package": "M29",
       "steps": "Steps 61, 62",
       "module_scope": "with H_L(z) = <g, (B_L D - D A_L) z>/<g, g>, R = B_L^{-1}, x = D^{-1} R g and T = H_L(x_L): at every L > 0 with lambda_odd(L) > 0, T' = H'(x) + H(x') and T'' = H''(x) + 2 H'(x') + H(x''), x' = -D^{-1} R B' r, x'' = D^{-1}(2 R B' R B' r - R B'' r); L -> H_L(z) is C^2 on (0, infinity); at T' = 0 (and T'' = 0) the stationary identities; the third derivative (Step 63) stays OPEN",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "2e32e595f37ceebfaac7c4fca4ab2b8450344a29",
+        "workflow_run": 38141356135,
+        "lean_source_inertia_check_run": 114475717910,
+        "source_falsifier_research_check_run": 114475718192,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.secularDefectScalar_canonical",
@@ -3814,10 +4510,18 @@
       "package": "M29",
       "steps": "Steps 61, 62",
       "module_scope": "with H_L(z) = <g, (B_L D - D A_L) z>/<g, g>, R = B_L^{-1}, x = D^{-1} R g and T = H_L(x_L): at every L > 0 with lambda_odd(L) > 0, T' = H'(x) + H(x') and T'' = H''(x) + 2 H'(x') + H(x''), x' = -D^{-1} R B' r, x'' = D^{-1}(2 R B' R B' r - R B'' r); L -> H_L(z) is C^2 on (0, infinity); at T' = 0 (and T'' = 0) the stationary identities; the third derivative (Step 63) stays OPEN",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "2e32e595f37ceebfaac7c4fca4ab2b8450344a29",
+        "workflow_run": 38141356135,
+        "lean_source_inertia_check_run": 114475717910,
+        "source_falsifier_research_check_run": 114475718192,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.isUnit_canonicalOddFamily",
@@ -3826,10 +4530,18 @@
       "package": "M29",
       "steps": "Steps 61, 62",
       "module_scope": "with H_L(z) = <g, (B_L D - D A_L) z>/<g, g>, R = B_L^{-1}, x = D^{-1} R g and T = H_L(x_L): at every L > 0 with lambda_odd(L) > 0, T' = H'(x) + H(x') and T'' = H''(x) + 2 H'(x') + H(x''), x' = -D^{-1} R B' r, x'' = D^{-1}(2 R B' R B' r - R B'' r); L -> H_L(z) is C^2 on (0, infinity); at T' = 0 (and T'' = 0) the stationary identities; the third derivative (Step 63) stays OPEN",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "2e32e595f37ceebfaac7c4fca4ab2b8450344a29",
+        "workflow_run": 38141356135,
+        "lean_source_inertia_check_run": 114475717910,
+        "source_falsifier_research_check_run": 114475718192,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.secularRayFamily_canonical",
@@ -3838,10 +4550,18 @@
       "package": "M29",
       "steps": "Steps 61, 62",
       "module_scope": "with H_L(z) = <g, (B_L D - D A_L) z>/<g, g>, R = B_L^{-1}, x = D^{-1} R g and T = H_L(x_L): at every L > 0 with lambda_odd(L) > 0, T' = H'(x) + H(x') and T'' = H''(x) + 2 H'(x') + H(x''), x' = -D^{-1} R B' r, x'' = D^{-1}(2 R B' R B' r - R B'' r); L -> H_L(z) is C^2 on (0, infinity); at T' = 0 (and T'' = 0) the stationary identities; the third derivative (Step 63) stays OPEN",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "2e32e595f37ceebfaac7c4fca4ab2b8450344a29",
+        "workflow_run": 38141356135,
+        "lean_source_inertia_check_run": 114475717910,
+        "source_falsifier_research_check_run": 114475718192,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.canonicalSecularScalar_eq",
@@ -3850,10 +4570,18 @@
       "package": "M29",
       "steps": "Steps 61, 62",
       "module_scope": "with H_L(z) = <g, (B_L D - D A_L) z>/<g, g>, R = B_L^{-1}, x = D^{-1} R g and T = H_L(x_L): at every L > 0 with lambda_odd(L) > 0, T' = H'(x) + H(x') and T'' = H''(x) + 2 H'(x') + H(x''), x' = -D^{-1} R B' r, x'' = D^{-1}(2 R B' R B' r - R B'' r); L -> H_L(z) is C^2 on (0, infinity); at T' = 0 (and T'' = 0) the stationary identities; the third derivative (Step 63) stays OPEN",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "2e32e595f37ceebfaac7c4fca4ab2b8450344a29",
+        "workflow_run": 38141356135,
+        "lean_source_inertia_check_run": 114475717910,
+        "source_falsifier_research_check_run": 114475718192,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.canonicalSecularScalar_hasDerivAt",
@@ -3862,10 +4590,18 @@
       "package": "M29",
       "steps": "Steps 61, 62",
       "module_scope": "with H_L(z) = <g, (B_L D - D A_L) z>/<g, g>, R = B_L^{-1}, x = D^{-1} R g and T = H_L(x_L): at every L > 0 with lambda_odd(L) > 0, T' = H'(x) + H(x') and T'' = H''(x) + 2 H'(x') + H(x''), x' = -D^{-1} R B' r, x'' = D^{-1}(2 R B' R B' r - R B'' r); L -> H_L(z) is C^2 on (0, infinity); at T' = 0 (and T'' = 0) the stationary identities; the third derivative (Step 63) stays OPEN",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "2e32e595f37ceebfaac7c4fca4ab2b8450344a29",
+        "workflow_run": 38141356135,
+        "lean_source_inertia_check_run": 114475717910,
+        "source_falsifier_research_check_run": 114475718192,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.cubicDefectFunctional_contDiffOn",
@@ -3874,10 +4610,18 @@
       "package": "M29",
       "steps": "Steps 61, 62",
       "module_scope": "with H_L(z) = <g, (B_L D - D A_L) z>/<g, g>, R = B_L^{-1}, x = D^{-1} R g and T = H_L(x_L): at every L > 0 with lambda_odd(L) > 0, T' = H'(x) + H(x') and T'' = H''(x) + 2 H'(x') + H(x''), x' = -D^{-1} R B' r, x'' = D^{-1}(2 R B' R B' r - R B'' r); L -> H_L(z) is C^2 on (0, infinity); at T' = 0 (and T'' = 0) the stationary identities; the third derivative (Step 63) stays OPEN",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "2e32e595f37ceebfaac7c4fca4ab2b8450344a29",
+        "workflow_run": 38141356135,
+        "lean_source_inertia_check_run": 114475717910,
+        "source_falsifier_research_check_run": 114475718192,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.cubicDefectFunctional_hasDerivAt",
@@ -3886,10 +4630,18 @@
       "package": "M29",
       "steps": "Steps 61, 62",
       "module_scope": "with H_L(z) = <g, (B_L D - D A_L) z>/<g, g>, R = B_L^{-1}, x = D^{-1} R g and T = H_L(x_L): at every L > 0 with lambda_odd(L) > 0, T' = H'(x) + H(x') and T'' = H''(x) + 2 H'(x') + H(x''), x' = -D^{-1} R B' r, x'' = D^{-1}(2 R B' R B' r - R B'' r); L -> H_L(z) is C^2 on (0, infinity); at T' = 0 (and T'' = 0) the stationary identities; the third derivative (Step 63) stays OPEN",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "2e32e595f37ceebfaac7c4fca4ab2b8450344a29",
+        "workflow_run": 38141356135,
+        "lean_source_inertia_check_run": 114475717910,
+        "source_falsifier_research_check_run": 114475718192,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.canonicalSecularScalar_stationary",
@@ -3898,10 +4650,18 @@
       "package": "M29",
       "steps": "Steps 61, 62",
       "module_scope": "with H_L(z) = <g, (B_L D - D A_L) z>/<g, g>, R = B_L^{-1}, x = D^{-1} R g and T = H_L(x_L): at every L > 0 with lambda_odd(L) > 0, T' = H'(x) + H(x') and T'' = H''(x) + 2 H'(x') + H(x''), x' = -D^{-1} R B' r, x'' = D^{-1}(2 R B' R B' r - R B'' r); L -> H_L(z) is C^2 on (0, infinity); at T' = 0 (and T'' = 0) the stationary identities; the third derivative (Step 63) stays OPEN",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "2e32e595f37ceebfaac7c4fca4ab2b8450344a29",
+        "workflow_run": 38141356135,
+        "lean_source_inertia_check_run": 114475717910,
+        "source_falsifier_research_check_run": 114475718192,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.integrableOn_mul_cexp_Ioi",
@@ -3910,10 +4670,18 @@
       "package": "M03",
       "steps": "M03 Laplace (no separate step row)",
       "module_scope": "int_0^inf e^{-t/2} S_{nm}(t/L) dt = (8/L)(u_n u_m - a^2 v_n v_m), a = 4 pi/L; energy form (8/L)(|sum u x|^2 - a^2 |sum v x|^2); reversal-even PSD and reversal-odd NSD rank-one restrictions",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "9ea3a4c4a0d20e0d6cd7ea16383f927fa72d984a",
+        "workflow_run": 38132218296,
+        "lean_source_inertia_check_run": 114448711253,
+        "source_falsifier_research_check_run": 114448711457,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.integral_cexp_Ioi_zero",
@@ -3922,10 +4690,18 @@
       "package": "M03",
       "steps": "M03 Laplace (no separate step row)",
       "module_scope": "int_0^inf e^{-t/2} S_{nm}(t/L) dt = (8/L)(u_n u_m - a^2 v_n v_m), a = 4 pi/L; energy form (8/L)(|sum u x|^2 - a^2 |sum v x|^2); reversal-even PSD and reversal-odd NSD rank-one restrictions",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "9ea3a4c4a0d20e0d6cd7ea16383f927fa72d984a",
+        "workflow_run": 38132218296,
+        "lean_source_inertia_check_run": 114448711253,
+        "source_falsifier_research_check_run": 114448711457,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.integral_mul_cexp_Ioi_zero",
@@ -3934,10 +4710,18 @@
       "package": "M03",
       "steps": "M03 Laplace (no separate step row)",
       "module_scope": "int_0^inf e^{-t/2} S_{nm}(t/L) dt = (8/L)(u_n u_m - a^2 v_n v_m), a = 4 pi/L; energy form (8/L)(|sum u x|^2 - a^2 |sum v x|^2); reversal-even PSD and reversal-odd NSD rank-one restrictions",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "9ea3a4c4a0d20e0d6cd7ea16383f927fa72d984a",
+        "workflow_run": 38132218296,
+        "lean_source_inertia_check_run": 114448711253,
+        "source_falsifier_research_check_run": 114448711457,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.integral_exp_neg_half_mul_sin_Ioi",
@@ -3946,10 +4730,18 @@
       "package": "M03",
       "steps": "M03 Laplace (no separate step row)",
       "module_scope": "int_0^inf e^{-t/2} S_{nm}(t/L) dt = (8/L)(u_n u_m - a^2 v_n v_m), a = 4 pi/L; energy form (8/L)(|sum u x|^2 - a^2 |sum v x|^2); reversal-even PSD and reversal-odd NSD rank-one restrictions",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "9ea3a4c4a0d20e0d6cd7ea16383f927fa72d984a",
+        "workflow_run": 38132218296,
+        "lean_source_inertia_check_run": 114448711253,
+        "source_falsifier_research_check_run": 114448711457,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.integral_exp_neg_half_mul_mul_cos_Ioi",
@@ -3958,10 +4750,18 @@
       "package": "M03",
       "steps": "M03 Laplace (no separate step row)",
       "module_scope": "int_0^inf e^{-t/2} S_{nm}(t/L) dt = (8/L)(u_n u_m - a^2 v_n v_m), a = 4 pi/L; energy form (8/L)(|sum u x|^2 - a^2 |sum v x|^2); reversal-even PSD and reversal-odd NSD rank-one restrictions",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "9ea3a4c4a0d20e0d6cd7ea16383f927fa72d984a",
+        "workflow_run": 38132218296,
+        "lean_source_inertia_check_run": 114448711253,
+        "source_falsifier_research_check_run": 114448711457,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.integrableOn_exp_neg_half_mul_sin",
@@ -3970,10 +4770,18 @@
       "package": "M03",
       "steps": "M03 Laplace (no separate step row)",
       "module_scope": "int_0^inf e^{-t/2} S_{nm}(t/L) dt = (8/L)(u_n u_m - a^2 v_n v_m), a = 4 pi/L; energy form (8/L)(|sum u x|^2 - a^2 |sum v x|^2); reversal-even PSD and reversal-odd NSD rank-one restrictions",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "9ea3a4c4a0d20e0d6cd7ea16383f927fa72d984a",
+        "workflow_run": 38132218296,
+        "lean_source_inertia_check_run": 114448711253,
+        "source_falsifier_research_check_run": 114448711457,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.integrableOn_exp_neg_half_mul_mul_cos",
@@ -3982,10 +4790,18 @@
       "package": "M03",
       "steps": "M03 Laplace (no separate step row)",
       "module_scope": "int_0^inf e^{-t/2} S_{nm}(t/L) dt = (8/L)(u_n u_m - a^2 v_n v_m), a = 4 pi/L; energy form (8/L)(|sum u x|^2 - a^2 |sum v x|^2); reversal-even PSD and reversal-odd NSD rank-one restrictions",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "9ea3a4c4a0d20e0d6cd7ea16383f927fa72d984a",
+        "workflow_run": 38132218296,
+        "lean_source_inertia_check_run": 114448711253,
+        "source_falsifier_research_check_run": 114448711457,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.integral_exp_neg_half_mul_sourceEntryReal",
@@ -3994,10 +4810,18 @@
       "package": "M03",
       "steps": "M03 Laplace (no separate step row)",
       "module_scope": "int_0^inf e^{-t/2} S_{nm}(t/L) dt = (8/L)(u_n u_m - a^2 v_n v_m), a = 4 pi/L; energy form (8/L)(|sum u x|^2 - a^2 |sum v x|^2); reversal-even PSD and reversal-odd NSD rank-one restrictions",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "9ea3a4c4a0d20e0d6cd7ea16383f927fa72d984a",
+        "workflow_run": 38132218296,
+        "lean_source_inertia_check_run": 114448711253,
+        "source_falsifier_research_check_run": 114448711457,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.integrableOn_exp_neg_half_mul_sourceEntryReal",
@@ -4006,10 +4830,18 @@
       "package": "M03",
       "steps": "M03 Laplace (no separate step row)",
       "module_scope": "int_0^inf e^{-t/2} S_{nm}(t/L) dt = (8/L)(u_n u_m - a^2 v_n v_m), a = 4 pi/L; energy form (8/L)(|sum u x|^2 - a^2 |sum v x|^2); reversal-even PSD and reversal-odd NSD rank-one restrictions",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "9ea3a4c4a0d20e0d6cd7ea16383f927fa72d984a",
+        "workflow_run": 38132218296,
+        "lean_source_inertia_check_run": 114448711253,
+        "source_falsifier_research_check_run": 114448711457,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.integral_exp_neg_half_mul_sourceEnergy",
@@ -4018,10 +4850,18 @@
       "package": "M03",
       "steps": "M03 Laplace (no separate step row)",
       "module_scope": "int_0^inf e^{-t/2} S_{nm}(t/L) dt = (8/L)(u_n u_m - a^2 v_n v_m), a = 4 pi/L; energy form (8/L)(|sum u x|^2 - a^2 |sum v x|^2); reversal-even PSD and reversal-odd NSD rank-one restrictions",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "9ea3a4c4a0d20e0d6cd7ea16383f927fa72d984a",
+        "workflow_run": 38132218296,
+        "lean_source_inertia_check_run": 114448711253,
+        "source_falsifier_research_check_run": 114448711457,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.sourceLaplaceU_neg",
@@ -4030,10 +4870,18 @@
       "package": "M03",
       "steps": "M03 Laplace (no separate step row)",
       "module_scope": "int_0^inf e^{-t/2} S_{nm}(t/L) dt = (8/L)(u_n u_m - a^2 v_n v_m), a = 4 pi/L; energy form (8/L)(|sum u x|^2 - a^2 |sum v x|^2); reversal-even PSD and reversal-odd NSD rank-one restrictions",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "9ea3a4c4a0d20e0d6cd7ea16383f927fa72d984a",
+        "workflow_run": 38132218296,
+        "lean_source_inertia_check_run": 114448711253,
+        "source_falsifier_research_check_run": 114448711457,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.sourceLaplaceV_neg",
@@ -4042,10 +4890,18 @@
       "package": "M03",
       "steps": "M03 Laplace (no separate step row)",
       "module_scope": "int_0^inf e^{-t/2} S_{nm}(t/L) dt = (8/L)(u_n u_m - a^2 v_n v_m), a = 4 pi/L; energy form (8/L)(|sum u x|^2 - a^2 |sum v x|^2); reversal-even PSD and reversal-odd NSD rank-one restrictions",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "9ea3a4c4a0d20e0d6cd7ea16383f927fa72d984a",
+        "workflow_run": 38132218296,
+        "lean_source_inertia_check_run": 114448711253,
+        "source_falsifier_research_check_run": 114448711457,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.sum_sourceLaplaceV_mul_eq_zero_of_even",
@@ -4054,10 +4910,18 @@
       "package": "M03",
       "steps": "M03 Laplace (no separate step row)",
       "module_scope": "int_0^inf e^{-t/2} S_{nm}(t/L) dt = (8/L)(u_n u_m - a^2 v_n v_m), a = 4 pi/L; energy form (8/L)(|sum u x|^2 - a^2 |sum v x|^2); reversal-even PSD and reversal-odd NSD rank-one restrictions",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "9ea3a4c4a0d20e0d6cd7ea16383f927fa72d984a",
+        "workflow_run": 38132218296,
+        "lean_source_inertia_check_run": 114448711253,
+        "source_falsifier_research_check_run": 114448711457,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.sum_sourceLaplaceU_mul_eq_zero_of_odd",
@@ -4066,10 +4930,18 @@
       "package": "M03",
       "steps": "M03 Laplace (no separate step row)",
       "module_scope": "int_0^inf e^{-t/2} S_{nm}(t/L) dt = (8/L)(u_n u_m - a^2 v_n v_m), a = 4 pi/L; energy form (8/L)(|sum u x|^2 - a^2 |sum v x|^2); reversal-even PSD and reversal-odd NSD rank-one restrictions",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "9ea3a4c4a0d20e0d6cd7ea16383f927fa72d984a",
+        "workflow_run": 38132218296,
+        "lean_source_inertia_check_run": 114448711253,
+        "source_falsifier_research_check_run": 114448711457,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.integral_exp_neg_half_mul_sourceEnergy_of_even",
@@ -4078,10 +4950,18 @@
       "package": "M03",
       "steps": "M03 Laplace (no separate step row)",
       "module_scope": "int_0^inf e^{-t/2} S_{nm}(t/L) dt = (8/L)(u_n u_m - a^2 v_n v_m), a = 4 pi/L; energy form (8/L)(|sum u x|^2 - a^2 |sum v x|^2); reversal-even PSD and reversal-odd NSD rank-one restrictions",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "9ea3a4c4a0d20e0d6cd7ea16383f927fa72d984a",
+        "workflow_run": 38132218296,
+        "lean_source_inertia_check_run": 114448711253,
+        "source_falsifier_research_check_run": 114448711457,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.integral_exp_neg_half_mul_sourceEnergy_of_odd",
@@ -4090,10 +4970,18 @@
       "package": "M03",
       "steps": "M03 Laplace (no separate step row)",
       "module_scope": "int_0^inf e^{-t/2} S_{nm}(t/L) dt = (8/L)(u_n u_m - a^2 v_n v_m), a = 4 pi/L; energy form (8/L)(|sum u x|^2 - a^2 |sum v x|^2); reversal-even PSD and reversal-odd NSD rank-one restrictions",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "9ea3a4c4a0d20e0d6cd7ea16383f927fa72d984a",
+        "workflow_run": 38132218296,
+        "lean_source_inertia_check_run": 114448711253,
+        "source_falsifier_research_check_run": 114448711457,
+        "pr_check_runs": "40 of 40 success"
+      }
     }
   ]
 }
