@@ -42,6 +42,9 @@ The machine-readable versions are:
 | M71 | `CanonicalAndreiefInertia` | `det_integral_eq_integral_det_mul_prod`, `integral_det_mul_prod_eq`, `andreiefSign_mul_det_gram_pos`, `jacobi_alternating_split`, `sourceSesq_eq_convolution`, `sourceSesq_evenCarrier_cosPow`, `sourceSesq_oddCarrier_cosPow`, `evenBoundaryFlat_source_exactInertia`, `oddBoundaryFlat_source_exactInertia`, `parityBoundaryFlat_source_indefinite` | 44, 109 |
 | M27 | `CanonicalAlternatingRootSlopes` | `det_sub_smul_eq_prod_eigenvalues`, `one_sub_canonicalSecularFunction_eq`, `canonical_secular_hasDerivAt_root`, `canonical_secular_root_slope_sign` | 59 (root slopes) |
 | M08 (abstract) | `AbstractCubicSchur` | `cubic_schur_third_deriv`, `cubic_schur_third_deriv_response`, `cubic_schur_third_nonpos_of_right_negative` | 34 (abstract part) |
+| M09, M03 (staircase) | `WeightedRemainderIdentity` | `canonicalPolePrimeDiscrepancy_eq_fixedStaircase`, `matrixRealEnergy_pole_sub_prime_eq_fixedStaircase`, `regularizedCompletePhysicalRHS_eq_weightedRemainder`, `productionArithmeticRealValue_eq_weightedRemainder`, `productionArithmeticRealValue_sq_mul_indexEnergy_eq_weightedRemainder`, `GeneratedStrictEvenContact.indexEnergyValue_eq_neg_responseCost`, `GeneratedStrictEvenContact.weightedRemainder_balance` | 32; M03 staircase |
+| M45 | `CanonicalSourceOddEndpointQuantitative` | `re_quadraticForm_sourceMatrix_le_of_mem_oddBoundaryFlat`, `re_quadraticForm_sourceMatrix_neg_of_mem_oddBoundaryFlat`, `re_quadraticForm_sourceMatrix_aperture_le_of_mem_oddBoundaryFlat`, `sourceAtomRealEnergy_le_of_le_oddEndpointAngle`, `abs_sin_sub_sub_cube_le`, `sourceOddTaylorConstant_sq` | 82 |
+| M03 (Laplace) | `SourceRankTwoLaplace` | `integral_exp_neg_half_mul_sourceEntryReal`, `integral_exp_neg_half_mul_sourceEnergy`, `integral_exp_neg_half_mul_sourceEnergy_of_even`, `integral_exp_neg_half_mul_sourceEnergy_of_odd` | M03 (no step row) |
 
 ### What these results do not say
 
@@ -132,6 +135,15 @@ The machine-readable versions are:
   order three that turns negative to the right. That sign is necessary, not
   contradictory. The arithmetic third identity for `⟨F''' z, z⟩` needs
   moving-aperture `C³` transport of the full source and stays OPEN.
+- **M09** rewrites the zero-endpoint production value as
+  `A_L[h] = ∫₀ᴸ R(e^t) h' + ∫₀ᴸ (e^{−t/2} − ρ) h` for `C¹` tests with
+  `h(0) = h(L) = 0`. It is an identity: nothing is said about the sign or size
+  of `R`. At a stationary generated strict-even contact it gives
+  `A_{L*}[t² e_{Dz}(1 − t/L*)] = −2 L*⁴ C/(2π)² ≤ 0` with `C = ⟪A w, w⟫`, and
+  the equivalent balance against `R(e^t)`. That is a necessary condition every
+  such contact satisfies, not a contradiction. Excluding a stationary contact
+  would need a positive lower bound for the same weighted `R` functional on the
+  same contact, which is OBS-060O and stays OPEN.
 
 ### Proof outline for M71
 
@@ -247,6 +259,10 @@ The details are in `FALSIFICATION_REPORT.md`.
 - **M66 radius.** The Euler form stays negative definite up to about
   `L = 0.55` (`K = 2`), falling to 0.30 (`K = 16`). The proved radius `ε_K` is
   smaller by two to four orders of magnitude.
+- **Step 28, certified.** At `K = 2`, `L = 1.2`, `z = (1,−4,6,−4,1)` the
+  historical floats are now Arb enclosures: `E(Dz) ≈ +0.2154944559 > 0` and
+  `A_L[t² e_{Dz}] ≈ −0.5224196282 < 0`. `z` is not a contact; the pair only
+  shows that ordinary odd positivity does not give weighted positivity.
 - **No even contact below `log 2`.** For `K = 2..16`, the even compressed
   ground stays positive on `(0, log 2)`. Its minimum sits at the right end and
   falls from 0.096 (`K = 2`) to 0.003 (`K = 16`).
@@ -303,14 +319,14 @@ falls into one of these classes:
 
 | Class | Rows | Comment |
 |---|---|---|
-| F04-bound | F04_PRODUCTION_DERIVATIVE_AUTHORITY, M09_WEIGHTED_REMAINDER_IDENTITY, F_M33_M34, F_M37, F_M48, F_M49_M51, F_M53_M65, F_M66 | The F04 premise is discharged at every `L > 0`. F_M53_M65, F_M66 and the F04 authority itself are proved here. The others keep their non-F04 parts open |
+| F04-bound | F04_PRODUCTION_DERIVATIVE_AUTHORITY, M09_WEIGHTED_REMAINDER_IDENTITY, F_M33_M34, F_M37, F_M48, F_M49_M51, F_M53_M65, F_M66 | The F04 premise is discharged at every `L > 0`. F_M53_M65, F_M66, M09 and the F04 authority itself are proved here. The others keep their non-F04 parts open |
 | Operator seam germs | M07, M10, M11, F_M23_M24, F_M44 | Need operator-norm Taylor majorants at frozen prime seams |
 | Classical arithmetic | F_M38, F_M55 | Proved here (M38, M55) |
 | Abstract analysis | F_M31 | Proved here as a conditional barrier (M31); the coefficient bound M32 stays OPEN |
-| Abstract algebra, provable now | M03_RANK_TWO_LAPLACE, M03_WEIGHTED_STAIRCASE_REEXPRESSION | Candidates for the next pushes |
-| Proved here | M17 (as M71, on the boundary-flat carriers for every `0 < ω ≤ 1/2`), F_M27 (simplicity, and the alternating root slopes as M27), M08_ABSTRACT_CUBIC_SCHUR (as M08; the arithmetic third identity stays OPEN) | The post-284 rows are historical and stay as they were; filtered carriers stay OPEN |
+| Abstract algebra | M03_RANK_TWO_LAPLACE, M03_WEIGHTED_STAIRCASE_REEXPRESSION | Proved here (M03_RANK_TWO_LAPLACE_TRANSFORM, M03_FIXED_STAIRCASE_REEXPRESSION) |
+| Proved here | M17 (as M71, on the boundary-flat carriers for every `0 < ω ≤ 1/2`), F_M27 (simplicity, and the alternating root slopes as M27), M08_ABSTRACT_CUBIC_SCHUR (as M08; the arithmetic third identity stays OPEN), M16 (subsumed by M71 at every `0 < ω ≤ 1/2`), F_M45 (as M45, with the plan's angle and constant) | The post-284 rows are historical and stay as they were; filtered carriers stay OPEN |
 | Partly addressed here | M18 (first passage), F_M21 (phase identity), F_M46 (constant 4), F_M58_M63 (phase lock), F_M28 (overlap identity and sign), M14 (odd-first and tied algebra) | See the cross-references |
-| Research or contact-conditioned | M03_TWO_SCALAR, M13, M16, F_M22, F_M25, F_M29, F_M32, F_M39, F_M45, F_M56_M57, F_M68, OBS060O | No viable proof route identified in this PR |
+| Research or contact-conditioned | M03_TWO_SCALAR, M13, F_M22, F_M25, F_M29, F_M32, F_M39, F_M56_M57, F_M68, OBS060O | No viable proof route identified in this PR |
 | Provenance | OAI_SEVEN_EIGHTHS_LOCAL_IMPORT | Audit only |
 | Terminal | RH | RH_OPEN |
 

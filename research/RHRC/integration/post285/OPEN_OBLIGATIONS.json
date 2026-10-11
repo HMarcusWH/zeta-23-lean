@@ -187,6 +187,41 @@
       "detail": "cubic_schur_third_deriv: for C^3 families a, b, H (real inner product space; complex Hermitian through Re<.,.>) with H(t0) invertible, R = H(t0)^-1 and b(t0) = 0, s = a - <b, H^-1 b> has s'''(t0) = a''' - 3<b', R b''> - 3<b'', R b'> + 6<b', R H' R b'>. cubic_schur_third_deriv_response: for symmetric H(t0), s''' = a''' - 6<b', R b''> + 6<R b', H' R b'> = a''' + 6<b'', w> + 6<H' w, w> with w = -R b'. cubic_schur_third_nonpos_of_right_negative: a zero of order three that turns negative to the right has s''' <= 0 (necessary only)."
     },
     {
+      "id": "M09_ZERO_ENDPOINT_WEIGHTED_REMAINDER",
+      "package": "M09",
+      "steps": "32",
+      "status": "PROVED_PENDING_CI",
+      "detail": "regularizedCompletePhysicalRHS_eq_weightedRemainder (integrability premises explicit) and the C^1 forms productionArithmeticComplexValue_eq_weightedRemainder / productionArithmeticRealValue_eq_weightedRemainder: for h(0) = h(L) = 0, A_L[h] = int_0^L R(e^t) h'(t) dt + int_0^L (e^{-t/2} - rho(t)) h(t) dt with R(x) = sum_{n <= x} Lambda(n)/sqrt n - 2 sqrt x. Finite summation by parts on the prime staircase plus one integration by parts on the pole main term. The endpoint h(0) = 0 removes the M05 scalar correction; nonzero-endpoint energies keep it. productionArithmeticRealValue_sq_mul_indexEnergy_eq_weightedRemainder specializes to t^2 e_{Dz}(1 - t/L)."
+    },
+    {
+      "id": "M09_CONTACT_WEIGHTED_BALANCE",
+      "package": "M09",
+      "steps": "32",
+      "status": "PROVED_PENDING_CI",
+      "detail": "GeneratedStrictEvenContact.indexEnergyValue_eq_neg_responseCost / indexEnergyValue_nonpos / weightedRemainder_balance: at a stationary generated strict-even contact (simple even kernel, positive odd complement, normalized z, stationary response w with A w = -A' z) A_{L*}[t^2 e_{Dz}(1 - t/L*)] = -2 L*^4 C/(2 pi)^2 <= 0 with C = <A w, w> >= 0, and the same value equals int R(e^t)(2t e_{Dz} - (t^2/L*) e'_{Dz}) + int (e^{-t/2} - rho) t^2 e_{Dz}. Uses F04 at every L > 0 (CanonicalGlobalF04, pending CI). A necessary condition, not a contradiction; no sign of R is used."
+    },
+    {
+      "id": "M03_FIXED_STAIRCASE_REEXPRESSION",
+      "package": "M03",
+      "steps": "M03 (no separate step row)",
+      "status": "PROVED_PENDING_CI",
+      "detail": "canonicalPolePrimeDiscrepancy_eq_fixedStaircase: for t <= L the canonical pole-prime discrepancy is D(t) = 4 sinh(t/2) - B(t) with the aperture-free staircase B(t) = weightedVonMangoldtSqrtSum (e^t) (right-continuous: q counted at log q <= t; zero-von-Mangoldt integers contribute nothing). matrixRealEnergy_pole_sub_prime_eq_fixedStaircase: the pole-minus-prime energy is (1/L) int_0^L D(t) e'_u(1 - t/L) dt in the existing normalization. Reuses CanonicalPrimeRemainder and CanonicalPolePrimeDiscrepancy; no new staircase object."
+    },
+    {
+      "id": "M03_RANK_TWO_LAPLACE_TRANSFORM",
+      "package": "M03",
+      "steps": "M03 (no separate step row)",
+      "status": "PROVED_PENDING_CI",
+      "detail": "integral_exp_neg_half_mul_sourceEntryReal: for L > 0 and all centered n, m (diagonal and off-diagonal), int_0^inf e^{-t/2} S_{nm}(t/L) dt = (8/L)(u_n u_m - a^2 v_n v_m) with a = 4 pi/L, u_n = 1/(1 + a^2 n^2), v_n = n/(1 + a^2 n^2). integral_exp_neg_half_mul_sourceEnergy: the weighted energy of complex coefficients x is (8/L)(|sum u_i x_i|^2 - a^2 |sum v_i x_i|^2). _of_even / _of_odd: reversal-even x give (8/L)|sum u x|^2 >= 0, reversal-odd x give -(8/L) a^2 |sum v x|^2 <= 0. Improper integrals via e^{ct} and t e^{ct} with c = -1/2 + i beta. Semidefinite rank-one restrictions of a model transform, not definiteness and not the canonical energy."
+    },
+    {
+      "id": "M45_ODD_ENDPOINT_QUANTITATIVE",
+      "package": "M45",
+      "steps": "82",
+      "status": "PROVED_PENDING_CI",
+      "detail": "re_quadraticForm_sourceMatrix_le_of_mem_oddBoundaryFlat: for u in oddBoundaryFlatSubspace K and 0 <= omega with (2 pi omega)^2 B(u) <= 5 |M_3(u)|, B(u) = sum |n|^5 |u_n|, Re e_u(omega) <= -(pi^6/90) |M_3(u)|^2 omega^7 on the actual sourceMatrix (complex coefficients). Strict form for M_3(u) != 0 and omega > 0; aperture form Re e_u(a/2pi) <= -7 m^2 a^7/(80640 pi). sourceAtomRealEnergy_le_of_le_oddEndpointAngle: the same on sourceAtomRealEnergy for 0 <= omega <= theta(x) = (1/2pi) sqrt(5|M_3|/(A_K ||x||)), with A_K^2 = 2 sum_{n=1}^K n^10 (sourceOddTaylorConstant_sq) and B(u) <= A_K ||u|| (sourceOddTaylorWeight_le). Elementary source statement only: no contact transfer (M46 theta_*), no prime estimate, no sign of the canonical arithmetic test."
+    },
+    {
       "id": "M08_ARITHMETIC_THIRD_IDENTITY",
       "package": "M08",
       "steps": "34",
@@ -268,7 +303,11 @@
     },
     {
       "post284_id": "F_M49_M51_NEAR_EDGE_AND_OLDER_PRIME",
-      "effect": "F04 dependency discharged; M45 dependency unchanged"
+      "effect": "F04 dependency discharged; the M45 elementary source bound is proved here (M45_ODD_ENDPOINT_QUANTITATIVE, pending CI); the contact angle theta_* and the near-edge and older-prime estimates are not formalized"
+    },
+    {
+      "post284_id": "F_M45_ODD_ENDPOINT_QUANTITATIVE",
+      "effect": "proved here (M45_ODD_ENDPOINT_QUANTITATIVE, pending CI) on the actual sourceMatrix and sourceAtomRealEnergy, with the plan's angle theta(u) and constant pi^6/90"
     },
     {
       "post284_id": "F_M37_LOCAL_EXCLUSION",
@@ -280,7 +319,19 @@
     },
     {
       "post284_id": "M09_WEIGHTED_REMAINDER_IDENTITY",
-      "effect": "F04-conditional contact-weighted balance unconditional at every L > 0 (canonicalSecondPairing_euler_eq_productionSaturationGap_of_pos); summation-by-parts identity unchanged"
+      "effect": "proved here (M09_ZERO_ENDPOINT_WEIGHTED_REMAINDER, M09_CONTACT_WEIGHTED_BALANCE, pending CI); the contact-weighted balance uses F04 at every L > 0 and is a necessary condition, not an exclusion"
+    },
+    {
+      "post284_id": "M03_WEIGHTED_STAIRCASE_REEXPRESSION",
+      "effect": "proved here (M03_FIXED_STAIRCASE_REEXPRESSION, pending CI)"
+    },
+    {
+      "post284_id": "M16_SMALL_OMEGA_LEGAL_FORM_INDEFINITENESS",
+      "effect": "subsumed here by M71: parityBoundaryFlat_source_indefinite gives positive and negative even and odd boundary-flat vectors at every 0 < omega <= 1/2 for K >= 3 (pending CI); the K3 moving-vector coefficients stay exact controls"
+    },
+    {
+      "post284_id": "M03_RANK_TWO_LAPLACE",
+      "effect": "proved here (M03_RANK_TWO_LAPLACE_TRANSFORM, pending CI); the post-284 F07 regression (5e-29) stays the numerical check"
     },
     {
       "post284_id": "F_M27_ALTERNATING_SLOPES",

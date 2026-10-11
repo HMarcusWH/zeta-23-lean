@@ -152,6 +152,41 @@
       "package": "M08_CONTROLS",
       "disposition": "NEGATIVE_CONTROL_FAILS_AS_EXPECTED",
       "summary": "C1: coefficient 3 instead of 6 on <b', R H' R b'> fails on all 18 families; C2: b(t0) != 0 breaks the formula on all 12 real families; C3: with s = s' = s'' = 0 at t0, s''' = 1 gives s > 0 and s''' = -1 gives s < 0 just to the right, matching the necessary sign"
+    },
+    {
+      "id": "X285_M09_IDENTITY",
+      "script": "post285_m09_weighted_remainder_falsifier.py",
+      "package": "M09_ZERO_ENDPOINT_WEIGHTED_REMAINDER",
+      "disposition": "EXACT_THEOREM_REGRESSION_PASS",
+      "summary": "at 30 digits the direct pole/arch/prime value A_L[h] equals int R(e^t) h' + int (e^{-t/2} - rho) h on 50 cases (relative residual < 1e-28): complex polynomial tests t(L - t)p(t) and the contact form t^2 e(1 - t/L) with the Lean derivative, at ten apertures including L < log 2, the seam log 2 and points just past log 4 and log 7"
+    },
+    {
+      "id": "X285_M09_CONTROLS",
+      "script": "post285_m09_weighted_remainder_falsifier.py",
+      "package": "M09_CONTROLS",
+      "disposition": "NEGATIVE_CONTROL_FAILS_AS_EXPECTED",
+      "summary": "C1: h(L) != 0 misses by exactly R(e^L) h(L); C2: dropping the main term 2 sqrt x misses by exactly -int e^{t/2} h; C3: dropping the chain-rule factor -1/L in the contact derivative gives a nonzero miss"
+    },
+    {
+      "id": "X285_M45_BOUND",
+      "script": "post285_m45_odd_endpoint_falsifier.py",
+      "package": "M45_ODD_ENDPOINT_QUANTITATIVE",
+      "disposition": "EXACT_THEOREM_REGRESSION_PASS",
+      "summary": "Arb (256-bit) certifies -Re e_u(omega) - (pi^6/90) |M_3|^2 omega^7 > 0 at 232 cells: 29 Gaussian-integer legal odd vectors (K = 2..8, including the K = 2 generator) at eight rational apertures up to the B-angle, the aperture hypothesis itself certified; minimum ratio 1.996. At 40 digits the sine Taylor bound, the remainder bound |T_u + M_3 t^3/6| <= B |t|^5/120, the beta integral a^7/140 and B <= A_K ||u|| hold; the ratio tends to 16/7 as omega -> 0, so pi^6/90 is sharp up to the 7/16 product factor"
+    },
+    {
+      "id": "X285_M45_CONTROLS",
+      "script": "post285_m45_odd_endpoint_falsifier.py",
+      "package": "M45_CONTROLS",
+      "disposition": "NEGATIVE_CONTROL_FAILS_AS_EXPECTED",
+      "summary": "C1: the constant (16/7)(1 + 1e-3) pi^6/90 fails at omega = 1e-4; C2: without the aperture restriction the K = 2 generator has e(1) = 20 > 0 (certified); C3: dropping oddness (adding an even part with M_2 = 4, keeping M_1 = 0 and M_3 = 12) makes Re e > 0 at small omega; C4: with M_3 = 0 (K = 3 fifth-moment witness) -e/omega^7 -> 0, so no positive omega^7 bound exists without m > 0"
+    },
+    {
+      "id": "X285_M12_STEP28_CERTIFIED",
+      "script": "post285_m09_weighted_remainder_falsifier.py",
+      "package": "M12_STEP28_REPLAY",
+      "disposition": "CERTIFIED_DISCOVERY_REPLAY",
+      "summary": "the historical Step 28 float values are now Arb-certified at K = 2, L = 1.2, z = (1,-4,6,-4,1), Dz = (-2,4,0,-4,2): E(Dz) in [0.2154944559 +/- 4e-11] > 0 (M05 regularized value) and A_L[t^2 e_{Dz}(1 - t/L)] in [-0.52241962817044517287 +/- 2e-21] < 0; both historical 8-digit values lie within 5e-9. z is not an actual contact: this certifies only that positive ordinary odd energy does not force a positive weighted value (gate G-WEIGHTED). Supersedes the post-284 X12_HISTORICAL_STEP28 status UNKNOWN_NOT_REPLAYED"
     }
   ]
 }

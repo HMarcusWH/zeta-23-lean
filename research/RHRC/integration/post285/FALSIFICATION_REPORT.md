@@ -6,7 +6,7 @@ evidence. Theorem authority comes only from the Lean roots listed in
 
 ## Scripts
 
-All eight scripts live in `research/RHRC/routes/R003_ccm_bridge/post285/` and
+All ten scripts live in `research/RHRC/routes/R003_ccm_bridge/post285/` and
 run in the `source-falsifier-research` job of
 `.github/workflows/rhrc_post284_source_inertia.yml`. Each one runs in seconds.
 
@@ -20,6 +20,8 @@ run in the `source-falsifier-research` job of
 | `post285_m71_andreief_falsifier.py` | M71 | Pass (Arb-certified signs), with both aperture controls failing as predicted |
 | `post285_m27_root_slope_falsifier.py` | M27 | Pass, with both negative controls failing as predicted |
 | `post285_m08_cubic_schur_falsifier.py` | M08 | Exact pass, with all three controls behaving as predicted |
+| `post285_m09_weighted_remainder_falsifier.py` | M09, M12 (Step 28) | Pass at 30 digits, with all three controls failing as predicted; Step 28 values Arb-certified |
+| `post285_m45_odd_endpoint_falsifier.py` | M45 | Arb-certified at 232 cells, with all four controls failing as predicted |
 
 ## M74: canonical secular resolvent
 
@@ -242,6 +244,69 @@ the exact third Taylor coefficient of `s = a − b* H⁻¹ b`.
   12 real families. C3 builds `s = s' = s'' = 0` with `s''' = ±1`: `s` is
   positive just to the right for `+1` and negative for `−1`, as the necessary
   sign predicts.
+
+## M09: zero-endpoint weighted remainder identity (Step 32)
+
+`post285_m09_weighted_remainder_falsifier.py` works at 30 digits with mpmath. It
+computes `A_L[h]` directly from its pole, archimedean and prime channels and
+compares it with `∫ R(e^t) h' + ∫ (e^{−t/2} − ρ) h`, integrating the staircase
+cell by cell.
+
+- **Identity.** 50 cases agree to a relative residual below `1e−28`. The tests
+  are complex polynomial tests `t(L − t)p(t)` and the contact form
+  `t² e(1 − t/L)` with the derivative used in Lean. The ten apertures include
+  `L < log 2`, the seam `log 2`, and points just past `log 4` and `log 7`. A
+  synthetic smooth `e` with `e(0) = 0` stands in for `e_{Dz}`, since the
+  identity uses only `C¹` regularity and `e(0) = 0`.
+- **Controls.** C1 keeps `h(0) = 0` but lets `h(L) ≠ 0`, and misses by exactly
+  `R(e^L) h(L)`. C2 drops the main term `2√x` and misses by exactly
+  `−∫ e^{t/2} h`. C3 drops the chain-rule factor `−1/L` in the contact derivative
+  and misses by a nonzero amount.
+
+The contact-weighted sign `A_{L*}[t² e_{Dz}] = −2 L*⁴ C/(2π)² ≤ 0` is a
+theorem about generated contacts. No generated contact is known, so it is not
+exercised numerically.
+
+**Step 28 replay, certified.** The same script encloses the two historical Step
+28 float values with Arb at 128 bits (`K = 2`, `L = 1.2`, `z = (1,−4,6,−4,1)`,
+`Dz = (−2,4,0,−4,2)`):
+
+- `E(Dz) ∈ [0.2154944559 ± 4e−11]`, certified positive. This is the M05
+  regularized value, which a theorem equates with the canonical energy. On
+  `[0, 1e−12]` the archimedean integrand is bounded through `|N(t)| ≤ t sup|N'|`.
+- `A_L[t² e_{Dz}(1 − t/L)] ∈ [−0.52241962817044517287 ± 2e−21]`, certified
+  negative.
+
+Both historical 8-digit values lie inside `5e−9` of these enclosures. The vector
+`z` is not an actual contact. The pair certifies only that positive ordinary odd
+energy does not force a positive weighted value (gate G-WEIGHTED). The post-284
+row X12 recorded these values as not replayed.
+
+## M45: quantitative odd endpoint source bound (Step 82)
+
+`post285_m45_odd_endpoint_falsifier.py` evaluates the elementary source energy
+in Arb at 256 bits.
+
+- **Bound.** For 29 Gaussian-integer legal odd vectors (`K = 2..8`, including
+  the `K = 2` generator `(−1,2,0,−2,1)`), at eight rational apertures each up to
+  the angle `(1/2π)√(5|M₃|/B(u))`, Arb certifies
+  `−Re e_u(ω) − (π⁶/90)|M₃|²ω⁷ > 0` at all 232 cells. The aperture hypothesis
+  is certified too. The smallest ratio `−e/((π⁶/90)|M₃|²ω⁷)` is 1.996.
+- **Ingredients.** At 40 digits: the sine bound
+  `|sin x − x + x³/6| ≤ |x|⁵/120`, the remainder bound
+  `|T_u(t) + M₃t³/6| ≤ B(u)|t|⁵/120`, the integral `∫₀ᵃ t³(a−t)³ = a⁷/140`, and
+  `B(u) ≤ A_K‖u‖` with `A_K² = 2Σn¹⁰`.
+- **Sharpness.** The ratio tends to `16/7` as `ω → 0`. So `π⁶/90` is sharp up to
+  the factor `16/7` that the `7/16` product bound costs.
+- **Controls.** C1: the constant `(16/7)(1 + 10⁻³)π⁶/90` fails at `ω = 10⁻⁴`.
+  C2: without the angle the bound fails, since the `K = 2` generator has
+  `e(1) = 20 > 0` (certified). C3: dropping oddness while keeping `M₁ = 0` and
+  `M₃ = 12` (an even part with `M₂ = 4` added) makes `Re e > 0` at small `ω`.
+  C4: with `M₃ = 0` (the `K = 3` fifth-moment witness), `−e/ω⁷ → 0`, so no
+  positive `ω⁷` bound exists without `m > 0`.
+
+This is an elementary source statement. It is not a sign of the canonical
+arithmetic test, and the contact angle `θ_*` (M46) is not checked here.
 
 ## Inherited regressions kept running
 

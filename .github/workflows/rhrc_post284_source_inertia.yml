@@ -59,7 +59,10 @@ jobs:
             Zeta23.CCM.CanonicalSecularGronwall \
             Zeta23.CCM.CanonicalAndreiefInertia \
             Zeta23.CCM.CanonicalAlternatingRootSlopes \
-            Zeta23.CCM.AbstractCubicSchur
+            Zeta23.CCM.AbstractCubicSchur \
+            Zeta23.CCM.WeightedRemainderIdentity \
+            Zeta23.CCM.SourceRankTwoLaplace \
+            Zeta23.CCM.CanonicalSourceOddEndpointQuantitative
           do
             if lake build "$target"; then
               echo "$target PASS" | tee -a /tmp/post284-targets.txt
@@ -101,7 +104,10 @@ jobs:
             Zeta23/CCM/CanonicalSecularGronwall.lean \
             Zeta23/CCM/CanonicalAndreiefInertia.lean \
             Zeta23/CCM/CanonicalAlternatingRootSlopes.lean \
-            Zeta23/CCM/AbstractCubicSchur.lean
+            Zeta23/CCM/AbstractCubicSchur.lean \
+            Zeta23/CCM/WeightedRemainderIdentity.lean \
+            Zeta23/CCM/SourceRankTwoLaplace.lean \
+            Zeta23/CCM/CanonicalSourceOddEndpointQuantitative.lean
       - name: Reject proof escapes on the promoted surface
         run: python research/RHRC/closure_batch/check_lean_proof_escapes.py --scope promoted
       - uses: actions/upload-artifact@v4
@@ -187,6 +193,14 @@ jobs:
         run: |
           python research/RHRC/routes/R003_ccm_bridge/post285/post285_m08_cubic_schur_falsifier.py \
             --output /tmp/POST285_M08_CUBIC_SCHUR_FALSIFIER.json > /dev/null
+      - name: Post-285 M09 zero-endpoint weighted remainder identity and controls
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/post285/post285_m09_weighted_remainder_falsifier.py \
+            --output /tmp/POST285_M09_WEIGHTED_REMAINDER_FALSIFIER.json > /dev/null
+      - name: Post-285 M45 odd endpoint source bound (Arb) and controls
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/post285/post285_m45_odd_endpoint_falsifier.py \
+            --output /tmp/POST285_M45_ODD_ENDPOINT_FALSIFIER.json > /dev/null
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -203,3 +217,5 @@ jobs:
             /tmp/POST285_M71_ANDREIEF_FALSIFIER.json
             /tmp/POST285_M27_ROOT_SLOPE_FALSIFIER.json
             /tmp/POST285_M08_CUBIC_SCHUR_FALSIFIER.json
+            /tmp/POST285_M09_WEIGHTED_REMAINDER_FALSIFIER.json
+            /tmp/POST285_M45_ODD_ENDPOINT_FALSIFIER.json
