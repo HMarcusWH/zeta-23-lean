@@ -48,18 +48,18 @@
   },
   "inherits_runtime_qualification": false,
   "input_snapshot": {
-    "candidate_count": 3647,
-    "candidate_resolution_sha256": "0b77301bc29ce8485e4bd342c786119c9da40b8a0f822d40ad02ce8817124753",
-    "candidate_source_surface_sha256": "9f25eba3001301f17d7761f24ff34030804554bd5afab2656fdc9b37f29166d8",
-    "candidate_summary_sha256": "6ebbcd421c25ad2f71e3419e3cdaa2e9b48b1627d67d1cbffc38d0071e6277dc",
+    "candidate_count": 3666,
+    "candidate_resolution_sha256": "91763f4aed2265b9b27d184da9098180be4ace4dbd0398ede84a7bdf8a73b9bc",
+    "candidate_source_surface_sha256": "c097daadea1dcf8650748f41f59331695d1e40812b32c47ac0f0f7993b389a2f",
+    "candidate_summary_sha256": "aa125317c241bdd6fcbb5db113e3400e19bfe8a419534987eb45724831dd26a8",
     "lean_toolchain": "leanprover/lean4:v4.33.0-rc2",
     "registered_compiler_receipt_sha256": "360eb869e892e1219d2e3dfd532c44681e3009603017dd65562386d7e6a1523f",
-    "rhkg_subject_digest_sha256": "5a638741148ecc890baebfab86b5f972122fe7466a2f7f9830937ffef5190294",
-    "source_only_public_theorem_count": 1459
+    "rhkg_subject_digest_sha256": "d8959c9b88c90e999c72827801db8012765d8376092d6e783fe129dc0ed41bf0",
+    "source_only_public_theorem_count": 1478
   },
   "qualification_identity": {
-    "execution_digest": "5ead5deb12d48267561cb67bcb45b734e46fafe22122f1bd7d1ae1a7412bb8d0",
-    "execution_id": "RHKG_CANDIDATE_SNAPSHOT:5a638741148ecc89",
+    "execution_digest": "2f580065887839289fcfb084118229085ffe42bece1050eb70855f0f97c90403",
+    "execution_id": "RHKG_CANDIDATE_SNAPSHOT:d8959c9b88c90e99",
     "profile_digest": "0ab841ca4f9c683bcf206c0cd2e434f07f35b3861073feb370f10195cac49929",
     "profile_id": "RHRC_FFBBP_V17_RHKG_SNAPSHOT_PROFILE",
     "protocol_digest": "30fd49aa7806e29ea8ce750cb91ad0f9edb3d655b9697f6a6dd82d3666a4ac26",
@@ -76,7 +76,7 @@
         "status": "FAIL"
       },
       "decision_factorization": {
-        "collision_fiber_count": 380,
+        "collision_fiber_count": 381,
         "counterexamples": [
           {
             "member_ids": [
@@ -672,8 +672,8 @@
             ]
           }
         ],
-        "fiber_count": 410,
-        "full_state_count": 3647,
+        "fiber_count": 411,
+        "full_state_count": 3666,
         "max_fiber_size": 69,
         "mixed_value_fiber_count": 174,
         "passed": false
@@ -681,7 +681,7 @@
       "declared_use": "NEGATIVE_CONTROL_ONLY",
       "description": "Module-only Xi; retained as the exact decision-sufficiency falsifier.",
       "diagnostic_factorization": {
-        "collision_fiber_count": 380,
+        "collision_fiber_count": 381,
         "counterexamples": [
           {
             "member_ids": [
@@ -1260,8 +1260,8 @@
             ]
           }
         ],
-        "fiber_count": 410,
-        "full_state_count": 3647,
+        "fiber_count": 411,
+        "full_state_count": 3666,
         "max_fiber_size": 69,
         "mixed_value_fiber_count": 221,
         "passed": false
@@ -1278,10 +1278,10 @@
         "status": "PASS"
       },
       "decision_factorization": {
-        "collision_fiber_count": 492,
+        "collision_fiber_count": 493,
         "counterexamples": [],
-        "fiber_count": 707,
-        "full_state_count": 3647,
+        "fiber_count": 708,
+        "full_state_count": 3666,
         "max_fiber_size": 67,
         "mixed_value_fiber_count": 0,
         "passed": true
@@ -1289,10 +1289,10 @@
       "declared_use": "POST_REFERENCE_COHORT_NAVIGATION_ONLY",
       "description": "Retains module and exact visibility disposition for post-reference cohort navigation.",
       "diagnostic_factorization": {
-        "collision_fiber_count": 492,
+        "collision_fiber_count": 493,
         "counterexamples": [],
-        "fiber_count": 707,
-        "full_state_count": 3647,
+        "fiber_count": 708,
+        "full_state_count": 3666,
         "max_fiber_size": 67,
         "mixed_value_fiber_count": 0,
         "passed": true
@@ -1349,8 +1349,8 @@
             ]
           }
         ],
-        "fiber_count": 3612,
-        "full_state_count": 3647,
+        "fiber_count": 3631,
+        "full_state_count": 3666,
         "max_fiber_size": 4,
         "mixed_value_fiber_count": 3,
         "passed": false
@@ -1472,8 +1472,8 @@
             ]
           }
         ],
-        "fiber_count": 3612,
-        "full_state_count": 3647,
+        "fiber_count": 3631,
+        "full_state_count": 3666,
         "max_fiber_size": 4,
         "mixed_value_fiber_count": 10,
         "passed": false
@@ -1493,7 +1493,7 @@
   "schema_version": "RHRC-FFBBP-RHKG-assurance-report-2.0",
   "selected_reduction": "MODULE_VISIBILITY_SNAPSHOT",
   "selected_reduction_disposition": "PASS_FOR_POST_REFERENCE_COHORT_NAVIGATION_ONLY",
-  "source_only_module_cohort_count": 293,
+  "source_only_module_cohort_count": 294,
   "source_only_module_cohorts": [
     {
       "count": 67,
@@ -1862,6 +1862,31 @@
         "Zeta23.CCM.production_stationary_schur_curvature_eq_zero"
       ],
       "module": "Zeta23.CCM.FirstCrossingGeneratedStrictEvenFrontier"
+    },
+    {
+      "count": 19,
+      "declarations": [
+        "Zeta23.CCM.canonicalSecularScalar_eq",
+        "Zeta23.CCM.canonicalSecularScalar_hasDerivAt",
+        "Zeta23.CCM.canonicalSecularScalar_stationary",
+        "Zeta23.CCM.cubicDefectFunctional_contDiffOn",
+        "Zeta23.CCM.cubicDefectFunctional_hasDerivAt",
+        "Zeta23.CCM.hasDerivAt_complexCLM_apply_real",
+        "Zeta23.CCM.hasDerivAt_ringInverse_apply_const",
+        "Zeta23.CCM.hasDerivAt_ringInverse_complexCLM",
+        "Zeta23.CCM.hasDerivAt_secularDefectScalar",
+        "Zeta23.CCM.hasDerivAt_secularDefectScalar_const",
+        "Zeta23.CCM.hasDerivAt_secularRayFamily",
+        "Zeta23.CCM.hasDerivAt_secularRayFirst",
+        "Zeta23.CCM.hasDerivAt_secularScalarFamily",
+        "Zeta23.CCM.hasDerivAt_secularScalarFirst",
+        "Zeta23.CCM.isUnit_canonicalOddFamily",
+        "Zeta23.CCM.secularDefectScalar_canonical",
+        "Zeta23.CCM.secularDefectScalar_zero",
+        "Zeta23.CCM.secularRayFamily_canonical",
+        "Zeta23.CCM.secularScalar_stationary"
+      ],
+      "module": "Zeta23.CCM.CanonicalSourceResolventDerivatives"
     },
     {
       "count": 19,
@@ -4721,7 +4746,7 @@
     "ALREADY_IN_REGISTERED_DEPENDENCY_CLOSURE": 1774,
     "ALREADY_REGISTERED_ROOT": 109,
     "PRIVATE_OR_INTERNAL_SOURCE_OBJECT": 302,
-    "SOURCE_ONLY_PUBLIC_THEOREM": 1459,
+    "SOURCE_ONLY_PUBLIC_THEOREM": 1478,
     "UNRESOLVED_SOURCE_IDENTITY": 3
   }
 }

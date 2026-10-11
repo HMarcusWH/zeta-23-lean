@@ -1505,6 +1505,21 @@
     },
     {
       "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/CCM/CanonicalSourceResolventDerivatives.lean",
+      "module": "Zeta23.CCM.CanonicalSourceResolventDerivatives",
+      "module_id": "rh:module:Zeta23.CCM.CanonicalSourceResolventDerivatives",
+      "named_source_declaration_count": 40,
+      "path": "Zeta23/CCM/CanonicalSourceResolventDerivatives.lean",
+      "reachability": "ENTRYPOINT_REACHABLE",
+      "reachable_from": [
+        "Zeta23.CCM"
+      ],
+      "registered_root_count": 0,
+      "standalone_role": null,
+      "trust_zone": "RH_FORMAL_CORE"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 0,
       "file_id": "rh:file:Zeta23/CCM/CanonicalSourceRieszEnergy.lean",
       "module": "Zeta23.CCM.CanonicalSourceRieszEnergy",
       "module_id": "rh:module:Zeta23.CCM.CanonicalSourceRieszEnergy",
@@ -12068,7 +12083,7 @@
       "trust_zone": "AUXILIARY_FORMALIZATION"
     }
   ],
-  "entry_count": 768,
+  "entry_count": 769,
   "graph_theorem_promotion": false,
   "schema_version": "RHKG-final-module-closure-1.0",
   "scope": "ALL_LOCAL_LEAN_MODULES",

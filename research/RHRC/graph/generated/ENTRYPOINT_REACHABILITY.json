@@ -91,6 +91,7 @@
     "Zeta23.CCM.CanonicalSourceOddEndpointQuantitative",
     "Zeta23.CCM.CanonicalSourcePairing",
     "Zeta23.CCM.CanonicalSourcePrimeSampling",
+    "Zeta23.CCM.CanonicalSourceResolventDerivatives",
     "Zeta23.CCM.CanonicalSourceRieszEnergy",
     "Zeta23.CCM.CanonicalSourceSpectralFlow",
     "Zeta23.CCM.CanonicalSourceWeightedIntegral",
