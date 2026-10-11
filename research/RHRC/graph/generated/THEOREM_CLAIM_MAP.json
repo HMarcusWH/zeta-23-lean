@@ -580,6 +580,22 @@
     },
     {
       "binding_source": "research/RHRC/REGISTERED_THEOREM_BINDINGS.json",
+      "claim_id": "R003_COMPLETED_STRICT_EVEN_CONTACT_FRONTIER",
+      "claim_node_id": "rh:claim:R003_COMPLETED_STRICT_EVEN_CONTACT_FRONTIER",
+      "claim_status": "PROVED_UNCONDITIONAL",
+      "compiler_binding_source": "Zeta23/RHRC/RegisteredClaimBindings.lean",
+      "declaration_id": "rh:decl:Zeta23.CCM.GeneratedStrictEvenContact.completed_production_frontier_unconditional",
+      "historical_r003_promoted": true,
+      "module": "Zeta23.CCM.CanonicalLocalBirdfishie",
+      "module_id": "rh:module:Zeta23.CCM.CanonicalLocalBirdfishie",
+      "provenance": "REGISTRY_EXACT",
+      "route": "R003_ccm_bridge",
+      "source_file_id": "rh:file:Zeta23/CCM/CanonicalLocalBirdfishie.lean",
+      "source_path": "Zeta23/CCM/CanonicalLocalBirdfishie.lean",
+      "theorem": "Zeta23.CCM.GeneratedStrictEvenContact.completed_production_frontier_unconditional"
+    },
+    {
+      "binding_source": "research/RHRC/REGISTERED_THEOREM_BINDINGS.json",
       "claim_id": "R003_COMPRESSED_PRODUCTION_C2",
       "claim_node_id": "rh:claim:R003_COMPRESSED_PRODUCTION_C2",
       "claim_status": "PROVED_UNCONDITIONAL",
@@ -1492,6 +1508,22 @@
     },
     {
       "binding_source": "research/RHRC/REGISTERED_THEOREM_BINDINGS.json",
+      "claim_id": "R003_PRODUCTION_F04_DERIVATIVE_AUTHORITY",
+      "claim_node_id": "rh:claim:R003_PRODUCTION_F04_DERIVATIVE_AUTHORITY",
+      "claim_status": "PROVED_UNCONDITIONAL",
+      "compiler_binding_source": "Zeta23/RHRC/RegisteredClaimBindings.lean",
+      "declaration_id": "rh:decl:Zeta23.CCM.productionContactF04DerivativeAuthority_of_pos",
+      "historical_r003_promoted": true,
+      "module": "Zeta23.CCM.CanonicalGlobalF04",
+      "module_id": "rh:module:Zeta23.CCM.CanonicalGlobalF04",
+      "provenance": "REGISTRY_EXACT",
+      "route": "R003_ccm_bridge",
+      "source_file_id": "rh:file:Zeta23/CCM/CanonicalGlobalF04.lean",
+      "source_path": "Zeta23/CCM/CanonicalGlobalF04.lean",
+      "theorem": "Zeta23.CCM.productionContactF04DerivativeAuthority_of_pos"
+    },
+    {
+      "binding_source": "research/RHRC/REGISTERED_THEOREM_BINDINGS.json",
       "claim_id": "R003_RESIDUAL_C2",
       "claim_node_id": "rh:claim:R003_RESIDUAL_C2",
       "claim_status": "PROVED_UNCONDITIONAL",
@@ -1748,6 +1780,22 @@
     },
     {
       "binding_source": "research/RHRC/REGISTERED_THEOREM_BINDINGS.json",
+      "claim_id": "R003_WEIGHTED_PRODUCTION_PAIR_BALANCE",
+      "claim_node_id": "rh:claim:R003_WEIGHTED_PRODUCTION_PAIR_BALANCE",
+      "claim_status": "PROVED_UNCONDITIONAL",
+      "compiler_binding_source": "Zeta23/RHRC/RegisteredClaimBindings.lean",
+      "declaration_id": "rh:decl:Zeta23.CCM.canonicalSecondPairing_euler_eq_productionSaturationGap_of_pos",
+      "historical_r003_promoted": true,
+      "module": "Zeta23.CCM.CanonicalGlobalF04",
+      "module_id": "rh:module:Zeta23.CCM.CanonicalGlobalF04",
+      "provenance": "REGISTRY_EXACT",
+      "route": "R003_ccm_bridge",
+      "source_file_id": "rh:file:Zeta23/CCM/CanonicalGlobalF04.lean",
+      "source_path": "Zeta23/CCM/CanonicalGlobalF04.lean",
+      "theorem": "Zeta23.CCM.canonicalSecondPairing_euler_eq_productionSaturationGap_of_pos"
+    },
+    {
+      "binding_source": "research/RHRC/REGISTERED_THEOREM_BINDINGS.json",
       "claim_id": "R003_WEIGHTED_SOURCE_INTEGRAL_NEGATIVITY",
       "claim_node_id": "rh:claim:R003_WEIGHTED_SOURCE_INTEGRAL_NEGATIVITY",
       "claim_status": "PROVED_UNCONDITIONAL",
@@ -1844,7 +1892,7 @@
     }
   ],
   "graph_theorem_promotion": false,
-  "registered_proved_binding_count": 115,
+  "registered_proved_binding_count": 118,
   "schema_version": "RHKG-phase2b-theorem-claim-map-0.4",
   "scope": "ALL_PROVED_UNCONDITIONAL_REGISTERED_CLAIMS",
   "terminal_claim": "RH_OPEN",
@@ -1853,8 +1901,6 @@
     "C_RH",
     "R001_PRIME_UPPER",
     "R002_WINDOWED_VISIBILITY",
-    "R003_COFINAL_CANONICAL_ARITHMETIC_CERTIFICATES",
-    "R003_COMPLETED_STRICT_EVEN_CONTACT_FRONTIER",
-    "R003_WEIGHTED_PRODUCTION_PAIR_BALANCE"
+    "R003_COFINAL_CANONICAL_ARITHMETIC_CERTIFICATES"
   ]
 }
