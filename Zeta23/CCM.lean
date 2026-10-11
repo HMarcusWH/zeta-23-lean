@@ -276,3 +276,4 @@ import Zeta23.CCM.AbstractCubicSchur
 import Zeta23.CCM.WeightedRemainderIdentity
 import Zeta23.CCM.SourceRankTwoLaplace
 import Zeta23.CCM.CanonicalSourceOddEndpointQuantitative
+import Zeta23.CCM.CanonicalRecentPrimeSecondVariation

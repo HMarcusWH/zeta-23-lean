@@ -62,7 +62,8 @@ jobs:
             Zeta23.CCM.AbstractCubicSchur \
             Zeta23.CCM.WeightedRemainderIdentity \
             Zeta23.CCM.SourceRankTwoLaplace \
-            Zeta23.CCM.CanonicalSourceOddEndpointQuantitative
+            Zeta23.CCM.CanonicalSourceOddEndpointQuantitative \
+            Zeta23.CCM.CanonicalRecentPrimeSecondVariation
           do
             if lake build "$target"; then
               echo "$target PASS" | tee -a /tmp/post284-targets.txt
@@ -107,7 +108,8 @@ jobs:
             Zeta23/CCM/AbstractCubicSchur.lean \
             Zeta23/CCM/WeightedRemainderIdentity.lean \
             Zeta23/CCM/SourceRankTwoLaplace.lean \
-            Zeta23/CCM/CanonicalSourceOddEndpointQuantitative.lean
+            Zeta23/CCM/CanonicalSourceOddEndpointQuantitative.lean \
+            Zeta23/CCM/CanonicalRecentPrimeSecondVariation.lean
       - name: Reject proof escapes on the promoted surface
         run: python research/RHRC/closure_batch/check_lean_proof_escapes.py --scope promoted
       - uses: actions/upload-artifact@v4
@@ -201,6 +203,10 @@ jobs:
         run: |
           python research/RHRC/routes/R003_ccm_bridge/post285/post285_m45_odd_endpoint_falsifier.py \
             --output /tmp/POST285_M45_ODD_ENDPOINT_FALSIFIER.json > /dev/null
+      - name: Post-285 M49 near-edge contact-angle probe (experimental)
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/post285/post285_m49_near_edge_probe.py \
+            --output /tmp/POST285_M49_NEAR_EDGE_PROBE.json > /dev/null
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -219,3 +225,4 @@ jobs:
             /tmp/POST285_M08_CUBIC_SCHUR_FALSIFIER.json
             /tmp/POST285_M09_WEIGHTED_REMAINDER_FALSIFIER.json
             /tmp/POST285_M45_ODD_ENDPOINT_FALSIFIER.json
+            /tmp/POST285_M49_NEAR_EDGE_PROBE.json

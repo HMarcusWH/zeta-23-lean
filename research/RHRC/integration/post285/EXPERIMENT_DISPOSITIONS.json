@@ -182,6 +182,13 @@
       "summary": "C1: the constant (16/7)(1 + 1e-3) pi^6/90 fails at omega = 1e-4; C2: without the aperture restriction the K = 2 generator has e(1) = 20 > 0 (certified); C3: dropping oddness (adding an even part with M_2 = 4, keeping M_1 = 0 and M_3 = 12) makes Re e > 0 at small omega; C4: with M_3 = 0 (K = 3 fifth-moment witness) -e/omega^7 -> 0, so no positive omega^7 bound exists without m > 0"
     },
     {
+      "id": "X285_M49_NEAR_EDGE_PROBE",
+      "script": "post285_m49_near_edge_probe.py",
+      "package": "M49_NEAR_EDGE_PRIME_BENEFIT",
+      "disposition": "EXPERIMENTAL_SIGNAL",
+      "summary": "float canonical matrices, K = 2..6, L = 0.25..6 step 0.25, even ground state (not a contact): the parity-gap input holds to float rounding and all 329 near-edge sample checks of the proved chain pass (energies at 50 digits). theta_* (c = 4) is 0.084 for K = 2, at most 0.052 for K = 3, 0.037 for K = 4, 0.028 for K = 5 and 0.022 for K = 6. Prime samples fall inside theta_* in 20 of 24 K = 2 rows and 6 of 24 K = 3 rows, and in none for K = 4..6 on this grid: the near-edge benefit is vacuous there. 12 rows have parity gap 0 to float resolution and are skipped"
+    },
+    {
       "id": "X285_M12_STEP28_CERTIFIED",
       "script": "post285_m09_weighted_remainder_falsifier.py",
       "package": "M12_STEP28_REPLAY",

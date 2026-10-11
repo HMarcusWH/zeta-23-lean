@@ -44,6 +44,7 @@ The machine-readable versions are:
 | M08 (abstract) | `AbstractCubicSchur` | `cubic_schur_third_deriv`, `cubic_schur_third_deriv_response`, `cubic_schur_third_nonpos_of_right_negative` | 34 (abstract part) |
 | M09, M03 (staircase) | `WeightedRemainderIdentity` | `canonicalPolePrimeDiscrepancy_eq_fixedStaircase`, `matrixRealEnergy_pole_sub_prime_eq_fixedStaircase`, `regularizedCompletePhysicalRHS_eq_weightedRemainder`, `productionArithmeticRealValue_eq_weightedRemainder`, `productionArithmeticRealValue_sq_mul_indexEnergy_eq_weightedRemainder`, `GeneratedStrictEvenContact.indexEnergyValue_eq_neg_responseCost`, `GeneratedStrictEvenContact.weightedRemainder_balance` | 32; M03 staircase |
 | M45 | `CanonicalSourceOddEndpointQuantitative` | `re_quadraticForm_sourceMatrix_le_of_mem_oddBoundaryFlat`, `re_quadraticForm_sourceMatrix_neg_of_mem_oddBoundaryFlat`, `re_quadraticForm_sourceMatrix_aperture_le_of_mem_oddBoundaryFlat`, `sourceAtomRealEnergy_le_of_le_oddEndpointAngle`, `abs_sin_sub_sub_cube_le`, `sourceOddTaylorConstant_sq` | 82 |
+| M49 | `CanonicalRecentPrimeSecondVariation` | `sourceAtomRealEnergy_index_le_of_contactAngle`, `sourceAtomRealEnergy_index_le_of_contactAngle_coercivity`, `sourceAtomRealEnergy_index_le_of_contactAngle_four`, `primeTerm_ge_of_contactAngle_four` | 84, 90 |
 | M03 (Laplace) | `SourceRankTwoLaplace` | `integral_exp_neg_half_mul_sourceEntryReal`, `integral_exp_neg_half_mul_sourceEnergy`, `integral_exp_neg_half_mul_sourceEnergy_of_even`, `integral_exp_neg_half_mul_sourceEnergy_of_odd` | M03 (no step row) |
 
 ### What these results do not say
@@ -263,6 +264,11 @@ The details are in `FALSIFICATION_REPORT.md`.
   historical floats are now Arb enclosures: `E(Dz) ≈ +0.2154944559 > 0` and
   `A_L[t² e_{Dz}] ≈ −0.5224196282 < 0`. `z` is not a contact; the pair only
   shows that ordinary odd positivity does not give weighted positivity.
+- **M49 near-edge angle.** On the float canonical matrices the contact angle
+  `θ_*` contains prime samples for `K = 2` (most `L`) and sometimes for `K = 3`,
+  but none for `K = 4..6` with `L ≤ 6`. The near-edge benefit proved in M49 is
+  therefore vacuous for larger `K` on this grid; it cannot by itself drive an
+  exclusion.
 - **No even contact below `log 2`.** For `K = 2..16`, the even compressed
   ground stays positive on `(0, log 2)`. Its minimum sits at the right end and
   falls from 0.096 (`K = 2`) to 0.003 (`K = 16`).

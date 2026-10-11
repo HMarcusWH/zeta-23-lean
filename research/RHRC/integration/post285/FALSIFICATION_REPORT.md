@@ -6,7 +6,7 @@ evidence. Theorem authority comes only from the Lean roots listed in
 
 ## Scripts
 
-All ten scripts live in `research/RHRC/routes/R003_ccm_bridge/post285/` and
+All eleven scripts live in `research/RHRC/routes/R003_ccm_bridge/post285/` and
 run in the `source-falsifier-research` job of
 `.github/workflows/rhrc_post284_source_inertia.yml`. Each one runs in seconds.
 
@@ -22,6 +22,7 @@ run in the `source-falsifier-research` job of
 | `post285_m08_cubic_schur_falsifier.py` | M08 | Exact pass, with all three controls behaving as predicted |
 | `post285_m09_weighted_remainder_falsifier.py` | M09, M12 (Step 28) | Pass at 30 digits, with all three controls failing as predicted; Step 28 values Arb-certified |
 | `post285_m45_odd_endpoint_falsifier.py` | M45 | Arb-certified at 232 cells, with all four controls failing as predicted |
+| `post285_m49_near_edge_probe.py` | M49 | Experimental signal; the proved chain holds at every sample checked |
 
 ## M74: canonical secular resolvent
 
@@ -307,6 +308,26 @@ in Arb at 256 bits.
 
 This is an elementary source statement. It is not a sign of the canonical
 arithmetic test, and the contact angle `θ_*` (M46) is not checked here.
+
+## M49: is the near-edge angle populated? (Steps 84, 90)
+
+`post285_m49_near_edge_probe.py` uses the float canonical matrices for
+`K = 2..6` and `L = 0.25, 0.5, …, 6`. At each point it takes the even ground
+state `v`, which is not a contact. It computes the parity gap `δ`, `H(v)` from
+the rank-one relation, and the angle `θ_* = (1/2π)√(5δ/(A_K|H(v)|√c))`.
+
+- **Proved chain.** The parity-gap input `δ‖Dz‖² ≤ H(v)M₄` holds to float
+  rounding. At all 329 prime samples inside `θ_*`, the chain
+  `−e_{Dz}(ω_q) ≥ (π⁶/90)M₄²ω_q⁷ ≥ (π⁶/90)(δ/(c|H(v)|))²ω_q⁷` holds, with the
+  energies taken at 50 digits.
+- **Size of the angle.** With `c = 4`, `θ_*` is 0.084 for `K = 2` and at most
+  0.052, 0.037, 0.028 and 0.022 for `K = 3, 4, 5, 6`.
+- **Population.** Prime samples fall inside `θ_*` in 20 of 24 `K = 2` rows and
+  6 of 24 `K = 3` rows. For `K = 4..6` none do on this grid, so the near-edge
+  benefit is vacuous there. This answers the plan's question about the growth
+  of `A_K` for this grid only.
+
+12 rows have parity gap 0 to float resolution and are skipped.
 
 ## Inherited regressions kept running
 

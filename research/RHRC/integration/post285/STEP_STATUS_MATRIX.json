@@ -15,9 +15,9 @@
   },
   "counts": {
     "PROVED_MERGED": 32,
-    "PROVED_THIS_PR": 35,
+    "PROVED_THIS_PR": 36,
     "EXPERIMENTAL_SIGNAL": 2,
-    "OPEN": 20,
+    "OPEN": 19,
     "PARTIAL": 4,
     "CONDITIONAL": 2,
     "DERIVED": 1,
@@ -491,8 +491,8 @@
       "step": 84,
       "topic": "Favorable recent prime-power source terms",
       "package": "M49",
-      "status": "OPEN",
-      "anchor_or_note": ""
+      "status": "PROVED_THIS_PR",
+      "anchor_or_note": "near-edge prime terms inside theta_* are >= (pi^6/90) beta_q (delta/(c|H(v)|))^2 omega_q^7 (sourceAtomRealEnergy_index_le_of_contactAngle, primeTerm_ge_of_contactAngle_four); older primes not addressed"
     },
     {
       "step": 85,
