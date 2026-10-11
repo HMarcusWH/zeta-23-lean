@@ -15,10 +15,10 @@
   },
   "counts": {
     "PROVED_MERGED": 32,
-    "PROVED_THIS_PR": 37,
+    "PROVED_THIS_PR": 41,
     "EXPERIMENTAL_SIGNAL": 2,
-    "OPEN": 18,
-    "PARTIAL": 4,
+    "OPEN": 13,
+    "PARTIAL": 5,
     "CONDITIONAL": 2,
     "DERIVED": 1,
     "SCOPE_CONTROL": 3,
@@ -379,8 +379,8 @@
       "step": 68,
       "topic": "Odd source-sign reversal of contact vector",
       "package": "M33",
-      "status": "OPEN",
-      "anchor_or_note": ""
+      "status": "PROVED_THIS_PR",
+      "anchor_or_note": "e_{Dz} < 0 on (0, theta], e_{Dz}(1) > 0 and a zero in (theta, 1) at every normalized even ground eigenvector with positive parity gap (sourceAtomRealEnergy_index_signReversal); source only"
     },
     {
       "step": 69,
@@ -393,15 +393,15 @@
       "step": 70,
       "topic": "Exact archimedean density and remainder",
       "package": "M34",
-      "status": "OPEN",
-      "anchor_or_note": ""
+      "status": "PROVED_THIS_PR",
+      "anchor_or_note": "(70.1) is the M09 identity (productionArithmeticRealValue_eq_weightedRemainder); R(e^t) integrable against continuous tests (intervalIntegrable_weightedRemainder_exp_mul)"
     },
     {
       "step": 71,
       "topic": "Stationary arithmetic remainder oscillation",
       "package": "M34",
-      "status": "OPEN",
-      "anchor_or_note": ""
+      "status": "PROVED_THIS_PR",
+      "anchor_or_note": "(71.1) is the M09 contact balance; (71.2) GeneratedStrictEvenContact.remainderOscillation_budget; necessary condition that excludes nothing"
     },
     {
       "step": 72,
@@ -470,8 +470,8 @@
       "step": 81,
       "topic": "Entering seventh-order prime second-test sign",
       "package": "M44",
-      "status": "OPEN",
-      "anchor_or_note": ""
+      "status": "PROVED_THIS_PR",
+      "anchor_or_note": "fixed vector: Delta Q_z(log q + h) = -beta_q e_{Dz}(h/(log q + h)) and |Delta Q - a h^7| <= C h^8 with a > 0 (enteringPrimePhysicalJump_seventh_order, enteringPrimePhysicalJump_pos_near_seam); not total Q, operator upgrade OPEN"
     },
     {
       "step": 82,
@@ -590,14 +590,14 @@
       "topic": "Exact complete source-moment arithmetic",
       "package": "M59",
       "status": "PROVED_MERGED",
-      "anchor_or_note": "existing source-kernel RHS"
+      "anchor_or_note": "existing source-kernel RHS; real pairing form (98B) proved this PR (contactSourcePairing_balance)"
     },
     {
       "step": 99,
       "topic": "Source endpoint and older-prime balance",
       "package": "M61",
-      "status": "OPEN",
-      "anchor_or_note": ""
+      "status": "PARTIAL",
+      "anchor_or_note": "exact near/old balance I - O + N = |M_4|^2/gamma, its gap lambda_odd |M_4|^2/|g|^2 and the endpoint p_z(0) = 0 PROVED_THIS_PR (contactSourcePairing_nearOld_balance, contactSourcePairing_older_le); near-edge sign of p_z (99A) not formalized; opposite side (99C) OPEN"
     },
     {
       "step": 100,

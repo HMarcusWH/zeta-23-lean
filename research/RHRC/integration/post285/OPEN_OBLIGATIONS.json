@@ -236,6 +236,27 @@
       "detail": "GeneratedStrictEvenContact.poleArch_sub_primeSamples_eq: at a stationary generated strict-even contact, P - sum_{2 <= q <= e^L} beta_q e_{Dz}(omega_q) = -(2 L^4/(2 pi)^2) C, with P the pole-minus-archimedean part of t^2 e_{Dz}(1 - t/L), beta_q = Lambda(q)(log q)^2/sqrt q, omega_q = 1 - log q/L and C = <A w, w> >= 0 (M09 balance; F04 enters only through the proved transport, so no F04 hypothesis remains). olderPrimeBudget (91.1): for every theta with (2 pi theta)^2 A_K |H(z)| 2 <= 5 lambda_odd, sum_{omega_q > theta} beta_q e(omega_q) >= P + kappa C + b sum_{omega_q <= theta} beta_q omega_q^7 with b = (pi^6/90)(lambda_odd/(4 |H(z)|))^2. olderPrimeBudget_finite (91.2): P + kappa C + b sum_N beta_q omega_q^7 <= 2(2K+1)K^2 sum_O beta_q omega_q. Every active sample has 0 <= omega_q <= 1, endpoint samples included. Necessary conditions only: no lower bound for P and no upper bound for the older terms is proved, and nothing is excluded (M51 OPEN)."
     },
     {
+      "id": "M61_SOURCE_OLDER_PRIME_BALANCE",
+      "package": "M59/M61",
+      "steps": "98, 99",
+      "status": "PROVED_PENDING_CI",
+      "detail": "At an even contact of the actual canonical family (L > 0, K >= 2, lambda_odd > 0, A_L z = 0, z != 0), with M = M_4(z), gamma = gamma_L, h_z the mixed quadratic-normal atom (not the energy e_{Dz}), p_z = Re(conj(M) h_z), beta_q = Lambda(q)/sqrt q and I = Re(conj(M)(int h_z(1 - t/L) W - int h_z(1 - t/L) rho)): contactSourcePairing_balance (98B) I - sum_q beta_q p_z(omega_q) = |M|^2/gamma, from the source-kernel representation and the M74 phase lock, with no F04; contactSourcePairing_nearOld_balance (99B) I - O + N = |M|^2/gamma for every split theta (O older, N = sum over omega_q <= theta of beta_q (-p_z)); canonicalResolventGamma_le gamma <= |g|^2/lambda_odd; contactSourceMargin_ge 0 < lambda_odd |M|^2/|g|^2 <= |M|^2/gamma; contactSourcePairing_older_le O <= I + N - lambda_odd |M|^2/|g|^2; contactSourcePairing_zero p_z(0) = 0. The near-edge sign of p_z is not proved, the opposite side O >= I + N (99C, M62) is OPEN and never assumed, and nothing is excluded."
+    },
+    {
+      "id": "M33_M34_SIGN_REVERSAL_AND_OSCILLATION",
+      "package": "M33/M34",
+      "steps": "68, 70, 71",
+      "status": "PROVED_PENDING_CI",
+      "detail": "sourceAtomRealEnergy_index_signReversal (Step 68): at a normalized even ground eigenvector v of the actual even compression with positive parity gap (in particular the kernel vector of every strict-even contact), H(v) != 0 (explicitCanonicalSourceMoment_ne_zero_of_parityGap), and with theta = min(1/2, 5 delta/(4 pi^2 (2 A_K |H(v)| + 1))) the source energy e_{Dz} is < 0 on (0, theta], equals 2|Dz|^2 > 0 at omega = 1, and vanishes at some omega_0 in (theta, 1); source only, nothing about the operator. Step 70: (70.1) is the M09 identity; intervalIntegrable_weightedRemainder_exp(_mul) makes R(e^t) f' integrable for continuous f'. Step 71: abs_integral_mul_le_half_oscillation |int_0^L R f'| <= (M - m)/2 int_0^L |f'| when int f' = 0 and m <= R <= M on [0, L]; GeneratedStrictEvenContact.remainderOscillation_budget (71.2) |int (e^{-t/2} - rho) h + 2 L*^4 C/(2 pi)^2| <= (M - m)/2 int |h'| for h = t^2 e_{Dz}(1 - t/L*) at a stationary generated contact. Necessary conditions only; no size of R is assumed or proved."
+    },
+    {
+      "id": "M44_ENTERING_PRIME_PHYSICAL_JET",
+      "package": "M44",
+      "steps": "81",
+      "status": "PROVED_PENDING_CI",
+      "detail": "For a legal even v (raw coefficients z) and q >= 2: productionContactValue_eq_withoutAtom_add_jump splits the physical scalar Q_v(L) = A_L[t^2 e_{Dz}(1 - t/L)] into the scalar without the q-atom (same vector, same pole/archimedean background, same other atoms) plus Delta Q_v(L) = -beta_q e_{Dz}(omega_q(L)), beta_q = Lambda(q)(log q)^2/sqrt q; enteringPrimePhysicalJump_log_add gives Delta Q_v(log q + h) = -beta_q e_{Dz}(h/(log q + h)); sourceAtomRealEnergy_seventh_taylor is the Lagrange remainder bound on [0, 1] for the merged seventh source jet; enteringPrimePhysicalJump_seventh_order gives (81.1) |Delta Q_v(log q + h) - a h^7| <= C h^8 for all h >= 0, a = 2 Lambda(q)(2 pi)^6 |M_4(z)|^2/(7! sqrt q (log q)^5), with a > 0 for prime powers and M_4(z) != 0 (enteringPrimeLeadingCoefficient_pos); enteringPrimePhysicalJump_ge_of_angle is the explicit M45 bound Delta Q >= (pi^6/90) beta_q |M_4|^2 omega_h^7 inside the odd-endpoint angle of Dz; enteringPrimePhysicalJump_pos_near_seam gives Delta Q > 0 on (0, h_0]. Fixed vector, one-sided: not total Q positivity, not an eigenvalue or Schur/resolvent jump, nothing at a contact; distinct from the negative ninth-order even-energy seam term (Step 56)."
+    },
+    {
       "id": "M08_ARITHMETIC_THIRD_IDENTITY",
       "package": "M08",
       "steps": "34",
@@ -293,7 +314,7 @@
     },
     {
       "post284_id": "F_M58_M63_SOURCE_MOMENT_BIRDFISHIE",
-      "effect": "M58 phase-lock component discharged by M74; M61-M63 OPEN"
+      "effect": "M58 phase-lock component discharged by M74; the M59 real pairing (98B) and the M61 exact older-prime balance with its gap are proved here (M61_SOURCE_OLDER_PRIME_BALANCE, pending CI); the near-edge sign of p_z, the M62 opposite side (99C) and M63 stay OPEN"
     },
     {
       "post284_id": "F_M46_COERCIVITY",
@@ -309,7 +330,7 @@
     },
     {
       "post284_id": "F_M33_M34_CONTACT_SOURCE_SIGN_AND_BUDGET",
-      "effect": "F04 at the contact boundary now available (F04_GLOBAL_PRODUCTION_DERIVATIVE_AUTHORITY); the sign and budget statements are not formalized here"
+      "effect": "F04 at the contact boundary now available (F04_GLOBAL_PRODUCTION_DERIVATIVE_AUTHORITY); the source sign reversal (Step 68), the remainder representation (Step 70) and the oscillation budget (71.2) are proved here (M33_M34_SIGN_REVERSAL_AND_OSCILLATION, pending CI); the physical-test turning points (Step 69) stay interval evidence"
     },
     {
       "post284_id": "F_M48_K2_PRIME_SAMPLES",
@@ -370,6 +391,10 @@
     {
       "post284_id": "M14_OTHER_BRANCHES",
       "effect": "odd-first and tied branch algebra proved here (M14_ODD_FIRST_AND_TIED_BRANCH_ALGEBRA); no branch excluded"
+    },
+    {
+      "post284_id": "F_M44_ENTERING_PRIME_SEVENTH",
+      "effect": "fixed-vector physical jet proved here with the Taylor remainder on the seventh source jet (M44_ENTERING_PRIME_PHYSICAL_JET, pending CI): |Delta Q - a h^7| <= C h^8 with a > 0; the operator-level seam germ stays OPEN"
     },
     {
       "post284_id": "M08_ABSTRACT_CUBIC_SCHUR",

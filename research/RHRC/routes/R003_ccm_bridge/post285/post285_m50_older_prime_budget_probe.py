@@ -35,6 +35,7 @@ import argparse
 import json
 import math
 import sys
+from functools import lru_cache
 from pathlib import Path
 
 import mpmath as mp
@@ -71,9 +72,14 @@ def energy_float(n: np.ndarray, u: np.ndarray, w: np.ndarray) -> np.ndarray:
     return out
 
 
+@lru_cache(maxsize=None)
+def gauss_legendre(nodes: int = 400):
+    return np.polynomial.legendre.leggauss(nodes)
+
+
 def pole_arch_value(n: np.ndarray, u: np.ndarray, L: float, nodes: int = 400) -> float:
     """P = int_0^L t^2 e(1 - t/L) (e^{-t/2} + e^{t/2} - rho(t)) dt by Gauss-Legendre."""
-    x, wts = np.polynomial.legendre.leggauss(nodes)
+    x, wts = gauss_legendre(nodes)
     t = 0.5 * L * (x + 1)
     rho = np.exp(t / 2) / (np.exp(t) - np.exp(-t))
     kern = np.exp(-t / 2) + np.exp(t / 2) - rho

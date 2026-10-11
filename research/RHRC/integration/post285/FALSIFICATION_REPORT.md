@@ -6,7 +6,7 @@ evidence. Theorem authority comes only from the Lean roots listed in
 
 ## Scripts
 
-All twelve scripts live in `research/RHRC/routes/R003_ccm_bridge/post285/` and
+All fifteen scripts live in `research/RHRC/routes/R003_ccm_bridge/post285/` and
 run in the `source-falsifier-research` job of
 `.github/workflows/rhrc_post284_source_inertia.yml`. Each one runs in seconds.
 
@@ -24,6 +24,9 @@ run in the `source-falsifier-research` job of
 | `post285_m45_odd_endpoint_falsifier.py` | M45 | Arb-certified at 232 cells, with all four controls failing as predicted |
 | `post285_m49_near_edge_probe.py` | M49 | Experimental signal; the proved chain holds at every sample checked |
 | `post285_m50_older_prime_budget_probe.py` | M50 | Experimental signal; both proved ingredients hold at every sample checked |
+| `post285_m61_source_balance_falsifier.py` | M59, M61 | Pass, with all three controls failing as predicted |
+| `post285_m34_remainder_oscillation_probe.py` | M33, M34 | Pass on the proved statements; experimental signal on the oscillation room |
+| `post285_m44_entering_prime_jet_probe.py` | M44 | Pass, with both controls failing as predicted |
 
 ## M74: canonical secular resolvent
 
@@ -356,6 +359,81 @@ A useful older-prime estimate (M51) has to keep the cancellation between `P`
 and the primes; bounding each older term by its size cannot work. 12 rows have
 parity gap 0 to float resolution: their size checks run, and the split is
 skipped.
+
+## M59/M61: source-moment kernel and the exact older-prime balance (Steps 98, 99)
+
+`post285_m61_source_balance_falsifier.py` uses the float canonical matrices for
+`K = 2..5` and `L = 0.25, 0.5, …, 6`. At each point it takes three legal even
+vectors: the even ground state and two complex random vectors. None is a
+contact. `h_v` is the mixed quadratic-normal atom on the elementary source
+matrix, `β_q = Λ(q)/√q`, and the integrals use Gauss–Legendre quadrature with
+400 nodes.
+
+- **Kernel (98A).** `∫₀ᴸ h_v(1 − t/L)(W − ρ) − Σ_q β_q h_v(ω_q)` equals `H(v)`
+  read off the rank-one relation `B D − D A = g H` to `5·10⁻¹⁴` at all 288
+  vectors.
+- **Real pairing (98B) and partition (99B).** `I − Σ_q β_q p_v(ω_q)` equals
+  `Re(conj(M)H(v))`, and `I − O + N` equals the same value at
+  `θ = 0.05, 0.2, 0.5`, both to `5·10⁻¹³`. At a contact the right side is the
+  proved `|M|²/γ`.
+- **Ward.** `γH(v) = M₄(v) − ⟨B⁻¹g, D A v⟩` holds to `3.5·10⁻¹¹` on the 81
+  vectors with `λ_odd ≥ 10⁻⁶`. Below that the float odd block is the small net
+  of large pole and prime channels, so `B⁻¹g` is not resolved and those
+  vectors are not counted.
+- **Gap.** `γ ≤ ‖g‖²/λ_odd` at every point.
+
+Controls: C1 uses the M50 weights `Λ(q)(log q)²/√q` and misses the kernel value
+by at least `1.3·10⁻³` (relative) for `L ≥ 1`. C2 drops the archimedean
+integral and misses by at least `5·10⁻⁴`. C3 uses the energy `e_{Dz}` in place
+of `h_z` and misses by at least 0.98.
+
+This is a regression of the identities only. It says nothing about the sign
+of `I + N − O` at a contact, which is the OPEN opposite side (99C).
+
+## M33/M34: sign reversal and remainder oscillation (Steps 68, 70, 71)
+
+`post285_m34_remainder_oscillation_probe.py` uses the float canonical matrices
+for `K = 2..5` and `L = 1, 1.25, …, 6`, at the even ground state, which is not
+a contact. `h(t) = t² e_{Dz}(1 − t/L)` and `R(x) = Σ_{n≤x} Λ(n)/√n − 2√x`.
+
+- **Step 70.** The M09 identity on the actual source energy,
+  `P − Σ_q β_q e(ω_q) = ∫ R(eᵗ) h' + ∫ (e^{−t/2} − ρ) h`, holds to `7·10⁻¹⁴`.
+  `∫ R h'` is integrated piecewise between the breakpoints `log n`.
+- **Step 71.** `|∫ R h'| ≤ (Ω/2) ∫ |h'|` holds at all 84 rows, with
+  `Ω = sup R − inf R` on `[1, e^L]` (sup over integers, inf over left limits).
+- **Step 68.** At the 10 rows where the explicit `θ` of the Lean theorem is at
+  least `10⁻⁶`, `e_{Dz} < 0` at `θ/100, θ/10, θ/2, θ` (50 digits, with `Dz`
+  projected onto the legal odd carrier) and `e_{Dz}(1) = 2‖Dz‖² > 0`. Elsewhere
+  `θ` is below `10⁻⁶` and the `O(ω⁷)` energy is under the 50-digit floor, so
+  those rows are not counted. `θ` is at most 0.0039 (`K = 2`) and 0.00017
+  (`K = 5`).
+- **Room in the budget.** The ground states use at most 30% of the oscillation
+  room for `∫ R h'` and 13% for `∫ (e^{−t/2} − ρ) h`. So (71.2) with `C = 0`
+  would hold with a margin of at least 7.8 on this grid: the crude oscillation
+  `Ω` is far from an obstruction.
+
+## M44: entering-prime physical jet (Step 81)
+
+`post285_m44_entering_prime_jet_probe.py` works at 60 digits for `K = 2..5`,
+with six legal even vectors per `K` (the even ground states of the float
+canonical matrices at `L = 1, 2, 3, 4`, and two random vectors), at the seams
+`q = 2, 3, 4, 5, 7, 8, 9, 11, 13`. That is 216 rows. `ΔQ_z(log q + h) =
+−β_q e_{Dz}(h/(log q + h))` and `a = 2Λ(q)(2π)⁶|M₄(z)|²/(7!√q (log q)⁵)`.
+
+- `M₃(Dz) = M₄(z)` to `10⁻⁵⁹`.
+- `ΔQ/(a h⁷)` is within `10⁻³` of 1 at `h = 10⁻⁴` at every row.
+- `|ΔQ − a h⁷|/h⁸` agrees within a factor 2 between `h = 10⁻³` and `10⁻⁴`.
+- Inside the odd-endpoint angle of `Dz`, `ΔQ ≥ (π⁶/90) β_q |M₄|² ω_h⁷` and
+  `ΔQ > 0` at all 1108 grid points.
+- **Signal.** `|ΔQ − a h⁷|/h⁸` tends to `7a/log q`: it is 0.991 to 1.0002 of
+  that value at `h = 10⁻⁴`. This is the next term predicted by
+  `ω_h⁷ = (h/log q)⁷(1 − 7h/log q + …)`, since `e_u` is odd in `ω` and has no
+  `ω⁸` term.
+- **Control C1.** Using the even energy `e_z` in place of `e_{Dz}` gives a
+  negative jump at all 216 rows. This is the ninth-order seam term of Step 56,
+  a different observable.
+- **Control C2.** Using `(log q)⁷` in place of `(log q)⁵` in `a` misses the
+  ratio by at least 0.2.
 
 ## Inherited regressions kept running
 

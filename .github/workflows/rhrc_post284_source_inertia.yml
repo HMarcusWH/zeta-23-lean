@@ -64,7 +64,10 @@ jobs:
             Zeta23.CCM.SourceRankTwoLaplace \
             Zeta23.CCM.CanonicalSourceOddEndpointQuantitative \
             Zeta23.CCM.CanonicalRecentPrimeSecondVariation \
-            Zeta23.CCM.CanonicalContactOlderPrimeBudget
+            Zeta23.CCM.CanonicalContactOlderPrimeBudget \
+            Zeta23.CCM.CanonicalContactSourceOlderPrimeBalance \
+            Zeta23.CCM.CanonicalContactRemainderOscillation \
+            Zeta23.CCM.CanonicalEnteringPrimePhysicalJet
           do
             if lake build "$target"; then
               echo "$target PASS" | tee -a /tmp/post284-targets.txt
@@ -111,7 +114,10 @@ jobs:
             Zeta23/CCM/SourceRankTwoLaplace.lean \
             Zeta23/CCM/CanonicalSourceOddEndpointQuantitative.lean \
             Zeta23/CCM/CanonicalRecentPrimeSecondVariation.lean \
-            Zeta23/CCM/CanonicalContactOlderPrimeBudget.lean
+            Zeta23/CCM/CanonicalContactOlderPrimeBudget.lean \
+            Zeta23/CCM/CanonicalContactSourceOlderPrimeBalance.lean \
+            Zeta23/CCM/CanonicalContactRemainderOscillation.lean \
+            Zeta23/CCM/CanonicalEnteringPrimePhysicalJet.lean
       - name: Reject proof escapes on the promoted surface
         run: python research/RHRC/closure_batch/check_lean_proof_escapes.py --scope promoted
       - uses: actions/upload-artifact@v4
@@ -213,6 +219,18 @@ jobs:
         run: |
           python research/RHRC/routes/R003_ccm_bridge/post285/post285_m50_older_prime_budget_probe.py \
             --output /tmp/POST285_M50_OLDER_PRIME_BUDGET_PROBE.json > /dev/null
+      - name: Post-285 M59/M61 source-moment older-prime balance regression and controls
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/post285/post285_m61_source_balance_falsifier.py \
+            --output /tmp/POST285_M61_SOURCE_BALANCE_FALSIFIER.json > /dev/null
+      - name: Post-285 M33/M34 sign reversal and remainder oscillation probe
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/post285/post285_m34_remainder_oscillation_probe.py \
+            --output /tmp/POST285_M34_REMAINDER_OSCILLATION_PROBE.json > /dev/null
+      - name: Post-285 M44 entering-prime physical jet probe and controls
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/post285/post285_m44_entering_prime_jet_probe.py \
+            --output /tmp/POST285_M44_ENTERING_PRIME_JET_PROBE.json > /dev/null
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -233,3 +251,6 @@ jobs:
             /tmp/POST285_M45_ODD_ENDPOINT_FALSIFIER.json
             /tmp/POST285_M49_NEAR_EDGE_PROBE.json
             /tmp/POST285_M50_OLDER_PRIME_BUDGET_PROBE.json
+            /tmp/POST285_M61_SOURCE_BALANCE_FALSIFIER.json
+            /tmp/POST285_M34_REMAINDER_OSCILLATION_PROBE.json
+            /tmp/POST285_M44_ENTERING_PRIME_JET_PROBE.json

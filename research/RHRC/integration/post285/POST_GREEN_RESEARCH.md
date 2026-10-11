@@ -46,6 +46,9 @@ The machine-readable versions are:
 | M45 | `CanonicalSourceOddEndpointQuantitative` | `re_quadraticForm_sourceMatrix_le_of_mem_oddBoundaryFlat`, `re_quadraticForm_sourceMatrix_neg_of_mem_oddBoundaryFlat`, `re_quadraticForm_sourceMatrix_aperture_le_of_mem_oddBoundaryFlat`, `sourceAtomRealEnergy_le_of_le_oddEndpointAngle`, `abs_sin_sub_sub_cube_le`, `sourceOddTaylorConstant_sq` | 82 |
 | M49 | `CanonicalRecentPrimeSecondVariation` | `sourceAtomRealEnergy_index_le_of_contactAngle`, `sourceAtomRealEnergy_index_le_of_contactAngle_coercivity`, `sourceAtomRealEnergy_index_le_of_contactAngle_four`, `primeTerm_ge_of_contactAngle_four` | 84, 90 |
 | M50 | `CanonicalContactOlderPrimeBudget` | `GeneratedStrictEvenContact.poleArch_sub_primeSamples_eq`, `GeneratedStrictEvenContact.olderPrimeBudget`, `GeneratedStrictEvenContact.olderPrimeBudget_finite`, `productionContactIndexEnergy_le_of_norm_eq_one`, `primeSourceCoordinate_mem_of_mem_Icc` | 91 |
+| M59, M61 | `CanonicalContactSourceOlderPrimeBalance` | `contactSourcePairing_balance`, `contactSourcePairing_nearOld_balance`, `canonicalResolventGamma_le`, `contactSourceMargin_ge`, `contactSourcePairing_older_le`, `contactSourcePairing_zero` | 98 (real pairing), 99 |
+| M33, M34 | `CanonicalContactRemainderOscillation` | `sourceAtomRealEnergy_index_signReversal`, `explicitCanonicalSourceMoment_ne_zero_of_parityGap`, `intervalIntegrable_weightedRemainder_exp_mul`, `abs_integral_mul_le_half_oscillation`, `GeneratedStrictEvenContact.remainderOscillation_budget` | 68, 70, 71 |
+| M44 | `CanonicalEnteringPrimePhysicalJet` | `productionContactValue_eq_withoutAtom_add_jump`, `enteringPrimePhysicalJump_log_add`, `sourceAtomRealEnergy_seventh_taylor`, `enteringPrimePhysicalJump_seventh_order`, `enteringPrimeLeadingCoefficient_pos`, `enteringPrimePhysicalJump_ge_of_angle`, `enteringPrimePhysicalJump_pos_near_seam` | 81 |
 | M03 (Laplace) | `SourceRankTwoLaplace` | `integral_exp_neg_half_mul_sourceEntryReal`, `integral_exp_neg_half_mul_sourceEnergy`, `integral_exp_neg_half_mul_sourceEnergy_of_even`, `integral_exp_neg_half_mul_sourceEnergy_of_odd` | M03 (no step row) |
 
 ### What these results do not say
@@ -154,6 +157,29 @@ The machine-readable versions are:
   necessary conditions at every stationary generated contact. No lower bound
   for `P` and no upper bound for the older terms is proved, so nothing is
   excluded (M51 OPEN).
+- **M59 and M61** work with the mixed atom `h_z`, not the energy `e_{Dz}`. At an
+  even contact with `λ_odd > 0`, `p_z = Re(conj(M₄)h_z)` satisfies
+  `I − Σ_q (Λ(q)/√q) p_z(ω_q) = |M₄|²/γ`, and for every split `θ`,
+  `I − O + N = |M₄|²/γ`. With `γ ≤ ‖g‖²/λ_odd` this gives
+  `O ≤ I + N − λ_odd|M₄|²/‖g‖² < I + N`. No F04 is used. The sign of `N` (a
+  near-edge sign of `p_z`) is not proved. The opposite side `O ≥ I + N` (99C)
+  is OPEN, is never assumed, and would be needed to exclude anything.
+- **M33** (Step 68) is about the source energy of the contact-generated vector
+  only. At a normalized even ground eigenvector with positive parity gap,
+  `H(v) ≠ 0`, `e_{Dz}` is negative on an explicit `(0, θ]`, equals `2‖Dz‖²` at
+  `ω = 1`, and so vanishes in `(θ, 1)`. The turning points of the physical test
+  (Step 69) stay interval evidence.
+- **M34** (Steps 70, 71). The representation (70.1) is M09. For any bounds
+  `m ≤ R(eᵗ) ≤ M` on `[0, L*]`, a stationary generated contact satisfies
+  `|∫ (e^{−t/2} − ρ) h + 2L*⁴C/(2π)²| ≤ (M − m)/2 · ∫ |h'|` (71.2). This is
+  necessary, not a contradiction, and no size of `R` is assumed: a bound
+  `R = O(x^ε)` would be RH-strength.
+- **M44** (Step 81) is about one fixed legal even vector and one newly entering
+  atom. With the other atoms and the background held fixed, the `q`-atom adds
+  `a h⁷ + O(h⁸)` with `a > 0` at `L = log q + h`. This is not positivity of the
+  total `Q`, not an eigenvalue jump, and nothing at a contact. It also does not
+  conflict with the negative ninth-order even-energy seam term (Step 56), which
+  is a different observable.
 
 ### Proof outline for M71
 
@@ -283,6 +309,11 @@ The details are in `FALSIFICATION_REPORT.md`.
   finite form's right side is at least `114|P|` wherever older samples exist.
   The size bound behind (91.2) loses all of that cancellation, so an older-prime
   estimate for M51 has to work with `P` and the primes together.
+- **M44 next order.** At 216 seam rows the remainder `|ΔQ − a h⁷|/h⁸` tends to
+  `7a/log q`, as predicted by expanding `ω_h⁷`. The entering atom is of order
+  `h⁷` near the seam. At an even ground state the same atom is covered by the
+  M49 lower bound once `ω_h` is inside the contact angle; M44 adds the exact
+  leading coefficient.
 - **No even contact below `log 2`.** For `K = 2..16`, the even compressed
   ground stays positive on `(0, log 2)`. Its minimum sits at the right end and
   falls from 0.096 (`K = 2`) to 0.003 (`K = 16`).
@@ -339,13 +370,13 @@ falls into one of these classes:
 
 | Class | Rows | Comment |
 |---|---|---|
-| F04-bound | F04_PRODUCTION_DERIVATIVE_AUTHORITY, M09_WEIGHTED_REMAINDER_IDENTITY, F_M33_M34, F_M37, F_M48, F_M49_M51, F_M53_M65, F_M66 | The F04 premise is discharged at every `L > 0`. F_M53_M65, F_M66, M09 and the F04 authority itself are proved here. The others keep their non-F04 parts open |
-| Operator seam germs | M07, M10, M11, F_M23_M24, F_M44 | Need operator-norm Taylor majorants at frozen prime seams |
+| F04-bound | F04_PRODUCTION_DERIVATIVE_AUTHORITY, M09_WEIGHTED_REMAINDER_IDENTITY, F_M33_M34, F_M37, F_M48, F_M49_M51, F_M53_M65, F_M66 | The F04 premise is discharged at every `L > 0`. F_M33_M34, F_M53_M65, F_M66, M09 and the F04 authority itself are proved here, and F_M49_M51 is proved except for M51. The others keep their non-F04 parts open |
+| Operator seam germs | M07, M10, M11, F_M23_M24, F_M44 | Need operator-norm Taylor majorants at frozen prime seams. The fixed-vector physical jet of F_M44 is proved here (M44); its operator upgrade stays OPEN |
 | Classical arithmetic | F_M38, F_M55 | Proved here (M38, M55) |
 | Abstract analysis | F_M31 | Proved here as a conditional barrier (M31); the coefficient bound M32 stays OPEN |
 | Abstract algebra | M03_RANK_TWO_LAPLACE, M03_WEIGHTED_STAIRCASE_REEXPRESSION | Proved here (M03_RANK_TWO_LAPLACE_TRANSFORM, M03_FIXED_STAIRCASE_REEXPRESSION) |
 | Proved here | M17 (as M71, on the boundary-flat carriers for every `0 < ω ≤ 1/2`), F_M27 (simplicity, and the alternating root slopes as M27), M08_ABSTRACT_CUBIC_SCHUR (as M08; the arithmetic third identity stays OPEN), M16 (subsumed by M71 at every `0 < ω ≤ 1/2`), F_M45 (as M45, with the plan's angle and constant) | The post-284 rows are historical and stay as they were; filtered carriers stay OPEN |
-| Partly addressed here | M18 (first passage), F_M21 (phase identity), F_M46 (constant 4), F_M58_M63 (phase lock), F_M28 (overlap identity and sign), M14 (odd-first and tied algebra) | See the cross-references |
+| Partly addressed here | M18 (first passage), F_M21 (phase identity), F_M46 (constant 4), F_M58_M63 (phase lock, M59 real pairing, M61 exact balance), F_M28 (overlap identity and sign), M14 (odd-first and tied algebra) | See the cross-references |
 | Research or contact-conditioned | M03_TWO_SCALAR, M13, F_M22, F_M25, F_M29, F_M32, F_M39, F_M56_M57, F_M68, OBS060O | No viable proof route identified in this PR |
 | Provenance | OAI_SEVEN_EIGHTHS_LOCAL_IMPORT | Audit only |
 | Terminal | RH | RH_OPEN |

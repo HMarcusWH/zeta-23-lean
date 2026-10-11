@@ -196,6 +196,41 @@
       "summary": "float canonical matrices, K = 2..6, L = 0.25..6 step 0.25, even ground state (not a contact), theta = theta_*(c = 4): the size bound holds at every sample of all 120 rows and the M49 near-edge bound at every near sample of the 108 rows with a positive parity gap. P and the prime sum nearly cancel: for L >= 2, |P - sum_q beta_q e(omega_q)| <= 6.6e-4 |P|. Wherever older samples exist, 2(2K+1)K^2 sum_O beta_q omega_q >= 114 |P|, so the finite form (91.2) carries no information on this grid; a useful older-prime estimate must keep the cancellation"
     },
     {
+      "id": "X285_M61_SOURCE_BALANCE",
+      "script": "post285_m61_source_balance_falsifier.py",
+      "package": "M61_SOURCE_OLDER_PRIME_BALANCE",
+      "disposition": "EXACT_THEOREM_REGRESSION_PASS",
+      "summary": "float canonical matrices, K = 2..5, L = 0.25..6 step 0.25, the even ground state and two complex random legal even vectors per point (288 vectors, none a contact): the source-kernel value int h(1 - t/L)(W - rho) - sum_q (Lambda(q)/sqrt q) h(omega_q) equals H(v) from the rank-one relation to 5e-14; the real pairing (98B) and the near/old partition (99B) at theta = 0.05, 0.2, 0.5 hold to 5e-13; the off-contact Ward identity holds to 3.5e-11 on the 81 vectors with lambda_odd >= 1e-6 (below that the float odd block is not resolved); gamma <= |g|^2/lambda_odd at every point"
+    },
+    {
+      "id": "X285_M61_CONTROLS",
+      "script": "post285_m61_source_balance_falsifier.py",
+      "package": "M61_CONTROLS",
+      "disposition": "NEGATIVE_CONTROL_FAILS_AS_EXPECTED",
+      "summary": "C1: the M50 weights Lambda(q)(log q)^2/sqrt q in place of Lambda(q)/sqrt q miss the kernel value by at least 1.3e-3 (relative) for L >= 1; C2: dropping the archimedean integral misses by at least 5e-4; C3: the energy e_{Dz} in place of the mixed atom h_z misses by at least 0.98"
+    },
+    {
+      "id": "X285_M34_OSCILLATION_PROBE",
+      "script": "post285_m34_remainder_oscillation_probe.py",
+      "package": "M33_M34_SIGN_REVERSAL_AND_OSCILLATION",
+      "disposition": "EXPERIMENTAL_SIGNAL",
+      "summary": "float canonical matrices, K = 2..5, L = 1..6 step 0.25, even ground state (not a contact): the M09 identity on the actual source energy holds to 7e-14; the oscillation bound |int R h'| <= (Omega/2) int |h'| holds at all 84 rows, with Omega = sup R - inf R over [1, e^L]; the Step 68 sign pattern holds at all 10 rows where the explicit theta >= 1e-6 (50 digits, Dz projected on the legal odd carrier), and theta is below 1e-6 elsewhere. The ground states use at most 30% of the oscillation room for int R h' and 13% for int (e^{-t/2} - rho) h, so (71.2) with C = 0 holds with a margin of at least 7.8 on this grid"
+    },
+    {
+      "id": "X285_M44_ENTERING_PRIME_JET",
+      "script": "post285_m44_entering_prime_jet_probe.py",
+      "package": "M44_ENTERING_PRIME_PHYSICAL_JET",
+      "disposition": "EXACT_THEOREM_REGRESSION_PASS",
+      "summary": "60 digits, K = 2..5, six legal even vectors per K (even ground states at L = 1..4 and two random), seams q = 2, 3, 4, 5, 7, 8, 9, 11, 13 (216 rows): M_3(Dz) = M_4(z) to 1e-59; Delta Q/(a h^7) is within 1e-3 of 1 at h = 1e-4; |Delta Q - a h^7|/h^8 is stable between h = 1e-3 and 1e-4; the M45 angle bound and Delta Q > 0 hold at all 1108 grid points inside the angle. Signal: |Delta Q - a h^7|/h^8 tends to 7a/log q (0.991 to 1.0002 of it at h = 1e-4), the next term of omega_h^7, since e_u is odd in omega"
+    },
+    {
+      "id": "X285_M44_CONTROLS",
+      "script": "post285_m44_entering_prime_jet_probe.py",
+      "package": "M44_CONTROLS",
+      "disposition": "NEGATIVE_CONTROL_FAILS_AS_EXPECTED",
+      "summary": "C1: the even energy e_z in place of e_{Dz} gives a negative jump at all 216 rows (the Step 56 ninth-order seam term, a different observable); C2: (log q)^7 in place of (log q)^5 in the leading coefficient misses the ratio by at least 0.2"
+    },
+    {
       "id": "X285_M12_STEP28_CERTIFIED",
       "script": "post285_m09_weighted_remainder_falsifier.py",
       "package": "M12_STEP28_REPLAY",
