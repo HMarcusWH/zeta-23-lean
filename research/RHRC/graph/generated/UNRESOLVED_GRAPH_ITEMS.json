@@ -923,6 +923,7 @@
     "Mathlib.Analysis.SpecialFunctions.Gamma.Deligne",
     "Mathlib.Analysis.SpecialFunctions.Gamma.Deriv",
     "Mathlib.Analysis.SpecialFunctions.Gamma.Digamma",
+    "Mathlib.Analysis.SpecialFunctions.Gaussian.GaussianIntegral",
     "Mathlib.Analysis.SpecialFunctions.ImproperIntegrals",
     "Mathlib.Analysis.SpecialFunctions.Integrals.Basic",
     "Mathlib.Analysis.SpecialFunctions.JapaneseBracket",

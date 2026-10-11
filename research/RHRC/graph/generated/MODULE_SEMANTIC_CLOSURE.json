@@ -743,6 +743,21 @@
     },
     {
       "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/CCM/CanonicalContactOlderPrimeBudget.lean",
+      "module": "Zeta23.CCM.CanonicalContactOlderPrimeBudget",
+      "module_id": "rh:module:Zeta23.CCM.CanonicalContactOlderPrimeBudget",
+      "named_source_declaration_count": 11,
+      "path": "Zeta23/CCM/CanonicalContactOlderPrimeBudget.lean",
+      "reachability": "ENTRYPOINT_REACHABLE",
+      "reachable_from": [
+        "Zeta23.CCM"
+      ],
+      "registered_root_count": 0,
+      "standalone_role": null,
+      "trust_zone": "RH_FORMAL_CORE"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 0,
       "file_id": "rh:file:Zeta23/CCM/CanonicalContactOverlapSign.lean",
       "module": "Zeta23.CCM.CanonicalContactOverlapSign",
       "module_id": "rh:module:Zeta23.CCM.CanonicalContactOverlapSign",
@@ -1123,6 +1138,21 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
+      "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/CCM/CanonicalRecentPrimeSecondVariation.lean",
+      "module": "Zeta23.CCM.CanonicalRecentPrimeSecondVariation",
+      "module_id": "rh:module:Zeta23.CCM.CanonicalRecentPrimeSecondVariation",
+      "named_source_declaration_count": 8,
+      "path": "Zeta23/CCM/CanonicalRecentPrimeSecondVariation.lean",
+      "reachability": "ENTRYPOINT_REACHABLE",
+      "reachable_from": [
+        "Zeta23.CCM"
+      ],
+      "registered_root_count": 0,
+      "standalone_role": null,
+      "trust_zone": "RH_FORMAL_CORE"
+    },
+    {
       "compiler_dependency_surface_declaration_count": 7,
       "file_id": "rh:file:Zeta23/CCM/CanonicalRegularizedEnergyIdentity.lean",
       "module": "Zeta23.CCM.CanonicalRegularizedEnergyIdentity",
@@ -1377,6 +1407,21 @@
       "reachable_from": [
         "Zeta23.CCM",
         "Zeta23.ExceptionalZero"
+      ],
+      "registered_root_count": 0,
+      "standalone_role": null,
+      "trust_zone": "RH_FORMAL_CORE"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/CCM/CanonicalSourceOddEndpointQuantitative.lean",
+      "module": "Zeta23.CCM.CanonicalSourceOddEndpointQuantitative",
+      "module_id": "rh:module:Zeta23.CCM.CanonicalSourceOddEndpointQuantitative",
+      "named_source_declaration_count": 20,
+      "path": "Zeta23/CCM/CanonicalSourceOddEndpointQuantitative.lean",
+      "reachability": "ENTRYPOINT_REACHABLE",
+      "reachable_from": [
+        "Zeta23.CCM"
       ],
       "registered_root_count": 0,
       "standalone_role": null,
@@ -5174,6 +5219,21 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
+      "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/CCM/SourceRankTwoLaplace.lean",
+      "module": "Zeta23.CCM.SourceRankTwoLaplace",
+      "module_id": "rh:module:Zeta23.CCM.SourceRankTwoLaplace",
+      "named_source_declaration_count": 25,
+      "path": "Zeta23/CCM/SourceRankTwoLaplace.lean",
+      "reachability": "ENTRYPOINT_REACHABLE",
+      "reachable_from": [
+        "Zeta23.CCM"
+      ],
+      "registered_root_count": 0,
+      "standalone_role": null,
+      "trust_zone": "RH_FORMAL_CORE"
+    },
+    {
       "compiler_dependency_surface_declaration_count": 2,
       "file_id": "rh:file:Zeta23/CCM/SourceSignCountermodels.lean",
       "module": "Zeta23.CCM.SourceSignCountermodels",
@@ -5239,6 +5299,21 @@
       "module_id": "rh:module:Zeta23.CCM.StrictEvenPrimeSeamDichotomy",
       "named_source_declaration_count": 10,
       "path": "Zeta23/CCM/StrictEvenPrimeSeamDichotomy.lean",
+      "reachability": "ENTRYPOINT_REACHABLE",
+      "reachable_from": [
+        "Zeta23.CCM"
+      ],
+      "registered_root_count": 0,
+      "standalone_role": null,
+      "trust_zone": "RH_FORMAL_CORE"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/CCM/WeightedRemainderIdentity.lean",
+      "module": "Zeta23.CCM.WeightedRemainderIdentity",
+      "module_id": "rh:module:Zeta23.CCM.WeightedRemainderIdentity",
+      "named_source_declaration_count": 21,
+      "path": "Zeta23/CCM/WeightedRemainderIdentity.lean",
       "reachability": "ENTRYPOINT_REACHABLE",
       "reachable_from": [
         "Zeta23.CCM"
@@ -11948,7 +12023,7 @@
       "trust_zone": "AUXILIARY_FORMALIZATION"
     }
   ],
-  "entry_count": 760,
+  "entry_count": 765,
   "graph_theorem_promotion": false,
   "schema_version": "RHKG-final-module-closure-1.0",
   "scope": "ALL_LOCAL_LEAN_MODULES",
