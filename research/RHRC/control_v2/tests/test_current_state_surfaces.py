@@ -48,7 +48,10 @@ class CurrentStateSurfaceTests(unittest.TestCase):
             route["current_next_research_target"],
             "POST285_CANONICAL_SECULAR_RAY_PRIME_FREE_F04_AND_FULL_ARITHMETIC_SOURCE_INEQUALITY",
         )
-        self.assertEqual(route["post285_f04_production_derivative_authority"], "OPEN")
+        self.assertEqual(
+            route["post285_f04_production_derivative_authority"],
+            "PROVED_PENDING_CI_CANDIDATE_PR_287",
+        )
         self.assertEqual(route["post278_fixedN_ground_continuity"], "PROVED_MERGED_PR_278")
         self.assertEqual(route["post278_sameN_zero_contact"], "PROVED_MERGED_PR_278")
         self.assertEqual(route["post276_small_aperture_ground_spectrum"], "PROVED_PR_276")

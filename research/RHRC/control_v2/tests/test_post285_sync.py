@@ -30,28 +30,37 @@ class Post285SyncTests(unittest.TestCase):
         self.assertEqual(self.state["merged_control_anchor"]["pr"], 117)
         self.assertEqual(self.state["terminal_claim"], "RH_OPEN")
 
-    def test_no_open_candidate_and_previous_candidate_is_history(self):
+    def test_candidate_is_pr_287_pending_and_previous_candidate_is_history(self):
+        # PR #287 (post-285 M70-M77 build) is an open candidate; nothing in it is
+        # merged authority until its exact-head CI receipt exists.
         candidate = self.state["candidate_branch"]
-        self.assertEqual(candidate["pr"], "NONE")
+        self.assertEqual(candidate["pr"], 287)
+        self.assertEqual(candidate["theorem_validation"], "CI_PENDING_EXACT_HEAD_RUNTIME_RECEIPT_REQUIRED")
         self.assertFalse(candidate["terminal_claim_change"])
         previous = self.state["previous_candidate_branch"]
         self.assertEqual(previous["pr"], 283)
         self.assertIn("PR #284", previous["outcome"])
 
-    def test_post285_frontier_keeps_f04_m74_and_rh_open(self):
+    def test_post285_frontier_keeps_f04_m74_unmerged_and_rh_open(self):
         route = self.state["active_research_route"]
         self.assertEqual(route["post285_source_inertia_package"], "PROVED_MERGED_PR_285")
+        # Candidate #287 proves these pending CI; none is merged authority.
+        pending = "PROVED_PENDING_CI_CANDIDATE_PR_287"
+        self.assertEqual(route["post285_f04_production_derivative_authority"], pending)
+        self.assertEqual(route["post285_m74_canonical_secular_instantiation"], pending)
+        self.assertIn(pending, route["post285_general_omega_inertia"])
+        self.assertIn("FILTERED_CARRIERS_OPEN", route["post285_general_omega_inertia"])
         for key in (
             "post285_f04_production_derivative_authority",
             "post285_m74_canonical_secular_instantiation",
             "post285_general_omega_inertia",
         ):
-            self.assertEqual(route[key], "OPEN")
+            self.assertNotIn("MERGED", route[key])
         self.assertEqual(
             route["current_active_subobligation"],
             "OBS-060O_CONTACT_CONDITIONED_PRODUCTION_SATURATION_EXCLUSION",
         )
-        for token in ("PR #285", "RH remains OPEN", "No candidate PR is open"):
+        for token in ("PR #285", "RH remains OPEN", "Candidate PR #287", "pending exact-head CI"):
             self.assertIn(token, self.state["current_control_note"])
 
     def test_post285_registered_claims_are_individually_bound(self):
