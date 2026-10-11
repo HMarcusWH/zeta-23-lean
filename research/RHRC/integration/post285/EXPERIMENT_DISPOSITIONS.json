@@ -59,7 +59,7 @@
       "package": "M76_SECULAR_MARGIN",
       "disposition": "EXPERIMENTAL_SIGNAL",
       "summary": "actual canonical float matrices, K = 2..5, L = 0.25..6: rank-one relation B D - D A = g H holds to 2e-15 (consistent with the Lean theorem); on the 46 float-resolved (K, L) points B > 0, A > 0 and the secular margin 1 - T(L) > 0 (min 4.4e-4 at K = 3, L = 2.75), with det A / det B = 1 - T to 3e-9; the pole and prime channel contributions to T cancel to relative size up to 7e9; CanonicalShiftedSecular regressions on the same matrices: T(a) = 1 to 3e-9 and the shifted overlap identity to 5e-8 at all 46 resolved even roots below the odd floor, and the odd-first determinant identity det B / det A = 1 + H(A^-1 D^-1 g) to 5e-8 relative",
-      "caveat": "50 grid points are below float64 resolution (lambda_min < 1e-10 x matrix scale) and are reported as unresolved, not as signs; no certified enclosure"
+      "caveat": "50 grid points are below float64 resolution (lambda_min < 1e-10 x matrix scale) and are reported as unresolved, not as signs; no certified enclosure here (X285_M76_ARB_RESOLUTION certifies all 96 points in Arb)"
     },
     {
       "id": "X285_F04_IDENTITY",
@@ -264,6 +264,20 @@
       "package": "M63_ROUTE_COMPARISON",
       "disposition": "EXPERIMENTAL_SIGNAL",
       "summary": "At the four K = 2 near-contacts: route A (F04 curvature) V/|P| = -1.7e-2, -7.1e-4, -7.3e-5, -1.4e-5, with V matching the F04 form to 5e-9; route B (source moment) relative defect from |M_4|^2/gamma = 0.027, 0.0096, 0.0099, 0.0054, equal to lambda/lambda_odd to three digits. Control: the M50 weights in route B miss by a factor of at least 2900"
+    },
+    {
+      "id": "X285_M76_ARB_RESOLUTION",
+      "script": "post285_m76_arb_resolution.py",
+      "package": "M76_SECULAR_MARGIN_GRID_CERTIFICATE",
+      "disposition": "CERTIFIED_DISCOVERY_REPLAY",
+      "summary": "Arb (256 bits), K = 2..5, L = k/4 <= 6, all 96 grid points: lambda_min(A_L) > 0, lambda_min(B_L) > 0 and 1 - T(L) = det A_L / det B_L > 0 certified, including the 50 float-unresolved points (float64 had shown negative bottoms at 13 of them). Min margin 2.2e-9 at K = 5, L = 6; min lambda_min(A_L) 9.7e-25; even bottom certified below the odd bottom everywhere (ratio 0.49 down to 1.1e-3). T = H_L(x_L) matches the determinant ratio to 1e-41; each channel (pole, arch, prime, scalar) satisfies the rank-one relation on its own to 1e-68; the pole channel cancels at up to 2e16 times T. Float64 margins on the 46 resolved points agree to 1.9e-3 relative. K = 2 grid minima are the grid points nearest 2 pi k/gamma_1; K = 3, 4 dip deepest at L = 4 (L gamma_1/(2 pi) = 8.998)"
+    },
+    {
+      "id": "X285_M76_ARB_CONTROLS",
+      "script": "post285_m76_arb_resolution.py",
+      "package": "M76_ARB_CONTROLS",
+      "disposition": "NEGATIVE_CONTROL_FAILS_AS_EXPECTED",
+      "summary": "At the smallest-margin point of each K: C1 von Mangoldt weights times 1 + 1e-6 make lambda_min(A_L) negative (certified); C2 weights times 1 - 1e-6 make lambda_min(B_L) (K = 2) or both bottoms (K = 3..5) negative (certified); C3 canonicalArchScalarCorrection added twice lifts both bottoms by exactly 2 c(L) = 0.87, hiding the near-contact"
     },
     {
       "id": "X285_M12_STEP28_CERTIFIED",

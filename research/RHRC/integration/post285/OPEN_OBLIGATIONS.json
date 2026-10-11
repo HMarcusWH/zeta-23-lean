@@ -475,6 +475,13 @@
       "detail": "No independent continuous or integrable C_K with T_L' <= C_K(L)(1 - T_L) is known for the canonical operator. C_K may not be built from T'/(1 - T), det A_L, assumed absence of contacts, or RH."
     },
     {
+      "id": "M76_SECULAR_MARGIN_GRID_CERTIFICATE",
+      "package": "M76",
+      "steps": "113",
+      "status": "INTERVAL_EVIDENCE",
+      "detail": "Arb (256 bits) at the 96 points K = 2..5, L = k/4 (k = 1..24) of the M76 grid: the actual canonical matrix at the exact rational aperture, the exact integer parity carriers, certified lambda_min(A_L) > 0, lambda_min(B_L) > 0 and 1 - T(L) = det A_L / det B_L > 0 at every point, including the 50 that float64 cannot resolve. The margin falls to 2.2e-9 (K = 5, L = 6), lambda_min(A_L) to 9.7e-25, and the even bottom is below the odd one at every point. Pointwise only: nothing between grid points, nothing for K >= 6; M76_ARITHMETIC_COMPOSITION stays OPEN."
+    },
+    {
       "id": "M76_ARITHMETIC_COMPOSITION",
       "package": "M76",
       "steps": "113, 120",

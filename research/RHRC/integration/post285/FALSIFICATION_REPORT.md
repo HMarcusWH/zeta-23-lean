@@ -6,7 +6,7 @@ evidence. Theorem authority comes only from the Lean roots listed in
 
 ## Scripts
 
-All eighteen scripts live in `research/RHRC/routes/R003_ccm_bridge/post285/` and
+All nineteen scripts live in `research/RHRC/routes/R003_ccm_bridge/post285/` and
 run in the `source-falsifier-research` job of
 `.github/workflows/rhrc_post284_source_inertia.yml`. Each one runs in seconds.
 
@@ -30,6 +30,7 @@ run in the `source-falsifier-research` job of
 | `post285_m29_source_resolvent_derivative_probe.py` | M29 | Pass, with all three controls failing as predicted |
 | `post285_m51_k2_even_bottom_certificate.py` | M51 | Certificate passes; both controls fail and the positive control holds as predicted |
 | `post285_m63_route_comparison_probe.py` | M63 | Experimental signal; the control fails as predicted |
+| `post285_m76_arb_resolution.py` | M76 | Arb-certified at all 96 grid points, with all three controls failing as predicted |
 
 ## M74: canonical secular resolvent
 
@@ -129,8 +130,8 @@ This probe uses the production canonical float matrices for `K = 2..5` and
   - The script fails if any of these residuals exceeds 1e-5.
 - **Unresolved points.** 50 grid points (larger `K` and `L`) fall below float64
   resolution. Their apparent negative eigenvalues are at the 1e-15 level and are
-  **not** reported as signs. Resolving them needs the Arb path
-  (`canonical_source_arb.py`).
+  **not** reported as signs. `post285_m76_arb_resolution.py` resolves them in
+  Arb (see "M76 in Arb" below).
 
 ## F04 (M65) and M66
 
@@ -502,6 +503,39 @@ minima above, with `v = z/|z|`.
   form of (98B)).
 - **Control C1.** Route B with the M50 weights `Λ(q)(log q)²/√q` misses by a
   factor of at least 2900.
+
+## M76 in Arb: the secular-margin grid certified (Step 113)
+
+`post285_m76_arb_resolution.py` recomputes all 96 points of the M76 grid
+(`K = 2..5`, `L = k/4 ≤ 6`) in Arb at 256 bits. It uses the canonical matrix at
+the exact rational aperture, with the cutoff certified inside its cell, and the
+exact integer parity carriers.
+
+- **Certified signs.** `λ_min(A_L) > 0`, `λ_min(B_L) > 0` and
+  `1 − T(L) = det A_L / det B_L > 0` at every point, the 50 float-unresolved
+  points included. Float64 had shown negative bottoms at 13 of those 50 (9 even,
+  4 odd); all are positive.
+- **How small.** The margin falls to `2.2·10⁻⁹` (`K = 5`, `L = 6`) and
+  `λ_min(A_L)` to `9.7·10⁻²⁵`. The even bottom is certified below the odd bottom
+  at every point (ratio `0.49` down to `1.1·10⁻³`).
+- **Consistency.** `T = H_L(x_L)` matches the determinant ratio to `10⁻⁴¹`. Each
+  channel (pole, arch, prime, scalar) satisfies the rank-one relation on its own
+  to `10⁻⁶⁸`, and the pole channel cancels at up to `2·10¹⁶` times `T`. On the 46
+  resolved points the float64 margins agree to `1.9·10⁻³` relative; the error
+  grows with the cancellation.
+- **Where the dips are.** Every `K = 2` grid minimum of `λ_min(A_L)` is the grid
+  point nearest some `2πk/γ₁` (`k = 4, 5, 8, 9, 10, 12, 13`). `K = 3` and `K = 4`
+  dip deepest at `L = 4`, where `L γ₁/(2π) = 8.998`.
+- **Control C1.** Every von Mangoldt weight times `1 + 10⁻⁶` makes `λ_min(A_L)`
+  negative (certified) at the smallest-margin point of each `K`.
+- **Control C2.** Times `1 − 10⁻⁶` makes `λ_min(B_L)` negative (`K = 2`), or both
+  bottoms (`K = 3..5`). Positivity at these points depends on the exact prime
+  weights to one part in a million, in both directions.
+- **Control C3.** Adding `canonicalArchScalarCorrection` twice lifts both bottoms
+  by exactly `2c(L) ≈ 0.87`, which would hide every near-contact.
+
+This is pointwise evidence at 96 apertures: nothing between grid points, nothing
+for `K ≥ 6`, and no contact is excluded.
 
 ## Inherited regressions kept running
 

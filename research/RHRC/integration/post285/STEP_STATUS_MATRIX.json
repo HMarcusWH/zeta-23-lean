@@ -695,7 +695,7 @@
       "topic": "Canonical complete arithmetic opposite-side target",
       "package": "M74/M76",
       "status": "OPEN",
-      "anchor_or_note": "exact reduction DERIVED; opposite side OPEN"
+      "anchor_or_note": "exact reduction DERIVED; opposite side OPEN; Arb certifies 1 - T > 0 at the 96 M76 grid points (interval evidence, M76_SECULAR_MARGIN_GRID_CERTIFICATE)"
     },
     {
       "step": 114,

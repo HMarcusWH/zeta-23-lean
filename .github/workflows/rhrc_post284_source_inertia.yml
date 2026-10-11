@@ -245,6 +245,10 @@ jobs:
         run: |
           python research/RHRC/routes/R003_ccm_bridge/post285/post285_m63_route_comparison_probe.py \
             --output /tmp/POST285_M63_ROUTE_COMPARISON_PROBE.json > /dev/null
+      - name: Post-285 M76 Arb resolution of the secular-margin grid (research evidence)
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/post285/post285_m76_arb_resolution.py \
+            --output /tmp/POST285_M76_ARB_RESOLUTION.json > /dev/null
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -271,3 +275,4 @@ jobs:
             /tmp/POST285_M29_SOURCE_RESOLVENT_DERIVATIVE_PROBE.json
             /tmp/POST285_M51_K2_EVEN_BOTTOM_CERTIFICATE.json
             /tmp/POST285_M63_ROUTE_COMPARISON_PROBE.json
+            /tmp/POST285_M76_ARB_RESOLUTION.json

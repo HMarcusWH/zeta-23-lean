@@ -288,7 +288,17 @@ The details are in `FALSIFICATION_REPORT.md`.
   46 float-resolved points (`K = 2..5`, `L ≤ 6`), the margin `1 − T(L)` is
   positive, with a minimum of 4.4e-4.
   - Pole and prime channels cancel at up to 7e9 times the net value.
-  - The other 50 points need Arb before any sign can be read from them.
+- **M76 in Arb: all 96 grid points certified (interval evidence).** Arb at 256
+  bits certifies `A > 0`, `B > 0` and `1 − T(L) > 0` at every grid point,
+  including the 50 that float64 cannot resolve (it had shown negative bottoms
+  at 13 of them).
+  - The margin falls to `2.2·10⁻⁹` at `K = 5, L = 6`, and `λ_min(A)` to
+    `9.7·10⁻²⁵`. The pole channel cancels at up to `2·10¹⁶` times `T`.
+  - Scaling every prime weight by `1 ± 10⁻⁶` destroys positivity at the
+    deepest point of each `K`, in both directions.
+  - The `K = 2` grid minima are the grid points nearest `2πk/γ₁`, and `K = 3`, `4`
+    dip deepest at `L = 4 ≈ 2π·9/γ₁`. This is pointwise; nothing between grid
+    points is claimed.
 - **M73.** The optimal Poincaré constant decreases toward `1/4`; it is 0.2513 at
   `K = 80`.
 - **M75.** The window `η_K` is very conservative. The true negative run is
@@ -359,15 +369,26 @@ The details are in `FALSIFICATION_REPORT.md`.
    ground on `(0, log 2)` is the statement "no strict-even first contact in the
    prime-free window". With F04 and the Euler identity now proved there, a
    lower bound on `Q_K` along the whole window is a concrete target.
-3. **Arb resolution of the 50 unresolved M76 points.** Use
-   `canonical_source_arb.py` with the M76 channel split.
-4. **Close `(0, 1/400)` for `K = 2`.** `λ ≈ −log L − 0.90` there, and M66
+3. **Close `(0, 1/400)` for `K = 2`.** `λ ≈ −log L − 0.90` there, and M66
    gives `E'' + (2/L)E' < 0` on `(0, ε_2)`. A proved limit `L²λ'(L) → 0` would
    make `λ` decreasing there and finish `(0, log 16]`.
-5. **The `K = 3` near-contacts.** Repeat the M51 certificate on the
+4. **The `K = 3` near-contacts.** Repeat the M51 certificate on the
    two-dimensional `K = 3` even carrier (an Arb eigenvalue enclosure instead of
-   a scalar) and test whether its minima also sit at `L = 2πk/γ₁`.
-6. **A sharper M75 window.** The 198× slack in `η_K` suggests that a
+   a scalar) and test whether its minima also sit at `L = 2πk/γ₁`. The M76 Arb
+   grid already puts the deepest `K = 3` dip at `L = 4`, where
+   `L γ₁/(2π) = 8.998`. A first try with a fixed eigenframe on each interval
+   (Taylor bounds for the 2×2 entries, then the Schur complement) did not
+   finish the cell `[log 14, log 15]` in 30 minutes. The binding term is the
+   ball enclosure of the second derivative: evaluated over `[c − r, c + r]`,
+   the compressed `A''` has radius about `1.4·10⁵ r` at 128 and 256 bits alike,
+   because the pole, archimedean and prime channels are enclosed separately and
+   their cancellation is lost. With the bottom near `10⁻¹¹` this forces
+   `r ≲ 10⁻⁵`, about three hours for this one cell, and the bottom falls to
+   `10⁻¹⁵`–`10⁻¹⁷` beyond `L ≈ 4`. The eigenvalue itself would allow
+   `r ≈ 10⁻³`–`10⁻²` (float scout of `λ'`, `λ''`). Enclosures that keep the
+   cancellation (Taylor models in `L − c`, or the compressed forms evaluated
+   as one kernel sum) are the likely way through.
+5. **A sharper M75 window.** The 198× slack in `η_K` suggests that a
    second-derivative window could lower the `π² M_K log 2` threshold by orders
    of magnitude.
 
@@ -394,6 +415,12 @@ gives:
 **Tied identity.** For `A z = 0` and `B y = 0`, pairing the rank-one relation
 with `y` and using the symmetry of `B` gives `H(z)⟨y, g⟩ = 0`. So either
 `D z ∈ ker B`, or `g ⊥ ker B`.
+
+**On the M76 grid the approach is even-first (signal).** At all 96 Arb-certified
+grid points (`K = 2..5`, `L = k/4 ≤ 6`) both bottoms are positive and the even
+bottom is below the odd bottom, by a factor from `0.49` down to `1.1·10⁻³`. The
+odd-first and tied branches are not approached there. This is pointwise
+evidence, not a statement about any contact.
 
 Branches outside first contact (fresh-born, interior, later crossings) stay
 OPEN, as in post-284 M14. No branch is excluded.
