@@ -1,11 +1,25 @@
 from __future__ import annotations
 
+import importlib.util
 import json
 from pathlib import Path
 
 RHRC = Path(__file__).resolve().parents[1]
 REPO = RHRC.parents[1]
 INTEGRATION = RHRC / "integration"
+
+
+def _load_source_only_shards():
+    path = RHRC / "integration" / "source_only_shards.py"
+    spec = importlib.util.spec_from_file_location("rhrc_source_only_shards", path)
+    if spec is None or spec.loader is None:
+        raise RuntimeError(f"cannot load source-only shard layout from {path}")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+SOURCE_ONLY_SHARDS = _load_source_only_shards()
 
 
 def load(name: str) -> dict:
@@ -260,7 +274,6 @@ def main() -> int:
     ool_config_path = RHRC / "ool" / "configs" / "rhkg_phase_atlas_v2.json"
     ool_report_path = RHRC / "ool" / "generated" / "RHKG_OOL_PHASE_ATLAS.json"
     ool_contacts_path = RHRC / "ool" / "generated" / "RHKG_OOL_ROUTE_CONTACTS.jsonl"
-    ool_deps_path = INTEGRATION / "generated" / "SOURCE_ONLY_CANDIDATE_DEPENDENCIES.jsonl"
     ool_config = json.loads(ool_config_path.read_text(encoding="utf-8"))
     if ool_config.get("terminal_claim") != "RH_OPEN" or ool_config.get("theorem_promotion") is not False:
         raise SystemExit("integration_lint: OoL config authority drift")
@@ -281,11 +294,7 @@ def main() -> int:
     frontier_edges = ool_report["frontier_probe"].get("eligible_cross_region_edge_count")
     if not isinstance(frontier_edges, int) or frontier_edges < 0:
         raise SystemExit("integration_lint: invalid OoL theorem-value-erased frontier count")
-    dep_rows = [
-        json.loads(line)
-        for line in ool_deps_path.read_text(encoding="utf-8").splitlines()
-        if line.strip()
-    ]
+    dep_rows = SOURCE_ONLY_SHARDS.load_rows()
     if sum(row.get("graph_role") == "SOURCE_ONLY_ROOT" for row in dep_rows) != source_only_count:
         raise SystemExit("integration_lint: OoL source-only dependency-root drift")
     contact_rows = [

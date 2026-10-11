@@ -18,7 +18,7 @@ jobs:
           fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
-          python-version: '3.x'
+          python-version: '3.14'
       - name: Install RHRC framework requirements
         run: python -m pip install -r research/RHRC/requirements.txt
       - name: RHRC claim and regression suite
@@ -59,7 +59,7 @@ jobs:
           fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
-          python-version: '3.x'
+          python-version: '3.14'
       - name: Install RHRC framework requirements
         run: python -m pip install -r research/RHRC/requirements.txt
       - uses: leanprover/lean-action@v1
@@ -100,7 +100,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
-          python-version: '3.x'
+          python-version: '3.14'
       - name: Install R003 numerical audit requirements
         run: python -m pip install -r research/RHRC/routes/R003_ccm_bridge/requirements.txt
       - name: Re-run cutoff-free CCM normalization lock
@@ -460,7 +460,7 @@ jobs:
         run: python3 research/RHRC/tools/million_dollar_firewall_lint.py
       - name: Audit kernel axioms of post-245 arithmetic modules
         run: python3 research/RHRC/tools/axiom_audit.py
-      - name: Audit kernel axioms of PR #274 closure modules
+      - name: 'Audit kernel axioms of PR #274 closure modules'
         run: |
           python research/RHRC/tools/axiom_audit.py \
             Zeta23/CCM/CanonicalArchUpperBound.lean \

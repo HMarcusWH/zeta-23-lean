@@ -53,5 +53,160 @@
       "action_this_pr": "KEEP_OPEN; NOTE_CORRECTED"
     }
   ],
-  "new_post284_roots": "see PROOF_ROOTS.json; recorded as research ledger roots, not registered claims, in this PR"
+  "new_post284_roots": "see PROOF_ROOTS.json; all 109 roots are PROVED (3 CONDITIONAL_PROVED with their listed premises) on the PR #285 exact-head receipt; the headline roots below are registered claims after the post-#285 migration",
+  "post285_registered_claims": [
+    {
+      "id": "R003_CANONICAL_REGULARIZED_ENERGY_IDENTITY",
+      "theorem": "Zeta23.CCM.quadraticForm_canonicalSourceMatrix_eq_regularizedEnergy",
+      "source": "Zeta23/CCM/CanonicalRegularizedEnergyIdentity.lean",
+      "merged_ci_evidence": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d lean-source-inertia job (run 38082653252, job 114302586955): build, axiom audit and proof-escape PASS",
+      "audit": "PREMISES_MATCH_CLAIM_TEXT",
+      "F04_premise": false,
+      "action": "REGISTERED_PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "R003_HALF_APERTURE_EVEN_SOURCE_EXACT_INERTIA",
+      "theorem": "Zeta23.CCM.evenBoundaryFlat_sourceHalf_exactInertia",
+      "source": "Zeta23/CCM/SourceParityExactInertia.lean",
+      "merged_ci_evidence": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d lean-source-inertia job (run 38082653252, job 114302586955): build, axiom audit and proof-escape PASS",
+      "audit": "PREMISES_MATCH_CLAIM_TEXT",
+      "F04_premise": false,
+      "action": "REGISTERED_PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "R003_HALF_APERTURE_ODD_SOURCE_EXACT_INERTIA",
+      "theorem": "Zeta23.CCM.oddBoundaryFlat_sourceHalf_exactInertia",
+      "source": "Zeta23/CCM/SourceParityExactInertia.lean",
+      "merged_ci_evidence": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d lean-source-inertia job (run 38082653252, job 114302586955): build, axiom audit and proof-escape PASS",
+      "audit": "PREMISES_MATCH_CLAIM_TEXT",
+      "F04_premise": false,
+      "action": "REGISTERED_PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "R003_HALF_APERTURE_FILTERED_EVEN_SOURCE_SPLIT",
+      "theorem": "Zeta23.CCM.evenFilteredCarrier_sourceHalf_split",
+      "source": "Zeta23/CCM/SourceMomentFilteredInertia.lean",
+      "merged_ci_evidence": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d lean-source-inertia job (run 38082653252, job 114302586955): build, axiom audit and proof-escape PASS",
+      "audit": "PREMISES_MATCH_CLAIM_TEXT",
+      "F04_premise": false,
+      "action": "REGISTERED_PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "R003_HALF_APERTURE_FILTERED_ODD_SOURCE_SPLIT",
+      "theorem": "Zeta23.CCM.oddFilteredCarrier_sourceHalf_split",
+      "source": "Zeta23/CCM/SourceMomentFilteredInertia.lean",
+      "merged_ci_evidence": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d lean-source-inertia job (run 38082653252, job 114302586955): build, axiom audit and proof-escape PASS",
+      "audit": "PREMISES_MATCH_CLAIM_TEXT",
+      "F04_premise": false,
+      "action": "REGISTERED_PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "R003_SOURCE_MOMENT_FILTRATION_DIMENSION",
+      "theorem": "Zeta23.CCM.finrank_momentFiltration",
+      "source": "Zeta23/CCM/SourceMomentVandermondeFiltration.lean",
+      "merged_ci_evidence": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d lean-source-inertia job (run 38082653252, job 114302586955): build, axiom audit and proof-escape PASS",
+      "audit": "PREMISES_MATCH_CLAIM_TEXT",
+      "F04_premise": false,
+      "action": "REGISTERED_PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "R003_ABSTRACT_RANK_ONE_SECULAR_DETERMINANT",
+      "theorem": "Zeta23.CCM.det_eq_mul_one_sub_secularScalar",
+      "source": "Zeta23/CCM/SecularDeterminantKernel.lean",
+      "merged_ci_evidence": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d lean-source-inertia job (run 38082653252, job 114302586955): build, axiom audit and proof-escape PASS",
+      "audit": "PREMISES_MATCH_CLAIM_TEXT",
+      "F04_premise": false,
+      "action": "REGISTERED_PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "R003_ABSTRACT_SECULAR_KERNEL_CRITERION",
+      "theorem": "Zeta23.CCM.secularScalar_eq_one_iff",
+      "source": "Zeta23/CCM/SecularDeterminantKernel.lean",
+      "merged_ci_evidence": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d lean-source-inertia job (run 38082653252, job 114302586955): build, axiom audit and proof-escape PASS",
+      "audit": "PREMISES_MATCH_CLAIM_TEXT",
+      "F04_premise": false,
+      "action": "REGISTERED_PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "R003_ABSTRACT_SHIFTED_SECULAR_EQUATION",
+      "theorem": "Zeta23.CCM.shifted_secular",
+      "source": "Zeta23/CCM/SecularDeterminantKernel.lean",
+      "merged_ci_evidence": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d lean-source-inertia job (run 38082653252, job 114302586955): build, axiom audit and proof-escape PASS",
+      "audit": "PREMISES_MATCH_CLAIM_TEXT",
+      "F04_premise": false,
+      "action": "REGISTERED_PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "R003_WEIGHTED_SOURCE_INTEGRAL_NEGATIVITY",
+      "theorem": "Zeta23.CCM.integral_one_sub_mul_re_quadraticForm_le",
+      "source": "Zeta23/CCM/CanonicalSourceWeightedIntegral.lean",
+      "merged_ci_evidence": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d lean-source-inertia job (run 38082653252, job 114302586955): build, axiom audit and proof-escape PASS",
+      "audit": "PREMISES_MATCH_CLAIM_TEXT",
+      "F04_premise": false,
+      "action": "REGISTERED_PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "R003_CENTERED_SOURCE_SIGN_CHANGE",
+      "theorem": "Zeta23.CCM.exists_source_zero_of_center_zero",
+      "source": "Zeta23/CCM/CanonicalSourceWeightedIntegral.lean",
+      "merged_ci_evidence": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d lean-source-inertia job (run 38082653252, job 114302586955): build, axiom audit and proof-escape PASS",
+      "audit": "PREMISES_MATCH_CLAIM_TEXT",
+      "F04_premise": false,
+      "action": "REGISTERED_PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "R003_CENTERED_INDEX_COERCIVITY",
+      "theorem": "Zeta23.CCM.sum_normSq_lt_five_mul",
+      "source": "Zeta23/CCM/CanonicalCenteredIndexCoercivity.lean",
+      "merged_ci_evidence": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d lean-source-inertia job (run 38082653252, job 114302586955): build, axiom audit and proof-escape PASS",
+      "audit": "PREMISES_MATCH_CLAIM_TEXT",
+      "F04_premise": false,
+      "action": "REGISTERED_PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "R003_PARITY_GAP_MOMENT_COERCIVITY_BOUND",
+      "theorem": "Zeta23.CCM.parityGap_mul_norm_sq_le_coercivity_mul_source_mul_momentFour",
+      "source": "Zeta23/CCM/CanonicalCenteredIndexCoercivity.lean",
+      "merged_ci_evidence": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d lean-source-inertia job (run 38082653252, job 114302586955): build, axiom audit and proof-escape PASS",
+      "audit": "PREMISES_MATCH_CLAIM_TEXT",
+      "F04_premise": false,
+      "action": "REGISTERED_PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "R003_K2_ODD_SOURCE_NEGATIVE_INTERVAL",
+      "theorem": "Zeta23.CCM.re_quadraticForm_neg_of_mem_oddBoundaryFlat_two",
+      "source": "Zeta23/CCM/CanonicalK2SourceSignInterval.lean",
+      "merged_ci_evidence": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d lean-source-inertia job (run 38082653252, job 114302586955): build, axiom audit and proof-escape PASS",
+      "audit": "PREMISES_MATCH_CLAIM_TEXT",
+      "F04_premise": false,
+      "action": "REGISTERED_PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "R003_K2_EVEN_INDEX_SOURCE_NEGATIVE_INTERVAL",
+      "theorem": "Zeta23.CCM.re_quadraticForm_index_neg_of_mem_evenBoundaryFlat_two",
+      "source": "Zeta23/CCM/CanonicalK2SourceSignInterval.lean",
+      "merged_ci_evidence": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d lean-source-inertia job (run 38082653252, job 114302586955): build, axiom audit and proof-escape PASS",
+      "audit": "PREMISES_MATCH_CLAIM_TEXT",
+      "F04_premise": false,
+      "action": "REGISTERED_PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "R003_K2_PRIME_SAMPLE_SOURCE_SIGN",
+      "theorem": "Zeta23.CCM.primeTerm_nonneg_of_primeSample_two",
+      "source": "Zeta23/CCM/CanonicalK2SourceSignInterval.lean",
+      "merged_ci_evidence": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d lean-source-inertia job (run 38082653252, job 114302586955): build, axiom audit and proof-escape PASS",
+      "audit": "PREMISES_MATCH_CLAIM_TEXT",
+      "F04_premise": false,
+      "action": "REGISTERED_PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "R003_PRIME_FREE_SECOND_TEST_RADIUS",
+      "theorem": "Zeta23.CCM.primeFreeSecondTest_pos",
+      "source": "Zeta23/CCM/CanonicalPrimeFreeSecondTest.lean",
+      "merged_ci_evidence": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d lean-source-inertia job (run 38082653252, job 114302586955): build, axiom audit and proof-escape PASS",
+      "audit": "PREMISES_MATCH_CLAIM_TEXT",
+      "F04_premise": false,
+      "action": "REGISTERED_PROVED_UNCONDITIONAL"
+    }
+  ]
 }

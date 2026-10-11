@@ -26,6 +26,14 @@ CONDITIONAL = {
  "Zeta23.CCM.ninthJump_le_of_gap_conditional": ["parity-ground gap premise delta*||Dz||^2 <= B*|M4(z)| (M19 identity, OPEN)", "optimized ninth-jump formula Delta9 = -kappa*|M4|^2 (M10, OPEN)"],
  "Zeta23.CCM.strictEven_seam_dichotomy": ["degree-9 expansion of s- with O(h^10) remainder", "entering continuation s+ = s- - alpha h^9 + O(h^10), alpha>0 (M10, OPEN)", "left nonnegativity", "right negativity at arbitrarily small h"],
 }
+# Exact-head receipt: PR #285 merged as 18a63cc5a3bb857cd603b073790427184e75d7f6 from
+# head d20653c50e85ed927940ffe7723cf07a1008be7d, whose lean-source-inertia job built
+# all 15 modules above, audited every #print axioms line (RHRC AXIOM AUDIT: PASS,
+# 109 reports, all [propext, Classical.choice, Quot.sound]) and passed the
+# promoted-surface proof-escape check.
+CI_RECEIPT = ("PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: "
+              "lean-source-inertia (run 38082653252, job 114302586955) build PASS, "
+              "axiom audit PASS, proof-escape PASS")
 roots=[]
 for rel,(pkg,desc) in META.items():
     text=(REPO/rel).read_text()
@@ -33,12 +41,13 @@ for rel,(pkg,desc) in META.items():
         decl=m.group(1)
         cond = decl in CONDITIONAL
         roots.append({"declaration":decl,"source":rel,"module":rel[:-5].replace('/','.'),"package":pkg,
-            "module_scope":desc,"status":"CONDITIONAL_PROVED_PENDING_CI" if cond else "PROVED_PENDING_CI",
+            "module_scope":desc,"status":"CONDITIONAL_PROVED" if cond else "PROVED",
             "premises":CONDITIONAL.get(decl,[]),
             "authority":"exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-            "axiom_receipt":"LOCAL_PENDING"})
+            "axiom_receipt":CI_RECEIPT})
 out={"schema":"post284.proof_roots.v1","terminal_claim":"RH_OPEN",
  "rule":"PROVED = exact clean Lean theorem with its full premises; status becomes PROVED only after the exact PR head passes the post-284 Lean/axiom/proof-escape jobs",
+ "ci_receipt":CI_RECEIPT,
  "roots":roots}
 json.dump(out,open(REPO/'research/RHRC/integration/post284/PROOF_ROOTS.json','w'),indent=2)
 print(len(roots))

@@ -10,7 +10,7 @@ only). Machine-readable companions: `BASELINE.json`, `SOURCE_CLOSURE_AUDIT.json`
 `EXPERIMENT_DISPOSITIONS.json`, `OPEN_OBLIGATIONS.json`,
 `FOLLOWUP_REGRESSIONS.json`.
 
-## 1. What became formally true (pending exact-head CI)
+## 1. What became formally true (exact-head CI receipt: PR #285 head `d20653c`)
 
 Exact Lean theorems with their full hypotheses (no `sorry`, no project axioms;
 each root carries a `#print axioms` receipt line, all locally
@@ -38,7 +38,19 @@ Claim registry: `R003_COMPRESSED_PRODUCTION_C2` and
 `R003_INHERITED_FIRST_VARIATION_RESTRICTION` promoted individually to
 `PROVED_UNCONDITIONAL` (premise-free relative to the claim text; merged-green
 PR #284). The two F04-conditional post-282 claims stay OPEN with corrected
-notes. The new roots above are research-ledger roots, not registered claims.
+notes.
+
+Post-#285 migration: PR #285 merged as `18a63cc` from head `d20653c`, whose
+`lean-source-inertia` job built all fifteen modules above, audited every
+`#print axioms` line (109 reports, all `[propext, Classical.choice,
+Quot.sound]`) and passed the proof-escape check. On that receipt every root in
+`PROOF_ROOTS.json` is now `PROVED` (three `CONDITIONAL_PROVED` with their listed
+premises), the `*_PENDING_CI` rows of `OPEN_OBLIGATIONS.json` carry their final
+statuses and cite their discharging declarations, and seventeen headline roots
+are registered as `PROVED_UNCONDITIONAL` claims, each checked individually
+against its exact hypotheses (`CLAIM_MIGRATION_MATRIX.json`,
+`post285_registered_claims`). F04, OBS-060O, general-ω inertia, M10, M65 and RH
+stay OPEN.
 
 ## 2. External 7/8 theorem
 

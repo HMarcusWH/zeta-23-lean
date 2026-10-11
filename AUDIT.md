@@ -6,30 +6,34 @@
 ## Current RHRC state
 
 THEOREM AUTHORITY
-- merged theorem authority = PR #282
-- validated final head = de2869d1614d71b5d851d7088be514901af11b74
-- merge commit = 01871f7d2256b1eac2dbd7967346954367c8eef9
-- tree = c7749d37c4b63270818c3fb0d7fb5dbc22638790
+- merged theorem authority = PR #285
+- validated final head = d20653c50e85ed927940ffe7723cf07a1008be7d
+- merge commit = 18a63cc5a3bb857cd603b073790427184e75d7f6
+- tree = f95a9d07d987199d85763990b7760deb7619d601
 - status = MERGED_GREEN_THEOREM_STATE
 - PR #275 full-space small-aperture coercive base = PROVED
 - PR #276 exact legal successor ground >= 1 on 0 < L <= 1/512 = PROVED
 - fixed-N production continuity = PROVED_MERGED_PR_278
 - same-N off-line-zero contact = PROVED_MERGED_PR_278
+- PR #284 compressed contact calculus = PROVED_MERGED_PR_284_C2_AND_INHERITED_FIRST_VARIATION; F04_CONDITIONAL_PAIR_BALANCE_AND_FRONTIER_OPEN
+- PR #285 post-284 source-inertia package = PROVED_MERGED_PR_285
 - PR #272 CofinalCanonicalArithmeticCertificates <-> Mathlib RiemannHypothesis = PROVED / AUDIT-ONLY
 - RH = OPEN
 
 CURRENT RESEARCH FRONTIER
-- current candidate PR = #283 / CANONICAL_COMPRESSED_CONTACT_CALCULUS_CANDIDATE
-- candidate theorem-validation head = RUNTIME_PR_HEAD_REQUIRED
-- candidate theorem-validation status = CI_PENDING_EXACT_HEAD_RUNTIME_RECEIPT_REQUIRED
+- current candidate PR = #NONE / NO_OPEN_CANDIDATE_PR
+- candidate theorem-validation head = NONE
+- candidate theorem-validation status = NONE
 - merged experimental research evidence = PR #273 / CERTIFIED_CURRENT_PRIME_GROUND_RESPONSE
 - fixed-N sign opposition = PROVED_MERGED_PR_277
 - global ground propagation strength = RH_SUFFICIENT_AUDIT_PROVED_PR_277
 - uniform domination strength = RH_SUFFICIENT_AUDIT_PROVED_PR_277
 - active obstruction = OBS-060_GROUND_SPECTRUM_FIRST_CROSSING_BARRIER
-- active subobligation = OBS-060N_COMPRESSED_PRODUCTION_DERIVATIVE_AND_ADMISSIBILITY_BRIDGE
-- next research target = POST282_CANONICAL_CONTACT_CALCULUS_AND_INHERITED_SATURATION
-- required new information = EXACT_COMPRESSED_C2_WEIGHTED_PRODUCTION_CALCULUS_AND_CONTACT_CONDITIONED_ARITHMETIC_EXCLUSION
+- active subobligation = OBS-060O_CONTACT_CONDITIONED_PRODUCTION_SATURATION_EXCLUSION
+- F04 production derivative authority = OPEN
+- M74 canonical secular instantiation = OPEN
+- next research target = POST285_CANONICAL_SECULAR_RAY_PRIME_FREE_F04_AND_FULL_ARITHMETIC_SOURCE_INEQUALITY
+- required new information = INDEPENDENT_FULL_ARITHMETIC_SOURCE_RESTRICTION_ON_THE_RESOLVENT_SELECTED_CONTACT_RAY
 - RH-sufficient terminal formulations are not counted as independent sub-RH progress
 
 FRAMEWORK / GRAPH STATE

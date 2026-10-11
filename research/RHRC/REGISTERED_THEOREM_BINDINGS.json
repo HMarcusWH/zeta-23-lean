@@ -572,6 +572,108 @@
       "theorem": "Zeta23.CCM.GeneratedStrictEvenContact.firstVariation_eq_zero_of_inherited",
       "source": "Zeta23/CCM/FirstCrossingGeneratedStrictEvenFrontier.lean",
       "route": "R003_ccm_bridge"
+    },
+    {
+      "id": "R003_CANONICAL_REGULARIZED_ENERGY_IDENTITY",
+      "theorem": "Zeta23.CCM.quadraticForm_canonicalSourceMatrix_eq_regularizedEnergy",
+      "source": "Zeta23/CCM/CanonicalRegularizedEnergyIdentity.lean",
+      "route": "R003_ccm_bridge"
+    },
+    {
+      "id": "R003_HALF_APERTURE_EVEN_SOURCE_EXACT_INERTIA",
+      "theorem": "Zeta23.CCM.evenBoundaryFlat_sourceHalf_exactInertia",
+      "source": "Zeta23/CCM/SourceParityExactInertia.lean",
+      "route": "R003_ccm_bridge"
+    },
+    {
+      "id": "R003_HALF_APERTURE_ODD_SOURCE_EXACT_INERTIA",
+      "theorem": "Zeta23.CCM.oddBoundaryFlat_sourceHalf_exactInertia",
+      "source": "Zeta23/CCM/SourceParityExactInertia.lean",
+      "route": "R003_ccm_bridge"
+    },
+    {
+      "id": "R003_HALF_APERTURE_FILTERED_EVEN_SOURCE_SPLIT",
+      "theorem": "Zeta23.CCM.evenFilteredCarrier_sourceHalf_split",
+      "source": "Zeta23/CCM/SourceMomentFilteredInertia.lean",
+      "route": "R003_ccm_bridge"
+    },
+    {
+      "id": "R003_HALF_APERTURE_FILTERED_ODD_SOURCE_SPLIT",
+      "theorem": "Zeta23.CCM.oddFilteredCarrier_sourceHalf_split",
+      "source": "Zeta23/CCM/SourceMomentFilteredInertia.lean",
+      "route": "R003_ccm_bridge"
+    },
+    {
+      "id": "R003_SOURCE_MOMENT_FILTRATION_DIMENSION",
+      "theorem": "Zeta23.CCM.finrank_momentFiltration",
+      "source": "Zeta23/CCM/SourceMomentVandermondeFiltration.lean",
+      "route": "R003_ccm_bridge"
+    },
+    {
+      "id": "R003_ABSTRACT_RANK_ONE_SECULAR_DETERMINANT",
+      "theorem": "Zeta23.CCM.det_eq_mul_one_sub_secularScalar",
+      "source": "Zeta23/CCM/SecularDeterminantKernel.lean",
+      "route": "R003_ccm_bridge"
+    },
+    {
+      "id": "R003_ABSTRACT_SECULAR_KERNEL_CRITERION",
+      "theorem": "Zeta23.CCM.secularScalar_eq_one_iff",
+      "source": "Zeta23/CCM/SecularDeterminantKernel.lean",
+      "route": "R003_ccm_bridge"
+    },
+    {
+      "id": "R003_ABSTRACT_SHIFTED_SECULAR_EQUATION",
+      "theorem": "Zeta23.CCM.shifted_secular",
+      "source": "Zeta23/CCM/SecularDeterminantKernel.lean",
+      "route": "R003_ccm_bridge"
+    },
+    {
+      "id": "R003_WEIGHTED_SOURCE_INTEGRAL_NEGATIVITY",
+      "theorem": "Zeta23.CCM.integral_one_sub_mul_re_quadraticForm_le",
+      "source": "Zeta23/CCM/CanonicalSourceWeightedIntegral.lean",
+      "route": "R003_ccm_bridge"
+    },
+    {
+      "id": "R003_CENTERED_SOURCE_SIGN_CHANGE",
+      "theorem": "Zeta23.CCM.exists_source_zero_of_center_zero",
+      "source": "Zeta23/CCM/CanonicalSourceWeightedIntegral.lean",
+      "route": "R003_ccm_bridge"
+    },
+    {
+      "id": "R003_CENTERED_INDEX_COERCIVITY",
+      "theorem": "Zeta23.CCM.sum_normSq_lt_five_mul",
+      "source": "Zeta23/CCM/CanonicalCenteredIndexCoercivity.lean",
+      "route": "R003_ccm_bridge"
+    },
+    {
+      "id": "R003_PARITY_GAP_MOMENT_COERCIVITY_BOUND",
+      "theorem": "Zeta23.CCM.parityGap_mul_norm_sq_le_coercivity_mul_source_mul_momentFour",
+      "source": "Zeta23/CCM/CanonicalCenteredIndexCoercivity.lean",
+      "route": "R003_ccm_bridge"
+    },
+    {
+      "id": "R003_K2_ODD_SOURCE_NEGATIVE_INTERVAL",
+      "theorem": "Zeta23.CCM.re_quadraticForm_neg_of_mem_oddBoundaryFlat_two",
+      "source": "Zeta23/CCM/CanonicalK2SourceSignInterval.lean",
+      "route": "R003_ccm_bridge"
+    },
+    {
+      "id": "R003_K2_EVEN_INDEX_SOURCE_NEGATIVE_INTERVAL",
+      "theorem": "Zeta23.CCM.re_quadraticForm_index_neg_of_mem_evenBoundaryFlat_two",
+      "source": "Zeta23/CCM/CanonicalK2SourceSignInterval.lean",
+      "route": "R003_ccm_bridge"
+    },
+    {
+      "id": "R003_K2_PRIME_SAMPLE_SOURCE_SIGN",
+      "theorem": "Zeta23.CCM.primeTerm_nonneg_of_primeSample_two",
+      "source": "Zeta23/CCM/CanonicalK2SourceSignInterval.lean",
+      "route": "R003_ccm_bridge"
+    },
+    {
+      "id": "R003_PRIME_FREE_SECOND_TEST_RADIUS",
+      "theorem": "Zeta23.CCM.primeFreeSecondTest_pos",
+      "source": "Zeta23/CCM/CanonicalPrimeFreeSecondTest.lean",
+      "route": "R003_ccm_bridge"
     }
   ],
   "candidate_scope": "OPEN_CANDIDATE_BINDINGS_AUDIT_ONLY_NOT_PROVED_AUTHORITY",

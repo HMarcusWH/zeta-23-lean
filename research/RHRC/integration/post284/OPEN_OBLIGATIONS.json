@@ -84,8 +84,14 @@
   {
    "id": "M18_FILTERED_INERTIA",
    "package": "M18",
-   "status": "DISCHARGED_AT_HALF_APERTURE_PENDING_CI",
-   "detail": "SourceMomentFilteredInertia: at omega=1/2 the even filtered carrier evenFilteredCarrier (m+s) s (even, M_0..M_{2s-1}=0) splits orthogonally with exact definite dimensions (m/2+1, (m+1)/2) and the odd filtered carrier oddFilteredCarrier (m+s+1) s with ((m+1)/2, m/2+1); both are indefinite for m>=1. Filtered inertia for 0<omega<1/2 remains OPEN (see M17_GENERAL_OMEGA_ANDREIEF_INERTIA)."
+   "status": "DISCHARGED_AT_HALF_APERTURE",
+   "detail": "SourceMomentFilteredInertia: at omega=1/2 the even filtered carrier evenFilteredCarrier (m+s) s (even, M_0..M_{2s-1}=0) splits orthogonally with exact definite dimensions (m/2+1, (m+1)/2) and the odd filtered carrier oddFilteredCarrier (m+s+1) s with ((m+1)/2, m/2+1); both are indefinite for m>=1. Filtered inertia for 0<omega<1/2 remains OPEN (see M17_GENERAL_OMEGA_ANDREIEF_INERTIA).",
+   "declarations": [
+    "Zeta23.CCM.evenFilteredCarrier_sourceHalf_split",
+    "Zeta23.CCM.oddFilteredCarrier_sourceHalf_split",
+    "Zeta23.CCM.filteredCarriers_sourceHalf_indefinite"
+   ],
+   "ci_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
   },
   {
    "id": "M18_SPECTRAL_FLOW_PASSAGES",
@@ -96,8 +102,12 @@
   {
    "id": "M19_PARITY_GROUND_IDENTITY",
    "package": "M19",
-   "status": "INEQUALITY_FORM_DISCHARGED_PENDING_CI",
-   "detail": "The premise used by ContactNinthJumpGapBound is now derived at even ground eigenvectors: parityGap_mul_norm_sq_le_coercivity_mul_source_mul_momentFour (CanonicalCenteredIndexCoercivity) composes the pre-existing parityGap_mul_evenIndex_norm_sq_le_re_star_source_mul_momentFour with the K-uniform coercivity C_K<5, giving delta*||v||^2 <= C_K*|H(v)|*|M4(v)| for delta>=0. The exact identity form and the M10 ninth-order jump premise remain OPEN."
+   "status": "INEQUALITY_FORM_DISCHARGED",
+   "detail": "The premise used by ContactNinthJumpGapBound is now derived at even ground eigenvectors: parityGap_mul_norm_sq_le_coercivity_mul_source_mul_momentFour (CanonicalCenteredIndexCoercivity) composes the pre-existing parityGap_mul_evenIndex_norm_sq_le_re_star_source_mul_momentFour with the K-uniform coercivity C_K<5, giving delta*||v||^2 <= C_K*|H(v)|*|M4(v)| for delta>=0. The exact identity form and the M10 ninth-order jump premise remain OPEN.",
+   "declarations": [
+    "Zeta23.CCM.parityGap_mul_norm_sq_le_coercivity_mul_source_mul_momentFour"
+   ],
+   "ci_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
   },
   {
    "id": "OAI_SEVEN_EIGHTHS_LOCAL_IMPORT",
@@ -114,8 +124,15 @@
   {
    "id": "F_M20_SECULAR_KERNEL",
    "package": "F-M20",
-   "status": "PROVED_ABSTRACT_PENDING_CI",
-   "detail": "SecularDeterminantKernel: det A = det B (1-T), A x = (1-T) D^{-1} g, ker A = span x, T=1 iff ker A nonzero (g != 0), over any field. Instantiation to the actual compressed canonical A_L, B_L, D, g, H_L (via ParityCompressionRankOne) is not yet a separate declaration."
+   "status": "PROVED_ABSTRACT",
+   "detail": "SecularDeterminantKernel: det A = det B (1-T), A x = (1-T) D^{-1} g, ker A = span x, T=1 iff ker A nonzero (g != 0), over any field. Instantiation to the actual compressed canonical A_L, B_L, D, g, H_L (via ParityCompressionRankOne) is not yet a separate declaration.",
+   "declarations": [
+    "Zeta23.CCM.det_eq_mul_one_sub_secularScalar",
+    "Zeta23.CCM.mulVec_secularVector",
+    "Zeta23.CCM.eq_smul_secularVector_of_mulVec_eq_zero",
+    "Zeta23.CCM.secularScalar_eq_one_iff"
+   ],
+   "ci_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
   },
   {
    "id": "F_M21_PHASE_LOCK",
@@ -144,8 +161,13 @@
   {
    "id": "F_M26_SHIFTED_SECULAR",
    "package": "F-M26",
-   "status": "PROVED_ABSTRACT_PENDING_CI",
-   "detail": "shifted_secular / shifted_eigenvector_eq_smul: det(A-mu) = det(B-mu)(1-T(mu)), (A-mu)v(mu) = (1-T(mu))D^{-1}g, eigenspaces below the odd spectrum are lines."
+   "status": "PROVED_ABSTRACT",
+   "detail": "shifted_secular / shifted_eigenvector_eq_smul: det(A-mu) = det(B-mu)(1-T(mu)), (A-mu)v(mu) = (1-T(mu))D^{-1}g, eigenspaces below the odd spectrum are lines.",
+   "declarations": [
+    "Zeta23.CCM.shifted_secular",
+    "Zeta23.CCM.shifted_eigenvector_eq_smul"
+   ],
+   "ci_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
   },
   {
    "id": "F_M27_ALTERNATING_SLOPES",
@@ -168,8 +190,15 @@
   {
    "id": "F_M30_CROSSING_CONTROL",
    "package": "F-M30",
-   "status": "PROVED_PENDING_CI",
-   "detail": "crossing_rankOne / crossing_secular / crossingB_zero_posDef / crossingA_negative plus exact SymPy regression (T(0)=1, T'=T''=0, T'''=1/2, lambda slopes 1/12, -1/6). Permanent negative control: rank-one + stationary geometry alone do not exclude a first crossing."
+   "status": "PROVED",
+   "detail": "crossing_rankOne / crossing_secular / crossingB_zero_posDef / crossingA_negative plus exact SymPy regression (T(0)=1, T'=T''=0, T'''=1/2, lambda slopes 1/12, -1/6). Permanent negative control: rank-one + stationary geometry alone do not exclude a first crossing.",
+   "declarations": [
+    "Zeta23.CCM.crossing_rankOne",
+    "Zeta23.CCM.crossing_secular",
+    "Zeta23.CCM.crossingB_zero_posDef",
+    "Zeta23.CCM.crossingA_negative"
+   ],
+   "ci_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
   },
   {
    "id": "F_M31_ABSTRACT_GRONWALL",
@@ -192,14 +221,29 @@
   {
    "id": "F_M35_M40_M54_INTEGRATED_SOURCE",
    "package": "F-M35/F-M40/F-M54",
-   "status": "PROVED_PENDING_CI",
-   "detail": "CanonicalSourceWeightedIntegral: int_0^1 S = P_0; int_0^1 (1-w) S_nm = -(1/(2pi^2))(1/(nm)+delta/n^2); int_0^1 (1-w) e_u = -(1/(2pi^2))(sum|u_n|^2/n^2 + |sum u_n/n|^2) for u_0=0; = -||z||^2/(2pi^2) for u=Dz, sum z=0; <= -||u||^2/(2pi^2 K^2); every nonzero u with u_0=0 has a negative source coordinate and a zero of Re e_u in (0,1)."
+   "status": "PROVED",
+   "detail": "CanonicalSourceWeightedIntegral: int_0^1 S = P_0; int_0^1 (1-w) S_nm = -(1/(2pi^2))(1/(nm)+delta/n^2); int_0^1 (1-w) e_u = -(1/(2pi^2))(sum|u_n|^2/n^2 + |sum u_n/n|^2) for u_0=0; = -||z||^2/(2pi^2) for u=Dz, sum z=0; <= -||u||^2/(2pi^2 K^2); every nonzero u with u_0=0 has a negative source coordinate and a zero of Re e_u in (0,1).",
+   "declarations": [
+    "Zeta23.CCM.integral_sourceEntry",
+    "Zeta23.CCM.integral_one_sub_mul_sourceEntry",
+    "Zeta23.CCM.integral_one_sub_mul_re_quadraticForm_le",
+    "Zeta23.CCM.integral_one_sub_mul_re_energy_indexAction",
+    "Zeta23.CCM.exists_source_zero_of_center_zero"
+   ],
+   "ci_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
   },
   {
    "id": "F_M36_M42_SMALL_APERTURE_RADIUS",
    "package": "F-M36/F-M42",
-   "status": "FIXED_VECTOR_TEST_PROVED_PENDING_CI",
-   "detail": "CanonicalPrimeFreeSecondTest: for sum z = 0 and 0 < L <= log 2, primeFreeSecondTest N z L = int_0^L t^2 (W - rho) Re e_{Dz}(1 - t/L) dt >= L^2 ||z||^2 [1/(4 pi^2) - L(2N+1)N^2/2], and it is positive for z != 0, 0 < L < 1/(2 pi^2 (2N+1) N^2). Ingredients proved: |S_nm(w)| <= 2w, |e_{Dz}(w)| <= 2w(2N+1)N^2||z||^2, |t^2(W-rho)+t/2| <= 3t^2 on (0, log 2]. OPEN: identification of this test with the production second variation / E_z''+(2/L)E_z' (M65)."
+   "status": "FIXED_VECTOR_TEST_PROVED",
+   "detail": "CanonicalPrimeFreeSecondTest: for sum z = 0 and 0 < L <= log 2, primeFreeSecondTest N z L = int_0^L t^2 (W - rho) Re e_{Dz}(1 - t/L) dt >= L^2 ||z||^2 [1/(4 pi^2) - L(2N+1)N^2/2], and it is positive for z != 0, 0 < L < 1/(2 pi^2 (2N+1) N^2). Ingredients proved: |S_nm(w)| <= 2w, |e_{Dz}(w)| <= 2w(2N+1)N^2||z||^2, |t^2(W-rho)+t/2| <= 3t^2 on (0, log 2]. OPEN: identification of this test with the production second variation / E_z''+(2/L)E_z' (M65).",
+   "declarations": [
+    "Zeta23.CCM.norm_sourceEntry_le",
+    "Zeta23.CCM.abs_sq_mul_primeFreeKernel_add_le",
+    "Zeta23.CCM.primeFreeSecondTest_ge",
+    "Zeta23.CCM.primeFreeSecondTest_pos"
+   ],
+   "ci_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
   },
   {
    "id": "F_M37_LOCAL_EXCLUSION",
@@ -246,20 +290,38 @@
   {
    "id": "F_M46_COERCIVITY",
    "package": "F-M46",
-   "status": "PROVED_PENDING_CI",
-   "detail": "CanonicalCenteredIndexCoercivity: ||z||^2 <= C_K ||Dz||^2 for sum z = 0, C_K = 1 + sum_{0<|n|<=K} 1/n^2 <= 5 - 4/(K+1) < 5, C_K <= 2K+1; contact corollary from the existing parity-gap theorem."
+   "status": "PROVED",
+   "detail": "CanonicalCenteredIndexCoercivity: ||z||^2 <= C_K ||Dz||^2 for sum z = 0, C_K = 1 + sum_{0<|n|<=K} 1/n^2 <= 5 - 4/(K+1) < 5, C_K <= 2K+1; contact corollary from the existing parity-gap theorem.",
+   "declarations": [
+    "Zeta23.CCM.centeredCoercivityConstant_lt_five",
+    "Zeta23.CCM.centeredCoercivityConstant_le_two_mul_add_one",
+    "Zeta23.CCM.sum_normSq_le_centeredCoercivityConstant_mul"
+   ],
+   "ci_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
   },
   {
    "id": "F_M47_K2_SOURCE_SIGN",
    "package": "F-M47",
-   "status": "PROVED_PENDING_CI",
-   "detail": "CanonicalK2SourceSignInterval: Re e_u(w) < 0 for every nonzero legal odd K=2 u and Re e_{Dz}(w) < 0 for every nonzero legal even K=2 z, 0 < w <= 3/4; e_{u0}(1) = 20 > 0 regression edge."
+   "status": "PROVED",
+   "detail": "CanonicalK2SourceSignInterval: Re e_u(w) < 0 for every nonzero legal odd K=2 u and Re e_{Dz}(w) < 0 for every nonzero legal even K=2 z, 0 < w <= 3/4; e_{u0}(1) = 20 > 0 regression edge.",
+   "declarations": [
+    "Zeta23.CCM.re_quadraticForm_neg_of_mem_oddBoundaryFlat_two",
+    "Zeta23.CCM.re_quadraticForm_index_neg_of_mem_evenBoundaryFlat_two",
+    "Zeta23.CCM.quadraticForm_oddSourceWitnessK2_one"
+   ],
+   "ci_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
   },
   {
    "id": "F_M48_K2_PRIME_SAMPLES",
    "package": "F-M48",
-   "status": "SOURCE_SIDE_PROVED_PENDING_CI",
-   "detail": "every prime sample 2<=q<=e^L with 0<L<=log 16 has w_q in [0,3/4] and nonpositive (strict unless entering) K=2 source energy; prime terms -beta e >= 0. The F04-conditional contact consequence P = -F <= 0 stays OPEN."
+   "status": "SOURCE_SIDE_PROVED",
+   "detail": "every prime sample 2<=q<=e^L with 0<L<=log 16 has w_q in [0,3/4] and nonpositive (strict unless entering) K=2 source energy; prime terms -beta e >= 0. The F04-conditional contact consequence P = -F <= 0 stays OPEN.",
+   "declarations": [
+    "Zeta23.CCM.primeSampleCoordinate_mem_of_le_log_sixteen",
+    "Zeta23.CCM.re_quadraticForm_index_nonpos_of_primeSample_two",
+    "Zeta23.CCM.primeTerm_nonneg_of_primeSample_two"
+   ],
+   "ci_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
   },
   {
    "id": "F_M49_M51_NEAR_EDGE_AND_OLDER_PRIME",
@@ -270,8 +332,12 @@
   {
    "id": "F_M52_M64_FULL_REGULARIZED_ENERGY",
    "package": "F-M52/F-M64",
-   "status": "PROVED_PENDING_CI",
-   "detail": "identical to M05 quadraticForm_canonicalSourceMatrix_eq_regularizedEnergy (actual canonicalSourceMatrix via canonicalSourceMatrix_eq_dictionaryMatrix; repository wCorrection equals the handoff's w(L) term by term). HARD GATE satisfied at matrix level."
+   "status": "PROVED",
+   "detail": "identical to M05 quadraticForm_canonicalSourceMatrix_eq_regularizedEnergy (actual canonicalSourceMatrix via canonicalSourceMatrix_eq_dictionaryMatrix; repository wCorrection equals the handoff's w(L) term by term). HARD GATE satisfied at matrix level.",
+   "declarations": [
+    "Zeta23.CCM.quadraticForm_canonicalSourceMatrix_eq_regularizedEnergy"
+   ],
+   "ci_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
   },
   {
    "id": "F_M53_M65_F04_DERIVATIVES",

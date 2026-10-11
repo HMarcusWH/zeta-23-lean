@@ -2,6 +2,7 @@
   "schema": "post284.proof_roots.v1",
   "terminal_claim": "RH_OPEN",
   "rule": "PROVED = exact clean Lean theorem with its full premises; status becomes PROVED only after the exact PR head passes the post-284 Lean/axiom/proof-escape jobs",
+  "ci_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS",
   "roots": [
     {
       "declaration": "Zeta23.CCM.sum_centeredIndex_eq_sum_latticeBox",
@@ -9,10 +10,10 @@
       "module": "Zeta23.CCM.SourceLatticeCoordinates",
       "package": "M04/M17",
       "module_scope": "infrastructure: lattice sums, half-aperture diagonal source, centered zero extension",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.sourceEntry_half",
@@ -20,10 +21,10 @@
       "module": "Zeta23.CCM.SourceLatticeCoordinates",
       "package": "M04/M17",
       "module_scope": "infrastructure: lattice sums, half-aperture diagonal source, centered zero extension",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.quadraticForm_sourceMatrix_half",
@@ -31,10 +32,10 @@
       "module": "Zeta23.CCM.SourceLatticeCoordinates",
       "package": "M04/M17",
       "module_scope": "infrastructure: lattice sums, half-aperture diagonal source, centered zero extension",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.sourceSesq_centeredZeroExtend",
@@ -42,10 +43,10 @@
       "module": "Zeta23.CCM.SourceLatticeCoordinates",
       "package": "M04/M17",
       "module_scope": "infrastructure: lattice sums, half-aperture diagonal source, centered zero extension",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.ofLattice_toLattice_eq_centeredZeroExtend",
@@ -53,10 +54,10 @@
       "module": "Zeta23.CCM.SourceLatticeCoordinates",
       "package": "M04/M17",
       "module_scope": "infrastructure: lattice sums, half-aperture diagonal source, centered zero extension",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.centeredZeroExtend_mem_evenBoundaryFlatSubspace",
@@ -64,10 +65,10 @@
       "module": "Zeta23.CCM.SourceLatticeCoordinates",
       "package": "M04/M17",
       "module_scope": "infrastructure: lattice sums, half-aperture diagonal source, centered zero extension",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.centeredZeroExtend_mem_oddBoundaryFlatSubspace",
@@ -75,10 +76,10 @@
       "module": "Zeta23.CCM.SourceLatticeCoordinates",
       "package": "M04/M17",
       "module_scope": "infrastructure: lattice sums, half-aperture diagonal source, centered zero extension",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.negativeEvenSourceWitness_control",
@@ -86,10 +87,10 @@
       "module": "Zeta23.CCM.SourceSignCountermodels",
       "package": "M04/M15/M18",
       "module_scope": "exact integer witnesses; fourth-moment firewall at omega=1/2",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.positiveEvenSourceWitness_moments",
@@ -97,10 +98,10 @@
       "module": "Zeta23.CCM.SourceSignCountermodels",
       "package": "M04/M15/M18",
       "module_scope": "exact integer witnesses; fourth-moment firewall at omega=1/2",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.oddSourceWitnessK2_moments",
@@ -108,10 +109,10 @@
       "module": "Zeta23.CCM.SourceSignCountermodels",
       "package": "M04/M15/M18",
       "module_scope": "exact integer witnesses; fourth-moment firewall at omega=1/2",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.evenSixthMomentWitness_moments",
@@ -119,10 +120,10 @@
       "module": "Zeta23.CCM.SourceSignCountermodels",
       "package": "M04/M15/M18",
       "module_scope": "exact integer witnesses; fourth-moment firewall at omega=1/2",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.oddFifthMomentWitness_moments",
@@ -130,10 +131,10 @@
       "module": "Zeta23.CCM.SourceSignCountermodels",
       "package": "M04/M15/M18",
       "module_scope": "exact integer witnesses; fourth-moment firewall at omega=1/2",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.fourthMoment_firewall_even",
@@ -141,10 +142,10 @@
       "module": "Zeta23.CCM.SourceSignCountermodels",
       "package": "M04/M15/M18",
       "module_scope": "exact integer witnesses; fourth-moment firewall at omega=1/2",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.oddSource_half_negative_control",
@@ -152,10 +153,10 @@
       "module": "Zeta23.CCM.SourceSignCountermodels",
       "package": "M04/M15/M18",
       "module_scope": "exact integer witnesses; fourth-moment firewall at omega=1/2",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.latticeSin_latticeSin",
@@ -163,10 +164,10 @@
       "module": "Zeta23.CCM.SourceParityPolynomialCoordinates",
       "package": "M17",
       "module_scope": "shift-operator parity-polynomial coordinates",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.latticePair_latticeCos",
@@ -174,10 +175,10 @@
       "module": "Zeta23.CCM.SourceParityPolynomialCoordinates",
       "package": "M17",
       "module_scope": "shift-operator parity-polynomial coordinates",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.latticePair_latticeSin",
@@ -185,10 +186,10 @@
       "module": "Zeta23.CCM.SourceParityPolynomialCoordinates",
       "package": "M17",
       "module_scope": "shift-operator parity-polynomial coordinates",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.latticeInner_oneSubCos_left",
@@ -196,10 +197,10 @@
       "module": "Zeta23.CCM.SourceParityPolynomialCoordinates",
       "package": "M17",
       "module_scope": "shift-operator parity-polynomial coordinates",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.latticeInner_latticeSin_left",
@@ -207,10 +208,10 @@
       "module": "Zeta23.CCM.SourceParityPolynomialCoordinates",
       "package": "M17",
       "module_scope": "shift-operator parity-polynomial coordinates",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.latticePair_sq_oneSubCos",
@@ -218,10 +219,10 @@
       "module": "Zeta23.CCM.SourceParityPolynomialCoordinates",
       "package": "M17",
       "module_scope": "shift-operator parity-polynomial coordinates",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.eq_zero_of_downward_recurrence",
@@ -229,10 +230,10 @@
       "module": "Zeta23.CCM.SourceParityPolynomialCoordinates",
       "package": "M17",
       "module_scope": "shift-operator parity-polynomial coordinates",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.eq_zero_of_latticeSinSq_eq_zero",
@@ -240,10 +241,10 @@
       "module": "Zeta23.CCM.SourceParityPolynomialCoordinates",
       "package": "M17",
       "module_scope": "shift-operator parity-polynomial coordinates",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.exactInertia_of_orthogonal_split",
@@ -251,10 +252,10 @@
       "module": "Zeta23.CCM.SourceParityExactInertia",
       "package": "M17",
       "module_scope": "exact source inertia at omega=1/2 for every K>=2",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.sourceSesq_half_evenCarrierMap",
@@ -262,10 +263,10 @@
       "module": "Zeta23.CCM.SourceParityExactInertia",
       "package": "M17",
       "module_scope": "exact source inertia at omega=1/2 for every K>=2",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.sourceSesq_half_oddCarrierMap",
@@ -273,10 +274,10 @@
       "module": "Zeta23.CCM.SourceParityExactInertia",
       "package": "M17",
       "module_scope": "exact source inertia at omega=1/2 for every K>=2",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.evenBoundaryFlat_sourceHalf_split",
@@ -284,10 +285,10 @@
       "module": "Zeta23.CCM.SourceParityExactInertia",
       "package": "M17",
       "module_scope": "exact source inertia at omega=1/2 for every K>=2",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.oddBoundaryFlat_sourceHalf_split",
@@ -295,10 +296,10 @@
       "module": "Zeta23.CCM.SourceParityExactInertia",
       "package": "M17",
       "module_scope": "exact source inertia at omega=1/2 for every K>=2",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.evenBoundaryFlat_sourceHalf_exactInertia",
@@ -306,10 +307,10 @@
       "module": "Zeta23.CCM.SourceParityExactInertia",
       "package": "M17",
       "module_scope": "exact source inertia at omega=1/2 for every K>=2",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.oddBoundaryFlat_sourceHalf_exactInertia",
@@ -317,10 +318,10 @@
       "module": "Zeta23.CCM.SourceParityExactInertia",
       "package": "M17",
       "module_scope": "exact source inertia at omega=1/2 for every K>=2",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.parityBoundaryFlat_sourceHalf_indefinite",
@@ -328,10 +329,10 @@
       "module": "Zeta23.CCM.SourceParityExactInertia",
       "package": "M17",
       "module_scope": "exact source inertia at omega=1/2 for every K>=2",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.eq_zero_of_centeredMoment_eq_zero",
@@ -339,10 +340,10 @@
       "module": "Zeta23.CCM.SourceMomentVandermondeFiltration",
       "package": "M15",
       "module_scope": "Vandermonde moment filtration and leading jet signs",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.exists_first_nonzero_centeredMoment",
@@ -350,10 +351,10 @@
       "module": "Zeta23.CCM.SourceMomentVandermondeFiltration",
       "package": "M15",
       "module_scope": "Vandermonde moment filtration and leading jet signs",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.centeredMoment_even_eq_zero_of_odd",
@@ -361,10 +362,10 @@
       "module": "Zeta23.CCM.SourceMomentVandermondeFiltration",
       "package": "M15",
       "module_scope": "Vandermonde moment filtration and leading jet signs",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.momentFiltration_top_eq_bot",
@@ -372,10 +373,10 @@
       "module": "Zeta23.CCM.SourceMomentVandermondeFiltration",
       "package": "M15",
       "module_scope": "Vandermonde moment filtration and leading jet signs",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.finrank_momentFiltration",
@@ -383,10 +384,10 @@
       "module": "Zeta23.CCM.SourceMomentVandermondeFiltration",
       "package": "M15",
       "module_scope": "Vandermonde moment filtration and leading jet signs",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.finrank_momentFiltration_succ",
@@ -394,10 +395,10 @@
       "module": "Zeta23.CCM.SourceMomentVandermondeFiltration",
       "package": "M15",
       "module_scope": "Vandermonde moment filtration and leading jet signs",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.sourceAtomRealEnergy_jet_on_momentFiltration",
@@ -405,10 +406,10 @@
       "module": "Zeta23.CCM.SourceMomentVandermondeFiltration",
       "package": "M15",
       "module_scope": "Vandermonde moment filtration and leading jet signs",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.sourceAtomRealEnergy_first_jet_even_carrier",
@@ -416,10 +417,10 @@
       "module": "Zeta23.CCM.SourceMomentVandermondeFiltration",
       "package": "M15",
       "module_scope": "Vandermonde moment filtration and leading jet signs",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.sourceAtomRealEnergy_first_jet_odd_carrier",
@@ -427,10 +428,10 @@
       "module": "Zeta23.CCM.SourceMomentVandermondeFiltration",
       "package": "M15",
       "module_scope": "Vandermonde moment filtration and leading jet signs",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.sourceEntry_eq_cos_integral",
@@ -438,10 +439,10 @@
       "module": "Zeta23.CCM.SourceFourierConvolution",
       "package": "M04",
       "module_scope": "Fourier convolution representation",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.sum_conj_cos_mul_eq_profiles",
@@ -449,10 +450,10 @@
       "module": "Zeta23.CCM.SourceFourierConvolution",
       "package": "M04",
       "module_scope": "Fourier convolution representation",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.quadraticForm_sourceMatrix_eq_convolution",
@@ -460,10 +461,10 @@
       "module": "Zeta23.CCM.SourceFourierConvolution",
       "package": "M04",
       "module_scope": "Fourier convolution representation",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.abs_sub_leading_lt",
@@ -471,10 +472,10 @@
       "module": "Zeta23.CCM.StrictEvenPrimeSeamDichotomy",
       "package": "M11",
       "module_scope": "abstract LOW/HIGH seam dichotomy",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.strictEven_seam_dichotomy",
@@ -482,7 +483,7 @@
       "module": "Zeta23.CCM.StrictEvenPrimeSeamDichotomy",
       "package": "M11",
       "module_scope": "abstract LOW/HIGH seam dichotomy",
-      "status": "CONDITIONAL_PROVED_PENDING_CI",
+      "status": "CONDITIONAL_PROVED",
       "premises": [
         "degree-9 expansion of s- with O(h^10) remainder",
         "entering continuation s+ = s- - alpha h^9 + O(h^10), alpha>0 (M10, OPEN)",
@@ -490,7 +491,7 @@
         "right negativity at arbitrarily small h"
       ],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.seam_toy_low",
@@ -498,10 +499,10 @@
       "module": "Zeta23.CCM.StrictEvenPrimeSeamDichotomy",
       "package": "M11",
       "module_scope": "abstract LOW/HIGH seam dichotomy",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.seam_toy_high",
@@ -509,10 +510,10 @@
       "module": "Zeta23.CCM.StrictEvenPrimeSeamDichotomy",
       "package": "M11",
       "module_scope": "abstract LOW/HIGH seam dichotomy",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.sum_normSq_le_index_weighted",
@@ -520,10 +521,10 @@
       "module": "Zeta23.CCM.ContactNinthJumpGapBound",
       "package": "M19",
       "module_scope": "index-mass inequality and conditional ninth-jump bound",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.one_div_le_norm_sq_sourceIndexAction",
@@ -531,10 +532,10 @@
       "module": "Zeta23.CCM.ContactNinthJumpGapBound",
       "package": "M19",
       "module_scope": "index-mass inequality and conditional ninth-jump bound",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.fourthMoment_lower_bound_of_gap",
@@ -542,12 +543,12 @@
       "module": "Zeta23.CCM.ContactNinthJumpGapBound",
       "package": "M19",
       "module_scope": "index-mass inequality and conditional ninth-jump bound",
-      "status": "CONDITIONAL_PROVED_PENDING_CI",
+      "status": "CONDITIONAL_PROVED",
       "premises": [
         "explicit gap premise delta*D2 <= B*M4"
       ],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.ninthJump_le_of_gap_conditional",
@@ -555,13 +556,13 @@
       "module": "Zeta23.CCM.ContactNinthJumpGapBound",
       "package": "M19",
       "module_scope": "index-mass inequality and conditional ninth-jump bound",
-      "status": "CONDITIONAL_PROVED_PENDING_CI",
+      "status": "CONDITIONAL_PROVED",
       "premises": [
         "parity-ground gap premise delta*||Dz||^2 <= B*|M4(z)| (M19 identity, OPEN)",
         "optimized ninth-jump formula Delta9 = -kappa*|M4|^2 (M10, OPEN)"
       ],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.half_dictionaryArchRHS_dictionaryMixedTest_eq_regularized",
@@ -569,10 +570,10 @@
       "module": "Zeta23.CCM.CanonicalRegularizedEnergyIdentity",
       "package": "M05/F-M52/F-M64",
       "module_scope": "canonical nonzero-endpoint regularized energy identity",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.matrixCoefficientPairing_canonicalSourceMatrix_eq_regularized",
@@ -580,10 +581,10 @@
       "module": "Zeta23.CCM.CanonicalRegularizedEnergyIdentity",
       "package": "M05/F-M52/F-M64",
       "module_scope": "canonical nonzero-endpoint regularized energy identity",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.two_mul_dictionaryMixedTest_eq_sourcePairing",
@@ -591,10 +592,10 @@
       "module": "Zeta23.CCM.CanonicalRegularizedEnergyIdentity",
       "package": "M05/F-M52/F-M64",
       "module_scope": "canonical nonzero-endpoint regularized energy identity",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.quadraticForm_canonicalSourceMatrix_eq_regularizedEnergy",
@@ -602,10 +603,10 @@
       "module": "Zeta23.CCM.CanonicalRegularizedEnergyIdentity",
       "package": "M05/F-M52/F-M64",
       "module_scope": "canonical nonzero-endpoint regularized energy identity",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.latticeInner_sinSqPow_self_re_pos",
@@ -613,10 +614,10 @@
       "module": "Zeta23.CCM.SourceMomentFilteredInertia",
       "package": "M18",
       "module_scope": "moment-filtered carriers at omega=1/2: exact sign splits and indefiniteness",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.sourceSesq_half_oneSubCosPow",
@@ -624,10 +625,10 @@
       "module": "Zeta23.CCM.SourceMomentFilteredInertia",
       "package": "M18",
       "module_scope": "moment-filtered carriers at omega=1/2: exact sign splits and indefiniteness",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.sourceSesq_half_sinOneSubCosPow",
@@ -635,10 +636,10 @@
       "module": "Zeta23.CCM.SourceMomentFilteredInertia",
       "package": "M18",
       "module_scope": "moment-filtered carriers at omega=1/2: exact sign splits and indefiniteness",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.latticePair_monomial_oneSubCosPow",
@@ -646,10 +647,10 @@
       "module": "Zeta23.CCM.SourceMomentFilteredInertia",
       "package": "M18",
       "module_scope": "moment-filtered carriers at omega=1/2: exact sign splits and indefiniteness",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.latticePair_monomial_sinOneSubCosPow",
@@ -657,10 +658,10 @@
       "module": "Zeta23.CCM.SourceMomentFilteredInertia",
       "package": "M18",
       "module_scope": "moment-filtered carriers at omega=1/2: exact sign splits and indefiniteness",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.finrank_evenFilteredCarrier_le",
@@ -668,10 +669,10 @@
       "module": "Zeta23.CCM.SourceMomentFilteredInertia",
       "package": "M18",
       "module_scope": "moment-filtered carriers at omega=1/2: exact sign splits and indefiniteness",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.finrank_oddFilteredCarrier_le",
@@ -679,10 +680,10 @@
       "module": "Zeta23.CCM.SourceMomentFilteredInertia",
       "package": "M18",
       "module_scope": "moment-filtered carriers at omega=1/2: exact sign splits and indefiniteness",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.evenFilteredCarrier_sourceHalf_split",
@@ -690,10 +691,10 @@
       "module": "Zeta23.CCM.SourceMomentFilteredInertia",
       "package": "M18",
       "module_scope": "moment-filtered carriers at omega=1/2: exact sign splits and indefiniteness",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.oddFilteredCarrier_sourceHalf_split",
@@ -701,10 +702,10 @@
       "module": "Zeta23.CCM.SourceMomentFilteredInertia",
       "package": "M18",
       "module_scope": "moment-filtered carriers at omega=1/2: exact sign splits and indefiniteness",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.filteredCarriers_sourceHalf_indefinite",
@@ -712,10 +713,10 @@
       "module": "Zeta23.CCM.SourceMomentFilteredInertia",
       "package": "M18",
       "module_scope": "moment-filtered carriers at omega=1/2: exact sign splits and indefiniteness",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.integral_sourceEntry",
@@ -723,10 +724,10 @@
       "module": "Zeta23.CCM.CanonicalSourceWeightedIntegral",
       "package": "F-M35/F-M40/F-M54",
       "module_scope": "integrated elementary source identities over omega in [0,1]; averaged negativity and sign reversal",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.integral_one_sub_mul_sourceEntry",
@@ -734,10 +735,10 @@
       "module": "Zeta23.CCM.CanonicalSourceWeightedIntegral",
       "package": "F-M35/F-M40/F-M54",
       "module_scope": "integrated elementary source identities over omega in [0,1]; averaged negativity and sign reversal",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.integral_quadraticForm_sourceMatrix",
@@ -745,10 +746,10 @@
       "module": "Zeta23.CCM.CanonicalSourceWeightedIntegral",
       "package": "F-M35/F-M40/F-M54",
       "module_scope": "integrated elementary source identities over omega in [0,1]; averaged negativity and sign reversal",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.integral_one_sub_mul_quadraticForm_sourceMatrix",
@@ -756,10 +757,10 @@
       "module": "Zeta23.CCM.CanonicalSourceWeightedIntegral",
       "package": "F-M35/F-M40/F-M54",
       "module_scope": "integrated elementary source identities over omega in [0,1]; averaged negativity and sign reversal",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.integral_one_sub_mul_re_quadraticForm_sourceMatrix",
@@ -767,10 +768,10 @@
       "module": "Zeta23.CCM.CanonicalSourceWeightedIntegral",
       "package": "F-M35/F-M40/F-M54",
       "module_scope": "integrated elementary source identities over omega in [0,1]; averaged negativity and sign reversal",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.integral_one_sub_mul_re_energy_indexAction",
@@ -778,10 +779,10 @@
       "module": "Zeta23.CCM.CanonicalSourceWeightedIntegral",
       "package": "F-M35/F-M40/F-M54",
       "module_scope": "integrated elementary source identities over omega in [0,1]; averaged negativity and sign reversal",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.integral_one_sub_mul_re_quadraticForm_le",
@@ -789,10 +790,10 @@
       "module": "Zeta23.CCM.CanonicalSourceWeightedIntegral",
       "package": "F-M35/F-M40/F-M54",
       "module_scope": "integrated elementary source identities over omega in [0,1]; averaged negativity and sign reversal",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.exists_source_zero_of_center_zero",
@@ -800,10 +801,10 @@
       "module": "Zeta23.CCM.CanonicalSourceWeightedIntegral",
       "package": "F-M35/F-M40/F-M54",
       "module_scope": "integrated elementary source identities over omega in [0,1]; averaged negativity and sign reversal",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.det_sub_vecMulVec",
@@ -811,10 +812,10 @@
       "module": "Zeta23.CCM.SecularDeterminantKernel",
       "package": "F-M20/F-M24/F-M26/F-M30",
       "module_scope": "abstract rank-one secular determinant, constructive kernel, shifted secular equation, matched update; exact 2x2 crossing negative control",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.det_eq_mul_one_sub_secularScalar",
@@ -822,10 +823,10 @@
       "module": "Zeta23.CCM.SecularDeterminantKernel",
       "package": "F-M20/F-M24/F-M26/F-M30",
       "module_scope": "abstract rank-one secular determinant, constructive kernel, shifted secular equation, matched update; exact 2x2 crossing negative control",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.mulVec_secularVector",
@@ -833,10 +834,10 @@
       "module": "Zeta23.CCM.SecularDeterminantKernel",
       "package": "F-M20/F-M24/F-M26/F-M30",
       "module_scope": "abstract rank-one secular determinant, constructive kernel, shifted secular equation, matched update; exact 2x2 crossing negative control",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.eq_smul_secularVector_of_mulVec_eq_zero",
@@ -844,10 +845,10 @@
       "module": "Zeta23.CCM.SecularDeterminantKernel",
       "package": "F-M20/F-M24/F-M26/F-M30",
       "module_scope": "abstract rank-one secular determinant, constructive kernel, shifted secular equation, matched update; exact 2x2 crossing negative control",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.secularScalar_eq_one_iff",
@@ -855,10 +856,10 @@
       "module": "Zeta23.CCM.SecularDeterminantKernel",
       "package": "F-M20/F-M24/F-M26/F-M30",
       "module_scope": "abstract rank-one secular determinant, constructive kernel, shifted secular equation, matched update; exact 2x2 crossing negative control",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.shifted_secular",
@@ -866,10 +867,10 @@
       "module": "Zeta23.CCM.SecularDeterminantKernel",
       "package": "F-M20/F-M24/F-M26/F-M30",
       "module_scope": "abstract rank-one secular determinant, constructive kernel, shifted secular equation, matched update; exact 2x2 crossing negative control",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.shifted_eigenvector_eq_smul",
@@ -877,10 +878,10 @@
       "module": "Zeta23.CCM.SecularDeterminantKernel",
       "package": "F-M20/F-M24/F-M26/F-M30",
       "module_scope": "abstract rank-one secular determinant, constructive kernel, shifted secular equation, matched update; exact 2x2 crossing negative control",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.matched_update",
@@ -888,10 +889,10 @@
       "module": "Zeta23.CCM.SecularDeterminantKernel",
       "package": "F-M20/F-M24/F-M26/F-M30",
       "module_scope": "abstract rank-one secular determinant, constructive kernel, shifted secular equation, matched update; exact 2x2 crossing negative control",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.crossing_rankOne",
@@ -899,10 +900,10 @@
       "module": "Zeta23.CCM.SecularDeterminantKernel",
       "package": "F-M20/F-M24/F-M26/F-M30",
       "module_scope": "abstract rank-one secular determinant, constructive kernel, shifted secular equation, matched update; exact 2x2 crossing negative control",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.crossing_secular",
@@ -910,10 +911,10 @@
       "module": "Zeta23.CCM.SecularDeterminantKernel",
       "package": "F-M20/F-M24/F-M26/F-M30",
       "module_scope": "abstract rank-one secular determinant, constructive kernel, shifted secular equation, matched update; exact 2x2 crossing negative control",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.crossingB_zero_posDef",
@@ -921,10 +922,10 @@
       "module": "Zeta23.CCM.SecularDeterminantKernel",
       "package": "F-M20/F-M24/F-M26/F-M30",
       "module_scope": "abstract rank-one secular determinant, constructive kernel, shifted secular equation, matched update; exact 2x2 crossing negative control",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.crossingA_negative",
@@ -932,10 +933,10 @@
       "module": "Zeta23.CCM.SecularDeterminantKernel",
       "package": "F-M20/F-M24/F-M26/F-M30",
       "module_scope": "abstract rank-one secular determinant, constructive kernel, shifted secular equation, matched update; exact 2x2 crossing negative control",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.centeredInverseSquareMass_le",
@@ -943,10 +944,10 @@
       "module": "Zeta23.CCM.CanonicalCenteredIndexCoercivity",
       "package": "F-M46",
       "module_scope": "discrete Poincare coercivity C_K<5 and contact-moment corollary from the existing parity-gap theorem",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.centeredCoercivityConstant_lt_five",
@@ -954,10 +955,10 @@
       "module": "Zeta23.CCM.CanonicalCenteredIndexCoercivity",
       "package": "F-M46",
       "module_scope": "discrete Poincare coercivity C_K<5 and contact-moment corollary from the existing parity-gap theorem",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.centeredCoercivityConstant_le_two_mul_add_one",
@@ -965,10 +966,10 @@
       "module": "Zeta23.CCM.CanonicalCenteredIndexCoercivity",
       "package": "F-M46",
       "module_scope": "discrete Poincare coercivity C_K<5 and contact-moment corollary from the existing parity-gap theorem",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.sum_normSq_le_centeredCoercivityConstant_mul",
@@ -976,10 +977,10 @@
       "module": "Zeta23.CCM.CanonicalCenteredIndexCoercivity",
       "package": "F-M46",
       "module_scope": "discrete Poincare coercivity C_K<5 and contact-moment corollary from the existing parity-gap theorem",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.sum_normSq_lt_five_mul",
@@ -987,10 +988,10 @@
       "module": "Zeta23.CCM.CanonicalCenteredIndexCoercivity",
       "package": "F-M46",
       "module_scope": "discrete Poincare coercivity C_K<5 and contact-moment corollary from the existing parity-gap theorem",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.norm_sq_le_centeredCoercivityConstant_mul_norm_index_sq",
@@ -998,10 +999,10 @@
       "module": "Zeta23.CCM.CanonicalCenteredIndexCoercivity",
       "package": "F-M46",
       "module_scope": "discrete Poincare coercivity C_K<5 and contact-moment corollary from the existing parity-gap theorem",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.parityGap_mul_norm_sq_le_coercivity_mul_source_mul_momentFour",
@@ -1009,10 +1010,10 @@
       "module": "Zeta23.CCM.CanonicalCenteredIndexCoercivity",
       "package": "F-M46",
       "module_scope": "discrete Poincare coercivity C_K<5 and contact-moment corollary from the existing parity-gap theorem",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.quadraticForm_oddSourceWitnessK2_eq_integral",
@@ -1020,10 +1021,10 @@
       "module": "Zeta23.CCM.CanonicalK2SourceSignInterval",
       "package": "F-M47/F-M48",
       "module_scope": "K=2 legal odd/even source negativity on 0<omega<=3/4; prime samples sign-controlled for 0<L<=log 16 (source side only)",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.quadraticForm_oddSourceWitnessK2",
@@ -1031,10 +1032,10 @@
       "module": "Zeta23.CCM.CanonicalK2SourceSignInterval",
       "package": "F-M47/F-M48",
       "module_scope": "K=2 legal odd/even source negativity on 0<omega<=3/4; prime samples sign-controlled for 0<L<=log 16 (source side only)",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.re_quadraticForm_oddSourceWitnessK2_neg",
@@ -1042,10 +1043,10 @@
       "module": "Zeta23.CCM.CanonicalK2SourceSignInterval",
       "package": "F-M47/F-M48",
       "module_scope": "K=2 legal odd/even source negativity on 0<omega<=3/4; prime samples sign-controlled for 0<L<=log 16 (source side only)",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.quadraticForm_oddSourceWitnessK2_one",
@@ -1053,10 +1054,10 @@
       "module": "Zeta23.CCM.CanonicalK2SourceSignInterval",
       "package": "F-M47/F-M48",
       "module_scope": "K=2 legal odd/even source negativity on 0<omega<=3/4; prime samples sign-controlled for 0<L<=log 16 (source side only)",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.eq_smul_oddSourceWitnessK2",
@@ -1064,10 +1065,10 @@
       "module": "Zeta23.CCM.CanonicalK2SourceSignInterval",
       "package": "F-M47/F-M48",
       "module_scope": "K=2 legal odd/even source negativity on 0<omega<=3/4; prime samples sign-controlled for 0<L<=log 16 (source side only)",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.re_quadraticForm_neg_of_mem_oddBoundaryFlat_two",
@@ -1075,10 +1076,10 @@
       "module": "Zeta23.CCM.CanonicalK2SourceSignInterval",
       "package": "F-M47/F-M48",
       "module_scope": "K=2 legal odd/even source negativity on 0<omega<=3/4; prime samples sign-controlled for 0<L<=log 16 (source side only)",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.re_quadraticForm_index_neg_of_mem_evenBoundaryFlat_two",
@@ -1086,10 +1087,10 @@
       "module": "Zeta23.CCM.CanonicalK2SourceSignInterval",
       "package": "F-M47/F-M48",
       "module_scope": "K=2 legal odd/even source negativity on 0<omega<=3/4; prime samples sign-controlled for 0<L<=log 16 (source side only)",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.primeSampleCoordinate_mem_of_le_log_sixteen",
@@ -1097,10 +1098,10 @@
       "module": "Zeta23.CCM.CanonicalK2SourceSignInterval",
       "package": "F-M47/F-M48",
       "module_scope": "K=2 legal odd/even source negativity on 0<omega<=3/4; prime samples sign-controlled for 0<L<=log 16 (source side only)",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.re_quadraticForm_index_nonpos_of_primeSample_two",
@@ -1108,10 +1109,10 @@
       "module": "Zeta23.CCM.CanonicalK2SourceSignInterval",
       "package": "F-M47/F-M48",
       "module_scope": "K=2 legal odd/even source negativity on 0<omega<=3/4; prime samples sign-controlled for 0<L<=log 16 (source side only)",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.re_quadraticForm_index_neg_of_primeSample_two",
@@ -1119,10 +1120,10 @@
       "module": "Zeta23.CCM.CanonicalK2SourceSignInterval",
       "package": "F-M47/F-M48",
       "module_scope": "K=2 legal odd/even source negativity on 0<omega<=3/4; prime samples sign-controlled for 0<L<=log 16 (source side only)",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.primeTerm_nonneg_of_primeSample_two",
@@ -1130,10 +1131,10 @@
       "module": "Zeta23.CCM.CanonicalK2SourceSignInterval",
       "package": "F-M47/F-M48",
       "module_scope": "K=2 legal odd/even source negativity on 0<omega<=3/4; prime samples sign-controlled for 0<L<=log 16 (source side only)",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.norm_sourceEntry_le",
@@ -1141,10 +1142,10 @@
       "module": "Zeta23.CCM.CanonicalPrimeFreeSecondTest",
       "package": "F-M42/F-M66-source",
       "module_scope": "explicit prime-free positivity radius for the fixed-vector test Q_K(L,z); identification with E''+(2/L)E' (M65) OPEN",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.norm_quadraticForm_sourceMatrix_le",
@@ -1152,10 +1153,10 @@
       "module": "Zeta23.CCM.CanonicalPrimeFreeSecondTest",
       "package": "F-M42/F-M66-source",
       "module_scope": "explicit prime-free positivity radius for the fixed-vector test Q_K(L,z); identification with E''+(2/L)E' (M65) OPEN",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.abs_re_quadraticForm_index_le",
@@ -1163,10 +1164,10 @@
       "module": "Zeta23.CCM.CanonicalPrimeFreeSecondTest",
       "package": "F-M42/F-M66-source",
       "module_scope": "explicit prime-free positivity radius for the fixed-vector test Q_K(L,z); identification with E''+(2/L)E' (M65) OPEN",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.abs_sq_mul_primeFreeKernel_add_le",
@@ -1174,10 +1175,10 @@
       "module": "Zeta23.CCM.CanonicalPrimeFreeSecondTest",
       "package": "F-M42/F-M66-source",
       "module_scope": "explicit prime-free positivity radius for the fixed-vector test Q_K(L,z); identification with E''+(2/L)E' (M65) OPEN",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.integral_half_mul_re_energy_index",
@@ -1185,10 +1186,10 @@
       "module": "Zeta23.CCM.CanonicalPrimeFreeSecondTest",
       "package": "F-M42/F-M66-source",
       "module_scope": "explicit prime-free positivity radius for the fixed-vector test Q_K(L,z); identification with E''+(2/L)E' (M65) OPEN",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.primeFreeSecondTest_ge",
@@ -1196,10 +1197,10 @@
       "module": "Zeta23.CCM.CanonicalPrimeFreeSecondTest",
       "package": "F-M42/F-M66-source",
       "module_scope": "explicit prime-free positivity radius for the fixed-vector test Q_K(L,z); identification with E''+(2/L)E' (M65) OPEN",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     },
     {
       "declaration": "Zeta23.CCM.primeFreeSecondTest_pos",
@@ -1207,10 +1208,10 @@
       "module": "Zeta23.CCM.CanonicalPrimeFreeSecondTest",
       "package": "F-M42/F-M66-source",
       "module_scope": "explicit prime-free positivity radius for the fixed-vector test Q_K(L,z); identification with E''+(2/L)E' (M65) OPEN",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PENDING"
+      "axiom_receipt": "PR #285 head d20653c50e85ed927940ffe7723cf07a1008be7d: lean-source-inertia (run 38082653252, job 114302586955) build PASS, axiom audit PASS, proof-escape PASS"
     }
   ]
 }
