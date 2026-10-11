@@ -22,6 +22,19 @@ def _load_source_only_shards():
 SOURCE_ONLY_SHARDS = _load_source_only_shards()
 
 
+def validate_unregistered_source_sentinel(row: dict) -> None:
+    """A reused proof dependency is not itself a registered claim."""
+    if row.get("resolution_status") != "RESOLVED_UNIQUE":
+        raise SystemExit("integration_lint: source theorem identity drift")
+    if row.get("visibility_class") not in {
+        "SOURCE_ONLY_PUBLIC_THEOREM",
+        "ALREADY_IN_REGISTERED_DEPENDENCY_CLOSURE",
+    }:
+        raise SystemExit("integration_lint: source theorem incorrectly promoted")
+    if row.get("registered_claim_id") is not None:
+        raise SystemExit("integration_lint: unregistered source theorem gained a claim")
+
+
 def load(name: str) -> dict:
     return json.loads((INTEGRATION / name).read_text(encoding="utf-8"))
 
@@ -225,10 +238,7 @@ def main() -> int:
                 raise SystemExit(
                     "integration_lint: known MixedSourceDerivativeTransport theorem did not exactify"
                 )
-            if hidden_row.get("visibility_class") != "SOURCE_ONLY_PUBLIC_THEOREM":
-                raise SystemExit(
-                    "integration_lint: hidden-body sentinel unexpectedly entered registered closure"
-                )
+            validate_unregistered_source_sentinel(hidden_row)
 
     ffbbp_config_path = RHRC / "ffbbp" / "configs" / "rhkg_candidate_reduction_v2.json"
     ffbbp_report_path = RHRC / "ffbbp" / "generated" / "RHKG_CANDIDATE_REDUCTION_ASSURANCE.json"
