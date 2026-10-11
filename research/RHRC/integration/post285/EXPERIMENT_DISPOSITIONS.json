@@ -1,0 +1,290 @@
+{
+  "schema": "post285.experiment_dispositions.v1",
+  "terminal_claim": "RH_OPEN",
+  "authority": "EXPERIMENTAL/REGRESSION ONLY",
+  "scripts_dir": "research/RHRC/routes/R003_ccm_bridge/post285",
+  "experiments": [
+    {
+      "id": "X285_M74_RANDOM",
+      "script": "post285_m74_secular_falsifier.py",
+      "package": "M74_RANDOM_OFF_CONTACT",
+      "disposition": "EXACT_IDENTITY_REGRESSION_PASS",
+      "summary": "rank-one, ray, relative determinant, gamma real > 0, gauge, Ward, approximate bound on 200 random complex instances with non-unitary D"
+    },
+    {
+      "id": "X285_M74_CONTACT",
+      "script": "post285_m74_secular_falsifier.py",
+      "package": "M74_CONTACT_PHASE",
+      "disposition": "EXACT_IDENTITY_REGRESSION_PASS",
+      "summary": "forced H(x)=1: kernel dimension 1 and Re(conj(Hz)<g,Dz>) = gamma|Hz|^2"
+    },
+    {
+      "id": "X285_M74_CONTROLS",
+      "script": "post285_m74_secular_falsifier.py",
+      "package": "M74_CONVENTION_CONTROLS",
+      "disposition": "NEGATIVE_CONTROL_FAILS_AS_EXPECTED",
+      "summary": "bilinear pairing breaks Ward; D* in place of D^-1 breaks the ray"
+    },
+    {
+      "id": "X285_M30_UNDER_M74",
+      "script": "post285_m74_secular_falsifier.py",
+      "package": "M30_CROSSING_UNDER_M74",
+      "disposition": "COUNTERMODEL_SURVIVES_M74_IDENTITIES",
+      "summary": "2x2 crossing satisfies every M74 identity yet A(s) has a negative eigenvalue for s > 0: the secular algebra alone cannot exclude a crossing"
+    },
+    {
+      "id": "X285_M70",
+      "script": "post285_gate_a_d_falsifier.py",
+      "package": "M70_SOURCE_EXCURSION",
+      "disposition": "EXACT_THEOREM_REGRESSION_PASS",
+      "summary": "min/max of pi^2 e/|z|^2 beyond -1/+1; control without zero sum gives e = 0"
+    },
+    {
+      "id": "X285_M73",
+      "script": "post285_gate_a_d_falsifier.py",
+      "package": "M73_QUARTER_POINCARE",
+      "disposition": "EXACT_THEOREM_REGRESSION_PASS",
+      "summary": "telescoped mass exact; optimal constant decreasing to 1/4 (signal); 1/4 + 0.01 fails at K = 80"
+    },
+    {
+      "id": "X285_M75",
+      "script": "post285_gate_a_d_falsifier.py",
+      "package": "M75_NEGATIVE_WINDOW",
+      "disposition": "EXACT_THEOREM_REGRESSION_PASS",
+      "summary": "entry derivative <= 2 + 4 pi K; window inside (0,1) and below -|z|^2/(2 pi^2); true negative run >= ~198 x 2 eta (eta is crude)"
+    },
+    {
+      "id": "X285_M76_SECULAR_MARGIN",
+      "script": "post285_m76_secular_margin.py",
+      "package": "M76_SECULAR_MARGIN",
+      "disposition": "EXPERIMENTAL_SIGNAL",
+      "summary": "actual canonical float matrices, K = 2..5, L = 0.25..6: rank-one relation B D - D A = g H holds to 2e-15 (consistent with the Lean theorem); on the 46 float-resolved (K, L) points B > 0, A > 0 and the secular margin 1 - T(L) > 0 (min 4.4e-4 at K = 3, L = 2.75), with det A / det B = 1 - T to 3e-9; the pole and prime channel contributions to T cancel to relative size up to 7e9; CanonicalShiftedSecular regressions on the same matrices: T(a) = 1 to 3e-9 and the shifted overlap identity to 5e-8 at all 46 resolved even roots below the odd floor, and the odd-first determinant identity det B / det A = 1 + H(A^-1 D^-1 g) to 5e-8 relative",
+      "caveat": "50 grid points are below float64 resolution (lambda_min < 1e-10 x matrix scale) and are reported as unresolved, not as signs; no certified enclosure here (X285_M76_ARB_RESOLUTION certifies all 96 points in Arb)"
+    },
+    {
+      "id": "X285_F04_IDENTITY",
+      "script": "post285_f04_falsifier.py",
+      "package": "F04_PRIME_FREE_CELLS_SEAMS",
+      "disposition": "EXACT_THEOREM_REGRESSION_PASS",
+      "summary": "on the even boundary-flat carrier, K = 2..5, at L = 0.08..0.62 (prime-free), 0.9, 1.3, 1.5 (prime cells) and exactly at the seams log 3, log 4, log 5: the first identity to 5e-8 and the Euler identity to 1.2e-6 relative (5-point finite differences of the executable canonical matrix against Gauss-Legendre quadrature plus the exact prime sum)"
+    },
+    {
+      "id": "X285_F04_CONTROLS",
+      "script": "post285_f04_falsifier.py",
+      "package": "F04_CONVENTION_CONTROLS",
+      "disposition": "NEGATIVE_CONTROL_FAILS_AS_EXPECTED",
+      "summary": "a vector with nonzero coefficient sum misses the Euler identity by the predicted boundary term e'_z(0)(W(L) - rho(L))/L (2.0753 observed vs 2.0753 predicted); adding cCorrection twice misses the first identity by 2 cCorrectionIntegrand(L)|z|^2 (0.44946 vs 0.44946)"
+    },
+    {
+      "id": "X285_M66_BOUND",
+      "script": "post285_f04_falsifier.py",
+      "package": "M66_EULER_BOUND",
+      "disposition": "EXACT_THEOREM_REGRESSION_PASS",
+      "summary": "lambda_max of the Euler form below the Q-NEG-EULER bound at L = 0.25, 0.5, 0.9 eps_K for K = 2..5"
+    },
+    {
+      "id": "X285_M66_SIGNALS",
+      "script": "post285_f04_falsifier.py",
+      "package": "M66_RADIUS_AND_GROUND",
+      "disposition": "EXPERIMENTAL_SIGNAL",
+      "summary": "the Euler form is negative definite on the even carrier up to L = 0.553 (K = 2), 0.425 (3), 0.379 (4), 0.355 (5), and about 0.30 at K = 16; the even ground stays positive on the whole prime-free window for K = 2..16 (minimum 0.096 at K = 2 down to 0.003 at K = 16, always at the right end), so no even contact is seen below log 2",
+      "caveat": "floating point grids, no certified enclosure; the ground signal suggests M66 is vacuous for small K"
+    },
+    {
+      "id": "X285_M55_IDENTITY",
+      "script": "post285_m55_abel_falsifier.py",
+      "package": "M55_PARTIAL_SUMMATION",
+      "disposition": "EXACT_THEOREM_REGRESSION_PASS",
+      "summary": "(96.1) at 79997 points x in [1, 20000] (all integers plus three interior points per cell) to 4e-11 relative, with the integral of the step function evaluated exactly cell by cell; psi(1) - 1 = -1 and R(1) = -2; the transfer bound holds with worst ratio 0.5; left limits on both sides also satisfy the identity"
+    },
+    {
+      "id": "X285_M55_CONTROL",
+      "script": "post285_m55_abel_falsifier.py",
+      "package": "M55_CONVENTION_CONTROL",
+      "disposition": "NEGATIVE_CONTROL_FAILS_AS_EXPECTED",
+      "summary": "mixing conventions (psi(n-) against R(n)) misses by exactly Lambda(n) at integers"
+    },
+    {
+      "id": "X285_M38_EXTREMA",
+      "script": "post285_m55_abel_falsifier.py",
+      "package": "M38_REMAINDER_EXTREMA",
+      "disposition": "EXACT_THEOREM_REGRESSION_PASS",
+      "summary": "finite sup and inf formulas agree with dense sampling for X just below, at and just after 2, 3, 4, 5, 8, 9, 16, 25, 27, 32, 49, 97, 128, 500; control: dropping the cut min(m+1, X) undershoots the infimum at non-integer X"
+    },
+    {
+      "id": "X285_M71_SIGNS",
+      "script": "post285_m71_andreief_falsifier.py",
+      "package": "M71_SIGNED_MINORS",
+      "disposition": "EXACT_THEOREM_REGRESSION_PASS",
+      "summary": "Arb-certified leading-minor signs of the even and odd carrier Gram matrices for K = 2..9 at 14 apertures omega in [1/1000, 1/2] (224 cells, 512-bit balls, none unresolved) match (-1)^{r(r-1)/2} and (-1)^{r(r+1)/2}; Jacobi counts equal the proved inertia; mpmath eigenvalue inertia agrees for K = 2..7 at omega = 1/20, 1/5, 1/3, 1/2; carrier Gram entries equal the Andreief convolution integrals to 1e-40"
+    },
+    {
+      "id": "X285_M71_CONTROLS",
+      "script": "post285_m71_andreief_falsifier.py",
+      "package": "M71_APERTURE_CONTROLS",
+      "disposition": "NEGATIVE_CONTROL_FAILS_AS_EXPECTED",
+      "summary": "beyond the half aperture certified minor signs break the pattern (e.g. K = 3 at omega = 4/5 and 9/10), and at a = 3 pi/2 a pair factor is positive: the hypothesis omega <= 1/2 is not removable"
+    },
+    {
+      "id": "X285_M27_SLOPES",
+      "script": "post285_m27_root_slope_falsifier.py",
+      "package": "M27_ALTERNATING_ROOT_SLOPES",
+      "disposition": "EXACT_THEOREM_REGRESSION_PASS",
+      "summary": "on the float canonical operator (K = 2..5, L = 0.5..6 step 0.5) the resolvent derivative H(D^-1 (B - a)^-2 g) matches the product formula at all 22 resolved even roots below the odd floor (relative residual < 1e-8), a central difference agrees (< 2e-5), the sign rule holds at every root and 1 - T equals the eigenvalue-product ratio to 4e-15. At most one even root lies below the odd floor on this grid, so only the first (+) slope is exercised numerically."
+    },
+    {
+      "id": "X285_M27_CONTROLS",
+      "script": "post285_m27_root_slope_falsifier.py",
+      "package": "M27_CONTROLS",
+      "disposition": "NEGATIVE_CONTROL_FAILS_AS_EXPECTED",
+      "summary": "C1: perturbing B_L off the rank-one relation breaks the product formula (relative residual up to 4.6e8); C2: the decreasing-order sign rule (-1)^{#{i : a_i > a_j}} fails at 7 roots, so the increasing count is the right convention"
+    },
+    {
+      "id": "X285_M08_CUBIC_SCHUR",
+      "script": "post285_m08_cubic_schur_falsifier.py",
+      "package": "M08_ABSTRACT_CUBIC_SCHUR",
+      "disposition": "EXACT_THEOREM_REGRESSION_PASS",
+      "summary": "exact SymPy third Taylor coefficient of s = a - b* H^-1 b equals the general, symmetric and response forms on 18 seeded families: real symmetric of complement dimension 1..4 (dimension 1 is the 2x2 Schur toy model) and complex Hermitian of dimension 1..2 with the real-part form"
+    },
+    {
+      "id": "X285_M08_CONTROLS",
+      "script": "post285_m08_cubic_schur_falsifier.py",
+      "package": "M08_CONTROLS",
+      "disposition": "NEGATIVE_CONTROL_FAILS_AS_EXPECTED",
+      "summary": "C1: coefficient 3 instead of 6 on <b', R H' R b'> fails on all 18 families; C2: b(t0) != 0 breaks the formula on all 12 real families; C3: with s = s' = s'' = 0 at t0, s''' = 1 gives s > 0 and s''' = -1 gives s < 0 just to the right, matching the necessary sign"
+    },
+    {
+      "id": "X285_M09_IDENTITY",
+      "script": "post285_m09_weighted_remainder_falsifier.py",
+      "package": "M09_ZERO_ENDPOINT_WEIGHTED_REMAINDER",
+      "disposition": "EXACT_THEOREM_REGRESSION_PASS",
+      "summary": "at 30 digits the direct pole/arch/prime value A_L[h] equals int R(e^t) h' + int (e^{-t/2} - rho) h on 50 cases (relative residual < 1e-28): complex polynomial tests t(L - t)p(t) and the contact form t^2 e(1 - t/L) with the Lean derivative, at ten apertures including L < log 2, the seam log 2 and points just past log 4 and log 7"
+    },
+    {
+      "id": "X285_M09_CONTROLS",
+      "script": "post285_m09_weighted_remainder_falsifier.py",
+      "package": "M09_CONTROLS",
+      "disposition": "NEGATIVE_CONTROL_FAILS_AS_EXPECTED",
+      "summary": "C1: h(L) != 0 misses by exactly R(e^L) h(L); C2: dropping the main term 2 sqrt x misses by exactly -int e^{t/2} h; C3: dropping the chain-rule factor -1/L in the contact derivative gives a nonzero miss"
+    },
+    {
+      "id": "X285_M45_BOUND",
+      "script": "post285_m45_odd_endpoint_falsifier.py",
+      "package": "M45_ODD_ENDPOINT_QUANTITATIVE",
+      "disposition": "EXACT_THEOREM_REGRESSION_PASS",
+      "summary": "Arb (256-bit) certifies -Re e_u(omega) - (pi^6/90) |M_3|^2 omega^7 > 0 at 232 cells: 29 Gaussian-integer legal odd vectors (K = 2..8, including the K = 2 generator) at eight rational apertures up to the B-angle, the aperture hypothesis itself certified; minimum ratio 1.996. At 40 digits the sine Taylor bound, the remainder bound |T_u + M_3 t^3/6| <= B |t|^5/120, the beta integral a^7/140 and B <= A_K ||u|| hold; the ratio tends to 16/7 as omega -> 0, so pi^6/90 is sharp up to the 7/16 product factor"
+    },
+    {
+      "id": "X285_M45_CONTROLS",
+      "script": "post285_m45_odd_endpoint_falsifier.py",
+      "package": "M45_CONTROLS",
+      "disposition": "NEGATIVE_CONTROL_FAILS_AS_EXPECTED",
+      "summary": "C1: the constant (16/7)(1 + 1e-3) pi^6/90 fails at omega = 1e-4; C2: without the aperture restriction the K = 2 generator has e(1) = 20 > 0 (certified); C3: dropping oddness (adding an even part with M_2 = 4, keeping M_1 = 0 and M_3 = 12) makes Re e > 0 at small omega; C4: with M_3 = 0 (K = 3 fifth-moment witness) -e/omega^7 -> 0, so no positive omega^7 bound exists without m > 0"
+    },
+    {
+      "id": "X285_M49_NEAR_EDGE_PROBE",
+      "script": "post285_m49_near_edge_probe.py",
+      "package": "M49_NEAR_EDGE_PRIME_BENEFIT",
+      "disposition": "EXPERIMENTAL_SIGNAL",
+      "summary": "float canonical matrices, K = 2..6, L = 0.25..6 step 0.25, even ground state (not a contact): the parity-gap input holds to float rounding and all 329 near-edge sample checks of the proved chain pass (energies at 50 digits). theta_* (c = 4) is 0.084 for K = 2, at most 0.052 for K = 3, 0.037 for K = 4, 0.028 for K = 5 and 0.022 for K = 6. Prime samples fall inside theta_* in 20 of 24 K = 2 rows and 6 of 24 K = 3 rows, and in none for K = 4..6 on this grid: the near-edge benefit is vacuous there. 12 rows have parity gap 0 to float resolution and are skipped"
+    },
+    {
+      "id": "X285_M50_OLDER_PRIME_PROBE",
+      "script": "post285_m50_older_prime_budget_probe.py",
+      "package": "M50_OLDER_PRIME_BUDGET",
+      "disposition": "EXPERIMENTAL_SIGNAL",
+      "summary": "float canonical matrices, K = 2..6, L = 0.25..6 step 0.25, even ground state (not a contact), theta = theta_*(c = 4): the size bound holds at every sample of all 120 rows and the M49 near-edge bound at every near sample of the 108 rows with a positive parity gap. P and the prime sum nearly cancel: for L >= 2, |P - sum_q beta_q e(omega_q)| <= 6.6e-4 |P|. Wherever older samples exist, 2(2K+1)K^2 sum_O beta_q omega_q >= 114 |P|, so the finite form (91.2) carries no information on this grid; a useful older-prime estimate must keep the cancellation"
+    },
+    {
+      "id": "X285_M61_SOURCE_BALANCE",
+      "script": "post285_m61_source_balance_falsifier.py",
+      "package": "M61_SOURCE_OLDER_PRIME_BALANCE",
+      "disposition": "EXACT_THEOREM_REGRESSION_PASS",
+      "summary": "float canonical matrices, K = 2..5, L = 0.25..6 step 0.25, the even ground state and two complex random legal even vectors per point (288 vectors, none a contact): the source-kernel value int h(1 - t/L)(W - rho) - sum_q (Lambda(q)/sqrt q) h(omega_q) equals H(v) from the rank-one relation to 5e-14; the real pairing (98B) and the near/old partition (99B) at theta = 0.05, 0.2, 0.5 hold to 5e-13; the off-contact Ward identity holds to 3.5e-11 on the 81 vectors with lambda_odd >= 1e-6 (below that the float odd block is not resolved); gamma <= |g|^2/lambda_odd at every point"
+    },
+    {
+      "id": "X285_M61_CONTROLS",
+      "script": "post285_m61_source_balance_falsifier.py",
+      "package": "M61_CONTROLS",
+      "disposition": "NEGATIVE_CONTROL_FAILS_AS_EXPECTED",
+      "summary": "C1: the M50 weights Lambda(q)(log q)^2/sqrt q in place of Lambda(q)/sqrt q miss the kernel value by at least 1.3e-3 (relative) for L >= 1; C2: dropping the archimedean integral misses by at least 5e-4; C3: the energy e_{Dz} in place of the mixed atom h_z misses by at least 0.98"
+    },
+    {
+      "id": "X285_M34_OSCILLATION_PROBE",
+      "script": "post285_m34_remainder_oscillation_probe.py",
+      "package": "M33_M34_SIGN_REVERSAL_AND_OSCILLATION",
+      "disposition": "EXPERIMENTAL_SIGNAL",
+      "summary": "float canonical matrices, K = 2..5, L = 1..6 step 0.25, even ground state (not a contact): the M09 identity on the actual source energy holds to 7e-14; the oscillation bound |int R h'| <= (Omega/2) int |h'| holds at all 84 rows, with Omega = sup R - inf R over [1, e^L]; the Step 68 sign pattern holds at all 10 rows where the explicit theta >= 1e-6 (50 digits, Dz projected on the legal odd carrier), and theta is below 1e-6 elsewhere. The ground states use at most 30% of the oscillation room for int R h' and 13% for int (e^{-t/2} - rho) h, so (71.2) with C = 0 holds with a margin of at least 7.8 on this grid"
+    },
+    {
+      "id": "X285_M44_ENTERING_PRIME_JET",
+      "script": "post285_m44_entering_prime_jet_probe.py",
+      "package": "M44_ENTERING_PRIME_PHYSICAL_JET",
+      "disposition": "EXACT_THEOREM_REGRESSION_PASS",
+      "summary": "60 digits, K = 2..5, six legal even vectors per K (even ground states at L = 1..4 and two random), seams q = 2, 3, 4, 5, 7, 8, 9, 11, 13 (216 rows): M_3(Dz) = M_4(z) to 1e-59; Delta Q/(a h^7) is within 1e-3 of 1 at h = 1e-4; |Delta Q - a h^7|/h^8 is stable between h = 1e-3 and 1e-4; the M45 angle bound and Delta Q > 0 hold at all 1108 grid points inside the angle. Signal: |Delta Q - a h^7|/h^8 tends to 7a/log q (0.991 to 1.0002 of it at h = 1e-4), the next term of omega_h^7, since e_u is odd in omega"
+    },
+    {
+      "id": "X285_M44_CONTROLS",
+      "script": "post285_m44_entering_prime_jet_probe.py",
+      "package": "M44_CONTROLS",
+      "disposition": "NEGATIVE_CONTROL_FAILS_AS_EXPECTED",
+      "summary": "C1: the even energy e_z in place of e_{Dz} gives a negative jump at all 216 rows (the Step 56 ninth-order seam term, a different observable); C2: (log q)^7 in place of (log q)^5 in the leading coefficient misses the ratio by at least 0.2"
+    },
+    {
+      "id": "X285_M29_SOURCE_RESOLVENT_DERIVATIVES",
+      "script": "post285_m29_source_resolvent_derivative_probe.py",
+      "package": "M29_SOURCE_RESOLVENT_DERIVATIVES",
+      "disposition": "EXACT_THEOREM_REGRESSION_PASS",
+      "summary": "float canonical matrices, K = 2..5, L = 0.3, 0.55, ..., 5.8; 27 rows with lambda_odd >= 1e-6 (65 skipped): T = H_L(x_L) agrees with 1 - det A_L/det B_L to 1.5e-11; T' and T'' from the M29 formulas agree with central differences of the determinant ratio to 5.2e-5 and 3.0e-4 (1.9e-7 and 2.5e-6 where lambda_odd >= 1e-2)"
+    },
+    {
+      "id": "X285_M29_CONTROLS",
+      "script": "post285_m29_source_resolvent_derivative_probe.py",
+      "package": "M29_CONTROLS",
+      "disposition": "NEGATIVE_CONTROL_FAILS_AS_EXPECTED",
+      "summary": "C1: T' without H(x') misses by at least 0.99; C2: x' with the opposite sign misses by at least 0.99; C3: T'' with H'(x') counted once misses by at least 0.97; at all 27 rows"
+    },
+    {
+      "id": "X285_M51_K2_EVEN_BOTTOM",
+      "script": "post285_m51_k2_even_bottom_certificate.py",
+      "package": "M51_K2_EVEN_BOTTOM_CERTIFICATE",
+      "disposition": "CERTIFIED_DISCOVERY_REPLAY",
+      "summary": "Arb (128 bits): lambda_even(L) > 0 for K = 2 and every L in [1/400, log 16], 1310 Taylor intervals over the 15 closed cutoff cells, smallest certified lower bound 4.4e-12. Local minima 1.36e-6, 4.55e-9, 8.79e-9, 3.22e-10 at L = 1.3339, 1.7784, 2.2230, 2.6682, i.e. L gamma_1/(2 pi) = 3.0008, 4.0008, 5.0008, 6.0025. At those points the F04 identity V = -(L^4/(4 pi^2))(lambda'' + 2 lambda'/L) matches the physical test to 1e-12, and lambda equals the sum of the first 100 zeta-zero terms (each >= 0) to 3e-9"
+    },
+    {
+      "id": "X285_M51_CONTROLS",
+      "script": "post285_m51_k2_even_bottom_certificate.py",
+      "package": "M51_CONTROLS",
+      "disposition": "NEGATIVE_CONTROL_FAILS_AS_EXPECTED",
+      "summary": "C1: every von Mangoldt weight times 1 + 1e-6 makes lambda negative at L = 2.6682 (certified, -6.4e-7; the primes contribute -0.645 there); C2: the same covering rejects lambda - 5e-10 on the cell of the deepest minimum; C3 (positive control): weights times 1 - 1e-6 keep lambda positive"
+    },
+    {
+      "id": "X285_M63_ROUTE_COMPARISON",
+      "script": "post285_m63_route_comparison_probe.py",
+      "package": "M63_ROUTE_COMPARISON",
+      "disposition": "EXPERIMENTAL_SIGNAL",
+      "summary": "At the four K = 2 near-contacts: route A (F04 curvature) V/|P| = -1.7e-2, -7.1e-4, -7.3e-5, -1.4e-5, with V matching the F04 form to 5e-9; route B (source moment) relative defect from |M_4|^2/gamma = 0.027, 0.0096, 0.0099, 0.0054, equal to lambda/lambda_odd to three digits. Control: the M50 weights in route B miss by a factor of at least 2900"
+    },
+    {
+      "id": "X285_M76_ARB_RESOLUTION",
+      "script": "post285_m76_arb_resolution.py",
+      "package": "M76_SECULAR_MARGIN_GRID_CERTIFICATE",
+      "disposition": "CERTIFIED_DISCOVERY_REPLAY",
+      "summary": "Arb (256 bits), K = 2..5, L = k/4 <= 6, all 96 grid points: lambda_min(A_L) > 0, lambda_min(B_L) > 0 and 1 - T(L) = det A_L / det B_L > 0 certified, including the 50 float-unresolved points (float64 had shown negative bottoms at 13 of them). Min margin 2.2e-9 at K = 5, L = 6; min lambda_min(A_L) 9.7e-25; even bottom certified below the odd bottom everywhere (ratio 0.49 down to 1.1e-3). T = H_L(x_L) matches the determinant ratio to 1e-41; each channel (pole, arch, prime, scalar) satisfies the rank-one relation on its own to 1e-68; the pole channel cancels at up to 2e16 times T. Float64 margins on the 46 resolved points agree to 1.9e-3 relative. K = 2 grid minima are the grid points nearest 2 pi k/gamma_1; K = 3, 4 dip deepest at L = 4 (L gamma_1/(2 pi) = 8.998)"
+    },
+    {
+      "id": "X285_M76_ARB_CONTROLS",
+      "script": "post285_m76_arb_resolution.py",
+      "package": "M76_ARB_CONTROLS",
+      "disposition": "NEGATIVE_CONTROL_FAILS_AS_EXPECTED",
+      "summary": "At the smallest-margin point of each K: C1 von Mangoldt weights times 1 + 1e-6 make lambda_min(A_L) negative (certified); C2 weights times 1 - 1e-6 make lambda_min(B_L) (K = 2) or both bottoms (K = 3..5) negative (certified); C3 canonicalArchScalarCorrection added twice lifts both bottoms by exactly 2 c(L) = 0.87, hiding the near-contact"
+    },
+    {
+      "id": "X285_M12_STEP28_CERTIFIED",
+      "script": "post285_m09_weighted_remainder_falsifier.py",
+      "package": "M12_STEP28_REPLAY",
+      "disposition": "CERTIFIED_DISCOVERY_REPLAY",
+      "summary": "the historical Step 28 float values are now Arb-certified at K = 2, L = 1.2, z = (1,-4,6,-4,1), Dz = (-2,4,0,-4,2): E(Dz) in [0.2154944559 +/- 4e-11] > 0 (M05 regularized value) and A_L[t^2 e_{Dz}(1 - t/L)] in [-0.52241962817044517287 +/- 2e-21] < 0; both historical 8-digit values lie within 5e-9. z is not an actual contact: this certifies only that positive ordinary odd energy does not force a positive weighted value (gate G-WEIGHTED). Supersedes the post-284 X12_HISTORICAL_STEP28 status UNKNOWN_NOT_REPLAYED"
+    }
+  ]
+}

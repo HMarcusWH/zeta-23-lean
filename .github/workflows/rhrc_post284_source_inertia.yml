@@ -44,7 +44,31 @@ jobs:
             Zeta23.CCM.SecularDeterminantKernel \
             Zeta23.CCM.CanonicalCenteredIndexCoercivity \
             Zeta23.CCM.CanonicalK2SourceSignInterval \
-            Zeta23.CCM.CanonicalPrimeFreeSecondTest
+            Zeta23.CCM.CanonicalPrimeFreeSecondTest \
+            Zeta23.CCM.CanonicalSecularResolvent \
+            Zeta23.CCM.CanonicalSourceExcursion \
+            Zeta23.CCM.CanonicalCenteredIndexPoincare \
+            Zeta23.CCM.CanonicalSourcePrimeSampling \
+            Zeta23.CCM.CanonicalSourceSpectralFlow \
+            Zeta23.CCM.CanonicalShiftedSecular \
+            Zeta23.CCM.CanonicalContactOverlapSign \
+            Zeta23.CCM.CanonicalPrimeFreeF04 \
+            Zeta23.CCM.CanonicalGlobalF04 \
+            Zeta23.CCM.CanonicalLocalBirdfishie \
+            Zeta23.CCM.CanonicalWeightedChebyshevAbel \
+            Zeta23.CCM.CanonicalSecularGronwall \
+            Zeta23.CCM.CanonicalAndreiefInertia \
+            Zeta23.CCM.CanonicalAlternatingRootSlopes \
+            Zeta23.CCM.AbstractCubicSchur \
+            Zeta23.CCM.WeightedRemainderIdentity \
+            Zeta23.CCM.SourceRankTwoLaplace \
+            Zeta23.CCM.CanonicalSourceOddEndpointQuantitative \
+            Zeta23.CCM.CanonicalRecentPrimeSecondVariation \
+            Zeta23.CCM.CanonicalContactOlderPrimeBudget \
+            Zeta23.CCM.CanonicalContactSourceOlderPrimeBalance \
+            Zeta23.CCM.CanonicalContactRemainderOscillation \
+            Zeta23.CCM.CanonicalEnteringPrimePhysicalJet \
+            Zeta23.CCM.CanonicalSourceResolventDerivatives
           do
             if lake build "$target"; then
               echo "$target PASS" | tee -a /tmp/post284-targets.txt
@@ -71,7 +95,31 @@ jobs:
             Zeta23/CCM/SecularDeterminantKernel.lean \
             Zeta23/CCM/CanonicalCenteredIndexCoercivity.lean \
             Zeta23/CCM/CanonicalK2SourceSignInterval.lean \
-            Zeta23/CCM/CanonicalPrimeFreeSecondTest.lean
+            Zeta23/CCM/CanonicalPrimeFreeSecondTest.lean \
+            Zeta23/CCM/CanonicalSecularResolvent.lean \
+            Zeta23/CCM/CanonicalSourceExcursion.lean \
+            Zeta23/CCM/CanonicalCenteredIndexPoincare.lean \
+            Zeta23/CCM/CanonicalSourcePrimeSampling.lean \
+            Zeta23/CCM/CanonicalSourceSpectralFlow.lean \
+            Zeta23/CCM/CanonicalShiftedSecular.lean \
+            Zeta23/CCM/CanonicalContactOverlapSign.lean \
+            Zeta23/CCM/CanonicalPrimeFreeF04.lean \
+            Zeta23/CCM/CanonicalGlobalF04.lean \
+            Zeta23/CCM/CanonicalLocalBirdfishie.lean \
+            Zeta23/CCM/CanonicalWeightedChebyshevAbel.lean \
+            Zeta23/CCM/CanonicalSecularGronwall.lean \
+            Zeta23/CCM/CanonicalAndreiefInertia.lean \
+            Zeta23/CCM/CanonicalAlternatingRootSlopes.lean \
+            Zeta23/CCM/AbstractCubicSchur.lean \
+            Zeta23/CCM/WeightedRemainderIdentity.lean \
+            Zeta23/CCM/SourceRankTwoLaplace.lean \
+            Zeta23/CCM/CanonicalSourceOddEndpointQuantitative.lean \
+            Zeta23/CCM/CanonicalRecentPrimeSecondVariation.lean \
+            Zeta23/CCM/CanonicalContactOlderPrimeBudget.lean \
+            Zeta23/CCM/CanonicalContactSourceOlderPrimeBalance.lean \
+            Zeta23/CCM/CanonicalContactRemainderOscillation.lean \
+            Zeta23/CCM/CanonicalEnteringPrimePhysicalJet.lean \
+            Zeta23/CCM/CanonicalSourceResolventDerivatives.lean
       - name: Reject proof escapes on the promoted surface
         run: python research/RHRC/closure_batch/check_lean_proof_escapes.py --scope promoted
       - uses: actions/upload-artifact@v4
@@ -123,6 +171,84 @@ jobs:
               print(k, got.get(k))
               assert got.get(k) == v, (k, got.get(k))
           EOF
+      - name: Post-285 M74 secular-resolvent regression and negative controls
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/post285/post285_m74_secular_falsifier.py \
+            --output /tmp/POST285_M74_SECULAR_FALSIFIER.json > /dev/null
+      - name: Post-285 ledger firewall (Steps 18-120 matrix, M70-M77 obligations, proof roots)
+        run: python research/RHRC/integration/post285/check_post285_ledgers.py
+      - name: Post-285 Gate A/D regressions (M70 excursion, M73 Poincaré, M75 negative window)
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/post285/post285_gate_a_d_falsifier.py \
+            --output /tmp/POST285_GATE_A_D_FALSIFIER.json > /dev/null
+      - name: Post-285 M76 actual-canonical secular margin probe (experimental signal)
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/post285/post285_m76_secular_margin.py \
+            --kmax 5 --lmax 6 --dl 0.25 --output /tmp/POST285_M76_SECULAR_MARGIN.json > /dev/null
+      - name: Post-285 F04 (prime-free, prime cells, seams) and M66 regression, controls and Euler bound
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/post285/post285_f04_falsifier.py \
+            --output /tmp/POST285_F04_FALSIFIER.json > /dev/null
+      - name: Post-285 M55 partial summation and M38 remainder extrema regression and controls
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/post285/post285_m55_abel_falsifier.py \
+            --output /tmp/POST285_M55_ABEL_FALSIFIER.json > /dev/null
+      - name: Post-285 M71 Andreief interior inertia (Arb-certified minor signs) and aperture controls
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/post285/post285_m71_andreief_falsifier.py \
+            --kmax 9 --output /tmp/POST285_M71_ANDREIEF_FALSIFIER.json > /dev/null
+      - name: Post-285 M27 alternating root slopes on the float canonical operator, with controls
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/post285/post285_m27_root_slope_falsifier.py \
+            --output /tmp/POST285_M27_ROOT_SLOPE_FALSIFIER.json > /dev/null
+      - name: Post-285 M08 abstract cubic Schur exact regression and controls
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/post285/post285_m08_cubic_schur_falsifier.py \
+            --output /tmp/POST285_M08_CUBIC_SCHUR_FALSIFIER.json > /dev/null
+      - name: Post-285 M09 zero-endpoint weighted remainder identity and controls
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/post285/post285_m09_weighted_remainder_falsifier.py \
+            --output /tmp/POST285_M09_WEIGHTED_REMAINDER_FALSIFIER.json > /dev/null
+      - name: Post-285 M45 odd endpoint source bound (Arb) and controls
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/post285/post285_m45_odd_endpoint_falsifier.py \
+            --output /tmp/POST285_M45_ODD_ENDPOINT_FALSIFIER.json > /dev/null
+      - name: Post-285 M49 near-edge contact-angle probe (experimental)
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/post285/post285_m49_near_edge_probe.py \
+            --output /tmp/POST285_M49_NEAR_EDGE_PROBE.json > /dev/null
+      - name: Post-285 M50 older-prime budget probe (experimental)
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/post285/post285_m50_older_prime_budget_probe.py \
+            --output /tmp/POST285_M50_OLDER_PRIME_BUDGET_PROBE.json > /dev/null
+      - name: Post-285 M59/M61 source-moment older-prime balance regression and controls
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/post285/post285_m61_source_balance_falsifier.py \
+            --output /tmp/POST285_M61_SOURCE_BALANCE_FALSIFIER.json > /dev/null
+      - name: Post-285 M33/M34 sign reversal and remainder oscillation probe
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/post285/post285_m34_remainder_oscillation_probe.py \
+            --output /tmp/POST285_M34_REMAINDER_OSCILLATION_PROBE.json > /dev/null
+      - name: Post-285 M44 entering-prime physical jet probe and controls
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/post285/post285_m44_entering_prime_jet_probe.py \
+            --output /tmp/POST285_M44_ENTERING_PRIME_JET_PROBE.json > /dev/null
+      - name: Post-285 M29 source-resolvent derivative probe and controls
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/post285/post285_m29_source_resolvent_derivative_probe.py \
+            --output /tmp/POST285_M29_SOURCE_RESOLVENT_DERIVATIVE_PROBE.json > /dev/null
+      - name: Post-285 M51 K=2 even-bottom Arb certificate on [1/400, log 16] (research evidence)
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/post285/post285_m51_k2_even_bottom_certificate.py \
+            --output /tmp/POST285_M51_K2_EVEN_BOTTOM_CERTIFICATE.json > /dev/null
+      - name: Post-285 M63 route comparison at the K=2 near-contacts (experimental)
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/post285/post285_m63_route_comparison_probe.py \
+            --output /tmp/POST285_M63_ROUTE_COMPARISON_PROBE.json > /dev/null
+      - name: Post-285 M76 Arb resolution of the secular-margin grid (research evidence)
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/post285/post285_m76_arb_resolution.py \
+            --output /tmp/POST285_M76_ARB_RESOLUTION.json > /dev/null
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -131,3 +257,22 @@ jobs:
             /tmp/POST284_SOURCE_FALSIFIER_SUITE.json
             /tmp/POST284_LOG3_K2_CERTIFICATE.txt
             /tmp/POST284_FOLLOWUP_REGRESSIONS.json
+            /tmp/POST285_M74_SECULAR_FALSIFIER.json
+            /tmp/POST285_GATE_A_D_FALSIFIER.json
+            /tmp/POST285_M76_SECULAR_MARGIN.json
+            /tmp/POST285_F04_FALSIFIER.json
+            /tmp/POST285_M55_ABEL_FALSIFIER.json
+            /tmp/POST285_M71_ANDREIEF_FALSIFIER.json
+            /tmp/POST285_M27_ROOT_SLOPE_FALSIFIER.json
+            /tmp/POST285_M08_CUBIC_SCHUR_FALSIFIER.json
+            /tmp/POST285_M09_WEIGHTED_REMAINDER_FALSIFIER.json
+            /tmp/POST285_M45_ODD_ENDPOINT_FALSIFIER.json
+            /tmp/POST285_M49_NEAR_EDGE_PROBE.json
+            /tmp/POST285_M50_OLDER_PRIME_BUDGET_PROBE.json
+            /tmp/POST285_M61_SOURCE_BALANCE_FALSIFIER.json
+            /tmp/POST285_M34_REMAINDER_OSCILLATION_PROBE.json
+            /tmp/POST285_M44_ENTERING_PRIME_JET_PROBE.json
+            /tmp/POST285_M29_SOURCE_RESOLVENT_DERIVATIVE_PROBE.json
+            /tmp/POST285_M51_K2_EVEN_BOTTOM_CERTIFICATE.json
+            /tmp/POST285_M63_ROUTE_COMPARISON_PROBE.json
+            /tmp/POST285_M76_ARB_RESOLUTION.json

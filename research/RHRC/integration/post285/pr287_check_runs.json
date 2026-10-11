@@ -1,0 +1,253 @@
+{
+ "pr": 287,
+ "branch": "claude/project-thread-d9vpzl",
+ "note": "Green #287 heads whose receipts promote ledger entries (CI_* in build_post285_ledgers.py).",
+ "heads": [
+  {
+   "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+   "harvested": "2026-10-11, GitHub Actions API via MCP",
+   "check_runs_total": "40 of 40 success",
+   "workflow_runs": [
+    [
+     "Permansson v0.1.6 formal verification",
+     38115045642,
+     "success"
+    ],
+    [
+     "RHRC parallel closure campaign",
+     38115045650,
+     "success"
+    ],
+    [
+     "RHRC post-190 canonical realizability audit",
+     38115045648,
+     "success"
+    ],
+    [
+     "RHRC post-192 parity trajectory rigidity",
+     38115045663,
+     "success"
+    ],
+    [
+     "RHRC post-194 parity trajectory sharp enclosure",
+     38115045766,
+     "success"
+    ],
+    [
+     "RHRC post-196 Q14 residual cell replay",
+     38115045701,
+     "success"
+    ],
+    [
+     "RHRC post-198 Q14 parity source mechanism",
+     38115045690,
+     "success"
+    ],
+    [
+     "RHRC post-200 Q14 discrepancy mechanism",
+     38115045644,
+     "success"
+    ],
+    [
+     "RHRC post-202 Q14 composite parity gap",
+     38115045700,
+     "success"
+    ],
+    [
+     "RHRC post-214 kernel dual geometry",
+     38115045730,
+     "success"
+    ],
+    [
+     "RHRC post-222 bi-regular zero-shift scalar",
+     38115045703,
+     "success"
+    ],
+    [
+     "RHRC post-282 contact calculus",
+     38115045712,
+     "success"
+    ],
+    [
+     "RHRC post-284 source inertia campaign",
+     38115045659,
+     "success"
+    ],
+    [
+     "RHRC post268 complete audit replay",
+     38115045695,
+     "success"
+    ],
+    [
+     "RHRC research and Lean checks",
+     38115045646,
+     "success"
+    ]
+   ]
+  },
+  {
+   "head": "9ea3a4c4a0d20e0d6cd7ea16383f927fa72d984a",
+   "harvested": "2026-10-11, GitHub Actions and check-runs API via MCP",
+   "check_runs_total": "40 of 40 success",
+   "workflow_runs": [
+    [
+     "Permansson v0.1.6 formal verification",
+     38132218288,
+     "success"
+    ],
+    [
+     "RHRC parallel closure campaign",
+     38132218306,
+     "success"
+    ],
+    [
+     "RHRC post-190 canonical realizability audit",
+     38132218332,
+     "success"
+    ],
+    [
+     "RHRC post-192 parity trajectory rigidity",
+     38132218450,
+     "success"
+    ],
+    [
+     "RHRC post-194 parity trajectory sharp enclosure",
+     38132218305,
+     "success"
+    ],
+    [
+     "RHRC post-196 Q14 residual cell replay",
+     38132218560,
+     "success"
+    ],
+    [
+     "RHRC post-198 Q14 parity source mechanism",
+     38132218319,
+     "success"
+    ],
+    [
+     "RHRC post-200 Q14 discrepancy mechanism",
+     38132218655,
+     "success"
+    ],
+    [
+     "RHRC post-202 Q14 composite parity gap",
+     38132218477,
+     "success"
+    ],
+    [
+     "RHRC post-214 kernel dual geometry",
+     38132218300,
+     "success"
+    ],
+    [
+     "RHRC post-222 bi-regular zero-shift scalar",
+     38132218684,
+     "success"
+    ],
+    [
+     "RHRC post-282 contact calculus",
+     38132218475,
+     "success"
+    ],
+    [
+     "RHRC post-284 source inertia campaign",
+     38132218296,
+     "success"
+    ],
+    [
+     "RHRC post268 complete audit replay",
+     38132218672,
+     "success"
+    ],
+    [
+     "RHRC research and Lean checks",
+     38132218309,
+     "success"
+    ]
+   ]
+  },
+  {
+   "head": "2e32e595f37ceebfaac7c4fca4ab2b8450344a29",
+   "harvested": "2026-10-11, GitHub Actions and check-runs API via MCP",
+   "check_runs_total": "40 of 40 success",
+   "workflow_runs": [
+    [
+     "Permansson v0.1.6 formal verification",
+     38141356200,
+     "success"
+    ],
+    [
+     "RHRC parallel closure campaign",
+     38141356133,
+     "success"
+    ],
+    [
+     "RHRC post-190 canonical realizability audit",
+     38141356096,
+     "success"
+    ],
+    [
+     "RHRC post-192 parity trajectory rigidity",
+     38141356168,
+     "success"
+    ],
+    [
+     "RHRC post-194 parity trajectory sharp enclosure",
+     38141356240,
+     "success"
+    ],
+    [
+     "RHRC post-196 Q14 residual cell replay",
+     38141356290,
+     "success"
+    ],
+    [
+     "RHRC post-198 Q14 parity source mechanism",
+     38141356179,
+     "success"
+    ],
+    [
+     "RHRC post-200 Q14 discrepancy mechanism",
+     38141356101,
+     "success"
+    ],
+    [
+     "RHRC post-202 Q14 composite parity gap",
+     38141356300,
+     "success"
+    ],
+    [
+     "RHRC post-214 kernel dual geometry",
+     38141356145,
+     "success"
+    ],
+    [
+     "RHRC post-222 bi-regular zero-shift scalar",
+     38141356195,
+     "success"
+    ],
+    [
+     "RHRC post-282 contact calculus",
+     38141356241,
+     "success"
+    ],
+    [
+     "RHRC post-284 source inertia campaign",
+     38141356135,
+     "success"
+    ],
+    [
+     "RHRC post268 complete audit replay",
+     38141356193,
+     "success"
+    ],
+    [
+     "RHRC research and Lean checks",
+     38141356303,
+     "success"
+    ]
+   ]
+  }
+ ]
+}

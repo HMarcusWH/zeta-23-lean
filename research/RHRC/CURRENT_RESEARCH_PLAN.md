@@ -58,17 +58,17 @@ THEOREM AUTHORITY
 - RH = OPEN
 
 CURRENT RESEARCH FRONTIER
-- current candidate PR = #NONE / NO_OPEN_CANDIDATE_PR
-- candidate theorem-validation head = NONE
-- candidate theorem-validation status = NONE
+- current candidate PR = #287 / POST285_M70_M77_BUILD_CANDIDATE_PENDING_EXACT_HEAD_CI
+- candidate theorem-validation head = RUNTIME_PR_HEAD_REQUIRED
+- candidate theorem-validation status = CI_PENDING_EXACT_HEAD_RUNTIME_RECEIPT_REQUIRED
 - merged experimental research evidence = PR #273 / CERTIFIED_CURRENT_PRIME_GROUND_RESPONSE
 - fixed-N sign opposition = PROVED_MERGED_PR_277
 - global ground propagation strength = RH_SUFFICIENT_AUDIT_PROVED_PR_277
 - uniform domination strength = RH_SUFFICIENT_AUDIT_PROVED_PR_277
 - active obstruction = OBS-060_GROUND_SPECTRUM_FIRST_CROSSING_BARRIER
 - active subobligation = OBS-060O_CONTACT_CONDITIONED_PRODUCTION_SATURATION_EXCLUSION
-- F04 production derivative authority = OPEN
-- M74 canonical secular instantiation = OPEN
+- F04 production derivative authority = PROVED_PENDING_CI_CANDIDATE_PR_287
+- M74 canonical secular instantiation = PROVED_PENDING_CI_CANDIDATE_PR_287
 - next research target = POST285_CANONICAL_SECULAR_RAY_PRIME_FREE_F04_AND_FULL_ARITHMETIC_SOURCE_INEQUALITY
 - required new information = INDEPENDENT_FULL_ARITHMETIC_SOURCE_RESTRICTION_ON_THE_RESOLVENT_SELECTED_CONTACT_RAY
 - RH-sufficient terminal formulations are not counted as independent sub-RH progress
@@ -97,7 +97,9 @@ This block supersedes the older current labels below; historical sections stay
 as provenance.
 
 - exact theorem authority = merged PR #285 (merge `18a63cc`, head `d20653c`);
-  PRs #283/#284 are merged and no candidate PR is open; RH remains OPEN;
+  PRs #283/#284 are merged; candidate PR #287 (the post-285 M70–M77 build) is
+  open and pending exact-head CI, so none of it is merged authority yet; RH
+  remains OPEN;
 - PR #284: `R003_COMPRESSED_PRODUCTION_C2` and
   `R003_INHERITED_FIRST_VARIATION_RESTRICTION` are PROVED; the F04-conditional
   `R003_WEIGHTED_PRODUCTION_PAIR_BALANCE` and
@@ -113,9 +115,11 @@ as provenance.
   fixed-L identity; M70/M73/M71 source geometry; then M76, the independent
   full-arithmetic opposite-side inequality on the resolvent-selected contact
   ray, falsified aggressively before any theorem-building;
-- still OPEN: F04 moving-aperture derivative authority, the M74 instantiation,
-  source inertia for 0<ω<1/2, OBS-060O stationary saturation, odd/tie/seam
-  branches and RH.
+- still OPEN on merged authority: F04 moving-aperture derivative authority, the
+  M74 instantiation and source inertia for 0<ω<1/2. Candidate #287 proves F04
+  at every aperture, the M74 instantiation and boundary-flat inertia for
+  0<ω≤1/2, all pending its exact-head CI (filtered carriers stay OPEN). OBS-060O
+  stationary saturation, odd/tie/seam branches and RH stay OPEN.
 
 ## Post-#282 / PR #283 complete contact-calculus candidate override
 

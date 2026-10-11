@@ -1,0 +1,750 @@
+{
+  "schema": "post285.step_status_matrix.v1",
+  "terminal_claim": "RH_OPEN",
+  "authority": "REPORTING_ONLY",
+  "vocabulary": {
+    "PROVED_THIS_PR": "Lean theorem added in this PR; OPEN_OBLIGATIONS.json and PROOF_ROOTS.json carry its exact-head CI receipt, or PROVED_PENDING_CI while none exists",
+    "PROVED_MERGED": "Lean theorem already on main (PR #284/#285); see the post-284 ledgers",
+    "PARTIAL": "a named part is proved, the rest is open",
+    "CONDITIONAL": "proved only under explicit open premises (typically F04)",
+    "DERIVED": "paper derivation, not formalized",
+    "INTERVAL_EVIDENCE": "outward-rounded numerical enclosure; not a Lean theorem",
+    "EXPERIMENTAL_SIGNAL": "floating-point evidence only",
+    "OPEN": "no proof",
+    "SCOPE_CONTROL": "bookkeeping/firewall step, no mathematical claim"
+  },
+  "counts": {
+    "PROVED_MERGED": 32,
+    "PROVED_THIS_PR": 43,
+    "EXPERIMENTAL_SIGNAL": 3,
+    "OPEN": 10,
+    "PARTIAL": 5,
+    "CONDITIONAL": 2,
+    "DERIVED": 1,
+    "SCOPE_CONTROL": 3,
+    "INTERVAL_EVIDENCE": 4
+  },
+  "steps": [
+    {
+      "step": 18,
+      "topic": "Current canonical baseline / contact definitions",
+      "package": "M00",
+      "status": "PROVED_MERGED",
+      "anchor_or_note": "baseline definitions and global compressed C2 (#284)"
+    },
+    {
+      "step": 19,
+      "topic": "Inherited stationarity and first contact",
+      "package": "M00",
+      "status": "PROVED_MERGED",
+      "anchor_or_note": "FirstCrossingGeneratedStrictEvenFrontier"
+    },
+    {
+      "step": 20,
+      "topic": "Schur geometry and optimized response",
+      "package": "M00",
+      "status": "PROVED_MERGED",
+      "anchor_or_note": "StationarySchurContact / FirstCrossingProductionResponse"
+    },
+    {
+      "step": 21,
+      "topic": "Production derivative authority interface",
+      "package": "M06/M65",
+      "status": "PROVED_THIS_PR",
+      "anchor_or_note": "constructor productionContactF04DerivativeAuthority_of_pos at every L > 0"
+    },
+    {
+      "step": 22,
+      "topic": "Physical pole/arch/prime normalization",
+      "package": "M05",
+      "status": "PROVED_MERGED",
+      "anchor_or_note": "CanonicalRegularizedEnergyIdentity (#285)"
+    },
+    {
+      "step": 23,
+      "topic": "Exact finite source and zero-endpoint jets",
+      "package": "M07",
+      "status": "PROVED_MERGED",
+      "anchor_or_note": "source-coordinate jets; operator seam Taylor estimates open"
+    },
+    {
+      "step": 24,
+      "topic": "Aperture derivatives and source transport",
+      "package": "M06/M65",
+      "status": "PROVED_THIS_PR",
+      "anchor_or_note": "prime-free window (CanonicalPrimeFreeF04) and prime cells and seams (CanonicalGlobalF04)"
+    },
+    {
+      "step": 25,
+      "topic": "Contact generation from a first bad state",
+      "package": "M00",
+      "status": "PROVED_MERGED",
+      "anchor_or_note": "generated contact frontier"
+    },
+    {
+      "step": 26,
+      "topic": "Contact directional first variation",
+      "package": "M00",
+      "status": "PROVED_MERGED",
+      "anchor_or_note": "production first variation"
+    },
+    {
+      "step": 27,
+      "topic": "F04-weighted contact response reduction",
+      "package": "M09/M65",
+      "status": "PROVED_THIS_PR",
+      "anchor_or_note": "unconditional at every L > 0 (canonicalSecondPairing_euler_eq_productionSaturationGap_of_pos)"
+    },
+    {
+      "step": 28,
+      "topic": "Exploratory sign witnesses and falsification",
+      "package": "M12",
+      "status": "EXPERIMENTAL_SIGNAL",
+      "anchor_or_note": "research only"
+    },
+    {
+      "step": 29,
+      "topic": "Two-scalar stationary curvature identity",
+      "package": "M03",
+      "status": "OPEN",
+      "anchor_or_note": "M03_TWO_SCALAR_CONTACT_TRANSPORT"
+    },
+    {
+      "step": 30,
+      "topic": "Fourier-convolution source identity",
+      "package": "M04",
+      "status": "PROVED_MERGED",
+      "anchor_or_note": "SourceFourierConvolution (#285)"
+    },
+    {
+      "step": 31,
+      "topic": "K=3 exact source counterexample",
+      "package": "M04",
+      "status": "PROVED_MERGED",
+      "anchor_or_note": "SourceSignCountermodels (#285)"
+    },
+    {
+      "step": 32,
+      "topic": "Von Mangoldt discrepancy and weighted balance",
+      "package": "M09",
+      "status": "PROVED_THIS_PR",
+      "anchor_or_note": "zero-endpoint identity (regularizedCompletePhysicalRHS_eq_weightedRemainder, productionArithmeticRealValue_eq_weightedRemainder); contact balance A_{L*}[t^2 e_{Dz}] = -2 L*^4 C/(2 pi)^2 <= 0 (GeneratedStrictEvenContact.weightedRemainder_balance); necessary condition only"
+    },
+    {
+      "step": 33,
+      "topic": "Ninth-order even seam jump",
+      "package": "M10",
+      "status": "OPEN",
+      "anchor_or_note": "M10_NINTH_ORDER_OPTIMIZED_SCHUR_JUMP"
+    },
+    {
+      "step": 34,
+      "topic": "Third derivative Schur and arithmetic bridge",
+      "package": "M08",
+      "status": "PARTIAL",
+      "anchor_or_note": "abstract cubic Schur PROVED_THIS_PR (cubic_schur_third_deriv, cubic_schur_third_deriv_response, cubic_schur_third_nonpos_of_right_negative); arithmetic third identity OPEN"
+    },
+    {
+      "step": 35,
+      "topic": "Analytic first-crossing seam dichotomy",
+      "package": "M11",
+      "status": "CONDITIONAL",
+      "anchor_or_note": "StrictEvenPrimeSeamDichotomy: premises explicit"
+    },
+    {
+      "step": 36,
+      "topic": "Finite source-moment filtration",
+      "package": "M15",
+      "status": "PROVED_MERGED",
+      "anchor_or_note": "SourceMomentVandermondeFiltration (#285)"
+    },
+    {
+      "step": 37,
+      "topic": "Boundary-flat hierarchy of source moments",
+      "package": "M15",
+      "status": "PROVED_MERGED",
+      "anchor_or_note": "SourceMomentVandermondeFiltration (#285)"
+    },
+    {
+      "step": 38,
+      "topic": "Nonvanishing first source jets",
+      "package": "M15",
+      "status": "PROVED_MERGED",
+      "anchor_or_note": "first-jet signs (#285)"
+    },
+    {
+      "step": 39,
+      "topic": "Moving legal negative/positive source witnesses",
+      "package": "M16/M71",
+      "status": "PROVED_THIS_PR",
+      "anchor_or_note": "small-omega legal-form indefiniteness subsumed by parityBoundaryFlat_source_indefinite (every 0 < omega <= 1/2, K >= 3); K3 moving-vector coefficients remain exact controls"
+    },
+    {
+      "step": 40,
+      "topic": "Moving-ray sign countercontrols",
+      "package": "M16",
+      "status": "PROVED_MERGED",
+      "anchor_or_note": "exact controls in SourceSignCountermodels (#285)"
+    },
+    {
+      "step": 41,
+      "topic": "Gap-driven fourth-moment rigidity",
+      "package": "M19",
+      "status": "PROVED_MERGED",
+      "anchor_or_note": "inequality form (ContactNinthJumpGapBound); M73 improves constant"
+    },
+    {
+      "step": 42,
+      "topic": "Higher-moment source signs and limits",
+      "package": "M15/M18",
+      "status": "DERIVED",
+      "anchor_or_note": "not separately formalized"
+    },
+    {
+      "step": 43,
+      "topic": "Parity polynomial reduction",
+      "package": "M17",
+      "status": "PROVED_MERGED",
+      "anchor_or_note": "SourceParityPolynomialCoordinates (#285)"
+    },
+    {
+      "step": 44,
+      "topic": "Andreief signed-minor inertia target",
+      "package": "M17/M71",
+      "status": "PROVED_THIS_PR",
+      "anchor_or_note": "omega = 1/2 PROVED (#285); every 0 < omega <= 1/2: andreiefSign_mul_det_gram_pos, evenBoundaryFlat_source_exactInertia, oddBoundaryFlat_source_exactInertia"
+    },
+    {
+      "step": 45,
+      "topic": "Source spectral flow after half aperture",
+      "package": "M18/M72",
+      "status": "PARTIAL",
+      "anchor_or_note": "first passage PROVED_THIS_PR; multiplicity OPEN"
+    },
+    {
+      "step": 46,
+      "topic": "Filtered parity moment carriers",
+      "package": "M18",
+      "status": "PROVED_MERGED",
+      "anchor_or_note": "half-aperture filtered inertia (#285)"
+    },
+    {
+      "step": 47,
+      "topic": "Fourth-moment nonzero sign firewall",
+      "package": "M18",
+      "status": "PROVED_MERGED",
+      "anchor_or_note": "fourth-moment firewall (#285)"
+    },
+    {
+      "step": 48,
+      "topic": "Full canonical vs elementary source separation",
+      "package": "M18",
+      "status": "SCOPE_CONTROL",
+      "anchor_or_note": "firewall, no theorem"
+    },
+    {
+      "step": 49,
+      "topic": "Canonical rank-one resolvent scalar",
+      "package": "M20/M74",
+      "status": "PROVED_THIS_PR",
+      "anchor_or_note": "canonical_rankOneIntertwining, canonicalResolventGamma_pos"
+    },
+    {
+      "step": 50,
+      "topic": "Strict-even threshold contact criterion",
+      "package": "M20/M74",
+      "status": "PROVED_THIS_PR",
+      "anchor_or_note": "canonical_resolventRay_contact_iff, canonical_ker_eq_span_of_contact"
+    },
+    {
+      "step": 51,
+      "topic": "Canonical phase locking of source and moment",
+      "package": "M21/M74",
+      "status": "PROVED_THIS_PR",
+      "anchor_or_note": "canonical_contact_phase (contact-conditioned identity)"
+    },
+    {
+      "step": 52,
+      "topic": "Odd resolvent spectral-gap bound",
+      "package": "M21/M74",
+      "status": "PROVED_THIS_PR",
+      "anchor_or_note": "canonical_resolventVector_norm_le"
+    },
+    {
+      "step": 53,
+      "topic": "Secular-Schur stationary-jet transport",
+      "package": "M22",
+      "status": "OPEN",
+      "anchor_or_note": "jets require hypotheses"
+    },
+    {
+      "step": 54,
+      "topic": "Entering seventh-order odd prime atom",
+      "package": "M23",
+      "status": "OPEN",
+      "anchor_or_note": "operator upgrade needed"
+    },
+    {
+      "step": 55,
+      "topic": "Matched rank-one cancellation",
+      "package": "M24",
+      "status": "PROVED_MERGED",
+      "anchor_or_note": "abstract matched update (SecularDeterminantKernel, #285)"
+    },
+    {
+      "step": 56,
+      "topic": "Surviving ninth-order seam threshold jump",
+      "package": "M24",
+      "status": "OPEN",
+      "anchor_or_note": "one-sided operator germs"
+    },
+    {
+      "step": 57,
+      "topic": "Exact cubic stationary crossing falsifier",
+      "package": "M30",
+      "status": "PROVED_MERGED",
+      "anchor_or_note": "2x2 crossing negative control (#285); re-run against M74 identities here"
+    },
+    {
+      "step": 58,
+      "topic": "Shifted spectral-parameter secular equation",
+      "package": "M26",
+      "status": "PROVED_THIS_PR",
+      "anchor_or_note": "abstract (#285); canonical instance canonical_shifted_det_eq / canonical_shifted_apply_ray"
+    },
+    {
+      "step": 59,
+      "topic": "Spectral root derivative and simplicity",
+      "package": "M27",
+      "status": "PROVED_THIS_PR",
+      "anchor_or_note": "simplicity (canonical_finrank_eigenspace_le_one); root slope and alternating sign (canonical_secular_hasDerivAt_root, canonical_secular_root_slope_sign)"
+    },
+    {
+      "step": 60,
+      "topic": "Contact resolvent overlap identity",
+      "package": "M28",
+      "status": "PROVED_THIS_PR",
+      "anchor_or_note": "identity (canonical_contact_overlap) and positivity with A_L >= 0, B_L > 0 (canonical_contact_overlap_pos)"
+    },
+    {
+      "step": 61,
+      "topic": "Source-resolvent aperture derivative",
+      "package": "M29",
+      "status": "PROVED_THIS_PR",
+      "anchor_or_note": "T' = H'(x) + H(x'), x' = -D^{-1} R B' r, at every L > 0 with lambda_odd(L) > 0, and C^2 of L -> H_L(z) (canonicalSecularScalar_hasDerivAt, cubicDefectFunctional_contDiffOn)"
+    },
+    {
+      "step": 62,
+      "topic": "Second source-resolvent balance",
+      "package": "M29",
+      "status": "PROVED_THIS_PR",
+      "anchor_or_note": "T'' = H''(x) + 2 H'(x') + H(x''), x'' = D^{-1}(2 R B' R B' r - R B'' r) (canonicalSecularScalar_hasDerivAt); at T' = T'' = 0 the stationary identities (canonicalSecularScalar_stationary); no sign"
+    },
+    {
+      "step": 63,
+      "topic": "Third-order source-resolvent obstruction",
+      "package": "M29",
+      "status": "OPEN",
+      "anchor_or_note": ""
+    },
+    {
+      "step": 64,
+      "topic": "Simplicity of all even roots below odd floor",
+      "package": "M27",
+      "status": "PROVED_THIS_PR",
+      "anchor_or_note": "canonical_finrank_eigenspace_le_one (geometric multiplicity <= 1; A_L symmetric)"
+    },
+    {
+      "step": 65,
+      "topic": "Abstract stationary cubic crossing countermodel",
+      "package": "M30",
+      "status": "PROVED_MERGED",
+      "anchor_or_note": "(#285)"
+    },
+    {
+      "step": 66,
+      "topic": "Differential Gronwall contact barrier",
+      "package": "M31",
+      "status": "CONDITIONAL",
+      "anchor_or_note": "abstract bound gronwall_lower_bound PROVED_THIS_PR; canonical barrier canonical_evenBottom_pos_of_gronwall conditional on (67.1), which is OPEN (M32)"
+    },
+    {
+      "step": 67,
+      "topic": "Full arithmetic derivative inequality target",
+      "package": "M32",
+      "status": "OPEN",
+      "anchor_or_note": ""
+    },
+    {
+      "step": 68,
+      "topic": "Odd source-sign reversal of contact vector",
+      "package": "M33",
+      "status": "PROVED_THIS_PR",
+      "anchor_or_note": "e_{Dz} < 0 on (0, theta], e_{Dz}(1) > 0 and a zero in (theta, 1) at every normalized even ground eigenvector with positive parity gap (sourceAtomRealEnergy_index_signReversal); source only"
+    },
+    {
+      "step": 69,
+      "topic": "Physical second-order sign-changing test",
+      "package": "M33/M41",
+      "status": "INTERVAL_EVIDENCE",
+      "anchor_or_note": "M41 interval enclosure (#285)"
+    },
+    {
+      "step": 70,
+      "topic": "Exact archimedean density and remainder",
+      "package": "M34",
+      "status": "PROVED_THIS_PR",
+      "anchor_or_note": "(70.1) is the M09 identity (productionArithmeticRealValue_eq_weightedRemainder); R(e^t) integrable against continuous tests (intervalIntegrable_weightedRemainder_exp_mul)"
+    },
+    {
+      "step": 71,
+      "topic": "Stationary arithmetic remainder oscillation",
+      "package": "M34",
+      "status": "PROVED_THIS_PR",
+      "anchor_or_note": "(71.1) is the M09 contact balance; (71.2) GeneratedStrictEvenContact.remainderOscillation_budget; necessary condition that excludes nothing"
+    },
+    {
+      "step": 72,
+      "topic": "Weighted elementary source integral",
+      "package": "M35",
+      "status": "PROVED_MERGED",
+      "anchor_or_note": "CanonicalSourceWeightedIntegral (#285)"
+    },
+    {
+      "step": 73,
+      "topic": "Uniform small-aperture physical positivity",
+      "package": "M36",
+      "status": "PROVED_MERGED",
+      "anchor_or_note": "fixed-vector test only (#285)"
+    },
+    {
+      "step": 74,
+      "topic": "Conditional local stationary contact contradiction",
+      "package": "M37/M66",
+      "status": "PARTIAL",
+      "anchor_or_note": "unconditional below eps_K PROVED_THIS_PR (firstVariation_ne_zero_of_lt_primeFreeRadius, possibly vacuous); above eps_K OPEN"
+    },
+    {
+      "step": 75,
+      "topic": "Finite extrema of logarithmic prime remainder",
+      "package": "M38",
+      "status": "PROVED_THIS_PR",
+      "anchor_or_note": "isGreatest_weightedRemainder (attained at an integer), isGLB_weightedRemainder (possibly a left limit)"
+    },
+    {
+      "step": 76,
+      "topic": "Contact sign scope and next arithmetic target",
+      "package": "M39",
+      "status": "OPEN",
+      "anchor_or_note": ""
+    },
+    {
+      "step": 77,
+      "topic": "General negative integrated source operator",
+      "package": "M40",
+      "status": "PROVED_MERGED",
+      "anchor_or_note": "(#285)"
+    },
+    {
+      "step": 78,
+      "topic": "K2 prime-free physical test falsifier",
+      "package": "M41",
+      "status": "INTERVAL_EVIDENCE",
+      "anchor_or_note": "(#285)"
+    },
+    {
+      "step": 79,
+      "topic": "Explicit finite-K initial positive radius",
+      "package": "M42",
+      "status": "PROVED_MERGED",
+      "anchor_or_note": "fixed-vector test (#285)"
+    },
+    {
+      "step": 80,
+      "topic": "K3 indefinite physical second-order test",
+      "package": "M43",
+      "status": "INTERVAL_EVIDENCE",
+      "anchor_or_note": "(#285)"
+    },
+    {
+      "step": 81,
+      "topic": "Entering seventh-order prime second-test sign",
+      "package": "M44",
+      "status": "PROVED_THIS_PR",
+      "anchor_or_note": "fixed vector: Delta Q_z(log q + h) = -beta_q e_{Dz}(h/(log q + h)) and |Delta Q - a h^7| <= C h^8 with a > 0 (enteringPrimePhysicalJump_seventh_order, enteringPrimePhysicalJump_pos_near_seam); not total Q, operator upgrade OPEN"
+    },
+    {
+      "step": 82,
+      "topic": "Explicit odd endpoint source Taylor bound",
+      "package": "M45",
+      "status": "PROVED_THIS_PR",
+      "anchor_or_note": "Re e_u(omega) <= -(pi^6/90) |M_3(u)|^2 omega^7 on 0 <= omega <= theta(u) (re_quadraticForm_sourceMatrix_le_of_mem_oddBoundaryFlat, sourceAtomRealEnergy_le_of_le_oddEndpointAngle)"
+    },
+    {
+      "step": 83,
+      "topic": "Spectral-gap-controlled sign aperture",
+      "package": "M46",
+      "status": "PROVED_MERGED",
+      "anchor_or_note": "(#285)"
+    },
+    {
+      "step": 84,
+      "topic": "Favorable recent prime-power source terms",
+      "package": "M49",
+      "status": "PROVED_THIS_PR",
+      "anchor_or_note": "near-edge prime terms inside theta_* are >= (pi^6/90) beta_q (delta/(c|H(v)|))^2 omega_q^7 (sourceAtomRealEnergy_index_le_of_contactAngle, primeTerm_ge_of_contactAngle_four); older primes not addressed"
+    },
+    {
+      "step": 85,
+      "topic": "K2 odd source sign via sine convolution",
+      "package": "M47",
+      "status": "PROVED_MERGED",
+      "anchor_or_note": "(#285)"
+    },
+    {
+      "step": 86,
+      "topic": "K2 source sign across early prime samples",
+      "package": "M48",
+      "status": "PROVED_MERGED",
+      "anchor_or_note": "source side (#285)"
+    },
+    {
+      "step": 87,
+      "topic": "K2 source sign through three quarters",
+      "package": "M47",
+      "status": "PROVED_MERGED",
+      "anchor_or_note": "(#285)"
+    },
+    {
+      "step": 88,
+      "topic": "K2 favorable prime terms through log16",
+      "package": "M48",
+      "status": "PROVED_MERGED",
+      "anchor_or_note": "source side (#285)"
+    },
+    {
+      "step": 89,
+      "topic": "Improved centered-index mass coercivity",
+      "package": "M46/M73",
+      "status": "PROVED_THIS_PR",
+      "anchor_or_note": "constant 4 (was C_K < 5)"
+    },
+    {
+      "step": 90,
+      "topic": "Contact fourth-moment gap bounds",
+      "package": "M46/M73",
+      "status": "PROVED_THIS_PR",
+      "anchor_or_note": "parityGap_mul_norm_sq_le_four_mul_source_mul_momentFour"
+    },
+    {
+      "step": 91,
+      "topic": "Older-prime compensating budget",
+      "package": "M50",
+      "status": "PROVED_THIS_PR",
+      "anchor_or_note": "budget (91.1) and finite form (91.2) at every stationary generated strict-even contact (GeneratedStrictEvenContact.olderPrimeBudget, olderPrimeBudget_finite); necessary conditions that exclude nothing; M51 OPEN"
+    },
+    {
+      "step": 92,
+      "topic": "Remaining contact-conditioned obstruction",
+      "package": "M51",
+      "status": "OPEN",
+      "anchor_or_note": "K = 2: Arb certifies lambda_even > 0 on [1/400, log 16] (interval evidence, M51_K2_EVEN_BOTTOM_CERTIFICATE); general K OPEN"
+    },
+    {
+      "step": 93,
+      "topic": "Regularized canonical finite-part energy",
+      "package": "M52/M53",
+      "status": "PROVED_THIS_PR",
+      "anchor_or_note": "energy identity PROVED (#285); its first and second aperture derivatives PROVED_THIS_PR at every L > 0"
+    },
+    {
+      "step": 94,
+      "topic": "Numerical moving-aperture F04 regression",
+      "package": "M53",
+      "status": "EXPERIMENTAL_SIGNAL",
+      "anchor_or_note": "matrix-level regression of the F04 identities, prime-free, in prime cells and at seams, to 1.2e-6 (post285_f04_falsifier.py)"
+    },
+    {
+      "step": 95,
+      "topic": "Unweighted source average and sign reversal",
+      "package": "M54",
+      "status": "PROVED_MERGED",
+      "anchor_or_note": "(#285)"
+    },
+    {
+      "step": 96,
+      "topic": "Partial summation / RH-equivalence firewall",
+      "package": "M55",
+      "status": "PROVED_THIS_PR",
+      "anchor_or_note": "(96.1) psi_sub_self_eq_weightedRemainder; transfer bound abs_psi_sub_self_sub_one_le; R = O(x^eps) for all eps stays an RH-strength premise that is never assumed"
+    },
+    {
+      "step": 97,
+      "topic": "Source-moment phase and seventh jet",
+      "package": "M58/M60",
+      "status": "PROVED_THIS_PR",
+      "anchor_or_note": "phase lock via M74; seventh jet PROVED_MERGED"
+    },
+    {
+      "step": 98,
+      "topic": "Exact complete source-moment arithmetic",
+      "package": "M59",
+      "status": "PROVED_MERGED",
+      "anchor_or_note": "existing source-kernel RHS; real pairing form (98B) proved this PR (contactSourcePairing_balance)"
+    },
+    {
+      "step": 99,
+      "topic": "Source endpoint and older-prime balance",
+      "package": "M61",
+      "status": "PARTIAL",
+      "anchor_or_note": "exact near/old balance I - O + N = |M_4|^2/gamma, its gap lambda_odd |M_4|^2/|g|^2 and the endpoint p_z(0) = 0 PROVED_THIS_PR (contactSourcePairing_nearOld_balance, contactSourcePairing_older_le); near-edge sign of p_z (99A) not formalized; opposite side (99C) OPEN"
+    },
+    {
+      "step": 100,
+      "topic": "Birdfishie branch comparison",
+      "package": "M63",
+      "status": "EXPERIMENTAL_SIGNAL",
+      "anchor_or_note": "route comparison at the K = 2 near-contacts (M63_ROUTE_COMPARISON, POST_GREEN_RESEARCH section 3); opposite sides of both routes OPEN"
+    },
+    {
+      "step": 101,
+      "topic": "Canonical shared second-variation observable",
+      "package": "M64/M65",
+      "status": "PROVED_THIS_PR",
+      "anchor_or_note": "identified with the production second variation at every L > 0 (fixedSecondEuler of productionContactF04DerivativeAuthority_of_pos)"
+    },
+    {
+      "step": 102,
+      "topic": "Positive prime-free side of local birdfishie",
+      "package": "M42/M66",
+      "status": "PROVED_MERGED",
+      "anchor_or_note": "fixed-vector side (#285); transported to E'' + (2/L)E' this PR (productionContactEulerCurvature_neg)"
+    },
+    {
+      "step": 103,
+      "topic": "First-contact second-variation nonpositive side",
+      "package": "M65/M66",
+      "status": "PROVED_THIS_PR",
+      "anchor_or_note": "complete second physical value = 2<Aw,w> >= 0 at stationary generated contacts (secondPhysicalValue_nonneg); prime-free form -(2 pi)^2 Q/L^4"
+    },
+    {
+      "step": 104,
+      "topic": "Restricted two-sided local contradiction",
+      "package": "M66",
+      "status": "PROVED_THIS_PR",
+      "anchor_or_note": "no stationary generated strict-even contact below eps_K (possibly vacuous)"
+    },
+    {
+      "step": 105,
+      "topic": "Moving-aperture differentiation analytic target",
+      "package": "M65",
+      "status": "PROVED_THIS_PR",
+      "anchor_or_note": "every L > 0, seams included"
+    },
+    {
+      "step": 106,
+      "topic": "K2 complete source functional negative control",
+      "package": "M67",
+      "status": "INTERVAL_EVIDENCE",
+      "anchor_or_note": "log3 certificate (#285 CI)"
+    },
+    {
+      "step": 107,
+      "topic": "Proof note status / open F04 obligations",
+      "package": "M69",
+      "status": "SCOPE_CONTROL",
+      "anchor_or_note": ""
+    },
+    {
+      "step": 108,
+      "topic": "Strict positive and negative source excursions",
+      "package": "M70",
+      "status": "PROVED_THIS_PR",
+      "anchor_or_note": "sourceEnergyRe_excursions_of_zeroSum"
+    },
+    {
+      "step": 109,
+      "topic": "Full half-aperture Andreief inertia",
+      "package": "M71",
+      "status": "PROVED_THIS_PR",
+      "anchor_or_note": "exact even/odd carrier inertia for 0 < omega <= 1/2 (CanonicalAndreiefInertia); Arb-certified minor signs as regression"
+    },
+    {
+      "step": 110,
+      "topic": "Source compression spectral flow",
+      "package": "M72",
+      "status": "PARTIAL",
+      "anchor_or_note": "first passage PROVED_THIS_PR; multiplicity DERIVED on paper, formal obligation OPEN"
+    },
+    {
+      "step": 111,
+      "topic": "Actual canonical resolvent-selected kernel",
+      "package": "M74",
+      "status": "PROVED_THIS_PR",
+      "anchor_or_note": "canonical_ker_eq_span_of_contact"
+    },
+    {
+      "step": 112,
+      "topic": "Quantitative source/fourth-moment phase locking",
+      "package": "M74",
+      "status": "PROVED_THIS_PR",
+      "anchor_or_note": "canonical_contact_phase"
+    },
+    {
+      "step": 113,
+      "topic": "Canonical complete arithmetic opposite-side target",
+      "package": "M74/M76",
+      "status": "OPEN",
+      "anchor_or_note": "exact reduction DERIVED; opposite side OPEN; Arb certifies 1 - T > 0 at the 96 M76 grid points (interval evidence, M76_SECULAR_MARGIN_GRID_CERTIFICATE)"
+    },
+    {
+      "step": 114,
+      "topic": "Birdfishie audit / two-sided proof obligations",
+      "package": "M77",
+      "status": "SCOPE_CONTROL",
+      "anchor_or_note": ""
+    },
+    {
+      "step": 115,
+      "topic": "Sharp centered-index Poincare constant",
+      "package": "M73",
+      "status": "PROVED_THIS_PR",
+      "anchor_or_note": "1/4 bound proved; sharpness EXPERIMENTAL_SIGNAL"
+    },
+    {
+      "step": 116,
+      "topic": "Off-contact Ward residual identity",
+      "package": "M74",
+      "status": "PROVED_THIS_PR",
+      "anchor_or_note": "canonical_ward_identity"
+    },
+    {
+      "step": 117,
+      "topic": "Approximate contact phase-bound",
+      "package": "M74",
+      "status": "PROVED_THIS_PR",
+      "anchor_or_note": "canonical_re_conj_mul_momentFour_pos_of_approx"
+    },
+    {
+      "step": 118,
+      "topic": "Canonical resolvent ray fourth-moment gauge",
+      "package": "M74",
+      "status": "PROVED_THIS_PR",
+      "anchor_or_note": "canonical_momentFour_resolventRay"
+    },
+    {
+      "step": 119,
+      "topic": "Uniform negative source interval via derivative",
+      "package": "M75",
+      "status": "PROVED_THIS_PR",
+      "anchor_or_note": "exists_sourceNegativeWindow"
+    },
+    {
+      "step": 120,
+      "topic": "Mixed-sign individual prime terms at large L",
+      "package": "M75",
+      "status": "PROVED_THIS_PR",
+      "anchor_or_note": "individual summands only"
+    }
+  ]
+}
