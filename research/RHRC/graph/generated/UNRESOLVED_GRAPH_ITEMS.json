@@ -857,6 +857,7 @@
     "Mathlib.Analysis.Calculus.MeanValue",
     "Mathlib.Analysis.Calculus.ParametricIntegral",
     "Mathlib.Analysis.Calculus.ParametricIntervalIntegral",
+    "Mathlib.Analysis.Calculus.Taylor",
     "Mathlib.Analysis.Complex.Basic",
     "Mathlib.Analysis.Complex.BorelCaratheodory",
     "Mathlib.Analysis.Complex.CauchyIntegral",

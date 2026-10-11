@@ -48,18 +48,18 @@
   },
   "inherits_runtime_qualification": false,
   "input_snapshot": {
-    "candidate_count": 3620,
-    "candidate_resolution_sha256": "dbfbfe6b194920ca164458f51c825896d2297b144a60873aee9110a65d14d2e9",
-    "candidate_source_surface_sha256": "a0fec0022c4ef6fbfa72548da47c4e222f3095b8e18a41be367d0962ab7309fa",
-    "candidate_summary_sha256": "3bc0c0fb9beb3a83eabf2b3eb68e952e648af18bec5ae35352b96bc468f5c1e6",
+    "candidate_count": 3647,
+    "candidate_resolution_sha256": "0b77301bc29ce8485e4bd342c786119c9da40b8a0f822d40ad02ce8817124753",
+    "candidate_source_surface_sha256": "9f25eba3001301f17d7761f24ff34030804554bd5afab2656fdc9b37f29166d8",
+    "candidate_summary_sha256": "6ebbcd421c25ad2f71e3419e3cdaa2e9b48b1627d67d1cbffc38d0071e6277dc",
     "lean_toolchain": "leanprover/lean4:v4.33.0-rc2",
     "registered_compiler_receipt_sha256": "360eb869e892e1219d2e3dfd532c44681e3009603017dd65562386d7e6a1523f",
-    "rhkg_subject_digest_sha256": "ae54c9613cc105e762dc1bea1e0e23a2eaede1f1c8f019c9ecd265495ecb67c3",
-    "source_only_public_theorem_count": 1433
+    "rhkg_subject_digest_sha256": "5a638741148ecc890baebfab86b5f972122fe7466a2f7f9830937ffef5190294",
+    "source_only_public_theorem_count": 1459
   },
   "qualification_identity": {
-    "execution_digest": "5736fae026070687bf333e07c70e99c1bb5a2db6ff41e1c07782614920362894",
-    "execution_id": "RHKG_CANDIDATE_SNAPSHOT:ae54c9613cc105e7",
+    "execution_digest": "5ead5deb12d48267561cb67bcb45b734e46fafe22122f1bd7d1ae1a7412bb8d0",
+    "execution_id": "RHKG_CANDIDATE_SNAPSHOT:5a638741148ecc89",
     "profile_digest": "0ab841ca4f9c683bcf206c0cd2e434f07f35b3861073feb370f10195cac49929",
     "profile_id": "RHRC_FFBBP_V17_RHKG_SNAPSHOT_PROFILE",
     "protocol_digest": "30fd49aa7806e29ea8ce750cb91ad0f9edb3d655b9697f6a6dd82d3666a4ac26",
@@ -76,7 +76,7 @@
         "status": "FAIL"
       },
       "decision_factorization": {
-        "collision_fiber_count": 377,
+        "collision_fiber_count": 380,
         "counterexamples": [
           {
             "member_ids": [
@@ -582,6 +582,26 @@
           },
           {
             "member_ids": [
+              "rh:source-decl:03fa70d5bb311dd90682aac9a60588d32741129b0df0f08135e93aa2ed7291d4",
+              "rh:source-decl:35d24b456baabfa7088c8327fbb3c6f7e07dc3704ae3d44e521bf5aee9705f18",
+              "rh:source-decl:48d0c4376b4a46222357ae15b657410debbd83174aba0a874d0eff5608a5700d",
+              "rh:source-decl:5c3a14bcce82340f3ef501c9de1c8187dc89d30457a67903218a5541b03b5030",
+              "rh:source-decl:6726566abcaf28266d50125d79e1e19f2670f84d150811f6ac190e9205259be8",
+              "rh:source-decl:6b71dff7f083645035cd41bb8013ae2ab101c5cbeddae5325809244d01bbfed0",
+              "rh:source-decl:85067adbd84ce673949ecba927e3d94b37a18b37f8dc763ed5138d1650764a29",
+              "rh:source-decl:bbe8f133214755d510529352e4ccb422098f1e7cc0fc40cf968b698239a5143c",
+              "rh:source-decl:d9d4ede043ce28d07f1f51f53c44db1d859b956ffc581e2e48ca53b6da1f98ce",
+              "rh:source-decl:e4f50da84e7739916bf9d84f75a4a0aa4484cf35f50001743792a0108fbaded9",
+              "rh:source-decl:ea31d4f8fba9feaae0d34fbc82706492b611357d41f7daa37d29a7f507bdf485"
+            ],
+            "reduction_key": "[\"Zeta23.CCM.CanonicalEnteringPrimePhysicalJet\"]",
+            "values": [
+              "\"NOT_SOURCE_ONLY_PUBLIC_THEOREM\"",
+              "\"SOURCE_ONLY_PUBLIC_THEOREM\""
+            ]
+          },
+          {
+            "member_ids": [
               "rh:source-decl:02376a6fa829fe82999651fc833c82105ce215cccb4c6f51ffd7e415279de621",
               "rh:source-decl:0259768ee84aeb43fda899dac21f40c5ed4d8f6990438b15e310397895b70106",
               "rh:source-decl:02f0bac1836552b7e79b4694b5c35b93050757fc3bd3b8d53eb6774d741c146c",
@@ -650,45 +670,18 @@
               "\"NOT_SOURCE_ONLY_PUBLIC_THEOREM\"",
               "\"SOURCE_ONLY_PUBLIC_THEOREM\""
             ]
-          },
-          {
-            "member_ids": [
-              "rh:source-decl:0d366494ccc652b5aedb4dc73b65e09c298335de1da3e6f74db86697931c8ea1",
-              "rh:source-decl:0e879be6a7e82b781f7771e22869182a7edb505e83acff5504a83574bb627887",
-              "rh:source-decl:124236e595215baa34d80fd3a2ccfc73da5edf4c7f9d5118f0bed0ec94d35afa",
-              "rh:source-decl:2243648123ff1709652aedd20e1151a1eab630958eaff6bb6f3308b980c49a84",
-              "rh:source-decl:3438f83605893b7d4e54fdfff8cac03b9e52f84781489860b295a53c9572948e",
-              "rh:source-decl:36701a80abbcbb21f3ae6c685d343dbc4cc6ea37e5a7696cf7819e02e8269f81",
-              "rh:source-decl:4b1180241d5b934f6b4cd8b857e2014c22cdb5a5db8a7de416e6e7494552748b",
-              "rh:source-decl:5673f27e49a7437406804061922d28644b61666fb9443d9e44b9138a35fde2e0",
-              "rh:source-decl:577f8eaf3a2c3e056d6e1ba786d44d728a4a5e3c08ce258075cbff3fd15f74ad",
-              "rh:source-decl:721982c4f1a42326ae040d94ac5008df1e78eb7595136db4483b95cf3f2fcc4f",
-              "rh:source-decl:891047f074afadac7b308fc2c2f37dee1f3b2b8e6a75bd40a28b019f1c1db06f",
-              "rh:source-decl:a2fe6e4de92d74454ed8cdaf07a25bf0fb3a7fcc23ec8055f69a72b4e4163d32",
-              "rh:source-decl:afbcd77b2e797a72aab800c612ab84abafbd8b4afef7b1ff7d360ad6746a8389",
-              "rh:source-decl:ba6eeeaa1a133e2089de8ce133374f20cb1d7e0f1880a3d47fe1d012b10bc71e",
-              "rh:source-decl:c5e47c1b03f1f12cd21a8b6caef13a5684f2a3d7c8bf3253797cd10c8d79859c",
-              "rh:source-decl:cb128a09d08097ca508a7fb17dc36e24762a426de3c6c904bda64f1a33fc0845",
-              "rh:source-decl:ea107cde6eebe38a9274ef1018ff919e1c173d15944a509d79fc6317cf2f3d1a",
-              "rh:source-decl:f1497a8c861c515eea48d7874c609ae2409c17ba5fadf016fa7d293c21802fdb"
-            ],
-            "reduction_key": "[\"Zeta23.CCM.CanonicalK2SourceSignInterval\"]",
-            "values": [
-              "\"NOT_SOURCE_ONLY_PUBLIC_THEOREM\"",
-              "\"SOURCE_ONLY_PUBLIC_THEOREM\""
-            ]
           }
         ],
-        "fiber_count": 407,
-        "full_state_count": 3620,
+        "fiber_count": 410,
+        "full_state_count": 3647,
         "max_fiber_size": 69,
-        "mixed_value_fiber_count": 173,
+        "mixed_value_fiber_count": 174,
         "passed": false
       },
       "declared_use": "NEGATIVE_CONTROL_ONLY",
       "description": "Module-only Xi; retained as the exact decision-sufficiency falsifier.",
       "diagnostic_factorization": {
-        "collision_fiber_count": 377,
+        "collision_fiber_count": 380,
         "counterexamples": [
           {
             "member_ids": [
@@ -1267,10 +1260,10 @@
             ]
           }
         ],
-        "fiber_count": 407,
-        "full_state_count": 3620,
+        "fiber_count": 410,
+        "full_state_count": 3647,
         "max_fiber_size": 69,
-        "mixed_value_fiber_count": 220,
+        "mixed_value_fiber_count": 221,
         "passed": false
       },
       "id": "MODULE_ONLY_SNAPSHOT",
@@ -1285,10 +1278,10 @@
         "status": "PASS"
       },
       "decision_factorization": {
-        "collision_fiber_count": 489,
+        "collision_fiber_count": 492,
         "counterexamples": [],
-        "fiber_count": 703,
-        "full_state_count": 3620,
+        "fiber_count": 707,
+        "full_state_count": 3647,
         "max_fiber_size": 67,
         "mixed_value_fiber_count": 0,
         "passed": true
@@ -1296,10 +1289,10 @@
       "declared_use": "POST_REFERENCE_COHORT_NAVIGATION_ONLY",
       "description": "Retains module and exact visibility disposition for post-reference cohort navigation.",
       "diagnostic_factorization": {
-        "collision_fiber_count": 489,
+        "collision_fiber_count": 492,
         "counterexamples": [],
-        "fiber_count": 703,
-        "full_state_count": 3620,
+        "fiber_count": 707,
+        "full_state_count": 3647,
         "max_fiber_size": 67,
         "mixed_value_fiber_count": 0,
         "passed": true
@@ -1320,7 +1313,7 @@
         "status": "FAIL"
       },
       "decision_factorization": {
-        "collision_fiber_count": 27,
+        "collision_fiber_count": 28,
         "counterexamples": [
           {
             "member_ids": [
@@ -1328,6 +1321,17 @@
               "rh:source-decl:78d2d53f6c058c048b437d49611eac99d3287ac9995d7075ffc88194a40b93e3"
             ],
             "reduction_key": "[\"549ffbb99fdf4ad031d61b30c8f5670ac88553858a01e6c5a4a22b50ba5252a2\"]",
+            "values": [
+              "\"NOT_SOURCE_ONLY_PUBLIC_THEOREM\"",
+              "\"SOURCE_ONLY_PUBLIC_THEOREM\""
+            ]
+          },
+          {
+            "member_ids": [
+              "rh:source-decl:7e036179270a0875a4b3ae4cd74b3e4d45d63303609c8e8d76d933a584334d2c",
+              "rh:source-decl:a89c120a94fcfceece08efb277e78b08af58c508ca7bd6251c837780fa9e89ec"
+            ],
+            "reduction_key": "[\"8c1ff8329892b4c0dcac70eb7547370c96618e76ff84cf7489ecd4ae538ef845\"]",
             "values": [
               "\"NOT_SOURCE_ONLY_PUBLIC_THEOREM\"",
               "\"SOURCE_ONLY_PUBLIC_THEOREM\""
@@ -1345,16 +1349,16 @@
             ]
           }
         ],
-        "fiber_count": 3586,
-        "full_state_count": 3620,
+        "fiber_count": 3612,
+        "full_state_count": 3647,
         "max_fiber_size": 4,
-        "mixed_value_fiber_count": 2,
+        "mixed_value_fiber_count": 3,
         "passed": false
       },
       "declared_use": "CURRENT_SNAPSHOT_DECISION_PROBE_ONLY",
       "description": "Compiler type-digest Xi; current-snapshot probe only, not semantic equivalence.",
       "diagnostic_factorization": {
-        "collision_fiber_count": 27,
+        "collision_fiber_count": 28,
         "counterexamples": [
           {
             "member_ids": [
@@ -1376,6 +1380,17 @@
             "values": [
               "\"ALREADY_IN_REGISTERED_DEPENDENCY_CLOSURE\"",
               "\"PRIVATE_OR_INTERNAL_SOURCE_OBJECT\""
+            ]
+          },
+          {
+            "member_ids": [
+              "rh:source-decl:7e036179270a0875a4b3ae4cd74b3e4d45d63303609c8e8d76d933a584334d2c",
+              "rh:source-decl:a89c120a94fcfceece08efb277e78b08af58c508ca7bd6251c837780fa9e89ec"
+            ],
+            "reduction_key": "[\"8c1ff8329892b4c0dcac70eb7547370c96618e76ff84cf7489ecd4ae538ef845\"]",
+            "values": [
+              "\"ALREADY_IN_REGISTERED_DEPENDENCY_CLOSURE\"",
+              "\"SOURCE_ONLY_PUBLIC_THEOREM\""
             ]
           },
           {
@@ -1457,10 +1472,10 @@
             ]
           }
         ],
-        "fiber_count": 3586,
-        "full_state_count": 3620,
+        "fiber_count": 3612,
+        "full_state_count": 3647,
         "max_fiber_size": 4,
-        "mixed_value_fiber_count": 9,
+        "mixed_value_fiber_count": 10,
         "passed": false
       },
       "id": "TYPE_DIGEST_SNAPSHOT",
@@ -1478,7 +1493,7 @@
   "schema_version": "RHRC-FFBBP-RHKG-assurance-report-2.0",
   "selected_reduction": "MODULE_VISIBILITY_SNAPSHOT",
   "selected_reduction_disposition": "PASS_FOR_POST_REFERENCE_COHORT_NAVIGATION_ONLY",
-  "source_only_module_cohort_count": 290,
+  "source_only_module_cohort_count": 293,
   "source_only_module_cohorts": [
     {
       "count": 67,
@@ -2303,6 +2318,38 @@
     {
       "count": 10,
       "declarations": [
+        "Zeta23.CCM.GeneratedStrictEvenContact.remainderOscillation_budget",
+        "Zeta23.CCM.abs_integral_mul_le_half_oscillation",
+        "Zeta23.CCM.continuous_productionContactTestDeriv",
+        "Zeta23.CCM.explicitCanonicalSourceMoment_ne_zero_of_parityGap",
+        "Zeta23.CCM.hasDerivAt_productionContactTest",
+        "Zeta23.CCM.integral_productionContactTestDeriv",
+        "Zeta23.CCM.intervalIntegrable_weightedRemainder_exp",
+        "Zeta23.CCM.intervalIntegrable_weightedRemainder_exp_mul",
+        "Zeta23.CCM.sourceAtomRealEnergy_index_signReversal",
+        "Zeta23.CCM.weightedVonMangoldtSqrtSum_mono"
+      ],
+      "module": "Zeta23.CCM.CanonicalContactRemainderOscillation"
+    },
+    {
+      "count": 10,
+      "declarations": [
+        "Zeta23.CCM.enteringPrimeLeadingCoefficient_pos",
+        "Zeta23.CCM.enteringPrimePhysicalJump_ge_of_angle",
+        "Zeta23.CCM.enteringPrimePhysicalJump_log_add",
+        "Zeta23.CCM.enteringPrimePhysicalJump_pos_near_seam",
+        "Zeta23.CCM.enteringPrimePhysicalJump_seventh_order",
+        "Zeta23.CCM.mem_Icc_floor_exp_of_log_le",
+        "Zeta23.CCM.normSq_centeredMoment_three_sourceIndexAction",
+        "Zeta23.CCM.productionContactValue_eq_withoutAtom_add_jump",
+        "Zeta23.CCM.sourceAtomRealEnergy_seventh_taylor",
+        "Zeta23.CCM.sourceIndexAction_boundaryFlat"
+      ],
+      "module": "Zeta23.CCM.CanonicalEnteringPrimePhysicalJet"
+    },
+    {
+      "count": 10,
+      "declarations": [
         "Zeta23.CCM.conj_sourceEntry",
         "Zeta23.CCM.continuous_sourceEnergy_joint",
         "Zeta23.CCM.exists_sourceDegenerate_of_half_neg",
@@ -2746,6 +2793,18 @@
         "Zeta23.CCM.parityConj_involutive"
       ],
       "module": "Zeta23.CCM.CanonicalConjugationGeometry"
+    },
+    {
+      "count": 6,
+      "declarations": [
+        "Zeta23.CCM.canonicalResolventGamma_le",
+        "Zeta23.CCM.contactSourceMargin_ge",
+        "Zeta23.CCM.contactSourcePairing_balance",
+        "Zeta23.CCM.contactSourcePairing_nearOld_balance",
+        "Zeta23.CCM.contactSourcePairing_older_le",
+        "Zeta23.CCM.contactSourcePairing_zero"
+      ],
+      "module": "Zeta23.CCM.CanonicalContactSourceOlderPrimeBalance"
     },
     {
       "count": 6,
@@ -4661,8 +4720,8 @@
   "visibility_counts": {
     "ALREADY_IN_REGISTERED_DEPENDENCY_CLOSURE": 1774,
     "ALREADY_REGISTERED_ROOT": 109,
-    "PRIVATE_OR_INTERNAL_SOURCE_OBJECT": 301,
-    "SOURCE_ONLY_PUBLIC_THEOREM": 1433,
+    "PRIVATE_OR_INTERNAL_SOURCE_OBJECT": 302,
+    "SOURCE_ONLY_PUBLIC_THEOREM": 1459,
     "UNRESOLVED_SOURCE_IDENTITY": 3
   }
 }
