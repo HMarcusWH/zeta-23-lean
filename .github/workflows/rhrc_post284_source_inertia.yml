@@ -56,7 +56,10 @@ jobs:
             Zeta23.CCM.CanonicalGlobalF04 \
             Zeta23.CCM.CanonicalLocalBirdfishie \
             Zeta23.CCM.CanonicalWeightedChebyshevAbel \
-            Zeta23.CCM.CanonicalSecularGronwall
+            Zeta23.CCM.CanonicalSecularGronwall \
+            Zeta23.CCM.CanonicalAndreiefInertia \
+            Zeta23.CCM.CanonicalAlternatingRootSlopes \
+            Zeta23.CCM.AbstractCubicSchur
           do
             if lake build "$target"; then
               echo "$target PASS" | tee -a /tmp/post284-targets.txt
@@ -95,7 +98,10 @@ jobs:
             Zeta23/CCM/CanonicalGlobalF04.lean \
             Zeta23/CCM/CanonicalLocalBirdfishie.lean \
             Zeta23/CCM/CanonicalWeightedChebyshevAbel.lean \
-            Zeta23/CCM/CanonicalSecularGronwall.lean
+            Zeta23/CCM/CanonicalSecularGronwall.lean \
+            Zeta23/CCM/CanonicalAndreiefInertia.lean \
+            Zeta23/CCM/CanonicalAlternatingRootSlopes.lean \
+            Zeta23/CCM/AbstractCubicSchur.lean
       - name: Reject proof escapes on the promoted surface
         run: python research/RHRC/closure_batch/check_lean_proof_escapes.py --scope promoted
       - uses: actions/upload-artifact@v4
@@ -169,6 +175,18 @@ jobs:
         run: |
           python research/RHRC/routes/R003_ccm_bridge/post285/post285_m55_abel_falsifier.py \
             --output /tmp/POST285_M55_ABEL_FALSIFIER.json > /dev/null
+      - name: Post-285 M71 Andreief interior inertia (Arb-certified minor signs) and aperture controls
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/post285/post285_m71_andreief_falsifier.py \
+            --kmax 9 --output /tmp/POST285_M71_ANDREIEF_FALSIFIER.json > /dev/null
+      - name: Post-285 M27 alternating root slopes on the float canonical operator, with controls
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/post285/post285_m27_root_slope_falsifier.py \
+            --output /tmp/POST285_M27_ROOT_SLOPE_FALSIFIER.json > /dev/null
+      - name: Post-285 M08 abstract cubic Schur exact regression and controls
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/post285/post285_m08_cubic_schur_falsifier.py \
+            --output /tmp/POST285_M08_CUBIC_SCHUR_FALSIFIER.json > /dev/null
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -182,3 +200,6 @@ jobs:
             /tmp/POST285_M76_SECULAR_MARGIN.json
             /tmp/POST285_F04_FALSIFIER.json
             /tmp/POST285_M55_ABEL_FALSIFIER.json
+            /tmp/POST285_M71_ANDREIEF_FALSIFIER.json
+            /tmp/POST285_M27_ROOT_SLOPE_FALSIFIER.json
+            /tmp/POST285_M08_CUBIC_SCHUR_FALSIFIER.json

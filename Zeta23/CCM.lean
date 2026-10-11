@@ -270,3 +270,6 @@ import Zeta23.CCM.CanonicalGlobalF04
 import Zeta23.CCM.CanonicalLocalBirdfishie
 import Zeta23.CCM.CanonicalWeightedChebyshevAbel
 import Zeta23.CCM.CanonicalSecularGronwall
+import Zeta23.CCM.CanonicalAndreiefInertia
+import Zeta23.CCM.CanonicalAlternatingRootSlopes
+import Zeta23.CCM.AbstractCubicSchur
