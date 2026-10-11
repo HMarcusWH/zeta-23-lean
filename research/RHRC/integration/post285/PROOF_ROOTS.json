@@ -1712,7 +1712,7 @@
       "module_scope": "F04 derivative authority at every L > 0: prime staircase as logarithmic indicators, seams glued by e(0) = e'(0) = e''(0) = 0",
       "status": "PROVED",
       "premises": [],
-      "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
+      "authority": "exact Lean theorem with its stated hypotheses; registered claim R003_PRODUCTION_F04_DERIVATIVE_AUTHORITY after merged PR #287",
       "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
       "ci_receipt": {
         "pr": 287,
@@ -1732,7 +1732,7 @@
       "module_scope": "F04 derivative authority at every L > 0: prime staircase as logarithmic indicators, seams glued by e(0) = e'(0) = e''(0) = 0",
       "status": "PROVED",
       "premises": [],
-      "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
+      "authority": "exact Lean theorem with its stated hypotheses; registered claim R003_WEIGHTED_PRODUCTION_PAIR_BALANCE after merged PR #287",
       "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
       "ci_receipt": {
         "pr": 287,
@@ -1952,7 +1952,7 @@
       "module_scope": "prime-free Euler curvature bound, stationary second value = 2<Aw,w>, no stationary generated strict-even contact below eps_K, unconditional F04 frontier",
       "status": "PROVED",
       "premises": [],
-      "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
+      "authority": "exact Lean theorem with its stated hypotheses; registered claim R003_COMPLETED_STRICT_EVEN_CONTACT_FRONTIER after merged PR #287",
       "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
       "ci_receipt": {
         "pr": 287,

@@ -182,6 +182,17 @@ PROMOTED_OBLIGATIONS = {
 # M32 target), so after CI it is PROVED_CONDITIONAL, not PROVED.
 PROMOTED_STATUS = {"M31_GRONWALL_BARRIER": "PROVED_CONDITIONAL"}
 
+# Roots registered as PROVED_UNCONDITIONAL claims in the post-#287 cleanup.
+REGISTERED_CLAIMS = {
+    "Zeta23.CCM.productionContactF04DerivativeAuthority_of_pos":
+        "R003_PRODUCTION_F04_DERIVATIVE_AUTHORITY",
+    "Zeta23.CCM.canonicalSecondPairing_euler_eq_productionSaturationGap_of_pos":
+        "R003_WEIGHTED_PRODUCTION_PAIR_BALANCE",
+    "Zeta23.CCM.GeneratedStrictEvenContact.completed_production_frontier_unconditional":
+        "R003_COMPLETED_STRICT_EVEN_CONTACT_FRONTIER",
+}
+ROOT_AUTHORITY = "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim"
+
 
 def proof_roots() -> dict:
     roots = []
@@ -199,7 +210,11 @@ def proof_roots() -> dict:
                 "module_scope": scope,
                 "status": "PROVED" if receipt else "PROVED_PENDING_CI",
                 "premises": [],
-                "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
+                "authority": (
+                    "exact Lean theorem with its stated hypotheses; registered claim "
+                    f"{REGISTERED_CLAIMS[decl]} after merged PR #287"
+                    if decl in REGISTERED_CLAIMS else ROOT_AUTHORITY
+                ),
                 "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
             }
             if receipt:
@@ -264,7 +279,7 @@ OBLIGATIONS = [
      "detail": "productionContactF04DerivativeAuthority_of_lt_log_two: for 0 < L < log 2 and every K, all three fields of ProductionContactF04DerivativeAuthority L K hold for the actual canonical even compressed family: E'_z = A_L[(t/L^2) e'_z(1 - t/L)], E''_z + (2/L) E'_z = A_L[(t^2/L^4) e''_z(1 - t/L)], Re<z, A'_L w> = A_L[mixed test]. Proof: real M05 identity with no prime terms below log 2, Leibniz under the moving aperture with t rho(t) regularized, endpoint cancellation via wCorrection' = e^{-L/2} rho(L), e'_z(0) = 0 on boundary-flat vectors, symmetric polarization for the mixed field. The single cCorrection repair is the one inside canonicalSourceMatrix; nothing is added twice."},
     {"id": "F04_GLOBAL_PRODUCTION_DERIVATIVE_AUTHORITY", "package": "M06/M53", "steps": "21, 24, 27, 93, 101, 105",
      "status": "PROVED_PENDING_CI",
-     "detail": "productionContactF04DerivativeAuthority_of_pos: all three F04 fields hold at every L > 0 and every K. Over a fixed range of q the prime staircase is a sum of terms switched on by log q <= L; each entering term has zero value and slope at its seam because e_z(0) = e'_z(0) = 0 (energy) and e'_z(0) = e''_z(0) = 0 (first channel) on boundary-flat vectors, so it is differentiable there (hasDerivAt_ite_le). Statement: forall K L, 0 < L -> ProductionContactF04DerivativeAuthority L K, the exact post-284 premise structure, with no other hypothesis. All ten Zeta23/CCM consumers have F04-free instances here (*_of_pos, *_unconditional); the eight RHRC claim-contract wrappers still take hF04 as a parameter until the registry is rebound. Derivative transport only: no sign, no contact exclusion."},
+     "detail": "productionContactF04DerivativeAuthority_of_pos: all three F04 fields hold at every L > 0 and every K. Over a fixed range of q the prime staircase is a sum of terms switched on by log q <= L; each entering term has zero value and slope at its seam because e_z(0) = e'_z(0) = 0 (energy) and e'_z(0) = e''_z(0) = 0 (first channel) on boundary-flat vectors, so it is differentiable there (hasDerivAt_ite_le). Statement: forall K L, 0 < L -> ProductionContactF04DerivativeAuthority L K, the exact post-284 premise structure, with no other hypothesis. All ten Zeta23/CCM consumers have F04-free instances here (*_of_pos, *_unconditional); the eight RHRC claim-contract examples keep hF04 as an explicit parameter (still valid, and now dischargeable by this constructor). After merged PR #287 the registry is rebound to the F04-free versions (R003_PRODUCTION_F04_DERIVATIVE_AUTHORITY registered). Derivative transport only: no sign, no contact exclusion."},
     {"id": "STEP103_STATIONARY_SECOND_VALUE", "package": "M65/M66", "steps": "103",
      "status": "PROVED_PENDING_CI",
      "detail": "GeneratedStrictEvenContact.secondPhysicalValue_eq_two_mul_responseCost / secondPhysicalValue_nonneg: at a stationary generated strict-even contact the complete second physical value (pole, archimedean and every prime up to e^{L*}) equals 2<A w, w> >= 0 for the stationary response w."},
@@ -349,8 +364,8 @@ OBLIGATIONS = [
     {"id": "OBS060O_STATIONARY_SATURATION_EXCLUSION", "package": "M13", "steps": "74, 104",
      "status": "OPEN", "detail": "Unchanged by this PR."},
     {"id": "M77_INTEGRATION", "package": "M77", "steps": "107, 114",
-     "status": "IN_PROGRESS",
-     "detail": "Ledgers, workflow targets, axiom audit and proof-escape receipts for every new Lean module of this PR; the #285 cleanup PR #286 has merged and this branch is rebased on it. Each proof root and obligation names the green #287 head that carried it (CI_E3C7769, CI_9EA3A4C, CI_2E32E59; workflow runs in WORKFLOW_HARVEST.json candidate_pr287), and none is promoted by default. The two F04-bound #284 claims (R003_WEIGHTED_PRODUCTION_PAIR_BALANCE, R003_COMPLETED_STRICT_EVEN_CONTACT_FRONTIER) stay OPEN in the registry, and CONTROL_STATE keeps #287 as the open candidate: both change in the post-merge cleanup, as #286 did for #285. Their unconditional versions, canonicalSecondPairing_euler_eq_productionSaturationGap_of_pos and GeneratedStrictEvenContact.completed_production_frontier_unconditional, passed CI on e3c7769."},
+     "status": "DONE_MERGED_PR_287",
+     "detail": "Ledgers, workflow targets, axiom audit and proof-escape receipts for every new Lean module of PR #287, rebased on the #285 cleanup PR #286. Each proof root and obligation names the green #287 head that carried it (CI_E3C7769, CI_9EA3A4C, CI_2E32E59; workflow runs in WORKFLOW_HARVEST.json candidate_pr287). PR #287 merged green as ecc6450 (head 40495f3, all 50 check runs green). The post-merge cleanup, as #286 did for #285, moves #287 to merged theorem authority in CONTROL_STATE, registers R003_PRODUCTION_F04_DERIVATIVE_AUTHORITY (productionContactF04DerivativeAuthority_of_pos) and promotes the two F04-bound #284 claims, rebound to canonicalSecondPairing_euler_eq_productionSaturationGap_of_pos (R003_WEIGHTED_PRODUCTION_PAIR_BALANCE) and GeneratedStrictEvenContact.completed_production_frontier_unconditional (R003_COMPLETED_STRICT_EVEN_CONTACT_FRONTIER). The other proof roots stay research-ledger roots, not registered claims."},
     {"id": "RH", "package": "terminal", "steps": "-", "status": "OPEN", "detail": "RH_OPEN."},
 ]
 

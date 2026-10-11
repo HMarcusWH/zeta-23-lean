@@ -10,8 +10,8 @@ class Post278SyncTests(unittest.TestCase):
         state = json.loads(
             (RHRC / "control_v2" / "CONTROL_STATE.json").read_text(encoding="utf-8")
         )
-        # PR #285 is now the merged theorem anchor; the PR #283 candidate
-        # record survives as history under previous_candidate_branch.
+        # A later PR (#287) is now the merged theorem anchor; the PR #283
+        # candidate record survives as history under previous_candidate_branch.
         self.assertGreaterEqual(state["merged_theorem_anchor"]["pr"], 282)
         candidate = state["previous_candidate_branch"]
         self.assertEqual(candidate["pr"], 283)
@@ -52,8 +52,6 @@ class Post278SyncTests(unittest.TestCase):
                 "R001_PRIME_UPPER",
                 "R002_WINDOWED_VISIBILITY",
                 "R003_COFINAL_CANONICAL_ARITHMETIC_CERTIFICATES",
-                "R003_WEIGHTED_PRODUCTION_PAIR_BALANCE",
-                "R003_COMPLETED_STRICT_EVEN_CONTACT_FRONTIER",
             },
         )
 

@@ -674,23 +674,26 @@
       "theorem": "Zeta23.CCM.primeFreeSecondTest_pos",
       "source": "Zeta23/CCM/CanonicalPrimeFreeSecondTest.lean",
       "route": "R003_ccm_bridge"
-    }
-  ],
-  "candidate_scope": "OPEN_CANDIDATE_BINDINGS_AUDIT_ONLY_NOT_PROVED_AUTHORITY",
-  "candidate_bindings": [
+    },
     {
       "id": "R003_WEIGHTED_PRODUCTION_PAIR_BALANCE",
-      "theorem": "Zeta23.CCM.canonicalSecondPairing_euler_eq_productionSaturationGap",
-      "source": "Zeta23/CCM/FirstCrossingProductionCurvatureBridge.lean",
-      "route": "R003_ccm_bridge",
-      "status": "OPEN_PENDING_CI"
+      "theorem": "Zeta23.CCM.canonicalSecondPairing_euler_eq_productionSaturationGap_of_pos",
+      "source": "Zeta23/CCM/CanonicalGlobalF04.lean",
+      "route": "R003_ccm_bridge"
     },
     {
       "id": "R003_COMPLETED_STRICT_EVEN_CONTACT_FRONTIER",
-      "theorem": "Zeta23.CCM.GeneratedStrictEvenContact.completed_production_frontier",
-      "source": "Zeta23/CCM/FirstCrossingGeneratedStrictEvenFrontier.lean",
-      "route": "R003_ccm_bridge",
-      "status": "OPEN_PENDING_CI"
+      "theorem": "Zeta23.CCM.GeneratedStrictEvenContact.completed_production_frontier_unconditional",
+      "source": "Zeta23/CCM/CanonicalLocalBirdfishie.lean",
+      "route": "R003_ccm_bridge"
+    },
+    {
+      "id": "R003_PRODUCTION_F04_DERIVATIVE_AUTHORITY",
+      "theorem": "Zeta23.CCM.productionContactF04DerivativeAuthority_of_pos",
+      "source": "Zeta23/CCM/CanonicalGlobalF04.lean",
+      "route": "R003_ccm_bridge"
     }
-  ]
+  ],
+  "candidate_scope": "OPEN_CANDIDATE_BINDINGS_AUDIT_ONLY_NOT_PROVED_AUTHORITY",
+  "candidate_bindings": []
 }

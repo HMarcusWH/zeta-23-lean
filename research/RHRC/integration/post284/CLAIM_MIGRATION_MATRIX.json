@@ -208,5 +208,46 @@
       "F04_premise": false,
       "action": "REGISTERED_PROVED_UNCONDITIONAL"
     }
+  ],
+  "post287_claim_migration": [
+    {
+      "id": "R003_PRODUCTION_F04_DERIVATIVE_AUTHORITY",
+      "theorem": "Zeta23.CCM.productionContactF04DerivativeAuthority_of_pos",
+      "source": "Zeta23/CCM/CanonicalGlobalF04.lean",
+      "signature_premises": [
+        "hL : 0 < L"
+      ],
+      "merged_ci_evidence": "PR #287 head 40495f39b7510b49a7fe3493b42d9fe3880d6d22 lean-source-inertia job (run 38160543978, job 114532344969): build, axiom audit [propext, Classical.choice, Quot.sound] and proof-escape PASS; merged as ecc6450f28eb6aed944bda8fe9a09296d033fc3e",
+      "audit": "PREMISES_MATCH_CLAIM_TEXT",
+      "F04_premise": false,
+      "action": "REGISTERED_PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "R003_WEIGHTED_PRODUCTION_PAIR_BALANCE",
+      "previous_theorem": "Zeta23.CCM.canonicalSecondPairing_euler_eq_productionSaturationGap",
+      "theorem": "Zeta23.CCM.canonicalSecondPairing_euler_eq_productionSaturationGap_of_pos",
+      "source": "Zeta23/CCM/CanonicalGlobalF04.lean",
+      "signature_premises": [
+        "hL : 0 < L",
+        "hK : 2 <= K"
+      ],
+      "merged_ci_evidence": "PR #287 head 40495f39b7510b49a7fe3493b42d9fe3880d6d22 lean-source-inertia job (run 38160543978, job 114532344969): build, axiom audit [propext, Classical.choice, Quot.sound] and proof-escape PASS; merged as ecc6450f28eb6aed944bda8fe9a09296d033fc3e",
+      "audit": "PREMISES_MATCH_CLAIM_TEXT",
+      "F04_premise": false,
+      "action": "REBOUND_F04_FREE_AND_PROMOTED_PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "R003_COMPLETED_STRICT_EVEN_CONTACT_FRONTIER",
+      "previous_theorem": "Zeta23.CCM.GeneratedStrictEvenContact.completed_production_frontier",
+      "theorem": "Zeta23.CCM.GeneratedStrictEvenContact.completed_production_frontier_unconditional",
+      "source": "Zeta23/CCM/CanonicalLocalBirdfishie.lean",
+      "signature_premises": [
+        "c : GeneratedStrictEvenContact"
+      ],
+      "merged_ci_evidence": "PR #287 head 40495f39b7510b49a7fe3493b42d9fe3880d6d22 lean-source-inertia job (run 38160543978, job 114532344969): build, axiom audit [propext, Classical.choice, Quot.sound] and proof-escape PASS; merged as ecc6450f28eb6aed944bda8fe9a09296d033fc3e",
+      "audit": "PREMISES_MATCH_CLAIM_TEXT",
+      "F04_premise": false,
+      "action": "REBOUND_F04_FREE_AND_PROMOTED_PROVED_UNCONDITIONAL"
+    }
   ]
 }
