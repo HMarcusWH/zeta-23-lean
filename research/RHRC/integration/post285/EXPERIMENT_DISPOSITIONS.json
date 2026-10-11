@@ -189,6 +189,13 @@
       "summary": "float canonical matrices, K = 2..6, L = 0.25..6 step 0.25, even ground state (not a contact): the parity-gap input holds to float rounding and all 329 near-edge sample checks of the proved chain pass (energies at 50 digits). theta_* (c = 4) is 0.084 for K = 2, at most 0.052 for K = 3, 0.037 for K = 4, 0.028 for K = 5 and 0.022 for K = 6. Prime samples fall inside theta_* in 20 of 24 K = 2 rows and 6 of 24 K = 3 rows, and in none for K = 4..6 on this grid: the near-edge benefit is vacuous there. 12 rows have parity gap 0 to float resolution and are skipped"
     },
     {
+      "id": "X285_M50_OLDER_PRIME_PROBE",
+      "script": "post285_m50_older_prime_budget_probe.py",
+      "package": "M50_OLDER_PRIME_BUDGET",
+      "disposition": "EXPERIMENTAL_SIGNAL",
+      "summary": "float canonical matrices, K = 2..6, L = 0.25..6 step 0.25, even ground state (not a contact), theta = theta_*(c = 4): the size bound holds at every sample of all 120 rows and the M49 near-edge bound at every near sample of the 108 rows with a positive parity gap. P and the prime sum nearly cancel: for L >= 2, |P - sum_q beta_q e(omega_q)| <= 6.6e-4 |P|. Wherever older samples exist, 2(2K+1)K^2 sum_O beta_q omega_q >= 114 |P|, so the finite form (91.2) carries no information on this grid; a useful older-prime estimate must keep the cancellation"
+    },
+    {
       "id": "X285_M12_STEP28_CERTIFIED",
       "script": "post285_m09_weighted_remainder_falsifier.py",
       "package": "M12_STEP28_REPLAY",

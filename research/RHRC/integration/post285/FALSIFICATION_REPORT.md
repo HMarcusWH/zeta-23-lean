@@ -6,7 +6,7 @@ evidence. Theorem authority comes only from the Lean roots listed in
 
 ## Scripts
 
-All eleven scripts live in `research/RHRC/routes/R003_ccm_bridge/post285/` and
+All twelve scripts live in `research/RHRC/routes/R003_ccm_bridge/post285/` and
 run in the `source-falsifier-research` job of
 `.github/workflows/rhrc_post284_source_inertia.yml`. Each one runs in seconds.
 
@@ -23,6 +23,7 @@ run in the `source-falsifier-research` job of
 | `post285_m09_weighted_remainder_falsifier.py` | M09, M12 (Step 28) | Pass at 30 digits, with all three controls failing as predicted; Step 28 values Arb-certified |
 | `post285_m45_odd_endpoint_falsifier.py` | M45 | Arb-certified at 232 cells, with all four controls failing as predicted |
 | `post285_m49_near_edge_probe.py` | M49 | Experimental signal; the proved chain holds at every sample checked |
+| `post285_m50_older_prime_budget_probe.py` | M50 | Experimental signal; both proved ingredients hold at every sample checked |
 
 ## M74: canonical secular resolvent
 
@@ -328,6 +329,33 @@ the rank-one relation, and the angle `θ_* = (1/2π)√(5δ/(A_K|H(v)|√c))`.
   of `A_K` for this grid only.
 
 12 rows have parity gap 0 to float resolution and are skipped.
+
+## M50: the older-prime budget on the canonical grid (Step 91)
+
+`post285_m50_older_prime_budget_probe.py` evaluates the M50 quantities on the
+float canonical matrices for `K = 2..6` and `L = 0.25, 0.5, …, 6`. It uses the
+even ground state, which is not a contact, and splits the samples at
+`θ = θ_*(c = 4)` from the M49 probe. `P` is computed by Gauss–Legendre
+quadrature with 400 nodes, and the sample energies at 50 digits.
+
+- **Proved ingredients.** The size bound `|e_{Dz}(ω_q)| ≤ 2ω_q(2K+1)K²` holds
+  at every sample of all 120 rows. The M49 near-edge bound
+  `β_q e_{Dz}(ω_q) ≤ −bβ_qω_q⁷` holds at every near sample of the 108 rows
+  with a positive parity gap.
+- **Cancellation.** `P` and the prime sum nearly cancel. For `L ≥ 2`,
+  `|V| = |P − ∑_q β_q e_{Dz}(ω_q)| ≤ 6.6·10⁻⁴|P|`. The sign of `V` is resolved
+  (`|V| > 10⁻⁹ max(1, |P|)`) in 71 rows: negative in 54, positive in 17.
+- **Finite form.** Wherever older samples exist,
+  `2(2K+1)K² ∑_O β_q ω_q ≥ 114|P|`. So (91.2) holds with a wide margin and
+  says nothing on this grid. The six rows with negative slack are prime-free
+  (`L = 0.25` for every `K`, and `L = 0.5` for `K = 2`): there `O` is empty and
+  `P > 0`. Those ground states have a positive even eigenvalue, so they are
+  not contacts in any case.
+
+A useful older-prime estimate (M51) has to keep the cancellation between `P`
+and the primes; bounding each older term by its size cannot work. 12 rows have
+parity gap 0 to float resolution: their size checks run, and the split is
+skipped.
 
 ## Inherited regressions kept running
 

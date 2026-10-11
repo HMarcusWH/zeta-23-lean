@@ -45,6 +45,7 @@ The machine-readable versions are:
 | M09, M03 (staircase) | `WeightedRemainderIdentity` | `canonicalPolePrimeDiscrepancy_eq_fixedStaircase`, `matrixRealEnergy_pole_sub_prime_eq_fixedStaircase`, `regularizedCompletePhysicalRHS_eq_weightedRemainder`, `productionArithmeticRealValue_eq_weightedRemainder`, `productionArithmeticRealValue_sq_mul_indexEnergy_eq_weightedRemainder`, `GeneratedStrictEvenContact.indexEnergyValue_eq_neg_responseCost`, `GeneratedStrictEvenContact.weightedRemainder_balance` | 32; M03 staircase |
 | M45 | `CanonicalSourceOddEndpointQuantitative` | `re_quadraticForm_sourceMatrix_le_of_mem_oddBoundaryFlat`, `re_quadraticForm_sourceMatrix_neg_of_mem_oddBoundaryFlat`, `re_quadraticForm_sourceMatrix_aperture_le_of_mem_oddBoundaryFlat`, `sourceAtomRealEnergy_le_of_le_oddEndpointAngle`, `abs_sin_sub_sub_cube_le`, `sourceOddTaylorConstant_sq` | 82 |
 | M49 | `CanonicalRecentPrimeSecondVariation` | `sourceAtomRealEnergy_index_le_of_contactAngle`, `sourceAtomRealEnergy_index_le_of_contactAngle_coercivity`, `sourceAtomRealEnergy_index_le_of_contactAngle_four`, `primeTerm_ge_of_contactAngle_four` | 84, 90 |
+| M50 | `CanonicalContactOlderPrimeBudget` | `GeneratedStrictEvenContact.poleArch_sub_primeSamples_eq`, `GeneratedStrictEvenContact.olderPrimeBudget`, `GeneratedStrictEvenContact.olderPrimeBudget_finite`, `productionContactIndexEnergy_le_of_norm_eq_one`, `primeSourceCoordinate_mem_of_mem_Icc` | 91 |
 | M03 (Laplace) | `SourceRankTwoLaplace` | `integral_exp_neg_half_mul_sourceEntryReal`, `integral_exp_neg_half_mul_sourceEnergy`, `integral_exp_neg_half_mul_sourceEnergy_of_even`, `integral_exp_neg_half_mul_sourceEnergy_of_odd` | M03 (no step row) |
 
 ### What these results do not say
@@ -145,6 +146,14 @@ The machine-readable versions are:
   such contact satisfies, not a contradiction. Excluding a stationary contact
   would need a positive lower bound for the same weighted `R` functional on the
   same contact, which is OBS-060O and stays OPEN.
+- **M50** splits that balance at the prime samples:
+  `P − ∑_q β_q e_{Dz}(ω_q) = −2L*⁴C/(2π)²` with `β_q = Λ(q)(log q)²/√q`.
+  For any `θ` inside the M49 contact angle, the older samples `ω_q > θ` must
+  carry at least `P + 2L*⁴C/(2π)² + b∑_{ω_q ≤ θ} β_q ω_q⁷` (91.1), and that
+  quantity is at most `2(2K+1)K² ∑_{ω_q > θ} β_q ω_q` (91.2). Both are
+  necessary conditions at every stationary generated contact. No lower bound
+  for `P` and no upper bound for the older terms is proved, so nothing is
+  excluded (M51 OPEN).
 
 ### Proof outline for M71
 
@@ -269,6 +278,11 @@ The details are in `FALSIFICATION_REPORT.md`.
   but none for `K = 4..6` with `L ≤ 6`. The near-edge benefit proved in M49 is
   therefore vacuous for larger `K` on this grid; it cannot by itself drive an
   exclusion.
+- **M50 cancellation.** At the even ground states of the same grid, `P` and
+  the prime sum cancel to `6.6·10⁻⁴|P|` or better for `L ≥ 2`, while the
+  finite form's right side is at least `114|P|` wherever older samples exist.
+  The size bound behind (91.2) loses all of that cancellation, so an older-prime
+  estimate for M51 has to work with `P` and the primes together.
 - **No even contact below `log 2`.** For `K = 2..16`, the even compressed
   ground stays positive on `(0, log 2)`. Its minimum sits at the right end and
   falls from 0.096 (`K = 2`) to 0.003 (`K = 16`).

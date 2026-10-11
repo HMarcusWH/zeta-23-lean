@@ -63,7 +63,8 @@ jobs:
             Zeta23.CCM.WeightedRemainderIdentity \
             Zeta23.CCM.SourceRankTwoLaplace \
             Zeta23.CCM.CanonicalSourceOddEndpointQuantitative \
-            Zeta23.CCM.CanonicalRecentPrimeSecondVariation
+            Zeta23.CCM.CanonicalRecentPrimeSecondVariation \
+            Zeta23.CCM.CanonicalContactOlderPrimeBudget
           do
             if lake build "$target"; then
               echo "$target PASS" | tee -a /tmp/post284-targets.txt
@@ -109,7 +110,8 @@ jobs:
             Zeta23/CCM/WeightedRemainderIdentity.lean \
             Zeta23/CCM/SourceRankTwoLaplace.lean \
             Zeta23/CCM/CanonicalSourceOddEndpointQuantitative.lean \
-            Zeta23/CCM/CanonicalRecentPrimeSecondVariation.lean
+            Zeta23/CCM/CanonicalRecentPrimeSecondVariation.lean \
+            Zeta23/CCM/CanonicalContactOlderPrimeBudget.lean
       - name: Reject proof escapes on the promoted surface
         run: python research/RHRC/closure_batch/check_lean_proof_escapes.py --scope promoted
       - uses: actions/upload-artifact@v4
@@ -207,6 +209,10 @@ jobs:
         run: |
           python research/RHRC/routes/R003_ccm_bridge/post285/post285_m49_near_edge_probe.py \
             --output /tmp/POST285_M49_NEAR_EDGE_PROBE.json > /dev/null
+      - name: Post-285 M50 older-prime budget probe (experimental)
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/post285/post285_m50_older_prime_budget_probe.py \
+            --output /tmp/POST285_M50_OLDER_PRIME_BUDGET_PROBE.json > /dev/null
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -226,3 +232,4 @@ jobs:
             /tmp/POST285_M09_WEIGHTED_REMAINDER_FALSIFIER.json
             /tmp/POST285_M45_ODD_ENDPOINT_FALSIFIER.json
             /tmp/POST285_M49_NEAR_EDGE_PROBE.json
+            /tmp/POST285_M50_OLDER_PRIME_BUDGET_PROBE.json
