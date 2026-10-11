@@ -3,7 +3,7 @@
   "terminal_claim": "RH_OPEN",
   "authority": "REPORTING_ONLY",
   "vocabulary": {
-    "PROVED_THIS_PR": "Lean theorem added in this PR; pending exact-head CI",
+    "PROVED_THIS_PR": "Lean theorem added in this PR; OPEN_OBLIGATIONS.json and PROOF_ROOTS.json carry its exact-head CI receipt, or PROVED_PENDING_CI while none exists",
     "PROVED_MERGED": "Lean theorem already on main (PR #284/#285); see the post-284 ledgers",
     "PARTIAL": "a named part is proved, the rest is open",
     "CONDITIONAL": "proved only under explicit open premises (typically F04)",
@@ -15,9 +15,9 @@
   },
   "counts": {
     "PROVED_MERGED": 32,
-    "PROVED_THIS_PR": 41,
-    "EXPERIMENTAL_SIGNAL": 2,
-    "OPEN": 13,
+    "PROVED_THIS_PR": 43,
+    "EXPERIMENTAL_SIGNAL": 3,
+    "OPEN": 10,
     "PARTIAL": 5,
     "CONDITIONAL": 2,
     "DERIVED": 1,
@@ -330,15 +330,15 @@
       "step": 61,
       "topic": "Source-resolvent aperture derivative",
       "package": "M29",
-      "status": "OPEN",
-      "anchor_or_note": ""
+      "status": "PROVED_THIS_PR",
+      "anchor_or_note": "T' = H'(x) + H(x'), x' = -D^{-1} R B' r, at every L > 0 with lambda_odd(L) > 0, and C^2 of L -> H_L(z) (canonicalSecularScalar_hasDerivAt, cubicDefectFunctional_contDiffOn)"
     },
     {
       "step": 62,
       "topic": "Second source-resolvent balance",
       "package": "M29",
-      "status": "OPEN",
-      "anchor_or_note": ""
+      "status": "PROVED_THIS_PR",
+      "anchor_or_note": "T'' = H''(x) + 2 H'(x') + H(x''), x'' = D^{-1}(2 R B' R B' r - R B'' r) (canonicalSecularScalar_hasDerivAt); at T' = T'' = 0 the stationary identities (canonicalSecularScalar_stationary); no sign"
     },
     {
       "step": 63,
@@ -548,7 +548,7 @@
       "topic": "Remaining contact-conditioned obstruction",
       "package": "M51",
       "status": "OPEN",
-      "anchor_or_note": ""
+      "anchor_or_note": "K = 2: Arb certifies lambda_even > 0 on [1/400, log 16] (interval evidence, M51_K2_EVEN_BOTTOM_CERTIFICATE); general K OPEN"
     },
     {
       "step": 93,
@@ -603,8 +603,8 @@
       "step": 100,
       "topic": "Birdfishie branch comparison",
       "package": "M63",
-      "status": "OPEN",
-      "anchor_or_note": ""
+      "status": "EXPERIMENTAL_SIGNAL",
+      "anchor_or_note": "route comparison at the K = 2 near-contacts (M63_ROUTE_COMPARISON, POST_GREEN_RESEARCH section 3); opposite sides of both routes OPEN"
     },
     {
       "step": 101,

@@ -231,6 +231,41 @@
       "summary": "C1: the even energy e_z in place of e_{Dz} gives a negative jump at all 216 rows (the Step 56 ninth-order seam term, a different observable); C2: (log q)^7 in place of (log q)^5 in the leading coefficient misses the ratio by at least 0.2"
     },
     {
+      "id": "X285_M29_SOURCE_RESOLVENT_DERIVATIVES",
+      "script": "post285_m29_source_resolvent_derivative_probe.py",
+      "package": "M29_SOURCE_RESOLVENT_DERIVATIVES",
+      "disposition": "EXACT_THEOREM_REGRESSION_PASS",
+      "summary": "float canonical matrices, K = 2..5, L = 0.3, 0.55, ..., 5.8; 27 rows with lambda_odd >= 1e-6 (65 skipped): T = H_L(x_L) agrees with 1 - det A_L/det B_L to 1.5e-11; T' and T'' from the M29 formulas agree with central differences of the determinant ratio to 5.2e-5 and 3.0e-4 (1.9e-7 and 2.5e-6 where lambda_odd >= 1e-2)"
+    },
+    {
+      "id": "X285_M29_CONTROLS",
+      "script": "post285_m29_source_resolvent_derivative_probe.py",
+      "package": "M29_CONTROLS",
+      "disposition": "NEGATIVE_CONTROL_FAILS_AS_EXPECTED",
+      "summary": "C1: T' without H(x') misses by at least 0.99; C2: x' with the opposite sign misses by at least 0.99; C3: T'' with H'(x') counted once misses by at least 0.97; at all 27 rows"
+    },
+    {
+      "id": "X285_M51_K2_EVEN_BOTTOM",
+      "script": "post285_m51_k2_even_bottom_certificate.py",
+      "package": "M51_K2_EVEN_BOTTOM_CERTIFICATE",
+      "disposition": "CERTIFIED_DISCOVERY_REPLAY",
+      "summary": "Arb (128 bits): lambda_even(L) > 0 for K = 2 and every L in [1/400, log 16], 1310 Taylor intervals over the 15 closed cutoff cells, smallest certified lower bound 4.4e-12. Local minima 1.36e-6, 4.55e-9, 8.79e-9, 3.22e-10 at L = 1.3339, 1.7784, 2.2230, 2.6682, i.e. L gamma_1/(2 pi) = 3.0008, 4.0008, 5.0008, 6.0025. At those points the F04 identity V = -(L^4/(4 pi^2))(lambda'' + 2 lambda'/L) matches the physical test to 1e-12, and lambda equals the sum of the first 100 zeta-zero terms (each >= 0) to 3e-9"
+    },
+    {
+      "id": "X285_M51_CONTROLS",
+      "script": "post285_m51_k2_even_bottom_certificate.py",
+      "package": "M51_CONTROLS",
+      "disposition": "NEGATIVE_CONTROL_FAILS_AS_EXPECTED",
+      "summary": "C1: every von Mangoldt weight times 1 + 1e-6 makes lambda negative at L = 2.6682 (certified, -6.4e-7; the primes contribute -0.645 there); C2: the same covering rejects lambda - 5e-10 on the cell of the deepest minimum; C3 (positive control): weights times 1 - 1e-6 keep lambda positive"
+    },
+    {
+      "id": "X285_M63_ROUTE_COMPARISON",
+      "script": "post285_m63_route_comparison_probe.py",
+      "package": "M63_ROUTE_COMPARISON",
+      "disposition": "EXPERIMENTAL_SIGNAL",
+      "summary": "At the four K = 2 near-contacts: route A (F04 curvature) V/|P| = -1.7e-2, -7.1e-4, -7.3e-5, -1.4e-5, with V matching the F04 form to 5e-9; route B (source moment) relative defect from |M_4|^2/gamma = 0.027, 0.0096, 0.0099, 0.0054, equal to lambda/lambda_odd to three digits. Control: the M50 weights in route B miss by a factor of at least 2900"
+    },
+    {
       "id": "X285_M12_STEP28_CERTIFIED",
       "script": "post285_m09_weighted_remainder_falsifier.py",
       "package": "M12_STEP28_REPLAY",

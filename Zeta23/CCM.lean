@@ -281,3 +281,4 @@ import Zeta23.CCM.CanonicalContactOlderPrimeBudget
 import Zeta23.CCM.CanonicalContactSourceOlderPrimeBalance
 import Zeta23.CCM.CanonicalContactRemainderOscillation
 import Zeta23.CCM.CanonicalEnteringPrimePhysicalJet
+import Zeta23.CCM.CanonicalSourceResolventDerivatives

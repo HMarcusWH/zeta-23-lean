@@ -5,7 +5,8 @@ post-285 branch. It sorts every result into one of five classes:
 
 - **PROVED**: a Lean root in `PROOF_ROOTS.json` that compiles with only
   `propext`, `Classical.choice` and `Quot.sound`. It stays `PROVED_PENDING_CI`
-  until the PR's CI is green.
+  until a PR head that carries it passes CI; the ledgers then record that
+  head's receipt.
 - **DERIVED**: a correct argument on paper that Lean has not checked.
 - **EXPERIMENTAL SIGNAL**: floating-point or interval evidence. It never counts
   as a proof.
@@ -23,7 +24,7 @@ The machine-readable versions are:
 `build_post285_ledgers.py --write` regenerates all five, and
 `check_post285_ledgers.py` is the CI firewall that keeps them current.
 
-## 1. PROVED in this PR (pending CI)
+## 1. PROVED in this PR
 
 | Package | Module | Main roots | Steps |
 |---|---|---|---|
@@ -49,6 +50,7 @@ The machine-readable versions are:
 | M59, M61 | `CanonicalContactSourceOlderPrimeBalance` | `contactSourcePairing_balance`, `contactSourcePairing_nearOld_balance`, `canonicalResolventGamma_le`, `contactSourceMargin_ge`, `contactSourcePairing_older_le`, `contactSourcePairing_zero` | 98 (real pairing), 99 |
 | M33, M34 | `CanonicalContactRemainderOscillation` | `sourceAtomRealEnergy_index_signReversal`, `explicitCanonicalSourceMoment_ne_zero_of_parityGap`, `intervalIntegrable_weightedRemainder_exp_mul`, `abs_integral_mul_le_half_oscillation`, `GeneratedStrictEvenContact.remainderOscillation_budget` | 68, 70, 71 |
 | M44 | `CanonicalEnteringPrimePhysicalJet` | `productionContactValue_eq_withoutAtom_add_jump`, `enteringPrimePhysicalJump_log_add`, `sourceAtomRealEnergy_seventh_taylor`, `enteringPrimePhysicalJump_seventh_order`, `enteringPrimeLeadingCoefficient_pos`, `enteringPrimePhysicalJump_ge_of_angle`, `enteringPrimePhysicalJump_pos_near_seam` | 81 |
+| M29 | `CanonicalSourceResolventDerivatives` | `hasDerivAt_secularRayFamily`, `hasDerivAt_secularScalarFamily`, `hasDerivAt_secularScalarFirst`, `secularScalar_stationary`, `isUnit_canonicalOddFamily`, `canonicalSecularScalar_eq`, `canonicalSecularScalar_hasDerivAt`, `cubicDefectFunctional_contDiffOn`, `cubicDefectFunctional_hasDerivAt`, `canonicalSecularScalar_stationary` | 61, 62 |
 | M03 (Laplace) | `SourceRankTwoLaplace` | `integral_exp_neg_half_mul_sourceEntryReal`, `integral_exp_neg_half_mul_sourceEnergy`, `integral_exp_neg_half_mul_sourceEnergy_of_even`, `integral_exp_neg_half_mul_sourceEnergy_of_odd` | M03 (no step row) |
 
 ### What these results do not say
@@ -180,6 +182,10 @@ The machine-readable versions are:
   total `Q`, not an eigenvalue jump, and nothing at a contact. It also does not
   conflict with the negative ninth-order even-energy seam term (Step 56), which
   is a different observable.
+- **M29** (Steps 61, 62) gives the first two derivatives of `T = H_L(x_L)` and,
+  where `T' = T'' = 0`, the identities they force. It gives no sign. The third
+  derivative (Step 63) needs `C³`, which is proved only inside fixed cells, so
+  the third-order obstruction at a contact stays OPEN.
 
 ### Proof outline for M71
 
@@ -314,6 +320,30 @@ The details are in `FALSIFICATION_REPORT.md`.
   `h⁷` near the seam. At an even ground state the same atom is covered by the
   M49 lower bound once `ω_h` is inside the contact angle; M44 adds the exact
   leading coefficient.
+- **M51: no `K = 2` even contact on `[1/400, log 16]` (interval evidence).** For
+  `K = 2` the legal even carrier is one-dimensional, so the even compression is
+  the scalar `λ(L) = ⟨z, S_L z⟩/⟨z, z⟩` with `z = (1, −4, 6, −4, 1)`. Arb
+  certifies `λ > 0` on the whole range, so for `K = 2` there is no contact there
+  for M51 to obstruct. By the F04 identity a `K = 2` stationary contact would
+  need `λ = λ' = λ'' = 0`.
+- **The `K = 2` near-contacts sit at `L = 2πk/γ₁`.** `λ` comes within
+  `3.2·10⁻¹⁰` of zero. Its local minima are at `L γ₁/(2π) = 3.0008, 4.0008,
+  5.0008, 6.0025`. Numerically `λ` is the sum of nonnegative single-zero terms
+  over the first 100 zeros, to `3·10⁻⁹`. At each minimum the `γ₁` term nearly
+  vanishes and what is left is the contribution of `γ₂, γ₃, …`. Scaling all
+  prime weights by `1 + 10⁻⁶` already makes `λ` negative there. So an
+  arithmetic opposite side has to resolve margins of the size of the
+  higher-zero contributions; this is the explicit formula at work, and it is not
+  independent of the zeros.
+- **M63: both contact identities nearly hold at the near-contacts.** At the
+  four `K = 2` minima the source-moment identity (98B) misses `|M₄|²/γ` by a
+  relative `λ/λ_odd` (`0.027` down to `0.0054`), and the F04 curvature identity
+  misses `V = 0` by `|V|/|P|` from `1.7·10⁻²` down to `1.4·10⁻⁵`. Each route's
+  opposite side ((98C)/(99C) for the source moment, `V > 0` at a stationary
+  contact for F04) therefore has to separate an exact contact from
+  near-contacts at which its own identity already holds to those margins. The
+  curvature route is the tighter of the two here. Neither route excludes
+  anything.
 - **No even contact below `log 2`.** For `K = 2..16`, the even compressed
   ground stays positive on `(0, log 2)`. Its minimum sits at the right end and
   falls from 0.096 (`K = 2`) to 0.003 (`K = 16`).
@@ -331,7 +361,13 @@ The details are in `FALSIFICATION_REPORT.md`.
    lower bound on `Q_K` along the whole window is a concrete target.
 3. **Arb resolution of the 50 unresolved M76 points.** Use
    `canonical_source_arb.py` with the M76 channel split.
-4. **A sharper M75 window.** The 198× slack in `η_K` suggests that a
+4. **Close `(0, 1/400)` for `K = 2`.** `λ ≈ −log L − 0.90` there, and M66
+   gives `E'' + (2/L)E' < 0` on `(0, ε_2)`. A proved limit `L²λ'(L) → 0` would
+   make `λ` decreasing there and finish `(0, log 16]`.
+5. **The `K = 3` near-contacts.** Repeat the M51 certificate on the
+   two-dimensional `K = 3` even carrier (an Arb eigenvalue enclosure instead of
+   a scalar) and test whether its minima also sit at `L = 2πk/γ₁`.
+6. **A sharper M75 window.** The 198× slack in `η_K` suggests that a
    second-derivative window could lower the `π² M_K log 2` threshold by orders
    of magnitude.
 
@@ -376,8 +412,8 @@ falls into one of these classes:
 | Abstract analysis | F_M31 | Proved here as a conditional barrier (M31); the coefficient bound M32 stays OPEN |
 | Abstract algebra | M03_RANK_TWO_LAPLACE, M03_WEIGHTED_STAIRCASE_REEXPRESSION | Proved here (M03_RANK_TWO_LAPLACE_TRANSFORM, M03_FIXED_STAIRCASE_REEXPRESSION) |
 | Proved here | M17 (as M71, on the boundary-flat carriers for every `0 < ω ≤ 1/2`), F_M27 (simplicity, and the alternating root slopes as M27), M08_ABSTRACT_CUBIC_SCHUR (as M08; the arithmetic third identity stays OPEN), M16 (subsumed by M71 at every `0 < ω ≤ 1/2`), F_M45 (as M45, with the plan's angle and constant) | The post-284 rows are historical and stay as they were; filtered carriers stay OPEN |
-| Partly addressed here | M18 (first passage), F_M21 (phase identity), F_M46 (constant 4), F_M58_M63 (phase lock, M59 real pairing, M61 exact balance), F_M28 (overlap identity and sign), M14 (odd-first and tied algebra) | See the cross-references |
-| Research or contact-conditioned | M03_TWO_SCALAR, M13, F_M22, F_M25, F_M29, F_M32, F_M39, F_M56_M57, F_M68, OBS060O | No viable proof route identified in this PR |
+| Partly addressed here | M18 (first passage), F_M21 (phase identity), F_M46 (constant 4), F_M58_M63 (phase lock, M59 real pairing, M61 exact balance), F_M28 (overlap identity and sign), M14 (odd-first and tied algebra), F_M29 (first and second derivatives; the third-order obstruction stays OPEN) | See the cross-references |
+| Research or contact-conditioned | M03_TWO_SCALAR, M13, F_M22, F_M25, F_M32, F_M39, F_M56_M57, F_M68, OBS060O | No viable proof route identified in this PR |
 | Provenance | OAI_SEVEN_EIGHTHS_LOCAL_IMPORT | Audit only |
 | Terminal | RH | RH_OPEN |
 

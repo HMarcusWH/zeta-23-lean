@@ -6,7 +6,7 @@ evidence. Theorem authority comes only from the Lean roots listed in
 
 ## Scripts
 
-All fifteen scripts live in `research/RHRC/routes/R003_ccm_bridge/post285/` and
+All eighteen scripts live in `research/RHRC/routes/R003_ccm_bridge/post285/` and
 run in the `source-falsifier-research` job of
 `.github/workflows/rhrc_post284_source_inertia.yml`. Each one runs in seconds.
 
@@ -27,6 +27,9 @@ run in the `source-falsifier-research` job of
 | `post285_m61_source_balance_falsifier.py` | M59, M61 | Pass, with all three controls failing as predicted |
 | `post285_m34_remainder_oscillation_probe.py` | M33, M34 | Pass on the proved statements; experimental signal on the oscillation room |
 | `post285_m44_entering_prime_jet_probe.py` | M44 | Pass, with both controls failing as predicted |
+| `post285_m29_source_resolvent_derivative_probe.py` | M29 | Pass, with all three controls failing as predicted |
+| `post285_m51_k2_even_bottom_certificate.py` | M51 | Certificate passes; both controls fail and the positive control holds as predicted |
+| `post285_m63_route_comparison_probe.py` | M63 | Experimental signal; the control fails as predicted |
 
 ## M74: canonical secular resolvent
 
@@ -434,6 +437,71 @@ canonical matrices at `L = 1, 2, 3, 4`, and two random vectors), at the seams
   a different observable.
 - **Control C2.** Using `(log q)⁷` in place of `(log q)⁵` in `a` misses the
   ratio by at least 0.2.
+
+## M29: source-resolvent derivatives (Steps 61, 62)
+
+`post285_m29_source_resolvent_derivative_probe.py` uses the float canonical
+matrices for `K = 2..5` and `L = 0.3, 0.55, …, 5.8`. It keeps the 27 points with
+`λ_odd ≥ 10⁻⁶` and skips 65 where the float odd block is not resolved. With
+`R = B_L⁻¹`, `r = R g` and `x = D⁻¹ r`:
+
+- `T = H_L(x_L)` agrees with `1 − det A_L/det B_L` to `1.5·10⁻¹¹`.
+- `T' = H'(x) + H(x')` and `T'' = H''(x) + 2H'(x') + H(x'')` agree with
+  central differences of the determinant ratio to `5.2·10⁻⁵` and `3.0·10⁻⁴`.
+  Where `λ_odd ≥ 10⁻²` the agreement is `1.9·10⁻⁷` and `2.5·10⁻⁶`. The operator
+  jets are central differences of the matrices, with one Richardson step for
+  the second jets.
+- **Control C1.** Dropping `H(x')` from `T'` misses by at least 0.99 at every row.
+- **Control C2.** Flipping the sign of `x'` misses by at least 0.99.
+- **Control C3.** Counting `H'(x')` once in `T''` misses by at least 0.97.
+
+The third derivative (Step 63) is not checked.
+
+## M51: the K = 2 even bottom on `[1/400, log 16]` (Step 92)
+
+For `K = 2` the legal even carrier is spanned by `z = (1, −4, 6, −4, 1)`, so the
+even compression is the scalar `λ(L) = ⟨z, S_L z⟩/⟨z, z⟩` and a contact is
+`λ(L) = 0`. `post285_m51_k2_even_bottom_certificate.py` works in Arb at 128 bits.
+
+- **Certificate.** `λ(L) > 0` for every `L ∈ [1/400, log 16]`. Each closed cutoff
+  cell `[log Q, log(Q + 1)]` is covered by intervals on which
+  `λ ≥ λ(c) − |λ'(c)| r + ½ min(0, inf λ'') r²`, with `inf λ''` from an Arb ball
+  over the whole interval. It takes 1310 intervals; the smallest certified
+  lower bound is `4.4·10⁻¹²`.
+- **Closest approach.** After `L = 1.2` the local minima are `1.36·10⁻⁶`,
+  `4.55·10⁻⁹`, `8.79·10⁻⁹` and `3.22·10⁻¹⁰`, at `L = 1.3339`, `1.7784`,
+  `2.2230` and `2.6682`. These are `L γ₁/(2π) = 3.0008, 4.0008, 5.0008, 6.0025`,
+  with `γ₁` the first zeta zero.
+- **F04 at the minima.** The physical second test `V` matches
+  `−(L⁴/(4π²))(λ'' + 2λ'/L)` from the Arb jets to `10⁻¹²`.
+- **Zero side.** `λ` equals the sum of the first 100 single-zero terms
+  `c_L(γ_k)`, each `≥ 0`, to `3·10⁻⁹` relative. At the minima the `γ₁` term
+  nearly vanishes, so the margin is the higher-zero remainder. This uses the
+  known zeros and is not independent of them.
+- **Control C1.** Scaling every von Mangoldt weight by `1 + 10⁻⁶` makes `λ`
+  negative at `L = 2.6682` (certified `−6.4·10⁻⁷`); the primes contribute
+  `−0.645` there.
+- **Control C2.** The same covering rejects `λ − 5·10⁻¹⁰` on the cell of the
+  deepest minimum.
+- **Positive control C3.** Scaling by `1 − 10⁻⁶` keeps `λ` positive.
+
+`(0, 1/400)` is not certified; there `λ ≈ −log L − 0.90`. This is interval
+evidence for `K = 2` only.
+
+## M63: the two contact identities at the `K = 2` near-contacts (Step 100)
+
+`post285_m63_route_comparison_probe.py` evaluates both routes at the four
+minima above, with `v = z/|z|`.
+
+- **Route A (F04 curvature).** At a stationary generated contact `V = −κC`, and
+  `C = 0` for `K = 2`. At the minima `V/|P| = −1.7·10⁻²`, `−7.1·10⁻⁴`,
+  `−7.3·10⁻⁵`, `−1.4·10⁻⁵`. `V` matches the F04 form to `5·10⁻⁹`.
+- **Route B (source moment).** At any even contact
+  `I − Σ β_q p_v(ω_q) = |M₄|²/γ`. At the minima the relative defect is `0.027`,
+  `0.0096`, `0.0099`, `0.0054`, equal to `λ/λ_odd` to three digits (the Ward
+  form of (98B)).
+- **Control C1.** Route B with the M50 weights `Λ(q)(log q)²/√q` misses by a
+  factor of at least 2900.
 
 ## Inherited regressions kept running
 

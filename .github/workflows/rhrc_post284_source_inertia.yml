@@ -67,7 +67,8 @@ jobs:
             Zeta23.CCM.CanonicalContactOlderPrimeBudget \
             Zeta23.CCM.CanonicalContactSourceOlderPrimeBalance \
             Zeta23.CCM.CanonicalContactRemainderOscillation \
-            Zeta23.CCM.CanonicalEnteringPrimePhysicalJet
+            Zeta23.CCM.CanonicalEnteringPrimePhysicalJet \
+            Zeta23.CCM.CanonicalSourceResolventDerivatives
           do
             if lake build "$target"; then
               echo "$target PASS" | tee -a /tmp/post284-targets.txt
@@ -117,7 +118,8 @@ jobs:
             Zeta23/CCM/CanonicalContactOlderPrimeBudget.lean \
             Zeta23/CCM/CanonicalContactSourceOlderPrimeBalance.lean \
             Zeta23/CCM/CanonicalContactRemainderOscillation.lean \
-            Zeta23/CCM/CanonicalEnteringPrimePhysicalJet.lean
+            Zeta23/CCM/CanonicalEnteringPrimePhysicalJet.lean \
+            Zeta23/CCM/CanonicalSourceResolventDerivatives.lean
       - name: Reject proof escapes on the promoted surface
         run: python research/RHRC/closure_batch/check_lean_proof_escapes.py --scope promoted
       - uses: actions/upload-artifact@v4
@@ -231,6 +233,18 @@ jobs:
         run: |
           python research/RHRC/routes/R003_ccm_bridge/post285/post285_m44_entering_prime_jet_probe.py \
             --output /tmp/POST285_M44_ENTERING_PRIME_JET_PROBE.json > /dev/null
+      - name: Post-285 M29 source-resolvent derivative probe and controls
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/post285/post285_m29_source_resolvent_derivative_probe.py \
+            --output /tmp/POST285_M29_SOURCE_RESOLVENT_DERIVATIVE_PROBE.json > /dev/null
+      - name: Post-285 M51 K=2 even-bottom Arb certificate on [1/400, log 16] (research evidence)
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/post285/post285_m51_k2_even_bottom_certificate.py \
+            --output /tmp/POST285_M51_K2_EVEN_BOTTOM_CERTIFICATE.json > /dev/null
+      - name: Post-285 M63 route comparison at the K=2 near-contacts (experimental)
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/post285/post285_m63_route_comparison_probe.py \
+            --output /tmp/POST285_M63_ROUTE_COMPARISON_PROBE.json > /dev/null
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -254,3 +268,6 @@ jobs:
             /tmp/POST285_M61_SOURCE_BALANCE_FALSIFIER.json
             /tmp/POST285_M34_REMAINDER_OSCILLATION_PROBE.json
             /tmp/POST285_M44_ENTERING_PRIME_JET_PROBE.json
+            /tmp/POST285_M29_SOURCE_RESOLVENT_DERIVATIVE_PROBE.json
+            /tmp/POST285_M51_K2_EVEN_BOTTOM_CERTIFICATE.json
+            /tmp/POST285_M63_ROUTE_COMPARISON_PROBE.json

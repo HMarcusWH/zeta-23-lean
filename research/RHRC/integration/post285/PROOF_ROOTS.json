@@ -1,7 +1,7 @@
 {
   "schema": "post285.proof_roots.v1",
   "terminal_claim": "RH_OPEN",
-  "rule": "PROVED = exact clean Lean theorem with its full premises; status becomes PROVED only after the exact PR head passes the post-284 Lean/axiom/proof-escape jobs",
+  "rule": "PROVED = exact clean Lean theorem with its full premises; status becomes PROVED only after an exact PR head carrying the module passes the post-284 Lean/axiom/proof-escape jobs (ci_receipt names it)",
   "roots": [
     {
       "declaration": "Zeta23.CCM.apply_secularResolventRay",
@@ -10,10 +10,18 @@
       "package": "M74",
       "steps": "Steps 111-112, 116-118",
       "module_scope": "actual-canonical secular resolvent ray, determinant, Ward identity, contact phase lock",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.secularResolventScalar_eq_one_iff",
@@ -22,10 +30,18 @@
       "package": "M74",
       "steps": "Steps 111-112, 116-118",
       "module_scope": "actual-canonical secular resolvent ray, determinant, Ward identity, contact phase lock",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.ker_eq_span_secularResolventRay_of_scalar_eq_one",
@@ -34,10 +50,18 @@
       "package": "M74",
       "steps": "Steps 111-112, 116-118",
       "module_scope": "actual-canonical secular resolvent ray, determinant, Ward identity, contact phase lock",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.det_eq_det_mul_one_sub_secularResolventScalar",
@@ -46,10 +70,18 @@
       "package": "M74",
       "steps": "Steps 111-112, 116-118",
       "module_scope": "actual-canonical secular resolvent ray, determinant, Ward identity, contact phase lock",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.secular_ward_identity",
@@ -58,10 +90,18 @@
       "package": "M74",
       "steps": "Steps 111-112, 116-118",
       "module_scope": "actual-canonical secular resolvent ray, determinant, Ward identity, contact phase lock",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.re_conj_mul_inner_pos_of_approx",
@@ -70,10 +110,18 @@
       "package": "M74",
       "steps": "Steps 111-112, 116-118",
       "module_scope": "actual-canonical secular resolvent ray, determinant, Ward identity, contact phase lock",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.canonical_rankOneIntertwining",
@@ -82,10 +130,18 @@
       "package": "M74",
       "steps": "Steps 111-112, 116-118",
       "module_scope": "actual-canonical secular resolvent ray, determinant, Ward identity, contact phase lock",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.canonicalResolventGamma_pos",
@@ -94,10 +150,18 @@
       "package": "M74",
       "steps": "Steps 111-112, 116-118",
       "module_scope": "actual-canonical secular resolvent ray, determinant, Ward identity, contact phase lock",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.canonical_apply_resolventRay",
@@ -106,10 +170,18 @@
       "package": "M74",
       "steps": "Steps 111-112, 116-118",
       "module_scope": "actual-canonical secular resolvent ray, determinant, Ward identity, contact phase lock",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.canonical_det_eq",
@@ -118,10 +190,18 @@
       "package": "M74",
       "steps": "Steps 111-112, 116-118",
       "module_scope": "actual-canonical secular resolvent ray, determinant, Ward identity, contact phase lock",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.canonical_det_div_eq",
@@ -130,10 +210,18 @@
       "package": "M74",
       "steps": "Steps 111-112, 116-118",
       "module_scope": "actual-canonical secular resolvent ray, determinant, Ward identity, contact phase lock",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.canonical_resolventRay_contact_iff",
@@ -142,10 +230,18 @@
       "package": "M74",
       "steps": "Steps 111-112, 116-118",
       "module_scope": "actual-canonical secular resolvent ray, determinant, Ward identity, contact phase lock",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.canonical_ker_eq_span_of_contact",
@@ -154,10 +250,18 @@
       "package": "M74",
       "steps": "Steps 111-112, 116-118",
       "module_scope": "actual-canonical secular resolvent ray, determinant, Ward identity, contact phase lock",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.canonical_ward_identity",
@@ -166,10 +270,18 @@
       "package": "M74",
       "steps": "Steps 111-112, 116-118",
       "module_scope": "actual-canonical secular resolvent ray, determinant, Ward identity, contact phase lock",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.canonical_momentFour_resolventRay",
@@ -178,10 +290,18 @@
       "package": "M74",
       "steps": "Steps 111-112, 116-118",
       "module_scope": "actual-canonical secular resolvent ray, determinant, Ward identity, contact phase lock",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.canonical_contact_phase",
@@ -190,10 +310,18 @@
       "package": "M74",
       "steps": "Steps 111-112, 116-118",
       "module_scope": "actual-canonical secular resolvent ray, determinant, Ward identity, contact phase lock",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.canonical_resolventVector_norm_le",
@@ -202,10 +330,18 @@
       "package": "M74",
       "steps": "Steps 111-112, 116-118",
       "module_scope": "actual-canonical secular resolvent ray, determinant, Ward identity, contact phase lock",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.canonical_approx_contact_error_div",
@@ -214,10 +350,18 @@
       "package": "M74",
       "steps": "Steps 111-112, 116-118",
       "module_scope": "actual-canonical secular resolvent ray, determinant, Ward identity, contact phase lock",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.canonical_re_conj_mul_momentFour_pos_of_approx",
@@ -226,10 +370,18 @@
       "package": "M74",
       "steps": "Steps 111-112, 116-118",
       "module_scope": "actual-canonical secular resolvent ray, determinant, Ward identity, contact phase lock",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.integral_sourceEnergyRe_indexAction",
@@ -238,10 +390,18 @@
       "package": "M70",
       "steps": "Step 108",
       "module_scope": "strict positive and negative source excursions for nonzero zero-sum z",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.integral_mul_sourceEnergyRe_indexAction",
@@ -250,10 +410,18 @@
       "package": "M70",
       "steps": "Step 108",
       "module_scope": "strict positive and negative source excursions for nonzero zero-sum z",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.exists_sourceEnergyRe_lt_neg_of_zeroSum",
@@ -262,10 +430,18 @@
       "package": "M70",
       "steps": "Step 108",
       "module_scope": "strict positive and negative source excursions for nonzero zero-sum z",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.exists_sourceEnergyRe_gt_of_zeroSum",
@@ -274,10 +450,18 @@
       "package": "M70",
       "steps": "Step 108",
       "module_scope": "strict positive and negative source excursions for nonzero zero-sum z",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.sourceEnergyRe_excursions_of_zeroSum",
@@ -286,10 +470,18 @@
       "package": "M70",
       "steps": "Step 108",
       "module_scope": "strict positive and negative source excursions for nonzero zero-sum z",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.centeredHalfShiftMass_eq",
@@ -298,10 +490,18 @@
       "package": "M73",
       "steps": "Step 115",
       "module_scope": "centered-index Poincare constant 1/4 and contact-gap corollary",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.quarter_sum_normSq_add_remainder_le",
@@ -310,10 +510,18 @@
       "package": "M73",
       "steps": "Step 115",
       "module_scope": "centered-index Poincare constant 1/4 and contact-gap corollary",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.sum_normSq_le_four_mul",
@@ -322,10 +530,18 @@
       "package": "M73",
       "steps": "Step 115",
       "module_scope": "centered-index Poincare constant 1/4 and contact-gap corollary",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.sum_normSq_lt_four_mul",
@@ -334,10 +550,18 @@
       "package": "M73",
       "steps": "Step 115",
       "module_scope": "centered-index Poincare constant 1/4 and contact-gap corollary",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.norm_sq_le_four_mul_norm_index_sq",
@@ -346,10 +570,18 @@
       "package": "M73",
       "steps": "Step 115",
       "module_scope": "centered-index Poincare constant 1/4 and contact-gap corollary",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.parityGap_mul_norm_sq_le_four_mul_source_mul_momentFour",
@@ -358,10 +590,18 @@
       "package": "M73",
       "steps": "Step 115",
       "module_scope": "centered-index Poincare constant 1/4 and contact-gap corollary",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.norm_sourceEntry_sub_le",
@@ -370,10 +610,18 @@
       "package": "M75",
       "steps": "Steps 119-120",
       "module_scope": "source Lipschitz bound, uniform negative window, opposite-signed individual prime summands",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.norm_quadraticForm_sourceMatrix_sub_le",
@@ -382,10 +630,18 @@
       "package": "M75",
       "steps": "Steps 119-120",
       "module_scope": "source Lipschitz bound, uniform negative window, opposite-signed individual prime summands",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.abs_sourceEnergyRe_index_sub_le",
@@ -394,10 +650,18 @@
       "package": "M75",
       "steps": "Steps 119-120",
       "module_scope": "source Lipschitz bound, uniform negative window, opposite-signed individual prime summands",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.sourceEnergyRe_one",
@@ -406,10 +670,18 @@
       "package": "M75",
       "steps": "Steps 119-120",
       "module_scope": "source Lipschitz bound, uniform negative window, opposite-signed individual prime summands",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.sourceEnergyRe_index_one_ge",
@@ -418,10 +690,18 @@
       "package": "M75",
       "steps": "Steps 119-120",
       "module_scope": "source Lipschitz bound, uniform negative window, opposite-signed individual prime summands",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.exists_sourceNegativeWindow",
@@ -430,10 +710,18 @@
       "package": "M75",
       "steps": "Steps 119-120",
       "module_scope": "source Lipschitz bound, uniform negative window, opposite-signed individual prime summands",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.physicalSecondPrimeCoefficient_prime",
@@ -442,10 +730,18 @@
       "package": "M75",
       "steps": "Steps 119-120",
       "module_scope": "source Lipschitz bound, uniform negative window, opposite-signed individual prime summands",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.exists_prime_physicalSecondPrimeTerm_pos_and_two_neg",
@@ -454,10 +750,18 @@
       "package": "M75",
       "steps": "Steps 119-120",
       "module_scope": "source Lipschitz bound, uniform negative window, opposite-signed individual prime summands",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.sourceSesq_conj_symm",
@@ -466,10 +770,18 @@
       "package": "M72",
       "steps": "Step 110",
       "module_scope": "first degenerate source passage on (1/2,1) for any carrier with a half-aperture negative vector",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.sourceSesq_eq_zero_of_psd",
@@ -478,10 +790,18 @@
       "package": "M72",
       "steps": "Step 110",
       "module_scope": "first degenerate source passage on (1/2,1) for any carrier with a half-aperture negative vector",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.continuous_sourceEnergy_joint",
@@ -490,10 +810,18 @@
       "package": "M72",
       "steps": "Step 110",
       "module_scope": "first degenerate source passage on (1/2,1) for any carrier with a half-aperture negative vector",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.exists_sourceDegenerate_of_half_neg",
@@ -502,10 +830,18 @@
       "package": "M72",
       "steps": "Step 110",
       "module_scope": "first degenerate source passage on (1/2,1) for any carrier with a half-aperture negative vector",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.parityBoundaryFlat_sourceDegenerate",
@@ -514,10 +850,18 @@
       "package": "M72",
       "steps": "Step 110",
       "module_scope": "first degenerate source passage on (1/2,1) for any carrier with a half-aperture negative vector",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.RankOneIntertwining.shift",
@@ -526,10 +870,18 @@
       "package": "M26-M28/M14",
       "steps": "Steps 58-60, 64; branch analysis",
       "module_scope": "canonical shifted secular equation, simple even roots below the odd floor, contact overlap identity, odd-first and tied branch algebra",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.RankOneIntertwining.swap",
@@ -538,10 +890,18 @@
       "package": "M26-M28/M14",
       "steps": "Steps 58-60, 64; branch analysis",
       "module_scope": "canonical shifted secular equation, simple even roots below the odd floor, contact overlap identity, odd-first and tied branch algebra",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.tied_contact_orthogonality",
@@ -550,10 +910,18 @@
       "package": "M26-M28/M14",
       "steps": "Steps 58-60, 64; branch analysis",
       "module_scope": "canonical shifted secular equation, simple even roots below the odd floor, contact overlap identity, odd-first and tied branch algebra",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.secular_overlap_identity",
@@ -562,10 +930,18 @@
       "package": "M26-M28/M14",
       "steps": "Steps 58-60, 64; branch analysis",
       "module_scope": "canonical shifted secular equation, simple even roots below the odd floor, contact overlap identity, odd-first and tied branch algebra",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.canonical_shifted_apply_ray",
@@ -574,10 +950,18 @@
       "package": "M26-M28/M14",
       "steps": "Steps 58-60, 64; branch analysis",
       "module_scope": "canonical shifted secular equation, simple even roots below the odd floor, contact overlap identity, odd-first and tied branch algebra",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.canonical_shifted_det_eq",
@@ -586,10 +970,18 @@
       "package": "M26-M28/M14",
       "steps": "Steps 58-60, 64; branch analysis",
       "module_scope": "canonical shifted secular equation, simple even roots below the odd floor, contact overlap identity, odd-first and tied branch algebra",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.canonical_shifted_det_div_eq",
@@ -598,10 +990,18 @@
       "package": "M26-M28/M14",
       "steps": "Steps 58-60, 64; branch analysis",
       "module_scope": "canonical shifted secular equation, simple even roots below the odd floor, contact overlap identity, odd-first and tied branch algebra",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.canonical_shifted_eigen_iff",
@@ -610,10 +1010,18 @@
       "package": "M26-M28/M14",
       "steps": "Steps 58-60, 64; branch analysis",
       "module_scope": "canonical shifted secular equation, simple even roots below the odd floor, contact overlap identity, odd-first and tied branch algebra",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.canonical_shifted_eigenvector_eq_smul",
@@ -622,10 +1030,18 @@
       "package": "M26-M28/M14",
       "steps": "Steps 58-60, 64; branch analysis",
       "module_scope": "canonical shifted secular equation, simple even roots below the odd floor, contact overlap identity, odd-first and tied branch algebra",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.canonical_eigenspace_le_span",
@@ -634,10 +1050,18 @@
       "package": "M26-M28/M14",
       "steps": "Steps 58-60, 64; branch analysis",
       "module_scope": "canonical shifted secular equation, simple even roots below the odd floor, contact overlap identity, odd-first and tied branch algebra",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.canonical_finrank_eigenspace_le_one",
@@ -646,10 +1070,18 @@
       "package": "M26-M28/M14",
       "steps": "Steps 58-60, 64; branch analysis",
       "module_scope": "canonical shifted secular equation, simple even roots below the odd floor, contact overlap identity, odd-first and tied branch algebra",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.canonical_contact_overlap",
@@ -658,10 +1090,18 @@
       "package": "M26-M28/M14",
       "steps": "Steps 58-60, 64; branch analysis",
       "module_scope": "canonical shifted secular equation, simple even roots below the odd floor, contact overlap identity, odd-first and tied branch algebra",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.canonical_contact_overlap_ne_zero",
@@ -670,10 +1110,18 @@
       "package": "M26-M28/M14",
       "steps": "Steps 58-60, 64; branch analysis",
       "module_scope": "canonical shifted secular equation, simple even roots below the odd floor, contact overlap identity, odd-first and tied branch algebra",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.canonical_contact_overlap_norm_le",
@@ -682,10 +1130,18 @@
       "package": "M26-M28/M14",
       "steps": "Steps 58-60, 64; branch analysis",
       "module_scope": "canonical shifted secular equation, simple even roots below the odd floor, contact overlap identity, odd-first and tied branch algebra",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.canonical_odd_ker_le_span",
@@ -694,10 +1150,18 @@
       "package": "M26-M28/M14",
       "steps": "Steps 58-60, 64; branch analysis",
       "module_scope": "canonical shifted secular equation, simple even roots below the odd floor, contact overlap identity, odd-first and tied branch algebra",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.canonical_finrank_odd_ker_le_one",
@@ -706,10 +1170,18 @@
       "package": "M26-M28/M14",
       "steps": "Steps 58-60, 64; branch analysis",
       "module_scope": "canonical shifted secular equation, simple even roots below the odd floor, contact overlap identity, odd-first and tied branch algebra",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.canonical_odd_contact_iff",
@@ -718,10 +1190,18 @@
       "package": "M26-M28/M14",
       "steps": "Steps 58-60, 64; branch analysis",
       "module_scope": "canonical shifted secular equation, simple even roots below the odd floor, contact overlap identity, odd-first and tied branch algebra",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.canonical_odd_det_eq",
@@ -730,10 +1210,18 @@
       "package": "M26-M28/M14",
       "steps": "Steps 58-60, 64; branch analysis",
       "module_scope": "canonical shifted secular equation, simple even roots below the odd floor, contact overlap identity, odd-first and tied branch algebra",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.canonical_tied_contact_orthogonality",
@@ -742,10 +1230,18 @@
       "package": "M26-M28/M14",
       "steps": "Steps 58-60, 64; branch analysis",
       "module_scope": "canonical shifted secular equation, simple even roots below the odd floor, contact overlap identity, odd-first and tied branch algebra",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.exists_det_eq_ofReal_pos_of_coercive",
@@ -754,10 +1250,18 @@
       "package": "M28",
       "steps": "Step 60",
       "module_scope": "sign of the contact resolvent overlap when A_L is positive semidefinite and B_L positive definite",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.re_nonneg_and_im_eq_zero_of_approx",
@@ -766,10 +1270,18 @@
       "package": "M28",
       "steps": "Step 60",
       "module_scope": "sign of the contact resolvent overlap when A_L is positive semidefinite and B_L positive definite",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.secular_resolvent_slope_pos",
@@ -778,10 +1290,18 @@
       "package": "M28",
       "steps": "Step 60",
       "module_scope": "sign of the contact resolvent overlap when A_L is positive semidefinite and B_L positive definite",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.secular_overlap_pos",
@@ -790,10 +1310,18 @@
       "package": "M28",
       "steps": "Step 60",
       "module_scope": "sign of the contact resolvent overlap when A_L is positive semidefinite and B_L positive definite",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.canonical_contact_overlap_pos",
@@ -802,10 +1330,18 @@
       "package": "M28",
       "steps": "Step 60",
       "module_scope": "sign of the contact resolvent overlap when A_L is positive semidefinite and B_L positive definite",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.hasDerivAt_integral_moving_upper",
@@ -814,10 +1350,18 @@
       "package": "M65",
       "steps": "Steps 21, 24, 27, 93, 101, 103, 105",
       "module_scope": "prime-free F04 derivative authority on 0 < L < log 2: first variation, Euler-corrected fixed second variation, mixed aperture derivative",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.matrixRealEnergy_canonical_eq_regularized",
@@ -826,10 +1370,18 @@
       "package": "M65",
       "steps": "Steps 21, 24, 27, 93, 101, 103, 105",
       "module_scope": "prime-free F04 derivative authority on 0 < L < log 2: first variation, Euler-corrected fixed second variation, mixed aperture derivative",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.hasDerivAt_wCorrection",
@@ -838,10 +1390,18 @@
       "package": "M65",
       "steps": "Steps 21, 24, 27, 93, 101, 103, 105",
       "module_scope": "prime-free F04 derivative authority on 0 < L < log 2: first variation, Euler-corrected fixed second variation, mixed aperture derivative",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.hasDerivAt_poleChannel",
@@ -850,10 +1410,18 @@
       "package": "M65",
       "steps": "Steps 21, 24, 27, 93, 101, 103, 105",
       "module_scope": "prime-free F04 derivative authority on 0 < L < log 2: first variation, Euler-corrected fixed second variation, mixed aperture derivative",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.hasDerivAt_archChannel",
@@ -862,10 +1430,18 @@
       "package": "M65",
       "steps": "Steps 21, 24, 27, 93, 101, 103, 105",
       "module_scope": "prime-free F04 derivative authority on 0 < L < log 2: first variation, Euler-corrected fixed second variation, mixed aperture derivative",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.productionArithmeticRealValue_eq_channels_of_lt_log_two",
@@ -874,10 +1450,18 @@
       "package": "M65",
       "steps": "Steps 21, 24, 27, 93, 101, 103, 105",
       "module_scope": "prime-free F04 derivative authority on 0 < L < log 2: first variation, Euler-corrected fixed second variation, mixed aperture derivative",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.sourceAtomPairingDerivative_re_polarization",
@@ -886,10 +1470,18 @@
       "package": "M65",
       "steps": "Steps 21, 24, 27, 93, 101, 103, 105",
       "module_scope": "prime-free F04 derivative authority on 0 < L < log 2: first variation, Euler-corrected fixed second variation, mixed aperture derivative",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.hasDerivAt_primeFreeFirstChannel",
@@ -898,10 +1490,18 @@
       "package": "M65",
       "steps": "Steps 21, 24, 27, 93, 101, 103, 105",
       "module_scope": "prime-free F04 derivative authority on 0 < L < log 2: first variation, Euler-corrected fixed second variation, mixed aperture derivative",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.productionContactFirstVariation_even_eq_channels",
@@ -910,10 +1510,18 @@
       "package": "M65",
       "steps": "Steps 21, 24, 27, 93, 101, 103, 105",
       "module_scope": "prime-free F04 derivative authority on 0 < L < log 2: first variation, Euler-corrected fixed second variation, mixed aperture derivative",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.re_inner_canonicalEvenApertureFirst_polarization",
@@ -922,10 +1530,18 @@
       "package": "M65",
       "steps": "Steps 21, 24, 27, 93, 101, 103, 105",
       "module_scope": "prime-free F04 derivative authority on 0 < L < log 2: first variation, Euler-corrected fixed second variation, mixed aperture derivative",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.productionContactF04DerivativeAuthority_of_lt_log_two",
@@ -934,10 +1550,18 @@
       "package": "M65",
       "steps": "Steps 21, 24, 27, 93, 101, 103, 105",
       "module_scope": "prime-free F04 derivative authority on 0 < L < log 2: first variation, Euler-corrected fixed second variation, mixed aperture derivative",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.canonicalSecondPairing_euler_eq_productionSaturationGap_of_lt_log_two",
@@ -946,10 +1570,18 @@
       "package": "M65",
       "steps": "Steps 21, 24, 27, 93, 101, 103, 105",
       "module_scope": "prime-free F04 derivative authority on 0 < L < log 2: first variation, Euler-corrected fixed second variation, mixed aperture derivative",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.sum_Icc_floor_exp_eq_ite",
@@ -958,10 +1590,18 @@
       "package": "M65/F04",
       "steps": "Steps 21, 24, 27, 93, 101, 105",
       "module_scope": "F04 derivative authority at every L > 0: prime staircase as logarithmic indicators, seams glued by e(0) = e'(0) = e''(0) = 0",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.hasDerivAt_ite_le",
@@ -970,10 +1610,18 @@
       "package": "M65/F04",
       "steps": "Steps 21, 24, 27, 93, 101, 105",
       "module_scope": "F04 derivative authority at every L > 0: prime staircase as logarithmic indicators, seams glued by e(0) = e'(0) = e''(0) = 0",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.productionArithmeticRealValue_eq_channels_sum",
@@ -982,10 +1630,18 @@
       "package": "M65/F04",
       "steps": "Steps 21, 24, 27, 93, 101, 105",
       "module_scope": "F04 derivative authority at every L > 0: prime staircase as logarithmic indicators, seams glued by e(0) = e'(0) = e''(0) = 0",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.productionArithmeticRealValue_clamp_mul_id_sum",
@@ -994,10 +1650,18 @@
       "package": "M65/F04",
       "steps": "Steps 21, 24, 27, 93, 101, 105",
       "module_scope": "F04 derivative authority at every L > 0: prime staircase as logarithmic indicators, seams glued by e(0) = e'(0) = e''(0) = 0",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.productionContactFirstVariation_even_eq_full",
@@ -1006,10 +1670,18 @@
       "package": "M65/F04",
       "steps": "Steps 21, 24, 27, 93, 101, 105",
       "module_scope": "F04 derivative authority at every L > 0: prime staircase as logarithmic indicators, seams glued by e(0) = e'(0) = e''(0) = 0",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.hasDerivAt_primeFirstChannel",
@@ -1018,10 +1690,18 @@
       "package": "M65/F04",
       "steps": "Steps 21, 24, 27, 93, 101, 105",
       "module_scope": "F04 derivative authority at every L > 0: prime staircase as logarithmic indicators, seams glued by e(0) = e'(0) = e''(0) = 0",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.productionContactF04DerivativeAuthority_of_pos",
@@ -1030,10 +1710,18 @@
       "package": "M65/F04",
       "steps": "Steps 21, 24, 27, 93, 101, 105",
       "module_scope": "F04 derivative authority at every L > 0: prime staircase as logarithmic indicators, seams glued by e(0) = e'(0) = e''(0) = 0",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.canonicalSecondPairing_euler_eq_productionSaturationGap_of_pos",
@@ -1042,10 +1730,18 @@
       "package": "M65/F04",
       "steps": "Steps 21, 24, 27, 93, 101, 105",
       "module_scope": "F04 derivative authority at every L > 0: prime staircase as logarithmic indicators, seams glued by e(0) = e'(0) = e''(0) = 0",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.productionSecondDerivativePhysicalValue_eq_neg_primeFreeSecondTest",
@@ -1054,10 +1750,18 @@
       "package": "M66",
       "steps": "Steps 74, 102-104",
       "module_scope": "prime-free Euler curvature bound, stationary second value = 2<Aw,w>, no stationary generated strict-even contact below eps_K, unconditional F04 frontier",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.productionContactEulerCurvature_le",
@@ -1066,10 +1770,18 @@
       "package": "M66",
       "steps": "Steps 74, 102-104",
       "module_scope": "prime-free Euler curvature bound, stationary second value = 2<Aw,w>, no stationary generated strict-even contact below eps_K, unconditional F04 frontier",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.productionContactEulerCurvature_neg",
@@ -1078,10 +1790,18 @@
       "package": "M66",
       "steps": "Steps 74, 102-104",
       "module_scope": "prime-free Euler curvature bound, stationary second value = 2<Aw,w>, no stationary generated strict-even contact below eps_K, unconditional F04 frontier",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.GeneratedStrictEvenContact.fixedSecondVariation_eq_two_mul_responseCost",
@@ -1090,10 +1810,18 @@
       "package": "M66",
       "steps": "Steps 74, 102-104",
       "module_scope": "prime-free Euler curvature bound, stationary second value = 2<Aw,w>, no stationary generated strict-even contact below eps_K, unconditional F04 frontier",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.GeneratedStrictEvenContact.secondPhysicalValue_eq_two_mul_responseCost",
@@ -1102,10 +1830,18 @@
       "package": "M66",
       "steps": "Steps 74, 102-104",
       "module_scope": "prime-free Euler curvature bound, stationary second value = 2<Aw,w>, no stationary generated strict-even contact below eps_K, unconditional F04 frontier",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.GeneratedStrictEvenContact.secondPhysicalValue_nonneg",
@@ -1114,10 +1850,18 @@
       "package": "M66",
       "steps": "Steps 74, 102-104",
       "module_scope": "prime-free Euler curvature bound, stationary second value = 2<Aw,w>, no stationary generated strict-even contact below eps_K, unconditional F04 frontier",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.GeneratedStrictEvenContact.firstVariation_ne_zero_of_lt_primeFreeRadius",
@@ -1126,10 +1870,18 @@
       "package": "M66",
       "steps": "Steps 74, 102-104",
       "module_scope": "prime-free Euler curvature bound, stationary second value = 2<Aw,w>, no stationary generated strict-even contact below eps_K, unconditional F04 frontier",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.GeneratedStrictEvenContact.fresh_of_lt_primeFreeRadius",
@@ -1138,10 +1890,18 @@
       "package": "M66",
       "steps": "Steps 74, 102-104",
       "module_scope": "prime-free Euler curvature bound, stationary second value = 2<Aw,w>, no stationary generated strict-even contact below eps_K, unconditional F04 frontier",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.GeneratedStrictEvenContact.production_stationary_saturation_unconditional",
@@ -1150,10 +1910,18 @@
       "package": "M66",
       "steps": "Steps 74, 102-104",
       "module_scope": "prime-free Euler curvature bound, stationary second value = 2<Aw,w>, no stationary generated strict-even contact below eps_K, unconditional F04 frontier",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.GeneratedStrictEvenContact.production_stationary_remainder_pos_unconditional",
@@ -1162,10 +1930,18 @@
       "package": "M66",
       "steps": "Steps 74, 102-104",
       "module_scope": "prime-free Euler curvature bound, stationary second value = 2<Aw,w>, no stationary generated strict-even contact below eps_K, unconditional F04 frontier",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.GeneratedStrictEvenContact.completed_production_frontier_unconditional",
@@ -1174,10 +1950,18 @@
       "package": "M66",
       "steps": "Steps 74, 102-104",
       "module_scope": "prime-free Euler curvature bound, stationary second value = 2<Aw,w>, no stationary generated strict-even contact below eps_K, unconditional F04 frontier",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.GeneratedStrictEvenContact.inherited_completed_production_frontier_unconditional",
@@ -1186,10 +1970,18 @@
       "package": "M66",
       "steps": "Steps 74, 102-104",
       "module_scope": "prime-free Euler curvature bound, stationary second value = 2<Aw,w>, no stationary generated strict-even contact below eps_K, unconditional F04 frontier",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.GeneratedStrictEvenContact.inherited_production_saturation_unconditional",
@@ -1198,10 +1990,18 @@
       "package": "M66",
       "steps": "Steps 74, 102-104",
       "module_scope": "prime-free Euler curvature bound, stationary second value = 2<Aw,w>, no stationary generated strict-even contact below eps_K, unconditional F04 frontier",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.canonicalFirstVariation_eq_physical_of_pos",
@@ -1210,10 +2010,18 @@
       "package": "M66",
       "steps": "Steps 74, 102-104",
       "module_scope": "prime-free Euler curvature bound, stationary second value = 2<Aw,w>, no stationary generated strict-even contact below eps_K, unconditional F04 frontier",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.canonicalFixedSecondEuler_eq_physical_of_pos",
@@ -1222,10 +2030,18 @@
       "package": "M66",
       "steps": "Steps 74, 102-104",
       "module_scope": "prime-free Euler curvature bound, stationary second value = 2<Aw,w>, no stationary generated strict-even contact below eps_K, unconditional F04 frontier",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.canonicalMixedFirstVariation_eq_physical_of_pos",
@@ -1234,10 +2050,18 @@
       "package": "M66",
       "steps": "Steps 74, 102-104",
       "module_scope": "prime-free Euler curvature bound, stationary second value = 2<Aw,w>, no stationary generated strict-even contact below eps_K, unconditional F04 frontier",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.canonicalStationaryCurvature_eq_productionSaturationGap_of_pos",
@@ -1246,10 +2070,18 @@
       "package": "M66",
       "steps": "Steps 74, 102-104",
       "module_scope": "prime-free Euler curvature bound, stationary second value = 2<Aw,w>, no stationary generated strict-even contact below eps_K, unconditional F04 frontier",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.weightedVonMangoldtSqrtRemainder_one",
@@ -1258,10 +2090,18 @@
       "package": "M55/M38",
       "steps": "Steps 75, 96",
       "module_scope": "exact weighted Chebyshev partial summation psi(x) - x = 1 + sqrt(x) R(x) - (1/2) int_1^x R/sqrt t, transfer bound, exact finite sup and inf of R on [1, X]",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.psi_eq_sqrt_mul_sum_sub_integral",
@@ -1270,10 +2110,18 @@
       "package": "M55/M38",
       "steps": "Steps 75, 96",
       "module_scope": "exact weighted Chebyshev partial summation psi(x) - x = 1 + sqrt(x) R(x) - (1/2) int_1^x R/sqrt t, transfer bound, exact finite sup and inf of R on [1, X]",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.psi_sub_self_eq_weightedRemainder",
@@ -1282,10 +2130,18 @@
       "package": "M55/M38",
       "steps": "Steps 75, 96",
       "module_scope": "exact weighted Chebyshev partial summation psi(x) - x = 1 + sqrt(x) R(x) - (1/2) int_1^x R/sqrt t, transfer bound, exact finite sup and inf of R on [1, X]",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.abs_psi_sub_self_sub_one_le",
@@ -1294,10 +2150,18 @@
       "package": "M55/M38",
       "steps": "Steps 75, 96",
       "module_scope": "exact weighted Chebyshev partial summation psi(x) - x = 1 + sqrt(x) R(x) - (1/2) int_1^x R/sqrt t, transfer bound, exact finite sup and inf of R on [1, X]",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.isGreatest_weightedRemainder",
@@ -1306,10 +2170,18 @@
       "package": "M55/M38",
       "steps": "Steps 75, 96",
       "module_scope": "exact weighted Chebyshev partial summation psi(x) - x = 1 + sqrt(x) R(x) - (1/2) int_1^x R/sqrt t, transfer bound, exact finite sup and inf of R on [1, X]",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.isGLB_weightedRemainder",
@@ -1318,10 +2190,18 @@
       "package": "M55/M38",
       "steps": "Steps 75, 96",
       "module_scope": "exact weighted Chebyshev partial summation psi(x) - x = 1 + sqrt(x) R(x) - (1/2) int_1^x R/sqrt t, transfer bound, exact finite sup and inf of R on [1, X]",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.gronwall_lower_bound",
@@ -1330,10 +2210,18 @@
       "package": "M31",
       "steps": "Step 66",
       "module_scope": "abstract Gronwall lower bound; canonical even-bottom barrier CONDITIONAL on the OPEN Gronwall inequality (67.1)",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.gronwall_pos",
@@ -1342,10 +2230,18 @@
       "package": "M31",
       "steps": "Step 66",
       "module_scope": "abstract Gronwall lower bound; canonical even-bottom barrier CONDITIONAL on the OPEN Gronwall inequality (67.1)",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.evenCompressedCanonical_det_eq_zero_of_bottom_eq_zero",
@@ -1354,10 +2250,18 @@
       "package": "M31",
       "steps": "Step 66",
       "module_scope": "abstract Gronwall lower bound; canonical even-bottom barrier CONDITIONAL on the OPEN Gronwall inequality (67.1)",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.canonical_evenBottom_pos_of_gronwall",
@@ -1366,10 +2270,18 @@
       "package": "M31",
       "steps": "Step 66",
       "module_scope": "abstract Gronwall lower bound; canonical even-bottom barrier CONDITIONAL on the OPEN Gronwall inequality (67.1)",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.det_integral_eq_integral_det_mul_prod",
@@ -1378,10 +2290,18 @@
       "package": "M71",
       "steps": "Steps 44, 109",
       "module_scope": "exact even/odd boundary-flat source inertia for every 0 < omega <= 1/2: Andreief identity, signed leading minors, Jacobi split by Cramer vectors, carrier Gram as an Andreief convolution",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.integral_det_mul_prod_eq",
@@ -1390,10 +2310,18 @@
       "package": "M71",
       "steps": "Steps 44, 109",
       "module_scope": "exact even/odd boundary-flat source inertia for every 0 < omega <= 1/2: Andreief identity, signed leading minors, Jacobi split by Cramer vectors, carrier Gram as an Andreief convolution",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.andreiefSign_mul_det_gram_pos",
@@ -1402,10 +2330,18 @@
       "package": "M71",
       "steps": "Steps 44, 109",
       "module_scope": "exact even/odd boundary-flat source inertia for every 0 < omega <= 1/2: Andreief identity, signed leading minors, Jacobi split by Cramer vectors, carrier Gram as an Andreief convolution",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.jacobi_alternating_split",
@@ -1414,10 +2350,18 @@
       "package": "M71",
       "steps": "Steps 44, 109",
       "module_scope": "exact even/odd boundary-flat source inertia for every 0 < omega <= 1/2: Andreief identity, signed leading minors, Jacobi split by Cramer vectors, carrier Gram as an Andreief convolution",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.sourceSesq_eq_convolution",
@@ -1426,10 +2370,18 @@
       "package": "M71",
       "steps": "Steps 44, 109",
       "module_scope": "exact even/odd boundary-flat source inertia for every 0 < omega <= 1/2: Andreief identity, signed leading minors, Jacobi split by Cramer vectors, carrier Gram as an Andreief convolution",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.sourceSesq_evenCarrier_cosPow",
@@ -1438,10 +2390,18 @@
       "package": "M71",
       "steps": "Steps 44, 109",
       "module_scope": "exact even/odd boundary-flat source inertia for every 0 < omega <= 1/2: Andreief identity, signed leading minors, Jacobi split by Cramer vectors, carrier Gram as an Andreief convolution",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.sourceSesq_oddCarrier_cosPow",
@@ -1450,10 +2410,18 @@
       "package": "M71",
       "steps": "Steps 44, 109",
       "module_scope": "exact even/odd boundary-flat source inertia for every 0 < omega <= 1/2: Andreief identity, signed leading minors, Jacobi split by Cramer vectors, carrier Gram as an Andreief convolution",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.evenBoundaryFlat_source_exactInertia",
@@ -1462,10 +2430,18 @@
       "package": "M71",
       "steps": "Steps 44, 109",
       "module_scope": "exact even/odd boundary-flat source inertia for every 0 < omega <= 1/2: Andreief identity, signed leading minors, Jacobi split by Cramer vectors, carrier Gram as an Andreief convolution",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.oddBoundaryFlat_source_exactInertia",
@@ -1474,10 +2450,18 @@
       "package": "M71",
       "steps": "Steps 44, 109",
       "module_scope": "exact even/odd boundary-flat source inertia for every 0 < omega <= 1/2: Andreief identity, signed leading minors, Jacobi split by Cramer vectors, carrier Gram as an Andreief convolution",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.parityBoundaryFlat_source_indefinite",
@@ -1486,10 +2470,18 @@
       "package": "M71",
       "steps": "Steps 44, 109",
       "module_scope": "exact even/odd boundary-flat source inertia for every 0 < omega <= 1/2: Andreief identity, signed leading minors, Jacobi split by Cramer vectors, carrier Gram as an Andreief convolution",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.det_sub_smul_eq_prod_eigenvalues",
@@ -1498,10 +2490,18 @@
       "package": "M27",
       "steps": "Step 59",
       "module_scope": "1 - T_L(lambda) = prod(a_i - lambda)/prod(b_k - lambda) below the odd floor; root slope T_L'(a_j) = prod_{i != j}(a_i - a_j)/prod_k(b_k - a_j), nonzero with sign (-1)^{#{i : a_i < a_j}}",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.hasDerivAt_prod_sub_div_prod_sub",
@@ -1510,10 +2510,18 @@
       "package": "M27",
       "steps": "Step 59",
       "module_scope": "1 - T_L(lambda) = prod(a_i - lambda)/prod(b_k - lambda) below the odd floor; root slope T_L'(a_j) = prod_{i != j}(a_i - a_j)/prod_k(b_k - a_j), nonzero with sign (-1)^{#{i : a_i < a_j}}",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.le_eigenvalues_of_coercive",
@@ -1522,10 +2530,18 @@
       "package": "M27",
       "steps": "Step 59",
       "module_scope": "1 - T_L(lambda) = prod(a_i - lambda)/prod(b_k - lambda) below the odd floor; root slope T_L'(a_j) = prod_{i != j}(a_i - a_j)/prod_k(b_k - a_j), nonzero with sign (-1)^{#{i : a_i < a_j}}",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.eigenvalues_injOn_of_finrank_le_one",
@@ -1534,10 +2550,18 @@
       "package": "M27",
       "steps": "Step 59",
       "module_scope": "1 - T_L(lambda) = prod(a_i - lambda)/prod(b_k - lambda) below the odd floor; root slope T_L'(a_j) = prod_{i != j}(a_i - a_j)/prod_k(b_k - a_j), nonzero with sign (-1)^{#{i : a_i < a_j}}",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.neg_one_pow_card_neg_mul_prod",
@@ -1546,10 +2570,18 @@
       "package": "M27",
       "steps": "Step 59",
       "module_scope": "1 - T_L(lambda) = prod(a_i - lambda)/prod(b_k - lambda) below the odd floor; root slope T_L'(a_j) = prod_{i != j}(a_i - a_j)/prod_k(b_k - a_j), nonzero with sign (-1)^{#{i : a_i < a_j}}",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.one_sub_canonicalSecularFunction_eq",
@@ -1558,10 +2590,18 @@
       "package": "M27",
       "steps": "Step 59",
       "module_scope": "1 - T_L(lambda) = prod(a_i - lambda)/prod(b_k - lambda) below the odd floor; root slope T_L'(a_j) = prod_{i != j}(a_i - a_j)/prod_k(b_k - a_j), nonzero with sign (-1)^{#{i : a_i < a_j}}",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.canonical_secular_hasDerivAt_root",
@@ -1570,10 +2610,18 @@
       "package": "M27",
       "steps": "Step 59",
       "module_scope": "1 - T_L(lambda) = prod(a_i - lambda)/prod(b_k - lambda) below the odd floor; root slope T_L'(a_j) = prod_{i != j}(a_i - a_j)/prod_k(b_k - a_j), nonzero with sign (-1)^{#{i : a_i < a_j}}",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.canonical_secular_root_slope_sign",
@@ -1582,10 +2630,18 @@
       "package": "M27",
       "steps": "Step 59",
       "module_scope": "1 - T_L(lambda) = prod(a_i - lambda)/prod(b_k - lambda) below the odd floor; root slope T_L'(a_j) = prod_{i != j}(a_i - a_j)/prod_k(b_k - a_j), nonzero with sign (-1)^{#{i : a_i < a_j}}",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.schur_quadratic_third_deriv",
@@ -1594,10 +2650,18 @@
       "package": "M08",
       "steps": "Step 34",
       "module_scope": "abstract cubic Schur formula s''' = a''' - 3<b', R b''> - 3<b'', R b'> + 6<b', R H' R b'> at a zero of b, symmetric and response forms, and the necessary sign s''' <= 0 at a stationary first-negative crossing",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.cubic_schur_chain",
@@ -1606,10 +2670,18 @@
       "package": "M08",
       "steps": "Step 34",
       "module_scope": "abstract cubic Schur formula s''' = a''' - 3<b', R b''> - 3<b'', R b'> + 6<b', R H' R b'> at a zero of b, symmetric and response forms, and the necessary sign s''' <= 0 at a stationary first-negative crossing",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.cubic_schur_third_deriv",
@@ -1618,10 +2690,18 @@
       "package": "M08",
       "steps": "Step 34",
       "module_scope": "abstract cubic Schur formula s''' = a''' - 3<b', R b''> - 3<b'', R b'> + 6<b', R H' R b'> at a zero of b, symmetric and response forms, and the necessary sign s''' <= 0 at a stationary first-negative crossing",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.cubic_schur_third_deriv_response",
@@ -1630,10 +2710,18 @@
       "package": "M08",
       "steps": "Step 34",
       "module_scope": "abstract cubic Schur formula s''' = a''' - 3<b', R b''> - 3<b'', R b'> + 6<b', R H' R b'> at a zero of b, symmetric and response forms, and the necessary sign s''' <= 0 at a stationary first-negative crossing",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.third_deriv_nonpos_of_right_negative",
@@ -1642,10 +2730,18 @@
       "package": "M08",
       "steps": "Step 34",
       "module_scope": "abstract cubic Schur formula s''' = a''' - 3<b', R b''> - 3<b'', R b'> + 6<b', R H' R b'> at a zero of b, symmetric and response forms, and the necessary sign s''' <= 0 at a stationary first-negative crossing",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.cubic_schur_third_nonpos_of_right_negative",
@@ -1654,10 +2750,18 @@
       "package": "M08",
       "steps": "Step 34",
       "module_scope": "abstract cubic Schur formula s''' = a''' - 3<b', R b''> - 3<b'', R b'> + 6<b', R H' R b'> at a zero of b, symmetric and response forms, and the necessary sign s''' <= 0 at a stationary first-negative crossing",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
-      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE",
+      "ci_receipt": {
+        "pr": 287,
+        "head": "e3c7769c53c6d7f6649b15fe0b9d323ed77c7e5f",
+        "workflow_run": 38115045659,
+        "lean_source_inertia_check_run": 114398155231,
+        "source_falsifier_research_check_run": 114398155098,
+        "pr_check_runs": "40 of 40 success"
+      }
     },
     {
       "declaration": "Zeta23.CCM.intervalIntegrable_ite_le_mul",
@@ -2590,6 +3694,210 @@
       "package": "M44",
       "steps": "Step 81",
       "module_scope": "fixed legal even vector z: the q-atom of the physical scalar A_L[t^2 e_{Dz}(1 - t/L)] is exactly -beta_q e_{Dz}(h/(log q + h)) at L = log q + h, and |Delta Q - a h^7| <= C h^8 with a = 2 Lambda(q)(2 pi)^6 |M_4(z)|^2/(7! sqrt q (log q)^5) > 0; one-sided, fixed vector, not total Q",
+      "status": "PROVED_PENDING_CI",
+      "premises": [],
+      "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+    },
+    {
+      "declaration": "Zeta23.CCM.hasDerivAt_complexCLM_apply_real",
+      "source": "Zeta23/CCM/CanonicalSourceResolventDerivatives.lean",
+      "module": "Zeta23.CCM.CanonicalSourceResolventDerivatives",
+      "package": "M29",
+      "steps": "Steps 61, 62",
+      "module_scope": "with H_L(z) = <g, (B_L D - D A_L) z>/<g, g>, R = B_L^{-1}, x = D^{-1} R g and T = H_L(x_L): at every L > 0 with lambda_odd(L) > 0, T' = H'(x) + H(x') and T'' = H''(x) + 2 H'(x') + H(x''), x' = -D^{-1} R B' r, x'' = D^{-1}(2 R B' R B' r - R B'' r); L -> H_L(z) is C^2 on (0, infinity); at T' = 0 (and T'' = 0) the stationary identities; the third derivative (Step 63) stays OPEN",
+      "status": "PROVED_PENDING_CI",
+      "premises": [],
+      "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+    },
+    {
+      "declaration": "Zeta23.CCM.hasDerivAt_ringInverse_complexCLM",
+      "source": "Zeta23/CCM/CanonicalSourceResolventDerivatives.lean",
+      "module": "Zeta23.CCM.CanonicalSourceResolventDerivatives",
+      "package": "M29",
+      "steps": "Steps 61, 62",
+      "module_scope": "with H_L(z) = <g, (B_L D - D A_L) z>/<g, g>, R = B_L^{-1}, x = D^{-1} R g and T = H_L(x_L): at every L > 0 with lambda_odd(L) > 0, T' = H'(x) + H(x') and T'' = H''(x) + 2 H'(x') + H(x''), x' = -D^{-1} R B' r, x'' = D^{-1}(2 R B' R B' r - R B'' r); L -> H_L(z) is C^2 on (0, infinity); at T' = 0 (and T'' = 0) the stationary identities; the third derivative (Step 63) stays OPEN",
+      "status": "PROVED_PENDING_CI",
+      "premises": [],
+      "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+    },
+    {
+      "declaration": "Zeta23.CCM.hasDerivAt_secularDefectScalar",
+      "source": "Zeta23/CCM/CanonicalSourceResolventDerivatives.lean",
+      "module": "Zeta23.CCM.CanonicalSourceResolventDerivatives",
+      "package": "M29",
+      "steps": "Steps 61, 62",
+      "module_scope": "with H_L(z) = <g, (B_L D - D A_L) z>/<g, g>, R = B_L^{-1}, x = D^{-1} R g and T = H_L(x_L): at every L > 0 with lambda_odd(L) > 0, T' = H'(x) + H(x') and T'' = H''(x) + 2 H'(x') + H(x''), x' = -D^{-1} R B' r, x'' = D^{-1}(2 R B' R B' r - R B'' r); L -> H_L(z) is C^2 on (0, infinity); at T' = 0 (and T'' = 0) the stationary identities; the third derivative (Step 63) stays OPEN",
+      "status": "PROVED_PENDING_CI",
+      "premises": [],
+      "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+    },
+    {
+      "declaration": "Zeta23.CCM.hasDerivAt_secularDefectScalar_const",
+      "source": "Zeta23/CCM/CanonicalSourceResolventDerivatives.lean",
+      "module": "Zeta23.CCM.CanonicalSourceResolventDerivatives",
+      "package": "M29",
+      "steps": "Steps 61, 62",
+      "module_scope": "with H_L(z) = <g, (B_L D - D A_L) z>/<g, g>, R = B_L^{-1}, x = D^{-1} R g and T = H_L(x_L): at every L > 0 with lambda_odd(L) > 0, T' = H'(x) + H(x') and T'' = H''(x) + 2 H'(x') + H(x''), x' = -D^{-1} R B' r, x'' = D^{-1}(2 R B' R B' r - R B'' r); L -> H_L(z) is C^2 on (0, infinity); at T' = 0 (and T'' = 0) the stationary identities; the third derivative (Step 63) stays OPEN",
+      "status": "PROVED_PENDING_CI",
+      "premises": [],
+      "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+    },
+    {
+      "declaration": "Zeta23.CCM.hasDerivAt_secularRayFamily",
+      "source": "Zeta23/CCM/CanonicalSourceResolventDerivatives.lean",
+      "module": "Zeta23.CCM.CanonicalSourceResolventDerivatives",
+      "package": "M29",
+      "steps": "Steps 61, 62",
+      "module_scope": "with H_L(z) = <g, (B_L D - D A_L) z>/<g, g>, R = B_L^{-1}, x = D^{-1} R g and T = H_L(x_L): at every L > 0 with lambda_odd(L) > 0, T' = H'(x) + H(x') and T'' = H''(x) + 2 H'(x') + H(x''), x' = -D^{-1} R B' r, x'' = D^{-1}(2 R B' R B' r - R B'' r); L -> H_L(z) is C^2 on (0, infinity); at T' = 0 (and T'' = 0) the stationary identities; the third derivative (Step 63) stays OPEN",
+      "status": "PROVED_PENDING_CI",
+      "premises": [],
+      "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+    },
+    {
+      "declaration": "Zeta23.CCM.hasDerivAt_secularRayFirst",
+      "source": "Zeta23/CCM/CanonicalSourceResolventDerivatives.lean",
+      "module": "Zeta23.CCM.CanonicalSourceResolventDerivatives",
+      "package": "M29",
+      "steps": "Steps 61, 62",
+      "module_scope": "with H_L(z) = <g, (B_L D - D A_L) z>/<g, g>, R = B_L^{-1}, x = D^{-1} R g and T = H_L(x_L): at every L > 0 with lambda_odd(L) > 0, T' = H'(x) + H(x') and T'' = H''(x) + 2 H'(x') + H(x''), x' = -D^{-1} R B' r, x'' = D^{-1}(2 R B' R B' r - R B'' r); L -> H_L(z) is C^2 on (0, infinity); at T' = 0 (and T'' = 0) the stationary identities; the third derivative (Step 63) stays OPEN",
+      "status": "PROVED_PENDING_CI",
+      "premises": [],
+      "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+    },
+    {
+      "declaration": "Zeta23.CCM.hasDerivAt_secularScalarFamily",
+      "source": "Zeta23/CCM/CanonicalSourceResolventDerivatives.lean",
+      "module": "Zeta23.CCM.CanonicalSourceResolventDerivatives",
+      "package": "M29",
+      "steps": "Steps 61, 62",
+      "module_scope": "with H_L(z) = <g, (B_L D - D A_L) z>/<g, g>, R = B_L^{-1}, x = D^{-1} R g and T = H_L(x_L): at every L > 0 with lambda_odd(L) > 0, T' = H'(x) + H(x') and T'' = H''(x) + 2 H'(x') + H(x''), x' = -D^{-1} R B' r, x'' = D^{-1}(2 R B' R B' r - R B'' r); L -> H_L(z) is C^2 on (0, infinity); at T' = 0 (and T'' = 0) the stationary identities; the third derivative (Step 63) stays OPEN",
+      "status": "PROVED_PENDING_CI",
+      "premises": [],
+      "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+    },
+    {
+      "declaration": "Zeta23.CCM.hasDerivAt_secularScalarFirst",
+      "source": "Zeta23/CCM/CanonicalSourceResolventDerivatives.lean",
+      "module": "Zeta23.CCM.CanonicalSourceResolventDerivatives",
+      "package": "M29",
+      "steps": "Steps 61, 62",
+      "module_scope": "with H_L(z) = <g, (B_L D - D A_L) z>/<g, g>, R = B_L^{-1}, x = D^{-1} R g and T = H_L(x_L): at every L > 0 with lambda_odd(L) > 0, T' = H'(x) + H(x') and T'' = H''(x) + 2 H'(x') + H(x''), x' = -D^{-1} R B' r, x'' = D^{-1}(2 R B' R B' r - R B'' r); L -> H_L(z) is C^2 on (0, infinity); at T' = 0 (and T'' = 0) the stationary identities; the third derivative (Step 63) stays OPEN",
+      "status": "PROVED_PENDING_CI",
+      "premises": [],
+      "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+    },
+    {
+      "declaration": "Zeta23.CCM.secularScalar_stationary",
+      "source": "Zeta23/CCM/CanonicalSourceResolventDerivatives.lean",
+      "module": "Zeta23.CCM.CanonicalSourceResolventDerivatives",
+      "package": "M29",
+      "steps": "Steps 61, 62",
+      "module_scope": "with H_L(z) = <g, (B_L D - D A_L) z>/<g, g>, R = B_L^{-1}, x = D^{-1} R g and T = H_L(x_L): at every L > 0 with lambda_odd(L) > 0, T' = H'(x) + H(x') and T'' = H''(x) + 2 H'(x') + H(x''), x' = -D^{-1} R B' r, x'' = D^{-1}(2 R B' R B' r - R B'' r); L -> H_L(z) is C^2 on (0, infinity); at T' = 0 (and T'' = 0) the stationary identities; the third derivative (Step 63) stays OPEN",
+      "status": "PROVED_PENDING_CI",
+      "premises": [],
+      "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+    },
+    {
+      "declaration": "Zeta23.CCM.secularDefectScalar_canonical",
+      "source": "Zeta23/CCM/CanonicalSourceResolventDerivatives.lean",
+      "module": "Zeta23.CCM.CanonicalSourceResolventDerivatives",
+      "package": "M29",
+      "steps": "Steps 61, 62",
+      "module_scope": "with H_L(z) = <g, (B_L D - D A_L) z>/<g, g>, R = B_L^{-1}, x = D^{-1} R g and T = H_L(x_L): at every L > 0 with lambda_odd(L) > 0, T' = H'(x) + H(x') and T'' = H''(x) + 2 H'(x') + H(x''), x' = -D^{-1} R B' r, x'' = D^{-1}(2 R B' R B' r - R B'' r); L -> H_L(z) is C^2 on (0, infinity); at T' = 0 (and T'' = 0) the stationary identities; the third derivative (Step 63) stays OPEN",
+      "status": "PROVED_PENDING_CI",
+      "premises": [],
+      "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+    },
+    {
+      "declaration": "Zeta23.CCM.isUnit_canonicalOddFamily",
+      "source": "Zeta23/CCM/CanonicalSourceResolventDerivatives.lean",
+      "module": "Zeta23.CCM.CanonicalSourceResolventDerivatives",
+      "package": "M29",
+      "steps": "Steps 61, 62",
+      "module_scope": "with H_L(z) = <g, (B_L D - D A_L) z>/<g, g>, R = B_L^{-1}, x = D^{-1} R g and T = H_L(x_L): at every L > 0 with lambda_odd(L) > 0, T' = H'(x) + H(x') and T'' = H''(x) + 2 H'(x') + H(x''), x' = -D^{-1} R B' r, x'' = D^{-1}(2 R B' R B' r - R B'' r); L -> H_L(z) is C^2 on (0, infinity); at T' = 0 (and T'' = 0) the stationary identities; the third derivative (Step 63) stays OPEN",
+      "status": "PROVED_PENDING_CI",
+      "premises": [],
+      "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+    },
+    {
+      "declaration": "Zeta23.CCM.secularRayFamily_canonical",
+      "source": "Zeta23/CCM/CanonicalSourceResolventDerivatives.lean",
+      "module": "Zeta23.CCM.CanonicalSourceResolventDerivatives",
+      "package": "M29",
+      "steps": "Steps 61, 62",
+      "module_scope": "with H_L(z) = <g, (B_L D - D A_L) z>/<g, g>, R = B_L^{-1}, x = D^{-1} R g and T = H_L(x_L): at every L > 0 with lambda_odd(L) > 0, T' = H'(x) + H(x') and T'' = H''(x) + 2 H'(x') + H(x''), x' = -D^{-1} R B' r, x'' = D^{-1}(2 R B' R B' r - R B'' r); L -> H_L(z) is C^2 on (0, infinity); at T' = 0 (and T'' = 0) the stationary identities; the third derivative (Step 63) stays OPEN",
+      "status": "PROVED_PENDING_CI",
+      "premises": [],
+      "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+    },
+    {
+      "declaration": "Zeta23.CCM.canonicalSecularScalar_eq",
+      "source": "Zeta23/CCM/CanonicalSourceResolventDerivatives.lean",
+      "module": "Zeta23.CCM.CanonicalSourceResolventDerivatives",
+      "package": "M29",
+      "steps": "Steps 61, 62",
+      "module_scope": "with H_L(z) = <g, (B_L D - D A_L) z>/<g, g>, R = B_L^{-1}, x = D^{-1} R g and T = H_L(x_L): at every L > 0 with lambda_odd(L) > 0, T' = H'(x) + H(x') and T'' = H''(x) + 2 H'(x') + H(x''), x' = -D^{-1} R B' r, x'' = D^{-1}(2 R B' R B' r - R B'' r); L -> H_L(z) is C^2 on (0, infinity); at T' = 0 (and T'' = 0) the stationary identities; the third derivative (Step 63) stays OPEN",
+      "status": "PROVED_PENDING_CI",
+      "premises": [],
+      "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+    },
+    {
+      "declaration": "Zeta23.CCM.canonicalSecularScalar_hasDerivAt",
+      "source": "Zeta23/CCM/CanonicalSourceResolventDerivatives.lean",
+      "module": "Zeta23.CCM.CanonicalSourceResolventDerivatives",
+      "package": "M29",
+      "steps": "Steps 61, 62",
+      "module_scope": "with H_L(z) = <g, (B_L D - D A_L) z>/<g, g>, R = B_L^{-1}, x = D^{-1} R g and T = H_L(x_L): at every L > 0 with lambda_odd(L) > 0, T' = H'(x) + H(x') and T'' = H''(x) + 2 H'(x') + H(x''), x' = -D^{-1} R B' r, x'' = D^{-1}(2 R B' R B' r - R B'' r); L -> H_L(z) is C^2 on (0, infinity); at T' = 0 (and T'' = 0) the stationary identities; the third derivative (Step 63) stays OPEN",
+      "status": "PROVED_PENDING_CI",
+      "premises": [],
+      "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+    },
+    {
+      "declaration": "Zeta23.CCM.cubicDefectFunctional_contDiffOn",
+      "source": "Zeta23/CCM/CanonicalSourceResolventDerivatives.lean",
+      "module": "Zeta23.CCM.CanonicalSourceResolventDerivatives",
+      "package": "M29",
+      "steps": "Steps 61, 62",
+      "module_scope": "with H_L(z) = <g, (B_L D - D A_L) z>/<g, g>, R = B_L^{-1}, x = D^{-1} R g and T = H_L(x_L): at every L > 0 with lambda_odd(L) > 0, T' = H'(x) + H(x') and T'' = H''(x) + 2 H'(x') + H(x''), x' = -D^{-1} R B' r, x'' = D^{-1}(2 R B' R B' r - R B'' r); L -> H_L(z) is C^2 on (0, infinity); at T' = 0 (and T'' = 0) the stationary identities; the third derivative (Step 63) stays OPEN",
+      "status": "PROVED_PENDING_CI",
+      "premises": [],
+      "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+    },
+    {
+      "declaration": "Zeta23.CCM.cubicDefectFunctional_hasDerivAt",
+      "source": "Zeta23/CCM/CanonicalSourceResolventDerivatives.lean",
+      "module": "Zeta23.CCM.CanonicalSourceResolventDerivatives",
+      "package": "M29",
+      "steps": "Steps 61, 62",
+      "module_scope": "with H_L(z) = <g, (B_L D - D A_L) z>/<g, g>, R = B_L^{-1}, x = D^{-1} R g and T = H_L(x_L): at every L > 0 with lambda_odd(L) > 0, T' = H'(x) + H(x') and T'' = H''(x) + 2 H'(x') + H(x''), x' = -D^{-1} R B' r, x'' = D^{-1}(2 R B' R B' r - R B'' r); L -> H_L(z) is C^2 on (0, infinity); at T' = 0 (and T'' = 0) the stationary identities; the third derivative (Step 63) stays OPEN",
+      "status": "PROVED_PENDING_CI",
+      "premises": [],
+      "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
+      "axiom_receipt": "LOCAL_PASS_STANDARD_THREE"
+    },
+    {
+      "declaration": "Zeta23.CCM.canonicalSecularScalar_stationary",
+      "source": "Zeta23/CCM/CanonicalSourceResolventDerivatives.lean",
+      "module": "Zeta23.CCM.CanonicalSourceResolventDerivatives",
+      "package": "M29",
+      "steps": "Steps 61, 62",
+      "module_scope": "with H_L(z) = <g, (B_L D - D A_L) z>/<g, g>, R = B_L^{-1}, x = D^{-1} R g and T = H_L(x_L): at every L > 0 with lambda_odd(L) > 0, T' = H'(x) + H(x') and T'' = H''(x) + 2 H'(x') + H(x''), x' = -D^{-1} R B' r, x'' = D^{-1}(2 R B' R B' r - R B'' r); L -> H_L(z) is C^2 on (0, infinity); at T' = 0 (and T'' = 0) the stationary identities; the third derivative (Step 63) stays OPEN",
       "status": "PROVED_PENDING_CI",
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
