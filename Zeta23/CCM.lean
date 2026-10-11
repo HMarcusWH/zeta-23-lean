@@ -264,3 +264,9 @@ import Zeta23.CCM.CanonicalCenteredIndexPoincare
 import Zeta23.CCM.CanonicalSourcePrimeSampling
 import Zeta23.CCM.CanonicalSourceSpectralFlow
 import Zeta23.CCM.CanonicalShiftedSecular
+import Zeta23.CCM.CanonicalContactOverlapSign
+import Zeta23.CCM.CanonicalPrimeFreeF04
+import Zeta23.CCM.CanonicalGlobalF04
+import Zeta23.CCM.CanonicalLocalBirdfishie
+import Zeta23.CCM.CanonicalWeightedChebyshevAbel
+import Zeta23.CCM.CanonicalSecularGronwall

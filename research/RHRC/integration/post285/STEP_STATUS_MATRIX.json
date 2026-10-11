@@ -15,13 +15,13 @@
   },
   "counts": {
     "PROVED_MERGED": 32,
-    "OPEN": 33,
-    "CONDITIONAL": 4,
+    "PROVED_THIS_PR": 29,
     "EXPERIMENTAL_SIGNAL": 2,
+    "OPEN": 25,
+    "CONDITIONAL": 2,
     "DERIVED": 1,
-    "PARTIAL": 6,
+    "PARTIAL": 5,
     "SCOPE_CONTROL": 3,
-    "PROVED_THIS_PR": 18,
     "INTERVAL_EVIDENCE": 4
   },
   "steps": [
@@ -49,9 +49,9 @@
     {
       "step": 21,
       "topic": "Production derivative authority interface",
-      "package": "M06",
-      "status": "OPEN",
-      "anchor_or_note": "F04 has no proof constructor"
+      "package": "M06/M65",
+      "status": "PROVED_THIS_PR",
+      "anchor_or_note": "constructor productionContactF04DerivativeAuthority_of_pos at every L > 0"
     },
     {
       "step": 22,
@@ -70,9 +70,9 @@
     {
       "step": 24,
       "topic": "Aperture derivatives and source transport",
-      "package": "M06",
-      "status": "OPEN",
-      "anchor_or_note": "F04-dependent"
+      "package": "M06/M65",
+      "status": "PROVED_THIS_PR",
+      "anchor_or_note": "prime-free window (CanonicalPrimeFreeF04) and prime cells and seams (CanonicalGlobalF04)"
     },
     {
       "step": 25,
@@ -91,9 +91,9 @@
     {
       "step": 27,
       "topic": "F04-weighted contact response reduction",
-      "package": "M09",
-      "status": "CONDITIONAL",
-      "anchor_or_note": "requires F04"
+      "package": "M09/M65",
+      "status": "PROVED_THIS_PR",
+      "anchor_or_note": "unconditional at every L > 0 (canonicalSecondPairing_euler_eq_productionSaturationGap_of_pos)"
     },
     {
       "step": 28,
@@ -323,8 +323,8 @@
       "step": 60,
       "topic": "Contact resolvent overlap identity",
       "package": "M28",
-      "status": "PARTIAL",
-      "anchor_or_note": "exact identity PROVED_THIS_PR (canonical_contact_overlap); positivity OPEN"
+      "status": "PROVED_THIS_PR",
+      "anchor_or_note": "identity (canonical_contact_overlap) and positivity with A_L >= 0, B_L > 0 (canonical_contact_overlap_pos)"
     },
     {
       "step": 61,
@@ -365,8 +365,8 @@
       "step": 66,
       "topic": "Differential Gronwall contact barrier",
       "package": "M31",
-      "status": "OPEN",
-      "anchor_or_note": ""
+      "status": "CONDITIONAL",
+      "anchor_or_note": "abstract bound gronwall_lower_bound PROVED_THIS_PR; canonical barrier canonical_evenBottom_pos_of_gronwall conditional on (67.1), which is OPEN (M32)"
     },
     {
       "step": 67,
@@ -420,16 +420,16 @@
     {
       "step": 74,
       "topic": "Conditional local stationary contact contradiction",
-      "package": "M37",
-      "status": "CONDITIONAL",
-      "anchor_or_note": "F04-conditional"
+      "package": "M37/M66",
+      "status": "PARTIAL",
+      "anchor_or_note": "unconditional below eps_K PROVED_THIS_PR (firstVariation_ne_zero_of_lt_primeFreeRadius, possibly vacuous); above eps_K OPEN"
     },
     {
       "step": 75,
       "topic": "Finite extrema of logarithmic prime remainder",
       "package": "M38",
-      "status": "OPEN",
-      "anchor_or_note": ""
+      "status": "PROVED_THIS_PR",
+      "anchor_or_note": "isGreatest_weightedRemainder (attained at an integer), isGLB_weightedRemainder (possibly a left limit)"
     },
     {
       "step": 76,
@@ -554,15 +554,15 @@
       "step": 93,
       "topic": "Regularized canonical finite-part energy",
       "package": "M52/M53",
-      "status": "PARTIAL",
-      "anchor_or_note": "energy identity PROVED (#285); F04 OPEN"
+      "status": "PROVED_THIS_PR",
+      "anchor_or_note": "energy identity PROVED (#285); its first and second aperture derivatives PROVED_THIS_PR at every L > 0"
     },
     {
       "step": 94,
       "topic": "Numerical moving-aperture F04 regression",
       "package": "M53",
       "status": "EXPERIMENTAL_SIGNAL",
-      "anchor_or_note": ""
+      "anchor_or_note": "matrix-level regression of the F04 identities, prime-free, in prime cells and at seams, to 1.2e-6 (post285_f04_falsifier.py)"
     },
     {
       "step": 95,
@@ -575,8 +575,8 @@
       "step": 96,
       "topic": "Partial summation / RH-equivalence firewall",
       "package": "M55",
-      "status": "OPEN",
-      "anchor_or_note": ""
+      "status": "PROVED_THIS_PR",
+      "anchor_or_note": "(96.1) psi_sub_self_eq_weightedRemainder; transfer bound abs_psi_sub_self_sub_one_le; R = O(x^eps) for all eps stays an RH-strength premise that is never assumed"
     },
     {
       "step": 97,
@@ -610,36 +610,36 @@
       "step": 101,
       "topic": "Canonical shared second-variation observable",
       "package": "M64/M65",
-      "status": "OPEN",
-      "anchor_or_note": "identification with production second variation OPEN"
+      "status": "PROVED_THIS_PR",
+      "anchor_or_note": "identified with the production second variation at every L > 0 (fixedSecondEuler of productionContactF04DerivativeAuthority_of_pos)"
     },
     {
       "step": 102,
       "topic": "Positive prime-free side of local birdfishie",
       "package": "M42/M66",
       "status": "PROVED_MERGED",
-      "anchor_or_note": "fixed-vector side (#285)"
+      "anchor_or_note": "fixed-vector side (#285); transported to E'' + (2/L)E' this PR (productionContactEulerCurvature_neg)"
     },
     {
       "step": 103,
       "topic": "First-contact second-variation nonpositive side",
-      "package": "M65",
-      "status": "OPEN",
-      "anchor_or_note": "prime-free F04"
+      "package": "M65/M66",
+      "status": "PROVED_THIS_PR",
+      "anchor_or_note": "complete second physical value = 2<Aw,w> >= 0 at stationary generated contacts (secondPhysicalValue_nonneg); prime-free form -(2 pi)^2 Q/L^4"
     },
     {
       "step": 104,
       "topic": "Restricted two-sided local contradiction",
       "package": "M66",
-      "status": "CONDITIONAL",
-      "anchor_or_note": ""
+      "status": "PROVED_THIS_PR",
+      "anchor_or_note": "no stationary generated strict-even contact below eps_K (possibly vacuous)"
     },
     {
       "step": 105,
       "topic": "Moving-aperture differentiation analytic target",
       "package": "M65",
-      "status": "OPEN",
-      "anchor_or_note": ""
+      "status": "PROVED_THIS_PR",
+      "anchor_or_note": "every L > 0, seams included"
     },
     {
       "step": 106,

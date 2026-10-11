@@ -1,4 +1,4 @@
-# Post-285 falsification report (Steps 108–120, M70–M76)
+# Post-285 falsification report (M38, M55, M65–M76)
 
 Terminal claim: **RH_OPEN**. Everything below is regression or experimental
 evidence. Theorem authority comes only from the Lean roots listed in
@@ -6,7 +6,7 @@ evidence. Theorem authority comes only from the Lean roots listed in
 
 ## Scripts
 
-All three scripts live in `research/RHRC/routes/R003_ccm_bridge/post285/` and
+All five scripts live in `research/RHRC/routes/R003_ccm_bridge/post285/` and
 run in the `source-falsifier-research` job of
 `.github/workflows/rhrc_post284_source_inertia.yml`. Each one runs in seconds.
 
@@ -15,6 +15,8 @@ run in the `source-falsifier-research` job of
 | `post285_m74_secular_falsifier.py` | M74, M30 | Pass, with both negative controls failing as they should |
 | `post285_gate_a_d_falsifier.py` | M70, M73, M75 | Pass, with negative controls |
 | `post285_m76_secular_margin.py` | M76 | Experimental signal (see below) |
+| `post285_f04_falsifier.py` | F04 (M65), M66 | Pass, with both negative controls failing as predicted |
+| `post285_m55_abel_falsifier.py` | M55, M38 | Pass, with both negative controls failing as predicted |
 
 ## M74: canonical secular resolvent
 
@@ -116,6 +118,70 @@ This probe uses the production canonical float matrices for `K = 2..5` and
   resolution. Their apparent negative eigenvalues are at the 1e-15 level and are
   **not** reported as signs. Resolving them needs the Arb path
   (`canonical_source_arb.py`).
+
+## F04 (M65) and M66
+
+`post285_f04_falsifier.py` checks the F04 identities at matrix level on the
+even boundary-flat carrier `P` (orthonormal columns), against the executable
+canonical matrix `M(L)` (which carries the single `2 cCorrection(L)` repair).
+`M'(L)` and `M''(L)` come from 5-point finite differences. The physical side is
+Gauss–Legendre quadrature of `(t/L²) S'(1 − t/L)(W − ρ)` and
+`(t²/L⁴) S''(1 − t/L)(W − ρ)`, minus the exact prime sums.
+
+- **Identities.** For `K = 2..5`:
+
+  | Where | Apertures | First identity | Euler identity |
+  |---|---|---|---|
+  | Prime-free | `L = 0.08, 0.2, 0.35, 0.5, 0.62` | ≤ 3e-12 | ≤ 1.4e-8 |
+  | Prime cells | `L = 0.9, 1.3, 1.5` | ≤ 5e-8 | ≤ 1.4e-7 |
+  | Exactly at seams | `L = log 3, log 4, log 5` | ≤ 2e-8 | ≤ 1.2e-6 |
+
+  The seam rows are the numerical counterpart of the Lean gluing step: an
+  entering prime atom has zero value and slope at its seam.
+- **Control: nonzero coefficient sum.** For `z = e₀` (so `e'_z(0) = 2 ≠ 0`) the
+  Euler identity misses by 2.07530, against the predicted boundary term
+  `e'_z(0)(W(L) − ρ(L))/L = 2.07530`. Zero coefficient sum is exactly what
+  kills that term.
+- **Control: correction added twice.** With `M + 2 cCorrection(L) I`, the first
+  identity misses by 0.449461, against the predicted
+  `2 cCorrectionIntegrand(L)|z|² = 0.449461`.
+- **M66 bound.** At `L = 0.25, 0.5, 0.9 ε_K` for `K = 2..5`, the largest
+  eigenvalue of the Euler form lies below the proved bound
+  `−(1/L²)(1 − 2π²L(2K+1)K²)`.
+- **Signal: the true Euler radius.** The Euler form stays negative definite on
+  the even carrier up to about `L = 0.553` (K = 2), 0.425 (3), 0.379 (4),
+  0.355 (5), 0.350 (6), 0.328 (8), 0.316 (10, 12) and 0.305 (16). The proved
+  radius `ε_K` is `2.5·10⁻³` at `K = 2`.
+- **Signal: no even contact below `log 2`.** On `(0.001, log 2)` the even
+  compressed ground stays positive for `K = 2..16`. Its minimum is always at the
+  right end and falls from 0.096 (K = 2) to 0.003 (K = 16). So no generated
+  strict-even contact is seen in the prime-free window, and M66 is likely
+  vacuous there for these `K`.
+
+No numerical regression is run for the `CanonicalContactOverlapSign` sign: no
+synthetic family with a Hermitian rank-one intertwining at a contact is at
+hand, and the executable canonical grid has no contact. The proof is exact
+linear algebra plus one limit.
+
+## M55 and M38: weighted Chebyshev partial summation and remainder extrema
+
+`post285_m55_abel_falsifier.py` uses an exact von Mangoldt table up to
+`N = 20000`. `R` is a step function minus `2√t`, so `∫₁ˣ R(t)/√t dt` is
+evaluated exactly cell by cell rather than by quadrature.
+
+- **(96.1).** `ψ(x) − x = 1 + √x R(x) − ½∫₁ˣ R/√t` holds to 4e-11 relative at
+  79997 points: every integer up to `N` and three interior points per cell.
+  At `x = 1` both sides are `−1`, and `R(1) = −2`.
+- **Conventions.** Left limits on both sides at an integer also satisfy the
+  identity, since `ψ` and `√n R(n)` both drop by `Λ(n)`. **Control:** mixing
+  conventions (`ψ(n−)` against `R(n)`) misses by exactly `Λ(n)`.
+- **Transfer bound.** `|ψ(x) − x − 1| ≤ 2M√x` with `M` the running maximum of
+  `|R|`. The worst ratio is 0.5, at `x = 1`.
+- **M38 extrema.** For `X` just below, at and just after
+  2, 3, 4, 5, 8, 9, 16, 25, 27, 32, 49, 97, 128 and 500, the finite supremum
+  formula matches dense sampling exactly, and the finite infimum formula is
+  approached from above (a left limit). **Control:** dropping the cut
+  `min(m+1, X)` undershoots the infimum at non-integer `X`.
 
 ## Inherited regressions kept running
 

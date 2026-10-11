@@ -92,8 +92,8 @@
       "id": "M28_OVERLAP_POSITIVITY",
       "package": "M28",
       "steps": "60",
-      "status": "OPEN",
-      "detail": "<x_L, D^-1 g> > 0 (equivalently c* = S_L(w_L) > 0) needs determinant-derivative or first-crossing positivity input; not proved."
+      "status": "PROVED_PENDING_CI",
+      "detail": "canonical_contact_overlap_pos: at an even contact (S_L(x_L) = 1) with 0 <= even Rayleigh bottom and 0 < odd Rayleigh bottom, S_L(w_L) and <x_L, D^-1 g> are real and strictly positive. Route: coercive symmetric maps have real positive determinants, so 1 - T_L(lambda) > 0 for lambda < 0; the resolvent identity and an elementary limit lambda -> 0-. A_L positive semidefinite is a hypothesis (first-crossing geometry), never inferred from T <= 1; nothing asserts that a contact exists."
     },
     {
       "id": "M14_ODD_FIRST_AND_TIED_BRANCH_ALGEBRA",
@@ -112,16 +112,79 @@
     {
       "id": "M65_PRIME_FREE_F04",
       "package": "M65",
-      "steps": "101, 103, 105",
-      "status": "OPEN",
-      "detail": "Prime-free real-aperture differentiation of the exact production compressed family on 0 < L < log 2 (t = Lx substitution, wCorrection derivative, endpoint cancellation) and its identification with the fixed-vector second test are not formalized."
+      "steps": "21, 24, 27, 93, 101, 103, 105",
+      "status": "PROVED_PENDING_CI",
+      "detail": "productionContactF04DerivativeAuthority_of_lt_log_two: for 0 < L < log 2 and every K, all three fields of ProductionContactF04DerivativeAuthority L K hold for the actual canonical even compressed family: E'_z = A_L[(t/L^2) e'_z(1 - t/L)], E''_z + (2/L) E'_z = A_L[(t^2/L^4) e''_z(1 - t/L)], Re<z, A'_L w> = A_L[mixed test]. Proof: real M05 identity with no prime terms below log 2, Leibniz under the moving aperture with t rho(t) regularized, endpoint cancellation via wCorrection' = e^{-L/2} rho(L), e'_z(0) = 0 on boundary-flat vectors, symmetric polarization for the mixed field. The single cCorrection repair is the one inside canonicalSourceMatrix; nothing is added twice."
     },
     {
       "id": "F04_GLOBAL_PRODUCTION_DERIVATIVE_AUTHORITY",
       "package": "M06/M53",
-      "steps": "21, 24, 93, 105",
+      "steps": "21, 24, 27, 93, 101, 105",
+      "status": "PROVED_PENDING_CI",
+      "detail": "productionContactF04DerivativeAuthority_of_pos: all three F04 fields hold at every L > 0 and every K. Over a fixed range of q the prime staircase is a sum of terms switched on by log q <= L; each entering term has zero value and slope at its seam because e_z(0) = e'_z(0) = 0 (energy) and e'_z(0) = e''_z(0) = 0 (first channel) on boundary-flat vectors, so it is differentiable there (hasDerivAt_ite_le). Statement: forall K L, 0 < L -> ProductionContactF04DerivativeAuthority L K, the exact post-284 premise structure, with no other hypothesis. All ten Zeta23/CCM consumers have F04-free instances here (*_of_pos, *_unconditional); the eight RHRC claim-contract wrappers still take hF04 as a parameter until the registry is rebound. Derivative transport only: no sign, no contact exclusion."
+    },
+    {
+      "id": "STEP103_STATIONARY_SECOND_VALUE",
+      "package": "M65/M66",
+      "steps": "103",
+      "status": "PROVED_PENDING_CI",
+      "detail": "GeneratedStrictEvenContact.secondPhysicalValue_eq_two_mul_responseCost / secondPhysicalValue_nonneg: at a stationary generated strict-even contact the complete second physical value (pole, archimedean and every prime up to e^{L*}) equals 2<A w, w> >= 0 for the stationary response w."
+    },
+    {
+      "id": "F04_CONDITIONAL_FRONTIER_UNCONDITIONAL",
+      "package": "M65/F07",
+      "steps": "19, 27, 74",
+      "status": "PROVED_PENDING_CI",
+      "detail": "production_stationary_saturation, production_stationary_remainder_pos, completed_production_frontier and inherited_completed_production_frontier of FirstCrossingGeneratedStrictEvenFrontier now hold with no F04 hypothesis (*_unconditional). The stationary production remainder is strictly positive at every stationary generated strict-even contact; excluding that saturation (OBS-060O) stays OPEN."
+    },
+    {
+      "id": "M66_PRIME_FREE_EULER_NEGATIVITY",
+      "package": "M66",
+      "steps": "102, 103",
+      "status": "PROVED_PENDING_CI",
+      "detail": "productionSecondDerivativePhysicalValue_eq_neg_primeFreeSecondTest (Q-F04: E''_z + (2/L) E'_z = -(2 pi)^2/L^4 Q_K(L, z) for 0 < L < log 2), productionContactEulerCurvature_le (<= -(M/L^2)(1 - 2 pi^2 L (2K+1) K^2), M = sum|z_i|^2) and productionContactEulerCurvature_neg (< 0 for nonzero z on 0 < L < eps_K = 1/(2 pi^2 (2K+1) K^2)). Even boundary-flat carrier only."
+    },
+    {
+      "id": "M66_LOCAL_STATIONARY_EXCLUSION",
+      "package": "M66",
+      "steps": "74, 104",
+      "status": "PROVED_PENDING_CI",
+      "detail": "GeneratedStrictEvenContact.firstVariation_ne_zero_of_lt_primeFreeRadius and fresh_of_lt_primeFreeRadius: a generated strict-even contact with L* < eps_K is not stationary, hence fresh-born. Possibly vacuous: numerically the even ground is positive on the whole prime-free window for K = 2..16, so no generated contact is known to lie below eps_K. Excludes nothing above eps_K and says nothing about odd-first, tied or interior branches."
+    },
+    {
+      "id": "M66_EULER_RADIUS_SIGNAL",
+      "package": "M66",
+      "steps": "104",
+      "status": "EXPERIMENTAL_SIGNAL",
+      "detail": "On the even boundary-flat carrier the Euler-corrected form E'' + (2/L)E' stays negative definite up to about L = 0.55 (K = 2), 0.42 (K = 3), 0.38 (K = 4), 0.36 (K = 5), 0.30 (K = 16), against eps_K = 2.5e-3 .. 2.3e-5. Floating point only."
+    },
+    {
+      "id": "M55_WEIGHTED_CHEBYSHEV_PARTIAL_SUMMATION",
+      "package": "M55",
+      "steps": "96",
+      "status": "PROVED_PENDING_CI",
+      "detail": "psi_sub_self_eq_weightedRemainder: for real x >= 1, psi(x) - x = 1 + sqrt(x) R(x) - (1/2) int_1^x R(t)/sqrt(t) dt with R(x) = sum_{n <= x} Lambda(n)/sqrt(n) - 2 sqrt(x) (Mathlib Abel summation, right-continuous floor convention). abs_psi_sub_self_sub_one_le: |R| <= M on [1, x] gives |psi(x) - x - 1| <= 2 M sqrt(x). Firewall: R = O_eps(x^eps) for every eps > 0 would be RH-strength; it is never assumed. Unconditional; no sign or size of R."
+    },
+    {
+      "id": "M38_FINITE_REMAINDER_EXTREMA",
+      "package": "M38",
+      "steps": "75",
+      "status": "PROVED_PENDING_CI",
+      "detail": "isGreatest_weightedRemainder: sup_{[1,X]} R = max_{1 <= m <= floor X} R(m), attained. isGLB_weightedRemainder: inf_{[1,X]} R = min_{1 <= m <= floor X} (W_m - 2 sqrt(min(m+1, X))), stated as a greatest lower bound because it can be a left limit before a jump. Finite arithmetic; the oscillation Omega(L) of (71.2) is now a finite computation. No bound on Omega(L) is claimed."
+    },
+    {
+      "id": "M31_GRONWALL_BARRIER",
+      "package": "M31",
+      "steps": "66",
+      "status": "PROVED_PENDING_CI",
+      "detail": "gronwall_lower_bound / gronwall_pos: y' >= -C y on (a, b) with C continuous gives y(t) >= y(a) exp(-int_a^t C). canonical_evenBottom_pos_of_gronwall (CONDITIONAL): odd bottom > 0 on [L0, L1], even bottom > 0 at L0, det A_L = det B_L y(L), and y' >= -C y imply the even bottom stays positive on [L0, L1]. The Gronwall inequality is a hypothesis; it is the OPEN M32 target. Not an exclusion theorem."
+    },
+    {
+      "id": "M32_CANONICAL_GRONWALL_COEFFICIENT",
+      "package": "M32",
+      "steps": "66, 67",
       "status": "OPEN",
-      "detail": "Global F04 across prime seams remains OPEN; no theorem in this PR assumes or supplies it."
+      "detail": "No independent continuous or integrable C_K with T_L' <= C_K(L)(1 - T_L) is known for the canonical operator. C_K may not be built from T'/(1 - T), det A_L, assumed absence of contacts, or RH."
     },
     {
       "id": "M76_ARITHMETIC_COMPOSITION",
@@ -142,7 +205,7 @@
       "package": "M77",
       "steps": "107, 114",
       "status": "IN_PROGRESS",
-      "detail": "Ledgers, workflow targets, axiom audit and proof-escape receipts for M70-M75, M26-M28 and the branch algebra in this PR; claim-registry binding of the new roots deferred until the #285 cleanup PR (which edits the registry) lands."
+      "detail": "Ledgers, workflow targets, axiom audit and proof-escape receipts for M70-M75, M26-M28, M65, M66 and the branch algebra in this PR; claim-registry binding of the new roots deferred until the #285 cleanup PR (which edits the registry) lands."
     },
     {
       "id": "RH",
@@ -175,11 +238,35 @@
     },
     {
       "post284_id": "F_M53_M65_F04_DERIVATIVES",
-      "effect": "unchanged (OPEN); see M65_PRIME_FREE_F04"
+      "effect": "proved here: prime-free (M65_PRIME_FREE_F04) and at every L > 0 (F04_GLOBAL_PRODUCTION_DERIVATIVE_AUTHORITY)"
     },
     {
       "post284_id": "F04_PRODUCTION_DERIVATIVE_AUTHORITY",
-      "effect": "unchanged (OPEN)"
+      "effect": "proof constructor productionContactF04DerivativeAuthority_of_pos proved here for every L > 0 and K"
+    },
+    {
+      "post284_id": "F_M33_M34_CONTACT_SOURCE_SIGN_AND_BUDGET",
+      "effect": "F04 at the contact boundary now available (F04_GLOBAL_PRODUCTION_DERIVATIVE_AUTHORITY); the sign and budget statements are not formalized here"
+    },
+    {
+      "post284_id": "F_M48_K2_PRIME_SAMPLES",
+      "effect": "F04 premise of the contact consequence P = -F <= 0 discharged; the consequence itself is not formalized here"
+    },
+    {
+      "post284_id": "F_M49_M51_NEAR_EDGE_AND_OLDER_PRIME",
+      "effect": "F04 dependency discharged; M45 dependency unchanged"
+    },
+    {
+      "post284_id": "F_M37_LOCAL_EXCLUSION",
+      "effect": "F04 premise discharged below log 2; unconditional stationary exclusion below eps_K proved here (M66_LOCAL_STATIONARY_EXCLUSION, possibly vacuous)"
+    },
+    {
+      "post284_id": "F_M66_NEG_EULER_AND_LOCAL_EXCLUSION",
+      "effect": "proved here (M66_PRIME_FREE_EULER_NEGATIVITY, M66_LOCAL_STATIONARY_EXCLUSION)"
+    },
+    {
+      "post284_id": "M09_WEIGHTED_REMAINDER_IDENTITY",
+      "effect": "F04-conditional contact-weighted balance unconditional at every L > 0 (canonicalSecondPairing_euler_eq_productionSaturationGap_of_pos); summation-by-parts identity unchanged"
     },
     {
       "post284_id": "F_M27_ALTERNATING_SLOPES",
@@ -187,7 +274,19 @@
     },
     {
       "post284_id": "F_M28_RESOLVENT_OVERLAP",
-      "effect": "exact overlap identity proved here (M28_CONTACT_OVERLAP_IDENTITY); positivity still OPEN (M28_OVERLAP_POSITIVITY)"
+      "effect": "exact overlap identity (M28_CONTACT_OVERLAP_IDENTITY) and positivity when A_L is positive semidefinite and B_L positive definite (M28_OVERLAP_POSITIVITY) proved here"
+    },
+    {
+      "post284_id": "F_M55_ABEL_SUMMATION",
+      "effect": "proved here (M55_WEIGHTED_CHEBYSHEV_PARTIAL_SUMMATION), with the transfer bound that makes the RH-strength firewall explicit"
+    },
+    {
+      "post284_id": "F_M38_REMAINDER_EXTREMA",
+      "effect": "proved here (M38_FINITE_REMAINDER_EXTREMA)"
+    },
+    {
+      "post284_id": "F_M31_ABSTRACT_GRONWALL",
+      "effect": "abstract Gronwall bound and the canonical even-bottom barrier proved here (M31_GRONWALL_BARRIER); the barrier is conditional on the OPEN inequality (M32_CANONICAL_GRONWALL_COEFFICIENT)"
     },
     {
       "post284_id": "M14_OTHER_BRANCHES",

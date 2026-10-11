@@ -60,6 +60,56 @@
       "disposition": "EXPERIMENTAL_SIGNAL",
       "summary": "actual canonical float matrices, K = 2..5, L = 0.25..6: rank-one relation B D - D A = g H holds to 2e-15 (consistent with the Lean theorem); on the 46 float-resolved (K, L) points B > 0, A > 0 and the secular margin 1 - T(L) > 0 (min 4.4e-4 at K = 3, L = 2.75), with det A / det B = 1 - T to 3e-9; the pole and prime channel contributions to T cancel to relative size up to 7e9; CanonicalShiftedSecular regressions on the same matrices: T(a) = 1 to 3e-9 and the shifted overlap identity to 5e-8 at all 46 resolved even roots below the odd floor, and the odd-first determinant identity det B / det A = 1 + H(A^-1 D^-1 g) to 5e-8 relative",
       "caveat": "50 grid points are below float64 resolution (lambda_min < 1e-10 x matrix scale) and are reported as unresolved, not as signs; no certified enclosure"
+    },
+    {
+      "id": "X285_F04_IDENTITY",
+      "script": "post285_f04_falsifier.py",
+      "package": "F04_PRIME_FREE_CELLS_SEAMS",
+      "disposition": "EXACT_THEOREM_REGRESSION_PASS",
+      "summary": "on the even boundary-flat carrier, K = 2..5, at L = 0.08..0.62 (prime-free), 0.9, 1.3, 1.5 (prime cells) and exactly at the seams log 3, log 4, log 5: the first identity to 5e-8 and the Euler identity to 1.2e-6 relative (5-point finite differences of the executable canonical matrix against Gauss-Legendre quadrature plus the exact prime sum)"
+    },
+    {
+      "id": "X285_F04_CONTROLS",
+      "script": "post285_f04_falsifier.py",
+      "package": "F04_CONVENTION_CONTROLS",
+      "disposition": "NEGATIVE_CONTROL_FAILS_AS_EXPECTED",
+      "summary": "a vector with nonzero coefficient sum misses the Euler identity by the predicted boundary term e'_z(0)(W(L) - rho(L))/L (2.0753 observed vs 2.0753 predicted); adding cCorrection twice misses the first identity by 2 cCorrectionIntegrand(L)|z|^2 (0.44946 vs 0.44946)"
+    },
+    {
+      "id": "X285_M66_BOUND",
+      "script": "post285_f04_falsifier.py",
+      "package": "M66_EULER_BOUND",
+      "disposition": "EXACT_THEOREM_REGRESSION_PASS",
+      "summary": "lambda_max of the Euler form below the Q-NEG-EULER bound at L = 0.25, 0.5, 0.9 eps_K for K = 2..5"
+    },
+    {
+      "id": "X285_M66_SIGNALS",
+      "script": "post285_f04_falsifier.py",
+      "package": "M66_RADIUS_AND_GROUND",
+      "disposition": "EXPERIMENTAL_SIGNAL",
+      "summary": "the Euler form is negative definite on the even carrier up to L = 0.553 (K = 2), 0.425 (3), 0.379 (4), 0.355 (5), and about 0.30 at K = 16; the even ground stays positive on the whole prime-free window for K = 2..16 (minimum 0.096 at K = 2 down to 0.003 at K = 16, always at the right end), so no even contact is seen below log 2",
+      "caveat": "floating point grids, no certified enclosure; the ground signal suggests M66 is vacuous for small K"
+    },
+    {
+      "id": "X285_M55_IDENTITY",
+      "script": "post285_m55_abel_falsifier.py",
+      "package": "M55_PARTIAL_SUMMATION",
+      "disposition": "EXACT_THEOREM_REGRESSION_PASS",
+      "summary": "(96.1) at 79997 points x in [1, 20000] (all integers plus three interior points per cell) to 4e-11 relative, with the integral of the step function evaluated exactly cell by cell; psi(1) - 1 = -1 and R(1) = -2; the transfer bound holds with worst ratio 0.5; left limits on both sides also satisfy the identity"
+    },
+    {
+      "id": "X285_M55_CONTROL",
+      "script": "post285_m55_abel_falsifier.py",
+      "package": "M55_CONVENTION_CONTROL",
+      "disposition": "NEGATIVE_CONTROL_FAILS_AS_EXPECTED",
+      "summary": "mixing conventions (psi(n-) against R(n)) misses by exactly Lambda(n) at integers"
+    },
+    {
+      "id": "X285_M38_EXTREMA",
+      "script": "post285_m55_abel_falsifier.py",
+      "package": "M38_REMAINDER_EXTREMA",
+      "disposition": "EXACT_THEOREM_REGRESSION_PASS",
+      "summary": "finite sup and inf formulas agree with dense sampling for X just below, at and just after 2, 3, 4, 5, 8, 9, 16, 25, 27, 32, 49, 97, 128, 500; control: dropping the cut min(m+1, X) undershoots the infimum at non-integer X"
     }
   ]
 }
