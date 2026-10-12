@@ -208,14 +208,22 @@ def taylor_lower(center: list[arb], fourth_interval: arb, radius: arb) -> arb:
     return (lb - abs(fourth_interval).upper()*radius**ORDER).lower()
 
 
-def check_box(c:arb, r:arb, cutoff:int, parity:str) -> dict:
+def check_box(c:arb, r:arb, cutoff:int, parity:str,
+              allow_frozen_extension:bool=False) -> dict:
     start = time.monotonic()
-    if not C.fixed_cell_membership(cutoff, c)["certified"]:
-        raise ValueError("centre not inside requested physical cutoff cell")
     interval = arb(c, r)
-    # Check frozen cutoff at *both* interval endpoints (no hidden seam change).
-    if not C.fixed_cell_membership(cutoff, interval)["certified"]:
-        raise ValueError("interval crosses cutoff boundary: must split at seam")
+    if not bool(interval > 0):
+        raise ValueError("aperture interval touches nonpositive L")
+    # The Q-frozen complete Eq(4.4) expression is analytic slightly across
+    # each prime seam. Full-cover rational bounds intentionally enclose the
+    # logarithmic seam from both sides; positivity of this analytic extension
+    # implies positivity only on its INTERSECTION with the physical Q-cell.
+    # At the frozen Q14 primary gate the physical membership is still strict.
+    if not allow_frozen_extension:
+        if not C.fixed_cell_membership(cutoff, c)["certified"]:
+            raise ValueError("centre not inside requested physical cutoff cell")
+        if not C.fixed_cell_membership(cutoff, interval)["certified"]:
+            raise ValueError("interval crosses physical cutoff cell")
     cj=compressed_jets(full_matrix_jets(c,cutoff),parity)
     ij=compressed_jets(full_matrix_jets(interval,cutoff),parity)
     ac,dc=coeffs_of_a_and_delta(cj)
