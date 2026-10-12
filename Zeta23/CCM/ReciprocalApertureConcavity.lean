@@ -302,11 +302,8 @@ theorem evenRayleighBottom_ge_endpoint_min_of_nativeEuler
       intro x hx
       exact (hC.differentiableOn (by norm_num)).differentiableAt
         (isOpen_Ioi.mem_nhds hx)
-    have hC1 : ContDiffOn ℝ 1 (deriv f) (Set.Ioi (0 : ℝ)) := by
-      have h := hC
-      rw [show (2 : ℕ∞ω) = 1 + 1 by norm_num,
-        contDiffOn_succ_iff_deriv_of_isOpen isOpen_Ioi] at h
-      exact h.2.2
+    have hC1 : ContDiffOn ℝ 1 (deriv f) (Set.Ioi (0 : ℝ)) :=
+      hC.deriv_of_isOpen isOpen_Ioi (by norm_num)
     have hdiff2 : ∀ x : ℝ, 0 < x →
         DifferentiableAt ℝ (deriv f) x := by
       intro x hx
