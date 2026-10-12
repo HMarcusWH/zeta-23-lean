@@ -24,6 +24,7 @@ PY = [
     "wp4_k2_odd_prerequisite.py",
     "wp4_k3_frozen_q14_gate.py",
     "wp4_k3_fourth_order_fallback.py",
+    "wp4_determinant_jet_exact_control.py",
     "wp4_fourth_order_validate.py",
     "wp4_k3_full_continuum.py",
     "wp4_k3_verify_full_transcript.py",
