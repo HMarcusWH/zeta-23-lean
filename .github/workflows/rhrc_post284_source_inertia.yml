@@ -264,6 +264,10 @@ jobs:
           python research/RHRC/routes/R003_ccm_bridge/post287/wp4_k3_frozen_q14_gate.py \
             --output /tmp/POST287_WP4_FROZEN_Q14_GATE.json \
             --precision-bits 384 --max-depth 40 --max-nodes 500 --time-seconds 600
+      - name: WP6 fixed K2 same-source shifted-ray signed-Q falsification (bounded report only)
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/post287/wp6_k2_signed_ray_probe.py \
+            --output /tmp/POST287_WP6_SIGNED_RAY_PROBE.json --precision-bits 256
       - name: WP5 exact-model altered-prime Arb crossing certificate (non-zeta negative control)
         run: |
           python research/RHRC/routes/R003_ccm_bridge/post287/wp5_modified_prime_crossing_certificate.py \
@@ -298,3 +302,4 @@ jobs:
             /tmp/POST287_WP5_MODIFIED_PRIME_CROSSING.json
             /tmp/POST287_WP2_M51_TRANSCRIPT/
             /tmp/POST287_WP4_FROZEN_Q14_GATE.json
+            /tmp/POST287_WP6_SIGNED_RAY_PROBE.json
