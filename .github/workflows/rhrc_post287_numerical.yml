@@ -68,6 +68,8 @@ jobs:
   wp4-k3-frozen-feasibility:
     runs-on: ubuntu-latest
     timeout-minutes: 360
+    outputs:
+      disposition: ${{ steps.result.outputs.disposition }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -79,6 +81,7 @@ jobs:
         run: |
           python research/RHRC/routes/R003_ccm_bridge/post287/wp4_k3_frozen_q14_gate.py --precision-bits 384 --max-depth 40 --max-boxes 0 --max-nodes 1000 --time-seconds 1200 --output /tmp/wp4-k3-feasibility.json
       - name: Report K3 gate disposition (UNRESOLVED is not positivity)
+        id: result
         if: always()
         shell: bash
         run: |
@@ -90,6 +93,8 @@ jobs:
           print(message)
           with open(os.environ['GITHUB_STEP_SUMMARY'],'a') as f:
               f.write(message+'\n')
+          with open(os.environ['GITHUB_OUTPUT'],'a') as f:
+              f.write('disposition='+d['gate']+'\n')
           PY
           fi
       - uses: actions/upload-artifact@v4
@@ -100,7 +105,7 @@ jobs:
 
   wp4-k3-fourth-order-alternative:
     needs: wp4-k3-frozen-feasibility
-    if: always()
+    if: needs.wp4-k3-frozen-feasibility.outputs.disposition == 'UNRESOLVED'
     runs-on: ubuntu-latest
     timeout-minutes: 360
     steps:
