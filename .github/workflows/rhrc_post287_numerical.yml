@@ -22,6 +22,10 @@ jobs:
           python-version: '3.13'
       - name: Install pinned python-flint and research dependencies
         run: python -m pip install -r research/RHRC/routes/R003_ccm_bridge/requirements.txt
+      - name: WP2 / WP4 validate canonical Eq4.4 normalization and exact parity carriers
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/post287/wp2_wp4_normalization_gate.py \
+            --output /tmp/wp2-wp4-normalization.json --precision-bits 256
       - name: Produce every rational M51 interval and its exact Arb lower enclosure
         run: |
           python research/RHRC/routes/R003_ccm_bridge/post287/wp2_k2_even_transcript.py --output-dir /tmp/wp2-k2 --cells 1-15 --precision-bits 128
@@ -32,7 +36,9 @@ jobs:
         if: always()
         with:
           name: post287-wp2-k2-complete-transcript
-          path: /tmp/wp2-k2
+          path: |
+            /tmp/wp2-k2
+            /tmp/wp2-wp4-normalization.json
 
   wp4-k3-frozen-feasibility:
     runs-on: ubuntu-latest
@@ -66,3 +72,46 @@ jobs:
         with:
           name: post287-wp4-k3-gate
           path: /tmp/wp4-k3-feasibility.json
+
+  wp4-k3-fourth-order-alternative:
+    needs: wp4-k3-frozen-feasibility
+    if: always()
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Install pinned Arb and symbolic backends
+        run: python -m pip install -r research/RHRC/routes/R003_ccm_bridge/requirements.txt
+      - name: Verify the order-four fixed-unit evaluator against independently established jets 0-2
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/post287/wp4_fourth_order_validate.py \
+            --output /tmp/wp4-fourth-order-low-jets.json --precision-bits 192
+      - name: Execute the one predeclared fourth-order Q14 alternative on all frozen boxes
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/post287/wp4_k3_fourth_order_fallback.py \
+            --output /tmp/wp4-fourth-order-frozen-boxes.json --precision-bits 384 \
+            --max-boxes 0 --seconds 15000
+      - name: Summarize exact interval outcome without upgrading an unresolved gate
+        if: always()
+        shell: bash
+        run: |
+          if test -f /tmp/wp4-fourth-order-frozen-boxes.json; then
+            python - <<'PY'
+          import json,os
+          d=json.load(open('/tmp/wp4-fourth-order-frozen-boxes.json'))
+          x=f"WP4 order-four fallback: {d['gate']} for {d['tested_boxes']}/{d['frozen_boxes']} frozen K3 boxes; all-aperture positivity NOT established; RH_OPEN."
+          print(x)
+          with open(os.environ['GITHUB_STEP_SUMMARY'],'a') as f:
+              f.write(x+'\n')
+          PY
+          fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: post287-wp4-k3-fourth-order-frozen
+          path: |
+            /tmp/wp4-fourth-order-low-jets.json
+            /tmp/wp4-fourth-order-frozen-boxes.json
