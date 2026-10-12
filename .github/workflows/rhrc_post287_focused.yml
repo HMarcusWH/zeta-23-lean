@@ -24,6 +24,10 @@ jobs:
           test: false
           lint: false
           use-mathlib-cache: true
+      - name: Parse all WP0-WP7 source scripts and verify the exact integration contract
+        run: |
+          python research/RHRC/integration/post287/check_implementation_completeness.py
+          python research/RHRC/integration/post287/check_post287_ledgers.py
       - name: Compile ALL new source theorem roots (collect every failure)
         shell: bash
         run: |
