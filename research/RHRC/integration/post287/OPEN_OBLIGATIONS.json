@@ -19,45 +19,52 @@
       "id": "WP1",
       "status": "PARTIAL_PENDING_CI",
       "path": "Zeta23/CCM/ReciprocalApertureConcavity.lean",
-      "open_detail": "Reciprocal chain/concavity and generic concave-family endpoint lemma pushed; actual canonical even Rayleigh-bottom interpolation and exact-head compiler validation remain OPEN"
+      "open_detail": "Generic reciprocal calculus, strict concavity and the genuine canonical even Rayleigh-infimum endpoint inequality implemented; formal derivation of normalized carrier concavity from M66/F04 across the exact positive-aperture domain and exact-head compiler audit remain OPEN"
     },
     {
       "id": "WP2",
       "status": "INTERVAL_EVIDENCE_PENDING_REPLAY",
       "generator": "research/RHRC/routes/R003_ccm_bridge/post287/wp2_k2_even_transcript.py",
       "checker": "research/RHRC/routes/R003_ccm_bridge/post287/wp2_verify_transcript.py",
-      "open_detail": "Conditional Lean gluing candidate pushed; full M51 transcript and checker are unrun; no machine-checked Lean-Python equivalence"
+      "open_detail": "Conditional K2 even gluing and reciprocal-concavity interface present; actual M51 positive full continuum remains a separate Arb research premise; exact normalization gate, per-interval transcript and no-search checker implemented but final-head replay/validation pending"
     },
     {
       "id": "WP3",
       "status": "PROVED_PENDING_CI",
       "path": "Zeta23/CCM/GlobalBottomStrictEvenShiftedRay.lean",
-      "open_detail": "Exact-head Lean not yet returned; trial and ray distinct from zero contact"
+      "open_detail": "Nine typed true-ground shifted-ray theorems pushed on actual negative #247 eigenvalue, explicit H-normalization and prime/budget energy, conditional exact-head Lean/axiom validation pending"
     },
     {
       "id": "WP4",
-      "status": "GATE_PENDING_CI",
+      "status": "GATE_UNRESOLVED",
       "path": "research/RHRC/routes/R003_ccm_bridge/post287/wp4_k3_frozen_q14_gate.py",
       "required": "both K3 parity bottoms strictly >0 at every L in [1/512,log16]",
       "alternate": "only predeclared fourth-order Taylor centre expansion",
-      "open_detail": "Frozen Q14 feasibility script pushed but not yet run; full two-parity continuous K3 certificate and fourth-order fallback unimplemented"
+      "open_detail": "Historical second-order frozen Q14 gate: 10/12 PASS, 2 even determinant boxes UNRESOLVED. One predeclared order-four fixed-unit Arb fallback, jet controls, K2 odd prerequisite, continuous K3 both-parity sharded producer, independent checker and hashchecked assembler now implemented but NOT run/certified on this head. Full D2 positivity still OPEN; on fourth-order gate failure stop and record exact intervals.",
+      "fallback": "research/RHRC/routes/R003_ccm_bridge/post287/wp4_k3_fourth_order_fallback.py",
+      "jet_validator": "research/RHRC/routes/R003_ccm_bridge/post287/wp4_fourth_order_validate.py",
+      "k2_odd": "research/RHRC/routes/R003_ccm_bridge/post287/wp4_k2_odd_prerequisite.py",
+      "full_cover": "research/RHRC/routes/R003_ccm_bridge/post287/wp4_k3_full_continuum.py",
+      "cover_checker": "research/RHRC/routes/R003_ccm_bridge/post287/wp4_k3_verify_full_transcript.py",
+      "assembler": "research/RHRC/routes/R003_ccm_bridge/post287/wp4_k3_assemble_shards.py",
+      "lean_record": "Zeta23/CCM/K3BottomWindowRecord.lean"
     },
     {
       "id": "WP5",
       "status": "INTERVAL_EVIDENCE_PENDING_REPLAY",
       "path": "research/RHRC/routes/R003_ccm_bridge/post287/wp5_modified_prime_crossing_certificate.py",
-      "open_detail": "Altered weights not actual zeta; endpoint odd positivity only"
+      "open_detail": "Modified non-zeta K2 crossing at L=1.295/1.296 already Arb-certified on prior exact research head; local implementation retains true pole/arch/prime and prime-power consistency. Exact current branch replay and independent normalization receipt pending, NOT a genuine zeta counterexample."
     },
     {
       "id": "WP6",
       "status": "EXPERIMENTAL_SIGNAL_PENDING_REPLAY",
       "path": "research/RHRC/routes/R003_ccm_bridge/post287/wp6_k2_signed_ray_probe.py",
-      "open_detail": "Restricted to one bounded K2 shifted ray family, not selected #247 negative ground"
+      "open_detail": "The bounded K2 source-specific negative-shift ray shows opposite Arb Euler source signs on prior head; it falsifies generic selected-ray global sign, not actual #247 negative ground. Current-branch rerun/controls and final disposition pending."
     },
     {
       "id": "WP7",
       "status": "PENDING_CI",
-      "open_detail": "Per-job harvest, code review, final graph and exact-head build remain required"
+      "open_detail": "All work-package scripts, specialized workflows and conditional theorem roots now pushed. Exact-head Lean, no-project-axiom and placeholders, actual Arb certificate outputs, RHKG materialization and every-workflow post-green harvest not yet accepted."
     }
   ],
   "protected_open": [
@@ -81,5 +88,20 @@
     "falsifier replay -> proof",
     "missing K3 gate -> positive"
   ],
-  "merge_policy": "USER_APPROVAL_REQUIRED; DRAFT_UNTIL_ALL_ACCEPTANCE_GATES"
+  "merge_policy": "USER_APPROVAL_REQUIRED; DRAFT_UNTIL_ALL_ACCEPTANCE_GATES",
+  "implementation_source_files": [
+    "Zeta23/CCM/ReciprocalApertureConcavity.lean",
+    "Zeta23/CCM/K2EvenBottomGluing.lean",
+    "Zeta23/CCM/GlobalBottomStrictEvenShiftedRay.lean",
+    "Zeta23/CCM/K3BottomWindowRecord.lean",
+    "research/RHRC/routes/R003_ccm_bridge/post287/wp2_wp4_normalization_gate.py",
+    "research/RHRC/routes/R003_ccm_bridge/post287/wp4_k2_odd_prerequisite.py",
+    "research/RHRC/routes/R003_ccm_bridge/post287/wp4_k3_fourth_order_fallback.py",
+    "research/RHRC/routes/R003_ccm_bridge/post287/wp4_fourth_order_validate.py",
+    "research/RHRC/routes/R003_ccm_bridge/post287/wp4_k3_full_continuum.py",
+    "research/RHRC/routes/R003_ccm_bridge/post287/wp4_k3_verify_full_transcript.py",
+    "research/RHRC/routes/R003_ccm_bridge/post287/wp4_k3_assemble_shards.py",
+    ".github/workflows/rhrc_post287_wp4_full_continuum.yml"
+  ],
+  "new_source_status": "IMPLEMENTED_PENDING_EXACT_HEAD_VALIDATION; WP4_FULL_CERTIFICATE_OPEN"
 }
