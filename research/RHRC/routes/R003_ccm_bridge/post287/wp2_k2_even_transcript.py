@@ -48,8 +48,25 @@ def accepted_bound(c:Fraction,r:Fraction,Q:int) -> dict:
     }
 
 
-def cover_cell(Q:int,max_depth:int) -> dict:
+# M51's historical LOG16_UP=2772588722239781/10^15 is actually
+# *below* exact log(16).  Do not inherit its comment as a rigorous upper
+# bound. This enhanced WP2 cover goes slightly beyond the true endpoint.
+LOG16_CERTIFIED_UPPER=Fraction(2772588722239782,10**15)
+
+
+def verified_cell_bounds(Q:int)->tuple[Fraction,Fraction]:
     a,b=cell_bounds(Q)
+    if Q==15:
+        endpoint=arb(16).log()
+        target=ball(LOG16_CERTIFIED_UPPER)
+        if not bool(target>endpoint):
+            raise ArithmeticError("rational upper must rigorously exceed log16")
+        b=max(b,LOG16_CERTIFIED_UPPER)
+    return a,b
+
+
+def cover_cell(Q:int,max_depth:int) -> dict:
+    a,b=verified_cell_bounds(Q)
     stack=[(a,b,0)]
     yes,no=[],[]
     while stack:
@@ -98,7 +115,7 @@ def main() -> int:
               'terminal_claim':'RH_OPEN',
               'status':'INTERVAL_EVIDENCE' if complete else 'UNRESOLVED',
               'prec_bits':args.precision_bits,
-              'domain':'[1/400, log16]' if complete else 'named cells only',
+              'domain':'[1/400, log16] rigorously (final rational above log16)' if complete else 'named cells only',
               'backend':'full production fixed-Q matrix and 2nd derivative',
               'arch_correction':'once',
               'prime_weights':'Lambda(p**j)=log(p)',
