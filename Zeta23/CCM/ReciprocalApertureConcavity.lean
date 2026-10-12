@@ -104,9 +104,38 @@ theorem reciprocalAperture_strictConcaveOn
   rw [reciprocalAperture_euler_chain f hf hf2 s hspos]
   exact mul_neg_of_pos_of_neg (pow_pos hpos 4) (hCurv s⁻¹ hpos hless)
 
+/-- A scalar concave energy is bounded below between two apertures by
+the minimum of its endpoint values. This is the lemma used when passing
+fixed-vector reciprocal concavity to an infimum of Rayleigh quotients. -/
+theorem concave_on_Icc_ge_min_endpoints
+    (f : ℝ → ℝ) {a b x : ℝ} (hab : a ≤ b)
+    (hx : x ∈ Set.Icc a b)
+    (hconc : ConcaveOn ℝ (Set.Icc a b) f) :
+    min (f a) (f b) ≤ f x := by
+  have hseg : x ∈ segment ℝ a b := by
+    rw [segment_eq_uIcc, uIcc_of_le hab]
+    exact hx
+  exact hconc.ge_on_segment
+    (by simp [hab]) (by simp [hab]) hseg
+
+/-- Uniform endpoint bounds are preserved by a family of concave scalar
+energies on a common interval. This avoids any assumption of positivity
+of a matrix, and leaves a later Rayleigh-infimum application well typed. -/
+theorem concave_family_ge_of_endpoint_ge
+    {I : Type*} (f : I → ℝ → ℝ) {a b x m : ℝ}
+    (hab : a ≤ b) (hx : x ∈ Set.Icc a b)
+    (hconc : ∀ i, ConcaveOn ℝ (Set.Icc a b) (f i))
+    (ha : ∀ i, m ≤ f i a) (hb : ∀ i, m ≤ f i b) :
+    ∀ i, m ≤ f i x := by
+  intro i
+  exact le_trans (le_min (ha i) (hb i))
+    (concave_on_Icc_ge_min_endpoints (f i) hab hx (hconc i))
+
 end Zeta23.CCM
 
 #print axioms Zeta23.CCM.reciprocalAperture_first_derivative
 #print axioms Zeta23.CCM.reciprocalAperture_second_derivative
 #print axioms Zeta23.CCM.reciprocalAperture_euler_chain
 #print axioms Zeta23.CCM.reciprocalAperture_strictConcaveOn
+#print axioms Zeta23.CCM.concave_on_Icc_ge_min_endpoints
+#print axioms Zeta23.CCM.concave_family_ge_of_endpoint_ge
