@@ -94,8 +94,30 @@ theorem k2EvenBottom_positive_of_reciprocal_concavity_and_M51
   exact k2EvenBottom_positive_of_interpolation_and_M51
     hgap hM51endpoint hM51 hL hUpper
 
+/-- WP4's independent K2 odd predecessor layer. The full finite-window
+positivity hypothesis remains explicit: the only unconditional part
+is the already proved #275 small-aperture coercivity on both parities.
+
+This is a conditional Lean transfer, not a proof of the Arb certificate. -/
+theorem k2OddBottom_positive_of_finite_window
+    (hOdd : ∀ L ∈ Set.Icc ((1 : ℝ) / 512) (Real.log 16),
+        0 < parityRayleighBottom .odd L 2)
+    {L : ℝ} (hL : 0 < L) (hUpper : L ≤ Real.log 16) :
+    0 < parityRayleighBottom .odd L 2 := by
+  by_cases hsmall : L ≤ (1 : ℝ) / 512
+  · have hb : 1 ≤ parityRayleighBottom .odd L 2 := by
+      simpa using
+        (one_le_parityRayleighBottom_succ_of_smallAperture
+          .odd hL hsmall 1 (by omega))
+    linarith
+  · have hgt : (1 : ℝ) / 512 ≤ L :=
+      (lt_of_not_ge hsmall).le
+    exact hOdd L ⟨hgt,hUpper⟩
+
 end Zeta23.CCM
 
 #print axioms Zeta23.CCM.k2EvenBottom_positive_of_interpolation_and_M51
 
 #print axioms Zeta23.CCM.k2EvenBottom_positive_of_reciprocal_concavity_and_M51
+
+#print axioms Zeta23.CCM.k2OddBottom_positive_of_finite_window
