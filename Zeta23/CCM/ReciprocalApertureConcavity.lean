@@ -356,7 +356,7 @@ theorem canonical_evenFixedEnergy_contDiffOn_two (K : ℕ)
   have hscalar := hRe.contDiffAt.comp L hpair
   simpa only [productionContactFixedEnergy,
     canonicalParityCompressedFamilyCLM, parityCompressedCanonicalCLM,
-    Complex.reCLM_apply] using hscalar
+    Complex.reCLM_apply] using hscalar.contDiffWithinAt
 
 /-- The M66 native Euler curvature inequality and the globally C²
 compressed production family now supply **unconditional** endpoint
