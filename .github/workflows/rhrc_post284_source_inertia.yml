@@ -259,6 +259,11 @@ jobs:
         run: |
           python research/RHRC/routes/R003_ccm_bridge/post285/post285_m76_arb_resolution.py \
             --output /tmp/POST285_M76_ARB_RESOLUTION.json > /dev/null
+      - name: WP4 D2 Full K3 frozen Q14 384-bit both-parity feasibility gate (UNRESOLVED allowed)
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/post287/wp4_k3_frozen_q14_gate.py \
+            --output /tmp/POST287_WP4_FROZEN_Q14_GATE.json \
+            --precision-bits 384 --max-depth 40 --max-nodes 500 --time-seconds 600
       - name: WP5 exact-model altered-prime Arb crossing certificate (non-zeta negative control)
         run: |
           python research/RHRC/routes/R003_ccm_bridge/post287/wp5_modified_prime_crossing_certificate.py \
@@ -292,3 +297,4 @@ jobs:
             /tmp/POST285_M76_ARB_RESOLUTION.json
             /tmp/POST287_WP5_MODIFIED_PRIME_CROSSING.json
             /tmp/POST287_WP2_M51_TRANSCRIPT/
+            /tmp/POST287_WP4_FROZEN_Q14_GATE.json
