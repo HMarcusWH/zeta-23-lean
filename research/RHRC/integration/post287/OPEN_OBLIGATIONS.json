@@ -36,18 +36,22 @@
     },
     {
       "id": "WP4",
-      "status": "GATE_UNRESOLVED",
+      "status": "GATE_PENDING_CI",
       "path": "research/RHRC/routes/R003_ccm_bridge/post287/wp4_k3_frozen_q14_gate.py",
       "required": "both K3 parity bottoms strictly >0 at every L in [1/512,log16]",
       "alternate": "only predeclared fourth-order Taylor centre expansion",
-      "open_detail": "Historical second-order frozen Q14 gate: 10/12 PASS, 2 even determinant boxes UNRESOLVED. One predeclared order-four fixed-unit Arb fallback, jet controls, K2 odd prerequisite, continuous K3 both-parity sharded producer, independent checker and hashchecked assembler now implemented but NOT run/certified on this head. Full D2 positivity still OPEN; on fourth-order gate failure stop and record exact intervals.",
+      "open_detail": "Prior frozen Q14 10/12 and 18/18 PASS outputs are NOT valid rigorous determinant certificates: the old algorithm evaluated factors of Delta'' at the centre instead of across the whole interval. This was corrected in the frozen Q14 and full K3 source and guarded by static checks; exact-head rerun is required. Fourth-order fallback is only enabled on a NEW correctly computed UNRESOLVED gate. Both-parity full continuous K3 positivity remains OPEN.",
       "fallback": "research/RHRC/routes/R003_ccm_bridge/post287/wp4_k3_fourth_order_fallback.py",
       "jet_validator": "research/RHRC/routes/R003_ccm_bridge/post287/wp4_fourth_order_validate.py",
       "k2_odd": "research/RHRC/routes/R003_ccm_bridge/post287/wp4_k2_odd_prerequisite.py",
       "full_cover": "research/RHRC/routes/R003_ccm_bridge/post287/wp4_k3_full_continuum.py",
       "cover_checker": "research/RHRC/routes/R003_ccm_bridge/post287/wp4_k3_verify_full_transcript.py",
       "assembler": "research/RHRC/routes/R003_ccm_bridge/post287/wp4_k3_assemble_shards.py",
-      "lean_record": "Zeta23/CCM/K3BottomWindowRecord.lean"
+      "lean_record": "Zeta23/CCM/K3BottomWindowRecord.lean",
+      "historical_disqualified": [
+        "#289 Q14 10/12 output (centre-only Delta'' enclosure)",
+        "#290 head 518c4fd 18/18 output, run 38311427064 artifact 11774767416 (same flaw)"
+      ]
     },
     {
       "id": "WP5",
@@ -103,5 +107,5 @@
     "research/RHRC/routes/R003_ccm_bridge/post287/wp4_k3_assemble_shards.py",
     ".github/workflows/rhrc_post287_wp4_full_continuum.yml"
   ],
-  "new_source_status": "IMPLEMENTED_PENDING_EXACT_HEAD_VALIDATION; WP4_FULL_CERTIFICATE_OPEN"
+  "new_source_status": "IMPLEMENTED_PENDING_EXACT_HEAD_VALIDATION; CORRECTED_WP4_FROZEN_Q14_GATE_PENDING_RECHECK; WP4_FULL_CERTIFICATE_OPEN"
 }
