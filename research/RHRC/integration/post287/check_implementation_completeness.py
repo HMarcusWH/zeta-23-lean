@@ -53,6 +53,17 @@ def check() -> dict:
     assert [p["id"] for p in ledger["packages"]] == [
         f"WP{i}" for i in range(8)
     ]
+    crosswalk = (ROOT / "research/RHRC/integration/post287/"
+                 "WP2_WP4_NORMALIZATION_CROSSWALK.md").read_text()
+    for required in ("canonicalSourceMatrix", "sourceEq44GammaL",
+                     "wCorrection", "Lambda", "nonunitary",
+                     "interval", "prime"):
+        if required == "Lambda":
+            assert "von_mangoldt" in crosswalk
+        elif required == "nonunitary":
+            assert "nonunitary" in crosswalk
+        else:
+            assert required in crosswalk, ("missing normalization crosswalk", required)
     parsed = []
     for name in PY:
         file = BASE / name
