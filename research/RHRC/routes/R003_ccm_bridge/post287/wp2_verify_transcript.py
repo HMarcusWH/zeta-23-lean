@@ -19,7 +19,7 @@ from flint import ctx
 HERE=Path(__file__).resolve().parent
 sys.path[:0]=[str(HERE),str(HERE.parent),str(HERE.parent/'post285')]
 import canonical_source_arb as C
-from wp2_k2_even_transcript import accepted_bound,cell_bounds
+from wp2_k2_even_transcript import accepted_bound,verified_cell_bounds
 
 
 def rational(t:list[int])->Fraction:
@@ -49,7 +49,7 @@ def main():
             raise AssertionError(('unresolved',Q,len(cell['unresolved'])))
         if len(cell['intervals'])!=info['accepted_count']:
             raise AssertionError(('count mismatch',Q))
-        a,b=cell_bounds(Q)
+        a,b=verified_cell_bounds(Q)
         current=a
         for row in cell['intervals']:
             left,right=rational(row['left']),rational(row['right'])
