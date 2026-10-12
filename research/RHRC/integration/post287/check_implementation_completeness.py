@@ -85,10 +85,17 @@ def check() -> dict:
 
     fallback = (BASE / "wp4_k3_fourth_order_fallback.py").read_text()
     continuum = (BASE / "wp4_k3_full_continuum.py").read_text()
+    frozen = (BASE / "wp4_k3_frozen_q14_gate.py").read_text()
     assert "ORDER = 4" in fallback
     assert "third" in fallback.lower() and "fourth" in fallback.lower()
     assert "Mi,Mpi,Mppi=M012" in continuum, (
         "second-order determinant bound must use full interval 0th, 1st and 2nd jets"
+    )
+    assert "Mi,Mpi,Mppi=jets(box,3,Q)" in frozen, (
+        "frozen Q14 determinant curvature must enclose complete interval jets"
+    )
+    assert "dda*di+2*dai*ddi+ai*ddd" in frozen, (
+        "frozen Q14 second derivative must use interval values, not centre values"
     )
     assert "d2a*di+2*dai*ddi+ai*d2d" in continuum, (
         "second-order determinant enclosure must use interval matrices"
