@@ -122,7 +122,14 @@ def check() -> dict:
     assert "d2a*di+2*dai*ddi+ai*d2d" in continuum, (
         "second-order determinant enclosure must use interval matrices"
     )
-    assert "if not result[\"accepted\"]" in continuum and 'method,"FOURTH"' not in continuum
+    # rev4: a passed frozen second-order gate does not license per-tile method switching.
+    assert "if not result[\"accepted\"]" not in continuum
+    assert 'result=evaluate((l,r),parity,cell,method)' in continuum
+    assert 'if args.method=="FOURTH":' in continuum
+    assert '"--fourth-gate"' in continuum
+    assert '--method SECOND' in workflow
+    assert 'checker_receipt.json' in workflow
+    assert '--output /tmp/wp4-k3-global/global_checker_receipt.json' in workflow
     assert "all_aperture_K3_positivity" in fallback
     assert "UNRESOLVED" in continuum
     glue = (ROOT / "Zeta23/CCM/K2EvenBottomGluing.lean").read_text()
