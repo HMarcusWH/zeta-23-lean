@@ -583,11 +583,10 @@ def main() -> int:
         "R001_PRIME_UPPER",
         "R002_WINDOWED_VISIBILITY",
         "R003_COFINAL_CANONICAL_ARITHMETIC_CERTIFICATES",
-        # F04-conditional post-282 candidate claims stay OPEN; the two
-        # premise-free candidates were promoted after merged-green PR #284.
+        # The two premise-free post-282 candidates were promoted after
+        # merged-green PR #284 and the two F04-conditional ones after
+        # merged-green PR #287 (rebound to their F04-free theorems).
         # Kept in lockstep with registered_theorem_binding_lint.EXPECTED_OPEN.
-        "R003_WEIGHTED_PRODUCTION_PAIR_BALANCE",
-        "R003_COMPLETED_STRICT_EVEN_CONTACT_FRONTIER",
     }
     if open_claim_ids != expected_open_claim_ids:
         errors.append(

@@ -363,19 +363,20 @@
     {
       "id": "R003_PRIME_FREE_SECOND_TEST_RADIUS",
       "theorem": "Zeta23.CCM.primeFreeSecondTest_pos"
-    }
-  ],
-  "candidate_rule": "OPEN claims with candidate_binding=true are compiler-audited here but are not promoted theorem authority until exact-head validation changes their registry status.",
-  "candidate_bindings": [
+    },
     {
       "id": "R003_WEIGHTED_PRODUCTION_PAIR_BALANCE",
-      "theorem": "Zeta23.CCM.canonicalSecondPairing_euler_eq_productionSaturationGap",
-      "status": "OPEN_PENDING_CI"
+      "theorem": "Zeta23.CCM.canonicalSecondPairing_euler_eq_productionSaturationGap_of_pos"
     },
     {
       "id": "R003_COMPLETED_STRICT_EVEN_CONTACT_FRONTIER",
-      "theorem": "Zeta23.CCM.GeneratedStrictEvenContact.completed_production_frontier",
-      "status": "OPEN_PENDING_CI"
+      "theorem": "Zeta23.CCM.GeneratedStrictEvenContact.completed_production_frontier_unconditional"
+    },
+    {
+      "id": "R003_PRODUCTION_F04_DERIVATIVE_AUTHORITY",
+      "theorem": "Zeta23.CCM.productionContactF04DerivativeAuthority_of_pos"
     }
-  ]
+  ],
+  "candidate_rule": "OPEN claims with candidate_binding=true are compiler-audited here but are not promoted theorem authority until exact-head validation changes their registry status.",
+  "candidate_bindings": []
 }

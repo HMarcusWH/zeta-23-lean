@@ -43,32 +43,33 @@ The contact route uses the repository's existing IntrinsicPredecessorRegular reg
 ## Current RHRC state
 
 THEOREM AUTHORITY
-- merged theorem authority = PR #285
-- validated final head = d20653c50e85ed927940ffe7723cf07a1008be7d
-- merge commit = 18a63cc5a3bb857cd603b073790427184e75d7f6
-- tree = f95a9d07d987199d85763990b7760deb7619d601
+- merged theorem authority = PR #287
+- validated final head = 40495f39b7510b49a7fe3493b42d9fe3880d6d22
+- merge commit = ecc6450f28eb6aed944bda8fe9a09296d033fc3e
+- tree = a105ffd52c96cd0c39712dcdba45e967282efc9d
 - status = MERGED_GREEN_THEOREM_STATE
 - PR #275 full-space small-aperture coercive base = PROVED
 - PR #276 exact legal successor ground >= 1 on 0 < L <= 1/512 = PROVED
 - fixed-N production continuity = PROVED_MERGED_PR_278
 - same-N off-line-zero contact = PROVED_MERGED_PR_278
-- PR #284 compressed contact calculus = PROVED_MERGED_PR_284_C2_AND_INHERITED_FIRST_VARIATION; F04_CONDITIONAL_PAIR_BALANCE_AND_FRONTIER_OPEN
+- PR #284 compressed contact calculus = PROVED_MERGED_PR_284_C2_AND_INHERITED_FIRST_VARIATION; F04_PAIR_BALANCE_AND_FRONTIER_PROMOTED_AFTER_MERGED_PR_287
 - PR #285 post-284 source-inertia package = PROVED_MERGED_PR_285
+- PR #287 post-285 M70-M77 build = PROVED_MERGED_PR_287
 - PR #272 CofinalCanonicalArithmeticCertificates <-> Mathlib RiemannHypothesis = PROVED / AUDIT-ONLY
 - RH = OPEN
 
 CURRENT RESEARCH FRONTIER
-- current candidate PR = #287 / POST285_M70_M77_BUILD_CANDIDATE_PENDING_EXACT_HEAD_CI
-- candidate theorem-validation head = RUNTIME_PR_HEAD_REQUIRED
-- candidate theorem-validation status = CI_PENDING_EXACT_HEAD_RUNTIME_RECEIPT_REQUIRED
+- current candidate PR = #NONE / NO_OPEN_CANDIDATE_PR
+- candidate theorem-validation head = NONE
+- candidate theorem-validation status = NONE
 - merged experimental research evidence = PR #273 / CERTIFIED_CURRENT_PRIME_GROUND_RESPONSE
 - fixed-N sign opposition = PROVED_MERGED_PR_277
 - global ground propagation strength = RH_SUFFICIENT_AUDIT_PROVED_PR_277
 - uniform domination strength = RH_SUFFICIENT_AUDIT_PROVED_PR_277
 - active obstruction = OBS-060_GROUND_SPECTRUM_FIRST_CROSSING_BARRIER
 - active subobligation = OBS-060O_CONTACT_CONDITIONED_PRODUCTION_SATURATION_EXCLUSION
-- F04 production derivative authority = PROVED_PENDING_CI_CANDIDATE_PR_287
-- M74 canonical secular instantiation = PROVED_PENDING_CI_CANDIDATE_PR_287
+- F04 production derivative authority = PROVED_MERGED_PR_287
+- M74 canonical secular instantiation = PROVED_MERGED_PR_287
 - next research target = POST285_CANONICAL_SECULAR_RAY_PRIME_FREE_F04_AND_FULL_ARITHMETIC_SOURCE_INEQUALITY
 - required new information = INDEPENDENT_FULL_ARITHMETIC_SOURCE_RESTRICTION_ON_THE_RESOLVENT_SELECTED_CONTACT_RAY
 - RH-sufficient terminal formulations are not counted as independent sub-RH progress
@@ -91,9 +92,37 @@ RESEARCH / CONTROL FIREWALL
 - terminal claim = RH_OPEN
 <!-- RHRC_CURRENT_STATE_END -->
 
-## Post-#285 override
+## Post-#287 override
 
-This block supersedes the older current labels below; historical sections stay
+This block supersedes the post-#285 labels below; historical sections stay as
+provenance.
+
+- exact theorem authority = merged PR #287 (merge `ecc6450`, head `40495f3`,
+  all 50 check runs green); PR #285 stays merged authority for the post-284
+  source-inertia package; no candidate PR is open; RH remains OPEN;
+- PR #287 proves the canonical secular ray and resolvent (M74), F04 production
+  derivative authority at every aperture L>0, the F04-free contact frontier,
+  source excursion / quarter-Poincaré / Lipschitz geometry, M71 interior
+  Andreief inertia on boundary-flat carriers for 0<ω≤1/2 and the abstract
+  calculus packages; M31 is conditional on the OPEN M32 Gronwall coefficient;
+  the K=2 even-bottom and M76 grid Arb certificates are interval research
+  evidence, not theorem authority;
+- post-#287 registry migration (`integration/post284/CLAIM_MIGRATION_MATRIX.json`,
+  `post287_claim_migration`): `R003_PRODUCTION_F04_DERIVATIVE_AUTHORITY` is
+  registered, and `R003_WEIGHTED_PRODUCTION_PAIR_BALANCE` and
+  `R003_COMPLETED_STRICT_EVEN_CONTACT_FRONTIER` are PROVED_UNCONDITIONAL,
+  rebound to `canonicalSecondPairing_euler_eq_productionSaturationGap_of_pos`
+  and `GeneratedStrictEvenContact.completed_production_frontier_unconditional`;
+  the only OPEN registered claims are `C_RH`, `R001_PRIME_UPPER`,
+  `R002_WINDOWED_VISIBILITY` and `R003_COFINAL_CANONICAL_ARITHMETIC_CERTIFICATES`;
+- still OPEN: the M76 opposite side and arithmetic composition (the
+  independent full-arithmetic source inequality on the resolvent-selected
+  contact ray), filtered-carrier inertia, OBS-060O stationary saturation,
+  odd/tie/seam branch exclusion and RH.
+
+## Post-#285 override (superseded by the post-#287 override above)
+
+This block superseded the older current labels below; historical sections stay
 as provenance.
 
 - exact theorem authority = merged PR #285 (merge `18a63cc`, head `d20653c`);

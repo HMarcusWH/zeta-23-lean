@@ -17,9 +17,10 @@ EXPECTED_OPEN = {
     "R003_COFINAL_CANONICAL_ARITHMETIC_CERTIFICATES",
     # Post-284 migration: R003_COMPRESSED_PRODUCTION_C2 and
     # R003_INHERITED_FIRST_VARIATION_RESTRICTION were promoted individually
-    # after merged-green PR #284; the two F04-conditional claims stay OPEN.
-    "R003_WEIGHTED_PRODUCTION_PAIR_BALANCE",
-    "R003_COMPLETED_STRICT_EVEN_CONTACT_FRONTIER",
+    # after merged-green PR #284. Post-287 migration: F04 holds at every L > 0,
+    # so R003_WEIGHTED_PRODUCTION_PAIR_BALANCE and
+    # R003_COMPLETED_STRICT_EVEN_CONTACT_FRONTIER were promoted individually
+    # after merged-green PR #287, rebound to their F04-free theorems.
 }
 
 

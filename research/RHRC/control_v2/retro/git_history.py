@@ -1,6 +1,9 @@
 from __future__ import annotations
 
+from concurrent.futures import ThreadPoolExecutor
+from contextlib import closing
 from dataclasses import dataclass
+import os
 from pathlib import Path
 import re
 import subprocess
@@ -59,6 +62,36 @@ def _candidate_commits(repo: Path, term: str, as_of_ref: str,
     return tuple(dict.fromkeys([as_of_ref, *commits]))
 
 
+def _candidate_walks(repo: Path, terms: tuple[str, ...], as_of_ref: str,
+                     paths: tuple[str, ...], *, all_refs_before_anchor: bool,
+                     max_commits: int | None):
+    """Yield each term with its candidate commits, in term order.
+
+    Each `git log -G` walk re-diffs the whole declared history, so these walks
+    dominate an exhaustive search. They are independent read-only git
+    processes and run in a bounded pool, but the consumer still receives them
+    strictly in term order, so hits, first-term attribution and any `max_hits`
+    cut-off are exactly those of a sequential search. Walks not yet started
+    are cancelled when the consumer stops early.
+    """
+    workers = max(1, min(len(terms), os.cpu_count() or 1))
+    with ThreadPoolExecutor(max_workers=workers) as pool:
+        walks = [
+            pool.submit(
+                _candidate_commits, repo, term, as_of_ref, paths,
+                all_refs_before_anchor=all_refs_before_anchor,
+                max_commits=max_commits,
+            )
+            for term in terms
+        ]
+        try:
+            for term, walk in zip(terms, walks):
+                yield term, walk.result()
+        finally:
+            for walk in walks:
+                walk.cancel()
+
+
 def search_git_history(repo: Path, terms: tuple[str, ...], *, as_of_ref: str,
                        paths: tuple[str, ...] = ("research/RHRC", "Zeta23"),
                        all_refs_before_anchor: bool = False,
@@ -72,39 +105,47 @@ def search_git_history(repo: Path, terms: tuple[str, ...], *, as_of_ref: str,
     """
     hits: list[GitHit] = []
     seen: set[tuple[str, str, int | None, str]] = set()
+    # An exhaustive all-ref search meets the same path and line in hundreds of
+    # commits. Sharing one string object per distinct value keeps millions of
+    # hits within a CI runner's memory and changes no hit.
+    shared: dict[str, str] = {}
 
-    for term in terms:
-        for commit in _candidate_commits(
-            repo, term, as_of_ref, paths,
-            all_refs_before_anchor=all_refs_before_anchor,
-            max_commits=max_commits_per_term,
-        ):
-            # Always pass the pattern through -e. A literal alias may begin
-            # with '-' (for example '-log(L)I remainder'); without -e,
-            # `git grep` parses that user-controlled term as command-line
-            # switches instead of as the fixed-string pattern.
-            proc = _run(
-                repo,
-                ["grep", "-n", "-i", "--fixed-strings", "-e", term, commit, "--", *paths],
-                check=False,
-            )
-            if proc.returncode not in (0, 1):
-                raise RuntimeError(proc.stderr.strip() or "git grep failed")
-            for row in proc.stdout.splitlines():
-                parts = row.split(":", 3)
-                if len(parts) != 4:
-                    continue
-                _, path, line_s, text = parts
-                try:
-                    line_number = int(line_s)
-                except ValueError:
-                    line_number = None
-                key = (commit, path, line_number, text)
-                if key in seen:
-                    continue
-                seen.add(key)
-                hits.append(GitHit(commit, path, line_number, text.strip(), term))
-                if max_hits is not None and len(hits) >= max_hits:
-                    return tuple(sorted(hits, key=lambda h: (h.commit, h.path, h.line_number or 0, h.term)))
+    with closing(_candidate_walks(
+        repo, terms, as_of_ref, paths,
+        all_refs_before_anchor=all_refs_before_anchor,
+        max_commits=max_commits_per_term,
+    )) as walks:
+        for term, commits in walks:
+            for commit in commits:
+                # Always pass the pattern through -e. A literal alias may begin
+                # with '-' (for example '-log(L)I remainder'); without -e,
+                # `git grep` parses that user-controlled term as command-line
+                # switches instead of as the fixed-string pattern.
+                proc = _run(
+                    repo,
+                    ["grep", "-n", "-i", "--fixed-strings", "-e", term, commit, "--", *paths],
+                    check=False,
+                )
+                if proc.returncode not in (0, 1):
+                    raise RuntimeError(proc.stderr.strip() or "git grep failed")
+                for row in proc.stdout.splitlines():
+                    parts = row.split(":", 3)
+                    if len(parts) != 4:
+                        continue
+                    _, path, line_s, text = parts
+                    path = shared.setdefault(path, path)
+                    text = shared.setdefault(text, text)
+                    try:
+                        line_number = int(line_s)
+                    except ValueError:
+                        line_number = None
+                    key = (commit, path, line_number, text)
+                    if key in seen:
+                        continue
+                    seen.add(key)
+                    excerpt = text.strip()
+                    hits.append(GitHit(commit, path, line_number, shared.setdefault(excerpt, excerpt), term))
+                    if max_hits is not None and len(hits) >= max_hits:
+                        return tuple(sorted(hits, key=lambda h: (h.commit, h.path, h.line_number or 0, h.term)))
 
     return tuple(sorted(hits, key=lambda h: (h.commit, h.path, h.line_number or 0, h.term)))

@@ -4,9 +4,10 @@ RHRC complete registered-theorem compiler audit.
 This file is AUDIT_ONLY. It creates no theorem authority and proves no new
 mathematics. It makes the exact theorem names backing every current
 PROVED_UNCONDITIONAL registered claim explicit to Lean and prints each axiom
-surface. OPEN claims are absent from proved authority; post-#282 claims marked
-candidate_binding are additionally compiler/axiom audited in an explicit
-OPEN-candidate section and remain non-promoted. RH remains OPEN.
+surface. OPEN claims are absent from proved authority. An OPEN claim marked
+candidate_binding would additionally be compiler/axiom audited in an explicit
+OPEN-candidate section and remain non-promoted; none remains after the
+post-#287 promotion. RH remains OPEN.
 -/
 
 import Zeta23.CCM.BoundaryFlatApproximation
@@ -83,7 +84,6 @@ import Zeta23.CCM.CanonicalGroundContinuity
 import Zeta23.ExceptionalZero.GlobalParityBottomFirstContact
 import Zeta23.RHRC.ClosureStrengthAudit
 import Zeta23.CCM.CanonicalCompressedApertureC2
-import Zeta23.CCM.FirstCrossingProductionCurvatureBridge
 import Zeta23.CCM.FirstCrossingGeneratedStrictEvenFrontier
 import Zeta23.CCM.CanonicalRegularizedEnergyIdentity
 import Zeta23.CCM.SourceParityExactInertia
@@ -94,6 +94,8 @@ import Zeta23.CCM.CanonicalSourceWeightedIntegral
 import Zeta23.CCM.CanonicalCenteredIndexCoercivity
 import Zeta23.CCM.CanonicalK2SourceSignInterval
 import Zeta23.CCM.CanonicalPrimeFreeSecondTest
+import Zeta23.CCM.CanonicalGlobalF04
+import Zeta23.CCM.CanonicalLocalBirdfishie
 
 -- AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE
 #check Zeta23.ExceptionalZero.canonicalPrimeRemainderDominance_iff_riemannHypothesis
@@ -552,10 +554,12 @@ import Zeta23.CCM.CanonicalPrimeFreeSecondTest
 
 
 
--- Post-#282 OPEN candidate bindings.
--- These declarations are compiler/axiom audited here but are NOT promoted
--- registered theorem authority until exact-head validation succeeds and the
--- corresponding registry statuses are explicitly promoted.
+-- Post-#282 contact-calculus bindings. R003_COMPRESSED_PRODUCTION_C2 and
+-- R003_INHERITED_FIRST_VARIATION_RESTRICTION were promoted after merged-green
+-- PR #284. R003_WEIGHTED_PRODUCTION_PAIR_BALANCE and
+-- R003_COMPLETED_STRICT_EVEN_CONTACT_FRONTIER were promoted after merged-green
+-- PR #287 (head 40495f3), rebound from their F04-conditional theorems to the
+-- F04-free versions. No OPEN candidate binding remains.
 
 -- R003_COMPRESSED_PRODUCTION_C2 (bound: C2 regularity and both jet identities)
 #check Zeta23.CCM.canonicalEvenCompressedC2_with_jets
@@ -563,15 +567,19 @@ import Zeta23.CCM.CanonicalPrimeFreeSecondTest
 #check Zeta23.CCM.canonicalEvenCompressedC2_proved
 #print axioms Zeta23.CCM.canonicalEvenCompressedC2_proved
 
--- R003_WEIGHTED_PRODUCTION_PAIR_BALANCE
-#check Zeta23.CCM.canonicalSecondPairing_euler_eq_productionSaturationGap
-#print axioms Zeta23.CCM.canonicalSecondPairing_euler_eq_productionSaturationGap
+-- R003_PRODUCTION_F04_DERIVATIVE_AUTHORITY (post-#287)
+#check Zeta23.CCM.productionContactF04DerivativeAuthority_of_pos
+#print axioms Zeta23.CCM.productionContactF04DerivativeAuthority_of_pos
+
+-- R003_WEIGHTED_PRODUCTION_PAIR_BALANCE (post-#287, F04-free)
+#check Zeta23.CCM.canonicalSecondPairing_euler_eq_productionSaturationGap_of_pos
+#print axioms Zeta23.CCM.canonicalSecondPairing_euler_eq_productionSaturationGap_of_pos
 
 -- R003_INHERITED_FIRST_VARIATION_RESTRICTION
 #check Zeta23.CCM.GeneratedStrictEvenContact.firstVariation_eq_zero_of_inherited
 #print axioms Zeta23.CCM.GeneratedStrictEvenContact.firstVariation_eq_zero_of_inherited
 
--- R003_COMPLETED_STRICT_EVEN_CONTACT_FRONTIER
-#check Zeta23.CCM.GeneratedStrictEvenContact.completed_production_frontier
-#print axioms Zeta23.CCM.GeneratedStrictEvenContact.completed_production_frontier
+-- R003_COMPLETED_STRICT_EVEN_CONTACT_FRONTIER (post-#287, F04-free)
+#check Zeta23.CCM.GeneratedStrictEvenContact.completed_production_frontier_unconditional
+#print axioms Zeta23.CCM.GeneratedStrictEvenContact.completed_production_frontier_unconditional
 

@@ -146,24 +146,34 @@ class ContactCalculusTests(unittest.TestCase):
             self.assertIn(cid,{x["id"] for x in registered["bindings"]})
             self.assertIn(cid,{x["id"] for x in r003["bindings"]})
 
-    def test_post282_f04_conditional_claims_are_candidate_bound_not_promoted(self):
+    def test_post282_f04_conditional_claims_promoted_after_pr_287_f04_free(self):
+        # F04 holds at every L > 0 (merged PR #287), so both claims are now
+        # PROVED_UNCONDITIONAL and bound to their F04-free theorems; the
+        # F04-conditional predecessors are no longer bound.
         expected={
-            "R003_WEIGHTED_PRODUCTION_PAIR_BALANCE":"Zeta23.CCM.canonicalSecondPairing_euler_eq_productionSaturationGap",
-            "R003_COMPLETED_STRICT_EVEN_CONTACT_FRONTIER":"Zeta23.CCM.GeneratedStrictEvenContact.completed_production_frontier",
+            "R003_WEIGHTED_PRODUCTION_PAIR_BALANCE":"Zeta23.CCM.canonicalSecondPairing_euler_eq_productionSaturationGap_of_pos",
+            "R003_COMPLETED_STRICT_EVEN_CONTACT_FRONTIER":"Zeta23.CCM.GeneratedStrictEvenContact.completed_production_frontier_unconditional",
+        }
+        conditional={
+            "Zeta23.CCM.canonicalSecondPairing_euler_eq_productionSaturationGap",
+            "Zeta23.CCM.GeneratedStrictEvenContact.completed_production_frontier",
         }
         registry=json.loads((RHRC/"CLAIM_REGISTRY.json").read_text())
         claims={x["id"]:x for x in registry["claims"]}
         for cid,theorem in expected.items():
-            self.assertEqual(claims[cid]["status"],"OPEN")
-            self.assertEqual(claims[cid]["promotion_cap"],"OPEN")
-            self.assertTrue(claims[cid]["candidate_binding"])
+            self.assertEqual(claims[cid]["status"],"PROVED_UNCONDITIONAL")
+            self.assertEqual(claims[cid]["promotion_cap"],"PROVED_UNCONDITIONAL")
+            self.assertNotIn("candidate_binding",claims[cid])
             self.assertEqual(claims[cid]["theorem"],theorem)
         r003=json.loads((RHRC/"R003_PROMOTED_BINDINGS.json").read_text())
-        self.assertEqual({x["id"] for x in r003["candidate_bindings"]},set(expected))
+        self.assertEqual(r003["candidate_bindings"],[])
         registered=json.loads((RHRC/"REGISTERED_THEOREM_BINDINGS.json").read_text())
-        self.assertEqual({x["id"] for x in registered["candidate_bindings"]},set(expected))
-        proved_ids={x["id"] for x in registered["bindings"]}
-        self.assertTrue(set(expected).isdisjoint(proved_ids))
+        self.assertEqual(registered["candidate_bindings"],[])
+        proved={x["id"]:x["theorem"] for x in registered["bindings"]}
+        for cid,theorem in expected.items():
+            self.assertEqual(proved[cid],theorem)
+            self.assertEqual({x["id"]:x["theorem"] for x in r003["bindings"]}[cid],theorem)
+        self.assertTrue(conditional.isdisjoint(proved.values()))
         claim_lean=(ROOT/"Zeta23/CCM/ClaimBindings.lean").read_text()
         registered_lean=(ROOT/"Zeta23/RHRC/RegisteredClaimBindings.lean").read_text()
         for theorem in expected.values():

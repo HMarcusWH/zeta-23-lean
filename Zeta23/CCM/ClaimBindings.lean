@@ -65,6 +65,8 @@ import Zeta23.CCM.CanonicalSourceWeightedIntegral
 import Zeta23.CCM.CanonicalCenteredIndexCoercivity
 import Zeta23.CCM.CanonicalK2SourceSignInterval
 import Zeta23.CCM.CanonicalPrimeFreeSecondTest
+import Zeta23.CCM.CanonicalGlobalF04
+import Zeta23.CCM.CanonicalLocalBirdfishie
 
 /-!
 R003 promoted-claim completeness is machine-checked by research/RHRC/tools/promoted_binding_lint.py against research/RHRC/R003_PROMOTED_BINDINGS.json and CLAIM_REGISTRY.json. Supporting #check declarations may exist without registry promotion; every PROVED_UNCONDITIONAL R003 registry theorem must have both #check and #print axioms here.
@@ -702,10 +704,12 @@ This module pins promoted RHRC claim IDs to concrete Lean theorem names so that
 
 
 
--- Post-#282 OPEN candidate bindings.
--- These declarations are compiler/axiom audited here but are NOT promoted
--- registered theorem authority until exact-head validation succeeds and the
--- corresponding registry statuses are explicitly promoted.
+-- Post-#282 contact-calculus bindings. R003_COMPRESSED_PRODUCTION_C2 and
+-- R003_INHERITED_FIRST_VARIATION_RESTRICTION were promoted after merged-green
+-- PR #284. R003_WEIGHTED_PRODUCTION_PAIR_BALANCE and
+-- R003_COMPLETED_STRICT_EVEN_CONTACT_FRONTIER were promoted after merged-green
+-- PR #287 (head 40495f3), rebound from their F04-conditional theorems to the
+-- F04-free versions. No OPEN candidate binding remains.
 
 -- R003_COMPRESSED_PRODUCTION_C2
 #check Zeta23.CCM.canonicalEvenCompressedC2_with_jets
@@ -713,15 +717,19 @@ This module pins promoted RHRC claim IDs to concrete Lean theorem names so that
 #check Zeta23.CCM.canonicalEvenCompressedC2_proved
 #print axioms Zeta23.CCM.canonicalEvenCompressedC2_proved
 
--- R003_WEIGHTED_PRODUCTION_PAIR_BALANCE
-#check Zeta23.CCM.canonicalSecondPairing_euler_eq_productionSaturationGap
-#print axioms Zeta23.CCM.canonicalSecondPairing_euler_eq_productionSaturationGap
+-- R003_PRODUCTION_F04_DERIVATIVE_AUTHORITY (post-#287)
+#check Zeta23.CCM.productionContactF04DerivativeAuthority_of_pos
+#print axioms Zeta23.CCM.productionContactF04DerivativeAuthority_of_pos
+
+-- R003_WEIGHTED_PRODUCTION_PAIR_BALANCE (post-#287, F04-free)
+#check Zeta23.CCM.canonicalSecondPairing_euler_eq_productionSaturationGap_of_pos
+#print axioms Zeta23.CCM.canonicalSecondPairing_euler_eq_productionSaturationGap_of_pos
 
 -- R003_INHERITED_FIRST_VARIATION_RESTRICTION
 #check Zeta23.CCM.GeneratedStrictEvenContact.firstVariation_eq_zero_of_inherited
 #print axioms Zeta23.CCM.GeneratedStrictEvenContact.firstVariation_eq_zero_of_inherited
 
--- R003_COMPLETED_STRICT_EVEN_CONTACT_FRONTIER
-#check Zeta23.CCM.GeneratedStrictEvenContact.completed_production_frontier
-#print axioms Zeta23.CCM.GeneratedStrictEvenContact.completed_production_frontier
+-- R003_COMPLETED_STRICT_EVEN_CONTACT_FRONTIER (post-#287, F04-free)
+#check Zeta23.CCM.GeneratedStrictEvenContact.completed_production_frontier_unconditional
+#print axioms Zeta23.CCM.GeneratedStrictEvenContact.completed_production_frontier_unconditional
 

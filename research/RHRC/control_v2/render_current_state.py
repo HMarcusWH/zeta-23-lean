@@ -50,6 +50,7 @@ THEOREM AUTHORITY
 - same-N off-line-zero contact = {route.get('post278_sameN_zero_contact', 'OPEN')}
 - PR #284 compressed contact calculus = {route.get('post284_compressed_contact_calculus', 'OPEN')}
 - PR #285 post-284 source-inertia package = {route.get('post285_source_inertia_package', 'OPEN')}
+- PR #287 post-285 M70-M77 build = {route.get('post287_m70_m77_build', 'OPEN')}
 - PR #272 CofinalCanonicalArithmeticCertificates <-> Mathlib RiemannHypothesis = PROVED / AUDIT-ONLY
 - RH = OPEN
 

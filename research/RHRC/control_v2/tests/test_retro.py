@@ -15,6 +15,7 @@ from control_v2.retro.archive import ArchiveManifestError
 from control_v2.retro.git_history import search_git_history
 from control_v2.retro.ingest import ingest_text_source
 from control_v2.retro.replay import assert_receipt_as_of, replay_concept
+from control_v2.retro.schemas import HistoricalClue, RetroSearchReceipt
 from control_v2.retro.search import DEFAULT_GIT_SEARCH_PATHS, search_concept
 
 
@@ -182,6 +183,70 @@ class RetroTests(unittest.TestCase):
         )
         self.assertTrue(hits)
         self.assertTrue(any(hit.term == "-log(L)I remainder" for hit in hits))
+
+    def test_git_history_concurrent_walks_keep_sequential_term_order(self):
+        # The per-term pickaxe walks run concurrently; hits must still be
+        # attributed to the first listed term whose walk reaches a line, and a
+        # max_hits cut-off must stop at the same hits as a sequential search.
+        td, repo, _, _ = self._fixture_repo()
+        self.addCleanup(td.cleanup)
+        p = repo / "research" / "RHRC" / "old.md"
+        p.write_text(
+            "residual headroom appears here\nheadroom budget shared line\n",
+            encoding="utf-8",
+        )
+        self._git(repo, "add", ".")
+        self._git(repo, "commit", "-m", "shared line", commit_date="2001-01-05T00:00:00Z")
+        anchor = self._git(repo, "rev-parse", "HEAD")
+        shared = "headroom budget shared line"
+        for terms in (("budget", "headroom"), ("headroom", "budget")):
+            with self.subTest(terms=terms):
+                hits = search_git_history(
+                    repo, terms, as_of_ref=anchor, paths=("research/RHRC",)
+                )
+                owners = {hit.term for hit in hits if hit.text == shared}
+                self.assertEqual(owners, {terms[0]})
+        many = ("zzz-absent",) * 8 + ("residual headroom",)
+        capped = search_git_history(
+            repo, many, as_of_ref=anchor, paths=("research/RHRC",), max_hits=1
+        )
+        self.assertEqual(len(capped), 1)
+        self.assertEqual(capped[0].term, "residual headroom")
+
+    def test_receipt_id_streams_the_canonical_json_hash(self):
+        # receipt_id hashes hit by hit; it must equal the hash of the receipt's
+        # canonical JSON built in one piece, including for escaped, non-ASCII
+        # and look-alike '"hits":[]' content.
+        def clue(excerpt, commit, line):
+            return HistoricalClue(
+                concept_id='odd "concept"', term='"hits":[]', source_family="RHRC_GIT",
+                source_version=None, source_path="research/RHRC/λ.md",
+                source_commit=commit, line_number=line, excerpt=excerpt,
+                authority="REPOSITORY_HISTORY",
+            )
+        for hits in (
+            (),
+            (clue('a "hits":[] b', "c1", 3),),
+            (clue("ζ(s) ≠ 0 \\ \"q\"", "c1", None), clue("plain", None, 7), clue("", "c2", 0)),
+        ):
+            with self.subTest(n=len(hits)):
+                receipt = RetroSearchReceipt(
+                    concept_id='x"hits":[]y', terms=('"hits":[]', "ω"), mode="ARCHAEOLOGY",
+                    as_of_ref=None, search_scope="S", search_complete=True,
+                    searched_sources=("RHRC_GIT",), search_paths=("research/RHRC",), hits=hits,
+                )
+                payload = {
+                    "concept_id": receipt.concept_id, "terms": receipt.terms,
+                    "mode": receipt.mode, "as_of_ref": receipt.as_of_ref,
+                    "search_scope": receipt.search_scope,
+                    "search_complete": receipt.search_complete,
+                    "searched_sources": receipt.searched_sources,
+                    "search_paths": receipt.search_paths,
+                    "hits": [h.to_dict() for h in hits],
+                }
+                raw = json.dumps(payload, sort_keys=True, separators=(",", ":"), ensure_ascii=False)
+                expected = "RETRO-" + hashlib.sha256(raw.encode("utf-8")).hexdigest()[:20]
+                self.assertEqual(receipt.receipt_id, expected)
 
     def test_as_of_search_does_not_see_future_commit(self):
         td, repo, old, new = self._fixture_repo()

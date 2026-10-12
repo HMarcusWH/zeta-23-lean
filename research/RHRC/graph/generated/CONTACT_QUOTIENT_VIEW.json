@@ -1,5 +1,5 @@
 {
-  "contacting_root_count": 789,
+  "contacting_root_count": 702,
   "contacts": [
     {
       "active_interfaces": [
@@ -665,172 +665,6 @@
       ],
       "contacts": {
         "PRODUCTION_SOURCE_JET": {
-          "count": 10,
-          "examples": [
-            "Zeta23.CCM.dividedDifferenceEntry",
-            "Zeta23.CCM.dividedDifferenceMatrix",
-            "Zeta23.CCM.evenCompressedCanonical",
-            "Zeta23.CCM.primeSourceCoordinate",
-            "Zeta23.CCM.primeSourceWeight",
-            "Zeta23.CCM.sourceDiagonal",
-            "Zeta23.CCM.sourceEq411RhsCosMinusOneIntegrand._proof_1",
-            "Zeta23.CCM.sourceMatrix",
-            "Zeta23.CCM.sourcePotential",
-            "Zeta23.CCM.sourcePotential._proof_1"
-          ],
-          "sha256": "09dbf7c1ca0797f9378689ab250b11bfbc5891cadce69a31361694e1bae1bba4",
-          "truncated": false
-        }
-      },
-      "declaration": "Zeta23.CCM.GeneratedStrictEvenContact.actual_stationary_curvature_eq_zero",
-      "module": "Zeta23.CCM.FirstCrossingGeneratedStrictEvenFrontier"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
-          "count": 33,
-          "examples": [
-            "Zeta23.CCM.centeredQuadraticNormal",
-            "Zeta23.CCM.centeredQuadraticNormal._proof_1",
-            "Zeta23.CCM.dividedDifferenceEntry",
-            "Zeta23.CCM.dividedDifferenceMatrix",
-            "Zeta23.CCM.evenBoundaryFlatRawCoefficients",
-            "Zeta23.CCM.evenBoundaryFlatRawCoefficients._proof_1",
-            "Zeta23.CCM.evenCompressedCanonical",
-            "Zeta23.CCM.matrixRealEnergy",
-            "Zeta23.CCM.matrixRealEnergy._proof_1",
-            "Zeta23.CCM.optimizedCurvatureSourceIntegrand._proof_1",
-            "Zeta23.CCM.primeSourceCoordinate",
-            "Zeta23.CCM.primeSourceWeight",
-            "Zeta23.CCM.quadraticForm",
-            "Zeta23.CCM.quadraticNormalMatrixMoment",
-            "Zeta23.CCM.quadraticNormalMatrixMoment._proof_1",
-            "Zeta23.CCM.quadraticNormalMatrixNumerator",
-            "Zeta23.CCM.sourceAtomRealEnergy",
-            "Zeta23.CCM.sourceAtomRealEnergyDerivative._proof_1",
-            "Zeta23.CCM.sourceAtomRealEnergySecondDerivative",
-            "Zeta23.CCM.sourceContractRealSecondDerivative"
-          ],
-          "sha256": "55eb0599207d1c429fa95c3ac15358552886ba2679bdda316c4aa409877f7389",
-          "truncated": true
-        }
-      },
-      "declaration": "Zeta23.CCM.GeneratedStrictEvenContact.completed_production_frontier",
-      "module": "Zeta23.CCM.FirstCrossingGeneratedStrictEvenFrontier"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
-          "count": 27,
-          "examples": [
-            "Zeta23.CCM.centeredQuadraticNormal",
-            "Zeta23.CCM.centeredQuadraticNormal._proof_1",
-            "Zeta23.CCM.dividedDifferenceEntry",
-            "Zeta23.CCM.dividedDifferenceMatrix",
-            "Zeta23.CCM.evenBoundaryFlatRawCoefficients",
-            "Zeta23.CCM.evenBoundaryFlatRawCoefficients._proof_1",
-            "Zeta23.CCM.evenCompressedCanonical",
-            "Zeta23.CCM.matrixRealEnergy",
-            "Zeta23.CCM.matrixRealEnergy._proof_1",
-            "Zeta23.CCM.optimizedCurvatureSourceIntegrand._proof_1",
-            "Zeta23.CCM.primeSourceCoordinate",
-            "Zeta23.CCM.primeSourceWeight",
-            "Zeta23.CCM.quadraticForm",
-            "Zeta23.CCM.quadraticNormalMatrixMoment",
-            "Zeta23.CCM.quadraticNormalMatrixMoment._proof_1",
-            "Zeta23.CCM.quadraticNormalMatrixNumerator",
-            "Zeta23.CCM.sourceAtomRealEnergy",
-            "Zeta23.CCM.sourceAtomRealEnergyDerivative._proof_1",
-            "Zeta23.CCM.sourceDiagonal",
-            "Zeta23.CCM.sourceDiagonalDerivative"
-          ],
-          "sha256": "a6c7d9de88f65edf13e5dca550f792af98fc1766d5bbbc4cd752f5285e0f9285",
-          "truncated": true
-        }
-      },
-      "declaration": "Zeta23.CCM.GeneratedStrictEvenContact.completed_production_frontier_unconditional",
-      "module": "Zeta23.CCM.CanonicalLocalBirdfishie"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
-          "count": 1,
-          "examples": [
-            "Zeta23.CCM.evenCompressedCanonical"
-          ],
-          "sha256": "7625756a1c60a0aa66b6d9cd5b2fdcf1c5c19c9044d66b90b421bf0a03667f7f",
-          "truncated": false
-        }
-      },
-      "declaration": "Zeta23.CCM.GeneratedStrictEvenContact.evenGround_zero",
-      "module": "Zeta23.CCM.FirstCrossingGeneratedStrictEvenFrontier"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
-          "count": 1,
-          "examples": [
-            "Zeta23.CCM.evenCompressedCanonical"
-          ],
-          "sha256": "7625756a1c60a0aa66b6d9cd5b2fdcf1c5c19c9044d66b90b421bf0a03667f7f",
-          "truncated": false
-        }
-      },
-      "declaration": "Zeta23.CCM.GeneratedStrictEvenContact.even_negative_direction_right",
-      "module": "Zeta23.CCM.FirstCrossingGeneratedStrictEvenFrontier"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
-          "count": 1,
-          "examples": [
-            "Zeta23.CCM.evenCompressedCanonical"
-          ],
-          "sha256": "7625756a1c60a0aa66b6d9cd5b2fdcf1c5c19c9044d66b90b421bf0a03667f7f",
-          "truncated": false
-        }
-      },
-      "declaration": "Zeta23.CCM.GeneratedStrictEvenContact.even_nonnegative_left",
-      "module": "Zeta23.CCM.FirstCrossingGeneratedStrictEvenFrontier"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
-          "count": 1,
-          "examples": [
-            "Zeta23.CCM.evenCompressedCanonical"
-          ],
-          "sha256": "7625756a1c60a0aa66b6d9cd5b2fdcf1c5c19c9044d66b90b421bf0a03667f7f",
-          "truncated": false
-        }
-      },
-      "declaration": "Zeta23.CCM.GeneratedStrictEvenContact.firstOrder_is_fresh",
-      "module": "Zeta23.CCM.FirstCrossingGeneratedStrictEvenFrontier"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
           "count": 1,
           "examples": [
             "Zeta23.CCM.evenCompressedCanonical"
@@ -857,23 +691,6 @@
         }
       },
       "declaration": "Zeta23.CCM.GeneratedStrictEvenContact.firstVariation_nonpos",
-      "module": "Zeta23.CCM.FirstCrossingGeneratedStrictEvenFrontier"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
-          "count": 1,
-          "examples": [
-            "Zeta23.CCM.evenCompressedCanonical"
-          ],
-          "sha256": "7625756a1c60a0aa66b6d9cd5b2fdcf1c5c19c9044d66b90b421bf0a03667f7f",
-          "truncated": false
-        }
-      },
-      "declaration": "Zeta23.CCM.GeneratedStrictEvenContact.firstVariation_nonpos_production",
       "module": "Zeta23.CCM.FirstCrossingGeneratedStrictEvenFrontier"
     },
     {
@@ -1278,42 +1095,6 @@
       ],
       "contacts": {
         "PRODUCTION_SOURCE_JET": {
-          "count": 33,
-          "examples": [
-            "Zeta23.CCM.centeredQuadraticNormal",
-            "Zeta23.CCM.centeredQuadraticNormal._proof_1",
-            "Zeta23.CCM.dividedDifferenceEntry",
-            "Zeta23.CCM.dividedDifferenceMatrix",
-            "Zeta23.CCM.evenBoundaryFlatRawCoefficients",
-            "Zeta23.CCM.evenBoundaryFlatRawCoefficients._proof_1",
-            "Zeta23.CCM.evenCompressedCanonical",
-            "Zeta23.CCM.matrixRealEnergy",
-            "Zeta23.CCM.matrixRealEnergy._proof_1",
-            "Zeta23.CCM.optimizedCurvatureSourceIntegrand._proof_1",
-            "Zeta23.CCM.primeSourceCoordinate",
-            "Zeta23.CCM.primeSourceWeight",
-            "Zeta23.CCM.quadraticForm",
-            "Zeta23.CCM.quadraticNormalMatrixMoment",
-            "Zeta23.CCM.quadraticNormalMatrixMoment._proof_1",
-            "Zeta23.CCM.quadraticNormalMatrixNumerator",
-            "Zeta23.CCM.sourceAtomRealEnergy",
-            "Zeta23.CCM.sourceAtomRealEnergyDerivative._proof_1",
-            "Zeta23.CCM.sourceAtomRealEnergySecondDerivative",
-            "Zeta23.CCM.sourceContractRealSecondDerivative"
-          ],
-          "sha256": "55eb0599207d1c429fa95c3ac15358552886ba2679bdda316c4aa409877f7389",
-          "truncated": true
-        }
-      },
-      "declaration": "Zeta23.CCM.GeneratedStrictEvenContact.production_stationary_remainder_pos",
-      "module": "Zeta23.CCM.FirstCrossingGeneratedStrictEvenFrontier"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
           "count": 27,
           "examples": [
             "Zeta23.CCM.centeredQuadraticNormal",
@@ -1343,42 +1124,6 @@
       },
       "declaration": "Zeta23.CCM.GeneratedStrictEvenContact.production_stationary_remainder_pos_unconditional",
       "module": "Zeta23.CCM.CanonicalLocalBirdfishie"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
-          "count": 33,
-          "examples": [
-            "Zeta23.CCM.centeredQuadraticNormal",
-            "Zeta23.CCM.centeredQuadraticNormal._proof_1",
-            "Zeta23.CCM.dividedDifferenceEntry",
-            "Zeta23.CCM.dividedDifferenceMatrix",
-            "Zeta23.CCM.evenBoundaryFlatRawCoefficients",
-            "Zeta23.CCM.evenBoundaryFlatRawCoefficients._proof_1",
-            "Zeta23.CCM.evenCompressedCanonical",
-            "Zeta23.CCM.matrixRealEnergy",
-            "Zeta23.CCM.matrixRealEnergy._proof_1",
-            "Zeta23.CCM.optimizedCurvatureSourceIntegrand._proof_1",
-            "Zeta23.CCM.primeSourceCoordinate",
-            "Zeta23.CCM.primeSourceWeight",
-            "Zeta23.CCM.quadraticForm",
-            "Zeta23.CCM.quadraticNormalMatrixMoment",
-            "Zeta23.CCM.quadraticNormalMatrixMoment._proof_1",
-            "Zeta23.CCM.quadraticNormalMatrixNumerator",
-            "Zeta23.CCM.sourceAtomRealEnergy",
-            "Zeta23.CCM.sourceAtomRealEnergyDerivative._proof_1",
-            "Zeta23.CCM.sourceAtomRealEnergySecondDerivative",
-            "Zeta23.CCM.sourceContractRealSecondDerivative"
-          ],
-          "sha256": "55eb0599207d1c429fa95c3ac15358552886ba2679bdda316c4aa409877f7389",
-          "truncated": true
-        }
-      },
-      "declaration": "Zeta23.CCM.GeneratedStrictEvenContact.production_stationary_saturation",
-      "module": "Zeta23.CCM.FirstCrossingGeneratedStrictEvenFrontier"
     },
     {
       "active_interfaces": [
@@ -1514,37 +1259,6 @@
       },
       "declaration": "Zeta23.CCM.GeneratedStrictEvenContact.secondPhysicalValue_nonneg",
       "module": "Zeta23.CCM.CanonicalLocalBirdfishie"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
-          "count": 15,
-          "examples": [
-            "Zeta23.CCM.centeredQuadraticNormal",
-            "Zeta23.CCM.centeredQuadraticNormal._proof_1",
-            "Zeta23.CCM.dividedDifferenceEntry",
-            "Zeta23.CCM.dividedDifferenceMatrix",
-            "Zeta23.CCM.evenBoundaryFlatRawCoefficients",
-            "Zeta23.CCM.evenBoundaryFlatRawCoefficients._proof_1",
-            "Zeta23.CCM.evenCompressedCanonical",
-            "Zeta23.CCM.primeSourceWeight",
-            "Zeta23.CCM.quadraticNormalMatrixMoment",
-            "Zeta23.CCM.quadraticNormalMatrixMoment._proof_1",
-            "Zeta23.CCM.quadraticNormalMatrixNumerator",
-            "Zeta23.CCM.sourceDiagonal",
-            "Zeta23.CCM.sourceMatrix",
-            "Zeta23.CCM.sourcePotential",
-            "Zeta23.CCM.sourcePotential._proof_1"
-          ],
-          "sha256": "f3df2b1feedcbe5f6733529d9c569e6f3bf91de0e0e1c78360e8010620cfb6a9",
-          "truncated": false
-        }
-      },
-      "declaration": "Zeta23.CCM.GeneratedStrictEvenContact.sourceValue_pos",
-      "module": "Zeta23.CCM.FirstCrossingGeneratedStrictEvenFrontier"
     },
     {
       "active_interfaces": [
@@ -7214,31 +6928,6 @@
           "truncated": false
         }
       },
-      "declaration": "Zeta23.CCM.canonicalEvenApertureFirst_isSymmetric",
-      "module": "Zeta23.CCM.CanonicalCompressedApertureC2"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
-          "count": 9,
-          "examples": [
-            "Zeta23.CCM.dividedDifferenceEntry",
-            "Zeta23.CCM.dividedDifferenceMatrix",
-            "Zeta23.CCM.primeSourceCoordinate",
-            "Zeta23.CCM.primeSourceWeight",
-            "Zeta23.CCM.sourceDiagonal",
-            "Zeta23.CCM.sourceEq411RhsCosMinusOneIntegrand._proof_1",
-            "Zeta23.CCM.sourceMatrix",
-            "Zeta23.CCM.sourcePotential",
-            "Zeta23.CCM.sourcePotential._proof_1"
-          ],
-          "sha256": "efc552f8df3eb595ef5f985566a0b86669e4073dc1198ef84b444ce08d93c6c6",
-          "truncated": false
-        }
-      },
       "declaration": "Zeta23.CCM.canonicalEvenApertureSecond_isSymmetric",
       "module": "Zeta23.CCM.CanonicalCompressedApertureC2"
     },
@@ -7277,81 +6966,6 @@
       },
       "declaration": "Zeta23.CCM.canonicalEvenBoundaryFlatMomentFourCompatibility",
       "module": "Zeta23.CCM.FirstCrossingArithmeticCompatibility"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
-          "count": 9,
-          "examples": [
-            "Zeta23.CCM.dividedDifferenceEntry",
-            "Zeta23.CCM.dividedDifferenceMatrix",
-            "Zeta23.CCM.primeSourceCoordinate",
-            "Zeta23.CCM.primeSourceWeight",
-            "Zeta23.CCM.sourceDiagonal",
-            "Zeta23.CCM.sourceEq411RhsCosMinusOneIntegrand._proof_1",
-            "Zeta23.CCM.sourceMatrix",
-            "Zeta23.CCM.sourcePotential",
-            "Zeta23.CCM.sourcePotential._proof_1"
-          ],
-          "sha256": "efc552f8df3eb595ef5f985566a0b86669e4073dc1198ef84b444ce08d93c6c6",
-          "truncated": false
-        }
-      },
-      "declaration": "Zeta23.CCM.canonicalEvenCompressedFamily_deriv",
-      "module": "Zeta23.CCM.FirstCrossingGeneratedStrictEvenFrontier"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
-          "count": 9,
-          "examples": [
-            "Zeta23.CCM.dividedDifferenceEntry",
-            "Zeta23.CCM.dividedDifferenceMatrix",
-            "Zeta23.CCM.primeSourceCoordinate",
-            "Zeta23.CCM.primeSourceWeight",
-            "Zeta23.CCM.sourceDiagonal",
-            "Zeta23.CCM.sourceEq411RhsCosMinusOneIntegrand._proof_1",
-            "Zeta23.CCM.sourceMatrix",
-            "Zeta23.CCM.sourcePotential",
-            "Zeta23.CCM.sourcePotential._proof_1"
-          ],
-          "sha256": "efc552f8df3eb595ef5f985566a0b86669e4073dc1198ef84b444ce08d93c6c6",
-          "truncated": false
-        }
-      },
-      "declaration": "Zeta23.CCM.canonicalEvenCompressedFamily_secondDeriv",
-      "module": "Zeta23.CCM.FirstCrossingGeneratedStrictEvenFrontier"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
-          "count": 9,
-          "examples": [
-            "Zeta23.CCM.dividedDifferenceEntry",
-            "Zeta23.CCM.dividedDifferenceMatrix",
-            "Zeta23.CCM.primeSourceCoordinate",
-            "Zeta23.CCM.primeSourceWeight",
-            "Zeta23.CCM.sourceDiagonal",
-            "Zeta23.CCM.sourceEq411RhsCosMinusOneIntegrand._proof_1",
-            "Zeta23.CCM.sourceMatrix",
-            "Zeta23.CCM.sourcePotential",
-            "Zeta23.CCM.sourcePotential._proof_1"
-          ],
-          "sha256": "efc552f8df3eb595ef5f985566a0b86669e4073dc1198ef84b444ce08d93c6c6",
-          "truncated": false
-        }
-      },
-      "declaration": "Zeta23.CCM.canonicalEven_fixedSecond_eq_inner",
-      "module": "Zeta23.CCM.FirstCrossingProductionFirstVariation"
     },
     {
       "active_interfaces": [
@@ -7693,83 +7307,8 @@
           "truncated": false
         }
       },
-      "declaration": "Zeta23.CCM.canonicalParityApertureFirst_isSymmetric",
-      "module": "Zeta23.CCM.CanonicalCompressedApertureC2"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
-          "count": 9,
-          "examples": [
-            "Zeta23.CCM.dividedDifferenceEntry",
-            "Zeta23.CCM.dividedDifferenceMatrix",
-            "Zeta23.CCM.primeSourceCoordinate",
-            "Zeta23.CCM.primeSourceWeight",
-            "Zeta23.CCM.sourceDiagonal",
-            "Zeta23.CCM.sourceEq411RhsCosMinusOneIntegrand._proof_1",
-            "Zeta23.CCM.sourceMatrix",
-            "Zeta23.CCM.sourcePotential",
-            "Zeta23.CCM.sourcePotential._proof_1"
-          ],
-          "sha256": "efc552f8df3eb595ef5f985566a0b86669e4073dc1198ef84b444ce08d93c6c6",
-          "truncated": false
-        }
-      },
       "declaration": "Zeta23.CCM.canonicalParityApertureSecond_isSymmetric",
       "module": "Zeta23.CCM.CanonicalCompressedApertureC2"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
-          "count": 9,
-          "examples": [
-            "Zeta23.CCM.dividedDifferenceEntry",
-            "Zeta23.CCM.dividedDifferenceMatrix",
-            "Zeta23.CCM.primeSourceCoordinate",
-            "Zeta23.CCM.primeSourceWeight",
-            "Zeta23.CCM.sourceDiagonal",
-            "Zeta23.CCM.sourceEq411RhsCosMinusOneIntegrand._proof_1",
-            "Zeta23.CCM.sourceMatrix",
-            "Zeta23.CCM.sourcePotential",
-            "Zeta23.CCM.sourcePotential._proof_1"
-          ],
-          "sha256": "efc552f8df3eb595ef5f985566a0b86669e4073dc1198ef84b444ce08d93c6c6",
-          "truncated": false
-        }
-      },
-      "declaration": "Zeta23.CCM.canonicalParity_firstVariation_hasDerivAt",
-      "module": "Zeta23.CCM.FirstCrossingProductionFirstVariation"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
-          "count": 9,
-          "examples": [
-            "Zeta23.CCM.dividedDifferenceEntry",
-            "Zeta23.CCM.dividedDifferenceMatrix",
-            "Zeta23.CCM.primeSourceCoordinate",
-            "Zeta23.CCM.primeSourceWeight",
-            "Zeta23.CCM.sourceDiagonal",
-            "Zeta23.CCM.sourceEq411RhsCosMinusOneIntegrand._proof_1",
-            "Zeta23.CCM.sourceMatrix",
-            "Zeta23.CCM.sourcePotential",
-            "Zeta23.CCM.sourcePotential._proof_1"
-          ],
-          "sha256": "efc552f8df3eb595ef5f985566a0b86669e4073dc1198ef84b444ce08d93c6c6",
-          "truncated": false
-        }
-      },
-      "declaration": "Zeta23.CCM.canonicalParity_fixedSecond_eq_inner",
-      "module": "Zeta23.CCM.FirstCrossingProductionFirstVariation"
     },
     {
       "active_interfaces": [
@@ -8378,42 +7917,6 @@
       ],
       "contacts": {
         "PRODUCTION_SOURCE_JET": {
-          "count": 32,
-          "examples": [
-            "Zeta23.CCM.centeredQuadraticNormal",
-            "Zeta23.CCM.centeredQuadraticNormal._proof_1",
-            "Zeta23.CCM.dividedDifferenceEntry",
-            "Zeta23.CCM.dividedDifferenceMatrix",
-            "Zeta23.CCM.evenBoundaryFlatRawCoefficients",
-            "Zeta23.CCM.evenBoundaryFlatRawCoefficients._proof_1",
-            "Zeta23.CCM.matrixRealEnergy",
-            "Zeta23.CCM.matrixRealEnergy._proof_1",
-            "Zeta23.CCM.optimizedCurvatureSourceIntegrand._proof_1",
-            "Zeta23.CCM.primeSourceCoordinate",
-            "Zeta23.CCM.primeSourceWeight",
-            "Zeta23.CCM.quadraticForm",
-            "Zeta23.CCM.quadraticNormalMatrixMoment",
-            "Zeta23.CCM.quadraticNormalMatrixMoment._proof_1",
-            "Zeta23.CCM.quadraticNormalMatrixNumerator",
-            "Zeta23.CCM.sourceAtomRealEnergy",
-            "Zeta23.CCM.sourceAtomRealEnergyDerivative._proof_1",
-            "Zeta23.CCM.sourceAtomRealEnergySecondDerivative",
-            "Zeta23.CCM.sourceContractRealSecondDerivative",
-            "Zeta23.CCM.sourceDiagonal"
-          ],
-          "sha256": "edbb7af9e19441b2da6ee437c708cadac30fdd0c793355945a0670bbb7c5570b",
-          "truncated": true
-        }
-      },
-      "declaration": "Zeta23.CCM.canonicalSecondPairing_euler_eq_productionSaturationGap",
-      "module": "Zeta23.CCM.FirstCrossingProductionCurvatureBridge"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
           "count": 26,
           "examples": [
             "Zeta23.CCM.centeredQuadraticNormal",
@@ -8443,42 +7946,6 @@
       },
       "declaration": "Zeta23.CCM.canonicalSecondPairing_euler_eq_productionSaturationGap_of_lt_log_two",
       "module": "Zeta23.CCM.CanonicalPrimeFreeF04"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
-          "count": 26,
-          "examples": [
-            "Zeta23.CCM.centeredQuadraticNormal",
-            "Zeta23.CCM.centeredQuadraticNormal._proof_1",
-            "Zeta23.CCM.dividedDifferenceEntry",
-            "Zeta23.CCM.dividedDifferenceMatrix",
-            "Zeta23.CCM.evenBoundaryFlatRawCoefficients",
-            "Zeta23.CCM.evenBoundaryFlatRawCoefficients._proof_1",
-            "Zeta23.CCM.matrixRealEnergy",
-            "Zeta23.CCM.matrixRealEnergy._proof_1",
-            "Zeta23.CCM.optimizedCurvatureSourceIntegrand._proof_1",
-            "Zeta23.CCM.primeSourceCoordinate",
-            "Zeta23.CCM.primeSourceWeight",
-            "Zeta23.CCM.quadraticForm",
-            "Zeta23.CCM.quadraticNormalMatrixMoment",
-            "Zeta23.CCM.quadraticNormalMatrixMoment._proof_1",
-            "Zeta23.CCM.quadraticNormalMatrixNumerator",
-            "Zeta23.CCM.sourceAtomRealEnergy",
-            "Zeta23.CCM.sourceAtomRealEnergyDerivative._proof_1",
-            "Zeta23.CCM.sourceDiagonal",
-            "Zeta23.CCM.sourceDiagonalDerivative",
-            "Zeta23.CCM.sourceDiagonalReal"
-          ],
-          "sha256": "1276775aee76d141e1b56f85ed66d1e19110770d4fad9cb10e9d224789070c09",
-          "truncated": true
-        }
-      },
-      "declaration": "Zeta23.CCM.canonicalSecondPairing_euler_eq_productionSaturationGap_of_pos",
-      "module": "Zeta23.CCM.CanonicalGlobalF04"
     },
     {
       "active_interfaces": [
@@ -8894,42 +8361,6 @@
       ],
       "contacts": {
         "PRODUCTION_SOURCE_JET": {
-          "count": 33,
-          "examples": [
-            "Zeta23.CCM.centeredQuadraticNormal",
-            "Zeta23.CCM.centeredQuadraticNormal._proof_1",
-            "Zeta23.CCM.dividedDifferenceEntry",
-            "Zeta23.CCM.dividedDifferenceMatrix",
-            "Zeta23.CCM.evenBoundaryFlatRawCoefficients",
-            "Zeta23.CCM.evenBoundaryFlatRawCoefficients._proof_1",
-            "Zeta23.CCM.evenCompressedCanonical",
-            "Zeta23.CCM.matrixRealEnergy",
-            "Zeta23.CCM.matrixRealEnergy._proof_1",
-            "Zeta23.CCM.optimizedCurvatureSourceIntegrand._proof_1",
-            "Zeta23.CCM.primeSourceCoordinate",
-            "Zeta23.CCM.primeSourceWeight",
-            "Zeta23.CCM.quadraticForm",
-            "Zeta23.CCM.quadraticNormalMatrixMoment",
-            "Zeta23.CCM.quadraticNormalMatrixMoment._proof_1",
-            "Zeta23.CCM.quadraticNormalMatrixNumerator",
-            "Zeta23.CCM.sourceAtomRealEnergy",
-            "Zeta23.CCM.sourceAtomRealEnergyDerivative._proof_1",
-            "Zeta23.CCM.sourceAtomRealEnergySecondDerivative",
-            "Zeta23.CCM.sourceContractRealSecondDerivative"
-          ],
-          "sha256": "55eb0599207d1c429fa95c3ac15358552886ba2679bdda316c4aa409877f7389",
-          "truncated": true
-        }
-      },
-      "declaration": "Zeta23.CCM.canonicalStationaryCurvature_eq_productionSaturationGap",
-      "module": "Zeta23.CCM.FirstCrossingProductionCurvatureBridge"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
           "count": 27,
           "examples": [
             "Zeta23.CCM.centeredQuadraticNormal",
@@ -8959,32 +8390,6 @@
       },
       "declaration": "Zeta23.CCM.canonicalStationaryCurvature_eq_productionSaturationGap_of_pos",
       "module": "Zeta23.CCM.CanonicalLocalBirdfishie"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
-          "count": 10,
-          "examples": [
-            "Zeta23.CCM.dividedDifferenceEntry",
-            "Zeta23.CCM.dividedDifferenceMatrix",
-            "Zeta23.CCM.evenCompressedCanonical",
-            "Zeta23.CCM.primeSourceCoordinate",
-            "Zeta23.CCM.primeSourceWeight",
-            "Zeta23.CCM.sourceDiagonal",
-            "Zeta23.CCM.sourceEq411RhsCosMinusOneIntegrand._proof_1",
-            "Zeta23.CCM.sourceMatrix",
-            "Zeta23.CCM.sourcePotential",
-            "Zeta23.CCM.sourcePotential._proof_1"
-          ],
-          "sha256": "09dbf7c1ca0797f9378689ab250b11bfbc5891cadce69a31361694e1bae1bba4",
-          "truncated": false
-        }
-      },
-      "declaration": "Zeta23.CCM.canonicalStationaryEvenResponse_spec",
-      "module": "Zeta23.CCM.FirstCrossingProductionResponse"
     },
     {
       "active_interfaces": [
@@ -10186,26 +9591,6 @@
       ],
       "contacts": {
         "PRODUCTION_SOURCE_JET": {
-          "count": 4,
-          "examples": [
-            "Zeta23.CCM.dividedDifferenceEntry",
-            "Zeta23.CCM.sourceDiagonal",
-            "Zeta23.CCM.sourcePotential",
-            "Zeta23.CCM.sourcePotential._proof_1"
-          ],
-          "sha256": "b4e518c3a2ba820a2d96ec598c08db22671ed405391721ec3af5a94f90996d58",
-          "truncated": false
-        }
-      },
-      "declaration": "Zeta23.CCM.conj_sourceEntry",
-      "module": "Zeta23.CCM.CanonicalSourceSpectralFlow"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
           "count": 9,
           "examples": [
             "Zeta23.CCM.dividedDifferenceEntry",
@@ -10647,25 +10032,6 @@
       ],
       "contacts": {
         "PRODUCTION_SOURCE_JET": {
-          "count": 3,
-          "examples": [
-            "Zeta23.CCM.sourceDiagonalDerivative",
-            "Zeta23.CCM.sourceDiagonalReal",
-            "Zeta23.CCM.sourcePotentialReal._proof_1"
-          ],
-          "sha256": "96e75fcaab86c185b2e2aae8b13e196f5b4248cd650390e559fb61b2a8972715",
-          "truncated": false
-        }
-      },
-      "declaration": "Zeta23.CCM.continuous_sourceAtomPairingDerivative",
-      "module": "Zeta23.CCM.ProductionWeightedTestCalculus"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
           "count": 10,
           "examples": [
             "Zeta23.CCM.dividedDifferenceEntry",
@@ -10685,76 +10051,6 @@
       },
       "declaration": "Zeta23.CCM.continuous_sourceAtomRealEnergy",
       "module": "Zeta23.CCM.CanonicalPrimeFreeF04"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
-          "count": 4,
-          "examples": [
-            "Zeta23.CCM.sourceAtomRealEnergyDerivative._proof_1",
-            "Zeta23.CCM.sourceDiagonalDerivative",
-            "Zeta23.CCM.sourceDiagonalReal",
-            "Zeta23.CCM.sourcePotentialReal._proof_1"
-          ],
-          "sha256": "22f28a7bc5b7a7ecb67c513cbbb9748e5e692959f0a5732667ea6061e4d34bf7",
-          "truncated": false
-        }
-      },
-      "declaration": "Zeta23.CCM.continuous_sourceAtomRealEnergyDerivative",
-      "module": "Zeta23.CCM.ProductionWeightedTestCalculus"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
-          "count": 10,
-          "examples": [
-            "Zeta23.CCM.sourceAtomRealEnergyDerivative._proof_1",
-            "Zeta23.CCM.sourceAtomRealEnergySecondDerivative",
-            "Zeta23.CCM.sourceContractRealSecondDerivative",
-            "Zeta23.CCM.sourceDiagonalDerivative",
-            "Zeta23.CCM.sourceDiagonalReal",
-            "Zeta23.CCM.sourceDiagonalSecondDerivative",
-            "Zeta23.CCM.sourceEntrySecondDerivative",
-            "Zeta23.CCM.sourcePotentialReal._proof_1",
-            "Zeta23.CCM.sourcePotentialSecondDerivative",
-            "Zeta23.CCM.sourcePotentialSecondDerivative._proof_1"
-          ],
-          "sha256": "5f72257b5d7e19dc3c9defac2fa5167b4cab2c6817467b7a26604cf99075b2ec",
-          "truncated": false
-        }
-      },
-      "declaration": "Zeta23.CCM.continuous_sourceAtomRealEnergySecondDerivative",
-      "module": "Zeta23.CCM.ProductionWeightedTestCalculus"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
-          "count": 8,
-          "examples": [
-            "Zeta23.CCM.sourceContractRealSecondDerivative",
-            "Zeta23.CCM.sourceDiagonalDerivative",
-            "Zeta23.CCM.sourceDiagonalReal",
-            "Zeta23.CCM.sourceDiagonalSecondDerivative",
-            "Zeta23.CCM.sourceEntrySecondDerivative",
-            "Zeta23.CCM.sourcePotentialReal._proof_1",
-            "Zeta23.CCM.sourcePotentialSecondDerivative",
-            "Zeta23.CCM.sourcePotentialSecondDerivative._proof_1"
-          ],
-          "sha256": "ddfd04aa0a75db2478bd847502656026067723952e715a6683bfa2c6c7dff481",
-          "truncated": false
-        }
-      },
-      "declaration": "Zeta23.CCM.continuous_sourceContractRealSecondDerivative",
-      "module": "Zeta23.CCM.ProductionWeightedTestCalculus"
     },
     {
       "active_interfaces": [
@@ -10801,48 +10097,6 @@
       },
       "declaration": "Zeta23.CCM.continuous_sourceEnergy_joint",
       "module": "Zeta23.CCM.CanonicalSourceSpectralFlow"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
-          "count": 3,
-          "examples": [
-            "Zeta23.CCM.sourceDiagonalDerivative",
-            "Zeta23.CCM.sourceDiagonalReal",
-            "Zeta23.CCM.sourcePotentialReal._proof_1"
-          ],
-          "sha256": "96e75fcaab86c185b2e2aae8b13e196f5b4248cd650390e559fb61b2a8972715",
-          "truncated": false
-        }
-      },
-      "declaration": "Zeta23.CCM.continuous_sourceEntryDerivative",
-      "module": "Zeta23.CCM.ProductionWeightedTestCalculus"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
-          "count": 7,
-          "examples": [
-            "Zeta23.CCM.sourceDiagonalDerivative",
-            "Zeta23.CCM.sourceDiagonalReal",
-            "Zeta23.CCM.sourceDiagonalSecondDerivative",
-            "Zeta23.CCM.sourceEntrySecondDerivative",
-            "Zeta23.CCM.sourcePotentialReal._proof_1",
-            "Zeta23.CCM.sourcePotentialSecondDerivative",
-            "Zeta23.CCM.sourcePotentialSecondDerivative._proof_1"
-          ],
-          "sha256": "69b1e3d038197469f8b5b55fe96f2a94facd93e739983b9b908900b158a75d8e",
-          "truncated": false
-        }
-      },
-      "declaration": "Zeta23.CCM.continuous_sourceEntrySecondDerivative",
-      "module": "Zeta23.CCM.ProductionWeightedTestCalculus"
     },
     {
       "active_interfaces": [
@@ -11952,24 +11206,6 @@
       ],
       "contacts": {
         "PRODUCTION_SOURCE_JET": {
-          "count": 2,
-          "examples": [
-            "Zeta23.CCM.evenBoundaryFlatRawCoefficients",
-            "Zeta23.CCM.evenBoundaryFlatRawCoefficients._proof_1"
-          ],
-          "sha256": "d1311e989e73566ef2bfba8cd9fd0a6d63f71437822a6fe6cba775d3b596c339",
-          "truncated": false
-        }
-      },
-      "declaration": "Zeta23.CCM.evenBoundaryFlat_coordinateSum_zero",
-      "module": "Zeta23.CCM.ProductionWeightedGlobalTests"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
           "count": 11,
           "examples": [
             "Zeta23.CCM.BoundaryFlatCoefficients",
@@ -12203,49 +11439,6 @@
       },
       "declaration": "Zeta23.CCM.evenQuadraticSourceMoment_eq_legacyPrintedMatrixMoment",
       "module": "Zeta23.CCM.QuadraticNormalMatrixMoment"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
-          "count": 1,
-          "examples": [
-            "Zeta23.CCM.evenCompressedCanonical"
-          ],
-          "sha256": "7625756a1c60a0aa66b6d9cd5b2fdcf1c5c19c9044d66b90b421bf0a03667f7f",
-          "truncated": false
-        }
-      },
-      "declaration": "Zeta23.CCM.evenResponseContactOperator_apply",
-      "module": "Zeta23.CCM.FirstCrossingProductionResponse"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
-          "count": 10,
-          "examples": [
-            "Zeta23.CCM.dividedDifferenceEntry",
-            "Zeta23.CCM.dividedDifferenceMatrix",
-            "Zeta23.CCM.evenCompressedCanonical",
-            "Zeta23.CCM.primeSourceCoordinate",
-            "Zeta23.CCM.primeSourceWeight",
-            "Zeta23.CCM.sourceDiagonal",
-            "Zeta23.CCM.sourceEq411RhsCosMinusOneIntegrand._proof_1",
-            "Zeta23.CCM.sourceMatrix",
-            "Zeta23.CCM.sourcePotential",
-            "Zeta23.CCM.sourcePotential._proof_1"
-          ],
-          "sha256": "09dbf7c1ca0797f9378689ab250b11bfbc5891cadce69a31361694e1bae1bba4",
-          "truncated": false
-        }
-      },
-      "declaration": "Zeta23.CCM.existsUnique_canonicalStationaryEvenResponse",
-      "module": "Zeta23.CCM.FirstCrossingProductionResponse"
     },
     {
       "active_interfaces": [
@@ -12587,42 +11780,6 @@
       },
       "declaration": "Zeta23.CCM.exists_zeroShiftEndpoint_neg_of_regular_parityBad",
       "module": "Zeta23.CCM.FirstCrossingSchurReduction"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
-          "count": 32,
-          "examples": [
-            "Zeta23.CCM.canonicalArchScalarCorrection._proof_1",
-            "Zeta23.CCM.centeredQuadraticNormal",
-            "Zeta23.CCM.centeredQuadraticNormal._proof_1",
-            "Zeta23.CCM.dividedDifferenceEntry",
-            "Zeta23.CCM.dividedDifferenceMatrix",
-            "Zeta23.CCM.evenBoundaryFlatRawCoefficients",
-            "Zeta23.CCM.evenBoundaryFlatRawCoefficients._proof_1",
-            "Zeta23.CCM.explicitCanonicalSourceMoment",
-            "Zeta23.CCM.explicitCanonicalSourceMoment._proof_1",
-            "Zeta23.CCM.poleEvenProfile",
-            "Zeta23.CCM.poleEvenProfileReal",
-            "Zeta23.CCM.poleOddProfileReal._proof_1",
-            "Zeta23.CCM.poleProfileDenominator",
-            "Zeta23.CCM.poleProfileDenominator._proof_1",
-            "Zeta23.CCM.poleProfileScale",
-            "Zeta23.CCM.poleProfileScaleReal",
-            "Zeta23.CCM.poleProfileScaleReal._proof_1",
-            "Zeta23.CCM.primeSourceCoordinate",
-            "Zeta23.CCM.primeSourceWeight",
-            "Zeta23.CCM.quadraticNormalMatrixMoment"
-          ],
-          "sha256": "6710ec7471f80568758c7396277e55fba715c3859fad3893dcff60e80ae8ea5a",
-          "truncated": true
-        }
-      },
-      "declaration": "Zeta23.CCM.explicitCanonicalSourceMoment_eq_productionArithmeticComplexValue",
-      "module": "Zeta23.CCM.FirstCrossingProductionArithmetic"
     },
     {
       "active_interfaces": [
@@ -13040,118 +12197,6 @@
       ],
       "contacts": {
         "PRODUCTION_SOURCE_JET": {
-          "count": 14,
-          "examples": [
-            "Zeta23.CCM.dividedDifferenceEntry",
-            "Zeta23.CCM.dividedDifferenceMatrix",
-            "Zeta23.CCM.matrixRealEnergy",
-            "Zeta23.CCM.matrixRealEnergy._proof_1",
-            "Zeta23.CCM.quadraticForm",
-            "Zeta23.CCM.sourceAtomRealEnergy",
-            "Zeta23.CCM.sourceAtomRealEnergyDerivative._proof_1",
-            "Zeta23.CCM.sourceDiagonal",
-            "Zeta23.CCM.sourceDiagonalDerivative",
-            "Zeta23.CCM.sourceDiagonalReal",
-            "Zeta23.CCM.sourceMatrix",
-            "Zeta23.CCM.sourcePotential",
-            "Zeta23.CCM.sourcePotential._proof_1",
-            "Zeta23.CCM.sourcePotentialReal._proof_1"
-          ],
-          "sha256": "9a5ba0df00aeef837a896860b6685b93c68b67a6981436c9b8da3d750edfc24b",
-          "truncated": false
-        }
-      },
-      "declaration": "Zeta23.CCM.hasDerivAt_archChannel",
-      "module": "Zeta23.CCM.CanonicalPrimeFreeF04"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
-          "count": 14,
-          "examples": [
-            "Zeta23.CCM.dividedDifferenceEntry",
-            "Zeta23.CCM.dividedDifferenceMatrix",
-            "Zeta23.CCM.matrixRealEnergy",
-            "Zeta23.CCM.matrixRealEnergy._proof_1",
-            "Zeta23.CCM.quadraticForm",
-            "Zeta23.CCM.sourceAtomRealEnergy",
-            "Zeta23.CCM.sourceAtomRealEnergyDerivative._proof_1",
-            "Zeta23.CCM.sourceDiagonal",
-            "Zeta23.CCM.sourceDiagonalDerivative",
-            "Zeta23.CCM.sourceDiagonalReal",
-            "Zeta23.CCM.sourceMatrix",
-            "Zeta23.CCM.sourcePotential",
-            "Zeta23.CCM.sourcePotential._proof_1",
-            "Zeta23.CCM.sourcePotentialReal._proof_1"
-          ],
-          "sha256": "9a5ba0df00aeef837a896860b6685b93c68b67a6981436c9b8da3d750edfc24b",
-          "truncated": false
-        }
-      },
-      "declaration": "Zeta23.CCM.hasDerivAt_poleChannel",
-      "module": "Zeta23.CCM.CanonicalPrimeFreeF04"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
-          "count": 10,
-          "examples": [
-            "Zeta23.CCM.sourceAtomRealEnergyDerivative._proof_1",
-            "Zeta23.CCM.sourceAtomRealEnergySecondDerivative",
-            "Zeta23.CCM.sourceContractRealSecondDerivative",
-            "Zeta23.CCM.sourceDiagonalDerivative",
-            "Zeta23.CCM.sourceDiagonalReal",
-            "Zeta23.CCM.sourceDiagonalSecondDerivative",
-            "Zeta23.CCM.sourceEntrySecondDerivative",
-            "Zeta23.CCM.sourcePotentialReal._proof_1",
-            "Zeta23.CCM.sourcePotentialSecondDerivative",
-            "Zeta23.CCM.sourcePotentialSecondDerivative._proof_1"
-          ],
-          "sha256": "5f72257b5d7e19dc3c9defac2fa5167b4cab2c6817467b7a26604cf99075b2ec",
-          "truncated": false
-        }
-      },
-      "declaration": "Zeta23.CCM.hasDerivAt_primeFirstChannel",
-      "module": "Zeta23.CCM.CanonicalGlobalF04"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
-          "count": 10,
-          "examples": [
-            "Zeta23.CCM.sourceAtomRealEnergyDerivative._proof_1",
-            "Zeta23.CCM.sourceAtomRealEnergySecondDerivative",
-            "Zeta23.CCM.sourceContractRealSecondDerivative",
-            "Zeta23.CCM.sourceDiagonalDerivative",
-            "Zeta23.CCM.sourceDiagonalReal",
-            "Zeta23.CCM.sourceDiagonalSecondDerivative",
-            "Zeta23.CCM.sourceEntrySecondDerivative",
-            "Zeta23.CCM.sourcePotentialReal._proof_1",
-            "Zeta23.CCM.sourcePotentialSecondDerivative",
-            "Zeta23.CCM.sourcePotentialSecondDerivative._proof_1"
-          ],
-          "sha256": "5f72257b5d7e19dc3c9defac2fa5167b4cab2c6817467b7a26604cf99075b2ec",
-          "truncated": false
-        }
-      },
-      "declaration": "Zeta23.CCM.hasDerivAt_primeFreeFirstChannel",
-      "module": "Zeta23.CCM.CanonicalPrimeFreeF04"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
           "count": 15,
           "examples": [
             "Zeta23.CCM.dividedDifferenceEntry",
@@ -13176,25 +12221,6 @@
       },
       "declaration": "Zeta23.CCM.hasDerivAt_productionContactTest",
       "module": "Zeta23.CCM.CanonicalContactRemainderOscillation"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
-          "count": 3,
-          "examples": [
-            "Zeta23.CCM.sourceDiagonalDerivative",
-            "Zeta23.CCM.sourceDiagonalReal",
-            "Zeta23.CCM.sourcePotentialReal._proof_1"
-          ],
-          "sha256": "96e75fcaab86c185b2e2aae8b13e196f5b4248cd650390e559fb61b2a8972715",
-          "truncated": false
-        }
-      },
-      "declaration": "Zeta23.CCM.hasDerivAt_sourceAtomPairing",
-      "module": "Zeta23.CCM.MixedSourceDerivativeTransport"
     },
     {
       "active_interfaces": [
@@ -13291,31 +12317,6 @@
       },
       "declaration": "Zeta23.CCM.inheritedContactFirstJetRestriction_apply",
       "module": "Zeta23.CCM.FirstCrossingInheritedStationarity"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
-          "count": 9,
-          "examples": [
-            "Zeta23.CCM.dividedDifferenceEntry",
-            "Zeta23.CCM.dividedDifferenceMatrix",
-            "Zeta23.CCM.primeSourceCoordinate",
-            "Zeta23.CCM.primeSourceWeight",
-            "Zeta23.CCM.sourceDiagonal",
-            "Zeta23.CCM.sourceEq411RhsCosMinusOneIntegrand._proof_1",
-            "Zeta23.CCM.sourceMatrix",
-            "Zeta23.CCM.sourcePotential",
-            "Zeta23.CCM.sourcePotential._proof_1"
-          ],
-          "sha256": "efc552f8df3eb595ef5f985566a0b86669e4073dc1198ef84b444ce08d93c6c6",
-          "truncated": false
-        }
-      },
-      "declaration": "Zeta23.CCM.inner_canonicalFirst_zero_of_stationary",
-      "module": "Zeta23.CCM.FirstCrossingProductionResponse"
     },
     {
       "active_interfaces": [
@@ -14145,32 +13146,6 @@
       },
       "declaration": "Zeta23.CCM.matrixRealEnergy_add_real_scalar_identity",
       "module": "Zeta23.CCM.CanonicalSourceEnergy"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
-          "count": 10,
-          "examples": [
-            "Zeta23.CCM.dividedDifferenceEntry",
-            "Zeta23.CCM.dividedDifferenceMatrix",
-            "Zeta23.CCM.matrixRealEnergy",
-            "Zeta23.CCM.matrixRealEnergy._proof_1",
-            "Zeta23.CCM.quadraticForm",
-            "Zeta23.CCM.sourceAtomRealEnergy",
-            "Zeta23.CCM.sourceDiagonal",
-            "Zeta23.CCM.sourceMatrix",
-            "Zeta23.CCM.sourcePotential",
-            "Zeta23.CCM.sourcePotential._proof_1"
-          ],
-          "sha256": "65d5619a2631e9fef421322a8b982745dc6c266564167ee96a438723d9aa681e",
-          "truncated": false
-        }
-      },
-      "declaration": "Zeta23.CCM.matrixRealEnergy_canonical_eq_regularized",
-      "module": "Zeta23.CCM.CanonicalPrimeFreeF04"
     },
     {
       "active_interfaces": [
@@ -15915,26 +14890,6 @@
       ],
       "contacts": {
         "PRODUCTION_SOURCE_JET": {
-          "count": 4,
-          "examples": [
-            "Zeta23.CCM.sourceAtomRealEnergyDerivative._proof_1",
-            "Zeta23.CCM.sourceDiagonalDerivative",
-            "Zeta23.CCM.sourceDiagonalReal",
-            "Zeta23.CCM.sourcePotentialReal._proof_1"
-          ],
-          "sha256": "22f28a7bc5b7a7ecb67c513cbbb9748e5e692959f0a5732667ea6061e4d34bf7",
-          "truncated": false
-        }
-      },
-      "declaration": "Zeta23.CCM.primeFreeMixedChannel_polarization",
-      "module": "Zeta23.CCM.CanonicalPrimeFreeF04"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
           "count": 1,
           "examples": [
             "Zeta23.CCM.primeSourceCoordinate"
@@ -16030,73 +14985,8 @@
           "truncated": false
         }
       },
-      "declaration": "Zeta23.CCM.productionArithmeticComplexValue_congr_on_Icc",
-      "module": "Zeta23.CCM.ProductionPhysicalFunctionalCongruence"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
-          "count": 1,
-          "examples": [
-            "Zeta23.CCM.primeSourceWeight"
-          ],
-          "sha256": "d34facffc937d0859017b9bd015905e9bbde7d769b43dcf208988848d2d92f8c",
-          "truncated": false
-        }
-      },
       "declaration": "Zeta23.CCM.productionArithmeticComplexValue_eq_weightedRemainder",
       "module": "Zeta23.CCM.WeightedRemainderIdentity"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
-          "count": 15,
-          "examples": [
-            "Zeta23.CCM.centeredQuadraticNormal",
-            "Zeta23.CCM.centeredQuadraticNormal._proof_1",
-            "Zeta23.CCM.dividedDifferenceEntry",
-            "Zeta23.CCM.dividedDifferenceMatrix",
-            "Zeta23.CCM.evenBoundaryFlatRawCoefficients",
-            "Zeta23.CCM.evenBoundaryFlatRawCoefficients._proof_1",
-            "Zeta23.CCM.primeSourceCoordinate",
-            "Zeta23.CCM.primeSourceWeight",
-            "Zeta23.CCM.quadraticNormalMatrixMoment",
-            "Zeta23.CCM.quadraticNormalMatrixMoment._proof_1",
-            "Zeta23.CCM.quadraticNormalMatrixNumerator",
-            "Zeta23.CCM.sourceDiagonal",
-            "Zeta23.CCM.sourceMatrix",
-            "Zeta23.CCM.sourcePotential",
-            "Zeta23.CCM.sourcePotential._proof_1"
-          ],
-          "sha256": "ab9065ba66ab794afc04dd574275c3b7f817128505953a041ea1248e230fd6da",
-          "truncated": false
-        }
-      },
-      "declaration": "Zeta23.CCM.productionArithmeticComplexValue_quadraticNormal_eq_sourceKernelRHS",
-      "module": "Zeta23.CCM.FirstCrossingProductionArithmetic"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
-          "count": 1,
-          "examples": [
-            "Zeta23.CCM.primeSourceWeight"
-          ],
-          "sha256": "d34facffc937d0859017b9bd015905e9bbde7d769b43dcf208988848d2d92f8c",
-          "truncated": false
-        }
-      },
-      "declaration": "Zeta23.CCM.productionArithmeticRealValue_add_of_admissible",
-      "module": "Zeta23.CCM.ProductionWeightedTestCalculus"
     },
     {
       "active_interfaces": [
@@ -16114,40 +15004,6 @@
       },
       "declaration": "Zeta23.CCM.productionArithmeticRealValue_clamp_mul_id",
       "module": "Zeta23.CCM.CanonicalPrimeFreeF04"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
-          "count": 1,
-          "examples": [
-            "Zeta23.CCM.primeSourceWeight"
-          ],
-          "sha256": "d34facffc937d0859017b9bd015905e9bbde7d769b43dcf208988848d2d92f8c",
-          "truncated": false
-        }
-      },
-      "declaration": "Zeta23.CCM.productionArithmeticRealValue_clamp_mul_id_sum",
-      "module": "Zeta23.CCM.CanonicalGlobalF04"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
-          "count": 1,
-          "examples": [
-            "Zeta23.CCM.primeSourceWeight"
-          ],
-          "sha256": "d34facffc937d0859017b9bd015905e9bbde7d769b43dcf208988848d2d92f8c",
-          "truncated": false
-        }
-      },
-      "declaration": "Zeta23.CCM.productionArithmeticRealValue_congr_on_Icc",
-      "module": "Zeta23.CCM.ProductionPhysicalFunctionalCongruence"
     },
     {
       "active_interfaces": [
@@ -16182,23 +15038,6 @@
       },
       "declaration": "Zeta23.CCM.productionArithmeticRealValue_eq_channels_of_lt_log_two",
       "module": "Zeta23.CCM.CanonicalPrimeFreeF04"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
-          "count": 1,
-          "examples": [
-            "Zeta23.CCM.primeSourceWeight"
-          ],
-          "sha256": "d34facffc937d0859017b9bd015905e9bbde7d769b43dcf208988848d2d92f8c",
-          "truncated": false
-        }
-      },
-      "declaration": "Zeta23.CCM.productionArithmeticRealValue_eq_channels_sum",
-      "module": "Zeta23.CCM.CanonicalGlobalF04"
     },
     {
       "active_interfaces": [
@@ -16250,23 +15089,6 @@
       },
       "declaration": "Zeta23.CCM.productionArithmeticRealValue_mul_id_eq",
       "module": "Zeta23.CCM.CanonicalPrimeFreeF04"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
-          "count": 1,
-          "examples": [
-            "Zeta23.CCM.primeSourceWeight"
-          ],
-          "sha256": "d34facffc937d0859017b9bd015905e9bbde7d769b43dcf208988848d2d92f8c",
-          "truncated": false
-        }
-      },
-      "declaration": "Zeta23.CCM.productionArithmeticRealValue_smul_of_admissible",
-      "module": "Zeta23.CCM.ProductionWeightedTestCalculus"
     },
     {
       "active_interfaces": [
@@ -16430,41 +15252,6 @@
       ],
       "contacts": {
         "PRODUCTION_SOURCE_JET": {
-          "count": 19,
-          "examples": [
-            "Zeta23.CCM.dividedDifferenceEntry",
-            "Zeta23.CCM.dividedDifferenceMatrix",
-            "Zeta23.CCM.primeSourceCoordinate",
-            "Zeta23.CCM.primeSourceWeight",
-            "Zeta23.CCM.sourceAtomRealEnergyDerivative._proof_1",
-            "Zeta23.CCM.sourceAtomRealEnergySecondDerivative",
-            "Zeta23.CCM.sourceContractRealSecondDerivative",
-            "Zeta23.CCM.sourceDiagonal",
-            "Zeta23.CCM.sourceDiagonalDerivative",
-            "Zeta23.CCM.sourceDiagonalReal",
-            "Zeta23.CCM.sourceDiagonalSecondDerivative",
-            "Zeta23.CCM.sourceEntrySecondDerivative",
-            "Zeta23.CCM.sourceEq411RhsCosMinusOneIntegrand._proof_1",
-            "Zeta23.CCM.sourceMatrix",
-            "Zeta23.CCM.sourcePotential",
-            "Zeta23.CCM.sourcePotential._proof_1",
-            "Zeta23.CCM.sourcePotentialReal._proof_1",
-            "Zeta23.CCM.sourcePotentialSecondDerivative",
-            "Zeta23.CCM.sourcePotentialSecondDerivative._proof_1"
-          ],
-          "sha256": "deef1d3c76bff121376dca4f7a4dfa147a1743a6cd8c091bab8c322fffae4b4b",
-          "truncated": false
-        }
-      },
-      "declaration": "Zeta23.CCM.productionContactF04DerivativeAuthority_of_pos",
-      "module": "Zeta23.CCM.CanonicalGlobalF04"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
           "count": 4,
           "examples": [
             "Zeta23.CCM.sourceAtomRealEnergyDerivative._proof_1",
@@ -16478,52 +15265,6 @@
       },
       "declaration": "Zeta23.CCM.productionContactFirstVariation_even_eq_channels",
       "module": "Zeta23.CCM.CanonicalPrimeFreeF04"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
-          "count": 4,
-          "examples": [
-            "Zeta23.CCM.sourceAtomRealEnergyDerivative._proof_1",
-            "Zeta23.CCM.sourceDiagonalDerivative",
-            "Zeta23.CCM.sourceDiagonalReal",
-            "Zeta23.CCM.sourcePotentialReal._proof_1"
-          ],
-          "sha256": "22f28a7bc5b7a7ecb67c513cbbb9748e5e692959f0a5732667ea6061e4d34bf7",
-          "truncated": false
-        }
-      },
-      "declaration": "Zeta23.CCM.productionContactFirstVariation_even_eq_full",
-      "module": "Zeta23.CCM.CanonicalGlobalF04"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
-          "count": 10,
-          "examples": [
-            "Zeta23.CCM.dividedDifferenceEntry",
-            "Zeta23.CCM.dividedDifferenceMatrix",
-            "Zeta23.CCM.matrixRealEnergy",
-            "Zeta23.CCM.matrixRealEnergy._proof_1",
-            "Zeta23.CCM.quadraticForm",
-            "Zeta23.CCM.sourceAtomRealEnergy",
-            "Zeta23.CCM.sourceDiagonal",
-            "Zeta23.CCM.sourceMatrix",
-            "Zeta23.CCM.sourcePotential",
-            "Zeta23.CCM.sourcePotential._proof_1"
-          ],
-          "sha256": "65d5619a2631e9fef421322a8b982745dc6c266564167ee96a438723d9aa681e",
-          "truncated": false
-        }
-      },
-      "declaration": "Zeta23.CCM.productionContactFixedEnergy_even_eq_ite",
-      "module": "Zeta23.CCM.CanonicalGlobalF04"
     },
     {
       "active_interfaces": [
@@ -16638,202 +15379,6 @@
       ],
       "contacts": {
         "PRODUCTION_SOURCE_JET": {
-          "count": 13,
-          "examples": [
-            "Zeta23.CCM.centeredQuadraticNormal",
-            "Zeta23.CCM.centeredQuadraticNormal._proof_1",
-            "Zeta23.CCM.dividedDifferenceEntry",
-            "Zeta23.CCM.dividedDifferenceMatrix",
-            "Zeta23.CCM.evenBoundaryFlatRawCoefficients",
-            "Zeta23.CCM.evenBoundaryFlatRawCoefficients._proof_1",
-            "Zeta23.CCM.quadraticNormalMatrixMoment",
-            "Zeta23.CCM.quadraticNormalMatrixMoment._proof_1",
-            "Zeta23.CCM.quadraticNormalMatrixNumerator",
-            "Zeta23.CCM.sourceDiagonal",
-            "Zeta23.CCM.sourceMatrix",
-            "Zeta23.CCM.sourcePotential",
-            "Zeta23.CCM.sourcePotential._proof_1"
-          ],
-          "sha256": "09d26359a4d95a8b12b211d57b156bc9c1b3ea1799187fb5907445420c0176b4",
-          "truncated": false
-        }
-      },
-      "declaration": "Zeta23.CCM.productionContactNormalDictionaryTest_eq_sourceLift",
-      "module": "Zeta23.CCM.ProductionNormalSourceAuthority"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
-          "count": 4,
-          "examples": [
-            "Zeta23.CCM.centeredQuadraticNormal",
-            "Zeta23.CCM.centeredQuadraticNormal._proof_1",
-            "Zeta23.CCM.evenBoundaryFlatRawCoefficients",
-            "Zeta23.CCM.evenBoundaryFlatRawCoefficients._proof_1"
-          ],
-          "sha256": "5d6e26f0be33db34607571534933afd397081592ff7e57012d4e66fc5e0c38cd",
-          "truncated": false
-        }
-      },
-      "declaration": "Zeta23.CCM.productionContactNormalDictionaryTest_zero",
-      "module": "Zeta23.CCM.ProductionNormalSourceAuthority"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
-          "count": 13,
-          "examples": [
-            "Zeta23.CCM.centeredQuadraticNormal",
-            "Zeta23.CCM.centeredQuadraticNormal._proof_1",
-            "Zeta23.CCM.dividedDifferenceEntry",
-            "Zeta23.CCM.dividedDifferenceMatrix",
-            "Zeta23.CCM.evenBoundaryFlatRawCoefficients",
-            "Zeta23.CCM.evenBoundaryFlatRawCoefficients._proof_1",
-            "Zeta23.CCM.quadraticNormalMatrixMoment",
-            "Zeta23.CCM.quadraticNormalMatrixMoment._proof_1",
-            "Zeta23.CCM.quadraticNormalMatrixNumerator",
-            "Zeta23.CCM.sourceDiagonal",
-            "Zeta23.CCM.sourceMatrix",
-            "Zeta23.CCM.sourcePotential",
-            "Zeta23.CCM.sourcePotential._proof_1"
-          ],
-          "sha256": "09d26359a4d95a8b12b211d57b156bc9c1b3ea1799187fb5907445420c0176b4",
-          "truncated": false
-        }
-      },
-      "declaration": "Zeta23.CCM.productionContactNormalPhysicalTest_eq_dictionary_re",
-      "module": "Zeta23.CCM.ProductionNormalSourceAuthority"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
-          "count": 13,
-          "examples": [
-            "Zeta23.CCM.centeredQuadraticNormal",
-            "Zeta23.CCM.centeredQuadraticNormal._proof_1",
-            "Zeta23.CCM.dividedDifferenceEntry",
-            "Zeta23.CCM.dividedDifferenceMatrix",
-            "Zeta23.CCM.evenBoundaryFlatRawCoefficients",
-            "Zeta23.CCM.evenBoundaryFlatRawCoefficients._proof_1",
-            "Zeta23.CCM.quadraticNormalMatrixMoment",
-            "Zeta23.CCM.quadraticNormalMatrixMoment._proof_1",
-            "Zeta23.CCM.quadraticNormalMatrixNumerator",
-            "Zeta23.CCM.sourceDiagonal",
-            "Zeta23.CCM.sourceMatrix",
-            "Zeta23.CCM.sourcePotential",
-            "Zeta23.CCM.sourcePotential._proof_1"
-          ],
-          "sha256": "09d26359a4d95a8b12b211d57b156bc9c1b3ea1799187fb5907445420c0176b4",
-          "truncated": false
-        }
-      },
-      "declaration": "Zeta23.CCM.productionContactNormalPhysicalTest_eq_source_on_Icc",
-      "module": "Zeta23.CCM.ProductionNormalSourceAuthority"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
-          "count": 14,
-          "examples": [
-            "Zeta23.CCM.centeredQuadraticNormal",
-            "Zeta23.CCM.centeredQuadraticNormal._proof_1",
-            "Zeta23.CCM.dividedDifferenceEntry",
-            "Zeta23.CCM.dividedDifferenceMatrix",
-            "Zeta23.CCM.evenBoundaryFlatRawCoefficients",
-            "Zeta23.CCM.evenBoundaryFlatRawCoefficients._proof_1",
-            "Zeta23.CCM.primeSourceWeight",
-            "Zeta23.CCM.quadraticNormalMatrixMoment",
-            "Zeta23.CCM.quadraticNormalMatrixMoment._proof_1",
-            "Zeta23.CCM.quadraticNormalMatrixNumerator",
-            "Zeta23.CCM.sourceDiagonal",
-            "Zeta23.CCM.sourceMatrix",
-            "Zeta23.CCM.sourcePotential",
-            "Zeta23.CCM.sourcePotential._proof_1"
-          ],
-          "sha256": "1b0043dc7c4341bf43098a7cda0fbf65150f9f26ca77dcb85386ab96b35cf59a",
-          "truncated": false
-        }
-      },
-      "declaration": "Zeta23.CCM.productionContactNormalPhysicalValue_eq_sourceValue",
-      "module": "Zeta23.CCM.ProductionNormalSourceAuthority"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
-          "count": 13,
-          "examples": [
-            "Zeta23.CCM.centeredQuadraticNormal",
-            "Zeta23.CCM.centeredQuadraticNormal._proof_1",
-            "Zeta23.CCM.dividedDifferenceEntry",
-            "Zeta23.CCM.dividedDifferenceMatrix",
-            "Zeta23.CCM.evenBoundaryFlatRawCoefficients",
-            "Zeta23.CCM.evenBoundaryFlatRawCoefficients._proof_1",
-            "Zeta23.CCM.quadraticNormalMatrixMoment",
-            "Zeta23.CCM.quadraticNormalMatrixMoment._proof_1",
-            "Zeta23.CCM.quadraticNormalMatrixNumerator",
-            "Zeta23.CCM.sourceDiagonal",
-            "Zeta23.CCM.sourceMatrix",
-            "Zeta23.CCM.sourcePotential",
-            "Zeta23.CCM.sourcePotential._proof_1"
-          ],
-          "sha256": "09d26359a4d95a8b12b211d57b156bc9c1b3ea1799187fb5907445420c0176b4",
-          "truncated": false
-        }
-      },
-      "declaration": "Zeta23.CCM.productionContactNormalPhysical_admissible",
-      "module": "Zeta23.CCM.ProductionNormalSourceAuthority"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
-          "count": 14,
-          "examples": [
-            "Zeta23.CCM.centeredQuadraticNormal",
-            "Zeta23.CCM.centeredQuadraticNormal._proof_1",
-            "Zeta23.CCM.dividedDifferenceEntry",
-            "Zeta23.CCM.dividedDifferenceMatrix",
-            "Zeta23.CCM.evenBoundaryFlatRawCoefficients",
-            "Zeta23.CCM.evenBoundaryFlatRawCoefficients._proof_1",
-            "Zeta23.CCM.primeSourceWeight",
-            "Zeta23.CCM.quadraticNormalMatrixMoment",
-            "Zeta23.CCM.quadraticNormalMatrixMoment._proof_1",
-            "Zeta23.CCM.quadraticNormalMatrixNumerator",
-            "Zeta23.CCM.sourceDiagonal",
-            "Zeta23.CCM.sourceMatrix",
-            "Zeta23.CCM.sourcePotential",
-            "Zeta23.CCM.sourcePotential._proof_1"
-          ],
-          "sha256": "1b0043dc7c4341bf43098a7cda0fbf65150f9f26ca77dcb85386ab96b35cf59a",
-          "truncated": false
-        }
-      },
-      "declaration": "Zeta23.CCM.productionContactNormalSourceValue_eq_sourceValue",
-      "module": "Zeta23.CCM.FirstCrossingProductionRemainder"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
           "count": 1,
           "examples": [
             "Zeta23.CCM.evenCompressedCanonical"
@@ -16904,78 +15449,6 @@
       ],
       "contacts": {
         "PRODUCTION_SOURCE_JET": {
-          "count": 29,
-          "examples": [
-            "Zeta23.CCM.centeredQuadraticNormal",
-            "Zeta23.CCM.centeredQuadraticNormal._proof_1",
-            "Zeta23.CCM.dividedDifferenceEntry",
-            "Zeta23.CCM.dividedDifferenceMatrix",
-            "Zeta23.CCM.evenBoundaryFlatRawCoefficients",
-            "Zeta23.CCM.evenBoundaryFlatRawCoefficients._proof_1",
-            "Zeta23.CCM.matrixRealEnergy",
-            "Zeta23.CCM.matrixRealEnergy._proof_1",
-            "Zeta23.CCM.optimizedCurvatureSourceIntegrand._proof_1",
-            "Zeta23.CCM.quadraticForm",
-            "Zeta23.CCM.quadraticNormalMatrixMoment",
-            "Zeta23.CCM.quadraticNormalMatrixMoment._proof_1",
-            "Zeta23.CCM.quadraticNormalMatrixNumerator",
-            "Zeta23.CCM.sourceAtomRealEnergy",
-            "Zeta23.CCM.sourceAtomRealEnergyDerivative._proof_1",
-            "Zeta23.CCM.sourceAtomRealEnergySecondDerivative",
-            "Zeta23.CCM.sourceContractRealSecondDerivative",
-            "Zeta23.CCM.sourceDiagonal",
-            "Zeta23.CCM.sourceDiagonalDerivative",
-            "Zeta23.CCM.sourceDiagonalReal"
-          ],
-          "sha256": "06a907971cd44b53c11835e8e876892efd0a3e5e3514f3ff1659bce76a618ab8",
-          "truncated": true
-        }
-      },
-      "declaration": "Zeta23.CCM.productionContactRemainderPhysicalTest_decomposition",
-      "module": "Zeta23.CCM.FirstCrossingProductionRemainderAuthority"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
-          "count": 23,
-          "examples": [
-            "Zeta23.CCM.centeredQuadraticNormal",
-            "Zeta23.CCM.centeredQuadraticNormal._proof_1",
-            "Zeta23.CCM.dividedDifferenceEntry",
-            "Zeta23.CCM.dividedDifferenceMatrix",
-            "Zeta23.CCM.evenBoundaryFlatRawCoefficients",
-            "Zeta23.CCM.evenBoundaryFlatRawCoefficients._proof_1",
-            "Zeta23.CCM.matrixRealEnergy",
-            "Zeta23.CCM.matrixRealEnergy._proof_1",
-            "Zeta23.CCM.optimizedCurvatureSourceIntegrand._proof_1",
-            "Zeta23.CCM.quadraticForm",
-            "Zeta23.CCM.quadraticNormalMatrixMoment",
-            "Zeta23.CCM.quadraticNormalMatrixMoment._proof_1",
-            "Zeta23.CCM.quadraticNormalMatrixNumerator",
-            "Zeta23.CCM.sourceAtomRealEnergy",
-            "Zeta23.CCM.sourceAtomRealEnergyDerivative._proof_1",
-            "Zeta23.CCM.sourceDiagonal",
-            "Zeta23.CCM.sourceDiagonalDerivative",
-            "Zeta23.CCM.sourceDiagonalReal",
-            "Zeta23.CCM.sourceIndexAction",
-            "Zeta23.CCM.sourceMatrix"
-          ],
-          "sha256": "bc3b965476cb6a7c6c442a4799ff8c6b7ef8874653c9ade003e78649ea29c28f",
-          "truncated": true
-        }
-      },
-      "declaration": "Zeta23.CCM.productionContactRemainderPhysicalTest_eq_source_on_Icc",
-      "module": "Zeta23.CCM.FirstCrossingProductionRemainderAuthority"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
           "count": 23,
           "examples": [
             "Zeta23.CCM.centeredQuadraticNormal",
@@ -17005,78 +15478,6 @@
       },
       "declaration": "Zeta23.CCM.productionContactRemainderPhysical_admissible",
       "module": "Zeta23.CCM.FirstCrossingProductionRemainderAuthority"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
-          "count": 23,
-          "examples": [
-            "Zeta23.CCM.centeredQuadraticNormal",
-            "Zeta23.CCM.centeredQuadraticNormal._proof_1",
-            "Zeta23.CCM.dividedDifferenceEntry",
-            "Zeta23.CCM.dividedDifferenceMatrix",
-            "Zeta23.CCM.evenBoundaryFlatRawCoefficients",
-            "Zeta23.CCM.evenBoundaryFlatRawCoefficients._proof_1",
-            "Zeta23.CCM.matrixRealEnergy",
-            "Zeta23.CCM.matrixRealEnergy._proof_1",
-            "Zeta23.CCM.optimizedCurvatureSourceIntegrand._proof_1",
-            "Zeta23.CCM.quadraticForm",
-            "Zeta23.CCM.quadraticNormalMatrixMoment",
-            "Zeta23.CCM.quadraticNormalMatrixMoment._proof_1",
-            "Zeta23.CCM.quadraticNormalMatrixNumerator",
-            "Zeta23.CCM.sourceAtomRealEnergy",
-            "Zeta23.CCM.sourceAtomRealEnergyDerivative._proof_1",
-            "Zeta23.CCM.sourceDiagonal",
-            "Zeta23.CCM.sourceDiagonalDerivative",
-            "Zeta23.CCM.sourceDiagonalReal",
-            "Zeta23.CCM.sourceIndexAction",
-            "Zeta23.CCM.sourceMatrix"
-          ],
-          "sha256": "bc3b965476cb6a7c6c442a4799ff8c6b7ef8874653c9ade003e78649ea29c28f",
-          "truncated": true
-        }
-      },
-      "declaration": "Zeta23.CCM.productionContactRemainderSource_apply",
-      "module": "Zeta23.CCM.FirstCrossingProductionRemainder"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
-          "count": 23,
-          "examples": [
-            "Zeta23.CCM.centeredQuadraticNormal",
-            "Zeta23.CCM.centeredQuadraticNormal._proof_1",
-            "Zeta23.CCM.dividedDifferenceEntry",
-            "Zeta23.CCM.dividedDifferenceMatrix",
-            "Zeta23.CCM.evenBoundaryFlatRawCoefficients",
-            "Zeta23.CCM.evenBoundaryFlatRawCoefficients._proof_1",
-            "Zeta23.CCM.matrixRealEnergy",
-            "Zeta23.CCM.matrixRealEnergy._proof_1",
-            "Zeta23.CCM.optimizedCurvatureSourceIntegrand._proof_1",
-            "Zeta23.CCM.quadraticForm",
-            "Zeta23.CCM.quadraticNormalMatrixMoment",
-            "Zeta23.CCM.quadraticNormalMatrixMoment._proof_1",
-            "Zeta23.CCM.quadraticNormalMatrixNumerator",
-            "Zeta23.CCM.sourceAtomRealEnergy",
-            "Zeta23.CCM.sourceAtomRealEnergyDerivative._proof_1",
-            "Zeta23.CCM.sourceDiagonal",
-            "Zeta23.CCM.sourceDiagonalDerivative",
-            "Zeta23.CCM.sourceDiagonalReal",
-            "Zeta23.CCM.sourceIndexAction",
-            "Zeta23.CCM.sourceMatrix"
-          ],
-          "sha256": "bc3b965476cb6a7c6c442a4799ff8c6b7ef8874653c9ade003e78649ea29c28f",
-          "truncated": true
-        }
-      },
-      "declaration": "Zeta23.CCM.productionContactRemainderSource_simplified",
-      "module": "Zeta23.CCM.FirstCrossingProductionRemainder"
     },
     {
       "active_interfaces": [
@@ -17147,79 +15548,7 @@
           "truncated": true
         }
       },
-      "declaration": "Zeta23.CCM.productionContactRemainderValue_eq_physicalTest",
-      "module": "Zeta23.CCM.FirstCrossingProductionRemainderValueAuthority"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
-          "count": 24,
-          "examples": [
-            "Zeta23.CCM.centeredQuadraticNormal",
-            "Zeta23.CCM.centeredQuadraticNormal._proof_1",
-            "Zeta23.CCM.dividedDifferenceEntry",
-            "Zeta23.CCM.dividedDifferenceMatrix",
-            "Zeta23.CCM.evenBoundaryFlatRawCoefficients",
-            "Zeta23.CCM.evenBoundaryFlatRawCoefficients._proof_1",
-            "Zeta23.CCM.matrixRealEnergy",
-            "Zeta23.CCM.matrixRealEnergy._proof_1",
-            "Zeta23.CCM.optimizedCurvatureSourceIntegrand._proof_1",
-            "Zeta23.CCM.primeSourceWeight",
-            "Zeta23.CCM.quadraticForm",
-            "Zeta23.CCM.quadraticNormalMatrixMoment",
-            "Zeta23.CCM.quadraticNormalMatrixMoment._proof_1",
-            "Zeta23.CCM.quadraticNormalMatrixNumerator",
-            "Zeta23.CCM.sourceAtomRealEnergy",
-            "Zeta23.CCM.sourceAtomRealEnergyDerivative._proof_1",
-            "Zeta23.CCM.sourceDiagonal",
-            "Zeta23.CCM.sourceDiagonalDerivative",
-            "Zeta23.CCM.sourceDiagonalReal",
-            "Zeta23.CCM.sourceIndexAction"
-          ],
-          "sha256": "1f67da13008d12618a05cd7095c519d78ceb62ad55685176843e9a272bac39c0",
-          "truncated": true
-        }
-      },
       "declaration": "Zeta23.CCM.productionContactRemainderValue_eq_zeroResponse_add_two_mixedPhysical",
-      "module": "Zeta23.CCM.FirstCrossingProductionCurvatureBridge"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
-          "count": 30,
-          "examples": [
-            "Zeta23.CCM.centeredQuadraticNormal",
-            "Zeta23.CCM.centeredQuadraticNormal._proof_1",
-            "Zeta23.CCM.dividedDifferenceEntry",
-            "Zeta23.CCM.dividedDifferenceMatrix",
-            "Zeta23.CCM.evenBoundaryFlatRawCoefficients",
-            "Zeta23.CCM.evenBoundaryFlatRawCoefficients._proof_1",
-            "Zeta23.CCM.matrixRealEnergy",
-            "Zeta23.CCM.matrixRealEnergy._proof_1",
-            "Zeta23.CCM.optimizedCurvatureSourceIntegrand._proof_1",
-            "Zeta23.CCM.primeSourceWeight",
-            "Zeta23.CCM.quadraticForm",
-            "Zeta23.CCM.quadraticNormalMatrixMoment",
-            "Zeta23.CCM.quadraticNormalMatrixMoment._proof_1",
-            "Zeta23.CCM.quadraticNormalMatrixNumerator",
-            "Zeta23.CCM.sourceAtomRealEnergy",
-            "Zeta23.CCM.sourceAtomRealEnergyDerivative._proof_1",
-            "Zeta23.CCM.sourceAtomRealEnergySecondDerivative",
-            "Zeta23.CCM.sourceContractRealSecondDerivative",
-            "Zeta23.CCM.sourceDiagonal",
-            "Zeta23.CCM.sourceDiagonalDerivative"
-          ],
-          "sha256": "b4e908763ff9989dae988756bd4d3921f3aa551ffd1f7545753997382fbdfc9a",
-          "truncated": true
-        }
-      },
-      "declaration": "Zeta23.CCM.productionContactRemainderValue_physical_decomposition",
       "module": "Zeta23.CCM.FirstCrossingProductionCurvatureBridge"
     },
     {
@@ -17345,42 +15674,6 @@
         }
       },
       "declaration": "Zeta23.CCM.productionContactResponseCost_nonnegative",
-      "module": "Zeta23.CCM.FirstCrossingProductionCurvatureBridge"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
-          "count": 30,
-          "examples": [
-            "Zeta23.CCM.centeredQuadraticNormal",
-            "Zeta23.CCM.centeredQuadraticNormal._proof_1",
-            "Zeta23.CCM.dividedDifferenceEntry",
-            "Zeta23.CCM.dividedDifferenceMatrix",
-            "Zeta23.CCM.evenBoundaryFlatRawCoefficients",
-            "Zeta23.CCM.evenBoundaryFlatRawCoefficients._proof_1",
-            "Zeta23.CCM.matrixRealEnergy",
-            "Zeta23.CCM.matrixRealEnergy._proof_1",
-            "Zeta23.CCM.optimizedCurvatureSourceIntegrand._proof_1",
-            "Zeta23.CCM.primeSourceWeight",
-            "Zeta23.CCM.quadraticForm",
-            "Zeta23.CCM.quadraticNormalMatrixMoment",
-            "Zeta23.CCM.quadraticNormalMatrixMoment._proof_1",
-            "Zeta23.CCM.quadraticNormalMatrixNumerator",
-            "Zeta23.CCM.sourceAtomRealEnergy",
-            "Zeta23.CCM.sourceAtomRealEnergyDerivative._proof_1",
-            "Zeta23.CCM.sourceAtomRealEnergySecondDerivative",
-            "Zeta23.CCM.sourceContractRealSecondDerivative",
-            "Zeta23.CCM.sourceDiagonal",
-            "Zeta23.CCM.sourceDiagonalDerivative"
-          ],
-          "sha256": "b4e908763ff9989dae988756bd4d3921f3aa551ffd1f7545753997382fbdfc9a",
-          "truncated": true
-        }
-      },
-      "declaration": "Zeta23.CCM.productionContactSaturationGap_eq_physical_second_mixed",
       "module": "Zeta23.CCM.FirstCrossingProductionCurvatureBridge"
     },
     {
@@ -17614,27 +15907,6 @@
       ],
       "contacts": {
         "PRODUCTION_SOURCE_JET": {
-          "count": 5,
-          "examples": [
-            "Zeta23.CCM.primeSourceWeight",
-            "Zeta23.CCM.sourceAtomRealEnergyDerivative._proof_1",
-            "Zeta23.CCM.sourceDiagonalDerivative",
-            "Zeta23.CCM.sourceDiagonalReal",
-            "Zeta23.CCM.sourcePotentialReal._proof_1"
-          ],
-          "sha256": "45fb6dc1ba8cbb4ca06f0b34efe1980c0f15759a833d3e699d6867e586798c78",
-          "truncated": false
-        }
-      },
-      "declaration": "Zeta23.CCM.productionFirstDerivativePhysicalValue_eq_full",
-      "module": "Zeta23.CCM.CanonicalGlobalF04"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
           "count": 4,
           "examples": [
             "Zeta23.CCM.sourceAtomRealEnergyDerivative._proof_1",
@@ -17735,25 +16007,6 @@
       ],
       "contacts": {
         "PRODUCTION_SOURCE_JET": {
-          "count": 3,
-          "examples": [
-            "Zeta23.CCM.sourceDiagonalDerivative",
-            "Zeta23.CCM.sourceDiagonalReal",
-            "Zeta23.CCM.sourcePotentialReal._proof_1"
-          ],
-          "sha256": "96e75fcaab86c185b2e2aae8b13e196f5b4248cd650390e559fb61b2a8972715",
-          "truncated": false
-        }
-      },
-      "declaration": "Zeta23.CCM.productionMixedDerivativePhysicalTest_eq_mixedSource",
-      "module": "Zeta23.CCM.FirstCrossingProductionRemainderAuthority"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
           "count": 4,
           "examples": [
             "Zeta23.CCM.sourceAtomRealEnergyDerivative._proof_1",
@@ -17787,26 +16040,6 @@
       },
       "declaration": "Zeta23.CCM.productionMixedDerivativePhysicalValue_eq_channels",
       "module": "Zeta23.CCM.CanonicalPrimeFreeF04"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
-          "count": 4,
-          "examples": [
-            "Zeta23.CCM.primeSourceWeight",
-            "Zeta23.CCM.sourceDiagonalDerivative",
-            "Zeta23.CCM.sourceDiagonalReal",
-            "Zeta23.CCM.sourcePotentialReal._proof_1"
-          ],
-          "sha256": "c0e23b8af02930dbce3ff00005006b3c887d5160963e072377c752cab82d01a7",
-          "truncated": false
-        }
-      },
-      "declaration": "Zeta23.CCM.productionMixedDerivativePhysicalValue_eq_full",
-      "module": "Zeta23.CCM.CanonicalGlobalF04"
     },
     {
       "active_interfaces": [
@@ -18014,42 +16247,6 @@
       ],
       "contacts": {
         "PRODUCTION_SOURCE_JET": {
-          "count": 21,
-          "examples": [
-            "Zeta23.CCM.dividedDifferenceEntry",
-            "Zeta23.CCM.dividedDifferenceMatrix",
-            "Zeta23.CCM.matrixRealEnergy",
-            "Zeta23.CCM.matrixRealEnergy._proof_1",
-            "Zeta23.CCM.quadraticForm",
-            "Zeta23.CCM.sourceAtomRealEnergy",
-            "Zeta23.CCM.sourceAtomRealEnergyDerivative._proof_1",
-            "Zeta23.CCM.sourceAtomRealEnergySecondDerivative",
-            "Zeta23.CCM.sourceContractRealSecondDerivative",
-            "Zeta23.CCM.sourceDiagonal",
-            "Zeta23.CCM.sourceDiagonalDerivative",
-            "Zeta23.CCM.sourceDiagonalReal",
-            "Zeta23.CCM.sourceDiagonalSecondDerivative",
-            "Zeta23.CCM.sourceEntrySecondDerivative",
-            "Zeta23.CCM.sourceIndexAction",
-            "Zeta23.CCM.sourceMatrix",
-            "Zeta23.CCM.sourcePotential",
-            "Zeta23.CCM.sourcePotential._proof_1",
-            "Zeta23.CCM.sourcePotentialReal._proof_1",
-            "Zeta23.CCM.sourcePotentialSecondDerivative"
-          ],
-          "sha256": "021a4755e183e98599c80835cd18d435cbeaa42f63f5319972857e3d44b3a3dd",
-          "truncated": true
-        }
-      },
-      "declaration": "Zeta23.CCM.productionSecondDerivativePhysicalTest_eq_neg_indexEnergy",
-      "module": "Zeta23.CCM.FirstCrossingProductionRemainderAuthority"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
           "count": 11,
           "examples": [
             "Zeta23.CCM.primeSourceWeight",
@@ -18070,33 +16267,6 @@
       },
       "declaration": "Zeta23.CCM.productionSecondDerivativePhysicalValue_eq_channels",
       "module": "Zeta23.CCM.CanonicalPrimeFreeF04"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
-          "count": 11,
-          "examples": [
-            "Zeta23.CCM.primeSourceWeight",
-            "Zeta23.CCM.sourceAtomRealEnergyDerivative._proof_1",
-            "Zeta23.CCM.sourceAtomRealEnergySecondDerivative",
-            "Zeta23.CCM.sourceContractRealSecondDerivative",
-            "Zeta23.CCM.sourceDiagonalDerivative",
-            "Zeta23.CCM.sourceDiagonalReal",
-            "Zeta23.CCM.sourceDiagonalSecondDerivative",
-            "Zeta23.CCM.sourceEntrySecondDerivative",
-            "Zeta23.CCM.sourcePotentialReal._proof_1",
-            "Zeta23.CCM.sourcePotentialSecondDerivative",
-            "Zeta23.CCM.sourcePotentialSecondDerivative._proof_1"
-          ],
-          "sha256": "726da87a97a3385a2f31d6ced7c4f96b22e00a7901450448128019618327b5f6",
-          "truncated": false
-        }
-      },
-      "declaration": "Zeta23.CCM.productionSecondDerivativePhysicalValue_eq_full",
-      "module": "Zeta23.CCM.CanonicalGlobalF04"
     },
     {
       "active_interfaces": [
@@ -18224,73 +16394,6 @@
       ],
       "contacts": {
         "PRODUCTION_SOURCE_JET": {
-          "count": 33,
-          "examples": [
-            "Zeta23.CCM.canonicalArchScalarCorrection._proof_1",
-            "Zeta23.CCM.centeredQuadraticNormal",
-            "Zeta23.CCM.centeredQuadraticNormal._proof_1",
-            "Zeta23.CCM.dividedDifferenceEntry",
-            "Zeta23.CCM.dividedDifferenceMatrix",
-            "Zeta23.CCM.evenBoundaryFlatRawCoefficients",
-            "Zeta23.CCM.evenBoundaryFlatRawCoefficients._proof_1",
-            "Zeta23.CCM.explicitCanonicalSourceMoment",
-            "Zeta23.CCM.explicitCanonicalSourceMoment._proof_1",
-            "Zeta23.CCM.poleEvenProfile",
-            "Zeta23.CCM.poleEvenProfileReal",
-            "Zeta23.CCM.poleOddProfileReal._proof_1",
-            "Zeta23.CCM.poleProfileDenominator",
-            "Zeta23.CCM.poleProfileDenominator._proof_1",
-            "Zeta23.CCM.poleProfileScale",
-            "Zeta23.CCM.poleProfileScaleReal",
-            "Zeta23.CCM.poleProfileScaleReal._proof_1",
-            "Zeta23.CCM.primeSourceCoordinate",
-            "Zeta23.CCM.primeSourceWeight",
-            "Zeta23.CCM.quadraticNormalMatrixMoment"
-          ],
-          "sha256": "ac3f3df0819dcc0b82442dbc2a1da4695894c2f980cf128a62141f6787704d7c",
-          "truncated": true
-        }
-      },
-      "declaration": "Zeta23.CCM.productionStrictEvenSourceValue_eq_pairing",
-      "module": "Zeta23.CCM.FirstCrossingProductionArithmetic"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
-          "count": 15,
-          "examples": [
-            "Zeta23.CCM.centeredQuadraticNormal",
-            "Zeta23.CCM.centeredQuadraticNormal._proof_1",
-            "Zeta23.CCM.dividedDifferenceEntry",
-            "Zeta23.CCM.dividedDifferenceMatrix",
-            "Zeta23.CCM.evenBoundaryFlatRawCoefficients",
-            "Zeta23.CCM.evenBoundaryFlatRawCoefficients._proof_1",
-            "Zeta23.CCM.evenCompressedCanonical",
-            "Zeta23.CCM.primeSourceWeight",
-            "Zeta23.CCM.quadraticNormalMatrixMoment",
-            "Zeta23.CCM.quadraticNormalMatrixMoment._proof_1",
-            "Zeta23.CCM.quadraticNormalMatrixNumerator",
-            "Zeta23.CCM.sourceDiagonal",
-            "Zeta23.CCM.sourceMatrix",
-            "Zeta23.CCM.sourcePotential",
-            "Zeta23.CCM.sourcePotential._proof_1"
-          ],
-          "sha256": "f3df2b1feedcbe5f6733529d9c569e6f3bf91de0e0e1c78360e8010620cfb6a9",
-          "truncated": false
-        }
-      },
-      "declaration": "Zeta23.CCM.productionStrictEvenSourceValue_pos_of_even_zero_ground_strict",
-      "module": "Zeta23.CCM.FirstCrossingProductionArithmetic"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
           "count": 14,
           "examples": [
             "Zeta23.CCM.centeredQuadraticNormal",
@@ -18314,58 +16417,6 @@
       },
       "declaration": "Zeta23.CCM.productionStrictEvenSourceValue_unitPhase",
       "module": "Zeta23.CCM.FirstCrossingProductionRemainder"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
-          "count": 10,
-          "examples": [
-            "Zeta23.CCM.sourceAtomRealEnergyDerivative._proof_1",
-            "Zeta23.CCM.sourceAtomRealEnergySecondDerivative",
-            "Zeta23.CCM.sourceContractRealSecondDerivative",
-            "Zeta23.CCM.sourceDiagonalDerivative",
-            "Zeta23.CCM.sourceDiagonalReal",
-            "Zeta23.CCM.sourceDiagonalSecondDerivative",
-            "Zeta23.CCM.sourceEntrySecondDerivative",
-            "Zeta23.CCM.sourcePotentialReal._proof_1",
-            "Zeta23.CCM.sourcePotentialSecondDerivative",
-            "Zeta23.CCM.sourcePotentialSecondDerivative._proof_1"
-          ],
-          "sha256": "5f72257b5d7e19dc3c9defac2fa5167b4cab2c6817467b7a26604cf99075b2ec",
-          "truncated": false
-        }
-      },
-      "declaration": "Zeta23.CCM.production_derivative_tests_admissible",
-      "module": "Zeta23.CCM.ProductionWeightedTestCalculus"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
-          "count": 10,
-          "examples": [
-            "Zeta23.CCM.dividedDifferenceEntry",
-            "Zeta23.CCM.dividedDifferenceMatrix",
-            "Zeta23.CCM.evenCompressedCanonical",
-            "Zeta23.CCM.primeSourceCoordinate",
-            "Zeta23.CCM.primeSourceWeight",
-            "Zeta23.CCM.sourceDiagonal",
-            "Zeta23.CCM.sourceEq411RhsCosMinusOneIntegrand._proof_1",
-            "Zeta23.CCM.sourceMatrix",
-            "Zeta23.CCM.sourcePotential",
-            "Zeta23.CCM.sourcePotential._proof_1"
-          ],
-          "sha256": "09dbf7c1ca0797f9378689ab250b11bfbc5891cadce69a31361694e1bae1bba4",
-          "truncated": false
-        }
-      },
-      "declaration": "Zeta23.CCM.production_stationary_schur_curvature_eq_zero",
-      "module": "Zeta23.CCM.FirstCrossingGeneratedStrictEvenFrontier"
     },
     {
       "active_interfaces": [
@@ -18435,32 +16486,6 @@
       },
       "declaration": "Zeta23.CCM.quadraticForm_sourceMatrix_centeredZeroExtend",
       "module": "Zeta23.CCM.SourceLatticeCoordinates"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
-          "count": 10,
-          "examples": [
-            "Zeta23.CCM.dividedDifferenceEntry",
-            "Zeta23.CCM.dividedDifferenceMatrix",
-            "Zeta23.CCM.matrixRealEnergy",
-            "Zeta23.CCM.matrixRealEnergy._proof_1",
-            "Zeta23.CCM.quadraticForm",
-            "Zeta23.CCM.sourceAtomRealEnergy",
-            "Zeta23.CCM.sourceDiagonal",
-            "Zeta23.CCM.sourceMatrix",
-            "Zeta23.CCM.sourcePotential",
-            "Zeta23.CCM.sourcePotential._proof_1"
-          ],
-          "sha256": "65d5619a2631e9fef421322a8b982745dc6c266564167ee96a438723d9aa681e",
-          "truncated": false
-        }
-      },
-      "declaration": "Zeta23.CCM.quadraticForm_sourceMatrix_equiv_eq_ofReal",
-      "module": "Zeta23.CCM.CanonicalPrimeFreeF04"
     },
     {
       "active_interfaces": [
@@ -18739,31 +16764,6 @@
       },
       "declaration": "Zeta23.CCM.rank_sourceMatrix_displacement_le_two",
       "module": "Zeta23.CCM.SourceMatrix"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
-          "count": 9,
-          "examples": [
-            "Zeta23.CCM.dividedDifferenceEntry",
-            "Zeta23.CCM.dividedDifferenceMatrix",
-            "Zeta23.CCM.primeSourceCoordinate",
-            "Zeta23.CCM.primeSourceWeight",
-            "Zeta23.CCM.sourceDiagonal",
-            "Zeta23.CCM.sourceEq411RhsCosMinusOneIntegrand._proof_1",
-            "Zeta23.CCM.sourceMatrix",
-            "Zeta23.CCM.sourcePotential",
-            "Zeta23.CCM.sourcePotential._proof_1"
-          ],
-          "sha256": "efc552f8df3eb595ef5f985566a0b86669e4073dc1198ef84b444ce08d93c6c6",
-          "truncated": false
-        }
-      },
-      "declaration": "Zeta23.CCM.re_inner_canonicalEvenApertureFirst_polarization",
-      "module": "Zeta23.CCM.CanonicalPrimeFreeF04"
     },
     {
       "active_interfaces": [
@@ -19452,86 +17452,8 @@
           "truncated": false
         }
       },
-      "declaration": "Zeta23.CCM.sourceAtomPairingDerivative_polarization",
-      "module": "Zeta23.CCM.CanonicalPrimeFreeF04"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
-          "count": 4,
-          "examples": [
-            "Zeta23.CCM.sourceAtomRealEnergyDerivative._proof_1",
-            "Zeta23.CCM.sourceDiagonalDerivative",
-            "Zeta23.CCM.sourceDiagonalReal",
-            "Zeta23.CCM.sourcePotentialReal._proof_1"
-          ],
-          "sha256": "22f28a7bc5b7a7ecb67c513cbbb9748e5e692959f0a5732667ea6061e4d34bf7",
-          "truncated": false
-        }
-      },
-      "declaration": "Zeta23.CCM.sourceAtomPairingDerivative_re_polarization",
-      "module": "Zeta23.CCM.CanonicalPrimeFreeF04"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
-          "count": 3,
-          "examples": [
-            "Zeta23.CCM.sourceDiagonalDerivative",
-            "Zeta23.CCM.sourceDiagonalReal",
-            "Zeta23.CCM.sourcePotentialReal._proof_1"
-          ],
-          "sha256": "96e75fcaab86c185b2e2aae8b13e196f5b4248cd650390e559fb61b2a8972715",
-          "truncated": false
-        }
-      },
       "declaration": "Zeta23.CCM.sourceAtomPairingDerivative_secondDerivative_zero",
       "module": "Zeta23.CCM.ProductionWeightedGlobalTests"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
-          "count": 4,
-          "examples": [
-            "Zeta23.CCM.sourceAtomRealEnergyDerivative._proof_1",
-            "Zeta23.CCM.sourceDiagonalDerivative",
-            "Zeta23.CCM.sourceDiagonalReal",
-            "Zeta23.CCM.sourcePotentialReal._proof_1"
-          ],
-          "sha256": "22f28a7bc5b7a7ecb67c513cbbb9748e5e692959f0a5732667ea6061e4d34bf7",
-          "truncated": false
-        }
-      },
-      "declaration": "Zeta23.CCM.sourceAtomPairingDerivative_self_re_eq_realEnergyDerivative",
-      "module": "Zeta23.CCM.FirstCrossingProductionCurvatureBridge"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
-          "count": 3,
-          "examples": [
-            "Zeta23.CCM.sourceDiagonalDerivative",
-            "Zeta23.CCM.sourceDiagonalReal",
-            "Zeta23.CCM.sourcePotentialReal._proof_1"
-          ],
-          "sha256": "96e75fcaab86c185b2e2aae8b13e196f5b4248cd650390e559fb61b2a8972715",
-          "truncated": false
-        }
-      },
-      "declaration": "Zeta23.CCM.sourceAtomPairingDerivative_swap",
-      "module": "Zeta23.CCM.CanonicalPrimeFreeF04"
     },
     {
       "active_interfaces": [
@@ -19640,53 +17562,6 @@
       },
       "declaration": "Zeta23.CCM.sourceAtomRealEnergyDerivative_endpoints_zero",
       "module": "Zeta23.CCM.ProductionWeightedGlobalTests"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
-          "count": 5,
-          "examples": [
-            "Zeta23.CCM.BoundaryFlatCoefficients",
-            "Zeta23.CCM.sourceAtomRealEnergyDerivative._proof_1",
-            "Zeta23.CCM.sourceDiagonalDerivative",
-            "Zeta23.CCM.sourceDiagonalReal",
-            "Zeta23.CCM.sourcePotentialReal._proof_1"
-          ],
-          "sha256": "02fd054a1b0df161e619e08aff289d52ef6d54a095ce182778bb75d7cfd66d68",
-          "truncated": false
-        }
-      },
-      "declaration": "Zeta23.CCM.sourceAtomRealEnergyDerivative_zero_of_boundaryFlat",
-      "module": "Zeta23.CCM.CanonicalCompressedSeamJets"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
-          "count": 10,
-          "examples": [
-            "Zeta23.CCM.sourceAtomRealEnergyDerivative._proof_1",
-            "Zeta23.CCM.sourceAtomRealEnergySecondDerivative",
-            "Zeta23.CCM.sourceContractRealSecondDerivative",
-            "Zeta23.CCM.sourceDiagonalDerivative",
-            "Zeta23.CCM.sourceDiagonalReal",
-            "Zeta23.CCM.sourceDiagonalSecondDerivative",
-            "Zeta23.CCM.sourceEntrySecondDerivative",
-            "Zeta23.CCM.sourcePotentialReal._proof_1",
-            "Zeta23.CCM.sourcePotentialSecondDerivative",
-            "Zeta23.CCM.sourcePotentialSecondDerivative._proof_1"
-          ],
-          "sha256": "5f72257b5d7e19dc3c9defac2fa5167b4cab2c6817467b7a26604cf99075b2ec",
-          "truncated": false
-        }
-      },
-      "declaration": "Zeta23.CCM.sourceAtomRealEnergySecondDerivative_zero",
-      "module": "Zeta23.CCM.CanonicalCompressedSeamJets"
     },
     {
       "active_interfaces": [
@@ -20178,45 +18053,6 @@
       ],
       "contacts": {
         "PRODUCTION_SOURCE_JET": {
-          "count": 3,
-          "examples": [
-            "Zeta23.CCM.sourceDiagonalDerivative",
-            "Zeta23.CCM.sourceDiagonalReal",
-            "Zeta23.CCM.sourcePotentialReal._proof_1"
-          ],
-          "sha256": "96e75fcaab86c185b2e2aae8b13e196f5b4248cd650390e559fb61b2a8972715",
-          "truncated": false
-        }
-      },
-      "declaration": "Zeta23.CCM.sourceEntryDerivative_symm",
-      "module": "Zeta23.CCM.CanonicalPrimeFreeF04"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
-          "count": 4,
-          "examples": [
-            "Zeta23.CCM.dividedDifferenceEntry",
-            "Zeta23.CCM.sourceDiagonal",
-            "Zeta23.CCM.sourcePotential",
-            "Zeta23.CCM.sourcePotential._proof_1"
-          ],
-          "sha256": "b4e518c3a2ba820a2d96ec598c08db22671ed405391721ec3af5a94f90996d58",
-          "truncated": false
-        }
-      },
-      "declaration": "Zeta23.CCM.sourceEntry_symmetric",
-      "module": "Zeta23.CCM.SourceMatrix"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
           "count": 1,
           "examples": [
             "Zeta23.CCM.sourceEq411RhsCosMinusOneIntegrand._proof_1"
@@ -20545,28 +18381,6 @@
           "truncated": false
         }
       },
-      "declaration": "Zeta23.CCM.sourceSesq_conj_symm",
-      "module": "Zeta23.CCM.CanonicalSourceSpectralFlow"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
-          "count": 6,
-          "examples": [
-            "Zeta23.CCM.dividedDifferenceEntry",
-            "Zeta23.CCM.dividedDifferenceMatrix",
-            "Zeta23.CCM.sourceDiagonal",
-            "Zeta23.CCM.sourceMatrix",
-            "Zeta23.CCM.sourcePotential",
-            "Zeta23.CCM.sourcePotential._proof_1"
-          ],
-          "sha256": "9f8dfe80c0373b6a41bcb8ddfd2e1edfdfcfddae228f7ad37605e93bcfeeee5b",
-          "truncated": false
-        }
-      },
       "declaration": "Zeta23.CCM.sourceSesq_eq_convolution",
       "module": "Zeta23.CCM.CanonicalAndreiefInertia"
     },
@@ -20658,29 +18472,6 @@
       },
       "declaration": "Zeta23.CCM.sourceSesq_oddCarrier_cosPow",
       "module": "Zeta23.CCM.CanonicalAndreiefInertia"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
-          "count": 7,
-          "examples": [
-            "Zeta23.CCM.dividedDifferenceEntry",
-            "Zeta23.CCM.dividedDifferenceMatrix",
-            "Zeta23.CCM.quadraticForm",
-            "Zeta23.CCM.sourceDiagonal",
-            "Zeta23.CCM.sourceMatrix",
-            "Zeta23.CCM.sourcePotential",
-            "Zeta23.CCM.sourcePotential._proof_1"
-          ],
-          "sha256": "03bfa030dcf859328cda964a406e843f6c95a78e12d1fadf1839b35c217b0dd1",
-          "truncated": false
-        }
-      },
-      "declaration": "Zeta23.CCM.sourceSesq_self",
-      "module": "Zeta23.CCM.SourceLatticeCoordinates"
     },
     {
       "active_interfaces": [
@@ -20878,42 +18669,6 @@
         }
       },
       "declaration": "Zeta23.CCM.strictEvenSourceMomentPairing_eq_oddEnergy_of_even_zero_eigenmode",
-      "module": "Zeta23.CCM.FirstCrossingStrictEvenSourceEnergy"
-    },
-    {
-      "active_interfaces": [
-        "PRODUCTION_SOURCE_JET"
-      ],
-      "contacts": {
-        "PRODUCTION_SOURCE_JET": {
-          "count": 34,
-          "examples": [
-            "Zeta23.CCM.canonicalArchScalarCorrection._proof_1",
-            "Zeta23.CCM.centeredQuadraticNormal",
-            "Zeta23.CCM.centeredQuadraticNormal._proof_1",
-            "Zeta23.CCM.dividedDifferenceEntry",
-            "Zeta23.CCM.dividedDifferenceMatrix",
-            "Zeta23.CCM.evenBoundaryFlatRawCoefficients",
-            "Zeta23.CCM.evenBoundaryFlatRawCoefficients._proof_1",
-            "Zeta23.CCM.evenCompressedCanonical",
-            "Zeta23.CCM.explicitCanonicalSourceMoment",
-            "Zeta23.CCM.explicitCanonicalSourceMoment._proof_1",
-            "Zeta23.CCM.poleEvenProfile",
-            "Zeta23.CCM.poleEvenProfileReal",
-            "Zeta23.CCM.poleOddProfileReal._proof_1",
-            "Zeta23.CCM.poleProfileDenominator",
-            "Zeta23.CCM.poleProfileDenominator._proof_1",
-            "Zeta23.CCM.poleProfileScale",
-            "Zeta23.CCM.poleProfileScaleReal",
-            "Zeta23.CCM.poleProfileScaleReal._proof_1",
-            "Zeta23.CCM.primeSourceCoordinate",
-            "Zeta23.CCM.primeSourceWeight"
-          ],
-          "sha256": "ad0ae3930a52488a854c6c8b689b3a67571657c74353d48e581015fb15c3239f",
-          "truncated": true
-        }
-      },
-      "declaration": "Zeta23.CCM.strictEvenSourceMomentPairing_pos_of_even_zero_ground_strict",
       "module": "Zeta23.CCM.FirstCrossingStrictEvenSourceEnergy"
     },
     {
@@ -22902,7 +20657,7 @@
   "interpretation": "Compiler-dependency contact view only. Cross-interface contact does not establish theorem composition, independence, mathematical relevance, or RH evidence.",
   "projection": "THEOREM_VALUE_ERASED_SUPPORT",
   "schema_version": "RHRC-CONTACT-QUOTIENT-VIEW-1.1",
-  "source_only_root_count": 1478,
+  "source_only_root_count": 1331,
   "status": "RESEARCH_CONTROL_ONLY",
   "terminal_claim": "RH_OPEN",
   "theorem_promotion": false

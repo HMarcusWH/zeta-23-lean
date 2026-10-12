@@ -10,6 +10,7 @@ INTEGRATION = Path(__file__).resolve().parents[1]
 RHRC = INTEGRATION.parent
 sys.path.insert(0, str(INTEGRATION))
 
+from integration_lint import validate_unregistered_source_sentinel
 from source_candidates import classify_visibility, select_rh_core_theorem_sources, summarize
 
 
@@ -38,11 +39,41 @@ class IntegrationFoundationTests(unittest.TestCase):
             closure,
         )
         self.assertEqual((visible, claim), ("SOURCE_ONLY_PUBLIC_THEOREM", None))
+        visible, claim = classify_visibility(
+            {"resolution_status": "RESOLVED_UNIQUE", "resolved_full_name": "Dep.t"},
+            closure,
+        )
+        self.assertEqual((visible, claim), ("ALREADY_IN_REGISTERED_DEPENDENCY_CLOSURE", None))
         visible, _ = classify_visibility(
             {"resolution_status": "AMBIGUOUS_COMPILER_MATCH", "resolved_full_name": None},
             closure,
         )
         self.assertEqual(visible, "AMBIGUOUS_SOURCE_IDENTITY")
+
+    def test_unregistered_source_sentinel_rejects_claim_promotion(self):
+        row = {
+            "resolution_status": "RESOLVED_UNIQUE",
+            "visibility_class": "ALREADY_IN_REGISTERED_DEPENDENCY_CLOSURE",
+            "registered_claim_id": None,
+        }
+        validate_unregistered_source_sentinel(row)
+        validate_unregistered_source_sentinel({
+            **row, "visibility_class": "SOURCE_ONLY_PUBLIC_THEOREM",
+        })
+        for visibility in ("ALREADY_REGISTERED_ROOT", "UNRESOLVED_SOURCE_IDENTITY"):
+            with self.subTest(visibility=visibility):
+                with self.assertRaisesRegex(SystemExit, "source theorem incorrectly promoted"):
+                    validate_unregistered_source_sentinel({
+                        **row, "visibility_class": visibility,
+                    })
+        with self.assertRaisesRegex(SystemExit, "unregistered source theorem gained a claim"):
+            validate_unregistered_source_sentinel({
+                **row, "registered_claim_id": "C1",
+            })
+        with self.assertRaisesRegex(SystemExit, "source theorem identity drift"):
+            validate_unregistered_source_sentinel({
+                **row, "resolution_status": "AMBIGUOUS_COMPILER_MATCH",
+            })
 
     def test_summary_cannot_promote(self):
         s = summarize([
