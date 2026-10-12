@@ -1,4 +1,20 @@
-# WP4 Full K3 frozen feasibility gate — exact test receipt
+# WP4 Full K3 frozen feasibility gate — historical test receipt
+
+> **AUTHORITY CORRECTION — 2026-10-12:** The older frozen-Q14 evaluator
+> used the centre values of (a,b,d,a',b',d') when constructing the
+> **second derivative of the determinant over a whole interval**.
+> This does *not* enclose the genuine (Delta''(x)) throughout that
+> interval. Therefore its "10 positive / 2 unresolved" subdivisions
+> and the subsequent **18/18 PASS** on head
+> `518c4fd00641e98ccbe26a33af7d7154ca068358` (run
+> `38311427064`, artifact `11774767416`) are HISTORICAL
+> EXECUTION OUTPUTS, **not rigorously certified positivity**.
+> The old figures remain below for reproducibility, not authority.
+> A corrected evaluator now uses full-interval values, first jets and
+> second jets for (Delta''), and must pass a fresh exact-head
+> GitHub run. Until then the corrected frozen gate is **PENDING VALIDATION**,
+> and continuous K3 positivity is OPEN. No RH implication follows.
+
 
 **Claim status:** UNRESOLVED, **RH OPEN**. This is a rigorous Arb *enclosure-method feasibility test*, not a theorem or a negative-eigenvalue finding.
 
