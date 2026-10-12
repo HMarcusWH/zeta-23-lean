@@ -245,6 +245,70 @@ theorem evenRayleighBottom_ge_endpoint_min_of_raw_reciprocal_concavity
   refine le_ciInf fun z => ?_
   simpa [productionContactFixedEnergy] using hpoint z.1 z.2
 
+/-- Native production-Euler inequality implies genuine even-bottom endpoint
+interpolation on every interval strictly inside the *already PROVED* M66
+radius. The scalar C² premise is deliberately typed as the existing
+seam-safe fixed-vector realization, not as an RH/positivity assumption.
+This lemma never enlarges the M66 radius. -/
+theorem evenRayleighBottom_ge_endpoint_min_of_nativeEuler
+    (K : ℕ) (hK : 1 ≤ K)
+    (hSmooth : ∀ z : euclideanEvenBoundaryFlatSubspace K,
+      ContDiffOn ℝ 2
+        (fun x : ℝ => productionContactFixedEnergy .even x K z)
+        (Set.Ioi (0 : ℝ)))
+    {a L b : ℝ} (ha : 0 < a) (haL : a ≤ L) (hLb : L ≤ b)
+    (hbR : b < primeFreeRadius K) :
+    min (parityRayleighBottom .even a K)
+        (parityRayleighBottom .even b K) ≤
+      parityRayleighBottom .even L K := by
+  have hR : 0 < primeFreeRadius K := by
+    unfold primeFreeRadius
+    have hk : (0 : ℝ) < K := by exact_mod_cast (by omega : 0 < K)
+    positivity
+  have hb : 0 < b := lt_of_lt_of_le ha (le_trans haL hLb)
+  have hrb : (primeFreeRadius K)⁻¹ < b⁻¹ := by
+    have hd : (1 : ℝ) / primeFreeRadius K < 1 / b := by
+      apply (div_lt_div_iff₀ hR hb).2
+      simpa using hbR
+    simpa only [one_div] using hd
+  have hRaw :
+      ∀ z : euclideanEvenBoundaryFlatSubspace K, z ≠ 0 →
+        ConcaveOn ℝ (Set.Icc b⁻¹ a⁻¹)
+          (fun s : ℝ => productionContactFixedEnergy .even s⁻¹ K z) := by
+    intro z hz
+    let f : ℝ → ℝ := fun x =>
+      productionContactFixedEnergy .even x K z
+    have hC : ContDiffOn ℝ 2 f (Set.Ioi (0 : ℝ)) := hSmooth z
+    have hdiff1 : ∀ x : ℝ, 0 < x → DifferentiableAt ℝ f x := by
+      intro x hx
+      exact (hC.differentiableOn (by norm_num)).differentiableAt
+        (isOpen_Ioi.mem_nhds hx)
+    have hC1 : ContDiffOn ℝ 1 (deriv f) (Set.Ioi (0 : ℝ)) := by
+      have h := hC
+      rw [show (2 : ℕ∞ω) = 1 + 1 by norm_num,
+        contDiffOn_succ_iff_deriv_of_isOpen isOpen_Ioi] at h
+      exact h.2.2
+    have hdiff2 : ∀ x : ℝ, 0 < x →
+        DifferentiableAt ℝ (deriv f) x := by
+      intro x hx
+      exact (hC1.differentiableOn (by norm_num)).differentiableAt
+        (isOpen_Ioi.mem_nhds hx)
+    have hEuler : ∀ x : ℝ, 0 < x → x < primeFreeRadius K →
+        deriv (deriv f) x + 2 * deriv f x / x < 0 := by
+      intro x hx hxR
+      simpa [f, productionContactFirstVariation,
+        productionContactFixedSecondVariation] using
+        (productionContactEulerCurvature_neg K hK hx hxR z hz)
+    have hStrict := reciprocalAperture_strictConcaveOn f
+      (primeFreeRadius K) hR hdiff1 hdiff2 hEuler
+    have hsubset : Set.Icc b⁻¹ a⁻¹ ⊆
+        Set.Ioi (primeFreeRadius K)⁻¹ := by
+      intro t ht
+      exact lt_of_lt_of_le hrb ht.1
+    exact hStrict.concaveOn.subset hsubset (convex_Icc _ _)
+  exact evenRayleighBottom_ge_endpoint_min_of_raw_reciprocal_concavity
+    ha haL hLb hRaw
+
 end Zeta23.CCM
 
 #print axioms Zeta23.CCM.reciprocalAperture_first_derivative
@@ -257,3 +321,5 @@ end Zeta23.CCM
 #print axioms Zeta23.CCM.evenRayleighBottom_ge_endpoint_min_of_reciprocal_concavity
 
 #print axioms Zeta23.CCM.evenRayleighBottom_ge_endpoint_min_of_raw_reciprocal_concavity
+
+#print axioms Zeta23.CCM.evenRayleighBottom_ge_endpoint_min_of_nativeEuler
