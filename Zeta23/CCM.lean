@@ -284,3 +284,4 @@ import Zeta23.CCM.CanonicalEnteringPrimePhysicalJet
 import Zeta23.CCM.CanonicalSourceResolventDerivatives
 import Zeta23.CCM.GlobalBottomStrictEvenShiftedRay
 import Zeta23.CCM.ReciprocalApertureConcavity
+import Zeta23.CCM.K2EvenBottomGluing

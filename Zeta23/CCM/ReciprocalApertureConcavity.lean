@@ -24,9 +24,10 @@ theorem reciprocalAperture_first_derivative
       deriv f s⁻¹ * (-(s⁻¹)^2) := by
   have hInv : HasDerivAt (fun t : ℝ => t⁻¹) (-(s ^ 2)⁻¹) s :=
     hasDerivAt_inv (ne_of_gt hs)
-  have h := hf.hasDerivAt.comp s hInv
-  rw [h.deriv]
-  simp only [inv_pow]
+  have h : HasDerivAt (fun t : ℝ => f t⁻¹)
+      (deriv f s⁻¹ * (-(s ^ 2)⁻¹)) s := by
+    simpa only [Function.comp_def] using hf.hasDerivAt.comp s hInv
+  simpa only [inv_pow] using h.deriv
 
 /-- The exact reciprocal-aperture second-derivative chain rule. -/
 theorem reciprocalAperture_second_derivative
@@ -38,21 +39,21 @@ theorem reciprocalAperture_second_derivative
       (s⁻¹)^4 * (deriv (deriv f) s⁻¹ + 2 * s * deriv f s⁻¹) := by
   have hInv : HasDerivAt (fun t : ℝ => t⁻¹) (-(s ^ 2)⁻¹) s :=
     hasDerivAt_inv (ne_of_gt hs)
-  have hMain : HasDerivAt
-      (fun t : ℝ => (deriv f t⁻¹) * (-(t⁻¹)^2))
-      (deriv (deriv f) s⁻¹ * (-(s ^ 2)⁻¹) * (-(s⁻¹)^2) +
-        deriv f s⁻¹ * (-(2 * (s⁻¹) * (-(s ^ 2)⁻¹)))) s := by
-    convert (((hf2 s⁻¹ (inv_pos.mpr hs)).hasDerivAt.comp s hInv).mul
-      ((hInv.pow 2).neg)) using 1 <;> ring
+  have hComposed : HasDerivAt (fun t : ℝ => deriv f t⁻¹)
+      (deriv (deriv f) s⁻¹ * (-(s ^ 2)⁻¹)) s := by
+    simpa only [Function.comp_def] using
+      ((hf2 s⁻¹ (inv_pos.mpr hs)).hasDerivAt.comp s hInv)
+  have hInvSquared : HasDerivAt (fun t : ℝ => -(t⁻¹)^2)
+      (-(2 * (s⁻¹) * (-(s ^ 2)⁻¹))) s := (hInv.pow 2).neg
+  have hMain := hComposed.mul hInvSquared
   have hEq : (deriv (fun t : ℝ => f t⁻¹)) =ᶠ[𝓝 s]
       (fun t : ℝ => deriv f t⁻¹ * (-(t⁻¹)^2)) := by
     filter_upwards [isOpen_Ioi.mem_nhds hs] with t ht
     exact reciprocalAperture_first_derivative f t ht (hf t⁻¹ (inv_pos.mpr ht))
-  have hDerivative := (hMain.congr_of_eventuallyEq hEq.symm).deriv
+  have hDerivative := (hMain.congr_of_eventuallyEq hEq).deriv
   rw [hDerivative]
   have hne : s ≠ 0 := ne_of_gt hs
-  field_simp
-  ring
+  field_simp [ne_of_gt hs] <;> ring
 
 /-- Euler-corrected form, with physical aperture L=1/s. -/
 theorem reciprocalAperture_euler_chain
@@ -65,8 +66,7 @@ theorem reciprocalAperture_euler_chain
         2 * deriv f s⁻¹ / (s⁻¹)) := by
   rw [reciprocalAperture_second_derivative f hf hf2 s hs]
   have hne : s ≠ 0 := ne_of_gt hs
-  field_simp
-  ring
+  field_simp [ne_of_gt hs] <;> ring
 
 end Zeta23.CCM
 

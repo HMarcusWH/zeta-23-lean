@@ -1,8 +1,7 @@
 name: RHRC post287 WP2 and WP4 interval research
 
 on:
-  pull_request:
-  workflow_dispatch:
+  workflow_dispatch: # temporarily manual to prevent duplicate 360-minute interval jobs while Lean interfaces iterate; final-head run mandatory before merge
 
 permissions:
   contents: read
