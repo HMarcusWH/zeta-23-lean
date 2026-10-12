@@ -57,7 +57,10 @@
       "id": "WP5",
       "status": "INTERVAL_EVIDENCE_PENDING_REPLAY",
       "path": "research/RHRC/routes/R003_ccm_bridge/post287/wp5_modified_prime_crossing_certificate.py",
-      "open_detail": "Modified non-zeta K2 crossing at L=1.295/1.296 already Arb-certified on prior exact research head; local implementation retains true pole/arch/prime and prime-power consistency. Exact current branch replay and independent normalization receipt pending, NOT a genuine zeta counterexample."
+      "open_detail": "Modified non-zeta K2 crossing at L=1.295/1.296 already Arb-certified on prior exact research head; local implementation retains true pole/arch/prime and prime-power consistency. Exact current branch replay and independent normalization receipt pending, NOT a genuine zeta counterexample.",
+      "model_scope": "NON_ZETA_MODIFIED_PRIME",
+      "model_is_actual_zeta": false,
+      "rh_counterexample_claim": false
     },
     {
       "id": "WP6",

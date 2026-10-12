@@ -22,6 +22,12 @@ PROTECTED={'C_RH','R001_PRIME_UPPER','R002_WINDOWED_VISIBILITY',
            'M14_BRANCH_EXCLUSION','M32_CANONICAL_GRONWALL_COEFFICIENT',
            'M76_ARITHMETIC_COMPOSITION','OBS060O_STATIONARY_SATURATION_EXCLUSION'}
 
+def validate_wp5_model_scope(row: dict) -> None:
+    """A positive modified-prime crossing is not a zeta counterexample."""
+    assert row["model_scope"] == "NON_ZETA_MODIFIED_PRIME"
+    assert row["model_is_actual_zeta"] is False
+    assert row["rh_counterexample_claim"] is False
+
 def main():
     d=json.loads(LEDGER.read_text())
     assert d['terminal_claim']=='RH_OPEN'
@@ -42,7 +48,7 @@ def main():
             assert not row['status'].startswith('PROVED'),row
             assert row['alternate'].startswith('only predeclared fourth-order')
         if row['id']=='WP5':
-            assert 'not actual zeta' in row['open_detail']
+            validate_wp5_model_scope(row)
     # WP7: Every newly advertised source must really exist on this head.
     # This is a source/integration gate ONLY; it never upgrades a numerical
     # observation or a conditional theorem into RH proof authority.

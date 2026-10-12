@@ -46,6 +46,17 @@ YAML = [
 ]
 
 
+def validate_focused_workflow(focused: str) -> None:
+    """Require all theorem roots in the executable target loop and an actual lake build."""
+    parts = focused.split("for target in ", 1)
+    assert len(parts) == 2, "executable Lean build loop absent"
+    body, marker, _ = parts[1].partition("\n          do")
+    assert marker, "Lean target loop missing do clause"
+    for name in LEAN:
+        target = "Zeta23.CCM." + name[:-5]
+        assert target in body.split(), ("missing Lean build target", name)
+    assert 'if lake build "$target"; then' in focused, "Lean loop does not compile targets"
+
 def check() -> dict:
     ledger = json.loads(LEDGER.read_text())
     assert ledger["terminal_claim"] == "RH_OPEN"
@@ -83,8 +94,7 @@ def check() -> dict:
         ).read_text(), name
 
     focused = (ROOT / ".github/workflows" / YAML[0]).read_text()
-    for name in LEAN:
-        assert f"lake build Zeta23.CCM.{name[:-5]}" in focused, name
+    validate_focused_workflow(focused)
     workflow = (ROOT / ".github/workflows" / YAML[3]).read_text()
     assert "workflow_dispatch" in workflow
     assert "matrix:" in workflow and "parity: [even, odd]" in workflow
