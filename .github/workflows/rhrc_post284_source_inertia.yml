@@ -253,6 +253,10 @@ jobs:
         run: |
           python research/RHRC/routes/R003_ccm_bridge/post285/post285_m76_arb_resolution.py \
             --output /tmp/POST285_M76_ARB_RESOLUTION.json > /dev/null
+      - name: WP5 exact-model altered-prime Arb crossing certificate (non-zeta negative control)
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/post287/wp5_modified_prime_crossing_certificate.py \
+            --output /tmp/POST287_WP5_MODIFIED_PRIME_CROSSING.json --precision-bits 256
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -280,3 +284,4 @@ jobs:
             /tmp/POST285_M51_K2_EVEN_BOTTOM_CERTIFICATE.json
             /tmp/POST285_M63_ROUTE_COMPARISON_PROBE.json
             /tmp/POST285_M76_ARB_RESOLUTION.json
+            /tmp/POST287_WP5_MODIFIED_PRIME_CROSSING.json
