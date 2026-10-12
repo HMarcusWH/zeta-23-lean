@@ -28,8 +28,7 @@ theorem reciprocalAperture_first_derivative
   have hInv : HasDerivAt (fun t : ℝ => t⁻¹) (-(s ^ 2)⁻¹) s :=
     hasDerivAt_inv (ne_of_gt hs)
   have h := hf.hasDerivAt.comp s hInv
-  rw [h.deriv]
-  simp only [inv_pow]
+  simpa only [Function.comp_def, inv_pow] using h.deriv
 
 /-- The second reciprocal derivative, using differentiability of both `f`
 and its ordinary derivative throughout the positive aperture domain. -/
@@ -47,16 +46,16 @@ theorem reciprocalAperture_second_derivative
       (deriv (deriv f) s⁻¹ * (-(s ^ 2)⁻¹) * (-(s⁻¹)^2) +
         deriv f s⁻¹ * (-(2 * (s⁻¹) * (-(s ^ 2)⁻¹)))) s := by
     convert (((hf2 s⁻¹ (inv_pos.mpr hs)).hasDerivAt.comp s hInv).mul
-      ((hInv.pow 2).neg)) using 1 <;> ring
+      ((hInv.pow 2).neg)) using 1 <;>
+      simp only [Function.comp_def] <;> ring
   have hEq : (deriv (fun t : ℝ => f t⁻¹)) =ᶠ[𝓝 s]
       (fun t : ℝ => deriv f t⁻¹ * (-(t⁻¹)^2)) := by
     filter_upwards [isOpen_Ioi.mem_nhds hs] with t ht
     exact reciprocalAperture_first_derivative f t ht (hf t⁻¹ (inv_pos.mpr ht))
-  have hDerivative := (hMain.congr_of_eventuallyEq hEq.symm).deriv
+  have hDerivative := (hMain.congr_of_eventuallyEq hEq).deriv
   rw [hDerivative]
   have hne : s ≠ 0 := ne_of_gt hs
-  field_simp
-  ring
+  field_simp [hne] <;> ring
 
 /-- Euler form of the reciprocal chain rule, with `L=s⁻¹`.
 Neither the sign nor positivity at endpoints is built into this identity. -/
