@@ -28,6 +28,8 @@ jobs:
         run: |
           lake build Zeta23.CCM.GlobalBottomStrictEvenShiftedRay
           lake build Zeta23.CCM.ReciprocalApertureConcavity
+          lake build Zeta23.CCM.K2EvenBottomGluing
+          lake build Zeta23.CCM.K3BottomWindowRecord
       - name: Reject source proof escapes
         run: |
           python research/RHRC/closure_batch/check_lean_proof_escapes.py --scope promoted
