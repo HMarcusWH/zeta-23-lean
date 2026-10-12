@@ -222,10 +222,10 @@ theorem evenRayleighBottom_ge_endpoint_min_of_raw_reciprocal_concavity
       rcases le_total (F b⁻¹) (F a⁻¹) with h | h
       · have he : F b⁻¹ ≤ F L⁻¹ := by
           simpa [min_eq_left h] using hchord
-        exact le_trans (min_le_left _ _) ((div_le_div_iff₀ hc).2 he)
+        exact le_trans (min_le_left _ _) ((div_le_div_iff_of_pos_right hc).2 he)
       · have he : F a⁻¹ ≤ F L⁻¹ := by
           simpa [min_eq_right h] using hchord
-        exact le_trans (min_le_right _ _) ((div_le_div_iff₀ hc).2 he)
+        exact le_trans (min_le_right _ _) ((div_le_div_iff_of_pos_right hc).2 he)
     have hleft : parityRayleighBottom .even a K ≤ F a⁻¹ / ‖z‖ ^ 2 := by
       simpa [F, productionContactFixedEnergy] using
         (parityRayleighBottom_le_rayleigh .even a K z hz)
