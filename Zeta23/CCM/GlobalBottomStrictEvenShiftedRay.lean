@@ -1,5 +1,6 @@
 import Zeta23.CCM.CanonicalShiftedSecular
 import Zeta23.CCM.GlobalParityBottomPrimeRemainder
+import Zeta23.CCM.RegularFirstBadParitySourceMomentRigidity
 
 noncomputable section
 
