@@ -309,6 +309,49 @@ theorem evenRayleighBottom_ge_endpoint_min_of_nativeEuler
   exact evenRayleighBottom_ge_endpoint_min_of_raw_reciprocal_concavity
     ha haL hLb hRaw
 
+/-- WP1: fixed legal-even physical source energy is genuinely C² on every
+positive aperture, as an unconditional consequence of the already formally
+proved seam-safe compressed canonical CLM family.  No F04 hypothesis or
+zero-free assumption appears here. -/
+theorem canonical_evenFixedEnergy_contDiffOn_two (K : ℕ)
+    (z : euclideanEvenBoundaryFlatSubspace K) :
+    ContDiffOn ℝ 2
+      (fun L : ℝ => productionContactFixedEnergy .even L K z)
+      (Set.Ioi (0 : ℝ)) := by
+  intro L hL
+  have hfamily : ContDiffAt ℝ 2
+      (canonicalParityCompressedFamilyCLM .even K) L :=
+    (canonicalParityCompressedC2_proved .even K) L hL
+  have hvalue : ContDiffAt ℝ 2
+      (fun t : ℝ => (canonicalParityCompressedFamilyCLM .even K t) z) L :=
+    contDiffAt_complexCLM_apply_const_real hfamily z
+  have hpair : ContDiffAt ℝ 2
+      (fun t : ℝ =>
+        inner ℂ ((canonicalParityCompressedFamilyCLM .even K t) z) z) L :=
+    hvalue.inner ℂ contDiffAt_const
+  have hRe : ContDiff ℝ 2 (fun w : ℂ => w.re) := by
+    simpa only [Complex.reCLM_apply] using
+      (Complex.reCLM.contDiff (n := (2 : ℕ∞ω)))
+  have hscalar := hRe.contDiffAt.comp L hpair
+  simpa only [productionContactFixedEnergy,
+    canonicalParityCompressedFamilyCLM, parityCompressedCanonicalCLM,
+    Complex.reCLM_apply] using hscalar
+
+/-- The M66 native Euler curvature inequality and the globally C²
+compressed production family now supply **unconditional** endpoint
+interpolation on the real canonical even Rayleigh bottom inside the
+established prime-free radius.  The finite M51 window is not used. -/
+theorem evenRayleighBottom_ge_endpoint_min_of_M66
+    (K : ℕ) (hK : 1 ≤ K)
+    {a L b : ℝ} (ha : 0 < a) (haL : a ≤ L) (hLb : L ≤ b)
+    (hbR : b < primeFreeRadius K) :
+    min (parityRayleighBottom .even a K)
+        (parityRayleighBottom .even b K) ≤
+      parityRayleighBottom .even L K :=
+  evenRayleighBottom_ge_endpoint_min_of_nativeEuler K hK
+    (canonical_evenFixedEnergy_contDiffOn_two K)
+    ha haL hLb hbR
+
 end Zeta23.CCM
 
 #print axioms Zeta23.CCM.reciprocalAperture_first_derivative
@@ -323,3 +366,6 @@ end Zeta23.CCM
 #print axioms Zeta23.CCM.evenRayleighBottom_ge_endpoint_min_of_raw_reciprocal_concavity
 
 #print axioms Zeta23.CCM.evenRayleighBottom_ge_endpoint_min_of_nativeEuler
+
+#print axioms Zeta23.CCM.canonical_evenFixedEnergy_contDiffOn_two
+#print axioms Zeta23.CCM.evenRayleighBottom_ge_endpoint_min_of_M66
