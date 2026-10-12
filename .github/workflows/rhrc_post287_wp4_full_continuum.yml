@@ -43,7 +43,8 @@ jobs:
         run: |
           if test -f /tmp/wp4-k3-layer/manifest.json; then
             python research/RHRC/routes/R003_ccm_bridge/post287/wp4_k3_verify_full_transcript.py \
-              /tmp/wp4-k3-layer --precision-bits 256 --partial
+              /tmp/wp4-k3-layer --precision-bits 256 --partial \
+              --output /tmp/wp4-k3-layer/checker_receipt.json
           fi
       - uses: actions/upload-artifact@v4
         if: always()
@@ -56,12 +57,14 @@ jobs:
     needs: frozen-k3-layers
     if: always()
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    timeout-minutes: 360
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.13'
+      - name: Install the frozen Arb verifier dependencies
+        run: python -m pip install -r research/RHRC/routes/R003_ccm_bridge/requirements.txt
       - uses: actions/download-artifact@v4
         with:
           pattern: post287-wp4-k3-Q*
@@ -71,6 +74,21 @@ jobs:
         run: |
           python research/RHRC/routes/R003_ccm_bridge/post287/wp4_k3_assemble_shards.py \
             --input /tmp/wp4-k3-shards --output /tmp/wp4-k3-global
+      - name: Verify the assembled 30-layer result without partial mode when complete
+        shell: bash
+        run: |
+          if python - <<'PY'
+          import json
+          d=json.load(open('/tmp/wp4-k3-global/manifest.json'))
+          raise SystemExit(0 if d['status']=='INTERVAL_EVIDENCE' else 2)
+          PY
+          then
+            python research/RHRC/routes/R003_ccm_bridge/post287/wp4_k3_verify_full_transcript.py \
+              /tmp/wp4-k3-global --precision-bits 256 \
+              --output /tmp/wp4-k3-global/global_checker_receipt.json
+          else
+            echo "Partial K3 only: full no-partial checker not authorized" >> "$GITHUB_STEP_SUMMARY"
+          fi
       - name: Summarize full-range coverage, without promoting research to RH
         run: |
           python - <<'PY'

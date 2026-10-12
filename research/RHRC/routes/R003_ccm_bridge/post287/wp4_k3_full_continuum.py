@@ -19,6 +19,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import subprocess
 import sys
 import time
 from fractions import Fraction
@@ -35,6 +36,21 @@ from post166_fb05_cell_interval import _arb_matrix_from_sympy
 from post169_fb05_schur_visibility import one_step_geometry
 from wp4_k3_fourth_order_fallback import (
     Q,check_box,coeffs_of_a_and_delta,compressed_jets)
+
+
+# Freeze the source implementations on which every interval enclosure depends.
+SOURCE_INPUTS = [
+    "research/RHRC/routes/R003_ccm_bridge/post287/wp4_k3_full_continuum.py",
+    "research/RHRC/routes/R003_ccm_bridge/post287/wp4_k3_fourth_order_fallback.py",
+    "research/RHRC/routes/R003_ccm_bridge/canonical_source_arb.py",
+    "research/RHRC/routes/R003_ccm_bridge/post194_fb05_q14_fixed_unit_second_derivative.py",
+    "research/RHRC/routes/R003_ccm_bridge/post169_fb05_schur_visibility.py",
+]
+REPO_ROOT = HERE.parents[4]
+
+def source_input_digests() -> dict:
+    return {path: hashlib.sha256((REPO_ROOT / path).read_bytes()).hexdigest()
+            for path in SOURCE_INPUTS}
 
 END=Fraction(2772588722239782,10**15)
 START=Fraction(1,512)
@@ -177,6 +193,9 @@ def main():
               "method":"validated second order, fixed fourth order fallback",
               "note":"cutoff-Q analytic extensions checked on rational seam covers",
               "precision_bits":args.precision_bits,
+              "source_digests":source_input_digests(),
+              "source_commit":subprocess.check_output(["git","rev-parse","HEAD"],
+                         cwd=REPO_ROOT,text=True).strip(),
               "records":records,
               "all_L_positivity_certified":passed,
               "not_a_lean_proof":True,

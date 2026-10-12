@@ -24,7 +24,7 @@ from flint import ctx
 HERE=Path(__file__).resolve().parent
 sys.path[:0]=[str(HERE),str(HERE.parent)]
 import canonical_source_arb as C
-from wp4_k3_full_continuum import evaluate,interval_bounds
+from wp4_k3_full_continuum import evaluate,interval_bounds,source_input_digests
 
 
 def rational(x)->Fraction:
@@ -37,12 +37,16 @@ def main()->int:
     p=argparse.ArgumentParser()
     p.add_argument("directory",type=Path)
     p.add_argument("--precision-bits",type=int,default=256)
+    p.add_argument("--output",type=Path,help="write durable checker receipt")
     p.add_argument("--partial",action="store_true",
                    help="audit accepted fragments, not all-continuum positivity")
     args=p.parse_args()
     C.set_precision(args.precision_bits);ctx.prec=args.precision_bits
-    manifest=json.loads((args.directory/"manifest.json").read_text())
+    manifest_raw=(args.directory/"manifest.json").read_bytes()
+    manifest=json.loads(manifest_raw)
     assert manifest["terminal_claim"]=="RH_OPEN"
+    assert manifest.get("source_digests")==source_input_digests(), (
+        "certificate produced using a different source implementation")
     if args.precision_bits<=manifest["precision_bits"]:
         raise ValueError("checker must use independent higher precision")
     if not args.partial:
@@ -84,11 +88,20 @@ def main()->int:
     if not args.partial and set(layers)!={(q,p) for q in range(1,16)
                                                 for p in ("even","odd")}:
         raise AssertionError("full D2 two-parity Q1..Q15 coverage missing")
-    result={"schema":"post287.wp4.checker.v1","status":"PASS",
+    has_unresolved = any(json.loads((args.directory / spec["file"]).read_text())
+                         .get("unresolved") for spec in manifest["records"])
+    result={"schema":"post287.wp4.checker.v1",
+            "status":"PARTIAL_ACCEPTED_ONLY" if has_unresolved else "PASS",
             "claimed_scope":"PARTIAL_ONLY" if args.partial else "K3_FULL",
             "verified_tiles":count,"layers":len(layers),
             "precision_bits":args.precision_bits,
+            "manifest_sha256":hashlib.sha256(manifest_raw).hexdigest(),
+            "source_digests":manifest["source_digests"],
+            "producer_commit":manifest["source_commit"],
             "terminal_claim":"RH_OPEN","not_a_lean_proof":True}
+    if args.output is not None:
+        args.output.parent.mkdir(parents=True,exist_ok=True)
+        args.output.write_text(json.dumps(result,sort_keys=True,indent=2)+"\n")
     print(json.dumps(result,sort_keys=True))
     return 0
 
