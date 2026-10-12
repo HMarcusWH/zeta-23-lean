@@ -1,0 +1,85 @@
+{
+  "schema": "post287.wp0_wp7.obligations.v1",
+  "terminal_claim": "RH_OPEN",
+  "origin_plan": "POST287_NEXT_THREAD_PLAN_2026-10-11_rev4",
+  "base_main": "bb7c9c9d54fa2d1f82ad5b682c31148539a8f78c",
+  "base_tree": "e492714b5d5db02b6fc4ed2e10d0c81ef66d9087",
+  "requirements": {
+    "D2": "FULL_K3_BOTH_PARITIES_CONTINUOUS_[1/512,log16]",
+    "D1": "INCLUDE_WP6_REPORT_ONLY_DEFAULT",
+    "D3": "LATER_THREAD_DEFAULT"
+  },
+  "packages": [
+    {
+      "id": "WP0",
+      "status": "IMPLEMENTED_PENDING_FULL_HARVEST",
+      "authority": "REPO_PIN"
+    },
+    {
+      "id": "WP1",
+      "status": "PROVED_PENDING_CI",
+      "path": "Zeta23/CCM/ReciprocalApertureConcavity.lean",
+      "open_detail": "Bottom interpolation and K2 gluing not yet compiled"
+    },
+    {
+      "id": "WP2",
+      "status": "INTERVAL_EVIDENCE_PENDING_REPLAY",
+      "generator": "research/RHRC/routes/R003_ccm_bridge/post287/wp2_k2_even_transcript.py",
+      "checker": "research/RHRC/routes/R003_ccm_bridge/post287/wp2_verify_transcript.py",
+      "open_detail": "Lean gluing and committed full transcript pending"
+    },
+    {
+      "id": "WP3",
+      "status": "PROVED_PENDING_CI",
+      "path": "Zeta23/CCM/GlobalBottomStrictEvenShiftedRay.lean",
+      "open_detail": "Exact-head Lean not yet returned; trial and ray distinct from zero contact"
+    },
+    {
+      "id": "WP4",
+      "status": "GATE_UNRESOLVED",
+      "path": "research/RHRC/routes/R003_ccm_bridge/post287/wp4_k3_frozen_q14_gate.py",
+      "required": "both K3 parity bottoms strictly >0 at every L in [1/512,log16]",
+      "alternate": "only predeclared fourth-order Taylor centre expansion",
+      "open_detail": "Only frozen gate script; full continuous K3 certificate not proved"
+    },
+    {
+      "id": "WP5",
+      "status": "INTERVAL_EVIDENCE_PENDING_REPLAY",
+      "path": "research/RHRC/routes/R003_ccm_bridge/post287/wp5_modified_prime_crossing_certificate.py",
+      "open_detail": "Altered weights not actual zeta; endpoint odd positivity only"
+    },
+    {
+      "id": "WP6",
+      "status": "EXPERIMENTAL_SIGNAL_PENDING_REPLAY",
+      "path": "research/RHRC/routes/R003_ccm_bridge/post287/wp6_k2_signed_ray_probe.py",
+      "open_detail": "Restricted to one bounded K2 shifted ray family, not selected #247 negative ground"
+    },
+    {
+      "id": "WP7",
+      "status": "PENDING_CI",
+      "open_detail": "Per-job harvest, code review, final graph and exact-head build remain required"
+    }
+  ],
+  "protected_open": [
+    "C_RH",
+    "R001_PRIME_UPPER",
+    "R002_WINDOWED_VISIBILITY",
+    "R003_COFINAL_CANONICAL_ARITHMETIC_CERTIFICATES",
+    "M14_BRANCH_EXCLUSION",
+    "M32_CANONICAL_GRONWALL_COEFFICIENT",
+    "M76_ARITHMETIC_COMPOSITION",
+    "OBS060O_STATIONARY_SATURATION_EXCLUSION"
+  ],
+  "axioms_allowed": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "forbidden_promotion": [
+    "numerical grid -> full interval theorem",
+    "RH-equivalent positivity -> independent closure",
+    "falsifier replay -> proof",
+    "missing K3 gate -> positive"
+  ],
+  "merge_policy": "USER_APPROVAL_REQUIRED; DRAFT_UNTIL_ALL_ACCEPTANCE_GATES"
+}
