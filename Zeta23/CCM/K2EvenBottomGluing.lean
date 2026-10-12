@@ -59,6 +59,43 @@ theorem k2EvenBottom_positive_of_interpolation_and_M51
         le_of_lt (lt_of_not_ge hmid)
       exact hM51 L ⟨hleft, hUpper⟩
 
+/-- The WP2 hybrid K2 positivity theorem in its actual canonical
+reciprocal-concavity interface.  It is stronger than the elementary gluing
+adapter: the interpolation hypothesis has now been replaced by per-vector
+normalized canonical concavity, discharged for the Rayleigh iInf by WP1.
+
+The M51 finite-window certificate is *still an explicit premise*; Arb
+research evidence is never silently converted to Lean theorem authority.
+-/
+theorem k2EvenBottom_positive_of_reciprocal_concavity_and_M51
+    (hlog : (1 : ℝ) / 400 ≤ Real.log 16)
+    (hConcave :
+      ∀ z : euclideanEvenBoundaryFlatSubspace 2, z ≠ 0 →
+        ConcaveOn ℝ
+          (Set.Icc (((1 : ℝ) / 400)⁻¹) (((1 : ℝ) / 512)⁻¹))
+          (fun s : ℝ =>
+            productionContactFixedEnergy .even s⁻¹ 2 z / ‖z‖ ^ 2))
+    (hM51 : ∀ L ∈ Set.Icc ((1 : ℝ) / 400) (Real.log 16),
+        0 < parityRayleighBottom .even L 2)
+    {L : ℝ} (hL : 0 < L) (hUpper : L ≤ Real.log 16) :
+    0 < parityRayleighBottom .even L 2 := by
+  have hgap :
+      ∀ t ∈ Set.Icc ((1 : ℝ) / 512) ((1 : ℝ) / 400),
+        min (parityRayleighBottom .even ((1 : ℝ) / 512) 2)
+          (parityRayleighBottom .even ((1 : ℝ) / 400) 2) ≤
+          parityRayleighBottom .even t 2 := by
+    intro t ht
+    exact evenRayleighBottom_ge_endpoint_min_of_reciprocal_concavity
+      (a := (1 : ℝ) / 512) (b := (1 : ℝ) / 400) (L := t)
+      (by norm_num) ht.1 ht.2 hConcave
+  have hM51endpoint : 0 <
+      parityRayleighBottom .even ((1 : ℝ) / 400) 2 :=
+    hM51 _ ⟨le_refl _, hlog⟩
+  exact k2EvenBottom_positive_of_interpolation_and_M51
+    hgap hM51endpoint hM51 hL hUpper
+
 end Zeta23.CCM
 
 #print axioms Zeta23.CCM.k2EvenBottom_positive_of_interpolation_and_M51
+
+#print axioms Zeta23.CCM.k2EvenBottom_positive_of_reciprocal_concavity_and_M51
