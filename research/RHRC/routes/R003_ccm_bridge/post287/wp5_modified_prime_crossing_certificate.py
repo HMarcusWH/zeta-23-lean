@@ -42,15 +42,36 @@ def rayleigh(mat: arb_mat, v: tuple[int, ...]) -> arb:
                for i in range(2*K+1) for j in range(2*K+1)) / sum(c*c for c in v)
 
 
+def modified_weight(q: int) -> arb:
+    """Prime-power-consistent non-zeta coefficient Lambda_mod(q)/sqrt(q).
+
+    The rational A2/A3 are the already square-root-weighted q=2/3
+    coefficients. Every higher power of the same prime shares that base
+    logarithmic prime coefficient, including q4=A2/sqrt(2).
+    """
+    if q < 2:
+        return arb(0)
+    for prime, base in ((2, A2), (3, A3)):
+        n, exponent = q, 0
+        while n % prime == 0:
+            n //= prime
+            exponent += 1
+        if n == 1 and exponent:
+            return arbq(base) / (arb(prime).sqrt() ** (exponent-1))
+    return C.von_mangoldt(q) / arb(q).sqrt()
+
+
 def modified_matrix(L: arb) -> tuple[arb_mat, arb_mat]:
     cell = C.fixed_cell_membership(Q, L)
     if not cell["certified"]:
         raise ValueError("not strictly inside the fixed q<=3 cutoff cell")
     zeta = C.canonical_source_matrix(L, K, Q)
     rows = [[zeta[i, j] for j in range(2*K+1)] for i in range(2*K+1)]
-    for q, new_c in ((2, arbq(A2)), (3, arbq(A3))):
+    for q in range(2, Q + 1):
         old_c = C.von_mangoldt(q) / arb(q).sqrt()
-        diff = old_c - new_c
+        diff = old_c - modified_weight(q)
+        if diff.is_zero():
+            continue
         logq = arb(q).log()
         for i,n in enumerate(range(-K,K+1)):
             for j,m in enumerate(range(-K,K+1)):
@@ -80,6 +101,21 @@ def main():
     parser.add_argument("--precision-bits",type=int,default=256)
     args=parser.parse_args()
     C.set_precision(args.precision_bits);ctx.prec=args.precision_bits
+    # These model consistency checks are mathematical input to the falsifier,
+    # not optional prose claims about coefficients outside the Q3 test window.
+    model_checks = {
+        "q4_equals_q2_over_sqrt2":
+            bool((modified_weight(4) - modified_weight(2)/arb(2).sqrt()).contains(0)),
+        "q8_equals_q4_over_sqrt2":
+            bool((modified_weight(8) - modified_weight(4)/arb(2).sqrt()).contains(0)),
+        "q9_equals_q3_over_sqrt3":
+            bool((modified_weight(9) - modified_weight(3)/arb(3).sqrt()).contains(0)),
+        "all_2_3_powers_positive":
+            all(bool(modified_weight(q)>0) for q in (2,3,4,8,9)),
+        "non_prime_power_six_is_zero":bool(modified_weight(6).is_zero()),
+    }
+    if not all(model_checks.values()):
+        raise AssertionError(("invalid modified-prime power law", model_checks))
     samples=[eval_at(p) for p in POINTS]
     tests={
         "left_model_even_positive":samples[0]["signs"]["modified_even_positive"],
@@ -99,6 +135,7 @@ def main():
          "weights":{"a2":str(A2),"a3":str(A3),
                     "c4":"a2/sqrt(2) (prime-power consistency; not in q3 cell)"},
          "precision_bits":args.precision_bits,"samples":samples,"checks":tests,
+         "model_consistency":model_checks,
          "not_claimed":["global first contact","odd positivity over whole bracket",
                         "universal canonical positivity","RH"]}
     args.output.parent.mkdir(parents=True,exist_ok=True)
