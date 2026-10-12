@@ -56,15 +56,23 @@ def second_order_lower(c:arb,r:arb,cell:int,parity:str)->tuple[arb,arb]:
     B=_arb_matrix_from_sympy(geom.step_basis_exact)
     def project(M):
         return B.transpose()*M*B
+    # Point data suffice for Δ(c) and Δ'(c), but NOT Δ''(x).
+    # The latter must use rigorously interval-enclosed a,b,d and their
+    # first and second jets at EVERY x in the whole tile.  Reusing the
+    # centre a,b,d in the second derivative is a false enclosure and can
+    # silently certify a negative determinant; never do that.
     M,Mp,_=M012(c,3,cell)
-    _,_,Mpp=M012(arb(c,r),3,cell)
-    H,Hp,Hpp=project(M),project(Mp),project(Mpp)
+    Mi,Mpi,Mppi=M012(arb(c,r),3,cell)
+    H,Hp=project(M),project(Mp)
+    Hi,Hpi,Hppi=project(Mi),project(Mpi),project(Mppi)
     a,b,d=H[0,0],H[0,1],H[1,1]
     da,db,dd=Hp[0,0],Hp[0,1],Hp[1,1]
-    d2a,d2b,d2d=Hpp[0,0],Hpp[0,1],Hpp[1,1]
+    ai,bi,di=Hi[0,0],Hi[0,1],Hi[1,1]
+    dai,dbi,ddi=Hpi[0,0],Hpi[0,1],Hpi[1,1]
+    d2a,d2b,d2d=Hppi[0,0],Hppi[0,1],Hppi[1,1]
     det=a*d-b*b
     dp=da*d+a*dd-2*b*db
-    dpp=d2a*d+2*da*dd+a*d2d-2*db*db-2*b*d2b
+    dpp=d2a*di+2*dai*ddi+ai*d2d-2*dbi*dbi-2*bi*d2b
     lower_a=(a-abs(da).upper()*r +
              min(arb(0),d2a.lower())*r*r/2).lower()
     lower_d=(det-abs(dp).upper()*r +
