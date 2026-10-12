@@ -24,12 +24,25 @@ jobs:
           test: false
           lint: false
           use-mathlib-cache: true
-      - name: Compile new Step3 proof interfaces
+      - name: Compile ALL new source theorem roots (collect every failure)
+        shell: bash
         run: |
-          lake build Zeta23.CCM.GlobalBottomStrictEvenShiftedRay
-          lake build Zeta23.CCM.ReciprocalApertureConcavity
-          lake build Zeta23.CCM.K2EvenBottomGluing
-          lake build Zeta23.CCM.K3BottomWindowRecord
+          set +e
+          failed=0
+          for target in \
+            Zeta23.CCM.ReciprocalApertureConcavity \
+            Zeta23.CCM.K2EvenBottomGluing \
+            Zeta23.CCM.K3BottomWindowRecord \
+            Zeta23.CCM.GlobalBottomStrictEvenShiftedRay
+          do
+            if lake build "$target"; then
+              echo "$target: COMPILER PASS" | tee -a /tmp/wp0_wp7_focused_build.txt
+            else
+              echo "$target: COMPILER FAIL" | tee -a /tmp/wp0_wp7_focused_build.txt
+              failed=1
+            fi
+          done
+          exit "$failed"
       - name: Reject source proof escapes
         run: |
           python research/RHRC/closure_batch/check_lean_proof_escapes.py --scope promoted
