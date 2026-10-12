@@ -28,6 +28,9 @@ jobs:
         run: |
           python research/RHRC/integration/post287/check_implementation_completeness.py
           python research/RHRC/integration/post287/check_post287_ledgers.py
+      - name: Exact rational WP4 determinant-curvature and fourth-order coefficient regressions
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/post287/wp4_determinant_jet_exact_control.py
       - name: Compile ALL new source theorem roots (collect every failure)
         shell: bash
         run: |
