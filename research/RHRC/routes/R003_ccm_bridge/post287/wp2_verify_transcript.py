@@ -14,18 +14,37 @@ import json
 import sys
 from fractions import Fraction
 from pathlib import Path
-from flint import ctx
+from flint import arb, ctx, fmpq
 
 HERE=Path(__file__).resolve().parent
 sys.path[:0]=[str(HERE),str(HERE.parent),str(HERE.parent/'post285')]
 import canonical_source_arb as C
-from wp2_k2_even_transcript import accepted_bound,verified_cell_bounds
+from wp2_k2_even_transcript import verified_cell_bounds
+from post285.post285_m51_k2_even_bottom_certificate import quad
+from post194_fb05_q14_fixed_unit_second_derivative import (
+    fixed_unit_fixed_q_canonical_source_matrix_with_second_derivative_arb as matrix_jets)
+
 
 
 def rational(t:list[int])->Fraction:
     assert len(t)==2
     return Fraction(int(t[0]),int(t[1]))
 
+
+def exact_arb(value: Fraction) -> arb:
+    """The checker never converts a transcript rational via binary float."""
+    return arb(fmpq(value.numerator, value.denominator))
+
+
+def verify_fresh_lower(centre: Fraction, radius: Fraction, cell: int) -> bool:
+    """Fresh higher-precision formula, not the transcript writer's accepted_bound."""
+    C, R = exact_arb(centre), exact_arb(radius)
+    M0, M1, _ = matrix_jets(C, 2, cell)
+    _, _, M2box = matrix_jets(arb(C, R), 2, cell)
+    value, slope, curvature = quad(M0), quad(M1), quad(M2box)
+    bound = (value - abs(slope).upper() * R +
+             min(arb(0), curvature.lower()) * R * R / 2).lower()
+    return bool(bound > 0)
 
 def main():
     p=argparse.ArgumentParser()
@@ -58,7 +77,7 @@ def main():
             centre,radius=(left+right)/2,(right-left)/2
             if rational(row['centre'])!=centre or rational(row['radius'])!=radius:
                 raise AssertionError(('centre mismatch',Q,left,right))
-            if not accepted_bound(centre,radius,Q)['strictly_positive']:
+            if row.get('strictly_positive') is not True or not verify_fresh_lower(centre,radius,Q):
                 raise AssertionError(('invalid Arb lower bound',Q,left,right))
             current=right;count+=1
         if current!=b:
