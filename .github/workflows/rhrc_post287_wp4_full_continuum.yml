@@ -1,0 +1,87 @@
+name: RHRC post287 D2 FULL K3 interval campaign (manual shards)
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  frozen-k3-layers:
+    strategy:
+      fail-fast: false
+      max-parallel: 8
+      matrix:
+        q: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+        parity: [even, odd]
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Install pinned Arb and research dependencies
+        run: python -m pip install -r research/RHRC/routes/R003_ccm_bridge/requirements.txt
+      - name: Produce the exact rational K3 interval layer
+        shell: bash
+        run: |
+          set +e
+          python research/RHRC/routes/R003_ccm_bridge/post287/wp4_k3_full_continuum.py \
+            --out /tmp/wp4-k3-layer \
+            --cells ${{ matrix.q }} --parities ${{ matrix.parity }} \
+            --precision-bits 192 --max-depth 32 --max-nodes 2500 --seconds 18000
+          status=$?
+          set -e
+          if [ "$status" -eq 2 ]; then
+            echo "UNRESOLVED is a scientific disposition, not certified positivity" >> "$GITHUB_STEP_SUMMARY"
+          elif [ "$status" -ne 0 ]; then
+            exit "$status"
+          fi
+      - name: Verify every accepted rational tile again without search
+        shell: bash
+        run: |
+          if test -f /tmp/wp4-k3-layer/manifest.json; then
+            python research/RHRC/routes/R003_ccm_bridge/post287/wp4_k3_verify_full_transcript.py \
+              /tmp/wp4-k3-layer --precision-bits 256 --partial
+          fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: post287-wp4-k3-Q${{ matrix.q }}-${{ matrix.parity }}
+          path: /tmp/wp4-k3-layer/
+          if-no-files-found: warn
+
+  combine-frozen-certificate:
+    needs: frozen-k3-layers
+    if: always()
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: post287-wp4-k3-Q*
+          path: /tmp/wp4-k3-shards
+          merge-multiple: false
+      - name: Assemble 30 checked layers; explicitly report missing or unresolved layers
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/post287/wp4_k3_assemble_shards.py \
+            --input /tmp/wp4-k3-shards --output /tmp/wp4-k3-global
+      - name: Summarize full-range coverage, without promoting research to RH
+        run: |
+          python - <<'PY'
+          import json,os
+          d=json.load(open('/tmp/wp4-k3-global/manifest.json'))
+          summary=f"D2 FULL K3: {d['status']}; missing={len(d['missing_layers'])}; unresolved={len(d['unresolved_layers'])}. RH_OPEN."
+          print(summary)
+          with open(os.environ['GITHUB_STEP_SUMMARY'],'a') as h:h.write(summary+'\n')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: post287-wp4-k3-all-layers-hashchecked
+          path: /tmp/wp4-k3-global/
