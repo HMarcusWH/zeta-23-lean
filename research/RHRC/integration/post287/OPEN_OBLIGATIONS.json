@@ -17,16 +17,16 @@
     },
     {
       "id": "WP1",
-      "status": "PROVED_PENDING_CI",
+      "status": "PARTIAL_PENDING_CI",
       "path": "Zeta23/CCM/ReciprocalApertureConcavity.lean",
-      "open_detail": "Bottom interpolation and K2 gluing not yet compiled"
+      "open_detail": "Reciprocal chain/concavity and generic concave-family endpoint lemma pushed; actual canonical even Rayleigh-bottom interpolation and exact-head compiler validation remain OPEN"
     },
     {
       "id": "WP2",
       "status": "INTERVAL_EVIDENCE_PENDING_REPLAY",
       "generator": "research/RHRC/routes/R003_ccm_bridge/post287/wp2_k2_even_transcript.py",
       "checker": "research/RHRC/routes/R003_ccm_bridge/post287/wp2_verify_transcript.py",
-      "open_detail": "Lean gluing and committed full transcript pending"
+      "open_detail": "Conditional Lean gluing candidate pushed; full M51 transcript and checker are unrun; no machine-checked Lean-Python equivalence"
     },
     {
       "id": "WP3",
@@ -36,11 +36,11 @@
     },
     {
       "id": "WP4",
-      "status": "GATE_UNRESOLVED",
+      "status": "GATE_PENDING_CI",
       "path": "research/RHRC/routes/R003_ccm_bridge/post287/wp4_k3_frozen_q14_gate.py",
       "required": "both K3 parity bottoms strictly >0 at every L in [1/512,log16]",
       "alternate": "only predeclared fourth-order Taylor centre expansion",
-      "open_detail": "Only frozen gate script; full continuous K3 certificate not proved"
+      "open_detail": "Frozen Q14 feasibility script pushed but not yet run; full two-parity continuous K3 certificate and fourth-order fallback unimplemented"
     },
     {
       "id": "WP5",
