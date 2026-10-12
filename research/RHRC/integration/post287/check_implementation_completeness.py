@@ -109,7 +109,11 @@ def check() -> dict:
     continuum = (BASE / "wp4_k3_full_continuum.py").read_text()
     frozen = (BASE / "wp4_k3_frozen_q14_gate.py").read_text()
     assert "ORDER = 4" in fallback
-    assert "third" in fallback.lower() and "fourth" in fallback.lower()
+    # Check actual Taylor code, not English adjectives in documentation.
+    assert "def coeffs_of_a_and_delta" in fallback
+    assert "range(1, ORDER)" in fallback
+    assert "fourth_interval" in fallback
+    assert "full_matrix_jets(interval,cutoff)" in fallback
     assert "Mi,Mpi,Mppi=M012" in continuum, (
         "second-order determinant bound must use full interval 0th, 1st and 2nd jets"
     )
