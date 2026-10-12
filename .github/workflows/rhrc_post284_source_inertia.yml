@@ -243,6 +243,10 @@ jobs:
         run: |
           python research/RHRC/routes/R003_ccm_bridge/post285/post285_m51_k2_even_bottom_certificate.py \
             --output /tmp/POST285_M51_K2_EVEN_BOTTOM_CERTIFICATE.json > /dev/null
+      - name: WP5 nonnative modified-prime K2 rigorous crossing control
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/post287/wp5_modified_prime_k2_certificate.py \
+            --output /tmp/POST287_WP5_MODIFIED_PRIME_K2_CERTIFICATE.json
       - name: Post-285 M63 route comparison at the K=2 near-contacts (experimental)
         run: |
           python research/RHRC/routes/R003_ccm_bridge/post285/post285_m63_route_comparison_probe.py \
