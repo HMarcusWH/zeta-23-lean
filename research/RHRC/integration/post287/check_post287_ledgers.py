@@ -54,11 +54,13 @@ def main():
             assert '#print axioms' in code, path
             assert not re.search(r'(?m)^\s*(sorry|admit|axiom)\b',code), path
     wp4=next(row for row in d['packages'] if row['id']=='WP4')
-    if wp4['status']=='GATE_UNRESOLVED':
+    if wp4['status'] in ('GATE_UNRESOLVED', 'GATE_PENDING_CI'):
         for key in ('fallback','jet_validator','k2_odd','full_cover',
                     'cover_checker','assembler','lean_record'):
             assert (ROOT/wp4[key]).is_file(), ('missing required WP4 method',key)
-        assert 'Full D2 positivity still OPEN' in wp4['open_detail']
+        assert 'K3 positivity remains OPEN' in wp4['open_detail'], (
+            'source/certificate status must not promote a failed gate'
+        )
     assert d['merge_policy'].startswith('USER_APPROVAL_REQUIRED')
     print(json.dumps({'status':'PASS','claim_status':'RH_OPEN',
                       'work_packages':8,'protected_open':len(PROTECTED),
