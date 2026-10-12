@@ -43,6 +43,22 @@ def main():
             assert row['alternate'].startswith('only predeclared fourth-order')
         if row['id']=='WP5':
             assert 'not actual zeta' in row['open_detail']
+    # WP7: Every newly advertised source must really exist on this head.
+    # This is a source/integration gate ONLY; it never upgrades a numerical
+    # observation or a conditional theorem into RH proof authority.
+    for path in d.get('implementation_source_files', []):
+        source=ROOT/path
+        assert source.is_file(), ('missing implementation source', path)
+        if source.suffix=='.lean':
+            code=source.read_text()
+            assert '#print axioms' in code, path
+            assert not re.search(r'(?m)^\s*(sorry|admit|axiom)\b',code), path
+    wp4=next(row for row in d['packages'] if row['id']=='WP4')
+    if wp4['status']=='GATE_UNRESOLVED':
+        for key in ('fallback','jet_validator','k2_odd','full_cover',
+                    'cover_checker','assembler','lean_record'):
+            assert (ROOT/wp4[key]).is_file(), ('missing required WP4 method',key)
+        assert 'Full D2 positivity still OPEN' in wp4['open_detail']
     assert d['merge_policy'].startswith('USER_APPROVAL_REQUIRED')
     print(json.dumps({'status':'PASS','claim_status':'RH_OPEN',
                       'work_packages':8,'protected_open':len(PROTECTED),
