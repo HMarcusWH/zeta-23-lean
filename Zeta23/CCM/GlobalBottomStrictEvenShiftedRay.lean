@@ -1,5 +1,6 @@
 import Zeta23.CCM.CanonicalShiftedSecular
 import Zeta23.CCM.GlobalParityBottomPrimeRemainder
+import Zeta23.CCM.RegularFirstBadParitySourceMomentRigidity
 
 noncomputable section
 
@@ -149,6 +150,10 @@ theorem GlobalBottomResidualState.evenStrict_shiftedRay_primeRemainder_budget
   have henergy : parityCanonicalSourceEnergy .even s.aligned.firstBad.L
       (s.aligned.firstBad.Nstar + 1) x = s.aligned.lam * ‖x‖ ^ 2 := by
     unfold parityCanonicalSourceEnergy
+    change (inner ℂ
+      (evenCompressedCanonical s.aligned.firstBad.L
+        (s.aligned.firstBad.Nstar + 1) x) x).re =
+      s.aligned.lam * ‖x‖ ^ 2
     rw [heig]
     have hsmul : inner ℂ ((s.aligned.lam : ℂ) • x) x =
         s.aligned.lam • inner ℂ x x := by
