@@ -68,7 +68,8 @@ jobs:
             Zeta23.CCM.CanonicalContactSourceOlderPrimeBalance \
             Zeta23.CCM.CanonicalContactRemainderOscillation \
             Zeta23.CCM.CanonicalEnteringPrimePhysicalJet \
-            Zeta23.CCM.CanonicalSourceResolventDerivatives
+            Zeta23.CCM.CanonicalSourceResolventDerivatives \
+            Zeta23.CCM.GlobalBottomStrictEvenShiftedRay
           do
             if lake build "$target"; then
               echo "$target PASS" | tee -a /tmp/post284-targets.txt
@@ -119,7 +120,8 @@ jobs:
             Zeta23/CCM/CanonicalContactSourceOlderPrimeBalance.lean \
             Zeta23/CCM/CanonicalContactRemainderOscillation.lean \
             Zeta23/CCM/CanonicalEnteringPrimePhysicalJet.lean \
-            Zeta23/CCM/CanonicalSourceResolventDerivatives.lean
+            Zeta23/CCM/CanonicalSourceResolventDerivatives.lean \
+            Zeta23/CCM/GlobalBottomStrictEvenShiftedRay.lean
       - name: Reject proof escapes on the promoted surface
         run: python research/RHRC/closure_batch/check_lean_proof_escapes.py --scope promoted
       - uses: actions/upload-artifact@v4
