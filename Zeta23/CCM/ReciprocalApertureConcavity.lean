@@ -73,8 +73,40 @@ theorem reciprocalAperture_euler_chain
   field_simp
   ring
 
+/-- Strict concavity on the reciprocal positive-aperture region where the
+physical Euler-corrected second derivative is independently strictly
+negative. The stated curvature hypothesis is essential. -/
+theorem reciprocalAperture_strictConcaveOn
+    (f : ℝ → ℝ) (R : ℝ) (hR : 0 < R)
+    (hf : ∀ x : ℝ, 0 < x → DifferentiableAt ℝ f x)
+    (hf2 : ∀ x : ℝ, 0 < x → DifferentiableAt ℝ (deriv f) x)
+    (hCurv : ∀ x : ℝ, 0 < x → x < R →
+      deriv (deriv f) x + 2 * deriv f x / x < 0) :
+    StrictConcaveOn ℝ (Set.Ioi R⁻¹) (fun s : ℝ => f s⁻¹) := by
+  have hCont : ContinuousOn (fun s : ℝ => f s⁻¹) (Set.Ioi R⁻¹) := by
+    intro s hs
+    have hspos : 0 < s := (inv_pos.mpr hR).trans hs
+    have hpos : 0 < s⁻¹ := inv_pos.mpr hspos
+    exact ((hf s⁻¹ hpos).continuousAt.comp s
+      (continuousAt_inv₀ (ne_of_gt hspos))).continuousWithinAt
+  apply strictConcaveOn_of_deriv2_neg (convex_Ioi _) hCont
+  intro s hsInt
+  have hs : R⁻¹ < s := interior_subset hsInt
+  have hspos : 0 < s := (inv_pos.mpr hR).trans hs
+  have hpos : 0 < s⁻¹ := inv_pos.mpr hspos
+  have hSR : (1 : ℝ) / R < s := by simpa [one_div] using hs
+  have hmul : 1 < s * R := (div_lt_iff₀ hR).mp hSR
+  have hless : s⁻¹ < R := by
+    change 1 / s < R
+    apply (div_lt_iff₀ hspos).mpr
+    nlinarith [hmul]
+  change deriv (deriv (fun t : ℝ => f t⁻¹)) s < 0
+  rw [reciprocalAperture_euler_chain f hf hf2 s hspos]
+  exact mul_neg_of_pos_of_neg (pow_pos hpos 4) (hCurv s⁻¹ hpos hless)
+
 end Zeta23.CCM
 
 #print axioms Zeta23.CCM.reciprocalAperture_first_derivative
 #print axioms Zeta23.CCM.reciprocalAperture_second_derivative
 #print axioms Zeta23.CCM.reciprocalAperture_euler_chain
+#print axioms Zeta23.CCM.reciprocalAperture_strictConcaveOn
