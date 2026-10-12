@@ -185,6 +185,66 @@ theorem evenRayleighBottom_ge_endpoint_min_of_reciprocal_concavity
   refine le_ciInf fun z => ?_
   simpa [productionContactFixedEnergy] using hpoint z.1 z.2
 
+/-- The more economical WP1 bridge: it is enough to know *unnormalized*
+fixed-vector source-energy concavity on reciprocal aperture.  The positive
+norm-square denominator is independent of aperture, so the true canonical
+Rayleigh bottom inherits the same endpoint lower bound.  No separate
+positivity assumption is used. -/
+theorem evenRayleighBottom_ge_endpoint_min_of_raw_reciprocal_concavity
+    {K : ℕ} {a L b : ℝ}
+    (ha : 0 < a) (haL : a ≤ L) (hLb : L ≤ b)
+    (hConcave : ∀ z : euclideanEvenBoundaryFlatSubspace K, z ≠ 0 →
+      ConcaveOn ℝ (Set.Icc b⁻¹ a⁻¹)
+        (fun s : ℝ => productionContactFixedEnergy .even s⁻¹ K z)) :
+    min (parityRayleighBottom .even a K)
+        (parityRayleighBottom .even b K) ≤
+      parityRayleighBottom .even L K := by
+  have hL : 0 < L := lt_of_lt_of_le ha haL
+  have hb : 0 < b := lt_of_lt_of_le hL hLb
+  have hab : a ≤ b := le_trans haL hLb
+  have hba : b⁻¹ ≤ a⁻¹ := by
+    simpa only [one_div] using (one_div_le_one_div_of_le ha hab)
+  have hinside : L⁻¹ ∈ Set.Icc b⁻¹ a⁻¹ := by
+    constructor
+    · simpa only [one_div] using (one_div_le_one_div_of_le hL hLb)
+    · simpa only [one_div] using (one_div_le_one_div_of_le ha haL)
+  have hpoint (z : euclideanEvenBoundaryFlatSubspace K) (hz : z ≠ 0) :
+      min (parityRayleighBottom .even a K)
+          (parityRayleighBottom .even b K) ≤
+        productionContactFixedEnergy .even L K z / ‖z‖ ^ 2 := by
+    let F : ℝ → ℝ := fun s => productionContactFixedEnergy .even s⁻¹ K z
+    have hchord : min (F b⁻¹) (F a⁻¹) ≤ F L⁻¹ :=
+      concave_on_Icc_ge_min_endpoints F hba hinside (hConcave z hz)
+    have hc : 0 < ‖z‖ ^ 2 := by positivity
+    have hscaled :
+        min (F b⁻¹ / ‖z‖ ^ 2) (F a⁻¹ / ‖z‖ ^ 2) ≤
+          F L⁻¹ / ‖z‖ ^ 2 := by
+      rcases le_total (F b⁻¹) (F a⁻¹) with h | h
+      · have he : F b⁻¹ ≤ F L⁻¹ := by
+          simpa [min_eq_left h] using hchord
+        exact le_trans (min_le_left _ _) ((div_le_div_iff₀ hc).2 he)
+      · have he : F a⁻¹ ≤ F L⁻¹ := by
+          simpa [min_eq_right h] using hchord
+        exact le_trans (min_le_right _ _) ((div_le_div_iff₀ hc).2 he)
+    have hleft : parityRayleighBottom .even a K ≤ F a⁻¹ / ‖z‖ ^ 2 := by
+      simpa [F, productionContactFixedEnergy] using
+        (parityRayleighBottom_le_rayleigh .even a K z hz)
+    have hright : parityRayleighBottom .even b K ≤ F b⁻¹ / ‖z‖ ^ 2 := by
+      simpa [F, productionContactFixedEnergy] using
+        (parityRayleighBottom_le_rayleigh .even b K z hz)
+    calc
+      min (parityRayleighBottom .even a K)
+          (parityRayleighBottom .even b K) ≤
+          min (F a⁻¹ / ‖z‖ ^ 2) (F b⁻¹ / ‖z‖ ^ 2) :=
+        min_le_min hleft hright
+      _ = min (F b⁻¹ / ‖z‖ ^ 2) (F a⁻¹ / ‖z‖ ^ 2) := min_comm _ _
+      _ ≤ F L⁻¹ / ‖z‖ ^ 2 := hscaled
+      _ = productionContactFixedEnergy .even L K z / ‖z‖ ^ 2 := by
+        simp [F]
+  unfold parityRayleighBottom
+  refine le_ciInf fun z => ?_
+  simpa [productionContactFixedEnergy] using hpoint z.1 z.2
+
 end Zeta23.CCM
 
 #print axioms Zeta23.CCM.reciprocalAperture_first_derivative
@@ -195,3 +255,5 @@ end Zeta23.CCM
 #print axioms Zeta23.CCM.concave_family_ge_of_endpoint_ge
 
 #print axioms Zeta23.CCM.evenRayleighBottom_ge_endpoint_min_of_reciprocal_concavity
+
+#print axioms Zeta23.CCM.evenRayleighBottom_ge_endpoint_min_of_raw_reciprocal_concavity
