@@ -49,15 +49,23 @@ def restricted(M,geom):
     return basis.transpose()*M*basis
 
 
-def two_scalar_jets(M,Mp,Mpp,geom):
-    m,p,q=(restricted(x,geom) for x in (M,Mp,Mpp))
+def two_scalar_jets(M,Mp,Mi,Mpi,Mppi,geom):
+    """Rigorous determinant value and first jet at c, second jet over box.
+
+    Δ''(x) includes a''(x)d(x) + 2a'(x)d'(x) + a(x)d''(x)
+    -2 b'(x)^2 - 2b(x)b''(x).  Every factor in that expression
+    must be enclosed over the WHOLE interval.  Replacing any such
+    factor by its value at the centre is mathematically UNSOUND.
+    """
+    m,p,mi,pi,qi=(restricted(x,geom) for x in (M,Mp,Mi,Mpi,Mppi))
     a,b,d=m[0,0],m[0,1],m[1,1]
     da,db,dd=p[0,0],p[0,1],p[1,1]
-    dda,ddb,ddd=q[0,0],q[0,1],q[1,1]
-    # Sylvester: a>0 and Delta=ad-b²>0; NEVER divide by a.
+    ai,bi,di=mi[0,0],mi[0,1],mi[1,1]
+    dai,dbi,ddi=pi[0,0],pi[0,1],pi[1,1]
+    dda,ddb,ddd=qi[0,0],qi[0,1],qi[1,1]
     return ((a,da,dda),
             (a*d-b*b,da*d+a*dd-2*b*db,
-             dda*d+2*da*dd+a*ddd-2*(db*db+b*ddb)))
+             dda*di+2*dai*ddi+ai*ddd-2*(dbi*dbi+bi*ddb)))
 
 
 def taylor_lower(jets3:tuple,rad:arb)->arb:
@@ -69,8 +77,8 @@ def taylor_lower(jets3:tuple,rad:arb)->arb:
 def evaluate(Q:int,t:Fraction,r:Fraction,geom)->dict:
     centre,box,rad=t_to_aperture(Q,t,r)
     M,Mp,_=jets(centre,3,Q)
-    _,_,Mpp=jets(box,3,Q)
-    a,delta=two_scalar_jets(M,Mp,Mpp,geom)
+    Mi,Mpi,Mppi=jets(box,3,Q)
+    a,delta=two_scalar_jets(M,Mp,Mi,Mpi,Mppi,geom)
     a_low=taylor_lower(a,rad)
     delta_low=taylor_lower(delta,rad)
     return {'t':[t.numerator,t.denominator],'radius':[r.numerator,r.denominator],
