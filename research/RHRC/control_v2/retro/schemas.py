@@ -5,6 +5,10 @@ import hashlib
 import json
 
 
+def _canonical_json(value) -> str:
+    return json.dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=False)
+
+
 @dataclass(frozen=True)
 class HistoricalClue:
     concept_id: str
@@ -36,6 +40,10 @@ class RetroSearchReceipt:
 
     @property
     def receipt_id(self) -> str:
+        # The id hashes the canonical JSON of the whole receipt. An exhaustive
+        # all-ref search can hold millions of hits, and one JSON string of all
+        # of them (plus its UTF-8 copy) exhausts a CI runner, so the same
+        # bytes are fed to the hash one hit at a time.
         payload = {
             "concept_id": self.concept_id,
             "terms": self.terms,
@@ -45,10 +53,18 @@ class RetroSearchReceipt:
             "search_complete": self.search_complete,
             "searched_sources": self.searched_sources,
             "search_paths": self.search_paths,
-            "hits": [h.to_dict() for h in self.hits],
+            "hits": [],
         }
-        raw = json.dumps(payload, sort_keys=True, separators=(",", ":"), ensure_ascii=False).encode("utf-8")
-        return "RETRO-" + hashlib.sha256(raw).hexdigest()[:20]
+        # Inside a JSON string every quote is escaped, so the only unescaped
+        # '"hits":[]' is the key itself.
+        head, _, tail = _canonical_json(payload).partition('"hits":[]')
+        digest = hashlib.sha256((head + '"hits":[').encode("utf-8"))
+        for i, hit in enumerate(self.hits):
+            if i:
+                digest.update(b",")
+            digest.update(_canonical_json(hit.to_dict()).encode("utf-8"))
+        digest.update(("]" + tail).encode("utf-8"))
+        return "RETRO-" + digest.hexdigest()[:20]
 
     def to_dict(self) -> dict:
         return {

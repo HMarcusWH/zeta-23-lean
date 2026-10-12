@@ -105,6 +105,10 @@ def search_git_history(repo: Path, terms: tuple[str, ...], *, as_of_ref: str,
     """
     hits: list[GitHit] = []
     seen: set[tuple[str, str, int | None, str]] = set()
+    # An exhaustive all-ref search meets the same path and line in hundreds of
+    # commits. Sharing one string object per distinct value keeps millions of
+    # hits within a CI runner's memory and changes no hit.
+    shared: dict[str, str] = {}
 
     with closing(_candidate_walks(
         repo, terms, as_of_ref, paths,
@@ -129,6 +133,8 @@ def search_git_history(repo: Path, terms: tuple[str, ...], *, as_of_ref: str,
                     if len(parts) != 4:
                         continue
                     _, path, line_s, text = parts
+                    path = shared.setdefault(path, path)
+                    text = shared.setdefault(text, text)
                     try:
                         line_number = int(line_s)
                     except ValueError:
@@ -137,7 +143,8 @@ def search_git_history(repo: Path, terms: tuple[str, ...], *, as_of_ref: str,
                     if key in seen:
                         continue
                     seen.add(key)
-                    hits.append(GitHit(commit, path, line_number, text.strip(), term))
+                    excerpt = text.strip()
+                    hits.append(GitHit(commit, path, line_number, shared.setdefault(excerpt, excerpt), term))
                     if max_hits is not None and len(hits) >= max_hits:
                         return tuple(sorted(hits, key=lambda h: (h.commit, h.path, h.line_number or 0, h.term)))
 
