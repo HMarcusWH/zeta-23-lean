@@ -86,6 +86,7 @@ theorem k2EvenBottom_positive_of_reciprocal_concavity_and_M51
           parityRayleighBottom .even t 2 := by
     intro t ht
     exact evenRayleighBottom_ge_endpoint_min_of_reciprocal_concavity
+      (K := 2) (by norm_num : 2 ≤ 2)
       (a := (1 : ℝ) / 512) (b := (1 : ℝ) / 400) (L := t)
       (by norm_num) ht.1 ht.2 hConcave
   have hM51endpoint : 0 <
@@ -136,6 +137,7 @@ theorem k2EvenBottom_positive_of_raw_concavity_and_M51
           parityRayleighBottom .even t 2 := by
     intro t ht
     exact evenRayleighBottom_ge_endpoint_min_of_raw_reciprocal_concavity
+      (K := 2) (by norm_num : 2 ≤ 2)
       (a := (1 : ℝ) / 512) (b := (1 : ℝ) / 400) (L := t)
       (by norm_num) ht.1 ht.2 hRawConcave
   have he : 0 < parityRayleighBottom .even ((1 : ℝ) / 400) 2 :=
@@ -174,7 +176,7 @@ theorem k2EvenBottom_positive_of_M66_and_M51
           (parityRayleighBottom .even ((1 : ℝ) / 400) 2) ≤
           parityRayleighBottom .even t 2 := by
     intro t ht
-    exact evenRayleighBottom_ge_endpoint_min_of_M66 2 (by omega)
+    exact evenRayleighBottom_ge_endpoint_min_of_M66 2 (by norm_num : 2 ≤ 2)
       (by norm_num : (0 : ℝ) < 1 / 512) ht.1 ht.2
       one_div_400_lt_primeFreeRadius_two
   have he : 0 < parityRayleighBottom .even ((1 : ℝ) / 400) 2 :=

@@ -184,7 +184,9 @@ jobs:
           python research/RHRC/routes/R003_ccm_bridge/post285/post285_m74_secular_falsifier.py \
             --output /tmp/POST285_M74_SECULAR_FALSIFIER.json > /dev/null
       - name: WP7 post287 single-PR claim and evidence-state firewall
-        run: python research/RHRC/integration/post287/check_post287_ledgers.py
+        run: |
+          python research/RHRC/integration/post287/check_post287_ledgers.py
+          python research/RHRC/integration/post287/test_post287_gate_mutations.py
       - name: Post-285 ledger firewall (Steps 18-120 matrix, M70-M77 obligations, proof roots)
         run: python research/RHRC/integration/post285/check_post285_ledgers.py
       - name: Post-285 Gate A/D regressions (M70 excursion, M73 Poincaré, M75 negative window)
