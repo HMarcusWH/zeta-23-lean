@@ -183,6 +183,35 @@ class RetroTests(unittest.TestCase):
         self.assertTrue(hits)
         self.assertTrue(any(hit.term == "-log(L)I remainder" for hit in hits))
 
+    def test_git_history_concurrent_walks_keep_sequential_term_order(self):
+        # The per-term pickaxe walks run concurrently; hits must still be
+        # attributed to the first listed term whose walk reaches a line, and a
+        # max_hits cut-off must stop at the same hits as a sequential search.
+        td, repo, _, _ = self._fixture_repo()
+        self.addCleanup(td.cleanup)
+        p = repo / "research" / "RHRC" / "old.md"
+        p.write_text(
+            "residual headroom appears here\nheadroom budget shared line\n",
+            encoding="utf-8",
+        )
+        self._git(repo, "add", ".")
+        self._git(repo, "commit", "-m", "shared line", commit_date="2001-01-05T00:00:00Z")
+        anchor = self._git(repo, "rev-parse", "HEAD")
+        shared = "headroom budget shared line"
+        for terms in (("budget", "headroom"), ("headroom", "budget")):
+            with self.subTest(terms=terms):
+                hits = search_git_history(
+                    repo, terms, as_of_ref=anchor, paths=("research/RHRC",)
+                )
+                owners = {hit.term for hit in hits if hit.text == shared}
+                self.assertEqual(owners, {terms[0]})
+        many = ("zzz-absent",) * 8 + ("residual headroom",)
+        capped = search_git_history(
+            repo, many, as_of_ref=anchor, paths=("research/RHRC",), max_hits=1
+        )
+        self.assertEqual(len(capped), 1)
+        self.assertEqual(capped[0].term, "residual headroom")
+
     def test_as_of_search_does_not_see_future_commit(self):
         td, repo, old, new = self._fixture_repo()
         self.addCleanup(td.cleanup)
