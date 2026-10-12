@@ -46,3 +46,9 @@ an Arb certificate closed an interval. Never infer a proof from this file.
    pass before deciding on any merge.
 
 **RH_OPEN regardless of finite research gates.**
+
+## Implementation safety amendments (staged)
+
+- The D2 FULL K3 workflow uses the corrected frozen-gate-winning **SECOND** method on every tile; no silent order-four per-tile switch is permitted. A separate fourth-order campaign requires a complete, frozen PASS receipt and an explicit `--method FOURTH --fourth-gate` invocation.
+- K3 shards embed source hashes and a source commit, produce a higher-precision checker receipt, and must pass the full **non-partial** recomputation after 30-shard assembly before the `INTERVAL_EVIDENCE` label is accepted.
+- These safeguards are implementation claims only until the new PR head runs the relevant CI. RH_OPEN.

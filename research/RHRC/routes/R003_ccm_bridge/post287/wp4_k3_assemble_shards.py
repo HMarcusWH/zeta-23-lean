@@ -11,7 +11,7 @@ import argparse,hashlib,json
 from pathlib import Path
 
 LAYERS={(q,p) for q in range(1,16) for p in ("even","odd")}
-ROOT=Path(__file__).resolve().parents[4]
+ROOT=Path(__file__).resolve().parents[5]
 SOURCE_INPUTS=[
     "research/RHRC/routes/R003_ccm_bridge/post287/wp4_k3_full_continuum.py",
     "research/RHRC/routes/R003_ccm_bridge/post287/wp4_k3_fourth_order_fallback.py",
@@ -35,6 +35,7 @@ def main():
     receipts=[]
     expected_digests=local_source_digests()
     source_commits=set()
+    methods=set()
     for file in args.input.glob("**/manifest.json"):
         obj=json.loads(file.read_text())
         if obj.get("schema")!="post287.wp4.k3-full-continuum.v1":
@@ -46,6 +47,7 @@ def main():
         if len(obj["records"])!=1:
             raise AssertionError(("not a single dispatched layer",str(file)))
         source_commits.add(obj["source_commit"])
+        methods.add(obj["method"])
         checker_file=file.with_name("checker_receipt.json")
         if not checker_file.is_file():
             raise AssertionError(("missing higher precision checker receipt",str(file)))
@@ -78,6 +80,8 @@ def main():
             records.append(dict(rec))
     if len(source_commits)>1:
         raise AssertionError(("shards produced by multiple source commits",sorted(source_commits)))
+    if len(methods)>1:
+        raise AssertionError(("mixed interval certificate methods",sorted(methods)))
     records.sort(key=lambda r:(r["cell"],r["parity"]))
     missing=sorted(LAYERS-{(r["cell"],r["parity"]) for r in records})
     unresolved=[(r["cell"],r["parity"]) for r in records
@@ -87,7 +91,7 @@ def main():
             "status":"INTERVAL_EVIDENCE" if completed else "UNRESOLVED",
             "terminal_claim":"RH_OPEN",
             "source":"complete Eq4.4, 2D parity carrier, fixed-Q interval enclosures",
-            "method":"second and single predeclared fourth-order fallback",
+            "method":next(iter(methods),"UNKNOWN"),
             "scope":"K3 even+odd [1/512,log16]" if completed
                     else "partial accepted tiles only",
             "precision_bits":192,

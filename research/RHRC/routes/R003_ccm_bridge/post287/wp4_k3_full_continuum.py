@@ -3,9 +3,10 @@
 
 Every accepted tile has a *rigorous lower bound* for the two Sylvester
 quantities a and Delta=ad-b^2 on the actual K=3 legal parity carrier.
-The old source-normalized 2nd-order enclosure is tried first; on a failed
-tile we use ONLY the predeclared order-four Taylor fallback. Failure of
-both means UNRESOLVED, not positivity and not an RH counterexample.
+The exact corrected second-order representation is used for this run.
+The order-four Taylor representation is available only after its separately
+predeclared *frozen* gate passes. There is never silent per-tile method
+switching: a failed tile is UNRESOLVED, not evidence of negative energy.
 
 The end-cell rational enclosure extends a frozen-Q analytic formula slightly
 beyond the exact irrational log seam; only its intersection with the physical
@@ -110,7 +111,7 @@ def evaluate(tile,parity,cell,method):
             "accepted":row["verdict"]=="PASS"}
 
 
-def cover(cell:int,parity:str,max_depth:int,max_nodes:int,deadline:float):
+def cover(cell:int,parity:str,method:str,max_depth:int,max_nodes:int,deadline:float):
     lo,hi=interval_bounds(cell)
     queue=[(lo,hi,0)]
     accepted=[];unresolved=[];processed=0
@@ -124,11 +125,9 @@ def cover(cell:int,parity:str,max_depth:int,max_nodes:int,deadline:float):
             break
         processed+=1
         try:
-            result=evaluate((l,r),parity,cell,"SECOND")
-            if not result["accepted"]:
-                result=evaluate((l,r),parity,cell,"FOURTH")
+            result=evaluate((l,r),parity,cell,method)
         except Exception as exc:
-            result={"accepted":False,"method":"FOURTH",
+            result={"accepted":False,"method":method,
                     "error":repr(exc)}
         if result["accepted"]:
             accepted.append({"left":[l.numerator,l.denominator],
@@ -156,11 +155,21 @@ def main():
     p.add_argument("--out",type=Path,required=True)
     p.add_argument("--cells",default="1-15")
     p.add_argument("--parities",default="even,odd")
+    p.add_argument("--method",choices=("SECOND","FOURTH"),default="SECOND")
+    p.add_argument("--fourth-gate",type=Path,help="verified PASS frozen fallback receipt")
     p.add_argument("--precision-bits",type=int,default=192)
     p.add_argument("--max-depth",type=int,default=32)
     p.add_argument("--max-nodes",type=int,default=2500)
     p.add_argument("--seconds",type=int,default=20000)
     args=p.parse_args()
+    if args.method=="FOURTH":
+        if args.fourth_gate is None:
+            raise ValueError("fourth-order method requires a frozen successful alternative gate")
+        frozen=json.loads(args.fourth_gate.read_text())
+        if frozen.get("gate")!="PASS" or frozen.get("tested_boxes")!=frozen.get("frozen_boxes"):
+            raise ValueError("fourth-order frozen gate is not a complete PASS")
+    elif args.fourth_gate is not None:
+        raise ValueError("SECOND method must not silently import fourth-order evidence")
     C.set_precision(args.precision_bits);ctx.prec=args.precision_bits
     args.out.mkdir(parents=True,exist_ok=True)
     a,_,b=args.cells.partition("-")
@@ -171,7 +180,7 @@ def main():
     records=[]
     for cell in cells:
         for parity in parities:
-            row=cover(cell,parity,args.max_depth,args.max_nodes,deadline)
+            row=cover(cell,parity,args.method,args.max_depth,args.max_nodes,deadline)
             file=f"k3_Q{cell:02d}_{parity}.json"
             raw=(json.dumps(row,sort_keys=True,indent=2)+"\n").encode()
             (args.out/file).write_bytes(raw)
@@ -190,7 +199,9 @@ def main():
               "scope":"K3 even+odd across [1/512,log16]" if passed
                        else "only intervals separately listed as accepted",
               "source":"complete fixed-Q Eq4.4, 7x7, two-dimensional legal carriers",
-              "method":"validated second order, fixed fourth order fallback",
+              "method":args.method,
+              "fourth_gate_sha256":hashlib.sha256(args.fourth_gate.read_bytes()).hexdigest()
+                  if args.fourth_gate is not None else None,
               "note":"cutoff-Q analytic extensions checked on rational seam covers",
               "precision_bits":args.precision_bits,
               "source_digests":source_input_digests(),

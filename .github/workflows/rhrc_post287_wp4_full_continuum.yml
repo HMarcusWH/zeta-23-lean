@@ -30,7 +30,7 @@ jobs:
           python research/RHRC/routes/R003_ccm_bridge/post287/wp4_k3_full_continuum.py \
             --out /tmp/wp4-k3-layer \
             --cells ${{ matrix.q }} --parities ${{ matrix.parity }} \
-            --precision-bits 192 --max-depth 32 --max-nodes 2500 --seconds 18000
+            --method SECOND --precision-bits 192 --max-depth 32 --max-nodes 2500 --seconds 18000
           status=$?
           set -e
           if [ "$status" -eq 2 ]; then
