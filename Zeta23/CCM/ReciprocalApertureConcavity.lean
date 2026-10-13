@@ -3,6 +3,9 @@ import Mathlib.Analysis.Convex.Deriv
 
 noncomputable section
 
+-- Unfold equivalent parity-carrier and CLM/LinearMap representations during elaboration.
+set_option backward.isDefEq.respectTransparency false
+
 namespace Zeta23.CCM
 
 open Set Filter Topology
@@ -44,14 +47,14 @@ theorem reciprocalAperture_second_derivative
     hasDerivAt_inv (ne_of_gt hs)
   have hFactor : HasDerivAt (fun t : ℝ => -(t⁻¹)^2)
       (-(2 * s⁻¹ * (-(s ^ 2)⁻¹))) s := by
-    simpa only [Pi.pow_apply, Pi.neg_apply, Nat.cast_ofNat, pow_one] using
-      (hInv.pow 2).neg
+    simpa only [Pi.neg_apply, Nat.cast_ofNat, Nat.reduceSub, pow_one] using!
+      (hInv.fun_pow 2).neg
   have hMain : HasDerivAt
       (fun t : ℝ => (deriv f t⁻¹) * (-(t⁻¹)^2))
       (deriv (deriv f) s⁻¹ * (-(s ^ 2)⁻¹) * (-(s⁻¹)^2) +
         deriv f s⁻¹ * (-(2 * (s⁻¹) * (-(s ^ 2)⁻¹)))) s := by
-    simpa only [Function.comp_def, Pi.mul_apply] using
-      ((hf2 s⁻¹ (inv_pos.mpr hs)).hasDerivAt.comp s hInv).mul hFactor
+    simpa only [Function.comp_def] using!
+      ((hf2 s⁻¹ (inv_pos.mpr hs)).hasDerivAt.comp s hInv).fun_mul hFactor
   have hEq : (deriv (fun t : ℝ => f t⁻¹)) =ᶠ[𝓝 s]
       (fun t : ℝ => deriv f t⁻¹ * (-(t⁻¹)^2)) := by
     filter_upwards [isOpen_Ioi.mem_nhds hs] with t ht
@@ -59,7 +62,7 @@ theorem reciprocalAperture_second_derivative
   have hDerivative := (hMain.congr_of_eventuallyEq hEq).deriv
   rw [hDerivative]
   have hne : s ≠ 0 := ne_of_gt hs
-  field_simp [hne] <;> ring
+  field_simp [hne]
 
 /-- Euler form of the reciprocal chain rule, with `L=s⁻¹`.
 Neither the sign nor positivity at endpoints is built into this identity. -/
@@ -73,7 +76,7 @@ theorem reciprocalAperture_euler_chain
         2 * deriv f s⁻¹ / (s⁻¹)) := by
   rw [reciprocalAperture_second_derivative f hf hf2 s hs]
   have hne : s ≠ 0 := ne_of_gt hs
-  field_simp [hne] <;> ring
+  field_simp [hne]
 
 /-- Strict concavity on the reciprocal positive-aperture region where the
 physical Euler-corrected second derivative is independently strictly
@@ -186,10 +189,10 @@ theorem evenRayleighBottom_ge_endpoint_min_of_reciprocal_concavity
     have hchord : min (F b⁻¹) (F a⁻¹) ≤ F L⁻¹ :=
       concave_on_Icc_ge_min_endpoints F hba hinside hconc
     have hleft : parityRayleighBottom .even a K ≤ F a⁻¹ := by
-      simpa only [F, inv_inv, productionContactFixedEnergy, RCLike.re_to_complex] using
+      simpa only [F, inv_inv, productionContactFixedEnergy, RCLike.re_to_complex] using!
         (parityRayleighBottom_le_rayleigh .even a K z hz)
     have hright : parityRayleighBottom .even b K ≤ F b⁻¹ := by
-      simpa only [F, inv_inv, productionContactFixedEnergy, RCLike.re_to_complex] using
+      simpa only [F, inv_inv, productionContactFixedEnergy, RCLike.re_to_complex] using!
         (parityRayleighBottom_le_rayleigh .even b K z hz)
     calc
       min (parityRayleighBottom .even a K)
@@ -203,7 +206,7 @@ theorem evenRayleighBottom_ge_endpoint_min_of_reciprocal_concavity
     evenRayleigh_nonempty_nonzero K hK
   unfold parityRayleighBottom
   refine le_ciInf fun (z : {z : euclideanParityBoundaryFlatSubspace .even K // z ≠ 0}) => ?_
-  simpa only [productionContactFixedEnergy, RCLike.re_to_complex] using hpoint z.1 z.2
+  simpa only [productionContactFixedEnergy, RCLike.re_to_complex] using! hpoint z.1 z.2
 
 /-- The more economical WP1 bridge: it is enough to know *unnormalized*
 fixed-vector source-energy concavity on reciprocal aperture.  The positive
@@ -247,10 +250,10 @@ theorem evenRayleighBottom_ge_endpoint_min_of_raw_reciprocal_concavity
           simpa [min_eq_right h] using hchord
         exact le_trans (min_le_right _ _) ((div_le_div_iff_of_pos_right hc).2 he)
     have hleft : parityRayleighBottom .even a K ≤ F a⁻¹ / ‖z‖ ^ 2 := by
-      simpa only [F, inv_inv, productionContactFixedEnergy, RCLike.re_to_complex] using
+      simpa only [F, inv_inv, productionContactFixedEnergy, RCLike.re_to_complex] using!
         (parityRayleighBottom_le_rayleigh .even a K z hz)
     have hright : parityRayleighBottom .even b K ≤ F b⁻¹ / ‖z‖ ^ 2 := by
-      simpa only [F, inv_inv, productionContactFixedEnergy, RCLike.re_to_complex] using
+      simpa only [F, inv_inv, productionContactFixedEnergy, RCLike.re_to_complex] using!
         (parityRayleighBottom_le_rayleigh .even b K z hz)
     calc
       min (parityRayleighBottom .even a K)
@@ -265,7 +268,7 @@ theorem evenRayleighBottom_ge_endpoint_min_of_raw_reciprocal_concavity
     evenRayleigh_nonempty_nonzero K hK
   unfold parityRayleighBottom
   refine le_ciInf fun (z : {z : euclideanParityBoundaryFlatSubspace .even K // z ≠ 0}) => ?_
-  simpa only [productionContactFixedEnergy, RCLike.re_to_complex] using hpoint z.1 z.2
+  simpa only [productionContactFixedEnergy, RCLike.re_to_complex] using! hpoint z.1 z.2
 
 /-- Any independently proved Euler-curvature radius supplies even-bottom
 endpoint interpolation. The radius and its curvature proof remain explicit,
@@ -370,7 +373,7 @@ theorem canonical_evenFixedEnergy_contDiffOn_two (K : ℕ)
   simpa [productionContactFixedEnergy,
     canonicalParityCompressedFamilyCLM, parityCompressedCanonical,
     Function.comp_def,
-    Complex.reCLM_apply] using hscalar.contDiffWithinAt
+    Complex.reCLM_apply] using! hscalar.contDiffWithinAt
 
 /-- The M66 native Euler curvature inequality and the globally C²
 compressed production family now supply **unconditional** endpoint

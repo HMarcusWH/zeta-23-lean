@@ -157,7 +157,12 @@ theorem one_div_400_lt_primeFreeRadius_two :
     simpa [show (3.15 : ℝ) = 63 / 20 by norm_num] using Real.pi_lt_d2
   have hpi2 : Real.pi ^ 2 < 10 := by
     nlinarith [sq_nonneg (Real.pi - 63 / 20)]
-  change (1 : ℝ) / 400 < 1 / (40 * Real.pi ^ 2)
+  have hRadius : primeFreeRadius 2 = 1 / (40 * Real.pi ^ 2) := by
+    unfold primeFreeRadius
+    congr 1
+    norm_num
+    ring
+  rw [hRadius]
   apply (div_lt_div_iff₀ (by norm_num : (0 : ℝ) < 400)
       (by positivity : 0 < 40 * Real.pi ^ 2)).2
   nlinarith
@@ -167,11 +172,14 @@ interpolation hypotheses discharged by M66 and the already proved
 canonical C² operator realization. The interval-certified M51 premise
 is deliberately STILL EXPLICIT and must be independently verified. -/
 theorem k2EvenBottom_positive_of_M66_and_M51
-    (hlog : (1 : ℝ) / 400 ≤ Real.log 16)
     (hM51 : ∀ L ∈ Set.Icc ((1 : ℝ) / 400) (Real.log 16),
         0 < parityRayleighBottom .even L 2)
     {L : ℝ} (hL : 0 < L) (hUpper : L ≤ Real.log 16) :
     0 < parityRayleighBottom .even L 2 := by
+  have hlog : (1 : ℝ) / 400 ≤ Real.log 16 := by
+    have hLower := Real.one_sub_inv_le_log_of_pos (by norm_num : (0 : ℝ) < 16)
+    norm_num at hLower
+    linarith
   have hgap :
       ∀ t ∈ Set.Icc ((1 : ℝ) / 512) ((1 : ℝ) / 400),
         min (parityRayleighBottom .even ((1 : ℝ) / 512) 2)
