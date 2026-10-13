@@ -3709,6 +3709,21 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
+      "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/CCM/GlobalBottomStrictEvenShiftedRay.lean",
+      "module": "Zeta23.CCM.GlobalBottomStrictEvenShiftedRay",
+      "module_id": "rh:module:Zeta23.CCM.GlobalBottomStrictEvenShiftedRay",
+      "named_source_declaration_count": 9,
+      "path": "Zeta23/CCM/GlobalBottomStrictEvenShiftedRay.lean",
+      "reachability": "ENTRYPOINT_REACHABLE",
+      "reachable_from": [
+        "Zeta23.CCM"
+      ],
+      "registered_root_count": 0,
+      "standalone_role": null,
+      "trust_zone": "RH_FORMAL_CORE"
+    },
+    {
       "compiler_dependency_surface_declaration_count": 6,
       "file_id": "rh:file:Zeta23/CCM/GlobalFirstBad.lean",
       "module": "Zeta23.CCM.GlobalFirstBad",
@@ -4157,6 +4172,36 @@
       "module_id": "rh:module:Zeta23.CCM.HermitianSchurEnvelopeDerivative",
       "named_source_declaration_count": 16,
       "path": "Zeta23/CCM/HermitianSchurEnvelopeDerivative.lean",
+      "reachability": "ENTRYPOINT_REACHABLE",
+      "reachable_from": [
+        "Zeta23.CCM"
+      ],
+      "registered_root_count": 0,
+      "standalone_role": null,
+      "trust_zone": "RH_FORMAL_CORE"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/CCM/K2EvenBottomGluing.lean",
+      "module": "Zeta23.CCM.K2EvenBottomGluing",
+      "module_id": "rh:module:Zeta23.CCM.K2EvenBottomGluing",
+      "named_source_declaration_count": 6,
+      "path": "Zeta23/CCM/K2EvenBottomGluing.lean",
+      "reachability": "ENTRYPOINT_REACHABLE",
+      "reachable_from": [
+        "Zeta23.CCM"
+      ],
+      "registered_root_count": 0,
+      "standalone_role": null,
+      "trust_zone": "RH_FORMAL_CORE"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/CCM/K3BottomWindowRecord.lean",
+      "module": "Zeta23.CCM.K3BottomWindowRecord",
+      "module_id": "rh:module:Zeta23.CCM.K3BottomWindowRecord",
+      "named_source_declaration_count": 2,
+      "path": "Zeta23/CCM/K3BottomWindowRecord.lean",
       "reachability": "ENTRYPOINT_REACHABLE",
       "reachable_from": [
         "Zeta23.CCM"
@@ -4647,6 +4692,21 @@
       "reachable_from": [
         "Zeta23.CCM",
         "Zeta23.ExceptionalZero"
+      ],
+      "registered_root_count": 0,
+      "standalone_role": null,
+      "trust_zone": "RH_FORMAL_CORE"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/CCM/ReciprocalApertureConcavity.lean",
+      "module": "Zeta23.CCM.ReciprocalApertureConcavity",
+      "module_id": "rh:module:Zeta23.CCM.ReciprocalApertureConcavity",
+      "named_source_declaration_count": 13,
+      "path": "Zeta23/CCM/ReciprocalApertureConcavity.lean",
+      "reachability": "ENTRYPOINT_REACHABLE",
+      "reachable_from": [
+        "Zeta23.CCM"
       ],
       "registered_root_count": 0,
       "standalone_role": null,
@@ -12083,7 +12143,7 @@
       "trust_zone": "AUXILIARY_FORMALIZATION"
     }
   ],
-  "entry_count": 769,
+  "entry_count": 773,
   "graph_theorem_promotion": false,
   "schema_version": "RHKG-final-module-closure-1.0",
   "scope": "ALL_LOCAL_LEAN_MODULES",

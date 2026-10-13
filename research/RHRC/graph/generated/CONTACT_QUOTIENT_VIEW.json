@@ -1,5 +1,5 @@
 {
-  "contacting_root_count": 702,
+  "contacting_root_count": 711,
   "contacts": [
     {
       "active_interfaces": [
@@ -1510,6 +1510,374 @@
           "truncated": false
         },
         "PRODUCTION_SOURCE_JET": {
+          "count": 17,
+          "examples": [
+            "Zeta23.CCM.canonicalArchScalarCorrection._proof_1",
+            "Zeta23.CCM.dividedDifferenceEntry",
+            "Zeta23.CCM.dividedDifferenceMatrix",
+            "Zeta23.CCM.matrixRealEnergy",
+            "Zeta23.CCM.matrixRealEnergy._proof_1",
+            "Zeta23.CCM.primeSourceCoordinate",
+            "Zeta23.CCM.quadraticForm",
+            "Zeta23.CCM.reducedCanonicalArchComponent",
+            "Zeta23.CCM.reducedCanonicalArchDiagonalMatrix",
+            "Zeta23.CCM.reducedCanonicalArchOffDiagonalMatrix",
+            "Zeta23.CCM.reducedCanonicalGammaL",
+            "Zeta23.CCM.sourceDiagonal",
+            "Zeta23.CCM.sourceEq411RhsCosMinusOneIntegrand",
+            "Zeta23.CCM.sourceEq411RhsCosMinusOneIntegrand._proof_1",
+            "Zeta23.CCM.sourceMatrix",
+            "Zeta23.CCM.sourcePotential",
+            "Zeta23.CCM.sourcePotential._proof_1"
+          ],
+          "sha256": "0bc4d68ebf40623e5e60b0b53b4fc0d951f126b85e317736e747be105905521e",
+          "truncated": false
+        }
+      },
+      "declaration": "Zeta23.CCM.GlobalBottomResidualState.evenStrict_shift_lt_odd",
+      "module": "Zeta23.CCM.GlobalBottomStrictEvenShiftedRay"
+    },
+    {
+      "active_interfaces": [
+        "FIRST_CROSSING_GERM",
+        "PRODUCTION_SOURCE_JET"
+      ],
+      "contacts": {
+        "FIRST_CROSSING_GERM": {
+          "count": 3,
+          "examples": [
+            "Zeta23.CCM.IntrinsicPredecessorRegular",
+            "Zeta23.CCM.intrinsicPredecessorDet",
+            "Zeta23.CCM.parityCanonicalSourceEnergy"
+          ],
+          "sha256": "325e7b474d08e4d966f909d60a5808ce94bf04ea75502f23a819a47e88d87842",
+          "truncated": false
+        },
+        "PRODUCTION_SOURCE_JET": {
+          "count": 19,
+          "examples": [
+            "Zeta23.CCM.canonicalArchScalarCorrection._proof_1",
+            "Zeta23.CCM.dividedDifferenceEntry",
+            "Zeta23.CCM.dividedDifferenceMatrix",
+            "Zeta23.CCM.matrixRealEnergy",
+            "Zeta23.CCM.matrixRealEnergy._proof_1",
+            "Zeta23.CCM.oddCompressedCanonical",
+            "Zeta23.CCM.primeSourceCoordinate",
+            "Zeta23.CCM.quadraticForm",
+            "Zeta23.CCM.reducedCanonicalArchComponent",
+            "Zeta23.CCM.reducedCanonicalArchDiagonalMatrix",
+            "Zeta23.CCM.reducedCanonicalArchOffDiagonalMatrix",
+            "Zeta23.CCM.reducedCanonicalGammaL",
+            "Zeta23.CCM.sourceAtomRealEnergy",
+            "Zeta23.CCM.sourceDiagonal",
+            "Zeta23.CCM.sourceEq411RhsCosMinusOneIntegrand",
+            "Zeta23.CCM.sourceEq411RhsCosMinusOneIntegrand._proof_1",
+            "Zeta23.CCM.sourceMatrix",
+            "Zeta23.CCM.sourcePotential",
+            "Zeta23.CCM.sourcePotential._proof_1"
+          ],
+          "sha256": "63757638143231bb2e62ba1c3d746f345524cdf369828fd292a72572f6c4998f",
+          "truncated": false
+        }
+      },
+      "declaration": "Zeta23.CCM.GlobalBottomResidualState.evenStrict_shiftedRay_budget_pos",
+      "module": "Zeta23.CCM.GlobalBottomStrictEvenShiftedRay"
+    },
+    {
+      "active_interfaces": [
+        "FIRST_CROSSING_GERM",
+        "PRODUCTION_SOURCE_JET"
+      ],
+      "contacts": {
+        "FIRST_CROSSING_GERM": {
+          "count": 3,
+          "examples": [
+            "Zeta23.CCM.IntrinsicPredecessorRegular",
+            "Zeta23.CCM.intrinsicPredecessorDet",
+            "Zeta23.CCM.parityCanonicalSourceEnergy"
+          ],
+          "sha256": "325e7b474d08e4d966f909d60a5808ce94bf04ea75502f23a819a47e88d87842",
+          "truncated": false
+        },
+        "PRODUCTION_SOURCE_JET": {
+          "count": 19,
+          "examples": [
+            "Zeta23.CCM.canonicalArchScalarCorrection._proof_1",
+            "Zeta23.CCM.dividedDifferenceEntry",
+            "Zeta23.CCM.dividedDifferenceMatrix",
+            "Zeta23.CCM.evenCompressedCanonical",
+            "Zeta23.CCM.matrixRealEnergy",
+            "Zeta23.CCM.matrixRealEnergy._proof_1",
+            "Zeta23.CCM.oddCompressedCanonical",
+            "Zeta23.CCM.primeSourceCoordinate",
+            "Zeta23.CCM.quadraticForm",
+            "Zeta23.CCM.reducedCanonicalArchComponent",
+            "Zeta23.CCM.reducedCanonicalArchDiagonalMatrix",
+            "Zeta23.CCM.reducedCanonicalArchOffDiagonalMatrix",
+            "Zeta23.CCM.reducedCanonicalGammaL",
+            "Zeta23.CCM.sourceDiagonal",
+            "Zeta23.CCM.sourceEq411RhsCosMinusOneIntegrand",
+            "Zeta23.CCM.sourceEq411RhsCosMinusOneIntegrand._proof_1",
+            "Zeta23.CCM.sourceMatrix",
+            "Zeta23.CCM.sourcePotential",
+            "Zeta23.CCM.sourcePotential._proof_1"
+          ],
+          "sha256": "c35812024714b4e853801c6e6cb9802147ea66e785f0dc27d29f329946206175",
+          "truncated": false
+        }
+      },
+      "declaration": "Zeta23.CCM.GlobalBottomResidualState.evenStrict_shiftedRay_eigenmode",
+      "module": "Zeta23.CCM.GlobalBottomStrictEvenShiftedRay"
+    },
+    {
+      "active_interfaces": [
+        "FIRST_CROSSING_GERM",
+        "PRODUCTION_SOURCE_JET"
+      ],
+      "contacts": {
+        "FIRST_CROSSING_GERM": {
+          "count": 3,
+          "examples": [
+            "Zeta23.CCM.IntrinsicPredecessorRegular",
+            "Zeta23.CCM.intrinsicPredecessorDet",
+            "Zeta23.CCM.parityCanonicalSourceEnergy"
+          ],
+          "sha256": "325e7b474d08e4d966f909d60a5808ce94bf04ea75502f23a819a47e88d87842",
+          "truncated": false
+        },
+        "PRODUCTION_SOURCE_JET": {
+          "count": 18,
+          "examples": [
+            "Zeta23.CCM.canonicalArchScalarCorrection._proof_1",
+            "Zeta23.CCM.dividedDifferenceEntry",
+            "Zeta23.CCM.dividedDifferenceMatrix",
+            "Zeta23.CCM.matrixRealEnergy",
+            "Zeta23.CCM.matrixRealEnergy._proof_1",
+            "Zeta23.CCM.oddCompressedCanonical",
+            "Zeta23.CCM.primeSourceCoordinate",
+            "Zeta23.CCM.quadraticForm",
+            "Zeta23.CCM.reducedCanonicalArchComponent",
+            "Zeta23.CCM.reducedCanonicalArchDiagonalMatrix",
+            "Zeta23.CCM.reducedCanonicalArchOffDiagonalMatrix",
+            "Zeta23.CCM.reducedCanonicalGammaL",
+            "Zeta23.CCM.sourceDiagonal",
+            "Zeta23.CCM.sourceEq411RhsCosMinusOneIntegrand",
+            "Zeta23.CCM.sourceEq411RhsCosMinusOneIntegrand._proof_1",
+            "Zeta23.CCM.sourceMatrix",
+            "Zeta23.CCM.sourcePotential",
+            "Zeta23.CCM.sourcePotential._proof_1"
+          ],
+          "sha256": "ebb12583fe66995e6347c10f446050ff1043d308fca364ec34b33ac83690e86b",
+          "truncated": false
+        }
+      },
+      "declaration": "Zeta23.CCM.GlobalBottomResidualState.evenStrict_shiftedRay_ne_zero",
+      "module": "Zeta23.CCM.GlobalBottomStrictEvenShiftedRay"
+    },
+    {
+      "active_interfaces": [
+        "FIRST_CROSSING_GERM",
+        "PRODUCTION_SOURCE_JET"
+      ],
+      "contacts": {
+        "FIRST_CROSSING_GERM": {
+          "count": 3,
+          "examples": [
+            "Zeta23.CCM.IntrinsicPredecessorRegular",
+            "Zeta23.CCM.intrinsicPredecessorDet",
+            "Zeta23.CCM.parityCanonicalSourceEnergy"
+          ],
+          "sha256": "325e7b474d08e4d966f909d60a5808ce94bf04ea75502f23a819a47e88d87842",
+          "truncated": false
+        },
+        "PRODUCTION_SOURCE_JET": {
+          "count": 19,
+          "examples": [
+            "Zeta23.CCM.canonicalArchScalarCorrection._proof_1",
+            "Zeta23.CCM.dividedDifferenceEntry",
+            "Zeta23.CCM.dividedDifferenceMatrix",
+            "Zeta23.CCM.matrixRealEnergy",
+            "Zeta23.CCM.matrixRealEnergy._proof_1",
+            "Zeta23.CCM.oddCompressedCanonical",
+            "Zeta23.CCM.primeSourceCoordinate",
+            "Zeta23.CCM.quadraticForm",
+            "Zeta23.CCM.reducedCanonicalArchComponent",
+            "Zeta23.CCM.reducedCanonicalArchDiagonalMatrix",
+            "Zeta23.CCM.reducedCanonicalArchOffDiagonalMatrix",
+            "Zeta23.CCM.reducedCanonicalGammaL",
+            "Zeta23.CCM.sourceAtomRealEnergy",
+            "Zeta23.CCM.sourceDiagonal",
+            "Zeta23.CCM.sourceEq411RhsCosMinusOneIntegrand",
+            "Zeta23.CCM.sourceEq411RhsCosMinusOneIntegrand._proof_1",
+            "Zeta23.CCM.sourceMatrix",
+            "Zeta23.CCM.sourcePotential",
+            "Zeta23.CCM.sourcePotential._proof_1"
+          ],
+          "sha256": "63757638143231bb2e62ba1c3d746f345524cdf369828fd292a72572f6c4998f",
+          "truncated": false
+        }
+      },
+      "declaration": "Zeta23.CCM.GlobalBottomResidualState.evenStrict_shiftedRay_primeRemainder_budget",
+      "module": "Zeta23.CCM.GlobalBottomStrictEvenShiftedRay"
+    },
+    {
+      "active_interfaces": [
+        "FIRST_CROSSING_GERM",
+        "PRODUCTION_SOURCE_JET"
+      ],
+      "contacts": {
+        "FIRST_CROSSING_GERM": {
+          "count": 3,
+          "examples": [
+            "Zeta23.CCM.IntrinsicPredecessorRegular",
+            "Zeta23.CCM.intrinsicPredecessorDet",
+            "Zeta23.CCM.parityCanonicalSourceEnergy"
+          ],
+          "sha256": "325e7b474d08e4d966f909d60a5808ce94bf04ea75502f23a819a47e88d87842",
+          "truncated": false
+        },
+        "PRODUCTION_SOURCE_JET": {
+          "count": 36,
+          "examples": [
+            "Zeta23.CCM.canonicalArchScalarCorrection._proof_1",
+            "Zeta23.CCM.centeredQuadraticNormal",
+            "Zeta23.CCM.centeredQuadraticNormal._proof_1",
+            "Zeta23.CCM.dividedDifferenceEntry",
+            "Zeta23.CCM.dividedDifferenceMatrix",
+            "Zeta23.CCM.evenBoundaryFlatRawCoefficients",
+            "Zeta23.CCM.evenBoundaryFlatRawCoefficients._proof_1",
+            "Zeta23.CCM.explicitCanonicalSourceMoment",
+            "Zeta23.CCM.explicitCanonicalSourceMoment._proof_1",
+            "Zeta23.CCM.matrixRealEnergy",
+            "Zeta23.CCM.matrixRealEnergy._proof_1",
+            "Zeta23.CCM.oddCompressedCanonical",
+            "Zeta23.CCM.poleEvenProfile",
+            "Zeta23.CCM.poleEvenProfileReal",
+            "Zeta23.CCM.poleOddProfileReal._proof_1",
+            "Zeta23.CCM.poleProfileDenominator",
+            "Zeta23.CCM.poleProfileDenominator._proof_1",
+            "Zeta23.CCM.poleProfileScale",
+            "Zeta23.CCM.poleProfileScaleReal",
+            "Zeta23.CCM.poleProfileScaleReal._proof_1"
+          ],
+          "sha256": "8dfc64a5a28fc2e9253bcfdb2216ad8a44eda88c844127392ec6a03a85ec7bf2",
+          "truncated": true
+        }
+      },
+      "declaration": "Zeta23.CCM.GlobalBottomResidualState.evenStrict_shiftedRay_source_eq_one",
+      "module": "Zeta23.CCM.GlobalBottomStrictEvenShiftedRay"
+    },
+    {
+      "active_interfaces": [
+        "FIRST_CROSSING_GERM",
+        "PRODUCTION_SOURCE_JET"
+      ],
+      "contacts": {
+        "FIRST_CROSSING_GERM": {
+          "count": 3,
+          "examples": [
+            "Zeta23.CCM.IntrinsicPredecessorRegular",
+            "Zeta23.CCM.intrinsicPredecessorDet",
+            "Zeta23.CCM.parityCanonicalSourceEnergy"
+          ],
+          "sha256": "325e7b474d08e4d966f909d60a5808ce94bf04ea75502f23a819a47e88d87842",
+          "truncated": false
+        },
+        "PRODUCTION_SOURCE_JET": {
+          "count": 36,
+          "examples": [
+            "Zeta23.CCM.canonicalArchScalarCorrection._proof_1",
+            "Zeta23.CCM.centeredQuadraticNormal",
+            "Zeta23.CCM.centeredQuadraticNormal._proof_1",
+            "Zeta23.CCM.dividedDifferenceEntry",
+            "Zeta23.CCM.dividedDifferenceMatrix",
+            "Zeta23.CCM.evenBoundaryFlatRawCoefficients",
+            "Zeta23.CCM.evenBoundaryFlatRawCoefficients._proof_1",
+            "Zeta23.CCM.explicitCanonicalSourceMoment",
+            "Zeta23.CCM.explicitCanonicalSourceMoment._proof_1",
+            "Zeta23.CCM.matrixRealEnergy",
+            "Zeta23.CCM.matrixRealEnergy._proof_1",
+            "Zeta23.CCM.oddCompressedCanonical",
+            "Zeta23.CCM.poleEvenProfile",
+            "Zeta23.CCM.poleEvenProfileReal",
+            "Zeta23.CCM.poleOddProfileReal._proof_1",
+            "Zeta23.CCM.poleProfileDenominator",
+            "Zeta23.CCM.poleProfileDenominator._proof_1",
+            "Zeta23.CCM.poleProfileScale",
+            "Zeta23.CCM.poleProfileScaleReal",
+            "Zeta23.CCM.poleProfileScaleReal._proof_1"
+          ],
+          "sha256": "8dfc64a5a28fc2e9253bcfdb2216ad8a44eda88c844127392ec6a03a85ec7bf2",
+          "truncated": true
+        }
+      },
+      "declaration": "Zeta23.CCM.GlobalBottomResidualState.evenStrict_trial_eq_source_mul_shiftedRay",
+      "module": "Zeta23.CCM.GlobalBottomStrictEvenShiftedRay"
+    },
+    {
+      "active_interfaces": [
+        "FIRST_CROSSING_GERM",
+        "PRODUCTION_SOURCE_JET"
+      ],
+      "contacts": {
+        "FIRST_CROSSING_GERM": {
+          "count": 3,
+          "examples": [
+            "Zeta23.CCM.IntrinsicPredecessorRegular",
+            "Zeta23.CCM.intrinsicPredecessorDet",
+            "Zeta23.CCM.parityCanonicalSourceEnergy"
+          ],
+          "sha256": "325e7b474d08e4d966f909d60a5808ce94bf04ea75502f23a819a47e88d87842",
+          "truncated": false
+        },
+        "PRODUCTION_SOURCE_JET": {
+          "count": 35,
+          "examples": [
+            "Zeta23.CCM.canonicalArchScalarCorrection._proof_1",
+            "Zeta23.CCM.centeredQuadraticNormal",
+            "Zeta23.CCM.centeredQuadraticNormal._proof_1",
+            "Zeta23.CCM.dividedDifferenceEntry",
+            "Zeta23.CCM.dividedDifferenceMatrix",
+            "Zeta23.CCM.evenBoundaryFlatRawCoefficients",
+            "Zeta23.CCM.evenBoundaryFlatRawCoefficients._proof_1",
+            "Zeta23.CCM.explicitCanonicalSourceMoment",
+            "Zeta23.CCM.explicitCanonicalSourceMoment._proof_1",
+            "Zeta23.CCM.matrixRealEnergy",
+            "Zeta23.CCM.matrixRealEnergy._proof_1",
+            "Zeta23.CCM.poleEvenProfile",
+            "Zeta23.CCM.poleEvenProfileReal",
+            "Zeta23.CCM.poleOddProfileReal._proof_1",
+            "Zeta23.CCM.poleProfileDenominator",
+            "Zeta23.CCM.poleProfileDenominator._proof_1",
+            "Zeta23.CCM.poleProfileScale",
+            "Zeta23.CCM.poleProfileScaleReal",
+            "Zeta23.CCM.poleProfileScaleReal._proof_1",
+            "Zeta23.CCM.primeSourceCoordinate"
+          ],
+          "sha256": "698d2d83ff60acd1e1908bcd52085ea80230ff7dc07ed2fa8e2dd80c4620e4cc",
+          "truncated": true
+        }
+      },
+      "declaration": "Zeta23.CCM.GlobalBottomResidualState.evenStrict_trial_source_ne_zero",
+      "module": "Zeta23.CCM.GlobalBottomStrictEvenShiftedRay"
+    },
+    {
+      "active_interfaces": [
+        "FIRST_CROSSING_GERM",
+        "PRODUCTION_SOURCE_JET"
+      ],
+      "contacts": {
+        "FIRST_CROSSING_GERM": {
+          "count": 3,
+          "examples": [
+            "Zeta23.CCM.IntrinsicPredecessorRegular",
+            "Zeta23.CCM.intrinsicPredecessorDet",
+            "Zeta23.CCM.parityCanonicalSourceEnergy"
+          ],
+          "sha256": "325e7b474d08e4d966f909d60a5808ce94bf04ea75502f23a819a47e88d87842",
+          "truncated": false
+        },
+        "PRODUCTION_SOURCE_JET": {
           "count": 26,
           "examples": [
             "Zeta23.CCM.canonicalArchScalarCorrection._proof_1",
@@ -1762,6 +2130,50 @@
       },
       "declaration": "Zeta23.CCM.GlobalBottomResidualState.selectedParity_spec",
       "module": "Zeta23.CCM.GlobalParityBottomResidualState"
+    },
+    {
+      "active_interfaces": [
+        "FIRST_CROSSING_GERM",
+        "PRODUCTION_SOURCE_JET"
+      ],
+      "contacts": {
+        "FIRST_CROSSING_GERM": {
+          "count": 3,
+          "examples": [
+            "Zeta23.CCM.IntrinsicPredecessorRegular",
+            "Zeta23.CCM.intrinsicPredecessorDet",
+            "Zeta23.CCM.parityCanonicalSourceEnergy"
+          ],
+          "sha256": "325e7b474d08e4d966f909d60a5808ce94bf04ea75502f23a819a47e88d87842",
+          "truncated": false
+        },
+        "PRODUCTION_SOURCE_JET": {
+          "count": 17,
+          "examples": [
+            "Zeta23.CCM.canonicalArchScalarCorrection._proof_1",
+            "Zeta23.CCM.dividedDifferenceEntry",
+            "Zeta23.CCM.dividedDifferenceMatrix",
+            "Zeta23.CCM.matrixRealEnergy",
+            "Zeta23.CCM.matrixRealEnergy._proof_1",
+            "Zeta23.CCM.primeSourceCoordinate",
+            "Zeta23.CCM.quadraticForm",
+            "Zeta23.CCM.reducedCanonicalArchComponent",
+            "Zeta23.CCM.reducedCanonicalArchDiagonalMatrix",
+            "Zeta23.CCM.reducedCanonicalArchOffDiagonalMatrix",
+            "Zeta23.CCM.reducedCanonicalGammaL",
+            "Zeta23.CCM.sourceDiagonal",
+            "Zeta23.CCM.sourceEq411RhsCosMinusOneIntegrand",
+            "Zeta23.CCM.sourceEq411RhsCosMinusOneIntegrand._proof_1",
+            "Zeta23.CCM.sourceMatrix",
+            "Zeta23.CCM.sourcePotential",
+            "Zeta23.CCM.sourcePotential._proof_1"
+          ],
+          "sha256": "0bc4d68ebf40623e5e60b0b53b4fc0d951f126b85e317736e747be105905521e",
+          "truncated": false
+        }
+      },
+      "declaration": "Zeta23.CCM.GlobalBottomResidualState.two_le_groundSuccessor",
+      "module": "Zeta23.CCM.GlobalBottomStrictEvenShiftedRay"
     },
     {
       "active_interfaces": [
@@ -20499,7 +20911,7 @@
       "module": "Zeta23.ExceptionalZero.CanonicalFirstCrossingConditionalRH"
     }
   ],
-  "cross_interface_root_count": 176,
+  "cross_interface_root_count": 185,
   "interface_families": {
     "CONTACT_STRUCTURE": {
       "distinctive_support": {
@@ -20657,7 +21069,7 @@
   "interpretation": "Compiler-dependency contact view only. Cross-interface contact does not establish theorem composition, independence, mathematical relevance, or RH evidence.",
   "projection": "THEOREM_VALUE_ERASED_SUPPORT",
   "schema_version": "RHRC-CONTACT-QUOTIENT-VIEW-1.1",
-  "source_only_root_count": 1331,
+  "source_only_root_count": 1360,
   "status": "RESEARCH_CONTROL_ONLY",
   "terminal_claim": "RH_OPEN",
   "theorem_promotion": false
