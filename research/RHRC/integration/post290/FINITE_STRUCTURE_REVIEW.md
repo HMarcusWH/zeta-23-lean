@@ -35,13 +35,13 @@ The 311 pole-geometry assertions cover 28 rational geometries at K=3..9 and a
 symbolic first-prime source atom with modified coefficient. They preserve the
 corrected source and reject replacing S0 by S. The atom control is NON-ZETA.
 
-The 37 strict-odd/tie assertions include a nonunitary complex intertwiner.
+The 38 strict-odd/tie assertions include a nonunitary complex intertwiner.
 Both the missing minus sign and the unconjugated Riesz vector fail. A simple
 K3 tie has nonzero M4 with S0=0; degenerate ties at K4..6 have nonzero M4-null
 ground vectors. Thus neither source nonvanishing at a tie nor removal of the
 simple-even hypothesis is justified.
 
-The 1,146 exact threshold assertions cover 192 nested two-parity bottom lists,
+The 1,722 exact threshold assertions cover 192 nested two-parity bottom lists,
 all three branches and eight empty predecessor cases. The inverse budget is
 6(Kd-1)/D. These finite controls do not construct a threshold for a generated
 zeta detector.

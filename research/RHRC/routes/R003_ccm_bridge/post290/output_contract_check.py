@@ -7,17 +7,72 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import re
 from pathlib import Path
+
+REPO=Path(__file__).resolve().parents[5]
+IMMUTABLE_SPEC=REPO/'research/RHRC/integration/post290/spec/BUILD_MANIFEST.json'
+IMMUTABLE_SPEC_SHA256='1a36cb3ff2cb39017bdb34cb4f56f831f40c611472f840af8b3dce9dafa71760'
+FORMAL_JOB=('RHRC post290 source and output proof components','lean-components')
+REGRESSION_JOB=('RHRC post290 source and output proof components','exact-controls')
+NATIVE_JOB=('RHRC post290 source and output proof components','native-observations')
+RESEARCH_JOBS={('RHRC post290 D2 SECOND continuation (manual)','d2-second-continuation'),('RHRC post290 K3 independent no-search shards','assemble-nonpartial')}
+ALLOW_AXIOMS={'propext','Classical.choice','Quot.sound'}
+CLASSIFICATIONS={'FORMAL_VALIDITY_GATE','REGRESSION_GATE','RESEARCH_PRODUCING_CHECK'}
+
+
+def frozen_spec():
+    raw=IMMUTABLE_SPEC.read_bytes()
+    # Compare the original bundle bytes; a Windows text checkout may change
+    # newline encoding, which is explicitly normalized only for this comparison.
+    if hashlib.sha256(raw.replace(b'\r\n',b'\n')).hexdigest()!=IMMUTABLE_SPEC_SHA256:
+        raise ValueError('immutable original acceptance specification changed')
+    return json.loads(raw)
 
 def release_gaps(manifest, formal, d2, jobs):
     gaps = []
+    expected=frozen_spec()
     if manifest.get('claim_cap') != 'RH_OPEN':
         gaps.append('claim firewall changed')
-    bindings = {r['theorem']:r for r in formal.get('declarations', [])}
+    modules=manifest.get('new_lean_modules',[])
+    frozen={r['id']:r for r in expected['new_lean_modules']}
+    ids=[r.get('id') for r in modules]
+    if len(ids)!=25 or len(set(ids))!=25 or set(ids)!=set(frozen):
+        gaps.append('immutable 25-module acceptance inventory missing or duplicated')
+    for module in modules:
+        prior=frozen.get(module.get('id'))
+        if prior and (module.get('mandatory_core') is not prior.get('mandatory_core') or module.get('proposed_exports')!=prior.get('proposed_exports')):
+            gaps.append('immutable module acceptance narrowed or changed: '+module['id'])
+    packages=manifest.get('work_packages',[])
+    package_ids=[r.get('id') for r in packages]
+    prior_packages={r['id']:r for r in expected['work_packages']}
+    if len(package_ids)!=11 or len(set(package_ids))!=11 or set(package_ids)!=set(prior_packages):
+        gaps.append('immutable 11-work-package inventory missing or duplicated')
+    for package in packages:
+        prior=prior_packages.get(package.get('id'))
+        if prior and package.get('mandatory') is not prior.get('mandatory'):
+            gaps.append('mandatory work package demoted: '+package['id'])
+        if prior and prior.get('mandatory') and package.get('status')!='COMPLETE_VERIFIED':
+            gaps.append('unfulfilled work-package acceptance: '+package['id'])
+    declarations=formal.get('declarations',[])
+    names=[r.get('theorem') for r in declarations]
+    if len(names)!=len(set(names)):
+        gaps.append('duplicate compiler declaration receipts')
+    bindings = {r.get('theorem'):r for r in declarations}
     tree = formal.get('source_tree')
-    if not tree or len(tree) != 40:
+    if not isinstance(tree,str) or re.fullmatch('[0-9a-f]{40}',tree) is None:
         gaps.append('exact compiler-tested tree missing')
-    for module in manifest['new_lean_modules']:
+    head=formal.get('head')
+    if not isinstance(head,str) or re.fullmatch('[0-9a-f]{40}',head) is None:
+        gaps.append('exact compiler-tested head missing')
+    if formal.get('producer_complete') is not True:
+        gaps.append('supporting components do not fill mandatory output producer')
+    if formal.get('execution_status')!='SUCCESS' or formal.get('integrity_status')!='PASS' or formal.get('claim_cap')!='RH_OPEN':
+        gaps.append('formal receipt execution/integrity/claim unverified')
+    context=formal.get('compiler_context',{})
+    if context.get('head')!=head or context.get('tree')!=tree:
+        gaps.append('compiler-generated head/tree context missing or stale')
+    for module in modules:
         if not module.get('mandatory_core'):
             continue
         for name in module['proposed_exports']:
@@ -27,7 +82,7 @@ def release_gaps(manifest, formal, d2, jobs):
             elif (receipt.get('authority') != 'PROVED' or receipt.get('source_tree') != tree
                   or not receipt.get('normalized_type') or
                   hashlib.sha256(receipt.get('normalized_type','').encode()).hexdigest() != receipt.get('normalized_type_sha256')
-                  or not receipt.get('axiom_audit_pass')):
+                  or receipt.get('axiom_audit_pass') is not True or not isinstance(receipt.get('axioms'),list) or not set(receipt.get('axioms',[]))<=ALLOW_AXIOMS):
                 gaps.append('unverified or stale producer: ' + name)
         if module.get('status') != 'COMPLETE_VERIFIED':
             gaps.append('unfulfilled module acceptance: ' + module['id'])
@@ -37,13 +92,41 @@ def release_gaps(manifest, formal, d2, jobs):
         or not d2.get('physical_seams_verified') or any(k not in d2 for k in required_d2)
         or any(d2.get(k,1) != 0 for k in required_d2[1:])):
         gaps.append('D2 continuous full-domain gate incomplete')
+    known_required=[]
     for job in jobs:
+        if not all(k in job for k in ('name','workflow','required','head','head_tree','status','conclusion','scientific_acceptance','classification','output_reviewed')):
+            gaps.append('raw or mismatched workflow harvest schema')
+            continue
+        if job['classification'] not in CLASSIFICATIONS or job.get('output_reviewed') is not True:
+            gaps.append('workflow source/output review incomplete: '+job['name'])
+        if job.get('latest_attempt') is False:
+            continue
+        if type(job['required']) is not bool or type(job['scientific_acceptance']) is not bool:
+            gaps.append('workflow acceptance flags must be Boolean')
+            continue
+        pair=(job['workflow'],job['name'])
+        configured=pair in {FORMAL_JOB,REGRESSION_JOB,NATIVE_JOB}|RESEARCH_JOBS
+        if configured and job['required'] is not True:
+            gaps.append('configured required job demoted: '+job['name'])
+        if job['required']:
+            known_required.append(pair)
         if job.get('required') and (job.get('head_tree') != tree or job.get('status') != 'completed'
-            or job.get('conclusion') != 'success' or not job.get('scientific_acceptance')):
+            or job.get('head')!=head or job.get('conclusion') != 'success' or job.get('scientific_acceptance') is not True):
             gaps.append('required job unestablished: ' + job['name'])
+        if pair==NATIVE_JOB:
+            review=job.get('native_output_review',{})
+            if (review.get('head')!=head or review.get('source_tree')!=tree or review.get('scope')!='FINITE_FIXED_PROBES'
+                or review.get('frozen_panel_complete') is not True or review.get('pair_count')!=44 or review.get('row_count')!=176
+                or review.get('evaluated_rows')!=176 or review.get('unresolved_rows')!=0 or review.get('verified_pairs')!=44
+                or review.get('unresolved_pairs')!=0 or review.get('universal_theorem_authority') is not False):
+                gaps.append('native finite observation output not independently reviewed')
+    if FORMAL_JOB not in known_required:gaps.append('configured formal validity job missing')
+    if REGRESSION_JOB not in known_required:gaps.append('configured exact regression job missing')
+    if NATIVE_JOB not in known_required:gaps.append('configured native observation job missing')
+    if not set(known_required)&RESEARCH_JOBS:gaps.append('configured independent D2 research job missing')
     if not jobs:
         gaps.append('workflow harvest missing')
-    if not formal.get('independent_assumption_review_pass'):
+    if formal.get('independent_assumption_review_pass') is not True:
         gaps.append('independent producer assumption review missing')
     return gaps
 

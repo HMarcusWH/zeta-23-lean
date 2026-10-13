@@ -10,7 +10,11 @@ REPOSITORY = 'HMarcusWH/zeta-23-lean'
 ROLES = {
     ('RHRC post290 source and output proof components', 'lean-components'): 'FORMAL_VALIDITY_GATE',
     ('RHRC post290 source and output proof components', 'exact-controls'): 'REGRESSION_GATE',
+    ('RHRC post290 source and output proof components', 'native-observations'): 'RESEARCH_PRODUCING_CHECK',
     ('RHRC post290 D2 SECOND continuation (manual)', 'd2-second-continuation'): 'RESEARCH_PRODUCING_CHECK',
+    ('RHRC post290 K3 independent no-search shards','freeze-checker-shards'):'REGRESSION_GATE',
+    ('RHRC post290 K3 independent no-search shards','independent-leaf-shards'):'RESEARCH_PRODUCING_CHECK',
+    ('RHRC post290 K3 independent no-search shards','assemble-nonpartial'):'RESEARCH_PRODUCING_CHECK',
 }
 
 def get(url):
@@ -50,19 +54,24 @@ def harvest(snapshot):
         for attempt in run['attempt_inventory']:
             for job in attempt['jobs']:
                 latest = attempt['attempt'] == run['run_attempt']
-                role = ROLES.get((run['name'], job['name']), 'REQUIRES_SOURCE_REVIEW')
+                role = ROLES.get((run['name'], job['name'].split(' (')[0]), 'REQUIRES_SOURCE_REVIEW')
                 conclusion = job.get('conclusion')
                 disposition = {
                     'skipped': 'NOT_EXECUTED', 'cancelled': 'CANCELLED_UNESTABLISHED',
                     'timed_out': 'UNRESOLVED_RESOURCE_LIMIT', 'failure': 'GATE_FAILED',
                 }.get(conclusion, 'RUNNING_OR_QUEUED' if conclusion is None else 'READ_JOB_OUTPUT_REQUIRED')
                 records.append({'run_id': run['id'], 'workflow': run['name'], 'job_id': job['id'],
-                    'job': job['name'], 'attempt': attempt['attempt'], 'latest_attempt': latest,
+                    'job': job['name'], 'name':job['name'], 'attempt': attempt['attempt'], 'latest_attempt': latest,
                     'classification': role, 'status': job['status'], 'conclusion': conclusion,
                     'scientific_disposition': disposition, 'url': job['html_url'],
-                    'head': head, 'steps': job.get('steps', []), 'formal_authority_created_by_status': False})
+                    'head': head, 'head_tree':run.get('head_commit',{}).get('tree_id'),
+                    'required':role!='REQUIRES_SOURCE_REVIEW',
+                    'scientific_acceptance':False,
+                    'output_reviewed':False,
+                    'acceptance_note':'Raw job status is not reviewed mathematical output; separate source-bound receipt required.',
+                    'steps': job.get('steps', []), 'formal_authority_created_by_status': False})
     return {'head': head, 'repository': REPOSITORY, 'claim_cap': 'RH_OPEN', 'jobs': records,
-            'all_latest_jobs_completed': all(r['status'] == 'completed' for r in records if r['latest_attempt']),
+            'all_latest_jobs_completed': bool(records) and all(r['status'] == 'completed' for r in records if r['latest_attempt']),
             'scope': 'Exact API dispositions and all attempts; success requires separate log/source review.'}
 
 if __name__ == '__main__':

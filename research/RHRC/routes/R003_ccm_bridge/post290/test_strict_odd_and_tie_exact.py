@@ -11,8 +11,8 @@ from pole_neutral_exact import geometry, is_zero, require_checks
 
 def run() -> dict:
     # A nonunitary intertwiner and genuinely complex Riesz/channel vectors.
-    A, B, D = s.diag(1, 3), s.diag(-2, 3), s.diag(1, 2)
-    g, S = s.Matrix([s.I, 0]), s.Matrix([[3 * s.I, 0]])
+    A, B, D = s.diag(1, 3), s.diag(-2, 3), s.diag(2, 3)
+    g, S = s.Matrix([s.I, 0]), s.Matrix([[6 * s.I, 0]])
     checks = {"rank_one_identity": B * D - D * A == g * S,
               "adjoint_identity": D.H * B - A * D.H == S.H * g.H}
     w = s.Matrix([1, 0])
@@ -24,6 +24,7 @@ def run() -> dict:
                    "odd_overlap_nonzero": overlap != 0,
                    "odd_ray_normalization": (g.H * y)[0] == 1,
                    "missing_minus_fails": w != overlap * (-y),
+                   "unitary_inverse_substitution_fails": w != overlap * (-D.H * (A-lam*s.eye(2)).inv() * S.H),
                    "unconjugated_riesz_fails": w != overlap * (-D.H.inv() * (A - lam * s.eye(2)).inv() * S.T)})
     for lam in (-5, -3, -2, 0):
         y = -D.H.inv() * (A - lam * s.eye(2)).inv() * S.H

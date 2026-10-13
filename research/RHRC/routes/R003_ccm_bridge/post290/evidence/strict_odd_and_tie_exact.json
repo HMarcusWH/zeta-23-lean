@@ -13,6 +13,7 @@
     "odd_overlap_nonzero": true,
     "odd_ray_normalization": true,
     "missing_minus_fails": true,
+    "unitary_inverse_substitution_fails": true,
     "unconjugated_riesz_fails": true,
     "odd_determinant_at_-5": true,
     "odd_determinant_at_-3": true,
@@ -70,5 +71,5 @@
       "conclusion": "Removing the simple-even hypothesis makes M4 nonvanishing false."
     }
   ],
-  "assertion_count": 37
+  "assertion_count": 38
 }
