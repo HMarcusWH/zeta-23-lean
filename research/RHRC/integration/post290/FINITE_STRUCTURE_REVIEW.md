@@ -43,7 +43,8 @@ simple-even hypothesis is justified.
 
 The 1,722 exact threshold assertions cover 192 nested two-parity bottom lists,
 all three branches and eight empty predecessor cases. The inverse budget is
-6(Kd-1)/D. These finite controls do not construct a threshold for a generated
+6(Kd-1)/D for the selected-ground shift; the detector shift has the distinct
+12(Kd-1)/D budget. These finite controls do not construct a threshold for a generated
 zeta detector.
 
 The 13 complex Schur/residual assertions keep a two-dimensional detector
@@ -63,7 +64,10 @@ hypothetical zero-generated original detector.
 The frozen panel has 44 aperture/cutoff pairs and 176 carrier rows. The
 historical pre-seam-wrapper execution evaluates 24 nonseam pairs, producing
 96 point-enclosure rows and 80 explicit UNRESOLVED seam rows; its two receipts
-are preserved as `native_panel_preseam.json` and `native_panel_check_preseam.json`.
+are preserved locally as `native_panel_preseam.json` and in the checked-in
+`native_panel_check_preseam.json` summary. Full raw panels are archived outside
+the source diff. The clean Linux campaign and its complete observation artifact
+are indexed by `integration/post290/NATIVE_OBSERVATION_RUNS.json`.
 The new source-bound symbolic-point wrapper consumes exact entering-atom
 cancellation at L=log(n). Active Q=n is retained and the nonzero atom sum ends
 at n-1. It evaluates only the registered exact symbolic point, and makes no

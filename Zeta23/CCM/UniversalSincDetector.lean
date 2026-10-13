@@ -201,7 +201,7 @@ theorem hasProdUniformlyOn_compact {s : ℝ} (hs : 0 ≤ s) {K : Set ℂ}
       (fun n : ℕ => fun z : ℂ => sinc ((width s n : ℂ) * z)) := by
     funext n z
     ring
-  have hlimit : (fun z : ℂ => ∏' n : ℕ, 1 + (sinc ((width s n : ℂ) * z) - 1)) =
+  have hlimit : (fun z : ℂ => ∏' n : ℕ, (1 + (sinc ((width s n : ℂ) * z) - 1))) =
       product s := by
     funext z
     unfold product

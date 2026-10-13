@@ -60,12 +60,14 @@ abbrev poleNeutralOddSubspace (L : ℝ) (K : ℕ) :
 even subtype. The norm and inner product are the coefficient Euclidean ones. -/
 instance poleNeutralEven_innerProductSpace (L : ℝ) (K : ℕ) :
     InnerProductSpace ℂ (poleNeutralEvenSubspace L K) :=
-  Submodule.innerProductSpace (poleNeutralEvenSubspace L K)
+  Submodule.innerProductSpace (𝕜 := ℂ)
+    (E := euclideanEvenBoundaryFlatSubspace K) (poleNeutralEvenSubspace L K)
 
 /-- Standard inherited coefficient inner product on the odd kernel. -/
 instance poleNeutralOdd_innerProductSpace (L : ℝ) (K : ℕ) :
     InnerProductSpace ℂ (poleNeutralOddSubspace L K) :=
-  Submodule.innerProductSpace (poleNeutralOddSubspace L K)
+  Submodule.innerProductSpace (𝕜 := ℂ)
+    (E := euclideanOddBoundaryFlatSubspace K) (poleNeutralOddSubspace L K)
 
 @[simp] theorem mem_poleNeutralEvenSubspace (L : ℝ) (K : ℕ)
     (u : euclideanEvenBoundaryFlatSubspace K) :
@@ -213,7 +215,8 @@ theorem inner_poleNeutralEvenCompressedCanonical_self (L : ℝ) (K : ℕ)
   calc
     _ = inner ℂ (evenCompressedCanonical L K u.val) u.val :=
       Submodule.inner_orthogonalProjectionOnto_eq_of_mem_right
-        (K := poleNeutralEvenSubspace L K) u _
+        (𝕜 := ℂ) (E := euclideanEvenBoundaryFlatSubspace K)
+        (K := poleNeutralEvenSubspace L K) u (evenCompressedCanonical L K u.val)
     _ = _ := inner_parityCompressedCanonical_self .even L K u.val
 
 /-- Orthogonal compression preserves native self-energy on the odd kernel. -/
@@ -226,7 +229,8 @@ theorem inner_poleNeutralOddCompressedCanonical_self (L : ℝ) (K : ℕ)
   calc
     _ = inner ℂ (oddCompressedCanonical L K u.val) u.val :=
       Submodule.inner_orthogonalProjectionOnto_eq_of_mem_right
-        (K := poleNeutralOddSubspace L K) u _
+        (𝕜 := ℂ) (E := euclideanOddBoundaryFlatSubspace K)
+        (K := poleNeutralOddSubspace L K) u (oddCompressedCanonical L K u.val)
     _ = _ := inner_parityCompressedCanonical_self .odd L K u.val
 
 /-- The even native pole kernel supplies both profile equations: the other

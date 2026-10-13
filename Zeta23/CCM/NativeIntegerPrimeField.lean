@@ -180,7 +180,7 @@ theorem nativePrimeField_eq_firstPrime_atom {s t : ℝ} {j : ℝ → ℝ}
   unfold nativePrimeField
   rw [tsum_eq_single 2 hterm]
   unfold nativePrimeCoefficient
-  rw [ArithmeticFunction.vonMangoldt_apply_prime Nat.prime_two]
+  rw [ArithmeticFunction.vonMangoldt_apply_prime Nat.prime_two] <;> norm_num
 
 theorem nativeIntegerDriveField_eq_firstPrime_atom {s t : ℝ} {j : ℝ → ℝ}
     (hj : NativeSourceSupported s j)

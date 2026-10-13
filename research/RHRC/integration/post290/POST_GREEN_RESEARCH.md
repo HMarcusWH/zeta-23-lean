@@ -195,3 +195,69 @@ finite transport: no amount of schema completion or finite probe agreement
 can fill those missing mathematical terms. Given the verified seam and
 coefficient identities, exact local source histories and native discrepancy
 measurements become more accessible; the flagship producer and RH remain OPEN.
+
+## Third pass: an integrable native kernel and exact-tree observation artifact
+
+**What became formally true.** At head `61d94679a2279bbe5909c701b9783435c68e5bbe`,
+tree `2f312fcd801e15ab5c367d075b9845b3548a9dd5`, the full
+`NativePositiveCompletion.lean` target compiled in job `115537125699` of
+run `38467255963`. The actual causal floor kernel is measurable and
+integrable on `(0, infinity)`. Its printed integrability axiom footprint is
+exactly the three admitted standard axioms. The envelope used is
+`exp(-t/2)`, of mass 2; this does not prove the required mass below `605/621`,
+the Laplace multiplier, stability of actual Y, or range membership.
+
+**Workflow harvest.** The same run's exact-controls job `115537124858`
+SUCCEEDED. Native-observations job `115537124500` SUCCEEDED, evaluated all
+176 rows and freshly checked all 44 pairs at 1024 bits. The complete job
+asserts the exact clean checked head/tree. Artifact `11850660049` was
+downloaded and its ZIP hash independently matched
+`df860d284cc84b589811c3d6f5f985c764e0715c2ab52e13640a9747154105cd`.
+The raw panel hash is
+`fab9962131a14195196bcf9eee6464312400d0599d40e1133d54a954ee8304db`.
+Source hashes and raw bytes are retained separately. The Lean job as a
+whole FAILED on sinc predicate conversions, kernel projection instances,
+and one first-prime coefficient proof; export was therefore not executed.
+D2 remains running at its original producer head; neither its search nor
+its full replay is certified by this observation job.
+
+**What changed.** The kernel's integrability is now a compiler-established
+fact. The native fixed probes have a clean Linux tree and archived full
+signed residual data. Previously local-only point observations can now be
+inspected with exact run, job, source, and artifact identities.
+
+**Upstream implications.** Causal local equalities can be built before
+global membership of X is available. Kernel integrability is sufficient
+for later Young-type operator estimates when their other hypotheses are
+proved, but mass 2 supplies no strict contraction. The native identification
+`a = c * N` must be constructed rather than inferred from the shape of the
+floor formula.
+
+**Downstream implications.** The next actual-source targets are the locally
+finite `N * X = U` arithmetic equation and the floor kernel's integer
+translate identity. These compress the completion dependency graph without
+assuming inverse solvability. The archived channel Gram entries are usable
+for source diagnostics, while selected-ground, original phase-plane,
+quartic transport, and full native forward-iteration views remain OPEN.
+
+**Resurrected routes.** The causal completion route has a genuine integrable
+kernel prerequisite. Its closing range obstruction still requires the
+actual stable Y and residue-sensitive adjoint witnesses.
+
+**New RH-relevant clues.** LEAD: the exact integer-drive cancellation is the
+natural place to seek a useful native estimate after coefficient compatibility
+is fully connected to the fields. Integrability of the forward kernel alone
+does not bound the inverse response.
+
+**Falsification checks.** Positive fixed probe Rayleigh values cannot exclude
+a lower negative eigenvalue; the recorded bottom enclosures can straddle
+zero. A full point grid cannot certify the continuum. Neither a known source
+coefficient nor an integrable positive kernel removes an adjoint-invisible
+component. Preserve the finite-section range control when interpreting any
+future small numerical residual.
+
+**Highest-leverage next moves.** Obtain a clean component compilation and
+context-bound declaration receipt, then verify the exact local translate
+identities. Finish D2's preserved source campaign and independent all-leaf
+replay. Continue the fixed smooth-source construction and quantitative finite
+transport; they are required mathematical terms, not documentary tasks.

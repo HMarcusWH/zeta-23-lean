@@ -1,10 +1,12 @@
 import Zeta23.CCM.UniversalSincDetector
 import Zeta23.ExceptionalZero.UniversalSincDetectorVisibility
 import Zeta23.CCM.CanonicalPoleNeutralGeometry
+import Zeta23.CCM.CanonicalTrialResidualChannels
 import Zeta23.CCM.NativeIntegerPrimeSource
 import Zeta23.CCM.NativeIntegerPrimeField
 import Zeta23.CCM.NativeIntegerPrimeConvolution
 import Zeta23.CCM.NativePositiveCompletion
+import Zeta23.CCM.NativeFloorCompletionSource
 import Zeta23.CCM.Step123PrimeSeam
 import Zeta23.RHRC.SourceCandidateResolution
 import Lean.Util.CollectAxioms
@@ -51,6 +53,12 @@ run_cmd do
     (``Zeta23.CCM.canonicalSourceMatrix_mulVec_poleNeutralEven_eq_negative_arch_prime,
       "Zeta23.CCM.CanonicalPoleNeutralGeometry"),
     (``Zeta23.CCM.native_primeCoefficients_unique, "Zeta23.CCM.NativeIntegerPrimeSource"),
+    (``Zeta23.CCM.canonicalTrialResidual_variance, "Zeta23.CCM.CanonicalTrialResidualChannels"),
+    (``Zeta23.CCM.canonicalTrialResidual_channelGram, "Zeta23.CCM.CanonicalTrialResidualChannels"),
+    (``Zeta23.CCM.poleNeutralEvenTrialResidual_variance, "Zeta23.CCM.CanonicalTrialResidualChannels"),
+    (``Zeta23.CCM.poleNeutralOddTrialResidual_variance, "Zeta23.CCM.CanonicalTrialResidualChannels"),
+    (``Zeta23.CCM.poleNeutralEvenTrialResidual_channelGram, "Zeta23.CCM.CanonicalTrialResidualChannels"),
+    (``Zeta23.CCM.poleNeutralOddTrialResidual_channelGram, "Zeta23.CCM.CanonicalTrialResidualChannels"),
     (``Zeta23.CCM.native_weighted_dirichlet_identity, "Zeta23.CCM.NativeIntegerPrimeSource"),
     (``Zeta23.CCM.nativePrimeField_eq_history_sum, "Zeta23.CCM.NativeIntegerPrimeField"),
     (``Zeta23.CCM.nativeIntegerDriveField_eq_history_sum, "Zeta23.CCM.NativeIntegerPrimeField"),
@@ -63,6 +71,8 @@ run_cmd do
       "Zeta23.CCM.NativeIntegerPrimeConvolution"),
     (``Zeta23.CCM.nativePositiveCompletion_le_exp, "Zeta23.CCM.NativePositiveCompletion"),
     (``Zeta23.CCM.nativePositiveCompletion_integrableOn, "Zeta23.CCM.NativePositiveCompletion"),
+    (``Zeta23.CCM.nativeIntegerTranslateAction_rationalKernel_eq_positiveCompletion,
+      "Zeta23.CCM.NativeFloorCompletionSource"),
     (``Zeta23.CCM.step123_enteringPrimeSourceMatrix_zero, "Zeta23.CCM.Step123PrimeSeam"),
     (``Zeta23.CCM.step123_qBasis_logSeam_zero, "Zeta23.CCM.Step123PrimeSeam")]
   let queries := roots.map fun (name, mod) =>
