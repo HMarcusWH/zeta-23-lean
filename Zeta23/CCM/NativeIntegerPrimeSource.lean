@@ -1,5 +1,6 @@
 import Mathlib.NumberTheory.ArithmeticFunction.VonMangoldt
 import Mathlib.Tactic.Push
+import Mathlib.Algebra.BigOperators.Field
 
 noncomputable section
 
@@ -26,7 +27,7 @@ theorem native_divisor_coefficient_identity (n : ℕ) :
 
 /-- The complete native divisor law fixes every arithmetic coefficient. -/
 theorem native_primeCoefficients_unique (f : ArithmeticFunction ℝ)
-    (hf : ∀ n, ∑ d ∈ n.divisors, f d = Real.log n) :
+    (hf : ∀ n : ℕ, ∑ d ∈ n.divisors, f d = Real.log n) :
     f = ArithmeticFunction.vonMangoldt := by
   have hmul : f * (ζ : ArithmeticFunction ℝ) = ArithmeticFunction.log := by
     ext n
@@ -40,7 +41,7 @@ theorem native_primeCoefficients_unique (f : ArithmeticFunction ℝ)
 /-- A modified prime model cannot satisfy the complete unchanged divisor law. -/
 theorem native_modifiedCoefficient_breaks_divisor_identity
     (f : ArithmeticFunction ℝ) (h : f ≠ ArithmeticFunction.vonMangoldt) :
-    ∃ n, (∑ d ∈ n.divisors, f d) ≠ Real.log n := by
+    ∃ n : ℕ, (∑ d ∈ n.divisors, f d) ≠ Real.log n := by
   by_contra hnone
   push_neg at hnone
   exact h (native_primeCoefficients_unique f hnone)
@@ -49,5 +50,25 @@ theorem native_weighted_divisor_coefficient_identity (n : ℕ) :
     ∑ d ∈ n.divisors, Λ d / Real.sqrt n = nativeIntegerDriveCoefficient n := by
   rw [← Finset.sum_div, native_divisor_coefficient_identity]
   rfl
+
+/-- The actual square-root weights multiply to the native weight at n.
+This is the coefficient equation for N * Pi, without replacing the integer
+lattice or discarding composite divisors. -/
+theorem native_weighted_dirichlet_identity (n : ℕ) :
+    ∑ d ∈ n.divisors,
+      nativeIntegerCoefficient (n / d) * nativePrimeCoefficient d =
+        nativeIntegerDriveCoefficient n := by
+  rw [← native_weighted_divisor_coefficient_identity n]
+  apply Finset.sum_congr rfl
+  intro d hd
+  have hdn : d ∣ n := Nat.dvd_of_mem_divisors hd
+  have hprod : Real.sqrt (n / d : ℕ) * Real.sqrt d = Real.sqrt n := by
+    rw [← Real.sqrt_mul (Nat.cast_nonneg (n / d)), ← Nat.cast_mul,
+      Nat.div_mul_cancel hdn]
+  unfold nativeIntegerCoefficient nativePrimeCoefficient
+  rw [div_mul_div_comm, one_mul, hprod]
+
+#print axioms native_primeCoefficients_unique
+#print axioms native_weighted_dirichlet_identity
 
 end Zeta23.CCM

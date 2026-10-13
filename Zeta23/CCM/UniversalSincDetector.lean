@@ -81,6 +81,7 @@ theorem analyticAt_sinc_zero : AnalyticAt ℂ sinc 0 := by
   obtain ⟨p, hp⟩ := (Complex.analyticAt_sin (x := 0))
   exact ⟨p.fslope, hp.has_fpower_series_dslope_fslope⟩
 
+set_option backward.isDefEq.respectTransparency false in
 theorem sinc_sub_one_isBigO : (fun z : ℂ => sinc z - 1) =O[𝓝 0] id := by
   simpa using analyticAt_sinc_zero.differentiableAt.isBigO_sub
 

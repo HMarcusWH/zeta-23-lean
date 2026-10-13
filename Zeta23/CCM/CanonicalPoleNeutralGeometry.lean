@@ -1,4 +1,5 @@
 import Zeta23.CCM.ParitySourceMomentFourRigidity
+import Zeta23.CCM.QuadraticNormalSourceJets
 
 noncomputable section
 
@@ -81,6 +82,7 @@ theorem poleOddProfile_mul_centeredIndex {L : ℝ} (hL : 0 < L)
     field_simp [hp, hd]
     unfold poleProfileDenominator
     ring
+  unfold poleOddProfile poleEvenProfile
   exact_mod_cast hr
 
 /-- Native pole-neutrality is preserved by the legal centered-index map.
@@ -101,8 +103,9 @@ theorem canonicalPoleOddFunctional_evenIndex {L : ℝ} (hL : 0 < L)
   change (∑ i, poleOddProfile L K i * (euclideanEvenToOddIndexLinearMap K u).val i) = _
   simp_rw [hcoord, ← mul_assoc, poleOddProfile_mul_centeredIndex hL]
   simp_rw [sub_mul]
-  rw [Finset.sum_sub_distrib, ← Finset.mul_sum, hzero, mul_zero, zero_sub,
-    ← Finset.mul_sum]
+  rw [Finset.sum_sub_distrib, ← Finset.mul_sum, hzero, mul_zero, zero_sub]
+  simp_rw [mul_assoc]
+  rw [← Finset.mul_sum]
   rfl
 
 theorem poleNeutral_evenIndex_mem {L : ℝ} (hL : 0 < L) (K : ℕ)

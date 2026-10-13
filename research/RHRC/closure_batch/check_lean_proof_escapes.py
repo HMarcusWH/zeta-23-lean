@@ -12,6 +12,11 @@ from lean_imports import strip_lean_comments
 
 
 CLOSURE_ROOTS = [
+    Path("Zeta23/CCM/UniversalSincDetector.lean"),
+    Path("Zeta23/ExceptionalZero/UniversalSincDetectorVisibility.lean"),
+    Path("Zeta23/CCM/CanonicalPoleNeutralGeometry.lean"),
+    Path("Zeta23/CCM/NativeIntegerPrimeSource.lean"),
+    Path("Zeta23/CCM/NativePositiveCompletion.lean"),
     Path("Zeta23/CCM/SourceContraction.lean"),
     Path("Zeta23/CCM/SourceContractionLocalized.lean"),
     Path("Zeta23/CCM/CanonicalArchUpperBound.lean"),
@@ -112,6 +117,8 @@ def promoted_roots() -> list[Path]:
 
 
 def check(paths: list[Path]) -> None:
+    if not paths:
+        raise SystemExit("CLOSURE PROOF-ESCAPE CHECK: FAIL\nempty scan; run from the repository root")
     missing = [str(path) for path in paths if not path.is_file()]
     if missing:
         raise SystemExit("CLOSURE PROOF-ESCAPE CHECK: FAIL\nmissing files:\n" + "\n".join(missing))

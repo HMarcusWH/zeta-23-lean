@@ -1,0 +1,330 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:rh:post290:step123-output:v1",
+  "title": "Step123 final output receipt schema; the schema is not proof authority",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "source_tree",
+    "execution_status",
+    "integrity_status",
+    "scientific_disposition",
+    "claim_cap",
+    "origin",
+    "views",
+    "quantities",
+    "relations",
+    "cuts",
+    "workflow_harvest_ref",
+    "d2_receipt_ref"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "RH_STEP123_OUTPUT_1.0"
+    },
+    "source_tree": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "execution_status": {
+      "enum": [
+        "SUCCESS",
+        "FAILURE",
+        "CANCELLED",
+        "TIMED_OUT"
+      ]
+    },
+    "integrity_status": {
+      "enum": [
+        "PASS",
+        "FAIL",
+        "NOT_CHECKED"
+      ]
+    },
+    "scientific_disposition": {
+      "enum": [
+        "CORE_OUTPUT_COMPLETE_RH_OPEN",
+        "PARTIAL_OUTPUT_RH_OPEN",
+        "FALSIFIED_CANDIDATE_RH_OPEN",
+        "UNRESOLVED_RH_OPEN"
+      ]
+    },
+    "claim_cap": {
+      "const": "RH_OPEN"
+    },
+    "origin": {
+      "enum": [
+        "FORMAL_CONDITIONAL",
+        "NATIVE_PARAMETER_EVALUATION",
+        "SYNTHETIC_CONTROL",
+        "UNVERIFIED_CANDIDATE"
+      ]
+    },
+    "views": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "source_id",
+          "role",
+          "carrier_id",
+          "definition_ref",
+          "normalization_ref"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "source_id": {
+            "type": "string"
+          },
+          "role": {
+            "enum": [
+              "ORIGINAL_SOURCE",
+              "ORIGINAL_TRIAL",
+              "FINITE_IMAGE",
+              "SELECTED_GROUND",
+              "EXTERIOR",
+              "NATIVE_FIELD",
+              "FORWARD_INPUT",
+              "CONTACT_SPECIALIZATION"
+            ]
+          },
+          "carrier_id": {
+            "type": "string"
+          },
+          "definition_ref": {
+            "type": "string"
+          },
+          "normalization_ref": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "quantities": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "source_id",
+          "carrier_id",
+          "resolution",
+          "authority",
+          "definition_ref",
+          "scope"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "source_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "carrier_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "resolution": {
+            "enum": [
+              "SYMBOLIC_FORMAL",
+              "RATIONAL_EXACT",
+              "CERTIFIED_INTERVAL",
+              "FLOAT_DIAGNOSTIC",
+              "UNRESOLVED",
+              "NOT_APPLICABLE"
+            ]
+          },
+          "authority": {
+            "enum": [
+              "PROVED",
+              "DERIVED",
+              "PAPER",
+              "EXPERIMENTAL_SIGNAL",
+              "OPEN",
+              "FALSIFIED"
+            ]
+          },
+          "definition_ref": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scope": {
+            "type": "object"
+          },
+          "real_interval": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "lower_num",
+              "lower_den",
+              "upper_num",
+              "upper_den"
+            ],
+            "properties": {
+              "lower_num": {
+                "type": "string",
+                "pattern": "^-?[0-9]+$"
+              },
+              "upper_num": {
+                "type": "string",
+                "pattern": "^-?[0-9]+$"
+              },
+              "lower_den": {
+                "type": "string",
+                "pattern": "^[1-9][0-9]*$"
+              },
+              "upper_den": {
+                "type": "string",
+                "pattern": "^[1-9][0-9]*$"
+              }
+            }
+          },
+          "imag_interval": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "lower_num",
+              "lower_den",
+              "upper_num",
+              "upper_den"
+            ],
+            "properties": {
+              "lower_num": {
+                "type": "string",
+                "pattern": "^-?[0-9]+$"
+              },
+              "upper_num": {
+                "type": "string",
+                "pattern": "^-?[0-9]+$"
+              },
+              "lower_den": {
+                "type": "string",
+                "pattern": "^[1-9][0-9]*$"
+              },
+              "upper_den": {
+                "type": "string",
+                "pattern": "^[1-9][0-9]*$"
+              }
+            }
+          },
+          "theorem_receipt": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "reason": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      }
+    },
+    "relations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "from_view",
+          "to_view",
+          "kind",
+          "authority",
+          "scope",
+          "evidence_ref"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "from_view": {
+            "type": "string"
+          },
+          "to_view": {
+            "type": "string"
+          },
+          "kind": {
+            "enum": [
+              "EXACT_EQUALITY",
+              "EXACT_LINEAR_MAP",
+              "BOUNDED_ERROR",
+              "ONE_WAY_IMPLICATION",
+              "NON_PRESERVATION",
+              "PAPER_ADAPTER"
+            ]
+          },
+          "authority": {
+            "enum": [
+              "PROVED",
+              "DERIVED",
+              "PAPER",
+              "EXPERIMENTAL_SIGNAL",
+              "OPEN",
+              "FALSIFIED"
+            ]
+          },
+          "scope": {
+            "type": "object"
+          },
+          "evidence_ref": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "cuts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "status",
+          "sufficiency_ref",
+          "source_id",
+          "scope"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "OPEN",
+              "FALSIFIED_PROPOSAL",
+              "RESOLVED_ON_FINITE_DOMAIN"
+            ]
+          },
+          "sufficiency_ref": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "source_id": {
+            "type": "string"
+          },
+          "scope": {
+            "type": "object"
+          }
+        }
+      }
+    },
+    "workflow_harvest_ref": {
+      "type": "string"
+    },
+    "d2_receipt_ref": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  }
+}

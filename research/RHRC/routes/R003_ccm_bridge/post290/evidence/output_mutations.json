@@ -1,0 +1,22 @@
+{
+  "execution_status": "SUCCESS",
+  "integrity_status": "PASS",
+  "claim_cap": "RH_OPEN",
+  "scientific_disposition": "EVIDENCE_MUTATIONS_REJECTED",
+  "rejected": [
+    "stale theorem type",
+    "wrong compiler tree",
+    "generic interface as producer",
+    "missing branch producer",
+    "unresolved D2 marked complete",
+    "pointwise cover as intervals",
+    "missing D2 layer",
+    "nonfinite enclosure dropped",
+    "skipped required job passed",
+    "running required job passed",
+    "assumption review omitted",
+    "module scope silently narrowed"
+  ],
+  "authority": "VALIDATOR_CONTROL_ONLY",
+  "scope": "Synthetic receipt fixtures; no theorem or D2 authority."
+}

@@ -1,0 +1,14 @@
+{
+  "execution_status": "SUCCESS",
+  "integrity_status": "PASS",
+  "scientific_disposition": "ALTERED_PRIME_REJECTED_BY_NATIVE_DIVISOR_LAW",
+  "authority": "RATIONAL_EXACT_WITH_SYMBOLIC_LOG_IDENTITIES",
+  "claim_cap": "RH_OPEN",
+  "native_source_id": "UNCHANGED_VON_MANGOLDT_INTEGER_LATTICE",
+  "synthetic_source_id": "MODIFIED_LAMBDA_2_PLUS_ONE",
+  "first_broken_coefficient": 2,
+  "matched_domain": "n=1,...,64",
+  "residual_at_2": "1",
+  "weighted_residual_at_2": "1/sqrt(2)",
+  "scope": "Coefficient-level control; no negative ground, X bound, or RH exclusion is asserted."
+}
