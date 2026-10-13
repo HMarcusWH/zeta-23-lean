@@ -27,7 +27,7 @@ def nativeIntegerTranslateAction (f : ℝ → ℝ) (t : ℝ) : ℝ :=
 /-- A multiplication-indexed source summand used only for regrouping. -/
 def nativeIntegerPrimePairTerm (j : ℝ → ℝ) (t : ℝ) (p : ℕ × ℕ) : ℝ :=
   nativeIntegerCoefficient p.1 * nativePrimeCoefficient p.2 *
-    j (t - Real.log (p.1 * p.2))
+    j (t - Real.log (((p.1 * p.2 : ℕ) : ℝ)))
 
 theorem native_frozenSource_causal_gap_pos :
     0 < Real.log 2 - (1 / 4096 : ℝ) := by
@@ -119,7 +119,9 @@ theorem nativeIntegerPrimePair_fiber (j : ℝ → ℝ) (t : ℝ) (n : ℕ) :
         nativeIntegerCoefficient p.1 * nativePrimeCoefficient p.2) *
           j (t - Real.log n) := by rw [Finset.sum_mul]
     _ = nativeIntegerDriveCoefficient n * j (t - Real.log n) := by
-      rw [Nat.sum_divisorsAntidiagonal', native_weighted_dirichlet_identity]
+      rw [Nat.sum_divisorsAntidiagonal'
+        (f := fun m n => nativeIntegerCoefficient m * nativePrimeCoefficient n),
+        native_weighted_dirichlet_identity]
 
 theorem nativeIntegerPrime_inner_sum (j : ℝ → ℝ) (t : ℝ) (m : ℕ) :
     (∑' n : ℕ, nativeIntegerPrimePairTerm j t (m, n)) =

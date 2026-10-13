@@ -61,19 +61,38 @@ theorem hasDerivAt_originalSincMultiplier_I_half {s : ℝ} (hs : 0 ≤ s) :
     HasDerivAt (originalSincMultiplier s)
       (-I * CCM.UniversalSinc.product s (I / 2)) (I / 2) := by
   have hP := (CCM.UniversalSinc.differentiable_product hs (I / 2)).hasDerivAt
-  have hm := (((hasDerivAt_id (I / 2 : ℂ)).pow 2).add_const (1 / 4 : ℂ)).neg.mul hP
+  have hpoly := (((hasDerivAt_id (I / 2 : ℂ)).pow 2).add_const (1 / 4 : ℂ)).neg
+  change HasDerivAt (fun z : ℂ => -(z ^ 2 + 1 / 4))
+    (-(2 * (I / 2) ^ (2 - 1) * 1)) (I / 2) at hpoly
+  have hd : (-(2 * (I / 2) ^ (2 - 1) * 1) : ℂ) = -I := by norm_num <;> ring
+  rw [hd] at hpoly
+  have hb : (-((I / 2) ^ 2 + 1 / 4) : ℂ) = 0 := by norm_num [div_pow, I_sq]
+  have hm := hpoly.mul hP
   change HasDerivAt (fun z : ℂ => -(z ^ 2 + 1 / 4) * CCM.UniversalSinc.product s z)
-    (-I * CCM.UniversalSinc.product s (I / 2)) (I / 2)
-  convert hm using 1 <;> norm_num [div_pow, I_sq] <;> ring
+    (-I * CCM.UniversalSinc.product s (I / 2) +
+      (-((I / 2) ^ 2 + 1 / 4)) * deriv (CCM.UniversalSinc.product s) (I / 2))
+    (I / 2) at hm
+  rw [hb, zero_mul, add_zero] at hm
+  exact hm
 
 theorem hasDerivAt_originalSincMultiplier_neg_I_half {s : ℝ} (hs : 0 ≤ s) :
     HasDerivAt (originalSincMultiplier s)
       (I * CCM.UniversalSinc.product s (-I / 2)) (-I / 2) := by
   have hP := (CCM.UniversalSinc.differentiable_product hs (-I / 2)).hasDerivAt
-  have hm := (((hasDerivAt_id (-I / 2 : ℂ)).pow 2).add_const (1 / 4 : ℂ)).neg.mul hP
+  have hpoly := (((hasDerivAt_id (-I / 2 : ℂ)).pow 2).add_const (1 / 4 : ℂ)).neg
+  change HasDerivAt (fun z : ℂ => -(z ^ 2 + 1 / 4))
+    (-(2 * (-I / 2) ^ (2 - 1) * 1)) (-I / 2) at hpoly
+  have hd : (-(2 * (-I / 2) ^ (2 - 1) * 1) : ℂ) = I := by norm_num <;> ring
+  rw [hd] at hpoly
+  have hb : (-((-I / 2) ^ 2 + 1 / 4) : ℂ) = 0 := by
+    norm_num [div_pow, neg_sq, I_sq]
+  have hm := hpoly.mul hP
   change HasDerivAt (fun z : ℂ => -(z ^ 2 + 1 / 4) * CCM.UniversalSinc.product s z)
-    (I * CCM.UniversalSinc.product s (-I / 2)) (-I / 2)
-  convert hm using 1 <;> norm_num [div_pow, neg_sq, I_sq] <;> ring
+    (I * CCM.UniversalSinc.product s (-I / 2) +
+      (-((-I / 2) ^ 2 + 1 / 4)) * deriv (CCM.UniversalSinc.product s) (-I / 2))
+    (-I / 2) at hm
+  rw [hb, zero_mul, add_zero] at hm
+  exact hm
 
 /-- Both mandatory nonreal zeros have a nonzero complex derivative. -/
 theorem originalSincMultiplier_deriv_ne_zero_at_elementary_pair {s : ℝ} (hs : 0 < s) :

@@ -7,6 +7,22 @@ from lean_imports import strip_lean_comments
 
 
 EXPECTED = {
+    Path("Zeta23/CCM/UniversalSincDetector.lean"),
+    Path("Zeta23/CCM/UniversalSincDetectorBounds.lean"),
+    Path("Zeta23/CCM/UniversalSincDetectorInverse.lean"),
+    Path("Zeta23/CCM/UniversalSincSourceLaw.lean"),
+    Path("Zeta23/CCM/CanonicalPoleNeutralCarrier.lean"),
+    Path("Zeta23/CCM/CanonicalPoleNeutralIntertwining.lean"),
+    Path("Zeta23/ExceptionalZero/UniversalSincDetectorVisibility.lean"),
+    Path("Zeta23/CCM/CanonicalPoleNeutralGeometry.lean"),
+    Path("Zeta23/CCM/NativeIntegerPrimeSource.lean"),
+    Path("Zeta23/CCM/NativePositiveCompletion.lean"),
+    Path("Zeta23/CCM/NativeIntegerPrimeField.lean"),
+    Path("Zeta23/CCM/NativeIntegerPrimeConvolution.lean"),
+    Path("Zeta23/CCM/NativeFloorCompletionSource.lean"),
+    Path("Zeta23/CCM/CanonicalTrialResidualChannels.lean"),
+    Path("Zeta23/CCM/Step123PrimeSeam.lean"),
+    Path("Zeta23/RHRC/Step123OutputBindings.lean"),
     Path("Zeta23/CCM/SourceContraction.lean"),
     Path("Zeta23/CCM/SourceContractionLocalized.lean"),
     Path("Zeta23/CCM/CanonicalArchUpperBound.lean"),
@@ -97,13 +113,17 @@ class LeanProofEscapeScopeTests(unittest.TestCase):
         roots = closure_roots()
         self.assertEqual(len(roots), len(set(roots)))
         self.assertEqual(set(roots), EXPECTED)
-        self.assertEqual(len(roots), 82)
+        self.assertEqual(len(roots), 98)
         for path in roots:
             self.assertTrue(path.is_file(), str(path))
 
 
 
 class LeanProofEscapeBehaviorTests(unittest.TestCase):
+    def test_empty_scan_must_fail(self):
+        with self.assertRaisesRegex(SystemExit, "empty scan"):
+            check([])
+
     def test_rejects_escape_tokens_in_realistic_positions(self):
         cases = {
             "inline sorry": "theorem bogus : True := by sorry",

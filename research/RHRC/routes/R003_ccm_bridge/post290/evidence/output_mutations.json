@@ -40,7 +40,15 @@
     "old D2 source tree relabelled current",
     "D2 Boolean claim encoded as string",
     "D2 count encoded as Boolean",
-    "D2 numerical evidence relabelled Lean proof"
+    "D2 numerical evidence relabelled Lean proof",
+    "synthetic merge without checkout review",
+    "synthetic merge changed source tree",
+    "synthetic merge commit object changed",
+    "synthetic merge branch parent missing",
+    "synthetic merge checkout log missing",
+    "API branch head silently rewritten",
+    "compiler receipt at other checkout",
+    "synthetic merge self-referential base"
   ],
   "authority": "VALIDATOR_CONTROL_ONLY",
   "scope": "Synthetic receipt fixtures; no theorem or D2 authority."

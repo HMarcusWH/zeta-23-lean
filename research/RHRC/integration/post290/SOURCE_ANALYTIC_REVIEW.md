@@ -109,6 +109,31 @@ instances equal and explicitly rewrites the derived asymptotic statement.
 This is a kernel-checked equality target, not an extra source assumption;
 its next compiler receipt remains necessary.
 
+### Exact component receipt at `6ae99364`
+
+The Linux component compiler at commit
+`6ae99364db66b2c66b1e0bde804f02733907647e`, tree
+`3580d29354edccd9682a103beb753cfa9c9df9a6`, reported **Built** for the
+entire `UniversalSincDetector` and `NativeIntegerPrimeField` modules under
+Lean `4.33.0-rc2`. The authoritative log is the component job in
+[run 38469964899](https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38469964899).
+Their printed theorem roots contain only `propext`, `Classical.choice`, and
+`Quot.sound`. In particular, total widths, summable deviations, nonreal
+nonvanishing, compact uniform convergence, entire analyticity, the frozen
+coincident factor zeros, local histories, causal delay, exact first-prime
+term, and continuous compact-source fields are **PROVED** at this head.
+The explicit norm-instance equality and function identities repaired the
+earlier import-transparency friction without adding an analytic premise.
+
+That component workflow as a whole **FAILED**. The derivative extension in
+`UniversalSincDetectorVisibility` and the multiplication-fiber extension in
+`NativeIntegerPrimeConvolution` had proof-engineering errors. Their repaired
+versions and the additional bounds and floor-completion modules remain
+candidates until a later receipt. Printed axioms from an otherwise failing
+module are not substituted for an entire-module success. This paragraph
+harvests the source component only; the full workflow inventory and release
+status are recorded separately by the integration receipts.
+
 ## Remaining mandatory mathematical obligations
 
 The following are OPEN and are not encoded as arbitrary record premises:
@@ -162,8 +187,12 @@ asymptotic estimate suffices for this pointwise product result; the sharper
 quadratic tail estimate is unnecessary at this stage. A compact norm bound
 then gives one summable majorant for all points in a compact complex set,
 allowing a genuine normally convergent, entire-product extension. The
-quantitative Gevrey decay still needs a sharper explicit estimate for the
-density construction and finite-cutoff budgets.
+separate `UniversalSincDetectorBounds` candidate now gives an explicit
+real-axis estimate `|P_s(x)| <= 2 exp(-(log(2)/2) sqrt(s |x|))` by taking a
+head of `floor(sqrt(s|x|)/2)` factors, each of norm at most one half, and
+bounding every remaining real factor by one. No tail cancellation is
+assumed. Its next receipt is required; the complex-strip estimate, inverse
+Fourier density construction and physical derivative bounds remain OPEN.
 
 Downstream, the exact zero-carrier multiplier theorem applies to both sides
 of the critical line and preserves the complex-square coefficient. Once
@@ -277,14 +306,15 @@ vanishing before `log(2)-s`. They also isolate the exact prime-two term on
 the first-prime source window. The frozen-width spacing guard is proved
 from `log(3/2) >= 1/3`, rather than accepted as a numerical assertion.
 
-These are local analytic constructions. They use no global `L²` or range
+These local analytic constructions are **PROVED** at the exact component
+receipt above. They use no global `L²` or range
 premise. The compact source hypothesis is an explicit generic input to
 these operators; the actual `j=P²q` source and its support still need their
 producer. The analytic convolution equation `N*X=U`, the superexponential
 drive estimate, stable-difference decomposition, positive anchor integral,
 and all global native upper/range conclusions remain OPEN for the actual
 fixed source. Compiler
-receipts are required before the new local theorem candidates are PROVED.
+The receipt does not remove the actual-source producer obligations.
 
 ### Source-preserving arithmetic equation
 
@@ -311,3 +341,76 @@ with any desired measure-convolution packaging proved consistently with
 these series. No rapid-drive estimate, completed-input decay, inverse,
 range membership or opposing native upper bound follows just from this
 compatibility equation. All such claims remain OPEN.
+
+### New implications and adversarial checks after the component green
+
+The entire-product theorem and its nonreal zero exclusion can now be
+composed with a future physical Fourier identity directly. No further
+nonvanishing-tail interface is needed. The weak differentiability estimate
+at zero already paid normal convergence; a quadratic Taylor bound is a
+possible quantitative refinement, rather than a missing prerequisite for
+analyticity. This compresses the source dependency graph.
+
+The exact first-prime formula gives a canonical local anchor for every
+compact source before any field-overlap or global-energy calculation. A
+nonzero source value on that window gives a nonzero prime field; positivity
+of a local integral still requires the actual source, its regularity and a
+measurable integration argument. This is a **LEAD**, not a proved stable
+energy lower bound. Distinct arithmetic coefficient supports do not make
+translated compact functions orthogonal.
+
+The real-axis head estimate is invariant under replacing `x` by `-x` and
+scales through `s|x|`, as the prescribed widths require. At zero its right
+side is two while the exact product equals one. Thus it survives the basic
+normalization and boundary tests, although it is deliberately not sharp.
+The estimate controls a Fourier product; using it as though it already
+described a probability density would cross the remaining source bridge.
+
+The rational causal kernel candidate satisfies
+`c(t)=(-exp(-t/2)+2 exp(-3t/2)) 1_{t>=0}` and its actual integer action is
+identified with the positive floor completion through finite history and
+the exact weighted exponential identities. This would establish the
+native origin `a=c*N` locally. Its kernel has signed integral `-2/3`, while
+the integer weights have divergent total mass. Therefore a naive global
+Fubini argument for the positive completion's mass is invalid; the positive
+floor formula and its own tail estimate are the correct global route.
+Laplace identities, completed-source compatibility, inverses, stable range
+and any opposing RH bound remain **OPEN**.
+
+No RH-closing dead end has become valid solely from these component gates.
+The highest-information next source theorem is still the exact
+infinite-convolution density and Fourier identification. The new arithmetic
+compatibility and causal floor origin remove separate native-definition
+ambiguities but do not pay that theorem, the two-phase Laplace lemma, or the
+finite transport error. These are distinct obligations with distinct
+falsification tests.
+
+### Constructive candidates prepared after the component receipt
+
+Three additional source modules are ready for a subsequent compiler batch;
+none is upgraded to **PROVED** by the earlier component green.
+
+- `UniversalSincDetectorBounds.lean` gives the real-axis norm bound one,
+  a quantitative contracting-head bound `2^(-N)`, and the explicit Gevrey
+  bound above for the unchanged infinite product.
+- `UniversalSincDetectorInverse.lean` uses the standard generalized Gaussian
+  integrability theorem at power `1/2`, then reflection and domination, to
+  establish every actual product polynomial moment. It defines an actual
+  smooth inverse candidate as `(1/(2π)) paperFT(P_s)(-x)` and proves its
+  dictionary to the scaled Mathlib Fourier transform. It supplies no
+  probability, support, mass or forward-transform identity by assumption.
+- `UniversalSincSourceLaw.lean` constructs normalized Lebesgue measure on
+  `[-1,1]`, the actual independent `infinitePi` coordinate law, the
+  prescribed weighted sum, its deterministic summability and tail
+  `s/(N+1)`, and the measurable pushforward probability law with all mass on
+  `[-s,s]`. Clamping extends the sample sum to every point and is proved to
+  change no sample almost surely. The same space proves exact scaling of
+  the actual laws. No alternate finite bump is substituted.
+
+The two constructions now expose a precise connecting obligation: show
+that the constructed probability law has characteristic function equal
+to the actual sinc product, and identify its measure with the normalized
+inverse candidate. Its density's positivity, real-valuedness, support and
+mass must follow from that exact connection or independent theorems. The
+mere existence of a smooth inverse function is insufficient. The new
+measure definition and its pending roots do not silently close that gap.

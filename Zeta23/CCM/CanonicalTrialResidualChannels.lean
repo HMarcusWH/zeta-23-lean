@@ -39,8 +39,8 @@ theorem nativeTrialResidual_orthogonal (T : E →ₗ[ℂ] E) (u : E)
   have hs : inner ℂ u u = 1 := by
     rw [inner_self_eq_norm_sq_to_K, hu]
     norm_num
-  simp [nativeTrialResidual, nativeTrialRayleigh, inner_sub_right,
-    inner_smul_right, hs]
+  simp only [nativeTrialResidual, nativeTrialRayleigh, inner_sub_right,
+    inner_smul_right, hs, mul_one, sub_self]
 
 /-- Unit residual variance, valid even before imposing operator symmetry. -/
 theorem nativeTrialResidual_variance (T : E →ₗ[ℂ] E) (u : E)
@@ -74,7 +74,7 @@ theorem nativeTrialResidual_symmetric_variance (T : E →ₗ[ℂ] E)
     (hT : LinearMap.IsSymmetric T) (u : E) (hu : ‖u‖ = 1) :
     ‖nativeTrialResidual T u‖ ^ 2 =
       (inner ℂ u (T (T u))).re - ‖nativeTrialRayleigh T u‖ ^ 2 := by
-  rw [nativeTrialResidual_variance T u hu, norm_sq_eq_re_inner,
+  rw [nativeTrialResidual_variance T u hu, norm_sq_eq_re_inner (𝕜 := ℂ),
     hT u (T u)]
 
 theorem nativeTrialResidual_sum {ι : Type*} [Fintype ι]
@@ -94,7 +94,7 @@ theorem nativeTrialResidual_gram_sum {ι : Type*} [Fintype ι]
     (C : ι → E →ₗ[ℂ] E) (u : E) :
     ‖nativeTrialResidual (∑ i, C i) u‖ ^ 2 =
       (∑ i, ∑ j, nativeTrialChannelGram C u i j).re := by
-  rw [norm_sq_eq_re_inner, nativeTrialResidual_sum]
+  rw [norm_sq_eq_re_inner (𝕜 := ℂ), nativeTrialResidual_sum]
   congr 1
   simp only [sum_inner, inner_sum, nativeTrialChannelGram]
 
@@ -190,13 +190,15 @@ theorem canonicalTrialResidual_channelGram (p : ReversalParity) (L : ℝ) (K : �
 /-- Actual signed channels on the native even pole-neutral compression. -/
 def poleNeutralEvenCanonicalTrialChannel (L : ℝ) (K : ℕ) (c : Fin 4) :
     poleNeutralEvenSubspace L K →ₗ[ℂ] poleNeutralEvenSubspace L K :=
-  nativeOrthogonalCompression (poleNeutralEvenSubspace L K)
+  nativeOrthogonalCompression (E := euclideanEvenBoundaryFlatSubspace K)
+    (poleNeutralEvenSubspace L K)
     (parityCanonicalTrialChannel .even L K c)
 
 /-- Actual signed channels on the native odd pole-neutral compression. -/
 def poleNeutralOddCanonicalTrialChannel (L : ℝ) (K : ℕ) (c : Fin 4) :
     poleNeutralOddSubspace L K →ₗ[ℂ] poleNeutralOddSubspace L K :=
-  nativeOrthogonalCompression (poleNeutralOddSubspace L K)
+  nativeOrthogonalCompression (E := euclideanOddBoundaryFlatSubspace K)
+    (poleNeutralOddSubspace L K)
     (parityCanonicalTrialChannel .odd L K c)
 
 theorem poleNeutralEvenCanonicalTrialChannel_sum (L : ℝ) (K : ℕ) :
@@ -214,13 +216,17 @@ theorem poleNeutralOddCanonicalTrialChannel_sum (L : ℝ) (K : ℕ) :
   rfl
 
 theorem poleNeutralEvenCompressedCanonical_isSymmetric (L : ℝ) (K : ℕ) :
-    LinearMap.IsSymmetric (poleNeutralEvenCompressedCanonical L K) :=
-  nativeOrthogonalCompression_isSymmetric (poleNeutralEvenSubspace L K)
+    LinearMap.IsSymmetric (𝕜 := ℂ) (E := poleNeutralEvenSubspace L K)
+      (poleNeutralEvenCompressedCanonical L K) :=
+  nativeOrthogonalCompression_isSymmetric (E := euclideanEvenBoundaryFlatSubspace K)
+    (poleNeutralEvenSubspace L K)
     (evenCompressedCanonical L K) (parityCompressedCanonical_isSymmetric .even L K)
 
 theorem poleNeutralOddCompressedCanonical_isSymmetric (L : ℝ) (K : ℕ) :
-    LinearMap.IsSymmetric (poleNeutralOddCompressedCanonical L K) :=
-  nativeOrthogonalCompression_isSymmetric (poleNeutralOddSubspace L K)
+    LinearMap.IsSymmetric (𝕜 := ℂ) (E := poleNeutralOddSubspace L K)
+      (poleNeutralOddCompressedCanonical L K) :=
+  nativeOrthogonalCompression_isSymmetric (E := euclideanOddBoundaryFlatSubspace K)
+    (poleNeutralOddSubspace L K)
     (oddCompressedCanonical L K) (parityCompressedCanonical_isSymmetric .odd L K)
 
 theorem poleNeutralEvenTrialResidual_variance (L : ℝ) (K : ℕ)

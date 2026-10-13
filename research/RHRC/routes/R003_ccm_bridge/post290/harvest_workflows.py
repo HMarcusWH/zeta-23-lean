@@ -65,6 +65,7 @@ def harvest(snapshot):
                     'classification': role, 'status': job['status'], 'conclusion': conclusion,
                     'scientific_disposition': disposition, 'url': job['html_url'],
                     'head': head, 'head_tree':run.get('head_commit',{}).get('tree_id'),
+                    'runner_checked_head':None, 'runner_checked_tree':None, 'checkout_identity_review':None,
                     'required':role!='REQUIRES_SOURCE_REVIEW',
                     'scientific_acceptance':False,
                     'output_reviewed':False,

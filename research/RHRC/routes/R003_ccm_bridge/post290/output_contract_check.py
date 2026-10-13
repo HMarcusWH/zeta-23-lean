@@ -21,6 +21,46 @@ ALLOW_AXIOMS={'propext','Classical.choice','Quot.sound'}
 CLASSIFICATIONS={'FORMAL_VALIDITY_GATE','REGRESSION_GATE','RESEARCH_PRODUCING_CHECK'}
 
 
+def checked_checkout(job, expected_tree):
+    """Preserve API branch identity while checking a separately reviewed merge.
+
+    GitHub's PR API reports the branch SHA even when checkout uses the synthetic
+    merge commit. A different checked HEAD requires both Git objects and a
+    hashed runner log; equality of displayed tree strings alone is insufficient.
+    This is reviewed evidence plumbing, not a mathematical authority source.
+    """
+    branch=job.get('head')
+    if re.fullmatch('[0-9a-f]{40}',str(branch)) is None or job.get('head_tree')!=expected_tree:
+        return None
+    runner=job.get('runner_checked_head')
+    runner_tree=job.get('runner_checked_tree')
+    if runner is None and runner_tree is None:
+        return branch
+    if runner_tree!=expected_tree or re.fullmatch('[0-9a-f]{40}',str(runner)) is None:
+        return None
+    review=job.get('checkout_identity_review') or {}
+    if (review.get('integrity_status')!='PASS'
+        or review.get('evidence_source')!='GITHUB_GIT_OBJECTS_AND_RUNNER_LOG'
+        or review.get('branch_head')!=branch or review.get('branch_tree')!=expected_tree
+        or review.get('runner_checked_head')!=runner or review.get('runner_checked_tree')!=expected_tree
+        or re.fullmatch('[0-9a-f]{64}',str(review.get('checkout_log_sha256'))) is None):
+        return None
+    branch_object=review.get('branch_git_commit',{})
+    runner_object=review.get('runner_git_commit',{})
+    if (branch_object.get('sha')!=branch or branch_object.get('tree',{}).get('sha')!=expected_tree
+        or runner_object.get('sha')!=runner or runner_object.get('tree',{}).get('sha')!=expected_tree):
+        return None
+    if runner==branch:
+        return runner if review.get('checkout_kind')=='BRANCH_HEAD' else None
+    base=review.get('reviewed_pr_base_head')
+    parents=runner_object.get('parents',[])
+    if (review.get('checkout_kind')!='PR_SYNTHETIC_MERGE'
+        or re.fullmatch('[0-9a-f]{40}',str(base)) is None or base==branch
+        or len(parents)!=2 or {p.get('sha') for p in parents}!={base,branch}):
+        return None
+    return runner
+
+
 def frozen_spec():
     raw=IMMUTABLE_SPEC.read_bytes()
     # Compare the original bundle bytes; a Windows text checkout may change
@@ -93,7 +133,15 @@ def release_gaps(manifest, formal, d2, jobs):
         or d2.get('physical_seams_verified') is not True or any(type(d2.get(k)) is not int for k in required_d2)
         or any(d2.get(k,1) != 0 for k in required_d2[1:])):
         gaps.append('D2 continuous full-domain gate incomplete')
+    # The compiler receipt binds the actual checkout. The configured formal
+    # job supplies the API branch identity, retained unchanged in every job.
+    formal_jobs=[j for j in jobs if (j.get('workflow'),j.get('name'))==FORMAL_JOB and j.get('latest_attempt') is not False]
+    branch_heads={j.get('head') for j in formal_jobs}
+    branch_head=next(iter(branch_heads)) if len(branch_heads)==1 else head
+    if len(branch_heads)!=1:
+        gaps.append('configured formal jobs do not identify one reviewed branch head')
     known_required=[]
+    formal_runner_matched=False
     for job in jobs:
         if not all(k in job for k in ('name','workflow','required','head','head_tree','status','conclusion','scientific_acceptance','classification','output_reviewed')):
             gaps.append('raw or mismatched workflow harvest schema')
@@ -111,17 +159,24 @@ def release_gaps(manifest, formal, d2, jobs):
             gaps.append('configured required job demoted: '+job['name'])
         if job['required']:
             known_required.append(pair)
+        checked_head=checked_checkout(job,tree)
         if job.get('required') and (job.get('head_tree') != tree or job.get('status') != 'completed'
-            or job.get('head')!=head or job.get('conclusion') != 'success' or job.get('scientific_acceptance') is not True):
+            or job.get('head')!=branch_head or checked_head is None
+            or job.get('conclusion') != 'success' or job.get('scientific_acceptance') is not True):
             gaps.append('required job unestablished: ' + job['name'])
+        if (pair==FORMAL_JOB and checked_head==head and job.get('required') is True
+            and job.get('status')=='completed' and job.get('conclusion')=='success'
+            and job.get('scientific_acceptance') is True):
+            formal_runner_matched=True
         if pair==NATIVE_JOB:
             review=job.get('native_output_review',{})
-            if (review.get('head')!=head or review.get('source_tree')!=tree or review.get('scope')!='FINITE_FIXED_PROBES'
+            if (review.get('head')!=checked_head or review.get('source_tree')!=tree or review.get('scope')!='FINITE_FIXED_PROBES'
                 or review.get('frozen_panel_complete') is not True or review.get('pair_count')!=44 or review.get('row_count')!=176
                 or review.get('evaluated_rows')!=176 or review.get('unresolved_rows')!=0 or review.get('verified_pairs')!=44
                 or review.get('unresolved_pairs')!=0 or review.get('universal_theorem_authority') is not False):
                 gaps.append('native finite observation output not independently reviewed')
     if FORMAL_JOB not in known_required:gaps.append('configured formal validity job missing')
+    if not formal_runner_matched:gaps.append('compiler receipt does not match a validated formal runner checkout')
     if REGRESSION_JOB not in known_required:gaps.append('configured exact regression job missing')
     if NATIVE_JOB not in known_required:gaps.append('configured native observation job missing')
     if not set(known_required)&RESEARCH_JOBS:gaps.append('configured independent D2 research job missing')

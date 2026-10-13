@@ -1,6 +1,11 @@
 import Zeta23.CCM.UniversalSincDetector
+import Zeta23.CCM.UniversalSincDetectorBounds
+import Zeta23.CCM.UniversalSincDetectorInverse
+import Zeta23.CCM.UniversalSincSourceLaw
 import Zeta23.ExceptionalZero.UniversalSincDetectorVisibility
 import Zeta23.CCM.CanonicalPoleNeutralGeometry
+import Zeta23.CCM.CanonicalPoleNeutralCarrier
+import Zeta23.CCM.CanonicalPoleNeutralIntertwining
 import Zeta23.CCM.CanonicalTrialResidualChannels
 import Zeta23.CCM.NativeIntegerPrimeSource
 import Zeta23.CCM.NativeIntegerPrimeField
@@ -33,6 +38,18 @@ run_cmd do
     (``Zeta23.CCM.UniversalSinc.hasProdUniformlyOn_compact, "Zeta23.CCM.UniversalSincDetector"),
     (``Zeta23.CCM.UniversalSinc.analyticAt_product, "Zeta23.CCM.UniversalSincDetector"),
     (``Zeta23.CCM.UniversalSinc.fixed_coincident_factor_zeros, "Zeta23.CCM.UniversalSincDetector"),
+    (``Zeta23.CCM.UniversalSinc.product_norm_ofReal_le_one, "Zeta23.CCM.UniversalSincDetectorBounds"),
+    (``Zeta23.CCM.UniversalSinc.product_norm_ofReal_le_gevrey, "Zeta23.CCM.UniversalSincDetectorBounds"),
+    (``Zeta23.CCM.UniversalSinc.integrable_product_ofReal_norm_moment, "Zeta23.CCM.UniversalSincDetectorInverse"),
+    (``Zeta23.CCM.UniversalSinc.integrable_product_ofReal, "Zeta23.CCM.UniversalSincDetectorInverse"),
+    (``Zeta23.CCM.UniversalSinc.inverseCandidate_eq_fourier, "Zeta23.CCM.UniversalSincDetectorInverse"),
+    (``Zeta23.CCM.UniversalSinc.contDiff_inverseCandidate, "Zeta23.CCM.UniversalSincDetectorInverse"),
+    (``Zeta23.CCM.UniversalSinc.sourceSampleSum_sub_partial_abs_le, "Zeta23.CCM.UniversalSincSourceLaw"),
+    (``Zeta23.CCM.UniversalSinc.sourceSampleSum_ae_eq_unclamped, "Zeta23.CCM.UniversalSincSourceLaw"),
+    (``Zeta23.CCM.UniversalSinc.originalSourceLaw_isProbabilityMeasure, "Zeta23.CCM.UniversalSincSourceLaw"),
+    (``Zeta23.CCM.UniversalSinc.originalSourceLaw_interval_mass, "Zeta23.CCM.UniversalSincSourceLaw"),
+    (``Zeta23.CCM.UniversalSinc.originalSourceLaw_eq_map_scale, "Zeta23.CCM.UniversalSincSourceLaw"),
+    (``Zeta23.CCM.UniversalSinc.fixed_originalSourceLaw_isProbabilityMeasure, "Zeta23.CCM.UniversalSincSourceLaw"),
     (``Zeta23.CCM.UniversalSinc.product_ne_zero_of_im_ne_zero, "Zeta23.CCM.UniversalSincDetector"),
     (``Zeta23.CCM.UniversalSinc.fixed_product_ne_zero_of_im_ne_zero, "Zeta23.CCM.UniversalSincDetector"),
     (``Zeta23.ExceptionalZero.originalSincMultiplier_ne_zero_at_off_line_zero,
@@ -46,6 +63,14 @@ run_cmd do
     (``Zeta23.CCM.canonicalPoleOddFunctional_evenIndex, "Zeta23.CCM.CanonicalPoleNeutralGeometry"),
     (``Zeta23.CCM.poleNeutralIndexLinearMap_injective, "Zeta23.CCM.CanonicalPoleNeutralGeometry"),
     (``Zeta23.CCM.poleNeutralIndexLinearMap_surjective, "Zeta23.CCM.CanonicalPoleNeutralGeometry"),
+    (``Zeta23.CCM.canonicalPoleEvenFunctional_nonzeroWitness, "Zeta23.CCM.CanonicalPoleNeutralCarrier"),
+    (``Zeta23.CCM.finrank_poleNeutralEvenSubspace, "Zeta23.CCM.CanonicalPoleNeutralCarrier"),
+    (``Zeta23.CCM.finrank_poleNeutralOddSubspace, "Zeta23.CCM.CanonicalPoleNeutralCarrier"),
+    (``Zeta23.CCM.poleNeutralIndex_norm_lower, "Zeta23.CCM.CanonicalPoleNeutralCarrier"),
+    (``Zeta23.CCM.poleNeutralCompressedIndexDefect_eq_projected_legal_add_residual,
+      "Zeta23.CCM.CanonicalPoleNeutralIntertwining"),
+    (``Zeta23.CCM.poleNeutralCompressedIndexDefect_eq_cubicSource_add_residual,
+      "Zeta23.CCM.CanonicalPoleNeutralIntertwining"),
     (``Zeta23.CCM.canonicalSourceMatrix_mulVec_eq_negative_arch_prime_of_profiles,
       "Zeta23.CCM.CanonicalPoleNeutralGeometry"),
     (``Zeta23.CCM.inner_poleNeutralEvenCompressedCanonical_self, "Zeta23.CCM.CanonicalPoleNeutralGeometry"),
@@ -83,6 +108,6 @@ run_cmd do
     let axioms ← Lean.collectAxioms name
     for ax in axioms do
       unless ax == ``propext || ax == ``Classical.choice || ax == ``Quot.sound do
-        throwError "Unexpected axiom in {name}: {ax}"
+        throwError "Unadmitted proof dependency in {name}: {ax}"
     let names := String.intercalate "," (axioms.toList.map Name.toString)
     liftIO <| IO.println s!"POST290_AXIOMS\t{name}\t{names}"

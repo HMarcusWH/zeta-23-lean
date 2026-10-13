@@ -13,10 +13,21 @@ from lean_imports import strip_lean_comments
 
 CLOSURE_ROOTS = [
     Path("Zeta23/CCM/UniversalSincDetector.lean"),
+    Path("Zeta23/CCM/UniversalSincDetectorBounds.lean"),
+    Path("Zeta23/CCM/UniversalSincDetectorInverse.lean"),
+    Path("Zeta23/CCM/UniversalSincSourceLaw.lean"),
+    Path("Zeta23/CCM/CanonicalPoleNeutralCarrier.lean"),
+    Path("Zeta23/CCM/CanonicalPoleNeutralIntertwining.lean"),
     Path("Zeta23/ExceptionalZero/UniversalSincDetectorVisibility.lean"),
     Path("Zeta23/CCM/CanonicalPoleNeutralGeometry.lean"),
     Path("Zeta23/CCM/NativeIntegerPrimeSource.lean"),
     Path("Zeta23/CCM/NativePositiveCompletion.lean"),
+    Path("Zeta23/CCM/NativeIntegerPrimeField.lean"),
+    Path("Zeta23/CCM/NativeIntegerPrimeConvolution.lean"),
+    Path("Zeta23/CCM/NativeFloorCompletionSource.lean"),
+    Path("Zeta23/CCM/CanonicalTrialResidualChannels.lean"),
+    Path("Zeta23/CCM/Step123PrimeSeam.lean"),
+    Path("Zeta23/RHRC/Step123OutputBindings.lean"),
     Path("Zeta23/CCM/SourceContraction.lean"),
     Path("Zeta23/CCM/SourceContractionLocalized.lean"),
     Path("Zeta23/CCM/CanonicalArchUpperBound.lean"),
@@ -110,7 +121,7 @@ def promoted_roots() -> list[Path]:
     roots: list[Path] = []
     for root in (Path("Zeta23/CCM"), Path("Zeta23/ExceptionalZero"), Path("Zeta23/Spectral")):
         roots.extend(sorted(root.rglob("*.lean")))
-    for root_file in (Path("Zeta23/CCM.lean"), Path("Zeta23/ExceptionalZero.lean"), Path("Zeta23/Spectral.lean")):
+    for root_file in (Path("Zeta23/CCM.lean"), Path("Zeta23/ExceptionalZero.lean"), Path("Zeta23/Spectral.lean"), Path("Zeta23/RHRC/Step123OutputBindings.lean")):
         if root_file.is_file():
             roots.append(root_file)
     return roots

@@ -25,12 +25,34 @@ def fixture():
         job['output_reviewed']=True
     return [manifest,formal,d2,jobs]
 
+
+def merge_fixture():
+    """Synthetic identities solely exercise the receipt guard, never CI proof."""
+    args=fixture()
+    branch='c'*40
+    merge='e'*40
+    base='f'*40
+    tree='a'*40
+    args[1]['head']=merge
+    args[1]['compiler_context']['head']=merge
+    job=args[3][0]
+    job.update(runner_checked_head=merge,runner_checked_tree=tree)
+    job['checkout_identity_review']={
+        'integrity_status':'PASS','evidence_source':'GITHUB_GIT_OBJECTS_AND_RUNNER_LOG',
+        'branch_head':branch,'branch_tree':tree,'runner_checked_head':merge,'runner_checked_tree':tree,
+        'checkout_log_sha256':'0'*64,'checkout_kind':'PR_SYNTHETIC_MERGE','reviewed_pr_base_head':base,
+        'branch_git_commit':{'sha':branch,'tree':{'sha':tree}},
+        'runner_git_commit':{'sha':merge,'tree':{'sha':tree},'parents':[{'sha':base},{'sha':branch}]},
+    }
+    return args
+
+
 def run():
     controls = fixture()
     assert not release_gaps(*controls)
     rejected = []
-    def mutation(name, change):
-        args = deepcopy(controls)
+    def mutation(name, change, source=controls):
+        args = deepcopy(source)
         change(args)
         assert release_gaps(*args), name
         rejected.append(name)
@@ -71,6 +93,20 @@ def run():
     mutation('D2 Boolean claim encoded as string',lambda a:a[2].update(independent_nonpartial_verified='false'))
     mutation('D2 count encoded as Boolean',lambda a:a[2].update(unresolved_tiles=False))
     mutation('D2 numerical evidence relabelled Lean proof',lambda a:a[2].update(not_a_lean_proof=False))
+    merge=merge_fixture()
+    assert not release_gaps(*merge), 'reviewed same-tree PR merge must preserve its distinct HEAD'
+    paired=deepcopy(merge)
+    # Both push and PR runs can compile the same tree under distinct HEADs.
+    paired[3].append(deepcopy(controls[3][0]))
+    assert not release_gaps(*paired), 'one exact compiler context must bind its matching run without relabelling the other'
+    mutation('synthetic merge without checkout review',lambda a:a[3][0].pop('checkout_identity_review'),merge)
+    mutation('synthetic merge changed source tree',lambda a:a[3][0].update(runner_checked_tree='b'*40),merge)
+    mutation('synthetic merge commit object changed',lambda a:a[3][0]['checkout_identity_review']['runner_git_commit'].update(sha='d'*40),merge)
+    mutation('synthetic merge branch parent missing',lambda a:a[3][0]['checkout_identity_review']['runner_git_commit'].update(parents=[{'sha':'f'*40},{'sha':'d'*40}]),merge)
+    mutation('synthetic merge checkout log missing',lambda a:a[3][0]['checkout_identity_review'].pop('checkout_log_sha256'),merge)
+    mutation('API branch head silently rewritten',lambda a:a[3][0].update(head='e'*40),merge)
+    mutation('compiler receipt at other checkout',lambda a:a[1].update(head='d'*40,compiler_context={'head':'d'*40,'tree':'a'*40}),merge)
+    mutation('synthetic merge self-referential base',lambda a:a[3][0]['checkout_identity_review'].update(reviewed_pr_base_head='c'*40),merge)
     return {'execution_status':'SUCCESS','integrity_status':'PASS','claim_cap':'RH_OPEN',
             'scientific_disposition':'EVIDENCE_MUTATIONS_REJECTED','rejected':rejected,
             'authority':'VALIDATOR_CONTROL_ONLY','scope':'Synthetic receipt fixtures; no theorem or D2 authority.'}
