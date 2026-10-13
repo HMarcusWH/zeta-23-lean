@@ -43,8 +43,7 @@ private theorem poleExponentialRate_endpoint {L : ℝ} (hL : 0 < L)
       ((σ * L / 2 : ℝ) : ℂ) + (n : ℂ) * (2 * Real.pi * Complex.I) := by
   unfold poleExponentialRate
   push_cast
-  field_simp [Complex.ofReal_ne_zero.mpr hL.ne']
-  ring
+  field_simp [Complex.ofReal_ne_zero.mpr hL.ne'] <;> ring
 
 private theorem poleExponentialRate_inv {L : ℝ} (hL : 0 < L)
     (σ : ℝ) (n : ℤ) (hσ : σ = 1 ∨ σ = -1) :
@@ -53,18 +52,14 @@ private theorem poleExponentialRate_inv {L : ℝ} (hL : 0 < L)
         ((σ : ℂ) * (poleEvenProfileReal n L : ℂ) -
           Complex.I * (poleOddProfileReal n L : ℂ)) := by
   have hd := ne_of_gt (poleProfileDenominator_pos hL n)
-  have hdC : ((poleProfileDenominator n L : ℝ) : ℂ) ≠ 0 :=
-    Complex.ofReal_ne_zero.mpr hd
-  unfold poleProfileDenominator at hdC
-  push_cast at hdC
   apply inv_eq_of_mul_eq_one_right
   rcases hσ with rfl | rfl
   all_goals
-    unfold poleExponentialRate poleEvenProfileReal poleOddProfileReal poleProfileDenominator
-    push_cast
-    field_simp [Complex.ofReal_ne_zero.mpr hL.ne', hdC]
-    apply Complex.ext <;> simp [Complex.mul_re, Complex.mul_im, Complex.I_re, Complex.I_im]
-    <;> ring
+    apply Complex.ext <;>
+      simp [poleExponentialRate, poleEvenProfileReal, poleOddProfileReal,
+        Complex.mul_re, Complex.mul_im] <;>
+      field_simp [hL.ne', hd] <;>
+      unfold poleProfileDenominator <;> ring
 
 private theorem poleExponentialMode_eq (σ L : ℝ) (n : ℤ) (x : ℝ) :
     (Real.exp (σ * x / 2) : ℂ) * localizedMode L n x =
@@ -92,7 +87,7 @@ theorem intervalIntegral_exp_mul_localizedMode {L : ℝ} (hL : 0 < L)
           Complex.I * (poleOddProfileReal n L : ℂ)) := by
   simp_rw [poleExponentialMode_eq]
   rw [intervalIntegral.integral_const_mul,
-    intervalIntegral.integral_exp_mul_complex (poleExponentialRate_ne_zero σ L n hσ),
+    integral_exp_mul_complex (poleExponentialRate_ne_zero σ L n hσ),
     poleExponentialRate_endpoint hL]
   rw [Complex.exp_add, Complex.exp_int_mul_two_pi_mul_I]
   simp only [mul_one, mul_zero, Complex.exp_zero]
@@ -156,7 +151,7 @@ theorem canonicalPoleExponentialMomentScale_ne_zero {L : ℝ} (hL : 0 < L)
   · apply Complex.ofReal_ne_zero.mpr
     apply sub_ne_zero.mpr
     intro he
-    have hz : σ * L / 2 = 0 := Real.exp_eq_one_iff.mp he
+    have hz : σ * L / 2 = 0 := (Real.exp_eq_one_iff (σ * L / 2)).mp he
     rcases hσ with rfl | rfl <;> linarith
 
 /-- Both physical elementary-pole moments vanish exactly on both native

@@ -266,7 +266,8 @@ theorem poleNeutralEvenTrialResidual_variance (L : ℝ) (K : ℕ)
       (inner ℂ u (poleNeutralEvenCompressedCanonical L K
         (poleNeutralEvenCompressedCanonical L K u))).re -
       ‖nativeTrialRayleigh (poleNeutralEvenCompressedCanonical L K) u‖ ^ 2 :=
-  nativeTrialResidual_symmetric_variance (E := poleNeutralEvenSubspace L K) _
+  @nativeTrialResidual_symmetric_variance (poleNeutralEvenSubspace L K) inferInstance
+    (poleNeutralEven_innerProductSpace L K) (poleNeutralEvenCompressedCanonical L K)
     (poleNeutralEvenCompressedCanonical_isSymmetric L K) u hu
 
 theorem poleNeutralOddTrialResidual_variance (L : ℝ) (K : ℕ)
@@ -275,7 +276,8 @@ theorem poleNeutralOddTrialResidual_variance (L : ℝ) (K : ℕ)
       (inner ℂ u (poleNeutralOddCompressedCanonical L K
         (poleNeutralOddCompressedCanonical L K u))).re -
       ‖nativeTrialRayleigh (poleNeutralOddCompressedCanonical L K) u‖ ^ 2 :=
-  nativeTrialResidual_symmetric_variance (E := poleNeutralOddSubspace L K) _
+  @nativeTrialResidual_symmetric_variance (poleNeutralOddSubspace L K) inferInstance
+    (poleNeutralOdd_innerProductSpace L K) (poleNeutralOddCompressedCanonical L K)
     (poleNeutralOddCompressedCanonical_isSymmetric L K) u hu
 
 theorem poleNeutralEvenTrialResidual_channelGram (L : ℝ) (K : ℕ)

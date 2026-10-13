@@ -113,8 +113,8 @@ theorem poleNeutralEvenOutputResidual_eq_normal (L : ℝ) (K : ℕ)
     (u : poleNeutralEvenSubspace L K) :
     poleNeutralEvenOutputResidual L K u =
       poleNeutralEvenOutputCoefficient L K u • canonicalPoleEvenLegalNormal L K := by
-  change evenCompressedCanonical L K u.val -
-    (poleNeutralEvenSubspace L K).starProjection (evenCompressedCanonical L K u.val) = _
+  rw [poleNeutralEvenOutputResidual, coe_poleNeutralEvenCompressedCanonical,
+    Submodule.coe_orthogonalProjectionOnto_apply]
   rw [poleNeutralEvenSubspace_eq_orthogonal_normal,
     Submodule.starProjection_orthogonal_val]
   rw [sub_sub_cancel, Submodule.starProjection_singleton ℂ]

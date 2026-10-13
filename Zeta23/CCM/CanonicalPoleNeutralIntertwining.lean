@@ -30,14 +30,24 @@ def poleNeutralEvenOutputResidual (L : ℝ) (K : ℕ)
     (u : poleNeutralEvenSubspace L K) : euclideanEvenBoundaryFlatSubspace K :=
   evenCompressedCanonical L K u.val - (poleNeutralEvenCompressedCanonical L K u).val
 
+/-- Erase only the final native subtype of the actual even compression. -/
+theorem coe_poleNeutralEvenCompressedCanonical (L : ℝ) (K : ℕ)
+    (u : poleNeutralEvenSubspace L K) :
+    (poleNeutralEvenCompressedCanonical L K u).val =
+      (Submodule.orthogonalProjectionOnto (𝕜 := ℂ)
+        (E := euclideanEvenBoundaryFlatSubspace K) (poleNeutralEvenSubspace L K)
+          (evenCompressedCanonical L K u.val)).val := rfl
+
 theorem poleNeutralEvenOutputResidual_mem_orthogonal (L : ℝ) (K : ℕ)
     (u : poleNeutralEvenSubspace L K) :
     poleNeutralEvenOutputResidual L K u ∈
       Submodule.orthogonal (𝕜 := ℂ) (E := euclideanEvenBoundaryFlatSubspace K)
         (poleNeutralEvenSubspace L K) := by
-  change evenCompressedCanonical L K u.val -
-    (poleNeutralEvenSubspace L K).starProjection (evenCompressedCanonical L K u.val) ∈ _
-  exact (poleNeutralEvenSubspace L K).sub_starProjection_mem_orthogonal _
+  rw [poleNeutralEvenOutputResidual, coe_poleNeutralEvenCompressedCanonical,
+    Submodule.coe_orthogonalProjectionOnto_apply]
+  exact Submodule.sub_starProjection_mem_orthogonal
+    (𝕜 := ℂ) (E := euclideanEvenBoundaryFlatSubspace K)
+    (K := poleNeutralEvenSubspace L K) (evenCompressedCanonical L K u.val)
 
 /-- The actual centered-index defect of the two further compressed blocks. -/
 def poleNeutralCompressedIndexDefect {L : ℝ} (hL : 0 < L) (K : ℕ) :
@@ -65,20 +75,28 @@ theorem poleNeutralCompressedIndexDefect_eq_projected_legal_add_residual
   let Q : euclideanOddBoundaryFlatSubspace K →L[ℂ] poleNeutralOddSubspace L K :=
     Submodule.orthogonalProjectionOnto (𝕜 := ℂ)
       (E := euclideanOddBoundaryFlatSubspace K) (poleNeutralOddSubspace L K)
-  let D := euclideanEvenToOddIndexLinearMap K
-  let A := evenCompressedCanonical L K
-  let B := oddCompressedCanonical L K
+  let D : euclideanEvenBoundaryFlatSubspace K →ₗ[ℂ]
+      euclideanOddBoundaryFlatSubspace K := euclideanEvenToOddIndexLinearMap K
+  let A : euclideanEvenBoundaryFlatSubspace K →ₗ[ℂ]
+      euclideanEvenBoundaryFlatSubspace K := evenCompressedCanonical L K
+  let B : euclideanOddBoundaryFlatSubspace K →ₗ[ℂ]
+      euclideanOddBoundaryFlatSubspace K := oddCompressedCanonical L K
   have hkeep : Q (D (poleNeutralEvenCompressedCanonical L K u).val) =
       poleNeutralIndexLinearMap hL K (poleNeutralEvenCompressedCanonical L K u) := by
-    change Q ((poleNeutralIndexLinearMap hL K
-      (poleNeutralEvenCompressedCanonical L K u)).val) = _
-    exact Submodule.orthogonalProjectionOnto_mem_subspace_eq_self
+    simpa only [Q, D, poleNeutralIndexLinearMap] using
+      (Submodule.orthogonalProjectionOnto_mem_subspace_eq_self
       (𝕜 := ℂ) (E := euclideanOddBoundaryFlatSubspace K)
-      (K := poleNeutralOddSubspace L K) _
-  change Q (B (D u.val)) -
+      (K := poleNeutralOddSubspace L K)
+      (poleNeutralIndexLinearMap hL K (poleNeutralEvenCompressedCanonical L K u)))
+  suffices Q (B (D u.val)) -
     poleNeutralIndexLinearMap hL K (poleNeutralEvenCompressedCanonical L K u) =
       Q (B (D u.val) - D (A u.val)) +
-        Q (D (A u.val - (poleNeutralEvenCompressedCanonical L K u).val))
+        Q (D (A u.val - (poleNeutralEvenCompressedCanonical L K u).val)) by
+    simpa only [Q, D, A, B, poleNeutralCompressedIndexDefect,
+      poleNeutralOddCompressedCanonical, poleNeutralIndexLinearMap,
+      poleNeutralEvenOutputResidual, evenOddCompressedIntertwiningDefect,
+      LinearMap.sub_apply, LinearMap.comp_apply, Submodule.coe_subtype,
+      ContinuousLinearMap.coe_coe] using this
   simp only [map_sub]
   rw [hkeep]
   abel
@@ -101,5 +119,6 @@ theorem poleNeutralCompressedIndexDefect_eq_cubicSource_add_residual
 end Zeta23.CCM
 
 #print axioms Zeta23.CCM.poleNeutralEvenOutputResidual_mem_orthogonal
+#print axioms Zeta23.CCM.coe_poleNeutralEvenCompressedCanonical
 #print axioms Zeta23.CCM.poleNeutralCompressedIndexDefect_eq_projected_legal_add_residual
 #print axioms Zeta23.CCM.poleNeutralCompressedIndexDefect_eq_cubicSource_add_residual

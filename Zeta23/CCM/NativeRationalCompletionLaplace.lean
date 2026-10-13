@@ -54,7 +54,11 @@ theorem nativeRationalCausalKernel_realLaplace {σ : ℝ} (hσ : -1 / 2 < σ) :
         2 * Real.exp (-(σ + 3 / 2) * t)) := by
     filter_upwards [ae_restrict_mem measurableSet_Ioi] with t ht
     exact nativeRationalCausalKernel_damped_eq (mem_Ioi.mp ht).le σ
-  rw [integral_congr_ae heq, integral_add hfirst.neg (hsecond.const_mul (2 : ℝ)),
+  have hneg : IntegrableOn (fun t : ℝ => -Real.exp (-(σ + 1 / 2) * t)) (Ioi 0) :=
+    hfirst.neg
+  have htwice : IntegrableOn (fun t : ℝ => 2 * Real.exp (-(σ + 3 / 2) * t)) (Ioi 0) :=
+    hsecond.const_mul (2 : ℝ)
+  rw [integral_congr_ae heq, integral_add hneg htwice,
     integral_neg, integral_const_mul,
     integral_exp_mul_Ioi (by linarith : -(σ + 1 / 2) < 0),
     integral_exp_mul_Ioi (by linarith : -(σ + 3 / 2) < 0)]
@@ -69,7 +73,7 @@ theorem nativeRationalCausalKernel_signed_integral :
     (∫ t : ℝ in Ioi 0, nativeRationalCausalKernel t) = -2 / 3 := by
   have h := nativeRationalCausalKernel_realLaplace (σ := 0) (by norm_num)
   norm_num at h
-  exact h
+  simpa only [neg_div] using h
 
 end Zeta23.CCM
 

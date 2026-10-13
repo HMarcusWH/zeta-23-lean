@@ -46,9 +46,12 @@ theorem charFun_centeredUnitBoxLaw (r : ℝ) :
       (fun x : ℝ => Complex.exp ((x : ℂ) * I)) (a := (-1 : ℝ)) (b := 1) hr
     simp only [Complex.ofReal_mul, mul_neg, mul_one, neg_mul, one_mul] at hchange
     rw [hchange, integral_exp_mul_I_eq_sinc]
-    rw [RCLike.real_smul_eq_coe_mul]
-    norm_cast
-    field_simp [hr] <;> ring
+    rw [Complex.real_smul]
+    apply Complex.ext <;>
+      simp only [Complex.mul_re, Complex.mul_im, Complex.ofReal_re, Complex.ofReal_im,
+        Complex.re_ofNat, Complex.im_ofNat, zero_mul, mul_zero, sub_zero, add_zero,
+        zero_add] <;>
+      field_simp [hr] <;> ring
   rw [hi, RCLike.real_smul_eq_coe_mul, sinc_ofReal]
   push_cast <;> ring
 

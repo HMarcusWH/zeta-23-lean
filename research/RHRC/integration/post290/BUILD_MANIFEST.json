@@ -789,6 +789,19 @@
       "Zeta23.CCM.UniversalSincSourceLaw",
       "Zeta23.CCM.CanonicalPoleNeutralCarrier"
     ],
+    "latest_diagnostic_head": "57e921426eb38e90a19a31d1b7ddfef22f0f0dfa",
+    "latest_diagnostic_tree": "59ab5041c1ba460bf1cf8e992c8cf510e2c700dc",
+    "latest_diagnostic_component_job": 115569213048,
+    "latest_diagnostic_run": 38476754935,
+    "latest_diagnostic_status": "FAILURE_PARTIAL_MODULES_COMPILED",
+    "latest_diagnostic_modules_compiled": [
+      "Zeta23.CCM.UniversalSincDetectorInverse",
+      "Zeta23.CCM.UniversalSincBoxDensity",
+      "Zeta23.CCM.NativePositiveCompletionCells",
+      "Zeta23.CCM.NativeFloorCompletionSource"
+    ],
+    "latest_exact_controls": {"job": 115569213382, "result": "SUCCESS"},
+    "latest_native_observations": {"job": 115569213489, "result": "SUCCESS", "pairs": 44, "rows": 176, "checker_bits": 1024, "universal_theorem_authority": false},
     "additional_candidates": [
       "Zeta23.CCM.UniversalSincDetectorInverse",
       "Zeta23.CCM.UniversalSincSourceLaw",

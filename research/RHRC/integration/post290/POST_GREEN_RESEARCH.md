@@ -489,3 +489,80 @@ source and inverse. Compile corrected native normals and physical exponential
 moments with the inherited metric. Reuse the existing secular calculus on those
 actual blocks. Obtain D2's real archive before leaf replay. The flagship
 phase-cofinal producer, quartic transport and closing laws remain **OPEN**.
+
+## Seventh pass: smooth inverse, actual prefix density and causal floor action
+
+**What became formally true.** Run `38476754935`, component job
+`115569213048`, checked head `57e921426eb38e90a19a31d1b7ddfef22f0f0dfa`,
+tree `59ab5041c1ba460bf1cf8e992c8cf510e2c700dc`, with the pinned toolchain.
+Complete Inverse, BoxDensity, PositiveCompletionCells and FloorCompletionSource
+targets compiled. Each printed root uses only `propext`, `Classical.choice`
+and `Quot.sound`. For s>0 the actual product has every absolutely integrable
+polynomial moment, so its correctly normalized inverse integral is smooth.
+The literal first two unequal boxes have the exact overlap density, with
+continuity, nonnegativity and mass one. The actual logarithmic floor density
+has its exact n-cell formula and linear cap. The causal rational kernel's
+locally finite integer action equals the actual positive floor kernel,
+including entering-integer seams. The proofs and their surrounding definitions
+were read; no full-source density or complete mass estimate is inferred.
+
+**Workflow harvest.** Exact-controls job `115569213382` SUCCEEDED: immutable
+specification checks and frozen semantic/mutation controls were preserved.
+Native-observations job `115569213489` SUCCEEDED: all 44 pairs / 176 rows
+were freshly reconstructed at 1024 bits at this clean tree. The numerical
+panel supplies observations, not a universal ground or detector producer.
+The complete component job FAILED on characteristic-function normalization,
+physical exponential moments, nested compression, residual variance and
+rational Laplace elaboration. The full selected-type export was skipped.
+Failed-target recovery axioms are excluded. Whole-current-PR workflow harvest
+and D2's independent candidate receipt remain pending; an earlier green frozen
+replay does not close either task.
+
+**What changed.** The smooth inverse is now derived from actual product
+moments, and the concrete prefix density is available independently. The
+causal arithmetic-to-floor identity now retains the native integer seams;
+the working source-correction formula no longer needs an assumed equality.
+The cell bound is pointwise and still needs integration and a countable-tail
+argument before it can prove the 605/621 mass target.
+
+**Upstream implications.** Keep the 1/(2π) inverse normalization and the
+actual real-frequency dilation visible in the law/density identification.
+Use the exact unequal first widths and the actual independent tail law.
+Preserve causality when grouping the rational integer sum: global integer
+weight mass diverges, even though each aperture sum is finite.
+
+**Downstream implications.** Real and then complex transform identification
+can connect the compact positive density to this smooth inverse, enabling
+literal k=Pq and j=P²q. The existing squared-Weil coefficient summability
+theorem may then apply to the actual fixed source. The cell formula supports
+a direct integrated mass proof without a whole zeta continuation. Neither
+construction by itself yields signed phase excursions, stable Y or range jets.
+
+**Resurrected routes.** The actual positive-density/Fourier route now has
+both concrete and smooth endpoints. The causal completion route has its
+pointwise arithmetic bridge. Full inverse boundedness and finite-to-infinite
+range shortcuts remain invalid; their counterexamples survive this progress.
+
+**New RH-relevant clues.** LEAD: once j's actual mass 1/16 and compact support
+are established, the first-prime window has nonzero integral without a
+numerical j(0) assumption. A short-window completion bound could give a
+positive X-Y energy anchor using causality, before global Y membership is
+proved. LEAD: quantitative product moments may yield explicit derivative
+bounds strong enough to pay the quartic finite transport cost. Both are
+construction leads, not established output theorems.
+
+**Falsification checks.** Smoothness alone supplies neither support nor
+positivity. Positive q does not make j positive. A local nonzero prime atom
+does not prove global X or Y integrability. A signed kernel integral is not
+its absolute mass. The even K2 numerical interval begins at 1/400; the
+smaller [1/512,1/400] interval remains outside that receipt. Norm growth alone
+does not provide both specified signed cofinal phase depths.
+
+**Highest-leverage next moves.** Compile the complete density identification
+and actual physical kernels, repair native projections at their inherited
+metric, then export exact types and axiom dependencies together. Integrate
+the actual cell cap and prove the infinite tail before claiming the mass
+target. Use actual moment/index rigidity for the conditional simple-even tie,
+and retain original lam/eta when forming branch records. Continue the
+positive-Laplace signed-excursion argument and quartic transport as separate
+substantive proofs. RH and the complete mandatory output remain **OPEN**.
