@@ -45,6 +45,34 @@ def compare(Qcell:int,L:arb)->dict:
             "source":"independently existing Eq4.4 fixed-unit analytic first/second jets"}
 
 
+def compare_high_order(Qcell:int,L:arb)->dict:
+    """Centred finite differences are averages of derivatives on the stencil.
+
+    Delta_h^k M / (k! h^k) lies in an enclosure of M^(k)/k! over
+    [L-kh/2,L+kh/2]. Compare independent production values with the
+    new interval series jets; no empirical error tolerance is used.
+    This consistency check does not prove a global derivative identity.
+    """
+    h=Q(Fraction(1,2**14))
+    for order,weights in ((3,(-1,3,-3,1)),(4,(1,-4,6,-4,1))):
+        values=[fixed_unit_fixed_q_canonical_source_matrix_with_second_derivative_arb(
+                    L+(arb(j)-arb(order)/2)*h,3,Qcell)[0]
+                for j in range(order+1)]
+        interval_jets=full_matrix_jets(arb(L,arb(order)*h/2),Qcell)
+        factorial=6 if order==3 else 24
+        for i in range(7):
+            for j in range(7):
+                difference=sum(w*M[i,j] for w,M in zip(weights,values))/(factorial*h**order)
+                residual=difference-interval_jets[order][i,j]
+                if not residual.contains(0):
+                    raise AssertionError(("high-order finite-difference mismatch",
+                                          Qcell,order,i,j,C.ball_record(residual,28)))
+    return {"cell":Qcell,"orders":[3,4],"entries_per_order":49,
+            "step":[1,2**14],
+            "agreement":"INDEPENDENT_CENTERED_DIFFERENCE_IN_INTERVAL_DERIVATIVE_ENCLOSURE",
+            "global_derivative_identity_proved":False}
+
+
 def main()->int:
     p=argparse.ArgumentParser()
     p.add_argument("--output",type=Path,required=True)
@@ -58,12 +86,15 @@ def main()->int:
     pts=[(13,Q(Fraction(263,100))),
          (14,Q(Fraction(2667,1000)))]
     records=[]
+    high_order=[]
     for q,L in pts:
         assert C.fixed_cell_membership(q,L)["certified"]
         records.append(compare(q,L))
+        high_order.append(compare_high_order(q,L))
     obj={"schema":"post287.wp4.fourth_order_controls.v1",
          "status":"EXACT_LOWORDER_ARBS_OVERLAP" if len(records)==2 else "UNRESOLVED",
          "terminal_claim":"RH_OPEN","records":records,
+         "high_order_consistency":high_order,
          "fourth_order_sign_not_inferred":True}
     args.output.parent.mkdir(parents=True,exist_ok=True)
     args.output.write_text(json.dumps(obj,indent=2,sort_keys=True)+"\n")

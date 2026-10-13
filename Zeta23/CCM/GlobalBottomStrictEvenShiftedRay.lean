@@ -200,9 +200,11 @@ theorem GlobalBottomResidualState.evenStrict_shiftedRay_budget_pos
 end Zeta23.CCM
 
 #print axioms Zeta23.CCM.GlobalBottomResidualState.evenStrict_shift_lt_odd
+#print axioms Zeta23.CCM.GlobalBottomResidualState.two_le_groundSuccessor
 #print axioms Zeta23.CCM.GlobalBottomResidualState.evenStrict_trial_eq_source_mul_shiftedRay
 #print axioms Zeta23.CCM.GlobalBottomResidualState.evenStrict_trial_source_ne_zero
 #print axioms Zeta23.CCM.GlobalBottomResidualState.evenStrict_shiftedRay_source_eq_one
 #print axioms Zeta23.CCM.GlobalBottomResidualState.evenStrict_shiftedRay_eigenmode
+#print axioms Zeta23.CCM.GlobalBottomResidualState.evenStrict_shiftedRay_ne_zero
 #print axioms Zeta23.CCM.GlobalBottomResidualState.evenStrict_shiftedRay_primeRemainder_budget
 #print axioms Zeta23.CCM.GlobalBottomResidualState.evenStrict_shiftedRay_budget_pos

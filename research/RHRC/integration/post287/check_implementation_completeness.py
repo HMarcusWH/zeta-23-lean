@@ -18,6 +18,8 @@ BASE = ROOT / "research/RHRC/routes/R003_ccm_bridge/post287"
 LEDGER = ROOT / "research/RHRC/integration/post287/OPEN_OBLIGATIONS.json"
 
 PY = [
+    "certificate_integrity.py",
+    "wp2_literature_form_arb_probe.py",
     "wp2_k2_even_transcript.py",
     "wp2_verify_transcript.py",
     "wp2_wp4_normalization_gate.py",
@@ -97,11 +99,20 @@ def check() -> dict:
     validate_focused_workflow(focused)
     workflow = (ROOT / ".github/workflows" / YAML[3]).read_text()
     assert "workflow_dispatch" in workflow
-    assert "matrix:" in workflow and "parity: [even, odd]" in workflow
+    assert "matrix:" in workflow
+    assert "parity: ${{ fromJSON(needs.campaign-prerequisites.outputs.parities) }}" in workflow
+    assert "parities=['even','odd']" in workflow
     assert "1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15" in workflow
     assert "wp4_k3_verify_full_transcript.py" in workflow
     assert "wp4_k3_assemble_shards.py" in workflow
     assert "timeout-minutes: 360" in workflow
+    assert "workflow_call:" in workflow
+    assert "needs: campaign-prerequisites" in workflow
+    assert "--second-gate /tmp/wp4-prerequisites/second-gate.json" in workflow
+    wrapper=(ROOT / '.github/workflows/rhrc_post284_source_inertia.yml').read_text()
+    assert 'full_k3:' in wrapper and 'type: boolean' in wrapper
+    assert "github.event_name == 'workflow_dispatch' && inputs.full_k3" in wrapper
+    assert 'uses: ./.github/workflows/rhrc_post287_wp4_full_continuum.yml' in wrapper
     for name in YAML:
         assert (ROOT / ".github/workflows" / name).is_file(), name
 
@@ -131,7 +142,7 @@ def check() -> dict:
     assert 'result=evaluate((l,r),parity,cell,method)' in continuum
     assert 'if args.method=="FOURTH":' in continuum
     assert '"--fourth-gate"' in continuum
-    assert '--method SECOND' in workflow
+    assert '--method "$method" "${gate_args[@]}"' in workflow
     assert 'checker_receipt.json' in workflow
     assert '--output /tmp/wp4-k3-global/global_checker_receipt.json' in workflow
     assert "all_aperture_K3_positivity" in fallback

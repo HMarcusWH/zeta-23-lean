@@ -21,6 +21,8 @@ import canonical_source_arb as C
 from post194_fb05_q14_fixed_unit_second_derivative import (
     fixed_unit_fixed_q_canonical_source_matrix_with_second_derivative_arb as jets)
 from wp2_k2_even_transcript import verified_cell_bounds
+from certificate_integrity import (rational,record_path,source_input_digests,
+                                   source_commit,assert_source_unchanged)
 
 V=(1,-2,0,2,-1)
 NORM2=10
@@ -95,27 +97,41 @@ def cover(Q:int,depth_limit:int,max_tiles:int):
 def verify(directory:Path,precision:int):
     C.set_precision(precision);ctx.prec=precision
     obj=json.loads((directory/"manifest.json").read_text())
-    assert obj["terminal_claim"]=="RH_OPEN"
-    assert precision>obj["precision_bits"]
-    assert obj["status"]=="INTERVAL_EVIDENCE"
+    if (obj.get("schema") != "post287.wp4.k2-odd-prerequisite.v1" or
+            obj.get("terminal_claim") != "RH_OPEN" or
+            precision <= obj["precision_bits"] or
+            obj.get("status") != "INTERVAL_EVIDENCE" or
+            obj.get("source_digests") != source_input_digests() or
+            obj.get("legal_odd_generator") != list(V) or obj.get("norm_square") != NORM2):
+        raise AssertionError("odd prerequisite schema/source/claim mismatch")
     covered=0
     for row in obj["records"]:
-        Q=row["Q"];file=directory/row["file"]
+        Q=row["Q"];file=record_path(directory,row["file"])
         raw=file.read_bytes()
         if hashlib.sha256(raw).hexdigest()!=row["sha256"]:
             raise AssertionError(("sha256",str(file)))
         data=json.loads(raw)
+        if (data["Q"] != Q or data["parity"] != "odd" or
+                data["status"] != "PASS" or len(data["accepted"]) != row["accepted"] or
+                row["unresolved"] != 0 or row["file"] != f"k2_odd_Q{Q:02d}.json"):
+            raise AssertionError("odd manifest/payload labels or counts mismatch")
         if data["unresolved"]:raise AssertionError(("unresolved",Q))
         cursor,hi=cell_interval(Q)
+        if rational(data["left"])!=cursor or rational(data["right"])!=hi:
+            raise AssertionError("incorrect odd interval target")
         for t in data["accepted"]:
-            lo=Fraction(*t["left"]);up=Fraction(*t["right"])
+            lo=rational(t["left"]);up=rational(t["right"])
             if lo!=cursor or not lo<up:raise AssertionError(("gap",Q,lo,up))
             c,r=(lo+up)/2,(up-lo)/2
+            if (rational(t["centre"])!=c or rational(t["radius"])!=r or
+                    t.get("positive") is not True):
+                raise AssertionError("odd tile centre/radius/disposition mismatch")
             if not bound(c,r,Q)["positive"]:
                 raise AssertionError(("fresh enclosure failed",Q,lo,up))
             covered+=1;cursor=up
         if cursor!=hi:raise AssertionError(("end gap",Q,cursor,hi))
-    assert [row["Q"] for row in obj["records"]]==list(range(1,16))
+    if [row["Q"] for row in obj["records"]]!=list(range(1,16)):
+        raise AssertionError("odd cover must contain Q1..Q15 exactly once")
     return {"status":"INTERVAL_CHECK_PASS","intervals":covered,
             "terminal_claim":"RH_OPEN"}
 
@@ -125,11 +141,22 @@ def main()->int:
     p.add_argument("--out",type=Path)
     p.add_argument("--verify",type=Path)
     p.add_argument("--precision-bits",type=int,default=128)
+    p.add_argument("--receipt",type=Path,help="durable higher-precision verification receipt")
     p.add_argument("--max-depth",type=int,default=30)
     p.add_argument("--max-tiles",type=int,default=5000)
     args=p.parse_args()
+    initial_source=source_input_digests()
+    if not 0 <= args.max_depth <= 40 or args.max_tiles <= 0:
+        raise ValueError("positive finite tile cap and depth cap 40 required")
     if args.verify:
-        print(json.dumps(verify(args.verify,args.precision_bits)))
+        receipt=verify(args.verify,args.precision_bits)
+        receipt.update(source_digests=source_input_digests(),
+                       manifest_sha256=hashlib.sha256((args.verify/'manifest.json').read_bytes()).hexdigest(),
+                       precision_bits=args.precision_bits)
+        if args.receipt:
+            args.receipt.parent.mkdir(parents=True,exist_ok=True)
+            args.receipt.write_text(json.dumps(receipt,sort_keys=True,indent=2)+'\n')
+        print(json.dumps(receipt))
         return 0
     if not args.out:raise ValueError("provide --out or --verify")
     C.set_precision(args.precision_bits);ctx.prec=args.precision_bits
@@ -149,6 +176,7 @@ def main()->int:
     out={"schema":"post287.wp4.k2-odd-prerequisite.v1",
          "status":"INTERVAL_EVIDENCE" if passed else "UNRESOLVED",
          "terminal_claim":"RH_OPEN","precision_bits":args.precision_bits,
+         "source_digests":assert_source_unchanged(initial_source),"source_commit":source_commit(),
          "domain":"[1/512,log16]" if passed else "accepted intervals only",
          "source":"complete fixed-Q production Eq4.4",
          "legal_odd_generator":list(V),"norm_square":NORM2,

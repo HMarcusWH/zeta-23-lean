@@ -12,6 +12,7 @@ import argparse
 import hashlib
 import json
 import sys
+import time
 from fractions import Fraction
 from pathlib import Path
 from flint import arb, ctx
@@ -25,6 +26,7 @@ from post194_fb05_q14_fixed_unit_second_derivative import (
     fixed_unit_fixed_q_canonical_source_matrix_with_second_derivative_arb as jets,
 )
 import canonical_source_arb as C
+from certificate_integrity import source_input_digests, source_commit, assert_source_unchanged
 
 
 def qpair(x:Fraction) -> list[int]:
@@ -65,12 +67,19 @@ def verified_cell_bounds(Q:int)->tuple[Fraction,Fraction]:
     return a,b
 
 
-def cover_cell(Q:int,max_depth:int) -> dict:
+def cover_cell(Q:int,max_depth:int,max_nodes:int=50000,deadline:float=float('inf')) -> dict:
     a,b=verified_cell_bounds(Q)
     stack=[(a,b,0)]
     yes,no=[],[]
+    nodes=0
     while stack:
         lo,hi,depth=stack.pop()
+        if nodes>=max_nodes or time.monotonic()>=deadline:
+            no.extend({'left':qpair(a),'right':qpair(b),'depth':d,
+                       'reason':'RESOURCE_LIMIT'}
+                      for a,b,d in [(lo,hi,depth),*stack])
+            break
+        nodes+=1
         c,r=(lo+hi)/2,(hi-lo)/2
         row=accepted_bound(c,r,Q)
         row['left']=qpair(lo);row['right']=qpair(hi)
@@ -93,14 +102,22 @@ def main() -> int:
     p.add_argument('--cells',default='1-15')
     p.add_argument('--max-depth',type=int,default=MAX_DEPTH)
     p.add_argument('--precision-bits',type=int,default=128)
+    p.add_argument('--max-nodes',type=int,default=50000)
+    p.add_argument('--seconds',type=int,default=18000)
     args=p.parse_args()
+    initial_source=source_input_digests()
+    if not 0 <= args.max_depth <= 40 or args.max_nodes <= 0 or args.seconds <= 0:
+        raise ValueError('positive finite resources and depth cap 40 required')
     C.set_precision(args.precision_bits);ctx.prec=args.precision_bits
     lo,sep,hi=args.cells.partition('-')
     cells=list(range(int(lo),int(hi or lo)+1))
+    if not cells or any(not 1 <= Q <= 15 for Q in cells):
+        raise ValueError('select cells Q1..Q15')
     args.output_dir.mkdir(parents=True,exist_ok=True)
     rows=[]
+    deadline=time.monotonic()+args.seconds
     for Q in cells:
-        data=cover_cell(Q,args.max_depth)
+        data=cover_cell(Q,args.max_depth,args.max_nodes,deadline)
         name=f'cell_{Q:02}.json'
         raw=(json.dumps(data,indent=2,sort_keys=True)+'\n').encode()
         (args.output_dir/name).write_bytes(raw)
@@ -115,6 +132,7 @@ def main() -> int:
               'terminal_claim':'RH_OPEN',
               'status':'INTERVAL_EVIDENCE' if complete else 'UNRESOLVED',
               'prec_bits':args.precision_bits,
+              'source_digests':assert_source_unchanged(initial_source),'source_commit':source_commit(),
               'domain':'[1/400, log16] rigorously (final rational above log16)' if complete else 'named cells only',
               'backend':'full production fixed-Q matrix and 2nd derivative',
               'arch_correction':'once',

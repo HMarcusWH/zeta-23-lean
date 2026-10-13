@@ -39,6 +39,7 @@ sys.path[:0] = [str(BASE), str(BASE / "post285")]
 import canonical_source_arb as C
 from post166_fb05_cell_interval import _arb_matrix_from_sympy, cell_coordinate_L_arb
 from post169_fb05_schur_visibility import one_step_geometry
+from certificate_integrity import source_input_digests, source_commit, assert_source_unchanged
 
 FIXTURE = BASE / "fixtures" / "post175_fb05_q13_fixed_unit_enclosure_v1.json"
 ORDER = 4
@@ -83,8 +84,16 @@ def _integrated_coefficients(factory) -> list[arb]:
     for k in range(ORDER + 1):
         def integrand(t, analytic):
             # The entire special functions and fixed positive-L denominators
-            # are analytic on the path. Failure propagates instead of masking it.
-            return _coeffs(factory(t))[k]
+            # are analytic on the real path. A coarse COMPLEX integration box
+            # can enclose a zero of sinhc away from that path. Signal an
+            # indeterminate enclosure so Arb subdivides, rather than raising
+            # a Python exception before its validated integrator can refine.
+            try:
+                return _coeffs(factory(t))[k]
+            except ValueError as exc:
+                if 'leading term in denominator is not nonzero' in str(exc):
+                    return acb('nan')
+                raise
         value = acb.integral(integrand, acb(0), acb(1))
         if not value.imag.contains(0):
             raise ArithmeticError("real source derivative integral not enclosed")
@@ -231,6 +240,14 @@ def check_box(c:arb, r:arb, cutoff:int, parity:str,
     lower_a=taylor_lower(ac,ai[ORDER],r)
     lower_det=taylor_lower(dc,di[ORDER],r)
     return {"parity":parity,
+            "point_a":C.ball_record(ac[0],38),
+            "point_delta":C.ball_record(dc[0],38),
+            "centre_a_coefficients":[C.ball_record(v,38) for v in ac[:ORDER]],
+            "centre_delta_coefficients":[C.ball_record(v,38) for v in dc[:ORDER]],
+            "fourth_a_interval":C.ball_record(ai[ORDER],38),
+            "fourth_delta_interval":C.ball_record(di[ORDER],38),
+            "certified_negative_centre":bool((ac[0].upper()<0 or dc[0].upper()<0) and
+                C.fixed_cell_membership(cutoff,c)['certified']),
             "a_lower":C.ball_record(lower_a,38),
             "delta_lower":C.ball_record(lower_det,38),
             "a_positive":bool(lower_a>0),
@@ -262,6 +279,9 @@ def main() -> int:
                    help="0 means every frozen primary and control box")
     p.add_argument("--seconds",type=int,default=1200)
     args=p.parse_args()
+    initial_source=source_input_digests()
+    if args.precision_bits != 384 or args.seconds <= 0 or args.max_boxes < 0:
+        raise ValueError("frozen fallback requires 384 bits and finite positive time")
     C.set_precision(args.precision_bits)
     ctx.prec=args.precision_bits
     boxes=frozen_boxes()
@@ -284,14 +304,19 @@ def main() -> int:
                        "parity":parity,"kind":kind,**o})
         print(json.dumps({"Q":q,"parity":parity,
                           "verdict":o["verdict"]}),flush=True)
+        if o.get('certified_negative_centre'):
+            break
     good=(len(result)==len(boxes) and
           all(o["verdict"]=="PASS" for o in result))
     payload={"schema":"post287.wp4.fourth_order.v1",
              "method":"genuine 4th-order fixed-unit Arb Taylor, full Eq4.4",
              "status":"INTERVAL_EVIDENCE" if good else "UNRESOLVED",
              "terminal_claim":RH_STATUS,"frozen_boxes":len(boxes),
+             "precision_bits":args.precision_bits,
+             "source_digests":assert_source_unchanged(initial_source),"source_commit":source_commit(),
              "tested_boxes":len(result),"boxes":result,
              "gate":"PASS" if good else "UNRESOLVED",
+             "certified_negative_stop":any(o.get('certified_negative_centre') for o in result),
              "all_aperture_K3_positivity":False,
              "next_on_failure":"STOP; publish unresolved boxes, do not reparameterize",
              "not_proved":["RH","global K3 positivity","all cutoff cells",
@@ -300,6 +325,8 @@ def main() -> int:
     args.output.write_text(json.dumps(payload,indent=2,sort_keys=True)+"\n")
     print(json.dumps({"gate":payload["gate"],"tested":len(result),
                       "required":len(boxes),"RH":RH_STATUS}))
+    if payload['certified_negative_stop']:
+        raise RuntimeError('certified negative at true weights: STOP and investigate normalization')
     return 0   # Research status is represented in JSON, not by exit code.
 
 

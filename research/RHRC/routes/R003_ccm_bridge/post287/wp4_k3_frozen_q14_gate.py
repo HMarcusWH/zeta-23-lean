@@ -30,6 +30,7 @@ from post169_fb05_schur_visibility import one_step_geometry
 from post194_fb05_q14_fixed_unit_second_derivative import (
     fixed_unit_fixed_q_canonical_source_matrix_with_second_derivative_arb as jets,
 )
+from certificate_integrity import source_input_digests, source_commit, assert_source_unchanged
 FIXTURE=ROOT/'fixtures'/'post175_fb05_q13_fixed_unit_enclosure_v1.json'
 
 
@@ -82,6 +83,12 @@ def evaluate(Q:int,t:Fraction,r:Fraction,geom)->dict:
     a_low=taylor_lower(a,rad)
     delta_low=taylor_lower(delta,rad)
     return {'t':[t.numerator,t.denominator],'radius':[r.numerator,r.denominator],
+            'point_a':C.ball_record(a[0],32),'point_delta':C.ball_record(delta[0],32),
+            'first_a':C.ball_record(a[1],32),'first_delta':C.ball_record(delta[1],32),
+            'second_a_interval':C.ball_record(a[2],32),
+            'second_delta_interval':C.ball_record(delta[2],32),
+            'certified_negative_centre':bool((a[0].upper()<0 or delta[0].upper()<0) and
+                C.fixed_cell_membership(Q,centre)['certified']),
             'a_lower':C.ball_record(a_low,32),
             'det_lower':C.ball_record(delta_low,32),
             'a_positive':bool(a_low>0),'det_positive':bool(delta_low>0),
@@ -98,6 +105,11 @@ def bounded_cover(Q:int,t:Fraction,r:Fraction,geom,depth:int,
             break
         tc,rc,d=stack.pop();node_count+=1
         row=evaluate(Q,tc,rc,geom)
+        if row.get('certified_negative_centre'):
+            return {'nodes':node_count,'accepted':accepted,'unresolved':[
+                {'t':str(tc),'radius':str(rc),'depth':d,
+                 'reason':'CERTIFIED_NEGATIVE_NORMALIZATION_STOP','enclosures':row}],
+                'verdict':'UNRESOLVED','certified_negative_stop':True}
         if row['accepted']:
             accepted+=1;continue
         if d>=depth:
@@ -121,7 +133,11 @@ def main():
     p.add_argument('--max-boxes',type=int,default=0,
                    help='0 means all frozen primary and control boxes')
     args=p.parse_args()
-    if args.max_depth>40:raise ValueError('rev4 frozen depth cap 40')
+    initial_source=source_input_digests()
+    if not 0 <= args.max_depth <= 40 or args.max_nodes <= 0 or args.time_seconds <= 0:
+        raise ValueError('positive finite resources and rev4 depth cap 40 required')
+    if args.precision_bits != 384:
+        raise ValueError('the frozen rev4 gate requires exactly 384 bits')
     C.set_precision(args.precision_bits);ctx.prec=args.precision_bits
     fixture=json.loads(FIXTURE.read_text())
     geoms={par:one_step_geometry(2,par) for par in ('even','odd')}
@@ -147,6 +163,7 @@ def main():
         print(json.dumps({k:rec[k] for k in
               ('Q','t','radius','parity','verdict','nodes')}),
               flush=True)
+        if result.get('certified_negative_stop'):break
         if time.monotonic()>=deadline:break
     complete=(len(records)==len(boxes) and
               all(x['verdict']=='PASS' for x in records))
@@ -156,8 +173,10 @@ def main():
          'evaluated_scope':'frozen #176 boxes only',
          'all_aperture_positivity_certified':False,
          'precision_bits':args.precision_bits,
+         'source_digests':assert_source_unchanged(initial_source),'source_commit':source_commit(),
          'max_depth':args.max_depth,
          'gate':'PASS' if complete else 'UNRESOLVED',
+         'certified_negative_stop':any(b.get('certified_negative_stop') for b in records),
          'predeclared_next_if_failed':'fourth-order Taylor model on a,b,d; no unbounded repr retry',
          'elapsed_seconds':round(time.monotonic()-start,2),
          'frozen_boxes':len(boxes),'tested_boxes':len(records),
@@ -167,6 +186,8 @@ def main():
     args.output.write_text(json.dumps(obj,indent=2,sort_keys=True)+'\n')
     print(json.dumps({'gate':obj['gate'],'tested':len(records),
                       'required':len(boxes)}))
+    if obj['certified_negative_stop']:
+        raise RuntimeError('certified negative at true weights: STOP and investigate normalization')
     return 0  # an honest UNRESOLVED gate is a legitimate research disposition
 
 

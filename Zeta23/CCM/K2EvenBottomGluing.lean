@@ -8,13 +8,15 @@ namespace Zeta23.CCM
 /-!
 # WP2: K2 even positivity hybrid with explicit M51 evidence premise
 
-This integration lemma combines the PROVED uniform small-aperture bound,
-the (not-yet-exported) reciprocal-aperture bottom interpolation, and the
-research-only M51 Arb positive interval.  Both latter facts are deliberately
-exposed as hypotheses.  Thus this file does NOT assert an unconditional
-continuous K2 positivity theorem and does not promote the Arb transcript
-to Lean authority.  It provides a compiler-checked destination for WP1
-and M51 once their exact certificates are separately verified.
+This module combines the PROVED uniform small-aperture bound and M66
+reciprocal-aperture bottom interpolation with an explicit M51 positive-window
+premise. The auxiliary adapters expose the interpolation inputs separately;
+`k2EvenBottom_positive_of_M66_and_M51` discharges those analytic inputs using
+the canonical C² family and the proved M66 curvature radius.
+
+The M51 whole-window positivity premise remains explicit in the final theorem.
+An Arb transcript is research evidence and is not promoted to Lean authority,
+so unconditional continuous K2 positivity is not asserted here.
 -/
 
 /-- Conditional and scope-correct gap-gluing: the small-aperture theorem

@@ -23,12 +23,8 @@ from wp2_k2_even_transcript import verified_cell_bounds
 from post285.post285_m51_k2_even_bottom_certificate import quad
 from post194_fb05_q14_fixed_unit_second_derivative import (
     fixed_unit_fixed_q_canonical_source_matrix_with_second_derivative_arb as matrix_jets)
+from certificate_integrity import rational, record_path, source_input_digests
 
-
-
-def rational(t:list[int])->Fraction:
-    assert len(t)==2
-    return Fraction(int(t[0]),int(t[1]))
 
 
 def exact_arb(value: Fraction) -> arb:
@@ -53,22 +49,31 @@ def main():
     args=p.parse_args()
     C.set_precision(args.precision_bits);ctx.prec=args.precision_bits
     m=json.loads((args.directory/'manifest.json').read_text())
-    assert m['terminal_claim']=='RH_OPEN'
-    assert m['status']=='INTERVAL_EVIDENCE'
-    assert args.precision_bits>m['prec_bits']
+    if (m.get('schema')!='post287.wp2.k2-m51.arb.v1' or
+            m.get('terminal_claim')!='RH_OPEN' or
+            m.get('status')!='INTERVAL_EVIDENCE' or
+            m.get('source_digests')!=source_input_digests() or
+            args.precision_bits<=m['prec_bits']):
+        raise AssertionError('manifest schema/claim/source/precision mismatch')
     qs=[];count=0
     for info in m['cells']:
         Q=info['Q'];qs.append(Q)
-        path=args.directory/info['file']
+        path=record_path(args.directory,info['file'])
         raw=path.read_bytes()
         if hashlib.sha256(raw).hexdigest()!=info['sha256']:
             raise AssertionError(('digest mismatch',Q))
         cell=json.loads(raw)
+        if cell['cell_Q'] != Q or info['file'] != f'cell_{Q:02}.json':
+            raise AssertionError(('manifest/payload cell mismatch',Q))
         if cell['unresolved']:
             raise AssertionError(('unresolved',Q,len(cell['unresolved'])))
-        if len(cell['intervals'])!=info['accepted_count']:
+        if (len(cell['intervals'])!=info['accepted_count'] or
+                cell['accepted_count']!=info['accepted_count'] or
+                info['unresolved_count']!=0):
             raise AssertionError(('count mismatch',Q))
         a,b=verified_cell_bounds(Q)
+        if rational(cell['left'])!=a or rational(cell['right'])!=b:
+            raise AssertionError(('incorrect target bounds',Q))
         current=a
         for row in cell['intervals']:
             left,right=rational(row['left']),rational(row['right'])
@@ -84,6 +89,8 @@ def main():
             raise AssertionError(('right endpoint',Q,current,b))
     if qs!=list(range(1,16)):
         raise AssertionError(('not all Q1..15 covered',qs))
+    if count != m['interval_records']:
+        raise AssertionError('incorrect manifest total interval count')
     print(json.dumps({'verdict':'PASS','package':'WP2_CHECK_M51_COVER_NO_SEARCH',
                       'intervals':count,'precision_bits':args.precision_bits,
                       'status':'INTERVAL_EVIDENCE','terminal_claim':'RH_OPEN'}))

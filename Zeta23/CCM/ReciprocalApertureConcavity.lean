@@ -42,13 +42,16 @@ theorem reciprocalAperture_second_derivative
       (s⁻¹)^4 * (deriv (deriv f) s⁻¹ + 2 * s * deriv f s⁻¹) := by
   have hInv : HasDerivAt (fun t : ℝ => t⁻¹) (-(s ^ 2)⁻¹) s :=
     hasDerivAt_inv (ne_of_gt hs)
+  have hFactor : HasDerivAt (fun t : ℝ => -(t⁻¹)^2)
+      (-(2 * s⁻¹ * (-(s ^ 2)⁻¹))) s := by
+    simpa only [Pi.pow_apply, Pi.neg_apply, Nat.cast_ofNat, pow_one] using
+      (hInv.pow 2).neg
   have hMain : HasDerivAt
       (fun t : ℝ => (deriv f t⁻¹) * (-(t⁻¹)^2))
       (deriv (deriv f) s⁻¹ * (-(s ^ 2)⁻¹) * (-(s⁻¹)^2) +
         deriv f s⁻¹ * (-(2 * (s⁻¹) * (-(s ^ 2)⁻¹)))) s := by
-    convert (((hf2 s⁻¹ (inv_pos.mpr hs)).hasDerivAt.comp s hInv).mul
-      ((hInv.pow 2).neg)) using 1 <;>
-      try simp only [Function.comp_def] <;> ring
+    simpa only [Function.comp_def, Pi.mul_apply] using
+      ((hf2 s⁻¹ (inv_pos.mpr hs)).hasDerivAt.comp s hInv).mul hFactor
   have hEq : (deriv (fun t : ℝ => f t⁻¹)) =ᶠ[𝓝 s]
       (fun t : ℝ => deriv f t⁻¹ * (-(t⁻¹)^2)) := by
     filter_upwards [isOpen_Ioi.mem_nhds hs] with t ht
@@ -132,7 +135,7 @@ theorem concave_family_ge_of_endpoint_ge
   exact le_trans (le_min (ha i) (hb i))
     (concave_on_Icc_ge_min_endpoints (f i) hab hx (hconc i))
 
-/-- WP1 canonical bottom interpolation in reciprocal aperture.  This theorem
+/- WP1 canonical bottom interpolation in reciprocal aperture.  This theorem
 does **not** assume positivity, a contact, or RH.  Its mathematical input is
 strictly the per-vector concavity of the *actual canonical* normalized Rayleigh
 energy; the conclusion is an endpoint lower bound for the genuine iInf
@@ -183,10 +186,10 @@ theorem evenRayleighBottom_ge_endpoint_min_of_reciprocal_concavity
     have hchord : min (F b⁻¹) (F a⁻¹) ≤ F L⁻¹ :=
       concave_on_Icc_ge_min_endpoints F hba hinside hconc
     have hleft : parityRayleighBottom .even a K ≤ F a⁻¹ := by
-      simpa only [F, inv_inv, productionContactFixedEnergy] using
+      simpa only [F, inv_inv, productionContactFixedEnergy, RCLike.re_to_complex] using
         (parityRayleighBottom_le_rayleigh .even a K z hz)
     have hright : parityRayleighBottom .even b K ≤ F b⁻¹ := by
-      simpa only [F, inv_inv, productionContactFixedEnergy] using
+      simpa only [F, inv_inv, productionContactFixedEnergy, RCLike.re_to_complex] using
         (parityRayleighBottom_le_rayleigh .even b K z hz)
     calc
       min (parityRayleighBottom .even a K)
@@ -196,11 +199,11 @@ theorem evenRayleighBottom_ge_endpoint_min_of_reciprocal_concavity
       _ ≤ F L⁻¹ := hchord
       _ = productionContactFixedEnergy .even L K z / ‖z‖ ^ 2 := by
         simp [F]
-  letI : Nonempty {z : euclideanEvenBoundaryFlatSubspace K // z ≠ 0} :=
+  letI : Nonempty {z : euclideanParityBoundaryFlatSubspace .even K // z ≠ 0} :=
     evenRayleigh_nonempty_nonzero K hK
   unfold parityRayleighBottom
-  refine le_ciInf fun z => ?_
-  simpa only [productionContactFixedEnergy] using hpoint z.1 z.2
+  refine le_ciInf fun (z : {z : euclideanParityBoundaryFlatSubspace .even K // z ≠ 0}) => ?_
+  simpa only [productionContactFixedEnergy, RCLike.re_to_complex] using hpoint z.1 z.2
 
 /-- The more economical WP1 bridge: it is enough to know *unnormalized*
 fixed-vector source-energy concavity on reciprocal aperture.  The positive
@@ -244,10 +247,10 @@ theorem evenRayleighBottom_ge_endpoint_min_of_raw_reciprocal_concavity
           simpa [min_eq_right h] using hchord
         exact le_trans (min_le_right _ _) ((div_le_div_iff_of_pos_right hc).2 he)
     have hleft : parityRayleighBottom .even a K ≤ F a⁻¹ / ‖z‖ ^ 2 := by
-      simpa only [F, inv_inv, productionContactFixedEnergy] using
+      simpa only [F, inv_inv, productionContactFixedEnergy, RCLike.re_to_complex] using
         (parityRayleighBottom_le_rayleigh .even a K z hz)
     have hright : parityRayleighBottom .even b K ≤ F b⁻¹ / ‖z‖ ^ 2 := by
-      simpa only [F, inv_inv, productionContactFixedEnergy] using
+      simpa only [F, inv_inv, productionContactFixedEnergy, RCLike.re_to_complex] using
         (parityRayleighBottom_le_rayleigh .even b K z hz)
     calc
       min (parityRayleighBottom .even a K)
@@ -258,35 +261,34 @@ theorem evenRayleighBottom_ge_endpoint_min_of_raw_reciprocal_concavity
       _ ≤ F L⁻¹ / ‖z‖ ^ 2 := hscaled
       _ = productionContactFixedEnergy .even L K z / ‖z‖ ^ 2 := by
         simp [F]
-  letI : Nonempty {z : euclideanEvenBoundaryFlatSubspace K // z ≠ 0} :=
+  letI : Nonempty {z : euclideanParityBoundaryFlatSubspace .even K // z ≠ 0} :=
     evenRayleigh_nonempty_nonzero K hK
   unfold parityRayleighBottom
-  refine le_ciInf fun z => ?_
-  simpa only [productionContactFixedEnergy] using hpoint z.1 z.2
+  refine le_ciInf fun (z : {z : euclideanParityBoundaryFlatSubspace .even K // z ≠ 0}) => ?_
+  simpa only [productionContactFixedEnergy, RCLike.re_to_complex] using hpoint z.1 z.2
 
-/-- Native production-Euler inequality implies genuine even-bottom endpoint
-interpolation on every interval strictly inside the *already PROVED* M66
-radius. The scalar C² premise is deliberately typed as the existing
-seam-safe fixed-vector realization, not as an RH/positivity assumption.
-This lemma never enlarges the M66 radius. -/
-theorem evenRayleighBottom_ge_endpoint_min_of_nativeEuler
+/-- Any independently proved Euler-curvature radius supplies even-bottom
+endpoint interpolation. The radius and its curvature proof remain explicit,
+so a later improved radius can reuse the same Rayleigh-infimum argument. -/
+theorem evenRayleighBottom_ge_endpoint_min_of_euler_curvature
     (K : ℕ) (hK : 2 ≤ K)
+    (R : ℝ) (hR : 0 < R)
     (hSmooth : ∀ z : euclideanEvenBoundaryFlatSubspace K,
       ContDiffOn ℝ 2
         (fun x : ℝ => productionContactFixedEnergy .even x K z)
         (Set.Ioi (0 : ℝ)))
+    (hCurv : ∀ z : euclideanEvenBoundaryFlatSubspace K, z ≠ 0 →
+      ∀ x : ℝ, 0 < x → x < R →
+        deriv (deriv (fun t : ℝ => productionContactFixedEnergy .even t K z)) x +
+          2 * deriv (fun t : ℝ => productionContactFixedEnergy .even t K z) x / x < 0)
     {a L b : ℝ} (ha : 0 < a) (haL : a ≤ L) (hLb : L ≤ b)
-    (hbR : b < primeFreeRadius K) :
+    (hbR : b < R) :
     min (parityRayleighBottom .even a K)
         (parityRayleighBottom .even b K) ≤
       parityRayleighBottom .even L K := by
-  have hR : 0 < primeFreeRadius K := by
-    unfold primeFreeRadius
-    have hk : (0 : ℝ) < K := by exact_mod_cast (by omega : 0 < K)
-    positivity
   have hb : 0 < b := lt_of_lt_of_le ha (le_trans haL hLb)
-  have hrb : (primeFreeRadius K)⁻¹ < b⁻¹ := by
-    have hd : (1 : ℝ) / primeFreeRadius K < 1 / b := by
+  have hrb : R⁻¹ < b⁻¹ := by
+    have hd : (1 : ℝ) / R < 1 / b := by
       apply (div_lt_div_iff₀ hR hb).2
       simpa using hbR
     simpa only [one_div] using hd
@@ -309,22 +311,39 @@ theorem evenRayleighBottom_ge_endpoint_min_of_nativeEuler
       intro x hx
       exact (hC1.differentiableOn (by norm_num)).differentiableAt
         (isOpen_Ioi.mem_nhds hx)
-    have hK1 : 1 ≤ K := by omega
-    have hEuler : ∀ x : ℝ, 0 < x → x < primeFreeRadius K →
-        deriv (deriv f) x + 2 * deriv f x / x < 0 := by
-      intro x hx hxR
-      simpa [f, productionContactFirstVariation,
-        productionContactFixedSecondVariation] using
-        (productionContactEulerCurvature_neg K hK1 hx hxR z hz)
-    have hStrict := reciprocalAperture_strictConcaveOn f
-      (primeFreeRadius K) hR hdiff1 hdiff2 hEuler
+    have hStrict := reciprocalAperture_strictConcaveOn f R hR
+      hdiff1 hdiff2 (hCurv z hz)
     have hsubset : Set.Icc b⁻¹ a⁻¹ ⊆
-        Set.Ioi (primeFreeRadius K)⁻¹ := by
+        Set.Ioi R⁻¹ := by
       intro t ht
       exact lt_of_lt_of_le hrb ht.1
     exact hStrict.concaveOn.subset hsubset (convex_Icc _ _)
   exact evenRayleighBottom_ge_endpoint_min_of_raw_reciprocal_concavity
     hK ha haL hLb hRaw
+
+/-- Native M66 Euler curvature supplies the general interpolation theorem
+at exactly its established prime-free radius. -/
+theorem evenRayleighBottom_ge_endpoint_min_of_nativeEuler
+    (K : ℕ) (hK : 2 ≤ K)
+    (hSmooth : ∀ z : euclideanEvenBoundaryFlatSubspace K,
+      ContDiffOn ℝ 2
+        (fun x : ℝ => productionContactFixedEnergy .even x K z)
+        (Set.Ioi (0 : ℝ)))
+    {a L b : ℝ} (ha : 0 < a) (haL : a ≤ L) (hLb : L ≤ b)
+    (hbR : b < primeFreeRadius K) :
+    min (parityRayleighBottom .even a K)
+        (parityRayleighBottom .even b K) ≤
+      parityRayleighBottom .even L K := by
+  have hR : 0 < primeFreeRadius K := by
+    unfold primeFreeRadius
+    have hk : (0 : ℝ) < K := by exact_mod_cast (by omega : 0 < K)
+    positivity
+  apply evenRayleighBottom_ge_endpoint_min_of_euler_curvature K hK
+    (primeFreeRadius K) hR hSmooth ?_ ha haL hLb hbR
+  intro z hz x hx hxR
+  simpa [productionContactFirstVariation,
+    productionContactFixedSecondVariation] using
+    (productionContactEulerCurvature_neg K (by omega) hx hxR z hz)
 
 /-- WP1: fixed legal-even physical source energy is genuinely C² on every
 positive aperture, as an unconditional consequence of the already formally
@@ -347,12 +366,10 @@ theorem canonical_evenFixedEnergy_contDiffOn_two (K : ℕ)
       (fun t : ℝ =>
         inner ℂ ((canonicalParityCompressedFamilyCLM .even K t) z) z) L :=
     hvalue.inner ℂ contDiffAt_const
-  have hRe : ContDiff ℝ 2 (fun w : ℂ => w.re) := by
-    simpa only [Complex.reCLM_apply] using
-      (Complex.reCLM.contDiff (n := (2 : ℕ∞ω)))
-  have hscalar := hRe.contDiffAt.comp L hpair
-  simpa only [productionContactFixedEnergy,
-    canonicalParityCompressedFamilyCLM, parityCompressedCanonicalCLM,
+  have hscalar := Complex.reCLM.contDiff.contDiffAt.comp L hpair
+  simpa [productionContactFixedEnergy,
+    canonicalParityCompressedFamilyCLM, parityCompressedCanonical,
+    Function.comp_def,
     Complex.reCLM_apply] using hscalar.contDiffWithinAt
 
 /-- The M66 native Euler curvature inequality and the globally C²
@@ -384,6 +401,7 @@ end Zeta23.CCM
 #print axioms Zeta23.CCM.evenRayleighBottom_ge_endpoint_min_of_raw_reciprocal_concavity
 
 #print axioms Zeta23.CCM.evenRayleighBottom_ge_endpoint_min_of_nativeEuler
+#print axioms Zeta23.CCM.evenRayleighBottom_ge_endpoint_min_of_euler_curvature
 
 #print axioms Zeta23.CCM.canonical_evenFixedEnergy_contDiffOn_two
 #print axioms Zeta23.CCM.evenRayleighBottom_ge_endpoint_min_of_M66

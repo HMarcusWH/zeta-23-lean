@@ -3,6 +3,12 @@ name: RHRC post-284 source inertia campaign
 on:
   pull_request:
   workflow_dispatch:
+    inputs:
+      full_k3:
+        description: 'Run the gated 30-shard post287 K3 campaign on the selected branch'
+        required: false
+        type: boolean
+        default: false
 
 permissions:
   contents: read
@@ -12,7 +18,11 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  post287-full-k3:
+    if: github.event_name == 'workflow_dispatch' && inputs.full_k3
+    uses: ./.github/workflows/rhrc_post287_wp4_full_continuum.yml
   lean-source-inertia:
+    if: github.event_name != 'workflow_dispatch' || !inputs.full_k3
     runs-on: ubuntu-latest
     timeout-minutes: 120
     steps:
@@ -137,6 +147,7 @@ jobs:
           path: /tmp/post284-targets.txt
 
   source-falsifier-research:
+    if: github.event_name != 'workflow_dispatch' || !inputs.full_k3
     runs-on: ubuntu-latest
     timeout-minutes: 120
     steps:

@@ -26,6 +26,8 @@ import canonical_source_arb as C
 from post175_fb05_q13_fixed_unit_enclosure import (
     fixed_unit_fixed_q_canonical_source_matrix_arb)
 from post169_fb05_schur_visibility import one_step_geometry
+from certificate_integrity import source_input_digests,source_commit,assert_source_unchanged
+from wp2_literature_form_arb_probe import run_probe
 
 
 def q(x:Fraction)->arb:
@@ -75,6 +77,7 @@ def main()->int:
     p.add_argument("--output",type=Path,required=True)
     p.add_argument("--precision-bits",type=int,default=256)
     args=p.parse_args()
+    initial_source=source_input_digests()
     C.set_precision(args.precision_bits);ctx.prec=args.precision_bits
     assert (C.von_mangoldt(2)-C.von_mangoldt(4)).contains(0)
     assert (C.von_mangoldt(2)-C.von_mangoldt(8)).contains(0)
@@ -94,13 +97,17 @@ def main()->int:
     d={"schema":"post287.wp2.wp4.normalization.v1",
        "terminal_claim":"RH_OPEN",
        "status":"PASS_SOURCE_NORMALIZATION_GATE",
+       "precision_bits":args.precision_bits,
+       "source_digests":initial_source,"source_commit":source_commit(),
        "source":"canonicalSourceMatrix Eq4.4 vs analytic fixed-unit identity",
        "arch_correction_count":1,
        "prime_weights":"Lambda(p**k)=log(p), exact prime power",
        "carrier_basis":bases,"tested":rows,
+       "literature_form_crosscheck":run_probe(args.precision_bits),
        "nested_K2_in_K3":True,
        "does_not_prove":["all-L certificate","Lean-Python equivalence","RH"]}
     args.output.parent.mkdir(parents=True,exist_ok=True)
+    assert_source_unchanged(initial_source)
     args.output.write_text(json.dumps(d,indent=2,sort_keys=True)+"\n")
     print(json.dumps({"status":d["status"],"tests":len(rows)}))
     return 0

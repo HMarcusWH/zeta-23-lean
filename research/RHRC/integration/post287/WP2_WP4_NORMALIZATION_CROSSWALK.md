@@ -32,3 +32,25 @@
 6. No Python result is promoted to Lean PROVED without a separately checked proof/interface. A successful Arb transcript remains INTERVAL_EVIDENCE; the full K3 claim remains OPEN until both parities and all interval layers pass their numerical and mathematical gates.
 
 This is an audited *mapping of definitions and conventions*. There is no independently compiled theorem here equating Python execution to Lean semantics, nor does a successful finite aperture certificate close RH.
+
+## Rev4 section 14.4 direct functional probe
+
+`wp2_literature_form_arb_probe.py` independently constructs the real
+autocorrelation of the two prescribed rational coefficient vectors at
+`L=8/5`, `K=2`. It evaluates the literature pole and prime scalars directly,
+with independent weights `log 2`, `log 3`, `log 2` at prime powers `2,3,4`.
+For the arch scalar it uses the exact digamma integral transformed to
+physical space. Since the autocorrelation vanishes beyond L, that tail is
+integrated in closed form as `-H(0)*log(1-exp(-2L))`; the remaining finite
+integral is evaluated by Arb with the origin singularity removed by sinc
+and exponential slopes. No heuristic Fourier cutoff or tail estimate is
+used. The matrix backend is used only to compare the resulting scalar.
+
+The transform follows the repository's `ExplicitFormula.lean` definitions
+of `literatureRHS` and `gammaBracket` and its physical arch representation;
+its interpretation relative to the external papers remains DERIVED.
+The normalization gate requires the direct-minus-matrix enclosure to
+contain zero and be narrower than `2^(-precision_bits/2)`, and requires
+the ratio to contain one. Factor-two and duplicate-arch-correction controls
+must be rejected. A finite PASS neither establishes the external hard-window
+domain transfer nor validates Zhu/Liu/Groskin coercivity certificates.

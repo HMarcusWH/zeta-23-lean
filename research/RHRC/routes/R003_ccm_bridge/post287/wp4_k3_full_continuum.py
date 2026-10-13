@@ -20,7 +20,6 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
-import subprocess
 import sys
 import time
 from fractions import Fraction
@@ -37,21 +36,10 @@ from post166_fb05_cell_interval import _arb_matrix_from_sympy
 from post169_fb05_schur_visibility import one_step_geometry
 from wp4_k3_fourth_order_fallback import (
     Q,check_box,coeffs_of_a_and_delta,compressed_jets)
+from certificate_integrity import (SOURCE_INPUTS, REPO_ROOT,
+    source_input_digests, source_commit, validate_gate, validate_second_failure,
+    assert_source_unchanged)
 
-
-# Freeze the source implementations on which every interval enclosure depends.
-SOURCE_INPUTS = [
-    "research/RHRC/routes/R003_ccm_bridge/post287/wp4_k3_full_continuum.py",
-    "research/RHRC/routes/R003_ccm_bridge/post287/wp4_k3_fourth_order_fallback.py",
-    "research/RHRC/routes/R003_ccm_bridge/canonical_source_arb.py",
-    "research/RHRC/routes/R003_ccm_bridge/post194_fb05_q14_fixed_unit_second_derivative.py",
-    "research/RHRC/routes/R003_ccm_bridge/post169_fb05_schur_visibility.py",
-]
-REPO_ROOT = HERE.parents[4]
-
-def source_input_digests() -> dict:
-    return {path: hashlib.sha256((REPO_ROOT / path).read_bytes()).hexdigest()
-            for path in SOURCE_INPUTS}
 
 END=Fraction(2772588722239782,10**15)
 START=Fraction(1,512)
@@ -68,7 +56,7 @@ def interval_bounds(Qcell:int)->tuple[Fraction,Fraction]:
     return a,b
 
 
-def second_order_lower(c:arb,r:arb,cell:int,parity:str)->tuple[arb,arb]:
+def second_order_lower(c:arb,r:arb,cell:int,parity:str,diagnostics:dict|None=None)->tuple[arb,arb]:
     geom=one_step_geometry(2,parity)
     B=_arb_matrix_from_sympy(geom.step_basis_exact)
     def project(M):
@@ -94,6 +82,14 @@ def second_order_lower(c:arb,r:arb,cell:int,parity:str)->tuple[arb,arb]:
              min(arb(0),d2a.lower())*r*r/2).lower()
     lower_d=(det-abs(dp).upper()*r +
              min(arb(0),dpp.lower())*r*r/2).lower()
+    if diagnostics is not None:
+        diagnostics.update(point_a=C.ball_record(a,36),
+            point_delta=C.ball_record(det,36),
+            first_a=C.ball_record(da,36),first_delta=C.ball_record(dp,36),
+            second_a_interval=C.ball_record(d2a,36),
+            second_delta_interval=C.ball_record(dpp,36),
+            certified_negative_centre=bool((a.upper()<0 or det.upper()<0) and
+                C.fixed_cell_membership(cell,c)['certified']))
     return lower_a,lower_d
 
 
@@ -101,20 +97,27 @@ def evaluate(tile,parity,cell,method):
     lo,hi=tile
     c,r=(lo+hi)/2,(hi-lo)/2
     if method=="SECOND":
-        lower_a,lower_delta=second_order_lower(Q(c),Q(r),cell,parity)
+        diagnostics={}
+        lower_a,lower_delta=second_order_lower(Q(c),Q(r),cell,parity,diagnostics)
         return {"method":method,"a":C.ball_record(lower_a,36),
                 "delta":C.ball_record(lower_delta,36),
-                "accepted":bool(lower_a>0 and lower_delta>0)}
+                "centre":[c.numerator,c.denominator],
+                "radius":[r.numerator,r.denominator],"precision_bits":ctx.prec,
+                **diagnostics,"accepted":bool(lower_a>0 and lower_delta>0)}
     row=check_box(Q(c),Q(r),cell,parity,allow_frozen_extension=True)
     return {"method":"FOURTH","a":row["a_lower"],
             "delta":row["delta_lower"],
+            "centre":[c.numerator,c.denominator],
+            "radius":[r.numerator,r.denominator],"precision_bits":ctx.prec,
+            "diagnostics":row,
+            "certified_negative_centre":row['certified_negative_centre'],
             "accepted":row["verdict"]=="PASS"}
 
 
 def cover(cell:int,parity:str,method:str,max_depth:int,max_nodes:int,deadline:float):
     lo,hi=interval_bounds(cell)
     queue=[(lo,hi,0)]
-    accepted=[];unresolved=[];processed=0
+    accepted=[];unresolved=[];processed=0;negative_stop=False
     while queue:
         l,r,depth=queue.pop()
         if processed>=max_nodes or time.monotonic()>=deadline:
@@ -129,6 +132,15 @@ def cover(cell:int,parity:str,method:str,max_depth:int,max_nodes:int,deadline:fl
         except Exception as exc:
             result={"accepted":False,"method":method,
                     "error":repr(exc)}
+        if result.get("certified_negative_centre"):
+            negative_stop=True
+            unresolved.append({"left":[l.numerator,l.denominator],
+                "right":[r.numerator,r.denominator],"depth":depth,
+                "candidate":result,"reason":"CERTIFIED_NEGATIVE_NORMALIZATION_STOP"})
+            unresolved.extend({"left":[a.numerator,a.denominator],
+                "right":[b.numerator,b.denominator],"depth":d,
+                "reason":"NOT_TESTED_AFTER_NEGATIVE_STOP"} for a,b,d in queue)
+            break
         if result["accepted"]:
             accepted.append({"left":[l.numerator,l.denominator],
                              "right":[r.numerator,r.denominator],
@@ -147,6 +159,7 @@ def cover(cell:int,parity:str,method:str,max_depth:int,max_nodes:int,deadline:fl
             "right":[hi.numerator,hi.denominator],
             "tested_nodes":processed,"accepted":accepted,
             "unresolved":unresolved,
+            "certified_negative_stop":negative_stop,
             "status":"PASS" if not unresolved else "UNRESOLVED"}
 
 
@@ -156,26 +169,38 @@ def main():
     p.add_argument("--cells",default="1-15")
     p.add_argument("--parities",default="even,odd")
     p.add_argument("--method",choices=("SECOND","FOURTH"),default="SECOND")
+    p.add_argument("--second-gate",type=Path,help="source-bound successful frozen gate")
     p.add_argument("--fourth-gate",type=Path,help="verified PASS frozen fallback receipt")
     p.add_argument("--precision-bits",type=int,default=192)
     p.add_argument("--max-depth",type=int,default=32)
     p.add_argument("--max-nodes",type=int,default=2500)
     p.add_argument("--seconds",type=int,default=20000)
     args=p.parse_args()
+    initial_source=source_input_digests()
+    if not (0 <= args.max_depth <= 40) or args.max_nodes <= 0 or args.seconds <= 0:
+        raise ValueError("positive finite resources and depth cap 40 required")
     if args.method=="FOURTH":
         if args.fourth_gate is None:
             raise ValueError("fourth-order method requires a frozen successful alternative gate")
-        frozen=json.loads(args.fourth_gate.read_text())
-        if frozen.get("gate")!="PASS" or frozen.get("tested_boxes")!=frozen.get("frozen_boxes"):
-            raise ValueError("fourth-order frozen gate is not a complete PASS")
+        validate_gate(args.fourth_gate, "FOURTH")
+        if args.second_gate is None:
+            raise ValueError("FOURTH requires the recorded SECOND gate failure")
+        validate_second_failure(args.second_gate)
     elif args.fourth_gate is not None:
         raise ValueError("SECOND method must not silently import fourth-order evidence")
+    if args.method == "SECOND":
+        if args.second_gate is None:
+            raise ValueError("SECOND campaign requires a successful source-bound frozen gate")
+        validate_gate(args.second_gate, "SECOND")
     C.set_precision(args.precision_bits);ctx.prec=args.precision_bits
     args.out.mkdir(parents=True,exist_ok=True)
     a,_,b=args.cells.partition("-")
     cells=list(range(int(a),int(b or a)+1))
     parities=args.parities.split(",")
-    if any(x not in ("even","odd") for x in parities):raise ValueError("parity")
+    if (not cells or any(not 1 <= cell <= 15 for cell in cells) or
+            any(x not in ("even","odd") for x in parities) or
+            len(parities) != len(set(parities))):
+        raise ValueError("select distinct legal parities and cells Q1..Q15")
     deadline=time.monotonic()+args.seconds
     records=[]
     for cell in cells:
@@ -190,6 +215,8 @@ def main():
                             "intervals":len(row["accepted"]),
                             "unresolved_count":len(row["unresolved"])})
             print(json.dumps(records[-1]),flush=True)
+            if row['certified_negative_stop']:
+                raise RuntimeError('certified negative at true weights: STOP and investigate normalization')
     passed=(cells==list(range(1,16)) and
             set(parities)=={"even","odd"} and
             len(records)==30 and all(x["status"]=="PASS" for x in records))
@@ -202,11 +229,14 @@ def main():
               "method":args.method,
               "fourth_gate_sha256":hashlib.sha256(args.fourth_gate.read_bytes()).hexdigest()
                   if args.fourth_gate is not None else None,
+              "second_gate_sha256":hashlib.sha256(args.second_gate.read_bytes()).hexdigest()
+                  if args.second_gate is not None else None,
+              "resources":{"max_depth":args.max_depth,"max_nodes":args.max_nodes,
+                           "seconds":args.seconds},
               "note":"cutoff-Q analytic extensions checked on rational seam covers",
               "precision_bits":args.precision_bits,
-              "source_digests":source_input_digests(),
-              "source_commit":subprocess.check_output(["git","rev-parse","HEAD"],
-                         cwd=REPO_ROOT,text=True).strip(),
+              "source_digests":assert_source_unchanged(initial_source),
+              "source_commit":source_commit(),
               "records":records,
               "all_L_positivity_certified":passed,
               "not_a_lean_proof":True,

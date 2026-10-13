@@ -19,14 +19,14 @@
       "id": "WP1",
       "status": "PARTIAL_PENDING_CI",
       "path": "Zeta23/CCM/ReciprocalApertureConcavity.lean",
-      "open_detail": "Generic reciprocal calculus, strict concavity and the genuine canonical even Rayleigh-infimum endpoint inequality implemented; formal derivation of normalized carrier concavity from M66/F04 across the exact positive-aperture domain and exact-head compiler audit remain OPEN"
+      "open_detail": "Reciprocal calculus, strict concavity, nonzero-carrier Rayleigh infimum interpolation, arbitrary independently proved Euler-curvature radius bridge, and the native M66 specialization via canonical C2 are implemented. Exact repaired-head compiler, complete axiom receipts and proof-escape audit remain pending; no enlarged radius is asserted."
     },
     {
       "id": "WP2",
       "status": "INTERVAL_EVIDENCE_PENDING_REPLAY",
       "generator": "research/RHRC/routes/R003_ccm_bridge/post287/wp2_k2_even_transcript.py",
       "checker": "research/RHRC/routes/R003_ccm_bridge/post287/wp2_verify_transcript.py",
-      "open_detail": "Conditional K2 even gluing and reciprocal-concavity interface present; actual M51 positive full continuum remains a separate Arb research premise; exact normalization gate, per-interval transcript and no-search checker implemented but final-head replay/validation pending"
+      "open_detail": "K2 gap interpolation is discharged analytically by M66 and canonical C2 in the final mathematical interface, while M51 positivity remains an explicit Lean hypothesis. Independent finite literature-functional normalization, source-bound per-interval transcript and no-search checker are implemented; repaired-head compiler and numerical replay remain pending."
     },
     {
       "id": "WP3",
