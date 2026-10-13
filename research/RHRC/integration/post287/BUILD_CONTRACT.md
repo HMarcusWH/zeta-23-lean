@@ -42,4 +42,9 @@
 
 The original rev4 plan's mandatory D2 gate can prevent completion of a full-K3 certificate. If it does, this PR must remain transparently partial with a reproducible **UNRESOLVED** report, not replace the full continuous requirement by M76 grid samples. The eventual report must distinguish code compilations, positive Arb interval coverage, pointwise probes, exact falsifiers and open RH obligations.
 
-**Preflight environment:** local assistant checkout has no `lean`, `lake`, or `python-flint` and package download is blocked; only GitHub Actions on the PR can supply the authoritative Lean/Arb receipts. This file is a build specification, not an executed certificate.
+**Environment correction (2026-10-13):** the initial checkout lacked Lean and
+python-flint. The repair session installed the pinned Lean 4.33.0-rc2 and
+python-flint 0.9.0 in isolated workspace tools, enabling local compiler and
+independent Arb checks. Final authority still requires exact-object completed
+compiler/workflow receipts. This file is a build specification, not an executed
+certificate.

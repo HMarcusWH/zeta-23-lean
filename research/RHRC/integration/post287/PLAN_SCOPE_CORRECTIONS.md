@@ -58,6 +58,25 @@ unrestricted admissible-ray sign law, not a law restricted to the actual
 selected #247 negative ground. This review adds no arithmetic exclusion and
 does not run the later Gamma census.
 
+There is also a dimension obstruction in the proposed K2 panel (**DERIVED**
+from the existing finite-dimensional inventory): successor K=2 has predecessor
+N=1, whose intrinsic odd predecessor space has dimension N-1=0. Both
+predecessor-part arguments in Gamma and Alpha are therefore zero, and their
+linear correction functional vanishes. Consequently **Gamma=Alpha=1** on
+every admissible K2 negative-shift row, independently of its source. The M51
+K2 basins and the WP5 K2 model cannot discriminate the Gamma hypothesis.
+A nontrivial census needs N>=2, hence K>=3, together with the eligibility
+checks above. This is a source-derived consequence, not a new Lean theorem
+in this PR or an experimental measurement.
+
+At N=2 the odd predecessor is one-dimensional. **LEAD:** choose a unit
+predecessor vector with eigenvalue d>=0. The correction then has one real
+residue r and denominator d-mu>0, so Gamma=1-r/(d-mu). Its window condition
+reduces to 0<=r<=d-mu. Derive this scalar formula on the actual selected
+branch before a broad census; no required residue inequality is established
+here. The K2 identity is a useful degeneracy check, not evidence for that
+inequality at larger K.
+
 ## Radius and finite-window composition
 
 The exact M66 radius is `1/(2*pi^2*(2*K+1)*K^2)`. It gives

@@ -87,7 +87,7 @@ jobs:
                        'status':'GATE_PASS_CAMPAIGN_AUTHORIZED' if method!='STOP' else 'UNRESOLVED_STOP',
                        'frozen_per_layer_budget':{'max_nodes':50000,'max_depth':40,
                            'producer_seconds':9000,'checker_seconds':10800},
-                       'budget_note':'Fixed before dispatch: at most 5.5 hours search plus verification; unresolved tiles are published. No adaptive resource increase.',
+                       'budget_note':'Fixed before dispatch: soft 9000-second producer deadline between evaluations, hard 10800-second checker timeout, hard 360-minute job cap. Unresolved tiles are published; no adaptive resource increase.',
                        'all_L_positivity_certified':False}
           (p/'campaign-disposition.json').write_text(json.dumps(disposition,indent=2)+'\n')
           with open(os.environ['GITHUB_OUTPUT'],'a') as h:

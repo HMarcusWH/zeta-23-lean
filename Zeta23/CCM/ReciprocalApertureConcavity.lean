@@ -348,6 +348,7 @@ theorem evenRayleighBottom_ge_endpoint_min_of_nativeEuler
     productionContactFixedSecondVariation] using
     (productionContactEulerCurvature_neg K (by omega) hx hxR z hz)
 
+set_option synthInstance.maxHeartbeats 100000 in
 /-- WP1: fixed legal-even physical source energy is genuinely C² on every
 positive aperture, as an unconditional consequence of the already formally
 proved seam-safe compressed canonical CLM family.  No F04 hypothesis or
@@ -369,11 +370,11 @@ theorem canonical_evenFixedEnergy_contDiffOn_two (K : ℕ)
       (fun t : ℝ =>
         inner ℂ ((canonicalParityCompressedFamilyCLM .even K t) z) z) L :=
     hvalue.inner ℂ contDiffAt_const
-  have hscalar := Complex.reCLM.contDiff.contDiffAt.comp L hpair
-  simpa [productionContactFixedEnergy,
-    canonicalParityCompressedFamilyCLM, parityCompressedCanonical,
-    Function.comp_def,
-    Complex.reCLM_apply] using! hscalar.contDiffWithinAt
+  change ContDiffWithinAt ℝ 2
+    (Complex.reCLM ∘ fun t : ℝ =>
+      inner ℂ ((canonicalParityCompressedFamilyCLM .even K t) z) z)
+    (Set.Ioi (0 : ℝ)) L
+  exact (Complex.reCLM.contDiff.contDiffAt.comp L hpair).contDiffWithinAt
 
 /-- The M66 native Euler curvature inequality and the globally C²
 compressed production family now supply **unconditional** endpoint
