@@ -12,7 +12,18 @@ import json
 import sys
 import time
 from pathlib import Path
+from fractions import Fraction
 from k3_resume_partition import HERE, OLD, digest, pair, rational, require_current, write, LAYERS, RESOURCES, validate_layer
+
+
+def exact_ball_record(value):
+    if not value.is_finite():
+        raise ValueError("nonfinite enclosure")
+    def endpoint(bound):
+        mantissa, exponent = bound.man_exp()
+        q = Fraction(int(mantissa)) * Fraction(2) ** int(exponent)
+        return pair(q)
+    return {"lower": endpoint(value.lower()), "upper": endpoint(value.upper()), "finite": True}
 
 
 def independent_second(tile,q,parity):
@@ -42,7 +53,7 @@ def independent_second(tile,q,parity):
     lower_det=det-abs(detp)*r+min(arb(0),curvature.lower())*r*r/2
     if not lower_a.is_finite() or not lower_det.is_finite():
         return {"accepted":False,"reason":"NONFINITE_LOWER_BOUND"}
-    return {"accepted":bool(lower_a>0 and lower_det>0),"a":C.ball_record(lower_a,36),"delta":C.ball_record(lower_det,36),"reason":"POSITIVE_WHOLE_INTERVAL" if bool(lower_a>0 and lower_det>0) else "UNCERTIFIED_SIGN"}
+    return {"accepted":bool(lower_a>0 and lower_det>0),"a":C.ball_record(lower_a,36),"delta":C.ball_record(lower_det,36),"a_interval":exact_ball_record(lower_a),"delta_interval":exact_ball_record(lower_det),"reason":"POSITIVE_WHOLE_INTERVAL" if bool(lower_a>0 and lower_det>0) else "UNCERTIFIED_SIGN"}
 
 
 def check_layer(directory,spec,seconds):

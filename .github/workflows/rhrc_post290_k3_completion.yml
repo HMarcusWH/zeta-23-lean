@@ -10,6 +10,10 @@ permissions:
   contents: read
   actions: read
 
+concurrency:
+  group: rhrc-post290-d2-second-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   d2-second-continuation:
     runs-on: ubuntu-latest

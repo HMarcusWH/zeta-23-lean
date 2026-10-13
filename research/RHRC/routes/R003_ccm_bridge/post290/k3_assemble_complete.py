@@ -70,6 +70,8 @@ def final(candidate, replay, out):
         raise ValueError("full D2 requires 30 distinct layers")
     specs={(s["cell"],s["parity"]):s for s in manifest["records"]}
     checked=set()
+    derived_complete_layers = 0
+    derived_verified = derived_failed = derived_unverified = derived_unresolved = 0
     for layer in receipt.get("layer_receipts",[]):
         key=(layer["Q"],layer["parity"])
         if key in checked or key not in specs:
@@ -85,7 +87,17 @@ def final(candidate, replay, out):
         if digest(raw)!=specs[key]["sha256"]:
             raise ValueError("candidate layer changed after replay")
         record=json.loads(raw.read_text())
+        validate_layer(specs[key], record, "SECOND")
+        derived_verified += len(data.get("verified",[]))
+        derived_failed += len(data.get("failed",[]))
+        derived_unverified += len(data.get("unverified",[]))
+        derived_unresolved += len(data.get("unresolved",[]))
+        if layer.get("complete") is not data.get("complete"):
+            raise ValueError("layer summary contradicts checked payload")
         if data.get("complete"):
+            derived_complete_layers += 1
+            if data.get("seams_verified") is not True:
+                raise ValueError("layer physical seam not verified")
             if data.get("unverified") or data.get("failed") or data.get("unresolved") or record["unresolved"]:
                 raise ValueError("unchecked/unresolved leaf relabelled complete")
             verified=data.get("verified",[])
@@ -94,12 +106,20 @@ def final(candidate, replay, out):
             for tile,fresh in zip(record["accepted"],verified):
                 if tile["left"]!=fresh["left"] or tile["right"]!=fresh["right"] or fresh.get("accepted") is not True:
                     raise ValueError("checker interval and accepted source interval differ")
-                for field in ("a","delta"):
+                for field in ("a_interval","delta_interval"):
                     bounds=fresh.get(field,{})
-                    if bounds.get("finite") is False:
-                        raise ValueError("nonfinite fresh bound")
+                    if bounds.get("finite") is not True or "lower" not in bounds or "upper" not in bounds:
+                        raise ValueError("missing or nonfinite exact fresh bound")
+                    lower, upper = rational(bounds["lower"]), rational(bounds["upper"])
+                    if not 0 < lower <= upper:
+                        raise ValueError("fresh positive bound is unordered or nonpositive")
     if checked!=LAYERS:
         raise ValueError("missing fresh-check layer receipt")
+    for key, actual in (("complete_layers",derived_complete_layers),("verified_tiles",derived_verified),
+                        ("failed_tiles",derived_failed),("unverified_tiles",derived_unverified),
+                        ("unresolved_tiles",derived_unresolved)):
+        if receipt.get(key) != actual:
+            raise ValueError("checker summary disagrees with payload: " + key)
     # NON-PARTIAL gate is mandatory; partial process success is not certificate authority.
     complete=(manifest["status"]=="CANDIDATE_COMPLETE" and receipt.get("claimed_scope")=="K3_FULL" and receipt.get("status")=="PASS" and receipt.get("layers")==30 and receipt.get("complete_layers")==30 and receipt.get("unverified_tiles")==0 and receipt.get("failed_tiles")==0 and receipt.get("unresolved_tiles")==0 and receipt.get("precision_bits")==768 and receipt.get("seams_verified") is True)
     result={"schema":"post290.k3-complete.v1","status":"D2_COMPLETE" if complete else "D2_OPEN","terminal_claim":"RH_OPEN","candidate_manifest_sha256":digest(candidate/"manifest.json"),"independent_checker_sha256":digest(replay),"current_source":manifest["current_source"],"historical_source":manifest["historical_source"],"all_L_positivity_certified":complete,"not_a_lean_proof":True,"not_a_proof_of_RH":True,"authority":"CERTIFIED_FINITE" if complete else "UNRESOLVED_RESEARCH","checker_disposition":receipt.get("status"),"coverage":"both parities [1/512,log16]" if complete else "only separately freshly verified intervals"}
