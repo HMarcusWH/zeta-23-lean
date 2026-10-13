@@ -28,6 +28,12 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 REPO = HERE.parents[3]
 TERMINAL = "RH_OPEN"
+M51_LEGACY_DOMAIN = {
+    "lower_rational": [1, 400],
+    "upper_rational": [2772588722239781, 10 ** 15],
+    "endpoints_included": True,
+    "exact_log16_endpoint_covered": False,
+}
 
 MODULES = {
     "Zeta23/CCM/CanonicalSecularResolvent.lean": ("M74", "Steps 111-112, 116-118",
@@ -342,7 +348,15 @@ OBLIGATIONS = [
      "detail": "Abstract layer (complex inner-product spaces E, O, a continuous linear equivalence D : E -> O, a vector g, real-parameter operator families A, B with derivatives A1, A2, B1, B2 and B(L) a unit): secularDefectScalar is H_b,a(z) = <g, (b D - D a) z>/<g, g>; hasDerivAt_secularRayFamily differentiates x(s) = D^{-1} B(s)^{-1} g through Ring.inverse (x' = -D^{-1} R B' R g); hasDerivAt_secularScalarFamily gives T' = H'(x) + H(x'); hasDerivAt_secularScalarFirst gives T'' = H''(x) + 2 H'(x') + H(x'') with x'' = D^{-1}(2 R B' R B' R g - R B'' R g); secularScalar_stationary gives the identities at T' = 0 and T'' = 0. Canonical layer: A, B are the legal even and odd compressions (parityCompressedCanonicalCLM), A1, B1, A2, B2 the production first and second jets, D the centered-index equivalence and g the compressed cubic vector; isUnit_canonicalOddFamily at lambda_odd(L) > 0; canonicalSecularScalar_eq identifies T with the explicit source moment of the resolvent ray (the M74 secular scalar, 1 - T = det A_L/det B_L); canonicalSecularScalar_hasDerivAt gives both derivative formulas at every L > 0 with lambda_odd(L) > 0, seams included, from the merged compressed C^2 jets; cubicDefectFunctional_contDiffOn and cubicDefectFunctional_hasDerivAt give C^2 of L -> H_L(z) on (0, infinity); canonicalSecularScalar_stationary specializes the stationary identities. No F04 hypothesis, no contact assumed or excluded; the third derivative (Step 63) needs C^3, proved only inside fixed cells, and stays OPEN."},
     {"id": "M51_K2_EVEN_BOTTOM_CERTIFICATE", "package": "M51", "steps": "92",
      "status": "INTERVAL_EVIDENCE",
-     "detail": "For K = 2 the legal even carrier is spanned by z = (1, -4, 6, -4, 1), so the even compression is the scalar lambda(L) = <z, S_L z>/<z, z> and a contact is lambda(L) = 0. Arb (128 bits) certifies lambda(L) > 0 for every L in [1/400, log 16] by a second-order Taylor covering of each closed cutoff cell (1310 intervals). So there is no K = 2 even contact on that range for M51 to obstruct. lambda comes within 3.2e-10 of 0; its local minima after L = 1.2 sit at L = 2 pi k/gamma_1 (k = 3..6) to 3e-3, where the first zeta zero's term of the zero-side sum nearly vanishes. Research evidence for K = 2 only; (0, 1/400), K >= 3 and the general contact-conditioned obstruction stay OPEN."},
+     "covered_domain": M51_LEGACY_DOMAIN,
+     "endpoint_obligation": "M51_K2_EXACT_LOG16_ENDPOINT",
+     "detail": "For K = 2 the legal even carrier is spanned by z = (1, -4, 6, -4, 1), so the even compression is the scalar lambda(L) = <z, S_L z>/<z, z> and a contact is lambda(L) = 0. The historical Arb (128 bits) certificate covers lambda(L) > 0 for every L in [1/400, U], U = 2772588722239781/10^15, by a second-order Taylor covering of the clipped cutoff cells (1310 intervals). U is strictly below log 16: the legacy LOG16_UP label and exact-log16 claim were incorrect. There is no K = 2 even contact on that finite rational range; (U, log 16] remains OPEN for this legacy receipt (M51_K2_EXACT_LOG16_ENDPOINT). lambda comes within 3.2e-10 of 0; its local minima after L = 1.2 sit at L = 2 pi k/gamma_1 (k = 3..6) to 3e-3, where the first zeta zero's term of the zero-side sum nearly vanishes. Research evidence for K = 2 only; (0, 1/400), K >= 3 and the general contact-conditioned obstruction stay OPEN. This legacy receipt does not validate the superseded unguarded post287 transcript."},
+    {"id": "M51_K2_EXACT_LOG16_ENDPOINT", "package": "M51", "steps": "92",
+     "status": "OPEN",
+     "remaining_domain": {"lower_rational": [2772588722239781, 10 ** 15],
+                          "lower_included": False, "upper_symbolic": "log 16",
+                          "upper_included": True},
+     "detail": "The legacy M51 certificate stops at U = 2772588722239781/10^15 < log 16 and does not establish positivity on (U, log 16]. Continuity alone cannot extend strict positivity to an untested endpoint. A complete source-bound guarded certificate with a rigorous outer bound for log 16 is required to discharge this gap; no pending or superseded post287 receipt does so."},
     {"id": "M51_CONTACT_OBSTRUCTION", "package": "M51", "steps": "92",
      "status": "OPEN",
      "detail": "An independent lower bound for the contact-conditioned P, or an upper bound for the adverse older-prime part, strong enough to violate (91.1) or (91.2). Not attempted as a theorem here; the K = 2 certificate and the near-contact data (M51_K2_EVEN_BOTTOM_CERTIFICATE, M63_ROUTE_COMPARISON) bound what such an estimate must resolve."},
@@ -379,7 +393,7 @@ POST284_CROSS_REFERENCES = [
     {"post284_id": "F04_PRODUCTION_DERIVATIVE_AUTHORITY", "effect": "proof constructor productionContactF04DerivativeAuthority_of_pos proved here for every L > 0 and K"},
     {"post284_id": "F_M33_M34_CONTACT_SOURCE_SIGN_AND_BUDGET", "effect": "F04 at the contact boundary now available (F04_GLOBAL_PRODUCTION_DERIVATIVE_AUTHORITY); the source sign reversal (Step 68), the remainder representation (Step 70) and the oscillation budget (71.2) are proved here (M33_M34_SIGN_REVERSAL_AND_OSCILLATION, CI green on 9ea3a4c); the physical-test turning points (Step 69) stay interval evidence"},
     {"post284_id": "F_M48_K2_PRIME_SAMPLES", "effect": "F04 premise of the contact consequence P = -F <= 0 discharged; the consequence itself is not formalized here"},
-    {"post284_id": "F_M49_M51_NEAR_EDGE_AND_OLDER_PRIME", "effect": "F04 dependency discharged; the M45 elementary source bound, the M49 near-edge contact-angle bound and the M50 older-prime budget (as a necessary condition at every stationary generated contact) are proved here (M45_ODD_ENDPOINT_QUANTITATIVE, M49_NEAR_EDGE_PRIME_BENEFIT, M50_OLDER_PRIME_BUDGET, CI green on 9ea3a4c); M51 stays OPEN, with a K = 2 interval certificate that no even contact occurs on [1/400, log 16] (M51_K2_EVEN_BOTTOM_CERTIFICATE)"},
+    {"post284_id": "F_M49_M51_NEAR_EDGE_AND_OLDER_PRIME", "effect": "F04 dependency discharged; the M45 elementary source bound, the M49 near-edge contact-angle bound and the M50 older-prime budget (as a necessary condition at every stationary generated contact) are proved here (M45_ODD_ENDPOINT_QUANTITATIVE, M49_NEAR_EDGE_PRIME_BENEFIT, M50_OLDER_PRIME_BUDGET, CI green on 9ea3a4c); M51 stays OPEN, with a historical K = 2 interval certificate that no even contact occurs on [1/400, 2772588722239781/10^15] (M51_K2_EVEN_BOTTOM_CERTIFICATE); the remaining gap to exact log 16 is OPEN (M51_K2_EXACT_LOG16_ENDPOINT)"},
     {"post284_id": "F_M45_ODD_ENDPOINT_QUANTITATIVE", "effect": "proved here (M45_ODD_ENDPOINT_QUANTITATIVE, CI green on 9ea3a4c) on the actual sourceMatrix and sourceAtomRealEnergy, with the plan's angle theta(u) and constant pi^6/90"},
     {"post284_id": "F_M37_LOCAL_EXCLUSION", "effect": "F04 premise discharged below log 2; unconditional stationary exclusion below eps_K proved here (M66_LOCAL_STATIONARY_EXCLUSION, possibly vacuous)"},
     {"post284_id": "F_M66_NEG_EULER_AND_LOCAL_EXCLUSION", "effect": "proved here (M66_PRIME_FREE_EULER_NEGATIVITY, M66_LOCAL_STATIONARY_EXCLUSION)"},
@@ -501,7 +515,7 @@ STEPS = {
     89: ("Improved centered-index mass coercivity", "M46/M73", "PROVED_THIS_PR", "constant 4 (was C_K < 5)"),
     90: ("Contact fourth-moment gap bounds", "M46/M73", "PROVED_THIS_PR", "parityGap_mul_norm_sq_le_four_mul_source_mul_momentFour"),
     91: ("Older-prime compensating budget", "M50", "PROVED_THIS_PR", "budget (91.1) and finite form (91.2) at every stationary generated strict-even contact (GeneratedStrictEvenContact.olderPrimeBudget, olderPrimeBudget_finite); necessary conditions that exclude nothing; M51 OPEN"),
-    92: ("Remaining contact-conditioned obstruction", "M51", "OPEN", "K = 2: Arb certifies lambda_even > 0 on [1/400, log 16] (interval evidence, M51_K2_EVEN_BOTTOM_CERTIFICATE); general K OPEN"),
+    92: ("Remaining contact-conditioned obstruction", "M51", "OPEN", "K = 2: historical Arb evidence certifies lambda_even > 0 on [1/400, U], U = 2772588722239781/10^15 < log 16 (M51_K2_EVEN_BOTTOM_CERTIFICATE); (U, log 16] and general K OPEN"),
     93: ("Regularized canonical finite-part energy", "M52/M53", "PROVED_THIS_PR", "energy identity PROVED (#285); its first and second aperture derivatives PROVED_THIS_PR at every L > 0"),
     94: ("Numerical moving-aperture F04 regression", "M53", "EXPERIMENTAL_SIGNAL", "matrix-level regression of the F04 identities, prime-free, in prime cells and at seams, to 1.2e-6 (post285_f04_falsifier.py)"),
     95: ("Unweighted source average and sign reversal", "M54", "PROVED_MERGED", "(#285)"),
@@ -695,7 +709,9 @@ DISPOSITIONS = [
      "summary": "C1: T' without H(x') misses by at least 0.99; C2: x' with the opposite sign misses by at least 0.99; C3: T'' with H'(x') counted once misses by at least 0.97; at all 27 rows"},
     {"id": "X285_M51_K2_EVEN_BOTTOM", "script": "post285_m51_k2_even_bottom_certificate.py", "package": "M51_K2_EVEN_BOTTOM_CERTIFICATE",
      "disposition": "CERTIFIED_DISCOVERY_REPLAY",
-     "summary": "Arb (128 bits): lambda_even(L) > 0 for K = 2 and every L in [1/400, log 16], 1310 Taylor intervals over the 15 closed cutoff cells, smallest certified lower bound 4.4e-12. Local minima 1.36e-6, 4.55e-9, 8.79e-9, 3.22e-10 at L = 1.3339, 1.7784, 2.2230, 2.6682, i.e. L gamma_1/(2 pi) = 3.0008, 4.0008, 5.0008, 6.0025. At those points the F04 identity V = -(L^4/(4 pi^2))(lambda'' + 2 lambda'/L) matches the physical test to 1e-12, and lambda equals the sum of the first 100 zeta-zero terms (each >= 0) to 3e-9"},
+     "covered_domain": M51_LEGACY_DOMAIN,
+     "endpoint_obligation": "M51_K2_EXACT_LOG16_ENDPOINT",
+     "summary": "Historical Arb (128 bits): lambda_even(L) > 0 for K = 2 and every L in [1/400, U], U = 2772588722239781/10^15 < log 16, 1310 Taylor intervals over the 15 clipped cutoff cells, smallest certified lower bound 4.4e-12. The original exact-log16 statement was incorrect; (U, log 16] remains OPEN for this receipt, and this legacy result does not validate superseded unguarded post287 transcripts. Local minima 1.36e-6, 4.55e-9, 8.79e-9, 3.22e-10 at L = 1.3339, 1.7784, 2.2230, 2.6682, i.e. L gamma_1/(2 pi) = 3.0008, 4.0008, 5.0008, 6.0025. At those points the F04 identity V = -(L^4/(4 pi^2))(lambda'' + 2 lambda'/L) matches the physical test to 1e-12, and lambda equals the sum of the first 100 zeta-zero terms (each >= 0) to 3e-9"},
     {"id": "X285_M51_CONTROLS", "script": "post285_m51_k2_even_bottom_certificate.py", "package": "M51_CONTROLS",
      "disposition": "NEGATIVE_CONTROL_FAILS_AS_EXPECTED",
      "summary": "C1: every von Mangoldt weight times 1 + 1e-6 makes lambda negative at L = 2.6682 (certified, -6.4e-7; the primes contribute -0.645 there); C2: the same covering rejects lambda - 5e-10 on the cell of the deepest minimum; C3 (positive control): weights times 1 - 1e-6 keep lambda positive"},

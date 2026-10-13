@@ -4,6 +4,16 @@ Terminal claim: **RH_OPEN**. Everything below is regression or experimental
 evidence. Theorem authority comes only from the Lean roots listed in
 `PROOF_ROOTS.json`.
 
+**Endpoint correction (2026-10-13, PR #290).** The historical M51 receipt below
+reported `[1/400, log 16]`, but its producer clips every cell at the exact rational
+`U = 2772588722239781/10^15 < log 16`. Its 1,310-interval evidence covers only
+`[1/400, U]`; `(U, log 16]` remains OPEN for that receipt. The original receipt
+and observations are retained below as history, with this correction governing
+their scope. The live ledgers now record the rational domain and the explicit
+`M51_K2_EXACT_LOG16_ENDPOINT` obligation. This legacy receipt does not validate
+the invalidated unguarded post287 transcript. See
+[the migration record](../post287/LEGACY_M51_ENDPOINT_MIGRATION.md).
+
 ## Scripts
 
 All nineteen scripts live in `research/RHRC/routes/R003_ccm_bridge/post285/` and
@@ -459,6 +469,9 @@ matrices for `K = 2..5` and `L = 0.3, 0.55, …, 5.8`. It keeps the 27 points wi
 The third derivative (Step 63) is not checked.
 
 ## M51: the K = 2 even bottom on `[1/400, log 16]` (Step 92)
+
+Historical endpoint label: read `log 16` in this certificate claim as
+`U = 2772588722239781/10^15`; the exact-log16 gap stays OPEN as explained above.
 
 For `K = 2` the legal even carrier is spanned by `z = (1, −4, 6, −4, 1)`, so the
 even compression is the scalar `λ(L) = ⟨z, S_L z⟩/⟨z, z⟩` and a contact is

@@ -532,7 +532,36 @@
       "package": "M51",
       "steps": "92",
       "status": "INTERVAL_EVIDENCE",
-      "detail": "For K = 2 the legal even carrier is spanned by z = (1, -4, 6, -4, 1), so the even compression is the scalar lambda(L) = <z, S_L z>/<z, z> and a contact is lambda(L) = 0. Arb (128 bits) certifies lambda(L) > 0 for every L in [1/400, log 16] by a second-order Taylor covering of each closed cutoff cell (1310 intervals). So there is no K = 2 even contact on that range for M51 to obstruct. lambda comes within 3.2e-10 of 0; its local minima after L = 1.2 sit at L = 2 pi k/gamma_1 (k = 3..6) to 3e-3, where the first zeta zero's term of the zero-side sum nearly vanishes. Research evidence for K = 2 only; (0, 1/400), K >= 3 and the general contact-conditioned obstruction stay OPEN."
+      "covered_domain": {
+        "lower_rational": [
+          1,
+          400
+        ],
+        "upper_rational": [
+          2772588722239781,
+          1000000000000000
+        ],
+        "endpoints_included": true,
+        "exact_log16_endpoint_covered": false
+      },
+      "endpoint_obligation": "M51_K2_EXACT_LOG16_ENDPOINT",
+      "detail": "For K = 2 the legal even carrier is spanned by z = (1, -4, 6, -4, 1), so the even compression is the scalar lambda(L) = <z, S_L z>/<z, z> and a contact is lambda(L) = 0. The historical Arb (128 bits) certificate covers lambda(L) > 0 for every L in [1/400, U], U = 2772588722239781/10^15, by a second-order Taylor covering of the clipped cutoff cells (1310 intervals). U is strictly below log 16: the legacy LOG16_UP label and exact-log16 claim were incorrect. There is no K = 2 even contact on that finite rational range; (U, log 16] remains OPEN for this legacy receipt (M51_K2_EXACT_LOG16_ENDPOINT). lambda comes within 3.2e-10 of 0; its local minima after L = 1.2 sit at L = 2 pi k/gamma_1 (k = 3..6) to 3e-3, where the first zeta zero's term of the zero-side sum nearly vanishes. Research evidence for K = 2 only; (0, 1/400), K >= 3 and the general contact-conditioned obstruction stay OPEN. This legacy receipt does not validate the superseded unguarded post287 transcript."
+    },
+    {
+      "id": "M51_K2_EXACT_LOG16_ENDPOINT",
+      "package": "M51",
+      "steps": "92",
+      "status": "OPEN",
+      "remaining_domain": {
+        "lower_rational": [
+          2772588722239781,
+          1000000000000000
+        ],
+        "lower_included": false,
+        "upper_symbolic": "log 16",
+        "upper_included": true
+      },
+      "detail": "The legacy M51 certificate stops at U = 2772588722239781/10^15 < log 16 and does not establish positivity on (U, log 16]. Continuity alone cannot extend strict positivity to an untested endpoint. A complete source-bound guarded certificate with a rigorous outer bound for log 16 is required to discharge this gap; no pending or superseded post287 receipt does so."
     },
     {
       "id": "M51_CONTACT_OBSTRUCTION",
@@ -637,7 +666,7 @@
     },
     {
       "post284_id": "F_M49_M51_NEAR_EDGE_AND_OLDER_PRIME",
-      "effect": "F04 dependency discharged; the M45 elementary source bound, the M49 near-edge contact-angle bound and the M50 older-prime budget (as a necessary condition at every stationary generated contact) are proved here (M45_ODD_ENDPOINT_QUANTITATIVE, M49_NEAR_EDGE_PRIME_BENEFIT, M50_OLDER_PRIME_BUDGET, CI green on 9ea3a4c); M51 stays OPEN, with a K = 2 interval certificate that no even contact occurs on [1/400, log 16] (M51_K2_EVEN_BOTTOM_CERTIFICATE)"
+      "effect": "F04 dependency discharged; the M45 elementary source bound, the M49 near-edge contact-angle bound and the M50 older-prime budget (as a necessary condition at every stationary generated contact) are proved here (M45_ODD_ENDPOINT_QUANTITATIVE, M49_NEAR_EDGE_PRIME_BENEFIT, M50_OLDER_PRIME_BUDGET, CI green on 9ea3a4c); M51 stays OPEN, with a historical K = 2 interval certificate that no even contact occurs on [1/400, 2772588722239781/10^15] (M51_K2_EVEN_BOTTOM_CERTIFICATE); the remaining gap to exact log 16 is OPEN (M51_K2_EXACT_LOG16_ENDPOINT)"
     },
     {
       "post284_id": "F_M45_ODD_ENDPOINT_QUANTITATIVE",

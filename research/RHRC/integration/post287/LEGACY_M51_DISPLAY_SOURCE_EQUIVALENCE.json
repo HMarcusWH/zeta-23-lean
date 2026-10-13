@@ -1,0 +1,41 @@
+{
+  "schema": "post287.legacy-m51-display-source-equivalence.v1",
+  "terminal_claim": "RH_OPEN",
+  "authority": "SOURCE_EQUIVALENCE_AUDIT_ONLY",
+  "archived_commit": "31512dbb698dd59b90cfa32549f0e9273a5163f9",
+  "pre_edit_head": "a7e4e8e55ffb71799d7862be0496082ee2983af9",
+  "path": "research/RHRC/routes/R003_ccm_bridge/post285/post285_m51_k2_even_bottom_certificate.py",
+  "archived_git_blob": "66d149e9d08f19eaa79196dee5cae75d73041b74",
+  "candidate_git_blob": "505636e356836db71dafe3a03a53f59708aae6b2",
+  "archived_sha256_git_lf": "59c3bb47d966449bdc267a7413e3d67ed0c872a8cae3e578e87a75bb8133e70b",
+  "candidate_sha256_git_lf": "3dc045594d5236420452ece91f56482e1c0b680eaa470369687beecfdec6abf9",
+  "archived_sha256_windows_working_bytes": "26b2496a0b4f8547d730954e32436ebdd9a4bd32575dfd5a552f00f1a55f62d3",
+  "candidate_sha256_windows_working_bytes": "b6cb72bf6f362ea404cf8823bb6cb359f1197748535519cf60b246ccd3fcc620",
+  "unchanged_helper_function_asts": [
+    "ball",
+    "cell_bounds",
+    "cover",
+    "lam_point",
+    "legal_even_carrier",
+    "lower_bound",
+    "physical_V",
+    "quad",
+    "refine_minimum"
+  ],
+  "main_ast_identical_after_restoring_only_statement_literal": true,
+  "all_import_asts_identical": true,
+  "all_top_level_assignment_asts_identical": true,
+  "whole_module_ast_identical_after_restoring_doc_and_statement": true,
+  "frozen_input_count": 28,
+  "canonical_frozen_input_changes": [
+    {
+      "path": "research/RHRC/routes/R003_ccm_bridge/post285/post285_m51_k2_even_bottom_certificate.py",
+      "archived_sha256_git_lf": "59c3bb47d966449bdc267a7413e3d67ed0c872a8cae3e578e87a75bb8133e70b",
+      "candidate_sha256_git_lf": "3dc045594d5236420452ece91f56482e1c0b680eaa470369687beecfdec6abf9"
+    }
+  ],
+  "other_27_input_bytes_identical_to_archived_commit": true,
+  "old_receipts_relabelled": false,
+  "new_numerical_computation": false,
+  "certificate_authority": "Archived mathematical computations remain bound to their original exact 31512dbb source and raw receipt hashes; this audit cannot replace any digest or count as fresh acceptance."
+}

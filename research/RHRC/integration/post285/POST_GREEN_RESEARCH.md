@@ -24,6 +24,16 @@ The machine-readable versions are:
 `build_post285_ledgers.py --write` regenerates all five, and
 `check_post285_ledgers.py` is the CI firewall that keeps them current.
 
+**Endpoint correction (2026-10-13, PR #290).** The historical M51 statement
+below says `[1/400, log 16]`, but the actual legacy producer clips at
+`U = 2772588722239781/10^15 < log 16`. Its 1,310-interval evidence establishes
+only the finite rational range `[1/400, U]`. The remaining interval
+`(U, log 16]` stays OPEN for this receipt and is now recorded as
+`M51_K2_EXACT_LOG16_ENDPOINT` in the live ledgers. The original observations
+remain below for provenance; this correction governs their scope. This legacy
+evidence does not validate the invalidated unguarded post287 transcript. See
+[the migration record](../post287/LEGACY_M51_ENDPOINT_MIGRATION.md).
+
 ## 1. PROVED in this PR
 
 | Package | Module | Main roots | Steps |
@@ -336,6 +346,8 @@ The details are in `FALSIFICATION_REPORT.md`.
   certifies `λ > 0` on the whole range, so for `K = 2` there is no contact there
   for M51 to obstruct. By the F04 identity a `K = 2` stationary contact would
   need `λ = λ' = λ'' = 0`.
+  **Scope correction:** this historical certificate stops at
+  `U = 2772588722239781/10^15`; the remaining exact-log16 gap is OPEN.
 - **The `K = 2` near-contacts sit at `L = 2πk/γ₁`.** `λ` comes within
   `3.2·10⁻¹⁰` of zero. Its local minima are at `L γ₁/(2π) = 3.0008, 4.0008,
   5.0008, 6.0025`. Numerically `λ` is the sum of nonnegative single-zero terms
