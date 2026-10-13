@@ -30,15 +30,13 @@ theorem uniformBoxDensity_nonneg {a : ℝ} (ha : 0 < a) (x : ℝ) :
 theorem integrable_uniformBoxDensity (a : ℝ) : Integrable (uniformBoxDensity a) := by
   unfold uniformBoxDensity
   apply IntegrableOn.integrable_indicator
-  · apply integrableOn_const
-    rw [Real.volume_Icc]
-    simp
+  · exact integrableOn_const (by rw [Real.volume_Icc]; simp) (by finiteness)
   · exact measurableSet_Icc
 
 theorem integral_uniformBoxDensity {a : ℝ} (ha : 0 < a) :
     (∫ x : ℝ, uniformBoxDensity a x) = 1 := by
   unfold uniformBoxDensity
-  rw [integral_indicator_const, measureReal_def, Real.volume_Icc,
+  rw [integral_indicator_const _ measurableSet_Icc, measureReal_def, Real.volume_Icc,
     ENNReal.toReal_ofReal (by linarith : 0 ≤ a - -a), smul_eq_mul]
   field_simp
   ring
@@ -93,7 +91,7 @@ theorem uniformBoxPairDensity_eq_convolution {a b : ℝ} (ha : 0 < a) (hb : 0 < 
   change uniformBoxPairDensity a b x =
     ∫ y : ℝ, uniformBoxDensity a y * uniformBoxDensity b (x - y)
   simp_rw [box_product_eq_overlap ha hb]
-  rw [integral_indicator_const, real_volume_interval, smul_eq_mul]
+  rw [integral_indicator_const _ measurableSet_Icc, real_volume_interval, smul_eq_mul]
   unfold uniformBoxPairDensity
   ring
 

@@ -420,3 +420,72 @@ Construct the corrected normal source from the native projections. Formalize
 the direct mass route only with its analytic bridges, and continue the actual
 stable-input equation. Keep cofinal phase depth, finite transport, and D2
 continuous coverage as independent unfinished tasks. RH remains **OPEN**.
+
+## Sixth pass: actual convolution law, quantitative product, and native dimensions
+
+**What became formally true.** At head
+`6b33d5b2f7f7a07441478d3107610c7ccbf4dfb5`, tree
+`7c157ce0611638a723f6ddee4e98afff6518cd58`, job `115563781318` of
+run `38475115546` compiled the complete Bounds, SourceLaw and Carrier targets.
+Their printed roots use only the three standard axioms. The actual sinc product
+has norm at most one on the real axis and the explicit Gevrey envelope. The
+prescribed independent uniform sum has deterministic tail `s/(N+1)`, probability
+mass one on `[-s,s]`, and exact law scaling for nonnegative s. Both native
+pole-neutral parity carriers have dimension `K-2` for `L>0,K≥2`, proved using
+actual nonzero pole-functional witnesses and rank-nullity. The actual index map
+satisfies `‖u‖²≤4‖D0u‖²` on its native carrier; it is not unitary.
+
+**Workflow harvest.** Native job `115563780760` and exact-controls job
+`115563780987` SUCCEEDED. The component job FAILED on inverse-moment,
+characteristic-function, two-box density, nested metric elaboration, and
+floor-source steps. Dependent normal reduction and rational Laplace targets
+were not established. The full binding export was skipped. The preserved
+6ae whole-workflow snapshot contains 54 attempts across 20 workflows, with
+29 success, five failure, 17 cancellation, two skips and one running job;
+the compact index does not upgrade it to full release. Its SECOND frozen-box
+coverage changed from the older 12/18 time-limited run to 18/18, with matching
+shared records. The separate full-domain D2 run still has no candidate artifact.
+
+**What changed.** A probability-law source and a quantitative product now
+exist independently as compiler-checked constructions. They have not yet been
+identified through the characteristic function or a smooth density. Native
+carrier dimensions now handle K=2 as dimension zero rather than introducing
+a fictitious ground eigenvalue. The coefficient inequality restricts directly
+to the exact kernel without replacing its norm.
+
+**Upstream implications.** The first two unequal widths yield a trapezoidal
+prefix density. Combining it with the actual tail law is a constructive route
+to a positive compact density; no finite replacement source is needed. The
+scale-zero law is degenerate, so smooth density assertions must keep s>0.
+Concrete functional witnesses remove a hidden nonzero-normal premise.
+
+**Downstream implications.** Product decay can prove all polynomial moments
+and then smoothness of the actual inverse. Law identification can transfer
+positivity, support, mass and symmetry to that inverse. The dimensions and
+index bound can feed the existing secular/parity calculus once the corrected
+native rank-one source is compiled. None supplies phase depth or finite transport.
+
+**Resurrected routes.** The exact independent-law/density route and concrete
+normal-projection route now have verified prerequisites. Tiny-parity-gap and
+finite-range counterexamples remain valid; these supporting results do not
+remove their failure reasons.
+
+**New RH-relevant clues.** LEAD: actual probability-law positivity yields
+positive-definite real transform Gram constraints after the transform connection
+is proved. Those constraints may be useful upstream of the original detector.
+LEAD: the dimension-zero K=2 boundary clarifies which ground/shell claims should
+begin at K≥3, reducing vacuous branch interfaces.
+
+**Falsification checks.** Infinite convolution of nonidentical boxes does not
+imply infinite divisibility; the actual product has real zeros. Probability
+positivity of q does not imply positivity of `P²q`. A nonzero legal functional
+does not make its kernel nontrivial at K=2. The index bound is one-sided and
+cannot support a unitary adjoint substitution. Preserve exact tail support
+and unequal widths when constructing a density.
+
+**Highest-leverage next moves.** Repair the law/product characteristic identity
+and box density, then identify the actual tail convolution with the physical
+source and inverse. Compile corrected native normals and physical exponential
+moments with the inherited metric. Reuse the existing secular calculus on those
+actual blocks. Obtain D2's real archive before leaf replay. The flagship
+phase-cofinal producer, quartic transport and closing laws remain **OPEN**.

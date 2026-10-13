@@ -755,7 +755,7 @@
     {
       "id": "M07",
       "implementation_path": "Zeta23/CCM/CanonicalPoleNeutralGeometry.lean",
-      "scope": "geometry/index and native pole-source action compiled; Carrier dimensions/nonzero functional/norm-bound candidate pending; physical exponential moments and explicit normals remain open"
+      "scope": "geometry/index, native pole-source action and Carrier dimensions/nonzero functional/norm bound compiled; physical exponential moments and explicit normal candidates remain pending"
     }
   ],
   "component_validation": {
@@ -779,6 +779,15 @@
     "new_diagnostic_modules_compiled": [
       "Zeta23.ExceptionalZero.UniversalSincDetectorVisibility",
       "Zeta23.CCM.NativeIntegerPrimeConvolution"
+    ],
+    "subsequent_diagnostic_head": "6b33d5b2f7f7a07441478d3107610c7ccbf4dfb5",
+    "subsequent_diagnostic_tree": "7c157ce0611638a723f6ddee4e98afff6518cd58",
+    "subsequent_diagnostic_component_job": 115563781318,
+    "subsequent_diagnostic_status": "FAILURE_PARTIAL_MODULES_COMPILED",
+    "subsequent_diagnostic_modules_compiled": [
+      "Zeta23.CCM.UniversalSincDetectorBounds",
+      "Zeta23.CCM.UniversalSincSourceLaw",
+      "Zeta23.CCM.CanonicalPoleNeutralCarrier"
     ],
     "additional_candidates": [
       "Zeta23.CCM.UniversalSincDetectorInverse",

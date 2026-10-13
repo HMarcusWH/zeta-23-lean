@@ -30,9 +30,10 @@ theorem integrable_polynomial_sqrt_decay (k : ℕ) {b : ℝ} (hb : 0 < b) :
       (fun x : ℝ => |x| ^ k * Real.exp (-b * Real.sqrt |x|)) (Ioi 0) := by
     have hraw := integrableOn_rpow_mul_exp_neg_mul_rpow
       (s := (k : ℝ)) (p := (1 / 2 : ℝ))
-      (by linarith [Nat.cast_nonneg (R := ℝ) k] : (-1 : ℝ) < (k : ℝ))
+      (by linarith [Nat.cast_nonneg (α := ℝ) k] : (-1 : ℝ) < (k : ℝ))
       (by norm_num) hb
     refine hraw.congr_fun (fun x hx => ?_) measurableSet_Ioi
+    dsimp only
     rw [abs_of_pos (mem_Ioi.mp hx), Real.sqrt_eq_rpow, Real.rpow_natCast]
   rw [← integrableOn_univ, ← @Iio_union_Ici _ _ (0 : ℝ), integrableOn_union,
     integrableOn_Ici_iff_integrableOn_Ioi]
@@ -58,7 +59,6 @@ theorem integrable_product_ofReal_norm_moment {s : ℝ} (hs : 0 < s) (k : ℕ) :
   have henv := (integrable_polynomial_sqrt_decay k hb).const_mul (2 : ℝ)
   apply henv.mono'
   · have hc := ((continuous_id.abs.pow k).mul (continuous_product_ofReal hs.le).norm)
-    rw [inverse_complex_norm_instances_eq] at hc
     exact hc.aestronglyMeasurable
   · filter_upwards with x
     rw [Real.norm_eq_abs, abs_of_nonneg (mul_nonneg (pow_nonneg (abs_nonneg x) k)

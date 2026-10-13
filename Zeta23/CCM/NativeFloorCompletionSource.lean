@@ -109,7 +109,7 @@ theorem nativeIntegerTranslateAction_rationalKernel_eq_positiveCompletion (t : �
     have hatoms :
         (∑ n ∈ range ⌊Real.exp t⌋₊,
           nativeIntegerCoefficient (n + 1) *
-            nativeRationalCausalKernel (t - Real.log (n + 1))) =
+            nativeRationalCausalKernel (t - Real.log (((n + 1 : ℕ) : ℝ)))) =
         ∑ n ∈ range ⌊Real.exp t⌋₊,
           (-Real.exp (-(t / 2)) +
             2 * Real.exp (-(3 * t / 2)) * ((n : ℝ) + 1)) := by
@@ -123,8 +123,10 @@ theorem nativeIntegerTranslateAction_rationalKernel_eq_positiveCompletion (t : �
       have hnpos : (0 : ℝ) < (n + 1 : ℕ) := by positivity
       have hlog : Real.log ((n + 1 : ℕ) : ℝ) ≤ t :=
         (Real.log_le_iff_le_exp hnpos).mpr hle
-      simpa only [Nat.cast_add, Nat.cast_one] using
-        nativeRationalCausalKernel_weighted_atom (Nat.succ_pos n) hlog
+      have ha := nativeRationalCausalKernel_weighted_atom (n := n + 1) (by omega) hlog
+      rw [Nat.cast_add, Nat.cast_one] at ha
+      rw [Nat.cast_add, Nat.cast_one]
+      exact ha
     rw [hatoms]
     rw [Finset.sum_add_distrib, ← Finset.mul_sum, Finset.sum_const, card_range,
       nsmul_eq_mul, native_sum_range_shifted_natCast]

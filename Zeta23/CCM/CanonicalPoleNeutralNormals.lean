@@ -11,6 +11,7 @@ open scoped BigOperators ComplexConjugate
 
 -- These are the existing inherited coefficient metrics and parity wrappers.
 -- Local transparency exposes their identical dictionaries to elaboration.
+set_option allowUnsafeReducibility true in
 attribute [local reducible] Submodule.innerProductSpace
   poleNeutralEven_innerProductSpace poleNeutralOdd_innerProductSpace
   euclideanParityBoundaryFlatSubspace

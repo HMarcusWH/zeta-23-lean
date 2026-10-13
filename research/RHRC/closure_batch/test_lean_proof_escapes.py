@@ -13,6 +13,10 @@ EXPECTED = {
     Path("Zeta23/CCM/UniversalSincSourceLaw.lean"),
     Path("Zeta23/CCM/UniversalSincSourceCharacteristic.lean"),
     Path("Zeta23/CCM/UniversalSincBoxDensity.lean"),
+    Path("Zeta23/CCM/UniversalSincSourceTail.lean"),
+    Path("Zeta23/CCM/UniversalSincSourceDensity.lean"),
+    Path("Zeta23/CCM/CanonicalPoleExponentialMoments.lean"),
+    Path("Zeta23/CCM/NativePositiveCompletionCells.lean"),
     Path("Zeta23/CCM/CanonicalPoleNeutralNormals.lean"),
     Path("Zeta23/CCM/NativeRationalCompletionLaplace.lean"),
     Path("Zeta23/CCM/CanonicalPoleNeutralCarrier.lean"),
@@ -117,7 +121,7 @@ class LeanProofEscapeScopeTests(unittest.TestCase):
         roots = closure_roots()
         self.assertEqual(len(roots), len(set(roots)))
         self.assertEqual(set(roots), EXPECTED)
-        self.assertEqual(len(roots), 102)
+        self.assertEqual(len(roots), 106)
         for path in roots:
             self.assertTrue(path.is_file(), str(path))
 

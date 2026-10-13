@@ -49,10 +49,13 @@ jobs:
             Zeta23.CCM.UniversalSincDetectorInverse \
             Zeta23.CCM.UniversalSincSourceLaw \
             Zeta23.CCM.UniversalSincSourceCharacteristic \
+            Zeta23.CCM.UniversalSincSourceTail \
             Zeta23.CCM.UniversalSincBoxDensity \
+            Zeta23.CCM.UniversalSincSourceDensity \
             Zeta23.ExceptionalZero.UniversalSincDetectorVisibility \
             Zeta23.CCM.CanonicalPoleNeutralGeometry \
             Zeta23.CCM.CanonicalPoleNeutralCarrier \
+            Zeta23.CCM.CanonicalPoleExponentialMoments \
             Zeta23.CCM.CanonicalPoleNeutralIntertwining \
             Zeta23.CCM.CanonicalPoleNeutralNormals \
             Zeta23.CCM.CanonicalTrialResidualChannels \
@@ -60,6 +63,7 @@ jobs:
             Zeta23.CCM.NativeIntegerPrimeField \
             Zeta23.CCM.NativeIntegerPrimeConvolution \
             Zeta23.CCM.NativePositiveCompletion \
+            Zeta23.CCM.NativePositiveCompletionCells \
             Zeta23.CCM.NativeFloorCompletionSource \
             Zeta23.CCM.NativeRationalCompletionLaplace \
             Zeta23.CCM.Step123PrimeSeam

@@ -4,9 +4,12 @@ import Zeta23.CCM.UniversalSincDetectorInverse
 import Zeta23.CCM.UniversalSincSourceLaw
 import Zeta23.CCM.UniversalSincSourceCharacteristic
 import Zeta23.CCM.UniversalSincBoxDensity
+import Zeta23.CCM.UniversalSincSourceTail
+import Zeta23.CCM.UniversalSincSourceDensity
 import Zeta23.ExceptionalZero.UniversalSincDetectorVisibility
 import Zeta23.CCM.CanonicalPoleNeutralGeometry
 import Zeta23.CCM.CanonicalPoleNeutralCarrier
+import Zeta23.CCM.CanonicalPoleExponentialMoments
 import Zeta23.CCM.CanonicalPoleNeutralIntertwining
 import Zeta23.CCM.CanonicalPoleNeutralNormals
 import Zeta23.CCM.CanonicalTrialResidualChannels
@@ -14,6 +17,7 @@ import Zeta23.CCM.NativeIntegerPrimeSource
 import Zeta23.CCM.NativeIntegerPrimeField
 import Zeta23.CCM.NativeIntegerPrimeConvolution
 import Zeta23.CCM.NativePositiveCompletion
+import Zeta23.CCM.NativePositiveCompletionCells
 import Zeta23.CCM.NativeFloorCompletionSource
 import Zeta23.CCM.NativeRationalCompletionLaplace
 import Zeta23.CCM.Step123PrimeSeam
@@ -60,6 +64,13 @@ run_cmd do
     (``Zeta23.CCM.UniversalSinc.originalSourceLaw_map_neg, "Zeta23.CCM.UniversalSincSourceCharacteristic"),
     (``Zeta23.CCM.UniversalSinc.uniformBoxPairDensity_eq_convolution, "Zeta23.CCM.UniversalSincBoxDensity"),
     (``Zeta23.CCM.UniversalSinc.originalBoxPairDensity_positive_normalized, "Zeta23.CCM.UniversalSincBoxDensity"),
+    (``Zeta23.CCM.UniversalSinc.sourceSampleTail_abs_le, "Zeta23.CCM.UniversalSincSourceTail"),
+    (``Zeta23.CCM.UniversalSinc.charFun_originalSourceTailLaw, "Zeta23.CCM.UniversalSincSourceTail"),
+    (``Zeta23.CCM.UniversalSinc.originalSourceLaw_eq_prefix_conv_tail, "Zeta23.CCM.UniversalSincSourceTail"),
+    (``Zeta23.CCM.UniversalSinc.originalDensityCandidate_nonneg, "Zeta23.CCM.UniversalSincSourceDensity"),
+    (``Zeta23.CCM.UniversalSinc.continuous_originalDensityCandidate, "Zeta23.CCM.UniversalSincSourceDensity"),
+    (``Zeta23.CCM.UniversalSinc.originalDensityCandidate_hasCompactSupport, "Zeta23.CCM.UniversalSincSourceDensity"),
+    (``Zeta23.CCM.UniversalSinc.integral_originalDensityCandidate, "Zeta23.CCM.UniversalSincSourceDensity"),
     (``Zeta23.CCM.UniversalSinc.product_ne_zero_of_im_ne_zero, "Zeta23.CCM.UniversalSincDetector"),
     (``Zeta23.CCM.UniversalSinc.fixed_product_ne_zero_of_im_ne_zero, "Zeta23.CCM.UniversalSincDetector"),
     (``Zeta23.ExceptionalZero.originalSincMultiplier_ne_zero_at_off_line_zero,
@@ -77,6 +88,10 @@ run_cmd do
     (``Zeta23.CCM.finrank_poleNeutralEvenSubspace, "Zeta23.CCM.CanonicalPoleNeutralCarrier"),
     (``Zeta23.CCM.finrank_poleNeutralOddSubspace, "Zeta23.CCM.CanonicalPoleNeutralCarrier"),
     (``Zeta23.CCM.poleNeutralIndex_norm_lower, "Zeta23.CCM.CanonicalPoleNeutralCarrier"),
+    (``Zeta23.CCM.canonicalPoleExponentialMoment_eq_profiles, "Zeta23.CCM.CanonicalPoleExponentialMoments"),
+    (``Zeta23.CCM.canonicalPoleExponentialMoments_iff_profiles, "Zeta23.CCM.CanonicalPoleExponentialMoments"),
+    (``Zeta23.CCM.poleNeutralEven_iff_exponentialMoments, "Zeta23.CCM.CanonicalPoleExponentialMoments"),
+    (``Zeta23.CCM.poleNeutralOdd_iff_exponentialMoments, "Zeta23.CCM.CanonicalPoleExponentialMoments"),
     (``Zeta23.CCM.poleNeutralCompressedIndexDefect_eq_projected_legal_add_residual,
       "Zeta23.CCM.CanonicalPoleNeutralIntertwining"),
     (``Zeta23.CCM.poleNeutralCompressedIndexDefect_eq_cubicSource_add_residual,
@@ -109,6 +124,8 @@ run_cmd do
     (``Zeta23.CCM.nativePrimeField_continuous, "Zeta23.CCM.NativeIntegerPrimeField"),
     (``Zeta23.CCM.nativePositiveCompletion_nonneg, "Zeta23.CCM.NativePositiveCompletion"),
     (``Zeta23.CCM.nativePositiveCompletion_pos_of_nonneg, "Zeta23.CCM.NativePositiveCompletion"),
+    (``Zeta23.CCM.nativePositiveCompletionLogDensity_cell, "Zeta23.CCM.NativePositiveCompletionCells"),
+    (``Zeta23.CCM.nativePositiveCompletionLogDensity_cell_le, "Zeta23.CCM.NativePositiveCompletionCells"),
     (``Zeta23.CCM.nativeIntegerTranslateAction_primeField_eq_integerDriveField,
       "Zeta23.CCM.NativeIntegerPrimeConvolution"),
     (``Zeta23.CCM.nativePositiveCompletion_le_exp, "Zeta23.CCM.NativePositiveCompletion"),

@@ -7,6 +7,7 @@ namespace Zeta23.CCM
 open scoped BigOperators ComplexConjugate
 
 -- Keep the standard inherited subtype metric transparent to the elaborator.
+set_option allowUnsafeReducibility true in
 attribute [local reducible] Submodule.innerProductSpace
   poleNeutralEven_innerProductSpace poleNeutralOdd_innerProductSpace
   euclideanParityBoundaryFlatSubspace

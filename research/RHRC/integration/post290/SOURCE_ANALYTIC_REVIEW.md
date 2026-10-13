@@ -134,6 +134,61 @@ module are not substituted for an entire-module success. This paragraph
 harvests the source component only; the full workflow inventory and release
 status are recorded separately by the integration receipts.
 
+### Exact visibility and native-action receipt at `d063c1c9`
+
+At commit `d063c1c9fefd930c40c0018244233eee84ef4ce1`, tree
+`b7489ab277b6a9fd3d5833d33fb953a14f02c794`, Linux
+[run 38473292091](https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38473292091)
+reported **Built** for the complete `UniversalSincDetectorVisibility` and
+`NativeIntegerPrimeConvolution` modules. Their printed roots contain only
+`propext`, `Classical.choice`, and `Quot.sound`. The explicit original
+multiplier's off-line nonvanishing, nonreal zero classification, frozen
+complex-square nonvanishing and nonzero elementary-pair derivatives are
+now **PROVED**. The simple elementary-zero interpretation remains
+**DERIVED**, rather than a separately compiled analytic-order theorem.
+
+The actual integer translate action's summability and exact compact-source
+pointwise equation `N*X=U` are also **PROVED**. The operator is a translate
+series and its equation was obtained by actual double-sum regrouping and
+the unchanged divisor law. No compatibility assumption was supplied. This
+removes the generic compact-source arithmetic bridge as an open obligation;
+binding it to the constructed actual `j=P²q` source is still required.
+
+This workflow as a whole **FAILED** on subsequent bounds, probability-law
+and floor-completion candidates. Those failures do not revoke the two
+entire-module successes, but they do prevent any full-release claim.
+The latest source-law/density/characteristic candidates remain subject to
+their own gates.
+
+### Exact bounds and original probability-law receipt at `6b33d5b2`
+
+Commit `6b33d5b2f7f7a07441478d3107610c7ccbf4dfb5`, tree
+`7c157ce0611638a723f6ddee4e98afff6518cd58`, Linux
+[run 38475115546](https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38475115546)
+reported **Built** for the entire `UniversalSincDetectorBounds` and
+`UniversalSincSourceLaw` modules. Their printed roots use only the three
+permitted foundational axioms. Real-axis norm one, contracting-head and
+explicit Gevrey bounds are now **PROVED**. The actual normalized-box
+infinite-product probability space, pathwise prescribed sample sum, exact
+tail bound, measurable pushforward law, support mass one and measure scaling
+are now **PROVED**. These are constructed objects, not source certificates
+whose properties were supplied by a caller.
+
+The characteristic connection, inverse moment construction and initial
+box-density modules failed separate proof-engineering gates at this head;
+the complete workflow **FAILED**. Their repaired versions, and the later
+literal tail and density candidates, await fresh receipts. The exact law
+does not yet have a compiler-proved characteristic function or smooth
+density identity at this receipt.
+
+This green compresses the producer obligation: source probability, support,
+scaling and deterministic series convergence are available independently
+of the Fourier product. The two verified constructions still need their
+exact connecting identity. The domain test at `s=0` is decisive: the law
+collapses to a point mass and its product is the constant one; the
+integrable/smooth Lebesgue-density route must retain `s>0`. No infinite
+divisibility conclusion is inferred merely from the infinite convolution.
+
 ## Remaining mandatory mathematical obligations
 
 The following are OPEN and are not encoded as arbitrary record premises:

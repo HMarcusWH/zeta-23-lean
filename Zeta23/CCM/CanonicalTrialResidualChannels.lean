@@ -9,6 +9,7 @@ open scoped BigOperators ComplexConjugate
 
 -- Expose the canonical inherited subtype structures during elaboration.
 -- This changes transparency only; the metric remains the coefficient metric.
+set_option allowUnsafeReducibility true in
 attribute [local reducible] Submodule.innerProductSpace
   poleNeutralEven_innerProductSpace poleNeutralOdd_innerProductSpace
   euclideanParityBoundaryFlatSubspace
@@ -184,7 +185,7 @@ theorem canonicalTrialResidual_variance (p : ReversalParity) (L : ℝ) (K : ℕ)
       (inner ℂ u (parityCompressedCanonical p L K
         (parityCompressedCanonical p L K u))).re -
       ‖nativeTrialRayleigh (parityCompressedCanonical p L K) u‖ ^ 2 :=
-  nativeTrialResidual_symmetric_variance _
+  nativeTrialResidual_symmetric_variance (E := euclideanParityBoundaryFlatSubspace p K) _
     (parityCompressedCanonical_isSymmetric p L K) u hu
 
 theorem canonicalTrialResidual_channelGram (p : ReversalParity) (L : ℝ) (K : ℕ)
@@ -265,7 +266,7 @@ theorem poleNeutralEvenTrialResidual_variance (L : ℝ) (K : ℕ)
       (inner ℂ u (poleNeutralEvenCompressedCanonical L K
         (poleNeutralEvenCompressedCanonical L K u))).re -
       ‖nativeTrialRayleigh (poleNeutralEvenCompressedCanonical L K) u‖ ^ 2 :=
-  nativeTrialResidual_symmetric_variance _
+  nativeTrialResidual_symmetric_variance (E := poleNeutralEvenSubspace L K) _
     (poleNeutralEvenCompressedCanonical_isSymmetric L K) u hu
 
 theorem poleNeutralOddTrialResidual_variance (L : ℝ) (K : ℕ)
@@ -274,7 +275,7 @@ theorem poleNeutralOddTrialResidual_variance (L : ℝ) (K : ℕ)
       (inner ℂ u (poleNeutralOddCompressedCanonical L K
         (poleNeutralOddCompressedCanonical L K u))).re -
       ‖nativeTrialRayleigh (poleNeutralOddCompressedCanonical L K) u‖ ^ 2 :=
-  nativeTrialResidual_symmetric_variance _
+  nativeTrialResidual_symmetric_variance (E := poleNeutralOddSubspace L K) _
     (poleNeutralOddCompressedCanonical_isSymmetric L K) u hu
 
 theorem poleNeutralEvenTrialResidual_channelGram (L : ℝ) (K : ℕ)

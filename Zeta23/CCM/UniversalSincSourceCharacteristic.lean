@@ -47,9 +47,8 @@ theorem charFun_centeredUnitBoxLaw (r : ℝ) :
     simp only [Complex.ofReal_mul, mul_neg, mul_one, neg_mul, one_mul] at hchange
     rw [hchange, integral_exp_mul_I_eq_sinc]
     rw [RCLike.real_smul_eq_coe_mul]
-    push_cast
-    have hrC : (r : ℂ) ≠ 0 := by exact_mod_cast hr
-    field_simp [hrC] <;> ring
+    norm_cast
+    field_simp [hr] <;> ring
   rw [hi, RCLike.real_smul_eq_coe_mul, sinc_ofReal]
   push_cast <;> ring
 
@@ -58,8 +57,9 @@ theorem sourceSampleAtom_map_eq_scaled_box (s : ℝ) (n : ℕ) :
       centeredUnitBoxLaw.map (fun x : ℝ => width s n * x) := by
   have hcomp : (fun ω : ℕ → ℝ => width s n * unitClamp (ω n)) =
       (fun x : ℝ => width s n * unitClamp x) ∘ (fun ω : ℕ → ℝ => ω n) := rfl
-  rw [hcomp, ← Measure.map_map
-    (measurable_const.mul continuous_unitClamp.measurable) (measurable_pi_apply n)]
+  have hm : Measurable (fun x : ℝ => width s n * unitClamp x) :=
+    measurable_const.mul continuous_unitClamp.measurable
+  rw [hcomp, ← Measure.map_map hm (measurable_pi_apply n)]
   change ((Measure.infinitePi (fun _ : ℕ => centeredUnitBoxLaw)).map
     (fun ω : ℕ → ℝ => ω n)).map (fun x : ℝ => width s n * unitClamp x) = _
   rw [Measure.infinitePi_map_eval]
@@ -79,6 +79,7 @@ theorem charFun_sourceSamplePartialSum (s x : ℝ) (N : ℕ) :
     (fun n _ => (measurable_const.mul
       (continuous_unitClamp.measurable.comp (measurable_pi_apply n))).aemeasurable)
   have hpoint := congrFun hfactor x
+  simp only [Finset.prod_apply, Function.comp_def, Pi.mul_apply] at hpoint
   change charFun (sourceCoordinateLaw.map (sourceSamplePartialSum s N)) x =
     ∏ n ∈ range N, charFun (sourceCoordinateLaw.map
       (fun ω : ℕ → ℝ => width s n * unitClamp (ω n))) x at hpoint
