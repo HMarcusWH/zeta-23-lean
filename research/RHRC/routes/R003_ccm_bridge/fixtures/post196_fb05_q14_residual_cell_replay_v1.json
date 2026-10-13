@@ -9,7 +9,7 @@
   "inherited_post195_module": "post194_fb05_q14_parity_trajectory_sharp_enclosure.py",
   "inherited_post195_module_blob_sha": "9b655e012815d12a8d774e589bad1f21b3a7abf2",
   "inherited_post195_fixture": "post194_fb05_q14_parity_trajectory_sharp_enclosure_v1.json",
-  "inherited_post195_fixture_blob_sha": "dc81d125c01aabcf54c990b70f579ed378c30cba",
+  "inherited_post195_fixture_blob_sha": "555219cd9517c8c677938d0e573f5048ed8fd654",
   "inherited_post195_probe": "probe_post194_fb05_q14_parity_trajectory_sharp_enclosure_scope.py",
   "inherited_post195_probe_blob_sha": "3b094e8d3bf5e504358ce3b039e39f84fac0527d",
   "inherited_post195_certifier": "certify_post194_fb05_q14_parity_trajectory_sharp_enclosure_scope.py",

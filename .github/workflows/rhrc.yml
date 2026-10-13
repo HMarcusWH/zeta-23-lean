@@ -77,10 +77,27 @@ jobs:
             Zeta23.RHRC.SourceCandidateResolution
       - name: Validate complete registered theorem bindings
         run: python3 research/RHRC/tools/registered_theorem_binding_lint.py
-      - name: Materialize exact PR-head RHKG derived state
-        run: python3 research/RHRC/tools/materialize_derived_state.py --write
-      - name: Validate exact PR-head RHKG derived state
+      - name: Validate committed RHKG state BEFORE any generator writes
         run: python3 research/RHRC/tools/materialize_derived_state.py --check
+      - name: Verify stale RHKG cannot be accepted (adversarial source/index mutations)
+        run: python3 research/RHRC/integration/post287/test_rhkg_staleness.py
+      - name: Ensure validation did not modify or create derived products
+        shell: bash
+        run: |
+          set -euo pipefail
+          git diff --exit-code HEAD -- \
+            research/RHRC/graph/compiler \
+            research/RHRC/graph/generated \
+            research/RHRC/integration/generated \
+            research/RHRC/ffbbp/generated \
+            research/RHRC/ool/generated
+          if [ -n "$(git ls-files --others --exclude-standard -- \
+            research/RHRC/graph/compiler research/RHRC/graph/generated \
+            research/RHRC/integration/generated research/RHRC/ffbbp/generated \
+            research/RHRC/ool/generated)" ]; then
+            echo "Unexpected untracked derived outputs" >&2
+            exit 1
+          fi
       - name: Upload exact PR-head RHKG derived state
         if: success()
         uses: actions/upload-artifact@v4

@@ -548,7 +548,7 @@
       "topic": "Remaining contact-conditioned obstruction",
       "package": "M51",
       "status": "OPEN",
-      "anchor_or_note": "K = 2: Arb certifies lambda_even > 0 on [1/400, log 16] (interval evidence, M51_K2_EVEN_BOTTOM_CERTIFICATE); general K OPEN"
+      "anchor_or_note": "K = 2: historical Arb evidence certifies lambda_even > 0 on [1/400, U], U = 2772588722239781/10^15 < log 16 (M51_K2_EVEN_BOTTOM_CERTIFICATE); (U, log 16] and general K OPEN"
     },
     {
       "step": 93,

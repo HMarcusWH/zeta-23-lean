@@ -1,0 +1,194 @@
+#!/usr/bin/env python3
+"""WP4 D2=Full: mandatory *feasibility gate*, not the full K3 certificate.
+
+Checks the #176 frozen Q14 boxes for both K=3 parity carriers in the exact
+2x2 predecessor+shell basis, using the fixed-Q 7x7 production source and
+128/384-bit Arb Taylor bounds.  Each box is bisected up to the *frozen*
+max-depth 40.  UNRESOLVED means neither sign.  No amount of grid sampling
+is promoted to an all-L statement.
+
+A failed method gate routes to the *single predeclared fourth-order Taylor
+alternative*. This module does not implement that alternative or claim its
+success. Stop conditions and hard resource ceilings are explicit.
+"""
+from __future__ import annotations
+
+import argparse
+import json
+import sys
+import time
+from fractions import Fraction
+from pathlib import Path
+from flint import arb, ctx, fmpq
+
+HERE=Path(__file__).resolve().parent
+ROOT=HERE.parent
+sys.path.insert(0,str(ROOT))
+import canonical_source_arb as C
+from post166_fb05_cell_interval import _arb_matrix_from_sympy,cell_coordinate_L_arb
+from post169_fb05_schur_visibility import one_step_geometry
+from post194_fb05_q14_fixed_unit_second_derivative import (
+    fixed_unit_fixed_q_canonical_source_matrix_with_second_derivative_arb as jets,
+)
+from certificate_integrity import source_input_digests, source_commit, assert_source_unchanged
+FIXTURE=ROOT/'fixtures'/'post175_fb05_q13_fixed_unit_enclosure_v1.json'
+
+
+def exact_ball(f:Fraction)->arb:
+    return arb(fmpq(f.numerator,f.denominator))
+
+
+def t_to_aperture(Q:int,t:Fraction,r:Fraction)->tuple[arb,arb,arb]:
+    lo=cell_coordinate_L_arb(Q,exact_ball(t-r))
+    hi=cell_coordinate_L_arb(Q,exact_ball(t+r))
+    centre=cell_coordinate_L_arb(Q,exact_ball(t))
+    return centre,lo.union(hi),(hi-lo).upper()/2
+
+
+def restricted(M,geom):
+    basis=_arb_matrix_from_sympy(geom.step_basis_exact)
+    return basis.transpose()*M*basis
+
+
+def two_scalar_jets(M,Mp,Mi,Mpi,Mppi,geom):
+    """Rigorous determinant value and first jet at c, second jet over box.
+
+    Δ''(x) includes a''(x)d(x) + 2a'(x)d'(x) + a(x)d''(x)
+    -2 b'(x)^2 - 2b(x)b''(x).  Every factor in that expression
+    must be enclosed over the WHOLE interval.  Replacing any such
+    factor by its value at the centre is mathematically UNSOUND.
+    """
+    m,p,mi,pi,qi=(restricted(x,geom) for x in (M,Mp,Mi,Mpi,Mppi))
+    a,b,d=m[0,0],m[0,1],m[1,1]
+    da,db,dd=p[0,0],p[0,1],p[1,1]
+    ai,bi,di=mi[0,0],mi[0,1],mi[1,1]
+    dai,dbi,ddi=pi[0,0],pi[0,1],pi[1,1]
+    dda,ddb,ddd=qi[0,0],qi[0,1],qi[1,1]
+    return ((a,da,dda),
+            (a*d-b*b,da*d+a*dd-2*b*db,
+             dda*di+2*dai*ddi+ai*ddd-2*(dbi*dbi+bi*ddb)))
+
+
+def taylor_lower(jets3:tuple,rad:arb)->arb:
+    value,d1,d2=jets3
+    return C.finite_second_order_lower(value,d1,d2,rad)
+
+
+def evaluate(Q:int,t:Fraction,r:Fraction,geom)->dict:
+    centre,box,rad=t_to_aperture(Q,t,r)
+    M,Mp,_=jets(centre,3,Q)
+    Mi,Mpi,Mppi=jets(box,3,Q)
+    a,delta=two_scalar_jets(M,Mp,Mi,Mpi,Mppi,geom)
+    a_low=taylor_lower(a,rad)
+    delta_low=taylor_lower(delta,rad)
+    return {'t':[t.numerator,t.denominator],'radius':[r.numerator,r.denominator],
+            'point_a':C.ball_record(a[0],32),'point_delta':C.ball_record(delta[0],32),
+            'first_a':C.ball_record(a[1],32),'first_delta':C.ball_record(delta[1],32),
+            'second_a_interval':C.ball_record(a[2],32),
+            'second_delta_interval':C.ball_record(delta[2],32),
+            'certified_negative_centre':bool((C.definitely_negative(a[0]) or C.definitely_negative(delta[0])) and
+                C.fixed_cell_membership(Q,centre)['certified']),
+            'a_lower':C.ball_record(a_low,32),
+            'det_lower':C.ball_record(delta_low,32),
+            'a_positive':C.definitely_positive(a_low),'det_positive':C.definitely_positive(delta_low),
+            'accepted':bool(C.definitely_positive(a_low) and C.definitely_positive(delta_low))}
+
+
+def bounded_cover(Q:int,t:Fraction,r:Fraction,geom,depth:int,
+                  max_nodes:int,deadline:float)->dict:
+    stack=[(t,r,0)];node_count=0;accepted=0;unresolved=[]
+    while stack:
+        if node_count>=max_nodes or time.monotonic()>=deadline:
+            unresolved += [{'t':str(a),'radius':str(b),'depth':d,
+                            'reason':'RESOURCE_LIMIT'} for a,b,d in stack]
+            break
+        tc,rc,d=stack.pop();node_count+=1
+        row=evaluate(Q,tc,rc,geom)
+        if row.get('certified_negative_centre'):
+            return {'nodes':node_count,'accepted':accepted,'unresolved':[
+                {'t':str(tc),'radius':str(rc),'depth':d,
+                 'reason':'CERTIFIED_NEGATIVE_NORMALIZATION_STOP','enclosures':row}],
+                'verdict':'UNRESOLVED','certified_negative_stop':True}
+        if row['accepted']:
+            accepted+=1;continue
+        if d>=depth:
+            unresolved.append({'t':str(tc),'radius':str(rc),
+                               'depth':d,'reason':'UNRESOLVED_INTERVAL',
+                               'enclosures':row})
+            continue
+        half=rc/2
+        stack.extend(((tc-half,half,d+1),(tc+half,half,d+1)))
+    return {'nodes':node_count,'accepted':accepted,'unresolved':unresolved,
+            'verdict':'PASS' if not unresolved else 'UNRESOLVED'}
+
+
+def main():
+    p=argparse.ArgumentParser()
+    p.add_argument('--output',type=Path,required=True)
+    p.add_argument('--precision-bits',type=int,default=384)
+    p.add_argument('--max-depth',type=int,default=40)
+    p.add_argument('--max-nodes',type=int,default=1000)
+    p.add_argument('--time-seconds',type=int,default=1200)
+    p.add_argument('--max-boxes',type=int,default=0,
+                   help='0 means all frozen primary and control boxes')
+    args=p.parse_args()
+    initial_source=source_input_digests()
+    if not 0 <= args.max_depth <= 40 or args.max_nodes <= 0 or args.time_seconds <= 0:
+        raise ValueError('positive finite resources and rev4 depth cap 40 required')
+    if args.precision_bits != 384:
+        raise ValueError('the frozen rev4 gate requires exactly 384 bits')
+    C.set_precision(args.precision_bits);ctx.prec=args.precision_bits
+    fixture=json.loads(FIXTURE.read_text())
+    geoms={par:one_step_geometry(2,par) for par in ('even','odd')}
+    boxes=[]
+    for case in fixture['primary_Q14_centers']:
+        t=Fraction(str(case['t']))
+        for k in fixture['primary_radius_bits']:
+            for parity in ('even','odd'):
+                boxes.append((14,t,Fraction(1,2**k),parity,'primary'))
+    for ctrl in fixture['control_boxes']:
+        for parity in ('even','odd'):
+            boxes.append((ctrl['Q'],Fraction(str(ctrl['t'])),
+                          Fraction(1,2**ctrl['radius_bit']),parity,'control'))
+    chosen=boxes[:args.max_boxes] if args.max_boxes else boxes
+    start=time.monotonic();deadline=start+args.time_seconds
+    records=[]
+    for Q,t,r,parity,kind in chosen:
+        result=bounded_cover(Q,t,r,geoms[parity],args.max_depth,
+                             args.max_nodes,deadline)
+        rec={'Q':Q,'t':str(t),'radius':str(r),'parity':parity,
+             'kind':kind,**result}
+        records.append(rec)
+        print(json.dumps({k:rec[k] for k in
+              ('Q','t','radius','parity','verdict','nodes')}),
+              flush=True)
+        if result.get('certified_negative_stop'):break
+        if time.monotonic()>=deadline:break
+    complete=(len(records)==len(boxes) and
+              all(x['verdict']=='PASS' for x in records))
+    obj={'schema':'post287.wp4.k3-frozen-gate.v1',
+         'terminal_claim':'RH_OPEN',
+         'scope':'D2=Full target K3 both parities over [1/512,log16]',
+         'evaluated_scope':'frozen #176 boxes only',
+         'all_aperture_positivity_certified':False,
+         'precision_bits':args.precision_bits,
+         'source_digests':assert_source_unchanged(initial_source),'source_commit':source_commit(),
+         'max_depth':args.max_depth,
+         'gate':'PASS' if complete else 'UNRESOLVED',
+         'certified_negative_stop':any(b.get('certified_negative_stop') for b in records),
+         'predeclared_next_if_failed':'fourth-order Taylor model on a,b,d; no unbounded repr retry',
+         'elapsed_seconds':round(time.monotonic()-start,2),
+         'frozen_boxes':len(boxes),'tested_boxes':len(records),
+         'boxes':records,'not_claimed':['continuous full K3 positivity',
+                                       'false negative zeta ground','RH']}
+    args.output.parent.mkdir(parents=True,exist_ok=True)
+    args.output.write_text(json.dumps(obj,indent=2,sort_keys=True)+'\n')
+    print(json.dumps({'gate':obj['gate'],'tested':len(records),
+                      'required':len(boxes)}))
+    if obj['certified_negative_stop']:
+        raise RuntimeError('certified negative at true weights: STOP and investigate normalization')
+    return 0  # an honest UNRESOLVED gate is a legitimate research disposition
+
+
+if __name__=='__main__':
+    raise SystemExit(main())

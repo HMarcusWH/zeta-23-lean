@@ -1,4 +1,7 @@
-"""POST285 M51 research certificate: the K = 2 even bottom on [1/400, log 16] (Step 92).
+"""POST285 M51 research certificate: the K = 2 even bottom on [1/400, U] (Step 92).
+
+U = 2772588722239781/10^15 is strictly below log 16. The historical LOG16_UP
+name is retained, but the exact-log16 gap (U, log 16] remains OPEN here.
 
 Experiment 1 of the M51 plan asks, for K = 2 and 0 < L <= log 16, whether the
 physical balance P(L) + F(L) = 0 can occur at an actual canonical even zero
@@ -17,11 +20,13 @@ would need lambda = lambda' = lambda'' = 0.
 Certificate (Arb, python-flint, 128 bits; canonical_source_arb and the fixed-Q
 jets of post194_fb05_q14_fixed_unit_second_derivative):
 
-  For every L in [1/400, log 16], lambda(L) > 0.
+  For every L in [1/400, U], lambda(L) > 0.
+  The remaining interval (U, log 16] is not covered by this certificate.
 
 Each closed cutoff cell [log Q, log(Q + 1)] (Q = 1..15; the prime sum is the
-fixed-Q sum there, and the entering atom vanishes at both ends) is covered by
-rational intervals [c - r, c + r] around rational centres c.  On each interval
+fixed-Q sum there, and the entering atom vanishes at both ends) is clipped to
+[1/400, U] and covered by rational intervals [c - r, c + r] around rational
+centres c.  On each interval
 
     lambda(L) >= lambda(c) - |lambda'(c)| r + (1/2) min(0, inf lambda''([c - r, c + r])) r^2,
 
@@ -32,7 +37,7 @@ formula is analytic in L, so an interval reaching slightly past a cell end still
 bounds the true lambda on the part inside the cell.
 
 Also reported (research evidence):
-  * the local minima of lambda on (1.2, log 16] (Arb point values at refined
+  * the local minima of lambda on (1.2, U] (Arb point values at refined
     minimizers): about 1.4e-6, 4.5e-9, 8.8e-9, 3.2e-10, near L = 1.334, 1.778,
     2.223, 2.668; lambda never reaches 0, but comes within 3.2e-10;
   * the F04 identity at those minima: V computed from the pole/archimedean
@@ -89,7 +94,7 @@ PREC = 128
 Z = (1, -4, 6, -4, 1)
 ZZ = sum(c * c for c in Z)
 L_MIN = Fraction(1, 400)
-LOG16_UP = Fraction(2772588722239781, 10 ** 15)  # >= log 16 = 2.77258872223978...
+LOG16_UP = Fraction(2772588722239781, 10 ** 15)  # historical name; U < log 16
 MAX_DEPTH = 40
 
 
@@ -130,9 +135,7 @@ def lower_bound(c: Fraction, r: Fraction, Q: int, offset: arb = arb(0)) -> arb:
     _, _, Mpp = jets(ball(c, r), 2, Q)
     lam, lam1, lam2 = quad(M), quad(Mp), quad(Mpp)
     rr = ball(r)
-    curv = lam2.lower()
-    curv = arb(0) if curv >= 0 else curv
-    return (lam - offset - abs(lam1).upper() * rr + curv * rr * rr / 2).lower()
+    return C.finite_second_order_lower(lam-offset,lam1,lam2,rr)
 
 
 def cover(Q: int, a: Fraction, b: Fraction, stats: dict, offset: arb = arb(0),
@@ -144,7 +147,7 @@ def cover(Q: int, a: Fraction, b: Fraction, stats: dict, offset: arb = arb(0),
         c, r = (lo + hi) / 2, (hi - lo) / 2
         lb = lower_bound(c, r, Q, offset)
         stats["evaluations"] += 1
-        if lb > 0:
+        if C.definitely_positive(lb):
             stats["intervals"] += 1
             stats["min_lower_bound"] = min(stats["min_lower_bound"], float(lb))
             stats["min_radius"] = min(stats["min_radius"], float(r))
@@ -291,7 +294,8 @@ def main() -> int:
     report = {
         "terminal_claim": "RH_OPEN", "authority": "INTERVAL_CERTIFICATE_RESEARCH_EVIDENCE",
         "package": "M51_K2_EVEN_BOTTOM", "verdict": "PASS" if passed else "FAIL",
-        "statement": ("lambda_even(L) > 0 for K = 2 and every L in [1/400, log 16]"
+        "statement": ("lambda_even(L) > 0 for K = 2 and every L in [1/400, U], "
+                      "U = 2772588722239781/10^15 < log 16; (U, log 16] remains OPEN"
                       if list(chosen) == list(range(1, 16))
                       else f"partial covering: cutoff cells {args.cells} of 1-15"),
         "precision_bits": PREC, "legal_even_carrier": carrier, "cells": cells,

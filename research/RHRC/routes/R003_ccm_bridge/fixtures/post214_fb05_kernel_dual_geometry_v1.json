@@ -17,7 +17,7 @@
     "primary_Q": 14
   },
   "inherited_post202_fixture": "post202_fb05_q14_composite_parity_gap_v1.json",
-  "inherited_post202_fixture_blob_sha": "370a7c2aecb15155b2adc51a9c2f08dfcf36e1b1",
+  "inherited_post202_fixture_blob_sha": "ea427461ace70bda35efb1ec59f1320f5020e38d",
   "inherited_post177_fixture": "post177_fb05_q13_fixed_unit_derivative_v1.json",
   "selected_center_labels": [
     "Q13_midpoint",
@@ -28,7 +28,7 @@
   "arb_precision_bits": 384,
   "implementation_check_precision_bits": 192,
   "provenance_blobs": {
-    "canonical_source_arb.py": "0a38380f5674d965aabcc0b8cbfc37c3813a180e",
+    "canonical_source_arb.py": "701d62266ba9db89c59a9d1edef6546b77b1bfe9",
     "canonical_source_numeric.py": "475ac16564fa9e7bb6151b5b22c828af04715067",
     "post150_selected_residual.py": "103b431f81a84da445a9ba06e48ba1d09abd8314",
     "post165_fb05_shifted_state.py": "8a340bc00fbb3b507f354e42f0a3cd23a55bf803",

@@ -48,18 +48,18 @@
   },
   "inherits_runtime_qualification": false,
   "input_snapshot": {
-    "candidate_count": 3666,
-    "candidate_resolution_sha256": "9062e246328219bea3515f1d49fb3c35dc14930d261126c9cacda88d2c9b13ad",
-    "candidate_source_surface_sha256": "c097daadea1dcf8650748f41f59331695d1e40812b32c47ac0f0f7993b389a2f",
-    "candidate_summary_sha256": "21295afd7eac68b1d03f85a0c556dd835555535ea6274bba7810943db1a11590",
+    "candidate_count": 3696,
+    "candidate_resolution_sha256": "0a8c02b0fdf7344f9010f6bbf404a128124241b632cc569a536f4ec394e59aff",
+    "candidate_source_surface_sha256": "d31408147debf0f50bc49c167982372c654938fd044daca177b3e8ebd9881011",
+    "candidate_summary_sha256": "fc73e062439e20c351c9d1268f7fdaf50ffe036b984625f9e6a73f757d45340a",
     "lean_toolchain": "leanprover/lean4:v4.33.0-rc2",
     "registered_compiler_receipt_sha256": "134eac5491f8d89575c1e5e1fa9a102d37382fe38758d2ac0ba0274e4503efaf",
-    "rhkg_subject_digest_sha256": "e0ea928a6565d5867abade7affdea77285542bfb0c7ce569cd1457156b34a3a4",
-    "source_only_public_theorem_count": 1331
+    "rhkg_subject_digest_sha256": "a18a94ce4542f558cd1a3d39c360c2e8ac9be00f017055f64c4c3cb517bf187a",
+    "source_only_public_theorem_count": 1360
   },
   "qualification_identity": {
-    "execution_digest": "d3f1aee8b56bac08954535917c4900667ba861d230119b8b3d0d12567c0a2f7d",
-    "execution_id": "RHKG_CANDIDATE_SNAPSHOT:e0ea928a6565d586",
+    "execution_digest": "9351b483c425a0a2f3a0edeab3740bdaa8c565c6fe07db093e1bcdfda1ded178",
+    "execution_id": "RHKG_CANDIDATE_SNAPSHOT:a18a94ce4542f558",
     "profile_digest": "0ab841ca4f9c683bcf206c0cd2e434f07f35b3861073feb370f10195cac49929",
     "profile_id": "RHRC_FFBBP_V17_RHKG_SNAPSHOT_PROFILE",
     "protocol_digest": "30fd49aa7806e29ea8ce750cb91ad0f9edb3d655b9697f6a6dd82d3666a4ac26",
@@ -76,7 +76,7 @@
         "status": "FAIL"
       },
       "decision_factorization": {
-        "collision_fiber_count": 381,
+        "collision_fiber_count": 385,
         "counterexamples": [
           {
             "member_ids": [
@@ -672,16 +672,16 @@
             ]
           }
         ],
-        "fiber_count": 411,
-        "full_state_count": 3666,
+        "fiber_count": 415,
+        "full_state_count": 3696,
         "max_fiber_size": 69,
-        "mixed_value_fiber_count": 183,
+        "mixed_value_fiber_count": 184,
         "passed": false
       },
       "declared_use": "NEGATIVE_CONTROL_ONLY",
       "description": "Module-only Xi; retained as the exact decision-sufficiency falsifier.",
       "diagnostic_factorization": {
-        "collision_fiber_count": 381,
+        "collision_fiber_count": 385,
         "counterexamples": [
           {
             "member_ids": [
@@ -1260,10 +1260,10 @@
             ]
           }
         ],
-        "fiber_count": 411,
-        "full_state_count": 3666,
+        "fiber_count": 415,
+        "full_state_count": 3696,
         "max_fiber_size": 69,
-        "mixed_value_fiber_count": 231,
+        "mixed_value_fiber_count": 232,
         "passed": false
       },
       "id": "MODULE_ONLY_SNAPSHOT",
@@ -1278,10 +1278,10 @@
         "status": "PASS"
       },
       "decision_factorization": {
-        "collision_fiber_count": 500,
+        "collision_fiber_count": 504,
         "counterexamples": [],
-        "fiber_count": 722,
-        "full_state_count": 3666,
+        "fiber_count": 727,
+        "full_state_count": 3696,
         "max_fiber_size": 67,
         "mixed_value_fiber_count": 0,
         "passed": true
@@ -1289,10 +1289,10 @@
       "declared_use": "POST_REFERENCE_COHORT_NAVIGATION_ONLY",
       "description": "Retains module and exact visibility disposition for post-reference cohort navigation.",
       "diagnostic_factorization": {
-        "collision_fiber_count": 500,
+        "collision_fiber_count": 504,
         "counterexamples": [],
-        "fiber_count": 722,
-        "full_state_count": 3666,
+        "fiber_count": 727,
+        "full_state_count": 3696,
         "max_fiber_size": 67,
         "mixed_value_fiber_count": 0,
         "passed": true
@@ -1349,8 +1349,8 @@
             ]
           }
         ],
-        "fiber_count": 3631,
-        "full_state_count": 3666,
+        "fiber_count": 3661,
+        "full_state_count": 3696,
         "max_fiber_size": 4,
         "mixed_value_fiber_count": 3,
         "passed": false
@@ -1483,8 +1483,8 @@
             ]
           }
         ],
-        "fiber_count": 3631,
-        "full_state_count": 3666,
+        "fiber_count": 3661,
+        "full_state_count": 3696,
         "max_fiber_size": 4,
         "mixed_value_fiber_count": 11,
         "passed": false
@@ -1504,7 +1504,7 @@
   "schema_version": "RHRC-FFBBP-RHKG-assurance-report-2.0",
   "selected_reduction": "MODULE_VISIBILITY_SNAPSHOT",
   "selected_reduction_disposition": "PASS_FOR_POST_REFERENCE_COHORT_NAVIGATION_ONLY",
-  "source_only_module_cohort_count": 291,
+  "source_only_module_cohort_count": 295,
   "source_only_module_cohorts": [
     {
       "count": 67,
@@ -2027,6 +2027,24 @@
     {
       "count": 12,
       "declarations": [
+        "Zeta23.CCM.canonical_evenFixedEnergy_contDiffOn_two",
+        "Zeta23.CCM.concave_family_ge_of_endpoint_ge",
+        "Zeta23.CCM.concave_on_Icc_ge_min_endpoints",
+        "Zeta23.CCM.evenRayleighBottom_ge_endpoint_min_of_M66",
+        "Zeta23.CCM.evenRayleighBottom_ge_endpoint_min_of_euler_curvature",
+        "Zeta23.CCM.evenRayleighBottom_ge_endpoint_min_of_nativeEuler",
+        "Zeta23.CCM.evenRayleighBottom_ge_endpoint_min_of_raw_reciprocal_concavity",
+        "Zeta23.CCM.evenRayleighBottom_ge_endpoint_min_of_reciprocal_concavity",
+        "Zeta23.CCM.reciprocalAperture_euler_chain",
+        "Zeta23.CCM.reciprocalAperture_first_derivative",
+        "Zeta23.CCM.reciprocalAperture_second_derivative",
+        "Zeta23.CCM.reciprocalAperture_strictConcaveOn"
+      ],
+      "module": "Zeta23.CCM.ReciprocalApertureConcavity"
+    },
+    {
+      "count": 12,
+      "declarations": [
         "Zeta23.CCM.sourceExpCoordinate_mem_Icc",
         "Zeta23.CCM.sourceExpCoordinate_sourceLogCoordinate",
         "Zeta23.CCM.sourceFiniteVector_eq_sum_zeroExtendedModes",
@@ -2336,6 +2354,21 @@
         "Zeta23.CCM.smallAperture_scalar_margin_ge_one"
       ],
       "module": "Zeta23.CCM.CanonicalSmallApertureCoercivity"
+    },
+    {
+      "count": 9,
+      "declarations": [
+        "Zeta23.CCM.GlobalBottomResidualState.evenStrict_shift_lt_odd",
+        "Zeta23.CCM.GlobalBottomResidualState.evenStrict_shiftedRay_budget_pos",
+        "Zeta23.CCM.GlobalBottomResidualState.evenStrict_shiftedRay_eigenmode",
+        "Zeta23.CCM.GlobalBottomResidualState.evenStrict_shiftedRay_ne_zero",
+        "Zeta23.CCM.GlobalBottomResidualState.evenStrict_shiftedRay_primeRemainder_budget",
+        "Zeta23.CCM.GlobalBottomResidualState.evenStrict_shiftedRay_source_eq_one",
+        "Zeta23.CCM.GlobalBottomResidualState.evenStrict_trial_eq_source_mul_shiftedRay",
+        "Zeta23.CCM.GlobalBottomResidualState.evenStrict_trial_source_ne_zero",
+        "Zeta23.CCM.GlobalBottomResidualState.two_le_groundSuccessor"
+      ],
+      "module": "Zeta23.CCM.GlobalBottomStrictEvenShiftedRay"
     },
     {
       "count": 9,
@@ -2741,6 +2774,18 @@
         "Zeta23.CCM.predecessorSectorNonnegative_one"
       ],
       "module": "Zeta23.CCM.FirstCrossingSchurReduction"
+    },
+    {
+      "count": 6,
+      "declarations": [
+        "Zeta23.CCM.k2EvenBottom_positive_of_M66_and_M51",
+        "Zeta23.CCM.k2EvenBottom_positive_of_interpolation_and_M51",
+        "Zeta23.CCM.k2EvenBottom_positive_of_raw_concavity_and_M51",
+        "Zeta23.CCM.k2EvenBottom_positive_of_reciprocal_concavity_and_M51",
+        "Zeta23.CCM.k2OddBottom_positive_of_finite_window",
+        "Zeta23.CCM.one_div_400_lt_primeFreeRadius_two"
+      ],
+      "module": "Zeta23.CCM.K2EvenBottomGluing"
     },
     {
       "count": 6,
@@ -3749,6 +3794,14 @@
     {
       "count": 2,
       "declarations": [
+        "Zeta23.CCM.k3BothParityBottom_positive_of_finite_windows",
+        "Zeta23.CCM.k3ParityBottom_positive_of_finite_window"
+      ],
+      "module": "Zeta23.CCM.K3BottomWindowRecord"
+    },
+    {
+      "count": 2,
+      "declarations": [
         "Zeta23.CCM.hardWindowCharacterCorrelation_centered_eq_qBasis",
         "Zeta23.CCM.two_mul_dictionaryBasisTest_eq_kernel"
       ],
@@ -4591,8 +4644,8 @@
   "visibility_counts": {
     "ALREADY_IN_REGISTERED_DEPENDENCY_CLOSURE": 1918,
     "ALREADY_REGISTERED_ROOT": 112,
-    "PRIVATE_OR_INTERNAL_SOURCE_OBJECT": 302,
-    "SOURCE_ONLY_PUBLIC_THEOREM": 1331,
+    "PRIVATE_OR_INTERNAL_SOURCE_OBJECT": 303,
+    "SOURCE_ONLY_PUBLIC_THEOREM": 1360,
     "UNRESOLVED_SOURCE_IDENTITY": 3
   }
 }

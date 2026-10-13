@@ -9,7 +9,7 @@
   "post193_module": "post192_fb05_q14_parity_trajectory_rigidity.py",
   "post193_module_blob_sha": "189579fa44824cd8ddca29d3d9fb48cf933b6617",
   "post193_fixture": "post192_fb05_q14_parity_trajectory_rigidity_v1.json",
-  "post193_fixture_blob_sha": "8c59b133b759aa7324992e929c0abaac5db3bf44",
+  "post193_fixture_blob_sha": "d3b761222c1be356b542ffa5507ca8c32717f40e",
   "post193_probe": "probe_post192_fb05_q14_parity_trajectory_rigidity_scope.py",
   "post193_probe_blob_sha": "134a42b8fb1a4c2f42fd0414072e72a69b238c13",
   "fixed_unit_derivative_module": "post177_fb05_q13_fixed_unit_derivative.py",

@@ -468,6 +468,158 @@
     },
     {
       "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/post287/BUILD_CONTRACT.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/post287/BUILD_CONTRACT.md",
+      "heading_count": 5,
+      "path": "research/RHRC/integration/post287/BUILD_CONTRACT.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/post287/BUILD_STATUS_PENDING_VALIDATION.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/post287/BUILD_STATUS_PENDING_VALIDATION.md",
+      "heading_count": 3,
+      "path": "research/RHRC/integration/post287/BUILD_STATUS_PENDING_VALIDATION.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/post287/CONSOLIDATION_RECEIPT.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/post287/CONSOLIDATION_RECEIPT.md",
+      "heading_count": 4,
+      "path": "research/RHRC/integration/post287/CONSOLIDATION_RECEIPT.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/post287/FALSIFICATION_REPORT.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/post287/FALSIFICATION_REPORT.md",
+      "heading_count": 6,
+      "path": "research/RHRC/integration/post287/FALSIFICATION_REPORT.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/post287/FIXTURE_PROVENANCE_MIGRATION.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/post287/FIXTURE_PROVENANCE_MIGRATION.md",
+      "heading_count": 4,
+      "path": "research/RHRC/integration/post287/FIXTURE_PROVENANCE_MIGRATION.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/post287/LEGACY_M51_DISPLAY_SOURCE_EQUIVALENCE.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/post287/LEGACY_M51_DISPLAY_SOURCE_EQUIVALENCE.md",
+      "heading_count": 1,
+      "path": "research/RHRC/integration/post287/LEGACY_M51_DISPLAY_SOURCE_EQUIVALENCE.md",
+      "route_mentions": [
+        "R003_ccm_bridge"
+      ]
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/post287/LEGACY_M51_ENDPOINT_MIGRATION.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/post287/LEGACY_M51_ENDPOINT_MIGRATION.md",
+      "heading_count": 1,
+      "path": "research/RHRC/integration/post287/LEGACY_M51_ENDPOINT_MIGRATION.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/post287/NUMERICAL_AUTHORITY_CORRECTION.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/post287/NUMERICAL_AUTHORITY_CORRECTION.md",
+      "heading_count": 4,
+      "path": "research/RHRC/integration/post287/NUMERICAL_AUTHORITY_CORRECTION.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/post287/PLAN_SCOPE_CORRECTIONS.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/post287/PLAN_SCOPE_CORRECTIONS.md",
+      "heading_count": 5,
+      "path": "research/RHRC/integration/post287/PLAN_SCOPE_CORRECTIONS.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/post287/POST_GREEN_RESEARCH.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/post287/POST_GREEN_RESEARCH.md",
+      "heading_count": 18,
+      "path": "research/RHRC/integration/post287/POST_GREEN_RESEARCH.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/post287/PR290_REPAIR_PLAN.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/post287/PR290_REPAIR_PLAN.md",
+      "heading_count": 4,
+      "path": "research/RHRC/integration/post287/PR290_REPAIR_PLAN.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/post287/PR290_SCOPE_OVERRIDE_AND_HANDOFF.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/post287/PR290_SCOPE_OVERRIDE_AND_HANDOFF.md",
+      "heading_count": 5,
+      "path": "research/RHRC/integration/post287/PR290_SCOPE_OVERRIDE_AND_HANDOFF.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/post287/WP2_WP4_NORMALIZATION_CROSSWALK.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/post287/WP2_WP4_NORMALIZATION_CROSSWALK.md",
+      "heading_count": 3,
+      "path": "research/RHRC/integration/post287/WP2_WP4_NORMALIZATION_CROSSWALK.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/post287/WP4_GATE_DISPOSITION.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/post287/WP4_GATE_DISPOSITION.md",
+      "heading_count": 1,
+      "path": "research/RHRC/integration/post287/WP4_GATE_DISPOSITION.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/post287/WP5_WP6_FINITE_RESEARCH_HARVEST.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/post287/WP5_WP6_FINITE_RESEARCH_HARVEST.md",
+      "heading_count": 3,
+      "path": "research/RHRC/integration/post287/WP5_WP6_FINITE_RESEARCH_HARVEST.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
       "document_id": "rh:document:research/RHRC/interventions/README.md",
       "document_role": "DOCUMENTATION_ARTIFACT",
       "file_class": "DOCUMENTATION",
@@ -1017,7 +1169,7 @@
       ]
     }
   ],
-  "entry_count": 85,
+  "entry_count": 100,
   "graph_theorem_promotion": false,
   "mention_semantics": "claim_mentions and route_mentions are exact textual-token navigation hints only; they do not establish support, implication, supersession, or theorem authority.",
   "schema_version": "RHKG-final-document-closure-1.0",

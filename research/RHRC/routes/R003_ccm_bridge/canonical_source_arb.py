@@ -36,15 +36,39 @@ def to_arb_rational(num: int, den: int = 1) -> arb:
 
 
 def definitely_positive(x: arb) -> bool:
-    return bool(x > 0)
+    return bool(x.is_finite() and x > 0)
 
 
 def definitely_negative(x: arb) -> bool:
-    return bool(x < 0)
+    return bool(x.is_finite() and x < 0)
+
+
+def require_finite(*values: arb) -> None:
+    """An indeterminate or infinite enclosure supplies no mathematical bound."""
+    if any(not value.is_finite() for value in values):
+        raise ArithmeticError('nonfinite Arb enclosure cannot certify a bound')
+
+
+def finite_second_order_lower(value: arb, first: arb, second: arb, radius: arb) -> arb:
+    """Taylor lower enclosure, or indeterminate when any required jet is unknown.
+
+    Python min(arb(0), arb('nan')) returns zero: using it without this guard
+    silently discards an unknown Taylor remainder and is UNSOUND. Return nan
+    so search callers subdivide or report UNRESOLVED, and checkers reject.
+    """
+    if (any(not v.is_finite() for v in (value,first,second,radius)) or
+            not bool(radius >= 0)):
+        return arb('nan')
+    curvature=second.lower()
+    if not curvature.is_finite():
+        return arb('nan')
+    floor=arb(0) if curvature >= 0 else curvature
+    lower=(value-abs(first).upper()*radius+floor*radius*radius/2).lower()
+    return lower if lower.is_finite() else arb('nan')
 
 
 def definitely_nonzero(x: arb) -> bool:
-    return not x.contains(0)
+    return bool(x.is_finite() and not x.contains(0))
 
 
 def ball_record(x: arb, digits: int = 30) -> dict:

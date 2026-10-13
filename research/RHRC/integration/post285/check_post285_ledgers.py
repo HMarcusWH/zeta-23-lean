@@ -11,6 +11,7 @@ import json
 import re
 import subprocess
 import sys
+from fractions import Fraction
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
@@ -21,6 +22,7 @@ MUST_STAY_OPEN = {
     "OBS060O_STATIONARY_SATURATION_EXCLUSION",
     "M14_BRANCH_EXCLUSION",
     "M32_CANONICAL_GRONWALL_COEFFICIENT",
+    "M51_K2_EXACT_LOG16_ENDPOINT",
     "RH",
 }
 ROOT_STATUSES = {"PROVED_PENDING_CI", "PROVED"}
@@ -44,6 +46,33 @@ def main() -> int:
     for oid in MUST_STAY_OPEN:
         if by_id.get(oid, {}).get("status") != "OPEN":
             fail(f"{oid} must remain OPEN")
+    legacy_domain = {
+        "lower_rational": [1, 400],
+        "upper_rational": [2772588722239781, 10 ** 15],
+        "endpoints_included": True,
+        "exact_log16_endpoint_covered": False,
+    }
+    # log 16 = 8 * sum_{k>=0} 1/((2k+1)*3^(2k+1)); all omitted terms
+    # are positive. Exact rational arithmetic proves the legacy cutoff falls
+    # below even this finite lower bound, without a numerical evaluator.
+    legacy_upper = Fraction(*legacy_domain["upper_rational"])
+    log16_lower = 8 * sum(Fraction(1, (2*k+1)*3**(2*k+1)) for k in range(17))
+    if not legacy_upper < log16_lower:
+        fail("legacy rational upper bound must be strictly below log 16")
+    m51 = by_id.get("M51_K2_EVEN_BOTTOM_CERTIFICATE", {})
+    dispositions = json.loads((HERE / "EXPERIMENT_DISPOSITIONS.json").read_text(encoding="utf-8"))
+    experiment = next((r for r in dispositions["experiments"]
+                       if r["id"] == "X285_M51_K2_EVEN_BOTTOM"), {})
+    for row in (m51, experiment):
+        if (row.get("covered_domain") != legacy_domain or
+                row.get("endpoint_obligation") != "M51_K2_EXACT_LOG16_ENDPOINT"):
+            fail("legacy M51 evidence must retain its exact rational domain and OPEN endpoint gap")
+    endpoint = by_id["M51_K2_EXACT_LOG16_ENDPOINT"]
+    if endpoint.get("remaining_domain") != {
+        "lower_rational": legacy_domain["upper_rational"], "lower_included": False,
+        "upper_symbolic": "log 16", "upper_included": True,
+    }:
+        fail("legacy M51 remaining domain must be (U, log 16]")
     roots = json.loads((HERE / "PROOF_ROOTS.json").read_text(encoding="utf-8"))
     if not roots["roots"]:
         fail("no proof roots")

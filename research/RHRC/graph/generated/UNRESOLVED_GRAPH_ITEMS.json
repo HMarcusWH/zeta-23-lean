@@ -888,6 +888,7 @@
     "Mathlib.Analysis.Complex.RemovableSingularity",
     "Mathlib.Analysis.Complex.Trigonometric",
     "Mathlib.Analysis.Convex.Birkhoff",
+    "Mathlib.Analysis.Convex.Deriv",
     "Mathlib.Analysis.Convex.PathConnected",
     "Mathlib.Analysis.Distribution.SchwartzSpace.Deriv",
     "Mathlib.Analysis.Fourier.AddCircle",

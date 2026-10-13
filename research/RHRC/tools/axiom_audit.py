@@ -18,10 +18,47 @@ STANDARD = {"propext", "Classical.choice", "Quot.sound"}
 REPORT = re.compile(r"'([^']+)' depends on axioms: \[([^\]]*)\]")
 NO_AXIOMS = re.compile(r"'([^']+)' does not depend on any axioms")
 
-# Require complete proof-authority receipts for the current contact-calculus
-# promotion surface. A successful unrelated #print must not hide a missing
-# frontier theorem report.
+# Require complete proof-authority receipts for the contact-calculus and
+# post-287 promotion surfaces. A successful unrelated #print must not hide a
+# missing promoted theorem report.
 EXPECTED_REPORTS: dict[str, set[str]] = {
+    "Zeta23/CCM/ReciprocalApertureConcavity.lean": {
+        "Zeta23.CCM.reciprocalAperture_first_derivative",
+        "Zeta23.CCM.reciprocalAperture_second_derivative",
+        "Zeta23.CCM.reciprocalAperture_euler_chain",
+        "Zeta23.CCM.reciprocalAperture_strictConcaveOn",
+        "Zeta23.CCM.concave_on_Icc_ge_min_endpoints",
+        "Zeta23.CCM.concave_family_ge_of_endpoint_ge",
+        "Zeta23.CCM.evenRayleighBottom_ge_endpoint_min_of_reciprocal_concavity",
+        "Zeta23.CCM.evenRayleighBottom_ge_endpoint_min_of_raw_reciprocal_concavity",
+        "Zeta23.CCM.evenRayleighBottom_ge_endpoint_min_of_euler_curvature",
+        "Zeta23.CCM.evenRayleighBottom_ge_endpoint_min_of_nativeEuler",
+        "Zeta23.CCM.canonical_evenFixedEnergy_contDiffOn_two",
+        "Zeta23.CCM.evenRayleighBottom_ge_endpoint_min_of_M66",
+    },
+    "Zeta23/CCM/GlobalBottomStrictEvenShiftedRay.lean": {
+        "Zeta23.CCM.GlobalBottomResidualState.evenStrict_shift_lt_odd",
+        "Zeta23.CCM.GlobalBottomResidualState.two_le_groundSuccessor",
+        "Zeta23.CCM.GlobalBottomResidualState.evenStrict_trial_eq_source_mul_shiftedRay",
+        "Zeta23.CCM.GlobalBottomResidualState.evenStrict_trial_source_ne_zero",
+        "Zeta23.CCM.GlobalBottomResidualState.evenStrict_shiftedRay_source_eq_one",
+        "Zeta23.CCM.GlobalBottomResidualState.evenStrict_shiftedRay_eigenmode",
+        "Zeta23.CCM.GlobalBottomResidualState.evenStrict_shiftedRay_ne_zero",
+        "Zeta23.CCM.GlobalBottomResidualState.evenStrict_shiftedRay_primeRemainder_budget",
+        "Zeta23.CCM.GlobalBottomResidualState.evenStrict_shiftedRay_budget_pos",
+    },
+    "Zeta23/CCM/K2EvenBottomGluing.lean": {
+        "Zeta23.CCM.k2EvenBottom_positive_of_interpolation_and_M51",
+        "Zeta23.CCM.k2EvenBottom_positive_of_reciprocal_concavity_and_M51",
+        "Zeta23.CCM.k2OddBottom_positive_of_finite_window",
+        "Zeta23.CCM.k2EvenBottom_positive_of_raw_concavity_and_M51",
+        "Zeta23.CCM.one_div_400_lt_primeFreeRadius_two",
+        "Zeta23.CCM.k2EvenBottom_positive_of_M66_and_M51",
+    },
+    "Zeta23/CCM/K3BottomWindowRecord.lean": {
+        "Zeta23.CCM.k3ParityBottom_positive_of_finite_window",
+        "Zeta23.CCM.k3BothParityBottom_positive_of_finite_windows",
+    },
     "Zeta23/CCM/FirstCrossingGeneratedStrictEvenFrontier.lean": {
         "Zeta23.CCM.GeneratedStrictEvenContact.firstOrder_is_fresh",
         "Zeta23.CCM.GeneratedStrictEvenContact.production_frontier",
