@@ -37,7 +37,15 @@ The historical Q14 10/12 and first 18/18 passes were calculated with centre valu
 \`Delta''=a''d+2a'd'+ad''-2(b')^2-2bb''\`
 needs whole-interval enclosures. Both results are historical execution output, **not interval certificates**.
 
-The corrected second-order source on 041fe6de95fb37a3ec19dab24b1a0ba4b238af11 independently passed 18/18 frozen primary/control boxes at 384 bits and bounded depth. This is a **frozen feasibility gate only**, not a full K3 continuous positivity certificate. The new full-range workflow must preserve full interval a,d,b and first/second derivative enclosures, refuse source digests that drift, and independently check the assembled 30-layer continuous cover.
+The corrected product formula recorded 18/18 frozen primary/control box passes
+at 384 bits on earlier sources. A later, separate defect was found in the
+curvature floor: min(0,nan.lower()) discarded unknown remainders. The old
+frozen summary omits leaf curvatures and requires a finite-guarded replay;
+its green flag alone is not accepted as certificate authority. The first full
+manual campaign was stopped after affected accepted tiles were found. See
+`NUMERICAL_AUTHORITY_CORRECTION.md`. The repaired workflow must retain whole
+interval factors, finite bounds, source provenance and a completed fresh
+non-partial global check before accepting full coverage.
 
 If any permitted method reports UNRESOLVED, that is neither a certified positive bottom nor a certified negative one. Do not increase precision/depth or silently change the representation in violation of rev4.
 

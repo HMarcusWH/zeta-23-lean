@@ -1,5 +1,12 @@
 # WP4 Full K3 frozen feasibility gate — historical test receipt
 
+> **SECOND AUTHORITY CORRECTION — 2026-10-13:** later artifacts expose a
+> distinct nan-curvature bug: Python min(0,nan.lower()) silently drops an
+> unknown Taylor remainder. The first full campaign (run 38326458483) was
+> stopped. Its affected tile passes are invalidated. The old frozen summary
+> omits leaf curvature diagnostics and needs a fresh finite-guard replay.
+> See `NUMERICAL_AUTHORITY_CORRECTION.md`; no complete K3 positivity is accepted.
+
 > **AUTHORITY CORRECTION — 2026-10-12:** The older frozen-Q14 evaluator
 > used the centre values of (a,b,d,a',b',d') when constructing the
 > **second derivative of the determinant over a whole interval**.

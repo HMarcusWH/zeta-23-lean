@@ -1,5 +1,13 @@
 # Post-#287 WP0–WP7 post-green research pass
 
+> **SUPERSEDED INTERIM REVIEW — 2026-10-13:** the exact 894b4180 formal tree
+> now compiles all four modules, with 29 permitted-axiom reports and a passed
+> proof-escape gate. The numerical inventory below is not current authority:
+> nan-curvature acceptance invalidated prior complete K2/K3 transcript claims
+> and stopped the first full campaign. See `NUMERICAL_AUTHORITY_CORRECTION.md`
+> and `OPEN_OBLIGATIONS.json`. Guarded replays and final every-job harvest are
+> pending; the final Post-Green review must replace this interim inventory.
+
 **Research status at writing:** INTERIM / MUST RE-HARVEST FINAL HEAD.  
 **Source authority examined:** original #290 exact head \`041fe6de95bf37a3ec19dab24b1a0ba4b238af11\`, synthetic PR merge \`7944ef13174a1b36439479401739be2dec0ed2ea\`. Current integration commits supersede the source head; compiler and full interval validation on their final tree are not inherited.  
 **Terminal claim:** RH_OPEN. This document cannot be promoted to final workflow harvest until every exact-final-head job has settled.

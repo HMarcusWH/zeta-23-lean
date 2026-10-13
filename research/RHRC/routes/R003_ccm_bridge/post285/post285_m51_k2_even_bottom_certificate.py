@@ -130,9 +130,7 @@ def lower_bound(c: Fraction, r: Fraction, Q: int, offset: arb = arb(0)) -> arb:
     _, _, Mpp = jets(ball(c, r), 2, Q)
     lam, lam1, lam2 = quad(M), quad(Mp), quad(Mpp)
     rr = ball(r)
-    curv = lam2.lower()
-    curv = arb(0) if curv >= 0 else curv
-    return (lam - offset - abs(lam1).upper() * rr + curv * rr * rr / 2).lower()
+    return C.finite_second_order_lower(lam-offset,lam1,lam2,rr)
 
 
 def cover(Q: int, a: Fraction, b: Fraction, stats: dict, offset: arb = arb(0),
@@ -144,7 +142,7 @@ def cover(Q: int, a: Fraction, b: Fraction, stats: dict, offset: arb = arb(0),
         c, r = (lo + hi) / 2, (hi - lo) / 2
         lb = lower_bound(c, r, Q, offset)
         stats["evaluations"] += 1
-        if lb > 0:
+        if C.definitely_positive(lb):
             stats["intervals"] += 1
             stats["min_lower_bound"] = min(stats["min_lower_bound"], float(lb))
             stats["min_radius"] = min(stats["min_radius"], float(r))

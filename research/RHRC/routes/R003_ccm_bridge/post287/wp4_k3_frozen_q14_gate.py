@@ -71,8 +71,7 @@ def two_scalar_jets(M,Mp,Mi,Mpi,Mppi,geom):
 
 def taylor_lower(jets3:tuple,rad:arb)->arb:
     value,d1,d2=jets3
-    d2_floor=min(arb(0),d2.lower())
-    return (value-abs(d1).upper()*rad+d2_floor*rad*rad/2).lower()
+    return C.finite_second_order_lower(value,d1,d2,rad)
 
 
 def evaluate(Q:int,t:Fraction,r:Fraction,geom)->dict:
@@ -87,12 +86,12 @@ def evaluate(Q:int,t:Fraction,r:Fraction,geom)->dict:
             'first_a':C.ball_record(a[1],32),'first_delta':C.ball_record(delta[1],32),
             'second_a_interval':C.ball_record(a[2],32),
             'second_delta_interval':C.ball_record(delta[2],32),
-            'certified_negative_centre':bool((a[0].upper()<0 or delta[0].upper()<0) and
+            'certified_negative_centre':bool((C.definitely_negative(a[0]) or C.definitely_negative(delta[0])) and
                 C.fixed_cell_membership(Q,centre)['certified']),
             'a_lower':C.ball_record(a_low,32),
             'det_lower':C.ball_record(delta_low,32),
-            'a_positive':bool(a_low>0),'det_positive':bool(delta_low>0),
-            'accepted':bool(a_low>0 and delta_low>0)}
+            'a_positive':C.definitely_positive(a_low),'det_positive':C.definitely_positive(delta_low),
+            'accepted':bool(C.definitely_positive(a_low) and C.definitely_positive(delta_low))}
 
 
 def bounded_cover(Q:int,t:Fraction,r:Fraction,geom,depth:int,

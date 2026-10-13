@@ -43,15 +43,14 @@ def bound(c:Fraction,r:Fraction,Q:int)->dict:
     _,_,Mpp=jets(arb(q(c),q(r)),2,Q)
     f,g,h=energy(M),energy(Mp),energy(Mpp)
     rr=q(r)
-    lower=(f-abs(g).upper()*rr+
-           min(arb(0),h.lower())*rr*rr/2).lower()
+    lower=C.finite_second_order_lower(f,g,h,rr)
     return {"centre":[c.numerator,c.denominator],
             "radius":[r.numerator,r.denominator],
             "value":C.ball_record(f,36),
             "first":C.ball_record(g,36),
             "curvature":C.ball_record(h,36),
             "lower":C.ball_record(lower,36),
-            "positive":bool(lower>0)}
+            "positive":C.definitely_positive(lower)}
 
 
 def cell_interval(Q:int)->tuple[Fraction,Fraction]:

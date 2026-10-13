@@ -101,16 +101,19 @@ def compare_vector(coefficients: list[Fraction], precision_bits: int) -> dict:
     energy = sum((weights[i] * matrix[i, j] * weights[j]
                   for i in range(5) for j in range(5)), arb(0))
     difference = direct - energy
+    C.require_finite(mass,pole,prime,arch,direct,energy,difference)
     tolerance = arb(2) ** -(precision_bits // 2)
     if not difference.contains(0) or not bool(abs(difference) < tolerance):
         raise AssertionError("independent literature/canonical normalization mismatch")
     ratio = direct / energy
+    C.require_finite(ratio)
     if not ratio.contains(1):
         raise AssertionError("normalization ratio does not enclose one")
     coth = ((aperture / 2).exp() + (-aperture / 2).exp()) / (
         (aperture / 2).exp() - (-aperture / 2).exp())
     extra_arch_correction = (arb.const_euler() + (4 * arb.pi()).log()
                              - coth.log()) * mass
+    C.require_finite(coth,extra_arch_correction)
     controls = {
         "factor_two_rejected": not (2 * direct - energy).contains(0),
         "second_arch_correction_rejected": not (

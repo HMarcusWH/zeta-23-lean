@@ -37,16 +37,15 @@ def accepted_bound(c:Fraction,r:Fraction,Q:int) -> dict:
     M,Mprime,_=jets(ball(c),2,Q)
     _,_,Msecond=jets(ball(c,r),2,Q)
     f,fp,fpp=quad(M),quad(Mprime),quad(Msecond)
-    curvature_floor=min(arb(0),fpp.lower())
     rr=ball(r)
-    lb=(f-abs(fp).upper()*rr+curvature_floor*rr*rr/2).lower()
+    lb=C.finite_second_order_lower(f,fp,fpp,rr)
     return {
         'centre':qpair(c),'radius':qpair(r),
         'lambda_c':C.ball_record(f,35),
         'lambda_prime_c':C.ball_record(fp,35),
         'curvature_interval':C.ball_record(fpp,35),
         'lower':C.ball_record(lb,35),
-        'strictly_positive':bool(lb>0),
+        'strictly_positive':C.definitely_positive(lb),
     }
 
 

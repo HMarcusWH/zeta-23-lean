@@ -34,13 +34,12 @@ def exact_arb(value: Fraction) -> arb:
 
 def verify_fresh_lower(centre: Fraction, radius: Fraction, cell: int) -> bool:
     """Fresh higher-precision formula, not the transcript writer's accepted_bound."""
-    C, R = exact_arb(centre), exact_arb(radius)
-    M0, M1, _ = matrix_jets(C, 2, cell)
-    _, _, M2box = matrix_jets(arb(C, R), 2, cell)
+    centre_ball, R = exact_arb(centre), exact_arb(radius)
+    M0, M1, _ = matrix_jets(centre_ball, 2, cell)
+    _, _, M2box = matrix_jets(arb(centre_ball, R), 2, cell)
     value, slope, curvature = quad(M0), quad(M1), quad(M2box)
-    bound = (value - abs(slope).upper() * R +
-             min(arb(0), curvature.lower()) * R * R / 2).lower()
-    return bool(bound > 0)
+    bound = C.finite_second_order_lower(value,slope,curvature,R)
+    return C.definitely_positive(bound)
 
 def main():
     p=argparse.ArgumentParser()

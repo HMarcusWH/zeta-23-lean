@@ -64,6 +64,7 @@ def compare(Lq:Fraction,Qcell:int,K:int)->dict:
     M2=fixed_unit_fixed_q_canonical_source_matrix_arb(L,K,Qcell)
     for i in range(2*K+1):
         for j in range(2*K+1):
+            C.require_finite(M[i,j],M2[i,j],M[i,j]-M2[i,j])
             if not (M[i,j]-M2[i,j]).contains(0):
                 raise AssertionError(("Eq4.4 vs fixed-unit source mismatch",
                                       Qcell,K,i,j,C.ball_record(M[i,j]-M2[i,j],30)))
@@ -79,6 +80,7 @@ def main()->int:
     args=p.parse_args()
     initial_source=source_input_digests()
     C.set_precision(args.precision_bits);ctx.prec=args.precision_bits
+    C.require_finite(C.von_mangoldt(2),C.von_mangoldt(4),C.von_mangoldt(8),C.von_mangoldt(6))
     assert (C.von_mangoldt(2)-C.von_mangoldt(4)).contains(0)
     assert (C.von_mangoldt(2)-C.von_mangoldt(8)).contains(0)
     assert C.von_mangoldt(6).is_zero()
@@ -92,6 +94,7 @@ def main()->int:
     m3=C.canonical_source_matrix(L,3,14)
     for i in range(5):
         for j in range(5):
+            C.require_finite(m3[i+1,j+1],m2[i,j],m3[i+1,j+1]-m2[i,j])
             if not (m3[i+1,j+1]-m2[i,j]).contains(0):
                 raise AssertionError(("K2/K3 nesting mismatch",i,j))
     d={"schema":"post287.wp2.wp4.normalization.v1",

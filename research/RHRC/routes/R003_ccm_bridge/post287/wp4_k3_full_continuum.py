@@ -78,17 +78,15 @@ def second_order_lower(c:arb,r:arb,cell:int,parity:str,diagnostics:dict|None=Non
     det=a*d-b*b
     dp=da*d+a*dd-2*b*db
     dpp=d2a*di+2*dai*ddi+ai*d2d-2*dbi*dbi-2*bi*d2b
-    lower_a=(a-abs(da).upper()*r +
-             min(arb(0),d2a.lower())*r*r/2).lower()
-    lower_d=(det-abs(dp).upper()*r +
-             min(arb(0),dpp.lower())*r*r/2).lower()
+    lower_a=C.finite_second_order_lower(a,da,d2a,r)
+    lower_d=C.finite_second_order_lower(det,dp,dpp,r)
     if diagnostics is not None:
         diagnostics.update(point_a=C.ball_record(a,36),
             point_delta=C.ball_record(det,36),
             first_a=C.ball_record(da,36),first_delta=C.ball_record(dp,36),
             second_a_interval=C.ball_record(d2a,36),
             second_delta_interval=C.ball_record(dpp,36),
-            certified_negative_centre=bool((a.upper()<0 or det.upper()<0) and
+            certified_negative_centre=bool((C.definitely_negative(a) or C.definitely_negative(det)) and
                 C.fixed_cell_membership(cell,c)['certified']))
     return lower_a,lower_d
 
@@ -103,7 +101,7 @@ def evaluate(tile,parity,cell,method):
                 "delta":C.ball_record(lower_delta,36),
                 "centre":[c.numerator,c.denominator],
                 "radius":[r.numerator,r.denominator],"precision_bits":ctx.prec,
-                **diagnostics,"accepted":bool(lower_a>0 and lower_delta>0)}
+                **diagnostics,"accepted":bool(C.definitely_positive(lower_a) and C.definitely_positive(lower_delta))}
     row=check_box(Q(c),Q(r),cell,parity,allow_frozen_extension=True)
     return {"method":"FOURTH","a":row["a_lower"],
             "delta":row["delta_lower"],

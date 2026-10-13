@@ -17,22 +17,24 @@
     },
     {
       "id": "WP1",
-      "status": "PARTIAL_PENDING_CI",
+      "status": "PROVED",
       "path": "Zeta23/CCM/ReciprocalApertureConcavity.lean",
-      "open_detail": "Reciprocal calculus, strict concavity, nonzero-carrier Rayleigh infimum interpolation, arbitrary independently proved Euler-curvature radius bridge, and the native M66 specialization via canonical C2 are implemented. Exact repaired-head compiler, complete axiom receipts and proof-escape audit remain pending; no enlarged radius is asserted."
+      "open_detail": "PROVED on exact 894b4180 source tree by the focused compiler gate: reciprocal calculus, strict concavity, nonzero-carrier Rayleigh endpoint interpolation, independent-radius Euler bridge, canonical C2 energy and native M66 specialization. All 12 axiom reports use allowed foundations and proof-escape gate passed. No enlarged radius is asserted; broader public import/RHKG harvest is separate."
     },
     {
       "id": "WP2",
-      "status": "INTERVAL_EVIDENCE_PENDING_REPLAY",
+      "status": "PARTIAL_PENDING_CI",
       "generator": "research/RHRC/routes/R003_ccm_bridge/post287/wp2_k2_even_transcript.py",
       "checker": "research/RHRC/routes/R003_ccm_bridge/post287/wp2_verify_transcript.py",
-      "open_detail": "K2 gap interpolation is discharged analytically by M66 and canonical C2 in the final mathematical interface, while M51 positivity remains an explicit Lean hypothesis. Independent finite literature-functional normalization, source-bound per-interval transcript and no-search checker are implemented; repaired-head compiler and numerical replay remain pending."
+      "formal_status": "PROVED_CONDITIONAL",
+      "numerical_status": "INVALIDATED_PENDING_GUARDED_REPLAY",
+      "open_detail": "The conditional K2 gluing and exact radius theorem compile on 894b4180 with all 6 allowed-axiom reports; analytic interpolation and the log endpoint comparison are discharged internally. M51 remains the sole independent window premise. Old M51 transcript has 4 nonfinite accepted rows among 1205 and is invalidated as complete evidence. Finite-bound guards and causal regression now require corrected-source full replay; numerical receipts never instantiate the Lean premise."
     },
     {
       "id": "WP3",
-      "status": "PROVED_PENDING_CI",
+      "status": "PROVED",
       "path": "Zeta23/CCM/GlobalBottomStrictEvenShiftedRay.lean",
-      "open_detail": "Nine typed true-ground shifted-ray theorems pushed on actual negative #247 eigenvalue, explicit H-normalization and prime/budget energy, conditional exact-head Lean/axiom validation pending"
+      "open_detail": "Nine typed same-state shifted-ray theorems compile on exact 894b4180 with all 9 allowed-axiom reports and proof-escape PASS. The actual retained negative ground and strict-even branch remain explicit; H-normalization and prime/budget identities exclude no negative state. Odd and tie adapters remain OPEN."
     },
     {
       "id": "WP4",
@@ -40,7 +42,9 @@
       "path": "research/RHRC/routes/R003_ccm_bridge/post287/wp4_k3_frozen_q14_gate.py",
       "required": "both K3 parity bottoms strictly >0 at every L in [1/512,log16]",
       "alternate": "only predeclared fourth-order Taylor centre expansion",
-      "open_detail": "Prior frozen Q14 10/12 and 18/18 PASS outputs are NOT valid rigorous determinant certificates: the old algorithm evaluated factors of Delta'' at the centre instead of across the whole interval. This was corrected in the frozen Q14 and full K3 source and guarded by static checks; exact-head rerun is required. Fourth-order fallback is only enabled on a NEW correctly computed UNRESOLVED gate. Both-parity full continuous K3 positivity remains OPEN.",
+      "formal_status": "PROVED_CONDITIONAL",
+      "numerical_status": "INVALIDATED_PENDING_GUARDED_REPLAY",
+      "open_detail": "The conditional K3 Lean interface compiles on 894b4180 with 2 allowed-axiom reports; hWindows is still explicit. Historical centre-only Delta'' outputs remain invalidated. A distinct nan-curvature floor bug invalidated old whole-window certificates: 10 nonfinite accepted rows among 459 in 8 manual K3 layers and 4 among 266 in K2 odd. The first manual campaign was stopped. Guarded frozen/odd/full replays are required with unchanged methods and budgets. Fourth fallback remains enabled only after a correctly computed SECOND UNRESOLVED gate. Both-parity full continuous K3 positivity remains OPEN.",
       "fallback": "research/RHRC/routes/R003_ccm_bridge/post287/wp4_k3_fourth_order_fallback.py",
       "jet_validator": "research/RHRC/routes/R003_ccm_bridge/post287/wp4_fourth_order_validate.py",
       "k2_odd": "research/RHRC/routes/R003_ccm_bridge/post287/wp4_k2_odd_prerequisite.py",
@@ -50,7 +54,9 @@
       "lean_record": "Zeta23/CCM/K3BottomWindowRecord.lean",
       "historical_disqualified": [
         "#289 Q14 10/12 output (centre-only Delta'' enclosure)",
-        "#290 head 518c4fd 18/18 output, run 38311427064 artifact 11774767416 (same flaw)"
+        "#290 head 518c4fd 18/18 output, run 38311427064 artifact 11774767416 (same flaw)",
+        "manual run 38326458483 accepted nan-curvature tiles (unknown remainder silently replaced by zero)",
+        "unguarded frozen summaries omit leaf curvatures; corrected-source guarded replay required"
       ]
     },
     {
@@ -66,7 +72,7 @@
       "id": "WP6",
       "status": "EXPERIMENTAL_SIGNAL_PENDING_REPLAY",
       "path": "research/RHRC/routes/R003_ccm_bridge/post287/wp6_k2_signed_ray_probe.py",
-      "open_detail": "The bounded K2 source-specific negative-shift ray shows opposite Arb Euler source signs on prior head; it falsifies generic selected-ray global sign, not actual #247 negative ground. Current-branch rerun/controls and final disposition pending."
+      "open_detail": "The bounded K2 source-specific negative-shift ray shows opposite Arb Euler source signs on prior head; it falsifies the unrestricted admissible-ray sign law, not a law on the actual selected #247 negative ground. Pointwise sign evaluations do not use the faulty Taylor floor, but corrected-source rerun/controls and final harvest remain pending."
     },
     {
       "id": "WP7",
@@ -110,5 +116,12 @@
     "research/RHRC/routes/R003_ccm_bridge/post287/wp4_k3_assemble_shards.py",
     ".github/workflows/rhrc_post287_wp4_full_continuum.yml"
   ],
-  "new_source_status": "IMPLEMENTED_PENDING_EXACT_HEAD_VALIDATION; CORRECTED_WP4_FROZEN_Q14_GATE_PENDING_RECHECK; WP4_FULL_CERTIFICATE_OPEN"
+  "formal_validation": {
+    "head": "894b4180c99258f2a9b1117019e03160cbed9e7c",
+    "tree": "e64daac73e1badbd396e05821b3ac48f31e008f9",
+    "focused_job": 115077198449,
+    "result": "ALL_FOUR_MODULES_COMPILE; ALL_29_FOUNDATIONAL_AXIOM_REPORTS; PROOF_ESCAPE_PASS",
+    "numerical_premises_discharged": false
+  },
+  "new_source_status": "FORMAL_OBJECT_VERIFIED_AT_894; GUARDED_NUMERICAL_SOURCE_PENDING_REPLAY; WP4_FULL_CERTIFICATE_OPEN"
 }

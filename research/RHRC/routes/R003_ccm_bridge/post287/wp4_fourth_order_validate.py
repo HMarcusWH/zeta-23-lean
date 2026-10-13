@@ -37,6 +37,7 @@ def compare(Qcell:int,L:arb)->dict:
         for i in range(7):
             for j in range(7):
                 residual=f*jets[order][i,j]-known[order][i,j]
+                C.require_finite(jets[order][i,j],known[order][i,j],residual)
                 if not residual.contains(0):
                     raise AssertionError((Qcell,order,i,j,C.ball_record(residual,28)))
     return {"cell":Qcell,
@@ -64,6 +65,7 @@ def compare_high_order(Qcell:int,L:arb)->dict:
             for j in range(7):
                 difference=sum(w*M[i,j] for w,M in zip(weights,values))/(factorial*h**order)
                 residual=difference-interval_jets[order][i,j]
+                C.require_finite(difference,interval_jets[order][i,j],residual)
                 if not residual.contains(0):
                     raise AssertionError(("high-order finite-difference mismatch",
                                           Qcell,order,i,j,C.ball_record(residual,28)))

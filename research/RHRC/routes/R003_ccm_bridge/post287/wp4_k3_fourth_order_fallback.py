@@ -211,10 +211,14 @@ def taylor_lower(center: list[arb], fourth_interval: arb, radius: arb) -> arb:
     not on the full source channels. Cancellation is retained in the exact
     centre coefficients and in the interval fourth derivative.
     """
+    if (any(not value.is_finite() for value in [*center[:ORDER],fourth_interval,radius]) or
+            not bool(radius >= 0)):
+        return arb('nan')
     lb = center[0].lower()
     for k in range(1, ORDER):
         lb -= abs(center[k]).upper() * radius**k
-    return (lb - abs(fourth_interval).upper()*radius**ORDER).lower()
+    lower=(lb - abs(fourth_interval).upper()*radius**ORDER).lower()
+    return lower if lower.is_finite() else arb('nan')
 
 
 def check_box(c:arb, r:arb, cutoff:int, parity:str,
@@ -246,13 +250,13 @@ def check_box(c:arb, r:arb, cutoff:int, parity:str,
             "centre_delta_coefficients":[C.ball_record(v,38) for v in dc[:ORDER]],
             "fourth_a_interval":C.ball_record(ai[ORDER],38),
             "fourth_delta_interval":C.ball_record(di[ORDER],38),
-            "certified_negative_centre":bool((ac[0].upper()<0 or dc[0].upper()<0) and
+            "certified_negative_centre":bool((C.definitely_negative(ac[0]) or C.definitely_negative(dc[0])) and
                 C.fixed_cell_membership(cutoff,c)['certified']),
             "a_lower":C.ball_record(lower_a,38),
             "delta_lower":C.ball_record(lower_det,38),
-            "a_positive":bool(lower_a>0),
-            "delta_positive":bool(lower_det>0),
-            "verdict":"PASS" if lower_a>0 and lower_det>0 else "UNRESOLVED",
+            "a_positive":C.definitely_positive(lower_a),
+            "delta_positive":C.definitely_positive(lower_det),
+            "verdict":"PASS" if C.definitely_positive(lower_a) and C.definitely_positive(lower_det) else "UNRESOLVED",
             "duration_s":round(time.monotonic()-start,2)}
 
 

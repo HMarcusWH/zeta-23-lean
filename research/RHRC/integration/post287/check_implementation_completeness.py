@@ -19,6 +19,7 @@ LEDGER = ROOT / "research/RHRC/integration/post287/OPEN_OBLIGATIONS.json"
 
 PY = [
     "certificate_integrity.py",
+    "test_wp2_wp4_finite_bounds.py",
     "wp2_literature_form_arb_probe.py",
     "wp2_k2_even_transcript.py",
     "wp2_verify_transcript.py",
@@ -107,6 +108,7 @@ def check() -> dict:
     assert "wp4_k3_assemble_shards.py" in workflow
     assert "timeout-minutes: 360" in workflow
     assert "workflow_call:" in workflow
+    assert "test_wp2_wp4_finite_bounds.py" in workflow
     assert "needs: campaign-prerequisites" in workflow
     assert "--second-gate /tmp/wp4-prerequisites/second-gate.json" in workflow
     wrapper=(ROOT / '.github/workflows/rhrc_post284_source_inertia.yml').read_text()

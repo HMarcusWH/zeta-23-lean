@@ -28,6 +28,7 @@ SOURCE_INPUTS = [BASE + p for p in (
     "post285/post285_m51_k2_even_bottom_certificate.py",
     "fixtures/post175_fb05_q13_fixed_unit_enclosure_v1.json", "requirements.txt",
     "post287/certificate_integrity.py", "post287/wp2_k2_even_transcript.py",
+    "post287/test_wp2_wp4_finite_bounds.py",
     "post287/wp2_verify_transcript.py", "post287/wp2_wp4_normalization_gate.py",
     "post287/wp2_literature_form_arb_probe.py",
     "post287/wp4_k2_odd_prerequisite.py", "post287/wp4_k3_frozen_q14_gate.py",
