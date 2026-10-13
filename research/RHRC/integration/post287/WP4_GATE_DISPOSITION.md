@@ -1,3 +1,7 @@
+> **Current guarded-source disposition (2026-10-13):** The earlier narrative below is a historical snapshot; the authoritative repaired source-pinned 30-layer K3 manual campaign is [38332529352](https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38332529352) at `31512dbb`. Frozen SECOND 18/18 PASS; global full-K3 `UNRESOLVED`: 26 complete layers, even Q9/Q13/Q14/Q15 with 7/7/11/10 missing positivity enclosures. D2 Full OPEN and explicitly deferred to next PR. See `PR290_SCOPE_OVERRIDE_AND_HANDOFF.md`. **RH_OPEN.**
+
+---
+
 # WP4 Full K3 frozen feasibility gate — historical test receipt
 
 > **SECOND AUTHORITY CORRECTION — 2026-10-13:** later artifacts expose a

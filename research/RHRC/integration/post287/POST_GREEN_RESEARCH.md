@@ -1,3 +1,39 @@
+# PR #290 — Post-green source-bound research pass (pre-final CI harvest)
+
+**Date:** 2026-10-13. **Scope:** user-approved repair-only merge. Original D2 full K3 parity-window criterion remains OPEN and is deferred to next PR, not silently deleted or weakened. **RH_OPEN.**
+
+This is the *committed pre-final* mathematical synthesis. An independently observed final tree/commit and the final workflow/job disposition will be posted to the PR after all new checks have settled; doing that here would produce a self-referential commit/CI loop.
+
+## What is formally true — established exact declarations, not RH
+
+WP1 reciprocal-aperture fixed-vector calculus and Rayleigh endpoint interpolation use the proven M66 prime-free radius and genuinely nonempty K>=2 parity carriers. WP2 K2-even gluing is conditional on `hM51`; WP4 K3 positive windows remain conditional on `hWindow/hWindows`. WP3 transports the **same selected strict-even negative ground** onto its normalized shifted secular ray with an exact signed prime/remainder balance, not a contrary sign. The prior immutable 29-declaration axiom/proof-escape receipt at `31512dbb` is historical; final-candidate compiler authority must be observed separately. No extra axioms, sorry/admit, RH claim or hidden positivity parameter is introduced.
+
+## Workflow harvest — immutable guarded predecessor
+
+At `31512dbb698dd59b90cfa32549f0e9273a5163f9` manual run `38332529352`, 34 jobs included 30 K3 layers. Their checked assembly received all 30 but returned `UNRESOLVED` (four even layers). The corrected frozen 384-bit Q14 SECOND gate passed 18/18 separate feasibility boxes; the source-pinned K2 odd prerequisite checked 350 intervals, while the corrected WP2 K2 even transcript checked 1310 intervals at 192-bit fresh verifier precision and covers a rational endpoint beyond true log16. The 26 fully certified K3 layer intervals do not cover the remaining even Q9/Q13/Q14/Q15 intervals. Earlier centre-only determinant curvature and `min(0,nan.lower())` historical positives remain invalidated. Distinguish job execution success, actual research sign, and omitted full non-partial checker. No new Lean proof term is obtained from Arb.
+
+WP5 gives a **NON_ZETA_MODIFIED_PRIME** crossing (a falsifier of generic positive-source crossing bans), not an off-line zeta zero. WP6 opposite signs falsify an unrestricted admissible negative-shift ray source-sign law, not the actual selected negative ground. Preserve unresolved and falsified regression dispositions on replay instead of promoting green playback to new theorem authority.
+
+## What changed / upstream / downstream
+
+The repaired whole-interval `Delta''` uses interval values and jets; finite-safe Taylor guards reject unknown curvature instead of accepting a fabricated positive floor. Upstream source normalization is the canonical pole+arch+prime matrix with genuine prime-power weights and nonunitary parity indexing. The K2-even/odd finite positivity evidence reduces a predecessor obstruction but does not eliminate the K3 Schur determinant gap. WP3 provides same-state transport of the actual selected negative eigenvector, preserving source and phase without independent exclusion.
+
+## Resurrected routes and new RH-relevant hypotheses — explicitly LEADS
+
+The K3 even Schur determinant may respond to a source-specific representation instead of further subdividing failing intervals; inspect Q9/Q13/Q14/Q15 data without changing their existing certified interpretation. Old interval-certification failure was partly a representation/enclosure problem, but general Gram PSD and unrestricted signed-ray positivity remain falsified routes. The selected-ground `Gamma` window and odd/tie adapter are a distinct path; K2 degeneracy is not evidence of a global selected-state law.
+
+## Falsification checks / highest-leverage next move
+
+Preserve controlled NaN injection, exact rational coverage/method caps, modified-prime crossings, unrestricted sign-counterexamples and negative/countermodel evidence. Next theorem/research PR should predeclare any new method, source and budget, and first discriminate whether the four even-sector deficits come from enclosure dependency, cutoff seams or true native sign changes. It must rebind any new computation to its *own* source identity. No experimental signal becomes PROVED merely by passing CI.
+
+## Required final-head update (GitHub PR comment, NOT another source commit)
+
+Record exact final head+tree and synthetic merge tree; collect **all** final PR workflows and per-job formal/regression/research dispositions, including skipped work, and compare with the frozen predecessor. Confirm the post-green research pass and Codex P2 have been checked after the final generated-state commit. No RH upgrade.
+
+---
+
+## Preserved historical interim review (superseded)
+
 # Post-#287 WP0–WP7 post-green research pass
 
 > **SUPERSEDED INTERIM REVIEW — 2026-10-13:** the exact 894b4180 formal tree

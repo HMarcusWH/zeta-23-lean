@@ -28,10 +28,58 @@ def validate_wp5_model_scope(row: dict) -> None:
     assert row["model_is_actual_zeta"] is False
     assert row["rh_counterexample_claim"] is False
 
+
+EXPECTED_D2='FULL_K3_BOTH_PARITIES_CONTINUOUS_[1/512,log16]'
+CAMPAIGN='31512dbb698dd59b90cfa32549f0e9273a5163f9'
+REMAINING={'Q9_even':7,'Q13_even':7,'Q14_even':11,'Q15_even':10}
+
+def validate_d2_deferral(d: dict) -> None:
+    """Differentiate user-authorized merge scope from unproved D2 mathematics."""
+    assert d['terminal_claim']=='RH_OPEN'
+    assert d['requirements']['D2']==EXPECTED_D2
+    s=d['merge_scope']
+    assert s['kind']=='REPAIR_ONLY_D2_DEFERRED'
+    assert s['authorized_date']=='2026-10-13'
+    assert s['authorized_by']=='user_in_conversation'
+    assert s['original_D2_required'] is True
+    assert s['D2_full_status']=='OPEN_DEFERRED_NEXT_PR'
+    assert s['merge_without_D2_full'] is True
+    assert s['requires_user_approval'] is True
+    assert s['next_pr_target'].startswith('K3_CONTINUOUS')
+    a=s['original_campaign']
+    assert a['source_commit']==CAMPAIGN
+    assert a['run_id']==38332529352
+    assert (a['total_layers'],a['complete_layers'],a['unresolved_layers'],a['unresolved_intervals'])==(30,26,4,35)
+    assert a['unresolved_by_layer']==REMAINING
+    assert d['merge_policy'].startswith('USER_APPROVAL_REQUIRED')
+    assert 'RH_OPEN' in d['merge_policy']
+
+def validate_wp4_gate(d: dict) -> None:
+    """Never allow the partial K3 evidence to masquerade as the frozen-gate or global theorem."""
+    wp4=next(x for x in d['packages'] if x['id']=='WP4')
+    assert wp4['status']=='GATE_UNRESOLVED'
+    assert wp4['formal_status']=='PROVED_CONDITIONAL'
+    assert wp4['numerical_status']=='PARTIAL_SOURCE_PINNED'
+    assert wp4['frozen_second_gate']=='PASS_18_OF_18'
+    assert wp4['full_window_status']=='UNRESOLVED'
+    assert wp4['source_campaign_run_id']==38332529352
+    assert wp4['source_campaign_commit']==CAMPAIGN
+    assert (wp4['total_layers'],wp4['complete_layers'])==(30,26)
+    assert wp4['remaining_layer_intervals']==REMAINING
+    assert sum(wp4['remaining_layer_intervals'].values())==35
+    assert wp4['next_pr_obligation']=='D2_FULL_K3_EVEN_SECTOR_35_SUBINTERVALS'
+    assert 'K3 positivity remains OPEN' in wp4['open_detail']
+    assert 'hWindows' in wp4['open_detail']
+    assert wp4['alternate'].startswith('only predeclared fourth-order')
+    for key in ('path','fallback','jet_validator','k2_odd','full_cover',
+                'cover_checker','assembler','lean_record'):
+        assert (ROOT/wp4[key]).is_file(),('missing required WP4 method',key)
+    assert (ROOT/'research/RHRC/integration/post287/PR290_SCOPE_OVERRIDE_AND_HANDOFF.md').is_file()
+
 def main():
     d=json.loads(LEDGER.read_text())
-    assert d['terminal_claim']=='RH_OPEN'
-    assert d['requirements']['D2'].startswith('FULL_K3')
+    validate_d2_deferral(d)
+    validate_wp4_gate(d)
     assert set(d['protected_open'])==PROTECTED
     assert len(d['packages'])==8
     assert [x['id'] for x in d['packages']]==[f'WP{i}' for i in range(8)]

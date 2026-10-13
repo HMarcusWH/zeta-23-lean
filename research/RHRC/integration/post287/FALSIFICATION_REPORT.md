@@ -1,3 +1,7 @@
+> **Latest source-pinned status:** A corrected guarded Q14 frozen 18/18 PASS confirms *only box feasibility*. Manual 30-layer full K3 run 38332529352 received all layers but remained `UNRESOLVED` (even Q9/Q13/Q14/Q15); the earlier malformed-centre and NaN Taylor executions remain invalidated. WP5 and WP6 both preserve their falsifying/research dispositions, not a sign law. Source identity `31512dbb` is immutable; RH_OPEN.
+
+---
+
 # WP0–WP7 falsification report — rev4 implementation
 
 **Research base:** exact PR #290 source head 041fe6de95bf37a3ec19dab24b1a0ba4b238af11 (see the run/job IDs below).  

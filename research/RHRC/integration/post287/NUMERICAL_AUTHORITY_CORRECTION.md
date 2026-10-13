@@ -1,3 +1,7 @@
+> **Follow-up after the repair (source `31512dbb`):** Guarded K2-even 1,310-tile/192-bit verification and K2-odd 350-tile independent verification succeeded. Frozen K3 SECOND 18/18 prescribed boxes PASS, *not* full K3. The source-pinned 30-layer full K3 campaign returned `UNRESOLVED` with 26 complete and 4 incomplete even layers (35 unresolved intervals), see [run 38332529352](https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38332529352). All earlier affected NaN-acceptance certificates remain INVALIDATED. No past artifact is retroactively rebound to a newer commit. D2 Full deferred, RH_OPEN.
+
+---
+
 # Indeterminate Taylor curvature: certificate authority correction
 
 Date: 2026-10-13. RH_OPEN. This correction is independent of the older
