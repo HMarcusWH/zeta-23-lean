@@ -1,4 +1,10 @@
 import Zeta23.CCM.UniversalSincDetector
+import Zeta23.CCM.UniversalSincProductMoments
+import Zeta23.CCM.UniversalSincInverseGevreyBounds
+import Zeta23.ExceptionalZero.PositiveLaplaceTilt
+import Zeta23.CCM.NativeDeepThresholdInverseBudgets
+import Zeta23.CCM.NativeDeepThresholdSimplicity
+import Zeta23.CCM.NativeDeepThresholdEvenMoment
 import Zeta23.CCM.UniversalSincDetectorBounds
 import Zeta23.CCM.UniversalSincDetectorInverse
 import Zeta23.CCM.UniversalSincSourceLaw
@@ -285,7 +291,37 @@ run_cmd do
     (``Zeta23.CCM.nativeRationalCausalKernel_realLaplace, "Zeta23.CCM.NativeRationalCompletionLaplace"),
     (``Zeta23.CCM.nativeRationalCausalKernel_signed_integral, "Zeta23.CCM.NativeRationalCompletionLaplace"),
     (``Zeta23.CCM.step123_enteringPrimeSourceMatrix_zero, "Zeta23.CCM.Step123PrimeSeam"),
-    (``Zeta23.CCM.step123_qBasis_logSeam_zero, "Zeta23.CCM.Step123PrimeSeam")]
+    (``Zeta23.CCM.step123_qBasis_logSeam_zero, "Zeta23.CCM.Step123PrimeSeam"),
+    (``Zeta23.CCM.UniversalSinc.polynomial_sqrt_decay_Ioi_integral, "Zeta23.CCM.UniversalSincProductMoments"),
+    (``Zeta23.CCM.UniversalSinc.polynomial_sqrt_decay_integral, "Zeta23.CCM.UniversalSincProductMoments"),
+    (``Zeta23.CCM.UniversalSinc.product_norm_moment_integral_le_factorial, "Zeta23.CCM.UniversalSincProductMoments"),
+    (``Zeta23.CCM.UniversalSinc.factorial_two_mul_add_one_le, "Zeta23.CCM.UniversalSincProductMoments"),
+    (``Zeta23.CCM.UniversalSinc.product_norm_moment_integral_le_gevrey, "Zeta23.CCM.UniversalSincProductMoments"),
+    (``Zeta23.CCM.UniversalSinc.integrable_product_ofReal_smul_moment, "Zeta23.CCM.UniversalSincInverseGevreyBounds"),
+    (``Zeta23.CCM.UniversalSinc.iteratedDeriv_fourier_product, "Zeta23.CCM.UniversalSincInverseGevreyBounds"),
+    (``Zeta23.CCM.UniversalSinc.norm_iteratedDeriv_fourier_product_le_moment, "Zeta23.CCM.UniversalSincInverseGevreyBounds"),
+    (``Zeta23.CCM.UniversalSinc.norm_iteratedDeriv_inverseCandidate_le_moment, "Zeta23.CCM.UniversalSincInverseGevreyBounds"),
+    (``Zeta23.CCM.UniversalSinc.norm_iteratedDeriv_inverseCandidate_le_gevrey, "Zeta23.CCM.UniversalSincInverseGevreyBounds"),
+    (``Zeta23.ExceptionalZero.positiveLaplaceTilt_isFiniteMeasure, "Zeta23.ExceptionalZero.PositiveLaplaceTilt"),
+    (``Zeta23.ExceptionalZero.positiveLaplaceTilt_apply_univ, "Zeta23.ExceptionalZero.PositiveLaplaceTilt"),
+    (``Zeta23.ExceptionalZero.positiveLaplaceTilt_ae_nonneg, "Zeta23.ExceptionalZero.PositiveLaplaceTilt"),
+    (``Zeta23.ExceptionalZero.integrable_exp_positiveLaplaceTilt_iff, "Zeta23.ExceptionalZero.PositiveLaplaceTilt"),
+    (``Zeta23.ExceptionalZero.integrable_cexp_positiveLaplaceTilt_iff, "Zeta23.ExceptionalZero.PositiveLaplaceTilt"),
+    (``Zeta23.ExceptionalZero.complexMGF_positiveLaplaceTilt, "Zeta23.ExceptionalZero.PositiveLaplaceTilt"),
+    (``Zeta23.ExceptionalZero.zero_mem_interior_integrableExpSet_positiveLaplaceTilt, "Zeta23.ExceptionalZero.PositiveLaplaceTilt"),
+    (``Zeta23.CCM.nativeDeepThreshold_even_ground_coercive, "Zeta23.CCM.NativeDeepThresholdInverseBudgets"),
+    (``Zeta23.CCM.nativeDeepThreshold_odd_ground_coercive, "Zeta23.CCM.NativeDeepThresholdInverseBudgets"),
+    (``Zeta23.CCM.nativeDeepThreshold_even_detector_coercive, "Zeta23.CCM.NativeDeepThresholdInverseBudgets"),
+    (``Zeta23.CCM.nativeDeepThreshold_odd_detector_coercive, "Zeta23.CCM.NativeDeepThresholdInverseBudgets"),
+    (``Zeta23.CCM.nativeDeepThreshold_inverse_norms_zero_at_first, "Zeta23.CCM.NativeDeepThresholdInverseBudgets"),
+    (``Zeta23.CCM.exists_nativeDeepThresholdGround_with_inverseBudgets_of_given_trial, "Zeta23.CCM.NativeDeepThresholdInverseBudgets"),
+    (``Zeta23.CCM.nativeDeepThreshold_even_eigenspace_finrank_le_one, "Zeta23.CCM.NativeDeepThresholdSimplicity"),
+    (``Zeta23.CCM.nativeDeepThreshold_odd_eigenspace_finrank_le_one, "Zeta23.CCM.NativeDeepThresholdSimplicity"),
+    (``Zeta23.CCM.nativeDeepThreshold_even_ground_simple, "Zeta23.CCM.NativeDeepThresholdSimplicity"),
+    (``Zeta23.CCM.nativeDeepThreshold_odd_ground_simple, "Zeta23.CCM.NativeDeepThresholdSimplicity"),
+    (``Zeta23.CCM.nativeDeepThreshold_selectedParity_simple, "Zeta23.CCM.NativeDeepThresholdSimplicity"),
+    (``Zeta23.CCM.nativeDeepThreshold_even_ground_momentFour_ne_zero, "Zeta23.CCM.NativeDeepThresholdEvenMoment"),
+    (``Zeta23.CCM.nativeDeepThreshold_strictEven_ground_source_ne_zero, "Zeta23.CCM.NativeDeepThresholdEvenMoment")]
   let queries := roots.map fun (name, mod) =>
     ({ sourceId := name.toString, moduleName := mod, shortName := name.toString,
        sourceKind := "THEOREM" } : Zeta23.RHRC.SourceCandidateQuery)

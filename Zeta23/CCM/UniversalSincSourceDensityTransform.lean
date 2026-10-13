@@ -35,8 +35,9 @@ theorem paperFT_uniformBoxDensity_ofReal {a : ℝ} (ha : 0 < a) (r : ℝ) :
   by_cases hr : r = 0
   · subst r
     rw [Zeta23.paperFT_def]
-    simp only [Complex.ofReal_zero, mul_zero, Complex.exp_zero, mul_one]
-    rw [uniformBoxDensityComplex, integral_complex_ofReal, integral_uniformBoxDensity ha]
+    simp only [Complex.ofReal_zero, mul_zero, zero_mul, Complex.exp_zero, mul_one,
+      uniformBoxDensityComplex]
+    rw [integral_complex_ofReal, integral_uniformBoxDensity ha]
     simp
   have hfun : (fun x : ℝ => uniformBoxDensityComplex a x * Complex.exp (I * (r : ℂ) * x)) =
       (Icc (-a) a).indicator
@@ -112,7 +113,6 @@ private theorem density_joint_character_integrable {s : ℝ} (hs : 0 < s) (r : �
       rw [show I * (r : ℂ) * (p.2 : ℂ) = I * ((r * p.2 : ℝ) : ℂ) by push_cast; ring,
         Complex.norm_exp_I_mul_ofReal]
     rw [he, mul_one, abs_of_nonneg (originalBoxPairDensity_nonneg hs _)]
-    exact le_rfl
 
 private theorem prefix_shift_transform (s r y : ℝ) :
     (∫ x : ℝ, (originalBoxPairDensity s (x - y) : ℂ) * Complex.exp (I * (r : ℂ) * (x : ℂ))) =
@@ -124,7 +124,9 @@ private theorem prefix_shift_transform (s r y : ℝ) :
         Complex.exp (I * (r : ℂ) * (((x - y) + y : ℝ) : ℂ))) := by
     funext x
     rw [sub_add_cancel]
-  rw [hfun, integral_sub_right_eq_self]
+  rw [hfun, integral_sub_right_eq_self
+    (fun x : ℝ => (originalBoxPairDensity s x : ℂ) *
+      Complex.exp (I * (r : ℂ) * ((x + y : ℝ) : ℂ))) y]
   have hsplit : (fun x : ℝ => (originalBoxPairDensity s x : ℂ) *
       Complex.exp (I * (r : ℂ) * ((x + y : ℝ) : ℂ))) =
       (fun x : ℝ => ((originalBoxPairDensity s x : ℂ) * Complex.exp (I * (r : ℂ) * (x : ℂ))) *

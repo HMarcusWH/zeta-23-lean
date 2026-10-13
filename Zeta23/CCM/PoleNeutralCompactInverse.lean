@@ -52,11 +52,13 @@ private theorem continuous_nativePoleExponential (r : ℝ) :
     Continuous (nativePoleExponential r) :=
   Complex.continuous_ofReal.comp (Real.continuous_exp.comp (continuous_const.mul continuous_id))
 
-private theorem hasDerivAt_nativePoleExponential (r x : ℝ) :
+theorem hasDerivAt_nativePoleExponential (r x : ℝ) :
     HasDerivAt (nativePoleExponential r)
       ((r : ℂ) * nativePoleExponential r x) x := by
   have h := (((hasDerivAt_id x).const_mul r).exp).ofReal_comp
-  simpa only [nativePoleExponential, mul_one, Complex.ofReal_mul, mul_comm] using h
+  change HasDerivAt (fun y : ℝ => (Real.exp (r * y) : ℂ))
+    ((r : ℂ) * (Real.exp (r * x) : ℂ)) x
+  simpa only [id_eq, mul_one, Complex.ofReal_mul, mul_comm] using! h
 
 private theorem hasDerivAt_nativePolePrimitive (s r : ℝ) {f : ℝ → ℂ}
     (hf : Continuous f) (x : ℝ) :
@@ -74,11 +76,12 @@ theorem nativePoleCompactInverse_hasDerivAt (s : ℝ) {f : ℝ → ℂ}
   have hA := hasDerivAt_nativePolePrimitive s (-1 / 2) hf x
   have hB := hasDerivAt_nativePolePrimitive s (1 / 2) hf x
   have h := (hp.mul hA).sub (hm.mul hB)
-  convert h using 1
-  · rfl
-  · dsimp only [nativePoleCompactInverseDerivative]
-    push_cast
-    ring
+  convert! h using 1 <;> first
+    | rfl
+    | (simp only [nativePoleCompactInverse, nativePoleCompactInverseDerivative,
+        Pi.mul_apply, Pi.sub_apply]
+       push_cast
+       ring)
 
 /-- The derivative's derivative contains the original source with
 coefficient exactly one. -/
@@ -91,12 +94,13 @@ theorem nativePoleCompactInverseDerivative_hasDerivAt (s : ℝ) {f : ℝ → ℂ
   have hA := hasDerivAt_nativePolePrimitive s (-1 / 2) hf x
   have hB := hasDerivAt_nativePolePrimitive s (1 / 2) hf x
   have h := ((hp.mul hA).add (hm.mul hB)).const_mul (1 / 2 : ℂ)
-  convert h using 1
-  · rfl
-  · dsimp only [nativePoleCompactInverse]
-    have he := nativePoleExponential_half_product x
-    push_cast
-    linear_combination -f x * he
+  convert! h using 1 <;> first
+    | rfl
+    | (simp only [nativePoleCompactInverse, nativePoleCompactInverseDerivative,
+        Pi.mul_apply, Pi.add_apply]
+       have he := nativePoleExponential_half_product x
+       push_cast
+       linear_combination -f x * he)
 
 /-- The literal potential solves the elementary-pole equation. -/
 theorem nativePoleCompactInverse_pole_equation (s : ℝ) {f : ℝ → ℂ}
@@ -110,12 +114,16 @@ theorem nativePoleCompactInverse_pole_equation (s : ℝ) {f : ℝ → ℂ}
   ring
 
 theorem nativePoleCompactInverse_continuous (s : ℝ) {f : ℝ → ℂ} (hf : Continuous f) :
-    Continuous (nativePoleCompactInverse s f) :=
-  (fun x => (nativePoleCompactInverse_hasDerivAt s hf x).differentiableAt).continuous
+    Continuous (nativePoleCompactInverse s f) := by
+  have hdiff : Differentiable ℝ (nativePoleCompactInverse s f) :=
+    fun x => (nativePoleCompactInverse_hasDerivAt s hf x).differentiableAt
+  exact hdiff.continuous
 
 theorem nativePoleCompactInverseDerivative_continuous (s : ℝ) {f : ℝ → ℂ}
-    (hf : Continuous f) : Continuous (nativePoleCompactInverseDerivative s f) :=
-  (fun x => (nativePoleCompactInverseDerivative_hasDerivAt s hf x).differentiableAt).continuous
+    (hf : Continuous f) : Continuous (nativePoleCompactInverseDerivative s f) := by
+  have hdiff : Differentiable ℝ (nativePoleCompactInverseDerivative s f) :=
+    fun x => (nativePoleCompactInverseDerivative_hasDerivAt s hf x).differentiableAt
+  exact hdiff.continuous
 
 /-- Continuous sources give an actual twice continuously differentiable potential. -/
 theorem nativePoleCompactInverse_contDiff_two (s : ℝ) {f : ℝ → ℂ}
@@ -130,7 +138,7 @@ theorem nativePoleCompactInverse_contDiff_two (s : ℝ) {f : ℝ → ℂ}
   have hD1 : ContDiff ℝ 1 (nativePoleCompactInverseDerivative s f) := by
     rw [contDiff_one_iff_deriv, hsecond]
     exact ⟨fun x => (nativePoleCompactInverseDerivative_hasDerivAt s hf x).differentiableAt,
-      continuous_const.mul (nativePoleCompactInverse_continuous s hf) |>.add hf⟩
+      (continuous_const.mul (nativePoleCompactInverse_continuous s hf)).add hf⟩
   rw [show (2 : ℕ∞ω) = 1 + 1 by rfl, contDiff_succ_iff_deriv, hfirst]
   exact ⟨fun x => (nativePoleCompactInverse_hasDerivAt s hf x).differentiableAt,
     by simp, hD1⟩
@@ -145,6 +153,7 @@ private theorem nativePolePrimitive_zero_of_lt_left {s r x : ℝ} {f : ℝ → �
         ∫ y : ℝ in x..(-s), (0 : ℂ) := by
     apply intervalIntegral.integral_congr_Ioo_of_le hx.le
     intro y hy
+    change nativePoleExponential r y * f y = 0
     rw [hsupport y (fun hmem => (not_le_of_gt hy.2) hmem.1), mul_zero]
   rw [hz]
   simp
@@ -220,16 +229,16 @@ private theorem continuous_interval_support_traces {s : ℝ} {h : ℝ → ℂ}
       exact hsupport x (fun hmem => (not_le_of_gt hx) hmem.1)
     have hclosure := hclosed.closure_subset_iff.mpr hleft
     have hend : -s ∈ closure (Iio (-s)) := by
-      rw [closure_Iio]
-      exact le_rfl
+      rw [closure_Iio, mem_Iic]
+      exact (le_rfl : -s ≤ -s)
     exact hclosure hend
   · have hright : Ioi s ⊆ {x : ℝ | h x = 0} := by
       intro x hx
       exact hsupport x (fun hmem => (not_le_of_gt hx) hmem.2)
     have hclosure := hclosed.closure_subset_iff.mpr hright
     have hend : s ∈ closure (Ioi s) := by
-      rw [closure_Ioi]
-      exact le_rfl
+      rw [closure_Ioi, mem_Ici]
+      exact (le_rfl : s ≤ s)
     exact hclosure hend
 
 /-- Both endpoint value and first-derivative traces are filled by the actual

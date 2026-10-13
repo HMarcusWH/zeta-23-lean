@@ -12,6 +12,12 @@ from lean_imports import strip_lean_comments
 
 
 CLOSURE_ROOTS = [
+    Path("Zeta23/CCM/UniversalSincProductMoments.lean"),
+    Path("Zeta23/CCM/UniversalSincInverseGevreyBounds.lean"),
+    Path("Zeta23/ExceptionalZero/PositiveLaplaceTilt.lean"),
+    Path("Zeta23/CCM/NativeDeepThresholdInverseBudgets.lean"),
+    Path("Zeta23/CCM/NativeDeepThresholdSimplicity.lean"),
+    Path("Zeta23/CCM/NativeDeepThresholdEvenMoment.lean"),
     Path("Zeta23/CCM/UniversalSincDetector.lean"),
     Path("Zeta23/CCM/UniversalSincDetectorBounds.lean"),
     Path("Zeta23/CCM/UniversalSincDetectorInverse.lean"),

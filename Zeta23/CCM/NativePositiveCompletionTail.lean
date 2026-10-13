@@ -83,7 +83,9 @@ theorem nativePositiveCompletionLogDensity_tail_integral_le {N : ℕ} (hN : 1 �
   have hi : IntegrableOn f (Ioi (N : ℝ)) := by
     have h := (integrableOn_Ioi_rpow_of_lt
       (by norm_num : (-3 / 2 : ℝ) < -1) hNpos).const_mul (1 / 2 : ℝ)
-    simpa only [f, div_eq_mul_inv, one_mul, mul_comm] using h
+    change Integrable (fun x : ℝ => x ^ (-3 / 2 : ℝ) / 2)
+      (volume.restrict (Ioi (N : ℝ)))
+    simpa only [div_eq_mul_inv, one_mul, mul_comm] using! h
   have hnonneg : ∀ x ∈ Ioi (N : ℝ), 0 ≤ f x := by
     intro x hx
     exact div_nonneg (Real.rpow_nonneg (hNpos.trans hx).le _) (by norm_num)

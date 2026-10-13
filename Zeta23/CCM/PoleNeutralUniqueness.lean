@@ -21,12 +21,6 @@ open scoped Topology
 
 namespace Zeta23.CCM
 
-private theorem hasDerivAt_uniquenessExponential (r x : ℝ) :
-    HasDerivAt (nativePoleExponential r)
-      ((r : ℂ) * nativePoleExponential r x) x := by
-  have h := (((hasDerivAt_id x).const_mul r).exp).ofReal_comp
-  simpa only [nativePoleExponential, mul_one, Complex.ofReal_mul, mul_comm] using h
-
 private theorem uniquenessExponential_ne_zero (r x : ℝ) :
     nativePoleExponential r x ≠ 0 :=
   Complex.ofReal_ne_zero.mpr (Real.exp_ne_zero (r * x))
@@ -41,14 +35,14 @@ theorem poleNeutral_homogeneous_eq_zero {h : ℝ → ℂ} {x0 : ℝ}
   let W : ℝ → ℂ := fun x => nativePoleExponential (-1 / 2) x *
     (deriv h x + (1 / 2 : ℂ) * h x)
   have hW (x : ℝ) : HasDerivAt W 0 x := by
-    have hprod := (hasDerivAt_uniquenessExponential (-1 / 2) x).mul
+    have hprod := (hasDerivAt_nativePoleExponential (-1 / 2) x).mul
       ((hdd x).hasDerivAt.add ((hd x).hasDerivAt.const_mul (1 / 2 : ℂ)))
-    convert hprod using 1
-    · rfl
-    · dsimp only [W]
-      push_cast
-      symm
-      linear_combination nativePoleExponential (-1 / 2) x * heq x
+    convert! hprod using 1 <;> first
+      | rfl
+      | (simp only [W, Pi.mul_apply, Pi.add_apply]
+         push_cast
+         symm
+         linear_combination nativePoleExponential (-1 / 2) x * heq x)
   have hWzero (x : ℝ) : W x = 0 := by
     have hconst := is_const_of_deriv_eq_zero
       (fun y => (hW y).differentiableAt) (fun y => (hW y).deriv) x x0
@@ -58,13 +52,13 @@ theorem poleNeutral_homogeneous_eq_zero {h : ℝ → ℂ} {x0 : ℝ}
       (uniquenessExponential_ne_zero (-1 / 2) x)
   let V : ℝ → ℂ := fun x => nativePoleExponential (1 / 2) x * h x
   have hV (x : ℝ) : HasDerivAt V 0 x := by
-    have hprod := (hasDerivAt_uniquenessExponential (1 / 2) x).mul (hd x).hasDerivAt
-    convert hprod using 1
-    · rfl
-    · dsimp only [V]
-      push_cast
-      symm
-      linear_combination nativePoleExponential (1 / 2) x * hfirst x
+    have hprod := (hasDerivAt_nativePoleExponential (1 / 2) x).mul (hd x).hasDerivAt
+    convert! hprod using 1 <;> first
+      | rfl
+      | (simp only [V, Pi.mul_apply]
+         push_cast
+         symm
+         linear_combination nativePoleExponential (1 / 2) x * hfirst x)
   funext x
   have hconst := is_const_of_deriv_eq_zero
     (fun y => (hV y).differentiableAt) (fun y => (hV y).deriv) x x0

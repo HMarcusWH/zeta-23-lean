@@ -121,7 +121,7 @@ theorem poleNeutralEvenOutputResidual_eq_normal (L : ℝ) (K : ℕ)
   rw [hproj, Submodule.starProjection_orthogonal_val]
   rw [sub_sub_cancel, Submodule.starProjection_singleton ℂ]
   simp only [poleNeutralEvenOutputCoefficient, inner_self_eq_norm_sq_to_K,
-    Complex.ofReal_pow]
+    RCLike.ofReal_pow]
 
 theorem orthogonalProjection_poleNeutralOdd_normal_eq_zero (L : ℝ) (K : ℕ) :
     (Submodule.orthogonalProjectionOnto (𝕜 := ℂ)

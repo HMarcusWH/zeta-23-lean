@@ -721,3 +721,85 @@ the bottom-only separator on their actual carriers. Discharge the tilted
 positive-Laplace construction internally before consuming signed excursions.
 The finite source image, quartic transport, full selected-ground/Schur output,
 stable Y/range and original mandatory producer remain **OPEN**, as does RH.
+
+## Tenth pass: the actual density, real-strip regularity and positive moments
+
+**What became formally true.** Head `d88d10094bd9f52b34941c08c34aef1f0ab70eff`,
+tree `4d1f5dc8357f3e264cde0975bef09b1e37e2ce0f`, was checked by run
+`38485317022`, component job `115597424981`, at the pinned compiler and Mathlib.
+Complete PositiveMomentSeries, PositiveMGFContinuation, UniversalSincSourceDensity,
+ZetaRealStripNonvanishing, FiniteBottomGapSelector and NativePositiveCompletionHead
+modules compiled. All printed roots of these six complete modules use only
+propext, Classical.choice and Quot.sound. Proof bodies and surrounding definitions
+were read. Tonelli and Taylor convergence give genuine exponential integrability
+for an almost everywhere nonnegative variable under an actual MGF continuation;
+the measure need not be normalized. The original first-two-box density averaged
+over the actual infinite tail is continuous, nonnegative, compactly supported and
+has mass one. The actual N=1 zeta remainder gives Re zeta(sigma) <= -sigma/(1-sigma)
+for 0 < sigma < 1, so actual nontrivial zero ordinates are nonzero and the filtered
+resolvent is analytic at every real point. The midpoint grid avoids n values with
+the non-strict radius (b-a)/(2(n+1)). Actual floor-cell and finite-head integrals
+are exact. None of these statements assumes RH.
+
+**Workflow harvest.** Exact-controls `115597425307` and native-observations
+`115597425103` SUCCEEDED, preserving frozen controls and freshly checking all
+44 pairs / 176 native rows with the 1024-bit checker. The whole component job
+FAILED on density-transform rewrite shape, native normal cast normalization,
+countable-tail integrability elaboration and compact-inverse derivative instance
+transport. Full type/axiom binding export was skipped. A printed root from an
+erroneous target that contains sorryAx is rejected even when its name resembles
+a desired theorem. Dependent physical-source, sharp mass-certificate and finite
+ground/Schur candidates remain compiler-pending. The separate whole-head harvest
+retains all running jobs as pending; original D2 still has no candidate archive.
+
+**What changed.** Density positivity and mass are constructed from the actual
+law, rather than supplied as interfaces. Real-strip nonvanishing is now proved
+from the repository's actual Euler-Maclaurin formula, not a zero-absence premise.
+The analytic continuation mechanism derives moment summability internally.
+The sharp native mass proof now has its actual exact integrated finite head,
+but still requires its countable tail and rational certificate.
+
+**Upstream implications.** Preserve the unnormalized positive measure and the
+exact shift p0-z when transporting Laplace transforms to MGFs. Nonnegative
+Taylor terms are the reason continuation produces integrability; an arbitrary
+signed tail cannot use this argument directly. Complex module-instance repair
+must preserve the same derivative, not change its mathematical domain.
+
+**Downstream implications.** Real resolvent regularity and positive MGF
+continuation can combine in a boundary-singularity contradiction once the
+actual positive tail, its tilt and continuation disk are constructed. The
+density's transform and measure identification can now connect the original
+law to its smooth inverse and actual k/j. The exact head and countable tail
+can certify the unchanged completion's L1 mass below 605/621.
+
+**Resurrected routes.** A per-zero abscissa argument may avoid choosing a
+rightmost zero or asserting supremum attainment. Actual native nesting can
+combine with the finite midpoint separator and a given deep trial to construct
+the least crossing and distinct predecessor inverses. These prerequisites do
+not construct the required zero-generated trial.
+
+**New RH-relevant clues.** LEAD: a hypothetical eventual one-sided correlation
+bound creates a positive tail whose visible nonreal pole forces a positive
+Laplace boundary, conflicting with real-axis analyticity. LEAD: exact k/j pole
+moments may cancel the continuum integer-drive term and give an independent
+ordinary L2 bound for stable Y by Abel summation. LEAD: actual product moments
+may provide explicit order-two derivative bounds, enabling quartic Fourier
+transport to beat the native exp(L/2) form growth.
+
+**Falsification checks.** Positivity applies only after the actual eventual
+bound is assumed for contradiction, and compact initial corrections must be
+retained. Pole visibility uses the complex square, not a modulus square.
+Ordinary L2 does not imply the stronger weighted tail appearing elsewhere.
+The inverseCandidate cannot be identified with the actual density before
+Fourier inversion compiles. The separator's radius allows equality; neither a
+strict gap nor D/3 follows. Source M4 nonvanishing at ties does not imply
+corrected-source nonvanishing. Generic Gram, tiny-gap and finite-range
+countermodels continue to apply outside verified native hypotheses.
+
+**Highest-leverage next moves.** Compile the repaired density connection,
+compact inverse and mass tail, then export actual types and admitted axioms.
+Construct the actual positive Laplace tilt and boundary argument, quantitative
+inverse derivatives and exact quartic finite image. Continue the distinct
+ground and original-detector Schur operators, independent stable Y and actual
+range tail. All original W00-W10/M01-M25 obligations remain mandatory. The
+assembled producer and RH remain **OPEN**.
