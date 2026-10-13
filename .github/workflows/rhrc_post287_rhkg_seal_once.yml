@@ -50,7 +50,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          git add -A -- .github/workflows/rhrc_post287_rhkg_seal_once.yml
+          # git rm above already staged deletion; git add with the deleted path would fail.
           git add -A -- research/RHRC/graph/compiler research/RHRC/graph/generated
           git add -A -- research/RHRC/integration/generated research/RHRC/ffbbp/generated research/RHRC/ool/generated
           git diff --cached --quiet && { echo "Expected graph delta missing" >&2; exit 1; }
