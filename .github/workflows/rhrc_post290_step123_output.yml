@@ -63,6 +63,8 @@ jobs:
             Zeta23.ExceptionalZero.UniversalSincDetectorVisibility
             Zeta23.ExceptionalZero.ZetaRealStripNonvanishing
             Zeta23.ExceptionalZero.UniversalSincCorrelationReal
+            Zeta23.ExceptionalZero.PositiveMomentSeries
+            Zeta23.ExceptionalZero.PositiveMGFContinuation
             Zeta23.CCM.CanonicalPoleNeutralGeometry
             Zeta23.CCM.CanonicalPoleNeutralCarrier
             Zeta23.CCM.CanonicalPoleNeutralNesting
@@ -75,6 +77,14 @@ jobs:
             Zeta23.CCM.CanonicalPoleNeutralSimpleEvenTie
             Zeta23.CCM.CanonicalPoleNeutralShiftedSecular
             Zeta23.CCM.CanonicalPoleNeutralTiePackage
+            Zeta23.CCM.CanonicalPoleNeutralBottomNFlow
+            Zeta23.CCM.FiniteBottomGapSelector
+            Zeta23.CCM.CanonicalDeepThresholdSelection
+            Zeta23.CCM.NativePoleNeutralTrialDepth
+            Zeta23.CCM.NativeDeepThresholdGround
+            Zeta23.CCM.PoleNeutralCompactInverse
+            Zeta23.CCM.OriginalSincCompactPotential
+            Zeta23.CCM.PoleNeutralUniqueness
             Zeta23.CCM.CanonicalTrialResidualChannels
             Zeta23.CCM.NativeIntegerPrimeSource
             Zeta23.CCM.NativeIntegerPrimeField

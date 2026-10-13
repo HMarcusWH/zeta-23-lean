@@ -35,8 +35,9 @@ private theorem nativeCompletion_cell_partition (N : ℕ) :
     exact ⟨Nat.floor_le hx, Nat.lt_floor_add_one x⟩
 
 private theorem nativeCompletion_cell_partition_disjoint (N : ℕ) :
-    Pairwise (Disjoint on
-      (fun n : ℕ => Ico ((n + N : ℕ) : ℝ) (((n + N : ℕ) : ℝ) + 1))) := by
+    Pairwise (fun n m : ℕ => Disjoint
+      (Ico ((n + N : ℕ) : ℝ) (((n + N : ℕ) : ℝ) + 1))
+      (Ico ((m + N : ℕ) : ℝ) (((m + N : ℕ) : ℝ) + 1))) := by
   intro n m hnm
   apply Set.disjoint_left.mpr
   intro x hn hm
@@ -82,7 +83,7 @@ theorem nativePositiveCompletionLogDensity_tail_integral_le {N : ℕ} (hN : 1 �
   have hi : IntegrableOn f (Ioi (N : ℝ)) := by
     have h := (integrableOn_Ioi_rpow_of_lt
       (by norm_num : (-3 / 2 : ℝ) < -1) hNpos).const_mul (1 / 2 : ℝ)
-    simpa only [f, div_eq_mul_inv, mul_comm] using h
+    simpa only [f, div_eq_mul_inv, one_mul, mul_comm] using h
   have hnonneg : ∀ x ∈ Ioi (N : ℝ), 0 ≤ f x := by
     intro x hx
     exact div_nonneg (Real.rpow_nonneg (hNpos.trans hx).le _) (by norm_num)
@@ -96,18 +97,21 @@ theorem nativePositiveCompletionLogDensity_tail_integral_le {N : ℕ} (hN : 1 �
   have hbound : (∑' n : ℕ, f ((n + N : ℕ) : ℝ)) ≤
       f (N : ℝ) + ∫ x : ℝ in Ioi (N : ℝ), f x := by
     rw [hsplit]
-    apply add_le_add_left
-    simpa only [Nat.add_assoc, Nat.add_comm 1 N] using hremaining
+    have hrem : (∑' n : ℕ, f ((n + 1 + N : ℕ) : ℝ)) ≤
+        ∫ x : ℝ in Ioi (N : ℝ), f x := by
+      simpa only [Nat.add_assoc, Nat.add_comm 1 N] using hremaining
+    exact add_le_add le_rfl hrem
   have hsum := nativePositiveCompletionLogDensity_hasSum_tail_cells hN
   calc
     _ = ∑' n : ℕ, ∫ u : ℝ in Ico ((n + N : ℕ) : ℝ)
           (((n + N : ℕ) : ℝ) + 1), nativePositiveCompletionLogDensity u := hsum.tsum_eq.symm
     _ ≤ ∑' n : ℕ, f ((n + N : ℕ) : ℝ) := by
-      apply tsum_le_tsum _ hsum.summable hshift
-      intro n
-      rw [integral_Ico_eq_integral_Ioo]
-      exact nativePositiveCompletionLogDensity_cell_integral_le
-        (n := n + N) (by omega)
+      apply le_of_tendsto_of_tendsto hsum.summable.tendsto_sum_tsum_nat
+        hshift.tendsto_sum_tsum_nat
+      exact Filter.Eventually.of_forall fun J => Finset.sum_le_sum (fun n hn => by
+        rw [integral_Ico_eq_integral_Ioo]
+        exact nativePositiveCompletionLogDensity_cell_integral_le
+          (n := n + N) (by omega))
     _ ≤ f (N : ℝ) + ∫ x : ℝ in Ioi (N : ℝ), f x := hbound
     _ = _ := by
       dsimp only [f]

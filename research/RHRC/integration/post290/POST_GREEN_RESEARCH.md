@@ -642,3 +642,82 @@ branches, retained tie components and native nesting separately from the
 missing generated selector. Complete the actual finite-head/infinite-tail
 mass certificate, then continue the positive-Laplace boundary and quartic
 transport proofs. M04, the full 25-module producer and RH remain **OPEN**.
+
+## Ninth pass: actual tails, pole moments, nesting and finite index rigidity
+
+**What became formally true.** Head `0b82cb1a22de6dd95c09692c06c0188a7eda2f65`,
+tree `fe74804084818899e616815c50fddf698f110da5`, was checked by run
+`38482884577`, component job `115589454048`, at the pinned compiler/Mathlib.
+Complete Tail, ExponentialMoments, Intertwining, Nesting, IndexRigidity,
+PositiveCompletionMass and RationalCompletionLaplace modules compiled. All
+their printed roots use only the three standard axioms. The exact original
+law is the convolution of its finite prefix law with its actual independent
+tail, whose radius is s/(N+1). Physical elementary exponential moments of
+the actual finite modes vanish exactly on the native profile kernels. Further
+compression has the projected legal defect plus its explicit normal-output
+residual. Native centered extensions are actual isometries preserving the
+unchanged canonical form. An ambient index-square eigenvector with zero
+zeroth/first moments is zero; M4=0 supplies the needed legal-square condition.
+The actual logarithmic mass substitution and per-cell cap are established.
+The actual pre-integer causal kernel has the rational real Laplace multiplier
+and signed integral -2/3. Definitions, proof bodies and displayed axiom sets
+were read; full-source density and the sharp whole-kernel mass were not inferred.
+
+**Workflow harvest.** Exact-controls `115589454311` and native-observations
+`115589453799` SUCCEEDED; immutable/frozen controls and every 176-row native
+observation were preserved at this tree. Shared dependency compilation avoided
+replaying the same failed tail eleven times and still failed closed. The whole
+component job FAILED on density measurability, real-strip bounds, native normal
+projection, and finite-head/countable-tail API elaboration. The complete binding
+export was skipped. Dependent branch, physical-source and mass-certificate
+modules were blocked, not proved. Whole-workflow harvest retains independent
+running jobs; D2 has no candidate archive and is still OPEN.
+
+**What changed.** The infinite product split now applies in a monoid with
+possibly zero factors. Native pole-neutrality is now tied to actual physical
+moments, rather than merely coefficient definitions. Native nesting is proved
+from unchanged matrix consistency, without an assumed nested-form bridge.
+Actual index rigidity replaces a false generic rank-one/PSD tie shortcut.
+Measure substitution is now theorem-backed; the final 605/621 comparison still
+needs its actual integrated head and countable tail to compile together.
+
+**Upstream implications.** Finite source assembly may use the physical pole
+conditions directly. Preserve L>0 in the mode normalization and K=2's empty
+native carriers. The ambient index square must be distinguished from the
+native adjoint square until its M4 boundary condition is proved. Causal local
+integer sums and countable positive floor cells are different legal interchanges.
+
+**Downstream implications.** Native nesting and exact dimensions can now
+support bottom monotonicity and the actual least-crossing selector. Index
+rigidity is a concrete prerequisite for conditional simple-even tie M4
+nonvanishing. Physical source identification can use the actual tail law and
+the already proved smooth inverse. Completion mass and rational multiplier
+can feed forward-operator work once their remaining whole-kernel bridges close.
+
+**Resurrected routes.** The native threshold and one-dimensional successor
+shell routes have verified nesting prerequisites. The compact elementary-pole
+inverse can be constructed from actual finite primitives with both physical
+moments retained. Generic silent-tie, tiny-gap and finite-range countermodels
+remain valid outside these more specific native hypotheses.
+
+**New RH-relevant clues.** LEAD: simple-even ground and actual index rigidity
+may prevent a silent fourth moment at a parity tie while still allowing S0=0.
+LEAD: positive Taylor moments can rule out an analytic continuation across a
+positive Laplace boundary; new supporting candidates address that missing
+mechanism. LEAD: the exact bottom-only grid separator may retain detector
+depth with fewer avoided values than the older all-eigenvalue construction.
+
+**Falsification checks.** Do not convert the corrected source's strict-even
+positive product to a tie assertion. Actual lam is not -eta. Ground-relative
+and detector-shift inverse budgets are respectively 6(Kd-1)/D and 12(Kd-1)/D.
+Normed Gram identities remain scalar-shift blind. A compact C2 potential is
+not yet the general compact-L2 Sobolev inverse or its norm bound. The signed
+rational integral cannot substitute for the positive floor kernel's L1 norm.
+
+**Highest-leverage next moves.** Repair native normals, complete the physical
+density chain and the integrated mass certificate, then export actual types
+and admitted axioms together. Test native bottom flow, strict/tie packets and
+the bottom-only separator on their actual carriers. Discharge the tilted
+positive-Laplace construction internally before consuming signed excursions.
+The finite source image, quartic transport, full selected-ground/Schur output,
+stable Y/range and original mandatory producer remain **OPEN**, as does RH.

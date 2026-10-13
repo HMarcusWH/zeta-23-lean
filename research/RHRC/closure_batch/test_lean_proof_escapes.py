@@ -38,6 +38,16 @@ EXPECTED = {
     Path("Zeta23/CCM/CanonicalPoleNeutralTiePackage.lean"),
     Path("Zeta23/ExceptionalZero/ZetaRealStripNonvanishing.lean"),
     Path("Zeta23/CCM/CanonicalPoleNeutralNesting.lean"),
+    Path("Zeta23/CCM/CanonicalPoleNeutralBottomNFlow.lean"),
+    Path("Zeta23/CCM/FiniteBottomGapSelector.lean"),
+    Path("Zeta23/CCM/CanonicalDeepThresholdSelection.lean"),
+    Path("Zeta23/CCM/NativePoleNeutralTrialDepth.lean"),
+    Path("Zeta23/CCM/PoleNeutralCompactInverse.lean"),
+    Path("Zeta23/CCM/NativeDeepThresholdGround.lean"),
+    Path("Zeta23/CCM/PoleNeutralUniqueness.lean"),
+    Path("Zeta23/CCM/OriginalSincCompactPotential.lean"),
+    Path("Zeta23/ExceptionalZero/PositiveMomentSeries.lean"),
+    Path("Zeta23/ExceptionalZero/PositiveMGFContinuation.lean"),
     Path("Zeta23/ExceptionalZero/UniversalSincCorrelationReal.lean"),
     Path("Zeta23/CCM/CanonicalPoleNeutralNormals.lean"),
     Path("Zeta23/CCM/NativeRationalCompletionLaplace.lean"),
@@ -143,7 +153,7 @@ class LeanProofEscapeScopeTests(unittest.TestCase):
         roots = closure_roots()
         self.assertEqual(len(roots), len(set(roots)))
         self.assertEqual(set(roots), EXPECTED)
-        self.assertEqual(len(roots), 128)
+        self.assertEqual(len(roots), 138)
         for path in roots:
             self.assertTrue(path.is_file(), str(path))
 

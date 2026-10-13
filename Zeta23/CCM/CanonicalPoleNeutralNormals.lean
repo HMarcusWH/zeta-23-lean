@@ -115,8 +115,10 @@ theorem poleNeutralEvenOutputResidual_eq_normal (L : ℝ) (K : ℕ)
       poleNeutralEvenOutputCoefficient L K u • canonicalPoleEvenLegalNormal L K := by
   rw [poleNeutralEvenOutputResidual, coe_poleNeutralEvenCompressedCanonical,
     Submodule.coe_orthogonalProjectionOnto_apply]
-  rw [poleNeutralEvenSubspace_eq_orthogonal_normal,
-    Submodule.starProjection_orthogonal_val]
+  have hproj : (poleNeutralEvenSubspace L K).starProjection =
+      ((ℂ ∙ canonicalPoleEvenLegalNormal L K)ᗮ).starProjection := by
+    rw [poleNeutralEvenSubspace_eq_orthogonal_normal]
+  rw [hproj, Submodule.starProjection_orthogonal_val]
   rw [sub_sub_cancel, Submodule.starProjection_singleton ℂ]
   simp only [poleNeutralEvenOutputCoefficient, inner_self_eq_norm_sq_to_K,
     Complex.ofReal_pow]
@@ -128,9 +130,10 @@ theorem orthogonalProjection_poleNeutralOdd_normal_eq_zero (L : ℝ) (K : ℕ) :
   apply (Submodule.orthogonalProjectionOnto_eq_zero_iff
     (𝕜 := ℂ) (E := euclideanOddBoundaryFlatSubspace K)
     (K := poleNeutralOddSubspace L K)).mpr
-  rw [poleNeutralOddSubspace_eq_orthogonal_normal]
-  exact (ℂ ∙ canonicalPoleOddLegalNormal L K).le_orthogonal_orthogonal
-    (Submodule.mem_span_singleton_self _)
+  intro v hv
+  apply inner_eq_zero_symm.mp
+  rw [inner_canonicalPoleOddLegalNormal]
+  exact (mem_poleNeutralOddSubspace L K v).mp hv
 
 /-- Native even profile and native odd profile use their existing scale. -/
 theorem euclideanIndexLinearMap_canonicalPoleEvenProfileVector
@@ -147,8 +150,7 @@ theorem euclideanIndexLinearMap_canonicalPoleEvenProfileVector
   have hr : (centeredIndex K i : ℝ) * poleEvenProfileReal (centeredIndex K i) L =
       (L / (4 * Real.pi)) * poleOddProfileReal (centeredIndex K i) L := by
     unfold poleEvenProfileReal poleOddProfileReal
-    field_simp [Real.pi_ne_zero, hd]
-    ring
+    field_simp [Real.pi_ne_zero, hd] <;> ring
   unfold poleEvenProfile poleOddProfile
   exact_mod_cast hr
 
@@ -254,7 +256,10 @@ theorem poleNeutralOddProjection_index_evenNormal_eq_cubic
     _ = (Q (euclideanEvenToOddIndexLinearMap K (canonicalPoleEvenLegalNormal L K)) +
         a2 • poleNeutralCubicCompressionVector L K) -
           a2 • poleNeutralCubicCompressionVector L K := by abel
-    _ = _ := by rw [← hQ]; simp
+    _ = _ := by
+      rw [← hQ]
+      simpa only [zero_sub] using
+        (neg_smul a2 (poleNeutralCubicCompressionVector L K)).symm
 
 /-- Constructed correction of the actual legal canonical cubic source. -/
 def poleNeutralCorrectedCubicSource (L : ℝ) (K : ℕ)
@@ -266,15 +271,11 @@ def poleNeutralEvenOutputCoefficientLinearMap (L : ℝ) (K : ℕ) :
     poleNeutralEvenSubspace L K →ₗ[ℂ] ℂ where
   toFun := poleNeutralEvenOutputCoefficient L K
   map_add' u v := by
-    change inner ℂ (canonicalPoleEvenLegalNormal L K)
-        (evenCompressedCanonical L K (u.val + v.val)) / _ = _
-    rw [map_add, inner_add_right, add_div]
+    simp only [poleNeutralEvenOutputCoefficient, Submodule.coe_add, map_add,
+      Submodule.coe_inner, inner_add_right, add_div]
   map_smul' c u := by
-    change inner ℂ (canonicalPoleEvenLegalNormal L K)
-        (evenCompressedCanonical L K (c • u.val)) / _ =
-      c * (inner ℂ (canonicalPoleEvenLegalNormal L K)
-        (evenCompressedCanonical L K u.val) / _)
-    rw [map_smul, inner_smul_right]
+    simp only [poleNeutralEvenOutputCoefficient, Submodule.coe_smul, map_smul,
+      Submodule.coe_inner, inner_smul_right, RingHom.id_apply, smul_eq_mul]
     ring
 
 /-- Linear functional needed by the existing shift and parity-swap calculus. -/

@@ -35,7 +35,7 @@ private theorem centeredFloorRemainder_integral_norm_le {σ : ℝ} (hσ : 0 < σ
     rw [norm_div, Complex.norm_cpow_eq_rpow_re_of_pos hxpos]
     have hnum : ‖(⌊x⌋ : ℂ) + 1 / 2 - (x : ℂ)‖ = ‖(⌊x⌋ : ℝ) + 1 / 2 - x‖ := by
       rw [show ((⌊x⌋ : ℂ) + 1 / 2 - (x : ℂ)) =
-        (((⌊x⌋ : ℝ) + 1 / 2 - x : ℝ) : ℂ) by push_cast, Complex.norm_real]
+        (((⌊x⌋ : ℝ) + 1 / 2 - x : ℝ) : ℂ) by push_cast; rfl, Complex.norm_real]
     rw [hnum]
     simp only [Complex.add_re, Complex.ofReal_re, Complex.one_re]
     rw [div_eq_mul_inv, ← Real.rpow_neg hxpos.le]
@@ -76,7 +76,7 @@ theorem riemannZeta_re_le_neg_div_one_sub {σ : ℝ} (hσ : 0 < σ) (hσ1 : σ <
     _ = 1 / 2 - 1 / (1 - σ) +
         σ * (∫ x : ℝ in Ioi 1, centeredFloorRemainder σ x).re := hre
     _ ≤ 1 / 2 - 1 / (1 - σ) + σ * (1 / (2 * σ)) :=
-      add_le_add_left (mul_le_mul_of_nonneg_left hrem hσ.le) _
+      add_le_add le_rfl (mul_le_mul_of_nonneg_left hrem hσ.le)
     _ = -σ / (1 - σ) := by
       field_simp [hσ.ne', sub_ne_zero.mpr hσ1.ne']
       ring

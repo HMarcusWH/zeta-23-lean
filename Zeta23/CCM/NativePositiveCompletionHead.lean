@@ -30,7 +30,7 @@ theorem nativePositiveCompletionLogDensity_cell_integral {n : ℕ} (hn : 0 < n) 
   have hnpos : (0 : ℝ) < n := by exact_mod_cast hn
   have hnone : (0 : ℝ) < (n : ℝ) + 1 := by linarith
   have hzero : (0 : ℝ) ∉ Set.uIcc (n : ℝ) ((n : ℝ) + 1) := by
-    rw [uIcc_of_le (by linarith)]
+    rw [Set.uIcc_of_le (by linarith)]
     intro hz
     exact (not_le_of_gt hnpos) hz.1
   have h5 : IntervalIntegrable (fun u : ℝ => u ^ (-5 / 2 : ℝ)) volume
@@ -56,8 +56,8 @@ theorem nativePositiveCompletionLogDensity_cell_integral {n : ℕ} (hn : 0 < n) 
       _ = _ := by rw [hcollapse]
   rw [heq, intervalIntegral.integral_sub (h5.const_mul _) (h3.const_mul _),
     intervalIntegral.integral_const_mul, intervalIntegral.integral_const_mul]
-  rw [intervalIntegral.integral_rpow (Or.inr ⟨by norm_num, hzero⟩),
-    intervalIntegral.integral_rpow (Or.inr ⟨by norm_num, hzero⟩)]
+  rw [integral_rpow (Or.inr ⟨by norm_num, hzero⟩),
+    integral_rpow (Or.inr ⟨by norm_num, hzero⟩)]
   norm_num only
   have hncollapse : (n : ℝ) * (n : ℝ) ^ (-3 / 2 : ℝ) =
       (n : ℝ) ^ (-1 / 2 : ℝ) := by
@@ -95,6 +95,7 @@ private theorem nativePositiveCompletion_cell_sum (N : ℕ) :
   | succ N ih =>
     rw [sum_range_succ, sum_range_succ, ih]
     push_cast
+    rw [show (N : ℝ) + 1 + 1 = (N : ℝ) + 2 by ring]
     ring
 
 /-- The exact finite head, obtained from actual interval integrals. -/

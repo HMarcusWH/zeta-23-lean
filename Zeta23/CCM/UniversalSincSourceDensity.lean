@@ -90,7 +90,7 @@ private theorem originalSourceTailLaw_ae_support {s : ℝ} (hs : 0 ≤ s) :
     ∀ᵐ y ∂originalSourceTailLaw s 2, |y| ≤ s / 3 := by
   unfold originalSourceTailLaw
   apply (ae_map_iff (measurable_sourceSampleTail hs 2).aemeasurable
-    (measurableSet_le measurable_abs measurable_const)).mpr
+    (measurableSet_le continuous_abs.measurable measurable_const)).mpr
   filter_upwards with ω
   simpa only [Nat.cast_ofNat, show (2 : ℝ) + 1 = 3 by norm_num] using
     sourceSampleTail_abs_le hs 2 ω

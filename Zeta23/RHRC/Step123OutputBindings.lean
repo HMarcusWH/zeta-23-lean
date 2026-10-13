@@ -39,6 +39,16 @@ import Zeta23.CCM.CanonicalPoleNeutralShiftedSecular
 import Zeta23.CCM.CanonicalPoleNeutralTiePackage
 import Zeta23.ExceptionalZero.ZetaRealStripNonvanishing
 import Zeta23.CCM.CanonicalPoleNeutralNesting
+import Zeta23.CCM.CanonicalPoleNeutralBottomNFlow
+import Zeta23.CCM.FiniteBottomGapSelector
+import Zeta23.CCM.CanonicalDeepThresholdSelection
+import Zeta23.CCM.NativePoleNeutralTrialDepth
+import Zeta23.CCM.PoleNeutralCompactInverse
+import Zeta23.CCM.NativeDeepThresholdGround
+import Zeta23.CCM.PoleNeutralUniqueness
+import Zeta23.CCM.OriginalSincCompactPotential
+import Zeta23.ExceptionalZero.PositiveMomentSeries
+import Zeta23.ExceptionalZero.PositiveMGFContinuation
 import Zeta23.ExceptionalZero.UniversalSincCorrelationReal
 import Zeta23.CCM.NativeFloorCompletionSource
 import Zeta23.CCM.NativeRationalCompletionLaplace
@@ -154,6 +164,42 @@ run_cmd do
     (``Zeta23.CCM.inner_canonicalSourceMatrix_euclideanCenteredZeroExtend, "Zeta23.CCM.CanonicalPoleNeutralNesting"),
     (``Zeta23.CCM.inner_poleNeutralEvenCompressedCanonical_centeredZeroExtend, "Zeta23.CCM.CanonicalPoleNeutralNesting"),
     (``Zeta23.CCM.inner_poleNeutralOddCompressedCanonical_centeredZeroExtend, "Zeta23.CCM.CanonicalPoleNeutralNesting"),
+    (``Zeta23.CCM.poleNeutralEvenRayleighBottom_antitone_of_le, "Zeta23.CCM.CanonicalPoleNeutralBottomNFlow"),
+    (``Zeta23.CCM.poleNeutralOddRayleighBottom_antitone_of_le, "Zeta23.CCM.CanonicalPoleNeutralBottomNFlow"),
+    (``Zeta23.CCM.poleNeutralGlobalRayleighBottom_antitone_of_le, "Zeta23.CCM.CanonicalPoleNeutralBottomNFlow"),
+    (``Zeta23.CCM.poleNeutralEven_predecessor_compression_eq, "Zeta23.CCM.CanonicalPoleNeutralBottomNFlow"),
+    (``Zeta23.CCM.poleNeutralOdd_predecessor_compression_eq, "Zeta23.CCM.CanonicalPoleNeutralBottomNFlow"),
+    (``Zeta23.CCM.finrank_poleNeutralEven_successor_shell_eq_one, "Zeta23.CCM.CanonicalPoleNeutralBottomNFlow"),
+    (``Zeta23.CCM.finrank_poleNeutralOdd_successor_shell_eq_one, "Zeta23.CCM.CanonicalPoleNeutralBottomNFlow"),
+    (``Zeta23.CCM.exists_finite_real_gap_selector, "Zeta23.CCM.FiniteBottomGapSelector"),
+    (``Zeta23.CCM.exists_nativeDeepThreshold_bottom_separator, "Zeta23.CCM.CanonicalDeepThresholdSelection"),
+    (``Zeta23.CCM.nativeDeepThreshold_crossing_retains_gap, "Zeta23.CCM.CanonicalDeepThresholdSelection"),
+    (``Zeta23.CCM.nativeDeepThreshold_noncrossing_has_lower_gap, "Zeta23.CCM.CanonicalDeepThresholdSelection"),
+    (``Zeta23.CCM.nativeTrial_evenOdd_norm_sq_split, "Zeta23.CCM.NativePoleNeutralTrialDepth"),
+    (``Zeta23.CCM.nativeGlobalBottom_mul_norm_sq_le_given_trial_energy, "Zeta23.CCM.NativePoleNeutralTrialDepth"),
+    (``Zeta23.CCM.nativeGlobalBottom_le_neg_depth_of_given_unit_trial, "Zeta23.CCM.NativePoleNeutralTrialDepth"),
+    (``Zeta23.CCM.exists_nativeDeepThresholdGround_of_given_trial, "Zeta23.CCM.NativeDeepThresholdGround"),
+    (``Zeta23.CCM.poleNeutral_homogeneous_eq_zero, "Zeta23.CCM.PoleNeutralUniqueness"),
+    (``Zeta23.CCM.poleNeutral_eq_of_clamped_jets, "Zeta23.CCM.PoleNeutralUniqueness"),
+    (``Zeta23.CCM.originalSincCompactPotential_eq_universalSincKernel, "Zeta23.CCM.PoleNeutralUniqueness"),
+    (``Zeta23.CCM.nativePoleCompactInverse_contDiff_two, "Zeta23.CCM.PoleNeutralCompactInverse"),
+    (``Zeta23.CCM.nativePoleCompactInverse_pole_equation, "Zeta23.CCM.PoleNeutralCompactInverse"),
+    (``Zeta23.CCM.nativePoleCompactInverse_hasCompactSupport, "Zeta23.CCM.PoleNeutralCompactInverse"),
+    (``Zeta23.CCM.nativePoleCompactInverse_clamped_traces, "Zeta23.CCM.PoleNeutralCompactInverse"),
+    (``Zeta23.CCM.universalSincSecondKernel_elementary_moments, "Zeta23.CCM.OriginalSincCompactPotential"),
+    (``Zeta23.CCM.originalSincCompactPotential_pole_equation, "Zeta23.CCM.OriginalSincCompactPotential"),
+    (``Zeta23.CCM.originalSincCompactPotential_hasCompactSupport, "Zeta23.CCM.OriginalSincCompactPotential"),
+    (``Zeta23.CCM.originalSincCompactPotential_clamped_traces, "Zeta23.CCM.OriginalSincCompactPotential"),
+    (``Zeta23.CCM.originalSincCompactPotential_memLp_two, "Zeta23.CCM.OriginalSincCompactPotential"),
+    (``Zeta23.CCM.originalSincCompactPotentialDerivative_memLp_two, "Zeta23.CCM.OriginalSincCompactPotential"),
+    (``Zeta23.CCM.originalSincCompactPotentialSecondDerivative_memLp_two, "Zeta23.CCM.OriginalSincCompactPotential"),
+    (``Zeta23.ExceptionalZero.lintegral_exp_mul_eq_tsum_positive_moments, "Zeta23.ExceptionalZero.PositiveMomentSeries"),
+    (``Zeta23.ExceptionalZero.integrable_exp_mul_of_summable_positive_moments, "Zeta23.ExceptionalZero.PositiveMomentSeries"),
+    (``Zeta23.ExceptionalZero.integral_exp_mul_eq_tsum_positive_moments, "Zeta23.ExceptionalZero.PositiveMomentSeries"),
+    (``Zeta23.ExceptionalZero.iteratedDeriv_eq_moment_of_complexMGF_continuation, "Zeta23.ExceptionalZero.PositiveMGFContinuation"),
+    (``Zeta23.ExceptionalZero.summable_moments_of_complexMGF_continuation, "Zeta23.ExceptionalZero.PositiveMGFContinuation"),
+    (``Zeta23.ExceptionalZero.integrable_exp_mul_of_complexMGF_continuation, "Zeta23.ExceptionalZero.PositiveMGFContinuation"),
+    (``Zeta23.ExceptionalZero.exists_integrable_exp_mul_gt_of_complexMGF_continuation, "Zeta23.ExceptionalZero.PositiveMGFContinuation"),
     (``Zeta23.ExceptionalZero.squaredWeilFilteredFamily_even, "Zeta23.ExceptionalZero.UniversalSincCorrelationReal"),
     (``Zeta23.ExceptionalZero.fixed_originalSincCorrelation_im_eq_zero, "Zeta23.ExceptionalZero.UniversalSincCorrelationReal"),
     (``Zeta23.CCM.coe_poleNeutralIndexLinearMap_legal, "Zeta23.CCM.CanonicalPoleNeutralIntertwining"),
