@@ -81,6 +81,7 @@ def final(candidate, replay, out, source_revalidation=None):
     checked=set()
     derived_complete_layers = 0
     derived_verified = derived_failed = derived_unverified = derived_unresolved = 0
+    derived_unrun=derived_nonfinite=0
     for layer in receipt.get("layer_receipts",[]):
         key=(layer["Q"],layer["parity"])
         if key in checked or key not in specs:
@@ -107,6 +108,8 @@ def final(candidate, replay, out, source_revalidation=None):
         derived_failed += len(data.get("failed",[]))
         derived_unverified += len(data.get("unverified",[]))
         derived_unresolved += len(data.get("unresolved",[]))
+        derived_unrun+=sum(t.get("unrun") is True for t in record["unresolved"])
+        derived_nonfinite+=sum(str(t.get("reason","")).startswith("NONFINITE") for t in data.get("failed",[]))
         if layer.get("complete") is not data.get("complete"):
             raise ValueError("layer summary contradicts checked payload")
         if data.get("complete"):
@@ -144,8 +147,10 @@ def final(candidate, replay, out, source_revalidation=None):
     # NON-PARTIAL gate is mandatory; partial process success is not certificate authority.
     complete=(manifest["status"]=="CANDIDATE_COMPLETE" and receipt.get("claimed_scope")=="K3_FULL" and receipt.get("status")=="PASS" and receipt.get("layers")==30 and receipt.get("complete_layers")==30 and receipt.get("unverified_tiles")==0 and receipt.get("failed_tiles")==0 and receipt.get("unresolved_tiles")==0 and receipt.get("precision_bits")==768 and receipt.get("seams_verified") is True and not receipt.get("missing_shards"))
     result={"schema":"post290.k3-complete.v1","status":"D2_COMPLETE" if complete else "D2_OPEN","terminal_claim":"RH_OPEN","candidate_manifest_sha256":digest(candidate/"manifest.json"),"independent_checker_sha256":digest(replay),"current_source":manifest["current_source"],"historical_source":manifest["historical_source"],"all_L_positivity_certified":complete,"not_a_lean_proof":True,"not_a_proof_of_RH":True,"authority":"CERTIFIED_FINITE" if complete else "UNRESOLVED_RESEARCH","checker_disposition":receipt.get("status"),"coverage":"both parities [1/512,log16]" if complete else "only separately freshly verified intervals"}
+    result.update(complete_layers=derived_complete_layers,unresolved_tiles=derived_unresolved,unrun_tiles=derived_unrun,missing_artifacts=len(receipt.get("missing_shards",[])),unverified_tiles=derived_unverified,nonfinite_enclosures=derived_nonfinite,independent_nonpartial_verified=complete,both_parities=True,physical_seams_verified=receipt.get("seams_verified") is True)
     if source_revalidation is not None:
         result.update(producer_source=manifest["current_source"],validation_source=source_review["validation_source"],source_revalidation_sha256=digest(source_revalidation))
+    result["source_tree"]=(source_review["validation_source"] if source_revalidation is not None else manifest["current_source"]).get("tree")
     write(out,result)
     if not complete:
         raise ValueError("NON-PARTIAL D2 gate failed: unresolved, unverified or missing coverage remains")

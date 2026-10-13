@@ -36,7 +36,11 @@
     "native checked at different source tree",
     "unknown workflow silently ignored",
     "job classified without reading outputs",
-    "missing job classification"
+    "missing job classification",
+    "old D2 source tree relabelled current",
+    "D2 Boolean claim encoded as string",
+    "D2 count encoded as Boolean",
+    "D2 numerical evidence relabelled Lean proof"
   ],
   "authority": "VALIDATOR_CONTROL_ONLY",
   "scope": "Synthetic receipt fixtures; no theorem or D2 authority."

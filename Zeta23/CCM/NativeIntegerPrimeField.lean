@@ -179,8 +179,8 @@ theorem nativePrimeField_eq_firstPrime_atom {s t : ℝ} {j : ℝ → ℝ}
       rw [hzero, mul_zero]
   unfold nativePrimeField
   rw [tsum_eq_single 2 hterm]
-  simp [nativePrimeCoefficient,
-    ArithmeticFunction.vonMangoldt_apply_prime (by norm_num : Nat.Prime 2)]
+  unfold nativePrimeCoefficient
+  rw [ArithmeticFunction.vonMangoldt_apply_prime Nat.prime_two]
 
 theorem nativeIntegerDriveField_eq_firstPrime_atom {s t : ℝ} {j : ℝ → ℝ}
     (hj : NativeSourceSupported s j)

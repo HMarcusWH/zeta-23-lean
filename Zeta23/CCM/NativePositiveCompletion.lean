@@ -53,6 +53,18 @@ theorem nativePositiveCompletion_eq_zero_of_neg {t : ℝ} (ht : t < 0) :
     nativePositiveCompletion t = 0 := by
   simp [nativePositiveCompletion, not_le.mpr ht]
 
+theorem nativePositiveCompletion_pos_of_nonneg {t : ℝ} (ht : 0 ≤ t) :
+    0 < nativePositiveCompletion t := by
+  have hexp : (1 : ℝ) ≤ Real.exp t := by
+    simpa only [Real.exp_zero] using (Real.exp_le_exp.mpr ht)
+  have hn : 1 ≤ ⌊Real.exp t⌋₊ := (Nat.one_le_floor_iff _).mpr hexp
+  have hnpos : (0 : ℝ) < (⌊Real.exp t⌋₊ : ℝ) := by
+    exact_mod_cast (Nat.zero_lt_one.trans_le hn)
+  have hfactor : 0 < (⌊Real.exp t⌋₊ : ℝ) + 1 - Real.exp t :=
+    sub_pos.mpr (Nat.lt_floor_add_one _)
+  rw [nativePositiveCompletion, if_pos ht]
+  exact mul_pos (mul_pos (Real.exp_pos _) hnpos) hfactor
+
 theorem nativePositiveCompletion_zero : nativePositiveCompletion 0 = 1 := by
   norm_num [nativePositiveCompletion]
 
@@ -86,6 +98,7 @@ theorem nativePositiveCompletion_integrableOn :
     exact nativePositiveCompletion_le_exp t
 
 #print axioms nativePositiveCompletion_nonneg
+#print axioms nativePositiveCompletion_pos_of_nonneg
 #print axioms nativePositiveCompletion_le_exp
 #print axioms nativePositiveCompletion_integrableOn
 

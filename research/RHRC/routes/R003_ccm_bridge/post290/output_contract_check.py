@@ -88,8 +88,9 @@ def release_gaps(manifest, formal, d2, jobs):
             gaps.append('unfulfilled module acceptance: ' + module['id'])
     required_d2 = ('complete_layers','unresolved_tiles','unrun_tiles','missing_artifacts','unverified_tiles','nonfinite_enclosures')
     if (d2.get('status') != 'D2_COMPLETE' or d2.get('complete_layers') != 30
-        or not d2.get('independent_nonpartial_verified') or not d2.get('both_parities')
-        or not d2.get('physical_seams_verified') or any(k not in d2 for k in required_d2)
+        or d2.get('source_tree')!=tree or d2.get('terminal_claim')!='RH_OPEN' or d2.get('not_a_lean_proof') is not True
+        or d2.get('independent_nonpartial_verified') is not True or d2.get('both_parities') is not True
+        or d2.get('physical_seams_verified') is not True or any(type(d2.get(k)) is not int for k in required_d2)
         or any(d2.get(k,1) != 0 for k in required_d2[1:])):
         gaps.append('D2 continuous full-domain gate incomplete')
     known_required=[]

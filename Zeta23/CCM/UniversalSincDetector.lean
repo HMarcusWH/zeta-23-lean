@@ -112,7 +112,14 @@ private theorem complex_norm_instances_eq :
 theorem sinc_sub_one_isBigO : (fun z : ℂ => sinc z - 1) =O[𝓝 0] id := by
   have h := analyticAt_sinc_zero.differentiableAt.isBigO_sub
   rw [complex_norm_instances_eq] at h
-  simpa only [sinc_zero, sub_zero, id] using h
+  have hf : (fun x : ℂ => sinc x - sinc 0) = (fun x : ℂ => sinc x - 1) := by
+    funext x
+    rw [sinc_zero]
+  have hg : (fun x : ℂ => x - 0) = id := by
+    funext x
+    exact sub_zero x
+  rw [hf, hg] at h
+  exact h
 
 /-- Every individual factor is nonzero off the real axis. -/
 theorem sinc_ne_zero_of_im_ne_zero {z : ℂ} (hz : z.im ≠ 0) : sinc z ≠ 0 := by
@@ -190,7 +197,19 @@ theorem hasProdUniformlyOn_compact {s : ℝ} (hs : 0 ≤ s) {K : Set ℂ}
       continuous_const).continuousOn
   have hp := Summable.hasProdUniformlyOn_one_add hK hu hb hcts
   rw [complex_commMonoid_instances_eq] at hp
-  simpa only [add_sub_cancel_left, product] using hp
+  have hfunc : (fun n : ℕ => fun z : ℂ => 1 + (sinc ((width s n : ℂ) * z) - 1)) =
+      (fun n : ℕ => fun z : ℂ => sinc ((width s n : ℂ) * z)) := by
+    funext n z
+    ring
+  have hlimit : (fun z : ℂ => ∏' n : ℕ, 1 + (sinc ((width s n : ℂ) * z) - 1)) =
+      product s := by
+    funext z
+    unfold product
+    apply tprod_congr
+    intro n
+    ring
+  rw [hfunc, hlimit] at hp
+  exact hp
 
 theorem hasProdLocallyUniformlyOn_univ {s : ℝ} (hs : 0 ≤ s) :
     HasProdLocallyUniformlyOn (fun n : ℕ => fun z : ℂ => sinc ((width s n : ℂ) * z))

@@ -282,5 +282,32 @@ premise. The compact source hypothesis is an explicit generic input to
 these operators; the actual `j=P²q` source and its support still need their
 producer. The analytic convolution equation `N*X=U`, the superexponential
 drive estimate, stable-difference decomposition, positive anchor integral,
-and all global native upper/range conclusions remain OPEN. Compiler
+and all global native upper/range conclusions remain OPEN for the actual
+fixed source. Compiler
 receipts are required before the new local theorem candidates are PROVED.
+
+### Source-preserving arithmetic equation
+
+The separate candidate `NativeIntegerPrimeConvolution.lean` advances the
+pointwise compatibility obligation. It defines the actual outer integer
+translate action `sum_m m^(-1/2) X(t-log m)`, without defining that action
+using divisor coefficients. Compact support makes the prime-source double
+sum finite on a bounded multiplication rectangle. Its proof regroups by
+`m*n`, identifies each nonzero multiplication fiber with the complete
+divisor antidiagonal, and consumes the unchanged weighted divisor law.
+The infinite zero fiber is annihilated by the zero coefficients. The result
+is the exact pointwise source-parametric equation `N*X=U`, plus summability
+of the actual action. It accepts no compatibility premise.
+
+The frozen width also gives a proved positive first-prime delay target,
+from `log(2) >= 1/2`, and hence the prime and integer-drive fields vanish
+for all nonpositive times. This establishes their actual causal histories
+before any Hilbert-space membership question.
+
+If those roots compile, an assumed arithmetic compatibility bridge can be
+replaced by a construction for every compact source. The remaining step to
+the flagship native fields is the exact `j=P²q` producer and its support,
+with any desired measure-convolution packaging proved consistently with
+these series. No rapid-drive estimate, completed-input decay, inverse,
+range membership or opposing native upper bound follows just from this
+compatibility equation. All such claims remain OPEN.

@@ -16,7 +16,7 @@ def fixture():
     formal = {'source_tree':tree,'head':'c'*40,'compiler_context':{'head':'c'*40,'tree':tree},'execution_status':'SUCCESS','integrity_status':'PASS','claim_cap':'RH_OPEN','producer_complete':True,'independent_assumption_review_pass':True,'declarations':declarations}
     d2 = {'status':'D2_COMPLETE','complete_layers':30,'independent_nonpartial_verified':True,
           'both_parities':True,'physical_seams_verified':True,'unresolved_tiles':0,
-          'unrun_tiles':0,'missing_artifacts':0,'unverified_tiles':0,'nonfinite_enclosures':0}
+          'unrun_tiles':0,'missing_artifacts':0,'unverified_tiles':0,'nonfinite_enclosures':0,'source_tree':tree,'terminal_claim':'RH_OPEN','not_a_lean_proof':True}
     jobs = [{'workflow':workflow,'name':name,'required':True,'head':'c'*40,'head_tree':tree,'status':'completed',
              'conclusion':'success','scientific_acceptance':True} for workflow,name in [FORMAL_JOB,REGRESSION_JOB,sorted(RESEARCH_JOBS)[0],NATIVE_JOB]]
     jobs[-1]['native_output_review']={'head':'c'*40,'source_tree':tree,'scope':'FINITE_FIXED_PROBES','frozen_panel_complete':True,'pair_count':44,'row_count':176,'evaluated_rows':176,'unresolved_rows':0,'verified_pairs':44,'unresolved_pairs':0,'universal_theorem_authority':False}
@@ -67,6 +67,10 @@ def run():
     mutation('unknown workflow silently ignored',lambda a:a[3].append({'workflow':'Unknown workflow','name':'unknown','required':False,'head':'c'*40,'head_tree':'a'*40,'status':'completed','conclusion':'success','scientific_acceptance':False,'classification':'REQUIRES_SOURCE_REVIEW','output_reviewed':False}))
     mutation('job classified without reading outputs',lambda a:a[3][0].update(output_reviewed=False))
     mutation('missing job classification',lambda a:a[3][0].pop('classification'))
+    mutation('old D2 source tree relabelled current',lambda a:a[2].update(source_tree='b'*40))
+    mutation('D2 Boolean claim encoded as string',lambda a:a[2].update(independent_nonpartial_verified='false'))
+    mutation('D2 count encoded as Boolean',lambda a:a[2].update(unresolved_tiles=False))
+    mutation('D2 numerical evidence relabelled Lean proof',lambda a:a[2].update(not_a_lean_proof=False))
     return {'execution_status':'SUCCESS','integrity_status':'PASS','claim_cap':'RH_OPEN',
             'scientific_disposition':'EVIDENCE_MUTATIONS_REJECTED','rejected':rejected,
             'authority':'VALIDATOR_CONTROL_ONLY','scope':'Synthetic receipt fixtures; no theorem or D2 authority.'}

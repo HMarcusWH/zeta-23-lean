@@ -56,6 +56,17 @@ abbrev poleNeutralOddSubspace (L : ℝ) (K : ℕ) :
   LinearMap.ker ((canonicalPoleOddFunctional L K).comp
     (euclideanOddBoundaryFlatSubspace K).subtype)
 
+/-- Explicitly expose the standard inherited inner product on the nested
+even subtype. The norm and inner product are the coefficient Euclidean ones. -/
+instance poleNeutralEven_innerProductSpace (L : ℝ) (K : ℕ) :
+    InnerProductSpace ℂ (poleNeutralEvenSubspace L K) :=
+  Submodule.innerProductSpace (poleNeutralEvenSubspace L K)
+
+/-- Standard inherited coefficient inner product on the odd kernel. -/
+instance poleNeutralOdd_innerProductSpace (L : ℝ) (K : ℕ) :
+    InnerProductSpace ℂ (poleNeutralOddSubspace L K) :=
+  Submodule.innerProductSpace (poleNeutralOddSubspace L K)
+
 @[simp] theorem mem_poleNeutralEvenSubspace (L : ℝ) (K : ℕ)
     (u : euclideanEvenBoundaryFlatSubspace K) :
     u ∈ poleNeutralEvenSubspace L K ↔
@@ -179,14 +190,16 @@ theorem canonicalSourceMatrix_mulVec_eq_negative_arch_prime_of_profiles
 def poleNeutralEvenCompressedCanonical (L : ℝ) (K : ℕ) :
     poleNeutralEvenSubspace L K →ₗ[ℂ] poleNeutralEvenSubspace L K :=
   let Q : euclideanEvenBoundaryFlatSubspace K →ₗ[ℂ] poleNeutralEvenSubspace L K :=
-    (poleNeutralEvenSubspace L K).orthogonalProjectionOnto.toLinearMap
+    (Submodule.orthogonalProjectionOnto (𝕜 := ℂ)
+      (E := euclideanEvenBoundaryFlatSubspace K) (poleNeutralEvenSubspace L K)).toLinearMap
   Q.comp ((evenCompressedCanonical L K).comp (poleNeutralEvenSubspace L K).subtype)
 
 /-- Actual further compression of the legal odd canonical block. -/
 def poleNeutralOddCompressedCanonical (L : ℝ) (K : ℕ) :
     poleNeutralOddSubspace L K →ₗ[ℂ] poleNeutralOddSubspace L K :=
   let Q : euclideanOddBoundaryFlatSubspace K →ₗ[ℂ] poleNeutralOddSubspace L K :=
-    (poleNeutralOddSubspace L K).orthogonalProjectionOnto.toLinearMap
+    (Submodule.orthogonalProjectionOnto (𝕜 := ℂ)
+      (E := euclideanOddBoundaryFlatSubspace K) (poleNeutralOddSubspace L K)).toLinearMap
   Q.comp ((oddCompressedCanonical L K).comp (poleNeutralOddSubspace L K).subtype)
 
 /-- Orthogonal compression preserves the native self-energy on an even
