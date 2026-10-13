@@ -17,7 +17,7 @@
   "source_selector_module": "post187_fb05_q14_mixed_drift_selector.py",
   "source_selector_module_blob_sha": "03bcff09853c7c212c3a33a43c060909868f0c55",
   "canonical_source_module": "canonical_source_arb.py",
-  "canonical_source_module_blob_sha": "0a38380f5674d965aabcc0b8cbfc37c3813a180e",
+  "canonical_source_module_blob_sha": "701d62266ba9db89c59a9d1edef6546b77b1bfe9",
   "fixed_unit_derivative_module": "post177_fb05_q13_fixed_unit_derivative.py",
   "fixed_unit_derivative_module_blob_sha": "ef45b8fdfbb5aa9088e6f9f23f0d61161f2fb252",
   "schur_geometry_module": "post179_fb05_q13_correlation_preserving_derivative.py",

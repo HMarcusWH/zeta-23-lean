@@ -69,13 +69,25 @@ A nontrivial census needs N>=2, hence K>=3, together with the eligibility
 checks above. This is a source-derived consequence, not a new Lean theorem
 in this PR or an experimental measurement.
 
-At N=2 the odd predecessor is one-dimensional. **LEAD:** choose a unit
-predecessor vector with eigenvalue d>=0. The correction then has one real
+At N=2 the odd predecessor is one-dimensional. **DERIVED reduction, not
+separately formalized:** choose a unit predecessor vector with eigenvalue
+d>=0. The correction then has one real
 residue r and denominator d-mu>0, so Gamma=1-r/(d-mu). Its window condition
 reduces to 0<=r<=d-mu. Derive this scalar formula on the actual selected
 branch before a broad census; no required residue inequality is established
 here. The K2 identity is a useful degeneracy check, not evidence for that
 inequality at larger K.
+
+Odd positive definiteness by itself does not force this residue bound.
+**DERIVED abstract algebra control:** let real alpha!=0 be a correction input
+along a unit predecessor w, with quotient coordinate zero on w and one on
+the unit shell. Take mu=-1 and the positive definite odd matrix
+`[[1,b],[b,1]]`, where `b=-sign(alpha)/2`. Its eigenvalues are 1/2 and 3/2,
+but `Gamma=1-alpha*b/2=1+abs(alpha)/4>1`. This rejects an inference of the
+unit Gamma window from odd positivity, safe resolvent and nonzero forcing
+alone. It does not refute Gamma>0. Canonical cubic directions, genuine
+arithmetic/intertwining, retained-state feasibility and their normalization
+relations were not imposed; this is not an actual-source or RH counterexample.
 
 ## Radius and finite-window composition
 

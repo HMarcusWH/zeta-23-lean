@@ -1,0 +1,456 @@
+{
+  "schema_version": 1,
+  "receipt_kind": "PR_FORMAL_VALIDATION",
+  "created_utc": "2026-10-13T01:43:32.119184+00:00",
+  "repository": "HMarcusWH/zeta-23-lean",
+  "pull_request": 290,
+  "head": "31512dbb698dd59b90cfa32549f0e9273a5163f9",
+  "tree": "b1c9158c12347a1b0269592b07117307d482c702",
+  "scope": "Four new supporting Lean modules; conditional conclusions retain the premises listed below.",
+  "toolchain": {
+    "lean_toolchain": "leanprover/lean4:v4.33.0-rc2",
+    "observed_windows_lean_version": "Lean (version 4.33.0-rc2, x86_64-w64-windows-gnu, commit d8b18978322de05a8f3dba51ef03cf5461676c17, Release)",
+    "lean_revision": "d8b18978322de05a8f3dba51ef03cf5461676c17",
+    "mathlib_revision": "51e6992efd06126df61a496bebf8f49482a4e129",
+    "mathlib_input_revision": "51e6992efd06126df61a496bebf8f49482a4e129"
+  },
+  "source_files": [
+    {
+      "path": "Zeta23/CCM/ReciprocalApertureConcavity.lean",
+      "git_blob": "52ef6904242d9dc728f5f5100dff9285662a9bc0",
+      "same_blob_at_linux_head": true,
+      "imports": [
+        "Zeta23.CCM.CanonicalLocalBirdfishie",
+        "Mathlib.Analysis.Convex.Deriv"
+      ],
+      "public_axiom_report_count": 12
+    },
+    {
+      "path": "Zeta23/CCM/K2EvenBottomGluing.lean",
+      "git_blob": "10d222e31fe4b0942b7e26d1844f956f4a01e76e",
+      "same_blob_at_linux_head": true,
+      "imports": [
+        "Zeta23.CCM.ReciprocalApertureConcavity",
+        "Zeta23.CCM.CanonicalSmallApertureGroundSpectrum"
+      ],
+      "public_axiom_report_count": 6
+    },
+    {
+      "path": "Zeta23/CCM/GlobalBottomStrictEvenShiftedRay.lean",
+      "git_blob": "48cb80d81ee41e56239c1babdc532c1eae1aee5e",
+      "same_blob_at_linux_head": true,
+      "imports": [
+        "Zeta23.CCM.CanonicalShiftedSecular",
+        "Zeta23.CCM.GlobalParityBottomPrimeRemainder",
+        "Zeta23.CCM.RegularFirstBadParitySourceMomentRigidity"
+      ],
+      "public_axiom_report_count": 9
+    },
+    {
+      "path": "Zeta23/CCM/K3BottomWindowRecord.lean",
+      "git_blob": "2f83a4947f1644a0360a0e9392f13de6bbcfe882",
+      "same_blob_at_linux_head": true,
+      "imports": [
+        "Zeta23.CCM.CanonicalSmallApertureGroundSpectrum"
+      ],
+      "public_axiom_report_count": 2
+    }
+  ],
+  "public_declaration_count": 29,
+  "foundational_axiom_allowlist": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "public_declarations": [
+    {
+      "name": "Zeta23.CCM.reciprocalAperture_first_derivative",
+      "module": "Zeta23/CCM/ReciprocalApertureConcavity.lean",
+      "observed_axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "Zeta23.CCM.reciprocalAperture_second_derivative",
+      "module": "Zeta23/CCM/ReciprocalApertureConcavity.lean",
+      "observed_axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "Zeta23.CCM.reciprocalAperture_euler_chain",
+      "module": "Zeta23/CCM/ReciprocalApertureConcavity.lean",
+      "observed_axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "Zeta23.CCM.reciprocalAperture_strictConcaveOn",
+      "module": "Zeta23/CCM/ReciprocalApertureConcavity.lean",
+      "observed_axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "Zeta23.CCM.concave_on_Icc_ge_min_endpoints",
+      "module": "Zeta23/CCM/ReciprocalApertureConcavity.lean",
+      "observed_axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "Zeta23.CCM.concave_family_ge_of_endpoint_ge",
+      "module": "Zeta23/CCM/ReciprocalApertureConcavity.lean",
+      "observed_axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "Zeta23.CCM.evenRayleighBottom_ge_endpoint_min_of_reciprocal_concavity",
+      "module": "Zeta23/CCM/ReciprocalApertureConcavity.lean",
+      "observed_axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "Zeta23.CCM.evenRayleighBottom_ge_endpoint_min_of_raw_reciprocal_concavity",
+      "module": "Zeta23/CCM/ReciprocalApertureConcavity.lean",
+      "observed_axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "Zeta23.CCM.evenRayleighBottom_ge_endpoint_min_of_nativeEuler",
+      "module": "Zeta23/CCM/ReciprocalApertureConcavity.lean",
+      "observed_axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "Zeta23.CCM.evenRayleighBottom_ge_endpoint_min_of_euler_curvature",
+      "module": "Zeta23/CCM/ReciprocalApertureConcavity.lean",
+      "observed_axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "Zeta23.CCM.canonical_evenFixedEnergy_contDiffOn_two",
+      "module": "Zeta23/CCM/ReciprocalApertureConcavity.lean",
+      "observed_axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "Zeta23.CCM.evenRayleighBottom_ge_endpoint_min_of_M66",
+      "module": "Zeta23/CCM/ReciprocalApertureConcavity.lean",
+      "observed_axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "Zeta23.CCM.k2EvenBottom_positive_of_interpolation_and_M51",
+      "module": "Zeta23/CCM/K2EvenBottomGluing.lean",
+      "observed_axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "Zeta23.CCM.k2EvenBottom_positive_of_reciprocal_concavity_and_M51",
+      "module": "Zeta23/CCM/K2EvenBottomGluing.lean",
+      "observed_axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "Zeta23.CCM.k2OddBottom_positive_of_finite_window",
+      "module": "Zeta23/CCM/K2EvenBottomGluing.lean",
+      "observed_axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "Zeta23.CCM.k2EvenBottom_positive_of_raw_concavity_and_M51",
+      "module": "Zeta23/CCM/K2EvenBottomGluing.lean",
+      "observed_axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "Zeta23.CCM.one_div_400_lt_primeFreeRadius_two",
+      "module": "Zeta23/CCM/K2EvenBottomGluing.lean",
+      "observed_axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "Zeta23.CCM.k2EvenBottom_positive_of_M66_and_M51",
+      "module": "Zeta23/CCM/K2EvenBottomGluing.lean",
+      "observed_axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "Zeta23.CCM.GlobalBottomResidualState.evenStrict_shift_lt_odd",
+      "module": "Zeta23/CCM/GlobalBottomStrictEvenShiftedRay.lean",
+      "observed_axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "Zeta23.CCM.GlobalBottomResidualState.two_le_groundSuccessor",
+      "module": "Zeta23/CCM/GlobalBottomStrictEvenShiftedRay.lean",
+      "observed_axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "Zeta23.CCM.GlobalBottomResidualState.evenStrict_trial_eq_source_mul_shiftedRay",
+      "module": "Zeta23/CCM/GlobalBottomStrictEvenShiftedRay.lean",
+      "observed_axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "Zeta23.CCM.GlobalBottomResidualState.evenStrict_trial_source_ne_zero",
+      "module": "Zeta23/CCM/GlobalBottomStrictEvenShiftedRay.lean",
+      "observed_axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "Zeta23.CCM.GlobalBottomResidualState.evenStrict_shiftedRay_source_eq_one",
+      "module": "Zeta23/CCM/GlobalBottomStrictEvenShiftedRay.lean",
+      "observed_axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "Zeta23.CCM.GlobalBottomResidualState.evenStrict_shiftedRay_eigenmode",
+      "module": "Zeta23/CCM/GlobalBottomStrictEvenShiftedRay.lean",
+      "observed_axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "Zeta23.CCM.GlobalBottomResidualState.evenStrict_shiftedRay_ne_zero",
+      "module": "Zeta23/CCM/GlobalBottomStrictEvenShiftedRay.lean",
+      "observed_axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "Zeta23.CCM.GlobalBottomResidualState.evenStrict_shiftedRay_primeRemainder_budget",
+      "module": "Zeta23/CCM/GlobalBottomStrictEvenShiftedRay.lean",
+      "observed_axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "Zeta23.CCM.GlobalBottomResidualState.evenStrict_shiftedRay_budget_pos",
+      "module": "Zeta23/CCM/GlobalBottomStrictEvenShiftedRay.lean",
+      "observed_axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "Zeta23.CCM.k3ParityBottom_positive_of_finite_window",
+      "module": "Zeta23/CCM/K3BottomWindowRecord.lean",
+      "observed_axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "Zeta23.CCM.k3BothParityBottom_positive_of_finite_windows",
+      "module": "Zeta23/CCM/K3BottomWindowRecord.lean",
+      "observed_axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    }
+  ],
+  "linux_validation": {
+    "authority": "PRIMARY_CURRENT_HEAD_EXACT_TREE_GATE",
+    "head": "31512dbb698dd59b90cfa32549f0e9273a5163f9",
+    "tree": "b1c9158c12347a1b0269592b07117307d482c702",
+    "checked_merge": "e620254d77d3704316e579fb20457ceafc55f780",
+    "checked_merge_tree": "b1c9158c12347a1b0269592b07117307d482c702",
+    "job_id": 115084748703,
+    "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38332359589/job/115084748703",
+    "four_module_compiler": "PASS",
+    "proof_escape_gate": "PASS",
+    "29_public_axiom_reports": "PASS_STANDARD_FOUNDATIONS_ONLY",
+    "evidence": {
+      "file": "pr290-315-formal-axioms.json",
+      "sha256": "18d9a44d299a1f404f634b2f1563a64e283a79267e426dad30f925165465463a"
+    }
+  },
+  "prior_linux_validation": {
+    "head": "894b4180c99258f2a9b1117019e03160cbed9e7c",
+    "tree": "e64daac73e1badbd396e05821b3ac48f31e008f9",
+    "job_id": 115077198449,
+    "four_module_compiler": "PASS",
+    "proof_escape_gate": "PASS",
+    "29_public_axiom_reports": "PASS_STANDARD_FOUNDATIONS_ONLY",
+    "evidence": {
+      "file": "pr290-894-formal-axioms.json",
+      "sha256": "886c037cab579697919ffb4796f5091db6a2fb0a7533229d3b5a37f98929bfed"
+    },
+    "exact_object_equivalence_to_final_head": {
+      "result": "PASS",
+      "method": "git diff of all Zeta23 paths and axiom_audit.py is empty; four individual Git blobs equal",
+      "compared_paths": [
+        "Zeta23",
+        "research/RHRC/tools/axiom_audit.py"
+      ]
+    }
+  },
+  "supplemental_windows_validation": {
+    "head": "31512dbb698dd59b90cfa32549f0e9273a5163f9",
+    "four_module_build_and_exact_source_replay": "PASS",
+    "lake_job_count": 4148,
+    "mandatory_29_report_axiom_audit": "PASS",
+    "observed_exit_codes": {
+      "build_replay": 0,
+      "axiom_audit": 0
+    },
+    "evidence": [
+      {
+        "file": "315-local-four-module-replay.txt",
+        "sha256": "105a6346cd403cd3a83148b877359c57f697213be3d75f7d43b5dcccf3f10014"
+      },
+      {
+        "file": "315-local-axiom-audit.txt",
+        "sha256": "0e79c6d7e40110a878be2f426e48910d8748ec9872a754a93e484abfba5ac908"
+      }
+    ]
+  },
+  "remaining_explicit_premises": {
+    "k2_even_final": {
+      "declaration": "Zeta23.CCM.k2EvenBottom_positive_of_M66_and_M51",
+      "hM51": "forall L in Set.Icc (1/400) (Real.log 16), 0 < parityRayleighBottom .even L 2",
+      "aperture_domain": "0 < L and L <= Real.log 16",
+      "status": "Whole-window M51 positivity remains an independent premise. Canonical C2, native M66 interpolation, and 1/400 <= log 16 are discharged in Lean."
+    },
+    "k2_odd_window": {
+      "declaration": "Zeta23.CCM.k2OddBottom_positive_of_finite_window",
+      "hOdd": "forall L in Set.Icc (1/512) (Real.log 16), 0 < parityRayleighBottom .odd L 2",
+      "aperture_domain": "0 < L and L <= Real.log 16"
+    },
+    "k3_single_parity_window": {
+      "declaration": "Zeta23.CCM.k3ParityBottom_positive_of_finite_window",
+      "hWindow": "forall L in Set.Icc (1/512) (Real.log 16), 0 < parityRayleighBottom p L 3",
+      "aperture_domain": "0 < L and L <= Real.log 16"
+    },
+    "k3_both_parity_windows": {
+      "declaration": "Zeta23.CCM.k3BothParityBottom_positive_of_finite_windows",
+      "hWindows": "forall p : ReversalParity, forall L in Set.Icc (1/512) (Real.log 16), 0 < parityRayleighBottom p L 3",
+      "aperture_domain": "0 < L and L <= Real.log 16"
+    },
+    "strict_even_selected_state": {
+      "state": "s : GlobalBottomResidualState Q, retaining the actual selected negative ground and its aligned data",
+      "hp": "s.aligned.firstBad.p = ReversalParity.even",
+      "hlam": "s.aligned.lam < parityRayleighBottom .odd s.aligned.firstBad.L (s.aligned.firstBad.Nstar + 1)",
+      "hK": "2 <= s.aligned.firstBad.Nstar + 1; supplied in shifted-ray interfaces and derivable from the retained state by two_le_groundSuccessor",
+      "hstrict_adapter": "evenStrict_shift_lt_odd takes parityRayleighBottom .even L K < parityRayleighBottom .odd L K and derives hlam for the same retained state",
+      "conclusion_scope": "Same-state shifted-ray identities and a positive defect reformulating the negative eigenvalue; no contradiction or state exclusion is proved."
+    },
+    "native_M66_interpolation": {
+      "declaration": "Zeta23.CCM.evenRayleighBottom_ge_endpoint_min_of_M66",
+      "domain": "2 <= K and 0 < a <= L <= b < primeFreeRadius K",
+      "primeFreeRadius": "1 / (2 * pi^2 * (2*K + 1) * K^2)",
+      "independent_analytic_premises": []
+    },
+    "independent_radius_adapter": {
+      "declaration": "Zeta23.CCM.evenRayleighBottom_ge_endpoint_min_of_euler_curvature",
+      "domain": "2 <= K, 0 < R, 0 < a <= L <= b < R",
+      "hSmooth": "Every fixed legal-even productionContactFixedEnergy is ContDiffOn R 2 on Ioi 0",
+      "hCurv": "Every nonzero legal-even vector has E''(x) + 2*E'(x)/x < 0 for 0 < x < R",
+      "status": "The general radius remains independently supplied; no numerical radius is promoted into this premise."
+    },
+    "auxiliary_adapters": "Earlier concavity/interpolation and raw-concavity adapters retain their named hypotheses as printed in the immutable source; final native M66 and K2 theorems discharge their analytic specializations."
+  },
+  "pending_broader_public_authority": [
+    {
+      "authority": "PUBLIC_REGISTERED_LEAN_ROOTS",
+      "job_id": 115085096565,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38332359575/job/115085096565",
+      "observed_status": "queued",
+      "observed_conclusion": null,
+      "snapshot_utc": "2026-10-13 01:37:08 UTC",
+      "receipt_disposition": "PENDING_CI_AUTHORITY"
+    },
+    {
+      "authority": "RHKG_COMPILER_RECEIPTS",
+      "job_id": 115085096661,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38332359575/job/115085096661",
+      "observed_status": "queued",
+      "observed_conclusion": null,
+      "snapshot_utc": "2026-10-13 01:37:08 UTC",
+      "receipt_disposition": "PENDING_CI_AUTHORITY"
+    }
+  ],
+  "claim_firewall": {
+    "RH": "OPEN",
+    "RH_equivalent_exclusion": "NOT_ESTABLISHED_BY_THIS_RECEIPT",
+    "numerical_window_PASS_flags": "NOT_ACCEPTED_AS_LEAN_THEOREMS",
+    "local_public_CCM_root": "NOT_REPLAYED: 89 direct imports remain uncached; broader public-root and RHKG authority pending final CI",
+    "fully_green_PR": "NOT_CLAIMED_BY_THIS_RECEIPT"
+  }
+}

@@ -9,7 +9,7 @@
   "post192_module": "post190_fb05_canonical_realizability.py",
   "post192_module_blob_sha": "2d698891948f89ce2cf23cf8340cd04c4278cf4d",
   "post192_fixture": "post190_fb05_canonical_realizability_v1.json",
-  "post192_fixture_blob_sha": "bf21458e2dd3e42c23124f3fa7b2a32e12edd05d",
+  "post192_fixture_blob_sha": "cbe48a5ec803af62bdcd63f3bc11cce797a227f5",
   "source_selector_module": "post187_fb05_q14_mixed_drift_selector.py",
   "source_selector_module_blob_sha": "03bcff09853c7c212c3a33a43c060909868f0c55",
   "fixed_unit_derivative_module": "post177_fb05_q13_fixed_unit_derivative.py",
