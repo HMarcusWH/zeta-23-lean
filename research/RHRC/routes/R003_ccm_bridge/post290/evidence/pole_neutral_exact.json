@@ -1,0 +1,520 @@
+{
+  "status": "PASS",
+  "authority": "EXACT_FINITE_CONTROL",
+  "RH_status": "OPEN",
+  "scope": "28 rational geometries, K=3..9; one symbolic modified-prime source-atom control",
+  "is_actual_zeta": false,
+  "Lean_authority": false,
+  "assertion_count": 311,
+  "rows": [
+    {
+      "K": 3,
+      "a": "1/16",
+      "b": "-2816/3451",
+      "checks": {
+        "legal_index_map": true,
+        "pole_moment_map": true,
+        "restricted_index_map": true,
+        "cubic_pairing": true,
+        "corrected_pole_channel": true,
+        "projector_idempotence": true,
+        "projector_selfadjointness": true,
+        "dimensions": true,
+        "normal_nonzero": true,
+        "cubic_nonzero": true,
+        "coefficient_sign": true
+      }
+    },
+    {
+      "K": 3,
+      "a": "1/3",
+      "b": "-9/49",
+      "checks": {
+        "legal_index_map": true,
+        "pole_moment_map": true,
+        "restricted_index_map": true,
+        "cubic_pairing": true,
+        "corrected_pole_channel": true,
+        "projector_idempotence": true,
+        "projector_selfadjointness": true,
+        "dimensions": true,
+        "normal_nonzero": true,
+        "cubic_nonzero": true,
+        "coefficient_sign": true
+      }
+    },
+    {
+      "K": 3,
+      "a": "1",
+      "b": "-1/14",
+      "checks": {
+        "legal_index_map": true,
+        "pole_moment_map": true,
+        "restricted_index_map": true,
+        "cubic_pairing": true,
+        "corrected_pole_channel": true,
+        "projector_idempotence": true,
+        "projector_selfadjointness": true,
+        "dimensions": true,
+        "normal_nonzero": true,
+        "cubic_nonzero": true,
+        "coefficient_sign": true
+      }
+    },
+    {
+      "K": 3,
+      "a": "7",
+      "b": "-13/1568",
+      "checks": {
+        "legal_index_map": true,
+        "pole_moment_map": true,
+        "restricted_index_map": true,
+        "cubic_pairing": true,
+        "corrected_pole_channel": true,
+        "projector_idempotence": true,
+        "projector_selfadjointness": true,
+        "dimensions": true,
+        "normal_nonzero": true,
+        "cubic_nonzero": true,
+        "coefficient_sign": true
+      }
+    },
+    {
+      "K": 4,
+      "a": "1/16",
+      "b": "-14166272/37302265",
+      "checks": {
+        "legal_index_map": true,
+        "pole_moment_map": true,
+        "restricted_index_map": true,
+        "cubic_pairing": true,
+        "corrected_pole_channel": true,
+        "projector_idempotence": true,
+        "projector_selfadjointness": true,
+        "dimensions": true,
+        "normal_nonzero": true,
+        "cubic_nonzero": true,
+        "coefficient_sign": true
+      }
+    },
+    {
+      "K": 4,
+      "a": "1/3",
+      "b": "-639/7007",
+      "checks": {
+        "legal_index_map": true,
+        "pole_moment_map": true,
+        "restricted_index_map": true,
+        "cubic_pairing": true,
+        "corrected_pole_channel": true,
+        "projector_idempotence": true,
+        "projector_selfadjointness": true,
+        "dimensions": true,
+        "normal_nonzero": true,
+        "cubic_nonzero": true,
+        "coefficient_sign": true
+      }
+    },
+    {
+      "K": 4,
+      "a": "1",
+      "b": "-503/13090",
+      "checks": {
+        "legal_index_map": true,
+        "pole_moment_map": true,
+        "restricted_index_map": true,
+        "cubic_pairing": true,
+        "corrected_pole_channel": true,
+        "projector_idempotence": true,
+        "projector_selfadjointness": true,
+        "dimensions": true,
+        "normal_nonzero": true,
+        "cubic_nonzero": true,
+        "coefficient_sign": true
+      }
+    },
+    {
+      "K": 4,
+      "a": "7",
+      "b": "-24803/4363744",
+      "checks": {
+        "legal_index_map": true,
+        "pole_moment_map": true,
+        "restricted_index_map": true,
+        "cubic_pairing": true,
+        "corrected_pole_channel": true,
+        "projector_idempotence": true,
+        "projector_selfadjointness": true,
+        "dimensions": true,
+        "normal_nonzero": true,
+        "cubic_nonzero": true,
+        "coefficient_sign": true
+      }
+    },
+    {
+      "K": 5,
+      "a": "1/16",
+      "b": "-98067489536/472252003795",
+      "checks": {
+        "legal_index_map": true,
+        "pole_moment_map": true,
+        "restricted_index_map": true,
+        "cubic_pairing": true,
+        "corrected_pole_channel": true,
+        "projector_idempotence": true,
+        "projector_selfadjointness": true,
+        "dimensions": true,
+        "normal_nonzero": true,
+        "cubic_nonzero": true,
+        "coefficient_sign": true
+      }
+    },
+    {
+      "K": 5,
+      "a": "1/3",
+      "b": "-359577/6922916",
+      "checks": {
+        "legal_index_map": true,
+        "pole_moment_map": true,
+        "restricted_index_map": true,
+        "cubic_pairing": true,
+        "corrected_pole_channel": true,
+        "projector_idempotence": true,
+        "projector_selfadjointness": true,
+        "dimensions": true,
+        "normal_nonzero": true,
+        "cubic_nonzero": true,
+        "coefficient_sign": true
+      }
+    },
+    {
+      "K": 5,
+      "a": "1",
+      "b": "-661/28730",
+      "checks": {
+        "legal_index_map": true,
+        "pole_moment_map": true,
+        "restricted_index_map": true,
+        "cubic_pairing": true,
+        "corrected_pole_channel": true,
+        "projector_idempotence": true,
+        "projector_selfadjointness": true,
+        "dimensions": true,
+        "normal_nonzero": true,
+        "cubic_nonzero": true,
+        "coefficient_sign": true
+      }
+    },
+    {
+      "K": 5,
+      "a": "7",
+      "b": "-32447/8104096",
+      "checks": {
+        "legal_index_map": true,
+        "pole_moment_map": true,
+        "restricted_index_map": true,
+        "cubic_pairing": true,
+        "corrected_pole_channel": true,
+        "projector_idempotence": true,
+        "projector_selfadjointness": true,
+        "dimensions": true,
+        "normal_nonzero": true,
+        "cubic_nonzero": true,
+        "coefficient_sign": true
+      }
+    },
+    {
+      "K": 6,
+      "a": "1/16",
+      "b": "-48047728619776/381485168665601",
+      "checks": {
+        "legal_index_map": true,
+        "pole_moment_map": true,
+        "restricted_index_map": true,
+        "cubic_pairing": true,
+        "corrected_pole_channel": true,
+        "projector_idempotence": true,
+        "projector_selfadjointness": true,
+        "dimensions": true,
+        "normal_nonzero": true,
+        "cubic_nonzero": true,
+        "coefficient_sign": true
+      }
+    },
+    {
+      "K": 6,
+      "a": "1/3",
+      "b": "-171136683/5282184908",
+      "checks": {
+        "legal_index_map": true,
+        "pole_moment_map": true,
+        "restricted_index_map": true,
+        "cubic_pairing": true,
+        "corrected_pole_channel": true,
+        "projector_idempotence": true,
+        "projector_selfadjointness": true,
+        "dimensions": true,
+        "normal_nonzero": true,
+        "cubic_nonzero": true,
+        "coefficient_sign": true
+      }
+    },
+    {
+      "K": 6,
+      "a": "1",
+      "b": "-243097/16370354",
+      "checks": {
+        "legal_index_map": true,
+        "pole_moment_map": true,
+        "restricted_index_map": true,
+        "cubic_pairing": true,
+        "corrected_pole_channel": true,
+        "projector_idempotence": true,
+        "projector_selfadjointness": true,
+        "dimensions": true,
+        "normal_nonzero": true,
+        "cubic_nonzero": true,
+        "coefficient_sign": true
+      }
+    },
+    {
+      "K": 6,
+      "a": "7",
+      "b": "-1011053/348476128",
+      "checks": {
+        "legal_index_map": true,
+        "pole_moment_map": true,
+        "restricted_index_map": true,
+        "cubic_pairing": true,
+        "corrected_pole_channel": true,
+        "projector_idempotence": true,
+        "projector_selfadjointness": true,
+        "dimensions": true,
+        "normal_nonzero": true,
+        "cubic_nonzero": true,
+        "coefficient_sign": true
+      }
+    },
+    {
+      "K": 7,
+      "a": "1/16",
+      "b": "-1311062828084992/15958995535556255",
+      "checks": {
+        "legal_index_map": true,
+        "pole_moment_map": true,
+        "restricted_index_map": true,
+        "cubic_pairing": true,
+        "corrected_pole_channel": true,
+        "projector_idempotence": true,
+        "projector_selfadjointness": true,
+        "dimensions": true,
+        "normal_nonzero": true,
+        "cubic_nonzero": true,
+        "coefficient_sign": true
+      }
+    },
+    {
+      "K": 7,
+      "a": "1/3",
+      "b": "-85725018/3974275487",
+      "checks": {
+        "legal_index_map": true,
+        "pole_moment_map": true,
+        "restricted_index_map": true,
+        "cubic_pairing": true,
+        "corrected_pole_channel": true,
+        "projector_idempotence": true,
+        "projector_selfadjointness": true,
+        "dimensions": true,
+        "normal_nonzero": true,
+        "cubic_nonzero": true,
+        "coefficient_sign": true
+      }
+    },
+    {
+      "K": 7,
+      "a": "1",
+      "b": "-6410197/632490950",
+      "checks": {
+        "legal_index_map": true,
+        "pole_moment_map": true,
+        "restricted_index_map": true,
+        "cubic_pairing": true,
+        "corrected_pole_channel": true,
+        "projector_idempotence": true,
+        "projector_selfadjointness": true,
+        "dimensions": true,
+        "normal_nonzero": true,
+        "cubic_nonzero": true,
+        "coefficient_sign": true
+      }
+    },
+    {
+      "K": 7,
+      "a": "7",
+      "b": "-422731/195837824",
+      "checks": {
+        "legal_index_map": true,
+        "pole_moment_map": true,
+        "restricted_index_map": true,
+        "cubic_pairing": true,
+        "corrected_pole_channel": true,
+        "projector_idempotence": true,
+        "projector_selfadjointness": true,
+        "dimensions": true,
+        "normal_nonzero": true,
+        "cubic_nonzero": true,
+        "coefficient_sign": true
+      }
+    },
+    {
+      "K": 8,
+      "a": "1/16",
+      "b": "-224073040600613632/3961864485096168755",
+      "checks": {
+        "legal_index_map": true,
+        "pole_moment_map": true,
+        "restricted_index_map": true,
+        "cubic_pairing": true,
+        "corrected_pole_channel": true,
+        "projector_idempotence": true,
+        "projector_selfadjointness": true,
+        "dimensions": true,
+        "normal_nonzero": true,
+        "cubic_nonzero": true,
+        "coefficient_sign": true
+      }
+    },
+    {
+      "K": 8,
+      "a": "1/3",
+      "b": "-45897207246/3042853802261",
+      "checks": {
+        "legal_index_map": true,
+        "pole_moment_map": true,
+        "restricted_index_map": true,
+        "cubic_pairing": true,
+        "corrected_pole_channel": true,
+        "projector_idempotence": true,
+        "projector_selfadjointness": true,
+        "dimensions": true,
+        "normal_nonzero": true,
+        "cubic_nonzero": true,
+        "coefficient_sign": true
+      }
+    },
+    {
+      "K": 8,
+      "a": "1",
+      "b": "-38149/5282342",
+      "checks": {
+        "legal_index_map": true,
+        "pole_moment_map": true,
+        "restricted_index_map": true,
+        "cubic_pairing": true,
+        "corrected_pole_channel": true,
+        "projector_idempotence": true,
+        "projector_selfadjointness": true,
+        "dimensions": true,
+        "normal_nonzero": true,
+        "cubic_nonzero": true,
+        "coefficient_sign": true
+      }
+    },
+    {
+      "K": 8,
+      "a": "7",
+      "b": "-367532017/223541343872",
+      "checks": {
+        "legal_index_map": true,
+        "pole_moment_map": true,
+        "restricted_index_map": true,
+        "cubic_pairing": true,
+        "corrected_pole_channel": true,
+        "projector_idempotence": true,
+        "projector_selfadjointness": true,
+        "dimensions": true,
+        "normal_nonzero": true,
+        "cubic_nonzero": true,
+        "coefficient_sign": true
+      }
+    },
+    {
+      "K": 9,
+      "a": "1/16",
+      "b": "-561639212272189742336/13834526023149275433325",
+      "checks": {
+        "legal_index_map": true,
+        "pole_moment_map": true,
+        "restricted_index_map": true,
+        "cubic_pairing": true,
+        "corrected_pole_channel": true,
+        "projector_idempotence": true,
+        "projector_selfadjointness": true,
+        "dimensions": true,
+        "normal_nonzero": true,
+        "cubic_nonzero": true,
+        "coefficient_sign": true
+      }
+    },
+    {
+      "K": 9,
+      "a": "1/3",
+      "b": "-626006835981/57112025211668",
+      "checks": {
+        "legal_index_map": true,
+        "pole_moment_map": true,
+        "restricted_index_map": true,
+        "cubic_pairing": true,
+        "corrected_pole_channel": true,
+        "projector_idempotence": true,
+        "projector_selfadjointness": true,
+        "dimensions": true,
+        "normal_nonzero": true,
+        "cubic_nonzero": true,
+        "coefficient_sign": true
+      }
+    },
+    {
+      "K": 9,
+      "a": "1",
+      "b": "-201873029/37900803850",
+      "checks": {
+        "legal_index_map": true,
+        "pole_moment_map": true,
+        "restricted_index_map": true,
+        "cubic_pairing": true,
+        "corrected_pole_channel": true,
+        "projector_idempotence": true,
+        "projector_selfadjointness": true,
+        "dimensions": true,
+        "normal_nonzero": true,
+        "cubic_nonzero": true,
+        "coefficient_sign": true
+      }
+    },
+    {
+      "K": 9,
+      "a": "7",
+      "b": "-500124727/391197351776",
+      "checks": {
+        "legal_index_map": true,
+        "pole_moment_map": true,
+        "restricted_index_map": true,
+        "cubic_pairing": true,
+        "corrected_pole_channel": true,
+        "projector_idempotence": true,
+        "projector_selfadjointness": true,
+        "dimensions": true,
+        "normal_nonzero": true,
+        "cubic_nonzero": true,
+        "coefficient_sign": true
+      }
+    }
+  ],
+  "modified_atom_checks": {
+    "original_rank_one": true,
+    "corrected_rank_one": true,
+    "uncorrected_source_is_false": true
+  }
+}
