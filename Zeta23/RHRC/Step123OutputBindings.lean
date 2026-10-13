@@ -2,6 +2,7 @@ import Zeta23.CCM.UniversalSincDetector
 import Zeta23.ExceptionalZero.UniversalSincDetectorVisibility
 import Zeta23.CCM.CanonicalPoleNeutralGeometry
 import Zeta23.CCM.NativeIntegerPrimeSource
+import Zeta23.CCM.NativeIntegerPrimeField
 import Zeta23.CCM.NativePositiveCompletion
 import Zeta23.CCM.Step123PrimeSeam
 import Zeta23.RHRC.SourceCandidateResolution
@@ -17,6 +18,11 @@ Uses the repository's existing compiler-backed source-candidate resolver.
 -/
 
 run_cmd do
+  let some checkedHead ← liftIO <| IO.getEnv "POST290_CHECKED_HEAD"
+    | throwError "Missing POST290_CHECKED_HEAD compiler context"
+  let some checkedTree ← liftIO <| IO.getEnv "POST290_CHECKED_TREE"
+    | throwError "Missing POST290_CHECKED_TREE compiler context"
+  liftIO <| IO.println s!"POST290_COMPILER_CONTEXT\t{checkedHead}\t{checkedTree}"
   let roots : Array (Name × String) := #[
     (``Zeta23.CCM.UniversalSinc.hasSum_width, "Zeta23.CCM.UniversalSincDetector"),
     (``Zeta23.CCM.UniversalSinc.summable_norm_sinc_sub_one, "Zeta23.CCM.UniversalSincDetector"),
@@ -39,8 +45,17 @@ run_cmd do
     (``Zeta23.CCM.poleNeutralIndexLinearMap_surjective, "Zeta23.CCM.CanonicalPoleNeutralGeometry"),
     (``Zeta23.CCM.canonicalSourceMatrix_mulVec_eq_negative_arch_prime_of_profiles,
       "Zeta23.CCM.CanonicalPoleNeutralGeometry"),
+    (``Zeta23.CCM.inner_poleNeutralEvenCompressedCanonical_self, "Zeta23.CCM.CanonicalPoleNeutralGeometry"),
+    (``Zeta23.CCM.inner_poleNeutralOddCompressedCanonical_self, "Zeta23.CCM.CanonicalPoleNeutralGeometry"),
+    (``Zeta23.CCM.canonicalSourceMatrix_mulVec_poleNeutralEven_eq_negative_arch_prime,
+      "Zeta23.CCM.CanonicalPoleNeutralGeometry"),
     (``Zeta23.CCM.native_primeCoefficients_unique, "Zeta23.CCM.NativeIntegerPrimeSource"),
     (``Zeta23.CCM.native_weighted_dirichlet_identity, "Zeta23.CCM.NativeIntegerPrimeSource"),
+    (``Zeta23.CCM.nativePrimeField_eq_history_sum, "Zeta23.CCM.NativeIntegerPrimeField"),
+    (``Zeta23.CCM.nativeIntegerDriveField_eq_history_sum, "Zeta23.CCM.NativeIntegerPrimeField"),
+    (``Zeta23.CCM.nativePrimeField_zero_before_firstPrime, "Zeta23.CCM.NativeIntegerPrimeField"),
+    (``Zeta23.CCM.nativePrimeField_frozen_firstPrime_atom, "Zeta23.CCM.NativeIntegerPrimeField"),
+    (``Zeta23.CCM.nativePrimeField_continuous, "Zeta23.CCM.NativeIntegerPrimeField"),
     (``Zeta23.CCM.nativePositiveCompletion_nonneg, "Zeta23.CCM.NativePositiveCompletion"),
     (``Zeta23.CCM.nativePositiveCompletion_le_exp, "Zeta23.CCM.NativePositiveCompletion"),
     (``Zeta23.CCM.nativePositiveCompletion_integrableOn, "Zeta23.CCM.NativePositiveCompletion"),

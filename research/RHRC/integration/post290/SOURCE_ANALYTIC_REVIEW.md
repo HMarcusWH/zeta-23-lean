@@ -73,6 +73,11 @@ product. Its intended theorem roots establish:
 - Convergence and nonreal nonvanishing of the entire infinite product at
   each fixed argument, derived without a caller-supplied tail hypothesis.
 - Its value one at zero and even symmetry.
+- Prefix-product convergence to the specified infinite product, and the
+  frozen original scale `1/4096` with its nonreal nonvanishing instance.
+- Uniform convergence on every compact complex set, derived using one
+  common summable tail majorant, and entire analyticity of the actual
+  infinite product as a locally uniform limit of entire prefixes.
 
 `Zeta23/ExceptionalZero/UniversalSincDetectorVisibility.lean` binds the
 specified pole-killing multiplier to the repository's actual nontrivial
@@ -81,10 +86,28 @@ and positive source scale; it accepts no visibility assumption. Crucially,
 it proves a fact about the explicit infinite-product multiplier, not an
 unproved identity with a physical Fourier transform.
 
+The extended component also classifies the multiplier's nonreal zero set
+as exactly `±i/2` and proves nonvanishing of its actual complex square at
+every off-line carrier zero, including the frozen-scale instance. This is a
+pointwise zero-set statement. Simplicity/multiplicity requires derivative
+authority for the infinite product and is not asserted by that theorem.
+The separate derivative extension now supplies explicit derivatives at the
+two elementary zeros and proves each is nonzero. If those roots compile,
+the usual simple-zero interpretation is DERIVED for the explicit multiplier;
+no separate analytic-order or physical-transform claim is hidden in the
+pointwise zero-set theorem.
+
 Compiler receipts, rather than this list of intended roots, determine which
 statements are PROVED. The initial compilation attempt stopped while
 reading a dependency's `.ir` cache file before checking the new proofs; that
 attempt provides no new formal theorem authority.
+Subsequent Linux validation reached the source proofs and exposed an
+instance-coherence mismatch between the direct complex norm and the norm
+projected from the complex normed additive group in `IsBigO`. A transparency
+option did not repair it. The candidate repair proves the two `Norm ℂ`
+instances equal and explicitly rewrites the derived asymptotic statement.
+This is a kernel-checked equality target, not an extra source assumption;
+its next compiler receipt remains necessary.
 
 ## Remaining mandatory mathematical obligations
 
@@ -124,3 +147,140 @@ whose verified application would strengthen absolute growth to the two
 separate original phases. The third is the concrete finite error theorem,
 which would finally turn those physical witnesses into the required native
 finite vectors. These remain required for the full release.
+
+## Post-green implications for the source component
+
+The exact compiler-verified head and workflow results must accompany this
+analysis before any item is labeled PROVED. For a verified product root,
+the resulting mathematical change is substantive: infinite-tail
+nonvanishing becomes a theorem of the specified source, so physical
+visibility can no longer be blocked merely by an unproved tail premise.
+
+Upstream, the nonvanishing proof uses differentiability of sinc at its removable
+singularity and summability of the original widths. The local linear
+asymptotic estimate suffices for this pointwise product result; the sharper
+quadratic tail estimate is unnecessary at this stage. A compact norm bound
+then gives one summable majorant for all points in a compact complex set,
+allowing a genuine normally convergent, entire-product extension. The
+quantitative Gevrey decay still needs a sharper explicit estimate for the
+density construction and finite-cutoff budgets.
+
+Downstream, the exact zero-carrier multiplier theorem applies to both sides
+of the critical line and preserves the complex-square coefficient. Once
+the actual physical transform is identified with that multiplier, universal
+visibility is available at the one frozen source scale. The old bank can
+then remain a regression/fallback construction without carrying this new
+theorem under its name. The two-sided phase theorem still requires its own
+Laplace and meromorphic continuation proof, and finite transport still
+requires its actual error theorem.
+
+No historical failed RH-closing route has been resurrected merely by this
+nonvanishing result. The source visibility obligation is narrowed; the
+opposing native growth estimate remains OPEN. The most direct falsification
+check is to verify that any downstream consumer uses the physical transform
+identity, rather than passing the formal multiplier as though it were
+already a constructed physical function. This is the current claim
+firewall and the highest-leverage next obligation.
+
+## Proposed amendment: coincident real factor zeros
+
+The newly supplied `NEXT_PR_AMENDMENT.md` labels itself "Proposed only" and
+explicitly preserves the original build scope and the D2 obligation. Its
+A5/E guards are mathematically justified: nonreal zero exclusion does not
+imply simple real-axis zeros of the sinc product.
+
+At the frozen scale `s0=1/4096`, choose `z=6π/s0`. The paper indices `r=1`
+and `r=2` (Lean indices zero and one) have widths `s0/2` and `s0/6`, so their
+arguments are exactly `3π` and `π`. Both sinc factors vanish at this same
+point, and their indices are distinct. The new Lean candidate
+`fixed_coincident_factor_zeros` proves those exact factor statements.
+It does not assert an unproved multiplicity theorem for the full product.
+
+The imaginary elementary pair remains separate. The multiplier's explicit
+nonzero derivatives at `±i/2` support its simple-zero interpretation once
+compiled; squaring that multiplier gives the corresponding doubled
+elementary zero behavior. That square contains `P_s(z)^2`; the separate
+`P^2 q_s` source has multiplier `(z^2+1/4)^2 P_s(z)` and is not identified
+with the square or the autocorrelation here. None of these facts imposes simplicity on the
+real sinc-product zeros or supplies the physical density/Fourier producer.
+
+## Argon iteration: theorem opportunities and remaining source obligations
+
+The retrieved `RH_Argon_Audit_Iteration_2026-10-13/RESEARCH_NOTE.md`,
+Sections 3–5, was read directly together with its exact copied
+`NATIVE_POSITIVE_COMPLETION.md` and `COPRIME_MIXED_ENERGY.md` sources.
+The archive remains read-only reference evidence. Its authors explicitly
+classify the new universal claims as PAPER deductions.
+
+The bilateral source `Q_s(p)` has its zeros on the imaginary axis, whereas
+the present Fourier product has them on the real axis. The conventions
+are related by `Q_s(p)=P_s(ip)`. Thus the Argon coincident zeros at
+`p=6πi/s` correspond to a real Fourier argument; evenness accounts for its
+sign. This is consistent with the new exact factor control and does not
+require or permit a universal simple-real-zero premise.
+
+Section 3 gives a concrete conditional theorem opportunity: a proved
+selected-ground source divisor would determine the derivative of the
+auxiliary rational function `R_u(z)` at its elementary root. That derivative
+supplies a strictly negative continuum source–fourth-moment pairing and a
+strictly positive opposing budget. The relevant derivative holds `L,K,u`
+fixed; it is not an aperture derivative of a moving minimizer. The current
+source product theorem concerns the original detector and does not prove
+that a selected finite ground supplies this divisor. A conditional
+root-budget consumer must keep that producer obligation explicit.
+
+The complete budget in Section 3.3 remains valid at a tie with a nonnegative
+opposite-parity remainder. It supplies no cutoff-uniform positive budget
+and no lower parity gap from negative depth. It is unchanged by the common
+scalar shift described in Section 3.4. Consequently it cannot distinguish
+positive grounds from prohibited negative states by itself. The missing
+native upper inequality for the actual signed remainder, and strict-odd
+coverage or a valid bypass, remain OPEN. The modified-prime control can
+pay this budget while violating the native divisor identity; it falsifies
+a generic root-pattern exclusion, not every native argument.
+
+Section 4's useful native foundation is the exact prime-two history of the
+unchanged source. Before the next integer atom enters, both the actual
+prime field and logarithmic integer drive contain precisely the prime-two
+term. Source mass and weighted Cauchy–Schwarz would then make its norm
+strictly positive. The stable-difference decomposition and its exact
+initial convention are separately required before this becomes a lower
+bound for the actual angle's stable component. Source coefficient
+disjointness alone gives no pointwise orthogonality of overlapping fields.
+
+The proposed angle limit `E(T)(1-c_T) -> ||Z||²/2` is mathematically
+compatible with exponentially divergent energy. Its corresponding
+unnormalized small Gram eigenvalue has a positive limit, rather than
+vanishing. The quiet mixed-energy criterion and subexponential angle
+criterion are equivalent on the exact native pair under the full inherited
+decomposition, with zero/bounded cases handled separately. Neither
+criterion is established here. Displaying both does not create independent
+restrictions or an RH contradiction.
+
+Section 5 identifies the actual relative-progress ratios as the missing
+range information. Strict forward contraction alone does not force their
+sum to diverge; the stationary adjoint-kernel component survives. Its
+finite-section shift control correctly prevents exchanging the iteration
+and discretization limits without an error theorem. Rationally equivalent
+completion kernels preserve the shared zero divisor and supply no extra
+observability by themselves. Native progress or range membership remains
+OPEN; stable completed input is not a proof of stable inverse output.
+
+### New local native-field component
+
+`Zeta23/CCM/NativeIntegerPrimeField.lean` defines the exact unchanged-weight
+prime and integer-drive fields with the source argument visible. The
+candidate theorems establish a finite inclusive cutoff
+`floor(exp(T+s))` that works uniformly for every time at or before `T`,
+pointwise summability, continuity for a continuous compact source, and
+vanishing before `log(2)-s`. They also isolate the exact prime-two term on
+the first-prime source window. The frozen-width spacing guard is proved
+from `log(3/2) >= 1/3`, rather than accepted as a numerical assertion.
+
+These are local analytic constructions. They use no global `L²` or range
+premise. The compact source hypothesis is an explicit generic input to
+these operators; the actual `j=P²q` source and its support still need their
+producer. The analytic convolution equation `N*X=U`, the superexponential
+drive estimate, stable-difference decomposition, positive anchor integral,
+and all global native upper/range conclusions remain OPEN. Compiler
+receipts are required before the new local theorem candidates are PROVED.

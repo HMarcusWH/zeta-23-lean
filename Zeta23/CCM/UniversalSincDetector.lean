@@ -112,7 +112,7 @@ private theorem complex_norm_instances_eq :
 theorem sinc_sub_one_isBigO : (fun z : ℂ => sinc z - 1) =O[𝓝 0] id := by
   have h := analyticAt_sinc_zero.differentiableAt.isBigO_sub
   rw [complex_norm_instances_eq] at h
-  simpa using h
+  simpa only [sinc_zero, sub_zero, id] using h
 
 /-- Every individual factor is nonzero off the real axis. -/
 theorem sinc_ne_zero_of_im_ne_zero {z : ℂ} (hz : z.im ≠ 0) : sinc z ≠ 0 := by
@@ -155,7 +155,11 @@ theorem tendsto_partial_product {s : ℝ} (hs : 0 ≤ s) (z : ℂ) :
       atTop (𝓝 (product s z)) :=
   (multipliable_sinc hs z).hasProd.tendsto_prod_nat
 
-set_option backward.isDefEq.respectTransparency false in
+private theorem complex_commMonoid_instances_eq :
+    (@NormedField.toNormedCommRing ℂ Complex.instNormedField).toCommRing.toCommMonoid =
+      Complex.commRing.toCommMonoid := by
+  rfl
+
 /-- Normal convergence on any compact complex set. The common tail bound
 is derived from the specified widths and local sinc estimate. -/
 theorem hasProdUniformlyOn_compact {s : ℝ} (hs : 0 ≤ s) {K : Set ℂ}
@@ -184,7 +188,9 @@ theorem hasProdUniformlyOn_compact {s : ℝ} (hs : 0 ≤ s) {K : Set ℂ}
     intro n
     exact ((continuous_sinc.comp (continuous_const.mul continuous_id)).sub
       continuous_const).continuousOn
-  simpa [product] using Summable.hasProdUniformlyOn_one_add hK hu hb hcts
+  have hp := Summable.hasProdUniformlyOn_one_add hK hu hb hcts
+  rw [complex_commMonoid_instances_eq] at hp
+  simpa only [add_sub_cancel_left, product] using hp
 
 theorem hasProdLocallyUniformlyOn_univ {s : ℝ} (hs : 0 ≤ s) :
     HasProdLocallyUniformlyOn (fun n : ℕ => fun z : ℂ => sinc ((width s n : ℂ) * z))

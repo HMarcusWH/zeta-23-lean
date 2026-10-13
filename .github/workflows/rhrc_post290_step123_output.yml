@@ -48,6 +48,7 @@ jobs:
             Zeta23.ExceptionalZero.UniversalSincDetectorVisibility \
             Zeta23.CCM.CanonicalPoleNeutralGeometry \
             Zeta23.CCM.NativeIntegerPrimeSource \
+            Zeta23.CCM.NativeIntegerPrimeField \
             Zeta23.CCM.NativePositiveCompletion \
             Zeta23.CCM.Step123PrimeSeam
           do
@@ -58,7 +59,11 @@ jobs:
       - name: Reject proof escapes
         run: python research/RHRC/closure_batch/check_lean_proof_escapes.py --scope promoted
       - name: Exact component types and admitted axioms through existing compiler resolver
+        shell: bash
         run: |
+          set -euo pipefail
+          export POST290_CHECKED_HEAD="$(git rev-parse HEAD)"
+          export POST290_CHECKED_TREE="$(git rev-parse HEAD^{tree})"
           lake build Zeta23.RHRC.Step123OutputBindings
           lake env lean Zeta23/RHRC/Step123OutputBindings.lean | tee /tmp/post290-bindings.txt
           python research/RHRC/routes/R003_ccm_bridge/post290/build_formal_receipt.py --log /tmp/post290-bindings.txt --out /tmp/STEP123_FORMAL_OUTPUT.json
@@ -96,13 +101,53 @@ jobs:
           python research/RHRC/routes/R003_ccm_bridge/post290/test_detector_schur_provenance.py
           python research/RHRC/routes/R003_ccm_bridge/post290/test_deep_threshold_exact.py
           python research/RHRC/routes/R003_ccm_bridge/post290/test_inverse_budgets_and_gap_exact.py
+          python research/RHRC/routes/R003_ccm_bridge/post290/test_argon_continuum_and_roots_exact.py
           python research/RHRC/routes/R003_ccm_bridge/post290/test_k3_resume.py
           python research/RHRC/routes/R003_ccm_bridge/post290/test_k3_replay_shards.py
           python research/RHRC/routes/R003_ccm_bridge/post290/test_k3_seams.py
           python research/RHRC/routes/R003_ccm_bridge/post290/test_native_divisor_controls.py
+          python research/RHRC/routes/R003_ccm_bridge/post290/test_formal_receipt.py
           python research/RHRC/routes/R003_ccm_bridge/post290/test_output_mutations.py
+          python research/RHRC/routes/R003_ccm_bridge/post290/test_formal_receipt.py
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: post290-exact-controls-${{ github.sha }}
           path: research/RHRC/routes/R003_ccm_bridge/post290/evidence/
+
+  native-observations:
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - run: python -m pip install -r research/RHRC/routes/R003_ccm_bridge/requirements.txt
+      - name: Evaluate all frozen native probe rows with explicit seam cancellation
+        run: python research/RHRC/routes/R003_ccm_bridge/post290/evaluate_native_output.py --bits 384 --out /tmp/post290-native/native_panel.json
+      - name: Independently reconstruct every scalar residual and Gram entry at 1024 bits
+        run: python research/RHRC/routes/R003_ccm_bridge/post290/verify_native_output.py /tmp/post290-native/native_panel.json --out /tmp/post290-native/native_panel_check.json
+      - name: Require the full observation panel; keep universal and generated-detector scope open
+        run: |
+          python - <<'PY'
+          import json, subprocess
+          from pathlib import Path
+          d=json.loads(Path('/tmp/post290-native/native_panel.json').read_text())
+          c=json.loads(Path('/tmp/post290-native/native_panel_check.json').read_text())
+          assert d['source_identity']['commit']==subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip()
+          assert d['source_identity']['tree']==subprocess.check_output(['git','rev-parse','HEAD^{tree}'],text=True).strip()
+          assert d['source_identity']['working_tree_dirty'] is False
+          assert d['frozen_panel_complete'] is True and d['pair_count']==44 and d['row_count']==176
+          assert d['evaluated_rows']==176 and d['unresolved_rows']==0
+          assert c['verified_pairs']==44 and c['unresolved_pairs']==0
+          assert c['universal_theorem_authority'] is False and c['terminal_claim']=='RH_OPEN'
+          print('176 native probe rows freshly checked; universal detector and ground claims OPEN.')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: post290-native-observations-${{ github.sha }}
+          path: /tmp/post290-native/

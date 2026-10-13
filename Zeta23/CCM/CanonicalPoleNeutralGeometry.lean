@@ -45,13 +45,13 @@ def canonicalPoleOddFunctional (L : ℝ) (K : ℕ) :
     ring
 
 /-- The even legal carrier with its native elementary-pole condition. -/
-def poleNeutralEvenSubspace (L : ℝ) (K : ℕ) :
+abbrev poleNeutralEvenSubspace (L : ℝ) (K : ℕ) :
     Submodule ℂ (euclideanEvenBoundaryFlatSubspace K) :=
   LinearMap.ker ((canonicalPoleEvenFunctional L K).comp
     (euclideanEvenBoundaryFlatSubspace K).subtype)
 
 /-- The odd legal carrier with its native elementary-pole condition. -/
-def poleNeutralOddSubspace (L : ℝ) (K : ℕ) :
+abbrev poleNeutralOddSubspace (L : ℝ) (K : ℕ) :
     Submodule ℂ (euclideanOddBoundaryFlatSubspace K) :=
   LinearMap.ker ((canonicalPoleOddFunctional L K).comp
     (euclideanOddBoundaryFlatSubspace K).subtype)
@@ -178,14 +178,16 @@ theorem canonicalSourceMatrix_mulVec_eq_negative_arch_prime_of_profiles
 /-- Actual further compression of the legal even canonical block. -/
 def poleNeutralEvenCompressedCanonical (L : ℝ) (K : ℕ) :
     poleNeutralEvenSubspace L K →ₗ[ℂ] poleNeutralEvenSubspace L K :=
-  (poleNeutralEvenSubspace L K).orthogonalProjectionOnto.toLinearMap.comp
-    ((evenCompressedCanonical L K).comp (poleNeutralEvenSubspace L K).subtype)
+  let Q : euclideanEvenBoundaryFlatSubspace K →ₗ[ℂ] poleNeutralEvenSubspace L K :=
+    (poleNeutralEvenSubspace L K).orthogonalProjectionOnto.toLinearMap
+  Q.comp ((evenCompressedCanonical L K).comp (poleNeutralEvenSubspace L K).subtype)
 
 /-- Actual further compression of the legal odd canonical block. -/
 def poleNeutralOddCompressedCanonical (L : ℝ) (K : ℕ) :
     poleNeutralOddSubspace L K →ₗ[ℂ] poleNeutralOddSubspace L K :=
-  (poleNeutralOddSubspace L K).orthogonalProjectionOnto.toLinearMap.comp
-    ((oddCompressedCanonical L K).comp (poleNeutralOddSubspace L K).subtype)
+  let Q : euclideanOddBoundaryFlatSubspace K →ₗ[ℂ] poleNeutralOddSubspace L K :=
+    (poleNeutralOddSubspace L K).orthogonalProjectionOnto.toLinearMap
+  Q.comp ((oddCompressedCanonical L K).comp (poleNeutralOddSubspace L K).subtype)
 
 /-- Orthogonal compression preserves the native self-energy on an even
 pole-neutral vector. It does not preserve the full output vector. -/
