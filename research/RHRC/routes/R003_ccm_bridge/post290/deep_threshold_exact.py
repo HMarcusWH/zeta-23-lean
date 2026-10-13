@@ -28,6 +28,12 @@ def select_bottom_threshold(even: list[F], odd: list[F], depth: F) -> dict:
     predecessor = None if index == 0 else {"even": even[index - 1], "odd": odd[index - 1]}
     branch = "STRICT_EVEN" if even[index] < odd[index] else (
         "STRICT_ODD" if odd[index] < even[index] else "TIE")
+    ground_inverse_budget = 6*F(Kd-1)/depth
+    detector_inverse_budget = 12*F(Kd-1)/depth
     return {"Kd": Kd, "eta": eta, "gap": gap, "selected_K": index + 3,
             "lambda": lam, "global_bottoms": global_bottoms, "predecessor": predecessor,
-            "branch": branch, "inverse_budget": 6 * F(Kd - 1) / depth}
+            "branch": branch, "ground_inverse_budget": ground_inverse_budget,
+            "detector_inverse_budget": detector_inverse_budget,
+            # Compatibility alias for pre-amendment callers: the lambda-shift only.
+            "inverse_budget": ground_inverse_budget,
+            "inverse_budget_alias_scope": "GROUND_SHIFT_AT_SELECTED_LAMBDA_ONLY"}

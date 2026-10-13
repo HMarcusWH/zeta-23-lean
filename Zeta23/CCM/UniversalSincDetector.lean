@@ -4,6 +4,9 @@ import Mathlib.Analysis.SpecialFunctions.Trigonometric.Complex
 import Mathlib.Analysis.SpecialFunctions.Trigonometric.Deriv
 import Mathlib.Analysis.SpecialFunctions.Log.Summable
 import Mathlib.Analysis.SpecificLimits.Basic
+import Mathlib.Analysis.Normed.Module.MultipliableUniformlyOn
+import Mathlib.Analysis.Normed.Group.Bounded
+import Mathlib.Analysis.Complex.LocallyUniformLimit
 
 /-!
 # The exact original sinc product: source-level prerequisites
@@ -21,6 +24,12 @@ open Filter Finset
 open scoped Topology Asymptotics
 
 namespace Zeta23.CCM.UniversalSinc
+
+/-- The original source scale required by the core output contract. -/
+def fixedScale : ℝ := 1 / 4096
+
+theorem fixedScale_pos : 0 < fixedScale := by
+  norm_num [fixedScale]
 
 /-- The paper half-width `s / [r(r+1)]`, indexed from zero. -/
 def width (s : ℝ) (n : ℕ) : ℝ := s / (((n : ℝ) + 1) * ((n : ℝ) + 2))
@@ -81,9 +90,29 @@ theorem analyticAt_sinc_zero : AnalyticAt ℂ sinc 0 := by
   obtain ⟨p, hp⟩ := (Complex.analyticAt_sin (x := 0))
   exact ⟨p.fslope, hp.has_fpower_series_dslope_fslope⟩
 
-set_option backward.isDefEq.respectTransparency false in
+theorem analyticAt_sinc (z : ℂ) : AnalyticAt ℂ sinc z := by
+  by_cases hz : z = 0
+  · subst z
+    exact analyticAt_sinc_zero
+  · have hEq : (fun w : ℂ => Complex.sin w / w) =ᶠ[𝓝 z] sinc := by
+      filter_upwards [eventually_ne_nhds hz] with w hw
+      exact (sinc_of_ne_zero hw).symm
+    exact (Complex.analyticAt_sin.div analyticAt_id hz).congr hEq
+
+theorem continuous_sinc : Continuous sinc :=
+  continuous_iff_continuousAt.mpr (fun z => (analyticAt_sinc z).continuousAt)
+
+theorem differentiable_sinc : Differentiable ℂ sinc :=
+  fun z => (analyticAt_sinc z).differentiableAt
+
+private theorem complex_norm_instances_eq :
+    Complex.instNormedAddCommGroup.toNorm = Complex.instNorm := by
+  rfl
+
 theorem sinc_sub_one_isBigO : (fun z : ℂ => sinc z - 1) =O[𝓝 0] id := by
-  simpa using analyticAt_sinc_zero.differentiableAt.isBigO_sub
+  have h := analyticAt_sinc_zero.differentiableAt.isBigO_sub
+  rw [complex_norm_instances_eq] at h
+  simpa using h
 
 /-- Every individual factor is nonzero off the real axis. -/
 theorem sinc_ne_zero_of_im_ne_zero {z : ℂ} (hz : z.im ≠ 0) : sinc z ≠ 0 := by
@@ -119,6 +148,70 @@ theorem multipliable_sinc {s : ℝ} (hs : 0 ≤ s) (z : ℂ) :
     Multipliable (fun n : ℕ => sinc ((width s n : ℂ) * z)) := by
   simpa using multipliable_one_add_of_summable (summable_norm_sinc_sub_one hs z)
 
+/-- Prefix products converge to the specified infinite product; a finite
+prefix is never substituted for it without a convergence statement. -/
+theorem tendsto_partial_product {s : ℝ} (hs : 0 ≤ s) (z : ℂ) :
+    Tendsto (fun N : ℕ => ∏ n ∈ range N, sinc ((width s n : ℂ) * z))
+      atTop (𝓝 (product s z)) :=
+  (multipliable_sinc hs z).hasProd.tendsto_prod_nat
+
+set_option backward.isDefEq.respectTransparency false in
+/-- Normal convergence on any compact complex set. The common tail bound
+is derived from the specified widths and local sinc estimate. -/
+theorem hasProdUniformlyOn_compact {s : ℝ} (hs : 0 ≤ s) {K : Set ℂ}
+    (hK : IsCompact K) :
+    HasProdUniformlyOn (fun n : ℕ => fun z : ℂ => sinc ((width s n : ℂ) * z))
+      (product s) K := by
+  obtain ⟨R, hRpos, hR⟩ := hK.isBounded.exists_pos_norm_le
+  obtain ⟨C, hCpos, hC⟩ := Asymptotics.isBigO_iff'.mp sinc_sub_one_isBigO
+  obtain ⟨δ, hδ, hball⟩ := Metric.mem_nhds_iff.mp hC
+  have hu : Summable (fun n : ℕ => C * (width s n * R)) :=
+    ((hasSum_width hs).summable.mul_right R).mul_left C
+  have ht : Tendsto (fun n : ℕ => width s n * R) cofinite (𝓝 0) := by
+    simpa using (hasSum_width hs).summable.tendsto_cofinite_zero.mul_const R
+  have hb : ∀ᶠ n : ℕ in cofinite, ∀ z ∈ K,
+      ‖sinc ((width s n : ℂ) * z) - 1‖ ≤ C * (width s n * R) := by
+    filter_upwards [ht.eventually (Iio_mem_nhds hδ)] with n hn z hz
+    have hnorm : ‖(width s n : ℂ) * z‖ ≤ width s n * R := by
+      rw [norm_mul, Complex.norm_real, Real.norm_eq_abs,
+        abs_of_nonneg (width_nonneg hs n)]
+      exact mul_le_mul_of_nonneg_left (hR z hz) (width_nonneg hs n)
+    have hmem : (width s n : ℂ) * z ∈ Metric.ball 0 δ := by
+      simpa using hnorm.trans_lt hn
+    exact (hball hmem).trans (mul_le_mul_of_nonneg_left hnorm hCpos.le)
+  have hcts : ∀ n : ℕ, ContinuousOn
+      (fun z : ℂ => sinc ((width s n : ℂ) * z) - 1) K := by
+    intro n
+    exact ((continuous_sinc.comp (continuous_const.mul continuous_id)).sub
+      continuous_const).continuousOn
+  simpa [product] using Summable.hasProdUniformlyOn_one_add hK hu hb hcts
+
+theorem hasProdLocallyUniformlyOn_univ {s : ℝ} (hs : 0 ≤ s) :
+    HasProdLocallyUniformlyOn (fun n : ℕ => fun z : ℂ => sinc ((width s n : ℂ) * z))
+      (product s) Set.univ := by
+  exact hasProdLocallyUniformlyOn_of_forall_compact isOpen_univ
+    (fun _ _ hK => hasProdUniformlyOn_compact hs hK)
+
+/-- The actual infinite product is entire, as a locally uniform limit of
+the entire finite products. This still does not construct its density. -/
+theorem differentiable_product {s : ℝ} (hs : 0 ≤ s) :
+    Differentiable ℂ (product s) := by
+  have hF : ∀ᶠ N : ℕ in atTop, DifferentiableOn ℂ
+      (fun z : ℂ => ∏ n ∈ range N, sinc ((width s n : ℂ) * z)) Set.univ := by
+    filter_upwards with N
+    apply Differentiable.differentiableOn
+    apply Differentiable.fun_finsetProd
+    intro n _
+    exact differentiable_sinc.comp
+      ((differentiable_const (width s n : ℂ)).mul differentiable_id)
+  exact differentiableOn_univ.mp
+    ((hasProdLocallyUniformlyOn_univ hs).tendstoLocallyUniformlyOn_finsetRange.differentiableOn
+      hF isOpen_univ)
+
+theorem analyticAt_product {s : ℝ} (hs : 0 ≤ s) (z : ℂ) :
+    AnalyticAt ℂ (product s) z :=
+  (differentiable_product hs).analyticAt z
+
 /-- The exact infinite source product has no nonreal zeros. -/
 theorem product_ne_zero_of_im_ne_zero {s : ℝ} (hs : 0 < s) {z : ℂ}
     (hz : z.im ≠ 0) : product s z ≠ 0 := by
@@ -138,8 +231,47 @@ theorem product_ne_zero_of_im_ne_zero {s : ℝ} (hs : 0 < s) {z : ℂ}
 @[simp] theorem product_neg (s : ℝ) (z : ℂ) : product s (-z) = product s z := by
   simp [product]
 
+/-- The frozen source inherits the actual infinite-tail nonvanishing proof. -/
+theorem fixed_product_ne_zero_of_im_ne_zero {z : ℂ} (hz : z.im ≠ 0) :
+    product fixedScale z ≠ 0 :=
+  product_ne_zero_of_im_ne_zero fixedScale_pos hz
+
+theorem sinc_int_mul_pi_eq_zero (m : ℤ) (hm : m ≠ 0) :
+    sinc ((m : ℂ) * (Real.pi : ℂ)) = 0 := by
+  have hz : (m : ℂ) * (Real.pi : ℂ) ≠ 0 := by
+    apply mul_ne_zero
+    · exact_mod_cast hm
+    · exact_mod_cast Real.pi_ne_zero
+  rw [sinc_of_ne_zero hz]
+  have hsin : Complex.sin ((m : ℂ) * (Real.pi : ℂ)) = 0 :=
+    Complex.sin_eq_zero_iff.mpr ⟨m, rfl⟩
+  rw [hsin, zero_div]
+
+/-- At this real-axis point the first two distinct factors vanish together. -/
+def fixedCoincidentArgument : ℂ := 6 * (Real.pi : ℂ) / (fixedScale : ℂ)
+
+theorem fixed_coincident_factor_zeros :
+    (0 : ℕ) ≠ 1 ∧
+      sinc ((width fixedScale 0 : ℂ) * fixedCoincidentArgument) = 0 ∧
+      sinc ((width fixedScale 1 : ℂ) * fixedCoincidentArgument) = 0 := by
+  have h0 : (width fixedScale 0 : ℂ) * fixedCoincidentArgument =
+      (3 : ℂ) * (Real.pi : ℂ) := by
+    norm_num [width, fixedCoincidentArgument, fixedScale] <;> ring
+  have h1 : (width fixedScale 1 : ℂ) * fixedCoincidentArgument =
+      (Real.pi : ℂ) := by
+    norm_num [width, fixedCoincidentArgument, fixedScale] <;> ring
+  refine ⟨by decide, ?_, ?_⟩
+  · rw [h0]
+    simpa using sinc_int_mul_pi_eq_zero 3 (by decide)
+  · rw [h1]
+    simpa using sinc_int_mul_pi_eq_zero 1 (by decide)
+
 end Zeta23.CCM.UniversalSinc
 
 #print axioms Zeta23.CCM.UniversalSinc.hasSum_width
 #print axioms Zeta23.CCM.UniversalSinc.summable_norm_sinc_sub_one
 #print axioms Zeta23.CCM.UniversalSinc.product_ne_zero_of_im_ne_zero
+#print axioms Zeta23.CCM.UniversalSinc.fixed_product_ne_zero_of_im_ne_zero
+#print axioms Zeta23.CCM.UniversalSinc.hasProdUniformlyOn_compact
+#print axioms Zeta23.CCM.UniversalSinc.analyticAt_product
+#print axioms Zeta23.CCM.UniversalSinc.fixed_coincident_factor_zeros

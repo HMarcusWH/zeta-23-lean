@@ -45,10 +45,22 @@ def own_source():
     return {str(p.relative_to(HERE)): digest(p) for p in sorted(HERE.glob("k3_*.py"))}
 
 
+def seam_source_bindings():
+    """Exact source lineage for the endpoint identities; compiler audit is separate."""
+    root=HERE.parents[4]
+    bindings={
+        "Zeta23.CCM.qBasis_aperture_eq_zero":"Zeta23/CCM/KernelAnalysis.lean",
+        "Zeta23.CCM.primeSourceCoordinate_log_add":"Zeta23/CCM/CanonicalPrimeSeamTaylor.lean",
+        "Zeta23.CCM.sourceMatrix_zero":"Zeta23/CCM/SourceMatrix.lean",
+    }
+    return {"entering_source_coordinate":"omega=0","bindings":{name:{"path":path,"sha256":digest(root/path)} for name,path in bindings.items()},"authority":"SOURCE_BINDINGS_ONLY_COMPILER_RECEIPT_SEPARATELY_REQUIRED"}
+
+
 def current_identity():
     root = HERE.parents[4]
     return {"commit": source_commit(), "tree": subprocess.check_output(["git", "rev-parse", "HEAD^{tree}"], cwd=root, text=True).strip(),
             "source_digests": source_input_digests(), "continuation_source_digests": own_source(),
+            "seam_source_bindings":seam_source_bindings(),
             "python": platform.python_version(), "python_executable": sys.executable}
 
 

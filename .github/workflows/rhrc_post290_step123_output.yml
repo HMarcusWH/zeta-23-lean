@@ -48,7 +48,8 @@ jobs:
             Zeta23.ExceptionalZero.UniversalSincDetectorVisibility \
             Zeta23.CCM.CanonicalPoleNeutralGeometry \
             Zeta23.CCM.NativeIntegerPrimeSource \
-            Zeta23.CCM.NativePositiveCompletion
+            Zeta23.CCM.NativePositiveCompletion \
+            Zeta23.CCM.Step123PrimeSeam
           do
             lake build "$target" 2>&1 | tee -a /tmp/post290-compiler.txt
             if [ "${PIPESTATUS[0]}" -ne 0 ]; then failed=1; fi
@@ -60,6 +61,7 @@ jobs:
         run: |
           lake build Zeta23.RHRC.Step123OutputBindings
           lake env lean Zeta23/RHRC/Step123OutputBindings.lean | tee /tmp/post290-bindings.txt
+          python research/RHRC/routes/R003_ccm_bridge/post290/build_formal_receipt.py --log /tmp/post290-bindings.txt --out /tmp/STEP123_FORMAL_OUTPUT.json
       - uses: actions/cache/save@v4
         if: always()
         with:
@@ -72,6 +74,7 @@ jobs:
           path: |
             /tmp/post290-compiler.txt
             /tmp/post290-bindings.txt
+            /tmp/STEP123_FORMAL_OUTPUT.json
 
   exact-controls:
     runs-on: ubuntu-latest
@@ -92,7 +95,10 @@ jobs:
           python research/RHRC/routes/R003_ccm_bridge/post290/test_strict_odd_and_tie_exact.py
           python research/RHRC/routes/R003_ccm_bridge/post290/test_detector_schur_provenance.py
           python research/RHRC/routes/R003_ccm_bridge/post290/test_deep_threshold_exact.py
+          python research/RHRC/routes/R003_ccm_bridge/post290/test_inverse_budgets_and_gap_exact.py
           python research/RHRC/routes/R003_ccm_bridge/post290/test_k3_resume.py
+          python research/RHRC/routes/R003_ccm_bridge/post290/test_k3_replay_shards.py
+          python research/RHRC/routes/R003_ccm_bridge/post290/test_k3_seams.py
           python research/RHRC/routes/R003_ccm_bridge/post290/test_native_divisor_controls.py
           python research/RHRC/routes/R003_ccm_bridge/post290/test_output_mutations.py
       - uses: actions/upload-artifact@v4

@@ -1,0 +1,45 @@
+{
+  "status": "CORRECTNESS_GUARDS_NOT_NEW_PROOF_AUTHORITY",
+  "claim_cap": "RH_OPEN",
+  "original_required_scope_unchanged": true,
+  "selection": {
+    "threshold": "eta",
+    "selected_eigenvalue": "lam",
+    "required_ground_relation": "lam <= -eta - g",
+    "detector_schur_shift": "-eta",
+    "ground_secular_shift": "lam",
+    "detector_predecessor_inverse": {"operator": "P + eta I", "bound": "12 * (Kd - 1) / D"},
+    "ground_predecessor_inverse": {"operator": "P - lam I", "bound": "6 * (Kd - 1) / D"},
+    "parity_gap": "delta = oddBottom - lam; no lower bound from D alone"
+  },
+  "source_and_carriers": {
+    "legal_output_neutrality_inferred": false,
+    "neutral_continuum_defect_target": "g0 * (-b * alphaP)",
+    "original_finite_ground_contact_ids_distinct": true,
+    "original_history_copied_to_ground": false,
+    "universal_real_sinc_zeros_assumed_simple": false,
+    "elementary_pole_zero_scope": "separate derivative/nonvanishing proof for explicit multiplier; physical identification still OPEN",
+    "root_divisor_budget": "OPEN; supplied-divisor implication does not produce that divisor"
+  },
+  "domain_and_range": {
+    "causal_equation_before_X_Hilbert_membership": true,
+    "Y_stability_authority": "PAPER until native source construction compiles",
+    "X_epsilon_L2_assumed": false,
+    "finite_section_range_decay_implies_infinite_decay": false,
+    "kappa_n_and_residual_norm_separate": true,
+    "divergent_kappa_sum": "OPEN closing obligation",
+    "source_tail_and_discretization_estimate": "OPEN before infinite-range interpretation"
+  },
+  "observable_guard": {
+    "eligible_neutral_even_ground_required": true,
+    "source_root_condition_for_product_budget_required": true,
+    "absent_root_condition": "direct pairing with ordinary resolution status",
+    "common_scalar_shift_blind_identity": true,
+    "identity_alone_is_negative_energy_discriminator": false,
+    "current_native_probes_are_ground_vectors": false
+  },
+  "optional_candidate_modules": [
+    "Zeta23/CCM/CanonicalPoleNeutralPoisson.lean",
+    "Zeta23/CCM/CanonicalNeutralRootBudget.lean"
+  ]
+}

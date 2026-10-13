@@ -13,7 +13,7 @@ import sys
 import time
 from pathlib import Path
 from fractions import Fraction
-from k3_resume_partition import HERE, OLD, digest, pair, rational, require_current, write, LAYERS, RESOURCES, validate_layer
+from k3_resume_partition import HERE, OLD, digest, pair, rational, require_current, write, LAYERS, RESOURCES, validate_layer, seam_source_bindings
 
 
 def exact_ball_record(value):
@@ -88,7 +88,7 @@ def check_layer(directory,spec,seconds):
             fresh={"accepted":False,"reason":"EVALUATION_ERROR","error":repr(exc)}
         item={"index":i,"left":tile["left"],"right":tile["right"],**fresh}
         (verified if fresh["accepted"] else failed).append(item)
-    return {"schema":"post290.k3-layer-replay.v1","Q":q,"parity":parity,"candidate_sha256":spec["sha256"],"precision_bits":768,"verified":verified,"failed":failed,"unverified":unverified,"unresolved":record["unresolved"],"seams_verified":True,"physical_scope":{"left":"1/512" if q==1 else f"log({q})","right":f"log({q+1})"},"complete":structurally_complete and not failed and not unverified,"elapsed_seconds":time.monotonic()-start,"terminal_claim":"RH_OPEN"}
+    return {"schema":"post290.k3-layer-replay.v1","Q":q,"parity":parity,"candidate_sha256":spec["sha256"],"precision_bits":768,"verified":verified,"failed":failed,"unverified":unverified,"unresolved":record["unresolved"],"seams_verified":True,"seam_source_bindings":seam_source_bindings(),"physical_scope":{"left":"1/512" if q==1 else f"log({q})","right":f"log({q+1})"},"complete":structurally_complete and not failed and not unverified,"elapsed_seconds":time.monotonic()-start,"terminal_claim":"RH_OPEN"}
 
 
 def replay(directory,partition,out):
@@ -107,7 +107,7 @@ def replay(directory,partition,out):
             try:
                 result=future.result()
             except Exception as exc:
-                result={"Q":spec["cell"],"parity":spec["parity"],"complete":False,"verified":[],"failed":[],"unverified":[{"reason":"LAYER_CHECK_FAILED","error":repr(exc),"whole_layer":True}],"unresolved":[],"seams_verified":False,"terminal_claim":"RH_OPEN"}
+                result={"Q":spec["cell"],"parity":spec["parity"],"candidate_sha256":spec["sha256"],"precision_bits":768,"complete":False,"verified":[],"failed":[],"unverified":[{"reason":"LAYER_CHECK_FAILED","error":repr(exc),"whole_layer":True}],"unresolved":[],"seams_verified":False,"seam_source_bindings":seam_source_bindings(),"terminal_claim":"RH_OPEN"}
             name=f"replay_Q{spec['cell']:02d}_{spec['parity']}.json"
             write(out.parent/"replay-layers"/name,result)
             receipts.append({"file":name,"sha256":digest(out.parent/"replay-layers"/name),**result})

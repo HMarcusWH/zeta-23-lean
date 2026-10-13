@@ -58,8 +58,12 @@ theorem nativePositiveCompletion_zero : nativePositiveCompletion 0 = 1 := by
 
 theorem nativePositiveCompletion_measurable :
     Measurable nativePositiveCompletion := by
-  unfold nativePositiveCompletion
-  fun_prop
+  have hformula : Measurable (fun t : ℝ =>
+      Real.exp (-(3 * t / 2)) * (⌊Real.exp t⌋₊ : ℝ) *
+        ((⌊Real.exp t⌋₊ : ℝ) + 1 - Real.exp t)) := by
+    fun_prop
+  simpa [nativePositiveCompletion, Set.piecewise, Set.mem_Ici] using
+    hformula.piecewise measurableSet_Ici (measurable_const (a := (0 : ℝ)))
 
 /-- The actual causal kernel is integrable, independently of an inverse or
 any bound on its original-source input. This envelope alone has mass 2,

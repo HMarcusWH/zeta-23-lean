@@ -106,7 +106,7 @@ theorem canonicalPoleOddFunctional_evenIndex {L : ℝ} (hL : 0 < L)
   rw [Finset.sum_sub_distrib, ← Finset.mul_sum, hzero, mul_zero, zero_sub]
   simp_rw [mul_assoc]
   rw [← Finset.mul_sum]
-  rfl
+  simp [canonicalPoleEvenFunctional, neg_mul]
 
 theorem poleNeutral_evenIndex_mem {L : ℝ} (hL : 0 < L) (K : ℕ)
     (u : poleNeutralEvenSubspace L K) :
@@ -175,6 +175,67 @@ theorem canonicalSourceMatrix_mulVec_eq_negative_arch_prime_of_profiles
   rw [canonicalSourceMatrix_eq_pole_sub_arch_sub_prime, sub_mulVec, sub_mulVec,
     canonicalPoleMatrix_mulVec_eq_zero_of_profiles hL K u he ho, zero_sub]
 
+/-- Actual further compression of the legal even canonical block. -/
+def poleNeutralEvenCompressedCanonical (L : ℝ) (K : ℕ) :
+    poleNeutralEvenSubspace L K →ₗ[ℂ] poleNeutralEvenSubspace L K :=
+  (poleNeutralEvenSubspace L K).orthogonalProjectionOnto.toLinearMap.comp
+    ((evenCompressedCanonical L K).comp (poleNeutralEvenSubspace L K).subtype)
+
+/-- Actual further compression of the legal odd canonical block. -/
+def poleNeutralOddCompressedCanonical (L : ℝ) (K : ℕ) :
+    poleNeutralOddSubspace L K →ₗ[ℂ] poleNeutralOddSubspace L K :=
+  (poleNeutralOddSubspace L K).orthogonalProjectionOnto.toLinearMap.comp
+    ((oddCompressedCanonical L K).comp (poleNeutralOddSubspace L K).subtype)
+
+/-- Orthogonal compression preserves the native self-energy on an even
+pole-neutral vector. It does not preserve the full output vector. -/
+theorem inner_poleNeutralEvenCompressedCanonical_self (L : ℝ) (K : ℕ)
+    (u : poleNeutralEvenSubspace L K) :
+    inner ℂ (poleNeutralEvenCompressedCanonical L K u) u =
+      inner ℂ ((canonicalSourceMatrix L K).toEuclideanLin
+        (u.val : EuclideanSpace ℂ (Fin (2 * K + 1))))
+        (u.val : EuclideanSpace ℂ (Fin (2 * K + 1))) := by
+  calc
+    _ = inner ℂ (evenCompressedCanonical L K u.val) u.val :=
+      Submodule.inner_orthogonalProjectionOnto_eq_of_mem_right
+        (K := poleNeutralEvenSubspace L K) u _
+    _ = _ := inner_parityCompressedCanonical_self .even L K u.val
+
+/-- Orthogonal compression preserves native self-energy on the odd kernel. -/
+theorem inner_poleNeutralOddCompressedCanonical_self (L : ℝ) (K : ℕ)
+    (u : poleNeutralOddSubspace L K) :
+    inner ℂ (poleNeutralOddCompressedCanonical L K u) u =
+      inner ℂ ((canonicalSourceMatrix L K).toEuclideanLin
+        (u.val : EuclideanSpace ℂ (Fin (2 * K + 1))))
+        (u.val : EuclideanSpace ℂ (Fin (2 * K + 1))) := by
+  calc
+    _ = inner ℂ (oddCompressedCanonical L K u.val) u.val :=
+      Submodule.inner_orthogonalProjectionOnto_eq_of_mem_right
+        (K := poleNeutralOddSubspace L K) u _
+    _ = _ := inner_parityCompressedCanonical_self .odd L K u.val
+
+/-- The even native pole kernel supplies both profile equations: the other
+profile is annihilated by the existing even parity condition. -/
+theorem canonicalPoleMatrix_mulVec_poleNeutralEven_eq_zero
+    {L : ℝ} (hL : 0 < L) (K : ℕ) (u : poleNeutralEvenSubspace L K) :
+    canonicalPoleMatrix L K *ᵥ evenBoundaryFlatRawCoefficients K u.val = 0 := by
+  have he : poleEvenProfile L K ⬝ᵥ evenBoundaryFlatRawCoefficients K u.val = 0 := by
+    exact (mem_poleNeutralEvenSubspace L K u.val).mp u.property
+  exact canonicalPoleMatrix_mulVec_eq_zero_of_profiles hL K _ he
+    (poleOddProfile_dot_evenBoundaryFlat_eq_zero L K u.val)
+
+/-- Source action on the actual even native pole kernel, without an assumed
+extra odd-pole condition or an arbitrary source scalar. -/
+theorem canonicalSourceMatrix_mulVec_poleNeutralEven_eq_negative_arch_prime
+    {L : ℝ} (hL : 0 < L) (K : ℕ) (u : poleNeutralEvenSubspace L K) :
+    canonicalSourceMatrix L K *ᵥ evenBoundaryFlatRawCoefficients K u.val =
+      -(canonicalArchMatrix L K *ᵥ evenBoundaryFlatRawCoefficients K u.val) -
+        canonicalPrimeMatrix L K *ᵥ evenBoundaryFlatRawCoefficients K u.val := by
+  have he : poleEvenProfile L K ⬝ᵥ evenBoundaryFlatRawCoefficients K u.val = 0 := by
+    exact (mem_poleNeutralEvenSubspace L K u.val).mp u.property
+  exact canonicalSourceMatrix_mulVec_eq_negative_arch_prime_of_profiles hL K _ he
+    (poleOddProfile_dot_evenBoundaryFlat_eq_zero L K u.val)
+
 end Zeta23.CCM
 
 #print axioms Zeta23.CCM.poleOddProfile_mul_centeredIndex
@@ -183,3 +244,7 @@ end Zeta23.CCM
 #print axioms Zeta23.CCM.poleNeutralIndexLinearMap_surjective
 #print axioms Zeta23.CCM.canonicalPoleMatrix_mulVec_eq_zero_of_profiles
 #print axioms Zeta23.CCM.canonicalSourceMatrix_mulVec_eq_negative_arch_prime_of_profiles
+#print axioms Zeta23.CCM.inner_poleNeutralEvenCompressedCanonical_self
+#print axioms Zeta23.CCM.inner_poleNeutralOddCompressedCanonical_self
+#print axioms Zeta23.CCM.canonicalPoleMatrix_mulVec_poleNeutralEven_eq_zero
+#print axioms Zeta23.CCM.canonicalSourceMatrix_mulVec_poleNeutralEven_eq_negative_arch_prime

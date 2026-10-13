@@ -46,3 +46,30 @@ logarithmic seam by the existing normalization gate.
 
 D2_COMPLETE has CERTIFIED_FINITE authority only. This tooling supplies no Lean
 term of `hWindows`, no universal-aperture theorem and no proof of RH. RH_OPEN.
+
+## Fresh checking across independent runner shards
+
+When checker integrity repairs postdate the producer, preserve the old
+partition and candidate bytes. `k3_source_revalidation.py PARTITION --out REVIEW`
+checks exact raw equality of canonical dependencies, unchanged SECOND search,
+partition functions, resource constants, independent SECOND arithmetic and
+exact dyadic endpoint serialization against the original pinned Git object.
+The new source and an explicit integrity-code delta inventory go in a separate
+review receipt. No historical source field is rewritten.
+
+`k3_replay_shards.py freeze CANDIDATE PARTITION REVIEW --out PLAN` freezes every
+original accepted leaf into exact ordinal chunks of at most 512 leaves under
+`SECOND_FRESH_768_SHARDED_v1`. Each parent layer and candidate manifest is hashed;
+checking remains SECOND at 768 bits, with 1800 seconds per chunk. The separate
+workflow permits at most eight simultaneously active checker runner shards.
+Each worker persists verified and still unverified geometry before evaluation.
+All chunks must be accounted for before the full thirty-layer assembler runs.
+Missing chunks become explicit unverified original leaves. They cannot be
+removed from the target or labelled accepted. If more than 256 chunks are
+required, the current single matrix refuses execution without dropping a leaf.
+
+The final command receives `--source-revalidation REVIEW`, validates both
+producer and checking source identities, and consumes the full independently
+reconstructed receipt. It remains NON-PARTIAL. This checker partition changes
+only the scheduling of fresh checking; original search resources, endpoints,
+source and SECOND mathematical representation remain fixed.

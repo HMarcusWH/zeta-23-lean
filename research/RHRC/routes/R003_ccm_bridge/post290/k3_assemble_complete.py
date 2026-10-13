@@ -4,7 +4,7 @@ from __future__ import annotations
 import argparse
 import json
 from pathlib import Path
-from k3_resume_partition import digest, intake, rational, require_current, write, LAYERS, validate_layer
+from k3_resume_partition import digest, intake, rational, require_current, write, LAYERS, validate_layer, seam_source_bindings
 
 
 def assemble(partition, search, out):
@@ -60,12 +60,21 @@ def assemble(partition, search, out):
     return manifest
 
 
-def final(candidate, replay, out):
+def final(candidate, replay, out, source_revalidation=None):
+    from flint import ctx
+    from wp4_k3_full_continuum import interval_bounds
+    ctx.prec=768
     manifest=json.loads((candidate/"manifest.json").read_text())
     receipt=json.loads(replay.read_text())
     if receipt.get("candidate_manifest_sha256")!=digest(candidate/"manifest.json") or receipt.get("current_source")!=manifest["current_source"]:
         raise ValueError("stale independent checker receipt")
-    require_current(manifest)
+    if source_revalidation is None:
+        require_current(manifest)
+    else:
+        from k3_source_revalidation import validate
+        source_review=validate(source_revalidation,manifest["current_source"],manifest["partition_sha256"])
+        if receipt.get("source_revalidation_sha256")!=digest(source_revalidation) or receipt.get("producer_source")!=manifest["current_source"] or receipt.get("validation_source")!=source_review["validation_source"]:
+            raise ValueError("fresh checker lacks current source revalidation lineage")
     if len(manifest["records"])!=30 or {(r["cell"],r["parity"]) for r in manifest["records"]}!=LAYERS:
         raise ValueError("full D2 requires 30 distinct layers")
     specs={(s["cell"],s["parity"]):s for s in manifest["records"]}
@@ -81,13 +90,19 @@ def final(candidate, replay, out):
         if path.name!=layer["file"] or digest(path)!=layer["sha256"]:
             raise ValueError("changed layer checker receipt")
         data=json.loads(path.read_text())
+        if type(data.get("Q")) is not int or (data.get("Q"),data.get("parity"))!=key:
+            raise ValueError("layer checker payload has wrong Q/parity")
+        if type(data.get("complete")) is not bool or type(layer.get("complete")) is not bool:
+            raise ValueError("layer complete disposition must be Boolean")
+        if data.get("seam_source_bindings")!=seam_source_bindings():
+            raise ValueError("missing or stale physical-seam theorem source bindings")
         if data.get("candidate_sha256")!=specs[key]["sha256"] or data.get("precision_bits")!=768:
             raise ValueError("wrong fresh layer source/precision")
         raw=Path(candidate)/specs[key]["file"]
         if digest(raw)!=specs[key]["sha256"]:
             raise ValueError("candidate layer changed after replay")
         record=json.loads(raw.read_text())
-        validate_layer(specs[key], record, "SECOND")
+        validate_layer(specs[key], record, "SECOND", interval_bounds(key[0]))
         derived_verified += len(data.get("verified",[]))
         derived_failed += len(data.get("failed",[]))
         derived_unverified += len(data.get("unverified",[]))
@@ -113,6 +128,12 @@ def final(candidate, replay, out):
                     lower, upper = rational(bounds["lower"]), rational(bounds["upper"])
                     if not 0 < lower <= upper:
                         raise ValueError("fresh positive bound is unordered or nonpositive")
+                # Typed rational endpoints establish positivity. Optional display
+                # fields still have to render finite evidence honestly.
+                for field in ("a","delta"):
+                    display=fresh.get(field,{})
+                    if isinstance(display,dict) and any(isinstance(value,str) and ("nan" in value.lower() or "inf" in value.lower()) for value in display.values()):
+                        raise ValueError("nonfinite fresh-bound display violates evidence integrity")
     if checked!=LAYERS:
         raise ValueError("missing fresh-check layer receipt")
     for key, actual in (("complete_layers",derived_complete_layers),("verified_tiles",derived_verified),
@@ -121,8 +142,10 @@ def final(candidate, replay, out):
         if receipt.get(key) != actual:
             raise ValueError("checker summary disagrees with payload: " + key)
     # NON-PARTIAL gate is mandatory; partial process success is not certificate authority.
-    complete=(manifest["status"]=="CANDIDATE_COMPLETE" and receipt.get("claimed_scope")=="K3_FULL" and receipt.get("status")=="PASS" and receipt.get("layers")==30 and receipt.get("complete_layers")==30 and receipt.get("unverified_tiles")==0 and receipt.get("failed_tiles")==0 and receipt.get("unresolved_tiles")==0 and receipt.get("precision_bits")==768 and receipt.get("seams_verified") is True)
+    complete=(manifest["status"]=="CANDIDATE_COMPLETE" and receipt.get("claimed_scope")=="K3_FULL" and receipt.get("status")=="PASS" and receipt.get("layers")==30 and receipt.get("complete_layers")==30 and receipt.get("unverified_tiles")==0 and receipt.get("failed_tiles")==0 and receipt.get("unresolved_tiles")==0 and receipt.get("precision_bits")==768 and receipt.get("seams_verified") is True and not receipt.get("missing_shards"))
     result={"schema":"post290.k3-complete.v1","status":"D2_COMPLETE" if complete else "D2_OPEN","terminal_claim":"RH_OPEN","candidate_manifest_sha256":digest(candidate/"manifest.json"),"independent_checker_sha256":digest(replay),"current_source":manifest["current_source"],"historical_source":manifest["historical_source"],"all_L_positivity_certified":complete,"not_a_lean_proof":True,"not_a_proof_of_RH":True,"authority":"CERTIFIED_FINITE" if complete else "UNRESOLVED_RESEARCH","checker_disposition":receipt.get("status"),"coverage":"both parities [1/512,log16]" if complete else "only separately freshly verified intervals"}
+    if source_revalidation is not None:
+        result.update(producer_source=manifest["current_source"],validation_source=source_review["validation_source"],source_revalidation_sha256=digest(source_revalidation))
     write(out,result)
     if not complete:
         raise ValueError("NON-PARTIAL D2 gate failed: unresolved, unverified or missing coverage remains")
@@ -134,8 +157,9 @@ def main():
     s=p.add_subparsers(dest="command",required=True)
     a=s.add_parser("candidates"); a.add_argument("partition",type=Path); a.add_argument("search",type=Path); a.add_argument("--out",type=Path,required=True)
     a=s.add_parser("final"); a.add_argument("candidate",type=Path); a.add_argument("replay",type=Path); a.add_argument("--out",type=Path,required=True)
+    a.add_argument("--source-revalidation",type=Path)
     a=p.parse_args()
-    result=assemble(a.partition,a.search,a.out) if a.command=="candidates" else final(a.candidate,a.replay,a.out)
+    result=assemble(a.partition,a.search,a.out) if a.command=="candidates" else final(a.candidate,a.replay,a.out,a.source_revalidation)
     print(json.dumps({"status":result["status"],"terminal_claim":"RH_OPEN"}))
 
 

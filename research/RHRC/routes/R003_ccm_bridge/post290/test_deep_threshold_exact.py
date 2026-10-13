@@ -29,6 +29,9 @@ def run() -> dict:
                 "all_global_bottoms_avoided": all(abs(v + eta) >= gap for v in result["global_bottoms"]),
                 "selected_depth": lam <= -eta - gap,
                 "inverse_constant": result["inverse_budget"] == 1 / (2 * gap),
+                "named_ground_inverse_constant": result["ground_inverse_budget"] == 1/(2*gap),
+                "named_detector_inverse_constant": result["detector_inverse_budget"] == 1/gap,
+                "compatibility_alias_has_ground_scope": result["inverse_budget_alias_scope"] == "GROUND_SHIFT_AT_SELECTED_LAMBDA_ONLY",
             }
             predecessor = result["predecessor"]
             if predecessor is None:

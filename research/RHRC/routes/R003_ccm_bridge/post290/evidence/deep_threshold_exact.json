@@ -11,7 +11,7 @@
     "TIE": 66
   },
   "empty_predecessor_cases": 8,
-  "assertion_count": 1146,
+  "assertion_count": 1722,
   "rows": [
     {
       "Kd": 3,
@@ -25,6 +25,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "first_nonempty_handled_without_bottom": true
       }
     },
@@ -40,6 +43,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "first_nonempty_handled_without_bottom": true
       }
     },
@@ -55,6 +61,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "first_nonempty_handled_without_bottom": true
       }
     },
@@ -70,6 +79,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "first_nonempty_handled_without_bottom": true
       }
     },
@@ -85,6 +97,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "first_nonempty_handled_without_bottom": true
       }
     },
@@ -100,6 +115,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "first_nonempty_handled_without_bottom": true
       }
     },
@@ -115,6 +133,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -131,6 +152,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -147,6 +171,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "first_nonempty_handled_without_bottom": true
       }
     },
@@ -162,6 +189,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -178,6 +208,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -194,6 +227,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -210,6 +246,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -226,6 +265,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -242,6 +284,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -258,6 +303,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -274,6 +322,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -290,6 +341,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -306,6 +360,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -322,6 +379,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -338,6 +398,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -354,6 +417,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "first_nonempty_handled_without_bottom": true
       }
     },
@@ -369,6 +435,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -385,6 +454,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -401,6 +473,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -417,6 +492,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -433,6 +511,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -449,6 +530,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -465,6 +549,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -481,6 +568,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -497,6 +587,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -513,6 +606,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -529,6 +625,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -545,6 +644,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -561,6 +663,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -577,6 +682,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -593,6 +701,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -609,6 +720,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -625,6 +739,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -641,6 +758,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -657,6 +777,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -673,6 +796,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -689,6 +815,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -705,6 +834,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -721,6 +853,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -737,6 +872,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -753,6 +891,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -769,6 +910,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -785,6 +929,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -801,6 +948,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -817,6 +967,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -833,6 +986,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -849,6 +1005,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -865,6 +1024,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -881,6 +1043,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -897,6 +1062,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -913,6 +1081,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -929,6 +1100,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -945,6 +1119,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -961,6 +1138,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -977,6 +1157,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -993,6 +1176,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -1009,6 +1195,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -1025,6 +1214,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -1041,6 +1233,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -1057,6 +1252,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -1073,6 +1271,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -1089,6 +1290,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -1105,6 +1309,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -1121,6 +1328,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -1137,6 +1347,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -1153,6 +1366,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -1169,6 +1385,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -1185,6 +1404,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -1201,6 +1423,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -1217,6 +1442,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -1233,6 +1461,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -1249,6 +1480,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -1265,6 +1499,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -1281,6 +1518,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -1297,6 +1537,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -1313,6 +1556,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -1329,6 +1575,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -1345,6 +1594,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -1361,6 +1613,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -1377,6 +1632,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -1393,6 +1651,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -1409,6 +1670,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -1425,6 +1689,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -1441,6 +1708,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -1457,6 +1727,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -1473,6 +1746,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -1489,6 +1765,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -1505,6 +1784,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -1521,6 +1803,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -1537,6 +1822,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -1553,6 +1841,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -1569,6 +1860,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -1585,6 +1879,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -1601,6 +1898,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -1617,6 +1917,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -1633,6 +1936,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -1649,6 +1955,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -1665,6 +1974,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -1681,6 +1993,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -1697,6 +2012,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -1713,6 +2031,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -1729,6 +2050,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -1745,6 +2069,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -1761,6 +2088,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -1777,6 +2107,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -1793,6 +2126,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -1809,6 +2145,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -1825,6 +2164,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -1841,6 +2183,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -1857,6 +2202,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -1873,6 +2221,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -1889,6 +2240,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -1905,6 +2259,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -1921,6 +2278,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -1937,6 +2297,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -1953,6 +2316,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -1969,6 +2335,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -1985,6 +2354,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -2001,6 +2373,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -2017,6 +2392,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -2033,6 +2411,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -2049,6 +2430,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -2065,6 +2449,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -2081,6 +2468,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -2097,6 +2487,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -2113,6 +2506,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -2129,6 +2525,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -2145,6 +2544,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -2161,6 +2563,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -2177,6 +2582,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -2193,6 +2601,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -2209,6 +2620,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -2225,6 +2639,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -2241,6 +2658,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -2257,6 +2677,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -2273,6 +2696,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -2289,6 +2715,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -2305,6 +2734,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -2321,6 +2753,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -2337,6 +2772,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -2353,6 +2791,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -2369,6 +2810,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -2385,6 +2829,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -2401,6 +2848,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -2417,6 +2867,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -2433,6 +2886,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -2449,6 +2905,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -2465,6 +2924,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -2481,6 +2943,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -2497,6 +2962,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -2513,6 +2981,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -2529,6 +3000,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -2545,6 +3019,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -2561,6 +3038,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -2577,6 +3057,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -2593,6 +3076,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -2609,6 +3095,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -2625,6 +3114,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -2641,6 +3133,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -2657,6 +3152,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -2673,6 +3171,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -2689,6 +3190,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -2705,6 +3209,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -2721,6 +3228,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -2737,6 +3247,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -2753,6 +3266,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -2769,6 +3285,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -2785,6 +3304,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -2801,6 +3323,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -2817,6 +3342,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -2833,6 +3361,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -2849,6 +3380,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -2865,6 +3399,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -2881,6 +3418,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -2897,6 +3437,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -2913,6 +3456,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -2929,6 +3475,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -2945,6 +3494,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -2961,6 +3513,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -2977,6 +3532,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -2993,6 +3551,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -3009,6 +3570,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -3025,6 +3589,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -3041,6 +3608,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -3057,6 +3627,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
@@ -3073,6 +3646,9 @@
         "all_global_bottoms_avoided": true,
         "selected_depth": true,
         "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
         "both_predecessors_above_threshold": true,
         "both_predecessors_shifted_coercive": true
       }
