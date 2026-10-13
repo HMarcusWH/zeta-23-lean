@@ -2,16 +2,20 @@ import Zeta23.CCM.UniversalSincDetector
 import Zeta23.CCM.UniversalSincDetectorBounds
 import Zeta23.CCM.UniversalSincDetectorInverse
 import Zeta23.CCM.UniversalSincSourceLaw
+import Zeta23.CCM.UniversalSincSourceCharacteristic
+import Zeta23.CCM.UniversalSincBoxDensity
 import Zeta23.ExceptionalZero.UniversalSincDetectorVisibility
 import Zeta23.CCM.CanonicalPoleNeutralGeometry
 import Zeta23.CCM.CanonicalPoleNeutralCarrier
 import Zeta23.CCM.CanonicalPoleNeutralIntertwining
+import Zeta23.CCM.CanonicalPoleNeutralNormals
 import Zeta23.CCM.CanonicalTrialResidualChannels
 import Zeta23.CCM.NativeIntegerPrimeSource
 import Zeta23.CCM.NativeIntegerPrimeField
 import Zeta23.CCM.NativeIntegerPrimeConvolution
 import Zeta23.CCM.NativePositiveCompletion
 import Zeta23.CCM.NativeFloorCompletionSource
+import Zeta23.CCM.NativeRationalCompletionLaplace
 import Zeta23.CCM.Step123PrimeSeam
 import Zeta23.RHRC.SourceCandidateResolution
 import Lean.Util.CollectAxioms
@@ -50,6 +54,12 @@ run_cmd do
     (``Zeta23.CCM.UniversalSinc.originalSourceLaw_interval_mass, "Zeta23.CCM.UniversalSincSourceLaw"),
     (``Zeta23.CCM.UniversalSinc.originalSourceLaw_eq_map_scale, "Zeta23.CCM.UniversalSincSourceLaw"),
     (``Zeta23.CCM.UniversalSinc.fixed_originalSourceLaw_isProbabilityMeasure, "Zeta23.CCM.UniversalSincSourceLaw"),
+    (``Zeta23.CCM.UniversalSinc.charFun_centeredUnitBoxLaw, "Zeta23.CCM.UniversalSincSourceCharacteristic"),
+    (``Zeta23.CCM.UniversalSinc.charFun_sourceSamplePartialSum, "Zeta23.CCM.UniversalSincSourceCharacteristic"),
+    (``Zeta23.CCM.UniversalSinc.charFun_originalSourceLaw, "Zeta23.CCM.UniversalSincSourceCharacteristic"),
+    (``Zeta23.CCM.UniversalSinc.originalSourceLaw_map_neg, "Zeta23.CCM.UniversalSincSourceCharacteristic"),
+    (``Zeta23.CCM.UniversalSinc.uniformBoxPairDensity_eq_convolution, "Zeta23.CCM.UniversalSincBoxDensity"),
+    (``Zeta23.CCM.UniversalSinc.originalBoxPairDensity_positive_normalized, "Zeta23.CCM.UniversalSincBoxDensity"),
     (``Zeta23.CCM.UniversalSinc.product_ne_zero_of_im_ne_zero, "Zeta23.CCM.UniversalSincDetector"),
     (``Zeta23.CCM.UniversalSinc.fixed_product_ne_zero_of_im_ne_zero, "Zeta23.CCM.UniversalSincDetector"),
     (``Zeta23.ExceptionalZero.originalSincMultiplier_ne_zero_at_off_line_zero,
@@ -71,6 +81,13 @@ run_cmd do
       "Zeta23.CCM.CanonicalPoleNeutralIntertwining"),
     (``Zeta23.CCM.poleNeutralCompressedIndexDefect_eq_cubicSource_add_residual,
       "Zeta23.CCM.CanonicalPoleNeutralIntertwining"),
+    (``Zeta23.CCM.canonicalPoleEvenLegalNormal_ne_zero, "Zeta23.CCM.CanonicalPoleNeutralNormals"),
+    (``Zeta23.CCM.canonicalPoleOddLegalNormal_ne_zero, "Zeta23.CCM.CanonicalPoleNeutralNormals"),
+    (``Zeta23.CCM.poleNeutralEvenOutputResidual_eq_normal, "Zeta23.CCM.CanonicalPoleNeutralNormals"),
+    (``Zeta23.CCM.poleNeutralOddProjection_index_evenNormal_eq_cubic, "Zeta23.CCM.CanonicalPoleNeutralNormals"),
+    (``Zeta23.CCM.poleNeutralCompressedIndexDefect_eq_correctedCubicSource, "Zeta23.CCM.CanonicalPoleNeutralNormals"),
+    (``Zeta23.CCM.canonicalPoleNeutralRankOneIntertwining, "Zeta23.CCM.CanonicalPoleNeutralNormals"),
+    (``Zeta23.CCM.poleNeutral_cubic_pairing_eq_momentFour, "Zeta23.CCM.CanonicalPoleNeutralNormals"),
     (``Zeta23.CCM.canonicalSourceMatrix_mulVec_eq_negative_arch_prime_of_profiles,
       "Zeta23.CCM.CanonicalPoleNeutralGeometry"),
     (``Zeta23.CCM.inner_poleNeutralEvenCompressedCanonical_self, "Zeta23.CCM.CanonicalPoleNeutralGeometry"),
@@ -98,6 +115,9 @@ run_cmd do
     (``Zeta23.CCM.nativePositiveCompletion_integrableOn, "Zeta23.CCM.NativePositiveCompletion"),
     (``Zeta23.CCM.nativeIntegerTranslateAction_rationalKernel_eq_positiveCompletion,
       "Zeta23.CCM.NativeFloorCompletionSource"),
+    (``Zeta23.CCM.nativeRationalCausalKernel_damped_integrableOn, "Zeta23.CCM.NativeRationalCompletionLaplace"),
+    (``Zeta23.CCM.nativeRationalCausalKernel_realLaplace, "Zeta23.CCM.NativeRationalCompletionLaplace"),
+    (``Zeta23.CCM.nativeRationalCausalKernel_signed_integral, "Zeta23.CCM.NativeRationalCompletionLaplace"),
     (``Zeta23.CCM.step123_enteringPrimeSourceMatrix_zero, "Zeta23.CCM.Step123PrimeSeam"),
     (``Zeta23.CCM.step123_qBasis_logSeam_zero, "Zeta23.CCM.Step123PrimeSeam")]
   let queries := roots.map fun (name, mod) =>

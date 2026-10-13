@@ -48,16 +48,20 @@ jobs:
             Zeta23.CCM.UniversalSincDetectorBounds \
             Zeta23.CCM.UniversalSincDetectorInverse \
             Zeta23.CCM.UniversalSincSourceLaw \
+            Zeta23.CCM.UniversalSincSourceCharacteristic \
+            Zeta23.CCM.UniversalSincBoxDensity \
             Zeta23.ExceptionalZero.UniversalSincDetectorVisibility \
             Zeta23.CCM.CanonicalPoleNeutralGeometry \
             Zeta23.CCM.CanonicalPoleNeutralCarrier \
             Zeta23.CCM.CanonicalPoleNeutralIntertwining \
+            Zeta23.CCM.CanonicalPoleNeutralNormals \
             Zeta23.CCM.CanonicalTrialResidualChannels \
             Zeta23.CCM.NativeIntegerPrimeSource \
             Zeta23.CCM.NativeIntegerPrimeField \
             Zeta23.CCM.NativeIntegerPrimeConvolution \
             Zeta23.CCM.NativePositiveCompletion \
             Zeta23.CCM.NativeFloorCompletionSource \
+            Zeta23.CCM.NativeRationalCompletionLaplace \
             Zeta23.CCM.Step123PrimeSeam
           do
             lake build "$target" 2>&1 | tee -a /tmp/post290-compiler.txt
@@ -114,6 +118,7 @@ jobs:
           python research/RHRC/routes/R003_ccm_bridge/post290/test_k3_replay_shards.py
           python research/RHRC/routes/R003_ccm_bridge/post290/test_k3_seams.py
           python research/RHRC/routes/R003_ccm_bridge/post290/test_native_divisor_controls.py
+          python research/RHRC/routes/R003_ccm_bridge/post290/test_native_mass_candidate.py
           python research/RHRC/routes/R003_ccm_bridge/post290/test_output_mutations.py
           python research/RHRC/routes/R003_ccm_bridge/post290/test_formal_receipt.py
       - uses: actions/upload-artifact@v4

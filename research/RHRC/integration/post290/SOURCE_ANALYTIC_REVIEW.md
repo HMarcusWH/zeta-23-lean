@@ -414,3 +414,26 @@ inverse candidate. Its density's positivity, real-valuedness, support and
 mass must follow from that exact connection or independent theorems. The
 mere existence of a smooth inverse function is insufficient. The new
 measure definition and its pending roots do not silently close that gap.
+
+`UniversalSincSourceCharacteristic.lean` is a further separate candidate
+for the first connection. The normalized box integral gives sinc at every
+real argument, including zero and negative arguments. Finite independence
+then gives the exact prefix product. The actual sample sums converge
+pathwise, and the complex characteristic kernel has norm one, so dominated
+convergence identifies the law's characteristic function with the actual
+infinite product. Characteristic-function uniqueness then gives exact
+reflection invariance of that law. These statements remain **OPEN** until
+their complete module and printed roots pass their compiler gate.
+
+If verified, this connects a positive compact measure to the product, but
+still does not identify a positive smooth density. A constructive next
+route is to separate the first two box coordinates from the independent
+tail. The first two widths are `s/2` and `s/6`, so their convolution has a
+continuous trapezoidal, rather than triangular, nonnegative density.
+Convolving it with the actual tail probability measure would produce a
+continuous compact mass-one density. Its Fourier identity and inversion
+could identify it with the smooth inverse candidate and transfer the
+proved moment regularity. Coordinate splitting and this exact density
+packaging remain **LEAD / HYPOTHESIS** obligations. Normalization is fixed
+by the visible factor `1/(2π)` and negative inverse phase, not inferred
+from numerical agreement.

@@ -86,7 +86,6 @@ theorem nativeRationalCausalKernel_weighted_atom {t : ℝ} {n : ℕ}
   unfold nativeIntegerCoefficient nativeRationalCausalKernel
   rw [if_pos (sub_nonneg.mpr hactive), hfirst, hsecond]
   field_simp
-  ring
 
 private theorem native_sum_range_shifted_natCast (N : ℕ) :
     (∑ n ∈ range N, ((n : ℝ) + 1)) = (N : ℝ) * ((N : ℝ) + 1) / 2 := by
@@ -104,7 +103,7 @@ theorem nativeIntegerTranslateAction_rationalKernel_eq_positiveCompletion (t : �
   · rw [nativeRationalCausalKernel_integerAction_eq_sum]
     rw [sum_range_succ']
     have hzero : nativeIntegerCoefficient 0 *
-        nativeRationalCausalKernel (t - Real.log 0) = 0 := by
+        nativeRationalCausalKernel (t - Real.log ((0 : ℕ) : ℝ)) = 0 := by
       simp [nativeIntegerCoefficient]
     rw [hzero, add_zero]
     have hatoms :

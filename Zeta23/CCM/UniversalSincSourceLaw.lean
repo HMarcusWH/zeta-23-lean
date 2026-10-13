@@ -160,7 +160,7 @@ theorem originalSourceLaw_interval_mass {s : ℝ} (hs : 0 ≤ s) :
   rw [Measure.map_apply (measurable_sourceSampleSum hs) measurableSet_Icc]
   have hpre : sourceSampleSum s ⁻¹' Icc (-s) s = univ := by
     ext ω
-    simp only [mem_preimage, mem_Icc, mem_univ, iff_true]
+    simp only [Set.mem_preimage, Set.mem_Icc, Set.mem_univ, iff_true]
     exact abs_le.mp (sourceSampleSum_abs_le hs ω)
   rw [hpre]
   exact measure_univ
@@ -170,7 +170,8 @@ or Fourier identification accepted as input. -/
 theorem originalSourceLaw_eq_map_scale (s : ℝ) :
     originalSourceLaw s = (originalSourceLaw 1).map (fun x : ℝ => s * x) := by
   unfold originalSourceLaw
-  rw [Measure.map_map (measurable_const.mul measurable_id)
+  have hscale : Measurable (fun x : ℝ => s * x) := measurable_const.mul measurable_id
+  rw [Measure.map_map hscale
     (measurable_sourceSampleSum (by norm_num : (0 : ℝ) ≤ 1))]
   congr 1
   funext ω

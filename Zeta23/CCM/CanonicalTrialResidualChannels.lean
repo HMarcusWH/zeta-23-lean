@@ -7,6 +7,12 @@ namespace Zeta23.CCM
 open Matrix
 open scoped BigOperators ComplexConjugate
 
+-- Expose the canonical inherited subtype structures during elaboration.
+-- This changes transparency only; the metric remains the coefficient metric.
+attribute [local reducible] Submodule.innerProductSpace
+  poleNeutralEven_innerProductSpace poleNeutralOdd_innerProductSpace
+  euclideanParityBoundaryFlatSubspace
+
 /-!
 Actual canonical trial residuals and their full signed channel Gram matrix.
 
@@ -75,7 +81,7 @@ theorem nativeTrialResidual_symmetric_variance (T : E →ₗ[ℂ] E)
     ‖nativeTrialResidual T u‖ ^ 2 =
       (inner ℂ u (T (T u))).re - ‖nativeTrialRayleigh T u‖ ^ 2 := by
   rw [nativeTrialResidual_variance T u hu, norm_sq_eq_re_inner (𝕜 := ℂ),
-    hT u (T u)]
+    hT u (T u), RCLike.re_eq_complex_re]
 
 theorem nativeTrialResidual_sum {ι : Type*} [Fintype ι]
     (C : ι → E →ₗ[ℂ] E) (u : E) :
@@ -94,9 +100,11 @@ theorem nativeTrialResidual_gram_sum {ι : Type*} [Fintype ι]
     (C : ι → E →ₗ[ℂ] E) (u : E) :
     ‖nativeTrialResidual (∑ i, C i) u‖ ^ 2 =
       (∑ i, ∑ j, nativeTrialChannelGram C u i j).re := by
-  rw [norm_sq_eq_re_inner (𝕜 := ℂ), nativeTrialResidual_sum]
+  rw [norm_sq_eq_re_inner (𝕜 := ℂ), nativeTrialResidual_sum,
+    RCLike.re_eq_complex_re]
   congr 1
   simp only [sum_inner, inner_sum, nativeTrialChannelGram]
+  rw [Finset.sum_comm]
 
 /-- Scalar shifts disappear from the unit trial residual. -/
 theorem nativeTrialResidual_add_scalar (T : E →ₗ[ℂ] E) (c : ℂ)
@@ -217,17 +225,39 @@ theorem poleNeutralOddCanonicalTrialChannel_sum (L : ℝ) (K : ℕ) :
 
 theorem poleNeutralEvenCompressedCanonical_isSymmetric (L : ℝ) (K : ℕ) :
     LinearMap.IsSymmetric (𝕜 := ℂ) (E := poleNeutralEvenSubspace L K)
-      (poleNeutralEvenCompressedCanonical L K) :=
-  nativeOrthogonalCompression_isSymmetric (E := euclideanEvenBoundaryFlatSubspace K)
-    (poleNeutralEvenSubspace L K)
-    (evenCompressedCanonical L K) (parityCompressedCanonical_isSymmetric .even L K)
+      (poleNeutralEvenCompressedCanonical L K) := by
+  intro x y
+  change inner ℂ ((Submodule.orthogonalProjectionOnto (𝕜 := ℂ)
+      (E := euclideanEvenBoundaryFlatSubspace K) (poleNeutralEvenSubspace L K))
+        (evenCompressedCanonical L K x.val)) y =
+    inner ℂ x ((Submodule.orthogonalProjectionOnto (𝕜 := ℂ)
+      (E := euclideanEvenBoundaryFlatSubspace K) (poleNeutralEvenSubspace L K))
+        (evenCompressedCanonical L K y.val))
+  rw [Submodule.inner_orthogonalProjectionOnto_eq_of_mem_right
+      (𝕜 := ℂ) (E := euclideanEvenBoundaryFlatSubspace K)
+      (K := poleNeutralEvenSubspace L K),
+    Submodule.inner_orthogonalProjectionOnto_eq_of_mem_left
+      (𝕜 := ℂ) (E := euclideanEvenBoundaryFlatSubspace K)
+      (K := poleNeutralEvenSubspace L K)]
+  exact parityCompressedCanonical_isSymmetric .even L K x.val y.val
 
 theorem poleNeutralOddCompressedCanonical_isSymmetric (L : ℝ) (K : ℕ) :
     LinearMap.IsSymmetric (𝕜 := ℂ) (E := poleNeutralOddSubspace L K)
-      (poleNeutralOddCompressedCanonical L K) :=
-  nativeOrthogonalCompression_isSymmetric (E := euclideanOddBoundaryFlatSubspace K)
-    (poleNeutralOddSubspace L K)
-    (oddCompressedCanonical L K) (parityCompressedCanonical_isSymmetric .odd L K)
+      (poleNeutralOddCompressedCanonical L K) := by
+  intro x y
+  change inner ℂ ((Submodule.orthogonalProjectionOnto (𝕜 := ℂ)
+      (E := euclideanOddBoundaryFlatSubspace K) (poleNeutralOddSubspace L K))
+        (oddCompressedCanonical L K x.val)) y =
+    inner ℂ x ((Submodule.orthogonalProjectionOnto (𝕜 := ℂ)
+      (E := euclideanOddBoundaryFlatSubspace K) (poleNeutralOddSubspace L K))
+        (oddCompressedCanonical L K y.val))
+  rw [Submodule.inner_orthogonalProjectionOnto_eq_of_mem_right
+      (𝕜 := ℂ) (E := euclideanOddBoundaryFlatSubspace K)
+      (K := poleNeutralOddSubspace L K),
+    Submodule.inner_orthogonalProjectionOnto_eq_of_mem_left
+      (𝕜 := ℂ) (E := euclideanOddBoundaryFlatSubspace K)
+      (K := poleNeutralOddSubspace L K)]
+  exact parityCompressedCanonical_isSymmetric .odd L K x.val y.val
 
 theorem poleNeutralEvenTrialResidual_variance (L : ℝ) (K : ℕ)
     (u : poleNeutralEvenSubspace L K) (hu : ‖u‖ = 1) :

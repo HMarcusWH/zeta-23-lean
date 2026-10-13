@@ -261,3 +261,162 @@ context-bound declaration receipt, then verify the exact local translate
 identities. Finish D2's preserved source campaign and independent all-leaf
 replay. Continue the fixed smooth-source construction and quantitative finite
 transport; they are required mathematical terms, not documentary tasks.
+
+## Fourth pass: entire product, native kernels, and causal source histories
+
+**What became formally true.** Linux job `115546195731`, run `38469964899`,
+checked head `6ae99364db66b2c66b1e0bde804f02733907647e` and tree
+`3580d29354edccd9682a103beb753cfa9c9df9a6`. Its complete targets
+`UniversalSincDetector`, `CanonicalPoleNeutralGeometry`, and
+`NativeIntegerPrimeField` compiled. Their displayed public proof roots used
+only `propext`, `Classical.choice`, and `Quot.sound`. The native arithmetic,
+positive completion, and exact prime-seam modules replayed. The product is the
+actual `tprod` at widths `s/((n+1)(n+2))`, with entire analyticity derived from
+normal convergence and nonreal nonvanishing derived from summable deviations
+and every factor's nonvanishing. It is not yet the Fourier transform of a
+constructed smooth density. Kernel maps and compressions use the actual
+native pole profiles and the inherited coefficient metric. The history theorems
+apply to every compactly supported source `j`; the exact `j=P²q` remains unfilled.
+
+**Workflow harvest.** In the same push run, exact-controls job `115546196205`
+and native-observations job `115546196300` SUCCEEDED. The observation gate
+reconstructed all 44 frozen pairs / 176 rows at 1024 bits and retained finite
+point scope. The Lean job FAILED on visibility derivatives, residual-channel
+elaboration, and arithmetic convolution; dependent floor identification and
+the context-bound full component export were not established. A separate
+whole-PR harvest is still being completed, preserving branch and synthetic
+merge checkout identities. Running, queued, skipped, or cancelled historical
+jobs are not successes. The separate D2 producer continues at its original
+head, without a published candidate or fresh all-leaf result. No fully green
+PR or complete producer is being claimed.
+
+**What changed.** Nonreal-tail exclusion and entire analyticity no longer
+need a proposed bridge assumption. Exact native pole-neutral compression and
+the nonunitary index bijection exist. The finite-history interface has an
+inclusive cutoff and an exact first-prime identity, with continuity proved
+from actual local finiteness. This strengthens the formal prerequisites while
+leaving the physical source, phase depth, transport, ground selection, and
+global range estimates OPEN.
+
+**Upstream implications.** Construct the source as a genuine independent
+uniform sum and match its characteristic function to the existing product.
+The quantitative real-axis product bound can then provide all polynomial
+moments and a smooth inverse, once compiled. Those two actual constructions
+must be identified; a bare inverse function does not prove positivity or
+compact support. The legal-kernel formulation lets rank-nullity use a concrete
+nonzero profile functional, rather than a different metric or an assumed
+neutral carrier. Keep original and completed source inputs distinct.
+
+**Downstream implications.** A source-parametric locally finite regrouping
+can construct `N*X=U` directly from the compiled divisor identity before any
+`X`-membership assertion. Exact first-prime spacing supplies a local source
+anchor. Actual orthogonal pole normals can reduce the retained compression
+defect to the corrected scalar `S-b*alpha`, once the projection proof compiles.
+These remove definitional ambiguities; none gives a negative-depth producer
+or the opposing Schur bound by itself.
+
+**Resurrected routes.** The compact-probability / Fourier-density route has
+the exact product's analyticity and nonvanishing available now. The local
+causal arithmetic route has both coefficients and finite histories. The
+uncorrected compressed rank-one route remains invalid; its repair must retain
+the native output-normal defect. The old radius-bank route remains separate,
+and cannot supply this fixed source's phase-cofinal quantitative theorem.
+
+**New RH-relevant clues.** LEAD: a nonzero first-prime window for actual
+`P²q` could furnish the stable-difference anchor required by the native angle
+formulation. LEAD: exact corrected normal removal may isolate which native
+source term pays the retained ground-to-detector discrepancy. Neither lead
+supplies stable input, range closure, or a sign law. The physical transform
+identity is the highest-information missing link because it connects already
+proved nonvanishing to actual zero residues without a replacement source.
+
+**Falsification checks.** Coincident real sinc-factor zeros remain an exact
+counterexample to universal real-root simplicity. The continuum compression
+control has nonzero leakage. Strict negative parity states can have arbitrarily
+small opposite gaps. Scalar-shift-blind residual identities cannot bound
+absolute energy. First-prime nonzero point data need continuity and positive
+integration measure to yield energy; translated compact fields need not be
+orthogonal. The signed rational completion kernel has mass `-2/3` and the
+integer weights have divergent mass, so exchanging their global sum and
+integral without a theorem is invalid.
+
+**Highest-leverage next moves.** Compile the actual law, product decay,
+inverse precursor, and arithmetic convolution at one clean tree. Prove the
+law/product characteristic identity, then an actual compact density and its
+Fourier identification. Finish the corrected native normal reduction and
+physical pole-moment equivalence. Harvest every workflow output at its exact
+checkout and obtain D2's real candidate before independent replay. The two
+phase-depth schedules and quartic finite transport remain separate substantive
+proof tasks; complete metadata cannot replace them. RH remains **OPEN**.
+
+## Fifth pass: exact multiplier visibility and native arithmetic compatibility
+
+**What became formally true.** Run `38473292091`, job `115557593936`,
+checked head `d063c1c9fefd930c40c0018244233eee84ef4ce1`, tree
+`b7489ab277b6a9fd3d5833d33fb953a14f02c794`, with the pinned Lean and
+Mathlib. Complete `UniversalSincDetectorVisibility` and
+`NativeIntegerPrimeConvolution` targets compiled. Every printed root had
+only the three admitted standard axioms. Visibility means the explicit
+multiplier `-(z²+1/4)P_s(z)` and its complex square are nonzero at
+`gammaOf rho` for each actual off-line member of the existing open-strip
+zero carrier. The two elementary zeros are simple. It is not yet visibility
+of a physical source whose transform has been identified. Compatibility
+means the actual outer integer translate sum of the actual prime field
+equals U for every source supported on `[-s,s]`. It accepts no new
+compatibility or L2 premise.
+
+**Workflow harvest.** The same run's native job `115557593418` SUCCEEDED
+on all 44 pairs / 176 rows, and exact-controls `115557594046` SUCCEEDED.
+The complete Lean job FAILED on product-bound conversion, law support/scaling
+elaboration, carrier rank-nullity, nested compression/residual elaboration,
+and two floor-source proof steps. The full type-binding receipt was not
+executed. Both new green modules were read from the decoded log and their
+actual proofs. Their failed neighbours' `sorryAx` recovery is not accepted.
+Whole-PR workflow harvest and D2's actual candidate remain pending.
+
+**What changed.** Elementary-pair derivative handling keeps P evaluated at
+the same exact complex point; the multiplier's complex square is retained.
+The arithmetic proof now makes the double sum finite on a native multiplication
+rectangle, groups it by multiplication fibers, annihilates the infinite zero
+fiber, and uses the already proved weighted divisor identity. A proposed
+compatibility input has become an actual construction for compact sources.
+
+**Upstream implications.** Compact support suffices for this pointwise equation,
+independently of global summability of the original prime field. Preserve the
+natural-number product before coercion to the reals. Keep exact scalar and
+norm instances visible rather than changing them to get a proof through.
+
+**Downstream implications.** The eventual fixed `P²q` can instantiate the
+native equation once its support is proved. Causal finite histories can enter
+completion and stable-input calculations without assuming X belongs to the
+space whose membership A-X is meant to test. The physical Fourier bridge would
+immediately inherit the verified off-line multiplier nonvanishing and simple
+elementary zeros.
+
+**Resurrected routes.** The native arithmetic compatibility route no longer
+needs an unexplained bridge premise. The source/Fourier construction and
+stable Y route have clearer, smaller remaining obligations. No full-range
+surjectivity route is resurrected by the local equation alone.
+
+**New RH-relevant clues.** LEAD: the original integer action and rational
+completion can expose a stable forcing without demanding a stable inverse.
+LEAD: direct finite-cell integration of the actual positive floor kernel may
+prove its required mass bound before its zeta/Laplace analytic continuation
+is formalized. A new exact rational 128-cell calibration pays the numerical
+margin, but all of its measure and infinite-tail bridges remain OPEN; see
+`NATIVE_MASS_DIRECT_ROUTE.md`.
+
+**Falsification checks.** An altered prime coefficient breaks the exact divisor
+law already at n=2. Compatibility preserves that law and cannot suppress a
+native zero divisor. Dropping support invalidates the finite double-sum proof.
+The completion mass candidate explicitly fails to pay its target if the old
+coarse exponential tail is used. Even a proved strict forward norm would not
+provide a norm bound on its inverse or remove its adjoint-kernel obstruction.
+
+**Highest-leverage next moves.** Repair all implemented component targets at
+one exact tree and obtain the existing compiler resolver's full selected-root
+receipt. Connect the actual uniform law to its product, then to its density.
+Construct the corrected normal source from the native projections. Formalize
+the direct mass route only with its analytic bridges, and continue the actual
+stable-input equation. Keep cofinal phase depth, finite transport, and D2
+continuous coverage as independent unfinished tasks. RH remains **OPEN**.

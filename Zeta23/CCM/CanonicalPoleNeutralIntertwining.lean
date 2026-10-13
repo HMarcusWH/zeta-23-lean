@@ -6,6 +6,11 @@ namespace Zeta23.CCM
 
 open scoped BigOperators ComplexConjugate
 
+-- Keep the standard inherited subtype metric transparent to the elaborator.
+attribute [local reducible] Submodule.innerProductSpace
+  poleNeutralEven_innerProductSpace poleNeutralOdd_innerProductSpace
+  euclideanParityBoundaryFlatSubspace
+
 /-!
 The exact additional defect introduced by native pole-neutral compression.
 
@@ -26,7 +31,9 @@ def poleNeutralEvenOutputResidual (L : ℝ) (K : ℕ)
 
 theorem poleNeutralEvenOutputResidual_mem_orthogonal (L : ℝ) (K : ℕ)
     (u : poleNeutralEvenSubspace L K) :
-    poleNeutralEvenOutputResidual L K u ∈ (poleNeutralEvenSubspace L K)ᗮ := by
+    poleNeutralEvenOutputResidual L K u ∈
+      Submodule.orthogonal (𝕜 := ℂ) (E := euclideanEvenBoundaryFlatSubspace K)
+        (poleNeutralEvenSubspace L K) := by
   change evenCompressedCanonical L K u.val -
     (poleNeutralEvenSubspace L K).starProjection (evenCompressedCanonical L K u.val) ∈ _
   exact (poleNeutralEvenSubspace L K).sub_starProjection_mem_orthogonal _
@@ -71,7 +78,8 @@ theorem poleNeutralCompressedIndexDefect_eq_projected_legal_add_residual
     poleNeutralIndexLinearMap hL K (poleNeutralEvenCompressedCanonical L K u) =
       Q (B (D u.val) - D (A u.val)) +
         Q (D (A u.val - (poleNeutralEvenCompressedCanonical L K u).val))
-  rw [map_sub, map_sub, map_sub, hkeep]
+  simp only [map_sub]
+  rw [hkeep]
   abel
 
 /-- The first term is the native legal source, exactly as already proved;

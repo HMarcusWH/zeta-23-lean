@@ -173,7 +173,7 @@ theorem finrank_poleNeutralEvenSubspace {L : ℝ} (hL : 0 < L)
     Module.finrank ℂ (poleNeutralEvenSubspace L K) = K - 2 := by
   have hdim := (legalCanonicalPoleEvenFunctional L K).finrank_range_add_finrank_ker
   rw [LinearMap.range_eq_top.mpr (legalCanonicalPoleEvenFunctional_surjective hL K hK),
-    Submodule.finrank_top, Module.finrank_self,
+    finrank_top, Module.finrank_self,
     finrank_euclideanEvenBoundaryFlatSubspace K (by omega)] at hdim
   change 1 + Module.finrank ℂ (poleNeutralEvenSubspace L K) = K - 1 at hdim
   omega
@@ -184,7 +184,7 @@ theorem finrank_poleNeutralOddSubspace {L : ℝ} (hL : 0 < L)
     Module.finrank ℂ (poleNeutralOddSubspace L K) = K - 2 := by
   have hdim := (legalCanonicalPoleOddFunctional L K).finrank_range_add_finrank_ker
   rw [LinearMap.range_eq_top.mpr (legalCanonicalPoleOddFunctional_surjective hL K hK),
-    Submodule.finrank_top, Module.finrank_self,
+    finrank_top, Module.finrank_self,
     finrank_euclideanOddBoundaryFlatSubspace K (by omega)] at hdim
   change 1 + Module.finrank ℂ (poleNeutralOddSubspace L K) = K - 1 at hdim
   omega

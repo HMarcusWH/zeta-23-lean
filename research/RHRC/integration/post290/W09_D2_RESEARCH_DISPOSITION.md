@@ -174,7 +174,9 @@ or discarding failed intervals. Independently check every final accepted leaf at
 768 bits and apply the repaired NON-PARTIAL assembler. The extra operational
 checker cap is frozen at 1,800 seconds per layer; exhaustion must report the
 precise unverified suffix and keep D2 OPEN. The hosted job also has a six-hour
-cap; interruption leaves partial raw artifacts rather than complete authority.
+cap. Its present upload is at the end of the job, so a hosted runner timeout
+can prevent publication of runner-local checkpoints entirely. There is no
+claim that partial artifacts are recoverable until an actual artifact exists.
 If the permitted second pass leaves unresolved or unrun children, the next
 decision requires a new explicit protocol, with information gain guided by
 the failed interval enclosures. The present mathematical state leaves exactly
@@ -203,3 +205,13 @@ as UNVERIFIED. The repaired NON-PARTIAL gate consumes the separate
 producer/validation identities; no old receipt hash is rewritten. The new
 checker partition has protocol ID `SECOND_FRESH_768_SHARDED_v1` and supplies no
 extra search budget, method change or increased theorem authority.
+
+As of 21:50 UTC, the producer run `38461259594` was still searching and had
+published zero artifacts. The independent replay workflow is prepared locally
+but deliberately held out of the Git index until its candidate input exists.
+No replay, fresh all-leaf coverage, or complete D2 result is inferred from its
+presence. A recovery design gives one frozen logical search job per runner,
+with immediate raw checkpoint publication and the same concurrency and per-job
+budgets. It must preserve the spent-budget ledger; missing original checkpoints
+cannot be relabelled as unrun jobs. A separately preregistered new attempt would
+need its own identity and cannot erase this attempt's disposition.

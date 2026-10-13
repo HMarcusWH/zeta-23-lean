@@ -3,7 +3,7 @@
   "status": "PARTIAL_IMPLEMENTATION_COMPILER_PENDING",
   "repository": "HMarcusWH/zeta-23-lean",
   "suggested_branch": "research/post290-step123-output",
-  "proposed_pr_number": null,
+  "proposed_pr_number": 292,
   "base_commit": "9583bbcc587aca8d87e74981b222e6813238d670",
   "base_tree": "188d1e0ae3a22e66d512c5c807687c6f2fc8d0e0",
   "lean_toolchain": "leanprover/lean4:v4.33.0-rc2",
@@ -219,7 +219,7 @@
         "Zeta23.CCM.poleKilled_universalSincSource_norm_sq",
         "Zeta23.CCM.universalSincProduct_decay"
       ],
-      "status": "OPEN_NOT_IMPLEMENTED",
+      "status": "PARTIAL_CANDIDATE_COMPILER_PENDING",
       "mandatory_core": true,
       "acceptance": "Prove source-dependent constants, Gevrey bounds and exact normalization; no replacement source."
     },
@@ -327,7 +327,7 @@
         "Zeta23.CCM.canonicalPoleNeutral_rankOneIntertwining",
         "Zeta23.CCM.poleNeutral_cubic_pairing_eq_momentFour"
       ],
-      "status": "OPEN_NOT_IMPLEMENTED",
+      "status": "PARTIAL_CANDIDATE_COMPILER_PENDING",
       "mandatory_core": true,
       "acceptance": "Prove actual S0=S-b*alpha and the rank-one identity R1 using existing actual-source identification; do not assume it."
     },
@@ -445,7 +445,7 @@
         "Zeta23.CCM.canonicalTrialResidual_channels_sum",
         "Zeta23.CCM.canonicalTrialResidual_gram_sum"
       ],
-      "status": "OPEN_NOT_IMPLEMENTED",
+      "status": "PARTIAL_CANDIDATE_COMPILER_PENDING",
       "mandatory_core": true,
       "acceptance": "Independent spectral and native-channel definitions of the same trial residual in its own parity T_sigma,0 (A0 even; B0 odd), not the selected-ground parity; complete complex Gram terms; even M4 bounds apply only to eligible even inputs."
     },
@@ -755,7 +755,39 @@
     {
       "id": "M07",
       "implementation_path": "Zeta23/CCM/CanonicalPoleNeutralGeometry.lean",
-      "scope": "carrier/index and native pole-source action only; dimensions, physical moments and normal nonvanishing remain open"
+      "scope": "geometry/index and native pole-source action compiled; Carrier dimensions/nonzero functional/norm-bound candidate pending; physical exponential moments and explicit normals remain open"
     }
-  ]
+  ],
+  "component_validation": {
+    "checked_head": "6ae99364db66b2c66b1e0bde804f02733907647e",
+    "checked_tree": "3580d29354edccd9682a103beb753cfa9c9df9a6",
+    "component_job": 115546195731,
+    "whole_job_result": "FAILURE",
+    "entire_modules_compiled": [
+      "Zeta23.CCM.UniversalSincDetector",
+      "Zeta23.CCM.CanonicalPoleNeutralGeometry",
+      "Zeta23.CCM.NativeIntegerPrimeSource",
+      "Zeta23.CCM.NativeIntegerPrimeField",
+      "Zeta23.CCM.NativePositiveCompletion",
+      "Zeta23.CCM.Step123PrimeSeam"
+    ],
+    "full_type_binding_export_executed": false,
+    "new_diagnostic_head": "d063c1c9fefd930c40c0018244233eee84ef4ce1",
+    "new_diagnostic_tree": "b7489ab277b6a9fd3d5833d33fb953a14f02c794",
+    "new_diagnostic_status": "FAILURE_PARTIAL_MODULES_COMPILED",
+    "new_diagnostic_component_job": 115557593936,
+    "new_diagnostic_modules_compiled": [
+      "Zeta23.ExceptionalZero.UniversalSincDetectorVisibility",
+      "Zeta23.CCM.NativeIntegerPrimeConvolution"
+    ],
+    "additional_candidates": [
+      "Zeta23.CCM.UniversalSincDetectorInverse",
+      "Zeta23.CCM.UniversalSincSourceLaw",
+      "Zeta23.CCM.CanonicalPoleNeutralCarrier",
+      "Zeta23.CCM.NativeIntegerPrimeConvolution",
+      "Zeta23.CCM.NativeFloorCompletionSource"
+    ],
+    "authority": "SUPPORTING_COMPONENTS_ONLY_RH_OPEN",
+    "mandatory_core_inventory_unchanged": true
+  }
 }

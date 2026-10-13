@@ -62,7 +62,6 @@ private theorem bounds_complex_norm_instances_eq :
 private theorem tendsto_partialProduct_norm {s : ℝ} (hs : 0 ≤ s) (x : ℝ) :
     Tendsto (fun N : ℕ => ‖partialProduct s x N‖) atTop (𝓝 ‖product s (x : ℂ)‖) := by
   have ht := (tendsto_partial_product hs (x : ℂ)).norm
-  rw [bounds_complex_norm_instances_eq] at ht
   exact ht
 
 /-- The exact infinite product, rather than a selected truncation, has norm
@@ -138,7 +137,7 @@ theorem product_norm_ofReal_le_gevrey {s : ℝ} (hs : 0 < s) (x : ℝ) :
     have hmul := mul_le_mul_of_nonneg_left hfloor.le hlogpos.le
     nlinarith
   have hexp : Real.exp (-Real.log 2) = (1 / 2 : ℝ) := by
-    rw [Real.exp_neg, Real.exp_log (by norm_num)] <;> rfl
+    rw [Real.exp_neg, Real.exp_log (by norm_num)] <;> norm_num
   have hpow : (1 / 2 : ℝ) ^ N = Real.exp (-(Real.log 2) * (N : ℝ)) := by
     calc
       _ = (Real.exp (-Real.log 2)) ^ N := by rw [hexp]
