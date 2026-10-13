@@ -802,6 +802,18 @@
     ],
     "latest_exact_controls": {"job": 115569213382, "result": "SUCCESS"},
     "latest_native_observations": {"job": 115569213489, "result": "SUCCESS", "pairs": 44, "rows": 176, "checker_bits": 1024, "universal_theorem_authority": false},
+    "candidate_iteration_diagnostic": {
+      "head": "b716fad759ca545352741057a203b866e2973585",
+      "tree": "d1981cdb54927b931cbcae02f6f4fcf15972d17f",
+      "run": 38480831587,
+      "component_job": 115582716175,
+      "whole_job_result": "FAILURE",
+      "entire_new_modules_compiled": ["Zeta23.CCM.UniversalSincSourceCharacteristic", "Zeta23.CCM.CanonicalTrialResidualChannels"],
+      "exact_controls": {"job": 115582716367, "result": "SUCCESS"},
+      "native_observations": {"job": 115582716300, "result": "SUCCESS", "pairs": 44, "rows": 176, "checker_bits": 1024, "universal_theorem_authority": false},
+      "full_type_binding_export_executed": false,
+      "full_mandatory_producer": "OPEN"
+    },
     "additional_candidates": [
       "Zeta23.CCM.UniversalSincDetectorInverse",
       "Zeta23.CCM.UniversalSincSourceLaw",

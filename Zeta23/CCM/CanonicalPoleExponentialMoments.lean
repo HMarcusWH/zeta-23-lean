@@ -90,8 +90,9 @@ theorem intervalIntegral_exp_mul_localizedMode {L : ℝ} (hL : 0 < L)
     integral_exp_mul_complex (poleExponentialRate_ne_zero σ L n hσ),
     poleExponentialRate_endpoint hL]
   rw [Complex.exp_add, Complex.exp_int_mul_two_pi_mul_I]
-  simp only [mul_one, mul_zero, Complex.exp_zero]
-  rw [div_eq_mul_inv, poleExponentialRate_inv hL σ n hσ]
+  simp only [mul_one, Complex.ofReal_zero, mul_zero, Complex.exp_zero]
+  simp_rw [div_eq_mul_inv]
+  rw [poleExponentialRate_inv hL σ n hσ]
   unfold canonicalPoleExponentialMomentScale
   rw [← Complex.ofReal_exp]
   push_cast

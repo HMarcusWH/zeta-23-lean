@@ -61,7 +61,7 @@ theorem evenBoundaryFlat_eq_zero_of_euclideanIndex_sq_eigen
     (evenBoundaryFlatRawCoefficients K u) hflat.1 hflat.2.1 hraw
   apply Subtype.ext
   apply (EuclideanSpace.equiv (Fin (2 * K + 1)) ℂ).injective
-  simpa only [map_zero, evenBoundaryFlatRawCoefficients] using hz
+  simpa only [Submodule.coe_zero, map_zero, evenBoundaryFlatRawCoefficients] using hz
 
 /-- Vanishing fourth moment supplies exactly the missing legal boundary
 condition for the second centered-index iterate of an even vector. -/
@@ -73,7 +73,7 @@ theorem indexMatrix_sq_mem_evenBoundaryFlat_of_momentFour_eq_zero
   have he := (mem_evenCoefficientSubspace_iff K u).mp hu.2
   refine ⟨(mem_boundaryFlatSubspace_iff K _).mpr ?_,
     (mem_evenCoefficientSubspace_iff K _).mpr ?_⟩
-  · simp only [centeredMoment_indexMatrix_mulVec]
+  · simp only [BoundaryFlatCoefficients, centeredMoment_indexMatrix_mulVec]
     exact ⟨hf.2.2, centeredMoment_odd_eq_zero_of_even hu.2 (by decide), h4⟩
   · simp only [reverseCoefficients_indexMatrix_mulVec, he, Matrix.mulVec_neg, neg_neg]
 

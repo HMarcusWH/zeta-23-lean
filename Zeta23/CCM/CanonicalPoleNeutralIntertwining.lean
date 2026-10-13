@@ -30,6 +30,11 @@ def poleNeutralEvenOutputResidual (L : ℝ) (K : ℕ)
     (u : poleNeutralEvenSubspace L K) : euclideanEvenBoundaryFlatSubspace K :=
   evenCompressedCanonical L K u.val - (poleNeutralEvenCompressedCanonical L K u).val
 
+/-- Erase only the final native subtype of the unchanged legal index map. -/
+theorem coe_poleNeutralIndexLinearMap_legal {L : ℝ} (hL : 0 < L) (K : ℕ)
+    (u : poleNeutralEvenSubspace L K) :
+    (poleNeutralIndexLinearMap hL K u).val = euclideanEvenToOddIndexLinearMap K u.val := rfl
+
 /-- Erase only the final native subtype of the actual even compression. -/
 theorem coe_poleNeutralEvenCompressedCanonical (L : ℝ) (K : ℕ)
     (u : poleNeutralEvenSubspace L K) :
@@ -83,7 +88,7 @@ theorem poleNeutralCompressedIndexDefect_eq_projected_legal_add_residual
       euclideanOddBoundaryFlatSubspace K := oddCompressedCanonical L K
   have hkeep : Q (D (poleNeutralEvenCompressedCanonical L K u).val) =
       poleNeutralIndexLinearMap hL K (poleNeutralEvenCompressedCanonical L K u) := by
-    simpa only [Q, D, poleNeutralIndexLinearMap] using
+    simpa only [Q, D, coe_poleNeutralIndexLinearMap_legal] using
       (Submodule.orthogonalProjectionOnto_mem_subspace_eq_self
       (𝕜 := ℂ) (E := euclideanOddBoundaryFlatSubspace K)
       (K := poleNeutralOddSubspace L K)
@@ -93,7 +98,7 @@ theorem poleNeutralCompressedIndexDefect_eq_projected_legal_add_residual
       Q (B (D u.val) - D (A u.val)) +
         Q (D (A u.val - (poleNeutralEvenCompressedCanonical L K u).val)) by
     simpa only [Q, D, A, B, poleNeutralCompressedIndexDefect,
-      poleNeutralOddCompressedCanonical, poleNeutralIndexLinearMap,
+      poleNeutralOddCompressedCanonical, coe_poleNeutralIndexLinearMap_legal,
       poleNeutralEvenOutputResidual, evenOddCompressedIntertwiningDefect,
       LinearMap.sub_apply, LinearMap.comp_apply, Submodule.coe_subtype,
       ContinuousLinearMap.coe_coe] using this
@@ -119,6 +124,7 @@ theorem poleNeutralCompressedIndexDefect_eq_cubicSource_add_residual
 end Zeta23.CCM
 
 #print axioms Zeta23.CCM.poleNeutralEvenOutputResidual_mem_orthogonal
+#print axioms Zeta23.CCM.coe_poleNeutralIndexLinearMap_legal
 #print axioms Zeta23.CCM.coe_poleNeutralEvenCompressedCanonical
 #print axioms Zeta23.CCM.poleNeutralCompressedIndexDefect_eq_projected_legal_add_residual
 #print axioms Zeta23.CCM.poleNeutralCompressedIndexDefect_eq_cubicSource_add_residual

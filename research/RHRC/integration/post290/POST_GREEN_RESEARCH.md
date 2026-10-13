@@ -566,3 +566,79 @@ target. Use actual moment/index rigidity for the conditional simple-even tie,
 and retain original lam/eta when forming branch records. Continue the
 positive-Laplace signed-excursion argument and quartic transport as separate
 substantive proofs. RH and the complete mandatory output remain **OPEN**.
+
+## Eighth pass: actual law/product identification and native residual identities
+
+**What became formally true.** Head `b716fad759ca545352741057a203b866e2973585`,
+tree `d1981cdb54927b931cbcae02f6f4fcf15972d17f`, was checked by run
+`38480831587`, component job `115582716175`, with the pinned compiler and
+Mathlib. Complete Characteristic and CanonicalTrialResidualChannels targets
+compiled; all their printed roots use only the three admitted standard axioms.
+The characteristic function of the prescribed independent infinite uniform
+sum equals the actual sinc product at every real frequency, including zero.
+Its reflection-invariant probability law is now established by characteristic
+function uniqueness. For the actual native parity compressions and a unit
+trial, the actual residual variance equals the spectral second moment minus
+the squared Rayleigh coefficient, and the full complex signed channel Gram
+sum equals that same residual norm. The proofs retain the inherited coefficient
+metric and all cross terms. Their definitions and successful proofs were read.
+
+**Workflow harvest.** Exact-controls `115582716367` and native-observations
+`115582716300` SUCCEEDED. Immutable inputs and frozen mutation controls were
+preserved; all 44 pairs / 176 rows were independently reconstructed at 1024
+bits. The component job FAILED on tail-law factorization, exponential integral
+rewrite shape, nested projection erasure, index-square coercions, logarithmic
+integrability elaboration and rational division. The full binding export was
+skipped. Full-source density/physical consumers were blocked upstream and are
+not new PROVED results. Failed recovery axioms are rejected. The complete
+current-head workflow harvest is being reviewed separately, with running jobs
+retained as pending. D2 has no published candidate and remains OPEN.
+
+**What changed.** The actual law and product are now connected, rather than
+being two independently verified constructions. M14's native residual and
+signed Gram identities now compile for both original trial parities. They do
+not construct an off-line-zero-generated finite trial or selected ground.
+The exact late WP2 append preserves original snapshot bytes while clarifying
+the even/odd domain mismatch and the 192-bit checker precision.
+
+**Upstream implications.** The literal product has real zeros. Group-only
+infinite-product splitting APIs therefore cannot be used on all complex
+factors; this proof friction identifies a real mathematical restriction.
+The tail construction must use summable deviations and the monoid-safe split,
+without assuming factor nonvanishing. Explicit subtype erasure keeps projections
+and native index maps at their actual inherited metric.
+
+**Downstream implications.** The characteristic identity can identify the
+actual prefix-tail convolution with the compact density and then its smooth
+inverse. Once compiled, literal physical k and j inherit exact visibility
+and squared-Weil summability. Actual M14 residuals can enter finite transport
+and the original detector Schur record without discarding signed cancellations.
+They do not determine the residual's magnitude or absolute negative energy.
+
+**Resurrected routes.** Exact density identification now has its probabilistic
+transform prerequisite. Native same-source residual evaluation has its complete
+formal identity. The scalar-shift counterexample persists: residual and variance
+identities remain blind to scalar shifts, so they cannot by themselves exclude
+a negative native ground.
+
+**New RH-relevant clues.** LEAD: a per-zero positive-Laplace boundary argument
+may prove the required signed cofinal phase excursions without constructing a
+supremal displacement. Actual real-strip nonvanishing and real-correlation
+symmetry are concrete new prerequisite candidates. LEAD: the full signed Gram
+matrix may expose source-dependent cancellation constraints; a generic PSD
+Gram identity alone supplies no native exclusion.
+
+**Falsification checks.** Retain real sinc zeros when splitting products.
+Do not replace the complex coefficient square by a modulus square. Original
+phase uses physical time t=2a, so its aperture exponent is 2*beta*a. A unit
+trial need not be a ground state; no positivity, high moments, phase or source
+is copied onto a selected ground. Tail source support alone does not complete
+Fourier inversion, and the old radius bank still cannot inhabit this producer.
+
+**Highest-leverage next moves.** Repair the actual tail split and projections,
+then compile all implemented targets once through a single shared dependency
+graph and export exact types/axioms at that tree. Test the new actual strict
+branches, retained tie components and native nesting separately from the
+missing generated selector. Complete the actual finite-head/infinite-tail
+mass certificate, then continue the positive-Laplace boundary and quartic
+transport proofs. M04, the full 25-module producer and RH remain **OPEN**.

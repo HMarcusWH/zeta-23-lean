@@ -32,6 +32,14 @@ import Zeta23.CCM.NativeIntegerPrimeConvolution
 import Zeta23.CCM.NativePositiveCompletion
 import Zeta23.CCM.NativePositiveCompletionCells
 import Zeta23.CCM.NativePositiveCompletionMass
+import Zeta23.CCM.NativePositiveCompletionHead
+import Zeta23.CCM.NativePositiveCompletionTail
+import Zeta23.CCM.NativePositiveCompletionCertificate
+import Zeta23.CCM.CanonicalPoleNeutralShiftedSecular
+import Zeta23.CCM.CanonicalPoleNeutralTiePackage
+import Zeta23.ExceptionalZero.ZetaRealStripNonvanishing
+import Zeta23.CCM.CanonicalPoleNeutralNesting
+import Zeta23.ExceptionalZero.UniversalSincCorrelationReal
 import Zeta23.CCM.NativeFloorCompletionSource
 import Zeta23.CCM.NativeRationalCompletionLaplace
 import Zeta23.CCM.Step123PrimeSeam
@@ -79,6 +87,7 @@ run_cmd do
     (``Zeta23.CCM.UniversalSinc.uniformBoxPairDensity_eq_convolution, "Zeta23.CCM.UniversalSincBoxDensity"),
     (``Zeta23.CCM.UniversalSinc.originalBoxPairDensity_positive_normalized, "Zeta23.CCM.UniversalSincBoxDensity"),
     (``Zeta23.CCM.UniversalSinc.sourceSampleTail_abs_le, "Zeta23.CCM.UniversalSincSourceTail"),
+    (``Zeta23.CCM.UniversalSinc.multipliable_sinc_tail, "Zeta23.CCM.UniversalSincSourceTail"),
     (``Zeta23.CCM.UniversalSinc.charFun_originalSourceTailLaw, "Zeta23.CCM.UniversalSincSourceTail"),
     (``Zeta23.CCM.UniversalSinc.originalSourceLaw_eq_prefix_conv_tail, "Zeta23.CCM.UniversalSincSourceTail"),
     (``Zeta23.CCM.UniversalSinc.originalDensityCandidate_nonneg, "Zeta23.CCM.UniversalSincSourceDensity"),
@@ -139,6 +148,15 @@ run_cmd do
     (``Zeta23.CCM.poleNeutralOdd_iff_exponentialMoments, "Zeta23.CCM.CanonicalPoleExponentialMoments"),
     (``Zeta23.CCM.poleNeutralCompressedIndexDefect_eq_projected_legal_add_residual,
       "Zeta23.CCM.CanonicalPoleNeutralIntertwining"),
+    (``Zeta23.CCM.poleOddProfile_dot_centeredZeroExtend, "Zeta23.CCM.CanonicalPoleNeutralNesting"),
+    (``Zeta23.CCM.canonicalPoleEvenFunctional_centeredZeroExtend, "Zeta23.CCM.CanonicalPoleNeutralNesting"),
+    (``Zeta23.CCM.canonicalPoleOddFunctional_centeredZeroExtend, "Zeta23.CCM.CanonicalPoleNeutralNesting"),
+    (``Zeta23.CCM.inner_canonicalSourceMatrix_euclideanCenteredZeroExtend, "Zeta23.CCM.CanonicalPoleNeutralNesting"),
+    (``Zeta23.CCM.inner_poleNeutralEvenCompressedCanonical_centeredZeroExtend, "Zeta23.CCM.CanonicalPoleNeutralNesting"),
+    (``Zeta23.CCM.inner_poleNeutralOddCompressedCanonical_centeredZeroExtend, "Zeta23.CCM.CanonicalPoleNeutralNesting"),
+    (``Zeta23.ExceptionalZero.squaredWeilFilteredFamily_even, "Zeta23.ExceptionalZero.UniversalSincCorrelationReal"),
+    (``Zeta23.ExceptionalZero.fixed_originalSincCorrelation_im_eq_zero, "Zeta23.ExceptionalZero.UniversalSincCorrelationReal"),
+    (``Zeta23.CCM.coe_poleNeutralIndexLinearMap_legal, "Zeta23.CCM.CanonicalPoleNeutralIntertwining"),
     (``Zeta23.CCM.poleNeutralCompressedIndexDefect_eq_cubicSource_add_residual,
       "Zeta23.CCM.CanonicalPoleNeutralIntertwining"),
     (``Zeta23.CCM.canonicalPoleEvenLegalNormal_ne_zero, "Zeta23.CCM.CanonicalPoleNeutralNormals"),
@@ -186,6 +204,31 @@ run_cmd do
     (``Zeta23.CCM.nativePositiveCompletionLogDensity_integrableOn, "Zeta23.CCM.NativePositiveCompletionMass"),
     (``Zeta23.CCM.nativePositiveCompletion_mass_eq_logIntegral, "Zeta23.CCM.NativePositiveCompletionMass"),
     (``Zeta23.CCM.nativePositiveCompletionLogDensity_cell_integral_le, "Zeta23.CCM.NativePositiveCompletionMass"),
+    (``Zeta23.CCM.nativePositiveCompletionLogDensity_cell_integral, "Zeta23.CCM.NativePositiveCompletionHead"),
+    (``Zeta23.CCM.nativePositiveCompletionLogDensity_head_integral, "Zeta23.CCM.NativePositiveCompletionHead"),
+    (``Zeta23.CCM.nativePositiveCompletionLogDensity_hasSum_tail_cells, "Zeta23.CCM.NativePositiveCompletionTail"),
+    (``Zeta23.CCM.nativePositiveCompletionLogDensity_tail_integral_le, "Zeta23.CCM.NativePositiveCompletionTail"),
+    (``Zeta23.CCM.nativePositiveCompletion_mass_lt_605_div_621, "Zeta23.CCM.NativePositiveCompletionCertificate"),
+    (``Zeta23.CCM.nativePositiveCompletion_integrable, "Zeta23.CCM.NativePositiveCompletionCertificate"),
+    (``Zeta23.CCM.nativePositiveCompletion_integral_norm_lt_605_div_621, "Zeta23.CCM.NativePositiveCompletionCertificate"),
+    (``Zeta23.CCM.poleNeutralEvenShiftedCanonical_coercive, "Zeta23.CCM.CanonicalPoleNeutralShiftedSecular"),
+    (``Zeta23.CCM.poleNeutralOddShiftedCanonical_coercive, "Zeta23.CCM.CanonicalPoleNeutralShiftedSecular"),
+    (``Zeta23.CCM.poleNeutral_even_eigen_shiftedRay_source_eq_one, "Zeta23.CCM.CanonicalPoleNeutralShiftedSecular"),
+    (``Zeta23.CCM.poleNeutral_even_shifted_det_quotient, "Zeta23.CCM.CanonicalPoleNeutralShiftedSecular"),
+    (``Zeta23.CCM.poleNeutral_adjoint_rankOne_identity, "Zeta23.CCM.CanonicalPoleNeutralShiftedSecular"),
+    (``Zeta23.CCM.poleNeutral_odd_eigen_adjoint_competitor_source_dichotomy, "Zeta23.CCM.CanonicalPoleNeutralShiftedSecular"),
+    (``Zeta23.CCM.poleNeutral_odd_eigen_adjointRay_pairing_eq_one, "Zeta23.CCM.CanonicalPoleNeutralShiftedSecular"),
+    (``Zeta23.CCM.poleNeutral_odd_adjoint_shifted_det_quotient, "Zeta23.CCM.CanonicalPoleNeutralShiftedSecular"),
+    (``Zeta23.CCM.exists_poleNeutral_strictEven_ground_shifted_normalization, "Zeta23.CCM.CanonicalPoleNeutralShiftedSecular"),
+    (``Zeta23.CCM.exists_poleNeutral_strictOdd_ground_adjoint_normalization, "Zeta23.CCM.CanonicalPoleNeutralShiftedSecular"),
+    (``Zeta23.CCM.poleNeutral_even_eigen_shifted_kernel_compatibility, "Zeta23.CCM.CanonicalPoleNeutralTiePackage"),
+    (``Zeta23.CCM.poleNeutralEvenEigen_index_eq_kernel_add_complement, "Zeta23.CCM.CanonicalPoleNeutralTiePackage"),
+    (``Zeta23.CCM.poleNeutral_even_eigen_complement_source_eq, "Zeta23.CCM.CanonicalPoleNeutralTiePackage"),
+    (``Zeta23.CCM.poleNeutral_tied_ground_singular_safe_package, "Zeta23.CCM.CanonicalPoleNeutralTiePackage"),
+    (``Zeta23.ExceptionalZero.riemannZeta_re_le_neg_div_one_sub, "Zeta23.ExceptionalZero.ZetaRealStripNonvanishing"),
+    (``Zeta23.ExceptionalZero.riemannZeta_ne_zero_of_real_critical_strip, "Zeta23.ExceptionalZero.ZetaRealStripNonvanishing"),
+    (``Zeta23.ExceptionalZero.zetaZeroCarrier_im_ne_zero, "Zeta23.ExceptionalZero.ZetaRealStripNonvanishing"),
+    (``Zeta23.ExceptionalZero.analyticAt_filteredResolvent_ofReal, "Zeta23.ExceptionalZero.ZetaRealStripNonvanishing"),
     (``Zeta23.CCM.nativeIntegerTranslateAction_primeField_eq_integerDriveField,
       "Zeta23.CCM.NativeIntegerPrimeConvolution"),
     (``Zeta23.CCM.nativePositiveCompletion_le_exp, "Zeta23.CCM.NativePositiveCompletion"),

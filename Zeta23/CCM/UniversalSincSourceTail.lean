@@ -70,6 +70,7 @@ theorem charFun_sourceSampleTailPartial (s x : ℝ) (N M : ℕ) :
     (fun n _ => (measurable_const.mul
       (continuous_unitClamp.measurable.comp (measurable_pi_apply (n + N)))).aemeasurable)
   have hpoint := congrFun hfactor x
+  simp only [Finset.prod_apply, Function.comp_def, Pi.mul_apply] at hpoint
   change charFun (sourceCoordinateLaw.map (sourceSampleTailPartial s N M)) x =
     ∏ n ∈ range M, charFun (sourceCoordinateLaw.map
       (fun ω : ℕ → ℝ => width s (n + N) * unitClamp (ω (n + N)))) x at hpoint
@@ -82,11 +83,20 @@ theorem charFun_sourceSampleTailPartial (s x : ℝ) (N M : ℕ) :
 private theorem tail_complex_norm_instances_eq :
     Complex.instNormedAddCommGroup.toNorm = Complex.instNorm := by rfl
 
+/-- Tail multipliability is proved by its own summable deviations. The
+complex factors may vanish on the real axis, so no multiplicative-group
+tail theorem or division by a prefix is used. -/
+theorem multipliable_sinc_tail {s : ℝ} (hs : 0 ≤ s) (N : ℕ) (z : ℂ) :
+    Multipliable (fun n : ℕ => sinc ((width s (n + N) : ℂ) * z)) := by
+  have hsum : Summable (fun n : ℕ => ‖sinc ((width s (n + N) : ℂ) * z) - 1‖) :=
+    (summable_nat_add_iff N).mpr (summable_norm_sinc_sub_one hs z)
+  simpa using multipliable_one_add_of_summable hsum
+
 /-- The actual tail-law characteristic function is the actual product tail. -/
 theorem charFun_originalSourceTailLaw {s : ℝ} (hs : 0 ≤ s) (N : ℕ) (x : ℝ) :
     charFun (originalSourceTailLaw s N) x =
       ∏' n : ℕ, sinc ((width s (n + N) : ℂ) * (x : ℂ)) := by
-  have hpartial M : charFun (sourceCoordinateLaw.map (sourceSampleTailPartial s N M)) x =
+  have hpartial (M : ℕ) : charFun (sourceCoordinateLaw.map (sourceSampleTailPartial s N M)) x =
       ∫ ω : ℕ → ℝ, Complex.exp (((x * sourceSampleTailPartial s N M ω : ℝ) : ℂ) * I)
         ∂sourceCoordinateLaw := by
     rw [charFun_apply_real, integral_map
@@ -123,8 +133,7 @@ theorem charFun_originalSourceTailLaw {s : ℝ} (hs : 0 ≤ s) (N : ℕ) (x : �
       ∏ n ∈ range M, sinc ((width s (n + N) : ℂ) * (x : ℂ))) atTop
       (𝓝 (charFun (originalSourceTailLaw s N) x)) := by
     simpa only [← hpartial, charFun_sourceSampleTailPartial, ← htail] using hlim
-  have hprod := ((multipliable_nat_add_iff N).mpr
-    (multipliable_sinc hs (x : ℂ))).hasProd.tendsto_prod_nat
+  have hprod := (multipliable_sinc_tail hs N (x : ℂ)).hasProd.tendsto_prod_nat
   exact tendsto_nhds_unique hcharlim hprod
 
 /-- Exact convolution splitting is proved by the actual law transforms,
@@ -140,10 +149,14 @@ theorem originalSourceLaw_eq_prefix_conv_tail {s : ℝ} (hs : 0 ≤ s) (N : ℕ)
   funext x
   rw [charFun_conv, charFun_originalSourceLaw hs, charFun_sourceSamplePartialSum,
     charFun_originalSourceTailLaw hs]
-  exact ((multipliable_sinc hs (x : ℂ)).prod_mul_tprod_nat_add N).symm
+  simpa only [partialProduct, product] using
+    (Multipliable.prod_mul_tprod_nat_mul'
+      (f := fun n : ℕ => sinc ((width s n : ℂ) * (x : ℂ))) (k := N)
+      (multipliable_sinc_tail hs N (x : ℂ))).symm
 
 end Zeta23.CCM.UniversalSinc
 
 #print axioms Zeta23.CCM.UniversalSinc.sourceSampleTail_abs_le
+#print axioms Zeta23.CCM.UniversalSinc.multipliable_sinc_tail
 #print axioms Zeta23.CCM.UniversalSinc.charFun_originalSourceTailLaw
 #print axioms Zeta23.CCM.UniversalSinc.originalSourceLaw_eq_prefix_conv_tail

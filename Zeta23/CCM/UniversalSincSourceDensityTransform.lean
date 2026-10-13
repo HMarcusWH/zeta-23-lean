@@ -162,7 +162,10 @@ theorem paperFT_originalDensityCandidate_ofReal {s : ℝ} (hs : 0 < s) (r : ℝ)
     ring
   rw [hphase, paperFT_originalBoxPairDensity_ofReal hs,
     charFun_originalSourceTailLaw hs.le]
-  exact (multipliable_sinc hs.le (r : ℂ)).prod_mul_tprod_nat_add 2
+  simpa only [partialProduct, product] using
+    (Multipliable.prod_mul_tprod_nat_mul'
+      (f := fun n : ℕ => sinc ((width s n : ℂ) * (r : ℂ))) (k := 2)
+      (multipliable_sinc_tail hs.le 2 (r : ℂ)))
 
 end Zeta23.CCM.UniversalSinc
 

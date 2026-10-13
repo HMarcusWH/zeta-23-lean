@@ -2230,4 +2230,105 @@
       ]
     }
   ]
+,
+  "late_completion_reviews": [
+    {
+      "schema": "post290.late-workflow-completion-review.v1",
+      "reviewed_at_utc": "2026-10-13T22:55:19Z",
+      "original_snapshot_utc": "2026-10-13T22:03:25.479754+00:00",
+      "original_snapshot_fields_preserved": true,
+      "source_path": ".github/workflows/rhrc_post287_numerical.yml",
+      "workflow_source_blob": "28d7da771673d5fd03b5e42434a74182c5a86803",
+      "classification": "RESEARCH_PRODUCING_CHECK",
+      "run_id": 38469971442,
+      "job_id": 115546219756,
+      "name": "wp2-k2-transcript",
+      "status": "completed",
+      "conclusion": "success",
+      "completed_at_utc": "2026-10-13T22:25:10Z",
+      "head": "6ae99364db66b2c66b1e0bde804f02733907647e",
+      "runner_checked_head": "86e60220a221eb16ce501598f34976c9aa9f6e02",
+      "runner_checked_tree": "3580d29354edccd9682a103beb753cfa9c9df9a6",
+      "scientific_disposition": "INTERVAL_EVIDENCE_FIXED_K2_EVEN_WINDOW",
+      "checker": {
+        "package": "WP2_CHECK_M51_COVER_NO_SEARCH",
+        "verdict": "PASS",
+        "intervals": 1310,
+        "precision_bits": 192,
+        "checked_at_utc": "2026-10-13T22:25:06.4391364Z",
+        "log_sha256": "8a853e42316976c9ff923413870e3ac6857d7359a6cb02ef63321b312c026531"
+      },
+      "artifact": {
+        "id": 11855031440,
+        "name": "post287-wp2-k2-complete-transcript",
+        "zip_sha256": "750db51dda0928cc2aa034021c366f7f6259da0cc9854a459908e47fcd0b79dc",
+        "manifest_sha256": "98f0f30617490ff23f04e1cc760e92df461c449cbfa629d01e481ef3f12d70e6"
+      },
+      "even_scope": {
+        "K": 2,
+        "parity": "even",
+        "domain": "[1/400, log16]",
+        "upper_endpoint_note": "Final rational endpoint exceeds log16 rigorously.",
+        "Q_layers": 15,
+        "intervals": 1310,
+        "unresolved": 0,
+        "producer_precision_bits": 128,
+        "checker_precision_bits": 192,
+        "prime_weights": "Lambda(p**j)=log(p)",
+        "arch_correction_count": 1
+      },
+      "odd_scope": {
+        "K": 2,
+        "parity": "odd",
+        "domain": "[1/512, log16]",
+        "Q_layers": 15,
+        "intervals": 350,
+        "unresolved": 0,
+        "producer_precision_bits": 128,
+        "checker_precision_bits": 192,
+        "artifact_id": 11851553987,
+        "zip_sha256": "7f2568f4afabfad76417c6a2b472df54e46f406f3c38d381f05ab79805cb1148",
+        "scientific_disposition": "INTERVAL_EVIDENCE_FIXED_K2_ODD_PREREQUISITE"
+      },
+      "previous_run_comparison": {
+        "head": "e2f86ed32cf9f81ba2bc796b5792f529ac90ec95",
+        "runner_checked_head": "7ac0bbf0e06f009bc832908e6e06ba78373a8d98",
+        "source_tree": "c60e00eeccdef60179060724d5540c84a37162a0",
+        "run_id": 38469388528,
+        "job_id": 115544192723,
+        "artifact_id": 11854045356,
+        "zip_sha256": "6508fd5aa16d804966b25bc89c67b5037f16f734a4027c2c6524160e136fbc77",
+        "all_15_even_cell_files_byte_identical": true,
+        "source_commit_stamps_preserved": true
+      },
+      "unverified_even_sliver": {
+        "domain": "[1/512,1/400]",
+        "status": "OPEN",
+        "reason": "This transcript starts at 1/400. The odd prerequisite does not verify the missing even-sector window; separate source-bound evidence is required."
+      },
+      "interpretation": {
+        "formal_theorem_authority": false,
+        "K3_D2_established": false,
+        "universal_all_K_positivity": false,
+        "RH": "OPEN",
+        "next_move": "Test or prove the source-bound even-sector sliver before claiming the larger two-parity K2 window; complete D2 with its separate exact-source 768-bit all-leaf checker."
+      },
+      "d2_observation": {
+        "observed_at_utc": "2026-10-13T22:54:27Z",
+        "run_id": 38461259594,
+        "producer_head": "4789c93f6dd60817936793935211522a0b8100e1",
+        "status": "in_progress",
+        "active_step": "Execute both preregistered SECOND passes",
+        "artifact_count": 0,
+        "candidate_assembly": "PENDING",
+        "whole_leaf_replay": "PENDING",
+        "nonpartial_final_gate": "PENDING",
+        "coverage_counts_unavailable": true,
+        "claim": "OPEN"
+      },
+      "claim_cap": "RH_OPEN",
+      "authority": "LATE_HISTORICAL_REVIEW_NOT_CURRENT_HEAD_RELEASE"
+    }
+  ]
+
 }

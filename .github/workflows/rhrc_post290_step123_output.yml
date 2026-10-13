@@ -41,51 +41,55 @@ jobs:
       - name: Compile each implemented component; full producer remains a separate gate
         shell: bash
         run: |
-          set +e
-          failed=0
-          for target in \
-            Zeta23.CCM.UniversalSincDetector \
-            Zeta23.CCM.UniversalSincDetectorBounds \
-            Zeta23.CCM.UniversalSincDetectorInverse \
-            Zeta23.CCM.UniversalSincSourceLaw \
-            Zeta23.CCM.UniversalSincSourceCharacteristic \
-            Zeta23.CCM.UniversalSincSourceTail \
-            Zeta23.CCM.UniversalSincBoxDensity \
-            Zeta23.CCM.UniversalSincSourceDensity \
-            Zeta23.CCM.UniversalSincSourceDensityTransform \
-            Zeta23.CCM.UniversalSincSourceDensityIdentification \
-            Zeta23.CCM.UniversalSincSourceComplexTransform \
-            Zeta23.CCM.UniversalSincSourceSymmetry \
-            Zeta23.CCM.UniversalSincSourceFacade \
-            Zeta23.CCM.OriginalSincNativeSource \
-            Zeta23.CCM.OriginalSincNativeMass \
-            Zeta23.ExceptionalZero.UniversalSincNativeSourceIdentification \
-            Zeta23.ExceptionalZero.UniversalSincPhysicalDetector \
-            Zeta23.ExceptionalZero.UniversalSincDetectorVisibility \
-            Zeta23.CCM.CanonicalPoleNeutralGeometry \
-            Zeta23.CCM.CanonicalPoleNeutralCarrier \
-            Zeta23.CCM.CanonicalPoleExponentialMoments \
-            Zeta23.CCM.CanonicalPoleNeutralIntertwining \
-            Zeta23.CCM.CanonicalPoleNeutralNormals \
-            Zeta23.CCM.CanonicalPoleNeutralCubicWitness \
-            Zeta23.CCM.CanonicalPoleNeutralSourceMoment \
-            Zeta23.CCM.CanonicalPoleNeutralIndexRigidity \
-            Zeta23.CCM.CanonicalPoleNeutralSimpleEvenTie \
-            Zeta23.CCM.CanonicalTrialResidualChannels \
-            Zeta23.CCM.NativeIntegerPrimeSource \
-            Zeta23.CCM.NativeIntegerPrimeField \
-            Zeta23.CCM.NativeIntegerPrimeConvolution \
-            Zeta23.CCM.NativePositiveCompletion \
-            Zeta23.CCM.NativePositiveCompletionCells \
-            Zeta23.CCM.NativePositiveCompletionMass \
-            Zeta23.CCM.NativeFloorCompletionSource \
-            Zeta23.CCM.NativeRationalCompletionLaplace \
+          set -euo pipefail
+          targets=(
+            Zeta23.CCM.UniversalSincDetector
+            Zeta23.CCM.UniversalSincDetectorBounds
+            Zeta23.CCM.UniversalSincDetectorInverse
+            Zeta23.CCM.UniversalSincSourceLaw
+            Zeta23.CCM.UniversalSincSourceCharacteristic
+            Zeta23.CCM.UniversalSincSourceTail
+            Zeta23.CCM.UniversalSincBoxDensity
+            Zeta23.CCM.UniversalSincSourceDensity
+            Zeta23.CCM.UniversalSincSourceDensityTransform
+            Zeta23.CCM.UniversalSincSourceDensityIdentification
+            Zeta23.CCM.UniversalSincSourceComplexTransform
+            Zeta23.CCM.UniversalSincSourceSymmetry
+            Zeta23.CCM.UniversalSincSourceFacade
+            Zeta23.CCM.OriginalSincNativeSource
+            Zeta23.CCM.OriginalSincNativeMass
+            Zeta23.ExceptionalZero.UniversalSincNativeSourceIdentification
+            Zeta23.ExceptionalZero.UniversalSincPhysicalDetector
+            Zeta23.ExceptionalZero.UniversalSincDetectorVisibility
+            Zeta23.ExceptionalZero.ZetaRealStripNonvanishing
+            Zeta23.ExceptionalZero.UniversalSincCorrelationReal
+            Zeta23.CCM.CanonicalPoleNeutralGeometry
+            Zeta23.CCM.CanonicalPoleNeutralCarrier
+            Zeta23.CCM.CanonicalPoleNeutralNesting
+            Zeta23.CCM.CanonicalPoleExponentialMoments
+            Zeta23.CCM.CanonicalPoleNeutralIntertwining
+            Zeta23.CCM.CanonicalPoleNeutralNormals
+            Zeta23.CCM.CanonicalPoleNeutralCubicWitness
+            Zeta23.CCM.CanonicalPoleNeutralSourceMoment
+            Zeta23.CCM.CanonicalPoleNeutralIndexRigidity
+            Zeta23.CCM.CanonicalPoleNeutralSimpleEvenTie
+            Zeta23.CCM.CanonicalPoleNeutralShiftedSecular
+            Zeta23.CCM.CanonicalPoleNeutralTiePackage
+            Zeta23.CCM.CanonicalTrialResidualChannels
+            Zeta23.CCM.NativeIntegerPrimeSource
+            Zeta23.CCM.NativeIntegerPrimeField
+            Zeta23.CCM.NativeIntegerPrimeConvolution
+            Zeta23.CCM.NativePositiveCompletion
+            Zeta23.CCM.NativePositiveCompletionCells
+            Zeta23.CCM.NativePositiveCompletionMass
+            Zeta23.CCM.NativePositiveCompletionHead
+            Zeta23.CCM.NativePositiveCompletionTail
+            Zeta23.CCM.NativePositiveCompletionCertificate
+            Zeta23.CCM.NativeFloorCompletionSource
+            Zeta23.CCM.NativeRationalCompletionLaplace
             Zeta23.CCM.Step123PrimeSeam
-          do
-            lake build "$target" 2>&1 | tee -a /tmp/post290-compiler.txt
-            if [ "${PIPESTATUS[0]}" -ne 0 ]; then failed=1; fi
-          done
-          exit "$failed"
+          )
+          lake build "${targets[@]}" 2>&1 | tee -a /tmp/post290-compiler.txt
       - name: Reject proof escapes
         run: python research/RHRC/closure_batch/check_lean_proof_escapes.py --scope promoted
       - name: Exact component types and admitted axioms through existing compiler resolver

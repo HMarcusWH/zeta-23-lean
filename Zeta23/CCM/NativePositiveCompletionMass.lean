@@ -22,8 +22,8 @@ theorem nativePositiveCompletionLogDensity_integrableOn :
   have h := (integrableOn_comp_log_Ioi nativePositiveCompletion
     (a := (1 : ℝ)) (by norm_num)).mpr (by
       simpa only [Real.log_one] using nativePositiveCompletion_integrableOn)
-  simpa only [nativePositiveCompletionLogDensity, smul_eq_mul,
-    div_eq_mul_inv, mul_comm] using h
+  change IntegrableOn (fun u : ℝ => nativePositiveCompletion (Real.log u) / u) (Ioi 1)
+  simpa only [smul_eq_mul, div_eq_mul_inv, mul_comm] using h
 
 theorem nativePositiveCompletion_mass_eq_logIntegral :
     (∫ t : ℝ in Ioi 0, nativePositiveCompletion t) =

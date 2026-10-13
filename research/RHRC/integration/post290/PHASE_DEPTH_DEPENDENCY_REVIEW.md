@@ -14,6 +14,17 @@ search found no ready Laplace-abscissa/Pringsheim module to supply that whole
 argument. A proof must port its positive Taylor/moment step and its actual
 native correlation continuation, or establish the same conclusion directly.
 
+LEAD: the required quantified conclusion can use a smaller per-zero
+abscissa argument. A single actual reflected right zero with displacement
+d>beta forces the nonnegative tail's convergence boundary at or to its
+right. A boundary-singularity theorem then contradicts the resolvent's
+regularity at that positive real boundary. This avoids needing a rightmost
+zero, an attained supremum, or equality of the abscissa with the supremal
+displacement. New real-strip nonvanishing and actual correlation-realness
+candidates address two prerequisites; they remain uncompiled. In the
+repository's aperture variable a, physical translation is t=2a and the
+target is exp(2*beta*a), not exp(beta*a).
+
 An upstream simplification is available in the later energy conversion.
 For disjoint lobes with squared norm `2n>0`, the exact normalized phase
 energies are `(C(0)+C(t))/n` and `(C(0)-C(t))/n`. To force energy below

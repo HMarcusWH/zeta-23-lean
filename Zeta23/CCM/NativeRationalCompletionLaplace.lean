@@ -65,7 +65,9 @@ theorem nativeRationalCausalKernel_realLaplace {σ : ℝ} (hσ : -1 / 2 < σ) :
   have hden1 : σ + 1 / 2 ≠ 0 := ne_of_gt (by linarith)
   have hden2 : σ + 3 / 2 ≠ 0 := ne_of_gt (by linarith)
   simp only [mul_zero, Real.exp_zero]
-  field_simp [hden1, hden2]
+  simp only [neg_div_neg_eq]
+  rw [← neg_div, mul_one_div, div_add_div _ _ hden1 hden2]
+  congr 1
   ring
 
 /-- The pre-integer-action kernel has negative signed mass. -/
