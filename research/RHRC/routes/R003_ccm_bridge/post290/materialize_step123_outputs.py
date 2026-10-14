@@ -51,6 +51,30 @@ def write(path, data):
     path.write_text(json.dumps(data, indent=2, sort_keys=True) + "\n", encoding="utf-8", newline="\n")
 
 
+def write_jsonl(path, rows):
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("w", encoding="utf-8", newline="\n") as stream:
+        for row in rows:
+            stream.write(json.dumps(row, sort_keys=True) + "\n")
+
+
+def harvest_markdown(harvest):
+    lines = ["# PR292 — exact-tree workflow harvest", "",
+             "Claim cap: RH OPEN. A successful job must be reviewed for its actual research disposition.", ""]
+    jobs = harvest.get("jobs", [])
+    for job in jobs:
+        lines.append("- " + str(job.get("workflow", "UNKNOWN")) + " / " +
+                     str(job.get("name", job.get("job", "UNKNOWN"))) +
+                     ": status=" + str(job.get("status", "UNKNOWN")) +
+                     ", conclusion=" + str(job.get("conclusion", "UNKNOWN")) +
+                     ", classification=" + str(job.get("classification", "NOT_REVIEWED")) +
+                     ", output_reviewed=" + str(job.get("output_reviewed", False)) +
+                     ", scientific_acceptance=" + str(job.get("scientific_acceptance", False)))
+    if not jobs:
+        lines.append("No reviewable jobs supplied. Acceptance OPEN.")
+    return "\n".join(lines) + "\n"
+
+
 def source_bindings(formal, head, tree):
     if formal.get("head") != head or formal.get("source_tree") != tree:
         raise ValueError("compiler receipt is for another source head or tree")
@@ -189,6 +213,18 @@ def materialize(inputs, outdir, semantic=None):
     write(outdir / "STEP123_FORMAL_OUTPUT.json", packet)
     write(outdir / "SOURCE_LINEAGE.json", lineage)
     write(outdir / "NATIVE_OBSERVATIONS.json", panel)
+    observation_rows = [
+        dict(row,
+             aperture=pair.get("aperture"),
+             K=pair.get("K"),
+             source_id=FIXED_SOURCE,
+             source_identity=panel["source_identity"],
+             origin="NATIVE_PARAMETER_EVALUATION",
+             resolution="CERTIFIED_INTERVAL" if row.get("status") == "EVALUATED_NATIVE_PROBE" else "UNRESOLVED",
+             mathematical_scope="FINITE_FIXED_PROBE_NOT_HYPOTHETICAL_ZERO_DETECTOR")
+        for pair in panel.get("pairs", []) for row in pair.get("rows", [])
+    ]
+    write_jsonl(outdir / "NATIVE_OBSERVATIONS.jsonl", observation_rows)
     residuals = [{"aperture": p.get("aperture"), "K": p.get("K"),
                   "rows": [{"carrier": row.get("carrier"), "status": row.get("status"),
                             "residual_norm_sq": row.get("residual_norm_sq"),
@@ -203,11 +239,20 @@ def materialize(inputs, outdir, semantic=None):
         "claim_cap": "RH_OPEN", "source_identity": panel["source_identity"],
         "scope": "finite native probes only; not original zero-generated detector",
         "pairs": residuals})
+    write_jsonl(outdir / "RESIDUAL_CHANNELS.jsonl", [
+        dict(row, aperture=pair.get("aperture"), K=pair.get("K"),
+             source_id=FIXED_SOURCE,
+             origin="NATIVE_PARAMETER_EVALUATION",
+             mathematical_scope="FINITE_POINT_GRAM_ONLY")
+        for pair in residuals for row in pair.get("rows", [])
+    ])
     write(outdir / "CONSTRAINTS.json", comparison)
     write(outdir / "COUNTERMODEL_SURVIVAL.json", survival)
     write(outdir / "D2_CONTINUUM_RECEIPT.json", d2)
     write(outdir / "STEP4_CUTS.json", cuts)
     write(outdir / "WORKFLOW_HARVEST.json", harvest)
+    (outdir / "WORKFLOW_HARVEST.md").write_text(
+        harvest_markdown(harvest), encoding="utf-8")
     write(outdir / "FORMAL_BINDINGS.json", formal)
     write(outdir / "ASSUMPTION_AUDIT.json", {
         "schema": "post290.assumption-audit-output.v1",

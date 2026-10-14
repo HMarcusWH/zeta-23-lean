@@ -47,6 +47,7 @@ jobs:
             Zeta23.CCM.NativeWeilResponseBounds
             Zeta23.CCM.NativeWeilResponse
             Zeta23.CCM.OriginalDetectorNativeForcing
+            Zeta23.CCM.OriginalDetectorCompactDuality
             Zeta23.CCM.OriginalDetectorForcingError
             Zeta23.CCM.OriginalDetectorFourPrimeHistories
             Zeta23.CCM.NativeOriginalExteriorHistory
@@ -315,6 +316,9 @@ jobs:
           python research/RHRC/routes/R003_ccm_bridge/post290/test_k3_seams.py
           python research/RHRC/routes/R003_ccm_bridge/post290/test_native_divisor_controls.py
           python research/RHRC/routes/R003_ccm_bridge/post290/test_native_mass_candidate.py
+          python -m py_compile research/RHRC/routes/R003_ccm_bridge/post290/compare_representations.py research/RHRC/routes/R003_ccm_bridge/post290/countermodel_survival.py research/RHRC/routes/R003_ccm_bridge/post290/build_step4_handoff.py research/RHRC/routes/R003_ccm_bridge/post290/materialize_step123_outputs.py
+          python research/RHRC/routes/R003_ccm_bridge/post290/test_step123_research_artifacts.py
+          python -O research/RHRC/routes/R003_ccm_bridge/post290/test_step123_research_artifacts.py
           python research/RHRC/routes/R003_ccm_bridge/post290/test_output_mutations.py
           python -O research/RHRC/routes/R003_ccm_bridge/post290/test_output_mutations.py
           python research/RHRC/routes/R003_ccm_bridge/post290/test_formal_receipt.py

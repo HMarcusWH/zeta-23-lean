@@ -1,0 +1,209 @@
+name: PR292 complete-output release candidate (manual)
+
+# An evidence-consolidation/release check, never a search dispatcher.
+# All inputs must be prior independently generated artifacts, with the
+# exact source head/tree verified again at this checkout.
+on:
+  workflow_dispatch:
+    inputs:
+      component_run_id:
+        description: "Exact-head post290 component compiler run ID"
+        required: true
+        type: string
+      native_run_id:
+        description: "Exact-head frozen 44-pair native panel run ID"
+        required: true
+        type: string
+      d2_run_id:
+        description: "Approved D2 final verifier run ID (not a search trigger)"
+        required: true
+        type: string
+      d2_artifact_name:
+        description: "Exact D2_CONTINUUM_RECEIPT.json artifact name"
+        required: true
+        type: string
+      review_run_id:
+        description: "External independent 44-field semantic-review run ID"
+        required: true
+        type: string
+      review_artifact_name:
+        description: "Independent review artifact name"
+        required: true
+        type: string
+      harvest_run_id:
+        description: "Exact-tree reviewed every-job harvest run ID"
+        required: true
+        type: string
+      harvest_artifact_name:
+        description: "Reviewed workflow harvest artifact name"
+        required: true
+        type: string
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: pr292-complete-release-${{ github.ref }}
+  cancel-in-progress: false
+
+env:
+  OPENBLAS_NUM_THREADS: '1'
+  OMP_NUM_THREADS: '1'
+
+jobs:
+  complete-output:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Install exact existing project test dependencies
+        run: python -m pip install -r research/RHRC/routes/R003_ccm_bridge/requirements.txt
+      - uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-mathlib-cache: true
+      - name: Verify checked head and reject dirty source
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "${{ github.sha }}"
+          test -z "$(git status --porcelain --untracked-files=all -- '*.lean' lean-toolchain lake-manifest.json lakefile.lean lakefile.toml)"
+      - name: Check the EXISTING generated state before ANY producer writes
+        run: python research/RHRC/tools/materialize_derived_state.py --check
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: ${{ inputs.component_run_id }}
+          name: post290-compiler-${{ github.sha }}
+          github-token: ${{ github.token }}
+          path: /tmp/post292-component
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: ${{ inputs.native_run_id }}
+          name: post290-native-observations-${{ github.sha }}
+          github-token: ${{ github.token }}
+          path: /tmp/post292-native
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: ${{ inputs.d2_run_id }}
+          name: ${{ inputs.d2_artifact_name }}
+          github-token: ${{ github.token }}
+          path: /tmp/post292-d2
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: ${{ inputs.review_run_id }}
+          name: ${{ inputs.review_artifact_name }}
+          github-token: ${{ github.token }}
+          path: /tmp/post292-review
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: ${{ inputs.harvest_run_id }}
+          name: ${{ inputs.harvest_artifact_name }}
+          github-token: ${{ github.token }}
+          path: /tmp/post292-harvest
+      - name: Require actual named evidence inputs and pinned source context
+        shell: bash
+        run: |
+          set -euo pipefail
+          for item in /tmp/post292-component/post290-bindings.txt \
+                      /tmp/post292-native/native_panel.json \
+                      /tmp/post292-native/native_panel_check.json \
+                      /tmp/post292-d2/D2_CONTINUUM_RECEIPT.json \
+                      /tmp/post292-review/INDEPENDENT_SEMANTIC_REVIEW.json \
+                      /tmp/post292-harvest/WORKFLOW_HARVEST.json; do
+            test -s "$item" || { echo "::error::Missing actual evidence: $item"; exit 1; }
+          done
+          python - <<'PY'
+          import json, subprocess
+          from pathlib import Path
+          head=subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip()
+          tree=subprocess.check_output(['git','rev-parse','HEAD^{tree}'],text=True).strip()
+          panel=json.loads(Path('/tmp/post292-native/native_panel.json').read_text())
+          identity=panel['source_identity']
+          if identity.get('commit') != head or identity.get('tree') != tree:
+              raise SystemExit('native 44-pair panel is from another source checkout')
+          review=json.loads(Path('/tmp/post292-review/INDEPENDENT_SEMANTIC_REVIEW.json').read_text())
+          if review.get('reviewed_head')!=head or review.get('reviewed_tree')!=tree:
+              raise SystemExit('independent 44-field review is stale')
+          PY
+      - name: Compile complete audit roots and check admissible Lean axioms
+        shell: bash
+        run: |
+          set -euo pipefail
+          export POST290_CHECKED_HEAD="$(git rev-parse HEAD)"
+          export POST290_CHECKED_TREE="$(git rev-parse HEAD^{tree})"
+          lake build Zeta23.RHRC.Step123OutputBindings
+          lake env lean Zeta23/RHRC/Step123OutputBindings.lean | tee /tmp/post292-live-bindings.txt
+          python research/RHRC/closure_batch/check_lean_proof_escapes.py --scope promoted
+          python research/RHRC/routes/R003_ccm_bridge/post290/build_formal_receipt.py \
+            --log /tmp/post292-live-bindings.txt \
+            --mode complete-output \
+            --independent-review /tmp/post292-review/INDEPENDENT_SEMANTIC_REVIEW.json \
+            --out /tmp/post292-complete-formal.json
+      - name: Verify source, native panel and source-faithful countermodel space
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/post292-checks
+          python research/RHRC/routes/R003_ccm_bridge/post290/source_lineage_check.py \
+            --out /tmp/post292-checks/SOURCE_LINEAGE.json
+          python research/RHRC/routes/R003_ccm_bridge/post290/compare_representations.py \
+            --panel /tmp/post292-native/native_panel.json \
+            --checker /tmp/post292-native/native_panel_check.json \
+            --out /tmp/post292-checks/CONSTRAINTS.json
+          python research/RHRC/routes/R003_ccm_bridge/post290/countermodel_survival.py \
+            --comparison /tmp/post292-checks/CONSTRAINTS.json \
+            --cuts research/RHRC/integration/post290/STEP4_CUTS.json \
+            --formal /tmp/post292-complete-formal.json \
+            --d2 /tmp/post292-d2/D2_CONTINUUM_RECEIPT.json \
+            --out /tmp/post292-checks/COUNTERMODEL_SURVIVAL.json
+      - name: Materialize actual source-bound evidence, never fake zeros
+        shell: bash
+        run: |
+          set -euo pipefail
+          python research/RHRC/routes/R003_ccm_bridge/post290/materialize_step123_outputs.py \
+            --formal /tmp/post292-complete-formal.json \
+            --lineage /tmp/post292-checks/SOURCE_LINEAGE.json \
+            --panel /tmp/post292-native/native_panel.json \
+            --checker /tmp/post292-native/native_panel_check.json \
+            --comparison /tmp/post292-checks/CONSTRAINTS.json \
+            --survival /tmp/post292-checks/COUNTERMODEL_SURVIVAL.json \
+            --d2 /tmp/post292-d2/D2_CONTINUUM_RECEIPT.json \
+            --harvest /tmp/post292-harvest/WORKFLOW_HARVEST.json \
+            --cuts research/RHRC/integration/post290/STEP4_CUTS.json \
+            --semantic-review /tmp/post292-review/INDEPENDENT_SEMANTIC_REVIEW.json \
+            --out-dir /tmp/post292-complete-outputs
+      - name: Strict original scope, verified D2, all jobs and complete producer
+        shell: bash
+        run: |
+          set -euo pipefail
+          python research/RHRC/routes/R003_ccm_bridge/post290/output_contract_check.py \
+            --manifest research/RHRC/integration/post290/BUILD_MANIFEST.json \
+            --formal /tmp/post292-complete-formal.json \
+            --d2 /tmp/post292-d2/D2_CONTINUUM_RECEIPT.json \
+            --harvest /tmp/post292-harvest/WORKFLOW_HARVEST.json \
+            --out /tmp/post292-complete-outputs/RELEASE_STATUS.json
+          python research/RHRC/tools/materialize_derived_state.py --check
+      - uses: actions/upload-artifact@v4
+        if: success()
+        with:
+          name: pr292-complete-output-source-reviewed-${{ github.sha }}
+          path: /tmp/post292-complete-outputs/
+          if-no-files-found: error
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: pr292-release-incomplete-debug-only-${{ github.sha }}
+          path: |
+            /tmp/post292-live-bindings.txt
+            /tmp/post292-checks/
+            /tmp/post292-complete-outputs/
+          if-no-files-found: ignore
