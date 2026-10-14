@@ -278,6 +278,13 @@ jobs:
           lake build Zeta23.RHRC.Step123OutputBindings
           lake env lean Zeta23/RHRC/Step123OutputBindings.lean | tee /tmp/post290-bindings.txt
           python research/RHRC/routes/R003_ccm_bridge/post290/build_formal_receipt.py --log /tmp/post290-bindings.txt --out /tmp/STEP123_FORMAL_OUTPUT.json
+      - name: Build UNAPPROVED 44-field semantic-review dossier from exact compiler roots
+        shell: bash
+        run: |
+          set -euo pipefail
+          python research/RHRC/routes/R003_ccm_bridge/post290/prepare_field_review_package.py \
+            --formal /tmp/STEP123_FORMAL_OUTPUT.json \
+            --out-dir /tmp/post290-field-review
       - uses: actions/cache/save@v4
         if: always()
         with:
@@ -291,6 +298,13 @@ jobs:
             /tmp/post290-compiler.txt
             /tmp/post290-bindings.txt
             /tmp/STEP123_FORMAL_OUTPUT.json
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: post290-unapproved-field-review-${{ github.sha }}
+          path: /tmp/post290-field-review/
+          if-no-files-found: ignore
 
   exact-controls:
     runs-on: ubuntu-latest
@@ -318,7 +332,7 @@ jobs:
           python research/RHRC/routes/R003_ccm_bridge/post290/test_k3_seams.py
           python research/RHRC/routes/R003_ccm_bridge/post290/test_native_divisor_controls.py
           python research/RHRC/routes/R003_ccm_bridge/post290/test_native_mass_candidate.py
-          python -m py_compile research/RHRC/routes/R003_ccm_bridge/post290/compare_representations.py research/RHRC/routes/R003_ccm_bridge/post290/countermodel_survival.py research/RHRC/routes/R003_ccm_bridge/post290/build_step4_handoff.py research/RHRC/routes/R003_ccm_bridge/post290/materialize_step123_outputs.py
+          python -m py_compile research/RHRC/routes/R003_ccm_bridge/post290/compare_representations.py research/RHRC/routes/R003_ccm_bridge/post290/countermodel_survival.py research/RHRC/routes/R003_ccm_bridge/post290/build_step4_handoff.py research/RHRC/routes/R003_ccm_bridge/post290/materialize_step123_outputs.py research/RHRC/routes/R003_ccm_bridge/post290/prepare_field_review_package.py
           python research/RHRC/routes/R003_ccm_bridge/post290/test_step123_research_artifacts.py
           python -O research/RHRC/routes/R003_ccm_bridge/post290/test_step123_research_artifacts.py
           python research/RHRC/routes/R003_ccm_bridge/post290/test_output_mutations.py
