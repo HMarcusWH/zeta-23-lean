@@ -12,6 +12,16 @@ from lean_imports import strip_lean_comments
 
 
 CLOSURE_ROOTS = [
+    Path("Zeta23/ExceptionalZero/UniversalSincSignedExcursions.lean"),
+    Path("Zeta23/CCM/NativeDampedCompletionPrerequisites.lean"),
+    Path("Zeta23/CCM/OriginalDetectorWindowBounds.lean"),
+    Path("Zeta23/CCM/OriginalDetectorDividedLobeBounds.lean"),
+    Path("Zeta23/CCM/OriginalSincDriveCancellation.lean"),
+    Path("Zeta23/CCM/OriginalSincDriveDerivative.lean"),
+    Path("Zeta23/CCM/PoleNeutralCompactInverseL2Bound.lean"),
+    Path("Zeta23/ExceptionalZero/UniversalSincInitialLaplace.lean"),
+    Path("Zeta23/ExceptionalZero/UniversalSincSignedTailTransform.lean"),
+    Path("Zeta23/ExceptionalZero/UniversalSincSignedPoleBound.lean"),
     Path("Zeta23/CCM/DetectorRetainedSchurState.lean"),
     Path("Zeta23/ExceptionalZero/PositiveLaplaceAnalytic.lean"),
     Path("Zeta23/CCM/IsometricDetectorSchur.lean"),

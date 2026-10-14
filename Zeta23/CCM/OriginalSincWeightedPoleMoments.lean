@@ -144,10 +144,12 @@ theorem universalSincSecondKernel_first_elementary_moments {s : ℝ} (hs : 0 < s
       nativePoleFirstMoment (-1 / 2) (universalSincSecondKernel s) = 0 := by
   have hq : ContDiff ℝ 2 (UniversalSinc.originalDensityComplex s) := by
     rw [← UniversalSinc.inverseCandidate_eq_originalDensityComplex hs]
-    exact (UniversalSinc.contDiff_inverseCandidate hs).of_le (by norm_num)
+    exact (UniversalSinc.contDiff_inverseCandidate hs).of_le
+      (ENat.natCast_le_of_coe_top_le_withTop le_rfl 2)
   have hqc := UniversalSinc.originalDensityComplex_hasCompactSupport hs
   have hk : ContDiff ℝ 2 (universalSincKernel s) :=
-    (universalSincKernel_contDiff hs).of_le (by norm_num)
+    (universalSincKernel_contDiff hs).of_le
+      (ENat.natCast_le_of_coe_top_le_withTop le_rfl 2)
   have hkc := universalSincKernel_hasCompactSupport hs
   have hmoment (r : ℝ) :
       nativePoleMoment r (universalSincKernel s) =

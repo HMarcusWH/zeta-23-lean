@@ -1,4 +1,14 @@
 import Zeta23.CCM.UniversalSincDetector
+import Zeta23.ExceptionalZero.UniversalSincSignedExcursions
+import Zeta23.CCM.NativeDampedCompletionPrerequisites
+import Zeta23.CCM.OriginalDetectorWindowBounds
+import Zeta23.CCM.OriginalDetectorDividedLobeBounds
+import Zeta23.CCM.OriginalSincDriveCancellation
+import Zeta23.CCM.OriginalSincDriveDerivative
+import Zeta23.CCM.PoleNeutralCompactInverseL2Bound
+import Zeta23.ExceptionalZero.UniversalSincInitialLaplace
+import Zeta23.ExceptionalZero.UniversalSincSignedTailTransform
+import Zeta23.ExceptionalZero.UniversalSincSignedPoleBound
 import Zeta23.CCM.IsometricDetectorSchur
 import Zeta23.CCM.IsometricGroundSchur
 import Zeta23.CCM.NativeDetectorSchur
@@ -403,7 +413,55 @@ run_cmd do
     (``Zeta23.CCM.exists_detectorRetainedSchurState_of_original_native_trial, "Zeta23.CCM.DetectorRetainedSchurState"),
     (``Zeta23.CCM.originalDetector_schur_loss_lower, "Zeta23.CCM.DetectorRetainedSchurState"),
     (``Zeta23.CCM.originalDetector_schur_completion, "Zeta23.CCM.DetectorRetainedSchurState"),
-    (``Zeta23.CCM.selectedGround_shiftedSchur_eq, "Zeta23.CCM.DetectorRetainedSchurState")]
+    (``Zeta23.CCM.selectedGround_shiftedSchur_eq, "Zeta23.CCM.DetectorRetainedSchurState"),
+    (``Zeta23.CCM.originalDetectorWindow_sin_lower_half_collar, "Zeta23.CCM.OriginalDetectorWindowBounds"),
+    (``Zeta23.CCM.originalDetectorWindow_complex_sin_lower, "Zeta23.CCM.OriginalDetectorWindowBounds"),
+    (``Zeta23.CCM.originalDetectorWindowReciprocal_norm_le, "Zeta23.CCM.OriginalDetectorWindowBounds"),
+    (``Zeta23.CCM.originalDetectorWindowReciprocal_iteratedDeriv_le, "Zeta23.CCM.OriginalDetectorWindowBounds"),
+    (``Zeta23.CCM.originalDetectorWindowReciprocal_real_iteratedDeriv_eq, "Zeta23.CCM.OriginalDetectorWindowBounds"),
+    (``Zeta23.CCM.originalDetectorWindowReciprocal_real_contDiffAt, "Zeta23.CCM.OriginalDetectorWindowBounds"),
+    (``Zeta23.CCM.originalDetectorWindowReciprocal_real_iteratedDeriv_le, "Zeta23.CCM.OriginalDetectorWindowBounds"),
+    (``Zeta23.CCM.originalDetectorDividedLobe_support, "Zeta23.CCM.OriginalDetectorDividedLobeBounds"),
+    (``Zeta23.CCM.originalDetectorDividedLobe_contDiff, "Zeta23.CCM.OriginalDetectorDividedLobeBounds"),
+    (``Zeta23.CCM.originalDetectorDividedLobe_iteratedDeriv_le_gevrey, "Zeta23.CCM.OriginalDetectorDividedLobeBounds"),
+    (``Zeta23.CCM.originalDetectorDividedLobe_endpoint_jets, "Zeta23.CCM.OriginalDetectorDividedLobeBounds"),
+    (``Zeta23.CCM.nativeOriginalLogDriveSummand_integral_eq_exponential, "Zeta23.CCM.OriginalSincDriveCancellation"),
+    (``Zeta23.CCM.nativeOriginalLogDriveSummand_integral_zero, "Zeta23.CCM.OriginalSincDriveCancellation"),
+    (``Zeta23.CCM.nativeOriginalLogDriveSummand_continuum_zero, "Zeta23.CCM.OriginalSincDriveCancellation"),
+    (``Zeta23.CCM.nativeOriginalIntegerDrive_abs_le_summand_derivative, "Zeta23.CCM.OriginalSincDriveCancellation"),
+    (``Zeta23.CCM.nativeOriginalLogDriveSummand_hasDerivAt, "Zeta23.CCM.OriginalSincDriveDerivative"),
+    (``Zeta23.CCM.nativeOriginalLogDriveSummand_deriv, "Zeta23.CCM.OriginalSincDriveDerivative"),
+    (``Zeta23.CCM.nativeOriginalLogDriveSummand_deriv_exp, "Zeta23.CCM.OriginalSincDriveDerivative"),
+    (``Zeta23.CCM.nativePoleCompactInverse_memLp_two, "Zeta23.CCM.PoleNeutralCompactInverseL2Bound"),
+    (``Zeta23.CCM.nativePoleCompactInverseDerivative_memLp_two, "Zeta23.CCM.PoleNeutralCompactInverseL2Bound"),
+    (``Zeta23.CCM.nativePoleCompactInverse_energy_identity, "Zeta23.CCM.PoleNeutralCompactInverseL2Bound"),
+    (``Zeta23.CCM.nativePoleCompactInverse_l2_norm_le_four, "Zeta23.CCM.PoleNeutralCompactInverseL2Bound"),
+    (``Zeta23.CCM.originalSincCompactPotential_l2_norm_le_four, "Zeta23.CCM.PoleNeutralCompactInverseL2Bound"),
+    (``Zeta23.CCM.fixedOriginalSincCompactPotential_l2_norm_le_four, "Zeta23.CCM.PoleNeutralCompactInverseL2Bound"),
+    (``Zeta23.ExceptionalZero.analyticAt_signedLaplaceTransform_of_all_integrable, "Zeta23.ExceptionalZero.UniversalSincInitialLaplace"),
+    (``Zeta23.ExceptionalZero.integrable_fixedOriginalSincInitialSource_weight, "Zeta23.ExceptionalZero.UniversalSincInitialLaplace"),
+    (``Zeta23.ExceptionalZero.positiveLaplaceTransform_fixedOriginalSincInitialSource, "Zeta23.ExceptionalZero.UniversalSincInitialLaplace"),
+    (``Zeta23.ExceptionalZero.analyticAt_fixedOriginalSincInitialLaplace, "Zeta23.ExceptionalZero.UniversalSincInitialLaplace"),
+    (``Zeta23.ExceptionalZero.integrable_complexLaplaceKernel_iff_real_weight, "Zeta23.ExceptionalZero.UniversalSincSignedTailTransform"),
+    (``Zeta23.ExceptionalZero.integral_fixedOriginalSincCorrelation_tail, "Zeta23.ExceptionalZero.UniversalSincSignedTailTransform"),
+    (``Zeta23.ExceptionalZero.positiveLaplaceTransform_fixedOriginalSincSignedTail_safe, "Zeta23.ExceptionalZero.UniversalSincSignedTailTransform"),
+    (``Zeta23.ExceptionalZero.meromorphicAt_fixedOriginalSincTailRegularPart, "Zeta23.ExceptionalZero.UniversalSincSignedPoleBound"),
+    (``Zeta23.ExceptionalZero.analyticAt_fixedOriginalSincTailRegularPart, "Zeta23.ExceptionalZero.UniversalSincSignedPoleBound"),
+    (``Zeta23.ExceptionalZero.meromorphicAt_fixedOriginalSincTailContinuation, "Zeta23.ExceptionalZero.UniversalSincSignedPoleBound"),
+    (``Zeta23.ExceptionalZero.positiveLaplaceTransform_fixedOriginalSincSignedTail_eq_continuation_safe, "Zeta23.ExceptionalZero.UniversalSincSignedPoleBound"),
+    (``Zeta23.ExceptionalZero.analyticAt_fixedOriginalSincSignedTailLaplace_of_integrable, "Zeta23.ExceptionalZero.UniversalSincSignedPoleBound"),
+    (``Zeta23.ExceptionalZero.fixedOriginalSincSignedTail_domain_lower_bound, "Zeta23.ExceptionalZero.UniversalSincSignedPoleBound"),
+    (``Zeta23.ExceptionalZero.fixedOriginalSincSignedTail_domain_bddBelow, "Zeta23.ExceptionalZero.UniversalSincSignedPoleBound"),
+    (``Zeta23.ExceptionalZero.fixedOriginalSincSignedTail_abscissa_lower_bound, "Zeta23.ExceptionalZero.UniversalSincSignedPoleBound"),
+    (``Zeta23.ExceptionalZero.not_fixedOriginalSincCorrelation_oneSidedTailBound, "Zeta23.ExceptionalZero.UniversalSincSignedExcursions"),
+    (``Zeta23.ExceptionalZero.fixedOriginalSincCorrelation_signed_late_excursion_of_right_zero, "Zeta23.ExceptionalZero.UniversalSincSignedExcursions"),
+    (``Zeta23.ExceptionalZero.fixedOriginalSincCorrelation_two_signed_late_excursions_of_right_zero, "Zeta23.ExceptionalZero.UniversalSincSignedExcursions"),
+    (``Zeta23.ExceptionalZero.fixedOriginalSincCorrelation_two_signed_late_excursions_of_off_line_zero, "Zeta23.ExceptionalZero.UniversalSincSignedExcursions"),
+    (``Zeta23.CCM.nativeDampedCompletionKernel_integrable, "Zeta23.CCM.NativeDampedCompletionPrerequisites"),
+    (``Zeta23.CCM.nativeDampedCompletionKernel_integral_norm_lt_605_div_621, "Zeta23.CCM.NativeDampedCompletionPrerequisites"),
+    (``Zeta23.CCM.nativeCompletionL2Delay_norm, "Zeta23.CCM.NativeDampedCompletionPrerequisites"),
+    (``Zeta23.CCM.nativeCompletionL2Delay_causal, "Zeta23.CCM.NativeDampedCompletionPrerequisites"),
+    (``Zeta23.CCM.nativeDampedCompletionPointwise_causal, "Zeta23.CCM.NativeDampedCompletionPrerequisites")]
   let queries := roots.map fun (name, mod) =>
     ({ sourceId := name.toString, moduleName := mod, shortName := name.toString,
        sourceKind := "THEOREM" } : Zeta23.RHRC.SourceCandidateQuery)

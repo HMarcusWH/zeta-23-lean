@@ -8,6 +8,7 @@ namespace Zeta23.CCM
 
 set_option allowUnsafeReducibility true in
 attribute [local reducible] Submodule.innerProductSpace
+  Submodule.seminormedAddCommGroup Submodule.normedAddCommGroup
 
 variable {E F : Type*} [NormedAddCommGroup E] [InnerProductSpace ℂ E]
   [FiniteDimensional ℂ E] [NormedAddCommGroup F] [InnerProductSpace ℂ F]
@@ -35,8 +36,10 @@ def isometricDetectorComplementCoordinate (J : E →ₗᵢ[ℂ] F) :
     change J v = u at hv
     rw [← hv]
     change inner ℂ (p - J (J.toLinearMap.adjoint p)) (J v) = 0
-    rw [inner_sub_left, ← LinearMap.adjoint_inner_left J.toLinearMap v p,
-      J.inner_map_map, sub_self])
+    have hadj : inner ℂ p (J v) = inner ℂ (J.toLinearMap.adjoint p) v := by
+      simpa only [LinearIsometry.coe_toLinearMap] using!
+        (LinearMap.adjoint_inner_left J.toLinearMap v p).symm
+    rw [inner_sub_left, J.inner_map_map, hadj, sub_self])
 
 theorem coe_isometricDetectorComplementCoordinate (J : E →ₗᵢ[ℂ] F) (p : F) :
     (isometricDetectorComplementCoordinate J p : F) = p - J (J.toLinearMap.adjoint p) := rfl
@@ -109,11 +112,19 @@ theorem isometricDetectorSchur_completedSquare (J : E →ₗᵢ[ℂ] F) (T : F �
       Ti (Ti.symm (J.toLinearMap.adjoint (T (y : F)))) = 0
     rw [Ti.apply_symm_apply, sub_self]
   have hcross (v : E) : inner ℂ (T q) (J v) = 0 := by
-    rw [← LinearMap.adjoint_inner_left J.toLinearMap v (T q), hres, inner_zero_left]
+    have hadj : inner ℂ (T q) (J v) = inner ℂ (J.toLinearMap.adjoint (T q)) v := by
+      simpa only [LinearIsometry.coe_toLinearMap] using!
+        (LinearMap.adjoint_inner_left J.toLinearMap v (T q)).symm
+    rw [hadj, hres, inner_zero_left]
   have hcross' : inner ℂ (T (J z)) q = 0 := by
-    rw [hT (J z) q, ← LinearMap.adjoint_inner_right J.toLinearMap z (T q), hres, inner_zero_right]
+    rw [hT (J z) q]
+    exact (inner_eq_zero_symm (𝕜 := ℂ)).mp (hcross z)
   have hpred : inner ℂ (T (J z)) (J z) = inner ℂ (Ti z) z := by
-    rw [← LinearMap.adjoint_inner_left J.toLinearMap z (T (J z)), ← hTi]
+    have hadj : inner ℂ (T (J z)) (J z) =
+        inner ℂ (J.toLinearMap.adjoint (T (J z))) z := by
+      simpa only [LinearIsometry.coe_toLinearMap] using!
+        (LinearMap.adjoint_inner_left J.toLinearMap z (T (J z))).symm
+    rw [hadj, ← hTi]
   have hy : (y : F) = q + J r := by dsimp only [q]; abel
   have hschur : inner ℂ (isometricDetectorSchurOperator J T Ti y) y = inner ℂ (T q) q := by
     rw [inner_isometricDetectorSchurOperator]
@@ -149,6 +160,7 @@ theorem isometricDetectorSchur_negative_depth (J : E →ₗᵢ[ℂ] F) (T : F �
     linarith
   refine ⟨?_, hdepth, hstrict⟩
   intro hy
+  change y = 0 at hy
   rw [hy, map_zero, inner_zero_left, Complex.zero_re] at hstrict
   linarith
 

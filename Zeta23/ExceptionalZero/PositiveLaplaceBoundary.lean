@@ -49,7 +49,7 @@ theorem integrable_positiveLaplaceWeight_mono {u : ℝ → ℝ} {p q : ℝ}
   change u t * Real.exp (-q * t) ≤ u t * Real.exp (-p * t)
   apply mul_le_mul_of_nonneg_left _ hut
   apply Real.exp_le_exp.mpr
-  nlinarith
+  exact mul_le_mul_of_nonneg_right (neg_le_neg hpq) ht
 
 /-- Every genuinely integrable parameter lies above the actual abscissa. -/
 theorem positiveLaplaceAbscissa_le_of_integrable {u : ℝ → ℝ} {p : ℝ}
@@ -100,7 +100,7 @@ theorem not_differentiable_positiveLaplace_continuation_at_abscissa
       ‖((p0 : ℂ) - (σ : ℂ)) - z‖ ≤ ‖(p0 : ℂ) - (σ : ℂ)‖ + ‖z‖ := norm_sub_le _ _
       _ < r := by rw [hbase]; dsimp [R] at hzNorm; linarith
   have hK : DifferentiableOn ℂ K (Metric.ball 0 R) :=
-    hH.comp (differentiable_const.sub differentiable_id).differentiableOn hmap
+    hH.comp ((differentiable_const (p0 : ℂ)).sub differentiable_id).differentiableOn hmap
   have hLaplaceNhd : ∀ᶠ p in 𝓝 p0,
       Integrable (positiveLaplaceWeight u p) positiveLaplaceHalfLine := by
     filter_upwards [isOpen_Ioi.eventually_mem hp0] with p hp

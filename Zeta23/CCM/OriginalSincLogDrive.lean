@@ -120,7 +120,8 @@ theorem nativeOriginalIntegerDrive_abel_discrepancy_bound (t : ℝ) :
         |deriv (nativeOriginalLogDriveSummand t) x| := by
   rw [nativeOriginalIntegerDrive_eq_abel_sum]
   apply nativeIntegerAbel_discrepancy_bound (Real.exp_pos _).le
-    ((nativeOriginalLogDriveSummand_contDiff t).of_le (by norm_num))
+    ((nativeOriginalLogDriveSummand_contDiff t).of_le
+      (ENat.natCast_le_of_coe_top_le_withTop le_rfl 1))
   apply nativeOriginalLogDriveSummand_zero_above
   exact Real.exp_lt_exp.mpr (by linarith)
 

@@ -7,6 +7,16 @@ from lean_imports import strip_lean_comments
 
 
 EXPECTED = {
+    Path("Zeta23/ExceptionalZero/UniversalSincSignedExcursions.lean"),
+    Path("Zeta23/CCM/NativeDampedCompletionPrerequisites.lean"),
+    Path("Zeta23/CCM/OriginalDetectorWindowBounds.lean"),
+    Path("Zeta23/CCM/OriginalDetectorDividedLobeBounds.lean"),
+    Path("Zeta23/CCM/OriginalSincDriveCancellation.lean"),
+    Path("Zeta23/CCM/OriginalSincDriveDerivative.lean"),
+    Path("Zeta23/CCM/PoleNeutralCompactInverseL2Bound.lean"),
+    Path("Zeta23/ExceptionalZero/UniversalSincInitialLaplace.lean"),
+    Path("Zeta23/ExceptionalZero/UniversalSincSignedTailTransform.lean"),
+    Path("Zeta23/ExceptionalZero/UniversalSincSignedPoleBound.lean"),
     Path("Zeta23/CCM/DetectorRetainedSchurState.lean"),
     Path("Zeta23/ExceptionalZero/PositiveLaplaceAnalytic.lean"),
     Path("Zeta23/CCM/IsometricDetectorSchur.lean"),
@@ -171,7 +181,7 @@ class LeanProofEscapeScopeTests(unittest.TestCase):
         roots = closure_roots()
         self.assertEqual(len(roots), len(set(roots)))
         self.assertEqual(set(roots), EXPECTED)
-        self.assertEqual(len(roots), 156)
+        self.assertEqual(len(roots), 166)
         for path in roots:
             self.assertTrue(path.is_file(), str(path))
 

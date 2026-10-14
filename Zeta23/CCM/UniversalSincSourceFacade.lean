@@ -175,7 +175,8 @@ theorem paperFT_universalSincKernel {s : ℝ} (hs : 0 < s) (z : ℂ) :
     Zeta23.paperFT (universalSincKernel s) z =
       -(z ^ 2 + 1 / 4) * UniversalSinc.product s z := by
   rw [universalSincKernel,
-    paperFT_differential ((contDiff_originalComplex hs).of_le (by norm_num))
+    paperFT_differential ((contDiff_originalComplex hs).of_le
+      (ENat.natCast_le_of_coe_top_le_withTop le_rfl 2))
       (UniversalSinc.originalDensityComplex_hasCompactSupport hs),
     UniversalSinc.paperFT_originalDensityComplex hs]
 
@@ -183,7 +184,8 @@ theorem paperFT_universalSincSecondKernel {s : ℝ} (hs : 0 < s) (z : ℂ) :
     Zeta23.paperFT (universalSincSecondKernel s) z =
       (z ^ 2 + 1 / 4) ^ 2 * UniversalSinc.product s z := by
   rw [universalSincSecondKernel,
-    paperFT_differential ((universalSincKernel_contDiff hs).of_le (by norm_num))
+    paperFT_differential ((universalSincKernel_contDiff hs).of_le
+      (ENat.natCast_le_of_coe_top_le_withTop le_rfl 2))
       (universalSincKernel_hasCompactSupport hs), paperFT_universalSincKernel hs]
   ring
 
@@ -206,8 +208,8 @@ private theorem integral_re_complex {f : ℝ → ℂ} (hf : Integrable f) :
 
 theorem universalSincSecondSource_integral {s : ℝ} (hs : 0 < s) :
     (∫ x : ℝ, universalSincSecondSource s x) = (1 / 16 : ℝ) := by
-  rw [universalSincSecondSource,
-    integral_re_complex (universalSincSecondKernel_integrable hs),
+  change (∫ x : ℝ, (universalSincSecondKernel s x).re) = (1 / 16 : ℝ)
+  rw [integral_re_complex (universalSincSecondKernel_integrable hs),
     universalSincSecondKernel_integral hs]
   norm_num
 

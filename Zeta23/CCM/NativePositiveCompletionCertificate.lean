@@ -119,9 +119,12 @@ theorem nativePositiveCompletion_mass_lt_605_div_621 :
   have hhead := nativePositiveCompletionLogDensity_head_integral 128
   norm_num only [Nat.cast_ofNat] at hhead
   rw [hhead] at hsplit
-  rw [nativeMass_endpoint_three_halves] at htail
+  have hthree := nativeMass_endpoint_three_halves
+  norm_num only at hthree
+  rw [hthree] at htail
   have hlo := nativeMass_actual_head_reciprocal_lower
   have hhi := nativeMass_endpoint_reciprocal_upper
+  norm_num only at hlo hhi
   linarith
 
 /-- Causality upgrades the existing half-line integrability to the full line. -/

@@ -66,12 +66,14 @@ theorem originalSincSecondTest_even {s : ℝ} (hs : 0 < s) :
 
 theorem originalSincTest_im_eq_zero {s : ℝ} (hs : 0 < s) :
     ∀ x : ℝ, (originalSincTest s x).im = 0 :=
-  poleKilled_im_eq_zero ((contDiff_actual_source hs).of_le (by norm_num))
+  poleKilled_im_eq_zero ((contDiff_actual_source hs).of_le
+    (ENat.natCast_le_of_coe_top_le_withTop le_rfl 4))
     (CCM.UniversalSinc.originalDensityComplex_im s)
 
 theorem originalSincSecondTest_im_eq_zero {s : ℝ} (hs : 0 < s) :
     ∀ x : ℝ, (originalSincSecondTest s x).im = 0 :=
-  poleKilled_im_eq_zero ((contDiff_originalSincTest hs).of_le (by norm_num))
+  poleKilled_im_eq_zero ((contDiff_originalSincTest hs).of_le
+    (ENat.natCast_le_of_coe_top_le_withTop le_rfl 4))
     (originalSincTest_im_eq_zero hs)
 
 /-- The physical detector has the exact original multiplier at every
@@ -79,7 +81,8 @@ complex frequency, with the paper's forward sign and normalization. -/
 theorem paperFT_originalSincTest {s : ℝ} (hs : 0 < s) (z : ℂ) :
     paperFT (originalSincTest s) z = originalSincMultiplier s z := by
   unfold originalSincTest originalSincMultiplier
-  rw [paperFT_poleKilled ((contDiff_actual_source hs).of_le (by norm_num))
+  rw [paperFT_poleKilled ((contDiff_actual_source hs).of_le
+    (ENat.natCast_le_of_coe_top_le_withTop le_rfl 2))
     (CCM.UniversalSinc.originalDensityComplex_hasCompactSupport hs),
     CCM.UniversalSinc.paperFT_originalDensityComplex hs]
 
@@ -87,7 +90,8 @@ theorem paperFT_originalSincSecondTest {s : ℝ} (hs : 0 < s) (z : ℂ) :
     paperFT (originalSincSecondTest s) z =
       (z ^ 2 + 1 / 4) ^ 2 * CCM.UniversalSinc.product s z := by
   unfold originalSincSecondTest
-  rw [paperFT_poleKilled ((contDiff_originalSincTest hs).of_le (by norm_num))
+  rw [paperFT_poleKilled ((contDiff_originalSincTest hs).of_le
+    (ENat.natCast_le_of_coe_top_le_withTop le_rfl 2))
     (hasCompactSupport_originalSincTest hs), paperFT_originalSincTest hs]
   unfold originalSincMultiplier
   ring
@@ -126,7 +130,8 @@ theorem fixed_originalSincTest_square_ne_zero_at_off_line_zero
 theorem absolutelySummable_originalSincSquaredFilter {s : ℝ} (hs : 0 < s) :
     AbsolutelySummableZeroFilter (squaredWeilZeroFilter (originalSincTest s)) :=
   absolutelySummableZeroFilter_squaredWeil
-    ((contDiff_originalSincTest hs).of_le (by norm_num))
+    ((contDiff_originalSincTest hs).of_le
+      (ENat.natCast_le_of_coe_top_le_withTop le_rfl 2))
     (hasCompactSupport_originalSincTest hs)
 
 theorem originalSincCorrelation_eq_filteredSquaredFamily {s : ℝ} (hs : 0 < s) (a : ℝ) :
@@ -171,7 +176,8 @@ theorem fixed_originalSincTest_not_subexponential_of_right_zero
       ‖Zeta23.EF.literatureRHS
         (translateRight (originalSincTest CCM.UniversalSinc.fixedScale) (2 * a))‖) := by
   exact not_subexponential_weilLiteratureRHS_of_right_zero
-    ((contDiff_originalSincTest CCM.UniversalSinc.fixedScale_pos).of_le (by norm_num))
+    ((contDiff_originalSincTest CCM.UniversalSinc.fixedScale_pos).of_le
+      (ENat.natCast_le_of_coe_top_le_withTop le_rfl 2))
     (hasCompactSupport_originalSincTest CCM.UniversalSinc.fixedScale_pos) ρ hright
     (paperFT_originalSincTest_ne_zero_at_off_line_zero CCM.UniversalSinc.fixedScale_pos
       ρ (ne_of_gt hright))

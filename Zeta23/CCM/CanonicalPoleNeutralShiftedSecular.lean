@@ -10,6 +10,7 @@ open scoped BigOperators ComplexConjugate
 
 set_option allowUnsafeReducibility true in
 attribute [local reducible] Submodule.innerProductSpace
+  Submodule.seminormedAddCommGroup Submodule.normedAddCommGroup
   poleNeutralEven_innerProductSpace poleNeutralOdd_innerProductSpace
   euclideanParityBoundaryFlatSubspace
 
@@ -48,7 +49,7 @@ private theorem poleNeutralEvenRayleighRange_bddBelow (L : ℝ) (K : ℕ) :
     (z : poleNeutralEvenSubspace L K)
   have hn' : |RCLike.re (inner ℂ (T z) z) / ‖(z : poleNeutralEvenSubspace L K)‖ ^ 2| ≤ ‖T‖ := by
     simpa only [ContinuousLinearMap.rayleighQuotient,
-      ContinuousLinearMap.reApplyInnerSelf_apply] using hn
+      ContinuousLinearMap.reApplyInnerSelf_apply] using! hn
   exact neg_le_of_abs_le hn'
 
 theorem poleNeutralEvenRayleighBottom_mul_norm_sq_le {L : ℝ} (hL : 0 < L)

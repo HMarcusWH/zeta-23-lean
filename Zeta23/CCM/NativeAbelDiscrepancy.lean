@@ -36,7 +36,7 @@ theorem nativeIntegerAbel_discrepancy_eq {f : ℝ → ℝ} {b : ℝ}
     (v := f) (v' := deriv f)
     (fun x _ => hasDerivAt_id x)
     (fun x _ => (hf.differentiable (by norm_num) x).hasDerivAt)
-    (intervalIntegrable_const) hD.intervalIntegrable
+    (intervalIntegrable_const) (hD.intervalIntegrable 0 b)
   simp only [hfb, mul_zero, zero_mul, sub_zero, zero_sub, one_mul] at hparts
   rw [intervalIntegral.integral_of_le hb, intervalIntegral.integral_of_le hb] at hparts
   have hxint : IntegrableOn (fun x : ℝ => deriv f x * x) (Set.Ioc 0 b) :=

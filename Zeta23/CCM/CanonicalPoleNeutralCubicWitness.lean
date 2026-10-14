@@ -9,6 +9,7 @@ open scoped BigOperators ComplexConjugate
 
 set_option allowUnsafeReducibility true in
 attribute [local reducible] Submodule.innerProductSpace
+  Submodule.seminormedAddCommGroup Submodule.normedAddCommGroup
   poleNeutralEven_innerProductSpace poleNeutralOdd_innerProductSpace
   euclideanParityBoundaryFlatSubspace
 
@@ -153,7 +154,8 @@ theorem poleNeutralCubicCompressionVector_ne_zero {L : ℝ} (hL : 0 < L)
     (K : ℕ) (hK : 3 ≤ K) : poleNeutralCubicCompressionVector L K ≠ 0 := by
   intro hg
   have hp := poleNeutral_cubic_pairing_eq_momentFour hL K (poleNeutralMomentFourWitness L K hK)
-  rw [hg, inner_zero_left (𝕜 := ℂ)] at hp
+  rw [hg] at hp
+  erw [inner_zero_left (𝕜 := ℂ)] at hp
   exact poleNeutralMomentFourWitness_momentFour_ne_zero hL K hK hp.symm
 
 end Zeta23.CCM

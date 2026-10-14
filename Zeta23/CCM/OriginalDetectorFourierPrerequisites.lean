@@ -171,7 +171,7 @@ theorem originalDetectorLobe_fourierCoeff_jet_step
     (fun x _ => by rw [iteratedDeriv_succ]; exact (hd x).hasDerivAt)
     (hc.intervalIntegrable 0 L)
   rw [hj.1, hj.2] at hraw
-  simp only [sub_zero, sub_self, mul_zero, zero_sub] at hraw
+  simp only [Complex.ofReal_zero, sub_zero, sub_self, mul_zero, zero_sub] at hraw
   rw [hraw]
   field_simp [Real.pi_ne_zero, Complex.I_ne_zero, hn] <;> ring
 
@@ -202,26 +202,29 @@ theorem norm_originalDetectorLobe_jet_fourierCoeff_le
     {s L : ℝ} (hs : 0 < s) (hL : 0 < L) (c : ℝ) (m : ℕ) (n : ℤ) :
     ‖fourierCoeffOn hL (iteratedDeriv m (originalDetectorLobe s c)) n‖ ≤
       originalDetectorLobeJetBudget s m := by
-  letI : Fact (0 < L) := ⟨hL⟩
+  letI : Fact (0 < L - 0) := ⟨by simpa only [sub_zero] using hL⟩
   have hi : ‖∫ x : ℝ in (0 : ℝ)..L,
-      fourier (-n) (x : AddCircle L) • iteratedDeriv m (originalDetectorLobe s c) x‖ ≤
+      fourier (-n) (x : AddCircle (L - 0)) •
+        iteratedDeriv m (originalDetectorLobe s c) x‖ ≤
       originalDetectorLobeJetBudget s m * L := by
     have hraw := intervalIntegral.norm_integral_le_of_norm_le_const
       (a := (0 : ℝ)) (b := L) (C := originalDetectorLobeJetBudget s m)
       (f := fun x : ℝ =>
-        fourier (-n) (x : AddCircle L) • iteratedDeriv m (originalDetectorLobe s c) x)
+        fourier (-n) (x : AddCircle (L - 0)) • iteratedDeriv m (originalDetectorLobe s c) x)
       (fun x _ => by
-        rw [norm_smul, show ‖fourier (-n) (x : AddCircle L)‖ = 1 from Circle.norm_coe _,
+        rw [norm_smul,
+          show ‖fourier (-n) (x : AddCircle (L - 0))‖ = 1 from Circle.norm_coe _,
           one_mul]
         exact originalDetectorLobe_iteratedDeriv_le_gevrey hs m c x)
     simpa only [sub_zero, abs_of_pos hL] using hraw
   rw [fourierCoeffOn_eq_integral]
-  simp only [sub_zero, norm_smul, Real.norm_eq_abs,
-    abs_of_pos (div_pos (by norm_num : (0 : ℝ) < 1) hL)]
+  simp only [norm_smul, Real.norm_eq_abs,
+    abs_of_pos (one_div_pos.mpr (show 0 < L - 0 by simpa only [sub_zero] using hL))]
   calc
-    _ ≤ (1 / L) * (originalDetectorLobeJetBudget s m * L) :=
+    _ ≤ (1 / (L - 0)) * (originalDetectorLobeJetBudget s m * L) :=
       mul_le_mul_of_nonneg_left hi (by positivity)
-    _ = _ := by field_simp [hL.ne'] <;> ring
+    _ = originalDetectorLobeJetBudget s m * (L / L) := by rw [sub_zero]; ring
+    _ = originalDetectorLobeJetBudget s m := by rw [div_self hL.ne', mul_one]
 
 /-- Quantitative coefficient decay for the actual compact source. This is
 valid at every derivative order; optimizing the order and treating the
@@ -232,11 +235,11 @@ theorem norm_originalDetectorLobe_fourierCoeff_le_gevrey_order
     {n : ℤ} (hn : n ≠ 0) (m : ℕ) :
     ‖fourierCoeffOn hL (originalDetectorLobe s c) n‖ ≤
       (L / (2 * Real.pi * |(n : ℝ)|)) ^ m * originalDetectorLobeJetBudget s m := by
-  have hcast : (n : ℂ) = ((n : ℝ) : ℂ) := by norm_cast
   have hfreq : ‖(L : ℂ) / (2 * Real.pi * Complex.I * (n : ℂ))‖ =
       L / (2 * Real.pi * |(n : ℝ)|) := by
-    norm_num [norm_div, norm_mul, Complex.norm_real, Real.norm_eq_abs,
-      abs_of_pos hL, abs_of_pos Real.pi_pos, hcast]
+    simp only [norm_div, norm_mul, Complex.norm_real, Real.norm_eq_abs,
+      abs_of_pos hL, abs_of_pos Real.pi_pos, Complex.norm_I,
+      Complex.norm_two, Complex.norm_intCast, mul_one]
   rw [originalDetectorLobe_fourierCoeff_eq_jet hs hL hleft hright hn m,
     norm_mul, norm_pow, hfreq]
   exact mul_le_mul_of_nonneg_left

@@ -181,7 +181,7 @@ theorem integrable_fixedOriginalSincSignedTail_weight (T θ M ε : ℝ) {p : ℝ
       positiveLaplaceHalfLine := by
   have hmain := (integrable_fixedOriginalSincCorrelation_weight hp).const_mul ε
   have herror := (integrable_exp_decay_halfLine (by linarith : 0 < p - θ)).const_mul M
-  have hsum := (hmain.add herror).integrable_indicator
+  have hsum := (hmain.add herror).indicator
     (show MeasurableSet (Ici T) from measurableSet_Ici)
   have hfun : positiveLaplaceWeight (fixedOriginalSincSignedTail T θ M ε) p =
       (Ici T).indicator (fun a : ℝ =>

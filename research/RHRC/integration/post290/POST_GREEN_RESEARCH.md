@@ -880,3 +880,94 @@ Schur packets, and finish the actual signed-tail continuation identity and
 pole abscissa argument. Connect weighted elementary cancellation to the
 unchanged integer drive and stable Y. Every original mandatory obligation,
 the assembled producer and RH remain **OPEN**.
+
+## Twelfth pass: exact original source identification and compact primitive inverse
+
+**What became formally true.** Branch head
+`75a3bd63ec2889a5c354e874c981b2a1ea25d0f8`, tree
+`2ad759098ba5788813a9b2b1cc9cea62a24ddf39`, was checked by push component
+job `115610861780` in run `38489430140` and PR component job
+`115610877350` in run `38489434804`. The PR runner checked
+`ac5f904f64ab1719f7429ad200d980ec595d3882`; its Git tree is exactly the
+branch tree and its parents are the pinned base and branch head.
+Complete CompactInverse, InverseGevreyBounds, DensityIdentification,
+SourceSymmetry, SourceComplexTransform and PositiveLaplaceTilt compiled.
+Their 28 printed roots use only propext, Classical.choice and Quot.sound.
+The proof bodies and their actual definitions were read. The actual
+infinite-convolution law is the measure with the constructed density.
+Fourier inversion identifies that density with the prescribed normalized
+inverse, including the absolute Jacobian. Its symmetry and full complex
+product transform are pointwise. The actual inverse has explicit uniform
+order-two derivative constants. Continuous sources with both elementary
+moments zero have the explicit compact C2 primitive inverse, exact P equation
+and clamped value/derivative traces. The literal unnormalized positive tilt
+has exact mass and real/complex integrability transport at p0-h/p0-z.
+
+**Workflow harvest.** Both push and PR exact-controls and native-observations
+SUCCEEDED: jobs `115610861719`, `115610861389`, `115610876935`,
+`115610877362`. Every native panel retains 44 pairs / 176 rows, with the
+independent 1024-bit reconstruction. Both component jobs FAILED on actual
+Schur coercions, Abel interval arguments, inherited finite metric dictionaries,
+Fourier-period normalization, Boundary arithmetic, finite-to-infinite smoothness
+order conversions and final rational-exponent normalization. Full exact
+type/axiom export was skipped. Error-recovery sorryAx roots are rejected.
+The separate complete workflow harvest preserves unfinished/cancelled jobs
+and all research dispositions; none is silently promoted to a universal
+claim. Original D2 remains in SECOND search with zero artifacts at
+2026-10-14 00:33:25 UTC, so its whole-domain release gate is still pending.
+
+**What changed.** The abstract source bridge is eliminated for the original
+density: its actual law, inverse, real symmetry and complex product now agree.
+The compact inverse is a constructed function solving its equation; this is
+stronger than a record carrying an assumed inverse. It still covers continuous
+compact sources, and the general compact-L2 Sobolev extension is OPEN.
+The unnormalized tilt supplies the genuine measure needed by the continuation
+argument, without assuming moments or a probability normalization.
+
+**Upstream implications.** Current calculus uses WithTop ENat: finite orders
+must be compared with the coerced infinity by its precise API. Shared printed
+types can still hide different inherited norm/inner-product dictionaries;
+repairs must unfold the same native metrics and retain exact normalization.
+The density's nonnegative mass and source symmetry are actual properties,
+so consumers need not accept them as free source certificates.
+
+**Downstream implications.** The entire product's nonreal nonvanishing can now
+reach the actual physical detector through its literal transform. Actual
+derivative bounds feed the divided-lobe reciprocal-window estimate. Compact
+primitive inversion and a derived energy bound can support original native
+forcing. The literal tilt and real resolvent regularity support an actual
+positive-boundary contradiction once all signed-tail consumers compile.
+
+**Resurrected routes.** Source-dependent signed excursions no longer require
+a rightmost-zero formulation: per-zero visible poles and the actual domain
+infimum provide the candidate chain. Genuine source elementary moments and
+first weighted moments can cancel the continuum integer-drive term. Native
+Schur completion remains tied to actual original detector and actual selected
+ground, with their two different shifts and dimensions.
+
+**New RH-relevant clues.** LEAD: an actual visible pole forces a lower bound
+on every positive-tail domain parameter, while real-axis analytic regularity
+may refute the eventual signed bound. LEAD: exact continuum cancellation
+can make U and Y stable independently of prime-field L2 membership.
+DERIVED, conditional on the Schur candidates compiling: the selected ground's
+one-dimensional shell Schur operator has a nonzero kernel vector and hence
+vanishes on that shell; this identity permits ties and does not itself
+exclude a negative state.
+
+**Falsification checks.** Keep the original sign of P and the paper Fourier
+normalization. Squared spectral coefficients remain complex squares.
+Positive tilt transport is valid because its actual source is nonnegative
+on the half-line. First weighted moments cannot be inferred from ordinary
+pole moments. Unit collars alone do not prevent coincident odd reflected
+lobes; late separated lobes need a genuine norm lower bound. Ground
+Schur zero on its shell gives no estimate for the larger original-detector
+complement. A norm below one gives forward contraction, not an inverse or
+zero terminal adjoint residual.
+
+**Highest-leverage next moves.** Compile actual source/Boundary and finite
+consumers, then check all exact types/axioms at one tree. Test the real
+reciprocal-window derivatives, literal divided lobe, actual continuum
+cancellation, smooth-source L2 inverse bound and actual signed excursions.
+Construct the normalized phase, full finite transport, native forcing,
+causal operator and independent stable Y/range jets. The original mandatory
+producer and all three Step4 contracts retain their scope. RH remains **OPEN**.

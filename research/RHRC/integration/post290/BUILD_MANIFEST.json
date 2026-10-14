@@ -872,6 +872,31 @@
       "full_type_binding_export_executed": false,
       "full_mandatory_producer": "OPEN"
     },
+    "actual_source_inverse_diagnostic": {
+      "head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "checked_pr_runner_head": "ac5f904f64ab1719f7429ad200d980ec595d3882",
+      "pr_runner_same_tree": true,
+      "run": 38489430140,
+      "component_job": 115610861780,
+      "pr_component_job": 115610877350,
+      "whole_job_result": "FAILURE",
+      "entire_new_modules_compiled": [
+        "Zeta23.CCM.PoleNeutralCompactInverse",
+        "Zeta23.CCM.UniversalSincInverseGevreyBounds",
+        "Zeta23.CCM.UniversalSincSourceDensityIdentification",
+        "Zeta23.CCM.UniversalSincSourceSymmetry",
+        "Zeta23.CCM.UniversalSincSourceComplexTransform",
+        "Zeta23.ExceptionalZero.PositiveLaplaceTilt"
+      ],
+      "admitted_axioms": ["propext", "Classical.choice", "Quot.sound"],
+      "exact_controls": {"job": 115610861719, "result": "SUCCESS"},
+      "native_observations": {"job": 115610861389, "result": "SUCCESS", "pairs": 44, "rows": 176, "checker_bits": 1024, "universal_theorem_authority": false},
+      "pr_exact_controls": {"job": 115610876935, "result": "SUCCESS"},
+      "pr_native_observations": {"job": 115610877362, "result": "SUCCESS"},
+      "full_type_binding_export_executed": false,
+      "full_mandatory_producer": "OPEN"
+    },
     "additional_candidates": [
       "Zeta23.CCM.UniversalSincDetectorInverse",
       "Zeta23.CCM.UniversalSincSourceLaw",

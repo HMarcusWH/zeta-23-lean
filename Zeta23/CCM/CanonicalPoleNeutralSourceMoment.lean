@@ -10,6 +10,7 @@ open scoped BigOperators ComplexConjugate
 
 set_option allowUnsafeReducibility true in
 attribute [local reducible] Submodule.innerProductSpace
+  Submodule.seminormedAddCommGroup Submodule.normedAddCommGroup
   poleNeutralEven_innerProductSpace poleNeutralOdd_innerProductSpace
   euclideanParityBoundaryFlatSubspace
 
@@ -62,7 +63,7 @@ theorem exists_eigenmode_at_poleNeutralEvenRayleighBottom {L : ℝ} (hL : 0 < L)
     (poleNeutralEvenCompressedCanonical_isSymmetric L K)
   obtain ⟨u, hu⟩ := he.exists_hasEigenvector
   refine ⟨u, hu.2, ?_⟩
-  simpa only [poleNeutralEvenRayleighBottom] using hu.apply_eq_smul
+  simpa only [poleNeutralEvenRayleighBottom] using! hu.apply_eq_smul
 
 theorem exists_eigenmode_at_poleNeutralOddRayleighBottom {L : ℝ} (hL : 0 < L)
     (K : ℕ) (hK : 3 ≤ K) :
@@ -80,7 +81,7 @@ theorem exists_eigenmode_at_poleNeutralOddRayleighBottom {L : ℝ} (hL : 0 < L)
     (poleNeutralOddCompressedCanonical_isSymmetric L K)
   obtain ⟨w, hw⟩ := he.exists_hasEigenvector
   refine ⟨w, hw.2, ?_⟩
-  simpa only [poleNeutralOddRayleighBottom] using hw.apply_eq_smul
+  simpa only [poleNeutralOddRayleighBottom] using! hw.apply_eq_smul
 
 private theorem poleNeutralOddRayleighRange_bddBelow (L : ℝ) (K : ℕ) :
     BddBelow (Set.range fun z : {z : poleNeutralOddSubspace L K // z ≠ 0} =>
@@ -96,7 +97,7 @@ private theorem poleNeutralOddRayleighRange_bddBelow (L : ℝ) (K : ℕ) :
     (z : poleNeutralOddSubspace L K)
   have hn' : |RCLike.re (inner ℂ (T z) z) / ‖(z : poleNeutralOddSubspace L K)‖ ^ 2| ≤ ‖T‖ := by
     simpa only [ContinuousLinearMap.rayleighQuotient,
-      ContinuousLinearMap.reApplyInnerSelf_apply] using hn
+      ContinuousLinearMap.reApplyInnerSelf_apply] using! hn
   exact neg_le_of_abs_le hn'
 
 theorem poleNeutralOddRayleighBottom_mul_norm_sq_le {L : ℝ} (hL : 0 < L)
@@ -127,7 +128,8 @@ theorem poleNeutral_source_moment_energy_eq {L : ℝ} (hL : 0 < L)
   rw [hu, map_smul] at hd
   have hp := congrArg (fun z : poleNeutralOddSubspace L K =>
     inner ℂ z (poleNeutralIndexLinearMap hL K u)) hd
-  rw [inner_smul_left, poleNeutral_cubic_pairing_eq_momentFour hL] at hp
+  erw [inner_smul_left (𝕜 := ℂ)] at hp
+  rw [poleNeutral_cubic_pairing_eq_momentFour hL] at hp
   exact congrArg Complex.re hp.symm
 
 theorem poleNeutral_source_moment_gap_le {L : ℝ} (hL : 0 < L)
@@ -139,10 +141,11 @@ theorem poleNeutral_source_moment_gap_le {L : ℝ} (hL : 0 < L)
   rw [poleNeutral_source_moment_energy_eq hL K (by omega) lam u hu]
   have hb := poleNeutralOddRayleighBottom_mul_norm_sq_le hL K hK
     (poleNeutralIndexLinearMap hL K u)
-  rw [inner_sub_left, Complex.sub_re, inner_smul_left]
+  erw [inner_sub_left (𝕜 := ℂ), inner_smul_left (𝕜 := ℂ)]
+  rw [Complex.sub_re]
   have hn : (inner ℂ (poleNeutralIndexLinearMap hL K u) (poleNeutralIndexLinearMap hL K u)).re =
       ‖poleNeutralIndexLinearMap hL K u‖ ^ 2 := by
-    simpa only [RCLike.re_eq_complex_re] using
+    simpa only [RCLike.re_eq_complex_re] using!
       (norm_sq_eq_re_inner (𝕜 := ℂ) (poleNeutralIndexLinearMap hL K u)).symm
   simp only [Complex.conj_ofReal, Complex.mul_re, Complex.ofReal_re, Complex.ofReal_im,
     zero_mul, sub_zero, hn]
