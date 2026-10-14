@@ -245,7 +245,10 @@ theorem originalDetector_forcingWeilError_bound :
   have hscale : 0 ≤ C_Q * (1 + L) * Real.exp (L / 2) *
         nativePhysicalH1Norm e := by
     have hc1 : 0 ≤ (1 + L : ℝ) := by linarith
-    positivity
+    have he0 : 0 ≤ nativePhysicalH1Norm e :=
+      nativePhysicalH1Norm_nonneg e
+    exact mul_nonneg
+      (mul_nonneg (mul_nonneg hC.le hc1) (Real.exp_pos _).le) he0
   calc
     ‖Zeta23.zetaZeroConfig.W e f‖ ≤
       C_Q * (1 + L) * Real.exp (L / 2) *
