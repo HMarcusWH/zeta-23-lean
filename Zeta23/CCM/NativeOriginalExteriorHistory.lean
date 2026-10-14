@@ -1,4 +1,5 @@
 import Zeta23.CCM.OriginalDetectorFourPrimeHistories
+import Zeta23.CCM.OriginalDetectorPaddedRetainedSelection
 import Zeta23.CCM.NativeExteriorSourceRecord
 
 /-!

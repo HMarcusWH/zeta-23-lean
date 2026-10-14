@@ -48,11 +48,11 @@ theorem NativeCompactPoleH2.localP_duality
   have hFd : ContDiff ℝ 1 (deriv F) := hF.deriv'
   have hACfirst : AbsolutelyContinuousOnInterval
       (fun x : ℝ => u.first x * F x) (-s) s := by
-    simpa only [Pi.smul_apply, smul_eq_mul] using
-      u.first_ac.smul hF.contDiffOn.absolutelyContinuousOnInterval
+    simpa only [Pi.smul_apply, smul_eq_mul] using!
+      u.first_ac.smul hF1.contDiffOn.absolutelyContinuousOnInterval
   have hACsecond : AbsolutelyContinuousOnInterval
       (fun x : ℝ => u.value x * deriv F x) (-s) s := by
-    simpa only [Pi.smul_apply, smul_eq_mul] using
+    simpa only [Pi.smul_apply, smul_eq_mul] using!
       u.value_ac.smul hFd.contDiffOn.absolutelyContinuousOnInterval
   have hAEfirst :
       ∀ᵐ x : ℝ, x ∈ uIcc (-s) s →
@@ -150,7 +150,7 @@ theorem NativeCompactPoleH2.originalKernelPrimeField_localPairing
     (∫ x in (-s)..s, f x * nativeOriginalKernelPrimeField x) =
       ∫ x in (-s)..s, u.value x * (nativeOriginalPrimeField x : ℂ) := by
   have hF : ContDiff ℝ 2 nativeOriginalKernelPrimeField :=
-    nativeOriginalKernelPrimeField_contDiff.of_le (by norm_num)
+    nativeOriginalKernelPrimeField_contDiff.of_le le_top
   have hLocal := u.localP_duality hF h0 h1 h2 hu hf
   rw [hLocal]
   apply intervalIntegral.integral_congr
@@ -159,7 +159,11 @@ theorem NativeCompactPoleH2.originalKernelPrimeField_localPairing
   change deriv (deriv nativeOriginalKernelPrimeField) x -
     (1 / 4 : ℂ) * nativeOriginalKernelPrimeField x =
     (nativeOriginalPrimeField x : ℂ) at hP
-  rw [hP]
+  change u.value x *
+    (deriv (deriv nativeOriginalKernelPrimeField) x -
+      (1 / 4 : ℂ) * nativeOriginalKernelPrimeField x) =
+    u.value x * (nativeOriginalPrimeField x : ℂ)
+  exact congrArg (fun z : ℂ => u.value x * z) hP
 
 end Zeta23.CCM
 
