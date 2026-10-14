@@ -15,7 +15,23 @@ ROLES = {
     ('RHRC post290 K3 independent no-search shards','freeze-checker-shards'):'REGRESSION_GATE',
     ('RHRC post290 K3 independent no-search shards','independent-leaf-shards'):'RESEARCH_PRODUCING_CHECK',
     ('RHRC post290 K3 independent no-search shards','assemble-nonpartial'):'RESEARCH_PRODUCING_CHECK',
+    ('RHRC materialize derived state for review','materialize'):'FORMAL_VALIDITY_GATE',
+    ('RHRC approved SECOND460 resource continuation','freeze'):'REGRESSION_GATE',
+    ('RHRC approved SECOND460 resource continuation','search-wave1'):'RESEARCH_PRODUCING_CHECK',
+    ('RHRC approved SECOND460 resource continuation','search-wave2'):'RESEARCH_PRODUCING_CHECK',
+    ('RHRC approved SECOND460 resource continuation','assemble-search'):'RESEARCH_PRODUCING_CHECK',
+    ('RHRC approved SECOND460 resource continuation','final-nonpartial'):'RESEARCH_PRODUCING_CHECK',
 }
+
+
+def classify_job(workflow, job):
+    if workflow == 'RHRC approved SECOND460 resource continuation':
+        if job.startswith('independent-check-batches ('):
+            if job.endswith('/ freeze-batch'):
+                return 'REGRESSION_GATE'
+            if '/ check-leaves (' in job:
+                return 'RESEARCH_PRODUCING_CHECK'
+    return ROLES.get((workflow, job.split(' (')[0]), 'REQUIRES_SOURCE_REVIEW')
 
 def get(url):
     headers = {'Accept': 'application/vnd.github+json', 'User-Agent': 'RH-post290-harvest'}
@@ -54,7 +70,7 @@ def harvest(snapshot):
         for attempt in run['attempt_inventory']:
             for job in attempt['jobs']:
                 latest = attempt['attempt'] == run['run_attempt']
-                role = ROLES.get((run['name'], job['name'].split(' (')[0]), 'REQUIRES_SOURCE_REVIEW')
+                role = classify_job(run['name'], job['name'])
                 conclusion = job.get('conclusion')
                 disposition = {
                     'skipped': 'NOT_EXECUTED', 'cancelled': 'CANCELLED_UNESTABLISHED',

@@ -1,0 +1,67 @@
+name: RHRC SECOND460 fresh checker batch
+on:
+  workflow_call:
+    inputs:
+      batch:
+        required: true
+        type: number
+permissions:
+  contents: read
+  actions: read
+env:
+  OPENBLAS_NUM_THREADS: '1'
+  OMP_NUM_THREADS: '1'
+  ROUTE: research/RHRC/routes/R003_ccm_bridge
+jobs:
+  freeze-batch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    outputs:
+      matrix: ${{ steps.matrix.outputs.matrix }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - run: python -m pip install -r "$ROUTE/requirements.txt"
+      - uses: actions/download-artifact@v4
+        with:
+          name: k3-unrun460-candidate
+          path: /tmp/unrun460-candidate
+      - name: Select next deterministic checker batch without changing any leaf
+        id: matrix
+        env:
+          CHECK_BATCH: ${{ inputs.batch }}
+        run: |
+          test "$GITHUB_RUN_ATTEMPT" = 1
+          python "$ROUTE/post290/k3_continue_unrun460.py" check-batch /tmp/unrun460-candidate/checker-partition.json --batch "$CHECK_BATCH"
+  check-leaves:
+    needs: freeze-batch
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      max-parallel: 8
+      matrix: ${{ fromJson(needs.freeze-batch.outputs.matrix) }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - run: |
+          test "$GITHUB_RUN_ATTEMPT" = 1
+          python -m pip install -r "$ROUTE/requirements.txt"
+      - uses: actions/download-artifact@v4
+        with:
+          name: k3-unrun460-candidate
+          path: /tmp/unrun460-candidate
+      - name: Fresh768-bit independent SECOND enclosures with no search
+        env:
+          CHECKER_SHARD_ID: ${{ matrix.id }}
+        run: python "$ROUTE/post290/k3_replay_shards.py" single /tmp/unrun460-candidate/checker-partition.json /tmp/unrun460-candidate /tmp/unrun460-candidate/source-revalidation.json --id "$CHECKER_SHARD_ID" --out /tmp/unrun460-checked
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: k3-unrun460-checked-${{ matrix.id }}
+          path: /tmp/unrun460-checked
+          if-no-files-found: error

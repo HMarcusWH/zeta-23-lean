@@ -1,0 +1,17 @@
+# Approved D2 resource continuation for460 unrun children
+
+The user explicitly approved: “Approve the460-child continuation and its stated resource limit” on2026-10-14. The exact approval text is preserved without typography changes in the JSON. This implements the reviewed resource proposal SHA2566d36c9948e28a5448920b832908d3bde24b8644cb7f6b211dcbc28c4208dc3fe.
+
+Protocol SECOND_UNRUN_CAP_CONTINUATION_2026_10_14_v1 adds one unique budget for each of the460 previously frozen SECOND_CHILD_CAP children. It preserves the32first-pass and256finished second-pass receipts and all original source/archive identities. The old256 cap remains exhausted; no old receipt is relabelled as new work.
+
+Each new child uses the same corrected whole-interval SECOND mathematics:512bits, depth48,8,192nodes and1,800seconds, at most8workers globally. Two sequential waves contain256 and204children. The added search ceiling is230runner-hours, or29hours of scheduled compute at8workers, plus setup/queue/uploads. Fresh768-bit checking is additional and separately reported.
+
+Every child has one unique execution budget. Consumed or timed-out budgets cannot be reset or retried. An earlier workflow run causes intake to fail closed pending a complete consumption or remaining-approved-budget audit. A setup failure that demonstrably started no child arithmetic does not automatically require new user authorization. A durable budget-claim artifact precedes arithmetic, and an exclusive launch marker prevents starting a child's budget twice. Missing, failed or interrupted children remain unresolved. Coverage checkpoints upload every45seconds; upload failure stops the child. Final artifacts always upload. Before plan freeze, an upload/named-lookup/byte-identical-download preflight checks the artifact runtime without arithmetic. Exact-name result and checker retrieval avoids global-list truncation from many checkpoint artifacts. A global negative-stop marker blocks new arithmetic and interrupts active children at their next checkpoint.
+
+Every child ID and exact rational endpoint is pinned in D2_UNRUN460_CHILDREN.json, rederived from the original source-bound archive before freeze, and bound to the exact code/source/protocol at dispatch. Original archive11865755269 SHA2560077e514187a0cb326170b7b13e9e699d898a2ba10d8b4b20fa75a5cd6072b92 is mandatory.
+
+Reassembly preserves original accepted leaves and replaces only the460unrun intervals with actual new accepted/unresolved coverage. It then freezes a new all30-layer768-bit no-search checker. Sequential reusable matrix batches handle more than256checker shards, at most8at once. The original sourceguard, checker mathematics and final NON-PARTIAL gate remain unchanged. A candidate with unresolved/unrun/missing/unverified/nonfinite coverage cannot pass. Certified-negative signals trigger investigation and cannot enter the positive union.
+
+RESEARCH_PROTOCOL.md:98requires explicit additional resource authorization and retention of unrun coverage. This new authorization is that separate resource protocol. RESEARCH_PROTOCOL.md:100still prohibits historicalFOURTH; representation and derivative order remain unchanged. D2 and RH remain OPEN until their exact gates pass, and numericalD2evidence never supplies a Lean hWindows term.
+
+The new workflow is manual-only and must be reviewed and pushed before dispatch. All original protocol/history files remain unchanged.
