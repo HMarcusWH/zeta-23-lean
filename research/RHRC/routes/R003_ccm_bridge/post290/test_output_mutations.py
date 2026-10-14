@@ -64,12 +64,16 @@ def merge_fixture():
 
 def run():
     controls = fixture()
-    assert not release_gaps(*controls)
+    baseline_gaps = release_gaps(*controls)
+    if baseline_gaps:
+        raise RuntimeError('Synthetic positive baseline rejected: ' + repr(baseline_gaps))
     rejected = []
     def mutation(name, change, source=controls):
         args = deepcopy(source)
         change(args)
-        assert release_gaps(*args), name
+        mutation_gaps = release_gaps(*args)
+        if not mutation_gaps:
+            raise RuntimeError('Mutation incorrectly accepted even in optimized mode: ' + name)
         rejected.append(name)
     mutation('structure recast as theorem authority',lambda a:a[1]['definitions'][0].update(authority='PROVED'))
     mutation('structure reclassified as theorem',lambda a:a[1]['definitions'][0].update(declaration_kind='THEOREM'))
@@ -113,11 +117,15 @@ def run():
     mutation('D2 count encoded as Boolean',lambda a:a[2].update(unresolved_tiles=False))
     mutation('D2 numerical evidence relabelled Lean proof',lambda a:a[2].update(not_a_lean_proof=False))
     merge=merge_fixture()
-    assert not release_gaps(*merge), 'reviewed same-tree PR merge must preserve its distinct HEAD'
+    merge_gaps = release_gaps(*merge)
+    if merge_gaps:
+        raise RuntimeError('Valid reviewed same-tree PR merge rejected: ' + repr(merge_gaps))
     paired=deepcopy(merge)
     # Both push and PR runs can compile the same tree under distinct HEADs.
     paired[3].append(deepcopy(controls[3][0]))
-    assert not release_gaps(*paired), 'one exact compiler context must bind its matching run without relabelling the other'
+    paired_gaps = release_gaps(*paired)
+    if paired_gaps:
+        raise RuntimeError('Matching checkout was rejected: ' + repr(paired_gaps))
     mutation('synthetic merge without checkout review',lambda a:a[3][0].pop('checkout_identity_review'),merge)
     mutation('synthetic merge changed source tree',lambda a:a[3][0].update(runner_checked_tree='b'*40),merge)
     mutation('synthetic merge commit object changed',lambda a:a[3][0]['checkout_identity_review']['runner_git_commit'].update(sha='d'*40),merge)
