@@ -1,0 +1,8 @@
+'Zeta23.CCM.nativeComplexPrimeField_eq_history_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.nativeComplexIntegerDrive_eq_history_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.nativeComplexPrimeField_contDiff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.nativeComplexIntegerDrive_contDiff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.nativeComplexPrimeField_hasDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.nativeComplexPrimeField_poleImage' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.nativeComplexPrimeField_ofReal' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.nativeComplexIntegerDrive_ofReal' depends on axioms: [propext, Classical.choice, Quot.sound]

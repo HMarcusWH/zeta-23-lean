@@ -1,0 +1,20 @@
+'Zeta23.CCM.nativeCompletedInputCausalLaplaceMoment_zero_damping_shift' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.ExceptionalZero.nativeActualInputLaplace_eventuallyEq_multiplier' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.ExceptionalZero.nativeActualInputLaplace_order_of_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.ExceptionalZero.nativeCompletedInput_zeroJet_value' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.ExceptionalZero.nativeCompletedInput_zeroJet_ne_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.ExceptionalZero.nativeCompletedInput_not_mem_rangeClosure_of_offLine_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.ExceptionalZero.nativeCompletedInput_zeroJet_residual_pairing' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.ExceptionalZero.nativeCompletedInput_zeroJet_residual_lower' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

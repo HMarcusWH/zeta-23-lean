@@ -43,6 +43,22 @@ jobs:
         run: |
           set -euo pipefail
           targets=(
+            Zeta23.CCM.NativeCompletionPublicAPI
+            Zeta23.CCM.OriginalSincNativeConvolution
+            Zeta23.CCM.NativeCompactTranslateCalculus
+            Zeta23.CCM.NativeIntegerDriveFiniteOrderBounds
+            Zeta23.CCM.PoleNeutralCompactH2SourceCongruence
+            Zeta23.CCM.CanonicalPoleNeutralTrialResidualChannels
+            Zeta23.CCM.CanonicalPoleNeutralPublicAPI
+            Zeta23.CCM.OriginalDetectorOddPaddingIdentity
+            Zeta23.CCM.OriginalDetectorPaddedPhaseScalar
+            Zeta23.CCM.OriginalDetectorPaddedFiniteNativeFormConcreteRate
+            Zeta23.CCM.OriginalDetectorPaddedFinitePhysicalUnitBridge
+            Zeta23.CCM.FinitePhysicalNormalization
+            Zeta23.ExceptionalZero.UniversalSincActualVisibility
+            Zeta23.CCM.UniversalSincPhysicalBounds
+            Zeta23.ExceptionalZero.NativeAnalyticOutputSufficiency
+            Zeta23.ExceptionalZero.NativeActualInputZeroJets
             Zeta23.ExceptionalZero.NativeZeroJetAnalyticFactors
             Zeta23.ExceptionalZero.NativeRangeZeroJetObstruction
             Zeta23.ExceptionalZero.NativeOriginalSourceLaplaceVisibility

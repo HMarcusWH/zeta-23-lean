@@ -1,0 +1,15 @@
+import Zeta23.ExceptionalZero.NativeActualInputZeroJets
+
+set_option pp.fullNames true
+set_option pp.deepTerms true
+set_option pp.proofs.withType true
+set_option pp.maxSteps 1000000
+
+#check @Zeta23.CCM.nativeCompletedInputCausalLaplaceMoment_zero_damping_shift
+#check @Zeta23.ExceptionalZero.nativeActualInputLaplace_eventuallyEq_multiplier
+#check @Zeta23.ExceptionalZero.nativeActualInputLaplace_order_of_zero
+#check @Zeta23.ExceptionalZero.nativeCompletedInput_zeroJet_value
+#check @Zeta23.ExceptionalZero.nativeCompletedInput_zeroJet_ne_zero
+#check @Zeta23.ExceptionalZero.nativeCompletedInput_not_mem_rangeClosure_of_offLine_zero
+#check @Zeta23.ExceptionalZero.nativeCompletedInput_zeroJet_residual_pairing
+#check @Zeta23.ExceptionalZero.nativeCompletedInput_zeroJet_residual_lower

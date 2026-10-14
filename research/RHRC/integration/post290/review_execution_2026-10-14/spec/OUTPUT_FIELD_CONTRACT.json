@@ -1,0 +1,460 @@
+{
+  "schema": "RH_PR292_OUTPUT_FIELD_CONTRACT_1.0",
+  "native_record": "Zeta23.CCM.Step123NativeOutput beta sigma separation",
+  "generated_record": "Zeta23.ExceptionalZero.GeneratedStep123Output rho beta sigma R",
+  "shared_source": "actual fixedScale source; no arbitrary equal-named functions",
+  "one_selection_only": true,
+  "field_groups": [
+    {
+      "id": "N01",
+      "field": "source.scale",
+      "kind": "DEFINITION",
+      "exact_content": "s0=1/4096",
+      "producer": "existing UniversalSinc.fixedScale",
+      "task": "T03",
+      "consumer": "all views",
+      "caller_can_supply_unproved_bridge": false
+    },
+    {
+      "id": "N02",
+      "field": "source.q_k_j",
+      "kind": "DEFINITION",
+      "exact_content": "q=q_s0; k=Pq; j=P^2q; actual physical functions",
+      "producer": "existing UniversalSincSourceFacade + OriginalSincNativeSource",
+      "task": "T03",
+      "consumer": "source/forcing/range",
+      "caller_can_supply_unproved_bridge": false
+    },
+    {
+      "id": "N03",
+      "field": "source.properties",
+      "kind": "PROOF",
+      "exact_content": "support, realness, evenness, positivity of q, mass1, smoothness, exact transforms",
+      "producer": "existing source facade and physical identification",
+      "task": "T03",
+      "consumer": "all source consumers",
+      "caller_can_supply_unproved_bridge": false
+    },
+    {
+      "id": "N04",
+      "field": "source.bounds",
+      "kind": "PROOF",
+      "exact_content": "source-only Gevrey constants, product decay, three-term kernel L2 identity",
+      "producer": "UniversalSincPhysicalBounds",
+      "task": "T03",
+      "consumer": "finite error/normalization",
+      "caller_can_supply_unproved_bridge": false
+    },
+    {
+      "id": "N05",
+      "field": "trial.index",
+      "kind": "DEFINITION",
+      "exact_content": "a; c=1+s0; L=2a+2c; original sigma sign",
+      "producer": "existing fixedOriginalSincTrialAperture / nativeOriginalDetectorPhaseSign",
+      "task": "T04",
+      "consumer": "all finite consumers",
+      "caller_can_supply_unproved_bridge": false
+    },
+    {
+      "id": "N06",
+      "field": "trial.original",
+      "kind": "DEFINITION",
+      "exact_content": "fixedOriginalSincPhaseTrial sigmaSign a, unchanged physical coordinates",
+      "producer": "existing UniversalSincOriginalPhaseDepth",
+      "task": "T04",
+      "consumer": "M17/M21",
+      "caller_can_supply_unproved_bridge": false
+    },
+    {
+      "id": "N07",
+      "field": "trial.original_properties",
+      "kind": "PROOF",
+      "exact_content": "disjoint collars a>s0; mass1; support[1,L-1]; both elementary poles; phase parity",
+      "producer": "existing original phase proofs",
+      "task": "T04",
+      "consumer": "finite transport",
+      "caller_can_supply_unproved_bridge": false
+    },
+    {
+      "id": "N08",
+      "field": "image.raw",
+      "kind": "DEFINITION",
+      "exact_content": "literal positive DC padding, sin^8 image, P image, Kd=ceil L^4, N=Kd-4",
+      "producer": "existing padded image chain",
+      "task": "T04",
+      "consumer": "actual finite p",
+      "caller_can_supply_unproved_bridge": false
+    },
+    {
+      "id": "N09",
+      "field": "image.positive_primitive",
+      "kind": "PROOF",
+      "exact_content": "nonnegative original/even primitive; exact odd pad cancellation only",
+      "producer": "existing padded positivity + new OddPaddingIdentity",
+      "task": "T04",
+      "consumer": "phase lineage",
+      "caller_can_supply_unproved_bridge": false
+    },
+    {
+      "id": "N10",
+      "field": "image.endpoint_jets",
+      "kind": "PROOF",
+      "exact_content": "primitive derivatives0..7=0; P-image derivatives0..5=0; global hard C4",
+      "producer": "existing padded endpoint and C4 roots",
+      "task": "T04",
+      "consumer": "explicit formula/forcing",
+      "caller_can_supply_unproved_bridge": false
+    },
+    {
+      "id": "N11",
+      "field": "image.native_p",
+      "kind": "DEFINITION",
+      "exact_content": "nativeOriginalDetectorPaddedUnit sigma fixedOriginalSincLobeCenter ...",
+      "producer": "existing padded native producer",
+      "task": "T14",
+      "consumer": "stored original detector",
+      "caller_can_supply_unproved_bridge": false
+    },
+    {
+      "id": "N12",
+      "field": "image.unit_and_poles",
+      "kind": "PROOF",
+      "exact_content": "norm1; both actual profile functionals0; legal and own-parity neutral membership",
+      "producer": "existing unit/pole/carrier proofs",
+      "task": "T14",
+      "consumer": "residual and selector",
+      "caller_can_supply_unproved_bridge": false
+    },
+    {
+      "id": "N13",
+      "field": "image.physical_equality",
+      "kind": "PROOF",
+      "exact_content": "physical synthesis of N11 equals actual true-normalized physical function",
+      "producer": "FinitePhysicalNormalization + PaddedFinitePhysicalUnitBridge",
+      "task": "T04",
+      "consumer": "every source-to-vector identification",
+      "caller_can_supply_unproved_bridge": false
+    },
+    {
+      "id": "N14",
+      "field": "image.errors",
+      "kind": "PROOF",
+      "exact_content": "actual H1 and requested concrete native-form error with one common source-only threshold",
+      "producer": "existing H1 + new native-form concrete rate",
+      "task": "T04",
+      "consumer": "M17 error",
+      "caller_can_supply_unproved_bridge": false
+    },
+    {
+      "id": "N15",
+      "field": "phase.full_matrices",
+      "kind": "DEFINITION",
+      "exact_content": "actual left/right, full complex Gram and energy2x2",
+      "producer": "existing PaddedFinitePhasePlane",
+      "task": "T04",
+      "consumer": "phase evidence",
+      "caller_can_supply_unproved_bridge": false
+    },
+    {
+      "id": "N16",
+      "field": "phase.scalar_contract",
+      "kind": "PROOF",
+      "exact_content": "real circulancy; positive nu±omega; exact scalar quotient",
+      "producer": "OriginalDetectorPaddedPhaseScalar",
+      "task": "T04",
+      "consumer": "native phase outputs",
+      "caller_can_supply_unproved_bridge": false
+    },
+    {
+      "id": "N17",
+      "field": "retained.state",
+      "kind": "DATA",
+      "exact_content": "ONE DetectorRetainedSchurState on N11, with equality binding",
+      "producer": "exists_originalDetectorPaddedPhase_admissible_retained_state",
+      "task": "T14",
+      "consumer": "every retained view",
+      "caller_can_supply_unproved_bridge": false
+    },
+    {
+      "id": "N18",
+      "field": "retained.eta_lambda",
+      "kind": "PROOF",
+      "exact_content": "distinct eta and actual lambda; exact gapg and predecessor inequalities",
+      "producer": "N17.selection",
+      "task": "T14",
+      "consumer": "Schur/inverses",
+      "caller_can_supply_unproved_bridge": false
+    },
+    {
+      "id": "N19",
+      "field": "retained.inverses",
+      "kind": "DATA",
+      "exact_content": "four actual inverses;6(Kd-1)/D atlambda and12(Kd-1)/D at-eta; zero-spacecase",
+      "producer": "N17.inverses",
+      "task": "T14",
+      "consumer": "M17/Schur",
+      "caller_can_supply_unproved_bridge": false
+    },
+    {
+      "id": "N20",
+      "field": "retained.ground",
+      "kind": "DATA",
+      "exact_content": "selected parity, actual unit eigenvector atlambda, no transferred trial moments",
+      "producer": "N17.selectedGround and its checked fields",
+      "task": "T14",
+      "consumer": "selected-side branch view",
+      "caller_can_supply_unproved_bridge": false
+    },
+    {
+      "id": "N21",
+      "field": "retained.branch",
+      "kind": "PROOF",
+      "exact_content": "neutral-bottom strictEven/strictOdd/tie at sameL,K; all-vector branch facts instantiated on N20",
+      "producer": "CanonicalPoleNeutralPublicAPI",
+      "task": "T05",
+      "consumer": "branch-specific source/response",
+      "caller_can_supply_unproved_bridge": false
+    },
+    {
+      "id": "N22",
+      "field": "retained.source_correction",
+      "kind": "DEFINITION_AND_PROOF",
+      "exact_content": "actual normal alpha, quadratic coefficient b and S0=S-b alpha; rank-one identity",
+      "producer": "existing normals/intertwining + public facade",
+      "task": "T05",
+      "consumer": "moment and secular constraints",
+      "caller_can_supply_unproved_bridge": false
+    },
+    {
+      "id": "N23",
+      "field": "retained.tie",
+      "kind": "PROOF",
+      "exact_content": "kernel compatibility and positive-complement inverse with retained kernel term; no S0 nonzero",
+      "producer": "actual all-vector tie adapters",
+      "task": "T05",
+      "consumer": "singular branch",
+      "caller_can_supply_unproved_bridge": false
+    },
+    {
+      "id": "N24",
+      "field": "retained.admissible",
+      "kind": "PROOF",
+      "exact_content": "rho-free AdmissibleDetectorSelector beta L eta K; both phase unit/nonzero, not bothdeep",
+      "producer": "existing padded retained producer",
+      "task": "T14",
+      "consumer": "C-Schur universalcut",
+      "caller_can_supply_unproved_bridge": false
+    },
+    {
+      "id": "N25",
+      "field": "schur.detector",
+      "kind": "DEFINITION_AND_PROOF",
+      "exact_content": "full Kd-K+1 detector complement, shift-eta, completed square, loss>D/2",
+      "producer": "existing originalDetector_schur_completion/loss_lower",
+      "task": "T14",
+      "consumer": "C-Schur",
+      "caller_can_supply_unproved_bridge": false
+    },
+    {
+      "id": "N26",
+      "field": "schur.ground",
+      "kind": "DEFINITION_AND_PROOF",
+      "exact_content": "one-shell selected-ground equation atlambda",
+      "producer": "existing selectedGround_shiftedSchur_eq",
+      "task": "T14",
+      "consumer": "selected source record",
+      "caller_can_supply_unproved_bridge": false
+    },
+    {
+      "id": "N27",
+      "field": "residual.neutral",
+      "kind": "DEFINITION_AND_PROOF",
+      "exact_content": "own-parity neutral p residual at its own Rayleigh value, exact variance",
+      "producer": "CanonicalPoleNeutralTrialResidualChannels",
+      "task": "T06",
+      "consumer": "research signedchannels",
+      "caller_can_supply_unproved_bridge": false
+    },
+    {
+      "id": "N28",
+      "field": "residual.gram",
+      "kind": "DEFINITION_AND_PROOF",
+      "exact_content": "every actual neutral native channel and full complex off-diagonal Gram",
+      "producer": "CanonicalPoleNeutralTrialResidualChannels",
+      "task": "T06",
+      "consumer": "research signedchannels",
+      "caller_can_supply_unproved_bridge": false
+    },
+    {
+      "id": "N29",
+      "field": "native.X_U",
+      "kind": "DEFINITION_AND_PROOF",
+      "exact_content": "literal Pi*j and(tN)*j; N*X=U and actual vonMangoldt coefficients",
+      "producer": "existing native fields + convolution facade",
+      "task": "T08",
+      "consumer": "A-X/range/forcing",
+      "caller_can_supply_unproved_bridge": false
+    },
+    {
+      "id": "N30",
+      "field": "native.input_decay",
+      "kind": "PROOF",
+      "exact_content": "Existing sufficient exponential-polynomial U/stableY facts, plus the specified all-fixed-exponential-rate U export proved by finite-order summation; no A03 double-exponential claim.",
+      "producer": "existing OriginalSincDriveDecay + NativeCompletedInput + new NativeIntegerDriveFiniteOrderBounds",
+      "task": "T08",
+      "consumer": "Y L2 and transforms",
+      "caller_can_supply_unproved_bridge": false
+    },
+    {
+      "id": "N31",
+      "field": "native.a_Y",
+      "kind": "DEFINITION_AND_PROOF",
+      "exact_content": "actual floor kernel a, mass<605/621, Y=c*U, a*X=Y beforeX L2",
+      "producer": "existing completion chain + facade",
+      "task": "T08",
+      "consumer": "B-Y",
+      "caller_can_supply_unproved_bridge": false
+    },
+    {
+      "id": "N32",
+      "field": "native.transforms",
+      "kind": "PROOF",
+      "exact_content": "physical LaplaceRzeta and-Rzeta-primeJ; J oneQ; exceptionalpoint separately",
+      "producer": "existing actual complex transform chain",
+      "task": "T01",
+      "consumer": "actual zerojets",
+      "caller_can_supply_unproved_bridge": false
+    },
+    {
+      "id": "N33",
+      "field": "range.operator",
+      "kind": "DEFINITION_AND_PROOF",
+      "exact_content": "actual full-line causal L2 operator, damped kernel and bounded norm",
+      "producer": "existing NativeDampedCompletionOperator",
+      "task": "T08",
+      "consumer": "B-Y/iteration",
+      "caller_can_supply_unproved_bridge": false
+    },
+    {
+      "id": "N34",
+      "field": "range.residual_iteration",
+      "kind": "DEFINITION_AND_PROOF",
+      "exact_content": "actual finite iterations, norm loss, kernel projection invariant; nozero limit",
+      "producer": "existing NativeDampedCompletionResidual",
+      "task": "T01",
+      "consumer": "research consumer",
+      "caller_can_supply_unproved_bridge": false
+    },
+    {
+      "id": "N35",
+      "field": "forcing.direct",
+      "kind": "DEFINITION_AND_PROOF",
+      "exact_content": "actual Response(p), direct predecessor projection, equal spectralb_eta",
+      "producer": "OriginalDetectorNativeForcing",
+      "task": "T11",
+      "consumer": "same-detector response",
+      "caller_can_supply_unproved_bridge": false
+    },
+    {
+      "id": "N36",
+      "field": "forcing.source_channels",
+      "kind": "DEFINITION_AND_PROOF",
+      "exact_content": "all4literal original Fk histories, Arch response, poles, spectralshift, q*Xbridge",
+      "producer": "NativeWeilResponse + OriginalDetectorNativeForcing",
+      "task": "T11",
+      "consumer": "A/B/D observation",
+      "caller_can_supply_unproved_bridge": false
+    },
+    {
+      "id": "N37",
+      "field": "forcing.error",
+      "kind": "PROOF",
+      "exact_content": "quantified projection error withfinite-modefactor andeta; actual quartic error",
+      "producer": "OriginalDetectorNativeForcing",
+      "task": "T11",
+      "consumer": "source-preserving estimates",
+      "caller_can_supply_unproved_bridge": false
+    },
+    {
+      "id": "N38",
+      "field": "forcing.ambient_residuals",
+      "kind": "DEFINITION_AND_PROOF",
+      "exact_content": "legalprojection,pole-normal residual,neutralpart,outerGalerkin residual separately",
+      "producer": "CanonicalPhysicalTrialRealization + OriginalDetectorNativeForcing",
+      "task": "T11",
+      "consumer": "no finite-to-global substitution",
+      "caller_can_supply_unproved_bridge": false
+    },
+    {
+      "id": "N39",
+      "field": "exterior.original",
+      "kind": "DATA_AND_PROOF",
+      "exact_content": "actual original Rf interior,left,right causal exterior and reconstructions; interiornotzero",
+      "producer": "NativeExteriorSourceRecord",
+      "task": "T12",
+      "consumer": "structural view",
+      "caller_can_supply_unproved_bridge": false
+    },
+    {
+      "id": "N40",
+      "field": "exterior.history",
+      "kind": "PROOF",
+      "exact_content": "compact boundary splitting with literal interior history and exact finite cutoffs",
+      "producer": "NativeExteriorSourceRecord",
+      "task": "T12",
+      "consumer": "exterior observation",
+      "caller_can_supply_unproved_bridge": false
+    },
+    {
+      "id": "G01",
+      "field": "generated.rho",
+      "kind": "DATA",
+      "exact_content": "actual zero carrier, off-line status and beta gap",
+      "producer": "user mathematical hypotheses only",
+      "task": "T14",
+      "consumer": "generated extension",
+      "caller_can_supply_unproved_bridge": false
+    },
+    {
+      "id": "G02",
+      "field": "generated.aperture",
+      "kind": "PROOF",
+      "exact_content": "chosen a, L>max(R,4), all common thresholds paid; phasesseparatelycofinal",
+      "producer": "existing padded producer + taskT14assembly",
+      "task": "T14",
+      "consumer": "flagship",
+      "caller_can_supply_unproved_bridge": false
+    },
+    {
+      "id": "G03",
+      "field": "generated.native_packet",
+      "kind": "DATA",
+      "exact_content": "filled N01-N40 packet; no supplied missing bridges",
+      "producer": "Step123OutputProducer",
+      "task": "T14",
+      "consumer": "all routes",
+      "caller_can_supply_unproved_bridge": false
+    },
+    {
+      "id": "G04",
+      "field": "generated.range_obstruction",
+      "kind": "PROOF",
+      "exact_content": "actual reflectedzero,multiplicity,damping,witness,Ynonzerojet,range-closure nonmembership",
+      "producer": "NativeActualInputZeroJets",
+      "task": "T01",
+      "consumer": "B-Y sufficiency",
+      "caller_can_supply_unproved_bridge": false
+    }
+  ],
+  "forbidden_identifications": [
+    "original detector = selected ground",
+    "original phase = selected parity",
+    "legal carrier = neutral carrier",
+    "finite selected ground = full contact",
+    "ground lambda = -eta",
+    "depth D = opposite-parity gap",
+    "forward contraction = stable inverse",
+    "native positive probe = generated obstruction",
+    "external D2 = Lean hWindows"
+  ]
+}

@@ -1,0 +1,15 @@
+Zeta23/CCM/OriginalDetectorPaddedPhaseScalar.lean:94:34: warning: Variable name `ha` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _ha
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+'Zeta23.CCM.originalDetectorPaddedPhaseGram_real' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.originalDetectorPaddedPhaseEnergy_real' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.originalDetectorPaddedPhase_norm_sq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.originalDetectorPaddedPhase_energy' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.originalDetectorPaddedPhase_denominator_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.originalDetectorPaddedPhase_scalar_quotient' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.exists_originalDetectorPaddedPhase_positive_denominators' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

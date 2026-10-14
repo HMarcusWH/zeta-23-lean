@@ -1,0 +1,106 @@
+{
+  "task": "T08_FINITE_ORDER_SUBCOMPONENT",
+  "status": "PROVED_LOCAL_COMPONENT",
+  "whole_T08_task_status": "PARENT_OWNS_OTHER_THREE_MODULES_AND_INTEGRATION",
+  "intake_baseline_commit": "efa6ceea7bba2b34ff453a70a32a0800fee98b82",
+  "intake_baseline_tree": "511f6dc182d9a02b54e9404e93c32eb614fbff34",
+  "baseline_is_not_the_changed_source_tree": true,
+  "module": "Zeta23.CCM.NativeIntegerDriveFiniteOrderBounds",
+  "source_sha256": "b4e2280a103c293d86deafa847d974e5f78f983f5ab8c4b86a66e66c1d9af1e4",
+  "checked_source_unchanged": true,
+  "compiler": "Lean 4.33.0-rc2",
+  "mathlib_revision": "51e6992efd06126df61a496bebf8f49482a4e129",
+  "compiler_wrapper": "work/post290/run_lean.py",
+  "compiler_options": [
+    "-j",
+    "1",
+    "-DmaxHeartbeats=800000",
+    "-DrelaxedAutoImplicit=false",
+    "-Dpp.unicode.fun=true"
+  ],
+  "compiler_exit_code": 0,
+  "typed_capture_exit_code": 0,
+  "public_theorem_roots": [
+    {
+      "name": "Zeta23.CCM.nativeOriginalIntegerDrive_finiteOrder_bound",
+      "kind": "THEOREM",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "Zeta23.CCM.nativeOriginalIntegerDrive_rapid_bound",
+      "kind": "THEOREM",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    }
+  ],
+  "proof_escape_scope_files": 640,
+  "regression_exits": {
+    "ordinary_python": 0,
+    "python_O": 0
+  },
+  "files": [
+    {
+      "path": "work/post290/repo/Zeta23/CCM/NativeIntegerDriveFiniteOrderBounds.lean",
+      "sha256": "b4e2280a103c293d86deafa847d974e5f78f983f5ab8c4b86a66e66c1d9af1e4",
+      "bytes": 31663
+    },
+    {
+      "path": "work/post292audit/validation/native/T08/NativeIntegerDriveFiniteOrderBounds.log",
+      "sha256": "7edb337bebe86972ea4282d8ed385e69e108da801748c20f46049678593a0a58",
+      "bytes": 840
+    },
+    {
+      "path": "work/post292audit/validation/native/T08/T08TypedCheck.log",
+      "sha256": "ae812becdd3735a65041b85a6f395e75721754ca708064cd0d23c0b1eec5286a",
+      "bytes": 536
+    },
+    {
+      "path": "work/post292audit/validation/native/T08/T08TypedCheck.lean",
+      "sha256": "91c7c9cdee5f0d78a0ed1fcb1392fca9b9bd73200620aa53452c5adf49dd699c",
+      "bytes": 547
+    },
+    {
+      "path": "work/post292audit/validation/native/T08/proof_escape.log",
+      "sha256": "f15189131b59fe3e9794f0b13eaf585f89700033c5a520eb1f50dcac15b36bc9",
+      "bytes": 46
+    },
+    {
+      "path": "work/post292audit/validation/native/T08/test_finite_order_conventions.py",
+      "sha256": "7ca531007c15bbb6c8f20e9e2692af800ca1dc6efe8fca4796866a4594e4288b",
+      "bytes": 3677
+    },
+    {
+      "path": "work/post292audit/validation/native/T08/conventions.log",
+      "sha256": "5a368d3d820a779fa8988efb061a50f716e17af38cc68a3e5816e60488410e12",
+      "bytes": 106
+    },
+    {
+      "path": "work/post292audit/validation/native/T08/conventions_optimized.log",
+      "sha256": "ccdeed50397d60467aa49189c1602a123cebda7c5779e234842581ae9a8410b7",
+      "bytes": 106
+    },
+    {
+      "path": "work/post292audit/validation/native/T08/POST_GREEN.md",
+      "sha256": "d39af794e54c048f9b4230cb4e624f406ee5333e6f4dc960fe79612861b5f6e9",
+      "bytes": 4848
+    }
+  ],
+  "direct_consumer": {
+    "module": "Zeta23.CCM.NativeCompletionPublicAPI",
+    "status": "PENDING_PARENT_INTEGRATION"
+  },
+  "global_contract_and_remote_CI": "PENDING_PARENT_INTEGRATION",
+  "RH_status": "OPEN",
+  "closing_premises": {
+    "A-X": "OPEN",
+    "B-Y": "OPEN",
+    "C-Schur": "OPEN"
+  }
+}

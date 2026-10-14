@@ -1,0 +1,7 @@
+'Zeta23.CCM.native_divisor_convolution_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.nativePositiveCompletion_laplace' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.nativePositiveCompletion_laplace_half' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.nativePositiveCompletion_mass_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.nativeOriginal_complexPrimeField_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.nativeOriginal_complexIntegerDrive_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.nativeCompletedInput_undamped_memLp' depends on axioms: [propext, Classical.choice, Quot.sound]

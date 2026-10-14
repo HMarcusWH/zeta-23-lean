@@ -1,0 +1,39 @@
+Zeta23.ExceptionalZero.universalSincPoleKilled_visible_at_offLine_zero {s : ℝ} (hs : 0 < s)
+  (ρ : ↑Zeta23.zetaZeroConfig.carrier) (hoff : (↑ρ).re ≠ 1 / 2) :
+  Zeta23.paperFT (universalSincKernel s) (Zeta23.gammaOf ↑ρ) ≠ 0
+Zeta23.CCM.originalDetectorPaddedFinitePhysicalUnit_common_error_rates :
+  ∃ L0,
+    4 ≤ L0 ∧
+      ∀ (σ a : ℝ),
+        σ = 1 ∨ σ = -1 →
+          UniversalSinc.fixedScale < a →
+            ∀ (hL : 0 < fixedOriginalSincTrialAperture a),
+              L0 ≤ fixedOriginalSincTrialAperture a →
+                originalDetectorPhysicalH1Error (originalDetectorPaddedFinitePhysicalUnit σ a hL)
+                      (fixedOriginalSincPhaseTrial σ a) ≤
+                    fixedOriginalSincTrialAperture a ^ (17 / 2) *
+                      Real.exp
+                        (-originalDetectorRetainedDecayRate UniversalSinc.fixedScale *
+                          originalDetectorQuarticRootScale (fixedOriginalSincTrialAperture a)) ∧
+                  |originalDetectorPaddedNativeEnergy σ a hL - originalDetectorOriginalWeilEnergy σ a| ≤
+                    (1 + fixedOriginalSincTrialAperture a) * fixedOriginalSincTrialAperture a ^ (17 / 2) *
+                      Real.exp
+                        (fixedOriginalSincTrialAperture a / 2 -
+                          originalDetectorRetainedDecayRate UniversalSinc.fixedScale *
+                            originalDetectorQuarticRootScale (fixedOriginalSincTrialAperture a))
+Zeta23.CCM.originalDetectorPaddedPhase_scalar_quotient {σ : ℝ} (hσ : σ = 1 ∨ σ = -1) (L c : ℝ) (hL : 0 < L) :
+  (inner ℂ
+          ((Matrix.toEuclideanLin (canonicalSourceMatrix L (originalDetectorQuarticCutoff L)))
+            (originalDetectorPaddedFinitePhaseVector σ L c hL))
+          (originalDetectorPaddedFinitePhaseVector σ L c hL)).re /
+      ‖originalDetectorPaddedFinitePhaseVector σ L c hL‖ ^ 2 =
+    (originalDetectorPaddedPhaseD L c hL + σ * originalDetectorPaddedPhaseC L c hL) /
+      (originalDetectorPaddedPhaseNu L c hL + σ * originalDetectorPaddedPhaseOmega L c hL)
+'Zeta23.ExceptionalZero.universalSincPoleKilled_visible_at_offLine_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.CCM.originalDetectorPaddedFinitePhysicalUnit_common_error_rates' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.CCM.originalDetectorPaddedPhase_scalar_quotient' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.originalDetectorOddPadding_normalizedPhysical_eq' depends on axioms: [propext, Classical.choice, Quot.sound]

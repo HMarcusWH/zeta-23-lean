@@ -1,0 +1,28 @@
+import Zeta23.ExceptionalZero.NativeAnalyticOutputSufficiency
+
+set_option pp.fullNames true
+set_option pp.deepTerms true
+set_option pp.proofs.withType true
+set_option pp.maxSteps 1000000
+
+#print Zeta23.CCM.NativeOriginalPrimeFieldAllDampedL2
+#print Zeta23.CCM.NativeOriginalPrimeFieldAllDampedIntegral
+#print Zeta23.CCM.NativeInputAllRangeClosure
+
+#check @Zeta23.CCM.nativeOriginalDampedPrimeField_continuous
+#check @Zeta23.CCM.nativeOriginalDampedPrimeField_norm_sq
+#check @Zeta23.CCM.nativeOriginalDampedPrimeField_memLp_iff_halfLineIntegral
+#check @Zeta23.CCM.nativeOriginalPrimeField_allDampedL2_iff_integral
+#check @Zeta23.CCM.nativeInput_allRangeClosure_of_originalPrimeField_allDampedL2
+#check @Zeta23.ExceptionalZero.riemannHypothesis_of_nativeInput_allRangeClosure
+#check @Zeta23.ExceptionalZero.riemannHypothesis_of_originalPrimeField_allDampedL2
+#check @Zeta23.ExceptionalZero.riemannHypothesis_of_originalPrimeField_allDampedIntegral
+
+example : Zeta23.CCM.NativeInputAllRangeClosure → RiemannHypothesis :=
+  Zeta23.ExceptionalZero.riemannHypothesis_of_nativeInput_allRangeClosure
+
+example : Zeta23.CCM.NativeOriginalPrimeFieldAllDampedL2 → RiemannHypothesis :=
+  Zeta23.ExceptionalZero.riemannHypothesis_of_originalPrimeField_allDampedL2
+
+example : Zeta23.CCM.NativeOriginalPrimeFieldAllDampedIntegral → RiemannHypothesis :=
+  Zeta23.ExceptionalZero.riemannHypothesis_of_originalPrimeField_allDampedIntegral
