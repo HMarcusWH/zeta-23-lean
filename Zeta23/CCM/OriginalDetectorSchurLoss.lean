@@ -22,6 +22,9 @@ attribute [local reducible] Submodule.innerProductSpace
   poleNeutralEven_innerProductSpace poleNeutralOdd_innerProductSpace
   euclideanParityBoundaryFlatSubspace
 
+set_option allowUnsafeReducibility true in
+attribute [local reducible] nativeDetectorComplement
+
 private theorem nativeAdmissiblePredecessor_coercive
     (σ : ReversalParity) {β L eta : ℝ} {K : ℕ}
     (h : AdmissibleDetectorSelector β L eta K)
@@ -59,8 +62,12 @@ private theorem nativeAdmissiblePredecessor_coercive
     have hzero :
         Module.finrank ℂ (nativePoleNeutralParitySpace σ L (K - 1)) = 0 := by
       cases σ
-      · simpa [hpred] using (h.first_predecessor_empty hfirst).1
-      · simpa [hpred] using (h.first_predecessor_empty hfirst).2
+      · change Module.finrank ℂ (poleNeutralEvenSubspace L (K - 1)) = 0
+        rw [hpred]
+        exact (h.first_predecessor_empty hfirst).1
+      · change Module.finrank ℂ (poleNeutralOddSubspace L (K - 1)) = 0
+        rw [hpred]
+        exact (h.first_predecessor_empty hfirst).2
     have hv : v = 0 :=
       (finrank_zero_iff_forall_zero
         (K := ℂ) (V := nativePoleNeutralParitySpace σ L (K - 1))).mp hzero v
@@ -152,8 +159,21 @@ theorem nativeOriginalAdmissibleSchurLoss_eq_retained
     intro v
     exact (nativeAdmissibleDetectorPredecessorEquiv_actual σ h v).trans
       (nativeDetectorPredecessorEquiv_actual σ state.inverses v).symm
-  unfold nativeOriginalAdmissibleSchurLoss
-  rw [hP, ← hdet]
+  let h2 : 2 ≤ L := by linarith [h.aperture_large]
+  have hp : nativeOriginalDetectorPaddedUnit σ fixedOriginalSincLobeCenter h2 =
+      state.detector := hdet.symm
+  change -(inner ℂ
+    (isometricDetectorSchurOperator
+      (nativeDetectorPredecessorEmbedding σ state.selection)
+      (nativePoleNeutralParityShifted σ L (originalDetectorQuarticCutoff L) (-state.selection.eta))
+      (nativeAdmissibleDetectorPredecessorEquiv σ h)
+      (isometricDetectorComplementCoordinate
+        (nativeDetectorPredecessorEmbedding σ state.selection)
+        (nativeOriginalDetectorPaddedUnit σ fixedOriginalSincLobeCenter h2)))
+    (isometricDetectorComplementCoordinate
+      (nativeDetectorPredecessorEmbedding σ state.selection)
+      (nativeOriginalDetectorPaddedUnit σ fixedOriginalSincLobeCenter h2))).re = _
+  rw [hP, hp]
   rfl
 
 /-- The state-independent source loss inherits the exact
@@ -171,8 +191,7 @@ theorem nativeOriginalAdmissibleSchurLoss_gt_half_depth
       nativeOriginalAdmissibleSchurLoss σ h := by
   rw [nativeOriginalAdmissibleSchurLoss_eq_retained σ state h hdet]
   have hd := (originalDetector_schur_loss_lower state).2.2
-  dsimp at hd
-  linarith
+  simpa only [neg_neg, neg_div] using neg_lt_neg hd
 
 end Zeta23.CCM
 
