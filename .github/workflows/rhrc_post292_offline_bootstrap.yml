@@ -1,0 +1,82 @@
+name: PR292 pinned offline compiler workspace
+
+# Development transport only. This is not a release or RH validity gate.
+# No D2 dispatch, search, retry, generator write, or repository mutation occurs.
+on:
+  push:
+    branches: [research/post290-step123-output]
+    paths: [.github/workflows/rhrc_post292_offline_bootstrap.yml]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pr292-offline-bootstrap
+  cancel-in-progress: false
+
+jobs:
+  compiler-workspace:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          persist-credentials: false
+      - uses: actions/cache/restore@v4
+        with:
+          path: .lake/build
+          key: post290-components-${{ hashFiles('lean-toolchain', 'lake-manifest.json') }}-${{ github.sha }}
+          restore-keys: post290-components-${{ hashFiles('lean-toolchain', 'lake-manifest.json') }}-
+      - uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-mathlib-cache: true
+      - name: Compile existing component frontier
+        shell: bash
+        run: |
+          set -euo pipefail
+          lake build Zeta23.RHRC.Step123OutputBindings
+          python research/RHRC/closure_batch/check_lean_proof_escapes.py --scope promoted
+      - name: Package exact source separately from reusable compiler cache
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/pr292-offline
+          git archive --format=tar HEAD | zstd -T2 -3 -o /tmp/pr292-offline/source.tar.zst
+          prefix="$(lean --print-prefix)"
+          printf '%s\n' "head=$(git rev-parse HEAD)" "tree=$(git rev-parse HEAD^{tree})" > /tmp/pr292-offline/PROVENANCE.txt
+          lean --version >> /tmp/pr292-offline/PROVENANCE.txt
+          cat lean-toolchain >> /tmp/pr292-offline/PROVENANCE.txt
+          cat lake-manifest.json >> /tmp/pr292-offline/PROVENANCE.txt
+          # Only toolchain and source/build roots; no home directory, Git config,
+          # credentials, tokens, or environment dumps are included.
+          tar -C "$prefix" --exclude='*.a' --exclude='*.o' --exclude='*.c' --exclude='*.ilean' -cf - bin lib share src include | zstd -T2 -3 -o /tmp/pr292-offline/toolchain.tar.zst
+          tar --exclude='.git' --exclude='*.a' --exclude='*.o' --exclude='*.c' --exclude='*.ilean' -cf - .lake/packages .lake/build/lib .lake/lakefile.olean* | zstd -T2 -3 -o /tmp/pr292-offline/dependencies.tar.zst
+          cd /tmp/pr292-offline
+          sha256sum *.tar.zst > SHA256SUMS
+          du -h *.tar.zst
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pr292-offline-source-${{ github.sha }}
+          path: |
+            /tmp/pr292-offline/source.tar.zst
+            /tmp/pr292-offline/PROVENANCE.txt
+            /tmp/pr292-offline/SHA256SUMS
+          retention-days: 3
+          compression-level: 0
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pr292-offline-toolchain-${{ github.sha }}
+          path: /tmp/pr292-offline/toolchain.tar.zst
+          retention-days: 3
+          compression-level: 0
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pr292-offline-dependencies-${{ github.sha }}
+          path: /tmp/pr292-offline/dependencies.tar.zst
+          retention-days: 3
+          compression-level: 0
