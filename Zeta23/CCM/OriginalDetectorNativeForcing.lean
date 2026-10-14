@@ -96,8 +96,79 @@ theorem originalDetector_nativeWeil_predecessor_mixed
   originalDetector_nativeWeil_shifted_mixed σ hL Kd s.eta p
     (nativeDetectorPredecessorEmbedding σ s v)
 
+/-- The native finite predecessor forcing is the actual adjoint-projection
+of the shifted native response.  Its physical mixed pairings are fixed by
+the preceding Weil-response theorem; it is not an independently supplied
+free vector. -/
+def originalDetectorNativeForcing (σ : ReversalParity)
+    {L D : ℝ} {Kd : ℕ} {hL : 0 < L}
+    (s : NativeDeepThresholdGroundData L Kd D hL)
+    (p : nativePoleNeutralParitySpace σ L Kd) :
+    nativePoleNeutralParitySpace σ L (s.cutoff - 1) :=
+  (nativeDetectorPredecessorEmbedding σ s).toLinearMap.adjoint
+    (nativePoleNeutralParityShifted σ L Kd (-s.eta) p)
+
+/-- Physical mixed formula for the same original detector's projected
+forcing.  It keeps the full literal response and the correct +eta term. -/
+theorem originalDetectorNativeForcing_physical_mixed (σ : ReversalParity)
+    {L D : ℝ} {Kd : ℕ} {hL : 0 < L}
+    (s : NativeDeepThresholdGroundData L Kd D hL)
+    (p : nativePoleNeutralParitySpace σ L Kd)
+    (v : nativePoleNeutralParitySpace σ L (s.cutoff - 1)) :
+    inner ℂ v (originalDetectorNativeForcing σ s p) =
+      (∫ x : ℝ,
+        nativeWeilResponse
+          (finitePhysicalSynthesis L Kd
+            (canonicalNativeCoefficientInclusion σ L Kd p)) x *
+        conj (finitePhysicalSynthesis L Kd
+          (canonicalNativeCoefficientInclusion σ L Kd
+            (nativeDetectorPredecessorEmbedding σ s v)) x)) +
+      (s.eta : ℂ) * inner ℂ (nativeDetectorPredecessorEmbedding σ s v) p := by
+  let J := nativeDetectorPredecessorEmbedding σ s
+  let T := nativePoleNeutralParityShifted σ L Kd (-s.eta)
+  have hadj : inner ℂ v (J.toLinearMap.adjoint (T p)) =
+      inner ℂ (J v) (T p) := by
+    simpa only [LinearIsometry.coe_toLinearMap] using
+      (LinearMap.adjoint_inner_right J.toLinearMap v (T p))
+  change inner ℂ v (J.toLinearMap.adjoint (T p)) = _
+  exact hadj.trans (originalDetector_nativeWeil_predecessor_mixed σ s p v).symm
+
+/-- Finite block expansion of the *actual* projected original-detector
+forcing: predecessor block applied to x, plus the full orthogonal-complement
+coupling B y.  The complement may have dimension Kd-cutoff+1. -/
+theorem originalDetectorNativeForcing_eq_predecessor_plus_coupling
+    (σ : ReversalParity) {L D : ℝ} {Kd : ℕ} {hL : 0 < L}
+    {s : NativeDeepThresholdGroundData L Kd D hL}
+    (r : NativeDeepThresholdInverseData s)
+    (p : nativePoleNeutralParitySpace σ L Kd) :
+    let J := nativeDetectorPredecessorEmbedding σ s
+    let T := nativePoleNeutralParityShifted σ L Kd (-s.eta)
+    let x := J.toLinearMap.adjoint p
+    let y := isometricDetectorComplementCoordinate J p
+    originalDetectorNativeForcing σ s p =
+      nativeDetectorPredecessorEquiv σ r x + isometricDetectorCoupling J T y := by
+  let J := nativeDetectorPredecessorEmbedding σ s
+  let T := nativePoleNeutralParityShifted σ L Kd (-s.eta)
+  let x := J.toLinearMap.adjoint p
+  let y := isometricDetectorComplementCoordinate J p
+  have hsplit : J x + (y : nativePoleNeutralParitySpace σ L Kd) = p :=
+    isometricDetector_coordinate_decomposition J p
+  change J.toLinearMap.adjoint (T p) =
+    nativeDetectorPredecessorEquiv σ r x + isometricDetectorCoupling J T y
+  calc
+    J.toLinearMap.adjoint (T p) =
+        J.toLinearMap.adjoint (T (J x)) +
+          J.toLinearMap.adjoint (T (y : nativePoleNeutralParitySpace σ L Kd)) := by
+      rw [← hsplit, map_add, map_add]
+    _ = nativeDetectorPredecessorEquiv σ r x + isometricDetectorCoupling J T y := by
+      rw [← nativeDetectorPredecessorEquiv_eq_compression σ r x]
+      rfl
+
 end Zeta23.CCM
 
 #print axioms Zeta23.CCM.originalDetector_nativeWeil_mixed
 #print axioms Zeta23.CCM.originalDetector_nativeWeil_shifted_mixed
 #print axioms Zeta23.CCM.originalDetector_nativeWeil_predecessor_mixed
+
+#print axioms Zeta23.CCM.originalDetectorNativeForcing_physical_mixed
+#print axioms Zeta23.CCM.originalDetectorNativeForcing_eq_predecessor_plus_coupling
