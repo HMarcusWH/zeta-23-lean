@@ -2685,5 +2685,14 @@
       "git_source_blob": "f3167ea8e74704f9405d0f3146feea5b8d424657"
     }
   ],
-  "status": "ITERATION_FROZEN_FOR_THIRD_PARTY_REVIEW"
+  "status": "ITERATION_FROZEN_FOR_THIRD_PARTY_REVIEW",
+  "frozen_source_commit": "c5e13449c6c4fd1a334a3889b321bc8279b4c09a",
+  "frozen_source_tree": "2e85eb7500abaa1217c5dc0196f333db80bb07e2",
+  "all_listed_source_git_blobs_match_frozen_commit": true,
+  "final_local_whole_binding_attempt": {
+    "exit": 1,
+    "root_resolution": "NOT_REACHED",
+    "reason": "Missing compiled shared-cache import OriginalSincNativeMass.olean",
+    "scope": "Individual receipts preserved; no complete local final-head release receipt emitted."
+  }
 }

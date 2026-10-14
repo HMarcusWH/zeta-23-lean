@@ -539,6 +539,11 @@
       "sha256": "6ef4fea720974d88ac2332766fba2a95a91c5a8efc70efc2e7b0e48db4689be5"
     },
     {
+      "path": "final-step123-binding-attempt.log",
+      "bytes": 280,
+      "sha256": "0a9754c52621bf22ca7e7ef847c5071a4af0634de4f54303ba783c61d24d38af"
+    },
+    {
       "path": "FINAL_MODULE_ACCEPTANCE_AUDIT.md",
       "bytes": 36019,
       "sha256": "ff8251f93576307dff4a7aef959d54077a20942494890efd040c008025deb65b"
@@ -577,6 +582,26 @@
       "path": "repair-controls.log",
       "bytes": 9392,
       "sha256": "4f87f87114c3fb40f502aa254bd16ea3e67a06157e1fff7ebdf0da7bf8fab8f5"
+    },
+    {
+      "path": "REVIEW_FREEZE_WORKFLOW_D2_RESULT_REVIEW.json",
+      "bytes": 49415,
+      "sha256": "89c3be36a0257f2213614fceda425801dad65195852fd608267878008d75734c"
+    },
+    {
+      "path": "REVIEW_FREEZE_WORKFLOW_FINAL.json",
+      "bytes": 353000,
+      "sha256": "6bcf82ead11db5ba96f7d7ab5530b587cfb8bbb1f26147a63e4f6f658a7fe075"
+    },
+    {
+      "path": "REVIEW_FREEZE_WORKFLOW_FINAL.md",
+      "bytes": 9449,
+      "sha256": "f56edbc7943f282e592f5541d79f38d3ed1900ede6abaa7d0b0204d711f0e342"
+    },
+    {
+      "path": "REVIEW_FREEZE_WORKFLOW_YAML_REVIEW.json",
+      "bytes": 139819,
+      "sha256": "d169c1f3cead7831319498cf1db15a89d298cd6b46d5383fde127c823881b916"
     },
     {
       "path": "unexecuted_workflow_candidates/README.md",

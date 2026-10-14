@@ -786,6 +786,16 @@
       "first_completed_child": "Q13_even_C00_P07_R00001_P0",
       "first_completed_child_disposition": "SEARCH_PASS_16_ACCEPTED_LEAVES_FRESH_CHECK_PENDING",
       "whole_search_and_fresh_independent_check": "PENDING"
+    },
+    "review_snapshot": {
+      "snapshot": "review_2026-10-14/REVIEW_FREEZE_WORKFLOW_D2_RESULT_REVIEW.json",
+      "inspected_completed_children": 42,
+      "pass": 38,
+      "unresolved_hard_wall_timeout": 4,
+      "accepted_descendant_leaves": 1530,
+      "preserved_unresolved_descendant_leaves": 24,
+      "timeout_budgets_consumed_no_retry": true,
+      "whole_search_and_fresh_independent_check": "PENDING"
     }
   },
   "merge_policy": "Separate user merge decision; all mandatory scope complete, or explicit user-approved scope amendment retaining every unfulfilled mathematical obligation.",
@@ -1054,6 +1064,9 @@
     "next_action": "WAIT_FOR_USER_SUPPLIED_THIRD_PARTY_REVIEW",
     "local_mathematical_runners": "STOPPED",
     "approved_d2_continuation": "EXTERNAL_BOUNDED_RUN_LEFT_ACTIVE",
-    "unfinished_lean_candidate": "review_2026-10-14/unfinished_lean_candidates/OriginalDetectorPaddedFinitePhysicalUnitBridge.lean.txt"
+    "unfinished_lean_candidate": "review_2026-10-14/unfinished_lean_candidates/OriginalDetectorPaddedFinitePhysicalUnitBridge.lean.txt",
+    "main_source_commit": "c5e13449c6c4fd1a334a3889b321bc8279b4c09a",
+    "main_source_tree": "2e85eb7500abaa1217c5dc0196f333db80bb07e2",
+    "final_status": "REVIEW_FREEZE_STATUS_2026-10-14.md"
   }
 }

@@ -1,0 +1,2238 @@
+{
+  "source_commit": "c5e13449c6c4fd1a334a3889b321bc8279b4c09a",
+  "source_tree": "2e85eb7500abaa1217c5dc0196f333db80bb07e2",
+  "basis": "Exact Git source bytes parsed as YAML, including all job run commands and dependency conditions; current names classified in final snapshot.",
+  "workflows": [
+    {
+      "path": ".github/workflows/permansson-formal.yml",
+      "sha256": "71c79208d69eaef4b23c0697718edf970c5d2fa08b3ee6537f2a5035585972f6",
+      "workflow_name": "Permansson v0.1.6 formal verification",
+      "jobs": [
+        {
+          "job_id": "lean-permansson",
+          "display_name": "lean-permansson",
+          "needs": null,
+          "matrix": null,
+          "steps": [
+            {
+              "name": null,
+              "uses": "actions/checkout@v4",
+              "run": null
+            },
+            {
+              "name": null,
+              "uses": "leanprover/lean-action@v1",
+              "run": null
+            },
+            {
+              "name": "Check Permansson Theorem 3.1 measurable-space formalization",
+              "uses": null,
+              "run": "lake build Zeta23.Permansson.Theorem31"
+            },
+            {
+              "name": "Reject placeholders and extra axioms",
+              "uses": null,
+              "run": "if grep -R -n -E '\\bsorry\\b|^[[:space:]]*axiom[[:space:]]' Zeta23/Permansson --include='*.lean'; then\n  echo 'Forbidden placeholder or axiom detected'\n  exit 1\nfi\n"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": ".github/workflows/rhrc.yml",
+      "sha256": "a8fb66bada5fb104810deb38efb97fcd71cf3bc8a885c88cdef42dd2cfd4e878",
+      "workflow_name": "RHRC research and Lean checks",
+      "jobs": [
+        {
+          "job_id": "python-rhrc",
+          "display_name": "python-rhrc",
+          "needs": null,
+          "matrix": null,
+          "steps": [
+            {
+              "name": null,
+              "uses": "actions/checkout@v4",
+              "run": null
+            },
+            {
+              "name": null,
+              "uses": "actions/setup-python@v5",
+              "run": null
+            },
+            {
+              "name": "Install RHRC framework requirements",
+              "uses": null,
+              "run": "python -m pip install -r research/RHRC/requirements.txt"
+            },
+            {
+              "name": "RHRC claim and regression suite",
+              "uses": null,
+              "run": "python research/RHRC/tools/run_suite.py --skip-derived-state"
+            },
+            {
+              "name": "Control v2 real-history smoke run",
+              "uses": null,
+              "run": "python research/RHRC/control_v2/run_control.py \\\n  --output /tmp/RHRC_CONTROL_V2.json\npython - <<'PY'\nimport json\np = json.load(open('/tmp/RHRC_CONTROL_V2.json'))\nstate = json.load(open('research/RHRC/control_v2/CONTROL_STATE.json'))\ntheorem = state['merged_theorem_anchor']\nassert p['terminal_claim'] == 'RH_OPEN'\nassert p['theorem_anchor']['pr'] == theorem['pr']\nassert p['theorem_anchor']['merge_commit'] == theorem['merge_commit']\nassert p['theorem_anchor']['tree'] == theorem['tree']\nassert p['control_anchor']['pr'] == 117\nassert p['theorem_anchor']['merge_commit'] != p['control_anchor']['merge_commit']\nassert p['route_certificate']['frontier_id'] == 'FIRST_BAD_RIGIDITY_E4_A4R_REGULAR_SCHUR_ENERGY_SIGN'\nassert p['route_certificate']['selected_action'] == 'E4_A4_REGULAR_SCHUR_ENERGY_SIGN'\nassert p['selected_first_break']['break_id'] == 'E4A4-SCHUR-FB-05'\nassert p['route_certificate']['theorem_authority'] is False\nassert p['route_certificate']['terminal_claim_change'] is False\nassert all(r['search_paths'] for r in p['retro_receipts'])\nprint('Control v2 smoke: PASS')\nPY\n"
+            }
+          ]
+        },
+        {
+          "job_id": "rhkg-compiler-receipt",
+          "display_name": "rhkg-compiler-receipt",
+          "needs": null,
+          "matrix": null,
+          "steps": [
+            {
+              "name": null,
+              "uses": "actions/checkout@v4",
+              "run": null
+            },
+            {
+              "name": null,
+              "uses": "actions/setup-python@v5",
+              "run": null
+            },
+            {
+              "name": "Install RHRC framework requirements",
+              "uses": null,
+              "run": "python -m pip install -r research/RHRC/requirements.txt"
+            },
+            {
+              "name": null,
+              "uses": "leanprover/lean-action@v1",
+              "run": null
+            },
+            {
+              "name": "Build registered and derived-state Lean exporters",
+              "uses": null,
+              "run": "lake build \\\n  Zeta23.RHRC.RegisteredClaimBindings \\\n  Zeta23.RHRC.DeclarationDependencyExport \\\n  Zeta23.RHRC.SourceCandidateResolution\n"
+            },
+            {
+              "name": "Validate complete registered theorem bindings",
+              "uses": null,
+              "run": "python3 research/RHRC/tools/registered_theorem_binding_lint.py"
+            },
+            {
+              "name": "Validate committed RHKG state BEFORE any generator writes",
+              "uses": null,
+              "run": "python3 research/RHRC/tools/materialize_derived_state.py --check"
+            },
+            {
+              "name": "Verify stale RHKG cannot be accepted (adversarial source/index mutations)",
+              "uses": null,
+              "run": "python3 research/RHRC/integration/post287/test_rhkg_staleness.py"
+            },
+            {
+              "name": "Ensure validation did not modify or create derived products",
+              "uses": null,
+              "run": "set -euo pipefail\ngit diff --exit-code HEAD -- \\\n  research/RHRC/graph/compiler \\\n  research/RHRC/graph/generated \\\n  research/RHRC/integration/generated \\\n  research/RHRC/ffbbp/generated \\\n  research/RHRC/ool/generated\nif [ -n \"$(git ls-files --others --exclude-standard -- \\\n  research/RHRC/graph/compiler research/RHRC/graph/generated \\\n  research/RHRC/integration/generated research/RHRC/ffbbp/generated \\\n  research/RHRC/ool/generated)\" ]; then\n  echo \"Unexpected untracked derived outputs\" >&2\n  exit 1\nfi\n"
+            },
+            {
+              "name": "Upload exact PR-head RHKG derived state",
+              "uses": "actions/upload-artifact@v4",
+              "run": null
+            }
+          ]
+        },
+        {
+          "job_id": "r003-normalization-audit",
+          "display_name": "r003-normalization-audit",
+          "needs": null,
+          "matrix": null,
+          "steps": [
+            {
+              "name": null,
+              "uses": "actions/checkout@v4",
+              "run": null
+            },
+            {
+              "name": null,
+              "uses": "actions/setup-python@v5",
+              "run": null
+            },
+            {
+              "name": "Install R003 numerical audit requirements",
+              "uses": null,
+              "run": "python -m pip install -r research/RHRC/routes/R003_ccm_bridge/requirements.txt"
+            },
+            {
+              "name": "Re-run cutoff-free CCM normalization lock",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/compare_ccm_normalizations.py \\\n  --output /tmp/CCM_NORMALIZATION_AUDIT.json\n"
+            },
+            {
+              "name": "Check finite dictionary external oracle guards",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/check_finite_dictionary_reference.py"
+            },
+            {
+              "name": "Check source normalization semantic firewall",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/check_source_normalization_firewall.py"
+            },
+            {
+              "name": "Check post-150 selected-residual certification plumbing",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/check_post150_selected_residual_scope.py"
+            },
+            {
+              "name": "Scout post-150 selected-residual scope",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/probe_post150_selected_residual_scope.py \\\n  --q-min 2 --q-max 4 --n-min 1 --n-max 5 --samples 2 --top 12 \\\n  --output /tmp/POST150_SELECTED_RESIDUAL_DISCOVERY.json\n"
+            },
+            {
+              "name": "Replay checked-in post-150 interval certificates",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/certify_post150_selected_residual_scope.py \\\n  --input research/RHRC/routes/R003_ccm_bridge/fixtures/post150_selected_residual_v1.json \\\n  --output /tmp/POST150_SELECTED_RESIDUAL_CERTIFICATE.json\n"
+            },
+            {
+              "name": "Check post-#163 endpoint-scalar audit plumbing",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/check_post163_endpoint_scalar_scope.py"
+            },
+            {
+              "name": "Scout post-#163 endpoint-scalar scope",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/probe_post163_endpoint_scalar_scope.py \\\n  --q-min 1 --q-max 8 --samples 3 --top 12 \\\n  --output /tmp/POST163_ENDPOINT_SCALAR_DISCOVERY.json\n"
+            },
+            {
+              "name": "Replay checked-in post-#163 endpoint-scalar certificates",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/certify_post163_endpoint_scalar_scope.py \\\n  --input research/RHRC/routes/R003_ccm_bridge/fixtures/post163_endpoint_scalar_v1.json \\\n  --output /tmp/POST163_ENDPOINT_SCALAR_CERTIFICATE.json\n"
+            },
+            {
+              "name": "Check post-#165 FB-05 shifted-state plumbing",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/check_post165_fb05_shifted_state_scope.py"
+            },
+            {
+              "name": "Check post-#165 FB-05 shifted-state Arb plumbing",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/check_post165_fb05_shifted_state_arb_scope.py"
+            },
+            {
+              "name": "Scout post-#165 FB-05 same-state scope",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/probe_post165_fb05_same_state_scope.py \\\n  --q-min 1 --q-max 16 --n-min 2 --n-max 8 --samples 3 --top 12 \\\n  --output /tmp/POST165_FB05_SAME_STATE_DISCOVERY.json\n"
+            },
+            {
+              "name": "Replay checked-in post-#165 FB-05 same-state certificates",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/certify_post165_fb05_same_state_scope.py \\\n  --input research/RHRC/routes/R003_ccm_bridge/fixtures/post165_fb05_same_state_v1.json \\\n  --output /tmp/POST165_FB05_SAME_STATE_CERTIFICATE.json\n"
+            },
+            {
+              "name": "Check post-#166 Q16 cell-barrier plumbing",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/check_post166_fb05_cell_barrier_scope.py"
+            },
+            {
+              "name": "Scout post-#166 Q16 full-cell determinant barrier",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/probe_post166_fb05_cell_barrier_scope.py \\\n  --q 16 --n 3 --parity odd --grid 65 --top 12 --local-seeds 6 \\\n  --output /tmp/POST166_FB05_CELL_BARRIER_DISCOVERY.json\n"
+            },
+            {
+              "name": "Replay post-#166 Q16 adaptive Arb cell audit",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/certify_post166_fb05_cell_barrier_scope.py \\\n  --input research/RHRC/routes/R003_ccm_bridge/fixtures/post166_fb05_cell_barrier_v1.json \\\n  --max-depth 8 \\\n  --output /tmp/POST166_FB05_CELL_BARRIER_CERTIFICATE.json\n"
+            },
+            {
+              "name": "Check post-#167 cutoff-entry moment-jet algebra",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/check_post167_fb05_threshold_jet_scope.py"
+            },
+            {
+              "name": "Scout post-#167 Q17 threshold crossing",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/probe_post167_fb05_q17_threshold_scope.py \\\n  --q 17 --n 3 --parity odd --grid 65 --local-seeds 6 \\\n  --output /tmp/POST167_FB05_Q17_THRESHOLD_DISCOVERY.json\n"
+            },
+            {
+              "name": "Replay post-#167 Q17 threshold candidates",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/certify_post167_fb05_q17_threshold_scope.py \\\n  --input research/RHRC/routes/R003_ccm_bridge/fixtures/post167_fb05_q17_threshold_v1.json \\\n  --discovery /tmp/POST167_FB05_Q17_THRESHOLD_DISCOVERY.json \\\n  --output /tmp/POST167_FB05_Q17_THRESHOLD_CERTIFICATE.json\n"
+            },
+            {
+              "name": "Check post-#169 theorem-aligned Schur visibility algebra",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/check_post169_fb05_schur_visibility_scope.py"
+            },
+            {
+              "name": "Scout post-#169 threshold Schur visibility and background drift",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/probe_post169_fb05_threshold_pivot_scope.py \\\n  --q 17 --n 3 --parity odd --grid 97 \\\n  --output /tmp/POST169_FB05_SCHUR_VISIBILITY_DISCOVERY.json\n"
+            },
+            {
+              "name": "Replay post-#169 threshold Schur visibility with Arb",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/certify_post169_fb05_threshold_pivot_scope.py \\\n  --input research/RHRC/routes/R003_ccm_bridge/fixtures/post169_fb05_threshold_pivot_v1.json \\\n  --output /tmp/POST169_FB05_SCHUR_VISIBILITY_CERTIFICATE.json\n"
+            },
+            {
+              "name": "Check post-#171 threshold-barrier accounting",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/check_post171_fb05_schur_barrier_scope.py"
+            },
+            {
+              "name": "Scout post-#171 threshold-to-threshold Schur barriers",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/probe_post171_fb05_threshold_barrier_scope.py \\\n  --input research/RHRC/routes/R003_ccm_bridge/fixtures/post171_fb05_threshold_barrier_v1.json \\\n  --grid 97 --local-seeds 6 --integration-nodes 8 \\\n  --output /tmp/POST171_FB05_THRESHOLD_BARRIER_DISCOVERY.json\n"
+            },
+            {
+              "name": "Replay post-#171 dangerous barrier points with Arb",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/certify_post171_fb05_threshold_barrier_scope.py \\\n  --input research/RHRC/routes/R003_ccm_bridge/fixtures/post171_fb05_threshold_barrier_v1.json \\\n  --discovery /tmp/POST171_FB05_THRESHOLD_BARRIER_DISCOVERY.json \\\n  --output /tmp/POST171_FB05_THRESHOLD_BARRIER_CERTIFICATE.json\n"
+            },
+            {
+              "name": "Check post-#173 q13 scalar-barrier plumbing",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/check_post173_fb05_q13_scalar_barrier_scope.py"
+            },
+            {
+              "name": "Scout post-#173 q13 2x2 scalar barrier",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/probe_post173_fb05_q13_scalar_barrier_scope.py \\\n  --input research/RHRC/routes/R003_ccm_bridge/fixtures/post173_fb05_q13_scalar_barrier_v1.json \\\n  --output /tmp/POST173_Q13_SCALAR_DISCOVERY.json\n"
+            },
+            {
+              "name": "Certify post-#173 q13 scalar interval barrier",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/certify_post173_fb05_q13_scalar_barrier_scope.py \\\n  --input research/RHRC/routes/R003_ccm_bridge/fixtures/post173_fb05_q13_scalar_barrier_v1.json \\\n  --discovery /tmp/POST173_Q13_SCALAR_DISCOVERY.json \\\n  --output /tmp/POST173_Q13_SCALAR_CERTIFICATE.json\n"
+            },
+            {
+              "name": "Check post-#175 fixed-unit q13 enclosure plumbing",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/check_post175_fb05_q13_fixed_unit_enclosure_scope.py"
+            },
+            {
+              "name": "Benchmark post-#175 fixed-unit q13 enclosure",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/probe_post175_fb05_q13_fixed_unit_enclosure_scope.py \\\n  --input research/RHRC/routes/R003_ccm_bridge/fixtures/post175_fb05_q13_fixed_unit_enclosure_v1.json \\\n  --output /tmp/POST175_Q13_FIXED_UNIT_BENCHMARK.json\n"
+            },
+            {
+              "name": "Certify post-#175 fixed-unit agreement and interval-width gain",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/certify_post175_fb05_q13_fixed_unit_enclosure_scope.py \\\n  --input research/RHRC/routes/R003_ccm_bridge/fixtures/post175_fb05_q13_fixed_unit_enclosure_v1.json \\\n  --benchmark /tmp/POST175_Q13_FIXED_UNIT_BENCHMARK.json \\\n  --output /tmp/POST175_Q13_FIXED_UNIT_CERTIFICATE.json\n"
+            },
+            {
+              "name": "Check post-#177 fixed-unit derivative plumbing",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/check_post177_fb05_q13_fixed_unit_derivative_scope.py"
+            },
+            {
+              "name": "Probe post-#177 Q14 determinant derivative scope",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/probe_post177_fb05_q13_fixed_unit_derivative_scope.py \\\n  --input research/RHRC/routes/R003_ccm_bridge/fixtures/post177_fb05_q13_fixed_unit_derivative_v1.json \\\n  --output /tmp/POST177_Q14_DERIVATIVE_SCHEDULE.json\n"
+            },
+            {
+              "name": "Certify post-#177 fixed-unit derivative discrimination",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/certify_post177_fb05_q13_fixed_unit_derivative_scope.py \\\n  --input research/RHRC/routes/R003_ccm_bridge/fixtures/post177_fb05_q13_fixed_unit_derivative_v1.json \\\n  --schedule /tmp/POST177_Q14_DERIVATIVE_SCHEDULE.json \\\n  --output /tmp/POST177_Q14_DERIVATIVE_CERTIFICATE.json\n"
+            },
+            {
+              "name": "Check post-#179 Schur/correlation-preserving derivative plumbing",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/check_post179_fb05_q13_correlation_preserving_derivative_scope.py"
+            },
+            {
+              "name": "Probe post-#179 exact-center and Schur derivative scope",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/probe_post179_fb05_q13_correlation_preserving_derivative_scope.py \\\n  --input research/RHRC/routes/R003_ccm_bridge/fixtures/post179_fb05_q13_correlation_preserving_derivative_v1.json \\\n  --output /tmp/POST179_Q14_CORRELATION_SCHEDULE.json\n"
+            },
+            {
+              "name": "Certify post-#179 correlation-preserving derivative discrimination",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/certify_post179_fb05_q13_correlation_preserving_derivative_scope.py \\\n  --input research/RHRC/routes/R003_ccm_bridge/fixtures/post179_fb05_q13_correlation_preserving_derivative_v1.json \\\n  --schedule /tmp/POST179_Q14_CORRELATION_SCHEDULE.json \\\n  --output /tmp/POST179_Q14_CORRELATION_CERTIFICATE.json\n"
+            },
+            {
+              "name": "Check post-#185 remainder-drift decomposition plumbing",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/check_post185_fb05_q13_remainder_drift_scope.py"
+            },
+            {
+              "name": "Probe post-#185 frozen remainder-drift scope",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/probe_post185_fb05_q13_remainder_drift_scope.py \\\n  --input research/RHRC/routes/R003_ccm_bridge/fixtures/post185_fb05_q13_remainder_drift_v1.json \\\n  --output /tmp/POST185_Q14_REMAINDER_DRIFT_SCHEDULE.json\n"
+            },
+            {
+              "name": "Certify post-#185 remainder-drift falsification",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/certify_post185_fb05_q13_remainder_drift_scope.py \\\n  --input research/RHRC/routes/R003_ccm_bridge/fixtures/post185_fb05_q13_remainder_drift_v1.json \\\n  --schedule /tmp/POST185_Q14_REMAINDER_DRIFT_SCHEDULE.json \\\n  --output /tmp/POST185_Q14_REMAINDER_DRIFT_CERTIFICATE.json\n"
+            },
+            {
+              "name": "Check post-#187 mixed-drift selector plumbing",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/check_post187_fb05_q14_mixed_drift_selector_scope.py"
+            },
+            {
+              "name": "Probe post-#187 frozen selector scope",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/probe_post187_fb05_q14_mixed_drift_selector_scope.py \\\n  --input research/RHRC/routes/R003_ccm_bridge/fixtures/post187_fb05_q14_mixed_drift_selector_v1.json \\\n  --output /tmp/POST187_Q14_SELECTOR_SCHEDULE.json\n"
+            },
+            {
+              "name": "Certify post-#187 mixed-drift selector audit",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/certify_post187_fb05_q14_mixed_drift_selector_scope.py \\\n  --input research/RHRC/routes/R003_ccm_bridge/fixtures/post187_fb05_q14_mixed_drift_selector_v1.json \\\n  --schedule /tmp/POST187_Q14_SELECTOR_SCHEDULE.json \\\n  --output /tmp/POST187_Q14_SELECTOR_CERTIFICATE.json\n"
+            },
+            {
+              "name": "Check post-#188 selector semantic-independence plumbing",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/check_post188_fb05_q14_mixed_drift_selector_independence_scope.py"
+            },
+            {
+              "name": "Probe post-#188 frozen semantic-independence scope",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/probe_post188_fb05_q14_mixed_drift_selector_independence_scope.py \\\n  --input research/RHRC/routes/R003_ccm_bridge/fixtures/post188_fb05_q14_mixed_drift_selector_independence_v1.json \\\n  --output /tmp/POST188_Q14_SELECTOR_INDEPENDENCE_SCHEDULE.json\n"
+            },
+            {
+              "name": "Certify post-#188 selector semantic-independence audit",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/certify_post188_fb05_q14_mixed_drift_selector_independence_scope.py \\\n  --input research/RHRC/routes/R003_ccm_bridge/fixtures/post188_fb05_q14_mixed_drift_selector_independence_v1.json \\\n  --schedule /tmp/POST188_Q14_SELECTOR_INDEPENDENCE_SCHEDULE.json \\\n  --output /tmp/POST188_Q14_SELECTOR_INDEPENDENCE_CERTIFICATE.json\n"
+            },
+            {
+              "name": "Check post-#189 joint-selector separability plumbing",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/check_post189_fb05_joint_selector_separability_scope.py"
+            },
+            {
+              "name": "Probe post-#189 frozen joint-selector scope",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/probe_post189_fb05_joint_selector_separability_scope.py \\\n  --input research/RHRC/routes/R003_ccm_bridge/fixtures/post189_fb05_joint_selector_separability_v1.json \\\n  --output /tmp/POST189_FB05_JOINT_SELECTOR_SCHEDULE.json\n"
+            },
+            {
+              "name": "Certify post-#189 joint-selector separability",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/certify_post189_fb05_joint_selector_separability_scope.py \\\n  --input research/RHRC/routes/R003_ccm_bridge/fixtures/post189_fb05_joint_selector_separability_v1.json \\\n  --schedule /tmp/POST189_FB05_JOINT_SELECTOR_SCHEDULE.json \\\n  --output /tmp/POST189_FB05_JOINT_SELECTOR_CERTIFICATE.json\n"
+            },
+            {
+              "name": "Check PR #247 frozen global-bottom scout scope",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/check_post247_global_bottom_scout_scope.py"
+            },
+            {
+              "name": "Run PR #247 frozen global-bottom canonical scout",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/post247_global_bottom_scout.py > /tmp/POST247_GLOBAL_BOTTOM_SCOUT.json"
+            },
+            {
+              "name": "Run PR #247 frozen global-bottom arithmetic scout",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/post247_global_bottom_arithmetic_scout.py > /tmp/POST247_GLOBAL_BOTTOM_ARITHMETIC_SCOUT.json"
+            },
+            {
+              "name": "Assert PR #247 global-bottom scout controls and semantics",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/check_post247_global_bottom_scout_results.py"
+            },
+            {
+              "name": "Check post-#247 remainder/budget ratio scout scope and fixture",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/check_post247_remainder_budget_ratio_scope.py"
+            },
+            {
+              "name": "Replay post-#247 remainder/budget ratio scout controls (Arb)",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/check_post247_remainder_budget_ratio_results.py"
+            },
+            {
+              "name": "Run post-#247 remainder/budget ratio scout quick grid",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/post247_remainder_budget_ratio_scout.py \\\n  --quick --out /tmp/POST247_REMAINDER_BUDGET_RATIO_QUICK.json\npython - <<'PY'\nimport json\nd = json.load(open('/tmp/POST247_REMAINDER_BUDGET_RATIO_QUICK.json'))\ns = d['summary']\nassert d['claim_cap'] == 'EXPERIMENTAL_SIGNAL_ONLY'\nassert s['real_points'] == s['real_energy_certified_positive'] > 0\nassert s['A_positive_definite_everywhere'] and s['B_positive_definite_everywhere']\nassert s['planted_on_line_certified_bad'] == 0\nassert s['planted_on_line_increment_rank_one_psd_per_parity']\nassert s['planted_off_line_increment_signature_1_1_per_parity']\nassert s['planted_off_line_certified_bad'] > 0\nprint('Post-#247 ratio scout quick grid: PASS')\nPY\n"
+            },
+            {
+              "name": "Audit R004 scalar-shift invariants",
+              "uses": null,
+              "run": "python research/RHRC/routes/R004_prolate_v2/check_normalization_shift_invariants.py"
+            },
+            {
+              "name": "Reject external reference code as a Lean dependency",
+              "uses": null,
+              "run": "if grep -R -n -E 'external[/\\\\.]connes_cvs|connes_cvs' Zeta23 --include='*.lean'; then\n  echo 'External connes-cvs reference code must not enter the Lean theorem dependency graph'\n  exit 1\nfi\n"
+            }
+          ]
+        },
+        {
+          "job_id": "lean",
+          "display_name": "lean",
+          "needs": null,
+          "matrix": null,
+          "steps": [
+            {
+              "name": null,
+              "uses": "actions/checkout@v4",
+              "run": null
+            },
+            {
+              "name": null,
+              "uses": "leanprover/lean-action@v1",
+              "run": null
+            },
+            {
+              "name": "Build CCM formalization",
+              "uses": null,
+              "run": "lake build Zeta23.CCM"
+            },
+            {
+              "name": "Build promoted ClaimBindings authority surface",
+              "uses": null,
+              "run": "lake build Zeta23.CCM.ClaimBindings"
+            },
+            {
+              "name": "Validate promoted R003 theorem bindings",
+              "uses": null,
+              "run": "python3 research/RHRC/tools/promoted_binding_lint.py"
+            },
+            {
+              "name": "Build complete registered theorem authority surface",
+              "uses": null,
+              "run": "lake build Zeta23.RHRC.RegisteredClaimBindings"
+            },
+            {
+              "name": "Validate complete registered theorem bindings",
+              "uses": null,
+              "run": "python3 research/RHRC/tools/registered_theorem_binding_lint.py"
+            },
+            {
+              "name": "Build exceptional-zero foundation",
+              "uses": null,
+              "run": "lake build Zeta23.ExceptionalZero"
+            },
+            {
+              "name": "Build source-candidate compiler resolver",
+              "uses": null,
+              "run": "lake build Zeta23.RHRC.SourceCandidateResolution"
+            },
+            {
+              "name": "Build PR #247 explicit terminal target",
+              "uses": null,
+              "run": "lake build Zeta23.ExceptionalZero.GlobalParityBottomTerminalTarget"
+            },
+            {
+              "name": "Build PR #247 arithmetic-equivalence audit",
+              "uses": null,
+              "run": "lake build Zeta23.ExceptionalZero.GlobalParityBottomArithmeticEquivalenceAudit"
+            },
+            {
+              "name": "Build PR #247 audit-only conditional RH seam",
+              "uses": null,
+              "run": "lake build Zeta23.ExceptionalZero.GlobalParityBottomConditionalRH"
+            },
+            {
+              "name": "Build closure formal surface",
+              "uses": null,
+              "run": "lake build \\\n  Zeta23.CCM.SourceContraction \\\n  Zeta23.CCM.SourceContractionLocalized \\\n  Zeta23.CCM.CanonicalArchUpperBound \\\n  Zeta23.CCM.DictionaryArchFiniteDensity \\\n  Zeta23.CCM.CanonicalArchDensityClosure \\\n  Zeta23.CCM.CanonicalPoleUniformBound \\\n  Zeta23.CCM.CanonicalPoleSourceBound \\\n  Zeta23.CCM.CanonicalSmallApertureCoercivity \\\n  Zeta23.CCM.CanonicalSmallApertureGroundSpectrum \\\n  Zeta23.CCM.CanonicalPrimeSeamTaylor \\\n  Zeta23.CCM.ParityGroundPerturbation \\\n  Zeta23.CCM.ParityRayleighPerturbation \\\n  Zeta23.CCM.CanonicalSeamGroundTransfer \\\n  Zeta23.CCM.GroundComparisonPrinciple \\\n  Zeta23.CCM.CanonicalGroundPropagation \\\n  Zeta23.CCM.CanonicalAllAperturePositivity \\\n  Zeta23.CCM.CanonicalSchurCertificate \\\n  Zeta23.CCM.CanonicalModeTailBound \\\n  Zeta23.CCM.CanonicalUniformDomination \\\n  Zeta23.CCM.CanonicalFullSpaceSourceBridge \\\n  Zeta23.Spectral \\\n  Zeta23.ExceptionalZero.QuantitativeDetectorFamily \\\n  Zeta23.ExceptionalZero.QuantitativeCanonicalWitness \\\n  Zeta23.ExceptionalZero.GlobalParityBottomSignOpposition \\\n  Zeta23.CCM.ParityFirstNegativeBoundary \\\n  Zeta23.CCM.ParityZeroPlateau \\\n  Zeta23.CCM.ParityKernelTower \\\n  Zeta23.CCM.CanonicalParityFirstCrossingShell \\\n  Zeta23.CCM.FirstCrossingContactRegime \\\n  Zeta23.CCM.FirstCrossingContactEquations \\\n  Zeta23.CCM.FirstCrossingSuccessorDeterminant \\\n  Zeta23.CCM.FirstCrossingSchurReduction \\\n  Zeta23.CCM.FirstCrossingSourceDynamics \\\n  Zeta23.CCM.GlobalParityFirstNegativeBoundary \\\n  Zeta23.CCM.FirstCrossingGlobalAlignment \\\n  Zeta23.CCM.CanonicalCompressedSeamJets \\\n  Zeta23.CCM.CanonicalFrozenApertureC2 \\\n  Zeta23.CCM.CanonicalCompressedApertureC2 \\\n  Zeta23.CCM.ProductionWeightedTestCalculus \\\n  Zeta23.CCM.ProductionWeightedGlobalTests \\\n  Zeta23.CCM.ProductionNormalSourceAuthority \\\n  Zeta23.CCM.FirstCrossingProductionRemainderAuthority \\\n  Zeta23.CCM.ProductionPhysicalFunctionalCongruence \\\n  Zeta23.CCM.FirstCrossingProductionRemainderValueAuthority \\\n  Zeta23.CCM.StationarySchurContact \\\n  Zeta23.CCM.FirstCrossingInheritedStationarity \\\n  Zeta23.CCM.FirstCrossingProductionTests \\\n  Zeta23.CCM.FirstCrossingProductionRemainder \\\n  Zeta23.CCM.FirstCrossingProductionFirstVariation \\\n  Zeta23.CCM.FirstCrossingProductionResponse \\\n  Zeta23.CCM.FirstCrossingProductionCurvatureBridge \\\n  Zeta23.CCM.FirstCrossingGeneratedStrictEvenFrontier \\\n  Zeta23.ExceptionalZero.GlobalParityFirstNegativeBoundary \\\n  Zeta23.CCM.CanonicalApertureLocation \\\n  Zeta23.CCM.CanonicalInteriorFirstCrossingBarrier \\\n  Zeta23.CCM.CanonicalSeamFirstCrossingBarrier \\\n  Zeta23.CCM.CanonicalFirstCrossingBarrier \\\n  Zeta23.ExceptionalZero.CanonicalParityFirstCrossingShell \\\n  Zeta23.ExceptionalZero.CanonicalFirstCrossingConditionalRH \\\n  Zeta23.RHRC.ContactCalculusContract \\\n  Zeta23.RHRC.ClosureObligationBindings \\\n  Zeta23.RHRC.ClosureStrengthAudit\n"
+            },
+            {
+              "name": "Validate future premise-free RH closure exact type",
+              "uses": null,
+              "run": "if [ -f Zeta23/ExceptionalZero/GlobalParityBottomRHClosure.lean ]; then\n  test -f Zeta23/ExceptionalZero/GlobalParityBottomExactTypeAudit.lean\n  lake build Zeta23.ExceptionalZero.GlobalParityBottomExactTypeAudit\nelse\n  echo \"PR #247 premise-free RH closure absent: RH remains OPEN\"\nfi\n"
+            },
+            {
+              "name": "Reject forbidden placeholders in promoted and closure surfaces",
+              "uses": null,
+              "run": "python research/RHRC/closure_batch/check_lean_proof_escapes.py --scope closure\npython research/RHRC/closure_batch/check_lean_proof_escapes.py --scope promoted\n"
+            },
+            {
+              "name": "Enforce post-245 arithmetic anti-circularity firewall",
+              "uses": null,
+              "run": "python3 research/RHRC/tools/arithmetic_firewall_lint.py"
+            },
+            {
+              "name": "Enforce PR #247 Million Dollar anti-circularity firewall",
+              "uses": null,
+              "run": "python3 research/RHRC/tools/million_dollar_firewall_lint.py"
+            },
+            {
+              "name": "Audit kernel axioms of post-245 arithmetic modules",
+              "uses": null,
+              "run": "python3 research/RHRC/tools/axiom_audit.py"
+            },
+            {
+              "name": "Audit kernel axioms of PR #274 closure modules",
+              "uses": null,
+              "run": "python research/RHRC/tools/axiom_audit.py \\\n  Zeta23/CCM/CanonicalArchUpperBound.lean \\\n  Zeta23/CCM/DictionaryArchFiniteDensity.lean \\\n  Zeta23/CCM/CanonicalArchDensityClosure.lean \\\n  Zeta23/CCM/CanonicalFullSpaceSourceBridge.lean \\\n  Zeta23/CCM/CanonicalModeTailBound.lean \\\n  Zeta23/CCM/CanonicalPoleSourceBound.lean \\\n  Zeta23/CCM/CanonicalPrimeSeamTaylor.lean \\\n  Zeta23/CCM/CanonicalSchurCertificate.lean \\\n  Zeta23/CCM/CanonicalSeamGroundTransfer.lean \\\n  Zeta23/CCM/CanonicalSmallApertureCoercivity.lean \\\n  Zeta23/CCM/CanonicalSmallApertureGroundSpectrum.lean \\\n  Zeta23/CCM/CanonicalUniformDomination.lean \\\n  Zeta23/CCM/GroundComparisonPrinciple.lean \\\n  Zeta23/CCM/ParityRayleighPerturbation.lean \\\n  Zeta23/CCM/SourceContraction.lean \\\n  Zeta23/CCM/SourceContractionLocalized.lean \\\n  Zeta23/ExceptionalZero/QuantitativeDetectorFamily.lean \\\n  Zeta23/ExceptionalZero/GlobalParityBottomSignOpposition.lean \\\n  Zeta23/CCM/ParityFirstNegativeBoundary.lean \\\n  Zeta23/CCM/ParityZeroPlateau.lean \\\n  Zeta23/CCM/ParityKernelTower.lean \\\n  Zeta23/CCM/CanonicalParityFirstCrossingShell.lean \\\n  Zeta23/CCM/FirstCrossingSchurReduction.lean \\\n  Zeta23/CCM/FirstCrossingSourceDynamics.lean \\\n  Zeta23/CCM/GlobalParityFirstNegativeBoundary.lean \\\n  Zeta23/CCM/FirstCrossingGlobalAlignment.lean \\\n  Zeta23/CCM/CanonicalCompressedSeamJets.lean \\\n  Zeta23/CCM/CanonicalFrozenApertureC2.lean \\\n  Zeta23/CCM/CanonicalCompressedApertureC2.lean \\\n  Zeta23/CCM/ProductionWeightedTestCalculus.lean \\\n  Zeta23/CCM/ProductionWeightedGlobalTests.lean \\\n  Zeta23/CCM/ProductionNormalSourceAuthority.lean \\\n  Zeta23/CCM/FirstCrossingProductionRemainderAuthority.lean \\\n  Zeta23/CCM/ProductionPhysicalFunctionalCongruence.lean \\\n  Zeta23/CCM/FirstCrossingProductionRemainderValueAuthority.lean \\\n  Zeta23/CCM/StationarySchurContact.lean \\\n  Zeta23/CCM/FirstCrossingInheritedStationarity.lean \\\n  Zeta23/CCM/FirstCrossingProductionTests.lean \\\n  Zeta23/CCM/FirstCrossingProductionRemainder.lean \\\n  Zeta23/CCM/FirstCrossingProductionFirstVariation.lean \\\n  Zeta23/CCM/FirstCrossingProductionResponse.lean \\\n  Zeta23/CCM/FirstCrossingProductionCurvatureBridge.lean \\\n  Zeta23/CCM/FirstCrossingGeneratedStrictEvenFrontier.lean \\\n  Zeta23/ExceptionalZero/GlobalParityFirstNegativeBoundary.lean \\\n  Zeta23/CCM/CanonicalApertureLocation.lean \\\n  Zeta23/CCM/CanonicalInteriorFirstCrossingBarrier.lean \\\n  Zeta23/CCM/CanonicalSeamFirstCrossingBarrier.lean \\\n  Zeta23/CCM/CanonicalFirstCrossingBarrier.lean \\\n  Zeta23/ExceptionalZero/CanonicalParityFirstCrossingShell.lean \\\n  Zeta23/ExceptionalZero/CanonicalFirstCrossingConditionalRH.lean \\\n  Zeta23/RHRC/ContactCalculusContract.lean \\\n  Zeta23/RHRC/ClosureObligationBindings.lean \\\n  Zeta23/RHRC/ClosureStrengthAudit.lean \\\n  Zeta23/Spectral/CanonicalCharacteristic.lean \\\n  Zeta23/Spectral/CanonicalOperator.lean \\\n  Zeta23/Spectral/CharacteristicCompactBounds.lean \\\n  Zeta23/Spectral/CharacteristicNormalization.lean \\\n  Zeta23/Spectral/CharacteristicXiIdentification.lean \\\n  Zeta23/Spectral/RealZeroLimitTransfer.lean\n"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": ".github/workflows/rhrc_closure_campaign.yml",
+      "sha256": "61ecc78037a8d97329d54cb75a00963410e8418ab3d878d93064ee2bbf847e74",
+      "workflow_name": "RHRC parallel closure campaign",
+      "jobs": [
+        {
+          "job_id": "fast-integrity",
+          "display_name": "fast-integrity",
+          "needs": null,
+          "matrix": null,
+          "steps": [
+            {
+              "name": null,
+              "uses": "actions/checkout@v4",
+              "run": null
+            },
+            {
+              "name": null,
+              "uses": "actions/setup-python@v5",
+              "run": null
+            },
+            {
+              "name": "Install numerical research dependencies",
+              "uses": null,
+              "run": "python -m pip install -r research/RHRC/routes/R003_ccm_bridge/requirements.txt"
+            },
+            {
+              "name": "Syntax, adversarial evidence tests, and four-track research harvest",
+              "uses": null,
+              "run": "python -m compileall -q research/RHRC/closure_batch\npython -m unittest discover -s research/RHRC/closure_batch -p 'test_*.py' -v\npython research/RHRC/closure_batch/run_campaign.py --repo . --output-dir /tmp/closure-results\n"
+            },
+            {
+              "name": null,
+              "uses": "actions/upload-artifact@v4",
+              "run": null
+            }
+          ]
+        },
+        {
+          "job_id": "lean-a",
+          "display_name": "lean-a",
+          "needs": null,
+          "matrix": null,
+          "steps": [
+            {
+              "name": null,
+              "uses": "actions/checkout@v4",
+              "run": null
+            },
+            {
+              "name": null,
+              "uses": "leanprover/lean-action@v1",
+              "run": null
+            },
+            {
+              "name": "Build Track A",
+              "uses": null,
+              "run": "lake build \\\n  Zeta23.CCM.SourceContraction \\\n  Zeta23.CCM.SourceContractionLocalized \\\n  Zeta23.CCM.CanonicalArchUpperBound \\\n  Zeta23.CCM.DictionaryArchFiniteDensity \\\n  Zeta23.CCM.CanonicalArchDensityClosure \\\n  Zeta23.CCM.CanonicalSmallApertureGroundSpectrum \\\n  Zeta23.CCM.CanonicalPoleUniformBound \\\n  Zeta23.CCM.CanonicalPoleSourceBound \\\n  Zeta23.CCM.CanonicalSmallApertureCoercivity \\\n  Zeta23.CCM.CanonicalPrimeSeamTaylor \\\n  Zeta23.CCM.ParityGroundPerturbation \\\n  Zeta23.CCM.ParityRayleighPerturbation \\\n  Zeta23.CCM.CanonicalSeamGroundTransfer \\\n  Zeta23.CCM.GroundComparisonPrinciple \\\n  Zeta23.CCM.CanonicalGroundPropagation \\\n  Zeta23.CCM.CanonicalAllAperturePositivity\n"
+            },
+            {
+              "name": "Audit Track A theorem axioms",
+              "uses": null,
+              "run": "python research/RHRC/tools/axiom_audit.py \\\n  Zeta23/CCM/CanonicalArchUpperBound.lean \\\n  Zeta23/CCM/DictionaryArchFiniteDensity.lean \\\n  Zeta23/CCM/CanonicalArchDensityClosure.lean \\\n  Zeta23/CCM/CanonicalSmallApertureGroundSpectrum.lean \\\n  Zeta23/CCM/CanonicalPoleSourceBound.lean \\\n  Zeta23/CCM/CanonicalPrimeSeamTaylor.lean \\\n  Zeta23/CCM/CanonicalSeamGroundTransfer.lean \\\n  Zeta23/CCM/CanonicalSmallApertureCoercivity.lean \\\n  Zeta23/CCM/GroundComparisonPrinciple.lean \\\n  Zeta23/CCM/ParityRayleighPerturbation.lean \\\n  Zeta23/CCM/SourceContraction.lean \\\n  Zeta23/CCM/SourceContractionLocalized.lean\n"
+            }
+          ]
+        },
+        {
+          "job_id": "lean-b",
+          "display_name": "lean-b",
+          "needs": null,
+          "matrix": null,
+          "steps": [
+            {
+              "name": null,
+              "uses": "actions/checkout@v4",
+              "run": null
+            },
+            {
+              "name": null,
+              "uses": "leanprover/lean-action@v1",
+              "run": null
+            },
+            {
+              "name": "Build Track B",
+              "uses": null,
+              "run": "lake build Zeta23.CCM.CanonicalSchurCertificate\nlake build Zeta23.CCM.CanonicalModeTailBound\nlake build Zeta23.CCM.CanonicalUniformDomination\n"
+            },
+            {
+              "name": "Audit Track B theorem axioms",
+              "uses": null,
+              "run": "python research/RHRC/tools/axiom_audit.py \\\n  Zeta23/CCM/CanonicalSchurCertificate.lean \\\n  Zeta23/CCM/CanonicalModeTailBound.lean \\\n  Zeta23/CCM/CanonicalUniformDomination.lean\n"
+            }
+          ]
+        },
+        {
+          "job_id": "lean-c",
+          "display_name": "lean-c",
+          "needs": null,
+          "matrix": null,
+          "steps": [
+            {
+              "name": null,
+              "uses": "actions/checkout@v4",
+              "run": null
+            },
+            {
+              "name": null,
+              "uses": "leanprover/lean-action@v1",
+              "run": null
+            },
+            {
+              "name": "Build Track C",
+              "uses": null,
+              "run": "lake build Zeta23.CCM.CanonicalFullSpaceSourceBridge\nlake build Zeta23.Spectral\n"
+            },
+            {
+              "name": "Audit Track C theorem axioms",
+              "uses": null,
+              "run": "python research/RHRC/tools/axiom_audit.py \\\n  Zeta23/CCM/CanonicalFullSpaceSourceBridge.lean \\\n  Zeta23/Spectral/CanonicalCharacteristic.lean \\\n  Zeta23/Spectral/CanonicalOperator.lean \\\n  Zeta23/Spectral/CharacteristicCompactBounds.lean \\\n  Zeta23/Spectral/CharacteristicNormalization.lean \\\n  Zeta23/Spectral/CharacteristicXiIdentification.lean \\\n  Zeta23/Spectral/RealZeroLimitTransfer.lean\n"
+            }
+          ]
+        },
+        {
+          "job_id": "lean-d-bindings",
+          "display_name": "lean-d-bindings",
+          "needs": null,
+          "matrix": null,
+          "steps": [
+            {
+              "name": null,
+              "uses": "actions/checkout@v4",
+              "run": null
+            },
+            {
+              "name": null,
+              "uses": "leanprover/lean-action@v1",
+              "run": null
+            },
+            {
+              "name": "Build Track D and exact obligation bindings",
+              "uses": null,
+              "run": "lake build Zeta23.ExceptionalZero.QuantitativeDetectorFamily\nlake build Zeta23.ExceptionalZero.QuantitativeCanonicalWitness\nlake build Zeta23.RHRC.ClosureObligationBindings\n"
+            },
+            {
+              "name": "Reject proof escapes in closure-campaign modules",
+              "uses": null,
+              "run": "python research/RHRC/closure_batch/check_lean_proof_escapes.py --scope closure"
+            },
+            {
+              "name": "Audit Track D and obligation-binding theorem axioms",
+              "uses": null,
+              "run": "python research/RHRC/tools/axiom_audit.py \\\n  Zeta23/ExceptionalZero/QuantitativeDetectorFamily.lean \\\n  Zeta23/RHRC/ClosureObligationBindings.lean\n"
+            }
+          ]
+        },
+        {
+          "job_id": "lean-strength-audit",
+          "display_name": "lean-strength-audit",
+          "needs": null,
+          "matrix": null,
+          "steps": [
+            {
+              "name": null,
+              "uses": "actions/checkout@v4",
+              "run": null
+            },
+            {
+              "name": null,
+              "uses": "leanprover/lean-action@v1",
+              "run": null
+            },
+            {
+              "name": "Build post-#276 sign opposition and terminal-strength audits",
+              "uses": null,
+              "run": "lake build Zeta23.ExceptionalZero.GlobalParityBottomSignOpposition\nlake build Zeta23.RHRC.ClosureStrengthAudit\n"
+            },
+            {
+              "name": "Audit post-#276 sign-opposition/strength theorem axioms",
+              "uses": null,
+              "run": "python research/RHRC/tools/axiom_audit.py \\\n  Zeta23/ExceptionalZero/GlobalParityBottomSignOpposition.lean \\\n  Zeta23/RHRC/ClosureStrengthAudit.lean\n"
+            }
+          ]
+        },
+        {
+          "job_id": "lean-contact",
+          "display_name": "lean-contact",
+          "needs": null,
+          "matrix": null,
+          "steps": [
+            {
+              "name": null,
+              "uses": "actions/checkout@v4",
+              "run": null
+            },
+            {
+              "name": null,
+              "uses": "leanprover/lean-action@v1",
+              "run": null
+            },
+            {
+              "name": "Build post-#277 fixed-N zero-contact surface",
+              "uses": null,
+              "run": "lake build Zeta23.CCM.CanonicalGroundContinuity\nlake build Zeta23.CCM.GlobalParityBottomFirstContact\nlake build Zeta23.CCM.GlobalParityBottomContactNormalForm\nlake build Zeta23.ExceptionalZero.GlobalParityBottomFirstContact\n"
+            },
+            {
+              "name": "Audit post-#277 zero-contact theorem axioms",
+              "uses": null,
+              "run": "python research/RHRC/tools/axiom_audit.py \\\n  Zeta23/CCM/CanonicalGroundContinuity.lean \\\n  Zeta23/CCM/GlobalParityBottomFirstContact.lean \\\n  Zeta23/CCM/GlobalParityBottomContactNormalForm.lean \\\n  Zeta23/ExceptionalZero/GlobalParityBottomFirstContact.lean\n"
+            }
+          ]
+        },
+        {
+          "job_id": "lean-first-crossing",
+          "display_name": "lean-first-crossing",
+          "needs": null,
+          "matrix": null,
+          "steps": [
+            {
+              "name": null,
+              "uses": "actions/checkout@v4",
+              "run": null
+            },
+            {
+              "name": null,
+              "uses": "leanprover/lean-action@v1",
+              "run": null
+            },
+            {
+              "name": "Build post-#278 parity first-crossing reduction",
+              "uses": null,
+              "run": "lake build Zeta23.CCM.ParityFirstNegativeBoundary\nlake build Zeta23.CCM.ParityZeroPlateau\nlake build Zeta23.CCM.ParityKernelTower\nlake build Zeta23.CCM.CanonicalParityFirstCrossingShell\nlake build Zeta23.CCM.FirstCrossingContactRegime\nlake build Zeta23.CCM.FirstCrossingContactEquations\nlake build Zeta23.CCM.FirstCrossingSuccessorDeterminant\nlake build Zeta23.CCM.FirstCrossingSchurReduction\nlake build Zeta23.CCM.FirstCrossingSourceDynamics\nlake build Zeta23.CCM.FirstCrossingBranchBridge\nlake build Zeta23.CCM.FirstCrossingLiftedFeatures\nlake build Zeta23.CCM.FirstCrossingStructuralCompatibility\nlake build Zeta23.CCM.FirstCrossingArithmeticCompatibility\nlake build Zeta23.CCM.FirstCrossingSourceCertificate\nlake build Zeta23.CCM.FirstCrossingSourceQuotient\nlake build Zeta23.CCM.FirstCrossingStrictEvenSourceEnergy\nlake build Zeta23.CCM.FirstCrossingOptimizedCurvatureAlgebra\nlake build Zeta23.CCM.FirstCrossingProductionArithmetic\nlake build Zeta23.CCM.FirstCrossingProductionSaturation\nlake build Zeta23.CCM.GlobalParityFirstNegativeBoundary\nlake build Zeta23.CCM.FirstCrossingGlobalAlignment\nlake build Zeta23.CCM.CanonicalCompressedSeamJets\nlake build Zeta23.CCM.CanonicalFrozenApertureC2\nlake build Zeta23.CCM.CanonicalCompressedApertureC2\nlake build Zeta23.CCM.ProductionWeightedTestCalculus\nlake build Zeta23.CCM.ProductionWeightedGlobalTests\nlake build Zeta23.CCM.ProductionNormalSourceAuthority\nlake build Zeta23.CCM.FirstCrossingProductionRemainderAuthority\nlake build Zeta23.CCM.ProductionPhysicalFunctionalCongruence\nlake build Zeta23.CCM.FirstCrossingProductionRemainderValueAuthority\nlake build Zeta23.CCM.StationarySchurContact\nlake build Zeta23.CCM.FirstCrossingInheritedStationarity\nlake build Zeta23.CCM.FirstCrossingProductionTests\nlake build Zeta23.CCM.FirstCrossingProductionRemainder\nlake build Zeta23.CCM.FirstCrossingProductionFirstVariation\nlake build Zeta23.CCM.FirstCrossingProductionResponse\nlake build Zeta23.CCM.FirstCrossingProductionCurvatureBridge\nlake build Zeta23.CCM.FirstCrossingGeneratedStrictEvenFrontier\nlake build Zeta23.ExceptionalZero.GlobalParityFirstNegativeBoundary\nlake build Zeta23.CCM.CanonicalApertureLocation\nlake build Zeta23.CCM.CanonicalInteriorFirstCrossingBarrier\nlake build Zeta23.CCM.CanonicalSeamFirstCrossingBarrier\nlake build Zeta23.CCM.CanonicalFirstCrossingBarrier\nlake build Zeta23.ExceptionalZero.CanonicalParityFirstCrossingShell\nlake build Zeta23.ExceptionalZero.CanonicalFirstCrossingConditionalRH\n"
+            },
+            {
+              "name": "Audit post-#278 first-crossing theorem axioms",
+              "uses": null,
+              "run": "python research/RHRC/tools/axiom_audit.py \\\n  Zeta23/CCM/ParityFirstNegativeBoundary.lean \\\n  Zeta23/CCM/ParityZeroPlateau.lean \\\n  Zeta23/CCM/ParityKernelTower.lean \\\n  Zeta23/CCM/CanonicalParityFirstCrossingShell.lean \\\n  Zeta23/CCM/FirstCrossingContactRegime.lean \\\n  Zeta23/CCM/FirstCrossingContactEquations.lean \\\n  Zeta23/CCM/FirstCrossingSuccessorDeterminant.lean \\\n  Zeta23/CCM/FirstCrossingSchurReduction.lean \\\n  Zeta23/CCM/FirstCrossingSourceDynamics.lean \\\n  Zeta23/CCM/FirstCrossingBranchBridge.lean \\\n  Zeta23/CCM/FirstCrossingLiftedFeatures.lean \\\n  Zeta23/CCM/FirstCrossingStructuralCompatibility.lean \\\n  Zeta23/CCM/FirstCrossingArithmeticCompatibility.lean \\\n  Zeta23/CCM/FirstCrossingSourceCertificate.lean \\\n  Zeta23/CCM/FirstCrossingSourceQuotient.lean \\\n  Zeta23/CCM/FirstCrossingStrictEvenSourceEnergy.lean \\\n  Zeta23/CCM/FirstCrossingOptimizedCurvatureAlgebra.lean \\\n  Zeta23/CCM/FirstCrossingProductionArithmetic.lean \\\n  Zeta23/CCM/FirstCrossingProductionSaturation.lean \\\n  Zeta23/CCM/GlobalParityFirstNegativeBoundary.lean \\\n  Zeta23/CCM/FirstCrossingGlobalAlignment.lean \\\n  Zeta23/CCM/CanonicalCompressedSeamJets.lean \\\n  Zeta23/CCM/CanonicalFrozenApertureC2.lean \\\n  Zeta23/CCM/CanonicalCompressedApertureC2.lean \\\n  Zeta23/CCM/ProductionWeightedTestCalculus.lean \\\n  Zeta23/CCM/ProductionWeightedGlobalTests.lean \\\n  Zeta23/CCM/ProductionNormalSourceAuthority.lean \\\n  Zeta23/CCM/FirstCrossingProductionRemainderAuthority.lean \\\n  Zeta23/CCM/ProductionPhysicalFunctionalCongruence.lean \\\n  Zeta23/CCM/FirstCrossingProductionRemainderValueAuthority.lean \\\n  Zeta23/CCM/StationarySchurContact.lean \\\n  Zeta23/CCM/FirstCrossingInheritedStationarity.lean \\\n  Zeta23/CCM/FirstCrossingProductionTests.lean \\\n  Zeta23/CCM/FirstCrossingProductionRemainder.lean \\\n  Zeta23/CCM/FirstCrossingProductionFirstVariation.lean \\\n  Zeta23/CCM/FirstCrossingProductionResponse.lean \\\n  Zeta23/CCM/FirstCrossingProductionCurvatureBridge.lean \\\n  Zeta23/CCM/FirstCrossingGeneratedStrictEvenFrontier.lean \\\n  Zeta23/ExceptionalZero/GlobalParityFirstNegativeBoundary.lean \\\n  Zeta23/CCM/CanonicalApertureLocation.lean \\\n  Zeta23/CCM/CanonicalInteriorFirstCrossingBarrier.lean \\\n  Zeta23/CCM/CanonicalSeamFirstCrossingBarrier.lean \\\n  Zeta23/CCM/CanonicalFirstCrossingBarrier.lean \\\n  Zeta23/ExceptionalZero/CanonicalParityFirstCrossingShell.lean \\\n  Zeta23/ExceptionalZero/CanonicalFirstCrossingConditionalRH.lean\n"
+            }
+          ]
+        },
+        {
+          "job_id": "campaign-complete",
+          "display_name": "campaign-complete",
+          "needs": [
+            "fast-integrity",
+            "lean-a",
+            "lean-b",
+            "lean-c",
+            "lean-d-bindings",
+            "lean-strength-audit",
+            "lean-contact",
+            "lean-first-crossing"
+          ],
+          "matrix": null,
+          "steps": [
+            {
+              "name": null,
+              "uses": null,
+              "run": "echo 'Parallel closure campaign completed; theorem and research dispositions remain separately classified.'"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": ".github/workflows/rhrc_post190_canonical_realizability.yml",
+      "sha256": "7b26143d06d6b7b685aecbd3d664a1f39507952d9e1a9908deafeb9b2b36bca9",
+      "workflow_name": "RHRC post-190 canonical realizability audit",
+      "jobs": [
+        {
+          "job_id": "post190-canonical-realizability",
+          "display_name": "post190-canonical-realizability",
+          "needs": null,
+          "matrix": null,
+          "steps": [
+            {
+              "name": null,
+              "uses": "actions/checkout@v4",
+              "run": null
+            },
+            {
+              "name": null,
+              "uses": "actions/setup-python@v5",
+              "run": null
+            },
+            {
+              "name": "Install R003 numerical audit requirements",
+              "uses": null,
+              "run": "python -m pip install -r research/RHRC/routes/R003_ccm_bridge/requirements.txt"
+            },
+            {
+              "name": "Check post-#190 canonical-realizability plumbing",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/check_post190_fb05_canonical_realizability_scope.py"
+            },
+            {
+              "name": "Probe post-#190 canonical-realizability scope",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/probe_post190_fb05_canonical_realizability_scope.py \\\n  --input research/RHRC/routes/R003_ccm_bridge/fixtures/post190_fb05_canonical_realizability_v1.json \\\n  --output /tmp/POST190_FB05_CANONICAL_REALIZABILITY_SCHEDULE.json\n"
+            },
+            {
+              "name": "Certify post-#190 canonical realizability",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/certify_post190_fb05_canonical_realizability_scope.py \\\n  --input research/RHRC/routes/R003_ccm_bridge/fixtures/post190_fb05_canonical_realizability_v1.json \\\n  --schedule /tmp/POST190_FB05_CANONICAL_REALIZABILITY_SCHEDULE.json \\\n  --output /tmp/POST190_FB05_CANONICAL_REALIZABILITY_CERTIFICATE.json\n"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": ".github/workflows/rhrc_post192_parity_trajectory_rigidity.yml",
+      "sha256": "f4f7c315c69356eb8121c5bfa546080f1e761220efaa45de0fc73437e7b346a1",
+      "workflow_name": "RHRC post-192 parity trajectory rigidity",
+      "jobs": [
+        {
+          "job_id": "post192-parity-trajectory-rigidity",
+          "display_name": "post192-parity-trajectory-rigidity",
+          "needs": null,
+          "matrix": null,
+          "steps": [
+            {
+              "name": null,
+              "uses": "actions/checkout@v4",
+              "run": null
+            },
+            {
+              "name": null,
+              "uses": "actions/setup-python@v5",
+              "run": null
+            },
+            {
+              "name": "Install R003 numerical audit requirements",
+              "uses": null,
+              "run": "python -m pip install -r research/RHRC/routes/R003_ccm_bridge/requirements.txt"
+            },
+            {
+              "name": "Check post-#192 parity-trajectory plumbing",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/check_post192_fb05_q14_parity_trajectory_rigidity_scope.py"
+            },
+            {
+              "name": "Probe post-#192 parity-trajectory scope",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/probe_post192_fb05_q14_parity_trajectory_rigidity_scope.py \\\n  --input research/RHRC/routes/R003_ccm_bridge/fixtures/post192_fb05_q14_parity_trajectory_rigidity_v1.json \\\n  --output /tmp/POST192_FB05_Q14_PARITY_TRAJECTORY_SCHEDULE.json\n"
+            },
+            {
+              "name": "Certify post-#192 parity trajectory rigidity",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/certify_post192_fb05_q14_parity_trajectory_rigidity_scope.py \\\n  --input research/RHRC/routes/R003_ccm_bridge/fixtures/post192_fb05_q14_parity_trajectory_rigidity_v1.json \\\n  --schedule /tmp/POST192_FB05_Q14_PARITY_TRAJECTORY_SCHEDULE.json \\\n  --output /tmp/POST192_FB05_Q14_PARITY_TRAJECTORY_CERTIFICATE.json\n"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": ".github/workflows/rhrc_post194_parity_trajectory_sharp_enclosure.yml",
+      "sha256": "98d27f8d43bc7c835766f9568714f270275fb4aa920e1d04ffeef1107137064e",
+      "workflow_name": "RHRC post-194 parity trajectory sharp enclosure",
+      "jobs": [
+        {
+          "job_id": "post194-parity-trajectory-sharp-enclosure",
+          "display_name": "post194-parity-trajectory-sharp-enclosure",
+          "needs": null,
+          "matrix": null,
+          "steps": [
+            {
+              "name": null,
+              "uses": "actions/checkout@v4",
+              "run": null
+            },
+            {
+              "name": null,
+              "uses": "actions/setup-python@v5",
+              "run": null
+            },
+            {
+              "name": "Install R003 numerical audit requirements",
+              "uses": null,
+              "run": "python -m pip install -r research/RHRC/routes/R003_ccm_bridge/requirements.txt"
+            },
+            {
+              "name": "Check canonical second-aperture derivative implementation",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/check_post194_fb05_q14_fixed_unit_second_derivative_scope.py"
+            },
+            {
+              "name": "Check post-#194 sharp trajectory plumbing",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/check_post194_fb05_q14_parity_trajectory_sharp_enclosure_scope.py"
+            },
+            {
+              "name": "Probe post-#194 frozen sharp trajectory scope",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/probe_post194_fb05_q14_parity_trajectory_sharp_enclosure_scope.py \\\n  --input research/RHRC/routes/R003_ccm_bridge/fixtures/post194_fb05_q14_parity_trajectory_sharp_enclosure_v1.json \\\n  --output /tmp/POST194_FB05_Q14_PARITY_TRAJECTORY_SHARP_SCHEDULE.json\n"
+            },
+            {
+              "name": "Certify post-#194 sharp parity trajectory enclosure",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/certify_post194_fb05_q14_parity_trajectory_sharp_enclosure_scope.py \\\n  --input research/RHRC/routes/R003_ccm_bridge/fixtures/post194_fb05_q14_parity_trajectory_sharp_enclosure_v1.json \\\n  --schedule /tmp/POST194_FB05_Q14_PARITY_TRAJECTORY_SHARP_SCHEDULE.json \\\n  --output /tmp/POST194_FB05_Q14_PARITY_TRAJECTORY_SHARP_CERTIFICATE.json\n"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": ".github/workflows/rhrc_post196_q14_residual_cell_replay.yml",
+      "sha256": "85ab1134a7e2709e40c00b7cd9b69db1ec08978cb47987218bd6ae3b2f7402fc",
+      "workflow_name": "RHRC post-196 Q14 residual cell replay",
+      "jobs": [
+        {
+          "job_id": "post196-q14-residual-cell-replay",
+          "display_name": "post196-q14-residual-cell-replay",
+          "needs": null,
+          "matrix": null,
+          "steps": [
+            {
+              "name": null,
+              "uses": "actions/checkout@v4",
+              "run": null
+            },
+            {
+              "name": null,
+              "uses": "actions/setup-python@v5",
+              "run": null
+            },
+            {
+              "name": "Install R003 numerical audit requirements",
+              "uses": null,
+              "run": "python -m pip install -r research/RHRC/routes/R003_ccm_bridge/requirements.txt"
+            },
+            {
+              "name": "Check post-#196 residual-cell replay scope",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/check_post196_fb05_q14_residual_cell_replay_scope.py"
+            },
+            {
+              "name": "Probe frozen post-#196 residual-cell replay schedule",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/probe_post196_fb05_q14_residual_cell_replay_scope.py \\\n  --input research/RHRC/routes/R003_ccm_bridge/fixtures/post196_fb05_q14_residual_cell_replay_v1.json \\\n  --output /tmp/POST196_FB05_Q14_RESIDUAL_CELL_REPLAY_SCHEDULE.json\n"
+            },
+            {
+              "name": "Certify unique post-#195 budget-leaf replay",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/certify_post196_fb05_q14_residual_cell_replay_scope.py \\\n  --input research/RHRC/routes/R003_ccm_bridge/fixtures/post196_fb05_q14_residual_cell_replay_v1.json \\\n  --schedule /tmp/POST196_FB05_Q14_RESIDUAL_CELL_REPLAY_SCHEDULE.json \\\n  --output /tmp/POST196_FB05_Q14_RESIDUAL_CELL_REPLAY_CERTIFICATE.json\n"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": ".github/workflows/rhrc_post198_q14_parity_source_mechanism.yml",
+      "sha256": "ed0656ea0b9a6953f461b6ff361989e086b95c71d1740352ada78db91c2438a4",
+      "workflow_name": "RHRC post-198 Q14 parity source mechanism",
+      "jobs": [
+        {
+          "job_id": "post198-q14-source-mechanism",
+          "display_name": "post198-q14-source-mechanism",
+          "needs": null,
+          "matrix": null,
+          "steps": [
+            {
+              "name": null,
+              "uses": "actions/checkout@v4",
+              "run": null
+            },
+            {
+              "name": null,
+              "uses": "actions/setup-python@v5",
+              "run": null
+            },
+            {
+              "name": "Install R003 numerical audit requirements",
+              "uses": null,
+              "run": "python -m pip install -r research/RHRC/routes/R003_ccm_bridge/requirements.txt"
+            },
+            {
+              "name": "Check four-way second-derivative channel implementation",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/check_post198_fb05_q14_four_way_channel_second_derivative_scope.py"
+            },
+            {
+              "name": "Check post-#198 source-mechanism scope",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/check_post198_fb05_q14_parity_source_mechanism_scope.py"
+            },
+            {
+              "name": "Probe post-#198 source-mechanism schedule",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/probe_post198_fb05_q14_parity_source_mechanism_scope.py \\\n  --input research/RHRC/routes/R003_ccm_bridge/fixtures/post198_fb05_q14_parity_source_mechanism_v1.json \\\n  --output /tmp/POST198_FB05_Q14_PARITY_SOURCE_MECHANISM_SCHEDULE.json\n"
+            },
+            {
+              "name": "Certify post-#198 Q14 parity source mechanism",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/certify_post198_fb05_q14_parity_source_mechanism_scope.py \\\n  --input research/RHRC/routes/R003_ccm_bridge/fixtures/post198_fb05_q14_parity_source_mechanism_v1.json \\\n  --schedule /tmp/POST198_FB05_Q14_PARITY_SOURCE_MECHANISM_SCHEDULE.json \\\n  --output /tmp/POST198_FB05_Q14_PARITY_SOURCE_MECHANISM_CERTIFICATE.json\n"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": ".github/workflows/rhrc_post200_q14_discrepancy_mechanism.yml",
+      "sha256": "5eaa6d0711cf59660ceb75f24ae48d3619cd392b14c9845a713d4a7f5a230ee6",
+      "workflow_name": "RHRC post-200 Q14 discrepancy mechanism",
+      "jobs": [
+        {
+          "job_id": "post200-q14-discrepancy-mechanism",
+          "display_name": "post200-q14-discrepancy-mechanism",
+          "needs": null,
+          "matrix": null,
+          "steps": [
+            {
+              "name": null,
+              "uses": "actions/checkout@v4",
+              "run": null
+            },
+            {
+              "name": null,
+              "uses": "actions/setup-python@v5",
+              "run": null
+            },
+            {
+              "name": "Install R003 numerical audit requirements",
+              "uses": null,
+              "run": "python -m pip install -r research/RHRC/routes/R003_ccm_bridge/requirements.txt"
+            },
+            {
+              "name": "Recheck inherited four-way second-derivative implementation",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/check_post198_fb05_q14_four_way_channel_second_derivative_scope.py"
+            },
+            {
+              "name": "Recheck inherited post-#199 source-mechanism scope firewall",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/check_post198_fb05_q14_parity_source_mechanism_scope.py"
+            },
+            {
+              "name": "Check post-#200 paired discrepancy channel jets",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/check_post200_fb05_q14_discrepancy_channel_jets_scope.py"
+            },
+            {
+              "name": "Check post-#200 discrepancy mechanism scope",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/check_post200_fb05_q14_discrepancy_mechanism_scope.py"
+            },
+            {
+              "name": "Probe post-#200 discrepancy mechanism schedule",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/probe_post200_fb05_q14_discrepancy_mechanism_scope.py \\\n  --input research/RHRC/routes/R003_ccm_bridge/fixtures/post200_fb05_q14_discrepancy_mechanism_v1.json \\\n  --output /tmp/POST200_FB05_Q14_DISCREPANCY_MECHANISM_SCHEDULE.json\n"
+            },
+            {
+              "name": "Certify post-#200 Q14 discrepancy mechanism",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/certify_post200_fb05_q14_discrepancy_mechanism_scope.py \\\n  --input research/RHRC/routes/R003_ccm_bridge/fixtures/post200_fb05_q14_discrepancy_mechanism_v1.json \\\n  --schedule /tmp/POST200_FB05_Q14_DISCREPANCY_MECHANISM_SCHEDULE.json \\\n  --output /tmp/POST200_FB05_Q14_DISCREPANCY_MECHANISM_CERTIFICATE.json\n"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": ".github/workflows/rhrc_post202_q14_composite_parity_gap.yml",
+      "sha256": "5c0da1a08984abc047b7a768ac91a61d143ca9689eec89d65b1c345e7311a369",
+      "workflow_name": "RHRC post-202 Q14 composite parity gap",
+      "jobs": [
+        {
+          "job_id": "post202-q14-composite-parity-gap",
+          "display_name": "post202-q14-composite-parity-gap",
+          "needs": null,
+          "matrix": null,
+          "steps": [
+            {
+              "name": null,
+              "uses": "actions/checkout@v4",
+              "run": null
+            },
+            {
+              "name": null,
+              "uses": "actions/setup-python@v5",
+              "run": null
+            },
+            {
+              "name": "Install R003 numerical audit requirements",
+              "uses": null,
+              "run": "python -m pip install -r research/RHRC/routes/R003_ccm_bridge/requirements.txt"
+            },
+            {
+              "name": "Recheck inherited post-#201 paired discrepancy jets",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/check_post200_fb05_q14_discrepancy_channel_jets_scope.py"
+            },
+            {
+              "name": "Recheck inherited post-#201 discrepancy scope firewall",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/check_post200_fb05_q14_discrepancy_mechanism_scope.py"
+            },
+            {
+              "name": "Check post-#202 theorem-aligned parity contrast jets",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/check_post202_fb05_q14_parity_contrast_jets_scope.py"
+            },
+            {
+              "name": "Check post-#202 composite parity-gap scope",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/check_post202_fb05_q14_composite_parity_gap_scope.py"
+            },
+            {
+              "name": "Probe post-#202 composite parity-gap schedule",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/probe_post202_fb05_q14_composite_parity_gap_scope.py \\\n  --input research/RHRC/routes/R003_ccm_bridge/fixtures/post202_fb05_q14_composite_parity_gap_v1.json \\\n  --output /tmp/POST202_FB05_Q14_COMPOSITE_PARITY_GAP_SCHEDULE.json\n"
+            },
+            {
+              "name": "Certify post-#202 Q14 composite parity-gap mechanism",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/certify_post202_fb05_q14_composite_parity_gap_scope.py \\\n  --input research/RHRC/routes/R003_ccm_bridge/fixtures/post202_fb05_q14_composite_parity_gap_v1.json \\\n  --schedule /tmp/POST202_FB05_Q14_COMPOSITE_PARITY_GAP_SCHEDULE.json \\\n  --output /tmp/POST202_FB05_Q14_COMPOSITE_PARITY_GAP_CERTIFICATE.json\n"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": ".github/workflows/rhrc_post214_kernel_dual_geometry.yml",
+      "sha256": "611d1afe3e53314cc17b1fc11e115ce5b8629b6ee689ea48e042a545db52df8d",
+      "workflow_name": "RHRC post-214 kernel dual geometry",
+      "jobs": [
+        {
+          "job_id": "post214-kernel-dual-geometry",
+          "display_name": "post214-kernel-dual-geometry",
+          "needs": null,
+          "matrix": null,
+          "steps": [
+            {
+              "name": null,
+              "uses": "actions/checkout@v4",
+              "run": null
+            },
+            {
+              "name": null,
+              "uses": "actions/setup-python@v5",
+              "run": null
+            },
+            {
+              "name": "Install R003 numerical audit requirements",
+              "uses": null,
+              "run": "python -m pip install -r research/RHRC/routes/R003_ccm_bridge/requirements.txt"
+            },
+            {
+              "name": "Check post-#214 kernel dual-geometry scope",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/check_post214_fb05_kernel_dual_geometry_scope.py"
+            },
+            {
+              "name": "Freeze inherited post-#214 dual-geometry centers",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/probe_post214_fb05_kernel_dual_geometry_scope.py \\\n  --input research/RHRC/routes/R003_ccm_bridge/fixtures/post214_fb05_kernel_dual_geometry_v1.json \\\n  --output /tmp/POST214_FB05_KERNEL_DUAL_GEOMETRY_SCHEDULE.json\n"
+            },
+            {
+              "name": "Independently check dual-geometry implementation",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/check_post214_fb05_kernel_dual_geometry_independent.py"
+            },
+            {
+              "name": "Certify post-#214 kernel dual geometry",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/certify_post214_fb05_kernel_dual_geometry_scope.py \\\n  --input research/RHRC/routes/R003_ccm_bridge/fixtures/post214_fb05_kernel_dual_geometry_v1.json \\\n  --schedule /tmp/POST214_FB05_KERNEL_DUAL_GEOMETRY_SCHEDULE.json \\\n  --output /tmp/POST214_FB05_KERNEL_DUAL_GEOMETRY_CERTIFICATE.json\n"
+            },
+            {
+              "name": "Check certificate claim firewall",
+              "uses": null,
+              "run": "python - <<'PY'\nimport json\np = json.load(open('/tmp/POST214_FB05_KERNEL_DUAL_GEOMETRY_CERTIFICATE.json'))\nassert p['status'] == 'PASS'\nassert p['claim_cap'] == 'POST214_EXACT_KERNEL_DUAL_GEOMETRY_RESEARCH_ONLY'\nassert p['classification'] in {\n    'FULL_SPACE_DUAL_INDEPENDENCE_CERTIFIED',\n    'DUAL_PROPORTIONALITY_NOT_FALSIFIED',\n    'DUAL_GEOMETRY_UNRESOLVED',\n}\nassert p['theorem_promotion'] is False\nassert p['obs_059i_closed'] is False\nassert p['simultaneous_odd_bad_excluded'] is False\nassert p['odd_selected_closed'] is False\nassert p['negative_root_exclusion'] is False\nassert p['finite_to_infinite_closure'] is False\nassert p['rh_claim'] is False\nprint(json.dumps({\n    'status': 'PASS',\n    'classification': p['classification'],\n    'sign_route_classification': p['sign_route_classification'],\n    'control_transfer_status': p['control_transfer_status'],\n    'rh_claim': p['rh_claim'],\n}, indent=2))\nPY\n"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": ".github/workflows/rhrc_post222_biregular_zero_shift_scalar.yml",
+      "sha256": "b4865f02c603c9a413b82c56bbe267e6bb077b885055747cdddd6e684db0ac4a",
+      "workflow_name": "RHRC post-222 bi-regular zero-shift scalar",
+      "jobs": [
+        {
+          "job_id": "post222-biregular-zero-shift-scalar",
+          "display_name": "post222-biregular-zero-shift-scalar",
+          "needs": null,
+          "matrix": null,
+          "steps": [
+            {
+              "name": null,
+              "uses": "actions/checkout@v4",
+              "run": null
+            },
+            {
+              "name": null,
+              "uses": "actions/setup-python@v5",
+              "run": null
+            },
+            {
+              "name": "Install R003 numerical audit requirements",
+              "uses": null,
+              "run": "python -m pip install -r research/RHRC/routes/R003_ccm_bridge/requirements.txt"
+            },
+            {
+              "name": "Check post-#222 scalar scope and provenance",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/check_post222_fb05_biregular_zero_shift_scalar_scope.py"
+            },
+            {
+              "name": "Freeze inherited post-#177 centers for post-#222 replay",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/probe_post222_fb05_biregular_zero_shift_scalar_scope.py \\\n  --input research/RHRC/routes/R003_ccm_bridge/fixtures/post222_fb05_biregular_zero_shift_scalar_v1.json \\\n  --output /tmp/POST222_BIREGULAR_ZERO_SHIFT_SCALAR_SCHEDULE.json\n"
+            },
+            {
+              "name": "Independently check post-#222 zero-shift reconstruction",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/check_post222_fb05_biregular_zero_shift_scalar_independent.py \\\n  --input research/RHRC/routes/R003_ccm_bridge/fixtures/post222_fb05_biregular_zero_shift_scalar_v1.json \\\n  --schedule /tmp/POST222_BIREGULAR_ZERO_SHIFT_SCALAR_SCHEDULE.json\n"
+            },
+            {
+              "name": "Certify post-#222 retained scalar discrimination",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/certify_post222_fb05_biregular_zero_shift_scalar_scope.py \\\n  --input research/RHRC/routes/R003_ccm_bridge/fixtures/post222_fb05_biregular_zero_shift_scalar_v1.json \\\n  --schedule /tmp/POST222_BIREGULAR_ZERO_SHIFT_SCALAR_SCHEDULE.json \\\n  --output /tmp/POST222_BIREGULAR_ZERO_SHIFT_SCALAR_CERTIFICATE.json\n"
+            },
+            {
+              "name": "Check certificate claim firewall",
+              "uses": null,
+              "run": "python - <<'PY'\nimport json\np = json.load(open('/tmp/POST222_BIREGULAR_ZERO_SHIFT_SCALAR_CERTIFICATE.json'))\nassert p['status'] == 'PASS'\nassert p['claim_cap'] == 'RIGOROUS_FINITE_RETAINED_ALIGNMENT_AUDIT_ONLY'\nassert p['overall_classification'] in {\n    'NO_FROZEN_CELL_MINIMAL_BIREGULAR_STATE_CERTIFIED',\n    'BIREGULAR_RETAINED_SCALAR_NEGATIVE_WITNESS_CERTIFIED',\n    'BIREGULAR_RETAINED_SCALAR_SIGN_MIXED_ON_QUALIFIED_SCOPE',\n    'BIREGULAR_RETAINED_SCALAR_SIGN_UNRESOLVED',\n    'BIREGULAR_RETAINED_SCALAR_POSITIVE_ON_QUALIFIED_FROZEN_SCOPE',\n}\nassert p['theorem_promotion'] is False\nassert p['obs_059i_closed'] is False\nassert p['simultaneous_odd_bad_excluded'] is False\nassert p['negative_root_exclusion'] is False\nassert p['finite_to_infinite_closure'] is False\nassert p['rh_claim'] is False\nprint(json.dumps({\n    'status': 'PASS',\n    'overall_classification': p['overall_classification'],\n    'qualified_cell_minimal_point_count': p['qualified_cell_minimal_point_count'],\n    'rh_claim': p['rh_claim'],\n}, indent=2))\nPY\n"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": ".github/workflows/rhrc_post268_audit.yml",
+      "sha256": "ed5962f4a176c874f67cf34bad832c232d6280afaea34781389aadd923e270b3",
+      "workflow_name": "RHRC post268 complete audit replay",
+      "jobs": [
+        {
+          "job_id": "runner-regressions",
+          "display_name": "Audit runner adversarial regressions",
+          "needs": null,
+          "matrix": null,
+          "steps": [
+            {
+              "name": null,
+              "uses": "actions/checkout@v4",
+              "run": null
+            },
+            {
+              "name": null,
+              "uses": "actions/setup-python@v5",
+              "run": null
+            },
+            {
+              "name": "Test producer-consumer and fail-closed harvest contracts",
+              "uses": null,
+              "run": "python -m unittest discover -s research/RHRC/audits/post268/tests -v"
+            }
+          ]
+        },
+        {
+          "job_id": "extended",
+          "display_name": "Extended audit shard ${{ matrix.shard }}",
+          "needs": null,
+          "matrix": {
+            "shard": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7
+            ]
+          },
+          "steps": [
+            {
+              "name": null,
+              "uses": "actions/checkout@v4",
+              "run": null
+            },
+            {
+              "name": null,
+              "uses": "actions/setup-python@v5",
+              "run": null
+            },
+            {
+              "name": "Install complete numerical environment",
+              "uses": null,
+              "run": "python -m pip install -r research/RHRC/routes/R003_ccm_bridge/requirements.txt networkx\npython -c \"import flint; assert flint.__version__ == '0.9.0'\"\nmkdir -p \"${{ runner.temp }}/post268\"\npython -m pip freeze > \"${{ runner.temp }}/post268/environment.txt\"\n"
+            },
+            {
+              "name": "Run every assigned check without hiding failures",
+              "uses": null,
+              "run": "python research/RHRC/audits/post268/run_tests.py --shard ${{ matrix.shard }} --shards 8 --output \"${{ runner.temp }}/post268\""
+            },
+            {
+              "name": null,
+              "uses": "actions/upload-artifact@v4",
+              "run": null
+            }
+          ]
+        },
+        {
+          "job_id": "harvest",
+          "display_name": "Complete 44-check execution harvest",
+          "needs": "extended",
+          "matrix": null,
+          "steps": [
+            {
+              "name": null,
+              "uses": "actions/checkout@v4",
+              "run": null
+            },
+            {
+              "name": null,
+              "uses": "actions/setup-python@v5",
+              "run": null
+            },
+            {
+              "name": null,
+              "uses": "actions/download-artifact@v4",
+              "run": null
+            },
+            {
+              "name": "Verify completeness, exact source identities and all log hashes",
+              "uses": null,
+              "run": "python research/RHRC/audits/post268/run_tests.py --harvest \"${{ runner.temp }}/post268-shards\" --output \"${{ runner.temp }}/POST268_EXTENDED_HARVEST.json\""
+            },
+            {
+              "name": null,
+              "uses": "actions/upload-artifact@v4",
+              "run": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": ".github/workflows/rhrc_post282_contact_calculus.yml",
+      "sha256": "88f2a127ea6f0a067bd2c7af73c1faf157391cc553798dd02d854f8b34325dc3",
+      "workflow_name": "RHRC post-282 contact calculus",
+      "jobs": [
+        {
+          "job_id": "lean-compressed-calculus",
+          "display_name": "lean-compressed-calculus",
+          "needs": null,
+          "matrix": null,
+          "steps": [
+            {
+              "name": null,
+              "uses": "actions/checkout@v4",
+              "run": null
+            },
+            {
+              "name": null,
+              "uses": "leanprover/lean-action@v1",
+              "run": null
+            },
+            {
+              "name": "Build compressed calculus targets with complete receipt",
+              "uses": null,
+              "run": "set +e\n: > /tmp/contact-calculus-targets.txt\nrc=0\nfor target in             Zeta23.CCM.CanonicalCompressedSeamJets             Zeta23.CCM.CanonicalFrozenApertureC2             Zeta23.CCM.CanonicalCompressedApertureC2             Zeta23.CCM.ProductionWeightedTestCalculus             Zeta23.CCM.ProductionWeightedGlobalTests             Zeta23.CCM.FirstCrossingProductionTests             Zeta23.CCM.FirstCrossingProductionRemainder             Zeta23.CCM.ProductionNormalSourceAuthority             Zeta23.CCM.FirstCrossingProductionRemainderAuthority             Zeta23.CCM.ProductionPhysicalFunctionalCongruence             Zeta23.CCM.FirstCrossingProductionRemainderValueAuthority             Zeta23.CCM.FirstCrossingProductionFirstVariation\ndo\n  if lake build \"$target\"; then\n    echo \"$target PASS\" | tee -a /tmp/contact-calculus-targets.txt\n  else\n    echo \"$target FAIL\" | tee -a /tmp/contact-calculus-targets.txt\n    rc=1\n  fi\ndone\nexit $rc\n"
+            },
+            {
+              "name": "Audit compressed calculus axioms",
+              "uses": null,
+              "run": "python research/RHRC/tools/axiom_audit.py             Zeta23/CCM/CanonicalCompressedSeamJets.lean             Zeta23/CCM/CanonicalFrozenApertureC2.lean             Zeta23/CCM/CanonicalCompressedApertureC2.lean             Zeta23/CCM/ProductionWeightedTestCalculus.lean             Zeta23/CCM/ProductionWeightedGlobalTests.lean             Zeta23/CCM/FirstCrossingProductionTests.lean             Zeta23/CCM/FirstCrossingProductionRemainder.lean             Zeta23/CCM/ProductionNormalSourceAuthority.lean             Zeta23/CCM/FirstCrossingProductionRemainderAuthority.lean             Zeta23/CCM/ProductionPhysicalFunctionalCongruence.lean             Zeta23/CCM/FirstCrossingProductionRemainderValueAuthority.lean             Zeta23/CCM/FirstCrossingProductionFirstVariation.lean\n"
+            },
+            {
+              "name": "Reject proof escapes",
+              "uses": null,
+              "run": "python research/RHRC/closure_batch/check_lean_proof_escapes.py --scope closure"
+            },
+            {
+              "name": null,
+              "uses": "actions/upload-artifact@v4",
+              "run": null
+            }
+          ]
+        },
+        {
+          "job_id": "lean-contact-completion",
+          "display_name": "lean-contact-completion",
+          "needs": null,
+          "matrix": null,
+          "steps": [
+            {
+              "name": null,
+              "uses": "actions/checkout@v4",
+              "run": null
+            },
+            {
+              "name": null,
+              "uses": "leanprover/lean-action@v1",
+              "run": null
+            },
+            {
+              "name": "Build contact completion targets with complete receipt",
+              "uses": null,
+              "run": "set +e\n: > /tmp/contact-completion-targets.txt\nrc=0\nfor target in             Zeta23.CCM.StationarySchurContact             Zeta23.CCM.FirstCrossingProductionResponse             Zeta23.CCM.FirstCrossingInheritedStationarity             Zeta23.CCM.FirstCrossingProductionCurvatureBridge             Zeta23.CCM.FirstCrossingGeneratedStrictEvenFrontier             Zeta23.RHRC.ContactCalculusContract\ndo\n  if lake build \"$target\"; then\n    echo \"$target PASS\" | tee -a /tmp/contact-completion-targets.txt\n  else\n    echo \"$target FAIL\" | tee -a /tmp/contact-completion-targets.txt\n    rc=1\n  fi\ndone\nexit $rc\n"
+            },
+            {
+              "name": "Audit contact completion axioms",
+              "uses": null,
+              "run": "python research/RHRC/tools/axiom_audit.py             Zeta23/CCM/StationarySchurContact.lean             Zeta23/CCM/FirstCrossingProductionResponse.lean             Zeta23/CCM/FirstCrossingInheritedStationarity.lean             Zeta23/CCM/FirstCrossingProductionCurvatureBridge.lean             Zeta23/CCM/FirstCrossingGeneratedStrictEvenFrontier.lean             Zeta23/RHRC/ContactCalculusContract.lean\n"
+            },
+            {
+              "name": "Validate exact theorem premise contract",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/check_post282_contact_calculus_contract.py"
+            },
+            {
+              "name": "Validate candidate claim and binding firewall",
+              "uses": null,
+              "run": "python research/RHRC/tools/claim_lint.py\npython research/RHRC/tools/promoted_binding_lint.py\npython research/RHRC/tools/registered_theorem_binding_lint.py\n"
+            },
+            {
+              "name": null,
+              "uses": "actions/upload-artifact@v4",
+              "run": null
+            }
+          ]
+        },
+        {
+          "job_id": "research-calibration",
+          "display_name": "research-calibration",
+          "needs": null,
+          "matrix": null,
+          "steps": [
+            {
+              "name": null,
+              "uses": "actions/checkout@v4",
+              "run": null
+            },
+            {
+              "name": null,
+              "uses": "actions/setup-python@v5",
+              "run": null
+            },
+            {
+              "name": "Install R003 research dependencies",
+              "uses": null,
+              "run": "python -m pip install -r research/RHRC/routes/R003_ccm_bridge/requirements.txt"
+            },
+            {
+              "name": "Exact codec tests",
+              "uses": null,
+              "run": "python -m unittest research/RHRC/closure_batch/test_interval_codec.py -v"
+            },
+            {
+              "name": "Contact calculus tests",
+              "uses": null,
+              "run": "python -m unittest research/RHRC/routes/R003_ccm_bridge/tests/test_post282_contact_calculus.py -v"
+            },
+            {
+              "name": "Optimized-mode guards",
+              "uses": null,
+              "run": "python -O -m unittest research/RHRC/routes/R003_ccm_bridge/tests/test_post282_contact_calculus.py -v"
+            },
+            {
+              "name": "Run frozen calibration campaign",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/post282_contact_calculus.py             --protocol research/RHRC/routes/R003_ccm_bridge/fixtures/post282_contact_calculus_v1.json             --output /tmp/POST282_CONTACT_CALCULUS.json\npython research/RHRC/routes/R003_ccm_bridge/check_post282_contact_calculus_contract.py             --results /tmp/POST282_CONTACT_CALCULUS.json\n"
+            },
+            {
+              "name": null,
+              "uses": "actions/upload-artifact@v4",
+              "run": null
+            }
+          ]
+        },
+        {
+          "job_id": "arb-contact-balance",
+          "display_name": "arb-contact-balance",
+          "needs": [
+            "research-calibration"
+          ],
+          "matrix": null,
+          "steps": [
+            {
+              "name": null,
+              "uses": "actions/checkout@v4",
+              "run": null
+            },
+            {
+              "name": null,
+              "uses": "actions/setup-python@v5",
+              "run": null
+            },
+            {
+              "name": "Install R003 research dependencies",
+              "uses": null,
+              "run": "python -m pip install -r research/RHRC/routes/R003_ccm_bridge/requirements.txt"
+            },
+            {
+              "name": null,
+              "uses": "actions/download-artifact@v4",
+              "run": null
+            },
+            {
+              "name": "Recheck bounded Arb balance and write receipt",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/check_post282_contact_calculus_contract.py             --results /tmp/calibration/POST282_CONTACT_CALCULUS.json\npython research/RHRC/routes/R003_ccm_bridge/write_post282_contact_calculus_receipt.py             --protocol research/RHRC/routes/R003_ccm_bridge/fixtures/post282_contact_calculus_v1.json             --results /tmp/calibration/POST282_CONTACT_CALCULUS.json             --output /tmp/POST282_CONTACT_CALCULUS_RECEIPT.json\n"
+            },
+            {
+              "name": null,
+              "uses": "actions/upload-artifact@v4",
+              "run": null
+            }
+          ]
+        },
+        {
+          "job_id": "contact-calculus-complete",
+          "display_name": "contact-calculus-complete",
+          "needs": [
+            "lean-compressed-calculus",
+            "lean-contact-completion",
+            "research-calibration",
+            "arb-contact-balance"
+          ],
+          "matrix": null,
+          "steps": [
+            {
+              "name": "Require every mandatory job to succeed",
+              "uses": null,
+              "run": "printf '%s\\n' \"lean-compressed-calculus=$A\" \"lean-contact-completion=$B\"             \"research-calibration=$C\" \"arb-contact-balance=$D\"\ntest \"$A\" = success\ntest \"$B\" = success\ntest \"$C\" = success\ntest \"$D\" = success\necho 'Contact-calculus campaign completed; RH remains separately claim-gated.'\n"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": ".github/workflows/rhrc_post284_source_inertia.yml",
+      "sha256": "0ef4b6db1901bd08c59457bc37e10e0cbe26c3df8b510dd6e0db3e7173bab548",
+      "workflow_name": "RHRC post-284 source inertia campaign",
+      "jobs": [
+        {
+          "job_id": "post287-full-k3",
+          "display_name": "post287-full-k3",
+          "needs": null,
+          "matrix": null,
+          "steps": []
+        },
+        {
+          "job_id": "lean-source-inertia",
+          "display_name": "lean-source-inertia",
+          "needs": null,
+          "matrix": null,
+          "steps": [
+            {
+              "name": null,
+              "uses": "actions/checkout@v4",
+              "run": null
+            },
+            {
+              "name": null,
+              "uses": "leanprover/lean-action@v1",
+              "run": null
+            },
+            {
+              "name": "Build post-284 source targets with complete receipt",
+              "uses": null,
+              "run": "set +e\n: > /tmp/post284-targets.txt\nrc=0\nfor target in \\\n  Zeta23.CCM.SourceLatticeCoordinates \\\n  Zeta23.CCM.SourceSignCountermodels \\\n  Zeta23.CCM.SourceParityPolynomialCoordinates \\\n  Zeta23.CCM.SourceParityExactInertia \\\n  Zeta23.CCM.SourceMomentVandermondeFiltration \\\n  Zeta23.CCM.SourceFourierConvolution \\\n  Zeta23.CCM.StrictEvenPrimeSeamDichotomy \\\n  Zeta23.CCM.ContactNinthJumpGapBound \\\n  Zeta23.CCM.CanonicalRegularizedEnergyIdentity \\\n  Zeta23.CCM.SourceMomentFilteredInertia \\\n  Zeta23.CCM.CanonicalSourceWeightedIntegral \\\n  Zeta23.CCM.SecularDeterminantKernel \\\n  Zeta23.CCM.CanonicalCenteredIndexCoercivity \\\n  Zeta23.CCM.CanonicalK2SourceSignInterval \\\n  Zeta23.CCM.CanonicalPrimeFreeSecondTest \\\n  Zeta23.CCM.CanonicalSecularResolvent \\\n  Zeta23.CCM.CanonicalSourceExcursion \\\n  Zeta23.CCM.CanonicalCenteredIndexPoincare \\\n  Zeta23.CCM.CanonicalSourcePrimeSampling \\\n  Zeta23.CCM.CanonicalSourceSpectralFlow \\\n  Zeta23.CCM.CanonicalShiftedSecular \\\n  Zeta23.CCM.CanonicalContactOverlapSign \\\n  Zeta23.CCM.CanonicalPrimeFreeF04 \\\n  Zeta23.CCM.CanonicalGlobalF04 \\\n  Zeta23.CCM.CanonicalLocalBirdfishie \\\n  Zeta23.CCM.CanonicalWeightedChebyshevAbel \\\n  Zeta23.CCM.CanonicalSecularGronwall \\\n  Zeta23.CCM.CanonicalAndreiefInertia \\\n  Zeta23.CCM.CanonicalAlternatingRootSlopes \\\n  Zeta23.CCM.AbstractCubicSchur \\\n  Zeta23.CCM.WeightedRemainderIdentity \\\n  Zeta23.CCM.SourceRankTwoLaplace \\\n  Zeta23.CCM.CanonicalSourceOddEndpointQuantitative \\\n  Zeta23.CCM.CanonicalRecentPrimeSecondVariation \\\n  Zeta23.CCM.CanonicalContactOlderPrimeBudget \\\n  Zeta23.CCM.CanonicalContactSourceOlderPrimeBalance \\\n  Zeta23.CCM.CanonicalContactRemainderOscillation \\\n  Zeta23.CCM.CanonicalEnteringPrimePhysicalJet \\\n  Zeta23.CCM.CanonicalSourceResolventDerivatives \\\n  Zeta23.CCM.ReciprocalApertureConcavity \\\n  Zeta23.CCM.GlobalBottomStrictEvenShiftedRay \\\n  Zeta23.CCM.K2EvenBottomGluing \\\n  Zeta23.CCM.K3BottomWindowRecord\ndo\n  if lake build \"$target\"; then\n    echo \"$target PASS\" | tee -a /tmp/post284-targets.txt\n  else\n    echo \"$target FAIL\" | tee -a /tmp/post284-targets.txt\n    rc=1\n  fi\ndone\nexit $rc\n"
+            },
+            {
+              "name": "Audit post-284 theorem axioms",
+              "uses": null,
+              "run": "python research/RHRC/tools/axiom_audit.py \\\n  Zeta23/CCM/SourceLatticeCoordinates.lean \\\n  Zeta23/CCM/SourceSignCountermodels.lean \\\n  Zeta23/CCM/SourceParityPolynomialCoordinates.lean \\\n  Zeta23/CCM/SourceParityExactInertia.lean \\\n  Zeta23/CCM/SourceMomentVandermondeFiltration.lean \\\n  Zeta23/CCM/SourceFourierConvolution.lean \\\n  Zeta23/CCM/StrictEvenPrimeSeamDichotomy.lean \\\n  Zeta23/CCM/ContactNinthJumpGapBound.lean \\\n  Zeta23/CCM/CanonicalRegularizedEnergyIdentity.lean \\\n  Zeta23/CCM/SourceMomentFilteredInertia.lean \\\n  Zeta23/CCM/CanonicalSourceWeightedIntegral.lean \\\n  Zeta23/CCM/SecularDeterminantKernel.lean \\\n  Zeta23/CCM/CanonicalCenteredIndexCoercivity.lean \\\n  Zeta23/CCM/CanonicalK2SourceSignInterval.lean \\\n  Zeta23/CCM/CanonicalPrimeFreeSecondTest.lean \\\n  Zeta23/CCM/CanonicalSecularResolvent.lean \\\n  Zeta23/CCM/CanonicalSourceExcursion.lean \\\n  Zeta23/CCM/CanonicalCenteredIndexPoincare.lean \\\n  Zeta23/CCM/CanonicalSourcePrimeSampling.lean \\\n  Zeta23/CCM/CanonicalSourceSpectralFlow.lean \\\n  Zeta23/CCM/CanonicalShiftedSecular.lean \\\n  Zeta23/CCM/CanonicalContactOverlapSign.lean \\\n  Zeta23/CCM/CanonicalPrimeFreeF04.lean \\\n  Zeta23/CCM/CanonicalGlobalF04.lean \\\n  Zeta23/CCM/CanonicalLocalBirdfishie.lean \\\n  Zeta23/CCM/CanonicalWeightedChebyshevAbel.lean \\\n  Zeta23/CCM/CanonicalSecularGronwall.lean \\\n  Zeta23/CCM/CanonicalAndreiefInertia.lean \\\n  Zeta23/CCM/CanonicalAlternatingRootSlopes.lean \\\n  Zeta23/CCM/AbstractCubicSchur.lean \\\n  Zeta23/CCM/WeightedRemainderIdentity.lean \\\n  Zeta23/CCM/SourceRankTwoLaplace.lean \\\n  Zeta23/CCM/CanonicalSourceOddEndpointQuantitative.lean \\\n  Zeta23/CCM/CanonicalRecentPrimeSecondVariation.lean \\\n  Zeta23/CCM/CanonicalContactOlderPrimeBudget.lean \\\n  Zeta23/CCM/CanonicalContactSourceOlderPrimeBalance.lean \\\n  Zeta23/CCM/CanonicalContactRemainderOscillation.lean \\\n  Zeta23/CCM/CanonicalEnteringPrimePhysicalJet.lean \\\n  Zeta23/CCM/CanonicalSourceResolventDerivatives.lean \\\n  Zeta23/CCM/ReciprocalApertureConcavity.lean \\\n  Zeta23/CCM/GlobalBottomStrictEvenShiftedRay.lean \\\n  Zeta23/CCM/K2EvenBottomGluing.lean \\\n  Zeta23/CCM/K3BottomWindowRecord.lean\n"
+            },
+            {
+              "name": "Reject proof escapes on the promoted surface",
+              "uses": null,
+              "run": "python research/RHRC/closure_batch/check_lean_proof_escapes.py --scope promoted"
+            },
+            {
+              "name": null,
+              "uses": "actions/upload-artifact@v4",
+              "run": null
+            }
+          ]
+        },
+        {
+          "job_id": "source-falsifier-research",
+          "display_name": "source-falsifier-research",
+          "needs": null,
+          "matrix": null,
+          "steps": [
+            {
+              "name": null,
+              "uses": "actions/checkout@v4",
+              "run": null
+            },
+            {
+              "name": null,
+              "uses": "actions/setup-python@v5",
+              "run": null
+            },
+            {
+              "name": "Install research requirements",
+              "uses": null,
+              "run": "python -m pip install -r research/RHRC/routes/R003_ccm_bridge/requirements.txt"
+            },
+            {
+              "name": "Attached exact SymPy source-inertia falsifier (regression receipt)",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/post284/POST284_SOURCE_INERTIA_EXACT_FALSIFIER_2026-10-10.py"
+            },
+            {
+              "name": "Independent post-284 falsifier suite",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/post284/post284_source_falsifier_suite.py \\\n  --kmax 9 --output /tmp/POST284_SOURCE_FALSIFIER_SUITE.json\n"
+            },
+            {
+              "name": "Check disposition firewall",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/post284/check_post284_dispositions.py \\\n  --suite /tmp/POST284_SOURCE_FALSIFIER_SUITE.json\n"
+            },
+            {
+              "name": "Attached log3 K=2 interval certificate (falsifier receipt; research evidence only)",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/post284/birdfishie_log3_K2_certificate.py | tee /tmp/POST284_LOG3_K2_CERTIFICATE.txt"
+            },
+            {
+              "name": "Follow-up regressions (M24/M30 exact, M41/M43 interval signs, M42 sanity, M47 formula)",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/post284/post284_followup_regressions.py \\\n  --n 6000 --output /tmp/POST284_FOLLOWUP_REGRESSIONS.json > /dev/null\npython - <<'EOF'\nimport json\nd = json.load(open('/tmp/POST284_FOLLOWUP_REGRESSIONS.json'))\nassert d['terminal_claim'] == 'RH_OPEN'\nwant = {'M30': 'EXACT_REGRESSION_PASS', 'M24': 'EXACT_REGRESSION_PASS',\n        'M47': 'EXACT_REGRESSION_PASS',\n        'M41': 'INTERVAL_EVIDENCE_SIGN_CHANGE_BEFORE_LOG2',\n        'M43': 'INTERVAL_EVIDENCE_PRIME_FREE_INDEFINITE',\n        'M42': 'NUMERIC_SANITY_PASS'}\ngot = {r['package']: r['disposition'] for r in d['results']}\nfor k, v in want.items():\n    print(k, got.get(k))\n    assert got.get(k) == v, (k, got.get(k))\nEOF\n"
+            },
+            {
+              "name": "Post-285 M74 secular-resolvent regression and negative controls",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/post285/post285_m74_secular_falsifier.py \\\n  --output /tmp/POST285_M74_SECULAR_FALSIFIER.json > /dev/null\n"
+            },
+            {
+              "name": "WP7 post287 single-PR claim and evidence-state firewall",
+              "uses": null,
+              "run": "python research/RHRC/integration/post287/check_post287_ledgers.py\npython research/RHRC/integration/post287/test_post287_gate_mutations.py\n"
+            },
+            {
+              "name": "Post-285 ledger firewall (Steps 18-120 matrix, M70-M77 obligations, proof roots)",
+              "uses": null,
+              "run": "python research/RHRC/integration/post285/check_post285_ledgers.py"
+            },
+            {
+              "name": "Post-285 Gate A/D regressions (M70 excursion, M73 Poincar\u00e9, M75 negative window)",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/post285/post285_gate_a_d_falsifier.py \\\n  --output /tmp/POST285_GATE_A_D_FALSIFIER.json > /dev/null\n"
+            },
+            {
+              "name": "Post-285 M76 actual-canonical secular margin probe (experimental signal)",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/post285/post285_m76_secular_margin.py \\\n  --kmax 5 --lmax 6 --dl 0.25 --output /tmp/POST285_M76_SECULAR_MARGIN.json > /dev/null\n"
+            },
+            {
+              "name": "Post-285 F04 (prime-free, prime cells, seams) and M66 regression, controls and Euler bound",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/post285/post285_f04_falsifier.py \\\n  --output /tmp/POST285_F04_FALSIFIER.json > /dev/null\n"
+            },
+            {
+              "name": "Post-285 M55 partial summation and M38 remainder extrema regression and controls",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/post285/post285_m55_abel_falsifier.py \\\n  --output /tmp/POST285_M55_ABEL_FALSIFIER.json > /dev/null\n"
+            },
+            {
+              "name": "Post-285 M71 Andreief interior inertia (Arb-certified minor signs) and aperture controls",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/post285/post285_m71_andreief_falsifier.py \\\n  --kmax 9 --output /tmp/POST285_M71_ANDREIEF_FALSIFIER.json > /dev/null\n"
+            },
+            {
+              "name": "Post-285 M27 alternating root slopes on the float canonical operator, with controls",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/post285/post285_m27_root_slope_falsifier.py \\\n  --output /tmp/POST285_M27_ROOT_SLOPE_FALSIFIER.json > /dev/null\n"
+            },
+            {
+              "name": "Post-285 M08 abstract cubic Schur exact regression and controls",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/post285/post285_m08_cubic_schur_falsifier.py \\\n  --output /tmp/POST285_M08_CUBIC_SCHUR_FALSIFIER.json > /dev/null\n"
+            },
+            {
+              "name": "Post-285 M09 zero-endpoint weighted remainder identity and controls",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/post285/post285_m09_weighted_remainder_falsifier.py \\\n  --output /tmp/POST285_M09_WEIGHTED_REMAINDER_FALSIFIER.json > /dev/null\n"
+            },
+            {
+              "name": "Post-285 M45 odd endpoint source bound (Arb) and controls",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/post285/post285_m45_odd_endpoint_falsifier.py \\\n  --output /tmp/POST285_M45_ODD_ENDPOINT_FALSIFIER.json > /dev/null\n"
+            },
+            {
+              "name": "Post-285 M49 near-edge contact-angle probe (experimental)",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/post285/post285_m49_near_edge_probe.py \\\n  --output /tmp/POST285_M49_NEAR_EDGE_PROBE.json > /dev/null\n"
+            },
+            {
+              "name": "Post-285 M50 older-prime budget probe (experimental)",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/post285/post285_m50_older_prime_budget_probe.py \\\n  --output /tmp/POST285_M50_OLDER_PRIME_BUDGET_PROBE.json > /dev/null\n"
+            },
+            {
+              "name": "Post-285 M59/M61 source-moment older-prime balance regression and controls",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/post285/post285_m61_source_balance_falsifier.py \\\n  --output /tmp/POST285_M61_SOURCE_BALANCE_FALSIFIER.json > /dev/null\n"
+            },
+            {
+              "name": "Post-285 M33/M34 sign reversal and remainder oscillation probe",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/post285/post285_m34_remainder_oscillation_probe.py \\\n  --output /tmp/POST285_M34_REMAINDER_OSCILLATION_PROBE.json > /dev/null\n"
+            },
+            {
+              "name": "Post-285 M44 entering-prime physical jet probe and controls",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/post285/post285_m44_entering_prime_jet_probe.py \\\n  --output /tmp/POST285_M44_ENTERING_PRIME_JET_PROBE.json > /dev/null\n"
+            },
+            {
+              "name": "Post-285 M29 source-resolvent derivative probe and controls",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/post285/post285_m29_source_resolvent_derivative_probe.py \\\n  --output /tmp/POST285_M29_SOURCE_RESOLVENT_DERIVATIVE_PROBE.json > /dev/null\n"
+            },
+            {
+              "name": "Post-285 M51 K=2 even-bottom Arb certificate on [1/400, log 16] (research evidence)",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/post285/post285_m51_k2_even_bottom_certificate.py \\\n  --output /tmp/POST285_M51_K2_EVEN_BOTTOM_CERTIFICATE.json > /dev/null\n"
+            },
+            {
+              "name": "WP2 materialize and independently verify every K2 M51 Arb interval",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/post287/wp2_k2_even_transcript.py \\\n  --output-dir /tmp/POST287_WP2_M51_TRANSCRIPT --cells 1-15 --precision-bits 128\npython research/RHRC/routes/R003_ccm_bridge/post287/wp2_verify_transcript.py \\\n  /tmp/POST287_WP2_M51_TRANSCRIPT --precision-bits 192\n"
+            },
+            {
+              "name": "Post-285 M63 route comparison at the K=2 near-contacts (experimental)",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/post285/post285_m63_route_comparison_probe.py \\\n  --output /tmp/POST285_M63_ROUTE_COMPARISON_PROBE.json > /dev/null\n"
+            },
+            {
+              "name": "Post-285 M76 Arb resolution of the secular-margin grid (research evidence)",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/post285/post285_m76_arb_resolution.py \\\n  --output /tmp/POST285_M76_ARB_RESOLUTION.json > /dev/null\n"
+            },
+            {
+              "name": "WP4 D2 Full K3 frozen Q14 384-bit both-parity feasibility gate (UNRESOLVED allowed)",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/post287/wp4_k3_frozen_q14_gate.py \\\n  --output /tmp/POST287_WP4_FROZEN_Q14_GATE.json \\\n  --precision-bits 384 --max-depth 40 --max-nodes 500 --time-seconds 600\n"
+            },
+            {
+              "name": "WP6 fixed K2 same-source shifted-ray signed-Q falsification (bounded report only)",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/post287/wp6_k2_signed_ray_probe.py \\\n  --output /tmp/POST287_WP6_SIGNED_RAY_PROBE.json --precision-bits 256\n"
+            },
+            {
+              "name": "WP5 exact-model altered-prime Arb crossing certificate (non-zeta negative control)",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/post287/wp5_modified_prime_crossing_certificate.py \\\n  --output /tmp/POST287_WP5_MODIFIED_PRIME_CROSSING.json --precision-bits 256\n"
+            },
+            {
+              "name": null,
+              "uses": "actions/upload-artifact@v4",
+              "run": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": ".github/workflows/rhrc_post287_focused.yml",
+      "sha256": "7708f47a950e7acd64a914bade3c9e54447a92291d03dfbd3b423ed6f7d123a5",
+      "workflow_name": "RHRC post287 focused Step3 checks",
+      "jobs": [
+        {
+          "job_id": "lean-step3",
+          "display_name": "lean-step3",
+          "needs": null,
+          "matrix": null,
+          "steps": [
+            {
+              "name": null,
+              "uses": "actions/checkout@v4",
+              "run": null
+            },
+            {
+              "name": null,
+              "uses": "leanprover/lean-action@v1",
+              "run": null
+            },
+            {
+              "name": "Parse all WP0-WP7 source scripts and verify the exact integration contract",
+              "uses": null,
+              "run": "python research/RHRC/integration/post287/check_implementation_completeness.py\npython research/RHRC/integration/post287/check_post287_ledgers.py\npython research/RHRC/integration/post287/test_post287_gate_mutations.py\npython research/RHRC/routes/R003_ccm_bridge/post287/test_wp4_assembler_mutations.py\n"
+            },
+            {
+              "name": "Exact rational WP4 determinant-curvature and fourth-order coefficient regressions",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/post287/wp4_determinant_jet_exact_control.py\n"
+            },
+            {
+              "name": "Compile ALL new source theorem roots (collect every failure)",
+              "uses": null,
+              "run": "set +e\nfailed=0\nfor target in \\\n  Zeta23.CCM.ReciprocalApertureConcavity \\\n  Zeta23.CCM.K2EvenBottomGluing \\\n  Zeta23.CCM.K3BottomWindowRecord \\\n  Zeta23.CCM.GlobalBottomStrictEvenShiftedRay\ndo\n  if lake build \"$target\"; then\n    echo \"$target: COMPILER PASS\" | tee -a /tmp/wp0_wp7_focused_build.txt\n  else\n    echo \"$target: COMPILER FAIL\" | tee -a /tmp/wp0_wp7_focused_build.txt\n    failed=1\n  fi\ndone\nexit \"$failed\"\n"
+            },
+            {
+              "name": "Reject source proof escapes",
+              "uses": null,
+              "run": "python research/RHRC/closure_batch/check_lean_proof_escapes.py --scope promoted\n"
+            }
+          ]
+        },
+        {
+          "job_id": "wp5-modified-prime",
+          "display_name": "wp5-modified-prime",
+          "needs": null,
+          "matrix": null,
+          "steps": [
+            {
+              "name": null,
+              "uses": "actions/checkout@v4",
+              "run": null
+            },
+            {
+              "name": null,
+              "uses": "actions/setup-python@v5",
+              "run": null
+            },
+            {
+              "name": "Install pinned research dependencies",
+              "uses": null,
+              "run": "python -m pip install -r research/RHRC/routes/R003_ccm_bridge/requirements.txt"
+            },
+            {
+              "name": "Arb-certify two modified-prime rational endpoint apertures",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/post287/wp5_modified_prime_crossing_certificate.py --precision-bits 256 --output /tmp/post287-wp5.json\n"
+            },
+            {
+              "name": null,
+              "uses": "actions/upload-artifact@v4",
+              "run": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": ".github/workflows/rhrc_post287_numerical.yml",
+      "sha256": "58d8c586d425b747a9a0c4b2e378d8614c14975d6a1670d23980b39811780a96",
+      "workflow_name": "RHRC post287 WP2 and WP4 interval research",
+      "jobs": [
+        {
+          "job_id": "wp2-k2-transcript",
+          "display_name": "wp2-k2-transcript",
+          "needs": null,
+          "matrix": null,
+          "steps": [
+            {
+              "name": null,
+              "uses": "actions/checkout@v4",
+              "run": null
+            },
+            {
+              "name": null,
+              "uses": "actions/setup-python@v5",
+              "run": null
+            },
+            {
+              "name": "Install pinned python-flint and research dependencies",
+              "uses": null,
+              "run": "python -m pip install -r research/RHRC/routes/R003_ccm_bridge/requirements.txt"
+            },
+            {
+              "name": "Reject nonfinite Taylor remainders before accepting numerical evidence",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/post287/test_wp2_wp4_finite_bounds.py"
+            },
+            {
+              "name": "WP2 / WP4 validate canonical Eq4.4 normalization and exact parity carriers",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/post287/wp2_wp4_normalization_gate.py \\\n  --output /tmp/wp2-wp4-normalization.json --precision-bits 256\n"
+            },
+            {
+              "name": "Produce every rational M51 interval and its exact Arb lower enclosure",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/post287/wp2_k2_even_transcript.py --output-dir /tmp/wp2-k2 --cells 1-15 --precision-bits 128\n"
+            },
+            {
+              "name": "No-search independent interval checker at higher precision",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/post287/wp2_verify_transcript.py /tmp/wp2-k2 --precision-bits 192\n"
+            },
+            {
+              "name": null,
+              "uses": "actions/upload-artifact@v4",
+              "run": null
+            }
+          ]
+        },
+        {
+          "job_id": "wp4-k2-odd-prerequisite",
+          "display_name": "wp4-k2-odd-prerequisite",
+          "needs": null,
+          "matrix": null,
+          "steps": [
+            {
+              "name": null,
+              "uses": "actions/checkout@v4",
+              "run": null
+            },
+            {
+              "name": null,
+              "uses": "actions/setup-python@v5",
+              "run": null
+            },
+            {
+              "name": "Install pinned Arb dependencies",
+              "uses": null,
+              "run": "python -m pip install -r research/RHRC/routes/R003_ccm_bridge/requirements.txt"
+            },
+            {
+              "name": "Certify the complete one-dimensional K2 odd predecessor window",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/post287/wp4_k2_odd_prerequisite.py \\\n  --out /tmp/wp4-k2-odd --precision-bits 128 --max-depth 30 --max-tiles 5000\n"
+            },
+            {
+              "name": "Independently verify the odd-sector rational coverage at higher precision",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/post287/wp4_k2_odd_prerequisite.py \\\n  --verify /tmp/wp4-k2-odd --precision-bits 192\n"
+            },
+            {
+              "name": null,
+              "uses": "actions/upload-artifact@v4",
+              "run": null
+            }
+          ]
+        },
+        {
+          "job_id": "wp4-k3-frozen-feasibility",
+          "display_name": "wp4-k3-frozen-feasibility",
+          "needs": null,
+          "matrix": null,
+          "steps": [
+            {
+              "name": null,
+              "uses": "actions/checkout@v4",
+              "run": null
+            },
+            {
+              "name": null,
+              "uses": "actions/setup-python@v5",
+              "run": null
+            },
+            {
+              "name": "Install pinned Arb evaluation backend",
+              "uses": null,
+              "run": "python -m pip install -r research/RHRC/routes/R003_ccm_bridge/requirements.txt"
+            },
+            {
+              "name": "Evaluate the frozen Q14 384-bit full K3 two-parity feasibility boxes",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/post287/wp4_k3_frozen_q14_gate.py --precision-bits 384 --max-depth 40 --max-boxes 0 --max-nodes 1000 --time-seconds 1200 --output /tmp/wp4-k3-feasibility.json\n"
+            },
+            {
+              "name": "Report K3 gate disposition (UNRESOLVED is not positivity)",
+              "uses": null,
+              "run": "if test -f /tmp/wp4-k3-feasibility.json; then\n  python - <<'PY'\nimport json, os\nd=json.load(open('/tmp/wp4-k3-feasibility.json'))\nmessage=f\"WP4 K3 frozen-box gate: {d['gate']}; {d['tested_boxes']}/{d['frozen_boxes']} frozen boxes evaluated. NOT a continuous K3 positivity theorem; RH_OPEN.\"\nprint(message)\nwith open(os.environ['GITHUB_STEP_SUMMARY'],'a') as f:\n    f.write(message+'\\n')\nwith open(os.environ['GITHUB_OUTPUT'],'a') as f:\n    f.write('disposition='+d['gate']+'\\n')\nPY\nfi\n"
+            },
+            {
+              "name": null,
+              "uses": "actions/upload-artifact@v4",
+              "run": null
+            }
+          ]
+        },
+        {
+          "job_id": "wp4-k3-fourth-order-alternative",
+          "display_name": "wp4-k3-fourth-order-alternative",
+          "needs": "wp4-k3-frozen-feasibility",
+          "matrix": null,
+          "steps": [
+            {
+              "name": null,
+              "uses": "actions/checkout@v4",
+              "run": null
+            },
+            {
+              "name": null,
+              "uses": "actions/setup-python@v5",
+              "run": null
+            },
+            {
+              "name": "Install pinned Arb and symbolic backends",
+              "uses": null,
+              "run": "python -m pip install -r research/RHRC/routes/R003_ccm_bridge/requirements.txt"
+            },
+            {
+              "name": "Verify the order-four fixed-unit evaluator against independently established jets 0-2",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/post287/wp4_fourth_order_validate.py \\\n  --output /tmp/wp4-fourth-order-low-jets.json --precision-bits 192\n"
+            },
+            {
+              "name": "Execute the one predeclared fourth-order Q14 alternative on all frozen boxes",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/post287/wp4_k3_fourth_order_fallback.py \\\n  --output /tmp/wp4-fourth-order-frozen-boxes.json --precision-bits 384 \\\n  --max-boxes 0 --seconds 15000\n"
+            },
+            {
+              "name": "Summarize exact interval outcome without upgrading an unresolved gate",
+              "uses": null,
+              "run": "if test -f /tmp/wp4-fourth-order-frozen-boxes.json; then\n  python - <<'PY'\nimport json,os\nd=json.load(open('/tmp/wp4-fourth-order-frozen-boxes.json'))\nx=f\"WP4 order-four fallback: {d['gate']} for {d['tested_boxes']}/{d['frozen_boxes']} frozen K3 boxes; all-aperture positivity NOT established; RH_OPEN.\"\nprint(x)\nwith open(os.environ['GITHUB_STEP_SUMMARY'],'a') as f:\n    f.write(x+'\\n')\nPY\nfi\n"
+            },
+            {
+              "name": null,
+              "uses": "actions/upload-artifact@v4",
+              "run": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": ".github/workflows/rhrc_post287_wp6.yml",
+      "sha256": "4d8e501b8d8045ad1a25872da01c0174bb27f13c7172651ed62720517423ac61",
+      "workflow_name": "RHRC post287 bounded signed-ray probe",
+      "jobs": [
+        {
+          "job_id": "wp6-source-specific-signed-ray",
+          "display_name": "wp6-source-specific-signed-ray",
+          "needs": null,
+          "matrix": null,
+          "steps": [
+            {
+              "name": null,
+              "uses": "actions/checkout@v4",
+              "run": null
+            },
+            {
+              "name": null,
+              "uses": "actions/setup-python@v5",
+              "run": null
+            },
+            {
+              "name": "Install pinned research backend",
+              "uses": null,
+              "run": "python -m pip install -r research/RHRC/routes/R003_ccm_bridge/requirements.txt"
+            },
+            {
+              "name": "Arb-check signs on the genuine K2 negative-shift ray class",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/post287/wp6_k2_signed_ray_probe.py --precision-bits 256 --output /tmp/post287-wp6.json\n"
+            },
+            {
+              "name": null,
+              "uses": "actions/upload-artifact@v4",
+              "run": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": ".github/workflows/rhrc_post290_step123_output.yml",
+      "sha256": "bf109d8c3297abd603031d476ff5da7f39d05368aa5cd07faac4b0aa2ebd07a6",
+      "workflow_name": "RHRC post290 source and output proof components",
+      "jobs": [
+        {
+          "job_id": "lean-components",
+          "display_name": "lean-components",
+          "needs": null,
+          "matrix": null,
+          "steps": [
+            {
+              "name": null,
+              "uses": "actions/checkout@v4",
+              "run": null
+            },
+            {
+              "name": null,
+              "uses": "actions/cache/restore@v4",
+              "run": null
+            },
+            {
+              "name": null,
+              "uses": "leanprover/lean-action@v1",
+              "run": null
+            },
+            {
+              "name": "Compile each implemented component; full producer remains a separate gate",
+              "uses": null,
+              "run": "set -euo pipefail\ntargets=(\n  Zeta23.ExceptionalZero.NativeZeroJetAnalyticFactors\n  Zeta23.ExceptionalZero.NativeRangeZeroJetObstruction\n  Zeta23.ExceptionalZero.NativeOriginalSourceLaplaceVisibility\n  Zeta23.ExceptionalZero.NativeActualKernelZeroJets\n  Zeta23.CCM.OriginalDetectorPositiveFourierPaddingReal\n  Zeta23.CCM.OriginalDetectorPositiveFourierPadding\n  Zeta23.CCM.OriginalDetectorPaddedRetainedSelection\n  Zeta23.CCM.OriginalDetectorPaddedPhaseQuantitativeRates\n  Zeta23.CCM.OriginalDetectorPaddedFourierQuantitativeRates\n  Zeta23.CCM.OriginalDetectorPaddedFiniteWindowImageJets\n  Zeta23.CCM.OriginalDetectorPaddedFiniteWindowImageAsymptotics\n  Zeta23.CCM.OriginalDetectorPaddedFiniteWindowImage\n  Zeta23.CCM.OriginalDetectorPaddedFiniteWindowHigherFlat\n  Zeta23.CCM.OriginalDetectorPaddedFiniteWindowBoundaryFlat\n  Zeta23.CCM.OriginalDetectorPaddedFinitePositivity\n  Zeta23.CCM.OriginalDetectorPaddedFinitePoleImageTransport\n  Zeta23.CCM.OriginalDetectorPaddedFinitePoleImageNonzero\n  Zeta23.CCM.OriginalDetectorPaddedFinitePoleImageC4\n  Zeta23.CCM.OriginalDetectorPaddedFinitePoleImageAsymptotics\n  Zeta23.CCM.OriginalDetectorPaddedFinitePoleImage\n  Zeta23.CCM.OriginalDetectorPaddedFinitePhaseWeilPadding\n  Zeta23.CCM.OriginalDetectorPaddedFinitePhaseSymmetry\n  Zeta23.CCM.OriginalDetectorPaddedFinitePhasePlane\n  Zeta23.CCM.OriginalDetectorPaddedFinitePhaseNormalization\n  Zeta23.CCM.OriginalDetectorPaddedFinitePhaseNormControl\n  Zeta23.CCM.OriginalDetectorPaddedFinitePhaseNativeTransport\n  Zeta23.CCM.OriginalDetectorPaddedFinitePhaseNativeProducer\n  Zeta23.CCM.OriginalDetectorPaddedFinitePhaseMass\n  Zeta23.CCM.OriginalDetectorPaddedFinitePhaseL1Errors\n  Zeta23.CCM.OriginalDetectorPaddedFinitePhaseDepth\n  Zeta23.CCM.OriginalDetectorPaddedFinitePhaseCarrier\n  Zeta23.CCM.OriginalDetectorPaddedFinitePhaseApproximation\n  Zeta23.CCM.OriginalDetectorPaddedFiniteNormalizedErrors\n  Zeta23.CCM.OriginalDetectorPaddedFiniteNativeFormRate\n  Zeta23.CCM.OriginalDetectorPaddedFiniteH1Rate\n  Zeta23.CCM.OriginalDetectorNativeRetainedSelection\n  Zeta23.CCM.OriginalDetectorFiniteTransport\n  Zeta23.CCM.OriginalDetectorFinitePhaseNativeProducer\n  Zeta23.CCM.OriginalDetectorAdmissibleSelector\n  Zeta23.CCM.NativePositiveCompletionComplexLaplace\n  Zeta23.CCM.NativeLaplaceHalfPlaneContinuation\n  Zeta23.CCM.NativeIntegerKernelComplexLaplace\n  Zeta23.CCM.NativeIntegerDriveComplexLaplace\n  Zeta23.CCM.NativeDampedCompletionPointwiseBridge\n  Zeta23.CCM.NativeCompletionComplexLaplace\n  Zeta23.CCM.NativeCompletedInputZetaLaplace\n  Zeta23.CCM.NativeCompletedInputRangeOfPrimeLp\n  Zeta23.CCM.NativeCompletedInputComplexLaplace\n  Zeta23.CCM.NativeCausalRangeObstruction\n  Zeta23.CCM.NativeCausalLaplaceDerivatives\n  Zeta23.CCM.NativeCausalKernelLaplaceDerivatives\n  Zeta23.CCM.NativeCausalAnalyticObstruction\n  Zeta23.CCM.NativeCausalAdjointZeroJets\n  Zeta23.CCM.CompactPoleConvolution\n  Zeta23.CCM.CanonicalDeepThresholdGap\n  Zeta23.CCM.PoleNeutralCompactH2Uniqueness\n  Zeta23.CCM.PoleNeutralCompactH2\n  Zeta23.CCM.PoleNeutralCompactL2Energy\n  Zeta23.CCM.PoleNeutralCompactInverseCore\n  Zeta23.CCM.NativeCausalLaplaceMoments\n  Zeta23.CCM.NativeCausalExponentialWitness\n  Zeta23.CCM.CompactComplexIntegralFTC\n  Zeta23.CCM.PoleNeutralCompactL2Regularity\n  Zeta23.CCM.OriginalDetectorFinitePhaseDepth\n  Zeta23.CCM.OriginalDetectorFinitePhaseNativeTransport\n  Zeta23.CCM.OriginalDetectorFinitePhaseWeilPadding\n  Zeta23.CCM.OriginalDetectorFinitePhaseNormalization\n  Zeta23.CCM.OriginalDetectorFinitePhaseNormControl\n  Zeta23.CCM.OriginalDetectorFinitePhaseMass\n  Zeta23.CCM.OriginalDetectorFinitePhaseL1Errors\n  Zeta23.CCM.OriginalDetectorOriginalPhaseL1Bounds\n  Zeta23.CCM.OriginalDetectorFinitePhaseApproximation\n  Zeta23.CCM.OriginalDetectorFinitePhaseCarrier\n  Zeta23.CCM.OriginalDetectorFinitePhasePlane\n  Zeta23.CCM.CanonicalPoleNeutralGroundConstraints\n  Zeta23.CCM.OriginalDetectorFinitePoleImageNonzero\n  Zeta23.CCM.CanonicalPoleNeutralTrialResidualBounds\n  Zeta23.CCM.OriginalDetectorFinitePoleImageAsymptotics\n  Zeta23.CCM.OriginalDetectorFinitePhysicalNorm\n  Zeta23.CCM.OriginalDetectorFinitePoleImageTransport\n  Zeta23.CCM.OriginalDetectorFinitePoleImage\n  Zeta23.CCM.OriginalDetectorFiniteWindowHigherFlat\n  Zeta23.CCM.OriginalDetectorFiniteWindowImageAsymptotics\n  Zeta23.CCM.NativeCompletionEquation\n  Zeta23.CCM.NativeAdjointResidual\n  Zeta23.ExceptionalZero.OriginalDetectorPhaseDepth\n  Zeta23.CCM.OriginalDetectorFiniteWindowBoundaryFlat\n  Zeta23.CCM.NativeCompletionIntegerKernel\n  Zeta23.CCM.OriginalDetectorFiniteWindowImageJets\n  Zeta23.CCM.NativeCompletedInput\n  Zeta23.CCM.OriginalDetectorFiniteWindowImage\n  Zeta23.CCM.OriginalDetectorFourierTailAsymptotics\n  Zeta23.CCM.NativeDampedCompletionResidual\n  Zeta23.CCM.OriginalSincSourceSign\n  Zeta23.CCM.OriginalSincDriveLp\n  Zeta23.CCM.OriginalSincDriveDecay\n  Zeta23.CCM.OriginalDetectorFourierTailBounds\n  Zeta23.CCM.OriginalDetectorFourierScalarTailBounds\n  Zeta23.CCM.OriginalDetectorFourierCoefficientBounds\n  Zeta23.CCM.NativeDampedCompletionOperator\n  Zeta23.CCM.UniversalSincDetector\n  Zeta23.ExceptionalZero.UniversalSincSignedExcursions\n  Zeta23.ExceptionalZero.UniversalSincOriginalPhaseDepth\n  Zeta23.CCM.NativeDampedCompletionPrerequisites\n  Zeta23.CCM.OriginalDetectorWindowBounds\n  Zeta23.CCM.OriginalDetectorDividedLobeBounds\n  Zeta23.CCM.OriginalSincDriveCancellation\n  Zeta23.CCM.OriginalSincDriveDerivative\n  Zeta23.CCM.PoleNeutralCompactInverseL2Bound\n  Zeta23.ExceptionalZero.UniversalSincInitialLaplace\n  Zeta23.ExceptionalZero.UniversalSincSignedTailTransform\n  Zeta23.ExceptionalZero.UniversalSincSignedPoleBound\n  Zeta23.CCM.IsometricDetectorSchur\n  Zeta23.CCM.IsometricGroundSchur\n  Zeta23.CCM.NativeDetectorSchur\n  Zeta23.CCM.NativeSelectedGroundSchur\n  Zeta23.CCM.DetectorRetainedSchurState\n  Zeta23.CCM.OriginalDetectorFourierPrerequisites\n  Zeta23.CCM.OriginalSincWeightedPoleMoments\n  Zeta23.CCM.NativeAbelDiscrepancy\n  Zeta23.CCM.OriginalSincLogDrive\n  Zeta23.ExceptionalZero.PositiveLaplaceBoundary\n  Zeta23.ExceptionalZero.PositiveLaplaceAnalytic\n  Zeta23.ExceptionalZero.UniversalSincSignedLaplace\n  Zeta23.CCM.UniversalSincDetectorBounds\n  Zeta23.CCM.UniversalSincDetectorInverse\n  Zeta23.CCM.UniversalSincProductMoments\n  Zeta23.CCM.UniversalSincInverseGevreyBounds\n  Zeta23.CCM.UniversalSincSourceLaw\n  Zeta23.CCM.UniversalSincSourceCharacteristic\n  Zeta23.CCM.UniversalSincSourceTail\n  Zeta23.CCM.UniversalSincBoxDensity\n  Zeta23.CCM.UniversalSincSourceDensity\n  Zeta23.CCM.UniversalSincSourceDensityTransform\n  Zeta23.CCM.UniversalSincSourceDensityIdentification\n  Zeta23.CCM.UniversalSincSourceComplexTransform\n  Zeta23.CCM.UniversalSincSourceSymmetry\n  Zeta23.CCM.UniversalSincSourceFacade\n  Zeta23.CCM.OriginalSincNativeSource\n  Zeta23.CCM.OriginalSincNativeMass\n  Zeta23.ExceptionalZero.UniversalSincNativeSourceIdentification\n  Zeta23.ExceptionalZero.UniversalSincPhysicalDetector\n  Zeta23.ExceptionalZero.UniversalSincDetectorVisibility\n  Zeta23.ExceptionalZero.ZetaRealStripNonvanishing\n  Zeta23.ExceptionalZero.UniversalSincCorrelationReal\n  Zeta23.ExceptionalZero.PositiveMomentSeries\n  Zeta23.ExceptionalZero.PositiveMGFContinuation\n  Zeta23.ExceptionalZero.PositiveLaplaceTilt\n  Zeta23.CCM.CanonicalPoleNeutralGeometry\n  Zeta23.CCM.CanonicalPoleNeutralCarrier\n  Zeta23.CCM.CanonicalPoleNeutralNesting\n  Zeta23.CCM.CanonicalPoleExponentialMoments\n  Zeta23.CCM.CanonicalPoleNeutralIntertwining\n  Zeta23.CCM.CanonicalPoleNeutralNormals\n  Zeta23.CCM.CanonicalPoleNeutralCubicWitness\n  Zeta23.CCM.CanonicalPoleNeutralSourceMoment\n  Zeta23.CCM.CanonicalPoleNeutralIndexRigidity\n  Zeta23.CCM.CanonicalPoleNeutralSimpleEvenTie\n  Zeta23.CCM.CanonicalPoleNeutralShiftedSecular\n  Zeta23.CCM.CanonicalPoleNeutralTiePackage\n  Zeta23.CCM.CanonicalPoleNeutralBottomNFlow\n  Zeta23.CCM.FiniteBottomGapSelector\n  Zeta23.CCM.CanonicalDeepThresholdSelection\n  Zeta23.CCM.NativePoleNeutralTrialDepth\n  Zeta23.CCM.NativeDeepThresholdGround\n  Zeta23.CCM.NativeDeepThresholdInverseBudgets\n  Zeta23.CCM.NativeDeepThresholdSimplicity\n  Zeta23.CCM.NativeDeepThresholdEvenMoment\n  Zeta23.CCM.PoleNeutralCompactInverse\n  Zeta23.CCM.OriginalSincCompactPotential\n  Zeta23.CCM.PoleNeutralUniqueness\n  Zeta23.CCM.CanonicalTrialResidualChannels\n  Zeta23.CCM.NativeIntegerPrimeSource\n  Zeta23.CCM.NativeIntegerPrimeField\n  Zeta23.CCM.NativeIntegerPrimeConvolution\n  Zeta23.CCM.NativePositiveCompletion\n  Zeta23.CCM.NativePositiveCompletionCells\n  Zeta23.CCM.NativePositiveCompletionMass\n  Zeta23.CCM.NativePositiveCompletionHead\n  Zeta23.CCM.NativePositiveCompletionTail\n  Zeta23.CCM.NativePositiveCompletionCertificate\n  Zeta23.CCM.NativeFloorCompletionSource\n  Zeta23.CCM.NativeRationalCompletionLaplace\n  Zeta23.CCM.Step123PrimeSeam\n)\nlake build \"${targets[@]}\" 2>&1 | tee -a /tmp/post290-compiler.txt\n"
+            },
+            {
+              "name": "Reject proof escapes",
+              "uses": null,
+              "run": "python research/RHRC/closure_batch/check_lean_proof_escapes.py --scope promoted"
+            },
+            {
+              "name": "Exact component types and admitted axioms through existing compiler resolver",
+              "uses": null,
+              "run": "set -euo pipefail\nexport POST290_CHECKED_HEAD=\"$(git rev-parse HEAD)\"\nexport POST290_CHECKED_TREE=\"$(git rev-parse HEAD^{tree})\"\nlake build Zeta23.RHRC.Step123OutputBindings\nlake env lean Zeta23/RHRC/Step123OutputBindings.lean | tee /tmp/post290-bindings.txt\npython research/RHRC/routes/R003_ccm_bridge/post290/build_formal_receipt.py --log /tmp/post290-bindings.txt --out /tmp/STEP123_FORMAL_OUTPUT.json\n"
+            },
+            {
+              "name": null,
+              "uses": "actions/cache/save@v4",
+              "run": null
+            },
+            {
+              "name": null,
+              "uses": "actions/upload-artifact@v4",
+              "run": null
+            }
+          ]
+        },
+        {
+          "job_id": "exact-controls",
+          "display_name": "exact-controls",
+          "needs": null,
+          "matrix": null,
+          "steps": [
+            {
+              "name": null,
+              "uses": "actions/checkout@v4",
+              "run": null
+            },
+            {
+              "name": null,
+              "uses": "actions/setup-python@v5",
+              "run": null
+            },
+            {
+              "name": null,
+              "uses": null,
+              "run": "python -m pip install -r research/RHRC/routes/R003_ccm_bridge/requirements.txt"
+            },
+            {
+              "name": "Replay exact geometry, adjoint signs, ties and retained Schur controls",
+              "uses": null,
+              "run": "python research/RHRC/integration/post290/spec/validate_spec.py\npython research/RHRC/routes/R003_ccm_bridge/post290/source_lineage_check.py\npython research/RHRC/routes/R003_ccm_bridge/post290/test_pole_neutral_exact.py\npython research/RHRC/routes/R003_ccm_bridge/post290/test_strict_odd_and_tie_exact.py\npython research/RHRC/routes/R003_ccm_bridge/post290/test_detector_schur_provenance.py\npython research/RHRC/routes/R003_ccm_bridge/post290/test_deep_threshold_exact.py\npython research/RHRC/routes/R003_ccm_bridge/post290/test_inverse_budgets_and_gap_exact.py\npython research/RHRC/routes/R003_ccm_bridge/post290/test_argon_continuum_and_roots_exact.py\npython research/RHRC/routes/R003_ccm_bridge/post290/test_k3_resume.py\npython research/RHRC/routes/R003_ccm_bridge/post290/test_k3_replay_shards.py\npython research/RHRC/routes/R003_ccm_bridge/post290/test_k3_seams.py\npython research/RHRC/routes/R003_ccm_bridge/post290/test_native_divisor_controls.py\npython research/RHRC/routes/R003_ccm_bridge/post290/test_native_mass_candidate.py\npython research/RHRC/routes/R003_ccm_bridge/post290/test_output_mutations.py\npython research/RHRC/routes/R003_ccm_bridge/post290/test_formal_receipt.py\n"
+            },
+            {
+              "name": null,
+              "uses": "actions/upload-artifact@v4",
+              "run": null
+            }
+          ]
+        },
+        {
+          "job_id": "native-observations",
+          "display_name": "native-observations",
+          "needs": null,
+          "matrix": null,
+          "steps": [
+            {
+              "name": null,
+              "uses": "actions/checkout@v4",
+              "run": null
+            },
+            {
+              "name": null,
+              "uses": "actions/setup-python@v5",
+              "run": null
+            },
+            {
+              "name": null,
+              "uses": null,
+              "run": "python -m pip install -r research/RHRC/routes/R003_ccm_bridge/requirements.txt"
+            },
+            {
+              "name": "Evaluate all frozen native probe rows with explicit seam cancellation",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/post290/evaluate_native_output.py --bits 384 --out /tmp/post290-native/native_panel.json"
+            },
+            {
+              "name": "Independently reconstruct every scalar residual and Gram entry at 1024 bits",
+              "uses": null,
+              "run": "python research/RHRC/routes/R003_ccm_bridge/post290/verify_native_output.py /tmp/post290-native/native_panel.json --out /tmp/post290-native/native_panel_check.json"
+            },
+            {
+              "name": "Require the full observation panel; keep universal and generated-detector scope open",
+              "uses": null,
+              "run": "python - <<'PY'\nimport json, subprocess\nfrom pathlib import Path\nd=json.loads(Path('/tmp/post290-native/native_panel.json').read_text())\nc=json.loads(Path('/tmp/post290-native/native_panel_check.json').read_text())\nassert d['source_identity']['commit']==subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip()\nassert d['source_identity']['tree']==subprocess.check_output(['git','rev-parse','HEAD^{tree}'],text=True).strip()\nassert d['source_identity']['working_tree_dirty'] is False\nassert d['frozen_panel_complete'] is True and d['pair_count']==44 and d['row_count']==176\nassert d['evaluated_rows']==176 and d['unresolved_rows']==0\nassert c['verified_pairs']==44 and c['unresolved_pairs']==0\nassert c['universal_theorem_authority'] is False and c['terminal_claim']=='RH_OPEN'\nprint('176 native probe rows freshly checked; universal detector and ground claims OPEN.')\nPY\n"
+            },
+            {
+              "name": null,
+              "uses": "actions/upload-artifact@v4",
+              "run": null
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
