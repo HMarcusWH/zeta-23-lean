@@ -1,5 +1,6 @@
 import Zeta23.CCM.UniversalSincDetector
 import Zeta23.ExceptionalZero.UniversalSincSignedExcursions
+import Zeta23.ExceptionalZero.UniversalSincOriginalPhaseDepth
 import Zeta23.CCM.NativeDampedCompletionPrerequisites
 import Zeta23.CCM.OriginalDetectorWindowBounds
 import Zeta23.CCM.OriginalDetectorDividedLobeBounds
@@ -457,6 +458,16 @@ run_cmd do
     (``Zeta23.ExceptionalZero.fixedOriginalSincCorrelation_signed_late_excursion_of_right_zero, "Zeta23.ExceptionalZero.UniversalSincSignedExcursions"),
     (``Zeta23.ExceptionalZero.fixedOriginalSincCorrelation_two_signed_late_excursions_of_right_zero, "Zeta23.ExceptionalZero.UniversalSincSignedExcursions"),
     (``Zeta23.ExceptionalZero.fixedOriginalSincCorrelation_two_signed_late_excursions_of_off_line_zero, "Zeta23.ExceptionalZero.UniversalSincSignedExcursions"),
+    (``Zeta23.ExceptionalZero.fixedOriginalSincKernel_integral, "Zeta23.ExceptionalZero.UniversalSincOriginalPhaseDepth"),
+    (``Zeta23.ExceptionalZero.fixedOriginalSincKernelL2Mass_pos, "Zeta23.ExceptionalZero.UniversalSincOriginalPhaseDepth"),
+    (``Zeta23.ExceptionalZero.fixedOriginalSincPhaseTrial_reflected_formula, "Zeta23.ExceptionalZero.UniversalSincOriginalPhaseDepth"),
+    (``Zeta23.ExceptionalZero.fixedOriginalSincPhaseTrial_integral_norm_sq, "Zeta23.ExceptionalZero.UniversalSincOriginalPhaseDepth"),
+    (``Zeta23.ExceptionalZero.fixedOriginalSincPhaseTrial_contDiff, "Zeta23.ExceptionalZero.UniversalSincOriginalPhaseDepth"),
+    (``Zeta23.ExceptionalZero.fixedOriginalSincPhaseTrial_hasCompactSupport, "Zeta23.ExceptionalZero.UniversalSincOriginalPhaseDepth"),
+    (``Zeta23.ExceptionalZero.fixedOriginalSincPhaseTrial_support, "Zeta23.ExceptionalZero.UniversalSincOriginalPhaseDepth"),
+    (``Zeta23.ExceptionalZero.fixedOriginalSincPhaseTrial_Weil_re, "Zeta23.ExceptionalZero.UniversalSincOriginalPhaseDepth"),
+    (``Zeta23.ExceptionalZero.fixedOriginalSincPhaseTrial_Weil_eq_native, "Zeta23.ExceptionalZero.UniversalSincOriginalPhaseDepth"),
+    (``Zeta23.ExceptionalZero.exists_fixedOriginalSincPhaseTrial_depth_of_off_line_zero, "Zeta23.ExceptionalZero.UniversalSincOriginalPhaseDepth"),
     (``Zeta23.CCM.nativeDampedCompletionKernel_integrable, "Zeta23.CCM.NativeDampedCompletionPrerequisites"),
     (``Zeta23.CCM.nativeDampedCompletionKernel_integral_norm_lt_605_div_621, "Zeta23.CCM.NativeDampedCompletionPrerequisites"),
     (``Zeta23.CCM.nativeCompletionL2Delay_norm, "Zeta23.CCM.NativeDampedCompletionPrerequisites"),

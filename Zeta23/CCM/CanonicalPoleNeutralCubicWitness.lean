@@ -12,6 +12,7 @@ attribute [local reducible] Submodule.innerProductSpace
   Submodule.seminormedAddCommGroup Submodule.normedAddCommGroup
   poleNeutralEven_innerProductSpace poleNeutralOdd_innerProductSpace
   euclideanParityBoundaryFlatSubspace
+  euclideanEvenBoundaryFlatSubspace euclideanOddBoundaryFlatSubspace
 
 /-!
 An actual native pole-neutral carrier with a nonzero fourth moment.
@@ -155,7 +156,12 @@ theorem poleNeutralCubicCompressionVector_ne_zero {L : ℝ} (hL : 0 < L)
   intro hg
   have hp := poleNeutral_cubic_pairing_eq_momentFour hL K (poleNeutralMomentFourWitness L K hK)
   rw [hg] at hp
-  erw [inner_zero_left (𝕜 := ℂ)] at hp
+  have hzero : inner ℂ (0 : poleNeutralOddSubspace L K)
+      (poleNeutralIndexLinearMap hL K (poleNeutralMomentFourWitness L K hK)) = 0 := by
+    change inner ℂ (0 : EuclideanSpace ℂ (Fin (2 * K + 1)))
+      (poleNeutralIndexLinearMap hL K (poleNeutralMomentFourWitness L K hK)).val.val = 0
+    exact inner_zero_left _
+  rw [hzero] at hp
   exact poleNeutralMomentFourWitness_momentFour_ne_zero hL K hK hp.symm
 
 end Zeta23.CCM

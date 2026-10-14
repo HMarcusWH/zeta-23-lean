@@ -145,7 +145,7 @@ theorem analyticAt_fixedOriginalSincResolvent_ofReal (p : ℝ) :
 theorem fixedOriginalSincSquaredCoeff_ne_zero
     (ρ : zetaZeroConfig.carrier) (hoff : (ρ : ℂ).re ≠ 1 / 2) :
     zeroFilterCoeff fixedOriginalSincSquaredFilter ρ ≠ 0 := by
-  rw [zeroFilterCoeff_squaredWeilZeroFilter]
+  rw [fixedOriginalSincSquaredFilter, zeroFilterCoeff_squaredWeilZeroFilter]
   apply mul_ne_zero
   · have hm : 1 ≤ zeroMult (ρ : ℂ) := zetaZeroConfig.one_le_mult _ ρ.2
     exact_mod_cast Nat.one_le_iff_ne_zero.mp hm

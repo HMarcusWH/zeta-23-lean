@@ -56,7 +56,7 @@ theorem nativePoleMoment_deriv {f : ℝ → ℂ} (hf : ContDiff ℝ 1 f)
       fun x => nativePoleExponential r x * deriv f x := by funext x; ring
   rw [hleft, hright, Zeta23.integral_const_mul_C] at key
   change (r : ℂ) * nativePoleMoment r f = -nativePoleMoment r (deriv f) at key
-  linear_combination key
+  simpa only [neg_neg] using (congrArg (fun z : ℂ => -z) key).symm
 
 theorem nativePoleFirstMoment_deriv {f : ℝ → ℂ} (hf : ContDiff ℝ 1 f)
     (hc : HasCompactSupport f) (r : ℝ) :
@@ -69,21 +69,22 @@ theorem nativePoleFirstMoment_deriv {f : ℝ → ℂ} (hf : ContDiff ℝ 1 f)
   have hD := hf.continuous_deriv le_rfl
   have hweight (x : ℝ) :
       HasDerivAt (fun y : ℝ => (y : ℂ) * nativePoleExponential r y)
-        (nativePoleExponential r x + (r : ℂ) * (x : ℂ) * nativePoleExponential r x) x := by
-    have hid := (hasDerivAt_id x).ofReal_comp
-    convert! hid.mul (hasDerivAt_nativePoleExponential r x) using 1 <;>
-      first | rfl | (simp only [Complex.ofReal_one, id_eq, one_mul]; ring)
+        (nativePoleExponential r x + (r : ℂ) * ((x : ℂ) * nativePoleExponential r x)) x := by
+    have hid : HasDerivAt (fun y : ℝ => (y : ℂ)) 1 x := by
+      simpa only [id_eq, Complex.ofReal_one] using (hasDerivAt_id x).ofReal_comp
+    simpa only [one_mul, mul_assoc, mul_comm, mul_left_comm] using
+      hid.mul (hasDerivAt_nativePoleExponential r x)
   have key := integral_mul_deriv_eq_deriv_mul_of_integrable
     (u := f) (u' := deriv f)
     (v := fun x : ℝ => (x : ℂ) * nativePoleExponential r x)
     (v' := fun x => nativePoleExponential r x +
-      (r : ℂ) * (x : ℂ) * nativePoleExponential r x)
+      (r : ℂ) * ((x : ℂ) * nativePoleExponential r x))
     (fun x _ => hd x) (fun x _ => hweight x)
     ((hf.continuous.mul (hE.add (continuous_const.mul hXE))).integrable_of_hasCompactSupport hc.mul_right)
     ((hD.mul hXE).integrable_of_hasCompactSupport hc.deriv.mul_right)
     ((hf.continuous.mul hXE).integrable_of_hasCompactSupport hc.mul_right)
   have hleft : (fun x : ℝ => f x * (nativePoleExponential r x +
-      (r : ℂ) * (x : ℂ) * nativePoleExponential r x)) = fun x =>
+      (r : ℂ) * ((x : ℂ) * nativePoleExponential r x))) = fun x =>
       nativePoleExponential r x * f x +
         (r : ℂ) * ((x : ℂ) * nativePoleExponential r x * f x) := by funext x; ring
   have hright : (fun x : ℝ => deriv f x * ((x : ℂ) * nativePoleExponential r x)) =
@@ -93,7 +94,11 @@ theorem nativePoleFirstMoment_deriv {f : ℝ → ℂ} (hf : ContDiff ℝ 1 f)
     Zeta23.integral_const_mul_C] at key
   change nativePoleMoment r f + (r : ℂ) * nativePoleFirstMoment r f =
     -nativePoleFirstMoment r (deriv f) at key
-  linear_combination key
+  calc
+    nativePoleFirstMoment r (deriv f) =
+        -(nativePoleMoment r f + (r : ℂ) * nativePoleFirstMoment r f) := by
+      simpa only [neg_neg] using (congrArg (fun z : ℂ => -z) key).symm
+    _ = -nativePoleMoment r f - (r : ℂ) * nativePoleFirstMoment r f := by ring
 
 theorem nativePoleMoment_differential {f : ℝ → ℂ} (hf : ContDiff ℝ 2 f)
     (hc : HasCompactSupport f) (r : ℝ) :
@@ -113,6 +118,9 @@ theorem nativePoleMoment_differential {f : ℝ → ℂ} (hf : ContDiff ℝ 2 f)
   change nativePoleMoment r (deriv (deriv f)) - (1 / 4 : ℂ) * nativePoleMoment r f = _
   rw [nativePoleMoment_deriv hf.deriv' hc.deriv,
     nativePoleMoment_deriv (hf.of_le (by norm_num)) hc]
+  change -(r : ℂ) * (-(r : ℂ) * nativePoleMoment r f) -
+    (1 / 4 : ℂ) * nativePoleMoment r f =
+      ((r : ℂ) ^ 2 - 1 / 4) * nativePoleMoment r f
   ring
 
 theorem nativePoleFirstMoment_differential {f : ℝ → ℂ} (hf : ContDiff ℝ 2 f)
@@ -122,7 +130,7 @@ theorem nativePoleFirstMoment_differential {f : ℝ → ℂ} (hf : ContDiff ℝ 
         ((r : ℂ) ^ 2 - 1 / 4) * nativePoleFirstMoment r f := by
   have hD2 := hf.deriv'.continuous_deriv le_rfl
   have heq : (fun x : ℝ => (x : ℂ) * nativePoleExponential r x *
-      universalSincDifferential f x) = fun x =>
+      universalSincDifferential f x) = fun x : ℝ =>
       (x : ℂ) * nativePoleExponential r x * deriv (deriv f) x -
         (1 / 4 : ℂ) * ((x : ℂ) * nativePoleExponential r x * f x) := by
     funext x
@@ -137,6 +145,11 @@ theorem nativePoleFirstMoment_differential {f : ℝ → ℂ} (hf : ContDiff ℝ 
   rw [nativePoleFirstMoment_deriv hf.deriv' hc.deriv,
     nativePoleMoment_deriv (hf.of_le (by norm_num)) hc,
     nativePoleFirstMoment_deriv (hf.of_le (by norm_num)) hc]
+  change -(-(r : ℂ) * nativePoleMoment r f) -
+    (r : ℂ) * (-nativePoleMoment r f - (r : ℂ) * nativePoleFirstMoment r f) -
+      (1 / 4 : ℂ) * nativePoleFirstMoment r f =
+        2 * (r : ℂ) * nativePoleMoment r f +
+          ((r : ℂ) ^ 2 - 1 / 4) * nativePoleFirstMoment r f
   ring
 
 theorem universalSincSecondKernel_first_elementary_moments {s : ℝ} (hs : 0 < s) :
@@ -175,24 +188,28 @@ theorem nativeOriginalSource_weighted_elementary_moments :
   have hc := universalSincSecondKernel_hasCompactSupport hs
   have h0 (r : ℝ) : (∫ x : ℝ, Real.exp (r * x) * nativeOriginalSource x) =
       (nativePoleMoment r (universalSincSecondKernel UniversalSinc.fixedScale)).re := by
-    rw [nativePoleMoment, ← integral_re (poleMoment_integrable hcont hc r)]
+    change _ = RCLike.re (∫ x : ℝ, nativePoleExponential r x *
+      universalSincSecondKernel UniversalSinc.fixedScale x)
+    rw [← integral_re (poleMoment_integrable hcont hc r)]
     apply integral_congr_ae
     filter_upwards with x
-    simp only [nativePoleMoment, nativeOriginalSource, universalSincSecondSource,
+    simp only [RCLike.re_eq_complex_re, nativePoleMoment, nativeOriginalSource, universalSincSecondSource,
       nativePoleExponential, Complex.mul_re, Complex.ofReal_re, Complex.ofReal_im,
       zero_mul, sub_zero]
   have h1 (r : ℝ) : (∫ x : ℝ, x * Real.exp (r * x) * nativeOriginalSource x) =
       (nativePoleFirstMoment r (universalSincSecondKernel UniversalSinc.fixedScale)).re := by
-    rw [nativePoleFirstMoment, ← integral_re (poleFirstMoment_integrable hcont hc r)]
+    change _ = RCLike.re (∫ x : ℝ, (x : ℂ) * nativePoleExponential r x *
+      universalSincSecondKernel UniversalSinc.fixedScale x)
+    rw [← integral_re (poleFirstMoment_integrable hcont hc r)]
     apply integral_congr_ae
     filter_upwards with x
-    simp [nativeOriginalSource, universalSincSecondSource,
+    simp [RCLike.re_eq_complex_re, nativeOriginalSource, universalSincSecondSource,
       nativePoleExponential, Complex.mul_re, Complex.mul_im]
   have hmplus : nativePoleMoment (1 / 2)
       (universalSincSecondKernel UniversalSinc.fixedScale) = 0 := hm.1
   have hmminus : nativePoleMoment (-1 / 2)
       (universalSincSecondKernel UniversalSinc.fixedScale) = 0 := hm.2
-  simpa only [Complex.zero_re, div_eq_mul_inv, one_mul, neg_mul,
+  simpa only [Complex.zero_re, div_eq_mul_inv, one_mul, neg_mul, mul_neg,
     mul_comm, mul_left_comm, mul_assoc]
     using And.intro ((h0 (1 / 2)).trans (congrArg Complex.re hmplus))
       (And.intro ((h0 (-1 / 2)).trans (congrArg Complex.re hmminus))

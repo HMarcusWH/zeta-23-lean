@@ -45,6 +45,7 @@ jobs:
           targets=(
             Zeta23.CCM.UniversalSincDetector
             Zeta23.ExceptionalZero.UniversalSincSignedExcursions
+            Zeta23.ExceptionalZero.UniversalSincOriginalPhaseDepth
             Zeta23.CCM.NativeDampedCompletionPrerequisites
             Zeta23.CCM.OriginalDetectorWindowBounds
             Zeta23.CCM.OriginalDetectorDividedLobeBounds

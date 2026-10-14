@@ -18,6 +18,7 @@ window; no derivative estimate or approximation hypothesis is supplied.
 noncomputable section
 
 open Set Metric Complex
+open scoped Topology
 
 namespace Zeta23.CCM
 
@@ -52,9 +53,12 @@ theorem originalDetectorWindow_sin_lower_half_collar
 
 private theorem complex_sin_re_eq (z : ℂ) :
     (Complex.sin z).re = Real.sin z.re * Real.cosh z.im := by
-  rw [Complex.sin_eq, ← Complex.ofReal_sin, ← Complex.ofReal_cosh,
-    ← Complex.ofReal_cos, ← Complex.ofReal_sinh]
-  simp
+  rw [Complex.sin_eq]
+  simp only [← Complex.ofReal_sin, ← Complex.ofReal_cosh,
+    ← Complex.ofReal_cos, ← Complex.ofReal_sinh,
+    Complex.add_re, Complex.mul_re, Complex.mul_im,
+    Complex.ofReal_re, Complex.ofReal_im, Complex.I_re, Complex.I_im]
+  ring
 
 /-- Every complex point in the prescribed half-unit disk stays uniformly
 away from the sine zeros. -/

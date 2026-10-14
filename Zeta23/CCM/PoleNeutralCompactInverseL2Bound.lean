@@ -144,7 +144,7 @@ theorem nativePoleCompactInverse_l2_norm_le_four {s : ℝ} (hs : 0 ≤ s)
     · rw [hz]
       positivity
     · have hpos : 0 < ‖G‖ := lt_of_le_of_ne (norm_nonneg G) (Ne.symm hz)
-      apply (mul_le_mul_left hpos).mp
+      apply (mul_le_mul_iff_right₀ hpos).mp
       nlinarith [sq_nonneg ‖V‖]
   simpa only [G, F, Lp.norm_toLp] using hbound
 

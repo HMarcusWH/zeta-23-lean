@@ -55,8 +55,7 @@ theorem poleNeutral_homogeneous_eq_zero {h : ℝ → ℂ} {x0 : ℝ}
     have hprod := (hasDerivAt_nativePoleExponential (1 / 2) x).mul (hd x).hasDerivAt
     convert! hprod using 1 <;> first
       | rfl
-      | (simp only [V, Pi.mul_apply]
-         push_cast
+      | (push_cast
          symm
          linear_combination nativePoleExponential (1 / 2) x * hfirst x)
   funext x
@@ -112,7 +111,8 @@ theorem originalSincCompactPotential_eq_universalSincKernel {s : ℝ} (hs : 0 < 
     fun hmem => hout (universalSincKernel_support hs hmem)
   apply poleNeutral_eq_of_clamped_jets (x0 := s + 1)
     (originalSincCompactPotential_contDiff_two hs)
-    ((universalSincKernel_contDiff hs).of_le (by norm_num))
+    ((universalSincKernel_contDiff hs).of_le
+      (ENat.natCast_le_of_coe_top_le_withTop le_rfl 2))
   · intro x
     simpa only [universalSincSecondKernel, universalSincDifferential] using
       originalSincCompactPotential_pole_equation hs x

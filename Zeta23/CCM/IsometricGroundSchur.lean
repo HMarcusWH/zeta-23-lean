@@ -35,7 +35,8 @@ theorem isometricGroundSchur_kernel_package (J : E →ₗᵢ[ℂ] F) (T : F →�
   have hblock : Ti x + b = 0 := by
     have hj := congrArg J.toLinearMap.adjoint hu
     rw [← hrec, map_add, map_add, ← hTi] at hj
-    simpa only [map_zero] using hj
+    simpa only [map_zero, b, isometricDetectorCoupling, LinearMap.comp_apply,
+      Submodule.subtype_apply] using hj
   have hx : x = -r := by
     have hxb : Ti x = -b := eq_neg_of_add_eq_zero_left hblock
     have hs := congrArg Ti.symm hxb
@@ -49,10 +50,11 @@ theorem isometricGroundSchur_kernel_package (J : E →ₗᵢ[ℂ] F) (T : F →�
     rw [← huDecomp, hu, map_zero]
   refine ⟨?_, hx, hschur⟩
   intro hy
+  change y = 0 at hy
   apply hu0
   rw [huDecomp]
   change (y : F) - J (isometricDetectorResponse J T Ti y) = 0
-  simp only [hy, map_zero, Submodule.coe_zero, sub_zero]
+  rw [hy, map_zero, Submodule.coe_zero, map_zero, sub_zero]
 
 /-- The actual ground shell's scalar Schur equality uses its actual
 response at the ground shift, independently of any detector threshold. -/

@@ -13,6 +13,7 @@ attribute [local reducible] Submodule.innerProductSpace
   Submodule.seminormedAddCommGroup Submodule.normedAddCommGroup
   poleNeutralEven_innerProductSpace poleNeutralOdd_innerProductSpace
   euclideanParityBoundaryFlatSubspace
+  euclideanEvenBoundaryFlatSubspace euclideanOddBoundaryFlatSubspace
 
 /-!
 Actual finite native pole-neutral bottoms and corrected source-moment energy.
@@ -128,7 +129,17 @@ theorem poleNeutral_source_moment_energy_eq {L : ℝ} (hL : 0 < L)
   rw [hu, map_smul] at hd
   have hp := congrArg (fun z : poleNeutralOddSubspace L K =>
     inner ℂ z (poleNeutralIndexLinearMap hL K u)) hd
-  erw [inner_smul_left (𝕜 := ℂ)] at hp
+  have hsmul : inner ℂ
+      (poleNeutralCorrectedCubicSource L K u • poleNeutralCubicCompressionVector L K)
+      (poleNeutralIndexLinearMap hL K u) =
+      star (poleNeutralCorrectedCubicSource L K u) *
+        inner ℂ (poleNeutralCubicCompressionVector L K) (poleNeutralIndexLinearMap hL K u) := by
+    change inner ℂ
+      (poleNeutralCorrectedCubicSource L K u •
+        (poleNeutralCubicCompressionVector L K).val.val)
+      (poleNeutralIndexLinearMap hL K u).val.val = _
+    exact inner_smul_left _ _ _
+  rw [hsmul] at hp
   rw [poleNeutral_cubic_pairing_eq_momentFour hL] at hp
   exact congrArg Complex.re hp.symm
 
@@ -141,7 +152,19 @@ theorem poleNeutral_source_moment_gap_le {L : ℝ} (hL : 0 < L)
   rw [poleNeutral_source_moment_energy_eq hL K (by omega) lam u hu]
   have hb := poleNeutralOddRayleighBottom_mul_norm_sq_le hL K hK
     (poleNeutralIndexLinearMap hL K u)
-  erw [inner_sub_left (𝕜 := ℂ), inner_smul_left (𝕜 := ℂ)]
+  have hsub : inner ℂ
+      (poleNeutralOddCompressedCanonical L K (poleNeutralIndexLinearMap hL K u) -
+        (lam : ℂ) • poleNeutralIndexLinearMap hL K u) (poleNeutralIndexLinearMap hL K u) =
+      inner ℂ (poleNeutralOddCompressedCanonical L K (poleNeutralIndexLinearMap hL K u))
+        (poleNeutralIndexLinearMap hL K u) -
+      star (lam : ℂ) *
+        inner ℂ (poleNeutralIndexLinearMap hL K u) (poleNeutralIndexLinearMap hL K u) := by
+    change inner ℂ
+      ((poleNeutralOddCompressedCanonical L K (poleNeutralIndexLinearMap hL K u)).val.val -
+        (lam : ℂ) • (poleNeutralIndexLinearMap hL K u).val.val)
+      (poleNeutralIndexLinearMap hL K u).val.val = _
+    rw [inner_sub_left, inner_smul_left]
+  rw [hsub]
   rw [Complex.sub_re]
   have hn : (inner ℂ (poleNeutralIndexLinearMap hL K u) (poleNeutralIndexLinearMap hL K u)).re =
       ‖poleNeutralIndexLinearMap hL K u‖ ^ 2 := by

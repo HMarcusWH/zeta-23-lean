@@ -64,6 +64,7 @@ theorem nativeDampedCompletionKernel_integral_norm_le_native {epsilon : ℝ}
   apply integral_mono (nativeDampedCompletionKernel_integrable hepsilon).norm
     nativePositiveCompletion_integrable.norm
   intro t
+  change ‖nativeDampedCompletionKernel epsilon t‖ ≤ ‖nativePositiveCompletion t‖
   rw [Real.norm_of_nonneg (nativeDampedCompletionKernel_nonneg epsilon t),
     Real.norm_of_nonneg (nativePositiveCompletion_nonneg t)]
   exact nativeDampedCompletionKernel_le_native hepsilon t
@@ -117,7 +118,7 @@ theorem nativeDampedCompletionPointwise_causal (epsilon : ℝ) {f : ℝ → ℂ}
     · rw [nativeDampedCompletionKernel_zero_of_neg epsilon (lt_of_not_ge ht),
         Complex.ofReal_zero, zero_mul]
   rw [hzero]
-  exact integral_zero
+  exact integral_zero ℝ ℂ
 
 end Zeta23.CCM
 
