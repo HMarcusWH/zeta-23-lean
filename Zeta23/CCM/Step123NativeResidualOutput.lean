@@ -18,6 +18,7 @@ noncomputable section
 
 namespace Zeta23.CCM
 
+open scoped BigOperators
 open Zeta23.ExceptionalZero
 
 /-- N27: the original own-parity neutral residual has the EXACT
