@@ -310,7 +310,9 @@ jobs:
           python research/RHRC/routes/R003_ccm_bridge/post290/test_native_divisor_controls.py
           python research/RHRC/routes/R003_ccm_bridge/post290/test_native_mass_candidate.py
           python research/RHRC/routes/R003_ccm_bridge/post290/test_output_mutations.py
+          python -O research/RHRC/routes/R003_ccm_bridge/post290/test_output_mutations.py
           python research/RHRC/routes/R003_ccm_bridge/post290/test_formal_receipt.py
+          python -O research/RHRC/routes/R003_ccm_bridge/post290/test_formal_receipt.py
       - uses: actions/upload-artifact@v4
         if: always()
         with:
