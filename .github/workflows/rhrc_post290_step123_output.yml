@@ -43,6 +43,9 @@ jobs:
         run: |
           set -euo pipefail
           targets=(
+            Zeta23.CCM.CanonicalPhysicalTrialRealization
+            Zeta23.CCM.NativeWeilResponseBounds
+            Zeta23.CCM.NativeWeilResponse
             Zeta23.CCM.NativeCompletionPublicAPI
             Zeta23.CCM.OriginalSincNativeConvolution
             Zeta23.CCM.NativeCompactTranslateCalculus

@@ -103,7 +103,7 @@
         "T03"
       ],
       "mandatory": true,
-      "status": "IN_PROGRESS",
+      "status": "PROVED_LOCAL_COMPONENT; FULL_RELEASE_INTEGRATION_PENDING",
       "acceptance": "Exact Archimedean, elementary-pole and both translated-prime channels; mixed pairing; H1 bound with constructed constants."
     },
     {
@@ -114,7 +114,7 @@
         "T05"
       ],
       "mandatory": true,
-      "status": "IN_PROGRESS",
+      "status": "PROVED_LOCAL_COMPONENT; FULL_RELEASE_INTEGRATION_PENDING",
       "acceptance": "Actual normalized modes, isometry into full-line L2, actual adjoint and mixed canonical dictionary; no caller-supplied physical bridge."
     },
     {
@@ -127,7 +127,7 @@
         "T10"
       ],
       "mandatory": true,
-      "status": "WAITING_FOR_DEPENDENCIES",
+      "status": "NOT_COMPLETED_AT_USAGE_WRAP",
       "acceptance": "Four literal original prime histories, compact-inverse duality, native predecessor forcing, signed channels and quantified finite-image error."
     },
     {
@@ -139,7 +139,7 @@
         "T11"
       ],
       "mandatory": true,
-      "status": "WAITING_FOR_DEPENDENCIES",
+      "status": "NOT_COMPLETED_AT_USAGE_WRAP",
       "acceptance": "Construct actual original response/exterior/history; retain generally nonzero interior and finite Galerkin/constraint-normal residuals."
     },
     {
@@ -155,7 +155,7 @@
         "T12"
       ],
       "mandatory": true,
-      "status": "WAITING_FOR_DEPENDENCIES",
+      "status": "NOT_COMPLETED_AT_USAGE_WRAP",
       "acceptance": "Rho-free record; one literal detector and one selected state; global fields definitionally fixed; all required proof fields constructor-bound."
     },
     {
@@ -166,7 +166,7 @@
         "T01"
       ],
       "mandatory": true,
-      "status": "WAITING_FOR_DEPENDENCIES",
+      "status": "NOT_COMPLETED_AT_USAGE_WRAP",
       "acceptance": "Consume existing padded admissible retained producer ONCE beyond all thresholds; discharge every Step 1-3 field and prove flagship quantifiers."
     },
     {
@@ -177,7 +177,7 @@
         "T14"
       ],
       "mandatory": true,
-      "status": "WAITING_FOR_DEPENDENCIES",
+      "status": "NOT_COMPLETED_AT_USAGE_WRAP",
       "acceptance": "Native selector-indexed Schur value identified with stored state; C-Schur contradiction at epsilon=beta/2; A-X/B-Y reexported with original premises."
     },
     {
@@ -187,7 +187,7 @@
         "T15"
       ],
       "mandatory": true,
-      "status": "WAITING_FOR_DEPENDENCIES",
+      "status": "NOT_COMPLETED_AT_USAGE_WRAP",
       "acceptance": "All 99 requested APIs resolved by correct kind, actual origin, type and source; new producer/three cuts kernel-checked; separate human semantic signoff."
     },
     {
@@ -197,7 +197,7 @@
         "T16"
       ],
       "mandatory": true,
-      "status": "WAITING_FOR_DEPENDENCIES",
+      "status": "NOT_COMPLETED_AT_USAGE_WRAP",
       "acceptance": "Formal conditional packet remains symbolic; native probe panel remains finite; field lineage and all unresolved output states explicit."
     },
     {
@@ -208,7 +208,7 @@
         "T17"
       ],
       "mandatory": true,
-      "status": "WAITING_FOR_DEPENDENCIES",
+      "status": "NOT_COMPLETED_AT_USAGE_WRAP",
       "acceptance": "All named incorrect substitutions rejected; existing controls unchanged or explicitly versioned; tests pass with Python optimization enabled."
     },
     {
@@ -218,7 +218,7 @@
         "T18"
       ],
       "mandatory": true,
-      "status": "WAITING_FOR_DEPENDENCIES",
+      "status": "NOT_COMPLETED_AT_USAGE_WRAP",
       "acceptance": "Reused full graph stack; correct alias origins; clean checkout validates BEFORE generators; complete-output gate separate from component gate."
     },
     {
@@ -239,7 +239,7 @@
         "T20"
       ],
       "mandatory": true,
-      "status": "WAITING_FOR_DEPENDENCIES",
+      "status": "NOT_COMPLETED_AT_USAGE_WRAP",
       "acceptance": "All required roles passed by exact disposition; all artifacts bound; full nine-part post-green pass; RH and each closing law OPEN; no automatic merge."
     }
   ],
@@ -252,18 +252,24 @@
     "T05",
     "T06",
     "T07",
-    "T08"
+    "T08",
+    "T09",
+    "T10"
   ],
   "completion_scope": "LOCAL_COMPONENT_PROOFS; FINAL_TREE_CI_AND_COMPLETE_OUTPUT_PENDING",
   "D2_snapshot": {
-    "ledger": "D2_UNIQUE_460_LEDGER.json",
-    "completed_children": 94,
-    "pass_children": 81,
-    "unresolved_children": 13,
+    "ledger": "D2_UNIQUE_460_LEDGER_LATEST.json",
+    "capture_utc": "2026-10-14 17:22:34 UTC",
+    "completed_children": 132,
+    "pass_children": 111,
+    "unresolved_children": 21,
+    "preserved_unresolved_descendant_leaves": 109,
     "running_claimed_children": 8,
-    "future_unclaimed_children": 358,
+    "future_unclaimed_children": 320,
     "fresh_full_independent_check": "NOT_ESTABLISHED",
     "D2": "OPEN",
-    "note": "Historical as-of snapshot from the recorded API capture, not a live status claim."
-  }
+    "canonical_result_validator": "PASS_132_ORDINARY_AND_OPTIMIZED; NOT_NUMERICAL_RECHECK"
+  },
+  "wrap_reason": "Human requested final push and wrap while account usage was 96 percent consumed.",
+  "next_required_task": "T11: original native projected forcing, four histories, compact duality and quantified error."
 }

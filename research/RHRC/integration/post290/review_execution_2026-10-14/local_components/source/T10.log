@@ -1,0 +1,46 @@
+Zeta23/CCM/CanonicalPhysicalTrialRealization.lean:374:38: warning: This simp argument is unused:
+  RingHom.id_apply
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [map_add, map_smul, inner_add_left, inner_add_right, inner_smul_left, inner_smul_right, map_one,
+    map_neg, Complex.conj_I]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+Zeta23/CCM/CanonicalPhysicalTrialRealization.lean:424:2: warning: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+'Zeta23.CCM.finitePhysicalSynthesis_add' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.finitePhysicalSynthesis_sub' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.canonicalPhysicalValue_ae' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.canonicalPhysicalValue_norm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.canonicalPhysicalIsometry_ae' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.canonicalPhysicalProjection_synthesis' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.canonicalPhysicalProjection_inner' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.canonicalPhysicalIsometry_centeredZeroExtend' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.canonicalNativePhysicalIsometry_centeredZeroExtend' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.CCM.canonicalNativePhysicalIsometry_predecessor' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.canonicalNativePhysicalProjection_synthesis' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.canonicalNativePhysicalIsometry_ae' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.canonicalNativePhysicalProjection_inner' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.canonicalNativePhysicalProjection_orthogonal' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.canonicalNativePhysicalProjection_norm_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.canonicalPhysicalSynthesis_deriv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.canonicalPhysicalDerivativeCoefficients_norm_sq_le' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.CCM.canonicalPhysicalSynthesis_H1_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.canonicalNativeCoefficientInclusion_eq_ambient' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.canonicalNativePhysicalSynthesis_H1_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.canonicalPhysicalSynthesis_mixed_Weil' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.canonicalNativePhysical_mixed_compression' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.canonicalNativePhysicalSynthesis_mixed_Weil' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.canonicalNativePhysicalProjection_firstCutoff_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

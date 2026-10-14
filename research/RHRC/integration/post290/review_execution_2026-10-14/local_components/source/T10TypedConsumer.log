@@ -1,0 +1,6 @@
+'Zeta23.CCM.canonicalNativePhysicalSynthesis_mixed_Weil' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.canonicalNativePhysicalProjection_firstCutoff_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.CCM.canonicalNativePhysicalIsometry_predecessor' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.canonicalNativePhysicalSynthesis_H1_bound' depends on axioms: [propext, Classical.choice, Quot.sound]

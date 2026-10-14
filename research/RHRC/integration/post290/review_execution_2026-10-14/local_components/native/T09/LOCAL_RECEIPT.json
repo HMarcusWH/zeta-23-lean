@@ -1,0 +1,305 @@
+{
+  "task": "T09_RESPONSE_SUBCOMPONENT",
+  "status": "PROVED_LOCAL_COMPONENT",
+  "whole_T09_task_status": "PARENT_OWNS_BOUNDS_COMPONENT_AND_INTEGRATION",
+  "intake_baseline_commit": "efa6ceea7bba2b34ff453a70a32a0800fee98b82",
+  "intake_baseline_tree": "511f6dc182d9a02b54e9404e93c32eb614fbff34",
+  "integration_HEAD_observed_after_check": "77407a489d3a600e8219122ade03acb3f6b2d4db",
+  "integration_HEAD_tree_observed_after_check": "7bb16ed0c7d9fb0942f465a5cc5ea3cb2e1517eb",
+  "changed_source_is_identified_by_sha256_not_git_tree": true,
+  "module": "Zeta23.CCM.NativeWeilResponse",
+  "source_sha256": "0ebc3954a20596f32b92f1a9f6b96f959ea5e9758d639b3eaea298cb072ff377",
+  "checked_source_unchanged": true,
+  "compiler": "Lean 4.33.0-rc2",
+  "mathlib_revision": "51e6992efd06126df61a496bebf8f49482a4e129",
+  "compiler_wrapper": "work/post290/run_lean.py",
+  "compiler_options": [
+    "-j",
+    "1",
+    "-DmaxHeartbeats=800000",
+    "-DrelaxedAutoImplicit=false",
+    "-Dpp.unicode.fun=true"
+  ],
+  "compiler_exit_code": 0,
+  "compiler_session": 50278,
+  "typed_capture_exit_code": 0,
+  "typed_capture_session": 89265,
+  "public_definitions": [
+    "Zeta23.CCM.nativeWeilArchResponse",
+    "Zeta23.CCM.nativeWeilPoleResponse",
+    "Zeta23.CCM.nativeWeilPrimeResponse",
+    "Zeta23.CCM.nativeWeilResponse",
+    "Zeta23.CCM.nativePhysicalH1Norm"
+  ],
+  "public_theorem_roots": [
+    {
+      "name": "Zeta23.CCM.nativeWeilResponse_decomposition",
+      "kind": "THEOREM",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "Zeta23.CCM.nativeGammaBracket_quadratic_bound",
+      "kind": "THEOREM",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "Zeta23.CCM.nativeWeilArch_fourier_integrable",
+      "kind": "THEOREM",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "Zeta23.CCM.nativeWeilArchResponse_pairing",
+      "kind": "THEOREM",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "Zeta23.CCM.nativePaperFT_imaginary",
+      "kind": "THEOREM",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "Zeta23.CCM.nativeWeilPoleResponse_pairing",
+      "kind": "THEOREM",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "Zeta23.CCM.nativeWeilPrimeResponse_eq_history_sum",
+      "kind": "THEOREM",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "Zeta23.CCM.nativeWeilPrimeResponse_continuous",
+      "kind": "THEOREM",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "Zeta23.CCM.nativeWeilPoleResponse_continuous",
+      "kind": "THEOREM",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "Zeta23.CCM.nativeWeilPrimeResponse_pairing",
+      "kind": "THEOREM",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "Zeta23.CCM.nativeWeilArchResponse_continuous",
+      "kind": "THEOREM",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "Zeta23.CCM.nativeWeilResponse_continuous",
+      "kind": "THEOREM",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "Zeta23.CCM.nativeWeilResponse_memLp_two_on_interval",
+      "kind": "THEOREM",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "Zeta23.CCM.nativeWeilResponse_indicator_memLp_two",
+      "kind": "THEOREM",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "Zeta23.CCM.nativeWeilResponse_pairing",
+      "kind": "THEOREM",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "Zeta23.CCM.nativeWeilArch_fourier_memLp_two",
+      "kind": "THEOREM",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "Zeta23.CCM.nativeWeilArchResponse_memLp_two",
+      "kind": "THEOREM",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    }
+  ],
+  "global_Arch_L2": "PROVED_ACTUAL_FULL_LINE_INVERSE_INTEGRAL_FOR_COMPACT_C2",
+  "total_response_L2": "PROVED_COMPACT_INTERVAL_AND_ITS_ZERO_EXTENSION_ONLY",
+  "mixed_pairing": "ACTUAL_ZETA_ZERO_CONFIG_W_LINEAR_FIRST_CONJUGATE_LINEAR_SECOND_NO_CALLER_BRIDGE",
+  "proof_escape_scope_files": 642,
+  "regression_exits": {
+    "ordinary_python": 0,
+    "python_O": 0
+  },
+  "regression_authority": "SUPPLEMENTARY_CONVENTION_CHECKS_ONLY",
+  "files": [
+    {
+      "path": "work/post290/repo/Zeta23/CCM/NativeWeilResponse.lean",
+      "sha256": "0ebc3954a20596f32b92f1a9f6b96f959ea5e9758d639b3eaea298cb072ff377",
+      "bytes": 27709
+    },
+    {
+      "path": "work/post292audit/validation/native/T09/NativeWeilResponse.log",
+      "sha256": "9bf98cb1e32c2433304ae3469d261b2de2f26a32bb750081de08b538579df486",
+      "bytes": 2796
+    },
+    {
+      "path": "work/post292audit/validation/native/T09/T09TypedCheck.lean",
+      "sha256": "b5b6db19614ac82f171b92d17e22534bed484098f8be6db69ff189ad5c1f1a94",
+      "bytes": 2033
+    },
+    {
+      "path": "work/post292audit/validation/native/T09/T09TypedCheck.log",
+      "sha256": "0c7120534ccf1703504811603eabf8aca7b02683f0feba2869526014ef227266",
+      "bytes": 5446
+    },
+    {
+      "path": "work/post292audit/validation/native/T09/proof_escape.log",
+      "sha256": "d22d23785c3f036116014813a63941612a5a8036ad0fef5aa714ce9ed904af69",
+      "bytes": 46
+    },
+    {
+      "path": "work/post292audit/validation/native/T09/test_mixed_response_conventions.py",
+      "sha256": "fa112d2c4ac2b56d35f46ee81b9c6af83842caffc43124ce30f36a697f483db7",
+      "bytes": 3139
+    },
+    {
+      "path": "work/post292audit/validation/native/T09/conventions.log",
+      "sha256": "8ee4669655aaed29bbc70e28a8ef25f73d1ebe2b002448e637699b5a2cbcaa41",
+      "bytes": 106
+    },
+    {
+      "path": "work/post292audit/validation/native/T09/conventions_optimized.log",
+      "sha256": "8ee4669655aaed29bbc70e28a8ef25f73d1ebe2b002448e637699b5a2cbcaa41",
+      "bytes": 106
+    },
+    {
+      "path": "work/post292audit/validation/native/T09/POST_GREEN.md",
+      "sha256": "f19ab1d5f12104f7ab6c58bec8fe30fdc4dbd4411d31e65aca5f1d1591e0a304",
+      "bytes": 5378
+    },
+    {
+      "path": "work/post292audit/validation/native/T09/NativeWeilResponse_16root_checkpoint.lean.txt",
+      "sha256": "2a6d73321f8cc31e09e93e8be15503de1dd5b52b8fd1e3160e74bfb3dacd3f9e",
+      "bytes": 23999
+    },
+    {
+      "path": "work/post292audit/validation/native/T09/NativeWeilResponse_16root_checkpoint.log",
+      "sha256": "6f91f7b7af332885ef7ae2bbe10653aa8872c487e4b08f6c3c08ea95bb5dfb9b",
+      "bytes": 2690
+    }
+  ],
+  "direct_local_source_imports_observed_at_freeze": [
+    {
+      "path": "work/post290/repo/Zeta23/ExceptionalZero/WeilLiteratureBridge.lean",
+      "sha256": "819dfc6652358076de7edd3872c097726ac56e7b973c59c944f8b2a74412380c",
+      "bytes": 3764
+    },
+    {
+      "path": "work/post290/repo/Zeta23/CCM/UniversalSincPhysicalBounds.lean",
+      "sha256": "a95a81960a2e6b50bd743bfcd262cfba72a88f5322061308f1983e0a442860d5",
+      "bytes": 11070
+    },
+    {
+      "path": "work/post290/repo/Zeta23/CCM/NativeIntegerPrimeField.lean",
+      "sha256": "5e33af26755dc29d578d1e29cd53341d8130bdb62bae67231364060520008247",
+      "bytes": 9900
+    },
+    {
+      "path": "work/post290/repo/Zeta23/CCM/OriginalDetectorPaddedFiniteH1Rate.lean",
+      "sha256": "94f54c223c3718ba15f00275f07622b875105be9254302044e532b18aeb2d00f",
+      "bytes": 8460
+    },
+    {
+      "path": "work/post290/repo/Zeta23/WeilEF/VerticalLine.lean",
+      "sha256": "c4771eebc7edf75bb35fdc6a6589b5943ebef39cf3656857034e8f87a7973202",
+      "bytes": 45071
+    },
+    {
+      "path": "work/post290/repo/Zeta23/ExplicitFormula/Bridge.lean",
+      "sha256": "d091079a643a7022930acc691e64e27f343329e80c901f906a8d54a0726340b7",
+      "bytes": 12316
+    },
+    {
+      "path": "work/post290/repo/Zeta23/GammaFacts/Complete.lean",
+      "sha256": "80abcfeb7677d93ff9b69215f3d1a41ed4265945a5539adf212cbfd2b31215c5",
+      "bytes": 1323
+    }
+  ],
+  "recoverable_checkpoint_source_sha256": "2a6d73321f8cc31e09e93e8be15503de1dd5b52b8fd1e3160e74bfb3dacd3f9e",
+  "direct_consumer": {
+    "module": "Zeta23.CCM.NativeWeilResponseBounds",
+    "status": "PARENT_OR_BOUNDS_AGENT_OWNS_EXACT_FINAL_RECHECK"
+  },
+  "global_contract_and_remote_CI": "PENDING_PARENT_INTEGRATION",
+  "owned_runners_remaining": [],
+  "RH_status": "OPEN",
+  "closing_premises": {
+    "A-X": "OPEN",
+    "B-Y": "OPEN",
+    "C-Schur": "OPEN"
+  }
+}
