@@ -1,3 +1,5 @@
+import Zeta23.CCM.Step123NativeAmbientGalerkin
+import Zeta23.CCM.OriginalDetectorCompactDuality
 import Zeta23.ExceptionalZero.Step4OutputSufficiency
 import Zeta23.CCM.OriginalDetectorForcingError
 import Zeta23.CCM.CanonicalPhysicalTrialRealization
@@ -1422,7 +1424,11 @@ run_cmd do
     (``Zeta23.CCM.originalDetector_projectedForcing_eq, "Zeta23.CCM.OriginalDetectorNativeForcing", "THEOREM"),
     (``Zeta23.CCM.originalNativeExterior_history_eq, "Zeta23.CCM.NativeOriginalExteriorHistory", "THEOREM"),
     (``Zeta23.CCM.originalNativeExterior_residual_eq, "Zeta23.CCM.NativeOriginalExteriorHistory", "THEOREM"),
-    (``Zeta23.CCM.originalDetector_forcing_error_bound, "Zeta23.CCM.OriginalDetectorForcingError", "THEOREM")]
+    (``Zeta23.CCM.originalDetector_forcing_error_bound, "Zeta23.CCM.OriginalDetectorForcingError", "THEOREM"),
+    (``Zeta23.CCM.nativePoleCompactInverse_compactTest_duality, "Zeta23.CCM.OriginalDetectorCompactDuality", "THEOREM"),
+    (``Zeta23.CCM.canonicalLegalPhysicalProjection_orthogonal, "Zeta23.CCM.Step123NativeAmbientGalerkin", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeOutput.selectedOuterGalerkin_orthogonal, "Zeta23.CCM.Step123NativeAmbientGalerkin", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeOutput.selectedResponse_decomposition, "Zeta23.CCM.Step123NativeAmbientGalerkin", "THEOREM")]
   let queries := roots.map fun (name, mod, kind) =>
     ({ sourceId := name.toString, moduleName := mod, shortName := name.toString,
        sourceKind := kind } : Zeta23.RHRC.SourceCandidateQuery)
