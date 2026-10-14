@@ -1,0 +1,52 @@
+{
+  "schema_version": "RH_POST290_COUNTERMODEL_CONTRACTS_1.0",
+  "claim_cap": "RH_OPEN",
+  "scientific_disposition": "OPEN_RESEARCH_TARGETS",
+  "source_id": "frozen-universal-sinc-product-s0-1/4096",
+  "restrictions": [
+    {
+      "id": "original_detector_depth",
+      "authority": "CONDITIONAL_PROVED_COMPONENTS",
+      "antecedent": "hypothetical nontrivial off-line zeta zero",
+      "constraint": "separately cofinal deep original phases, not common separation",
+      "not_implied": "a global nonnegative/pole-neutral witness"
+    },
+    {
+      "id": "full_signed_schur_lower",
+      "authority": "CONDITIONAL_PROVED_COMPONENTS",
+      "antecedent": "retained same-state detector",
+      "constraint": "complete original complement loss greater than exp(beta*L)/2",
+      "not_implied": "opposite-parity spectral gap"
+    },
+    {
+      "id": "zero_jet_nonrange",
+      "authority": "CONDITIONAL_PROVED_COMPONENTS",
+      "antecedent": "hypothetical off-line zeta zero",
+      "constraint": "actual causal Y fails actual stable range closure at its prescribed damping",
+      "not_implied": "nonexistence of off-line zero"
+    },
+    {
+      "id": "finite_probe_grammar",
+      "authority": "EXPERIMENTAL_SIGNAL",
+      "antecedent": "frozen 44-pair panel",
+      "constraint": "do not identify finite probes with theorem-selected detector or universal zero constraint",
+      "not_implied": "RH"
+    }
+  ],
+  "open_cuts": [
+    "A-X",
+    "B-Y",
+    "C-Schur"
+  ],
+  "falsification_controls": [
+    "degenerate cutoff-3 predecessor",
+    "strict-even/strict-odd/tied branches",
+    "swap eta with selected lambda",
+    "omit cross terms in complex Gram",
+    "erase original interior history",
+    "modified prime field with broken divisor identity",
+    "asymmetric complex probe with reflected histories",
+    "claim global X L2 from compact-source smoothness"
+  ],
+  "reporting_rule": "Record conditional restriction, counterexample, finite observation and unresolved status separately; never conclude RH from survival filtering."
+}

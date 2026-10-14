@@ -1,0 +1,56 @@
+{
+  "schema_version": "RH_POST290_ASSUMPTION_CONTRACT_1.0",
+  "execution_status": "NOT_CHECKED",
+  "integrity_status": "NOT_CHECKED",
+  "scientific_disposition": "INDEPENDENT_REVIEW_REQUIRED_RH_OPEN",
+  "claim_cap": "RH_OPEN",
+  "authority": "SPECIFICATION_ONLY_NOT_AN_INDEPENDENT_SEMANTIC_REVIEW",
+  "named_closing_hypotheses": [
+    {
+      "id": "A-X",
+      "name": "NativeOriginalPrimeFieldAllDampedIntegral",
+      "source": "unchanged nativeOriginalPrimeField",
+      "status": "OPEN",
+      "scope": "all epsilon>0, exact original half-line weighted square integral",
+      "conditional_conclusion": "RiemannHypothesis"
+    },
+    {
+      "id": "B-Y",
+      "name": "NativeInputAllRangeClosure",
+      "source": "actual nativeCompletedInputCausalL2 and nativeDampedCompletionCausalL2Operator",
+      "status": "OPEN",
+      "scope": "all epsilon>0, actual range closure",
+      "conditional_conclusion": "RiemannHypothesis"
+    },
+    {
+      "id": "C-Schur",
+      "name": "NativeOriginalDetectorSchurSubexponential",
+      "source": "original padded detector full signed Schur complement",
+      "status": "OPEN",
+      "scope": "uniform over beta,epsilon,original phases,all admissible eta and cutoff after L0",
+      "conditional_conclusion": "RiemannHypothesis"
+    }
+  ],
+  "no_bridge_hypotheses_allowed": [
+    "hOriginalForcing",
+    "hExterior",
+    "InputVisibility",
+    "HasSourceCorrection",
+    "DeepDetectorExists",
+    "AllOutputsExist",
+    "hWindows"
+  ],
+  "independent_semantic_review": {
+    "status": "NOT_RECEIVED",
+    "required_fields": 44,
+    "verified_fields": 0,
+    "reviewer_must_not_be_source_author": true,
+    "immutable_receipt": "complete-output compiler mode only"
+  },
+  "allowed_lean_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "no_unconditional_RH_claim": true
+}
