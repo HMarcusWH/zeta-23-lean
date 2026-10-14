@@ -2,6 +2,7 @@ import Zeta23.CCM.NativeOriginalExteriorHistory
 import Zeta23.CCM.Step123NativeCorePacket
 import Zeta23.CCM.CanonicalPhysicalTrialRealization
 import Zeta23.CCM.UniversalSincPhysicalBounds
+import Zeta23.CCM.NativeCompletionPublicAPI
 
 /-!
 # Step 1-3 mathematical native output data, source-pinned core
@@ -155,6 +156,33 @@ theorem Step123NativeOutput.originalDetector_schur_loss
         -(Real.exp (β * fixedOriginalSincTrialAperture a)) / 2 := by
   have h := Step123NativeCorePacket.original_negative_schur σ o.retained
   exact ⟨h.1, h.2.2⟩
+
+/-- The source/arithmetic view is derived from the one fixed original
+prime field and its exact integer drive. It is not an arbitrary pair
+of functions supplied to the output record. -/
+def Step123NativeOutput.arithmeticView
+    {β : ℝ} {σ : ReversalParity} {a : ℝ}
+    (o : Step123NativeOutput β σ a) : (ℝ → ℝ) × (ℝ → ℝ) :=
+  (nativeOriginalPrimeField, nativeOriginalIntegerDrive)
+
+/-- The range/input view is the actual original Y and its own
+correction.  Its stable L2 and causal assertions are separately
+theorem-backed in NativeCompletedInput, not definitions of RH. -/
+def Step123NativeOutput.rangeView
+    {β : ℝ} {σ : ReversalParity} {a : ℝ}
+    (o : Step123NativeOutput β σ a) : (ℝ → ℝ) × (ℝ → ℝ) :=
+  (nativeCompletedInput, nativeCompletionCorrection)
+
+/-- The structural view retains exactly the single selected state and
+its full detector, forcing and exterior history. -/
+def Step123NativeOutput.structuralView
+    {β : ℝ} {σ : ReversalParity} {a : ℝ}
+    (o : Step123NativeOutput β σ a) :
+    Step123NativeCorePacket σ
+      (fixedOriginalSincTrialAperture a)
+      (originalDetectorQuarticCutoff (fixedOriginalSincTrialAperture a))
+      (Real.exp (β * fixedOriginalSincTrialAperture a)) o.aperture_pos :=
+  o.retained
 
 end Zeta23.CCM
 

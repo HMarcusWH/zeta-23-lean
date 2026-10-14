@@ -99,6 +99,27 @@ theorem exists_generatedStep123Output_cofinal
   obtain ⟨out⟩ := exists_generatedStep123Output ρ hβ hβρ σ R
   exact ⟨out, out.native_aperture_bound⟩
 
+/-- Original requested zero-indexed exported name.  This refers to
+the same source-bound cofinal generated core object; a fully validated
+N01-N40 producer remains a separate release obligation. -/
+theorem exists_step123Output_of_offLine_zero
+    (ρ : zetaZeroConfig.carrier) {β : ℝ}
+    (hβ : 0 < β) (hβρ : β < |(ρ : ℂ).re - 1 / 2|)
+    (σ : ReversalParity) (R : ℝ) :
+    Nonempty (GeneratedStep123Output ρ β σ R) :=
+  exists_generatedStep123Output ρ hβ hβρ σ R
+
+/-- Each phase has arbitrarily late outputs, but no common aperture
+or arbitrary all-large-aperture depth is asserted. -/
+theorem exists_eachPhase_cofinal_step123Output
+    (ρ : zetaZeroConfig.carrier) {β : ℝ}
+    (hβ : 0 < β) (hβρ : β < |(ρ : ℂ).re - 1 / 2|) :
+    ∀ (σ : ReversalParity) (R : ℝ),
+      ∃ out : GeneratedStep123Output ρ β σ R,
+        max R 4 < fixedOriginalSincTrialAperture out.sourceData.separation := by
+  intro σ R
+  exact exists_generatedStep123Output_cofinal ρ hβ hβρ σ R
+
 end Zeta23.ExceptionalZero
 
 #print axioms Zeta23.ExceptionalZero.exists_generatedStep123Output

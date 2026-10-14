@@ -164,6 +164,42 @@ theorem originalDetectorNativeForcing_eq_predecessor_plus_coupling
       rw [← nativeDetectorPredecessorEquiv_eq_compression σ r x]
       rfl
 
+/-- The requested source-side forcing endpoint: the actual shifted
+original detector is projected by the physical Weil response, then
+identified with the *same* retained full-complement Schur blocks.
+
+The four signed histories of the SMOOTH original source and its
+finite-image error are distinct downstream obligations; the finite
+response below keeps its own Archimedean, pole, and both prime terms. -/
+theorem originalDetector_projectedForcing_eq
+    (σ : ReversalParity)
+    {L D : ℝ} {Kd : ℕ} {hL : 0 < L}
+    {s : NativeDeepThresholdGroundData L Kd D hL}
+    (r : NativeDeepThresholdInverseData s)
+    (p : nativePoleNeutralParitySpace σ L Kd) :
+    let J := nativeDetectorPredecessorEmbedding σ s
+    let T := nativePoleNeutralParityShifted σ L Kd (-s.eta)
+    let P := nativeDetectorPredecessorEquiv σ r
+    let x := J.toLinearMap.adjoint p
+    let y := isometricDetectorComplementCoordinate J p
+    originalDetectorNativeForcing σ s p =
+        P x + isometricDetectorCoupling J T y ∧
+      ∀ v : nativePoleNeutralParitySpace σ L (s.cutoff - 1),
+        inner ℂ v (originalDetectorNativeForcing σ s p) =
+          (∫ z : ℝ,
+            nativeWeilResponse
+              (finitePhysicalSynthesis L Kd
+                (canonicalNativeCoefficientInclusion σ L Kd p)) z *
+              conj (finitePhysicalSynthesis L Kd
+                (canonicalNativeCoefficientInclusion σ L Kd (J v)) z)) +
+            (s.eta : ℂ) * inner ℂ (J v) p := by
+  dsimp only
+  constructor
+  · exact originalDetectorNativeForcing_eq_predecessor_plus_coupling σ r p
+  · intro v
+    exact originalDetectorNativeForcing_physical_mixed σ s p v
+
+
 end Zeta23.CCM
 
 #print axioms Zeta23.CCM.originalDetector_nativeWeil_mixed
@@ -172,3 +208,5 @@ end Zeta23.CCM
 
 #print axioms Zeta23.CCM.originalDetectorNativeForcing_physical_mixed
 #print axioms Zeta23.CCM.originalDetectorNativeForcing_eq_predecessor_plus_coupling
+
+#print axioms Zeta23.CCM.originalDetector_projectedForcing_eq

@@ -98,6 +98,12 @@ theorem riemannHypothesis_of_any_step4_output_cut
   · exact riemannHypothesis_of_step4_BY hBY
   · exact riemannHypothesis_of_originalDetectorSchurSubexponential hC
 
+/-- Original required name for the *conditional* C-Schur theorem.
+Its source-specific subexponential premise remains explicitly OPEN. -/
+theorem riemannHypothesis_of_detectorSchurLoss_subexponential
+    (hC : NativeOriginalDetectorSchurSubexponential) : RiemannHypothesis :=
+  riemannHypothesis_of_originalDetectorSchurSubexponential hC
+
 end Zeta23.ExceptionalZero
 
 #print axioms Zeta23.ExceptionalZero.riemannHypothesis_of_step4_AX

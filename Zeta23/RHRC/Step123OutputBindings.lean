@@ -1,3 +1,4 @@
+import Zeta23.ExceptionalZero.Step4OutputSufficiency
 import Zeta23.CCM.CanonicalPhysicalTrialRealization
 import Zeta23.CCM.NativeWeilResponseBounds
 import Zeta23.CCM.NativeWeilResponse
@@ -1395,7 +1396,31 @@ run_cmd do
     (``Zeta23.CCM.canonicalNativeCoefficientInclusion, "Zeta23.CCM.CanonicalPhysicalTrialRealization", "DEF"),
     (``Zeta23.CCM.canonicalNativePhysicalIsometry, "Zeta23.CCM.CanonicalPhysicalTrialRealization", "DEF"),
     (``Zeta23.CCM.canonicalNativePhysicalProjection, "Zeta23.CCM.CanonicalPhysicalTrialRealization", "DEF"),
-    (``Zeta23.CCM.canonicalPhysicalDerivativeCoefficients, "Zeta23.CCM.CanonicalPhysicalTrialRealization", "DEF")]
+    (``Zeta23.CCM.canonicalPhysicalDerivativeCoefficients, "Zeta23.CCM.CanonicalPhysicalTrialRealization", "DEF"),
+    (``Zeta23.CCM.universalSincSource, "Zeta23.CCM.UniversalSincSourceFacade", "DEF"),
+    (``Zeta23.CCM.originalDetectorFiniteImage, "Zeta23.CCM.OriginalDetectorFiniteTransport", "DEF"),
+    (``Zeta23.CCM.poleNeutralIndexEquiv, "Zeta23.CCM.CanonicalPoleNeutralCarrier", "DEF"),
+    (``Zeta23.CCM.poleNeutralEvenShiftedRay, "Zeta23.CCM.CanonicalPoleNeutralShiftedSecular", "DEF"),
+    (``Zeta23.CCM.DetectorRetainedSchurState, "Zeta23.CCM.DetectorRetainedSchurState", "INDUCTIVE"),
+    (``Zeta23.CCM.canonicalTrialResidual, "Zeta23.CCM.CanonicalTrialResidualChannels", "DEF"),
+    (``Zeta23.CCM.nativeOriginalPrimeField, "Zeta23.CCM.OriginalSincNativeSource", "DEF"),
+    (``Zeta23.CCM.nativeOriginalIntegerDrive, "Zeta23.CCM.OriginalSincNativeSource", "DEF"),
+    (``Zeta23.CCM.nativePositiveCompletion, "Zeta23.CCM.NativePositiveCompletion", "DEF"),
+    (``Zeta23.CCM.nativeCompletedInput, "Zeta23.CCM.NativeCompletedInput", "DEF"),
+    (``Zeta23.CCM.nativeAdjointResidualIterate, "Zeta23.CCM.NativeDampedCompletionResidual", "DEF"),
+    (``Zeta23.ExceptionalZero.nativeZeroJetAdjointWitness, "Zeta23.ExceptionalZero.NativeRangeZeroJetObstruction", "DEF"),
+    (``Zeta23.CCM.OriginalNativeExteriorRecord, "Zeta23.CCM.NativeOriginalExteriorHistory", "INDUCTIVE"),
+    (``Zeta23.CCM.Step123NativeOutput, "Zeta23.CCM.Step123OutputData", "INDUCTIVE"),
+    (``Zeta23.CCM.Step123NativeOutput.arithmeticView, "Zeta23.CCM.Step123OutputData", "DEF"),
+    (``Zeta23.CCM.Step123NativeOutput.rangeView, "Zeta23.CCM.Step123OutputData", "DEF"),
+    (``Zeta23.CCM.Step123NativeOutput.structuralView, "Zeta23.CCM.Step123OutputData", "DEF"),
+    (``Zeta23.ExceptionalZero.GeneratedStep123Output, "Zeta23.ExceptionalZero.Step123OutputProducer", "INDUCTIVE"),
+    (``Zeta23.ExceptionalZero.exists_step123Output_of_offLine_zero, "Zeta23.ExceptionalZero.Step123OutputProducer", "THEOREM"),
+    (``Zeta23.ExceptionalZero.exists_eachPhase_cofinal_step123Output, "Zeta23.ExceptionalZero.Step123OutputProducer", "THEOREM"),
+    (``Zeta23.ExceptionalZero.riemannHypothesis_of_detectorSchurLoss_subexponential, "Zeta23.ExceptionalZero.Step4OutputSufficiency", "THEOREM"),
+    (``Zeta23.CCM.originalDetector_projectedForcing_eq, "Zeta23.CCM.OriginalDetectorNativeForcing", "THEOREM"),
+    (``Zeta23.CCM.originalNativeExterior_history_eq, "Zeta23.CCM.NativeOriginalExteriorHistory", "THEOREM"),
+    (``Zeta23.CCM.originalNativeExterior_residual_eq, "Zeta23.CCM.NativeOriginalExteriorHistory", "THEOREM")]
   let queries := roots.map fun (name, mod, kind) =>
     ({ sourceId := name.toString, moduleName := mod, shortName := name.toString,
        sourceKind := kind } : Zeta23.RHRC.SourceCandidateQuery)

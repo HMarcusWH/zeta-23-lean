@@ -13,6 +13,12 @@ from pathlib import Path
 REPO=Path(__file__).resolve().parents[5]
 IMMUTABLE_SPEC=REPO/'research/RHRC/integration/post290/spec/BUILD_MANIFEST.json'
 IMMUTABLE_SPEC_SHA256='1a36cb3ff2cb39017bdb34cb4f56f831f40c611472f840af8b3dce9dafa71760'
+# The reviewed source provides exact requested kinds for all 99 public exports.
+# Lean represents a structure as an inductive declaration; neither is theorem
+# authority. Pin the original crosswalk by Git blob SHA-1.
+FROZEN_API_CROSSWALK=REPO/'research/RHRC/integration/post290/review_execution_2026-10-14/spec/API_CROSSWALK.json'
+FROZEN_API_CROSSWALK_BLOB_SHA='254e2c4a8ad05bd1647c2175d86472755c795c41'
+
 FORMAL_JOB=('RHRC post290 source and output proof components','lean-components')
 REGRESSION_JOB=('RHRC post290 source and output proof components','exact-controls')
 NATIVE_JOB=('RHRC post290 source and output proof components','native-observations')
@@ -69,6 +75,26 @@ def frozen_spec():
         raise ValueError('immutable original acceptance specification changed')
     return json.loads(raw)
 
+def frozen_export_kinds(expected):
+    raw=FROZEN_API_CROSSWALK.read_bytes().replace(b'\r\n',b'\n')
+    # Git's content identity includes the "blob <size>\0" framing.
+    framed=b'blob '+str(len(raw)).encode()+b'\0'+raw
+    if hashlib.sha1(framed).hexdigest()!=FROZEN_API_CROSSWALK_BLOB_SHA:
+        raise ValueError('reviewed public API kind contract changed')
+    rows=json.loads(raw)['rows']
+    names=[r.get('requested_name') for r in rows]
+    if len(rows)!=99 or len(set(names))!=99 or not all(isinstance(n,str) and n for n in names):
+        raise ValueError('invalid 99-name public API kind inventory')
+    spec_names={name for module in expected['new_lean_modules']
+                for name in module['proposed_exports']}
+    if set(names)!=spec_names:
+        raise ValueError('API crosswalk does not match immutable 25-module export inventory')
+    kinds={'THEOREM':'THEOREM','DEFINITION':'DEFINITION',
+           'STRUCTURE':'INDUCTIVE','INDUCTIVE':'INDUCTIVE'}
+    if any(row.get('required_kind') not in kinds for row in rows):
+        raise ValueError('unrecognized required public source kind')
+    return {row['requested_name']:kinds[row['required_kind']] for row in rows}
+
 def release_gaps(manifest, formal, d2, jobs):
     gaps = []
     expected=frozen_spec()
@@ -94,11 +120,14 @@ def release_gaps(manifest, formal, d2, jobs):
             gaps.append('mandatory work package demoted: '+package['id'])
         if prior and prior.get('mandatory') and package.get('status')!='COMPLETE_VERIFIED':
             gaps.append('unfulfilled work-package acceptance: '+package['id'])
+    expected_kinds=frozen_export_kinds(expected)
     declarations=formal.get('declarations',[])
-    names=[r.get('theorem') for r in declarations]
-    if len(names)!=len(set(names)):
-        gaps.append('duplicate compiler declaration receipts')
-    bindings = {r.get('theorem'):r for r in declarations}
+    definitions=formal.get('definitions',[])
+    all_bindings=declarations+definitions
+    names=[r.get('declaration',r.get('theorem')) for r in all_bindings]
+    if len(names)!=len(set(names)) or any(not isinstance(n,str) or not n for n in names):
+        gaps.append('duplicate or malformed compiler declaration receipts')
+    bindings = {r.get('declaration',r.get('theorem')):r for r in all_bindings}
     tree = formal.get('source_tree')
     if not isinstance(tree,str) or re.fullmatch('[0-9a-f]{40}',tree) is None:
         gaps.append('exact compiler-tested tree missing')
@@ -119,11 +148,19 @@ def release_gaps(manifest, formal, d2, jobs):
             receipt = bindings.get(name)
             if not receipt:
                 gaps.append('missing producer: ' + name)
-            elif (receipt.get('authority') != 'PROVED' or receipt.get('source_tree') != tree
-                  or not receipt.get('normalized_type') or
-                  hashlib.sha256(receipt.get('normalized_type','').encode()).hexdigest() != receipt.get('normalized_type_sha256')
-                  or receipt.get('axiom_audit_pass') is not True or not isinstance(receipt.get('axioms'),list) or not set(receipt.get('axioms',[]))<=ALLOW_AXIOMS):
-                gaps.append('unverified or stale producer: ' + name)
+            else:
+                required_kind=expected_kinds[name]
+                kind=receipt.get('declaration_kind')
+                authority=receipt.get('authority')
+                if (kind!=required_kind or
+                    authority!=('PROVED' if kind=='THEOREM' else 'DEFINED_DATA_NOT_A_THEOREM')
+                    or receipt.get('source_tree') != tree or
+                    not receipt.get('normalized_type') or
+                    hashlib.sha256(receipt.get('normalized_type','').encode()).hexdigest() != receipt.get('normalized_type_sha256')
+                    or receipt.get('axiom_audit_pass') is not True or
+                    not isinstance(receipt.get('axioms'),list) or
+                    not set(receipt.get('axioms',[]))<=ALLOW_AXIOMS):
+                    gaps.append('unverified, wrong-kind or stale producer: ' + name)
         if module.get('status') != 'COMPLETE_VERIFIED':
             gaps.append('unfulfilled module acceptance: ' + module['id'])
     required_d2 = ('complete_layers','unresolved_tiles','unrun_tiles','missing_artifacts','unverified_tiles','nonfinite_enclosures')

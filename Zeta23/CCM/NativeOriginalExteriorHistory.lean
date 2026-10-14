@@ -158,8 +158,67 @@ def OriginalNativeExteriorRecord.fromOriginalSource
   interior_memLp := originalSmoothWeilInterior_memLp_two σ a
   prime_eq := originalSmoothFourPrimeHistories_eq σ a
 
+/-- The original physical history is not replaced by a contact: its
+Archimedean, two elementary-pole and FOUR signed prime channels
+reconstruct the exact full response, and the actual interior is retained. -/
+theorem originalNativeExterior_history_eq
+    (σ a : ℝ)
+    (hL : 0 < Zeta23.ExceptionalZero.fixedOriginalSincTrialAperture a)
+    (x : ℝ) :
+    originalSmoothWeilResponse σ a x =
+      nativeWeilArchResponse
+        (Zeta23.ExceptionalZero.fixedOriginalSincPhaseTrial σ a) x +
+      nativeWeilPoleResponse
+        (Zeta23.ExceptionalZero.fixedOriginalSincPhaseTrial σ a) x -
+      originalSmoothFourPrimeHistories σ a x ∧
+    originalSmoothWeilResponse σ a x =
+      originalSmoothWeilLeftExterior σ a x +
+      originalSmoothWeilInteriorHistory σ a x +
+      originalSmoothWeilRightExterior σ a x := by
+  constructor
+  · rw [originalSmoothWeilResponse_arch_pole_prime,
+      originalSmoothFourPrimeHistories_eq]
+  · exact originalSmoothWeilResponse_reconstruction σ a hL.le x
+
+/-- Exact signed difference of the genuine finite native response and
+the genuine original smooth source, with every Archimedean, pole and
+prime channel retained. This pointwise residual is NOT the constrained
+normal or outer-Galerkin residual; those are additional required output
+fields and are not silently identified here. -/
+theorem originalNativeExterior_residual_eq
+    (σ : ReversalParity) (L : ℝ) (Kd : ℕ)
+    (p : nativePoleNeutralParitySpace σ L Kd)
+    (a x : ℝ) :
+    originalDetectorNativeResponse σ L Kd p x -
+      originalSmoothWeilResponse (nativeOriginalDetectorPhaseSign σ) a x =
+    (nativeWeilArchResponse
+        (finitePhysicalSynthesis L Kd
+          (canonicalNativeCoefficientInclusion σ L Kd p)) x -
+      nativeWeilArchResponse
+        (Zeta23.ExceptionalZero.fixedOriginalSincPhaseTrial
+          (nativeOriginalDetectorPhaseSign σ) a) x) +
+    (nativeWeilPoleResponse
+        (finitePhysicalSynthesis L Kd
+          (canonicalNativeCoefficientInclusion σ L Kd p)) x -
+      nativeWeilPoleResponse
+        (Zeta23.ExceptionalZero.fixedOriginalSincPhaseTrial
+          (nativeOriginalDetectorPhaseSign σ) a) x) -
+    (nativeWeilPrimeResponse
+        (finitePhysicalSynthesis L Kd
+          (canonicalNativeCoefficientInclusion σ L Kd p)) x -
+      originalSmoothFourPrimeHistories
+        (nativeOriginalDetectorPhaseSign σ) a x) := by
+  rw [originalDetectorNativeResponse, originalSmoothWeilResponse]
+  rw [nativeWeilResponse_decomposition, nativeWeilResponse_decomposition]
+  rw [← originalSmoothFourPrimeHistories_eq]
+  ring
+
+
 end Zeta23.CCM
 
 #print axioms Zeta23.CCM.originalSmoothWeilResponse_reconstruction
 #print axioms Zeta23.CCM.originalSmoothWeilInterior_memLp_two
 #print axioms Zeta23.CCM.originalSmoothFourPrimeHistories_eq
+
+#print axioms Zeta23.CCM.originalNativeExterior_history_eq
+#print axioms Zeta23.CCM.originalNativeExterior_residual_eq
