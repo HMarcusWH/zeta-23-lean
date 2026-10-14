@@ -1,19 +1,16 @@
 name: PR292 pinned offline compiler workspace
 
-# Development transport only. This is not a release or RH validity gate.
-# No D2 dispatch, search, retry, generator write, or repository mutation occurs.
+# Temporary development transport, never a release or RH validity gate.
+# No D2 dispatch, search, retry, generator write, or repository mutation.
 on:
   push:
     branches: [research/post290-step123-output]
     paths: [.github/workflows/rhrc_post292_offline_bootstrap.yml]
-
 permissions:
   contents: read
-
 concurrency:
   group: pr292-offline-bootstrap
   cancel-in-progress: false
-
 jobs:
   compiler-workspace:
     runs-on: ubuntu-latest
@@ -23,6 +20,13 @@ jobs:
         with:
           fetch-depth: 1
           persist-credentials: false
+      - name: Preserve exact source before compilation
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/pr292-offline
+          git archive --format=tar HEAD | zstd -T2 -3 -o /tmp/pr292-offline/source.tar.zst
+          printf '%s\n' "head=$(git rev-parse HEAD)" "tree=$(git rev-parse HEAD^{tree})" > /tmp/pr292-offline/PROVENANCE.txt
+          cat lean-toolchain lake-manifest.json >> /tmp/pr292-offline/PROVENANCE.txt
       - uses: actions/cache/restore@v4
         with:
           path: .lake/build
@@ -36,24 +40,26 @@ jobs:
           lint: false
           use-mathlib-cache: true
       - name: Compile existing component frontier
+        id: compiler
         shell: bash
         run: |
           set -euo pipefail
-          lake build Zeta23.RHRC.Step123OutputBindings
+          export POST290_CHECKED_HEAD="$(git rev-parse HEAD)"
+          export POST290_CHECKED_TREE="$(git rev-parse HEAD^{tree})"
+          lake build Zeta23.RHRC.Step123OutputBindings 2>&1 | tee /tmp/pr292-offline/compiler.log
           python research/RHRC/closure_batch/check_lean_proof_escapes.py --scope promoted
-      - name: Package exact source separately from reusable compiler cache
+      - name: Package reusable compiler files independently of proof status
+        if: always()
         shell: bash
+        env:
+          COMPILER_OUTCOME: ${{ steps.compiler.outcome }}
         run: |
           set -euo pipefail
-          mkdir -p /tmp/pr292-offline
-          git archive --format=tar HEAD | zstd -T2 -3 -o /tmp/pr292-offline/source.tar.zst
           prefix="$(lean --print-prefix)"
-          printf '%s\n' "head=$(git rev-parse HEAD)" "tree=$(git rev-parse HEAD^{tree})" > /tmp/pr292-offline/PROVENANCE.txt
+          printf '\ncompiler_outcome=%s\n' "$COMPILER_OUTCOME" >> /tmp/pr292-offline/PROVENANCE.txt
           lean --version >> /tmp/pr292-offline/PROVENANCE.txt
-          cat lean-toolchain >> /tmp/pr292-offline/PROVENANCE.txt
-          cat lake-manifest.json >> /tmp/pr292-offline/PROVENANCE.txt
-          # Only toolchain and source/build roots; no home directory, Git config,
-          # credentials, tokens, or environment dumps are included.
+          # Only public toolchain and source/build roots. No home directory,
+          # Git configs, credentials, tokens, or environment dumps.
           tool_roots=(bin lib)
           for root in share src include; do
             if [ -d "$prefix/$root" ]; then tool_roots+=("$root"); fi
@@ -71,17 +77,18 @@ jobs:
             /tmp/pr292-offline/source.tar.zst
             /tmp/pr292-offline/PROVENANCE.txt
             /tmp/pr292-offline/SHA256SUMS
+            /tmp/pr292-offline/compiler.log
           retention-days: 3
           compression-level: 0
       - uses: actions/upload-artifact@v4
-        if: success()
+        if: always()
         with:
           name: pr292-offline-toolchain-${{ github.sha }}
           path: /tmp/pr292-offline/toolchain.tar.zst
           retention-days: 3
           compression-level: 0
       - uses: actions/upload-artifact@v4
-        if: success()
+        if: always()
         with:
           name: pr292-offline-dependencies-${{ github.sha }}
           path: /tmp/pr292-offline/dependencies.tar.zst
