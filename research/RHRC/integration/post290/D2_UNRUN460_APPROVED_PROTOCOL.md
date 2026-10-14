@@ -14,4 +14,10 @@ Reassembly preserves original accepted leaves and replaces only the460unrun inte
 
 RESEARCH_PROTOCOL.md:98requires explicit additional resource authorization and retention of unrun coverage. This new authorization is that separate resource protocol. RESEARCH_PROTOCOL.md:100still prohibits historicalFOURTH; representation and derivative order remain unchanged. D2 and RH remain OPEN until their exact gates pass, and numericalD2evidence never supplies a Lean hWindows term.
 
-The new workflow is manual-only and must be reviewed and pushed before dispatch. All original protocol/history files remain unchanged.
+GitHub rejected the initial manual dispatch with HTTP404 because the new workflow
+had not yet been registered. No workflow run or arithmetic budget was created.
+The approved first run can therefore start from a push changing only this
+workflow path on the existing research/post290-step123-output branch. Manual
+dispatch remains available after registration. The same single-use audit applies
+to both events; a later push cannot reset a claimed child budget. All original
+protocol/history files remain unchanged.

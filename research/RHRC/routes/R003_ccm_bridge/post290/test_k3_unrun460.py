@@ -68,11 +68,14 @@ class ResourceControls(unittest.TestCase):
             t=Path(t);p=t/"bad.zip"
             with zipfile.ZipFile(p,"w") as z:z.writestr("../escape","bad")
             with patch.object(C,"digest",return_value=C.ARCHIVE_SHA),self.assertRaises(ValueError):C.extract(p,t/"extract")
-    def test_workflow_manual_only_no_budget_retry_and_max8(self):
+    def test_workflow_scoped_bootstrap_no_budget_retry_and_max8(self):
         import yaml
         p=C.REPO/".github/workflows/rhrc_post290_unrun460.yml"
         d=yaml.load(p.read_text(encoding="utf-8"),Loader=yaml.BaseLoader)
-        self.assertEqual(list(d["on"]),["workflow_dispatch"])
+        self.assertEqual(set(d["on"]),{"workflow_dispatch","push"})
+        self.assertEqual(d["on"]["push"],{
+            "branches":["research/post290-step123-output"],
+            "paths":[".github/workflows/rhrc_post290_unrun460.yml"]})
         self.assertEqual(d["concurrency"]["cancel-in-progress"],"false")
         for name in ["search-wave1","search-wave2"]:
             self.assertEqual(d["jobs"][name]["strategy"]["max-parallel"],"8")

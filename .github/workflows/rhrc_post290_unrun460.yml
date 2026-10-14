@@ -1,6 +1,9 @@
 name: RHRC approved SECOND460 resource continuation
 on:
   workflow_dispatch:
+  push:
+    branches: [research/post290-step123-output]
+    paths: [.github/workflows/rhrc_post290_unrun460.yml]
 permissions:
   contents: read
   actions: read
