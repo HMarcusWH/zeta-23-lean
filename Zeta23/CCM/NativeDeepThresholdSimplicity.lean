@@ -24,7 +24,7 @@ private theorem eigenspace_disjoint_coercive_predecessor
     (hc : 0 < c)
     (hform : ∀ v, (inner ℂ (B (J v)) (J v)).re = (inner ℂ (A v) v).re)
     (hcoercive : ∀ v, c * ‖v‖ ^ 2 ≤
-      (inner ℂ ((A - (lam : ℂ) • LinearMap.id) v) v).re) :
+      (inner ℂ ((A - (lam : ℂ) • (LinearMap.id : E →ₗ[ℂ] E)) v) v).re) :
     Disjoint (Module.End.eigenspace B (lam : ℂ)) (LinearMap.range J.toLinearMap) := by
   refine Submodule.disjoint_def.mpr ?_
   intro u hu hrange
@@ -38,7 +38,7 @@ private theorem eigenspace_disjoint_coercive_predecessor
     simpa only [J.norm_map] using
       (@re_inner_ofReal_smul_self F inferInstance inferInstance lam (J v))
   have hscalar := @re_inner_ofReal_smul_self E inferInstance inferInstance lam v
-  have hzero : (inner ℂ ((A - (lam : ℂ) • LinearMap.id) v) v).re = 0 := by
+  have hzero : (inner ℂ ((A - (lam : ℂ) • (LinearMap.id : E →ₗ[ℂ] E)) v) v).re = 0 := by
     simp only [LinearMap.sub_apply, LinearMap.smul_apply, LinearMap.id_apply,
       inner_sub_left, Complex.sub_re]
     rw [henergy, hscalar]
@@ -152,13 +152,19 @@ theorem nativeDeepThreshold_selectedParity_simple {L D : ℝ} {Kd : ℕ}
   rcases s.unit_actual_ground with ⟨u, hunit, hu⟩ | ⟨w, hunit, hw⟩
   · have hu0 : u ≠ 0 := by
       intro hz
-      rw [hz, norm_zero] at hunit
-      norm_num at hunit
+      have hn : ‖(u.val.val : EuclideanSpace ℂ (Fin (2 * s.cutoff + 1)))‖ = 1 := hunit
+      have hzv : (u.val.val : EuclideanSpace ℂ (Fin (2 * s.cutoff + 1))) = 0 :=
+        congrArg (fun v : poleNeutralEvenSubspace L s.cutoff => v.val.val) hz
+      rw [hzv, norm_zero] at hn
+      norm_num at hn
     exact Or.inl ⟨nativeDeepThreshold_even_ground_simple hD s u hu0 hu, u, hunit, hu⟩
   · have hw0 : w ≠ 0 := by
       intro hz
-      rw [hz, norm_zero] at hunit
-      norm_num at hunit
+      have hn : ‖(w.val.val : EuclideanSpace ℂ (Fin (2 * s.cutoff + 1)))‖ = 1 := hunit
+      have hzv : (w.val.val : EuclideanSpace ℂ (Fin (2 * s.cutoff + 1))) = 0 :=
+        congrArg (fun v : poleNeutralOddSubspace L s.cutoff => v.val.val) hz
+      rw [hzv, norm_zero] at hn
+      norm_num at hn
     exact Or.inr ⟨nativeDeepThreshold_odd_ground_simple hD s w hw0 hw, w, hunit, hw⟩
 
 end Zeta23.CCM

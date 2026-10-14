@@ -18,6 +18,7 @@ finite-image construction or a normalized detector estimate.
 noncomputable section
 
 open Set Metric Complex
+open scoped Topology
 
 namespace Zeta23.CCM
 
@@ -62,7 +63,7 @@ theorem originalDetectorDividedLobe_contDiff
   · rw [originalDetectorDividedLobe_eq_mul]
     exact (originalDetectorLobe_contDiff hs c).contDiffAt.mul
       (originalDetectorWindowReciprocal_real_contDiffAt hL hx.1 hx.2 _)
-  · exact contDiffAt_const.congr_of_eventuallyEq
+  · exact (contDiffAt_const : ContDiffAt ℝ (⊤ : ℕ∞) (fun _ : ℝ => (0 : ℂ)) x).congr_of_eventuallyEq
       (dividedLobe_eventually_zero_of_outside_collar hs hleft hright hx)
 
 private theorem factorial_product_le_square {m k : ℕ} (hk : k ≤ m) :

@@ -971,3 +971,341 @@ cancellation, smooth-source L2 inverse bound and actual signed excursions.
 Construct the normalized phase, full finite transport, native forcing,
 causal operator and independent stable Y/range jets. The original mandatory
 producer and all three Step4 contracts retain their scope. RH remains **OPEN**.
+
+## Thirteenth pass: actual native mass, Laplace boundary and literal collar
+
+**What became formally true.** At head
+`8ede0589e0bb89931d55ec4c6132305d7d32313b`, tree
+`d1e20cb607a074311c3f3aa705646f1bd3a5b4b2`, push run `38491815920`,
+job `115618531792`, compiled the complete PhysicalDetector, PositiveLaplaceBoundary,
+PositiveLaplaceAnalytic, CorrelationReal, FourierPrerequisites, SourceFacade,
+NativeAbelDiscrepancy, OriginalSincNativeSource, OriginalSincCompactPotential,
+IsometricDetectorSchur, OriginalSincNativeMass, NativeSourceIdentification,
+NativePositiveCompletion and NativePositiveCompletionCertificate modules.
+Their printed supporting roots admit only propext, Classical.choice and
+Quot.sound. This is component authority within a FAILED aggregate job, not
+the complete type-binding export, filled producer, or RH authority.
+The proof bodies and their surrounding native definitions were reviewed.
+The literal infinite positive floor completion now has an exact L1 mass below
+605/621. The first-prime window has exact signed field mass
+`log(2)/(16*sqrt(2))`, hence the actual X is not identically zero.
+The compact potential solves its actual P equation with clamped traces.
+The positive Laplace obstruction concerns the infimum of the genuine
+integrability domain; analyticity to its right is derived internally.
+The exact quartic cutoff and source derivative normalization compile.
+
+The repaired OriginalDetectorWindowBounds source also passed pinned local
+Lean 4.33.0-rc2 with seven printed roots and only the same permitted axioms.
+Its tested source was the local candidate subsequently committed in
+`72bc63fe8b4abe27423b09ea30f1a4fa5a1b4501`, tree
+`a7b913db4f8beac3db7770769ffd63449797e8f3`; this is a local module check,
+not a claim that that whole candidate tree passed CI. It proves the actual
+half-unit complex collar lower bound and the corresponding Cauchy bound
+`L^8 * 2^m * m!` for every reciprocal-window jet.
+
+**Workflow harvest.** The separate exact-head harvest records all push and
+PR workflows and retains their individual running, queued, skipped, cancelled,
+failed and successful dispositions. Both post290 component builds FAILED on
+nine modules; downstream targets and the complete type/axiom export were
+not established. The exact controls passed. The fresh 44-pair/176-row native
+panel matches the prior panel mathematically; elapsed time and source provenance
+changed. Frozen WP5/WP6 controls preserve their previous payloads. The complete
+post268 replay harvested all 44 pipelines, including the existing failed-law
+and unresolved dispositions. Tiny floating changes in the closure diagnostic
+do not change its scientific classifications. RHKG's registered exporter passed
+before its committed-state check rejected missing standalone-module dispositions;
+the generated graph is stale. The separate original D2 run `38461259594`
+completed its preregistered SECOND searches and candidate assembly, but its
+independent 768-bit checker was still running with no published complete archive
+at the 01:07 UTC observation. The skipped attached full-K3 job is not a D2 pass.
+
+**What changed.** The source-only rational contraction constant is now theorem
+backed rather than a finite numerical candidate. Its proof uses an actual
+countable cell partition, exact finite-head telescoping and an integrated
+per-cell tail estimate. Lower rational reciprocal-root bounds enter a negative
+head sum with the correct direction. The first-prime nonzero calibration uses
+the actual translated source and exact integral, without requiring a sampled
+value, generated negative detector, or global X membership. The Laplace route
+no longer needs a rightmost zero or an attained displacement supremum as a
+prospective prerequisite. The full signed-tail consumers remain compiler-pending.
+
+**Upstream implications.** DERIVED: the native mass bound supplies strict Young
+contraction once the actual convolution operator is legally constructed. The
+rational norm-square slack is `1-(605/621)^2 = 19616/385641`.
+DERIVED: the compact inverse energy argument also suggests the canonical
+derivative estimate `||g'||_2 <= ||f||_2`, in addition to `||g||_2 <= 4||f||_2`;
+this still needs its own formal statement. The literal collar estimate can
+combine with the already constructed source Gevrey bounds, without accepting
+a reciprocal derivative oracle. Nested inherited metrics must be unfolded to
+the same ambient Euclidean inner product; a proof-engineering diamond is not
+evidence for a new spectral assumption.
+
+**Downstream implications.** DERIVED: weighted Cauchy--Schwarz on the full first
+source window gives a positive compact-window damped energy lower bound from
+its exact nonzero mass. This can calibrate history before any global A-X claim.
+The actual Abel discrepancy and the zeroth/first elementary moments can cancel
+the entire continuum term in U. The remaining quantitative derivative integral
+is a smaller native obligation than a super-exponential Poisson estimate.
+The exact half-unit collar bound can now pay the actual q/sin^8 quotient jets.
+The normalized original phase candidate pays disjointness, source L2 mass and
+fixed endpoint collars, while retaining an exponent strictly between beta and
+the zero displacement. Its CI and finite transport remain separate gates.
+
+**Resurrected routes.** The signed late-excursion argument is reduced to one
+actual visible pole, the actual nonnegative cutoff tail under a failed-excursion
+hypothesis, and same-source meromorphic continuation. Both signs reuse the
+same positive-boundary theorem; complex-square residues and realness remain
+essential independent inputs. The ordinary stable-input route can use the
+already built smooth log-drive extension and Abel boundary formula. General
+compact-L2 inversion and native adjoint zero jets remain OPEN.
+
+**New RH-relevant clues.** LEAD: compose actual signed excursions, normalized
+original phases, source-defined quartic approximation and retained full-detector
+Schur loss to expose a same-source closing comparison. LEAD: the exact native
+contraction constant plus an independently stable Y may turn the unresolved
+range question into an explicit adjoint obstruction with quantitative residual
+slack. Neither positivity nor forward contraction supplies the range assertion.
+
+**Falsification checks.** A contractive convolution may have a nontrivial
+adjoint kernel; retain that matched control. Nonzero compact-window mass does
+not imply global prime-field L2 membership. Omitting the first weighted moment
+leaves a continuum term proportional to exp(t/2). Coincident reflected lobes
+can cancel the odd trial, so actual separation remains mandatory. A selected
+ground's scalar Schur identity cannot estimate the larger original-detector
+complement. Repeated product zeros and the actual spectral factor two remain
+unchanged. Finite panel agreement and a continuous bounded K3 certificate,
+even if later obtained, cannot replace the cofinal producer or a Step4 law.
+
+**Highest-leverage next moves.** Finish the current compiler repairs and exact
+type/axiom export at one source tree. Then pay the actual quotient coefficient
+decay, weighted Fourier tails, padded finite image and native quadratic-form
+error. Construct U decay and causal Y before using any X Hilbert-space premise.
+For A-X the first missing closing law remains global damped prime-field energy
+finiteness. For B-Y it remains actual closure(range(A_epsilon)) membership or
+the equivalent zero-jet annihilation. For C-Schur it remains a source-specific
+subexponential upper bound on the complete signed loss for the registered
+detector selectors, with the same shift, complement and quantifiers as its
+lower obstruction. Materialize and freshly validate the generated graph only
+after the supporting source freeze. Keep every original W00--W10 and M01--M25
+acceptance target; the complete producer, independent D2 gate and RH remain OPEN.
+
+## Fourteenth pass: signed original depth, literal finite image and stable native input
+
+**What became formally true.** The individual pinned local source checks are
+identified by exact byte hashes in `LOCAL_PROOF_FRONTIER_2026-10-14.json`.
+They are checks of those modules and their pinned import environment, not a
+whole-commit CI pass. The original signed-tail continuation, genuine
+integrability-domain obstruction, both late correlation signs and normalized
+original per-phase cofinal depth now compile. The canonical M04 exports produce
+L>max(R,4), support in [1,L-1], exact unit squared L2 norm and native additive
+energy at most -exp(beta*L), for each actual off-line zero and each prescribed
+phase. The actual divided-lobe Fourier coefficients, all-jet reconstruction,
+quartic tail and literal sin^8 finite image also compile locally. The unchanged
+integer drive U is L1; its damped complex representative is L2 for every
+epsilon>=0. The actual Y=c*U is independently causal and L2, and the literal
+pointwise equation a*X=Y is proved through finite causal histories before any
+X L2 assumption. The actual bounded causal operator and finite adjoint residual
+identities use the previously proved norm bound <605/621. Audited roots admit
+only propext, Classical.choice and Quot.sound. The complete producer and RH
+remain OPEN.
+
+**Workflow harvest.** The completed exact-head harvest for
+`72bc63fe8b4abe27423b09ea30f1a4fa5a1b4501`, tree
+`a7b913db4f8beac3db7770769ffd63449797e8f3`, contains all 20 runs and 54 jobs:
+49 succeeded, 3 failed and 2 skipped; none remained running. Both component
+jobs failed, so their full type/axiom export did not execute. The strict RHKG
+committed-state gate rejected missing module dispositions and stale generated
+state. The harvest reviews 52 logs and verifies 27 archive digests, including
+all 44 post268 scientific pipelines. The native 44-pair/176-row result is
+mathematically unchanged. Historical composite parity-gap controls remain
+FALSIFIED; discrepancy/source mechanisms remain UNRESOLVED. Bounded K2 and
+frozen K3 controls passed within their recorded domains. The independent D2
+ancestral run ended cancelled: both SECOND passes and candidate assembly
+finished, but the final checker did not finish and its release gate failed.
+Its preserved archive has 66,395 accepted leaves and 460 unrun SECOND children,
+not a complete certificate. All 256 selected second children resolved; the
+fixed cap left 460 of the 716 predetermined children unrun. On 2026-10-14 the
+user explicitly authorized a separately recorded continuation of exactly those
+460 children, with the same per-child method and at most 230 additional search
+runner-hours. Authorization is neither execution evidence nor D2 completion.
+
+The approved continuation is now executing as run `38569316691` at head
+`a55fbeeed6500bffe2ccac3960258ca5c590c7ee`, tree
+`7ffdf5095db2d54ef97897c19797886d145b65d2`. Its freeze job passed the real
+artifact upload/download preflight and froze plan SHA256
+`433107bbfe412625223fe1f08da36ca7d837bd82e7a536fc50a2d447886cf6ef`.
+The first original unrun child, `Q13_even_C00_P07_R00001_P0`, completed
+31 tested nodes with 16 accepted leaves and zero unresolved boxes in 192.74
+seconds. Its claim, launch and result artifacts were independently retrieved
+and hash checked. This establishes one child's search disposition only.
+The remaining search geometry and fresh 768-bit all-layer independent checker
+are pending; D2 remains OPEN. Runner queue delays do not change the budget.
+
+**What changed.** Original normalization no longer needs an auxiliary exponent
+between beta and the zero displacement. The actual signed excursion theorem
+allows an arbitrary multiplier at the requested beta, which pays the fixed
+aperture shift and finite diagonal. The Fourier construction now uses the
+literal divided source, its actual coefficients and reconstruction, rather
+than an externally supplied tail inequality. Fixed quartic cutoff gives a
+stretched exponential in L^(3/2), hence eventual decay below any fixed
+exp(-beta*L), including finite jet orders. Native U stability is obtained from
+the actual zeroth/first weighted elementary moments and an Abel discrepancy
+derivative integral. Y stability is obtained independently from c in L1 and
+bounded, together with U in L1. Finite-time Fubini does not require global
+prime-field energy finiteness. Nested native-metric elaboration is repaired
+by transporting to the same ambient coefficient inner product; no spectral
+hypothesis is introduced.
+
+**Upstream implications.** The native correction c is definitionally the
+already constructed `nativeRationalCausalKernel`; its old real Laplace formula
+and negative signed integral -2/3 are reusable. Duplicate integer-action proofs
+can be compressed around that shared definition while retaining exact floor
+and seam conventions. The twice pole-killed source j has both positive and
+negative values, despite positivity of the underlying probability density q;
+its ordinary mass is 1/16 and its elementary moments vanish. Positivity cannot
+be transported through P^2. Actual q endpoint jets are the natural upstream
+place to prove finite Pq legality and pole neutrality, rather than repairing
+those properties by projection after construction.
+
+**Downstream implications.** The finite source now has a genuine centered
+coefficient representation at degree ceil(L^4), with raw degree ceil(L^4)-4.
+Its literal window, endpoint jets and all-order error budgets now pay the
+actual Pq image, six vanished elementary moments, nonzero finite output and
+physical/coefficient Parseval bridge. The phase plane has the full four-term
+Gram/native-energy matrices and reflected even/odd carrier constructors.
+Actual finite/original phase jet errors include seam legality and full-line
+L1 bounds through order two; the original phase has aperture-independent L1
+jet budgets. The original normalized phase theorem supplies the target depth.
+Their final composition still needs positive padding, actual finite
+normalization and the quantitative native Weil transfer. The actual stable Y initializes the finite residual
+scheme, with e_n=Y-A*x_n and invariant projection onto ker(A*). This makes the
+range obstruction an actual source-specific object; it does not eliminate it.
+
+The general native R3 identity and inequality also now compile locally in
+`CanonicalPoleNeutralTrialResidualBounds`: for an arbitrary actual even trial,
+the corrected source--fourth-moment product and the actual index-transformed
+residual pay the odd-bottom gap. With M4=0 and positive gap, the literal
+residual has norm at least `(mu_o-lam)*||u||/(2*K)`. No eigenvector or small-
+residual premise is inserted. PROVED locally: the sin^8 q image's moments
+through order seven give moments through order five for its Pq output and
+actual phase carriers, including M4=0. The simple-even nonzero-M4 theorem also
+compiles at a parity tie; it does not assert a nonzero source moment at a tie.
+DERIVED: this connects actual finite transport to a quantitative obstruction against
+being an approximate even eigenvector across a positive parity gap. It places
+no higher-moment constraint on the separately selected minimal-carrier ground.
+
+**Resurrected routes.** The old signed Laplace route now has its formerly
+missing per-zero boundary theorem, entire compact correction and nonzero
+actual residue. It no longer depends on a rightmost zero. The old ordinary
+stable-input route now has actual U decay and local causal interchange; a
+global X-domain premise is unnecessary for the forward equation. The literal
+Gevrey-to-quartic finite transport now has coefficient, reconstruction and tail
+prerequisites, so it can replace qualitative approximation with a source-defined
+quantitative construction. General compact-L2 inversion and actual range zero
+jets remain OPEN.
+
+**New RH-relevant clues.** DERIVED: summing the actual residual norm-loss
+inequality bounds the sum of squared adjoint couplings by the initial Y energy
+divided by 2-(605/621)^2. This does not imply zero invariant projection.
+LEAD: identify that invariant projection through actual Laplace annihilators
+and multiplicity jets, then test whether the unchanged j can annihilate them.
+LEAD: retain complete finite two-phase Gram data through the quantitative
+transport and the full detector-complement Schur loss, to locate a smaller
+same-source closing comparison. The known countermodels must be checked again
+against the accumulated actual-source constraints rather than silently removed.
+
+**Falsification checks.** A strict forward contraction can have a nonzero
+adjoint kernel; decreasing residual norm does not prove convergence to zero.
+The separate kappa ratio can vanish even with nonzero residual. A pointwise
+causal equation does not prove X L2 or justify applying a Hilbert-space operator
+to an unknown-domain X. Negative signed mass of c is compatible with positivity
+and the absolute mass bound of a; replacing one by the other is invalid.
+The rational c multiplier vanishes at w=1/2, where the integer zeta factor has
+a pole. Their removable cancellation must be paid before constructing an
+annihilator; that factor alone is not an actual kernel zero.
+Endpoint flatness of q must be strong enough for Pq before claiming a legal
+hard-window detector. Original sinc real zeros need not survive truncation.
+The original D2 result has unrun geometry, so replaying only accepted leaves
+cannot close it. New search resources retain every previous receipt and cannot
+be described as a green rerun of the old frozen budget.
+
+**Highest-leverage next moves.** Finish the exact native-metric consumer repairs
+and audit all implemented public roots at one committed source tree. Complete
+literal finite Pq, norm transport, normalized two-phase output and native Weil
+error before assembling threshold/ground/Schur records. Expose actual causal
+adjoint kernels and source/multiplicity zero jets. Run the separately approved
+460-child continuation with immutable pre-evaluation partition, single-use
+budgets, recoverable checkpoints and a fresh nonpartial 30-layer independent
+checker. Regenerate the complete RHKG stack after the source freeze, then check
+the committed products in a fresh checkout before any writes. Preserve all
+W00--W10 and M01--M25 acceptance targets. A-X, B-Y, C-Schur, the full producer,
+D2 and RH remain OPEN until their own exact gates pass.
+
+## Fifteenth pass: actual finite depth and native consumer closure
+
+**What became formally true.** At the individual source-byte objects in
+`LOCAL_PROOF_FRONTIER_2026-10-14.json`, the pinned local compiler proves a
+source-defined, true-native-norm unit finite detector with energy at most
+`-exp(beta*L)` for every allowed beta, requested original phase and lateness.
+The aperture is cofinal phase by phase and the cutoff is exactly ceil(L^4).
+The construction currently uses the unpadded Fourier primitive. Twelve native
+threshold/Schur/residual consumers also pass locally: 54 printed roots, only
+propext, Classical.choice and Quot.sound. These are local source checks;
+the next committed-head CI and the complete producer remain pending.
+
+**Workflow harvest.** The last completed full harvest remains the exact
+72bc63fe harvest above. At a55fbeee, 21 workflows are attached, with component
+failures from the older source state, historical research jobs still running,
+and the separately approved D2 continuation queued between children after its
+first child resolved. No running or skipped job is treated as passed. The
+local exact/mutation suites and promoted proof-escape gate pass; the latter
+inspected 558 files. New source CI must harvest every job again.
+
+**What changed.** The actual hard finite phase now pays endpoint seams,
+all required L1 errors, the genuine growing-aperture Weil bound and the exact
+mass-to-native-norm conversion. Fixed factor-four signed-excursion slack pays
+both finite error and final normalization. A contract audit identified that
+explicit positive DC padding and nonnegative primitive are still missing;
+the valid unpadded depth theorem does not discharge that mandatory acceptance.
+General compact L2 inverse inputs now have continuous first two representatives,
+clamped representative values, both a.e. equations and three L2 jets.
+
+**Upstream implications.** Separate the interval-integrable primitive from
+the continuous-source special case. Complex absolute-continuity FTC is now
+proved as a supporting interface. Positive padding should be paid at the raw
+Fourier DC coefficient before multiplying by sin^8, with every later error
+budget recomputed from that literal source.
+
+**Downstream implications.** The actual finite detector can now feed the
+proved bottom-only threshold, actual parity ground, shell simplicity and
+both distinct Schur records. Its higher moments remain attached to the trial,
+not the selected ground. Concrete causal exponential-polynomial L2 witnesses
+now pair with the actual stable Y by literal Laplace moments, retaining the
+conjugation and damping shift.
+
+**Resurrected routes.** Quantitative finite transport and native retained
+Schur loss no longer require a caller-supplied detector-depth premise.
+The generic compact L2 route can replace smooth-source-only inversion once
+its sharp norm and weak derivative proofs pass.
+
+**New RH-relevant clues.** DERIVED: combining the trial's actual M4=0 with
+R3 imposes a quantitative residual lower bound across a positive odd gap.
+LEAD: compare that residual with the full retained Schur loss; a separate
+selected-ground fourth moment cannot substitute for this trial constraint.
+LEAD: identify the invariant range defect using actual source Laplace jets.
+
+**Falsification checks.** A valid unpadded deep detector does not prove
+nonnegative primitive acceptance. Positive padding changes the literal
+finite image, so its norm and energy must be rechecked. The source Laplace
+factor for j=P^2q contains one Q factor; the autocorrelation of k contains
+Q squared. Confusing them changes the source. A positive-gap residual bound
+is vacuous at a tie and does not force the residual small. Current D2 search
+success still requires fresh all-layer verification.
+
+**Highest-leverage next moves.** Finish mandatory positive padding and its
+quantitative transport, expose canonical M05/M06/M12 exports without dependency
+cycles, compose the actual retained selector, and validate this complete
+supporting source batch at an exact Git tree. Complete the general compact L2
+norm/weak interface, actual forcing/exterior bridge and multiplicity-aware
+native Laplace obstruction before assembling every mandatory output field.
+Keep A-X, B-Y, C-Schur, D2, the full producer and RH OPEN.

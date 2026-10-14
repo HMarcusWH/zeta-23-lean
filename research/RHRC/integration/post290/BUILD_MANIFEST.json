@@ -1,6 +1,6 @@
 {
   "schema_version": "RH_POST290_STEP123_BUILD_SPEC_1.0",
-  "status": "PARTIAL_IMPLEMENTATION_COMPILER_PENDING",
+  "status": "PARTIAL_IMPLEMENTATION_COMPONENT_VALIDATION_IN_PROGRESS",
   "repository": "HMarcusWH/zeta-23-lean",
   "suggested_branch": "research/post290-step123-output",
   "proposed_pr_number": 292,
@@ -63,7 +63,7 @@
       "depends_on": [
         "W01"
       ],
-      "status": "OPEN",
+      "status": "PARTIAL",
       "mandatory": true,
       "module_ids": [
         "M05",
@@ -90,7 +90,7 @@
       "depends_on": [
         "W03"
       ],
-      "status": "OPEN",
+      "status": "PARTIAL",
       "mandatory": true,
       "module_ids": [
         "M10",
@@ -104,7 +104,7 @@
         "W02",
         "W04"
       ],
-      "status": "OPEN",
+      "status": "PARTIAL",
       "mandatory": true,
       "module_ids": [
         "M12",
@@ -182,7 +182,7 @@
         "W08",
         "W09"
       ],
-      "status": "OPEN",
+      "status": "PARTIAL",
       "mandatory": true,
       "module_ids": []
     }
@@ -252,9 +252,10 @@
         "Zeta23.ExceptionalZero.originalDetectorCorrelation_neg_excursions",
         "Zeta23.ExceptionalZero.originalDetector_eachPhase_cofinal_depth"
       ],
-      "status": "OPEN_NOT_IMPLEMENTED",
+      "status": "COMPLETE_LOCAL_COMPILER_CI_PENDING",
       "mandatory_core": true,
-      "acceptance": "For each actual off-line zero, every smaller positive exponent and each phase, produce arbitrarily late deep witnesses; no simultaneous-time claim."
+      "acceptance": "For each actual off-line zero, every smaller positive exponent and each phase, produce arbitrarily late deep witnesses; no simultaneous-time claim.",
+      "current_scope": "Canonical OriginalDetectorPhaseDepth exports now prove actual signed excursions and normalized per-phase cofinal aperture depth; exact whole-tree CI pending."
     },
     {
       "id": "M05",
@@ -273,9 +274,10 @@
         "Zeta23.CCM.originalDetectorFiniteImage_error_bound",
         "Zeta23.CCM.originalDetectorFiniteImage_quartic_error_tendsto_zero"
       ],
-      "status": "OPEN_NOT_IMPLEMENTED",
+      "status": "PARTIAL_LOCAL_COMPILER_PASS",
       "mandatory_core": true,
-      "acceptance": "Fixed endpoint order m=4 in core; degree M=4, N=ceil(L^4)-4. Construct positive padding and exact phase; prove physical/coefficient norm bridge and quantitative error."
+      "acceptance": "Fixed endpoint order m=4 in core; degree M=4, N=ceil(L^4)-4. Construct positive padding and exact phase; prove physical/coefficient norm bridge and quantitative error.",
+      "current_scope": "Actual unpadded fixed-source quartic finite phase producer compiles locally with true native unit norm and requested cofinal exponential depth. Fourier/P-image/seam/moment/norm/Weil-continuity estimates are proved. Mandatory positive padding/nonnegative primitive, explicit H1/form rate, canonical facade exports and full packet composition remain pending."
     },
     {
       "id": "M06",
@@ -290,9 +292,10 @@
         "Zeta23.CCM.originalDetectorPhaseEnergy_eq",
         "Zeta23.CCM.originalDetectorPhaseRayleigh_eq"
       ],
-      "status": "OPEN_NOT_IMPLEMENTED",
+      "status": "PARTIAL_LOCAL_COMPILER_PASS",
       "mandatory_core": true,
-      "acceptance": "Retain both lobes and complete 2x2 generalized Rayleigh problem before minimization."
+      "acceptance": "Retain both lobes and complete 2x2 generalized Rayleigh problem before minimization.",
+      "current_scope": "Actual finite phase plane has full four-term Gram/native-energy formulas, reflected even/odd carriers, six vanished elementary moments and source-derived normalization/depth. Canonical proposed facade exports and whole-head CI remain pending."
     },
     {
       "id": "M07",
@@ -346,9 +349,10 @@
         "Zeta23.CCM.poleNeutral_momentFour_zero_residual_lower",
         "Zeta23.CCM.poleNeutral_simpleEven_momentFour_ne_zero"
       ],
-      "status": "OPEN_NOT_IMPLEMENTED",
+      "status": "COMPLETE_LOCAL_COMPILER_CI_PENDING",
       "mandatory_core": true,
-      "acceptance": "Prove R2/R3 and the simple-eigenspace tie lemma. Preserve all hypotheses; no claim that S0 is nonzero at a tie."
+      "acceptance": "Prove R2/R3 and the simple-eigenspace tie lemma. Preserve all hypotheses; no claim that S0 is nonzero at a tie.",
+      "current_scope": "Actual source-moment and index identities, cubic witness, simple-even nonzero fourth moment including the tie case, strict-gap source positivity, R3 trial-residual bound and quantitative M4-zero residual obstruction compile locally. Exact-head CI pending."
     },
     {
       "id": "M10",
@@ -367,9 +371,10 @@
         "Zeta23.CCM.poleNeutral_oddShifted_eigen_iff",
         "Zeta23.CCM.poleNeutral_oddShifted_det_eq"
       ],
-      "status": "OPEN_NOT_IMPLEMENTED",
+      "status": "COMPLETE_LOCAL_COMPILER_CI_PENDING",
       "mandatory_core": true,
-      "acceptance": "Instantiate generic shifted secular algebra for both strict branches; derive strict odd via adjoint and the specified minus sign."
+      "acceptance": "Instantiate generic shifted secular algebra for both strict branches; derive strict odd via adjoint and the specified minus sign.",
+      "current_scope": "Actual even/odd shifted secular branches and corrected adjoint minus sign compile locally, including singular-safe simple-even and tied consumers. Exact-head CI pending."
     },
     {
       "id": "M11",
@@ -386,9 +391,10 @@
         "Zeta23.CCM.poleNeutral_tied_kernel_compatibility",
         "Zeta23.CCM.poleNeutral_tied_complementary_response"
       ],
-      "status": "OPEN_NOT_IMPLEMENTED",
+      "status": "COMPLETE_LOCAL_COMPILER_CI_PENDING",
       "mandatory_core": true,
-      "acceptance": "Exhaustive minimal-pole-neutral branch data; singular-safe kernel/complement record with its proved range condition."
+      "acceptance": "Exhaustive minimal-pole-neutral branch data; singular-safe kernel/complement record with its proved range condition.",
+      "current_scope": "Singular-safe tied output, bottom monotonicity, predecessor compression and one-dimensional successor shells compile locally. Exact-head CI pending."
     },
     {
       "id": "M12",
@@ -480,9 +486,10 @@
         "Zeta23.CCM.poleNeutral_compactInverse_support",
         "Zeta23.CCM.poleNeutral_compactInverse_norm_bound"
       ],
-      "status": "OPEN_NOT_IMPLEMENTED",
+      "status": "PARTIAL_LOCAL_COMPILER_PASS",
       "mandatory_core": true,
-      "acceptance": "Construct compact inverse of P for the exact pole-neutral class and prove support, traces, Sobolev regularity and needed bounds."
+      "acceptance": "Construct compact inverse of P for the exact pole-neutral class and prove support, traces, Sobolev regularity and needed bounds.",
+      "current_scope": "Actual smooth inverse, uniqueness and L2 energy bound compile locally. General compact-L2 input now has continuous potential/first-jet representatives, a.e. equations, clamped representative values and all three L2 jets. General-source sharp norm/weak-Sobolev acceptance remains pending."
     },
     {
       "id": "M17",
@@ -522,9 +529,10 @@
         "Zeta23.CCM.nativeCompletedInput_equation",
         "Zeta23.CCM.nativeCompletedInput_memLp"
       ],
-      "status": "PARTIAL_CANDIDATE_COMPILER_PENDING",
+      "status": "PARTIAL_LOCAL_COMPILER_PASS",
       "mandatory_core": true,
-      "acceptance": "Actual a-triangle and c completion; exact multiplier; sound mass bound below 605/621; independently stable actual Y."
+      "acceptance": "Actual a-triangle and c completion; exact multiplier; sound mass bound below 605/621; independently stable actual Y.",
+      "current_scope": "Actual kernel mass<605/621, bounded operator on closed causal L2, source-specific U and Y stability, and pointwise a*X=Y before X L2 compile locally. Operator/pointwise representative and full general-source interfaces remain separate."
     },
     {
       "id": "M19",
@@ -540,9 +548,10 @@
         "Zeta23.CCM.nativeAdjointResidual_norm_antitone",
         "Zeta23.CCM.nativeAdjointResidual_kernelProjection_preserved"
       ],
-      "status": "OPEN_NOT_IMPLEMENTED",
+      "status": "PARTIAL_LOCAL_COMPILER_PASS",
       "mandatory_core": true,
-      "acceptance": "Core: actual finite-step identity, norm monotonicity and invariant adjoint-kernel projection. Strong convergence is an explicitly optional promotion, not needed for B-Y."
+      "acceptance": "Core: actual finite-step identity, norm monotonicity and invariant adjoint-kernel projection. Strong convergence is an explicitly optional promotion, not needed for B-Y.",
+      "current_scope": "Actual causal adjoint finite residual identities, quantitative norm loss, separate kappa ratio, invariant kernel projection and actual stable-Y iterates compile locally. Range membership and zero limiting projection remain OPEN."
     },
     {
       "id": "M20",
@@ -656,9 +665,10 @@
         "M24"
       ],
       "proposed_exports": [],
-      "status": "OPEN_NOT_IMPLEMENTED",
+      "status": "PARTIAL_IMPLEMENTED_COMPONENT_AUDIT_CI_PENDING",
       "mandatory_core": true,
-      "acceptance": "Exact checks and axiom/type receipts for all registered new public roots, including their upstream dependencies; reuse existing compiler exporter."
+      "acceptance": "Exact checks and axiom/type receipts for all registered new public roots, including their upstream dependencies; reuse existing compiler exporter.",
+      "current_scope": "Exact existing resolver audit expanded to implemented supporting roots. Missing mandatory producer roots remain missing; a component receipt cannot satisfy M25 acceptance."
     }
   ],
   "new_research_files": [
@@ -747,7 +757,33 @@
     "method": "SECOND_resource_partition_v1",
     "historical_fourth_fallback_authorized": false,
     "final_nonpartial_check_required": true,
-    "lean_hWindows_supplied_by_external_receipt": false
+    "lean_hWindows_supplied_by_external_receipt": false,
+    "current_disposition": "OPEN_APPROVED_460_CHILD_CONTINUATION_RUNNING_FRESH_CHECK_PENDING",
+    "original_second_jobs_completed": 256,
+    "original_second_children_required": 716,
+    "original_unrun_children_by_even_layer": {
+      "13": 8,
+      "14": 244,
+      "15": 208
+    },
+    "additional_resource_authorization": {
+      "date": "2026-10-14",
+      "human_reply": "Approve the 460-child continuation and its stated resource limit",
+      "scope": "Exactly the 460 frozen unrun children; same SECOND algorithm and per-child limits; at most 8 workers; maximum 230 additional search runner-hours; fresh independent checking afterward.",
+      "changes_original_frozen_run": false,
+      "changes_nonpartial_acceptance": false,
+      "supplies_lean_hWindows": false
+    },
+    "approved_continuation_run": {
+      "run_id": 38569316691,
+      "head": "a55fbeeed6500bffe2ccac3960258ca5c590c7ee",
+      "tree": "7ffdf5095db2d54ef97897c19797886d145b65d2",
+      "frozen_plan_sha256": "433107bbfe412625223fe1f08da36ca7d837bd82e7a536fc50a2d447886cf6ef",
+      "input_and_checkpoint_preflight": "PASS",
+      "first_completed_child": "Q13_even_C00_P07_R00001_P0",
+      "first_completed_child_disposition": "SEARCH_PASS_16_ACCEPTED_LEAVES_FRESH_CHECK_PENDING",
+      "whole_search_and_fresh_independent_check": "PENDING"
+    }
   },
   "merge_policy": "Separate user merge decision; all mandatory scope complete, or explicit user-approved scope amendment retaining every unfulfilled mathematical obligation.",
   "scope_amendment_approved": false,
@@ -800,17 +836,40 @@
       "Zeta23.CCM.NativePositiveCompletionCells",
       "Zeta23.CCM.NativeFloorCompletionSource"
     ],
-    "latest_exact_controls": {"job": 115569213382, "result": "SUCCESS"},
-    "latest_native_observations": {"job": 115569213489, "result": "SUCCESS", "pairs": 44, "rows": 176, "checker_bits": 1024, "universal_theorem_authority": false},
+    "latest_exact_controls": {
+      "job": 115569213382,
+      "result": "SUCCESS"
+    },
+    "latest_native_observations": {
+      "job": 115569213489,
+      "result": "SUCCESS",
+      "pairs": 44,
+      "rows": 176,
+      "checker_bits": 1024,
+      "universal_theorem_authority": false
+    },
     "candidate_iteration_diagnostic": {
       "head": "b716fad759ca545352741057a203b866e2973585",
       "tree": "d1981cdb54927b931cbcae02f6f4fcf15972d17f",
       "run": 38480831587,
       "component_job": 115582716175,
       "whole_job_result": "FAILURE",
-      "entire_new_modules_compiled": ["Zeta23.CCM.UniversalSincSourceCharacteristic", "Zeta23.CCM.CanonicalTrialResidualChannels"],
-      "exact_controls": {"job": 115582716367, "result": "SUCCESS"},
-      "native_observations": {"job": 115582716300, "result": "SUCCESS", "pairs": 44, "rows": 176, "checker_bits": 1024, "universal_theorem_authority": false},
+      "entire_new_modules_compiled": [
+        "Zeta23.CCM.UniversalSincSourceCharacteristic",
+        "Zeta23.CCM.CanonicalTrialResidualChannels"
+      ],
+      "exact_controls": {
+        "job": 115582716367,
+        "result": "SUCCESS"
+      },
+      "native_observations": {
+        "job": 115582716300,
+        "result": "SUCCESS",
+        "pairs": 44,
+        "rows": 176,
+        "checker_bits": 1024,
+        "universal_theorem_authority": false
+      },
       "full_type_binding_export_executed": false,
       "full_mandatory_producer": "OPEN"
     },
@@ -829,8 +888,18 @@
         "Zeta23.CCM.NativePositiveCompletionMass",
         "Zeta23.CCM.NativeRationalCompletionLaplace"
       ],
-      "exact_controls": {"job": 115589454311, "result": "SUCCESS"},
-      "native_observations": {"job": 115589453799, "result": "SUCCESS", "pairs": 44, "rows": 176, "checker_bits": 1024, "universal_theorem_authority": false},
+      "exact_controls": {
+        "job": 115589454311,
+        "result": "SUCCESS"
+      },
+      "native_observations": {
+        "job": 115589453799,
+        "result": "SUCCESS",
+        "pairs": 44,
+        "rows": 176,
+        "checker_bits": 1024,
+        "universal_theorem_authority": false
+      },
       "full_type_binding_export_executed": false,
       "full_mandatory_producer": "OPEN"
     },
@@ -848,9 +917,23 @@
         "Zeta23.CCM.FiniteBottomGapSelector",
         "Zeta23.CCM.NativePositiveCompletionHead"
       ],
-      "admitted_axioms": ["propext", "Classical.choice", "Quot.sound"],
-      "exact_controls": {"job": 115597425307, "result": "SUCCESS"},
-      "native_observations": {"job": 115597425103, "result": "SUCCESS", "pairs": 44, "rows": 176, "checker_bits": 1024, "universal_theorem_authority": false},
+      "admitted_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "exact_controls": {
+        "job": 115597425307,
+        "result": "SUCCESS"
+      },
+      "native_observations": {
+        "job": 115597425103,
+        "result": "SUCCESS",
+        "pairs": 44,
+        "rows": 176,
+        "checker_bits": 1024,
+        "universal_theorem_authority": false
+      },
       "full_type_binding_export_executed": false,
       "full_mandatory_producer": "OPEN"
     },
@@ -866,9 +949,23 @@
         "Zeta23.CCM.NativePositiveCompletionTail",
         "Zeta23.CCM.CanonicalPoleNeutralNormals"
       ],
-      "admitted_axioms": ["propext", "Classical.choice", "Quot.sound"],
-      "exact_controls": {"job": 115604338144, "result": "SUCCESS"},
-      "native_observations": {"job": 115604338196, "result": "SUCCESS", "pairs": 44, "rows": 176, "checker_bits": 1024, "universal_theorem_authority": false},
+      "admitted_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "exact_controls": {
+        "job": 115604338144,
+        "result": "SUCCESS"
+      },
+      "native_observations": {
+        "job": 115604338196,
+        "result": "SUCCESS",
+        "pairs": 44,
+        "rows": 176,
+        "checker_bits": 1024,
+        "universal_theorem_authority": false
+      },
       "full_type_binding_export_executed": false,
       "full_mandatory_producer": "OPEN"
     },
@@ -889,11 +986,31 @@
         "Zeta23.CCM.UniversalSincSourceComplexTransform",
         "Zeta23.ExceptionalZero.PositiveLaplaceTilt"
       ],
-      "admitted_axioms": ["propext", "Classical.choice", "Quot.sound"],
-      "exact_controls": {"job": 115610861719, "result": "SUCCESS"},
-      "native_observations": {"job": 115610861389, "result": "SUCCESS", "pairs": 44, "rows": 176, "checker_bits": 1024, "universal_theorem_authority": false},
-      "pr_exact_controls": {"job": 115610876935, "result": "SUCCESS"},
-      "pr_native_observations": {"job": 115610877362, "result": "SUCCESS"},
+      "admitted_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "exact_controls": {
+        "job": 115610861719,
+        "result": "SUCCESS"
+      },
+      "native_observations": {
+        "job": 115610861389,
+        "result": "SUCCESS",
+        "pairs": 44,
+        "rows": 176,
+        "checker_bits": 1024,
+        "universal_theorem_authority": false
+      },
+      "pr_exact_controls": {
+        "job": 115610876935,
+        "result": "SUCCESS"
+      },
+      "pr_native_observations": {
+        "job": 115610877362,
+        "result": "SUCCESS"
+      },
       "full_type_binding_export_executed": false,
       "full_mandatory_producer": "OPEN"
     },
@@ -905,6 +1022,14 @@
       "Zeta23.CCM.NativeFloorCompletionSource"
     ],
     "authority": "SUPPORTING_COMPONENTS_ONLY_RH_OPEN",
-    "mandatory_core_inventory_unchanged": true
+    "mandatory_core_inventory_unchanged": true,
+    "resumption_scope": {
+      "local_pinned_compiler": "leanprover/lean4:v4.33.0-rc2",
+      "module_scoped_checks_only": true,
+      "full_head_ci": "PENDING_NEXT_CANDIDATE",
+      "full_mandatory_producer": "OPEN",
+      "source_frontier": "LOCAL_PROOF_FRONTIER_2026-10-14.json",
+      "workflow_harvest_last_pushed_head": "WORKFLOW_HARVEST_72bc63fe.json"
+    }
   }
 }

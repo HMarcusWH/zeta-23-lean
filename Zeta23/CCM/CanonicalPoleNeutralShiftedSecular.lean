@@ -27,6 +27,70 @@ The two predecessor inverse constants 6 and 12 concern different Schur
 operators; neither is inferred from the relative parity gaps in this file.
 -/
 
+private theorem nativeEven_inner_sub_left (L : ℝ) (K : ℕ)
+    (a b c : poleNeutralEvenSubspace L K) :
+    inner ℂ (a - b) c = inner ℂ a c - inner ℂ b c := by
+  change inner ℂ (a.val.val - b.val.val) c.val.val =
+    inner ℂ a.val.val c.val.val - inner ℂ b.val.val c.val.val
+  exact inner_sub_left _ _ _
+
+private theorem nativeOdd_inner_sub_left (L : ℝ) (K : ℕ)
+    (a b c : poleNeutralOddSubspace L K) :
+    inner ℂ (a - b) c = inner ℂ a c - inner ℂ b c := by
+  change inner ℂ (a.val.val - b.val.val) c.val.val =
+    inner ℂ a.val.val c.val.val - inner ℂ b.val.val c.val.val
+  exact inner_sub_left _ _ _
+
+private theorem nativeOdd_inner_sub_right (L : ℝ) (K : ℕ)
+    (a b c : poleNeutralOddSubspace L K) :
+    inner ℂ a (b - c) = inner ℂ a b - inner ℂ a c := by
+  change inner ℂ a.val.val (b.val.val - c.val.val) =
+    inner ℂ a.val.val b.val.val - inner ℂ a.val.val c.val.val
+  exact inner_sub_right _ _ _
+
+private theorem nativeEven_inner_smul_left (L : ℝ) (K : ℕ) (r : ℂ)
+    (a b : poleNeutralEvenSubspace L K) :
+    inner ℂ (r • a) b = star r * inner ℂ a b := by
+  change inner ℂ (r • a.val.val) b.val.val = star r * inner ℂ a.val.val b.val.val
+  exact inner_smul_left _ _ _
+
+private theorem nativeOdd_inner_smul_right (L : ℝ) (K : ℕ) (r : ℂ)
+    (a b : poleNeutralOddSubspace L K) :
+    inner ℂ a (r • b) = r * inner ℂ a b := by
+  change inner ℂ a.val.val (r • b.val.val) = r * inner ℂ a.val.val b.val.val
+  exact inner_smul_right _ _ _
+
+private def nativeAdjointOfLinearEquiv {E F : Type*}
+    [NormedAddCommGroup E] [NormedAddCommGroup F]
+    [InnerProductSpace ℂ E] [InnerProductSpace ℂ F]
+    [FiniteDimensional ℂ E] [FiniteDimensional ℂ F] (D : E ≃ₗ[ℂ] F) : F ≃ₗ[ℂ] E :=
+  { D.toLinearMap.adjoint with
+    invFun := D.symm.toLinearMap.adjoint
+    left_inv := by
+      intro w
+      apply ext_inner_right ℂ
+      intro z
+      calc
+        _ = inner ℂ (D.toLinearMap.adjoint w) (D.symm z) :=
+          LinearMap.adjoint_inner_left D.symm.toLinearMap z (D.toLinearMap.adjoint w)
+        _ = inner ℂ w (D (D.symm z)) :=
+          LinearMap.adjoint_inner_left D.toLinearMap (D.symm z) w
+        _ = _ := by rw [LinearEquiv.apply_symm_apply]
+    right_inv := by
+      intro u
+      apply ext_inner_right ℂ
+      intro v
+      calc
+        _ = inner ℂ (D.symm.toLinearMap.adjoint u) (D v) :=
+          LinearMap.adjoint_inner_left D.toLinearMap v (D.symm.toLinearMap.adjoint u)
+        _ = inner ℂ u (D.symm (D v)) :=
+          LinearMap.adjoint_inner_left D.symm.toLinearMap (D v) u
+        _ = _ := by rw [LinearEquiv.symm_apply_apply] }
+
+private theorem exists_same_of_two_predicates {V : Type*} (v : V)
+    (P Q : V → Prop) (hP : P v) (hQ : Q v) :
+    ∃ u : V, P u ∧ Q u ∧ u = v := ⟨v, hP, hQ, rfl⟩
+
 def poleNeutralEvenShiftedCanonical (L : ℝ) (K : ℕ) (lam : ℝ) :
     poleNeutralEvenSubspace L K →ₗ[ℂ] poleNeutralEvenSubspace L K :=
   poleNeutralEvenCompressedCanonical L K - (lam : ℂ) • LinearMap.id
@@ -73,7 +137,7 @@ theorem poleNeutralEvenShiftedCanonical_coercive {L : ℝ} (hL : 0 < L)
   have hs := @re_inner_ofReal_smul_self (poleNeutralEvenSubspace L K) inferInstance
     (poleNeutralEven_innerProductSpace L K) lam u
   simp only [poleNeutralEvenShiftedCanonical, LinearMap.sub_apply, LinearMap.smul_apply,
-    LinearMap.id_apply, inner_sub_left, Complex.sub_re]
+    LinearMap.id_apply, nativeEven_inner_sub_left, Complex.sub_re]
   linarith
 
 theorem poleNeutralOddShiftedCanonical_coercive {L : ℝ} (hL : 0 < L)
@@ -84,7 +148,7 @@ theorem poleNeutralOddShiftedCanonical_coercive {L : ℝ} (hL : 0 < L)
   have hs := @re_inner_ofReal_smul_self (poleNeutralOddSubspace L K) inferInstance
     (poleNeutralOdd_innerProductSpace L K) lam w
   simp only [poleNeutralOddShiftedCanonical, LinearMap.sub_apply, LinearMap.smul_apply,
-    LinearMap.id_apply, inner_sub_left, Complex.sub_re]
+    LinearMap.id_apply, nativeOdd_inner_sub_left, Complex.sub_re]
   linarith
 
 private theorem nativeCoercive_injective {E : Type*} [NormedAddCommGroup E]
@@ -206,38 +270,30 @@ theorem poleNeutral_adjoint_rankOne_identity {L : ℝ} (hL : 0 < L)
   simp only [poleNeutralCompressedIndexDefect, LinearMap.sub_apply, LinearMap.comp_apply] at hr
   calc
     _ = inner ℂ w (B (D v) - D (A v)) := by
-      rw [inner_sub_left, LinearMap.adjoint_inner_left,
+      rw [nativeEven_inner_sub_left, LinearMap.adjoint_inner_left,
         poleNeutralOddCompressedCanonical_isSymmetric L K w (D v),
         poleNeutralEvenCompressedCanonical_isSymmetric L K (D.adjoint w) v,
-        LinearMap.adjoint_inner_left, inner_sub_right]
+        LinearMap.adjoint_inner_left, nativeOdd_inner_sub_right]
     _ = inner ℂ w (poleNeutralCorrectedCubicSource L K v • poleNeutralCubicCompressionVector L K) := by rw [hr]
     _ = _ := by
-      rw [inner_smul_right, inner_smul_left, inner_poleNeutralCorrectedCubicRieszVector]
+      rw [nativeOdd_inner_smul_right, nativeEven_inner_smul_left,
+        inner_poleNeutralCorrectedCubicRieszVector]
       change _ = star (inner ℂ (poleNeutralCubicCompressionVector L K) w) * _
-      rw [inner_conj_symm]
+      have hconj : star (inner ℂ (poleNeutralCubicCompressionVector L K) w) =
+          inner ℂ w (poleNeutralCubicCompressionVector L K) := by
+        change star (inner ℂ (poleNeutralCubicCompressionVector L K).val.val w.val.val) =
+          inner ℂ w.val.val (poleNeutralCubicCompressionVector L K).val.val
+        exact inner_conj_symm _ _
+      rw [hconj]
       ring
 
 /-- The inverse of the actual adjoint index map is the adjoint of the actual
 inverse index map. No unitary property is claimed. -/
 def poleNeutralIndexAdjointEquiv {L : ℝ} (hL : 0 < L) (K : ℕ) (hK : 3 ≤ K) :
-    poleNeutralOddSubspace L K ≃ₗ[ℂ] poleNeutralEvenSubspace L K :=
-  let Di := poleNeutralIndexEquiv hL K (show 1 ≤ K by omega)
-  { (poleNeutralIndexLinearMap hL K).adjoint with
-    invFun := (Di.symm : poleNeutralOddSubspace L K →ₗ[ℂ] poleNeutralEvenSubspace L K).adjoint
-    left_inv := by
-      intro w
-      apply ext_inner_right ℂ
-      intro z
-      rw [LinearMap.adjoint_inner_left, LinearMap.adjoint_inner_left]
-      change inner ℂ w (Di (Di.symm z)) = inner ℂ w z
-      rw [LinearEquiv.apply_symm_apply]
-    right_inv := by
-      intro u
-      apply ext_inner_right ℂ
-      intro v
-      rw [LinearMap.adjoint_inner_left, LinearMap.adjoint_inner_left]
-      change inner ℂ u (Di.symm (Di v)) = inner ℂ u v
-      rw [LinearEquiv.symm_apply_apply] }
+    poleNeutralOddSubspace L K ≃ₗ[ℂ] poleNeutralEvenSubspace L K := by
+  simpa only [] using! (nativeAdjointOfLinearEquiv
+    (E := poleNeutralEvenSubspace L K) (F := poleNeutralOddSubspace L K)
+    (poleNeutralIndexEquiv hL K (show 1 ≤ K by omega)))
 
 /-- Exact transformed-competitor equation for an actual odd eigenvector.
 The corrected source is its actual native Riesz vector, with a minus sign. -/
@@ -248,10 +304,14 @@ theorem poleNeutral_odd_eigen_adjoint_competitor_eq_source {L : ℝ} (hL : 0 < L
       -poleNeutralCubicPairingFunctional L K w • poleNeutralCorrectedCubicRieszVector L K := by
   have ha := poleNeutral_adjoint_rankOne_identity hL K hK w
   rw [hw, map_smul] at ha
-  simp only [poleNeutralEvenShiftedCanonical, LinearMap.sub_apply, LinearMap.smul_apply,
-    LinearMap.id_apply, neg_smul]
-  rw [← ha]
-  abel
+  change poleNeutralEvenCompressedCanonical L K ((poleNeutralIndexLinearMap hL K).adjoint w) -
+    (lam : ℂ) • (poleNeutralIndexLinearMap hL K).adjoint w = _
+  calc
+    _ = -((lam : ℂ) • (poleNeutralIndexLinearMap hL K).adjoint w -
+        poleNeutralEvenCompressedCanonical L K ((poleNeutralIndexLinearMap hL K).adjoint w)) := by abel
+    _ = -(poleNeutralCubicPairingFunctional L K w • poleNeutralCorrectedCubicRieszVector L K) :=
+      congrArg (fun v : poleNeutralEvenSubspace L K => -v) ha
+    _ = _ := (neg_smul _ _).symm
 
 /-- An actual odd eigenmode has either nonzero native cubic pairing or a
 nonzero actual adjoint-transformed even competitor at the same `lam`. -/
@@ -264,14 +324,26 @@ theorem poleNeutral_odd_eigen_adjoint_competitor_source_dichotomy {L : ℝ} (hL 
           v = (poleNeutralIndexLinearMap hL K).adjoint w := by
   by_cases hp : poleNeutralCubicPairingFunctional L K w = 0
   · right
-    refine ⟨(poleNeutralIndexLinearMap hL K).adjoint w, ?_, ?_, rfl⟩
-    · intro hz
+    have hn : (poleNeutralIndexLinearMap hL K).adjoint w ≠
+        (0 : poleNeutralEvenSubspace L K) := by
+      intro hz
+      obtain ⟨v, hv⟩ := poleNeutralIndexLinearMap_surjective hL K (by omega) w
+      have hi := LinearMap.adjoint_inner_left (poleNeutralIndexLinearMap hL K) v w
+      rw [hz, hv] at hi
+      change inner ℂ (0 : EuclideanSpace ℂ (Fin (2 * K + 1))) v.val.val =
+        inner ℂ w.val.val w.val.val at hi
+      have hwval : w.val.val = 0 := by
+        apply (inner_self_eq_zero (𝕜 := ℂ)).mp
+        simpa only [inner_zero_left] using hi.symm
       apply hw0
-      apply (poleNeutralIndexAdjointEquiv hL K hK).injective
-      simpa only [map_zero] using hz
-    · have hc := poleNeutral_odd_eigen_adjoint_competitor_eq_source hL K hK lam w hw
-      rw [hp, neg_zero, zero_smul] at hc
-      exact sub_eq_zero.mp hc
+      apply Subtype.ext
+      apply Subtype.ext
+      exact hwval
+    have hc := poleNeutral_odd_eigen_adjoint_competitor_eq_source hL K hK lam w hw
+    rw [hp, neg_zero, zero_smul] at hc
+    exact exists_same_of_two_predicates _ (fun v => v ≠ 0)
+      (fun v => poleNeutralEvenCompressedCanonical L K v = (lam : ℂ) • v)
+      hn (sub_eq_zero.mp hc)
   · exact Or.inl hp
 
 theorem poleNeutral_odd_adjoint_shifted_rankOneIntertwining {L : ℝ} (hL : 0 < L)

@@ -1,7 +1,33 @@
 # Fixed-source phase-depth dependency review
 
-Status: **PAPER REVIEW / formal construction OPEN**. The producer's original
-quantifier order and its fixed source are unchanged.
+Status on 2026-10-14: **LOCAL PINNED COMPILER PASS / whole-tree CI pending**.
+`UniversalSincSignedExcursions`, `UniversalSincOriginalPhaseDepth` and the
+canonical `OriginalDetectorPhaseDepth` exports now compile. The printed roots
+admit only propext, Classical.choice and Quot.sound. For each actual off-line
+zero, each smaller positive beta, each prescribed phase and each R, the actual
+fixed-source construction produces an aperture L>max(R,4), unit L2 mass,
+support in [1,L-1], and native additive energy at most -exp(beta*L).
+The two phase apertures may differ. Finite transport and the filled producer
+remain OPEN. The producer's original quantifier order and fixed source remain
+unchanged.
+
+The successful proof uses a single visible pole and the infimum of the genuine
+positive-tail integrability domain. It does not need a rightmost zero or an
+attained displacement supremum. Its unsmoothed compact correction is proved
+entire. The actual transform at zero gives integral k=-1/4 and hence strictly
+positive k L2 mass. Disjointness pays the literal unit normalization.
+
+The original normalization step also avoids a larger intermediate exponent:
+the signed excursion permits an arbitrary multiplier B at the requested beta.
+Taking B=n*exp(2*beta*(1+s0))+abs(C(0))+1 pays both the finite diagonal and
+the fixed aperture shift. A larger intermediate exponent may still be useful
+for retaining depth in finite transport. The Fourier and literal window proofs
+now supply all-jet errors below exp(-beta*L) eventually for any fixed beta.
+Physical/coefficient norm and native quadratic-form transport remain distinct
+obligations. RH and all three Step4 closing laws remain OPEN.
+
+The following earlier paper review is retained as the dependency history; its
+compiler-pending descriptions are superseded by the precise local result above.
 
 The source note derives both late signs of the actual correlation from a
 positive-Laplace abscissa argument, without a rightmost zero. It uses the

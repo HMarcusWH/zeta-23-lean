@@ -92,6 +92,7 @@ theorem nativeSelectedGroundPredecessorEquiv_eq_compression (sigma : ReversalPar
     nativePoleNeutralParityCanonical sigma L (s.cutoff - 1) v at hcompv
   have hJ : J.toLinearMap.adjoint (J v) = v :=
     congrArg (fun T => T v) J.adjoint_comp_self'
+  dsimp only [J] at hcompv hJ
   rw [nativeSelectedGroundPredecessorEquiv_actual]
   simp only [nativePoleNeutralParityShifted, LinearMap.sub_apply, LinearMap.smul_apply,
     LinearMap.id_apply, map_sub, map_smul, hcompv, hJ]

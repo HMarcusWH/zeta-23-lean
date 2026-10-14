@@ -50,7 +50,7 @@ private theorem coerciveEquiv_inverse_norm_le {E : Type*} [NormedAddCommGroup E]
     have hi : (inner ℂ w (Ti.symm w)).re ≤ ‖w‖ * ‖Ti.symm w‖ :=
       re_inner_le_norm (𝕜 := ℂ) w (Ti.symm w)
     have hmul : c * ‖Ti.symm w‖ ≤ ‖w‖ := by
-      apply (mul_le_mul_right hv).mp
+      apply (mul_le_mul_iff_left₀ hv).mp
       nlinarith
     calc
       ‖Ti.symm w‖ ≤ ‖w‖ / c := (le_div_iff₀ hc).mpr (by simpa only [mul_comm] using hmul)
@@ -222,7 +222,7 @@ def nativeDeepThresholdInverseData {L D : ℝ} {Kd : ℕ} {hL : 0 < L}
       inferInstance Bo oD (fun _ => rfl) _ hg (nativeDeepThreshold_odd_detector_coercive s)
 
 private theorem operator_norm_zero_of_finrank_zero {E : Type*} [NormedAddCommGroup E]
-    [NormedSpace ℂ E] [FiniteDimensional ℂ E] (hE : Module.finrank ℂ E = 0)
+    [InnerProductSpace ℂ E] [FiniteDimensional ℂ E] (hE : Module.finrank ℂ E = 0)
     (T : E →L[ℂ] E) : ‖T‖ = 0 := by
   have hz : T = 0 := by
     ext u
@@ -244,10 +244,14 @@ theorem nativeDeepThreshold_inverse_norms_zero_at_first {L D : ℝ} {Kd : ℕ}
   have ho : Module.finrank ℂ (poleNeutralOddSubspace L (s.cutoff - 1)) = 0 := by
     rw [hpred]
     exact (s.first_predecessor_empty hfirst).2
-  exact ⟨operator_norm_zero_of_finrank_zero he _,
-    operator_norm_zero_of_finrank_zero ho _,
-    operator_norm_zero_of_finrank_zero he _,
-    operator_norm_zero_of_finrank_zero ho _⟩
+  exact ⟨@operator_norm_zero_of_finrank_zero (poleNeutralEvenSubspace L (s.cutoff - 1))
+      inferInstance (poleNeutralEven_innerProductSpace L _) inferInstance he _,
+    @operator_norm_zero_of_finrank_zero (poleNeutralOddSubspace L (s.cutoff - 1))
+      inferInstance (poleNeutralOdd_innerProductSpace L _) inferInstance ho _,
+    @operator_norm_zero_of_finrank_zero (poleNeutralEvenSubspace L (s.cutoff - 1))
+      inferInstance (poleNeutralEven_innerProductSpace L _) inferInstance he _,
+    @operator_norm_zero_of_finrank_zero (poleNeutralOddSubspace L (s.cutoff - 1))
+      inferInstance (poleNeutralOdd_innerProductSpace L _) inferInstance ho _⟩
 
 /-- The supplied original mixed-parity detector constructs the actual least
 crossing ground and all four predecessor inverses with the 6/12 budgets. -/

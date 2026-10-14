@@ -41,7 +41,11 @@ private theorem integrable_negativePart_weight {u : ℝ → ℝ} (hu : Measurabl
     (hInt : Integrable (positiveLaplaceWeight u p) positiveLaplaceHalfLine) :
     Integrable (positiveLaplaceWeight (signedLaplaceNegativePart u) p) positiveLaplaceHalfLine := by
   have hneg : Integrable (positiveLaplaceWeight (fun a => -u a) p) positiveLaplaceHalfLine := by
-    simpa only [positiveLaplaceWeight, Pi.neg_apply, neg_mul] using hInt.neg
+    have heq : positiveLaplaceWeight (fun a => -u a) p = -positiveLaplaceWeight u p := by
+      funext a
+      simp [positiveLaplaceWeight]
+    rw [heq]
+    exact hInt.neg
   exact integrable_positivePart_weight hu.neg hneg
 
 /-- Signed measurable sources with genuine weighted integrability at every

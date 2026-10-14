@@ -19,14 +19,16 @@ The parity-indexed definitions below reduce to the unchanged actual even
 and odd spaces, operators, isometries and detector inverses.
 -/
 
-def nativePoleNeutralParitySpace (sigma : ReversalParity) (L : ℝ) (K : ℕ) : Type :=
+abbrev nativePoleNeutralParitySpace (sigma : ReversalParity) (L : ℝ) (K : ℕ) : Type :=
   match sigma with
   | .even => poleNeutralEvenSubspace L K
   | .odd => poleNeutralOddSubspace L K
 
 instance nativePoleNeutralParitySpace_normedAddCommGroup (sigma : ReversalParity) (L : ℝ) (K : ℕ) :
-    NormedAddCommGroup (nativePoleNeutralParitySpace sigma L K) := by
-  cases sigma <;> exact inferInstance
+    NormedAddCommGroup (nativePoleNeutralParitySpace sigma L K) :=
+  match sigma with
+  | .even => (poleNeutralEvenSubspace L K).normedAddCommGroup
+  | .odd => (poleNeutralOddSubspace L K).normedAddCommGroup
 
 instance nativePoleNeutralParitySpace_innerProductSpace (sigma : ReversalParity) (L : ℝ) (K : ℕ) :
     InnerProductSpace ℂ (nativePoleNeutralParitySpace sigma L K) := by
@@ -159,7 +161,10 @@ theorem nativeDetectorCoupling_shift_eq_unshifted (sigma : ReversalParity)
       (nativeDetectorPredecessorEmbedding sigma s).toLinearMap.adjoint
         (nativePoleNeutralParityCanonical sigma L Kd (y : nativePoleNeutralParitySpace sigma L Kd)) := by
   have hz := isometricDetectorComplement_adjoint_eq_zero (nativeDetectorPredecessorEmbedding sigma s) y
-  simp only [isometricDetectorCoupling, LinearMap.comp_apply, Submodule.subtype_apply,
+  change (nativeDetectorPredecessorEmbedding sigma s).toLinearMap.adjoint
+    (nativePoleNeutralParityShifted sigma L Kd (-s.eta)
+      (y : nativePoleNeutralParitySpace sigma L Kd)) = _
+  simp only [
     nativePoleNeutralParityShifted, LinearMap.sub_apply, LinearMap.smul_apply,
     LinearMap.id_apply, map_sub, map_smul, hz, smul_zero, sub_zero]
 
@@ -179,6 +184,7 @@ theorem nativeDetectorPredecessorEquiv_eq_compression (sigma : ReversalParity)
     nativePoleNeutralParityCanonical sigma L (s.cutoff - 1) v at hcompv
   have hJ : J.toLinearMap.adjoint (J v) = v := by
     exact congrArg (fun T => T v) J.adjoint_comp_self'
+  dsimp only [J] at hcompv hJ
   rw [nativeDetectorPredecessorEquiv_actual]
   simp only [nativePoleNeutralParityShifted, LinearMap.sub_apply, LinearMap.smul_apply,
     LinearMap.id_apply, map_sub, map_smul, hcompv, hJ]
@@ -215,7 +221,7 @@ theorem nativeDetectorSchur_original_depth (sigma : ReversalParity)
     simp only [nativePoleNeutralParityShifted, LinearMap.sub_apply, LinearMap.smul_apply,
       LinearMap.id_apply, inner_sub_left, Complex.sub_re]
     rw [hpUnit] at hs
-    norm_num at hs
+    simp only [one_pow, mul_one] at hs
     linarith
   have hpositive (v : nativePoleNeutralParitySpace sigma L (s.cutoff - 1)) :
       0 ≤ (inner ℂ (nativeDetectorPredecessorEquiv sigma r v) v).re := by

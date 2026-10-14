@@ -1,5 +1,6 @@
 import Zeta23.CCM.CanonicalPoleNeutralIndexRigidity
 import Zeta23.CCM.CanonicalPoleNeutralSourceMoment
+import Zeta23.CCM.CanonicalPoleNeutralShiftedSecular
 import Mathlib.Analysis.InnerProductSpace.Positive
 
 noncomputable section
@@ -11,6 +12,7 @@ open scoped BigOperators ComplexConjugate
 
 set_option allowUnsafeReducibility true in
 attribute [local reducible] Submodule.innerProductSpace
+  Submodule.seminormedAddCommGroup Submodule.normedAddCommGroup
   poleNeutralEven_innerProductSpace poleNeutralOdd_innerProductSpace
   euclideanParityBoundaryFlatSubspace
 
@@ -47,10 +49,10 @@ theorem nativePositive_apply_eq_zero_of_energy_eq_zero
   have hquad (t : ℝ) : 0 ≤ b * t ^ 2 + 2 * a * t := by
     have hp := hT.2 ((t : ℂ) • T w + w)
     simp only [map_add, map_smul, inner_add_left, inner_add_right,
-      inner_smul_real_left, inner_smul_real_right] at hp
+      inner_smul_left, inner_smul_right, Complex.conj_ofReal] at hp
     rw [hT.1 (T w) w] at hp
-    simp only [RCLike.re_eq_complex_re, Complex.add_re, Complex.smul_re,
-      smul_eq_mul, hw, hn] at hp
+    simp only [RCLike.re_eq_complex_re, Complex.add_re, Complex.mul_re,
+      Complex.ofReal_re, Complex.ofReal_im, zero_mul, sub_zero, hw, hn] at hp
     dsimp only [b]
     nlinarith
   let t : ℝ := -a / (b + 1)
@@ -90,6 +92,7 @@ def poleNeutralEvenIndexSquareOfMomentFourZero {L : ℝ} (hL : 0 < L) (K : ℕ)
       indexMatrix K *ᵥ (indexMatrix K *ᵥ evenBoundaryFlatRawCoefficients K u.val) := by
     dsimp only [x]
     rw [euclideanIndexLinearMap_coordinates, euclideanIndexLinearMap_coordinates]
+    rfl
   have hxlegal : x ∈ euclideanEvenBoundaryFlatSubspace K := by
     rw [mem_euclideanEvenBoundaryFlatSubspace_iff, hxraw]
     exact indexMatrix_sq_mem_evenBoundaryFlat_of_momentFour_eq_zero K _
@@ -121,8 +124,8 @@ theorem poleNeutralIndex_adjoint_index_eq_square_of_momentFour_eq_zero
   apply ext_inner_right ℂ
   intro v
   rw [LinearMap.adjoint_inner_left]
-  simp only [Submodule.coe_inner, coe_poleNeutralIndexLinearMap,
-    coe_poleNeutralEvenIndexSquareOfMomentFourZero]
+  change inner ℂ (euclideanIndexLinearMap K u.val.val) (euclideanIndexLinearMap K v.val.val) =
+    inner ℂ (euclideanIndexLinearMap K (euclideanIndexLinearMap K u.val.val)) v.val.val
   exact (euclideanCenteredIndex_isSymmetric K
     (euclideanIndexLinearMap K (u.val : EuclideanSpace ℂ (Fin (2 * K + 1))))
     (v.val : EuclideanSpace ℂ (Fin (2 * K + 1)))).symm
@@ -131,7 +134,8 @@ theorem poleNeutralIndex_adjoint_index_eq_square_of_momentFour_eq_zero
 theorem coe_poleNeutralIndex_adjoint_index_eq_ambient_square_of_momentFour_eq_zero
     {L : ℝ} (hL : 0 < L) (K : ℕ) (u : poleNeutralEvenSubspace L K)
     (h4 : centeredMoment K 4 (evenBoundaryFlatRawCoefficients K u.val) = 0) :
-    (((poleNeutralIndexLinearMap hL K).adjoint (poleNeutralIndexLinearMap hL K u)).val :
+    ((((poleNeutralIndexLinearMap hL K).adjoint (poleNeutralIndexLinearMap hL K u) :
+        poleNeutralEvenSubspace L K)).val :
         EuclideanSpace ℂ (Fin (2 * K + 1))) =
       euclideanIndexLinearMap K (euclideanIndexLinearMap K
         (u.val : EuclideanSpace ℂ (Fin (2 * K + 1)))) := by
@@ -141,99 +145,93 @@ theorem coe_poleNeutralIndex_adjoint_index_eq_ambient_square_of_momentFour_eq_ze
 /-- A real shift at or below the actual odd bottom gives an actual positive
 native odd operator. -/
 theorem poleNeutralOddShifted_isPositive_of_le_bottom {L : ℝ} (hL : 0 < L)
-    (K : ℕ) (hK : 3 ≤ K) (λ : ℝ)
-    (hλ : λ ≤ poleNeutralOddRayleighBottom L K hL hK) :
-    LinearMap.IsPositive (poleNeutralOddCompressedCanonical L K -
-      (λ : ℂ) • LinearMap.id) := by
+    (K : ℕ) (hK : 3 ≤ K) (lam : ℝ)
+    (hlam : lam ≤ poleNeutralOddRayleighBottom L K hL hK) :
+    LinearMap.IsPositive (𝕜 := ℂ) (E := poleNeutralOddSubspace L K)
+      (poleNeutralOddCompressedCanonical L K -
+      (lam : ℂ) • (LinearMap.id : poleNeutralOddSubspace L K →ₗ[ℂ] poleNeutralOddSubspace L K)) := by
+  have hid : LinearMap.IsSymmetric (𝕜 := ℂ) (E := poleNeutralOddSubspace L K)
+      (LinearMap.id : poleNeutralOddSubspace L K →ₗ[ℂ] poleNeutralOddSubspace L K) := by
+    intro x y
+    rfl
   refine ⟨(poleNeutralOddCompressedCanonical_isSymmetric L K).sub
-    (LinearMap.IsSymmetric.smul (by simp) LinearMap.IsSymmetric.id), ?_⟩
+    (LinearMap.IsSymmetric.smul (by simp) hid), ?_⟩
   intro w
   have hb := poleNeutralOddRayleighBottom_mul_norm_sq_le hL K hK w
   have hn : (inner ℂ w w).re = ‖w‖ ^ 2 := by
-    simpa only [RCLike.re_eq_complex_re] using (norm_sq_eq_re_inner (𝕜 := ℂ) w).symm
-  simp only [LinearMap.sub_apply, LinearMap.smul_apply, LinearMap.id_apply,
-    inner_sub_left, inner_smul_real_left, Complex.sub_re, Complex.smul_re,
-    smul_eq_mul, RCLike.re_eq_complex_re, hn]
-  have hs : λ * ‖w‖ ^ 2 ≤ poleNeutralOddRayleighBottom L K hL hK * ‖w‖ ^ 2 :=
-    mul_le_mul_of_nonneg_right hλ (sq_nonneg _)
+    change (inner ℂ w.val.val w.val.val).re = ‖w.val.val‖ ^ 2
+    simpa only [RCLike.re_eq_complex_re] using (norm_sq_eq_re_inner (𝕜 := ℂ) w.val.val).symm
+  change 0 ≤ (inner ℂ
+    ((poleNeutralOddCompressedCanonical L K w).val.val - (lam : ℂ) • w.val.val) w.val.val).re
+  rw [inner_sub_left, inner_smul_left, Complex.sub_re]
+  have hnval : (inner ℂ w.val.val w.val.val).re = ‖w‖ ^ 2 := hn
+  simp only [Complex.conj_ofReal, Complex.mul_re, Complex.ofReal_re,
+    Complex.ofReal_im, zero_mul, sub_zero, hnval]
+  change poleNeutralOddRayleighBottom L K hL hK * ‖w‖ ^ 2 ≤
+    (inner ℂ (poleNeutralOddCompressedCanonical L K w).val.val w.val.val).re at hb
+  have hs : lam * ‖w‖ ^ 2 ≤ poleNeutralOddRayleighBottom L K hL hK * ‖w‖ ^ 2 :=
+    mul_le_mul_of_nonneg_right hlam (sq_nonneg _)
   linarith
 
 /-- The rank-one identity and zero fourth moment put the actual index image
 in the odd eigenspace whenever the even eigenvalue lies below the odd bottom. -/
 theorem poleNeutralIndex_odd_eigen_of_momentFour_eq_zero {L : ℝ} (hL : 0 < L)
-    (K : ℕ) (hK : 3 ≤ K) (λ : ℝ) (u : poleNeutralEvenSubspace L K)
-    (hu : poleNeutralEvenCompressedCanonical L K u = (λ : ℂ) • u)
-    (hλ : λ ≤ poleNeutralOddRayleighBottom L K hL hK)
+    (K : ℕ) (hK : 3 ≤ K) (lam : ℝ) (u : poleNeutralEvenSubspace L K)
+    (hu : poleNeutralEvenCompressedCanonical L K u = (lam : ℂ) • u)
+    (hlam : lam ≤ poleNeutralOddRayleighBottom L K hL hK)
     (h4 : centeredMoment K 4 (evenBoundaryFlatRawCoefficients K u.val) = 0) :
     poleNeutralOddCompressedCanonical L K (poleNeutralIndexLinearMap hL K u) =
-      (λ : ℂ) • poleNeutralIndexLinearMap hL K u := by
-  have he := poleNeutral_source_moment_energy_eq hL K (by omega) λ u hu
+      (lam : ℂ) • poleNeutralIndexLinearMap hL K u := by
+  have he := poleNeutral_source_moment_energy_eq hL K (by omega) lam u hu
   rw [h4, mul_zero, Complex.zero_re] at he
-  have hz := nativePositive_apply_eq_zero_of_energy_eq_zero
-    (poleNeutralOddCompressedCanonical L K - (λ : ℂ) • LinearMap.id)
-    (poleNeutralOddShifted_isPositive_of_le_bottom hL K hK λ hλ)
+  have hz := @nativePositive_apply_eq_zero_of_energy_eq_zero
+    (poleNeutralOddSubspace L K) inferInstance (poleNeutralOdd_innerProductSpace L K)
+    (poleNeutralOddCompressedCanonical L K - (lam : ℂ) • LinearMap.id)
+    (poleNeutralOddShifted_isPositive_of_le_bottom hL K hK lam hlam)
     (poleNeutralIndexLinearMap hL K u) he.symm
   exact sub_eq_zero.mp hz
 
 /-- With zero fourth moment, the actual adjoint product remains in the even
 eigenspace. The source term vanishes by its actual cubic pairing. -/
 theorem poleNeutralIndex_adjoint_index_even_eigen_of_momentFour_eq_zero
-    {L : ℝ} (hL : 0 < L) (K : ℕ) (hK : 3 ≤ K) (λ : ℝ)
+    {L : ℝ} (hL : 0 < L) (K : ℕ) (hK : 3 ≤ K) (lam : ℝ)
     (u : poleNeutralEvenSubspace L K)
-    (hu : poleNeutralEvenCompressedCanonical L K u = (λ : ℂ) • u)
-    (hλ : λ ≤ poleNeutralOddRayleighBottom L K hL hK)
+    (hu : poleNeutralEvenCompressedCanonical L K u = (lam : ℂ) • u)
+    (hlam : lam ≤ poleNeutralOddRayleighBottom L K hL hK)
     (h4 : centeredMoment K 4 (evenBoundaryFlatRawCoefficients K u.val) = 0) :
     poleNeutralEvenCompressedCanonical L K
       ((poleNeutralIndexLinearMap hL K).adjoint (poleNeutralIndexLinearMap hL K u)) =
-        (λ : ℂ) • (poleNeutralIndexLinearMap hL K).adjoint (poleNeutralIndexLinearMap hL K u) := by
-  let D : poleNeutralEvenSubspace L K →ₗ[ℂ] poleNeutralOddSubspace L K :=
-    poleNeutralIndexLinearMap hL K
-  let A : poleNeutralEvenSubspace L K →ₗ[ℂ] poleNeutralEvenSubspace L K :=
-    poleNeutralEvenCompressedCanonical L K
-  let B : poleNeutralOddSubspace L K →ₗ[ℂ] poleNeutralOddSubspace L K :=
-    poleNeutralOddCompressedCanonical L K
-  have hBDu : B (D u) = (λ : ℂ) • D u :=
-    poleNeutralIndex_odd_eigen_of_momentFour_eq_zero hL K hK λ u hu hλ h4
-  have hpair : inner ℂ (D u) (poleNeutralCubicCompressionVector L K) = 0 := by
-    apply inner_eq_zero_symm.mp
+        (lam : ℂ) • (poleNeutralIndexLinearMap hL K).adjoint (poleNeutralIndexLinearMap hL K u) := by
+  have hBDu : poleNeutralOddCompressedCanonical L K (poleNeutralIndexLinearMap hL K u) =
+      (lam : ℂ) • poleNeutralIndexLinearMap hL K u :=
+    poleNeutralIndex_odd_eigen_of_momentFour_eq_zero hL K hK lam u hu hlam h4
+  have hpair : poleNeutralCubicPairingFunctional L K (poleNeutralIndexLinearMap hL K u) = 0 := by
+    change inner ℂ (poleNeutralCubicCompressionVector L K) (poleNeutralIndexLinearMap hL K u) = 0
     rw [poleNeutral_cubic_pairing_eq_momentFour hL K u, h4]
-  apply ext_inner_right ℂ
-  intro v
-  have hDA : D (A v) = B (D v) -
-      poleNeutralCorrectedCubicSource L K v • poleNeutralCubicCompressionVector L K := by
-    have hr := poleNeutralCompressedIndexDefect_eq_correctedCubicSource hL K (by omega) v
-    simp only [poleNeutralCompressedIndexDefect, LinearMap.sub_apply, LinearMap.comp_apply] at hr
-    rw [← hr]
-    abel
-  calc
-    _ = inner ℂ (D.adjoint (D u)) (A v) :=
-      poleNeutralEvenCompressedCanonical_isSymmetric L K _ v
-    _ = inner ℂ (D u) (D (A v)) := LinearMap.adjoint_inner_left D (A v) (D u)
-    _ = inner ℂ (D u) (B (D v)) := by
-      rw [hDA, inner_sub_right, inner_smul_right, hpair, mul_zero, sub_zero]
-    _ = inner ℂ (B (D u)) (D v) :=
-      (poleNeutralOddCompressedCanonical_isSymmetric L K (D u) (D v)).symm
-    _ = _ := by
-      simp only [hBDu, inner_smul_left, Complex.conj_ofReal, LinearMap.adjoint_inner_left]
+  have he := poleNeutral_odd_eigen_adjoint_competitor_eq_source hL K hK lam
+    (poleNeutralIndexLinearMap hL K u) hBDu
+  rw [hpair, neg_zero, zero_smul] at he
+  exact sub_eq_zero.mp he
 
 /-- At or below the odd bottom, a nonzero eigenmode in a simple actual even
 eigenspace must have nonzero fourth moment. -/
 theorem poleNeutral_momentFour_ne_zero_of_simple_even_of_le_odd_bottom
-    {L : ℝ} (hL : 0 < L) (K : ℕ) (hK : 3 ≤ K) (λ : ℝ)
+    {L : ℝ} (hL : 0 < L) (K : ℕ) (hK : 3 ≤ K) (lam : ℝ)
     (u : poleNeutralEvenSubspace L K) (hu0 : u ≠ 0)
-    (hu : poleNeutralEvenCompressedCanonical L K u = (λ : ℂ) • u)
-    (hλ : λ ≤ poleNeutralOddRayleighBottom L K hL hK)
+    (hu : poleNeutralEvenCompressedCanonical L K u = (lam : ℂ) • u)
+    (hlam : lam ≤ poleNeutralOddRayleighBottom L K hL hK)
     (hsimple : Module.finrank ℂ
-      (Module.End.eigenspace (poleNeutralEvenCompressedCanonical L K) (λ : ℂ)) = 1) :
+      (Module.End.eigenspace (poleNeutralEvenCompressedCanonical L K) (lam : ℂ)) = 1) :
     centeredMoment K 4 (evenBoundaryFlatRawCoefficients K u.val) ≠ 0 := by
   intro h4
-  let v := (poleNeutralIndexLinearMap hL K).adjoint (poleNeutralIndexLinearMap hL K u)
-  have hv : poleNeutralEvenCompressedCanonical L K v = (λ : ℂ) • v :=
-    poleNeutralIndex_adjoint_index_even_eigen_of_momentFour_eq_zero hL K hK λ u hu hλ h4
-  let ue : Module.End.eigenspace (poleNeutralEvenCompressedCanonical L K) (λ : ℂ) :=
+  let v : poleNeutralEvenSubspace L K :=
+    (poleNeutralIndexLinearMap hL K).adjoint (poleNeutralIndexLinearMap hL K u)
+  have hv : poleNeutralEvenCompressedCanonical L K v = (lam : ℂ) • v :=
+    poleNeutralIndex_adjoint_index_even_eigen_of_momentFour_eq_zero hL K hK lam u hu hlam h4
+  let ue : Module.End.eigenspace (poleNeutralEvenCompressedCanonical L K) (lam : ℂ) :=
     ⟨u, Module.End.mem_eigenspace_iff.mpr hu⟩
   have hue : ue ≠ 0 := fun hz => hu0 (congrArg Subtype.val hz)
-  let ve : Module.End.eigenspace (poleNeutralEvenCompressedCanonical L K) (λ : ℂ) :=
+  let ve : Module.End.eigenspace (poleNeutralEvenCompressedCanonical L K) (lam : ℂ) :=
     ⟨v, Module.End.mem_eigenspace_iff.mpr hv⟩
   obtain ⟨c, hc⟩ := (finrank_eq_one_iff_of_nonzero' ue hue).mp hsimple ve
   have hcv : c • u = v := congrArg Subtype.val hc
@@ -242,6 +240,7 @@ theorem poleNeutral_momentFour_ne_zero_of_simple_even_of_le_odd_bottom
         c • (u.val : EuclideanSpace ℂ (Fin (2 * K + 1))) := by
     have hsq := coe_poleNeutralIndex_adjoint_index_eq_ambient_square_of_momentFour_eq_zero
       hL K u h4
+    change v.val.val = euclideanIndexLinearMap K (euclideanIndexLinearMap K u.val.val) at hsq
     rw [← hcv] at hsq
     exact hsq.symm
   have huval : u.val = 0 := evenBoundaryFlat_eq_zero_of_euclideanIndex_sq_eigen K c u.val hambient

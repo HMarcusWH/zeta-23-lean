@@ -8,10 +8,11 @@ Current delivery state is **PARTIAL IMPLEMENTATION / RH_OPEN**. The component
 workflow validates only its explicitly enumerated roots and exact controls.
 Success there does not satisfy the full output release gate.
 
-The actual infinite sinc product, native pole-profile carrier maps, exact native
-divisor law and actual causal floor kernel are being implemented as mathematical
-components. They do not constitute the infinite-convolution density, quantitative
-finite transport, corrected compressed spectral packet, or assembled producer.
+The supporting source components now include the actual infinite sinc product,
+the constructed infinite-convolution density and its transform, native pole-profile
+carrier maps, the exact native divisor law and the actual causal floor kernel.
+Their individual compiler receipts do not establish quantitative finite transport,
+the assembled corrected spectral output, or the complete producer.
 The module and proof obligations are tracked in `BUILD_MANIFEST.json`; proposed
 export names remain proposed until a compiler receipt resolves their exact types.
 

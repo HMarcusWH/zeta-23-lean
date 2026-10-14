@@ -43,6 +43,47 @@ jobs:
         run: |
           set -euo pipefail
           targets=(
+            Zeta23.CCM.NativeCausalLaplaceMoments
+            Zeta23.CCM.NativeCausalExponentialWitness
+            Zeta23.CCM.CompactComplexIntegralFTC
+            Zeta23.CCM.PoleNeutralCompactL2Regularity
+            Zeta23.CCM.OriginalDetectorFinitePhaseDepth
+            Zeta23.CCM.OriginalDetectorFinitePhaseNativeTransport
+            Zeta23.CCM.OriginalDetectorFinitePhaseWeilPadding
+            Zeta23.CCM.OriginalDetectorFinitePhaseNormalization
+            Zeta23.CCM.OriginalDetectorFinitePhaseNormControl
+            Zeta23.CCM.OriginalDetectorFinitePhaseMass
+            Zeta23.CCM.OriginalDetectorFinitePhaseL1Errors
+            Zeta23.CCM.OriginalDetectorOriginalPhaseL1Bounds
+            Zeta23.CCM.OriginalDetectorFinitePhaseApproximation
+            Zeta23.CCM.OriginalDetectorFinitePhaseCarrier
+            Zeta23.CCM.OriginalDetectorFinitePhasePlane
+            Zeta23.CCM.CanonicalPoleNeutralGroundConstraints
+            Zeta23.CCM.OriginalDetectorFinitePoleImageNonzero
+            Zeta23.CCM.CanonicalPoleNeutralTrialResidualBounds
+            Zeta23.CCM.OriginalDetectorFinitePoleImageAsymptotics
+            Zeta23.CCM.OriginalDetectorFinitePhysicalNorm
+            Zeta23.CCM.OriginalDetectorFinitePoleImageTransport
+            Zeta23.CCM.OriginalDetectorFinitePoleImage
+            Zeta23.CCM.OriginalDetectorFiniteWindowHigherFlat
+            Zeta23.CCM.OriginalDetectorFiniteWindowImageAsymptotics
+            Zeta23.CCM.NativeCompletionEquation
+            Zeta23.CCM.NativeAdjointResidual
+            Zeta23.ExceptionalZero.OriginalDetectorPhaseDepth
+            Zeta23.CCM.OriginalDetectorFiniteWindowBoundaryFlat
+            Zeta23.CCM.NativeCompletionIntegerKernel
+            Zeta23.CCM.OriginalDetectorFiniteWindowImageJets
+            Zeta23.CCM.NativeCompletedInput
+            Zeta23.CCM.OriginalDetectorFiniteWindowImage
+            Zeta23.CCM.OriginalDetectorFourierTailAsymptotics
+            Zeta23.CCM.NativeDampedCompletionResidual
+            Zeta23.CCM.OriginalSincSourceSign
+            Zeta23.CCM.OriginalSincDriveLp
+            Zeta23.CCM.OriginalSincDriveDecay
+            Zeta23.CCM.OriginalDetectorFourierTailBounds
+            Zeta23.CCM.OriginalDetectorFourierScalarTailBounds
+            Zeta23.CCM.OriginalDetectorFourierCoefficientBounds
+            Zeta23.CCM.NativeDampedCompletionOperator
             Zeta23.CCM.UniversalSincDetector
             Zeta23.ExceptionalZero.UniversalSincSignedExcursions
             Zeta23.ExceptionalZero.UniversalSincOriginalPhaseDepth

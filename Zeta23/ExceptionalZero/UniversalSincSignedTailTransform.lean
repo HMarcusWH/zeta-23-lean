@@ -34,10 +34,10 @@ theorem integrable_complexLaplaceKernel_iff_real_weight {u : ℝ → ℝ}
     Integrable (fun a : ℝ => (u a : ℂ) * Complex.exp (-z * (a : ℂ))) positiveLaplaceHalfLine ↔
       Integrable (positiveLaplaceWeight u z.re) positiveLaplaceHalfLine := by
   have hCmeas : AEStronglyMeasurable
-      (fun a : ℝ => (u a : ℂ) * Complex.exp (-z * (a : ℂ))) positiveLaplaceHalfLine :=
-    ((Complex.continuous_ofReal.measurable.comp hu).mul
-      (Complex.continuous_exp.comp (continuous_const.mul Complex.continuous_ofReal)).measurable)
-      .aestronglyMeasurable
+      (fun a : ℝ => (u a : ℂ) * Complex.exp (-z * (a : ℂ))) positiveLaplaceHalfLine := by
+    have hm : Measurable (fun a : ℝ => (u a : ℂ) * Complex.exp (-z * (a : ℂ))) := by
+      fun_prop
+    exact hm.aestronglyMeasurable
   have hRmeas : AEStronglyMeasurable (positiveLaplaceWeight u z.re) positiveLaplaceHalfLine :=
     (hu.mul ((measurable_const.mul measurable_id).exp)).aestronglyMeasurable
   apply integrable_congr' hCmeas hRmeas
@@ -135,7 +135,8 @@ theorem positiveLaplaceTransform_fixedOriginalSincSignedTail_safe
     linarith
   have herror : IntegrableOn (fun a : ℝ =>
       Complex.exp (-(z - (θ : ℂ)) * (a : ℂ))) (Ici T) :=
-    integrableOn_Ici_iff_integrableOn_Ioi.mpr (integrableOn_exp_mul_complex_Ioi hdecay T)
+    (integrableOn_Ici_iff_integrableOn_Ioi (by finiteness)).mpr
+      (integrableOn_exp_mul_complex_Ioi hdecay T)
   rw [integral_add (htail.const_mul (ε : ℂ)) (herror.const_mul (M : ℂ)),
     integral_const_mul_tail_C, integral_const_mul_tail_C,
     integral_fixedOriginalSincCorrelation_tail hT hz, integral_error_tail hθ]

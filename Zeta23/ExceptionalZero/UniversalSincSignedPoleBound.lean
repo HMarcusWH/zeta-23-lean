@@ -111,8 +111,8 @@ private theorem fixedOriginalSincTailContinuation_principalPart_limit
   have hEcont : ContinuousAt (fixedOriginalSincTailRegularPart T θ M ε) z1 :=
     (analyticAt_fixedOriginalSincTailRegularPart hT (by rw [hz1re]; exact hθ)).continuousAt
   have hsub : Tendsto (fun z : ℂ => z - z1) (𝓝 z1) (𝓝 0) := by
-    simpa only [sub_self] using
-      (continuousAt_id.sub (continuousAt_const : ContinuousAt (fun _ : ℂ => z1) z1)).tendsto
+    have hc : ContinuousAt (fun z : ℂ => z - z1) z1 := continuousAt_id.sub continuousAt_const
+    simpa only [sub_self] using hc.tendsto
   have hElim : Tendsto (fun z : ℂ => (z - z1) * fixedOriginalSincTailRegularPart T θ M ε z)
       (𝓝[≠] z1) (𝓝 0) := by
     simpa only [zero_mul] using (hsub.mul hEcont.tendsto).mono_left nhdsWithin_le_nhds
@@ -155,14 +155,14 @@ theorem fixedOriginalSincSignedTail_domain_lower_bound
   have hz1re : z1.re = 2 * ((ρ : ℂ).re - 1 / 2) := by
     norm_num [z1, filteredPolePoint, Complex.mul_re]
   have hprop := meromorphic_eventuallyEq_nhdsNE_of_isPreconnected hUmero hHmero hD
-    (by exact hb : (b : ℂ) ∈ D) hseed z1 (by rw [hz1re]; exact hpq)
-  have hHlim := fixedOriginalSincTailContinuation_principalPart_limit hT ρ hθ
+    (by exact hb : (b : ℂ) ∈ D) hseed z1 (by change p < z1.re; rw [hz1re]; exact hpq)
+  have hHlim := fixedOriginalSincTailContinuation_principalPart_limit (M := M) (ε := ε) hT ρ hθ
   have hUcont : ContinuousAt U z1 :=
     (analyticAt_fixedOriginalSincSignedTailLaplace_of_integrable hbound hp
       (by rw [hz1re]; exact hpq)).continuousAt
   have hsub : Tendsto (fun z : ℂ => z - z1) (𝓝 z1) (𝓝 0) := by
-    simpa only [sub_self] using
-      (continuousAt_id.sub (continuousAt_const : ContinuousAt (fun _ : ℂ => z1) z1)).tendsto
+    have hc : ContinuousAt (fun z : ℂ => z - z1) z1 := continuousAt_id.sub continuousAt_const
+    simpa only [sub_self] using hc.tendsto
   have hUlim : Tendsto (fun z : ℂ => (z - z1) * U z) (𝓝[≠] z1) (𝓝 0) := by
     simpa only [zero_mul] using (hsub.mul hUcont.tendsto).mono_left nhdsWithin_le_nhds
   have hprodEq : (fun z : ℂ => (z - z1) * U z) =ᶠ[𝓝[≠] z1]

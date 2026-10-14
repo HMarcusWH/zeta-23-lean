@@ -34,7 +34,7 @@ theorem nativeOriginalLogDriveSummand_hasDerivAt {t x : ℝ} (hx : 0 < x) :
   have hrootne : Real.sqrt x ≠ 0 := (Real.sqrt_pos.mpr hx).ne'
   have harg := (hasDerivAt_const x t).sub hlog
   have hj := (nativeOriginalSource_contDiff.differentiable
-    (ENat.natCast_le_of_coe_top_le_withTop le_rfl 1)
+    (by norm_num)
     (t - Real.log x)).hasDerivAt
   have hsource := hj.comp x harg
   have hraw := (hlog.div hroot hrootne).mul hsource
@@ -43,12 +43,12 @@ theorem nativeOriginalLogDriveSummand_hasDerivAt {t x : ℝ} (hx : 0 < x) :
         nativeOriginalSource (t - Real.log y)) := by
     filter_upwards [isOpen_Ioi.eventually_mem hx] with y hy
     exact if_pos hy
-  have hd := hraw.congr_of_eventuallyEq hagree.symm
-  convert hd using 1
-  exact (logarithmic_drive_derivative_algebra x (Real.sqrt x)
+  have hd := hraw.congr_of_eventuallyEq hagree
+  have hvalue := logarithmic_drive_derivative_algebra x (Real.sqrt x)
     (Real.log x) (nativeOriginalSource (t - Real.log x))
     (deriv nativeOriginalSource (t - Real.log x)) hx.ne' hrootne
-    (Real.sq_sqrt hx.le)).symm
+    (Real.sq_sqrt hx.le)
+  simpa only [] using! hd.congr_deriv hvalue
 
 theorem nativeOriginalLogDriveSummand_deriv {t x : ℝ} (hx : 0 < x) :
     deriv (nativeOriginalLogDriveSummand t) x =

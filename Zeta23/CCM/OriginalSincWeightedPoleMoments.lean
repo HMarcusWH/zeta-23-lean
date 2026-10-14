@@ -56,7 +56,7 @@ theorem nativePoleMoment_deriv {f : ℝ → ℂ} (hf : ContDiff ℝ 1 f)
       fun x => nativePoleExponential r x * deriv f x := by funext x; ring
   rw [hleft, hright, Zeta23.integral_const_mul_C] at key
   change (r : ℂ) * nativePoleMoment r f = -nativePoleMoment r (deriv f) at key
-  simpa only [neg_neg] using (congrArg (fun z : ℂ => -z) key).symm
+  simpa only [neg_neg, neg_mul] using (congrArg (fun z : ℂ => -z) key).symm
 
 theorem nativePoleFirstMoment_deriv {f : ℝ → ℂ} (hf : ContDiff ℝ 1 f)
     (hc : HasCompactSupport f) (r : ℝ) :
@@ -72,7 +72,7 @@ theorem nativePoleFirstMoment_deriv {f : ℝ → ℂ} (hf : ContDiff ℝ 1 f)
         (nativePoleExponential r x + (r : ℂ) * ((x : ℂ) * nativePoleExponential r x)) x := by
     have hid : HasDerivAt (fun y : ℝ => (y : ℂ)) 1 x := by
       simpa only [id_eq, Complex.ofReal_one] using (hasDerivAt_id x).ofReal_comp
-    simpa only [one_mul, mul_assoc, mul_comm, mul_left_comm] using
+    simpa only [one_mul, mul_assoc, mul_comm, mul_left_comm] using!
       hid.mul (hasDerivAt_nativePoleExponential r x)
   have key := integral_mul_deriv_eq_deriv_mul_of_integrable
     (u := f) (u' := deriv f)
@@ -88,7 +88,7 @@ theorem nativePoleFirstMoment_deriv {f : ℝ → ℂ} (hf : ContDiff ℝ 1 f)
       nativePoleExponential r x * f x +
         (r : ℂ) * ((x : ℂ) * nativePoleExponential r x * f x) := by funext x; ring
   have hright : (fun x : ℝ => deriv f x * ((x : ℂ) * nativePoleExponential r x)) =
-      fun x => (x : ℂ) * nativePoleExponential r x * deriv f x := by funext x; ring
+      fun x : ℝ => (x : ℂ) * nativePoleExponential r x * deriv f x := by funext x; ring
   rw [hleft, hright, integral_add (poleMoment_integrable hf.continuous hc r)
     ((poleFirstMoment_integrable hf.continuous hc r).const_mul _),
     Zeta23.integral_const_mul_C] at key
@@ -203,8 +203,9 @@ theorem nativeOriginalSource_weighted_elementary_moments :
     rw [← integral_re (poleFirstMoment_integrable hcont hc r)]
     apply integral_congr_ae
     filter_upwards with x
-    simp [RCLike.re_eq_complex_re, nativeOriginalSource, universalSincSecondSource,
-      nativePoleExponential, Complex.mul_re, Complex.mul_im]
+    simp only [RCLike.re_eq_complex_re, nativeOriginalSource, universalSincSecondSource,
+      nativePoleExponential, Complex.mul_re, Complex.mul_im, Complex.ofReal_re,
+      Complex.ofReal_im, zero_mul, mul_zero, zero_add, add_zero, sub_zero]
   have hmplus : nativePoleMoment (1 / 2)
       (universalSincSecondKernel UniversalSinc.fixedScale) = 0 := hm.1
   have hmminus : nativePoleMoment (-1 / 2)

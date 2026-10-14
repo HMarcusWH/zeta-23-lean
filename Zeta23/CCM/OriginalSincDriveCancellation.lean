@@ -21,7 +21,7 @@ namespace Zeta23.CCM
 private theorem actual_source_compact : HasCompactSupport nativeOriginalSource := by
   apply HasCompactSupport.intro (K := Icc (-UniversalSinc.fixedScale) UniversalSinc.fixedScale)
     isCompact_Icc
-  exact fun x hx => nativeOriginalSource_supported hx
+  exact fun x hx => nativeOriginalSource_supported x hx
 
 private theorem exp_div_sqrt_exp (y : ℝ) :
     Real.exp y / Real.sqrt (Real.exp y) = Real.exp (y / 2) := by

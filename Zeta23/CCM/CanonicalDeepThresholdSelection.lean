@@ -51,8 +51,7 @@ theorem exists_nativeDeepThreshold_bottom_separator {L : ℝ} (hL : 0 < L)
   have hs := hsep i
   rw [hgap] at hs
   dsimp only [x] at hs
-  rw [hi] at hs
-  simpa only [sub_neg_eq_add, add_comm] using hs
+  simpa only [hi, sub_neg_eq_add, add_comm] using hs
 
 /-- A genuine crossing and the constructed gap retain depth at the actual
 bottom; they do not identify the actual eigenvalue with -eta. -/

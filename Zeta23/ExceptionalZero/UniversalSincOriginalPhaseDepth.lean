@@ -42,15 +42,22 @@ def fixedOriginalSincPhaseTrial (σ a : ℝ) : ℝ → ℂ :=
 theorem integrable_fixedOriginalSincKernel_norm_sq :
     Integrable (fun x : ℝ => ‖fixedOriginalSincKernel x‖ ^ 2) := by
   have hc := (contDiff_originalSincTest CCM.UniversalSinc.fixedScale_pos).continuous.norm.pow 2
-  exact hc.integrable_of_hasCompactSupport
-    ((hasCompactSupport_originalSincTest CCM.UniversalSinc.fixedScale_pos).norm.comp_left
-      (g := fun r : ℝ => r ^ 2) (by norm_num))
+  apply hc.integrable_of_hasCompactSupport
+  apply HasCompactSupport.intro (K := Icc (-CCM.UniversalSinc.fixedScale)
+    CCM.UniversalSinc.fixedScale) isCompact_Icc
+  intro x hx
+  have hz : originalSincTest CCM.UniversalSinc.fixedScale x = 0 :=
+    CCM.universalSincKernel_zero_outside CCM.UniversalSinc.fixedScale_pos hx
+  change ‖originalSincTest CCM.UniversalSinc.fixedScale x‖ ^ 2 = 0
+  rw [hz, norm_zero]
+  norm_num
 
 theorem fixedOriginalSincKernel_integral :
     (∫ x : ℝ, fixedOriginalSincKernel x) = (-1 / 4 : ℂ) := by
   have h := paperFT_originalSincTest CCM.UniversalSinc.fixedScale_pos 0
   norm_num [paperFT_def, originalSincMultiplier, CCM.UniversalSinc.product_zero] at h
-  exact h
+  change (∫ x : ℝ, originalSincTest CCM.UniversalSinc.fixedScale x) = _
+  simpa only [neg_div] using h
 
 /-- The genuine L2 mass is positive without a zeta-zero assumption. -/
 theorem fixedOriginalSincKernelL2Mass_pos : 0 < fixedOriginalSincKernelL2Mass := by
@@ -88,14 +95,15 @@ theorem fixedOriginalSincPhaseTrial_reflected_formula (σ a x : ℝ) :
         (fixedOriginalSincKernel (x - fixedOriginalSincLobeCenter) +
           (σ : ℂ) * fixedOriginalSincKernel
             (fixedOriginalSincTrialAperture a - x - fixedOriginalSincLobeCenter)) := by
-  have heven := originalSincTest_even CCM.UniversalSinc.fixedScale_pos
+  have heven : Function.Even fixedOriginalSincKernel :=
+    originalSincTest_even CCM.UniversalSinc.fixedScale_pos
   have harg : fixedOriginalSincTrialAperture a - x - fixedOriginalSincLobeCenter =
       -((x - fixedOriginalSincLobeCenter) - 2 * a) := by
     unfold fixedOriginalSincTrialAperture
     ring
   rw [harg, heven]
   simp only [fixedOriginalSincPhaseTrial, translateRight, twoTranslateCombination,
-    Complex.conj_ofReal, Complex.ofReal_mul]
+    map_mul, Complex.conj_ofReal, Complex.ofReal_mul]
   ring
 
 private theorem fixedOriginalSinc_lobes_disjoint {a : ℝ}
@@ -125,7 +133,7 @@ theorem fixedOriginalSincPhaseTrial_integral_norm_sq {σ a : ℝ}
           (fixedOriginalSincKernel (x - fixedOriginalSincLobeCenter) +
             (σ : ℂ) * fixedOriginalSincKernel ((x - fixedOriginalSincLobeCenter) - 2 * a)) := by
       simp only [fixedOriginalSincPhaseTrial, translateRight, twoTranslateCombination,
-        Complex.conj_ofReal, Complex.ofReal_mul]
+        map_mul, Complex.conj_ofReal, Complex.ofReal_mul]
       ring
     rw [hformula, norm_mul, Complex.norm_real, Real.norm_of_nonneg hr]
     rcases fixedOriginalSinc_lobes_disjoint ha x with h | h
@@ -134,11 +142,19 @@ theorem fixedOriginalSincPhaseTrial_integral_norm_sq {σ a : ℝ}
     · simp only [h, mul_zero, add_zero, norm_zero]
       ring
   have hleft := integrable_fixedOriginalSincKernel_norm_sq.comp_sub_right fixedOriginalSincLobeCenter
-  have hright := (integrable_fixedOriginalSincKernel_norm_sq.comp_sub_right (2 * a))
-    .comp_sub_right fixedOriginalSincLobeCenter
+  have hright := (integrable_fixedOriginalSincKernel_norm_sq.comp_sub_right (2 * a)).comp_sub_right
+    fixedOriginalSincLobeCenter
+  have hIleft : (∫ x : ℝ, ‖fixedOriginalSincKernel (x - fixedOriginalSincLobeCenter)‖ ^ 2) =
+      fixedOriginalSincKernelL2Mass :=
+    integral_sub_right_eq_self (fun x : ℝ => ‖fixedOriginalSincKernel x‖ ^ 2)
+      fixedOriginalSincLobeCenter
+  have hIright : (∫ x : ℝ, ‖fixedOriginalSincKernel
+      (x - fixedOriginalSincLobeCenter - 2 * a)‖ ^ 2) = fixedOriginalSincKernelL2Mass := by
+    rw [integral_sub_right_eq_self
+      (fun x : ℝ => ‖fixedOriginalSincKernel (x - 2 * a)‖ ^ 2) fixedOriginalSincLobeCenter]
+    exact integral_sub_right_eq_self (fun x : ℝ => ‖fixedOriginalSincKernel x‖ ^ 2) (2 * a)
   simp_rw [hpoint]
-  rw [integral_const_mul, integral_add hleft hright,
-    integral_sub_right_eq_self, integral_sub_right_eq_self, integral_sub_right_eq_self]
+  rw [integral_const_mul, integral_add hleft hright, hIleft, hIright]
   change fixedOriginalSincTrialNormalization ^ 2 *
     (fixedOriginalSincKernelL2Mass + fixedOriginalSincKernelL2Mass) = 1
   rw [← two_mul]
@@ -198,15 +214,23 @@ theorem fixedOriginalSincPhaseTrial_Weil_re {σ a : ℝ} (hσ : σ = 1 ∨ σ = 
     rw [fixedOriginalSincCorrelationReal_ofReal]
     change zetaZeroConfig.W fixedOriginalSincKernel fixedOriginalSincKernel =
       zetaZeroConfig.W (translateRight fixedOriginalSincKernel (2 * 0)) fixedOriginalSincKernel
-    simp [translateRight]
+    have ht : translateRight fixedOriginalSincKernel (2 * (0 : ℝ)) = fixedOriginalSincKernel := by
+      funext x
+      simp only [translateRight, mul_zero, sub_zero]
+    rw [ht]
   have hC : weilRelativeCorrelation zetaZeroConfig fixedOriginalSincKernel (2 * a) =
       (fixedOriginalSincCorrelationReal a : ℂ) := (fixedOriginalSincCorrelationReal_ofReal a).symm
+  have hCraw : zetaZeroConfig.W (translateRight fixedOriginalSincKernel (2 * a))
+      fixedOriginalSincKernel = (fixedOriginalSincCorrelationReal a : ℂ) := hC
   unfold fixedOriginalSincPhaseTrial
+  have hk : ContDiff ℝ 2 fixedOriginalSincKernel :=
+    (contDiff_originalSincTest CCM.UniversalSinc.fixedScale_pos).of_le
+      (ENat.natCast_le_of_coe_top_le_withTop le_rfl 2)
+  have hkc : HasCompactSupport fixedOriginalSincKernel :=
+    hasCompactSupport_originalSincTest CCM.UniversalSinc.fixedScale_pos
   rw [W_translateRight_self, zeta_W_twoTranslateCombination_expansion
-    ((contDiff_originalSincTest CCM.UniversalSinc.fixedScale_pos).of_le
-      (ENat.natCast_le_of_coe_top_le_withTop le_rfl 2))
-    (hasCompactSupport_originalSincTest CCM.UniversalSinc.fixedScale_pos),
-    W_f_translateRight_eq_star_relativeCorrelation, W_translateRight_self, h0, hC]
+    hk hkc,
+    W_f_translateRight_eq_star_relativeCorrelation, W_translateRight_self, h0, hC, hCraw]
   simp only [Complex.conj_ofReal]
   change (((fixedOriginalSincTrialNormalization : ℂ) * (fixedOriginalSincTrialNormalization : ℂ) *
       (fixedOriginalSincCorrelationReal 0 : ℂ) +
@@ -254,18 +278,14 @@ theorem exists_fixedOriginalSincPhaseTrial_depth_of_off_line_zero
     intro heq
     rw [heq, sub_self, abs_zero] at hβρ
     linarith
-  let β' : ℝ := (β + |(ρ : ℂ).re - 1 / 2|) / 2
-  have hββ' : β < β' := by dsimp [β']; linarith
-  have hβ'pos : 0 < β' := hβ.trans hββ'
-  have hβ'ρ : β' < |(ρ : ℂ).re - 1 / 2| := by dsimp [β']; linarith
   have hNpos := fixedOriginalSincKernelL2Mass_pos
   let B : ℝ := fixedOriginalSincKernelL2Mass *
     Real.exp (2 * β * fixedOriginalSincLobeCenter) + |fixedOriginalSincCorrelationReal 0| + 1
   let A : ℝ := max (max R 4) CCM.UniversalSinc.fixedScale + 1
   have hexc := fixedOriginalSincCorrelation_two_signed_late_excursions_of_off_line_zero
-    ρ hoff hβ'ρ A B
+    ρ hoff hβρ A B
   have hexists : ∃ a : ℝ, A < a ∧
-      σ * fixedOriginalSincCorrelationReal a < -(B * Real.exp (2 * β' * a)) := by
+      σ * fixedOriginalSincCorrelationReal a < -(B * Real.exp (2 * β * a)) := by
     rcases hσ with h | h
     · simpa only [h, one_mul] using hexc.2
     · obtain ⟨a, ha, hv⟩ := hexc.1
@@ -286,22 +306,14 @@ theorem exists_fixedOriginalSincPhaseTrial_depth_of_off_line_zero
     fixedOriginalSincPhaseTrial_integral_norm_sq hσ hasep, ?_⟩
   rw [← fixedOriginalSincPhaseTrial_Weil_eq_native, fixedOriginalSincPhaseTrial_Weil_re hσ]
   apply (div_le_iff₀ fixedOriginalSincKernelL2Mass_pos).mpr
-  have hE1 : 1 ≤ Real.exp (2 * β' * a) := by
+  have hE1 : 1 ≤ Real.exp (2 * β * a) := by
     apply Real.one_le_exp_iff.mpr
     positivity
-  have hEcompare : Real.exp (2 * β * a) ≤ Real.exp (2 * β' * a) := by
-    apply Real.exp_le_exp.mpr
-    nlinarith
   have hB : 0 < B := by dsimp [B]; positivity
   have hCabs := le_abs_self (fixedOriginalSincCorrelationReal 0)
   have hAbsE : |fixedOriginalSincCorrelationReal 0| ≤
-      |fixedOriginalSincCorrelationReal 0| * Real.exp (2 * β' * a) :=
+      |fixedOriginalSincCorrelationReal 0| * Real.exp (2 * β * a) :=
     le_mul_of_one_le_right (abs_nonneg _) hE1
-  have hmain : fixedOriginalSincKernelL2Mass * Real.exp (2 * β * fixedOriginalSincLobeCenter) *
-      Real.exp (2 * β * a) ≤
-      fixedOriginalSincKernelL2Mass * Real.exp (2 * β * fixedOriginalSincLobeCenter) *
-        Real.exp (2 * β' * a) :=
-    mul_le_mul_of_nonneg_left hEcompare (by positivity)
   have hExp : Real.exp (β * fixedOriginalSincTrialAperture a) =
       Real.exp (2 * β * fixedOriginalSincLobeCenter) * Real.exp (2 * β * a) := by
     rw [← Real.exp_add]
@@ -310,7 +322,7 @@ theorem exists_fixedOriginalSincPhaseTrial_depth_of_off_line_zero
     ring
   rw [hExp]
   dsimp [B] at hv
-  nlinarith [Real.exp_pos (2 * β' * a)]
+  nlinarith [Real.exp_pos (2 * β * a)]
 
 end Zeta23.ExceptionalZero
 

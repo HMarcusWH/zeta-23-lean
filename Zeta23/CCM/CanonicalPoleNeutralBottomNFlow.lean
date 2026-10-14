@@ -9,6 +9,7 @@ open scoped BigOperators ComplexConjugate
 
 set_option allowUnsafeReducibility true in
 attribute [local reducible] Submodule.innerProductSpace
+  Submodule.seminormedAddCommGroup Submodule.normedAddCommGroup
   poleNeutralEven_innerProductSpace poleNeutralOdd_innerProductSpace
   euclideanParityBoundaryFlatSubspace
 
@@ -40,7 +41,7 @@ theorem poleNeutralEvenRayleighBottom_antitone_of_le {L : ℝ} (hL : 0 < L)
   have hb := poleNeutralEvenRayleighBottom_mul_norm_sq_le hL M (le_trans hN hNM) w
   rw [hnorm, hform, hold] at hb
   have hn : 0 < ‖u‖ ^ 2 := by positivity
-  exact (mul_le_mul_right hn).mp hb
+  exact (mul_le_mul_iff_left₀ hn).mp hb
 
 theorem poleNeutralOddRayleighBottom_antitone_of_le {L : ℝ} (hL : 0 < L)
     {N M : ℕ} (hN : 3 ≤ N) (hNM : N ≤ M) :
@@ -60,7 +61,7 @@ theorem poleNeutralOddRayleighBottom_antitone_of_le {L : ℝ} (hL : 0 < L)
   have hb := poleNeutralOddRayleighBottom_mul_norm_sq_le hL M (le_trans hN hNM) w
   rw [hnorm, hform, hold] at hb
   have hn : 0 < ‖u‖ ^ 2 := by positivity
-  exact (mul_le_mul_right hn).mp hb
+  exact (mul_le_mul_iff_left₀ hn).mp hb
 
 def poleNeutralGlobalRayleighBottom (L : ℝ) (K : ℕ) (hL : 0 < L) (hK : 3 ≤ K) : ℝ :=
   min (poleNeutralEvenRayleighBottom L K hL hK) (poleNeutralOddRayleighBottom L K hL hK)
@@ -79,7 +80,11 @@ theorem inner_poleNeutralEvenCompressedCanonical_centeredZeroExtend_pair
       (poleNeutralEvenCenteredZeroExtend L hNM v) = inner ℂ (poleNeutralEvenCompressedCanonical L N u) v := by
   rw [(poleNeutralEvenCompressedCanonical_isSymmetric L M).inner_map_polarization,
     (poleNeutralEvenCompressedCanonical_isSymmetric L N).inner_map_polarization]
-  simp only [← map_add, ← map_sub, ← map_smul,
+  have hsub (x y : poleNeutralEvenSubspace L N) :
+      poleNeutralEvenCenteredZeroExtend L hNM x - poleNeutralEvenCenteredZeroExtend L hNM y =
+        poleNeutralEvenCenteredZeroExtend L hNM (x - y) :=
+    ((poleNeutralEvenCenteredZeroExtend L hNM).map_sub x y).symm
+  simp only [← map_add, hsub, ← map_smul,
     inner_poleNeutralEvenCompressedCanonical_centeredZeroExtend hL hNM]
 
 /-- The actual odd sesquilinear form has the same predecessor consistency. -/
@@ -89,14 +94,19 @@ theorem inner_poleNeutralOddCompressedCanonical_centeredZeroExtend_pair
       (poleNeutralOddCenteredZeroExtend L hNM v) = inner ℂ (poleNeutralOddCompressedCanonical L N u) v := by
   rw [(poleNeutralOddCompressedCanonical_isSymmetric L M).inner_map_polarization,
     (poleNeutralOddCompressedCanonical_isSymmetric L N).inner_map_polarization]
-  simp only [← map_add, ← map_sub, ← map_smul,
+  have hsub (x y : poleNeutralOddSubspace L N) :
+      poleNeutralOddCenteredZeroExtend L hNM x - poleNeutralOddCenteredZeroExtend L hNM y =
+        poleNeutralOddCenteredZeroExtend L hNM (x - y) :=
+    ((poleNeutralOddCenteredZeroExtend L hNM).map_sub x y).symm
+  simp only [← map_add, hsub, ← map_smul,
     inner_poleNeutralOddCompressedCanonical_centeredZeroExtend hL hNM]
 
 /-- The actual predecessor block is constructed from the actual larger
 operator and the actual native isometry; it is not a nested-form premise. -/
 theorem poleNeutralEven_predecessor_compression_eq {L : ℝ} (hL : 0 < L)
     {N M : ℕ} (hNM : N ≤ M) :
-    (poleNeutralEvenCenteredZeroExtend L hNM).toLinearMap.adjoint.comp
+    (LinearMap.adjoint (𝕜 := ℂ) (E := poleNeutralEvenSubspace L N)
+      (F := poleNeutralEvenSubspace L M) (poleNeutralEvenCenteredZeroExtend L hNM).toLinearMap).comp
       ((poleNeutralEvenCompressedCanonical L M).comp (poleNeutralEvenCenteredZeroExtend L hNM).toLinearMap) =
         poleNeutralEvenCompressedCanonical L N := by
   apply LinearMap.ext
@@ -109,7 +119,8 @@ theorem poleNeutralEven_predecessor_compression_eq {L : ℝ} (hL : 0 < L)
 
 theorem poleNeutralOdd_predecessor_compression_eq {L : ℝ} (hL : 0 < L)
     {N M : ℕ} (hNM : N ≤ M) :
-    (poleNeutralOddCenteredZeroExtend L hNM).toLinearMap.adjoint.comp
+    (LinearMap.adjoint (𝕜 := ℂ) (E := poleNeutralOddSubspace L N)
+      (F := poleNeutralOddSubspace L M) (poleNeutralOddCenteredZeroExtend L hNM).toLinearMap).comp
       ((poleNeutralOddCompressedCanonical L M).comp (poleNeutralOddCenteredZeroExtend L hNM).toLinearMap) =
         poleNeutralOddCompressedCanonical L N := by
   apply LinearMap.ext
@@ -122,12 +133,14 @@ theorem poleNeutralOdd_predecessor_compression_eq {L : ℝ} (hL : 0 < L)
 
 theorem finrank_poleNeutralEven_successor_shell_eq_one {L : ℝ} (hL : 0 < L)
     (N : ℕ) (hN : 2 ≤ N) :
-    Module.finrank ℂ ((LinearMap.range
-      (poleNeutralEvenCenteredZeroExtend L (Nat.le_succ N)).toLinearMap)ᗮ) = 1 := by
+    Module.finrank ℂ (@Submodule.orthogonal ℂ (poleNeutralEvenSubspace L (N + 1))
+      inferInstance inferInstance (poleNeutralEven_innerProductSpace L (N + 1))
+      (LinearMap.range (poleNeutralEvenCenteredZeroExtend L (Nat.le_succ N)).toLinearMap)) = 1 := by
   have hr := LinearMap.finrank_range_of_inj
     (f := (poleNeutralEvenCenteredZeroExtend L (Nat.le_succ N)).toLinearMap)
     (poleNeutralEvenCenteredZeroExtend L (Nat.le_succ N)).injective
-  have hs := Submodule.finrank_add_finrank_orthogonal
+  have hs := @Submodule.finrank_add_finrank_orthogonal ℂ (poleNeutralEvenSubspace L (N + 1))
+    inferInstance inferInstance (poleNeutralEven_innerProductSpace L (N + 1)) inferInstance
     (LinearMap.range (poleNeutralEvenCenteredZeroExtend L (Nat.le_succ N)).toLinearMap)
   rw [hr, finrank_poleNeutralEvenSubspace hL N hN,
     finrank_poleNeutralEvenSubspace hL (N + 1) (by omega)] at hs
@@ -135,12 +148,14 @@ theorem finrank_poleNeutralEven_successor_shell_eq_one {L : ℝ} (hL : 0 < L)
 
 theorem finrank_poleNeutralOdd_successor_shell_eq_one {L : ℝ} (hL : 0 < L)
     (N : ℕ) (hN : 2 ≤ N) :
-    Module.finrank ℂ ((LinearMap.range
-      (poleNeutralOddCenteredZeroExtend L (Nat.le_succ N)).toLinearMap)ᗮ) = 1 := by
+    Module.finrank ℂ (@Submodule.orthogonal ℂ (poleNeutralOddSubspace L (N + 1))
+      inferInstance inferInstance (poleNeutralOdd_innerProductSpace L (N + 1))
+      (LinearMap.range (poleNeutralOddCenteredZeroExtend L (Nat.le_succ N)).toLinearMap)) = 1 := by
   have hr := LinearMap.finrank_range_of_inj
     (f := (poleNeutralOddCenteredZeroExtend L (Nat.le_succ N)).toLinearMap)
     (poleNeutralOddCenteredZeroExtend L (Nat.le_succ N)).injective
-  have hs := Submodule.finrank_add_finrank_orthogonal
+  have hs := @Submodule.finrank_add_finrank_orthogonal ℂ (poleNeutralOddSubspace L (N + 1))
+    inferInstance inferInstance (poleNeutralOdd_innerProductSpace L (N + 1)) inferInstance
     (LinearMap.range (poleNeutralOddCenteredZeroExtend L (Nat.le_succ N)).toLinearMap)
   rw [hr, finrank_poleNeutralOddSubspace hL N hN,
     finrank_poleNeutralOddSubspace hL (N + 1) (by omega)] at hs

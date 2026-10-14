@@ -8,6 +8,7 @@ open scoped BigOperators ComplexConjugate
 
 set_option allowUnsafeReducibility true in
 attribute [local reducible] Submodule.innerProductSpace
+  Submodule.seminormedAddCommGroup Submodule.normedAddCommGroup
   poleNeutralEven_innerProductSpace poleNeutralOdd_innerProductSpace
   euclideanParityBoundaryFlatSubspace
 
@@ -22,9 +23,11 @@ resolvent or complementary inverse is used without a range theorem.
 
 def poleNeutralOddShiftedKernelProjection (L : ℝ) (K : ℕ) (lam : ℝ) :
     poleNeutralOddSubspace L K →L[ℂ]
-      LinearMap.ker (poleNeutralOddShiftedCanonical L K lam) :=
+      (LinearMap.ker (poleNeutralOddShiftedCanonical L K lam) :
+        Submodule ℂ (poleNeutralOddSubspace L K)) :=
   Submodule.orthogonalProjectionOnto (𝕜 := ℂ) (E := poleNeutralOddSubspace L K)
-    (LinearMap.ker (poleNeutralOddShiftedCanonical L K lam))
+    (LinearMap.ker (poleNeutralOddShiftedCanonical L K lam) :
+      Submodule ℂ (poleNeutralOddSubspace L K))
 
 theorem poleNeutralOddShiftedCanonical_isSymmetric (L : ℝ) (K : ℕ) (lam : ℝ) :
     LinearMap.IsSymmetric (𝕜 := ℂ) (E := poleNeutralOddSubspace L K)
@@ -36,17 +39,21 @@ theorem poleNeutralOddShiftedCanonical_isSymmetric (L : ℝ) (K : ℕ) (lam : �
 theorem poleNeutralOddShifted_output_mem_kernel_orthogonal (L : ℝ) (K : ℕ) (lam : ℝ)
     (w : poleNeutralOddSubspace L K) :
     poleNeutralOddShiftedCanonical L K lam w ∈
-      (LinearMap.ker (poleNeutralOddShiftedCanonical L K lam))ᗮ := by
+      Submodule.orthogonal (𝕜 := ℂ) (E := poleNeutralOddSubspace L K)
+        (LinearMap.ker (poleNeutralOddShiftedCanonical L K lam)) := by
   intro v hv
   have hz := LinearMap.mem_ker.mp hv
-  rw [← poleNeutralOddShiftedCanonical_isSymmetric L K lam v w, hz, inner_zero_left]
+  rw [← poleNeutralOddShiftedCanonical_isSymmetric L K lam v w, hz]
+  change inner ℂ (0 : EuclideanSpace ℂ (Fin (2 * K + 1))) w.val.val = 0
+  exact inner_zero_left _
 
 theorem poleNeutralOddShiftedKernelProjection_apply_output_eq_zero (L : ℝ)
     (K : ℕ) (lam : ℝ) (w : poleNeutralOddSubspace L K) :
     poleNeutralOddShiftedKernelProjection L K lam (poleNeutralOddShiftedCanonical L K lam w) = 0 := by
   apply (Submodule.orthogonalProjectionOnto_eq_zero_iff
     (𝕜 := ℂ) (E := poleNeutralOddSubspace L K)
-    (K := LinearMap.ker (poleNeutralOddShiftedCanonical L K lam))).mpr
+    (K := (LinearMap.ker (poleNeutralOddShiftedCanonical L K lam) :
+      Submodule ℂ (poleNeutralOddSubspace L K)))).mpr
   exact poleNeutralOddShifted_output_mem_kernel_orthogonal L K lam w
 
 /-- An actual even eigenmode supplies the range witness before any inverse. -/
@@ -97,12 +104,14 @@ theorem poleNeutralEvenEigen_index_eq_kernel_add_complement {L : ℝ} (hL : 0 < 
 theorem poleNeutralEvenEigen_indexComplement_mem_kernel_orthogonal {L : ℝ} (hL : 0 < L)
     (K : ℕ) (lam : ℝ) (u : poleNeutralEvenSubspace L K) :
     poleNeutralEvenEigen_indexComplementComponent hL K lam u ∈
-      (LinearMap.ker (poleNeutralOddShiftedCanonical L K lam))ᗮ := by
+      Submodule.orthogonal (𝕜 := ℂ) (E := poleNeutralOddSubspace L K)
+        (LinearMap.ker (poleNeutralOddShiftedCanonical L K lam)) := by
   rw [poleNeutralEvenEigen_indexComplementComponent, poleNeutralEvenEigen_indexKernelComponent,
     poleNeutralOddShiftedKernelProjection, Submodule.coe_orthogonalProjectionOnto_apply]
   exact Submodule.sub_starProjection_mem_orthogonal
     (𝕜 := ℂ) (E := poleNeutralOddSubspace L K)
-    (K := LinearMap.ker (poleNeutralOddShiftedCanonical L K lam)) (poleNeutralIndexLinearMap hL K u)
+    (K := (LinearMap.ker (poleNeutralOddShiftedCanonical L K lam) :
+      Submodule ℂ (poleNeutralOddSubspace L K))) (poleNeutralIndexLinearMap hL K u)
 
 /-- The actual complement solves the same source equation; the retained
 kernel component is annihilated by the actual shifted operator. -/
