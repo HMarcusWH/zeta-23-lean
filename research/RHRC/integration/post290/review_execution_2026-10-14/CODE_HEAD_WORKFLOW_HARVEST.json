@@ -1,0 +1,884 @@
+{
+  "schema": "post292.code-head-workflow-bounded-harvest.v1",
+  "code_head": "87943eea04000022930598382b1659b70daee35a",
+  "code_tree": "d26618de9c2babc1c53462183a1ce343246fcd52",
+  "capture_completed_utc": "2026-10-14 17:42:23 UTC",
+  "scope": "Read-only non-atomic bounded capture of all20 code-head runs and49 materialized jobs. Future jobs and later documentation-head CI remain pending. Every completed successful materialized job log was read; two output-only research artifacts were SHA/CRC checked.",
+  "classification_provenance": "Prior complete workflow harvest classifications; underlying job programs preserved. Completed research dispositions were read from new logs or artifact payloads.",
+  "full_release_pass": false,
+  "RH": "OPEN",
+  "runs": [
+    {
+      "run_id": 38608102617,
+      "name": "RHRC parallel closure campaign",
+      "path": ".github/workflows/rhrc_closure_campaign.yml",
+      "head": "87943eea04000022930598382b1659b70daee35a",
+      "event": "pull_request",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38608102617",
+      "status": "queued",
+      "conclusion": null,
+      "total_materialized_jobs": 8,
+      "jobs": [
+        {
+          "id": 116004105580,
+          "name": "lean-b",
+          "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38608102617/job/116004105580",
+          "status": "in_progress",
+          "conclusion": null,
+          "classification": "FORMAL_VALIDITY_GATE",
+          "disposition": "PENDING_NO_RESULT",
+          "log_reviewed": false,
+          "log_characters": 0,
+          "evidence": []
+        },
+        {
+          "id": 116004106043,
+          "name": "lean-a",
+          "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38608102617/job/116004106043",
+          "status": "queued",
+          "conclusion": null,
+          "classification": "FORMAL_VALIDITY_GATE",
+          "disposition": "PENDING_NO_RESULT",
+          "log_reviewed": false,
+          "log_characters": 0,
+          "evidence": []
+        },
+        {
+          "id": 116004106057,
+          "name": "fast-integrity",
+          "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38608102617/job/116004106057",
+          "status": "queued",
+          "conclusion": null,
+          "classification": "REGRESSION_GATE",
+          "disposition": "PENDING_NO_RESULT",
+          "log_reviewed": false,
+          "log_characters": 0,
+          "evidence": []
+        },
+        {
+          "id": 116004106107,
+          "name": "lean-first-crossing",
+          "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38608102617/job/116004106107",
+          "status": "queued",
+          "conclusion": null,
+          "classification": "FORMAL_VALIDITY_GATE",
+          "disposition": "PENDING_NO_RESULT",
+          "log_reviewed": false,
+          "log_characters": 0,
+          "evidence": []
+        },
+        {
+          "id": 116004106129,
+          "name": "lean-c",
+          "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38608102617/job/116004106129",
+          "status": "queued",
+          "conclusion": null,
+          "classification": "FORMAL_VALIDITY_GATE",
+          "disposition": "PENDING_NO_RESULT",
+          "log_reviewed": false,
+          "log_characters": 0,
+          "evidence": []
+        },
+        {
+          "id": 116004106156,
+          "name": "lean-contact",
+          "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38608102617/job/116004106156",
+          "status": "in_progress",
+          "conclusion": null,
+          "classification": "FORMAL_VALIDITY_GATE",
+          "disposition": "PENDING_NO_RESULT",
+          "log_reviewed": false,
+          "log_characters": 0,
+          "evidence": []
+        },
+        {
+          "id": 116004106186,
+          "name": "lean-d-bindings",
+          "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38608102617/job/116004106186",
+          "status": "queued",
+          "conclusion": null,
+          "classification": "FORMAL_VALIDITY_GATE",
+          "disposition": "PENDING_NO_RESULT",
+          "log_reviewed": false,
+          "log_characters": 0,
+          "evidence": []
+        },
+        {
+          "id": 116004106288,
+          "name": "lean-strength-audit",
+          "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38608102617/job/116004106288",
+          "status": "queued",
+          "conclusion": null,
+          "classification": "FORMAL_VALIDITY_GATE",
+          "disposition": "PENDING_NO_RESULT",
+          "log_reviewed": false,
+          "log_characters": 0,
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "run_id": 38608102751,
+      "name": "RHRC post-284 source inertia campaign",
+      "path": ".github/workflows/rhrc_post284_source_inertia.yml",
+      "head": "87943eea04000022930598382b1659b70daee35a",
+      "event": "pull_request",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38608102751",
+      "status": "queued",
+      "conclusion": null,
+      "total_materialized_jobs": 3,
+      "jobs": [
+        {
+          "id": 116004566694,
+          "name": "source-falsifier-research",
+          "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38608102751/job/116004566694",
+          "status": "in_progress",
+          "conclusion": null,
+          "classification": "RESEARCH_PRODUCING_CHECK",
+          "disposition": "PENDING_NO_RESULT",
+          "log_reviewed": false,
+          "log_characters": 0,
+          "evidence": []
+        },
+        {
+          "id": 116004567132,
+          "name": "lean-source-inertia",
+          "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38608102751/job/116004567132",
+          "status": "queued",
+          "conclusion": null,
+          "classification": "FORMAL_VALIDITY_GATE",
+          "disposition": "PENDING_NO_RESULT",
+          "log_reviewed": false,
+          "log_characters": 0,
+          "evidence": []
+        },
+        {
+          "id": 116004569719,
+          "name": "post287-full-k3",
+          "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38608102751/job/116004569719",
+          "status": "completed",
+          "conclusion": "skipped",
+          "classification": "RESEARCH_PRODUCING_CHECK",
+          "disposition": "SKIPPED_NO_RESULT",
+          "log_reviewed": false,
+          "log_characters": 0,
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "run_id": 38608102699,
+      "name": "Permansson v0.1.6 formal verification",
+      "path": ".github/workflows/permansson-formal.yml",
+      "head": "87943eea04000022930598382b1659b70daee35a",
+      "event": "pull_request",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38608102699",
+      "status": "in_progress",
+      "conclusion": null,
+      "total_materialized_jobs": 1,
+      "jobs": [
+        {
+          "id": 116004100051,
+          "name": "lean-permansson",
+          "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38608102699/job/116004100051",
+          "status": "in_progress",
+          "conclusion": null,
+          "classification": "FORMAL_VALIDITY_GATE",
+          "disposition": "PENDING_NO_RESULT",
+          "log_reviewed": false,
+          "log_characters": 0,
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "run_id": 38608102757,
+      "name": "RHRC post-198 Q14 parity source mechanism",
+      "path": ".github/workflows/rhrc_post198_q14_parity_source_mechanism.yml",
+      "head": "87943eea04000022930598382b1659b70daee35a",
+      "event": "pull_request",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38608102757",
+      "status": "queued",
+      "conclusion": null,
+      "total_materialized_jobs": 1,
+      "jobs": [
+        {
+          "id": 116004858094,
+          "name": "post198-q14-source-mechanism",
+          "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38608102757/job/116004858094",
+          "status": "queued",
+          "conclusion": null,
+          "classification": "RESEARCH_PRODUCING_CHECK",
+          "disposition": "PENDING_NO_RESULT",
+          "log_reviewed": false,
+          "log_characters": 0,
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "run_id": 38608102594,
+      "name": "RHRC post-282 contact calculus",
+      "path": ".github/workflows/rhrc_post282_contact_calculus.yml",
+      "head": "87943eea04000022930598382b1659b70daee35a",
+      "event": "pull_request",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38608102594",
+      "status": "queued",
+      "conclusion": null,
+      "total_materialized_jobs": 3,
+      "jobs": [
+        {
+          "id": 116004865224,
+          "name": "lean-compressed-calculus",
+          "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38608102594/job/116004865224",
+          "status": "queued",
+          "conclusion": null,
+          "classification": "FORMAL_VALIDITY_GATE",
+          "disposition": "PENDING_NO_RESULT",
+          "log_reviewed": false,
+          "log_characters": 0,
+          "evidence": []
+        },
+        {
+          "id": 116004865480,
+          "name": "lean-contact-completion",
+          "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38608102594/job/116004865480",
+          "status": "queued",
+          "conclusion": null,
+          "classification": "FORMAL_VALIDITY_GATE",
+          "disposition": "PENDING_NO_RESULT",
+          "log_reviewed": false,
+          "log_characters": 0,
+          "evidence": []
+        },
+        {
+          "id": 116004865793,
+          "name": "research-calibration",
+          "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38608102594/job/116004865793",
+          "status": "queued",
+          "conclusion": null,
+          "classification": "RESEARCH_PRODUCING_CHECK",
+          "disposition": "PENDING_NO_RESULT",
+          "log_reviewed": false,
+          "log_characters": 0,
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "run_id": 38608102636,
+      "name": "RHRC post287 bounded signed-ray probe",
+      "path": ".github/workflows/rhrc_post287_wp6.yml",
+      "head": "87943eea04000022930598382b1659b70daee35a",
+      "event": "pull_request",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38608102636",
+      "status": "completed",
+      "conclusion": "success",
+      "total_materialized_jobs": 1,
+      "jobs": [
+        {
+          "id": 116004099081,
+          "name": "wp6-source-specific-signed-ray",
+          "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38608102636/job/116004099081",
+          "status": "completed",
+          "conclusion": "success",
+          "classification": "RESEARCH_PRODUCING_CHECK",
+          "disposition": "EXPERIMENTAL_SIGNAL: FALSIFIED_AT_BOUNDED_TRUE_SOURCE_APERTURES; shifted K2 ray has opposite physical signs at two tested apertures. No RH or universal cancellation claim.",
+          "log_reviewed": true,
+          "log_characters": 19689,
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "run_id": 38608102596,
+      "name": "RHRC post-194 parity trajectory sharp enclosure",
+      "path": ".github/workflows/rhrc_post194_parity_trajectory_sharp_enclosure.yml",
+      "head": "87943eea04000022930598382b1659b70daee35a",
+      "event": "pull_request",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38608102596",
+      "status": "queued",
+      "conclusion": null,
+      "total_materialized_jobs": 1,
+      "jobs": [
+        {
+          "id": 116004811104,
+          "name": "post194-parity-trajectory-sharp-enclosure",
+          "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38608102596/job/116004811104",
+          "status": "queued",
+          "conclusion": null,
+          "classification": "RESEARCH_PRODUCING_CHECK",
+          "disposition": "PENDING_NO_RESULT",
+          "log_reviewed": false,
+          "log_characters": 0,
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "run_id": 38608102725,
+      "name": "RHRC post-192 parity trajectory rigidity",
+      "path": ".github/workflows/rhrc_post192_parity_trajectory_rigidity.yml",
+      "head": "87943eea04000022930598382b1659b70daee35a",
+      "event": "pull_request",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38608102725",
+      "status": "in_progress",
+      "conclusion": null,
+      "total_materialized_jobs": 1,
+      "jobs": [
+        {
+          "id": 116004102568,
+          "name": "post192-parity-trajectory-rigidity",
+          "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38608102725/job/116004102568",
+          "status": "in_progress",
+          "conclusion": null,
+          "classification": "RESEARCH_PRODUCING_CHECK",
+          "disposition": "PENDING_NO_RESULT",
+          "log_reviewed": false,
+          "log_characters": 0,
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "run_id": 38608102629,
+      "name": "RHRC post287 focused Step3 checks",
+      "path": ".github/workflows/rhrc_post287_focused.yml",
+      "head": "87943eea04000022930598382b1659b70daee35a",
+      "event": "pull_request",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38608102629",
+      "status": "in_progress",
+      "conclusion": null,
+      "total_materialized_jobs": 2,
+      "jobs": [
+        {
+          "id": 116004099070,
+          "name": "lean-step3",
+          "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38608102629/job/116004099070",
+          "status": "in_progress",
+          "conclusion": null,
+          "classification": "FORMAL_VALIDITY_GATE",
+          "disposition": "PENDING_NO_RESULT",
+          "log_reviewed": false,
+          "log_characters": 0,
+          "evidence": []
+        },
+        {
+          "id": 116004099555,
+          "name": "wp5-modified-prime",
+          "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38608102629/job/116004099555",
+          "status": "completed",
+          "conclusion": "success",
+          "classification": "RESEARCH_PRODUCING_CHECK",
+          "disposition": "INTERVAL_EVIDENCE: synthetic q3-cell even sign crossing; actual-zeta even values positive at both samples. Synthetic model is not the native source.",
+          "log_reviewed": true,
+          "log_characters": 21571,
+          "evidence": [
+            "2026-10-14T17:38:53.0009672Z {\"checks\": {\"left_model_even_positive\": true, \"model_odd_positive_at_both_sample_endpoints\": true, \"right_model_even_negative\": true, \"same_exact_q3_cell\": true, \"true_zeta_even_positive_at_both_sample_endpoints\": true}, \"status\": \"INTERVAL_EVIDENCE\"}"
+          ]
+        }
+      ]
+    },
+    {
+      "run_id": 38608102728,
+      "name": "RHRC post268 complete audit replay",
+      "path": ".github/workflows/rhrc_post268_audit.yml",
+      "head": "87943eea04000022930598382b1659b70daee35a",
+      "event": "pull_request",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38608102728",
+      "status": "queued",
+      "conclusion": null,
+      "total_materialized_jobs": 9,
+      "jobs": [
+        {
+          "id": 116004946048,
+          "name": "Audit runner adversarial regressions",
+          "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38608102728/job/116004946048",
+          "status": "queued",
+          "conclusion": null,
+          "classification": "REGRESSION_GATE",
+          "disposition": "PENDING_NO_RESULT",
+          "log_reviewed": false,
+          "log_characters": 0,
+          "evidence": []
+        },
+        {
+          "id": 116004946480,
+          "name": "Extended audit shard 3",
+          "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38608102728/job/116004946480",
+          "status": "queued",
+          "conclusion": null,
+          "classification": "RESEARCH_PRODUCING_CHECK",
+          "disposition": "PENDING_NO_RESULT",
+          "log_reviewed": false,
+          "log_characters": 0,
+          "evidence": []
+        },
+        {
+          "id": 116004946494,
+          "name": "Extended audit shard 0",
+          "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38608102728/job/116004946494",
+          "status": "queued",
+          "conclusion": null,
+          "classification": "RESEARCH_PRODUCING_CHECK",
+          "disposition": "PENDING_NO_RESULT",
+          "log_reviewed": false,
+          "log_characters": 0,
+          "evidence": []
+        },
+        {
+          "id": 116004946514,
+          "name": "Extended audit shard 5",
+          "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38608102728/job/116004946514",
+          "status": "queued",
+          "conclusion": null,
+          "classification": "RESEARCH_PRODUCING_CHECK",
+          "disposition": "PENDING_NO_RESULT",
+          "log_reviewed": false,
+          "log_characters": 0,
+          "evidence": []
+        },
+        {
+          "id": 116004946521,
+          "name": "Extended audit shard 6",
+          "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38608102728/job/116004946521",
+          "status": "queued",
+          "conclusion": null,
+          "classification": "RESEARCH_PRODUCING_CHECK",
+          "disposition": "PENDING_NO_RESULT",
+          "log_reviewed": false,
+          "log_characters": 0,
+          "evidence": []
+        },
+        {
+          "id": 116004946702,
+          "name": "Extended audit shard 7",
+          "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38608102728/job/116004946702",
+          "status": "queued",
+          "conclusion": null,
+          "classification": "RESEARCH_PRODUCING_CHECK",
+          "disposition": "PENDING_NO_RESULT",
+          "log_reviewed": false,
+          "log_characters": 0,
+          "evidence": []
+        },
+        {
+          "id": 116004946770,
+          "name": "Extended audit shard 2",
+          "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38608102728/job/116004946770",
+          "status": "queued",
+          "conclusion": null,
+          "classification": "RESEARCH_PRODUCING_CHECK",
+          "disposition": "PENDING_NO_RESULT",
+          "log_reviewed": false,
+          "log_characters": 0,
+          "evidence": []
+        },
+        {
+          "id": 116004947015,
+          "name": "Extended audit shard 1",
+          "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38608102728/job/116004947015",
+          "status": "queued",
+          "conclusion": null,
+          "classification": "RESEARCH_PRODUCING_CHECK",
+          "disposition": "PENDING_NO_RESULT",
+          "log_reviewed": false,
+          "log_characters": 0,
+          "evidence": []
+        },
+        {
+          "id": 116004947061,
+          "name": "Extended audit shard 4",
+          "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38608102728/job/116004947061",
+          "status": "queued",
+          "conclusion": null,
+          "classification": "RESEARCH_PRODUCING_CHECK",
+          "disposition": "PENDING_NO_RESULT",
+          "log_reviewed": false,
+          "log_characters": 0,
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "run_id": 38608102575,
+      "name": "RHRC research and Lean checks",
+      "path": ".github/workflows/rhrc.yml",
+      "head": "87943eea04000022930598382b1659b70daee35a",
+      "event": "pull_request",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38608102575",
+      "status": "pending",
+      "conclusion": null,
+      "total_materialized_jobs": 4,
+      "jobs": [
+        {
+          "id": 116004852014,
+          "name": "r003-normalization-audit",
+          "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38608102575/job/116004852014",
+          "status": "queued",
+          "conclusion": null,
+          "classification": "RESEARCH_PRODUCING_CHECK",
+          "disposition": "PENDING_NO_RESULT",
+          "log_reviewed": false,
+          "log_characters": 0,
+          "evidence": []
+        },
+        {
+          "id": 116004852264,
+          "name": "rhkg-compiler-receipt",
+          "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38608102575/job/116004852264",
+          "status": "queued",
+          "conclusion": null,
+          "classification": "REGRESSION_GATE",
+          "disposition": "PENDING_NO_RESULT",
+          "log_reviewed": false,
+          "log_characters": 0,
+          "evidence": []
+        },
+        {
+          "id": 116004852299,
+          "name": "python-rhrc",
+          "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38608102575/job/116004852299",
+          "status": "queued",
+          "conclusion": null,
+          "classification": "REGRESSION_GATE",
+          "disposition": "PENDING_NO_RESULT",
+          "log_reviewed": false,
+          "log_characters": 0,
+          "evidence": []
+        },
+        {
+          "id": 116004852423,
+          "name": "lean",
+          "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38608102575/job/116004852423",
+          "status": "queued",
+          "conclusion": null,
+          "classification": "FORMAL_VALIDITY_GATE",
+          "disposition": "PENDING_NO_RESULT",
+          "log_reviewed": false,
+          "log_characters": 0,
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "run_id": 38608102560,
+      "name": "RHRC post-222 bi-regular zero-shift scalar",
+      "path": ".github/workflows/rhrc_post222_biregular_zero_shift_scalar.yml",
+      "head": "87943eea04000022930598382b1659b70daee35a",
+      "event": "pull_request",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38608102560",
+      "status": "in_progress",
+      "conclusion": null,
+      "total_materialized_jobs": 1,
+      "jobs": [
+        {
+          "id": 116004099350,
+          "name": "post222-biregular-zero-shift-scalar",
+          "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38608102560/job/116004099350",
+          "status": "in_progress",
+          "conclusion": null,
+          "classification": "RESEARCH_PRODUCING_CHECK",
+          "disposition": "PENDING_NO_RESULT",
+          "log_reviewed": false,
+          "log_characters": 0,
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "run_id": 38608102545,
+      "name": "RHRC post287 WP2 and WP4 interval research",
+      "path": ".github/workflows/rhrc_post287_numerical.yml",
+      "head": "87943eea04000022930598382b1659b70daee35a",
+      "event": "pull_request",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38608102545",
+      "status": "queued",
+      "conclusion": null,
+      "total_materialized_jobs": 3,
+      "jobs": [
+        {
+          "id": 116004098333,
+          "name": "wp4-k3-frozen-feasibility",
+          "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38608102545/job/116004098333",
+          "status": "queued",
+          "conclusion": null,
+          "classification": "RESEARCH_PRODUCING_CHECK",
+          "disposition": "PENDING_NO_RESULT",
+          "log_reviewed": false,
+          "log_characters": 0,
+          "evidence": []
+        },
+        {
+          "id": 116004098723,
+          "name": "wp2-k2-transcript",
+          "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38608102545/job/116004098723",
+          "status": "queued",
+          "conclusion": null,
+          "classification": "RESEARCH_PRODUCING_CHECK",
+          "disposition": "PENDING_NO_RESULT",
+          "log_reviewed": false,
+          "log_characters": 0,
+          "evidence": []
+        },
+        {
+          "id": 116004099198,
+          "name": "wp4-k2-odd-prerequisite",
+          "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38608102545/job/116004099198",
+          "status": "queued",
+          "conclusion": null,
+          "classification": "RESEARCH_PRODUCING_CHECK",
+          "disposition": "PENDING_NO_RESULT",
+          "log_reviewed": false,
+          "log_characters": 0,
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "run_id": 38608102548,
+      "name": "RHRC post290 source and output proof components",
+      "path": ".github/workflows/rhrc_post290_step123_output.yml",
+      "head": "87943eea04000022930598382b1659b70daee35a",
+      "event": "pull_request",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38608102548",
+      "status": "queued",
+      "conclusion": null,
+      "total_materialized_jobs": 3,
+      "jobs": [
+        {
+          "id": 116004104598,
+          "name": "lean-components",
+          "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38608102548/job/116004104598",
+          "status": "in_progress",
+          "conclusion": null,
+          "classification": "FORMAL_VALIDITY_GATE",
+          "disposition": "PENDING_NO_RESULT",
+          "log_reviewed": false,
+          "log_characters": 0,
+          "evidence": []
+        },
+        {
+          "id": 116004105075,
+          "name": "native-observations",
+          "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38608102548/job/116004105075",
+          "status": "in_progress",
+          "conclusion": null,
+          "classification": "RESEARCH_PRODUCING_CHECK",
+          "disposition": "PENDING_NO_RESULT",
+          "log_reviewed": false,
+          "log_characters": 0,
+          "evidence": []
+        },
+        {
+          "id": 116004105339,
+          "name": "exact-controls",
+          "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38608102548/job/116004105339",
+          "status": "in_progress",
+          "conclusion": null,
+          "classification": "REGRESSION_GATE",
+          "disposition": "PENDING_NO_RESULT",
+          "log_reviewed": false,
+          "log_characters": 0,
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "run_id": 38608102573,
+      "name": "RHRC post-202 Q14 composite parity gap",
+      "path": ".github/workflows/rhrc_post202_q14_composite_parity_gap.yml",
+      "head": "87943eea04000022930598382b1659b70daee35a",
+      "event": "pull_request",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38608102573",
+      "status": "in_progress",
+      "conclusion": null,
+      "total_materialized_jobs": 1,
+      "jobs": [
+        {
+          "id": 116004244507,
+          "name": "post202-q14-composite-parity-gap",
+          "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38608102573/job/116004244507",
+          "status": "in_progress",
+          "conclusion": null,
+          "classification": "RESEARCH_PRODUCING_CHECK",
+          "disposition": "PENDING_NO_RESULT",
+          "log_reviewed": false,
+          "log_characters": 0,
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "run_id": 38608102570,
+      "name": "RHRC post-196 Q14 residual cell replay",
+      "path": ".github/workflows/rhrc_post196_q14_residual_cell_replay.yml",
+      "head": "87943eea04000022930598382b1659b70daee35a",
+      "event": "pull_request",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38608102570",
+      "status": "in_progress",
+      "conclusion": null,
+      "total_materialized_jobs": 1,
+      "jobs": [
+        {
+          "id": 116004512406,
+          "name": "post196-q14-residual-cell-replay",
+          "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38608102570/job/116004512406",
+          "status": "in_progress",
+          "conclusion": null,
+          "classification": "RESEARCH_PRODUCING_CHECK",
+          "disposition": "PENDING_NO_RESULT",
+          "log_reviewed": false,
+          "log_characters": 0,
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "run_id": 38608102561,
+      "name": "RHRC post-200 Q14 discrepancy mechanism",
+      "path": ".github/workflows/rhrc_post200_q14_discrepancy_mechanism.yml",
+      "head": "87943eea04000022930598382b1659b70daee35a",
+      "event": "pull_request",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38608102561",
+      "status": "in_progress",
+      "conclusion": null,
+      "total_materialized_jobs": 1,
+      "jobs": [
+        {
+          "id": 116004778223,
+          "name": "post200-q14-discrepancy-mechanism",
+          "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38608102561/job/116004778223",
+          "status": "in_progress",
+          "conclusion": null,
+          "classification": "RESEARCH_PRODUCING_CHECK",
+          "disposition": "PENDING_NO_RESULT",
+          "log_reviewed": false,
+          "log_characters": 0,
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "run_id": 38608102552,
+      "name": "RHRC post-214 kernel dual geometry",
+      "path": ".github/workflows/rhrc_post214_kernel_dual_geometry.yml",
+      "head": "87943eea04000022930598382b1659b70daee35a",
+      "event": "pull_request",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38608102552",
+      "status": "completed",
+      "conclusion": "success",
+      "total_materialized_jobs": 1,
+      "jobs": [
+        {
+          "id": 116004103897,
+          "name": "post214-kernel-dual-geometry",
+          "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38608102552/job/116004103897",
+          "status": "completed",
+          "conclusion": "success",
+          "classification": "RESEARCH_PRODUCING_CHECK",
+          "disposition": "FULL_SPACE_DUAL_INDEPENDENCE_CERTIFIED; FULL_SPACE_SIGN_INDEFINITE_CERTIFIED; control transfer survives Q13/Q15 controls. Research evidence, not an RH theorem.",
+          "log_reviewed": true,
+          "log_characters": 32133,
+          "evidence": [
+            "2026-10-14T17:38:02.3029933Z       \"classification\": \"FULL_SPACE_DUAL_INDEPENDENCE_CERTIFIED\",",
+            "2026-10-14T17:38:02.3032863Z       \"classification\": \"FULL_SPACE_DUAL_INDEPENDENCE_CERTIFIED\",",
+            "2026-10-14T17:38:02.3035369Z       \"classification\": \"FULL_SPACE_DUAL_INDEPENDENCE_CERTIFIED\",",
+            "2026-10-14T17:38:04.8272580Z   \"classification\": \"FULL_SPACE_DUAL_INDEPENDENCE_CERTIFIED\",",
+            "2026-10-14T17:38:04.8273248Z   \"sign_route_classification\": \"FULL_SPACE_SIGN_INDEFINITE_CERTIFIED\",",
+            "2026-10-14T17:38:04.8273938Z   \"control_transfer_status\": \"DUAL_INDEPENDENCE_SURVIVES_Q13_Q15_CONTROLS\",",
+            "2026-10-14T17:38:04.9786116Z   \"classification\": \"FULL_SPACE_DUAL_INDEPENDENCE_CERTIFIED\",",
+            "2026-10-14T17:38:04.9786840Z   \"sign_route_classification\": \"FULL_SPACE_SIGN_INDEFINITE_CERTIFIED\",",
+            "2026-10-14T17:38:04.9787634Z   \"control_transfer_status\": \"DUAL_INDEPENDENCE_SURVIVES_Q13_Q15_CONTROLS\","
+          ]
+        }
+      ]
+    },
+    {
+      "run_id": 38608102542,
+      "name": "RHRC post-190 canonical realizability audit",
+      "path": ".github/workflows/rhrc_post190_canonical_realizability.yml",
+      "head": "87943eea04000022930598382b1659b70daee35a",
+      "event": "pull_request",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38608102542",
+      "status": "completed",
+      "conclusion": "success",
+      "total_materialized_jobs": 1,
+      "jobs": [
+        {
+          "id": 116004103527,
+          "name": "post190-canonical-realizability",
+          "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38608102542/job/116004103527",
+          "status": "completed",
+          "conclusion": "success",
+          "classification": "RESEARCH_PRODUCING_CHECK",
+          "disposition": "Layer1 exact twin survives; specific layer2 identity excludes twin, general reflection survives; layers3/4/5 remain UNRESOLVED.",
+          "log_reviewed": true,
+          "log_characters": 22365,
+          "evidence": [
+            "2026-10-14T17:38:30.0057645Z   \"layer1\": \"EXACT_TWIN_SURVIVES\",",
+            "2026-10-14T17:38:58.3130748Z   \"layer1\": \"EXACT_TWIN_SURVIVES\",",
+            "2026-10-14T17:38:58.3133243Z   \"layer3\": \"UNRESOLVED\",",
+            "2026-10-14T17:38:58.3134000Z   \"layer4\": \"UNRESOLVED\",",
+            "2026-10-14T17:38:58.3135405Z   \"layer5\": \"UNRESOLVED\","
+          ]
+        }
+      ]
+    },
+    {
+      "run_id": 38608095831,
+      "name": "RHRC post290 source and output proof components",
+      "path": ".github/workflows/rhrc_post290_step123_output.yml",
+      "head": "87943eea04000022930598382b1659b70daee35a",
+      "event": "push",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38608095831",
+      "status": "in_progress",
+      "conclusion": null,
+      "total_materialized_jobs": 3,
+      "jobs": [
+        {
+          "id": 116004075478,
+          "name": "lean-components",
+          "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38608095831/job/116004075478",
+          "status": "in_progress",
+          "conclusion": null,
+          "classification": "FORMAL_VALIDITY_GATE",
+          "disposition": "PENDING_NO_RESULT",
+          "log_reviewed": false,
+          "log_characters": 0,
+          "evidence": []
+        },
+        {
+          "id": 116004075837,
+          "name": "native-observations",
+          "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38608095831/job/116004075837",
+          "status": "in_progress",
+          "conclusion": null,
+          "classification": "RESEARCH_PRODUCING_CHECK",
+          "disposition": "PENDING_NO_RESULT",
+          "log_reviewed": false,
+          "log_characters": 0,
+          "evidence": []
+        },
+        {
+          "id": 116004076088,
+          "name": "exact-controls",
+          "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38608095831/job/116004076088",
+          "status": "completed",
+          "conclusion": "success",
+          "classification": "REGRESSION_GATE",
+          "disposition": "REGRESSION_CONTROLS_PASS: preserved historical sources; finite rank/sign/tie/Schur/seam controls; altered prime rejected by native divisor law; finite mass fixture; evidence mutations rejected. No complete producer receipt.",
+          "log_reviewed": true,
+          "log_characters": 74212,
+          "evidence": [
+            "2026-10-14T17:38:33.1611126Z   \"claim_cap\": \"RH_OPEN\",",
+            "2026-10-14T17:38:33.2993427Z {\"execution_status\": \"SUCCESS\", \"integrity_status\": \"PASS\", \"scientific_disposition\": \"SOURCE_BYTES_PRESERVED\", \"claim_cap\": \"RH_OPEN\", \"formal_authority\": \"NONE_CREATED\", \"base_commit\": \"9583bbcc587aca8d87e74981b222e6813238d670\", \"base_tree\": \"188d1e0ae3a22e66d512c5c807687c6f2fc8d0e0\", \"scope\": \"Canonical Git blobs at the historical base and unchanged paper ZIP bytes; no mathematical proof.\"}",
+            "2026-10-14T17:38:43.5179456Z {\"execution_status\": \"SUCCESS\", \"integrity_status\": \"PASS\", \"scientific_disposition\": \"ALTERED_PRIME_REJECTED_BY_NATIVE_DIVISOR_LAW\", \"authority\": \"RATIONAL_EXACT_WITH_SYMBOLIC_LOG_IDENTITIES\", \"claim_cap\": \"RH_OPEN\", \"native_source_id\": \"UNCHANGED_VON_MANGOLDT_INTEGER_LATTICE\", \"synthetic_source_id\": \"MODIFIED_LAMBDA_2_PLUS_ONE\", \"first_broken_coefficient\": 2, \"matched_domain\": \"n=1,...,64\", \"residual_at_2\": \"1\", \"weighted_residual_at_2\": \"1/sqrt(2)\", \"scope\": \"Coefficient-level control; no negative ground, X bound, or RH exclusion is asserted.\"}",
+            "2026-10-14T17:38:43.6626565Z {\"execution_status\": \"SUCCESS\", \"integrity_status\": \"PASS\", \"scientific_disposition\": \"FINITE_RATIONAL_MASS_CANDIDATE\", \"authority\": \"FINITE_ARITHMETIC_ONLY_ANALYTIC_BRIDGE_OPEN\", \"claim_cap\": \"RH_OPEN\", \"native_source_id\": \"UNCHANGED_CAUSAL_FLOOR_COMPLETION\", \"finite_cells\": 128, \"root_enclosures_checked\": 129, \"exact_telescoping_coefficients_checked\": 129, \"head_lower\": \"88554354072713668215623/100000000000000000000000\", \"head_upper\": \"442771770363568341078243/500000000000000000000000\", \"tail_candidate_upper\": \"22803678473833656825133757/258000000000000000000000000\", \"total_candidate_upper\": \"50254782396286984164301429/51600000000000000000000000\", \"target\": \"605/621\", \"target_gap\": \"3260043968594277989604197/10681200000000000000000000000\", \"whole_kernel_mass_lean_proved\": false, \"required_analytic_obligations\": [\"exp/log measure substitution for actual native kernel\", \"actual cell integral and finite telescoping formula\", \"countable cell integral decomposition with seam null sets\", \"per-cell and decreasing-series tail integral comparison\"]}",
+            "2026-10-14T17:38:43.7535189Z {\"execution_status\": \"SUCCESS\", \"integrity_status\": \"PASS\", \"claim_cap\": \"RH_OPEN\", \"scientific_disposition\": \"EVIDENCE_MUTATIONS_REJECTED\", \"rejected\": [\"stale theorem type\", \"wrong compiler tree\", \"generic interface as producer\", \"missing branch producer\", \"unresolved D2 marked complete\", \"pointwise cover as intervals\", \"missing D2 layer\", \"nonfinite enclosure dropped\", \"skipped required job passed\", \"running required job passed\", \"assumption review omitted\", \"module scope silently narrowed\", \"empty core scope vacuity\", \"mandatory core demoted\", \"mandatory export inventory removed\", \"duplicate compiler declaration\", \"component receipt as full producer\", \"required job demoted\", \"required formal job missing\", \"raw harvest schema used as approval\", \"unadmitted proof axiom\", \"wrong job head\", \"mandatory work package demoted\", \"native W10 scope left partial\", \"compiler context missing\", \"native observation job missing\", \"native incomplete row coverage\", \"native unresolved rows hidden\", \"native observation as universal theorem\", \"native checked at different source tree\", \"unknown workflow silently ignored\", \"job classified without reading outputs\", \"missing job classification\", \"old D2 source tree relabelled current\", \"D2 Boolean claim encoded as string\", \"D2 count encoded as Boolean\", \"D2 numerical evidence relabelled Lean proof\", \"synthetic merge without checkout review\", \"synthetic merge changed source tree\", \"synthetic merge commit object changed\", \"synthetic merge branch parent missing\", \"synthetic merge checkout log missing\", \"API branch head silently rewritten\", \"compiler receipt at other checkout\", \"synthetic merge self-referential base\"], \"authority\": \"VALIDATOR_CONTROL_ONLY\", \"scope\": \"Synthetic receipt fixtures; no theorem or D2 authority.\"}"
+          ]
+        }
+      ]
+    }
+  ]
+}

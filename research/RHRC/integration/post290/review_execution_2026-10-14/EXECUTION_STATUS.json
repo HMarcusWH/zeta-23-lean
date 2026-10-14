@@ -271,5 +271,13 @@
     "canonical_result_validator": "PASS_132_ORDINARY_AND_OPTIMIZED; NOT_NUMERICAL_RECHECK"
   },
   "wrap_reason": "Human requested final push and wrap while account usage was 96 percent consumed.",
-  "next_required_task": "T11: original native projected forcing, four histories, compact duality and quantified error."
+  "next_required_task": "T11: original native projected forcing, four histories, compact duality and quantified error.",
+  "last_exact_checked_code_head": "87943eea04000022930598382b1659b70daee35a",
+  "last_exact_checked_code_tree": "d26618de9c2babc1c53462183a1ce343246fcd52",
+  "exact_local_binding_roots": 1176,
+  "exact_local_binding_theorems": 1119,
+  "exact_local_binding_definitions": 56,
+  "exact_local_binding_inductives": 1,
+  "all_owned_proof_workers_finished": true,
+  "hosted_final_tree_CI": "PENDING; consult current GitHub and saved bounded job snapshot"
 }
