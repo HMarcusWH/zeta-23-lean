@@ -47,6 +47,7 @@ jobs:
             Zeta23.CCM.NativeWeilResponseBounds
             Zeta23.CCM.NativeWeilResponse
             Zeta23.CCM.OriginalDetectorNativeForcing
+            Zeta23.CCM.OriginalDetectorForcingError
             Zeta23.CCM.OriginalDetectorFourPrimeHistories
             Zeta23.CCM.NativeOriginalExteriorHistory
             Zeta23.CCM.Step123OutputData

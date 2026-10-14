@@ -1,4 +1,5 @@
 import Zeta23.ExceptionalZero.Step4OutputSufficiency
+import Zeta23.CCM.OriginalDetectorForcingError
 import Zeta23.CCM.CanonicalPhysicalTrialRealization
 import Zeta23.CCM.NativeWeilResponseBounds
 import Zeta23.CCM.NativeWeilResponse
@@ -1420,7 +1421,8 @@ run_cmd do
     (``Zeta23.ExceptionalZero.riemannHypothesis_of_detectorSchurLoss_subexponential, "Zeta23.ExceptionalZero.Step4OutputSufficiency", "THEOREM"),
     (``Zeta23.CCM.originalDetector_projectedForcing_eq, "Zeta23.CCM.OriginalDetectorNativeForcing", "THEOREM"),
     (``Zeta23.CCM.originalNativeExterior_history_eq, "Zeta23.CCM.NativeOriginalExteriorHistory", "THEOREM"),
-    (``Zeta23.CCM.originalNativeExterior_residual_eq, "Zeta23.CCM.NativeOriginalExteriorHistory", "THEOREM")]
+    (``Zeta23.CCM.originalNativeExterior_residual_eq, "Zeta23.CCM.NativeOriginalExteriorHistory", "THEOREM"),
+    (``Zeta23.CCM.originalDetector_forcing_error_bound, "Zeta23.CCM.OriginalDetectorForcingError", "THEOREM")]
   let queries := roots.map fun (name, mod, kind) =>
     ({ sourceId := name.toString, moduleName := mod, shortName := name.toString,
        sourceKind := kind } : Zeta23.RHRC.SourceCandidateQuery)
