@@ -17,6 +17,7 @@ establish the four explicit original histories or the final H1 error.
 noncomputable section
 
 open MeasureTheory Complex
+open scoped ComplexConjugate
 
 namespace Zeta23.CCM
 
