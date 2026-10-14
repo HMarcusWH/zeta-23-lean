@@ -43,6 +43,65 @@ jobs:
         run: |
           set -euo pipefail
           targets=(
+            Zeta23.ExceptionalZero.NativeZeroJetAnalyticFactors
+            Zeta23.ExceptionalZero.NativeRangeZeroJetObstruction
+            Zeta23.ExceptionalZero.NativeOriginalSourceLaplaceVisibility
+            Zeta23.ExceptionalZero.NativeActualKernelZeroJets
+            Zeta23.CCM.OriginalDetectorPositiveFourierPaddingReal
+            Zeta23.CCM.OriginalDetectorPositiveFourierPadding
+            Zeta23.CCM.OriginalDetectorPaddedRetainedSelection
+            Zeta23.CCM.OriginalDetectorPaddedPhaseQuantitativeRates
+            Zeta23.CCM.OriginalDetectorPaddedFourierQuantitativeRates
+            Zeta23.CCM.OriginalDetectorPaddedFiniteWindowImageJets
+            Zeta23.CCM.OriginalDetectorPaddedFiniteWindowImageAsymptotics
+            Zeta23.CCM.OriginalDetectorPaddedFiniteWindowImage
+            Zeta23.CCM.OriginalDetectorPaddedFiniteWindowHigherFlat
+            Zeta23.CCM.OriginalDetectorPaddedFiniteWindowBoundaryFlat
+            Zeta23.CCM.OriginalDetectorPaddedFinitePositivity
+            Zeta23.CCM.OriginalDetectorPaddedFinitePoleImageTransport
+            Zeta23.CCM.OriginalDetectorPaddedFinitePoleImageNonzero
+            Zeta23.CCM.OriginalDetectorPaddedFinitePoleImageC4
+            Zeta23.CCM.OriginalDetectorPaddedFinitePoleImageAsymptotics
+            Zeta23.CCM.OriginalDetectorPaddedFinitePoleImage
+            Zeta23.CCM.OriginalDetectorPaddedFinitePhaseWeilPadding
+            Zeta23.CCM.OriginalDetectorPaddedFinitePhaseSymmetry
+            Zeta23.CCM.OriginalDetectorPaddedFinitePhasePlane
+            Zeta23.CCM.OriginalDetectorPaddedFinitePhaseNormalization
+            Zeta23.CCM.OriginalDetectorPaddedFinitePhaseNormControl
+            Zeta23.CCM.OriginalDetectorPaddedFinitePhaseNativeTransport
+            Zeta23.CCM.OriginalDetectorPaddedFinitePhaseNativeProducer
+            Zeta23.CCM.OriginalDetectorPaddedFinitePhaseMass
+            Zeta23.CCM.OriginalDetectorPaddedFinitePhaseL1Errors
+            Zeta23.CCM.OriginalDetectorPaddedFinitePhaseDepth
+            Zeta23.CCM.OriginalDetectorPaddedFinitePhaseCarrier
+            Zeta23.CCM.OriginalDetectorPaddedFinitePhaseApproximation
+            Zeta23.CCM.OriginalDetectorPaddedFiniteNormalizedErrors
+            Zeta23.CCM.OriginalDetectorPaddedFiniteNativeFormRate
+            Zeta23.CCM.OriginalDetectorPaddedFiniteH1Rate
+            Zeta23.CCM.OriginalDetectorNativeRetainedSelection
+            Zeta23.CCM.OriginalDetectorFiniteTransport
+            Zeta23.CCM.OriginalDetectorFinitePhaseNativeProducer
+            Zeta23.CCM.OriginalDetectorAdmissibleSelector
+            Zeta23.CCM.NativePositiveCompletionComplexLaplace
+            Zeta23.CCM.NativeLaplaceHalfPlaneContinuation
+            Zeta23.CCM.NativeIntegerKernelComplexLaplace
+            Zeta23.CCM.NativeIntegerDriveComplexLaplace
+            Zeta23.CCM.NativeDampedCompletionPointwiseBridge
+            Zeta23.CCM.NativeCompletionComplexLaplace
+            Zeta23.CCM.NativeCompletedInputZetaLaplace
+            Zeta23.CCM.NativeCompletedInputRangeOfPrimeLp
+            Zeta23.CCM.NativeCompletedInputComplexLaplace
+            Zeta23.CCM.NativeCausalRangeObstruction
+            Zeta23.CCM.NativeCausalLaplaceDerivatives
+            Zeta23.CCM.NativeCausalKernelLaplaceDerivatives
+            Zeta23.CCM.NativeCausalAnalyticObstruction
+            Zeta23.CCM.NativeCausalAdjointZeroJets
+            Zeta23.CCM.CompactPoleConvolution
+            Zeta23.CCM.CanonicalDeepThresholdGap
+            Zeta23.CCM.PoleNeutralCompactH2Uniqueness
+            Zeta23.CCM.PoleNeutralCompactH2
+            Zeta23.CCM.PoleNeutralCompactL2Energy
+            Zeta23.CCM.PoleNeutralCompactInverseCore
             Zeta23.CCM.NativeCausalLaplaceMoments
             Zeta23.CCM.NativeCausalExponentialWitness
             Zeta23.CCM.CompactComplexIntegralFTC

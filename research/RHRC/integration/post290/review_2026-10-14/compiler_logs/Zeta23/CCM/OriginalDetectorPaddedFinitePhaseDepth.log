@@ -1,0 +1,1 @@
+'Zeta23.CCM.originalDetectorPaddedFinitePhase_producer' depends on axioms: [propext, Classical.choice, Quot.sound]

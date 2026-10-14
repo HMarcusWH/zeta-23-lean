@@ -1,0 +1,7 @@
+'Zeta23.CCM.iteratedDeriv_localizedFiniteVector_eq_formula_on_interval' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.CCM.originalDetectorFiniteOriginalPhaseHard_contDiff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.originalDetectorFiniteOriginalPhaseHard_integral_jet_error_le' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

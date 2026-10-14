@@ -1,0 +1,6 @@
+'Zeta23.CCM.exists_originalDetectorPaddedFinitePoleImageCoefficients_nonzero_threshold' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.CCM.norm_originalDetectorPaddedFinitePoleImageNormalized' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

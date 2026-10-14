@@ -1,0 +1,7 @@
+Zeta23\CCM\NativeDeepThresholdGround.lean:136:6: warning: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+Zeta23\CCM\NativeDeepThresholdGround.lean:137:6: warning: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+'Zeta23.CCM.exists_nativeDeepThresholdGround_of_given_trial' depends on axioms: [propext, Classical.choice, Quot.sound]

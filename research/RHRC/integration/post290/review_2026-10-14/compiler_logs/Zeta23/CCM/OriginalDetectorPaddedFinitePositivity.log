@@ -1,0 +1,16 @@
+Zeta23/CCM/OriginalDetectorPaddedFinitePositivity.lean:22:83: warning: 'ring' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+Zeta23/CCM/OriginalDetectorPaddedFinitePositivity.lean:22:83: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+'Zeta23.CCM.originalDetectorPaddedFiniteWindowImage_real' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.originalDetectorPaddedFiniteWindowImage_re_nonneg' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.CCM.originalDetectorPaddedFiniteEvenPrimitive_re_nonneg' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.CCM.originalDetectorPaddedFiniteOddPrimitive_padding_cancels' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

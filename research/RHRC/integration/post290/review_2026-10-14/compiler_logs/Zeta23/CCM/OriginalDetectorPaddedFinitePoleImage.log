@@ -1,0 +1,15 @@
+'Zeta23.CCM.padded_localizedFiniteFunction_iteratedDeriv_zero_eq_moment' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.CCM.originalDetectorPaddedFiniteWindowImageCoefficients_moment_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.CCM.originalDetectorPaddedFinitePoleImageCoefficients_boundaryFlat' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.CCM.originalDetectorPaddedFinitePoleImageCoefficients_native_poles_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.CCM.localizedFiniteFunction_originalDetectorPaddedFinitePoleImageCoefficients' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

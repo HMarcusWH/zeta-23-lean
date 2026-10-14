@@ -1,0 +1,9 @@
+Zeta23/CCM/PoleNeutralCompactInverse.lean:23:7: warning: Variable name `u` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _u
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+'Zeta23.CCM.poleNeutral_compactInverse_exists_unique' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.poleNeutral_compactInverse_support' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.poleNeutral_compactInverse_norm_bound' depends on axioms: [propext, Classical.choice, Quot.sound]

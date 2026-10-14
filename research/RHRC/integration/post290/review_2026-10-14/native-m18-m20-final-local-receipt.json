@@ -1,0 +1,664 @@
+{
+  "generated_utc": "2026-10-14T14:18:14.845160+00:00",
+  "status": "LOCAL_PASS_FROZEN_FOR_USER_REVIEW",
+  "m20_status": "PARTIAL: actual concrete kernel zero-jet annihilation is proved; actual physical input nonzero jet and final closure-exclusion composition remain unexported at user freeze. The separately owned full physical U/Y zeta transforms have now passed.",
+  "compiler": "Lean 4.33.0-rc2, exact ../run_lean.py pinned flags and shared baseline cache",
+  "excluded_active_candidates": [],
+  "modules": [
+    {
+      "module": "Zeta23.CCM.NativeCausalExponentialWitness",
+      "source": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\repo\\Zeta23\\CCM\\NativeCausalExponentialWitness.lean",
+      "source_bytes": 7113,
+      "source_sha256": "632f506822f6198e4d11f7b71cf33b7b6ed52bf0f5672d963f0c8a30801be1a1",
+      "log": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\validation\\native-consumers\\NativeCausalExponentialWitness.log",
+      "log_sha256": "b657aba8a23f562bde87cc1b94fe82e11f2bcc106f4245d6697580ad88aa585a",
+      "observed_exact_compiler_exit_code": 0,
+      "printed_roots": [
+        {
+          "declaration": "Zeta23.CCM.nativeCausalExponentialPolynomial_norm_sq_integrable",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "Zeta23.CCM.nativeCausalExponentialPolynomial_memLp",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "Zeta23.CCM.nativeCausalExponentialPolynomialL2_coeFn",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "Zeta23.CCM.nativeCausalExponentialPolynomialL2_causal",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "Zeta23.CCM.nativeCausalExponentialWitness_ne_zero",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "Zeta23.CCM.NativeCausalLaplaceMoments",
+      "source": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\repo\\Zeta23\\CCM\\NativeCausalLaplaceMoments.lean",
+      "source_bytes": 4029,
+      "source_sha256": "88be977d4743a2eafe7e0df15f5bf9e6e34da2f935bbeeb11fe8223f8a501bde",
+      "log": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\validation\\native-consumers\\NativeCausalLaplaceMoments.log",
+      "log_sha256": "fe13fbd79bf2425bc0a77a29b08c406c531ca352a95c6e2f3b7820db81cf8a34",
+      "observed_exact_compiler_exit_code": 0,
+      "printed_roots": [
+        {
+          "declaration": "Zeta23.CCM.nativeCausalLaplaceMoment_integrable",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "Zeta23.CCM.nativeCausalExponentialWitness_inner_eq_laplaceMoment",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "Zeta23.CCM.nativeCausalExponentialWitness_inner_completedInput",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "Zeta23.CCM.NativeCausalAdjointZeroJets",
+      "source": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\repo\\Zeta23\\CCM\\NativeCausalAdjointZeroJets.lean",
+      "source_bytes": 10780,
+      "source_sha256": "cc8fabcc64b5083e23c5663df5516860b0f1455e847d7317f186549a9ededf6e",
+      "log": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\validation\\native-consumers\\NativeCausalAdjointZeroJets.log",
+      "log_sha256": "3375adfe9a2ad2afe432b987084bb919f54d0db76d194bd1fda48cbabee50aa0",
+      "observed_exact_compiler_exit_code": 0,
+      "printed_roots": [
+        {
+          "declaration": "Zeta23.CCM.nativeCompletionKernelLaplaceMoment_integrable",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "Zeta23.CCM.nativeCausalLaplaceMoment_delay",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "Zeta23.CCM.nativeCausalExponentialWitness_inner_operator",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "Zeta23.CCM.nativeCausalExponentialWitness_annihilates_range_of_kernel_moments",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "Zeta23.CCM.nativeCausalExponentialWitness_mem_adjointKernel_of_kernel_moments",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "Zeta23.CCM.NativeCausalLaplaceDerivatives",
+      "source": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\repo\\Zeta23\\CCM\\NativeCausalLaplaceDerivatives.lean",
+      "source_bytes": 7353,
+      "source_sha256": "6429c9a0e52ee6728a77ab771cb79444eaf5d2a466deb54bf0cf1ff404f647e7",
+      "log": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\validation\\native-consumers\\NativeCausalLaplaceDerivatives.log",
+      "log_sha256": "f45145dba776e392783015068de8a0e2f95b748e1d8499f8b9571a518be1f9c0",
+      "observed_exact_compiler_exit_code": 0,
+      "printed_roots": [
+        {
+          "declaration": "Zeta23.CCM.nativeCausalLaplaceMoment_hasDerivAt",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "Zeta23.CCM.nativeCausalLaplaceMoment_analyticAt",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "Zeta23.CCM.nativeCausalLaplaceMoment_iteratedDeriv",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "Zeta23.CCM.nativeCausalLaplaceMoment_vanishes_below_analyticOrder",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "Zeta23.CCM.nativeCausalLaplaceMoment_ne_zero_at_analyticOrder",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "Zeta23.CCM.NativeCausalRangeObstruction",
+      "source": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\repo\\Zeta23\\CCM\\NativeCausalRangeObstruction.lean",
+      "source_bytes": 3667,
+      "source_sha256": "56f4800e925ecc284a58870986a75294a96d7e7f9a1f03d9b82275e4c0ecfbc5",
+      "log": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\validation\\native-consumers\\NativeCausalRangeObstruction.log",
+      "log_sha256": "ada2b783b99dda3311c551e253d18dfcd92eee83ebf9c0afe501a737668a2d47",
+      "observed_exact_compiler_exit_code": 0,
+      "printed_roots": [
+        {
+          "declaration": "Zeta23.CCM.nativeCausalExponentialWitness_annihilates_rangeClosure_of_kernel_moments",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "Zeta23.CCM.nativeCompletedInput_not_mem_rangeClosure_of_moments",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "Zeta23.CCM.nativeCompletedInput_rangeResidual_lower_of_moments",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "Zeta23.CCM.NativeCausalKernelLaplaceDerivatives",
+      "source": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\repo\\Zeta23\\CCM\\NativeCausalKernelLaplaceDerivatives.lean",
+      "source_bytes": 6042,
+      "source_sha256": "94409a7c328f9dbcbd51d411a4508232562b7a61676ba612dfedbb9a0fd47ecc",
+      "log": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\validation\\native-consumers\\NativeCausalKernelLaplaceDerivatives.log",
+      "log_sha256": "2d492e69551a14a2fa434b5314d3919cf4a463f1cbcceca12bc06e4943d57ee0",
+      "observed_exact_compiler_exit_code": 0,
+      "printed_roots": [
+        {
+          "declaration": "Zeta23.CCM.nativeDampedCompletionKernel_complex_memLp_two",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "Zeta23.CCM.nativeDampedCompletionKernelL2_coeFn",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "Zeta23.CCM.nativeCompletionKernelLaplaceMoment_eq_causalMoment",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "Zeta23.CCM.nativeCompletionKernelLaplace_analyticAt",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "Zeta23.CCM.nativeCompletionKernelLaplace_iteratedDeriv",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "Zeta23.CCM.nativeCompletionKernelLaplaceMoment_vanishes_below_analyticOrder",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "Zeta23.CCM.NativeCausalAnalyticObstruction",
+      "source": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\repo\\Zeta23\\CCM\\NativeCausalAnalyticObstruction.lean",
+      "source_bytes": 2288,
+      "source_sha256": "cbffbf4b8fc04b2940e009b948ec89ea645cc36073eeb6ef58eba967c0726ee2",
+      "log": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\validation\\native-consumers\\NativeCausalAnalyticObstruction.log",
+      "log_sha256": "4eeb9b42179e67a7bd7b9670f55f1b9bd95c11bcebccb27ea42e77f3dbcbbdbf",
+      "observed_exact_compiler_exit_code": 0,
+      "printed_roots": [
+        {
+          "declaration": "Zeta23.CCM.nativeCausalExponentialWitness_mem_adjointKernel_of_analyticOrder",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "Zeta23.CCM.nativeCompletedInput_not_mem_rangeClosure_of_analyticOrders",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "Zeta23.ExceptionalZero.NativeOriginalSourceLaplaceVisibility",
+      "source": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\repo\\Zeta23\\ExceptionalZero\\NativeOriginalSourceLaplaceVisibility.lean",
+      "source_bytes": 3251,
+      "source_sha256": "4099933bd79abc49e7fcd10ac41aeecec196b6c7681176fadee7a1e9d0792355",
+      "log": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\validation\\root-chain\\NativeOriginalSourceLaplaceVisibility.log",
+      "log_sha256": "87a211e59d02fd770027eac4bfc5f269af5b2d9e6c5e91e7021e6d2366b29f4e",
+      "observed_exact_compiler_exit_code": 0,
+      "printed_roots": [
+        {
+          "declaration": "Zeta23.ExceptionalZero.nativeOriginalSourceLaplace_formula",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "Zeta23.ExceptionalZero.nativeOriginalSourceLaplace_at_zero",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "Zeta23.ExceptionalZero.nativeOriginalSourceLaplace_ne_zero_at_off_line_zero",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "Zeta23.ExceptionalZero.NativeZeroJetAnalyticFactors",
+      "source": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\repo\\Zeta23\\ExceptionalZero\\NativeZeroJetAnalyticFactors.lean",
+      "source_bytes": 12411,
+      "source_sha256": "d65d5e5aa7ffe220abd1ac619e07f75215a09cdbc668f7a464743f5dd6946c4b",
+      "log": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\validation\\root-chain\\NativeZeroJetAnalyticFactors.log",
+      "log_sha256": "8f644894ad2ac842c5d66b6828f6b89d17e2af7e54a2a9c76091e4a5e79cd11a",
+      "observed_exact_compiler_exit_code": 0,
+      "printed_roots": [
+        {
+          "declaration": "Zeta23.ExceptionalZero.nativeZeroMultiplicity_order",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "Zeta23.ExceptionalZero.nativeZeroMultiplicity_deriv_order",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "Zeta23.ExceptionalZero.nativeOriginalSourceLaplace_analyticAt",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "Zeta23.ExceptionalZero.nativeCompletionRationalMultiplier_at_zero_ne_zero",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "Zeta23.ExceptionalZero.nativeZeroJetKernelMultiplier_order",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "Zeta23.ExceptionalZero.nativeZeroJetInputMultiplier_order",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "Zeta23.ExceptionalZero.nativeZeroJetInputMultiplier_jet",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "Zeta23.ExceptionalZero.nativeZeroJetSourceFactor_ne_zero",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "Zeta23.ExceptionalZero.NativeRangeZeroJetObstruction",
+      "source": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\repo\\Zeta23\\ExceptionalZero\\NativeRangeZeroJetObstruction.lean",
+      "source_bytes": 4746,
+      "source_sha256": "efbe49dde8eb871d29e67d167a24a82ccb05b405e56178d6a5e51f96e2149825",
+      "log": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\validation\\root-chain\\NativeRangeZeroJetObstruction.log",
+      "log_sha256": "2358ec93a76c9ea5834eeb33c1780c7db6df5e9e963b59864a92d458e9cfded0",
+      "observed_exact_compiler_exit_code": 0,
+      "printed_roots": [
+        {
+          "declaration": "Zeta23.ExceptionalZero.nativeZeroJetRightZero_re_gt_half",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "Zeta23.ExceptionalZero.nativeZeroJetRightZero_mult",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "Zeta23.ExceptionalZero.nativeZeroJetDamping_pos",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "Zeta23.ExceptionalZero.nativeZeroJetAdjointWitness_ne_zero",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "Zeta23.ExceptionalZero.nativeZeroJetAdjointWitness_inner_completedInput",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "Zeta23.CCM.NativeLaplaceHalfPlaneContinuation",
+      "source": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\repo\\Zeta23\\CCM\\NativeLaplaceHalfPlaneContinuation.lean",
+      "source_bytes": 4197,
+      "source_sha256": "32a75791bdeaf3c297b1608dad69264d645fc3da0045e4f482180ac2237113ac",
+      "log": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\validation\\native-consumers\\NativeLaplaceHalfPlaneContinuation.log",
+      "log_sha256": "3bae3edb3f289bc28af03e6ce47b366bce0b7bcd94d8acb5793c1b83b29a1b52",
+      "observed_exact_compiler_exit_code": 0,
+      "printed_roots": [
+        {
+          "declaration": "Zeta23.CCM.nativeLaplaceContinuationDomain_isPreconnected",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "Zeta23.CCM.nativeLaplace_eqOn_of_eqOn_rightHalfPlane",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "Zeta23.CCM.NativeDampedCompletionPointwiseBridge",
+      "source": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\repo\\Zeta23\\CCM\\NativeDampedCompletionPointwiseBridge.lean",
+      "source_bytes": 8575,
+      "source_sha256": "c9e81261ec5d53a3bca21e73a5883bb375a9bfd21c4873a11a0732adc2c39370",
+      "log": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\validation\\native-consumers\\NativeDampedCompletionPointwiseBridge.log",
+      "log_sha256": "cb3a2da60b0c3459e113b7cd660e243dcba34cb2525f1813aeed4467a8a63f28",
+      "observed_exact_compiler_exit_code": 0,
+      "printed_roots": [
+        {
+          "declaration": "Zeta23.CCM.nativeDampedCompletionPointwise_integrable",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "Zeta23.CCM.nativeDampedCompletionPointwise_integrable_prod_on_finite_set",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "Zeta23.CCM.nativeDampedCompletionL2Operator_setIntegral_pointwise",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "Zeta23.CCM.nativeDampedCompletionL2Operator_coeFn_pointwise",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "Zeta23.CCM.nativeDampedCompletionPointwise_memLp",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "Zeta23.CCM.NativeCompletedInputRangeOfPrimeLp",
+      "source": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\repo\\Zeta23\\CCM\\NativeCompletedInputRangeOfPrimeLp.lean",
+      "source_bytes": 5823,
+      "source_sha256": "dc51c4b5a8da542d28e4a455078004d51c921e9bd7a6c77eefc7e8ceeeda31a6",
+      "log": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\validation\\native-consumers\\NativeCompletedInputRangeOfPrimeLp.log",
+      "log_sha256": "ffb85cdea8a6bae179235a1e707dec6daa9245a28b473b04073c03089fa2f205",
+      "observed_exact_compiler_exit_code": 0,
+      "printed_roots": [
+        {
+          "declaration": "Zeta23.CCM.nativeDampedCompletedInput_equation",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "Zeta23.CCM.nativeOriginalDampedPrimeFieldL2_coeFn",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "Zeta23.CCM.nativeCompletedInput_operator_eq_of_prime_memLp",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "Zeta23.CCM.nativeCompletedInput_mem_range_of_prime_memLp",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "Zeta23.CCM.nativeCompletedInput_mem_rangeClosure_of_prime_memLp",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "Zeta23.ExceptionalZero.NativeActualKernelZeroJets",
+      "source": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\repo\\Zeta23\\ExceptionalZero\\NativeActualKernelZeroJets.lean",
+      "source_bytes": 5780,
+      "source_sha256": "eccb11f016b6152a9c0f523bcf141a6e08b13e3ea0ce033f786dac5b097532cf",
+      "log": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\validation\\root-chain\\NativeActualKernelZeroJets.log",
+      "log_sha256": "6f0db25ae3687ee48be050e5164b41340ebff8e19e8e643d1b84c16604defb7b",
+      "observed_exact_compiler_exit_code": 0,
+      "printed_roots": [
+        {
+          "declaration": "Zeta23.CCM.nativeCompletionKernelLaplaceMoment_zero_damping_shift",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "Zeta23.ExceptionalZero.nativeActualKernelLaplace_order_of_zero",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "Zeta23.ExceptionalZero.nativeZeroJet_kernelMoments_eq_zero",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "Zeta23.ExceptionalZero.nativeZeroJet_annihilates_range",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "Zeta23.ExceptionalZero.nativeZeroJetAdjointWitness_mem_adjointKernel",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        }
+      ]
+    }
+  ],
+  "module_count": 14,
+  "printed_root_count": 62,
+  "m18_status": "Actual arbitrary full-line L2 Bochner-to-pointwise bridge proved. Actual prime-field MemLp2 implies actual Y range and range-closure membership. Prime-field MemLp2 remains OPEN.",
+  "prior_frozen_receipt_sha256": "79298e470ac55375791905a6e39f88a61eb8d306c0319ec07469c392d576025e",
+  "owned_active_runners": []
+}

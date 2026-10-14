@@ -1309,3 +1309,26 @@ supporting source batch at an exact Git tree. Complete the general compact L2
 norm/weak interface, actual forcing/exterior bridge and multiplicity-aware
 native Laplace obstruction before assembling every mandatory output field.
 Keep A-X, B-Y, C-Schur, D2, the full producer and RH OPEN.
+
+
+## Sixteenth pass: final iteration freeze and actual transform/compact inverse frontier
+
+The user requested roundup, final commits, an extensive handover and a wait for third-party review. No new mathematical obligations are started. See THIRD_PARTY_REVIEW_HANDOVER_2026-10-14.md for the complete nine-part pass and fifty review questions; it supersedes earlier partial progress descriptions without deleting their history.
+
+What became formally true: actual positively padded normalized source depth and native retained selection, general compact-L2 clamped weak-H2 inverse with norm4 and uniqueness, actual c/a/U/Y complex transforms with separate pole values, actual causal kernel zero-jet range annihilation, and A-X implies actual B-Y. Local source-byte evidence is frozen; whole final-head CI is separate.
+
+Workflow harvest: prior full harvests remain scoped evidence. The d5 component failure is the strict parser's stale pair format, repaired in the final batch; the generated RHKG stack remains stale. External approved D2 search and fresh independent checking are pending. A green search job is not a finite certificate or Lean theorem.
+
+What changed: positive padding repairs the nonnegative-primitive gap; smooth inverse restrictions are removed; actual transforms replace discovery formulas; actual kernel annihilation removes abstract-moment premises. Missing API/export/packet composition is explicitly audited.
+
+Upstream implications: common complex FTC, generic perturbation transfer, compact-test P integration and acyclic gap-core extraction may compress duplicated dependencies.
+
+Downstream implications: actual Y nonzero-jet composition is now a smaller specific obligation, and compact P transfer can feed actual forcing without assuming prime-field global L2 prematurely.
+
+Resurrected routes: general-source inverse and actual causal obstruction routes have lost old prerequisites. Source/ground identification remains invalid; parity ties and missing X domain remain genuine obstructions.
+
+New RH-relevant clues: kernel order m versus actual input order m-1; odd DC cancellation; quantitative M4-zero trial residual at positive parity gap. These remain composition leads rather than RH claims.
+
+Falsification checks: multiple/reflected zeros, pole w=1/2, conjugation and damping shifts, first empty predecessor, parity tie, full Schur complement dimension, true norm and four phase cross terms. Contraction must not be upgraded to range density or zero kernel projection.
+
+Highest-leverage next moves after review: exact Y-jet composition, requested rate/scalar packaging, actual forcing/exterior packet, full output producer, strict graph refresh and final exact-head harvest. RH, A-X, B-Y and C-Schur remain OPEN. Work now waits for the user's third-party review.

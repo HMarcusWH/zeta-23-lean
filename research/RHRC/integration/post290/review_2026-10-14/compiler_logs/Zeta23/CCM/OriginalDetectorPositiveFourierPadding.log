@@ -1,0 +1,25 @@
+Zeta23/CCM/OriginalDetectorPositiveFourierPadding.lean:60:29: warning: This simp argument is unused:
+  fourier_eval_zero
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [hzero, if_true, mul_one]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+Zeta23/CCM/OriginalDetectorPositiveFourierPadding.lean:60:48: warning: This simp argument is unused:
+  mul_one
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [hzero, if_true, fourier_eval_zero]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+'Zeta23.CCM.originalDetectorPositivePadding_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.originalDetectorPaddedRawFourierPartialJet_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.originalDetectorPaddedRawFourierPartialJet_iteratedDeriv' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.CCM.originalDetectorPaddedRawFourierPartialJet_error_le_budget' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.CCM.originalDetectorPaddedRawFourierJetTailBudget_mul_exp_tendsto_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

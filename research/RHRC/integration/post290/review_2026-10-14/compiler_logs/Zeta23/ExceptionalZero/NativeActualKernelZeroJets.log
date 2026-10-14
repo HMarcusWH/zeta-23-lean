@@ -1,0 +1,11 @@
+'Zeta23.CCM.nativeCompletionKernelLaplaceMoment_zero_damping_shift' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.ExceptionalZero.nativeActualKernelLaplace_order_of_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.ExceptionalZero.nativeZeroJet_kernelMoments_eq_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.ExceptionalZero.nativeZeroJet_annihilates_range' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.ExceptionalZero.nativeZeroJetAdjointWitness_mem_adjointKernel' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

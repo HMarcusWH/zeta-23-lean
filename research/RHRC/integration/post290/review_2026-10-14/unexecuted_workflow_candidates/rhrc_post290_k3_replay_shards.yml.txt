@@ -1,0 +1,159 @@
+name: RHRC post290 K3 independent no-search shards
+
+on:
+  workflow_dispatch:
+    inputs:
+      producer_run_id:
+        description: Completed source-bound SECOND campaign run to check
+        required: true
+        default: '38461259594'
+        type: string
+  push:
+    branches: [research/post290-step123-output]
+    paths: [.github/workflows/rhrc_post290_k3_replay_shards.yml]
+
+permissions:
+  contents: read
+  actions: read
+
+env:
+  OPENBLAS_NUM_THREADS: '1'
+  OMP_NUM_THREADS: '1'
+  ROUTE: research/RHRC/routes/R003_ccm_bridge
+
+jobs:
+  freeze-checker-shards:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    outputs:
+      matrix: ${{ steps.partition.outputs.matrix }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - run: python -m pip install -r "$ROUTE/requirements.txt"
+      - name: Recover original campaign bytes and retain its producer identity
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PRODUCER_RUN_ID: ${{ inputs.producer_run_id || '38461259594' }}
+        run: |
+          mkdir -p /tmp/k3-fresh-check/producer
+          python - <<'PY'
+          import os
+          assert os.environ['PRODUCER_RUN_ID'].isdigit()
+          PY
+          gh api "repos/HMarcusWH/zeta-23-lean/actions/runs/$PRODUCER_RUN_ID/artifacts?per_page=100" > /tmp/k3-fresh-check/artifacts.json
+          python - <<'PY'
+          import json,os
+          from pathlib import Path
+          d=json.loads(Path('/tmp/k3-fresh-check/artifacts.json').read_text())
+          a=[a for a in d['artifacts'] if a['name']=='post290-k3-second-continuation' and not a['expired']]
+          assert len(a)==1, 'INPUT_MISSING: producer archive not available; no geometry invented'
+          Path('/tmp/k3-fresh-check/archive-id').write_text(str(a[0]['id']))
+          Path('/tmp/k3-fresh-check/archive-digest').write_text(a[0]['digest'])
+          PY
+          archive_id=$(cat /tmp/k3-fresh-check/archive-id)
+          gh api "repos/HMarcusWH/zeta-23-lean/actions/artifacts/$archive_id/zip" > /tmp/k3-fresh-check/producer.zip
+          python - <<'PY'
+          import hashlib
+          from pathlib import Path
+          d=Path('/tmp/k3-fresh-check')
+          assert 'sha256:'+hashlib.sha256((d/'producer.zip').read_bytes()).hexdigest()==(d/'archive-digest').read_text()
+          PY
+          unzip -q /tmp/k3-fresh-check/producer.zip -d /tmp/k3-fresh-check/producer
+      - name: Preserve search identity and check every mathematical source delta
+        run: |
+          python "$ROUTE/post290/k3_source_revalidation.py" /tmp/k3-fresh-check/producer/partition.json --out /tmp/k3-fresh-check/source-revalidation.json
+          python "$ROUTE/post290/test_k3_resume.py"
+          python "$ROUTE/post290/test_k3_replay_shards.py"
+          python "$ROUTE/post290/test_k3_seams.py"
+      - name: Freeze all exact leaf-index shards before any fresh enclosure
+        id: partition
+        run: |
+          python "$ROUTE/post290/k3_replay_shards.py" freeze /tmp/k3-fresh-check/producer/candidate /tmp/k3-fresh-check/producer/partition.json /tmp/k3-fresh-check/source-revalidation.json --out /tmp/k3-fresh-check/checker-partition.json
+          python - <<'PY'
+          import json,os
+          from pathlib import Path
+          d=json.loads(Path('/tmp/k3-fresh-check/checker-partition.json').read_text())
+          ids=[c['id'] for c in d['chunks']]
+          assert ids and len(ids)<=256, 'All planned leaves retained; too many shards for one matrix; D2_OPEN'
+          with open(os.environ['GITHUB_OUTPUT'],'a') as f:
+              f.write('matrix='+json.dumps({'id':ids},separators=(',',':'))+'\n')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: post290-k3-frozen-independent-check
+          path: /tmp/k3-fresh-check
+          if-no-files-found: error
+
+  independent-leaf-shards:
+    needs: freeze-checker-shards
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      max-parallel: 8
+      matrix: ${{ fromJson(needs.freeze-checker-shards.outputs.matrix) }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - run: python -m pip install -r "$ROUTE/requirements.txt"
+      - uses: actions/download-artifact@v4
+        with:
+          name: post290-k3-frozen-independent-check
+          path: /tmp/k3-fresh-check
+      - name: Check the exact frozen leaf indices at 768 bits with a hard 1800-second enclosure budget
+        env:
+          CHECKER_SHARD_ID: ${{ matrix.id }}
+        run: python "$ROUTE/post290/k3_replay_shards.py" single /tmp/k3-fresh-check/checker-partition.json /tmp/k3-fresh-check/producer/candidate /tmp/k3-fresh-check/source-revalidation.json --id "$CHECKER_SHARD_ID" --out /tmp/k3-checked-shards
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: post290-k3-independent-${{ matrix.id }}
+          path: /tmp/k3-checked-shards
+          if-no-files-found: error
+
+  assemble-nonpartial:
+    if: always() && needs.freeze-checker-shards.result == 'success'
+    needs: [freeze-checker-shards, independent-leaf-shards]
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - run: python -m pip install -r "$ROUTE/requirements.txt"
+      - uses: actions/download-artifact@v4
+        with:
+          name: post290-k3-frozen-independent-check
+          path: /tmp/k3-fresh-check
+      - uses: actions/download-artifact@v4
+        continue-on-error: true
+        with:
+          pattern: post290-k3-independent-*
+          merge-multiple: true
+          path: /tmp/k3-checked-shards
+      - name: Reconstruct every parent-layer union from all fresh shard receipts
+        id: whole
+        continue-on-error: true
+        run: python "$ROUTE/post290/k3_replay_shards.py" assemble /tmp/k3-fresh-check/checker-partition.json /tmp/k3-fresh-check/producer/candidate /tmp/k3-fresh-check/source-revalidation.json /tmp/k3-checked-shards --out /tmp/k3-final/full-checker.json
+      - name: Repaired final NON-PARTIAL D2 gate
+        if: always()
+        run: python "$ROUTE/post290/k3_assemble_complete.py" final /tmp/k3-fresh-check/producer/candidate /tmp/k3-final/full-checker.json --source-revalidation /tmp/k3-fresh-check/source-revalidation.json --out /tmp/k3-final/disposition.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: post290-k3-independent-full-result
+          path: /tmp/k3-final
+          if-no-files-found: error

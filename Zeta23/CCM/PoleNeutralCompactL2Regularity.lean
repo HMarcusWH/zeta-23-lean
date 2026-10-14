@@ -1,4 +1,4 @@
-import Zeta23.CCM.PoleNeutralCompactInverse
+import Zeta23.CCM.PoleNeutralCompactInverseCore
 import Mathlib.MeasureTheory.Function.LocallyIntegrable
 import Mathlib.MeasureTheory.Integral.DominatedConvergence
 import Mathlib.MeasureTheory.Integral.IntervalIntegral.LebesgueDifferentiationThm

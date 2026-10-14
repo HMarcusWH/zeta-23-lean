@@ -1,0 +1,9 @@
+'Zeta23.CCM.nativeCompletionKernelLaplaceMoment_integrable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.nativeCausalLaplaceMoment_delay' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.nativeCausalExponentialWitness_inner_operator' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.nativeCausalExponentialWitness_annihilates_range_of_kernel_moments' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.CCM.nativeCausalExponentialWitness_mem_adjointKernel_of_kernel_moments' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

@@ -1,0 +1,9 @@
+'Zeta23.CCM.nativeDeepThreshold_even_eigenspace_finrank_le_one' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.CCM.nativeDeepThreshold_odd_eigenspace_finrank_le_one' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.CCM.nativeDeepThreshold_even_ground_simple' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.nativeDeepThreshold_odd_ground_simple' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.nativeDeepThreshold_selectedParity_simple' depends on axioms: [propext, Classical.choice, Quot.sound]

@@ -1,0 +1,9 @@
+'Zeta23.CCM.universalSincSecondKernel_elementary_moments' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.originalSincCompactPotential_pole_equation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.originalSincCompactPotential_hasCompactSupport' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.originalSincCompactPotential_clamped_traces' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.originalSincCompactPotential_memLp_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.originalSincCompactPotentialDerivative_memLp_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.originalSincCompactPotentialSecondDerivative_memLp_two' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

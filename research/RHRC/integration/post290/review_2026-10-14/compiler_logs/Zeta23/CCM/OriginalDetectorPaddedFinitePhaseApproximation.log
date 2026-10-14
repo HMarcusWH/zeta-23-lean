@@ -1,0 +1,18 @@
+Zeta23/CCM/OriginalDetectorPaddedFinitePhaseApproximation.lean:35:84: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Zeta23/CCM/OriginalDetectorPaddedFinitePhaseApproximation.lean:36:12: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Zeta23/CCM/OriginalDetectorPaddedFinitePhaseApproximation.lean:161:23: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+'Zeta23.CCM.padded_localizedFiniteFunction_reverseCoefficients_reflected' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.CCM.originalDetectorPaddedFinitePhaseVector_physical_formula' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.CCM.originalDetectorPaddedFiniteOriginalPhaseApprox_iteratedDeriv_error_le' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

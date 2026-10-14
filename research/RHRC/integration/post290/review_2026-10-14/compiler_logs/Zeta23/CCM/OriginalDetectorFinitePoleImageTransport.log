@@ -1,0 +1,12 @@
+'Zeta23.CCM.iteratedDeriv_poleKilled_infty' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.poleKilled_originalDetectorLobe' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.originalDetectorFinitePoleImage_iteratedDeriv_error_le_budget' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.CCM.originalDetectorFinitePoleImageCoefficients_hardWindow_contDiff' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.CCM.poleKilled_localizedFiniteVector_of_boundaryFlat' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.originalDetectorFinitePoleImageCoefficients_hardWindow_eq_poleKilled' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

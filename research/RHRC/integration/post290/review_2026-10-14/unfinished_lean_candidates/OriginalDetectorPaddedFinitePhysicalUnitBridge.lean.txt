@@ -1,0 +1,49 @@
+import Zeta23.CCM.OriginalDetectorPaddedFiniteNormalizedErrors
+
+/-! The normalized physical function is exactly the native unit-vector image. -/
+
+noncomputable section
+
+open Complex
+
+namespace Zeta23.CCM
+
+open Zeta23.ExceptionalZero
+
+theorem originalDetectorPaddedFinitePhysicalUnit_eq_native_image
+    (σ a : ℝ) (hL : 0 < fixedOriginalSincTrialAperture a) :
+    originalDetectorPaddedFinitePhysicalUnit σ a hL =
+      localizedFiniteVector (fixedOriginalSincTrialAperture a)
+        (originalDetectorQuarticCutoff (fixedOriginalSincTrialAperture a))
+        ((EuclideanSpace.equiv (Fin (2 * originalDetectorQuarticCutoff
+          (fixedOriginalSincTrialAperture a) + 1)) ℂ)
+          (originalDetectorPaddedFinitePhaseUnitVector σ (fixedOriginalSincTrialAperture a)
+            fixedOriginalSincLobeCenter hL)) := by
+  funext x
+  let v := originalDetectorPaddedFinitePhaseVector σ (fixedOriginalSincTrialAperture a)
+    fixedOriginalSincLobeCenter hL
+  have hscalar : (fixedOriginalSincTrialNormalization * ‖v‖)⁻¹ * fixedOriginalSincTrialNormalization =
+      ‖v‖⁻¹ := by
+    rw [mul_inv_rev, mul_assoc, inv_mul_cancel₀ fixedOriginalSincTrialNormalization_pos.ne', mul_one]
+  unfold originalDetectorPaddedFinitePhysicalUnit originalDetectorPaddedFinitePhysicalNorm
+    originalDetectorPaddedFiniteOriginalPhaseHard originalDetectorPaddedFinitePhaseUnitVector
+  unfold localizedFiniteVector
+  simp only [← Complex.ofReal_inv]
+  rw [← mul_assoc, ← Complex.ofReal_mul]
+  change ((fixedOriginalSincTrialNormalization * ‖v‖)⁻¹ * fixedOriginalSincTrialNormalization : ℝ) *
+    (∑ i : Fin (2 * originalDetectorQuarticCutoff (fixedOriginalSincTrialAperture a) + 1),
+      ((EuclideanSpace.equiv (Fin (2 * originalDetectorQuarticCutoff (fixedOriginalSincTrialAperture a) + 1)) ℂ) v) i *
+      localizedZeroExtendedMode (fixedOriginalSincTrialAperture a)
+        (centeredIndex (originalDetectorQuarticCutoff (fixedOriginalSincTrialAperture a)) i) x) = _
+  rw [hscalar, Finset.mul_sum]
+  apply Finset.sum_congr rfl
+  intro i hi
+  change ((‖v‖⁻¹ : ℝ) : ℂ) * (v i * localizedZeroExtendedMode (fixedOriginalSincTrialAperture a)
+    (centeredIndex (originalDetectorQuarticCutoff (fixedOriginalSincTrialAperture a)) i) x) =
+    (((‖v‖⁻¹ : ℝ) : ℂ) * v i) * localizedZeroExtendedMode (fixedOriginalSincTrialAperture a)
+      (centeredIndex (originalDetectorQuarticCutoff (fixedOriginalSincTrialAperture a)) i) x
+  ring
+
+end Zeta23.CCM
+
+#print axioms Zeta23.CCM.originalDetectorPaddedFinitePhysicalUnit_eq_native_image

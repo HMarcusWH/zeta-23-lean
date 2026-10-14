@@ -1,0 +1,340 @@
+{
+  "classification": "FORMAL_VALIDITY_GATE",
+  "status": "LOCAL_EXACT_GREEN",
+  "head": "d5b867ef467b4eb5d5e38e500577fda2b2a5f91b",
+  "source_state": "working tree; current post-Gap extraction and canonical four-export facade; all listed sources frozen",
+  "compiler": "Lean 4.33.0-rc2, run_lean.py -j1 maxHeartbeats800000 relaxedAutoImplicitfalse",
+  "roots": 87,
+  "modules": [
+    {
+      "module": "Zeta23.CCM.FiniteBottomGapSelector",
+      "source_sha256": "7ee7bb68ee6313cf335c68567ae055c27e9c3ae897d922a17b7029f1c229ff29",
+      "log_sha256": "cefa03ce87450c4f7edf4b96c6d865113b0623e83bfd967cc6bc4a640aa42116",
+      "olean_sha256": "7ecd9c23f6e2003466114876b0b091c28526691cfc5d80b5127755c54a8d44b2",
+      "printed_roots": [
+        "Zeta23.CCM.exists_finite_real_gap_selector"
+      ],
+      "source_path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\repo\\Zeta23\\CCM\\FiniteBottomGapSelector.lean",
+      "log_path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\validation\\native-consumers\\FiniteBottomGapSelector.log",
+      "olean_path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\repo\\.lake\\build\\lib\\lean\\Zeta23\\CCM\\FiniteBottomGapSelector.olean"
+    },
+    {
+      "module": "Zeta23.CCM.CanonicalDeepThresholdGap",
+      "source_sha256": "4a96755f4cb91088d38116f75945654385c2db0013f0d3bf138ef1e6af537a6f",
+      "log_sha256": "483da059d01069e439cd4060d11b2a055a9455f9a4ac03521da0515d5c8cc77b",
+      "olean_sha256": "ece58d6bb63f41a3d0cd5404b8497daab7129c95e87cfe00edd9d204e649bbb1",
+      "printed_roots": [
+        "Zeta23.CCM.nativeDeepThresholdGap_pos",
+        "Zeta23.CCM.exists_nativeDeepThreshold_bottom_separator",
+        "Zeta23.CCM.nativeDeepThreshold_crossing_retains_gap",
+        "Zeta23.CCM.nativeDeepThreshold_noncrossing_has_lower_gap"
+      ],
+      "source_path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\repo\\Zeta23\\CCM\\CanonicalDeepThresholdGap.lean",
+      "log_path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\validation\\native-consumers\\CanonicalDeepThresholdGap.log",
+      "olean_path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\repo\\.lake\\build\\lib\\lean\\Zeta23\\CCM\\CanonicalDeepThresholdGap.olean"
+    },
+    {
+      "module": "Zeta23.CCM.CanonicalDeepThresholdSelection",
+      "source_sha256": "4685c1b1ffdd5e2b8c4e5cd9aadd2aa6efb0f35346bbd1ff1286f4483b25d5b8",
+      "log_sha256": "6126bb530896e2d2650bcbe826962d4e598a6ab0ac4355d9f21abbbb53f120ec",
+      "olean_sha256": "f4709bffc91effabda41ed80409bd299ec1e5db8a3155c44bcd71f98640ea567",
+      "printed_roots": [
+        "Zeta23.CCM.exists_bottomAvoidingThreshold",
+        "Zeta23.CCM.exists_least_deepPoleNeutralCutoff",
+        "Zeta23.CCM.deepThreshold_predecessor_inverse_bound",
+        "Zeta23.CCM.deepThreshold_selectedParity_simple"
+      ],
+      "source_path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\repo\\Zeta23\\CCM\\CanonicalDeepThresholdSelection.lean",
+      "log_path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\validation\\native-consumers\\CanonicalDeepThresholdSelection.log",
+      "olean_path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\repo\\.lake\\build\\lib\\lean\\Zeta23\\CCM\\CanonicalDeepThresholdSelection.olean"
+    },
+    {
+      "module": "Zeta23.CCM.NativePoleNeutralTrialDepth",
+      "source_sha256": "fc8ecf4817b574efee804f8dd217cc0e6a30472f20c66efc9854e8e401b2a5de",
+      "log_sha256": "913a506355eb9db14471d2721c413594323c74ad2aba8a7b1b448038d6472353",
+      "olean_sha256": "778aaf070dc09dbd128defeec6a7a0724849386217080d650e5724470ad8f892",
+      "printed_roots": [
+        "Zeta23.CCM.nativeTrial_evenOdd_norm_sq_split",
+        "Zeta23.CCM.nativeGlobalBottom_mul_norm_sq_le_given_trial_energy",
+        "Zeta23.CCM.nativeGlobalBottom_le_neg_depth_of_given_unit_trial"
+      ],
+      "source_path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\repo\\Zeta23\\CCM\\NativePoleNeutralTrialDepth.lean",
+      "log_path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\validation\\native-consumers\\NativePoleNeutralTrialDepth.log",
+      "olean_path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\repo\\.lake\\build\\lib\\lean\\Zeta23\\CCM\\NativePoleNeutralTrialDepth.olean"
+    },
+    {
+      "module": "Zeta23.CCM.NativeDeepThresholdGround",
+      "source_sha256": "81a9a6b6d770269742539e9e186783c4ba77dfcb5d98288f22794c16cbb9a864",
+      "log_sha256": "03c0a45eba492f5f66222d9a5834deb5f550b261fcad023df361719c04e79904",
+      "olean_sha256": "790b541c6f2b454508096722f7636d43c04e3553f260faf6f97895abdd84d727",
+      "printed_roots": [
+        "Zeta23.CCM.exists_nativeDeepThresholdGround_of_given_trial"
+      ],
+      "source_path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\repo\\Zeta23\\CCM\\NativeDeepThresholdGround.lean",
+      "log_path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\validation\\native-consumers\\NativeDeepThresholdGround.log",
+      "olean_path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\repo\\.lake\\build\\lib\\lean\\Zeta23\\CCM\\NativeDeepThresholdGround.olean"
+    },
+    {
+      "module": "Zeta23.CCM.NativeDeepThresholdInverseBudgets",
+      "source_sha256": "dec6c0acb312d2c4e8ffec412025abad459879f161f652afa0ebcceeb7c2cb67",
+      "log_sha256": "9f5fb6bfcf3bb25f159bfa9cbd26e1aacdf64b6466a614d70f108f08395fe916",
+      "olean_sha256": "04a1f08c92a0543c95cef51cb873f7cd877229493796bd97202f57e987b815d5",
+      "printed_roots": [
+        "Zeta23.CCM.nativeDeepThreshold_even_ground_coercive",
+        "Zeta23.CCM.nativeDeepThreshold_odd_ground_coercive",
+        "Zeta23.CCM.nativeDeepThreshold_even_detector_coercive",
+        "Zeta23.CCM.nativeDeepThreshold_odd_detector_coercive",
+        "Zeta23.CCM.nativeDeepThresholdInverseData",
+        "Zeta23.CCM.nativeDeepThreshold_inverse_norms_zero_at_first",
+        "Zeta23.CCM.exists_nativeDeepThresholdGround_with_inverseBudgets_of_given_trial"
+      ],
+      "source_path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\repo\\Zeta23\\CCM\\NativeDeepThresholdInverseBudgets.lean",
+      "log_path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\validation\\native-consumers\\NativeDeepThresholdInverseBudgets.log",
+      "olean_path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\repo\\.lake\\build\\lib\\lean\\Zeta23\\CCM\\NativeDeepThresholdInverseBudgets.olean"
+    },
+    {
+      "module": "Zeta23.CCM.NativeDeepThresholdSimplicity",
+      "source_sha256": "4ab531222b3d99d11b41a87bd9d67c62fa90725f53a5ffd2b44ad4f202fdde5a",
+      "log_sha256": "12c6dffaf3110f6babd8a2cca54e47cfe0b0054b54f4ad4cc85e1c5dea1456ce",
+      "olean_sha256": "2785b693d6a08cb4007b931eb4a18a8b0da399c02202b6dc1450369e7dbe5345",
+      "printed_roots": [
+        "Zeta23.CCM.nativeDeepThreshold_even_eigenspace_finrank_le_one",
+        "Zeta23.CCM.nativeDeepThreshold_odd_eigenspace_finrank_le_one",
+        "Zeta23.CCM.nativeDeepThreshold_even_ground_simple",
+        "Zeta23.CCM.nativeDeepThreshold_odd_ground_simple",
+        "Zeta23.CCM.nativeDeepThreshold_selectedParity_simple"
+      ],
+      "source_path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\repo\\Zeta23\\CCM\\NativeDeepThresholdSimplicity.lean",
+      "log_path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\validation\\native-consumers\\NativeDeepThresholdSimplicity.log",
+      "olean_path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\repo\\.lake\\build\\lib\\lean\\Zeta23\\CCM\\NativeDeepThresholdSimplicity.olean"
+    },
+    {
+      "module": "Zeta23.CCM.NativeDeepThresholdEvenMoment",
+      "source_sha256": "040bd493792cb0f7cd25c1938901690e45ce8a6d28ab7ce79ed555be525a067a",
+      "log_sha256": "48d3c703845f42911d346e40de6848202b773cd0836417a404ce6455a0e4b052",
+      "olean_sha256": "5ae5264e8dfe006e637fe1fea9a844d8d7aa3974857f024e35158ff111e1e5ac",
+      "printed_roots": [
+        "Zeta23.CCM.nativeDeepThreshold_even_ground_momentFour_ne_zero",
+        "Zeta23.CCM.nativeDeepThreshold_strictEven_ground_source_ne_zero"
+      ],
+      "source_path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\repo\\Zeta23\\CCM\\NativeDeepThresholdEvenMoment.lean",
+      "log_path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\validation\\native-consumers\\NativeDeepThresholdEvenMoment.log",
+      "olean_path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\repo\\.lake\\build\\lib\\lean\\Zeta23\\CCM\\NativeDeepThresholdEvenMoment.olean"
+    },
+    {
+      "module": "Zeta23.CCM.NativeDetectorSchur",
+      "source_sha256": "cbcd315c087b929c61383cddff2a01cee5cf08a309999bfa6f26eb4c8126022d",
+      "log_sha256": "31f6d5edf90dde6d150eceb3781e7946664bdbdd9c957a72b92bc0ea23c41081",
+      "olean_sha256": "5be78d41d27d3d295367c429790ff8293b7dda205a8b5310fc2d9e692071deb6",
+      "printed_roots": [
+        "Zeta23.CCM.nativePoleNeutralParity_predecessor_compression_eq",
+        "Zeta23.CCM.nativeDetectorPredecessorEquiv_inverse_bound",
+        "Zeta23.CCM.nativeDetectorComplement_finrank",
+        "Zeta23.CCM.nativeDetectorCoupling_shift_eq_unshifted",
+        "Zeta23.CCM.nativeDetectorPredecessorEquiv_eq_compression",
+        "Zeta23.CCM.nativeDetectorSchur_completedSquare",
+        "Zeta23.CCM.nativeDetectorSchur_original_depth"
+      ],
+      "source_path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\repo\\Zeta23\\CCM\\NativeDetectorSchur.lean",
+      "log_path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\validation\\native-consumers\\NativeDetectorSchur.log",
+      "olean_path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\repo\\.lake\\build\\lib\\lean\\Zeta23\\CCM\\NativeDetectorSchur.olean"
+    },
+    {
+      "module": "Zeta23.CCM.NativeSelectedGroundSchur",
+      "source_sha256": "0805d689e9a5bf06444e3020542f26142c44cc0e09b4ed587cf26b0b63df56bc",
+      "log_sha256": "a4c11270640012ddd44ba2472d31392758483ec84fb2b6c0e0244a1b874d8425",
+      "olean_sha256": "01b535de25c32ca8b2835c1a594656666bf764517cfc77f824cab54757b2ba2d",
+      "printed_roots": [
+        "Zeta23.CCM.nativeSelectedGroundPredecessorEquiv_inverse_bound",
+        "Zeta23.CCM.nativeSelectedGroundShell_finrank_eq_one",
+        "Zeta23.CCM.nativeSelectedGroundPredecessorEquiv_eq_compression",
+        "Zeta23.CCM.nativeSelectedGroundSchur_kernel_package",
+        "Zeta23.CCM.nativeSelectedGround_shiftedSchur_eq"
+      ],
+      "source_path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\repo\\Zeta23\\CCM\\NativeSelectedGroundSchur.lean",
+      "log_path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\validation\\native-consumers\\NativeSelectedGroundSchur.log",
+      "olean_path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\repo\\.lake\\build\\lib\\lean\\Zeta23\\CCM\\NativeSelectedGroundSchur.olean"
+    },
+    {
+      "module": "Zeta23.CCM.DetectorRetainedSchurState",
+      "source_sha256": "0a3a36aef9fa502dcc6664d07693d83d1996a1f543ef4616fb31bd045d21db89",
+      "log_sha256": "1db5d0bd3810c8c9b4585e25bf4414d36a5f8db3c9a4f05d4bb6d174f4378b70",
+      "olean_sha256": "4a72dfcb10c1dbd6e775b85e5a2940680dc698cdcd05689dfaf07f294ec447f6",
+      "printed_roots": [
+        "Zeta23.CCM.nativePoleNeutralParityAmbient_poles",
+        "Zeta23.CCM.nativePoleNeutralParityAmbient_energy",
+        "Zeta23.CCM.exists_detectorRetainedSchurState_of_original_native_trial",
+        "Zeta23.CCM.originalDetector_schur_loss_lower",
+        "Zeta23.CCM.originalDetector_schur_completion",
+        "Zeta23.CCM.selectedGround_shiftedSchur_eq"
+      ],
+      "source_path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\repo\\Zeta23\\CCM\\DetectorRetainedSchurState.lean",
+      "log_path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\validation\\native-consumers\\DetectorRetainedSchurState.log",
+      "olean_path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\repo\\.lake\\build\\lib\\lean\\Zeta23\\CCM\\DetectorRetainedSchurState.olean"
+    },
+    {
+      "module": "Zeta23.CCM.CanonicalTrialResidualChannels",
+      "source_sha256": "8698b68a407788a21a49485bc0e4962f5a285338c921857ad2aec6a263cd981d",
+      "log_sha256": "18adbf8936e92dd212065811ff00407a0b7aef6e88862f4bd665d22a48367476",
+      "olean_sha256": "7a7c090e7b10fdc40cb0971f7109c29eba0c70191a3ae8ba44f655962ec3259f",
+      "printed_roots": [
+        "Zeta23.CCM.signedCanonicalTrialChannel_sum",
+        "Zeta23.CCM.parityCanonicalTrialChannel_sum",
+        "Zeta23.CCM.nativeTrialResidual_add_scalar",
+        "Zeta23.CCM.canonicalTrialResidual_variance",
+        "Zeta23.CCM.canonicalTrialResidual_channelGram",
+        "Zeta23.CCM.poleNeutralEvenCompressedCanonical_isSymmetric",
+        "Zeta23.CCM.poleNeutralOddCompressedCanonical_isSymmetric",
+        "Zeta23.CCM.poleNeutralEvenTrialResidual_variance",
+        "Zeta23.CCM.poleNeutralOddTrialResidual_variance",
+        "Zeta23.CCM.poleNeutralEvenTrialResidual_channelGram",
+        "Zeta23.CCM.poleNeutralOddTrialResidual_channelGram"
+      ],
+      "source_path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\repo\\Zeta23\\CCM\\CanonicalTrialResidualChannels.lean",
+      "log_path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\validation\\native-consumers\\CanonicalTrialResidualChannels.log",
+      "olean_path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\repo\\.lake\\build\\lib\\lean\\Zeta23\\CCM\\CanonicalTrialResidualChannels.olean"
+    },
+    {
+      "module": "Zeta23.CCM.Step123PrimeSeam",
+      "source_sha256": "b0d26ff89834d864f91cdc262515d9a6fc43943793a9177c86601732dfae74fb",
+      "log_sha256": "63454339931a5a17e4d808ef04c313abcf3639b71155b5299d89c9a0b01db567",
+      "olean_sha256": "666f370e8c30faeb5ff92cd7e96bbac3de0efd741bf2ec239b48297cbb1baf3a",
+      "printed_roots": [
+        "Zeta23.CCM.step123_enteringPrimeSourceMatrix_zero",
+        "Zeta23.CCM.step123_qBasis_logSeam_zero"
+      ],
+      "source_path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\repo\\Zeta23\\CCM\\Step123PrimeSeam.lean",
+      "log_path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\validation\\native-consumers\\Step123PrimeSeam.log",
+      "olean_path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\repo\\.lake\\build\\lib\\lean\\Zeta23\\CCM\\Step123PrimeSeam.olean"
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorNativeRetainedSelection",
+      "source_sha256": "097068b4727b776543ddc783f46f5d441dab3645c348e5638f320eb4afb88bf2",
+      "log_sha256": "293051240c4b212c82d3e920aceb3228f863b460a98ce615f514b33860e10bd6",
+      "olean_sha256": "692feabe38a78cde16801ba6d506558f4703080a8b3f3e6c9de2b75c11810052",
+      "printed_roots": [
+        "Zeta23.CCM.three_le_originalDetectorQuarticCutoff",
+        "Zeta23.CCM.exists_originalDetectorFiniteEvenPhase_retained_state",
+        "Zeta23.CCM.exists_originalDetectorFiniteOddPhase_retained_state"
+      ],
+      "source_path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\repo\\Zeta23\\CCM\\OriginalDetectorNativeRetainedSelection.lean",
+      "log_path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\validation\\native-consumers\\OriginalDetectorNativeRetainedSelection.log",
+      "olean_path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\repo\\.lake\\build\\lib\\lean\\Zeta23\\CCM\\OriginalDetectorNativeRetainedSelection.olean"
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorAdmissibleSelector",
+      "source_sha256": "ebb34a9d646a9be7131fa457fecf9b98c29f71d49ab20b18603a4fccccc3643e",
+      "log_sha256": "39e9c1e50de3fbef796fffeb050a199f2fa3b3a5d98f860632c2914a7362952a",
+      "olean_sha256": "65fb4a0aa9b6e5be842cb75b4e75c6f46a758f505f12e76239eefc161fc5ee85",
+      "printed_roots": [
+        "Zeta23.CCM.admissibleDetectorSelector_of_actual_ground"
+      ],
+      "source_path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\repo\\Zeta23\\CCM\\OriginalDetectorAdmissibleSelector.lean",
+      "log_path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\validation\\native-consumers\\OriginalDetectorAdmissibleSelector.log",
+      "olean_path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\repo\\.lake\\build\\lib\\lean\\Zeta23\\CCM\\OriginalDetectorAdmissibleSelector.olean"
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorPaddedRetainedSelection",
+      "source_sha256": "76b76ea208c8d74a8f6351890861276bef104143aae0b97ad95ef182c6925ff3",
+      "log_sha256": "2d2afe753510ff8804d21742f5b82eb946b8b4968aed298751515e015d60a8cd",
+      "olean_sha256": "fcd5a1ceae937536e1048c4516f028c6360a9503a5d5b5b2691af57b573c7ab3",
+      "printed_roots": [
+        "Zeta23.CCM.exists_nativeOriginalDetectorPaddedUnit_depth",
+        "Zeta23.CCM.exists_originalDetectorPaddedPhase_admissible_retained_state"
+      ],
+      "source_path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\repo\\Zeta23\\CCM\\OriginalDetectorPaddedRetainedSelection.lean",
+      "log_path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\validation\\native-consumers\\OriginalDetectorPaddedRetainedSelection.log",
+      "olean_path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\repo\\.lake\\build\\lib\\lean\\Zeta23\\CCM\\OriginalDetectorPaddedRetainedSelection.olean"
+    },
+    {
+      "module": "Zeta23.CCM.NativeCompletionComplexLaplace",
+      "source_sha256": "63917260ba41ea9114a123ce96d4702f3ec83dad6ddf6b5716ff8cea66afd71a",
+      "log_sha256": "eb6e6449ca65eb3e79e5ced45884038cf897547c594dc9ba9db30e84236ff7db",
+      "olean_sha256": "a8ecef91125019ec47bdc09af8e29c3af343108a34c1af5d86f30e9175f41bfa",
+      "printed_roots": [
+        "Zeta23.CCM.nativeRationalCausalKernel_complexDamped_integrableOn",
+        "Zeta23.CCM.nativeRationalCausalKernel_complexLaplace",
+        "Zeta23.CCM.nativeCompletionCorrection_complexLaplace"
+      ],
+      "source_path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\repo\\Zeta23\\CCM\\NativeCompletionComplexLaplace.lean",
+      "log_path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\validation\\native-consumers\\NativeCompletionComplexLaplace.log",
+      "olean_path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\repo\\.lake\\build\\lib\\lean\\Zeta23\\CCM\\NativeCompletionComplexLaplace.olean"
+    },
+    {
+      "module": "Zeta23.CCM.NativeCompletedInputComplexLaplace",
+      "source_sha256": "66ebaa16a0a51ed9989e1f8b1143391a0da9f169ae22e5d1f34c13257d2b7d02",
+      "log_sha256": "864279e3474fca20d75cd264494f5278c5d74ac19224691390f62db00519039f",
+      "olean_sha256": "5c2b087ff17318faf242ff8a804517a3300818eb94865af3d218c6bdcf3b4fab",
+      "printed_roots": [
+        "Zeta23.CCM.nativeCausalComplexDamping_integrable",
+        "Zeta23.CCM.nativeCompletedInput_complexDamping_eq_convolution",
+        "Zeta23.CCM.nativeCompletedInput_complexLaplace_eq_c_mul_drive"
+      ],
+      "source_path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\repo\\Zeta23\\CCM\\NativeCompletedInputComplexLaplace.lean",
+      "log_path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\validation\\native-consumers\\NativeCompletedInputComplexLaplace.log",
+      "olean_path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\repo\\.lake\\build\\lib\\lean\\Zeta23\\CCM\\NativeCompletedInputComplexLaplace.olean"
+    },
+    {
+      "module": "Zeta23.CCM.NativeIntegerKernelComplexLaplace",
+      "source_sha256": "132d86a9b4d8ce482048b19538d13f10ef35b60da5dbc2b425a9a0ae397d3a53",
+      "log_sha256": "f1fc3fbcbfe4b132595a61657d977cbec143bb596c9be48bb1395d6d0287517e",
+      "olean_sha256": "79dac7e4904f2a760bc4f0e361715ce9ae3daf27b58167837904772dcf57db5e",
+      "printed_roots": [
+        "Zeta23.CCM.nativeIntegerLaplaceCoefficient_eq_cpow",
+        "Zeta23.CCM.nativeIntegerLaplaceCoefficient_summable_norm",
+        "Zeta23.CCM.nativeIntegerLaplaceCoefficient_tsum",
+        "Zeta23.CCM.nativePositiveCompletion_complexLaplace_of_half_lt_re"
+      ],
+      "source_path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\repo\\Zeta23\\CCM\\NativeIntegerKernelComplexLaplace.lean",
+      "log_path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\validation\\native-consumers\\NativeIntegerKernelComplexLaplace.log",
+      "olean_path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\repo\\.lake\\build\\lib\\lean\\Zeta23\\CCM\\NativeIntegerKernelComplexLaplace.olean"
+    },
+    {
+      "module": "Zeta23.CCM.NativePositiveCompletionComplexLaplace",
+      "source_sha256": "4cc3df5964cc1e4fd3261c971d7383aa570dabcda826bd11152ad1ae91a962a3",
+      "log_sha256": "63b3e3be4f622cd9a730f7d3a10ec9b611d4895513a350e1fdf984d384222a5e",
+      "olean_sha256": "f4ae1b3a514fdb5dbdb70c2df632e335003faa71c057901a6e12e66436cd50aa",
+      "printed_roots": [
+        "Zeta23.CCM.nativePositiveCompletionLaplace_analyticAt",
+        "Zeta23.CCM.nativePositiveCompletion_complexLaplace",
+        "Zeta23.CCM.nativePositiveCompletion_complexLaplace_half"
+      ],
+      "source_path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\repo\\Zeta23\\CCM\\NativePositiveCompletionComplexLaplace.lean",
+      "log_path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\validation\\native-consumers\\NativePositiveCompletionComplexLaplace.log",
+      "olean_path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\repo\\.lake\\build\\lib\\lean\\Zeta23\\CCM\\NativePositiveCompletionComplexLaplace.olean"
+    },
+    {
+      "module": "Zeta23.CCM.NativeIntegerDriveComplexLaplace",
+      "source_sha256": "e23f6bc6c04dd4714e32b82a64b14ca64b44f2f4cb774e1b1122cf4dd71973c2",
+      "log_sha256": "316905f12ed05745f4547c4fbddeb275768bebc48e6132edfb5ae12929e06f54",
+      "olean_sha256": "d02d41d97d06fda40d94f76612fd55c16bf977cde4c1e4f3163fa5f5391cb26e",
+      "printed_roots": [
+        "Zeta23.CCM.nativeIntegerDriveLaplaceCoefficient_eq_term",
+        "Zeta23.CCM.nativeIntegerDriveLaplaceCoefficient_summable_norm",
+        "Zeta23.CCM.nativeIntegerDriveLaplaceCoefficient_tsum",
+        "Zeta23.CCM.nativeOriginalSource_complexDamping_integrable",
+        "Zeta23.CCM.nativeOriginalIntegerDrive_complexLaplace_of_half_lt_re"
+      ],
+      "source_path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\repo\\Zeta23\\CCM\\NativeIntegerDriveComplexLaplace.lean",
+      "log_path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\validation\\native-consumers\\NativeIntegerDriveComplexLaplace.log",
+      "olean_path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\repo\\.lake\\build\\lib\\lean\\Zeta23\\CCM\\NativeIntegerDriveComplexLaplace.olean"
+    },
+    {
+      "module": "Zeta23.CCM.NativeCompletedInputZetaLaplace",
+      "source_sha256": "98017007b9ea60b76e2a20bc8fe58b3ceed5f82048316588e43251b8510fd579",
+      "log_sha256": "760d7a8cde90041c55844b6715b4d0135c4194f3838dbeddb746dba3402b0085",
+      "olean_sha256": "7afcb2b0d0887676e12f454e4b426df14c52eb84d2789332aee4a042296494fa",
+      "printed_roots": [
+        "Zeta23.CCM.nativeOriginalIntegerDriveLaplace_analyticAt",
+        "Zeta23.CCM.nativeOriginalSourceLaplace_analyticAt",
+        "Zeta23.CCM.nativeOriginalIntegerDrive_complexLaplace",
+        "Zeta23.CCM.nativeCompletedInput_complexLaplace",
+        "Zeta23.CCM.nativeCompletedInput_complexLaplace_half"
+      ],
+      "source_path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\repo\\Zeta23\\CCM\\NativeCompletedInputZetaLaplace.lean",
+      "log_path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\validation\\native-consumers\\NativeCompletedInputZetaLaplace.log",
+      "olean_path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\repo\\.lake\\build\\lib\\lean\\Zeta23\\CCM\\NativeCompletedInputZetaLaplace.olean"
+    }
+  ],
+  "theorem_authority": "Exact compiled declarations only. Padded source retained selector is produced for each requested phase with both phase normalizations. c and Y=c*U product transforms are proved. Actual a=R*zeta is proved on Rew>0 away from w=1/2; its removable value at w=1/2 is separately proved as1/2 using the true zeta residue. Actual U=-zeta-prime*J and Y=R*(-zeta-prime)*J are proved on Rew>0 away from w=1/2, with entire actual J and separate literal Y transform at w=1/2 equal to0. No active candidates remain in this agent scope. M20 composition and RH remain separate/OPEN."
+}

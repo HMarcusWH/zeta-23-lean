@@ -1,0 +1,7 @@
+'Zeta23.CCM.nativeTrial_evenOdd_norm_sq_split' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.nativeGlobalBottom_mul_norm_sq_le_given_trial_energy' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.CCM.nativeGlobalBottom_le_neg_depth_of_given_unit_trial' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

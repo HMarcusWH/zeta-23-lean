@@ -1,0 +1,12 @@
+Zeta23\CCM\NativePositiveCompletionComplexLaplace.lean:81:47: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Zeta23\CCM\NativePositiveCompletionComplexLaplace.lean:92:72: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Zeta23\CCM\NativePositiveCompletionComplexLaplace.lean:103:4: warning: 'change nativePositiveCompletionLaplace z = _' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+'Zeta23.CCM.nativePositiveCompletionLaplace_analyticAt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.nativePositiveCompletion_complexLaplace' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.nativePositiveCompletion_complexLaplace_half' depends on axioms: [propext, Classical.choice, Quot.sound]

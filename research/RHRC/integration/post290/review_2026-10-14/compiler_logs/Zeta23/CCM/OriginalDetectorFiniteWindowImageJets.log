@@ -1,0 +1,8 @@
+'Zeta23.CCM.originalDetectorFiniteWindow_iteratedDeriv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.originalDetectorFiniteWindowCoeff_norm_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.norm_originalDetectorFiniteWindow_iteratedDeriv_le' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.CCM.originalDetectorFiniteWindowImage_iteratedDeriv_error_le_budget' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

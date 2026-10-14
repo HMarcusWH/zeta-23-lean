@@ -1,4 +1,4 @@
-import Zeta23.CCM.PoleNeutralCompactInverse
+import Zeta23.CCM.PoleNeutralCompactInverseCore
 import Zeta23.CCM.UniversalSincSourceFacade
 import Mathlib.MeasureTheory.Function.LpSpace.Indicator
 import Mathlib.MeasureTheory.Function.LpSeminorm.SMul

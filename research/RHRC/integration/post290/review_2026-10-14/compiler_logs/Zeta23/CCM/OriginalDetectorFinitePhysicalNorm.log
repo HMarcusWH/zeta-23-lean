@@ -1,0 +1,11 @@
+Zeta23/CCM/OriginalDetectorFinitePhysicalNorm.lean:49:19: warning: This simp argument is unused:
+  Complex.mul_re
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [pow_two]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+'Zeta23.CCM.localizedFiniteFunction_energy_eq_norm_sq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.originalDetectorFinitePoleImage_physical_energy_eq_norm_sq' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

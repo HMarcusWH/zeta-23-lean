@@ -1,0 +1,7 @@
+Zeta23\CCM\FiniteBottomGapSelector.lean:30:26: warning: 'ring' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+Zeta23\CCM\FiniteBottomGapSelector.lean:30:26: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+'Zeta23.CCM.exists_finite_real_gap_selector' depends on axioms: [propext, Classical.choice, Quot.sound]

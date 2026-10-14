@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Compiler log mutations; synthetic logs supply no Lean theorem authority."""
 import unittest
-from build_formal_receipt import compiler_records
+from build_formal_receipt import compiler_records,audit_roots
 
 
 class CompilerLogMutations(unittest.TestCase):
@@ -35,6 +35,25 @@ class CompilerLogMutations(unittest.TestCase):
     def test_empty_scope_rejected(self):
         with self.assertRaisesRegex(ValueError,'empty compiler root scope'):
             compiler_records(self.fixture().splitlines()[0],{},self.head,self.tree)
+    def test_constructor_requires_explicit_definition_kind(self):
+        log=self.fixture().replace('THEOREM\t0','DEFINITION\t0')
+        with self.assertRaisesRegex(ValueError,'identity/kind mismatch'):
+            compiler_records(log,self.roots,self.head,self.tree)
+        compiler_records(log,self.roots,self.head,self.tree,{'Mock.theorem':'DEFINITION'})
+        with self.assertRaisesRegex(ValueError,'identity/kind mismatch'):
+            compiler_records(self.fixture(),self.roots,self.head,self.tree,{'Mock.theorem':'DEFINITION'})
+    def test_multiline_source_inventory_keeps_exact_kinds(self):
+        source='''(``Mock.theorem, "Mock.Module", "THEOREM"),
+        (``Mock.constructor,
+          "Mock.Module", "DEF")'''
+        roots,kinds=audit_roots(source)
+        self.assertEqual(roots,{'Mock.theorem':'Mock.Module','Mock.constructor':'Mock.Module'})
+        self.assertEqual(kinds,{'Mock.theorem':'THEOREM','Mock.constructor':'DEFINITION'})
+    def test_missing_duplicate_or_unknown_source_kind_rejected(self):
+        for source in ['(``Mock.root, "Mock.Module")',
+            '(``Mock.root, "Mock.Module", "UNREVIEWED")',
+            '(``Mock.root, "Mock.Module", "DEF"), (``Mock.root, "Mock.Module", "DEF")']:
+            with self.assertRaises(ValueError):audit_roots(source)
 
 
 if __name__=='__main__':unittest.main()

@@ -1,0 +1,9 @@
+'Zeta23.CCM.originalDetectorRawTailBudget_mul_quarticWeight_tendsto_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.CCM.originalDetectorPaddedPoleBudget_mul_quarticWeight_tendsto_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.CCM.originalDetectorPaddedPoleBudget_mul_aperture_quarticWeight_tendsto_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

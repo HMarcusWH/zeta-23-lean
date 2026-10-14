@@ -1,5 +1,6 @@
 import Zeta23.CCM.OriginalDetectorFinitePoleImageNonzero
 import Zeta23.CCM.OriginalDetectorFinitePhysicalNorm
+import Zeta23.CCM.OriginalDetectorPaddedFinitePhaseSymmetry
 
 /-!
 # The full native two-dimensional plane of the actual finite detector
@@ -112,9 +113,21 @@ theorem originalDetectorFinitePhaseVector_nativeEnergy (σ L c : ℝ) (hL : 0 < 
     originalDetectorFinitePhasePlane_inner_eq_nativeEnergy]
   simp [originalDetectorFinitePhaseMatrixValue, pow_two]
 
+/-- Canonical exact circulant Gram identity for the required padded image. -/
+alias originalDetectorPhaseGram_eq := originalDetectorPaddedFinitePhaseGram_circulant
+
+/-- Canonical exact circulant native-energy identity before minimization. -/
+alias originalDetectorPhaseEnergy_eq := originalDetectorPaddedFinitePhaseEnergy_circulant
+
+/-- The complete generalized Rayleigh quotient retains the full Gram and energy. -/
+alias originalDetectorPhaseRayleigh_eq := originalDetectorPaddedFinitePhasePlane_rayleigh_identity
+
 end Zeta23.CCM
 
 #print axioms Zeta23.CCM.originalDetectorFinitePhasePlane_inner_eq_Gram
 #print axioms Zeta23.CCM.originalDetectorFinitePhasePlane_inner_eq_nativeEnergy
 #print axioms Zeta23.CCM.originalDetectorFinitePhasePlane_rayleigh_identity
 #print axioms Zeta23.CCM.originalDetectorFinitePhaseVector_nativeEnergy
+#print axioms Zeta23.CCM.originalDetectorPhaseGram_eq
+#print axioms Zeta23.CCM.originalDetectorPhaseEnergy_eq
+#print axioms Zeta23.CCM.originalDetectorPhaseRayleigh_eq

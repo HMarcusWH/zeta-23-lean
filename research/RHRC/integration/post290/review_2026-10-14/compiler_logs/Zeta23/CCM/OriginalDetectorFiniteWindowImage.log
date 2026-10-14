@@ -1,0 +1,10 @@
+'Zeta23.CCM.originalDetectorFiniteWindow_eq_fourier' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.originalDetectorFiniteWindow_mul_dividedLobe' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.originalDetectorFiniteWindowImageFinsupp_support' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.originalDetectorFiniteWindowImageFinsupp_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.localizedFiniteFunction_originalDetectorFiniteWindowImageCoefficients' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.CCM.originalDetectorFiniteWindowImage_error_le_budget' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

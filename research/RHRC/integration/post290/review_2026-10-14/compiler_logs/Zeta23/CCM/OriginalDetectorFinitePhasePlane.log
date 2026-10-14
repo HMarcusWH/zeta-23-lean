@@ -1,0 +1,11 @@
+'Zeta23.CCM.originalDetectorFinitePhasePlane_inner_eq_Gram' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.originalDetectorFinitePhasePlane_inner_eq_nativeEnergy' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.CCM.originalDetectorFinitePhasePlane_rayleigh_identity' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.CCM.originalDetectorFinitePhaseVector_nativeEnergy' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.originalDetectorPhaseGram_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.originalDetectorPhaseEnergy_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.originalDetectorPhaseRayleigh_eq' depends on axioms: [propext, Classical.choice, Quot.sound]

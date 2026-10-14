@@ -1,0 +1,277 @@
+{
+  "schema": "post290.d2-approved-production-first-receipts.v1",
+  "timestamp_utc": "2026-10-14T13:13:09.340008+00:00",
+  "run_id": 38569316691,
+  "head": "a55fbeeed6500bffe2ccac3960258ca5c590c7ee",
+  "tree": "7ffdf5095db2d54ef97897c19797886d145b65d2",
+  "freeze_job": 115870018390,
+  "freeze_classification": "REGRESSION_GATE",
+  "freeze_disposition": "APPROVED_LIMITS_SOURCE_BOUND_INPUTS_AND_REAL_SDK_ROUNDTRIP_PRESERVED",
+  "control_tests": 24,
+  "wave_counts": [
+    256,
+    204
+  ],
+  "resource_limits": {
+    "max_depth": 48,
+    "max_nodes": 8192,
+    "precision_bits": 512,
+    "seconds": 1800
+  },
+  "max_concurrency": 8,
+  "max_search_runner_hours": 230,
+  "original_receipt_hashes_preserved": 288,
+  "plan_artifact_id": 11896384642,
+  "plan_file_sha256": "433107bbfe412625223fe1f08da36ca7d837bd82e7a536fc50a2d447886cf6ef",
+  "source_control_hashes": {
+    ".github/workflows/rhrc_post290_unrun460.yml": {
+      "sha256": "5535214faa3cd893e495c915f965db3c1134f07570ebcfb2db243ce199e6626d",
+      "matches_checked_commit": true
+    },
+    ".github/workflows/rhrc_post290_unrun460_check_batch.yml": {
+      "sha256": "4779cf7cb3cb1733d4be030324304b30ea11a8db3b95c2130684442cbabef7ae",
+      "matches_checked_commit": true
+    },
+    "research/RHRC/integration/post290/D2_UNRUN460_APPROVED_PROTOCOL.json": {
+      "sha256": "21c3e0943be74bda887121b9126a57051a233a9d971beac35d97afd11d1ac64f",
+      "matches_checked_commit": true
+    },
+    "research/RHRC/integration/post290/D2_UNRUN460_CHILDREN.json": {
+      "sha256": "4a2bcb50ee377279362f9c2f895ffdd79c593929c64a3dbb6c9ca3f810aae70d",
+      "matches_checked_commit": true
+    },
+    "research/RHRC/routes/R003_ccm_bridge/post290/k3_checkpoint_upload.cjs": {
+      "sha256": "1c96546f38a92d50212b38c33c9cba04702ed3e6d6571f30f5083992966d9522",
+      "matches_checked_commit": true
+    },
+    "research/RHRC/routes/R003_ccm_bridge/post290/k3_continue_unrun460.py": {
+      "sha256": "c042e4e4a94a8dd8f027ff3ef59f34879734e7b04ca1c120123f5b5260293f3e",
+      "matches_checked_commit": true
+    },
+    "research/RHRC/routes/R003_ccm_bridge/post290/test_k3_unrun460.py": {
+      "sha256": "570114e471c54f4aaf1280aa2a01b955d861d958658c24a4073a3b28d453a995",
+      "matches_checked_commit": true
+    }
+  },
+  "preflight": {
+    "run": "38569316691",
+    "source": "a55fbeeed6500bffe2ccac3960258ca5c590c7ee",
+    "arithmetic_started": false
+  },
+  "first_durable_budget_claim": {
+    "budget": "CLAIMED_ONCE_NO_RETRY",
+    "index": 4,
+    "job": {
+      "Q": 13,
+      "ancestors": [
+        {
+          "file": "k3_Q13_even.json",
+          "left": [
+            537825875702341,
+            204800000000000
+          ],
+          "right": [
+            10756591622018977,
+            4096000000000000
+          ],
+          "sha256": "271d3f18bb7a678ff6b1fccfadba06c9a5cedf18a866a70a542718eafb5b5800",
+          "unresolved_index": 0
+        },
+        {
+          "file": "k3_Q13_even.json",
+          "left": [
+            10756591622018977,
+            4096000000000000
+          ],
+          "right": [
+            5378332864995567,
+            2048000000000000
+          ],
+          "sha256": "271d3f18bb7a678ff6b1fccfadba06c9a5cedf18a866a70a542718eafb5b5800",
+          "unresolved_index": 6
+        },
+        {
+          "file": "k3_Q13_even.json",
+          "left": [
+            5378332864995567,
+            2048000000000000
+          ],
+          "right": [
+            1344601743241931,
+            512000000000000
+          ],
+          "sha256": "271d3f18bb7a678ff6b1fccfadba06c9a5cedf18a866a70a542718eafb5b5800",
+          "unresolved_index": 5
+        },
+        {
+          "file": "k3_Q13_even.json",
+          "left": [
+            1344601743241931,
+            512000000000000
+          ],
+          "right": [
+            168084481401761,
+            64000000000000
+          ],
+          "sha256": "271d3f18bb7a678ff6b1fccfadba06c9a5cedf18a866a70a542718eafb5b5800",
+          "unresolved_index": 4
+        },
+        {
+          "file": "k3_Q13_even.json",
+          "left": [
+            168084481401761,
+            64000000000000
+          ],
+          "right": [
+            84079294686959,
+            32000000000000
+          ],
+          "sha256": "271d3f18bb7a678ff6b1fccfadba06c9a5cedf18a866a70a542718eafb5b5800",
+          "unresolved_index": 3
+        },
+        {
+          "file": "k3_Q13_even.json",
+          "left": [
+            84079294686959,
+            32000000000000
+          ],
+          "right": [
+            21038350664779,
+            8000000000000
+          ],
+          "sha256": "271d3f18bb7a678ff6b1fccfadba06c9a5cedf18a866a70a542718eafb5b5800",
+          "unresolved_index": 2
+        },
+        {
+          "file": "k3_Q13_even.json",
+          "left": [
+            21038350664779,
+            8000000000000
+          ],
+          "right": [
+            2639057329617,
+            1000000000000
+          ],
+          "sha256": "271d3f18bb7a678ff6b1fccfadba06c9a5cedf18a866a70a542718eafb5b5800",
+          "unresolved_index": 1
+        }
+      ],
+      "component": 0,
+      "id": "Q13_even_C00_P07_R00001_P0",
+      "left": [
+        86463365249873753,
+        32768000000000000
+      ],
+      "parent_job": "Q13_even_C00_P07",
+      "parent_leaf": 1,
+      "parity": "even",
+      "pass": 2,
+      "right": [
+        69173345265302223,
+        26214400000000000
+      ]
+    },
+    "plan_sha256": "433107bbfe412625223fe1f08da36ca7d837bd82e7a536fc50a2d447886cf6ef",
+    "protocol": "SECOND_UNRUN_CAP_CONTINUATION_2026_10_14_v1",
+    "resources": {
+      "max_depth": 48,
+      "max_nodes": 8192,
+      "precision_bits": 512,
+      "seconds": 1800
+    },
+    "run_id": 38569316691
+  },
+  "claim_artifact_id": 11897435424,
+  "first_checkpoints": [
+    {
+      "name": "k3-unrun460-cp-004-000",
+      "artifact_id": 11896733618,
+      "tested_nodes": 0,
+      "accepted": 0,
+      "pending": 1,
+      "status": "UNRESOLVED",
+      "negative_stop": false,
+      "elapsed_seconds": 0,
+      "raw_sha256": "98b59a8412c0546500de9d8add60261405bd411b41fe5b900c175f6cfa584d66"
+    },
+    {
+      "name": "k3-unrun460-cp-004-001",
+      "artifact_id": 11897610363,
+      "tested_nodes": 7,
+      "accepted": 2,
+      "pending": 4,
+      "status": "UNRESOLVED",
+      "negative_stop": false,
+      "elapsed_seconds": 43.22759775499998,
+      "raw_sha256": "258f1b246d8fc255ddd469abf5a766c529ab3722d88cbb4f77c9f5a7e0bb7b29"
+    }
+  ],
+  "arithmetic_start_confirmed": true,
+  "first_child_complete": false,
+  "all_scientific_dispositions_pending": true,
+  "authority": "FiniteArbsearchprogressonly;notcompleteD2orLean/RHproof",
+  "D2": "OPEN",
+  "RH": "OPEN",
+  "artifact_reviews": [
+    {
+      "artifact_id": 11896384642,
+      "name": "k3-unrun460-plan",
+      "zip_sha256": "6bdc525c62ccad8c816554bc730db4eb0c2def30b412548d900f838199ef1dc4",
+      "api_digest_verified": true,
+      "files": [
+        {
+          "path": "plan.json",
+          "sha256": "433107bbfe412625223fe1f08da36ca7d837bd82e7a536fc50a2d447886cf6ef"
+        }
+      ]
+    },
+    {
+      "artifact_id": 11896349872,
+      "name": "k3-unrun460-preflight",
+      "zip_sha256": "ff5f5c496a7cf49f1a8288a7b9b531abbc9c37501de56a7d298a7fc4d1481d1c",
+      "api_digest_verified": true,
+      "files": [
+        {
+          "path": "preflight.json",
+          "sha256": "b8f5cd72f6d9d1b3af2e69a30b54e21d3e35ead31d6f3f8ba6c5ab82f8839265"
+        }
+      ]
+    },
+    {
+      "artifact_id": 11897435424,
+      "name": "k3-unrun460-budget-4",
+      "zip_sha256": "4ce4bc2868290badee344b058bc5ea04eb1ed5ecc140a768f8fe265ee2548c73",
+      "api_digest_verified": true,
+      "files": [
+        {
+          "path": "budget-claim.json",
+          "sha256": "39901635b19ad8398457c2c7e17f484c4b509c8b66a5a29e74991554b1a1fad8"
+        }
+      ]
+    },
+    {
+      "artifact_id": 11896733618,
+      "name": "k3-unrun460-cp-004-000",
+      "zip_sha256": "4ffb8c2002a3f6abf3a8e6c0cdc72427aeb1bc3fb2f510b0a759ac453b20ea24",
+      "api_digest_verified": true,
+      "files": [
+        {
+          "path": "result.json",
+          "sha256": "98b59a8412c0546500de9d8add60261405bd411b41fe5b900c175f6cfa584d66"
+        }
+      ]
+    },
+    {
+      "artifact_id": 11897610363,
+      "name": "k3-unrun460-cp-004-001",
+      "zip_sha256": "02df1c7309ef76f450852da8ca260f6cb43d593f3762beb5fa699588f2f5ebe7",
+      "api_digest_verified": true,
+      "files": [
+        {
+          "path": "checkpoint-001.json",
+          "sha256": "258f1b246d8fc255ddd469abf5a766c529ab3722d88cbb4f77c9f5a7e0bb7b29"
+        }
+      ]
+    }
+  ]
+}
