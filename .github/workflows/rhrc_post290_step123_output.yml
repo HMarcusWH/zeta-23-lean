@@ -47,6 +47,7 @@ jobs:
             Zeta23.CCM.NativeWeilResponseBounds
             Zeta23.CCM.NativeWeilResponse
             Zeta23.CCM.OriginalDetectorNativeForcing
+            Zeta23.CCM.NativeExteriorSourceRecord
             Zeta23.CCM.NativeCompletionPublicAPI
             Zeta23.CCM.OriginalSincNativeConvolution
             Zeta23.CCM.NativeCompactTranslateCalculus
