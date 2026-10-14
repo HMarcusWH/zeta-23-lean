@@ -214,6 +214,58 @@ theorem originalNativeExterior_residual_eq
   ring
 
 
+/-- On every real physical aperture there is ONE exact arithmetic
+cutoff for all four original signed prime-history arguments. This is
+a source-supported local finiteness statement, NOT a global L2 bound
+or a numerical prime truncation. -/
+theorem originalNativeFourHistories_common_finite_cutoff
+    (a x : ℝ)
+    (hx : x ∈ Icc (0 : ℝ)
+      (Zeta23.ExceptionalZero.fixedOriginalSincTrialAperture a)) :
+    let L := Zeta23.ExceptionalZero.fixedOriginalSincTrialAperture a
+    let c := Zeta23.ExceptionalZero.fixedOriginalSincLobeCenter
+    let T := max (L - c) c
+    let N := nativeHistoryCutoff UniversalSinc.fixedScale T + 1
+    nativeOriginalKernelPrimeField (x - c) =
+        ∑ n ∈ Finset.range N, (nativePrimeCoefficient n : ℂ) *
+          universalSincKernel UniversalSinc.fixedScale (x - c - Real.log n) ∧
+    nativeOriginalKernelPrimeField (c - x) =
+        ∑ n ∈ Finset.range N, (nativePrimeCoefficient n : ℂ) *
+          universalSincKernel UniversalSinc.fixedScale (c - x - Real.log n) ∧
+    nativeOriginalKernelPrimeField (L - x - c) =
+        ∑ n ∈ Finset.range N, (nativePrimeCoefficient n : ℂ) *
+          universalSincKernel UniversalSinc.fixedScale (L - x - c - Real.log n) ∧
+    nativeOriginalKernelPrimeField (x + c - L) =
+        ∑ n ∈ Finset.range N, (nativePrimeCoefficient n : ℂ) *
+          universalSincKernel UniversalSinc.fixedScale (x + c - L - Real.log n) := by
+  let L := Zeta23.ExceptionalZero.fixedOriginalSincTrialAperture a
+  let c := Zeta23.ExceptionalZero.fixedOriginalSincLobeCenter
+  let T := max (L - c) c
+  let q := universalSincKernel UniversalSinc.fixedScale
+  have hq : NativeComplexSourceSupported UniversalSinc.fixedScale q :=
+    universalSincKernel_support UniversalSinc.fixedScale_pos
+  have h1 : x - c ≤ T := by
+    dsimp [T]
+    exact (sub_le_sub_right hx.2 c).trans (le_max_left _ _)
+  have h2 : c - x ≤ T := by
+    calc
+      c - x ≤ c := by linarith [hx.1]
+      _ ≤ T := le_max_right _ _
+  have h3 : L - x - c ≤ T := by
+    calc
+      L - x - c ≤ L - c := by linarith [hx.1]
+      _ ≤ T := le_max_left _ _
+  have h4 : x + c - L ≤ T := by
+    calc
+      x + c - L ≤ c := by linarith [hx.2]
+      _ ≤ T := le_max_right _ _
+  dsimp only
+  exact ⟨nativeComplexPrimeField_eq_history_sum hq h1,
+    nativeComplexPrimeField_eq_history_sum hq h2,
+    nativeComplexPrimeField_eq_history_sum hq h3,
+    nativeComplexPrimeField_eq_history_sum hq h4⟩
+
+
 end Zeta23.CCM
 
 #print axioms Zeta23.CCM.originalSmoothWeilResponse_reconstruction
@@ -222,3 +274,5 @@ end Zeta23.CCM
 
 #print axioms Zeta23.CCM.originalNativeExterior_history_eq
 #print axioms Zeta23.CCM.originalNativeExterior_residual_eq
+
+#print axioms Zeta23.CCM.originalNativeFourHistories_common_finite_cutoff

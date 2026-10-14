@@ -1,4 +1,5 @@
 import Zeta23.CCM.NativeWeilResponse
+import Zeta23.CCM.NativeWeilResponseBounds
 import Zeta23.CCM.CanonicalPhysicalTrialRealization
 import Zeta23.CCM.DetectorRetainedSchurState
 
@@ -16,7 +17,7 @@ establish the four explicit original histories or the final H1 error.
 
 noncomputable section
 
-open MeasureTheory Complex
+open MeasureTheory Complex Set
 open scoped ComplexConjugate
 
 namespace Zeta23.CCM
@@ -200,6 +201,61 @@ theorem originalDetector_projectedForcing_eq
     exact originalDetectorNativeForcing_physical_mixed σ s p v
 
 
+/-- The actual source-independent Weil part of the native forcing
+error. The constant C_Q is constructed from the fixed gamma/prime
+data; only the existing true H1 and finite physical isometry bounds
+are used. The separate eta term and its actual source H1 transport
+remain a required next lemma. -/
+theorem originalDetector_forcingWeilError_bound :
+    ∃ C_Q : ℝ, 0 < C_Q ∧
+      ∀ (σ : ReversalParity) (L : ℝ) (hL : 0 < L) (K : ℕ)
+        (e : ℝ → ℂ) (he : ContDiff ℝ 2 e)
+        (hs : tsupport e ⊆ Icc (0 : ℝ) L)
+        (v : nativePoleNeutralParitySpace σ L K),
+        ‖Zeta23.zetaZeroConfig.W e
+          (finitePhysicalSynthesis L K
+            (canonicalNativeCoefficientInclusion σ L K v))‖ ≤
+        C_Q * (1 + L) * Real.exp (L / 2) * nativePhysicalH1Norm e *
+          (Real.sqrt (1 + (2 * Real.pi * K / L) ^ 2) * ‖v‖) := by
+  obtain ⟨C_Q, hC, hB⟩ := nativeWeilResponse_bilinear_bound
+  refine ⟨C_Q, hC, ?_⟩
+  intro σ L hL K e he hs v
+  let f : ℝ → ℂ :=
+    finitePhysicalSynthesis L K (canonicalNativeCoefficientInclusion σ L K v)
+  have hvlegal : canonicalNativeCoefficientInclusion σ L K v ∈
+      euclideanBoundaryFlatSubspace K := by
+    rw [canonicalNativeCoefficientInclusion_eq_ambient]
+    exact nativePoleNeutralParityAmbient_legal σ L K v
+  have hv : ContDiff ℝ 2 f :=
+    contDiff_localizedFiniteVector_of_boundaryFlat K _ hL
+      ((mem_euclideanBoundaryFlatSubspace_iff_boundaryFlat K _).mp hvlegal)
+  have hvs : tsupport f ⊆ Icc (0 : ℝ) L := by
+    apply closure_minimal _ isClosed_Icc
+    intro x hx
+    by_contra hout
+    apply hx
+    change finitePhysicalSynthesis L K
+      (canonicalNativeCoefficientInclusion σ L K v) x = 0
+    unfold finitePhysicalSynthesis
+    rw [localizedFiniteVector_eq_indicator, Set.indicator_of_notMem hout]
+  have hW := hB L e f hL.le he hv hs hvs
+  have hH := canonicalNativePhysicalSynthesis_H1_bound σ hL K v
+  have hH' : nativePhysicalH1Norm f ≤
+      Real.sqrt (1 + (2 * Real.pi * K / L) ^ 2) * ‖v‖ := hH
+  have hscale : 0 ≤ C_Q * (1 + L) * Real.exp (L / 2) *
+        nativePhysicalH1Norm e := by
+    have hc1 : 0 ≤ (1 + L : ℝ) := by linarith
+    positivity
+  calc
+    ‖Zeta23.zetaZeroConfig.W e f‖ ≤
+      C_Q * (1 + L) * Real.exp (L / 2) *
+        nativePhysicalH1Norm e * nativePhysicalH1Norm f := hW
+    _ ≤ C_Q * (1 + L) * Real.exp (L / 2) *
+      nativePhysicalH1Norm e *
+        (Real.sqrt (1 + (2 * Real.pi * K / L) ^ 2) * ‖v‖) := by
+      exact mul_le_mul_of_nonneg_left hH' hscale
+
+
 end Zeta23.CCM
 
 #print axioms Zeta23.CCM.originalDetector_nativeWeil_mixed
@@ -210,3 +266,5 @@ end Zeta23.CCM
 #print axioms Zeta23.CCM.originalDetectorNativeForcing_eq_predecessor_plus_coupling
 
 #print axioms Zeta23.CCM.originalDetector_projectedForcing_eq
+
+#print axioms Zeta23.CCM.originalDetector_forcingWeilError_bound

@@ -3,7 +3,7 @@ from copy import deepcopy
 import hashlib
 import json
 from pathlib import Path
-from output_contract_check import release_gaps,frozen_spec,FORMAL_JOB,REGRESSION_JOB,NATIVE_JOB,RESEARCH_JOBS
+from output_contract_check import release_gaps,frozen_spec,frozen_export_kinds,FORMAL_JOB,REGRESSION_JOB,NATIVE_JOB,RESEARCH_JOBS
 
 def fixture():
     tree = 'a' * 40
@@ -11,9 +11,24 @@ def fixture():
     manifest = frozen_spec()
     for module in manifest['new_lean_modules']:module['status']='COMPLETE_VERIFIED'
     for package in manifest['work_packages']:package['status']='COMPLETE_VERIFIED'
-    declarations=[{'theorem':name,'authority':'PROVED','source_tree':tree,'axiom_audit_pass':True,'axioms':[],
-         'normalized_type':text,'normalized_type_sha256':hashlib.sha256(text.encode()).hexdigest()} for module in manifest['new_lean_modules'] for name in module['proposed_exports']]
-    formal = {'source_tree':tree,'head':'c'*40,'compiler_context':{'head':'c'*40,'tree':tree},'execution_status':'SUCCESS','integrity_status':'PASS','claim_cap':'RH_OPEN','producer_complete':True,'independent_assumption_review_pass':True,'declarations':declarations}
+    frozen_kinds=frozen_export_kinds(manifest)
+    declarations,definitions=[],[]
+    for module in manifest['new_lean_modules']:
+        for name in module['proposed_exports']:
+            kind=frozen_kinds[name]
+            row={'declaration':name,'declaration_kind':kind,
+                 'authority':'PROVED' if kind=='THEOREM' else 'DEFINED_DATA_NOT_A_THEOREM',
+                 'source_tree':tree,'axiom_audit_pass':True,'axioms':[],
+                 'normalized_type':text,'normalized_type_sha256':hashlib.sha256(text.encode()).hexdigest()}
+            if kind=='THEOREM':
+                row['theorem']=name
+                declarations.append(row)
+            else:
+                definitions.append(row)
+    formal = {'source_tree':tree,'head':'c'*40,'compiler_context':{'head':'c'*40,'tree':tree},
+              'execution_status':'SUCCESS','integrity_status':'PASS','claim_cap':'RH_OPEN',
+              'producer_complete':True,'independent_assumption_review_pass':True,
+              'declarations':declarations,'definitions':definitions}
     d2 = {'status':'D2_COMPLETE','complete_layers':30,'independent_nonpartial_verified':True,
           'both_parities':True,'physical_seams_verified':True,'unresolved_tiles':0,
           'unrun_tiles':0,'missing_artifacts':0,'unverified_tiles':0,'nonfinite_enclosures':0,'source_tree':tree,'terminal_claim':'RH_OPEN','not_a_lean_proof':True}
@@ -56,6 +71,10 @@ def run():
         change(args)
         assert release_gaps(*args), name
         rejected.append(name)
+    mutation('structure recast as theorem authority',lambda a:a[1]['definitions'][0].update(authority='PROVED'))
+    mutation('structure reclassified as theorem',lambda a:a[1]['definitions'][0].update(declaration_kind='THEOREM'))
+    mutation('definition source tree drift',lambda a:a[1]['definitions'][0].update(source_tree='b'*40))
+    mutation('missing definition receipt',lambda a:a[1]['definitions'].pop(0))
     mutation('stale theorem type',lambda a:a[1]['declarations'][0].update(normalized_type='changed'))
     mutation('wrong compiler tree',lambda a:a[1]['declarations'][0].update(source_tree='b'*40))
     mutation('generic interface as producer',lambda a:a[1]['declarations'][0].update(authority='PAPER'))
