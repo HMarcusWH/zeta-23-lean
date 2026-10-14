@@ -56,21 +56,22 @@ theorem originalDetectorNativeResponse_reconstruction
       exact (not_lt_of_ge h.1) hx0
     have hr : x ∉ Ioi L := by
       intro h
+      have hxR : L < x := h
       linarith
-    simp [Set.indicator_of_mem hl, Set.indicator_of_not_mem hm,
-      Set.indicator_of_not_mem hr]
+    simp [Set.indicator_of_mem hl, Set.indicator_of_notMem hm,
+      Set.indicator_of_notMem hr]
   · by_cases hxL : x ≤ L
     · have hl : x ∉ Iio (0 : ℝ) := hx0
       have hm : x ∈ Icc (0 : ℝ) L := ⟨le_of_not_gt hx0, hxL⟩
       have hr : x ∉ Ioi L := not_lt_of_ge hxL
-      simp [Set.indicator_of_not_mem hl, Set.indicator_of_mem hm,
-        Set.indicator_of_not_mem hr]
+      simp [Set.indicator_of_notMem hl, Set.indicator_of_mem hm,
+        Set.indicator_of_notMem hr]
     · have hl : x ∉ Iio (0 : ℝ) := hx0
       have hm : x ∉ Icc (0 : ℝ) L := by
         intro h
         exact hxL h.2
       have hr : x ∈ Ioi L := lt_of_not_ge hxL
-      simp [Set.indicator_of_not_mem hl, Set.indicator_of_not_mem hm,
+      simp [Set.indicator_of_notMem hl, Set.indicator_of_notMem hm,
         Set.indicator_of_mem hr]
 
 /-- Only the physically justified local L2 assertion. -/
