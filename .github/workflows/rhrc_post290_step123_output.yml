@@ -49,6 +49,10 @@ jobs:
             Zeta23.CCM.OriginalDetectorNativeForcing
             Zeta23.CCM.OriginalDetectorFourPrimeHistories
             Zeta23.CCM.NativeOriginalExteriorHistory
+            Zeta23.CCM.Step123OutputData
+            Zeta23.CCM.OriginalDetectorSchurLoss
+            Zeta23.ExceptionalZero.Step123OutputProducer
+            Zeta23.ExceptionalZero.Step4OutputSufficiency
             Zeta23.CCM.NativeExteriorSourceRecord
             Zeta23.CCM.Step123NativeCorePacket
             Zeta23.CCM.NativeCompletionPublicAPI
