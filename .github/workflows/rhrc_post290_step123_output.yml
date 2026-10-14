@@ -44,6 +44,18 @@ jobs:
           set -euo pipefail
           targets=(
             Zeta23.CCM.UniversalSincDetector
+            Zeta23.CCM.IsometricDetectorSchur
+            Zeta23.CCM.IsometricGroundSchur
+            Zeta23.CCM.NativeDetectorSchur
+            Zeta23.CCM.NativeSelectedGroundSchur
+            Zeta23.CCM.DetectorRetainedSchurState
+            Zeta23.CCM.OriginalDetectorFourierPrerequisites
+            Zeta23.CCM.OriginalSincWeightedPoleMoments
+            Zeta23.CCM.NativeAbelDiscrepancy
+            Zeta23.CCM.OriginalSincLogDrive
+            Zeta23.ExceptionalZero.PositiveLaplaceBoundary
+            Zeta23.ExceptionalZero.PositiveLaplaceAnalytic
+            Zeta23.ExceptionalZero.UniversalSincSignedLaplace
             Zeta23.CCM.UniversalSincDetectorBounds
             Zeta23.CCM.UniversalSincDetectorInverse
             Zeta23.CCM.UniversalSincProductMoments

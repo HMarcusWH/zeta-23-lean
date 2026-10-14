@@ -803,3 +803,80 @@ inverse derivatives and exact quartic finite image. Continue the distinct
 ground and original-detector Schur operators, independent stable Y and actual
 range tail. All original W00-W10/M01-M25 obligations remain mandatory. The
 assembled producer and RH remain **OPEN**.
+
+## Eleventh pass: actual transform, quantitative moments and corrected native defect
+
+**What became formally true.** Head `6f193d428b1e170d2b9536e47e6270f19a4f8697`,
+tree `51383efbfbdaff109c9865955963343a1952d185`, was checked by component
+job `115604337946` in push run `38487427199`. Complete
+UniversalSincProductMoments, UniversalSincSourceDensityTransform,
+NativePositiveCompletionTail and CanonicalPoleNeutralNormals compiled.
+Their 17 printed roots use only propext, Classical.choice and Quot.sound.
+The read proofs establish the actual positive density's Fourier transform
+as the literal sinc product, the explicit product moment bound
+8(2m+1)!/b^(2m+2), its order-two factorial comparison, the exact countable
+floor-cell tail with bound N^(-1/2)+N^(-3/2)/2, and the actual corrected
+rank-one defect S0=S-b*alpha with its native fourth-moment pairing.
+The support-tail product split preserves potentially zero sinc factors.
+
+**Workflow harvest.** Exact-controls `115604338144` and native-observations
+`115604338196` SUCCEEDED at this tree; all 44 pairs / 176 native rows
+were independently reconstructed at 1024 bits. The component job FAILED on
+literal-tilt changes of measure, density-measure probability elaboration,
+the derivative-order cast, cubic/source-moment consumers, compact-inverse
+syntax/traces and the final mass-certificate numeric cast. Full binding
+export was skipped. Recovery dependencies containing sorryAx are rejected.
+The complete-head research farm has separate job dispositions; no unfinished
+job or cached historical replay is counted as new theorem authority.
+The separate d88 harvest also reports generated-state failure on missing
+standalone-module dispositions. Source freeze and materialization are still
+pending. Original D2 has no candidate archive.
+
+**What changed.** The source's probabilistic construction and Fourier product
+are now linked by an actual justified Fubini calculation. Quantitative moments
+replace a qualitative integrability prerequisite. Countable-tail assembly
+now concerns the unchanged completion itself, not a model sequence. The native
+normal-output correction is derived, including its sign; projecting away the
+legal output no longer silently discards that term.
+
+**Upstream implications.** The density-measure identity may now use exact
+characteristic-function uniqueness. Keep the real/complex norm and scalar
+instances coherent, and distinguish natural smoothness from analytic
+smoothness in the current WithTop ENat calculus APIs. Ordinary elementary
+moments and their first weighted moments are separate conditions.
+
+**Downstream implications.** Actual derivative moment transport can supply
+uniform order-two bounds for the inverse and its source density. This is a
+prerequisite for the mandated ceil(L^4)-4 Fourier image, not that image itself.
+The exact tail and finite head can close the 605/621 native mass proof.
+The verified corrected rank-one identity can now feed strict-even,
+adjoint strict-odd and singular-safe tie consumers on actual carriers.
+
+**Resurrected routes.** Actual finite source-moment energy and shifted secular
+packets can compile against the established corrected defect. Selected-cutoff
+simplicity and the given-trial threshold construction can feed separate
+ground-relative and detector-relative Schur operators. The actual source's
+weighted pole cancellation may allow a direct Abel estimate for U and an
+independent ordinary L2 estimate for Y.
+
+**New RH-relevant clues.** LEAD: combine a positive signed tail's true
+integrability abscissa with actual resolvent regularity and pole visibility.
+LEAD: quartic degree can make an optimized order-two Fourier remainder decay
+faster than exp(L/2) grows. LEAD: the complete signed Schur value preserves
+information lost by bounding only a positive response norm.
+
+**Falsification checks.** A rank-one intertwining identity gives no absolute
+energy lower bound. M4 pairing does not imply source nonvanishing at a tie.
+Real sinc zeros remain compatible with the product theorem and must survive
+factorization. Integrated moment estimates do not by themselves bound the
+divided lobe q/sin^8 or normalize its actual finite source. Ground and detector
+shifts remain distinct, with inverse factors 6 and 12. Finite adjoint residual
+decay remains insufficient for infinite range membership.
+
+**Highest-leverage next moves.** Compile density inversion, the mass certificate
+and strict/tie consumers, then export all implemented exact theorem types and
+axioms at a single head. Test actual original-detector versus selected-ground
+Schur packets, and finish the actual signed-tail continuation identity and
+pole abscissa argument. Connect weighted elementary cancellation to the
+unchanged integer drive and stable Y. Every original mandatory obligation,
+the assembled producer and RH remain **OPEN**.

@@ -42,7 +42,9 @@ private theorem poleNeutralEvenRayleighRange_bddBelow (L : ℝ) (K : ℕ) :
     (poleNeutralEvenCompressedCanonical L K).toContinuousLinearMap
   refine ⟨-‖T‖, ?_⟩
   rintro _ ⟨z, rfl⟩
-  have hn := ContinuousLinearMap.rayleighQuotient_le_norm (𝕜 := ℂ) T
+  have hn := @ContinuousLinearMap.rayleighQuotient_le_norm
+    ℂ _ (poleNeutralEvenSubspace L K) inferInstance
+    (poleNeutralEven_innerProductSpace L K) T
     (z : poleNeutralEvenSubspace L K)
   have hn' : |RCLike.re (inner ℂ (T z) z) / ‖(z : poleNeutralEvenSubspace L K)‖ ^ 2| ≤ ‖T‖ := by
     simpa only [ContinuousLinearMap.rayleighQuotient,

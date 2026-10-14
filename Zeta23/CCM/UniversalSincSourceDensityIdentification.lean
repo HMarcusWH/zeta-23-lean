@@ -28,7 +28,7 @@ theorem originalDensityMeasure_isProbabilityMeasure {s : ℝ} (hs : 0 < s) :
     IsProbabilityMeasure (originalDensityMeasure s) := by
   constructor
   unfold originalDensityMeasure
-  rw [Measure.withDensity_apply _ measurableSet_univ, Measure.restrict_univ,
+  rw [withDensity_apply _ MeasurableSet.univ, Measure.restrict_univ,
     ← ofReal_integral_eq_lintegral_ofReal (integrable_originalDensityCandidate hs)
       (ae_of_all _ (originalDensityCandidate_nonneg hs)), integral_originalDensityCandidate hs]
   norm_num

@@ -854,6 +854,24 @@
       "full_type_binding_export_executed": false,
       "full_mandatory_producer": "OPEN"
     },
+    "quantitative_native_diagnostic": {
+      "head": "6f193d428b1e170d2b9536e47e6270f19a4f8697",
+      "tree": "51383efbfbdaff109c9865955963343a1952d185",
+      "run": 38487427199,
+      "component_job": 115604337946,
+      "whole_job_result": "FAILURE",
+      "entire_new_modules_compiled": [
+        "Zeta23.CCM.UniversalSincProductMoments",
+        "Zeta23.CCM.UniversalSincSourceDensityTransform",
+        "Zeta23.CCM.NativePositiveCompletionTail",
+        "Zeta23.CCM.CanonicalPoleNeutralNormals"
+      ],
+      "admitted_axioms": ["propext", "Classical.choice", "Quot.sound"],
+      "exact_controls": {"job": 115604338144, "result": "SUCCESS"},
+      "native_observations": {"job": 115604338196, "result": "SUCCESS", "pairs": 44, "rows": 176, "checker_bits": 1024, "universal_theorem_authority": false},
+      "full_type_binding_export_executed": false,
+      "full_mandatory_producer": "OPEN"
+    },
     "additional_candidates": [
       "Zeta23.CCM.UniversalSincDetectorInverse",
       "Zeta23.CCM.UniversalSincSourceLaw",

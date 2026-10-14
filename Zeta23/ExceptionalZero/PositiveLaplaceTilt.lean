@@ -58,7 +58,7 @@ theorem positiveLaplaceTilt_apply_univ {u : ℝ → ℝ} {p0 : ℝ}
     (hLaplace : Integrable (positiveLaplaceWeight u p0) positiveLaplaceHalfLine) :
     positiveLaplaceTilt u p0 univ =
       ENNReal.ofReal (∫ t, positiveLaplaceWeight u p0 t ∂positiveLaplaceHalfLine) := by
-  rw [positiveLaplaceTilt, withDensity_apply _ measurableSet_univ, Measure.restrict_univ]
+  rw [positiveLaplaceTilt, withDensity_apply _ MeasurableSet.univ, Measure.restrict_univ]
   exact (ofReal_integral_eq_lintegral_ofReal hLaplace
     (positiveLaplaceWeight_ae_nonneg hu p0)).symm
 
@@ -82,11 +82,9 @@ theorem integrable_exp_positiveLaplaceTilt_iff {u : ℝ → ℝ}
     (Eventually.of_forall fun _ => ENNReal.ofReal_lt_top)]
   apply integrable_congr
   filter_upwards [ae_restrict_mem measurableSet_Ici] with t ht
-  rw [ENNReal.toReal_ofReal
-    (mul_nonneg (hnonneg t ht) (Real.exp_pos _).le)]
-  change positiveLaplaceWeight u p0 t * Real.exp (h * t) =
-    positiveLaplaceWeight u (p0 - h) t
   unfold positiveLaplaceWeight
+  rw [ENNReal.toReal_ofReal
+    (mul_nonneg (hnonneg t ht) (Real.exp_pos _).le), smul_eq_mul]
   rw [mul_assoc, ← Real.exp_add]
   have heq : -p0 * t + h * t = -(p0 - h) * t := by ring
   rw [heq]
@@ -96,8 +94,8 @@ private theorem positiveLaplaceTilt_complex_weight {u : ℝ → ℝ}
     (ENNReal.ofReal (positiveLaplaceWeight u p0 t)).toReal •
         Complex.exp (z * (t : ℂ)) =
       (u t : ℂ) * Complex.exp (-((p0 : ℂ) - z) * (t : ℂ)) := by
-  rw [ENNReal.toReal_ofReal (mul_nonneg ht (Real.exp_pos _).le)]
   unfold positiveLaplaceWeight
+  rw [ENNReal.toReal_ofReal (mul_nonneg ht (Real.exp_pos _).le)]
   rw [Complex.real_smul, Complex.ofReal_mul, Complex.ofReal_exp,
     mul_assoc, ← Complex.exp_add]
   have heq : ((-p0 * t : ℝ) : ℂ) + z * (t : ℂ) =
@@ -145,8 +143,10 @@ theorem zero_mem_interior_integrableExpSet_positiveLaplaceTilt {u : ℝ → ℝ}
     0 ∈ interior (integrableExpSet id (positiveLaplaceTilt u p0)) := by
   apply mem_interior_iff_mem_nhds.mpr
   have hshift : Tendsto (fun h : ℝ => p0 - h) (𝓝 0) (𝓝 p0) := by
-    simpa only [sub_zero] using (continuous_const.sub continuous_id).tendsto (0 : ℝ)
+    have hcont : Continuous (fun h : ℝ => p0 - h) := continuous_const.sub continuous_id
+    simpa only [sub_zero] using hcont.tendsto (0 : ℝ)
   filter_upwards [hshift.eventually hLaplace] with h hh
+  change Integrable (fun t : ℝ => Real.exp (h * t)) (positiveLaplaceTilt u p0)
   exact (integrable_exp_positiveLaplaceTilt_iff hu hnonneg p0 h).mpr hh
 
 end Zeta23.ExceptionalZero

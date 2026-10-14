@@ -12,6 +12,18 @@ from lean_imports import strip_lean_comments
 
 
 CLOSURE_ROOTS = [
+    Path("Zeta23/CCM/DetectorRetainedSchurState.lean"),
+    Path("Zeta23/ExceptionalZero/PositiveLaplaceAnalytic.lean"),
+    Path("Zeta23/CCM/IsometricDetectorSchur.lean"),
+    Path("Zeta23/CCM/IsometricGroundSchur.lean"),
+    Path("Zeta23/CCM/NativeDetectorSchur.lean"),
+    Path("Zeta23/CCM/NativeSelectedGroundSchur.lean"),
+    Path("Zeta23/CCM/OriginalDetectorFourierPrerequisites.lean"),
+    Path("Zeta23/CCM/OriginalSincWeightedPoleMoments.lean"),
+    Path("Zeta23/CCM/NativeAbelDiscrepancy.lean"),
+    Path("Zeta23/CCM/OriginalSincLogDrive.lean"),
+    Path("Zeta23/ExceptionalZero/PositiveLaplaceBoundary.lean"),
+    Path("Zeta23/ExceptionalZero/UniversalSincSignedLaplace.lean"),
     Path("Zeta23/CCM/UniversalSincProductMoments.lean"),
     Path("Zeta23/CCM/UniversalSincInverseGevreyBounds.lean"),
     Path("Zeta23/ExceptionalZero/PositiveLaplaceTilt.lean"),

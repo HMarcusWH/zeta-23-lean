@@ -55,10 +55,14 @@ theorem exists_eigenmode_at_poleNeutralEvenRayleighBottom {L : ℝ} (hL : 0 < L)
     rw [finrank_poleNeutralEvenSubspace hL K (by omega)]
     omega
   letI : Nontrivial (poleNeutralEvenSubspace L K) := Module.nontrivial_of_finrank_pos hd
-  have he := (poleNeutralEvenCompressedCanonical_isSymmetric L K).hasEigenvalue_iInf_of_finiteDimensional
+  have he := @LinearMap.IsSymmetric.hasEigenvalue_iInf_of_finiteDimensional
+    ℂ _ (poleNeutralEvenSubspace L K) inferInstance
+    (poleNeutralEven_innerProductSpace L K) inferInstance
+    (poleNeutralEvenCompressedCanonical L K) inferInstance
+    (poleNeutralEvenCompressedCanonical_isSymmetric L K)
   obtain ⟨u, hu⟩ := he.exists_hasEigenvector
   refine ⟨u, hu.2, ?_⟩
-  simpa [poleNeutralEvenRayleighBottom] using hu.apply_eq_smul
+  simpa only [poleNeutralEvenRayleighBottom] using hu.apply_eq_smul
 
 theorem exists_eigenmode_at_poleNeutralOddRayleighBottom {L : ℝ} (hL : 0 < L)
     (K : ℕ) (hK : 3 ≤ K) :
@@ -69,10 +73,14 @@ theorem exists_eigenmode_at_poleNeutralOddRayleighBottom {L : ℝ} (hL : 0 < L)
     rw [finrank_poleNeutralOddSubspace hL K (by omega)]
     omega
   letI : Nontrivial (poleNeutralOddSubspace L K) := Module.nontrivial_of_finrank_pos hd
-  have he := (poleNeutralOddCompressedCanonical_isSymmetric L K).hasEigenvalue_iInf_of_finiteDimensional
+  have he := @LinearMap.IsSymmetric.hasEigenvalue_iInf_of_finiteDimensional
+    ℂ _ (poleNeutralOddSubspace L K) inferInstance
+    (poleNeutralOdd_innerProductSpace L K) inferInstance
+    (poleNeutralOddCompressedCanonical L K) inferInstance
+    (poleNeutralOddCompressedCanonical_isSymmetric L K)
   obtain ⟨w, hw⟩ := he.exists_hasEigenvector
   refine ⟨w, hw.2, ?_⟩
-  simpa [poleNeutralOddRayleighBottom] using hw.apply_eq_smul
+  simpa only [poleNeutralOddRayleighBottom] using hw.apply_eq_smul
 
 private theorem poleNeutralOddRayleighRange_bddBelow (L : ℝ) (K : ℕ) :
     BddBelow (Set.range fun z : {z : poleNeutralOddSubspace L K // z ≠ 0} =>
@@ -82,7 +90,9 @@ private theorem poleNeutralOddRayleighRange_bddBelow (L : ℝ) (K : ℕ) :
     (poleNeutralOddCompressedCanonical L K).toContinuousLinearMap
   refine ⟨-‖T‖, ?_⟩
   rintro _ ⟨z, rfl⟩
-  have hn := ContinuousLinearMap.rayleighQuotient_le_norm (𝕜 := ℂ) T
+  have hn := @ContinuousLinearMap.rayleighQuotient_le_norm
+    ℂ _ (poleNeutralOddSubspace L K) inferInstance
+    (poleNeutralOdd_innerProductSpace L K) T
     (z : poleNeutralOddSubspace L K)
   have hn' : |RCLike.re (inner ℂ (T z) z) / ‖(z : poleNeutralOddSubspace L K)‖ ^ 2| ≤ ‖T‖ := by
     simpa only [ContinuousLinearMap.rayleighQuotient,
@@ -105,12 +115,12 @@ theorem poleNeutralOddRayleighBottom_mul_norm_sq_le {L : ℝ} (hL : 0 < L)
 
 /-- Exact source-moment energy identity for an actual even eigenmode. -/
 theorem poleNeutral_source_moment_energy_eq {L : ℝ} (hL : 0 < L)
-    (K : ℕ) (hK : 2 ≤ K) (λ : ℝ) (u : poleNeutralEvenSubspace L K)
-    (hu : poleNeutralEvenCompressedCanonical L K u = (λ : ℂ) • u) :
+    (K : ℕ) (hK : 2 ≤ K) (lam : ℝ) (u : poleNeutralEvenSubspace L K)
+    (hu : poleNeutralEvenCompressedCanonical L K u = (lam : ℂ) • u) :
     (star (poleNeutralCorrectedCubicSource L K u) *
       centeredMoment K 4 (evenBoundaryFlatRawCoefficients K u.val)).re =
     (inner ℂ (poleNeutralOddCompressedCanonical L K (poleNeutralIndexLinearMap hL K u) -
-      (λ : ℂ) • poleNeutralIndexLinearMap hL K u) (poleNeutralIndexLinearMap hL K u)).re := by
+      (lam : ℂ) • poleNeutralIndexLinearMap hL K u) (poleNeutralIndexLinearMap hL K u)).re := by
   have hd := poleNeutralCompressedIndexDefect_eq_correctedCubicSource hL K hK u
   change poleNeutralOddCompressedCanonical L K (poleNeutralIndexLinearMap hL K u) -
     poleNeutralIndexLinearMap hL K (poleNeutralEvenCompressedCanonical L K u) = _ at hd
@@ -121,12 +131,12 @@ theorem poleNeutral_source_moment_energy_eq {L : ℝ} (hL : 0 < L)
   exact congrArg Complex.re hp.symm
 
 theorem poleNeutral_source_moment_gap_le {L : ℝ} (hL : 0 < L)
-    (K : ℕ) (hK : 3 ≤ K) (λ : ℝ) (u : poleNeutralEvenSubspace L K)
-    (hu : poleNeutralEvenCompressedCanonical L K u = (λ : ℂ) • u) :
-    (poleNeutralOddRayleighBottom L K hL hK - λ) * ‖poleNeutralIndexLinearMap hL K u‖ ^ 2 ≤
+    (K : ℕ) (hK : 3 ≤ K) (lam : ℝ) (u : poleNeutralEvenSubspace L K)
+    (hu : poleNeutralEvenCompressedCanonical L K u = (lam : ℂ) • u) :
+    (poleNeutralOddRayleighBottom L K hL hK - lam) * ‖poleNeutralIndexLinearMap hL K u‖ ^ 2 ≤
       (star (poleNeutralCorrectedCubicSource L K u) *
         centeredMoment K 4 (evenBoundaryFlatRawCoefficients K u.val)).re := by
-  rw [poleNeutral_source_moment_energy_eq hL K (by omega) λ u hu]
+  rw [poleNeutral_source_moment_energy_eq hL K (by omega) lam u hu]
   have hb := poleNeutralOddRayleighBottom_mul_norm_sq_le hL K hK
     (poleNeutralIndexLinearMap hL K u)
   rw [inner_sub_left, Complex.sub_re, inner_smul_left]

@@ -110,6 +110,7 @@ theorem nativePositiveCompletion_mass_lt_605_div_621 :
   rw [nativePositiveCompletion_mass_eq_logIntegral]
   have htail := nativePositiveCompletionLogDensity_tail_integral_le
     (N := 129) (by norm_num)
+  norm_num only [Nat.cast_ofNat] at htail
   have hsplit := intervalIntegral.integral_interval_add_Ioi
     (a := (1 : ℝ)) (b := (129 : ℝ))
     nativePositiveCompletionLogDensity_integrableOn

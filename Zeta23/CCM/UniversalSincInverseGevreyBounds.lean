@@ -83,8 +83,10 @@ theorem norm_iteratedDeriv_inverseCandidate_le_moment
   have hd : ‖iteratedDeriv m (inverseCandidate s) y‖ =
       c ^ (m + 1) *
         ‖iteratedDeriv m (𝓕 (fun x : ℝ => product s (x : ℂ))) (c * y)‖ := by
+    have hmOrder : (m : WithTop ℕ∞) ≤ ((⊤ : ℕ∞) : WithTop ℕ∞) := by
+      exact_mod_cast (show (m : ℕ∞) ≤ ⊤ from le_top)
     rw [heq, iteratedDeriv_const_mul_field,
-      iteratedDeriv_comp_const_smul (hF.of_le (show (m : ℕ∞) ≤ ⊤ from le_top)) c]
+      iteratedDeriv_comp_const_smul (hF.of_le hmOrder) c]
     simp only [norm_mul, norm_smul, Complex.norm_real, Real.norm_eq_abs,
       abs_of_pos hc, abs_of_nonneg (pow_nonneg hc.le m)]
     rw [pow_succ]

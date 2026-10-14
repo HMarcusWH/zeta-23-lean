@@ -139,7 +139,7 @@ theorem nativePoleCompactInverse_contDiff_two (s : ℝ) {f : ℝ → ℂ}
     rw [contDiff_one_iff_deriv, hsecond]
     exact ⟨fun x => (nativePoleCompactInverseDerivative_hasDerivAt s hf x).differentiableAt,
       (continuous_const.mul (nativePoleCompactInverse_continuous s hf)).add hf⟩
-  rw [show (2 : ℕ∞ω) = 1 + 1 by rfl, contDiff_succ_iff_deriv, hfirst]
+  rw [show (2 : WithTop ℕ∞) = 1 + 1 by rfl, contDiff_succ_iff_deriv, hfirst]
   exact ⟨fun x => (nativePoleCompactInverse_hasDerivAt s hf x).differentiableAt,
     by simp, hD1⟩
 
@@ -229,16 +229,14 @@ private theorem continuous_interval_support_traces {s : ℝ} {h : ℝ → ℂ}
       exact hsupport x (fun hmem => (not_le_of_gt hx) hmem.1)
     have hclosure := hclosed.closure_subset_iff.mpr hleft
     have hend : -s ∈ closure (Iio (-s)) := by
-      rw [closure_Iio, mem_Iic]
-      exact (le_rfl : -s ≤ -s)
+      simpa only [closure_Iio, mem_Iic] using (le_rfl : -s ≤ -s)
     exact hclosure hend
   · have hright : Ioi s ⊆ {x : ℝ | h x = 0} := by
       intro x hx
       exact hsupport x (fun hmem => (not_le_of_gt hx) hmem.2)
     have hclosure := hclosed.closure_subset_iff.mpr hright
     have hend : s ∈ closure (Ioi s) := by
-      rw [closure_Ioi, mem_Ici]
-      exact (le_rfl : s ≤ s)
+      simpa only [closure_Ioi, mem_Ici] using (le_rfl : s ≤ s)
     exact hclosure hend
 
 /-- Both endpoint value and first-derivative traces are filled by the actual
