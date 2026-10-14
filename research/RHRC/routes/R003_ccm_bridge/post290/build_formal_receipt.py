@@ -100,7 +100,7 @@ def build(log):
         'compiler_context':{'head':head,'tree':tree,'declared_toolchain':declared,'actual_compiler_version':compiler_version,'mathlib_revision':mathlib[0]['rev'],'dependencies':packages,'tracked_lean_toolchain_manifest_clean':True},
         'declarations':declarations,'definitions':definitions,'audited_root_count':len(roots),
         'producer_complete':False,'independent_assumption_review_pass':False,
-        'scope':'Compiled supporting components only; no filled Step123 output producer or RH sufficiency wrapper.',
+        'scope':'Compiled supporting components and explicit conditional sufficiency wrappers; no filled Step123 output producer. Independent closing premises remain unproved.',
         'source_blobs':[{'path':path,'git_blob':git('rev-parse',head+':'+path)} for path in sources]}
 
 if __name__ == '__main__':
