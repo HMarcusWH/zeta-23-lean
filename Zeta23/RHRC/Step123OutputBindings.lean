@@ -1,3 +1,6 @@
+import Zeta23.CCM.OriginalDetectorPrimeHistoryCovariance
+import Zeta23.CCM.OriginalDetectorFourHistoryLocalDuality
+import Zeta23.CCM.OriginalDetectorExteriorPairing
 import Zeta23.CCM.OriginalDetectorLocalDuality
 import Zeta23.CCM.Step123NativeAmbientGalerkin
 import Zeta23.CCM.OriginalDetectorCompactDuality
@@ -1429,6 +1432,13 @@ run_cmd do
     (``Zeta23.CCM.nativePoleCompactInverse_compactTest_duality, "Zeta23.CCM.OriginalDetectorCompactDuality", "THEOREM"),
     (``Zeta23.CCM.NativeCompactPoleH2.localP_duality, "Zeta23.CCM.OriginalDetectorLocalDuality", "THEOREM"),
     (``Zeta23.CCM.NativeCompactPoleH2.originalKernelPrimeField_localPairing, "Zeta23.CCM.OriginalDetectorLocalDuality", "THEOREM"),
+    (``Zeta23.CCM.nativePoleDifferential_translate, "Zeta23.CCM.OriginalDetectorPrimeHistoryCovariance", "THEOREM"),
+    (``Zeta23.CCM.nativePoleDifferential_reflect, "Zeta23.CCM.OriginalDetectorPrimeHistoryCovariance", "THEOREM"),
+    (``Zeta23.CCM.originalDetector_fourPrimeHistory_poleImages, "Zeta23.CCM.OriginalDetectorPrimeHistoryCovariance", "THEOREM"),
+    (``Zeta23.CCM.NativeCompactPoleH2.localP_duality_of_continuous, "Zeta23.CCM.OriginalDetectorFourHistoryLocalDuality", "THEOREM"),
+    (``Zeta23.CCM.NativeCompactPoleH2.originalKernelPrimeField_localPairing_of_continuous, "Zeta23.CCM.OriginalDetectorFourHistoryLocalDuality", "THEOREM"),
+    (``Zeta23.CCM.NativeCompactPoleH2.originalFourHistories_localP_dualities, "Zeta23.CCM.OriginalDetectorFourHistoryLocalDuality", "THEOREM"),
+    (``Zeta23.CCM.originalSmoothWeilResponse_compactPairing_split, "Zeta23.CCM.OriginalDetectorExteriorPairing", "THEOREM"),
     (``Zeta23.CCM.canonicalLegalPhysicalProjection_orthogonal, "Zeta23.CCM.Step123NativeAmbientGalerkin", "THEOREM"),
     (``Zeta23.CCM.Step123NativeOutput.selectedOuterGalerkin_orthogonal, "Zeta23.CCM.Step123NativeAmbientGalerkin", "THEOREM"),
     (``Zeta23.CCM.Step123NativeOutput.selectedResponse_decomposition, "Zeta23.CCM.Step123NativeAmbientGalerkin", "THEOREM")]
