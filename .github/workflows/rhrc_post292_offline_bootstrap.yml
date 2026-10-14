@@ -54,12 +54,17 @@ jobs:
           cat lake-manifest.json >> /tmp/pr292-offline/PROVENANCE.txt
           # Only toolchain and source/build roots; no home directory, Git config,
           # credentials, tokens, or environment dumps are included.
-          tar -C "$prefix" --exclude='*.a' --exclude='*.o' --exclude='*.c' --exclude='*.ilean' -cf - bin lib share src include | zstd -T2 -3 -o /tmp/pr292-offline/toolchain.tar.zst
-          tar --exclude='.git' --exclude='*.a' --exclude='*.o' --exclude='*.c' --exclude='*.ilean' -cf - .lake/packages .lake/build/lib .lake/lakefile.olean* | zstd -T2 -3 -o /tmp/pr292-offline/dependencies.tar.zst
+          tool_roots=(bin lib)
+          for root in share src include; do
+            if [ -d "$prefix/$root" ]; then tool_roots+=("$root"); fi
+          done
+          tar -C "$prefix" --exclude='*.a' --exclude='*.o' --exclude='*.c' --exclude='*.ilean' -cf - "${tool_roots[@]}" | zstd -T2 -3 -o /tmp/pr292-offline/toolchain.tar.zst
+          tar --exclude='.git' --exclude='*.a' --exclude='*.o' --exclude='*.c' --exclude='*.ilean' -cf - .lake/packages .lake/build/lib | zstd -T2 -3 -o /tmp/pr292-offline/dependencies.tar.zst
           cd /tmp/pr292-offline
           sha256sum *.tar.zst > SHA256SUMS
           du -h *.tar.zst
       - uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: pr292-offline-source-${{ github.sha }}
           path: |
@@ -69,12 +74,14 @@ jobs:
           retention-days: 3
           compression-level: 0
       - uses: actions/upload-artifact@v4
+        if: success()
         with:
           name: pr292-offline-toolchain-${{ github.sha }}
           path: /tmp/pr292-offline/toolchain.tar.zst
           retention-days: 3
           compression-level: 0
       - uses: actions/upload-artifact@v4
+        if: success()
         with:
           name: pr292-offline-dependencies-${{ github.sha }}
           path: /tmp/pr292-offline/dependencies.tar.zst
