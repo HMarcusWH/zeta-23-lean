@@ -131,7 +131,7 @@ def derive(formal: dict, review: dict, d2: dict, harvest: dict,
                         and all(type(d2.get(key)) is int and d2[key] == 0 for key in
                                 ("unrun_tiles", "missing_artifacts", "unresolved_tiles",
                                  "unverified_tiles", "nonfinite_enclosures")))
-    except (ValueError, KeyError, subprocess.CalledProcessError) as exc:
+    except (ValueError, KeyError, OSError, subprocess.CalledProcessError) as exc:
         d2_identity_error = str(exc)
 
     typed_ok = bool(roots) and all(
@@ -162,6 +162,8 @@ def derive(formal: dict, review: dict, d2: dict, harvest: dict,
     workflow_jobs = harvest.get("jobs", [])
     complete_harvest = (isinstance(workflow_jobs, list) and bool(workflow_jobs)
                         and harvest.get("head") == head
+                        and harvest.get("review_phase") == "PRE_RELEASE_PREREQUISITES"
+                        and harvest.get("includes_release_run") is False
                         and all(job.get("output_reviewed") is True
                                 and job.get("classification") in (
                                     "FORMAL_VALIDITY_GATE", "REGRESSION_GATE",

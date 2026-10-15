@@ -262,7 +262,12 @@ if __name__ == '__main__':
     p.add_argument('--out', type=Path, required=True)
     args = p.parse_args()
     read = lambda path: json.loads(path.read_text())
-    gaps = release_gaps(read(args.manifest),read(args.formal),read(args.d2),read(args.harvest).get('jobs',[]))
+    harvest_record=read(args.harvest)
+    gaps = release_gaps(read(args.manifest),read(args.formal),read(args.d2),
+                        harvest_record.get('jobs',[]))
+    if (harvest_record.get('review_phase')!='PRE_RELEASE_PREREQUISITES'
+        or harvest_record.get('includes_release_run') is not False):
+        gaps.append('release prerequisite harvest is absent or self-referential')
     result = {'execution_status':'SUCCESS', 'integrity_status':'PASS' if not gaps else 'RELEASE_REJECTED',
               'scientific_disposition':'CORE_OUTPUT_COMPLETE_RH_OPEN' if not gaps else 'PARTIAL_OUTPUT_RH_OPEN',
               'claim_cap':'RH_OPEN', 'unfulfilled_requirements':gaps}

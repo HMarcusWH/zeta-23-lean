@@ -27,6 +27,34 @@ ROLES = {
 }
 
 
+# Classification is only a research/CI JOB ROLE, never acceptance or theorem authority.
+# Actual per-job logs and artifacts still require separate external review.
+KNOWN_WORKFLOW_DEFAULTS = {
+    'RHRC post287 bounded signed-ray probe':'RESEARCH_PRODUCING_CHECK',
+    'RHRC post-214 kernel dual geometry':'REGRESSION_GATE',
+    'RHRC post-194 parity trajectory sharp enclosure':'RESEARCH_PRODUCING_CHECK',
+    'Permansson v0.1.6 formal verification':'FORMAL_VALIDITY_GATE',
+    'RHRC post-198 Q14 parity source mechanism':'RESEARCH_PRODUCING_CHECK',
+    'RHRC post-190 canonical realizability audit':'REGRESSION_GATE',
+    'RHRC post287 focused Step3 checks':'REGRESSION_GATE',
+    'RHRC post-222 bi-regular zero-shift scalar':'RESEARCH_PRODUCING_CHECK',
+    'RHRC post-192 parity trajectory rigidity':'RESEARCH_PRODUCING_CHECK',
+    'RHRC post-196 Q14 residual cell replay':'REGRESSION_GATE',
+    'RHRC post-202 Q14 composite parity gap':'RESEARCH_PRODUCING_CHECK',
+    'RHRC post-200 Q14 discrepancy mechanism':'RESEARCH_PRODUCING_CHECK',
+    'RHRC parallel closure campaign':'REGRESSION_GATE',
+    'RHRC post268 complete audit replay':'REGRESSION_GATE',
+    'RHRC post-282 contact calculus':'REGRESSION_GATE',
+    'RHRC post287 WP2 and WP4 interval research':'RESEARCH_PRODUCING_CHECK',
+    'RHRC post-284 source inertia campaign':'RESEARCH_PRODUCING_CHECK',
+    'RHRC research and Lean checks':'REGRESSION_GATE',
+    'PR292 complete-output release candidate (manual)':'FORMAL_VALIDITY_GATE',
+}
+
+RELEASE_WORKFLOW='PR292 complete-output release candidate (manual)'
+
+
+
 def classify_job(workflow, job):
     if workflow == 'RHRC approved SECOND460 resource continuation':
         if job.startswith('independent-check-batches ('):
@@ -34,7 +62,18 @@ def classify_job(workflow, job):
                 return 'REGRESSION_GATE'
             if '/ check-leaves (' in job:
                 return 'RESEARCH_PRODUCING_CHECK'
-    return ROLES.get((workflow, job.split(' (')[0]), 'REQUIRES_SOURCE_REVIEW')
+    base=job.split(' (')[0]
+    exact=ROLES.get((workflow,base))
+    if exact:
+        return exact
+    if workflow in ('RHRC parallel closure campaign','RHRC post-282 contact calculus',
+                    'RHRC post287 focused Step3 checks',
+                    'RHRC post-284 source inertia campaign','RHRC research and Lean checks'):
+        if base.startswith('lean') or base in ('r003-normalization-audit',):
+            return 'FORMAL_VALIDITY_GATE'
+        if 'research' in base or 'arb-' in base or 'modified-prime' in base:
+            return 'RESEARCH_PRODUCING_CHECK'
+    return KNOWN_WORKFLOW_DEFAULTS.get(workflow,'REQUIRES_SOURCE_REVIEW')
 
 def get(url):
     headers = {'Accept': 'application/vnd.github+json', 'User-Agent': 'RH-post290-harvest'}
@@ -77,7 +116,12 @@ def inventory(head, approved_d2_run_id=None):
     return {'head': head, 'runs': runs,
             'external_d2_run_id': approved_d2_run_id}
 
-def harvest(snapshot):
+def harvest(snapshot, phase='PRE_RELEASE_PREREQUISITES'):
+    if phase not in ('PRE_RELEASE_PREREQUISITES','POST_RELEASE_EVERY_JOB'):
+        raise ValueError('unknown release harvest phase')
+    if phase == 'PRE_RELEASE_PREREQUISITES':
+        if any(run.get('name')==RELEASE_WORKFLOW for run in snapshot['runs']):
+            raise ValueError('release run cannot approve its own prerequisite harvest')
     head, records = snapshot['head'], []
     external_id = snapshot.get('external_d2_run_id')
     if external_id not in (None, APPROVED_D2_RUN_ID):
@@ -116,7 +160,9 @@ def harvest(snapshot):
                     'output_reviewed':False,
                     'acceptance_note':'Raw job status is not reviewed mathematical output; separate source-bound receipt required.',
                     'steps': job.get('steps', []), 'formal_authority_created_by_status': False})
-    return {'head': head, 'repository': REPOSITORY, 'claim_cap': 'RH_OPEN', 'jobs': records,
+    return {'head': head, 'repository': REPOSITORY, 'claim_cap': 'RH_OPEN',
+            'review_phase':phase, 'includes_release_run':any(r['workflow']==RELEASE_WORKFLOW for r in records),
+            'jobs': records,
             'all_latest_jobs_completed': bool(records) and all(r['status'] == 'completed' for r in records if r['latest_attempt']),
             'scope': 'Exact API dispositions and all attempts; success requires separate log/source review.'}
 
@@ -126,6 +172,8 @@ if __name__ == '__main__':
     p.add_argument('--snapshot', type=Path)
     p.add_argument('--approved-d2-run-id', type=int, default=None,
                    help='Read only the single approved D2 run; never dispatch or retry.')
+    p.add_argument('--review-phase', choices=['PRE_RELEASE_PREREQUISITES','POST_RELEASE_EVERY_JOB'],
+                   default='PRE_RELEASE_PREREQUISITES')
     p.add_argument('--out', type=Path, required=True)
     args = p.parse_args()
     if bool(args.head) == bool(args.snapshot):
@@ -134,7 +182,7 @@ if __name__ == '__main__':
         p.error('external D2 selection must come from the frozen snapshot in snapshot mode')
     snapshot = (json.loads(args.snapshot.read_text()) if args.snapshot else
                 inventory(args.head, args.approved_d2_run_id))
-    result = harvest(snapshot)
+    result = harvest(snapshot, args.review_phase)
     args.out.parent.mkdir(parents=True, exist_ok=True)
     args.out.write_text(json.dumps(result, indent=2) + '\n')
     print(json.dumps({'head':result['head'],'job_attempts':len(result['jobs']),
