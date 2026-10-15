@@ -42,6 +42,7 @@ on:
 permissions:
   contents: read
   actions: read
+  pull-requests: read
 
 concurrency:
   group: pr292-complete-release-${{ github.ref }}
@@ -150,6 +151,15 @@ jobs:
           if review.get('reviewed_head')!=head or review.get('reviewed_tree')!=tree:
               raise SystemExit('independent 44-field review is stale')
           PY
+      - name: Verify independent GitHub review signed the exact 44-field artifact
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/post292-checks
+          python research/RHRC/routes/R003_ccm_bridge/post290/verify_semantic_review_provenance.py \
+            --review /tmp/post292-review/INDEPENDENT_SEMANTIC_REVIEW.json \
+            --out /tmp/post292-checks/REVIEW_PROVENANCE_VERIFIED.json
       - name: Establish byte-exact numerical source identity across two Git commits
         run: |
           set -euo pipefail
