@@ -214,6 +214,7 @@ jobs:
             --harvest /tmp/post292-harvest/WORKFLOW_HARVEST.json \
             --cuts research/RHRC/integration/post290/STEP4_CUTS.json \
             --semantic-review /tmp/post292-review/INDEPENDENT_SEMANTIC_REVIEW.json \
+            --review-provenance /tmp/post292-checks/REVIEW_PROVENANCE_VERIFIED.json \
             --out-dir /tmp/post292-complete-outputs
       - name: Strict original scope, verified D2, all jobs and complete producer
         shell: bash

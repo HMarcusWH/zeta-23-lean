@@ -187,7 +187,7 @@ def output_packet(contract, formal, review, head, tree):
     }
 
 
-def materialize(inputs, outdir, semantic=None):
+def materialize(inputs, outdir, semantic=None, reviewer_provenance=None):
     head, tree = git("rev-parse", "HEAD"), git("rev-parse", "HEAD^{tree}")
     formal = load(inputs["formal"])
     fields = load(FIELD_CONTRACT)
@@ -295,6 +295,19 @@ def materialize(inputs, outdir, semantic=None):
     doc = build_handoff(formal, comparison, survival, d2, harvest,
                         {"head": head, "tree": tree})
     (outdir / "STEP4_RESEARCH_HANDOFF.md").write_text(doc, encoding="utf-8")
+    if reviewer_provenance is not None:
+        if semantic is None:
+            raise ValueError("reviewer provenance cannot be attached to an unreviewed output")
+        from verify_semantic_review_provenance import field_digest
+        provenance = load(reviewer_provenance)
+        if (provenance.get("schema")!="PR292_GITHUB_INDEPENDENT_REVIEW_PROVENANCE_V1" or
+            provenance.get("integrity_status")!="PASS" or
+            provenance.get("reviewed_head")!=head or
+            provenance.get("reviewed_tree")!=tree or
+            provenance.get("reviewed_field_count")!=44 or
+            provenance.get("field_reviews_sha256")!=field_digest(semantic.get("field_reviews",[]))):
+            raise ValueError("independent review provenance is not for this exact 44-field output")
+        write(outdir / "REVIEW_PROVENANCE_VERIFIED.json", provenance)
     required = [p.name for p in outdir.iterdir() if p.is_file()]
     write(outdir / "MATERIALIZATION_RECEIPT.json", {
         "schema": "post290.materialization-receipt.v1", "claim_cap": "RH_OPEN",
@@ -317,13 +330,14 @@ def main():
                 "d2", "harvest", "cuts"):
         p.add_argument("--" + key, required=True, type=Path)
     p.add_argument("--semantic-review", type=Path)
+    p.add_argument("--review-provenance", type=Path)
     p.add_argument("--out-dir", required=True, type=Path)
     a = p.parse_args()
     items = {key: getattr(a, key) for key in
              ("formal", "lineage", "panel", "checker", "comparison", "survival",
               "d2", "harvest", "cuts")}
     semantic = load(a.semantic_review) if a.semantic_review else None
-    out = materialize(items, a.out_dir, semantic)
+    out = materialize(items, a.out_dir, semantic, a.review_provenance)
     print(json.dumps({"receipt": str(out), "claim_cap": "RH_OPEN",
                       "authority": "NONE_CREATED_BY_MATERIALIZATION"}))
 
