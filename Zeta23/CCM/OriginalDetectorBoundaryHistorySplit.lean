@@ -125,9 +125,98 @@ private theorem originalBoundary_integral_partition_of_cuts
   rw [hE, hI]
   exact originalBoundary_integral_partition W hW t
 
-/-- Full source-bound convolution split. Prove both exact restrictions
-pointwise, then use the already established ABSTRACT partition lemma.
-No complex native Weil formula is unfolded in the integral proof. -/
+/-- Generic pointwise physical right-boundary cut. This proof does not
+depend on zeta, sinc products or any contact/positivity hypothesis. -/
+private theorem originalRightBoundary_generic_pointwise_cut
+    (R K : ℝ → ℂ) (L b s : ℝ)
+    (hKs : tsupport K ⊆ Icc (-b) b)
+    (hb : 0 ≤ b) (hL : 2 * b ≤ L) (hs : 0 ≤ s)
+    (y : ℝ) :
+    let z := L - b + s - y
+    K y * (Ioi L).indicator R z =
+      (Iio (s - b)).indicator
+        (fun t : ℝ => K t * R (L - b + s - t)) y ∧
+    K y * (Icc (0 : ℝ) L).indicator R z =
+      (Ici (s - b)).indicator
+        (fun t : ℝ => K t * R (L - b + s - t)) y := by
+  dsimp only
+  let z := L - b + s - y
+  by_cases hk : y ∈ Icc (-b) b
+  · have hz0 : 0 ≤ z := by
+      dsimp [z]
+      linarith [hk.2, hs, hL]
+    by_cases hy : y < s - b
+    · have hzR : z ∈ Ioi L := by
+        change L < z
+        dsimp [z]
+        linarith
+      have hzNot : z ∉ Icc (0 : ℝ) L := by
+        intro h
+        exact (not_lt_of_ge h.2) hzR
+      have hyR : y ∈ Iio (s - b) := hy
+      have hyNotI : y ∉ Ici (s - b) := not_le_of_gt hy
+      constructor
+      · simp [Set.indicator_of_mem hzR, Set.indicator_of_mem hyR, z]
+      · simp [Set.indicator_of_notMem hzNot, Set.indicator_of_notMem hyNotI, z]
+    · have hzL : z ≤ L := by
+        dsimp [z]
+        linarith
+      have hzIn : z ∈ Icc (0 : ℝ) L := ⟨hz0, hzL⟩
+      have hzNotR : z ∉ Ioi L := not_lt_of_ge hzL
+      have hyNotR : y ∉ Iio (s - b) := hy
+      have hyInI : y ∈ Ici (s - b) := le_of_not_gt hy
+      constructor
+      · simp [Set.indicator_of_notMem hzNotR, Set.indicator_of_notMem hyNotR, z]
+      · simp [Set.indicator_of_mem hzIn, Set.indicator_of_mem hyInI, z]
+  · have hzero : K y = 0 :=
+      image_eq_zero_of_notMem_tsupport (fun hm => hk (hKs hm))
+    constructor
+    · rw [hzero, zero_mul]
+      by_cases hy : y ∈ Iio (s - b)
+      · simp [Set.indicator_of_mem hy, hzero]
+      · simp [Set.indicator_of_notMem hy]
+    · rw [hzero, zero_mul]
+      by_cases hy : y ∈ Ici (s - b)
+      · simp [Set.indicator_of_mem hy, hzero]
+      · simp [Set.indicator_of_notMem hy]
+
+/-- Completely generic compact-source convolution partition.
+The interior interval is RETAINED; even here it is never zeroed. -/
+private theorem originalRightBoundary_generic_convolution_split
+    (R K : ℝ → ℂ) (L b s : ℝ)
+    (hR : Continuous R) (hK : Continuous K)
+    (hKs : tsupport K ⊆ Icc (-b) b)
+    (hb : 0 ≤ b) (hL : 2 * b ≤ L) (hs : 0 ≤ s) :
+    (∫ y : ℝ, K y * R (L - b + s - y)) =
+      (∫ y : ℝ, K y * (Ioi L).indicator R (L - b + s - y)) +
+        (∫ y : ℝ, K y * (Icc (0 : ℝ) L).indicator R
+          (L - b + s - y)) := by
+  let W : ℝ → ℂ := fun y => K y * R (L - b + s - y)
+  let E : ℝ → ℂ := fun y => K y * (Ioi L).indicator R (L - b + s - y)
+  let I : ℝ → ℂ := fun y =>
+    K y * (Icc (0 : ℝ) L).indicator R (L - b + s - y)
+  have hWc : Continuous W := hK.mul (hR.comp (by fun_prop))
+  have hKc : HasCompactSupport K :=
+    IsCompact.of_isClosed_subset isCompact_Icc (isClosed_tsupport K) hKs
+  have hWi : Integrable W :=
+    hWc.integrable_of_hasCompactSupport hKc.mul_left
+  have hcut (y : ℝ) :=
+    originalRightBoundary_generic_pointwise_cut R K L b s hKs hb hL hs y
+  have hE : E = (Iio (s - b)).indicator W := by
+    funext y
+    exact (hcut y).1
+  have hI : I = (Ici (s - b)).indicator W := by
+    funext y
+    exact (hcut y).2
+  have hresult :
+      (∫ y : ℝ, W y) = (∫ y : ℝ, E y) + (∫ y : ℝ, I y) :=
+    originalBoundary_integral_partition_of_cuts W E I (s - b) hWi hE hI
+  simpa only [W, E, I] using hresult
+
+/-- Actual original Weil response at the true physical aperture:
+the generic continuous-source theorem specializes WITHOUT normalizing
+the Weil kernels inside the proof. This keeps the generally nonzero
+original interior and all four signed prime histories unchanged. -/
 theorem originalSmoothRightBoundary_convolution_split
     (σ a b s : ℝ) (K : ℝ → ℂ)
     (hK : Continuous K)
@@ -142,33 +231,14 @@ theorem originalSmoothRightBoundary_convolution_split
           (L - b + s - y)) := by
   dsimp only
   let L := Zeta23.ExceptionalZero.fixedOriginalSincTrialAperture a
-  let W : ℝ → ℂ := fun y =>
-    K y * originalSmoothWeilResponse σ a (L - b + s - y)
-  let E : ℝ → ℂ := fun y =>
-    K y * originalSmoothWeilRightExterior σ a (L - b + s - y)
-  let I : ℝ → ℂ := fun y =>
-    K y * originalSmoothWeilInteriorHistory σ a (L - b + s - y)
-  have hcR : Continuous (originalSmoothWeilResponse σ a) :=
+  have hR : Continuous (originalSmoothWeilResponse σ a) :=
     nativeWeilResponse_continuous
       (Zeta23.ExceptionalZero.fixedOriginalSincPhaseTrial_contDiff σ a)
       (Zeta23.ExceptionalZero.fixedOriginalSincPhaseTrial_hasCompactSupport σ a)
-  have hWc : Continuous W := hK.mul (hcR.comp (by fun_prop))
-  have hKc : HasCompactSupport K :=
-    IsCompact.of_isClosed_subset isCompact_Icc (isClosed_tsupport K) hKs
-  have hWi : Integrable W :=
-    hWc.integrable_of_hasCompactSupport hKc.mul_left
-  have hcut (y : ℝ) :=
-    originalSmoothRightBoundary_pointwise_cut σ a b s K hKs hb hL hs y
-  have hE : E = (Iio (s - b)).indicator W := by
-    funext y
-    exact (hcut y).1
-  have hI : I = (Ici (s - b)).indicator W := by
-    funext y
-    exact (hcut y).2
-  have hresult :
-      (∫ y : ℝ, W y) = (∫ y : ℝ, E y) + (∫ y : ℝ, I y) :=
-    originalBoundary_integral_partition_of_cuts W E I (s - b) hWi hE hI
-  simpa only [W, E, I] using hresult
+  have hGeneric :=
+    originalRightBoundary_generic_convolution_split
+      (originalSmoothWeilResponse σ a) K L b s hR hK hKs hb hL hs
+  exact hGeneric
 
 end Zeta23.CCM
 
