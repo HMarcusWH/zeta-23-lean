@@ -23,6 +23,15 @@ namespace Zeta23.CCM
 
 open Zeta23.ExceptionalZero
 
+/-- The boundary-flat legal subspace needs its inherited Euclidean
+inner product explicitly: a bare Submodule normed subtype does not
+supply the Hilbert-space adjoint instance automatically. -/
+instance euclideanBoundaryFlat_innerProductSpace (K : ℕ) :
+    InnerProductSpace ℂ (euclideanBoundaryFlatSubspace K) :=
+  Submodule.innerProductSpace (𝕜 := ℂ)
+    (E := EuclideanSpace ℂ (Fin (2 * K + 1)))
+    (euclideanBoundaryFlatSubspace K)
+
 /-- Physical boundary-flat legal carrier, not the larger unrestricted
 Euclidean coefficient space and not the pole-neutral compression. -/
 def canonicalLegalPhysicalIsometry {L : ℝ} (hL : 0 < L) (K : ℕ) :
