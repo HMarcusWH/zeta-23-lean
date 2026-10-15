@@ -27,11 +27,13 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          lake build Zeta23.RHRC.DeclarationDependencyExport
-          python research/RHRC/tools/lean_dependency_extract.py --write
-          python research/RHRC/graph/build.py --write
-          python research/RHRC/integration/candidate_exactify.py --write
-          python research/RHRC/ffbbp/rhkg_assurance.py --write
+          mkdir -p /tmp/pr292-recur-diag
+          lake build Zeta23.RHRC.DeclarationDependencyExport \
+            Zeta23.RHRC.SourceCandidateResolution 2>&1 | tee /tmp/pr292-recur-diag/lean-prebuild.log
+          python research/RHRC/tools/lean_dependency_extract.py --write 2>&1 | tee /tmp/pr292-recur-diag/registered-graph.log
+          python research/RHRC/graph/build.py --write 2>&1 | tee /tmp/pr292-recur-diag/graph-build.log
+          python research/RHRC/integration/candidate_exactify.py --write 2>&1 | tee /tmp/pr292-recur-diag/source-candidate-exactify.log
+          python research/RHRC/ffbbp/rhkg_assurance.py --write 2>&1 | tee /tmp/pr292-recur-diag/assurance.log
       - name: Isolate imports, array elaboration, traversal
         shell: bash
         run: |
