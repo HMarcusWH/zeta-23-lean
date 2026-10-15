@@ -57,6 +57,7 @@ jobs:
             Zeta23.CCM.OriginalDetectorBoundaryHistorySplit
             Zeta23.CCM.Step123OriginalBoundaryEvidence
             Zeta23.ExceptionalZero.GeneratedStep123BoundaryPacket
+            Zeta23.CCM.Step123NativeArithmeticRangeEvidence
             Zeta23.CCM.Step123NativeAmbientGalerkin
             Zeta23.CCM.OriginalDetectorForcingError
             Zeta23.CCM.OriginalDetectorFourPrimeHistories

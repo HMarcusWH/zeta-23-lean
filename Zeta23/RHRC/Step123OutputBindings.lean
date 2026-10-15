@@ -1,3 +1,4 @@
+import Zeta23.CCM.Step123NativeArithmeticRangeEvidence
 import Zeta23.ExceptionalZero.GeneratedStep123BoundaryPacket
 import Zeta23.CCM.OriginalDetectorBoundaryHistorySplit
 import Zeta23.CCM.OriginalDetectorFourHistorySignedTransfer
@@ -1449,6 +1450,10 @@ run_cmd do
     (``Zeta23.ExceptionalZero.GeneratedStep123BoundaryPacket.fromActualGenerated, "Zeta23.ExceptionalZero.GeneratedStep123BoundaryPacket", "DEFINITION"),
     (``Zeta23.ExceptionalZero.exists_generatedStep123BoundaryPacket, "Zeta23.ExceptionalZero.GeneratedStep123BoundaryPacket", "THEOREM"),
     (``Zeta23.ExceptionalZero.exists_generatedStep123BoundaryPacket_cofinal, "Zeta23.ExceptionalZero.GeneratedStep123BoundaryPacket", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeArithmeticRangeEvidence.fromNative, "Zeta23.CCM.Step123NativeArithmeticRangeEvidence", "DEFINITION"),
+    (``Zeta23.CCM.GeneratedStep123IntegratedPacket.fromActualBoundary, "Zeta23.CCM.Step123NativeArithmeticRangeEvidence", "DEFINITION"),
+    (``Zeta23.CCM.exists_generatedStep123IntegratedPacket, "Zeta23.CCM.Step123NativeArithmeticRangeEvidence", "THEOREM"),
+    (``Zeta23.CCM.exists_generatedStep123IntegratedPacket_cofinal, "Zeta23.CCM.Step123NativeArithmeticRangeEvidence", "THEOREM"),
     (``Zeta23.CCM.NativeCompactPoleH2.localP_transfer_of_continuous, "Zeta23.CCM.OriginalDetectorFourHistoryTransfer", "THEOREM"),
     (``Zeta23.CCM.NativeCompactPoleH2.originalFourHistories_to_actualX, "Zeta23.CCM.OriginalDetectorFourHistoryTransfer", "THEOREM"),
     (``Zeta23.CCM.NativeCompactPoleH2.originalSmoothFourPrimeHistories_to_actualX, "Zeta23.CCM.OriginalDetectorFourHistorySignedTransfer", "THEOREM"),
