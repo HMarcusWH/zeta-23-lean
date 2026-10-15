@@ -19,6 +19,12 @@ REPO = Path(__file__).resolve().parents[5]
 D2_RUN_ID = 38569316691
 D2_PRODUCER_HEAD = "a55fbeeed6500bffe2ccac3960258ca5c590c7ee"
 D2_PRODUCER_TREE = "7ffdf5095db2d54ef97897c19797886d145b65d2"
+FROZEN_INVENTORY_PATH = "research/RHRC/routes/R003_ccm_bridge/post287/certificate_integrity.py"
+FROZEN_SEAM_BINDINGS = {
+    "Zeta23.CCM.qBasis_aperture_eq_zero": "Zeta23/CCM/KernelAnalysis.lean",
+    "Zeta23.CCM.primeSourceCoordinate_log_add": "Zeta23/CCM/CanonicalPrimeSeamTaylor.lean",
+    "Zeta23.CCM.sourceMatrix_zero": "Zeta23/CCM/SourceMatrix.lean",
+}
 SEAM_SOURCE_PATHS = (
     "Zeta23/CCM/KernelAnalysis.lean",
     "Zeta23/CCM/CanonicalPrimeSeamTaylor.lean",
@@ -53,6 +59,18 @@ def exact_numeric_source(proof_head: str | None = None, proof_tree: str | None =
         raise ValueError("proof Git commit/tree mismatch")
     if git("rev-parse", D2_PRODUCER_HEAD + "^{tree}").decode().strip() != D2_PRODUCER_TREE:
         raise ValueError("approved D2 producer Git tree changed or missing")
+    # Compare the exact frozen input-inventory implementation before using
+    # its source list. Source inventory must never be narrowed by this PR.
+    frozen_inventory = git("show", D2_PRODUCER_HEAD + ":" + FROZEN_INVENTORY_PATH)
+    proof_inventory = git("show", head + ":" + FROZEN_INVENTORY_PATH)
+    if frozen_inventory != proof_inventory:
+        raise ValueError("frozen numerical source inventory altered")
+    if (REPO / FROZEN_INVENTORY_PATH).read_bytes() != proof_inventory:
+        raise ValueError("dirty checked-out source inventory")
+    if set(SEAM_SOURCE_PATHS) != set(FROZEN_SEAM_BINDINGS.values()):
+        raise ValueError("physical-seam source inventory altered")
+    if FROZEN_INVENTORY_PATH not in SOURCE_INPUTS:
+        raise ValueError("frozen source inventory missing its own integrity guard")
     source_paths = tuple(dict.fromkeys((*SOURCE_INPUTS, *SEAM_SOURCE_PATHS)))
     if len(source_paths) < 25:
         raise ValueError("canonical numerical dependency inventory unexpectedly small")
@@ -62,6 +80,8 @@ def exact_numeric_source(proof_head: str | None = None, proof_tree: str | None =
             raise ValueError("unsafe source path")
         producer = git("show", D2_PRODUCER_HEAD + ":" + path)
         final = git("show", head + ":" + path)
+        if (REPO / path).read_bytes() != final:
+            raise ValueError("working numerical source differs from checked Git object: " + path)
         p_hash, f_hash = sha256(producer), sha256(final)
         if p_hash != f_hash:
             raise ValueError("D2 mathematical source changed: " + path)
@@ -71,6 +91,8 @@ def exact_numeric_source(proof_head: str | None = None, proof_tree: str | None =
         "execution_status": "SUCCESS",
         "integrity_status": "PASS",
         "source_identity_method": "EXACT_GIT_BLOB_BYTES_SHA256",
+        "frozen_inventory_path": FROZEN_INVENTORY_PATH,
+        "frozen_inventory_sha256": sha256(frozen_inventory),
         "d2_run_id": D2_RUN_ID,
         "d2_producer_head": D2_PRODUCER_HEAD,
         "d2_producer_tree": D2_PRODUCER_TREE,
@@ -100,10 +122,20 @@ def verify_d2_receipt(d2: dict, equivalence: dict, run_id: int = D2_RUN_ID) -> N
     if original.get("source_digests") != equivalence.get("canonical_inputs"):
         raise ValueError("D2 receipt's exact evaluator source digest map differs")
     seams = original.get("seam_source_bindings", {}).get("bindings", {})
-    for item in seams.values():
+    if not isinstance(seams, dict) or set(seams) != set(FROZEN_SEAM_BINDINGS):
+        raise ValueError("D2 physical-seam source binding census incomplete")
+    for name, item in seams.items():
+        if item.get("path") != FROZEN_SEAM_BINDINGS[name]:
+            raise ValueError("D2 physical-seam theorem was substituted")
         if not isinstance(item, dict) or \
                 item.get("sha256") != equivalence["seam_sources"].get(item.get("path")):
             raise ValueError("D2 physical-seam mathematical source differs")
+    for label in ("producer_source", "validation_source"):
+        lineage = d2.get(label, {})
+        if (lineage.get("commit") != D2_PRODUCER_HEAD or
+                lineage.get("tree") != D2_PRODUCER_TREE or
+                lineage.get("source_digests") != equivalence.get("canonical_inputs")):
+            raise ValueError("D2 producer/checker source identity mismatch: " + label)
     if d2.get("terminal_claim") != "RH_OPEN" or d2.get("not_a_lean_proof") is not True:
         raise ValueError("D2 claim boundary altered")
 
