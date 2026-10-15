@@ -1,5 +1,6 @@
 import Zeta23.CCM.Step123NativeSourceSpectralEvidence
 import Zeta23.ExceptionalZero.Step4OutputSufficiency
+import Zeta23.CCM.PoleNeutralCompactInverse
 
 /-!
 # PR292: typed source-bound Step 1-3 consumer checks
@@ -59,41 +60,108 @@ def mc05_single_retained_state {β a : ℝ} {σ : ReversalParity}
       out.aperture_pos :=
   out.retained
 
-/-- MC06. This typed record contains the two DIFFERENT inverse budgets. -/
+/-- MC06. Both exact inverse inequalities, with distinct shifts and constants.
+The detector predecessor is evaluated at -eta, the selected-ground one at lambda. -/
 def mc06_two_inverse_budget_consumer {β a : ℝ} {σ : ReversalParity}
     (out : Step123NativeOutput β σ a) :
-    Step123NativeSourceSpectralEvidence out :=
-  Step123NativeSourceSpectralEvidence.fromNative out
+    let state := out.retained.state
+    (‖(nativeDetectorPredecessorEquiv σ state.inverses).symm.toLinearMap.toContinuousLinearMap‖ ≤
+      12 * ((originalDetectorQuarticCutoff
+        (fixedOriginalSincTrialAperture a) - 1 : ℕ) : ℝ) /
+        Real.exp (β * fixedOriginalSincTrialAperture a)) ∧
+    (‖(nativeSelectedGroundPredecessorEquiv
+        state.selectedParity state.inverses).symm.toLinearMap.toContinuousLinearMap‖ ≤
+      6 * ((originalDetectorQuarticCutoff
+        (fixedOriginalSincTrialAperture a) - 1 : ℕ) : ℝ) /
+        Real.exp (β * fixedOriginalSincTrialAperture a)) := by
+  let evidence := Step123NativeSourceSpectralEvidence.fromNative out
+  exact ⟨evidence.detector_inverse, evidence.selected_inverse⟩
 
-/-- MC07. The same-source record carries exact neutral variance and Gram. -/
+/-- MC07. Same original detector, full neutral variance, Gram and channel identities. -/
 def mc07_neutral_channel_consumer {β a : ℝ} {σ : ReversalParity}
     (out : Step123NativeOutput β σ a) :
-    Step123NativeSourceSpectralEvidence out :=
-  Step123NativeSourceSpectralEvidence.fromNative out
+    let L := fixedOriginalSincTrialAperture a
+    let Kd := originalDetectorQuarticCutoff L
+    let p := out.retained.state.detector
+    (‖canonicalPoleNeutralTrialResidual σ L Kd p‖ ^ 2 =
+      (inner ℂ p (nativePoleNeutralParityCanonical σ L Kd
+        (nativePoleNeutralParityCanonical σ L Kd p))).re -
+      canonicalPoleNeutralTrialRayleigh σ L Kd p ^ 2) ∧
+    (‖canonicalPoleNeutralTrialResidual σ L Kd p‖ ^ 2 =
+      (∑ i, ∑ j,
+        canonicalPoleNeutralTrialChannelGram σ L Kd p i j).re) ∧
+    (canonicalPoleNeutralTrialResidual σ L Kd p =
+      ∑ i, nativeTrialResidual
+        (canonicalPoleNeutralTrialChannel σ L Kd i) p) := by
+  let evidence := Step123NativeSourceSpectralEvidence.fromNative out
+  exact ⟨evidence.variance, evidence.gram, evidence.channels⟩
 
-/-- MC08. The selected branch and ground stay in the ONE selected state. -/
+/-- MC08. The actual stored selected ground has unit norm and its own
+eigen-equation. Branch-exhaustive ties remain a separate MC08 check. -/
 def mc08_selected_ground_consumer {β a : ℝ} {σ : ReversalParity}
     (out : Step123NativeOutput β σ a) :
-    Step123NativeSourceSpectralEvidence out :=
-  Step123NativeSourceSpectralEvidence.fromNative out
+    ‖out.selectedGround‖ = 1 ∧
+    nativePoleNeutralParityCanonical out.retained.state.selectedParity
+      (fixedOriginalSincTrialAperture a)
+      out.retained.state.selection.cutoff out.selectedGround =
+      (out.retained.state.selection.lam : ℂ) • out.selectedGround :=
+  (Step123NativeSourceSpectralEvidence.fromNative out).selected_eigenvector
 
-/-- MC09. Actual compact-inverse local duality is part of this packet. -/
+/-- MC09. Consume the actual compact H2 existence/uniqueness theorem.
+Instantiating the actual selected finite physical test is a further obligation. -/
 def mc09_compact_inverse_consumer {β a : ℝ} {σ : ReversalParity}
-    (out : Step123NativeOutput β σ a) :
-    Step123OriginalBoundaryEvidence out :=
-  Step123OriginalBoundaryEvidence.fromNative out
+    (_out : Step123NativeOutput β σ a)
+    {s : ℝ} (hs : 0 ≤ s) {f : ℝ → ℂ} (hf : MemLp f 2 volume)
+    (hsupport : ∀ x, x ∉ Set.Icc (-s) s → f x = 0)
+    (hplus : (∫ x : ℝ, nativePoleExponential (1 / 2) x * f x) = 0)
+    (hminus : (∫ x : ℝ, nativePoleExponential (-1 / 2) x * f x) = 0) :
+    ∃! u : NativeCompactPoleH2 s f, True :=
+  poleNeutral_compactInverse_exists_unique hs hf hsupport hplus hminus
 
-/-- MC10. Four signed original histories, including reflection and phase. -/
+/-- MC10. Source-specific signed four-history transfer at the actual phase
+and normalization, not a prime-only or reflected-term-free surrogate. -/
 def mc10_original_four_history_consumer {β a : ℝ} {σ : ReversalParity}
     (out : Step123NativeOutput β σ a) :
-    Step123OriginalBoundaryEvidence out :=
-  Step123OriginalBoundaryEvidence.fromNative out
+    ∀ {s : ℝ} {f : ℝ → ℂ} (u : NativeCompactPoleH2 s f),
+      Continuous f →
+      (∫ x in (-s)..s, f x * out.smoothOriginal.primeHistories x) =
+        ∫ x in (-s)..s, u.value x *
+          originalSmoothFourPrimeXHistories
+            (nativeOriginalDetectorPhaseSign σ) a x :=
+  (Step123OriginalBoundaryEvidence.fromNative out).original_signed_four_histories_actual_X
 
-/-- MC11. The bounded forcing error is tied to the original finite image. -/
+/-- MC11. Quantified actual projected source error, rather than an opaque
+evidence-record return or an unsupported global Schur upper estimate. -/
 def mc11_source_error_consumer {β a : ℝ} {σ : ReversalParity}
     (out : Step123NativeOutput β σ a) :
-    Step123OriginalBoundaryEvidence out :=
-  Step123OriginalBoundaryEvidence.fromNative out
+    ∃ C_Q : ℝ, 0 < C_Q ∧
+      ∀ (v : nativePoleNeutralParitySpace σ
+        (fixedOriginalSincTrialAperture a)
+        (out.retained.state.selection.cutoff - 1)),
+        ‖zetaZeroConfig.W out.physicalSourceError
+          (finitePhysicalSynthesis
+            (fixedOriginalSincTrialAperture a)
+            (out.retained.state.selection.cutoff - 1)
+            (canonicalNativeCoefficientInclusion σ
+              (fixedOriginalSincTrialAperture a)
+              (out.retained.state.selection.cutoff - 1) v)) +
+          (out.retained.state.selection.eta : ℂ) *
+            EF.weilTest out.physicalSourceError
+              (finitePhysicalSynthesis
+                (fixedOriginalSincTrialAperture a)
+                (out.retained.state.selection.cutoff - 1)
+                (canonicalNativeCoefficientInclusion σ
+                  (fixedOriginalSincTrialAperture a)
+                  (out.retained.state.selection.cutoff - 1) v)) 0‖ ≤
+          (C_Q * (1 + fixedOriginalSincTrialAperture a) *
+            Real.exp (fixedOriginalSincTrialAperture a / 2) *
+            Real.sqrt (1 +
+              (2 * Real.pi *
+                (out.retained.state.selection.cutoff - 1 : ℕ) /
+                fixedOriginalSincTrialAperture a) ^ 2) +
+            out.retained.state.selection.eta) *
+            nativePhysicalH1Norm out.physicalSourceError * ‖v‖ :=
+  (Step123OriginalBoundaryEvidence.fromNative out).actual_quantified_projected_forcing_error
 
 /-- MC12. Original right exterior and generally nonzero interior remain. -/
 theorem mc12_original_exterior_is_canonical {β a : ℝ} {σ : ReversalParity}
