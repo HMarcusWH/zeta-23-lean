@@ -69,11 +69,11 @@ class CompilerLogMutations(unittest.TestCase):
     def test_m07_05_wrong_importing_module_rejected_by_compiler_receipt(self):
         name='Zeta23.CCM.poleNeutralIndexEquiv'
         module='Zeta23.CCM.CanonicalPoleNeutralGeometry'
-        testlog='\\n'.join([
-            'POST290_COMPILER_CONTEXT\\t'+self.head+'\\t'+self.tree,
-            'RHRC_CANDIDATE_RESULT\\t'+name+'\\tRESOLVED_UNIQUE\\t1\\t'+
-            name+'\\t'+module+'\\tDEFINITION\\t0\\tEXACT_INDEX_EQUIV_TYPE\\t-',
-            'POST290_AXIOMS\\t'+name+'\\tpropext,Classical.choice,Quot.sound'
+        testlog='\n'.join([
+            'POST290_COMPILER_CONTEXT\t'+self.head+'\t'+self.tree,
+            'RHRC_CANDIDATE_RESULT\t'+name+'\tRESOLVED_UNIQUE\t1\t'+
+            name+'\t'+module+'\tDEFINITION\t0\tEXACT_INDEX_EQUIV_TYPE\t-',
+            'POST290_AXIOMS\t'+name+'\tpropext,Classical.choice,Quot.sound'
         ])
         roots={name:module}; kinds={name:'DEFINITION'}
         types,axioms=compiler_records(testlog,roots,self.head,self.tree,kinds)
