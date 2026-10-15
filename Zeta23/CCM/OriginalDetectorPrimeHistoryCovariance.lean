@@ -1,4 +1,5 @@
 import Zeta23.CCM.OriginalSincNativeConvolution
+import Zeta23.CCM.OriginalDetectorFourPrimeHistories
 import Mathlib.Analysis.Calculus.Deriv.Basic
 
 /-!
@@ -28,7 +29,7 @@ private theorem deriv_reflect_const
     {f : ℝ → ℂ} (hf : Differentiable ℝ f) (b x : ℝ) :
     HasDerivAt (fun t : ℝ => f (b - t)) (-(deriv f (b - x))) x := by
   have hinner : HasDerivAt (fun t : ℝ => b - t) (-1) x := by
-    simpa only using ((hasDerivAt_id x).const_sub b)
+    simpa only [id_eq] using! ((hasDerivAt_id x).const_sub b)
   simpa only [Function.comp_def, neg_one_smul] using
     ((hf (b - x)).hasDerivAt.scomp x hinner)
 
@@ -38,8 +39,9 @@ theorem nativePoleDifferential_translate
     universalSincDifferential (fun t : ℝ => f (t - b)) x =
       universalSincDifferential f (x - b) := by
   have hfd : Differentiable ℝ f := hf.differentiable (by norm_num)
+  have hfd1 : ContDiff ℝ 1 (deriv f) := hf.deriv'
   have hfdd : Differentiable ℝ (deriv f) :=
-    (hf.deriv').differentiable (by norm_num)
+    hfd1.differentiable (by norm_num)
   have hFirst : deriv (fun t : ℝ => f (t - b)) =
       fun t : ℝ => deriv f (t - b) := by
     funext t
@@ -57,8 +59,9 @@ theorem nativePoleDifferential_reflect
     universalSincDifferential (fun t : ℝ => f (b - t)) x =
       universalSincDifferential f (b - x) := by
   have hfd : Differentiable ℝ f := hf.differentiable (by norm_num)
+  have hfd1 : ContDiff ℝ 1 (deriv f) := hf.deriv'
   have hfdd : Differentiable ℝ (deriv f) :=
-    (hf.deriv').differentiable (by norm_num)
+    hfd1.differentiable (by norm_num)
   have hFirst : deriv (fun t : ℝ => f (b - t)) =
       fun t : ℝ => -(deriv f (b - t)) := by
     funext t
@@ -92,7 +95,8 @@ theorem originalDetector_fourPrimeHistory_poleImages (a x : ℝ) :
   let L := Zeta23.ExceptionalZero.fixedOriginalSincTrialAperture a
   let c := Zeta23.ExceptionalZero.fixedOriginalSincLobeCenter
   have hF : ContDiff ℝ 2 nativeOriginalKernelPrimeField :=
-    nativeOriginalKernelPrimeField_contDiff.of_le le_top
+    nativeOriginalKernelPrimeField_contDiff.of_le
+      (ENat.natCast_le_of_coe_top_le_withTop le_rfl 2)
   have hPole := nativeOriginalKernelPrimeField_poleImage
   refine ⟨?_, ?_, ?_, ?_⟩
   · exact (nativePoleDifferential_translate hF c x).trans

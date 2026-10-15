@@ -21,6 +21,8 @@ open MeasureTheory Set Complex
 
 namespace Zeta23.CCM
 
+open Zeta23.ExceptionalZero
+
 /-- Physical boundary-flat legal carrier, not the larger unrestricted
 Euclidean coefficient space and not the pole-neutral compression. -/
 def canonicalLegalPhysicalIsometry {L : ℝ} (hL : 0 < L) (K : ℕ) :
@@ -30,7 +32,8 @@ def canonicalLegalPhysicalIsometry {L : ℝ} (hL : 0 < L) (K : ℕ) :
 
 def canonicalLegalPhysicalProjection {L : ℝ} (hL : 0 < L) (K : ℕ) :
     CanonicalPhysicalL2 →L[ℂ] euclideanBoundaryFlatSubspace K :=
-  (canonicalLegalPhysicalIsometry hL K).toContinuousLinearMap.adjoint
+  ((canonicalLegalPhysicalIsometry hL K).toContinuousLinearMap :
+    euclideanBoundaryFlatSubspace K →L[ℂ] CanonicalPhysicalL2).adjoint
 
 theorem canonicalLegalPhysicalProjection_orthogonal {L : ℝ}
     (hL : 0 < L) (K : ℕ) (v : euclideanBoundaryFlatSubspace K)
@@ -38,9 +41,15 @@ theorem canonicalLegalPhysicalProjection_orthogonal {L : ℝ}
     inner ℂ (canonicalLegalPhysicalIsometry hL K v)
       (g - canonicalLegalPhysicalIsometry hL K
         (canonicalLegalPhysicalProjection hL K g)) = 0 := by
-  rw [inner_sub_right, (canonicalLegalPhysicalIsometry hL K).inner_map_map]
-  exact sub_eq_zero.mpr
-    ((canonicalLegalPhysicalIsometry hL K).toContinuousLinearMap.adjoint_inner_right v g).symm
+  have hAdj : inner ℂ (canonicalLegalPhysicalIsometry hL K v) g =
+      inner ℂ v (canonicalLegalPhysicalProjection hL K g) := by
+    rw [canonicalLegalPhysicalProjection, ContinuousLinearMap.adjoint_inner_right]
+  have hIso : inner ℂ (canonicalLegalPhysicalIsometry hL K v)
+      (canonicalLegalPhysicalIsometry hL K
+        (canonicalLegalPhysicalProjection hL K g)) =
+      inner ℂ v (canonicalLegalPhysicalProjection hL K g) :=
+    (canonicalLegalPhysicalIsometry hL K).inner_map_map _ _
+  rw [inner_sub_right, hAdj, hIso, sub_self]
 
 def Step123NativeOutput.selectedPhysicalSource
     {β : ℝ} {σ : ReversalParity} {a : ℝ}

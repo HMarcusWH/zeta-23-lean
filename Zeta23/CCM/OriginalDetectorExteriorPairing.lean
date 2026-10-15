@@ -1,5 +1,4 @@
 import Zeta23.CCM.NativeOriginalExteriorHistory
-import Mathlib.MeasureTheory.Integral.SetIntegral
 
 /-!
 # Actual original exterior + nonzero interior in every compact mixed test

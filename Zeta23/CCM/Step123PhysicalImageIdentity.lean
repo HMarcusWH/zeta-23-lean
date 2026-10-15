@@ -25,13 +25,7 @@ theorem originalDetectorPaddedNativeUnit_eq_unitCoefficients
       (nativeOriginalDetectorPaddedUnit σ c hL) =
     originalDetectorPaddedFinitePhaseUnitVector
       (nativeOriginalDetectorPhaseSign σ) L c (by linarith) := by
-  cases σ
-  · simpa only [nativeOriginalDetectorPhaseSign, nativeOriginalDetectorPaddedUnit,
-      canonicalNativeCoefficientInclusion_eq_ambient] using
-        (originalDetectorPaddedFiniteEvenPhaseUnit_ambient c hL)
-  · simpa only [nativeOriginalDetectorPhaseSign, nativeOriginalDetectorPaddedUnit,
-      canonicalNativeCoefficientInclusion_eq_ambient] using
-        (originalDetectorPaddedFiniteOddPhaseUnit_ambient c hL)
+  cases σ <;> rfl
 
 /-- N13: physical synthesis of the packet's ONE original detector
 equals the actual true-normalized padded physical source. -/

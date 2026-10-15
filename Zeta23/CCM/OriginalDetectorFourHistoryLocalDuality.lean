@@ -66,7 +66,8 @@ theorem NativeCompactPoleH2.originalKernelPrimeField_localPairing_of_continuous
     (∫ x in (-s)..s, f x * nativeOriginalKernelPrimeField x) =
       ∫ x in (-s)..s, u.value x * (nativeOriginalPrimeField x : ℂ) := by
   have hF : ContDiff ℝ 2 nativeOriginalKernelPrimeField :=
-    nativeOriginalKernelPrimeField_contDiff.of_le le_top
+    nativeOriginalKernelPrimeField_contDiff.of_le
+      (ENat.natCast_le_of_coe_top_le_withTop le_rfl 2)
   rw [u.localP_duality_of_continuous hf hF]
   apply intervalIntegral.integral_congr
   intro x _
@@ -108,7 +109,8 @@ theorem NativeCompactPoleH2.originalFourHistories_localP_dualities
   let L := Zeta23.ExceptionalZero.fixedOriginalSincTrialAperture a
   let c := Zeta23.ExceptionalZero.fixedOriginalSincLobeCenter
   have hF : ContDiff ℝ 2 nativeOriginalKernelPrimeField :=
-    nativeOriginalKernelPrimeField_contDiff.of_le le_top
+    nativeOriginalKernelPrimeField_contDiff.of_le
+      (ENat.natCast_le_of_coe_top_le_withTop le_rfl 2)
   have h1 : ContDiff ℝ 2
       (fun t : ℝ => nativeOriginalKernelPrimeField (t - c)) :=
     hF.comp (by fun_prop)

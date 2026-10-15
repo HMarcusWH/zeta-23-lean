@@ -150,7 +150,8 @@ theorem NativeCompactPoleH2.originalKernelPrimeField_localPairing
     (∫ x in (-s)..s, f x * nativeOriginalKernelPrimeField x) =
       ∫ x in (-s)..s, u.value x * (nativeOriginalPrimeField x : ℂ) := by
   have hF : ContDiff ℝ 2 nativeOriginalKernelPrimeField :=
-    nativeOriginalKernelPrimeField_contDiff.of_le le_top
+    nativeOriginalKernelPrimeField_contDiff.of_le
+      (ENat.natCast_le_of_coe_top_le_withTop le_rfl 2)
   have hLocal := u.localP_duality hF h0 h1 h2 hu hf
   rw [hLocal]
   apply intervalIntegral.integral_congr
