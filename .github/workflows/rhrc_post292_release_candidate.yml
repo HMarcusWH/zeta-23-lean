@@ -139,7 +139,8 @@ jobs:
                       /tmp/post292-native/native_panel_check.json \
                       /tmp/post292-d2/D2_CONTINUUM_RECEIPT.json \
                       /tmp/post292-review/INDEPENDENT_SEMANTIC_REVIEW.json \
-                      /tmp/post292-harvest/WORKFLOW_HARVEST.json; do
+                      /tmp/post292-harvest/WORKFLOW_HARVEST.json \
+                      /tmp/post292-harvest/WORKFLOW_HARVEST_PROVENANCE.json; do
             test -s "$item" || { echo "::error::Missing actual evidence: $item"; exit 1; }
           done
           python - <<'PY'
@@ -155,6 +156,14 @@ jobs:
           if review.get('reviewed_head')!=head or review.get('reviewed_tree')!=tree:
               raise SystemExit('independent 44-field review is stale')
           PY
+      - name: Verify independently reviewed prerequisite jobs against live GitHub, including frozen D2
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          python research/RHRC/routes/R003_ccm_bridge/post290/verify_workflow_harvest.py \
+            --review /tmp/post292-harvest/WORKFLOW_HARVEST.json \
+            --provenance /tmp/post292-harvest/WORKFLOW_HARVEST_PROVENANCE.json
       - name: Verify independent GitHub review signed the exact 44-field artifact
         env:
           GH_TOKEN: ${{ github.token }}

@@ -38,8 +38,18 @@ def validate_jobs(raw,review):
         review.get("review_phase")!="PRE_RELEASE_PREREQUISITES" or
         raw.get("includes_release_run") is not False or
         review.get("includes_release_run") is not False or
-        raw.get("excluded_administrative_runs")!=review.get("excluded_administrative_runs")):
+        not isinstance(raw.get("excluded_administrative_runs"),list) or
+        not isinstance(review.get("excluded_administrative_runs"),list)):
         raise ValueError("prerequisite harvest scope/head mismatch")
+    # Administrative intake/release runs can finish or appear AFTER the signed
+    # prerequisite review. Their exact dispositions belong to the later
+    # POST_RELEASE_EVERY_JOB review, not this self-independent prerequisite.
+    ex_key=lambda x:(x.get("run_id"),x.get("workflow"),x.get("head"),
+                     x.get("exclusion_reason"))
+    live_admin={ex_key(x) for x in raw["excluded_administrative_runs"]}
+    frozen_admin={ex_key(x) for x in review["excluded_administrative_runs"]}
+    if len(frozen_admin)!=len(review["excluded_administrative_runs"]) or not frozen_admin<=live_admin:
+        raise ValueError("reviewed administrative exclusion has invalid identity")
     actual,submitted=raw.get("jobs"),review.get("jobs")
     if not isinstance(actual,list) or not actual or not isinstance(submitted,list):
         raise ValueError("missing reviewed job inventory")
