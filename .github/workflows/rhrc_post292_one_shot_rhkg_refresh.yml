@@ -1,5 +1,6 @@
 name: PR292 guarded one-shot RHKG generated-state refresh
 
+# Explicit source-only file input repair: no oversized Lean name array literals.
 # Only this workflow file's explicit opt-in push creates an automatic run.
 # This rebuilds deterministic graph products; it performs NO D2 searches,
 # checker continuations, workflow reruns, independent reviews, or RH claims.

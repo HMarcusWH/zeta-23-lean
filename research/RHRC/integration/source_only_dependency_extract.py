@@ -56,46 +56,84 @@ def load_roots() -> list[dict]:
         fail("source-only root lacks exact Lean declaration identity")
     if len(set(names)) != len(names):
         fail("duplicate exact Lean declaration among source-only roots")
-    return sorted(rows, key=lambda row: row["resolved_full_name"])
+    ordered = sorted(rows, key=lambda row: row["resolved_full_name"])
+    validate_root_inventory(ordered)
+    return ordered
 
 
-# Bound the Lean quoted-name ARRAY LITERAL before it exceeds elaborator recursion.
-# Feed the whole array to ONE dependency exporter call: no per-batch traversal,
-# duplicate closure, changed root identity or altered TYPE/VALUE/STRUCTURE edges.
-SOURCE_ONLY_ROOT_LITERAL_BATCH = 64
-
-
-def render_driver(roots: list[dict]) -> str:
+# Exact compiler declaration inventory is transported via runtime UTF-8 TSV.
+# Do not reassemble thousands of quoted names in a single Lean syntax tree.
+def validate_root_inventory(roots: list[dict]) -> None:
     if not roots:
         fail("empty source-only root inventory")
-    names = [row["resolved_full_name"] for row in roots]
-    if any(not isinstance(name, str) or not name for name in names):
-        fail("invalid source-only root name")
-    if len(set(names)) != len(names):
-        fail("duplicate source-only root names")
-    modules = sorted({row["module"] for row in roots})
-    if not modules or any(not isinstance(module, str) or not module for module in modules):
-        fail("invalid source-only root module")
-    imports = "\n".join(
-        ["import Zeta23.RHRC.DeclarationDependencyExport", *[f"import {module}" for module in modules]]
+    names = []
+    ids = []
+    for row in roots:
+        name, module, kind, source_id = (
+            row.get("resolved_full_name"),
+            row.get("module"),
+            row.get("compiler_kind"),
+            row.get("source_declaration_id"),
+        )
+        if not all(isinstance(v, str) and v for v in (name, module, source_id)):
+            fail("missing source-only root name, module or source candidate id")
+        if kind != "THEOREM":
+            fail("non-theorem source-only root in compiler inventory: " + name)
+        if not (
+            module == "Zeta23.CCM"
+            or module.startswith("Zeta23.CCM.")
+            or module == "Zeta23.ExceptionalZero"
+            or module.startswith("Zeta23.ExceptionalZero.")
+        ):
+            fail("source-only root module escaped the audited source scope: " + module)
+        if not name.startswith("Zeta23."):
+            fail("source-only root has non-project declaration identity: " + name)
+        if any(c in v for v in (name, module, source_id) for c in "\t\n\r\x00"):
+            fail("source-only root contains a forbidden control character")
+        names.append(name)
+        ids.append(source_id)
+    if len(names) != len(set(names)):
+        fail("duplicate exact Lean declaration among source-only roots")
+    if len(ids) != len(set(ids)):
+        fail("duplicate source candidate id among source-only roots")
+
+
+def render_root_file(roots: list[dict]) -> str:
+    validate_root_inventory(roots)
+    if [r["resolved_full_name"] for r in roots] != sorted(
+        r["resolved_full_name"] for r in roots
+    ):
+        fail("source-only root file must follow canonical compiler-name ordering")
+    return "".join(
+        row["resolved_full_name"] + "\t" + row["module"] + "\n"
+        for row in roots
     )
-    tick2 = chr(96) * 2
-    lines = [
-        imports, "", "open Lean", "open Lean.Elab Command", "",
-        "run_cmd do", "  let mut roots : Array Lean.Name := #[]",
-    ]
-    for start in range(0, len(names), SOURCE_ONLY_ROOT_LITERAL_BATCH):
-        chunk = names[start:start + SOURCE_ONLY_ROOT_LITERAL_BATCH]
-        literal = ",\n    ".join(tick2 + name for name in chunk)
-        lines.append("  roots := roots ++ #[\n    " + literal + "\n  ]")
-    lines.append("  Zeta23.RHRC.exportDependencies roots")
-    return "\n".join(lines) + "\n"
+
+
+def lean_string(value: str) -> str:
+    return json.dumps(value, ensure_ascii=False)
+
+
+def render_driver(root_path: Path, roots: list[dict]) -> str:
+    render_root_file(roots)  # Validation and canonical order, no root literals.
+    modules = sorted({row["module"] for row in roots})
+    imports = "\n".join(
+        ["import Zeta23.RHRC.DeclarationDependencyExport",
+         *[f"import {module}" for module in modules]]
+    )
+    return (
+        imports + "\n\n"
+        "run_cmd do\n"
+        "  Zeta23.RHRC.exportDependenciesFile "
+        + lean_string(str(root_path))
+        + "\n"
+    )
 
 
 def build_root_modules(roots: list[dict]) -> None:
     modules = sorted({row["module"] for row in roots})
     proc = subprocess.run(
-        ["lake", "build", *modules],
+        ["lake", "build", "Zeta23.RHRC.DeclarationDependencyExport", *modules],
         cwd=REPO,
         text=True,
         stdout=subprocess.PIPE,
@@ -108,14 +146,24 @@ def build_root_modules(roots: list[dict]) -> None:
 
 
 def run_lean(roots: list[dict]) -> str:
+    validate_root_inventory(roots)
     build_root_modules(roots)
-    driver = render_driver(roots)
-    with tempfile.NamedTemporaryFile(
-        mode="w", suffix=".lean", encoding="utf-8", delete=False
-    ) as handle:
-        handle.write(driver)
-        driver_path = Path(handle.name)
+    root_text = render_root_file(roots)
+    root_path: Path | None = None
+    driver_path: Path | None = None
     try:
+        with tempfile.NamedTemporaryFile(
+            mode="w", suffix=".tsv", encoding="utf-8", newline="\n",
+            delete=False,
+        ) as handle:
+            handle.write(root_text)
+            root_path = Path(handle.name)
+        with tempfile.NamedTemporaryFile(
+            mode="w", suffix=".lean", encoding="utf-8", newline="\n",
+            delete=False,
+        ) as handle:
+            handle.write(render_driver(root_path, roots))
+            driver_path = Path(handle.name)
         proc = subprocess.run(
             ["lake", "env", "lean", str(driver_path)],
             cwd=REPO,
@@ -124,8 +172,18 @@ def run_lean(roots: list[dict]) -> str:
             stderr=subprocess.PIPE,
         )
     finally:
-        driver_path.unlink(missing_ok=True)
+        if driver_path is not None:
+            driver_path.unlink(missing_ok=True)
+        if root_path is not None:
+            root_path.unlink(missing_ok=True)
     if proc.returncode != 0:
+        import hashlib
+        print(
+            "source_only_dependency_extract: compiler root inventory "
+            f"count={len(roots)} sha256="
+            f"{hashlib.sha256(root_text.encode('utf-8')).hexdigest()}",
+            file=os.sys.stderr,
+        )
         print(proc.stdout, end="")
         print(proc.stderr, end="", file=os.sys.stderr)
         fail(f"Lean exporter failed with exit code {proc.returncode}")
@@ -139,6 +197,7 @@ def is_local_module(module: str | None) -> bool:
 def parse_output(stdout: str, roots: list[dict]) -> list[dict]:
     declarations: dict[str, dict] = {}
     edge_channels_by_source: dict[str, dict[str, set[str]]] = {}
+    present_channels: dict[str, set[str]] = {}
 
     for raw in stdout.splitlines():
         if raw.startswith("RHKG_DEP_DECL\t"):
@@ -172,6 +231,10 @@ def parse_output(stdout: str, roots: list[dict]) -> list[dict]:
             _, source, channel, *targets = parts
             if channel not in {"TYPE", "VALUE", "STRUCTURE"}:
                 fail(f"unknown dependency channel {channel!r}")
+            channels = present_channels.setdefault(source, set())
+            if channel in channels:
+                fail(f"duplicate dependency channel {channel!r} for {source}")
+            channels.add(channel)
             target_map = edge_channels_by_source.setdefault(source, {})
             for target in targets:
                 if not target:
@@ -182,6 +245,28 @@ def parse_output(stdout: str, roots: list[dict]) -> list[dict]:
     missing_roots = sorted(set(root_by_name) - set(declarations))
     if missing_roots:
         fail(f"compiler output omitted source-only roots: {missing_roots[:10]}")
+
+    # A present root is not necessarily the correct declaration.
+    for name, original in root_by_name.items():
+        actual = declarations[name]
+        if (
+            actual["module"] != original["module"]
+            or actual["declaration_kind"] != "THEOREM"
+            or actual["private_or_internal"]
+        ):
+            fail(f"wrong module, kind or visibility for source-only root: {name}")
+
+    # Every local declaration must actually have been traversed, not merely
+    # emitted as a target of another declaration. Empty channels count.
+    required_channels = {"TYPE", "VALUE", "STRUCTURE"}
+    for name, meta in declarations.items():
+        if is_local_module(meta["module"]):
+            observed = present_channels.get(name, set())
+            if observed != required_channels:
+                fail(
+                    f"incomplete compiler dependency channels for {name}: "
+                    f"{sorted(required_channels - observed)} missing"
+                )
 
     for source, targets in edge_channels_by_source.items():
         if source not in declarations:
