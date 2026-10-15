@@ -58,6 +58,32 @@ class CompilerLogMutations(unittest.TestCase):
         self.assertEqual(sum(kinds[n]=='DEFINITION' for n in names),8)
         self.assertEqual(sum(kinds[n]=='THEOREM' for n in names),8)
 
+    def test_m07_05_exact_origin_is_defining_geometry_module(self):
+        from build_formal_receipt import AUDIT
+        roots,kinds=audit_roots(AUDIT.read_text(encoding='utf-8'))
+        name='Zeta23.CCM.poleNeutralIndexEquiv'
+        self.assertEqual(roots[name],'Zeta23.CCM.CanonicalPoleNeutralGeometry')
+        self.assertEqual(kinds[name],'DEFINITION')
+        self.assertNotEqual(roots[name],'Zeta23.CCM.CanonicalPoleNeutralCarrier')
+
+    def test_m07_05_wrong_importing_module_rejected_by_compiler_receipt(self):
+        name='Zeta23.CCM.poleNeutralIndexEquiv'
+        module='Zeta23.CCM.CanonicalPoleNeutralGeometry'
+        testlog='\\n'.join([
+            'POST290_COMPILER_CONTEXT\\t'+self.head+'\\t'+self.tree,
+            'RHRC_CANDIDATE_RESULT\\t'+name+'\\tRESOLVED_UNIQUE\\t1\\t'+
+            name+'\\t'+module+'\\tDEFINITION\\t0\\tEXACT_INDEX_EQUIV_TYPE\\t-',
+            'POST290_AXIOMS\\t'+name+'\\tpropext,Classical.choice,Quot.sound'
+        ])
+        roots={name:module}; kinds={name:'DEFINITION'}
+        types,axioms=compiler_records(testlog,roots,self.head,self.tree,kinds)
+        self.assertEqual(types[name],'EXACT_INDEX_EQUIV_TYPE')
+        self.assertEqual(len(axioms[name]),3)
+        importing='Zeta23.CCM.CanonicalPoleNeutralCarrier'
+        with self.assertRaisesRegex(ValueError,'identity/kind mismatch'):
+            compiler_records(testlog.replace(module,importing),roots,
+                             self.head,self.tree,kinds)
+
     def test_source_kind_canonical_spelling(self):
         roots,kinds=audit_roots('''(``Mock.a, "Mock", "DEFINITION"),
             (``Mock.b, "Mock", "STRUCTURE")''')

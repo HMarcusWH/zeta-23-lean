@@ -1414,7 +1414,7 @@ run_cmd do
     (``Zeta23.CCM.canonicalPhysicalDerivativeCoefficients, "Zeta23.CCM.CanonicalPhysicalTrialRealization", "DEF"),
     (``Zeta23.CCM.universalSincSource, "Zeta23.CCM.UniversalSincSourceFacade", "DEF"),
     (``Zeta23.CCM.originalDetectorFiniteImage, "Zeta23.CCM.OriginalDetectorFiniteTransport", "DEF"),
-    (``Zeta23.CCM.poleNeutralIndexEquiv, "Zeta23.CCM.CanonicalPoleNeutralCarrier", "DEF"),
+    (``Zeta23.CCM.poleNeutralIndexEquiv, "Zeta23.CCM.CanonicalPoleNeutralGeometry", "DEF"),
     (``Zeta23.CCM.poleNeutralEvenShiftedRay, "Zeta23.CCM.CanonicalPoleNeutralShiftedSecular", "DEF"),
     (``Zeta23.CCM.DetectorRetainedSchurState, "Zeta23.CCM.DetectorRetainedSchurState", "INDUCTIVE"),
     (``Zeta23.CCM.canonicalTrialResidual, "Zeta23.CCM.CanonicalTrialResidualChannels", "DEF"),

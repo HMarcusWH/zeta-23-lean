@@ -6,7 +6,7 @@ from d2_source_equivalence import FROZEN_CONTINUATION_FILES, verify_continuation
 class FrozenCheckerProvenance(unittest.TestCase):
     def fixture(self):
         checks={name:str(i).zfill(64) for i,name in enumerate(FROZEN_CONTINUATION_FILES)}
-        return {"continuation_source_digests":checks}, checks
+        return {"continuation_source_digests":checks.copy()}, checks
 
     def test_all_seven_exact(self):
         identity, digests=self.fixture()
@@ -18,6 +18,14 @@ class FrozenCheckerProvenance(unittest.TestCase):
         identity["continuation_source_digests"].pop("k3_replay_shards.py")
         with self.assertRaisesRegex(ValueError,"seven-file"):
             verify_continuation_digest_map(identity,digests)
+
+    def test_claimed_and_actual_hash_maps_are_independent(self):
+        identity,digests=self.fixture()
+        self.assertIsNot(identity['continuation_source_digests'],digests)
+        identity['continuation_source_digests']['k3_replay_all.py']='f'*64
+        self.assertNotEqual(identity['continuation_source_digests'],digests)
+        self.assertNotEqual(identity['continuation_source_digests']['k3_replay_all.py'],
+                            digests['k3_replay_all.py'])
 
     def test_changed_checker_digest_rejected(self):
         identity,digests=self.fixture()
