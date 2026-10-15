@@ -16,6 +16,7 @@ from pathlib import Path
 
 from d2_source_equivalence import exact_numeric_source, verify_d2_receipt
 from build_formal_receipt import TYPED_CONTRACT_ROOTS
+from graph_precheck_receipt import validate_receipt
 
 REPO = Path(__file__).resolve().parents[5]
 FROZEN = REPO / "research/RHRC/integration/post290/spec/BUILD_MANIFEST.json"
@@ -111,12 +112,19 @@ def verified_outputs(directory: Path, head: str, tree: str) -> bool:
 
 
 def derive(formal: dict, review: dict, d2: dict, harvest: dict,
-           output_dir: Path, graph_checked: bool = False) -> dict:
+           output_dir: Path, graph_receipt: dict | None = None) -> dict:
     """Unproved, unreviewed or incomplete evidence stays INCOMPLETE."""
     baseline = read(FROZEN)
     head, tree = get_commit()
     roots = accepted_formal_roots(formal, head, tree)
     reviewed = bool(roots) and accepted_review(review, head, tree, roots)
+    graph_checked = False
+    graph_receipt_error = None
+    try:
+        graph_checked = validate_receipt(graph_receipt, REPO, head, tree,
+                                         __import__("os").environ.get("GITHUB_RUN_ID", ""))
+    except (ValueError, OSError) as exc:
+        graph_receipt_error = str(exc)
     evidence_ok = reviewed and graph_checked
 
     numerical_ok = False
@@ -202,6 +210,7 @@ def derive(formal: dict, review: dict, d2: dict, harvest: dict,
         "producer_compiler_verified": bool(roots),
         "independent_44_field_reviewed": reviewed,
         "graph_checked_before_materialization": graph_checked,
+        "graph_precheck_receipt_error": graph_receipt_error,
         "d2_nonpartial_source_matched": numerical_ok,
         "d2_identity_error": d2_identity_error,
         "every_job_scientific_reviewed": complete_harvest,
@@ -216,10 +225,10 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     for name in ("formal", "review", "d2", "harvest", "output-dir", "out"):
         parser.add_argument("--" + name, required=True, type=Path)
-    parser.add_argument("--graph-precheck-passed", action="store_true")
+    parser.add_argument("--graph-receipt", required=True, type=Path)
     args = parser.parse_args()
     result = derive(read(args.formal), read(args.review), read(args.d2), read(args.harvest),
-                    args.output_dir, args.graph_precheck_passed)
+                    args.output_dir, read(args.graph_receipt))
     args.out.parent.mkdir(parents=True, exist_ok=True)
     args.out.write_text(json.dumps(result, indent=2) + "\n")
     print(json.dumps({"status": result["status"], "head": result["source_status"]["head"],

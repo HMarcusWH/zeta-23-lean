@@ -78,8 +78,12 @@ jobs:
           set -euo pipefail
           test "$(git rev-parse HEAD)" = "${{ github.sha }}"
           test -z "$(git status --porcelain --untracked-files=all -- '*.lean' lean-toolchain lake-manifest.json lakefile.lean lakefile.toml)"
-      - name: Check the EXISTING generated state before ANY producer writes
-        run: python research/RHRC/tools/materialize_derived_state.py --check
+      - name: Certify existing deterministic RHKG graph BEFORE any producer writes
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/post292-checks
+          python research/RHRC/routes/R003_ccm_bridge/post290/graph_precheck_receipt.py \
+            --out /tmp/post292-checks/RHKG_PRECHECK_RECEIPT.json
       - uses: actions/download-artifact@v4
         with:
           run-id: ${{ inputs.component_run_id }}
@@ -227,7 +231,7 @@ jobs:
             --d2 /tmp/post292-d2/D2_CONTINUUM_RECEIPT.json \
             --harvest /tmp/post292-harvest/WORKFLOW_HARVEST.json \
             --output-dir /tmp/post292-complete-outputs \
-            --graph-precheck-passed \
+            --graph-receipt /tmp/post292-checks/RHKG_PRECHECK_RECEIPT.json \
             --out /tmp/post292-complete-outputs/BUILD_MANIFEST_VERIFIED.json
           python research/RHRC/routes/R003_ccm_bridge/post290/output_contract_check.py \
             --manifest /tmp/post292-complete-outputs/BUILD_MANIFEST_VERIFIED.json \
