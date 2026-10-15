@@ -15,11 +15,11 @@ on:
         required: true
         type: string
       d2_run_id:
-        description: "Approved D2 final verifier run ID (not a search trigger)"
+        description: "Approved D2 final verifier run ID 38569316691 (no search dispatch)"
         required: true
         type: string
       d2_artifact_name:
-        description: "Exact D2_CONTINUUM_RECEIPT.json artifact name"
+        description: "Approved D2 final artifact name k3-unrun460-final-independent-result"
         required: true
         type: string
       review_run_id:
@@ -109,6 +109,22 @@ jobs:
           name: ${{ inputs.harvest_artifact_name }}
           github-token: ${{ github.token }}
           path: /tmp/post292-harvest
+      - name: Require original D2 run ID and FINAL artifact (no retries or searches)
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "${{ inputs.d2_run_id }}" = "38569316691"
+          test "${{ inputs.d2_artifact_name }}" = "k3-unrun460-final-independent-result"
+          test -s /tmp/post292-d2/disposition.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          source=Path('/tmp/post292-d2/disposition.json')
+          data=json.loads(source.read_text())
+          if data.get('schema')!='post290.k3-complete.v1' or data.get('terminal_claim')!='RH_OPEN':
+              raise SystemExit('unrecognized actual D2 final disposition')
+          Path('/tmp/post292-d2/D2_CONTINUUM_RECEIPT.json').write_bytes(source.read_bytes())
+          PY
       - name: Require actual named evidence inputs and pinned source context
         shell: bash
         run: |
@@ -134,13 +150,21 @@ jobs:
           if review.get('reviewed_head')!=head or review.get('reviewed_tree')!=tree:
               raise SystemExit('independent 44-field review is stale')
           PY
+      - name: Establish byte-exact numerical source identity across two Git commits
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/post292-checks
+          python research/RHRC/routes/R003_ccm_bridge/post290/d2_source_equivalence.py \
+            --d2 /tmp/post292-d2/D2_CONTINUUM_RECEIPT.json \
+            --d2-run-id ${{ inputs.d2_run_id }} \
+            --out /tmp/post292-checks/D2_SOURCE_EQUIVALENCE.json
       - name: Compile complete audit roots and check admissible Lean axioms
         shell: bash
         run: |
           set -euo pipefail
           export POST290_CHECKED_HEAD="$(git rev-parse HEAD)"
           export POST290_CHECKED_TREE="$(git rev-parse HEAD^{tree})"
-          lake build Zeta23.RHRC.Step123OutputBindings
+          lake build Zeta23.RHRC.Step123OutputContractCheck Zeta23.RHRC.Step123OutputBindings
           lake env lean Zeta23/RHRC/Step123OutputBindings.lean | tee /tmp/post292-live-bindings.txt
           python research/RHRC/closure_batch/check_lean_proof_escapes.py --scope promoted
           python research/RHRC/routes/R003_ccm_bridge/post290/build_formal_receipt.py \
@@ -185,8 +209,17 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          python research/RHRC/tools/materialize_derived_state.py --check
+          python research/RHRC/routes/R003_ccm_bridge/post290/derive_acceptance_manifest.py \
+            --formal /tmp/post292-complete-formal.json \
+            --review /tmp/post292-review/INDEPENDENT_SEMANTIC_REVIEW.json \
+            --d2 /tmp/post292-d2/D2_CONTINUUM_RECEIPT.json \
+            --harvest /tmp/post292-harvest/WORKFLOW_HARVEST.json \
+            --output-dir /tmp/post292-complete-outputs \
+            --graph-precheck-passed \
+            --out /tmp/post292-complete-outputs/BUILD_MANIFEST_VERIFIED.json
           python research/RHRC/routes/R003_ccm_bridge/post290/output_contract_check.py \
-            --manifest research/RHRC/integration/post290/BUILD_MANIFEST.json \
+            --manifest /tmp/post292-complete-outputs/BUILD_MANIFEST_VERIFIED.json \
             --formal /tmp/post292-complete-formal.json \
             --d2 /tmp/post292-d2/D2_CONTINUUM_RECEIPT.json \
             --harvest /tmp/post292-harvest/WORKFLOW_HARVEST.json \
