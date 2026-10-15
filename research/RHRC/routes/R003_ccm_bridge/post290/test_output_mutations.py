@@ -4,6 +4,37 @@ import hashlib
 import json
 from pathlib import Path
 from output_contract_check import release_gaps,frozen_spec,frozen_export_kinds,FORMAL_JOB,REGRESSION_JOB,NATIVE_JOB,RESEARCH_JOBS
+from unittest.mock import patch
+from d2_source_equivalence import D2_PRODUCER_HEAD,D2_PRODUCER_TREE,D2_RUN_ID
+from build_formal_receipt import TYPED_CONTRACT_ROOTS
+
+def synthetic_checkout_identity(head, tree):
+    """Only a fabricated validator fixture, never real checkout evidence."""
+    review={'integrity_status':'PASS',
+        'evidence_source':'GITHUB_GIT_OBJECTS_AND_RUNNER_LOG',
+        'branch_head':head,'branch_tree':tree,
+        'runner_checked_head':head,'runner_checked_tree':tree,
+        'checkout_log_sha256':'0'*64,'checkout_kind':'BRANCH_HEAD',
+        'branch_git_commit':{'sha':head,'tree':{'sha':tree}},
+        'runner_git_commit':{'sha':head,'tree':{'sha':tree}}}
+    return {'runner_checked_head':head,'runner_checked_tree':tree,
+            'checkout_identity_review':review}
+
+def synthetic_verify_d2(d2, equivalence, run_id=D2_RUN_ID):
+    if (run_id!=D2_RUN_ID or equivalence.get('integrity_status')!='PASS'
+        or d2.get('source_tree')!=D2_PRODUCER_TREE):
+        raise ValueError('synthetic numerical provenance differs')
+
+def synthetic_release_gaps(manifest, formal, d2, jobs):
+    # Isolated test-only mocked source verification. Production callers
+    # always use Git byte comparisons and actual D2 checker receipts.
+    with (patch('output_contract_check.exact_numeric_source',
+               return_value={'integrity_status':'PASS','d2_run_id':D2_RUN_ID}),
+         patch('output_contract_check.verify_d2_receipt',
+               side_effect=synthetic_verify_d2)):
+        return release_gaps(manifest,formal,d2,jobs)
+
+
 
 def fixture():
     tree = 'a' * 40
@@ -25,17 +56,33 @@ def fixture():
                 declarations.append(row)
             else:
                 definitions.append(row)
+    for name,kind in TYPED_CONTRACT_ROOTS.items():
+        row={'declaration':name, 'declaration_kind':kind,
+             'module':'Zeta23.RHRC.Step123OutputContractCheck',
+             'authority':'PROVED' if kind=='THEOREM' else 'DEFINED_DATA_NOT_A_THEOREM',
+             'source_tree':tree,'axiom_audit_pass':True,'axioms':[],
+             'normalized_type':text,
+             'normalized_type_sha256':hashlib.sha256(text.encode()).hexdigest()}
+        if kind=='THEOREM':
+            row['theorem']=name
+            declarations.append(row)
+        else:
+            definitions.append(row)
     formal = {'source_tree':tree,'head':'c'*40,'compiler_context':{'head':'c'*40,'tree':tree},
               'execution_status':'SUCCESS','integrity_status':'PASS','claim_cap':'RH_OPEN',
               'producer_complete':True,'independent_assumption_review_pass':True,
               'declarations':declarations,'definitions':definitions}
     d2 = {'status':'D2_COMPLETE','complete_layers':30,'independent_nonpartial_verified':True,
           'both_parities':True,'physical_seams_verified':True,'unresolved_tiles':0,
-          'unrun_tiles':0,'missing_artifacts':0,'unverified_tiles':0,'nonfinite_enclosures':0,'source_tree':tree,'terminal_claim':'RH_OPEN','not_a_lean_proof':True}
+          'unrun_tiles':0,'missing_artifacts':0,'unverified_tiles':0,'nonfinite_enclosures':0,'source_tree':D2_PRODUCER_TREE,'terminal_claim':'RH_OPEN','not_a_lean_proof':True}
     jobs = [{'workflow':workflow,'name':name,'required':True,'head':'c'*40,'head_tree':tree,'status':'completed',
              'conclusion':'success','scientific_acceptance':True} for workflow,name in [FORMAL_JOB,REGRESSION_JOB,sorted(RESEARCH_JOBS)[0],NATIVE_JOB]]
     jobs[-1]['native_output_review']={'head':'c'*40,'source_tree':tree,'scope':'FINITE_FIXED_PROBES','frozen_panel_complete':True,'pair_count':44,'row_count':176,'evaluated_rows':176,'unresolved_rows':0,'verified_pairs':44,'unresolved_pairs':0,'universal_theorem_authority':False}
     for job in jobs:
+        if (job['workflow'],job['name']) in RESEARCH_JOBS:
+            job['head']=D2_PRODUCER_HEAD
+            job['head_tree']=D2_PRODUCER_TREE
+        job.update(synthetic_checkout_identity(job['head'],job['head_tree']))
         job['classification']='FORMAL_VALIDITY_GATE' if job['name']=='lean-components' else 'REGRESSION_GATE' if job['name']=='exact-controls' else 'RESEARCH_PRODUCING_CHECK'
         job['output_reviewed']=True
     return [manifest,formal,d2,jobs]
@@ -64,14 +111,14 @@ def merge_fixture():
 
 def run():
     controls = fixture()
-    baseline_gaps = release_gaps(*controls)
+    baseline_gaps = synthetic_release_gaps(*controls)
     if baseline_gaps:
         raise RuntimeError('Synthetic positive baseline rejected: ' + repr(baseline_gaps))
     rejected = []
     def mutation(name, change, source=controls):
         args = deepcopy(source)
         change(args)
-        mutation_gaps = release_gaps(*args)
+        mutation_gaps = synthetic_release_gaps(*args)
         if not mutation_gaps:
             raise RuntimeError('Mutation incorrectly accepted even in optimized mode: ' + name)
         rejected.append(name)
@@ -117,13 +164,13 @@ def run():
     mutation('D2 count encoded as Boolean',lambda a:a[2].update(unresolved_tiles=False))
     mutation('D2 numerical evidence relabelled Lean proof',lambda a:a[2].update(not_a_lean_proof=False))
     merge=merge_fixture()
-    merge_gaps = release_gaps(*merge)
+    merge_gaps = synthetic_release_gaps(*merge)
     if merge_gaps:
         raise RuntimeError('Valid reviewed same-tree PR merge rejected: ' + repr(merge_gaps))
     paired=deepcopy(merge)
     # Both push and PR runs can compile the same tree under distinct HEADs.
     paired[3].append(deepcopy(controls[3][0]))
-    paired_gaps = release_gaps(*paired)
+    paired_gaps = synthetic_release_gaps(*paired)
     if paired_gaps:
         raise RuntimeError('Matching checkout was rejected: ' + repr(paired_gaps))
     mutation('synthetic merge without checkout review',lambda a:a[3][0].pop('checkout_identity_review'),merge)
