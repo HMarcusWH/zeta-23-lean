@@ -9,6 +9,8 @@ import hashlib
 import json
 import re
 from pathlib import Path
+from d2_source_equivalence import (exact_numeric_source, verify_d2_receipt,
+                                   D2_PRODUCER_HEAD, D2_PRODUCER_TREE)
 
 REPO=Path(__file__).resolve().parents[5]
 IMMUTABLE_SPEC=REPO/'research/RHRC/integration/post290/spec/BUILD_MANIFEST.json'
@@ -22,7 +24,8 @@ FROZEN_API_CROSSWALK_BLOB_SHA='254e2c4a8ad05bd1647c2175d86472755c795c41'
 FORMAL_JOB=('RHRC post290 source and output proof components','lean-components')
 REGRESSION_JOB=('RHRC post290 source and output proof components','exact-controls')
 NATIVE_JOB=('RHRC post290 source and output proof components','native-observations')
-RESEARCH_JOBS={('RHRC post290 D2 SECOND continuation (manual)','d2-second-continuation'),('RHRC post290 K3 independent no-search shards','assemble-nonpartial')}
+ACTIVE_D2_JOB=('RHRC approved SECOND460 resource continuation','final-nonpartial')
+RESEARCH_JOBS={ACTIVE_D2_JOB}  # Historical proposed workflow names are not actual D2 certification.
 ALLOW_AXIOMS={'propext','Classical.choice','Quot.sound'}
 CLASSIFICATIONS={'FORMAL_VALIDITY_GATE','REGRESSION_GATE','RESEARCH_PRODUCING_CHECK'}
 
@@ -40,8 +43,10 @@ def checked_checkout(job, expected_tree):
         return None
     runner=job.get('runner_checked_head')
     runner_tree=job.get('runner_checked_tree')
-    if runner is None and runner_tree is None:
-        return branch
+    if runner is None or runner_tree is None:
+        # GitHub's advertised API head is NOT evidence for the runner's
+        # actual checked out source; missing runner evidence fails closed.
+        return None
     if runner_tree!=expected_tree or re.fullmatch('[0-9a-f]{40}',str(runner)) is None:
         return None
     review=job.get('checkout_identity_review') or {}
@@ -164,8 +169,15 @@ def release_gaps(manifest, formal, d2, jobs):
         if module.get('status') != 'COMPLETE_VERIFIED':
             gaps.append('unfulfilled module acceptance: ' + module['id'])
     required_d2 = ('complete_layers','unresolved_tiles','unrun_tiles','missing_artifacts','unverified_tiles','nonfinite_enclosures')
-    if (d2.get('status') != 'D2_COMPLETE' or d2.get('complete_layers') != 30
-        or d2.get('source_tree')!=tree or d2.get('terminal_claim')!='RH_OPEN' or d2.get('not_a_lean_proof') is not True
+    d2_equivalent=False
+    try:
+        equivalence=exact_numeric_source(head, tree)
+        verify_d2_receipt(d2, equivalence)
+        d2_equivalent=True
+    except (ValueError, KeyError, OSError) as exc:
+        gaps.append('D2 source-equivalence not verified: '+str(exc))
+    if (not d2_equivalent or d2.get('status') != 'D2_COMPLETE' or d2.get('complete_layers') != 30
+        or d2.get('terminal_claim')!='RH_OPEN' or d2.get('not_a_lean_proof') is not True
         or d2.get('independent_nonpartial_verified') is not True or d2.get('both_parities') is not True
         or d2.get('physical_seams_verified') is not True or any(type(d2.get(k)) is not int for k in required_d2)
         or any(d2.get(k,1) != 0 for k in required_d2[1:])):
@@ -196,6 +208,17 @@ def release_gaps(manifest, formal, d2, jobs):
             gaps.append('configured required job demoted: '+job['name'])
         if job['required']:
             known_required.append(pair)
+        if pair==ACTIVE_D2_JOB:
+            # The approved numerical checker runs on its separate frozen
+            # source, and must NEVER be relabelled as a current-head Lean job.
+            checked_head=checked_checkout(job,D2_PRODUCER_TREE)
+            if (job.get('required') is not True or
+                job.get('head')!=D2_PRODUCER_HEAD or
+                checked_head!=D2_PRODUCER_HEAD or not d2_equivalent or
+                job.get('status')!='completed' or job.get('conclusion')!='success' or
+                job.get('scientific_acceptance') is not True):
+                gaps.append('approved independent D2 final-nonpartial job unestablished')
+            continue
         checked_head=checked_checkout(job,tree)
         if job.get('required') and (job.get('head_tree') != tree or job.get('status') != 'completed'
             or job.get('head')!=branch_head or checked_head is None
@@ -216,7 +239,7 @@ def release_gaps(manifest, formal, d2, jobs):
     if not formal_runner_matched:gaps.append('compiler receipt does not match a validated formal runner checkout')
     if REGRESSION_JOB not in known_required:gaps.append('configured exact regression job missing')
     if NATIVE_JOB not in known_required:gaps.append('configured native observation job missing')
-    if not set(known_required)&RESEARCH_JOBS:gaps.append('configured independent D2 research job missing')
+    if ACTIVE_D2_JOB not in known_required:gaps.append('approved independent D2 final-nonpartial job missing')
     if not jobs:
         gaps.append('workflow harvest missing')
     if formal.get('independent_assumption_review_pass') is not True:
