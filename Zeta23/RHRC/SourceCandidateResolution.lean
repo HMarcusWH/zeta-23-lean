@@ -62,11 +62,12 @@ private def prettyType (type : Expr) : CommandElabM String :=
 private def sourceKindCompatible (sourceKind compilerKind : String) : Bool :=
   match sourceKind with
   | "THEOREM" | "LEMMA" => compilerKind == "THEOREM"
-  | "DEF" | "ABBREV" => compilerKind == "DEFINITION"
+  | "DEF" | "DEFINITION" | "ABBREV" | "INSTANCE" => compilerKind == "DEFINITION"
+  | "STRUCTURE" => compilerKind == "INDUCTIVE"
   | "OPAQUE" => compilerKind == "OPAQUE"
   | "AXIOM" => compilerKind == "AXIOM"
   | "INDUCTIVE" => compilerKind == "INDUCTIVE"
-  | _ => true
+  | _ => false
 
 /--
 Resolve source-discovery candidates against the exact compiler environment.

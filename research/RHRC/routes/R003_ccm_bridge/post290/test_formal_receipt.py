@@ -49,6 +49,20 @@ class CompilerLogMutations(unittest.TestCase):
         roots,kinds=audit_roots(source)
         self.assertEqual(roots,{'Mock.theorem':'Mock.Module','Mock.constructor':'Mock.Module'})
         self.assertEqual(kinds,{'Mock.theorem':'THEOREM','Mock.constructor':'DEFINITION'})
+    def test_real_binding_inventory_accepts_all_exact_kinds(self):
+        from build_formal_receipt import AUDIT
+        roots,kinds=audit_roots(AUDIT.read_text(encoding='utf-8'))
+        self.assertGreaterEqual(len(roots),1248)
+        names=[n for n in roots if n.startswith('Zeta23.RHRC.mc')]
+        self.assertEqual(len(names),16)
+        self.assertEqual(sum(kinds[n]=='DEFINITION' for n in names),8)
+        self.assertEqual(sum(kinds[n]=='THEOREM' for n in names),8)
+
+    def test_source_kind_canonical_spelling(self):
+        roots,kinds=audit_roots('''(``Mock.a, "Mock", "DEFINITION"),
+            (``Mock.b, "Mock", "STRUCTURE")''')
+        self.assertEqual(kinds,{'Mock.a':'DEFINITION','Mock.b':'INDUCTIVE'})
+
     def test_missing_duplicate_or_unknown_source_kind_rejected(self):
         for source in ['(``Mock.root, "Mock.Module")',
             '(``Mock.root, "Mock.Module", "UNREVIEWED")',

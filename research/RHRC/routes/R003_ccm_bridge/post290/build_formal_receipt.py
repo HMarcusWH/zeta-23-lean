@@ -73,7 +73,10 @@ def audit_roots(text):
     entries=re.findall(r'\(``([\w.\']+),\s*"([\w.]+)",\s*"([A-Z]+)"\)',text)
     if not entries:
         raise ValueError('component binding scope empty')
-    kind_map={'THEOREM':'THEOREM','DEF':'DEFINITION','INDUCTIVE':'INDUCTIVE'}
+    kind_map={'THEOREM':'THEOREM','LEMMA':'THEOREM',
+              'DEF':'DEFINITION','DEFINITION':'DEFINITION',
+              'ABBREV':'DEFINITION','INDUCTIVE':'INDUCTIVE',
+              'STRUCTURE':'INDUCTIVE'}
     if len({name for name,_,_ in entries})!=len(entries):
         raise ValueError('duplicate exact source root')
     if any(kind not in kind_map for _,_,kind in entries):
