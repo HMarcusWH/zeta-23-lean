@@ -14,6 +14,7 @@ from compare_representations import compare
 from countermodel_survival import audit
 from evaluate_native_output import APERTURES, CARRIERS, CUTOFFS
 from materialize_step123_outputs import output_packet
+from prepare_field_review_package import produce as prepare_unapproved_44_field_dossier
 
 SOURCE = {"source_raw_sha256": "e" * 64, "source_hash_mode": "RAW_BYTES"}
 
@@ -101,12 +102,27 @@ def tests():
     contract = json.loads((root / "research/RHRC/integration/post290/"
                            "review_execution_2026-10-14/spec/OUTPUT_FIELD_CONTRACT.json").read_text())
     packet = output_packet(contract, formal, None, "a" * 40, "b" * 40)
+    dossier, template = prepare_unapproved_44_field_dossier(
+        formal, contract, "a" * 40, "b" * 40)
+    if dossier["field_count"] != 44 or dossier["not_independently_reviewed"] != 44:
+        raise RuntimeError("44-field candidate dossier improperly claims completion")
+    if any(row["reviewed"] or row["evidence_verified"] for row in dossier["fields"]):
+        raise RuntimeError("compiler candidates were mislabeled semantic proof review")
+    if template["independent_assumption_review_pass"] or any(
+            item["semantic_proof_review"] != "NOT_REVIEWED"
+            for item in template["field_reviews"]):
+        raise RuntimeError("unreviewed candidate template created review approval")
     if len(packet["quantities"]) != 44 or packet["scientific_disposition"] != "PARTIAL_OUTPUT_RH_OPEN":
         raise RuntimeError("unreviewed 44-field packet was accepted as complete")
     if any(q["theorem_receipt"] is not None for q in packet["quantities"]):
         raise RuntimeError("invented proof binding from an unreviewed field")
     raises(lambda: output_packet(contract, formal,
            {"field_reviews": []}, "a" * 40, "b" * 40), "fake independent semantic review")
+    forged = deepcopy(template)
+    forged["independent_assumption_review_pass"] = True
+    forged["reviewer_is_source_author"] = False
+    raises(lambda: output_packet(contract, formal, forged,
+           "a" * 40, "b" * 40), "forged independent review on incomplete producer")
     doc = build(formal, good, original, None, None,
                 {"head": "a" * 40, "tree": "b" * 40})
     if "RH OPEN" not in doc or "pending" in doc.lower() and "OPEN" not in doc:
@@ -116,7 +132,8 @@ def tests():
             "claim_cap": "RH_OPEN",
             "tested": ["44-pair identity", "numerical inconsistency", "same-source protection",
                        "no generated-detector impersonation", "missing replay", "OPEN cuts",
-                       "44 unreviewed proof fields", "independent review gate", "handoff cap"]}
+                       "44 unreviewed proof fields", "compiler-candidate dossier",
+                       "unapproved template integrity", "independent review gate", "handoff cap"]}
 
 
 if __name__ == "__main__":

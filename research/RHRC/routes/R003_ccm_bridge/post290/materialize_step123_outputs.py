@@ -16,6 +16,7 @@ import subprocess
 from pathlib import Path
 
 from build_step4_handoff import build as build_handoff
+from prepare_field_review_package import produce as prepare_unapproved_44_field_dossier
 from output_contract_check import release_gaps, frozen_spec
 
 REPO = Path(__file__).resolve().parents[5]
@@ -190,7 +191,30 @@ def materialize(inputs, outdir, semantic=None):
     head, tree = git("rev-parse", "HEAD"), git("rev-parse", "HEAD^{tree}")
     formal = load(inputs["formal"])
     fields = load(FIELD_CONTRACT)
+    # These 44 candidates come from the ACTUAL exact-head compiler receipt.
+    # They are not a human semantic review and must never elevate authority.
+    dossier, unapproved_review_template = prepare_unapproved_44_field_dossier(
+        formal, fields, head, tree
+    )
+    if dossier.get("authority") != "UNREVIEWED_COMPILER_CANDIDATES_ONLY":
+        raise ValueError("invalid independent-review candidate authority")
     packet = output_packet(fields, formal, semantic, head, tree)
+    indexed = {row["id"]: row for row in dossier["fields"]}
+    if len(indexed) != 44 or len(packet["quantities"]) != 44:
+        raise ValueError("incomplete original compiler-candidate field inventory")
+    for row in packet["quantities"]:
+        candidate = indexed[row["id"]]
+        row["scope"]["compiler_candidates_not_semantic_review"] = [
+            {"declaration": root["name"],
+             "module": root["module"],
+             "declaration_kind": root["kind"],
+             "normalized_type_sha256": root["normalized_type_sha256"],
+             "admitted_axioms": root["axioms"],
+             "semantically_verified": False}
+            for root in candidate["candidate_declarations"]
+        ]
+        row["scope"]["unreceipted_proof_candidates"] = candidate["not_receipted_candidates"]
+        row["scope"]["candidate_coverage_is_not_theorem_authority"] = True
     lineage, panel, checker = (load(inputs[k]) for k in ("lineage", "panel", "checker"))
     comparison, survival, d2, harvest = (load(inputs[k]) for k in
                                          ("comparison", "survival", "d2", "harvest"))
@@ -211,6 +235,9 @@ def materialize(inputs, outdir, semantic=None):
     packet["workflow_harvest_ref"] = str(inputs["harvest"])
     packet["d2_receipt_ref"] = str(inputs["d2"])
     write(outdir / "STEP123_FORMAL_OUTPUT.json", packet)
+    write(outdir / "FIELD_REVIEW_DOSSIER.json", dossier)
+    write(outdir / "INDEPENDENT_REVIEW_TEMPLATE_UNAPPROVED.json",
+          unapproved_review_template)
     write(outdir / "SOURCE_LINEAGE.json", lineage)
     write(outdir / "NATIVE_OBSERVATIONS.json", panel)
     observation_rows = [
