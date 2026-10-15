@@ -87,7 +87,6 @@ theorem originalSmoothRightBoundary_pointwise_cut
 /-- Fully source-bound convolution split. Both integrals exist because
 the probe is continuous with compact support and the actual original
 response is continuous; no L2 requirement is placed on exterior tails. -/
-set_option maxHeartbeats 1600000 in
 theorem originalSmoothRightBoundary_convolution_split
     (σ a b s : ℝ) (K : ℝ → ℂ)
     (hK : Continuous K)
@@ -102,63 +101,57 @@ theorem originalSmoothRightBoundary_convolution_split
           (L - b + s - y)) := by
   dsimp only
   let L := Zeta23.ExceptionalZero.fixedOriginalSincTrialAperture a
+  let W : ℝ → ℂ := fun y =>
+    K y * originalSmoothWeilResponse σ a (L - b + s - y)
   have hcR : Continuous (originalSmoothWeilResponse σ a) :=
     nativeWeilResponse_continuous
       (Zeta23.ExceptionalZero.fixedOriginalSincPhaseTrial_contDiff σ a)
       (Zeta23.ExceptionalZero.fixedOriginalSincPhaseTrial_hasCompactSupport σ a)
-  have hc : Continuous (fun y : ℝ => K y *
-      originalSmoothWeilResponse σ a (L - b + s - y)) :=
+  have hWc : Continuous W :=
     hK.mul (hcR.comp (by fun_prop))
-  have hkCompact : HasCompactSupport K :=
+  have hKc : HasCompactSupport K :=
     IsCompact.of_isClosed_subset isCompact_Icc (isClosed_tsupport K) hKs
-  have hfull : Integrable (fun y : ℝ => K y *
-      originalSmoothWeilResponse σ a (L - b + s - y)) :=
-    hc.integrable_of_hasCompactSupport hkCompact.mul_left
+  have hWi : Integrable W :=
+    hWc.integrable_of_hasCompactSupport hKc.mul_left
   have hcut (y : ℝ) :=
     originalSmoothRightBoundary_pointwise_cut σ a b s K hKs hb hL hs y
-  have hRi : Integrable (fun y : ℝ => K y *
-      originalSmoothWeilRightExterior σ a (L - b + s - y)) := by
-    have heq :
-        (fun y : ℝ => K y *
-          originalSmoothWeilRightExterior σ a (L - b + s - y)) =
-        (Iio (s - b)).indicator (fun y : ℝ => K y *
-          originalSmoothWeilResponse σ a (L - b + s - y)) := by
-      funext y
-      exact (hcut y).1
-    rw [heq]
-    exact hfull.indicator measurableSet_Iio
-  have hIi : Integrable (fun y : ℝ => K y *
-      originalSmoothWeilInteriorHistory σ a (L - b + s - y)) := by
-    have heq :
-        (fun y : ℝ => K y *
-          originalSmoothWeilInteriorHistory σ a (L - b + s - y)) =
-        (Ici (s - b)).indicator (fun y : ℝ => K y *
-          originalSmoothWeilResponse σ a (L - b + s - y)) := by
-      funext y
-      exact (hcut y).2
-    rw [heq]
-    exact hfull.indicator measurableSet_Ici
-  have hp (y : ℝ) : K y * originalSmoothWeilResponse σ a (L - b + s - y) =
-      K y * originalSmoothWeilRightExterior σ a (L - b + s - y) +
-        K y * originalSmoothWeilInteriorHistory σ a (L - b + s - y) := by
-    rw [(hcut y).1, (hcut y).2]
+  have hRF :
+      (fun y : ℝ => K y * originalSmoothWeilRightExterior σ a
+        (L - b + s - y)) = (Iio (s - b)).indicator W := by
+    funext y
+    exact (hcut y).1
+  have hIF :
+      (fun y : ℝ => K y * originalSmoothWeilInteriorHistory σ a
+        (L - b + s - y)) = (Ici (s - b)).indicator W := by
+    funext y
+    exact (hcut y).2
+  have hp (y : ℝ) :
+      W y = (Iio (s - b)).indicator W y +
+        (Ici (s - b)).indicator W y := by
     by_cases hy : y < s - b
-    · have hR : y ∈ Iio (s - b) := hy
-      have hI : y ∉ Ici (s - b) := not_le_of_gt hy
-      simp [Set.indicator_of_mem hR, Set.indicator_of_notMem hI]
-    · have hR : y ∉ Iio (s - b) := hy
-      have hI : y ∈ Ici (s - b) := le_of_not_gt hy
-      simp [Set.indicator_of_notMem hR, Set.indicator_of_mem hI]
+    · have hl : y ∈ Iio (s - b) := hy
+      have hr : y ∉ Ici (s - b) := not_le_of_gt hy
+      simp only [Set.indicator_of_mem hl, Set.indicator_of_notMem hr, add_zero]
+    · have hl : y ∉ Iio (s - b) := hy
+      have hr : y ∈ Ici (s - b) := le_of_not_gt hy
+      simp only [Set.indicator_of_notMem hl, Set.indicator_of_mem hr, zero_add]
+  change (∫ y : ℝ, W y) = _
   calc
-    (∫ y : ℝ, K y * originalSmoothWeilResponse σ a (L - b + s - y)) =
-      ∫ y : ℝ, (K y * originalSmoothWeilRightExterior σ a
+    (∫ y : ℝ, W y) =
+        ∫ y : ℝ, (Iio (s - b)).indicator W y +
+          (Ici (s - b)).indicator W y := by
+      apply integral_congr_ae
+      filter_upwards with y
+      exact hp y
+    _ = (∫ y : ℝ, (Iio (s - b)).indicator W y) +
+        (∫ y : ℝ, (Ici (s - b)).indicator W y) :=
+      integral_add (hWi.indicator measurableSet_Iio)
+        (hWi.indicator measurableSet_Ici)
+    _ = (∫ y : ℝ, K y * originalSmoothWeilRightExterior σ a
           (L - b + s - y)) +
-          (K y * originalSmoothWeilInteriorHistory σ a
+        (∫ y : ℝ, K y * originalSmoothWeilInteriorHistory σ a
           (L - b + s - y)) := by
-        apply integral_congr_ae
-        filter_upwards with y
-        exact hp y
-    _ = _ := integral_add hRi hIi
+      rw [hRF, hIF]
 
 end Zeta23.CCM
 
