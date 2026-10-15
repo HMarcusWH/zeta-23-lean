@@ -4,6 +4,7 @@ import Zeta23.CCM.OriginalDetectorActualForcingError
 import Zeta23.CCM.OriginalDetectorEtaControl
 import Zeta23.CCM.Step123NativeAmbientGalerkin
 import Zeta23.CCM.OriginalDetectorExteriorPairing
+import Zeta23.CCM.OriginalDetectorBoundaryHistorySplit
 import Zeta23.ExceptionalZero.Step123OutputProducer
 
 /-!
@@ -102,6 +103,19 @@ structure Step123OriginalBoundaryEvidence
         ∫ x in (-s)..s, u.value x *
           originalSmoothFourPrimeXHistories
             (nativeOriginalDetectorPhaseSign σ) a x
+  /-- Original right-boundary convolution splits at the exact
+  coordinate y=s-b; generally nonzero interior history is retained. -/
+  original_right_convolution_retains_interior :
+    ∀ (b s : ℝ) (K : ℝ → ℂ),
+      Continuous K →
+      tsupport K ⊆ Icc (-b) b →
+      0 ≤ b →
+      2 * b ≤ fixedOriginalSincTrialAperture a →
+      0 ≤ s →
+      let L := fixedOriginalSincTrialAperture a
+      (∫ y : ℝ, K y * out.smoothOriginal.response (L - b + s - y)) =
+        (∫ y : ℝ, K y * out.smoothOriginal.right (L - b + s - y)) +
+          (∫ y : ℝ, K y * out.smoothOriginal.interior (L - b + s - y))
   original_compact_pairing_retains_interior :
     ∀ (g : ℝ → ℂ), Continuous g → HasCompactSupport g →
       (∫ x : ℝ,
@@ -113,7 +127,7 @@ structure Step123OriginalBoundaryEvidence
         (∫ x : ℝ,
           originalSmoothWeilRightExterior (nativeOriginalDetectorPhaseSign σ) a x * g x)
 
-/-- All ten proof fields are constructed, not supplied. The original
+/-- All eleven proof fields are constructed, not supplied. The original
 detector and selected ground are distinct by their existing source types. -/
 def Step123OriginalBoundaryEvidence.fromNative
     {β : ℝ} {σ : ReversalParity} {a : ℝ}
@@ -134,6 +148,13 @@ def Step123OriginalBoundaryEvidence.fromNative
     have h := u.originalSmoothFourPrimeHistories_to_actualX hf
       (nativeOriginalDetectorPhaseSign σ) a
     simpa only [out.smoothOriginal.primeHistories_eq] using h
+  original_right_convolution_retains_interior := by
+    intro b s K hK hKs hb hL hs
+    dsimp only
+    rw [out.smoothOriginal.response_eq,
+      out.smoothOriginal.right_eq, out.smoothOriginal.interior_eq]
+    exact originalSmoothRightBoundary_convolution_split
+      (nativeOriginalDetectorPhaseSign σ) a b s K hK hKs hb hL hs
   original_compact_pairing_retains_interior := fun g hg hgc =>
     originalSmoothWeilResponse_compactPairing_split
       (nativeOriginalDetectorPhaseSign σ) a out.aperture_pos.le hg hgc

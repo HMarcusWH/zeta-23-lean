@@ -54,6 +54,7 @@ jobs:
             Zeta23.CCM.OriginalDetectorFourHistoryTransfer
             Zeta23.CCM.OriginalDetectorFourHistorySignedTransfer
             Zeta23.CCM.OriginalDetectorExteriorPairing
+            Zeta23.CCM.OriginalDetectorBoundaryHistorySplit
             Zeta23.CCM.Step123OriginalBoundaryEvidence
             Zeta23.CCM.Step123NativeAmbientGalerkin
             Zeta23.CCM.OriginalDetectorForcingError
