@@ -1,4 +1,5 @@
 import Zeta23.CCM.Step123OutputFieldEvidence
+import Zeta23.CCM.OriginalDetectorFourHistorySignedTransfer
 import Zeta23.CCM.OriginalDetectorActualForcingError
 import Zeta23.CCM.OriginalDetectorEtaControl
 import Zeta23.CCM.Step123NativeAmbientGalerkin
@@ -92,6 +93,15 @@ structure Step123OriginalBoundaryEvidence
           (1 + (2 * Real.pi *
             (originalDetectorQuarticCutoff (fixedOriginalSincTrialAperture a)) /
               fixedOriginalSincTrialAperture a) ^ 2)
+  /-- The exact signed κ, σ original four-prime pairing with
+  the native P-image X, rather than a source-fit surrogate. -/
+  original_signed_four_histories_actual_X :
+    ∀ {s : ℝ} {f : ℝ → ℂ} (u : NativeCompactPoleH2 s f),
+      Continuous f →
+      (∫ x in (-s)..s, f x * out.smoothOriginal.primeHistories x) =
+        ∫ x in (-s)..s, u.value x *
+          originalSmoothFourPrimeXHistories
+            (nativeOriginalDetectorPhaseSign σ) a x
   original_compact_pairing_retains_interior :
     ∀ (g : ℝ → ℂ), Continuous g → HasCompactSupport g →
       (∫ x : ℝ,
@@ -103,7 +113,7 @@ structure Step123OriginalBoundaryEvidence
         (∫ x : ℝ,
           originalSmoothWeilRightExterior (nativeOriginalDetectorPhaseSign σ) a x * g x)
 
-/-- All nine proof fields are constructed, not supplied. The original
+/-- All ten proof fields are constructed, not supplied. The original
 detector and selected ground are distinct by their existing source types. -/
 def Step123OriginalBoundaryEvidence.fromNative
     {β : ℝ} {σ : ReversalParity} {a : ℝ}
@@ -119,6 +129,11 @@ def Step123OriginalBoundaryEvidence.fromNative
   actual_source_shift_upper := by
     obtain ⟨C_Q, hC, h⟩ := originalDetector_eta_source_upper
     exact ⟨C_Q, hC, h β σ a out⟩
+  original_signed_four_histories_actual_X := by
+    intro s f u hf
+    have h := u.originalSmoothFourPrimeHistories_to_actualX hf
+      (nativeOriginalDetectorPhaseSign σ) a
+    simpa only [out.smoothOriginal.primeHistories_eq] using h
   original_compact_pairing_retains_interior := fun g hg hgc =>
     originalSmoothWeilResponse_compactPairing_split
       (nativeOriginalDetectorPhaseSign σ) a out.aperture_pos.le hg hgc

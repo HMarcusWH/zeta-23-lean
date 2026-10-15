@@ -1,3 +1,4 @@
+import Zeta23.CCM.OriginalDetectorFourHistorySignedTransfer
 import Zeta23.CCM.OriginalDetectorFourHistoryTransfer
 import Zeta23.CCM.Step123OriginalBoundaryEvidence
 import Zeta23.CCM.OriginalDetectorPrimeHistoryCovariance
@@ -1443,6 +1444,7 @@ run_cmd do
     (``Zeta23.CCM.originalSmoothWeilResponse_compactPairing_split, "Zeta23.CCM.OriginalDetectorExteriorPairing", "THEOREM"),
     (``Zeta23.CCM.NativeCompactPoleH2.localP_transfer_of_continuous, "Zeta23.CCM.OriginalDetectorFourHistoryTransfer", "THEOREM"),
     (``Zeta23.CCM.NativeCompactPoleH2.originalFourHistories_to_actualX, "Zeta23.CCM.OriginalDetectorFourHistoryTransfer", "THEOREM"),
+    (``Zeta23.CCM.NativeCompactPoleH2.originalSmoothFourPrimeHistories_to_actualX, "Zeta23.CCM.OriginalDetectorFourHistorySignedTransfer", "THEOREM"),
     (``Zeta23.CCM.Step123OriginalBoundaryEvidence.fromNative, "Zeta23.CCM.Step123OriginalBoundaryEvidence", "DEFINITION"),
     (``Zeta23.CCM.generatedOriginalBoundaryEvidence, "Zeta23.CCM.Step123OriginalBoundaryEvidence", "DEFINITION"),
     (``Zeta23.CCM.canonicalLegalPhysicalProjection_orthogonal, "Zeta23.CCM.Step123NativeAmbientGalerkin", "THEOREM"),
