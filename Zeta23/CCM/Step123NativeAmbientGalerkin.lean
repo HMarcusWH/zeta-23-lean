@@ -32,9 +32,13 @@ def canonicalLegalPhysicalIsometry {L : ℝ} (hL : 0 < L) (K : ℕ) :
 
 def canonicalLegalPhysicalProjection {L : ℝ} (hL : 0 < L) (K : ℕ) :
     CanonicalPhysicalL2 →L[ℂ] euclideanBoundaryFlatSubspace K := by
+  letI : CompleteSpace (euclideanBoundaryFlatSubspace K) :=
+    FiniteDimensional.complete ℂ (euclideanBoundaryFlatSubspace K)
   let ι : euclideanBoundaryFlatSubspace K →ₗᵢ[ℂ] CanonicalPhysicalL2 :=
     canonicalLegalPhysicalIsometry hL K
-  exact (ι.toContinuousLinearMap).adjoint
+  exact ContinuousLinearMap.adjoint (𝕜 := ℂ)
+    (E := euclideanBoundaryFlatSubspace K) (F := CanonicalPhysicalL2)
+    ι.toContinuousLinearMap
 
 theorem canonicalLegalPhysicalProjection_orthogonal {L : ℝ}
     (hL : 0 < L) (K : ℕ) (v : euclideanBoundaryFlatSubspace K)
@@ -42,6 +46,8 @@ theorem canonicalLegalPhysicalProjection_orthogonal {L : ℝ}
     inner ℂ (canonicalLegalPhysicalIsometry hL K v)
       (g - canonicalLegalPhysicalIsometry hL K
         (canonicalLegalPhysicalProjection hL K g)) = 0 := by
+  letI : CompleteSpace (euclideanBoundaryFlatSubspace K) :=
+    FiniteDimensional.complete ℂ (euclideanBoundaryFlatSubspace K)
   have hAdj : inner ℂ (canonicalLegalPhysicalIsometry hL K v) g =
       inner ℂ v (canonicalLegalPhysicalProjection hL K g) := by
     rw [canonicalLegalPhysicalProjection, ContinuousLinearMap.adjoint_inner_right]

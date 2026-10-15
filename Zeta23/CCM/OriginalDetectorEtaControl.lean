@@ -118,7 +118,7 @@ theorem originalDetector_eta_source_upper :
     calc
       _ ≤ ‖Zeta23.zetaZeroConfig.W f f‖ := hDepthNorm
       _ ≤ (C_Q * (1 + L) * Real.exp (L / 2)) * (b * b) := hBound
-      _ = _ := by rw [hb2]; ring
+      _ = _ := by rw [hb2]
   have hEta := out.retained.state.selection.eta_upper
   calc
     out.retained.state.selection.eta ≤ Real.exp (β * L) / 2 := hEta.le
