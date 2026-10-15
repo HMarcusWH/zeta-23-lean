@@ -211,7 +211,10 @@ private theorem originalRightBoundary_generic_convolution_split
   have hresult :
       (∫ y : ℝ, W y) = (∫ y : ℝ, E y) + (∫ y : ℝ, I y) :=
     originalBoundary_integral_partition_of_cuts W E I (s - b) hWi hE hI
-  simpa only [W, E, I] using hresult
+  -- The three local function aliases are definitionally equal to the
+  -- integrands of the theorem statement.  Avoid asking `simp` to unfold
+  -- and normalize the complete compact Weil integrand at this boundary.
+  exact hresult
 
 /-- Actual original Weil response at the true physical aperture:
 the generic continuous-source theorem specializes WITHOUT normalizing
