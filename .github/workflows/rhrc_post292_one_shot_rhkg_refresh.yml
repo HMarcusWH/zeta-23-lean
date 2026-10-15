@@ -1,0 +1,149 @@
+name: PR292 guarded one-shot RHKG generated-state refresh
+
+# Only this workflow file's explicit opt-in push creates an automatic run.
+# This rebuilds deterministic graph products; it performs NO D2 searches,
+# checker continuations, workflow reruns, independent reviews, or RH claims.
+on:
+  push:
+    branches: [research/post290-step123-output]
+    paths: [.github/workflows/rhrc_post292_one_shot_rhkg_refresh.yml]
+  workflow_dispatch:
+    inputs:
+      refresh_generated_state:
+        description: "Explicitly regenerate deterministic RHKG only; no D2 work"
+        required: true
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pr292-one-shot-derived-state-refresh
+  cancel-in-progress: false
+
+jobs:
+  materialize-and-commit:
+    if: >-
+      (github.event_name == 'push' && startsWith(github.event.head_commit.message, 'ci(PR292): one-shot RHKG refresh')) ||
+      (github.event_name == 'workflow_dispatch' && inputs.refresh_generated_state == true)
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: research/post290-step123-output
+          fetch-depth: 0
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.14'
+      - name: Install existing RHRC generator dependencies
+        run: python -m pip install -r research/RHRC/requirements.txt
+      - uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-mathlib-cache: true
+      - name: Pin exact source head and validate proof registry before regeneration
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$GITHUB_REF" = "refs/heads/research/post290-step123-output"
+          test "$GITHUB_RUN_ATTEMPT" = "1"
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          git fetch --no-tags origin refs/heads/research/post290-step123-output
+          test "$(git rev-parse FETCH_HEAD)" = "$GITHUB_SHA"
+          test -z "$(git status --porcelain --untracked-files=all -- '*.lean' lean-toolchain lake-manifest.json lakefile.lean lakefile.toml)"
+          python research/RHRC/routes/R003_ccm_bridge/post290/test_formal_receipt.py
+          python -O research/RHRC/routes/R003_ccm_bridge/post290/test_formal_receipt.py
+          python research/RHRC/routes/R003_ccm_bridge/post290/test_d2_source_equivalence.py
+          python -O research/RHRC/routes/R003_ccm_bridge/post290/test_d2_source_equivalence.py
+          lake build Zeta23.RHRC.Step123OutputBindings
+          python research/RHRC/closure_batch/check_lean_proof_escapes.py --scope promoted
+          export POST290_CHECKED_HEAD="$(git rev-parse HEAD)"
+          export POST290_CHECKED_TREE="$(git rev-parse HEAD^{tree})"
+          mkdir -p /tmp/pr292-rhkg
+          lake env lean Zeta23/RHRC/Step123OutputBindings.lean > /tmp/pr292-rhkg/pre-bindings.log
+          python research/RHRC/routes/R003_ccm_bridge/post290/build_formal_receipt.py \
+            --log /tmp/pr292-rhkg/pre-bindings.log \
+            --out /tmp/pr292-rhkg/pre-compiler-receipt.json
+      - name: Transactionally regenerate and independently check every declared derived-state output
+        shell: bash
+        run: |
+          set -euo pipefail
+          python research/RHRC/tools/materialize_derived_state.py --write \
+            > /tmp/pr292-rhkg/derived-write.log 2>&1 || { tail -100 /tmp/pr292-rhkg/derived-write.log; exit 1; }
+          python research/RHRC/tools/materialize_derived_state.py --check \
+            > /tmp/pr292-rhkg/derived-check-before-commit.log 2>&1 || { tail -100 /tmp/pr292-rhkg/derived-check-before-commit.log; exit 1; }
+          git diff --check
+          python - <<'PY'
+          import subprocess
+          prefixes=(
+              'research/RHRC/graph/compiler/',
+              'research/RHRC/graph/generated/',
+              'research/RHRC/integration/generated/',
+              'research/RHRC/ffbbp/generated/',
+              'research/RHRC/ool/generated/',
+          )
+          lines=subprocess.check_output(
+              ['git','status','--porcelain','--untracked-files=all'],text=True).splitlines()
+          for line in lines:
+              path=line[3:].strip()
+              if not path.startswith(prefixes):
+                  raise SystemExit('Derived-state generator modified non-generated source: '+path)
+          if not lines:
+              print('Derived state already fresh: no changes to commit')
+          else:
+              print('Derived-state candidate paths:',len(lines))
+          PY
+      - name: Commit only the five governed derived-state roots; never alter theorem or D2 sources
+        shell: bash
+        run: |
+          set -euo pipefail
+          git add -A -- \
+            research/RHRC/graph/compiler \
+            research/RHRC/graph/generated \
+            research/RHRC/integration/generated \
+            research/RHRC/ffbbp/generated \
+            research/RHRC/ool/generated
+          git diff --cached --check
+          git diff --cached --stat > /tmp/pr292-rhkg/GENERATED_DIFF_STAT.txt
+          if git diff --cached --quiet; then
+            echo 'No generated changes required' > /tmp/pr292-rhkg/commit-disposition.txt
+          else
+            git config user.name 'github-actions[bot]'
+            git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+            git commit -m "chore(PR292): materialize and freeze exact-head RHKG derived state"
+            echo 'GENERATED_STATE_COMMITTED' > /tmp/pr292-rhkg/commit-disposition.txt
+          fi
+          git rev-parse HEAD > /tmp/pr292-rhkg/HEAD.txt
+          git rev-parse 'HEAD^{tree}' > /tmp/pr292-rhkg/TREE.txt
+          export POST290_CHECKED_HEAD="$(git rev-parse HEAD)"
+          export POST290_CHECKED_TREE="$(git rev-parse HEAD^{tree})"
+          lake env lean Zeta23/RHRC/Step123OutputBindings.lean > /tmp/pr292-rhkg/final-bindings.log
+          python research/RHRC/routes/R003_ccm_bridge/post290/build_formal_receipt.py \
+            --log /tmp/pr292-rhkg/final-bindings.log \
+            --out /tmp/pr292-rhkg/final-compiler-receipt.json
+          python research/RHRC/tools/materialize_derived_state.py --check \
+            > /tmp/pr292-rhkg/derived-check-after-commit.log 2>&1 || { tail -100 /tmp/pr292-rhkg/derived-check-after-commit.log; exit 1; }
+          git diff --exit-code HEAD -- '*.lean' lean-toolchain lake-manifest.json lakefile.lean lakefile.toml
+          test -z "$(git status --porcelain --untracked-files=all)"
+      - name: Publish only a fast-forward verified generated-state commit
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch --no-tags origin refs/heads/research/post290-step123-output
+          test "$(git rev-parse FETCH_HEAD)" = "$GITHUB_SHA"
+          git push origin HEAD:refs/heads/research/post290-step123-output
+          echo "Exact generated HEAD: $(git rev-parse HEAD)"
+      - name: Preserve compiler/graph receipts, including negative results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pr292-rhkg-refresh-receipts-${{ github.run_id }}
+          path: /tmp/pr292-rhkg/
+          retention-days: 20
+          if-no-files-found: ignore
