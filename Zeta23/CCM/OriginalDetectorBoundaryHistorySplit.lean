@@ -84,6 +84,10 @@ theorem originalSmoothRightBoundary_pointwise_cut
       · simp [Set.indicator_of_mem hy, hzero]
       · simp [Set.indicator_of_notMem hy]
 
+-- Source-only local elaboration budget: this proof normalizes the actual
+-- Weil-response convolution and a compact-source interval partition.
+-- A higher budget affects computation during elaboration, not axioms.
+set_option maxHeartbeats 3200000 in
 /-- Fully source-bound convolution split. Both integrals exist because
 the probe is continuous with compact support and the actual original
 response is continuous; no L2 requirement is placed on exterior tails. -/
