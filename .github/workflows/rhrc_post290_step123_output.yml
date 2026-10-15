@@ -338,6 +338,12 @@ jobs:
           python research/RHRC/routes/R003_ccm_bridge/post290/test_deep_threshold_exact.py
           python research/RHRC/routes/R003_ccm_bridge/post290/test_inverse_budgets_and_gap_exact.py
           python research/RHRC/routes/R003_ccm_bridge/post290/test_argon_continuum_and_roots_exact.py
+          python research/RHRC/integration/test_source_only_dependency_extract.py
+          python -O research/RHRC/integration/test_source_only_dependency_extract.py
+          python research/RHRC/routes/R003_ccm_bridge/post290/test_actual_input_zero_jets.py
+          python -O research/RHRC/routes/R003_ccm_bridge/post290/test_actual_input_zero_jets.py
+          python research/RHRC/routes/R003_ccm_bridge/post290/test_forcing_history.py
+          python -O research/RHRC/routes/R003_ccm_bridge/post290/test_forcing_history.py
           python research/RHRC/routes/R003_ccm_bridge/post290/test_k3_resume.py
           python research/RHRC/routes/R003_ccm_bridge/post290/test_k3_replay_shards.py
           python research/RHRC/routes/R003_ccm_bridge/post290/test_k3_seams.py

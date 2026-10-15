@@ -57,6 +57,8 @@ jobs:
           git fetch --no-tags origin refs/heads/research/post290-step123-output
           test "$(git rev-parse FETCH_HEAD)" = "$GITHUB_SHA"
           test -z "$(git status --porcelain --untracked-files=all -- '*.lean' lean-toolchain lake-manifest.json lakefile.lean lakefile.toml)"
+          python research/RHRC/integration/test_source_only_dependency_extract.py
+          python -O research/RHRC/integration/test_source_only_dependency_extract.py
           python research/RHRC/routes/R003_ccm_bridge/post290/test_formal_receipt.py
           python -O research/RHRC/routes/R003_ccm_bridge/post290/test_formal_receipt.py
           python research/RHRC/routes/R003_ccm_bridge/post290/test_d2_source_equivalence.py

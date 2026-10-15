@@ -59,22 +59,37 @@ def load_roots() -> list[dict]:
     return sorted(rows, key=lambda row: row["resolved_full_name"])
 
 
+# Bound the Lean quoted-name ARRAY LITERAL before it exceeds elaborator recursion.
+# Feed the whole array to ONE dependency exporter call: no per-batch traversal,
+# duplicate closure, changed root identity or altered TYPE/VALUE/STRUCTURE edges.
+SOURCE_ONLY_ROOT_LITERAL_BATCH = 64
+
+
 def render_driver(roots: list[dict]) -> str:
-    tick2 = chr(96) * 2
-    root_names = ",\n    ".join(tick2 + row["resolved_full_name"] for row in roots)
+    if not roots:
+        fail("empty source-only root inventory")
+    names = [row["resolved_full_name"] for row in roots]
+    if any(not isinstance(name, str) or not name for name in names):
+        fail("invalid source-only root name")
+    if len(set(names)) != len(names):
+        fail("duplicate source-only root names")
     modules = sorted({row["module"] for row in roots})
+    if not modules or any(not isinstance(module, str) or not module for module in modules):
+        fail("invalid source-only root module")
     imports = "\n".join(
         ["import Zeta23.RHRC.DeclarationDependencyExport", *[f"import {module}" for module in modules]]
     )
-    return (
-        imports + "\n\n"
-        "open Lean\n"
-        "open Lean.Elab Command\n\n"
-        "run_cmd do\n"
-        "  Zeta23.RHRC.exportDependencies #[\n"
-        f"    {root_names}\n"
-        "  ]\n"
-    )
+    tick2 = chr(96) * 2
+    lines = [
+        imports, "", "open Lean", "open Lean.Elab Command", "",
+        "run_cmd do", "  let mut roots : Array Lean.Name := #[]",
+    ]
+    for start in range(0, len(names), SOURCE_ONLY_ROOT_LITERAL_BATCH):
+        chunk = names[start:start + SOURCE_ONLY_ROOT_LITERAL_BATCH]
+        literal = ",\n    ".join(tick2 + name for name in chunk)
+        lines.append("  roots := roots ++ #[\n    " + literal + "\n  ]")
+    lines.append("  Zeta23.RHRC.exportDependencies roots")
+    return "\n".join(lines) + "\n"
 
 
 def build_root_modules(roots: list[dict]) -> None:
