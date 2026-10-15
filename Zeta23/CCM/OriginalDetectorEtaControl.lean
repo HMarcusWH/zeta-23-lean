@@ -110,7 +110,9 @@ theorem originalDetector_eta_source_upper :
         mul_le_mul_of_nonneg_left hbb hScale
   have hb2 : b * b = 1 + (2 * Real.pi * Kd / L) ^ 2 := by
     dsimp [b]
-    rw [← pow_two, Real.sq_sqrt (by positivity)]
+    simpa only [pow_two] using
+      (Real.sq_sqrt (show
+        0 ≤ 1 + (2 * Real.pi * Kd / L) ^ 2 by positivity))
   have hD : Real.exp (β * L) ≤ C_Q * (1 + L) *
       Real.exp (L / 2) * (1 + (2 * Real.pi * Kd / L) ^ 2) := by
     calc

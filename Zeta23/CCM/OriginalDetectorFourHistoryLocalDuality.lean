@@ -34,8 +34,9 @@ theorem NativeCompactPoleH2.localP_duality_of_continuous
         (deriv (deriv F) x - (1 / 4 : ℂ) * F x) := by
   have hFC : Continuous F := hF.continuous
   have hFd : Continuous (deriv F) := hF.continuous_deriv (by norm_num)
+  have hFd1 : ContDiff ℝ 1 (deriv F) := hF.deriv'
   have hFdd : Continuous (deriv (deriv F)) :=
-    (hF.deriv').continuous_deriv (by norm_num)
+    hFd1.continuous_deriv (by norm_num)
   have h0 : IntervalIntegrable
       (fun x : ℝ => ((1 / 4 : ℂ) * u.value x + f x) * F x)
       volume (-s) s := by

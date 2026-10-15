@@ -28,8 +28,8 @@ open Zeta23.ExceptionalZero
 theorem originalDetector_lateSeparation_gt_fixedScale
     {a : ℝ} (hL : 4 < fixedOriginalSincTrialAperture a) :
     UniversalSinc.fixedScale < a := by
-  unfold fixedOriginalSincTrialAperture fixedOriginalSincLobeCenter
-    UniversalSinc.fixedScale at hL ⊢
+  unfold fixedOriginalSincTrialAperture fixedOriginalSincLobeCenter at hL
+  unfold UniversalSinc.fixedScale at hL ⊢
   norm_num at hL ⊢
   linarith
 

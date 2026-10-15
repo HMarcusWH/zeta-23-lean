@@ -31,9 +31,10 @@ def canonicalLegalPhysicalIsometry {L : ℝ} (hL : 0 < L) (K : ℕ) :
     (euclideanBoundaryFlatSubspace K).subtypeₗᵢ
 
 def canonicalLegalPhysicalProjection {L : ℝ} (hL : 0 < L) (K : ℕ) :
-    CanonicalPhysicalL2 →L[ℂ] euclideanBoundaryFlatSubspace K :=
-  ((canonicalLegalPhysicalIsometry hL K).toContinuousLinearMap :
-    euclideanBoundaryFlatSubspace K →L[ℂ] CanonicalPhysicalL2).adjoint
+    CanonicalPhysicalL2 →L[ℂ] euclideanBoundaryFlatSubspace K := by
+  let ι : euclideanBoundaryFlatSubspace K →ₗᵢ[ℂ] CanonicalPhysicalL2 :=
+    canonicalLegalPhysicalIsometry hL K
+  exact (ι.toContinuousLinearMap).adjoint
 
 theorem canonicalLegalPhysicalProjection_orthogonal {L : ℝ}
     (hL : 0 < L) (K : ℕ) (v : euclideanBoundaryFlatSubspace K)
@@ -47,8 +48,9 @@ theorem canonicalLegalPhysicalProjection_orthogonal {L : ℝ}
   have hIso : inner ℂ (canonicalLegalPhysicalIsometry hL K v)
       (canonicalLegalPhysicalIsometry hL K
         (canonicalLegalPhysicalProjection hL K g)) =
-      inner ℂ v (canonicalLegalPhysicalProjection hL K g) :=
-    (canonicalLegalPhysicalIsometry hL K).inner_map_map _ _
+      inner ℂ v (canonicalLegalPhysicalProjection hL K g) := by
+    exact (canonicalLegalPhysicalIsometry hL K).inner_map_map
+      v (canonicalLegalPhysicalProjection hL K g)
   rw [inner_sub_right, hAdj, hIso, sub_self]
 
 def Step123NativeOutput.selectedPhysicalSource

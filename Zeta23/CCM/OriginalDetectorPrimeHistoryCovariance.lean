@@ -72,7 +72,7 @@ theorem nativePoleDifferential_reflect
     have hh : HasDerivAt
         (fun t : ℝ => -(deriv f (b - t)))
         (deriv (deriv f) (b - x)) x := by
-      simpa only [neg_neg] using (deriv_reflect_const hfdd b x).neg
+      simpa only [Pi.neg_apply, neg_neg] using! (deriv_reflect_const hfdd b x).neg
     exact hh.deriv
   unfold universalSincDifferential
   rw [hSecond]
