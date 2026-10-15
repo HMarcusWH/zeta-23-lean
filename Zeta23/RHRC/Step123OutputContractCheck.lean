@@ -1,6 +1,9 @@
 import Zeta23.CCM.Step123NativeSourceSpectralEvidence
 import Zeta23.ExceptionalZero.Step4OutputSufficiency
 import Zeta23.CCM.PoleNeutralCompactInverse
+import Zeta23.CCM.Step123PhysicalImageIdentity
+import Zeta23.CCM.OriginalDetectorPaddedPhaseScalar
+import Zeta23.CCM.CanonicalPoleNeutralPublicAPI
 
 /-!
 # PR292: typed source-bound Step 1-3 consumer checks
@@ -17,15 +20,23 @@ the 99-export compiler/axiom audit, D2, or the missing Step 4 antecedents.
 
 noncomputable section
 
-open MeasureTheory
+open MeasureTheory Set
 namespace Zeta23.RHRC
 open Zeta23.CCM Zeta23.ExceptionalZero
 
-/-- MC01. This is the actual infinite-convolution source, not a fit. -/
+/-- MC01. The unchanged fixed source has positivity, exact compact support,
+reflection symmetry, unit mass, and its actual paper Fourier transform. -/
 theorem mc01_source_mass_one {β a : ℝ} {σ : ReversalParity}
     (out : Step123NativeOutput β σ a) :
-    (∫ x : ℝ, universalSincSource UniversalSinc.fixedScale x) = 1 :=
-  out.originalSource_mass_one
+    (∀ x : ℝ, 0 ≤ universalSincSource UniversalSinc.fixedScale x) ∧
+    tsupport (universalSincSource UniversalSinc.fixedScale) ⊆
+      Icc (-UniversalSinc.fixedScale) UniversalSinc.fixedScale ∧
+    Function.Even (universalSincSource UniversalSinc.fixedScale) ∧
+    (∫ x : ℝ, universalSincSource UniversalSinc.fixedScale x) = 1 ∧
+    Zeta23.paperFT
+      (fun x : ℝ => (universalSincSource UniversalSinc.fixedScale x : ℂ)) =
+      UniversalSinc.product UniversalSinc.fixedScale :=
+  (Step123NativeSourceSpectralEvidence.fromNative out).source_fixed
 
 /-- MC02. Actual zero-indexed cofinal detector, one phase at a time. -/
 theorem mc02_original_detector_cofinal
@@ -37,18 +48,84 @@ theorem mc02_original_detector_cofinal
         out.integrated.boundary.generated.sourceData.separation :=
   exists_generatedStep123ComposedEvidencePacket_cofinal ρ hβ hβρ σ R
 
-/-- MC03. The finite image, not the original smooth test, is unit norm. -/
+/-- MC03. The one finite image has unit norm, EXACT normalized physical
+realization, and both native pole moments. The original smooth trial is
+not substituted for this finite image. -/
 theorem mc03_physical_finite_image_unit {β a : ℝ} {σ : ReversalParity}
     (out : Step123NativeOutput β σ a) :
-    ‖out.physicalFiniteImage‖ = 1 :=
-  out.physicalFiniteImage_unit
+    (‖out.physicalFiniteImage‖ = 1) ∧
+    (finitePhysicalSynthesis
+      (fixedOriginalSincTrialAperture a)
+      (originalDetectorQuarticCutoff (fixedOriginalSincTrialAperture a))
+      (canonicalNativeCoefficientInclusion σ
+        (fixedOriginalSincTrialAperture a)
+        (originalDetectorQuarticCutoff (fixedOriginalSincTrialAperture a))
+        out.retained.state.detector) =
+      originalDetectorPaddedFinitePhysicalUnit
+        (nativeOriginalDetectorPhaseSign σ) a out.aperture_pos) ∧
+    (canonicalPoleEvenFunctional (fixedOriginalSincTrialAperture a)
+      (originalDetectorQuarticCutoff (fixedOriginalSincTrialAperture a))
+      (nativePoleNeutralParityAmbient σ (fixedOriginalSincTrialAperture a)
+        (originalDetectorQuarticCutoff (fixedOriginalSincTrialAperture a))
+        out.retained.state.detector) = 0 ∧
+     canonicalPoleOddFunctional (fixedOriginalSincTrialAperture a)
+      (originalDetectorQuarticCutoff (fixedOriginalSincTrialAperture a))
+      (nativePoleNeutralParityAmbient σ (fixedOriginalSincTrialAperture a)
+        (originalDetectorQuarticCutoff (fixedOriginalSincTrialAperture a))
+        out.retained.state.detector) = 0) :=
+  ⟨out.physicalFiniteImage_unit,
+   out.finitePhysicalSource_eq_originalPadded,
+   out.originalDetector_poles⟩
 
-/-- MC04. The genuine selected admissibility witness is retained. -/
+/-- MC04. The literal source selector coexists with the shared two-phase
+positive denominator threshold, full real circulant Gram/energy matrices,
+and exact scalar phase quotient. None is supplied by the caller as a bridge. -/
 theorem mc04_actual_selector {β a : ℝ} {σ : ReversalParity}
     (out : Step123NativeOutput β σ a) :
     AdmissibleDetectorSelector β (fixedOriginalSincTrialAperture a)
-      out.retained.state.selection.eta out.retained.state.selection.cutoff :=
-  out.source_selector
+      out.retained.state.selection.eta out.retained.state.selection.cutoff ∧
+    (∃ L0 : ℝ, 2 ≤ L0 ∧
+      ∀ (a : ℝ) (ha : UniversalSinc.fixedScale < a)
+        (hL : 0 < fixedOriginalSincTrialAperture a),
+        L0 ≤ fixedOriginalSincTrialAperture a →
+        (0 < originalDetectorPaddedPhaseNu (fixedOriginalSincTrialAperture a)
+          fixedOriginalSincLobeCenter hL +
+          originalDetectorPaddedPhaseOmega (fixedOriginalSincTrialAperture a)
+          fixedOriginalSincLobeCenter hL) ∧
+        (0 < originalDetectorPaddedPhaseNu (fixedOriginalSincTrialAperture a)
+          fixedOriginalSincLobeCenter hL -
+          originalDetectorPaddedPhaseOmega (fixedOriginalSincTrialAperture a)
+          fixedOriginalSincLobeCenter hL)) ∧
+    (∀ (L c : ℝ) (hL : 0 < L),
+      originalDetectorPaddedFinitePhaseGram L c hL =
+        !![(originalDetectorPaddedPhaseNu L c hL : ℂ),
+          (originalDetectorPaddedPhaseOmega L c hL : ℂ);
+          (originalDetectorPaddedPhaseOmega L c hL : ℂ),
+          (originalDetectorPaddedPhaseNu L c hL : ℂ)]) ∧
+    (∀ (L c : ℝ) (hL : 0 < L),
+      originalDetectorPaddedFinitePhaseNativeEnergy L c hL =
+        !![(originalDetectorPaddedPhaseD L c hL : ℂ),
+          (originalDetectorPaddedPhaseC L c hL : ℂ);
+          (originalDetectorPaddedPhaseC L c hL : ℂ),
+          (originalDetectorPaddedPhaseD L c hL : ℂ)]) ∧
+    (∀ (phase : ℝ) (hphase : phase = 1 ∨ phase = -1)
+      (L c : ℝ) (hL : 0 < L),
+      (inner ℂ ((canonicalSourceMatrix L (originalDetectorQuarticCutoff L)).toEuclideanLin
+        (originalDetectorPaddedFinitePhaseVector phase L c hL))
+        (originalDetectorPaddedFinitePhaseVector phase L c hL)).re /
+        ‖originalDetectorPaddedFinitePhaseVector phase L c hL‖ ^ 2 =
+      (originalDetectorPaddedPhaseD L c hL +
+        phase * originalDetectorPaddedPhaseC L c hL) /
+      (originalDetectorPaddedPhaseNu L c hL +
+        phase * originalDetectorPaddedPhaseOmega L c hL)) := by
+  refine ⟨out.source_selector, exists_originalDetectorPaddedPhase_positive_denominators,
+    ?_, ?_, ?_⟩
+  · intro L c hL
+    exact originalDetectorPaddedPhaseGram_real L c hL
+  · intro L c hL
+    exact originalDetectorPaddedPhaseEnergy_real L c hL
+  · intro phase hphase L c hL
+    exact originalDetectorPaddedPhase_scalar_quotient hphase L c hL
 
 /-- MC05. The only retained state is the original producer's state. -/
 def mc05_single_retained_state {β a : ℝ} {σ : ReversalParity}
@@ -96,27 +173,42 @@ def mc07_neutral_channel_consumer {β a : ℝ} {σ : ReversalParity}
   let evidence := Step123NativeSourceSpectralEvidence.fromNative out
   exact ⟨evidence.variance, evidence.gram, evidence.channels⟩
 
-/-- MC08. The actual stored selected ground has unit norm and its own
-eigen-equation. Branch-exhaustive ties remain a separate MC08 check. -/
+/-- MC08. The selected ground has its own true eigenpair and the actual
+cutoff bottoms admit exhaustive even/odd/tie trichotomy. The stronger
+selected-branch compatibility remains a separate review obligation. -/
 def mc08_selected_ground_consumer {β a : ℝ} {σ : ReversalParity}
     (out : Step123NativeOutput β σ a) :
-    ‖out.selectedGround‖ = 1 ∧
-    nativePoleNeutralParityCanonical out.retained.state.selectedParity
+    (‖out.selectedGround‖ = 1 ∧
+      nativePoleNeutralParityCanonical out.retained.state.selectedParity
+        (fixedOriginalSincTrialAperture a)
+        out.retained.state.selection.cutoff out.selectedGround =
+        (out.retained.state.selection.lam : ℂ) • out.selectedGround) ∧
+    Nonempty (PoleNeutralGroundBranch
       (fixedOriginalSincTrialAperture a)
-      out.retained.state.selection.cutoff out.selectedGround =
-      (out.retained.state.selection.lam : ℂ) • out.selectedGround :=
-  (Step123NativeSourceSpectralEvidence.fromNative out).selected_eigenvector
+      out.retained.state.selection.cutoff
+      out.aperture_pos out.source_selector.cutoff_nonempty) :=
+  ⟨(Step123NativeSourceSpectralEvidence.fromNative out).selected_eigenvector,
+    poleNeutralGround_branch_exhaustive out.aperture_pos
+      out.retained.state.selection.cutoff out.source_selector.cutoff_nonempty⟩
 
-/-- MC09. Consume the actual compact H2 existence/uniqueness theorem.
-Instantiating the actual selected finite physical test is a further obligation. -/
+/-- MC09. The genuine supported compact inverse has a unique H2
+solution, actual support, and sharp norm-four estimate on its exact
+finite-source hypothesis class. Binding it to the selected physical
+forcing is separately audited, not assumed. -/
 def mc09_compact_inverse_consumer {β a : ℝ} {σ : ReversalParity}
     (_out : Step123NativeOutput β σ a)
     {s : ℝ} (hs : 0 ≤ s) {f : ℝ → ℂ} (hf : MemLp f 2 volume)
     (hsupport : ∀ x, x ∉ Set.Icc (-s) s → f x = 0)
     (hplus : (∫ x : ℝ, nativePoleExponential (1 / 2) x * f x) = 0)
     (hminus : (∫ x : ℝ, nativePoleExponential (-1 / 2) x * f x) = 0) :
-    ∃! u : NativeCompactPoleH2 s f, True :=
-  poleNeutral_compactInverse_exists_unique hs hf hsupport hplus hminus
+    (∃! u : NativeCompactPoleH2 s f, True) ∧
+    (tsupport (nativePoleCompactH2 hs hf hsupport hplus hminus).value ⊆
+      Icc (-s) s) ∧
+    ((eLpNorm (nativePoleCompactH2 hs hf hsupport hplus hminus).value
+      2 volume).toReal ≤ 4 * (eLpNorm f 2 volume).toReal) :=
+  ⟨poleNeutral_compactInverse_exists_unique hs hf hsupport hplus hminus,
+   poleNeutral_compactInverse_support hs hf hsupport hplus hminus,
+   poleNeutral_compactInverse_norm_bound hs hf hsupport hplus hminus⟩
 
 /-- MC10. Source-specific signed four-history transfer at the actual phase
 and normalization, not a prime-only or reflected-term-free surrogate. -/
@@ -163,13 +255,23 @@ def mc11_source_error_consumer {β a : ℝ} {σ : ReversalParity}
             nativePhysicalH1Norm out.physicalSourceError * ‖v‖ :=
   (Step123OriginalBoundaryEvidence.fromNative out).actual_quantified_projected_forcing_error
 
-/-- MC12. Original right exterior and generally nonzero interior remain. -/
+/-- MC12. The original exterior object is canonical, retains the
+interior restriction without a zero-contact assumption, and carries
+the exact full response plus all prime histories. -/
 theorem mc12_original_exterior_is_canonical {β a : ℝ} {σ : ReversalParity}
     (out : Step123NativeOutput β σ a) :
-    out.smoothOriginal =
+    (out.smoothOriginal =
       OriginalNativeExteriorRecord.fromOriginalSource
-        (nativeOriginalDetectorPhaseSign σ) a out.aperture_pos :=
-  out.smoothOriginal_eq
+        (nativeOriginalDetectorPhaseSign σ) a out.aperture_pos) ∧
+    (∀ x : ℝ, out.smoothOriginal.response x =
+      out.smoothOriginal.left x + out.smoothOriginal.interior x +
+        out.smoothOriginal.right x) ∧
+    (MemLp out.smoothOriginal.interior 2 volume) ∧
+    (∀ x : ℝ,
+      nativeWeilPrimeResponse out.originalTrial x =
+        out.smoothOriginal.primeHistories x) :=
+  ⟨out.smoothOriginal_eq, out.smoothOriginal.reconstruction,
+   out.smoothOriginal.interior_memLp, out.smoothOriginal.prime_eq⟩
 
 /-- MC13. The actual zeta-zero-dependent causal nonrange obstruction. -/
 theorem mc13_actual_input_nonrange
