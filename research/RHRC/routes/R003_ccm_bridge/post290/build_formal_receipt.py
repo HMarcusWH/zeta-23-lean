@@ -10,6 +10,24 @@ from pathlib import Path
 REPO = Path(__file__).resolve().parents[5]
 AUDIT = REPO / 'Zeta23/RHRC/Step123OutputBindings.lean'
 ALLOW = {'propext','Classical.choice','Quot.sound'}
+TYPED_CONTRACT_ROOTS = {
+    "Zeta23.RHRC.mc01_source_mass_one": "THEOREM",
+    "Zeta23.RHRC.mc02_original_detector_cofinal": "THEOREM",
+    "Zeta23.RHRC.mc03_physical_finite_image_unit": "THEOREM",
+    "Zeta23.RHRC.mc04_actual_selector": "THEOREM",
+    "Zeta23.RHRC.mc05_single_retained_state": "DEFINITION",
+    "Zeta23.RHRC.mc06_two_inverse_budget_consumer": "DEFINITION",
+    "Zeta23.RHRC.mc07_neutral_channel_consumer": "DEFINITION",
+    "Zeta23.RHRC.mc08_selected_ground_consumer": "DEFINITION",
+    "Zeta23.RHRC.mc09_compact_inverse_consumer": "DEFINITION",
+    "Zeta23.RHRC.mc10_original_four_history_consumer": "DEFINITION",
+    "Zeta23.RHRC.mc11_source_error_consumer": "DEFINITION",
+    "Zeta23.RHRC.mc12_original_exterior_is_canonical": "THEOREM",
+    "Zeta23.RHRC.mc13_actual_input_nonrange": "THEOREM",
+    "Zeta23.RHRC.mc14_one_source_full_consumer": "DEFINITION",
+    "Zeta23.RHRC.mc15_every_phase_separately_cofinal": "THEOREM",
+    "Zeta23.RHRC.mc16_three_conditional_cuts": "THEOREM",
+}
 KIND_CROSSWALK=REPO/'research/RHRC/integration/post290/review_execution_2026-10-14/spec/API_CROSSWALK.json'
 KIND_BLOB_SHA1='254e2c4a8ad05bd1647c2175d86472755c795c41'
 OUTPUT_FIELD_CONTRACT=REPO/'research/RHRC/integration/post290/review_execution_2026-10-14/spec/OUTPUT_FIELD_CONTRACT.json'
@@ -82,6 +100,11 @@ def independent_complete_review(review_file, roots, kinds, head, tree):
         raise ValueError('mandatory public API census not 99 unique exports')
     normalized={'THEOREM':'THEOREM','DEFINITION':'DEFINITION',
                 'INDUCTIVE':'INDUCTIVE','STRUCTURE':'INDUCTIVE'}
+    if set(roots)<set(TYPED_CONTRACT_ROOTS):
+        raise ValueError('16 exact Lean-typed MC01-MC16 contract roots absent')
+    if any(kinds[name]!=kind or roots[name]!="Zeta23.RHRC.Step123OutputContractCheck"
+           for name,kind in TYPED_CONTRACT_ROOTS.items()):
+        raise ValueError('MC01-MC16 incorrect declaration kind or source module')
     if set(roots)<set(requested):
         missing=sorted(set(requested)-set(roots))
         raise ValueError('complete producer missing exact compiler roots: '+','.join(missing))

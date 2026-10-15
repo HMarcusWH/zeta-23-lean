@@ -15,6 +15,7 @@ import subprocess
 from pathlib import Path
 
 from d2_source_equivalence import exact_numeric_source, verify_d2_receipt
+from build_formal_receipt import TYPED_CONTRACT_ROOTS
 
 REPO = Path(__file__).resolve().parents[5]
 FROZEN = REPO / "research/RHRC/integration/post290/spec/BUILD_MANIFEST.json"
@@ -133,6 +134,10 @@ def derive(formal: dict, review: dict, d2: dict, harvest: dict,
     except (ValueError, KeyError, subprocess.CalledProcessError) as exc:
         d2_identity_error = str(exc)
 
+    typed_ok = bool(roots) and all(
+        name in roots and roots[name].get("declaration_kind") == kind and
+        roots[name].get("module") == "Zeta23.RHRC.Step123OutputContractCheck"
+        for name, kind in TYPED_CONTRACT_ROOTS.items())
     # Validate each original export, its kind, exact type and approved axioms.
     api = read(REPO / "research/RHRC/integration/post290/review_execution_2026-10-14/spec/API_CROSSWALK.json")
     kind_map = {entry["requested_name"]: entry["required_kind"] for entry in api["rows"]}
@@ -145,7 +150,7 @@ def derive(formal: dict, review: dict, d2: dict, harvest: dict,
                   all(name in roots and roots[name]["declaration_kind"] == kind_map.get(name)
                       for name in declared))
         if not declared:  # M25 is a compiler-binding module, not an empty proof obligation.
-            passed = (evidence_ok and
+            passed = (evidence_ok and typed_ok and
                       "Zeta23/RHRC/Step123OutputBindings.lean" in {
                           entry["path"] for entry in formal.get("source_blobs", [])})
         entry = dict(item)
