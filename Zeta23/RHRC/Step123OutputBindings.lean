@@ -1,3 +1,4 @@
+import Zeta23.RHRC.Step123OutputContractCheck
 import Zeta23.CCM.Step123NativeSourceSpectralEvidence
 import Zeta23.CCM.Step123NativeArithmeticRangeEvidence
 import Zeta23.ExceptionalZero.GeneratedStep123BoundaryPacket
@@ -1466,7 +1467,23 @@ run_cmd do
     (``Zeta23.CCM.generatedOriginalBoundaryEvidence, "Zeta23.CCM.Step123OriginalBoundaryEvidence", "DEFINITION"),
     (``Zeta23.CCM.canonicalLegalPhysicalProjection_orthogonal, "Zeta23.CCM.Step123NativeAmbientGalerkin", "THEOREM"),
     (``Zeta23.CCM.Step123NativeOutput.selectedOuterGalerkin_orthogonal, "Zeta23.CCM.Step123NativeAmbientGalerkin", "THEOREM"),
-    (``Zeta23.CCM.Step123NativeOutput.selectedResponse_decomposition, "Zeta23.CCM.Step123NativeAmbientGalerkin", "THEOREM")]
+    (``Zeta23.CCM.Step123NativeOutput.selectedResponse_decomposition, "Zeta23.CCM.Step123NativeAmbientGalerkin", "THEOREM"),
+    (``Zeta23.RHRC.mc01_source_mass_one, "Zeta23.RHRC.Step123OutputContractCheck", "THEOREM"),
+    (``Zeta23.RHRC.mc02_original_detector_cofinal, "Zeta23.RHRC.Step123OutputContractCheck", "THEOREM"),
+    (``Zeta23.RHRC.mc03_physical_finite_image_unit, "Zeta23.RHRC.Step123OutputContractCheck", "THEOREM"),
+    (``Zeta23.RHRC.mc04_actual_selector, "Zeta23.RHRC.Step123OutputContractCheck", "THEOREM"),
+    (``Zeta23.RHRC.mc05_single_retained_state, "Zeta23.RHRC.Step123OutputContractCheck", "DEFINITION"),
+    (``Zeta23.RHRC.mc06_two_inverse_budget_consumer, "Zeta23.RHRC.Step123OutputContractCheck", "DEFINITION"),
+    (``Zeta23.RHRC.mc07_neutral_channel_consumer, "Zeta23.RHRC.Step123OutputContractCheck", "DEFINITION"),
+    (``Zeta23.RHRC.mc08_selected_ground_consumer, "Zeta23.RHRC.Step123OutputContractCheck", "DEFINITION"),
+    (``Zeta23.RHRC.mc09_compact_inverse_consumer, "Zeta23.RHRC.Step123OutputContractCheck", "DEFINITION"),
+    (``Zeta23.RHRC.mc10_original_four_history_consumer, "Zeta23.RHRC.Step123OutputContractCheck", "DEFINITION"),
+    (``Zeta23.RHRC.mc11_source_error_consumer, "Zeta23.RHRC.Step123OutputContractCheck", "DEFINITION"),
+    (``Zeta23.RHRC.mc12_original_exterior_is_canonical, "Zeta23.RHRC.Step123OutputContractCheck", "THEOREM"),
+    (``Zeta23.RHRC.mc13_actual_input_nonrange, "Zeta23.RHRC.Step123OutputContractCheck", "THEOREM"),
+    (``Zeta23.RHRC.mc14_one_source_full_consumer, "Zeta23.RHRC.Step123OutputContractCheck", "DEFINITION"),
+    (``Zeta23.RHRC.mc15_every_phase_separately_cofinal, "Zeta23.RHRC.Step123OutputContractCheck", "THEOREM"),
+    (``Zeta23.RHRC.mc16_three_conditional_cuts, "Zeta23.RHRC.Step123OutputContractCheck", "THEOREM")]
   let queries := roots.map fun (name, mod, kind) =>
     ({ sourceId := name.toString, moduleName := mod, shortName := name.toString,
        sourceKind := kind } : Zeta23.RHRC.SourceCandidateQuery)
