@@ -74,11 +74,20 @@ theorem originalSmoothRightBoundary_pointwise_cut
           Set.indicator_of_mem hzIn, Set.indicator_of_mem hyInI, z, L]
   · have hzero : K y = 0 :=
       image_eq_zero_of_notMem_tsupport (fun hm => hk (hKs hm))
-    constructor <;> simp [hzero]
+    constructor
+    · rw [hzero, zero_mul]
+      by_cases hy : y ∈ Iio (s - b)
+      · simp [Set.indicator_of_mem hy, hzero]
+      · simp [Set.indicator_of_notMem hy]
+    · rw [hzero, zero_mul]
+      by_cases hy : y ∈ Ici (s - b)
+      · simp [Set.indicator_of_mem hy, hzero]
+      · simp [Set.indicator_of_notMem hy]
 
 /-- Fully source-bound convolution split. Both integrals exist because
 the probe is continuous with compact support and the actual original
 response is continuous; no L2 requirement is placed on exterior tails. -/
+set_option maxHeartbeats 1600000 in
 theorem originalSmoothRightBoundary_convolution_split
     (σ a b s : ℝ) (K : ℝ → ℂ)
     (hK : Continuous K)

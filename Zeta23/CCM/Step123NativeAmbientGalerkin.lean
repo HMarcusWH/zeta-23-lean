@@ -60,6 +60,7 @@ theorem canonicalLegalPhysicalProjection_orthogonal {L : ℝ}
   have hAdj : inner ℂ (canonicalLegalPhysicalIsometry hL K v) g =
       inner ℂ v (canonicalLegalPhysicalProjection hL K g) := by
     rw [canonicalLegalPhysicalProjection, ContinuousLinearMap.adjoint_inner_right]
+    rfl
   have hIso : inner ℂ (canonicalLegalPhysicalIsometry hL K v)
       (canonicalLegalPhysicalIsometry hL K
         (canonicalLegalPhysicalProjection hL K g)) =

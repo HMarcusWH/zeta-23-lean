@@ -30,7 +30,7 @@ def originalSmoothFourPrimeXHistories (σ a x : ℝ) : ℂ :=
            Zeta23.ExceptionalZero.fixedOriginalSincLobeCenter) : ℝ) +
         (nativeOriginalPrimeField
          (x + Zeta23.ExceptionalZero.fixedOriginalSincLobeCenter -
-           Zeta23.ExceptionalZero.fixedOriginalSincTrialAperture a) : ℝ) : ℂ))
+           Zeta23.ExceptionalZero.fixedOriginalSincTrialAperture a) : ℝ) : ℂ)))
 
 private theorem intervalIntegral_four_signed_pairings
     {s : ℝ} {A₁ A₂ A₃ A₄ B₁ B₂ B₃ B₄ : ℝ → ℂ}
