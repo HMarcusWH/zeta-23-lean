@@ -84,13 +84,39 @@ theorem originalSmoothRightBoundary_pointwise_cut
       · simp [Set.indicator_of_mem hy, hzero]
       · simp [Set.indicator_of_notMem hy]
 
--- Source-only local elaboration budget: this proof normalizes the actual
--- Weil-response convolution and a compact-source interval partition.
--- A higher budget affects computation during elaboration, not axioms.
-set_option maxHeartbeats 3200000 in
-/-- Fully source-bound convolution split. Both integrals exist because
-the probe is continuous with compact support and the actual original
-response is continuous; no L2 requirement is placed on exterior tails. -/
+/-- An operator-free decomposition of the line integral at a single
+physical transition. This abstract proof must run before any actual
+Weil-source normalization or input-state definitions are unfolded. -/
+private theorem originalBoundary_integral_partition (W : ℝ → ℂ)
+    (hW : Integrable W) (c : ℝ) :
+    (∫ y : ℝ, W y) =
+      (∫ y : ℝ, (Iio c).indicator W y) +
+        (∫ y : ℝ, (Ici c).indicator W y) := by
+  have hleft : Integrable ((Iio c).indicator W) :=
+    hW.indicator measurableSet_Iio
+  have hright : Integrable ((Ici c).indicator W) :=
+    hW.indicator measurableSet_Ici
+  have hpoint (y : ℝ) :
+      W y = (Iio c).indicator W y + (Ici c).indicator W y := by
+    by_cases hy : y < c
+    · have hl : y ∈ Iio c := hy
+      have hr : y ∉ Ici c := not_le_of_gt hy
+      simp only [Set.indicator_of_mem hl, Set.indicator_of_notMem hr, add_zero]
+    · have hl : y ∉ Iio c := hy
+      have hr : y ∈ Ici c := le_of_not_gt hy
+      simp only [Set.indicator_of_notMem hl, Set.indicator_of_mem hr, zero_add]
+  calc
+    (∫ y : ℝ, W y) =
+      ∫ y : ℝ, (Iio c).indicator W y + (Ici c).indicator W y := by
+      apply integral_congr_ae
+      filter_upwards with y
+      exact hpoint y
+    _ = _ := integral_add hleft hright
+
+/-- Full source-bound convolution split. The continuous compact test
+makes the integrals finite, and the pointwise boundary formula proves
+their EXACT partition with the original interior retained. This
+imports neither global exterior L2 nor any continuous-contact premise. -/
 theorem originalSmoothRightBoundary_convolution_split
     (σ a b s : ℝ) (K : ℝ → ℂ)
     (hK : Continuous K)
@@ -111,8 +137,7 @@ theorem originalSmoothRightBoundary_convolution_split
     nativeWeilResponse_continuous
       (Zeta23.ExceptionalZero.fixedOriginalSincPhaseTrial_contDiff σ a)
       (Zeta23.ExceptionalZero.fixedOriginalSincPhaseTrial_hasCompactSupport σ a)
-  have hWc : Continuous W :=
-    hK.mul (hcR.comp (by fun_prop))
+  have hWc : Continuous W := hK.mul (hcR.comp (by fun_prop))
   have hKc : HasCompactSupport K :=
     IsCompact.of_isClosed_subset isCompact_Icc (isClosed_tsupport K) hKs
   have hWi : Integrable W :=
@@ -129,33 +154,18 @@ theorem originalSmoothRightBoundary_convolution_split
         (L - b + s - y)) = (Ici (s - b)).indicator W := by
     funext y
     exact (hcut y).2
-  have hp (y : ℝ) :
-      W y = (Iio (s - b)).indicator W y +
-        (Ici (s - b)).indicator W y := by
-    by_cases hy : y < s - b
-    · have hl : y ∈ Iio (s - b) := hy
-      have hr : y ∉ Ici (s - b) := not_le_of_gt hy
-      simp only [Set.indicator_of_mem hl, Set.indicator_of_notMem hr, add_zero]
-    · have hl : y ∉ Iio (s - b) := hy
-      have hr : y ∈ Ici (s - b) := le_of_not_gt hy
-      simp only [Set.indicator_of_notMem hl, Set.indicator_of_mem hr, zero_add]
-  change (∫ y : ℝ, W y) = _
+  have hsplit :=
+    originalBoundary_integral_partition W hWi (s - b)
   calc
-    (∫ y : ℝ, W y) =
-        ∫ y : ℝ, (Iio (s - b)).indicator W y +
-          (Ici (s - b)).indicator W y := by
-      apply integral_congr_ae
-      filter_upwards with y
-      exact hp y
+    (∫ y : ℝ, K y * originalSmoothWeilResponse σ a (L - b + s - y)) =
+        ∫ y : ℝ, W y := rfl
     _ = (∫ y : ℝ, (Iio (s - b)).indicator W y) +
-        (∫ y : ℝ, (Ici (s - b)).indicator W y) :=
-      integral_add (hWi.indicator measurableSet_Iio)
-        (hWi.indicator measurableSet_Ici)
+          (∫ y : ℝ, (Ici (s - b)).indicator W y) := hsplit
     _ = (∫ y : ℝ, K y * originalSmoothWeilRightExterior σ a
           (L - b + s - y)) +
         (∫ y : ℝ, K y * originalSmoothWeilInteriorHistory σ a
           (L - b + s - y)) := by
-      rw [hRF, hIF]
+      rw [← hRF, ← hIF]
 
 end Zeta23.CCM
 
