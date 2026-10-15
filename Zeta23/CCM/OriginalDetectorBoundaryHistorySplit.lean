@@ -136,7 +136,7 @@ private theorem originalBoundary_compact_integrable
     Integrable (fun y : ℝ => K y * R (c - y)) := by
   have hc : Continuous (fun y : ℝ => K y * R (c - y)) :=
     hK.mul (hR.comp (by fun_prop))
-  exact hc.integrable_of_hasCompactSupport hKc.mul_left
+  exact hc.integrable_of_hasCompactSupport hKc.mul_right
 
 /-- Actual original Weil response at the true physical aperture:
 the generic continuous-source theorem specializes WITHOUT normalizing
