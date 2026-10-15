@@ -25,6 +25,14 @@ FROZEN_SEAM_BINDINGS = {
     "Zeta23.CCM.primeSourceCoordinate_log_add": "Zeta23/CCM/CanonicalPrimeSeamTaylor.lean",
     "Zeta23.CCM.sourceMatrix_zero": "Zeta23/CCM/SourceMatrix.lean",
 }
+FROZEN_CONTINUATION_FILES = (
+    "k3_assemble_complete.py", "k3_continue_unrun460.py",
+    "k3_replay_all.py", "k3_replay_shards.py",
+    "k3_resume_partition.py", "k3_resume_search.py",
+    "k3_source_revalidation.py",
+)
+CONTINUATION_DIR = "research/RHRC/routes/R003_ccm_bridge/post290"
+
 SEAM_SOURCE_PATHS = (
     "Zeta23/CCM/KernelAnalysis.lean",
     "Zeta23/CCM/CanonicalPrimeSeamTaylor.lean",
@@ -45,6 +53,15 @@ def hex40(value: object) -> bool:
 
 def sha256(value: bytes) -> str:
     return hashlib.sha256(value).hexdigest()
+
+
+def verify_continuation_digest_map(identity: dict, actual: dict[str, str]) -> None:
+    """Require the exact seven frozen search and 768-bit replay program bytes."""
+    recorded = identity.get("continuation_source_digests")
+    if (not isinstance(recorded, dict) or
+        set(recorded) != set(FROZEN_CONTINUATION_FILES) or
+        recorded != actual):
+        raise ValueError("D2 seven-file continuation/checker source digest mismatch")
 
 
 def exact_numeric_source(proof_head: str | None = None, proof_tree: str | None = None) -> dict:
@@ -86,6 +103,16 @@ def exact_numeric_source(proof_head: str | None = None, proof_tree: str | None =
         if p_hash != f_hash:
             raise ValueError("D2 mathematical source changed: " + path)
         checked[path] = p_hash
+    # Separate the numerical input evaluator from the execution/checker code.
+    # A matching evaluator inventory alone does not authenticate a checker.
+    continuation = {}
+    for name in FROZEN_CONTINUATION_FILES:
+        path = CONTINUATION_DIR + "/" + name
+        producer = git("show", D2_PRODUCER_HEAD + ":" + path)
+        final = git("show", head + ":" + path)
+        if producer != final or (REPO / path).read_bytes() != final:
+            raise ValueError("D2 search/checker implementation changed: " + name)
+        continuation[name] = sha256(producer)
     return {
         "schema": "RH_POST292_D2_SOURCE_EQUIVALENCE_1.0",
         "execution_status": "SUCCESS",
@@ -101,6 +128,8 @@ def exact_numeric_source(proof_head: str | None = None, proof_tree: str | None =
         "compared_file_count": len(checked),
         "canonical_inputs": {path: checked[path] for path in SOURCE_INPUTS},
         "seam_sources": {path: checked[path] for path in SEAM_SOURCE_PATHS},
+        "continuation_sources": continuation,
+        "frozen_continuation_file_count": len(continuation),
         "scope": "SOURCE_IDENTITY_ONLY; independent 768-bit D2 nonpartial checker still required",
         "terminal_claim": "RH_OPEN",
         "not_a_lean_proof": True,
@@ -130,12 +159,13 @@ def verify_d2_receipt(d2: dict, equivalence: dict, run_id: int = D2_RUN_ID) -> N
         if not isinstance(item, dict) or \
                 item.get("sha256") != equivalence["seam_sources"].get(item.get("path")):
             raise ValueError("D2 physical-seam mathematical source differs")
-    for label in ("producer_source", "validation_source"):
+    for label in ("current_source", "producer_source", "validation_source"):
         lineage = d2.get(label, {})
         if (lineage.get("commit") != D2_PRODUCER_HEAD or
                 lineage.get("tree") != D2_PRODUCER_TREE or
                 lineage.get("source_digests") != equivalence.get("canonical_inputs")):
             raise ValueError("D2 producer/checker source identity mismatch: " + label)
+        verify_continuation_digest_map(lineage, equivalence.get("continuation_sources", {}))
     if d2.get("terminal_claim") != "RH_OPEN" or d2.get("not_a_lean_proof") is not True:
         raise ValueError("D2 claim boundary altered")
 
