@@ -63,7 +63,12 @@ jobs:
           python -O research/RHRC/routes/R003_ccm_bridge/post290/test_d2_source_equivalence.py
           export POST290_CHECKED_HEAD="$(git rev-parse HEAD)"
           export POST290_CHECKED_TREE="$(git rev-parse HEAD^{tree})"
-          lake build Zeta23.RHRC.Step123OutputBindings
+          lake build \
+            Zeta23.RHRC.RegisteredClaimBindings \
+            Zeta23.RHRC.DeclarationDependencyExport \
+            Zeta23.RHRC.SourceCandidateResolution \
+            Zeta23.RHRC.Step123OutputBindings
+          python research/RHRC/tools/registered_theorem_binding_lint.py
           python research/RHRC/closure_batch/check_lean_proof_escapes.py --scope promoted
           mkdir -p /tmp/pr292-rhkg
           lake env lean Zeta23/RHRC/Step123OutputBindings.lean > /tmp/pr292-rhkg/pre-bindings.log
