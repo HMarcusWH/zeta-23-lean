@@ -52,6 +52,13 @@ KNOWN_WORKFLOW_DEFAULTS = {
 }
 
 RELEASE_WORKFLOW='PR292 complete-output release candidate (manual)'
+# A prerequisite snapshot cannot contain its own intake/release jobs.
+# The post-release every-job inventory MUST include these administrative runs.
+ADMIN_EVIDENCE_WORKFLOWS = {
+    RELEASE_WORKFLOW,
+    'PR292 independent 44-field review artifact intake (manual)',
+    'PR292 prerequisite workflow scientific harvest intake (manual)',
+}
 
 
 
@@ -92,9 +99,21 @@ def pages(url, key):
             return result
         page += 1
 
-def inventory(head, approved_d2_run_id=None):
+def inventory(head, approved_d2_run_id=None,
+              phase='PRE_RELEASE_PREREQUISITES'):
+    if phase not in ('PRE_RELEASE_PREREQUISITES','POST_RELEASE_EVERY_JOB'):
+        raise ValueError('unrecognized workflow-harvest phase')
     root = 'https://api.github.com/repos/' + REPOSITORY
     runs = pages(root + '/actions/runs?head_sha=' + head, 'workflow_runs')
+    excluded_administrative_runs = []
+    if phase == 'PRE_RELEASE_PREREQUISITES':
+        excluded_administrative_runs = [
+            {'run_id': run['id'], 'workflow':run['name'], 'status':run['status'],
+             'conclusion':run.get('conclusion'), 'head':run['head_sha'],
+             'exclusion_reason':'ADMINISTRATIVE_INTAKE_NOT_PREREQUISITE'}
+            for run in runs if run['name'] in ADMIN_EVIDENCE_WORKFLOWS
+        ]
+        runs = [run for run in runs if run['name'] not in ADMIN_EVIDENCE_WORKFLOWS]
     if approved_d2_run_id is not None:
         if type(approved_d2_run_id) is not int or approved_d2_run_id != APPROVED_D2_RUN_ID:
             raise ValueError('unapproved external numerical workflow ID')
@@ -114,14 +133,26 @@ def inventory(head, approved_d2_run_id=None):
             jobs = pages(root + f"/actions/runs/{run['id']}/attempts/{attempt}/jobs", 'jobs')
             run['attempt_inventory'].append({'attempt': attempt, 'jobs': jobs})
     return {'head': head, 'runs': runs,
+            'review_phase':phase, 'excluded_administrative_runs':excluded_administrative_runs,
             'external_d2_run_id': approved_d2_run_id}
 
 def harvest(snapshot, phase='PRE_RELEASE_PREREQUISITES'):
     if phase not in ('PRE_RELEASE_PREREQUISITES','POST_RELEASE_EVERY_JOB'):
         raise ValueError('unknown release harvest phase')
+    if snapshot.get('review_phase',phase) != phase:
+        raise ValueError('review phase disagrees with live snapshot')
+    excluded = snapshot.get('excluded_administrative_runs', [])
+    if (not isinstance(excluded,list) or
+        any(r.get('workflow') not in ADMIN_EVIDENCE_WORKFLOWS or
+            r.get('exclusion_reason')!='ADMINISTRATIVE_INTAKE_NOT_PREREQUISITE'
+            for r in excluded)):
+        raise ValueError('unreviewed or fabricated excluded workflow')
     if phase == 'PRE_RELEASE_PREREQUISITES':
-        if any(run.get('name')==RELEASE_WORKFLOW for run in snapshot['runs']):
-            raise ValueError('release run cannot approve its own prerequisite harvest')
+        if any(run.get('name') in ADMIN_EVIDENCE_WORKFLOWS
+               for run in snapshot['runs']):
+            raise ValueError('administrative job cannot approve its own prerequisite harvest')
+    elif excluded:
+        raise ValueError('post-release every-job harvest cannot exclude administrative runs')
     head, records = snapshot['head'], []
     external_id = snapshot.get('external_d2_run_id')
     if external_id not in (None, APPROVED_D2_RUN_ID):
@@ -162,6 +193,7 @@ def harvest(snapshot, phase='PRE_RELEASE_PREREQUISITES'):
                     'steps': job.get('steps', []), 'formal_authority_created_by_status': False})
     return {'head': head, 'repository': REPOSITORY, 'claim_cap': 'RH_OPEN',
             'review_phase':phase, 'includes_release_run':any(r['workflow']==RELEASE_WORKFLOW for r in records),
+            'excluded_administrative_runs':excluded,
             'jobs': records,
             'all_latest_jobs_completed': bool(records) and all(r['status'] == 'completed' for r in records if r['latest_attempt']),
             'scope': 'Exact API dispositions and all attempts; success requires separate log/source review.'}
@@ -181,7 +213,7 @@ if __name__ == '__main__':
     if args.snapshot and args.approved_d2_run_id is not None:
         p.error('external D2 selection must come from the frozen snapshot in snapshot mode')
     snapshot = (json.loads(args.snapshot.read_text()) if args.snapshot else
-                inventory(args.head, args.approved_d2_run_id))
+                inventory(args.head, args.approved_d2_run_id, args.review_phase))
     result = harvest(snapshot, args.review_phase)
     args.out.parent.mkdir(parents=True, exist_ok=True)
     args.out.write_text(json.dumps(result, indent=2) + '\n')
