@@ -79,7 +79,8 @@ CANDIDATES = {
             "Zeta23.CCM.originalNativeExterior_history_eq"],
     "G01": ["Zeta23.ExceptionalZero.GeneratedStep123Output"],
     "G02": ["Zeta23.ExceptionalZero.exists_generatedStep123Output_cofinal"],
-    "G03": ["Zeta23.ExceptionalZero.exists_step123Output_of_offLine_zero"],
+    "G03": ["Zeta23.ExceptionalZero.exists_generatedStep123BoundaryPacket",
+            "Zeta23.ExceptionalZero.exists_step123Output_of_offLine_zero"],
     "G04": ["Zeta23.ExceptionalZero.nativeCompletedInput_not_mem_rangeClosure_of_offLine_zero"],
 }
 
