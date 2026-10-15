@@ -2,6 +2,7 @@ name: PR292 guarded one-shot RHKG generated-state refresh
 
 # Explicit source-only file input repair: no oversized Lean name array literals.
 # Explicit retry after compiler-reserved-name repair (commit 4142b3f9).
+# Follow-up approved narrow classifier repair + fail-closed census regression.
 # Only this workflow file's explicit opt-in push creates an automatic run.
 # This rebuilds deterministic graph products; it performs NO D2 searches,
 # checker continuations, workflow reruns, independent reviews, or RH claims.
@@ -59,6 +60,10 @@ jobs:
           git fetch --no-tags origin refs/heads/research/post290-step123-output
           test "$(git rev-parse FETCH_HEAD)" = "$GITHUB_SHA"
           test -z "$(git status --porcelain --untracked-files=all -- '*.lean' lean-toolchain lake-manifest.json lakefile.lean lakefile.toml)"
+          # Classify every tracked file before the expensive 2,766-root Lean walk.
+          # Historic .lean snippets remain audit-only fixtures, never theorem roots.
+          python research/RHRC/graph/tests/test_post292_review_file_classes.py
+          python -O research/RHRC/graph/tests/test_post292_review_file_classes.py
           python research/RHRC/integration/test_source_only_dependency_extract.py
           python -O research/RHRC/integration/test_source_only_dependency_extract.py
           python research/RHRC/routes/R003_ccm_bridge/post290/test_formal_receipt.py
