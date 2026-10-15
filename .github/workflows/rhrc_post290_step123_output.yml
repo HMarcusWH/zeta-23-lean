@@ -348,6 +348,8 @@ jobs:
           python -O research/RHRC/routes/R003_ccm_bridge/post290/test_step123_research_artifacts.py
           python research/RHRC/routes/R003_ccm_bridge/post290/test_output_mutations.py
           python -O research/RHRC/routes/R003_ccm_bridge/post290/test_output_mutations.py
+          python research/RHRC/routes/R003_ccm_bridge/post290/test_d2_q14_forensics.py
+          python -O research/RHRC/routes/R003_ccm_bridge/post290/test_d2_q14_forensics.py
           python research/RHRC/routes/R003_ccm_bridge/post290/test_review_provenance.py
           python -O research/RHRC/routes/R003_ccm_bridge/post290/test_review_provenance.py
           python research/RHRC/routes/R003_ccm_bridge/post290/test_formal_receipt.py
