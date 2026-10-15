@@ -51,6 +51,7 @@ jobs:
             Zeta23.CCM.OriginalDetectorLocalDuality
             Zeta23.CCM.OriginalDetectorPrimeHistoryCovariance
             Zeta23.CCM.OriginalDetectorFourHistoryLocalDuality
+            Zeta23.CCM.OriginalDetectorFourHistoryTransfer
             Zeta23.CCM.OriginalDetectorExteriorPairing
             Zeta23.CCM.Step123OriginalBoundaryEvidence
             Zeta23.CCM.Step123NativeAmbientGalerkin

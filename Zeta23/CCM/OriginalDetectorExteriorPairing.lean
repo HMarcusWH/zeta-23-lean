@@ -81,11 +81,11 @@ theorem originalSmoothWeilResponse_compactPairing_split
         exact hpoint x
     _ = _ := by
       have houter := integral_add (hleft.add hmiddle) hright
-  have hinner := integral_add hleft hmiddle
-  have hcombine := houter.trans
-    (congrArg (fun z : ℂ => z +
-      ∫ x : ℝ, originalSmoothWeilRightExterior σ a x * g x) hinner)
-  simpa only [Pi.add_apply] using hcombine
+      have hinner := integral_add hleft hmiddle
+      have hcombine := houter.trans
+        (congrArg (fun z : ℂ => z +
+          ∫ x : ℝ, originalSmoothWeilRightExterior σ a x * g x) hinner)
+      simpa only [Pi.add_apply] using hcombine
 
 end Zeta23.CCM
 
