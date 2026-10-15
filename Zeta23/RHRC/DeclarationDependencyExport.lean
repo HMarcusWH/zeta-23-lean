@@ -177,10 +177,10 @@ public def exportDependenciesFile (path : String) : CommandElabM Unit := do
           if declText.isEmpty || moduleText.isEmpty then
             throwError "RHKG source-only root file has empty declaration/module"
           let key := declText ++ "\u001f" ++ moduleText
-          let matches := index.getD key #[]
-          if matches.size != 1 then
-            throwError "RHKG source-only root is absent or ambiguous: {declText} in {moduleText} ({matches.size} compiler matches)"
-          let decl := matches[0]!
+          let candidateNames := index.getD key #[]
+          if candidateNames.size != 1 then
+            throwError "RHKG source-only root is absent or ambiguous: {declText} in {moduleText} ({candidateNames.size} compiler matches)"
+          let decl := candidateNames[0]!
           if seen.contains decl then
             throwError "RHKG source-only root duplicated: {decl}"
           let some info := env.find? decl
