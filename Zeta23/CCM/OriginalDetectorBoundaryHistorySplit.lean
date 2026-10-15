@@ -113,10 +113,21 @@ private theorem originalBoundary_integral_partition (W : ℝ → ℂ)
       exact hpoint y
     _ = _ := integral_add hleft hright
 
-/-- Full source-bound convolution split. The continuous compact test
-makes the integrals finite, and the pointwise boundary formula proves
-their EXACT partition with the original interior retained. This
-imports neither global exterior L2 nor any continuous-contact premise. -/
+/-- Abstract, fully proved indicator interface. In particular it
+does not normalize the native Weil response, select a contact, or
+assume any vanishing interior; callers must PROVE both exact cuts. -/
+private theorem originalBoundary_integral_partition_of_cuts
+    (W E I : ℝ → ℂ) (t : ℝ)
+    (hW : Integrable W)
+    (hE : E = (Iio t).indicator W)
+    (hI : I = (Ici t).indicator W) :
+    (∫ y : ℝ, W y) = (∫ y : ℝ, E y) + (∫ y : ℝ, I y) := by
+  rw [hE, hI]
+  exact originalBoundary_integral_partition W hW t
+
+/-- Full source-bound convolution split. Prove both exact restrictions
+pointwise, then use the already established ABSTRACT partition lemma.
+No complex native Weil formula is unfolded in the integral proof. -/
 theorem originalSmoothRightBoundary_convolution_split
     (σ a b s : ℝ) (K : ℝ → ℂ)
     (hK : Continuous K)
@@ -133,6 +144,10 @@ theorem originalSmoothRightBoundary_convolution_split
   let L := Zeta23.ExceptionalZero.fixedOriginalSincTrialAperture a
   let W : ℝ → ℂ := fun y =>
     K y * originalSmoothWeilResponse σ a (L - b + s - y)
+  let E : ℝ → ℂ := fun y =>
+    K y * originalSmoothWeilRightExterior σ a (L - b + s - y)
+  let I : ℝ → ℂ := fun y =>
+    K y * originalSmoothWeilInteriorHistory σ a (L - b + s - y)
   have hcR : Continuous (originalSmoothWeilResponse σ a) :=
     nativeWeilResponse_continuous
       (Zeta23.ExceptionalZero.fixedOriginalSincPhaseTrial_contDiff σ a)
@@ -144,28 +159,16 @@ theorem originalSmoothRightBoundary_convolution_split
     hWc.integrable_of_hasCompactSupport hKc.mul_left
   have hcut (y : ℝ) :=
     originalSmoothRightBoundary_pointwise_cut σ a b s K hKs hb hL hs y
-  have hRF :
-      (fun y : ℝ => K y * originalSmoothWeilRightExterior σ a
-        (L - b + s - y)) = (Iio (s - b)).indicator W := by
+  have hE : E = (Iio (s - b)).indicator W := by
     funext y
     exact (hcut y).1
-  have hIF :
-      (fun y : ℝ => K y * originalSmoothWeilInteriorHistory σ a
-        (L - b + s - y)) = (Ici (s - b)).indicator W := by
+  have hI : I = (Ici (s - b)).indicator W := by
     funext y
     exact (hcut y).2
-  have hsplit :=
-    originalBoundary_integral_partition W hWi (s - b)
-  calc
-    (∫ y : ℝ, K y * originalSmoothWeilResponse σ a (L - b + s - y)) =
-        ∫ y : ℝ, W y := rfl
-    _ = (∫ y : ℝ, (Iio (s - b)).indicator W y) +
-          (∫ y : ℝ, (Ici (s - b)).indicator W y) := hsplit
-    _ = (∫ y : ℝ, K y * originalSmoothWeilRightExterior σ a
-          (L - b + s - y)) +
-        (∫ y : ℝ, K y * originalSmoothWeilInteriorHistory σ a
-          (L - b + s - y)) := by
-      rw [← hRF, ← hIF]
+  have hresult :
+      (∫ y : ℝ, W y) = (∫ y : ℝ, E y) + (∫ y : ℝ, I y) :=
+    originalBoundary_integral_partition_of_cuts W E I (s - b) hWi hE hI
+  simpa only [W, E, I] using hresult
 
 end Zeta23.CCM
 
