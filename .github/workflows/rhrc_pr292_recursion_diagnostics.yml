@@ -27,6 +27,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          lake build Zeta23.RHRC.DeclarationDependencyExport
           python research/RHRC/tools/lean_dependency_extract.py --write
           python research/RHRC/graph/build.py --write
           python research/RHRC/integration/candidate_exactify.py --write
