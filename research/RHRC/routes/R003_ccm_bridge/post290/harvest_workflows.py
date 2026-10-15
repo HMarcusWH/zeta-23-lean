@@ -7,6 +7,9 @@ import urllib.request
 from pathlib import Path
 
 REPOSITORY = 'HMarcusWH/zeta-23-lean'
+APPROVED_D2_RUN_ID = 38569316691
+APPROVED_D2_HEAD = 'a55fbeeed6500bffe2ccac3960258ca5c590c7ee'
+APPROVED_D2_WORKFLOW = 'RHRC approved SECOND460 resource continuation'
 ROLES = {
     ('RHRC post290 source and output proof components', 'lean-components'): 'FORMAL_VALIDITY_GATE',
     ('RHRC post290 source and output proof components', 'exact-controls'): 'REGRESSION_GATE',
@@ -50,23 +53,42 @@ def pages(url, key):
             return result
         page += 1
 
-def inventory(head):
+def inventory(head, approved_d2_run_id=None):
     root = 'https://api.github.com/repos/' + REPOSITORY
     runs = pages(root + '/actions/runs?head_sha=' + head, 'workflow_runs')
+    if approved_d2_run_id is not None:
+        if type(approved_d2_run_id) is not int or approved_d2_run_id != APPROVED_D2_RUN_ID:
+            raise ValueError('unapproved external numerical workflow ID')
+        external = get(root + '/actions/runs/' + str(approved_d2_run_id))
+        if (external.get('id') != APPROVED_D2_RUN_ID or
+            external.get('head_sha') != APPROVED_D2_HEAD or
+            external.get('name') != APPROVED_D2_WORKFLOW or
+            external.get('run_attempt') != 1):
+            raise ValueError('external D2 run does not match frozen approval')
+        runs.append(external)
     for run in runs:
-        if run['head_sha'] != head:
+        if run['head_sha'] != head and not (run.get('id') == approved_d2_run_id
+                                            and run['head_sha'] == APPROVED_D2_HEAD):
             raise ValueError('wrong workflow head returned')
         run['attempt_inventory'] = []
         for attempt in range(1, run['run_attempt'] + 1):
             jobs = pages(root + f"/actions/runs/{run['id']}/attempts/{attempt}/jobs", 'jobs')
             run['attempt_inventory'].append({'attempt': attempt, 'jobs': jobs})
-    return {'head': head, 'runs': runs}
+    return {'head': head, 'runs': runs,
+            'external_d2_run_id': approved_d2_run_id}
 
 def harvest(snapshot):
     head, records = snapshot['head'], []
+    external_id = snapshot.get('external_d2_run_id')
+    if external_id not in (None, APPROVED_D2_RUN_ID):
+        raise ValueError('snapshot uses a non-approved cross-head run')
     for run in snapshot['runs']:
-        if run['head_sha'] != head:
+        external = run.get('id') == external_id and run.get('head_sha') == APPROVED_D2_HEAD
+        if run['head_sha'] != head and not external:
             raise ValueError('snapshot includes a different head')
+        if external and (run.get('name') != APPROVED_D2_WORKFLOW or
+                         run.get('run_attempt') != 1):
+            raise ValueError('external D2 identity/attempt mismatch')
         for attempt in run['attempt_inventory']:
             for job in attempt['jobs']:
                 latest = attempt['attempt'] == run['run_attempt']
@@ -76,13 +98,20 @@ def harvest(snapshot):
                     'skipped': 'NOT_EXECUTED', 'cancelled': 'CANCELLED_UNESTABLISHED',
                     'timed_out': 'UNRESOLVED_RESOURCE_LIMIT', 'failure': 'GATE_FAILED',
                 }.get(conclusion, 'RUNNING_OR_QUEUED' if conclusion is None else 'READ_JOB_OUTPUT_REQUIRED')
+                mandatory = ((not external and
+                              (run['name'], job['name']) in {
+                                  ('RHRC post290 source and output proof components', 'lean-components'),
+                                  ('RHRC post290 source and output proof components', 'exact-controls'),
+                                  ('RHRC post290 source and output proof components', 'native-observations')})
+                             or (external and job['name'] == 'final-nonpartial'))
                 records.append({'run_id': run['id'], 'workflow': run['name'], 'job_id': job['id'],
                     'job': job['name'], 'name':job['name'], 'attempt': attempt['attempt'], 'latest_attempt': latest,
                     'classification': role, 'status': job['status'], 'conclusion': conclusion,
                     'scientific_disposition': disposition, 'url': job['html_url'],
-                    'head': head, 'head_tree':run.get('head_commit',{}).get('tree_id'),
+                    'head': run['head_sha'], 'head_tree':run.get('head_commit',{}).get('tree_id'),
+                    'evidence_scope': 'APPROVED_EXTERNAL_D2' if external else 'EXACT_PROOF_HEAD',
                     'runner_checked_head':None, 'runner_checked_tree':None, 'checkout_identity_review':None,
-                    'required':role!='REQUIRES_SOURCE_REVIEW',
+                    'required':mandatory,
                     'scientific_acceptance':False,
                     'output_reviewed':False,
                     'acceptance_note':'Raw job status is not reviewed mathematical output; separate source-bound receipt required.',
@@ -95,11 +124,16 @@ if __name__ == '__main__':
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('--head')
     p.add_argument('--snapshot', type=Path)
+    p.add_argument('--approved-d2-run-id', type=int, default=None,
+                   help='Read only the single approved D2 run; never dispatch or retry.')
     p.add_argument('--out', type=Path, required=True)
     args = p.parse_args()
     if bool(args.head) == bool(args.snapshot):
         p.error('provide exactly one of --head and --snapshot')
-    snapshot = json.loads(args.snapshot.read_text()) if args.snapshot else inventory(args.head)
+    if args.snapshot and args.approved_d2_run_id is not None:
+        p.error('external D2 selection must come from the frozen snapshot in snapshot mode')
+    snapshot = (json.loads(args.snapshot.read_text()) if args.snapshot else
+                inventory(args.head, args.approved_d2_run_id))
     result = harvest(snapshot)
     args.out.parent.mkdir(parents=True, exist_ok=True)
     args.out.write_text(json.dumps(result, indent=2) + '\n')
