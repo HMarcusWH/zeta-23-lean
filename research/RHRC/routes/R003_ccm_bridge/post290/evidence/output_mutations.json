@@ -4,6 +4,10 @@
   "claim_cap": "RH_OPEN",
   "scientific_disposition": "EVIDENCE_MUTATIONS_REJECTED",
   "rejected": [
+    "structure recast as theorem authority",
+    "structure reclassified as theorem",
+    "definition source tree drift",
+    "missing definition receipt",
     "stale theorem type",
     "wrong compiler tree",
     "generic interface as producer",
