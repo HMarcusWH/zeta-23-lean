@@ -4,6 +4,7 @@ import Zeta23.CCM.Step123NativeArithmeticRangeEvidence
 import Zeta23.ExceptionalZero.GeneratedStep123BoundaryPacket
 import Zeta23.CCM.OriginalDetectorBoundaryHistorySplit
 import Zeta23.CCM.OriginalDetectorFourHistorySignedTransfer
+import Zeta23.CCM.OriginalDetectorFourHistoryLocalXBound
 import Zeta23.CCM.OriginalDetectorFourHistoryTransfer
 import Zeta23.CCM.Step123OriginalBoundaryEvidence
 import Zeta23.CCM.OriginalDetectorPrimeHistoryCovariance
@@ -1463,6 +1464,12 @@ run_cmd do
     (``Zeta23.CCM.NativeCompactPoleH2.localP_transfer_of_continuous, "Zeta23.CCM.OriginalDetectorFourHistoryTransfer", "THEOREM"),
     (``Zeta23.CCM.NativeCompactPoleH2.originalFourHistories_to_actualX, "Zeta23.CCM.OriginalDetectorFourHistoryTransfer", "THEOREM"),
     (``Zeta23.CCM.NativeCompactPoleH2.originalSmoothFourPrimeHistories_to_actualX, "Zeta23.CCM.OriginalDetectorFourHistorySignedTransfer", "THEOREM"),
+    (``Zeta23.CCM.nativeOriginalPrimeField_eq_zero_of_nonpos, "Zeta23.CCM.OriginalDetectorFourHistoryLocalXBound", "THEOREM"),
+    (``Zeta23.CCM.nativeOriginalPrimeField_sq_integral_le, "Zeta23.CCM.OriginalDetectorFourHistoryLocalXBound", "THEOREM"),
+    (``Zeta23.CCM.nativePoleCompactInverse_eq_zero_of_nonpos, "Zeta23.CCM.OriginalDetectorFourHistoryLocalXBound", "THEOREM"),
+    (``Zeta23.CCM.originalDetector_primeResponse_pairing_le_sixteenKappa, "Zeta23.CCM.OriginalDetectorFourHistoryLocalXBound", "THEOREM"),
+    (``Zeta23.CCM.canonicalNativePhysicalSynthesis_poleMoments, "Zeta23.CCM.OriginalDetectorFourHistoryLocalXBound", "THEOREM"),
+    (``Zeta23.CCM.originalDetector_nativeTest_primeForcing_le_sixteenKappa, "Zeta23.CCM.OriginalDetectorFourHistoryLocalXBound", "THEOREM"),
     (``Zeta23.CCM.Step123OriginalBoundaryEvidence.fromNative, "Zeta23.CCM.Step123OriginalBoundaryEvidence", "DEFINITION"),
     (``Zeta23.CCM.generatedOriginalBoundaryEvidence, "Zeta23.CCM.Step123OriginalBoundaryEvidence", "DEFINITION"),
     (``Zeta23.CCM.canonicalLegalPhysicalProjection_orthogonal, "Zeta23.CCM.Step123NativeAmbientGalerkin", "THEOREM"),

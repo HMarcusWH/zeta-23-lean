@@ -138,6 +138,7 @@
     "Zeta23.CCM.OriginalDetectorFiniteWindowImageJets": "POST290_SUPPORTING_SOURCE_COMPONENT",
     "Zeta23.CCM.OriginalDetectorForcingError": "POST290_SUPPORTING_SOURCE_COMPONENT",
     "Zeta23.CCM.OriginalDetectorFourHistoryLocalDuality": "POST290_SUPPORTING_SOURCE_COMPONENT",
+    "Zeta23.CCM.OriginalDetectorFourHistoryLocalXBound": "POST290_SUPPORTING_SOURCE_COMPONENT",
     "Zeta23.CCM.OriginalDetectorFourHistorySignedTransfer": "POST290_SUPPORTING_SOURCE_COMPONENT",
     "Zeta23.CCM.OriginalDetectorFourHistoryTransfer": "POST290_SUPPORTING_SOURCE_COMPONENT",
     "Zeta23.CCM.OriginalDetectorFourierCoefficientBounds": "POST290_SUPPORTING_SOURCE_COMPONENT",
