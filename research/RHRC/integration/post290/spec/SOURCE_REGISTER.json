@@ -1,0 +1,291 @@
+{
+  "schema_version": "RH_STEP123_SPEC_SOURCES_1.0",
+  "base_commit": "9583bbcc587aca8d87e74981b222e6813238d670",
+  "base_tree": "188d1e0ae3a22e66d512c5c807687c6f2fc8d0e0",
+  "inputs": [
+    {
+      "path": "inputs/RH_Post290_PoleNeutral_Research_2026-10-13.zip",
+      "sha256": "9c2964a7731b583a95d220c6d54aa4214089336c249aedec2f9fb182b0b1ef82",
+      "authority": "PAPER_AND_FINITE_EVIDENCE_NOT_NEW_LEAN_AUTHORITY",
+      "copied_unchanged": true
+    },
+    {
+      "path": "inputs/Step4_Original_Detector_Research_Package_2026-10-13(1).zip",
+      "sha256": "5d7e60fe7a0f35766c948cb9a5a7d72498c9f37eef34a5c477c1461fecc6bec5",
+      "authority": "PAPER_AND_FINITE_EVIDENCE_NOT_NEW_LEAN_AUTHORITY",
+      "copied_unchanged": true
+    },
+    {
+      "path": "inputs/RH_Constructive_Continuation_2026-10-13(2).zip",
+      "sha256": "0c3767e427fa003a34db90cfc40c4c4f60c8be8603d60f54fe3686a2ab248f85",
+      "authority": "PAPER_AND_FINITE_EVIDENCE_NOT_NEW_LEAN_AUTHORITY",
+      "copied_unchanged": true
+    },
+    {
+      "path": "inputs/ABC_Step4_Research_Package_2026-10-13(1).zip",
+      "sha256": "469c8eff0613603af82c5e334c23539cb6ef910876f7cb0502a71a607c326abf",
+      "authority": "PAPER_AND_FINITE_EVIDENCE_NOT_NEW_LEAN_AUTHORITY",
+      "copied_unchanged": true
+    }
+  ],
+  "repository_sources": [
+    {
+      "path": "Zeta23/ExceptionalZero/WeilFilter.lean",
+      "sha256": "80504bcc54e7ae8afc2ac9d241dd32bca3c3657d16e4588661ad5eac2e3a8fa1",
+      "git_blob": "c6619915e6266eeba10d7c66a962790642d1bec1",
+      "role": "REUSE_OR_SOURCE_AUDIT",
+      "authority": "READ_AT_PINNED_BASE_NOT_REBUILT_IN_THIS_PLANNING_PASS"
+    },
+    {
+      "path": "Zeta23/ExceptionalZero/ExposedPole.lean",
+      "sha256": "2e5dd019210806dd1d8d9e7aff49b4d3711b5c725bc49632d4f9be74c3268b5e",
+      "git_blob": "e3a954aad7e2344239e5663d8852dc4c5b71d0ec",
+      "role": "REUSE_OR_SOURCE_AUDIT",
+      "authority": "READ_AT_PINNED_BASE_NOT_REBUILT_IN_THIS_PLANNING_PASS"
+    },
+    {
+      "path": "Zeta23/ExceptionalZero/TwoTranslateRadiusCompleteness.lean",
+      "sha256": "d09b2dd20fb0a429710c5a613a71f8ce6a7fe5f986074098f2acb8623b4919cf",
+      "git_blob": "268e5c6661b8778cee2221a128c6049f039c8b0a",
+      "role": "REUSE_OR_SOURCE_AUDIT",
+      "authority": "READ_AT_PINNED_BASE_NOT_REBUILT_IN_THIS_PLANNING_PASS"
+    },
+    {
+      "path": "Zeta23/ExceptionalZero/TwoTranslateContraction.lean",
+      "sha256": "f45ded2aa74fa2e67ba2ba9e15913aafb2b3ae99476d7f02b17c7d2b1ccc510c",
+      "git_blob": "902de13fb9281c11652efbda923c4da68093784d",
+      "role": "REUSE_OR_SOURCE_AUDIT",
+      "authority": "READ_AT_PINNED_BASE_NOT_REBUILT_IN_THIS_PLANNING_PASS"
+    },
+    {
+      "path": "Zeta23/ExceptionalZero/FiniteNegativeObstruction.lean",
+      "sha256": "4a6ea80d6d78b2a2d910edb514105f53e5eb322ce59fc61c0f02fe1727b46a4e",
+      "git_blob": "acba8c5cba15a59c7d3c66cd966a551421150b49",
+      "role": "REUSE_OR_SOURCE_AUDIT",
+      "authority": "READ_AT_PINNED_BASE_NOT_REBUILT_IN_THIS_PLANNING_PASS"
+    },
+    {
+      "path": "Zeta23/ExceptionalZero/ApertureFreedom.lean",
+      "sha256": "11c2ad5eb61c71d689453c7f01e189f75d582f55a4880a6395696a7b21a4b015",
+      "git_blob": "2271a1df16f255395d4e828520f7b72db244adf8",
+      "role": "REUSE_OR_SOURCE_AUDIT",
+      "authority": "READ_AT_PINNED_BASE_NOT_REBUILT_IN_THIS_PLANNING_PASS"
+    },
+    {
+      "path": "Zeta23/ExceptionalZero/GlobalParityBottomGeneratedState.lean",
+      "sha256": "69e06328f17225e1a84f25f8420f9be078a6ff9dcd3e07a45e3b643d6118684a",
+      "git_blob": "3124997f699566afede8bf0ede7834981cbffb61",
+      "role": "REUSE_OR_SOURCE_AUDIT",
+      "authority": "READ_AT_PINNED_BASE_NOT_REBUILT_IN_THIS_PLANNING_PASS"
+    },
+    {
+      "path": "Zeta23/ExceptionalZero/GlobalParityBottomTerminalTarget.lean",
+      "sha256": "5f0aa49e7b3cca6b0b153a31ca23014cf2af208a9fc23bd62b87e07a05c514f4",
+      "git_blob": "cbbea2c5f6f0a778c87da6cd5550d6afa1eb600f",
+      "role": "REUSE_OR_SOURCE_AUDIT",
+      "authority": "READ_AT_PINNED_BASE_NOT_REBUILT_IN_THIS_PLANNING_PASS"
+    },
+    {
+      "path": "Zeta23/ExceptionalZero/QuantitativeDetectorFamily.lean",
+      "sha256": "22da3770d923a88e85143f33c275ccc7e352fc6d278403dc78c5b6859dc52f02",
+      "git_blob": "fc263aa817ddb8f1a4dcfd584850bb4ae41b311d",
+      "role": "REUSE_OR_SOURCE_AUDIT",
+      "authority": "READ_AT_PINNED_BASE_NOT_REBUILT_IN_THIS_PLANNING_PASS"
+    },
+    {
+      "path": "Zeta23/ExceptionalZero/QuantitativeCanonicalWitness.lean",
+      "sha256": "0875ea840b3d6064d9ec97c201bba6cc819187e11e62ef2a3dc3b0ddc8a0f7be",
+      "git_blob": "8a598c2dc5c0d081fab7c9e4526386bd7aba1977",
+      "role": "REUSE_OR_SOURCE_AUDIT",
+      "authority": "READ_AT_PINNED_BASE_NOT_REBUILT_IN_THIS_PLANNING_PASS"
+    },
+    {
+      "path": "Zeta23/CCM/GlobalParityBottomBranchPackage.lean",
+      "sha256": "3cf59f0c408ccb3759007934fd43dd9a17c3088a7b5c33f5cdfb8a0ded15f263",
+      "git_blob": "af1aa1794367da2b8b36a6d0a0d6ce6efa614336",
+      "role": "REUSE_OR_SOURCE_AUDIT",
+      "authority": "READ_AT_PINNED_BASE_NOT_REBUILT_IN_THIS_PLANNING_PASS"
+    },
+    {
+      "path": "Zeta23/CCM/GlobalParityBottomPrimeWeight.lean",
+      "sha256": "d65fc61920b17c5a2e864e4785466ea7379f5393520a397f947195db128a1129",
+      "git_blob": "2cb9b176d26636318d0276c62cd30f9107388ddd",
+      "role": "REUSE_OR_SOURCE_AUDIT",
+      "authority": "READ_AT_PINNED_BASE_NOT_REBUILT_IN_THIS_PLANNING_PASS"
+    },
+    {
+      "path": "Zeta23/CCM/GlobalParityBottomArithmeticTarget.lean",
+      "sha256": "9c84cf45bcbab6080a5b4cf41917ae9ac5256d31af96672f30e98e18217a7f6a",
+      "git_blob": "2277da218833935bb6dbb86185d9ade8d07538c1",
+      "role": "REUSE_OR_SOURCE_AUDIT",
+      "authority": "READ_AT_PINNED_BASE_NOT_REBUILT_IN_THIS_PLANNING_PASS"
+    },
+    {
+      "path": "Zeta23/CCM/CanonicalSecularResolvent.lean",
+      "sha256": "b139d16ce7870e0a0f40e801ee619d4b42a69b1db3a26580d6b10b81b837b800",
+      "git_blob": "4f7ad32df70667a9e2a22e7989d740368276c54f",
+      "role": "REUSE_OR_SOURCE_AUDIT",
+      "authority": "READ_AT_PINNED_BASE_NOT_REBUILT_IN_THIS_PLANNING_PASS"
+    },
+    {
+      "path": "Zeta23/CCM/CanonicalShiftedSecular.lean",
+      "sha256": "9367dae41e73048173e5bd2bc8d05bae7c0c427ed3072dd6fc04391236d1e139",
+      "git_blob": "bac64f0abb9abe87cf63b9bd240b8ea436fbecbd",
+      "role": "REUSE_OR_SOURCE_AUDIT",
+      "authority": "READ_AT_PINNED_BASE_NOT_REBUILT_IN_THIS_PLANNING_PASS"
+    },
+    {
+      "path": "Zeta23/CCM/GlobalBottomStrictEvenShiftedRay.lean",
+      "sha256": "0bda38cfd426ce42b58b307ec1f10edf79b1db18c3a994d0836e879495bfff3b",
+      "git_blob": "48cb80d81ee41e56239c1babdc532c1eae1aee5e",
+      "role": "REUSE_OR_SOURCE_AUDIT",
+      "authority": "READ_AT_PINNED_BASE_NOT_REBUILT_IN_THIS_PLANNING_PASS"
+    },
+    {
+      "path": "Zeta23/CCM/CanonicalCenteredIndexPoincare.lean",
+      "sha256": "8c0c0a2c06fdf4377bb8fe02eb46c1051dbea0d9f90386e66803ca965c132227",
+      "git_blob": "978bdb9640417df8d076693343a815da3ed42710",
+      "role": "REUSE_OR_SOURCE_AUDIT",
+      "authority": "READ_AT_PINNED_BASE_NOT_REBUILT_IN_THIS_PLANNING_PASS"
+    },
+    {
+      "path": "Zeta23/CCM/ParitySourceMomentFourRigidity.lean",
+      "sha256": "c89765b9ec6e2a47ba3082eaebd5123a2210af552af5649edf1dd1b1da70b55e",
+      "git_blob": "348e69edea13541180f06fb7251c93a4c3e9a352",
+      "role": "REUSE_OR_SOURCE_AUDIT",
+      "authority": "READ_AT_PINNED_BASE_NOT_REBUILT_IN_THIS_PLANNING_PASS"
+    },
+    {
+      "path": "Zeta23/CCM/CanonicalGlobalF04.lean",
+      "sha256": "f1538bb374dc04f6a3ffcbcf9b6cdb6f4d27a584f07eb545d8e32aeab14f2ec8",
+      "git_blob": "2ef912987e753adfd3243f2cf26a8948e440d07f",
+      "role": "REUSE_OR_SOURCE_AUDIT",
+      "authority": "READ_AT_PINNED_BASE_NOT_REBUILT_IN_THIS_PLANNING_PASS"
+    },
+    {
+      "path": "Zeta23/CCM/CanonicalSourceResolventDerivatives.lean",
+      "sha256": "a9249eb54577d26a4f0a9945d24dfa7f470026c12f78a2536cd1fc08d05f20e0",
+      "git_blob": "7a1b6ff515ea2bab1331f656a86145ce16872b66",
+      "role": "REUSE_OR_SOURCE_AUDIT",
+      "authority": "READ_AT_PINNED_BASE_NOT_REBUILT_IN_THIS_PLANNING_PASS"
+    },
+    {
+      "path": "Zeta23/CCM/BoundaryFlatApproximation.lean",
+      "sha256": "1280b442bcc167aa768d58a0cd854f0d59cda0fc0be983878e238ad184ab10c8",
+      "git_blob": "affdfea9181f7a9310c3b1fced16d14c1573c797",
+      "role": "REUSE_OR_SOURCE_AUDIT",
+      "authority": "READ_AT_PINNED_BASE_NOT_REBUILT_IN_THIS_PLANNING_PASS"
+    },
+    {
+      "path": "Zeta23/CCM/BoundaryFlatProjection.lean",
+      "sha256": "0ab97e2b051dfc92fb8dd61756e9fe2933e243ded734c76f2afd480bcc697282",
+      "git_blob": "ccad52b06c052e02e49ab220c6ea2b387c726876",
+      "role": "REUSE_OR_SOURCE_AUDIT",
+      "authority": "READ_AT_PINNED_BASE_NOT_REBUILT_IN_THIS_PLANNING_PASS"
+    },
+    {
+      "path": "Zeta23/CCM/SourceMomentVandermondeFiltration.lean",
+      "sha256": "d65e4256a3916913f56f9889df22011b74e4bcee62d0dcba94cdd4db0d1fb98e",
+      "git_blob": "dcc45f5a7e3c81526beff15a36eeafdce4ddd8a2",
+      "role": "REUSE_OR_SOURCE_AUDIT",
+      "authority": "READ_AT_PINNED_BASE_NOT_REBUILT_IN_THIS_PLANNING_PASS"
+    },
+    {
+      "path": "Zeta23/CCM/K3BottomWindowRecord.lean",
+      "sha256": "a8a424e738a924bece292df4fdb917efe4207fb9375d693f1a288d420f525e7b",
+      "git_blob": "2f83a4947f1644a0360a0e9392f13de6bbcfe882",
+      "role": "REUSE_OR_SOURCE_AUDIT",
+      "authority": "READ_AT_PINNED_BASE_NOT_REBUILT_IN_THIS_PLANNING_PASS"
+    },
+    {
+      "path": "research/RHRC/integration/post287/PR290_SCOPE_OVERRIDE_AND_HANDOFF.md",
+      "sha256": "43149102e294c0d8e28f0429d89b2d272d1dbcaa424140481f58d44c8e256996",
+      "git_blob": "3bb61f5514ea2d2470f94ab09e26a5132d92f562",
+      "role": "REUSE_OR_SOURCE_AUDIT",
+      "authority": "READ_AT_PINNED_BASE_NOT_REBUILT_IN_THIS_PLANNING_PASS"
+    },
+    {
+      "path": "research/RHRC/graph/README.md",
+      "sha256": "b1af42aee100b66d2755f8310023dbcea0f190333746b7e4be4e5cb835fc305f",
+      "git_blob": "0e5e14a98e6b6b560679901f0731447a3c2b7700",
+      "role": "REUSE_OR_SOURCE_AUDIT",
+      "authority": "READ_AT_PINNED_BASE_NOT_REBUILT_IN_THIS_PLANNING_PASS"
+    },
+    {
+      "path": "research/RHRC/graph/CONSTITUTION.md",
+      "sha256": "90ef6b3c9c36101eff148ad1729c8fb277723d0c0af79c32b61a61ec248008af",
+      "git_blob": "01f1c4d1a09213ad9c886c9b563ffa0fdf2505aa",
+      "role": "REUSE_OR_SOURCE_AUDIT",
+      "authority": "READ_AT_PINNED_BASE_NOT_REBUILT_IN_THIS_PLANNING_PASS"
+    },
+    {
+      "path": "research/RHRC/tools/materialize_derived_state.py",
+      "sha256": "ca92f826ceefca5e1f5cf3a681f2948d5989403c5a933262fd7d2721cdba5185",
+      "git_blob": "1820f76e1bb46b09f957a3cb7752e6a69752c784",
+      "role": "REUSE_OR_SOURCE_AUDIT",
+      "authority": "READ_AT_PINNED_BASE_NOT_REBUILT_IN_THIS_PLANNING_PASS"
+    },
+    {
+      "path": "research/RHRC/routes/R003_ccm_bridge/post287/wp4_k3_full_continuum.py",
+      "sha256": "5ab7eaee1e2de65bf0dabe3a40ba4c55658a4f6b079f4da2de49dc70b174c348",
+      "git_blob": "c58a38f9179933d0455704f40eaf2cab2bf04695",
+      "role": "REUSE_OR_SOURCE_AUDIT",
+      "authority": "READ_AT_PINNED_BASE_NOT_REBUILT_IN_THIS_PLANNING_PASS"
+    },
+    {
+      "path": "research/RHRC/routes/R003_ccm_bridge/post287/wp4_k3_verify_full_transcript.py",
+      "sha256": "e82bfb126de17f150710f4b85aa0e571a3617cdb8e3a9f17002d009792192896",
+      "git_blob": "8c19e190c6c08987aa1a06c1101ea79f8f60c494",
+      "role": "REUSE_OR_SOURCE_AUDIT",
+      "authority": "READ_AT_PINNED_BASE_NOT_REBUILT_IN_THIS_PLANNING_PASS"
+    },
+    {
+      "path": "research/RHRC/routes/R003_ccm_bridge/post287/wp4_k3_assemble_shards.py",
+      "sha256": "10e687be8a25f653055cacd1822c1f52ea27a623e022a404de25585b07d904ae",
+      "git_blob": "0b5a01d502e7967461a4284f37f1163d42155e2a",
+      "role": "REUSE_OR_SOURCE_AUDIT",
+      "authority": "READ_AT_PINNED_BASE_NOT_REBUILT_IN_THIS_PLANNING_PASS"
+    },
+    {
+      "path": "research/RHRC/routes/R003_ccm_bridge/post287/certificate_integrity.py",
+      "sha256": "b3f7895876ef6d38c15eb539e362afb6ba16e3f5a33ce5523a5cd8bba301b27b",
+      "git_blob": "b1fb045ccd0087927433ab2eb0a257b21f5d5a4a",
+      "role": "REUSE_OR_SOURCE_AUDIT",
+      "authority": "READ_AT_PINNED_BASE_NOT_REBUILT_IN_THIS_PLANNING_PASS"
+    },
+    {
+      "path": "research/RHRC/routes/R003_ccm_bridge/requirements.txt",
+      "sha256": "5844b2c81e73269e51c8d4a9ec2ab707a3d6a33c72e66b49b79932ebb4df54a7",
+      "git_blob": "3c3ea6df9a2765818d96b0107c6f0732dbc6e286",
+      "role": "REUSE_OR_SOURCE_AUDIT",
+      "authority": "READ_AT_PINNED_BASE_NOT_REBUILT_IN_THIS_PLANNING_PASS"
+    },
+    {
+      "path": "lean-toolchain",
+      "sha256": "0d3c76ccd8772d8bcbe207241421a760312b71a6aa82f84194391fdf5cb026d6",
+      "git_blob": "c084c7fbe586b0276863b66f16d2955a43bc3fc6",
+      "role": "REUSE_OR_SOURCE_AUDIT",
+      "authority": "READ_AT_PINNED_BASE_NOT_REBUILT_IN_THIS_PLANNING_PASS"
+    },
+    {
+      "path": "lake-manifest.json",
+      "sha256": "1847b362e15efd927e75aa8b5442e491f998e4a3f730f9dcaca9841f2957c448",
+      "git_blob": "af9ef405e4e292f2e0176b12b6cb66f547575314",
+      "role": "REUSE_OR_SOURCE_AUDIT",
+      "authority": "READ_AT_PINNED_BASE_NOT_REBUILT_IN_THIS_PLANNING_PASS"
+    }
+  ],
+  "large_repository_archive": {
+    "name": "zeta-23-lean-main (25).zip",
+    "sha256": "db4a91819f3cd5f974a54389526353d8d953b16c647fe18e998bdb0de5675ab6",
+    "included_in_bundle": false,
+    "tree_reconstructed_again": true
+  },
+  "live_reads": [
+    "GitHub main commit endpoint",
+    "GitHub open pull requests endpoint",
+    "pinned QuantitativeCanonicalWitness.lean",
+    "pinned PR290_SCOPE_OVERRIDE_AND_HANDOFF.md"
+  ],
+  "prior_workflow_observation": "Previous post-290 harvest is preserved as historical source evidence; no new full job harvest claimed."
+}

@@ -1,0 +1,38 @@
+{
+  "schema": "post290.d2-first-completed-child.v1",
+  "run": 38569316691,
+  "job": 115870746281,
+  "child_index": 4,
+  "child_id": "Q13_even_C00_P07_R00001_P0",
+  "artifact_id": 11897640831,
+  "zip_sha256": "0c5a16273a5ee7e9ffc1d3af8a09f3bc4a6b7aee9d0058fbc1d918c952b8f687",
+  "all_contained_receipt_hashes_verified": true,
+  "status": "PASS",
+  "tested_nodes": 31,
+  "accepted_leaves": 16,
+  "unresolved_leaves": 0,
+  "negative_stop": false,
+  "resources": {
+    "max_depth": 48,
+    "max_nodes": 8192,
+    "precision_bits": 512,
+    "seconds": 1800
+  },
+  "source_elapsed_seconds": 191.47281048399998,
+  "supervisor_wall_seconds": 192.73920797100004,
+  "checkpoint_upload_failure": null,
+  "file_count": 9,
+  "original_interval": {
+    "left": [
+      86463365249873753,
+      32768000000000000
+    ],
+    "right": [
+      69173345265302223,
+      26214400000000000
+    ]
+  },
+  "disposition": "ONE_APPROVED_CHILD_SEARCH_RESULT_ONLY_INDEPENDENT_768_CHECK_PENDING",
+  "D2": "OPEN",
+  "RH": "OPEN"
+}

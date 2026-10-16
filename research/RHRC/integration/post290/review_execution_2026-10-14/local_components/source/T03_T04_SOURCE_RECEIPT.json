@@ -1,0 +1,148 @@
+{
+  "schema": "POST292_T03_T04_SOURCE_LOCAL_RECEIPT_1",
+  "checked_base_head": "efa6ceea7bba2b34ff453a70a32a0800fee98b82",
+  "checked_base_tree": "511f6dc182d9a02b54e9404e93c32eb614fbff34",
+  "snapshot_kind": "LOCAL_NEW_SOURCE_FILES_COMPILED_AGAINST_PINNED_BASE_CACHE_NOT_YET_A_COMMIT_OR_CI_CLAIM",
+  "compiler": "Lean 4.33.0-rc2",
+  "mathlib": "51e6992efd06126df61a496bebf8f49482a4e129",
+  "compiler_options": [
+    "-j",
+    "1",
+    "-DmaxHeartbeats=800000",
+    "-DrelaxedAutoImplicit=false",
+    "-Dpp.unicode.fun=true"
+  ],
+  "allowed_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "tasks": {
+    "T03": "GREEN_LOCAL_EXACT",
+    "T04": "GREEN_LOCAL_EXACT"
+  },
+  "source_files": [
+    {
+      "path": "Zeta23/CCM/UniversalSincPhysicalBounds.lean",
+      "source_sha256": "a95a81960a2e6b50bd743bfcd262cfba72a88f5322061308f1983e0a442860d5",
+      "log_path": "../../post292audit/validation/source/UniversalSincPhysicalBounds.log",
+      "log_sha256": "19b7c26c31dc12920e596018df8ddebe99e866e7e1285b89350165220a5725e3",
+      "theorem_roots": [
+        "Zeta23.CCM.universalSincProduct_scale",
+        "Zeta23.CCM.universalSincSource_complex_scale",
+        "Zeta23.CCM.universalSincSource_scale",
+        "Zeta23.CCM.universalSincSource_iteratedDeriv_scale",
+        "Zeta23.CCM.universalSincSource_iteratedDeriv_energy_scale",
+        "Zeta23.CCM.universalSincKernel_eq_real",
+        "Zeta23.CCM.poleKilled_universalSincSource_norm_sq",
+        "Zeta23.CCM.universalSincSource_gevrey_bound",
+        "Zeta23.CCM.universalSincProduct_decay"
+      ],
+      "definitions": [],
+      "compile_status": "EXIT_0"
+    },
+    {
+      "path": "Zeta23/ExceptionalZero/UniversalSincActualVisibility.lean",
+      "source_sha256": "a3f35aec0eafa6a98ee3f8a02a753682cc0489b892dac0930e8f705b161e8ce3",
+      "log_path": "../../post292audit/validation/source/UniversalSincActualVisibility.log",
+      "log_sha256": "c9a0497a41137e5357168794909fac8bca82f1b53a0c5cc8453c8f6991a4c30b",
+      "theorem_roots": [
+        "Zeta23.ExceptionalZero.universalSincPoleKilled_visible_at_offLine_zero"
+      ],
+      "definitions": [],
+      "compile_status": "EXIT_0"
+    },
+    {
+      "path": "Zeta23/CCM/FinitePhysicalNormalization.lean",
+      "source_sha256": "c2dff9b13fb2f909615aebaf0fc40c7571faef7f1c4416535073ac378ec84f39",
+      "log_path": "../../post292audit/validation/source/FinitePhysicalNormalization.log",
+      "log_sha256": "1aa600a4b31465e15132b023b56b58a63cc3ae539be10aa93f7a6631129327a0",
+      "theorem_roots": [
+        "Zeta23.CCM.finitePhysicalSynthesis_smul",
+        "Zeta23.CCM.finitePhysicalSynthesis_energy",
+        "Zeta23.CCM.finiteNormalizedCoefficients_norm",
+        "Zeta23.CCM.finitePhysicalSynthesis_normalized",
+        "Zeta23.CCM.finitePhysicalSynthesis_normalized_energy",
+        "Zeta23.CCM.finitePhysicalSynthesis_cancel_original_normalization"
+      ],
+      "definitions": [
+        "finitePhysicalSynthesis",
+        "finiteNormalizedCoefficients"
+      ],
+      "compile_status": "EXIT_0"
+    },
+    {
+      "path": "Zeta23/CCM/OriginalDetectorPaddedFinitePhysicalUnitBridge.lean",
+      "source_sha256": "0a02119bb68421779fb668fe732080e186cf148c7b2d6ab96e7a4c4042d3d87b",
+      "log_path": "../../post292audit/validation/source/OriginalDetectorPaddedFinitePhysicalUnitBridge.log",
+      "log_sha256": "bf498ab33ffead873ac9dd3ecb321ce324768b2dac214ec26ad21bce52381c5f",
+      "theorem_roots": [
+        "Zeta23.CCM.originalDetectorPaddedFinitePhysicalUnit_eq_native_image"
+      ],
+      "definitions": [],
+      "compile_status": "EXIT_0"
+    },
+    {
+      "path": "Zeta23/CCM/OriginalDetectorPaddedFiniteNativeFormConcreteRate.lean",
+      "source_sha256": "abbe854e8697f5e33068c3596e3a3a9c0dbd1cd654acdec4f3ed0121d09dc24c",
+      "log_path": "../../post292audit/validation/source/OriginalDetectorPaddedFiniteNativeFormConcreteRate.log",
+      "log_sha256": "8a493da9f3a5604e5b6a204b7655d97abcc2b1a69adbceca159c75910f4f2dc1",
+      "theorem_roots": [
+        "Zeta23.CCM.originalDetectorPaddedFiniteNativeForm_concrete_rate",
+        "Zeta23.CCM.originalDetectorPaddedFinitePhysicalUnit_common_error_rates"
+      ],
+      "definitions": [
+        "originalDetectorPaddedNativeEnergy",
+        "originalDetectorOriginalWeilEnergy"
+      ],
+      "compile_status": "EXIT_0"
+    },
+    {
+      "path": "Zeta23/CCM/OriginalDetectorPaddedPhaseScalar.lean",
+      "source_sha256": "7334dbf8d5a65be3ca4a7bb9a09dce3f8878b400744e03bf208035a00e9c1338",
+      "log_path": "../../post292audit/validation/source/OriginalDetectorPaddedPhaseScalar.log",
+      "log_sha256": "2e11bd851ddb8b9911ce44f18fdce9e1541e1f5770882987c4ba158a2f56e38e",
+      "theorem_roots": [
+        "Zeta23.CCM.originalDetectorPaddedPhaseGram_real",
+        "Zeta23.CCM.originalDetectorPaddedPhaseEnergy_real",
+        "Zeta23.CCM.originalDetectorPaddedPhase_norm_sq",
+        "Zeta23.CCM.originalDetectorPaddedPhase_energy",
+        "Zeta23.CCM.originalDetectorPaddedPhase_denominator_pos",
+        "Zeta23.CCM.originalDetectorPaddedPhase_scalar_quotient",
+        "Zeta23.CCM.exists_originalDetectorPaddedPhase_positive_denominators"
+      ],
+      "definitions": [
+        "originalDetectorPaddedPhaseNu",
+        "originalDetectorPaddedPhaseOmega",
+        "originalDetectorPaddedPhaseD",
+        "originalDetectorPaddedPhaseC"
+      ],
+      "compile_status": "EXIT_0"
+    },
+    {
+      "path": "Zeta23/CCM/OriginalDetectorOddPaddingIdentity.lean",
+      "source_sha256": "1c1b7471e8342e08f172d4ffc7efa1691f6023d12c2e5dcf73c5d5e8f245ec8d",
+      "log_path": "../../post292audit/validation/source/OriginalDetectorOddPaddingIdentity.log",
+      "log_sha256": "03d1bf74debabd162a1c8026c8b9112e39fe70ae6e368e1e5201d15847e4ffe8",
+      "theorem_roots": [
+        "Zeta23.CCM.originalDetectorOddPadding_P_image_eq",
+        "Zeta23.CCM.originalDetectorOddPadding_coefficients_eq",
+        "Zeta23.CCM.originalDetectorOddPadding_mass_eq",
+        "Zeta23.CCM.originalDetectorOddPadding_unitVector_eq",
+        "Zeta23.CCM.originalDetectorOddPadding_normalizedPhysical_eq"
+      ],
+      "definitions": [],
+      "compile_status": "EXIT_0"
+    }
+  ],
+  "typed_consumer": {
+    "source_sha256": "f62046e379c13f0bd4addd68e29c787aa17aba46d58757459640b6b679ef509c",
+    "log_sha256": "a826c37e789477cae4e27026b4447f882b93dd68c026a3f1822bde468d241411",
+    "status": "EXIT_0"
+  },
+  "scanners": {
+    "owned": "PASS_7",
+    "promoted": "PASS_638"
+  },
+  "all_owned_runners": "COMPLETE_NONE_RUNNING"
+}

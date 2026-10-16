@@ -1,0 +1,12 @@
+'Zeta23.CCM.originalDetectorFiniteImage_legal' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.originalDetectorFiniteImage_poleNeutral' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.originalDetectorFiniteImage_endpointJets' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.originalDetectorFiniteImage_endpointJets_physical' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.CCM.originalDetectorFiniteImage_hard_contDiff_four' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.originalDetectorFiniteImage_error_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.originalDetectorFiniteImage_quartic_error_tendsto_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.CCM.originalDetectorFiniteImage_physical_norm' depends on axioms: [propext, Classical.choice, Quot.sound]

@@ -1,0 +1,49 @@
+#!/usr/bin/env python3
+"""Read-only synthetic adversarial workflow review tests."""
+import copy,unittest
+from verify_workflow_harvest import validate_jobs
+H="a"*40
+def fixture():
+    j={"run_id":11,"workflow":"mock workflow","job_id":19,"name":"example",
+       "attempt":1,"latest_attempt":True,"status":"completed","conclusion":"success",
+       "head":H,"head_tree":"b"*40,"evidence_scope":"EXACT_PROOF_HEAD",
+       "required":False,"url":"https://github.com/mock/jobs/19","steps":[],
+       "classification":"REGRESSION_GATE","output_reviewed":False,
+       "scientific_disposition":"READ_JOB_OUTPUT_REQUIRED","scientific_acceptance":False}
+    raw={"head":H,"claim_cap":"RH_OPEN","review_phase":"PRE_RELEASE_PREREQUISITES",
+         "includes_release_run":False,"excluded_administrative_runs":[],"jobs":[j]}
+    reviewed=copy.deepcopy(raw);reviewed["jobs"][0].update(
+        output_reviewed=True,scientific_disposition="REPLAY_PRESERVED",
+        review_reason="Synthetic human-reviewed fixture only",review_source_url=j["url"])
+    return raw,reviewed
+class ReviewedHarvestTests(unittest.TestCase):
+    def test_control_only(self):self.assertTrue(validate_jobs(*fixture()))
+    def test_result_edit(self):
+        raw,re=fixture();re["jobs"][0]["conclusion"]="failure"
+        with self.assertRaises(ValueError):validate_jobs(raw,re)
+    def test_missing_review(self):
+        raw,re=fixture();re["jobs"][0]["output_reviewed"]=False
+        with self.assertRaises(ValueError):validate_jobs(raw,re)
+    def test_missing_job(self):
+        raw,re=fixture();re["jobs"]=[]
+        with self.assertRaises(ValueError):validate_jobs(raw,re)
+    def test_false_success_after_failure(self):
+        raw,re=fixture()
+        raw["jobs"][0]["conclusion"]=re["jobs"][0]["conclusion"]="failure"
+        re["jobs"][0]["scientific_acceptance"]=True
+        with self.assertRaises(ValueError):validate_jobs(raw,re)
+    def test_false_success_after_skip(self):
+        raw,re=fixture()
+        raw["jobs"][0]["conclusion"]=re["jobs"][0]["conclusion"]="skipped"
+        re["jobs"][0]["scientific_acceptance"]=True
+        with self.assertRaises(ValueError):validate_jobs(raw,re)
+    def test_false_success_while_running(self):
+        raw,re=fixture()
+        raw["jobs"][0]["status"]=re["jobs"][0]["status"]="in_progress"
+        raw["jobs"][0]["conclusion"]=re["jobs"][0]["conclusion"]=None
+        re["jobs"][0]["scientific_acceptance"]=True
+        with self.assertRaises(ValueError):validate_jobs(raw,re)
+    def test_self_reference(self):
+        raw,re=fixture();re["includes_release_run"]=True
+        with self.assertRaises(ValueError):validate_jobs(raw,re)
+if __name__=="__main__":unittest.main()

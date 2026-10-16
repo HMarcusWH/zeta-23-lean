@@ -1,0 +1,75 @@
+name: RHRC post290 D2 SECOND continuation (manual)
+
+on:
+  push:
+    branches: [research/post290-step123-output]
+    paths: ['.github/workflows/rhrc_post290_k3_completion.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: rhrc-post290-d2-second-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  d2-second-continuation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      ROUTE: research/RHRC/routes/R003_ccm_bridge
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Install pinned numerical dependencies
+        run: python -m pip install -r "$ROUTE/requirements.txt"
+      - name: Exact partition and nonfinite regression gates
+        run: |
+          python "$ROUTE/post290/test_k3_resume.py"
+          python "$ROUTE/post287/test_wp2_wp4_finite_bounds.py"
+      - name: Recover unchanged guarded source-bound archive
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p /tmp/post290-k3/archive
+          gh api repos/HMarcusWH/zeta-23-lean/actions/artifacts/11808371873/zip > /tmp/post290-k3/guarded315-all-layers.zip
+          echo '3327bdf73251d2ff6333aa1e248290e0f17c7d3e2cce0727ead1a29245581990  /tmp/post290-k3/guarded315-all-layers.zip' | sha256sum --check
+          unzip -q /tmp/post290-k3/guarded315-all-layers.zip -d /tmp/post290-k3/archive
+      - name: Current source normalization and fixed SECOND gate
+        run: |
+          python "$ROUTE/post287/wp2_wp4_normalization_gate.py" --output /tmp/post290-k3/normalization.json --precision-bits 768
+          python "$ROUTE/post287/wp4_k3_frozen_q14_gate.py" --output /tmp/post290-k3/second-gate.json --precision-bits 384 --max-depth 40 --max-nodes 1000 --time-seconds 1200
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          d=json.loads(Path('/tmp/post290-k3/second-gate.json').read_text())
+          assert d['gate']=='PASS' and d['tested_boxes']==18 and d['terminal_claim']=='RH_OPEN'
+          PY
+      - name: Freeze exact partition before search
+        run: python "$ROUTE/post290/k3_resume_partition.py" /tmp/post290-k3/archive --out /tmp/post290-k3/partition.json
+      - name: Execute both preregistered SECOND passes
+        id: search
+        continue-on-error: true
+        run: python "$ROUTE/post290/k3_resume_search.py" /tmp/post290-k3/partition.json --out /tmp/post290-k3/search
+      - name: Assemble all candidate continuous unions
+        if: always() && steps.search.outcome != 'skipped'
+        run: python "$ROUTE/post290/k3_assemble_complete.py" candidates /tmp/post290-k3/partition.json /tmp/post290-k3/search --out /tmp/post290-k3/candidate
+      - name: Independent 768-bit all-layer no-search check
+        id: replay
+        continue-on-error: true
+        run: python "$ROUTE/post290/k3_replay_all.py" /tmp/post290-k3/candidate /tmp/post290-k3/partition.json --out /tmp/post290-k3/full-checker.json
+      - name: NON-PARTIAL full D2 release gate
+        if: always() && steps.replay.outcome != 'skipped'
+        run: python "$ROUTE/post290/k3_assemble_complete.py" final /tmp/post290-k3/candidate /tmp/post290-k3/full-checker.json --out /tmp/post290-k3/disposition.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: post290-k3-second-continuation
+          path: /tmp/post290-k3
+          if-no-files-found: error

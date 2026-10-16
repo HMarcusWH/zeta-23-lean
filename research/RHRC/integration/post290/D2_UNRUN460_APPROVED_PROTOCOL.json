@@ -1,0 +1,51 @@
+{
+  "acceptance": "D2_COMPLETE only zero unresolved,unrun,missing,unverified,nonfinite; all30layers,bothparities andphysicalseams; RH_OPEN; noLean_hWindows_created",
+  "approval": {
+    "date": "2026-10-14",
+    "immutable_proposal_sha256": "6d36c9948e28a5448920b832908d3bde24b8644cb7f6b211dcbc28c4208dc3fe",
+    "source": "Explicit human user approval in PR292 continuation chat, communicated by root agent",
+    "text": "Approve the 460-child continuation and its stated resource limit"
+  },
+  "budget_retry_or_reset": "FORBIDDEN",
+  "checkpoint_upload_period_seconds": 45,
+  "checkpoint_upload_timeout_seconds": 12,
+  "children": 460,
+  "children_sha256": "4a2bcb50ee377279362f9c2f895ffdd79c593929c64a3dbb6c9ca3f810aae70d",
+  "claim_cap": "RH_OPEN",
+  "compute_wall_hours_at_eight": 29,
+  "earlier_workflow_run_for_this_protocol": "FAIL_CLOSED_PENDING_COMPLETE_NO_CONSUMPTION_OR_REMAINING_APPROVED_BUDGET_AUDIT",
+  "fresh_checker": {
+    "all_layers": 30,
+    "cost": "Additional and separately reported, as stated in approved proposal",
+    "matrix_batch_maximum": 256,
+    "max_concurrency": 8,
+    "method": "SECOND_NO_SEARCH",
+    "precision_bits": 768,
+    "seconds_per_chunk": 1800
+  },
+  "historical_FOURTH": "FORBIDDEN",
+  "max_concurrency": 8,
+  "max_search_runner_hours": 230,
+  "max_search_runner_seconds": 828000,
+  "method": "SECOND",
+  "new_representation": "NONE",
+  "new_resource_protocol_not_old_cap_reset": true,
+  "only_original_unrun_children": true,
+  "original_finished256_receipts_preserved": true,
+  "original_first32_receipts_preserved": true,
+  "outer_job_timeout_minutes": 45,
+  "protocol_id": "SECOND_UNRUN_CAP_CONTINUATION_2026_10_14_v1",
+  "resources": {
+    "max_depth": 48,
+    "max_nodes": 8192,
+    "precision_bits": 512,
+    "seconds": 1800
+  },
+  "run_attempts_permitted": 1,
+  "schema": "post290.d2-approved-resource-protocol.v1",
+  "status": "APPROVED",
+  "two_sequential_waves": [
+    256,
+    204
+  ]
+}

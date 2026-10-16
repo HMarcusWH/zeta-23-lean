@@ -1,0 +1,3706 @@
+{
+  "schema": "POST290_EXACT_HEAD_WORKFLOW_HARVEST_75A_V1",
+  "snapshot_utc": "2026-10-14 00:49:41 UTC",
+  "repository": "HMarcusWH/zeta-23-lean",
+  "pull_request": 292,
+  "head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+  "source_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+  "runner_merge_head": "ac5f904f64ab1719f7429ad200d980ec595d3882",
+  "runner_merge_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+  "reviewed_base_head": "9583bbcc587aca8d87e74981b222e6813238d670",
+  "runner_merge_parents": [
+    "9583bbcc587aca8d87e74981b222e6813238d670",
+    "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8"
+  ],
+  "run_count": 20,
+  "job_attempt_count": 54,
+  "states": {
+    "success": 37,
+    "cancelled": 11,
+    "skipped": 1,
+    "failure": 4,
+    "in_progress": 1
+  },
+  "all_sources_classified": true,
+  "all_attached_workflow_sources_read": true,
+  "all_latest_jobs_completed": false,
+  "all_outputs_available_and_reviewed": false,
+  "full_green": false,
+  "full_release": false,
+  "claim_cap": "RH_OPEN",
+  "runs": [
+    {
+      "id": 38489434843,
+      "name": "RHRC post-190 canonical realizability audit",
+      "path": ".github/workflows/rhrc_post190_canonical_realizability.yml",
+      "event": "pull_request",
+      "head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "head_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "status": "completed",
+      "conclusion": "success",
+      "attempt": 1,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38489434843"
+    },
+    {
+      "id": 38489434934,
+      "name": "RHRC post-214 kernel dual geometry",
+      "path": ".github/workflows/rhrc_post214_kernel_dual_geometry.yml",
+      "event": "pull_request",
+      "head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "head_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "status": "completed",
+      "conclusion": "success",
+      "attempt": 1,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38489434934"
+    },
+    {
+      "id": 38489434841,
+      "name": "Permansson v0.1.6 formal verification",
+      "path": ".github/workflows/permansson-formal.yml",
+      "event": "pull_request",
+      "head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "head_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "status": "completed",
+      "conclusion": "success",
+      "attempt": 1,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38489434841"
+    },
+    {
+      "id": 38489434922,
+      "name": "RHRC post-194 parity trajectory sharp enclosure",
+      "path": ".github/workflows/rhrc_post194_parity_trajectory_sharp_enclosure.yml",
+      "event": "pull_request",
+      "head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "head_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "status": "completed",
+      "conclusion": "success",
+      "attempt": 1,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38489434922"
+    },
+    {
+      "id": 38489434814,
+      "name": "RHRC post-192 parity trajectory rigidity",
+      "path": ".github/workflows/rhrc_post192_parity_trajectory_rigidity.yml",
+      "event": "pull_request",
+      "head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "head_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "status": "completed",
+      "conclusion": "success",
+      "attempt": 1,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38489434814"
+    },
+    {
+      "id": 38489434794,
+      "name": "RHRC post-222 bi-regular zero-shift scalar",
+      "path": ".github/workflows/rhrc_post222_biregular_zero_shift_scalar.yml",
+      "event": "pull_request",
+      "head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "head_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "status": "completed",
+      "conclusion": "success",
+      "attempt": 1,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38489434794"
+    },
+    {
+      "id": 38489434839,
+      "name": "RHRC post287 focused Step3 checks",
+      "path": ".github/workflows/rhrc_post287_focused.yml",
+      "event": "pull_request",
+      "head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "head_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "status": "completed",
+      "conclusion": "success",
+      "attempt": 1,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38489434839"
+    },
+    {
+      "id": 38489434957,
+      "name": "RHRC post-196 Q14 residual cell replay",
+      "path": ".github/workflows/rhrc_post196_q14_residual_cell_replay.yml",
+      "event": "pull_request",
+      "head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "head_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "status": "completed",
+      "conclusion": "success",
+      "attempt": 1,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38489434957"
+    },
+    {
+      "id": 38489434804,
+      "name": "RHRC post290 source and output proof components",
+      "path": ".github/workflows/rhrc_post290_step123_output.yml",
+      "event": "pull_request",
+      "head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "head_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "status": "completed",
+      "conclusion": "failure",
+      "attempt": 1,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38489434804"
+    },
+    {
+      "id": 38489434816,
+      "name": "RHRC post287 bounded signed-ray probe",
+      "path": ".github/workflows/rhrc_post287_wp6.yml",
+      "event": "pull_request",
+      "head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "head_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "status": "completed",
+      "conclusion": "success",
+      "attempt": 1,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38489434816"
+    },
+    {
+      "id": 38489434835,
+      "name": "RHRC post-198 Q14 parity source mechanism",
+      "path": ".github/workflows/rhrc_post198_q14_parity_source_mechanism.yml",
+      "event": "pull_request",
+      "head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "head_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "status": "completed",
+      "conclusion": "success",
+      "attempt": 1,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38489434835"
+    },
+    {
+      "id": 38489434796,
+      "name": "RHRC parallel closure campaign",
+      "path": ".github/workflows/rhrc_closure_campaign.yml",
+      "event": "pull_request",
+      "head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "head_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "status": "completed",
+      "conclusion": "cancelled",
+      "attempt": 1,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38489434796"
+    },
+    {
+      "id": 38489434888,
+      "name": "RHRC post-202 Q14 composite parity gap",
+      "path": ".github/workflows/rhrc_post202_q14_composite_parity_gap.yml",
+      "event": "pull_request",
+      "head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "head_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "status": "completed",
+      "conclusion": "cancelled",
+      "attempt": 1,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38489434888"
+    },
+    {
+      "id": 38489434844,
+      "name": "RHRC research and Lean checks",
+      "path": ".github/workflows/rhrc.yml",
+      "event": "pull_request",
+      "head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "head_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "status": "completed",
+      "conclusion": "cancelled",
+      "attempt": 1,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38489434844"
+    },
+    {
+      "id": 38489434810,
+      "name": "RHRC post-200 Q14 discrepancy mechanism",
+      "path": ".github/workflows/rhrc_post200_q14_discrepancy_mechanism.yml",
+      "event": "pull_request",
+      "head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "head_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "status": "completed",
+      "conclusion": "cancelled",
+      "attempt": 1,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38489434810"
+    },
+    {
+      "id": 38489434838,
+      "name": "RHRC post-284 source inertia campaign",
+      "path": ".github/workflows/rhrc_post284_source_inertia.yml",
+      "event": "pull_request",
+      "head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "head_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "status": "completed",
+      "conclusion": "cancelled",
+      "attempt": 1,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38489434838"
+    },
+    {
+      "id": 38489434836,
+      "name": "RHRC post-282 contact calculus",
+      "path": ".github/workflows/rhrc_post282_contact_calculus.yml",
+      "event": "pull_request",
+      "head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "head_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "status": "completed",
+      "conclusion": "cancelled",
+      "attempt": 1,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38489434836"
+    },
+    {
+      "id": 38489434791,
+      "name": "RHRC post268 complete audit replay",
+      "path": ".github/workflows/rhrc_post268_audit.yml",
+      "event": "pull_request",
+      "head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "head_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "status": "completed",
+      "conclusion": "success",
+      "attempt": 1,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38489434791"
+    },
+    {
+      "id": 38489434795,
+      "name": "RHRC post287 WP2 and WP4 interval research",
+      "path": ".github/workflows/rhrc_post287_numerical.yml",
+      "event": "pull_request",
+      "head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "head_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "status": "in_progress",
+      "conclusion": null,
+      "attempt": 1,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38489434795"
+    },
+    {
+      "id": 38489430140,
+      "name": "RHRC post290 source and output proof components",
+      "path": ".github/workflows/rhrc_post290_step123_output.yml",
+      "event": "push",
+      "head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "head_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "status": "completed",
+      "conclusion": "failure",
+      "attempt": 1,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38489430140"
+    }
+  ],
+  "jobs": [
+    {
+      "run_id": 38489434794,
+      "job_id": 115610877266,
+      "name": "post222-biregular-zero-shift-scalar",
+      "event": "pull_request",
+      "workflow": "RHRC post-222 bi-regular zero-shift scalar",
+      "source_path": ".github/workflows/rhrc_post222_biregular_zero_shift_scalar.yml",
+      "status": "completed",
+      "conclusion": "success",
+      "attempt": 1,
+      "latest_attempt": true,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38489434794/job/115610877266",
+      "source_job_id": "post222-biregular-zero-shift-scalar",
+      "workflow_source_blob": "4b854360b5b4f1eba8d78e4d68f11737d5cb07df",
+      "workflow_source_sha256": "b4865f02c603c9a413b82c56bbe267e6bb077b885055747cdddd6e684db0ac4a",
+      "workflow_source_unchanged_from_d88": true,
+      "classification": "RESEARCH_PRODUCING_CHECK",
+      "additional_role": "REGRESSION_GATE",
+      "source_read": true,
+      "head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "head_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "runner_checked_head": "ac5f904f64ab1719f7429ad200d980ec595d3882",
+      "runner_checked_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "checkout_kind": "PR_SYNTHETIC_MERGE",
+      "scientific_disposition": "NO_FROZEN_CELL_MINIMAL_BIREGULAR_STATE_CERTIFIED",
+      "prior_d88_disposition": "NO_FROZEN_CELL_MINIMAL_BIREGULAR_STATE_CERTIFIED",
+      "output_reviewed": true,
+      "log_availability": "LOCAL_DECODED_LOG_SCANNED_HASHED",
+      "decoded_log_sha256": "cdbeb416492dc86d9aaa5d274b933bc257b4072db35a9b638ff11d2419e776da",
+      "decoded_log_bytes": 45497,
+      "skipped_steps": [],
+      "formal_authority_created_by_job_status": false
+    },
+    {
+      "run_id": 38489434816,
+      "job_id": 115610877430,
+      "name": "wp6-source-specific-signed-ray",
+      "event": "pull_request",
+      "workflow": "RHRC post287 bounded signed-ray probe",
+      "source_path": ".github/workflows/rhrc_post287_wp6.yml",
+      "status": "completed",
+      "conclusion": "success",
+      "attempt": 1,
+      "latest_attempt": true,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38489434816/job/115610877430",
+      "source_job_id": "wp6-source-specific-signed-ray",
+      "workflow_source_blob": "3a47a39fe33870aa0253c6c49108c960120cfd40",
+      "workflow_source_sha256": "4d8e501b8d8045ad1a25872da01c0174bb27f13c7172651ed62720517423ac61",
+      "workflow_source_unchanged_from_d88": true,
+      "classification": "RESEARCH_PRODUCING_CHECK",
+      "additional_role": "REGRESSION_GATE",
+      "source_read": true,
+      "head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "head_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "runner_checked_head": "ac5f904f64ab1719f7429ad200d980ec595d3882",
+      "runner_checked_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "checkout_kind": "PR_SYNTHETIC_MERGE",
+      "scientific_disposition": "EXPERIMENTAL_SIGNAL_BOUNDED_SHIFTED_RAY_FALSIFIER_PRESERVED",
+      "prior_d88_disposition": "EXPERIMENTAL_SIGNAL_BOUNDED_SHIFTED_RAY_FALSIFIER_PRESERVED",
+      "output_reviewed": true,
+      "log_availability": "LOCAL_DECODED_LOG_SCANNED_HASHED",
+      "decoded_log_sha256": "589f5f253f74ca98b64824d132625fd7764bf4b3a51672f8493161bfd0384631",
+      "decoded_log_bytes": 20082,
+      "skipped_steps": [],
+      "formal_authority_created_by_job_status": false
+    },
+    {
+      "run_id": 38489434835,
+      "job_id": 115610877479,
+      "name": "post198-q14-source-mechanism",
+      "event": "pull_request",
+      "workflow": "RHRC post-198 Q14 parity source mechanism",
+      "source_path": ".github/workflows/rhrc_post198_q14_parity_source_mechanism.yml",
+      "status": "completed",
+      "conclusion": "success",
+      "attempt": 1,
+      "latest_attempt": true,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38489434835/job/115610877479",
+      "source_job_id": "post198-q14-source-mechanism",
+      "workflow_source_blob": "34f403f97efd7d065bfc55cd5d8fd5efdc34a9d2",
+      "workflow_source_sha256": "ed0656ea0b9a6953f461b6ff361989e086b95c71d1740352ada78db91c2438a4",
+      "workflow_source_unchanged_from_d88": true,
+      "classification": "RESEARCH_PRODUCING_CHECK",
+      "additional_role": "REGRESSION_GATE",
+      "source_read": true,
+      "head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "head_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "runner_checked_head": "ac5f904f64ab1719f7429ad200d980ec595d3882",
+      "runner_checked_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "checkout_kind": "PR_SYNTHETIC_MERGE",
+      "scientific_disposition": "SOURCE_DECOMPOSITION_DEPENDENCY_UNRESOLVED",
+      "prior_d88_disposition": "SOURCE_DECOMPOSITION_DEPENDENCY_UNRESOLVED",
+      "output_reviewed": true,
+      "log_availability": "LOCAL_DECODED_LOG_SCANNED_HASHED",
+      "decoded_log_sha256": "dbe7da8a2551ac103f9e1cadc099320b3968101ca3e907a6869016b7fbbfa3e4",
+      "decoded_log_bytes": 42692,
+      "skipped_steps": [],
+      "formal_authority_created_by_job_status": false
+    },
+    {
+      "run_id": 38489434841,
+      "job_id": 115610877058,
+      "name": "lean-permansson",
+      "event": "pull_request",
+      "workflow": "Permansson v0.1.6 formal verification",
+      "source_path": ".github/workflows/permansson-formal.yml",
+      "status": "completed",
+      "conclusion": "success",
+      "attempt": 1,
+      "latest_attempt": true,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38489434841/job/115610877058",
+      "source_job_id": "lean-permansson",
+      "workflow_source_blob": "7926007c27b81f71e658ef29549bd5ef5bb98444",
+      "workflow_source_sha256": "71c79208d69eaef4b23c0697718edf970c5d2fa08b3ee6537f2a5035585972f6",
+      "workflow_source_unchanged_from_d88": true,
+      "classification": "FORMAL_VALIDITY_GATE",
+      "additional_role": null,
+      "source_read": true,
+      "head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "head_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "runner_checked_head": "ac5f904f64ab1719f7429ad200d980ec595d3882",
+      "runner_checked_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "checkout_kind": "PR_SYNTHETIC_MERGE",
+      "scientific_disposition": "COMPILED_SCOPED_TARGETS_AND_WORKFLOW_GATES_PASS",
+      "prior_d88_disposition": "COMPILED_SCOPED_TARGETS_AND_WORKFLOW_GATES_PASS",
+      "output_reviewed": true,
+      "log_availability": "LOCAL_DECODED_LOG_SCANNED_HASHED",
+      "decoded_log_sha256": "210c7e8d54bfd851b7d2f8d5fc7c73a8b343fb73231264ab79298e354e75a801",
+      "decoded_log_bytes": 34496,
+      "skipped_steps": [],
+      "formal_authority_created_by_job_status": false
+    },
+    {
+      "run_id": 38489434888,
+      "job_id": 115611021433,
+      "name": "post202-q14-composite-parity-gap",
+      "event": "pull_request",
+      "workflow": "RHRC post-202 Q14 composite parity gap",
+      "source_path": ".github/workflows/rhrc_post202_q14_composite_parity_gap.yml",
+      "status": "completed",
+      "conclusion": "cancelled",
+      "attempt": 1,
+      "latest_attempt": true,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38489434888/job/115611021433",
+      "source_job_id": "post202-q14-composite-parity-gap",
+      "workflow_source_blob": "84409cf0d29676f96b84ee290279b0b21e6a5348",
+      "workflow_source_sha256": "5c0da1a08984abc047b7a768ac91a61d143ca9689eec89d65b1c345e7311a369",
+      "workflow_source_unchanged_from_d88": true,
+      "classification": "RESEARCH_PRODUCING_CHECK",
+      "additional_role": "REGRESSION_GATE",
+      "source_read": true,
+      "head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "head_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "runner_checked_head": "ac5f904f64ab1719f7429ad200d980ec595d3882",
+      "runner_checked_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "checkout_kind": "PR_SYNTHETIC_MERGE",
+      "scientific_disposition": "CANCELLED_PARTIAL_OUTPUT_NO_COMPLETED_JOB_AUTHORITY",
+      "prior_d88_disposition": "CANCELLED_PARTIAL_OUTPUT_NO_COMPLETED_JOB_AUTHORITY",
+      "output_reviewed": true,
+      "log_availability": "LOCAL_DECODED_LOG_SCANNED_HASHED",
+      "decoded_log_sha256": "236e0dbe2713e2a0730fedfabbb21b325965026b909a395ef1d14492b604672a",
+      "decoded_log_bytes": 44845,
+      "skipped_steps": [
+        "Post Run actions/setup-python@v5"
+      ],
+      "formal_authority_created_by_job_status": false
+    },
+    {
+      "run_id": 38489434922,
+      "job_id": 115610877493,
+      "name": "post194-parity-trajectory-sharp-enclosure",
+      "event": "pull_request",
+      "workflow": "RHRC post-194 parity trajectory sharp enclosure",
+      "source_path": ".github/workflows/rhrc_post194_parity_trajectory_sharp_enclosure.yml",
+      "status": "completed",
+      "conclusion": "success",
+      "attempt": 1,
+      "latest_attempt": true,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38489434922/job/115610877493",
+      "source_job_id": "post194-parity-trajectory-sharp-enclosure",
+      "workflow_source_blob": "e3d24acbff6f1d82fcd60c6b136c2b56fb9867ae",
+      "workflow_source_sha256": "98d27f8d43bc7c835766f9568714f270275fb4aa920e1d04ffeef1107137064e",
+      "workflow_source_unchanged_from_d88": true,
+      "classification": "RESEARCH_PRODUCING_CHECK",
+      "additional_role": "REGRESSION_GATE",
+      "source_read": true,
+      "head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "head_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "runner_checked_head": "ac5f904f64ab1719f7429ad200d980ec595d3882",
+      "runner_checked_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "checkout_kind": "PR_SYNTHETIC_MERGE",
+      "scientific_disposition": "SHARP_ENCLOSURE_REPLAY_WITH_UNRESOLVED_SPAN",
+      "prior_d88_disposition": "SHARP_ENCLOSURE_REPLAY_WITH_UNRESOLVED_SPAN",
+      "output_reviewed": true,
+      "log_availability": "LOCAL_DECODED_LOG_SCANNED_HASHED",
+      "decoded_log_sha256": "2a01ab53b9f6b3f4cd58fcfea63644fb7bc939dd7a548a441b44bfd8652ec016",
+      "decoded_log_bytes": 690521,
+      "skipped_steps": [],
+      "formal_authority_created_by_job_status": false
+    },
+    {
+      "run_id": 38489434838,
+      "job_id": 115611038770,
+      "name": "source-falsifier-research",
+      "event": "pull_request",
+      "workflow": "RHRC post-284 source inertia campaign",
+      "source_path": ".github/workflows/rhrc_post284_source_inertia.yml",
+      "status": "completed",
+      "conclusion": "cancelled",
+      "attempt": 1,
+      "latest_attempt": true,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38489434838/job/115611038770",
+      "source_job_id": "source-falsifier-research",
+      "workflow_source_blob": "97d9956eca5d0b47fee44da99a8d4c0950a19ae4",
+      "workflow_source_sha256": "0ef4b6db1901bd08c59457bc37e10e0cbe26c3df8b510dd6e0db3e7173bab548",
+      "workflow_source_unchanged_from_d88": true,
+      "classification": "RESEARCH_PRODUCING_CHECK",
+      "additional_role": "REGRESSION_GATE",
+      "source_read": true,
+      "head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "head_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "runner_checked_head": "ac5f904f64ab1719f7429ad200d980ec595d3882",
+      "runner_checked_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "checkout_kind": "PR_SYNTHETIC_MERGE",
+      "scientific_disposition": "CANCELLED_PARTIAL_OUTPUT_NO_COMPLETED_JOB_AUTHORITY",
+      "prior_d88_disposition": "CANCELLED_PARTIAL_OUTPUT_NO_COMPLETED_JOB_AUTHORITY",
+      "output_reviewed": true,
+      "log_availability": "LOCAL_DECODED_LOG_SCANNED_HASHED",
+      "decoded_log_sha256": "6af17a593b41aabac31099df0e8c89512d546a98efb03d64abe7c3702361dcac",
+      "decoded_log_bytes": 49651,
+      "skipped_steps": [
+        "WP2 materialize and independently verify every K2 M51 Arb interval",
+        "Post-285 M63 route comparison at the K=2 near-contacts (experimental)",
+        "Post-285 M76 Arb resolution of the secular-margin grid (research evidence)",
+        "WP4 D2 Full K3 frozen Q14 384-bit both-parity feasibility gate (UNRESOLVED allowed)",
+        "WP6 fixed K2 same-source shifted-ray signed-Q falsification (bounded report only)",
+        "WP5 exact-model altered-prime Arb crossing certificate (non-zeta negative control)",
+        "Post Run actions/setup-python@v5"
+      ],
+      "formal_authority_created_by_job_status": false
+    },
+    {
+      "run_id": 38489434838,
+      "job_id": 115611039041,
+      "name": "lean-source-inertia",
+      "event": "pull_request",
+      "workflow": "RHRC post-284 source inertia campaign",
+      "source_path": ".github/workflows/rhrc_post284_source_inertia.yml",
+      "status": "completed",
+      "conclusion": "cancelled",
+      "attempt": 1,
+      "latest_attempt": true,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38489434838/job/115611039041",
+      "source_job_id": "lean-source-inertia",
+      "workflow_source_blob": "97d9956eca5d0b47fee44da99a8d4c0950a19ae4",
+      "workflow_source_sha256": "0ef4b6db1901bd08c59457bc37e10e0cbe26c3df8b510dd6e0db3e7173bab548",
+      "workflow_source_unchanged_from_d88": true,
+      "classification": "FORMAL_VALIDITY_GATE",
+      "additional_role": null,
+      "source_read": true,
+      "head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "head_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "runner_checked_head": "ac5f904f64ab1719f7429ad200d980ec595d3882",
+      "runner_checked_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "checkout_kind": "PR_SYNTHETIC_MERGE",
+      "scientific_disposition": "CANCELLED_PARTIAL_OUTPUT_NO_COMPLETED_JOB_AUTHORITY",
+      "prior_d88_disposition": "COMPILED_SCOPED_TARGETS_AND_WORKFLOW_GATES_PASS",
+      "output_reviewed": true,
+      "log_availability": "LOCAL_DECODED_LOG_SCANNED_HASHED",
+      "decoded_log_sha256": "3131c35d2c7048039db9d28da71ae5b66f68020514d62602df17f836c24a6fed",
+      "decoded_log_bytes": 7003509,
+      "skipped_steps": [
+        "Reject proof escapes on the promoted surface"
+      ],
+      "formal_authority_created_by_job_status": false
+    },
+    {
+      "run_id": 38489434838,
+      "job_id": 115611039882,
+      "name": "post287-full-k3",
+      "event": "pull_request",
+      "workflow": "RHRC post-284 source inertia campaign",
+      "source_path": ".github/workflows/rhrc_post284_source_inertia.yml",
+      "status": "completed",
+      "conclusion": "skipped",
+      "attempt": 1,
+      "latest_attempt": true,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38489434838/job/115611039882",
+      "source_job_id": "post287-full-k3",
+      "workflow_source_blob": "97d9956eca5d0b47fee44da99a8d4c0950a19ae4",
+      "workflow_source_sha256": "0ef4b6db1901bd08c59457bc37e10e0cbe26c3df8b510dd6e0db3e7173bab548",
+      "workflow_source_unchanged_from_d88": true,
+      "classification": "RESEARCH_PRODUCING_CHECK",
+      "additional_role": "REGRESSION_GATE",
+      "source_read": true,
+      "head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "head_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "runner_checked_head": null,
+      "runner_checked_tree": null,
+      "checkout_kind": "NO_CHECKOUT_AUTHORITY",
+      "scientific_disposition": "NOT_EXECUTED_SKIPPED",
+      "prior_d88_disposition": "NOT_EXECUTED_SKIPPED",
+      "output_reviewed": false,
+      "log_availability": "NOT_AVAILABLE_RUNNING_OR_SKIPPED",
+      "decoded_log_sha256": null,
+      "decoded_log_bytes": null,
+      "skipped_steps": [],
+      "formal_authority_created_by_job_status": false
+    },
+    {
+      "run_id": 38489434934,
+      "job_id": 115610877593,
+      "name": "post214-kernel-dual-geometry",
+      "event": "pull_request",
+      "workflow": "RHRC post-214 kernel dual geometry",
+      "source_path": ".github/workflows/rhrc_post214_kernel_dual_geometry.yml",
+      "status": "completed",
+      "conclusion": "success",
+      "attempt": 1,
+      "latest_attempt": true,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38489434934/job/115610877593",
+      "source_job_id": "post214-kernel-dual-geometry",
+      "workflow_source_blob": "768f22fe9b21f64fc080e10bdd1e9e8e106348c5",
+      "workflow_source_sha256": "611d1afe3e53314cc17b1fc11e115ce5b8629b6ee689ea48e042a545db52df8d",
+      "workflow_source_unchanged_from_d88": true,
+      "classification": "RESEARCH_PRODUCING_CHECK",
+      "additional_role": "REGRESSION_GATE",
+      "source_read": true,
+      "head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "head_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "runner_checked_head": "ac5f904f64ab1719f7429ad200d980ec595d3882",
+      "runner_checked_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "checkout_kind": "PR_SYNTHETIC_MERGE",
+      "scientific_disposition": "FULL_SPACE_DUAL_INDEPENDENCE_AND_SIGN_INDEFINITENESS_CERTIFIED",
+      "prior_d88_disposition": "FULL_SPACE_DUAL_INDEPENDENCE_AND_SIGN_INDEFINITENESS_CERTIFIED",
+      "output_reviewed": true,
+      "log_availability": "LOCAL_DECODED_LOG_SCANNED_HASHED",
+      "decoded_log_sha256": "5ec61254e8e21e547ed7801bb05667d7115509c6ce68013cde1b733be5f5569d",
+      "decoded_log_bytes": 32525,
+      "skipped_steps": [],
+      "formal_authority_created_by_job_status": false
+    },
+    {
+      "run_id": 38489434839,
+      "job_id": 115610877784,
+      "name": "wp5-modified-prime",
+      "event": "pull_request",
+      "workflow": "RHRC post287 focused Step3 checks",
+      "source_path": ".github/workflows/rhrc_post287_focused.yml",
+      "status": "completed",
+      "conclusion": "success",
+      "attempt": 1,
+      "latest_attempt": true,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38489434839/job/115610877784",
+      "source_job_id": "wp5-modified-prime",
+      "workflow_source_blob": "b0d1be5be4c4779a7da6c16738533039cb82217f",
+      "workflow_source_sha256": "7708f47a950e7acd64a914bade3c9e54447a92291d03dfbd3b423ed6f7d123a5",
+      "workflow_source_unchanged_from_d88": true,
+      "classification": "RESEARCH_PRODUCING_CHECK",
+      "additional_role": "REGRESSION_GATE",
+      "source_read": true,
+      "head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "head_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "runner_checked_head": "ac5f904f64ab1719f7429ad200d980ec595d3882",
+      "runner_checked_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "checkout_kind": "PR_SYNTHETIC_MERGE",
+      "scientific_disposition": "MODIFIED_PRIME_CROSSING_INTERVAL_EVIDENCE",
+      "prior_d88_disposition": "MODIFIED_PRIME_CROSSING_INTERVAL_EVIDENCE",
+      "output_reviewed": true,
+      "log_availability": "LOCAL_DECODED_LOG_SCANNED_HASHED",
+      "decoded_log_sha256": "4b53ea5cbb2f56a38d1767fcb870192b3ab455d91be543d62d30f77566279e08",
+      "decoded_log_bytes": 20293,
+      "skipped_steps": [],
+      "formal_authority_created_by_job_status": false
+    },
+    {
+      "run_id": 38489434839,
+      "job_id": 115610877891,
+      "name": "lean-step3",
+      "event": "pull_request",
+      "workflow": "RHRC post287 focused Step3 checks",
+      "source_path": ".github/workflows/rhrc_post287_focused.yml",
+      "status": "completed",
+      "conclusion": "success",
+      "attempt": 1,
+      "latest_attempt": true,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38489434839/job/115610877891",
+      "source_job_id": "lean-step3",
+      "workflow_source_blob": "b0d1be5be4c4779a7da6c16738533039cb82217f",
+      "workflow_source_sha256": "7708f47a950e7acd64a914bade3c9e54447a92291d03dfbd3b423ed6f7d123a5",
+      "workflow_source_unchanged_from_d88": true,
+      "classification": "FORMAL_VALIDITY_GATE",
+      "additional_role": null,
+      "source_read": true,
+      "head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "head_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "runner_checked_head": "ac5f904f64ab1719f7429ad200d980ec595d3882",
+      "runner_checked_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "checkout_kind": "PR_SYNTHETIC_MERGE",
+      "scientific_disposition": "COMPILED_SCOPED_TARGETS_AND_WORKFLOW_GATES_PASS",
+      "prior_d88_disposition": "COMPILED_SCOPED_TARGETS_AND_WORKFLOW_GATES_PASS",
+      "output_reviewed": true,
+      "log_availability": "LOCAL_DECODED_LOG_SCANNED_HASHED",
+      "decoded_log_sha256": "c5a2521b2defc8e3e9f6a25839b9f9a128ddf4891a13be951755a2ec8a819651",
+      "decoded_log_bytes": 1123982,
+      "skipped_steps": [],
+      "formal_authority_created_by_job_status": false
+    },
+    {
+      "run_id": 38489434804,
+      "job_id": 115610876935,
+      "name": "exact-controls",
+      "event": "pull_request",
+      "workflow": "RHRC post290 source and output proof components",
+      "source_path": ".github/workflows/rhrc_post290_step123_output.yml",
+      "status": "completed",
+      "conclusion": "success",
+      "attempt": 1,
+      "latest_attempt": true,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38489434804/job/115610876935",
+      "source_job_id": "exact-controls",
+      "workflow_source_blob": "333f34addc62bae23fc275112ac4261a2336da30",
+      "workflow_source_sha256": "09df95d509fed9ae76d799d141865cabebc05d3fb2f827e6b20256bf852a45e3",
+      "workflow_source_unchanged_from_d88": false,
+      "classification": "REGRESSION_GATE",
+      "additional_role": null,
+      "source_read": true,
+      "head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "head_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "runner_checked_head": "ac5f904f64ab1719f7429ad200d980ec595d3882",
+      "runner_checked_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "checkout_kind": "PR_SYNTHETIC_MERGE",
+      "scientific_disposition": "EXACT_AND_ADVERSARIAL_CONTROLS_PASS_FINITE_ARITHMETIC_ONLY",
+      "prior_d88_disposition": "EXACT_AND_ADVERSARIAL_CONTROLS_PASS_FINITE_ARITHMETIC_ONLY",
+      "output_reviewed": true,
+      "log_availability": "LOCAL_DECODED_LOG_SCANNED_HASHED",
+      "decoded_log_sha256": "9263e3a7a45c807777f1197ed484583ba470964e32732c2dcb1163ea28ac7e55",
+      "decoded_log_bytes": 76643,
+      "skipped_steps": [],
+      "formal_authority_created_by_job_status": false
+    },
+    {
+      "run_id": 38489434804,
+      "job_id": 115610877350,
+      "name": "lean-components",
+      "event": "pull_request",
+      "workflow": "RHRC post290 source and output proof components",
+      "source_path": ".github/workflows/rhrc_post290_step123_output.yml",
+      "status": "completed",
+      "conclusion": "failure",
+      "attempt": 1,
+      "latest_attempt": true,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38489434804/job/115610877350",
+      "source_job_id": "lean-components",
+      "workflow_source_blob": "333f34addc62bae23fc275112ac4261a2336da30",
+      "workflow_source_sha256": "09df95d509fed9ae76d799d141865cabebc05d3fb2f827e6b20256bf852a45e3",
+      "workflow_source_unchanged_from_d88": false,
+      "classification": "FORMAL_VALIDITY_GATE",
+      "additional_role": null,
+      "source_read": true,
+      "head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "head_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "runner_checked_head": "ac5f904f64ab1719f7429ad200d980ec595d3882",
+      "runner_checked_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "checkout_kind": "PR_SYNTHETIC_MERGE",
+      "scientific_disposition": "FORMAL_COMPONENT_BUILD_FAILED",
+      "prior_d88_disposition": "FORMAL_COMPONENT_BUILD_FAILED",
+      "output_reviewed": true,
+      "log_availability": "LOCAL_DECODED_LOG_SCANNED_HASHED",
+      "decoded_log_sha256": "8b63d7f1af071a3b977fa948ba3afd50e53fb5f8b453a12613b1c777782fbcc2",
+      "decoded_log_bytes": 404417,
+      "skipped_steps": [
+        "Reject proof escapes",
+        "Exact component types and admitted axioms through existing compiler resolver"
+      ],
+      "formal_authority_created_by_job_status": false
+    },
+    {
+      "run_id": 38489434804,
+      "job_id": 115610877362,
+      "name": "native-observations",
+      "event": "pull_request",
+      "workflow": "RHRC post290 source and output proof components",
+      "source_path": ".github/workflows/rhrc_post290_step123_output.yml",
+      "status": "completed",
+      "conclusion": "success",
+      "attempt": 1,
+      "latest_attempt": true,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38489434804/job/115610877362",
+      "source_job_id": "native-observations",
+      "workflow_source_blob": "333f34addc62bae23fc275112ac4261a2336da30",
+      "workflow_source_sha256": "09df95d509fed9ae76d799d141865cabebc05d3fb2f827e6b20256bf852a45e3",
+      "workflow_source_unchanged_from_d88": false,
+      "classification": "RESEARCH_PRODUCING_CHECK",
+      "additional_role": null,
+      "source_read": true,
+      "head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "head_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "runner_checked_head": "ac5f904f64ab1719f7429ad200d980ec595d3882",
+      "runner_checked_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "checkout_kind": "PR_SYNTHETIC_MERGE",
+      "scientific_disposition": "FIXED_NATIVE_PANEL_176_ROWS_44_PAIRS_CHECKED_UNIVERSAL_SCOPE_OPEN",
+      "prior_d88_disposition": "FIXED_NATIVE_PANEL_176_ROWS_44_PAIRS_CHECKED_UNIVERSAL_SCOPE_OPEN",
+      "output_reviewed": true,
+      "log_availability": "LOCAL_DECODED_LOG_SCANNED_HASHED",
+      "decoded_log_sha256": "2710adc8d19357e57979c3aadd092e156a6d6a0e5a29bc8f0b9c64605da40817",
+      "decoded_log_bytes": 75729,
+      "skipped_steps": [],
+      "formal_authority_created_by_job_status": false
+    },
+    {
+      "run_id": 38489434814,
+      "job_id": 115610877274,
+      "name": "post192-parity-trajectory-rigidity",
+      "event": "pull_request",
+      "workflow": "RHRC post-192 parity trajectory rigidity",
+      "source_path": ".github/workflows/rhrc_post192_parity_trajectory_rigidity.yml",
+      "status": "completed",
+      "conclusion": "success",
+      "attempt": 1,
+      "latest_attempt": true,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38489434814/job/115610877274",
+      "source_job_id": "post192-parity-trajectory-rigidity",
+      "workflow_source_blob": "c75653d1a621a169e7b311ec3812711c435ad305",
+      "workflow_source_sha256": "f4f7c315c69356eb8121c5bfa546080f1e761220efaa45de0fc73437e7b346a1",
+      "workflow_source_unchanged_from_d88": true,
+      "classification": "RESEARCH_PRODUCING_CHECK",
+      "additional_role": "REGRESSION_GATE",
+      "source_read": true,
+      "head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "head_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "runner_checked_head": "ac5f904f64ab1719f7429ad200d980ec595d3882",
+      "runner_checked_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "checkout_kind": "PR_SYNTHETIC_MERGE",
+      "scientific_disposition": "TRAJECTORY_RIGIDITY_UNRESOLVED",
+      "prior_d88_disposition": "TRAJECTORY_RIGIDITY_UNRESOLVED",
+      "output_reviewed": true,
+      "log_availability": "LOCAL_DECODED_LOG_SCANNED_HASHED",
+      "decoded_log_sha256": "96e7e90a0cf2eb2b39c5e4df5fda51022e45b62a30b4f5dd3690fa6374feae88",
+      "decoded_log_bytes": 25494,
+      "skipped_steps": [],
+      "formal_authority_created_by_job_status": false
+    },
+    {
+      "run_id": 38489434810,
+      "job_id": 115611356886,
+      "name": "post200-q14-discrepancy-mechanism",
+      "event": "pull_request",
+      "workflow": "RHRC post-200 Q14 discrepancy mechanism",
+      "source_path": ".github/workflows/rhrc_post200_q14_discrepancy_mechanism.yml",
+      "status": "completed",
+      "conclusion": "cancelled",
+      "attempt": 1,
+      "latest_attempt": true,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38489434810/job/115611356886",
+      "source_job_id": "post200-q14-discrepancy-mechanism",
+      "workflow_source_blob": "dc55e5148f99e945c6d1c86a63e25fdda62ed0f9",
+      "workflow_source_sha256": "5eaa6d0711cf59660ceb75f24ae48d3619cd392b14c9845a713d4a7f5a230ee6",
+      "workflow_source_unchanged_from_d88": true,
+      "classification": "RESEARCH_PRODUCING_CHECK",
+      "additional_role": "REGRESSION_GATE",
+      "source_read": true,
+      "head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "head_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "runner_checked_head": "ac5f904f64ab1719f7429ad200d980ec595d3882",
+      "runner_checked_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "checkout_kind": "PR_SYNTHETIC_MERGE",
+      "scientific_disposition": "CANCELLED_PARTIAL_OUTPUT_NO_COMPLETED_JOB_AUTHORITY",
+      "prior_d88_disposition": "CANCELLED_PARTIAL_OUTPUT_NO_COMPLETED_JOB_AUTHORITY",
+      "output_reviewed": true,
+      "log_availability": "LOCAL_DECODED_LOG_SCANNED_HASHED",
+      "decoded_log_sha256": "806b9ce37cb754e431fd7bfd1b20b305df8d2e7103e687092313a991e8339ec6",
+      "decoded_log_bytes": 53919,
+      "skipped_steps": [
+        "Post Run actions/setup-python@v5"
+      ],
+      "formal_authority_created_by_job_status": false
+    },
+    {
+      "run_id": 38489434795,
+      "job_id": 115610877042,
+      "name": "wp2-k2-transcript",
+      "event": "pull_request",
+      "workflow": "RHRC post287 WP2 and WP4 interval research",
+      "source_path": ".github/workflows/rhrc_post287_numerical.yml",
+      "status": "in_progress",
+      "conclusion": null,
+      "attempt": 1,
+      "latest_attempt": true,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38489434795/job/115610877042",
+      "source_job_id": "wp2-k2-transcript",
+      "workflow_source_blob": "28d7da771673d5fd03b5e42434a74182c5a86803",
+      "workflow_source_sha256": "58d8c586d425b747a9a0c4b2e378d8614c14975d6a1670d23980b39811780a96",
+      "workflow_source_unchanged_from_d88": true,
+      "classification": "RESEARCH_PRODUCING_CHECK",
+      "additional_role": "REGRESSION_GATE",
+      "source_read": true,
+      "head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "head_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "runner_checked_head": null,
+      "runner_checked_tree": null,
+      "checkout_kind": "NO_CHECKOUT_AUTHORITY",
+      "scientific_disposition": "PENDING_NO_OUTCOME",
+      "prior_d88_disposition": "PENDING_NO_OUTCOME",
+      "output_reviewed": false,
+      "log_availability": "NOT_AVAILABLE_RUNNING_OR_SKIPPED",
+      "decoded_log_sha256": null,
+      "decoded_log_bytes": null,
+      "skipped_steps": [],
+      "formal_authority_created_by_job_status": false
+    },
+    {
+      "run_id": 38489434795,
+      "job_id": 115610877204,
+      "name": "wp4-k3-frozen-feasibility",
+      "event": "pull_request",
+      "workflow": "RHRC post287 WP2 and WP4 interval research",
+      "source_path": ".github/workflows/rhrc_post287_numerical.yml",
+      "status": "completed",
+      "conclusion": "success",
+      "attempt": 1,
+      "latest_attempt": true,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38489434795/job/115610877204",
+      "source_job_id": "wp4-k3-frozen-feasibility",
+      "workflow_source_blob": "28d7da771673d5fd03b5e42434a74182c5a86803",
+      "workflow_source_sha256": "58d8c586d425b747a9a0c4b2e378d8614c14975d6a1670d23980b39811780a96",
+      "workflow_source_unchanged_from_d88": true,
+      "classification": "RESEARCH_PRODUCING_CHECK",
+      "additional_role": "REGRESSION_GATE",
+      "source_read": true,
+      "head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "head_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "runner_checked_head": "ac5f904f64ab1719f7429ad200d980ec595d3882",
+      "runner_checked_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "checkout_kind": "PR_SYNTHETIC_MERGE",
+      "scientific_disposition": "SECOND_RESOURCE_LIMIT_8_PASS_1_UNRESOLVED_9_UNTESTED",
+      "prior_d88_disposition": "BOUNDED_SECOND_GATE_PASS_18_FROZEN_BOXES",
+      "output_reviewed": true,
+      "log_availability": "LOCAL_DECODED_LOG_SCANNED_HASHED",
+      "decoded_log_sha256": "b71952e407070bd44171e86ea7055a2b0e471d35c5c7e4c35050ddc778144188",
+      "decoded_log_bytes": 23587,
+      "skipped_steps": [],
+      "formal_authority_created_by_job_status": false
+    },
+    {
+      "run_id": 38489434795,
+      "job_id": 115610877310,
+      "name": "wp4-k2-odd-prerequisite",
+      "event": "pull_request",
+      "workflow": "RHRC post287 WP2 and WP4 interval research",
+      "source_path": ".github/workflows/rhrc_post287_numerical.yml",
+      "status": "completed",
+      "conclusion": "success",
+      "attempt": 1,
+      "latest_attempt": true,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38489434795/job/115610877310",
+      "source_job_id": "wp4-k2-odd-prerequisite",
+      "workflow_source_blob": "28d7da771673d5fd03b5e42434a74182c5a86803",
+      "workflow_source_sha256": "58d8c586d425b747a9a0c4b2e378d8614c14975d6a1670d23980b39811780a96",
+      "workflow_source_unchanged_from_d88": true,
+      "classification": "RESEARCH_PRODUCING_CHECK",
+      "additional_role": "REGRESSION_GATE",
+      "source_read": true,
+      "head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "head_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "runner_checked_head": "ac5f904f64ab1719f7429ad200d980ec595d3882",
+      "runner_checked_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "checkout_kind": "PR_SYNTHETIC_MERGE",
+      "scientific_disposition": "INTERVAL_EVIDENCE_FIXED_K2_ODD_PREREQUISITE",
+      "prior_d88_disposition": "INTERVAL_EVIDENCE_FIXED_K2_ODD_PREREQUISITE",
+      "output_reviewed": true,
+      "log_availability": "LOCAL_DECODED_LOG_SCANNED_HASHED",
+      "decoded_log_sha256": "a9f4fa51b0752fef68bce72f396e04664df1d89da466fbcce9739f1fbfb39a54",
+      "decoded_log_bytes": 27970,
+      "skipped_steps": [],
+      "formal_authority_created_by_job_status": false
+    },
+    {
+      "run_id": 38489434795,
+      "job_id": 115618054166,
+      "name": "wp4-k3-fourth-order-alternative",
+      "event": "pull_request",
+      "workflow": "RHRC post287 WP2 and WP4 interval research",
+      "source_path": ".github/workflows/rhrc_post287_numerical.yml",
+      "status": "completed",
+      "conclusion": "success",
+      "attempt": 1,
+      "latest_attempt": true,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38489434795/job/115618054166",
+      "source_job_id": "wp4-k3-fourth-order-alternative",
+      "workflow_source_blob": "28d7da771673d5fd03b5e42434a74182c5a86803",
+      "workflow_source_sha256": "58d8c586d425b747a9a0c4b2e378d8614c14975d6a1670d23980b39811780a96",
+      "workflow_source_unchanged_from_d88": true,
+      "classification": "RESEARCH_PRODUCING_CHECK",
+      "additional_role": "REGRESSION_GATE",
+      "source_read": true,
+      "head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "head_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "runner_checked_head": "ac5f904f64ab1719f7429ad200d980ec595d3882",
+      "runner_checked_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "checkout_kind": "PR_SYNTHETIC_MERGE",
+      "scientific_disposition": "PREDECLARED_FOURTH_GATE_PASS_18_FROZEN_BOXES_CONTINUOUS_D2_OPEN",
+      "prior_d88_disposition": "NOT_EXECUTED_SKIPPED",
+      "output_reviewed": true,
+      "log_availability": "LOCAL_DECODED_LOG_SCANNED_HASHED",
+      "decoded_log_sha256": "cf54fda97deadea788cdaa37f1f10b62fb9be1fe6168458f4fc0d4a2bfeb29fd",
+      "decoded_log_bytes": 24710,
+      "skipped_steps": [],
+      "formal_authority_created_by_job_status": false
+    },
+    {
+      "run_id": 38489434844,
+      "job_id": 115611273265,
+      "name": "python-rhrc",
+      "event": "pull_request",
+      "workflow": "RHRC research and Lean checks",
+      "source_path": ".github/workflows/rhrc.yml",
+      "status": "completed",
+      "conclusion": "cancelled",
+      "attempt": 1,
+      "latest_attempt": true,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38489434844/job/115611273265",
+      "source_job_id": "python-rhrc",
+      "workflow_source_blob": "1e4c4a58f7757dda05ed93222d45244cc849abb4",
+      "workflow_source_sha256": "a8fb66bada5fb104810deb38efb97fcd71cf3bc8a885c88cdef42dd2cfd4e878",
+      "workflow_source_unchanged_from_d88": true,
+      "classification": "REGRESSION_GATE",
+      "additional_role": null,
+      "source_read": true,
+      "head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "head_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "runner_checked_head": "ac5f904f64ab1719f7429ad200d980ec595d3882",
+      "runner_checked_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "checkout_kind": "PR_SYNTHETIC_MERGE",
+      "scientific_disposition": "CANCELLED_PARTIAL_OUTPUT_NO_COMPLETED_JOB_AUTHORITY",
+      "prior_d88_disposition": "CANCELLED_PARTIAL_OUTPUT_NO_COMPLETED_JOB_AUTHORITY",
+      "output_reviewed": true,
+      "log_availability": "LOCAL_DECODED_LOG_SCANNED_HASHED",
+      "decoded_log_sha256": "fb1106154b6059eed9d759d5369e41a6b2dbd8e9f8c7819bc8ad0b7d87b3f460",
+      "decoded_log_bytes": 130706,
+      "skipped_steps": [
+        "Post Run actions/setup-python@v5"
+      ],
+      "formal_authority_created_by_job_status": false
+    },
+    {
+      "run_id": 38489434844,
+      "job_id": 115611273641,
+      "name": "lean",
+      "event": "pull_request",
+      "workflow": "RHRC research and Lean checks",
+      "source_path": ".github/workflows/rhrc.yml",
+      "status": "completed",
+      "conclusion": "success",
+      "attempt": 1,
+      "latest_attempt": true,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38489434844/job/115611273641",
+      "source_job_id": "lean",
+      "workflow_source_blob": "1e4c4a58f7757dda05ed93222d45244cc849abb4",
+      "workflow_source_sha256": "a8fb66bada5fb104810deb38efb97fcd71cf3bc8a885c88cdef42dd2cfd4e878",
+      "workflow_source_unchanged_from_d88": true,
+      "classification": "FORMAL_VALIDITY_GATE",
+      "additional_role": null,
+      "source_read": true,
+      "head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "head_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "runner_checked_head": "ac5f904f64ab1719f7429ad200d980ec595d3882",
+      "runner_checked_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "checkout_kind": "PR_SYNTHETIC_MERGE",
+      "scientific_disposition": "COMPILED_SCOPED_TARGETS_AND_WORKFLOW_GATES_PASS",
+      "prior_d88_disposition": "CANCELLED_PARTIAL_OUTPUT_NO_COMPLETED_JOB_AUTHORITY",
+      "output_reviewed": true,
+      "log_availability": "LOCAL_DECODED_LOG_SCANNED_HASHED",
+      "decoded_log_sha256": "8a53ada009dce03570461cd5b39d7d78c75cbc72a71a4e5990b23e9a808d38ba",
+      "decoded_log_bytes": 3681158,
+      "skipped_steps": [],
+      "formal_authority_created_by_job_status": false
+    },
+    {
+      "run_id": 38489434844,
+      "job_id": 115611273664,
+      "name": "rhkg-compiler-receipt",
+      "event": "pull_request",
+      "workflow": "RHRC research and Lean checks",
+      "source_path": ".github/workflows/rhrc.yml",
+      "status": "completed",
+      "conclusion": "failure",
+      "attempt": 1,
+      "latest_attempt": true,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38489434844/job/115611273664",
+      "source_job_id": "rhkg-compiler-receipt",
+      "workflow_source_blob": "1e4c4a58f7757dda05ed93222d45244cc849abb4",
+      "workflow_source_sha256": "a8fb66bada5fb104810deb38efb97fcd71cf3bc8a885c88cdef42dd2cfd4e878",
+      "workflow_source_unchanged_from_d88": true,
+      "classification": "REGRESSION_GATE",
+      "additional_role": null,
+      "source_read": true,
+      "head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "head_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "runner_checked_head": "ac5f904f64ab1719f7429ad200d980ec595d3882",
+      "runner_checked_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "checkout_kind": "PR_SYNTHETIC_MERGE",
+      "scientific_disposition": "GENERATED_STATE_MODULE_DISPOSITION_DRIFT_REJECTED",
+      "prior_d88_disposition": "GENERATED_STATE_MODULE_DISPOSITION_DRIFT_REJECTED",
+      "output_reviewed": true,
+      "log_availability": "LOCAL_DECODED_LOG_SCANNED_HASHED",
+      "decoded_log_sha256": "846d1c77ca7238f6006790f2faaa6532fafb6e456f925387fc8f71d29437e29c",
+      "decoded_log_bytes": 733720,
+      "skipped_steps": [
+        "Verify stale RHKG cannot be accepted (adversarial source/index mutations)",
+        "Ensure validation did not modify or create derived products",
+        "Upload exact PR-head RHKG derived state",
+        "Post Run actions/setup-python@v5"
+      ],
+      "formal_authority_created_by_job_status": false
+    },
+    {
+      "run_id": 38489434844,
+      "job_id": 115611273693,
+      "name": "r003-normalization-audit",
+      "event": "pull_request",
+      "workflow": "RHRC research and Lean checks",
+      "source_path": ".github/workflows/rhrc.yml",
+      "status": "completed",
+      "conclusion": "success",
+      "attempt": 1,
+      "latest_attempt": true,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38489434844/job/115611273693",
+      "source_job_id": "r003-normalization-audit",
+      "workflow_source_blob": "1e4c4a58f7757dda05ed93222d45244cc849abb4",
+      "workflow_source_sha256": "a8fb66bada5fb104810deb38efb97fcd71cf3bc8a885c88cdef42dd2cfd4e878",
+      "workflow_source_unchanged_from_d88": true,
+      "classification": "RESEARCH_PRODUCING_CHECK",
+      "additional_role": "REGRESSION_GATE",
+      "source_read": true,
+      "head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "head_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "runner_checked_head": "ac5f904f64ab1719f7429ad200d980ec595d3882",
+      "runner_checked_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "checkout_kind": "PR_SYNTHETIC_MERGE",
+      "scientific_disposition": "SCOPED_NORMALIZATION_AND_FALSIFIER_REPLAYS_PRESERVED",
+      "prior_d88_disposition": "SCOPED_NORMALIZATION_AND_FALSIFIER_REPLAYS_PRESERVED",
+      "output_reviewed": true,
+      "log_availability": "LOCAL_DECODED_LOG_SCANNED_HASHED",
+      "decoded_log_sha256": "a9a8c4ae717dd777fcf67e69708766ffca1f4f13ef19ac15ef480758d3e0cc4c",
+      "decoded_log_bytes": 1234748,
+      "skipped_steps": [],
+      "formal_authority_created_by_job_status": false
+    },
+    {
+      "run_id": 38489434796,
+      "job_id": 115610877441,
+      "name": "lean-a",
+      "event": "pull_request",
+      "workflow": "RHRC parallel closure campaign",
+      "source_path": ".github/workflows/rhrc_closure_campaign.yml",
+      "status": "completed",
+      "conclusion": "success",
+      "attempt": 1,
+      "latest_attempt": true,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38489434796/job/115610877441",
+      "source_job_id": "lean-a",
+      "workflow_source_blob": "a0591839e50762f3e675199247048bae2059f7e0",
+      "workflow_source_sha256": "61ecc78037a8d97329d54cb75a00963410e8418ab3d878d93064ee2bbf847e74",
+      "workflow_source_unchanged_from_d88": true,
+      "classification": "FORMAL_VALIDITY_GATE",
+      "additional_role": null,
+      "source_read": true,
+      "head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "head_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "runner_checked_head": "ac5f904f64ab1719f7429ad200d980ec595d3882",
+      "runner_checked_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "checkout_kind": "PR_SYNTHETIC_MERGE",
+      "scientific_disposition": "COMPILED_SCOPED_TARGETS_AND_WORKFLOW_GATES_PASS",
+      "prior_d88_disposition": "COMPILED_SCOPED_TARGETS_AND_WORKFLOW_GATES_PASS",
+      "output_reviewed": true,
+      "log_availability": "LOCAL_DECODED_LOG_SCANNED_HASHED",
+      "decoded_log_sha256": "c343a00ecbed042225331ac32815e204a45900bf2a419a7cdc4410cf2eca323b",
+      "decoded_log_bytes": 204490,
+      "skipped_steps": [],
+      "formal_authority_created_by_job_status": false
+    },
+    {
+      "run_id": 38489434796,
+      "job_id": 115610877558,
+      "name": "lean-strength-audit",
+      "event": "pull_request",
+      "workflow": "RHRC parallel closure campaign",
+      "source_path": ".github/workflows/rhrc_closure_campaign.yml",
+      "status": "completed",
+      "conclusion": "success",
+      "attempt": 1,
+      "latest_attempt": true,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38489434796/job/115610877558",
+      "source_job_id": "lean-strength-audit",
+      "workflow_source_blob": "a0591839e50762f3e675199247048bae2059f7e0",
+      "workflow_source_sha256": "61ecc78037a8d97329d54cb75a00963410e8418ab3d878d93064ee2bbf847e74",
+      "workflow_source_unchanged_from_d88": true,
+      "classification": "FORMAL_VALIDITY_GATE",
+      "additional_role": null,
+      "source_read": true,
+      "head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "head_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "runner_checked_head": "ac5f904f64ab1719f7429ad200d980ec595d3882",
+      "runner_checked_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "checkout_kind": "PR_SYNTHETIC_MERGE",
+      "scientific_disposition": "COMPILED_SCOPED_TARGETS_AND_WORKFLOW_GATES_PASS",
+      "prior_d88_disposition": "COMPILED_SCOPED_TARGETS_AND_WORKFLOW_GATES_PASS",
+      "output_reviewed": true,
+      "log_availability": "LOCAL_DECODED_LOG_SCANNED_HASHED",
+      "decoded_log_sha256": "18700dfe3fd56e827c33e3e3f6072dd5fc86257af3ffb121ef64710e9a5cd566",
+      "decoded_log_bytes": 439022,
+      "skipped_steps": [],
+      "formal_authority_created_by_job_status": false
+    },
+    {
+      "run_id": 38489434796,
+      "job_id": 115610877606,
+      "name": "lean-c",
+      "event": "pull_request",
+      "workflow": "RHRC parallel closure campaign",
+      "source_path": ".github/workflows/rhrc_closure_campaign.yml",
+      "status": "completed",
+      "conclusion": "success",
+      "attempt": 1,
+      "latest_attempt": true,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38489434796/job/115610877606",
+      "source_job_id": "lean-c",
+      "workflow_source_blob": "a0591839e50762f3e675199247048bae2059f7e0",
+      "workflow_source_sha256": "61ecc78037a8d97329d54cb75a00963410e8418ab3d878d93064ee2bbf847e74",
+      "workflow_source_unchanged_from_d88": true,
+      "classification": "FORMAL_VALIDITY_GATE",
+      "additional_role": null,
+      "source_read": true,
+      "head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "head_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "runner_checked_head": "ac5f904f64ab1719f7429ad200d980ec595d3882",
+      "runner_checked_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "checkout_kind": "PR_SYNTHETIC_MERGE",
+      "scientific_disposition": "COMPILED_SCOPED_TARGETS_AND_WORKFLOW_GATES_PASS",
+      "prior_d88_disposition": "COMPILED_SCOPED_TARGETS_AND_WORKFLOW_GATES_PASS",
+      "output_reviewed": true,
+      "log_availability": "LOCAL_DECODED_LOG_SCANNED_HASHED",
+      "decoded_log_sha256": "21deeffa87fe2b1d490805bffe2f598ff701c754560a15e5197c058971f64a40",
+      "decoded_log_bytes": 225469,
+      "skipped_steps": [],
+      "formal_authority_created_by_job_status": false
+    },
+    {
+      "run_id": 38489434796,
+      "job_id": 115610877620,
+      "name": "lean-d-bindings",
+      "event": "pull_request",
+      "workflow": "RHRC parallel closure campaign",
+      "source_path": ".github/workflows/rhrc_closure_campaign.yml",
+      "status": "completed",
+      "conclusion": "success",
+      "attempt": 1,
+      "latest_attempt": true,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38489434796/job/115610877620",
+      "source_job_id": "lean-d-bindings",
+      "workflow_source_blob": "a0591839e50762f3e675199247048bae2059f7e0",
+      "workflow_source_sha256": "61ecc78037a8d97329d54cb75a00963410e8418ab3d878d93064ee2bbf847e74",
+      "workflow_source_unchanged_from_d88": true,
+      "classification": "FORMAL_VALIDITY_GATE",
+      "additional_role": null,
+      "source_read": true,
+      "head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "head_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "runner_checked_head": "ac5f904f64ab1719f7429ad200d980ec595d3882",
+      "runner_checked_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "checkout_kind": "PR_SYNTHETIC_MERGE",
+      "scientific_disposition": "COMPILED_SCOPED_TARGETS_AND_WORKFLOW_GATES_PASS",
+      "prior_d88_disposition": "COMPILED_SCOPED_TARGETS_AND_WORKFLOW_GATES_PASS",
+      "output_reviewed": true,
+      "log_availability": "LOCAL_DECODED_LOG_SCANNED_HASHED",
+      "decoded_log_sha256": "24651be3e8f04a80e2b36453a604a88aa01464e22473657d9740f3e11fb2b415",
+      "decoded_log_bytes": 235922,
+      "skipped_steps": [],
+      "formal_authority_created_by_job_status": false
+    },
+    {
+      "run_id": 38489434796,
+      "job_id": 115610877643,
+      "name": "fast-integrity",
+      "event": "pull_request",
+      "workflow": "RHRC parallel closure campaign",
+      "source_path": ".github/workflows/rhrc_closure_campaign.yml",
+      "status": "completed",
+      "conclusion": "success",
+      "attempt": 1,
+      "latest_attempt": true,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38489434796/job/115610877643",
+      "source_job_id": "fast-integrity",
+      "workflow_source_blob": "a0591839e50762f3e675199247048bae2059f7e0",
+      "workflow_source_sha256": "61ecc78037a8d97329d54cb75a00963410e8418ab3d878d93064ee2bbf847e74",
+      "workflow_source_unchanged_from_d88": true,
+      "classification": "REGRESSION_GATE",
+      "additional_role": null,
+      "source_read": true,
+      "head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "head_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "runner_checked_head": "ac5f904f64ab1719f7429ad200d980ec595d3882",
+      "runner_checked_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "checkout_kind": "PR_SYNTHETIC_MERGE",
+      "scientific_disposition": "EXACT_CLOSURE_INTEGRITY_PRESERVED",
+      "prior_d88_disposition": "EXACT_CLOSURE_INTEGRITY_PRESERVED",
+      "output_reviewed": true,
+      "log_availability": "LOCAL_DECODED_LOG_SCANNED_HASHED",
+      "decoded_log_sha256": "5e8be501dfe5df7ba3775acfdcc01bb7bc3eceae916ddcb559f455bc8857eaaa",
+      "decoded_log_bytes": 32847,
+      "skipped_steps": [],
+      "formal_authority_created_by_job_status": false
+    },
+    {
+      "run_id": 38489434796,
+      "job_id": 115610877696,
+      "name": "lean-first-crossing",
+      "event": "pull_request",
+      "workflow": "RHRC parallel closure campaign",
+      "source_path": ".github/workflows/rhrc_closure_campaign.yml",
+      "status": "completed",
+      "conclusion": "cancelled",
+      "attempt": 1,
+      "latest_attempt": true,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38489434796/job/115610877696",
+      "source_job_id": "lean-first-crossing",
+      "workflow_source_blob": "a0591839e50762f3e675199247048bae2059f7e0",
+      "workflow_source_sha256": "61ecc78037a8d97329d54cb75a00963410e8418ab3d878d93064ee2bbf847e74",
+      "workflow_source_unchanged_from_d88": true,
+      "classification": "FORMAL_VALIDITY_GATE",
+      "additional_role": null,
+      "source_read": true,
+      "head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "head_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "runner_checked_head": null,
+      "runner_checked_tree": null,
+      "checkout_kind": "NO_CHECKOUT_AUTHORITY",
+      "scientific_disposition": "CANCELLED_PARTIAL_OUTPUT_NO_COMPLETED_JOB_AUTHORITY",
+      "prior_d88_disposition": "CANCELLED_PARTIAL_OUTPUT_NO_COMPLETED_JOB_AUTHORITY",
+      "output_reviewed": false,
+      "log_availability": "UNAVAILABLE",
+      "decoded_log_sha256": null,
+      "decoded_log_bytes": null,
+      "skipped_steps": [],
+      "formal_authority_created_by_job_status": false
+    },
+    {
+      "run_id": 38489434796,
+      "job_id": 115610877756,
+      "name": "lean-contact",
+      "event": "pull_request",
+      "workflow": "RHRC parallel closure campaign",
+      "source_path": ".github/workflows/rhrc_closure_campaign.yml",
+      "status": "completed",
+      "conclusion": "success",
+      "attempt": 1,
+      "latest_attempt": true,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38489434796/job/115610877756",
+      "source_job_id": "lean-contact",
+      "workflow_source_blob": "a0591839e50762f3e675199247048bae2059f7e0",
+      "workflow_source_sha256": "61ecc78037a8d97329d54cb75a00963410e8418ab3d878d93064ee2bbf847e74",
+      "workflow_source_unchanged_from_d88": true,
+      "classification": "FORMAL_VALIDITY_GATE",
+      "additional_role": null,
+      "source_read": true,
+      "head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "head_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "runner_checked_head": "ac5f904f64ab1719f7429ad200d980ec595d3882",
+      "runner_checked_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "checkout_kind": "PR_SYNTHETIC_MERGE",
+      "scientific_disposition": "COMPILED_SCOPED_TARGETS_AND_WORKFLOW_GATES_PASS",
+      "prior_d88_disposition": "COMPILED_SCOPED_TARGETS_AND_WORKFLOW_GATES_PASS",
+      "output_reviewed": true,
+      "log_availability": "LOCAL_DECODED_LOG_SCANNED_HASHED",
+      "decoded_log_sha256": "c08e7583ed579b69fd02377bae56738eba17c23abd57d67caece526773f96f8c",
+      "decoded_log_bytes": 597248,
+      "skipped_steps": [],
+      "formal_authority_created_by_job_status": false
+    },
+    {
+      "run_id": 38489434796,
+      "job_id": 115610877788,
+      "name": "lean-b",
+      "event": "pull_request",
+      "workflow": "RHRC parallel closure campaign",
+      "source_path": ".github/workflows/rhrc_closure_campaign.yml",
+      "status": "completed",
+      "conclusion": "success",
+      "attempt": 1,
+      "latest_attempt": true,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38489434796/job/115610877788",
+      "source_job_id": "lean-b",
+      "workflow_source_blob": "a0591839e50762f3e675199247048bae2059f7e0",
+      "workflow_source_sha256": "61ecc78037a8d97329d54cb75a00963410e8418ab3d878d93064ee2bbf847e74",
+      "workflow_source_unchanged_from_d88": true,
+      "classification": "FORMAL_VALIDITY_GATE",
+      "additional_role": null,
+      "source_read": true,
+      "head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "head_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "runner_checked_head": "ac5f904f64ab1719f7429ad200d980ec595d3882",
+      "runner_checked_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "checkout_kind": "PR_SYNTHETIC_MERGE",
+      "scientific_disposition": "COMPILED_SCOPED_TARGETS_AND_WORKFLOW_GATES_PASS",
+      "prior_d88_disposition": "COMPILED_SCOPED_TARGETS_AND_WORKFLOW_GATES_PASS",
+      "output_reviewed": true,
+      "log_availability": "LOCAL_DECODED_LOG_SCANNED_HASHED",
+      "decoded_log_sha256": "ff1bd7318a0ca234067bfa974fa845da6a6bd4f2cdf3f57972653f7ab698d9c5",
+      "decoded_log_bytes": 220894,
+      "skipped_steps": [],
+      "formal_authority_created_by_job_status": false
+    },
+    {
+      "run_id": 38489434796,
+      "job_id": 115618788744,
+      "name": "campaign-complete",
+      "event": "pull_request",
+      "workflow": "RHRC parallel closure campaign",
+      "source_path": ".github/workflows/rhrc_closure_campaign.yml",
+      "status": "completed",
+      "conclusion": "cancelled",
+      "attempt": 1,
+      "latest_attempt": true,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38489434796/job/115618788744",
+      "source_job_id": "campaign-complete",
+      "workflow_source_blob": "a0591839e50762f3e675199247048bae2059f7e0",
+      "workflow_source_sha256": "61ecc78037a8d97329d54cb75a00963410e8418ab3d878d93064ee2bbf847e74",
+      "workflow_source_unchanged_from_d88": true,
+      "classification": "REGRESSION_GATE",
+      "additional_role": null,
+      "source_read": true,
+      "head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "head_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "runner_checked_head": null,
+      "runner_checked_tree": null,
+      "checkout_kind": "NO_CHECKOUT_AUTHORITY",
+      "scientific_disposition": "CANCELLED_PARTIAL_OUTPUT_NO_COMPLETED_JOB_AUTHORITY",
+      "prior_d88_disposition": "CANCELLED_PARTIAL_OUTPUT_NO_COMPLETED_JOB_AUTHORITY",
+      "output_reviewed": false,
+      "log_availability": "UNAVAILABLE",
+      "decoded_log_sha256": null,
+      "decoded_log_bytes": null,
+      "skipped_steps": [],
+      "formal_authority_created_by_job_status": false
+    },
+    {
+      "run_id": 38489430140,
+      "job_id": 115610861389,
+      "name": "native-observations",
+      "event": "push",
+      "workflow": "RHRC post290 source and output proof components",
+      "source_path": ".github/workflows/rhrc_post290_step123_output.yml",
+      "status": "completed",
+      "conclusion": "success",
+      "attempt": 1,
+      "latest_attempt": true,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38489430140/job/115610861389",
+      "source_job_id": "native-observations",
+      "workflow_source_blob": "333f34addc62bae23fc275112ac4261a2336da30",
+      "workflow_source_sha256": "09df95d509fed9ae76d799d141865cabebc05d3fb2f827e6b20256bf852a45e3",
+      "workflow_source_unchanged_from_d88": false,
+      "classification": "RESEARCH_PRODUCING_CHECK",
+      "additional_role": null,
+      "source_read": true,
+      "head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "head_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "runner_checked_head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "runner_checked_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "checkout_kind": "BRANCH_HEAD",
+      "scientific_disposition": "FIXED_NATIVE_PANEL_176_ROWS_44_PAIRS_CHECKED_UNIVERSAL_SCOPE_OPEN",
+      "prior_d88_disposition": "FIXED_NATIVE_PANEL_176_ROWS_44_PAIRS_CHECKED_UNIVERSAL_SCOPE_OPEN",
+      "output_reviewed": true,
+      "log_availability": "LOCAL_DECODED_LOG_SCANNED_HASHED",
+      "decoded_log_sha256": "dc6cb2fa6f0199c7de174cd0bf29d484ad3a871d15de30fa19f915448ec75c9e",
+      "decoded_log_bytes": 73690,
+      "skipped_steps": [],
+      "formal_authority_created_by_job_status": false
+    },
+    {
+      "run_id": 38489430140,
+      "job_id": 115610861719,
+      "name": "exact-controls",
+      "event": "push",
+      "workflow": "RHRC post290 source and output proof components",
+      "source_path": ".github/workflows/rhrc_post290_step123_output.yml",
+      "status": "completed",
+      "conclusion": "success",
+      "attempt": 1,
+      "latest_attempt": true,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38489430140/job/115610861719",
+      "source_job_id": "exact-controls",
+      "workflow_source_blob": "333f34addc62bae23fc275112ac4261a2336da30",
+      "workflow_source_sha256": "09df95d509fed9ae76d799d141865cabebc05d3fb2f827e6b20256bf852a45e3",
+      "workflow_source_unchanged_from_d88": false,
+      "classification": "REGRESSION_GATE",
+      "additional_role": null,
+      "source_read": true,
+      "head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "head_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "runner_checked_head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "runner_checked_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "checkout_kind": "BRANCH_HEAD",
+      "scientific_disposition": "EXACT_AND_ADVERSARIAL_CONTROLS_PASS_FINITE_ARITHMETIC_ONLY",
+      "prior_d88_disposition": "EXACT_AND_ADVERSARIAL_CONTROLS_PASS_FINITE_ARITHMETIC_ONLY",
+      "output_reviewed": true,
+      "log_availability": "LOCAL_DECODED_LOG_SCANNED_HASHED",
+      "decoded_log_sha256": "407aafeff49540a441e489ba8dbbae21111134ba288cb6824794ae7030ffb5fb",
+      "decoded_log_bytes": 74607,
+      "skipped_steps": [],
+      "formal_authority_created_by_job_status": false
+    },
+    {
+      "run_id": 38489430140,
+      "job_id": 115610861780,
+      "name": "lean-components",
+      "event": "push",
+      "workflow": "RHRC post290 source and output proof components",
+      "source_path": ".github/workflows/rhrc_post290_step123_output.yml",
+      "status": "completed",
+      "conclusion": "failure",
+      "attempt": 1,
+      "latest_attempt": true,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38489430140/job/115610861780",
+      "source_job_id": "lean-components",
+      "workflow_source_blob": "333f34addc62bae23fc275112ac4261a2336da30",
+      "workflow_source_sha256": "09df95d509fed9ae76d799d141865cabebc05d3fb2f827e6b20256bf852a45e3",
+      "workflow_source_unchanged_from_d88": false,
+      "classification": "FORMAL_VALIDITY_GATE",
+      "additional_role": null,
+      "source_read": true,
+      "head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "head_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "runner_checked_head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "runner_checked_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "checkout_kind": "BRANCH_HEAD",
+      "scientific_disposition": "FORMAL_COMPONENT_BUILD_FAILED",
+      "prior_d88_disposition": "FORMAL_COMPONENT_BUILD_FAILED",
+      "output_reviewed": true,
+      "log_availability": "LOCAL_DECODED_LOG_SCANNED_HASHED",
+      "decoded_log_sha256": "62ea2e1a098e1dd6af356de14683f00e0e8d8b9a796259c44ee6494c6b2f08ab",
+      "decoded_log_bytes": 398802,
+      "skipped_steps": [
+        "Reject proof escapes",
+        "Exact component types and admitted axioms through existing compiler resolver"
+      ],
+      "formal_authority_created_by_job_status": false
+    },
+    {
+      "run_id": 38489434836,
+      "job_id": 115612537503,
+      "name": "research-calibration",
+      "event": "pull_request",
+      "workflow": "RHRC post-282 contact calculus",
+      "source_path": ".github/workflows/rhrc_post282_contact_calculus.yml",
+      "status": "completed",
+      "conclusion": "cancelled",
+      "attempt": 1,
+      "latest_attempt": true,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38489434836/job/115612537503",
+      "source_job_id": "research-calibration",
+      "workflow_source_blob": "6ea89aa318201ee001f54ada9face98384353874",
+      "workflow_source_sha256": "88f2a127ea6f0a067bd2c7af73c1faf157391cc553798dd02d854f8b34325dc3",
+      "workflow_source_unchanged_from_d88": true,
+      "classification": "RESEARCH_PRODUCING_CHECK",
+      "additional_role": "REGRESSION_GATE",
+      "source_read": true,
+      "head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "head_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "runner_checked_head": "ac5f904f64ab1719f7429ad200d980ec595d3882",
+      "runner_checked_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "checkout_kind": "PR_SYNTHETIC_MERGE",
+      "scientific_disposition": "CANCELLED_PARTIAL_OUTPUT_NO_COMPLETED_JOB_AUTHORITY",
+      "prior_d88_disposition": "CANCELLED_PARTIAL_OUTPUT_NO_COMPLETED_JOB_AUTHORITY",
+      "output_reviewed": true,
+      "log_availability": "LOCAL_DECODED_LOG_SCANNED_HASHED",
+      "decoded_log_sha256": "84ee46a0df1f99bb8b5ee410ca744acb47efd95813819cef5261f3ea8a00aabe",
+      "decoded_log_bytes": 26419,
+      "skipped_steps": [
+        "Run frozen calibration campaign",
+        "Run actions/upload-artifact@v4",
+        "Post Run actions/setup-python@v5"
+      ],
+      "formal_authority_created_by_job_status": false
+    },
+    {
+      "run_id": 38489434836,
+      "job_id": 115612537754,
+      "name": "lean-compressed-calculus",
+      "event": "pull_request",
+      "workflow": "RHRC post-282 contact calculus",
+      "source_path": ".github/workflows/rhrc_post282_contact_calculus.yml",
+      "status": "completed",
+      "conclusion": "cancelled",
+      "attempt": 1,
+      "latest_attempt": true,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38489434836/job/115612537754",
+      "source_job_id": "lean-compressed-calculus",
+      "workflow_source_blob": "6ea89aa318201ee001f54ada9face98384353874",
+      "workflow_source_sha256": "88f2a127ea6f0a067bd2c7af73c1faf157391cc553798dd02d854f8b34325dc3",
+      "workflow_source_unchanged_from_d88": true,
+      "classification": "FORMAL_VALIDITY_GATE",
+      "additional_role": null,
+      "source_read": true,
+      "head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "head_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "runner_checked_head": "ac5f904f64ab1719f7429ad200d980ec595d3882",
+      "runner_checked_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "checkout_kind": "PR_SYNTHETIC_MERGE",
+      "scientific_disposition": "CANCELLED_PARTIAL_OUTPUT_NO_COMPLETED_JOB_AUTHORITY",
+      "prior_d88_disposition": "CANCELLED_PARTIAL_OUTPUT_NO_COMPLETED_JOB_AUTHORITY",
+      "output_reviewed": true,
+      "log_availability": "LOCAL_DECODED_LOG_SCANNED_HASHED",
+      "decoded_log_sha256": "f9eb0b5fb8901df10dbf291e9e7711608957efb1ba49566613e4ec9ee6622927",
+      "decoded_log_bytes": 112910,
+      "skipped_steps": [
+        "Build compressed calculus targets with complete receipt",
+        "Audit compressed calculus axioms",
+        "Reject proof escapes"
+      ],
+      "formal_authority_created_by_job_status": false
+    },
+    {
+      "run_id": 38489434836,
+      "job_id": 115612537859,
+      "name": "lean-contact-completion",
+      "event": "pull_request",
+      "workflow": "RHRC post-282 contact calculus",
+      "source_path": ".github/workflows/rhrc_post282_contact_calculus.yml",
+      "status": "completed",
+      "conclusion": "cancelled",
+      "attempt": 1,
+      "latest_attempt": true,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38489434836/job/115612537859",
+      "source_job_id": "lean-contact-completion",
+      "workflow_source_blob": "6ea89aa318201ee001f54ada9face98384353874",
+      "workflow_source_sha256": "88f2a127ea6f0a067bd2c7af73c1faf157391cc553798dd02d854f8b34325dc3",
+      "workflow_source_unchanged_from_d88": true,
+      "classification": "FORMAL_VALIDITY_GATE",
+      "additional_role": null,
+      "source_read": true,
+      "head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "head_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "runner_checked_head": "ac5f904f64ab1719f7429ad200d980ec595d3882",
+      "runner_checked_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "checkout_kind": "PR_SYNTHETIC_MERGE",
+      "scientific_disposition": "CANCELLED_PARTIAL_OUTPUT_NO_COMPLETED_JOB_AUTHORITY",
+      "prior_d88_disposition": "CANCELLED_PARTIAL_OUTPUT_NO_COMPLETED_JOB_AUTHORITY",
+      "output_reviewed": true,
+      "log_availability": "LOCAL_DECODED_LOG_SCANNED_HASHED",
+      "decoded_log_sha256": "64ac09b93df1f3801612c272b3cb64d07bf61e218edffbf8e51d0a90a3468f60",
+      "decoded_log_bytes": 83607,
+      "skipped_steps": [
+        "Build contact completion targets with complete receipt",
+        "Audit contact completion axioms",
+        "Validate exact theorem premise contract",
+        "Validate candidate claim and binding firewall"
+      ],
+      "formal_authority_created_by_job_status": false
+    },
+    {
+      "run_id": 38489434836,
+      "job_id": 115618965601,
+      "name": "contact-calculus-complete",
+      "event": "pull_request",
+      "workflow": "RHRC post-282 contact calculus",
+      "source_path": ".github/workflows/rhrc_post282_contact_calculus.yml",
+      "status": "completed",
+      "conclusion": "failure",
+      "attempt": 1,
+      "latest_attempt": true,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38489434836/job/115618965601",
+      "source_job_id": "contact-calculus-complete",
+      "workflow_source_blob": "6ea89aa318201ee001f54ada9face98384353874",
+      "workflow_source_sha256": "88f2a127ea6f0a067bd2c7af73c1faf157391cc553798dd02d854f8b34325dc3",
+      "workflow_source_unchanged_from_d88": true,
+      "classification": "REGRESSION_GATE",
+      "additional_role": null,
+      "source_read": true,
+      "head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "head_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "runner_checked_head": null,
+      "runner_checked_tree": null,
+      "checkout_kind": "NO_CHECKOUT_AUTHORITY",
+      "scientific_disposition": "DEPENDENCY_COMPLETION_GATE_REJECTED_CANCELLED_REQUIRED_JOBS",
+      "prior_d88_disposition": "DEPENDENCY_COMPLETION_GATE_REJECTED_CANCELLED_REQUIRED_JOBS",
+      "output_reviewed": true,
+      "log_availability": "LOCAL_DECODED_LOG_SCANNED_HASHED",
+      "decoded_log_sha256": "cd087e414ffe99e687be0d6734a6b61a78c51927d41d4603b0415a50d47ecc30",
+      "decoded_log_bytes": 3127,
+      "skipped_steps": [],
+      "formal_authority_created_by_job_status": false
+    },
+    {
+      "run_id": 38489434836,
+      "job_id": 115618966707,
+      "name": "arb-contact-balance",
+      "event": "pull_request",
+      "workflow": "RHRC post-282 contact calculus",
+      "source_path": ".github/workflows/rhrc_post282_contact_calculus.yml",
+      "status": "completed",
+      "conclusion": "cancelled",
+      "attempt": 1,
+      "latest_attempt": true,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38489434836/job/115618966707",
+      "source_job_id": "arb-contact-balance",
+      "workflow_source_blob": "6ea89aa318201ee001f54ada9face98384353874",
+      "workflow_source_sha256": "88f2a127ea6f0a067bd2c7af73c1faf157391cc553798dd02d854f8b34325dc3",
+      "workflow_source_unchanged_from_d88": true,
+      "classification": "RESEARCH_PRODUCING_CHECK",
+      "additional_role": "REGRESSION_GATE",
+      "source_read": true,
+      "head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "head_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "runner_checked_head": null,
+      "runner_checked_tree": null,
+      "checkout_kind": "NO_CHECKOUT_AUTHORITY",
+      "scientific_disposition": "CANCELLED_PARTIAL_OUTPUT_NO_COMPLETED_JOB_AUTHORITY",
+      "prior_d88_disposition": "CANCELLED_PARTIAL_OUTPUT_NO_COMPLETED_JOB_AUTHORITY",
+      "output_reviewed": false,
+      "log_availability": "UNAVAILABLE",
+      "decoded_log_sha256": null,
+      "decoded_log_bytes": null,
+      "skipped_steps": [],
+      "formal_authority_created_by_job_status": false
+    },
+    {
+      "run_id": 38489434791,
+      "job_id": 115611194787,
+      "name": "Audit runner adversarial regressions",
+      "event": "pull_request",
+      "workflow": "RHRC post268 complete audit replay",
+      "source_path": ".github/workflows/rhrc_post268_audit.yml",
+      "status": "completed",
+      "conclusion": "success",
+      "attempt": 1,
+      "latest_attempt": true,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38489434791/job/115611194787",
+      "source_job_id": "runner-regressions",
+      "workflow_source_blob": "84b9a7d4b5e262ce7fa096bf2a4a2bbb3a4effe6",
+      "workflow_source_sha256": "ed5962f4a176c874f67cf34bad832c232d6280afaea34781389aadd923e270b3",
+      "workflow_source_unchanged_from_d88": true,
+      "classification": "REGRESSION_GATE",
+      "additional_role": null,
+      "source_read": true,
+      "head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "head_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "runner_checked_head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "runner_checked_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "checkout_kind": "BRANCH_HEAD",
+      "scientific_disposition": "AUDIT_PRODUCER_CONSUMER_GUARDS_PRESERVED",
+      "prior_d88_disposition": "AUDIT_PRODUCER_CONSUMER_GUARDS_PRESERVED",
+      "output_reviewed": true,
+      "log_availability": "LOCAL_DECODED_LOG_SCANNED_HASHED",
+      "decoded_log_sha256": "58c5e89910ad18f8a1e96385db46053f2f89c6baeff51b77e4c9a6d98bc75fca",
+      "decoded_log_bytes": 16319,
+      "skipped_steps": [],
+      "formal_authority_created_by_job_status": false
+    },
+    {
+      "run_id": 38489434791,
+      "job_id": 115611194937,
+      "name": "Extended audit shard 4",
+      "event": "pull_request",
+      "workflow": "RHRC post268 complete audit replay",
+      "source_path": ".github/workflows/rhrc_post268_audit.yml",
+      "status": "completed",
+      "conclusion": "success",
+      "attempt": 1,
+      "latest_attempt": true,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38489434791/job/115611194937",
+      "source_job_id": "extended",
+      "workflow_source_blob": "84b9a7d4b5e262ce7fa096bf2a4a2bbb3a4effe6",
+      "workflow_source_sha256": "ed5962f4a176c874f67cf34bad832c232d6280afaea34781389aadd923e270b3",
+      "workflow_source_unchanged_from_d88": true,
+      "classification": "RESEARCH_PRODUCING_CHECK",
+      "additional_role": "REGRESSION_GATE",
+      "source_read": true,
+      "head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "head_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "runner_checked_head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "runner_checked_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "checkout_kind": "BRANCH_HEAD",
+      "scientific_disposition": "FROZEN_ASSIGNED_CHECK_PIPELINES_EXECUTED",
+      "prior_d88_disposition": "FROZEN_ASSIGNED_CHECK_PIPELINES_EXECUTED",
+      "output_reviewed": true,
+      "log_availability": "LOCAL_DECODED_LOG_SCANNED_HASHED",
+      "decoded_log_sha256": "6f46194d9e40015a3d65340b3f68ec8328c4036d05c61937f161bbb2ee661bce",
+      "decoded_log_bytes": 21726,
+      "skipped_steps": [],
+      "formal_authority_created_by_job_status": false
+    },
+    {
+      "run_id": 38489434791,
+      "job_id": 115611194967,
+      "name": "Extended audit shard 1",
+      "event": "pull_request",
+      "workflow": "RHRC post268 complete audit replay",
+      "source_path": ".github/workflows/rhrc_post268_audit.yml",
+      "status": "completed",
+      "conclusion": "success",
+      "attempt": 1,
+      "latest_attempt": true,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38489434791/job/115611194967",
+      "source_job_id": "extended",
+      "workflow_source_blob": "84b9a7d4b5e262ce7fa096bf2a4a2bbb3a4effe6",
+      "workflow_source_sha256": "ed5962f4a176c874f67cf34bad832c232d6280afaea34781389aadd923e270b3",
+      "workflow_source_unchanged_from_d88": true,
+      "classification": "RESEARCH_PRODUCING_CHECK",
+      "additional_role": "REGRESSION_GATE",
+      "source_read": true,
+      "head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "head_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "runner_checked_head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "runner_checked_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "checkout_kind": "BRANCH_HEAD",
+      "scientific_disposition": "FROZEN_ASSIGNED_CHECK_PIPELINES_EXECUTED",
+      "prior_d88_disposition": "FROZEN_ASSIGNED_CHECK_PIPELINES_EXECUTED",
+      "output_reviewed": true,
+      "log_availability": "LOCAL_DECODED_LOG_SCANNED_HASHED",
+      "decoded_log_sha256": "0fd31c3733ab394d4e286b699926dfbdccaaf58ea035dc449aed25a5b14ee042",
+      "decoded_log_bytes": 21919,
+      "skipped_steps": [],
+      "formal_authority_created_by_job_status": false
+    },
+    {
+      "run_id": 38489434791,
+      "job_id": 115611194970,
+      "name": "Extended audit shard 3",
+      "event": "pull_request",
+      "workflow": "RHRC post268 complete audit replay",
+      "source_path": ".github/workflows/rhrc_post268_audit.yml",
+      "status": "completed",
+      "conclusion": "success",
+      "attempt": 1,
+      "latest_attempt": true,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38489434791/job/115611194970",
+      "source_job_id": "extended",
+      "workflow_source_blob": "84b9a7d4b5e262ce7fa096bf2a4a2bbb3a4effe6",
+      "workflow_source_sha256": "ed5962f4a176c874f67cf34bad832c232d6280afaea34781389aadd923e270b3",
+      "workflow_source_unchanged_from_d88": true,
+      "classification": "RESEARCH_PRODUCING_CHECK",
+      "additional_role": "REGRESSION_GATE",
+      "source_read": true,
+      "head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "head_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "runner_checked_head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "runner_checked_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "checkout_kind": "BRANCH_HEAD",
+      "scientific_disposition": "FROZEN_ASSIGNED_CHECK_PIPELINES_EXECUTED",
+      "prior_d88_disposition": "FROZEN_ASSIGNED_CHECK_PIPELINES_EXECUTED",
+      "output_reviewed": true,
+      "log_availability": "LOCAL_DECODED_LOG_SCANNED_HASHED",
+      "decoded_log_sha256": "9e9b3608886a1a3861acea1fabb4fcd73a45da39350af76afbc22f9d0163eef4",
+      "decoded_log_bytes": 21857,
+      "skipped_steps": [],
+      "formal_authority_created_by_job_status": false
+    },
+    {
+      "run_id": 38489434791,
+      "job_id": 115611194976,
+      "name": "Extended audit shard 0",
+      "event": "pull_request",
+      "workflow": "RHRC post268 complete audit replay",
+      "source_path": ".github/workflows/rhrc_post268_audit.yml",
+      "status": "completed",
+      "conclusion": "success",
+      "attempt": 1,
+      "latest_attempt": true,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38489434791/job/115611194976",
+      "source_job_id": "extended",
+      "workflow_source_blob": "84b9a7d4b5e262ce7fa096bf2a4a2bbb3a4effe6",
+      "workflow_source_sha256": "ed5962f4a176c874f67cf34bad832c232d6280afaea34781389aadd923e270b3",
+      "workflow_source_unchanged_from_d88": true,
+      "classification": "RESEARCH_PRODUCING_CHECK",
+      "additional_role": "REGRESSION_GATE",
+      "source_read": true,
+      "head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "head_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "runner_checked_head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "runner_checked_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "checkout_kind": "BRANCH_HEAD",
+      "scientific_disposition": "FROZEN_ASSIGNED_CHECK_PIPELINES_EXECUTED",
+      "prior_d88_disposition": "FROZEN_ASSIGNED_CHECK_PIPELINES_EXECUTED",
+      "output_reviewed": true,
+      "log_availability": "LOCAL_DECODED_LOG_SCANNED_HASHED",
+      "decoded_log_sha256": "1c94d60846d1508ca4af9efac2500cafc8f43f390465eb5f983736b8663382df",
+      "decoded_log_bytes": 21899,
+      "skipped_steps": [],
+      "formal_authority_created_by_job_status": false
+    },
+    {
+      "run_id": 38489434791,
+      "job_id": 115611194985,
+      "name": "Extended audit shard 2",
+      "event": "pull_request",
+      "workflow": "RHRC post268 complete audit replay",
+      "source_path": ".github/workflows/rhrc_post268_audit.yml",
+      "status": "completed",
+      "conclusion": "success",
+      "attempt": 1,
+      "latest_attempt": true,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38489434791/job/115611194985",
+      "source_job_id": "extended",
+      "workflow_source_blob": "84b9a7d4b5e262ce7fa096bf2a4a2bbb3a4effe6",
+      "workflow_source_sha256": "ed5962f4a176c874f67cf34bad832c232d6280afaea34781389aadd923e270b3",
+      "workflow_source_unchanged_from_d88": true,
+      "classification": "RESEARCH_PRODUCING_CHECK",
+      "additional_role": "REGRESSION_GATE",
+      "source_read": true,
+      "head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "head_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "runner_checked_head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "runner_checked_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "checkout_kind": "BRANCH_HEAD",
+      "scientific_disposition": "FROZEN_ASSIGNED_CHECK_PIPELINES_EXECUTED",
+      "prior_d88_disposition": "FROZEN_ASSIGNED_CHECK_PIPELINES_EXECUTED",
+      "output_reviewed": true,
+      "log_availability": "LOCAL_DECODED_LOG_SCANNED_HASHED",
+      "decoded_log_sha256": "2a7bc9961dc45e99ad03a109fe9847921075ae47a36cf8568b697d3a914962ed",
+      "decoded_log_bytes": 21826,
+      "skipped_steps": [],
+      "formal_authority_created_by_job_status": false
+    },
+    {
+      "run_id": 38489434791,
+      "job_id": 115611195020,
+      "name": "Extended audit shard 6",
+      "event": "pull_request",
+      "workflow": "RHRC post268 complete audit replay",
+      "source_path": ".github/workflows/rhrc_post268_audit.yml",
+      "status": "completed",
+      "conclusion": "success",
+      "attempt": 1,
+      "latest_attempt": true,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38489434791/job/115611195020",
+      "source_job_id": "extended",
+      "workflow_source_blob": "84b9a7d4b5e262ce7fa096bf2a4a2bbb3a4effe6",
+      "workflow_source_sha256": "ed5962f4a176c874f67cf34bad832c232d6280afaea34781389aadd923e270b3",
+      "workflow_source_unchanged_from_d88": true,
+      "classification": "RESEARCH_PRODUCING_CHECK",
+      "additional_role": "REGRESSION_GATE",
+      "source_read": true,
+      "head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "head_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "runner_checked_head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "runner_checked_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "checkout_kind": "BRANCH_HEAD",
+      "scientific_disposition": "FROZEN_ASSIGNED_CHECK_PIPELINES_EXECUTED",
+      "prior_d88_disposition": "FROZEN_ASSIGNED_CHECK_PIPELINES_EXECUTED",
+      "output_reviewed": true,
+      "log_availability": "LOCAL_DECODED_LOG_SCANNED_HASHED",
+      "decoded_log_sha256": "43cb3e6b197213d4bed355a76552c41754527537415da28e102ef5f2c390875a",
+      "decoded_log_bytes": 21715,
+      "skipped_steps": [],
+      "formal_authority_created_by_job_status": false
+    },
+    {
+      "run_id": 38489434791,
+      "job_id": 115611195067,
+      "name": "Extended audit shard 5",
+      "event": "pull_request",
+      "workflow": "RHRC post268 complete audit replay",
+      "source_path": ".github/workflows/rhrc_post268_audit.yml",
+      "status": "completed",
+      "conclusion": "success",
+      "attempt": 1,
+      "latest_attempt": true,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38489434791/job/115611195067",
+      "source_job_id": "extended",
+      "workflow_source_blob": "84b9a7d4b5e262ce7fa096bf2a4a2bbb3a4effe6",
+      "workflow_source_sha256": "ed5962f4a176c874f67cf34bad832c232d6280afaea34781389aadd923e270b3",
+      "workflow_source_unchanged_from_d88": true,
+      "classification": "RESEARCH_PRODUCING_CHECK",
+      "additional_role": "REGRESSION_GATE",
+      "source_read": true,
+      "head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "head_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "runner_checked_head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "runner_checked_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "checkout_kind": "BRANCH_HEAD",
+      "scientific_disposition": "FROZEN_ASSIGNED_CHECK_PIPELINES_EXECUTED",
+      "prior_d88_disposition": "FROZEN_ASSIGNED_CHECK_PIPELINES_EXECUTED",
+      "output_reviewed": true,
+      "log_availability": "LOCAL_DECODED_LOG_SCANNED_HASHED",
+      "decoded_log_sha256": "32d53b41fbc624c4a66fcb1c9c46fbf8cfc83b35f50f51835c6385b68e60b629",
+      "decoded_log_bytes": 21714,
+      "skipped_steps": [],
+      "formal_authority_created_by_job_status": false
+    },
+    {
+      "run_id": 38489434791,
+      "job_id": 115611195087,
+      "name": "Extended audit shard 7",
+      "event": "pull_request",
+      "workflow": "RHRC post268 complete audit replay",
+      "source_path": ".github/workflows/rhrc_post268_audit.yml",
+      "status": "completed",
+      "conclusion": "success",
+      "attempt": 1,
+      "latest_attempt": true,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38489434791/job/115611195087",
+      "source_job_id": "extended",
+      "workflow_source_blob": "84b9a7d4b5e262ce7fa096bf2a4a2bbb3a4effe6",
+      "workflow_source_sha256": "ed5962f4a176c874f67cf34bad832c232d6280afaea34781389aadd923e270b3",
+      "workflow_source_unchanged_from_d88": true,
+      "classification": "RESEARCH_PRODUCING_CHECK",
+      "additional_role": "REGRESSION_GATE",
+      "source_read": true,
+      "head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "head_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "runner_checked_head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "runner_checked_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "checkout_kind": "BRANCH_HEAD",
+      "scientific_disposition": "FROZEN_ASSIGNED_CHECK_PIPELINES_EXECUTED",
+      "prior_d88_disposition": "FROZEN_ASSIGNED_CHECK_PIPELINES_EXECUTED",
+      "output_reviewed": true,
+      "log_availability": "LOCAL_DECODED_LOG_SCANNED_HASHED",
+      "decoded_log_sha256": "d940ab4bad09a581d69cb203475f5f87039515dba6b513f31fa85e194a5a563b",
+      "decoded_log_bytes": 21745,
+      "skipped_steps": [],
+      "formal_authority_created_by_job_status": false
+    },
+    {
+      "run_id": 38489434791,
+      "job_id": 115616982875,
+      "name": "Complete 44-check execution harvest",
+      "event": "pull_request",
+      "workflow": "RHRC post268 complete audit replay",
+      "source_path": ".github/workflows/rhrc_post268_audit.yml",
+      "status": "completed",
+      "conclusion": "success",
+      "attempt": 1,
+      "latest_attempt": true,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38489434791/job/115616982875",
+      "source_job_id": "harvest",
+      "workflow_source_blob": "84b9a7d4b5e262ce7fa096bf2a4a2bbb3a4effe6",
+      "workflow_source_sha256": "ed5962f4a176c874f67cf34bad832c232d6280afaea34781389aadd923e270b3",
+      "workflow_source_unchanged_from_d88": true,
+      "classification": "REGRESSION_GATE",
+      "additional_role": null,
+      "source_read": true,
+      "head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "head_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "runner_checked_head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "runner_checked_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "checkout_kind": "BRANCH_HEAD",
+      "scientific_disposition": "COMPLETE_44_EXECUTION_HARVEST_VERIFIED",
+      "prior_d88_disposition": "COMPLETE_44_EXECUTION_HARVEST_VERIFIED",
+      "output_reviewed": true,
+      "log_availability": "LOCAL_DECODED_LOG_SCANNED_HASHED",
+      "decoded_log_sha256": "b829e258a2c9a34eb91dbf2396971fe80d2d07ff1e6bc5261519b537cf4f747e",
+      "decoded_log_bytes": 27306,
+      "skipped_steps": [],
+      "formal_authority_created_by_job_status": false
+    },
+    {
+      "run_id": 38489434957,
+      "job_id": 115610877951,
+      "name": "post196-q14-residual-cell-replay",
+      "event": "pull_request",
+      "workflow": "RHRC post-196 Q14 residual cell replay",
+      "source_path": ".github/workflows/rhrc_post196_q14_residual_cell_replay.yml",
+      "status": "completed",
+      "conclusion": "success",
+      "attempt": 1,
+      "latest_attempt": true,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38489434957/job/115610877951",
+      "source_job_id": "post196-q14-residual-cell-replay",
+      "workflow_source_blob": "ac52f609c660ff6d7770c03f762efc5398acd30a",
+      "workflow_source_sha256": "85ab1134a7e2709e40c00b7cd9b69db1ec08978cb47987218bd6ae3b2f7402fc",
+      "workflow_source_unchanged_from_d88": true,
+      "classification": "RESEARCH_PRODUCING_CHECK",
+      "additional_role": "REGRESSION_GATE",
+      "source_read": true,
+      "head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "head_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "runner_checked_head": "ac5f904f64ab1719f7429ad200d980ec595d3882",
+      "runner_checked_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "checkout_kind": "PR_SYNTHETIC_MERGE",
+      "scientific_disposition": "FROZEN_HULL_GLOBAL_MONOTONE_J_POSITIVE_PRESERVED_D88_SUMMARY_CORRECTED",
+      "prior_d88_disposition": "RESIDUAL_CELL_J_UNRESOLVED_PRESERVED",
+      "output_reviewed": true,
+      "log_availability": "LOCAL_DECODED_LOG_SCANNED_HASHED",
+      "decoded_log_sha256": "e570da2d1d5b630f8a720635ea488f930ae76f1b4f3cc9b92a87b8d5c04c0aac",
+      "decoded_log_bytes": 23000,
+      "skipped_steps": [],
+      "formal_authority_created_by_job_status": false
+    },
+    {
+      "run_id": 38489434843,
+      "job_id": 115610877202,
+      "name": "post190-canonical-realizability",
+      "event": "pull_request",
+      "workflow": "RHRC post-190 canonical realizability audit",
+      "source_path": ".github/workflows/rhrc_post190_canonical_realizability.yml",
+      "status": "completed",
+      "conclusion": "success",
+      "attempt": 1,
+      "latest_attempt": true,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/38489434843/job/115610877202",
+      "source_job_id": "post190-canonical-realizability",
+      "workflow_source_blob": "b63ca1ee726e6e9b6ce2f3f14b1c30a3c4b5c6bf",
+      "workflow_source_sha256": "7b26143d06d6b7b685aecbd3d664a1f39507952d9e1a9908deafeb9b2b36bca9",
+      "workflow_source_unchanged_from_d88": true,
+      "classification": "RESEARCH_PRODUCING_CHECK",
+      "additional_role": "REGRESSION_GATE",
+      "source_read": true,
+      "head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "head_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "runner_checked_head": "ac5f904f64ab1719f7429ad200d980ec595d3882",
+      "runner_checked_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "checkout_kind": "PR_SYNTHETIC_MERGE",
+      "scientific_disposition": "CANONICAL_REALIZABILITY_LAYER3_TO5_UNRESOLVED",
+      "prior_d88_disposition": "CANONICAL_REALIZABILITY_LAYER3_TO5_UNRESOLVED",
+      "output_reviewed": true,
+      "log_availability": "LOCAL_DECODED_LOG_SCANNED_HASHED",
+      "decoded_log_sha256": "1a34850790012cd9de6ec7f6863ab36728dfbc20e352108888d97effd4eec069",
+      "decoded_log_bytes": 22762,
+      "skipped_steps": [],
+      "formal_authority_created_by_job_status": false
+    }
+  ],
+  "workflow_source_inventory": [
+    {
+      "path": ".github/workflows/permansson-formal.yml",
+      "blob": "7926007c27b81f71e658ef29549bd5ef5bb98444",
+      "sha256": "71c79208d69eaef4b23c0697718edf970c5d2fa08b3ee6537f2a5035585972f6",
+      "unchanged_from_d88": true,
+      "source_jobs": [
+        "lean-permansson"
+      ]
+    },
+    {
+      "path": ".github/workflows/rhrc.yml",
+      "blob": "1e4c4a58f7757dda05ed93222d45244cc849abb4",
+      "sha256": "a8fb66bada5fb104810deb38efb97fcd71cf3bc8a885c88cdef42dd2cfd4e878",
+      "unchanged_from_d88": true,
+      "source_jobs": [
+        "python-rhrc",
+        "rhkg-compiler-receipt",
+        "r003-normalization-audit",
+        "lean"
+      ]
+    },
+    {
+      "path": ".github/workflows/rhrc_closure_campaign.yml",
+      "blob": "a0591839e50762f3e675199247048bae2059f7e0",
+      "sha256": "61ecc78037a8d97329d54cb75a00963410e8418ab3d878d93064ee2bbf847e74",
+      "unchanged_from_d88": true,
+      "source_jobs": [
+        "fast-integrity",
+        "lean-a",
+        "lean-b",
+        "lean-c",
+        "lean-d-bindings",
+        "lean-strength-audit",
+        "lean-contact",
+        "lean-first-crossing",
+        "campaign-complete"
+      ]
+    },
+    {
+      "path": ".github/workflows/rhrc_post190_canonical_realizability.yml",
+      "blob": "b63ca1ee726e6e9b6ce2f3f14b1c30a3c4b5c6bf",
+      "sha256": "7b26143d06d6b7b685aecbd3d664a1f39507952d9e1a9908deafeb9b2b36bca9",
+      "unchanged_from_d88": true,
+      "source_jobs": [
+        "post190-canonical-realizability"
+      ]
+    },
+    {
+      "path": ".github/workflows/rhrc_post192_parity_trajectory_rigidity.yml",
+      "blob": "c75653d1a621a169e7b311ec3812711c435ad305",
+      "sha256": "f4f7c315c69356eb8121c5bfa546080f1e761220efaa45de0fc73437e7b346a1",
+      "unchanged_from_d88": true,
+      "source_jobs": [
+        "post192-parity-trajectory-rigidity"
+      ]
+    },
+    {
+      "path": ".github/workflows/rhrc_post194_parity_trajectory_sharp_enclosure.yml",
+      "blob": "e3d24acbff6f1d82fcd60c6b136c2b56fb9867ae",
+      "sha256": "98d27f8d43bc7c835766f9568714f270275fb4aa920e1d04ffeef1107137064e",
+      "unchanged_from_d88": true,
+      "source_jobs": [
+        "post194-parity-trajectory-sharp-enclosure"
+      ]
+    },
+    {
+      "path": ".github/workflows/rhrc_post196_q14_residual_cell_replay.yml",
+      "blob": "ac52f609c660ff6d7770c03f762efc5398acd30a",
+      "sha256": "85ab1134a7e2709e40c00b7cd9b69db1ec08978cb47987218bd6ae3b2f7402fc",
+      "unchanged_from_d88": true,
+      "source_jobs": [
+        "post196-q14-residual-cell-replay"
+      ]
+    },
+    {
+      "path": ".github/workflows/rhrc_post198_q14_parity_source_mechanism.yml",
+      "blob": "34f403f97efd7d065bfc55cd5d8fd5efdc34a9d2",
+      "sha256": "ed0656ea0b9a6953f461b6ff361989e086b95c71d1740352ada78db91c2438a4",
+      "unchanged_from_d88": true,
+      "source_jobs": [
+        "post198-q14-source-mechanism"
+      ]
+    },
+    {
+      "path": ".github/workflows/rhrc_post200_q14_discrepancy_mechanism.yml",
+      "blob": "dc55e5148f99e945c6d1c86a63e25fdda62ed0f9",
+      "sha256": "5eaa6d0711cf59660ceb75f24ae48d3619cd392b14c9845a713d4a7f5a230ee6",
+      "unchanged_from_d88": true,
+      "source_jobs": [
+        "post200-q14-discrepancy-mechanism"
+      ]
+    },
+    {
+      "path": ".github/workflows/rhrc_post202_q14_composite_parity_gap.yml",
+      "blob": "84409cf0d29676f96b84ee290279b0b21e6a5348",
+      "sha256": "5c0da1a08984abc047b7a768ac91a61d143ca9689eec89d65b1c345e7311a369",
+      "unchanged_from_d88": true,
+      "source_jobs": [
+        "post202-q14-composite-parity-gap"
+      ]
+    },
+    {
+      "path": ".github/workflows/rhrc_post214_kernel_dual_geometry.yml",
+      "blob": "768f22fe9b21f64fc080e10bdd1e9e8e106348c5",
+      "sha256": "611d1afe3e53314cc17b1fc11e115ce5b8629b6ee689ea48e042a545db52df8d",
+      "unchanged_from_d88": true,
+      "source_jobs": [
+        "post214-kernel-dual-geometry"
+      ]
+    },
+    {
+      "path": ".github/workflows/rhrc_post222_biregular_zero_shift_scalar.yml",
+      "blob": "4b854360b5b4f1eba8d78e4d68f11737d5cb07df",
+      "sha256": "b4865f02c603c9a413b82c56bbe267e6bb077b885055747cdddd6e684db0ac4a",
+      "unchanged_from_d88": true,
+      "source_jobs": [
+        "post222-biregular-zero-shift-scalar"
+      ]
+    },
+    {
+      "path": ".github/workflows/rhrc_post268_audit.yml",
+      "blob": "84b9a7d4b5e262ce7fa096bf2a4a2bbb3a4effe6",
+      "sha256": "ed5962f4a176c874f67cf34bad832c232d6280afaea34781389aadd923e270b3",
+      "unchanged_from_d88": true,
+      "source_jobs": [
+        "runner-regressions",
+        "extended",
+        "harvest"
+      ]
+    },
+    {
+      "path": ".github/workflows/rhrc_post282_contact_calculus.yml",
+      "blob": "6ea89aa318201ee001f54ada9face98384353874",
+      "sha256": "88f2a127ea6f0a067bd2c7af73c1faf157391cc553798dd02d854f8b34325dc3",
+      "unchanged_from_d88": true,
+      "source_jobs": [
+        "lean-compressed-calculus",
+        "lean-contact-completion",
+        "research-calibration",
+        "arb-contact-balance",
+        "contact-calculus-complete"
+      ]
+    },
+    {
+      "path": ".github/workflows/rhrc_post284_source_inertia.yml",
+      "blob": "97d9956eca5d0b47fee44da99a8d4c0950a19ae4",
+      "sha256": "0ef4b6db1901bd08c59457bc37e10e0cbe26c3df8b510dd6e0db3e7173bab548",
+      "unchanged_from_d88": true,
+      "source_jobs": [
+        "post287-full-k3",
+        "lean-source-inertia",
+        "source-falsifier-research"
+      ]
+    },
+    {
+      "path": ".github/workflows/rhrc_post287_focused.yml",
+      "blob": "b0d1be5be4c4779a7da6c16738533039cb82217f",
+      "sha256": "7708f47a950e7acd64a914bade3c9e54447a92291d03dfbd3b423ed6f7d123a5",
+      "unchanged_from_d88": true,
+      "source_jobs": [
+        "lean-step3",
+        "wp5-modified-prime"
+      ]
+    },
+    {
+      "path": ".github/workflows/rhrc_post287_numerical.yml",
+      "blob": "28d7da771673d5fd03b5e42434a74182c5a86803",
+      "sha256": "58d8c586d425b747a9a0c4b2e378d8614c14975d6a1670d23980b39811780a96",
+      "unchanged_from_d88": true,
+      "source_jobs": [
+        "wp2-k2-transcript",
+        "wp4-k2-odd-prerequisite",
+        "wp4-k3-frozen-feasibility",
+        "wp4-k3-fourth-order-alternative"
+      ]
+    },
+    {
+      "path": ".github/workflows/rhrc_post287_wp6.yml",
+      "blob": "3a47a39fe33870aa0253c6c49108c960120cfd40",
+      "sha256": "4d8e501b8d8045ad1a25872da01c0174bb27f13c7172651ed62720517423ac61",
+      "unchanged_from_d88": true,
+      "source_jobs": [
+        "wp6-source-specific-signed-ray"
+      ]
+    },
+    {
+      "path": ".github/workflows/rhrc_post290_step123_output.yml",
+      "blob": "333f34addc62bae23fc275112ac4261a2336da30",
+      "sha256": "09df95d509fed9ae76d799d141865cabebc05d3fb2f827e6b20256bf852a45e3",
+      "unchanged_from_d88": false,
+      "source_jobs": [
+        "lean-components",
+        "exact-controls",
+        "native-observations"
+      ]
+    }
+  ],
+  "supporting_formal_roots": [
+    {
+      "declaration": "Zeta23.CCM.nativePoleCompactInverse_hasDerivAt",
+      "module": "Zeta23.CCM.PoleNeutralCompactInverse",
+      "source_path": "Zeta23/CCM/PoleNeutralCompactInverse.lean",
+      "source_blob": "20a5a76f243706501a617d48e907e2e63b948967",
+      "source_sha256": "de25100399d4ade4fdfcf06e75af7a8e97efd21c2c94541c38989b9ffc785f0a",
+      "printed_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "checked_head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "checked_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "compiler_job_id": 115610861780,
+      "authority": "PROVED_SCOPED_SUPPORTING_STATEMENT",
+      "aggregate_binding_receipt": false
+    },
+    {
+      "declaration": "Zeta23.CCM.nativePoleCompactInverseDerivative_hasDerivAt",
+      "module": "Zeta23.CCM.PoleNeutralCompactInverse",
+      "source_path": "Zeta23/CCM/PoleNeutralCompactInverse.lean",
+      "source_blob": "20a5a76f243706501a617d48e907e2e63b948967",
+      "source_sha256": "de25100399d4ade4fdfcf06e75af7a8e97efd21c2c94541c38989b9ffc785f0a",
+      "printed_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "checked_head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "checked_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "compiler_job_id": 115610861780,
+      "authority": "PROVED_SCOPED_SUPPORTING_STATEMENT",
+      "aggregate_binding_receipt": false
+    },
+    {
+      "declaration": "Zeta23.CCM.nativePoleCompactInverse_pole_equation",
+      "module": "Zeta23.CCM.PoleNeutralCompactInverse",
+      "source_path": "Zeta23/CCM/PoleNeutralCompactInverse.lean",
+      "source_blob": "20a5a76f243706501a617d48e907e2e63b948967",
+      "source_sha256": "de25100399d4ade4fdfcf06e75af7a8e97efd21c2c94541c38989b9ffc785f0a",
+      "printed_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "checked_head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "checked_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "compiler_job_id": 115610861780,
+      "authority": "PROVED_SCOPED_SUPPORTING_STATEMENT",
+      "aggregate_binding_receipt": false
+    },
+    {
+      "declaration": "Zeta23.CCM.nativePoleCompactInverse_contDiff_two",
+      "module": "Zeta23.CCM.PoleNeutralCompactInverse",
+      "source_path": "Zeta23/CCM/PoleNeutralCompactInverse.lean",
+      "source_blob": "20a5a76f243706501a617d48e907e2e63b948967",
+      "source_sha256": "de25100399d4ade4fdfcf06e75af7a8e97efd21c2c94541c38989b9ffc785f0a",
+      "printed_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "checked_head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "checked_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "compiler_job_id": 115610861780,
+      "authority": "PROVED_SCOPED_SUPPORTING_STATEMENT",
+      "aggregate_binding_receipt": false
+    },
+    {
+      "declaration": "Zeta23.CCM.nativePoleCompactInverse_zero_outside",
+      "module": "Zeta23.CCM.PoleNeutralCompactInverse",
+      "source_path": "Zeta23/CCM/PoleNeutralCompactInverse.lean",
+      "source_blob": "20a5a76f243706501a617d48e907e2e63b948967",
+      "source_sha256": "de25100399d4ade4fdfcf06e75af7a8e97efd21c2c94541c38989b9ffc785f0a",
+      "printed_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "checked_head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "checked_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "compiler_job_id": 115610861780,
+      "authority": "PROVED_SCOPED_SUPPORTING_STATEMENT",
+      "aggregate_binding_receipt": false
+    },
+    {
+      "declaration": "Zeta23.CCM.nativePoleCompactInverseDerivative_zero_outside",
+      "module": "Zeta23.CCM.PoleNeutralCompactInverse",
+      "source_path": "Zeta23/CCM/PoleNeutralCompactInverse.lean",
+      "source_blob": "20a5a76f243706501a617d48e907e2e63b948967",
+      "source_sha256": "de25100399d4ade4fdfcf06e75af7a8e97efd21c2c94541c38989b9ffc785f0a",
+      "printed_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "checked_head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "checked_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "compiler_job_id": 115610861780,
+      "authority": "PROVED_SCOPED_SUPPORTING_STATEMENT",
+      "aggregate_binding_receipt": false
+    },
+    {
+      "declaration": "Zeta23.CCM.nativePoleCompactInverse_hasCompactSupport",
+      "module": "Zeta23.CCM.PoleNeutralCompactInverse",
+      "source_path": "Zeta23/CCM/PoleNeutralCompactInverse.lean",
+      "source_blob": "20a5a76f243706501a617d48e907e2e63b948967",
+      "source_sha256": "de25100399d4ade4fdfcf06e75af7a8e97efd21c2c94541c38989b9ffc785f0a",
+      "printed_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "checked_head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "checked_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "compiler_job_id": 115610861780,
+      "authority": "PROVED_SCOPED_SUPPORTING_STATEMENT",
+      "aggregate_binding_receipt": false
+    },
+    {
+      "declaration": "Zeta23.CCM.nativePoleCompactInverse_clamped_traces",
+      "module": "Zeta23.CCM.PoleNeutralCompactInverse",
+      "source_path": "Zeta23/CCM/PoleNeutralCompactInverse.lean",
+      "source_blob": "20a5a76f243706501a617d48e907e2e63b948967",
+      "source_sha256": "de25100399d4ade4fdfcf06e75af7a8e97efd21c2c94541c38989b9ffc785f0a",
+      "printed_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "checked_head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "checked_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "compiler_job_id": 115610861780,
+      "authority": "PROVED_SCOPED_SUPPORTING_STATEMENT",
+      "aggregate_binding_receipt": false
+    },
+    {
+      "declaration": "Zeta23.CCM.UniversalSinc.integrable_product_ofReal_smul_moment",
+      "module": "Zeta23.CCM.UniversalSincInverseGevreyBounds",
+      "source_path": "Zeta23/CCM/UniversalSincInverseGevreyBounds.lean",
+      "source_blob": "ad469f0c194f7860bf0857bef968573e8992d8ab",
+      "source_sha256": "cf3edde9b5cbc5b22bb7b1972b5588da83c4edac0b9f09269015c472a4408353",
+      "printed_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "checked_head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "checked_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "compiler_job_id": 115610861780,
+      "authority": "PROVED_SCOPED_SUPPORTING_STATEMENT",
+      "aggregate_binding_receipt": false
+    },
+    {
+      "declaration": "Zeta23.CCM.UniversalSinc.iteratedDeriv_fourier_product",
+      "module": "Zeta23.CCM.UniversalSincInverseGevreyBounds",
+      "source_path": "Zeta23/CCM/UniversalSincInverseGevreyBounds.lean",
+      "source_blob": "ad469f0c194f7860bf0857bef968573e8992d8ab",
+      "source_sha256": "cf3edde9b5cbc5b22bb7b1972b5588da83c4edac0b9f09269015c472a4408353",
+      "printed_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "checked_head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "checked_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "compiler_job_id": 115610861780,
+      "authority": "PROVED_SCOPED_SUPPORTING_STATEMENT",
+      "aggregate_binding_receipt": false
+    },
+    {
+      "declaration": "Zeta23.CCM.UniversalSinc.norm_iteratedDeriv_fourier_product_le_moment",
+      "module": "Zeta23.CCM.UniversalSincInverseGevreyBounds",
+      "source_path": "Zeta23/CCM/UniversalSincInverseGevreyBounds.lean",
+      "source_blob": "ad469f0c194f7860bf0857bef968573e8992d8ab",
+      "source_sha256": "cf3edde9b5cbc5b22bb7b1972b5588da83c4edac0b9f09269015c472a4408353",
+      "printed_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "checked_head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "checked_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "compiler_job_id": 115610861780,
+      "authority": "PROVED_SCOPED_SUPPORTING_STATEMENT",
+      "aggregate_binding_receipt": false
+    },
+    {
+      "declaration": "Zeta23.CCM.UniversalSinc.norm_iteratedDeriv_inverseCandidate_le_moment",
+      "module": "Zeta23.CCM.UniversalSincInverseGevreyBounds",
+      "source_path": "Zeta23/CCM/UniversalSincInverseGevreyBounds.lean",
+      "source_blob": "ad469f0c194f7860bf0857bef968573e8992d8ab",
+      "source_sha256": "cf3edde9b5cbc5b22bb7b1972b5588da83c4edac0b9f09269015c472a4408353",
+      "printed_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "checked_head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "checked_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "compiler_job_id": 115610861780,
+      "authority": "PROVED_SCOPED_SUPPORTING_STATEMENT",
+      "aggregate_binding_receipt": false
+    },
+    {
+      "declaration": "Zeta23.CCM.UniversalSinc.norm_iteratedDeriv_inverseCandidate_le_gevrey",
+      "module": "Zeta23.CCM.UniversalSincInverseGevreyBounds",
+      "source_path": "Zeta23/CCM/UniversalSincInverseGevreyBounds.lean",
+      "source_blob": "ad469f0c194f7860bf0857bef968573e8992d8ab",
+      "source_sha256": "cf3edde9b5cbc5b22bb7b1972b5588da83c4edac0b9f09269015c472a4408353",
+      "printed_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "checked_head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "checked_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "compiler_job_id": 115610861780,
+      "authority": "PROVED_SCOPED_SUPPORTING_STATEMENT",
+      "aggregate_binding_receipt": false
+    },
+    {
+      "declaration": "Zeta23.CCM.UniversalSinc.originalSourceLaw_eq_withDensity",
+      "module": "Zeta23.CCM.UniversalSincSourceDensityIdentification",
+      "source_path": "Zeta23/CCM/UniversalSincSourceDensityIdentification.lean",
+      "source_blob": "c181a0e2cfb0eba70cd22d791d6590dec6c176fd",
+      "source_sha256": "20447aaa7c158e923cbedaacfce6ceda3c318f745b7e36f98bab1dbefa541413",
+      "printed_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "checked_head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "checked_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "compiler_job_id": 115610861780,
+      "authority": "PROVED_SCOPED_SUPPORTING_STATEMENT",
+      "aggregate_binding_receipt": false
+    },
+    {
+      "declaration": "Zeta23.CCM.UniversalSinc.fourier_originalDensityComplex",
+      "module": "Zeta23.CCM.UniversalSincSourceDensityIdentification",
+      "source_path": "Zeta23/CCM/UniversalSincSourceDensityIdentification.lean",
+      "source_blob": "c181a0e2cfb0eba70cd22d791d6590dec6c176fd",
+      "source_sha256": "20447aaa7c158e923cbedaacfce6ceda3c318f745b7e36f98bab1dbefa541413",
+      "printed_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "checked_head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "checked_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "compiler_job_id": 115610861780,
+      "authority": "PROVED_SCOPED_SUPPORTING_STATEMENT",
+      "aggregate_binding_receipt": false
+    },
+    {
+      "declaration": "Zeta23.CCM.UniversalSinc.inverseCandidate_eq_originalDensityComplex",
+      "module": "Zeta23.CCM.UniversalSincSourceDensityIdentification",
+      "source_path": "Zeta23/CCM/UniversalSincSourceDensityIdentification.lean",
+      "source_blob": "c181a0e2cfb0eba70cd22d791d6590dec6c176fd",
+      "source_sha256": "20447aaa7c158e923cbedaacfce6ceda3c318f745b7e36f98bab1dbefa541413",
+      "printed_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "checked_head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "checked_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "compiler_job_id": 115610861780,
+      "authority": "PROVED_SCOPED_SUPPORTING_STATEMENT",
+      "aggregate_binding_receipt": false
+    },
+    {
+      "declaration": "Zeta23.CCM.UniversalSinc.contDiff_originalDensityCandidate",
+      "module": "Zeta23.CCM.UniversalSincSourceDensityIdentification",
+      "source_path": "Zeta23/CCM/UniversalSincSourceDensityIdentification.lean",
+      "source_blob": "c181a0e2cfb0eba70cd22d791d6590dec6c176fd",
+      "source_sha256": "20447aaa7c158e923cbedaacfce6ceda3c318f745b7e36f98bab1dbefa541413",
+      "printed_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "checked_head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "checked_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "compiler_job_id": 115610861780,
+      "authority": "PROVED_SCOPED_SUPPORTING_STATEMENT",
+      "aggregate_binding_receipt": false
+    },
+    {
+      "declaration": "Zeta23.CCM.UniversalSinc.originalDensityCandidate_even",
+      "module": "Zeta23.CCM.UniversalSincSourceSymmetry",
+      "source_path": "Zeta23/CCM/UniversalSincSourceSymmetry.lean",
+      "source_blob": "de7107e7d32a148bd1e3a01b556ba678d7d668e6",
+      "source_sha256": "f81de1ff6a76765e840785b8f9bb4a446a36e1ce28a1145debd98447c29774af",
+      "printed_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "checked_head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "checked_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "compiler_job_id": 115610861780,
+      "authority": "PROVED_SCOPED_SUPPORTING_STATEMENT",
+      "aggregate_binding_receipt": false
+    },
+    {
+      "declaration": "Zeta23.CCM.UniversalSinc.originalDensityComplex_even",
+      "module": "Zeta23.CCM.UniversalSincSourceSymmetry",
+      "source_path": "Zeta23/CCM/UniversalSincSourceSymmetry.lean",
+      "source_blob": "de7107e7d32a148bd1e3a01b556ba678d7d668e6",
+      "source_sha256": "f81de1ff6a76765e840785b8f9bb4a446a36e1ce28a1145debd98447c29774af",
+      "printed_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "checked_head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "checked_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "compiler_job_id": 115610861780,
+      "authority": "PROVED_SCOPED_SUPPORTING_STATEMENT",
+      "aggregate_binding_receipt": false
+    },
+    {
+      "declaration": "Zeta23.CCM.UniversalSinc.paperFT_originalDensityComplex",
+      "module": "Zeta23.CCM.UniversalSincSourceComplexTransform",
+      "source_path": "Zeta23/CCM/UniversalSincSourceComplexTransform.lean",
+      "source_blob": "74645f74d1140d76d9717c7d1093c2817fa6483a",
+      "source_sha256": "cbc280a8956c98e47ca4b26bb40a6a8e8922c9d217b8bd473331c5869a035138",
+      "printed_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "checked_head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "checked_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "compiler_job_id": 115610861780,
+      "authority": "PROVED_SCOPED_SUPPORTING_STATEMENT",
+      "aggregate_binding_receipt": false
+    },
+    {
+      "declaration": "Zeta23.CCM.UniversalSinc.fixed_paperFT_originalDensityComplex",
+      "module": "Zeta23.CCM.UniversalSincSourceComplexTransform",
+      "source_path": "Zeta23/CCM/UniversalSincSourceComplexTransform.lean",
+      "source_blob": "74645f74d1140d76d9717c7d1093c2817fa6483a",
+      "source_sha256": "cbc280a8956c98e47ca4b26bb40a6a8e8922c9d217b8bd473331c5869a035138",
+      "printed_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "checked_head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "checked_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "compiler_job_id": 115610861780,
+      "authority": "PROVED_SCOPED_SUPPORTING_STATEMENT",
+      "aggregate_binding_receipt": false
+    },
+    {
+      "declaration": "Zeta23.ExceptionalZero.positiveLaplaceTilt_isFiniteMeasure",
+      "module": "Zeta23.ExceptionalZero.PositiveLaplaceTilt",
+      "source_path": "Zeta23/ExceptionalZero/PositiveLaplaceTilt.lean",
+      "source_blob": "0da72d959369d55183696d8ba3a9d69013f60e16",
+      "source_sha256": "c36c6013995e0f1ad71cb94996db033f3424d2878becf2febdd8943d87e67eb8",
+      "printed_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "checked_head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "checked_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "compiler_job_id": 115610861780,
+      "authority": "PROVED_SCOPED_SUPPORTING_STATEMENT",
+      "aggregate_binding_receipt": false
+    },
+    {
+      "declaration": "Zeta23.ExceptionalZero.positiveLaplaceTilt_apply_univ",
+      "module": "Zeta23.ExceptionalZero.PositiveLaplaceTilt",
+      "source_path": "Zeta23/ExceptionalZero/PositiveLaplaceTilt.lean",
+      "source_blob": "0da72d959369d55183696d8ba3a9d69013f60e16",
+      "source_sha256": "c36c6013995e0f1ad71cb94996db033f3424d2878becf2febdd8943d87e67eb8",
+      "printed_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "checked_head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "checked_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "compiler_job_id": 115610861780,
+      "authority": "PROVED_SCOPED_SUPPORTING_STATEMENT",
+      "aggregate_binding_receipt": false
+    },
+    {
+      "declaration": "Zeta23.ExceptionalZero.positiveLaplaceTilt_ae_nonneg",
+      "module": "Zeta23.ExceptionalZero.PositiveLaplaceTilt",
+      "source_path": "Zeta23/ExceptionalZero/PositiveLaplaceTilt.lean",
+      "source_blob": "0da72d959369d55183696d8ba3a9d69013f60e16",
+      "source_sha256": "c36c6013995e0f1ad71cb94996db033f3424d2878becf2febdd8943d87e67eb8",
+      "printed_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "checked_head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "checked_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "compiler_job_id": 115610861780,
+      "authority": "PROVED_SCOPED_SUPPORTING_STATEMENT",
+      "aggregate_binding_receipt": false
+    },
+    {
+      "declaration": "Zeta23.ExceptionalZero.integrable_exp_positiveLaplaceTilt_iff",
+      "module": "Zeta23.ExceptionalZero.PositiveLaplaceTilt",
+      "source_path": "Zeta23/ExceptionalZero/PositiveLaplaceTilt.lean",
+      "source_blob": "0da72d959369d55183696d8ba3a9d69013f60e16",
+      "source_sha256": "c36c6013995e0f1ad71cb94996db033f3424d2878becf2febdd8943d87e67eb8",
+      "printed_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "checked_head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "checked_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "compiler_job_id": 115610861780,
+      "authority": "PROVED_SCOPED_SUPPORTING_STATEMENT",
+      "aggregate_binding_receipt": false
+    },
+    {
+      "declaration": "Zeta23.ExceptionalZero.integrable_cexp_positiveLaplaceTilt_iff",
+      "module": "Zeta23.ExceptionalZero.PositiveLaplaceTilt",
+      "source_path": "Zeta23/ExceptionalZero/PositiveLaplaceTilt.lean",
+      "source_blob": "0da72d959369d55183696d8ba3a9d69013f60e16",
+      "source_sha256": "c36c6013995e0f1ad71cb94996db033f3424d2878becf2febdd8943d87e67eb8",
+      "printed_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "checked_head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "checked_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "compiler_job_id": 115610861780,
+      "authority": "PROVED_SCOPED_SUPPORTING_STATEMENT",
+      "aggregate_binding_receipt": false
+    },
+    {
+      "declaration": "Zeta23.ExceptionalZero.complexMGF_positiveLaplaceTilt",
+      "module": "Zeta23.ExceptionalZero.PositiveLaplaceTilt",
+      "source_path": "Zeta23/ExceptionalZero/PositiveLaplaceTilt.lean",
+      "source_blob": "0da72d959369d55183696d8ba3a9d69013f60e16",
+      "source_sha256": "c36c6013995e0f1ad71cb94996db033f3424d2878becf2febdd8943d87e67eb8",
+      "printed_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "checked_head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "checked_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "compiler_job_id": 115610861780,
+      "authority": "PROVED_SCOPED_SUPPORTING_STATEMENT",
+      "aggregate_binding_receipt": false
+    },
+    {
+      "declaration": "Zeta23.ExceptionalZero.zero_mem_interior_integrableExpSet_positiveLaplaceTilt",
+      "module": "Zeta23.ExceptionalZero.PositiveLaplaceTilt",
+      "source_path": "Zeta23/ExceptionalZero/PositiveLaplaceTilt.lean",
+      "source_blob": "0da72d959369d55183696d8ba3a9d69013f60e16",
+      "source_sha256": "c36c6013995e0f1ad71cb94996db033f3424d2878becf2febdd8943d87e67eb8",
+      "printed_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "checked_head": "75a3bd63ec2889a5c354e874c981b2a1ea25d0f8",
+      "checked_tree": "2ad759098ba5788813a9b2b1cc9cea62a24ddf39",
+      "compiler_job_id": 115610861780,
+      "authority": "PROVED_SCOPED_SUPPORTING_STATEMENT",
+      "aggregate_binding_receipt": false
+    }
+  ],
+  "supporting_formal_note": "Six complete modules compiled individually within failed aggregate; only exact printed standard-axiom statements listed. Step123 binding/receipt gates were skipped. No full producer, normalized finite image or RH authority.",
+  "historical_comparison": {
+    "native": {
+      "pairs_equal_d88_after_elapsed_only": true,
+      "push_pr_pairs_equal_after_elapsed_only": true,
+      "source_maps_equal_d88": true,
+      "push_pr_source_maps_equal": true,
+      "pair_count": 44,
+      "row_count": 176,
+      "fresh_checker_bits": 1024,
+      "verified_pairs": 44,
+      "unresolved_pairs": 0,
+      "universal_theorem_authority": false
+    },
+    "odd_K2": {
+      "payload_count": 15,
+      "byte_identical_d88": 15,
+      "accepted_intervals": 350,
+      "unresolved_intervals": 0
+    },
+    "audit": {
+      "results": 44,
+      "reports": 8,
+      "passed": true,
+      "missing": [],
+      "extra": [],
+      "duplicates": [],
+      "errors": [],
+      "execution_dispositions_equal_d88": true,
+      "theorem_promotion": false
+    },
+    "exact_files": [
+      {
+        "file": "argon_continuum_and_roots_exact.json",
+        "byte_identical_d88": true
+      },
+      {
+        "file": "deep_threshold_exact.json",
+        "byte_identical_d88": true
+      },
+      {
+        "file": "detector_schur_provenance.json",
+        "byte_identical_d88": true
+      },
+      {
+        "file": "inverse_budgets_and_gap_exact.json",
+        "byte_identical_d88": true
+      },
+      {
+        "file": "native_divisor_controls.json",
+        "byte_identical_d88": true
+      },
+      {
+        "file": "native_mass_candidate.json",
+        "byte_identical_d88": true
+      },
+      {
+        "file": "native_panel_check.json",
+        "byte_identical_d88": true
+      },
+      {
+        "file": "native_panel_check_preseam.json",
+        "byte_identical_d88": true
+      },
+      {
+        "file": "output_mutations.json",
+        "byte_identical_d88": true
+      },
+      {
+        "file": "pole_neutral_exact.json",
+        "byte_identical_d88": true
+      },
+      {
+        "file": "strict_odd_and_tie_exact.json",
+        "byte_identical_d88": true
+      }
+    ],
+    "second": {
+      "old_logged_boxes": 18,
+      "current_tested": 9,
+      "required": 18,
+      "passed": 8,
+      "gate": "UNRESOLVED",
+      "elapsed_seconds": 1201.36,
+      "source_digest_maps_equal_d88": true,
+      "first_eight_geometry_verdict_nodes_identical_d88": true,
+      "ninth_previous": {
+        "Q": 14,
+        "t": "2033825479935501/5000000000000000",
+        "radius": "1/65536",
+        "parity": "even",
+        "verdict": "PASS",
+        "nodes": 7
+      },
+      "ninth_current": {
+        "Q": 14,
+        "accepted": 1,
+        "kind": "primary",
+        "nodes": 3,
+        "parity": "even",
+        "radius": "1/65536",
+        "t": "2033825479935501/5000000000000000",
+        "unresolved": [
+          {
+            "depth": 1,
+            "radius": "1/131072",
+            "reason": "RESOURCE_LIMIT",
+            "t": "8135149331851379/20000000000000000"
+          },
+          {
+            "depth": 2,
+            "radius": "1/262144",
+            "reason": "RESOURCE_LIMIT",
+            "t": "16270756427374633/40000000000000000"
+          }
+        ],
+        "verdict": "UNRESOLVED"
+      },
+      "certified_negative_stop": false,
+      "all_aperture_positivity_certified": false,
+      "cause": "SHARED_1200_SECOND_WALL_CLOCK_BUDGET_EXHAUSTED",
+      "budget": {
+        "bits": 384,
+        "depth": 40,
+        "max_nodes_per_box": 1000,
+        "time_seconds_all_boxes": 1200,
+        "max_boxes": 0
+      },
+      "workflow_source_unchanged_d88": true,
+      "old_result_retained_at_own_source": true,
+      "no_mathematical_falsification": true,
+      "conditional_fourth_eligibility": "needs.wp4-k3-frozen-feasibility.outputs.disposition == 'UNRESOLVED'",
+      "fourth_job_id": 115618054166,
+      "fourth_completed": "2026-10-14T00:44:31Z",
+      "fourth_disposition": "PASS_18_OF_18_FROZEN_BOXES",
+      "fourth_validation": "EXACT_LOWORDER_ARBS_OVERLAP_COUNT_2",
+      "fourth_budget": {
+        "validation_bits": 192,
+        "certificate_bits": 384,
+        "time_seconds_all_boxes": 15000,
+        "max_boxes": 0
+      },
+      "fourth_source_digest_maps_equal_SECOND": true,
+      "continuous_D2_acceptance": false
+    },
+    "wp5_byte_identical_d88": true,
+    "wp6_byte_identical_d88": true
+  },
+  "SECOND_FOURTH_research_comparison": {
+    "old_logged_boxes": 18,
+    "current_tested": 9,
+    "required": 18,
+    "passed": 8,
+    "gate": "UNRESOLVED",
+    "elapsed_seconds": 1201.36,
+    "source_digest_maps_equal_d88": true,
+    "first_eight_geometry_verdict_nodes_identical_d88": true,
+    "ninth_previous": {
+      "Q": 14,
+      "t": "2033825479935501/5000000000000000",
+      "radius": "1/65536",
+      "parity": "even",
+      "verdict": "PASS",
+      "nodes": 7
+    },
+    "ninth_current": {
+      "Q": 14,
+      "accepted": 1,
+      "kind": "primary",
+      "nodes": 3,
+      "parity": "even",
+      "radius": "1/65536",
+      "t": "2033825479935501/5000000000000000",
+      "unresolved": [
+        {
+          "depth": 1,
+          "radius": "1/131072",
+          "reason": "RESOURCE_LIMIT",
+          "t": "8135149331851379/20000000000000000"
+        },
+        {
+          "depth": 2,
+          "radius": "1/262144",
+          "reason": "RESOURCE_LIMIT",
+          "t": "16270756427374633/40000000000000000"
+        }
+      ],
+      "verdict": "UNRESOLVED"
+    },
+    "certified_negative_stop": false,
+    "all_aperture_positivity_certified": false,
+    "cause": "SHARED_1200_SECOND_WALL_CLOCK_BUDGET_EXHAUSTED",
+    "budget": {
+      "bits": 384,
+      "depth": 40,
+      "max_nodes_per_box": 1000,
+      "time_seconds_all_boxes": 1200,
+      "max_boxes": 0
+    },
+    "workflow_source_unchanged_d88": true,
+    "old_result_retained_at_own_source": true,
+    "no_mathematical_falsification": true,
+    "conditional_fourth_eligibility": "needs.wp4-k3-frozen-feasibility.outputs.disposition == 'UNRESOLVED'",
+    "fourth_job_id": 115618054166,
+    "fourth_completed": "2026-10-14T00:44:31Z",
+    "fourth_disposition": "PASS_18_OF_18_FROZEN_BOXES",
+    "fourth_validation": "EXACT_LOWORDER_ARBS_OVERLAP_COUNT_2",
+    "fourth_budget": {
+      "validation_bits": 192,
+      "certificate_bits": 384,
+      "time_seconds_all_boxes": 15000,
+      "max_boxes": 0
+    },
+    "fourth_source_digest_maps_equal_SECOND": true,
+    "continuous_D2_acceptance": false
+  },
+  "prior_d88_summary_correction": {
+    "job_id": 115597439693,
+    "old_summary": "RESIDUAL_CELL_J_UNRESOLVED_PRESERVED",
+    "correct_disposition": "FROZEN_HULL_GLOBAL_MONOTONE_J_POSITIVE",
+    "prior_log_already_reported": "completed_classification GLOBAL_MONOTONE_ORIENTATION",
+    "current_confirmation": {
+      "completed_unresolved_span_count": 0,
+      "certified_t_fraction": "1",
+      "full_hull_signed_monotonicity": true,
+      "bounded_distinct_aperture_twin_exclusion": true
+    },
+    "scope": "Frozen trajectory hull interval evidence; theorem_promotion/FB05/negative-root exclusion/RH false",
+    "is_new_mathematical_result": false,
+    "frozen_d88_record_modified": false
+  },
+  "RHKG_disposition": {
+    "job_id": 115611273664,
+    "registered_bindings": 118,
+    "exported_declarations": 9419,
+    "exported_dependencies": 387695,
+    "missing_module_dispositions": 74,
+    "previous_d88_missing": 56,
+    "generated_state_gate": "REJECTED",
+    "compiler_receipt_scope": "Registered historical theorem roots only"
+  },
+  "D2_external_ancestor_campaign": {
+    "snapshot_utc": "2026-10-14 00:44:31 UTC",
+    "run_id": 38461259594,
+    "head": "4789c93f6dd60817936793935211522a0b8100e1",
+    "status": "in_progress",
+    "conclusion": null,
+    "artifacts": 0,
+    "touched_by_harvest": false
+  },
+  "log_unavailability": [
+    {
+      "id": 115611021433,
+      "name": "post202-q14-composite-parity-gap",
+      "availability": "LOCAL_LOG_REVIEWED_NO_CANCELLED_AUTHORITY",
+      "lines": [
+        "2026-10-14T00:22:48.1068801Z   \"status\": \"PASS\",",
+        "2026-10-14T00:23:41.0509024Z   \"status\": \"PASS\",",
+        "2026-10-14T00:23:41.8081077Z   \"status\": \"PASS\",",
+        "2026-10-14T00:23:42.5567046Z   \"status\": \"PASS\",",
+        "2026-10-14T00:44:45.1025598Z ##[error]The operation was canceled."
+      ]
+    },
+    {
+      "id": 115611038770,
+      "name": "source-falsifier-research",
+      "availability": "LOCAL_LOG_REVIEWED_NO_CANCELLED_AUTHORITY",
+      "lines": [
+        "2026-10-14T00:41:20.1267111Z {\"status\": \"PASS\", \"claim_status\": \"RH_OPEN\", \"work_packages\": 8, \"protected_open\": 8, \"scientific_gate\": \"ledger consistency only\"}",
+        "2026-10-14T00:45:10.0112922Z ##[error]The operation was canceled."
+      ]
+    },
+    {
+      "id": 115611039041,
+      "name": "lean-source-inertia",
+      "availability": "LOCAL_LOG_REVIEWED_NO_CANCELLED_AUTHORITY",
+      "lines": [
+        "2026-10-14T00:44:21.4972209Z ##[error]The operation was canceled."
+      ]
+    },
+    {
+      "id": 115611356886,
+      "name": "post200-q14-discrepancy-mechanism",
+      "availability": "LOCAL_LOG_REVIEWED_NO_CANCELLED_AUTHORITY",
+      "lines": [
+        "2026-10-14T00:24:12.8428133Z   \"status\": \"PASS\",",
+        "2026-10-14T00:25:38.6510807Z   \"status\": \"PASS\",",
+        "2026-10-14T00:25:39.4547688Z   \"status\": \"PASS\",",
+        "2026-10-14T00:25:40.3212418Z   \"status\": \"PASS\",",
+        "2026-10-14T00:44:53.4493081Z ##[error]The operation was canceled."
+      ]
+    },
+    {
+      "id": 115611273265,
+      "name": "python-rhrc",
+      "availability": "LOCAL_LOG_REVIEWED_NO_CANCELLED_AUTHORITY",
+      "lines": [
+        "2026-10-14T00:21:17.8876988Z test_required_decision_commutation_missing_fails_closed (test_deformation_budget.DeformationBudgetTests.test_required_decision_commutation_missing_fails_closed) ... ok",
+        "2026-10-14T00:44:52.5740220Z ##[error]The operation was canceled."
+      ]
+    },
+    {
+      "id": 115610877696,
+      "name": "lean-first-crossing",
+      "availability": "UNAVAILABLE",
+      "detail": [
+        {
+          "type": "text",
+          "text": "tool call error: tool call failed for `codex_apps/github.fetch_workflow_job_logs`\n\nCaused by:\n    Transport closed"
+        }
+      ]
+    },
+    {
+      "id": 115618788744,
+      "name": "campaign-complete",
+      "availability": "UNAVAILABLE",
+      "detail": [
+        {
+          "type": "text",
+          "text": "GitHub API error 404: \u00ef\u00bb\u00bf<?xml version=\"1.0\" encoding=\"utf-8\"?><Error><Code>BlobNotFound</Code><Message>The specified blob does not exist.\nRequestId:215be3b5-b01e-0008-4575-5bc0ae000000\nTime:2026-10-14T00:50:05.7536451Z</Message></Error>"
+        }
+      ]
+    },
+    {
+      "id": 115612537503,
+      "name": "research-calibration",
+      "availability": "LOCAL_LOG_REVIEWED_NO_CANCELLED_AUTHORITY",
+      "lines": [
+        "2026-10-14T00:45:21.4274249Z ##[error]The operation was canceled."
+      ]
+    },
+    {
+      "id": 115612537754,
+      "name": "lean-compressed-calculus",
+      "availability": "LOCAL_LOG_REVIEWED_NO_CANCELLED_AUTHORITY",
+      "lines": [
+        "2026-10-14T00:44:39.7224453Z ##[error]The operation was canceled.",
+        "2026-10-14T00:44:39.7228300Z ##[end-action id=__leanprover_lean-action.build;outcome=cancelled;conclusion=cancelled;duration_ms=896437]"
+      ]
+    },
+    {
+      "id": 115612537859,
+      "name": "lean-contact-completion",
+      "availability": "LOCAL_LOG_REVIEWED_NO_CANCELLED_AUTHORITY",
+      "lines": [
+        "2026-10-14T00:45:06.1569904Z ##[error]The operation was canceled.",
+        "2026-10-14T00:45:06.1576660Z ##[end-action id=__leanprover_lean-action.build;outcome=cancelled;conclusion=cancelled;duration_ms=767909]"
+      ]
+    },
+    {
+      "id": 115618965601,
+      "name": "contact-calculus-complete",
+      "availability": "LOCAL_LOG_REVIEWED_NO_CANCELLED_AUTHORITY",
+      "lines": [
+        "2026-10-14T00:45:53.6562871Z lean-compressed-calculus=cancelled",
+        "2026-10-14T00:45:53.6563448Z lean-contact-completion=cancelled",
+        "2026-10-14T00:45:53.6563942Z research-calibration=cancelled",
+        "2026-10-14T00:45:53.6564402Z arb-contact-balance=cancelled",
+        "2026-10-14T00:45:53.6578010Z ##[error]Process completed with exit code 1."
+      ]
+    },
+    {
+      "id": 115618966707,
+      "name": "arb-contact-balance",
+      "availability": "UNAVAILABLE",
+      "detail": [
+        {
+          "type": "text",
+          "text": "GitHub API error 404: \u00ef\u00bb\u00bf<?xml version=\"1.0\" encoding=\"utf-8\"?><Error><Code>BlobNotFound</Code><Message>The specified blob does not exist.\nRequestId:b23b5302-a01e-002a-8075-5bbea4000000\nTime:2026-10-14T00:50:05.7305984Z</Message></Error>"
+        }
+      ]
+    }
+  ],
+  "artifact_reviews": [
+    {
+      "artifact_id": 11861791430,
+      "zip_sha256": "e808d1efe61ddf86ebd5337390f9e05b78331690fa133a3b40c543ae9e7ede3b",
+      "api_digest_verified": true,
+      "files": [
+        {
+          "file": "k2_odd_Q01.json",
+          "sha256": "e9d4727dce1964538c52974689b9f203ac1d89b10f9d884aa3025bdd2217eac9",
+          "array_counts": {
+            "accepted": 72,
+            "left": 2,
+            "right": 2,
+            "unresolved": 0
+          },
+          "scope_status": "PASS"
+        },
+        {
+          "file": "k2_odd_Q02.json",
+          "sha256": "4fcd922757d3d3a295131c641ccb4828cf7e437a9aef6d424a53531cf4e34e87",
+          "array_counts": {
+            "accepted": 6,
+            "left": 2,
+            "right": 2,
+            "unresolved": 0
+          },
+          "scope_status": "PASS"
+        },
+        {
+          "file": "k2_odd_Q03.json",
+          "sha256": "bba5b7e96c08ba0160f216c3fbe61af43de737808c214f509ad419cdccd2181e",
+          "array_counts": {
+            "accepted": 16,
+            "left": 2,
+            "right": 2,
+            "unresolved": 0
+          },
+          "scope_status": "PASS"
+        },
+        {
+          "file": "k2_odd_Q04.json",
+          "sha256": "f0599c406f73fbdfe4f20b71103668e50d77af670f96fbbf70866e30704a458b",
+          "array_counts": {
+            "accepted": 10,
+            "left": 2,
+            "right": 2,
+            "unresolved": 0
+          },
+          "scope_status": "PASS"
+        },
+        {
+          "file": "k2_odd_Q05.json",
+          "sha256": "d168ddb1f00d263c7dc555da32c2d712d4dbe6586d716758df369c0f7bd3f049",
+          "array_counts": {
+            "accepted": 28,
+            "left": 2,
+            "right": 2,
+            "unresolved": 0
+          },
+          "scope_status": "PASS"
+        },
+        {
+          "file": "k2_odd_Q06.json",
+          "sha256": "f150dbe4b38dbf470d4c2d90734e7276af69dd0a674925afe18acb24d18860d8",
+          "array_counts": {
+            "accepted": 19,
+            "left": 2,
+            "right": 2,
+            "unresolved": 0
+          },
+          "scope_status": "PASS"
+        },
+        {
+          "file": "k2_odd_Q07.json",
+          "sha256": "8cf001e4129bd902aa5e98694619705beb61167eaec1c626f6849db20e563ee3",
+          "array_counts": {
+            "accepted": 16,
+            "left": 2,
+            "right": 2,
+            "unresolved": 0
+          },
+          "scope_status": "PASS"
+        },
+        {
+          "file": "k2_odd_Q08.json",
+          "sha256": "8a2006dc97ff48e6731ed7841be34ee6ec78dba82ad97d6174be4cbac07931fe",
+          "array_counts": {
+            "accepted": 20,
+            "left": 2,
+            "right": 2,
+            "unresolved": 0
+          },
+          "scope_status": "PASS"
+        },
+        {
+          "file": "k2_odd_Q09.json",
+          "sha256": "f24620b61ae2205ada53913795526c8896b05cef58b70aed4cd90877dbb5658a",
+          "array_counts": {
+            "accepted": 29,
+            "left": 2,
+            "right": 2,
+            "unresolved": 0
+          },
+          "scope_status": "PASS"
+        },
+        {
+          "file": "k2_odd_Q10.json",
+          "sha256": "5e3c57ed993b1e476d4ea995b57c4e93ad6f114932830fe3c60b3c12bdc3f58e",
+          "array_counts": {
+            "accepted": 16,
+            "left": 2,
+            "right": 2,
+            "unresolved": 0
+          },
+          "scope_status": "PASS"
+        },
+        {
+          "file": "k2_odd_Q11.json",
+          "sha256": "bd593d21919fd623bf9d23c19d8671ae13aa45d74c28fa0464135a749e342d98",
+          "array_counts": {
+            "accepted": 16,
+            "left": 2,
+            "right": 2,
+            "unresolved": 0
+          },
+          "scope_status": "PASS"
+        },
+        {
+          "file": "k2_odd_Q12.json",
+          "sha256": "95f40ff2d5c5db9d81c8d2b31ec11469574d6c62fe563dca5476aef2b39197d5",
+          "array_counts": {
+            "accepted": 16,
+            "left": 2,
+            "right": 2,
+            "unresolved": 0
+          },
+          "scope_status": "PASS"
+        },
+        {
+          "file": "k2_odd_Q13.json",
+          "sha256": "603d5e5bd01c46c994508fd4d4eb8c175ea0b9d0e9ee488dac3ef50a792c209b",
+          "array_counts": {
+            "accepted": 22,
+            "left": 2,
+            "right": 2,
+            "unresolved": 0
+          },
+          "scope_status": "PASS"
+        },
+        {
+          "file": "k2_odd_Q15.json",
+          "sha256": "4a1e135ae69f766511ed98f0c47e17120b5e958911dcbb53fe29ff4517c05ef1",
+          "array_counts": {
+            "accepted": 19,
+            "left": 2,
+            "right": 2,
+            "unresolved": 0
+          },
+          "scope_status": "PASS"
+        },
+        {
+          "file": "k2_odd_Q14.json",
+          "sha256": "a86750b19a576bd2ca1ce03b07b753ac865e7d8582a12e2e64d8f1f45561817e",
+          "array_counts": {
+            "accepted": 45,
+            "left": 2,
+            "right": 2,
+            "unresolved": 0
+          },
+          "scope_status": "PASS"
+        },
+        {
+          "file": "manifest.json",
+          "sha256": "883cac89b4afb5b075ed6abaace7fdea77a3473eda19c899eb5fe8f59e41ec79",
+          "array_counts": {
+            "legal_odd_generator": 5,
+            "records": 15
+          },
+          "scope_status": "INTERVAL_EVIDENCE"
+        }
+      ]
+    },
+    {
+      "artifact_id": 11860583679,
+      "zip_sha256": "f14c9cff1cd716dc7f4948b3798c62002be3b9fc3753c6f8368cc7d0e8cb8b1d",
+      "api_digest_verified": true,
+      "files": [
+        {
+          "file": "post287-wp5.json",
+          "sha256": "6044d5f40acca2df746647d9d025cc7664bbe2dbfea349bde3ece1ab4adae3be",
+          "array_counts": {
+            "not_claimed": 4,
+            "samples": 2
+          },
+          "scope_status": "INTERVAL_EVIDENCE"
+        }
+      ]
+    },
+    {
+      "artifact_id": 11861426779,
+      "zip_sha256": "24090e4fe5e4bba4b241706449b0953b0ae0d4b1b9764fc7cf74d77a9bbb66ea",
+      "api_digest_verified": true,
+      "files": [
+        {
+          "file": "native_panel.json",
+          "sha256": "5a36252c858f962cdfa1f5a73f62fd3c01aec92b11c006927f1acf1459b3641b",
+          "array_counts": {
+            "pairs": 44
+          },
+          "scope_status": "COMPLETE_OBSERVATION_WITH_OPEN_QUANTITIES"
+        },
+        {
+          "file": "native_panel_check.json",
+          "sha256": "0da5a03c88630e04c0aff207fd913fa7e78547efb3fe7c66b25206cfb2c66a9b",
+          "array_counts": {
+            "receipts": 44
+          },
+          "scope_status": "CHECKED_WITH_OPEN_UNIVERSAL_SCOPE"
+        }
+      ]
+    },
+    {
+      "artifact_id": 11861366067,
+      "zip_sha256": "729dcf0cd07e7b8b37c8c751774718f43cddf001ec597dceef0f6e841c51739c",
+      "api_digest_verified": true,
+      "files": [
+        {
+          "file": "argon_continuum_and_roots_exact.json",
+          "sha256": "8665c6cd62452d2b98205e936ef21dd3a85ec24639fe4dc93c221cfb70357f03",
+          "array_counts": {
+            "continuum_cases": 20,
+            "root_cases": 15
+          },
+          "scope_status": "PASS"
+        },
+        {
+          "file": "detector_schur_provenance.json",
+          "sha256": "471f97deab5911b12a94950fa3fb1e9899892b6d1919e51b6ff2192932a9355a",
+          "array_counts": {},
+          "scope_status": "PASS"
+        },
+        {
+          "file": "deep_threshold_exact.json",
+          "sha256": "2021399882169b17ee4ccc076e9edf255191f13dd97862a6b5f550aed0436d3d",
+          "array_counts": {
+            "rows": 192
+          },
+          "scope_status": "PASS"
+        },
+        {
+          "file": "inverse_budgets_and_gap_exact.json",
+          "sha256": "13761445fd4ea964c303081e63ad2558a3d1b784dd3e7ce84581ecf63d37c644",
+          "array_counts": {
+            "small_gap_rows": 8
+          },
+          "scope_status": "PASS"
+        },
+        {
+          "file": "native_divisor_controls.json",
+          "sha256": "8475024c3e03e9ffd2e095fc4c2d4bd9a55ddc5989bfa56a61c662e980a93de7",
+          "array_counts": {},
+          "scope_status": "ALTERED_PRIME_REJECTED_BY_NATIVE_DIVISOR_LAW"
+        },
+        {
+          "file": "native_panel_check.json",
+          "sha256": "b55e68323a356ee242bc9e573e4456b9efd63f9457f18a9b0404c06b6fc63561",
+          "array_counts": {
+            "receipts": 44
+          },
+          "scope_status": "CHECKED_WITH_OPEN_UNIVERSAL_SCOPE"
+        },
+        {
+          "file": "native_mass_candidate.json",
+          "sha256": "560e070a657fcb2f8c3089dc88d73c6aff1e2bf0216ae7de0239901ac73d4b38",
+          "array_counts": {
+            "required_analytic_obligations": 4
+          },
+          "scope_status": "FINITE_RATIONAL_MASS_CANDIDATE"
+        },
+        {
+          "file": "native_panel_check_preseam.json",
+          "sha256": "794c7f4a836a8689457a063e730db2f9a925fcc65f102f630e87caff04780086",
+          "array_counts": {
+            "receipts": 44
+          },
+          "scope_status": "CHECKED_WITH_UNRESOLVED_SCOPE"
+        },
+        {
+          "file": "output_mutations.json",
+          "sha256": "e4840227a7cc7430257bec96ed8798be516a135e4cd0aaa9b6a6eef800acb27e",
+          "array_counts": {
+            "rejected": 45
+          },
+          "scope_status": "EVIDENCE_MUTATIONS_REJECTED"
+        },
+        {
+          "file": "pole_neutral_exact.json",
+          "sha256": "cf998ec184657b55ab0329a33eea17b538418698ca6d3d325f1eb330163989df",
+          "array_counts": {
+            "rows": 28
+          },
+          "scope_status": "PASS"
+        },
+        {
+          "file": "strict_odd_and_tie_exact.json",
+          "sha256": "facb33fef9fd0b3b37a66b6b3fc9c43e3a66ae8460f5f364efa146a4f1f1dc5d",
+          "array_counts": {
+            "tie_rows": 4
+          },
+          "scope_status": "PASS"
+        }
+      ]
+    },
+    {
+      "artifact_id": 11860644890,
+      "zip_sha256": "01c7feeaeaa8b4801dece508c7abe8406ced158aa5876ffa9914bdb499c914a4",
+      "api_digest_verified": true,
+      "files": [
+        {
+          "file": "post287-wp6.json",
+          "sha256": "b66568b59d408cb53cde1a81d5862f2a1708afb3a7e1bdb2747f0ae8d6f30751",
+          "array_counts": {
+            "not_claimed": 4,
+            "observations": 2
+          },
+          "scope_status": "EXPERIMENTAL_SIGNAL"
+        }
+      ]
+    },
+    {
+      "artifact_id": 11861981543,
+      "zip_sha256": "0a153f5fc8dcc16e2cfc4ceb4c80457bef1e87edc63281f1e5cdb7469e2127d6",
+      "api_digest_verified": true,
+      "files": [
+        {
+          "file": "HARVEST.json",
+          "sha256": "dba56e30273771d57a8f9590534192bf12d475bfebb355b746a20f861bd82f4d",
+          "array_counts": {},
+          "scope_status": null
+        },
+        {
+          "file": "diagnostic_b_schur_arb.json",
+          "sha256": "b89298f6ca31004a2eb84a1cbab6d33efd2f3d878077dadb59312ab995adab0a",
+          "array_counts": {
+            "nonclaims": 6,
+            "rows": 192
+          },
+          "scope_status": null
+        },
+        {
+          "file": "diagnostic_a_small_aperture.json",
+          "sha256": "5fbb18f33900d387c6b507d07a9964ef843e605d594522362ba267fadcc92677",
+          "array_counts": {
+            "K": 4,
+            "nonclaims": 3,
+            "rows": 4
+          },
+          "scope_status": null
+        },
+        {
+          "file": "diagnostic_c_characteristic.json",
+          "sha256": "ab899e9f923ff22e105679052ce9128e0791702369448f754c933c3d9cf8867d",
+          "array_counts": {
+            "nonclaims": 4,
+            "normalizer_failures": 0,
+            "rows": 12,
+            "successive_K_deltas": 45,
+            "successive_L_deltas": 40
+          },
+          "scope_status": null
+        },
+        {
+          "file": "diagnostic_d_r002.json",
+          "sha256": "3de0146c51f77316124d33728fe91ca0c52612281ff19bdadeab16b0bbdd7150",
+          "array_counts": {
+            "masking_rows": 18,
+            "nonclaims": 4,
+            "specialization_rows": 5
+          },
+          "scope_status": null
+        },
+        {
+          "file": "track_a.json",
+          "sha256": "10228df891ff0e736d6b6d2b688d84483ff903c79ee0c8eff9f4f164ada6dc78",
+          "array_counts": {
+            "diagnostic_only_effective_powers": 8
+          },
+          "scope_status": null
+        },
+        {
+          "file": "track_b.json",
+          "sha256": "1702be050102d1d54eba2da63dcb6a46e5b9683953cb005028096e6ac9df140f",
+          "array_counts": {
+            "cases": 3
+          },
+          "scope_status": null
+        },
+        {
+          "file": "track_c.json",
+          "sha256": "4ca0f8d99c0259f711632a21c1d25ee1d49a7874f3d81a2f85a6875c591b2294",
+          "array_counts": {},
+          "scope_status": null
+        },
+        {
+          "file": "track_d.json",
+          "sha256": "503b9687a2fc36b85622f6b4fd73cabebacf881718f02037d7131ae06ba7b126",
+          "array_counts": {},
+          "scope_status": null
+        }
+      ]
+    },
+    {
+      "artifact_id": 11862256269,
+      "zip_sha256": "e78b3f1bc0c92d01a9d07cd876516a1c2ff979bfaf1f170125cff3a084be91dd",
+      "api_digest_verified": true,
+      "files": [
+        {
+          "file": "POST268_EXTENDED_HARVEST.json",
+          "sha256": "0d21474dcb8ceaaa7fd46e89928e7d3348a7a20e9f822ab2f8f4ace7dff4b647",
+          "array_counts": {
+            "duplicates": 0,
+            "errors": 0,
+            "extra": 0,
+            "missing": 0,
+            "report_files": 8,
+            "results": 44
+          },
+          "scope_status": null
+        }
+      ]
+    },
+    {
+      "artifact_id": 11861570069,
+      "zip_sha256": "6177a1610252d0fe6bce5e5244a0145d00f1a2bf3a45d944edad1fc747c65328",
+      "api_digest_verified": true,
+      "files": [
+        {
+          "file": "argon_continuum_and_roots_exact.json",
+          "sha256": "8665c6cd62452d2b98205e936ef21dd3a85ec24639fe4dc93c221cfb70357f03",
+          "array_counts": {
+            "continuum_cases": 20,
+            "root_cases": 15
+          },
+          "scope_status": "PASS"
+        },
+        {
+          "file": "deep_threshold_exact.json",
+          "sha256": "2021399882169b17ee4ccc076e9edf255191f13dd97862a6b5f550aed0436d3d",
+          "array_counts": {
+            "rows": 192
+          },
+          "scope_status": "PASS"
+        },
+        {
+          "file": "detector_schur_provenance.json",
+          "sha256": "471f97deab5911b12a94950fa3fb1e9899892b6d1919e51b6ff2192932a9355a",
+          "array_counts": {},
+          "scope_status": "PASS"
+        },
+        {
+          "file": "inverse_budgets_and_gap_exact.json",
+          "sha256": "13761445fd4ea964c303081e63ad2558a3d1b784dd3e7ce84581ecf63d37c644",
+          "array_counts": {
+            "small_gap_rows": 8
+          },
+          "scope_status": "PASS"
+        },
+        {
+          "file": "native_divisor_controls.json",
+          "sha256": "8475024c3e03e9ffd2e095fc4c2d4bd9a55ddc5989bfa56a61c662e980a93de7",
+          "array_counts": {},
+          "scope_status": "ALTERED_PRIME_REJECTED_BY_NATIVE_DIVISOR_LAW"
+        },
+        {
+          "file": "native_mass_candidate.json",
+          "sha256": "560e070a657fcb2f8c3089dc88d73c6aff1e2bf0216ae7de0239901ac73d4b38",
+          "array_counts": {
+            "required_analytic_obligations": 4
+          },
+          "scope_status": "FINITE_RATIONAL_MASS_CANDIDATE"
+        },
+        {
+          "file": "native_panel_check.json",
+          "sha256": "b55e68323a356ee242bc9e573e4456b9efd63f9457f18a9b0404c06b6fc63561",
+          "array_counts": {
+            "receipts": 44
+          },
+          "scope_status": "CHECKED_WITH_OPEN_UNIVERSAL_SCOPE"
+        },
+        {
+          "file": "native_panel_check_preseam.json",
+          "sha256": "794c7f4a836a8689457a063e730db2f9a925fcc65f102f630e87caff04780086",
+          "array_counts": {
+            "receipts": 44
+          },
+          "scope_status": "CHECKED_WITH_UNRESOLVED_SCOPE"
+        },
+        {
+          "file": "output_mutations.json",
+          "sha256": "e4840227a7cc7430257bec96ed8798be516a135e4cd0aaa9b6a6eef800acb27e",
+          "array_counts": {
+            "rejected": 45
+          },
+          "scope_status": "EVIDENCE_MUTATIONS_REJECTED"
+        },
+        {
+          "file": "pole_neutral_exact.json",
+          "sha256": "cf998ec184657b55ab0329a33eea17b538418698ca6d3d325f1eb330163989df",
+          "array_counts": {
+            "rows": 28
+          },
+          "scope_status": "PASS"
+        },
+        {
+          "file": "strict_odd_and_tie_exact.json",
+          "sha256": "facb33fef9fd0b3b37a66b6b3fc9c43e3a66ae8460f5f364efa146a4f1f1dc5d",
+          "array_counts": {
+            "tie_rows": 4
+          },
+          "scope_status": "PASS"
+        }
+      ]
+    },
+    {
+      "artifact_id": 11860988648,
+      "zip_sha256": "7c7034b2ba047cfd6ec5e7cf87924946b07163896711b3482ee4346c2f36f6fa",
+      "api_digest_verified": true,
+      "files": [
+        {
+          "file": "native_panel.json",
+          "sha256": "b5db139b155586a5db2acd2da231d0376042763172385655a661b3acc1c31ee6",
+          "array_counts": {
+            "pairs": 44
+          },
+          "scope_status": "COMPLETE_OBSERVATION_WITH_OPEN_QUANTITIES"
+        },
+        {
+          "file": "native_panel_check.json",
+          "sha256": "39e2563b189249234fa4196fceb2a4d9ef10e0169df3fa9a4989d79c40cd575a",
+          "array_counts": {
+            "receipts": 44
+          },
+          "scope_status": "CHECKED_WITH_OPEN_UNIVERSAL_SCOPE"
+        }
+      ]
+    }
+  ],
+  "additional_verified_artifact_ZIPs": [
+    {
+      "id": 11862166977,
+      "sha256": "49ef3dc14bc2fb130d972a267dc24943a193f6bec00d0ac6806b9530437b9a55"
+    },
+    {
+      "id": 11862272195,
+      "sha256": "f4ab661b7d6e198501a6744767e2ca02636323836ff70567d74b411e30c6a9ae"
+    }
+  ],
+  "privacy": "Raw logs, ZIPs, workflow bodies, numerical arrays and temporary download references are local outside Git. This public snapshot contains compact code/check evidence only.",
+  "authority": "Compiler authority is limited to exact successfully compiled declarations; historical/frozen/regression/numerical outputs do not create Lean or RH authority.",
+  "local_reviewed_harvest_sha256": "c24a7ec8eee8e59f51dd8094f3d3939a3999b03784c305e118c3213fcfe53356"
+}

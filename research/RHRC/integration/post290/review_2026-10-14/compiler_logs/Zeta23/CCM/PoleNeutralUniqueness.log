@@ -1,0 +1,25 @@
+Zeta23/CCM/PoleNeutralUniqueness.lean:42:20: warning: This simp argument is unused:
+  W
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Pi.mul_apply, Pi.add_apply]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+Zeta23/CCM/PoleNeutralUniqueness.lean:42:23: warning: This simp argument is unused:
+  Pi.mul_apply
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [W, Pi.add_apply]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+Zeta23/CCM/PoleNeutralUniqueness.lean:40:27: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Zeta23/CCM/PoleNeutralUniqueness.lean:56:27: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+'Zeta23.CCM.poleNeutral_homogeneous_eq_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.poleNeutral_eq_of_clamped_jets' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.originalSincCompactPotential_eq_universalSincKernel' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

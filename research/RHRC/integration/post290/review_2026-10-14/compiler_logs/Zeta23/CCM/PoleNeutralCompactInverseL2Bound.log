@@ -1,0 +1,8 @@
+'Zeta23.CCM.nativePoleCompactInverse_memLp_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.nativePoleCompactInverseDerivative_memLp_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.nativePoleCompactInverse_energy_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.nativePoleCompactInverse_l2_norm_le_four' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.originalSincCompactPotential_l2_norm_le_four' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.fixedOriginalSincCompactPotential_l2_norm_le_four' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

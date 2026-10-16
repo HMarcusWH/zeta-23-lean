@@ -620,6 +620,538 @@
     },
     {
       "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/post290/BUILD_CONTRACT.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/post290/BUILD_CONTRACT.md",
+      "heading_count": 1,
+      "path": "research/RHRC/integration/post290/BUILD_CONTRACT.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/post290/D2_UNRUN460_APPROVED_PROTOCOL.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/post290/D2_UNRUN460_APPROVED_PROTOCOL.md",
+      "heading_count": 1,
+      "path": "research/RHRC/integration/post290/D2_UNRUN460_APPROVED_PROTOCOL.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/post290/FINITE_STRUCTURE_REVIEW.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/post290/FINITE_STRUCTURE_REVIEW.md",
+      "heading_count": 4,
+      "path": "research/RHRC/integration/post290/FINITE_STRUCTURE_REVIEW.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/post290/NATIVE_MASS_DIRECT_ROUTE.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/post290/NATIVE_MASS_DIRECT_ROUTE.md",
+      "heading_count": 1,
+      "path": "research/RHRC/integration/post290/NATIVE_MASS_DIRECT_ROUTE.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/post290/NATIVE_STABLE_INPUT_DIRECT_ROUTE.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/post290/NATIVE_STABLE_INPUT_DIRECT_ROUTE.md",
+      "heading_count": 1,
+      "path": "research/RHRC/integration/post290/NATIVE_STABLE_INPUT_DIRECT_ROUTE.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/post290/PHASE_DEPTH_DEPENDENCY_REVIEW.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/post290/PHASE_DEPTH_DEPENDENCY_REVIEW.md",
+      "heading_count": 1,
+      "path": "research/RHRC/integration/post290/PHASE_DEPTH_DEPENDENCY_REVIEW.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/post290/POST_GREEN_RESEARCH.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/post290/POST_GREEN_RESEARCH.md",
+      "heading_count": 34,
+      "path": "research/RHRC/integration/post290/POST_GREEN_RESEARCH.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/post290/POST_REVIEW_BUILD_HANDOVER_2026-10-14.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/post290/POST_REVIEW_BUILD_HANDOVER_2026-10-14.md",
+      "heading_count": 108,
+      "path": "research/RHRC/integration/post290/POST_REVIEW_BUILD_HANDOVER_2026-10-14.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/post290/RESEARCH_PROTOCOL.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/post290/RESEARCH_PROTOCOL.md",
+      "heading_count": 14,
+      "path": "research/RHRC/integration/post290/RESEARCH_PROTOCOL.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/post290/REVIEW_FREEZE_STATUS_2026-10-14.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/post290/REVIEW_FREEZE_STATUS_2026-10-14.md",
+      "heading_count": 5,
+      "path": "research/RHRC/integration/post290/REVIEW_FREEZE_STATUS_2026-10-14.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/post290/SOURCE_ANALYTIC_REVIEW.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/post290/SOURCE_ANALYTIC_REVIEW.md",
+      "heading_count": 16,
+      "path": "research/RHRC/integration/post290/SOURCE_ANALYTIC_REVIEW.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/post290/THIRD_PARTY_REVIEW_HANDOVER_2026-10-14.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/post290/THIRD_PARTY_REVIEW_HANDOVER_2026-10-14.md",
+      "heading_count": 26,
+      "path": "research/RHRC/integration/post290/THIRD_PARTY_REVIEW_HANDOVER_2026-10-14.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/post290/W09_D2_RESEARCH_DISPOSITION.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/post290/W09_D2_RESEARCH_DISPOSITION.md",
+      "heading_count": 10,
+      "path": "research/RHRC/integration/post290/W09_D2_RESEARCH_DISPOSITION.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/post290/WORKFLOW_HARVEST_6ae99364.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/post290/WORKFLOW_HARVEST_6ae99364.md",
+      "heading_count": 11,
+      "path": "research/RHRC/integration/post290/WORKFLOW_HARVEST_6ae99364.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/post290/WORKFLOW_HARVEST_72bc63fe.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/post290/WORKFLOW_HARVEST_72bc63fe.md",
+      "heading_count": 11,
+      "path": "research/RHRC/integration/post290/WORKFLOW_HARVEST_72bc63fe.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/post290/WORKFLOW_HARVEST_75a3bd63.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/post290/WORKFLOW_HARVEST_75a3bd63.md",
+      "heading_count": 10,
+      "path": "research/RHRC/integration/post290/WORKFLOW_HARVEST_75a3bd63.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/post290/WORKFLOW_HARVEST_8ede0589.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/post290/WORKFLOW_HARVEST_8ede0589.md",
+      "heading_count": 12,
+      "path": "research/RHRC/integration/post290/WORKFLOW_HARVEST_8ede0589.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/post290/WORKFLOW_HARVEST_b716fad7.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/post290/WORKFLOW_HARVEST_b716fad7.md",
+      "heading_count": 10,
+      "path": "research/RHRC/integration/post290/WORKFLOW_HARVEST_b716fad7.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/post290/WORKFLOW_HARVEST_d88d1009.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/post290/WORKFLOW_HARVEST_d88d1009.md",
+      "heading_count": 10,
+      "path": "research/RHRC/integration/post290/WORKFLOW_HARVEST_d88d1009.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/post290/amendments/NEXT_PR_AMENDMENT.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/post290/amendments/NEXT_PR_AMENDMENT.md",
+      "heading_count": 6,
+      "path": "research/RHRC/integration/post290/amendments/NEXT_PR_AMENDMENT.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/post290/review_2026-10-14/D2_PRODUCTION_FIRST_RECEIPTS.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/post290/review_2026-10-14/D2_PRODUCTION_FIRST_RECEIPTS.md",
+      "heading_count": 1,
+      "path": "research/RHRC/integration/post290/review_2026-10-14/D2_PRODUCTION_FIRST_RECEIPTS.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/post290/review_2026-10-14/FINAL_MODULE_ACCEPTANCE_AUDIT.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/post290/review_2026-10-14/FINAL_MODULE_ACCEPTANCE_AUDIT.md",
+      "heading_count": 29,
+      "path": "research/RHRC/integration/post290/review_2026-10-14/FINAL_MODULE_ACCEPTANCE_AUDIT.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/post290/review_2026-10-14/FOURIER_FINAL_REVIEW_HANDOVER.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/post290/review_2026-10-14/FOURIER_FINAL_REVIEW_HANDOVER.md",
+      "heading_count": 7,
+      "path": "research/RHRC/integration/post290/review_2026-10-14/FOURIER_FINAL_REVIEW_HANDOVER.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/post290/review_2026-10-14/REVIEW_FREEZE_WORKFLOW_FINAL.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/post290/review_2026-10-14/REVIEW_FREEZE_WORKFLOW_FINAL.md",
+      "heading_count": 5,
+      "path": "research/RHRC/integration/post290/review_2026-10-14/REVIEW_FREEZE_WORKFLOW_FINAL.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/post290/review_2026-10-14/WORKFLOW_REFRESH_FINAL_HANDOVER_2026-10-14.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/post290/review_2026-10-14/WORKFLOW_REFRESH_FINAL_HANDOVER_2026-10-14.md",
+      "heading_count": 14,
+      "path": "research/RHRC/integration/post290/review_2026-10-14/WORKFLOW_REFRESH_FINAL_HANDOVER_2026-10-14.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/post290/review_2026-10-14/native-completion-final-handover.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/post290/review_2026-10-14/native-completion-final-handover.md",
+      "heading_count": 14,
+      "path": "research/RHRC/integration/post290/review_2026-10-14/native-completion-final-handover.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/post290/review_2026-10-14/unexecuted_workflow_candidates/README.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/post290/review_2026-10-14/unexecuted_workflow_candidates/README.md",
+      "heading_count": 1,
+      "path": "research/RHRC/integration/post290/review_2026-10-14/unexecuted_workflow_candidates/README.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/post290/review_2026-10-14/unfinished_lean_candidates/README.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/post290/review_2026-10-14/unfinished_lean_candidates/README.md",
+      "heading_count": 1,
+      "path": "research/RHRC/integration/post290/review_2026-10-14/unfinished_lean_candidates/README.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/post290/review_execution_2026-10-14/AGENT_START_HERE.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/post290/review_execution_2026-10-14/AGENT_START_HERE.md",
+      "heading_count": 8,
+      "path": "research/RHRC/integration/post290/review_execution_2026-10-14/AGENT_START_HERE.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/post290/review_execution_2026-10-14/AUDIT_REPORT.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/post290/review_execution_2026-10-14/AUDIT_REPORT.md",
+      "heading_count": 24,
+      "path": "research/RHRC/integration/post290/review_execution_2026-10-14/AUDIT_REPORT.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/post290/review_execution_2026-10-14/CODE_HEAD_WORKFLOW_HARVEST.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/post290/review_execution_2026-10-14/CODE_HEAD_WORKFLOW_HARVEST.md",
+      "heading_count": 1,
+      "path": "research/RHRC/integration/post290/review_execution_2026-10-14/CODE_HEAD_WORKFLOW_HARVEST.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/post290/review_execution_2026-10-14/LOCAL_GREEN_RESEARCH_PASS.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/post290/review_execution_2026-10-14/LOCAL_GREEN_RESEARCH_PASS.md",
+      "heading_count": 10,
+      "path": "research/RHRC/integration/post290/review_execution_2026-10-14/LOCAL_GREEN_RESEARCH_PASS.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/post290/review_execution_2026-10-14/M07_05_SOURCE_ORIGIN_ERRATUM.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/post290/review_execution_2026-10-14/M07_05_SOURCE_ORIGIN_ERRATUM.md",
+      "heading_count": 4,
+      "path": "research/RHRC/integration/post290/review_execution_2026-10-14/M07_05_SOURCE_ORIGIN_ERRATUM.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/post290/review_execution_2026-10-14/README.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/post290/review_execution_2026-10-14/README.md",
+      "heading_count": 1,
+      "path": "research/RHRC/integration/post290/review_execution_2026-10-14/README.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/post290/review_execution_2026-10-14/local_components/bounds/T09_BOUNDS_POST_GREEN.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/post290/review_execution_2026-10-14/local_components/bounds/T09_BOUNDS_POST_GREEN.md",
+      "heading_count": 10,
+      "path": "research/RHRC/integration/post290/review_execution_2026-10-14/local_components/bounds/T09_BOUNDS_POST_GREEN.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/post290/review_execution_2026-10-14/local_components/finite/FINITE_TASKS_HANDOVER.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/post290/review_execution_2026-10-14/local_components/finite/FINITE_TASKS_HANDOVER.md",
+      "heading_count": 11,
+      "path": "research/RHRC/integration/post290/review_execution_2026-10-14/local_components/finite/FINITE_TASKS_HANDOVER.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/post290/review_execution_2026-10-14/local_components/native/T01_POST_GREEN.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/post290/review_execution_2026-10-14/local_components/native/T01_POST_GREEN.md",
+      "heading_count": 6,
+      "path": "research/RHRC/integration/post290/review_execution_2026-10-14/local_components/native/T01_POST_GREEN.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/post290/review_execution_2026-10-14/local_components/native/T02_POST_GREEN.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/post290/review_execution_2026-10-14/local_components/native/T02_POST_GREEN.md",
+      "heading_count": 4,
+      "path": "research/RHRC/integration/post290/review_execution_2026-10-14/local_components/native/T02_POST_GREEN.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/post290/review_execution_2026-10-14/local_components/native/T08/POST_GREEN.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/post290/review_execution_2026-10-14/local_components/native/T08/POST_GREEN.md",
+      "heading_count": 5,
+      "path": "research/RHRC/integration/post290/review_execution_2026-10-14/local_components/native/T08/POST_GREEN.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/post290/review_execution_2026-10-14/local_components/native/T09/POST_GREEN.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/post290/review_execution_2026-10-14/local_components/native/T09/POST_GREEN.md",
+      "heading_count": 6,
+      "path": "research/RHRC/integration/post290/review_execution_2026-10-14/local_components/native/T09/POST_GREEN.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/post290/review_execution_2026-10-14/local_components/source/T03_T04_SOURCE_HANDOFF.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/post290/review_execution_2026-10-14/local_components/source/T03_T04_SOURCE_HANDOFF.md",
+      "heading_count": 6,
+      "path": "research/RHRC/integration/post290/review_execution_2026-10-14/local_components/source/T03_T04_SOURCE_HANDOFF.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/post290/review_execution_2026-10-14/local_components/source/T10_HANDOFF.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/post290/review_execution_2026-10-14/local_components/source/T10_HANDOFF.md",
+      "heading_count": 10,
+      "path": "research/RHRC/integration/post290/review_execution_2026-10-14/local_components/source/T10_HANDOFF.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/post290/review_execution_2026-10-14/spec/ACCEPTANCE_AND_TEST_MATRIX.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/post290/review_execution_2026-10-14/spec/ACCEPTANCE_AND_TEST_MATRIX.md",
+      "heading_count": 6,
+      "path": "research/RHRC/integration/post290/review_execution_2026-10-14/spec/ACCEPTANCE_AND_TEST_MATRIX.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/post290/review_execution_2026-10-14/spec/API_CROSSWALK.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/post290/review_execution_2026-10-14/spec/API_CROSSWALK.md",
+      "heading_count": 100,
+      "path": "research/RHRC/integration/post290/review_execution_2026-10-14/spec/API_CROSSWALK.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/post290/review_execution_2026-10-14/spec/BUILD_SPEC.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/post290/review_execution_2026-10-14/spec/BUILD_SPEC.md",
+      "heading_count": 28,
+      "path": "research/RHRC/integration/post290/review_execution_2026-10-14/spec/BUILD_SPEC.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/post290/review_execution_2026-10-14/spec/D2_CONTINUATION_AND_RELEASE.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/post290/review_execution_2026-10-14/spec/D2_CONTINUATION_AND_RELEASE.md",
+      "heading_count": 6,
+      "path": "research/RHRC/integration/post290/review_execution_2026-10-14/spec/D2_CONTINUATION_AND_RELEASE.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/post290/review_execution_2026-10-14/spec/PROOF_RECIPES.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/post290/review_execution_2026-10-14/spec/PROOF_RECIPES.md",
+      "heading_count": 33,
+      "path": "research/RHRC/integration/post290/review_execution_2026-10-14/spec/PROOF_RECIPES.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/post290/review_execution_2026-10-14/spec/REVIEW_DECISIONS_50.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/post290/review_execution_2026-10-14/spec/REVIEW_DECISIONS_50.md",
+      "heading_count": 51,
+      "path": "research/RHRC/integration/post290/review_execution_2026-10-14/spec/REVIEW_DECISIONS_50.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/post290/review_execution_2026-10-14/spec/SOURCE_LINEAGE_AND_WIRING.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/post290/review_execution_2026-10-14/spec/SOURCE_LINEAGE_AND_WIRING.md",
+      "heading_count": 9,
+      "path": "research/RHRC/integration/post290/review_execution_2026-10-14/spec/SOURCE_LINEAGE_AND_WIRING.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/post290/spec/BUILD_SPEC.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/post290/spec/BUILD_SPEC.md",
+      "heading_count": 38,
+      "path": "research/RHRC/integration/post290/spec/BUILD_SPEC.md",
+      "route_mentions": [
+        "R003_ccm_bridge"
+      ]
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/post290/spec/IMPLEMENTATION_HANDOFF.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/post290/spec/IMPLEMENTATION_HANDOFF.md",
+      "heading_count": 7,
+      "path": "research/RHRC/integration/post290/spec/IMPLEMENTATION_HANDOFF.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/post290/spec/README.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/post290/spec/README.md",
+      "heading_count": 1,
+      "path": "research/RHRC/integration/post290/spec/README.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/post290/spec/RESEARCH_PROTOCOL.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/post290/spec/RESEARCH_PROTOCOL.md",
+      "heading_count": 14,
+      "path": "research/RHRC/integration/post290/spec/RESEARCH_PROTOCOL.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
       "document_id": "rh:document:research/RHRC/interventions/README.md",
       "document_role": "DOCUMENTATION_ARTIFACT",
       "file_class": "DOCUMENTATION",
@@ -1144,6 +1676,16 @@
     },
     {
       "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/routes/R003_ccm_bridge/post290/K3_CONTINUATION.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/routes/R003_ccm_bridge/post290/K3_CONTINUATION.md",
+      "heading_count": 2,
+      "path": "research/RHRC/routes/R003_ccm_bridge/post290/K3_CONTINUATION.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
       "document_id": "rh:document:research/RHRC/routes/R004_prolate_v2/README.md",
       "document_role": "DOCUMENTATION_ARTIFACT",
       "file_class": "DOCUMENTATION",
@@ -1169,7 +1711,7 @@
       ]
     }
   ],
-  "entry_count": 100,
+  "entry_count": 154,
   "graph_theorem_promotion": false,
   "mention_semantics": "claim_mentions and route_mentions are exact textual-token navigation hints only; they do not establish support, implication, supersession, or theorem authority.",
   "schema_version": "RHKG-final-document-closure-1.0",

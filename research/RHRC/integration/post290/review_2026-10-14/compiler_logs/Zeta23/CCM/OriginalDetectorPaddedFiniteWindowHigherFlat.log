@@ -1,0 +1,12 @@
+'Zeta23.CCM.originalDetectorPaddedFiniteWindow_endpoint_jets_lt_eight' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.CCM.originalDetectorPaddedFiniteWindowImage_endpoint_jets_lt_eight' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.CCM.padded_contDiff_nat_indicator_Icc_of_iteratedDeriv_endpoint_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.CCM.originalDetectorPaddedFiniteWindowImageCoefficients_hardWindow_contDiff_of_lt_eight' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

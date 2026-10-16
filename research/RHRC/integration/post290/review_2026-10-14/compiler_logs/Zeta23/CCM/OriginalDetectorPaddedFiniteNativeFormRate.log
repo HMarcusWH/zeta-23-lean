@@ -1,0 +1,13 @@
+Zeta23/CCM/OriginalDetectorPaddedFiniteNativeFormRate.lean:65:57: warning: 'ring' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+Zeta23/CCM/OriginalDetectorPaddedFiniteNativeFormRate.lean:65:57: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+'Zeta23.CCM.fixedOriginalSincPhaseTrial_Weil_norm_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.originalDetectorPaddedFinitePhaseUnit_native_form_error_le' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.CCM.originalDetectorPaddedFiniteNormalizedNativeFormErrorBudget_mul_quarticWeight_tendsto_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

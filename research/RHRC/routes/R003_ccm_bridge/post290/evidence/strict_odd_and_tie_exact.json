@@ -1,0 +1,75 @@
+{
+  "status": "PASS",
+  "authority": "EXACT_FINITE_CONTROL",
+  "RH_status": "OPEN",
+  "scope": "complex 2D adjoint sign control and four pole-neutral scalar tie controls",
+  "is_actual_zeta": false,
+  "Lean_authority": false,
+  "strict_odd_checks": {
+    "rank_one_identity": true,
+    "adjoint_identity": true,
+    "strict_odd_ground": true,
+    "odd_reconstruction": true,
+    "odd_overlap_nonzero": true,
+    "odd_ray_normalization": true,
+    "missing_minus_fails": true,
+    "unitary_inverse_substitution_fails": true,
+    "unconjugated_riesz_fails": true,
+    "odd_determinant_at_-5": true,
+    "odd_determinant_at_-3": true,
+    "odd_determinant_at_-2": true,
+    "odd_determinant_at_0": true
+  },
+  "tie_rows": [
+    {
+      "K": 3,
+      "checks": {
+        "simple_even": true,
+        "moment_nonzero": true,
+        "source_can_vanish": true,
+        "odd_shift_singular": true
+      },
+      "conclusion": "A simple tie permits nonzero M4 with S0=0; strict resolvent is unavailable."
+    },
+    {
+      "K": 4,
+      "checks": {
+        "vector_nonzero": true,
+        "moment_zero": true,
+        "even_eigenvector": true,
+        "odd_eigenvector": true,
+        "rank_one_zero_defect": true,
+        "simplicity_fails": true,
+        "index_squared_not_scalar": true
+      },
+      "conclusion": "Removing the simple-even hypothesis makes M4 nonvanishing false."
+    },
+    {
+      "K": 5,
+      "checks": {
+        "vector_nonzero": true,
+        "moment_zero": true,
+        "even_eigenvector": true,
+        "odd_eigenvector": true,
+        "rank_one_zero_defect": true,
+        "simplicity_fails": true,
+        "index_squared_not_scalar": true
+      },
+      "conclusion": "Removing the simple-even hypothesis makes M4 nonvanishing false."
+    },
+    {
+      "K": 6,
+      "checks": {
+        "vector_nonzero": true,
+        "moment_zero": true,
+        "even_eigenvector": true,
+        "odd_eigenvector": true,
+        "rank_one_zero_defect": true,
+        "simplicity_fails": true,
+        "index_squared_not_scalar": true
+      },
+      "conclusion": "Removing the simple-even hypothesis makes M4 nonvanishing false."
+    }
+  ],
+  "assertion_count": 38
+}

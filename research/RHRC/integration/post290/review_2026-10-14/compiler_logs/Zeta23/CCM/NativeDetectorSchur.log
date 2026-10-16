@@ -1,0 +1,9 @@
+'Zeta23.CCM.nativePoleNeutralParity_predecessor_compression_eq' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.CCM.nativeDetectorPredecessorEquiv_inverse_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.nativeDetectorComplement_finrank' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.nativeDetectorCoupling_shift_eq_unshifted' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.nativeDetectorPredecessorEquiv_eq_compression' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.nativeDetectorSchur_completedSquare' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.nativeDetectorSchur_original_depth' depends on axioms: [propext, Classical.choice, Quot.sound]

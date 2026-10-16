@@ -1,0 +1,10 @@
+'Zeta23.CCM.originalDetectorFiniteEvenPhaseUnit_ambient' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.originalDetectorFiniteOddPhaseUnit_ambient' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.originalDetectorFiniteEvenPhaseUnit_energy' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.originalDetectorFiniteOddPhaseUnit_energy' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.exists_originalDetectorFiniteEvenPhase_native_depth' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.CCM.exists_originalDetectorFiniteOddPhase_native_depth' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

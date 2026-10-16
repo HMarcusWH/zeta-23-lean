@@ -1,0 +1,88 @@
+def Zeta23.CCM.nativeWeilArchResponse : (ℝ → ℂ) → ℝ → ℂ :=
+fun f x ↦
+  1 / (2 * ↑Real.pi) * ∫ (ξ : ℝ), Zeta23.paperFT f ↑ξ * ↑(Zeta23.EF.gammaBracket ξ) * cexp (-Complex.I * ↑ξ * ↑x)
+def Zeta23.CCM.nativeWeilPoleResponse : (ℝ → ℂ) → ℝ → ℂ :=
+fun f x ↦
+  (↑(Real.exp (x / 2)) * ∫ (t : ℝ), ↑(Real.exp (-t / 2)) * f t) +
+    ↑(Real.exp (-x / 2)) * ∫ (t : ℝ), ↑(Real.exp (t / 2)) * f t
+def Zeta23.CCM.nativeWeilPrimeResponse : (ℝ → ℂ) → ℝ → ℂ :=
+fun f x ↦ ∑' (n : ℕ), ↑(Zeta23.CCM.nativePrimeCoefficient n) * (f (x - Real.log ↑n) + f (x + Real.log ↑n))
+def Zeta23.CCM.nativeWeilResponse : (ℝ → ℂ) → ℝ → ℂ :=
+fun f x ↦
+  Zeta23.CCM.nativeWeilArchResponse f x + Zeta23.CCM.nativeWeilPoleResponse f x - Zeta23.CCM.nativeWeilPrimeResponse f x
+def Zeta23.CCM.nativePhysicalH1Norm : (ℝ → ℂ) → ℝ :=
+fun f ↦ Zeta23.CCM.originalDetectorPhysicalH1Error f 0
+Zeta23.CCM.nativeWeilResponse_decomposition : ∀ (f : ℝ → ℂ) (x : ℝ),
+  Zeta23.CCM.nativeWeilResponse f x =
+    Zeta23.CCM.nativeWeilArchResponse f x + Zeta23.CCM.nativeWeilPoleResponse f x -
+      Zeta23.CCM.nativeWeilPrimeResponse f x
+Zeta23.CCM.nativeGammaBracket_quadratic_bound : ∃ C, 0 < C ∧ ∀ (ξ : ℝ), |Zeta23.EF.gammaBracket ξ| ≤ C * (1 + ξ ^ 2)
+@Zeta23.CCM.nativeWeilArch_fourier_integrable : ∀ {f : ℝ → ℂ},
+  ContDiff ℝ 2 f →
+    HasCompactSupport f →
+      MeasureTheory.Integrable (fun ξ ↦ Zeta23.paperFT f ↑ξ * ↑(Zeta23.EF.gammaBracket ξ))
+        MeasureTheory.MeasureSpace.volume
+@Zeta23.CCM.nativeWeilArchResponse_pairing : ∀ {f v : ℝ → ℂ},
+  ContDiff ℝ 2 f →
+    HasCompactSupport f →
+      Continuous v →
+        HasCompactSupport v →
+          ∫ (x : ℝ), Zeta23.CCM.nativeWeilArchResponse f x * (starRingEnd ℂ) (v x) =
+            1 / (2 * ↑Real.pi) *
+              ∫ (ξ : ℝ), Zeta23.paperFT f ↑ξ * (starRingEnd ℂ) (Zeta23.paperFT v ↑ξ) * ↑(Zeta23.EF.gammaBracket ξ)
+Zeta23.CCM.nativePaperFT_imaginary : ∀ (f : ℝ → ℂ) (a : ℝ),
+  Zeta23.paperFT f (↑a * Complex.I) = ∫ (x : ℝ), ↑(Real.exp (-a * x)) * f x
+@Zeta23.CCM.nativeWeilPoleResponse_pairing : ∀ {f v : ℝ → ℂ},
+  Continuous v →
+    HasCompactSupport v →
+      ∫ (x : ℝ), Zeta23.CCM.nativeWeilPoleResponse f x * (starRingEnd ℂ) (v x) =
+        Zeta23.paperFT f (Complex.I / 2) * (starRingEnd ℂ) (Zeta23.paperFT v (-Complex.I / 2)) +
+          Zeta23.paperFT f (-Complex.I / 2) * (starRingEnd ℂ) (Zeta23.paperFT v (Complex.I / 2))
+@Zeta23.CCM.nativeWeilPrimeResponse_eq_history_sum : ∀ {f : ℝ → ℂ} {R T x : ℝ},
+  (∀ (y : ℝ), f y ≠ 0 → |y| ≤ R) →
+    |x| ≤ T →
+      Zeta23.CCM.nativeWeilPrimeResponse f x =
+        ∑ n ∈ Finset.range (Zeta23.CCM.nativeHistoryCutoff R T + 1),
+          ↑(Zeta23.CCM.nativePrimeCoefficient n) * (f (x - Real.log ↑n) + f (x + Real.log ↑n))
+@Zeta23.CCM.nativeWeilPrimeResponse_continuous : ∀ {f : ℝ → ℂ},
+  Continuous f → HasCompactSupport f → Continuous (Zeta23.CCM.nativeWeilPrimeResponse f)
+Zeta23.CCM.nativeWeilPoleResponse_continuous : ∀ (f : ℝ → ℂ), Continuous (Zeta23.CCM.nativeWeilPoleResponse f)
+@Zeta23.CCM.nativeWeilPrimeResponse_pairing : ∀ {f v : ℝ → ℂ},
+  Continuous f →
+    HasCompactSupport f →
+      Continuous v →
+        HasCompactSupport v →
+          ∫ (x : ℝ), Zeta23.CCM.nativeWeilPrimeResponse f x * (starRingEnd ℂ) (v x) =
+            ∑' (n : ℕ),
+              ↑(Zeta23.CCM.nativePrimeCoefficient n) *
+                (Zeta23.EF.weilTest f v (Real.log ↑n) + Zeta23.EF.weilTest f v (-Real.log ↑n))
+@Zeta23.CCM.nativeWeilArchResponse_continuous : ∀ {f : ℝ → ℂ},
+  ContDiff ℝ 2 f → HasCompactSupport f → Continuous (Zeta23.CCM.nativeWeilArchResponse f)
+@Zeta23.CCM.nativeWeilResponse_continuous : ∀ {f : ℝ → ℂ},
+  ContDiff ℝ 2 f → HasCompactSupport f → Continuous (Zeta23.CCM.nativeWeilResponse f)
+@Zeta23.CCM.nativeWeilResponse_memLp_two_on_interval : ∀ {f : ℝ → ℂ},
+  ContDiff ℝ 2 f →
+    HasCompactSupport f →
+      ∀ (a b : ℝ),
+        MeasureTheory.MemLp (Zeta23.CCM.nativeWeilResponse f) 2
+          (MeasureTheory.MeasureSpace.volume.restrict (Set.Icc a b))
+@Zeta23.CCM.nativeWeilResponse_indicator_memLp_two : ∀ {f : ℝ → ℂ},
+  ContDiff ℝ 2 f →
+    HasCompactSupport f →
+      ∀ (a b : ℝ),
+        MeasureTheory.MemLp ((Set.Icc a b).indicator (Zeta23.CCM.nativeWeilResponse f)) 2
+          MeasureTheory.MeasureSpace.volume
+@Zeta23.CCM.nativeWeilResponse_pairing : ∀ {f v : ℝ → ℂ},
+  ContDiff ℝ 2 f →
+    HasCompactSupport f →
+      Continuous v →
+        HasCompactSupport v →
+          Zeta23.zetaZeroConfig.W f v = ∫ (x : ℝ), Zeta23.CCM.nativeWeilResponse f x * (starRingEnd ℂ) (v x)
+@Zeta23.CCM.nativeWeilArch_fourier_memLp_two : ∀ {f : ℝ → ℂ},
+  ContDiff ℝ 2 f →
+    HasCompactSupport f →
+      MeasureTheory.MemLp (fun ξ ↦ Zeta23.paperFT f ↑ξ * ↑(Zeta23.EF.gammaBracket ξ)) 2
+        MeasureTheory.MeasureSpace.volume
+@Zeta23.CCM.nativeWeilArchResponse_memLp_two : ∀ {f : ℝ → ℂ},
+  ContDiff ℝ 2 f →
+    HasCompactSupport f → MeasureTheory.MemLp (Zeta23.CCM.nativeWeilArchResponse f) 2 MeasureTheory.MeasureSpace.volume

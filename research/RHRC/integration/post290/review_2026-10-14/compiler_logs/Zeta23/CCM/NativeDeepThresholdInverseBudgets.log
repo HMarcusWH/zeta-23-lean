@@ -1,0 +1,18 @@
+Zeta23\CCM\NativeDeepThresholdInverseBudgets.lean:138:50: warning: 'ring' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+Zeta23\CCM\NativeDeepThresholdInverseBudgets.lean:138:50: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+Zeta23\CCM\NativeDeepThresholdInverseBudgets.lean:142:59: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+'Zeta23.CCM.nativeDeepThreshold_even_ground_coercive' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.nativeDeepThreshold_odd_ground_coercive' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.nativeDeepThreshold_even_detector_coercive' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.nativeDeepThreshold_odd_detector_coercive' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.nativeDeepThresholdInverseData' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.nativeDeepThreshold_inverse_norms_zero_at_first' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.exists_nativeDeepThresholdGround_with_inverseBudgets_of_given_trial' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

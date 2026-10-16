@@ -1,0 +1,7 @@
+'Zeta23.CCM.three_le_originalDetectorQuarticCutoff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.exists_originalDetectorFiniteEvenPhase_retained_state' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.CCM.exists_originalDetectorFiniteOddPhase_retained_state' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

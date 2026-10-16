@@ -1,0 +1,34 @@
+[
+  {
+    "module": "Zeta23.ExceptionalZero.FiniteNegativeObstruction",
+    "source_sha256": "dffd323e1f6cb987119debf92448d11287a697d8980bef457d4e9199f63614c2",
+    "source_unchanged": true,
+    "exit_code": 0,
+    "log": "bootstrap_FiniteNegativeObstruction.log",
+    "log_sha256": "c28f3230cf8a1be7367f18a821b4f86ecdfe2786551d32907b4573661e44e89d"
+  },
+  {
+    "module": "Zeta23.ExceptionalZero.ApertureFreedom",
+    "source_sha256": "7220985cf5cf6ea276360c5fab941b420b35178d117ae48cac00b46195908d1d",
+    "source_unchanged": true,
+    "exit_code": 0,
+    "log": "bootstrap_ApertureFreedom.log",
+    "log_sha256": "99a3c6fc68a52a2ada579ec383018aa31e94cbffceb78403ac7745b654091e21"
+  },
+  {
+    "module": "Zeta23.ExceptionalZero.RegularFirstBadClosure",
+    "source_sha256": "3cb38a0a304cd2e24384e7abf24cf03b0262462eb3d2abc26b6ba9071294b19a",
+    "source_unchanged": true,
+    "exit_code": 0,
+    "log": "bootstrap_RegularFirstBadClosure.log",
+    "log_sha256": "fc7b5e6c5de2e97c7f3378af770c0c994f21ed802e81f60076d49c273ca52b4c"
+  },
+  {
+    "module": "Zeta23.ExceptionalZero.RHTerminalConfigAttempt",
+    "source_sha256": "388faf178d190ac209e9d45bc9fe3b88609b57e37d43ff59428b507f0e031989",
+    "source_unchanged": true,
+    "exit_code": 0,
+    "log": "bootstrap_RHTerminalConfigAttempt.log",
+    "log_sha256": "db0245af89eeb6aa46b0d71c106454779c4812c64170e8f8b94a6b416644e3f2"
+  }
+]

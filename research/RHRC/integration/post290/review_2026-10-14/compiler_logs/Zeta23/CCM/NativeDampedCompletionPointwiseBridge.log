@@ -1,0 +1,9 @@
+'Zeta23.CCM.nativeDampedCompletionPointwise_integrable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.nativeDampedCompletionPointwise_integrable_prod_on_finite_set' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.CCM.nativeDampedCompletionL2Operator_setIntegral_pointwise' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.CCM.nativeDampedCompletionL2Operator_coeFn_pointwise' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.nativeDampedCompletionPointwise_memLp' depends on axioms: [propext, Classical.choice, Quot.sound]

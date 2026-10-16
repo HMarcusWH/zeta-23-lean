@@ -1,0 +1,36 @@
+Zeta23/CCM/OriginalDetectorPaddedFinitePhaseNormalization.lean:20:36: warning: Variable name `hσ` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hσ
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+Zeta23/CCM/OriginalDetectorPaddedFinitePhaseNormalization.lean:21:7: warning: Variable name `ha` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _ha
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+Zeta23/CCM/OriginalDetectorPaddedFinitePhaseNormalization.lean:53:36: warning: Variable name `hσ` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hσ
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+Zeta23/CCM/OriginalDetectorPaddedFinitePhaseNormalization.lean:54:7: warning: Variable name `ha` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _ha
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+'Zeta23.CCM.exists_originalDetectorPaddedFinitePhase_mass_control_threshold' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.CCM.exists_originalDetectorPaddedFinitePhase_unit_threshold' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.CCM.originalDetectorPaddedFinitePhaseUnitVector_moment_zero_lt_six' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.CCM.originalDetectorPaddedFinitePhaseUnitVector_native_poles_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

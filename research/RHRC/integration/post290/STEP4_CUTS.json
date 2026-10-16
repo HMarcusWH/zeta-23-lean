@@ -1,0 +1,63 @@
+{
+  "schema_version": "RH_STEP4_CUTS_SPEC_1.0",
+  "claim_cap": "RH_OPEN",
+  "status": "PLANNED_CONDITIONAL_SUFFICIENCY_NOT_PROOF_OF_CUTS",
+  "cuts": [
+    {
+      "id": "A-X",
+      "status": "OPEN",
+      "input": "actual fixed-source X=Pi*j",
+      "required_property": "forall epsilon>0, integral_0_infty exp(-2 epsilon t)|X(t)|^2 dt < infinity",
+      "core_formal_sufficiency_module": "M24",
+      "native_link_modules": [
+        "M15",
+        "M17",
+        "M23"
+      ],
+      "lower_obstruction": "Actual original detector residue/non-subexponential correlation",
+      "optional_paper_refinement": "A03/continuation complete signed cofactor or coprime mixed-energy bound",
+      "not_implied_by": [
+        "rapid integer drive alone",
+        "positive q",
+        "termwise absolute bound"
+      ]
+    },
+    {
+      "id": "B-Y",
+      "status": "OPEN",
+      "input": "actual Yepsilon for native convolution Aepsilon",
+      "required_property": "forall epsilon>0, Yepsilon in closure(range(Aepsilon))",
+      "core_formal_sufficiency_module": "M24",
+      "native_link_modules": [
+        "M18",
+        "M20",
+        "M23"
+      ],
+      "lower_obstruction": "Nonzero final required native zero-jet pairing against a vector in ker(Aepsilon*)",
+      "not_implied_by": [
+        "positive contractive forward kernel",
+        "finite iteration residual decrease",
+        "stable filtered output"
+      ]
+    },
+    {
+      "id": "C-Schur",
+      "status": "OPEN",
+      "input": "complete same-detector signed Schur loss with full complement and known shift",
+      "required_property": "Source-specific subexponential upper law on all selectors returned by the registered producer, with all constants and quantifiers explicit",
+      "core_formal_sufficiency_module": "M24",
+      "native_link_modules": [
+        "M13",
+        "M17",
+        "M23"
+      ],
+      "lower_obstruction": "loss >= D-eta > D/2 at D=exp(beta L)",
+      "not_implied_by": [
+        "small predecessor inverse",
+        "bound on only response term",
+        "one-dimensional selected-ground scalar substituted for full detector complement"
+      ]
+    }
+  ],
+  "independence": "Alternative sufficient cuts, not asserted logically independent; no automatic equivalence promotion."
+}

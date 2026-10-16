@@ -1,0 +1,29 @@
+'Zeta23.CCM.originalDetectorDividedLobeFourierJetCoeff_summable' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.CCM.originalDetectorDividedLobeFourierJetCoeff_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.originalDetectorDividedLobePeriodicJet_fourierCoeff' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.CCM.originalDetectorDividedLobePeriodicJet_hasSum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.originalDetectorDividedLobeFourierJet_hasSum_on_interval' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.CCM.originalDetectorDividedLobeFourierPartialJet_iteratedDeriv' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.CCM.originalDetectorDividedLobeFourierPartialJet_error_le_tail' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.CCM.originalDetectorDividedLobeFourierJetCoeff_le_decay' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.CCM.originalDetectorDividedLobeFourierJetTail_le_budget' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.CCM.originalDetectorDividedLobeFourierPartialJet_error_le_budget' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.CCM.originalDetectorDividedLobeFourierPartialSum_iteratedDeriv_error_le_budget' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

@@ -1,0 +1,24 @@
+{
+  "execution_status": "SUCCESS",
+  "integrity_status": "PASS",
+  "scientific_disposition": "FINITE_RATIONAL_MASS_CANDIDATE",
+  "authority": "FINITE_ARITHMETIC_ONLY_ANALYTIC_BRIDGE_OPEN",
+  "claim_cap": "RH_OPEN",
+  "native_source_id": "UNCHANGED_CAUSAL_FLOOR_COMPLETION",
+  "finite_cells": 128,
+  "root_enclosures_checked": 129,
+  "exact_telescoping_coefficients_checked": 129,
+  "head_lower": "88554354072713668215623/100000000000000000000000",
+  "head_upper": "442771770363568341078243/500000000000000000000000",
+  "tail_candidate_upper": "22803678473833656825133757/258000000000000000000000000",
+  "total_candidate_upper": "50254782396286984164301429/51600000000000000000000000",
+  "target": "605/621",
+  "target_gap": "3260043968594277989604197/10681200000000000000000000000",
+  "whole_kernel_mass_lean_proved": false,
+  "required_analytic_obligations": [
+    "exp/log measure substitution for actual native kernel",
+    "actual cell integral and finite telescoping formula",
+    "countable cell integral decomposition with seam null sets",
+    "per-cell and decreasing-series tail integral comparison"
+  ]
+}

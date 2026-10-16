@@ -1,0 +1,10 @@
+Zeta23.CCM.nativeOriginalIntegerDrive_finiteOrder_bound : ∀ (n : ℕ),
+  1 ≤ n →
+    ∃ C,
+      0 ≤ C ∧
+        ∀ (t : ℝ),
+          0 ≤ t →
+            |Zeta23.CCM.nativeOriginalIntegerDrive t| ≤
+              C * (1 + t + Zeta23.CCM.UniversalSinc.fixedScale) * Real.exp (-(↑n - 1 / 2) * t)
+Zeta23.CCM.nativeOriginalIntegerDrive_rapid_bound : ∀ (A : ℝ),
+  0 < A → ∃ C, 0 < C ∧ ∃ T, 0 ≤ T ∧ ∀ (t : ℝ), T ≤ t → |Zeta23.CCM.nativeOriginalIntegerDrive t| ≤ C * Real.exp (-A * t)

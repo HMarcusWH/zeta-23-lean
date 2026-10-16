@@ -1,0 +1,392 @@
+[
+  {
+    "name": "Zeta23.CCM.canonicalPoleNeutralEven",
+    "origin": "Zeta23.CCM.CanonicalPoleNeutralPublicAPI",
+    "source_kind": "abbrev",
+    "requested_kind": "DEFINITION"
+  },
+  {
+    "name": "Zeta23.CCM.canonicalPoleNeutralOdd",
+    "origin": "Zeta23.CCM.CanonicalPoleNeutralPublicAPI",
+    "source_kind": "abbrev",
+    "requested_kind": "DEFINITION"
+  },
+  {
+    "name": "Zeta23.CCM.poleNormalCoefficient",
+    "origin": "Zeta23.CCM.CanonicalPoleNeutralPublicAPI",
+    "source_kind": "abbrev",
+    "requested_kind": "DEFINITION"
+  },
+  {
+    "name": "Zeta23.CCM.correctedCanonicalSource",
+    "origin": "Zeta23.CCM.CanonicalPoleNeutralPublicAPI",
+    "source_kind": "abbrev",
+    "requested_kind": "DEFINITION"
+  },
+  {
+    "name": "Zeta23.CCM.poleNeutralOddShiftedRay",
+    "origin": "Zeta23.CCM.CanonicalPoleNeutralPublicAPI",
+    "source_kind": "abbrev",
+    "requested_kind": "DEFINITION"
+  },
+  {
+    "name": "Zeta23.CCM.poleNormal_index_projection_eq",
+    "origin": "Zeta23.CCM.CanonicalPoleNeutralPublicAPI",
+    "source_kind": "alias",
+    "requested_kind": "THEOREM"
+  },
+  {
+    "name": "Zeta23.CCM.canonicalPoleNeutral_rankOneIntertwining",
+    "origin": "Zeta23.CCM.CanonicalPoleNeutralPublicAPI",
+    "source_kind": "alias",
+    "requested_kind": "THEOREM"
+  },
+  {
+    "name": "Zeta23.CCM.poleNeutral_iff_exponentialMoments",
+    "origin": "Zeta23.CCM.CanonicalPoleNeutralPublicAPI",
+    "source_kind": "theorem",
+    "requested_kind": "THEOREM"
+  },
+  {
+    "name": "Zeta23.CCM.poleNeutral_parity_finrank",
+    "origin": "Zeta23.CCM.CanonicalPoleNeutralPublicAPI",
+    "source_kind": "theorem",
+    "requested_kind": "THEOREM"
+  },
+  {
+    "name": "Zeta23.CCM.PoleNeutralGroundBranch",
+    "origin": "Zeta23.CCM.CanonicalPoleNeutralPublicAPI",
+    "source_kind": "inductive",
+    "requested_kind": "INDUCTIVE"
+  },
+  {
+    "name": "Zeta23.CCM.poleNeutralGround_branch_exhaustive",
+    "origin": "Zeta23.CCM.CanonicalPoleNeutralPublicAPI",
+    "source_kind": "theorem",
+    "requested_kind": "THEOREM"
+  },
+  {
+    "name": "Zeta23.CCM.poleNeutral_evenShifted_eigen_iff",
+    "origin": "Zeta23.CCM.CanonicalPoleNeutralPublicAPI",
+    "source_kind": "theorem",
+    "requested_kind": "THEOREM"
+  },
+  {
+    "name": "Zeta23.CCM.poleNeutral_evenShifted_det_eq",
+    "origin": "Zeta23.CCM.CanonicalPoleNeutralPublicAPI",
+    "source_kind": "theorem",
+    "requested_kind": "THEOREM"
+  },
+  {
+    "name": "Zeta23.CCM.poleNeutral_oddShifted_eigen_iff",
+    "origin": "Zeta23.CCM.CanonicalPoleNeutralPublicAPI",
+    "source_kind": "theorem",
+    "requested_kind": "THEOREM"
+  },
+  {
+    "name": "Zeta23.CCM.poleNeutral_oddShifted_det_eq",
+    "origin": "Zeta23.CCM.CanonicalPoleNeutralPublicAPI",
+    "source_kind": "theorem",
+    "requested_kind": "THEOREM"
+  },
+  {
+    "name": "Zeta23.CCM.nativeSymmetric_output_mem_kernelOrthogonal",
+    "origin": "Zeta23.CCM.CanonicalPoleNeutralPublicAPI",
+    "source_kind": "theorem",
+    "requested_kind": "THEOREM"
+  },
+  {
+    "name": "Zeta23.CCM.nativeKernelComplementMap",
+    "origin": "Zeta23.CCM.CanonicalPoleNeutralPublicAPI",
+    "source_kind": "def",
+    "requested_kind": "DEFINITION"
+  },
+  {
+    "name": "Zeta23.CCM.nativeKernelComplementMap_injective",
+    "origin": "Zeta23.CCM.CanonicalPoleNeutralPublicAPI",
+    "source_kind": "theorem",
+    "requested_kind": "THEOREM"
+  },
+  {
+    "name": "Zeta23.CCM.nativeKernelComplementEquiv",
+    "origin": "Zeta23.CCM.CanonicalPoleNeutralPublicAPI",
+    "source_kind": "def",
+    "requested_kind": "DEFINITION"
+  },
+  {
+    "name": "Zeta23.CCM.nativeKernelComplementResponse",
+    "origin": "Zeta23.CCM.CanonicalPoleNeutralPublicAPI",
+    "source_kind": "def",
+    "requested_kind": "DEFINITION"
+  },
+  {
+    "name": "Zeta23.CCM.nativeKernelComplementResponse_eq",
+    "origin": "Zeta23.CCM.CanonicalPoleNeutralPublicAPI",
+    "source_kind": "theorem",
+    "requested_kind": "THEOREM"
+  },
+  {
+    "name": "Zeta23.CCM.nativeKernelComplement_positive",
+    "origin": "Zeta23.CCM.CanonicalPoleNeutralPublicAPI",
+    "source_kind": "theorem",
+    "requested_kind": "THEOREM"
+  },
+  {
+    "name": "Zeta23.CCM.nativeKernelComplement_decomposition",
+    "origin": "Zeta23.CCM.CanonicalPoleNeutralPublicAPI",
+    "source_kind": "theorem",
+    "requested_kind": "THEOREM"
+  },
+  {
+    "name": "Zeta23.CCM.nativeSymmetric_kernelProjection_output_eq_zero",
+    "origin": "Zeta23.CCM.CanonicalPoleNeutralPublicAPI",
+    "source_kind": "theorem",
+    "requested_kind": "THEOREM"
+  },
+  {
+    "name": "Zeta23.CCM.nativeKernelComplementResponse_eq_of_mem",
+    "origin": "Zeta23.CCM.CanonicalPoleNeutralPublicAPI",
+    "source_kind": "theorem",
+    "requested_kind": "THEOREM"
+  },
+  {
+    "name": "Zeta23.CCM.poleNeutralEvenShiftedCanonical_isSymmetric",
+    "origin": "Zeta23.CCM.CanonicalPoleNeutralPublicAPI",
+    "source_kind": "theorem",
+    "requested_kind": "THEOREM"
+  },
+  {
+    "name": "Zeta23.CCM.poleNeutralEvenShiftedKernelProjection",
+    "origin": "Zeta23.CCM.CanonicalPoleNeutralPublicAPI",
+    "source_kind": "def",
+    "requested_kind": "DEFINITION"
+  },
+  {
+    "name": "Zeta23.CCM.poleNeutral_odd_eigen_source_mem_even_shifted_range",
+    "origin": "Zeta23.CCM.CanonicalPoleNeutralPublicAPI",
+    "source_kind": "theorem",
+    "requested_kind": "THEOREM"
+  },
+  {
+    "name": "Zeta23.CCM.poleNeutral_odd_eigen_shifted_kernel_compatibility",
+    "origin": "Zeta23.CCM.CanonicalPoleNeutralPublicAPI",
+    "source_kind": "theorem",
+    "requested_kind": "THEOREM"
+  },
+  {
+    "name": "Zeta23.CCM.poleNeutral_tied_kernel_compatibility",
+    "origin": "Zeta23.CCM.CanonicalPoleNeutralPublicAPI",
+    "source_kind": "theorem",
+    "requested_kind": "THEOREM"
+  },
+  {
+    "name": "Zeta23.CCM.poleNeutralOddKernelComplementResponse",
+    "origin": "Zeta23.CCM.CanonicalPoleNeutralPublicAPI",
+    "source_kind": "def",
+    "requested_kind": "DEFINITION"
+  },
+  {
+    "name": "Zeta23.CCM.poleNeutralEvenKernelComplementResponse",
+    "origin": "Zeta23.CCM.CanonicalPoleNeutralPublicAPI",
+    "source_kind": "def",
+    "requested_kind": "DEFINITION"
+  },
+  {
+    "name": "Zeta23.CCM.poleNeutral_tied_complementary_response",
+    "origin": "Zeta23.CCM.CanonicalPoleNeutralPublicAPI",
+    "source_kind": "theorem",
+    "requested_kind": "THEOREM"
+  },
+  {
+    "name": "Zeta23.CCM.poleNeutral_smallCutoff_eq_zero",
+    "origin": "Zeta23.CCM.CanonicalPoleNeutralPublicAPI",
+    "source_kind": "theorem",
+    "requested_kind": "THEOREM"
+  },
+  {
+    "name": "Zeta23.CCM.poleNeutralEvenShifted_isPositive_of_le_bottom",
+    "origin": "Zeta23.CCM.CanonicalPoleNeutralPublicAPI",
+    "source_kind": "theorem",
+    "requested_kind": "THEOREM"
+  },
+  {
+    "name": "Zeta23.CCM.poleNeutral_tied_complements_positive",
+    "origin": "Zeta23.CCM.CanonicalPoleNeutralPublicAPI",
+    "source_kind": "theorem",
+    "requested_kind": "THEOREM"
+  },
+  {
+    "name": "Zeta23.CCM.canonicalTrialResidual_variance_eq",
+    "origin": "Zeta23.CCM.CanonicalPoleNeutralTrialResidualChannels",
+    "source_kind": "alias",
+    "requested_kind": "THEOREM"
+  },
+  {
+    "name": "Zeta23.CCM.canonicalTrialResidual_gram_sum",
+    "origin": "Zeta23.CCM.CanonicalPoleNeutralTrialResidualChannels",
+    "source_kind": "alias",
+    "requested_kind": "THEOREM"
+  },
+  {
+    "name": "Zeta23.CCM.canonicalTrialResidual_channels_sum",
+    "origin": "Zeta23.CCM.CanonicalPoleNeutralTrialResidualChannels",
+    "source_kind": "theorem",
+    "requested_kind": "THEOREM"
+  },
+  {
+    "name": "Zeta23.CCM.canonicalPoleNeutralTrialRayleigh",
+    "origin": "Zeta23.CCM.CanonicalPoleNeutralTrialResidualChannels",
+    "source_kind": "def",
+    "requested_kind": "DEFINITION"
+  },
+  {
+    "name": "Zeta23.CCM.canonicalPoleNeutralTrialResidual",
+    "origin": "Zeta23.CCM.CanonicalPoleNeutralTrialResidualChannels",
+    "source_kind": "def",
+    "requested_kind": "DEFINITION"
+  },
+  {
+    "name": "Zeta23.CCM.canonicalPoleNeutralTrialChannel",
+    "origin": "Zeta23.CCM.CanonicalPoleNeutralTrialResidualChannels",
+    "source_kind": "def",
+    "requested_kind": "DEFINITION"
+  },
+  {
+    "name": "Zeta23.CCM.canonicalPoleNeutralTrialChannel_sum",
+    "origin": "Zeta23.CCM.CanonicalPoleNeutralTrialResidualChannels",
+    "source_kind": "theorem",
+    "requested_kind": "THEOREM"
+  },
+  {
+    "name": "Zeta23.CCM.canonicalPoleNeutralTrial_operator_isSymmetric",
+    "origin": "Zeta23.CCM.CanonicalPoleNeutralTrialResidualChannels",
+    "source_kind": "theorem",
+    "requested_kind": "THEOREM"
+  },
+  {
+    "name": "Zeta23.CCM.canonicalPoleNeutralTrialRayleigh_complex_eq",
+    "origin": "Zeta23.CCM.CanonicalPoleNeutralTrialResidualChannels",
+    "source_kind": "theorem",
+    "requested_kind": "THEOREM"
+  },
+  {
+    "name": "Zeta23.CCM.canonicalPoleNeutralTrialResidual_eq_native",
+    "origin": "Zeta23.CCM.CanonicalPoleNeutralTrialResidualChannels",
+    "source_kind": "theorem",
+    "requested_kind": "THEOREM"
+  },
+  {
+    "name": "Zeta23.CCM.canonicalPoleNeutralTrialResidual_orthogonal",
+    "origin": "Zeta23.CCM.CanonicalPoleNeutralTrialResidualChannels",
+    "source_kind": "theorem",
+    "requested_kind": "THEOREM"
+  },
+  {
+    "name": "Zeta23.CCM.canonicalPoleNeutralTrialResidual_variance_eq",
+    "origin": "Zeta23.CCM.CanonicalPoleNeutralTrialResidualChannels",
+    "source_kind": "theorem",
+    "requested_kind": "THEOREM"
+  },
+  {
+    "name": "Zeta23.CCM.canonicalPoleNeutralTrialResidual_channels_sum",
+    "origin": "Zeta23.CCM.CanonicalPoleNeutralTrialResidualChannels",
+    "source_kind": "theorem",
+    "requested_kind": "THEOREM"
+  },
+  {
+    "name": "Zeta23.CCM.canonicalPoleNeutralTrialChannelGram",
+    "origin": "Zeta23.CCM.CanonicalPoleNeutralTrialResidualChannels",
+    "source_kind": "def",
+    "requested_kind": "DEFINITION"
+  },
+  {
+    "name": "Zeta23.CCM.canonicalPoleNeutralTrialResidual_gram_sum",
+    "origin": "Zeta23.CCM.CanonicalPoleNeutralTrialResidualChannels",
+    "source_kind": "theorem",
+    "requested_kind": "THEOREM"
+  },
+  {
+    "name": "Zeta23.CCM.canonicalPoleNeutralTrialResidual_even_eq_R3",
+    "origin": "Zeta23.CCM.CanonicalPoleNeutralTrialResidualChannels",
+    "source_kind": "theorem",
+    "requested_kind": "THEOREM"
+  },
+  {
+    "name": "Zeta23.CCM.canonicalPoleNeutralTrialResidual_even_momentFour_lower",
+    "origin": "Zeta23.CCM.CanonicalPoleNeutralTrialResidualChannels",
+    "source_kind": "theorem",
+    "requested_kind": "THEOREM"
+  },
+  {
+    "name": "Zeta23.CCM.nativePolePrimitive_congr_ae",
+    "origin": "Zeta23.CCM.PoleNeutralCompactH2SourceCongruence",
+    "source_kind": "theorem",
+    "requested_kind": "THEOREM"
+  },
+  {
+    "name": "Zeta23.CCM.nativePoleCompactInverse_congr_ae",
+    "origin": "Zeta23.CCM.PoleNeutralCompactH2SourceCongruence",
+    "source_kind": "theorem",
+    "requested_kind": "THEOREM"
+  },
+  {
+    "name": "Zeta23.CCM.nativePoleCompactInverseDerivative_congr_ae",
+    "origin": "Zeta23.CCM.PoleNeutralCompactH2SourceCongruence",
+    "source_kind": "theorem",
+    "requested_kind": "THEOREM"
+  },
+  {
+    "name": "Zeta23.CCM.NativeCompactPoleH2.congrSource",
+    "origin": "Zeta23.CCM.PoleNeutralCompactH2SourceCongruence",
+    "source_kind": "def",
+    "requested_kind": "DEFINITION"
+  },
+  {
+    "name": "Zeta23.CCM.NativeCompactPoleH2.unique_of_source_ae",
+    "origin": "Zeta23.CCM.PoleNeutralCompactH2SourceCongruence",
+    "source_kind": "theorem",
+    "requested_kind": "THEOREM"
+  },
+  {
+    "name": "Zeta23.CCM.nativePoleSupportedRepresentative",
+    "origin": "Zeta23.CCM.PoleNeutralCompactH2SourceCongruence",
+    "source_kind": "def",
+    "requested_kind": "DEFINITION"
+  },
+  {
+    "name": "Zeta23.CCM.nativePoleSupportedRepresentative_ae",
+    "origin": "Zeta23.CCM.PoleNeutralCompactH2SourceCongruence",
+    "source_kind": "theorem",
+    "requested_kind": "THEOREM"
+  },
+  {
+    "name": "Zeta23.CCM.nativePoleSupportedRepresentative_support",
+    "origin": "Zeta23.CCM.PoleNeutralCompactH2SourceCongruence",
+    "source_kind": "theorem",
+    "requested_kind": "THEOREM"
+  },
+  {
+    "name": "Zeta23.CCM.poleNeutral_compactInverse_exists_of_ae_support",
+    "origin": "Zeta23.CCM.PoleNeutralCompactH2SourceCongruence",
+    "source_kind": "theorem",
+    "requested_kind": "THEOREM"
+  },
+  {
+    "name": "Zeta23.CCM.nativePoleCompactH2_translate_support_norm",
+    "origin": "Zeta23.CCM.PoleNeutralCompactH2SourceCongruence",
+    "source_kind": "theorem",
+    "requested_kind": "THEOREM"
+  },
+  {
+    "name": "Zeta23.CCM.NativeCompactPoleH2.translated_ae_equations",
+    "origin": "Zeta23.CCM.PoleNeutralCompactH2SourceCongruence",
+    "source_kind": "theorem",
+    "requested_kind": "THEOREM"
+  },
+  {
+    "name": "Zeta23.CCM.poleNeutral_compactInverse_zero_interval_support_norm",
+    "origin": "Zeta23.CCM.PoleNeutralCompactH2SourceCongruence",
+    "source_kind": "theorem",
+    "requested_kind": "THEOREM"
+  }
+]

@@ -1,0 +1,1003 @@
+{
+  "schema_version": "RH_POST290_FORMAL_BINDINGS_CONTRACT_1.0",
+  "execution_status": "NOT_CHECKED",
+  "integrity_status": "NOT_CHECKED",
+  "scientific_disposition": "API_CONTRACT_ONLY_RH_OPEN",
+  "claim_cap": "RH_OPEN",
+  "authority": "FROZEN_API_REQUIREMENTS_NOT_COMPILER_RECEIPTS",
+  "source": "review_execution_2026-10-14/spec/API_CROSSWALK.json",
+  "total_required": 99,
+  "evidence_policy": "Replacement with compiler receipts requires exact head/tree, admitted-axiom check and correct declaration kinds; this contract file creates no theorem authority.",
+  "bindings": [
+    {
+      "id": "M01.01",
+      "name": "Zeta23.CCM.universalSincSource",
+      "required_kind": "DEFINITION",
+      "work_package": "W01",
+      "module": "M01",
+      "expected_origin": "Zeta23.CCM.UniversalSincSourceFacade",
+      "acceptance": "Construct the exact infinite-convolution source; density, support, positivity, symmetry, smoothness, transform and scaling.",
+      "verified_at_current_head": false
+    },
+    {
+      "id": "M01.02",
+      "name": "Zeta23.CCM.universalSincSource_nonneg",
+      "required_kind": "THEOREM",
+      "work_package": "W01",
+      "module": "M01",
+      "expected_origin": "Zeta23.CCM.UniversalSincSourceFacade",
+      "acceptance": "∀ {s : ℝ}, 0 < s → ∀ (x : ℝ), 0 ≤ Zeta23.CCM.universalSincSource s x",
+      "verified_at_current_head": false
+    },
+    {
+      "id": "M01.03",
+      "name": "Zeta23.CCM.universalSincSource_integral_one",
+      "required_kind": "THEOREM",
+      "work_package": "W01",
+      "module": "M01",
+      "expected_origin": "Zeta23.CCM.UniversalSincSourceFacade",
+      "acceptance": "∀ {s : ℝ}, 0 < s → ∫ (x : ℝ), Zeta23.CCM.universalSincSource s x = 1",
+      "verified_at_current_head": false
+    },
+    {
+      "id": "M01.04",
+      "name": "Zeta23.CCM.universalSincSource_support",
+      "required_kind": "THEOREM",
+      "work_package": "W01",
+      "module": "M01",
+      "expected_origin": "Zeta23.CCM.UniversalSincSourceFacade",
+      "acceptance": "∀ {s : ℝ}, 0 < s → tsupport (Zeta23.CCM.universalSincSource s) ⊆ Set.Icc (-s) s",
+      "verified_at_current_head": false
+    },
+    {
+      "id": "M01.05",
+      "name": "Zeta23.CCM.universalSincSource_contDiff",
+      "required_kind": "THEOREM",
+      "work_package": "W01",
+      "module": "M01",
+      "expected_origin": "Zeta23.CCM.UniversalSincSourceFacade",
+      "acceptance": "∀ {s : ℝ}, 0 < s → ContDiff ℝ (↑⊤) (Zeta23.CCM.universalSincSource s)",
+      "verified_at_current_head": false
+    },
+    {
+      "id": "M01.06",
+      "name": "Zeta23.CCM.paperFT_universalSincSource",
+      "required_kind": "THEOREM",
+      "work_package": "W01",
+      "module": "M01",
+      "expected_origin": "Zeta23.CCM.UniversalSincSourceFacade",
+      "acceptance": "∀ {s : ℝ}, 0 < s → (Zeta23.paperFT fun x => ↑(Zeta23.CCM.universalSincSource s x)) = Zeta23.CCM.UniversalSinc.product s",
+      "verified_at_current_head": false
+    },
+    {
+      "id": "M02.01",
+      "name": "Zeta23.CCM.universalSincSource_gevrey_bound",
+      "required_kind": "THEOREM",
+      "work_package": "W01",
+      "module": "M02",
+      "expected_origin": "Zeta23.CCM.UniversalSincDetectorBounds",
+      "acceptance": "s>0 implies constructed source-only C,H>0 and for every n,x, |q_s^(n)(x)| <= C H^n (n!)^2. Preserve exact q_s identification.",
+      "verified_at_current_head": false
+    },
+    {
+      "id": "M02.02",
+      "name": "Zeta23.CCM.poleKilled_universalSincSource_norm_sq",
+      "required_kind": "THEOREM",
+      "work_package": "W01",
+      "module": "M02",
+      "expected_origin": "Zeta23.CCM.UniversalSincDetectorBounds",
+      "acceptance": "s>0 implies ||Pq_s||_2^2 = s^-5||q_1 second derivative||_2^2 +(1/2)s^-3||q_1 first derivative||_2^2 +(1/16)s^-1||q_1||_2^2. R2.",
+      "verified_at_current_head": false
+    },
+    {
+      "id": "M02.03",
+      "name": "Zeta23.CCM.universalSincProduct_decay",
+      "required_kind": "THEOREM",
+      "work_package": "W01",
+      "module": "M02",
+      "expected_origin": "Zeta23.CCM.UniversalSincDetectorBounds",
+      "acceptance": "Reexport exact all-real-frequency product Gevrey decay, with original constants and domain; no new simplicity assertion.",
+      "verified_at_current_head": false
+    },
+    {
+      "id": "M03.01",
+      "name": "Zeta23.ExceptionalZero.universalSincPoleKilled_visible_at_offLine_zero",
+      "required_kind": "THEOREM",
+      "work_package": "W01",
+      "module": "M03",
+      "expected_origin": "Zeta23.ExceptionalZero.UniversalSincDetectorVisibility",
+      "acceptance": "Actual rho with Re rho !=1/2 gives nonzero physical pole-killed transform at the exact paperFT spectral coordinate. Reuse physical identification, not multiplier name only.",
+      "verified_at_current_head": false
+    },
+    {
+      "id": "M04.01",
+      "name": "Zeta23.ExceptionalZero.originalDetectorCorrelation_pos_excursions",
+      "required_kind": "THEOREM",
+      "work_package": "W01",
+      "module": "M04",
+      "expected_origin": "Zeta23.ExceptionalZero.OriginalDetectorPhaseDepth",
+      "acceptance": "∀ (ρ : ↑Zeta23.zetaZeroConfig.carrier),   (↑ρ).re ≠ 1 / 2 →     ∀ {β : ℝ},       β < |(↑ρ).re - 1 / 2| →         ∀ (A M : ℝ), ∃ a, A < a ∧ M * Real.exp (2 * β * a) < Zeta23.ExceptionalZero.fixedOriginalSincCorrelationReal a",
+      "verified_at_current_head": false
+    },
+    {
+      "id": "M04.02",
+      "name": "Zeta23.ExceptionalZero.originalDetectorCorrelation_neg_excursions",
+      "required_kind": "THEOREM",
+      "work_package": "W01",
+      "module": "M04",
+      "expected_origin": "Zeta23.ExceptionalZero.OriginalDetectorPhaseDepth",
+      "acceptance": "∀ (ρ : ↑Zeta23.zetaZeroConfig.carrier),   (↑ρ).re ≠ 1 / 2 →     ∀ {β : ℝ},       β < |(↑ρ).re - 1 / 2| →         ∀ (A M : ℝ),           ∃ a, A < a ∧ Zeta23.ExceptionalZero.fixedOriginalSincCorrelationReal a < -(M * Real.exp (2 * β * a))",
+      "verified_at_current_head": false
+    },
+    {
+      "id": "M04.03",
+      "name": "Zeta23.ExceptionalZero.originalDetector_eachPhase_cofinal_depth",
+      "required_kind": "THEOREM",
+      "work_package": "W01",
+      "module": "M04",
+      "expected_origin": "Zeta23.ExceptionalZero.OriginalDetectorPhaseDepth",
+      "acceptance": "∀ (ρ : ↑Zeta23.zetaZeroConfig.carrier) {β σ : ℝ},   0 < β →     β < |(↑ρ).re - 1 / 2| →       σ = 1 ∨ σ = -1 →         ∀ (R : ℝ),           ∃ L,             max R 4 < L ∧               ∃ a,                 L = Zeta23.ExceptionalZero.fixedOriginalSincTrialAperture a ∧                   tsupport (Zeta23.ExceptionalZero.fixedOriginalSincPhaseTrial σ a) ⊆ Set.Icc 1 (L - 1) ∧                     ∫ (x : ℝ), ‖Zeta23.ExceptionalZero.fixedOriginalSincPhaseTrial σ a x‖ ^ 2 = 1 ∧                       (Zeta23.CCM.localizedWeilAdditiveRHS (Zeta23.ExceptionalZero.fixedOriginalSincPhaseTrial σ a)                             (Zeta23.ExceptionalZero.fixedOriginalSincPhaseTrial σ a)).re ≤                         -Real.exp (β * L)",
+      "verified_at_current_head": false
+    },
+    {
+      "id": "M05.01",
+      "name": "Zeta23.CCM.originalDetectorFiniteImage",
+      "required_kind": "DEFINITION",
+      "work_package": "W02",
+      "module": "M05",
+      "expected_origin": "Zeta23.CCM.OriginalDetectorFiniteTransport",
+      "acceptance": "Fixed endpoint order m=4 in core; degree M=4, N=ceil(L^4)-4. Construct positive padding and exact phase; prove physical/coefficient norm bridge and quantitative error.",
+      "verified_at_current_head": false
+    },
+    {
+      "id": "M05.02",
+      "name": "Zeta23.CCM.originalDetectorFiniteImage_legal",
+      "required_kind": "THEOREM",
+      "work_package": "W02",
+      "module": "M05",
+      "expected_origin": "Zeta23.CCM.OriginalDetectorFiniteTransport",
+      "acceptance": "∀ (c : ℝ) {L : ℝ} (hL : 2 ≤ L),   Zeta23.CCM.originalDetectorFiniteImage L c ⋯ ∈     Zeta23.CCM.euclideanBoundaryFlatSubspace (Zeta23.CCM.originalDetectorQuarticCutoff L)",
+      "verified_at_current_head": false
+    },
+    {
+      "id": "M05.03",
+      "name": "Zeta23.CCM.originalDetectorFiniteImage_poleNeutral",
+      "required_kind": "THEOREM",
+      "work_package": "W02",
+      "module": "M05",
+      "expected_origin": "Zeta23.CCM.OriginalDetectorFiniteTransport",
+      "acceptance": "∀ (c : ℝ) {L : ℝ} (hL : 2 ≤ L),   (Zeta23.CCM.canonicalPoleEvenFunctional L (Zeta23.CCM.originalDetectorQuarticCutoff L))         (Zeta23.CCM.originalDetectorFiniteImage L c ⋯) =       0 ∧     (Zeta23.CCM.canonicalPoleOddFunctional L (Zeta23.CCM.originalDetectorQuarticCutoff L))         (Zeta23.CCM.originalDetectorFiniteImage L c ⋯) =       0",
+      "verified_at_current_head": false
+    },
+    {
+      "id": "M05.04",
+      "name": "Zeta23.CCM.originalDetectorFiniteImage_endpointJets",
+      "required_kind": "THEOREM",
+      "work_package": "W02",
+      "module": "M05",
+      "expected_origin": "Zeta23.CCM.OriginalDetectorFiniteTransport",
+      "acceptance": "∀ (c : ℝ) {L : ℝ} (hL : 2 ≤ L) {r : ℕ},   r ≤ 4 →     Zeta23.CCM.centeredMoment (Zeta23.CCM.originalDetectorQuarticCutoff L) r         ((EuclideanSpace.equiv (Fin (2 * Zeta23.CCM.originalDetectorQuarticCutoff L + 1)) ℂ)           (Zeta23.CCM.originalDetectorFiniteImage L c ⋯)) =       0",
+      "verified_at_current_head": false
+    },
+    {
+      "id": "M05.05",
+      "name": "Zeta23.CCM.originalDetectorFiniteImage_error_bound",
+      "required_kind": "THEOREM",
+      "work_package": "W02",
+      "module": "M05",
+      "expected_origin": "Zeta23.CCM.OriginalDetectorFiniteTransport",
+      "acceptance": "∀ {L c : ℝ} (hL : 2 ≤ L),   1 + Zeta23.CCM.UniversalSinc.fixedScale ≤ c →     c + Zeta23.CCM.UniversalSinc.fixedScale ≤ L - 1 →       ∀ (r : ℕ) {x : ℝ},         x ∈ Set.Icc 0 L →           ‖iteratedDeriv r                   (fun y => Zeta23.ExceptionalZero.originalSincTest Zeta23.CCM.UniversalSinc.fixedScale (y - c)) x -                 iteratedDeriv r                   (Zeta23.CCM.localizedFiniteFunction L (Zeta23.CCM.originalDetectorQuarticCutoff L)                     ((EuclideanSpace.equiv (Fin (2 * Zeta23.CCM.originalDetectorQuarticCutoff L + 1)) ℂ)                       (Zeta23.CCM.originalDetectorFiniteImage L c ⋯)))                   x‖ ≤             Zeta23.CCM.originalDetectorPaddedFinitePoleImageJetBudget Zeta23.CCM.UniversalSinc.fixedScale L r",
+      "verified_at_current_head": false
+    },
+    {
+      "id": "M05.06",
+      "name": "Zeta23.CCM.originalDetectorFiniteImage_quartic_error_tendsto_zero",
+      "required_kind": "THEOREM",
+      "work_package": "W02",
+      "module": "M05",
+      "expected_origin": "Zeta23.CCM.OriginalDetectorFiniteTransport",
+      "acceptance": "∀ (r : ℕ) (β : ℝ),   Filter.Tendsto     (fun L =>       Zeta23.CCM.originalDetectorPaddedFinitePoleImageJetBudget Zeta23.CCM.UniversalSinc.fixedScale L r *         Real.exp (β * L))     Filter.atTop (nhds 0)",
+      "verified_at_current_head": false
+    },
+    {
+      "id": "M06.01",
+      "name": "Zeta23.CCM.originalDetectorPhaseGram_eq",
+      "required_kind": "THEOREM",
+      "work_package": "W02",
+      "module": "M06",
+      "expected_origin": "Zeta23.CCM.OriginalDetectorFinitePhasePlane",
+      "acceptance": "∀ (L c : ℝ) (hL : 0 < L),   Zeta23.CCM.originalDetectorPaddedFinitePhaseGram L c hL =     !![Zeta23.CCM.originalDetectorPaddedFinitePhaseGram L c hL 0 0,         Zeta23.CCM.originalDetectorPaddedFinitePhaseGram L c hL 0 1;       Zeta23.CCM.originalDetectorPaddedFinitePhaseGram L c hL 0 1,         Zeta23.CCM.originalDetectorPaddedFinitePhaseGram L c hL 0 0]",
+      "verified_at_current_head": false
+    },
+    {
+      "id": "M06.02",
+      "name": "Zeta23.CCM.originalDetectorPhaseEnergy_eq",
+      "required_kind": "THEOREM",
+      "work_package": "W02",
+      "module": "M06",
+      "expected_origin": "Zeta23.CCM.OriginalDetectorFinitePhasePlane",
+      "acceptance": "∀ (L c : ℝ) (hL : 0 < L),   Zeta23.CCM.originalDetectorPaddedFinitePhaseNativeEnergy L c hL =     !![Zeta23.CCM.originalDetectorPaddedFinitePhaseNativeEnergy L c hL 0 0,         Zeta23.CCM.originalDetectorPaddedFinitePhaseNativeEnergy L c hL 0 1;       Zeta23.CCM.originalDetectorPaddedFinitePhaseNativeEnergy L c hL 0 1,         Zeta23.CCM.originalDetectorPaddedFinitePhaseNativeEnergy L c hL 0 0]",
+      "verified_at_current_head": false
+    },
+    {
+      "id": "M06.03",
+      "name": "Zeta23.CCM.originalDetectorPhaseRayleigh_eq",
+      "required_kind": "THEOREM",
+      "work_package": "W02",
+      "module": "M06",
+      "expected_origin": "Zeta23.CCM.OriginalDetectorFinitePhasePlane",
+      "acceptance": "∀ (L c : ℝ) (hL : 0 < L) (z : Fin 2 → ℂ),   (inner ℂ           ((Matrix.toEuclideanLin (Zeta23.CCM.canonicalSourceMatrix L (Zeta23.CCM.originalDetectorQuarticCutoff L)))             (Zeta23.CCM.originalDetectorPaddedFinitePhasePlaneVector L c hL z))           (Zeta23.CCM.originalDetectorPaddedFinitePhasePlaneVector L c hL z)).re /       ‖Zeta23.CCM.originalDetectorPaddedFinitePhasePlaneVector L c hL z‖ ^ 2 =     (Zeta23.CCM.originalDetectorPaddedFinitePhaseMatrixValue           (Zeta23.CCM.originalDetectorPaddedFinitePhaseNativeEnergy L c hL) z).re /       (Zeta23.CCM.originalDetectorPaddedFinitePhaseMatrixValue (Zeta23.CCM.originalDetectorPaddedFinitePhaseGram L c hL)           z).re",
+      "verified_at_current_head": false
+    },
+    {
+      "id": "M07.01",
+      "name": "Zeta23.CCM.canonicalPoleNeutralEven",
+      "required_kind": "DEFINITION",
+      "work_package": "W03",
+      "module": "M07",
+      "expected_origin": "Zeta23.CCM.CanonicalPoleNeutralCarrier",
+      "acceptance": "Transparent alias of actual poleNeutralEvenSubspace L K; keep native legal carrier and inherited metric.",
+      "verified_at_current_head": false
+    },
+    {
+      "id": "M07.02",
+      "name": "Zeta23.CCM.canonicalPoleNeutralOdd",
+      "required_kind": "DEFINITION",
+      "work_package": "W03",
+      "module": "M07",
+      "expected_origin": "Zeta23.CCM.CanonicalPoleNeutralCarrier",
+      "acceptance": "Transparent alias of actual poleNeutralOddSubspace L K; keep native legal carrier and inherited metric.",
+      "verified_at_current_head": false
+    },
+    {
+      "id": "M07.03",
+      "name": "Zeta23.CCM.poleNeutral_iff_exponentialMoments",
+      "required_kind": "THEOREM",
+      "work_package": "W03",
+      "module": "M07",
+      "expected_origin": "Zeta23.CCM.CanonicalPoleNeutralCarrier",
+      "acceptance": "Bundle the actual even and odd physical two-pole iff theorems on their own legal carriers.",
+      "verified_at_current_head": false
+    },
+    {
+      "id": "M07.04",
+      "name": "Zeta23.CCM.poleNeutral_parity_finrank",
+      "required_kind": "THEOREM",
+      "work_package": "W03",
+      "module": "M07",
+      "expected_origin": "Zeta23.CCM.CanonicalPoleNeutralCarrier",
+      "acceptance": "L>0,K>=3: both native neutral parity spaces have finrank K-2; separately record zero spaces for K<3.",
+      "verified_at_current_head": false
+    },
+    {
+      "id": "M07.05",
+      "name": "Zeta23.CCM.poleNeutralIndexEquiv",
+      "required_kind": "DEFINITION",
+      "work_package": "W03",
+      "module": "M07",
+      "expected_origin": "Zeta23.CCM.CanonicalPoleNeutralCarrier",
+      "acceptance": "Define physical pole-neutral carriers, dimensions, nonzero normals and algebraic nonunitary D0 equivalence. Handle K<3 separately.",
+      "verified_at_current_head": false
+    },
+    {
+      "id": "M07.06",
+      "name": "Zeta23.CCM.poleNeutralIndex_norm_lower",
+      "required_kind": "THEOREM",
+      "work_package": "W03",
+      "module": "M07",
+      "expected_origin": "Zeta23.CCM.CanonicalPoleNeutralCarrier",
+      "acceptance": "∀ {L : ℝ} (hL : 0 < L) (K : ℕ) (u : ↥(Zeta23.CCM.poleNeutralEvenSubspace L K)),   ‖u‖ ^ 2 ≤ 4 * ‖(Zeta23.CCM.poleNeutralIndexLinearMap hL K) u‖ ^ 2",
+      "verified_at_current_head": false
+    },
+    {
+      "id": "M08.01",
+      "name": "Zeta23.CCM.poleNormalCoefficient",
+      "required_kind": "DEFINITION",
+      "work_package": "W03",
+      "module": "M08",
+      "expected_origin": "Zeta23.CCM.CanonicalPoleNeutralIntertwining",
+      "acceptance": "Alias actual even output normal multiplier poleNeutralEvenOutputCoefficient; not the quadratic-normal scalar b.",
+      "verified_at_current_head": false
+    },
+    {
+      "id": "M08.02",
+      "name": "Zeta23.CCM.correctedCanonicalSource",
+      "required_kind": "DEFINITION",
+      "work_package": "W03",
+      "module": "M08",
+      "expected_origin": "Zeta23.CCM.CanonicalPoleNeutralIntertwining",
+      "acceptance": "Alias actual corrected scalar S0=S-b*alpha and retain the corresponding linear functional when used in RankOneIntertwining.",
+      "verified_at_current_head": false
+    },
+    {
+      "id": "M08.03",
+      "name": "Zeta23.CCM.poleNormal_index_projection_eq",
+      "required_kind": "THEOREM",
+      "work_package": "W03",
+      "module": "M08",
+      "expected_origin": "Zeta23.CCM.CanonicalPoleNeutralIntertwining",
+      "acceptance": "Actual Q_odd D v_even = -b g0, with all actual projections and normalization.",
+      "verified_at_current_head": false
+    },
+    {
+      "id": "M08.04",
+      "name": "Zeta23.CCM.canonicalPoleNeutral_rankOneIntertwining",
+      "required_kind": "THEOREM",
+      "work_package": "W03",
+      "module": "M08",
+      "expected_origin": "Zeta23.CCM.CanonicalPoleNeutralIntertwining",
+      "acceptance": "Actual B0 D0-D0 A0=g0 S0, instantiated from native source, not a hypothesis.",
+      "verified_at_current_head": false
+    },
+    {
+      "id": "M08.05",
+      "name": "Zeta23.CCM.poleNeutral_cubic_pairing_eq_momentFour",
+      "required_kind": "THEOREM",
+      "work_package": "W03",
+      "module": "M08",
+      "expected_origin": "Zeta23.CCM.CanonicalPoleNeutralNormals",
+      "acceptance": "∀ {L : ℝ} (hL : 0 < L) (K : ℕ) (u : ↥(Zeta23.CCM.poleNeutralEvenSubspace L K)),   inner ℂ (Zeta23.CCM.poleNeutralCubicCompressionVector L K) ((Zeta23.CCM.poleNeutralIndexLinearMap hL K) u) =     Zeta23.CCM.centeredMoment K 4 (Zeta23.CCM.evenBoundaryFlatRawCoefficients K ↑u)",
+      "verified_at_current_head": false
+    },
+    {
+      "id": "M09.01",
+      "name": "Zeta23.CCM.poleNeutral_source_moment_energy_eq",
+      "required_kind": "THEOREM",
+      "work_package": "W03",
+      "module": "M09",
+      "expected_origin": "Zeta23.CCM.CanonicalPoleNeutralSourceMoment",
+      "acceptance": "∀ {L : ℝ} (hL : 0 < L) (K : ℕ),   2 ≤ K →     ∀ (lam : ℝ) (u : ↥(Zeta23.CCM.poleNeutralEvenSubspace L K)),       (Zeta23.CCM.poleNeutralEvenCompressedCanonical L K) u = ↑lam • u →         (star (Zeta23.CCM.poleNeutralCorrectedCubicSource L K u) *               Zeta23.CCM.centeredMoment K 4 (Zeta23.CCM.evenBoundaryFlatRawCoefficients K ↑u)).re =           (inner ℂ               ((Zeta23.CCM.poleNeutralOddCompressedCanonical L K) ((Zeta23.CCM.poleNeutralIndexLinearMap hL K) u) -                 ↑lam • (Zeta23.CCM.poleNeutralIndexLinearMap hL K) u)               ((Zeta23.CCM.poleNeutralIndexLinearMap hL K) u)).re",
+      "verified_at_current_head": false
+    },
+    {
+      "id": "M09.02",
+      "name": "Zeta23.CCM.poleNeutral_strictEven_source_moment_pos",
+      "required_kind": "THEOREM",
+      "work_package": "W03",
+      "module": "M09",
+      "expected_origin": "Zeta23.CCM.CanonicalPoleNeutralSourceMoment",
+      "acceptance": "∀ {L : ℝ} (hL : 0 < L) (K : ℕ) (hK : 3 ≤ K) (u : ↥(Zeta23.CCM.poleNeutralEvenSubspace L K)),   u ≠ 0 →     (Zeta23.CCM.poleNeutralEvenCompressedCanonical L K) u = ↑(Zeta23.CCM.poleNeutralEvenRayleighBottom L K hL hK) • u →       Zeta23.CCM.poleNeutralEvenRayleighBottom L K hL hK < Zeta23.CCM.poleNeutralOddRayleighBottom L K hL hK →         0 <           (star (Zeta23.CCM.poleNeutralCorrectedCubicSource L K u) *               Zeta23.CCM.centeredMoment K 4 (Zeta23.CCM.evenBoundaryFlatRawCoefficients K ↑u)).re",
+      "verified_at_current_head": false
+    },
+    {
+      "id": "M09.03",
+      "name": "Zeta23.CCM.poleNeutral_trial_residual_bound",
+      "required_kind": "THEOREM",
+      "work_package": "W03",
+      "module": "M09",
+      "expected_origin": "Zeta23.CCM.CanonicalPoleNeutralTrialResidualBounds",
+      "acceptance": "∀ {L : ℝ} (hL : 0 < L) (K : ℕ) (hK : 3 ≤ K) (lam : ℝ) (u : ↥(Zeta23.CCM.poleNeutralEvenSubspace L K)),   (Zeta23.CCM.poleNeutralOddRayleighBottom L K hL hK - lam) * ‖(Zeta23.CCM.poleNeutralIndexLinearMap hL K) u‖ ^ 2 ≤     ‖Zeta23.CCM.poleNeutralCorrectedCubicSource L K u‖ *         ‖Zeta23.CCM.centeredMoment K 4 (Zeta23.CCM.evenBoundaryFlatRawCoefficients K ↑u)‖ +       ‖(Zeta23.CCM.poleNeutralIndexLinearMap hL K) (Zeta23.CCM.poleNeutralTrialResidual L K lam u)‖ *         ‖(Zeta23.CCM.poleNeutralIndexLinearMap hL K) u‖",
+      "verified_at_current_head": false
+    },
+    {
+      "id": "M09.04",
+      "name": "Zeta23.CCM.poleNeutral_momentFour_zero_residual_lower",
+      "required_kind": "THEOREM",
+      "work_package": "W03",
+      "module": "M09",
+      "expected_origin": "Zeta23.CCM.CanonicalPoleNeutralTrialResidualBounds",
+      "acceptance": "∀ {L : ℝ} (hL : 0 < L) (K : ℕ) (hK : 3 ≤ K) (lam : ℝ) (u : ↥(Zeta23.CCM.poleNeutralEvenSubspace L K)),   lam < Zeta23.CCM.poleNeutralOddRayleighBottom L K hL hK →     Zeta23.CCM.centeredMoment K 4 (Zeta23.CCM.evenBoundaryFlatRawCoefficients K ↑u) = 0 →       (Zeta23.CCM.poleNeutralOddRayleighBottom L K hL hK - lam) * ‖u‖ / (2 * ↑K) ≤         ‖Zeta23.CCM.poleNeutralTrialResidual L K lam u‖",
+      "verified_at_current_head": false
+    },
+    {
+      "id": "M09.05",
+      "name": "Zeta23.CCM.poleNeutral_simpleEven_momentFour_ne_zero",
+      "required_kind": "THEOREM",
+      "work_package": "W03",
+      "module": "M09",
+      "expected_origin": "Zeta23.CCM.CanonicalPoleNeutralGroundConstraints",
+      "acceptance": "∀ {L : ℝ} (hL : 0 < L) (K : ℕ) (hK : 3 ≤ K) (lam : ℝ) (u : ↥(Zeta23.CCM.poleNeutralEvenSubspace L K)),   u ≠ 0 →     (Zeta23.CCM.poleNeutralEvenCompressedCanonical L K) u = ↑lam • u →       lam ≤ Zeta23.CCM.poleNeutralOddRayleighBottom L K hL hK →         Module.finrank ℂ ↥(Module.End.eigenspace (Zeta23.CCM.poleNeutralEvenCompressedCanonical L K) ↑lam) = 1 →           Zeta23.CCM.centeredMoment K 4 (Zeta23.CCM.evenBoundaryFlatRawCoefficients K ↑u) ≠ 0",
+      "verified_at_current_head": false
+    },
+    {
+      "id": "M10.01",
+      "name": "Zeta23.CCM.poleNeutralEvenShiftedRay",
+      "required_kind": "DEFINITION",
+      "work_package": "W04",
+      "module": "M10",
+      "expected_origin": "Zeta23.CCM.CanonicalPoleNeutralShiftedSecular",
+      "acceptance": "Instantiate generic shifted secular algebra for both strict branches; derive strict odd via adjoint and the specified minus sign.",
+      "verified_at_current_head": false
+    },
+    {
+      "id": "M10.02",
+      "name": "Zeta23.CCM.poleNeutral_evenShifted_eigen_iff",
+      "required_kind": "THEOREM",
+      "work_package": "W04",
+      "module": "M10",
+      "expected_origin": "Zeta23.CCM.CanonicalPoleNeutralShiftedSecular",
+      "acceptance": "Below actual odd bottom: lambda is an even eigenvalue iff S0(x_lambda)=1; x_lambda uses actual invertible odd shift.",
+      "verified_at_current_head": false
+    },
+    {
+      "id": "M10.03",
+      "name": "Zeta23.CCM.poleNeutral_evenShifted_det_eq",
+      "required_kind": "THEOREM",
+      "work_package": "W04",
+      "module": "M10",
+      "expected_origin": "Zeta23.CCM.CanonicalPoleNeutralShiftedSecular",
+      "acceptance": "Below odd bottom: det(A0-lambda)=det(B0-lambda)*(1-S0(x_lambda)).",
+      "verified_at_current_head": false
+    },
+    {
+      "id": "M10.04",
+      "name": "Zeta23.CCM.poleNeutralOddShiftedRay",
+      "required_kind": "DEFINITION",
+      "work_package": "W04",
+      "module": "M10",
+      "expected_origin": "Zeta23.CCM.CanonicalPoleNeutralShiftedSecular",
+      "acceptance": "Alias actual negative adjoint ray -(D0*)^-1(A0-lambda)^-1 S0*, not the even ray.",
+      "verified_at_current_head": false
+    },
+    {
+      "id": "M10.05",
+      "name": "Zeta23.CCM.poleNeutral_oddShifted_eigen_iff",
+      "required_kind": "THEOREM",
+      "work_package": "W04",
+      "module": "M10",
+      "expected_origin": "Zeta23.CCM.CanonicalPoleNeutralShiftedSecular",
+      "acceptance": "Below actual even bottom: lambda is an odd eigenvalue iff <g0,y_lambda>=1 in the existing inner-product convention.",
+      "verified_at_current_head": false
+    },
+    {
+      "id": "M10.06",
+      "name": "Zeta23.CCM.poleNeutral_oddShifted_det_eq",
+      "required_kind": "THEOREM",
+      "work_package": "W04",
+      "module": "M10",
+      "expected_origin": "Zeta23.CCM.CanonicalPoleNeutralShiftedSecular",
+      "acceptance": "Below even bottom: det(B0-lambda)=det(A0-lambda)*(1-<g0,y_lambda>).",
+      "verified_at_current_head": false
+    },
+    {
+      "id": "M11.01",
+      "name": "Zeta23.CCM.PoleNeutralGroundBranch",
+      "required_kind": "INDUCTIVE",
+      "work_package": "W04",
+      "module": "M11",
+      "expected_origin": "Zeta23.CCM.CanonicalPoleNeutralTiePackage",
+      "acceptance": "Inductive strictEven/strictOdd/tie tag indexed by actual neutral bottoms and their proof conditions; selected parity remains a separate field.",
+      "verified_at_current_head": false
+    },
+    {
+      "id": "M11.02",
+      "name": "Zeta23.CCM.poleNeutralGround_branch_exhaustive",
+      "required_kind": "THEOREM",
+      "work_package": "W04",
+      "module": "M11",
+      "expected_origin": "Zeta23.CCM.CanonicalPoleNeutralTiePackage",
+      "acceptance": "Trichotomy of actual neutral bottoms at one L,K; no branch skipped.",
+      "verified_at_current_head": false
+    },
+    {
+      "id": "M11.03",
+      "name": "Zeta23.CCM.poleNeutral_tied_kernel_compatibility",
+      "required_kind": "THEOREM",
+      "work_package": "W04",
+      "module": "M11",
+      "expected_origin": "Zeta23.CCM.CanonicalPoleNeutralTiePackage",
+      "acceptance": "For every actual tied even or odd eigenvector, its own-side intertwining forcing annihilates the opposite shifted kernel; retain source scalar possibly zero.",
+      "verified_at_current_head": false
+    },
+    {
+      "id": "M11.04",
+      "name": "Zeta23.CCM.poleNeutral_tied_complementary_response",
+      "required_kind": "THEOREM",
+      "work_package": "W04",
+      "module": "M11",
+      "expected_origin": "Zeta23.CCM.CanonicalPoleNeutralTiePackage",
+      "acceptance": "For those actual tied vectors: inverse on positive complement plus actual kernel component; prove range membership before inverse.",
+      "verified_at_current_head": false
+    },
+    {
+      "id": "M12.01",
+      "name": "Zeta23.CCM.exists_bottomAvoidingThreshold",
+      "required_kind": "THEOREM",
+      "work_package": "W05",
+      "module": "M12",
+      "expected_origin": "Zeta23.CCM.CanonicalDeepThresholdSelection",
+      "acceptance": "∀ {L : ℝ} (hL : 0 < L) (Kd : ℕ),   3 ≤ Kd →     ∀ (D : ℝ),       0 < D →         ∃ eta,           D / 3 < eta ∧             eta < D / 2 ∧               ∀ (K : ℕ) (hK : 3 ≤ K),                 K ≤ Kd →                   Zeta23.CCM.nativeDeepThresholdGap D Kd ≤ |Zeta23.CCM.poleNeutralGlobalRayleighBottom L K hL hK + eta|",
+      "verified_at_current_head": false
+    },
+    {
+      "id": "M12.02",
+      "name": "Zeta23.CCM.exists_least_deepPoleNeutralCutoff",
+      "required_kind": "THEOREM",
+      "work_package": "W05",
+      "module": "M12",
+      "expected_origin": "Zeta23.CCM.CanonicalDeepThresholdSelection",
+      "acceptance": "∀ {L : ℝ} (hL : 0 < L) (Kd : ℕ),   3 ≤ Kd →     ∀ (D : ℝ),       0 < D →         ∀ p ∈ Zeta23.CCM.euclideanBoundaryFlatSubspace Kd,           (Zeta23.CCM.canonicalPoleEvenFunctional L Kd) p = 0 →             (Zeta23.CCM.canonicalPoleOddFunctional L Kd) p = 0 →               ‖p‖ = 1 →                 (inner ℂ ((Matrix.toEuclideanLin (Zeta23.CCM.canonicalSourceMatrix L Kd)) p) p).re ≤ -D →                   Nonempty (Zeta23.CCM.NativeDeepThresholdGroundData L Kd D hL)",
+      "verified_at_current_head": false
+    },
+    {
+      "id": "M12.03",
+      "name": "Zeta23.CCM.deepThreshold_predecessor_inverse_bound",
+      "required_kind": "THEOREM",
+      "work_package": "W05",
+      "module": "M12",
+      "expected_origin": "Zeta23.CCM.CanonicalDeepThresholdSelection",
+      "acceptance": "∀ {L D : ℝ} {Kd : ℕ} {hL : 0 < L},   0 < D →     ∀ (s : Zeta23.CCM.NativeDeepThresholdGroundData L Kd D hL),       ∃ r,         ‖LinearMap.toContinuousLinearMap ↑r.evenGround.symm‖ ≤ 6 * ↑(Kd - 1) / D ∧           ‖LinearMap.toContinuousLinearMap ↑r.oddGround.symm‖ ≤ 6 * ↑(Kd - 1) / D ∧             ‖LinearMap.toContinuousLinearMap ↑r.evenDetector.symm‖ ≤ 12 * ↑(Kd - 1) / D ∧               ‖LinearMap.toContinuousLinearMap ↑r.oddDetector.symm‖ ≤ 12 * ↑(Kd - 1) / D",
+      "verified_at_current_head": false
+    },
+    {
+      "id": "M12.04",
+      "name": "Zeta23.CCM.deepThreshold_selectedParity_simple",
+      "required_kind": "THEOREM",
+      "work_package": "W05",
+      "module": "M12",
+      "expected_origin": "Zeta23.CCM.CanonicalDeepThresholdSelection",
+      "acceptance": "∀ {L D : ℝ} {Kd : ℕ} {hL : 0 < L},   0 < D →     ∀ (s : Zeta23.CCM.NativeDeepThresholdGroundData L Kd D hL),       (Module.finrank ℂ ↥(Module.End.eigenspace (Zeta23.CCM.poleNeutralEvenCompressedCanonical L s.cutoff) ↑s.lam) = 1 ∧           ∃ u, ‖u‖ = 1 ∧ (Zeta23.CCM.poleNeutralEvenCompressedCanonical L s.cutoff) u = ↑s.lam • u) ∨         Module.finrank ℂ ↥(Module.End.eigenspace (Zeta23.CCM.poleNeutralOddCompressedCanonical L s.cutoff) ↑s.lam) = 1 ∧           ∃ w, ‖w‖ = 1 ∧ (Zeta23.CCM.poleNeutralOddCompressedCanonical L s.cutoff) w = ↑s.lam • w",
+      "verified_at_current_head": false
+    },
+    {
+      "id": "M13.01",
+      "name": "Zeta23.CCM.DetectorRetainedSchurState",
+      "required_kind": "STRUCTURE",
+      "work_package": "W05",
+      "module": "M13",
+      "expected_origin": "Zeta23.CCM.DetectorRetainedSchurState",
+      "acceptance": "Keep the one-step selected-ground scalar and the full detector-complement Schur form distinct; prove DS/DL.",
+      "verified_at_current_head": false
+    },
+    {
+      "id": "M13.02",
+      "name": "Zeta23.CCM.selectedGround_shiftedSchur_eq",
+      "required_kind": "THEOREM",
+      "work_package": "W05",
+      "module": "M13",
+      "expected_origin": "Zeta23.CCM.DetectorRetainedSchurState",
+      "acceptance": "∀ {sigma : Zeta23.CCM.ReversalParity} {L D : ℝ} {Kd : ℕ} {hL : 0 < L}   (state : Zeta23.CCM.DetectorRetainedSchurState sigma L Kd D hL),   let gamma := state.selectedParity;   have J := Zeta23.CCM.nativeSelectedGroundPredecessorEmbedding gamma state.selection;   have T := Zeta23.CCM.nativePoleNeutralParityShifted gamma L state.selection.cutoff state.selection.lam;   have P := Zeta23.CCM.nativeSelectedGroundPredecessorEquiv gamma state.inverses;   have y := (Zeta23.CCM.isometricDetectorComplementCoordinate J) state.selectedGround;   have response := (Zeta23.CCM.isometricDetectorResponse J T P) y;   inner ℂ ((Zeta23.CCM.nativePoleNeutralParityCanonical gamma L state.selection.cutoff) ↑y) ↑y -       ↑state.selection.lam * inner ℂ ↑y ↑y =     inner ℂ (P response) response",
+      "verified_at_current_head": false
+    },
+    {
+      "id": "M13.03",
+      "name": "Zeta23.CCM.originalDetector_schur_completion",
+      "required_kind": "THEOREM",
+      "work_package": "W05",
+      "module": "M13",
+      "expected_origin": "Zeta23.CCM.DetectorRetainedSchurState",
+      "acceptance": "∀ {sigma : Zeta23.CCM.ReversalParity} {L D : ℝ} {Kd : ℕ} {hL : 0 < L}   (state : Zeta23.CCM.DetectorRetainedSchurState sigma L Kd D hL),   let J := Zeta23.CCM.nativeDetectorPredecessorEmbedding sigma state.selection;   have T := Zeta23.CCM.nativePoleNeutralParityShifted sigma L Kd (-state.selection.eta);   have P := Zeta23.CCM.nativeDetectorPredecessorEquiv sigma state.inverses;   have x := (LinearMap.adjoint J.toLinearMap) state.detector;   have y := (Zeta23.CCM.isometricDetectorComplementCoordinate J) state.detector;   have z := x + (Zeta23.CCM.isometricDetectorResponse J T P) y;   inner ℂ (T state.detector) state.detector =     inner ℂ (P z) z + inner ℂ ((Zeta23.CCM.nativeDetectorSchurOperator sigma state.inverses) y) y",
+      "verified_at_current_head": false
+    },
+    {
+      "id": "M13.04",
+      "name": "Zeta23.CCM.originalDetector_schur_loss_lower",
+      "required_kind": "THEOREM",
+      "work_package": "W05",
+      "module": "M13",
+      "expected_origin": "Zeta23.CCM.DetectorRetainedSchurState",
+      "acceptance": "∀ {sigma : Zeta23.CCM.ReversalParity} {L D : ℝ} {Kd : ℕ} {hL : 0 < L}   (state : Zeta23.CCM.DetectorRetainedSchurState sigma L Kd D hL),   have y :=     (Zeta23.CCM.isometricDetectorComplementCoordinate         (Zeta23.CCM.nativeDetectorPredecessorEmbedding sigma state.selection))       state.detector;   y ≠ 0 ∧     (inner ℂ ((Zeta23.CCM.nativeDetectorSchurOperator sigma state.inverses) y) y).re ≤ -(D - state.selection.eta) ∧       (inner ℂ ((Zeta23.CCM.nativeDetectorSchurOperator sigma state.inverses) y) y).re < -D / 2",
+      "verified_at_current_head": false
+    },
+    {
+      "id": "M14.01",
+      "name": "Zeta23.CCM.canonicalTrialResidual",
+      "required_kind": "DEFINITION",
+      "work_package": "W06",
+      "module": "M14",
+      "expected_origin": "Zeta23.CCM.CanonicalTrialResidualChannels",
+      "acceptance": "Independent spectral and native-channel definitions of the same trial residual in its own parity T_sigma,0 (A0 even; B0 odd), not the selected-ground parity; complete complex Gram terms; even M4 bounds apply only to eligible even inputs.",
+      "verified_at_current_head": false
+    },
+    {
+      "id": "M14.02",
+      "name": "Zeta23.CCM.canonicalTrialResidual_variance_eq",
+      "required_kind": "THEOREM",
+      "work_package": "W06",
+      "module": "M14",
+      "expected_origin": "Zeta23.CCM.CanonicalTrialResidualChannels",
+      "acceptance": "Alias existing LEGAL residual variance; native packet uses separately named neutral variance with actual own parity.",
+      "verified_at_current_head": false
+    },
+    {
+      "id": "M14.03",
+      "name": "Zeta23.CCM.canonicalTrialResidual_channels_sum",
+      "required_kind": "THEOREM",
+      "work_package": "W06",
+      "module": "M14",
+      "expected_origin": "Zeta23.CCM.CanonicalTrialResidualChannels",
+      "acceptance": "Alias existing LEGAL residual channel sum, alongside mandatory neutral companion. Never infer neutral from legal.",
+      "verified_at_current_head": false
+    },
+    {
+      "id": "M14.04",
+      "name": "Zeta23.CCM.canonicalTrialResidual_gram_sum",
+      "required_kind": "THEOREM",
+      "work_package": "W06",
+      "module": "M14",
+      "expected_origin": "Zeta23.CCM.CanonicalTrialResidualChannels",
+      "acceptance": "Alias existing LEGAL Gram equality, alongside mandatory neutral companion with all complex cross terms.",
+      "verified_at_current_head": false
+    },
+    {
+      "id": "M15.01",
+      "name": "Zeta23.CCM.nativeOriginalPrimeField",
+      "required_kind": "DEFINITION",
+      "work_package": "W06",
+      "module": "M15",
+      "expected_origin": "Zeta23.CCM.OriginalSincNativeSource",
+      "acceptance": "Actual integer/von-Mangoldt fields X,U and N*X=U; full finite divisor identity; prove required rapid integer-drive bound on exact j.",
+      "verified_at_current_head": false
+    },
+    {
+      "id": "M15.02",
+      "name": "Zeta23.CCM.nativeOriginalIntegerDrive",
+      "required_kind": "DEFINITION",
+      "work_package": "W06",
+      "module": "M15",
+      "expected_origin": "Zeta23.CCM.OriginalSincNativeSource",
+      "acceptance": "Actual integer/von-Mangoldt fields X,U and N*X=U; full finite divisor identity; prove required rapid integer-drive bound on exact j.",
+      "verified_at_current_head": false
+    },
+    {
+      "id": "M15.03",
+      "name": "Zeta23.CCM.native_divisor_convolution_identity",
+      "required_kind": "THEOREM",
+      "work_package": "W06",
+      "module": "M15",
+      "expected_origin": "Zeta23.CCM.NativeIntegerPrimeSource",
+      "acceptance": "Literal nativeIntegerTranslateAction applied to actual X_j equals actual U_j, pointwise local finite before any L2 assumption.",
+      "verified_at_current_head": false
+    },
+    {
+      "id": "M15.04",
+      "name": "Zeta23.CCM.native_primeCoefficients_unique",
+      "required_kind": "THEOREM",
+      "work_package": "W06",
+      "module": "M15",
+      "expected_origin": "Zeta23.CCM.NativeIntegerPrimeSource",
+      "acceptance": "∀ (f : ArithmeticFunction ℝ), (∀ (n : ℕ), ∑ d ∈ n.divisors, f d = Real.log ↑n) → f = ArithmeticFunction.vonMangoldt",
+      "verified_at_current_head": false
+    },
+    {
+      "id": "M15.05",
+      "name": "Zeta23.CCM.nativeOriginalIntegerDrive_rapid_bound",
+      "required_kind": "THEOREM",
+      "work_package": "W06",
+      "module": "M15",
+      "expected_origin": "Zeta23.CCM.NativeIntegerPrimeSource",
+      "acceptance": "For every A>0 construct C>0,T>=0 from A and the fixed source with |U(t)|<=C exp(-A*t) for t>=T. Prove via R2.2 finite-order lattice summation. Existing first-order bound supports current Y but does not by itself meet this stronger named rapid bound. A03 optimized double-exponential estimate stays optional.",
+      "verified_at_current_head": false
+    },
+    {
+      "id": "M16.01",
+      "name": "Zeta23.CCM.poleNeutral_compactInverse_exists_unique",
+      "required_kind": "THEOREM",
+      "work_package": "W06",
+      "module": "M16",
+      "expected_origin": "Zeta23.CCM.PoleNeutralCompactInverse",
+      "acceptance": "∀ {s : ℝ},   0 ≤ s →     ∀ {f : ℝ → ℂ},       MeasureTheory.MemLp f 2 MeasureTheory.volume →         (∀ x ∉ Set.Icc (-s) s, f x = 0) →           ∫ (x : ℝ), Zeta23.CCM.nativePoleExponential (1 / 2) x * f x = 0 →             ∫ (x : ℝ), Zeta23.CCM.nativePoleExponential (-1 / 2) x * f x = 0 → ∃! u, True",
+      "verified_at_current_head": false
+    },
+    {
+      "id": "M16.02",
+      "name": "Zeta23.CCM.poleNeutral_compactInverse_support",
+      "required_kind": "THEOREM",
+      "work_package": "W06",
+      "module": "M16",
+      "expected_origin": "Zeta23.CCM.PoleNeutralCompactInverse",
+      "acceptance": "∀ {s : ℝ} (hs : 0 ≤ s) {f : ℝ → ℂ} (hf : MeasureTheory.MemLp f 2 MeasureTheory.volume)   (hsupport : ∀ x ∉ Set.Icc (-s) s, f x = 0) (hplus : ∫ (x : ℝ), Zeta23.CCM.nativePoleExponential (1 / 2) x * f x = 0)   (hminus : ∫ (x : ℝ), Zeta23.CCM.nativePoleExponential (-1 / 2) x * f x = 0),   tsupport (Zeta23.CCM.nativePoleCompactH2 hs hf hsupport hplus hminus).value ⊆ Set.Icc (-s) s",
+      "verified_at_current_head": false
+    },
+    {
+      "id": "M16.03",
+      "name": "Zeta23.CCM.poleNeutral_compactInverse_norm_bound",
+      "required_kind": "THEOREM",
+      "work_package": "W06",
+      "module": "M16",
+      "expected_origin": "Zeta23.CCM.PoleNeutralCompactInverse",
+      "acceptance": "∀ {s : ℝ} (hs : 0 ≤ s) {f : ℝ → ℂ} (hf : MeasureTheory.MemLp f 2 MeasureTheory.volume)   (hsupport : ∀ x ∉ Set.Icc (-s) s, f x = 0) (hplus : ∫ (x : ℝ), Zeta23.CCM.nativePoleExponential (1 / 2) x * f x = 0)   (hminus : ∫ (x : ℝ), Zeta23.CCM.nativePoleExponential (-1 / 2) x * f x = 0),   (MeasureTheory.eLpNorm (Zeta23.CCM.nativePoleCompactH2 hs hf hsupport hplus hminus).value 2         MeasureTheory.volume).toReal ≤     4 * (MeasureTheory.eLpNorm f 2 MeasureTheory.volume).toReal",
+      "verified_at_current_head": false
+    },
+    {
+      "id": "M17.01",
+      "name": "Zeta23.CCM.originalDetector_correlationField_eq_sourceConvolution",
+      "required_kind": "THEOREM",
+      "work_package": "W06",
+      "module": "M17",
+      "expected_origin": "Zeta23.CCM.OriginalDetectorNativeForcing",
+      "acceptance": "Literal Pi*(k*k)=q*X_j, pointwise with local cutoff/convolution exchanges proved. R5.5.",
+      "verified_at_current_head": false
+    },
+    {
+      "id": "M17.02",
+      "name": "Zeta23.CCM.originalDetector_projectedForcing_eq",
+      "required_kind": "THEOREM",
+      "work_package": "W06",
+      "module": "M17",
+      "expected_origin": "Zeta23.CCM.OriginalDetectorNativeForcing",
+      "acceptance": "Actual b_eta = (P+eta I)x+B y for original finite p, and full original-response channel decomposition with explicit difference p_phys-f. R5.",
+      "verified_at_current_head": false
+    },
+    {
+      "id": "M17.03",
+      "name": "Zeta23.CCM.originalDetector_forcing_error_bound",
+      "required_kind": "THEOREM",
+      "work_package": "W06",
+      "module": "M17",
+      "expected_origin": "Zeta23.CCM.OriginalDetectorNativeForcing",
+      "acceptance": "The exact H1 projection bound of R5.6, with finite-mode and eta factors retained and source-only asymptotic after proved eta control.",
+      "verified_at_current_head": false
+    },
+    {
+      "id": "M18.01",
+      "name": "Zeta23.CCM.nativePositiveCompletion",
+      "required_kind": "DEFINITION",
+      "work_package": "W07",
+      "module": "M18",
+      "expected_origin": "Zeta23.CCM.NativePositiveCompletion",
+      "acceptance": "Actual a-triangle and c completion; exact multiplier; sound mass bound below 605/621; independently stable actual Y.",
+      "verified_at_current_head": false
+    },
+    {
+      "id": "M18.02",
+      "name": "Zeta23.CCM.nativePositiveCompletion_nonneg",
+      "required_kind": "THEOREM",
+      "work_package": "W07",
+      "module": "M18",
+      "expected_origin": "Zeta23.CCM.NativePositiveCompletion",
+      "acceptance": "∀ (t : ℝ), 0 ≤ Zeta23.CCM.nativePositiveCompletion t",
+      "verified_at_current_head": false
+    },
+    {
+      "id": "M18.03",
+      "name": "Zeta23.CCM.nativePositiveCompletion_laplace",
+      "required_kind": "THEOREM",
+      "work_package": "W07",
+      "module": "M18",
+      "expected_origin": "Zeta23.CCM.NativePositiveCompletion",
+      "acceptance": "For Re w>0,w!=1/2 actual Laplace(a)=R(w)zeta(w+1/2); separate exceptional value Laplace(a)(1/2)=1/2.",
+      "verified_at_current_head": false
+    },
+    {
+      "id": "M18.04",
+      "name": "Zeta23.CCM.nativePositiveCompletion_mass_lt",
+      "required_kind": "THEOREM",
+      "work_package": "W07",
+      "module": "M18",
+      "expected_origin": "Zeta23.CCM.NativePositiveCompletion",
+      "acceptance": "Actual L1 norm strictly below605/621, from completed native mass proof, not Python fixture.",
+      "verified_at_current_head": false
+    },
+    {
+      "id": "M18.05",
+      "name": "Zeta23.CCM.nativeCompletedInput",
+      "required_kind": "DEFINITION",
+      "work_package": "W07",
+      "module": "M18",
+      "expected_origin": "Zeta23.CCM.NativeCompletedInput",
+      "acceptance": "Actual a-triangle and c completion; exact multiplier; sound mass bound below 605/621; independently stable actual Y.",
+      "verified_at_current_head": false
+    },
+    {
+      "id": "M18.06",
+      "name": "Zeta23.CCM.nativeCompletedInput_equation",
+      "required_kind": "THEOREM",
+      "work_package": "W07",
+      "module": "M18",
+      "expected_origin": "Zeta23.CCM.NativeCompletionEquation",
+      "acceptance": "∀ (t : ℝ),   ∫ (s : ℝ), Zeta23.CCM.nativePositiveCompletion s * Zeta23.CCM.nativeOriginalPrimeField (t - s) =     Zeta23.CCM.nativeCompletedInput t",
+      "verified_at_current_head": false
+    },
+    {
+      "id": "M18.07",
+      "name": "Zeta23.CCM.nativeCompletedInput_memLp",
+      "required_kind": "THEOREM",
+      "work_package": "W07",
+      "module": "M18",
+      "expected_origin": "Zeta23.CCM.NativeCompletedInput",
+      "acceptance": "∀ {epsilon : ℝ},   0 ≤ epsilon → MeasureTheory.MemLp (Zeta23.CCM.nativeDampedCompletedInput epsilon) 2 MeasureTheory.volume",
+      "verified_at_current_head": false
+    },
+    {
+      "id": "M19.01",
+      "name": "Zeta23.CCM.nativeAdjointResidualIterate",
+      "required_kind": "DEFINITION",
+      "work_package": "W07",
+      "module": "M19",
+      "expected_origin": "Zeta23.CCM.NativeDampedCompletionResidual",
+      "acceptance": "Core: actual finite-step identity, norm monotonicity and invariant adjoint-kernel projection. Strong convergence is an explicitly optional promotion, not needed for B-Y.",
+      "verified_at_current_head": false
+    },
+    {
+      "id": "M19.02",
+      "name": "Zeta23.CCM.nativeAdjointResidual_norm_loss",
+      "required_kind": "THEOREM",
+      "work_package": "W07",
+      "module": "M19",
+      "expected_origin": "Zeta23.CCM.NativeDampedCompletionResidual",
+      "acceptance": "∀ (epsilon : ℝ) (hepsilon : 0 ≤ epsilon) (e : ↥Zeta23.CCM.nativeCompletionCausalL2),   ‖Zeta23.CCM.nativeAdjointResidualStep epsilon hepsilon e‖ ^ 2 ≤     ‖e‖ ^ 2 - (2 - (605 / 621) ^ 2) * ‖(Zeta23.CCM.nativeDampedCompletionCausalL2Adjoint epsilon hepsilon) e‖ ^ 2",
+      "verified_at_current_head": false
+    },
+    {
+      "id": "M19.03",
+      "name": "Zeta23.CCM.nativeAdjointResidual_norm_antitone",
+      "required_kind": "THEOREM",
+      "work_package": "W07",
+      "module": "M19",
+      "expected_origin": "Zeta23.CCM.NativeDampedCompletionResidual",
+      "acceptance": "∀ (epsilon : ℝ) (hepsilon : 0 ≤ epsilon) (e : ↥Zeta23.CCM.nativeCompletionCausalL2),   Antitone fun n => ‖Zeta23.CCM.nativeAdjointResidualIterate epsilon hepsilon e n‖",
+      "verified_at_current_head": false
+    },
+    {
+      "id": "M19.04",
+      "name": "Zeta23.CCM.nativeAdjointResidual_kernelProjection_preserved",
+      "required_kind": "THEOREM",
+      "work_package": "W07",
+      "module": "M19",
+      "expected_origin": "Zeta23.CCM.NativeDampedCompletionResidual",
+      "acceptance": "∀ (epsilon : ℝ) (hepsilon : 0 ≤ epsilon) (e : ↥Zeta23.CCM.nativeCompletionCausalL2) (n : ℕ),   (Zeta23.CCM.nativeCompletionAdjointKernelProjection epsilon hepsilon)       (Zeta23.CCM.nativeAdjointResidualIterate epsilon hepsilon e n) =     (Zeta23.CCM.nativeCompletionAdjointKernelProjection epsilon hepsilon) e",
+      "verified_at_current_head": false
+    },
+    {
+      "id": "M20.01",
+      "name": "Zeta23.ExceptionalZero.nativeZeroJetAdjointWitness",
+      "required_kind": "DEFINITION",
+      "work_package": "W07",
+      "module": "M20",
+      "expected_origin": "Zeta23.ExceptionalZero.NativeRangeZeroJetObstruction",
+      "acceptance": "Direct multiplicity-aware exponential-polynomial L2 witness against actual Yepsilon; no need to port full Hardy factorization.",
+      "verified_at_current_head": false
+    },
+    {
+      "id": "M20.02",
+      "name": "Zeta23.ExceptionalZero.nativeZeroJet_annihilates_range",
+      "required_kind": "THEOREM",
+      "work_package": "W07",
+      "module": "M20",
+      "expected_origin": "Zeta23.ExceptionalZero.NativeActualKernelZeroJets",
+      "acceptance": "∀ (rho : ↑Zeta23.zetaZeroConfig.carrier) (hoff : (↑rho).re ≠ 1 / 2) (f : ↥Zeta23.CCM.nativeCompletionCausalL2),   inner ℂ (Zeta23.ExceptionalZero.nativeZeroJetAdjointWitness rho hoff)       ((Zeta23.CCM.nativeDampedCompletionCausalL2Operator (Zeta23.ExceptionalZero.nativeZeroJetDamping rho) ⋯) f) =     0",
+      "verified_at_current_head": false
+    },
+    {
+      "id": "M20.03",
+      "name": "Zeta23.ExceptionalZero.nativeCompletedInput_zeroJet_ne_zero",
+      "required_kind": "THEOREM",
+      "work_package": "W07",
+      "module": "M20",
+      "expected_origin": "Zeta23.ExceptionalZero.NativeRangeZeroJetObstruction",
+      "acceptance": "Actual <psi_rho,Y_epsilon_rho> !=0 with degree m-1 and value (-1)^m R(p)J(p)zeta^(m)(rhoR). R1.",
+      "verified_at_current_head": false
+    },
+    {
+      "id": "M20.04",
+      "name": "Zeta23.ExceptionalZero.nativeCompletedInput_not_mem_rangeClosure_of_offLine_zero",
+      "required_kind": "THEOREM",
+      "work_package": "W07",
+      "module": "M20",
+      "expected_origin": "Zeta23.ExceptionalZero.NativeRangeZeroJetObstruction",
+      "acceptance": "Actual off-line rho implies actual stable Y_epsilon outside closure(range A_epsilon), with constructed damping and witness; no order premises supplied.",
+      "verified_at_current_head": false
+    },
+    {
+      "id": "M21.01",
+      "name": "Zeta23.CCM.OriginalNativeExteriorRecord",
+      "required_kind": "STRUCTURE",
+      "work_package": "W07",
+      "module": "M21",
+      "expected_origin": "Zeta23.CCM.NativeExteriorSourceRecord",
+      "acceptance": "Constructed original source response, interior, two causal exterior restrictions, histories, exact reconstruction and finite-source/normal/Galerkin distinctions. Not full-contact data.",
+      "verified_at_current_head": false
+    },
+    {
+      "id": "M21.02",
+      "name": "Zeta23.CCM.originalNativeExterior_history_eq",
+      "required_kind": "THEOREM",
+      "work_package": "W07",
+      "module": "M21",
+      "expected_origin": "Zeta23.CCM.NativeExteriorSourceRecord",
+      "acceptance": "Exact convolution/causal split including actual nonzero interior history; no generic free history substituted.",
+      "verified_at_current_head": false
+    },
+    {
+      "id": "M21.03",
+      "name": "Zeta23.CCM.originalNativeExterior_residual_eq",
+      "required_kind": "THEOREM",
+      "work_package": "W07",
+      "module": "M21",
+      "expected_origin": "Zeta23.CCM.NativeExteriorSourceRecord",
+      "acceptance": "Actual response equals defined native channels and projected/outer/normal decomposition on supported finite tests.",
+      "verified_at_current_head": false
+    },
+    {
+      "id": "M22.01",
+      "name": "Zeta23.CCM.Step123NativeOutput",
+      "required_kind": "STRUCTURE",
+      "work_package": "W08",
+      "module": "M22",
+      "expected_origin": "Zeta23.CCM.Step123OutputData",
+      "acceptance": "Rho-free dependent mathematical record indexed beta,sigma,a with one actual padded retained state and all fields in OUTPUT_FIELD_CONTRACT.json.",
+      "verified_at_current_head": false
+    },
+    {
+      "id": "M22.02",
+      "name": "Zeta23.CCM.Step123NativeOutput.arithmeticView",
+      "required_kind": "DEFINITION",
+      "work_package": "W08",
+      "module": "M22",
+      "expected_origin": "Zeta23.CCM.Step123OutputData",
+      "acceptance": "Projection of literal native X,U, divisor identity and original source bridge from the same packet.",
+      "verified_at_current_head": false
+    },
+    {
+      "id": "M22.03",
+      "name": "Zeta23.CCM.Step123NativeOutput.rangeView",
+      "required_kind": "DEFINITION",
+      "work_package": "W08",
+      "module": "M22",
+      "expected_origin": "Zeta23.CCM.Step123OutputData",
+      "acceptance": "Projection of literal a,Y,A_epsilon, domain/transform and adjoint iteration data, no range-membership assertion.",
+      "verified_at_current_head": false
+    },
+    {
+      "id": "M22.04",
+      "name": "Zeta23.CCM.Step123NativeOutput.structuralView",
+      "required_kind": "DEFINITION",
+      "work_package": "W08",
+      "module": "M22",
+      "expected_origin": "Zeta23.CCM.Step123OutputData",
+      "acceptance": "Projection of same detector/selected ground, both Schur records, source correction, residual and exterior; branches explicit.",
+      "verified_at_current_head": false
+    },
+    {
+      "id": "M23.01",
+      "name": "Zeta23.ExceptionalZero.GeneratedStep123Output",
+      "required_kind": "STRUCTURE",
+      "work_package": "W08",
+      "module": "M23",
+      "expected_origin": "Zeta23.ExceptionalZero.Step123OutputProducer",
+      "acceptance": "Zero-indexed extension storing chosen separation, late aperture, the filled native packet and constructed actual zero-jet obstruction.",
+      "verified_at_current_head": false
+    },
+    {
+      "id": "M23.02",
+      "name": "Zeta23.ExceptionalZero.exists_step123Output_of_offLine_zero",
+      "required_kind": "THEOREM",
+      "work_package": "W08",
+      "module": "M23",
+      "expected_origin": "Zeta23.ExceptionalZero.Step123OutputProducer",
+      "acceptance": "Actual rho,0<beta<displacement,phase,R -> nonempty generated packet at L>max(R,4), Kd=ceil L^4, unit native energy<=-exp(beta L), no extra Step1-3 hypotheses.",
+      "verified_at_current_head": false
+    },
+    {
+      "id": "M23.03",
+      "name": "Zeta23.ExceptionalZero.exists_eachPhase_cofinal_step123Output",
+      "required_kind": "THEOREM",
+      "work_package": "W08",
+      "module": "M23",
+      "expected_origin": "Zeta23.ExceptionalZero.Step123OutputProducer",
+      "acceptance": "Both original phases separately have the flagship cofinal output quantifiers; no simultaneous deep-aperture conclusion.",
+      "verified_at_current_head": false
+    },
+    {
+      "id": "M24.01",
+      "name": "Zeta23.ExceptionalZero.riemannHypothesis_of_originalPrimeField_allDampedL2",
+      "required_kind": "THEOREM",
+      "work_package": "W08",
+      "module": "M24",
+      "expected_origin": "Zeta23.ExceptionalZero.Step4OutputSufficiency",
+      "acceptance": "Original A-X predicate -> Mathlib RiemannHypothesis; use A-X->B-Y and actual obstruction.",
+      "verified_at_current_head": false
+    },
+    {
+      "id": "M24.02",
+      "name": "Zeta23.ExceptionalZero.riemannHypothesis_of_nativeInput_allRangeClosure",
+      "required_kind": "THEOREM",
+      "work_package": "W08",
+      "module": "M24",
+      "expected_origin": "Zeta23.ExceptionalZero.Step4OutputSufficiency",
+      "acceptance": "Original B-Y predicate -> Mathlib RiemannHypothesis; actual Y/kernel/witness only.",
+      "verified_at_current_head": false
+    },
+    {
+      "id": "M24.03",
+      "name": "Zeta23.ExceptionalZero.riemannHypothesis_of_detectorSchurLoss_subexponential",
+      "required_kind": "THEOREM",
+      "work_package": "W08",
+      "module": "M24",
+      "expected_origin": "Zeta23.ExceptionalZero.Step4OutputSufficiency",
+      "acceptance": "Original C-Schur universal complete signed bound -> Mathlib RiemannHypothesis; use same-state cofinal depth, no A-X/B-Y premise.",
+      "verified_at_current_head": false
+    }
+  ]
+}

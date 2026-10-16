@@ -1,0 +1,8 @@
+'Zeta23.CCM.nativePoleNeutralParityAmbient_poles' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.nativePoleNeutralParityAmbient_energy' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.exists_detectorRetainedSchurState_of_original_native_trial' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.CCM.originalDetector_schur_loss_lower' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.originalDetector_schur_completion' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.selectedGround_shiftedSchur_eq' depends on axioms: [propext, Classical.choice, Quot.sound]

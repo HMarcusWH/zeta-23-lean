@@ -1,0 +1,10 @@
+'Zeta23.CCM.originalDetectorFiniteOriginalPhaseApprox_interval_energy' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.CCM.originalDetectorFinitePhase_mass_error_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.originalDetectorFinitePoleImageJetBudget_mul_aperture_exp_tendsto_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.CCM.originalDetectorFinitePhaseMassErrorBudget_mul_exp_tendsto_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

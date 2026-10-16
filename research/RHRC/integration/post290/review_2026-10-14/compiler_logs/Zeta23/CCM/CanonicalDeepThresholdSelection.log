@@ -1,0 +1,4 @@
+'Zeta23.CCM.exists_bottomAvoidingThreshold' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.exists_least_deepPoleNeutralCutoff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.deepThreshold_predecessor_inverse_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.deepThreshold_selectedParity_simple' depends on axioms: [propext, Classical.choice, Quot.sound]

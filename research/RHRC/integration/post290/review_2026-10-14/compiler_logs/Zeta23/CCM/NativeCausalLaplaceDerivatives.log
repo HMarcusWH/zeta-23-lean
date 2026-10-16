@@ -1,0 +1,22 @@
+Zeta23\CCM\NativeCausalLaplaceDerivatives.lean:74:39: warning: This simp argument is unused:
+  F
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [G, pow_succ, Pi.neg_apply, id_eq]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+Zeta23\CCM\NativeCausalLaplaceDerivatives.lean:74:24: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Zeta23\CCM\NativeCausalLaplaceDerivatives.lean:74:76: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+'Zeta23.CCM.nativeCausalLaplaceMoment_hasDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.nativeCausalLaplaceMoment_analyticAt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.nativeCausalLaplaceMoment_iteratedDeriv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.nativeCausalLaplaceMoment_vanishes_below_analyticOrder' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.CCM.nativeCausalLaplaceMoment_ne_zero_at_analyticOrder' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

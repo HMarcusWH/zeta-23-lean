@@ -1,0 +1,7 @@
+'Zeta23.ExceptionalZero.nativeZeroJetRightZero_re_gt_half' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.ExceptionalZero.nativeZeroJetRightZero_mult' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.ExceptionalZero.nativeZeroJetDamping_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.ExceptionalZero.nativeZeroJetAdjointWitness_ne_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.ExceptionalZero.nativeZeroJetAdjointWitness_inner_completedInput' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

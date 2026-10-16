@@ -1,0 +1,68 @@
+Zeta23.CCM.nativeCompletedInputCausalLaplaceMoment_zero_damping_shift : ∀ (epsilon : ℝ) (hepsilon : 0 ≤ epsilon)
+  (w : ℂ),
+  0 < w.re →
+    Zeta23.CCM.nativeCausalLaplaceMoment w 0 ↑(Zeta23.CCM.nativeCompletedInputCausalL2 epsilon hepsilon) =
+      ∫ (t : ℝ), Complex.exp (-(w + ↑epsilon) * ↑t) * ↑(Zeta23.CCM.nativeCompletedInput t)
+Zeta23.ExceptionalZero.nativeActualInputLaplace_eventuallyEq_multiplier : ∀ (epsilon : ℝ) (hepsilon : 0 ≤ epsilon)
+  (w : ℂ),
+  0 < w.re →
+    w + ↑epsilon ≠ 1 / 2 →
+      (fun z ↦
+          Zeta23.CCM.nativeCausalLaplaceMoment z 0
+            ↑(Zeta23.CCM.nativeCompletedInputCausalL2 epsilon hepsilon)) =ᶠ[nhds w]
+        fun z ↦ Zeta23.ExceptionalZero.nativeZeroJetInputMultiplier (z + ↑epsilon)
+Zeta23.ExceptionalZero.nativeActualInputLaplace_order_of_zero : ∀ (epsilon : ℝ) (hepsilon : 0 ≤ epsilon)
+  (rho : ↑Zeta23.zetaZeroConfig.carrier),
+  (↑rho).re ≠ 1 / 2 →
+    ∀ (w : ℂ),
+      0 < w.re →
+        w + ↑epsilon = ↑rho - 1 / 2 →
+          analyticOrderAt
+              (fun z ↦
+                Zeta23.CCM.nativeCausalLaplaceMoment z 0 ↑(Zeta23.CCM.nativeCompletedInputCausalL2 epsilon hepsilon))
+              w =
+            ↑(Zeta23.zeroMult ↑rho - 1)
+Zeta23.ExceptionalZero.nativeCompletedInput_zeroJet_value : ∀ (rho : ↑Zeta23.zetaZeroConfig.carrier)
+  (hoff : (↑rho).re ≠ 1 / 2),
+  Inner.inner ℂ (Zeta23.ExceptionalZero.nativeZeroJetAdjointWitness rho hoff)
+      (Zeta23.CCM.nativeCompletedInputCausalL2 (Zeta23.ExceptionalZero.nativeZeroJetDamping rho)
+        (⋯ : 0 ≤ Zeta23.ExceptionalZero.nativeZeroJetDamping rho)) =
+    (-1) ^ Zeta23.zeroMult ↑rho *
+          Zeta23.CCM.nativeCompletionRationalMultiplier (↑(Zeta23.ExceptionalZero.nativeZeroJetRightZero rho) - 1 / 2) *
+        Zeta23.CCM.nativeOriginalSourceLaplace (↑(Zeta23.ExceptionalZero.nativeZeroJetRightZero rho) - 1 / 2) *
+      iteratedDeriv (Zeta23.zeroMult ↑rho) riemannZeta ↑(Zeta23.ExceptionalZero.nativeZeroJetRightZero rho)
+Zeta23.ExceptionalZero.nativeCompletedInput_zeroJet_ne_zero : ∀ (rho : ↑Zeta23.zetaZeroConfig.carrier)
+  (hoff : (↑rho).re ≠ 1 / 2),
+  Inner.inner ℂ (Zeta23.ExceptionalZero.nativeZeroJetAdjointWitness rho hoff)
+      (Zeta23.CCM.nativeCompletedInputCausalL2 (Zeta23.ExceptionalZero.nativeZeroJetDamping rho)
+        (⋯ : 0 ≤ Zeta23.ExceptionalZero.nativeZeroJetDamping rho)) ≠
+    0
+Zeta23.ExceptionalZero.nativeCompletedInput_not_mem_rangeClosure_of_offLine_zero : ∀
+  (rho : ↑Zeta23.zetaZeroConfig.carrier) (hoff : (↑rho).re ≠ 1 / 2),
+  Zeta23.CCM.nativeCompletedInputCausalL2 (Zeta23.ExceptionalZero.nativeZeroJetDamping rho)
+      (⋯ : 0 ≤ Zeta23.ExceptionalZero.nativeZeroJetDamping rho) ∉
+    closure
+      (Set.range
+        ⇑(Zeta23.CCM.nativeDampedCompletionCausalL2Operator (Zeta23.ExceptionalZero.nativeZeroJetDamping rho)
+            (⋯ : 0 ≤ Zeta23.ExceptionalZero.nativeZeroJetDamping rho)))
+Zeta23.ExceptionalZero.nativeCompletedInput_zeroJet_residual_pairing : ∀ (rho : ↑Zeta23.zetaZeroConfig.carrier)
+  (hoff : (↑rho).re ≠ 1 / 2) (n : ℕ),
+  Inner.inner ℂ (Zeta23.ExceptionalZero.nativeZeroJetAdjointWitness rho hoff)
+      (Zeta23.CCM.nativeCompletedInputResidualIterate (Zeta23.ExceptionalZero.nativeZeroJetDamping rho)
+        (⋯ : 0 ≤ Zeta23.ExceptionalZero.nativeZeroJetDamping rho) n) =
+    Inner.inner ℂ (Zeta23.ExceptionalZero.nativeZeroJetAdjointWitness rho hoff)
+      (Zeta23.CCM.nativeCompletedInputCausalL2 (Zeta23.ExceptionalZero.nativeZeroJetDamping rho)
+        (⋯ : 0 ≤ Zeta23.ExceptionalZero.nativeZeroJetDamping rho))
+Zeta23.ExceptionalZero.nativeCompletedInput_zeroJet_residual_lower : ∀ (rho : ↑Zeta23.zetaZeroConfig.carrier)
+  (hoff : (↑rho).re ≠ 1 / 2) (n : ℕ),
+  0 <
+      ‖Inner.inner ℂ (Zeta23.ExceptionalZero.nativeZeroJetAdjointWitness rho hoff)
+            (Zeta23.CCM.nativeCompletedInputCausalL2 (Zeta23.ExceptionalZero.nativeZeroJetDamping rho)
+              (⋯ : 0 ≤ Zeta23.ExceptionalZero.nativeZeroJetDamping rho))‖ /
+        ‖Zeta23.ExceptionalZero.nativeZeroJetAdjointWitness rho hoff‖ ∧
+    ‖Inner.inner ℂ (Zeta23.ExceptionalZero.nativeZeroJetAdjointWitness rho hoff)
+            (Zeta23.CCM.nativeCompletedInputCausalL2 (Zeta23.ExceptionalZero.nativeZeroJetDamping rho)
+              (⋯ : 0 ≤ Zeta23.ExceptionalZero.nativeZeroJetDamping rho))‖ /
+        ‖Zeta23.ExceptionalZero.nativeZeroJetAdjointWitness rho hoff‖ ≤
+      ‖Zeta23.CCM.nativeCompletedInputResidualIterate (Zeta23.ExceptionalZero.nativeZeroJetDamping rho)
+          (⋯ : 0 ≤ Zeta23.ExceptionalZero.nativeZeroJetDamping rho) n‖

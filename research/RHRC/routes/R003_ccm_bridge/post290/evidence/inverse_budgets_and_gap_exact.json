@@ -1,0 +1,187 @@
+{
+  "status": "PASS",
+  "authority": "EXACT_FINITE_CONTROL",
+  "is_actual_zeta": false,
+  "is_generated_detector": false,
+  "Lean_authority": false,
+  "RH_status": "OPEN",
+  "inverse_budget_checks": {
+    "threshold_window": true,
+    "lambda_separate_from_threshold": true,
+    "both_predecessors_threshold_gap": true,
+    "ground_shift_gap_2g": true,
+    "detector_shift_gap_g": true,
+    "ground_budget_exact": true,
+    "detector_budget_exact": true,
+    "wrong_ground_budget_for_detector_fails": true
+  },
+  "ground_inverse_budget": "2",
+  "detector_inverse_budget": "4",
+  "eta": "5",
+  "lambda": "-21/4",
+  "gap": "1/4",
+  "small_gap_rows": [
+    {
+      "depth": "12",
+      "delta": "1/10",
+      "source_moment_product": "1080",
+      "checks": {
+        "simple_even_dimension": true,
+        "actual_strict_even_gap": true,
+        "gap_much_less_than_depth_third": true,
+        "both_bottoms_negative": true,
+        "same_nonzero_pole_neutral_vector": true,
+        "even_eigenvector": true,
+        "rank_one_identity": true,
+        "source_product_exact_gap": true,
+        "fourth_moment_nonzero": true,
+        "common_scalar_shift_preserves_defect": true,
+        "common_scalar_shift_preserves_gap": true,
+        "common_scalar_shift_changes_negative_to_positive": true,
+        "common_scalar_shift_preserves_source_and_M4": true
+      }
+    },
+    {
+      "depth": "12",
+      "delta": "1/100",
+      "source_moment_product": "108",
+      "checks": {
+        "simple_even_dimension": true,
+        "actual_strict_even_gap": true,
+        "gap_much_less_than_depth_third": true,
+        "both_bottoms_negative": true,
+        "same_nonzero_pole_neutral_vector": true,
+        "even_eigenvector": true,
+        "rank_one_identity": true,
+        "source_product_exact_gap": true,
+        "fourth_moment_nonzero": true,
+        "common_scalar_shift_preserves_defect": true,
+        "common_scalar_shift_preserves_gap": true,
+        "common_scalar_shift_changes_negative_to_positive": true,
+        "common_scalar_shift_preserves_source_and_M4": true
+      }
+    },
+    {
+      "depth": "12",
+      "delta": "1/1000",
+      "source_moment_product": "54/5",
+      "checks": {
+        "simple_even_dimension": true,
+        "actual_strict_even_gap": true,
+        "gap_much_less_than_depth_third": true,
+        "both_bottoms_negative": true,
+        "same_nonzero_pole_neutral_vector": true,
+        "even_eigenvector": true,
+        "rank_one_identity": true,
+        "source_product_exact_gap": true,
+        "fourth_moment_nonzero": true,
+        "common_scalar_shift_preserves_defect": true,
+        "common_scalar_shift_preserves_gap": true,
+        "common_scalar_shift_changes_negative_to_positive": true,
+        "common_scalar_shift_preserves_source_and_M4": true
+      }
+    },
+    {
+      "depth": "12",
+      "delta": "1/10000",
+      "source_moment_product": "27/25",
+      "checks": {
+        "simple_even_dimension": true,
+        "actual_strict_even_gap": true,
+        "gap_much_less_than_depth_third": true,
+        "both_bottoms_negative": true,
+        "same_nonzero_pole_neutral_vector": true,
+        "even_eigenvector": true,
+        "rank_one_identity": true,
+        "source_product_exact_gap": true,
+        "fourth_moment_nonzero": true,
+        "common_scalar_shift_preserves_defect": true,
+        "common_scalar_shift_preserves_gap": true,
+        "common_scalar_shift_changes_negative_to_positive": true,
+        "common_scalar_shift_preserves_source_and_M4": true
+      }
+    },
+    {
+      "depth": "12",
+      "delta": "1/100000",
+      "source_moment_product": "27/250",
+      "checks": {
+        "simple_even_dimension": true,
+        "actual_strict_even_gap": true,
+        "gap_much_less_than_depth_third": true,
+        "both_bottoms_negative": true,
+        "same_nonzero_pole_neutral_vector": true,
+        "even_eigenvector": true,
+        "rank_one_identity": true,
+        "source_product_exact_gap": true,
+        "fourth_moment_nonzero": true,
+        "common_scalar_shift_preserves_defect": true,
+        "common_scalar_shift_preserves_gap": true,
+        "common_scalar_shift_changes_negative_to_positive": true,
+        "common_scalar_shift_preserves_source_and_M4": true
+      }
+    },
+    {
+      "depth": "12",
+      "delta": "1/1000000",
+      "source_moment_product": "27/2500",
+      "checks": {
+        "simple_even_dimension": true,
+        "actual_strict_even_gap": true,
+        "gap_much_less_than_depth_third": true,
+        "both_bottoms_negative": true,
+        "same_nonzero_pole_neutral_vector": true,
+        "even_eigenvector": true,
+        "rank_one_identity": true,
+        "source_product_exact_gap": true,
+        "fourth_moment_nonzero": true,
+        "common_scalar_shift_preserves_defect": true,
+        "common_scalar_shift_preserves_gap": true,
+        "common_scalar_shift_changes_negative_to_positive": true,
+        "common_scalar_shift_preserves_source_and_M4": true
+      }
+    },
+    {
+      "depth": "12",
+      "delta": "1/10000000",
+      "source_moment_product": "27/25000",
+      "checks": {
+        "simple_even_dimension": true,
+        "actual_strict_even_gap": true,
+        "gap_much_less_than_depth_third": true,
+        "both_bottoms_negative": true,
+        "same_nonzero_pole_neutral_vector": true,
+        "even_eigenvector": true,
+        "rank_one_identity": true,
+        "source_product_exact_gap": true,
+        "fourth_moment_nonzero": true,
+        "common_scalar_shift_preserves_defect": true,
+        "common_scalar_shift_preserves_gap": true,
+        "common_scalar_shift_changes_negative_to_positive": true,
+        "common_scalar_shift_preserves_source_and_M4": true
+      }
+    },
+    {
+      "depth": "12",
+      "delta": "1/100000000",
+      "source_moment_product": "27/250000",
+      "checks": {
+        "simple_even_dimension": true,
+        "actual_strict_even_gap": true,
+        "gap_much_less_than_depth_third": true,
+        "both_bottoms_negative": true,
+        "same_nonzero_pole_neutral_vector": true,
+        "even_eigenvector": true,
+        "rank_one_identity": true,
+        "source_product_exact_gap": true,
+        "fourth_moment_nonzero": true,
+        "common_scalar_shift_preserves_defect": true,
+        "common_scalar_shift_preserves_gap": true,
+        "common_scalar_shift_changes_negative_to_positive": true,
+        "common_scalar_shift_preserves_source_and_M4": true
+      }
+    }
+  ],
+  "conclusion": "Cutoff predecessor separation does not bound the parity gap. Common-shift-invariant source data do not determine the absolute energy.",
+  "assertion_count": 112
+}

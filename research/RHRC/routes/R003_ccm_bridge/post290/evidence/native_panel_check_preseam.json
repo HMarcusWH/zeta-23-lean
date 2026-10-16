@@ -1,0 +1,257 @@
+{
+  "schema": "post290.native-observation-checker.v1",
+  "status": "CHECKED_WITH_UNRESOLVED_SCOPE",
+  "precision_bits": 1024,
+  "verified_pairs": 24,
+  "unresolved_pairs": 20,
+  "shared_analytic_backend": true,
+  "independence": "separate process, independent scalar-loop residual/Gram/variance arithmetic, fresh direct/channel matrices and increased precision",
+  "universal_theorem_authority": false,
+  "terminal_claim": "RH_OPEN",
+  "receipts": [
+    {
+      "aperture": "1/512",
+      "K": 3,
+      "status": "FRESH_1024BIT_CONSISTENT",
+      "rows": 4
+    },
+    {
+      "aperture": "1/512",
+      "K": 4,
+      "status": "FRESH_1024BIT_CONSISTENT",
+      "rows": 4
+    },
+    {
+      "aperture": "1/512",
+      "K": 6,
+      "status": "FRESH_1024BIT_CONSISTENT",
+      "rows": 4
+    },
+    {
+      "aperture": "1/512",
+      "K": 8,
+      "status": "FRESH_1024BIT_CONSISTENT",
+      "rows": 4
+    },
+    {
+      "aperture": "1/400",
+      "K": 3,
+      "status": "FRESH_1024BIT_CONSISTENT",
+      "rows": 4
+    },
+    {
+      "aperture": "1/400",
+      "K": 4,
+      "status": "FRESH_1024BIT_CONSISTENT",
+      "rows": 4
+    },
+    {
+      "aperture": "1/400",
+      "K": 6,
+      "status": "FRESH_1024BIT_CONSISTENT",
+      "rows": 4
+    },
+    {
+      "aperture": "1/400",
+      "K": 8,
+      "status": "FRESH_1024BIT_CONSISTENT",
+      "rows": 4
+    },
+    {
+      "aperture": "1/4",
+      "K": 3,
+      "status": "FRESH_1024BIT_CONSISTENT",
+      "rows": 4
+    },
+    {
+      "aperture": "1/4",
+      "K": 4,
+      "status": "FRESH_1024BIT_CONSISTENT",
+      "rows": 4
+    },
+    {
+      "aperture": "1/4",
+      "K": 6,
+      "status": "FRESH_1024BIT_CONSISTENT",
+      "rows": 4
+    },
+    {
+      "aperture": "1/4",
+      "K": 8,
+      "status": "FRESH_1024BIT_CONSISTENT",
+      "rows": 4
+    },
+    {
+      "aperture": "1/2",
+      "K": 3,
+      "status": "FRESH_1024BIT_CONSISTENT",
+      "rows": 4
+    },
+    {
+      "aperture": "1/2",
+      "K": 4,
+      "status": "FRESH_1024BIT_CONSISTENT",
+      "rows": 4
+    },
+    {
+      "aperture": "1/2",
+      "K": 6,
+      "status": "FRESH_1024BIT_CONSISTENT",
+      "rows": 4
+    },
+    {
+      "aperture": "1/2",
+      "K": 8,
+      "status": "FRESH_1024BIT_CONSISTENT",
+      "rows": 4
+    },
+    {
+      "aperture": "log2-1/1024",
+      "K": 3,
+      "status": "FRESH_1024BIT_CONSISTENT",
+      "rows": 4
+    },
+    {
+      "aperture": "log2-1/1024",
+      "K": 4,
+      "status": "FRESH_1024BIT_CONSISTENT",
+      "rows": 4
+    },
+    {
+      "aperture": "log2-1/1024",
+      "K": 6,
+      "status": "FRESH_1024BIT_CONSISTENT",
+      "rows": 4
+    },
+    {
+      "aperture": "log2-1/1024",
+      "K": 8,
+      "status": "FRESH_1024BIT_CONSISTENT",
+      "rows": 4
+    },
+    {
+      "aperture": "log2",
+      "K": 3,
+      "status": "UNRESOLVED_INPUT"
+    },
+    {
+      "aperture": "log2",
+      "K": 4,
+      "status": "UNRESOLVED_INPUT"
+    },
+    {
+      "aperture": "log2",
+      "K": 6,
+      "status": "UNRESOLVED_INPUT"
+    },
+    {
+      "aperture": "log2",
+      "K": 8,
+      "status": "UNRESOLVED_INPUT"
+    },
+    {
+      "aperture": "log2+1/1024",
+      "K": 3,
+      "status": "FRESH_1024BIT_CONSISTENT",
+      "rows": 4
+    },
+    {
+      "aperture": "log2+1/1024",
+      "K": 4,
+      "status": "FRESH_1024BIT_CONSISTENT",
+      "rows": 4
+    },
+    {
+      "aperture": "log2+1/1024",
+      "K": 6,
+      "status": "FRESH_1024BIT_CONSISTENT",
+      "rows": 4
+    },
+    {
+      "aperture": "log2+1/1024",
+      "K": 8,
+      "status": "FRESH_1024BIT_CONSISTENT",
+      "rows": 4
+    },
+    {
+      "aperture": "log3",
+      "K": 3,
+      "status": "UNRESOLVED_INPUT"
+    },
+    {
+      "aperture": "log3",
+      "K": 4,
+      "status": "UNRESOLVED_INPUT"
+    },
+    {
+      "aperture": "log3",
+      "K": 6,
+      "status": "UNRESOLVED_INPUT"
+    },
+    {
+      "aperture": "log3",
+      "K": 8,
+      "status": "UNRESOLVED_INPUT"
+    },
+    {
+      "aperture": "log4",
+      "K": 3,
+      "status": "UNRESOLVED_INPUT"
+    },
+    {
+      "aperture": "log4",
+      "K": 4,
+      "status": "UNRESOLVED_INPUT"
+    },
+    {
+      "aperture": "log4",
+      "K": 6,
+      "status": "UNRESOLVED_INPUT"
+    },
+    {
+      "aperture": "log4",
+      "K": 8,
+      "status": "UNRESOLVED_INPUT"
+    },
+    {
+      "aperture": "log8",
+      "K": 3,
+      "status": "UNRESOLVED_INPUT"
+    },
+    {
+      "aperture": "log8",
+      "K": 4,
+      "status": "UNRESOLVED_INPUT"
+    },
+    {
+      "aperture": "log8",
+      "K": 6,
+      "status": "UNRESOLVED_INPUT"
+    },
+    {
+      "aperture": "log8",
+      "K": 8,
+      "status": "UNRESOLVED_INPUT"
+    },
+    {
+      "aperture": "log16",
+      "K": 3,
+      "status": "UNRESOLVED_INPUT"
+    },
+    {
+      "aperture": "log16",
+      "K": 4,
+      "status": "UNRESOLVED_INPUT"
+    },
+    {
+      "aperture": "log16",
+      "K": 6,
+      "status": "UNRESOLVED_INPUT"
+    },
+    {
+      "aperture": "log16",
+      "K": 8,
+      "status": "UNRESOLVED_INPUT"
+    }
+  ]
+}

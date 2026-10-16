@@ -1,0 +1,20 @@
+Zeta23/CCM/PoleNeutralCompactH2Uniqueness.lean:33:56: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Zeta23/CCM/PoleNeutralCompactH2Uniqueness.lean:41:73: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Zeta23/CCM/PoleNeutralCompactH2Uniqueness.lean:57:74: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Zeta23/CCM/PoleNeutralCompactH2Uniqueness.lean:84:31: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Zeta23/CCM/PoleNeutralCompactH2Uniqueness.lean:110:7: warning: Variable name `u` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _u
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+'Zeta23.CCM.NativeCompactPoleH2.unique' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.nativePoleCompactH2_exists_unique' depends on axioms: [propext, Classical.choice, Quot.sound]

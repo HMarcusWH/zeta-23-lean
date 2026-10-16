@@ -36,6 +36,36 @@
   "generated_prefix": "research/RHRC/graph/generated/",
   "rules": [
     {
+      "id": "post290_review_git_attributes",
+      "pattern": "^research/RHRC/integration/post290/(?:review_2026-10-14|review_execution_2026-10-14)/\\.gitattributes$",
+      "file_class": "BUILD_CONFIGURATION",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "id": "post290_review_compiler_receipts",
+      "pattern": "^research/RHRC/integration/post290/(?:review_2026-10-14|review_execution_2026-10-14)/.*\\.log$",
+      "file_class": "RESEARCH_RECEIPT",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "id": "post290_archived_lean_review_fixtures",
+      "pattern": "^research/RHRC/integration/post290/review_execution_2026-10-14/local_components/.*\\.lean$",
+      "file_class": "RESEARCH_FIXTURE",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "id": "post290_source_packet_archives",
+      "pattern": "^research/RHRC/integration/post290/spec/inputs/.*\\.zip$",
+      "file_class": "RESEARCH_FIXTURE",
+      "trust_zone": "RESEARCH_ONLY"
+    },
+    {
+      "id": "post290_k3_checkpoint_script",
+      "pattern": "^research/RHRC/routes/R003_ccm_bridge/post290/k3_checkpoint_upload\\.cjs$",
+      "file_class": "RESEARCH_EXECUTABLE",
+      "trust_zone": "RESEARCH_ONLY"
+    },
+    {
       "id": "generated_graph",
       "pattern": "^research/RHRC/graph/generated/.*$",
       "file_class": "GENERATED_GRAPH_PRODUCT",

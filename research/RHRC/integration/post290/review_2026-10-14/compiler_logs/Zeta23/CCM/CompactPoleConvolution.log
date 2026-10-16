@@ -1,0 +1,6 @@
+'Zeta23.CCM.integral_compactPole_left_eq_right' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.universalSincDifferential_reflected' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.compactPole_convolution_left_eq_right' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.universalSincKernel_selfConvolution_eq_source_second' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

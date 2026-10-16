@@ -1,0 +1,9 @@
+'Zeta23.CCM.nativeIntegerDriveLaplaceCoefficient_eq_term' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.nativeIntegerDriveLaplaceCoefficient_summable_norm' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.CCM.nativeIntegerDriveLaplaceCoefficient_tsum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.nativeOriginalSource_complexDamping_integrable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.nativeOriginalIntegerDrive_complexLaplace_of_half_lt_re' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

@@ -1,0 +1,36 @@
+Zeta23/CCM/OriginalDetectorPaddedFiniteNativeFormConcreteRate.lean:28:36: warning: Variable name `hσ` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hσ
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+Zeta23/CCM/OriginalDetectorPaddedFiniteNativeFormConcreteRate.lean:29:7: warning: Variable name `ha` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _ha
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+Zeta23/CCM/OriginalDetectorPaddedFiniteNativeFormConcreteRate.lean:59:36: warning: Variable name `hσ` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hσ
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+Zeta23/CCM/OriginalDetectorPaddedFiniteNativeFormConcreteRate.lean:60:7: warning: Variable name `ha` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _ha
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+Zeta23/CCM/OriginalDetectorPaddedFiniteNativeFormConcreteRate.lean:84:24: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Zeta23/CCM/OriginalDetectorPaddedFiniteNativeFormConcreteRate.lean:84:76: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+'Zeta23.CCM.originalDetectorPaddedFiniteNativeForm_concrete_rate' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.CCM.originalDetectorPaddedFinitePhysicalUnit_common_error_rates' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

@@ -1,0 +1,4 @@
+'Zeta23.CCM.nativePoleCompactH2' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.NativeCompactPoleH2.weak_first' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.NativeCompactPoleH2.weak_second' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.nativePoleCompactH2_norm_bound' depends on axioms: [propext, Classical.choice, Quot.sound]

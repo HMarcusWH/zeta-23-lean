@@ -1,0 +1,44 @@
+name: PR292 source snapshot for offline regression debugging
+
+# One-shot source transport only. NO D2 execution, proofs, source mutation,
+# CI promotion, release, or repository push.
+on:
+  push:
+    branches: [research/post290-step123-output]
+    paths: [.github/workflows/rhrc_post292_source_snapshot.yml]
+
+permissions:
+  contents: read
+
+jobs:
+  export-source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Record exact branch head and source tree
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "${{ github.sha }}"
+          git rev-parse HEAD > /tmp/PR292_SOURCE_HEAD
+          git rev-parse 'HEAD^{tree}' > /tmp/PR292_SOURCE_TREE
+      - name: Archive exact checked source for independent offline testing
+        shell: bash
+        run: |
+          set -euo pipefail
+          tar -czf /tmp/pr292-source.tar.gz --exclude='./.git' --exclude='./.lake' \
+            --exclude='./.venv' --exclude='*/__pycache__' --exclude='./.pytest_cache' .
+          sha256sum /tmp/pr292-source.tar.gz > /tmp/PR292_SOURCE_ARCHIVE_SHA256
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pr292-source-snapshot-${{ github.sha }}
+          path: |
+            /tmp/pr292-source.tar.gz
+            /tmp/PR292_SOURCE_HEAD
+            /tmp/PR292_SOURCE_TREE
+            /tmp/PR292_SOURCE_ARCHIVE_SHA256
+          if-no-files-found: error
+          retention-days: 2

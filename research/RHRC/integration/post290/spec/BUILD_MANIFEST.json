@@ -1,0 +1,753 @@
+{
+  "schema_version": "RH_POST290_STEP123_BUILD_SPEC_1.0",
+  "status": "PROPOSED_NOT_IMPLEMENTED",
+  "repository": "HMarcusWH/zeta-23-lean",
+  "suggested_branch": "research/post290-step123-output",
+  "proposed_pr_number": null,
+  "base_commit": "9583bbcc587aca8d87e74981b222e6813238d670",
+  "base_tree": "188d1e0ae3a22e66d512c5c807687c6f2fc8d0e0",
+  "lean_toolchain": "leanprover/lean4:v4.33.0-rc2",
+  "mathlib_revision": "51e6992efd06126df61a496bebf8f49482a4e129",
+  "claim_cap": "RH_OPEN",
+  "no_repository_mutation_performed": true,
+  "no_new_lean_build_performed": true,
+  "core_source": {
+    "kind": "original_infinite_uniform_convolution_sinc_product",
+    "scale_rational": [
+      1,
+      4096
+    ],
+    "pole_killer": "d2/dx2 - 1/4",
+    "k": "P q",
+    "j": "P^2 q",
+    "endpoint_jet_order": 4,
+    "endpoint_multiplier_degree": 4,
+    "terminal_cutoff": "ceil(L^4)",
+    "truncation_cutoff": "ceil(L^4)-4"
+  },
+  "flagship_quantifiers": "forall actual nontrivial zero rho; forall beta with 0<beta<abs(Re rho-1/2); forall original phase sigma; forall R; exists L>max(R,4); exists GeneratedStep123Output rho beta sigma L",
+  "no_inferred_uniformity": [
+    "no uniform detection time",
+    "no common aperture for the two deep phase sequences",
+    "no all-large-aperture exponential depth",
+    "no phase/parity equality after minimization",
+    "no original real-zero divisor for finite approximation"
+  ],
+  "work_packages": [
+    {
+      "id": "W00",
+      "title": "Freeze baseline, sources, scope and output contract",
+      "depends_on": [],
+      "status": "PLANNED",
+      "mandatory": true,
+      "module_ids": []
+    },
+    {
+      "id": "W01",
+      "title": "Original universal source, visibility and phase depth",
+      "depends_on": [
+        "W00"
+      ],
+      "status": "PLANNED",
+      "mandatory": true,
+      "module_ids": [
+        "M01",
+        "M02",
+        "M03",
+        "M04"
+      ]
+    },
+    {
+      "id": "W02",
+      "title": "Actual finite source image and exact phase plane",
+      "depends_on": [
+        "W01"
+      ],
+      "status": "PLANNED",
+      "mandatory": true,
+      "module_ids": [
+        "M05",
+        "M06"
+      ]
+    },
+    {
+      "id": "W03",
+      "title": "Corrected pole-neutral calculus",
+      "depends_on": [
+        "W00"
+      ],
+      "status": "PLANNED",
+      "mandatory": true,
+      "module_ids": [
+        "M07",
+        "M08",
+        "M09"
+      ]
+    },
+    {
+      "id": "W04",
+      "title": "Strict-even, strict-odd and singular tie output",
+      "depends_on": [
+        "W03"
+      ],
+      "status": "PLANNED",
+      "mandatory": true,
+      "module_ids": [
+        "M10",
+        "M11"
+      ]
+    },
+    {
+      "id": "W05",
+      "title": "Depth-retaining selection and two Schur records",
+      "depends_on": [
+        "W02",
+        "W04"
+      ],
+      "status": "PLANNED",
+      "mandatory": true,
+      "module_ids": [
+        "M12",
+        "M13"
+      ]
+    },
+    {
+      "id": "W06",
+      "title": "Native source, compact inverse and exact residual channels",
+      "depends_on": [
+        "W01",
+        "W02",
+        "W03",
+        "W05"
+      ],
+      "status": "PLANNED",
+      "mandatory": true,
+      "module_ids": [
+        "M14",
+        "M15",
+        "M16",
+        "M17"
+      ]
+    },
+    {
+      "id": "W07",
+      "title": "Actual forward/range and original-exterior outputs",
+      "depends_on": [
+        "W06"
+      ],
+      "status": "PLANNED",
+      "mandatory": true,
+      "module_ids": [
+        "M18",
+        "M19",
+        "M20",
+        "M21"
+      ]
+    },
+    {
+      "id": "W08",
+      "title": "Filled output producer and three sufficiency roots",
+      "depends_on": [
+        "W01",
+        "W02",
+        "W03",
+        "W04",
+        "W05",
+        "W06",
+        "W07"
+      ],
+      "status": "PLANNED",
+      "mandatory": true,
+      "module_ids": [
+        "M22",
+        "M23",
+        "M24",
+        "M25"
+      ]
+    },
+    {
+      "id": "W09",
+      "title": "Complete deferred D2 continuous K3 evidence",
+      "depends_on": [
+        "W00"
+      ],
+      "status": "PLANNED",
+      "mandatory": true,
+      "module_ids": []
+    },
+    {
+      "id": "W10",
+      "title": "Research outputs, exact controls, graph, CI and post-green harvest",
+      "depends_on": [
+        "W08",
+        "W09"
+      ],
+      "status": "PLANNED",
+      "mandatory": true,
+      "module_ids": []
+    }
+  ],
+  "new_lean_modules": [
+    {
+      "id": "M01",
+      "work_package": "W01",
+      "path": "Zeta23/CCM/UniversalSincDetector.lean",
+      "module": "Zeta23.CCM.UniversalSincDetector",
+      "depends_on": [],
+      "proposed_exports": [
+        "Zeta23.CCM.universalSincSource",
+        "Zeta23.CCM.universalSincSource_nonneg",
+        "Zeta23.CCM.universalSincSource_integral_one",
+        "Zeta23.CCM.universalSincSource_support",
+        "Zeta23.CCM.universalSincSource_contDiff",
+        "Zeta23.CCM.paperFT_universalSincSource"
+      ],
+      "status": "PLANNED_NOT_IMPLEMENTED",
+      "mandatory_core": true,
+      "acceptance": "Construct the exact infinite-convolution source; density, support, positivity, symmetry, smoothness, transform and scaling."
+    },
+    {
+      "id": "M02",
+      "work_package": "W01",
+      "path": "Zeta23/CCM/UniversalSincDetectorBounds.lean",
+      "module": "Zeta23.CCM.UniversalSincDetectorBounds",
+      "depends_on": [
+        "M01"
+      ],
+      "proposed_exports": [
+        "Zeta23.CCM.universalSincSource_gevrey_bound",
+        "Zeta23.CCM.poleKilled_universalSincSource_norm_sq",
+        "Zeta23.CCM.universalSincProduct_decay"
+      ],
+      "status": "PLANNED_NOT_IMPLEMENTED",
+      "mandatory_core": true,
+      "acceptance": "Prove source-dependent constants, Gevrey bounds and exact normalization; no replacement source."
+    },
+    {
+      "id": "M03",
+      "work_package": "W01",
+      "path": "Zeta23/ExceptionalZero/UniversalSincDetectorVisibility.lean",
+      "module": "Zeta23.ExceptionalZero.UniversalSincDetectorVisibility",
+      "depends_on": [
+        "M01",
+        "M02"
+      ],
+      "proposed_exports": [
+        "Zeta23.ExceptionalZero.universalSincPoleKilled_visible_at_offLine_zero"
+      ],
+      "status": "PLANNED_NOT_IMPLEMENTED",
+      "mandatory_core": true,
+      "acceptance": "Connect the exact source to zetaZeroConfig.carrier using the existing transform convention; nonzero complex-square coefficient."
+    },
+    {
+      "id": "M04",
+      "work_package": "W01",
+      "path": "Zeta23/ExceptionalZero/OriginalDetectorPhaseDepth.lean",
+      "module": "Zeta23.ExceptionalZero.OriginalDetectorPhaseDepth",
+      "depends_on": [
+        "M03"
+      ],
+      "proposed_exports": [
+        "Zeta23.ExceptionalZero.originalDetectorCorrelation_pos_excursions",
+        "Zeta23.ExceptionalZero.originalDetectorCorrelation_neg_excursions",
+        "Zeta23.ExceptionalZero.originalDetector_eachPhase_cofinal_depth"
+      ],
+      "status": "PLANNED_NOT_IMPLEMENTED",
+      "mandatory_core": true,
+      "acceptance": "For each actual off-line zero, every smaller positive exponent and each phase, produce arbitrarily late deep witnesses; no simultaneous-time claim."
+    },
+    {
+      "id": "M05",
+      "work_package": "W02",
+      "path": "Zeta23/CCM/OriginalDetectorFiniteTransport.lean",
+      "module": "Zeta23.CCM.OriginalDetectorFiniteTransport",
+      "depends_on": [
+        "M01",
+        "M02"
+      ],
+      "proposed_exports": [
+        "Zeta23.CCM.originalDetectorFiniteImage",
+        "Zeta23.CCM.originalDetectorFiniteImage_legal",
+        "Zeta23.CCM.originalDetectorFiniteImage_poleNeutral",
+        "Zeta23.CCM.originalDetectorFiniteImage_endpointJets",
+        "Zeta23.CCM.originalDetectorFiniteImage_error_bound",
+        "Zeta23.CCM.originalDetectorFiniteImage_quartic_error_tendsto_zero"
+      ],
+      "status": "PLANNED_NOT_IMPLEMENTED",
+      "mandatory_core": true,
+      "acceptance": "Fixed endpoint order m=4 in core; degree M=4, N=ceil(L^4)-4. Construct positive padding and exact phase; prove physical/coefficient norm bridge and quantitative error."
+    },
+    {
+      "id": "M06",
+      "work_package": "W02",
+      "path": "Zeta23/CCM/OriginalDetectorFinitePhasePlane.lean",
+      "module": "Zeta23.CCM.OriginalDetectorFinitePhasePlane",
+      "depends_on": [
+        "M05"
+      ],
+      "proposed_exports": [
+        "Zeta23.CCM.originalDetectorPhaseGram_eq",
+        "Zeta23.CCM.originalDetectorPhaseEnergy_eq",
+        "Zeta23.CCM.originalDetectorPhaseRayleigh_eq"
+      ],
+      "status": "PLANNED_NOT_IMPLEMENTED",
+      "mandatory_core": true,
+      "acceptance": "Retain both lobes and complete 2x2 generalized Rayleigh problem before minimization."
+    },
+    {
+      "id": "M07",
+      "work_package": "W03",
+      "path": "Zeta23/CCM/CanonicalPoleNeutralCarrier.lean",
+      "module": "Zeta23.CCM.CanonicalPoleNeutralCarrier",
+      "depends_on": [],
+      "proposed_exports": [
+        "Zeta23.CCM.canonicalPoleNeutralEven",
+        "Zeta23.CCM.canonicalPoleNeutralOdd",
+        "Zeta23.CCM.poleNeutral_iff_exponentialMoments",
+        "Zeta23.CCM.poleNeutral_parity_finrank",
+        "Zeta23.CCM.poleNeutralIndexEquiv",
+        "Zeta23.CCM.poleNeutralIndex_norm_lower"
+      ],
+      "status": "PLANNED_NOT_IMPLEMENTED",
+      "mandatory_core": true,
+      "acceptance": "Define physical pole-neutral carriers, dimensions, nonzero normals and algebraic nonunitary D0 equivalence. Handle K<3 separately."
+    },
+    {
+      "id": "M08",
+      "work_package": "W03",
+      "path": "Zeta23/CCM/CanonicalPoleNeutralIntertwining.lean",
+      "module": "Zeta23.CCM.CanonicalPoleNeutralIntertwining",
+      "depends_on": [
+        "M07"
+      ],
+      "proposed_exports": [
+        "Zeta23.CCM.poleNormalCoefficient",
+        "Zeta23.CCM.correctedCanonicalSource",
+        "Zeta23.CCM.poleNormal_index_projection_eq",
+        "Zeta23.CCM.canonicalPoleNeutral_rankOneIntertwining",
+        "Zeta23.CCM.poleNeutral_cubic_pairing_eq_momentFour"
+      ],
+      "status": "PLANNED_NOT_IMPLEMENTED",
+      "mandatory_core": true,
+      "acceptance": "Prove actual S0=S-b*alpha and the rank-one identity R1 using existing actual-source identification; do not assume it."
+    },
+    {
+      "id": "M09",
+      "work_package": "W03",
+      "path": "Zeta23/CCM/CanonicalPoleNeutralGroundConstraints.lean",
+      "module": "Zeta23.CCM.CanonicalPoleNeutralGroundConstraints",
+      "depends_on": [
+        "M08"
+      ],
+      "proposed_exports": [
+        "Zeta23.CCM.poleNeutral_source_moment_energy_eq",
+        "Zeta23.CCM.poleNeutral_strictEven_source_moment_pos",
+        "Zeta23.CCM.poleNeutral_trial_residual_bound",
+        "Zeta23.CCM.poleNeutral_momentFour_zero_residual_lower",
+        "Zeta23.CCM.poleNeutral_simpleEven_momentFour_ne_zero"
+      ],
+      "status": "PLANNED_NOT_IMPLEMENTED",
+      "mandatory_core": true,
+      "acceptance": "Prove R2/R3 and the simple-eigenspace tie lemma. Preserve all hypotheses; no claim that S0 is nonzero at a tie."
+    },
+    {
+      "id": "M10",
+      "work_package": "W04",
+      "path": "Zeta23/CCM/CanonicalPoleNeutralShiftedSecular.lean",
+      "module": "Zeta23.CCM.CanonicalPoleNeutralShiftedSecular",
+      "depends_on": [
+        "M08",
+        "M09"
+      ],
+      "proposed_exports": [
+        "Zeta23.CCM.poleNeutralEvenShiftedRay",
+        "Zeta23.CCM.poleNeutral_evenShifted_eigen_iff",
+        "Zeta23.CCM.poleNeutral_evenShifted_det_eq",
+        "Zeta23.CCM.poleNeutralOddShiftedRay",
+        "Zeta23.CCM.poleNeutral_oddShifted_eigen_iff",
+        "Zeta23.CCM.poleNeutral_oddShifted_det_eq"
+      ],
+      "status": "PLANNED_NOT_IMPLEMENTED",
+      "mandatory_core": true,
+      "acceptance": "Instantiate generic shifted secular algebra for both strict branches; derive strict odd via adjoint and the specified minus sign."
+    },
+    {
+      "id": "M11",
+      "work_package": "W04",
+      "path": "Zeta23/CCM/CanonicalPoleNeutralTiePackage.lean",
+      "module": "Zeta23.CCM.CanonicalPoleNeutralTiePackage",
+      "depends_on": [
+        "M09",
+        "M10"
+      ],
+      "proposed_exports": [
+        "Zeta23.CCM.PoleNeutralGroundBranch",
+        "Zeta23.CCM.poleNeutralGround_branch_exhaustive",
+        "Zeta23.CCM.poleNeutral_tied_kernel_compatibility",
+        "Zeta23.CCM.poleNeutral_tied_complementary_response"
+      ],
+      "status": "PLANNED_NOT_IMPLEMENTED",
+      "mandatory_core": true,
+      "acceptance": "Exhaustive minimal-pole-neutral branch data; singular-safe kernel/complement record with its proved range condition."
+    },
+    {
+      "id": "M12",
+      "work_package": "W05",
+      "path": "Zeta23/CCM/CanonicalDeepThresholdSelection.lean",
+      "module": "Zeta23.CCM.CanonicalDeepThresholdSelection",
+      "depends_on": [
+        "M07"
+      ],
+      "proposed_exports": [
+        "Zeta23.CCM.exists_bottomAvoidingThreshold",
+        "Zeta23.CCM.exists_least_deepPoleNeutralCutoff",
+        "Zeta23.CCM.deepThreshold_predecessor_inverse_bound",
+        "Zeta23.CCM.deepThreshold_selectedParity_simple"
+      ],
+      "status": "PLANNED_NOT_IMPLEMENTED",
+      "mandatory_core": true,
+      "acceptance": "Bottom-only gap g=D/[12(Kd-1)], both predecessors, 6(Kd-1)/D inverse budget, shell simplicity and empty predecessor."
+    },
+    {
+      "id": "M13",
+      "work_package": "W05",
+      "path": "Zeta23/CCM/DetectorRetainedSchurState.lean",
+      "module": "Zeta23.CCM.DetectorRetainedSchurState",
+      "depends_on": [
+        "M06",
+        "M10",
+        "M11",
+        "M12"
+      ],
+      "proposed_exports": [
+        "Zeta23.CCM.DetectorRetainedSchurState",
+        "Zeta23.CCM.selectedGround_shiftedSchur_eq",
+        "Zeta23.CCM.originalDetector_schur_completion",
+        "Zeta23.CCM.originalDetector_schur_loss_lower"
+      ],
+      "status": "PLANNED_NOT_IMPLEMENTED",
+      "mandatory_core": true,
+      "acceptance": "Keep the one-step selected-ground scalar and the full detector-complement Schur form distinct; prove DS/DL."
+    },
+    {
+      "id": "M14",
+      "work_package": "W06",
+      "path": "Zeta23/CCM/CanonicalTrialResidualChannels.lean",
+      "module": "Zeta23.CCM.CanonicalTrialResidualChannels",
+      "depends_on": [
+        "M06",
+        "M08",
+        "M09"
+      ],
+      "proposed_exports": [
+        "Zeta23.CCM.canonicalTrialResidual",
+        "Zeta23.CCM.canonicalTrialResidual_variance_eq",
+        "Zeta23.CCM.canonicalTrialResidual_channels_sum",
+        "Zeta23.CCM.canonicalTrialResidual_gram_sum"
+      ],
+      "status": "PLANNED_NOT_IMPLEMENTED",
+      "mandatory_core": true,
+      "acceptance": "Independent spectral and native-channel definitions of the same trial residual in its own parity T_sigma,0 (A0 even; B0 odd), not the selected-ground parity; complete complex Gram terms; even M4 bounds apply only to eligible even inputs."
+    },
+    {
+      "id": "M15",
+      "work_package": "W06",
+      "path": "Zeta23/CCM/NativeIntegerPrimeSource.lean",
+      "module": "Zeta23.CCM.NativeIntegerPrimeSource",
+      "depends_on": [
+        "M01",
+        "M02"
+      ],
+      "proposed_exports": [
+        "Zeta23.CCM.nativeOriginalPrimeField",
+        "Zeta23.CCM.nativeOriginalIntegerDrive",
+        "Zeta23.CCM.native_divisor_convolution_identity",
+        "Zeta23.CCM.native_primeCoefficients_unique",
+        "Zeta23.CCM.nativeOriginalIntegerDrive_rapid_bound"
+      ],
+      "status": "PLANNED_NOT_IMPLEMENTED",
+      "mandatory_core": true,
+      "acceptance": "Actual integer/von-Mangoldt fields X,U and N*X=U; full finite divisor identity; prove required rapid integer-drive bound on exact j."
+    },
+    {
+      "id": "M16",
+      "work_package": "W06",
+      "path": "Zeta23/CCM/PoleNeutralCompactInverse.lean",
+      "module": "Zeta23.CCM.PoleNeutralCompactInverse",
+      "depends_on": [],
+      "proposed_exports": [
+        "Zeta23.CCM.poleNeutral_compactInverse_exists_unique",
+        "Zeta23.CCM.poleNeutral_compactInverse_support",
+        "Zeta23.CCM.poleNeutral_compactInverse_norm_bound"
+      ],
+      "status": "PLANNED_NOT_IMPLEMENTED",
+      "mandatory_core": true,
+      "acceptance": "Construct compact inverse of P for the exact pole-neutral class and prove support, traces, Sobolev regularity and needed bounds."
+    },
+    {
+      "id": "M17",
+      "work_package": "W06",
+      "path": "Zeta23/CCM/OriginalDetectorNativeForcing.lean",
+      "module": "Zeta23.CCM.OriginalDetectorNativeForcing",
+      "depends_on": [
+        "M05",
+        "M13",
+        "M14",
+        "M15",
+        "M16"
+      ],
+      "proposed_exports": [
+        "Zeta23.CCM.originalDetector_correlationField_eq_sourceConvolution",
+        "Zeta23.CCM.originalDetector_projectedForcing_eq",
+        "Zeta23.CCM.originalDetector_forcing_error_bound"
+      ],
+      "status": "PLANNED_NOT_IMPLEMENTED",
+      "mandatory_core": true,
+      "acceptance": "Exact original-source bridge, full translated/reflected forcing, Archimedean part, spectral shift, finite approximation and Galerkin/normal residuals."
+    },
+    {
+      "id": "M18",
+      "work_package": "W07",
+      "path": "Zeta23/CCM/NativePositiveCompletion.lean",
+      "module": "Zeta23.CCM.NativePositiveCompletion",
+      "depends_on": [
+        "M15"
+      ],
+      "proposed_exports": [
+        "Zeta23.CCM.nativePositiveCompletion",
+        "Zeta23.CCM.nativePositiveCompletion_nonneg",
+        "Zeta23.CCM.nativePositiveCompletion_laplace",
+        "Zeta23.CCM.nativePositiveCompletion_mass_lt",
+        "Zeta23.CCM.nativeCompletedInput",
+        "Zeta23.CCM.nativeCompletedInput_equation",
+        "Zeta23.CCM.nativeCompletedInput_memLp"
+      ],
+      "status": "PLANNED_NOT_IMPLEMENTED",
+      "mandatory_core": true,
+      "acceptance": "Actual a-triangle and c completion; exact multiplier; sound mass bound below 605/621; independently stable actual Y."
+    },
+    {
+      "id": "M19",
+      "work_package": "W07",
+      "path": "Zeta23/CCM/NativeAdjointResidual.lean",
+      "module": "Zeta23.CCM.NativeAdjointResidual",
+      "depends_on": [
+        "M18"
+      ],
+      "proposed_exports": [
+        "Zeta23.CCM.nativeAdjointResidualIterate",
+        "Zeta23.CCM.nativeAdjointResidual_norm_loss",
+        "Zeta23.CCM.nativeAdjointResidual_norm_antitone",
+        "Zeta23.CCM.nativeAdjointResidual_kernelProjection_preserved"
+      ],
+      "status": "PLANNED_NOT_IMPLEMENTED",
+      "mandatory_core": true,
+      "acceptance": "Core: actual finite-step identity, norm monotonicity and invariant adjoint-kernel projection. Strong convergence is an explicitly optional promotion, not needed for B-Y."
+    },
+    {
+      "id": "M20",
+      "work_package": "W07",
+      "path": "Zeta23/ExceptionalZero/NativeRangeZeroJetObstruction.lean",
+      "module": "Zeta23.ExceptionalZero.NativeRangeZeroJetObstruction",
+      "depends_on": [
+        "M03",
+        "M18"
+      ],
+      "proposed_exports": [
+        "Zeta23.ExceptionalZero.nativeZeroJetAdjointWitness",
+        "Zeta23.ExceptionalZero.nativeZeroJet_annihilates_range",
+        "Zeta23.ExceptionalZero.nativeCompletedInput_zeroJet_ne_zero",
+        "Zeta23.ExceptionalZero.nativeCompletedInput_not_mem_rangeClosure_of_offLine_zero"
+      ],
+      "status": "PLANNED_NOT_IMPLEMENTED",
+      "mandatory_core": true,
+      "acceptance": "Direct multiplicity-aware exponential-polynomial L2 witness against actual Yepsilon; no need to port full Hardy factorization."
+    },
+    {
+      "id": "M21",
+      "work_package": "W07",
+      "path": "Zeta23/CCM/NativeExteriorSourceRecord.lean",
+      "module": "Zeta23.CCM.NativeExteriorSourceRecord",
+      "depends_on": [
+        "M15",
+        "M16",
+        "M17"
+      ],
+      "proposed_exports": [
+        "Zeta23.CCM.OriginalNativeExteriorRecord",
+        "Zeta23.CCM.originalNativeExterior_history_eq",
+        "Zeta23.CCM.originalNativeExterior_residual_eq"
+      ],
+      "status": "PLANNED_NOT_IMPLEMENTED",
+      "mandatory_core": true,
+      "acceptance": "Original detector exterior with complete history and nonzero interior residual retained; full-contact C05 is a separate optional paper view."
+    },
+    {
+      "id": "M22",
+      "work_package": "W08",
+      "path": "Zeta23/CCM/Step123OutputData.lean",
+      "module": "Zeta23.CCM.Step123OutputData",
+      "depends_on": [
+        "M06",
+        "M09",
+        "M10",
+        "M11",
+        "M13",
+        "M14",
+        "M17",
+        "M18",
+        "M19",
+        "M21"
+      ],
+      "proposed_exports": [
+        "Zeta23.CCM.Step123NativeOutput",
+        "Zeta23.CCM.Step123NativeOutput.arithmeticView",
+        "Zeta23.CCM.Step123NativeOutput.rangeView",
+        "Zeta23.CCM.Step123NativeOutput.structuralView"
+      ],
+      "status": "PLANNED_NOT_IMPLEMENTED",
+      "mandatory_core": true,
+      "acceptance": "Native mathematical record without rho, with actual vectors/functions and proved equalities; no strings substituted for proof fields."
+    },
+    {
+      "id": "M23",
+      "work_package": "W08",
+      "path": "Zeta23/ExceptionalZero/Step123OutputProducer.lean",
+      "module": "Zeta23.ExceptionalZero.Step123OutputProducer",
+      "depends_on": [
+        "M04",
+        "M20",
+        "M22"
+      ],
+      "proposed_exports": [
+        "Zeta23.ExceptionalZero.GeneratedStep123Output",
+        "Zeta23.ExceptionalZero.exists_step123Output_of_offLine_zero",
+        "Zeta23.ExceptionalZero.exists_eachPhase_cofinal_step123Output"
+      ],
+      "status": "PLANNED_NOT_IMPLEMENTED",
+      "mandatory_core": true,
+      "acceptance": "Zero-indexed extension of native record; fill every Step 1-3 field from source theorems and prove flagship P."
+    },
+    {
+      "id": "M24",
+      "work_package": "W08",
+      "path": "Zeta23/ExceptionalZero/Step4OutputSufficiency.lean",
+      "module": "Zeta23.ExceptionalZero.Step4OutputSufficiency",
+      "depends_on": [
+        "M20",
+        "M23"
+      ],
+      "proposed_exports": [
+        "Zeta23.ExceptionalZero.riemannHypothesis_of_originalPrimeField_allDampedL2",
+        "Zeta23.ExceptionalZero.riemannHypothesis_of_nativeInput_allRangeClosure",
+        "Zeta23.ExceptionalZero.riemannHypothesis_of_detectorSchurLoss_subexponential"
+      ],
+      "status": "PLANNED_NOT_IMPLEMENTED",
+      "mandatory_core": true,
+      "acceptance": "Core A-X/B-Y/C-Schur sufficiency with explicit OPEN upper/membership premises; no unconditional RH claim."
+    },
+    {
+      "id": "M25",
+      "work_package": "W08",
+      "path": "Zeta23/RHRC/Step123OutputBindings.lean",
+      "module": "Zeta23.RHRC.Step123OutputBindings",
+      "depends_on": [
+        "M23",
+        "M24"
+      ],
+      "proposed_exports": [],
+      "status": "PLANNED_NOT_IMPLEMENTED",
+      "mandatory_core": true,
+      "acceptance": "Exact checks and axiom/type receipts for all registered new public roots, including their upstream dependencies; reuse existing compiler exporter."
+    }
+  ],
+  "new_research_files": [
+    "research/RHRC/routes/R003_ccm_bridge/post290/evaluate_native_output.py",
+    "research/RHRC/routes/R003_ccm_bridge/post290/verify_native_output.py",
+    "research/RHRC/routes/R003_ccm_bridge/post290/residual_channels.py",
+    "research/RHRC/routes/R003_ccm_bridge/post290/compare_representations.py",
+    "research/RHRC/routes/R003_ccm_bridge/post290/countermodel_survival.py",
+    "research/RHRC/routes/R003_ccm_bridge/post290/source_lineage_check.py",
+    "research/RHRC/routes/R003_ccm_bridge/post290/output_contract_check.py",
+    "research/RHRC/routes/R003_ccm_bridge/post290/build_step4_handoff.py",
+    "research/RHRC/routes/R003_ccm_bridge/post290/harvest_workflows.py",
+    "research/RHRC/routes/R003_ccm_bridge/post290/k3_resume_partition.py",
+    "research/RHRC/routes/R003_ccm_bridge/post290/k3_resume_search.py",
+    "research/RHRC/routes/R003_ccm_bridge/post290/k3_replay_all.py",
+    "research/RHRC/routes/R003_ccm_bridge/post290/k3_assemble_complete.py",
+    "research/RHRC/routes/R003_ccm_bridge/post290/test_output_mutations.py",
+    "research/RHRC/routes/R003_ccm_bridge/post290/test_pole_neutral_exact.py",
+    "research/RHRC/routes/R003_ccm_bridge/post290/test_strict_odd_and_tie_exact.py",
+    "research/RHRC/routes/R003_ccm_bridge/post290/test_detector_schur_provenance.py",
+    "research/RHRC/routes/R003_ccm_bridge/post290/test_native_divisor_controls.py"
+  ],
+  "new_integration_files": [
+    "research/RHRC/integration/post290/BUILD_CONTRACT.md",
+    "research/RHRC/integration/post290/BUILD_MANIFEST.json",
+    "research/RHRC/integration/post290/SOURCE_REGISTER.json",
+    "research/RHRC/integration/post290/OUTPUT_CONTRACT.schema.json",
+    "research/RHRC/integration/post290/STEP4_CUTS.json",
+    "research/RHRC/integration/post290/FORMAL_BINDINGS.json",
+    "research/RHRC/integration/post290/ASSUMPTION_AUDIT.json",
+    "research/RHRC/integration/post290/RESEARCH_PROTOCOL.md",
+    "research/RHRC/integration/post290/COUNTERMODEL_CONTRACTS.json",
+    "research/RHRC/integration/post290/D2_CONTINUATION_PROTOCOL.json"
+  ],
+  "new_workflows": [
+    ".github/workflows/rhrc_post290_step123_output.yml",
+    ".github/workflows/rhrc_post290_k3_completion.yml"
+  ],
+  "existing_files_allowed_to_change": [
+    "Zeta23/CCM.lean",
+    "Zeta23/ExceptionalZero.lean",
+    "research/RHRC/REGISTERED_THEOREM_BINDINGS.json",
+    "Zeta23/RHRC/RegisteredClaimBindings.lean",
+    "research/RHRC/CLAIM_REGISTRY.json",
+    "research/RHRC/graph/FILE_CLASSES.json",
+    "research/RHRC/graph/DEPENDENCY_FARMING_COHORTS.json",
+    "research/RHRC/CURRENT_RESEARCH_PLAN.md",
+    "research/RHRC/OBSTRUCTION_LEDGER.md",
+    "research/RHRC/RESEARCH_LEADS.md",
+    "research/RHRC/closure_batch/check_lean_proof_escapes.py"
+  ],
+  "existing_data_to_preserve": [
+    "research/RHRC/integration/post287/PR290_SCOPE_OVERRIDE_AND_HANDOFF.md",
+    "research/RHRC/integration/post287/OPEN_OBLIGATIONS.json",
+    "historical source-pinned numerical receipts",
+    "Control-v2 frozen semantic state",
+    "old quantitative metadata interfaces unless explicitly deprecated"
+  ],
+  "generated_products_policy": "Use existing full materialize_derived_state tooling; regenerate after source freeze and validate fresh checkout BEFORE writes.",
+  "optional_noncore_promotions": [
+    "Native adjoint iteration strong convergence beyond core finite identities",
+    "A03 signed-cofactor/rough-core/mixed-energy bounds",
+    "C05 full continuous contact producer and full-kernel exponent",
+    "Aperture-growing endpoint order and separate high-jet ground compression",
+    "Moving pole-neutral-carrier derivative calculus"
+  ],
+  "core_cuts": [
+    "A-X",
+    "B-Y",
+    "C-Schur"
+  ],
+  "d2": {
+    "status_at_base": "OPEN",
+    "mandatory": true,
+    "original_guarded_source": "31512dbb698dd59b90cfa32549f0e9273a5163f9",
+    "original_run_id": 38332529352,
+    "complete_layers": 26,
+    "total_layers": 30,
+    "unresolved_even_subintervals": {
+      "9": 7,
+      "13": 7,
+      "14": 11,
+      "15": 10
+    },
+    "target": "FULL_K3_BOTH_PARITIES_CONTINUOUS_[1/512,log16]",
+    "method": "SECOND_resource_partition_v1",
+    "historical_fourth_fallback_authorized": false,
+    "final_nonpartial_check_required": true,
+    "lean_hWindows_supplied_by_external_receipt": false
+  },
+  "merge_policy": "Separate user merge decision; all mandatory scope complete, or explicit user-approved scope amendment retaining every unfulfilled mathematical obligation."
+}

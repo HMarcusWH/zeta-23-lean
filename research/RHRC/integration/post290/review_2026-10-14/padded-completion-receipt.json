@@ -1,0 +1,935 @@
+{
+  "written_at_utc": "2026-10-14T14:23:07.450181+00:00",
+  "scope": "LOCAL literal positively padded finite source producer; not whole-head CI or complete M01-M25 producer",
+  "base_head": "d5b867ef467b4eb5d5e38e500577fda2b2a5f91b",
+  "compiler": "Lean 4.33.0-rc2; leanprover/lean4:v4.33.0-rc2",
+  "options": [
+    "-j",
+    "1",
+    "-DmaxHeartbeats=800000",
+    "-DrelaxedAutoImplicit=false",
+    "-Dpp.unicode.fun=true"
+  ],
+  "mathlib_revision": "51e6992efd06126df61a496bebf8f49482a4e129",
+  "allowed_axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "module_count": 31,
+  "printed_root_count": 116,
+  "modules": [
+    {
+      "module": "Zeta23.CCM.OriginalDetectorPositiveFourierPadding",
+      "source": "Zeta23/CCM/OriginalDetectorPositiveFourierPadding.lean",
+      "source_sha256": "4adf6fdde231967b9a258923d9019909a689b327d7048c6a14044216fdc4d451",
+      "compiler_process_exit_code": 0,
+      "log": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\validation\\OriginalDetectorPositiveFourierPadding.log",
+      "log_sha256": "e31b18610ef72d29c901c58fa2f5a456989b0665d3cdf086d7c04bb6816d47fc",
+      "printed_roots": {
+        "Zeta23.CCM.originalDetectorPositivePadding_pos": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "Zeta23.CCM.originalDetectorPaddedRawFourierPartialJet_eq": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "Zeta23.CCM.originalDetectorPaddedRawFourierPartialJet_iteratedDeriv": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "Zeta23.CCM.originalDetectorPaddedRawFourierPartialJet_error_le_budget": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "Zeta23.CCM.originalDetectorPaddedRawFourierJetTailBudget_mul_exp_tendsto_zero": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      }
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorPositiveFourierPaddingReal",
+      "source": "Zeta23/CCM/OriginalDetectorPositiveFourierPaddingReal.lean",
+      "source_sha256": "d873911908caa2ce077c78990bb71c0f1edacb814eface0512aac32dc60623e8",
+      "compiler_process_exit_code": 0,
+      "log": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\validation\\OriginalDetectorPositiveFourierPaddingReal.log",
+      "log_sha256": "793338cdd612758c357b7803e4fdd49b96e31143b7f20570a7f9efbc2dfd2912",
+      "printed_roots": {
+        "Zeta23.CCM.originalDetectorDividedLobeFourierCoeff_conj": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "Zeta23.CCM.originalDetectorDividedLobeFourierPartialSum_conj": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "Zeta23.CCM.originalDetectorPaddedRawFourierPartialSum_real": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "Zeta23.CCM.originalDetectorPaddedRawFourierPartialSum_re_nonneg": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      }
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorPaddedFiniteWindowImage",
+      "source": "Zeta23/CCM/OriginalDetectorPaddedFiniteWindowImage.lean",
+      "source_sha256": "395bd9496d00c3673cafad8856131b6d5cd810a4fc7d7bbcc07eb95f5ca46823",
+      "compiler_process_exit_code": 0,
+      "log": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\validation\\OriginalDetectorPaddedFiniteWindowImage.log",
+      "log_sha256": "869025e02af83ef65d3e7ff8d944cff70a42be4d8e2c3e4348e8cec5b049d85a",
+      "printed_roots": {
+        "Zeta23.CCM.originalDetectorPaddedFiniteWindow_eq_fourier": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "Zeta23.CCM.originalDetectorPaddedFiniteWindow_mul_dividedLobe": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "Zeta23.CCM.originalDetectorPaddedFiniteWindowImageFinsupp_support": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "Zeta23.CCM.originalDetectorPaddedFiniteWindowImageFinsupp_eq": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "Zeta23.CCM.localizedFiniteFunction_originalDetectorPaddedFiniteWindowImageCoefficients": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "Zeta23.CCM.originalDetectorPaddedFiniteWindowImage_error_le_budget": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      }
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorPaddedFiniteWindowImageJets",
+      "source": "Zeta23/CCM/OriginalDetectorPaddedFiniteWindowImageJets.lean",
+      "source_sha256": "a10a2945fe3ef5cdfe36275a054269392222634b329916892a35e733a84a0d7e",
+      "compiler_process_exit_code": 0,
+      "log": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\validation\\OriginalDetectorPaddedFiniteWindowImageJets.log",
+      "log_sha256": "216aa8e36864eed0df5fbf038df8590bb80bc2a90dd27782992d8bf5d65c34f8",
+      "printed_roots": {
+        "Zeta23.CCM.originalDetectorPaddedFiniteWindow_iteratedDeriv": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "Zeta23.CCM.originalDetectorPaddedFiniteWindowCoeff_norm_sum": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "Zeta23.CCM.norm_originalDetectorPaddedFiniteWindow_iteratedDeriv_le": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "Zeta23.CCM.originalDetectorPaddedFiniteWindowImage_iteratedDeriv_error_le_budget": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      }
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorPaddedFiniteWindowBoundaryFlat",
+      "source": "Zeta23/CCM/OriginalDetectorPaddedFiniteWindowBoundaryFlat.lean",
+      "source_sha256": "e1a8b1acc8ac3aecf6c73fca5a5448fd38be2113361e8a75d8b4cc8fd4ce02e4",
+      "compiler_process_exit_code": 0,
+      "log": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\validation\\OriginalDetectorPaddedFiniteWindowBoundaryFlat.log",
+      "log_sha256": "4b9dbfeb7c268fe3efbd72f08ba76ab078da92b02f26b3966a995905a5568f75",
+      "printed_roots": {
+        "Zeta23.CCM.originalDetectorPaddedFiniteWindow_endpoint_jets": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "Zeta23.CCM.originalDetectorPaddedFiniteWindowImage_endpoint_jets": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "Zeta23.CCM.padded_boundaryFlatCoefficients_of_left_endpoint_jets": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "Zeta23.CCM.originalDetectorPaddedFiniteWindowImageCoefficients_boundaryFlat": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "Zeta23.CCM.originalDetectorPaddedFiniteWindowImageCoefficients_hardWindow_contDiff": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      }
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorPaddedFiniteWindowHigherFlat",
+      "source": "Zeta23/CCM/OriginalDetectorPaddedFiniteWindowHigherFlat.lean",
+      "source_sha256": "93ebee21cb4762ed679a613fe6239ef29ec114f1eb8fe4e60b2d11645426380d",
+      "compiler_process_exit_code": 0,
+      "log": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\validation\\OriginalDetectorPaddedFiniteWindowHigherFlat.log",
+      "log_sha256": "72bb72f4dec4dcc5360d16d97e2c8650be33617de2785df1298a756af26a0699",
+      "printed_roots": {
+        "Zeta23.CCM.originalDetectorPaddedFiniteWindow_endpoint_jets_lt_eight": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "Zeta23.CCM.originalDetectorPaddedFiniteWindowImage_endpoint_jets_lt_eight": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "Zeta23.CCM.padded_contDiff_nat_indicator_Icc_of_iteratedDeriv_endpoint_zero": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "Zeta23.CCM.originalDetectorPaddedFiniteWindowImageCoefficients_hardWindow_contDiff_of_lt_eight": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      }
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorPaddedFiniteWindowImageAsymptotics",
+      "source": "Zeta23/CCM/OriginalDetectorPaddedFiniteWindowImageAsymptotics.lean",
+      "source_sha256": "108f3814b8f725f518c9347c2b4088aded71b52cd49926449fced7ad704c59e0",
+      "compiler_process_exit_code": 0,
+      "log": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\validation\\OriginalDetectorPaddedFiniteWindowImageAsymptotics.log",
+      "log_sha256": "b74df8dbd2d05e75ec9779a094c7758838ef9aeae6b3643726570e06f460036d",
+      "printed_roots": {
+        "Zeta23.CCM.originalDetectorPaddedFiniteWindowImageJetBudget_mul_exp_tendsto_zero": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "Zeta23.CCM.originalDetectorPaddedFiniteWindowImageJetBudget_eventually_lt_exp": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      }
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorPaddedFinitePoleImage",
+      "source": "Zeta23/CCM/OriginalDetectorPaddedFinitePoleImage.lean",
+      "source_sha256": "675f68ccda00a36124d7620cd41d00def2f19ecbd8dfbe3a025716248807765a",
+      "compiler_process_exit_code": 0,
+      "log": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\validation\\OriginalDetectorPaddedFinitePoleImage.log",
+      "log_sha256": "e759527a59fe2b7b57eb46310c61acc39fd7bd30ebfe3703a9749f167e9619c8",
+      "printed_roots": {
+        "Zeta23.CCM.padded_localizedFiniteFunction_iteratedDeriv_zero_eq_moment": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "Zeta23.CCM.originalDetectorPaddedFiniteWindowImageCoefficients_moment_zero": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "Zeta23.CCM.originalDetectorPaddedFinitePoleImageCoefficients_boundaryFlat": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "Zeta23.CCM.originalDetectorPaddedFinitePoleImageCoefficients_native_poles_zero": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "Zeta23.CCM.localizedFiniteFunction_originalDetectorPaddedFinitePoleImageCoefficients": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      }
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorPaddedFinitePoleImageTransport",
+      "source": "Zeta23/CCM/OriginalDetectorPaddedFinitePoleImageTransport.lean",
+      "source_sha256": "0b87e8c4367ac6eefe4fc1f20a31472a7c49619864bf4d991d4aeae23b44d85f",
+      "compiler_process_exit_code": 0,
+      "log": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\validation\\OriginalDetectorPaddedFinitePoleImageTransport.log",
+      "log_sha256": "708b558ff2c0237aa80faeb25ea9abc4cccaec67939134268f59c77df22b3f21",
+      "printed_roots": {
+        "Zeta23.CCM.padded_iteratedDeriv_poleKilled_infty": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "Zeta23.CCM.padded_poleKilled_originalDetectorLobe": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "Zeta23.CCM.originalDetectorPaddedFinitePoleImage_iteratedDeriv_error_le_budget": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "Zeta23.CCM.originalDetectorPaddedFinitePoleImageCoefficients_hardWindow_contDiff": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "Zeta23.CCM.padded_poleKilled_localizedFiniteVector_of_boundaryFlat": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "Zeta23.CCM.originalDetectorPaddedFinitePoleImageCoefficients_hardWindow_eq_poleKilled": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      }
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorPaddedFinitePoleImageAsymptotics",
+      "source": "Zeta23/CCM/OriginalDetectorPaddedFinitePoleImageAsymptotics.lean",
+      "source_sha256": "bc39f7d83bf5fd385878c3e63b61e240e9bc2611897e6aee01f709b19d967d43",
+      "compiler_process_exit_code": 0,
+      "log": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\validation\\OriginalDetectorPaddedFinitePoleImageAsymptotics.log",
+      "log_sha256": "01a3186a9ae0372418dbab247d0c5d5da00268a72f37d6310ec4588deb1efb76",
+      "printed_roots": {
+        "Zeta23.CCM.originalDetectorPaddedFinitePoleImageJetBudget_mul_exp_tendsto_zero": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "Zeta23.CCM.originalDetectorPaddedFinitePoleImageJetBudget_eventually_lt_exp": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      }
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorPaddedFinitePoleImageNonzero",
+      "source": "Zeta23/CCM/OriginalDetectorPaddedFinitePoleImageNonzero.lean",
+      "source_sha256": "93a803a0bcea0b4cd35a3bcae36672c80f4e18edd797036d357db8cdb8e44750",
+      "compiler_process_exit_code": 0,
+      "log": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\validation\\OriginalDetectorPaddedFinitePoleImageNonzero.log",
+      "log_sha256": "791b7d7b4b54c429c6d97fc1ae32228d40a043f0a5c6adb3868779fc64d14c29",
+      "printed_roots": {
+        "Zeta23.CCM.exists_originalDetectorPaddedFinitePoleImageCoefficients_nonzero_threshold": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "Zeta23.CCM.norm_originalDetectorPaddedFinitePoleImageNormalized": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      }
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorPaddedFinitePhasePlane",
+      "source": "Zeta23/CCM/OriginalDetectorPaddedFinitePhasePlane.lean",
+      "source_sha256": "f8539fdaa9db6fb3d79b1049aa0ef72c324fcf964bc4d3f8800f229516ee1aa9",
+      "compiler_process_exit_code": 0,
+      "log": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\validation\\OriginalDetectorPaddedFinitePhasePlane.log",
+      "log_sha256": "f35d5aafcb2c44f1536a86b03bdf5ee2aaba678266cd122e1385229a062238e3",
+      "printed_roots": {
+        "Zeta23.CCM.originalDetectorPaddedFinitePhasePlane_inner_eq_Gram": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "Zeta23.CCM.originalDetectorPaddedFinitePhasePlane_inner_eq_nativeEnergy": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "Zeta23.CCM.originalDetectorPaddedFinitePhasePlane_rayleigh_identity": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "Zeta23.CCM.originalDetectorPaddedFinitePhaseVector_nativeEnergy": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      }
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorPaddedFinitePhaseCarrier",
+      "source": "Zeta23/CCM/OriginalDetectorPaddedFinitePhaseCarrier.lean",
+      "source_sha256": "91f46905915715815b5912e3f404b8ef915b569fd61538cb372cfd1b0ef2a594",
+      "compiler_process_exit_code": 0,
+      "log": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\validation\\OriginalDetectorPaddedFinitePhaseCarrier.log",
+      "log_sha256": "0ced5d1d79876a5e2a2e722d38c9bea170d8ff2e112902c33619394c1136087a",
+      "printed_roots": {
+        "Zeta23.CCM.originalDetectorPaddedFinitePoleImageCoefficients_moment_zero_lt_six": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "Zeta23.CCM.originalDetectorPaddedFinitePhaseRaw_moment_zero_lt_six": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "Zeta23.CCM.originalDetectorPaddedFinitePhaseRaw_reversal": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "Zeta23.CCM.originalDetectorPaddedFinitePhaseVector_native_poles_zero": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "Zeta23.CCM.originalDetectorPaddedFiniteEvenPhase": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "Zeta23.CCM.originalDetectorPaddedFiniteOddPhase": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      }
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorPaddedFinitePhaseApproximation",
+      "source": "Zeta23/CCM/OriginalDetectorPaddedFinitePhaseApproximation.lean",
+      "source_sha256": "1d1ff78b7ab5bf43f743db89016d36111054554aef4e2f5a09677462c36ace66",
+      "compiler_process_exit_code": 0,
+      "log": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\validation\\OriginalDetectorPaddedFinitePhaseApproximation.log",
+      "log_sha256": "6dd21663ec041140be3df93fac05926f7dac027a56f52e55d9f97f286a83cc7f",
+      "printed_roots": {
+        "Zeta23.CCM.padded_localizedFiniteFunction_reverseCoefficients_reflected": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "Zeta23.CCM.originalDetectorPaddedFinitePhaseVector_physical_formula": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "Zeta23.CCM.originalDetectorPaddedFiniteOriginalPhaseApprox_iteratedDeriv_error_le": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      }
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorPaddedFinitePhaseL1Errors",
+      "source": "Zeta23/CCM/OriginalDetectorPaddedFinitePhaseL1Errors.lean",
+      "source_sha256": "4bfdec8694bc7917053640928faff1eb8fc268997accba99b759c8ad5e16420a",
+      "compiler_process_exit_code": 0,
+      "log": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\validation\\OriginalDetectorPaddedFinitePhaseL1Errors.log",
+      "log_sha256": "0925e88462c766c6e9a964a918c0cc0df509f7c9e0b566e570fb4260ddae5fd8",
+      "printed_roots": {
+        "Zeta23.CCM.padded_iteratedDeriv_localizedFiniteVector_eq_formula_on_interval": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "Zeta23.CCM.originalDetectorPaddedFiniteOriginalPhaseHard_contDiff": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "Zeta23.CCM.originalDetectorPaddedFiniteOriginalPhaseHard_integral_jet_error_le": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      }
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorPaddedFinitePhaseMass",
+      "source": "Zeta23/CCM/OriginalDetectorPaddedFinitePhaseMass.lean",
+      "source_sha256": "1464a2b0cdb9dcb859f7f6ff11874861169b6062dfb938c9440bef0671b54e3c",
+      "compiler_process_exit_code": 0,
+      "log": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\validation\\OriginalDetectorPaddedFinitePhaseMass.log",
+      "log_sha256": "6841b6801441610d366972bcdc540b52d4f66ebf7eedd765e726925341cfb9c2",
+      "printed_roots": {
+        "Zeta23.CCM.padded_norm_originalSincTest_le_source_budget": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "Zeta23.CCM.padded_norm_fixedOriginalSincPhaseTrial_le_source_budget": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "Zeta23.CCM.padded_interval_energy_error_le_of_uniform_error": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      }
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorPaddedFinitePhaseNormControl",
+      "source": "Zeta23/CCM/OriginalDetectorPaddedFinitePhaseNormControl.lean",
+      "source_sha256": "7dba3ef89d79dae0c0303baa1786fbee187af13b10f9d0f6a3ee18f8b45b27fd",
+      "compiler_process_exit_code": 0,
+      "log": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\validation\\OriginalDetectorPaddedFinitePhaseNormControl.log",
+      "log_sha256": "6008588ee5d9495c85ae1b00cccd98affb2a9f7c5148c7acfc45d4a17d34a580",
+      "printed_roots": {
+        "Zeta23.CCM.originalDetectorPaddedFiniteOriginalPhaseApprox_interval_energy": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "Zeta23.CCM.originalDetectorPaddedFinitePhase_mass_error_le": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "Zeta23.CCM.originalDetectorPaddedFinitePoleImageJetBudget_mul_aperture_exp_tendsto_zero": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "Zeta23.CCM.originalDetectorPaddedFinitePhaseMassErrorBudget_mul_exp_tendsto_zero": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      }
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorPaddedFinitePhaseNormalization",
+      "source": "Zeta23/CCM/OriginalDetectorPaddedFinitePhaseNormalization.lean",
+      "source_sha256": "94bb626c3180da198945dc2614e2751d24029cdf20e821c3d5d945f6aa318549",
+      "compiler_process_exit_code": 0,
+      "log": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\validation\\OriginalDetectorPaddedFinitePhaseNormalization.log",
+      "log_sha256": "0c7c5df7642856edd2344c5a85b100f2b64e22d144d2dd88c3a226087a443f5f",
+      "printed_roots": {
+        "Zeta23.CCM.exists_originalDetectorPaddedFinitePhase_mass_control_threshold": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "Zeta23.CCM.exists_originalDetectorPaddedFinitePhase_unit_threshold": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "Zeta23.CCM.originalDetectorPaddedFinitePhaseUnitVector_moment_zero_lt_six": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "Zeta23.CCM.originalDetectorPaddedFinitePhaseUnitVector_native_poles_zero": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      }
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorPaddedFinitePhaseWeilPadding",
+      "source": "Zeta23/CCM/OriginalDetectorPaddedFinitePhaseWeilPadding.lean",
+      "source_sha256": "ece582288789e174c0d8552812bd6360702698156e7c535277c2b02d3d05bc67",
+      "compiler_process_exit_code": 0,
+      "log": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\validation\\OriginalDetectorPaddedFinitePhaseWeilPadding.log",
+      "log_sha256": "f3ba9b11711de5950c775570f6d07b45f60a2ad5ba77679c37913be1d413da37",
+      "printed_roots": {
+        "Zeta23.CCM.originalDetectorPaddedFinitePhase_Weil_error_le": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "Zeta23.CCM.originalDetectorPaddedFinitePhaseL1ErrorBudget_mul_exp_tendsto_zero": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "Zeta23.CCM.originalDetectorPaddedFinitePhaseWeilErrorBudget_mul_exp_tendsto_zero": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      }
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorPaddedFinitePhaseNativeTransport",
+      "source": "Zeta23/CCM/OriginalDetectorPaddedFinitePhaseNativeTransport.lean",
+      "source_sha256": "4d47be913e96fc598aafd445fd71d8338b6a67a938aef60f0ad325f8ee99b8d7",
+      "compiler_process_exit_code": 0,
+      "log": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\validation\\OriginalDetectorPaddedFinitePhaseNativeTransport.log",
+      "log_sha256": "798c48f1102dd6f3ad24f042c0c464710a5120926ab1892f6af8debe013d31cb",
+      "printed_roots": {
+        "Zeta23.CCM.originalDetectorPaddedFiniteOriginalPhaseHard_Weil_re_eq_nativeEnergy": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "Zeta23.CCM.originalDetectorPaddedFinitePhaseUnitVector_nativeEnergy_eq_Weil_div_mass": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      }
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorPaddedFinitePhaseDepth",
+      "source": "Zeta23/CCM/OriginalDetectorPaddedFinitePhaseDepth.lean",
+      "source_sha256": "a63d5eb5a86e8170e0b6fe48c514cfc5efbe50568993e1ab2486be6bcbbd7123",
+      "compiler_process_exit_code": 0,
+      "log": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\validation\\OriginalDetectorPaddedFinitePhaseDepth.log",
+      "log_sha256": "1c02418dbc3200d0e4977fdb9baedbac80accc0c51b79d0fa8f0ca431e257084",
+      "printed_roots": {
+        "Zeta23.CCM.originalDetectorPaddedFinitePhase_producer": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      }
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorPaddedFinitePhaseNativeProducer",
+      "source": "Zeta23/CCM/OriginalDetectorPaddedFinitePhaseNativeProducer.lean",
+      "source_sha256": "0b561e43c4560806fe375f500c76db104df329777fb33bee40cb2b66c0a28232",
+      "compiler_process_exit_code": 0,
+      "log": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\validation\\OriginalDetectorPaddedFinitePhaseNativeProducer.log",
+      "log_sha256": "7045754c5dc6a6e136dca9867b00a88e18b33c83a835ff5c6b8ba5599a4462e4",
+      "printed_roots": {
+        "Zeta23.CCM.originalDetectorPaddedFiniteEvenPhaseUnit_ambient": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "Zeta23.CCM.originalDetectorPaddedFiniteOddPhaseUnit_ambient": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "Zeta23.CCM.originalDetectorPaddedFiniteEvenPhaseUnit_energy": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "Zeta23.CCM.originalDetectorPaddedFiniteOddPhaseUnit_energy": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "Zeta23.CCM.exists_originalDetectorPaddedFiniteEvenPhase_native_depth": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "Zeta23.CCM.exists_originalDetectorPaddedFiniteOddPhase_native_depth": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      }
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorPaddedFinitePositivity",
+      "source": "Zeta23/CCM/OriginalDetectorPaddedFinitePositivity.lean",
+      "source_sha256": "efd27c4110fdc8945afa3576ebdaf05bb15541c116a6242d14add171461aabe7",
+      "compiler_process_exit_code": 0,
+      "log": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\validation\\OriginalDetectorPaddedFinitePositivity.log",
+      "log_sha256": "f6d08ecc4f0ecd97ed6ab1207be47c9992d43ce201655653aa9e340e7bf6cfb8",
+      "printed_roots": {
+        "Zeta23.CCM.originalDetectorPaddedFiniteWindowImage_real": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "Zeta23.CCM.originalDetectorPaddedFiniteWindowImage_re_nonneg": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "Zeta23.CCM.originalDetectorPaddedFiniteEvenPrimitive_re_nonneg": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "Zeta23.CCM.originalDetectorPaddedFiniteOddPrimitive_padding_cancels": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      }
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorPaddedFinitePoleImageC4",
+      "source": "Zeta23/CCM/OriginalDetectorPaddedFinitePoleImageC4.lean",
+      "source_sha256": "11a7b4600182ca930013339f389fb1f51c832ad3cb0dbd1097565ea583d8feb9",
+      "compiler_process_exit_code": 0,
+      "log": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\validation\\OriginalDetectorPaddedFinitePoleImageC4.log",
+      "log_sha256": "e00b81f3c9cfda3647812852f6740a0b265cdf861f3c88f0895c1c2f41e53e03",
+      "printed_roots": {
+        "Zeta23.CCM.originalDetectorPaddedFinitePoleImage_endpoint_jets_lt_six": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "Zeta23.CCM.originalDetectorPaddedFinitePoleImage_hard_contDiff_four": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      }
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorPaddedFourierQuantitativeRates",
+      "source": "Zeta23/CCM/OriginalDetectorPaddedFourierQuantitativeRates.lean",
+      "source_sha256": "9076a924d1924b6b9708f5d1dc5b3eed377ee90417afca9e75ee274117e7d73f",
+      "compiler_process_exit_code": 0,
+      "log": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\validation\\OriginalDetectorPaddedFourierQuantitativeRates.log",
+      "log_sha256": "fb473d5b50a26c807e582b1b9c7da7ad4e94e64ede689e71993a871a37943b13",
+      "printed_roots": {
+        "Zeta23.CCM.originalDetectorRawTailBudget_mul_quarticWeight_tendsto_zero": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "Zeta23.CCM.originalDetectorPaddedPoleBudget_mul_quarticWeight_tendsto_zero": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "Zeta23.CCM.originalDetectorPaddedPoleBudget_mul_aperture_quarticWeight_tendsto_zero": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      }
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorPaddedPhaseQuantitativeRates",
+      "source": "Zeta23/CCM/OriginalDetectorPaddedPhaseQuantitativeRates.lean",
+      "source_sha256": "8f9c8337db445a4911eb27137818e726df4ecb71906d494fb1ad8ec10895552e",
+      "compiler_process_exit_code": 0,
+      "log": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\validation\\OriginalDetectorPaddedPhaseQuantitativeRates.log",
+      "log_sha256": "45973d8ae248799233e4c5d66b177459131a297c2418042cc59f59d9365a8f0c",
+      "printed_roots": {
+        "Zeta23.CCM.originalDetectorPaddedMassBudget_mul_quarticWeight_tendsto_zero": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "Zeta23.CCM.originalDetectorPaddedWeilBudget_mul_quarticWeight_tendsto_zero": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "Zeta23.CCM.eventually_lt_retained_quartic_envelope": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      }
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorFiniteTransport",
+      "source": "Zeta23/CCM/OriginalDetectorFiniteTransport.lean",
+      "source_sha256": "f5c5f1f04479bc430c1898dcd7cb1f2cffe9834850418f6407d006e885655144",
+      "compiler_process_exit_code": 0,
+      "log": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\validation\\OriginalDetectorFiniteTransport.log",
+      "log_sha256": "3d2a7695c0c804db804329362988ee10dfb2b2ffe378c618ed0fb4f2a57703c5",
+      "printed_roots": {
+        "Zeta23.CCM.originalDetectorFiniteImage_legal": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "Zeta23.CCM.originalDetectorFiniteImage_poleNeutral": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "Zeta23.CCM.originalDetectorFiniteImage_endpointJets": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "Zeta23.CCM.originalDetectorFiniteImage_endpointJets_physical": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "Zeta23.CCM.originalDetectorFiniteImage_hard_contDiff_four": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "Zeta23.CCM.originalDetectorFiniteImage_error_bound": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "Zeta23.CCM.originalDetectorFiniteImage_quartic_error_tendsto_zero": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "Zeta23.CCM.originalDetectorFiniteImage_physical_norm": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      }
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorPaddedFiniteNormalizedErrors",
+      "source": "Zeta23/CCM/OriginalDetectorPaddedFiniteNormalizedErrors.lean",
+      "source_sha256": "e56cb04a5653208059688919ec0418acc828d260132cb32735e79adaab82e2b8",
+      "compiler_process_exit_code": 0,
+      "log": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\validation\\OriginalDetectorPaddedFiniteNormalizedErrors.log",
+      "log_sha256": "b13a2267cd564e74c27696c563bbfee360d4dd4b3aa289c5dc86314dc45f9a22",
+      "printed_roots": {
+        "Zeta23.CCM.fixedOriginalSincKernel_iteratedDeriv_norm_le": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "Zeta23.CCM.fixedOriginalSincPhaseTrial_iteratedDeriv_norm_le": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "Zeta23.CCM.originalDetectorPaddedFinitePhysicalUnit_jet_error_le": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "Zeta23.CCM.originalDetectorPaddedFiniteNormalizedJetErrorBudget_mul_quarticWeight_tendsto_zero": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      }
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorPaddedFiniteH1Rate",
+      "source": "Zeta23/CCM/OriginalDetectorPaddedFiniteH1Rate.lean",
+      "source_sha256": "94f54c223c3718ba15f00275f07622b875105be9254302044e532b18aeb2d00f",
+      "compiler_process_exit_code": 0,
+      "log": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\validation\\OriginalDetectorPaddedFiniteH1Rate.log",
+      "log_sha256": "1f88cd280254fcfb8dcf272c88808377e6a3a9d550168b72f15ead31a1b6e45f",
+      "printed_roots": {
+        "Zeta23.CCM.originalDetectorPaddedFinitePhysicalUnit_H1_error_le": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "Zeta23.CCM.originalDetectorPaddedFiniteH1ErrorBudget_mul_quarticWeight_tendsto_zero": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "Zeta23.CCM.originalDetectorPaddedFinitePhysicalUnit_H1_concrete_rate": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      }
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorPaddedFiniteNativeFormRate",
+      "source": "Zeta23/CCM/OriginalDetectorPaddedFiniteNativeFormRate.lean",
+      "source_sha256": "e9362cd3c874a135454f04047b73e712754c000f64424b1d34c6ad49dd8c383b",
+      "compiler_process_exit_code": 0,
+      "log": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\validation\\OriginalDetectorPaddedFiniteNativeFormRate.log",
+      "log_sha256": "d8eb6e57b05e6dfeda9a13efc7ff508c7bcbad4c6c1190db055f7cda308c9490",
+      "printed_roots": {
+        "Zeta23.CCM.fixedOriginalSincPhaseTrial_Weil_norm_le": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "Zeta23.CCM.originalDetectorPaddedFinitePhaseUnit_native_form_error_le": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "Zeta23.CCM.originalDetectorPaddedFiniteNormalizedNativeFormErrorBudget_mul_quarticWeight_tendsto_zero": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      }
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorPaddedFinitePhaseSymmetry",
+      "source": "Zeta23/CCM/OriginalDetectorPaddedFinitePhaseSymmetry.lean",
+      "source_sha256": "0ade377a713bdce0d0f63e4730db17d16d1633500ea7702f00c3297695ea3908",
+      "compiler_process_exit_code": 0,
+      "log": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\post290\\validation\\OriginalDetectorPaddedFinitePhaseSymmetry.log",
+      "log_sha256": "547cdf10b8510fd4926234ebcf264d653d63c6ad7b8926e53fe90b1b3f4dce3c",
+      "printed_roots": {
+        "Zeta23.CCM.originalDetectorPaddedFinitePhaseGram_circulant": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "Zeta23.CCM.originalDetectorPaddedFinitePhaseEnergy_circulant": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      }
+    }
+  ],
+  "proved": [
+    "Literal positive DC padding is the actual common raw Fourier tail budget at r=0",
+    "Actual symmetric Fourier truncation is real; padded primitive is nonnegative on the physical interval",
+    "Actual even primitive is nonnegative; odd DC padding cancels exactly before applying P",
+    "Padded finite q has eight zero endpoint jets; actual Pq has six and globally C4 hard extension",
+    "Both actual reflection phases have true native norm normalization and unchanged native pole equations",
+    "Each requested original phase has cofinally late native unit exponential depth from an actual off-line zero",
+    "Retained source-only stretched exponential weights pay Fourier, jet, phase mass and Weil errors",
+    "Concrete normalized physical H1 rate with source-only constants C=1 and c=k_s0/8, and L^(17/2) prefactor",
+    "Actual normalized native quadratic-form error and retained stretched exponential weighted limit"
+  ],
+  "derived_not_separately_formalized": [
+    "Odd primitive cancellation propagates through linear reflection-invariant P and true normalization to equality of padded/unpadded odd detectors",
+    "The true-normalized physical function equals the hard finite image of the literal native unit coefficient vector; a candidate bridge proof remains unverified"
+  ],
+  "still_open": [
+    "Explicit real scalar per-phase quotient and positive-denominator export from the proved full circulant phase plane",
+    "Final displayed native-form (1+L)L^(17/2) exp(L/2-c sqrt(N/L)) packaging; actual normalized form bound and stronger weighted asymptotic are proved",
+    "Actual padded selected-ground/Schur composition and complete output fields M17-M21",
+    "Exact whole-head CI, complete workflow harvest, graph materialization and independent D2",
+    "Step4 closing laws and RH"
+  ]
+}

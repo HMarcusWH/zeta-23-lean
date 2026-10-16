@@ -1,0 +1,10 @@
+'Zeta23.CCM.nativePoleCompactInverse_congr_ae' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.nativePoleCompactInverseDerivative_congr_ae' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.NativeCompactPoleH2.congrSource' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.NativeCompactPoleH2.unique_of_source_ae' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.poleNeutral_compactInverse_exists_of_ae_support' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.nativePoleCompactH2_translate_support_norm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.NativeCompactPoleH2.translated_ae_equations' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.poleNeutral_compactInverse_zero_interval_support_norm' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

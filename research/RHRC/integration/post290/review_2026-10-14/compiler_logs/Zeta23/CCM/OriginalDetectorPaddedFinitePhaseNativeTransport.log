@@ -1,0 +1,13 @@
+Zeta23/CCM/OriginalDetectorPaddedFinitePhaseNativeTransport.lean:32:14: warning: This simp argument is unused:
+  mul_zero
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Complex.conj_ofReal, Complex.mul_re, Complex.ofReal_re, Complex.ofReal_im, zero_mul, sub_zero]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+'Zeta23.CCM.originalDetectorPaddedFiniteOriginalPhaseHard_Weil_re_eq_nativeEnergy' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.CCM.originalDetectorPaddedFinitePhaseUnitVector_nativeEnergy_eq_Weil_div_mass' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

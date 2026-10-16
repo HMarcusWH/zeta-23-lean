@@ -1,0 +1,49 @@
+Zeta23/CCM/OriginalDetectorPaddedFiniteNormalizedErrors.lean:27:55: warning: 'ring' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+Zeta23/CCM/OriginalDetectorPaddedFiniteNormalizedErrors.lean:27:55: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+Zeta23/CCM/OriginalDetectorPaddedFiniteNormalizedErrors.lean:75:90: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Zeta23/CCM/OriginalDetectorPaddedFiniteNormalizedErrors.lean:76:53: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+Zeta23/CCM/OriginalDetectorPaddedFiniteNormalizedErrors.lean:118:24: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Zeta23/CCM/OriginalDetectorPaddedFiniteNormalizedErrors.lean:118:80: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Zeta23/CCM/OriginalDetectorPaddedFiniteNormalizedErrors.lean:137:24: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Zeta23/CCM/OriginalDetectorPaddedFiniteNormalizedErrors.lean:137:41: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Zeta23/CCM/OriginalDetectorPaddedFiniteNormalizedErrors.lean:159:22: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Zeta23/CCM/OriginalDetectorPaddedFiniteNormalizedErrors.lean:159:86: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Zeta23/CCM/OriginalDetectorPaddedFiniteNormalizedErrors.lean:160:20: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+'Zeta23.CCM.fixedOriginalSincKernel_iteratedDeriv_norm_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.fixedOriginalSincPhaseTrial_iteratedDeriv_norm_le' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.CCM.originalDetectorPaddedFinitePhysicalUnit_jet_error_le' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.CCM.originalDetectorPaddedFiniteNormalizedJetErrorBudget_mul_quarticWeight_tendsto_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
