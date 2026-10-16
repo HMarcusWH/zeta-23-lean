@@ -5791,6 +5791,19 @@
     },
     {
       "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/CCM/OriginalDetectorFourHistoryLocalXBound.lean",
+      "module": "Zeta23.CCM.OriginalDetectorFourHistoryLocalXBound",
+      "module_id": "rh:module:Zeta23.CCM.OriginalDetectorFourHistoryLocalXBound",
+      "named_source_declaration_count": 12,
+      "path": "Zeta23/CCM/OriginalDetectorFourHistoryLocalXBound.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 0,
+      "standalone_role": "POST290_SUPPORTING_SOURCE_COMPONENT",
+      "trust_zone": "RH_FORMAL_CORE"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 0,
       "file_id": "rh:file:Zeta23/CCM/OriginalDetectorFourHistorySignedTransfer.lean",
       "module": "Zeta23.CCM.OriginalDetectorFourHistorySignedTransfer",
       "module_id": "rh:module:Zeta23.CCM.OriginalDetectorFourHistorySignedTransfer",
@@ -15185,7 +15198,7 @@
       "trust_zone": "AUXILIARY_FORMALIZATION"
     }
   ],
-  "entry_count": 1007,
+  "entry_count": 1008,
   "graph_theorem_promotion": false,
   "schema_version": "RHKG-final-module-closure-1.0",
   "scope": "ALL_LOCAL_LEAN_MODULES",

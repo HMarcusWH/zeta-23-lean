@@ -1517,6 +1517,7 @@
     "Zeta23.CCM.OriginalDetectorFiniteWindowImageJets",
     "Zeta23.CCM.OriginalDetectorForcingError",
     "Zeta23.CCM.OriginalDetectorFourHistoryLocalDuality",
+    "Zeta23.CCM.OriginalDetectorFourHistoryLocalXBound",
     "Zeta23.CCM.OriginalDetectorFourHistorySignedTransfer",
     "Zeta23.CCM.OriginalDetectorFourHistoryTransfer",
     "Zeta23.CCM.OriginalDetectorFourPrimeHistories",

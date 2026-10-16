@@ -1,5 +1,5 @@
 {
-  "contacting_root_count": 1044,
+  "contacting_root_count": 1046,
   "contacts": [
     {
       "active_interfaces": [
@@ -8618,6 +8618,27 @@
       },
       "declaration": "Zeta23.CCM.canonicalNativePhysicalSynthesis_mixed_Weil",
       "module": "Zeta23.CCM.CanonicalPhysicalTrialRealization"
+    },
+    {
+      "active_interfaces": [
+        "PRODUCTION_SOURCE_JET"
+      ],
+      "contacts": {
+        "PRODUCTION_SOURCE_JET": {
+          "count": 5,
+          "examples": [
+            "Zeta23.CCM.poleEvenProfile",
+            "Zeta23.CCM.poleEvenProfileReal",
+            "Zeta23.CCM.poleOddProfileReal._proof_1",
+            "Zeta23.CCM.poleProfileDenominator",
+            "Zeta23.CCM.poleProfileDenominator._proof_1"
+          ],
+          "sha256": "c8621603daf3a272831c5d8ec16a2c5e8b123ab7e749baface5fbaace97a1c9f",
+          "truncated": false
+        }
+      },
+      "declaration": "Zeta23.CCM.canonicalNativePhysicalSynthesis_poleMoments",
+      "module": "Zeta23.CCM.OriginalDetectorFourHistoryLocalXBound"
     },
     {
       "active_interfaces": [
@@ -19257,6 +19278,27 @@
       ],
       "contacts": {
         "PRODUCTION_SOURCE_JET": {
+          "count": 5,
+          "examples": [
+            "Zeta23.CCM.poleEvenProfile",
+            "Zeta23.CCM.poleEvenProfileReal",
+            "Zeta23.CCM.poleOddProfileReal._proof_1",
+            "Zeta23.CCM.poleProfileDenominator",
+            "Zeta23.CCM.poleProfileDenominator._proof_1"
+          ],
+          "sha256": "c8621603daf3a272831c5d8ec16a2c5e8b123ab7e749baface5fbaace97a1c9f",
+          "truncated": false
+        }
+      },
+      "declaration": "Zeta23.CCM.originalDetector_nativeTest_primeForcing_le_sixteenKappa",
+      "module": "Zeta23.CCM.OriginalDetectorFourHistoryLocalXBound"
+    },
+    {
+      "active_interfaces": [
+        "PRODUCTION_SOURCE_JET"
+      ],
+      "contacts": {
+        "PRODUCTION_SOURCE_JET": {
           "count": 7,
           "examples": [
             "Zeta23.CCM.evenCompressedCanonical",
@@ -28396,7 +28438,7 @@
   "interpretation": "Compiler-dependency contact view only. Cross-interface contact does not establish theorem composition, independence, mathematical relevance, or RH evidence.",
   "projection": "THEOREM_VALUE_ERASED_SUPPORT",
   "schema_version": "RHRC-CONTACT-QUOTIENT-VIEW-1.1",
-  "source_only_root_count": 2766,
+  "source_only_root_count": 2772,
   "status": "RESEARCH_CONTROL_ONLY",
   "terminal_claim": "RH_OPEN",
   "theorem_promotion": false

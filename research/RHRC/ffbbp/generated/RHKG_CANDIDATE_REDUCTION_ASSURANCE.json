@@ -48,18 +48,18 @@
   },
   "inherits_runtime_qualification": false,
   "input_snapshot": {
-    "candidate_count": 5391,
-    "candidate_resolution_sha256": "0e97b8f5c051ad0b93a2039176b76adc56dfe0a06968dbd38dab0e3676d5a6e3",
-    "candidate_source_surface_sha256": "05a9810f3a6c339a905eee5142f2abf4e531751be1a93428df88285898764f37",
-    "candidate_summary_sha256": "57bb4cd17b9ca25eb3ea2443b573ccb37cd8cafd83d51407005dec51f12beb28",
+    "candidate_count": 5403,
+    "candidate_resolution_sha256": "fc0aa2240c12a4541693eb526b5700148858f844371e95c9a65fd14ab92ed3a2",
+    "candidate_source_surface_sha256": "3c4ef176f0ee86f1475fedb8aa61b2c2ae76ccf274f4e46ae6033585a205a492",
+    "candidate_summary_sha256": "3adb3160887b711550de24708123a9ff64261532441f261e6a5098cbbc0a8601",
     "lean_toolchain": "leanprover/lean4:v4.33.0-rc2",
     "registered_compiler_receipt_sha256": "134eac5491f8d89575c1e5e1fa9a102d37382fe38758d2ac0ba0274e4503efaf",
-    "rhkg_subject_digest_sha256": "775340287b60d795b86682086a8e964ffef19d3a66b6c8510216ff44d58ecad1",
-    "source_only_public_theorem_count": 2766
+    "rhkg_subject_digest_sha256": "e2321fedd85cbcf8c3e2598a09a970479c45dfaa30bc3afc328dd0b3751f8271",
+    "source_only_public_theorem_count": 2772
   },
   "qualification_identity": {
-    "execution_digest": "0d835aadc5483aa57a43a0166d62990f9ede6fdf1e3139c00bb9bbaf55119632",
-    "execution_id": "RHKG_CANDIDATE_SNAPSHOT:775340287b60d795",
+    "execution_digest": "1858f52d8805178cd5848a1700620cd5867a4d68f6f84aa101ce24c84790ccc5",
+    "execution_id": "RHKG_CANDIDATE_SNAPSHOT:e2321fedd85cbcf8",
     "profile_digest": "0ab841ca4f9c683bcf206c0cd2e434f07f35b3861073feb370f10195cac49929",
     "profile_id": "RHRC_FFBBP_V17_RHKG_SNAPSHOT_PROFILE",
     "protocol_digest": "30fd49aa7806e29ea8ce750cb91ad0f9edb3d655b9697f6a6dd82d3666a4ac26",
@@ -76,7 +76,7 @@
         "status": "FAIL"
       },
       "decision_factorization": {
-        "collision_fiber_count": 611,
+        "collision_fiber_count": 612,
         "counterexamples": [
           {
             "member_ids": [
@@ -672,16 +672,16 @@
             ]
           }
         ],
-        "fiber_count": 646,
-        "full_state_count": 5391,
+        "fiber_count": 647,
+        "full_state_count": 5403,
         "max_fiber_size": 69,
-        "mixed_value_fiber_count": 285,
+        "mixed_value_fiber_count": 286,
         "passed": false
       },
       "declared_use": "NEGATIVE_CONTROL_ONLY",
       "description": "Module-only Xi; retained as the exact decision-sufficiency falsifier.",
       "diagnostic_factorization": {
-        "collision_fiber_count": 611,
+        "collision_fiber_count": 612,
         "counterexamples": [
           {
             "member_ids": [
@@ -1260,10 +1260,10 @@
             ]
           }
         ],
-        "fiber_count": 646,
-        "full_state_count": 5391,
+        "fiber_count": 647,
+        "full_state_count": 5403,
         "max_fiber_size": 69,
-        "mixed_value_fiber_count": 333,
+        "mixed_value_fiber_count": 334,
         "passed": false
       },
       "id": "MODULE_ONLY_SNAPSHOT",
@@ -1278,10 +1278,10 @@
         "status": "PASS"
       },
       "decision_factorization": {
-        "collision_fiber_count": 782,
+        "collision_fiber_count": 784,
         "counterexamples": [],
-        "fiber_count": 1059,
-        "full_state_count": 5391,
+        "fiber_count": 1061,
+        "full_state_count": 5403,
         "max_fiber_size": 67,
         "mixed_value_fiber_count": 0,
         "passed": true
@@ -1289,10 +1289,10 @@
       "declared_use": "POST_REFERENCE_COHORT_NAVIGATION_ONLY",
       "description": "Retains module and exact visibility disposition for post-reference cohort navigation.",
       "diagnostic_factorization": {
-        "collision_fiber_count": 782,
+        "collision_fiber_count": 784,
         "counterexamples": [],
-        "fiber_count": 1059,
-        "full_state_count": 5391,
+        "fiber_count": 1061,
+        "full_state_count": 5403,
         "max_fiber_size": 67,
         "mixed_value_fiber_count": 0,
         "passed": true
@@ -1360,8 +1360,8 @@
             ]
           }
         ],
-        "fiber_count": 5299,
-        "full_state_count": 5391,
+        "fiber_count": 5311,
+        "full_state_count": 5403,
         "max_fiber_size": 6,
         "mixed_value_fiber_count": 4,
         "passed": false
@@ -1505,8 +1505,8 @@
             ]
           }
         ],
-        "fiber_count": 5299,
-        "full_state_count": 5391,
+        "fiber_count": 5311,
+        "full_state_count": 5403,
         "max_fiber_size": 6,
         "mixed_value_fiber_count": 12,
         "passed": false
@@ -1526,7 +1526,7 @@
   "schema_version": "RHRC-FFBBP-RHKG-assurance-report-2.0",
   "selected_reduction": "MODULE_VISIBILITY_SNAPSHOT",
   "selected_reduction_disposition": "PASS_FOR_POST_REFERENCE_COHORT_NAVIGATION_ONLY",
-  "source_only_module_cohort_count": 526,
+  "source_only_module_cohort_count": 527,
   "source_only_module_cohorts": [
     {
       "count": 67,
@@ -4252,6 +4252,18 @@
         "Zeta23.CCM.poleKilled_originalDetectorLobe"
       ],
       "module": "Zeta23.CCM.OriginalDetectorFinitePoleImageTransport"
+    },
+    {
+      "count": 6,
+      "declarations": [
+        "Zeta23.CCM.canonicalNativePhysicalSynthesis_poleMoments",
+        "Zeta23.CCM.nativeOriginalPrimeField_eq_zero_of_nonpos",
+        "Zeta23.CCM.nativeOriginalPrimeField_sq_integral_le",
+        "Zeta23.CCM.nativePoleCompactInverse_eq_zero_of_nonpos",
+        "Zeta23.CCM.originalDetector_nativeTest_primeForcing_le_sixteenKappa",
+        "Zeta23.CCM.originalDetector_primeResponse_pairing_le_sixteenKappa"
+      ],
+      "module": "Zeta23.CCM.OriginalDetectorFourHistoryLocalXBound"
     },
     {
       "count": 6,
@@ -7458,8 +7470,8 @@
   "visibility_counts": {
     "ALREADY_IN_REGISTERED_DEPENDENCY_CLOSURE": 1918,
     "ALREADY_REGISTERED_ROOT": 112,
-    "PRIVATE_OR_INTERNAL_SOURCE_OBJECT": 592,
-    "SOURCE_ONLY_PUBLIC_THEOREM": 2766,
+    "PRIVATE_OR_INTERNAL_SOURCE_OBJECT": 598,
+    "SOURCE_ONLY_PUBLIC_THEOREM": 2772,
     "UNRESOLVED_SOURCE_IDENTITY": 3
   }
 }
