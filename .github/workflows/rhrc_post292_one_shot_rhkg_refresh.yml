@@ -3,6 +3,7 @@ name: PR292 guarded one-shot RHKG generated-state refresh
 # Explicit source-only file input repair: no oversized Lean name array literals.
 # Explicit retry after compiler-reserved-name repair (commit 4142b3f9).
 # Follow-up approved narrow classifier repair + fail-closed census regression.
+# CI timeout repair: preserve double check before fast-forward publishing.
 # Only this workflow file's explicit opt-in push creates an automatic run.
 # This rebuilds deterministic graph products; it performs NO D2 searches,
 # checker continuations, workflow reruns, independent reviews, or RH claims.
@@ -31,7 +32,9 @@ jobs:
       (github.event_name == 'push' && startsWith(github.event.head_commit.message, 'ci(PR292): one-shot RHKG refresh')) ||
       (github.event_name == 'workflow_dispatch' && inputs.refresh_generated_state == true)
     runs-on: ubuntu-latest
-    timeout-minutes: 90
+    # Full 2,766-root regeneration + independent post-commit recheck exceeded
+    # the former 90-minute limit on run 38815669679; retain all proof gates.
+    timeout-minutes: 240
     steps:
       - uses: actions/checkout@v4
         with:
