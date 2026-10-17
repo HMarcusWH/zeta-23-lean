@@ -6,6 +6,7 @@ import json
 import re
 import subprocess
 from pathlib import Path
+from lean_expr_dag import FORMAT as FULL_TYPE_FORMAT, validate_expression
 
 REPO = Path(__file__).resolve().parents[5]
 AUDIT = REPO / 'Zeta23/RHRC/Step123OutputBindings.lean'
@@ -71,10 +72,10 @@ def compiler_records(text,roots,head,tree,expected_kinds=None):
 
 
 def compiler_type_expressions(text, roots, expected_kinds):
-    """Read additive raw Lean Expr exports, preserving historical pretty types.
+    """Read complete Lean type DAGs, preserving historical pretty types.
 
-    The compiler emits each exact ConstantInfo.type with Expr's derived Repr,
-    which retains implicit application arguments and witness binder types.
+    The compiler emits each ConstantInfo.type with sharing preserved, retaining
+    implicit application arguments, binder information and witness domains.
     Constructor types expose the fields of registered structures/inductives.
     This parser checks protocol coverage, not mathematical semantics.
     """
@@ -108,13 +109,19 @@ def compiler_type_expressions(text, roots, expected_kinds):
     expected_owners = {name for name, kind in expected_kinds.items() if kind == 'INDUCTIVE'}
     if set(constructors) != expected_owners or any(not entries for entries in constructors.values()):
         raise ValueError('incomplete structure constructor type expression receipt')
+    for expression in expressions.values():
+        validate_expression(expression)
+    for entries in constructors.values():
+        for expression in entries.values():
+            validate_expression(expression)
     return expressions, constructors
 
 
 def full_expression_record(expression):
+    validate_expression(expression)
     return {'full_type_expr': expression,
             'full_type_expr_sha256': hashlib.sha256(expression.encode()).hexdigest(),
-            'full_type_expr_format': 'LEAN_EXPR_REPR_V1'}
+            'full_type_expr_format': FULL_TYPE_FORMAT}
 
 
 def validate_full_type_fields(row):
@@ -124,9 +131,10 @@ def validate_full_type_fields(row):
             raise ValueError('malformed full type expression fields')
         expression = data.get('full_type_expr')
         if (not isinstance(expression, str) or not expression.strip()
-                or data.get('full_type_expr_format') != 'LEAN_EXPR_REPR_V1'
+                or data.get('full_type_expr_format') != FULL_TYPE_FORMAT
                 or hashlib.sha256(expression.encode()).hexdigest() != data.get('full_type_expr_sha256')):
             raise ValueError('missing or invalid full type expression/hash/format')
+        validate_expression(expression)
     expression_fields(row)
     kind = row.get('declaration_kind')
     if kind not in {'THEOREM', 'DEFINITION', 'INDUCTIVE'}:

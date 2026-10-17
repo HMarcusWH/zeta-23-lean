@@ -7,14 +7,15 @@ from output_contract_check import release_gaps,frozen_spec,frozen_export_kinds,F
 from unittest.mock import patch
 from d2_source_equivalence import D2_PRODUCER_HEAD,D2_PRODUCER_TREE,D2_RUN_ID
 from build_formal_receipt import TYPED_CONTRACT_ROOTS, full_expression_record
+from test_formal_receipt import synthetic_type_expression
 
 
 def synthetic_full_type_fields(name, kind):
-    """Explicitly fabricated raw Expr fields, never actual compiler exports."""
-    return dict(full_expression_record('SYNTHETIC_RAW_TYPE_EXPR_FOR_VALIDATOR_CONTROL ' + name),
+    """Explicitly synthetic DAG fields, never actual compiler exports."""
+    return dict(full_expression_record(synthetic_type_expression(name)),
         structure_constructor_types=([
             dict(constructor=name + '.mk', **full_expression_record(
-                'SYNTHETIC_CONSTRUCTOR_EXPR_FOR_VALIDATOR_CONTROL ' + name))]
+                synthetic_type_expression(name + '.mk')))]
             if kind == 'INDUCTIVE' else []))
 
 def synthetic_checkout_identity(head, tree):
@@ -140,7 +141,7 @@ def run():
     mutation('stale theorem type',lambda a:a[1]['declarations'][0].update(normalized_type='changed'))
     mutation('full compiler Expr missing',lambda a:a[1]['declarations'][0].pop('full_type_expr'))
     mutation('full compiler Expr hash missing',lambda a:a[1]['declarations'][0].pop('full_type_expr_sha256'))
-    mutation('full compiler Expr changed',lambda a:a[1]['declarations'][0].update(full_type_expr='SYNTHETIC_CHANGED_EXPR'))
+    mutation('full compiler Expr changed',lambda a:a[1]['declarations'][0].update(full_type_expr=synthetic_type_expression('Changed.ValidatorControl')))
     mutation('full compiler Expr format replaced by pretty type',lambda a:a[1]['declarations'][0].update(full_type_expr_format='PRETTY_TYPE'))
     mutation('full compiler constructor inventory missing',lambda a:a[1]['declarations'][0].pop('structure_constructor_types'))
     mutation('full compiler structure fields missing',lambda a:next(r for r in a[1]['definitions']

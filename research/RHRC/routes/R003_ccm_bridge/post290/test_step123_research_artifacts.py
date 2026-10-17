@@ -12,7 +12,8 @@ import hashlib
 import json
 from pathlib import Path
 
-from build_formal_receipt import AUDIT, audit_roots
+from build_formal_receipt import AUDIT, audit_roots, full_expression_record
+from test_formal_receipt import synthetic_type_expression
 from build_step4_handoff import COMPARISON_ROOTS, INTEGRATED_ROOTS, build
 from compare_representations import compare
 from countermodel_survival import audit
@@ -70,24 +71,19 @@ def audited_formal_fixture(identity):
     declarations, definitions = [], []
     for name in sorted(INTEGRATED_ROOTS | COMPARISON_ROOTS | {STRUCTURE_CONTROL}):
         text = "SYNTHETIC_VALIDATOR_TYPE_NOT_A_PROOF " + name
-        expression = "SYNTHETIC_LEAN_EXPR_REPR_NOT_A_PROOF " + name
         kind = kinds[name]
         row = {"declaration": name, "declaration_kind": kind, "module": modules[name],
                "source_tree": identity["tree"], "normalized_type": text,
                "normalized_type_sha256": hashlib.sha256(text.encode("utf-8")).hexdigest(),
-               "full_type_expr": expression,
-               "full_type_expr_sha256": hashlib.sha256(expression.encode("utf-8")).hexdigest(),
-               "full_type_expr_format": "LEAN_EXPR_REPR_V1",
+               **full_expression_record(synthetic_type_expression(name)),
                "structure_constructor_types": [],
                "axioms": ["propext", "Classical.choice", "Quot.sound"],
                "axiom_audit_pass": True,
                "authority": "PROVED" if kind == "THEOREM" else "DEFINED_DATA_NOT_A_THEOREM"}
         if kind == "INDUCTIVE":
-            constructor_expression = "SYNTHETIC_CONSTRUCTOR_EXPR_NOT_A_PROOF " + name + ".mk"
             row["structure_constructor_types"] = [{
-                "constructor": name + ".mk", "full_type_expr": constructor_expression,
-                "full_type_expr_sha256": hashlib.sha256(constructor_expression.encode("utf-8")).hexdigest(),
-                "full_type_expr_format": "LEAN_EXPR_REPR_V1"}]
+                "constructor": name + ".mk",
+                **full_expression_record(synthetic_type_expression(name + ".mk"))}]
         if kind == "THEOREM":
             row["theorem"] = name
             declarations.append(row)
@@ -187,7 +183,7 @@ def handoff_receipt_controls(comparison, survival, sparse, identity, contract):
            f["declarations"][0].update(normalized_type="FORGED_TYPE"))
     reject("missing full type expression", lambda f: f["declarations"][0].pop("full_type_expr"))
     reject("changed full type expression", lambda f:
-           f["declarations"][0].update(full_type_expr="FORGED_EXPR"))
+           f["declarations"][0].update(full_type_expr=synthetic_type_expression("Forged.ValidatorControl")))
     reject("wrong full type expression format", lambda f:
            f["declarations"][0].update(full_type_expr_format="PRETTY_TYPE_NOT_FULL_EXPR"))
     reject("missing constructor inventory", lambda f:
@@ -199,7 +195,7 @@ def handoff_receipt_controls(comparison, survival, sparse, identity, contract):
     reject("missing inductive constructor types", lambda f:
            structure_row(f).update(structure_constructor_types=[]))
     reject("changed constructor expression", lambda f:
-           structure_row(f)["structure_constructor_types"][0].update(full_type_expr="FORGED_CTOR_EXPR"))
+           structure_row(f)["structure_constructor_types"][0].update(full_type_expr=synthetic_type_expression("Forged.ConstructorValidatorControl")))
     reject("duplicate constructor expression", lambda f:
            structure_row(f)["structure_constructor_types"].append(
                deepcopy(structure_row(f)["structure_constructor_types"][0])))
