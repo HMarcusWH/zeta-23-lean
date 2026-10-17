@@ -132,9 +132,9 @@ theorem Step123NativeOutput.originalLeftCausalTail_eq_indicator
       (fun t => originalSmoothWeilResponse (nativeOriginalDetectorPhaseSign σ) a (-t)) t
   by_cases ht : 0 < t
   · have hn : -t ∈ Iio (0 : ℝ) := by change -t < 0; linarith
-    rw [Set.indicator_of_mem hn, Set.indicator_of_mem ht]
+    rw [Set.indicator_of_mem hn, Set.indicator_of_mem (s := Ioi (0 : ℝ)) ht]
   · have hn : -t ∉ Iio (0 : ℝ) := by change ¬ -t < 0; linarith
-    rw [Set.indicator_of_notMem hn, Set.indicator_of_notMem ht]
+    rw [Set.indicator_of_notMem hn, Set.indicator_of_notMem (s := Ioi (0 : ℝ)) ht]
 
 theorem Step123NativeOutput.originalRightCausalTail_eq_indicator
     {β : ℝ} {σ : ReversalParity} {a : ℝ}
@@ -156,12 +156,12 @@ theorem Step123NativeOutput.originalRightCausalTail_eq_indicator
         Ioi (fixedOriginalSincTrialAperture a) := by
       change fixedOriginalSincTrialAperture a < fixedOriginalSincTrialAperture a + t
       linarith
-    rw [Set.indicator_of_mem hn, Set.indicator_of_mem ht]
+    rw [Set.indicator_of_mem hn, Set.indicator_of_mem (s := Ioi (0 : ℝ)) ht]
   · have hn : fixedOriginalSincTrialAperture a + t ∉
         Ioi (fixedOriginalSincTrialAperture a) := by
       change ¬ fixedOriginalSincTrialAperture a < fixedOriginalSincTrialAperture a + t
       linarith
-    rw [Set.indicator_of_notMem hn, Set.indicator_of_notMem ht]
+    rw [Set.indicator_of_notMem hn, Set.indicator_of_notMem (s := Ioi (0 : ℝ)) ht]
 
 /-- Both original exterior tails are exactly zero at nonpositive causal
 time, including the seams t=0. -/

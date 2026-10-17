@@ -8,8 +8,12 @@ Runs under normal and optimized Python with explicit exceptions.
 from __future__ import annotations
 
 from copy import deepcopy
+import hashlib
+import json
+from pathlib import Path
 
-from build_step4_handoff import build
+from build_formal_receipt import AUDIT, audit_roots
+from build_step4_handoff import COMPARISON_ROOTS, INTEGRATED_ROOTS, build
 from compare_representations import compare
 from countermodel_survival import audit
 from evaluate_native_output import APERTURES, CARRIERS, CUTOFFS
@@ -57,6 +61,159 @@ def cuts():
     return {"claim_cap": "RH_OPEN",
             "cuts": [{"id": name, "status": "OPEN", "core_formal_sufficiency_module": "M24"}
                      for name in ("A-X", "B-Y", "C-Schur")]}
+
+
+def audited_formal_fixture(identity):
+    """Fabricated compiler-schema control; never actual compiler evidence."""
+    modules, kinds = audit_roots(AUDIT.read_text(encoding="utf-8-sig"))
+    declarations, definitions = [], []
+    for name in sorted(INTEGRATED_ROOTS | COMPARISON_ROOTS):
+        text = "SYNTHETIC_VALIDATOR_TYPE_NOT_A_PROOF " + name
+        kind = kinds[name]
+        row = {"declaration": name, "declaration_kind": kind, "module": modules[name],
+               "source_tree": identity["tree"], "normalized_type": text,
+               "normalized_type_sha256": hashlib.sha256(text.encode("utf-8")).hexdigest(),
+               "axioms": ["propext", "Classical.choice", "Quot.sound"],
+               "axiom_audit_pass": True,
+               "authority": "PROVED" if kind == "THEOREM" else "DEFINED_DATA_NOT_A_THEOREM"}
+        if kind == "THEOREM":
+            row["theorem"] = name
+            declarations.append(row)
+        else:
+            definitions.append(row)
+    root = Path(__file__).resolve().parents[5]
+    declared = (root / "lean-toolchain").read_text(encoding="utf-8").strip()
+    packages = json.loads((root / "lake-manifest.json").read_text(encoding="utf-8"))["packages"]
+    context = dict(identity)
+    context.update(declared_toolchain=declared,
+                   actual_compiler_version="Lean (version " + declared.rsplit(":v", 1)[-1] +
+                       ", SYNTHETIC VALIDATOR CONTROL)",
+                   mathlib_revision=next(package["rev"] for package in packages
+                                         if package["name"] == "mathlib"),
+                   tracked_lean_toolchain_manifest_clean=True,
+                   dependencies=[{"package": package["name"], "revision": package["rev"],
+                                  "lean_source_clean": True} for package in packages])
+    return {"schema_version": "RH_POST290_COMPONENT_COMPILER_RECEIPT_1.0",
+            "claim_cap": "RH_OPEN", "producer_complete": False,
+            "independent_assumption_review_pass": False,
+            "execution_status": "SUCCESS", "integrity_status": "PASS",
+            "head": identity["head"], "source_tree": identity["tree"],
+            "compiler_context": context, "compiler_log_sha256": "0" * 64,
+            "audited_root_count": len(declarations) + len(definitions),
+            "declarations": declarations, "definitions": definitions}
+
+
+def handoff_receipt_controls(comparison, survival, sparse, identity):
+    """Exercise the real handoff builder against failed and forged receipts."""
+    positive = audited_formal_fixture(identity)
+    doc = build(positive, comparison, survival, None, None, identity)
+    for expected in (
+            "The audited receipt resolves the same-packet interfaces",
+            "PROVED ingredients", "Re W(f,f)<=-4 exp(beta L)",
+            "16 kappa X_L>=4 exp(beta L)+Re A_f",
+            "H1(f)^2<=1+M1 B1", "OPEN C-Schur upper law",
+            "C exp(epsilon L)<exp(beta L)/2<S<=C exp(epsilon L)",
+            "A-X, B-Y and C-Schur remain OPEN", "Complete source/packet signoff: NO"):
+        if expected not in doc:
+            raise RuntimeError("handoff omitted audited comparison/control: " + expected)
+    partial = build(sparse, comparison, survival, None, None, identity)
+    if ("UNVERIFIED SPARSE COMPONENT INPUT" not in partial
+            or "The audited receipt resolves" in partial
+            or "PROVED ingredients" in partial or "PROVED C-Schur lower ingredient" in partial):
+        raise RuntimeError("sparse component fixture acquired audited proof authority")
+
+    # A valid subset may resolve the five integrated interfaces, but cannot
+    # certify worked mathematical ingredients whose roots were not audited.
+    thin = deepcopy(positive)
+    for key in ("declarations", "definitions"):
+        thin[key] = [row for row in thin[key] if row["declaration"] in INTEGRATED_ROOTS]
+    thin["audited_root_count"] = len(thin["declarations"]) + len(thin["definitions"])
+    thin_doc = build(thin, comparison, survival, None, None, identity)
+    if ("The audited receipt resolves" not in thin_doc
+            or "PROVED ingredients" in thin_doc or "Conditional C-Schur lower target" not in thin_doc):
+        raise RuntimeError("unaudited worked-comparison ingredients were promoted")
+
+    checked = []
+
+    def reject(label, mutate):
+        changed = deepcopy(positive)
+        mutate(changed)
+        raises(lambda: build(changed, comparison, survival, None, None, identity), label)
+        checked.append(label)
+
+    reject("failed compiler named-root receipt", lambda f: f.update(execution_status="FAILURE"))
+    reject("failed receipt integrity", lambda f: f.update(integrity_status="FAIL"))
+    reject("stale compiler head", lambda f: f.update(head="c" * 40))
+    reject("stale compiler tree", lambda f: f.update(source_tree="c" * 40))
+    reject("missing compiler context", lambda f: f.pop("compiler_context"))
+    reject("stale compiler context head", lambda f: f["compiler_context"].update(head="c" * 40))
+    reject("stale compiler context tree", lambda f: f["compiler_context"].update(tree="c" * 40))
+    reject("wrong declared Lean toolchain", lambda f:
+           f["compiler_context"].update(declared_toolchain="leanprover/lean4:v0.0.0"))
+    reject("wrong actual Lean compiler", lambda f:
+           f["compiler_context"].update(actual_compiler_version="Lean (version 0.0.0)"))
+    reject("wrong Mathlib revision", lambda f:
+           f["compiler_context"].update(mathlib_revision="f" * 40))
+    reject("unclean tracked compiler sources", lambda f:
+           f["compiler_context"].update(tracked_lean_toolchain_manifest_clean=False))
+    reject("missing pinned dependency context", lambda f:
+           f["compiler_context"].pop("dependencies"))
+    reject("wrong pinned dependency revision", lambda f:
+           f["compiler_context"]["dependencies"][0].update(revision="f" * 40))
+    reject("unclean pinned dependency", lambda f:
+           f["compiler_context"]["dependencies"][0].update(lean_source_clean=False))
+    reject("duplicate pinned dependency", lambda f:
+           f["compiler_context"]["dependencies"].__setitem__(
+               1, deepcopy(f["compiler_context"]["dependencies"][0])))
+    reject("missing compiler log hash", lambda f: f.pop("compiler_log_sha256"))
+    reject("wrong audited root count", lambda f: f.update(audited_root_count=0))
+    reject("empty claimed compiler audit", lambda f:
+           f.update(declarations=[], definitions=[], audited_root_count=0))
+    reject("forged normalized type hash", lambda f:
+           f["declarations"][0].update(normalized_type_sha256="f" * 64))
+    reject("changed normalized type", lambda f:
+           f["declarations"][0].update(normalized_type="FORGED_TYPE"))
+    reject("wrong compiler origin module", lambda f:
+           f["declarations"][0].update(module="Zeta23.Forged"))
+    reject("wrong compiler declaration kind", lambda f:
+           f["declarations"][0].update(declaration_kind="DEFINITION"))
+    reject("stale per-root tree", lambda f:
+           f["declarations"][0].update(source_tree="c" * 40))
+    reject("failed per-root axiom audit", lambda f:
+           f["declarations"][0].update(axiom_audit_pass=False))
+    reject("unadmitted root axiom", lambda f:
+           f["declarations"][0].update(axioms=["sorryAx"]))
+    reject("missing root axioms", lambda f: f["declarations"][0].pop("axioms"))
+    reject("theorem authority on wrong root", lambda f:
+           f["declarations"][0].update(authority="DEFINED_DATA_NOT_A_THEOREM"))
+    reject("mismatched theorem alias", lambda f:
+           f["declarations"][0].update(theorem="Zeta23.Forged"))
+
+    def forged_root(f):
+        f["declarations"][0].update(declaration="Zeta23.Forged", theorem="Zeta23.Forged")
+    reject("unregistered forged compiler root", forged_root)
+
+    def duplicate_root(f):
+        f["declarations"].append(deepcopy(f["declarations"][0]))
+        f["audited_root_count"] += 1
+    reject("duplicated audited compiler root", duplicate_root)
+
+    # Reproduce the original exploit exactly: names alone plus explicit
+    # failed execution/integrity must not emit an integration assertion.
+    failed_names = deepcopy(sparse)
+    failed_names.update(execution_status="FAILURE", integrity_status="FAIL",
+                        declarations=[{"declaration": name} for name in INTEGRATED_ROOTS])
+    raises(lambda: build(failed_names, comparison, survival, None, None, identity),
+           "failed unaudited five-name integration exploit")
+    names_only = deepcopy(sparse)
+    names_only["declarations"] = [{"declaration": name} for name in INTEGRATED_ROOTS]
+    raises(lambda: build(names_only, comparison, survival, None, None, identity),
+           "unaudited names-only integration exploit")
+    explicit_failed_sparse = deepcopy(sparse)
+    explicit_failed_sparse["execution_status"] = "FAILURE"
+    raises(lambda: build(explicit_failed_sparse, comparison, survival, None, None, identity),
+           "explicit failed sparse receipt")
+    return checked + ["failed five-name exploit", "names-only exploit", "explicit failed sparse receipt"]
 
 
 def tests():
@@ -127,13 +284,18 @@ def tests():
                 {"head": "a" * 40, "tree": "b" * 40})
     if "RH OPEN" not in doc or "pending" in doc.lower() and "OPEN" not in doc:
         raise RuntimeError("handoff claim cap missing")
+    handoff_mutations = handoff_receipt_controls(
+        good, original, formal, {"head": "a" * 40, "tree": "b" * 40})
     return {"schema": "post290.research-artifact-mutations.v1",
             "status": "PASS", "authority": "SYNTHETIC_VALIDATOR_TEST_ONLY",
             "claim_cap": "RH_OPEN",
             "tested": ["44-pair identity", "numerical inconsistency", "same-source protection",
                        "no generated-detector impersonation", "missing replay", "OPEN cuts",
                        "44 unreviewed proof fields", "compiler-candidate dossier",
-                       "unapproved template integrity", "independent review gate", "handoff cap"]}
+                       "unapproved template integrity", "independent review gate", "handoff cap",
+                       "exact compiler receipt authority guard", "worked same-source lower/upper comparison"],
+            "handoff_receipt_mutations": handoff_mutations,
+            "handoff_receipt_mutation_count": len(handoff_mutations)}
 
 
 if __name__ == "__main__":
