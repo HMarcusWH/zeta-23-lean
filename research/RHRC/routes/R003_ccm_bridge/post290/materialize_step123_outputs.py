@@ -9,6 +9,7 @@ Final release authority belongs solely to output_contract_check.py.
 from __future__ import annotations
 
 import argparse
+from copy import deepcopy
 import hashlib
 import json
 import re
@@ -18,6 +19,9 @@ from pathlib import Path
 from build_step4_handoff import build as build_handoff
 from prepare_field_review_package import produce as prepare_unapproved_44_field_dossier
 from output_contract_check import release_gaps, frozen_spec
+from symbolic_step123_artifacts import (
+    CUT_ROOTS, build_symbolic_index, finite_residual_rows, matched_control_inventory,
+)
 
 REPO = Path(__file__).resolve().parents[5]
 INTEGRATION = REPO / "research/RHRC/integration/post290"
@@ -158,9 +162,7 @@ def output_packet(contract, formal, review, head, tree):
     cuts = [{"id": cut, "status": "OPEN", "sufficiency_ref": ref,
              "source_id": FIXED_SOURCE, "scope": {"antecedent": "OPEN",
                "conditional_implication": "requires exact-head compiler proof receipt"}}
-            for cut, ref in (("A-X", "Zeta23.ExceptionalZero.riemannHypothesis_of_step4_AX"),
-                             ("B-Y", "Zeta23.ExceptionalZero.riemannHypothesis_of_step4_BY"),
-                             ("C-Schur", "Zeta23.ExceptionalZero.riemannHypothesis_of_originalDetectorSchurSubexponential"))]
+            for cut, ref in CUT_ROOTS.items()]
     return {
         "schema_version": "RH_STEP123_OUTPUT_1.0",
         "source_tree": tree,
@@ -232,6 +234,36 @@ def materialize(inputs, outdir, semantic=None, reviewer_provenance=None):
         raise ValueError("representation comparison belongs to a different checker")
     if any(c.get("status") != "OPEN" for c in cuts.get("cuts", [])):
         raise ValueError("the original three conditional cuts were promoted")
+    symbolic = build_symbolic_index(formal, dossier, head, tree)
+    # The required formal filename carries the ACTUAL compiler types and
+    # hypotheses, independently of the still-unapproved 44-field mapping.
+    inventory_scope = packet["quantities"][0]["scope"]
+    inventory_scope["bundle_compiler_inventory"] = deepcopy(formal)
+    inventory_scope["bundle_compiler_inventory_input_sha256"] = digest(inputs["formal"])
+    inventory_scope["bundle_compiler_inventory_scope"] = (
+        "Exact compiler statements and hypotheses only; no independent field approval."
+    )
+    for quantity in packet["quantities"]:
+        quantity["scope"]["bundle_compiler_inventory_ref"] = (
+            "#/quantities/0/scope/bundle_compiler_inventory"
+        )
+    lineage = deepcopy(lineage)
+    lineage["symbolic_source_lineage"] = {key: deepcopy(symbolic[key]) for key in
+        ("schema", "head", "tree", "claim_cap", "independent_semantic_approval",
+         "objects", "maps", "non_preservations")}
+    lineage["symbolic_source_lineage"]["compiler_statements_ref"] = "CONSTRAINTS.json#/symbolic_constraints/compiler_statements"
+    comparison = deepcopy(comparison)
+    comparison["symbolic_constraints"] = {key: deepcopy(symbolic[key]) for key in
+        ("schema", "head", "tree", "claim_cap", "independent_semantic_approval",
+         "domains", "branch_eligibility", "compiler_statements")}
+    survival = deepcopy(survival)
+    survival["matched_controls"] = matched_control_inventory(survival)
+    survival["control_inventory_scope"] = (
+        "Actual attached receipt bytes where supplied; missing receipts and matched-hypothesis review remain explicit."
+    )
+    cuts = deepcopy(cuts)
+    cuts["exact_compiler_sufficiency_statements"] = symbolic["conditional_sufficiency"]
+    cuts["optional_paper_ports"] = symbolic["optional_paper_ports"]
     packet["workflow_harvest_ref"] = str(inputs["harvest"])
     packet["d2_receipt_ref"] = str(inputs["d2"])
     write(outdir / "STEP123_FORMAL_OUTPUT.json", packet)
@@ -252,27 +284,16 @@ def materialize(inputs, outdir, semantic=None, reviewer_provenance=None):
         for pair in panel.get("pairs", []) for row in pair.get("rows", [])
     ]
     write_jsonl(outdir / "NATIVE_OBSERVATIONS.jsonl", observation_rows)
-    residuals = [{"aperture": p.get("aperture"), "K": p.get("K"),
-                  "rows": [{"carrier": row.get("carrier"), "status": row.get("status"),
-                            "residual_norm_sq": row.get("residual_norm_sq"),
-                            "spectral_variance": row.get("spectral_variance"),
-                            "channel_names": row.get("channel_names"),
-                            "residual_gram_real": row.get("residual_gram_real"),
-                            "consistency": row.get("consistency")}
-                           for row in p.get("rows", [])]}
-                 for p in panel.get("pairs", [])]
+    finite_rows = finite_residual_rows(panel)
+    residuals = deepcopy(panel.get("pairs", []))
     write(outdir / "RESIDUAL_CHANNELS.json", {
         "schema": "post290.source-bound-residual-channels.v1",
         "claim_cap": "RH_OPEN", "source_identity": panel["source_identity"],
-        "scope": "finite native probes only; not original zero-generated detector",
-        "pairs": residuals})
-    write_jsonl(outdir / "RESIDUAL_CHANNELS.jsonl", [
-        dict(row, aperture=pair.get("aperture"), K=pair.get("K"),
-             source_id=FIXED_SOURCE,
-             origin="NATIVE_PARAMETER_EVALUATION",
-             mathematical_scope="FINITE_POINT_GRAM_ONLY")
-        for pair in residuals for row in pair.get("rows", [])
-    ])
+        "scope": "pairs are finite native probes only; symbolic_rows are conditional compiler-bound descriptions without numerical coordinates",
+        "pairs": residuals, "finite_row_count": len(finite_rows),
+        "symbolic_rows": symbolic["residual_rows"]})
+    write_jsonl(outdir / "RESIDUAL_CHANNELS.jsonl",
+                finite_rows + symbolic["residual_rows"])
     write(outdir / "CONSTRAINTS.json", comparison)
     write(outdir / "COUNTERMODEL_SURVIVAL.json", survival)
     write(outdir / "D2_CONTINUUM_RECEIPT.json", d2)

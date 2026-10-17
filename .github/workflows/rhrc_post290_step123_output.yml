@@ -350,6 +350,8 @@ jobs:
           python research/RHRC/routes/R003_ccm_bridge/post290/test_deep_threshold_exact.py
           python research/RHRC/routes/R003_ccm_bridge/post290/test_inverse_budgets_and_gap_exact.py
           python research/RHRC/routes/R003_ccm_bridge/post290/test_argon_continuum_and_roots_exact.py
+          python research/RHRC/routes/R003_ccm_bridge/post290/test_required_research_controls.py --out research/RHRC/routes/R003_ccm_bridge/post290/evidence/required_research_controls.json
+          python -O research/RHRC/routes/R003_ccm_bridge/post290/test_required_research_controls.py --out research/RHRC/routes/R003_ccm_bridge/post290/evidence/required_research_controls.json
           python research/RHRC/integration/test_source_only_dependency_extract.py
           python -O research/RHRC/integration/test_source_only_dependency_extract.py
           python research/RHRC/routes/R003_ccm_bridge/post290/test_actual_input_zero_jets.py
@@ -364,6 +366,8 @@ jobs:
           python -m py_compile research/RHRC/routes/R003_ccm_bridge/post290/compare_representations.py research/RHRC/routes/R003_ccm_bridge/post290/countermodel_survival.py research/RHRC/routes/R003_ccm_bridge/post290/build_step4_handoff.py research/RHRC/routes/R003_ccm_bridge/post290/materialize_step123_outputs.py research/RHRC/routes/R003_ccm_bridge/post290/prepare_field_review_package.py
           python research/RHRC/routes/R003_ccm_bridge/post290/test_step123_research_artifacts.py
           python -O research/RHRC/routes/R003_ccm_bridge/post290/test_step123_research_artifacts.py
+          python research/RHRC/routes/R003_ccm_bridge/post290/test_symbolic_step123_artifacts.py
+          python -O research/RHRC/routes/R003_ccm_bridge/post290/test_symbolic_step123_artifacts.py
           python research/RHRC/routes/R003_ccm_bridge/post290/test_output_mutations.py
           python -O research/RHRC/routes/R003_ccm_bridge/post290/test_output_mutations.py
           python research/RHRC/routes/R003_ccm_bridge/post290/test_mandatory_mutation_matrix.py
@@ -405,6 +409,8 @@ jobs:
         run: python research/RHRC/routes/R003_ccm_bridge/post290/evaluate_native_output.py --bits 384 --out /tmp/post290-native/native_panel.json
       - name: Independently reconstruct every scalar residual and Gram entry at 1024 bits
         run: python research/RHRC/routes/R003_ccm_bridge/post290/verify_native_output.py /tmp/post290-native/native_panel.json --out /tmp/post290-native/native_panel_check.json
+      - name: Compare the actual producer and checker artifacts without changing their provenance
+        run: python research/RHRC/routes/R003_ccm_bridge/post290/compare_representations.py --panel /tmp/post290-native/native_panel.json --checker /tmp/post290-native/native_panel_check.json --out /tmp/post290-native/CONSTRAINTS.json
       - name: Require the full observation panel; keep universal and generated-detector scope open
         run: |
           python - <<'PY'
@@ -412,6 +418,11 @@ jobs:
           from pathlib import Path
           d=json.loads(Path('/tmp/post290-native/native_panel.json').read_text())
           c=json.loads(Path('/tmp/post290-native/native_panel_check.json').read_text())
+          r=json.loads(Path('/tmp/post290-native/CONSTRAINTS.json').read_text())
+          if (r.get('finite_panel_reproduced') is not True or r.get('consistent_pair_count')!=44
+              or r.get('discrepancies') or r.get('unresolved')
+              or r.get('source_identity')!=d.get('source_identity')):
+              raise SystemExit('Actual native producer/checker comparison did not reproduce all 44 pairs')
           assert d['source_identity']['commit']==subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip()
           assert d['source_identity']['tree']==subprocess.check_output(['git','rev-parse','HEAD^{tree}'],text=True).strip()
           assert d['source_identity']['working_tree_dirty'] is False

@@ -15,13 +15,16 @@ from pathlib import Path
 from build_formal_receipt import AUDIT, audit_roots, full_expression_record
 from test_formal_receipt import synthetic_type_expression
 from build_step4_handoff import COMPARISON_ROOTS, INTEGRATED_ROOTS, build
-from compare_representations import compare
+from compare_representations import compare, EXPECTED_SOURCE_PATHS, SOURCE_HASH_MODE
 from countermodel_survival import audit
 from evaluate_native_output import APERTURES, CARRIERS, CUTOFFS
 from materialize_step123_outputs import output_packet
 from prepare_field_review_package import produce as prepare_unapproved_44_field_dossier
 
-SOURCE = {"source_raw_sha256": "e" * 64, "source_hash_mode": "RAW_BYTES"}
+SOURCE = {"commit": "a" * 40, "tree": "b" * 40, "working_tree_dirty": False,
+          "source_raw_sha256": {path: "e" * 64 for path in EXPECTED_SOURCE_PATHS},
+          "source_sha256": {path: "f" * 64 for path in EXPECTED_SOURCE_PATHS},
+          "source_hash_mode": SOURCE_HASH_MODE}
 STRUCTURE_CONTROL = "Zeta23.CCM.DetectorRetainedSchurState"
 
 
@@ -52,11 +55,88 @@ def panel():
         "pairs": pairs, "pair_count": 44, "row_count": 176
     }, {
         "schema": "post290.native-observation-checker.v1",
-        "source_sha256": SOURCE["source_raw_sha256"],
+        "source_sha256": SOURCE["source_sha256"],
+        "source_hash_mode": SOURCE_HASH_MODE,
+        "checker_source_raw_sha256": {path: "d" * 64 for path in EXPECTED_SOURCE_PATHS},
         "terminal_claim": "RH_OPEN", "precision_bits": 1024,
         "verified_pairs": 44, "unresolved_pairs": 0,
         "receipts": receipts,
     })
+
+
+def native_source_identity_controls(p, c):
+    """Reject malformed provenance while retaining distinct raw/normalized maps."""
+    original_panel, original_checker = deepcopy(p), deepcopy(c)
+    if compare(p, c)["source_identity"] != SOURCE:
+        raise RuntimeError("native comparison rewrote the producer's source identity")
+    if (p != original_panel or c != original_checker
+            or p["source_identity"]["source_raw_sha256"] == c["checker_source_raw_sha256"]
+            or p["source_identity"]["source_sha256"] != c["source_sha256"]):
+        raise RuntimeError("distinct cross-platform raw evidence was not preserved")
+    path = sorted(EXPECTED_SOURCE_PATHS)[0]
+    checked = []
+
+    def reject(label, mutate):
+        changed = deepcopy(p)
+        mutate(changed["source_identity"])
+        raises(lambda: compare(changed, c), label)
+        checked.append(label)
+
+    reject("legacy scalar source hash", lambda s: s.update(source_raw_sha256="e" * 64))
+    reject("empty raw source map", lambda s: s.update(source_raw_sha256={}))
+    reject("empty normalized source map", lambda s: s.update(source_sha256={}))
+    reject("missing normalized source map", lambda s: s.pop("source_sha256"))
+    reject("missing raw source path", lambda s: s["source_raw_sha256"].pop(path))
+    reject("missing normalized source path", lambda s: s["source_sha256"].pop(path))
+
+    def missing_both(s):
+        s["source_raw_sha256"].pop(path)
+        s["source_sha256"].pop(path)
+    reject("same-key truncated source maps", missing_both)
+
+    def extra_both(s):
+        s["source_raw_sha256"]["unknown/source.lean"] = "e" * 64
+        s["source_sha256"]["unknown/source.lean"] = "f" * 64
+    reject("same-key unexpected source path", extra_both)
+    for field in ("source_raw_sha256", "source_sha256"):
+        for label, value in (("uppercase", "E" * 64), ("short", "e" * 63),
+                             ("nonhex", "g" * 64), ("nonstring", False)):
+            reject(field + " " + label + " hash", lambda s, f=field, v=value:
+                   s[f].__setitem__(path, v))
+    for key in ("commit", "tree"):
+        reject("missing " + key, lambda s, k=key: s.pop(k))
+        for label, value in (("short", "a" * 39), ("nonhex", "g" * 40),
+                             ("nonstring", False)):
+            reject(key + " " + label, lambda s, k=key, v=value: s.__setitem__(k, v))
+    for label, value in (("dirty", True), ("numeric dirty flag", 0),
+                         ("string dirty flag", "false")):
+        reject(label, lambda s, v=value: s.update(working_tree_dirty=v))
+    reject("missing clean source flag", lambda s: s.pop("working_tree_dirty"))
+    reject("wrong source normalization mode", lambda s: s.update(source_hash_mode="RAW_BYTES"))
+    changed = deepcopy(c)
+    changed["source_sha256"] = deepcopy(SOURCE["source_raw_sha256"])
+    raises(lambda: compare(p, changed), "checker raw map impersonates normalized map")
+    checked.append("checker raw map impersonates normalized map")
+    changed = deepcopy(c)
+    changed["source_hash_mode"] = "RAW_BYTES"
+    raises(lambda: compare(p, changed), "wrong checker source normalization mode")
+    checked.append("wrong checker source normalization mode")
+    checker_raw_mutations = [
+        ("missing checker raw map", lambda x: x.pop("checker_source_raw_sha256")),
+        ("empty checker raw map", lambda x: x.update(checker_source_raw_sha256={})),
+        ("checker raw scalar", lambda x: x.update(checker_source_raw_sha256="d" * 64)),
+        ("missing checker raw path", lambda x: x["checker_source_raw_sha256"].pop(path)),
+        ("unexpected checker raw path", lambda x:
+            x["checker_source_raw_sha256"].__setitem__("unknown/source.lean", "d" * 64)),
+        ("malformed checker raw hash", lambda x:
+            x["checker_source_raw_sha256"].__setitem__(path, "D" * 64)),
+    ]
+    for label, mutate in checker_raw_mutations:
+        changed = deepcopy(c)
+        mutate(changed)
+        raises(lambda: compare(p, changed), label)
+        checked.append(label)
+    return checked
 
 
 def cuts():
@@ -273,6 +353,7 @@ def handoff_receipt_controls(comparison, survival, sparse, identity, contract):
 def tests():
     p, c = panel()
     good = compare(p, c)
+    source_identity_mutations = native_source_identity_controls(p, c)
     if not good["finite_panel_reproduced"] or good["consistent_pair_count"] != 44:
         raise RuntimeError("synthetic positive comparison baseline failed")
     malformed = deepcopy(p)
@@ -348,7 +429,9 @@ def tests():
                        "44 unreviewed proof fields", "compiler-candidate dossier",
                        "unapproved template integrity", "independent review gate", "handoff cap",
                        "exact compiler receipt authority guard", "worked same-source lower/upper comparison",
-                       "literal full type and constructor visibility"],
+                       "literal full type and constructor visibility", "canonical per-path source identity maps"],
+            "source_identity_mutations": source_identity_mutations,
+            "source_identity_mutation_count": len(source_identity_mutations),
             "handoff_receipt_mutations": handoff_mutations,
             "handoff_receipt_mutation_count": len(handoff_mutations)}
 

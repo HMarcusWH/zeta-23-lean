@@ -13,8 +13,34 @@ import hashlib
 import itertools
 import json
 from pathlib import Path
+import re
 
-from evaluate_native_output import APERTURES, CARRIERS, CUTOFFS
+from evaluate_native_output import APERTURES, CARRIERS, CUTOFFS, REPO, SOURCE_PATHS
+
+SOURCE_HASH_MODE = "CRLF_TO_LF_ONLY_WITH_RAW_BYTES_RECORDED_SEPARATELY"
+EXPECTED_SOURCE_PATHS = frozenset(path.relative_to(REPO).as_posix() for path in SOURCE_PATHS)
+
+
+def validate_source_hash_map(hashes, label):
+    if (not isinstance(hashes, dict) or not hashes
+            or set(hashes) != EXPECTED_SOURCE_PATHS
+            or any(not isinstance(value, str)
+                   or re.fullmatch(r"[0-9a-f]{64}", value) is None
+                   for value in hashes.values())):
+        raise ValueError("missing or malformed per-path native source hashes: " + label)
+
+
+def validate_source_identity(identity):
+    """Check the producer's exact per-path hash-map schema without relabeling it."""
+    if (not isinstance(identity, dict)
+            or any(not isinstance(identity.get(key), str)
+                   or re.fullmatch(r"[0-9a-f]{40}", identity[key]) is None
+                   for key in ("commit", "tree"))
+            or identity.get("working_tree_dirty") is not False
+            or identity.get("source_hash_mode") != SOURCE_HASH_MODE):
+        raise ValueError("missing or malformed native source identity")
+    for field in ("source_raw_sha256", "source_sha256"):
+        validate_source_hash_map(identity.get(field), field)
 
 
 def read(path):
@@ -51,10 +77,12 @@ def compare(panel, checker, *, panel_path=None, checker_path=None):
     if panel.get("terminal_claim") != "RH_OPEN" or checker.get("terminal_claim") != "RH_OPEN":
         raise ValueError("invalid claim firewall")
     identity = panel.get("source_identity")
-    if not isinstance(identity, dict) or not isinstance(identity.get("source_raw_sha256"), str):
-        raise ValueError("missing real source identity")
-    if checker.get("source_sha256") != identity.get("source_raw_sha256"):
+    validate_source_identity(identity)
+    if checker.get("source_sha256") != identity.get("source_sha256"):
         raise ValueError("native panel/checker source mismatch")
+    if checker.get("source_hash_mode") != SOURCE_HASH_MODE:
+        raise ValueError("native checker source hash mode mismatch")
+    validate_source_hash_map(checker.get("checker_source_raw_sha256"), "checker_source_raw_sha256")
     if panel_path is not None and checker.get("panel_sha256") != digest(panel_path):
         raise ValueError("independent checker did not read these panel bytes")
     if checker_path is not None and checker.get("precision_bits") != 1024:
