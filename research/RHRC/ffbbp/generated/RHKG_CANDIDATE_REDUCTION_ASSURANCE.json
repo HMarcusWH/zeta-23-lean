@@ -48,18 +48,18 @@
   },
   "inherits_runtime_qualification": false,
   "input_snapshot": {
-    "candidate_count": 5403,
-    "candidate_resolution_sha256": "fc0aa2240c12a4541693eb526b5700148858f844371e95c9a65fd14ab92ed3a2",
-    "candidate_source_surface_sha256": "3c4ef176f0ee86f1475fedb8aa61b2c2ae76ccf274f4e46ae6033585a205a492",
-    "candidate_summary_sha256": "3adb3160887b711550de24708123a9ff64261532441f261e6a5098cbbc0a8601",
+    "candidate_count": 5548,
+    "candidate_resolution_sha256": "c5ad492ff44a0e8ce691b899397ff7a229a967df00bc86170323044f0dee35ee",
+    "candidate_source_surface_sha256": "94527e35df3ab8581583f3422228f4f83ff05aeafa2ada19c9fe06dde6708a9e",
+    "candidate_summary_sha256": "b36bf4a40f7f04231107edceae690ef0f40f166303d505571b98ec0887a1d8ac",
     "lean_toolchain": "leanprover/lean4:v4.33.0-rc2",
     "registered_compiler_receipt_sha256": "134eac5491f8d89575c1e5e1fa9a102d37382fe38758d2ac0ba0274e4503efaf",
-    "rhkg_subject_digest_sha256": "e2321fedd85cbcf8c3e2598a09a970479c45dfaa30bc3afc328dd0b3751f8271",
-    "source_only_public_theorem_count": 2772
+    "rhkg_subject_digest_sha256": "1a49aa3676fc7d2d967c714e07976f7dca55de3d2215aaf05fece7d88b3e72b7",
+    "source_only_public_theorem_count": 2898
   },
   "qualification_identity": {
-    "execution_digest": "1858f52d8805178cd5848a1700620cd5867a4d68f6f84aa101ce24c84790ccc5",
-    "execution_id": "RHKG_CANDIDATE_SNAPSHOT:e2321fedd85cbcf8",
+    "execution_digest": "b98fcf075de7c61773f2ef3e36516a587fe482e730ec9ac47b191e76727b984d",
+    "execution_id": "RHKG_CANDIDATE_SNAPSHOT:1a49aa3676fc7d2d",
     "profile_digest": "0ab841ca4f9c683bcf206c0cd2e434f07f35b3861073feb370f10195cac49929",
     "profile_id": "RHRC_FFBBP_V17_RHKG_SNAPSHOT_PROFILE",
     "protocol_digest": "30fd49aa7806e29ea8ce750cb91ad0f9edb3d655b9697f6a6dd82d3666a4ac26",
@@ -76,7 +76,7 @@
         "status": "FAIL"
       },
       "decision_factorization": {
-        "collision_fiber_count": 612,
+        "collision_fiber_count": 622,
         "counterexamples": [
           {
             "member_ids": [
@@ -672,16 +672,16 @@
             ]
           }
         ],
-        "fiber_count": 647,
-        "full_state_count": 5403,
+        "fiber_count": 657,
+        "full_state_count": 5548,
         "max_fiber_size": 69,
-        "mixed_value_fiber_count": 286,
+        "mixed_value_fiber_count": 291,
         "passed": false
       },
       "declared_use": "NEGATIVE_CONTROL_ONLY",
       "description": "Module-only Xi; retained as the exact decision-sufficiency falsifier.",
       "diagnostic_factorization": {
-        "collision_fiber_count": 612,
+        "collision_fiber_count": 622,
         "counterexamples": [
           {
             "member_ids": [
@@ -1260,10 +1260,10 @@
             ]
           }
         ],
-        "fiber_count": 647,
-        "full_state_count": 5403,
+        "fiber_count": 657,
+        "full_state_count": 5548,
         "max_fiber_size": 69,
-        "mixed_value_fiber_count": 334,
+        "mixed_value_fiber_count": 339,
         "passed": false
       },
       "id": "MODULE_ONLY_SNAPSHOT",
@@ -1278,10 +1278,10 @@
         "status": "PASS"
       },
       "decision_factorization": {
-        "collision_fiber_count": 784,
+        "collision_fiber_count": 796,
         "counterexamples": [],
-        "fiber_count": 1061,
-        "full_state_count": 5403,
+        "fiber_count": 1076,
+        "full_state_count": 5548,
         "max_fiber_size": 67,
         "mixed_value_fiber_count": 0,
         "passed": true
@@ -1289,10 +1289,10 @@
       "declared_use": "POST_REFERENCE_COHORT_NAVIGATION_ONLY",
       "description": "Retains module and exact visibility disposition for post-reference cohort navigation.",
       "diagnostic_factorization": {
-        "collision_fiber_count": 784,
+        "collision_fiber_count": 796,
         "counterexamples": [],
-        "fiber_count": 1061,
-        "full_state_count": 5403,
+        "fiber_count": 1076,
+        "full_state_count": 5548,
         "max_fiber_size": 67,
         "mixed_value_fiber_count": 0,
         "passed": true
@@ -1313,7 +1313,7 @@
         "status": "FAIL"
       },
       "decision_factorization": {
-        "collision_fiber_count": 78,
+        "collision_fiber_count": 82,
         "counterexamples": [
           {
             "member_ids": [
@@ -1321,6 +1321,17 @@
               "rh:source-decl:d99beec6379c53ac38593689355beee627e7c4bbd3e2f2034ce9f41d6f68b498"
             ],
             "reduction_key": "[\"278e00e32a78c8c4cdc540b988d764f4e793b44fcb2677c8a6cab863b83460dc\"]",
+            "values": [
+              "\"NOT_SOURCE_ONLY_PUBLIC_THEOREM\"",
+              "\"SOURCE_ONLY_PUBLIC_THEOREM\""
+            ]
+          },
+          {
+            "member_ids": [
+              "rh:source-decl:8e8e560a9b223392bddc41668a87aa86d456cbc7df7c06f95cec7d71a37b3b20",
+              "rh:source-decl:d9cf811b352041e3d221ed7fe7e05878454a9b045d63d6f1e999d122a5858dac"
+            ],
+            "reduction_key": "[\"3acb08ad28187023233a900f8770eb7c27920b96603b95f4224b412998e698e9\"]",
             "values": [
               "\"NOT_SOURCE_ONLY_PUBLIC_THEOREM\"",
               "\"SOURCE_ONLY_PUBLIC_THEOREM\""
@@ -1360,16 +1371,16 @@
             ]
           }
         ],
-        "fiber_count": 5311,
-        "full_state_count": 5403,
+        "fiber_count": 5452,
+        "full_state_count": 5548,
         "max_fiber_size": 6,
-        "mixed_value_fiber_count": 4,
+        "mixed_value_fiber_count": 5,
         "passed": false
       },
       "declared_use": "CURRENT_SNAPSHOT_DECISION_PROBE_ONLY",
       "description": "Compiler type-digest Xi; current-snapshot probe only, not semantic equivalence.",
       "diagnostic_factorization": {
-        "collision_fiber_count": 78,
+        "collision_fiber_count": 82,
         "counterexamples": [
           {
             "member_ids": [
@@ -1377,6 +1388,17 @@
               "rh:source-decl:d99beec6379c53ac38593689355beee627e7c4bbd3e2f2034ce9f41d6f68b498"
             ],
             "reduction_key": "[\"278e00e32a78c8c4cdc540b988d764f4e793b44fcb2677c8a6cab863b83460dc\"]",
+            "values": [
+              "\"PRIVATE_OR_INTERNAL_SOURCE_OBJECT\"",
+              "\"SOURCE_ONLY_PUBLIC_THEOREM\""
+            ]
+          },
+          {
+            "member_ids": [
+              "rh:source-decl:8e8e560a9b223392bddc41668a87aa86d456cbc7df7c06f95cec7d71a37b3b20",
+              "rh:source-decl:d9cf811b352041e3d221ed7fe7e05878454a9b045d63d6f1e999d122a5858dac"
+            ],
+            "reduction_key": "[\"3acb08ad28187023233a900f8770eb7c27920b96603b95f4224b412998e698e9\"]",
             "values": [
               "\"PRIVATE_OR_INTERNAL_SOURCE_OBJECT\"",
               "\"SOURCE_ONLY_PUBLIC_THEOREM\""
@@ -1505,10 +1527,10 @@
             ]
           }
         ],
-        "fiber_count": 5311,
-        "full_state_count": 5403,
+        "fiber_count": 5452,
+        "full_state_count": 5548,
         "max_fiber_size": 6,
-        "mixed_value_fiber_count": 12,
+        "mixed_value_fiber_count": 13,
         "passed": false
       },
       "id": "TYPE_DIGEST_SNAPSHOT",
@@ -1526,7 +1548,7 @@
   "schema_version": "RHRC-FFBBP-RHKG-assurance-report-2.0",
   "selected_reduction": "MODULE_VISIBILITY_SNAPSHOT",
   "selected_reduction_disposition": "PASS_FOR_POST_REFERENCE_COHORT_NAVIGATION_ONLY",
-  "source_only_module_cohort_count": 527,
+  "source_only_module_cohort_count": 537,
   "source_only_module_cohorts": [
     {
       "count": 67,
@@ -1658,6 +1680,44 @@
       "module": "Zeta23.CCM.CanonicalSecularResolvent"
     },
     {
+      "count": 32,
+      "declarations": [
+        "Zeta23.CCM.DetectorRetainedSchurState.groundBranchFacts_holds",
+        "Zeta23.CCM.DetectorRetainedSchurState.selectedGround_branch",
+        "Zeta23.CCM.PoleNeutralShiftedPositivity.of_le_bottoms",
+        "Zeta23.CCM.PoleNeutralStrictEvenGroundFacts.of_selection",
+        "Zeta23.CCM.PoleNeutralStrictOddGroundFacts.of_selection",
+        "Zeta23.CCM.PoleNeutralTiedEvenGroundFacts.of_selection",
+        "Zeta23.CCM.PoleNeutralTiedOddGroundFacts.of_selection",
+        "Zeta23.CCM.PoleNeutralTiedStoredGroundFacts.even_view",
+        "Zeta23.CCM.PoleNeutralTiedStoredGroundFacts.odd_view",
+        "Zeta23.CCM.PoleNeutralTiedStoredGroundFacts.of_selection",
+        "Zeta23.CCM.Step123NativeOutput.n21_groundBranch_facts",
+        "Zeta23.CCM.Step123NativeOutput.n21_retained_branch",
+        "Zeta23.CCM.Step123NativeOutput.n21_retained_branch_package",
+        "Zeta23.CCM.Step123NativeOutput.n21_selectedGround_shell_kernel",
+        "Zeta23.CCM.Step123NativeOutput.n21_selected_ground_branch_consumer",
+        "Zeta23.CCM.Step123NativeOutput.n21_strictEven_selectedGround",
+        "Zeta23.CCM.Step123NativeOutput.n21_strictOdd_selectedGround",
+        "Zeta23.CCM.Step123NativeOutput.n21_tie_selectedGround",
+        "Zeta23.CCM.nativeDeepThreshold_lam_eq_min",
+        "Zeta23.CCM.nativeParityEvenView_ambient",
+        "Zeta23.CCM.nativeParityEvenView_eigen",
+        "Zeta23.CCM.nativeParityEvenView_norm",
+        "Zeta23.CCM.nativeParityEvenView_sigma",
+        "Zeta23.CCM.nativeParityOddView_ambient",
+        "Zeta23.CCM.nativeParityOddView_eigen",
+        "Zeta23.CCM.nativeParityOddView_norm",
+        "Zeta23.CCM.nativeParityOddView_sigma",
+        "Zeta23.CCM.nativeParity_eq_even_of_strictEven",
+        "Zeta23.CCM.nativeParity_eq_odd_of_strictOdd",
+        "Zeta23.CCM.poleNeutralEvenRayleighBottom_le_of_eigen",
+        "Zeta23.CCM.poleNeutralOddRayleighBottom_le_of_eigen",
+        "Zeta23.CCM.poleNeutral_even_eigen_index_odd_shifted_eq_source"
+      ],
+      "module": "Zeta23.CCM.Step123SameStateN21"
+    },
+    {
       "count": 31,
       "declarations": [
         "Zeta23.CCM.RankOneIntertwining.shift",
@@ -1760,6 +1820,37 @@
         "Zeta23.CCM.sourceAtomRealEnergy_second_through_four_zero"
       ],
       "module": "Zeta23.CCM.ProductionWeightedGlobalTests"
+    },
+    {
+      "count": 25,
+      "declarations": [
+        "Zeta23.CCM.Step123NativeOutput.n36_approximationChannel_bound",
+        "Zeta23.CCM.Step123NativeOutput.n36_archChannel_fourier",
+        "Zeta23.CCM.Step123NativeOutput.n36_channel_expansion",
+        "Zeta23.CCM.Step123NativeOutput.n36_forcingSourceChannels",
+        "Zeta23.CCM.Step123NativeOutput.n36_forcing_coordinate",
+        "Zeta23.CCM.Step123NativeOutput.n36_forcing_source_channels_eq",
+        "Zeta23.CCM.Step123NativeOutput.n36_forcing_source_channels_explicit",
+        "Zeta23.CCM.Step123NativeOutput.n36_poleChannel_eq_zero",
+        "Zeta23.CCM.Step123NativeOutput.n36_primeChannel_fourHistories",
+        "Zeta23.CCM.Step123NativeOutput.n36_primeChannel_primePowers",
+        "Zeta23.CCM.Step123NativeOutput.n36_primeChannel_sixteenKappa_bound",
+        "Zeta23.CCM.Step123NativeOutput.n36_qX_bridge",
+        "Zeta23.CCM.Step123NativeOutput.n36_sources_regular",
+        "Zeta23.CCM.Step123NativeOutput.n36_spectralShiftChannel_eq",
+        "Zeta23.CCM.Step123NativeOutput.storedFiniteDetector_eq_originalTrial_add_error",
+        "Zeta23.CCM.n36_fixedOriginalSincPhaseTrial_paperFT_poles",
+        "Zeta23.CCM.n36_nativeSynthesis_regular",
+        "Zeta23.CCM.n36_nativeWeilArchResponse_add",
+        "Zeta23.CCM.n36_nativeWeilPoleResponse_add",
+        "Zeta23.CCM.n36_nativeWeilPrimeResponse_add",
+        "Zeta23.CCM.n36_nativeWeilResponse_add",
+        "Zeta23.CCM.n36_originalTrial_poleResponse_eq_zero",
+        "Zeta23.CCM.n36_predecessorEmbedding_inner_eq_weilTest",
+        "Zeta23.CCM.n36_predecessorEmbedding_synthesis",
+        "Zeta23.CCM.n36_weilTest_zero_eq_pairing"
+      ],
+      "module": "Zeta23.CCM.Step123SameStateN36"
     },
     {
       "count": 24,
@@ -2168,6 +2259,29 @@
       "module": "Zeta23.CCM.SourceSignCountermodels"
     },
     {
+      "count": 17,
+      "declarations": [
+        "Zeta23.CCM.Step123NativeOutput.n38_forcing_ambient_residuals",
+        "Zeta23.CCM.Step123NativeOutput.n38_originalDetector_predecessorForcing_eq",
+        "Zeta23.CCM.Step123NativeOutput.originalDetectorLegalResponseCoordinate_eq_parityCompressed",
+        "Zeta23.CCM.Step123NativeOutput.originalDetectorLegalResponseCoordinate_inner",
+        "Zeta23.CCM.Step123NativeOutput.originalDetectorLegalResponseCoordinate_mem_parity",
+        "Zeta23.CCM.Step123NativeOutput.originalDetectorNativeResponseL2_ae",
+        "Zeta23.CCM.Step123NativeOutput.originalDetectorNeutralResponseCoordinate_eq",
+        "Zeta23.CCM.Step123NativeOutput.originalDetectorOuterGalerkin_orthogonal",
+        "Zeta23.CCM.Step123NativeOutput.originalDetectorPhysicalSource_compact",
+        "Zeta23.CCM.Step123NativeOutput.originalDetectorPhysicalSource_contDiff",
+        "Zeta23.CCM.Step123NativeOutput.originalDetectorPoleNormal_eq_smul_poleNormal",
+        "Zeta23.CCM.Step123NativeOutput.originalDetectorPoleNormal_orthogonal",
+        "Zeta23.CCM.Step123NativeOutput.originalDetectorResponse_decomposition",
+        "Zeta23.CCM.Step123NativeOutput.originalDetectorShiftedResponseCoordinate_eq",
+        "Zeta23.CCM.Step123NativeOutput.physicalFiniteImage_ae_originalDetector",
+        "Zeta23.CCM.canonicalLegalPhysicalProjection_inner",
+        "Zeta23.CCM.canonicalNativePhysicalProjection_predecessor_eq"
+      ],
+      "module": "Zeta23.CCM.Step123SameStateN38"
+    },
+    {
       "count": 16,
       "declarations": [
         "Zeta23.CCM.nativeCompletedInputUniformBound_nonneg",
@@ -2317,6 +2431,27 @@
         "Zeta23.CCM.contDiff_two_sourceEntrySecondDerivative"
       ],
       "module": "Zeta23.CCM.ProductionWeightedTestCalculus"
+    },
+    {
+      "count": 15,
+      "declarations": [
+        "Zeta23.CCM.NativeRetainedKernelComplementInverse.of_apply",
+        "Zeta23.CCM.PoleNeutralTiedEvenRetainedInverseFacts.of_tied",
+        "Zeta23.CCM.PoleNeutralTiedOddRetainedInverseFacts.of_tied",
+        "Zeta23.CCM.PoleNeutralTiedStoredRetainedInverseFacts.even_view",
+        "Zeta23.CCM.PoleNeutralTiedStoredRetainedInverseFacts.odd_view",
+        "Zeta23.CCM.PoleNeutralTiedStoredRetainedInverseFacts.of_tied",
+        "Zeta23.CCM.Step123NativeOutput.n23_retained_tie",
+        "Zeta23.CCM.Step123NativeOutput.n23_retained_tie_even",
+        "Zeta23.CCM.Step123NativeOutput.n23_retained_tie_odd",
+        "Zeta23.CCM.Step123NativeOutput.n23_tie_even_readout",
+        "Zeta23.CCM.Step123NativeOutput.n23_tie_odd_readout",
+        "Zeta23.CCM.nativeKernelComplementResponse_apply_eq",
+        "Zeta23.CCM.nativeKernelComplementResponse_mem_kernelOrthogonal",
+        "Zeta23.CCM.poleNeutral_eigen_pair_source_pairing_eq_zero",
+        "Zeta23.CCM.poleNeutral_shiftedKernels_nontrivial_of_eq_bottoms"
+      ],
+      "module": "Zeta23.CCM.Step123SameStateN23"
     },
     {
       "count": 14,
@@ -2843,6 +2978,23 @@
         "Zeta23.CCM.originalDetectorScalarWeightedDecay_le"
       ],
       "module": "Zeta23.CCM.OriginalDetectorFourierScalarTailBounds"
+    },
+    {
+      "count": 11,
+      "declarations": [
+        "Zeta23.ExceptionalZero.GeneratedStep123CompleteOutput.forcingErrors",
+        "Zeta23.ExceptionalZero.GeneratedStep123CompleteOutput.imageErrors",
+        "Zeta23.ExceptionalZero.GeneratedStep123RangeObstruction.ofOffLine",
+        "Zeta23.ExceptionalZero.Step123SameStateFieldRecord.fromNative",
+        "Zeta23.ExceptionalZero.exists_eachPhase_cofinal_generatedStep123CompleteOutput",
+        "Zeta23.ExceptionalZero.exists_generatedStep123CompleteOutput",
+        "Zeta23.ExceptionalZero.four_le_step123SameStateThreshold",
+        "Zeta23.ExceptionalZero.step123ForcingErrorRates_of_threshold",
+        "Zeta23.ExceptionalZero.step123ImageErrorRates_of_threshold",
+        "Zeta23.ExceptionalZero.step123SameStateForcingConstant_pos",
+        "Zeta23.ExceptionalZero.step123SameStateWeilConstant_pos"
+      ],
+      "module": "Zeta23.ExceptionalZero.Step123CompleteOutput"
     },
     {
       "count": 10,
@@ -3614,6 +3766,20 @@
     {
       "count": 8,
       "declarations": [
+        "Zeta23.CCM.Step123NativeOutput.detectorCoefficients_eq_paddedUnit",
+        "Zeta23.CCM.Step123NativeOutput.detectorNativeEnergy_eq_paddedNativeEnergy",
+        "Zeta23.CCM.Step123NativeOutput.physicalFiniteImage_ae_eq_paddedUnit",
+        "Zeta23.CCM.Step123NativeOutput.physicalSourceError_eq_storedDetector",
+        "Zeta23.CCM.step123NativeOutput_imageErrors_at_sourceThreshold",
+        "Zeta23.CCM.step123NativeOutput_imageErrors_commonThreshold",
+        "Zeta23.ExceptionalZero.exists_generatedStep123Output_imageErrors_cofinal",
+        "Zeta23.ExceptionalZero.exists_generatedStep123Output_imageErrors_cofinal_atLateness"
+      ],
+      "module": "Zeta23.ExceptionalZero.Step123SameStateN14"
+    },
+    {
+      "count": 8,
+      "declarations": [
         "Zeta23.ExceptionalZero.analyticAt_fixedOriginalSincSignedTailLaplace_of_integrable",
         "Zeta23.ExceptionalZero.analyticAt_fixedOriginalSincTailRegularPart",
         "Zeta23.ExceptionalZero.fixedOriginalSincSignedTail_abscissa_lower_bound",
@@ -3936,6 +4102,19 @@
         "Zeta23.CCM.Step123NativeOutput.selected_inverse_budget"
       ],
       "module": "Zeta23.CCM.Step123NativeResidualOutput"
+    },
+    {
+      "count": 7,
+      "declarations": [
+        "Zeta23.CCM.Step123NativeOutput.originalCausalTails_zero_of_nonpos",
+        "Zeta23.CCM.Step123NativeOutput.originalInterior_ne_zero",
+        "Zeta23.CCM.Step123NativeOutput.originalInterior_not_ae_zero",
+        "Zeta23.CCM.Step123NativeOutput.originalLeftCausalTail_eq_indicator",
+        "Zeta23.CCM.Step123NativeOutput.originalResponse_causalTail_reconstruction",
+        "Zeta23.CCM.Step123NativeOutput.originalRightCausalTail_eq_indicator",
+        "Zeta23.CCM.Step123NativeOutput.originalWeilEnergy_neg"
+      ],
+      "module": "Zeta23.CCM.Step123SameStateN39"
     },
     {
       "count": 7,
@@ -4456,6 +4635,18 @@
         "Zeta23.ExceptionalZero.positiveLaplaceTransform_not_analyticAt_abscissa"
       ],
       "module": "Zeta23.ExceptionalZero.PositiveLaplaceBoundary"
+    },
+    {
+      "count": 6,
+      "declarations": [
+        "Zeta23.CCM.step123NativeOutput_forcingError_etaBound_commonThreshold",
+        "Zeta23.CCM.step123NativeOutput_forcingError_quarticRate_commonThreshold",
+        "Zeta23.CCM.step123NativeOutput_imageErrors_forcingError_at_sourceThreshold",
+        "Zeta23.CCM.step123NativeOutput_imageErrors_forcingError_commonThreshold",
+        "Zeta23.CCM.step123NativeOutput_storedDetectorForcingError_etaBound_commonThreshold",
+        "Zeta23.ExceptionalZero.exists_generatedStep123Output_forcingError_cofinal_atLateness"
+      ],
+      "module": "Zeta23.ExceptionalZero.Step123SameStateN37"
     },
     {
       "count": 5,
@@ -5974,6 +6165,15 @@
     {
       "count": 3,
       "declarations": [
+        "Zeta23.ExceptionalZero.GeneratedStep123Output.originalInterior_ne_zero",
+        "Zeta23.ExceptionalZero.GeneratedStep123Output.originalInterior_not_ae_zero",
+        "Zeta23.ExceptionalZero.GeneratedStep123Output.originalWeilEnergy_neg"
+      ],
+      "module": "Zeta23.ExceptionalZero.Step123SameStateN39"
+    },
+    {
+      "count": 3,
+      "declarations": [
         "Zeta23.ExceptionalZero.W_self_im_eq_zero",
         "Zeta23.ExceptionalZero.W_self_star",
         "Zeta23.ExceptionalZero.W_swap_eq_star"
@@ -6452,6 +6652,14 @@
         "Zeta23.CCM.originalDetectorPaddedFinitePhysicalUnit_common_error_rates"
       ],
       "module": "Zeta23.CCM.OriginalDetectorPaddedFiniteNativeFormConcreteRate"
+    },
+    {
+      "count": 2,
+      "declarations": [
+        "Zeta23.CCM.four_le_originalDetectorPaddedImageThreshold",
+        "Zeta23.CCM.originalDetectorPaddedFinitePhase_producer"
+      ],
+      "module": "Zeta23.CCM.OriginalDetectorPaddedFinitePhaseDepth"
     },
     {
       "count": 2,
@@ -7206,13 +7414,6 @@
     {
       "count": 1,
       "declarations": [
-        "Zeta23.CCM.originalDetectorPaddedFinitePhase_producer"
-      ],
-      "module": "Zeta23.CCM.OriginalDetectorPaddedFinitePhaseDepth"
-    },
-    {
-      "count": 1,
-      "declarations": [
         "Zeta23.CCM.originalDetectorPaddedFinitePhysicalUnit_eq_native_image"
       ],
       "module": "Zeta23.CCM.OriginalDetectorPaddedFinitePhysicalUnitBridge"
@@ -7272,6 +7473,13 @@
         "Zeta23.CCM.parityBoundaryFlat_sourceHalf_indefinite"
       ],
       "module": "Zeta23.CCM.SourceParityExactInertia"
+    },
+    {
+      "count": 1,
+      "declarations": [
+        "Zeta23.CCM.Step123NativeFieldRecord.fromNative"
+      ],
+      "module": "Zeta23.CCM.Step123NativeFieldRecord"
     },
     {
       "count": 1,
@@ -7470,8 +7678,8 @@
   "visibility_counts": {
     "ALREADY_IN_REGISTERED_DEPENDENCY_CLOSURE": 1918,
     "ALREADY_REGISTERED_ROOT": 112,
-    "PRIVATE_OR_INTERNAL_SOURCE_OBJECT": 598,
-    "SOURCE_ONLY_PUBLIC_THEOREM": 2772,
+    "PRIVATE_OR_INTERNAL_SOURCE_OBJECT": 617,
+    "SOURCE_ONLY_PUBLIC_THEOREM": 2898,
     "UNRESOLVED_SOURCE_IDENTITY": 3
   }
 }
