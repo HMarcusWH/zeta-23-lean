@@ -17,24 +17,31 @@ STORED selected ground `out.selectedGround` (N20) and the stored value
 
 * strict even (`E < O`): the stored parity is even, `lam = E`, the actual
   shifted odd operator is inverted at `lam` by the existing equivalence,
-  the stored vector `u` satisfies the exact source-moment energy identity,
+  the stored vector `u` satisfies the rank-one source equation
+  `(B0 - lam) D0 u = S0(u) • g0`, the exact source-moment energy identity,
   the odd-gap lower bound and strict positivity (R2), `M4(u) ≠ 0`,
-  `S0(u) ≠ 0`, `u = S0(u) • ray(lam)`, `S0(ray(lam)) = 1` and the shifted
+  `S0(u) ≠ 0`, `u = S0(u) • ray(lam)`, `S0(ray(lam)) = 1`, the eigenvalue
+  iff `(∃ v ≠ 0, A0 v = lam v) ↔ S0(ray(lam)) = 1` and the shifted
   determinant identity, hence `det(A0 - lam) = 0` (SE);
 * strict odd (`O < E`): the stored parity is odd, `lam = O`, the actual
   shifted even operator is inverted at `lam`, the stored vector `w`
   satisfies the exact adjoint competitor equation with the negative Riesz
   source, nonzero cubic pairing, `w = <g0,w> • ray*(lam)`,
-  `<g0, ray*(lam)> = 1` and the adjoint determinant identity, hence
-  `det(B0 - lam) = 0` (SO);
-* tie (`E = O`): `lam = E = O`, both actual shifted operators are positive,
-  and, for the stored vector in WHICHEVER parity was stored, the kernel
-  compatibility identity, the range membership of its transformed source,
-  and the complementary-response decomposition retaining the full actual
-  kernel component.  For a stored even vector the fourth moment is
-  nonzero (from the constructed simplicity) and the source moment is
-  nonnegative; the corrected source `S0` is NOT claimed nonzero at a tie,
-  and no other ground is chosen for a stored odd vector.
+  `<g0, ray*(lam)> = 1`, the eigenvalue iff
+  `(∃ v ≠ 0, B0 v = lam v) ↔ <g0, ray*(lam)> = 1` and the adjoint
+  determinant identity, hence `det(B0 - lam) = 0` (SO);
+* tie (`E = O`): `lam = E = O`, both actual shifted operators are positive
+  and strictly positive on the orthogonal complements of their actual
+  kernels, and, for the stored vector in WHICHEVER parity was stored, its
+  rank-one source equation (for odd `w`, the adjoint competitor equation
+  with the negative Riesz source), the kernel compatibility identity
+  obtained by projecting it onto the opposite shifted kernel, the range
+  membership of its transformed source, and the complementary-response
+  decomposition retaining the full actual kernel component.  For a stored
+  even vector the fourth moment is nonzero (from the constructed
+  simplicity) and the source moment is nonnegative; the corrected source
+  `S0` is NOT claimed nonzero at a tie, and no other ground is chosen for
+  a stored odd vector.
 
 The explicit trichotomy is the inductive `DetectorRetainedSelectedGroundBranch`
 (`Step123NativeOutput.n21_retained_branch`).  The same consequences are
@@ -65,12 +72,6 @@ noncomputable section
 namespace Zeta23.CCM
 
 open Zeta23.ExceptionalZero
-
-set_option allowUnsafeReducibility true in
-attribute [local reducible] Submodule.innerProductSpace
-  Submodule.seminormedAddCommGroup Submodule.normedAddCommGroup
-  poleNeutralEven_innerProductSpace poleNeutralOdd_innerProductSpace
-  euclideanParityBoundaryFlatSubspace
 
 /-! ## Definitional parity views of a stored parity-tagged vector -/
 
@@ -145,6 +146,25 @@ theorem nativeParityOddView_eigen {L : ℝ} {K : ℕ} (γ : ReversalParity)
   subst h
   exact hg
 
+/-! ## The even rank-one source equation -/
+
+/-- For every actual even eigenvector `u` at `lam`, the actual shifted odd
+operator sends its index image to the corrected source multiple of the
+projected cubic vector: `(B0 - lam) D0 u = S0(u) • g0`.  This is the
+existing shifted rank-one intertwining evaluated at `u`; no gap, tie or
+simplicity hypothesis is used. -/
+theorem poleNeutral_even_eigen_index_odd_shifted_eq_source {L : ℝ} (hL : 0 < L)
+    (K : ℕ) (hK : 3 ≤ K) (lam : ℝ) (u : poleNeutralEvenSubspace L K)
+    (hu : poleNeutralEvenCompressedCanonical L K u = (lam : ℂ) • u) :
+    poleNeutralOddShiftedCanonical L K lam (poleNeutralIndexLinearMap hL K u) =
+      poleNeutralCorrectedCubicSource L K u • poleNeutralCubicCompressionVector L K := by
+  have hr := poleNeutral_shifted_rankOneIntertwining hL K hK lam u
+  have ha : poleNeutralEvenShiftedCanonical L K lam u = 0 := by
+    simp only [poleNeutralEvenShiftedCanonical, LinearMap.sub_apply, LinearMap.smul_apply,
+      LinearMap.id_apply, hu, sub_self]
+  rw [ha, map_zero, sub_zero] at hr
+  exact hr
+
 /-! ## Branch consequence records (all-vector statements) -/
 
 /-- Strict-even consequences for ONE actual even vector `u` at the actual
@@ -162,6 +182,9 @@ structure PoleNeutralStrictEvenGroundFacts {L : ℝ} (hL : 0 < L) (K : ℕ) (hK 
   eigen : poleNeutralEvenCompressedCanonical L K u = (lam : ℂ) • u
   simple : Module.finrank ℂ
     (Module.End.eigenspace (poleNeutralEvenCompressedCanonical L K) (lam : ℂ)) = 1
+  source_equation :
+    poleNeutralOddShiftedCanonical L K lam (poleNeutralIndexLinearMap hL K u) =
+      poleNeutralCorrectedCubicSource L K u • poleNeutralCubicCompressionVector L K
   source_moment_energy :
     (star (poleNeutralCorrectedCubicSource L K u) *
       centeredMoment K 4 (evenBoundaryFlatRawCoefficients K u.val)).re =
@@ -179,6 +202,10 @@ structure PoleNeutralStrictEvenGroundFacts {L : ℝ} (hL : 0 < L) (K : ℕ) (hK 
   ray_eq : u = poleNeutralCorrectedCubicSource L K u •
     poleNeutralEvenShiftedRay hL K hK lam below_odd
   ray_source_eq_one :
+    poleNeutralCorrectedCubicSource L K (poleNeutralEvenShiftedRay hL K hK lam below_odd) = 1
+  eigen_iff :
+    (∃ v : poleNeutralEvenSubspace L K, v ≠ 0 ∧
+      poleNeutralEvenCompressedCanonical L K v = (lam : ℂ) • v) ↔
     poleNeutralCorrectedCubicSource L K (poleNeutralEvenShiftedRay hL K hK lam below_odd) = 1
   det_eq : LinearMap.det (poleNeutralEvenShiftedCanonical L K lam) =
     LinearMap.det (poleNeutralOddShiftedCanonical L K lam) *
@@ -210,21 +237,29 @@ structure PoleNeutralStrictOddGroundFacts {L : ℝ} (hL : 0 < L) (K : ℕ) (hK :
     poleNeutralOddAdjointShiftedRay hL K hK lam below_even
   ray_pairing_eq_one :
     poleNeutralCubicPairingFunctional L K (poleNeutralOddAdjointShiftedRay hL K hK lam below_even) = 1
+  eigen_iff :
+    (∃ v : poleNeutralOddSubspace L K, v ≠ 0 ∧
+      poleNeutralOddCompressedCanonical L K v = (lam : ℂ) • v) ↔
+    poleNeutralCubicPairingFunctional L K (poleNeutralOddAdjointShiftedRay hL K hK lam below_even) = 1
   det_eq : LinearMap.det (poleNeutralOddShiftedCanonical L K lam) =
     LinearMap.det (poleNeutralEvenShiftedCanonical L K lam) *
       (1 - poleNeutralCubicPairingFunctional L K
         (poleNeutralOddAdjointShiftedRay hL K hK lam below_even))
   det_eq_zero : LinearMap.det (poleNeutralOddShiftedCanonical L K lam) = 0
 
-/-- Tie consequences for ONE actual even vector `u` at `lam`: kernel
-compatibility, range membership and the complementary response with the
-retained kernel component.  No nonvanishing of `S0(u)` is asserted. -/
+/-- Tie consequences for ONE actual even vector `u` at `lam`: the rank-one
+source equation `(B0 - lam) D0 u = S0(u) • g0`, its kernel compatibility,
+range membership and the complementary response with the retained kernel
+component.  No nonvanishing of `S0(u)` is asserted. -/
 structure PoleNeutralTiedEvenGroundFacts {L : ℝ} (hL : 0 < L) (K : ℕ) (hK : 3 ≤ K)
     (lam : ℝ) (u : poleNeutralEvenSubspace L K) : Prop where
   unit : ‖u‖ = 1
   eigen : poleNeutralEvenCompressedCanonical L K u = (lam : ℂ) • u
   simple : Module.finrank ℂ
     (Module.End.eigenspace (poleNeutralEvenCompressedCanonical L K) (lam : ℂ)) = 1
+  source_equation :
+    poleNeutralOddShiftedCanonical L K lam (poleNeutralIndexLinearMap hL K u) =
+      poleNeutralCorrectedCubicSource L K u • poleNeutralCubicCompressionVector L K
   momentFour_ne_zero : centeredMoment K 4 (evenBoundaryFlatRawCoefficients K u.val) ≠ 0
   source_moment_energy :
     (star (poleNeutralCorrectedCubicSource L K u) *
@@ -276,6 +311,45 @@ structure PoleNeutralTiedOddGroundFacts {L : ℝ} (hL : 0 < L) (K : ℕ) (hK : 3
       poleNeutralEvenKernelComplementResponse L K lam
         (-poleNeutralCubicPairingFunctional L K w • poleNeutralCorrectedCubicRieszVector L K)
         range_mem
+
+/-- Positivity of both actual shifted operators at `lam`, and strict
+positivity of each on the orthogonal complement of its actual kernel (any
+kernel multiplicity).  This is the carrier on which the tie responses invert
+the shifted operators. -/
+structure PoleNeutralShiftedPositivity (L : ℝ) (K : ℕ) (lam : ℝ) : Prop where
+  even_positive : LinearMap.IsPositive (𝕜 := ℂ) (E := poleNeutralEvenSubspace L K)
+    (poleNeutralEvenShiftedCanonical L K lam)
+  odd_positive : LinearMap.IsPositive (𝕜 := ℂ) (E := poleNeutralOddSubspace L K)
+    (poleNeutralOddShiftedCanonical L K lam)
+  even_complement_pos : ∀ x : poleNeutralEvenSubspace L K,
+    x ∈ Submodule.orthogonal (𝕜 := ℂ) (E := poleNeutralEvenSubspace L K)
+      (LinearMap.ker (poleNeutralEvenShiftedCanonical L K lam)) → x ≠ 0 →
+    0 < (inner ℂ (poleNeutralEvenShiftedCanonical L K lam x) x).re
+  odd_complement_pos : ∀ x : poleNeutralOddSubspace L K,
+    x ∈ Submodule.orthogonal (𝕜 := ℂ) (E := poleNeutralOddSubspace L K)
+      (LinearMap.ker (poleNeutralOddShiftedCanonical L K lam)) → x ≠ 0 →
+    0 < (inner ℂ (poleNeutralOddShiftedCanonical L K lam x) x).re
+
+/-- At or below both actual bottoms, both shifted operators are positive and
+strictly positive on their kernel complements (existing
+`nativeKernelComplement_positive`). -/
+theorem PoleNeutralShiftedPositivity.of_le_bottoms {L : ℝ} (hL : 0 < L) (K : ℕ)
+    (hK : 3 ≤ K) (lam : ℝ) (hE : lam ≤ poleNeutralEvenRayleighBottom L K hL hK)
+    (hO : lam ≤ poleNeutralOddRayleighBottom L K hL hK) :
+    PoleNeutralShiftedPositivity L K lam := by
+  have hpe := poleNeutralEvenShifted_isPositive_of_le_bottom hL K hK lam hE
+  have hpo := poleNeutralOddShifted_isPositive_of_le_bottom hL K hK lam hO
+  refine ⟨hpe, hpo, ?_, ?_⟩
+  · intro x hx hx0
+    exact @nativeKernelComplement_positive (poleNeutralEvenSubspace L K) inferInstance
+      (poleNeutralEven_innerProductSpace L K) inferInstance
+      (poleNeutralEvenShiftedCanonical L K lam) hpe ⟨x, hx⟩
+      (fun h => hx0 (congrArg Subtype.val h))
+  · intro x hx hx0
+    exact @nativeKernelComplement_positive (poleNeutralOddSubspace L K) inferInstance
+      (poleNeutralOdd_innerProductSpace L K) inferInstance
+      (poleNeutralOddShiftedCanonical L K lam) hpo ⟨x, hx⟩
+      (fun h => hx0 (congrArg Subtype.val h))
 
 /-- Tie consequences for a stored parity-tagged vector, in its own stored
 parity. -/
@@ -398,6 +472,8 @@ theorem PoleNeutralStrictEvenGroundFacts.of_selection {L D : ℝ} {Kd : ℕ} {hL
     unit := hu1
     eigen := hu
     simple := nativeDeepThreshold_even_ground_simple hD s u hu0 hu
+    source_equation := poleNeutral_even_eigen_index_odd_shifted_eq_source hL s.cutoff
+      s.cutoff_nonempty s.lam u hu
     source_moment_energy :=
       poleNeutral_source_moment_energy_eq hL s.cutoff (by have := s.cutoff_nonempty; omega)
         s.lam u hu
@@ -411,6 +487,7 @@ theorem PoleNeutralStrictEvenGroundFacts.of_selection {L D : ℝ} {Kd : ℕ} {hL
     ray_eq := poleNeutral_even_eigenvector_eq_source_smul_shiftedRay hL s.cutoff
       s.cutoff_nonempty s.lam hlam u hu
     ray_source_eq_one := hray
+    eigen_iff := poleNeutral_evenShifted_eigen_iff hL s.cutoff s.cutoff_nonempty s.lam hlam
     det_eq := hdet
     det_eq_zero := by rw [hdet, hray, sub_self, mul_zero] }
 
@@ -455,6 +532,7 @@ theorem PoleNeutralStrictOddGroundFacts.of_selection {L D : ℝ} {Kd : ℕ} {hL 
     ray_eq := poleNeutral_odd_eigenvector_eq_pairing_smul_adjointRay hL s.cutoff
       s.cutoff_nonempty s.lam hlam w hw
     ray_pairing_eq_one := hray
+    eigen_iff := poleNeutral_oddShifted_eigen_iff hL s.cutoff s.cutoff_nonempty s.lam hlam
     det_eq := hdet
     det_eq_zero := by rw [hdet, hray, sub_self, mul_zero] }
 
@@ -482,6 +560,8 @@ theorem PoleNeutralTiedEvenGroundFacts.of_selection {L D : ℝ} {Kd : ℕ} {hL :
     unit := hu1
     eigen := hu
     simple := nativeDeepThreshold_even_ground_simple hD s u hu0 hu
+    source_equation := poleNeutral_even_eigen_index_odd_shifted_eq_source hL s.cutoff
+      s.cutoff_nonempty s.lam u hu
     momentFour_ne_zero := nativeDeepThreshold_even_ground_momentFour_ne_zero hD s u hu0 hu
     source_moment_energy :=
       poleNeutral_source_moment_energy_eq hL s.cutoff (by have := s.cutoff_nonempty; omega)
@@ -575,12 +655,7 @@ inductive DetectorRetainedSelectedGroundBranch {σ : ReversalParity} {L : ℝ} {
         poleNeutralEvenRayleighBottom L state.selection.cutoff hL state.selection.cutoff_nonempty)
       (lam_eq_odd : state.selection.lam =
         poleNeutralOddRayleighBottom L state.selection.cutoff hL state.selection.cutoff_nonempty)
-      (even_positive : LinearMap.IsPositive (𝕜 := ℂ)
-        (E := poleNeutralEvenSubspace L state.selection.cutoff)
-        (poleNeutralEvenShiftedCanonical L state.selection.cutoff state.selection.lam))
-      (odd_positive : LinearMap.IsPositive (𝕜 := ℂ)
-        (E := poleNeutralOddSubspace L state.selection.cutoff)
-        (poleNeutralOddShiftedCanonical L state.selection.cutoff state.selection.lam))
+      (positivity : PoleNeutralShiftedPositivity L state.selection.cutoff state.selection.lam)
       (facts : PoleNeutralTiedStoredGroundFacts hL state.selection.cutoff
         state.selection.cutoff_nonempty state.selection.lam
         state.selectedParity state.selectedGround)
@@ -612,8 +687,7 @@ theorem DetectorRetainedSchurState.selectedGround_branch {σ : ReversalParity} {
       exact min_self _
     have hlamO := hlamE.trans h
     exact .tie h hlamE hlamO
-      (poleNeutralEvenShifted_isPositive_of_le_bottom hL _ _ _ hlamE.le)
-      (poleNeutralOddShifted_isPositive_of_le_bottom hL _ _ _ hlamO.le)
+      (PoleNeutralShiftedPositivity.of_le_bottoms hL _ _ _ hlamE.le hlamO.le)
       (PoleNeutralTiedStoredGroundFacts.of_selection state.depth_pos state.selection h
         state.selectedParity state.selectedGround state.selectedGround_unit
         state.selectedGround_eigen)
@@ -649,12 +723,7 @@ def DetectorRetainedSchurState.groundBranchFacts {σ : ReversalParity} {L : ℝ}
         state.selection.lam =
           poleNeutralOddRayleighBottom L state.selection.cutoff hL
             state.selection.cutoff_nonempty ∧
-        LinearMap.IsPositive (𝕜 := ℂ)
-          (E := poleNeutralEvenSubspace L state.selection.cutoff)
-          (poleNeutralEvenShiftedCanonical L state.selection.cutoff state.selection.lam) ∧
-        LinearMap.IsPositive (𝕜 := ℂ)
-          (E := poleNeutralOddSubspace L state.selection.cutoff)
-          (poleNeutralOddShiftedCanonical L state.selection.cutoff state.selection.lam) ∧
+        PoleNeutralShiftedPositivity L state.selection.cutoff state.selection.lam ∧
         PoleNeutralTiedStoredGroundFacts hL state.selection.cutoff
           state.selection.cutoff_nonempty state.selection.lam
           state.selectedParity state.selectedGround
@@ -667,20 +736,20 @@ theorem DetectorRetainedSchurState.groundBranchFacts_holds {σ : ReversalParity}
     state.groundBranchFacts b := by
   cases b with
   | strictEven gap =>
-    rcases state.selectedGround_branch with ⟨_, hpar, hf⟩ | ⟨h, _, _⟩ | ⟨h, _, _, _, _, _⟩
+    rcases state.selectedGround_branch with ⟨_, hpar, hf⟩ | ⟨h, _, _⟩ | ⟨h, _, _, _, _⟩
     · exact Exists.intro hpar hf
     · exact absurd gap (lt_asymm h)
     · exact absurd h (ne_of_lt gap)
   | strictOdd gap =>
-    rcases state.selectedGround_branch with ⟨h, _, _⟩ | ⟨_, hpar, hf⟩ | ⟨h, _, _, _, _, _⟩
+    rcases state.selectedGround_branch with ⟨h, _, _⟩ | ⟨_, hpar, hf⟩ | ⟨h, _, _, _, _⟩
     · exact absurd gap (lt_asymm h)
     · exact Exists.intro hpar hf
     · exact absurd h.symm (ne_of_lt gap)
   | tie equal =>
-    rcases state.selectedGround_branch with ⟨h, _, _⟩ | ⟨h, _, _⟩ | ⟨_, hE, hO, hpe, hpo, hf⟩
+    rcases state.selectedGround_branch with ⟨h, _, _⟩ | ⟨h, _, _⟩ | ⟨_, hE, hO, hp, hf⟩
     · exact absurd equal (ne_of_lt h)
     · exact absurd equal.symm (ne_of_lt h)
-    · exact And.intro hE (And.intro hO (And.intro hpe (And.intro hpo hf)))
+    · exact And.intro hE (And.intro hO (And.intro hp hf))
 
 /-! ## N21 on the actual stored output packet -/
 
@@ -815,10 +884,11 @@ theorem Step123NativeOutput.n21_strictOdd_selectedGround {β : ℝ} {σ : Revers
   out.retained.state.groundBranchFacts_holds (.strictOdd hgap)
 
 /-- Tie view on the actual stored packet: `lam` equals both actual bottoms,
-both shifted operators at the stored `lam` are positive and the stored
-ground, in its stored parity, carries kernel compatibility, range
-membership and the complementary response with retained kernel component.
-No `S0 ≠ 0` claim. -/
+both shifted operators at the stored `lam` are positive (strictly on their
+kernel complements) and the stored ground, in its stored parity, carries
+its rank-one source equation, kernel compatibility, range membership and
+the complementary response with retained kernel component.  No `S0 ≠ 0`
+claim. -/
 theorem Step123NativeOutput.n21_tie_selectedGround {β : ℝ} {σ : ReversalParity} {a : ℝ}
     (out : Step123NativeOutput β σ a)
     (htie : poleNeutralEvenRayleighBottom (fixedOriginalSincTrialAperture a)
@@ -835,16 +905,8 @@ theorem Step123NativeOutput.n21_tie_selectedGround {β : ℝ} {σ : ReversalPari
         poleNeutralOddRayleighBottom (fixedOriginalSincTrialAperture a)
           out.retained.state.selection.cutoff out.aperture_pos
           out.retained.state.selection.cutoff_nonempty ∧
-      LinearMap.IsPositive (𝕜 := ℂ)
-        (E := poleNeutralEvenSubspace (fixedOriginalSincTrialAperture a)
-          out.retained.state.selection.cutoff)
-        (poleNeutralEvenShiftedCanonical (fixedOriginalSincTrialAperture a)
-          out.retained.state.selection.cutoff out.retained.state.selection.lam) ∧
-      LinearMap.IsPositive (𝕜 := ℂ)
-        (E := poleNeutralOddSubspace (fixedOriginalSincTrialAperture a)
-          out.retained.state.selection.cutoff)
-        (poleNeutralOddShiftedCanonical (fixedOriginalSincTrialAperture a)
-          out.retained.state.selection.cutoff out.retained.state.selection.lam) ∧
+      PoleNeutralShiftedPositivity (fixedOriginalSincTrialAperture a)
+        out.retained.state.selection.cutoff out.retained.state.selection.lam ∧
       PoleNeutralTiedStoredGroundFacts out.aperture_pos out.retained.state.selection.cutoff
         out.retained.state.selection.cutoff_nonempty out.retained.state.selection.lam
         out.retained.state.selectedParity out.selectedGround :=
@@ -861,6 +923,7 @@ end Zeta23.CCM
 #print axioms Zeta23.CCM.nativeParityEvenView_eigen
 #print axioms Zeta23.CCM.nativeParityOddView_eigen
 #print axioms Zeta23.CCM.nativeDeepThreshold_lam_eq_min
+#print axioms Zeta23.CCM.poleNeutral_even_eigen_index_odd_shifted_eq_source
 #print axioms Zeta23.CCM.poleNeutralEvenRayleighBottom_le_of_eigen
 #print axioms Zeta23.CCM.poleNeutralOddRayleighBottom_le_of_eigen
 #print axioms Zeta23.CCM.nativeParity_eq_even_of_strictEven
@@ -869,6 +932,7 @@ end Zeta23.CCM
 #print axioms Zeta23.CCM.PoleNeutralStrictOddGroundFacts.of_selection
 #print axioms Zeta23.CCM.PoleNeutralTiedEvenGroundFacts.of_selection
 #print axioms Zeta23.CCM.PoleNeutralTiedOddGroundFacts.of_selection
+#print axioms Zeta23.CCM.PoleNeutralShiftedPositivity.of_le_bottoms
 #print axioms Zeta23.CCM.PoleNeutralTiedStoredGroundFacts.of_selection
 #print axioms Zeta23.CCM.PoleNeutralTiedStoredGroundFacts.even_view
 #print axioms Zeta23.CCM.PoleNeutralTiedStoredGroundFacts.odd_view
