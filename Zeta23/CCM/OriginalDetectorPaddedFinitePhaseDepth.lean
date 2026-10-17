@@ -1,4 +1,5 @@
 import Zeta23.CCM.OriginalDetectorPaddedFinitePhaseNativeTransport
+import Zeta23.CCM.OriginalDetectorPaddedFiniteNativeFormConcreteRate
 
 /-!
 # Actual per-phase cofinal native unit-depth producer
@@ -17,6 +18,15 @@ open scoped Topology
 namespace Zeta23.CCM
 
 open Zeta23.ExceptionalZero
+
+/-- The one source-only image-error threshold, fixed before any zero,
+phase or native packet is produced. -/
+def originalDetectorPaddedImageThreshold : ℝ :=
+  Classical.choose originalDetectorPaddedFinitePhysicalUnit_common_error_rates
+
+theorem four_le_originalDetectorPaddedImageThreshold :
+    4 ≤ originalDetectorPaddedImageThreshold :=
+  (Classical.choose_spec originalDetectorPaddedFinitePhysicalUnit_common_error_rates).1
 
 private theorem exists_originalPhase_depth_four
     (ρ : zetaZeroConfig.carrier) {β σ : ℝ} (hβ : 0 < β)
@@ -76,6 +86,9 @@ structure OriginalDetectorPaddedFinitePhaseData (β σ R : ℝ) where
   aperture_pos : 0 < fixedOriginalSincTrialAperture separation
   separation_gt_scale : UniversalSinc.fixedScale < separation
   late : max R 4 < fixedOriginalSincTrialAperture separation
+  /-- The source-only N14/N37 threshold is paid by the original producer. -/
+  image_threshold_paid :
+    originalDetectorPaddedImageThreshold < fixedOriginalSincTrialAperture separation
   unit : ‖originalDetectorPaddedFinitePhaseUnitVector σ (fixedOriginalSincTrialAperture separation)
     fixedOriginalSincLobeCenter aperture_pos‖ = 1
   depth : (inner ℂ ((canonicalSourceMatrix (fixedOriginalSincTrialAperture separation)
@@ -105,12 +118,18 @@ theorem originalDetectorPaddedFinitePhase_producer
   simp only [zero_mul, Real.exp_zero, mul_one] at hWlim
   obtain ⟨Lw, hWsmall⟩ := eventually_atTop.1
     (hWlim.eventually (gt_mem_nhds (by norm_num : (0 : ℝ) < 1)))
-  let R' := max R (max Lm (max Lu Lw))
+  let Rbase := max R (max Lm (max Lu Lw))
+  let R' := max Rbase originalDetectorPaddedImageThreshold
   obtain ⟨a, ha, hlate, hdeep⟩ := exists_originalPhase_depth_four ρ hβ hβρ hσ R'
   let L := fixedOriginalSincTrialAperture a
-  have hR : R ≤ R' := le_max_left _ _
+  have hRbase : Rbase ≤ R' := le_max_left _ _
+  have hR : R ≤ R' := (le_max_left R (max Lm (max Lu Lw))).trans hRbase
   have hLall : max Lm (max Lu Lw) < L :=
-    (le_max_right R (max Lm (max Lu Lw))).trans_lt ((le_max_left R' 4).trans_lt hlate)
+    ((le_max_right R (max Lm (max Lu Lw))).trans hRbase).trans_lt
+      ((le_max_left R' 4).trans_lt hlate)
+  have hImage : originalDetectorPaddedImageThreshold < L :=
+    (le_max_right Rbase originalDetectorPaddedImageThreshold).trans_lt
+      ((le_max_left R' 4).trans_lt hlate)
   have hLmL : Lm ≤ L := ((le_max_left Lm (max Lu Lw)).trans hLall.le)
   have hLuL : Lu ≤ L := ((le_max_left Lu Lw).trans (le_max_right Lm (max Lu Lw))).trans hLall.le
   have hLwL : Lw ≤ L := ((le_max_right Lu Lw).trans (le_max_right Lm (max Lu Lw))).trans hLall.le
@@ -131,7 +150,7 @@ theorem originalDetectorPaddedFinitePhase_producer
   have hfinite : (zetaZeroConfig.W (originalDetectorPaddedFiniteOriginalPhaseHard σ a hLpos)
       (originalDetectorPaddedFiniteOriginalPhaseHard σ a hLpos)).re ≤ -3 * Real.exp (β * L) := by
     linarith
-  refine ⟨⟨a, hLpos, ha, ?_, hu.2, ?_, hdeep⟩⟩
+  refine ⟨⟨a, hLpos, ha, ?_, hImage, hu.2, ?_, hdeep⟩⟩
   · exact (max_le_max_right 4 hR).trans_lt hlate
   · rw [originalDetectorPaddedFinitePhaseUnitVector_nativeEnergy_eq_Weil_div_mass ha0 σ hLpos hu.1]
     apply (div_le_iff₀ (lt_trans (by norm_num : (0 : ℝ) < 1 / 2) hm.1)).mpr
@@ -142,3 +161,4 @@ theorem originalDetectorPaddedFinitePhase_producer
 end Zeta23.CCM
 
 #print axioms Zeta23.CCM.originalDetectorPaddedFinitePhase_producer
+#print axioms Zeta23.CCM.four_le_originalDetectorPaddedImageThreshold

@@ -7,7 +7,7 @@ import Zeta23.CCM.Step123NativeFieldRecord
 import Zeta23.CCM.Step123NativeSourceSpectralEvidence
 
 /-!
-# G03 (IN PROGRESS): the N01-N40 + G01-G04 Step 1-3 output on one retained state
+# G03: the N01-N40 + G01-G04 Step 1-3 output on one retained state
 
 `Step123CompleteNativeOutput β σ a` is the rho-free native record.  It stores
 ONE `Step123NativeOutput β σ a` and two proof records about that same packet:
@@ -24,10 +24,9 @@ This is a source implementation; independent semantic review remains open.
 N39 retains the source producer's negative depth and proves that the actual
 original interior is not almost everywhere zero.
 
-N14 and N37 are rates that hold beyond one common
-source-only threshold `step123SameStateThreshold`, chosen before any zero,
-phase or packet.  In the rho-free record they are stated conditionally on
-that threshold; the generated record pays it.
+N14 and N37 share the source-only threshold `step123SameStateThreshold`,
+chosen before any zero, phase or packet. The original native producer pays
+this threshold, so both rates are unconditional fields of the native record.
 
 `GeneratedStep123CompleteOutput ρ β σ R` is the zero-indexed extension.  Its
 only mathematical inputs are the actual zero carrier `ρ`, a horizontal
@@ -56,31 +55,28 @@ open Zeta23.CCM
 /-- The source-only constant in the forcing bilinear bound, chosen before
 any zero, phase or packet, together with the Weil constant and threshold. -/
 def step123SameStateForcingConstant : ℝ :=
-  Classical.choose step123NativeOutput_imageErrors_forcingError_commonThreshold
+  Classical.choose step123NativeOutput_imageErrors_forcingError_at_sourceThreshold
 
 /-- The source-only constant in the stored-shift upper bound, from the
 same combined N14/N37 witness as the forcing constant and threshold. -/
 def step123SameStateWeilConstant : ℝ :=
   Classical.choose
-    (Classical.choose_spec step123NativeOutput_imageErrors_forcingError_commonThreshold)
+    (Classical.choose_spec step123NativeOutput_imageErrors_forcingError_at_sourceThreshold)
 
 /-- The common source-only threshold of the same-state rates N14 and N37.
 It is chosen once, from the frozen source, before any zero, phase or packet. -/
-def step123SameStateThreshold : ℝ :=
-  Classical.choose (Classical.choose_spec
-    (Classical.choose_spec step123NativeOutput_imageErrors_forcingError_commonThreshold))
+def step123SameStateThreshold : ℝ := originalDetectorPaddedImageThreshold
 
 theorem step123SameStateForcingConstant_pos : 0 < step123SameStateForcingConstant :=
   (Classical.choose_spec (Classical.choose_spec
-    (Classical.choose_spec step123NativeOutput_imageErrors_forcingError_commonThreshold))).1
+    step123NativeOutput_imageErrors_forcingError_at_sourceThreshold)).1
 
 theorem step123SameStateWeilConstant_pos : 0 < step123SameStateWeilConstant :=
   (Classical.choose_spec (Classical.choose_spec
-    (Classical.choose_spec step123NativeOutput_imageErrors_forcingError_commonThreshold))).2.1
+    step123NativeOutput_imageErrors_forcingError_at_sourceThreshold)).2.1
 
 theorem four_le_step123SameStateThreshold : 4 ≤ step123SameStateThreshold :=
-  (Classical.choose_spec (Classical.choose_spec
-    (Classical.choose_spec step123NativeOutput_imageErrors_forcingError_commonThreshold))).2.2.1
+  four_le_originalDetectorPaddedImageThreshold
 
 /-- N14 content at one stored packet: the physical H1 error of the stored
 detector against the original smooth phase trial, the H1 norm of
@@ -118,11 +114,10 @@ def Step123ImageErrorRates {β : ℝ} {σ : ReversalParity} {a : ℝ}
 /-- N14 at every stored packet beyond the common threshold. -/
 theorem step123ImageErrorRates_of_threshold {β : ℝ} {σ : ReversalParity} {a : ℝ}
     (out : Step123NativeOutput β σ a)
-    (h : step123SameStateThreshold ≤ fixedOriginalSincTrialAperture a) :
+    (_h : step123SameStateThreshold ≤ fixedOriginalSincTrialAperture a) :
     Step123ImageErrorRates out :=
   ((Classical.choose_spec (Classical.choose_spec
-    (Classical.choose_spec
-      step123NativeOutput_imageErrors_forcingError_commonThreshold))).2.2.2 out h).1
+    step123NativeOutput_imageErrors_forcingError_at_sourceThreshold)).2.2 out).1
 
 /-- N37 at the stored packet: its actual shift upper bound and both
 projected forcing-error inequalities at the quartic H1 rate.  The finite
@@ -165,11 +160,10 @@ def Step123ForcingErrorRates {β : ℝ} {σ : ReversalParity} {a : ℝ}
 constants fixed before any zero, phase or packet. -/
 theorem step123ForcingErrorRates_of_threshold {β : ℝ} {σ : ReversalParity} {a : ℝ}
     (out : Step123NativeOutput β σ a)
-    (h : step123SameStateThreshold ≤ fixedOriginalSincTrialAperture a) :
+    (_h : step123SameStateThreshold ≤ fixedOriginalSincTrialAperture a) :
     Step123ForcingErrorRates out :=
   ((Classical.choose_spec (Classical.choose_spec
-    (Classical.choose_spec
-      step123NativeOutput_imageErrors_forcingError_commonThreshold))).2.2.2 out h).2
+    step123NativeOutput_imageErrors_forcingError_at_sourceThreshold)).2.2 out).2
 
 /-! ## The six same-state fields on one stored packet -/
 
@@ -178,10 +172,8 @@ packet.  Every field concerns the packet's own stored detector, selected
 ground, selection and source; nothing is supplied by a caller. -/
 structure Step123SameStateFieldRecord {β : ℝ} {σ : ReversalParity} {a : ℝ}
     (out : Step123NativeOutput β σ a) : Prop where
-  /-- N14 `image.errors`, beyond the common source-only threshold. -/
-  n14_image_errors :
-    step123SameStateThreshold ≤ fixedOriginalSincTrialAperture a →
-      Step123ImageErrorRates out
+  /-- N14 `image.errors`; the native source producer has paid its threshold. -/
+  n14_image_errors : Step123ImageErrorRates out
   /-- N21 `retained.branch`: the trichotomy of the actual neutral bottoms at
   the stored aperture and selected cutoff, each branch carrying its facts
   about the stored selected ground and the stored `lam`. -/
@@ -210,19 +202,17 @@ structure Step123SameStateFieldRecord {β : ℝ} {σ : ReversalParity} {a : ℝ}
   n38_forcing_ambient_residuals : out.OriginalDetectorAmbientResiduals
   /-- N37 `forcing.error`, with the actual stored shift and predecessor
   finite-mode factor, beyond the same source-only threshold as N14. -/
-  n37_forcing_error :
-    step123SameStateThreshold ≤ fixedOriginalSincTrialAperture a →
-      Step123ForcingErrorRates out
+  n37_forcing_error : Step123ForcingErrorRates out
 
 /-- Every same-state field is proved from the packet alone. -/
 theorem Step123SameStateFieldRecord.fromNative {β : ℝ} {σ : ReversalParity} {a : ℝ}
     (out : Step123NativeOutput β σ a) : Step123SameStateFieldRecord out where
-  n14_image_errors := step123ImageErrorRates_of_threshold out
+  n14_image_errors := step123ImageErrorRates_of_threshold out out.image_threshold_paid.le
   n21_retained_branch := out.n21_retained_branch
   n23_retained_tie := out.n23_retained_tie
   n36_forcing_source_channels := out.n36_forcingSourceChannels
   n38_forcing_ambient_residuals := out.n38_forcing_ambient_residuals
-  n37_forcing_error := step123ForcingErrorRates_of_threshold out
+  n37_forcing_error := step123ForcingErrorRates_of_threshold out out.image_threshold_paid.le
 
 /-! ## The complete rho-free native record -/
 
@@ -365,7 +355,7 @@ theorem GeneratedStep123CompleteOutput.imageErrors
     {ρ : zetaZeroConfig.carrier} {β : ℝ} {σ : ReversalParity} {R : ℝ}
     (g : GeneratedStep123CompleteOutput ρ β σ R) :
     Step123ImageErrorRates g.generated.native :=
-  g.sameState.n14_image_errors ((le_max_right R _).trans g.thresholds_paid.le)
+  g.sameState.n14_image_errors
 
 /-- N37 holds unconditionally on the generated packet: the same aperture
 certificate pays the threshold shared with N14. -/
@@ -373,7 +363,7 @@ theorem GeneratedStep123CompleteOutput.forcingErrors
     {ρ : zetaZeroConfig.carrier} {β : ℝ} {σ : ReversalParity} {R : ℝ}
     (g : GeneratedStep123CompleteOutput ρ β σ R) :
     Step123ForcingErrorRates g.generated.native :=
-  g.sameState.n37_forcing_error ((le_max_right R _).trans g.thresholds_paid.le)
+  g.sameState.n37_forcing_error
 
 /-- The earlier partial evidence chain, built on the SAME generated output. -/
 def GeneratedStep123CompleteOutput.composed
@@ -402,30 +392,37 @@ def GeneratedStep123Output.weakenLateness
         late := hR4
         unit := g.sourceData.unit
         depth := g.sourceData.depth
-        original_depth := g.sourceData.original_depth }
+        original_depth := g.sourceData.original_depth
+        image_threshold_paid := g.sourceData.image_threshold_paid }
     native := g.native
     native_aperture_bound := hR4
     offLine := g.offLine
     true_input_nonrange := g.true_input_nonrange }
 
-/-- Every generated output whose aperture exceeds the common threshold
-extends to the complete output.  The extra hypothesis is a lateness
-condition on the aperture, not a mathematical bridge. -/
+/-- Every original generated output extends to the complete output without
+an extra hypothesis: its source producer already paid the common threshold. -/
 def GeneratedStep123CompleteOutput.fromGenerated
     {ρ : zetaZeroConfig.carrier} {β : ℝ} {σ : ReversalParity} {R : ℝ}
-    (g : GeneratedStep123Output ρ β σ R)
-    (h : step123SameStateThreshold <
-      fixedOriginalSincTrialAperture g.sourceData.separation) :
+    (g : GeneratedStep123Output ρ β σ R) :
     GeneratedStep123CompleteOutput ρ β σ R where
   generated := g
   fields := Step123NativeFieldRecord.fromNative g.native
   sameState := Step123SameStateFieldRecord.fromNative g.native
-  thresholds_paid := max_lt (lt_of_le_of_lt (le_max_left R 4) g.native_aperture_bound) h
+  thresholds_paid := max_lt (lt_of_le_of_lt (le_max_left R 4) g.native_aperture_bound)
+    g.sourceData.image_threshold_paid
   rangeObstruction := GeneratedStep123RangeObstruction.ofOffLine ρ g.offLine
+
+/-- The original requested generated API has a canonical complete view.
+No second producer call, detector, selection or mathematical input is used. -/
+def GeneratedStep123Output.complete
+    {ρ : zetaZeroConfig.carrier} {β : ℝ} {σ : ReversalParity} {R : ℝ}
+    (g : GeneratedStep123Output ρ β σ R) :
+    GeneratedStep123CompleteOutput ρ β σ R :=
+  GeneratedStep123CompleteOutput.fromGenerated g
 
 /-- G03 producer.  For an actual zeta-zero carrier `ρ`, an exponent
 `0 < β < |Re ρ - 1/2|`, a phase `σ` and a lateness `R`, the existing
-producer called at lateness `max R step123SameStateThreshold` gives a
+source producer pays the common threshold and gives a
 generated output whose aperture pays every common threshold, and it extends
 to the complete N01-N40 + G01-G04 output.  No other hypothesis is used. -/
 theorem exists_generatedStep123CompleteOutput
@@ -433,12 +430,8 @@ theorem exists_generatedStep123CompleteOutput
     (hβ : 0 < β) (hβρ : β < |(ρ : ℂ).re - 1 / 2|)
     (σ : ReversalParity) (R : ℝ) :
     Nonempty (GeneratedStep123CompleteOutput ρ β σ R) := by
-  obtain ⟨g⟩ := exists_generatedStep123Output ρ hβ hβρ σ (max R step123SameStateThreshold)
-  have hlate : max R step123SameStateThreshold <
-      fixedOriginalSincTrialAperture g.sourceData.separation :=
-    (le_max_left _ 4).trans_lt g.native_aperture_bound
-  exact ⟨GeneratedStep123CompleteOutput.fromGenerated
-    (g.weakenLateness (le_max_left R _)) ((le_max_right R _).trans_lt hlate)⟩
+  obtain ⟨g⟩ := exists_generatedStep123Output ρ hβ hβρ σ R
+  exact ⟨GeneratedStep123CompleteOutput.fromGenerated g⟩
 
 /-- Each phase separately has arbitrarily late complete outputs.  No common
 aperture for the two phases is asserted. -/
@@ -455,6 +448,71 @@ theorem exists_eachPhase_cofinal_generatedStep123CompleteOutput
 
 end Zeta23.ExceptionalZero
 
+namespace Zeta23.CCM
+
+open Zeta23.ExceptionalZero
+
+/-- All forty native fields of the original requested API, about its one
+stored state. The producer has already paid the N14/N37 source threshold. -/
+def Step123NativeOutput.complete {β : ℝ} {σ : ReversalParity} {a : ℝ}
+    (out : Step123NativeOutput β σ a) : Step123CompleteNativeOutput β σ a :=
+  Step123CompleteNativeOutput.ofNative out
+
+/-- The literal arithmetic values together with their same-packet source,
+divisor and response identities. The shared proof record avoids copying or
+weakening the exact propositions of N01-N13,N15-N20,N22,N24-N35,N39,N40. -/
+structure Step123ArithmeticView {β : ℝ} {σ : ReversalParity} {a : ℝ}
+    (out : Step123NativeOutput β σ a) where
+  values : (ℝ → ℝ) × (ℝ → ℝ)
+  fixed_values : values = (nativeOriginalPrimeField, nativeOriginalIntegerDrive)
+  fields : Step123NativeFieldRecord out
+
+/-- The actual input/correction values with their source, domain, transform,
+causal-operator and adjoint-iteration identities on the same native packet.
+The operator and its domain are the literal ones in `fields`, not inputs. -/
+structure Step123RangeView {β : ℝ} {σ : ReversalParity} {a : ℝ}
+    (out : Step123NativeOutput β σ a) where
+  values : (ℝ → ℝ) × (ℝ → ℝ)
+  fixed_values : values = (nativeCompletedInput, nativeCompletionCorrection)
+  fields : Step123NativeFieldRecord out
+
+/-- One retained state with both Schur records, explicit branches, source
+correction, residuals, forcing and original exterior. All facts refer to
+`out`; the equality prevents a second selected state from being substituted. -/
+structure Step123StructuralView {β : ℝ} {σ : ReversalParity} {a : ℝ}
+    (out : Step123NativeOutput β σ a) where
+  retained : Step123NativeCorePacket σ
+    (fixedOriginalSincTrialAperture a)
+    (originalDetectorQuarticCutoff (fixedOriginalSincTrialAperture a))
+    (Real.exp (β * fixedOriginalSincTrialAperture a)) out.aperture_pos
+  retained_eq : retained = out.retained
+  fields : Step123NativeFieldRecord out
+  sameState : Step123SameStateFieldRecord out
+
+/-- M22.02: arithmetic values and their proved source/divisor identities. -/
+def Step123NativeOutput.arithmeticView {β : ℝ} {σ : ReversalParity} {a : ℝ}
+    (out : Step123NativeOutput β σ a) : Step123ArithmeticView out where
+  values := out.arithmeticData
+  fixed_values := rfl
+  fields := Step123NativeFieldRecord.fromNative out
+
+/-- M22.03: actual input/correction with domain, transform and operator data. -/
+def Step123NativeOutput.rangeView {β : ℝ} {σ : ReversalParity} {a : ℝ}
+    (out : Step123NativeOutput β σ a) : Step123RangeView out where
+  values := out.rangeData
+  fixed_values := rfl
+  fields := Step123NativeFieldRecord.fromNative out
+
+/-- M22.04: the same retained state with complete structural proof views. -/
+def Step123NativeOutput.structuralView {β : ℝ} {σ : ReversalParity} {a : ℝ}
+    (out : Step123NativeOutput β σ a) : Step123StructuralView out where
+  retained := out.structuralData
+  retained_eq := rfl
+  fields := Step123NativeFieldRecord.fromNative out
+  sameState := Step123SameStateFieldRecord.fromNative out
+
+end Zeta23.CCM
+
 #print axioms Zeta23.ExceptionalZero.four_le_step123SameStateThreshold
 #print axioms Zeta23.ExceptionalZero.step123SameStateForcingConstant_pos
 #print axioms Zeta23.ExceptionalZero.step123SameStateWeilConstant_pos
@@ -469,5 +527,10 @@ end Zeta23.ExceptionalZero
 #print axioms Zeta23.ExceptionalZero.GeneratedStep123CompleteOutput.composed
 #print axioms Zeta23.ExceptionalZero.GeneratedStep123Output.weakenLateness
 #print axioms Zeta23.ExceptionalZero.GeneratedStep123CompleteOutput.fromGenerated
+#print axioms Zeta23.ExceptionalZero.GeneratedStep123Output.complete
+#print axioms Zeta23.CCM.Step123NativeOutput.complete
+#print axioms Zeta23.CCM.Step123NativeOutput.arithmeticView
+#print axioms Zeta23.CCM.Step123NativeOutput.rangeView
+#print axioms Zeta23.CCM.Step123NativeOutput.structuralView
 #print axioms Zeta23.ExceptionalZero.exists_generatedStep123CompleteOutput
 #print axioms Zeta23.ExceptionalZero.exists_eachPhase_cofinal_generatedStep123CompleteOutput

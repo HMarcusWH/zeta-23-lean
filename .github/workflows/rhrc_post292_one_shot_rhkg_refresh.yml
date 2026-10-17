@@ -29,18 +29,27 @@ concurrency:
 jobs:
   materialize-and-commit:
     if: >-
-      (github.event_name == 'push' && startsWith(github.event.head_commit.message, 'ci(PR292): one-shot RHKG refresh')) ||
-      (github.event_name == 'workflow_dispatch' && inputs.refresh_generated_state == true)
+      (github.ref == 'refs/heads/research/post290-step123-output' ||
+       github.ref == 'refs/heads/codex/pr292-completion-20261017') &&
+      ((github.event_name == 'push' && startsWith(github.event.head_commit.message, 'ci(PR292): one-shot RHKG refresh')) ||
+       (github.event_name == 'workflow_dispatch' && inputs.refresh_generated_state == true))
     runs-on: ubuntu-latest
     # Full 2,766-root regeneration + independent post-commit recheck exceeded
     # the former 90-minute limit on run 38815669679; retain all proof gates.
-    timeout-minutes: 240
+    # The initial no-write freshness observation may itself walk every root.
+    # Preserve the write and two independent full checks even on late drift.
+    timeout-minutes: 360
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: research/post290-step123-output
+          ref: ${{ github.ref }}
           fetch-depth: 0
           persist-credentials: true
+      - uses: actions/cache/restore@v4
+        with:
+          path: .lake/build
+          key: post290-components-${{ hashFiles('lean-toolchain', 'lake-manifest.json') }}-${{ github.sha }}
+          restore-keys: post290-components-${{ hashFiles('lean-toolchain', 'lake-manifest.json') }}-
       - uses: actions/setup-python@v5
         with:
           python-version: '3.14'
@@ -57,10 +66,13 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          test "$GITHUB_REF" = "refs/heads/research/post290-step123-output"
+          case "$GITHUB_REF" in
+            refs/heads/research/post290-step123-output|refs/heads/codex/pr292-completion-20261017) ;;
+            *) echo 'Ref outside the two authorized PR292 source branches'; exit 1 ;;
+          esac
           test "$GITHUB_RUN_ATTEMPT" = "1"
           test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
-          git fetch --no-tags origin refs/heads/research/post290-step123-output
+          git fetch --no-tags origin "$GITHUB_REF"
           test "$(git rev-parse FETCH_HEAD)" = "$GITHUB_SHA"
           test -z "$(git status --porcelain --untracked-files=all -- '*.lean' lean-toolchain lake-manifest.json lakefile.lean lakefile.toml)"
           # Classify every tracked file before the expensive 2,766-root Lean walk.
@@ -87,6 +99,19 @@ jobs:
           python research/RHRC/routes/R003_ccm_bridge/post290/build_formal_receipt.py \
             --log /tmp/pr292-rhkg/pre-bindings.log \
             --out /tmp/pr292-rhkg/pre-compiler-receipt.json
+      - name: Record no-write freshness before intentional regeneration
+        shell: bash
+        run: |
+          set -euo pipefail
+          if python research/RHRC/tools/materialize_derived_state.py --check \
+              > /tmp/pr292-rhkg/derived-check-before-write.log 2>&1; then
+            echo 'FRESH_BEFORE_WRITE' > /tmp/pr292-rhkg/pre-write-disposition.txt
+          else
+            code=$?
+            echo "PRE_WRITE_CHECK_FAILED:$code; strict transactional write and checks still required" \
+              > /tmp/pr292-rhkg/pre-write-disposition.txt
+            tail -30 /tmp/pr292-rhkg/derived-check-before-write.log
+          fi
       - name: Transactionally regenerate and independently check every declared derived-state output
         shell: bash
         run: |
@@ -144,17 +169,33 @@ jobs:
           python research/RHRC/routes/R003_ccm_bridge/post290/build_formal_receipt.py \
             --log /tmp/pr292-rhkg/final-bindings.log \
             --out /tmp/pr292-rhkg/final-compiler-receipt.json
-          python research/RHRC/tools/materialize_derived_state.py --check \
-            > /tmp/pr292-rhkg/derived-check-after-commit.log 2>&1 || { tail -100 /tmp/pr292-rhkg/derived-check-after-commit.log; exit 1; }
+          # The second full check runs below in a new clean checkout of this
+          # candidate commit, before any generator write in that checkout.
           git diff --exit-code HEAD -- '*.lean' lean-toolchain lake-manifest.json lakefile.lean lakefile.toml
+          test -z "$(git status --porcelain --untracked-files=all)"
+      - name: Check the candidate in a new clean checkout before any generator write there
+        shell: bash
+        run: |
+          set -euo pipefail
+          git worktree add --detach /tmp/pr292-clean-checkout HEAD
+          ln -s "$GITHUB_WORKSPACE/.lake" /tmp/pr292-clean-checkout/.lake
+          cd /tmp/pr292-clean-checkout
+          test -z "$(git status --porcelain --untracked-files=all)"
+          git rev-parse HEAD > /tmp/pr292-rhkg/CLEAN_CHECKOUT_HEAD.txt
+          git rev-parse 'HEAD^{tree}' > /tmp/pr292-rhkg/CLEAN_CHECKOUT_TREE.txt
+          python research/RHRC/tools/materialize_derived_state.py --check \
+            > /tmp/pr292-rhkg/derived-check-after-commit.log 2>&1 || \
+            { tail -100 /tmp/pr292-rhkg/derived-check-after-commit.log; exit 1; }
+          cp /tmp/pr292-rhkg/derived-check-after-commit.log \
+            /tmp/pr292-rhkg/derived-check-clean-checkout.log
           test -z "$(git status --porcelain --untracked-files=all)"
       - name: Publish only a fast-forward verified generated-state commit
         shell: bash
         run: |
           set -euo pipefail
-          git fetch --no-tags origin refs/heads/research/post290-step123-output
+          git fetch --no-tags origin "$GITHUB_REF"
           test "$(git rev-parse FETCH_HEAD)" = "$GITHUB_SHA"
-          git push origin HEAD:refs/heads/research/post290-step123-output
+          git push origin "HEAD:$GITHUB_REF"
           echo "Exact generated HEAD: $(git rev-parse HEAD)"
       - name: Preserve compiler/graph receipts, including negative results
         if: always()

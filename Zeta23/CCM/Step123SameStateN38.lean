@@ -11,6 +11,10 @@ Weil response restricted to the aperture; its exterior is not assumed to be
 globally square integrable.  The legal projection, its pole-normal difference
 from neutral compression, and the outer Galerkin residual remain distinct.
 Their exact recombination and orthogonality do not assert any term vanishes.
+The full legal projection is proved to retain the original parity using the
+actual matrix's boundary-normal residual.  The removed component is then
+proved to lie on the corresponding elementary-pole normal line, so an
+opposite-parity legal component cannot be hidden in the normal term.
 
 The final bridge projects the same response plus eta times the same physical
 detector onto the actual predecessor.  It identifies this projection with the
@@ -27,7 +31,15 @@ namespace Zeta23.CCM
 
 open Zeta23.ExceptionalZero
 
-private def n38_nativeLegalView (σ : ReversalParity) (L : ℝ) (K : ℕ) :
+-- These are inherited coefficient metrics, exposed locally so projection
+-- formulas elaborate in the same dictionaries as the native normal theorem.
+set_option allowUnsafeReducibility true in
+attribute [local reducible] Submodule.innerProductSpace
+  poleNeutralEven_innerProductSpace poleNeutralOdd_innerProductSpace
+  euclideanParityBoundaryFlatSubspace
+
+/-- Read a native pole-neutral vector in its inherited legal parity carrier. -/
+def canonicalNativeParityLegalView (σ : ReversalParity) (L : ℝ) (K : ℕ) :
     nativePoleNeutralParitySpace σ L K → euclideanParityBoundaryFlatSubspace σ K := by
   cases σ
   · exact fun p => p.val
@@ -36,7 +48,7 @@ private def n38_nativeLegalView (σ : ReversalParity) (L : ℝ) (K : ℕ) :
 private theorem n38_nativeLegalView_ambient (σ : ReversalParity) (L : ℝ) (K : ℕ)
     (p : nativePoleNeutralParitySpace σ L K) :
     canonicalNativeCoefficientInclusion σ L K p =
-      (n38_nativeLegalView σ L K p : EuclideanSpace ℂ (Fin (2 * K + 1))) := by
+      (canonicalNativeParityLegalView σ L K p : EuclideanSpace ℂ (Fin (2 * K + 1))) := by
   cases σ <;> rfl
 
 private theorem n38_parityLegal_mem_legal (σ : ReversalParity) (K : ℕ)
@@ -74,9 +86,9 @@ private theorem n38_parityCompressionResidual_mem_legalOrthogonal
     have h := evenCompressionResidual_mem_evenNormalSubspace L K p
     have hle : evenNormalSubspace K ≤ (euclideanBoundaryFlatSubspace K)ᗮ := by
       apply sup_le
-      · exact (Submodule.span_singleton_le_iff_mem).mpr
+      · exact (Submodule.span_singleton_le_iff_mem _ _).mpr
           (n38_power_mem_legalOrthogonal K 0 (by omega))
-      · exact (Submodule.span_singleton_le_iff_mem).mpr
+      · exact (Submodule.span_singleton_le_iff_mem _ _).mpr
           (n38_power_mem_legalOrthogonal K 2 (by omega))
     exact hle h
   | odd =>
@@ -96,7 +108,7 @@ private theorem n38_parityCompressionResidual_mem_legalOrthogonal
       rw [← oddBoundaryFlat_normal_eq_oddNormalSubspace]
       exact ⟨ho, (euclideanOddCoefficientSubspace K).sub_mem hy hq⟩
     have hle : oddNormalSubspace K ≤ (euclideanBoundaryFlatSubspace K)ᗮ :=
-      (Submodule.span_singleton_le_iff_mem).mpr
+      (Submodule.span_singleton_le_iff_mem _ _).mpr
         (n38_power_mem_legalOrthogonal K 1 (by omega))
     exact hle hn
 
@@ -111,10 +123,24 @@ def canonicalParityPolePhysicalNormal (σ : ReversalParity) {L : ℝ}
     (hL : 0 < L) (K : ℕ) : CanonicalPhysicalL2 :=
   canonicalPhysicalIsometry hL K (canonicalParityPoleLegalNormal σ L K)
 
+private theorem n38_oddPoleProjection_line (L : ℝ) (K : ℕ)
+    (y : euclideanOddBoundaryFlatSubspace K) :
+    y - ((Submodule.orthogonalProjectionOnto (𝕜 := ℂ)
+        (E := euclideanOddBoundaryFlatSubspace K) (poleNeutralOddSubspace L K)) y :
+        euclideanOddBoundaryFlatSubspace K) =
+      (inner ℂ (canonicalPoleOddLegalNormal L K) y /
+        inner ℂ (canonicalPoleOddLegalNormal L K) (canonicalPoleOddLegalNormal L K)) •
+          canonicalPoleOddLegalNormal L K := by
+  rw [Submodule.coe_orthogonalProjectionOnto_apply,
+    poleNeutralOddSubspace_eq_orthogonal_normal,
+    Submodule.starProjection_orthogonal_val, sub_sub_cancel,
+    Submodule.starProjection_singleton ℂ]
+  simp only [inner_self_eq_norm_sq_to_K, RCLike.ofReal_pow]
+
 private theorem n38_parityPoleResidual_line (σ : ReversalParity) (L : ℝ) (K : ℕ)
     (p : nativePoleNeutralParitySpace σ L K) :
     ∃ c : ℂ,
-      (parityCompressedCanonical σ L K (n38_nativeLegalView σ L K p) :
+      (parityCompressedCanonical σ L K (canonicalNativeParityLegalView σ L K p) :
           EuclideanSpace ℂ (Fin (2 * K + 1))) -
         canonicalNativeCoefficientInclusion σ L K
           (nativePoleNeutralParityCanonical σ L K p) =
@@ -133,14 +159,7 @@ private theorem n38_parityPoleResidual_line (σ : ReversalParity) (L : ℝ) (K :
     have h : y - (poleNeutralOddCompressedCanonical L K p :
         euclideanOddBoundaryFlatSubspace K) =
         (inner ℂ g y / inner ℂ g g) • g := by
-      rw [coe_poleNeutralOddCompressedCanonical,
-        Submodule.coe_orthogonalProjectionOnto_apply]
-      have hp : (poleNeutralOddSubspace L K).starProjection =
-          ((ℂ ∙ canonicalPoleOddLegalNormal L K)ᗮ).starProjection := by
-        rw [poleNeutralOddSubspace_eq_orthogonal_normal]
-      rw [hp, Submodule.starProjection_orthogonal_val, sub_sub_cancel,
-        Submodule.starProjection_singleton ℂ]
-      simp only [g, inner_self_eq_norm_sq_to_K, RCLike.ofReal_pow]
+      exact n38_oddPoleProjection_line L K y
     exact congrArg (fun z : euclideanOddBoundaryFlatSubspace K =>
       (z : EuclideanSpace ℂ (Fin (2 * K + 1)))) h
 
@@ -281,13 +300,13 @@ theorem Step123NativeOutput.originalDetectorLegalResponseCoordinate_eq_parityCom
       (Fin (2 * originalDetectorQuarticCutoff (fixedOriginalSincTrialAperture a) + 1))) =
       (parityCompressedCanonical σ (fixedOriginalSincTrialAperture a)
         (originalDetectorQuarticCutoff (fixedOriginalSincTrialAperture a))
-        (n38_nativeLegalView σ (fixedOriginalSincTrialAperture a)
+        (canonicalNativeParityLegalView σ (fixedOriginalSincTrialAperture a)
           (originalDetectorQuarticCutoff (fixedOriginalSincTrialAperture a))
           out.retained.state.detector) : EuclideanSpace ℂ
             (Fin (2 * originalDetectorQuarticCutoff (fixedOriginalSincTrialAperture a) + 1))) := by
   let L := fixedOriginalSincTrialAperture a
   let Kd := originalDetectorQuarticCutoff L
-  let p := n38_nativeLegalView σ L Kd out.retained.state.detector
+  let p := canonicalNativeParityLegalView σ L Kd out.retained.state.detector
   let q := parityCompressedCanonical σ L Kd p
   let qlegal : euclideanBoundaryFlatSubspace Kd :=
     ⟨q, n38_parityLegal_mem_legal σ Kd q⟩
@@ -433,20 +452,39 @@ theorem Step123NativeOutput.originalDetectorPoleNormal_eq_smul_poleNormal
     ∃ c : ℂ, out.originalDetectorPoleNormalResidual =
       c • canonicalParityPolePhysicalNormal σ out.aperture_pos
         (originalDetectorQuarticCutoff (fixedOriginalSincTrialAperture a)) := by
-  obtain ⟨c, hc⟩ := n38_parityPoleResidual_line σ
-    (fixedOriginalSincTrialAperture a)
-    (originalDetectorQuarticCutoff (fixedOriginalSincTrialAperture a))
-    out.retained.state.detector
+  let L := fixedOriginalSincTrialAperture a
+  let Kd := originalDetectorQuarticCutoff L
+  let Φ := canonicalPhysicalIsometry out.aperture_pos Kd
+  let g := (canonicalParityPoleLegalNormal σ L Kd :
+    EuclideanSpace ℂ (Fin (2 * Kd + 1)))
+  obtain ⟨c, hc⟩ := n38_parityPoleResidual_line σ L Kd out.retained.state.detector
   refine ⟨c, ?_⟩
-  change canonicalPhysicalIsometry out.aperture_pos _
-      (out.originalDetectorLegalResponseCoordinate : EuclideanSpace ℂ _) -
-    canonicalPhysicalIsometry out.aperture_pos _
-      (canonicalNativeCoefficientInclusion σ (fixedOriginalSincTrialAperture a) _
-        out.originalDetectorNeutralResponseCoordinate) =
-    c • canonicalPhysicalIsometry out.aperture_pos _
-      (canonicalParityPoleLegalNormal σ (fixedOriginalSincTrialAperture a) _)
-  rw [out.originalDetectorLegalResponseCoordinate_eq_parityCompressed,
-    out.originalDetectorNeutralResponseCoordinate_eq, ← map_sub, hc, map_smul]
+  have hlegal : out.originalDetectorLegalProjectedResponse =
+      Φ (out.originalDetectorLegalResponseCoordinate :
+        EuclideanSpace ℂ (Fin (2 * Kd + 1))) := rfl
+  have hneutral : out.originalDetectorNeutralProjectedResponse =
+      Φ (canonicalNativeCoefficientInclusion σ L Kd
+        out.originalDetectorNeutralResponseCoordinate) := rfl
+  have hcoeff : (out.originalDetectorLegalResponseCoordinate :
+      EuclideanSpace ℂ (Fin (2 * Kd + 1))) -
+        canonicalNativeCoefficientInclusion σ L Kd
+          out.originalDetectorNeutralResponseCoordinate = c • g := by
+    rw [out.originalDetectorLegalResponseCoordinate_eq_parityCompressed,
+      out.originalDetectorNeutralResponseCoordinate_eq]
+    exact hc
+  calc
+    out.originalDetectorPoleNormalResidual =
+        Φ (out.originalDetectorLegalResponseCoordinate :
+          EuclideanSpace ℂ (Fin (2 * Kd + 1))) -
+        Φ (canonicalNativeCoefficientInclusion σ L Kd
+          out.originalDetectorNeutralResponseCoordinate) := by
+      rw [Step123NativeOutput.originalDetectorPoleNormalResidual, hlegal, hneutral]
+    _ = Φ ((out.originalDetectorLegalResponseCoordinate :
+          EuclideanSpace ℂ (Fin (2 * Kd + 1))) -
+        canonicalNativeCoefficientInclusion σ L Kd
+          out.originalDetectorNeutralResponseCoordinate) := (map_sub Φ _ _).symm
+    _ = Φ (c • g) := congrArg Φ hcoeff
+    _ = c • canonicalParityPolePhysicalNormal σ out.aperture_pos Kd := map_smul Φ c g
 
 /-- The predecessor adjoint acts on the same physical realization. -/
 theorem canonicalNativePhysicalProjection_predecessor_eq
@@ -462,8 +500,9 @@ theorem canonicalNativePhysicalProjection_predecessor_eq
     inner ℂ (nativeDetectorPredecessorEmbedding σ s v)
       (canonicalNativePhysicalProjection σ hL Kd g)
   rw [canonicalNativePhysicalProjection, canonicalNativePhysicalProjection,
-    ContinuousLinearMap.adjoint_inner_right, ContinuousLinearMap.adjoint_inner_right,
-    canonicalNativePhysicalIsometry_predecessor]
+    ContinuousLinearMap.adjoint_inner_right, ContinuousLinearMap.adjoint_inner_right]
+  exact congrArg (fun z : CanonicalPhysicalL2 => inner ℂ z g)
+    (canonicalNativePhysicalIsometry_predecessor σ s v).symm
 
 /-- Original shift -eta means the local physical forcing contains +eta p. -/
 def Step123NativeOutput.originalDetectorShiftedPhysicalResponse
@@ -489,8 +528,8 @@ theorem Step123NativeOutput.originalDetectorShiftedResponseCoordinate_eq
           out.retained.state.detector) = _
   rw [canonicalNativePhysicalProjection_synthesis,
     out.originalDetectorNeutralResponseCoordinate_eq]
-  simp only [nativePoleNeutralParityShifted, LinearMap.sub_apply, LinearMap.smul_apply,
-    LinearMap.id_apply, Complex.ofReal_neg, neg_smul, sub_neg_eq_add]
+  simp only [nativePoleNeutralParityShifted, Complex.ofReal_neg, neg_smul,
+    sub_neg_eq_add, LinearMap.add_apply, LinearMap.smul_apply, LinearMap.id_apply]
 
 /-- The physical predecessor projection is literally the stored b_eta. -/
 theorem Step123NativeOutput.n38_originalDetector_predecessorForcing_eq

@@ -12,6 +12,10 @@ physical response pairing with the unchanged smooth source would vanish:
 the source is supported strictly inside the aperture.  The retained
 original depth contradicts this.  No zero parameter, closing law, global
 exterior L2 property, selected-ground substitution or second choice is used.
+
+The same packet also exposes the literal causal exterior coordinates
+`t ↦ R(-t)` and `t ↦ R(L+t)`, both with the open-positive-time indicator.
+Their values at t=0 vanish because the interior owns the physical seams.
 -/
 
 noncomputable section
@@ -100,8 +104,100 @@ theorem Step123NativeOutput.originalInterior_ne_zero
   apply out.originalInterior_not_ae_zero
   exact Filter.Eventually.of_forall (fun x => congrFun hzero x)
 
+/-- The actual original left exterior in causal time, with t=0 owned by
+the original interior. This is a view of the same stored response. -/
+def Step123NativeOutput.originalLeftCausalTail
+    {β : ℝ} {σ : ReversalParity} {a : ℝ}
+    (out : Step123NativeOutput β σ a) : ℝ → ℂ :=
+  fun t => out.smoothOriginal.left (-t)
+
+/-- The actual original right exterior in causal time, with t=0 owned by
+the original interior. No exterior L2 property is asserted. -/
+def Step123NativeOutput.originalRightCausalTail
+    {β : ℝ} {σ : ReversalParity} {a : ℝ}
+    (out : Step123NativeOutput β σ a) : ℝ → ℂ :=
+  fun t => out.smoothOriginal.right (fixedOriginalSincTrialAperture a + t)
+
+theorem Step123NativeOutput.originalLeftCausalTail_eq_indicator
+    {β : ℝ} {σ : ReversalParity} {a : ℝ}
+    (out : Step123NativeOutput β σ a) :
+    out.originalLeftCausalTail =
+      (Ioi (0 : ℝ)).indicator (fun t => out.smoothOriginal.response (-t)) := by
+  funext t
+  unfold Step123NativeOutput.originalLeftCausalTail
+  rw [out.smoothOriginal.left_eq, out.smoothOriginal.response_eq]
+  change (Iio (0 : ℝ)).indicator
+      (originalSmoothWeilResponse (nativeOriginalDetectorPhaseSign σ) a) (-t) =
+    (Ioi (0 : ℝ)).indicator
+      (fun t => originalSmoothWeilResponse (nativeOriginalDetectorPhaseSign σ) a (-t)) t
+  by_cases ht : 0 < t
+  · have hn : -t ∈ Iio (0 : ℝ) := by change -t < 0; linarith
+    rw [Set.indicator_of_mem hn, Set.indicator_of_mem ht]
+  · have hn : -t ∉ Iio (0 : ℝ) := by change ¬ -t < 0; linarith
+    rw [Set.indicator_of_notMem hn, Set.indicator_of_notMem ht]
+
+theorem Step123NativeOutput.originalRightCausalTail_eq_indicator
+    {β : ℝ} {σ : ReversalParity} {a : ℝ}
+    (out : Step123NativeOutput β σ a) :
+    out.originalRightCausalTail =
+      (Ioi (0 : ℝ)).indicator
+        (fun t => out.smoothOriginal.response (fixedOriginalSincTrialAperture a + t)) := by
+  funext t
+  unfold Step123NativeOutput.originalRightCausalTail
+  rw [out.smoothOriginal.right_eq, out.smoothOriginal.response_eq]
+  change (Ioi (fixedOriginalSincTrialAperture a)).indicator
+      (originalSmoothWeilResponse (nativeOriginalDetectorPhaseSign σ) a)
+        (fixedOriginalSincTrialAperture a + t) =
+    (Ioi (0 : ℝ)).indicator
+      (fun t => originalSmoothWeilResponse (nativeOriginalDetectorPhaseSign σ) a
+        (fixedOriginalSincTrialAperture a + t)) t
+  by_cases ht : 0 < t
+  · have hn : fixedOriginalSincTrialAperture a + t ∈
+        Ioi (fixedOriginalSincTrialAperture a) := by
+      change fixedOriginalSincTrialAperture a < fixedOriginalSincTrialAperture a + t
+      linarith
+    rw [Set.indicator_of_mem hn, Set.indicator_of_mem ht]
+  · have hn : fixedOriginalSincTrialAperture a + t ∉
+        Ioi (fixedOriginalSincTrialAperture a) := by
+      change ¬ fixedOriginalSincTrialAperture a < fixedOriginalSincTrialAperture a + t
+      linarith
+    rw [Set.indicator_of_notMem hn, Set.indicator_of_notMem ht]
+
+/-- Both original exterior tails are exactly zero at nonpositive causal
+time, including the seams t=0. -/
+theorem Step123NativeOutput.originalCausalTails_zero_of_nonpos
+    {β : ℝ} {σ : ReversalParity} {a : ℝ}
+    (out : Step123NativeOutput β σ a) {t : ℝ} (ht : t ≤ 0) :
+    out.originalLeftCausalTail t = 0 ∧ out.originalRightCausalTail t = 0 := by
+  have hn : t ∉ Ioi (0 : ℝ) := not_lt_of_ge ht
+  constructor
+  · rw [out.originalLeftCausalTail_eq_indicator]
+    exact Set.indicator_of_notMem hn _
+  · rw [out.originalRightCausalTail_eq_indicator]
+    exact Set.indicator_of_notMem hn _
+
+/-- Exact physical reconstruction from the same two causal tail views
+and the stored interior, with the interior owning both endpoints. -/
+theorem Step123NativeOutput.originalResponse_causalTail_reconstruction
+    {β : ℝ} {σ : ReversalParity} {a : ℝ}
+    (out : Step123NativeOutput β σ a) (x : ℝ) :
+    out.smoothOriginal.response x = out.originalLeftCausalTail (-x) +
+      out.smoothOriginal.interior x +
+        out.originalRightCausalTail (x - fixedOriginalSincTrialAperture a) := by
+  change out.smoothOriginal.response x = out.smoothOriginal.left (-(-x)) +
+    out.smoothOriginal.interior x +
+      out.smoothOriginal.right
+        (fixedOriginalSincTrialAperture a + (x - fixedOriginalSincTrialAperture a))
+  rw [neg_neg, show fixedOriginalSincTrialAperture a +
+      (x - fixedOriginalSincTrialAperture a) = x by ring]
+  exact out.smoothOriginal.reconstruction x
+
 end Zeta23.CCM
 
 #print axioms Zeta23.CCM.Step123NativeOutput.originalWeilEnergy_neg
 #print axioms Zeta23.CCM.Step123NativeOutput.originalInterior_not_ae_zero
 #print axioms Zeta23.CCM.Step123NativeOutput.originalInterior_ne_zero
+#print axioms Zeta23.CCM.Step123NativeOutput.originalLeftCausalTail_eq_indicator
+#print axioms Zeta23.CCM.Step123NativeOutput.originalRightCausalTail_eq_indicator
+#print axioms Zeta23.CCM.Step123NativeOutput.originalCausalTails_zero_of_nonpos
+#print axioms Zeta23.CCM.Step123NativeOutput.originalResponse_causalTail_reconstruction

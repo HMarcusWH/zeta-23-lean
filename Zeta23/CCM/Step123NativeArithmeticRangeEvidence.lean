@@ -29,13 +29,13 @@ structure Step123NativeArithmeticRangeEvidence
     {β : ℝ} {σ : ReversalParity} {a : ℝ}
     (out : Step123NativeOutput β σ a) where
   original_prime_field_identity :
-    out.arithmeticView.1 = nativeOriginalPrimeField
+    out.arithmeticData.1 = nativeOriginalPrimeField
   original_integer_drive_identity :
-    out.arithmeticView.2 = nativeOriginalIntegerDrive
+    out.arithmeticData.2 = nativeOriginalIntegerDrive
   original_range_input_identity :
-    out.rangeView.1 = nativeCompletedInput
+    out.rangeData.1 = nativeCompletedInput
   original_range_correction_identity :
-    out.rangeView.2 = nativeCompletionCorrection
+    out.rangeData.2 = nativeCompletionCorrection
   integer_divisor_exact :
     ∀ t : ℝ, nativeIntegerTranslateAction nativeOriginalPrimeField t =
       nativeOriginalIntegerDrive t

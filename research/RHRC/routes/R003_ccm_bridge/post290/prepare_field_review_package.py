@@ -89,22 +89,63 @@ CANDIDATES = {
     "G04": ["Zeta23.ExceptionalZero.nativeCompletedInput_not_mem_rangeClosure_of_offLine_zero"],
 }
 
-# Each field is also projected by the separate same-packet typed consumer.
+# Exact same-packet candidates supplement the source-only component proofs.
+CANDIDATES["N01"].append("Zeta23.CCM.Step123NativeFieldRecord.n01_source_scale")
+CANDIDATES["N02"].append("Zeta23.CCM.Step123NativeFieldRecord.n02_source_q_k_j")
+CANDIDATES["N03"].append("Zeta23.CCM.Step123NativeFieldRecord.n03_source_properties")
+CANDIDATES["N04"].append("Zeta23.CCM.Step123NativeFieldRecord.n04_source_bounds")
+CANDIDATES["N05"].append("Zeta23.CCM.Step123NativeFieldRecord.n05_trial_index")
+CANDIDATES["N06"].append("Zeta23.CCM.Step123NativeFieldRecord.n06_trial_original")
+CANDIDATES["N07"].append("Zeta23.CCM.Step123NativeFieldRecord.n07_trial_original_properties")
+CANDIDATES["N08"].append("Zeta23.CCM.Step123NativeFieldRecord.n08_image_raw")
+CANDIDATES["N09"].append("Zeta23.CCM.Step123NativeFieldRecord.n09_image_positive_primitive")
+CANDIDATES["N10"].append("Zeta23.CCM.Step123NativeFieldRecord.n10_image_endpoint_jets")
+CANDIDATES["N11"].append("Zeta23.CCM.Step123NativeFieldRecord.n11_image_native_p")
+CANDIDATES["N12"].append("Zeta23.CCM.Step123NativeFieldRecord.n12_image_unit_and_poles")
+CANDIDATES["N13"].append("Zeta23.CCM.Step123NativeFieldRecord.n13_image_physical_equality")
+CANDIDATES["N15"].append("Zeta23.CCM.Step123NativeFieldRecord.n15_phase_full_matrices")
+CANDIDATES["N16"].append("Zeta23.CCM.Step123NativeFieldRecord.n16_phase_scalar_contract")
+CANDIDATES["N17"].append("Zeta23.CCM.Step123NativeFieldRecord.n17_retained_state")
+CANDIDATES["N18"].append("Zeta23.CCM.Step123NativeFieldRecord.n18_retained_eta_lambda")
+CANDIDATES["N19"].append("Zeta23.CCM.Step123NativeFieldRecord.n19_retained_inverses")
+CANDIDATES["N20"].append("Zeta23.CCM.Step123NativeFieldRecord.n20_retained_ground")
+CANDIDATES["N22"].append("Zeta23.CCM.Step123NativeFieldRecord.n22_retained_source_correction")
+CANDIDATES["N24"].append("Zeta23.CCM.Step123NativeFieldRecord.n24_retained_admissible")
+CANDIDATES["N25"].append("Zeta23.CCM.Step123NativeFieldRecord.n25_schur_detector")
+CANDIDATES["N26"].append("Zeta23.CCM.Step123NativeFieldRecord.n26_schur_ground")
+CANDIDATES["N27"].append("Zeta23.CCM.Step123NativeFieldRecord.n27_residual_neutral")
+CANDIDATES["N28"].append("Zeta23.CCM.Step123NativeFieldRecord.n28_residual_gram")
+CANDIDATES["N29"].append("Zeta23.CCM.Step123NativeFieldRecord.n29_native_X_U")
+CANDIDATES["N30"].append("Zeta23.CCM.Step123NativeFieldRecord.n30_native_input_decay")
+CANDIDATES["N31"].append("Zeta23.CCM.Step123NativeFieldRecord.n31_native_a_Y")
+CANDIDATES["N32"].append("Zeta23.CCM.Step123NativeFieldRecord.n32_native_transforms")
+CANDIDATES["N33"].append("Zeta23.CCM.Step123NativeFieldRecord.n33_range_operator")
+CANDIDATES["N34"].append("Zeta23.CCM.Step123NativeFieldRecord.n34_range_residual_iteration")
+CANDIDATES["N35"].append("Zeta23.CCM.Step123NativeFieldRecord.n35_forcing_direct")
+CANDIDATES["N39"].append("Zeta23.CCM.Step123NativeFieldRecord.n39_exterior_original")
+CANDIDATES["N40"].append("Zeta23.CCM.Step123NativeFieldRecord.n40_exterior_history")
+CANDIDATES["N14"] = ['Zeta23.CCM.step123NativeOutput_imageErrors_commonThreshold', 'Zeta23.ExceptionalZero.GeneratedStep123CompleteOutput.imageErrors']
+CANDIDATES["N21"] = ['Zeta23.CCM.Step123NativeOutput.n21_retained_branch', 'Zeta23.CCM.Step123NativeOutput.n21_groundBranch_facts']
+CANDIDATES["N23"] = ['Zeta23.CCM.Step123NativeOutput.n23_retained_tie']
+CANDIDATES["N36"] = ['Zeta23.CCM.Step123NativeOutput.n36_forcingSourceChannels']
+CANDIDATES["N37"] = ['Zeta23.CCM.step123NativeOutput_imageErrors_forcingError_commonThreshold', 'Zeta23.ExceptionalZero.GeneratedStep123CompleteOutput.forcingErrors']
+CANDIDATES["N38"] = ['Zeta23.CCM.Step123NativeOutput.n38_forcing_ambient_residuals', 'Zeta23.CCM.Step123NativeOutput.originalDetectorPoleNormal_eq_smul_poleNormal']
+CANDIDATES["G02"] = ['Zeta23.RHRC.mc02_original_detector_cofinal', 'Zeta23.ExceptionalZero.GeneratedStep123CompleteOutput.thresholds_paid']
+CANDIDATES["G03"] = ['Zeta23.ExceptionalZero.exists_generatedStep123CompleteOutput']
+CANDIDATES["G04"] = ['Zeta23.ExceptionalZero.GeneratedStep123RangeObstruction.ofOffLine']
+CANDIDATES["N39"].append("Zeta23.CCM.Step123NativeOutput.originalInterior_not_ae_zero")
 for _index in range(1, 41):
     CANDIDATES[f"N{_index:02d}"].append(f"Zeta23.RHRC.consumeN{_index:02d}")
 for _index in range(1, 5):
     CANDIDATES[f"G{_index:02d}"].append(f"Zeta23.RHRC.consumeG{_index:02d}")
-CANDIDATES["N14"].extend(['Zeta23.CCM.step123NativeOutput_imageErrors_commonThreshold'])
-CANDIDATES["N21"].extend(['Zeta23.CCM.Step123NativeOutput.n21_retained_branch'])
-CANDIDATES["N23"].extend(['Zeta23.CCM.Step123NativeOutput.n23_retained_tie'])
-CANDIDATES["N36"].extend(['Zeta23.CCM.Step123NativeOutput.n36_forcingSourceChannels'])
-CANDIDATES["N37"].extend(['Zeta23.CCM.step123NativeOutput_imageErrors_forcingError_commonThreshold', 'Zeta23.ExceptionalZero.GeneratedStep123CompleteOutput.forcingErrors'])
-CANDIDATES["N38"].extend(['Zeta23.CCM.Step123NativeOutput.n38_forcing_ambient_residuals'])
-CANDIDATES["G03"].extend(['Zeta23.ExceptionalZero.exists_generatedStep123CompleteOutput'])
-CANDIDATES["G04"].extend(['Zeta23.ExceptionalZero.GeneratedStep123RangeObstruction.ofOffLine'])
 
-CANDIDATES["N39"].append("Zeta23.CCM.Step123NativeOutput.originalInterior_not_ae_zero")
-
+# Prefer the complete typed accessor, then its same-packet proof field,
+# before historical component candidates. Keep each question exactly once.
+for _field, _names in CANDIDATES.items():
+    _same_packet = [name for name in _names
+                    if name.startswith("Zeta23.CCM.Step123NativeFieldRecord.")]
+    CANDIDATES[_field] = list(dict.fromkeys(
+        [f"Zeta23.RHRC.consume{_field}"] + _same_packet + _names))
 
 
 def git(*args):
@@ -199,8 +240,9 @@ def produce(formal, contract, head, tree):
         "independent_assumption_review_pass": False,
         "field_reviews": [{
             "id": row["id"],
-            "declaration_ref": row["candidate_declarations"][0]["name"]
-                if row["candidate_declarations"] else None,
+            "declaration_ref": next((candidate["name"]
+                for candidate in row["candidate_declarations"]
+                if candidate["compiler_eligible"]), None),
             "semantic_proof_review": "NOT_REVIEWED",
             "evidence_verified": False,
             "reason": "Unreviewed template; independent mathematical verification required.",

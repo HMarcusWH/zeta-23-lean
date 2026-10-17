@@ -28,6 +28,9 @@ open Zeta23.ExceptionalZero
 structure Step123NativeOutput (β : ℝ) (σ : ReversalParity) (a : ℝ) where
   aperture_pos : 0 < fixedOriginalSincTrialAperture a
   aperture_gt_four : 4 < fixedOriginalSincTrialAperture a
+  /-- Paid once by the actual source producer, before the native views. -/
+  image_threshold_paid :
+    originalDetectorPaddedImageThreshold < fixedOriginalSincTrialAperture a
   /-- The unchanged original smooth trial has the producer's already
   proved negative margin at this same separation and original phase. -/
   original_depth :
@@ -76,6 +79,7 @@ def Step123NativeOutput.ofRetained
   refine {
     aperture_pos := d.aperture_pos
     aperture_gt_four := hfour
+    image_threshold_paid := d.image_threshold_paid
     original_depth := d.original_depth
     retained := Step123NativeCorePacket.ofState σ state
     detector_source_eq := ?_
@@ -168,7 +172,7 @@ theorem Step123NativeOutput.originalDetector_schur_loss
 /-- The source/arithmetic view is derived from the one fixed original
 prime field and its exact integer drive. It is not an arbitrary pair
 of functions supplied to the output record. -/
-def Step123NativeOutput.arithmeticView
+def Step123NativeOutput.arithmeticData
     {β : ℝ} {σ : ReversalParity} {a : ℝ}
     (o : Step123NativeOutput β σ a) : (ℝ → ℝ) × (ℝ → ℝ) :=
   (nativeOriginalPrimeField, nativeOriginalIntegerDrive)
@@ -176,14 +180,14 @@ def Step123NativeOutput.arithmeticView
 /-- The range/input view is the actual original Y and its own
 correction.  Its stable L2 and causal assertions are separately
 theorem-backed in NativeCompletedInput, not definitions of RH. -/
-def Step123NativeOutput.rangeView
+def Step123NativeOutput.rangeData
     {β : ℝ} {σ : ReversalParity} {a : ℝ}
     (o : Step123NativeOutput β σ a) : (ℝ → ℝ) × (ℝ → ℝ) :=
   (nativeCompletedInput, nativeCompletionCorrection)
 
 /-- The structural view retains exactly the single selected state and
 its full detector, forcing and exterior history. -/
-def Step123NativeOutput.structuralView
+def Step123NativeOutput.structuralData
     {β : ℝ} {σ : ReversalParity} {a : ℝ}
     (o : Step123NativeOutput β σ a) :
     Step123NativeCorePacket σ

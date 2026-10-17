@@ -118,16 +118,16 @@ prime field and integer drive, not reconstructed trial or ground data. -/
 theorem Step123NativeOutput.arithmeticView_eq_fixed
     {β : ℝ} {σ : ReversalParity} {a : ℝ}
     (out : Step123NativeOutput β σ a) :
-    out.arithmeticView.1 = nativeOriginalPrimeField ∧
-    out.arithmeticView.2 = nativeOriginalIntegerDrive := ⟨rfl, rfl⟩
+    out.arithmeticData.1 = nativeOriginalPrimeField ∧
+    out.arithmeticData.2 = nativeOriginalIntegerDrive := ⟨rfl, rfl⟩
 
 /-- N31: actual causal-completion quantities are the native input and
 correction, with no global inverse or A-X/B-Y assumption. -/
 theorem Step123NativeOutput.rangeView_eq_actual
     {β : ℝ} {σ : ReversalParity} {a : ℝ}
     (out : Step123NativeOutput β σ a) :
-    out.rangeView.1 = nativeCompletedInput ∧
-    out.rangeView.2 = nativeCompletionCorrection := ⟨rfl, rfl⟩
+    out.rangeData.1 = nativeCompletedInput ∧
+    out.rangeData.2 = nativeCompletionCorrection := ⟨rfl, rfl⟩
 
 /-- N35/N38: exact *one* original selected forcing vector. A changed
 detector or selected ground cannot satisfy this by a rename. -/

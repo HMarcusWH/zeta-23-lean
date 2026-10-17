@@ -635,18 +635,18 @@ theorem Step123NativeOutput.n36_qX_bridge
     (out : Step123NativeOutput β σ a) :
     fixedOriginalSincKernel = universalSincKernel UniversalSinc.fixedScale ∧
     universalSincDifferential nativeOriginalKernelPrimeField =
-      (fun t => (out.arithmeticView.1 t : ℂ)) ∧
+      (fun t => (out.arithmeticData.1 t : ℂ)) ∧
     (∀ t : ℝ,
       nativeComplexPrimeField (fun u => ∫ x : ℝ,
           universalSincKernel UniversalSinc.fixedScale x *
             universalSincKernel UniversalSinc.fixedScale (u - x)) t =
         ∫ x : ℝ, (universalSincSource UniversalSinc.fixedScale x : ℂ) *
-          (out.arithmeticView.1 (t - x) : ℂ)) ∧
+          (out.arithmeticData.1 (t - x) : ℂ)) ∧
     (∀ t : ℝ,
       (∫ x : ℝ, universalSincKernel UniversalSinc.fixedScale x *
           nativeOriginalKernelPrimeField (t - x)) =
         ∫ x : ℝ, (universalSincSource UniversalSinc.fixedScale x : ℂ) *
-          (out.arithmeticView.1 (t - x) : ℂ)) ∧
+          (out.arithmeticData.1 (t - x) : ℂ)) ∧
     (∫ x : ℝ, universalSincSource UniversalSinc.fixedScale x) = 1 := by
   have hk : NativeComplexSourceSupported UniversalSinc.fixedScale
       (universalSincKernel UniversalSinc.fixedScale) :=
@@ -658,7 +658,7 @@ theorem Step123NativeOutput.n36_qX_bridge
           universalSincKernel UniversalSinc.fixedScale x *
             universalSincKernel UniversalSinc.fixedScale (u - x)) t =
         ∫ x : ℝ, (universalSincSource UniversalSinc.fixedScale x : ℂ) *
-          (out.arithmeticView.1 (t - x) : ℂ) :=
+          (out.arithmeticData.1 (t - x) : ℂ) :=
     originalDetector_correlationField_eq_sourceConvolution t
   refine ⟨rfl, nativeOriginalKernelPrimeField_poleImage, hqX, fun t => ?_,
     out.originalSource_mass_one⟩
@@ -799,12 +799,12 @@ structure Step123NativeOutput.ForcingSourceChannels
           nativePhysicalH1Norm out.physicalSourceError * ‖v‖
   qX_bridge :
     universalSincDifferential nativeOriginalKernelPrimeField =
-      (fun t => (out.arithmeticView.1 t : ℂ)) ∧
+      (fun t => (out.arithmeticData.1 t : ℂ)) ∧
     ∀ t : ℝ,
       (∫ x : ℝ, universalSincKernel UniversalSinc.fixedScale x *
           nativeOriginalKernelPrimeField (t - x)) =
         ∫ x : ℝ, (universalSincSource UniversalSinc.fixedScale x : ℂ) *
-          (out.arithmeticView.1 (t - x) : ℂ)
+          (out.arithmeticData.1 (t - x) : ℂ)
 
 /-- N36 `forcing.source_channels` for the actual stored packet. -/
 theorem Step123NativeOutput.n36_forcingSourceChannels

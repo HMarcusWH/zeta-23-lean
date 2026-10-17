@@ -20,6 +20,11 @@ synthesis.  The projected forcing error is
 
 What is proved here:
 
+* `step123NativeOutput_imageErrors_forcingError_at_sourceThreshold` chooses
+  source-only constants `C_Q, C_W > 0` before every packet and supplies the
+  full combined bounds with no aperture hypothesis: every native packet
+  carries the source producer's strict proof that the named upstream image
+  threshold is paid.
 * `step123NativeOutput_imageErrors_forcingError_commonThreshold`: source-only
   constants `C_Q, C_W > 0` and ONE threshold `L0 ≥ 4`, all chosen before any
   packet. `L0` is the N14 threshold: for every stored packet with
@@ -51,8 +56,8 @@ The constant `C_Q` is uniform over all packets (it is the constant of
 `originalDetector_forcing_error_bound`), which is stronger than the
 per-packet existential of `Step123NativeOutput.actualProjectedForcing_error_bound`.
 No bridge identity, error bound, shift bound or branch consequence is a
-hypothesis; the only inputs are the stored packet, the aperture lower bound
-`L0 ≤ L` and the predecessor test `v`.
+hypothesis. The named theorem takes only the stored packet and predecessor
+test; the compatibility formulations retain the aperture lower bound.
 
 What is NOT proved here: no decay of the composed right-hand side (the
 finite-mode and shift factors grow like `e^{L/2}` and `L^8 e^{L/2}` and are
@@ -70,13 +75,149 @@ namespace Zeta23.CCM
 
 open Zeta23.ExceptionalZero
 
-/-- N37 together with N14 under ONE threshold.  The constants `C_Q`
+/-- N37 together with N14 at the named upstream threshold, already paid by
+every native packet. The constants `C_Q`
 (forcing bilinear bound) and `C_W` (Weil bilinear bound in the shift
-control) and the threshold `L0` (the N14 threshold) are chosen before any
-packet.  For every stored packet with `L0 ≤ L`, the three N14 same-state
+control) are chosen before any packet. For every stored packet, the three N14 same-state
 image errors, the stored shift upper bound, and both forcing-error
 bounds (with the stored `eta`, and with `eta` replaced by its proved
 upper bound) hold at the quartic H1 rate. -/
+theorem step123NativeOutput_imageErrors_forcingError_at_sourceThreshold :
+    ∃ C_Q C_W : ℝ, 0 < C_Q ∧ 0 < C_W ∧
+      ∀ {β : ℝ} {σ : ReversalParity} {a : ℝ}
+        (out : Step123NativeOutput β σ a),
+          (originalDetectorPhysicalH1Error
+              (finitePhysicalSynthesis
+                (fixedOriginalSincTrialAperture a)
+                (originalDetectorQuarticCutoff (fixedOriginalSincTrialAperture a))
+                (canonicalNativeCoefficientInclusion σ
+                  (fixedOriginalSincTrialAperture a)
+                  (originalDetectorQuarticCutoff (fixedOriginalSincTrialAperture a))
+                  out.retained.state.detector))
+              out.originalTrial ≤
+            (fixedOriginalSincTrialAperture a) ^ (17 / 2 : ℝ) *
+              Real.exp (-originalDetectorRetainedDecayRate UniversalSinc.fixedScale *
+                originalDetectorQuarticRootScale (fixedOriginalSincTrialAperture a)) ∧
+          nativePhysicalH1Norm out.physicalSourceError ≤
+            (fixedOriginalSincTrialAperture a) ^ (17 / 2 : ℝ) *
+              Real.exp (-originalDetectorRetainedDecayRate UniversalSinc.fixedScale *
+                originalDetectorQuarticRootScale (fixedOriginalSincTrialAperture a)) ∧
+          |(inner ℂ (nativePoleNeutralParityCanonical σ
+                (fixedOriginalSincTrialAperture a)
+                (originalDetectorQuarticCutoff (fixedOriginalSincTrialAperture a))
+                out.retained.state.detector) out.retained.state.detector).re -
+              (zetaZeroConfig.W out.originalTrial out.originalTrial).re| ≤
+            (1 + fixedOriginalSincTrialAperture a) *
+              (fixedOriginalSincTrialAperture a) ^ (17 / 2 : ℝ) *
+              Real.exp (fixedOriginalSincTrialAperture a / 2 -
+                originalDetectorRetainedDecayRate UniversalSinc.fixedScale *
+                  originalDetectorQuarticRootScale (fixedOriginalSincTrialAperture a))) ∧
+          out.retained.state.selection.eta ≤
+            (C_W / 2) * (1 + fixedOriginalSincTrialAperture a) *
+              Real.exp (fixedOriginalSincTrialAperture a / 2) *
+              (1 + (2 * Real.pi *
+                (originalDetectorQuarticCutoff (fixedOriginalSincTrialAperture a)) /
+                  fixedOriginalSincTrialAperture a) ^ 2) ∧
+          ∀ (v : nativePoleNeutralParitySpace σ
+              (fixedOriginalSincTrialAperture a)
+              (out.retained.state.selection.cutoff - 1)),
+            ‖zetaZeroConfig.W out.physicalSourceError
+                (finitePhysicalSynthesis
+                  (fixedOriginalSincTrialAperture a)
+                  (out.retained.state.selection.cutoff - 1)
+                  (canonicalNativeCoefficientInclusion σ
+                    (fixedOriginalSincTrialAperture a)
+                    (out.retained.state.selection.cutoff - 1) v)) +
+                (out.retained.state.selection.eta : ℂ) *
+                  EF.weilTest out.physicalSourceError
+                    (finitePhysicalSynthesis
+                      (fixedOriginalSincTrialAperture a)
+                      (out.retained.state.selection.cutoff - 1)
+                      (canonicalNativeCoefficientInclusion σ
+                        (fixedOriginalSincTrialAperture a)
+                        (out.retained.state.selection.cutoff - 1) v)) 0‖ ≤
+              (C_Q * (1 + fixedOriginalSincTrialAperture a) *
+                  Real.exp (fixedOriginalSincTrialAperture a / 2) *
+                  Real.sqrt (1 +
+                    (2 * Real.pi *
+                      (out.retained.state.selection.cutoff - 1 : ℕ) /
+                      fixedOriginalSincTrialAperture a) ^ 2) +
+                out.retained.state.selection.eta) *
+                ((fixedOriginalSincTrialAperture a) ^ (17 / 2 : ℝ) *
+                  Real.exp (-originalDetectorRetainedDecayRate UniversalSinc.fixedScale *
+                    originalDetectorQuarticRootScale (fixedOriginalSincTrialAperture a))) *
+                ‖v‖ ∧
+            ‖zetaZeroConfig.W out.physicalSourceError
+                (finitePhysicalSynthesis
+                  (fixedOriginalSincTrialAperture a)
+                  (out.retained.state.selection.cutoff - 1)
+                  (canonicalNativeCoefficientInclusion σ
+                    (fixedOriginalSincTrialAperture a)
+                    (out.retained.state.selection.cutoff - 1) v)) +
+                (out.retained.state.selection.eta : ℂ) *
+                  EF.weilTest out.physicalSourceError
+                    (finitePhysicalSynthesis
+                      (fixedOriginalSincTrialAperture a)
+                      (out.retained.state.selection.cutoff - 1)
+                      (canonicalNativeCoefficientInclusion σ
+                        (fixedOriginalSincTrialAperture a)
+                        (out.retained.state.selection.cutoff - 1) v)) 0‖ ≤
+              (C_Q * (1 + fixedOriginalSincTrialAperture a) *
+                  Real.exp (fixedOriginalSincTrialAperture a / 2) *
+                  Real.sqrt (1 +
+                    (2 * Real.pi *
+                      (out.retained.state.selection.cutoff - 1 : ℕ) /
+                      fixedOriginalSincTrialAperture a) ^ 2) +
+                (C_W / 2) * (1 + fixedOriginalSincTrialAperture a) *
+                  Real.exp (fixedOriginalSincTrialAperture a / 2) *
+                  (1 + (2 * Real.pi *
+                    (originalDetectorQuarticCutoff (fixedOriginalSincTrialAperture a)) /
+                      fixedOriginalSincTrialAperture a) ^ 2)) *
+                ((fixedOriginalSincTrialAperture a) ^ (17 / 2 : ℝ) *
+                  Real.exp (-originalDetectorRetainedDecayRate UniversalSinc.fixedScale *
+                    originalDetectorQuarticRootScale (fixedOriginalSincTrialAperture a))) *
+                ‖v‖ := by
+  obtain ⟨C_Q, hCQ, hForcing⟩ := originalDetector_forcing_error_bound
+  obtain ⟨C_W, hCW, hEtaUpper⟩ := originalDetector_eta_source_upper
+  refine ⟨C_Q, C_W, hCQ, hCW, ?_⟩
+  intro β σ a out
+  have hImage := step123NativeOutput_imageErrors_at_sourceThreshold out
+  have hEta := hEtaUpper β σ a out
+  refine ⟨hImage, hEta, ?_⟩
+  intro v
+  have hEtaNonneg : 0 ≤ out.retained.state.selection.eta := by
+    have h1 : 0 < Real.exp (β * fixedOriginalSincTrialAperture a) / 3 := by positivity
+    exact (h1.trans out.source_selector.eta_lower).le
+  obtain ⟨hC2, hSupport⟩ := out.physicalSourceError_admissible
+  have hQ := hForcing σ (fixedOriginalSincTrialAperture a) out.aperture_pos
+    (out.retained.state.selection.cutoff - 1)
+    out.retained.state.selection.eta hEtaNonneg out.physicalSourceError
+    hC2 hSupport v
+  have hL : 0 ≤ fixedOriginalSincTrialAperture a := out.aperture_pos.le
+  have hMode : 0 ≤ C_Q * (1 + fixedOriginalSincTrialAperture a) *
+      Real.exp (fixedOriginalSincTrialAperture a / 2) *
+      Real.sqrt (1 +
+        (2 * Real.pi * (out.retained.state.selection.cutoff - 1 : ℕ) /
+          fixedOriginalSincTrialAperture a) ^ 2) := by
+    have := Real.sqrt_nonneg (1 +
+        (2 * Real.pi * (out.retained.state.selection.cutoff - 1 : ℕ) /
+          fixedOriginalSincTrialAperture a) ^ 2)
+    positivity
+  have hRate : 0 ≤ (fixedOriginalSincTrialAperture a) ^ (17 / 2 : ℝ) *
+      Real.exp (-originalDetectorRetainedDecayRate UniversalSinc.fixedScale *
+        originalDetectorQuarticRootScale (fixedOriginalSincTrialAperture a)) := by
+    have := Real.rpow_nonneg hL (17 / 2 : ℝ)
+    positivity
+  have hv : 0 ≤ ‖v‖ := norm_nonneg v
+  have hFirst := hQ.trans
+    (mul_le_mul_of_nonneg_right
+      (mul_le_mul_of_nonneg_left hImage.2.1 (add_nonneg hMode hEtaNonneg)) hv)
+  refine ⟨hFirst, hFirst.trans ?_⟩
+  exact mul_le_mul_of_nonneg_right
+    (mul_le_mul_of_nonneg_right (add_le_add le_rfl hEta) hRate) hv
+
+/-- Compatibility formulation, with the named upstream image threshold as
+its explicit witness. Native packets already pay this threshold. -/
 theorem step123NativeOutput_imageErrors_forcingError_commonThreshold :
     ∃ C_Q C_W L0 : ℝ, 0 < C_Q ∧ 0 < C_W ∧ 4 ≤ L0 ∧
       ∀ {β : ℝ} {σ : ReversalParity} {a : ℝ}
@@ -173,45 +314,12 @@ theorem step123NativeOutput_imageErrors_forcingError_commonThreshold :
                   Real.exp (-originalDetectorRetainedDecayRate UniversalSinc.fixedScale *
                     originalDetectorQuarticRootScale (fixedOriginalSincTrialAperture a))) *
                 ‖v‖ := by
-  obtain ⟨C_Q, hCQ, hForcing⟩ := originalDetector_forcing_error_bound
-  obtain ⟨C_W, hCW, hEtaUpper⟩ := originalDetector_eta_source_upper
-  obtain ⟨L0, hL0, hN14⟩ := step123NativeOutput_imageErrors_commonThreshold
-  refine ⟨C_Q, C_W, L0, hCQ, hCW, hL0, ?_⟩
-  intro β σ a out hlarge
-  have hImage := hN14 out hlarge
-  have hEta := hEtaUpper β σ a out
-  refine ⟨hImage, hEta, ?_⟩
-  intro v
-  have hEtaNonneg : 0 ≤ out.retained.state.selection.eta := by
-    have h1 : 0 < Real.exp (β * fixedOriginalSincTrialAperture a) / 3 := by positivity
-    exact (h1.trans out.source_selector.eta_lower).le
-  obtain ⟨hC2, hSupport⟩ := out.physicalSourceError_admissible
-  have hQ := hForcing σ (fixedOriginalSincTrialAperture a) out.aperture_pos
-    (out.retained.state.selection.cutoff - 1)
-    out.retained.state.selection.eta hEtaNonneg out.physicalSourceError
-    hC2 hSupport v
-  have hL : 0 ≤ fixedOriginalSincTrialAperture a := out.aperture_pos.le
-  have hMode : 0 ≤ C_Q * (1 + fixedOriginalSincTrialAperture a) *
-      Real.exp (fixedOriginalSincTrialAperture a / 2) *
-      Real.sqrt (1 +
-        (2 * Real.pi * (out.retained.state.selection.cutoff - 1 : ℕ) /
-          fixedOriginalSincTrialAperture a) ^ 2) := by
-    have := Real.sqrt_nonneg (1 +
-        (2 * Real.pi * (out.retained.state.selection.cutoff - 1 : ℕ) /
-          fixedOriginalSincTrialAperture a) ^ 2)
-    positivity
-  have hRate : 0 ≤ (fixedOriginalSincTrialAperture a) ^ (17 / 2 : ℝ) *
-      Real.exp (-originalDetectorRetainedDecayRate UniversalSinc.fixedScale *
-        originalDetectorQuarticRootScale (fixedOriginalSincTrialAperture a)) := by
-    have := Real.rpow_nonneg hL (17 / 2 : ℝ)
-    positivity
-  have hv : 0 ≤ ‖v‖ := norm_nonneg v
-  have hFirst := hQ.trans
-    (mul_le_mul_of_nonneg_right
-      (mul_le_mul_of_nonneg_left hImage.2.1 (add_nonneg hMode hEtaNonneg)) hv)
-  refine ⟨hFirst, hFirst.trans ?_⟩
-  exact mul_le_mul_of_nonneg_right
-    (mul_le_mul_of_nonneg_right (add_le_add le_rfl hEta) hRate) hv
+  obtain ⟨C_Q, C_W, hCQ, hCW, hRates⟩ :=
+    step123NativeOutput_imageErrors_forcingError_at_sourceThreshold
+  refine ⟨C_Q, C_W, originalDetectorPaddedImageThreshold, hCQ, hCW,
+    four_le_originalDetectorPaddedImageThreshold, ?_⟩
+  intro β σ a out _hlarge
+  exact hRates out
 
 /-- N37, first form. Source-only `C_Q > 0` and one threshold `L0 ≥ 4`
 (obtained from the combined theorem, hence from the N14 threshold) such
@@ -396,6 +504,7 @@ private theorem exists_generatedStep123Output_aperture_gt_max
       aperture_pos := g.sourceData.aperture_pos
       separation_gt_scale := g.sourceData.separation_gt_scale
       late := hR
+      image_threshold_paid := g.sourceData.image_threshold_paid
       unit := g.sourceData.unit
       depth := g.sourceData.depth
       original_depth := g.sourceData.original_depth }
@@ -496,6 +605,7 @@ theorem exists_generatedStep123Output_forcingError_cofinal_atLateness :
 end Zeta23.ExceptionalZero
 
 #print axioms Zeta23.CCM.step123NativeOutput_imageErrors_forcingError_commonThreshold
+#print axioms Zeta23.CCM.step123NativeOutput_imageErrors_forcingError_at_sourceThreshold
 #print axioms Zeta23.CCM.step123NativeOutput_forcingError_quarticRate_commonThreshold
 #print axioms Zeta23.CCM.step123NativeOutput_forcingError_etaBound_commonThreshold
 #print axioms Zeta23.CCM.step123NativeOutput_storedDetectorForcingError_etaBound_commonThreshold

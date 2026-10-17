@@ -270,10 +270,9 @@ def mc11_source_error_consumer {β a : ℝ} {σ : ReversalParity}
                 fixedOriginalSincTrialAperture a) ^ 2) +
             out.retained.state.selection.eta) *
             nativePhysicalH1Norm out.physicalSourceError * ‖v‖) ∧
-    (step123SameStateThreshold ≤ fixedOriginalSincTrialAperture a →
-      Step123ForcingErrorRates out) :=
+    Step123ForcingErrorRates out :=
   ⟨(Step123OriginalBoundaryEvidence.fromNative out).actual_quantified_projected_forcing_error,
-    step123ForcingErrorRates_of_threshold out⟩
+    step123ForcingErrorRates_of_threshold out out.image_threshold_paid.le⟩
 
 /-- MC12. The original exterior object is canonical, retains the
 interior restriction without a zero-contact assumption, and carries

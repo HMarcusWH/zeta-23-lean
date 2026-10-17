@@ -27,7 +27,7 @@ instantiated on the packet's own objects: the aperture
 `originalDetectorQuarticCutoff L`, the stored original detector
 `out.retained.state.detector`, the stored selection (`cutoff`, `eta`, `lam`),
 `out.selectedGround`, `out.originalTrial`, `out.physicalFiniteImage`,
-`out.smoothOriginal`, `out.arithmeticView`, `out.rangeView` and the phase sign
+`out.smoothOriginal`, `out.arithmeticData`, `out.rangeData` and the phase sign
 `nativeOriginalDetectorPhaseSign σ`.  Source-only fields are stated for the
 fixed source objects, and the packet views of them are bound to them.
 
@@ -474,7 +474,7 @@ structure Step123NativeFieldRecord {β : ℝ} {σ : ReversalParity} {a : ℝ}
   n17_retained_state :
     let L := fixedOriginalSincTrialAperture a
     let Kd := originalDetectorQuarticCutoff L
-    out.structuralView = out.retained ∧
+    out.structuralData = out.retained ∧
     out.retained = Step123NativeCorePacket.ofState σ out.retained.state ∧
     out.retained.state.detector =
       nativeOriginalDetectorPaddedUnit σ fixedOriginalSincLobeCenter
@@ -667,7 +667,7 @@ structure Step123NativeFieldRecord {β : ℝ} {σ : ReversalParity} {a : ℝ}
   /-- N29 `native.X_U`: literal X = Π * j and U = (t N) * j, N * X = U, and the
   actual von Mangoldt coefficients; the packet's arithmetic view is (X, U). -/
   n29_native_X_U :
-    out.arithmeticView = (nativeOriginalPrimeField, nativeOriginalIntegerDrive) ∧
+    out.arithmeticData = (nativeOriginalPrimeField, nativeOriginalIntegerDrive) ∧
     nativeOriginalPrimeField = nativePrimeField nativeOriginalSource ∧
     nativeOriginalIntegerDrive = nativeIntegerDriveField nativeOriginalSource ∧
     (∀ t : ℝ, nativePrimeField nativeOriginalSource t =
@@ -691,8 +691,8 @@ structure Step123NativeFieldRecord {β : ℝ} {σ : ReversalParity} {a : ℝ}
   stable Y facts, plus the all-fixed-exponential-rate U bound from
   finite-order summation.  No double-exponential (A03) claim. -/
   n30_native_input_decay :
-    out.arithmeticView.2 = nativeOriginalIntegerDrive ∧
-    out.rangeView.1 = nativeCompletedInput ∧
+    out.arithmeticData.2 = nativeOriginalIntegerDrive ∧
+    out.rangeData.1 = nativeCompletedInput ∧
     (∀ t : ℝ, 0 ≤ t → |nativeOriginalIntegerDrive t| ≤
       nativeOriginalDriveDecayConstant * (1 + t + UniversalSinc.fixedScale) *
         Real.exp (-(t / 2))) ∧
@@ -710,7 +710,7 @@ structure Step123NativeFieldRecord {β : ℝ} {σ : ReversalParity} {a : ℝ}
   /-- N31 `native.a_Y`: the actual floor kernel a, its mass < 605/621,
   Y = c * U, and a * X = Y pointwise (before any X L2 claim). -/
   n31_native_a_Y :
-    out.rangeView = (nativeCompletedInput, nativeCompletionCorrection) ∧
+    out.rangeData = (nativeCompletedInput, nativeCompletionCorrection) ∧
     (∀ t : ℝ, nativePositiveCompletion t =
       if 0 ≤ t then
         Real.exp (-(3 * t / 2)) * (⌊Real.exp t⌋₊ : ℝ) *
@@ -765,7 +765,7 @@ structure Step123NativeFieldRecord {β : ℝ} {σ : ReversalParity} {a : ℝ}
       ((nativeCompletedInputCausalL2 ε hε : NativeCompletionL2) : ℝ → ℂ) =ᵐ[volume]
         nativeDampedCompletedInput ε) ∧
     (∀ ε t : ℝ, nativeDampedCompletedInput ε t =
-      ((Real.exp (-ε * t) * out.rangeView.1 t : ℝ) : ℂ))
+      ((Real.exp (-ε * t) * out.rangeData.1 t : ℝ) : ℂ))
   /-- N34 `range.residual_iteration`: actual finite iterations, norm loss,
   invariant adjoint-kernel projection.  No zero limit is asserted; at any
   actual off-line zero the residual of Y stays bounded below. -/
@@ -824,9 +824,21 @@ structure Step123NativeFieldRecord {β : ℝ} {σ : ReversalParity} {a : ℝ}
           (state.selection.eta : ℂ) * inner ℂ (J v) state.detector
   /-- N39 `exterior.original`: the actual original response R_f, its interior,
   left and right causal exterior restrictions and reconstructions.  The
-  interior is the genuine restriction and is nonzero even as an AE class. -/
+  interior is the genuine restriction and is nonzero even as an AE class.
+  The literal left/right causal tails vanish at t=0; the interior owns
+  both physical endpoints. -/
   n39_exterior_original :
     (¬ (out.smoothOriginal.interior =ᵐ[volume] (0 : ℝ → ℂ))) ∧
+    out.originalLeftCausalTail =
+      (Ioi (0 : ℝ)).indicator (fun t => out.smoothOriginal.response (-t)) ∧
+    out.originalRightCausalTail =
+      (Ioi (0 : ℝ)).indicator
+        (fun t => out.smoothOriginal.response (fixedOriginalSincTrialAperture a + t)) ∧
+    (∀ t : ℝ, t ≤ 0 →
+      out.originalLeftCausalTail t = 0 ∧ out.originalRightCausalTail t = 0) ∧
+    (∀ x : ℝ, out.smoothOriginal.response x = out.originalLeftCausalTail (-x) +
+      out.smoothOriginal.interior x +
+        out.originalRightCausalTail (x - fixedOriginalSincTrialAperture a)) ∧
     let L := fixedOriginalSincTrialAperture a
     let Kd := originalDetectorQuarticCutoff L
     let sg := nativeOriginalDetectorPhaseSign σ
@@ -1136,7 +1148,10 @@ theorem Step123NativeFieldRecord.fromNative
     intro v
     rw [out.retained.forcing_eq, h2 v, out.finitePhysicalSource_eq_originalPadded]
   n39_exterior_original :=
-    ⟨out.originalInterior_not_ae_zero, rfl, out.smoothOriginal_eq,
+    ⟨out.originalInterior_not_ae_zero,
+      out.originalLeftCausalTail_eq_indicator, out.originalRightCausalTail_eq_indicator,
+      fun _ ht => out.originalCausalTails_zero_of_nonpos ht,
+      out.originalResponse_causalTail_reconstruction, rfl, out.smoothOriginal_eq,
       out.smoothOriginal.response_eq, out.smoothOriginal.left_eq,
       out.smoothOriginal.interior_eq, out.smoothOriginal.right_eq,
       out.smoothOriginal.reconstruction, out.smoothOriginal.interior_memLp,

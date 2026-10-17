@@ -20,15 +20,18 @@ What is proved here:
   self-energy, its physical L2 image and `out.physicalSourceError` with the
   literal true-normalized padded source objects. They use only the packet
   fields `detector_source_eq` and the existing N13 identity.
-* `step123NativeOutput_imageErrors_commonThreshold`: ONE existential
-  threshold `L0 ≥ 4`, chosen before any packet, such that for every stored
-  packet `out : Step123NativeOutput β σ a` whose aperture is at least `L0`,
+* `step123NativeOutput_imageErrors_at_sourceThreshold`: every stored
+  packet `out : Step123NativeOutput β σ a` already pays the named source-only
+  `originalDetectorPaddedImageThreshold`, so no extra aperture hypothesis is
+  needed. For that stored packet,
   the physical H1 error of the stored detector's physical synthesis against
   the original smooth phase trial `out.originalTrial`, the H1 norm of
   `out.physicalSourceError`, and the native-form error
   `|Re q(stored detector) - Re W(originalTrial, originalTrial)|` obey the
   concrete rates of `originalDetectorPaddedFinitePhysicalUnit_common_error_rates`
   (constant one and decay rate `originalDetectorRetainedDecayRate fixedScale`).
+  `step123NativeOutput_imageErrors_commonThreshold` retains the quantified
+  compatibility form, explicitly witnessed by that same named threshold.
 * `exists_generatedStep123Output_imageErrors_cofinal` and
   `exists_generatedStep123Output_imageErrors_cofinal_atLateness`: the
   existing generated producer, called at lateness `max R L0`, yields for each
@@ -126,12 +129,65 @@ theorem Step123NativeOutput.physicalFiniteImage_ae_eq_paddedUnit
   rw [← out.finitePhysicalSource_eq_originalPadded]
   exact canonicalNativePhysicalIsometry_ae σ out.aperture_pos _ _
 
-/-- N14. One source-only threshold `L0`, chosen before any packet, makes
+/-- N14. The named source-only threshold, paid by every native packet, makes
 both actual errors of the STORED detector obey their concrete rates: the
 physical H1 error against the original smooth phase trial (also stated for
 `out.physicalSourceError`) and the native-form error of the stored
 detector's own native self-energy against the original Weil energy. No
-bridge identity, error bound or branch consequence is a hypothesis. -/
+bridge identity, error bound, branch consequence or extra aperture bound is
+a hypothesis. -/
+theorem step123NativeOutput_imageErrors_at_sourceThreshold
+    {β : ℝ} {σ : ReversalParity} {a : ℝ}
+    (out : Step123NativeOutput β σ a) :
+          originalDetectorPhysicalH1Error
+              (finitePhysicalSynthesis
+                (fixedOriginalSincTrialAperture a)
+                (originalDetectorQuarticCutoff (fixedOriginalSincTrialAperture a))
+                (canonicalNativeCoefficientInclusion σ
+                  (fixedOriginalSincTrialAperture a)
+                  (originalDetectorQuarticCutoff (fixedOriginalSincTrialAperture a))
+                  out.retained.state.detector))
+              out.originalTrial ≤
+            (fixedOriginalSincTrialAperture a) ^ (17 / 2 : ℝ) *
+              Real.exp (-originalDetectorRetainedDecayRate UniversalSinc.fixedScale *
+                originalDetectorQuarticRootScale (fixedOriginalSincTrialAperture a)) ∧
+          nativePhysicalH1Norm out.physicalSourceError ≤
+            (fixedOriginalSincTrialAperture a) ^ (17 / 2 : ℝ) *
+              Real.exp (-originalDetectorRetainedDecayRate UniversalSinc.fixedScale *
+                originalDetectorQuarticRootScale (fixedOriginalSincTrialAperture a)) ∧
+          |(inner ℂ (nativePoleNeutralParityCanonical σ
+                (fixedOriginalSincTrialAperture a)
+                (originalDetectorQuarticCutoff (fixedOriginalSincTrialAperture a))
+                out.retained.state.detector) out.retained.state.detector).re -
+              (zetaZeroConfig.W out.originalTrial out.originalTrial).re| ≤
+            (1 + fixedOriginalSincTrialAperture a) *
+              (fixedOriginalSincTrialAperture a) ^ (17 / 2 : ℝ) *
+              Real.exp (fixedOriginalSincTrialAperture a / 2 -
+                originalDetectorRetainedDecayRate UniversalSinc.fixedScale *
+                  originalDetectorQuarticRootScale (fixedOriginalSincTrialAperture a)) := by
+  have hRates :=
+    (Classical.choose_spec originalDetectorPaddedFinitePhysicalUnit_common_error_rates).2
+  have hlarge : originalDetectorPaddedImageThreshold ≤ fixedOriginalSincTrialAperture a :=
+    out.image_threshold_paid.le
+  have hσ : nativeOriginalDetectorPhaseSign σ = 1 ∨
+      nativeOriginalDetectorPhaseSign σ = -1 := by
+    cases σ <;> simp [nativeOriginalDetectorPhaseSign]
+  have ha : UniversalSinc.fixedScale < a :=
+    originalDetector_lateSeparation_gt_fixedScale out.aperture_gt_four
+  obtain ⟨hH1, hForm⟩ := hRates (nativeOriginalDetectorPhaseSign σ) a hσ ha
+    out.aperture_pos hlarge
+  refine ⟨?_, ?_, ?_⟩
+  · rw [out.finitePhysicalSource_eq_originalPadded]
+    exact hH1
+  · rw [out.physicalSourceError_eq_storedDetector,
+      nativePhysicalH1Norm_sub_eq_physicalH1Error,
+      out.finitePhysicalSource_eq_originalPadded]
+    exact hH1
+  · rw [out.detectorNativeEnergy_eq_paddedNativeEnergy]
+    exact hForm
+
+/-- Compatibility formulation of N14, explicitly witnessed by the named
+source-only threshold already paid by every native packet. -/
 theorem step123NativeOutput_imageErrors_commonThreshold :
     ∃ L0 : ℝ, 4 ≤ L0 ∧
       ∀ {β : ℝ} {σ : ReversalParity} {a : ℝ}
@@ -163,25 +219,10 @@ theorem step123NativeOutput_imageErrors_commonThreshold :
               Real.exp (fixedOriginalSincTrialAperture a / 2 -
                 originalDetectorRetainedDecayRate UniversalSinc.fixedScale *
                   originalDetectorQuarticRootScale (fixedOriginalSincTrialAperture a)) := by
-  obtain ⟨L0, hL0, hRates⟩ := originalDetectorPaddedFinitePhysicalUnit_common_error_rates
-  refine ⟨L0, hL0, ?_⟩
-  intro β σ a out hlarge
-  have hσ : nativeOriginalDetectorPhaseSign σ = 1 ∨
-      nativeOriginalDetectorPhaseSign σ = -1 := by
-    cases σ <;> simp [nativeOriginalDetectorPhaseSign]
-  have ha : UniversalSinc.fixedScale < a :=
-    originalDetector_lateSeparation_gt_fixedScale out.aperture_gt_four
-  obtain ⟨hH1, hForm⟩ := hRates (nativeOriginalDetectorPhaseSign σ) a hσ ha
-    out.aperture_pos hlarge
-  refine ⟨?_, ?_, ?_⟩
-  · rw [out.finitePhysicalSource_eq_originalPadded]
-    exact hH1
-  · rw [out.physicalSourceError_eq_storedDetector,
-      nativePhysicalH1Norm_sub_eq_physicalH1Error,
-      out.finitePhysicalSource_eq_originalPadded]
-    exact hH1
-  · rw [out.detectorNativeEnergy_eq_paddedNativeEnergy]
-    exact hForm
+  refine ⟨originalDetectorPaddedImageThreshold,
+    four_le_originalDetectorPaddedImageThreshold, ?_⟩
+  intro β σ a out _hlarge
+  exact step123NativeOutput_imageErrors_at_sourceThreshold out
 
 end Zeta23.CCM
 
@@ -303,6 +344,7 @@ theorem exists_generatedStep123Output_imageErrors_cofinal_atLateness :
       aperture_pos := g.sourceData.aperture_pos
       separation_gt_scale := g.sourceData.separation_gt_scale
       late := hR
+      image_threshold_paid := g.sourceData.image_threshold_paid
       unit := g.sourceData.unit
       depth := g.sourceData.depth
       original_depth := g.sourceData.original_depth }
@@ -323,5 +365,6 @@ end Zeta23.ExceptionalZero
 #print axioms Zeta23.CCM.Step123NativeOutput.physicalSourceError_eq_storedDetector
 #print axioms Zeta23.CCM.Step123NativeOutput.physicalFiniteImage_ae_eq_paddedUnit
 #print axioms Zeta23.CCM.step123NativeOutput_imageErrors_commonThreshold
+#print axioms Zeta23.CCM.step123NativeOutput_imageErrors_at_sourceThreshold
 #print axioms Zeta23.ExceptionalZero.exists_generatedStep123Output_imageErrors_cofinal
 #print axioms Zeta23.ExceptionalZero.exists_generatedStep123Output_imageErrors_cofinal_atLateness

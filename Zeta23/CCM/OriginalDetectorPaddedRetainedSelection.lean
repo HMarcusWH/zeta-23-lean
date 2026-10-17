@@ -50,6 +50,7 @@ def OriginalDetectorPaddedFinitePhaseData.at_lower_threshold {β σ R R' : ℝ}
   aperture_pos := d.aperture_pos
   separation_gt_scale := d.separation_gt_scale
   late := (max_le_max_right 4 hR).trans_lt d.late
+  image_threshold_paid := d.image_threshold_paid
   unit := d.unit
   depth := d.depth
   original_depth := d.original_depth

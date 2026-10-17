@@ -30,6 +30,9 @@ ROLES = {
 # Classification is only a research/CI JOB ROLE, never acceptance or theorem authority.
 # Actual per-job logs and artifacts still require separate external review.
 KNOWN_WORKFLOW_DEFAULTS = {
+    # Source-reviewed deterministic compiler/derived-state validation. A skip
+    # remains NOT_EXECUTED; the classification grants no scientific acceptance.
+    'PR292 guarded one-shot RHKG generated-state refresh':'FORMAL_VALIDITY_GATE',
     'RHRC post287 bounded signed-ray probe':'RESEARCH_PRODUCING_CHECK',
     'RHRC post-214 kernel dual geometry':'REGRESSION_GATE',
     'RHRC post-194 parity trajectory sharp enclosure':'RESEARCH_PRODUCING_CHECK',
