@@ -1,27 +1,33 @@
 import Zeta23.ExceptionalZero.Step123SameStateN14
 import Zeta23.CCM.Step123SameStateN21
 import Zeta23.CCM.Step123SameStateN23
+import Zeta23.CCM.Step123SameStateN36
 import Zeta23.CCM.Step123NativeFieldRecord
 import Zeta23.CCM.Step123NativeSourceSpectralEvidence
 
 /-!
-# G03: the complete N01-N40 + G01-G04 Step 1-3 output on one retained state
+# G03 (IN PROGRESS): the N01-N40 + G01-G04 Step 1-3 output on one retained state
 
-`Step123CompleteNativeOutput β σ a` is the complete rho-free native record.
-It stores ONE `Step123NativeOutput β σ a` and two proof records about that
-same packet:
+`Step123CompleteNativeOutput β σ a` is the rho-free native record.  It stores
+ONE `Step123NativeOutput β σ a` and two proof records about that same packet:
 
 * `Step123NativeFieldRecord` (module `Step123NativeFieldRecord`): the 34
   contract fields N01-N13, N15-N20, N22, N24-N35, N39, N40 instantiated on the
   stored packet;
-* `Step123SameStateFieldRecord` (this module): the six same-state fields
-  N14, N21, N23, N36, N37, N38, proved on the same stored detector, selected
-  ground and source.
+* `Step123SameStateFieldRecord` (this module): the same-state fields proved on
+  the same stored detector, selected ground and source.  It currently contains
+  N14, N21, N23 and N36.
 
-N14 and N37 are rates that hold beyond one common source-only threshold
-`step123SameStateThreshold`, chosen before any zero, phase or packet.  In the
-rho-free record they are stated conditionally on that threshold; the
-generated record pays it.
+STATUS: this record is NOT yet complete.  N37 is proved in
+`Zeta23.ExceptionalZero.Step123SameStateN37` but is not yet attached here
+(its threshold must first become the common threshold below), and N38 has no
+module yet.  Until both are fields of `Step123SameStateFieldRecord`, this is
+a 38-of-40 native record, and none of its fields is independently reviewed.
+
+N14 (and, once attached, N37) are rates that hold beyond one common
+source-only threshold `step123SameStateThreshold`, chosen before any zero,
+phase or packet.  In the rho-free record they are stated conditionally on
+that threshold; the generated record pays it.
 
 `GeneratedStep123CompleteOutput ρ β σ R` is the zero-indexed extension.  Its
 only mathematical inputs are the actual zero carrier `ρ`, a horizontal
@@ -124,6 +130,12 @@ structure Step123SameStateFieldRecord {β : ℝ} {σ : ReversalParity} {a : ℝ}
     PoleNeutralTieRetainedCompletion out.aperture_pos
       out.retained.state.selection.cutoff out.retained.state.selection.cutoff_nonempty
       out.retained.state.selection.lam out.retained.state.selectedParity out.selectedGround
+  /-- N36 `forcing.source_channels`: on every actual predecessor test, the
+  stored forcing coordinate expands into the Archimedean, pole (zero),
+  four literal signed prime-history, `+eta` spectral-shift and finite
+  approximation channels of the original trial, with the q*X bridge and the
+  16-kappa local-X bound on the prime channel. -/
+  n36_forcing_source_channels : out.ForcingSourceChannels
 
 /-- Every same-state field is proved from the packet alone. -/
 theorem Step123SameStateFieldRecord.fromNative {β : ℝ} {σ : ReversalParity} {a : ℝ}
@@ -131,6 +143,7 @@ theorem Step123SameStateFieldRecord.fromNative {β : ℝ} {σ : ReversalParity} 
   n14_image_errors := step123ImageErrorRates_of_threshold out
   n21_retained_branch := out.n21_retained_branch
   n23_retained_tie := out.n23_retained_tie
+  n36_forcing_source_channels := out.n36_forcingSourceChannels
 
 /-! ## The complete rho-free native record -/
 
