@@ -180,7 +180,13 @@ jobs:
           git worktree add --detach /tmp/pr292-clean-checkout HEAD
           ln -s "$GITHUB_WORKSPACE/.lake" /tmp/pr292-clean-checkout/.lake
           cd /tmp/pr292-clean-checkout
-          test -z "$(git status --porcelain --untracked-files=all)"
+          # A directory-only /.lake/ ignore rule does not match this symlink.
+          # Verify the exact cache path is ignored, then retain the full clean gate.
+          git check-ignore -v .lake > /tmp/pr292-rhkg/CLEAN_CHECKOUT_CACHE_IGNORE.txt
+          git status --porcelain --untracked-files=all \
+            > /tmp/pr292-rhkg/CLEAN_CHECKOUT_STATUS_BEFORE.txt
+          cat /tmp/pr292-rhkg/CLEAN_CHECKOUT_STATUS_BEFORE.txt
+          test ! -s /tmp/pr292-rhkg/CLEAN_CHECKOUT_STATUS_BEFORE.txt
           git rev-parse HEAD > /tmp/pr292-rhkg/CLEAN_CHECKOUT_HEAD.txt
           git rev-parse 'HEAD^{tree}' > /tmp/pr292-rhkg/CLEAN_CHECKOUT_TREE.txt
           python research/RHRC/tools/materialize_derived_state.py --check \
