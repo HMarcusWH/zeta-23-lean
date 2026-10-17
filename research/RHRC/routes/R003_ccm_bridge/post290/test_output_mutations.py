@@ -6,7 +6,16 @@ from pathlib import Path
 from output_contract_check import release_gaps,frozen_spec,frozen_export_kinds,FORMAL_JOB,REGRESSION_JOB,NATIVE_JOB,RESEARCH_JOBS
 from unittest.mock import patch
 from d2_source_equivalence import D2_PRODUCER_HEAD,D2_PRODUCER_TREE,D2_RUN_ID
-from build_formal_receipt import TYPED_CONTRACT_ROOTS
+from build_formal_receipt import TYPED_CONTRACT_ROOTS, full_expression_record
+
+
+def synthetic_full_type_fields(name, kind):
+    """Explicitly fabricated raw Expr fields, never actual compiler exports."""
+    return dict(full_expression_record('SYNTHETIC_RAW_TYPE_EXPR_FOR_VALIDATOR_CONTROL ' + name),
+        structure_constructor_types=([
+            dict(constructor=name + '.mk', **full_expression_record(
+                'SYNTHETIC_CONSTRUCTOR_EXPR_FOR_VALIDATOR_CONTROL ' + name))]
+            if kind == 'INDUCTIVE' else []))
 
 def synthetic_checkout_identity(head, tree):
     """Only a fabricated validator fixture, never real checkout evidence."""
@@ -51,6 +60,7 @@ def fixture():
                  'authority':'PROVED' if kind=='THEOREM' else 'DEFINED_DATA_NOT_A_THEOREM',
                  'source_tree':tree,'axiom_audit_pass':True,'axioms':[],
                  'normalized_type':text,'normalized_type_sha256':hashlib.sha256(text.encode()).hexdigest()}
+            row.update(synthetic_full_type_fields(name, kind))
             if kind=='THEOREM':
                 row['theorem']=name
                 declarations.append(row)
@@ -63,6 +73,7 @@ def fixture():
              'source_tree':tree,'axiom_audit_pass':True,'axioms':[],
              'normalized_type':text,
              'normalized_type_sha256':hashlib.sha256(text.encode()).hexdigest()}
+        row.update(synthetic_full_type_fields(name, kind))
         if kind=='THEOREM':
             row['theorem']=name
             declarations.append(row)
@@ -127,6 +138,15 @@ def run():
     mutation('definition source tree drift',lambda a:a[1]['definitions'][0].update(source_tree='b'*40))
     mutation('missing definition receipt',lambda a:a[1]['definitions'].pop(0))
     mutation('stale theorem type',lambda a:a[1]['declarations'][0].update(normalized_type='changed'))
+    mutation('full compiler Expr missing',lambda a:a[1]['declarations'][0].pop('full_type_expr'))
+    mutation('full compiler Expr hash missing',lambda a:a[1]['declarations'][0].pop('full_type_expr_sha256'))
+    mutation('full compiler Expr changed',lambda a:a[1]['declarations'][0].update(full_type_expr='SYNTHETIC_CHANGED_EXPR'))
+    mutation('full compiler Expr format replaced by pretty type',lambda a:a[1]['declarations'][0].update(full_type_expr_format='PRETTY_TYPE'))
+    mutation('full compiler constructor inventory missing',lambda a:a[1]['declarations'][0].pop('structure_constructor_types'))
+    mutation('full compiler structure fields missing',lambda a:next(r for r in a[1]['definitions']
+        if r['declaration_kind']=='INDUCTIVE').update(structure_constructor_types=[]))
+    mutation('full compiler constructor type hash changed',lambda a:next(r for r in a[1]['definitions']
+        if r['declaration_kind']=='INDUCTIVE')['structure_constructor_types'][0].update(full_type_expr_sha256='0'*64))
     mutation('wrong compiler tree',lambda a:a[1]['declarations'][0].update(source_tree='b'*40))
     mutation('generic interface as producer',lambda a:a[1]['declarations'][0].update(authority='PAPER'))
     mutation('missing branch producer',lambda a:a[0]['new_lean_modules'][0]['proposed_exports'].append('Mock.odd'))
@@ -181,6 +201,14 @@ def run():
     mutation('API branch head silently rewritten',lambda a:a[3][0].update(head='e'*40),merge)
     mutation('compiler receipt at other checkout',lambda a:a[1].update(head='d'*40,compiler_context={'head':'d'*40,'tree':'a'*40}),merge)
     mutation('synthetic merge self-referential base',lambda a:a[3][0]['checkout_identity_review'].update(reviewed_pr_base_head='c'*40),merge)
+    auxiliary=deepcopy(controls)
+    extra=deepcopy(auxiliary[1]['declarations'][0])
+    extra.update(declaration='Mock.auxiliaryCompilerRoot',theorem='Mock.auxiliaryCompilerRoot')
+    extra.update(synthetic_full_type_fields('Mock.auxiliaryCompilerRoot','THEOREM'))
+    auxiliary[1]['declarations'].append(extra)
+    if synthetic_release_gaps(*auxiliary):
+        raise RuntimeError('Synthetic auxiliary full-AST root rejected')
+    mutation('auxiliary compiler root Expr hash missing',lambda a:a[1]['declarations'][-1].pop('full_type_expr_sha256'),auxiliary)
     return {'execution_status':'SUCCESS','integrity_status':'PASS','claim_cap':'RH_OPEN',
             'scientific_disposition':'EVIDENCE_MUTATIONS_REJECTED','rejected':rejected,
             'authority':'VALIDATOR_CONTROL_ONLY','scope':'Synthetic receipt fixtures; no theorem or D2 authority.'}

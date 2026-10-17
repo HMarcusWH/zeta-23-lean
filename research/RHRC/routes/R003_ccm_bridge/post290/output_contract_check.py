@@ -11,7 +11,7 @@ import re
 from pathlib import Path
 from d2_source_equivalence import (exact_numeric_source, verify_d2_receipt,
                                    D2_PRODUCER_HEAD, D2_PRODUCER_TREE)
-from build_formal_receipt import TYPED_CONTRACT_ROOTS
+from build_formal_receipt import TYPED_CONTRACT_ROOTS, validate_full_type_fields
 
 REPO=Path(__file__).resolve().parents[5]
 IMMUTABLE_SPEC=REPO/'research/RHRC/integration/post290/spec/BUILD_MANIFEST.json'
@@ -134,6 +134,12 @@ def release_gaps(manifest, formal, d2, jobs):
     if len(names)!=len(set(names)) or any(not isinstance(n,str) or not n for n in names):
         gaps.append('duplicate or malformed compiler declaration receipts')
     bindings = {r.get('declaration',r.get('theorem')):r for r in all_bindings}
+    for receipt in all_bindings:
+        try:
+            validate_full_type_fields(receipt)
+        except ValueError as exc:
+            name = receipt.get('declaration', receipt.get('theorem'))
+            gaps.append('missing or invalid full compiler type expression: ' + str(name) + ': ' + str(exc))
     for mc_name,mc_kind in TYPED_CONTRACT_ROOTS.items():
         r=bindings.get(mc_name)
         if (r is None or r.get('module')!='Zeta23.RHRC.Step123OutputContractCheck'

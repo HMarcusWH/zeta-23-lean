@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 """Compiler log mutations; synthetic logs supply no Lean theorem authority."""
+import hashlib
 import unittest
-from build_formal_receipt import compiler_records,audit_roots
+from build_formal_receipt import (compiler_records, audit_roots,
+    compiler_type_expressions, full_expression_record, validate_full_type_fields)
 
 
 class CompilerLogMutations(unittest.TestCase):
@@ -94,6 +96,150 @@ class CompilerLogMutations(unittest.TestCase):
             '(``Mock.root, "Mock.Module", "UNREVIEWED")',
             '(``Mock.root, "Mock.Module", "DEF"), (``Mock.root, "Mock.Module", "DEF")']:
             with self.assertRaises(ValueError):audit_roots(source)
+
+
+class FullTypeExpressionMutations(unittest.TestCase):
+    """Synthetic protocol controls; these strings carry no Lean authority."""
+    roots = {'Mock.witness': 'Mock.Module', 'Mock.data': 'Mock.Module',
+             'Mock.Structure': 'Mock.Module'}
+    kinds = {'Mock.witness': 'THEOREM', 'Mock.data': 'DEFINITION',
+             'Mock.Structure': 'INDUCTIVE'}
+    witness_expression = ('Lean.Expr.app (Lean.Expr.const `ExistsUnique []) '
+                          '(Lean.Expr.const `Zeta23.CCM.NativeCompactPoleH2 [])')
+
+    def fixture(self):
+        return '\n'.join([
+            'POST290_TYPE_EXPR\tMock.witness\t' + self.witness_expression,
+            'POST290_TYPE_EXPR\tMock.data\tLean.Expr.sort (Lean.Level.zero)',
+            'POST290_TYPE_EXPR\tMock.Structure\tLean.Expr.sort (Lean.Level.succ Lean.Level.zero)',
+            'POST290_CONSTRUCTOR_TYPE_EXPR\tMock.Structure\tMock.Structure.mk\t'
+            'Lean.Expr.forallE `value (Lean.Expr.const `Nat []) (Lean.Expr.const `Mock.Structure []) Lean.BinderInfo.default'])
+
+    def parse(self, log):
+        return compiler_type_expressions(log, self.roots, self.kinds)
+
+    def test_full_witness_and_constructor_types_retained(self):
+        expressions, constructors = self.parse(self.fixture())
+        self.assertEqual(set(expressions), set(self.roots))
+        self.assertEqual(expressions['Mock.witness'], self.witness_expression)
+        self.assertIn('NativeCompactPoleH2', expressions['Mock.witness'])
+        self.assertEqual(set(constructors), {'Mock.Structure'})
+        self.assertIn('forallE `value', constructors['Mock.Structure']['Mock.Structure.mk'])
+        record = full_expression_record(expressions['Mock.witness'])
+        self.assertEqual(record['full_type_expr_format'], 'LEAN_EXPR_REPR_V1')
+        self.assertEqual(record['full_type_expr_sha256'], hashlib.sha256(self.witness_expression.encode()).hexdigest())
+
+    def test_additive_expression_protocol_keeps_historical_type_and_hash(self):
+        original = CompilerLogMutations().fixture().replace('VALIDATOR_CONTROL_TYPE', '∃! u, True')
+        roots = CompilerLogMutations.roots
+        kinds = {'Mock.theorem': 'THEOREM'}
+        supplemented = original + '\nPOST290_TYPE_EXPR\tMock.theorem\t' + self.witness_expression
+        old_types, old_axioms = compiler_records(original, roots, 'a' * 40, 'b' * 40)
+        new_types, new_axioms = compiler_records(supplemented, roots, 'a' * 40, 'b' * 40)
+        expressions, constructors = compiler_type_expressions(supplemented, roots, kinds)
+        self.assertEqual((old_types, old_axioms), (new_types, new_axioms))
+        self.assertEqual(hashlib.sha256(old_types['Mock.theorem'].encode()).hexdigest(),
+                         hashlib.sha256(new_types['Mock.theorem'].encode()).hexdigest())
+        self.assertIn('NativeCompactPoleH2', expressions['Mock.theorem'])
+        self.assertEqual(constructors, {})
+
+    def test_missing_duplicate_unexpected_or_empty_root_expression_rejected(self):
+        log = self.fixture()
+        first = log.splitlines()[0]
+        mutants = ['\n'.join(log.splitlines()[1:]), log + '\n' + first,
+                   log + '\nPOST290_TYPE_EXPR\tMock.unknown\tSYNTHETIC_EXPR',
+                   log.replace(self.witness_expression, ''),
+                   log.replace(self.witness_expression, '   ')]
+        for altered in mutants:
+            with self.subTest(log=altered), self.assertRaises(ValueError):
+                self.parse(altered)
+
+    def test_missing_duplicate_unexpected_or_empty_constructor_rejected(self):
+        log = self.fixture()
+        constructor = log.splitlines()[-1]
+        mutants = ['\n'.join(log.splitlines()[:-1]), log + '\n' + constructor,
+                   log.replace('POST290_CONSTRUCTOR_TYPE_EXPR\tMock.Structure\t',
+                               'POST290_CONSTRUCTOR_TYPE_EXPR\tMock.unknown\t'),
+                   log.replace('POST290_CONSTRUCTOR_TYPE_EXPR\tMock.Structure\t',
+                               'POST290_CONSTRUCTOR_TYPE_EXPR\tMock.data\t'),
+                   log.replace('Mock.Structure.mk\t', '\t'),
+                   log[:log.rfind('\t') + 1]]
+        for altered in mutants:
+            with self.subTest(log=altered), self.assertRaises(ValueError):
+                self.parse(altered)
+
+    def test_multiple_real_constructor_names_allowed(self):
+        log = self.fixture() + '\nPOST290_CONSTRUCTOR_TYPE_EXPR\tMock.Structure\tMock.Structure.other\tSYNTHETIC_OTHER_CTOR'
+        _, constructors = self.parse(log)
+        self.assertEqual(len(constructors['Mock.Structure']), 2)
+
+    def test_same_constructor_cannot_be_claimed_by_two_owners(self):
+        roots = dict(self.roots, **{'Mock.Other': 'Mock.Module'})
+        kinds = dict(self.kinds, **{'Mock.Other': 'INDUCTIVE'})
+        log = (self.fixture() + '\nPOST290_TYPE_EXPR\tMock.Other\tSYNTHETIC_OTHER_TYPE'
+               '\nPOST290_CONSTRUCTOR_TYPE_EXPR\tMock.Other\tMock.Structure.mk\tSYNTHETIC_OTHER_CTOR')
+        with self.assertRaisesRegex(ValueError, 'duplicate constructor'):
+            compiler_type_expressions(log, roots, kinds)
+
+    def test_malformed_protocol_fields_rejected(self):
+        for suffix in ['POST290_TYPE_EXPR\tMock.witness',
+                       'POST290_TYPE_EXPR\tMock.witness\tEXPR\tUNEXPECTED',
+                       'POST290_CONSTRUCTOR_TYPE_EXPR\tMock.Structure\tMock.Structure.mk',
+                       'POST290_CONSTRUCTOR_TYPE_EXPR\tMock.Structure\tMock.Structure.mk\tEXPR\tUNEXPECTED']:
+            with self.subTest(suffix=suffix), self.assertRaises(ValueError):
+                self.parse(self.fixture() + '\n' + suffix)
+
+    def test_empty_or_mismatched_scope_rejected(self):
+        for roots, kinds in [({}, {}), (self.roots, {}),
+                             (self.roots, dict(self.kinds, **{'Mock.witness': 'AXIOM'}))]:
+            with self.subTest(kinds=kinds), self.assertRaises(ValueError):
+                compiler_type_expressions(self.fixture(), roots, kinds)
+
+    def test_full_type_consumer_fields_accept_exact_ast(self):
+        for kind, constructors in [('THEOREM', []), ('DEFINITION', []),
+                                   ('INDUCTIVE', [dict(constructor='Mock.Structure.mk',
+                                        **full_expression_record('SYNTHETIC_CTOR_EXPR'))])]:
+            row = dict(declaration_kind=kind, structure_constructor_types=constructors,
+                       **full_expression_record(self.witness_expression))
+            self.assertIsNone(validate_full_type_fields(row))
+
+    def test_full_type_consumer_fields_reject_missing_or_tampered_data(self):
+        from copy import deepcopy
+        original = dict(declaration_kind='THEOREM', structure_constructor_types=[],
+                        **full_expression_record(self.witness_expression))
+        mutations = [lambda r: r.pop('full_type_expr'),
+                     lambda r: r.update(full_type_expr=''),
+                     lambda r: r.update(full_type_expr_sha256='0' * 64),
+                     lambda r: r.update(full_type_expr_format='PRETTY_TYPE'),
+                     lambda r: r.update(declaration_kind='AXIOM'),
+                     lambda r: r.pop('structure_constructor_types'),
+                     lambda r: r.update(structure_constructor_types={}),
+                     lambda r: r.update(structure_constructor_types=[dict(
+                         constructor='Mock.Structure.mk', **full_expression_record('SYNTHETIC_CTOR'))])]
+        for mutate in mutations:
+            row = deepcopy(original)
+            mutate(row)
+            with self.subTest(row=row), self.assertRaises(ValueError):
+                validate_full_type_fields(row)
+
+    def test_full_type_consumer_fields_reject_bad_constructor_inventory(self):
+        from copy import deepcopy
+        original = dict(declaration_kind='INDUCTIVE', structure_constructor_types=[
+            dict(constructor='Mock.Structure.mk', **full_expression_record('SYNTHETIC_CTOR'))],
+            **full_expression_record('SYNTHETIC_STRUCTURE'))
+        mutations = [lambda r: r.update(structure_constructor_types=[]),
+                     lambda r: r['structure_constructor_types'].append(deepcopy(r['structure_constructor_types'][0])),
+                     lambda r: r['structure_constructor_types'][0].update(constructor=''),
+                     lambda r: r['structure_constructor_types'][0].update(full_type_expr=''),
+                     lambda r: r['structure_constructor_types'][0].update(full_type_expr_sha256='0' * 64),
+                     lambda r: r['structure_constructor_types'][0].update(full_type_expr_format='PRETTY_TYPE'),
+                     lambda r: r['structure_constructor_types'].append(dict(
+                         constructor='Mock.Structure.aa', **full_expression_record('SYNTHETIC_CTOR')))]
+        for mutate in mutations:
+            row = deepcopy(original)
+            mutate(row)
+            with self.subTest(row=row), self.assertRaises(ValueError):
+                validate_full_type_fields(row)
 
 
 if __name__=='__main__':unittest.main()

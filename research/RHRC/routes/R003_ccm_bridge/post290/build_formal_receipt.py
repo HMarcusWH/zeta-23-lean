@@ -69,6 +69,84 @@ def compiler_records(text,roots,head,tree,expected_kinds=None):
     if set(types)!=set(roots) or set(axioms)!=set(roots):raise ValueError('incomplete type or axiom receipt')
     return types,axioms
 
+
+def compiler_type_expressions(text, roots, expected_kinds):
+    """Read additive raw Lean Expr exports, preserving historical pretty types.
+
+    The compiler emits each exact ConstantInfo.type with Expr's derived Repr,
+    which retains implicit application arguments and witness binder types.
+    Constructor types expose the fields of registered structures/inductives.
+    This parser checks protocol coverage, not mathematical semantics.
+    """
+    if (not roots or set(expected_kinds) != set(roots)
+            or not set(expected_kinds.values()) <= {'THEOREM', 'DEFINITION', 'INDUCTIVE'}):
+        raise ValueError('invalid full-expression root scope')
+    expressions, constructors = {}, {}
+    for line in text.splitlines():
+        if line.startswith('POST290_TYPE_EXPR\t'):
+            fields = line.split('\t')
+            if len(fields) != 3:
+                raise ValueError('malformed full type expression report')
+            _, name, expression = fields
+            if name not in roots or name in expressions or not expression.strip():
+                raise ValueError('unexpected, duplicate or empty full type expression')
+            expressions[name] = expression
+        elif line.startswith('POST290_CONSTRUCTOR_TYPE_EXPR\t'):
+            fields = line.split('\t')
+            if len(fields) != 4:
+                raise ValueError('malformed constructor type expression report')
+            _, owner, name, expression = fields
+            if (expected_kinds.get(owner) != 'INDUCTIVE' or not name.strip()
+                    or not expression.strip()):
+                raise ValueError('unexpected owner/name or empty constructor type expression')
+            owners = constructors.setdefault(owner, {})
+            if name in owners or any(name in entries for entries in constructors.values()):
+                raise ValueError('duplicate constructor type expression')
+            owners[name] = expression
+    if set(expressions) != set(roots):
+        raise ValueError('incomplete full type expression receipt')
+    expected_owners = {name for name, kind in expected_kinds.items() if kind == 'INDUCTIVE'}
+    if set(constructors) != expected_owners or any(not entries for entries in constructors.values()):
+        raise ValueError('incomplete structure constructor type expression receipt')
+    return expressions, constructors
+
+
+def full_expression_record(expression):
+    return {'full_type_expr': expression,
+            'full_type_expr_sha256': hashlib.sha256(expression.encode()).hexdigest(),
+            'full_type_expr_format': 'LEAN_EXPR_REPR_V1'}
+
+
+def validate_full_type_fields(row):
+    """Validate the additive full-type fields shared by receipt consumers."""
+    def expression_fields(data):
+        if not isinstance(data, dict):
+            raise ValueError('malformed full type expression fields')
+        expression = data.get('full_type_expr')
+        if (not isinstance(expression, str) or not expression.strip()
+                or data.get('full_type_expr_format') != 'LEAN_EXPR_REPR_V1'
+                or hashlib.sha256(expression.encode()).hexdigest() != data.get('full_type_expr_sha256')):
+            raise ValueError('missing or invalid full type expression/hash/format')
+    expression_fields(row)
+    kind = row.get('declaration_kind')
+    if kind not in {'THEOREM', 'DEFINITION', 'INDUCTIVE'}:
+        raise ValueError('unknown full type declaration kind')
+    constructors = row.get('structure_constructor_types')
+    if (not isinstance(constructors, list)
+            or (kind == 'INDUCTIVE' and not constructors)
+            or (kind != 'INDUCTIVE' and constructors)):
+        raise ValueError('missing or incorrect structure constructor type inventory')
+    names = []
+    for constructor in constructors:
+        expression_fields(constructor)
+        name = constructor.get('constructor')
+        if not isinstance(name, str) or not name.strip():
+            raise ValueError('missing structure constructor name')
+        names.append(name)
+    if names != sorted(set(names)):
+        raise ValueError('structure constructor names must be sorted and unique')
+
+
 def audit_roots(text):
     entries=re.findall(r'\(``([\w.\']+),\s*"([\w.]+)",\s*"([A-Z]+)"\)',text)
     if not entries:
@@ -146,7 +224,9 @@ def build(log,mode='component',independent_review=None):
     roots,kinds=audit_roots(AUDIT.read_text())
     git = lambda *args: subprocess.check_output(['git',*args],cwd=REPO,text=True).strip()
     head,tree = git('rev-parse','HEAD'),git('rev-parse','HEAD^{tree}')
-    types,axioms=compiler_records(log.read_text(encoding='utf-8-sig'),roots,head,tree,kinds)
+    compiler_log = log.read_text(encoding='utf-8-sig')
+    types,axioms=compiler_records(compiler_log,roots,head,tree,kinds)
+    expressions,constructors=compiler_type_expressions(compiler_log,roots,kinds)
     sources = sorted({module.replace('.','/')+'.lean' for module in roots.values()} | {'Zeta23/RHRC/Step123OutputBindings.lean'})
     if git('status','--porcelain','--untracked-files=all','--','*.lean','lean-toolchain','lake-manifest.json','lakefile.lean','lakefile.toml'):
         raise ValueError('compiled source tree has local modifications')
@@ -165,11 +245,14 @@ def build(log,mode='component',independent_review=None):
     declared=(REPO/'lean-toolchain').read_text().strip()
     if 'version '+declared.rsplit(':v',1)[-1] not in compiler_version:raise ValueError('running Lean compiler differs from declared toolchain')
     def record(name):
-        return {'declaration':name,'declaration_kind':kinds[name],
+        return dict({'declaration':name,'declaration_kind':kinds[name],
         'module':roots[name],'source_tree':tree,
         'normalized_type':types[name],'normalized_type_sha256':hashlib.sha256(types[name].encode()).hexdigest(),
         'normalization':'existing RHRC compiler pretty-type field, not a prose-derived type',
-        'axioms':axioms[name],'axiom_audit_pass':True}
+        'axioms':axioms[name],'axiom_audit_pass':True,
+        'structure_constructor_types': [dict(constructor=ctor, **full_expression_record(expression))
+            for ctor, expression in sorted(constructors.get(name, {}).items())]},
+            **full_expression_record(expressions[name]))
     declarations = [dict(record(name),theorem=name,authority='PROVED')
         for name in sorted(roots) if kinds[name]=='THEOREM']
     definitions = [dict(record(name),authority='DEFINED_DATA_NOT_A_THEOREM')
@@ -184,6 +267,8 @@ def build(log,mode='component',independent_review=None):
         'compiler_log_sha256':hashlib.sha256(log.read_bytes()).hexdigest(),
         'compiler_context':{'head':head,'tree':tree,'declared_toolchain':declared,'actual_compiler_version':compiler_version,'mathlib_revision':mathlib[0]['rev'],'dependencies':packages,'tracked_lean_toolchain_manifest_clean':True},
         'declarations':declarations,'definitions':definitions,'audited_root_count':len(roots),
+        'full_type_expression_count':len(expressions),
+        'structure_constructor_type_count':sum(len(entries) for entries in constructors.values()),
         'producer_complete':complete,
         'independent_assumption_review_pass':complete,
         'independent_review_sha256':independent_digest,

@@ -13,7 +13,7 @@ import re
 import subprocess
 from pathlib import Path
 
-from build_formal_receipt import ALLOW, AUDIT, audit_roots
+from build_formal_receipt import ALLOW, AUDIT, audit_roots, validate_full_type_fields
 
 REPO = Path(__file__).resolve().parents[5]
 SECTIONS = (
@@ -141,6 +141,7 @@ def validated_formal_roots(formal, identity):
                     or any(not isinstance(axiom, str) for axiom in axioms)
                     or len(axioms) != len(set(axioms)) or not set(axioms) <= ALLOW):
                 raise ValueError("unverified, duplicate, forged or stale compiler root: " + str(name))
+            validate_full_type_fields(row)
             checked[name] = row
     return checked, True
 

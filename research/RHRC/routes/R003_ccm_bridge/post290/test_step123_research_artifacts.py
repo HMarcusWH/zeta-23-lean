@@ -21,6 +21,7 @@ from materialize_step123_outputs import output_packet
 from prepare_field_review_package import produce as prepare_unapproved_44_field_dossier
 
 SOURCE = {"source_raw_sha256": "e" * 64, "source_hash_mode": "RAW_BYTES"}
+STRUCTURE_CONTROL = "Zeta23.CCM.DetectorRetainedSchurState"
 
 
 def raises(f, message):
@@ -67,15 +68,26 @@ def audited_formal_fixture(identity):
     """Fabricated compiler-schema control; never actual compiler evidence."""
     modules, kinds = audit_roots(AUDIT.read_text(encoding="utf-8-sig"))
     declarations, definitions = [], []
-    for name in sorted(INTEGRATED_ROOTS | COMPARISON_ROOTS):
+    for name in sorted(INTEGRATED_ROOTS | COMPARISON_ROOTS | {STRUCTURE_CONTROL}):
         text = "SYNTHETIC_VALIDATOR_TYPE_NOT_A_PROOF " + name
+        expression = "SYNTHETIC_LEAN_EXPR_REPR_NOT_A_PROOF " + name
         kind = kinds[name]
         row = {"declaration": name, "declaration_kind": kind, "module": modules[name],
                "source_tree": identity["tree"], "normalized_type": text,
                "normalized_type_sha256": hashlib.sha256(text.encode("utf-8")).hexdigest(),
+               "full_type_expr": expression,
+               "full_type_expr_sha256": hashlib.sha256(expression.encode("utf-8")).hexdigest(),
+               "full_type_expr_format": "LEAN_EXPR_REPR_V1",
+               "structure_constructor_types": [],
                "axioms": ["propext", "Classical.choice", "Quot.sound"],
                "axiom_audit_pass": True,
                "authority": "PROVED" if kind == "THEOREM" else "DEFINED_DATA_NOT_A_THEOREM"}
+        if kind == "INDUCTIVE":
+            constructor_expression = "SYNTHETIC_CONSTRUCTOR_EXPR_NOT_A_PROOF " + name + ".mk"
+            row["structure_constructor_types"] = [{
+                "constructor": name + ".mk", "full_type_expr": constructor_expression,
+                "full_type_expr_sha256": hashlib.sha256(constructor_expression.encode("utf-8")).hexdigest(),
+                "full_type_expr_format": "LEAN_EXPR_REPR_V1"}]
         if kind == "THEOREM":
             row["theorem"] = name
             declarations.append(row)
@@ -103,7 +115,7 @@ def audited_formal_fixture(identity):
             "declarations": declarations, "definitions": definitions}
 
 
-def handoff_receipt_controls(comparison, survival, sparse, identity):
+def handoff_receipt_controls(comparison, survival, sparse, identity, contract):
     """Exercise the real handoff builder against failed and forged receipts."""
     positive = audited_formal_fixture(identity)
     doc = build(positive, comparison, survival, None, None, identity)
@@ -173,6 +185,27 @@ def handoff_receipt_controls(comparison, survival, sparse, identity):
            f["declarations"][0].update(normalized_type_sha256="f" * 64))
     reject("changed normalized type", lambda f:
            f["declarations"][0].update(normalized_type="FORGED_TYPE"))
+    reject("missing full type expression", lambda f: f["declarations"][0].pop("full_type_expr"))
+    reject("changed full type expression", lambda f:
+           f["declarations"][0].update(full_type_expr="FORGED_EXPR"))
+    reject("wrong full type expression format", lambda f:
+           f["declarations"][0].update(full_type_expr_format="PRETTY_TYPE_NOT_FULL_EXPR"))
+    reject("missing constructor inventory", lambda f:
+           f["declarations"][0].pop("structure_constructor_types"))
+
+    def structure_row(f):
+        return next(row for row in f["definitions"] if row["declaration"] == STRUCTURE_CONTROL)
+
+    reject("missing inductive constructor types", lambda f:
+           structure_row(f).update(structure_constructor_types=[]))
+    reject("changed constructor expression", lambda f:
+           structure_row(f)["structure_constructor_types"][0].update(full_type_expr="FORGED_CTOR_EXPR"))
+    reject("duplicate constructor expression", lambda f:
+           structure_row(f)["structure_constructor_types"].append(
+               deepcopy(structure_row(f)["structure_constructor_types"][0])))
+    reject("constructor inventory on theorem", lambda f:
+           f["declarations"][0].update(
+               structure_constructor_types=deepcopy(structure_row(f)["structure_constructor_types"])))
     reject("wrong compiler origin module", lambda f:
            f["declarations"][0].update(module="Zeta23.Forged"))
     reject("wrong compiler declaration kind", lambda f:
@@ -213,6 +246,31 @@ def handoff_receipt_controls(comparison, survival, sparse, identity):
     explicit_failed_sparse["execution_status"] = "FAILURE"
     raises(lambda: build(explicit_failed_sparse, comparison, survival, None, None, identity),
            "explicit failed sparse receipt")
+
+    # The real unapproved dossier must preserve the literal type and structure
+    # constructor expressions, rather than substitute its pretty-print view.
+    dossier, template = prepare_unapproved_44_field_dossier(
+        positive, contract, identity["head"], identity["tree"])
+    n17 = next(row for row in dossier["fields"] if row["id"] == "N17")
+    candidate = next(row for row in n17["candidate_declarations"]
+                     if row["name"] == STRUCTURE_CONTROL)
+    expected_structure = structure_row(positive)
+    for key in ("normalized_type", "normalized_type_sha256", "full_type_expr",
+                "full_type_expr_sha256", "full_type_expr_format", "structure_constructor_types"):
+        if candidate.get(key) != expected_structure[key]:
+            raise RuntimeError("dossier omitted or altered literal compiler type field: " + key)
+    if template["independent_assumption_review_pass"] is not False or any(
+            row["evidence_verified"] or row["reviewed"] for row in dossier["fields"]):
+        raise RuntimeError("literal type visibility incorrectly promoted independent approval")
+    malformed = deepcopy(positive)
+    structure_row(malformed).pop("full_type_expr")
+    raises(lambda: prepare_unapproved_44_field_dossier(
+        malformed, contract, identity["head"], identity["tree"]), "dossier missing literal type")
+    malformed = deepcopy(positive)
+    structure_row(malformed)["structure_constructor_types"][0]["full_type_expr"] = "FORGED_CTOR_EXPR"
+    raises(lambda: prepare_unapproved_44_field_dossier(
+        malformed, contract, identity["head"], identity["tree"]), "dossier changed constructor type")
+    checked.extend(["dossier missing literal type", "dossier changed constructor type"])
     return checked + ["failed five-name exploit", "names-only exploit", "explicit failed sparse receipt"]
 
 
@@ -285,7 +343,7 @@ def tests():
     if "RH OPEN" not in doc or "pending" in doc.lower() and "OPEN" not in doc:
         raise RuntimeError("handoff claim cap missing")
     handoff_mutations = handoff_receipt_controls(
-        good, original, formal, {"head": "a" * 40, "tree": "b" * 40})
+        good, original, formal, {"head": "a" * 40, "tree": "b" * 40}, contract)
     return {"schema": "post290.research-artifact-mutations.v1",
             "status": "PASS", "authority": "SYNTHETIC_VALIDATOR_TEST_ONLY",
             "claim_cap": "RH_OPEN",
@@ -293,7 +351,8 @@ def tests():
                        "no generated-detector impersonation", "missing replay", "OPEN cuts",
                        "44 unreviewed proof fields", "compiler-candidate dossier",
                        "unapproved template integrity", "independent review gate", "handoff cap",
-                       "exact compiler receipt authority guard", "worked same-source lower/upper comparison"],
+                       "exact compiler receipt authority guard", "worked same-source lower/upper comparison",
+                       "literal full type and constructor visibility"],
             "handoff_receipt_mutations": handoff_mutations,
             "handoff_receipt_mutation_count": len(handoff_mutations)}
 

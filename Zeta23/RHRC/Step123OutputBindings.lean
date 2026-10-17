@@ -660,6 +660,7 @@ run_cmd do
     (``Zeta23.CCM.Step123NativeOutput.arithmeticData, "Zeta23.CCM.Step123OutputData", "DEFINITION"),
     (``Zeta23.CCM.Step123NativeOutput.rangeData, "Zeta23.CCM.Step123OutputData", "DEFINITION"),
     (``Zeta23.CCM.Step123NativeOutput.structuralData, "Zeta23.CCM.Step123OutputData", "DEFINITION"),
+    (``Zeta23.CCM.NativeCompactPoleH2, "Zeta23.CCM.PoleNeutralCompactH2", "INDUCTIVE"),
     (``Zeta23.CCM.UniversalSinc.hasSum_width, "Zeta23.CCM.UniversalSincDetector", "THEOREM"),
     (``Zeta23.CCM.UniversalSinc.summable_norm_sinc_sub_one, "Zeta23.CCM.UniversalSincDetector", "THEOREM"),
     (``Zeta23.CCM.UniversalSinc.multipliable_sinc, "Zeta23.CCM.UniversalSincDetector", "THEOREM"),
@@ -1916,6 +1917,19 @@ run_cmd do
        sourceKind := kind } : Zeta23.RHRC.SourceCandidateQuery)
   Zeta23.RHRC.resolveSourceCandidates queries
   for (name, _, _) in roots do
+    -- The historical delaborated type is preserved above. Export the raw
+    -- typed expression separately so implicit witness domains cannot vanish
+    -- behind notation such as `existsUnique u, True`.
+    let info ← getConstInfo name
+    let fullType := ((reprStr info.type).replace "\t" " ").replace "\n" " "
+    liftIO <| IO.println s!"POST290_TYPE_EXPR\t{name}\t{fullType}"
+    match info with
+    | .inductInfo data =>
+        for ctor in data.ctors do
+          let ctorInfo ← getConstInfo ctor
+          let ctorType := ((reprStr ctorInfo.type).replace "\t" " ").replace "\n" " "
+          liftIO <| IO.println s!"POST290_CONSTRUCTOR_TYPE_EXPR\t{name}\t{ctor}\t{ctorType}"
+    | _ => pure ()
     let axioms ← Lean.collectAxioms name
     for ax in axioms do
       unless ax == ``propext || ax == ``Classical.choice || ax == ``Quot.sound do

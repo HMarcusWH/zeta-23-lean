@@ -15,6 +15,8 @@ import json
 import subprocess
 from pathlib import Path
 
+from build_formal_receipt import validate_full_type_fields
+
 REPO = Path(__file__).resolve().parents[5]
 FIELDS = REPO / "research/RHRC/integration/post290/review_execution_2026-10-14/spec/OUTPUT_FIELD_CONTRACT.json"
 
@@ -182,6 +184,7 @@ def produce(formal, contract, head, tree):
             raise ValueError("wrong compiler normalized type")
         if set(root.get("axioms", [])) - {"propext", "Classical.choice", "Quot.sound"}:
             raise ValueError("unadmitted root is not reviewable")
+        validate_full_type_fields(root)
         available[name] = root
     rows = []
     for field in groups:
@@ -196,6 +199,10 @@ def produce(formal, contract, head, tree):
                     "module": root["module"],
                     "normalized_type": root["normalized_type"],
                     "normalized_type_sha256": root["normalized_type_sha256"],
+                    "full_type_expr": root["full_type_expr"],
+                    "full_type_expr_sha256": root["full_type_expr_sha256"],
+                    "full_type_expr_format": root["full_type_expr_format"],
+                    "structure_constructor_types": root["structure_constructor_types"],
                     "axioms": root.get("axioms", []),
                     "compiler_eligible": root.get("axiom_audit_pass") is True,
                 })
