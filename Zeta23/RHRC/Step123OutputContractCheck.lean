@@ -174,9 +174,11 @@ def mc07_neutral_channel_consumer {β a : ℝ} {σ : ReversalParity}
         canonicalPoleNeutralTrialChannelGram σ L Kd p i j).re) ∧
     (canonicalPoleNeutralTrialResidual σ L Kd p =
       ∑ i, nativeTrialResidual
-        (canonicalPoleNeutralTrialChannel σ L Kd i) p) := by
+        (canonicalPoleNeutralTrialChannel σ L Kd i) p) ∧
+    out.OriginalDetectorAmbientResiduals := by
   let evidence := Step123NativeSourceSpectralEvidence.fromNative out
-  exact ⟨evidence.variance, evidence.gram, evidence.channels⟩
+  exact ⟨evidence.variance, evidence.gram, evidence.channels,
+    out.n38_forcing_ambient_residuals⟩
 
 /-- MC08. The selected ground has its own true eigenpair, and the actual
 cutoff bottoms admit the exhaustive even/odd/tie trichotomy WITH every
@@ -228,19 +230,20 @@ def mc09_compact_inverse_consumer {β a : ℝ} {σ : ReversalParity}
 and normalization, not a prime-only or reflected-term-free surrogate. -/
 def mc10_original_four_history_consumer {β a : ℝ} {σ : ReversalParity}
     (out : Step123NativeOutput β σ a) :
-    ∀ {s : ℝ} {f : ℝ → ℂ} (u : NativeCompactPoleH2 s f),
+    (∀ {s : ℝ} {f : ℝ → ℂ} (u : NativeCompactPoleH2 s f),
       Continuous f →
       (∫ x in (-s)..s, f x * out.smoothOriginal.primeHistories x) =
         ∫ x in (-s)..s, u.value x *
           originalSmoothFourPrimeXHistories
-            (nativeOriginalDetectorPhaseSign σ) a x :=
-  (Step123OriginalBoundaryEvidence.fromNative out).original_signed_four_histories_actual_X
+            (nativeOriginalDetectorPhaseSign σ) a x) ∧ out.ForcingSourceChannels :=
+  ⟨(Step123OriginalBoundaryEvidence.fromNative out).original_signed_four_histories_actual_X,
+    out.n36_forcingSourceChannels⟩
 
 /-- MC11. Quantified actual projected source error, rather than an opaque
 evidence-record return or an unsupported global Schur upper estimate. -/
 def mc11_source_error_consumer {β a : ℝ} {σ : ReversalParity}
     (out : Step123NativeOutput β σ a) :
-    ∃ C_Q : ℝ, 0 < C_Q ∧
+    (∃ C_Q : ℝ, 0 < C_Q ∧
       ∀ (v : nativePoleNeutralParitySpace σ
         (fixedOriginalSincTrialAperture a)
         (out.retained.state.selection.cutoff - 1)),
@@ -266,14 +269,18 @@ def mc11_source_error_consumer {β a : ℝ} {σ : ReversalParity}
                 (out.retained.state.selection.cutoff - 1 : ℕ) /
                 fixedOriginalSincTrialAperture a) ^ 2) +
             out.retained.state.selection.eta) *
-            nativePhysicalH1Norm out.physicalSourceError * ‖v‖ :=
-  (Step123OriginalBoundaryEvidence.fromNative out).actual_quantified_projected_forcing_error
+            nativePhysicalH1Norm out.physicalSourceError * ‖v‖) ∧
+    (step123SameStateThreshold ≤ fixedOriginalSincTrialAperture a →
+      Step123ForcingErrorRates out) :=
+  ⟨(Step123OriginalBoundaryEvidence.fromNative out).actual_quantified_projected_forcing_error,
+    step123ForcingErrorRates_of_threshold out⟩
 
 /-- MC12. The original exterior object is canonical, retains the
 interior restriction without a zero-contact assumption, and carries
 the exact full response plus all prime histories. -/
 theorem mc12_original_exterior_is_canonical {β a : ℝ} {σ : ReversalParity}
     (out : Step123NativeOutput β σ a) :
+    (¬ (out.smoothOriginal.interior =ᵐ[volume] (0 : ℝ → ℂ))) ∧
     (out.smoothOriginal =
       OriginalNativeExteriorRecord.fromOriginalSource
         (nativeOriginalDetectorPhaseSign σ) a out.aperture_pos) ∧
@@ -284,7 +291,7 @@ theorem mc12_original_exterior_is_canonical {β a : ℝ} {σ : ReversalParity}
     (∀ x : ℝ,
       nativeWeilPrimeResponse out.originalTrial x =
         out.smoothOriginal.primeHistories x) :=
-  ⟨out.smoothOriginal_eq, out.smoothOriginal.reconstruction,
+  ⟨out.originalInterior_not_ae_zero, out.smoothOriginal_eq, out.smoothOriginal.reconstruction,
    out.smoothOriginal.interior_memLp, out.smoothOriginal.prime_eq⟩
 
 /-- MC13. The actual zeta-zero-dependent causal nonrange obstruction. -/

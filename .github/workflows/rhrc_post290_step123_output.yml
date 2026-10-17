@@ -43,7 +43,18 @@ jobs:
         run: |
           set -euo pipefail
           targets=(
+            Zeta23.ExceptionalZero.Step123SameStateN39
+            Zeta23.CCM.Step123SameStateN39
             Zeta23.RHRC.Step123OutputContractCheck
+            Zeta23.ExceptionalZero.Step123SameStateN14
+            Zeta23.CCM.Step123SameStateN21
+            Zeta23.CCM.Step123SameStateN23
+            Zeta23.CCM.Step123SameStateN36
+            Zeta23.ExceptionalZero.Step123SameStateN37
+            Zeta23.CCM.Step123SameStateN38
+            Zeta23.CCM.Step123NativeFieldRecord
+            Zeta23.ExceptionalZero.Step123CompleteOutput
+            Zeta23.RHRC.Step123CompleteOutputConsumer
             Zeta23.CCM.CanonicalPhysicalTrialRealization
             Zeta23.CCM.NativeWeilResponseBounds
             Zeta23.CCM.NativeWeilResponse
@@ -355,6 +366,8 @@ jobs:
           python -O research/RHRC/routes/R003_ccm_bridge/post290/test_step123_research_artifacts.py
           python research/RHRC/routes/R003_ccm_bridge/post290/test_output_mutations.py
           python -O research/RHRC/routes/R003_ccm_bridge/post290/test_output_mutations.py
+          python research/RHRC/routes/R003_ccm_bridge/post290/test_mandatory_mutation_matrix.py
+          python -O research/RHRC/routes/R003_ccm_bridge/post290/test_mandatory_mutation_matrix.py
           python research/RHRC/routes/R003_ccm_bridge/post290/test_d2_source_equivalence.py
           python -O research/RHRC/routes/R003_ccm_bridge/post290/test_d2_source_equivalence.py
           python research/RHRC/routes/R003_ccm_bridge/post290/test_d2_q14_forensics.py

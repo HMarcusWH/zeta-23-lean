@@ -28,6 +28,13 @@ open Zeta23.ExceptionalZero
 structure Step123NativeOutput (β : ℝ) (σ : ReversalParity) (a : ℝ) where
   aperture_pos : 0 < fixedOriginalSincTrialAperture a
   aperture_gt_four : 4 < fixedOriginalSincTrialAperture a
+  /-- The unchanged original smooth trial has the producer's already
+  proved negative margin at this same separation and original phase. -/
+  original_depth :
+    (zetaZeroConfig.W
+      (fixedOriginalSincPhaseTrial (nativeOriginalDetectorPhaseSign σ) a)
+      (fixedOriginalSincPhaseTrial (nativeOriginalDetectorPhaseSign σ) a)).re ≤
+        -4 * Real.exp (β * fixedOriginalSincTrialAperture a)
   retained : Step123NativeCorePacket σ
     (fixedOriginalSincTrialAperture a)
     (originalDetectorQuarticCutoff (fixedOriginalSincTrialAperture a))
@@ -69,6 +76,7 @@ def Step123NativeOutput.ofRetained
   refine {
     aperture_pos := d.aperture_pos
     aperture_gt_four := hfour
+    original_depth := d.original_depth
     retained := Step123NativeCorePacket.ofState σ state
     detector_source_eq := ?_
     source_selector := hsel

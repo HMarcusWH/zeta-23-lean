@@ -1,3 +1,4 @@
+import Zeta23.CCM.Step123SameStateN39
 import Zeta23.CCM.Step123NativeSourceSpectralEvidence
 import Zeta23.CCM.Step123OriginalBoundaryEvidence
 import Zeta23.CCM.Step123PhysicalImageIdentity
@@ -44,9 +45,8 @@ What this record does NOT do:
 
 Known limits of individual fields (see their docstrings):
 
-* N39 keeps the original interior as the genuine restriction of the actual
-  response and never replaces it by zero, but no theorem here proves that the
-  interior is not identically zero;
+* N39 keeps the actual original interior and proves it is not almost
+  everywhere zero using the producer's retained original negative depth;
 * the absence clauses of N20 ("no transferred trial moments") and N24 ("not
   both deep") hold by construction of the stored types and are not separate
   propositions;
@@ -824,9 +824,9 @@ structure Step123NativeFieldRecord {β : ℝ} {σ : ReversalParity} {a : ℝ}
           (state.selection.eta : ℂ) * inner ℂ (J v) state.detector
   /-- N39 `exterior.original`: the actual original response R_f, its interior,
   left and right causal exterior restrictions and reconstructions.  The
-  interior is the genuine restriction and is never replaced by zero; no
-  theorem here proves it is not identically zero. -/
+  interior is the genuine restriction and is nonzero even as an AE class. -/
   n39_exterior_original :
+    (¬ (out.smoothOriginal.interior =ᵐ[volume] (0 : ℝ → ℂ))) ∧
     let L := fixedOriginalSincTrialAperture a
     let Kd := originalDetectorQuarticCutoff L
     let sg := nativeOriginalDetectorPhaseSign σ
@@ -1136,7 +1136,8 @@ theorem Step123NativeFieldRecord.fromNative
     intro v
     rw [out.retained.forcing_eq, h2 v, out.finitePhysicalSource_eq_originalPadded]
   n39_exterior_original :=
-    ⟨rfl, out.smoothOriginal_eq, out.smoothOriginal.response_eq, out.smoothOriginal.left_eq,
+    ⟨out.originalInterior_not_ae_zero, rfl, out.smoothOriginal_eq,
+      out.smoothOriginal.response_eq, out.smoothOriginal.left_eq,
       out.smoothOriginal.interior_eq, out.smoothOriginal.right_eq,
       out.smoothOriginal.reconstruction, out.smoothOriginal.interior_memLp,
       fun x => (originalNativeExterior_history_eq _ a out.aperture_pos x).1,

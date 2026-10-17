@@ -2,6 +2,11 @@ import Zeta23.CCM.OriginalDetectorActualForcingError
 import Zeta23.CCM.OriginalSincNativeConvolution
 import Zeta23.CCM.OriginalDetectorFourHistoryLocalXBound
 
+/-! Original-detector forcing channels on identical predecessor tests.
+The exact Archimedean, pole, four signed histories, shift and approximation
+channels retain the fixed source. The local 16κ bound is in terms of X;
+no bound on X, Step 4 premise, D2 certificate or RH is proved here. -/
+
 noncomputable section
 
 open MeasureTheory Set Complex

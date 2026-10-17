@@ -89,6 +89,23 @@ CANDIDATES = {
     "G04": ["Zeta23.ExceptionalZero.nativeCompletedInput_not_mem_rangeClosure_of_offLine_zero"],
 }
 
+# Each field is also projected by the separate same-packet typed consumer.
+for _index in range(1, 41):
+    CANDIDATES[f"N{_index:02d}"].append(f"Zeta23.RHRC.consumeN{_index:02d}")
+for _index in range(1, 5):
+    CANDIDATES[f"G{_index:02d}"].append(f"Zeta23.RHRC.consumeG{_index:02d}")
+CANDIDATES["N14"].extend(['Zeta23.CCM.step123NativeOutput_imageErrors_commonThreshold'])
+CANDIDATES["N21"].extend(['Zeta23.CCM.Step123NativeOutput.n21_retained_branch'])
+CANDIDATES["N23"].extend(['Zeta23.CCM.Step123NativeOutput.n23_retained_tie'])
+CANDIDATES["N36"].extend(['Zeta23.CCM.Step123NativeOutput.n36_forcingSourceChannels'])
+CANDIDATES["N37"].extend(['Zeta23.CCM.step123NativeOutput_imageErrors_forcingError_commonThreshold', 'Zeta23.ExceptionalZero.GeneratedStep123CompleteOutput.forcingErrors'])
+CANDIDATES["N38"].extend(['Zeta23.CCM.Step123NativeOutput.n38_forcing_ambient_residuals'])
+CANDIDATES["G03"].extend(['Zeta23.ExceptionalZero.exists_generatedStep123CompleteOutput'])
+CANDIDATES["G04"].extend(['Zeta23.ExceptionalZero.GeneratedStep123RangeObstruction.ofOffLine'])
+
+CANDIDATES["N39"].append("Zeta23.CCM.Step123NativeOutput.originalInterior_not_ae_zero")
+
+
 
 def git(*args):
     return subprocess.check_output(["git", *args], cwd=REPO, text=True).strip()

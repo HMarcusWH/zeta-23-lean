@@ -85,6 +85,12 @@ structure OriginalDetectorPaddedFinitePhaseData (β σ R : ℝ) where
     (originalDetectorPaddedFinitePhaseUnitVector σ (fixedOriginalSincTrialAperture separation)
       fixedOriginalSincLobeCenter aperture_pos)).re ≤
     -Real.exp (β * fixedOriginalSincTrialAperture separation)
+  /-- The genuine original smooth trial at this SAME separation has the
+  fourfold margin already proved before finite transport. -/
+  original_depth :
+    (zetaZeroConfig.W (fixedOriginalSincPhaseTrial σ separation)
+      (fixedOriginalSincPhaseTrial σ separation)).re ≤
+        -4 * Real.exp (β * fixedOriginalSincTrialAperture separation)
 
 /-- For each actual phase separately, an off-line zero produces native
 unit vectors of the requested exponential depth at cofinally late output
@@ -125,7 +131,7 @@ theorem originalDetectorPaddedFinitePhase_producer
   have hfinite : (zetaZeroConfig.W (originalDetectorPaddedFiniteOriginalPhaseHard σ a hLpos)
       (originalDetectorPaddedFiniteOriginalPhaseHard σ a hLpos)).re ≤ -3 * Real.exp (β * L) := by
     linarith
-  refine ⟨⟨a, hLpos, ha, ?_, hu.2, ?_⟩⟩
+  refine ⟨⟨a, hLpos, ha, ?_, hu.2, ?_, hdeep⟩⟩
   · exact (max_le_max_right 4 hR).trans_lt hlate
   · rw [originalDetectorPaddedFinitePhaseUnitVector_nativeEnergy_eq_Weil_div_mass ha0 σ hLpos hu.1]
     apply (div_le_iff₀ (lt_trans (by norm_num : (0 : ℝ) < 1 / 2) hm.1)).mpr

@@ -397,7 +397,8 @@ private theorem exists_generatedStep123Output_aperture_gt_max
       separation_gt_scale := g.sourceData.separation_gt_scale
       late := hR
       unit := g.sourceData.unit
-      depth := g.sourceData.depth }
+      depth := g.sourceData.depth
+      original_depth := g.sourceData.original_depth }
   let g' : GeneratedStep123Output ρ β σ R :=
     { beta_pos := g.beta_pos
       beta_below := g.beta_below

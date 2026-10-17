@@ -52,6 +52,7 @@ def OriginalDetectorPaddedFinitePhaseData.at_lower_threshold {β σ R R' : ℝ}
   late := (max_le_max_right 4 hR).trans_lt d.late
   unit := d.unit
   depth := d.depth
+  original_depth := d.original_depth
 
 private theorem padded_quartic_cutoff_nonempty {L : ℝ} (hL : 2 ≤ L) :
     3 ≤ originalDetectorQuarticCutoff L := by
