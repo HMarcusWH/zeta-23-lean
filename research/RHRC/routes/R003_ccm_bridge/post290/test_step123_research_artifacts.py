@@ -391,6 +391,10 @@ def tests():
     from pathlib import Path
     import json
     root = Path(__file__).resolve().parents[5]
+    contract_source = json.loads((root / "research/RHRC/integration/post290/"
+                                  "COUNTERMODEL_CONTRACTS.json").read_text())["source_id"]
+    if {x["source_id"] for x in original["cuts"]} != {contract_source}:
+        raise RuntimeError("survival cuts do not reuse the frozen contract source identifier")
     contract = json.loads((root / "research/RHRC/integration/post290/"
                            "review_execution_2026-10-14/spec/OUTPUT_FIELD_CONTRACT.json").read_text())
     packet = output_packet(contract, formal, None, "a" * 40, "b" * 40)

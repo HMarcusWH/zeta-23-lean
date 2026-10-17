@@ -15,7 +15,7 @@ import subprocess
 from pathlib import Path
 from harvest_workflows import inventory,harvest,APPROVED_D2_RUN_ID
 from output_contract_check import checked_checkout,D2_PRODUCER_TREE
-from verify_semantic_review_provenance import api,all_pages
+from verify_semantic_review_provenance import api,all_pages,latest_decisive_review
 
 REPO=Path(__file__).resolve().parents[5]
 ROLES={"FORMAL_VALIDITY_GATE","REGRESSION_GATE","RESEARCH_PRODUCING_CHECK"}
@@ -93,18 +93,18 @@ def reviewer_receipt(review,pr,reviews,commits):
     if user in authors:
         raise ValueError("source author self-reviewed workflow results")
     token="PR292-WORKFLOW-HARVEST-SHA256="+digest(review)
-    for r in reviews:
-        if (str((r.get("user") or {}).get("login","")).casefold()==user
-            and r.get("state")=="APPROVED" and r.get("commit_id")==head
+    r=latest_decisive_review(reviews,user)
+    if r is not None:
+        if (r.get("state")=="APPROVED" and r.get("commit_id")==head
             and r.get("html_url")==review.get("external_review_reference")
-            and r.get("submitted_at") and isinstance(r.get("body"),str)
-            and token in r["body"]):
+            and isinstance(r.get("body"),str) and token in r["body"]):
             return {"schema":"PR292_WORKFLOW_HARVEST_REVIEW_PROVENANCE_V1",
                 "head":head,"reviewer":user,"reviewed_jobs_sha256":digest(review),
                 "github_review_id":r["id"],"github_review_url":r["html_url"],
                 "integrity_status":"PASS","claim_cap":"RH_OPEN",
                 "not_mathematical_authority_by_itself":True}
-    raise ValueError("independent GitHub APPROVED review did not sign this harvest")
+    raise ValueError("independent GitHub APPROVED review did not sign this harvest "
+                     "as the reviewer's latest review")
 
 def live_raw(head):
     return harvest(inventory(head,APPROVED_D2_RUN_ID,

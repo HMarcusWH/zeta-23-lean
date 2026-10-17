@@ -13,6 +13,9 @@ import json
 from pathlib import Path
 
 CUTS = ("A-X", "B-Y", "C-Schur")
+# The frozen source identifier shared with COUNTERMODEL_CONTRACTS.json and
+# every other materialized Step123 artifact.
+SOURCE_ID = "frozen-universal-sinc-product-s0-1/4096"
 
 
 def load(path):
@@ -52,7 +55,7 @@ def audit(comparison, cuts, *, formal=None, d2=None):
             raise ValueError("no independent verified promotion of the original cut: " + cut_id)
         results.append({
             "id": cut_id,
-            "source_id": "fixed-universal-sinc-product-1/4096",
+            "source_id": SOURCE_ID,
             "status": "OPEN",
             "necessary_to_exclude": descriptions[cut_id],
             "conditional_sufficiency_ref": item.get("core_formal_sufficiency_module"),

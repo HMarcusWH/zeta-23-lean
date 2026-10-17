@@ -9,6 +9,13 @@
     "definition source tree drift",
     "missing definition receipt",
     "stale theorem type",
+    "full compiler Expr missing",
+    "full compiler Expr hash missing",
+    "full compiler Expr changed",
+    "full compiler Expr format replaced by pretty type",
+    "full compiler constructor inventory missing",
+    "full compiler structure fields missing",
+    "full compiler constructor type hash changed",
     "wrong compiler tree",
     "generic interface as producer",
     "missing branch producer",
@@ -52,7 +59,8 @@
     "synthetic merge checkout log missing",
     "API branch head silently rewritten",
     "compiler receipt at other checkout",
-    "synthetic merge self-referential base"
+    "synthetic merge self-referential base",
+    "auxiliary compiler root Expr hash missing"
   ],
   "authority": "VALIDATOR_CONTROL_ONLY",
   "scope": "Synthetic receipt fixtures; no theorem or D2 authority."

@@ -44,6 +44,27 @@ class ReviewerProvenanceTests(unittest.TestCase):
     def test_unsigned_approval_rejected(self):
         a=fixture();a[2][0]["body"]="APPROVED without field review"
         with self.assertRaises(ValueError):validate(*a,HEAD,TREE)
+    def test_later_changes_requested_revokes_approval(self):
+        a=fixture();a[2].append({"id":124,"html_url":a[0]["external_review_reference"]+"x",
+            "state":"CHANGES_REQUESTED","commit_id":HEAD,"submitted_at":"2026-10-15T13:00:00Z",
+            "user":{"login":"independent_review_test"},"body":"Retracted"})
+        with self.assertRaises(ValueError):validate(*a,HEAD,TREE)
+    def test_dismissed_approval_rejected(self):
+        a=fixture();a[2][0]["state"]="DISMISSED"
+        with self.assertRaises(ValueError):validate(*a,HEAD,TREE)
+    def test_later_comment_keeps_approval(self):
+        a=fixture();a[2].append({"id":125,"html_url":"https://example.invalid/c",
+            "state":"COMMENTED","commit_id":HEAD,"submitted_at":"2026-10-15T14:00:00Z",
+            "user":{"login":"independent_review_test"},"body":"Note only"})
+        self.assertEqual(validate(*a,HEAD,TREE)["integrity_status"],"PASS")
+    def test_reapproval_after_retraction_succeeds(self):
+        a=fixture();signed=copy.deepcopy(a[2][0])
+        a[2][0]["id"]=122;a[2][0]["submitted_at"]="2026-10-15T10:00:00Z"
+        a[2].insert(1,{"id":123.5,"html_url":"https://example.invalid/r",
+            "state":"CHANGES_REQUESTED","commit_id":HEAD,"submitted_at":"2026-10-15T11:00:00Z",
+            "user":{"login":"independent_review_test"},"body":"Retracted"})
+        a[2][2:]=[signed]
+        self.assertEqual(validate(*a,HEAD,TREE)["github_review_id"],123)
     def test_unverified_reviewer_identity_rejected(self):
         a=fixture();a[0]["reviewer_is_source_author"]=None
         with self.assertRaises(ValueError):validate(*a,HEAD,TREE)

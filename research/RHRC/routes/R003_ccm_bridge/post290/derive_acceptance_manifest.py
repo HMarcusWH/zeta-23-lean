@@ -111,6 +111,28 @@ def verified_outputs(directory: Path, head: str, tree: str) -> bool:
     return True
 
 
+def harvest_complete(harvest: dict, head: str) -> bool:
+    """Every harvested attempt is reviewed and classified; every required job's
+    LATEST attempt succeeded and was scientifically accepted. A superseded
+    attempt (``latest_attempt`` False) stays in the record but cannot block
+    completion, matching ``output_contract_check.release_gaps``."""
+    workflow_jobs = harvest.get("jobs", [])
+    return (isinstance(workflow_jobs, list) and bool(workflow_jobs)
+            and harvest.get("head") == head
+            and harvest.get("review_phase") == "PRE_RELEASE_PREREQUISITES"
+            and harvest.get("includes_release_run") is False
+            and all(job.get("output_reviewed") is True
+                    and job.get("classification") in (
+                        "FORMAL_VALIDITY_GATE", "REGRESSION_GATE",
+                        "RESEARCH_PRODUCING_CHECK")
+                    for job in workflow_jobs)
+            and all(job.get("scientific_acceptance") is True
+                    and job.get("status") == "completed"
+                    and job.get("conclusion") == "success"
+                    for job in workflow_jobs if job.get("required") is True
+                    and job.get("latest_attempt") is not False))
+
+
 def derive(formal: dict, review: dict, d2: dict, harvest: dict,
            output_dir: Path, graph_receipt: dict | None = None) -> dict:
     """Unproved, unreviewed or incomplete evidence stays INCOMPLETE."""
@@ -168,20 +190,7 @@ def derive(formal: dict, review: dict, d2: dict, harvest: dict,
         modules.append(entry)
         status[item["id"]] = passed
 
-    workflow_jobs = harvest.get("jobs", [])
-    complete_harvest = (isinstance(workflow_jobs, list) and bool(workflow_jobs)
-                        and harvest.get("head") == head
-                        and harvest.get("review_phase") == "PRE_RELEASE_PREREQUISITES"
-                        and harvest.get("includes_release_run") is False
-                        and all(job.get("output_reviewed") is True
-                                and job.get("classification") in (
-                                    "FORMAL_VALIDITY_GATE", "REGRESSION_GATE",
-                                    "RESEARCH_PRODUCING_CHECK")
-                                for job in workflow_jobs)
-                        and all(job.get("scientific_acceptance") is True
-                                and job.get("status") == "completed"
-                                and job.get("conclusion") == "success"
-                                for job in workflow_jobs if job.get("required") is True))
+    complete_harvest = harvest_complete(harvest, head)
     all_outputs = verified_outputs(output_dir, head, tree)
     packages = []
     done = {}

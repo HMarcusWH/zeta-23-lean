@@ -44,6 +44,21 @@ def all_pages(path):
             return result
     raise ValueError("reviewer provenance pagination unexpectedly long")
 
+DECISIVE_REVIEW_STATES=("APPROVED","CHANGES_REQUESTED","DISMISSED")
+
+def latest_decisive_review(github_reviews,user):
+    """The reviewer's latest submitted approval-relevant review, or None.
+
+    GitHub lists reviews chronologically; a later CHANGES_REQUESTED or a
+    dismissal supersedes an earlier approval, while COMMENTED reviews do not
+    change the approval state. Order by submission time, then list order."""
+    rows=[(row.get("submitted_at"),index,row)
+          for index,row in enumerate(github_reviews)
+          if str((row.get("user") or {}).get("login","")).casefold()==user
+          and row.get("state") in DECISIVE_REVIEW_STATES
+          and isinstance(row.get("submitted_at"),str) and row["submitted_at"]]
+    return max(rows,key=lambda item:item[:2])[2] if rows else None
+
 def validate(review,pr,github_reviews,commits,head,tree):
     if (review.get("reviewed_head")!=head or review.get("reviewed_tree")!=tree or
         review.get("schema_version")!="POST290_INDEPENDENT_SEMANTIC_REVIEW_1.0" or
@@ -75,27 +90,24 @@ def validate(review,pr,github_reviews,commits,head,tree):
         raise ValueError("reviewer participated as source author or PR author")
     digest=field_digest(fields)
     signed=f"PR292-44-FIELD-SHA256={digest}"
-    for row in github_reviews:
+    row=latest_decisive_review(github_reviews,user)
+    if row is not None:
         reviewer=(row.get("user") or {}).get("login")
         review_url=row.get("html_url")
-        if (str(reviewer).casefold()!=user or row.get("state")!="APPROVED" or
-            row.get("commit_id")!=head or
-            not isinstance(row.get("body"),str) or
-            signed not in row["body"] or
-            review.get("external_review_reference")!=review_url):
-            continue
-        if not row.get("submitted_at"):
-            continue
-        return {
-            "schema":"PR292_GITHUB_INDEPENDENT_REVIEW_PROVENANCE_V1",
-            "integrity_status":"PASS","reviewer":reviewer,
-            "github_review_id":row["id"],"github_review_url":review_url,
-            "reviewed_head":head,"reviewed_tree":tree,
-            "reviewed_field_count":44,"field_reviews_sha256":digest,
-            "not_mathematical_authority_by_itself":True,
-            "claim_cap":"RH_OPEN",
-        }
-    raise ValueError("no independent GitHub APPROVED review signs exact 44-field digest")
+        if (row.get("state")=="APPROVED" and row.get("commit_id")==head and
+            isinstance(row.get("body"),str) and signed in row["body"] and
+            review.get("external_review_reference")==review_url):
+            return {
+                "schema":"PR292_GITHUB_INDEPENDENT_REVIEW_PROVENANCE_V1",
+                "integrity_status":"PASS","reviewer":reviewer,
+                "github_review_id":row["id"],"github_review_url":review_url,
+                "reviewed_head":head,"reviewed_tree":tree,
+                "reviewed_field_count":44,"field_reviews_sha256":digest,
+                "not_mathematical_authority_by_itself":True,
+                "claim_cap":"RH_OPEN",
+            }
+    raise ValueError("no independent GitHub APPROVED review signs exact 44-field digest "
+                     "as the reviewer's latest review")
 
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
