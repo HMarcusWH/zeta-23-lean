@@ -4,6 +4,7 @@ import Zeta23.CCM.PoleNeutralCompactInverse
 import Zeta23.CCM.Step123PhysicalImageIdentity
 import Zeta23.CCM.OriginalDetectorPaddedPhaseScalar
 import Zeta23.CCM.CanonicalPoleNeutralPublicAPI
+import Zeta23.ExceptionalZero.Step123CompleteOutput
 
 /-!
 # PR292: typed source-bound Step 1-3 consumer checks
@@ -38,15 +39,19 @@ theorem mc01_source_mass_one {β a : ℝ} {σ : ReversalParity}
       UniversalSinc.product UniversalSinc.fixedScale :=
   (Step123NativeSourceSpectralEvidence.fromNative out).source_fixed
 
-/-- MC02. Actual zero-indexed cofinal detector, one phase at a time. -/
+/-- MC02. Actual zero-indexed cofinal detector, one phase at a time: the
+COMPLETE N01-N40 + G01-G04 output exists beyond `max R 4` and beyond the
+common same-state threshold. -/
 theorem mc02_original_detector_cofinal
     (ρ : zetaZeroConfig.carrier) {β : ℝ}
     (hβ : 0 < β) (hβρ : β < |(ρ : ℂ).re - 1 / 2|)
     (σ : ReversalParity) (R : ℝ) :
-    ∃ out : GeneratedStep123ComposedEvidencePacket ρ β σ R,
-      max R 4 < fixedOriginalSincTrialAperture
-        out.integrated.boundary.generated.sourceData.separation :=
-  exists_generatedStep123ComposedEvidencePacket_cofinal ρ hβ hβρ σ R
+    ∃ out : GeneratedStep123CompleteOutput ρ β σ R,
+      max R 4 < fixedOriginalSincTrialAperture out.generated.sourceData.separation ∧
+      max R step123SameStateThreshold <
+        fixedOriginalSincTrialAperture out.generated.sourceData.separation := by
+  obtain ⟨out⟩ := exists_generatedStep123CompleteOutput ρ hβ hβρ σ R
+  exact ⟨out, out.generated.native_aperture_bound, out.thresholds_paid⟩
 
 /-- MC03. The one finite image has unit norm, EXACT normalized physical
 realization, and both native pole moments. The original smooth trial is
@@ -173,9 +178,11 @@ def mc07_neutral_channel_consumer {β a : ℝ} {σ : ReversalParity}
   let evidence := Step123NativeSourceSpectralEvidence.fromNative out
   exact ⟨evidence.variance, evidence.gram, evidence.channels⟩
 
-/-- MC08. The selected ground has its own true eigenpair and the actual
-cutoff bottoms admit exhaustive even/odd/tie trichotomy. The stronger
-selected-branch compatibility remains a separate review obligation. -/
+/-- MC08. The selected ground has its own true eigenpair, and the actual
+cutoff bottoms admit the exhaustive even/odd/tie trichotomy WITH every
+branch's consequences instantiated on the stored selected ground and the
+stored `lam` (N21), for the actual branch and for every value of the
+existing neutral-bottom tag. -/
 def mc08_selected_ground_consumer {β a : ℝ} {σ : ReversalParity}
     (out : Step123NativeOutput β σ a) :
     (‖out.selectedGround‖ = 1 ∧
@@ -186,10 +193,17 @@ def mc08_selected_ground_consumer {β a : ℝ} {σ : ReversalParity}
     Nonempty (PoleNeutralGroundBranch
       (fixedOriginalSincTrialAperture a)
       out.retained.state.selection.cutoff
-      out.aperture_pos out.source_selector.cutoff_nonempty) :=
+      out.aperture_pos out.source_selector.cutoff_nonempty) ∧
+    DetectorRetainedSelectedGroundBranch out.retained.state ∧
+    (∀ b : PoleNeutralGroundBranch (fixedOriginalSincTrialAperture a)
+        out.retained.state.selection.cutoff out.aperture_pos
+        out.retained.state.selection.cutoff_nonempty,
+      out.retained.state.groundBranchFacts b) :=
   ⟨(Step123NativeSourceSpectralEvidence.fromNative out).selected_eigenvector,
     poleNeutralGround_branch_exhaustive out.aperture_pos
-      out.retained.state.selection.cutoff out.source_selector.cutoff_nonempty⟩
+      out.retained.state.selection.cutoff out.source_selector.cutoff_nonempty,
+    out.n21_retained_branch,
+    out.n21_groundBranch_facts⟩
 
 /-- MC09. The genuine supported compact inverse has a unique H2
 solution, actual support, and sharp norm-four estimate on its exact
@@ -284,25 +298,33 @@ theorem mc13_actual_input_nonrange
           (nativeZeroJetDamping ρ) (nativeZeroJetDamping_pos ρ out.offLine).le)) :=
   out.true_input_nonrange
 
-/-- MC14. Compose source/spectral, arithmetic/range and exterior views from
-ONE actual generated output, with no caller-supplied missing bridge. -/
+/-- MC14. From ONE actual generated output, build the COMPLETE N01-N40
+native record on that same native packet (the returned record's packet is
+literally `out.native`), together with the earlier source/spectral,
+arithmetic/range and exterior evidence chain on the same output.  No
+caller-supplied bridge is used. -/
 def mc14_one_source_full_consumer
     {ρ : zetaZeroConfig.carrier} {β : ℝ}
     {σ : ReversalParity} {R : ℝ}
     (out : GeneratedStep123Output ρ β σ R) :
-    GeneratedStep123ComposedEvidencePacket ρ β σ R :=
-  GeneratedStep123ComposedEvidencePacket.fromIntegrated
-    (GeneratedStep123IntegratedPacket.fromActualBoundary
-      (GeneratedStep123BoundaryPacket.fromActualGenerated out))
+    { c : Step123CompleteNativeOutput β σ out.sourceData.separation //
+        c.native = out.native } ×
+      GeneratedStep123ComposedEvidencePacket ρ β σ R :=
+  (⟨Step123CompleteNativeOutput.ofNative out.native, rfl⟩,
+    GeneratedStep123ComposedEvidencePacket.fromIntegrated
+      (GeneratedStep123IntegratedPacket.fromActualBoundary
+        (GeneratedStep123BoundaryPacket.fromActualGenerated out)))
 
-/-- MC15. No all-large-aperture or common-both-parities upgrade. -/
+/-- MC15. Each phase separately has arbitrarily late COMPLETE outputs.
+No all-large-aperture or common-both-parities upgrade is asserted. -/
 theorem mc15_every_phase_separately_cofinal
     (ρ : zetaZeroConfig.carrier) {β : ℝ}
     (hβ : 0 < β) (hβρ : β < |(ρ : ℂ).re - 1 / 2|) :
     ∀ (σ : ReversalParity) (R : ℝ),
-      ∃ out : GeneratedStep123ComposedEvidencePacket ρ β σ R,
-        max R 4 < fixedOriginalSincTrialAperture
-          out.integrated.boundary.generated.sourceData.separation := by
+      ∃ out : GeneratedStep123CompleteOutput ρ β σ R,
+        max R 4 < fixedOriginalSincTrialAperture out.generated.sourceData.separation ∧
+        max R step123SameStateThreshold <
+          fixedOriginalSincTrialAperture out.generated.sourceData.separation := by
   intro σ R
   exact mc02_original_detector_cofinal ρ hβ hβρ σ R
 
