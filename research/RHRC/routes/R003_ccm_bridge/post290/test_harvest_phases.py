@@ -27,6 +27,19 @@ class WorkflowHarvestPhases(unittest.TestCase):
         record=harvest(s)["jobs"][0]
         self.assertEqual(record["scientific_disposition"],"GATE_FAILED")
         self.assertFalse(record["scientific_acceptance"])
+    def test_explicit_job_api_identities_match_enclosing_attempt(self):
+        s = snap()
+        s["runs"][0]["attempt_inventory"][0]["jobs"][0].update(run_id=11, run_attempt=1)
+        record = harvest(s)["jobs"][0]
+        self.assertEqual((record["run_id"], record["attempt"]), (11, 1))
+    def test_conflicting_or_boolean_job_api_identities_rejected(self):
+        for field, value in (("run_id", 999), ("run_attempt", 2),
+                             ("run_id", True), ("run_attempt", True)):
+            with self.subTest(field=field, value=value):
+                s = snap()
+                s["runs"][0]["attempt_inventory"][0]["jobs"][0][field] = value
+                with self.assertRaisesRegex(ValueError, field):
+                    harvest(s)
     def test_skipped_job_keeps_failure_of_evidence(self):
         s=snap();s["runs"]=[run(j=job(state="completed",conclusion="skipped"))]
         self.assertEqual(harvest(s)["jobs"][0]["scientific_disposition"],"NOT_EXECUTED")
@@ -84,6 +97,10 @@ class WorkflowHarvestPhases(unittest.TestCase):
                                 conclusion="failure", scientific_acceptance=False)
         packet["jobs"].append(failed_other_run)
         self.assertFalse(reviewed_prerequisite_harvest_complete(packet, H))
+        # A required duty from another run cannot be made optional while a
+        # passing row for the same configured pair supplies inventory coverage.
+        failed_other_run["required"] = False
+        self.assertFalse(reviewed_prerequisite_harvest_complete(packet, H))
 
     def test_manifest_rejects_missing_or_forged_attempt_flags(self):
         from derive_acceptance_manifest import reviewed_prerequisite_harvest_complete
@@ -107,5 +124,28 @@ class WorkflowHarvestPhases(unittest.TestCase):
         s=snap()
         with self.assertRaisesRegex(ValueError,"phase"):
             harvest(s,"POST_RELEASE_EVERY_JOB")
+    def test_manifest_optional_effective_jobs_must_be_terminal(self):
+        from derive_acceptance_manifest import reviewed_prerequisite_harvest_complete
+        from output_contract_check import FORMAL_JOB, REGRESSION_JOB, NATIVE_JOB, RESEARCH_JOBS
+        duties = {FORMAL_JOB, REGRESSION_JOB, NATIVE_JOB} | RESEARCH_JOBS
+        jobs = [dict(run_id=i+20, job_id=i+30, attempt=1, latest_attempt=True,
+                     workflow=w, name=n, required=True, status="completed", conclusion="success",
+                     scientific_acceptance=True, output_reviewed=True, classification="FORMAL_VALIDITY_GATE")
+                for i,(w,n) in enumerate(sorted(duties))]
+        optional = dict(jobs[0], run_id=990, job_id=991, workflow="Synthetic optional research",
+                        name="optional", required=False, scientific_acceptance=False)
+        jobs.append(optional)
+        packet = dict(head=H, jobs=jobs, review_phase="PRE_RELEASE_PREREQUISITES", includes_release_run=False)
+        for conclusion in ("failure", "skipped"):
+            optional.update(status="completed", conclusion=conclusion)
+            self.assertTrue(reviewed_prerequisite_harvest_complete(packet, H))
+        for status, conclusion in (("queued", None), ("in_progress", None),
+                                   ("completed", None), ("completed", " ")):
+            optional.update(status=status, conclusion=conclusion)
+            self.assertFalse(reviewed_prerequisite_harvest_complete(packet, H))
+        optional.update(attempt=2, status="completed", conclusion="success")
+        jobs.append(dict(optional, job_id=992, attempt=1, latest_attempt=False,
+                         status="in_progress", conclusion=None))
+        self.assertTrue(reviewed_prerequisite_harvest_complete(packet, H))
 if __name__=="__main__":
     unittest.main()

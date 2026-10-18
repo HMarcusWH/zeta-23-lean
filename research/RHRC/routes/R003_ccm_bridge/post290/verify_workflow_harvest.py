@@ -78,6 +78,11 @@ def validate_jobs(raw,review):
                           else row.get("head_tree"))
                 if checked_checkout(row,expected) is None:
                     raise ValueError("missing required actual checkout identity: "+str(key))
+        if (row["latest_attempt"] is True and
+            (row.get("status") != "completed" or
+             not isinstance(row.get("conclusion"), str) or
+             not row["conclusion"].strip())):
+            raise ValueError("effective workflow job has no terminal result: "+str(key))
     return True
 
 def reviewer_receipt(review,pr,reviews,commits):

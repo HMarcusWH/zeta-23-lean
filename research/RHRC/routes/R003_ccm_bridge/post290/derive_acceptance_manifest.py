@@ -18,7 +18,7 @@ from d2_source_equivalence import exact_numeric_source, verify_d2_receipt
 from build_formal_receipt import TYPED_CONTRACT_ROOTS
 from graph_precheck_receipt import validate_receipt
 from harvest_workflows import effective_jobs
-from output_contract_check import FORMAL_JOB, REGRESSION_JOB, NATIVE_JOB, ACTIVE_D2_JOB
+from output_contract_check import FORMAL_JOB, REGRESSION_JOB, NATIVE_JOB, RESEARCH_JOBS
 
 REPO = Path(__file__).resolve().parents[5]
 FROZEN = REPO / "research/RHRC/integration/post290/spec/BUILD_MANIFEST.json"
@@ -139,7 +139,14 @@ def reviewed_prerequisite_harvest_complete(harvest: dict, head: str) -> bool:
            type(job.get("scientific_acceptance")) is not bool
            for job in jobs):
         return False
-    mandatory = {FORMAL_JOB, REGRESSION_JOB, NATIVE_JOB, ACTIVE_D2_JOB}
+    if any(job.get("status") != "completed" or
+           not isinstance(job.get("conclusion"), str) or
+           not job["conclusion"].strip() for job in current):
+        return False
+    mandatory = {FORMAL_JOB, REGRESSION_JOB, NATIVE_JOB} | RESEARCH_JOBS
+    if any((job["workflow"], job["name"]) in mandatory and
+           job["required"] is not True for job in current):
+        return False
     observed = {(job["workflow"], job["name"]) for job in current
                 if job["required"] is True}
     if not mandatory <= observed:

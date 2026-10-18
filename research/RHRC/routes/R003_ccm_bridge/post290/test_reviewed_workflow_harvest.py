@@ -45,6 +45,33 @@ class ReviewedHarvestTests(unittest.TestCase):
     def test_result_edit(self):
         raw,re=fixture();re["jobs"][0]["conclusion"]="failure"
         with self.assertRaises(ValueError):validate_jobs(raw,re)
+    def test_completed_optional_failure_and_skip_are_honest_reviews(self):
+        for conclusion in ("failure", "skipped"):
+            with self.subTest(conclusion=conclusion):
+                raw, reviewed = fixture()
+                raw["jobs"][0]["conclusion"] = reviewed["jobs"][0]["conclusion"] = conclusion
+                reviewed["jobs"][0]["scientific_disposition"] = "COMPLETED_WITHOUT_SCIENTIFIC_ACCEPTANCE"
+                self.assertTrue(validate_jobs(raw, reviewed))
+    def test_optional_effective_job_must_have_a_terminal_result(self):
+        for status, conclusion in (("queued", None), ("in_progress", None),
+                                   ("completed", None), ("completed", " ")):
+            with self.subTest(status=status, conclusion=conclusion):
+                raw, reviewed = fixture()
+                for packet in (raw, reviewed):
+                    packet["jobs"][0].update(status=status, conclusion=conclusion)
+                reviewed["jobs"][0]["scientific_disposition"] = "INTERIM_RESULT_UNRESOLVED"
+                with self.assertRaisesRegex(ValueError, "terminal result"):
+                    validate_jobs(raw, reviewed)
+    def test_superseded_interim_status_remains_historical(self):
+        raw, reviewed = fixture()
+        for packet in (raw, reviewed):
+            old = copy.deepcopy(packet["jobs"][0])
+            old.update(job_id=18, latest_attempt=False, status="in_progress", conclusion=None)
+            packet["jobs"][0]["attempt"] = 2
+            packet["jobs"].append(old)
+        reviewed["jobs"][1].update(scientific_disposition="SUPERSEDED_INTERIM_RESULT_REVIEWED",
+                                   review_reason="Synthetic archived observation; newer attempt completed.")
+        self.assertTrue(validate_jobs(raw, reviewed))
     def test_missing_review(self):
         raw,re=fixture();re["jobs"][0]["output_reviewed"]=False
         with self.assertRaises(ValueError):validate_jobs(raw,re)

@@ -211,6 +211,12 @@ def harvest(snapshot, phase='PRE_RELEASE_PREREQUISITES'):
             raise ValueError('external D2 identity/attempt mismatch')
         for attempt in run['attempt_inventory']:
             for job in attempt['jobs']:
+                if ('run_id' in job and
+                    (type(job['run_id']) is not int or job['run_id'] != run['id'])):
+                    raise ValueError('job run_id disagrees with enclosing run')
+                if ('run_attempt' in job and
+                    (type(job['run_attempt']) is not int or job['run_attempt'] != attempt['attempt'])):
+                    raise ValueError('job run_attempt disagrees with enclosing attempt')
                 latest = attempt['attempt'] == run['run_attempt']
                 role = classify_job(run['name'], job['name'])
                 conclusion = job.get('conclusion')

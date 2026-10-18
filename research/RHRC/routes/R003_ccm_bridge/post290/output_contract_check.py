@@ -218,6 +218,10 @@ def release_gaps(manifest, formal, d2, jobs):
             gaps.append('workflow source/output review incomplete: '+job['name'])
         if job.get('latest_attempt') is not True:
             continue
+        if (job.get('status') != 'completed' or
+            not isinstance(job.get('conclusion'), str) or
+            not job['conclusion'].strip()):
+            gaps.append('effective workflow job has no terminal result: '+job['name'])
         if type(job['required']) is not bool or type(job['scientific_acceptance']) is not bool:
             gaps.append('workflow acceptance flags must be Boolean')
             continue

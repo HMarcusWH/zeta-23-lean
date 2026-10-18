@@ -182,6 +182,28 @@ def run():
     mutation('job classified without reading outputs',lambda a:a[3][0].update(output_reviewed=False))
     mutation('missing latest attempt flag',lambda a:a[3][0].pop('latest_attempt'))
     mutation('string latest attempt flag',lambda a:a[3][0].update(latest_attempt='true'))
+    optional = deepcopy(controls)
+    extra = deepcopy(optional[3][0])
+    extra.update(run_id=990, job_id=991, workflow='Synthetic optional research',
+                 name='optional', required=False, scientific_acceptance=False)
+    optional[3].append(extra)
+    for conclusion in ('failure', 'skipped'):
+        extra.update(status='completed', conclusion=conclusion)
+        if synthetic_release_gaps(*optional):
+            raise RuntimeError('Completed optional '+conclusion+' was promoted to a required success gate')
+    for status in ('queued', 'in_progress'):
+        mutation('optional effective job still '+status,
+                 lambda a,s=status:a[3][-1].update(status=s,conclusion=None),optional)
+    mutation('optional effective job missing final conclusion',
+             lambda a:a[3][-1].update(conclusion=None),optional)
+    mutation('optional effective job blank final conclusion',
+             lambda a:a[3][-1].update(conclusion=' '),optional)
+    extra.update(attempt=2, status='completed', conclusion='success')
+    historical = deepcopy(extra)
+    historical.update(job_id=992, attempt=1, latest_attempt=False, status='in_progress', conclusion=None)
+    optional[3].append(historical)
+    if synthetic_release_gaps(*optional):
+        raise RuntimeError('Superseded historical interim status overwrote its completed effective job')
     mutation('missing job classification',lambda a:a[3][0].pop('classification'))
     mutation('old D2 source tree relabelled current',lambda a:a[2].update(source_tree='b'*40))
     mutation('D2 Boolean claim encoded as string',lambda a:a[2].update(independent_nonpartial_verified='false'))
