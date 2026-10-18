@@ -13,9 +13,9 @@ import json
 import os
 import subprocess
 from pathlib import Path
-from harvest_workflows import inventory,harvest,APPROVED_D2_RUN_ID
+from harvest_workflows import inventory,harvest,APPROVED_D2_RUN_ID,effective_jobs
 from output_contract_check import checked_checkout,D2_PRODUCER_TREE
-from verify_semantic_review_provenance import api,all_pages
+from verify_semantic_review_provenance import api,all_pages,latest_submitted_review
 
 REPO=Path(__file__).resolve().parents[5]
 ROLES={"FORMAL_VALIDITY_GATE","REGRESSION_GATE","RESEARCH_PRODUCING_CHECK"}
@@ -57,6 +57,7 @@ def validate_jobs(raw,review):
     proposed={job_id(x):x for x in submitted}
     if len(original)!=len(actual) or len(proposed)!=len(submitted) or set(original)!=set(proposed):
         raise ValueError("job inventory omitted, duplicated or inserted")
+    effective_jobs(actual)  # Validate per-logical-job newest attempts and complete history.
     for key,row in proposed.items():
         old=original[key]
         if any(row.get(f)!=old.get(f) for f in FROZEN_FIELDS):
@@ -93,18 +94,16 @@ def reviewer_receipt(review,pr,reviews,commits):
     if user in authors:
         raise ValueError("source author self-reviewed workflow results")
     token="PR292-WORKFLOW-HARVEST-SHA256="+digest(review)
-    for r in reviews:
-        if (str((r.get("user") or {}).get("login","")).casefold()==user
-            and r.get("state")=="APPROVED" and r.get("commit_id")==head
-            and r.get("html_url")==review.get("external_review_reference")
-            and r.get("submitted_at") and isinstance(r.get("body"),str)
-            and token in r["body"]):
-            return {"schema":"PR292_WORKFLOW_HARVEST_REVIEW_PROVENANCE_V1",
-                "head":head,"reviewer":user,"reviewed_jobs_sha256":digest(review),
-                "github_review_id":r["id"],"github_review_url":r["html_url"],
-                "integrity_status":"PASS","claim_cap":"RH_OPEN",
-                "not_mathematical_authority_by_itself":True}
-    raise ValueError("independent GitHub APPROVED review did not sign this harvest")
+    r = latest_submitted_review(reviews, user)
+    if (r.get("state") != "APPROVED" or r.get("commit_id") != head
+        or r.get("html_url") != review.get("external_review_reference")
+        or not isinstance(r.get("body"), str) or token not in r["body"]):
+        raise ValueError("latest workflow reviewer decision is not signed current-head APPROVED")
+    return {"schema":"PR292_WORKFLOW_HARVEST_REVIEW_PROVENANCE_V1",
+        "head":head,"reviewer":user,"reviewed_jobs_sha256":digest(review),
+        "github_review_id":r["id"],"github_review_url":r["html_url"],
+        "integrity_status":"PASS","claim_cap":"RH_OPEN",
+        "not_mathematical_authority_by_itself":True}
 
 def live_raw(head):
     return harvest(inventory(head,APPROVED_D2_RUN_ID,

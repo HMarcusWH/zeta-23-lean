@@ -139,6 +139,48 @@ def inventory(head, approved_d2_run_id=None,
             'review_phase':phase, 'excluded_administrative_runs':excluded_administrative_runs,
             'external_d2_run_id': approved_d2_run_id}
 
+
+def effective_jobs(records):
+    """Validate ALL historical attempts; return one newest row per logical job.
+
+    Identity includes the GitHub run ID. Separate workflow runs are never
+    silently substituted for each other, and matrix/display-name collisions
+    within one attempt fail closed.
+    """
+    if not isinstance(records, list) or not records:
+        raise ValueError("missing workflow attempt inventory")
+    latest = {}
+    seen_jobs = set()
+    for row in records:
+        if not isinstance(row, dict):
+            raise ValueError("invalid workflow attempt row")
+        run_id, job_id, attempt = row.get("run_id"), row.get("job_id"), row.get("attempt")
+        workflow, name = row.get("workflow"), row.get("name")
+        if (type(run_id) is not int or run_id <= 0 or
+            type(job_id) is not int or job_id <= 0 or
+            type(attempt) is not int or attempt <= 0 or
+            not isinstance(workflow, str) or not workflow or
+            not isinstance(name, str) or not name):
+            raise ValueError("invalid workflow attempt identity")
+        if type(row.get("latest_attempt")) is not bool:
+            raise ValueError("missing/non-Boolean latest_attempt")
+        logical = (run_id, workflow, name)
+        slot = (logical, attempt)
+        if slot in seen_jobs:
+            raise ValueError("duplicate logical job within one attempt")
+        seen_jobs.add(slot)
+        latest[logical] = max(latest.get(logical, 0), attempt)
+    effective = []
+    for row in records:
+        logical = (row["run_id"], row["workflow"], row["name"])
+        current = row["attempt"] == latest[logical]
+        if row["latest_attempt"] is not current:
+            raise ValueError("conflicting effective job attempt flags")
+        if current:
+            effective.append(row)
+    return effective
+
+
 def harvest(snapshot, phase='PRE_RELEASE_PREREQUISITES'):
     if phase not in ('PRE_RELEASE_PREREQUISITES','POST_RELEASE_EVERY_JOB'):
         raise ValueError('unknown release harvest phase')
@@ -194,6 +236,16 @@ def harvest(snapshot, phase='PRE_RELEASE_PREREQUISITES'):
                     'output_reviewed':False,
                     'acceptance_note':'Raw job status is not reviewed mathematical output; separate source-bound receipt required.',
                     'steps': job.get('steps', []), 'formal_authority_created_by_status': False})
+    # Recompute effective flags from each logical job's last *observed*
+    # attempt: partial reruns may not repeat already-successful jobs.
+    by_logical = {}
+    for row in records:
+        logical = (row["run_id"], row["workflow"], row["name"])
+        by_logical[logical] = max(by_logical.get(logical, 0), row["attempt"])
+    for row in records:
+        logical = (row["run_id"], row["workflow"], row["name"])
+        row["latest_attempt"] = row["attempt"] == by_logical[logical]
+    effective_jobs(records)
     return {'head': head, 'repository': REPOSITORY, 'claim_cap': 'RH_OPEN',
             'review_phase':phase, 'includes_release_run':any(r['workflow']==RELEASE_WORKFLOW for r in records),
             'excluded_administrative_runs':excluded,

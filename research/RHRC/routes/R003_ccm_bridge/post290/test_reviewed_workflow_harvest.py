@@ -18,6 +18,30 @@ def fixture():
     return raw,reviewed
 class ReviewedHarvestTests(unittest.TestCase):
     def test_control_only(self):self.assertTrue(validate_jobs(*fixture()))
+    def test_review_both_attempts_without_promoting_old_failure(self):
+        raw, reviewed = fixture()
+        old_raw = copy.deepcopy(raw["jobs"][0])
+        old_raw.update(job_id=18, attempt=1, latest_attempt=False,
+                       conclusion="failure", scientific_disposition="GATE_FAILED",
+                       scientific_acceptance=False)
+        old_review = copy.deepcopy(reviewed["jobs"][0])
+        old_review.update(job_id=18, attempt=1, latest_attempt=False,
+                          conclusion="failure", scientific_disposition="GATE_FAILED",
+                          scientific_acceptance=False, review_reason="Historical failed attempt honestly reviewed")
+        raw["jobs"][0]["attempt"] = reviewed["jobs"][0]["attempt"] = 2
+        raw["jobs"].append(old_raw)
+        reviewed["jobs"].append(old_review)
+        self.assertTrue(validate_jobs(raw, reviewed))
+        reviewed["jobs"][1]["scientific_acceptance"] = True
+        with self.assertRaises(ValueError):
+            validate_jobs(raw, reviewed)
+
+    def test_inconsistent_effective_flag_rejected(self):
+        raw, reviewed = fixture()
+        raw["jobs"][0]["latest_attempt"] = reviewed["jobs"][0]["latest_attempt"] = "true"
+        with self.assertRaisesRegex(ValueError, "latest_attempt"):
+            validate_jobs(raw, reviewed)
+
     def test_result_edit(self):
         raw,re=fixture();re["jobs"][0]["conclusion"]="failure"
         with self.assertRaises(ValueError):validate_jobs(raw,re)

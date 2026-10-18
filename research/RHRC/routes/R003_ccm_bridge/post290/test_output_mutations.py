@@ -90,7 +90,8 @@ def fixture():
     jobs = [{'workflow':workflow,'name':name,'required':True,'head':'c'*40,'head_tree':tree,'status':'completed',
              'conclusion':'success','scientific_acceptance':True} for workflow,name in [FORMAL_JOB,REGRESSION_JOB,sorted(RESEARCH_JOBS)[0],NATIVE_JOB]]
     jobs[-1]['native_output_review']={'head':'c'*40,'source_tree':tree,'scope':'FINITE_FIXED_PROBES','frozen_panel_complete':True,'pair_count':44,'row_count':176,'evaluated_rows':176,'unresolved_rows':0,'verified_pairs':44,'unresolved_pairs':0,'universal_theorem_authority':False}
-    for job in jobs:
+    for index,job in enumerate(jobs):
+        job.update(run_id=100+index,job_id=200+index,attempt=1,latest_attempt=True)
         if (job['workflow'],job['name']) in RESEARCH_JOBS:
             job['head']=D2_PRODUCER_HEAD
             job['head_tree']=D2_PRODUCER_TREE
@@ -179,6 +180,8 @@ def run():
     mutation('native checked at different source tree',lambda a:a[3][-1]['native_output_review'].update(source_tree='b'*40))
     mutation('unknown workflow silently ignored',lambda a:a[3].append({'workflow':'Unknown workflow','name':'unknown','required':False,'head':'c'*40,'head_tree':'a'*40,'status':'completed','conclusion':'success','scientific_acceptance':False,'classification':'REQUIRES_SOURCE_REVIEW','output_reviewed':False}))
     mutation('job classified without reading outputs',lambda a:a[3][0].update(output_reviewed=False))
+    mutation('missing latest attempt flag',lambda a:a[3][0].pop('latest_attempt'))
+    mutation('string latest attempt flag',lambda a:a[3][0].update(latest_attempt='true'))
     mutation('missing job classification',lambda a:a[3][0].pop('classification'))
     mutation('old D2 source tree relabelled current',lambda a:a[2].update(source_tree='b'*40))
     mutation('D2 Boolean claim encoded as string',lambda a:a[2].update(independent_nonpartial_verified='false'))
@@ -190,7 +193,9 @@ def run():
         raise RuntimeError('Valid reviewed same-tree PR merge rejected: ' + repr(merge_gaps))
     paired=deepcopy(merge)
     # Both push and PR runs can compile the same tree under distinct HEADs.
-    paired[3].append(deepcopy(controls[3][0]))
+    distinct_push_run = deepcopy(controls[3][0])
+    distinct_push_run.update(run_id=880, job_id=881)
+    paired[3].append(distinct_push_run)
     paired_gaps = synthetic_release_gaps(*paired)
     if paired_gaps:
         raise RuntimeError('Matching checkout was rejected: ' + repr(paired_gaps))

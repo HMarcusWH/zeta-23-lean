@@ -53,6 +53,56 @@ class WorkflowHarvestPhases(unittest.TestCase):
         s=snap("POST_RELEASE_EVERY_JOB")
         s["runs"].append(run(name=RELEASE_WORKFLOW))
         self.assertTrue(harvest(s,"POST_RELEASE_EVERY_JOB")["includes_release_run"])
+    def test_manifest_requires_all_effective_mandatory_jobs(self):
+        from derive_acceptance_manifest import reviewed_prerequisite_harvest_complete
+        from output_contract_check import FORMAL_JOB, REGRESSION_JOB, NATIVE_JOB, ACTIVE_D2_JOB
+        duties = (FORMAL_JOB, REGRESSION_JOB, NATIVE_JOB, ACTIVE_D2_JOB)
+        jobs = [
+            dict(run_id=i + 40, job_id=i + 70, attempt=1, latest_attempt=True,
+                 workflow=w, name=n, required=True, status="completed",
+                 conclusion="success", scientific_acceptance=True,
+                 output_reviewed=True, classification="RESEARCH_PRODUCING_CHECK")
+            for i,(w,n) in enumerate(duties)
+        ]
+        packet = dict(head=H, claim_cap="RH_OPEN", jobs=jobs,
+                      review_phase="PRE_RELEASE_PREREQUISITES",
+                      includes_release_run=False)
+        self.assertTrue(reviewed_prerequisite_harvest_complete(packet, H))
+        # Partial rerun: the successful unrerun formal job stays effective.
+        old = dict(jobs[1], attempt=1, latest_attempt=False, conclusion="failure",
+                   scientific_acceptance=False, job_id=97)
+        jobs[1]["attempt"] = 2
+        packet["jobs"].append(old)
+        self.assertTrue(reviewed_prerequisite_harvest_complete(packet, H))
+        self.assertEqual(old["conclusion"], "failure")
+        # A missing mandatory job, even when three others pass, is incomplete.
+        without_formal = dict(packet, jobs=[j for j in packet["jobs"]
+                                           if (j["workflow"],j["name"]) != FORMAL_JOB])
+        self.assertFalse(reviewed_prerequisite_harvest_complete(without_formal, H))
+        # A different run ID must not erase a required failed job.
+        failed_other_run = dict(jobs[1], run_id=999, job_id=999,
+                                conclusion="failure", scientific_acceptance=False)
+        packet["jobs"].append(failed_other_run)
+        self.assertFalse(reviewed_prerequisite_harvest_complete(packet, H))
+
+    def test_manifest_rejects_missing_or_forged_attempt_flags(self):
+        from derive_acceptance_manifest import reviewed_prerequisite_harvest_complete
+        from output_contract_check import FORMAL_JOB, REGRESSION_JOB, NATIVE_JOB, ACTIVE_D2_JOB
+        jobs = [
+            dict(run_id=i+20, job_id=i+30, attempt=1, latest_attempt=True,
+                 workflow=w, name=n, required=True, status="completed",
+                 conclusion="success", scientific_acceptance=True,
+                 output_reviewed=True, classification="FORMAL_VALIDITY_GATE")
+            for i,(w,n) in enumerate((FORMAL_JOB, REGRESSION_JOB, NATIVE_JOB, ACTIVE_D2_JOB))
+        ]
+        packet = dict(head=H, claim_cap="RH_OPEN", jobs=jobs,
+                      review_phase="PRE_RELEASE_PREREQUISITES", includes_release_run=False)
+        self.assertTrue(reviewed_prerequisite_harvest_complete(packet, H))
+        jobs[0].pop("latest_attempt")
+        self.assertFalse(reviewed_prerequisite_harvest_complete(packet, H))
+        jobs[0]["latest_attempt"] = "true"
+        self.assertFalse(reviewed_prerequisite_harvest_complete(packet, H))
+
     def test_phase_forgery_rejected(self):
         s=snap()
         with self.assertRaisesRegex(ValueError,"phase"):

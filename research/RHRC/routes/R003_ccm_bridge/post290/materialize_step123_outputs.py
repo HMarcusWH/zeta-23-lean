@@ -17,16 +17,17 @@ import subprocess
 from pathlib import Path
 
 from build_step4_handoff import build as build_handoff
+from countermodel_survival import validate_survival_source_ids
 from prepare_field_review_package import produce as prepare_unapproved_44_field_dossier
 from output_contract_check import release_gaps, frozen_spec
 from symbolic_step123_artifacts import (
-    CUT_ROOTS, build_symbolic_index, finite_residual_rows, matched_control_inventory,
+    SOURCE_ID, CUT_ROOTS, build_symbolic_index, finite_residual_rows, matched_control_inventory,
 )
 
 REPO = Path(__file__).resolve().parents[5]
 INTEGRATION = REPO / "research/RHRC/integration/post290"
 FIELD_CONTRACT = REPO / "research/RHRC/integration/post290/review_execution_2026-10-14/spec/OUTPUT_FIELD_CONTRACT.json"
-FIXED_SOURCE = "frozen-universal-sinc-product-s0-1/4096"
+FIXED_SOURCE = SOURCE_ID
 
 VIEW_MAP = (
     ("original_source", "ORIGINAL_SOURCE", "Zeta23.CCM.universalSincSource", "mass-one-source"),
@@ -226,6 +227,9 @@ def materialize(inputs, outdir, semantic=None, reviewer_provenance=None):
         raise ValueError("source/observation claim firewall failed")
     if lineage.get("integrity_status") != "PASS":
         raise ValueError("pinned source lineage has not passed its independent byte check")
+    validate_survival_source_ids(survival)
+    if survival.get("source_identity") != comparison.get("source_identity"):
+        raise ValueError("countermodel survival is not bound to the original native source identity")
     if panel.get("source_identity") != comparison.get("source_identity"):
         raise ValueError("comparison not bound to supplied panel")
     if checker.get("panel_sha256") != digest(inputs["panel"]):

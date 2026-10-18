@@ -11,8 +11,11 @@ import argparse
 import hashlib
 import json
 from pathlib import Path
+from symbolic_step123_artifacts import SOURCE_ID
 
 CUTS = ("A-X", "B-Y", "C-Schur")
+FROZEN_COUNTERMODEL_CONTRACT = (Path(__file__).resolve().parents[5] /
+    "research/RHRC/integration/post290/COUNTERMODEL_CONTRACTS.json")
 
 
 def load(path):
@@ -23,7 +26,30 @@ def hashfile(path):
     return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 
 
+
+def validate_survival_source_ids(survival):
+    """Original A/B/C cuts use the frozen canonical source, not a countermodel."""
+    contract = load(FROZEN_COUNTERMODEL_CONTRACT)
+    canonical = contract.get("source_id")
+    if (contract.get("claim_cap") != "RH_OPEN" or
+        contract.get("open_cuts") != list(CUTS) or
+        canonical != SOURCE_ID):
+        raise ValueError("frozen countermodel source contract mismatch")
+    if not isinstance(survival, dict) or survival.get("claim_cap") != "RH_OPEN":
+        raise ValueError("countermodel survival claim cap mismatch")
+    rows = survival.get("cuts")
+    if (not isinstance(rows, list) or len(rows) != len(CUTS) or
+        {item.get("id") for item in rows if isinstance(item, dict)} != set(CUTS)):
+        raise ValueError("countermodel survival cuts missing, duplicated or altered")
+    if any(item.get("source_id") != canonical or item.get("status") != "OPEN"
+           for item in rows):
+        raise ValueError("countermodel survival source ID or cut status mismatch")
+    return canonical
+
+
 def audit(comparison, cuts, *, formal=None, d2=None):
+    if load(FROZEN_COUNTERMODEL_CONTRACT).get("source_id") != SOURCE_ID:
+        raise ValueError("countermodel source disagrees with frozen contract")
     if comparison.get("claim_cap") != "RH_OPEN":
         raise ValueError("representation comparison has wrong claim cap")
     if comparison.get("discrepancies"):
@@ -52,7 +78,7 @@ def audit(comparison, cuts, *, formal=None, d2=None):
             raise ValueError("no independent verified promotion of the original cut: " + cut_id)
         results.append({
             "id": cut_id,
-            "source_id": "fixed-universal-sinc-product-1/4096",
+            "source_id": SOURCE_ID,
             "status": "OPEN",
             "necessary_to_exclude": descriptions[cut_id],
             "conditional_sufficiency_ref": item.get("core_formal_sufficiency_module"),
@@ -71,7 +97,7 @@ def audit(comparison, cuts, *, formal=None, d2=None):
     d2_complete = bool(d2 and d2.get("status") == "D2_COMPLETE"
                        and d2.get("independent_nonpartial_verified") is True
                        and d2.get("complete_layers") == 30)
-    return {
+    result = {
         "schema": "post290.countermodel-survival.v1",
         "claim_cap": "RH_OPEN",
         "scientific_disposition": "COUNTEREXAMPLE_SPACE_REMAINS_OPEN",
@@ -94,6 +120,8 @@ def audit(comparison, cuts, *, formal=None, d2=None):
             "Attack the subexponential signed loss on the fixed divisor source, or exhibit a source-faithful countermodel",
         ],
     }
+    validate_survival_source_ids(result)
+    return result
 
 
 def main():

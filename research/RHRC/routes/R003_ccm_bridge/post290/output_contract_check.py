@@ -12,6 +12,7 @@ from pathlib import Path
 from d2_source_equivalence import (exact_numeric_source, verify_d2_receipt,
                                    D2_PRODUCER_HEAD, D2_PRODUCER_TREE)
 from build_formal_receipt import TYPED_CONTRACT_ROOTS, validate_full_type_fields
+from harvest_workflows import effective_jobs
 
 REPO=Path(__file__).resolve().parents[5]
 IMMUTABLE_SPEC=REPO/'research/RHRC/integration/post290/spec/BUILD_MANIFEST.json'
@@ -197,7 +198,12 @@ def release_gaps(manifest, formal, d2, jobs):
         gaps.append('D2 continuous full-domain gate incomplete')
     # The compiler receipt binds the actual checkout. The configured formal
     # job supplies the API branch identity, retained unchanged in every job.
-    formal_jobs=[j for j in jobs if (j.get('workflow'),j.get('name'))==FORMAL_JOB and j.get('latest_attempt') is not False]
+    try:
+        active_jobs = effective_jobs(jobs)
+    except ValueError as exc:
+        gaps.append('invalid workflow effective-attempt inventory: ' + str(exc))
+        active_jobs = []
+    formal_jobs=[j for j in active_jobs if (j.get('workflow'),j.get('name'))==FORMAL_JOB]
     branch_heads={j.get('head') for j in formal_jobs}
     branch_head=next(iter(branch_heads)) if len(branch_heads)==1 else head
     if len(branch_heads)!=1:
@@ -210,7 +216,7 @@ def release_gaps(manifest, formal, d2, jobs):
             continue
         if job['classification'] not in CLASSIFICATIONS or job.get('output_reviewed') is not True:
             gaps.append('workflow source/output review incomplete: '+job['name'])
-        if job.get('latest_attempt') is False:
+        if job.get('latest_attempt') is not True:
             continue
         if type(job['required']) is not bool or type(job['scientific_acceptance']) is not bool:
             gaps.append('workflow acceptance flags must be Boolean')

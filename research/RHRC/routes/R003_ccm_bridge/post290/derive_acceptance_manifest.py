@@ -17,6 +17,8 @@ from pathlib import Path
 from d2_source_equivalence import exact_numeric_source, verify_d2_receipt
 from build_formal_receipt import TYPED_CONTRACT_ROOTS
 from graph_precheck_receipt import validate_receipt
+from harvest_workflows import effective_jobs
+from output_contract_check import FORMAL_JOB, REGRESSION_JOB, NATIVE_JOB, ACTIVE_D2_JOB
 
 REPO = Path(__file__).resolve().parents[5]
 FROZEN = REPO / "research/RHRC/integration/post290/spec/BUILD_MANIFEST.json"
@@ -111,6 +113,43 @@ def verified_outputs(directory: Path, head: str, tree: str) -> bool:
     return True
 
 
+
+def reviewed_prerequisite_harvest_complete(harvest: dict, head: str) -> bool:
+    """Scientific acceptance is per effective logical job, not per old attempt.
+
+    All historical attempts must be honestly reviewed. A later run ID cannot
+    silently erase a failed earlier run, and the full configured mandatory
+    job set must be present before the final manifest may claim completion.
+    """
+    jobs = harvest.get("jobs")
+    if (harvest.get("head") != head or
+        harvest.get("review_phase") != "PRE_RELEASE_PREREQUISITES" or
+        harvest.get("includes_release_run") is not False or
+        not isinstance(jobs, list) or not jobs):
+        return False
+    try:
+        current = effective_jobs(jobs)
+    except ValueError:
+        return False
+    if any(job.get("output_reviewed") is not True or
+           job.get("classification") not in (
+               "FORMAL_VALIDITY_GATE", "REGRESSION_GATE",
+               "RESEARCH_PRODUCING_CHECK") or
+           type(job.get("required")) is not bool or
+           type(job.get("scientific_acceptance")) is not bool
+           for job in jobs):
+        return False
+    mandatory = {FORMAL_JOB, REGRESSION_JOB, NATIVE_JOB, ACTIVE_D2_JOB}
+    observed = {(job["workflow"], job["name"]) for job in current
+                if job["required"] is True}
+    if not mandatory <= observed:
+        return False
+    return all(job["status"] == "completed" and
+               job["conclusion"] == "success" and
+               job["scientific_acceptance"] is True
+               for job in current if job["required"] is True)
+
+
 def derive(formal: dict, review: dict, d2: dict, harvest: dict,
            output_dir: Path, graph_receipt: dict | None = None) -> dict:
     """Unproved, unreviewed or incomplete evidence stays INCOMPLETE."""
@@ -168,20 +207,7 @@ def derive(formal: dict, review: dict, d2: dict, harvest: dict,
         modules.append(entry)
         status[item["id"]] = passed
 
-    workflow_jobs = harvest.get("jobs", [])
-    complete_harvest = (isinstance(workflow_jobs, list) and bool(workflow_jobs)
-                        and harvest.get("head") == head
-                        and harvest.get("review_phase") == "PRE_RELEASE_PREREQUISITES"
-                        and harvest.get("includes_release_run") is False
-                        and all(job.get("output_reviewed") is True
-                                and job.get("classification") in (
-                                    "FORMAL_VALIDITY_GATE", "REGRESSION_GATE",
-                                    "RESEARCH_PRODUCING_CHECK")
-                                for job in workflow_jobs)
-                        and all(job.get("scientific_acceptance") is True
-                                and job.get("status") == "completed"
-                                and job.get("conclusion") == "success"
-                                for job in workflow_jobs if job.get("required") is True))
+    complete_harvest = reviewed_prerequisite_harvest_complete(harvest, head)
     all_outputs = verified_outputs(output_dir, head, tree)
     packages = []
     done = {}

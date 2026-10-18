@@ -15,13 +15,13 @@ from build_formal_receipt import AUDIT, audit_roots, full_expression_record
 import materialize_step123_outputs as materializer
 from prepare_field_review_package import FIELDS, produce
 from symbolic_step123_artifacts import (
-    CUT_ROOTS, FIELD_IDS, SYMBOLIC_KIND, build_symbolic_index,
+    SOURCE_ID, CUT_ROOTS, FIELD_IDS, SYMBOLIC_KIND, build_symbolic_index,
     finite_residual_rows, matched_control_inventory,
 )
 from test_formal_receipt import synthetic_type_expression
 from test_step123_research_artifacts import audited_formal_fixture, cuts, panel
 from compare_representations import compare
-from countermodel_survival import audit
+from countermodel_survival import audit, validate_survival_source_ids
 
 IDENTITY = {"head": "a" * 40, "tree": "b" * 40}
 
@@ -221,6 +221,32 @@ def test_actual_materializer(directory):
                 for r in rows if r["row_kind"] != SYMBOLIC_KIND), "finite complex/normal data truncated")
     require(len(load("COUNTERMODEL_SURVIVAL.json")["matched_controls"]) == 8,
             "mandatory control inventory missing")
+    canonical = json.loads((materializer.INTEGRATION / "COUNTERMODEL_CONTRACTS.json").read_text())["source_id"]
+    original_survival = load("COUNTERMODEL_SURVIVAL.json")
+    require(canonical == SOURCE_ID, "frozen source ID disagrees with native symbolic source")
+    require(validate_survival_source_ids(original_survival) == canonical,
+            "valid original survival cuts rejected")
+    require(all(row["source_id"] == canonical for row in original_survival["cuts"]),
+            "materialized survival cuts do not join the source contract")
+    for mutation in ("wrong_id", "missing", "duplicate", "wrong_source_identity"):
+        altered = deepcopy(original_survival)
+        if mutation == "wrong_id":
+            altered["cuts"][0]["source_id"] = "MODIFIED_PRIME_SOURCE"
+        elif mutation == "missing":
+            altered["cuts"].pop()
+        elif mutation == "duplicate":
+            altered["cuts"][1]["id"] = altered["cuts"][0]["id"]
+        else:
+            altered["source_identity"] = {"source_id":"WRONG_ORIGIN"}
+        if mutation != "wrong_source_identity":
+            rejects(lambda a=altered: validate_survival_source_ids(a),
+                    "invalid countermodel survival "+mutation)
+        save("survival", altered)
+        with patch.object(materializer, "git", side_effect=lambda *args:
+                          IDENTITY["tree"] if args[-1] == "HEAD^{tree}" else IDENTITY["head"]):
+            rejects(lambda: materializer.materialize(inputs, directory / ("reject-"+mutation)),
+                    "materialized countermodel source "+mutation)
+    save("survival", audit(comparison, cut_data, formal=formal, d2=d2))
     cuts_out = load("STEP4_CUTS.json")
     require(len(cuts_out["exact_compiler_sufficiency_statements"]) == 3
             and all(r["status"] == "OPEN" and r["newly_formalized"] is False for r in cuts_out["optional_paper_ports"]),

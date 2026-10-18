@@ -7,6 +7,7 @@ This is reviewer/authorship provenance, NOT an automated mathematical proof.
 from __future__ import annotations
 import argparse
 import hashlib
+from datetime import datetime, timezone
 import json
 import os
 import subprocess
@@ -44,6 +45,48 @@ def all_pages(path):
             return result
     raise ValueError("reviewer provenance pagination unexpectedly long")
 
+
+def latest_submitted_review(github_reviews, reviewer_identity):
+    """Current submitted decision for one reviewer, never an earlier signed approval.
+
+    Conservative PR292 policy: even a later COMMENTED submission displaces an
+    older APPROVED one. PENDING/unsubmitted drafts do not. A single latest
+    approval may carry both the field digest and the workflow-harvest digest.
+    """
+    if not isinstance(github_reviews, list):
+        raise ValueError("GitHub review inventory must be a list")
+    user = str(reviewer_identity).casefold()
+    eligible = []
+    seen_ids = set()
+    for row in github_reviews:
+        if not isinstance(row, dict):
+            raise ValueError("malformed GitHub review row")
+        login = str((row.get("user") or {}).get("login") or "").casefold()
+        if login != user:
+            continue
+        submitted = row.get("submitted_at")
+        if not submitted:
+            if row.get("state") == "PENDING":
+                continue
+            raise ValueError("submitted reviewer decision has no timestamp")
+        if not isinstance(submitted, str):
+            raise ValueError("invalid GitHub review timestamp")
+        try:
+            moment = datetime.fromisoformat(submitted.replace("Z", "+00:00"))
+        except ValueError as exc:
+            raise ValueError("invalid GitHub review timestamp") from exc
+        if moment.tzinfo is None:
+            raise ValueError("timezone missing from GitHub review timestamp")
+        rid = row.get("id")
+        if type(rid) is not int or rid <= 0 or rid in seen_ids:
+            raise ValueError("duplicate or invalid GitHub review ID")
+        seen_ids.add(rid)
+        eligible.append((moment.astimezone(timezone.utc), rid, row))
+    if not eligible:
+        raise ValueError("reviewer has no submitted GitHub decision")
+    return max(eligible, key=lambda value: (value[0], value[1]))[2]
+
+
 def validate(review,pr,github_reviews,commits,head,tree):
     if (review.get("reviewed_head")!=head or review.get("reviewed_tree")!=tree or
         review.get("schema_version")!="POST290_INDEPENDENT_SEMANTIC_REVIEW_1.0" or
@@ -75,27 +118,22 @@ def validate(review,pr,github_reviews,commits,head,tree):
         raise ValueError("reviewer participated as source author or PR author")
     digest=field_digest(fields)
     signed=f"PR292-44-FIELD-SHA256={digest}"
-    for row in github_reviews:
-        reviewer=(row.get("user") or {}).get("login")
-        review_url=row.get("html_url")
-        if (str(reviewer).casefold()!=user or row.get("state")!="APPROVED" or
-            row.get("commit_id")!=head or
-            not isinstance(row.get("body"),str) or
-            signed not in row["body"] or
-            review.get("external_review_reference")!=review_url):
-            continue
-        if not row.get("submitted_at"):
-            continue
-        return {
-            "schema":"PR292_GITHUB_INDEPENDENT_REVIEW_PROVENANCE_V1",
-            "integrity_status":"PASS","reviewer":reviewer,
-            "github_review_id":row["id"],"github_review_url":review_url,
-            "reviewed_head":head,"reviewed_tree":tree,
-            "reviewed_field_count":44,"field_reviews_sha256":digest,
-            "not_mathematical_authority_by_itself":True,
-            "claim_cap":"RH_OPEN",
-        }
-    raise ValueError("no independent GitHub APPROVED review signs exact 44-field digest")
+    row = latest_submitted_review(github_reviews, user)
+    reviewer = (row.get("user") or {}).get("login")
+    review_url = row.get("html_url")
+    if (row.get("state") != "APPROVED" or row.get("commit_id") != head or
+        not isinstance(row.get("body"), str) or signed not in row["body"] or
+        review.get("external_review_reference") != review_url):
+        raise ValueError("latest independent GitHub review is not a signed current-head APPROVED decision")
+    return {
+        "schema":"PR292_GITHUB_INDEPENDENT_REVIEW_PROVENANCE_V1",
+        "integrity_status":"PASS","reviewer":reviewer,
+        "github_review_id":row["id"],"github_review_url":review_url,
+        "reviewed_head":head,"reviewed_tree":tree,
+        "reviewed_field_count":44,"field_reviews_sha256":digest,
+        "not_mathematical_authority_by_itself":True,
+        "claim_cap":"RH_OPEN",
+    }
 
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
