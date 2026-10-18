@@ -83,7 +83,7 @@ def latest_submitted_review(github_reviews, reviewer_identity):
         seen_ids.add(rid)
         eligible.append((moment.astimezone(timezone.utc), rid, row))
     if not eligible:
-        raise ValueError("reviewer has no submitted GitHub decision")
+        raise ValueError("no independent GitHub APPROVED review: reviewer has no submitted GitHub decision")
     return max(eligible, key=lambda value: (value[0], value[1]))[2]
 
 
