@@ -1,0 +1,60 @@
+Zeta23/CCM/PoleNeutralCompactL2Regularity.lean:71:18: warning: This simp argument is unused:
+  nativePoleCompactInverse
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [nativePoleCompactInverseDerivative, nativePolePrimitive, Pi.mul_apply, Pi.sub_apply]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+Zeta23/CCM/PoleNeutralCompactL2Regularity.lean:72:29: warning: This simp argument is unused:
+  Pi.mul_apply
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [nativePoleCompactInverse, nativePoleCompactInverseDerivative, nativePolePrimitive, Pi.sub_apply]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+Zeta23/CCM/PoleNeutralCompactL2Regularity.lean:72:43: warning: This simp argument is unused:
+  Pi.sub_apply
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [nativePoleCompactInverse, nativePoleCompactInverseDerivative, nativePolePrimitive, Pi.mul_apply]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+Zeta23/CCM/PoleNeutralCompactL2Regularity.lean:69:21: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Zeta23/CCM/PoleNeutralCompactL2Regularity.lean:88:44: warning: This simp argument is unused:
+  nativePoleCompactInverseDerivative
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [nativePoleCompactInverse, nativePolePrimitive, Pi.mul_apply, Pi.add_apply]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+Zeta23/CCM/PoleNeutralCompactL2Regularity.lean:89:29: warning: This simp argument is unused:
+  Pi.mul_apply
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [nativePoleCompactInverse, nativePoleCompactInverseDerivative, nativePolePrimitive, Pi.add_apply]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+Zeta23/CCM/PoleNeutralCompactL2Regularity.lean:89:43: warning: This simp argument is unused:
+  Pi.add_apply
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [nativePoleCompactInverse, nativePoleCompactInverseDerivative, nativePolePrimitive, Pi.mul_apply]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+Zeta23/CCM/PoleNeutralCompactL2Regularity.lean:86:21: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+'Zeta23.CCM.nativePoleWeightedSource_locallyIntegrable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.nativePolePrimitive_continuous_of_memLp' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.nativePoleCompactInverse_continuous_of_memLp' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.nativePoleCompactInverseDerivative_continuous_of_memLp' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.CCM.nativePoleCompactInverse_ae_hasDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.nativePoleCompactInverseDerivative_ae_hasDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.nativePoleCompactInverse_memLp_clamped_values' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.nativePoleCompactInverse_memLp_jet_representatives' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

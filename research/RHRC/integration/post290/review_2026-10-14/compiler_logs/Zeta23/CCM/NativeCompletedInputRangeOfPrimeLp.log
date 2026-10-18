@@ -1,0 +1,7 @@
+'Zeta23.CCM.nativeDampedCompletedInput_equation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.nativeOriginalDampedPrimeFieldL2_coeFn' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.nativeCompletedInput_operator_eq_of_prime_memLp' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.nativeCompletedInput_mem_range_of_prime_memLp' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.nativeCompletedInput_mem_rangeClosure_of_prime_memLp' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

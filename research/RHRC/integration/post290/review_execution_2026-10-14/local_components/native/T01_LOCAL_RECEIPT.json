@@ -1,0 +1,158 @@
+{
+  "task": "T01",
+  "status": "PROVED_LOCAL_COMPONENT",
+  "intake_baseline_commit": "efa6ceea7bba2b34ff453a70a32a0800fee98b82",
+  "intake_baseline_tree": "511f6dc182d9a02b54e9404e93c32eb614fbff34",
+  "baseline_is_not_the_changed_source_tree": true,
+  "module": "Zeta23.ExceptionalZero.NativeActualInputZeroJets",
+  "source_sha256": "04a808f91da07d2c5cb9109bb899f50996f8e21aa9bbb3b14289edd7252f9d7d",
+  "checked_source_unchanged": true,
+  "compiler": "Lean 4.33.0-rc2",
+  "mathlib_revision": "51e6992efd06126df61a496bebf8f49482a4e129",
+  "compiler_wrapper": "work/post290/run_lean.py",
+  "compiler_options": [
+    "-j",
+    "1",
+    "-DmaxHeartbeats=800000",
+    "-DrelaxedAutoImplicit=false",
+    "-Dpp.unicode.fun=true"
+  ],
+  "compiler_exit_code": 0,
+  "typed_capture_exit_code": 0,
+  "public_theorem_roots": [
+    {
+      "name": "Zeta23.CCM.nativeCompletedInputCausalLaplaceMoment_zero_damping_shift",
+      "kind": "THEOREM",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "Zeta23.ExceptionalZero.nativeActualInputLaplace_eventuallyEq_multiplier",
+      "kind": "THEOREM",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "Zeta23.ExceptionalZero.nativeActualInputLaplace_order_of_zero",
+      "kind": "THEOREM",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "Zeta23.ExceptionalZero.nativeCompletedInput_zeroJet_value",
+      "kind": "THEOREM",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "Zeta23.ExceptionalZero.nativeCompletedInput_zeroJet_ne_zero",
+      "kind": "THEOREM",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "Zeta23.ExceptionalZero.nativeCompletedInput_not_mem_rangeClosure_of_offLine_zero",
+      "kind": "THEOREM",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "Zeta23.ExceptionalZero.nativeCompletedInput_zeroJet_residual_pairing",
+      "kind": "THEOREM",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "Zeta23.ExceptionalZero.nativeCompletedInput_zeroJet_residual_lower",
+      "kind": "THEOREM",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    }
+  ],
+  "files": [
+    {
+      "path": "work/post290/repo/Zeta23/ExceptionalZero/NativeActualInputZeroJets.lean",
+      "sha256": "04a808f91da07d2c5cb9109bb899f50996f8e21aa9bbb3b14289edd7252f9d7d",
+      "bytes": 11968
+    },
+    {
+      "path": "work/post292audit/validation/native/NativeActualInputZeroJets.log",
+      "sha256": "4b91eb1020413171dc9ce3debd69995fd2b086bec0fb3cf3579c22b25ff4e755",
+      "bytes": 1059
+    },
+    {
+      "path": "work/post292audit/validation/native/T01TypedCheck.lean",
+      "sha256": "85aba726acc047518caf6a36c82c4326d3636a4228756dcca16e46602b14d61e",
+      "bytes": 785
+    },
+    {
+      "path": "work/post292audit/validation/native/T01TypedCheck.log",
+      "sha256": "a5f82b9b525c79a5e080bbe4971ad21d6d6185f875110ee68280a68e06f54f0f",
+      "bytes": 4778
+    },
+    {
+      "path": "work/post292audit/validation/native/test_native_transform_conventions.py",
+      "sha256": "41278e5b1e9d089d5a17a00a0d6c8e600904456c81080bb7b9f311ffc0ed86d3",
+      "bytes": 3415
+    },
+    {
+      "path": "work/post292audit/validation/native/T01_conventions.log",
+      "sha256": "383a12fba9b5b327054a24ce7e5739569c4f0b6621facd981f2d6a4271063b3c",
+      "bytes": 106
+    },
+    {
+      "path": "work/post292audit/validation/native/T01_conventions_optimized.log",
+      "sha256": "383a12fba9b5b327054a24ce7e5739569c4f0b6621facd981f2d6a4271063b3c",
+      "bytes": 106
+    },
+    {
+      "path": "work/post292audit/validation/native/T01_proof_escape.log",
+      "sha256": "06d88448412c5479f68b2dc09dde5d3559eefd22d2acb1da89b81c62c92c18e2",
+      "bytes": 46
+    },
+    {
+      "path": "work/post292audit/validation/native/T01_POST_GREEN.md",
+      "sha256": "33e2ba96867594ac2cf50863dee40f670ce8da0dc2d62704b4a108a406fb3b36",
+      "bytes": 4864
+    }
+  ],
+  "direct_consumer": {
+    "module": "Zeta23.ExceptionalZero.NativeAnalyticOutputSufficiency",
+    "status": "PROVED_LOCAL_COMPONENT",
+    "exit_code": 0,
+    "source_sha256": "02e84f654ca08d9e31755a900b644ed71853a94c2b696eb895bedefe29033192",
+    "compiler_log_sha256": "4e15e278e66863a42503771e8dd11543b85d70749fbfcbb034b37f618d2143bb",
+    "separate_receipt": "T02_LOCAL_RECEIPT.json"
+  },
+  "global_contract_and_remote_CI": "PENDING_PARENT_INTEGRATION",
+  "RH_status": "OPEN",
+  "closing_premises": {
+    "A-X": "OPEN",
+    "B-Y": "OPEN",
+    "C-Schur": "OPEN"
+  }
+}

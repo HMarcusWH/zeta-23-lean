@@ -1,0 +1,34 @@
+def Zeta23.CCM.NativeOriginalPrimeFieldAllDampedL2 : Prop :=
+∀ (epsilon : ℝ),
+  0 < epsilon →
+    MeasureTheory.MemLp (Zeta23.CCM.nativeOriginalDampedPrimeField epsilon) 2 MeasureTheory.MeasureSpace.volume
+def Zeta23.CCM.NativeOriginalPrimeFieldAllDampedIntegral : Prop :=
+∀ (epsilon : ℝ),
+  0 < epsilon →
+    ∫⁻ (t : ℝ) in Set.Ici 0,
+        ENNReal.ofReal (Real.exp (-2 * epsilon * t) * |Zeta23.CCM.nativeOriginalPrimeField t| ^ 2) <
+      ⊤
+def Zeta23.CCM.NativeInputAllRangeClosure : Prop :=
+∀ (epsilon : ℝ) (hepsilon : 0 < epsilon),
+  Zeta23.CCM.nativeCompletedInputCausalL2 epsilon (⋯ : 0 ≤ epsilon) ∈
+    closure (Set.range ⇑(Zeta23.CCM.nativeDampedCompletionCausalL2Operator epsilon (⋯ : 0 ≤ epsilon)))
+Zeta23.CCM.nativeOriginalDampedPrimeField_continuous : ∀ (epsilon : ℝ),
+  Continuous (Zeta23.CCM.nativeOriginalDampedPrimeField epsilon)
+Zeta23.CCM.nativeOriginalDampedPrimeField_norm_sq : ∀ (epsilon t : ℝ),
+  ‖Zeta23.CCM.nativeOriginalDampedPrimeField epsilon t‖ ^ 2 =
+    Real.exp (-2 * epsilon * t) * |Zeta23.CCM.nativeOriginalPrimeField t| ^ 2
+Zeta23.CCM.nativeOriginalDampedPrimeField_memLp_iff_halfLineIntegral : ∀ (epsilon : ℝ),
+  MeasureTheory.MemLp (Zeta23.CCM.nativeOriginalDampedPrimeField epsilon) 2 MeasureTheory.MeasureSpace.volume ↔
+    ∫⁻ (t : ℝ) in Set.Ici 0,
+        ENNReal.ofReal (Real.exp (-2 * epsilon * t) * |Zeta23.CCM.nativeOriginalPrimeField t| ^ 2) <
+      ⊤
+Zeta23.CCM.nativeOriginalPrimeField_allDampedL2_iff_integral : Zeta23.CCM.NativeOriginalPrimeFieldAllDampedL2 ↔
+  Zeta23.CCM.NativeOriginalPrimeFieldAllDampedIntegral
+Zeta23.CCM.nativeInput_allRangeClosure_of_originalPrimeField_allDampedL2 : Zeta23.CCM.NativeOriginalPrimeFieldAllDampedL2 →
+  Zeta23.CCM.NativeInputAllRangeClosure
+Zeta23.ExceptionalZero.riemannHypothesis_of_nativeInput_allRangeClosure : Zeta23.CCM.NativeInputAllRangeClosure →
+  RiemannHypothesis
+Zeta23.ExceptionalZero.riemannHypothesis_of_originalPrimeField_allDampedL2 : Zeta23.CCM.NativeOriginalPrimeFieldAllDampedL2 →
+  RiemannHypothesis
+Zeta23.ExceptionalZero.riemannHypothesis_of_originalPrimeField_allDampedIntegral : Zeta23.CCM.NativeOriginalPrimeFieldAllDampedIntegral →
+  RiemannHypothesis

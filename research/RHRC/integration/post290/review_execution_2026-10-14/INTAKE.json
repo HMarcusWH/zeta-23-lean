@@ -1,0 +1,17 @@
+{
+  "scope": "USER_AUTHORIZED_PROPOSED_CHANGES_NOT_THEOREM_AUTHORITY",
+  "zip_sha256": "af617f924565c69817cf7eba8f8994cefd15b425ee2c880dd7b8ceb30aa5e607",
+  "all_declared_payload_hashes_verified": true,
+  "payload_files": 106,
+  "standalone_start_here_matches_archive": true,
+  "local_preflight": "PASS_WINDOWS_EQUIVALENT_OF_REVIEWED_READ_ONLY_SCRIPT",
+  "live_pr_head": "efa6ceea7bba2b34ff453a70a32a0800fee98b82",
+  "head": "efa6ceea7bba2b34ff453a70a32a0800fee98b82",
+  "tree": "511f6dc182d9a02b54e9404e93c32eb614fbff34",
+  "branch": "research/post290-step123-output",
+  "repository_initially_clean": true,
+  "toolchain_and_mathlib_pins": "PASS",
+  "package_scripts_executed": false,
+  "execution_authorization": "Human reply: Carry out the proposed changes",
+  "claim_cap": "RH_OPEN"
+}

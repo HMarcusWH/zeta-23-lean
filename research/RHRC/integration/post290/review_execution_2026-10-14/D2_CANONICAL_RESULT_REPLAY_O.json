@@ -1,0 +1,10 @@
+{
+  "scope": "EXISTING_CANONICAL_RESULT_VALIDATOR_REPLAY_ONLY",
+  "validated_completed_children": 132,
+  "plan_sha256": "433107bbfe412625223fe1f08da36ca7d837bd82e7a536fc50a2d447886cf6ef",
+  "ledger_sha256": "e3087b4e4a72e41fe06dcec950eee783c4adcc71b1cfbb0f161ca25669cce69f",
+  "existing_validator_sha256": "c042e4e4a94a8dd8f027ff3ef59f34879734e7b04ca1c120123f5b5260293f3e",
+  "fresh_768_bit_independent_checker": "NOT_RUN_BY_THIS_PROGRAM",
+  "D2": "OPEN",
+  "RH": "OPEN"
+}

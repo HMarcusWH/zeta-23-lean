@@ -1,0 +1,73 @@
+{
+  "schema": "post292.T08-convolution-local.v1",
+  "timestamp_utc": "2026-10-14T17:17:44.236843+00:00",
+  "compiler": "Lean 4.33.0-rc2",
+  "mathlib": "51e6992efd06126df61a496bebf8f49482a4e129",
+  "compiler_options": [
+    "-j",
+    "1",
+    "-DmaxHeartbeats=800000",
+    "-DrelaxedAutoImplicit=false",
+    "-Dpp.unicode.fun=true"
+  ],
+  "source_context": "EXACT_WORKING_SOURCE_HASHES_NOT_FINAL_GIT_TREE",
+  "compiler_exit_evidence": "Completed tool sessions recorded by root; logs and source hashes preserved",
+  "checks": [
+    {
+      "module": "Zeta23.CCM.NativeCompactTranslateCalculus",
+      "source": "Zeta23/CCM/NativeCompactTranslateCalculus.lean",
+      "source_sha256": "6152803d0b6447dccc2c3900660982f4ab26cb69f34a980de8be6f3eb22b647b",
+      "log_file": "NativeCompactTranslateCalculus.log",
+      "log_sha256": "74ee0bd7c44897ab4c5a3be6a15a7af7731844570fce986964a1290b8b86596a",
+      "compiler_exit_code": 0,
+      "completed_tool_session": "21193",
+      "printed_roots": [
+        "Zeta23.CCM.nativeComplexPrimeField_eq_history_sum",
+        "Zeta23.CCM.nativeComplexIntegerDrive_eq_history_sum",
+        "Zeta23.CCM.nativeComplexPrimeField_contDiff",
+        "Zeta23.CCM.nativeComplexIntegerDrive_contDiff",
+        "Zeta23.CCM.nativeComplexPrimeField_hasDerivAt",
+        "Zeta23.CCM.nativeComplexPrimeField_poleImage",
+        "Zeta23.CCM.nativeComplexPrimeField_ofReal",
+        "Zeta23.CCM.nativeComplexIntegerDrive_ofReal"
+      ]
+    },
+    {
+      "module": "Zeta23.CCM.OriginalSincNativeConvolution",
+      "source": "Zeta23/CCM/OriginalSincNativeConvolution.lean",
+      "source_sha256": "7bbc06b9483820db2059add35ae71474629f225aa6e54a71942c1849daecb0a6",
+      "log_file": "OriginalSincNativeConvolution.log",
+      "log_sha256": "694f53f38daf3fca931f9f25a720df977811298da02bacae67a7d6cd59431ddc",
+      "compiler_exit_code": 0,
+      "completed_tool_session": "35273",
+      "printed_roots": [
+        "Zeta23.CCM.nativeComplexConvolution_supported",
+        "Zeta23.CCM.nativeComplexPrimeField_convolution",
+        "Zeta23.CCM.universalSincSecondKernel_eq_real",
+        "Zeta23.CCM.nativeOriginalKernelPrimeField_contDiff",
+        "Zeta23.CCM.nativeOriginalKernelPrimeField_poleImage",
+        "Zeta23.CCM.originalDetector_correlationField_eq_sourceConvolution"
+      ]
+    },
+    {
+      "module": "Zeta23.CCM.NativeCompletionPublicAPI",
+      "source": "Zeta23/CCM/NativeCompletionPublicAPI.lean",
+      "source_sha256": "ab75ccb0ab1b08923f749b7d70caef68ab0e479f31d28671309ac7b577622fac",
+      "log_file": "NativeCompletionPublicAPI.log",
+      "log_sha256": "45771615ce9e4c3bdfc6c5afc0272b7c6206365c1bad7c855072f980b8b80bf9",
+      "compiler_exit_code": 0,
+      "completed_tool_session": "93689",
+      "printed_roots": [
+        "Zeta23.CCM.native_divisor_convolution_identity",
+        "Zeta23.CCM.nativePositiveCompletion_laplace",
+        "Zeta23.CCM.nativePositiveCompletion_laplace_half",
+        "Zeta23.CCM.nativePositiveCompletion_mass_lt",
+        "Zeta23.CCM.nativeOriginal_complexPrimeField_eq",
+        "Zeta23.CCM.nativeOriginal_complexIntegerDrive_eq",
+        "Zeta23.CCM.nativeCompletedInput_undamped_memLp"
+      ]
+    }
+  ],
+  "full_producer": false,
+  "RH": "OPEN"
+}

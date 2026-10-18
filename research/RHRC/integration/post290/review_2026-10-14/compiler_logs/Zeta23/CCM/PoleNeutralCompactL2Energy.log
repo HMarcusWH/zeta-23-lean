@@ -1,0 +1,7 @@
+'Zeta23.CCM.nativePoleCompactInverse_jet_absolutelyContinuous' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.CCM.nativePoleCompactInverse_memLp_energy_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.nativePoleCompactInverse_l2_norm_le_four_of_memLp' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

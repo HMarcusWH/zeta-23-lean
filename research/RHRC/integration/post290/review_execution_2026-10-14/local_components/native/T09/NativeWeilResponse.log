@@ -1,0 +1,35 @@
+Zeta23/CCM/NativeWeilResponse.lean:56:35: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+Zeta23/CCM/NativeWeilResponse.lean:56:35: warning: 'ring' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+Zeta23/CCM/NativeWeilResponse.lean:91:19: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+Zeta23/CCM/NativeWeilResponse.lean:91:19: warning: 'ring' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+Zeta23/CCM/NativeWeilResponse.lean:425:55: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+Zeta23/CCM/NativeWeilResponse.lean:425:55: warning: 'norm_num' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+'Zeta23.CCM.nativeWeilResponse_decomposition' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.nativeGammaBracket_quadratic_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.nativeWeilArch_fourier_integrable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.nativeWeilArchResponse_pairing' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.nativePaperFT_imaginary' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.nativeWeilPoleResponse_pairing' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.nativeWeilPrimeResponse_eq_history_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.nativeWeilPrimeResponse_continuous' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.nativeWeilPoleResponse_continuous' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.nativeWeilPrimeResponse_pairing' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.nativeWeilArchResponse_continuous' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.nativeWeilResponse_continuous' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.nativeWeilResponse_memLp_two_on_interval' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.nativeWeilResponse_indicator_memLp_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.nativeWeilResponse_pairing' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.nativeWeilArch_fourier_memLp_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.nativeWeilArchResponse_memLp_two' depends on axioms: [propext, Classical.choice, Quot.sound]

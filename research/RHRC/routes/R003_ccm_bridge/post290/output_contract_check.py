@@ -1,0 +1,376 @@
+"""Reject completion unless every mandatory producer and D2 gate has receipts.
+
+This is an integrity check, not a mathematical proof. Exact compiler receipts
+and independent mathematical review are both required by the original contract.
+"""
+from __future__ import annotations
+import argparse
+import hashlib
+import json
+import re
+from pathlib import Path
+from d2_source_equivalence import (exact_numeric_source, verify_d2_receipt,
+                                   D2_PRODUCER_HEAD, D2_PRODUCER_TREE)
+from build_formal_receipt import TYPED_CONTRACT_ROOTS, validate_full_type_fields
+from harvest_workflows import effective_jobs
+
+REPO=Path(__file__).resolve().parents[5]
+IMMUTABLE_SPEC=REPO/'research/RHRC/integration/post290/spec/BUILD_MANIFEST.json'
+IMMUTABLE_SPEC_SHA256='1a36cb3ff2cb39017bdb34cb4f56f831f40c611472f840af8b3dce9dafa71760'
+# The reviewed source provides exact requested kinds for all 99 public exports.
+# Lean represents a structure as an inductive declaration; neither is theorem
+# authority. Pin the original crosswalk by Git blob SHA-1.
+FROZEN_API_CROSSWALK=REPO/'research/RHRC/integration/post290/review_execution_2026-10-14/spec/API_CROSSWALK.json'
+FROZEN_API_CROSSWALK_BLOB_SHA='254e2c4a8ad05bd1647c2175d86472755c795c41'
+
+FORMAL_JOB=('RHRC post290 source and output proof components','lean-components')
+REGRESSION_JOB=('RHRC post290 source and output proof components','exact-controls')
+NATIVE_JOB=('RHRC post290 source and output proof components','native-observations')
+ACTIVE_D2_JOB=('RHRC approved SECOND460 resource continuation','final-nonpartial')
+RESEARCH_JOBS={ACTIVE_D2_JOB}  # Historical proposed workflow names are not actual D2 certification.
+ALLOW_AXIOMS={'propext','Classical.choice','Quot.sound'}
+CLASSIFICATIONS={'FORMAL_VALIDITY_GATE','REGRESSION_GATE','RESEARCH_PRODUCING_CHECK'}
+NATIVE_INPUT_BINDING_KEYS={'schema','run_id','panel_sha256','checker_sha256','source_head','source_tree'}
+
+
+def native_input_binding(panel_path, checker_path, run_id):
+    """Hash the selected files, without claiming their origin was approved."""
+    if type(run_id) is not int or run_id <= 0:
+        raise ValueError('selected native run ID must be a positive integer')
+    panel_bytes=Path(panel_path).read_bytes()
+    checker_bytes=Path(checker_path).read_bytes()
+    panel=json.loads(panel_bytes.decode('utf-8'))
+    identity=panel.get('source_identity') if isinstance(panel,dict) else None
+    if not isinstance(identity,dict):
+        raise ValueError('selected native panel has no exact source head/tree')
+    head,tree=identity.get('commit'),identity.get('tree')
+    if any(not isinstance(value,str) or re.fullmatch('[0-9a-f]{40}',value) is None
+           for value in (head,tree)):
+        raise ValueError('selected native panel has no exact source head/tree')
+    return {'schema':'PR292_NATIVE_INPUT_BYTE_BINDING_V1','run_id':run_id,
+            'panel_sha256':hashlib.sha256(panel_bytes).hexdigest(),
+            'checker_sha256':hashlib.sha256(checker_bytes).hexdigest(),
+            'source_head':head,'source_tree':tree}
+
+
+def validate_native_output_review(review, checked_head, tree):
+    """The signed job review commits to finite scope AND original file bytes."""
+    if (not isinstance(review,dict) or checked_head is None or
+        review.get('head')!=checked_head or review.get('source_tree')!=tree or
+        review.get('scope')!='FINITE_FIXED_PROBES' or
+        review.get('frozen_panel_complete') is not True or review.get('pair_count')!=44 or
+        review.get('row_count')!=176 or review.get('evaluated_rows')!=176 or
+        review.get('unresolved_rows')!=0 or review.get('verified_pairs')!=44 or
+        review.get('unresolved_pairs')!=0 or review.get('universal_theorem_authority') is not False):
+        raise ValueError('native finite observation output not independently reviewed')
+    for key in ('panel_sha256','checker_sha256'):
+        if not isinstance(review.get(key),str) or re.fullmatch('[0-9a-f]{64}',review[key]) is None:
+            raise ValueError('native panel/checker byte hashes are not independently reviewed')
+
+
+def validate_native_input_binding(binding, jobs, tree):
+    """Match actual selected inputs to the signed effective configured job.
+
+    The file hashes and run ID are not inferred from embedded source labels.
+    Latest-attempt selection and branch-versus-runner identities stay intact.
+    """
+    if (not isinstance(binding,dict) or set(binding)!=NATIVE_INPUT_BINDING_KEYS or
+        binding.get('schema')!='PR292_NATIVE_INPUT_BYTE_BINDING_V1' or
+        type(binding.get('run_id')) is not int or binding['run_id']<=0 or
+        binding.get('source_tree')!=tree):
+        raise ValueError('native selected input byte/run binding missing or malformed')
+    for key,length in (('panel_sha256',64),('checker_sha256',64),('source_head',40),('source_tree',40)):
+        if (not isinstance(binding.get(key),str) or
+            re.fullmatch('[0-9a-f]{'+str(length)+'}',binding[key]) is None):
+            raise ValueError('native selected input byte/run binding missing or malformed')
+    native=[job for job in effective_jobs(jobs)
+            if (job.get('workflow'),job.get('name'))==NATIVE_JOB
+            and job.get('run_id')==binding['run_id']]
+    if len(native)!=1:
+        raise ValueError('selected native run is not the effective configured native job')
+    job=native[0]
+    checked_head=checked_checkout(job,tree)
+    if (job.get('required') is not True or job.get('output_reviewed') is not True or
+        job.get('scientific_acceptance') is not True or
+        job.get('status')!='completed' or job.get('conclusion')!='success' or
+        checked_head!=binding['source_head']):
+        raise ValueError('selected native input has no accepted source-bound job review')
+    review=job.get('native_output_review')
+    validate_native_output_review(review,checked_head,tree)
+    if any(binding[key]!=review[key] for key in ('panel_sha256','checker_sha256')):
+        raise ValueError('selected native panel/checker bytes differ from signed job review')
+    return binding
+
+
+def checked_checkout(job, expected_tree):
+    """Preserve API branch identity while checking a separately reviewed merge.
+
+    GitHub's PR API reports the branch SHA even when checkout uses the synthetic
+    merge commit. A different checked HEAD requires both Git objects and a
+    hashed runner log; equality of displayed tree strings alone is insufficient.
+    This is reviewed evidence plumbing, not a mathematical authority source.
+    """
+    branch=job.get('head')
+    if re.fullmatch('[0-9a-f]{40}',str(branch)) is None or job.get('head_tree')!=expected_tree:
+        return None
+    runner=job.get('runner_checked_head')
+    runner_tree=job.get('runner_checked_tree')
+    if runner is None or runner_tree is None:
+        # GitHub's advertised API head is NOT evidence for the runner's
+        # actual checked out source; missing runner evidence fails closed.
+        return None
+    if runner_tree!=expected_tree or re.fullmatch('[0-9a-f]{40}',str(runner)) is None:
+        return None
+    review=job.get('checkout_identity_review') or {}
+    if (review.get('integrity_status')!='PASS'
+        or review.get('evidence_source')!='GITHUB_GIT_OBJECTS_AND_RUNNER_LOG'
+        or review.get('branch_head')!=branch or review.get('branch_tree')!=expected_tree
+        or review.get('runner_checked_head')!=runner or review.get('runner_checked_tree')!=expected_tree
+        or re.fullmatch('[0-9a-f]{64}',str(review.get('checkout_log_sha256'))) is None):
+        return None
+    branch_object=review.get('branch_git_commit',{})
+    runner_object=review.get('runner_git_commit',{})
+    if (branch_object.get('sha')!=branch or branch_object.get('tree',{}).get('sha')!=expected_tree
+        or runner_object.get('sha')!=runner or runner_object.get('tree',{}).get('sha')!=expected_tree):
+        return None
+    if runner==branch:
+        return runner if review.get('checkout_kind')=='BRANCH_HEAD' else None
+    base=review.get('reviewed_pr_base_head')
+    parents=runner_object.get('parents',[])
+    if (review.get('checkout_kind')!='PR_SYNTHETIC_MERGE'
+        or re.fullmatch('[0-9a-f]{40}',str(base)) is None or base==branch
+        or len(parents)!=2 or {p.get('sha') for p in parents}!={base,branch}):
+        return None
+    return runner
+
+
+def frozen_spec():
+    raw=IMMUTABLE_SPEC.read_bytes()
+    # Compare the original bundle bytes; a Windows text checkout may change
+    # newline encoding, which is explicitly normalized only for this comparison.
+    if hashlib.sha256(raw.replace(b'\r\n',b'\n')).hexdigest()!=IMMUTABLE_SPEC_SHA256:
+        raise ValueError('immutable original acceptance specification changed')
+    return json.loads(raw)
+
+def frozen_export_kinds(expected):
+    raw=FROZEN_API_CROSSWALK.read_bytes().replace(b'\r\n',b'\n')
+    # Git's content identity includes the "blob <size>\0" framing.
+    framed=b'blob '+str(len(raw)).encode()+b'\0'+raw
+    if hashlib.sha1(framed).hexdigest()!=FROZEN_API_CROSSWALK_BLOB_SHA:
+        raise ValueError('reviewed public API kind contract changed')
+    rows=json.loads(raw)['rows']
+    names=[r.get('requested_name') for r in rows]
+    if len(rows)!=99 or len(set(names))!=99 or not all(isinstance(n,str) and n for n in names):
+        raise ValueError('invalid 99-name public API kind inventory')
+    spec_names={name for module in expected['new_lean_modules']
+                for name in module['proposed_exports']}
+    if set(names)!=spec_names:
+        raise ValueError('API crosswalk does not match immutable 25-module export inventory')
+    kinds={'THEOREM':'THEOREM','DEFINITION':'DEFINITION',
+           'STRUCTURE':'INDUCTIVE','INDUCTIVE':'INDUCTIVE'}
+    if any(row.get('required_kind') not in kinds for row in rows):
+        raise ValueError('unrecognized required public source kind')
+    return {row['requested_name']:kinds[row['required_kind']] for row in rows}
+
+def release_gaps(manifest, formal, d2, jobs, native_inputs=None):
+    gaps = []
+    expected=frozen_spec()
+    if manifest.get('claim_cap') != 'RH_OPEN':
+        gaps.append('claim firewall changed')
+    modules=manifest.get('new_lean_modules',[])
+    frozen={r['id']:r for r in expected['new_lean_modules']}
+    ids=[r.get('id') for r in modules]
+    if len(ids)!=25 or len(set(ids))!=25 or set(ids)!=set(frozen):
+        gaps.append('immutable 25-module acceptance inventory missing or duplicated')
+    for module in modules:
+        prior=frozen.get(module.get('id'))
+        if prior and (module.get('mandatory_core') is not prior.get('mandatory_core') or module.get('proposed_exports')!=prior.get('proposed_exports')):
+            gaps.append('immutable module acceptance narrowed or changed: '+module['id'])
+    packages=manifest.get('work_packages',[])
+    package_ids=[r.get('id') for r in packages]
+    prior_packages={r['id']:r for r in expected['work_packages']}
+    if len(package_ids)!=11 or len(set(package_ids))!=11 or set(package_ids)!=set(prior_packages):
+        gaps.append('immutable 11-work-package inventory missing or duplicated')
+    for package in packages:
+        prior=prior_packages.get(package.get('id'))
+        if prior and package.get('mandatory') is not prior.get('mandatory'):
+            gaps.append('mandatory work package demoted: '+package['id'])
+        if prior and prior.get('mandatory') and package.get('status')!='COMPLETE_VERIFIED':
+            gaps.append('unfulfilled work-package acceptance: '+package['id'])
+    expected_kinds=frozen_export_kinds(expected)
+    declarations=formal.get('declarations',[])
+    definitions=formal.get('definitions',[])
+    all_bindings=declarations+definitions
+    names=[r.get('declaration',r.get('theorem')) for r in all_bindings]
+    if len(names)!=len(set(names)) or any(not isinstance(n,str) or not n for n in names):
+        gaps.append('duplicate or malformed compiler declaration receipts')
+    bindings = {r.get('declaration',r.get('theorem')):r for r in all_bindings}
+    for receipt in all_bindings:
+        try:
+            validate_full_type_fields(receipt)
+        except ValueError as exc:
+            name = receipt.get('declaration', receipt.get('theorem'))
+            gaps.append('missing or invalid full compiler type expression: ' + str(name) + ': ' + str(exc))
+    for mc_name,mc_kind in TYPED_CONTRACT_ROOTS.items():
+        r=bindings.get(mc_name)
+        if (r is None or r.get('module')!='Zeta23.RHRC.Step123OutputContractCheck'
+            or r.get('declaration_kind')!=mc_kind or
+            r.get('axiom_audit_pass') is not True):
+            gaps.append('missing or wrong typed MC contract: '+mc_name)
+    tree = formal.get('source_tree')
+    if not isinstance(tree,str) or re.fullmatch('[0-9a-f]{40}',tree) is None:
+        gaps.append('exact compiler-tested tree missing')
+    head=formal.get('head')
+    if not isinstance(head,str) or re.fullmatch('[0-9a-f]{40}',head) is None:
+        gaps.append('exact compiler-tested head missing')
+    if formal.get('producer_complete') is not True:
+        gaps.append('supporting components do not fill mandatory output producer')
+    if formal.get('execution_status')!='SUCCESS' or formal.get('integrity_status')!='PASS' or formal.get('claim_cap')!='RH_OPEN':
+        gaps.append('formal receipt execution/integrity/claim unverified')
+    context=formal.get('compiler_context',{})
+    if context.get('head')!=head or context.get('tree')!=tree:
+        gaps.append('compiler-generated head/tree context missing or stale')
+    for module in modules:
+        if not module.get('mandatory_core'):
+            continue
+        for name in module['proposed_exports']:
+            receipt = bindings.get(name)
+            if not receipt:
+                gaps.append('missing producer: ' + name)
+            else:
+                required_kind=expected_kinds[name]
+                kind=receipt.get('declaration_kind')
+                authority=receipt.get('authority')
+                if (kind!=required_kind or
+                    authority!=('PROVED' if kind=='THEOREM' else 'DEFINED_DATA_NOT_A_THEOREM')
+                    or receipt.get('source_tree') != tree or
+                    not receipt.get('normalized_type') or
+                    hashlib.sha256(receipt.get('normalized_type','').encode()).hexdigest() != receipt.get('normalized_type_sha256')
+                    or receipt.get('axiom_audit_pass') is not True or
+                    not isinstance(receipt.get('axioms'),list) or
+                    not set(receipt.get('axioms',[]))<=ALLOW_AXIOMS):
+                    gaps.append('unverified, wrong-kind or stale producer: ' + name)
+        if module.get('status') != 'COMPLETE_VERIFIED':
+            gaps.append('unfulfilled module acceptance: ' + module['id'])
+    required_d2 = ('complete_layers','unresolved_tiles','unrun_tiles','missing_artifacts','unverified_tiles','nonfinite_enclosures')
+    d2_equivalent=False
+    try:
+        equivalence=exact_numeric_source(head, tree)
+        verify_d2_receipt(d2, equivalence)
+        d2_equivalent=True
+    except (ValueError, KeyError, OSError) as exc:
+        gaps.append('D2 source-equivalence not verified: '+str(exc))
+    if (not d2_equivalent or d2.get('status') != 'D2_COMPLETE' or d2.get('complete_layers') != 30
+        or d2.get('terminal_claim')!='RH_OPEN' or d2.get('not_a_lean_proof') is not True
+        or d2.get('independent_nonpartial_verified') is not True or d2.get('both_parities') is not True
+        or d2.get('physical_seams_verified') is not True or any(type(d2.get(k)) is not int for k in required_d2)
+        or any(d2.get(k,1) != 0 for k in required_d2[1:])):
+        gaps.append('D2 continuous full-domain gate incomplete')
+    # The compiler receipt binds the actual checkout. The configured formal
+    # job supplies the API branch identity, retained unchanged in every job.
+    try:
+        active_jobs = effective_jobs(jobs)
+    except ValueError as exc:
+        gaps.append('invalid workflow effective-attempt inventory: ' + str(exc))
+        active_jobs = []
+    formal_jobs=[j for j in active_jobs if (j.get('workflow'),j.get('name'))==FORMAL_JOB]
+    branch_heads={j.get('head') for j in formal_jobs}
+    branch_head=next(iter(branch_heads)) if len(branch_heads)==1 else head
+    if len(branch_heads)!=1:
+        gaps.append('configured formal jobs do not identify one reviewed branch head')
+    known_required=[]
+    formal_runner_matched=False
+    for job in jobs:
+        if not all(k in job for k in ('name','workflow','required','head','head_tree','status','conclusion','scientific_acceptance','classification','output_reviewed')):
+            gaps.append('raw or mismatched workflow harvest schema')
+            continue
+        if job['classification'] not in CLASSIFICATIONS or job.get('output_reviewed') is not True:
+            gaps.append('workflow source/output review incomplete: '+job['name'])
+        if job.get('latest_attempt') is not True:
+            continue
+        if (job.get('status') != 'completed' or
+            not isinstance(job.get('conclusion'), str) or
+            not job['conclusion'].strip()):
+            gaps.append('effective workflow job has no terminal result: '+job['name'])
+        if type(job['required']) is not bool or type(job['scientific_acceptance']) is not bool:
+            gaps.append('workflow acceptance flags must be Boolean')
+            continue
+        pair=(job['workflow'],job['name'])
+        configured=pair in {FORMAL_JOB,REGRESSION_JOB,NATIVE_JOB}|RESEARCH_JOBS
+        if configured and job['required'] is not True:
+            gaps.append('configured required job demoted: '+job['name'])
+        if job['required']:
+            known_required.append(pair)
+        if pair==ACTIVE_D2_JOB:
+            # The approved numerical checker runs on its separate frozen
+            # source, and must NEVER be relabelled as a current-head Lean job.
+            checked_head=checked_checkout(job,D2_PRODUCER_TREE)
+            if (job.get('required') is not True or
+                job.get('head')!=D2_PRODUCER_HEAD or
+                checked_head!=D2_PRODUCER_HEAD or not d2_equivalent or
+                job.get('status')!='completed' or job.get('conclusion')!='success' or
+                job.get('scientific_acceptance') is not True):
+                gaps.append('approved independent D2 final-nonpartial job unestablished')
+            continue
+        checked_head=checked_checkout(job,tree)
+        if job.get('required') and (job.get('head_tree') != tree or job.get('status') != 'completed'
+            or job.get('head')!=branch_head or checked_head is None
+            or job.get('conclusion') != 'success' or job.get('scientific_acceptance') is not True):
+            gaps.append('required job unestablished: ' + job['name'])
+        if (pair==FORMAL_JOB and checked_head==head and job.get('required') is True
+            and job.get('status')=='completed' and job.get('conclusion')=='success'
+            and job.get('scientific_acceptance') is True):
+            formal_runner_matched=True
+        if pair==NATIVE_JOB:
+            try:
+                validate_native_output_review(job.get('native_output_review'),checked_head,tree)
+            except ValueError as exc:
+                gaps.append(str(exc))
+    try:
+        validate_native_input_binding(native_inputs,jobs,tree)
+        if (not isinstance(manifest.get('input_bindings'),dict) or
+            manifest['input_bindings'].get('native')!=native_inputs):
+            raise ValueError('manifest native input binding differs from actual selected files/run')
+    except (ValueError,KeyError,TypeError) as exc:
+        gaps.append('native input provenance not bound: '+str(exc))
+    if FORMAL_JOB not in known_required:gaps.append('configured formal validity job missing')
+    if not formal_runner_matched:gaps.append('compiler receipt does not match a validated formal runner checkout')
+    if REGRESSION_JOB not in known_required:gaps.append('configured exact regression job missing')
+    if NATIVE_JOB not in known_required:gaps.append('configured native observation job missing')
+    if ACTIVE_D2_JOB not in known_required:gaps.append('approved independent D2 final-nonpartial job missing')
+    if not jobs:
+        gaps.append('workflow harvest missing')
+    if formal.get('independent_assumption_review_pass') is not True:
+        gaps.append('independent producer assumption review missing')
+    return gaps
+
+if __name__ == '__main__':
+    p = argparse.ArgumentParser(description=__doc__)
+    p.add_argument('--manifest', type=Path, required=True)
+    p.add_argument('--formal', type=Path, required=True)
+    p.add_argument('--d2', type=Path, required=True)
+    p.add_argument('--harvest', type=Path, required=True)
+    p.add_argument('--native-panel', type=Path)
+    p.add_argument('--native-checker', type=Path)
+    p.add_argument('--native-run-id', type=int)
+    p.add_argument('--out', type=Path, required=True)
+    args = p.parse_args()
+    read = lambda path: json.loads(path.read_text())
+    harvest_record=read(args.harvest)
+    supplied=(args.native_panel is not None,args.native_checker is not None,args.native_run_id is not None)
+    if any(supplied) and not all(supplied):
+        p.error('native input binding requires panel, checker and selected run ID together')
+    selected_native=None
+    if all(supplied):
+        selected_native=native_input_binding(args.native_panel,args.native_checker,args.native_run_id)
+    gaps = release_gaps(read(args.manifest),read(args.formal),read(args.d2),
+                        harvest_record.get('jobs',[]),native_inputs=selected_native)
+    if (harvest_record.get('review_phase')!='PRE_RELEASE_PREREQUISITES'
+        or harvest_record.get('includes_release_run') is not False):
+        gaps.append('release prerequisite harvest is absent or self-referential')
+    result = {'execution_status':'SUCCESS', 'integrity_status':'PASS' if not gaps else 'RELEASE_REJECTED',
+              'scientific_disposition':'CORE_OUTPUT_COMPLETE_RH_OPEN' if not gaps else 'PARTIAL_OUTPUT_RH_OPEN',
+              'claim_cap':'RH_OPEN', 'unfulfilled_requirements':gaps}
+    args.out.write_text(json.dumps(result, indent=2) + '\n')
+    print(json.dumps({'scientific_disposition':result['scientific_disposition'],'unfulfilled_requirements':len(gaps)}))
+    raise SystemExit(0 if not gaps else 2)

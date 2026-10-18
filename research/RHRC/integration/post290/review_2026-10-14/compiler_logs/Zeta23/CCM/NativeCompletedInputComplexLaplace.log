@@ -1,0 +1,7 @@
+'Zeta23.CCM.nativeCausalComplexDamping_integrable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.nativeCompletedInput_complexDamping_eq_convolution' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.CCM.nativeCompletedInput_complexLaplace_eq_c_mul_drive' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

@@ -1,0 +1,30 @@
+{
+  "schema": "post290.native-seam-point-protocol.v1",
+  "runner_version": "symbolic-log-endpoint-v1",
+  "registered_log_integers": [2, 3, 4, 8, 16],
+  "unchanged_registered_cutoffs": [3, 4, 6, 8],
+  "exact_active_prime_cutoff": "n",
+  "evaluated_nonzero_atom_cutoff": "n-1",
+  "entering_atom_disposition": "EXACT_ZERO_BY_SOURCE_THEOREM",
+  "source_theorem_bindings": [
+    "Zeta23.CCM.qBasis_aperture_eq_zero",
+    "Zeta23.CCM.primeSourceCoordinate_log_add",
+    "Zeta23.CCM.sourceMatrix_zero",
+    "Zeta23.CCM.step123_enteringPrimeSourceMatrix_zero",
+    "Zeta23.CCM.step123_qBasis_logSeam_zero"
+  ],
+  "floor_identity": "floor(exp(log(n)))=n for n positive integer",
+  "whole_arb_ball_fixed_cutoff_claim": false,
+  "aperture_nudging_allowed": false,
+  "old_analytic_backend_mutation_allowed": false,
+  "discovery_bits": 192,
+  "confirmatory_bits": 1024,
+  "discovery_worker_seconds_cap": 120,
+  "confirmatory_worker_seconds_cap": 180,
+  "historical_receipts_preserved": [
+    "native_panel_preseam.json",
+    "native_panel_check_preseam.json"
+  ],
+  "terminal_claim": "RH_OPEN",
+  "scope": "ONLY_REGISTERED_SYMBOLIC_LOG_POINTS"
+}

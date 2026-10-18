@@ -1,0 +1,9 @@
+'Zeta23.CCM.canonicalTrialResidual_channels_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.canonicalPoleNeutralTrialResidual_orthogonal' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.canonicalPoleNeutralTrialResidual_variance_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.canonicalPoleNeutralTrialResidual_channels_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.canonicalPoleNeutralTrialResidual_gram_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.canonicalPoleNeutralTrialResidual_even_eq_R3' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.canonicalPoleNeutralTrialResidual_even_momentFour_lower' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

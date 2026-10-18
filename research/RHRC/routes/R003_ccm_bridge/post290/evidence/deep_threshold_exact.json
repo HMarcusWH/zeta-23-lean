@@ -1,0 +1,3657 @@
+{
+  "status": "PASS",
+  "authority": "EXACT_FINITE_CONTROL",
+  "RH_status": "OPEN",
+  "is_actual_zeta": false,
+  "Lean_authority": false,
+  "scope": "192 rational nested-bottom controls with both parities and explicit empty predecessor",
+  "branch_counts": {
+    "STRICT_EVEN": 59,
+    "STRICT_ODD": 67,
+    "TIE": 66
+  },
+  "empty_predecessor_cases": 8,
+  "assertion_count": 1722,
+  "rows": [
+    {
+      "Kd": 3,
+      "selected_K": 3,
+      "eta": "5/8",
+      "gap": "1/16",
+      "branch": "TIE",
+      "empty_predecessor": true,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "first_nonempty_handled_without_bottom": true
+      }
+    },
+    {
+      "Kd": 3,
+      "selected_K": 3,
+      "eta": "5/8",
+      "gap": "1/16",
+      "branch": "TIE",
+      "empty_predecessor": true,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "first_nonempty_handled_without_bottom": true
+      }
+    },
+    {
+      "Kd": 3,
+      "selected_K": 3,
+      "eta": "5/8",
+      "gap": "1/16",
+      "branch": "TIE",
+      "empty_predecessor": true,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "first_nonempty_handled_without_bottom": true
+      }
+    },
+    {
+      "Kd": 4,
+      "selected_K": 3,
+      "eta": "5/8",
+      "gap": "1/24",
+      "branch": "STRICT_EVEN",
+      "empty_predecessor": true,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "first_nonempty_handled_without_bottom": true
+      }
+    },
+    {
+      "Kd": 4,
+      "selected_K": 3,
+      "eta": "5/8",
+      "gap": "1/24",
+      "branch": "STRICT_ODD",
+      "empty_predecessor": true,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "first_nonempty_handled_without_bottom": true
+      }
+    },
+    {
+      "Kd": 4,
+      "selected_K": 3,
+      "eta": "5/8",
+      "gap": "1/24",
+      "branch": "TIE",
+      "empty_predecessor": true,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "first_nonempty_handled_without_bottom": true
+      }
+    },
+    {
+      "Kd": 5,
+      "selected_K": 4,
+      "eta": "5/8",
+      "gap": "1/32",
+      "branch": "STRICT_EVEN",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 5,
+      "selected_K": 4,
+      "eta": "5/8",
+      "gap": "1/32",
+      "branch": "STRICT_ODD",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 5,
+      "selected_K": 3,
+      "eta": "5/8",
+      "gap": "1/32",
+      "branch": "TIE",
+      "empty_predecessor": true,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "first_nonempty_handled_without_bottom": true
+      }
+    },
+    {
+      "Kd": 6,
+      "selected_K": 4,
+      "eta": "5/8",
+      "gap": "1/40",
+      "branch": "STRICT_EVEN",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 6,
+      "selected_K": 4,
+      "eta": "5/8",
+      "gap": "1/40",
+      "branch": "STRICT_EVEN",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 6,
+      "selected_K": 5,
+      "eta": "5/8",
+      "gap": "1/40",
+      "branch": "TIE",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 7,
+      "selected_K": 4,
+      "eta": "5/8",
+      "gap": "1/48",
+      "branch": "STRICT_EVEN",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 7,
+      "selected_K": 4,
+      "eta": "5/8",
+      "gap": "1/48",
+      "branch": "STRICT_ODD",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 7,
+      "selected_K": 6,
+      "eta": "5/8",
+      "gap": "1/48",
+      "branch": "TIE",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 8,
+      "selected_K": 6,
+      "eta": "5/8",
+      "gap": "1/56",
+      "branch": "STRICT_EVEN",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 8,
+      "selected_K": 6,
+      "eta": "5/8",
+      "gap": "1/56",
+      "branch": "STRICT_ODD",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 8,
+      "selected_K": 5,
+      "eta": "5/8",
+      "gap": "1/56",
+      "branch": "TIE",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 9,
+      "selected_K": 4,
+      "eta": "5/8",
+      "gap": "1/64",
+      "branch": "STRICT_ODD",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 9,
+      "selected_K": 5,
+      "eta": "29/45",
+      "gap": "1/64",
+      "branch": "STRICT_EVEN",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 9,
+      "selected_K": 5,
+      "eta": "5/8",
+      "gap": "1/64",
+      "branch": "TIE",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 10,
+      "selected_K": 3,
+      "eta": "5/8",
+      "gap": "1/72",
+      "branch": "STRICT_ODD",
+      "empty_predecessor": true,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "first_nonempty_handled_without_bottom": true
+      }
+    },
+    {
+      "Kd": 10,
+      "selected_K": 5,
+      "eta": "241/360",
+      "gap": "1/72",
+      "branch": "STRICT_EVEN",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 10,
+      "selected_K": 7,
+      "eta": "5/8",
+      "gap": "1/72",
+      "branch": "TIE",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 11,
+      "selected_K": 5,
+      "eta": "5/8",
+      "gap": "1/80",
+      "branch": "STRICT_EVEN",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 11,
+      "selected_K": 5,
+      "eta": "5/8",
+      "gap": "1/80",
+      "branch": "STRICT_ODD",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 11,
+      "selected_K": 8,
+      "eta": "5/8",
+      "gap": "1/80",
+      "branch": "TIE",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 12,
+      "selected_K": 8,
+      "eta": "5/8",
+      "gap": "1/88",
+      "branch": "STRICT_ODD",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 12,
+      "selected_K": 8,
+      "eta": "5/8",
+      "gap": "1/88",
+      "branch": "STRICT_ODD",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 12,
+      "selected_K": 7,
+      "eta": "13/20",
+      "gap": "1/88",
+      "branch": "TIE",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 13,
+      "selected_K": 8,
+      "eta": "5/8",
+      "gap": "1/96",
+      "branch": "STRICT_EVEN",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 13,
+      "selected_K": 9,
+      "eta": "5/8",
+      "gap": "1/96",
+      "branch": "STRICT_ODD",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 13,
+      "selected_K": 7,
+      "eta": "5/8",
+      "gap": "1/96",
+      "branch": "TIE",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 14,
+      "selected_K": 9,
+      "eta": "5/8",
+      "gap": "1/104",
+      "branch": "STRICT_EVEN",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 14,
+      "selected_K": 7,
+      "eta": "28/45",
+      "gap": "1/104",
+      "branch": "STRICT_EVEN",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 14,
+      "selected_K": 10,
+      "eta": "251/360",
+      "gap": "1/104",
+      "branch": "TIE",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 15,
+      "selected_K": 9,
+      "eta": "5/8",
+      "gap": "1/112",
+      "branch": "STRICT_EVEN",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 15,
+      "selected_K": 9,
+      "eta": "28/45",
+      "gap": "1/112",
+      "branch": "STRICT_ODD",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 15,
+      "selected_K": 6,
+      "eta": "5/8",
+      "gap": "1/112",
+      "branch": "TIE",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 16,
+      "selected_K": 10,
+      "eta": "5/8",
+      "gap": "1/120",
+      "branch": "STRICT_EVEN",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 16,
+      "selected_K": 9,
+      "eta": "27/40",
+      "gap": "1/120",
+      "branch": "STRICT_EVEN",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 16,
+      "selected_K": 12,
+      "eta": "27/40",
+      "gap": "1/120",
+      "branch": "TIE",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 17,
+      "selected_K": 10,
+      "eta": "5/8",
+      "gap": "1/128",
+      "branch": "STRICT_EVEN",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 17,
+      "selected_K": 10,
+      "eta": "5/8",
+      "gap": "1/128",
+      "branch": "STRICT_EVEN",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 17,
+      "selected_K": 9,
+      "eta": "83/120",
+      "gap": "1/128",
+      "branch": "TIE",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 18,
+      "selected_K": 12,
+      "eta": "5/8",
+      "gap": "1/136",
+      "branch": "STRICT_EVEN",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 18,
+      "selected_K": 10,
+      "eta": "239/360",
+      "gap": "1/136",
+      "branch": "STRICT_ODD",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 18,
+      "selected_K": 15,
+      "eta": "241/360",
+      "gap": "1/136",
+      "branch": "TIE",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 19,
+      "selected_K": 9,
+      "eta": "103/180",
+      "gap": "1/144",
+      "branch": "STRICT_ODD",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 19,
+      "selected_K": 11,
+      "eta": "119/180",
+      "gap": "1/144",
+      "branch": "STRICT_ODD",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 19,
+      "selected_K": 8,
+      "eta": "107/180",
+      "gap": "1/144",
+      "branch": "TIE",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 20,
+      "selected_K": 10,
+      "eta": "17/30",
+      "gap": "1/152",
+      "branch": "STRICT_ODD",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 20,
+      "selected_K": 12,
+      "eta": "109/180",
+      "gap": "1/152",
+      "branch": "STRICT_ODD",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 20,
+      "selected_K": 15,
+      "eta": "77/120",
+      "gap": "1/152",
+      "branch": "TIE",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 21,
+      "selected_K": 14,
+      "eta": "239/360",
+      "gap": "1/160",
+      "branch": "STRICT_EVEN",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 21,
+      "selected_K": 10,
+      "eta": "7/12",
+      "gap": "1/160",
+      "branch": "STRICT_EVEN",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 21,
+      "selected_K": 14,
+      "eta": "5/8",
+      "gap": "1/160",
+      "branch": "TIE",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 22,
+      "selected_K": 11,
+      "eta": "5/8",
+      "gap": "1/168",
+      "branch": "STRICT_ODD",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 22,
+      "selected_K": 15,
+      "eta": "247/360",
+      "gap": "1/168",
+      "branch": "STRICT_EVEN",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 22,
+      "selected_K": 10,
+      "eta": "239/360",
+      "gap": "1/168",
+      "branch": "TIE",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 23,
+      "selected_K": 13,
+      "eta": "5/8",
+      "gap": "1/176",
+      "branch": "STRICT_ODD",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 23,
+      "selected_K": 9,
+      "eta": "107/180",
+      "gap": "1/176",
+      "branch": "STRICT_EVEN",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 23,
+      "selected_K": 13,
+      "eta": "107/180",
+      "gap": "1/176",
+      "branch": "TIE",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 24,
+      "selected_K": 15,
+      "eta": "47/72",
+      "gap": "1/184",
+      "branch": "STRICT_EVEN",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 24,
+      "selected_K": 15,
+      "eta": "26/45",
+      "gap": "1/184",
+      "branch": "STRICT_EVEN",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 24,
+      "selected_K": 13,
+      "eta": "103/180",
+      "gap": "1/184",
+      "branch": "TIE",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 25,
+      "selected_K": 11,
+      "eta": "7/12",
+      "gap": "1/192",
+      "branch": "STRICT_ODD",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 25,
+      "selected_K": 16,
+      "eta": "5/9",
+      "gap": "1/192",
+      "branch": "STRICT_EVEN",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 25,
+      "selected_K": 16,
+      "eta": "5/8",
+      "gap": "1/192",
+      "branch": "TIE",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 26,
+      "selected_K": 13,
+      "eta": "247/360",
+      "gap": "1/200",
+      "branch": "STRICT_EVEN",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 26,
+      "selected_K": 14,
+      "eta": "227/360",
+      "gap": "1/200",
+      "branch": "STRICT_EVEN",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 26,
+      "selected_K": 16,
+      "eta": "27/40",
+      "gap": "1/200",
+      "branch": "TIE",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 27,
+      "selected_K": 13,
+      "eta": "11/20",
+      "gap": "1/208",
+      "branch": "STRICT_EVEN",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 27,
+      "selected_K": 13,
+      "eta": "29/45",
+      "gap": "1/208",
+      "branch": "STRICT_ODD",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 27,
+      "selected_K": 11,
+      "eta": "53/90",
+      "gap": "1/208",
+      "branch": "TIE",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 28,
+      "selected_K": 16,
+      "eta": "107/180",
+      "gap": "1/216",
+      "branch": "STRICT_EVEN",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 28,
+      "selected_K": 17,
+      "eta": "5/8",
+      "gap": "1/216",
+      "branch": "STRICT_EVEN",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 28,
+      "selected_K": 18,
+      "eta": "19/30",
+      "gap": "1/216",
+      "branch": "TIE",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 29,
+      "selected_K": 14,
+      "eta": "103/180",
+      "gap": "1/224",
+      "branch": "STRICT_ODD",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 29,
+      "selected_K": 17,
+      "eta": "79/120",
+      "gap": "1/224",
+      "branch": "STRICT_EVEN",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 29,
+      "selected_K": 14,
+      "eta": "7/12",
+      "gap": "1/224",
+      "branch": "TIE",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 30,
+      "selected_K": 14,
+      "eta": "53/90",
+      "gap": "1/232",
+      "branch": "STRICT_ODD",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 30,
+      "selected_K": 18,
+      "eta": "227/360",
+      "gap": "1/232",
+      "branch": "STRICT_EVEN",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 30,
+      "selected_K": 22,
+      "eta": "47/72",
+      "gap": "1/232",
+      "branch": "TIE",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 31,
+      "selected_K": 17,
+      "eta": "5/9",
+      "gap": "1/240",
+      "branch": "STRICT_EVEN",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 31,
+      "selected_K": 19,
+      "eta": "79/120",
+      "gap": "1/240",
+      "branch": "STRICT_EVEN",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 31,
+      "selected_K": 14,
+      "eta": "109/180",
+      "gap": "1/240",
+      "branch": "TIE",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 32,
+      "selected_K": 16,
+      "eta": "17/30",
+      "gap": "1/248",
+      "branch": "STRICT_ODD",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 32,
+      "selected_K": 17,
+      "eta": "7/12",
+      "gap": "1/248",
+      "branch": "STRICT_ODD",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 32,
+      "selected_K": 19,
+      "eta": "253/360",
+      "gap": "1/248",
+      "branch": "TIE",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 33,
+      "selected_K": 18,
+      "eta": "11/18",
+      "gap": "1/256",
+      "branch": "STRICT_EVEN",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 33,
+      "selected_K": 20,
+      "eta": "3/5",
+      "gap": "1/256",
+      "branch": "STRICT_EVEN",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 33,
+      "selected_K": 19,
+      "eta": "49/90",
+      "gap": "1/256",
+      "branch": "TIE",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 34,
+      "selected_K": 20,
+      "eta": "59/90",
+      "gap": "1/264",
+      "branch": "STRICT_EVEN",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 34,
+      "selected_K": 16,
+      "eta": "23/36",
+      "gap": "1/264",
+      "branch": "STRICT_EVEN",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 34,
+      "selected_K": 25,
+      "eta": "253/360",
+      "gap": "1/264",
+      "branch": "TIE",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 35,
+      "selected_K": 21,
+      "eta": "27/40",
+      "gap": "1/272",
+      "branch": "STRICT_ODD",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 35,
+      "selected_K": 19,
+      "eta": "23/36",
+      "gap": "1/272",
+      "branch": "STRICT_ODD",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 35,
+      "selected_K": 22,
+      "eta": "251/360",
+      "gap": "1/272",
+      "branch": "TIE",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 36,
+      "selected_K": 19,
+      "eta": "79/120",
+      "gap": "1/280",
+      "branch": "STRICT_ODD",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 36,
+      "selected_K": 20,
+      "eta": "29/45",
+      "gap": "1/280",
+      "branch": "STRICT_EVEN",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 36,
+      "selected_K": 16,
+      "eta": "26/45",
+      "gap": "1/280",
+      "branch": "TIE",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 37,
+      "selected_K": 18,
+      "eta": "97/180",
+      "gap": "1/288",
+      "branch": "STRICT_EVEN",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 37,
+      "selected_K": 18,
+      "eta": "103/180",
+      "gap": "1/288",
+      "branch": "STRICT_EVEN",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 37,
+      "selected_K": 19,
+      "eta": "103/180",
+      "gap": "1/288",
+      "branch": "TIE",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 38,
+      "selected_K": 19,
+      "eta": "11/18",
+      "gap": "1/296",
+      "branch": "STRICT_EVEN",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 38,
+      "selected_K": 24,
+      "eta": "11/18",
+      "gap": "1/296",
+      "branch": "STRICT_ODD",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 38,
+      "selected_K": 22,
+      "eta": "109/180",
+      "gap": "1/296",
+      "branch": "TIE",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 39,
+      "selected_K": 18,
+      "eta": "113/180",
+      "gap": "1/304",
+      "branch": "STRICT_ODD",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 39,
+      "selected_K": 24,
+      "eta": "29/45",
+      "gap": "1/304",
+      "branch": "STRICT_ODD",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 39,
+      "selected_K": 24,
+      "eta": "253/360",
+      "gap": "1/304",
+      "branch": "TIE",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 40,
+      "selected_K": 17,
+      "eta": "19/36",
+      "gap": "1/312",
+      "branch": "STRICT_ODD",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 40,
+      "selected_K": 22,
+      "eta": "5/8",
+      "gap": "1/312",
+      "branch": "STRICT_ODD",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 40,
+      "selected_K": 19,
+      "eta": "5/9",
+      "gap": "1/312",
+      "branch": "TIE",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 41,
+      "selected_K": 21,
+      "eta": "29/45",
+      "gap": "1/320",
+      "branch": "STRICT_ODD",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 41,
+      "selected_K": 22,
+      "eta": "7/12",
+      "gap": "1/320",
+      "branch": "STRICT_ODD",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 41,
+      "selected_K": 25,
+      "eta": "101/180",
+      "gap": "1/320",
+      "branch": "TIE",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 42,
+      "selected_K": 25,
+      "eta": "109/180",
+      "gap": "1/328",
+      "branch": "STRICT_ODD",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 42,
+      "selected_K": 24,
+      "eta": "103/180",
+      "gap": "1/328",
+      "branch": "STRICT_EVEN",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 42,
+      "selected_K": 30,
+      "eta": "23/36",
+      "gap": "1/328",
+      "branch": "TIE",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 43,
+      "selected_K": 23,
+      "eta": "29/45",
+      "gap": "1/336",
+      "branch": "STRICT_EVEN",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 43,
+      "selected_K": 21,
+      "eta": "11/18",
+      "gap": "1/336",
+      "branch": "STRICT_EVEN",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 43,
+      "selected_K": 30,
+      "eta": "2/3",
+      "gap": "1/336",
+      "branch": "TIE",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 44,
+      "selected_K": 21,
+      "eta": "49/90",
+      "gap": "1/344",
+      "branch": "STRICT_ODD",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 44,
+      "selected_K": 21,
+      "eta": "19/30",
+      "gap": "1/344",
+      "branch": "STRICT_ODD",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 44,
+      "selected_K": 24,
+      "eta": "251/360",
+      "gap": "1/344",
+      "branch": "TIE",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 45,
+      "selected_K": 24,
+      "eta": "113/180",
+      "gap": "1/352",
+      "branch": "STRICT_ODD",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 45,
+      "selected_K": 22,
+      "eta": "41/60",
+      "gap": "1/352",
+      "branch": "STRICT_ODD",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 45,
+      "selected_K": 19,
+      "eta": "2/3",
+      "gap": "1/352",
+      "branch": "TIE",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 46,
+      "selected_K": 23,
+      "eta": "83/120",
+      "gap": "1/360",
+      "branch": "STRICT_EVEN",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 46,
+      "selected_K": 27,
+      "eta": "251/360",
+      "gap": "1/360",
+      "branch": "STRICT_ODD",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 46,
+      "selected_K": 28,
+      "eta": "59/90",
+      "gap": "1/360",
+      "branch": "TIE",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 47,
+      "selected_K": 22,
+      "eta": "253/360",
+      "gap": "1/368",
+      "branch": "STRICT_EVEN",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 47,
+      "selected_K": 26,
+      "eta": "83/120",
+      "gap": "1/368",
+      "branch": "STRICT_EVEN",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 47,
+      "selected_K": 30,
+      "eta": "103/180",
+      "gap": "1/368",
+      "branch": "TIE",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 48,
+      "selected_K": 24,
+      "eta": "5/9",
+      "gap": "1/376",
+      "branch": "STRICT_ODD",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 48,
+      "selected_K": 30,
+      "eta": "17/24",
+      "gap": "1/376",
+      "branch": "STRICT_ODD",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 48,
+      "selected_K": 34,
+      "eta": "25/36",
+      "gap": "1/376",
+      "branch": "TIE",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 49,
+      "selected_K": 27,
+      "eta": "11/20",
+      "gap": "1/384",
+      "branch": "STRICT_EVEN",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 49,
+      "selected_K": 26,
+      "eta": "107/180",
+      "gap": "1/384",
+      "branch": "STRICT_ODD",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 49,
+      "selected_K": 24,
+      "eta": "7/12",
+      "gap": "1/384",
+      "branch": "TIE",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 50,
+      "selected_K": 31,
+      "eta": "3/5",
+      "gap": "1/392",
+      "branch": "STRICT_ODD",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 50,
+      "selected_K": 26,
+      "eta": "121/180",
+      "gap": "1/392",
+      "branch": "STRICT_ODD",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 50,
+      "selected_K": 27,
+      "eta": "107/180",
+      "gap": "1/392",
+      "branch": "TIE",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 51,
+      "selected_K": 29,
+      "eta": "17/24",
+      "gap": "1/400",
+      "branch": "STRICT_ODD",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 51,
+      "selected_K": 25,
+      "eta": "49/90",
+      "gap": "1/400",
+      "branch": "STRICT_ODD",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 51,
+      "selected_K": 27,
+      "eta": "29/45",
+      "gap": "1/400",
+      "branch": "TIE",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 52,
+      "selected_K": 25,
+      "eta": "28/45",
+      "gap": "1/408",
+      "branch": "STRICT_ODD",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 52,
+      "selected_K": 30,
+      "eta": "59/90",
+      "gap": "1/408",
+      "branch": "STRICT_ODD",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 52,
+      "selected_K": 32,
+      "eta": "49/72",
+      "gap": "1/408",
+      "branch": "TIE",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 53,
+      "selected_K": 30,
+      "eta": "97/180",
+      "gap": "1/416",
+      "branch": "STRICT_EVEN",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 53,
+      "selected_K": 26,
+      "eta": "3/5",
+      "gap": "1/416",
+      "branch": "STRICT_EVEN",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 53,
+      "selected_K": 32,
+      "eta": "227/360",
+      "gap": "1/416",
+      "branch": "TIE",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 54,
+      "selected_K": 24,
+      "eta": "28/45",
+      "gap": "1/424",
+      "branch": "STRICT_EVEN",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 54,
+      "selected_K": 27,
+      "eta": "241/360",
+      "gap": "1/424",
+      "branch": "STRICT_ODD",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 54,
+      "selected_K": 30,
+      "eta": "59/90",
+      "gap": "1/424",
+      "branch": "TIE",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 55,
+      "selected_K": 32,
+      "eta": "257/360",
+      "gap": "1/432",
+      "branch": "STRICT_ODD",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 55,
+      "selected_K": 26,
+      "eta": "5/9",
+      "gap": "1/432",
+      "branch": "STRICT_ODD",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 55,
+      "selected_K": 35,
+      "eta": "3/5",
+      "gap": "1/432",
+      "branch": "TIE",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 56,
+      "selected_K": 33,
+      "eta": "5/9",
+      "gap": "1/440",
+      "branch": "STRICT_EVEN",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 56,
+      "selected_K": 35,
+      "eta": "59/90",
+      "gap": "1/440",
+      "branch": "STRICT_EVEN",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 56,
+      "selected_K": 31,
+      "eta": "17/24",
+      "gap": "1/440",
+      "branch": "TIE",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 57,
+      "selected_K": 32,
+      "eta": "13/20",
+      "gap": "1/448",
+      "branch": "STRICT_ODD",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 57,
+      "selected_K": 38,
+      "eta": "257/360",
+      "gap": "1/448",
+      "branch": "STRICT_ODD",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 57,
+      "selected_K": 35,
+      "eta": "253/360",
+      "gap": "1/448",
+      "branch": "TIE",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 58,
+      "selected_K": 28,
+      "eta": "23/36",
+      "gap": "1/456",
+      "branch": "STRICT_ODD",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 58,
+      "selected_K": 34,
+      "eta": "37/60",
+      "gap": "1/456",
+      "branch": "STRICT_EVEN",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 58,
+      "selected_K": 27,
+      "eta": "26/45",
+      "gap": "1/456",
+      "branch": "TIE",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 59,
+      "selected_K": 30,
+      "eta": "23/36",
+      "gap": "1/464",
+      "branch": "STRICT_EVEN",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 59,
+      "selected_K": 30,
+      "eta": "3/5",
+      "gap": "1/464",
+      "branch": "STRICT_ODD",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 59,
+      "selected_K": 41,
+      "eta": "119/180",
+      "gap": "1/464",
+      "branch": "TIE",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 60,
+      "selected_K": 36,
+      "eta": "247/360",
+      "gap": "1/472",
+      "branch": "STRICT_ODD",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 60,
+      "selected_K": 29,
+      "eta": "7/12",
+      "gap": "1/472",
+      "branch": "STRICT_ODD",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 60,
+      "selected_K": 35,
+      "eta": "113/180",
+      "gap": "1/472",
+      "branch": "TIE",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 61,
+      "selected_K": 35,
+      "eta": "19/30",
+      "gap": "1/480",
+      "branch": "STRICT_ODD",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 61,
+      "selected_K": 31,
+      "eta": "109/180",
+      "gap": "1/480",
+      "branch": "STRICT_ODD",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 61,
+      "selected_K": 36,
+      "eta": "121/180",
+      "gap": "1/480",
+      "branch": "TIE",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 62,
+      "selected_K": 32,
+      "eta": "3/5",
+      "gap": "1/488",
+      "branch": "STRICT_ODD",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 62,
+      "selected_K": 26,
+      "eta": "97/180",
+      "gap": "1/488",
+      "branch": "STRICT_ODD",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 62,
+      "selected_K": 37,
+      "eta": "37/60",
+      "gap": "1/488",
+      "branch": "TIE",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 63,
+      "selected_K": 30,
+      "eta": "119/180",
+      "gap": "1/496",
+      "branch": "STRICT_ODD",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 63,
+      "selected_K": 35,
+      "eta": "59/90",
+      "gap": "1/496",
+      "branch": "STRICT_EVEN",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 63,
+      "selected_K": 34,
+      "eta": "13/20",
+      "gap": "1/496",
+      "branch": "TIE",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 64,
+      "selected_K": 34,
+      "eta": "28/45",
+      "gap": "1/504",
+      "branch": "STRICT_ODD",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 64,
+      "selected_K": 33,
+      "eta": "29/45",
+      "gap": "1/504",
+      "branch": "STRICT_ODD",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 64,
+      "selected_K": 39,
+      "eta": "253/360",
+      "gap": "1/504",
+      "branch": "TIE",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 65,
+      "selected_K": 43,
+      "eta": "29/45",
+      "gap": "1/512",
+      "branch": "STRICT_EVEN",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 65,
+      "selected_K": 33,
+      "eta": "11/20",
+      "gap": "1/512",
+      "branch": "STRICT_ODD",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 65,
+      "selected_K": 38,
+      "eta": "49/90",
+      "gap": "1/512",
+      "branch": "TIE",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 66,
+      "selected_K": 34,
+      "eta": "28/45",
+      "gap": "1/520",
+      "branch": "STRICT_EVEN",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 66,
+      "selected_K": 35,
+      "eta": "3/5",
+      "gap": "1/520",
+      "branch": "STRICT_ODD",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    },
+    {
+      "Kd": 66,
+      "selected_K": 33,
+      "eta": "23/36",
+      "gap": "1/520",
+      "branch": "TIE",
+      "empty_predecessor": false,
+      "checks": {
+        "threshold_window": true,
+        "all_global_bottoms_avoided": true,
+        "selected_depth": true,
+        "inverse_constant": true,
+        "named_ground_inverse_constant": true,
+        "named_detector_inverse_constant": true,
+        "compatibility_alias_has_ground_scope": true,
+        "both_predecessors_above_threshold": true,
+        "both_predecessors_shifted_coercive": true
+      }
+    }
+  ]
+}

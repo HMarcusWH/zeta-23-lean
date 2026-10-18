@@ -1,0 +1,10 @@
+{
+  "status": "PROPOSED_CORRECTNESS_ADDENDUM_INTAKE",
+  "sha256": "209ff169635842b62d1a2faab450155a6c648edc3a3b632d1f7628074a2753f5",
+  "source": "user-provided NEXT_PR_AMENDMENT.md",
+  "original_spec_preserved": true,
+  "D2_required": true,
+  "optional_modules_promoted_to_mandatory": false,
+  "scope_amendment_approved": false,
+  "claim_cap": "RH_OPEN"
+}

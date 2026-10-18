@@ -1,0 +1,637 @@
+{
+  "scope": "Portable frozen review evidence, preserved without Git newline conversion by local .gitattributes. Source bytes may have Windows line endings; LF-normalized hashes and Git blob identities in aggregate frontier identify committed Lean content.",
+  "whole_commit_checked": false,
+  "claim_cap": "RH_OPEN",
+  "files": [
+    {
+      "path": ".gitattributes",
+      "bytes": 47,
+      "sha256": "920781736b28385b1c3625f2a8a187763ea8facb06daa3f6bb319bee46182807"
+    },
+    {
+      "path": "compact-inverse-final-progress.log",
+      "bytes": 286,
+      "sha256": "5da620eb4fa5e4f1049072de435bd736140bebdaf0b49bb18229ea06e7de2e97"
+    },
+    {
+      "path": "compiler_logs/Zeta23/CCM/CanonicalDeepThresholdGap.log",
+      "bytes": 646,
+      "sha256": "483da059d01069e439cd4060d11b2a055a9455f9a4ac03521da0515d5c8cc77b"
+    },
+    {
+      "path": "compiler_logs/Zeta23/CCM/CanonicalDeepThresholdSelection.log",
+      "bytes": 430,
+      "sha256": "6126bb530896e2d2650bcbe826962d4e598a6ab0ac4355d9f21abbbb53f120ec"
+    },
+    {
+      "path": "compiler_logs/Zeta23/CCM/CanonicalTrialResidualChannels.log",
+      "bytes": 1203,
+      "sha256": "18adbf8936e92dd212065811ff00407a0b7aef6e88862f4bd665d22a48367476"
+    },
+    {
+      "path": "compiler_logs/Zeta23/CCM/CompactComplexIntegralFTC.log",
+      "bytes": 226,
+      "sha256": "abd0c420d5fefcdb02de8db38acd7f6ab0d0ad97fb95253a98da9aed8f06852a"
+    },
+    {
+      "path": "compiler_logs/Zeta23/CCM/CompactPoleConvolution.log",
+      "bytes": 458,
+      "sha256": "77de4e18e54ab1468800ef48edd30bbc187999431bcb291086902f10e726c9d3"
+    },
+    {
+      "path": "compiler_logs/Zeta23/CCM/DetectorRetainedSchurState.log",
+      "bytes": 667,
+      "sha256": "1db5d0bd3810c8c9b4585e25bf4414d36a5f8db3c9a4f05d4bb6d174f4378b70"
+    },
+    {
+      "path": "compiler_logs/Zeta23/CCM/FiniteBottomGapSelector.log",
+      "bytes": 436,
+      "sha256": "cefa03ce87450c4f7edf4b96c6d865113b0623e83bfd967cc6bc4a640aa42116"
+    },
+    {
+      "path": "compiler_logs/Zeta23/CCM/NativeCausalAdjointZeroJets.log",
+      "bytes": 623,
+      "sha256": "3375adfe9a2ad2afe432b987084bb919f54d0db76d194bd1fda48cbabee50aa0"
+    },
+    {
+      "path": "compiler_logs/Zeta23/CCM/NativeCausalAnalyticObstruction.log",
+      "bytes": 274,
+      "sha256": "4eeb9b42179e67a7bd7b9670f55f1b9bd95c11bcebccb27ea42e77f3dbcbbdbf"
+    },
+    {
+      "path": "compiler_logs/Zeta23/CCM/NativeCausalExponentialWitness.log",
+      "bytes": 579,
+      "sha256": "b657aba8a23f562bde87cc1b94fe82e11f2bcc106f4245d6697580ad88aa585a"
+    },
+    {
+      "path": "compiler_logs/Zeta23/CCM/NativeCausalKernelLaplaceDerivatives.log",
+      "bytes": 722,
+      "sha256": "2d492e69551a14a2fa434b5314d3919cf4a463f1cbcceca12bc06e4943d57ee0"
+    },
+    {
+      "path": "compiler_logs/Zeta23/CCM/NativeCausalLaplaceDerivatives.log",
+      "bytes": 1271,
+      "sha256": "f45145dba776e392783015068de8a0e2f95b748e1d8499f8b9571a518be1f9c0"
+    },
+    {
+      "path": "compiler_logs/Zeta23/CCM/NativeCausalLaplaceMoments.log",
+      "bytes": 363,
+      "sha256": "fe13fbd79bf2425bc0a77a29b08c406c531ca352a95c6e2f3b7820db81cf8a34"
+    },
+    {
+      "path": "compiler_logs/Zeta23/CCM/NativeCausalRangeObstruction.log",
+      "bytes": 401,
+      "sha256": "ada2b783b99dda3311c551e253d18dfcd92eee83ebf9c0afe501a737668a2d47"
+    },
+    {
+      "path": "compiler_logs/Zeta23/CCM/NativeCompletedInputComplexLaplace.log",
+      "bytes": 360,
+      "sha256": "864279e3474fca20d75cd264494f5278c5d74ac19224691390f62db00519039f"
+    },
+    {
+      "path": "compiler_logs/Zeta23/CCM/NativeCompletedInputRangeOfPrimeLp.log",
+      "bytes": 584,
+      "sha256": "ffb85cdea8a6bae179235a1e707dec6daa9245a28b473b04073c03089fa2f205"
+    },
+    {
+      "path": "compiler_logs/Zeta23/CCM/NativeCompletedInputZetaLaplace.log",
+      "bytes": 563,
+      "sha256": "760d7a8cde90041c55844b6715b4d0135c4194f3838dbeddb746dba3402b0085"
+    },
+    {
+      "path": "compiler_logs/Zeta23/CCM/NativeCompletionComplexLaplace.log",
+      "bytes": 356,
+      "sha256": "eb6e6449ca65eb3e79e5ced45884038cf897547c594dc9ba9db30e84236ff7db"
+    },
+    {
+      "path": "compiler_logs/Zeta23/CCM/NativeDampedCompletionPointwiseBridge.log",
+      "bytes": 611,
+      "sha256": "cb3a2da60b0c3459e113b7cd660e243dcba34cb2525f1813aeed4467a8a63f28"
+    },
+    {
+      "path": "compiler_logs/Zeta23/CCM/NativeDeepThresholdEvenMoment.log",
+      "bytes": 252,
+      "sha256": "48d3c703845f42911d346e40de6848202b773cd0836417a404ce6455a0e4b052"
+    },
+    {
+      "path": "compiler_logs/Zeta23/CCM/NativeDeepThresholdGround.log",
+      "bytes": 462,
+      "sha256": "03c0a45eba492f5f66222d9a5834deb5f550b261fcad023df361719c04e79904"
+    },
+    {
+      "path": "compiler_logs/Zeta23/CCM/NativeDeepThresholdInverseBudgets.log",
+      "bytes": 1382,
+      "sha256": "9f5fb6bfcf3bb25f159bfa9cbd26e1aacdf64b6466a614d70f108f08395fe916"
+    },
+    {
+      "path": "compiler_logs/Zeta23/CCM/NativeDeepThresholdSimplicity.log",
+      "bytes": 584,
+      "sha256": "12c6dffaf3110f6babd8a2cca54e47cfe0b0054b54f4ad4cc85e1c5dea1456ce"
+    },
+    {
+      "path": "compiler_logs/Zeta23/CCM/NativeDetectorSchur.log",
+      "bytes": 794,
+      "sha256": "31f6d5edf90dde6d150eceb3781e7946664bdbdd9c957a72b92bc0ea23c41081"
+    },
+    {
+      "path": "compiler_logs/Zeta23/CCM/NativeIntegerDriveComplexLaplace.log",
+      "bytes": 605,
+      "sha256": "316905f12ed05745f4547c4fbddeb275768bebc48e6132edfb5ae12929e06f54"
+    },
+    {
+      "path": "compiler_logs/Zeta23/CCM/NativeIntegerKernelComplexLaplace.log",
+      "bytes": 467,
+      "sha256": "f1fc3fbcbfe4b132595a61657d977cbec143bb596c9be48bb1395d6d0287517e"
+    },
+    {
+      "path": "compiler_logs/Zeta23/CCM/NativeLaplaceHalfPlaneContinuation.log",
+      "bytes": 233,
+      "sha256": "3bae3edb3f289bc28af03e6ce47b366bce0b7bcd94d8acb5793c1b83b29a1b52"
+    },
+    {
+      "path": "compiler_logs/Zeta23/CCM/NativePoleNeutralTrialDepth.log",
+      "bytes": 359,
+      "sha256": "913a506355eb9db14471d2721c413594323c74ad2aba8a7b1b448038d6472353"
+    },
+    {
+      "path": "compiler_logs/Zeta23/CCM/NativePositiveCompletionComplexLaplace.log",
+      "bytes": 987,
+      "sha256": "63b3e3be4f622cd9a730f7d3a10ec9b611d4895513a350e1fdf984d384222a5e"
+    },
+    {
+      "path": "compiler_logs/Zeta23/CCM/NativeSelectedGroundSchur.log",
+      "bytes": 586,
+      "sha256": "a4c11270640012ddd44ba2472d31392758483ec84fb2b6c0e0244a1b874d8425"
+    },
+    {
+      "path": "compiler_logs/Zeta23/CCM/OriginalDetectorAdmissibleSelector.log",
+      "bytes": 116,
+      "sha256": "39e9c1e50de3fbef796fffeb050a199f2fa3b3a5d98f860632c2914a7362952a"
+    },
+    {
+      "path": "compiler_logs/Zeta23/CCM/OriginalDetectorFinitePhaseApproximation.log",
+      "bytes": 1056,
+      "sha256": "f37d08f606784dc5841b0eed1dbdff2415f44cdea302161c7ef11e4f5b4aed83"
+    },
+    {
+      "path": "compiler_logs/Zeta23/CCM/OriginalDetectorFinitePhaseCarrier.log",
+      "bytes": 930,
+      "sha256": "9d839bf0386b54fc377ae630c77c3d5096a9cc11d25dd3985fed9491c7bb6f20"
+    },
+    {
+      "path": "compiler_logs/Zeta23/CCM/OriginalDetectorFinitePhaseDepth.log",
+      "bytes": 110,
+      "sha256": "975d7374d9123a926a482709fb4a439658c2c8780f591635a6d2bc5e1662d6d8"
+    },
+    {
+      "path": "compiler_logs/Zeta23/CCM/OriginalDetectorFinitePhaseL1Errors.log",
+      "bytes": 397,
+      "sha256": "d73f9f7a48a777629c4e8cda06dff03031f3844a8032ad66952e8812d370920e"
+    },
+    {
+      "path": "compiler_logs/Zeta23/CCM/OriginalDetectorFinitePhaseMass.log",
+      "bytes": 924,
+      "sha256": "c6d176b43f2a984c6804423c88b80f9f697faf8c3870a6a8f26e425efbeb7491"
+    },
+    {
+      "path": "compiler_logs/Zeta23/CCM/OriginalDetectorFinitePhaseNativeProducer.log",
+      "bytes": 721,
+      "sha256": "ff595d0cb8c530e15fbdbe43ab4dfeab4716a9430b4ef11b82d453caa8623c23"
+    },
+    {
+      "path": "compiler_logs/Zeta23/CCM/OriginalDetectorFinitePhaseNativeTransport.log",
+      "bytes": 650,
+      "sha256": "9570116f84e5bac5dad6424ea42595e839fd9458fd1bc6fd4592d930b115b77a"
+    },
+    {
+      "path": "compiler_logs/Zeta23/CCM/OriginalDetectorFinitePhaseNormalization.log",
+      "bytes": 2011,
+      "sha256": "0686cd175a4c29de2c292b9a93cdd176ce4faa5590121a5524e2574dda949755"
+    },
+    {
+      "path": "compiler_logs/Zeta23/CCM/OriginalDetectorFinitePhaseNormControl.log",
+      "bytes": 539,
+      "sha256": "279e33440eb784d9fc51049b20b402c804da8209b7ffbee3fc22999b66c0575f"
+    },
+    {
+      "path": "compiler_logs/Zeta23/CCM/OriginalDetectorFinitePhasePlane.log",
+      "bytes": 812,
+      "sha256": "d0fa9c48ed33c8f7ecdb1e334cd92fe9681ef3aa73b77b65f09b7da129ecced9"
+    },
+    {
+      "path": "compiler_logs/Zeta23/CCM/OriginalDetectorFinitePhaseWeilPadding.log",
+      "bytes": 1043,
+      "sha256": "a0960a54138cfd7d9ae29b69182e23590be86e5edc36339288d1a56015f29e1d"
+    },
+    {
+      "path": "compiler_logs/Zeta23/CCM/OriginalDetectorFinitePhysicalNorm.log",
+      "bytes": 522,
+      "sha256": "ad194dafa0f78d0c7b0dc21dce0851b09df8f857956be59c972aaf361e1bf2cc"
+    },
+    {
+      "path": "compiler_logs/Zeta23/CCM/OriginalDetectorFinitePoleImage.log",
+      "bytes": 683,
+      "sha256": "eff5a160122d2e08d7a0a9bc81c4a32a8930dac42a41b1a26dfad69f847e8c18"
+    },
+    {
+      "path": "compiler_logs/Zeta23/CCM/OriginalDetectorFinitePoleImageAsymptotics.log",
+      "bytes": 275,
+      "sha256": "055108c796e5e2c9378726e6867b2ce12e4a27b92f0c8061c366f922a7fb2d95"
+    },
+    {
+      "path": "compiler_logs/Zeta23/CCM/OriginalDetectorFinitePoleImageNonzero.log",
+      "bytes": 266,
+      "sha256": "4574fb23f5279ef190733d3d5c8c86e17c270df312fbcd80e263c7faa434bfdc"
+    },
+    {
+      "path": "compiler_logs/Zeta23/CCM/OriginalDetectorFinitePoleImageTransport.log",
+      "bytes": 757,
+      "sha256": "d6714f1e196b6d92fbb0e7ef69235c0dc53d45203fbb3509da76c51fef510fdd"
+    },
+    {
+      "path": "compiler_logs/Zeta23/CCM/OriginalDetectorFiniteTransport.log",
+      "bytes": 941,
+      "sha256": "3d2a7695c0c804db804329362988ee10dfb2b2ffe378c618ed0fb4f2a57703c5"
+    },
+    {
+      "path": "compiler_logs/Zeta23/CCM/OriginalDetectorFiniteWindowBoundaryFlat.log",
+      "bytes": 636,
+      "sha256": "b2cf4da8e6f0bcaebfc9cc637acb4474b753b10f2b3718c3fc2baaeb5e54a264"
+    },
+    {
+      "path": "compiler_logs/Zeta23/CCM/OriginalDetectorFiniteWindowHigherFlat.log",
+      "bytes": 553,
+      "sha256": "715abf15503da3613d125ac5f7c714e2168e4e7873d8b392aee97000d5527e05"
+    },
+    {
+      "path": "compiler_logs/Zeta23/CCM/OriginalDetectorFiniteWindowImage.log",
+      "bytes": 744,
+      "sha256": "c36261a3dd65916129f14d7bdca5325e437d2253129ddd5c43a8f064c9761501"
+    },
+    {
+      "path": "compiler_logs/Zeta23/CCM/OriginalDetectorFiniteWindowImageAsymptotics.log",
+      "bytes": 279,
+      "sha256": "5c04223077ee9fcbc3c88adc73a8c8ed4d1bc126144d058635d6a3b536c99e19"
+    },
+    {
+      "path": "compiler_logs/Zeta23/CCM/OriginalDetectorFiniteWindowImageJets.log",
+      "bytes": 501,
+      "sha256": "9d8938c2616c55eb0a887f916d27ee5ac5fd8f61e405f44f8d21f43773ccd79c"
+    },
+    {
+      "path": "compiler_logs/Zeta23/CCM/OriginalDetectorFourierScalarTailBounds.log",
+      "bytes": 1122,
+      "sha256": "96a2e7740bcf0d025cd6329974f3d3a97d54f0a65c143fdf12469a61365e0a20"
+    },
+    {
+      "path": "compiler_logs/Zeta23/CCM/OriginalDetectorFourierTailAsymptotics.log",
+      "bytes": 411,
+      "sha256": "6b26f175e69e0d1cffde7fff79693997e1826e6eaeced2b87cc20a86b936ba02"
+    },
+    {
+      "path": "compiler_logs/Zeta23/CCM/OriginalDetectorFourierTailBounds.log",
+      "bytes": 1450,
+      "sha256": "c8e47deb2964fbc443878c5ba3c28209749a6344c582b1d0ea9bcaad5c52ecac"
+    },
+    {
+      "path": "compiler_logs/Zeta23/CCM/OriginalDetectorNativeRetainedSelection.log",
+      "bytes": 366,
+      "sha256": "293051240c4b212c82d3e920aceb3228f863b460a98ce615f514b33860e10bd6"
+    },
+    {
+      "path": "compiler_logs/Zeta23/CCM/OriginalDetectorPaddedFiniteH1Rate.log",
+      "bytes": 1937,
+      "sha256": "1f88cd280254fcfb8dcf272c88808377e6a3a9d550168b72f15ead31a1b6e45f"
+    },
+    {
+      "path": "compiler_logs/Zeta23/CCM/OriginalDetectorPaddedFiniteNativeFormRate.log",
+      "bytes": 794,
+      "sha256": "d8eb6e57b05e6dfeda9a13efc7ff508c7bcbad4c6c1190db055f7cda308c9490"
+    },
+    {
+      "path": "compiler_logs/Zeta23/CCM/OriginalDetectorPaddedFiniteNormalizedErrors.log",
+      "bytes": 3228,
+      "sha256": "b13a2267cd564e74c27696c563bbfee360d4dd4b3aa289c5dc86314dc45f9a22"
+    },
+    {
+      "path": "compiler_logs/Zeta23/CCM/OriginalDetectorPaddedFinitePhaseApproximation.log",
+      "bytes": 1075,
+      "sha256": "6dd21663ec041140be3df93fac05926f7dac027a56f52e55d9f97f286a83cc7f"
+    },
+    {
+      "path": "compiler_logs/Zeta23/CCM/OriginalDetectorPaddedFinitePhaseCarrier.log",
+      "bytes": 957,
+      "sha256": "0ced5d1d79876a5e2a2e722d38c9bea170d8ff2e112902c33619394c1136087a"
+    },
+    {
+      "path": "compiler_logs/Zeta23/CCM/OriginalDetectorPaddedFinitePhaseDepth.log",
+      "bytes": 115,
+      "sha256": "1c02418dbc3200d0e4977fdb9baedbac80accc0c51b79d0fa8f0ca431e257084"
+    },
+    {
+      "path": "compiler_logs/Zeta23/CCM/OriginalDetectorPaddedFinitePhaseL1Errors.log",
+      "bytes": 411,
+      "sha256": "0925e88462c766c6e9a964a918c0cc0df509f7c9e0b566e570fb4260ddae5fd8"
+    },
+    {
+      "path": "compiler_logs/Zeta23/CCM/OriginalDetectorPaddedFinitePhaseMass.log",
+      "bytes": 943,
+      "sha256": "6841b6801441610d366972bcdc540b52d4f66ebf7eedd765e726925341cfb9c2"
+    },
+    {
+      "path": "compiler_logs/Zeta23/CCM/OriginalDetectorPaddedFinitePhaseNativeProducer.log",
+      "bytes": 749,
+      "sha256": "7045754c5dc6a6e136dca9867b00a88e18b33c83a835ff5c6b8ba5599a4462e4"
+    },
+    {
+      "path": "compiler_logs/Zeta23/CCM/OriginalDetectorPaddedFinitePhaseNativeTransport.log",
+      "bytes": 655,
+      "sha256": "798c48f1102dd6f3ad24f042c0c464710a5120926ab1892f6af8debe013d31cb"
+    },
+    {
+      "path": "compiler_logs/Zeta23/CCM/OriginalDetectorPaddedFinitePhaseNormalization.log",
+      "bytes": 2023,
+      "sha256": "0c7c5df7642856edd2344c5a85b100f2b64e22d144d2dd88c3a226087a443f5f"
+    },
+    {
+      "path": "compiler_logs/Zeta23/CCM/OriginalDetectorPaddedFinitePhaseNormControl.log",
+      "bytes": 553,
+      "sha256": "6008588ee5d9495c85ae1b00cccd98affb2a9f7c5148c7acfc45d4a17d34a580"
+    },
+    {
+      "path": "compiler_logs/Zeta23/CCM/OriginalDetectorPaddedFinitePhasePlane.log",
+      "bytes": 520,
+      "sha256": "f35d5aafcb2c44f1536a86b03bdf5ee2aaba678266cd122e1385229a062238e3"
+    },
+    {
+      "path": "compiler_logs/Zeta23/CCM/OriginalDetectorPaddedFinitePhaseSymmetry.log",
+      "bytes": 2362,
+      "sha256": "547cdf10b8510fd4926234ebcf264d653d63c6ad7b8926e53fe90b1b3f4dce3c"
+    },
+    {
+      "path": "compiler_logs/Zeta23/CCM/OriginalDetectorPaddedFinitePhaseWeilPadding.log",
+      "bytes": 1063,
+      "sha256": "f3ba9b11711de5950c775570f6d07b45f60a2ad5ba77679c37913be1d413da37"
+    },
+    {
+      "path": "compiler_logs/Zeta23/CCM/OriginalDetectorPaddedFinitePoleImage.log",
+      "bytes": 699,
+      "sha256": "e759527a59fe2b7b57eb46310c61acc39fd7bd30ebfe3703a9749f167e9619c8"
+    },
+    {
+      "path": "compiler_logs/Zeta23/CCM/OriginalDetectorPaddedFinitePoleImageAsymptotics.log",
+      "bytes": 281,
+      "sha256": "01a3186a9ae0372418dbab247d0c5d5da00268a72f37d6310ec4588deb1efb76"
+    },
+    {
+      "path": "compiler_logs/Zeta23/CCM/OriginalDetectorPaddedFinitePoleImageC4.log",
+      "bytes": 270,
+      "sha256": "e00b81f3c9cfda3647812852f6740a0b265cdf861f3c88f0895c1c2f41e53e03"
+    },
+    {
+      "path": "compiler_logs/Zeta23/CCM/OriginalDetectorPaddedFinitePoleImageNonzero.log",
+      "bytes": 276,
+      "sha256": "791b7d7b4b54c429c6d97fc1ae32228d40a043f0a5c6adb3868779fc64d14c29"
+    },
+    {
+      "path": "compiler_logs/Zeta23/CCM/OriginalDetectorPaddedFinitePoleImageTransport.log",
+      "bytes": 786,
+      "sha256": "708b558ff2c0237aa80faeb25ea9abc4cccaec67939134268f59c77df22b3f21"
+    },
+    {
+      "path": "compiler_logs/Zeta23/CCM/OriginalDetectorPaddedFinitePositivity.log",
+      "bytes": 876,
+      "sha256": "f6d08ecc4f0ecd97ed6ab1207be47c9992d43ce201655653aa9e340e7bf6cfb8"
+    },
+    {
+      "path": "compiler_logs/Zeta23/CCM/OriginalDetectorPaddedFiniteWindowBoundaryFlat.log",
+      "bytes": 662,
+      "sha256": "4b9dbfeb7c268fe3efbd72f08ba76ab078da92b02f26b3966a995905a5568f75"
+    },
+    {
+      "path": "compiler_logs/Zeta23/CCM/OriginalDetectorPaddedFiniteWindowHigherFlat.log",
+      "bytes": 566,
+      "sha256": "72bb72f4dec4dcc5360d16d97e2c8650be33617de2785df1298a756af26a0699"
+    },
+    {
+      "path": "compiler_logs/Zeta23/CCM/OriginalDetectorPaddedFiniteWindowImage.log",
+      "bytes": 776,
+      "sha256": "869025e02af83ef65d3e7ff8d944cff70a42be4d8e2c3e4348e8cec5b049d85a"
+    },
+    {
+      "path": "compiler_logs/Zeta23/CCM/OriginalDetectorPaddedFiniteWindowImageAsymptotics.log",
+      "bytes": 285,
+      "sha256": "b74df8dbd2d05e75ec9779a094c7758838ef9aeae6b3643726570e06f460036d"
+    },
+    {
+      "path": "compiler_logs/Zeta23/CCM/OriginalDetectorPaddedFiniteWindowImageJets.log",
+      "bytes": 517,
+      "sha256": "216aa8e36864eed0df5fbf038df8590bb80bc2a90dd27782992d8bf5d65c34f8"
+    },
+    {
+      "path": "compiler_logs/Zeta23/CCM/OriginalDetectorPaddedFourierQuantitativeRates.log",
+      "bytes": 429,
+      "sha256": "fb473d5b50a26c807e582b1b9c7da7ad4e94e64ede689e71993a871a37943b13"
+    },
+    {
+      "path": "compiler_logs/Zeta23/CCM/OriginalDetectorPaddedPhaseQuantitativeRates.log",
+      "bytes": 395,
+      "sha256": "45973d8ae248799233e4c5d66b177459131a297c2418042cc59f59d9365a8f0c"
+    },
+    {
+      "path": "compiler_logs/Zeta23/CCM/OriginalDetectorPaddedRetainedSelection.log",
+      "bytes": 253,
+      "sha256": "2d2afe753510ff8804d21742f5b82eb946b8b4968aed298751515e015d60a8cd"
+    },
+    {
+      "path": "compiler_logs/Zeta23/CCM/OriginalDetectorPositiveFourierPadding.log",
+      "bytes": 1240,
+      "sha256": "e31b18610ef72d29c901c58fa2f5a456989b0665d3cdf086d7c04bb6816d47fc"
+    },
+    {
+      "path": "compiler_logs/Zeta23/CCM/OriginalDetectorPositiveFourierPaddingReal.log",
+      "bytes": 496,
+      "sha256": "793338cdd612758c357b7803e4fdd49b96e31143b7f20570a7f9efbc2dfd2912"
+    },
+    {
+      "path": "compiler_logs/Zeta23/CCM/OriginalSincCompactPotential.log",
+      "bytes": 828,
+      "sha256": "4646bea66bbabfa54d8298ddd75aa101ab992892f615019496af00cd902b8942"
+    },
+    {
+      "path": "compiler_logs/Zeta23/CCM/PoleNeutralCompactH2.log",
+      "bytes": 402,
+      "sha256": "dd6591b634148917d30cf6e965709150437f63b36f3163d5ef8006979b008e5d"
+    },
+    {
+      "path": "compiler_logs/Zeta23/CCM/PoleNeutralCompactH2Uniqueness.log",
+      "bytes": 1377,
+      "sha256": "db9c9bc8cd0ababb160765838f6ac0f0d15e1e1164d729dd27993e7bd6012059"
+    },
+    {
+      "path": "compiler_logs/Zeta23/CCM/PoleNeutralCompactInverse.log",
+      "bytes": 676,
+      "sha256": "dde573b2e53106a2af332a680cad2ab4a7dd2e44f5bf29c32b6cb6be2f3054cc"
+    },
+    {
+      "path": "compiler_logs/Zeta23/CCM/PoleNeutralCompactInverseCore.log",
+      "bytes": 3286,
+      "sha256": "1fa29b90ad1e5b12b22d44ca2cb63ff8f427535f443c3ca584b3970d6079906c"
+    },
+    {
+      "path": "compiler_logs/Zeta23/CCM/PoleNeutralCompactInverseL2Bound.log",
+      "bytes": 691,
+      "sha256": "64375260941bb42d21f4314129c91bb3802dce11e35ae1c66e87f216938834b7"
+    },
+    {
+      "path": "compiler_logs/Zeta23/CCM/PoleNeutralCompactL2Energy.log",
+      "bytes": 367,
+      "sha256": "48a3faf5b3005b149da9d97a1350eb5a3c79cb4957622d953a633c6a6e16ec50"
+    },
+    {
+      "path": "compiler_logs/Zeta23/CCM/PoleNeutralCompactL2Regularity.log",
+      "bytes": 3464,
+      "sha256": "6e6ad4d8d8070658801f9e161aee471165f15e2650ff3cedcdd9201a1a6a7192"
+    },
+    {
+      "path": "compiler_logs/Zeta23/CCM/PoleNeutralUniqueness.log",
+      "bytes": 1249,
+      "sha256": "5208f8bf0459cbcdf76ea5587d984060fd7004b67574dee7d6c73cced33f0432"
+    },
+    {
+      "path": "compiler_logs/Zeta23/CCM/Step123PrimeSeam.log",
+      "bytes": 211,
+      "sha256": "63454339931a5a17e4d808ef04c313abcf3639b71155b5299d89c9a0b01db567"
+    },
+    {
+      "path": "compiler_logs/Zeta23/ExceptionalZero/NativeActualKernelZeroJets.log",
+      "bytes": 623,
+      "sha256": "6f0db25ae3687ee48be050e5164b41340ebff8e19e8e643d1b84c16604defb7b"
+    },
+    {
+      "path": "compiler_logs/Zeta23/ExceptionalZero/NativeOriginalSourceLaplaceVisibility.log",
+      "bytes": 379,
+      "sha256": "87a211e59d02fd770027eac4bfc5f269af5b2d9e6c5e91e7021e6d2366b29f4e"
+    },
+    {
+      "path": "compiler_logs/Zeta23/ExceptionalZero/NativeRangeZeroJetObstruction.log",
+      "bytes": 594,
+      "sha256": "2358ec93a76c9ea5834eeb33c1780c7db6df5e9e963b59864a92d458e9cfded0"
+    },
+    {
+      "path": "compiler_logs/Zeta23/ExceptionalZero/NativeZeroJetAnalyticFactors.log",
+      "bytes": 1387,
+      "sha256": "8f644894ad2ac842c5d66b6828f6b89d17e2af7e54a2a9c76091e4a5e79cd11a"
+    },
+    {
+      "path": "D2_PRODUCTION_FIRST_COMPLETED_CHILD.json",
+      "bytes": 1039,
+      "sha256": "d518a92fb9ed814fac540086de4046858cf7007c57149ed1daecef83679003b6"
+    },
+    {
+      "path": "D2_PRODUCTION_FIRST_RECEIPTS.json",
+      "bytes": 8847,
+      "sha256": "4c68ac55c762f92a752966704ad357a3c807ebcea07fd64874b06df2c7c4aca3"
+    },
+    {
+      "path": "D2_PRODUCTION_FIRST_RECEIPTS.md",
+      "bytes": 1131,
+      "sha256": "6ef4fea720974d88ac2332766fba2a95a91c5a8efc70efc2e7b0e48db4689be5"
+    },
+    {
+      "path": "final-step123-binding-attempt.log",
+      "bytes": 280,
+      "sha256": "0a9754c52621bf22ca7e7ef847c5071a4af0634de4f54303ba783c61d24d38af"
+    },
+    {
+      "path": "FINAL_MODULE_ACCEPTANCE_AUDIT.md",
+      "bytes": 36019,
+      "sha256": "ff8251f93576307dff4a7aef959d54077a20942494890efd040c008025deb65b"
+    },
+    {
+      "path": "fourier-completion-receipt.json",
+      "bytes": 32751,
+      "sha256": "86b984be3ba5ac87f9749a8c139cefe8dadd030c2b8c6ad00b1008f4e07078d7"
+    },
+    {
+      "path": "FOURIER_FINAL_REVIEW_HANDOVER.md",
+      "bytes": 16144,
+      "sha256": "6df424fb6da4679586a119c935a7573710580364ef65833b4ae6390502072174"
+    },
+    {
+      "path": "native-completion-final-handover.md",
+      "bytes": 15099,
+      "sha256": "e53173410b03af52080371bb86359e548ab1d981423408c2d96c1d7187b1e548"
+    },
+    {
+      "path": "native-m18-m20-final-local-receipt.json",
+      "bytes": 25429,
+      "sha256": "5fa8a1076ae59641ca7473e03ee279d0acf53f55bfaa7d158f08596659ed6054"
+    },
+    {
+      "path": "NATIVE_CONSUMER_CLOSURE_GREEN_2026-10-14.json",
+      "bytes": 27522,
+      "sha256": "561cedb82387fb3857798f1e3f048bc6eb467609b83ae1d970d9fe338b2f5328"
+    },
+    {
+      "path": "padded-completion-receipt.json",
+      "bytes": 40909,
+      "sha256": "dfab1876e5a37b9d575e07336adc1fd8cc832990523ed802f2215e340e9f983e"
+    },
+    {
+      "path": "repair-controls.log",
+      "bytes": 9392,
+      "sha256": "4f87f87114c3fb40f502aa254bd16ea3e67a06157e1fff7ebdf0da7bf8fab8f5"
+    },
+    {
+      "path": "REVIEW_FREEZE_WORKFLOW_D2_RESULT_REVIEW.json",
+      "bytes": 49415,
+      "sha256": "89c3be36a0257f2213614fceda425801dad65195852fd608267878008d75734c"
+    },
+    {
+      "path": "REVIEW_FREEZE_WORKFLOW_FINAL.json",
+      "bytes": 353000,
+      "sha256": "6bcf82ead11db5ba96f7d7ab5530b587cfb8bbb1f26147a63e4f6f658a7fe075"
+    },
+    {
+      "path": "REVIEW_FREEZE_WORKFLOW_FINAL.md",
+      "bytes": 9449,
+      "sha256": "f56edbc7943f282e592f5541d79f38d3ed1900ede6abaa7d0b0204d711f0e342"
+    },
+    {
+      "path": "REVIEW_FREEZE_WORKFLOW_YAML_REVIEW.json",
+      "bytes": 139819,
+      "sha256": "d169c1f3cead7831319498cf1db15a89d298cd6b46d5383fde127c823881b916"
+    },
+    {
+      "path": "unexecuted_workflow_candidates/README.md",
+      "bytes": 538,
+      "sha256": "b8bab9f1217096b61b88475c16c1d8497406cd8637efceabb88c6a313d1533a6"
+    },
+    {
+      "path": "unexecuted_workflow_candidates/rhrc_materialize_derived_state.yml.txt",
+      "bytes": 3141,
+      "sha256": "1cf9fe3eb8b510ab65b2de28fe41f42be9b1a19af5fe7d4c9b7f3561d253d3ca"
+    },
+    {
+      "path": "unexecuted_workflow_candidates/rhrc_post290_k3_replay_shards.yml.txt",
+      "bytes": 6850,
+      "sha256": "4e29081e2328e1319ecd547186dc19d0ea7206f85d200792014a6dc37ef6cc4c"
+    },
+    {
+      "path": "unfinished_lean_candidates/OriginalDetectorPaddedFinitePhysicalUnitBridge.lean.txt",
+      "bytes": 2568,
+      "sha256": "deadb5d96bd93565b262c7cc5324ba24866978f3e0774c8c5f2ee9c1419afad4"
+    },
+    {
+      "path": "unfinished_lean_candidates/README.md",
+      "bytes": 631,
+      "sha256": "43252e31ac9cde1ac26a1132066464a1b5be5db9f076eaacaaec5c8297bd0c83"
+    },
+    {
+      "path": "WORKFLOW_REFRESH_FINAL_HANDOVER_2026-10-14.md",
+      "bytes": 22004,
+      "sha256": "56f7fb3d6f5e34fb6ef850076e0cc9608f3be101b4d4e9409c13f8a56d894f60"
+    }
+  ]
+}

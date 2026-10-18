@@ -1,0 +1,4 @@
+'Zeta23.CCM.exists_nativeOriginalDetectorPaddedUnit_depth' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.exists_originalDetectorPaddedPhase_admissible_retained_state' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

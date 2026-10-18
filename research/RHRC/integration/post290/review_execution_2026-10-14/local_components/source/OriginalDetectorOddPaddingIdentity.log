@@ -1,0 +1,5 @@
+'Zeta23.CCM.originalDetectorOddPadding_P_image_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.originalDetectorOddPadding_coefficients_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.originalDetectorOddPadding_mass_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.originalDetectorOddPadding_unitVector_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.originalDetectorOddPadding_normalizedPhysical_eq' depends on axioms: [propext, Classical.choice, Quot.sound]

@@ -1,0 +1,6 @@
+'Zeta23.CCM.nativeCausalExponentialWitness_mem_adjointKernel_of_analyticOrder' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.CCM.nativeCompletedInput_not_mem_rangeClosure_of_analyticOrders' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

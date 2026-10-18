@@ -1,0 +1,8 @@
+'Zeta23.CCM.finitePhysicalSynthesis_smul' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.finitePhysicalSynthesis_energy' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.finiteNormalizedCoefficients_norm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.finitePhysicalSynthesis_normalized' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.finitePhysicalSynthesis_normalized_energy' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.finitePhysicalSynthesis_cancel_original_normalization' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

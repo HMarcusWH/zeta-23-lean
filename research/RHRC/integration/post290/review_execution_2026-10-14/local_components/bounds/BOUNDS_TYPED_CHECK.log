@@ -1,0 +1,49 @@
+Zeta23.CCM.nativePaperFT_parseval_of_integrable_sq {f : ℝ → ℂ} (hf : Continuous f) (hfc : HasCompactSupport f)
+  (hF : MeasureTheory.Integrable (fun ξ ↦ ‖Zeta23.paperFT f ↑ξ‖ ^ 2) MeasureTheory.volume) :
+  ∫ (ξ : ℝ), ‖Zeta23.paperFT f ↑ξ‖ ^ 2 = 2 * Real.pi * ∫ (x : ℝ), ‖f x‖ ^ 2
+Zeta23.CCM.nativePaperFT_weighted_sq_integrable {f : ℝ → ℂ} (hf : ContDiff ℝ 2 f) (hfc : HasCompactSupport f) :
+  MeasureTheory.Integrable (fun ξ ↦ (1 + ξ ^ 2) * ‖Zeta23.paperFT f ↑ξ‖ ^ 2) MeasureTheory.volume
+Zeta23.CCM.nativePaperFT_deriv_sq_integrable {f : ℝ → ℂ} (hf : ContDiff ℝ 2 f) (hfc : HasCompactSupport f) :
+  MeasureTheory.Integrable (fun ξ ↦ ‖Zeta23.paperFT (deriv f) ↑ξ‖ ^ 2) MeasureTheory.volume
+Zeta23.CCM.nativePaperFT_H1_energy {f : ℝ → ℂ} (hf : ContDiff ℝ 2 f) (hfc : HasCompactSupport f) :
+  ∫ (ξ : ℝ), (1 + ξ ^ 2) * ‖Zeta23.paperFT f ↑ξ‖ ^ 2 = 2 * Real.pi * Zeta23.CCM.nativePhysicalH1Norm f ^ 2
+Zeta23.CCM.nativePaperFT_H1_mixed_bound {f v : ℝ → ℂ} (hf : ContDiff ℝ 2 f) (hv : ContDiff ℝ 2 v)
+  (hfc : HasCompactSupport f) (hvc : HasCompactSupport v) :
+  MeasureTheory.Integrable (fun ξ ↦ (1 + ξ ^ 2) * ‖Zeta23.paperFT f ↑ξ‖ * ‖Zeta23.paperFT v ↑ξ‖) MeasureTheory.volume ∧
+    ∫ (ξ : ℝ), (1 + ξ ^ 2) * ‖Zeta23.paperFT f ↑ξ‖ * ‖Zeta23.paperFT v ↑ξ‖ ≤
+      2 * Real.pi * Zeta23.CCM.nativePhysicalH1Norm f * Zeta23.CCM.nativePhysicalH1Norm v
+Zeta23.CCM.nativePrimeMass_finite_bound {L : ℝ} (hL : 0 ≤ L) :
+  ∑ n ∈ Finset.range ⌊Real.exp L⌋₊, Zeta23.CCM.nativePrimeCoefficient (n + 1) ≤ 2 * (1 + L) * Real.exp (L / 2)
+Zeta23.CCM.nativeWeilArchResponse_bilinear_bound :
+  ∃ C_A,
+    0 < C_A ∧
+      ∀ (f v : ℝ → ℂ),
+        ContDiff ℝ 2 f →
+          ContDiff ℝ 2 v →
+            HasCompactSupport f →
+              HasCompactSupport v →
+                ‖∫ (x : ℝ), Zeta23.CCM.nativeWeilArchResponse f x * (starRingEnd ℂ) (v x)‖ ≤
+                  C_A * Zeta23.CCM.nativePhysicalH1Norm f * Zeta23.CCM.nativePhysicalH1Norm v
+Zeta23.CCM.nativeWeilPoleResponse_bilinear_bound {f v : ℝ → ℂ} {L : ℝ} (hL : 0 ≤ L) (hf : Continuous f)
+  (hv : Continuous v) (hfs : tsupport f ⊆ Set.Icc 0 L) (hvs : tsupport v ⊆ Set.Icc 0 L) :
+  ‖∫ (x : ℝ), Zeta23.CCM.nativeWeilPoleResponse f x * (starRingEnd ℂ) (v x)‖ ≤
+    2 * L * Real.exp (L / 2) * Zeta23.CCM.nativePhysicalH1Norm f * Zeta23.CCM.nativePhysicalH1Norm v
+Zeta23.CCM.nativeWeilPrimeCorrelation_bilinear_bound {f v : ℝ → ℂ} {L : ℝ} (hL : 0 ≤ L) (hf : Continuous f)
+  (hv : Continuous v) (hfs : tsupport f ⊆ Set.Icc 0 L) (hvs : tsupport v ⊆ Set.Icc 0 L) :
+  ‖∑' (n : ℕ),
+        ↑(Zeta23.CCM.nativePrimeCoefficient n) *
+          (Zeta23.EF.weilTest f v (Real.log ↑n) + Zeta23.EF.weilTest f v (-Real.log ↑n))‖ ≤
+    4 * (1 + L) * Real.exp (L / 2) * Zeta23.CCM.nativePhysicalH1Norm f * Zeta23.CCM.nativePhysicalH1Norm v
+Zeta23.CCM.nativeWeilResponse_bilinear_bound :
+  ∃ C_Q,
+    0 < C_Q ∧
+      ∀ (L : ℝ) (f v : ℝ → ℂ),
+        0 ≤ L →
+          ContDiff ℝ 2 f →
+            ContDiff ℝ 2 v →
+              tsupport f ⊆ Set.Icc 0 L →
+                tsupport v ⊆ Set.Icc 0 L →
+                  ‖Zeta23.zetaZeroConfig.W f v‖ ≤
+                    C_Q * (1 + L) * Real.exp (L / 2) * Zeta23.CCM.nativePhysicalH1Norm f *
+                      Zeta23.CCM.nativePhysicalH1Norm v
+'Zeta23.CCM.nativeWeilResponse_bilinear_bound' depends on axioms: [propext, Classical.choice, Quot.sound]

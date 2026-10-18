@@ -1,0 +1,72 @@
+name: PR292 prerequisite workflow scientific harvest intake (manual)
+
+# Raw GitHub dispositions first. A reviewed artifact additionally requires
+# a non-source-author GitHub approval of the exact reviewed job digest.
+on:
+  workflow_dispatch:
+    inputs:
+      reviewed_harvest_gzip_b64:
+        description: "Optional gzip+base64 human-reviewed workflow harvest signed at the exact PR head"
+        type: string
+        required: false
+permissions:
+  contents: read
+  actions: read
+  pull-requests: read
+jobs:
+  raw-prerequisites:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Read every prerequisite job and all approved D2 attempts; never rerun
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "${{ github.sha }}"
+          mkdir -p /tmp/pr292-raw
+          python research/RHRC/routes/R003_ccm_bridge/post290/harvest_workflows.py \
+            --head "${{ github.sha }}" \
+            --approved-d2-run-id 38569316691 \
+            --review-phase PRE_RELEASE_PREREQUISITES \
+            --out /tmp/pr292-raw/RAW_WORKFLOW_HARVEST.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pr292-raw-prerequisite-harvest-${{ github.sha }}
+          path: /tmp/pr292-raw/
+          if-no-files-found: error
+  verify-reviewed-harvest:
+    needs: raw-prerequisites
+    if: ${{ needs.raw-prerequisites.result == 'success' && inputs.reviewed_harvest_gzip_b64 != '' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - uses: actions/download-artifact@v4
+        with:
+          name: pr292-raw-prerequisite-harvest-${{ github.sha }}
+          path: /tmp/pr292-raw
+      - name: Require actual GitHub jobs and signed independent scientific dispositions
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          python research/RHRC/routes/R003_ccm_bridge/post290/verify_workflow_harvest.py \
+            --raw /tmp/pr292-raw/RAW_WORKFLOW_HARVEST.json \
+            --out-dir /tmp/pr292-reviewed
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pr292-reviewed-prerequisite-harvest-${{ github.sha }}
+          path: /tmp/pr292-reviewed/
+          if-no-files-found: error

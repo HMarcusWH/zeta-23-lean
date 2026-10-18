@@ -1,0 +1,12 @@
+'Zeta23.CCM.originalDetectorPaddedFinitePhasePlane_inner_eq_Gram' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.CCM.originalDetectorPaddedFinitePhasePlane_inner_eq_nativeEnergy' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.CCM.originalDetectorPaddedFinitePhasePlane_rayleigh_identity' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.CCM.originalDetectorPaddedFinitePhaseVector_nativeEnergy' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

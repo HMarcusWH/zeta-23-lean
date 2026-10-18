@@ -1,0 +1,7 @@
+'Zeta23.CCM.nativeCausalLaplaceMoment_integrable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.nativeCausalExponentialWitness_inner_eq_laplaceMoment' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.CCM.nativeCausalExponentialWitness_inner_completedInput' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

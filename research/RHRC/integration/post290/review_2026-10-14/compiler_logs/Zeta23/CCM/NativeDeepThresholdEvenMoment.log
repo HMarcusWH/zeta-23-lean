@@ -1,0 +1,6 @@
+'Zeta23.CCM.nativeDeepThreshold_even_ground_momentFour_ne_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.CCM.nativeDeepThreshold_strictEven_ground_source_ne_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

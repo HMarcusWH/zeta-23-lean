@@ -1,0 +1,18 @@
+Zeta23\ExceptionalZero\NativeZeroJetAnalyticFactors.lean:64:4: warning: Try `simp at hpos` instead of `simpa using hpos`
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+Zeta23\ExceptionalZero\NativeZeroJetAnalyticFactors.lean:72:44: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+'Zeta23.ExceptionalZero.nativeZeroMultiplicity_order' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.ExceptionalZero.nativeZeroMultiplicity_deriv_order' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.ExceptionalZero.nativeOriginalSourceLaplace_analyticAt' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.ExceptionalZero.nativeCompletionRationalMultiplier_at_zero_ne_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.ExceptionalZero.nativeZeroJetKernelMultiplier_order' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.ExceptionalZero.nativeZeroJetInputMultiplier_order' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.ExceptionalZero.nativeZeroJetInputMultiplier_jet' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.ExceptionalZero.nativeZeroJetSourceFactor_ne_zero' depends on axioms: [propext, Classical.choice, Quot.sound]

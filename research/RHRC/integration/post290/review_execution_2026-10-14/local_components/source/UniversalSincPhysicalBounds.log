@@ -1,0 +1,21 @@
+Zeta23/CCM/UniversalSincPhysicalBounds.lean:41:28: warning: 'ring' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+Zeta23/CCM/UniversalSincPhysicalBounds.lean:41:28: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+Zeta23/CCM/UniversalSincPhysicalBounds.lean:90:12: warning: 'ring' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+Zeta23/CCM/UniversalSincPhysicalBounds.lean:90:12: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+'Zeta23.CCM.universalSincProduct_scale' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.universalSincSource_complex_scale' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.universalSincSource_scale' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.universalSincSource_iteratedDeriv_scale' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.universalSincSource_iteratedDeriv_energy_scale' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.universalSincKernel_eq_real' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.poleKilled_universalSincSource_norm_sq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.universalSincSource_gevrey_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.universalSincProduct_decay' depends on axioms: [propext, Classical.choice, Quot.sound]

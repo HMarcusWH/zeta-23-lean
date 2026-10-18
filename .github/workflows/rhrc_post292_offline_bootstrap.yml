@@ -1,0 +1,86 @@
+name: PR292 pinned offline compiler transport
+
+# Temporary transport of already-produced public source/compiler artifacts.
+# Not a proof/release gate; no new compilation, D2 search, or repository write.
+on:
+  push:
+    branches: [research/post290-step123-output]
+    paths: [.github/workflows/rhrc_post292_offline_bootstrap.yml]
+permissions:
+  contents: read
+  actions: read
+jobs:
+  split-existing-artifact:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - kind: toolchain
+            sha256: 1e2a4a05756e02dbae6142018af989ad347d393ba498dce3d6312cc3b1a78d6d
+          - kind: dependencies
+            sha256: b9ac92c084bfa755f0f356ab0896518da217a4e9bca5a6ddcbfa482382a4cd0d
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ github.token }}
+          run-id: 38620467019
+          name: pr292-offline-${{ matrix.kind }}-c3dcb46e1a359af9619fe49ea1db9c9a81c73ddf
+          path: /tmp/pr292-transport
+      - name: Verify original bytes and split for the 512 MiB connector ceiling
+        env:
+          KIND: ${{ matrix.kind }}
+          EXPECTED_SHA: ${{ matrix.sha256 }}
+        run: |
+          set -euo pipefail
+          cd /tmp/pr292-transport
+          printf '%s  %s.tar.zst\n' "$EXPECTED_SHA" "$KIND" | sha256sum --check -
+          split -b 480000000 -d -a 2 "$KIND.tar.zst" "$KIND.part-"
+          sha256sum "$KIND".part-* > "$KIND.CHUNKS_SHA256"
+          printf '%s  %s.tar.zst\n' "$EXPECTED_SHA" "$KIND" > "$KIND.ORIGINAL_SHA256"
+          ls -lh "$KIND".part-*
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pr292-${{ matrix.kind }}-part-00
+          path: /tmp/pr292-transport/${{ matrix.kind }}.part-00
+          compression-level: 0
+          retention-days: 3
+          if-no-files-found: error
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pr292-${{ matrix.kind }}-part-01
+          path: /tmp/pr292-transport/${{ matrix.kind }}.part-01
+          compression-level: 0
+          retention-days: 3
+          if-no-files-found: error
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pr292-${{ matrix.kind }}-part-02
+          path: /tmp/pr292-transport/${{ matrix.kind }}.part-02
+          compression-level: 0
+          retention-days: 3
+          if-no-files-found: ignore
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pr292-${{ matrix.kind }}-part-03
+          path: /tmp/pr292-transport/${{ matrix.kind }}.part-03
+          compression-level: 0
+          retention-days: 3
+          if-no-files-found: ignore
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pr292-${{ matrix.kind }}-part-04
+          path: /tmp/pr292-transport/${{ matrix.kind }}.part-04
+          compression-level: 0
+          retention-days: 3
+          if-no-files-found: ignore
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pr292-${{ matrix.kind }}-chunk-manifest
+          path: |
+            /tmp/pr292-transport/${{ matrix.kind }}.CHUNKS_SHA256
+            /tmp/pr292-transport/${{ matrix.kind }}.ORIGINAL_SHA256
+          compression-level: 0
+          retention-days: 3
+          if-no-files-found: error

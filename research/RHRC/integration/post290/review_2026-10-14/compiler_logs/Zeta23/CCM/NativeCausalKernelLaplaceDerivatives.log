@@ -1,0 +1,10 @@
+'Zeta23.CCM.nativeDampedCompletionKernel_complex_memLp_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.nativeDampedCompletionKernelL2_coeFn' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.nativeCompletionKernelLaplaceMoment_eq_causalMoment' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.CCM.nativeCompletionKernelLaplace_analyticAt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.nativeCompletionKernelLaplace_iteratedDeriv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.nativeCompletionKernelLaplaceMoment_vanishes_below_analyticOrder' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

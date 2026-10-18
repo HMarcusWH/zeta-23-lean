@@ -1,0 +1,28 @@
+Zeta23/CCM/OriginalDetectorPaddedFinitePhaseSymmetry.lean:29:6: warning: `Matrix.toEuclideanLin_apply_piLp_toLp` has been deprecated: Use `Matrix.toLpLin_toLp` instead
+
+Note: The updated constant has a different type:
+  ∀ {m : Type u_1} {n : Type u_2} {R : Type u_4} [inst : Fintype n] [inst_1 : DecidableEq n] [inst_2 : CommRing R]
+    (p q : ENNReal) (A : Matrix m n R) (x : n → R), ((toLpLin p q) A) (WithLp.toLp p x) = WithLp.toLp q ((toLin' A) x)
+instead of
+  ∀ {𝕜 : Type u_3} [inst : RCLike 𝕜] {m : Type u_7} {n : Type u_8} [inst_1 : Fintype n] [inst_2 : DecidableEq n]
+    (M : Matrix m n 𝕜) (v : n → 𝕜), (toEuclideanLin M) (WithLp.toLp 2 v) = WithLp.toLp 2 (M *ᵥ v)
+Zeta23/CCM/OriginalDetectorPaddedFinitePhaseSymmetry.lean:66:33: warning: `Matrix.toEuclideanLin_apply_piLp_toLp` has been deprecated: Use `Matrix.toLpLin_toLp` instead
+
+Note: The updated constant has a different type:
+  ∀ {m : Type u_1} {n : Type u_2} {R : Type u_4} [inst : Fintype n] [inst_1 : DecidableEq n] [inst_2 : CommRing R]
+    (p q : ENNReal) (A : Matrix m n R) (x : n → R), ((toLpLin p q) A) (WithLp.toLp p x) = WithLp.toLp q ((toLin' A) x)
+instead of
+  ∀ {𝕜 : Type u_3} [inst : RCLike 𝕜] {m : Type u_7} {n : Type u_8} [inst_1 : Fintype n] [inst_2 : DecidableEq n]
+    (M : Matrix m n 𝕜) (v : n → 𝕜), (toEuclideanLin M) (WithLp.toLp 2 v) = WithLp.toLp 2 (M *ᵥ v)
+Zeta23/CCM/OriginalDetectorPaddedFinitePhaseSymmetry.lean:76:33: warning: `Matrix.toEuclideanLin_apply_piLp_toLp` has been deprecated: Use `Matrix.toLpLin_toLp` instead
+
+Note: The updated constant has a different type:
+  ∀ {m : Type u_1} {n : Type u_2} {R : Type u_4} [inst : Fintype n] [inst_1 : DecidableEq n] [inst_2 : CommRing R]
+    (p q : ENNReal) (A : Matrix m n R) (x : n → R), ((toLpLin p q) A) (WithLp.toLp p x) = WithLp.toLp q ((toLin' A) x)
+instead of
+  ∀ {𝕜 : Type u_3} [inst : RCLike 𝕜] {m : Type u_7} {n : Type u_8} [inst_1 : Fintype n] [inst_2 : DecidableEq n]
+    (M : Matrix m n 𝕜) (v : n → 𝕜), (toEuclideanLin M) (WithLp.toLp 2 v) = WithLp.toLp 2 (M *ᵥ v)
+'Zeta23.CCM.originalDetectorPaddedFinitePhaseGram_circulant' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.originalDetectorPaddedFinitePhaseEnergy_circulant' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

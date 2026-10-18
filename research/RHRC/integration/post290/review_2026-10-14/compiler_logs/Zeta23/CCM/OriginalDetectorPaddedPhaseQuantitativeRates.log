@@ -1,0 +1,7 @@
+'Zeta23.CCM.originalDetectorPaddedMassBudget_mul_quarticWeight_tendsto_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.CCM.originalDetectorPaddedWeilBudget_mul_quarticWeight_tendsto_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.CCM.eventually_lt_retained_quartic_envelope' depends on axioms: [propext, Classical.choice, Quot.sound]

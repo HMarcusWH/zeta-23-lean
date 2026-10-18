@@ -137,4 +137,68 @@ public def exportDependencies (roots : Array Name) : CommandElabM Unit := do
     scheduled := scheduled.insert root
   visit env roots.toList {} {} scheduled
 
+
+/--
+Load the complete source-only root inventory from a canonical UTF-8 two-column
+TSV file, instead of elaborating thousands of Lean root literals inside one
+run_cmd. Every line is exactFullName<TAB>definingModule followed by LF.
+
+Resolve strings against the imported compiler environment itself: pretty-
+printed Lean names cannot in general be reconstructed safely by parsing text.
+Reject absent, ambiguous, wrong-kind, private or wrong-module roots.
+
+This reader is audit-only, never a new theorem or axiom.
+-/
+public def exportDependenciesFile (path : String) : CommandElabM Unit := do
+  let fileText ← liftIO <| IO.FS.readFile path
+  let env ← getEnv
+  let mut index : Std.HashMap String (Array Name) := {}
+  for (decl, _) in env.constants do
+    match moduleOf? env decl with
+    | some definingModule =>
+        if isProjectLocalModule (some definingModule) then
+          let key := decl.toString ++ "\u001f" ++ definingModule.toString
+          let previous := index.getD key #[]
+          index := index.insert key (previous.push decl)
+    | none => pure ()
+  let mut roots : Array Name := #[]
+  let mut seen : NameHashSet := {}
+  let mut sawTerminalNewline := false
+  for line in fileText.splitOn "\n" do
+    if line.isEmpty then
+      if sawTerminalNewline then
+        throwError "RHKG source-only root file contains an extra empty line"
+      sawTerminalNewline := true
+    else
+      if sawTerminalNewline then
+        throwError "RHKG source-only root file contains an internal empty line"
+      match line.splitOn "\t" with
+      | [declText, moduleText] =>
+          if declText.isEmpty || moduleText.isEmpty then
+            throwError "RHKG source-only root file has empty declaration/module"
+          let key := declText ++ "\u001f" ++ moduleText
+          let candidateNames := index.getD key #[]
+          if candidateNames.size != 1 then
+            throwError "RHKG source-only root is absent or ambiguous: {declText} in {moduleText} ({candidateNames.size} compiler matches)"
+          let decl := candidateNames[0]!
+          if seen.contains decl then
+            throwError "RHKG source-only root duplicated: {decl}"
+          let some info := env.find? decl
+            | throwError "RHKG source-only root absent from environment: {decl}"
+          if kindString info != "THEOREM" then
+            throwError "RHKG source-only root is not a theorem: {decl}"
+          if decl.isInternal || isPrivateName decl then
+            throwError "RHKG source-only root is private/internal: {decl}"
+          roots := roots.push decl
+          seen := seen.insert decl
+      | _ =>
+          throwError "RHKG source-only root file has invalid tab-separated row"
+  if !sawTerminalNewline then
+    throwError "RHKG source-only root file has no canonical final newline"
+  if roots.isEmpty then
+    throwError "RHKG source-only root inventory is empty"
+  liftIO <| IO.eprintln s!"RHKG_ROOT_INVENTORY_LOADED\t{roots.size}"
+  -- One traversal and ONE global visited/scheduled set; no output truncation.
+  exportDependencies roots
+
 end Zeta23.RHRC

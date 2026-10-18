@@ -12,6 +12,90 @@ from lean_imports import strip_lean_comments
 
 
 CLOSURE_ROOTS = [
+    Path("Zeta23/ExceptionalZero/UniversalSincSignedExcursions.lean"),
+    Path("Zeta23/CCM/NativeDampedCompletionPrerequisites.lean"),
+    Path("Zeta23/CCM/OriginalDetectorWindowBounds.lean"),
+    Path("Zeta23/CCM/OriginalDetectorDividedLobeBounds.lean"),
+    Path("Zeta23/CCM/OriginalSincDriveCancellation.lean"),
+    Path("Zeta23/CCM/OriginalSincDriveDerivative.lean"),
+    Path("Zeta23/CCM/PoleNeutralCompactInverseL2Bound.lean"),
+    Path("Zeta23/ExceptionalZero/UniversalSincInitialLaplace.lean"),
+    Path("Zeta23/ExceptionalZero/UniversalSincSignedTailTransform.lean"),
+    Path("Zeta23/ExceptionalZero/UniversalSincSignedPoleBound.lean"),
+    Path("Zeta23/CCM/DetectorRetainedSchurState.lean"),
+    Path("Zeta23/ExceptionalZero/PositiveLaplaceAnalytic.lean"),
+    Path("Zeta23/CCM/IsometricDetectorSchur.lean"),
+    Path("Zeta23/CCM/IsometricGroundSchur.lean"),
+    Path("Zeta23/CCM/NativeDetectorSchur.lean"),
+    Path("Zeta23/CCM/NativeSelectedGroundSchur.lean"),
+    Path("Zeta23/CCM/OriginalDetectorFourierPrerequisites.lean"),
+    Path("Zeta23/CCM/OriginalSincWeightedPoleMoments.lean"),
+    Path("Zeta23/CCM/NativeAbelDiscrepancy.lean"),
+    Path("Zeta23/CCM/OriginalSincLogDrive.lean"),
+    Path("Zeta23/ExceptionalZero/PositiveLaplaceBoundary.lean"),
+    Path("Zeta23/ExceptionalZero/UniversalSincSignedLaplace.lean"),
+    Path("Zeta23/CCM/UniversalSincProductMoments.lean"),
+    Path("Zeta23/CCM/UniversalSincInverseGevreyBounds.lean"),
+    Path("Zeta23/ExceptionalZero/PositiveLaplaceTilt.lean"),
+    Path("Zeta23/CCM/NativeDeepThresholdInverseBudgets.lean"),
+    Path("Zeta23/CCM/NativeDeepThresholdSimplicity.lean"),
+    Path("Zeta23/CCM/NativeDeepThresholdEvenMoment.lean"),
+    Path("Zeta23/CCM/UniversalSincDetector.lean"),
+    Path("Zeta23/CCM/UniversalSincDetectorBounds.lean"),
+    Path("Zeta23/CCM/UniversalSincDetectorInverse.lean"),
+    Path("Zeta23/CCM/UniversalSincSourceLaw.lean"),
+    Path("Zeta23/CCM/UniversalSincSourceCharacteristic.lean"),
+    Path("Zeta23/CCM/UniversalSincBoxDensity.lean"),
+    Path("Zeta23/CCM/UniversalSincSourceTail.lean"),
+    Path("Zeta23/CCM/UniversalSincSourceDensity.lean"),
+    Path("Zeta23/CCM/CanonicalPoleExponentialMoments.lean"),
+    Path("Zeta23/CCM/NativePositiveCompletionCells.lean"),
+    Path("Zeta23/CCM/UniversalSincSourceDensityTransform.lean"),
+    Path("Zeta23/CCM/UniversalSincSourceDensityIdentification.lean"),
+    Path("Zeta23/CCM/UniversalSincSourceComplexTransform.lean"),
+    Path("Zeta23/CCM/UniversalSincSourceSymmetry.lean"),
+    Path("Zeta23/CCM/UniversalSincSourceFacade.lean"),
+    Path("Zeta23/CCM/OriginalSincNativeSource.lean"),
+    Path("Zeta23/CCM/OriginalSincNativeMass.lean"),
+    Path("Zeta23/ExceptionalZero/UniversalSincNativeSourceIdentification.lean"),
+    Path("Zeta23/CCM/CanonicalPoleNeutralSimpleEvenTie.lean"),
+    Path("Zeta23/ExceptionalZero/UniversalSincPhysicalDetector.lean"),
+    Path("Zeta23/CCM/CanonicalPoleNeutralCubicWitness.lean"),
+    Path("Zeta23/CCM/CanonicalPoleNeutralSourceMoment.lean"),
+    Path("Zeta23/CCM/CanonicalPoleNeutralIndexRigidity.lean"),
+    Path("Zeta23/CCM/NativePositiveCompletionMass.lean"),
+    Path("Zeta23/CCM/NativePositiveCompletionHead.lean"),
+    Path("Zeta23/CCM/NativePositiveCompletionTail.lean"),
+    Path("Zeta23/CCM/NativePositiveCompletionCertificate.lean"),
+    Path("Zeta23/CCM/CanonicalPoleNeutralShiftedSecular.lean"),
+    Path("Zeta23/CCM/CanonicalPoleNeutralTiePackage.lean"),
+    Path("Zeta23/ExceptionalZero/ZetaRealStripNonvanishing.lean"),
+    Path("Zeta23/CCM/CanonicalPoleNeutralNesting.lean"),
+    Path("Zeta23/CCM/CanonicalPoleNeutralBottomNFlow.lean"),
+    Path("Zeta23/CCM/FiniteBottomGapSelector.lean"),
+    Path("Zeta23/CCM/CanonicalDeepThresholdSelection.lean"),
+    Path("Zeta23/CCM/NativePoleNeutralTrialDepth.lean"),
+    Path("Zeta23/CCM/PoleNeutralCompactInverse.lean"),
+    Path("Zeta23/CCM/NativeDeepThresholdGround.lean"),
+    Path("Zeta23/CCM/PoleNeutralUniqueness.lean"),
+    Path("Zeta23/CCM/OriginalSincCompactPotential.lean"),
+    Path("Zeta23/ExceptionalZero/PositiveMomentSeries.lean"),
+    Path("Zeta23/ExceptionalZero/PositiveMGFContinuation.lean"),
+    Path("Zeta23/ExceptionalZero/UniversalSincCorrelationReal.lean"),
+    Path("Zeta23/CCM/CanonicalPoleNeutralNormals.lean"),
+    Path("Zeta23/CCM/NativeRationalCompletionLaplace.lean"),
+    Path("Zeta23/CCM/CanonicalPoleNeutralCarrier.lean"),
+    Path("Zeta23/CCM/CanonicalPoleNeutralIntertwining.lean"),
+    Path("Zeta23/ExceptionalZero/UniversalSincDetectorVisibility.lean"),
+    Path("Zeta23/CCM/CanonicalPoleNeutralGeometry.lean"),
+    Path("Zeta23/CCM/NativeIntegerPrimeSource.lean"),
+    Path("Zeta23/CCM/NativePositiveCompletion.lean"),
+    Path("Zeta23/CCM/NativeIntegerPrimeField.lean"),
+    Path("Zeta23/CCM/NativeIntegerPrimeConvolution.lean"),
+    Path("Zeta23/CCM/NativeFloorCompletionSource.lean"),
+    Path("Zeta23/CCM/CanonicalTrialResidualChannels.lean"),
+    Path("Zeta23/CCM/Step123PrimeSeam.lean"),
+    Path("Zeta23/RHRC/Step123OutputBindings.lean"),
     Path("Zeta23/CCM/SourceContraction.lean"),
     Path("Zeta23/CCM/SourceContractionLocalized.lean"),
     Path("Zeta23/CCM/CanonicalArchUpperBound.lean"),
@@ -105,13 +189,15 @@ def promoted_roots() -> list[Path]:
     roots: list[Path] = []
     for root in (Path("Zeta23/CCM"), Path("Zeta23/ExceptionalZero"), Path("Zeta23/Spectral")):
         roots.extend(sorted(root.rglob("*.lean")))
-    for root_file in (Path("Zeta23/CCM.lean"), Path("Zeta23/ExceptionalZero.lean"), Path("Zeta23/Spectral.lean")):
+    for root_file in (Path("Zeta23/CCM.lean"), Path("Zeta23/ExceptionalZero.lean"), Path("Zeta23/Spectral.lean"), Path("Zeta23/RHRC/Step123OutputBindings.lean")):
         if root_file.is_file():
             roots.append(root_file)
     return roots
 
 
 def check(paths: list[Path]) -> None:
+    if not paths:
+        raise SystemExit("CLOSURE PROOF-ESCAPE CHECK: FAIL\nempty scan; run from the repository root")
     missing = [str(path) for path in paths if not path.is_file()]
     if missing:
         raise SystemExit("CLOSURE PROOF-ESCAPE CHECK: FAIL\nmissing files:\n" + "\n".join(missing))

@@ -1,0 +1,19 @@
+{
+  "scope": "All included files except this manifest",
+  "files": {
+    "BUILD_MANIFEST.json": "1a36cb3ff2cb39017bdb34cb4f56f831f40c611472f840af8b3dce9dafa71760",
+    "BUILD_SPEC.md": "80118444d999c7f246c1dc6e7d092ad4ca85fd80e10b8bfd14fe4b281cf0d49b",
+    "IMPLEMENTATION_HANDOFF.md": "a885f31698ed1daecce45e75bd45856c1f326b9d2a8ab4a140cbe4745f85ad2b",
+    "OUTPUT_CONTRACT.schema.json": "d393996f8203d2943c035888573f59e0e6ce90f1ab44054a37fba8d41c8b3e1d",
+    "README.md": "ce8e715ede1b746518f831ca21e07f0dd54eceb5b2a2caf0515edb368b2b6a32",
+    "RESEARCH_PROTOCOL.md": "521e558e5c699cae41ba863516baf132ed5b9cb5dcde2e037425374bb68dc246",
+    "SOURCE_REGISTER.json": "79daf7e59865023aa1f99174ae5bc2645204f4ea08440ebf78ff1e4a38fd0ba8",
+    "SPEC_QA.json": "63e83ec200338c1b726f3c6d010353b29d3fb5fe0aa3f64a684cf9757b774191",
+    "STEP4_CUTS.json": "8ed47b7e14cb659c30b710c2a412ec570e9ec7dbb9bf84fb590b938d447ead42",
+    "inputs/ABC_Step4_Research_Package_2026-10-13(1).zip": "469c8eff0613603af82c5e334c23539cb6ef910876f7cb0502a71a607c326abf",
+    "inputs/RH_Constructive_Continuation_2026-10-13(2).zip": "0c3767e427fa003a34db90cfc40c4c4f60c8be8603d60f54fe3686a2ab248f85",
+    "inputs/RH_Post290_PoleNeutral_Research_2026-10-13.zip": "9c2964a7731b583a95d220c6d54aa4214089336c249aedec2f9fb182b0b1ef82",
+    "inputs/Step4_Original_Detector_Research_Package_2026-10-13(1).zip": "5d7e60fe7a0f35766c948cb9a5a7d72498c9f37eef34a5c477c1461fecc6bec5",
+    "validate_spec.py": "3b986199fbdd1cd4786a6dde6912f9cd932288aacff5ea3df31af01dc7c7cf92"
+  }
+}

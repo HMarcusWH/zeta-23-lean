@@ -1,0 +1,20 @@
+'Zeta23.CCM.nativeOriginalDampedPrimeField_continuous' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.nativeOriginalDampedPrimeField_norm_sq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.nativeOriginalDampedPrimeField_memLp_iff_halfLineIntegral' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.CCM.nativeOriginalPrimeField_allDampedL2_iff_integral' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.CCM.nativeInput_allRangeClosure_of_originalPrimeField_allDampedL2' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.ExceptionalZero.riemannHypothesis_of_nativeInput_allRangeClosure' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.ExceptionalZero.riemannHypothesis_of_originalPrimeField_allDampedL2' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.ExceptionalZero.riemannHypothesis_of_originalPrimeField_allDampedIntegral' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

@@ -1,0 +1,6 @@
+'Zeta23.CCM.originalDetectorPaddedFinitePoleImage_endpoint_jets_lt_six' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.CCM.originalDetectorPaddedFinitePoleImage_hard_contDiff_four' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

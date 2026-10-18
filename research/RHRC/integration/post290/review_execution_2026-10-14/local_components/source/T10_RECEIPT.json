@@ -1,0 +1,84 @@
+{
+  "schema": "POST292_T10_LOCAL_GREEN_1",
+  "task": "T10",
+  "status": "GREEN_LOCAL_EXACT",
+  "review_pin_head": "efa6ceea7bba2b34ff453a70a32a0800fee98b82",
+  "observed_checkpoint_head": "77407a489d3a600e8219122ade03acb3f6b2d4db",
+  "observed_checkpoint_tree": "7bb16ed0c7d9fb0942f465a5cc5ea3cb2e1517eb",
+  "source_state": "SOURCE_HASH_BOUND_LOCAL_WORKING_TREE_CHECK_NOT_FINAL_COMMITTED_TREE_OR_CI",
+  "compiler": "Lean 4.33.0-rc2",
+  "mathlib": "51e6992efd06126df61a496bebf8f49482a4e129",
+  "options": [
+    "-j",
+    "1",
+    "-DmaxHeartbeats=800000",
+    "-DrelaxedAutoImplicit=false",
+    "-Dpp.unicode.fun=true"
+  ],
+  "source": "Zeta23/CCM/CanonicalPhysicalTrialRealization.lean",
+  "source_sha256": "8d748628b22ce38420747b2a7df976d362d1e852b8c4cc1b5686f813c1df3603",
+  "olean_sha256": "88e3e5fbe5d199d978ab7d482a9ab2192d5290a684add9cf3627251c59fe7f02",
+  "compiler_log": "../../post292audit/validation/source/T10.log",
+  "compiler_log_sha256": "656da1f1390ad7eb69baedf3c90b7a6d217bea1c47fd3e445aea9534d38b15b8",
+  "compile_session": 14955,
+  "compile_exit_code": 0,
+  "theorem_roots": [
+    "Zeta23.CCM.finitePhysicalSynthesis_add",
+    "Zeta23.CCM.finitePhysicalSynthesis_sub",
+    "Zeta23.CCM.canonicalPhysicalValue_ae",
+    "Zeta23.CCM.canonicalPhysicalValue_norm",
+    "Zeta23.CCM.canonicalPhysicalIsometry_ae",
+    "Zeta23.CCM.canonicalPhysicalProjection_synthesis",
+    "Zeta23.CCM.canonicalPhysicalProjection_inner",
+    "Zeta23.CCM.canonicalPhysicalIsometry_centeredZeroExtend",
+    "Zeta23.CCM.canonicalNativePhysicalIsometry_centeredZeroExtend",
+    "Zeta23.CCM.canonicalNativePhysicalIsometry_predecessor",
+    "Zeta23.CCM.canonicalNativePhysicalProjection_synthesis",
+    "Zeta23.CCM.canonicalNativePhysicalIsometry_ae",
+    "Zeta23.CCM.canonicalNativePhysicalProjection_inner",
+    "Zeta23.CCM.canonicalNativePhysicalProjection_orthogonal",
+    "Zeta23.CCM.canonicalNativePhysicalProjection_norm_le",
+    "Zeta23.CCM.canonicalPhysicalSynthesis_deriv",
+    "Zeta23.CCM.canonicalPhysicalDerivativeCoefficients_norm_sq_le",
+    "Zeta23.CCM.canonicalPhysicalSynthesis_H1_bound",
+    "Zeta23.CCM.canonicalNativeCoefficientInclusion_eq_ambient",
+    "Zeta23.CCM.canonicalNativePhysicalSynthesis_H1_bound",
+    "Zeta23.CCM.canonicalPhysicalSynthesis_mixed_Weil",
+    "Zeta23.CCM.canonicalNativePhysical_mixed_compression",
+    "Zeta23.CCM.canonicalNativePhysicalSynthesis_mixed_Weil",
+    "Zeta23.CCM.canonicalNativePhysicalProjection_firstCutoff_zero"
+  ],
+  "definitions": [
+    "Zeta23.CCM.canonicalPhysicalValue",
+    "Zeta23.CCM.canonicalPhysicalIsometry",
+    "Zeta23.CCM.canonicalPhysicalProjection",
+    "Zeta23.CCM.canonicalNativeCoefficientInclusion",
+    "Zeta23.CCM.canonicalNativePhysicalIsometry",
+    "Zeta23.CCM.canonicalNativePhysicalProjection",
+    "Zeta23.CCM.canonicalPhysicalDerivativeCoefficients"
+  ],
+  "abbreviations": [
+    "Zeta23.CCM.CanonicalPhysicalL2"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "typed_consumer": {
+    "log": "../../post292audit/validation/source/T10TypedConsumer.log",
+    "session": 83460,
+    "source_sha256": "8dfceec58d12aedf76b3849795be4464059bde8bff8ffbdeee09cdbfdfe4bcee",
+    "source": "../../post292audit/validation/source/T10TypedConsumer.lean",
+    "exit_code": 0,
+    "log_sha256": "4b549299ec870ef7b69ac31dda75ca77eb18454bc3ccfc765b8ef8b5ef91496d"
+  },
+  "proof_escapes": {
+    "owned": "PASS_1",
+    "promoted": "PASS_642"
+  },
+  "mathematical_gap": "NONE_FOUND",
+  "remaining_owned_obligations": [],
+  "owned_runners": "NONE_RUNNING",
+  "final_global_checks": "ROOT_OWNED_PENDING_FINAL_COMMIT_TREE"
+}

@@ -1,0 +1,15 @@
+Zeta23/CCM/OriginalDetectorPaddedFinitePhaseCarrier.lean:85:82: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+'Zeta23.CCM.originalDetectorPaddedFinitePoleImageCoefficients_moment_zero_lt_six' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.CCM.originalDetectorPaddedFinitePhaseRaw_moment_zero_lt_six' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.CCM.originalDetectorPaddedFinitePhaseRaw_reversal' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.originalDetectorPaddedFinitePhaseVector_native_poles_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.CCM.originalDetectorPaddedFiniteEvenPhase' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.originalDetectorPaddedFiniteOddPhase' depends on axioms: [propext, Classical.choice, Quot.sound]

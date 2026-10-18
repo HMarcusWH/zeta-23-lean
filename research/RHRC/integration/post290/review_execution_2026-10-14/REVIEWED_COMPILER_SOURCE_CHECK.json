@@ -1,0 +1,11 @@
+{
+  "review_receipt_source_blobs_verified": 185,
+  "compiler_checked_synthetic_merge": "64d9b49f811813e7da5582dcd21f839fea89dc5c",
+  "live_api_merge_tree_and_expected_base_branch_parents_verified": true,
+  "audited_roots": 944,
+  "theorem_count": 934,
+  "definition_count": 10,
+  "producer_complete": false,
+  "independent_assumption_review_pass": false,
+  "authority": "Existing source-bound compiler evidence; not complete producer or new reproof."
+}

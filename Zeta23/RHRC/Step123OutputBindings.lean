@@ -1,0 +1,2137 @@
+import Zeta23.ExceptionalZero.Step123SameStateN39
+import Zeta23.CCM.Step123SameStateN39
+import Zeta23.RHRC.Step123CompleteOutputConsumer
+import Zeta23.ExceptionalZero.Step123CompleteOutput
+import Zeta23.CCM.Step123NativeFieldRecord
+import Zeta23.CCM.Step123SameStateN38
+import Zeta23.ExceptionalZero.Step123SameStateN37
+import Zeta23.CCM.Step123SameStateN36
+import Zeta23.CCM.Step123SameStateN23
+import Zeta23.CCM.Step123SameStateN21
+import Zeta23.ExceptionalZero.Step123SameStateN14
+import Zeta23.RHRC.Step123OutputContractCheck
+import Zeta23.CCM.Step123NativeSourceSpectralEvidence
+import Zeta23.CCM.Step123NativeArithmeticRangeEvidence
+import Zeta23.ExceptionalZero.GeneratedStep123BoundaryPacket
+import Zeta23.CCM.OriginalDetectorBoundaryHistorySplit
+import Zeta23.CCM.OriginalDetectorFourHistorySignedTransfer
+import Zeta23.CCM.OriginalDetectorFourHistoryLocalXBound
+import Zeta23.CCM.OriginalDetectorFourHistoryTransfer
+import Zeta23.CCM.Step123OriginalBoundaryEvidence
+import Zeta23.CCM.OriginalDetectorPrimeHistoryCovariance
+import Zeta23.CCM.OriginalDetectorFourHistoryLocalDuality
+import Zeta23.CCM.OriginalDetectorExteriorPairing
+import Zeta23.CCM.OriginalDetectorLocalDuality
+import Zeta23.CCM.Step123NativeAmbientGalerkin
+import Zeta23.CCM.OriginalDetectorCompactDuality
+import Zeta23.ExceptionalZero.Step4OutputSufficiency
+import Zeta23.CCM.OriginalDetectorForcingError
+import Zeta23.CCM.CanonicalPhysicalTrialRealization
+import Zeta23.CCM.NativeWeilResponseBounds
+import Zeta23.CCM.NativeWeilResponse
+import Zeta23.CCM.NativeCompletionPublicAPI
+import Zeta23.CCM.OriginalSincNativeConvolution
+import Zeta23.CCM.NativeCompactTranslateCalculus
+import Zeta23.CCM.NativeIntegerDriveFiniteOrderBounds
+import Zeta23.CCM.PoleNeutralCompactH2SourceCongruence
+import Zeta23.CCM.CanonicalPoleNeutralTrialResidualChannels
+import Zeta23.CCM.CanonicalPoleNeutralPublicAPI
+import Zeta23.CCM.OriginalDetectorOddPaddingIdentity
+import Zeta23.CCM.OriginalDetectorPaddedPhaseScalar
+import Zeta23.CCM.OriginalDetectorPaddedFiniteNativeFormConcreteRate
+import Zeta23.CCM.OriginalDetectorPaddedFinitePhysicalUnitBridge
+import Zeta23.CCM.FinitePhysicalNormalization
+import Zeta23.ExceptionalZero.UniversalSincActualVisibility
+import Zeta23.CCM.UniversalSincPhysicalBounds
+import Zeta23.ExceptionalZero.NativeAnalyticOutputSufficiency
+import Zeta23.ExceptionalZero.NativeActualInputZeroJets
+import Zeta23.ExceptionalZero.NativeZeroJetAnalyticFactors
+import Zeta23.ExceptionalZero.NativeRangeZeroJetObstruction
+import Zeta23.ExceptionalZero.NativeOriginalSourceLaplaceVisibility
+import Zeta23.ExceptionalZero.NativeActualKernelZeroJets
+import Zeta23.CCM.OriginalDetectorPositiveFourierPaddingReal
+import Zeta23.CCM.OriginalDetectorPositiveFourierPadding
+import Zeta23.CCM.OriginalDetectorPaddedRetainedSelection
+import Zeta23.CCM.OriginalDetectorPaddedPhaseQuantitativeRates
+import Zeta23.CCM.OriginalDetectorPaddedFourierQuantitativeRates
+import Zeta23.CCM.OriginalDetectorPaddedFiniteWindowImageJets
+import Zeta23.CCM.OriginalDetectorPaddedFiniteWindowImageAsymptotics
+import Zeta23.CCM.OriginalDetectorPaddedFiniteWindowImage
+import Zeta23.CCM.OriginalDetectorPaddedFiniteWindowHigherFlat
+import Zeta23.CCM.OriginalDetectorPaddedFiniteWindowBoundaryFlat
+import Zeta23.CCM.OriginalDetectorPaddedFinitePositivity
+import Zeta23.CCM.OriginalDetectorPaddedFinitePoleImageTransport
+import Zeta23.CCM.OriginalDetectorPaddedFinitePoleImageNonzero
+import Zeta23.CCM.OriginalDetectorPaddedFinitePoleImageC4
+import Zeta23.CCM.OriginalDetectorPaddedFinitePoleImageAsymptotics
+import Zeta23.CCM.OriginalDetectorPaddedFinitePoleImage
+import Zeta23.CCM.OriginalDetectorPaddedFinitePhaseWeilPadding
+import Zeta23.CCM.OriginalDetectorPaddedFinitePhaseSymmetry
+import Zeta23.CCM.OriginalDetectorPaddedFinitePhasePlane
+import Zeta23.CCM.OriginalDetectorPaddedFinitePhaseNormalization
+import Zeta23.CCM.OriginalDetectorPaddedFinitePhaseNormControl
+import Zeta23.CCM.OriginalDetectorPaddedFinitePhaseNativeTransport
+import Zeta23.CCM.OriginalDetectorPaddedFinitePhaseNativeProducer
+import Zeta23.CCM.OriginalDetectorPaddedFinitePhaseMass
+import Zeta23.CCM.OriginalDetectorPaddedFinitePhaseL1Errors
+import Zeta23.CCM.OriginalDetectorPaddedFinitePhaseDepth
+import Zeta23.CCM.OriginalDetectorPaddedFinitePhaseCarrier
+import Zeta23.CCM.OriginalDetectorPaddedFinitePhaseApproximation
+import Zeta23.CCM.OriginalDetectorPaddedFiniteNormalizedErrors
+import Zeta23.CCM.OriginalDetectorPaddedFiniteNativeFormRate
+import Zeta23.CCM.OriginalDetectorPaddedFiniteH1Rate
+import Zeta23.CCM.OriginalDetectorNativeRetainedSelection
+import Zeta23.CCM.OriginalDetectorFiniteTransport
+import Zeta23.CCM.OriginalDetectorFinitePhaseNativeProducer
+import Zeta23.CCM.OriginalDetectorAdmissibleSelector
+import Zeta23.CCM.NativePositiveCompletionComplexLaplace
+import Zeta23.CCM.NativeLaplaceHalfPlaneContinuation
+import Zeta23.CCM.NativeIntegerKernelComplexLaplace
+import Zeta23.CCM.NativeIntegerDriveComplexLaplace
+import Zeta23.CCM.NativeDampedCompletionPointwiseBridge
+import Zeta23.CCM.NativeCompletionComplexLaplace
+import Zeta23.CCM.NativeCompletedInputZetaLaplace
+import Zeta23.CCM.NativeCompletedInputRangeOfPrimeLp
+import Zeta23.CCM.NativeCompletedInputComplexLaplace
+import Zeta23.CCM.NativeCausalRangeObstruction
+import Zeta23.CCM.NativeCausalLaplaceDerivatives
+import Zeta23.CCM.NativeCausalKernelLaplaceDerivatives
+import Zeta23.CCM.NativeCausalAnalyticObstruction
+import Zeta23.CCM.NativeCausalAdjointZeroJets
+import Zeta23.CCM.CompactPoleConvolution
+import Zeta23.CCM.CanonicalDeepThresholdGap
+import Zeta23.CCM.PoleNeutralCompactH2Uniqueness
+import Zeta23.CCM.PoleNeutralCompactH2
+import Zeta23.CCM.PoleNeutralCompactL2Energy
+import Zeta23.CCM.PoleNeutralCompactInverseCore
+import Zeta23.CCM.NativeCausalLaplaceMoments
+import Zeta23.CCM.NativeCausalExponentialWitness
+import Zeta23.CCM.CompactComplexIntegralFTC
+import Zeta23.CCM.PoleNeutralCompactL2Regularity
+import Zeta23.CCM.OriginalDetectorFinitePhaseDepth
+import Zeta23.CCM.OriginalDetectorFinitePhaseNativeTransport
+import Zeta23.CCM.OriginalDetectorFinitePhaseWeilPadding
+import Zeta23.CCM.OriginalDetectorFinitePhaseNormalization
+import Zeta23.CCM.OriginalDetectorFinitePhaseNormControl
+import Zeta23.CCM.OriginalDetectorFinitePhaseMass
+import Zeta23.CCM.OriginalDetectorFinitePhaseL1Errors
+import Zeta23.CCM.OriginalDetectorOriginalPhaseL1Bounds
+import Zeta23.CCM.OriginalDetectorFinitePhaseApproximation
+import Zeta23.CCM.OriginalDetectorFinitePhaseCarrier
+import Zeta23.CCM.OriginalDetectorFinitePhasePlane
+import Zeta23.CCM.CanonicalPoleNeutralGroundConstraints
+import Zeta23.CCM.OriginalDetectorFinitePoleImageNonzero
+import Zeta23.CCM.CanonicalPoleNeutralTrialResidualBounds
+import Zeta23.CCM.OriginalDetectorFinitePoleImageAsymptotics
+import Zeta23.CCM.OriginalDetectorFinitePhysicalNorm
+import Zeta23.CCM.OriginalDetectorFinitePoleImageTransport
+import Zeta23.CCM.OriginalDetectorFinitePoleImage
+import Zeta23.CCM.OriginalDetectorFiniteWindowHigherFlat
+import Zeta23.CCM.OriginalDetectorFiniteWindowImageAsymptotics
+import Zeta23.CCM.NativeCompletionEquation
+import Zeta23.CCM.NativeAdjointResidual
+import Zeta23.ExceptionalZero.OriginalDetectorPhaseDepth
+import Zeta23.CCM.OriginalDetectorFiniteWindowBoundaryFlat
+import Zeta23.CCM.NativeCompletionIntegerKernel
+import Zeta23.CCM.OriginalDetectorFiniteWindowImageJets
+import Zeta23.CCM.NativeCompletedInput
+import Zeta23.CCM.OriginalDetectorFiniteWindowImage
+import Zeta23.CCM.OriginalDetectorFourierTailAsymptotics
+import Zeta23.CCM.NativeDampedCompletionResidual
+import Zeta23.CCM.OriginalSincSourceSign
+import Zeta23.CCM.OriginalSincDriveLp
+import Zeta23.CCM.OriginalSincDriveDecay
+import Zeta23.CCM.OriginalDetectorFourierTailBounds
+import Zeta23.CCM.OriginalDetectorFourierScalarTailBounds
+import Zeta23.CCM.OriginalDetectorFourierCoefficientBounds
+import Zeta23.CCM.NativeDampedCompletionOperator
+import Zeta23.CCM.UniversalSincDetector
+import Zeta23.ExceptionalZero.UniversalSincSignedExcursions
+import Zeta23.ExceptionalZero.UniversalSincOriginalPhaseDepth
+import Zeta23.CCM.NativeDampedCompletionPrerequisites
+import Zeta23.CCM.OriginalDetectorWindowBounds
+import Zeta23.CCM.OriginalDetectorDividedLobeBounds
+import Zeta23.CCM.OriginalSincDriveCancellation
+import Zeta23.CCM.OriginalSincDriveDerivative
+import Zeta23.CCM.PoleNeutralCompactInverseL2Bound
+import Zeta23.ExceptionalZero.UniversalSincInitialLaplace
+import Zeta23.ExceptionalZero.UniversalSincSignedTailTransform
+import Zeta23.ExceptionalZero.UniversalSincSignedPoleBound
+import Zeta23.CCM.IsometricDetectorSchur
+import Zeta23.CCM.IsometricGroundSchur
+import Zeta23.CCM.NativeDetectorSchur
+import Zeta23.CCM.NativeSelectedGroundSchur
+import Zeta23.CCM.DetectorRetainedSchurState
+import Zeta23.CCM.OriginalDetectorFourierPrerequisites
+import Zeta23.CCM.OriginalSincWeightedPoleMoments
+import Zeta23.CCM.NativeAbelDiscrepancy
+import Zeta23.CCM.OriginalSincLogDrive
+import Zeta23.ExceptionalZero.PositiveLaplaceBoundary
+import Zeta23.ExceptionalZero.PositiveLaplaceAnalytic
+import Zeta23.ExceptionalZero.UniversalSincSignedLaplace
+import Zeta23.CCM.UniversalSincProductMoments
+import Zeta23.CCM.UniversalSincInverseGevreyBounds
+import Zeta23.ExceptionalZero.PositiveLaplaceTilt
+import Zeta23.CCM.NativeDeepThresholdInverseBudgets
+import Zeta23.CCM.NativeDeepThresholdSimplicity
+import Zeta23.CCM.NativeDeepThresholdEvenMoment
+import Zeta23.CCM.UniversalSincDetectorBounds
+import Zeta23.CCM.UniversalSincDetectorInverse
+import Zeta23.CCM.UniversalSincSourceLaw
+import Zeta23.CCM.UniversalSincSourceCharacteristic
+import Zeta23.CCM.UniversalSincBoxDensity
+import Zeta23.CCM.UniversalSincSourceTail
+import Zeta23.CCM.UniversalSincSourceDensity
+import Zeta23.CCM.UniversalSincSourceDensityTransform
+import Zeta23.CCM.UniversalSincSourceDensityIdentification
+import Zeta23.CCM.UniversalSincSourceComplexTransform
+import Zeta23.CCM.UniversalSincSourceSymmetry
+import Zeta23.CCM.UniversalSincSourceFacade
+import Zeta23.CCM.OriginalSincNativeSource
+import Zeta23.CCM.OriginalSincNativeMass
+import Zeta23.ExceptionalZero.UniversalSincNativeSourceIdentification
+import Zeta23.CCM.CanonicalPoleNeutralSimpleEvenTie
+import Zeta23.ExceptionalZero.UniversalSincPhysicalDetector
+import Zeta23.ExceptionalZero.UniversalSincDetectorVisibility
+import Zeta23.CCM.CanonicalPoleNeutralGeometry
+import Zeta23.CCM.CanonicalPoleNeutralCarrier
+import Zeta23.CCM.CanonicalPoleExponentialMoments
+import Zeta23.CCM.CanonicalPoleNeutralIntertwining
+import Zeta23.CCM.CanonicalPoleNeutralNormals
+import Zeta23.CCM.CanonicalPoleNeutralCubicWitness
+import Zeta23.CCM.CanonicalPoleNeutralSourceMoment
+import Zeta23.CCM.CanonicalPoleNeutralIndexRigidity
+import Zeta23.CCM.CanonicalTrialResidualChannels
+import Zeta23.CCM.NativeIntegerPrimeSource
+import Zeta23.CCM.NativeIntegerPrimeField
+import Zeta23.CCM.NativeIntegerPrimeConvolution
+import Zeta23.CCM.NativePositiveCompletion
+import Zeta23.CCM.NativePositiveCompletionCells
+import Zeta23.CCM.NativePositiveCompletionMass
+import Zeta23.CCM.NativePositiveCompletionHead
+import Zeta23.CCM.NativePositiveCompletionTail
+import Zeta23.CCM.NativePositiveCompletionCertificate
+import Zeta23.CCM.CanonicalPoleNeutralShiftedSecular
+import Zeta23.CCM.CanonicalPoleNeutralTiePackage
+import Zeta23.ExceptionalZero.ZetaRealStripNonvanishing
+import Zeta23.CCM.CanonicalPoleNeutralNesting
+import Zeta23.CCM.CanonicalPoleNeutralBottomNFlow
+import Zeta23.CCM.FiniteBottomGapSelector
+import Zeta23.CCM.CanonicalDeepThresholdSelection
+import Zeta23.CCM.NativePoleNeutralTrialDepth
+import Zeta23.CCM.PoleNeutralCompactInverse
+import Zeta23.CCM.NativeDeepThresholdGround
+import Zeta23.CCM.PoleNeutralUniqueness
+import Zeta23.CCM.OriginalSincCompactPotential
+import Zeta23.ExceptionalZero.PositiveMomentSeries
+import Zeta23.ExceptionalZero.PositiveMGFContinuation
+import Zeta23.ExceptionalZero.UniversalSincCorrelationReal
+import Zeta23.CCM.NativeFloorCompletionSource
+import Zeta23.CCM.NativeRationalCompletionLaplace
+import Zeta23.CCM.Step123PrimeSeam
+import Zeta23.RHRC.SourceCandidateResolution
+import Lean.Util.CollectAxioms
+import Lean.Util.PtrSet
+import Lean.Data.Json
+
+open Lean Lean.Elab Command
+
+/-
+AUDIT_ONLY lossless type serialization. The pointer memo bounds traversal by
+allocated Expr objects; exact node-payload interning makes output independent
+of incidental allocation sharing. Every binder, level, literal and metadata
+field is retained. Resource limits fail closed and never truncate a type.
+No serializer helper supplies mathematical proof authority.
+-/
+namespace Zeta23.RHRC.Step123TypeExprExport
+
+private def format : String := "LEAN_EXPR_DAG_V1"
+private def maxNodes : Nat := 1000000
+private def maxAuxNodes : Nat := 2000000
+private def maxTextBytes : Nat := 1000000
+private def maxPayloadBytes : Nat := 100000000
+
+private abbrev AuxM := StateT Nat (Except String)
+
+private def tick : AuxM Unit := do
+  let n ← get
+  if n == 0 then throw "DAG auxiliary serialization budget exceeded"
+  set (n - 1)
+
+private def text (s : String) : AuxM Json := do
+  if s.utf8ByteSize > maxTextBytes then throw "DAG scalar text budget exceeded"
+  pure (.str s)
+
+private def tagged (tag : String) (xs : Array Json := #[]) : Json := .arr (#[.str tag] ++ xs)
+private def decimal (n : Nat) : Json := .str (toString n)
+
+private partial def nameJson (n : Name) : AuxM Json := do
+  tick
+  match n with
+  | .anonymous => pure (tagged "anonymous")
+  | .str p s => return tagged "str" #[← nameJson p, ← text s]
+  | .num p n => return tagged "num" #[← nameJson p, decimal n]
+
+private partial def levelJson (u : Level) : AuxM Json := do
+  tick
+  match u with
+  | .zero => pure (tagged "zero")
+  | .succ a => return tagged "succ" #[← levelJson a]
+  | .max a b => return tagged "max" #[← levelJson a, ← levelJson b]
+  | .imax a b => return tagged "imax" #[← levelJson a, ← levelJson b]
+  | .param n => return tagged "param" #[← nameJson n]
+  | .mvar _ => throw "DAG rejects universe metavariables"
+
+private def substringJson (s : Substring.Raw) : AuxM Json := do
+  tick
+  return tagged "substring" #[← text s.str, decimal s.startPos.byteIdx, decimal s.stopPos.byteIdx]
+
+private def sourceInfoJson (s : SourceInfo) : AuxM Json := do
+  tick
+  match s with
+  | .none => pure (tagged "none")
+  | .original leading pos trailing stop =>
+      return tagged "original" #[← substringJson leading, decimal pos.byteIdx,
+        ← substringJson trailing, decimal stop.byteIdx]
+  | .synthetic pos stop canonical =>
+      return tagged "synthetic" #[decimal pos.byteIdx, decimal stop.byteIdx, .bool canonical]
+
+private def preresolvedJson (s : Syntax.Preresolved) : AuxM Json := do
+  tick
+  match s with
+  | .namespace n => return tagged "namespace" #[← nameJson n]
+  | .decl n fields => return tagged "decl" #[← nameJson n, .arr (← fields.toArray.mapM text)]
+
+private partial def syntaxJson (s : Syntax) : AuxM Json := do
+  tick
+  match s with
+  | .missing => pure (tagged "missing")
+  | .node info kind args =>
+      return tagged "node" #[← sourceInfoJson info, ← nameJson kind, .arr (← args.mapM syntaxJson)]
+  | .atom info val => return tagged "atom" #[← sourceInfoJson info, ← text val]
+  | .ident info raw val resolved =>
+      return tagged "ident" #[← sourceInfoJson info, ← substringJson raw,
+        ← nameJson val, .arr (← resolved.toArray.mapM preresolvedJson)]
+
+private def dataValueJson (v : DataValue) : AuxM Json := do
+  tick
+  match v with
+  | .ofString s => return tagged "string" #[← text s]
+  | .ofBool b => pure (tagged "bool" #[.bool b])
+  | .ofName n => return tagged "name" #[← nameJson n]
+  | .ofNat n => pure (tagged "nat" #[decimal n])
+  | .ofInt n => pure (tagged "int" #[.str (toString n)])
+  | .ofSyntax s => return tagged "syntax" #[← syntaxJson s]
+
+private def metadataJson (d : MData) : AuxM Json := do
+  let mut entries := #[]
+  for (key, value) in d.entries do
+    tick
+    entries := entries.push (.arr #[← nameJson key, ← dataValueJson value])
+  pure (.arr entries)
+
+private def binderString : BinderInfo → String
+  | .default => "default"
+  | .implicit => "implicit"
+  | .strictImplicit => "strictImplicit"
+  | .instImplicit => "instImplicit"
+
+private inductive Node where
+  | bvar (index : Nat)
+  | sort (level : Level)
+  | const (name : Name) (levels : List Level)
+  | app (fn arg : Nat)
+  | lam (name : Name) (info : BinderInfo) (domain body : Nat)
+  | forallE (name : Name) (info : BinderInfo) (domain body : Nat)
+  | letE (name : Name) (type value body : Nat) (nondep : Bool)
+  | nat (value : Nat)
+  | string (value : String)
+  | mdata (data : MData) (child : Nat)
+  | proj (name : Name) (index child : Nat)
+
+private def nodeJson : Node → AuxM Json
+  | .bvar i => pure (tagged "bvar" #[decimal i])
+  | .sort u => do return tagged "sort" #[← levelJson u]
+  | .const n us => do return tagged "const" #[← nameJson n, .arr (← us.toArray.mapM levelJson)]
+  | .app f a => pure (tagged "app" #[decimal f, decimal a])
+  | .lam n bi d b => do return tagged "lam" #[← nameJson n, .str (binderString bi), decimal d, decimal b]
+  | .forallE n bi d b => do return tagged "forall" #[← nameJson n, .str (binderString bi), decimal d, decimal b]
+  | .letE n t v b nd => do return tagged "let" #[← nameJson n, decimal t, decimal v, decimal b, .bool nd]
+  | .nat n => pure (tagged "nat" #[decimal n])
+  | .string s => do return tagged "string" #[← text s]
+  | .mdata md child => do return tagged "mdata" #[← metadataJson md, decimal child]
+  | .proj n i child => do return tagged "proj" #[← nameJson n, decimal i, decimal child]
+
+private structure Graph where
+  root : Nat
+  nodes : Array Node
+
+private unsafe structure BuildState where
+  cache : PtrMap Expr Nat := mkPtrMap
+  canonical : Std.HashMap String Nat := {}
+  nodes : Array Node := #[]
+  calls : Nat := 0
+  auxRemaining : Nat := maxAuxNodes
+
+private unsafe abbrev BuildM := StateT BuildState (Except String)
+
+private unsafe def visit (e : Expr) : BuildM Nat := do
+  if let some id := (← get).cache.find? e then return id
+  if (← get).calls >= maxNodes then throw "DAG node/visit budget exceeded"
+  modify fun s => { s with calls := s.calls + 1 }
+  let node : Node ← match e with
+    | .bvar i => pure (.bvar i)
+    | .sort u => pure (.sort u)
+    | .const n us => pure (.const n us)
+    | .app f a => do pure (Node.app (← visit f) (← visit a))
+    | .lam n d b bi => do pure (Node.lam n bi (← visit d) (← visit b))
+    | .forallE n d b bi => do pure (Node.forallE n bi (← visit d) (← visit b))
+    | .letE n t v b nd => do pure (Node.letE n (← visit t) (← visit v) (← visit b) nd)
+    | .lit (.natVal n) => pure (.nat n)
+    | .lit (.strVal s) => pure (.string s)
+    | .mdata md child => do pure (Node.mdata md (← visit child))
+    | .proj n i child => do pure (Node.proj n i (← visit child))
+    | .fvar _ => throw "DAG rejects free variables"
+    | .mvar _ => throw "DAG rejects expression metavariables"
+  let (json, remaining) ← match (nodeJson node).run (← get).auxRemaining with
+    | .ok result => pure result
+    | .error msg => throw msg
+  let key := json.compress
+  modify fun s => { s with auxRemaining := remaining }
+  if let some id := (← get).canonical[key]? then
+    modify fun s => { s with cache := s.cache.insert e id }
+    pure id
+  else
+    let id := (← get).nodes.size
+    modify fun s => { s with nodes := s.nodes.push node, cache := s.cache.insert e id, canonical := s.canonical.insert key id }
+    pure id
+
+private unsafe def buildGraphUnsafe (e : Expr) : Except String Graph := do
+  if e.hasLooseBVars then throw "DAG rejects a loose root bound variable"
+  let (root, state) ← (visit e).run {}
+  pure {root, nodes := state.nodes}
+
+private def Graph.toJson (g : Graph) : Except String Json := do
+  let (nodes, _) ← (g.nodes.mapM nodeJson).run maxAuxNodes
+  pure <| Json.mkObj [("format", .str format), ("root", decimal g.root), ("nodes", .arr nodes)]
+
+private def graph (e : Expr) : IO Graph := do
+  let result := unsafe buildGraphUnsafe e
+  match result with
+  | .ok g => pure g
+  | .error msg => throw <| IO.userError msg
+
+private def exportType (e : Expr) : IO String := do
+  let g ← graph e
+  let json ← match g.toJson with
+    | .ok j => pure j
+    | .error msg => throw <| IO.userError msg
+  let payload := json.compress
+  if payload.utf8ByteSize > maxPayloadBytes then throw <| IO.userError "DAG payload budget exceeded"
+  pure payload
+
+end Zeta23.RHRC.Step123TypeExprExport
+
+/-!
+Audit of the implemented components only. None of the missing output-producer
+roots is replaced by a generic interface here. The complete M25 acceptance
+remains open until the original mandatory producer declarations exist.
+Uses the repository's existing compiler-backed source-candidate resolver.
+-/
+
+run_cmd do
+  let some checkedHead ← liftIO <| IO.getEnv "POST290_CHECKED_HEAD"
+    | throwError "Missing POST290_CHECKED_HEAD compiler context"
+  let some checkedTree ← liftIO <| IO.getEnv "POST290_CHECKED_TREE"
+    | throwError "Missing POST290_CHECKED_TREE compiler context"
+  liftIO <| IO.println s!"POST290_COMPILER_CONTEXT\t{checkedHead}\t{checkedTree}"
+  let roots : Array (Name × String × String) := #[
+    (``Zeta23.CCM.Step123NativeOutput.detectorCoefficients_eq_paddedUnit, "Zeta23.ExceptionalZero.Step123SameStateN14", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeOutput.detectorNativeEnergy_eq_paddedNativeEnergy, "Zeta23.ExceptionalZero.Step123SameStateN14", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeOutput.physicalSourceError_eq_storedDetector, "Zeta23.ExceptionalZero.Step123SameStateN14", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeOutput.physicalFiniteImage_ae_eq_paddedUnit, "Zeta23.ExceptionalZero.Step123SameStateN14", "THEOREM"),
+    (``Zeta23.CCM.step123NativeOutput_imageErrors_at_sourceThreshold, "Zeta23.ExceptionalZero.Step123SameStateN14", "THEOREM"),
+    (``Zeta23.CCM.step123NativeOutput_imageErrors_commonThreshold, "Zeta23.ExceptionalZero.Step123SameStateN14", "THEOREM"),
+    (``Zeta23.ExceptionalZero.exists_generatedStep123Output_imageErrors_cofinal, "Zeta23.ExceptionalZero.Step123SameStateN14", "THEOREM"),
+    (``Zeta23.ExceptionalZero.exists_generatedStep123Output_imageErrors_cofinal_atLateness, "Zeta23.ExceptionalZero.Step123SameStateN14", "THEOREM"),
+    (``Zeta23.CCM.nativeParityEvenView, "Zeta23.CCM.Step123SameStateN21", "DEFINITION"),
+    (``Zeta23.CCM.nativeParityOddView, "Zeta23.CCM.Step123SameStateN21", "DEFINITION"),
+    (``Zeta23.CCM.nativeParityEvenView_sigma, "Zeta23.CCM.Step123SameStateN21", "THEOREM"),
+    (``Zeta23.CCM.nativeParityOddView_sigma, "Zeta23.CCM.Step123SameStateN21", "THEOREM"),
+    (``Zeta23.CCM.nativeParityEvenView_ambient, "Zeta23.CCM.Step123SameStateN21", "THEOREM"),
+    (``Zeta23.CCM.nativeParityOddView_ambient, "Zeta23.CCM.Step123SameStateN21", "THEOREM"),
+    (``Zeta23.CCM.nativeParityEvenView_norm, "Zeta23.CCM.Step123SameStateN21", "THEOREM"),
+    (``Zeta23.CCM.nativeParityOddView_norm, "Zeta23.CCM.Step123SameStateN21", "THEOREM"),
+    (``Zeta23.CCM.nativeParityEvenView_eigen, "Zeta23.CCM.Step123SameStateN21", "THEOREM"),
+    (``Zeta23.CCM.nativeParityOddView_eigen, "Zeta23.CCM.Step123SameStateN21", "THEOREM"),
+    (``Zeta23.CCM.poleNeutral_even_eigen_index_odd_shifted_eq_source, "Zeta23.CCM.Step123SameStateN21", "THEOREM"),
+    (``Zeta23.CCM.PoleNeutralStrictEvenGroundFacts, "Zeta23.CCM.Step123SameStateN21", "INDUCTIVE"),
+    (``Zeta23.CCM.PoleNeutralStrictEvenGroundFacts.lam_eq_bottom, "Zeta23.CCM.Step123SameStateN21", "THEOREM"),
+    (``Zeta23.CCM.PoleNeutralStrictEvenGroundFacts.below_odd, "Zeta23.CCM.Step123SameStateN21", "THEOREM"),
+    (``Zeta23.CCM.PoleNeutralStrictEvenGroundFacts.odd_shift_inverse, "Zeta23.CCM.Step123SameStateN21", "THEOREM"),
+    (``Zeta23.CCM.PoleNeutralStrictEvenGroundFacts.unit, "Zeta23.CCM.Step123SameStateN21", "THEOREM"),
+    (``Zeta23.CCM.PoleNeutralStrictEvenGroundFacts.eigen, "Zeta23.CCM.Step123SameStateN21", "THEOREM"),
+    (``Zeta23.CCM.PoleNeutralStrictEvenGroundFacts.simple, "Zeta23.CCM.Step123SameStateN21", "THEOREM"),
+    (``Zeta23.CCM.PoleNeutralStrictEvenGroundFacts.source_equation, "Zeta23.CCM.Step123SameStateN21", "THEOREM"),
+    (``Zeta23.CCM.PoleNeutralStrictEvenGroundFacts.source_moment_energy, "Zeta23.CCM.Step123SameStateN21", "THEOREM"),
+    (``Zeta23.CCM.PoleNeutralStrictEvenGroundFacts.source_moment_gap, "Zeta23.CCM.Step123SameStateN21", "THEOREM"),
+    (``Zeta23.CCM.PoleNeutralStrictEvenGroundFacts.source_moment_pos, "Zeta23.CCM.Step123SameStateN21", "THEOREM"),
+    (``Zeta23.CCM.PoleNeutralStrictEvenGroundFacts.momentFour_ne_zero, "Zeta23.CCM.Step123SameStateN21", "THEOREM"),
+    (``Zeta23.CCM.PoleNeutralStrictEvenGroundFacts.source_ne_zero, "Zeta23.CCM.Step123SameStateN21", "THEOREM"),
+    (``Zeta23.CCM.PoleNeutralStrictEvenGroundFacts.ray_eq, "Zeta23.CCM.Step123SameStateN21", "THEOREM"),
+    (``Zeta23.CCM.PoleNeutralStrictEvenGroundFacts.ray_source_eq_one, "Zeta23.CCM.Step123SameStateN21", "THEOREM"),
+    (``Zeta23.CCM.PoleNeutralStrictEvenGroundFacts.eigen_iff, "Zeta23.CCM.Step123SameStateN21", "THEOREM"),
+    (``Zeta23.CCM.PoleNeutralStrictEvenGroundFacts.det_eq, "Zeta23.CCM.Step123SameStateN21", "THEOREM"),
+    (``Zeta23.CCM.PoleNeutralStrictEvenGroundFacts.det_eq_zero, "Zeta23.CCM.Step123SameStateN21", "THEOREM"),
+    (``Zeta23.CCM.PoleNeutralStrictOddGroundFacts, "Zeta23.CCM.Step123SameStateN21", "INDUCTIVE"),
+    (``Zeta23.CCM.PoleNeutralStrictOddGroundFacts.lam_eq_bottom, "Zeta23.CCM.Step123SameStateN21", "THEOREM"),
+    (``Zeta23.CCM.PoleNeutralStrictOddGroundFacts.below_even, "Zeta23.CCM.Step123SameStateN21", "THEOREM"),
+    (``Zeta23.CCM.PoleNeutralStrictOddGroundFacts.even_shift_inverse, "Zeta23.CCM.Step123SameStateN21", "THEOREM"),
+    (``Zeta23.CCM.PoleNeutralStrictOddGroundFacts.unit, "Zeta23.CCM.Step123SameStateN21", "THEOREM"),
+    (``Zeta23.CCM.PoleNeutralStrictOddGroundFacts.eigen, "Zeta23.CCM.Step123SameStateN21", "THEOREM"),
+    (``Zeta23.CCM.PoleNeutralStrictOddGroundFacts.simple, "Zeta23.CCM.Step123SameStateN21", "THEOREM"),
+    (``Zeta23.CCM.PoleNeutralStrictOddGroundFacts.adjoint_competitor, "Zeta23.CCM.Step123SameStateN21", "THEOREM"),
+    (``Zeta23.CCM.PoleNeutralStrictOddGroundFacts.pairing_ne_zero, "Zeta23.CCM.Step123SameStateN21", "THEOREM"),
+    (``Zeta23.CCM.PoleNeutralStrictOddGroundFacts.ray_eq, "Zeta23.CCM.Step123SameStateN21", "THEOREM"),
+    (``Zeta23.CCM.PoleNeutralStrictOddGroundFacts.ray_pairing_eq_one, "Zeta23.CCM.Step123SameStateN21", "THEOREM"),
+    (``Zeta23.CCM.PoleNeutralStrictOddGroundFacts.eigen_iff, "Zeta23.CCM.Step123SameStateN21", "THEOREM"),
+    (``Zeta23.CCM.PoleNeutralStrictOddGroundFacts.det_eq, "Zeta23.CCM.Step123SameStateN21", "THEOREM"),
+    (``Zeta23.CCM.PoleNeutralStrictOddGroundFacts.det_eq_zero, "Zeta23.CCM.Step123SameStateN21", "THEOREM"),
+    (``Zeta23.CCM.PoleNeutralTiedEvenGroundFacts, "Zeta23.CCM.Step123SameStateN21", "INDUCTIVE"),
+    (``Zeta23.CCM.PoleNeutralTiedEvenGroundFacts.unit, "Zeta23.CCM.Step123SameStateN21", "THEOREM"),
+    (``Zeta23.CCM.PoleNeutralTiedEvenGroundFacts.eigen, "Zeta23.CCM.Step123SameStateN21", "THEOREM"),
+    (``Zeta23.CCM.PoleNeutralTiedEvenGroundFacts.simple, "Zeta23.CCM.Step123SameStateN21", "THEOREM"),
+    (``Zeta23.CCM.PoleNeutralTiedEvenGroundFacts.source_equation, "Zeta23.CCM.Step123SameStateN21", "THEOREM"),
+    (``Zeta23.CCM.PoleNeutralTiedEvenGroundFacts.momentFour_ne_zero, "Zeta23.CCM.Step123SameStateN21", "THEOREM"),
+    (``Zeta23.CCM.PoleNeutralTiedEvenGroundFacts.source_moment_energy, "Zeta23.CCM.Step123SameStateN21", "THEOREM"),
+    (``Zeta23.CCM.PoleNeutralTiedEvenGroundFacts.source_moment_nonneg, "Zeta23.CCM.Step123SameStateN21", "THEOREM"),
+    (``Zeta23.CCM.PoleNeutralTiedEvenGroundFacts.kernel_compatibility, "Zeta23.CCM.Step123SameStateN21", "THEOREM"),
+    (``Zeta23.CCM.PoleNeutralTiedEvenGroundFacts.range_mem, "Zeta23.CCM.Step123SameStateN21", "THEOREM"),
+    (``Zeta23.CCM.PoleNeutralTiedEvenGroundFacts.complementary_response, "Zeta23.CCM.Step123SameStateN21", "THEOREM"),
+    (``Zeta23.CCM.PoleNeutralTiedOddGroundFacts, "Zeta23.CCM.Step123SameStateN21", "INDUCTIVE"),
+    (``Zeta23.CCM.PoleNeutralTiedOddGroundFacts.unit, "Zeta23.CCM.Step123SameStateN21", "THEOREM"),
+    (``Zeta23.CCM.PoleNeutralTiedOddGroundFacts.eigen, "Zeta23.CCM.Step123SameStateN21", "THEOREM"),
+    (``Zeta23.CCM.PoleNeutralTiedOddGroundFacts.simple, "Zeta23.CCM.Step123SameStateN21", "THEOREM"),
+    (``Zeta23.CCM.PoleNeutralTiedOddGroundFacts.adjoint_competitor, "Zeta23.CCM.Step123SameStateN21", "THEOREM"),
+    (``Zeta23.CCM.PoleNeutralTiedOddGroundFacts.kernel_compatibility, "Zeta23.CCM.Step123SameStateN21", "THEOREM"),
+    (``Zeta23.CCM.PoleNeutralTiedOddGroundFacts.range_mem, "Zeta23.CCM.Step123SameStateN21", "THEOREM"),
+    (``Zeta23.CCM.PoleNeutralTiedOddGroundFacts.complementary_response, "Zeta23.CCM.Step123SameStateN21", "THEOREM"),
+    (``Zeta23.CCM.PoleNeutralShiftedPositivity, "Zeta23.CCM.Step123SameStateN21", "INDUCTIVE"),
+    (``Zeta23.CCM.PoleNeutralShiftedPositivity.even_positive, "Zeta23.CCM.Step123SameStateN21", "THEOREM"),
+    (``Zeta23.CCM.PoleNeutralShiftedPositivity.odd_positive, "Zeta23.CCM.Step123SameStateN21", "THEOREM"),
+    (``Zeta23.CCM.PoleNeutralShiftedPositivity.even_complement_pos, "Zeta23.CCM.Step123SameStateN21", "THEOREM"),
+    (``Zeta23.CCM.PoleNeutralShiftedPositivity.odd_complement_pos, "Zeta23.CCM.Step123SameStateN21", "THEOREM"),
+    (``Zeta23.CCM.PoleNeutralShiftedPositivity.of_le_bottoms, "Zeta23.CCM.Step123SameStateN21", "THEOREM"),
+    (``Zeta23.CCM.PoleNeutralTiedStoredGroundFacts, "Zeta23.CCM.Step123SameStateN21", "DEFINITION"),
+    (``Zeta23.CCM.nativeDeepThreshold_lam_eq_min, "Zeta23.CCM.Step123SameStateN21", "THEOREM"),
+    (``Zeta23.CCM.poleNeutralEvenRayleighBottom_le_of_eigen, "Zeta23.CCM.Step123SameStateN21", "THEOREM"),
+    (``Zeta23.CCM.poleNeutralOddRayleighBottom_le_of_eigen, "Zeta23.CCM.Step123SameStateN21", "THEOREM"),
+    (``Zeta23.CCM.nativeParity_eq_even_of_strictEven, "Zeta23.CCM.Step123SameStateN21", "THEOREM"),
+    (``Zeta23.CCM.nativeParity_eq_odd_of_strictOdd, "Zeta23.CCM.Step123SameStateN21", "THEOREM"),
+    (``Zeta23.CCM.PoleNeutralStrictEvenGroundFacts.of_selection, "Zeta23.CCM.Step123SameStateN21", "THEOREM"),
+    (``Zeta23.CCM.PoleNeutralStrictOddGroundFacts.of_selection, "Zeta23.CCM.Step123SameStateN21", "THEOREM"),
+    (``Zeta23.CCM.PoleNeutralTiedEvenGroundFacts.of_selection, "Zeta23.CCM.Step123SameStateN21", "THEOREM"),
+    (``Zeta23.CCM.PoleNeutralTiedOddGroundFacts.of_selection, "Zeta23.CCM.Step123SameStateN21", "THEOREM"),
+    (``Zeta23.CCM.PoleNeutralTiedStoredGroundFacts.of_selection, "Zeta23.CCM.Step123SameStateN21", "THEOREM"),
+    (``Zeta23.CCM.PoleNeutralTiedStoredGroundFacts.even_view, "Zeta23.CCM.Step123SameStateN21", "THEOREM"),
+    (``Zeta23.CCM.PoleNeutralTiedStoredGroundFacts.odd_view, "Zeta23.CCM.Step123SameStateN21", "THEOREM"),
+    (``Zeta23.CCM.DetectorRetainedSelectedGroundBranch, "Zeta23.CCM.Step123SameStateN21", "INDUCTIVE"),
+    (``Zeta23.CCM.DetectorRetainedSchurState.selectedGround_branch, "Zeta23.CCM.Step123SameStateN21", "THEOREM"),
+    (``Zeta23.CCM.DetectorRetainedSchurState.groundBranchFacts, "Zeta23.CCM.Step123SameStateN21", "DEFINITION"),
+    (``Zeta23.CCM.DetectorRetainedSchurState.groundBranchFacts_holds, "Zeta23.CCM.Step123SameStateN21", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeOutput.n21_retained_branch, "Zeta23.CCM.Step123SameStateN21", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeOutput.n21_groundBranch_facts, "Zeta23.CCM.Step123SameStateN21", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeOutput.n21_selectedGround_shell_kernel, "Zeta23.CCM.Step123SameStateN21", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeOutput.n21_selected_ground_branch_consumer, "Zeta23.CCM.Step123SameStateN21", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeOutput.n21_retained_branch_package, "Zeta23.CCM.Step123SameStateN21", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeOutput.n21_strictEven_selectedGround, "Zeta23.CCM.Step123SameStateN21", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeOutput.n21_strictOdd_selectedGround, "Zeta23.CCM.Step123SameStateN21", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeOutput.n21_tie_selectedGround, "Zeta23.CCM.Step123SameStateN21", "THEOREM"),
+    (``Zeta23.CCM.NativeRetainedKernelComplementInverse, "Zeta23.CCM.Step123SameStateN23", "INDUCTIVE"),
+    (``Zeta23.CCM.NativeRetainedKernelComplementInverse.source_eq, "Zeta23.CCM.Step123SameStateN23", "THEOREM"),
+    (``Zeta23.CCM.NativeRetainedKernelComplementInverse.range_mem, "Zeta23.CCM.Step123SameStateN23", "THEOREM"),
+    (``Zeta23.CCM.NativeRetainedKernelComplementInverse.source_kernelProjection_eq_zero, "Zeta23.CCM.Step123SameStateN23", "THEOREM"),
+    (``Zeta23.CCM.NativeRetainedKernelComplementInverse.source_orthogonal_kernel, "Zeta23.CCM.Step123SameStateN23", "THEOREM"),
+    (``Zeta23.CCM.NativeRetainedKernelComplementInverse.positive, "Zeta23.CCM.Step123SameStateN23", "THEOREM"),
+    (``Zeta23.CCM.NativeRetainedKernelComplementInverse.complement_positive, "Zeta23.CCM.Step123SameStateN23", "THEOREM"),
+    (``Zeta23.CCM.NativeRetainedKernelComplementInverse.complement_left_inverse, "Zeta23.CCM.Step123SameStateN23", "THEOREM"),
+    (``Zeta23.CCM.NativeRetainedKernelComplementInverse.complement_right_inverse, "Zeta23.CCM.Step123SameStateN23", "THEOREM"),
+    (``Zeta23.CCM.NativeRetainedKernelComplementInverse.response_mem_complement, "Zeta23.CCM.Step123SameStateN23", "THEOREM"),
+    (``Zeta23.CCM.NativeRetainedKernelComplementInverse.response_apply, "Zeta23.CCM.Step123SameStateN23", "THEOREM"),
+    (``Zeta23.CCM.NativeRetainedKernelComplementInverse.response_unique, "Zeta23.CCM.Step123SameStateN23", "THEOREM"),
+    (``Zeta23.CCM.NativeRetainedKernelComplementInverse.response_eq_sub_kernelTerm, "Zeta23.CCM.Step123SameStateN23", "THEOREM"),
+    (``Zeta23.CCM.NativeRetainedKernelComplementInverse.kernelTerm_mem, "Zeta23.CCM.Step123SameStateN23", "THEOREM"),
+    (``Zeta23.CCM.NativeRetainedKernelComplementInverse.decomposition, "Zeta23.CCM.Step123SameStateN23", "THEOREM"),
+    (``Zeta23.CCM.NativeRetainedKernelComplementInverse.solution_decomposition, "Zeta23.CCM.Step123SameStateN23", "THEOREM"),
+    (``Zeta23.CCM.nativeKernelComplementResponse_apply_eq, "Zeta23.CCM.Step123SameStateN23", "THEOREM"),
+    (``Zeta23.CCM.nativeKernelComplementResponse_mem_kernelOrthogonal, "Zeta23.CCM.Step123SameStateN23", "THEOREM"),
+    (``Zeta23.CCM.NativeRetainedKernelComplementInverse.of_apply, "Zeta23.CCM.Step123SameStateN23", "THEOREM"),
+    (``Zeta23.CCM.poleNeutral_eigen_pair_source_pairing_eq_zero, "Zeta23.CCM.Step123SameStateN23", "THEOREM"),
+    (``Zeta23.CCM.poleNeutral_shiftedKernels_nontrivial_of_eq_bottoms, "Zeta23.CCM.Step123SameStateN23", "THEOREM"),
+    (``Zeta23.CCM.PoleNeutralTiedEvenRetainedInverseFacts, "Zeta23.CCM.Step123SameStateN23", "INDUCTIVE"),
+    (``Zeta23.CCM.PoleNeutralTiedEvenRetainedInverseFacts.tied, "Zeta23.CCM.Step123SameStateN23", "THEOREM"),
+    (``Zeta23.CCM.PoleNeutralTiedEvenRetainedInverseFacts.source_eq, "Zeta23.CCM.Step123SameStateN23", "THEOREM"),
+    (``Zeta23.CCM.PoleNeutralTiedEvenRetainedInverseFacts.kernelProjection_source_eq_zero, "Zeta23.CCM.Step123SameStateN23", "THEOREM"),
+    (``Zeta23.CCM.PoleNeutralTiedEvenRetainedInverseFacts.kernel_compatibility_cases, "Zeta23.CCM.Step123SameStateN23", "THEOREM"),
+    (``Zeta23.CCM.PoleNeutralTiedEvenRetainedInverseFacts.odd_eigen_pairing, "Zeta23.CCM.Step123SameStateN23", "THEOREM"),
+    (``Zeta23.CCM.PoleNeutralTiedEvenRetainedInverseFacts.inverse, "Zeta23.CCM.Step123SameStateN23", "THEOREM"),
+    (``Zeta23.CCM.PoleNeutralTiedEvenRetainedInverseFacts.kernelTerm_eq_indexKernelComponent, "Zeta23.CCM.Step123SameStateN23", "THEOREM"),
+    (``Zeta23.CCM.PoleNeutralTiedEvenRetainedInverseFacts.response_eq_indexComplementComponent, "Zeta23.CCM.Step123SameStateN23", "THEOREM"),
+    (``Zeta23.CCM.PoleNeutralTiedOddRetainedInverseFacts, "Zeta23.CCM.Step123SameStateN23", "INDUCTIVE"),
+    (``Zeta23.CCM.PoleNeutralTiedOddRetainedInverseFacts.tied, "Zeta23.CCM.Step123SameStateN23", "THEOREM"),
+    (``Zeta23.CCM.PoleNeutralTiedOddRetainedInverseFacts.kernelProjection_source_eq_zero, "Zeta23.CCM.Step123SameStateN23", "THEOREM"),
+    (``Zeta23.CCM.PoleNeutralTiedOddRetainedInverseFacts.kernel_compatibility_cases, "Zeta23.CCM.Step123SameStateN23", "THEOREM"),
+    (``Zeta23.CCM.PoleNeutralTiedOddRetainedInverseFacts.even_eigen_pairing, "Zeta23.CCM.Step123SameStateN23", "THEOREM"),
+    (``Zeta23.CCM.PoleNeutralTiedOddRetainedInverseFacts.inverse, "Zeta23.CCM.Step123SameStateN23", "THEOREM"),
+    (``Zeta23.CCM.PoleNeutralTiedStoredRetainedInverseFacts, "Zeta23.CCM.Step123SameStateN23", "DEFINITION"),
+    (``Zeta23.CCM.PoleNeutralTiedEvenRetainedInverseFacts.of_tied, "Zeta23.CCM.Step123SameStateN23", "THEOREM"),
+    (``Zeta23.CCM.PoleNeutralTiedOddRetainedInverseFacts.of_tied, "Zeta23.CCM.Step123SameStateN23", "THEOREM"),
+    (``Zeta23.CCM.PoleNeutralTiedStoredRetainedInverseFacts.of_tied, "Zeta23.CCM.Step123SameStateN23", "THEOREM"),
+    (``Zeta23.CCM.PoleNeutralTiedStoredRetainedInverseFacts.even_view, "Zeta23.CCM.Step123SameStateN23", "THEOREM"),
+    (``Zeta23.CCM.PoleNeutralTiedStoredRetainedInverseFacts.odd_view, "Zeta23.CCM.Step123SameStateN23", "THEOREM"),
+    (``Zeta23.CCM.PoleNeutralTieRetainedCompletion, "Zeta23.CCM.Step123SameStateN23", "INDUCTIVE"),
+    (``Zeta23.CCM.PoleNeutralTieRetainedCompletion.lam_eq_even_bottom, "Zeta23.CCM.Step123SameStateN23", "THEOREM"),
+    (``Zeta23.CCM.PoleNeutralTieRetainedCompletion.lam_eq_odd_bottom, "Zeta23.CCM.Step123SameStateN23", "THEOREM"),
+    (``Zeta23.CCM.PoleNeutralTieRetainedCompletion.positivity, "Zeta23.CCM.Step123SameStateN23", "THEOREM"),
+    (``Zeta23.CCM.PoleNeutralTieRetainedCompletion.even_kernel_nontrivial, "Zeta23.CCM.Step123SameStateN23", "THEOREM"),
+    (``Zeta23.CCM.PoleNeutralTieRetainedCompletion.odd_kernel_nontrivial, "Zeta23.CCM.Step123SameStateN23", "THEOREM"),
+    (``Zeta23.CCM.PoleNeutralTieRetainedCompletion.stored, "Zeta23.CCM.Step123SameStateN23", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeOutput.n23_retained_tie, "Zeta23.CCM.Step123SameStateN23", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeOutput.n23_retained_tie_even, "Zeta23.CCM.Step123SameStateN23", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeOutput.n23_retained_tie_odd, "Zeta23.CCM.Step123SameStateN23", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeOutput.n23_tie_even_readout, "Zeta23.CCM.Step123SameStateN23", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeOutput.n23_tie_odd_readout, "Zeta23.CCM.Step123SameStateN23", "THEOREM"),
+    (``Zeta23.CCM.n36_weilTest_zero_eq_pairing, "Zeta23.CCM.Step123SameStateN36", "THEOREM"),
+    (``Zeta23.CCM.n36_nativeWeilArchResponse_add, "Zeta23.CCM.Step123SameStateN36", "THEOREM"),
+    (``Zeta23.CCM.n36_nativeWeilPoleResponse_add, "Zeta23.CCM.Step123SameStateN36", "THEOREM"),
+    (``Zeta23.CCM.n36_nativeWeilPrimeResponse_add, "Zeta23.CCM.Step123SameStateN36", "THEOREM"),
+    (``Zeta23.CCM.n36_nativeWeilResponse_add, "Zeta23.CCM.Step123SameStateN36", "THEOREM"),
+    (``Zeta23.CCM.n36_fixedOriginalSincPhaseTrial_paperFT_poles, "Zeta23.CCM.Step123SameStateN36", "THEOREM"),
+    (``Zeta23.CCM.n36_originalTrial_poleResponse_eq_zero, "Zeta23.CCM.Step123SameStateN36", "THEOREM"),
+    (``Zeta23.CCM.n36_nativeSynthesis_regular, "Zeta23.CCM.Step123SameStateN36", "THEOREM"),
+    (``Zeta23.CCM.n36_predecessorEmbedding_synthesis, "Zeta23.CCM.Step123SameStateN36", "THEOREM"),
+    (``Zeta23.CCM.n36_predecessorEmbedding_inner_eq_weilTest, "Zeta23.CCM.Step123SameStateN36", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeOutput.forcingTest, "Zeta23.CCM.Step123SameStateN36", "DEFINITION"),
+    (``Zeta23.CCM.Step123NativeOutput.storedFiniteDetector, "Zeta23.CCM.Step123SameStateN36", "DEFINITION"),
+    (``Zeta23.CCM.Step123NativeOutput.archChannel, "Zeta23.CCM.Step123SameStateN36", "DEFINITION"),
+    (``Zeta23.CCM.Step123NativeOutput.poleChannel, "Zeta23.CCM.Step123SameStateN36", "DEFINITION"),
+    (``Zeta23.CCM.Step123NativeOutput.primeChannel, "Zeta23.CCM.Step123SameStateN36", "DEFINITION"),
+    (``Zeta23.CCM.Step123NativeOutput.fkHistoryChannel, "Zeta23.CCM.Step123SameStateN36", "DEFINITION"),
+    (``Zeta23.CCM.Step123NativeOutput.spectralShiftChannel, "Zeta23.CCM.Step123SameStateN36", "DEFINITION"),
+    (``Zeta23.CCM.Step123NativeOutput.approximationChannel, "Zeta23.CCM.Step123SameStateN36", "DEFINITION"),
+    (``Zeta23.CCM.Step123NativeOutput.storedFiniteDetector_eq_originalTrial_add_error, "Zeta23.CCM.Step123SameStateN36", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeOutput.n36_forcing_coordinate, "Zeta23.CCM.Step123SameStateN36", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeOutput.n36_sources_regular, "Zeta23.CCM.Step123SameStateN36", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeOutput.n36_channel_expansion, "Zeta23.CCM.Step123SameStateN36", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeOutput.n36_poleChannel_eq_zero, "Zeta23.CCM.Step123SameStateN36", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeOutput.n36_primeChannel_fourHistories, "Zeta23.CCM.Step123SameStateN36", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeOutput.n36_archChannel_fourier, "Zeta23.CCM.Step123SameStateN36", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeOutput.n36_primeChannel_primePowers, "Zeta23.CCM.Step123SameStateN36", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeOutput.n36_spectralShiftChannel_eq, "Zeta23.CCM.Step123SameStateN36", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeOutput.n36_approximationChannel_bound, "Zeta23.CCM.Step123SameStateN36", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeOutput.n36_primeChannel_sixteenKappa_bound, "Zeta23.CCM.Step123SameStateN36", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeOutput.n36_forcing_source_channels_eq, "Zeta23.CCM.Step123SameStateN36", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeOutput.n36_qX_bridge, "Zeta23.CCM.Step123SameStateN36", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeOutput.n36_forcing_source_channels_explicit, "Zeta23.CCM.Step123SameStateN36", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeOutput.ForcingSourceChannels, "Zeta23.CCM.Step123SameStateN36", "INDUCTIVE"),
+    (``Zeta23.CCM.Step123NativeOutput.ForcingSourceChannels.coordinate, "Zeta23.CCM.Step123SameStateN36", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeOutput.ForcingSourceChannels.finiteDetector_split, "Zeta23.CCM.Step123SameStateN36", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeOutput.ForcingSourceChannels.expansion, "Zeta23.CCM.Step123SameStateN36", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeOutput.ForcingSourceChannels.pole_zero, "Zeta23.CCM.Step123SameStateN36", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeOutput.ForcingSourceChannels.four_histories, "Zeta23.CCM.Step123SameStateN36", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeOutput.ForcingSourceChannels.arch_fourier, "Zeta23.CCM.Step123SameStateN36", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeOutput.ForcingSourceChannels.prime_powers, "Zeta23.CCM.Step123SameStateN36", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeOutput.ForcingSourceChannels.spectral_shift, "Zeta23.CCM.Step123SameStateN36", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeOutput.ForcingSourceChannels.prime_local_X_bound, "Zeta23.CCM.Step123SameStateN36", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeOutput.ForcingSourceChannels.approximation_bound, "Zeta23.CCM.Step123SameStateN36", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeOutput.ForcingSourceChannels.qX_bridge, "Zeta23.CCM.Step123SameStateN36", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeOutput.n36_forcingSourceChannels, "Zeta23.CCM.Step123SameStateN36", "THEOREM"),
+    (``Zeta23.CCM.step123NativeOutput_imageErrors_forcingError_at_sourceThreshold, "Zeta23.ExceptionalZero.Step123SameStateN37", "THEOREM"),
+    (``Zeta23.CCM.step123NativeOutput_imageErrors_forcingError_commonThreshold, "Zeta23.ExceptionalZero.Step123SameStateN37", "THEOREM"),
+    (``Zeta23.CCM.step123NativeOutput_forcingError_quarticRate_commonThreshold, "Zeta23.ExceptionalZero.Step123SameStateN37", "THEOREM"),
+    (``Zeta23.CCM.step123NativeOutput_forcingError_etaBound_commonThreshold, "Zeta23.ExceptionalZero.Step123SameStateN37", "THEOREM"),
+    (``Zeta23.CCM.step123NativeOutput_storedDetectorForcingError_etaBound_commonThreshold, "Zeta23.ExceptionalZero.Step123SameStateN37", "THEOREM"),
+    (``Zeta23.ExceptionalZero.exists_generatedStep123Output_forcingError_cofinal_atLateness, "Zeta23.ExceptionalZero.Step123SameStateN37", "THEOREM"),
+    (``Zeta23.CCM.canonicalNativeParityLegalView, "Zeta23.CCM.Step123SameStateN38", "DEFINITION"),
+    (``Zeta23.CCM.canonicalParityPoleLegalNormal, "Zeta23.CCM.Step123SameStateN38", "DEFINITION"),
+    (``Zeta23.CCM.canonicalParityPolePhysicalNormal, "Zeta23.CCM.Step123SameStateN38", "DEFINITION"),
+    (``Zeta23.CCM.Step123NativeOutput.originalDetectorPhysicalSource, "Zeta23.CCM.Step123SameStateN38", "DEFINITION"),
+    (``Zeta23.CCM.Step123NativeOutput.originalDetectorPhysicalSource_contDiff, "Zeta23.CCM.Step123SameStateN38", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeOutput.originalDetectorPhysicalSource_compact, "Zeta23.CCM.Step123SameStateN38", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeOutput.physicalFiniteImage_ae_originalDetector, "Zeta23.CCM.Step123SameStateN38", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeOutput.originalDetectorNativeResponseL2, "Zeta23.CCM.Step123SameStateN38", "DEFINITION"),
+    (``Zeta23.CCM.Step123NativeOutput.originalDetectorNativeResponseL2_ae, "Zeta23.CCM.Step123SameStateN38", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeOutput.originalDetectorLegalResponseCoordinate, "Zeta23.CCM.Step123SameStateN38", "DEFINITION"),
+    (``Zeta23.CCM.Step123NativeOutput.originalDetectorLegalProjectedResponse, "Zeta23.CCM.Step123SameStateN38", "DEFINITION"),
+    (``Zeta23.CCM.canonicalLegalPhysicalProjection_inner, "Zeta23.CCM.Step123SameStateN38", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeOutput.originalDetectorLegalResponseCoordinate_inner, "Zeta23.CCM.Step123SameStateN38", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeOutput.originalDetectorLegalResponseCoordinate_eq_parityCompressed, "Zeta23.CCM.Step123SameStateN38", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeOutput.originalDetectorLegalResponseCoordinate_mem_parity, "Zeta23.CCM.Step123SameStateN38", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeOutput.originalDetectorNeutralResponseCoordinate, "Zeta23.CCM.Step123SameStateN38", "DEFINITION"),
+    (``Zeta23.CCM.Step123NativeOutput.originalDetectorNeutralProjectedResponse, "Zeta23.CCM.Step123SameStateN38", "DEFINITION"),
+    (``Zeta23.CCM.Step123NativeOutput.originalDetectorPoleNormalResidual, "Zeta23.CCM.Step123SameStateN38", "DEFINITION"),
+    (``Zeta23.CCM.Step123NativeOutput.originalDetectorOuterGalerkinResidual, "Zeta23.CCM.Step123SameStateN38", "DEFINITION"),
+    (``Zeta23.CCM.Step123NativeOutput.originalDetectorOuterGalerkin_orthogonal, "Zeta23.CCM.Step123SameStateN38", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeOutput.originalDetectorPoleNormal_orthogonal, "Zeta23.CCM.Step123SameStateN38", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeOutput.originalDetectorResponse_decomposition, "Zeta23.CCM.Step123SameStateN38", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeOutput.originalDetectorNeutralResponseCoordinate_eq, "Zeta23.CCM.Step123SameStateN38", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeOutput.originalDetectorPoleNormal_eq_smul_poleNormal, "Zeta23.CCM.Step123SameStateN38", "THEOREM"),
+    (``Zeta23.CCM.canonicalNativePhysicalProjection_predecessor_eq, "Zeta23.CCM.Step123SameStateN38", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeOutput.originalDetectorShiftedPhysicalResponse, "Zeta23.CCM.Step123SameStateN38", "DEFINITION"),
+    (``Zeta23.CCM.Step123NativeOutput.originalDetectorShiftedResponseCoordinate_eq, "Zeta23.CCM.Step123SameStateN38", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeOutput.n38_originalDetector_predecessorForcing_eq, "Zeta23.CCM.Step123SameStateN38", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeOutput.OriginalDetectorAmbientResiduals, "Zeta23.CCM.Step123SameStateN38", "INDUCTIVE"),
+    (``Zeta23.CCM.Step123NativeOutput.OriginalDetectorAmbientResiduals.physical_response_ae, "Zeta23.CCM.Step123SameStateN38", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeOutput.OriginalDetectorAmbientResiduals.exact_recombination, "Zeta23.CCM.Step123SameStateN38", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeOutput.OriginalDetectorAmbientResiduals.full_legal_projection_preserves_original_parity, "Zeta23.CCM.Step123SameStateN38", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeOutput.OriginalDetectorAmbientResiduals.true_pole_normal_line, "Zeta23.CCM.Step123SameStateN38", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeOutput.OriginalDetectorAmbientResiduals.outer_orthogonal_to_legal, "Zeta23.CCM.Step123SameStateN38", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeOutput.OriginalDetectorAmbientResiduals.normal_orthogonal_to_neutral, "Zeta23.CCM.Step123SameStateN38", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeOutput.OriginalDetectorAmbientResiduals.actual_operator_coordinate, "Zeta23.CCM.Step123SameStateN38", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeOutput.OriginalDetectorAmbientResiduals.actual_predecessor_forcing, "Zeta23.CCM.Step123SameStateN38", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeOutput.n38_forcing_ambient_residuals, "Zeta23.CCM.Step123SameStateN38", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeOutput.originalWeilEnergy_neg, "Zeta23.CCM.Step123SameStateN39", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeOutput.originalInterior_not_ae_zero, "Zeta23.CCM.Step123SameStateN39", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeOutput.originalInterior_ne_zero, "Zeta23.CCM.Step123SameStateN39", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeOutput.originalLeftCausalTail, "Zeta23.CCM.Step123SameStateN39", "DEFINITION"),
+    (``Zeta23.CCM.Step123NativeOutput.originalRightCausalTail, "Zeta23.CCM.Step123SameStateN39", "DEFINITION"),
+    (``Zeta23.CCM.Step123NativeOutput.originalLeftCausalTail_eq_indicator, "Zeta23.CCM.Step123SameStateN39", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeOutput.originalRightCausalTail_eq_indicator, "Zeta23.CCM.Step123SameStateN39", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeOutput.originalCausalTails_zero_of_nonpos, "Zeta23.CCM.Step123SameStateN39", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeOutput.originalResponse_causalTail_reconstruction, "Zeta23.CCM.Step123SameStateN39", "THEOREM"),
+    (``Zeta23.ExceptionalZero.GeneratedStep123Output.originalWeilEnergy_neg, "Zeta23.ExceptionalZero.Step123SameStateN39", "THEOREM"),
+    (``Zeta23.ExceptionalZero.GeneratedStep123Output.originalInterior_not_ae_zero, "Zeta23.ExceptionalZero.Step123SameStateN39", "THEOREM"),
+    (``Zeta23.ExceptionalZero.GeneratedStep123Output.originalInterior_ne_zero, "Zeta23.ExceptionalZero.Step123SameStateN39", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeFieldRecord, "Zeta23.CCM.Step123NativeFieldRecord", "INDUCTIVE"),
+    (``Zeta23.CCM.Step123NativeFieldRecord.n01_source_scale, "Zeta23.CCM.Step123NativeFieldRecord", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeFieldRecord.n02_source_q_k_j, "Zeta23.CCM.Step123NativeFieldRecord", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeFieldRecord.n03_source_properties, "Zeta23.CCM.Step123NativeFieldRecord", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeFieldRecord.n04_source_bounds, "Zeta23.CCM.Step123NativeFieldRecord", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeFieldRecord.n05_trial_index, "Zeta23.CCM.Step123NativeFieldRecord", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeFieldRecord.n06_trial_original, "Zeta23.CCM.Step123NativeFieldRecord", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeFieldRecord.n07_trial_original_properties, "Zeta23.CCM.Step123NativeFieldRecord", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeFieldRecord.n08_image_raw, "Zeta23.CCM.Step123NativeFieldRecord", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeFieldRecord.n09_image_positive_primitive, "Zeta23.CCM.Step123NativeFieldRecord", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeFieldRecord.n10_image_endpoint_jets, "Zeta23.CCM.Step123NativeFieldRecord", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeFieldRecord.n11_image_native_p, "Zeta23.CCM.Step123NativeFieldRecord", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeFieldRecord.n12_image_unit_and_poles, "Zeta23.CCM.Step123NativeFieldRecord", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeFieldRecord.n13_image_physical_equality, "Zeta23.CCM.Step123NativeFieldRecord", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeFieldRecord.n15_phase_full_matrices, "Zeta23.CCM.Step123NativeFieldRecord", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeFieldRecord.n16_phase_scalar_contract, "Zeta23.CCM.Step123NativeFieldRecord", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeFieldRecord.n17_retained_state, "Zeta23.CCM.Step123NativeFieldRecord", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeFieldRecord.n18_retained_eta_lambda, "Zeta23.CCM.Step123NativeFieldRecord", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeFieldRecord.n19_retained_inverses, "Zeta23.CCM.Step123NativeFieldRecord", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeFieldRecord.n20_retained_ground, "Zeta23.CCM.Step123NativeFieldRecord", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeFieldRecord.n22_retained_source_correction, "Zeta23.CCM.Step123NativeFieldRecord", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeFieldRecord.n24_retained_admissible, "Zeta23.CCM.Step123NativeFieldRecord", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeFieldRecord.n25_schur_detector, "Zeta23.CCM.Step123NativeFieldRecord", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeFieldRecord.n26_schur_ground, "Zeta23.CCM.Step123NativeFieldRecord", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeFieldRecord.n27_residual_neutral, "Zeta23.CCM.Step123NativeFieldRecord", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeFieldRecord.n28_residual_gram, "Zeta23.CCM.Step123NativeFieldRecord", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeFieldRecord.n29_native_X_U, "Zeta23.CCM.Step123NativeFieldRecord", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeFieldRecord.n30_native_input_decay, "Zeta23.CCM.Step123NativeFieldRecord", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeFieldRecord.n31_native_a_Y, "Zeta23.CCM.Step123NativeFieldRecord", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeFieldRecord.n32_native_transforms, "Zeta23.CCM.Step123NativeFieldRecord", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeFieldRecord.n33_range_operator, "Zeta23.CCM.Step123NativeFieldRecord", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeFieldRecord.n34_range_residual_iteration, "Zeta23.CCM.Step123NativeFieldRecord", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeFieldRecord.n35_forcing_direct, "Zeta23.CCM.Step123NativeFieldRecord", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeFieldRecord.n39_exterior_original, "Zeta23.CCM.Step123NativeFieldRecord", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeFieldRecord.n40_exterior_history, "Zeta23.CCM.Step123NativeFieldRecord", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeFieldRecord.fromNative, "Zeta23.CCM.Step123NativeFieldRecord", "THEOREM"),
+    (``Zeta23.ExceptionalZero.step123SameStateForcingConstant, "Zeta23.ExceptionalZero.Step123CompleteOutput", "DEFINITION"),
+    (``Zeta23.ExceptionalZero.step123SameStateWeilConstant, "Zeta23.ExceptionalZero.Step123CompleteOutput", "DEFINITION"),
+    (``Zeta23.ExceptionalZero.step123SameStateThreshold, "Zeta23.ExceptionalZero.Step123CompleteOutput", "DEFINITION"),
+    (``Zeta23.ExceptionalZero.step123SameStateForcingConstant_pos, "Zeta23.ExceptionalZero.Step123CompleteOutput", "THEOREM"),
+    (``Zeta23.ExceptionalZero.step123SameStateWeilConstant_pos, "Zeta23.ExceptionalZero.Step123CompleteOutput", "THEOREM"),
+    (``Zeta23.ExceptionalZero.four_le_step123SameStateThreshold, "Zeta23.ExceptionalZero.Step123CompleteOutput", "THEOREM"),
+    (``Zeta23.ExceptionalZero.Step123ImageErrorRates, "Zeta23.ExceptionalZero.Step123CompleteOutput", "DEFINITION"),
+    (``Zeta23.ExceptionalZero.step123ImageErrorRates_of_threshold, "Zeta23.ExceptionalZero.Step123CompleteOutput", "THEOREM"),
+    (``Zeta23.ExceptionalZero.Step123ForcingErrorRates, "Zeta23.ExceptionalZero.Step123CompleteOutput", "DEFINITION"),
+    (``Zeta23.ExceptionalZero.step123ForcingErrorRates_of_threshold, "Zeta23.ExceptionalZero.Step123CompleteOutput", "THEOREM"),
+    (``Zeta23.ExceptionalZero.Step123SameStateFieldRecord, "Zeta23.ExceptionalZero.Step123CompleteOutput", "INDUCTIVE"),
+    (``Zeta23.ExceptionalZero.Step123SameStateFieldRecord.n14_image_errors, "Zeta23.ExceptionalZero.Step123CompleteOutput", "THEOREM"),
+    (``Zeta23.ExceptionalZero.Step123SameStateFieldRecord.n21_retained_branch, "Zeta23.ExceptionalZero.Step123CompleteOutput", "THEOREM"),
+    (``Zeta23.ExceptionalZero.Step123SameStateFieldRecord.n23_retained_tie, "Zeta23.ExceptionalZero.Step123CompleteOutput", "THEOREM"),
+    (``Zeta23.ExceptionalZero.Step123SameStateFieldRecord.n36_forcing_source_channels, "Zeta23.ExceptionalZero.Step123CompleteOutput", "THEOREM"),
+    (``Zeta23.ExceptionalZero.Step123SameStateFieldRecord.n38_forcing_ambient_residuals, "Zeta23.ExceptionalZero.Step123CompleteOutput", "THEOREM"),
+    (``Zeta23.ExceptionalZero.Step123SameStateFieldRecord.n37_forcing_error, "Zeta23.ExceptionalZero.Step123CompleteOutput", "THEOREM"),
+    (``Zeta23.ExceptionalZero.Step123SameStateFieldRecord.fromNative, "Zeta23.ExceptionalZero.Step123CompleteOutput", "THEOREM"),
+    (``Zeta23.ExceptionalZero.Step123CompleteNativeOutput, "Zeta23.ExceptionalZero.Step123CompleteOutput", "INDUCTIVE"),
+    (``Zeta23.ExceptionalZero.Step123CompleteNativeOutput.native, "Zeta23.ExceptionalZero.Step123CompleteOutput", "DEFINITION"),
+    (``Zeta23.ExceptionalZero.Step123CompleteNativeOutput.fields, "Zeta23.ExceptionalZero.Step123CompleteOutput", "THEOREM"),
+    (``Zeta23.ExceptionalZero.Step123CompleteNativeOutput.sameState, "Zeta23.ExceptionalZero.Step123CompleteOutput", "THEOREM"),
+    (``Zeta23.ExceptionalZero.Step123CompleteNativeOutput.ofNative, "Zeta23.ExceptionalZero.Step123CompleteOutput", "DEFINITION"),
+    (``Zeta23.ExceptionalZero.GeneratedStep123RangeObstruction, "Zeta23.ExceptionalZero.Step123CompleteOutput", "INDUCTIVE"),
+    (``Zeta23.ExceptionalZero.GeneratedStep123RangeObstruction.reflected_zero, "Zeta23.ExceptionalZero.Step123CompleteOutput", "THEOREM"),
+    (``Zeta23.ExceptionalZero.GeneratedStep123RangeObstruction.multiplicity, "Zeta23.ExceptionalZero.Step123CompleteOutput", "THEOREM"),
+    (``Zeta23.ExceptionalZero.GeneratedStep123RangeObstruction.damping, "Zeta23.ExceptionalZero.Step123CompleteOutput", "THEOREM"),
+    (``Zeta23.ExceptionalZero.GeneratedStep123RangeObstruction.transform_point, "Zeta23.ExceptionalZero.Step123CompleteOutput", "THEOREM"),
+    (``Zeta23.ExceptionalZero.GeneratedStep123RangeObstruction.laplace_order, "Zeta23.ExceptionalZero.Step123CompleteOutput", "THEOREM"),
+    (``Zeta23.ExceptionalZero.GeneratedStep123RangeObstruction.witness_annihilates_range, "Zeta23.ExceptionalZero.Step123CompleteOutput", "THEOREM"),
+    (``Zeta23.ExceptionalZero.GeneratedStep123RangeObstruction.input_jet_value, "Zeta23.ExceptionalZero.Step123CompleteOutput", "THEOREM"),
+    (``Zeta23.ExceptionalZero.GeneratedStep123RangeObstruction.input_jet_ne_zero, "Zeta23.ExceptionalZero.Step123CompleteOutput", "THEOREM"),
+    (``Zeta23.ExceptionalZero.GeneratedStep123RangeObstruction.nonrange, "Zeta23.ExceptionalZero.Step123CompleteOutput", "THEOREM"),
+    (``Zeta23.ExceptionalZero.GeneratedStep123RangeObstruction.residual_lower, "Zeta23.ExceptionalZero.Step123CompleteOutput", "THEOREM"),
+    (``Zeta23.ExceptionalZero.GeneratedStep123RangeObstruction.ofOffLine, "Zeta23.ExceptionalZero.Step123CompleteOutput", "THEOREM"),
+    (``Zeta23.ExceptionalZero.GeneratedStep123CompleteOutput, "Zeta23.ExceptionalZero.Step123CompleteOutput", "INDUCTIVE"),
+    (``Zeta23.ExceptionalZero.GeneratedStep123CompleteOutput.generated, "Zeta23.ExceptionalZero.Step123CompleteOutput", "DEFINITION"),
+    (``Zeta23.ExceptionalZero.GeneratedStep123CompleteOutput.fields, "Zeta23.ExceptionalZero.Step123CompleteOutput", "THEOREM"),
+    (``Zeta23.ExceptionalZero.GeneratedStep123CompleteOutput.sameState, "Zeta23.ExceptionalZero.Step123CompleteOutput", "THEOREM"),
+    (``Zeta23.ExceptionalZero.GeneratedStep123CompleteOutput.thresholds_paid, "Zeta23.ExceptionalZero.Step123CompleteOutput", "THEOREM"),
+    (``Zeta23.ExceptionalZero.GeneratedStep123CompleteOutput.rangeObstruction, "Zeta23.ExceptionalZero.Step123CompleteOutput", "THEOREM"),
+    (``Zeta23.ExceptionalZero.GeneratedStep123CompleteOutput.completeNative, "Zeta23.ExceptionalZero.Step123CompleteOutput", "DEFINITION"),
+    (``Zeta23.ExceptionalZero.GeneratedStep123CompleteOutput.imageErrors, "Zeta23.ExceptionalZero.Step123CompleteOutput", "THEOREM"),
+    (``Zeta23.ExceptionalZero.GeneratedStep123CompleteOutput.forcingErrors, "Zeta23.ExceptionalZero.Step123CompleteOutput", "THEOREM"),
+    (``Zeta23.ExceptionalZero.GeneratedStep123CompleteOutput.composed, "Zeta23.ExceptionalZero.Step123CompleteOutput", "DEFINITION"),
+    (``Zeta23.ExceptionalZero.GeneratedStep123Output.weakenLateness, "Zeta23.ExceptionalZero.Step123CompleteOutput", "DEFINITION"),
+    (``Zeta23.ExceptionalZero.GeneratedStep123CompleteOutput.fromGenerated, "Zeta23.ExceptionalZero.Step123CompleteOutput", "DEFINITION"),
+    (``Zeta23.ExceptionalZero.GeneratedStep123Output.complete, "Zeta23.ExceptionalZero.Step123CompleteOutput", "DEFINITION"),
+    (``Zeta23.ExceptionalZero.exists_generatedStep123CompleteOutput, "Zeta23.ExceptionalZero.Step123CompleteOutput", "THEOREM"),
+    (``Zeta23.ExceptionalZero.exists_eachPhase_cofinal_generatedStep123CompleteOutput, "Zeta23.ExceptionalZero.Step123CompleteOutput", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeOutput.complete, "Zeta23.ExceptionalZero.Step123CompleteOutput", "DEFINITION"),
+    (``Zeta23.CCM.Step123ArithmeticView, "Zeta23.ExceptionalZero.Step123CompleteOutput", "INDUCTIVE"),
+    (``Zeta23.CCM.Step123ArithmeticView.values, "Zeta23.ExceptionalZero.Step123CompleteOutput", "DEFINITION"),
+    (``Zeta23.CCM.Step123ArithmeticView.fixed_values, "Zeta23.ExceptionalZero.Step123CompleteOutput", "THEOREM"),
+    (``Zeta23.CCM.Step123ArithmeticView.fields, "Zeta23.ExceptionalZero.Step123CompleteOutput", "THEOREM"),
+    (``Zeta23.CCM.Step123RangeView, "Zeta23.ExceptionalZero.Step123CompleteOutput", "INDUCTIVE"),
+    (``Zeta23.CCM.Step123RangeView.values, "Zeta23.ExceptionalZero.Step123CompleteOutput", "DEFINITION"),
+    (``Zeta23.CCM.Step123RangeView.fixed_values, "Zeta23.ExceptionalZero.Step123CompleteOutput", "THEOREM"),
+    (``Zeta23.CCM.Step123RangeView.fields, "Zeta23.ExceptionalZero.Step123CompleteOutput", "THEOREM"),
+    (``Zeta23.CCM.Step123StructuralView, "Zeta23.ExceptionalZero.Step123CompleteOutput", "INDUCTIVE"),
+    (``Zeta23.CCM.Step123StructuralView.retained, "Zeta23.ExceptionalZero.Step123CompleteOutput", "DEFINITION"),
+    (``Zeta23.CCM.Step123StructuralView.retained_eq, "Zeta23.ExceptionalZero.Step123CompleteOutput", "THEOREM"),
+    (``Zeta23.CCM.Step123StructuralView.fields, "Zeta23.ExceptionalZero.Step123CompleteOutput", "THEOREM"),
+    (``Zeta23.CCM.Step123StructuralView.sameState, "Zeta23.ExceptionalZero.Step123CompleteOutput", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeOutput.arithmeticView, "Zeta23.ExceptionalZero.Step123CompleteOutput", "DEFINITION"),
+    (``Zeta23.CCM.Step123NativeOutput.rangeView, "Zeta23.ExceptionalZero.Step123CompleteOutput", "DEFINITION"),
+    (``Zeta23.CCM.Step123NativeOutput.structuralView, "Zeta23.ExceptionalZero.Step123CompleteOutput", "DEFINITION"),
+    (``Zeta23.RHRC.consumeN01, "Zeta23.RHRC.Step123CompleteOutputConsumer", "DEFINITION"),
+    (``Zeta23.RHRC.consumeN02, "Zeta23.RHRC.Step123CompleteOutputConsumer", "DEFINITION"),
+    (``Zeta23.RHRC.consumeN03, "Zeta23.RHRC.Step123CompleteOutputConsumer", "DEFINITION"),
+    (``Zeta23.RHRC.consumeN04, "Zeta23.RHRC.Step123CompleteOutputConsumer", "DEFINITION"),
+    (``Zeta23.RHRC.consumeN05, "Zeta23.RHRC.Step123CompleteOutputConsumer", "DEFINITION"),
+    (``Zeta23.RHRC.consumeN06, "Zeta23.RHRC.Step123CompleteOutputConsumer", "DEFINITION"),
+    (``Zeta23.RHRC.consumeN07, "Zeta23.RHRC.Step123CompleteOutputConsumer", "DEFINITION"),
+    (``Zeta23.RHRC.consumeN08, "Zeta23.RHRC.Step123CompleteOutputConsumer", "DEFINITION"),
+    (``Zeta23.RHRC.consumeN09, "Zeta23.RHRC.Step123CompleteOutputConsumer", "DEFINITION"),
+    (``Zeta23.RHRC.consumeN10, "Zeta23.RHRC.Step123CompleteOutputConsumer", "DEFINITION"),
+    (``Zeta23.RHRC.consumeN11, "Zeta23.RHRC.Step123CompleteOutputConsumer", "DEFINITION"),
+    (``Zeta23.RHRC.consumeN12, "Zeta23.RHRC.Step123CompleteOutputConsumer", "DEFINITION"),
+    (``Zeta23.RHRC.consumeN13, "Zeta23.RHRC.Step123CompleteOutputConsumer", "DEFINITION"),
+    (``Zeta23.RHRC.consumeN14, "Zeta23.RHRC.Step123CompleteOutputConsumer", "DEFINITION"),
+    (``Zeta23.RHRC.consumeN15, "Zeta23.RHRC.Step123CompleteOutputConsumer", "DEFINITION"),
+    (``Zeta23.RHRC.consumeN16, "Zeta23.RHRC.Step123CompleteOutputConsumer", "DEFINITION"),
+    (``Zeta23.RHRC.consumeN17, "Zeta23.RHRC.Step123CompleteOutputConsumer", "DEFINITION"),
+    (``Zeta23.RHRC.consumeN18, "Zeta23.RHRC.Step123CompleteOutputConsumer", "DEFINITION"),
+    (``Zeta23.RHRC.consumeN19, "Zeta23.RHRC.Step123CompleteOutputConsumer", "DEFINITION"),
+    (``Zeta23.RHRC.consumeN20, "Zeta23.RHRC.Step123CompleteOutputConsumer", "DEFINITION"),
+    (``Zeta23.RHRC.consumeN21, "Zeta23.RHRC.Step123CompleteOutputConsumer", "DEFINITION"),
+    (``Zeta23.RHRC.consumeN22, "Zeta23.RHRC.Step123CompleteOutputConsumer", "DEFINITION"),
+    (``Zeta23.RHRC.consumeN23, "Zeta23.RHRC.Step123CompleteOutputConsumer", "DEFINITION"),
+    (``Zeta23.RHRC.consumeN24, "Zeta23.RHRC.Step123CompleteOutputConsumer", "DEFINITION"),
+    (``Zeta23.RHRC.consumeN25, "Zeta23.RHRC.Step123CompleteOutputConsumer", "DEFINITION"),
+    (``Zeta23.RHRC.consumeN26, "Zeta23.RHRC.Step123CompleteOutputConsumer", "DEFINITION"),
+    (``Zeta23.RHRC.consumeN27, "Zeta23.RHRC.Step123CompleteOutputConsumer", "DEFINITION"),
+    (``Zeta23.RHRC.consumeN28, "Zeta23.RHRC.Step123CompleteOutputConsumer", "DEFINITION"),
+    (``Zeta23.RHRC.consumeN29, "Zeta23.RHRC.Step123CompleteOutputConsumer", "DEFINITION"),
+    (``Zeta23.RHRC.consumeN30, "Zeta23.RHRC.Step123CompleteOutputConsumer", "DEFINITION"),
+    (``Zeta23.RHRC.consumeN31, "Zeta23.RHRC.Step123CompleteOutputConsumer", "DEFINITION"),
+    (``Zeta23.RHRC.consumeN32, "Zeta23.RHRC.Step123CompleteOutputConsumer", "DEFINITION"),
+    (``Zeta23.RHRC.consumeN33, "Zeta23.RHRC.Step123CompleteOutputConsumer", "DEFINITION"),
+    (``Zeta23.RHRC.consumeN34, "Zeta23.RHRC.Step123CompleteOutputConsumer", "DEFINITION"),
+    (``Zeta23.RHRC.consumeN35, "Zeta23.RHRC.Step123CompleteOutputConsumer", "DEFINITION"),
+    (``Zeta23.RHRC.consumeN36, "Zeta23.RHRC.Step123CompleteOutputConsumer", "DEFINITION"),
+    (``Zeta23.RHRC.consumeN37, "Zeta23.RHRC.Step123CompleteOutputConsumer", "DEFINITION"),
+    (``Zeta23.RHRC.consumeN38, "Zeta23.RHRC.Step123CompleteOutputConsumer", "DEFINITION"),
+    (``Zeta23.RHRC.consumeN39, "Zeta23.RHRC.Step123CompleteOutputConsumer", "DEFINITION"),
+    (``Zeta23.RHRC.consumeN40, "Zeta23.RHRC.Step123CompleteOutputConsumer", "DEFINITION"),
+    (``Zeta23.RHRC.consumeG01, "Zeta23.RHRC.Step123CompleteOutputConsumer", "DEFINITION"),
+    (``Zeta23.RHRC.consumeG02, "Zeta23.RHRC.Step123CompleteOutputConsumer", "DEFINITION"),
+    (``Zeta23.RHRC.consumeG03, "Zeta23.RHRC.Step123CompleteOutputConsumer", "DEFINITION"),
+    (``Zeta23.RHRC.consumeG04, "Zeta23.RHRC.Step123CompleteOutputConsumer", "DEFINITION"),
+    (``Zeta23.CCM.OriginalDetectorPaddedFinitePhaseData.original_depth, "Zeta23.CCM.OriginalDetectorPaddedFinitePhaseDepth", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeOutput.original_depth, "Zeta23.CCM.Step123OutputData", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPaddedImageThreshold, "Zeta23.CCM.OriginalDetectorPaddedFinitePhaseDepth", "DEFINITION"),
+    (``Zeta23.CCM.four_le_originalDetectorPaddedImageThreshold, "Zeta23.CCM.OriginalDetectorPaddedFinitePhaseDepth", "THEOREM"),
+    (``Zeta23.CCM.OriginalDetectorPaddedFinitePhaseData.image_threshold_paid, "Zeta23.CCM.OriginalDetectorPaddedFinitePhaseDepth", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeOutput.image_threshold_paid, "Zeta23.CCM.Step123OutputData", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeOutput.arithmeticData, "Zeta23.CCM.Step123OutputData", "DEFINITION"),
+    (``Zeta23.CCM.Step123NativeOutput.rangeData, "Zeta23.CCM.Step123OutputData", "DEFINITION"),
+    (``Zeta23.CCM.Step123NativeOutput.structuralData, "Zeta23.CCM.Step123OutputData", "DEFINITION"),
+    (``Zeta23.CCM.NativeCompactPoleH2, "Zeta23.CCM.PoleNeutralCompactH2", "INDUCTIVE"),
+    (``Zeta23.CCM.UniversalSinc.hasSum_width, "Zeta23.CCM.UniversalSincDetector", "THEOREM"),
+    (``Zeta23.CCM.UniversalSinc.summable_norm_sinc_sub_one, "Zeta23.CCM.UniversalSincDetector", "THEOREM"),
+    (``Zeta23.CCM.UniversalSinc.multipliable_sinc, "Zeta23.CCM.UniversalSincDetector", "THEOREM"),
+    (``Zeta23.CCM.UniversalSinc.hasProdUniformlyOn_compact, "Zeta23.CCM.UniversalSincDetector", "THEOREM"),
+    (``Zeta23.CCM.UniversalSinc.analyticAt_product, "Zeta23.CCM.UniversalSincDetector", "THEOREM"),
+    (``Zeta23.CCM.UniversalSinc.fixed_coincident_factor_zeros, "Zeta23.CCM.UniversalSincDetector", "THEOREM"),
+    (``Zeta23.CCM.UniversalSinc.product_norm_ofReal_le_one, "Zeta23.CCM.UniversalSincDetectorBounds", "THEOREM"),
+    (``Zeta23.CCM.UniversalSinc.product_norm_ofReal_le_gevrey, "Zeta23.CCM.UniversalSincDetectorBounds", "THEOREM"),
+    (``Zeta23.CCM.UniversalSinc.integrable_product_ofReal_norm_moment, "Zeta23.CCM.UniversalSincDetectorInverse", "THEOREM"),
+    (``Zeta23.CCM.UniversalSinc.integrable_product_ofReal, "Zeta23.CCM.UniversalSincDetectorInverse", "THEOREM"),
+    (``Zeta23.CCM.UniversalSinc.inverseCandidate_eq_fourier, "Zeta23.CCM.UniversalSincDetectorInverse", "THEOREM"),
+    (``Zeta23.CCM.UniversalSinc.contDiff_inverseCandidate, "Zeta23.CCM.UniversalSincDetectorInverse", "THEOREM"),
+    (``Zeta23.CCM.UniversalSinc.sourceSampleSum_sub_partial_abs_le, "Zeta23.CCM.UniversalSincSourceLaw", "THEOREM"),
+    (``Zeta23.CCM.UniversalSinc.sourceSampleSum_ae_eq_unclamped, "Zeta23.CCM.UniversalSincSourceLaw", "THEOREM"),
+    (``Zeta23.CCM.UniversalSinc.originalSourceLaw_isProbabilityMeasure, "Zeta23.CCM.UniversalSincSourceLaw", "THEOREM"),
+    (``Zeta23.CCM.UniversalSinc.originalSourceLaw_interval_mass, "Zeta23.CCM.UniversalSincSourceLaw", "THEOREM"),
+    (``Zeta23.CCM.UniversalSinc.originalSourceLaw_eq_map_scale, "Zeta23.CCM.UniversalSincSourceLaw", "THEOREM"),
+    (``Zeta23.CCM.UniversalSinc.fixed_originalSourceLaw_isProbabilityMeasure, "Zeta23.CCM.UniversalSincSourceLaw", "THEOREM"),
+    (``Zeta23.CCM.UniversalSinc.charFun_centeredUnitBoxLaw, "Zeta23.CCM.UniversalSincSourceCharacteristic", "THEOREM"),
+    (``Zeta23.CCM.UniversalSinc.charFun_sourceSamplePartialSum, "Zeta23.CCM.UniversalSincSourceCharacteristic", "THEOREM"),
+    (``Zeta23.CCM.UniversalSinc.charFun_originalSourceLaw, "Zeta23.CCM.UniversalSincSourceCharacteristic", "THEOREM"),
+    (``Zeta23.CCM.UniversalSinc.originalSourceLaw_map_neg, "Zeta23.CCM.UniversalSincSourceCharacteristic", "THEOREM"),
+    (``Zeta23.CCM.UniversalSinc.uniformBoxPairDensity_eq_convolution, "Zeta23.CCM.UniversalSincBoxDensity", "THEOREM"),
+    (``Zeta23.CCM.UniversalSinc.originalBoxPairDensity_positive_normalized, "Zeta23.CCM.UniversalSincBoxDensity", "THEOREM"),
+    (``Zeta23.CCM.UniversalSinc.sourceSampleTail_abs_le, "Zeta23.CCM.UniversalSincSourceTail", "THEOREM"),
+    (``Zeta23.CCM.UniversalSinc.multipliable_sinc_tail, "Zeta23.CCM.UniversalSincSourceTail", "THEOREM"),
+    (``Zeta23.CCM.UniversalSinc.charFun_originalSourceTailLaw, "Zeta23.CCM.UniversalSincSourceTail", "THEOREM"),
+    (``Zeta23.CCM.UniversalSinc.originalSourceLaw_eq_prefix_conv_tail, "Zeta23.CCM.UniversalSincSourceTail", "THEOREM"),
+    (``Zeta23.CCM.UniversalSinc.originalDensityCandidate_nonneg, "Zeta23.CCM.UniversalSincSourceDensity", "THEOREM"),
+    (``Zeta23.CCM.UniversalSinc.continuous_originalDensityCandidate, "Zeta23.CCM.UniversalSincSourceDensity", "THEOREM"),
+    (``Zeta23.CCM.UniversalSinc.originalDensityCandidate_hasCompactSupport, "Zeta23.CCM.UniversalSincSourceDensity", "THEOREM"),
+    (``Zeta23.CCM.UniversalSinc.integral_originalDensityCandidate, "Zeta23.CCM.UniversalSincSourceDensity", "THEOREM"),
+    (``Zeta23.CCM.UniversalSinc.paperFT_originalDensityCandidate_ofReal, "Zeta23.CCM.UniversalSincSourceDensityTransform", "THEOREM"),
+    (``Zeta23.CCM.UniversalSinc.originalSourceLaw_eq_withDensity, "Zeta23.CCM.UniversalSincSourceDensityIdentification", "THEOREM"),
+    (``Zeta23.CCM.UniversalSinc.inverseCandidate_eq_originalDensityComplex, "Zeta23.CCM.UniversalSincSourceDensityIdentification", "THEOREM"),
+    (``Zeta23.CCM.UniversalSinc.contDiff_originalDensityCandidate, "Zeta23.CCM.UniversalSincSourceDensityIdentification", "THEOREM"),
+    (``Zeta23.CCM.UniversalSinc.paperFT_originalDensityComplex, "Zeta23.CCM.UniversalSincSourceComplexTransform", "THEOREM"),
+    (``Zeta23.CCM.UniversalSinc.fixed_paperFT_originalDensityComplex, "Zeta23.CCM.UniversalSincSourceComplexTransform", "THEOREM"),
+    (``Zeta23.CCM.UniversalSinc.originalDensityCandidate_even, "Zeta23.CCM.UniversalSincSourceSymmetry", "THEOREM"),
+    (``Zeta23.CCM.universalSincSource_nonneg, "Zeta23.CCM.UniversalSincSourceFacade", "THEOREM"),
+    (``Zeta23.CCM.universalSincSource_integral_one, "Zeta23.CCM.UniversalSincSourceFacade", "THEOREM"),
+    (``Zeta23.CCM.universalSincSource_support, "Zeta23.CCM.UniversalSincSourceFacade", "THEOREM"),
+    (``Zeta23.CCM.universalSincSource_contDiff, "Zeta23.CCM.UniversalSincSourceFacade", "THEOREM"),
+    (``Zeta23.CCM.paperFT_universalSincSource, "Zeta23.CCM.UniversalSincSourceFacade", "THEOREM"),
+    (``Zeta23.CCM.universalSincKernel_support, "Zeta23.CCM.UniversalSincSourceFacade", "THEOREM"),
+    (``Zeta23.CCM.universalSincSecondKernel_support, "Zeta23.CCM.UniversalSincSourceFacade", "THEOREM"),
+    (``Zeta23.CCM.universalSincSecondSource_integral, "Zeta23.CCM.UniversalSincSourceFacade", "THEOREM"),
+    (``Zeta23.CCM.nativeOriginalSource_supported, "Zeta23.CCM.OriginalSincNativeSource", "THEOREM"),
+    (``Zeta23.CCM.nativeOriginalSource_integral, "Zeta23.CCM.OriginalSincNativeSource", "THEOREM"),
+    (``Zeta23.CCM.nativeOriginalPrimeField_firstPrime_atom, "Zeta23.CCM.OriginalSincNativeSource", "THEOREM"),
+    (``Zeta23.CCM.nativeOriginalPrimeField_firstPrimeWindow_integral, "Zeta23.CCM.OriginalSincNativeMass", "THEOREM"),
+    (``Zeta23.CCM.nativeOriginalPrimeField_not_identically_zero, "Zeta23.CCM.OriginalSincNativeMass", "THEOREM"),
+    (``Zeta23.ExceptionalZero.originalSincSecondTest_eq_native_kernel, "Zeta23.ExceptionalZero.UniversalSincNativeSourceIdentification", "THEOREM"),
+    (``Zeta23.ExceptionalZero.nativeOriginalSource_cast_eq_physical, "Zeta23.ExceptionalZero.UniversalSincNativeSourceIdentification", "THEOREM"),
+    (``Zeta23.CCM.poleNeutralIndex_adjoint_index_eq_square_of_momentFour_eq_zero, "Zeta23.CCM.CanonicalPoleNeutralSimpleEvenTie", "THEOREM"),
+    (``Zeta23.CCM.poleNeutralOddShifted_isPositive_of_le_bottom, "Zeta23.CCM.CanonicalPoleNeutralSimpleEvenTie", "THEOREM"),
+    (``Zeta23.CCM.poleNeutral_simpleEven_tie_momentFour_ne_zero, "Zeta23.CCM.CanonicalPoleNeutralSimpleEvenTie", "THEOREM"),
+    (``Zeta23.ExceptionalZero.paperFT_originalSincTest, "Zeta23.ExceptionalZero.UniversalSincPhysicalDetector", "THEOREM"),
+    (``Zeta23.ExceptionalZero.paperFT_originalSincSecondTest, "Zeta23.ExceptionalZero.UniversalSincPhysicalDetector", "THEOREM"),
+    (``Zeta23.ExceptionalZero.fixed_originalSincTest_square_ne_zero_at_off_line_zero, "Zeta23.ExceptionalZero.UniversalSincPhysicalDetector", "THEOREM"),
+    (``Zeta23.ExceptionalZero.absolutelySummable_originalSincSquaredFilter, "Zeta23.ExceptionalZero.UniversalSincPhysicalDetector", "THEOREM"),
+    (``Zeta23.ExceptionalZero.originalSincCorrelation_eq_filteredSquaredFamily, "Zeta23.ExceptionalZero.UniversalSincPhysicalDetector", "THEOREM"),
+    (``Zeta23.ExceptionalZero.fixed_originalSincCorrelation_not_subexponential_of_right_zero, "Zeta23.ExceptionalZero.UniversalSincPhysicalDetector", "THEOREM"),
+    (``Zeta23.CCM.UniversalSinc.product_ne_zero_of_im_ne_zero, "Zeta23.CCM.UniversalSincDetector", "THEOREM"),
+    (``Zeta23.CCM.UniversalSinc.fixed_product_ne_zero_of_im_ne_zero, "Zeta23.CCM.UniversalSincDetector", "THEOREM"),
+    (``Zeta23.ExceptionalZero.originalSincMultiplier_ne_zero_at_off_line_zero, "Zeta23.ExceptionalZero.UniversalSincDetectorVisibility", "THEOREM"),
+    (``Zeta23.ExceptionalZero.fixed_originalSincMultiplier_square_ne_zero_at_off_line_zero, "Zeta23.ExceptionalZero.UniversalSincDetectorVisibility", "THEOREM"),
+    (``Zeta23.ExceptionalZero.originalSincMultiplier_eq_zero_iff_of_im_ne_zero, "Zeta23.ExceptionalZero.UniversalSincDetectorVisibility", "THEOREM"),
+    (``Zeta23.ExceptionalZero.originalSincMultiplier_deriv_ne_zero_at_elementary_pair, "Zeta23.ExceptionalZero.UniversalSincDetectorVisibility", "THEOREM"),
+    (``Zeta23.CCM.canonicalPoleOddFunctional_evenIndex, "Zeta23.CCM.CanonicalPoleNeutralGeometry", "THEOREM"),
+    (``Zeta23.CCM.poleNeutralIndexLinearMap_injective, "Zeta23.CCM.CanonicalPoleNeutralGeometry", "THEOREM"),
+    (``Zeta23.CCM.poleNeutralIndexLinearMap_surjective, "Zeta23.CCM.CanonicalPoleNeutralGeometry", "THEOREM"),
+    (``Zeta23.CCM.canonicalPoleEvenFunctional_nonzeroWitness, "Zeta23.CCM.CanonicalPoleNeutralCarrier", "THEOREM"),
+    (``Zeta23.CCM.finrank_poleNeutralEvenSubspace, "Zeta23.CCM.CanonicalPoleNeutralCarrier", "THEOREM"),
+    (``Zeta23.CCM.finrank_poleNeutralOddSubspace, "Zeta23.CCM.CanonicalPoleNeutralCarrier", "THEOREM"),
+    (``Zeta23.CCM.poleNeutralIndex_norm_lower, "Zeta23.CCM.CanonicalPoleNeutralCarrier", "THEOREM"),
+    (``Zeta23.CCM.canonicalPoleExponentialMoment_eq_profiles, "Zeta23.CCM.CanonicalPoleExponentialMoments", "THEOREM"),
+    (``Zeta23.CCM.canonicalPoleExponentialMoments_iff_profiles, "Zeta23.CCM.CanonicalPoleExponentialMoments", "THEOREM"),
+    (``Zeta23.CCM.poleNeutralEven_iff_exponentialMoments, "Zeta23.CCM.CanonicalPoleExponentialMoments", "THEOREM"),
+    (``Zeta23.CCM.poleNeutralOdd_iff_exponentialMoments, "Zeta23.CCM.CanonicalPoleExponentialMoments", "THEOREM"),
+    (``Zeta23.CCM.poleNeutralCompressedIndexDefect_eq_projected_legal_add_residual, "Zeta23.CCM.CanonicalPoleNeutralIntertwining", "THEOREM"),
+    (``Zeta23.CCM.poleOddProfile_dot_centeredZeroExtend, "Zeta23.CCM.CanonicalPoleNeutralNesting", "THEOREM"),
+    (``Zeta23.CCM.canonicalPoleEvenFunctional_centeredZeroExtend, "Zeta23.CCM.CanonicalPoleNeutralNesting", "THEOREM"),
+    (``Zeta23.CCM.canonicalPoleOddFunctional_centeredZeroExtend, "Zeta23.CCM.CanonicalPoleNeutralNesting", "THEOREM"),
+    (``Zeta23.CCM.inner_canonicalSourceMatrix_euclideanCenteredZeroExtend, "Zeta23.CCM.CanonicalPoleNeutralNesting", "THEOREM"),
+    (``Zeta23.CCM.inner_poleNeutralEvenCompressedCanonical_centeredZeroExtend, "Zeta23.CCM.CanonicalPoleNeutralNesting", "THEOREM"),
+    (``Zeta23.CCM.inner_poleNeutralOddCompressedCanonical_centeredZeroExtend, "Zeta23.CCM.CanonicalPoleNeutralNesting", "THEOREM"),
+    (``Zeta23.CCM.poleNeutralEvenRayleighBottom_antitone_of_le, "Zeta23.CCM.CanonicalPoleNeutralBottomNFlow", "THEOREM"),
+    (``Zeta23.CCM.poleNeutralOddRayleighBottom_antitone_of_le, "Zeta23.CCM.CanonicalPoleNeutralBottomNFlow", "THEOREM"),
+    (``Zeta23.CCM.poleNeutralGlobalRayleighBottom_antitone_of_le, "Zeta23.CCM.CanonicalPoleNeutralBottomNFlow", "THEOREM"),
+    (``Zeta23.CCM.poleNeutralEven_predecessor_compression_eq, "Zeta23.CCM.CanonicalPoleNeutralBottomNFlow", "THEOREM"),
+    (``Zeta23.CCM.poleNeutralOdd_predecessor_compression_eq, "Zeta23.CCM.CanonicalPoleNeutralBottomNFlow", "THEOREM"),
+    (``Zeta23.CCM.finrank_poleNeutralEven_successor_shell_eq_one, "Zeta23.CCM.CanonicalPoleNeutralBottomNFlow", "THEOREM"),
+    (``Zeta23.CCM.finrank_poleNeutralOdd_successor_shell_eq_one, "Zeta23.CCM.CanonicalPoleNeutralBottomNFlow", "THEOREM"),
+    (``Zeta23.CCM.exists_finite_real_gap_selector, "Zeta23.CCM.FiniteBottomGapSelector", "THEOREM"),
+    (``Zeta23.CCM.exists_nativeDeepThreshold_bottom_separator, "Zeta23.CCM.CanonicalDeepThresholdGap", "THEOREM"),
+    (``Zeta23.CCM.nativeDeepThreshold_crossing_retains_gap, "Zeta23.CCM.CanonicalDeepThresholdGap", "THEOREM"),
+    (``Zeta23.CCM.nativeDeepThreshold_noncrossing_has_lower_gap, "Zeta23.CCM.CanonicalDeepThresholdGap", "THEOREM"),
+    (``Zeta23.CCM.nativeTrial_evenOdd_norm_sq_split, "Zeta23.CCM.NativePoleNeutralTrialDepth", "THEOREM"),
+    (``Zeta23.CCM.nativeGlobalBottom_mul_norm_sq_le_given_trial_energy, "Zeta23.CCM.NativePoleNeutralTrialDepth", "THEOREM"),
+    (``Zeta23.CCM.nativeGlobalBottom_le_neg_depth_of_given_unit_trial, "Zeta23.CCM.NativePoleNeutralTrialDepth", "THEOREM"),
+    (``Zeta23.CCM.exists_nativeDeepThresholdGround_of_given_trial, "Zeta23.CCM.NativeDeepThresholdGround", "THEOREM"),
+    (``Zeta23.CCM.poleNeutral_homogeneous_eq_zero, "Zeta23.CCM.PoleNeutralUniqueness", "THEOREM"),
+    (``Zeta23.CCM.poleNeutral_eq_of_clamped_jets, "Zeta23.CCM.PoleNeutralUniqueness", "THEOREM"),
+    (``Zeta23.CCM.originalSincCompactPotential_eq_universalSincKernel, "Zeta23.CCM.PoleNeutralUniqueness", "THEOREM"),
+    (``Zeta23.CCM.nativePoleCompactInverse_contDiff_two, "Zeta23.CCM.PoleNeutralCompactInverseCore", "THEOREM"),
+    (``Zeta23.CCM.nativePoleCompactInverse_pole_equation, "Zeta23.CCM.PoleNeutralCompactInverseCore", "THEOREM"),
+    (``Zeta23.CCM.nativePoleCompactInverse_hasCompactSupport, "Zeta23.CCM.PoleNeutralCompactInverseCore", "THEOREM"),
+    (``Zeta23.CCM.nativePoleCompactInverse_clamped_traces, "Zeta23.CCM.PoleNeutralCompactInverseCore", "THEOREM"),
+    (``Zeta23.CCM.universalSincSecondKernel_elementary_moments, "Zeta23.CCM.OriginalSincCompactPotential", "THEOREM"),
+    (``Zeta23.CCM.originalSincCompactPotential_pole_equation, "Zeta23.CCM.OriginalSincCompactPotential", "THEOREM"),
+    (``Zeta23.CCM.originalSincCompactPotential_hasCompactSupport, "Zeta23.CCM.OriginalSincCompactPotential", "THEOREM"),
+    (``Zeta23.CCM.originalSincCompactPotential_clamped_traces, "Zeta23.CCM.OriginalSincCompactPotential", "THEOREM"),
+    (``Zeta23.CCM.originalSincCompactPotential_memLp_two, "Zeta23.CCM.OriginalSincCompactPotential", "THEOREM"),
+    (``Zeta23.CCM.originalSincCompactPotentialDerivative_memLp_two, "Zeta23.CCM.OriginalSincCompactPotential", "THEOREM"),
+    (``Zeta23.CCM.originalSincCompactPotentialSecondDerivative_memLp_two, "Zeta23.CCM.OriginalSincCompactPotential", "THEOREM"),
+    (``Zeta23.ExceptionalZero.lintegral_exp_mul_eq_tsum_positive_moments, "Zeta23.ExceptionalZero.PositiveMomentSeries", "THEOREM"),
+    (``Zeta23.ExceptionalZero.integrable_exp_mul_of_summable_positive_moments, "Zeta23.ExceptionalZero.PositiveMomentSeries", "THEOREM"),
+    (``Zeta23.ExceptionalZero.integral_exp_mul_eq_tsum_positive_moments, "Zeta23.ExceptionalZero.PositiveMomentSeries", "THEOREM"),
+    (``Zeta23.ExceptionalZero.iteratedDeriv_eq_moment_of_complexMGF_continuation, "Zeta23.ExceptionalZero.PositiveMGFContinuation", "THEOREM"),
+    (``Zeta23.ExceptionalZero.summable_moments_of_complexMGF_continuation, "Zeta23.ExceptionalZero.PositiveMGFContinuation", "THEOREM"),
+    (``Zeta23.ExceptionalZero.integrable_exp_mul_of_complexMGF_continuation, "Zeta23.ExceptionalZero.PositiveMGFContinuation", "THEOREM"),
+    (``Zeta23.ExceptionalZero.exists_integrable_exp_mul_gt_of_complexMGF_continuation, "Zeta23.ExceptionalZero.PositiveMGFContinuation", "THEOREM"),
+    (``Zeta23.ExceptionalZero.squaredWeilFilteredFamily_even, "Zeta23.ExceptionalZero.UniversalSincCorrelationReal", "THEOREM"),
+    (``Zeta23.ExceptionalZero.fixed_originalSincCorrelation_im_eq_zero, "Zeta23.ExceptionalZero.UniversalSincCorrelationReal", "THEOREM"),
+    (``Zeta23.CCM.coe_poleNeutralIndexLinearMap_legal, "Zeta23.CCM.CanonicalPoleNeutralIntertwining", "THEOREM"),
+    (``Zeta23.CCM.poleNeutralCompressedIndexDefect_eq_cubicSource_add_residual, "Zeta23.CCM.CanonicalPoleNeutralIntertwining", "THEOREM"),
+    (``Zeta23.CCM.canonicalPoleEvenLegalNormal_ne_zero, "Zeta23.CCM.CanonicalPoleNeutralNormals", "THEOREM"),
+    (``Zeta23.CCM.canonicalPoleOddLegalNormal_ne_zero, "Zeta23.CCM.CanonicalPoleNeutralNormals", "THEOREM"),
+    (``Zeta23.CCM.poleNeutralEvenOutputResidual_eq_normal, "Zeta23.CCM.CanonicalPoleNeutralNormals", "THEOREM"),
+    (``Zeta23.CCM.poleNeutralOddProjection_index_evenNormal_eq_cubic, "Zeta23.CCM.CanonicalPoleNeutralNormals", "THEOREM"),
+    (``Zeta23.CCM.poleNeutralCompressedIndexDefect_eq_correctedCubicSource, "Zeta23.CCM.CanonicalPoleNeutralNormals", "THEOREM"),
+    (``Zeta23.CCM.canonicalPoleNeutralRankOneIntertwining, "Zeta23.CCM.CanonicalPoleNeutralNormals", "THEOREM"),
+    (``Zeta23.CCM.poleNeutral_cubic_pairing_eq_momentFour, "Zeta23.CCM.CanonicalPoleNeutralNormals", "THEOREM"),
+    (``Zeta23.CCM.poleNeutralMomentFourWitness_momentFour_ne_zero, "Zeta23.CCM.CanonicalPoleNeutralCubicWitness", "THEOREM"),
+    (``Zeta23.CCM.poleNeutralCubicCompressionVector_ne_zero, "Zeta23.CCM.CanonicalPoleNeutralCubicWitness", "THEOREM"),
+    (``Zeta23.CCM.poleNeutralIndexInverse_norm_le_two, "Zeta23.CCM.CanonicalPoleNeutralSourceMoment", "THEOREM"),
+    (``Zeta23.CCM.exists_eigenmode_at_poleNeutralEvenRayleighBottom, "Zeta23.CCM.CanonicalPoleNeutralSourceMoment", "THEOREM"),
+    (``Zeta23.CCM.exists_eigenmode_at_poleNeutralOddRayleighBottom, "Zeta23.CCM.CanonicalPoleNeutralSourceMoment", "THEOREM"),
+    (``Zeta23.CCM.poleNeutral_source_moment_energy_eq, "Zeta23.CCM.CanonicalPoleNeutralSourceMoment", "THEOREM"),
+    (``Zeta23.CCM.poleNeutral_strictEven_source_moment_pos, "Zeta23.CCM.CanonicalPoleNeutralSourceMoment", "THEOREM"),
+    (``Zeta23.CCM.poleNeutral_strictEven_source_ne_zero, "Zeta23.CCM.CanonicalPoleNeutralSourceMoment", "THEOREM"),
+    (``Zeta23.CCM.poleNeutral_strictEven_momentFour_ne_zero, "Zeta23.CCM.CanonicalPoleNeutralSourceMoment", "THEOREM"),
+    (``Zeta23.CCM.eq_zero_of_indexMatrix_sq_eigen_of_moments_zero_one, "Zeta23.CCM.CanonicalPoleNeutralIndexRigidity", "THEOREM"),
+    (``Zeta23.CCM.indexMatrix_sq_mem_evenBoundaryFlat_of_momentFour_eq_zero, "Zeta23.CCM.CanonicalPoleNeutralIndexRigidity", "THEOREM"),
+    (``Zeta23.CCM.poleEvenProfile_dot_indexMatrix_sq_eq_zero, "Zeta23.CCM.CanonicalPoleNeutralIndexRigidity", "THEOREM"),
+    (``Zeta23.CCM.canonicalSourceMatrix_mulVec_eq_negative_arch_prime_of_profiles, "Zeta23.CCM.CanonicalPoleNeutralGeometry", "THEOREM"),
+    (``Zeta23.CCM.inner_poleNeutralEvenCompressedCanonical_self, "Zeta23.CCM.CanonicalPoleNeutralGeometry", "THEOREM"),
+    (``Zeta23.CCM.inner_poleNeutralOddCompressedCanonical_self, "Zeta23.CCM.CanonicalPoleNeutralGeometry", "THEOREM"),
+    (``Zeta23.CCM.canonicalSourceMatrix_mulVec_poleNeutralEven_eq_negative_arch_prime, "Zeta23.CCM.CanonicalPoleNeutralGeometry", "THEOREM"),
+    (``Zeta23.CCM.native_primeCoefficients_unique, "Zeta23.CCM.NativeIntegerPrimeSource", "THEOREM"),
+    (``Zeta23.CCM.canonicalTrialResidual_variance, "Zeta23.CCM.CanonicalTrialResidualChannels", "THEOREM"),
+    (``Zeta23.CCM.canonicalTrialResidual_channelGram, "Zeta23.CCM.CanonicalTrialResidualChannels", "THEOREM"),
+    (``Zeta23.CCM.poleNeutralEvenTrialResidual_variance, "Zeta23.CCM.CanonicalTrialResidualChannels", "THEOREM"),
+    (``Zeta23.CCM.poleNeutralOddTrialResidual_variance, "Zeta23.CCM.CanonicalTrialResidualChannels", "THEOREM"),
+    (``Zeta23.CCM.poleNeutralEvenTrialResidual_channelGram, "Zeta23.CCM.CanonicalTrialResidualChannels", "THEOREM"),
+    (``Zeta23.CCM.poleNeutralOddTrialResidual_channelGram, "Zeta23.CCM.CanonicalTrialResidualChannels", "THEOREM"),
+    (``Zeta23.CCM.native_weighted_dirichlet_identity, "Zeta23.CCM.NativeIntegerPrimeSource", "THEOREM"),
+    (``Zeta23.CCM.nativePrimeField_eq_history_sum, "Zeta23.CCM.NativeIntegerPrimeField", "THEOREM"),
+    (``Zeta23.CCM.nativeIntegerDriveField_eq_history_sum, "Zeta23.CCM.NativeIntegerPrimeField", "THEOREM"),
+    (``Zeta23.CCM.nativePrimeField_zero_before_firstPrime, "Zeta23.CCM.NativeIntegerPrimeField", "THEOREM"),
+    (``Zeta23.CCM.nativePrimeField_frozen_firstPrime_atom, "Zeta23.CCM.NativeIntegerPrimeField", "THEOREM"),
+    (``Zeta23.CCM.nativePrimeField_continuous, "Zeta23.CCM.NativeIntegerPrimeField", "THEOREM"),
+    (``Zeta23.CCM.nativePositiveCompletion_nonneg, "Zeta23.CCM.NativePositiveCompletion", "THEOREM"),
+    (``Zeta23.CCM.nativePositiveCompletion_pos_of_nonneg, "Zeta23.CCM.NativePositiveCompletion", "THEOREM"),
+    (``Zeta23.CCM.nativePositiveCompletionLogDensity_cell, "Zeta23.CCM.NativePositiveCompletionCells", "THEOREM"),
+    (``Zeta23.CCM.nativePositiveCompletionLogDensity_cell_le, "Zeta23.CCM.NativePositiveCompletionCells", "THEOREM"),
+    (``Zeta23.CCM.nativePositiveCompletionLogDensity_integrableOn, "Zeta23.CCM.NativePositiveCompletionMass", "THEOREM"),
+    (``Zeta23.CCM.nativePositiveCompletion_mass_eq_logIntegral, "Zeta23.CCM.NativePositiveCompletionMass", "THEOREM"),
+    (``Zeta23.CCM.nativePositiveCompletionLogDensity_cell_integral_le, "Zeta23.CCM.NativePositiveCompletionMass", "THEOREM"),
+    (``Zeta23.CCM.nativePositiveCompletionLogDensity_cell_integral, "Zeta23.CCM.NativePositiveCompletionHead", "THEOREM"),
+    (``Zeta23.CCM.nativePositiveCompletionLogDensity_head_integral, "Zeta23.CCM.NativePositiveCompletionHead", "THEOREM"),
+    (``Zeta23.CCM.nativePositiveCompletionLogDensity_hasSum_tail_cells, "Zeta23.CCM.NativePositiveCompletionTail", "THEOREM"),
+    (``Zeta23.CCM.nativePositiveCompletionLogDensity_tail_integral_le, "Zeta23.CCM.NativePositiveCompletionTail", "THEOREM"),
+    (``Zeta23.CCM.nativePositiveCompletion_mass_lt_605_div_621, "Zeta23.CCM.NativePositiveCompletionCertificate", "THEOREM"),
+    (``Zeta23.CCM.nativePositiveCompletion_integrable, "Zeta23.CCM.NativePositiveCompletionCertificate", "THEOREM"),
+    (``Zeta23.CCM.nativePositiveCompletion_integral_norm_lt_605_div_621, "Zeta23.CCM.NativePositiveCompletionCertificate", "THEOREM"),
+    (``Zeta23.CCM.poleNeutralEvenShiftedCanonical_coercive, "Zeta23.CCM.CanonicalPoleNeutralShiftedSecular", "THEOREM"),
+    (``Zeta23.CCM.poleNeutralOddShiftedCanonical_coercive, "Zeta23.CCM.CanonicalPoleNeutralShiftedSecular", "THEOREM"),
+    (``Zeta23.CCM.poleNeutral_even_eigen_shiftedRay_source_eq_one, "Zeta23.CCM.CanonicalPoleNeutralShiftedSecular", "THEOREM"),
+    (``Zeta23.CCM.poleNeutral_even_shifted_det_quotient, "Zeta23.CCM.CanonicalPoleNeutralShiftedSecular", "THEOREM"),
+    (``Zeta23.CCM.poleNeutral_adjoint_rankOne_identity, "Zeta23.CCM.CanonicalPoleNeutralShiftedSecular", "THEOREM"),
+    (``Zeta23.CCM.poleNeutral_odd_eigen_adjoint_competitor_source_dichotomy, "Zeta23.CCM.CanonicalPoleNeutralShiftedSecular", "THEOREM"),
+    (``Zeta23.CCM.poleNeutral_odd_eigen_adjointRay_pairing_eq_one, "Zeta23.CCM.CanonicalPoleNeutralShiftedSecular", "THEOREM"),
+    (``Zeta23.CCM.poleNeutral_odd_adjoint_shifted_det_quotient, "Zeta23.CCM.CanonicalPoleNeutralShiftedSecular", "THEOREM"),
+    (``Zeta23.CCM.exists_poleNeutral_strictEven_ground_shifted_normalization, "Zeta23.CCM.CanonicalPoleNeutralShiftedSecular", "THEOREM"),
+    (``Zeta23.CCM.exists_poleNeutral_strictOdd_ground_adjoint_normalization, "Zeta23.CCM.CanonicalPoleNeutralShiftedSecular", "THEOREM"),
+    (``Zeta23.CCM.poleNeutral_even_eigen_shifted_kernel_compatibility, "Zeta23.CCM.CanonicalPoleNeutralTiePackage", "THEOREM"),
+    (``Zeta23.CCM.poleNeutralEvenEigen_index_eq_kernel_add_complement, "Zeta23.CCM.CanonicalPoleNeutralTiePackage", "THEOREM"),
+    (``Zeta23.CCM.poleNeutral_even_eigen_complement_source_eq, "Zeta23.CCM.CanonicalPoleNeutralTiePackage", "THEOREM"),
+    (``Zeta23.CCM.poleNeutral_tied_ground_singular_safe_package, "Zeta23.CCM.CanonicalPoleNeutralTiePackage", "THEOREM"),
+    (``Zeta23.ExceptionalZero.riemannZeta_re_le_neg_div_one_sub, "Zeta23.ExceptionalZero.ZetaRealStripNonvanishing", "THEOREM"),
+    (``Zeta23.ExceptionalZero.riemannZeta_ne_zero_of_real_critical_strip, "Zeta23.ExceptionalZero.ZetaRealStripNonvanishing", "THEOREM"),
+    (``Zeta23.ExceptionalZero.zetaZeroCarrier_im_ne_zero, "Zeta23.ExceptionalZero.ZetaRealStripNonvanishing", "THEOREM"),
+    (``Zeta23.ExceptionalZero.analyticAt_filteredResolvent_ofReal, "Zeta23.ExceptionalZero.ZetaRealStripNonvanishing", "THEOREM"),
+    (``Zeta23.CCM.nativeIntegerTranslateAction_primeField_eq_integerDriveField, "Zeta23.CCM.NativeIntegerPrimeConvolution", "THEOREM"),
+    (``Zeta23.CCM.nativePositiveCompletion_le_exp, "Zeta23.CCM.NativePositiveCompletion", "THEOREM"),
+    (``Zeta23.CCM.nativePositiveCompletion_integrableOn, "Zeta23.CCM.NativePositiveCompletion", "THEOREM"),
+    (``Zeta23.CCM.nativeIntegerTranslateAction_rationalKernel_eq_positiveCompletion, "Zeta23.CCM.NativeFloorCompletionSource", "THEOREM"),
+    (``Zeta23.CCM.nativeRationalCausalKernel_damped_integrableOn, "Zeta23.CCM.NativeRationalCompletionLaplace", "THEOREM"),
+    (``Zeta23.CCM.nativeRationalCausalKernel_realLaplace, "Zeta23.CCM.NativeRationalCompletionLaplace", "THEOREM"),
+    (``Zeta23.CCM.nativeRationalCausalKernel_signed_integral, "Zeta23.CCM.NativeRationalCompletionLaplace", "THEOREM"),
+    (``Zeta23.CCM.step123_enteringPrimeSourceMatrix_zero, "Zeta23.CCM.Step123PrimeSeam", "THEOREM"),
+    (``Zeta23.CCM.step123_qBasis_logSeam_zero, "Zeta23.CCM.Step123PrimeSeam", "THEOREM"),
+    (``Zeta23.CCM.UniversalSinc.polynomial_sqrt_decay_Ioi_integral, "Zeta23.CCM.UniversalSincProductMoments", "THEOREM"),
+    (``Zeta23.CCM.UniversalSinc.polynomial_sqrt_decay_integral, "Zeta23.CCM.UniversalSincProductMoments", "THEOREM"),
+    (``Zeta23.CCM.UniversalSinc.product_norm_moment_integral_le_factorial, "Zeta23.CCM.UniversalSincProductMoments", "THEOREM"),
+    (``Zeta23.CCM.UniversalSinc.factorial_two_mul_add_one_le, "Zeta23.CCM.UniversalSincProductMoments", "THEOREM"),
+    (``Zeta23.CCM.UniversalSinc.product_norm_moment_integral_le_gevrey, "Zeta23.CCM.UniversalSincProductMoments", "THEOREM"),
+    (``Zeta23.CCM.UniversalSinc.integrable_product_ofReal_smul_moment, "Zeta23.CCM.UniversalSincInverseGevreyBounds", "THEOREM"),
+    (``Zeta23.CCM.UniversalSinc.iteratedDeriv_fourier_product, "Zeta23.CCM.UniversalSincInverseGevreyBounds", "THEOREM"),
+    (``Zeta23.CCM.UniversalSinc.norm_iteratedDeriv_fourier_product_le_moment, "Zeta23.CCM.UniversalSincInverseGevreyBounds", "THEOREM"),
+    (``Zeta23.CCM.UniversalSinc.norm_iteratedDeriv_inverseCandidate_le_moment, "Zeta23.CCM.UniversalSincInverseGevreyBounds", "THEOREM"),
+    (``Zeta23.CCM.UniversalSinc.norm_iteratedDeriv_inverseCandidate_le_gevrey, "Zeta23.CCM.UniversalSincInverseGevreyBounds", "THEOREM"),
+    (``Zeta23.ExceptionalZero.positiveLaplaceTilt_isFiniteMeasure, "Zeta23.ExceptionalZero.PositiveLaplaceTilt", "THEOREM"),
+    (``Zeta23.ExceptionalZero.positiveLaplaceTilt_apply_univ, "Zeta23.ExceptionalZero.PositiveLaplaceTilt", "THEOREM"),
+    (``Zeta23.ExceptionalZero.positiveLaplaceTilt_ae_nonneg, "Zeta23.ExceptionalZero.PositiveLaplaceTilt", "THEOREM"),
+    (``Zeta23.ExceptionalZero.integrable_exp_positiveLaplaceTilt_iff, "Zeta23.ExceptionalZero.PositiveLaplaceTilt", "THEOREM"),
+    (``Zeta23.ExceptionalZero.integrable_cexp_positiveLaplaceTilt_iff, "Zeta23.ExceptionalZero.PositiveLaplaceTilt", "THEOREM"),
+    (``Zeta23.ExceptionalZero.complexMGF_positiveLaplaceTilt, "Zeta23.ExceptionalZero.PositiveLaplaceTilt", "THEOREM"),
+    (``Zeta23.ExceptionalZero.zero_mem_interior_integrableExpSet_positiveLaplaceTilt, "Zeta23.ExceptionalZero.PositiveLaplaceTilt", "THEOREM"),
+    (``Zeta23.CCM.nativeDeepThreshold_even_ground_coercive, "Zeta23.CCM.NativeDeepThresholdInverseBudgets", "THEOREM"),
+    (``Zeta23.CCM.nativeDeepThreshold_odd_ground_coercive, "Zeta23.CCM.NativeDeepThresholdInverseBudgets", "THEOREM"),
+    (``Zeta23.CCM.nativeDeepThreshold_even_detector_coercive, "Zeta23.CCM.NativeDeepThresholdInverseBudgets", "THEOREM"),
+    (``Zeta23.CCM.nativeDeepThreshold_odd_detector_coercive, "Zeta23.CCM.NativeDeepThresholdInverseBudgets", "THEOREM"),
+    (``Zeta23.CCM.nativeDeepThreshold_inverse_norms_zero_at_first, "Zeta23.CCM.NativeDeepThresholdInverseBudgets", "THEOREM"),
+    (``Zeta23.CCM.exists_nativeDeepThresholdGround_with_inverseBudgets_of_given_trial, "Zeta23.CCM.NativeDeepThresholdInverseBudgets", "THEOREM"),
+    (``Zeta23.CCM.nativeDeepThreshold_even_eigenspace_finrank_le_one, "Zeta23.CCM.NativeDeepThresholdSimplicity", "THEOREM"),
+    (``Zeta23.CCM.nativeDeepThreshold_odd_eigenspace_finrank_le_one, "Zeta23.CCM.NativeDeepThresholdSimplicity", "THEOREM"),
+    (``Zeta23.CCM.nativeDeepThreshold_even_ground_simple, "Zeta23.CCM.NativeDeepThresholdSimplicity", "THEOREM"),
+    (``Zeta23.CCM.nativeDeepThreshold_odd_ground_simple, "Zeta23.CCM.NativeDeepThresholdSimplicity", "THEOREM"),
+    (``Zeta23.CCM.nativeDeepThreshold_selectedParity_simple, "Zeta23.CCM.NativeDeepThresholdSimplicity", "THEOREM"),
+    (``Zeta23.CCM.nativeDeepThreshold_even_ground_momentFour_ne_zero, "Zeta23.CCM.NativeDeepThresholdEvenMoment", "THEOREM"),
+    (``Zeta23.CCM.nativeDeepThreshold_strictEven_ground_source_ne_zero, "Zeta23.CCM.NativeDeepThresholdEvenMoment", "THEOREM"),
+    (``Zeta23.CCM.isometricDetector_coordinate_decomposition, "Zeta23.CCM.IsometricDetectorSchur", "THEOREM"),
+    (``Zeta23.CCM.isometricDetectorComplement_adjoint_eq_zero, "Zeta23.CCM.IsometricDetectorSchur", "THEOREM"),
+    (``Zeta23.CCM.inner_isometricDetectorSchurOperator, "Zeta23.CCM.IsometricDetectorSchur", "THEOREM"),
+    (``Zeta23.CCM.isometricDetectorSchur_completedSquare, "Zeta23.CCM.IsometricDetectorSchur", "THEOREM"),
+    (``Zeta23.CCM.isometricDetectorSchur_negative_depth, "Zeta23.CCM.IsometricDetectorSchur", "THEOREM"),
+    (``Zeta23.CCM.isometricGroundSchur_kernel_package, "Zeta23.CCM.IsometricGroundSchur", "THEOREM"),
+    (``Zeta23.CCM.isometricGroundSchur_scalar_identity, "Zeta23.CCM.IsometricGroundSchur", "THEOREM"),
+    (``Zeta23.CCM.nativePoleNeutralParity_predecessor_compression_eq, "Zeta23.CCM.NativeDetectorSchur", "THEOREM"),
+    (``Zeta23.CCM.nativeDetectorPredecessorEquiv_inverse_bound, "Zeta23.CCM.NativeDetectorSchur", "THEOREM"),
+    (``Zeta23.CCM.nativeDetectorComplement_finrank, "Zeta23.CCM.NativeDetectorSchur", "THEOREM"),
+    (``Zeta23.CCM.nativeDetectorCoupling_shift_eq_unshifted, "Zeta23.CCM.NativeDetectorSchur", "THEOREM"),
+    (``Zeta23.CCM.nativeDetectorPredecessorEquiv_eq_compression, "Zeta23.CCM.NativeDetectorSchur", "THEOREM"),
+    (``Zeta23.CCM.nativeDetectorSchur_completedSquare, "Zeta23.CCM.NativeDetectorSchur", "THEOREM"),
+    (``Zeta23.CCM.nativeDetectorSchur_original_depth, "Zeta23.CCM.NativeDetectorSchur", "THEOREM"),
+    (``Zeta23.CCM.nativeSelectedGroundPredecessorEquiv_inverse_bound, "Zeta23.CCM.NativeSelectedGroundSchur", "THEOREM"),
+    (``Zeta23.CCM.nativeSelectedGroundShell_finrank_eq_one, "Zeta23.CCM.NativeSelectedGroundSchur", "THEOREM"),
+    (``Zeta23.CCM.nativeSelectedGroundPredecessorEquiv_eq_compression, "Zeta23.CCM.NativeSelectedGroundSchur", "THEOREM"),
+    (``Zeta23.CCM.nativeSelectedGroundSchur_kernel_package, "Zeta23.CCM.NativeSelectedGroundSchur", "THEOREM"),
+    (``Zeta23.CCM.nativeSelectedGround_shiftedSchur_eq, "Zeta23.CCM.NativeSelectedGroundSchur", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorRawCutoff_add_four, "Zeta23.CCM.OriginalDetectorFourierPrerequisites", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorRawCutoff_lower, "Zeta23.CCM.OriginalDetectorFourierPrerequisites", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorRawCutoff_upper, "Zeta23.CCM.OriginalDetectorFourierPrerequisites", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorRawCutoff_div_lower, "Zeta23.CCM.OriginalDetectorFourierPrerequisites", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorLobe_iteratedDeriv_le_gevrey, "Zeta23.CCM.OriginalDetectorFourierPrerequisites", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorLobe_endpoint_jets, "Zeta23.CCM.OriginalDetectorFourierPrerequisites", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorLobe_fourierCoeff_jet_step, "Zeta23.CCM.OriginalDetectorFourierPrerequisites", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorLobe_fourierCoeff_eq_jet, "Zeta23.CCM.OriginalDetectorFourierPrerequisites", "THEOREM"),
+    (``Zeta23.CCM.norm_originalDetectorLobe_jet_fourierCoeff_le, "Zeta23.CCM.OriginalDetectorFourierPrerequisites", "THEOREM"),
+    (``Zeta23.CCM.norm_originalDetectorLobe_fourierCoeff_le_gevrey_order, "Zeta23.CCM.OriginalDetectorFourierPrerequisites", "THEOREM"),
+    (``Zeta23.CCM.nativePoleMoment_deriv, "Zeta23.CCM.OriginalSincWeightedPoleMoments", "THEOREM"),
+    (``Zeta23.CCM.nativePoleFirstMoment_deriv, "Zeta23.CCM.OriginalSincWeightedPoleMoments", "THEOREM"),
+    (``Zeta23.CCM.nativePoleMoment_differential, "Zeta23.CCM.OriginalSincWeightedPoleMoments", "THEOREM"),
+    (``Zeta23.CCM.nativePoleFirstMoment_differential, "Zeta23.CCM.OriginalSincWeightedPoleMoments", "THEOREM"),
+    (``Zeta23.CCM.universalSincSecondKernel_first_elementary_moments, "Zeta23.CCM.OriginalSincWeightedPoleMoments", "THEOREM"),
+    (``Zeta23.CCM.nativeOriginalSource_weighted_elementary_moments, "Zeta23.CCM.OriginalSincWeightedPoleMoments", "THEOREM"),
+    (``Zeta23.CCM.nativeIntegerAbel_discrepancy_eq, "Zeta23.CCM.NativeAbelDiscrepancy", "THEOREM"),
+    (``Zeta23.CCM.nativeIntegerAbel_discrepancy_bound, "Zeta23.CCM.NativeAbelDiscrepancy", "THEOREM"),
+    (``Zeta23.CCM.nativeOriginalLogDriveSummand_zero_below, "Zeta23.CCM.OriginalSincLogDrive", "THEOREM"),
+    (``Zeta23.CCM.nativeOriginalLogDriveSummand_zero_above, "Zeta23.CCM.OriginalSincLogDrive", "THEOREM"),
+    (``Zeta23.CCM.nativeOriginalLogDriveSummand_contDiff, "Zeta23.CCM.OriginalSincLogDrive", "THEOREM"),
+    (``Zeta23.CCM.nativeOriginalLogDriveSummand_hasCompactSupport, "Zeta23.CCM.OriginalSincLogDrive", "THEOREM"),
+    (``Zeta23.CCM.nativeOriginalLogDriveSummand_at_nat, "Zeta23.CCM.OriginalSincLogDrive", "THEOREM"),
+    (``Zeta23.CCM.nativeOriginalIntegerDrive_eq_abel_sum, "Zeta23.CCM.OriginalSincLogDrive", "THEOREM"),
+    (``Zeta23.CCM.nativeOriginalIntegerDrive_abel_discrepancy_bound, "Zeta23.CCM.OriginalSincLogDrive", "THEOREM"),
+    (``Zeta23.ExceptionalZero.integrable_positiveLaplaceWeight_mono, "Zeta23.ExceptionalZero.PositiveLaplaceBoundary", "THEOREM"),
+    (``Zeta23.ExceptionalZero.positiveLaplaceAbscissa_le_of_integrable, "Zeta23.ExceptionalZero.PositiveLaplaceBoundary", "THEOREM"),
+    (``Zeta23.ExceptionalZero.integrable_positiveLaplaceWeight_of_abscissa_lt, "Zeta23.ExceptionalZero.PositiveLaplaceBoundary", "THEOREM"),
+    (``Zeta23.ExceptionalZero.not_differentiable_positiveLaplace_continuation_at_abscissa, "Zeta23.ExceptionalZero.PositiveLaplaceBoundary", "THEOREM"),
+    (``Zeta23.ExceptionalZero.not_analyticAt_positiveLaplace_continuation_at_abscissa, "Zeta23.ExceptionalZero.PositiveLaplaceBoundary", "THEOREM"),
+    (``Zeta23.ExceptionalZero.positiveLaplaceTransform_not_analyticAt_abscissa, "Zeta23.ExceptionalZero.PositiveLaplaceBoundary", "THEOREM"),
+    (``Zeta23.ExceptionalZero.fixedOriginalSincCorrelationReal_ofReal, "Zeta23.ExceptionalZero.UniversalSincSignedLaplace", "THEOREM"),
+    (``Zeta23.ExceptionalZero.measurable_fixedOriginalSincCorrelation, "Zeta23.ExceptionalZero.UniversalSincSignedLaplace", "THEOREM"),
+    (``Zeta23.ExceptionalZero.abs_fixedOriginalSincCorrelationReal_le, "Zeta23.ExceptionalZero.UniversalSincSignedLaplace", "THEOREM"),
+    (``Zeta23.ExceptionalZero.integrable_fixedOriginalSincCorrelation_weight, "Zeta23.ExceptionalZero.UniversalSincSignedLaplace", "THEOREM"),
+    (``Zeta23.ExceptionalZero.positiveLaplaceTransform_fixedOriginalSincCorrelation_safe, "Zeta23.ExceptionalZero.UniversalSincSignedLaplace", "THEOREM"),
+    (``Zeta23.ExceptionalZero.analyticAt_fixedOriginalSincResolvent_ofReal, "Zeta23.ExceptionalZero.UniversalSincSignedLaplace", "THEOREM"),
+    (``Zeta23.ExceptionalZero.fixedOriginalSincSquaredCoeff_ne_zero, "Zeta23.ExceptionalZero.UniversalSincSignedLaplace", "THEOREM"),
+    (``Zeta23.ExceptionalZero.measurable_fixedOriginalSincSignedTail, "Zeta23.ExceptionalZero.UniversalSincSignedLaplace", "THEOREM"),
+    (``Zeta23.ExceptionalZero.fixedOriginalSincSignedTail_nonneg, "Zeta23.ExceptionalZero.UniversalSincSignedLaplace", "THEOREM"),
+    (``Zeta23.ExceptionalZero.integrable_fixedOriginalSincSignedTail_weight, "Zeta23.ExceptionalZero.UniversalSincSignedLaplace", "THEOREM"),
+    (``Zeta23.ExceptionalZero.positiveLaplaceDomain_fixedOriginalSincSignedTail_nonempty, "Zeta23.ExceptionalZero.UniversalSincSignedLaplace", "THEOREM"),
+    (``Zeta23.ExceptionalZero.analyticAt_positiveLaplaceTransform_of_integrable_nhds, "Zeta23.ExceptionalZero.PositiveLaplaceAnalytic", "THEOREM"),
+    (``Zeta23.ExceptionalZero.analyticAt_positiveLaplaceTransform_of_abscissa_lt, "Zeta23.ExceptionalZero.PositiveLaplaceAnalytic", "THEOREM"),
+    (``Zeta23.ExceptionalZero.meromorphicOn_positiveLaplaceTransform_abscissa_halfPlane, "Zeta23.ExceptionalZero.PositiveLaplaceAnalytic", "THEOREM"),
+    (``Zeta23.CCM.nativePoleNeutralParityAmbient_poles, "Zeta23.CCM.DetectorRetainedSchurState", "THEOREM"),
+    (``Zeta23.CCM.nativePoleNeutralParityAmbient_energy, "Zeta23.CCM.DetectorRetainedSchurState", "THEOREM"),
+    (``Zeta23.CCM.exists_detectorRetainedSchurState_of_original_native_trial, "Zeta23.CCM.DetectorRetainedSchurState", "THEOREM"),
+    (``Zeta23.CCM.originalDetector_schur_loss_lower, "Zeta23.CCM.DetectorRetainedSchurState", "THEOREM"),
+    (``Zeta23.CCM.originalDetector_schur_completion, "Zeta23.CCM.DetectorRetainedSchurState", "THEOREM"),
+    (``Zeta23.CCM.selectedGround_shiftedSchur_eq, "Zeta23.CCM.DetectorRetainedSchurState", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorWindow_sin_lower_half_collar, "Zeta23.CCM.OriginalDetectorWindowBounds", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorWindow_complex_sin_lower, "Zeta23.CCM.OriginalDetectorWindowBounds", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorWindowReciprocal_norm_le, "Zeta23.CCM.OriginalDetectorWindowBounds", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorWindowReciprocal_iteratedDeriv_le, "Zeta23.CCM.OriginalDetectorWindowBounds", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorWindowReciprocal_real_iteratedDeriv_eq, "Zeta23.CCM.OriginalDetectorWindowBounds", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorWindowReciprocal_real_contDiffAt, "Zeta23.CCM.OriginalDetectorWindowBounds", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorWindowReciprocal_real_iteratedDeriv_le, "Zeta23.CCM.OriginalDetectorWindowBounds", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorDividedLobe_support, "Zeta23.CCM.OriginalDetectorDividedLobeBounds", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorDividedLobe_contDiff, "Zeta23.CCM.OriginalDetectorDividedLobeBounds", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorDividedLobe_iteratedDeriv_le_gevrey, "Zeta23.CCM.OriginalDetectorDividedLobeBounds", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorDividedLobe_endpoint_jets, "Zeta23.CCM.OriginalDetectorDividedLobeBounds", "THEOREM"),
+    (``Zeta23.CCM.nativeOriginalLogDriveSummand_integral_eq_exponential, "Zeta23.CCM.OriginalSincDriveCancellation", "THEOREM"),
+    (``Zeta23.CCM.nativeOriginalLogDriveSummand_integral_zero, "Zeta23.CCM.OriginalSincDriveCancellation", "THEOREM"),
+    (``Zeta23.CCM.nativeOriginalLogDriveSummand_continuum_zero, "Zeta23.CCM.OriginalSincDriveCancellation", "THEOREM"),
+    (``Zeta23.CCM.nativeOriginalIntegerDrive_abs_le_summand_derivative, "Zeta23.CCM.OriginalSincDriveCancellation", "THEOREM"),
+    (``Zeta23.CCM.nativeOriginalLogDriveSummand_hasDerivAt, "Zeta23.CCM.OriginalSincDriveDerivative", "THEOREM"),
+    (``Zeta23.CCM.nativeOriginalLogDriveSummand_deriv, "Zeta23.CCM.OriginalSincDriveDerivative", "THEOREM"),
+    (``Zeta23.CCM.nativeOriginalLogDriveSummand_deriv_exp, "Zeta23.CCM.OriginalSincDriveDerivative", "THEOREM"),
+    (``Zeta23.CCM.nativePoleCompactInverse_memLp_two, "Zeta23.CCM.PoleNeutralCompactInverseL2Bound", "THEOREM"),
+    (``Zeta23.CCM.nativePoleCompactInverseDerivative_memLp_two, "Zeta23.CCM.PoleNeutralCompactInverseL2Bound", "THEOREM"),
+    (``Zeta23.CCM.nativePoleCompactInverse_energy_identity, "Zeta23.CCM.PoleNeutralCompactInverseL2Bound", "THEOREM"),
+    (``Zeta23.CCM.nativePoleCompactInverse_l2_norm_le_four, "Zeta23.CCM.PoleNeutralCompactInverseL2Bound", "THEOREM"),
+    (``Zeta23.CCM.originalSincCompactPotential_l2_norm_le_four, "Zeta23.CCM.PoleNeutralCompactInverseL2Bound", "THEOREM"),
+    (``Zeta23.CCM.fixedOriginalSincCompactPotential_l2_norm_le_four, "Zeta23.CCM.PoleNeutralCompactInverseL2Bound", "THEOREM"),
+    (``Zeta23.ExceptionalZero.analyticAt_signedLaplaceTransform_of_all_integrable, "Zeta23.ExceptionalZero.UniversalSincInitialLaplace", "THEOREM"),
+    (``Zeta23.ExceptionalZero.integrable_fixedOriginalSincInitialSource_weight, "Zeta23.ExceptionalZero.UniversalSincInitialLaplace", "THEOREM"),
+    (``Zeta23.ExceptionalZero.positiveLaplaceTransform_fixedOriginalSincInitialSource, "Zeta23.ExceptionalZero.UniversalSincInitialLaplace", "THEOREM"),
+    (``Zeta23.ExceptionalZero.analyticAt_fixedOriginalSincInitialLaplace, "Zeta23.ExceptionalZero.UniversalSincInitialLaplace", "THEOREM"),
+    (``Zeta23.ExceptionalZero.integrable_complexLaplaceKernel_iff_real_weight, "Zeta23.ExceptionalZero.UniversalSincSignedTailTransform", "THEOREM"),
+    (``Zeta23.ExceptionalZero.integral_fixedOriginalSincCorrelation_tail, "Zeta23.ExceptionalZero.UniversalSincSignedTailTransform", "THEOREM"),
+    (``Zeta23.ExceptionalZero.positiveLaplaceTransform_fixedOriginalSincSignedTail_safe, "Zeta23.ExceptionalZero.UniversalSincSignedTailTransform", "THEOREM"),
+    (``Zeta23.ExceptionalZero.meromorphicAt_fixedOriginalSincTailRegularPart, "Zeta23.ExceptionalZero.UniversalSincSignedPoleBound", "THEOREM"),
+    (``Zeta23.ExceptionalZero.analyticAt_fixedOriginalSincTailRegularPart, "Zeta23.ExceptionalZero.UniversalSincSignedPoleBound", "THEOREM"),
+    (``Zeta23.ExceptionalZero.meromorphicAt_fixedOriginalSincTailContinuation, "Zeta23.ExceptionalZero.UniversalSincSignedPoleBound", "THEOREM"),
+    (``Zeta23.ExceptionalZero.positiveLaplaceTransform_fixedOriginalSincSignedTail_eq_continuation_safe, "Zeta23.ExceptionalZero.UniversalSincSignedPoleBound", "THEOREM"),
+    (``Zeta23.ExceptionalZero.analyticAt_fixedOriginalSincSignedTailLaplace_of_integrable, "Zeta23.ExceptionalZero.UniversalSincSignedPoleBound", "THEOREM"),
+    (``Zeta23.ExceptionalZero.fixedOriginalSincSignedTail_domain_lower_bound, "Zeta23.ExceptionalZero.UniversalSincSignedPoleBound", "THEOREM"),
+    (``Zeta23.ExceptionalZero.fixedOriginalSincSignedTail_domain_bddBelow, "Zeta23.ExceptionalZero.UniversalSincSignedPoleBound", "THEOREM"),
+    (``Zeta23.ExceptionalZero.fixedOriginalSincSignedTail_abscissa_lower_bound, "Zeta23.ExceptionalZero.UniversalSincSignedPoleBound", "THEOREM"),
+    (``Zeta23.ExceptionalZero.not_fixedOriginalSincCorrelation_oneSidedTailBound, "Zeta23.ExceptionalZero.UniversalSincSignedExcursions", "THEOREM"),
+    (``Zeta23.ExceptionalZero.fixedOriginalSincCorrelation_signed_late_excursion_of_right_zero, "Zeta23.ExceptionalZero.UniversalSincSignedExcursions", "THEOREM"),
+    (``Zeta23.ExceptionalZero.fixedOriginalSincCorrelation_two_signed_late_excursions_of_right_zero, "Zeta23.ExceptionalZero.UniversalSincSignedExcursions", "THEOREM"),
+    (``Zeta23.ExceptionalZero.fixedOriginalSincCorrelation_two_signed_late_excursions_of_off_line_zero, "Zeta23.ExceptionalZero.UniversalSincSignedExcursions", "THEOREM"),
+    (``Zeta23.ExceptionalZero.fixedOriginalSincKernel_integral, "Zeta23.ExceptionalZero.UniversalSincOriginalPhaseDepth", "THEOREM"),
+    (``Zeta23.ExceptionalZero.fixedOriginalSincKernelL2Mass_pos, "Zeta23.ExceptionalZero.UniversalSincOriginalPhaseDepth", "THEOREM"),
+    (``Zeta23.ExceptionalZero.fixedOriginalSincPhaseTrial_reflected_formula, "Zeta23.ExceptionalZero.UniversalSincOriginalPhaseDepth", "THEOREM"),
+    (``Zeta23.ExceptionalZero.fixedOriginalSincPhaseTrial_integral_norm_sq, "Zeta23.ExceptionalZero.UniversalSincOriginalPhaseDepth", "THEOREM"),
+    (``Zeta23.ExceptionalZero.fixedOriginalSincPhaseTrial_contDiff, "Zeta23.ExceptionalZero.UniversalSincOriginalPhaseDepth", "THEOREM"),
+    (``Zeta23.ExceptionalZero.fixedOriginalSincPhaseTrial_hasCompactSupport, "Zeta23.ExceptionalZero.UniversalSincOriginalPhaseDepth", "THEOREM"),
+    (``Zeta23.ExceptionalZero.fixedOriginalSincPhaseTrial_support, "Zeta23.ExceptionalZero.UniversalSincOriginalPhaseDepth", "THEOREM"),
+    (``Zeta23.ExceptionalZero.fixedOriginalSincPhaseTrial_Weil_re, "Zeta23.ExceptionalZero.UniversalSincOriginalPhaseDepth", "THEOREM"),
+    (``Zeta23.ExceptionalZero.fixedOriginalSincPhaseTrial_Weil_eq_native, "Zeta23.ExceptionalZero.UniversalSincOriginalPhaseDepth", "THEOREM"),
+    (``Zeta23.ExceptionalZero.exists_fixedOriginalSincPhaseTrial_depth_of_off_line_zero, "Zeta23.ExceptionalZero.UniversalSincOriginalPhaseDepth", "THEOREM"),
+    (``Zeta23.CCM.nativeDampedCompletionKernel_integrable, "Zeta23.CCM.NativeDampedCompletionPrerequisites", "THEOREM"),
+    (``Zeta23.CCM.nativeDampedCompletionKernel_integral_norm_lt_605_div_621, "Zeta23.CCM.NativeDampedCompletionPrerequisites", "THEOREM"),
+    (``Zeta23.CCM.nativeCompletionL2Delay_norm, "Zeta23.CCM.NativeDampedCompletionPrerequisites", "THEOREM"),
+    (``Zeta23.CCM.nativeCompletionL2Delay_causal, "Zeta23.CCM.NativeDampedCompletionPrerequisites", "THEOREM"),
+    (``Zeta23.CCM.nativeDampedCompletionPointwise_causal, "Zeta23.CCM.NativeDampedCompletionPrerequisites", "THEOREM"),
+    (``Zeta23.CCM.nativeCompletionL2Delay_continuous, "Zeta23.CCM.NativeDampedCompletionOperator", "THEOREM"),
+    (``Zeta23.CCM.nativeDampedCompletionL2Integrand_integrable, "Zeta23.CCM.NativeDampedCompletionOperator", "THEOREM"),
+    (``Zeta23.CCM.nativeDampedCompletionL2Operator_apply, "Zeta23.CCM.NativeDampedCompletionOperator", "THEOREM"),
+    (``Zeta23.CCM.nativeDampedCompletionL2Operator_norm_lt_605_div_621, "Zeta23.CCM.NativeDampedCompletionOperator", "THEOREM"),
+    (``Zeta23.CCM.nativeDampedCompletionL2Operator_norm_lt_one, "Zeta23.CCM.NativeDampedCompletionOperator", "THEOREM"),
+    (``Zeta23.CCM.nativeCompletionCausalL2_isClosed, "Zeta23.CCM.NativeDampedCompletionOperator", "THEOREM"),
+    (``Zeta23.CCM.nativeDampedCompletionL2Operator_causal, "Zeta23.CCM.NativeDampedCompletionOperator", "THEOREM"),
+    (``Zeta23.CCM.nativeDampedCompletionCausalL2Operator_coe_apply, "Zeta23.CCM.NativeDampedCompletionOperator", "THEOREM"),
+    (``Zeta23.CCM.nativeDampedCompletionCausalL2Operator_norm_lt_605_div_621, "Zeta23.CCM.NativeDampedCompletionOperator", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorDividedLobeFourierCoeff_eq_iteratedDeriv, "Zeta23.CCM.OriginalDetectorFourierCoefficientBounds", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorDividedLobeFourierCoeff_le_gevrey_order, "Zeta23.CCM.OriginalDetectorFourierCoefficientBounds", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorDividedLobeFourierCoeff_le_stretched_exp, "Zeta23.CCM.OriginalDetectorFourierCoefficientBounds", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorDividedLobeFourierDecayRate_pos, "Zeta23.CCM.OriginalDetectorFourierCoefficientBounds", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorDividedLobeFourierCoeff_le_exp_sqrt_frequency, "Zeta23.CCM.OriginalDetectorFourierCoefficientBounds", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorScalarFourierDecay_integrableOn, "Zeta23.CCM.OriginalDetectorFourierScalarTailBounds", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorScalarFourierDecay_integral_Ioi, "Zeta23.CCM.OriginalDetectorFourierScalarTailBounds", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorScalarFourierDecay_summable, "Zeta23.CCM.OriginalDetectorFourierScalarTailBounds", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorScalarFourierDecay_tsum_tail_le, "Zeta23.CCM.OriginalDetectorFourierScalarTailBounds", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorScalarWeightedDecay_le, "Zeta23.CCM.OriginalDetectorFourierScalarTailBounds", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorScalarFourierDecay_tsum_tail_le_exp, "Zeta23.CCM.OriginalDetectorFourierScalarTailBounds", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorScalarFourierDecay_signed_tail_summable, "Zeta23.CCM.OriginalDetectorFourierScalarTailBounds", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorScalarFourierDecay_signed_tsum_tail_eq, "Zeta23.CCM.OriginalDetectorFourierScalarTailBounds", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorScalarFourierDecay_signed_tsum_tail_le_exp, "Zeta23.CCM.OriginalDetectorFourierScalarTailBounds", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorDividedLobeFourierJetCoeff_summable, "Zeta23.CCM.OriginalDetectorFourierTailBounds", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorDividedLobeFourierJetCoeff_eq, "Zeta23.CCM.OriginalDetectorFourierTailBounds", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorDividedLobePeriodicJet_fourierCoeff, "Zeta23.CCM.OriginalDetectorFourierTailBounds", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorDividedLobePeriodicJet_hasSum, "Zeta23.CCM.OriginalDetectorFourierTailBounds", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorDividedLobeFourierJet_hasSum_on_interval, "Zeta23.CCM.OriginalDetectorFourierTailBounds", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorDividedLobeFourierPartialJet_iteratedDeriv, "Zeta23.CCM.OriginalDetectorFourierTailBounds", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorDividedLobeFourierPartialJet_error_le_tail, "Zeta23.CCM.OriginalDetectorFourierTailBounds", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorDividedLobeFourierJetCoeff_le_decay, "Zeta23.CCM.OriginalDetectorFourierTailBounds", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorDividedLobeFourierJetTail_le_budget, "Zeta23.CCM.OriginalDetectorFourierTailBounds", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorDividedLobeFourierPartialJet_error_le_budget, "Zeta23.CCM.OriginalDetectorFourierTailBounds", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorDividedLobeFourierPartialSum_iteratedDeriv_error_le_budget, "Zeta23.CCM.OriginalDetectorFourierTailBounds", "THEOREM"),
+    (``Zeta23.CCM.nativeOriginalLogDriveSummand_derivative_integral_eq, "Zeta23.CCM.OriginalSincDriveDecay", "THEOREM"),
+    (``Zeta23.CCM.nativeOriginalDriveSourceNorm_integrable, "Zeta23.CCM.OriginalSincDriveDecay", "THEOREM"),
+    (``Zeta23.CCM.nativeOriginalDriveDerivativeProfile_integrable, "Zeta23.CCM.OriginalSincDriveDecay", "THEOREM"),
+    (``Zeta23.CCM.nativeOriginalDriveDecayConstant_pos, "Zeta23.CCM.OriginalSincDriveDecay", "THEOREM"),
+    (``Zeta23.CCM.nativeOriginalLogDriveSummand_derivative_integral_le, "Zeta23.CCM.OriginalSincDriveDecay", "THEOREM"),
+    (``Zeta23.CCM.nativeOriginalIntegerDrive_decay, "Zeta23.CCM.OriginalSincDriveDecay", "THEOREM"),
+    (``Zeta23.CCM.nativeOriginalIntegerDrive_zero_of_neg, "Zeta23.CCM.OriginalSincDriveLp", "THEOREM"),
+    (``Zeta23.CCM.nativeOriginalIntegerDrive_integrable, "Zeta23.CCM.OriginalSincDriveLp", "THEOREM"),
+    (``Zeta23.CCM.nativeOriginalDampedIntegerDrive_norm_sq_integrable, "Zeta23.CCM.OriginalSincDriveLp", "THEOREM"),
+    (``Zeta23.CCM.nativeOriginalDampedIntegerDrive_memLp_two, "Zeta23.CCM.OriginalSincDriveLp", "THEOREM"),
+    (``Zeta23.CCM.nativeOriginalDampedIntegerDriveL2_causal, "Zeta23.CCM.OriginalSincDriveLp", "THEOREM"),
+    (``Zeta23.CCM.nativeOriginalSource_not_nonnegative, "Zeta23.CCM.OriginalSincSourceSign", "THEOREM"),
+    (``Zeta23.CCM.exists_nativeOriginalSource_negative, "Zeta23.CCM.OriginalSincSourceSign", "THEOREM"),
+    (``Zeta23.CCM.nativeOriginalSource_not_nonpositive, "Zeta23.CCM.OriginalSincSourceSign", "THEOREM"),
+    (``Zeta23.CCM.exists_nativeOriginalSource_positive, "Zeta23.CCM.OriginalSincSourceSign", "THEOREM"),
+    (``Zeta23.CCM.nativeOriginalSource_integral_abs_ge_mass, "Zeta23.CCM.OriginalSincSourceSign", "THEOREM"),
+    (``Zeta23.CCM.nativeDampedCompletionCausalL2Adjoint_norm_lt_605_div_621, "Zeta23.CCM.NativeDampedCompletionResidual", "THEOREM"),
+    (``Zeta23.CCM.nativeAdjointResidual_norm_identity, "Zeta23.CCM.NativeDampedCompletionResidual", "THEOREM"),
+    (``Zeta23.CCM.nativeAdjointResidual_norm_loss, "Zeta23.CCM.NativeDampedCompletionResidual", "THEOREM"),
+    (``Zeta23.CCM.nativeAdjointResidual_norm_antitone, "Zeta23.CCM.NativeDampedCompletionResidual", "THEOREM"),
+    (``Zeta23.CCM.nativeAdjointResidual_norm_loss_kappa, "Zeta23.CCM.NativeDampedCompletionResidual", "THEOREM"),
+    (``Zeta23.CCM.nativeAdjointResidual_kernelProjection_preserved, "Zeta23.CCM.NativeDampedCompletionResidual", "THEOREM"),
+    (``Zeta23.CCM.nativeDampedCompletionL2Integrand_norm, "Zeta23.CCM.NativeDampedCompletionOperator", "THEOREM"),
+    (``Zeta23.CCM.nativeDampedCompletionL2Value_norm_le, "Zeta23.CCM.NativeDampedCompletionOperator", "THEOREM"),
+    (``Zeta23.CCM.nativeDampedCompletionL2Operator_norm_le_kernel_mass, "Zeta23.CCM.NativeDampedCompletionOperator", "THEOREM"),
+    (``Zeta23.CCM.nativeDampedCompletionL2Integrand_causal, "Zeta23.CCM.NativeDampedCompletionOperator", "THEOREM"),
+    (``Zeta23.CCM.nativeDampedCompletionCausalL2Operator_norm_le_full, "Zeta23.CCM.NativeDampedCompletionOperator", "THEOREM"),
+    (``Zeta23.CCM.nativeAdjointResidualIterate_zero, "Zeta23.CCM.NativeDampedCompletionResidual", "THEOREM"),
+    (``Zeta23.CCM.nativeAdjointResidualIterate_succ, "Zeta23.CCM.NativeDampedCompletionResidual", "THEOREM"),
+    (``Zeta23.CCM.nativeAdjointResidualStep_norm_le, "Zeta23.CCM.NativeDampedCompletionResidual", "THEOREM"),
+    (``Zeta23.CCM.nativeAdjointResidualStep_norm_lt, "Zeta23.CCM.NativeDampedCompletionResidual", "THEOREM"),
+    (``Zeta23.CCM.nativeAdjointResidualKappa_nonneg, "Zeta23.CCM.NativeDampedCompletionResidual", "THEOREM"),
+    (``Zeta23.CCM.nativeAdjointResidualKappa_le, "Zeta23.CCM.NativeDampedCompletionResidual", "THEOREM"),
+    (``Zeta23.CCM.nativeAdjointResidualStep_kernelProjection_preserved, "Zeta23.CCM.NativeDampedCompletionResidual", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorScalarPower_mul_exp_neg_le, "Zeta23.CCM.OriginalDetectorFourierScalarTailBounds", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorScalarFourierTailIntegral_le_exp, "Zeta23.CCM.OriginalDetectorFourierScalarTailBounds", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorDividedLobeFourierCoeff_summable, "Zeta23.CCM.OriginalDetectorFourierTailBounds", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorDividedLobePeriodicJet_eq_on_interval, "Zeta23.CCM.OriginalDetectorFourierTailBounds", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorDividedLobeFourierPartialJet_hasDerivAt, "Zeta23.CCM.OriginalDetectorFourierTailBounds", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorDividedLobeFourierJetTail_summable, "Zeta23.CCM.OriginalDetectorFourierTailBounds", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorDividedLobeFourierJetDecayConstant_nonneg, "Zeta23.CCM.OriginalDetectorFourierTailBounds", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorRawCutoff_sqrt_eventually_ge_mul, "Zeta23.CCM.OriginalDetectorFourierTailAsymptotics", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorDividedLobeFourierJetTailBudget_mul_exp_tendsto_zero, "Zeta23.CCM.OriginalDetectorFourierTailAsymptotics", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorDividedLobeFourierJetTailBudget_eventually_lt_exp, "Zeta23.CCM.OriginalDetectorFourierTailAsymptotics", "THEOREM"),
+    (``Zeta23.CCM.nativeOriginalDriveDecayConstant_nonneg, "Zeta23.CCM.OriginalSincDriveDecay", "THEOREM"),
+    (``Zeta23.CCM.nativeOriginalSource_scale_lt_log_two, "Zeta23.CCM.OriginalSincDriveLp", "THEOREM"),
+    (``Zeta23.CCM.nativeOriginalIntegerDrive_measurable, "Zeta23.CCM.OriginalSincDriveLp", "THEOREM"),
+    (``Zeta23.CCM.nativeOriginalIntegerDrive_memLp_one, "Zeta23.CCM.OriginalSincDriveLp", "THEOREM"),
+    (``Zeta23.CCM.nativeOriginalDampedIntegerDrive_continuous, "Zeta23.CCM.OriginalSincDriveLp", "THEOREM"),
+    (``Zeta23.CCM.nativeOriginalDampedIntegerDrive_measurable, "Zeta23.CCM.OriginalSincDriveLp", "THEOREM"),
+    (``Zeta23.CCM.nativeOriginalDampedIntegerDrive_zero_of_neg, "Zeta23.CCM.OriginalSincDriveLp", "THEOREM"),
+    (``Zeta23.CCM.nativeOriginalDampedIntegerDriveL2_coeFn, "Zeta23.CCM.OriginalSincDriveLp", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorFiniteWindow_eq_fourier, "Zeta23.CCM.OriginalDetectorFiniteWindowImage", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorFiniteWindow_mul_dividedLobe, "Zeta23.CCM.OriginalDetectorFiniteWindowImage", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorFiniteWindowImageFinsupp_support, "Zeta23.CCM.OriginalDetectorFiniteWindowImage", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorFiniteWindowImageFinsupp_eq, "Zeta23.CCM.OriginalDetectorFiniteWindowImage", "THEOREM"),
+    (``Zeta23.CCM.localizedFiniteFunction_originalDetectorFiniteWindowImageCoefficients, "Zeta23.CCM.OriginalDetectorFiniteWindowImage", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorFiniteWindowImage_error_le_budget, "Zeta23.CCM.OriginalDetectorFiniteWindowImage", "THEOREM"),
+    (``Zeta23.CCM.norm_originalDetectorFiniteWindow_le_one, "Zeta23.CCM.OriginalDetectorFiniteWindowImage", "THEOREM"),
+    (``Zeta23.CCM.nativeCompletionCorrection_integrable, "Zeta23.CCM.NativeCompletedInput", "THEOREM"),
+    (``Zeta23.CCM.nativeCompletedInput_integrable, "Zeta23.CCM.NativeCompletedInput", "THEOREM"),
+    (``Zeta23.CCM.nativeCompletedInput_abs_le_uniform, "Zeta23.CCM.NativeCompletedInput", "THEOREM"),
+    (``Zeta23.CCM.nativeCompletedInput_memLp, "Zeta23.CCM.NativeCompletedInput", "THEOREM"),
+    (``Zeta23.CCM.nativeDampedCompletedInputL2_causal, "Zeta23.CCM.NativeCompletedInput", "THEOREM"),
+    (``Zeta23.CCM.nativeCompletionCorrection_zero_of_neg, "Zeta23.CCM.NativeCompletedInput", "THEOREM"),
+    (``Zeta23.CCM.nativeCompletionCorrection_measurable, "Zeta23.CCM.NativeCompletedInput", "THEOREM"),
+    (``Zeta23.CCM.nativeCompletionCorrection_abs_le_three, "Zeta23.CCM.NativeCompletedInput", "THEOREM"),
+    (``Zeta23.CCM.nativeCompletedInput_zero_of_neg, "Zeta23.CCM.NativeCompletedInput", "THEOREM"),
+    (``Zeta23.CCM.nativeCompletedInputUniformBound_nonneg, "Zeta23.CCM.NativeCompletedInput", "THEOREM"),
+    (``Zeta23.CCM.nativeCompletedInput_norm_sq_integrable, "Zeta23.CCM.NativeCompletedInput", "THEOREM"),
+    (``Zeta23.CCM.nativeDampedCompletedInput_aestronglyMeasurable, "Zeta23.CCM.NativeCompletedInput", "THEOREM"),
+    (``Zeta23.CCM.nativeDampedCompletedInput_zero_of_neg, "Zeta23.CCM.NativeCompletedInput", "THEOREM"),
+    (``Zeta23.CCM.nativeDampedCompletedInput_norm_le, "Zeta23.CCM.NativeCompletedInput", "THEOREM"),
+    (``Zeta23.CCM.nativeDampedCompletedInput_norm_sq_integrable, "Zeta23.CCM.NativeCompletedInput", "THEOREM"),
+    (``Zeta23.CCM.nativeDampedCompletedInputL2_coeFn, "Zeta23.CCM.NativeCompletedInput", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorFiniteWindow_iteratedDeriv, "Zeta23.CCM.OriginalDetectorFiniteWindowImageJets", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorFiniteWindowCoeff_norm_sum, "Zeta23.CCM.OriginalDetectorFiniteWindowImageJets", "THEOREM"),
+    (``Zeta23.CCM.norm_originalDetectorFiniteWindow_iteratedDeriv_le, "Zeta23.CCM.OriginalDetectorFiniteWindowImageJets", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorFiniteWindowImage_iteratedDeriv_error_le_budget, "Zeta23.CCM.OriginalDetectorFiniteWindowImageJets", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorFiniteWindowJet_hasDerivAt, "Zeta23.CCM.OriginalDetectorFiniteWindowImageJets", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorFiniteWindow_contDiff, "Zeta23.CCM.OriginalDetectorFiniteWindowImageJets", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorDividedLobeFourierPartialSum_contDiff, "Zeta23.CCM.OriginalDetectorFiniteWindowImageJets", "THEOREM"),
+    (``Zeta23.CCM.nativeIntegerTranslateAction_eq_causal_history, "Zeta23.CCM.NativeCompletionIntegerKernel", "THEOREM"),
+    (``Zeta23.CCM.nativeCompletionCorrection_integer_term, "Zeta23.CCM.NativeCompletionIntegerKernel", "THEOREM"),
+    (``Zeta23.CCM.nativePositiveCompletion_eq_integerTranslateCorrection, "Zeta23.CCM.NativeCompletionIntegerKernel", "THEOREM"),
+    (``Zeta23.CCM.nativeIntegerTranslateAction_eq_causal_history_at_horizon, "Zeta23.CCM.NativeCompletionIntegerKernel", "THEOREM"),
+    (``Zeta23.CCM.nativeCompletionCorrection_integer_sum_eq, "Zeta23.CCM.NativeCompletionIntegerKernel", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorFiniteWindow_endpoint_jets, "Zeta23.CCM.OriginalDetectorFiniteWindowBoundaryFlat", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorFiniteWindowImage_endpoint_jets, "Zeta23.CCM.OriginalDetectorFiniteWindowBoundaryFlat", "THEOREM"),
+    (``Zeta23.CCM.boundaryFlatCoefficients_of_left_endpoint_jets, "Zeta23.CCM.OriginalDetectorFiniteWindowBoundaryFlat", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorFiniteWindowImageCoefficients_boundaryFlat, "Zeta23.CCM.OriginalDetectorFiniteWindowBoundaryFlat", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorFiniteWindowImageCoefficients_hardWindow_contDiff, "Zeta23.CCM.OriginalDetectorFiniteWindowBoundaryFlat", "THEOREM"),
+    (``Zeta23.ExceptionalZero.originalDetectorCorrelation_pos_excursions, "Zeta23.ExceptionalZero.OriginalDetectorPhaseDepth", "THEOREM"),
+    (``Zeta23.ExceptionalZero.originalDetectorCorrelation_neg_excursions, "Zeta23.ExceptionalZero.OriginalDetectorPhaseDepth", "THEOREM"),
+    (``Zeta23.ExceptionalZero.originalDetector_eachPhase_cofinal_depth, "Zeta23.ExceptionalZero.OriginalDetectorPhaseDepth", "THEOREM"),
+    (``Zeta23.CCM.nativeCompletedInputCausalL2_coeFn, "Zeta23.CCM.NativeAdjointResidual", "THEOREM"),
+    (``Zeta23.CCM.nativeAdjointResidualIterate_eq_forcing_sub_image, "Zeta23.CCM.NativeAdjointResidual", "THEOREM"),
+    (``Zeta23.CCM.nativeCompletedInputResidual_norm_antitone, "Zeta23.CCM.NativeAdjointResidual", "THEOREM"),
+    (``Zeta23.CCM.nativeCompletedInputResidual_kernelProjection_preserved, "Zeta23.CCM.NativeAdjointResidual", "THEOREM"),
+    (``Zeta23.CCM.nativeCompletedInputResidualIterate_zero, "Zeta23.CCM.NativeAdjointResidual", "THEOREM"),
+    (``Zeta23.CCM.nativeCompletedInputResidualIterate_eq_forcing_sub_image, "Zeta23.CCM.NativeAdjointResidual", "THEOREM"),
+    (``Zeta23.CCM.nativeIntegerTranslate_causal_convolution_comm, "Zeta23.CCM.NativeCompletionEquation", "THEOREM"),
+    (``Zeta23.CCM.nativeOriginalPrimeField_zero_of_neg, "Zeta23.CCM.NativeCompletionEquation", "THEOREM"),
+    (``Zeta23.CCM.nativeCompletedInput_equation, "Zeta23.CCM.NativeCompletionEquation", "THEOREM"),
+    (``Zeta23.CCM.nativeCompletedInput_equation_integrable, "Zeta23.CCM.NativeCompletionEquation", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorFiniteWindowImageJetBudget_mul_exp_tendsto_zero, "Zeta23.CCM.OriginalDetectorFiniteWindowImageAsymptotics", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorFiniteWindowImageJetBudget_eventually_lt_exp, "Zeta23.CCM.OriginalDetectorFiniteWindowImageAsymptotics", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorFiniteWindow_endpoint_jets_lt_eight, "Zeta23.CCM.OriginalDetectorFiniteWindowHigherFlat", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorFiniteWindowImage_endpoint_jets_lt_eight, "Zeta23.CCM.OriginalDetectorFiniteWindowHigherFlat", "THEOREM"),
+    (``Zeta23.CCM.contDiff_nat_indicator_Icc_of_iteratedDeriv_endpoint_zero, "Zeta23.CCM.OriginalDetectorFiniteWindowHigherFlat", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorFiniteWindowImageCoefficients_hardWindow_contDiff_of_lt_eight, "Zeta23.CCM.OriginalDetectorFiniteWindowHigherFlat", "THEOREM"),
+    (``Zeta23.CCM.localizedFiniteFunction_iteratedDeriv_zero_eq_moment, "Zeta23.CCM.OriginalDetectorFinitePoleImage", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorFiniteWindowImageCoefficients_moment_zero, "Zeta23.CCM.OriginalDetectorFinitePoleImage", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorFinitePoleImageCoefficients_boundaryFlat, "Zeta23.CCM.OriginalDetectorFinitePoleImage", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorFinitePoleImageCoefficients_native_poles_zero, "Zeta23.CCM.OriginalDetectorFinitePoleImage", "THEOREM"),
+    (``Zeta23.CCM.localizedFiniteFunction_originalDetectorFinitePoleImageCoefficients, "Zeta23.CCM.OriginalDetectorFinitePoleImage", "THEOREM"),
+    (``Zeta23.CCM.iteratedDeriv_poleKilled_infty, "Zeta23.CCM.OriginalDetectorFinitePoleImageTransport", "THEOREM"),
+    (``Zeta23.CCM.poleKilled_originalDetectorLobe, "Zeta23.CCM.OriginalDetectorFinitePoleImageTransport", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorFinitePoleImage_iteratedDeriv_error_le_budget, "Zeta23.CCM.OriginalDetectorFinitePoleImageTransport", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorFinitePoleImageCoefficients_hardWindow_contDiff, "Zeta23.CCM.OriginalDetectorFinitePoleImageTransport", "THEOREM"),
+    (``Zeta23.CCM.poleKilled_localizedFiniteVector_of_boundaryFlat, "Zeta23.CCM.OriginalDetectorFinitePoleImageTransport", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorFinitePoleImageCoefficients_hardWindow_eq_poleKilled, "Zeta23.CCM.OriginalDetectorFinitePoleImageTransport", "THEOREM"),
+    (``Zeta23.CCM.localizedFiniteFunction_energy_eq_norm_sq, "Zeta23.CCM.OriginalDetectorFinitePhysicalNorm", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorFinitePoleImage_physical_energy_eq_norm_sq, "Zeta23.CCM.OriginalDetectorFinitePhysicalNorm", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorFinitePoleImageJetBudget_mul_exp_tendsto_zero, "Zeta23.CCM.OriginalDetectorFinitePoleImageAsymptotics", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorFinitePoleImageJetBudget_eventually_lt_exp, "Zeta23.CCM.OriginalDetectorFinitePoleImageAsymptotics", "THEOREM"),
+    (``Zeta23.CCM.poleNeutral_trial_residual_intertwining, "Zeta23.CCM.CanonicalPoleNeutralTrialResidualBounds", "THEOREM"),
+    (``Zeta23.CCM.poleNeutralIndex_norm_le, "Zeta23.CCM.CanonicalPoleNeutralTrialResidualBounds", "THEOREM"),
+    (``Zeta23.CCM.poleNeutral_trial_residual_bound, "Zeta23.CCM.CanonicalPoleNeutralTrialResidualBounds", "THEOREM"),
+    (``Zeta23.CCM.poleNeutral_momentFour_zero_residual_lower, "Zeta23.CCM.CanonicalPoleNeutralTrialResidualBounds", "THEOREM"),
+    (``Zeta23.CCM.exists_originalDetectorFinitePoleImageCoefficients_nonzero_threshold, "Zeta23.CCM.OriginalDetectorFinitePoleImageNonzero", "THEOREM"),
+    (``Zeta23.CCM.norm_originalDetectorFinitePoleImageNormalized, "Zeta23.CCM.OriginalDetectorFinitePoleImageNonzero", "THEOREM"),
+    (``Zeta23.CCM.poleNeutral_simpleEven_momentFour_ne_zero, "Zeta23.CCM.CanonicalPoleNeutralGroundConstraints", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorFinitePhasePlane_inner_eq_Gram, "Zeta23.CCM.OriginalDetectorFinitePhasePlane", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorFinitePhasePlane_inner_eq_nativeEnergy, "Zeta23.CCM.OriginalDetectorFinitePhasePlane", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorFinitePhasePlane_rayleigh_identity, "Zeta23.CCM.OriginalDetectorFinitePhasePlane", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorFinitePhaseVector_nativeEnergy, "Zeta23.CCM.OriginalDetectorFinitePhasePlane", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorFinitePhaseVector_eq_planeVector, "Zeta23.CCM.OriginalDetectorFinitePhasePlane", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorFinitePoleImageCoefficients_moment_zero_lt_six, "Zeta23.CCM.OriginalDetectorFinitePhaseCarrier", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorFinitePhaseRaw_moment_zero_lt_six, "Zeta23.CCM.OriginalDetectorFinitePhaseCarrier", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorFinitePhaseRaw_reversal, "Zeta23.CCM.OriginalDetectorFinitePhaseCarrier", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorFinitePhaseVector_native_poles_zero, "Zeta23.CCM.OriginalDetectorFinitePhaseCarrier", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorFiniteEvenPhase, "Zeta23.CCM.OriginalDetectorFinitePhaseCarrier", "DEF"),
+    (``Zeta23.CCM.originalDetectorFiniteOddPhase, "Zeta23.CCM.OriginalDetectorFinitePhaseCarrier", "DEF"),
+    (``Zeta23.CCM.originalDetectorFinitePhaseVector_raw, "Zeta23.CCM.OriginalDetectorFinitePhaseCarrier", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorFinitePhaseRaw_boundaryFlat, "Zeta23.CCM.OriginalDetectorFinitePhaseCarrier", "THEOREM"),
+    (``Zeta23.CCM.localizedFiniteFunction_reverseCoefficients_reflected, "Zeta23.CCM.OriginalDetectorFinitePhaseApproximation", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorFinitePhaseVector_physical_formula, "Zeta23.CCM.OriginalDetectorFinitePhaseApproximation", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorFiniteOriginalPhaseApprox_iteratedDeriv_error_le, "Zeta23.CCM.OriginalDetectorFinitePhaseApproximation", "THEOREM"),
+    (``Zeta23.CCM.fixedOriginalSincKernel_iteratedDeriv_integrable, "Zeta23.CCM.OriginalDetectorOriginalPhaseL1Bounds", "THEOREM"),
+    (``Zeta23.CCM.fixedOriginalSincPhaseTrial_contDiff_top, "Zeta23.CCM.OriginalDetectorOriginalPhaseL1Bounds", "THEOREM"),
+    (``Zeta23.CCM.fixedOriginalSincPhaseTrial_iteratedDeriv_formula, "Zeta23.CCM.OriginalDetectorOriginalPhaseL1Bounds", "THEOREM"),
+    (``Zeta23.CCM.fixedOriginalSincPhaseTrial_iteratedDeriv_L1_bound, "Zeta23.CCM.OriginalDetectorOriginalPhaseL1Bounds", "THEOREM"),
+    (``Zeta23.CCM.fixedOriginalSincPhaseTrial_originalPhase_L1_bound, "Zeta23.CCM.OriginalDetectorOriginalPhaseL1Bounds", "THEOREM"),
+    (``Zeta23.CCM.iteratedDeriv_localizedFiniteVector_eq_formula_on_interval, "Zeta23.CCM.OriginalDetectorFinitePhaseL1Errors", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorFiniteOriginalPhaseHard_contDiff, "Zeta23.CCM.OriginalDetectorFinitePhaseL1Errors", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorFiniteOriginalPhaseHard_integral_jet_error_le, "Zeta23.CCM.OriginalDetectorFinitePhaseL1Errors", "THEOREM"),
+    (``Zeta23.CCM.norm_originalSincTest_le_source_budget, "Zeta23.CCM.OriginalDetectorFinitePhaseMass", "THEOREM"),
+    (``Zeta23.CCM.norm_fixedOriginalSincPhaseTrial_le_source_budget, "Zeta23.CCM.OriginalDetectorFinitePhaseMass", "THEOREM"),
+    (``Zeta23.CCM.interval_energy_error_le_of_uniform_error, "Zeta23.CCM.OriginalDetectorFinitePhaseMass", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorKernelSupBudget_nonneg, "Zeta23.CCM.OriginalDetectorFinitePhaseMass", "THEOREM"),
+    (``Zeta23.CCM.nativeCompletionCorrection_eq_rationalKernel, "Zeta23.CCM.NativeCompletionIntegerKernel", "THEOREM"),
+    (``Zeta23.CCM.poleNeutral_even_eigen_source_moment_pos_of_lt_odd_bottom, "Zeta23.CCM.CanonicalPoleNeutralGroundConstraints", "THEOREM"),
+    (``Zeta23.CCM.poleNeutral_even_eigen_momentFour_ne_zero_of_lt_odd_bottom, "Zeta23.CCM.CanonicalPoleNeutralGroundConstraints", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorFiniteOriginalPhaseApprox_interval_energy, "Zeta23.CCM.OriginalDetectorFinitePhaseNormControl", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorFinitePhase_mass_error_le, "Zeta23.CCM.OriginalDetectorFinitePhaseNormControl", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorFinitePoleImageJetBudget_mul_aperture_exp_tendsto_zero, "Zeta23.CCM.OriginalDetectorFinitePhaseNormControl", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorFinitePhaseMassErrorBudget_mul_exp_tendsto_zero, "Zeta23.CCM.OriginalDetectorFinitePhaseNormControl", "THEOREM"),
+    (``Zeta23.CCM.exists_originalDetectorFinitePhase_mass_control_threshold, "Zeta23.CCM.OriginalDetectorFinitePhaseNormalization", "THEOREM"),
+    (``Zeta23.CCM.exists_originalDetectorFinitePhase_unit_threshold, "Zeta23.CCM.OriginalDetectorFinitePhaseNormalization", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorFinitePhaseUnitVector_moment_zero_lt_six, "Zeta23.CCM.OriginalDetectorFinitePhaseNormalization", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorFinitePhaseUnitVector_native_poles_zero, "Zeta23.CCM.OriginalDetectorFinitePhaseNormalization", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorFinitePhase_Weil_error_le, "Zeta23.CCM.OriginalDetectorFinitePhaseWeilPadding", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorFinitePhaseL1ErrorBudget_mul_exp_tendsto_zero, "Zeta23.CCM.OriginalDetectorFinitePhaseWeilPadding", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorFinitePhaseWeilErrorBudget_mul_exp_tendsto_zero, "Zeta23.CCM.OriginalDetectorFinitePhaseWeilPadding", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorFiniteOriginalPhaseHard_Weil_re_eq_nativeEnergy, "Zeta23.CCM.OriginalDetectorFinitePhaseNativeTransport", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorFinitePhaseUnitVector_nativeEnergy_eq_Weil_div_mass, "Zeta23.CCM.OriginalDetectorFinitePhaseNativeTransport", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorFinitePhase_producer, "Zeta23.CCM.OriginalDetectorFinitePhaseDepth", "THEOREM"),
+    (``Zeta23.CCM.nativePoleWeightedSource_locallyIntegrable, "Zeta23.CCM.PoleNeutralCompactL2Regularity", "THEOREM"),
+    (``Zeta23.CCM.nativePolePrimitive_continuous_of_memLp, "Zeta23.CCM.PoleNeutralCompactL2Regularity", "THEOREM"),
+    (``Zeta23.CCM.nativePoleCompactInverse_continuous_of_memLp, "Zeta23.CCM.PoleNeutralCompactL2Regularity", "THEOREM"),
+    (``Zeta23.CCM.nativePoleCompactInverseDerivative_continuous_of_memLp, "Zeta23.CCM.PoleNeutralCompactL2Regularity", "THEOREM"),
+    (``Zeta23.CCM.nativePoleCompactInverse_ae_hasDerivAt, "Zeta23.CCM.PoleNeutralCompactL2Regularity", "THEOREM"),
+    (``Zeta23.CCM.nativePoleCompactInverseDerivative_ae_hasDerivAt, "Zeta23.CCM.PoleNeutralCompactL2Regularity", "THEOREM"),
+    (``Zeta23.CCM.nativePoleCompactInverse_memLp_clamped_values, "Zeta23.CCM.PoleNeutralCompactL2Regularity", "THEOREM"),
+    (``Zeta23.CCM.nativePoleCompactInverse_memLp_jet_representatives, "Zeta23.CCM.PoleNeutralCompactL2Regularity", "THEOREM"),
+    (``Zeta23.CCM.complex_intervalPrimitive_absolutelyContinuous, "Zeta23.CCM.CompactComplexIntegralFTC", "THEOREM"),
+    (``Zeta23.CCM.complex_integral_eq_sub_of_ac_ae, "Zeta23.CCM.CompactComplexIntegralFTC", "THEOREM"),
+    (``Zeta23.CCM.nativeCausalExponentialPolynomial_norm_sq_integrable, "Zeta23.CCM.NativeCausalExponentialWitness", "THEOREM"),
+    (``Zeta23.CCM.nativeCausalExponentialPolynomial_memLp, "Zeta23.CCM.NativeCausalExponentialWitness", "THEOREM"),
+    (``Zeta23.CCM.nativeCausalExponentialPolynomialL2_coeFn, "Zeta23.CCM.NativeCausalExponentialWitness", "THEOREM"),
+    (``Zeta23.CCM.nativeCausalExponentialPolynomialL2_causal, "Zeta23.CCM.NativeCausalExponentialWitness", "THEOREM"),
+    (``Zeta23.CCM.nativeCausalExponentialWitness_ne_zero, "Zeta23.CCM.NativeCausalExponentialWitness", "THEOREM"),
+    (``Zeta23.CCM.nativeExponentialPolynomialProfile_continuous, "Zeta23.CCM.NativeCausalExponentialWitness", "THEOREM"),
+    (``Zeta23.CCM.nativeCausalExponentialPolynomial_of_nonneg, "Zeta23.CCM.NativeCausalExponentialWitness", "THEOREM"),
+    (``Zeta23.CCM.nativeCausalExponentialPolynomial_zero_of_neg, "Zeta23.CCM.NativeCausalExponentialWitness", "THEOREM"),
+    (``Zeta23.CCM.nativeCausalExponentialPolynomial_measurable, "Zeta23.CCM.NativeCausalExponentialWitness", "THEOREM"),
+    (``Zeta23.CCM.nativeCausalExponentialPolynomial_norm, "Zeta23.CCM.NativeCausalExponentialWitness", "THEOREM"),
+    (``Zeta23.CCM.nativeCausalExponentialPolynomial_norm_sq, "Zeta23.CCM.NativeCausalExponentialWitness", "THEOREM"),
+    (``Zeta23.CCM.nativeCausalExponentialPolynomialL2_ne_zero, "Zeta23.CCM.NativeCausalExponentialWitness", "THEOREM"),
+    (``Zeta23.CCM.nativeCausalLaplaceMoment_integrable, "Zeta23.CCM.NativeCausalLaplaceMoments", "THEOREM"),
+    (``Zeta23.CCM.nativeCausalExponentialWitness_inner_eq_laplaceMoment, "Zeta23.CCM.NativeCausalLaplaceMoments", "THEOREM"),
+    (``Zeta23.CCM.nativeCausalExponentialWitness_inner_completedInput, "Zeta23.CCM.NativeCausalLaplaceMoments", "THEOREM"),
+    (``Zeta23.CCM.nativeExponentialPolynomialProfile_conj, "Zeta23.CCM.NativeCausalLaplaceMoments", "THEOREM"),
+    (``Zeta23.CCM.nativePoleCompactInverse_hasDerivAt, "Zeta23.CCM.PoleNeutralCompactInverseCore", "THEOREM"),
+    (``Zeta23.CCM.nativePoleCompactInverseDerivative_hasDerivAt, "Zeta23.CCM.PoleNeutralCompactInverseCore", "THEOREM"),
+    (``Zeta23.CCM.nativePoleCompactInverse_zero_outside, "Zeta23.CCM.PoleNeutralCompactInverseCore", "THEOREM"),
+    (``Zeta23.CCM.nativePoleCompactInverseDerivative_zero_outside, "Zeta23.CCM.PoleNeutralCompactInverseCore", "THEOREM"),
+    (``Zeta23.CCM.hasDerivAt_nativePoleExponential, "Zeta23.CCM.PoleNeutralCompactInverseCore", "THEOREM"),
+    (``Zeta23.CCM.nativePoleCompactInverse_continuous, "Zeta23.CCM.PoleNeutralCompactInverseCore", "THEOREM"),
+    (``Zeta23.CCM.nativePoleCompactInverseDerivative_continuous, "Zeta23.CCM.PoleNeutralCompactInverseCore", "THEOREM"),
+    (``Zeta23.CCM.nativePoleCompactInverseDerivative_hasCompactSupport, "Zeta23.CCM.PoleNeutralCompactInverseCore", "THEOREM"),
+    (``Zeta23.CCM.nativePoleCompactInverse_jet_absolutelyContinuous, "Zeta23.CCM.PoleNeutralCompactL2Energy", "THEOREM"),
+    (``Zeta23.CCM.nativePoleCompactInverse_memLp_energy_identity, "Zeta23.CCM.PoleNeutralCompactL2Energy", "THEOREM"),
+    (``Zeta23.CCM.nativePoleCompactInverse_l2_norm_le_four_of_memLp, "Zeta23.CCM.PoleNeutralCompactL2Energy", "THEOREM"),
+    (``Zeta23.CCM.nativePoleCompactH2, "Zeta23.CCM.PoleNeutralCompactH2", "DEF"),
+    (``Zeta23.CCM.NativeCompactPoleH2.weak_first, "Zeta23.CCM.PoleNeutralCompactH2", "THEOREM"),
+    (``Zeta23.CCM.NativeCompactPoleH2.weak_second, "Zeta23.CCM.PoleNeutralCompactH2", "THEOREM"),
+    (``Zeta23.CCM.nativePoleCompactH2_norm_bound, "Zeta23.CCM.PoleNeutralCompactH2", "THEOREM"),
+    (``Zeta23.CCM.NativeCompactPoleH2.unique, "Zeta23.CCM.PoleNeutralCompactH2Uniqueness", "THEOREM"),
+    (``Zeta23.CCM.nativePoleCompactH2_exists_unique, "Zeta23.CCM.PoleNeutralCompactH2Uniqueness", "THEOREM"),
+    (``Zeta23.CCM.poleNeutral_compactInverse_exists_unique, "Zeta23.CCM.PoleNeutralCompactInverse", "THEOREM"),
+    (``Zeta23.CCM.poleNeutral_compactInverse_support, "Zeta23.CCM.PoleNeutralCompactInverse", "THEOREM"),
+    (``Zeta23.CCM.poleNeutral_compactInverse_norm_bound, "Zeta23.CCM.PoleNeutralCompactInverse", "THEOREM"),
+    (``Zeta23.CCM.nativeDeepThresholdGap_pos, "Zeta23.CCM.CanonicalDeepThresholdGap", "THEOREM"),
+    (``Zeta23.CCM.exists_bottomAvoidingThreshold, "Zeta23.CCM.CanonicalDeepThresholdSelection", "THEOREM"),
+    (``Zeta23.CCM.exists_least_deepPoleNeutralCutoff, "Zeta23.CCM.CanonicalDeepThresholdSelection", "THEOREM"),
+    (``Zeta23.CCM.deepThreshold_predecessor_inverse_bound, "Zeta23.CCM.CanonicalDeepThresholdSelection", "THEOREM"),
+    (``Zeta23.CCM.deepThreshold_selectedParity_simple, "Zeta23.CCM.CanonicalDeepThresholdSelection", "THEOREM"),
+    (``Zeta23.CCM.inner_poleNeutralEvenCompressedCanonical_centeredZeroExtend_pair, "Zeta23.CCM.CanonicalPoleNeutralBottomNFlow", "THEOREM"),
+    (``Zeta23.CCM.inner_poleNeutralOddCompressedCanonical_centeredZeroExtend_pair, "Zeta23.CCM.CanonicalPoleNeutralBottomNFlow", "THEOREM"),
+    (``Zeta23.CCM.poleEvenProfile_dot_evenSixthMomentWitness, "Zeta23.CCM.CanonicalPoleNeutralCubicWitness", "THEOREM"),
+    (``Zeta23.CCM.canonicalPoleEvenSixthMomentWitness_functional, "Zeta23.CCM.CanonicalPoleNeutralCubicWitness", "THEOREM"),
+    (``Zeta23.CCM.poleNeutralMomentFourWitness_momentFour, "Zeta23.CCM.CanonicalPoleNeutralCubicWitness", "THEOREM"),
+    (``Zeta23.CCM.evenSixthMomentWitness_even, "Zeta23.CCM.CanonicalPoleNeutralCubicWitness", "THEOREM"),
+    (``Zeta23.CCM.evenSixthMomentWitness_mem, "Zeta23.CCM.CanonicalPoleNeutralCubicWitness", "THEOREM"),
+    (``Zeta23.CCM.poleEvenProfile_dot_evenSixthMomentWitness_re_neg, "Zeta23.CCM.CanonicalPoleNeutralCubicWitness", "THEOREM"),
+    (``Zeta23.CCM.evenBoundaryFlat_eq_zero_of_euclideanIndex_sq_eigen, "Zeta23.CCM.CanonicalPoleNeutralIndexRigidity", "THEOREM"),
+    (``Zeta23.CCM.poleEvenProfile_mul_centeredIndex_sq, "Zeta23.CCM.CanonicalPoleNeutralIndexRigidity", "THEOREM"),
+    (``Zeta23.CCM.poleNeutralEvenRayleighBottom_mul_norm_sq_le, "Zeta23.CCM.CanonicalPoleNeutralShiftedSecular", "THEOREM"),
+    (``Zeta23.CCM.poleNeutralEvenShiftedCanonicalEquiv, "Zeta23.CCM.CanonicalPoleNeutralShiftedSecular", "DEF"),
+    (``Zeta23.CCM.poleNeutralOddShiftedCanonicalEquiv, "Zeta23.CCM.CanonicalPoleNeutralShiftedSecular", "DEF"),
+    (``Zeta23.CCM.poleNeutral_even_eigen_source_ne_zero_of_lt_odd_bottom, "Zeta23.CCM.CanonicalPoleNeutralShiftedSecular", "THEOREM"),
+    (``Zeta23.CCM.poleNeutralIndexAdjointEquiv, "Zeta23.CCM.CanonicalPoleNeutralShiftedSecular", "DEF"),
+    (``Zeta23.CCM.poleNeutral_odd_eigen_adjoint_competitor_eq_source, "Zeta23.CCM.CanonicalPoleNeutralShiftedSecular", "THEOREM"),
+    (``Zeta23.CCM.poleNeutral_odd_eigen_cubic_pairing_ne_zero_of_lt_even_bottom, "Zeta23.CCM.CanonicalPoleNeutralShiftedSecular", "THEOREM"),
+    (``Zeta23.CCM.poleNeutral_strictOdd_ground_cubic_pairing_ne_zero, "Zeta23.CCM.CanonicalPoleNeutralShiftedSecular", "THEOREM"),
+    (``Zeta23.CCM.poleNeutral_shifted_rankOneIntertwining, "Zeta23.CCM.CanonicalPoleNeutralShiftedSecular", "THEOREM"),
+    (``Zeta23.CCM.poleNeutral_even_eigenvector_eq_source_smul_shiftedRay, "Zeta23.CCM.CanonicalPoleNeutralShiftedSecular", "THEOREM"),
+    (``Zeta23.CCM.inner_poleNeutralCorrectedCubicRieszVector, "Zeta23.CCM.CanonicalPoleNeutralShiftedSecular", "THEOREM"),
+    (``Zeta23.CCM.poleNeutral_odd_adjoint_shifted_rankOneIntertwining, "Zeta23.CCM.CanonicalPoleNeutralShiftedSecular", "THEOREM"),
+    (``Zeta23.CCM.poleNeutral_odd_eigenvector_eq_pairing_smul_adjointRay, "Zeta23.CCM.CanonicalPoleNeutralShiftedSecular", "THEOREM"),
+    (``Zeta23.CCM.nativePositive_apply_eq_zero_of_energy_eq_zero, "Zeta23.CCM.CanonicalPoleNeutralSimpleEvenTie", "THEOREM"),
+    (``Zeta23.CCM.euclideanCenteredIndex_isSymmetric, "Zeta23.CCM.CanonicalPoleNeutralSimpleEvenTie", "THEOREM"),
+    (``Zeta23.CCM.poleNeutralEvenIndexSquareOfMomentFourZero, "Zeta23.CCM.CanonicalPoleNeutralSimpleEvenTie", "DEF"),
+    (``Zeta23.CCM.coe_poleNeutralIndex_adjoint_index_eq_ambient_square_of_momentFour_eq_zero, "Zeta23.CCM.CanonicalPoleNeutralSimpleEvenTie", "THEOREM"),
+    (``Zeta23.CCM.poleNeutralIndex_odd_eigen_of_momentFour_eq_zero, "Zeta23.CCM.CanonicalPoleNeutralSimpleEvenTie", "THEOREM"),
+    (``Zeta23.CCM.poleNeutralIndex_adjoint_index_even_eigen_of_momentFour_eq_zero, "Zeta23.CCM.CanonicalPoleNeutralSimpleEvenTie", "THEOREM"),
+    (``Zeta23.CCM.poleNeutral_momentFour_ne_zero_of_simple_even_of_le_odd_bottom, "Zeta23.CCM.CanonicalPoleNeutralSimpleEvenTie", "THEOREM"),
+    (``Zeta23.CCM.coe_poleNeutralIndexLinearMap, "Zeta23.CCM.CanonicalPoleNeutralSimpleEvenTie", "THEOREM"),
+    (``Zeta23.CCM.coe_poleNeutralEvenIndexSquareOfMomentFourZero, "Zeta23.CCM.CanonicalPoleNeutralSimpleEvenTie", "THEOREM"),
+    (``Zeta23.CCM.poleNeutral_source_moment_gap_le, "Zeta23.CCM.CanonicalPoleNeutralSourceMoment", "THEOREM"),
+    (``Zeta23.CCM.poleNeutralOddRayleighBottom_mul_norm_sq_le, "Zeta23.CCM.CanonicalPoleNeutralSourceMoment", "THEOREM"),
+    (``Zeta23.CCM.poleNeutralOddShifted_output_mem_kernel_orthogonal, "Zeta23.CCM.CanonicalPoleNeutralTiePackage", "THEOREM"),
+    (``Zeta23.CCM.poleNeutral_even_eigen_source_mem_odd_shifted_range, "Zeta23.CCM.CanonicalPoleNeutralTiePackage", "THEOREM"),
+    (``Zeta23.CCM.poleNeutralEvenEigen_indexComplement_mem_kernel_orthogonal, "Zeta23.CCM.CanonicalPoleNeutralTiePackage", "THEOREM"),
+    (``Zeta23.CCM.poleNeutralOddShiftedCanonical_isSymmetric, "Zeta23.CCM.CanonicalPoleNeutralTiePackage", "THEOREM"),
+    (``Zeta23.CCM.poleNeutralOddShiftedKernelProjection_apply_output_eq_zero, "Zeta23.CCM.CanonicalPoleNeutralTiePackage", "THEOREM"),
+    (``Zeta23.CCM.signedCanonicalTrialChannel_sum, "Zeta23.CCM.CanonicalTrialResidualChannels", "THEOREM"),
+    (``Zeta23.CCM.parityCanonicalTrialChannel_sum, "Zeta23.CCM.CanonicalTrialResidualChannels", "THEOREM"),
+    (``Zeta23.CCM.nativeTrialResidual_add_scalar, "Zeta23.CCM.CanonicalTrialResidualChannels", "THEOREM"),
+    (``Zeta23.CCM.poleNeutralEvenCompressedCanonical_isSymmetric, "Zeta23.CCM.CanonicalTrialResidualChannels", "THEOREM"),
+    (``Zeta23.CCM.poleNeutralOddCompressedCanonical_isSymmetric, "Zeta23.CCM.CanonicalTrialResidualChannels", "THEOREM"),
+    (``Zeta23.CCM.nativeTrialResidual_orthogonal, "Zeta23.CCM.CanonicalTrialResidualChannels", "THEOREM"),
+    (``Zeta23.CCM.nativeTrialResidual_variance, "Zeta23.CCM.CanonicalTrialResidualChannels", "THEOREM"),
+    (``Zeta23.CCM.nativeTrialRayleigh_im_eq_zero, "Zeta23.CCM.CanonicalTrialResidualChannels", "THEOREM"),
+    (``Zeta23.CCM.nativeTrialResidual_symmetric_variance, "Zeta23.CCM.CanonicalTrialResidualChannels", "THEOREM"),
+    (``Zeta23.CCM.nativeTrialResidual_sum, "Zeta23.CCM.CanonicalTrialResidualChannels", "THEOREM"),
+    (``Zeta23.CCM.nativeTrialResidual_gram_sum, "Zeta23.CCM.CanonicalTrialResidualChannels", "THEOREM"),
+    (``Zeta23.CCM.nativeOrthogonalCompression_isSymmetric, "Zeta23.CCM.CanonicalTrialResidualChannels", "THEOREM"),
+    (``Zeta23.CCM.poleNeutralEvenCanonicalTrialChannel_sum, "Zeta23.CCM.CanonicalTrialResidualChannels", "THEOREM"),
+    (``Zeta23.CCM.poleNeutralOddCanonicalTrialChannel_sum, "Zeta23.CCM.CanonicalTrialResidualChannels", "THEOREM"),
+    (``Zeta23.CCM.integral_compactPole_left_eq_right, "Zeta23.CCM.CompactPoleConvolution", "THEOREM"),
+    (``Zeta23.CCM.universalSincDifferential_reflected, "Zeta23.CCM.CompactPoleConvolution", "THEOREM"),
+    (``Zeta23.CCM.compactPole_convolution_left_eq_right, "Zeta23.CCM.CompactPoleConvolution", "THEOREM"),
+    (``Zeta23.CCM.universalSincKernel_selfConvolution_eq_source_second, "Zeta23.CCM.CompactPoleConvolution", "THEOREM"),
+    (``Zeta23.CCM.nativePoleNeutralParityAmbient_norm, "Zeta23.CCM.DetectorRetainedSchurState", "THEOREM"),
+    (``Zeta23.CCM.nativePoleNeutralParityAmbient_legal, "Zeta23.CCM.DetectorRetainedSchurState", "THEOREM"),
+    (``Zeta23.CCM.nativeCompletionKernelLaplaceMoment_integrable, "Zeta23.CCM.NativeCausalAdjointZeroJets", "THEOREM"),
+    (``Zeta23.CCM.nativeCausalLaplaceMoment_delay, "Zeta23.CCM.NativeCausalAdjointZeroJets", "THEOREM"),
+    (``Zeta23.CCM.nativeCausalExponentialWitness_inner_operator, "Zeta23.CCM.NativeCausalAdjointZeroJets", "THEOREM"),
+    (``Zeta23.CCM.nativeCausalExponentialWitness_annihilates_range_of_kernel_moments, "Zeta23.CCM.NativeCausalAdjointZeroJets", "THEOREM"),
+    (``Zeta23.CCM.nativeCausalExponentialWitness_mem_adjointKernel_of_kernel_moments, "Zeta23.CCM.NativeCausalAdjointZeroJets", "THEOREM"),
+    (``Zeta23.CCM.nativeCausalExponentialWitness_mem_adjointKernel_of_analyticOrder, "Zeta23.CCM.NativeCausalAnalyticObstruction", "THEOREM"),
+    (``Zeta23.CCM.nativeCompletedInput_not_mem_rangeClosure_of_analyticOrders, "Zeta23.CCM.NativeCausalAnalyticObstruction", "THEOREM"),
+    (``Zeta23.CCM.nativeDampedCompletionKernel_complex_memLp_two, "Zeta23.CCM.NativeCausalKernelLaplaceDerivatives", "THEOREM"),
+    (``Zeta23.CCM.nativeDampedCompletionKernelL2_coeFn, "Zeta23.CCM.NativeCausalKernelLaplaceDerivatives", "THEOREM"),
+    (``Zeta23.CCM.nativeCompletionKernelLaplaceMoment_eq_causalMoment, "Zeta23.CCM.NativeCausalKernelLaplaceDerivatives", "THEOREM"),
+    (``Zeta23.CCM.nativeCompletionKernelLaplace_analyticAt, "Zeta23.CCM.NativeCausalKernelLaplaceDerivatives", "THEOREM"),
+    (``Zeta23.CCM.nativeCompletionKernelLaplace_iteratedDeriv, "Zeta23.CCM.NativeCausalKernelLaplaceDerivatives", "THEOREM"),
+    (``Zeta23.CCM.nativeCompletionKernelLaplaceMoment_vanishes_below_analyticOrder, "Zeta23.CCM.NativeCausalKernelLaplaceDerivatives", "THEOREM"),
+    (``Zeta23.CCM.nativeDampedCompletionKernel_le_one, "Zeta23.CCM.NativeCausalKernelLaplaceDerivatives", "THEOREM"),
+    (``Zeta23.CCM.nativeDampedCompletionKernelL2_causal, "Zeta23.CCM.NativeCausalKernelLaplaceDerivatives", "THEOREM"),
+    (``Zeta23.CCM.nativeCausalLaplaceMoment_hasDerivAt, "Zeta23.CCM.NativeCausalLaplaceDerivatives", "THEOREM"),
+    (``Zeta23.CCM.nativeCausalLaplaceMoment_analyticAt, "Zeta23.CCM.NativeCausalLaplaceDerivatives", "THEOREM"),
+    (``Zeta23.CCM.nativeCausalLaplaceMoment_iteratedDeriv, "Zeta23.CCM.NativeCausalLaplaceDerivatives", "THEOREM"),
+    (``Zeta23.CCM.nativeCausalLaplaceMoment_vanishes_below_analyticOrder, "Zeta23.CCM.NativeCausalLaplaceDerivatives", "THEOREM"),
+    (``Zeta23.CCM.nativeCausalLaplaceMoment_ne_zero_at_analyticOrder, "Zeta23.CCM.NativeCausalLaplaceDerivatives", "THEOREM"),
+    (``Zeta23.CCM.nativeCausalLaplaceMoment_vanishes_iff_iteratedDeriv, "Zeta23.CCM.NativeCausalLaplaceDerivatives", "THEOREM"),
+    (``Zeta23.CCM.nativeCausalExponentialWitness_annihilates_rangeClosure_of_kernel_moments, "Zeta23.CCM.NativeCausalRangeObstruction", "THEOREM"),
+    (``Zeta23.CCM.nativeCompletedInput_not_mem_rangeClosure_of_moments, "Zeta23.CCM.NativeCausalRangeObstruction", "THEOREM"),
+    (``Zeta23.CCM.nativeCompletedInput_rangeResidual_lower_of_moments, "Zeta23.CCM.NativeCausalRangeObstruction", "THEOREM"),
+    (``Zeta23.CCM.nativeCausalComplexDamping_integrable, "Zeta23.CCM.NativeCompletedInputComplexLaplace", "THEOREM"),
+    (``Zeta23.CCM.nativeCompletedInput_complexDamping_eq_convolution, "Zeta23.CCM.NativeCompletedInputComplexLaplace", "THEOREM"),
+    (``Zeta23.CCM.nativeCompletedInput_complexLaplace_eq_c_mul_drive, "Zeta23.CCM.NativeCompletedInputComplexLaplace", "THEOREM"),
+    (``Zeta23.CCM.nativeDampedCompletedInput_equation, "Zeta23.CCM.NativeCompletedInputRangeOfPrimeLp", "THEOREM"),
+    (``Zeta23.CCM.nativeOriginalDampedPrimeFieldL2_coeFn, "Zeta23.CCM.NativeCompletedInputRangeOfPrimeLp", "THEOREM"),
+    (``Zeta23.CCM.nativeCompletedInput_operator_eq_of_prime_memLp, "Zeta23.CCM.NativeCompletedInputRangeOfPrimeLp", "THEOREM"),
+    (``Zeta23.CCM.nativeCompletedInput_mem_range_of_prime_memLp, "Zeta23.CCM.NativeCompletedInputRangeOfPrimeLp", "THEOREM"),
+    (``Zeta23.CCM.nativeCompletedInput_mem_rangeClosure_of_prime_memLp, "Zeta23.CCM.NativeCompletedInputRangeOfPrimeLp", "THEOREM"),
+    (``Zeta23.CCM.nativeOriginalDampedPrimeField_zero_of_neg, "Zeta23.CCM.NativeCompletedInputRangeOfPrimeLp", "THEOREM"),
+    (``Zeta23.CCM.nativeOriginalDampedPrimeFieldL2_causal, "Zeta23.CCM.NativeCompletedInputRangeOfPrimeLp", "THEOREM"),
+    (``Zeta23.CCM.nativeOriginalIntegerDriveLaplace_analyticAt, "Zeta23.CCM.NativeCompletedInputZetaLaplace", "THEOREM"),
+    (``Zeta23.CCM.nativeOriginalSourceLaplace_analyticAt, "Zeta23.CCM.NativeCompletedInputZetaLaplace", "THEOREM"),
+    (``Zeta23.CCM.nativeOriginalIntegerDrive_complexLaplace, "Zeta23.CCM.NativeCompletedInputZetaLaplace", "THEOREM"),
+    (``Zeta23.CCM.nativeCompletedInput_complexLaplace, "Zeta23.CCM.NativeCompletedInputZetaLaplace", "THEOREM"),
+    (``Zeta23.CCM.nativeCompletedInput_complexLaplace_half, "Zeta23.CCM.NativeCompletedInputZetaLaplace", "THEOREM"),
+    (``Zeta23.CCM.nativeRationalCausalKernel_complexDamped_integrableOn, "Zeta23.CCM.NativeCompletionComplexLaplace", "THEOREM"),
+    (``Zeta23.CCM.nativeRationalCausalKernel_complexLaplace, "Zeta23.CCM.NativeCompletionComplexLaplace", "THEOREM"),
+    (``Zeta23.CCM.nativeCompletionCorrection_complexLaplace, "Zeta23.CCM.NativeCompletionComplexLaplace", "THEOREM"),
+    (``Zeta23.CCM.nativeRationalCausalKernel_complexDamped_eq, "Zeta23.CCM.NativeCompletionComplexLaplace", "THEOREM"),
+    (``Zeta23.CCM.nativeDampedCompletionPointwise_integrable, "Zeta23.CCM.NativeDampedCompletionPointwiseBridge", "THEOREM"),
+    (``Zeta23.CCM.nativeDampedCompletionPointwise_integrable_prod_on_finite_set, "Zeta23.CCM.NativeDampedCompletionPointwiseBridge", "THEOREM"),
+    (``Zeta23.CCM.nativeDampedCompletionL2Operator_setIntegral_pointwise, "Zeta23.CCM.NativeDampedCompletionPointwiseBridge", "THEOREM"),
+    (``Zeta23.CCM.nativeDampedCompletionL2Operator_coeFn_pointwise, "Zeta23.CCM.NativeDampedCompletionPointwiseBridge", "THEOREM"),
+    (``Zeta23.CCM.nativeDampedCompletionPointwise_memLp, "Zeta23.CCM.NativeDampedCompletionPointwiseBridge", "THEOREM"),
+    (``Zeta23.CCM.nativeDeepThresholdInverseData, "Zeta23.CCM.NativeDeepThresholdInverseBudgets", "DEF"),
+    (``Zeta23.CCM.finrank_nativePoleNeutralParitySpace, "Zeta23.CCM.NativeDetectorSchur", "THEOREM"),
+    (``Zeta23.CCM.nativePoleNeutralParityShifted_isSymmetric, "Zeta23.CCM.NativeDetectorSchur", "THEOREM"),
+    (``Zeta23.CCM.nativeDetectorPredecessorEquiv_actual, "Zeta23.CCM.NativeDetectorSchur", "THEOREM"),
+    (``Zeta23.CCM.nativeIntegerDriveLaplaceCoefficient_eq_term, "Zeta23.CCM.NativeIntegerDriveComplexLaplace", "THEOREM"),
+    (``Zeta23.CCM.nativeIntegerDriveLaplaceCoefficient_summable_norm, "Zeta23.CCM.NativeIntegerDriveComplexLaplace", "THEOREM"),
+    (``Zeta23.CCM.nativeIntegerDriveLaplaceCoefficient_tsum, "Zeta23.CCM.NativeIntegerDriveComplexLaplace", "THEOREM"),
+    (``Zeta23.CCM.nativeOriginalSource_complexDamping_integrable, "Zeta23.CCM.NativeIntegerDriveComplexLaplace", "THEOREM"),
+    (``Zeta23.CCM.nativeOriginalIntegerDrive_complexLaplace_of_half_lt_re, "Zeta23.CCM.NativeIntegerDriveComplexLaplace", "THEOREM"),
+    (``Zeta23.CCM.nativeIntegerLaplaceCoefficient_eq_cpow, "Zeta23.CCM.NativeIntegerKernelComplexLaplace", "THEOREM"),
+    (``Zeta23.CCM.nativeIntegerLaplaceCoefficient_summable_norm, "Zeta23.CCM.NativeIntegerKernelComplexLaplace", "THEOREM"),
+    (``Zeta23.CCM.nativeIntegerLaplaceCoefficient_tsum, "Zeta23.CCM.NativeIntegerKernelComplexLaplace", "THEOREM"),
+    (``Zeta23.CCM.nativePositiveCompletion_complexLaplace_of_half_lt_re, "Zeta23.CCM.NativeIntegerKernelComplexLaplace", "THEOREM"),
+    (``Zeta23.CCM.nativeLaplaceContinuationDomain_isPreconnected, "Zeta23.CCM.NativeLaplaceHalfPlaneContinuation", "THEOREM"),
+    (``Zeta23.CCM.nativeLaplace_eqOn_of_eqOn_rightHalfPlane, "Zeta23.CCM.NativeLaplaceHalfPlaneContinuation", "THEOREM"),
+    (``Zeta23.CCM.nativeLaplaceContinuationDomain_isOpen, "Zeta23.CCM.NativeLaplaceHalfPlaneContinuation", "THEOREM"),
+    (``Zeta23.CCM.nativePositiveCompletionLaplace_analyticAt, "Zeta23.CCM.NativePositiveCompletionComplexLaplace", "THEOREM"),
+    (``Zeta23.CCM.nativePositiveCompletion_complexLaplace, "Zeta23.CCM.NativePositiveCompletionComplexLaplace", "THEOREM"),
+    (``Zeta23.CCM.nativePositiveCompletion_complexLaplace_half, "Zeta23.CCM.NativePositiveCompletionComplexLaplace", "THEOREM"),
+    (``Zeta23.CCM.nativeCompletionRationalMultiplier_analyticAt, "Zeta23.CCM.NativePositiveCompletionComplexLaplace", "THEOREM"),
+    (``Zeta23.CCM.nativeSelectedGroundPredecessorEquiv_actual, "Zeta23.CCM.NativeSelectedGroundSchur", "THEOREM"),
+    (``Zeta23.CCM.admissibleDetectorSelector_of_actual_ground, "Zeta23.CCM.OriginalDetectorAdmissibleSelector", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorDividedLobe_eq_mul, "Zeta23.CCM.OriginalDetectorDividedLobeBounds", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorFiniteEvenPhaseUnit_ambient, "Zeta23.CCM.OriginalDetectorFinitePhaseNativeProducer", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorFiniteOddPhaseUnit_ambient, "Zeta23.CCM.OriginalDetectorFinitePhaseNativeProducer", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorFiniteEvenPhaseUnit_energy, "Zeta23.CCM.OriginalDetectorFinitePhaseNativeProducer", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorFiniteOddPhaseUnit_energy, "Zeta23.CCM.OriginalDetectorFinitePhaseNativeProducer", "THEOREM"),
+    (``Zeta23.CCM.exists_originalDetectorFiniteEvenPhase_native_depth, "Zeta23.CCM.OriginalDetectorFinitePhaseNativeProducer", "THEOREM"),
+    (``Zeta23.CCM.exists_originalDetectorFiniteOddPhase_native_depth, "Zeta23.CCM.OriginalDetectorFinitePhaseNativeProducer", "THEOREM"),
+    (``Zeta23.CCM.norm_originalDetectorFiniteEvenPhaseUnit, "Zeta23.CCM.OriginalDetectorFinitePhaseNativeProducer", "THEOREM"),
+    (``Zeta23.CCM.norm_originalDetectorFiniteOddPhaseUnit, "Zeta23.CCM.OriginalDetectorFinitePhaseNativeProducer", "THEOREM"),
+    (``Zeta23.CCM.OriginalDetectorFinitePhaseData.two_le_aperture, "Zeta23.CCM.OriginalDetectorFinitePhaseNativeProducer", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPhaseGram_eq, "Zeta23.CCM.OriginalDetectorFinitePhasePlane", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPhaseEnergy_eq, "Zeta23.CCM.OriginalDetectorFinitePhasePlane", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPhaseRayleigh_eq, "Zeta23.CCM.OriginalDetectorFinitePhasePlane", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorFiniteImage_legal, "Zeta23.CCM.OriginalDetectorFiniteTransport", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorFiniteImage_poleNeutral, "Zeta23.CCM.OriginalDetectorFiniteTransport", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorFiniteImage_endpointJets, "Zeta23.CCM.OriginalDetectorFiniteTransport", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorFiniteImage_endpointJets_physical, "Zeta23.CCM.OriginalDetectorFiniteTransport", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorFiniteImage_hard_contDiff_four, "Zeta23.CCM.OriginalDetectorFiniteTransport", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorFiniteImage_error_bound, "Zeta23.CCM.OriginalDetectorFiniteTransport", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorFiniteImage_quartic_error_tendsto_zero, "Zeta23.CCM.OriginalDetectorFiniteTransport", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorFiniteImage_physical_norm, "Zeta23.CCM.OriginalDetectorFiniteTransport", "THEOREM"),
+    (``Zeta23.CCM.three_le_originalDetectorQuarticCutoff, "Zeta23.CCM.OriginalDetectorNativeRetainedSelection", "THEOREM"),
+    (``Zeta23.CCM.exists_originalDetectorFiniteEvenPhase_retained_state, "Zeta23.CCM.OriginalDetectorNativeRetainedSelection", "THEOREM"),
+    (``Zeta23.CCM.exists_originalDetectorFiniteOddPhase_retained_state, "Zeta23.CCM.OriginalDetectorNativeRetainedSelection", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPaddedFinitePhysicalUnit_H1_error_le, "Zeta23.CCM.OriginalDetectorPaddedFiniteH1Rate", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPaddedFiniteH1ErrorBudget_mul_quarticWeight_tendsto_zero, "Zeta23.CCM.OriginalDetectorPaddedFiniteH1Rate", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPaddedFinitePhysicalUnit_H1_concrete_rate, "Zeta23.CCM.OriginalDetectorPaddedFiniteH1Rate", "THEOREM"),
+    (``Zeta23.CCM.fixedOriginalSincPhaseTrial_Weil_norm_le, "Zeta23.CCM.OriginalDetectorPaddedFiniteNativeFormRate", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPaddedFinitePhaseUnit_native_form_error_le, "Zeta23.CCM.OriginalDetectorPaddedFiniteNativeFormRate", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPaddedFiniteNormalizedNativeFormErrorBudget_mul_quarticWeight_tendsto_zero, "Zeta23.CCM.OriginalDetectorPaddedFiniteNativeFormRate", "THEOREM"),
+    (``Zeta23.CCM.fixedOriginalSincKernel_iteratedDeriv_norm_le, "Zeta23.CCM.OriginalDetectorPaddedFiniteNormalizedErrors", "THEOREM"),
+    (``Zeta23.CCM.fixedOriginalSincPhaseTrial_iteratedDeriv_norm_le, "Zeta23.CCM.OriginalDetectorPaddedFiniteNormalizedErrors", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPaddedFinitePhysicalUnit_jet_error_le, "Zeta23.CCM.OriginalDetectorPaddedFiniteNormalizedErrors", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPaddedFiniteNormalizedJetErrorBudget_mul_quarticWeight_tendsto_zero, "Zeta23.CCM.OriginalDetectorPaddedFiniteNormalizedErrors", "THEOREM"),
+    (``Zeta23.CCM.padded_localizedFiniteFunction_reverseCoefficients_reflected, "Zeta23.CCM.OriginalDetectorPaddedFinitePhaseApproximation", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPaddedFinitePhaseVector_physical_formula, "Zeta23.CCM.OriginalDetectorPaddedFinitePhaseApproximation", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPaddedFiniteOriginalPhaseApprox_iteratedDeriv_error_le, "Zeta23.CCM.OriginalDetectorPaddedFinitePhaseApproximation", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPaddedFinitePoleImageCoefficients_moment_zero_lt_six, "Zeta23.CCM.OriginalDetectorPaddedFinitePhaseCarrier", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPaddedFinitePhaseRaw_moment_zero_lt_six, "Zeta23.CCM.OriginalDetectorPaddedFinitePhaseCarrier", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPaddedFinitePhaseRaw_reversal, "Zeta23.CCM.OriginalDetectorPaddedFinitePhaseCarrier", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPaddedFinitePhaseVector_native_poles_zero, "Zeta23.CCM.OriginalDetectorPaddedFinitePhaseCarrier", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPaddedFiniteEvenPhase, "Zeta23.CCM.OriginalDetectorPaddedFinitePhaseCarrier", "DEF"),
+    (``Zeta23.CCM.originalDetectorPaddedFiniteOddPhase, "Zeta23.CCM.OriginalDetectorPaddedFinitePhaseCarrier", "DEF"),
+    (``Zeta23.CCM.originalDetectorPaddedFinitePhaseVector_raw, "Zeta23.CCM.OriginalDetectorPaddedFinitePhaseCarrier", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPaddedFinitePhaseRaw_boundaryFlat, "Zeta23.CCM.OriginalDetectorPaddedFinitePhaseCarrier", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPaddedFinitePhase_producer, "Zeta23.CCM.OriginalDetectorPaddedFinitePhaseDepth", "THEOREM"),
+    (``Zeta23.CCM.padded_iteratedDeriv_localizedFiniteVector_eq_formula_on_interval, "Zeta23.CCM.OriginalDetectorPaddedFinitePhaseL1Errors", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPaddedFiniteOriginalPhaseHard_contDiff, "Zeta23.CCM.OriginalDetectorPaddedFinitePhaseL1Errors", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPaddedFiniteOriginalPhaseHard_integral_jet_error_le, "Zeta23.CCM.OriginalDetectorPaddedFinitePhaseL1Errors", "THEOREM"),
+    (``Zeta23.CCM.padded_norm_originalSincTest_le_source_budget, "Zeta23.CCM.OriginalDetectorPaddedFinitePhaseMass", "THEOREM"),
+    (``Zeta23.CCM.padded_norm_fixedOriginalSincPhaseTrial_le_source_budget, "Zeta23.CCM.OriginalDetectorPaddedFinitePhaseMass", "THEOREM"),
+    (``Zeta23.CCM.padded_interval_energy_error_le_of_uniform_error, "Zeta23.CCM.OriginalDetectorPaddedFinitePhaseMass", "THEOREM"),
+    (``Zeta23.CCM.padded_originalDetectorKernelSupBudget_nonneg, "Zeta23.CCM.OriginalDetectorPaddedFinitePhaseMass", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPaddedFiniteEvenPhaseUnit_ambient, "Zeta23.CCM.OriginalDetectorPaddedFinitePhaseNativeProducer", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPaddedFiniteOddPhaseUnit_ambient, "Zeta23.CCM.OriginalDetectorPaddedFinitePhaseNativeProducer", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPaddedFiniteEvenPhaseUnit_energy, "Zeta23.CCM.OriginalDetectorPaddedFinitePhaseNativeProducer", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPaddedFiniteOddPhaseUnit_energy, "Zeta23.CCM.OriginalDetectorPaddedFinitePhaseNativeProducer", "THEOREM"),
+    (``Zeta23.CCM.exists_originalDetectorPaddedFiniteEvenPhase_native_depth, "Zeta23.CCM.OriginalDetectorPaddedFinitePhaseNativeProducer", "THEOREM"),
+    (``Zeta23.CCM.exists_originalDetectorPaddedFiniteOddPhase_native_depth, "Zeta23.CCM.OriginalDetectorPaddedFinitePhaseNativeProducer", "THEOREM"),
+    (``Zeta23.CCM.norm_originalDetectorPaddedFiniteEvenPhaseUnit, "Zeta23.CCM.OriginalDetectorPaddedFinitePhaseNativeProducer", "THEOREM"),
+    (``Zeta23.CCM.norm_originalDetectorPaddedFiniteOddPhaseUnit, "Zeta23.CCM.OriginalDetectorPaddedFinitePhaseNativeProducer", "THEOREM"),
+    (``Zeta23.CCM.OriginalDetectorPaddedFinitePhaseData.two_le_aperture, "Zeta23.CCM.OriginalDetectorPaddedFinitePhaseNativeProducer", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPaddedFiniteOriginalPhaseHard_Weil_re_eq_nativeEnergy, "Zeta23.CCM.OriginalDetectorPaddedFinitePhaseNativeTransport", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPaddedFinitePhaseUnitVector_nativeEnergy_eq_Weil_div_mass, "Zeta23.CCM.OriginalDetectorPaddedFinitePhaseNativeTransport", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPaddedFiniteOriginalPhaseApprox_interval_energy, "Zeta23.CCM.OriginalDetectorPaddedFinitePhaseNormControl", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPaddedFinitePhase_mass_error_le, "Zeta23.CCM.OriginalDetectorPaddedFinitePhaseNormControl", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPaddedFinitePoleImageJetBudget_mul_aperture_exp_tendsto_zero, "Zeta23.CCM.OriginalDetectorPaddedFinitePhaseNormControl", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPaddedFinitePhaseMassErrorBudget_mul_exp_tendsto_zero, "Zeta23.CCM.OriginalDetectorPaddedFinitePhaseNormControl", "THEOREM"),
+    (``Zeta23.CCM.exists_originalDetectorPaddedFinitePhase_mass_control_threshold, "Zeta23.CCM.OriginalDetectorPaddedFinitePhaseNormalization", "THEOREM"),
+    (``Zeta23.CCM.exists_originalDetectorPaddedFinitePhase_unit_threshold, "Zeta23.CCM.OriginalDetectorPaddedFinitePhaseNormalization", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPaddedFinitePhaseUnitVector_moment_zero_lt_six, "Zeta23.CCM.OriginalDetectorPaddedFinitePhaseNormalization", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPaddedFinitePhaseUnitVector_native_poles_zero, "Zeta23.CCM.OriginalDetectorPaddedFinitePhaseNormalization", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPaddedFinitePhasePlane_inner_eq_Gram, "Zeta23.CCM.OriginalDetectorPaddedFinitePhasePlane", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPaddedFinitePhasePlane_inner_eq_nativeEnergy, "Zeta23.CCM.OriginalDetectorPaddedFinitePhasePlane", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPaddedFinitePhasePlane_rayleigh_identity, "Zeta23.CCM.OriginalDetectorPaddedFinitePhasePlane", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPaddedFinitePhaseVector_nativeEnergy, "Zeta23.CCM.OriginalDetectorPaddedFinitePhasePlane", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPaddedFinitePhaseVector_eq_planeVector, "Zeta23.CCM.OriginalDetectorPaddedFinitePhasePlane", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPaddedFinitePhaseGram_circulant, "Zeta23.CCM.OriginalDetectorPaddedFinitePhaseSymmetry", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPaddedFinitePhaseEnergy_circulant, "Zeta23.CCM.OriginalDetectorPaddedFinitePhaseSymmetry", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPaddedFinitePhase_Weil_error_le, "Zeta23.CCM.OriginalDetectorPaddedFinitePhaseWeilPadding", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPaddedFinitePhaseL1ErrorBudget_mul_exp_tendsto_zero, "Zeta23.CCM.OriginalDetectorPaddedFinitePhaseWeilPadding", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPaddedFinitePhaseWeilErrorBudget_mul_exp_tendsto_zero, "Zeta23.CCM.OriginalDetectorPaddedFinitePhaseWeilPadding", "THEOREM"),
+    (``Zeta23.CCM.padded_localizedFiniteFunction_iteratedDeriv_zero_eq_moment, "Zeta23.CCM.OriginalDetectorPaddedFinitePoleImage", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPaddedFiniteWindowImageCoefficients_moment_zero, "Zeta23.CCM.OriginalDetectorPaddedFinitePoleImage", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPaddedFinitePoleImageCoefficients_boundaryFlat, "Zeta23.CCM.OriginalDetectorPaddedFinitePoleImage", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPaddedFinitePoleImageCoefficients_native_poles_zero, "Zeta23.CCM.OriginalDetectorPaddedFinitePoleImage", "THEOREM"),
+    (``Zeta23.CCM.localizedFiniteFunction_originalDetectorPaddedFinitePoleImageCoefficients, "Zeta23.CCM.OriginalDetectorPaddedFinitePoleImage", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPaddedFinitePoleImageJetBudget_mul_exp_tendsto_zero, "Zeta23.CCM.OriginalDetectorPaddedFinitePoleImageAsymptotics", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPaddedFinitePoleImageJetBudget_eventually_lt_exp, "Zeta23.CCM.OriginalDetectorPaddedFinitePoleImageAsymptotics", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPaddedFinitePoleImage_endpoint_jets_lt_six, "Zeta23.CCM.OriginalDetectorPaddedFinitePoleImageC4", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPaddedFinitePoleImage_hard_contDiff_four, "Zeta23.CCM.OriginalDetectorPaddedFinitePoleImageC4", "THEOREM"),
+    (``Zeta23.CCM.exists_originalDetectorPaddedFinitePoleImageCoefficients_nonzero_threshold, "Zeta23.CCM.OriginalDetectorPaddedFinitePoleImageNonzero", "THEOREM"),
+    (``Zeta23.CCM.norm_originalDetectorPaddedFinitePoleImageNormalized, "Zeta23.CCM.OriginalDetectorPaddedFinitePoleImageNonzero", "THEOREM"),
+    (``Zeta23.CCM.padded_iteratedDeriv_poleKilled_infty, "Zeta23.CCM.OriginalDetectorPaddedFinitePoleImageTransport", "THEOREM"),
+    (``Zeta23.CCM.padded_poleKilled_originalDetectorLobe, "Zeta23.CCM.OriginalDetectorPaddedFinitePoleImageTransport", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPaddedFinitePoleImage_iteratedDeriv_error_le_budget, "Zeta23.CCM.OriginalDetectorPaddedFinitePoleImageTransport", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPaddedFinitePoleImageCoefficients_hardWindow_contDiff, "Zeta23.CCM.OriginalDetectorPaddedFinitePoleImageTransport", "THEOREM"),
+    (``Zeta23.CCM.padded_poleKilled_localizedFiniteVector_of_boundaryFlat, "Zeta23.CCM.OriginalDetectorPaddedFinitePoleImageTransport", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPaddedFinitePoleImageCoefficients_hardWindow_eq_poleKilled, "Zeta23.CCM.OriginalDetectorPaddedFinitePoleImageTransport", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPaddedFiniteWindowImage_real, "Zeta23.CCM.OriginalDetectorPaddedFinitePositivity", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPaddedFiniteWindowImage_re_nonneg, "Zeta23.CCM.OriginalDetectorPaddedFinitePositivity", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPaddedFiniteEvenPrimitive_re_nonneg, "Zeta23.CCM.OriginalDetectorPaddedFinitePositivity", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPaddedFiniteOddPrimitive_padding_cancels, "Zeta23.CCM.OriginalDetectorPaddedFinitePositivity", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPaddedFiniteWindow_eq_real, "Zeta23.CCM.OriginalDetectorPaddedFinitePositivity", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPaddedFiniteWindow_reflected, "Zeta23.CCM.OriginalDetectorPaddedFinitePositivity", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPaddedFiniteWindowImage_eq_unpadded_add, "Zeta23.CCM.OriginalDetectorPaddedFinitePositivity", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPaddedFiniteWindow_endpoint_jets, "Zeta23.CCM.OriginalDetectorPaddedFiniteWindowBoundaryFlat", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPaddedFiniteWindowImage_endpoint_jets, "Zeta23.CCM.OriginalDetectorPaddedFiniteWindowBoundaryFlat", "THEOREM"),
+    (``Zeta23.CCM.padded_boundaryFlatCoefficients_of_left_endpoint_jets, "Zeta23.CCM.OriginalDetectorPaddedFiniteWindowBoundaryFlat", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPaddedFiniteWindowImageCoefficients_boundaryFlat, "Zeta23.CCM.OriginalDetectorPaddedFiniteWindowBoundaryFlat", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPaddedFiniteWindowImageCoefficients_hardWindow_contDiff, "Zeta23.CCM.OriginalDetectorPaddedFiniteWindowBoundaryFlat", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPaddedFiniteWindow_endpoint_jets_lt_eight, "Zeta23.CCM.OriginalDetectorPaddedFiniteWindowHigherFlat", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPaddedFiniteWindowImage_endpoint_jets_lt_eight, "Zeta23.CCM.OriginalDetectorPaddedFiniteWindowHigherFlat", "THEOREM"),
+    (``Zeta23.CCM.padded_contDiff_nat_indicator_Icc_of_iteratedDeriv_endpoint_zero, "Zeta23.CCM.OriginalDetectorPaddedFiniteWindowHigherFlat", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPaddedFiniteWindowImageCoefficients_hardWindow_contDiff_of_lt_eight, "Zeta23.CCM.OriginalDetectorPaddedFiniteWindowHigherFlat", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPaddedFiniteWindow_eq_fourier, "Zeta23.CCM.OriginalDetectorPaddedFiniteWindowImage", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPaddedFiniteWindow_mul_dividedLobe, "Zeta23.CCM.OriginalDetectorPaddedFiniteWindowImage", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPaddedFiniteWindowImageFinsupp_support, "Zeta23.CCM.OriginalDetectorPaddedFiniteWindowImage", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPaddedFiniteWindowImageFinsupp_eq, "Zeta23.CCM.OriginalDetectorPaddedFiniteWindowImage", "THEOREM"),
+    (``Zeta23.CCM.localizedFiniteFunction_originalDetectorPaddedFiniteWindowImageCoefficients, "Zeta23.CCM.OriginalDetectorPaddedFiniteWindowImage", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPaddedFiniteWindowImage_error_le_budget, "Zeta23.CCM.OriginalDetectorPaddedFiniteWindowImage", "THEOREM"),
+    (``Zeta23.CCM.norm_originalDetectorPaddedFiniteWindow_le_one, "Zeta23.CCM.OriginalDetectorPaddedFiniteWindowImage", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPaddedFiniteWindowImageJetBudget_mul_exp_tendsto_zero, "Zeta23.CCM.OriginalDetectorPaddedFiniteWindowImageAsymptotics", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPaddedFiniteWindowImageJetBudget_eventually_lt_exp, "Zeta23.CCM.OriginalDetectorPaddedFiniteWindowImageAsymptotics", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPaddedFiniteWindow_iteratedDeriv, "Zeta23.CCM.OriginalDetectorPaddedFiniteWindowImageJets", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPaddedFiniteWindowCoeff_norm_sum, "Zeta23.CCM.OriginalDetectorPaddedFiniteWindowImageJets", "THEOREM"),
+    (``Zeta23.CCM.norm_originalDetectorPaddedFiniteWindow_iteratedDeriv_le, "Zeta23.CCM.OriginalDetectorPaddedFiniteWindowImageJets", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPaddedFiniteWindowImage_iteratedDeriv_error_le_budget, "Zeta23.CCM.OriginalDetectorPaddedFiniteWindowImageJets", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPaddedFiniteWindowJet_hasDerivAt, "Zeta23.CCM.OriginalDetectorPaddedFiniteWindowImageJets", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPaddedFiniteWindow_contDiff, "Zeta23.CCM.OriginalDetectorPaddedFiniteWindowImageJets", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPaddedRawFourierPartialSum_contDiff, "Zeta23.CCM.OriginalDetectorPaddedFiniteWindowImageJets", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorRawTailBudget_mul_quarticWeight_tendsto_zero, "Zeta23.CCM.OriginalDetectorPaddedFourierQuantitativeRates", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPaddedPoleBudget_mul_quarticWeight_tendsto_zero, "Zeta23.CCM.OriginalDetectorPaddedFourierQuantitativeRates", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPaddedPoleBudget_mul_aperture_quarticWeight_tendsto_zero, "Zeta23.CCM.OriginalDetectorPaddedFourierQuantitativeRates", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorRetainedDecayRate_pos, "Zeta23.CCM.OriginalDetectorPaddedFourierQuantitativeRates", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPaddedRawTailBudget_mul_quarticWeight_tendsto_zero, "Zeta23.CCM.OriginalDetectorPaddedFourierQuantitativeRates", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPaddedWindowBudget_mul_quarticWeight_tendsto_zero, "Zeta23.CCM.OriginalDetectorPaddedFourierQuantitativeRates", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPaddedMassBudget_mul_quarticWeight_tendsto_zero, "Zeta23.CCM.OriginalDetectorPaddedPhaseQuantitativeRates", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPaddedWeilBudget_mul_quarticWeight_tendsto_zero, "Zeta23.CCM.OriginalDetectorPaddedPhaseQuantitativeRates", "THEOREM"),
+    (``Zeta23.CCM.eventually_lt_retained_quartic_envelope, "Zeta23.CCM.OriginalDetectorPaddedPhaseQuantitativeRates", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPaddedL1Budget_mul_quarticWeight_tendsto_zero, "Zeta23.CCM.OriginalDetectorPaddedPhaseQuantitativeRates", "THEOREM"),
+    (``Zeta23.CCM.exists_nativeOriginalDetectorPaddedUnit_depth, "Zeta23.CCM.OriginalDetectorPaddedRetainedSelection", "THEOREM"),
+    (``Zeta23.CCM.exists_originalDetectorPaddedPhase_admissible_retained_state, "Zeta23.CCM.OriginalDetectorPaddedRetainedSelection", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPositivePadding_pos, "Zeta23.CCM.OriginalDetectorPositiveFourierPadding", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPaddedRawFourierPartialJet_eq, "Zeta23.CCM.OriginalDetectorPositiveFourierPadding", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPaddedRawFourierPartialJet_iteratedDeriv, "Zeta23.CCM.OriginalDetectorPositiveFourierPadding", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPaddedRawFourierPartialJet_error_le_budget, "Zeta23.CCM.OriginalDetectorPositiveFourierPadding", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPaddedRawFourierJetTailBudget_mul_exp_tendsto_zero, "Zeta23.CCM.OriginalDetectorPositiveFourierPadding", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPositivePadding_nonneg, "Zeta23.CCM.OriginalDetectorPositiveFourierPadding", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPaddedRawFourierPartialSum_iteratedDeriv_error_le_budget, "Zeta23.CCM.OriginalDetectorPositiveFourierPadding", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorDividedLobeFourierCoeff_conj, "Zeta23.CCM.OriginalDetectorPositiveFourierPaddingReal", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorDividedLobeFourierPartialSum_conj, "Zeta23.CCM.OriginalDetectorPositiveFourierPaddingReal", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPaddedRawFourierPartialSum_real, "Zeta23.CCM.OriginalDetectorPositiveFourierPaddingReal", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPaddedRawFourierPartialSum_re_nonneg, "Zeta23.CCM.OriginalDetectorPositiveFourierPaddingReal", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorDividedLobe_conj, "Zeta23.CCM.OriginalDetectorPositiveFourierPaddingReal", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorDividedLobe_re_nonneg, "Zeta23.CCM.OriginalDetectorPositiveFourierPaddingReal", "THEOREM"),
+    (``Zeta23.CCM.nativePoleMoment_eq_paperFT, "Zeta23.CCM.OriginalSincCompactPotential", "THEOREM"),
+    (``Zeta23.CCM.originalSincCompactPotential_contDiff_two, "Zeta23.CCM.OriginalSincCompactPotential", "THEOREM"),
+    (``Zeta23.CCM.originalSincCompactPotential_zero_outside, "Zeta23.CCM.OriginalSincCompactPotential", "THEOREM"),
+    (``Zeta23.CCM.nativeCompletionKernelLaplaceMoment_zero_damping_shift, "Zeta23.ExceptionalZero.NativeActualKernelZeroJets", "THEOREM"),
+    (``Zeta23.ExceptionalZero.nativeActualKernelLaplace_order_of_zero, "Zeta23.ExceptionalZero.NativeActualKernelZeroJets", "THEOREM"),
+    (``Zeta23.ExceptionalZero.nativeZeroJet_kernelMoments_eq_zero, "Zeta23.ExceptionalZero.NativeActualKernelZeroJets", "THEOREM"),
+    (``Zeta23.ExceptionalZero.nativeZeroJet_annihilates_range, "Zeta23.ExceptionalZero.NativeActualKernelZeroJets", "THEOREM"),
+    (``Zeta23.ExceptionalZero.nativeZeroJetAdjointWitness_mem_adjointKernel, "Zeta23.ExceptionalZero.NativeActualKernelZeroJets", "THEOREM"),
+    (``Zeta23.ExceptionalZero.nativeOriginalSourceLaplace_formula, "Zeta23.ExceptionalZero.NativeOriginalSourceLaplaceVisibility", "THEOREM"),
+    (``Zeta23.ExceptionalZero.nativeOriginalSourceLaplace_at_zero, "Zeta23.ExceptionalZero.NativeOriginalSourceLaplaceVisibility", "THEOREM"),
+    (``Zeta23.ExceptionalZero.nativeOriginalSourceLaplace_ne_zero_at_off_line_zero, "Zeta23.ExceptionalZero.NativeOriginalSourceLaplaceVisibility", "THEOREM"),
+    (``Zeta23.ExceptionalZero.nativeOriginalSourceLaplace_eq_paperFT, "Zeta23.ExceptionalZero.NativeOriginalSourceLaplaceVisibility", "THEOREM"),
+    (``Zeta23.ExceptionalZero.nativeZeroJetRightZero_re_gt_half, "Zeta23.ExceptionalZero.NativeRangeZeroJetObstruction", "THEOREM"),
+    (``Zeta23.ExceptionalZero.nativeZeroJetRightZero_mult, "Zeta23.ExceptionalZero.NativeRangeZeroJetObstruction", "THEOREM"),
+    (``Zeta23.ExceptionalZero.nativeZeroJetDamping_pos, "Zeta23.ExceptionalZero.NativeRangeZeroJetObstruction", "THEOREM"),
+    (``Zeta23.ExceptionalZero.nativeZeroJetAdjointWitness_ne_zero, "Zeta23.ExceptionalZero.NativeRangeZeroJetObstruction", "THEOREM"),
+    (``Zeta23.ExceptionalZero.nativeZeroJetAdjointWitness_inner_completedInput, "Zeta23.ExceptionalZero.NativeRangeZeroJetObstruction", "THEOREM"),
+    (``Zeta23.ExceptionalZero.nativeZeroJetRightZero_eq_or_oneSub, "Zeta23.ExceptionalZero.NativeRangeZeroJetObstruction", "THEOREM"),
+    (``Zeta23.ExceptionalZero.nativeZeroJetDamping_lt_centered_re, "Zeta23.ExceptionalZero.NativeRangeZeroJetObstruction", "THEOREM"),
+    (``Zeta23.ExceptionalZero.nativeZeroJetParameter_re_pos, "Zeta23.ExceptionalZero.NativeRangeZeroJetObstruction", "THEOREM"),
+    (``Zeta23.ExceptionalZero.nativeZeroJetParameter_add_damping, "Zeta23.ExceptionalZero.NativeRangeZeroJetObstruction", "THEOREM"),
+    (``Zeta23.ExceptionalZero.nativeZeroMultiplicity_order, "Zeta23.ExceptionalZero.NativeZeroJetAnalyticFactors", "THEOREM"),
+    (``Zeta23.ExceptionalZero.nativeZeroMultiplicity_deriv_order, "Zeta23.ExceptionalZero.NativeZeroJetAnalyticFactors", "THEOREM"),
+    (``Zeta23.ExceptionalZero.nativeOriginalSourceLaplace_analyticAt, "Zeta23.ExceptionalZero.NativeZeroJetAnalyticFactors", "THEOREM"),
+    (``Zeta23.ExceptionalZero.nativeCompletionRationalMultiplier_at_zero_ne_zero, "Zeta23.ExceptionalZero.NativeZeroJetAnalyticFactors", "THEOREM"),
+    (``Zeta23.ExceptionalZero.nativeZeroJetKernelMultiplier_order, "Zeta23.ExceptionalZero.NativeZeroJetAnalyticFactors", "THEOREM"),
+    (``Zeta23.ExceptionalZero.nativeZeroJetInputMultiplier_order, "Zeta23.ExceptionalZero.NativeZeroJetAnalyticFactors", "THEOREM"),
+    (``Zeta23.ExceptionalZero.nativeZeroJetInputMultiplier_jet, "Zeta23.ExceptionalZero.NativeZeroJetAnalyticFactors", "THEOREM"),
+    (``Zeta23.ExceptionalZero.nativeZeroJetSourceFactor_ne_zero, "Zeta23.ExceptionalZero.NativeZeroJetAnalyticFactors", "THEOREM"),
+    (``Zeta23.ExceptionalZero.nativeCompletionRationalMultiplier_at_zero_analyticAt, "Zeta23.ExceptionalZero.NativeZeroJetAnalyticFactors", "THEOREM"),
+    (``Zeta23.ExceptionalZero.measurable_fixedOriginalSincInitialSource, "Zeta23.ExceptionalZero.UniversalSincInitialLaplace", "THEOREM"),
+    (``Zeta23.ExceptionalZero.integrable_fixedOriginalSincKernel_norm_sq, "Zeta23.ExceptionalZero.UniversalSincOriginalPhaseDepth", "THEOREM"),
+    (``Zeta23.ExceptionalZero.fixedOriginalSincTrialNormalization_pos, "Zeta23.ExceptionalZero.UniversalSincOriginalPhaseDepth", "THEOREM"),
+    (``Zeta23.ExceptionalZero.fixedOriginalSincTrialNormalization_sq_mass, "Zeta23.ExceptionalZero.UniversalSincOriginalPhaseDepth", "THEOREM"),
+    (``Zeta23.CCM.nativeCompletedInputCausalLaplaceMoment_zero_damping_shift, "Zeta23.ExceptionalZero.NativeActualInputZeroJets", "THEOREM"),
+    (``Zeta23.ExceptionalZero.nativeActualInputLaplace_eventuallyEq_multiplier, "Zeta23.ExceptionalZero.NativeActualInputZeroJets", "THEOREM"),
+    (``Zeta23.ExceptionalZero.nativeActualInputLaplace_order_of_zero, "Zeta23.ExceptionalZero.NativeActualInputZeroJets", "THEOREM"),
+    (``Zeta23.ExceptionalZero.nativeCompletedInput_zeroJet_value, "Zeta23.ExceptionalZero.NativeActualInputZeroJets", "THEOREM"),
+    (``Zeta23.ExceptionalZero.nativeCompletedInput_zeroJet_ne_zero, "Zeta23.ExceptionalZero.NativeActualInputZeroJets", "THEOREM"),
+    (``Zeta23.ExceptionalZero.nativeCompletedInput_not_mem_rangeClosure_of_offLine_zero, "Zeta23.ExceptionalZero.NativeActualInputZeroJets", "THEOREM"),
+    (``Zeta23.ExceptionalZero.nativeCompletedInput_zeroJet_residual_pairing, "Zeta23.ExceptionalZero.NativeActualInputZeroJets", "THEOREM"),
+    (``Zeta23.ExceptionalZero.nativeCompletedInput_zeroJet_residual_lower, "Zeta23.ExceptionalZero.NativeActualInputZeroJets", "THEOREM"),
+    (``Zeta23.CCM.nativeOriginalDampedPrimeField_continuous, "Zeta23.ExceptionalZero.NativeAnalyticOutputSufficiency", "THEOREM"),
+    (``Zeta23.CCM.nativeOriginalDampedPrimeField_norm_sq, "Zeta23.ExceptionalZero.NativeAnalyticOutputSufficiency", "THEOREM"),
+    (``Zeta23.CCM.nativeOriginalDampedPrimeField_memLp_iff_halfLineIntegral, "Zeta23.ExceptionalZero.NativeAnalyticOutputSufficiency", "THEOREM"),
+    (``Zeta23.CCM.nativeOriginalPrimeField_allDampedL2_iff_integral, "Zeta23.ExceptionalZero.NativeAnalyticOutputSufficiency", "THEOREM"),
+    (``Zeta23.CCM.nativeInput_allRangeClosure_of_originalPrimeField_allDampedL2, "Zeta23.ExceptionalZero.NativeAnalyticOutputSufficiency", "THEOREM"),
+    (``Zeta23.ExceptionalZero.riemannHypothesis_of_nativeInput_allRangeClosure, "Zeta23.ExceptionalZero.NativeAnalyticOutputSufficiency", "THEOREM"),
+    (``Zeta23.ExceptionalZero.riemannHypothesis_of_originalPrimeField_allDampedL2, "Zeta23.ExceptionalZero.NativeAnalyticOutputSufficiency", "THEOREM"),
+    (``Zeta23.ExceptionalZero.riemannHypothesis_of_originalPrimeField_allDampedIntegral, "Zeta23.ExceptionalZero.NativeAnalyticOutputSufficiency", "THEOREM"),
+    (``Zeta23.CCM.NativeOriginalPrimeFieldAllDampedL2, "Zeta23.ExceptionalZero.NativeAnalyticOutputSufficiency", "DEF"),
+    (``Zeta23.CCM.NativeOriginalPrimeFieldAllDampedIntegral, "Zeta23.ExceptionalZero.NativeAnalyticOutputSufficiency", "DEF"),
+    (``Zeta23.CCM.NativeInputAllRangeClosure, "Zeta23.ExceptionalZero.NativeAnalyticOutputSufficiency", "DEF"),
+    (``Zeta23.CCM.universalSincProduct_scale, "Zeta23.CCM.UniversalSincPhysicalBounds", "THEOREM"),
+    (``Zeta23.CCM.universalSincSource_complex_scale, "Zeta23.CCM.UniversalSincPhysicalBounds", "THEOREM"),
+    (``Zeta23.CCM.universalSincSource_scale, "Zeta23.CCM.UniversalSincPhysicalBounds", "THEOREM"),
+    (``Zeta23.CCM.universalSincSource_iteratedDeriv_scale, "Zeta23.CCM.UniversalSincPhysicalBounds", "THEOREM"),
+    (``Zeta23.CCM.universalSincSource_iteratedDeriv_energy_scale, "Zeta23.CCM.UniversalSincPhysicalBounds", "THEOREM"),
+    (``Zeta23.CCM.universalSincKernel_eq_real, "Zeta23.CCM.UniversalSincPhysicalBounds", "THEOREM"),
+    (``Zeta23.CCM.poleKilled_universalSincSource_norm_sq, "Zeta23.CCM.UniversalSincPhysicalBounds", "THEOREM"),
+    (``Zeta23.CCM.universalSincSource_gevrey_bound, "Zeta23.CCM.UniversalSincPhysicalBounds", "THEOREM"),
+    (``Zeta23.CCM.universalSincProduct_decay, "Zeta23.CCM.UniversalSincPhysicalBounds", "THEOREM"),
+    (``Zeta23.ExceptionalZero.universalSincPoleKilled_visible_at_offLine_zero, "Zeta23.ExceptionalZero.UniversalSincActualVisibility", "THEOREM"),
+    (``Zeta23.CCM.finitePhysicalSynthesis_smul, "Zeta23.CCM.FinitePhysicalNormalization", "THEOREM"),
+    (``Zeta23.CCM.finitePhysicalSynthesis_energy, "Zeta23.CCM.FinitePhysicalNormalization", "THEOREM"),
+    (``Zeta23.CCM.finiteNormalizedCoefficients_norm, "Zeta23.CCM.FinitePhysicalNormalization", "THEOREM"),
+    (``Zeta23.CCM.finitePhysicalSynthesis_normalized, "Zeta23.CCM.FinitePhysicalNormalization", "THEOREM"),
+    (``Zeta23.CCM.finitePhysicalSynthesis_normalized_energy, "Zeta23.CCM.FinitePhysicalNormalization", "THEOREM"),
+    (``Zeta23.CCM.finitePhysicalSynthesis_cancel_original_normalization, "Zeta23.CCM.FinitePhysicalNormalization", "THEOREM"),
+    (``Zeta23.CCM.finitePhysicalSynthesis, "Zeta23.CCM.FinitePhysicalNormalization", "DEF"),
+    (``Zeta23.CCM.finiteNormalizedCoefficients, "Zeta23.CCM.FinitePhysicalNormalization", "DEF"),
+    (``Zeta23.CCM.originalDetectorPaddedFinitePhysicalUnit_eq_native_image, "Zeta23.CCM.OriginalDetectorPaddedFinitePhysicalUnitBridge", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPaddedFiniteNativeForm_concrete_rate, "Zeta23.CCM.OriginalDetectorPaddedFiniteNativeFormConcreteRate", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPaddedFinitePhysicalUnit_common_error_rates, "Zeta23.CCM.OriginalDetectorPaddedFiniteNativeFormConcreteRate", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPaddedNativeEnergy, "Zeta23.CCM.OriginalDetectorPaddedFiniteNativeFormConcreteRate", "DEF"),
+    (``Zeta23.CCM.originalDetectorOriginalWeilEnergy, "Zeta23.CCM.OriginalDetectorPaddedFiniteNativeFormConcreteRate", "DEF"),
+    (``Zeta23.CCM.originalDetectorPaddedPhaseGram_real, "Zeta23.CCM.OriginalDetectorPaddedPhaseScalar", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPaddedPhaseEnergy_real, "Zeta23.CCM.OriginalDetectorPaddedPhaseScalar", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPaddedPhase_norm_sq, "Zeta23.CCM.OriginalDetectorPaddedPhaseScalar", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPaddedPhase_energy, "Zeta23.CCM.OriginalDetectorPaddedPhaseScalar", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPaddedPhase_denominator_pos, "Zeta23.CCM.OriginalDetectorPaddedPhaseScalar", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPaddedPhase_scalar_quotient, "Zeta23.CCM.OriginalDetectorPaddedPhaseScalar", "THEOREM"),
+    (``Zeta23.CCM.exists_originalDetectorPaddedPhase_positive_denominators, "Zeta23.CCM.OriginalDetectorPaddedPhaseScalar", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorPaddedPhaseNu, "Zeta23.CCM.OriginalDetectorPaddedPhaseScalar", "DEF"),
+    (``Zeta23.CCM.originalDetectorPaddedPhaseOmega, "Zeta23.CCM.OriginalDetectorPaddedPhaseScalar", "DEF"),
+    (``Zeta23.CCM.originalDetectorPaddedPhaseD, "Zeta23.CCM.OriginalDetectorPaddedPhaseScalar", "DEF"),
+    (``Zeta23.CCM.originalDetectorPaddedPhaseC, "Zeta23.CCM.OriginalDetectorPaddedPhaseScalar", "DEF"),
+    (``Zeta23.CCM.originalDetectorOddPadding_P_image_eq, "Zeta23.CCM.OriginalDetectorOddPaddingIdentity", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorOddPadding_coefficients_eq, "Zeta23.CCM.OriginalDetectorOddPaddingIdentity", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorOddPadding_mass_eq, "Zeta23.CCM.OriginalDetectorOddPaddingIdentity", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorOddPadding_unitVector_eq, "Zeta23.CCM.OriginalDetectorOddPaddingIdentity", "THEOREM"),
+    (``Zeta23.CCM.originalDetectorOddPadding_normalizedPhysical_eq, "Zeta23.CCM.OriginalDetectorOddPaddingIdentity", "THEOREM"),
+    (``Zeta23.CCM.poleNeutral_iff_exponentialMoments, "Zeta23.CCM.CanonicalPoleNeutralPublicAPI", "THEOREM"),
+    (``Zeta23.CCM.poleNeutral_parity_finrank, "Zeta23.CCM.CanonicalPoleNeutralPublicAPI", "THEOREM"),
+    (``Zeta23.CCM.poleNeutralGround_branch_exhaustive, "Zeta23.CCM.CanonicalPoleNeutralPublicAPI", "THEOREM"),
+    (``Zeta23.CCM.poleNeutral_evenShifted_eigen_iff, "Zeta23.CCM.CanonicalPoleNeutralPublicAPI", "THEOREM"),
+    (``Zeta23.CCM.poleNeutral_evenShifted_det_eq, "Zeta23.CCM.CanonicalPoleNeutralPublicAPI", "THEOREM"),
+    (``Zeta23.CCM.poleNeutral_oddShifted_eigen_iff, "Zeta23.CCM.CanonicalPoleNeutralPublicAPI", "THEOREM"),
+    (``Zeta23.CCM.poleNeutral_oddShifted_det_eq, "Zeta23.CCM.CanonicalPoleNeutralPublicAPI", "THEOREM"),
+    (``Zeta23.CCM.nativeKernelComplementMap_injective, "Zeta23.CCM.CanonicalPoleNeutralPublicAPI", "THEOREM"),
+    (``Zeta23.CCM.nativeKernelComplementResponse_eq, "Zeta23.CCM.CanonicalPoleNeutralPublicAPI", "THEOREM"),
+    (``Zeta23.CCM.nativeKernelComplement_positive, "Zeta23.CCM.CanonicalPoleNeutralPublicAPI", "THEOREM"),
+    (``Zeta23.CCM.poleNeutral_tied_kernel_compatibility, "Zeta23.CCM.CanonicalPoleNeutralPublicAPI", "THEOREM"),
+    (``Zeta23.CCM.poleNeutral_tied_complementary_response, "Zeta23.CCM.CanonicalPoleNeutralPublicAPI", "THEOREM"),
+    (``Zeta23.CCM.poleNeutral_smallCutoff_eq_zero, "Zeta23.CCM.CanonicalPoleNeutralPublicAPI", "THEOREM"),
+    (``Zeta23.CCM.poleNeutral_tied_complements_positive, "Zeta23.CCM.CanonicalPoleNeutralPublicAPI", "THEOREM"),
+    (``Zeta23.CCM.canonicalPoleNeutralEven, "Zeta23.CCM.CanonicalPoleNeutralPublicAPI", "DEF"),
+    (``Zeta23.CCM.canonicalPoleNeutralOdd, "Zeta23.CCM.CanonicalPoleNeutralPublicAPI", "DEF"),
+    (``Zeta23.CCM.poleNormalCoefficient, "Zeta23.CCM.CanonicalPoleNeutralPublicAPI", "DEF"),
+    (``Zeta23.CCM.correctedCanonicalSource, "Zeta23.CCM.CanonicalPoleNeutralPublicAPI", "DEF"),
+    (``Zeta23.CCM.poleNeutralOddShiftedRay, "Zeta23.CCM.CanonicalPoleNeutralPublicAPI", "DEF"),
+    (``Zeta23.CCM.poleNormal_index_projection_eq, "Zeta23.CCM.CanonicalPoleNeutralPublicAPI", "THEOREM"),
+    (``Zeta23.CCM.canonicalPoleNeutral_rankOneIntertwining, "Zeta23.CCM.CanonicalPoleNeutralPublicAPI", "THEOREM"),
+    (``Zeta23.CCM.PoleNeutralGroundBranch, "Zeta23.CCM.CanonicalPoleNeutralPublicAPI", "INDUCTIVE"),
+    (``Zeta23.CCM.nativeSymmetric_output_mem_kernelOrthogonal, "Zeta23.CCM.CanonicalPoleNeutralPublicAPI", "THEOREM"),
+    (``Zeta23.CCM.nativeKernelComplementMap, "Zeta23.CCM.CanonicalPoleNeutralPublicAPI", "DEF"),
+    (``Zeta23.CCM.nativeKernelComplementEquiv, "Zeta23.CCM.CanonicalPoleNeutralPublicAPI", "DEF"),
+    (``Zeta23.CCM.nativeKernelComplementResponse, "Zeta23.CCM.CanonicalPoleNeutralPublicAPI", "DEF"),
+    (``Zeta23.CCM.nativeKernelComplement_decomposition, "Zeta23.CCM.CanonicalPoleNeutralPublicAPI", "THEOREM"),
+    (``Zeta23.CCM.nativeSymmetric_kernelProjection_output_eq_zero, "Zeta23.CCM.CanonicalPoleNeutralPublicAPI", "THEOREM"),
+    (``Zeta23.CCM.nativeKernelComplementResponse_eq_of_mem, "Zeta23.CCM.CanonicalPoleNeutralPublicAPI", "THEOREM"),
+    (``Zeta23.CCM.poleNeutralEvenShiftedCanonical_isSymmetric, "Zeta23.CCM.CanonicalPoleNeutralPublicAPI", "THEOREM"),
+    (``Zeta23.CCM.poleNeutralEvenShiftedKernelProjection, "Zeta23.CCM.CanonicalPoleNeutralPublicAPI", "DEF"),
+    (``Zeta23.CCM.poleNeutral_odd_eigen_source_mem_even_shifted_range, "Zeta23.CCM.CanonicalPoleNeutralPublicAPI", "THEOREM"),
+    (``Zeta23.CCM.poleNeutral_odd_eigen_shifted_kernel_compatibility, "Zeta23.CCM.CanonicalPoleNeutralPublicAPI", "THEOREM"),
+    (``Zeta23.CCM.poleNeutralOddKernelComplementResponse, "Zeta23.CCM.CanonicalPoleNeutralPublicAPI", "DEF"),
+    (``Zeta23.CCM.poleNeutralEvenKernelComplementResponse, "Zeta23.CCM.CanonicalPoleNeutralPublicAPI", "DEF"),
+    (``Zeta23.CCM.poleNeutralEvenShifted_isPositive_of_le_bottom, "Zeta23.CCM.CanonicalPoleNeutralPublicAPI", "THEOREM"),
+    (``Zeta23.CCM.canonicalTrialResidual_channels_sum, "Zeta23.CCM.CanonicalPoleNeutralTrialResidualChannels", "THEOREM"),
+    (``Zeta23.CCM.canonicalPoleNeutralTrialResidual_orthogonal, "Zeta23.CCM.CanonicalPoleNeutralTrialResidualChannels", "THEOREM"),
+    (``Zeta23.CCM.canonicalPoleNeutralTrialResidual_variance_eq, "Zeta23.CCM.CanonicalPoleNeutralTrialResidualChannels", "THEOREM"),
+    (``Zeta23.CCM.canonicalPoleNeutralTrialResidual_channels_sum, "Zeta23.CCM.CanonicalPoleNeutralTrialResidualChannels", "THEOREM"),
+    (``Zeta23.CCM.canonicalPoleNeutralTrialResidual_gram_sum, "Zeta23.CCM.CanonicalPoleNeutralTrialResidualChannels", "THEOREM"),
+    (``Zeta23.CCM.canonicalPoleNeutralTrialResidual_even_eq_R3, "Zeta23.CCM.CanonicalPoleNeutralTrialResidualChannels", "THEOREM"),
+    (``Zeta23.CCM.canonicalPoleNeutralTrialResidual_even_momentFour_lower, "Zeta23.CCM.CanonicalPoleNeutralTrialResidualChannels", "THEOREM"),
+    (``Zeta23.CCM.canonicalTrialResidual_variance_eq, "Zeta23.CCM.CanonicalPoleNeutralTrialResidualChannels", "THEOREM"),
+    (``Zeta23.CCM.canonicalTrialResidual_gram_sum, "Zeta23.CCM.CanonicalPoleNeutralTrialResidualChannels", "THEOREM"),
+    (``Zeta23.CCM.canonicalPoleNeutralTrialRayleigh, "Zeta23.CCM.CanonicalPoleNeutralTrialResidualChannels", "DEF"),
+    (``Zeta23.CCM.canonicalPoleNeutralTrialResidual, "Zeta23.CCM.CanonicalPoleNeutralTrialResidualChannels", "DEF"),
+    (``Zeta23.CCM.canonicalPoleNeutralTrialChannel, "Zeta23.CCM.CanonicalPoleNeutralTrialResidualChannels", "DEF"),
+    (``Zeta23.CCM.canonicalPoleNeutralTrialChannel_sum, "Zeta23.CCM.CanonicalPoleNeutralTrialResidualChannels", "THEOREM"),
+    (``Zeta23.CCM.canonicalPoleNeutralTrial_operator_isSymmetric, "Zeta23.CCM.CanonicalPoleNeutralTrialResidualChannels", "THEOREM"),
+    (``Zeta23.CCM.canonicalPoleNeutralTrialRayleigh_complex_eq, "Zeta23.CCM.CanonicalPoleNeutralTrialResidualChannels", "THEOREM"),
+    (``Zeta23.CCM.canonicalPoleNeutralTrialResidual_eq_native, "Zeta23.CCM.CanonicalPoleNeutralTrialResidualChannels", "THEOREM"),
+    (``Zeta23.CCM.canonicalPoleNeutralTrialChannelGram, "Zeta23.CCM.CanonicalPoleNeutralTrialResidualChannels", "DEF"),
+    (``Zeta23.CCM.nativePoleCompactInverse_congr_ae, "Zeta23.CCM.PoleNeutralCompactH2SourceCongruence", "THEOREM"),
+    (``Zeta23.CCM.nativePoleCompactInverseDerivative_congr_ae, "Zeta23.CCM.PoleNeutralCompactH2SourceCongruence", "THEOREM"),
+    (``Zeta23.CCM.NativeCompactPoleH2.congrSource, "Zeta23.CCM.PoleNeutralCompactH2SourceCongruence", "DEF"),
+    (``Zeta23.CCM.NativeCompactPoleH2.unique_of_source_ae, "Zeta23.CCM.PoleNeutralCompactH2SourceCongruence", "THEOREM"),
+    (``Zeta23.CCM.poleNeutral_compactInverse_exists_of_ae_support, "Zeta23.CCM.PoleNeutralCompactH2SourceCongruence", "THEOREM"),
+    (``Zeta23.CCM.nativePoleCompactH2_translate_support_norm, "Zeta23.CCM.PoleNeutralCompactH2SourceCongruence", "THEOREM"),
+    (``Zeta23.CCM.NativeCompactPoleH2.translated_ae_equations, "Zeta23.CCM.PoleNeutralCompactH2SourceCongruence", "THEOREM"),
+    (``Zeta23.CCM.poleNeutral_compactInverse_zero_interval_support_norm, "Zeta23.CCM.PoleNeutralCompactH2SourceCongruence", "THEOREM"),
+    (``Zeta23.CCM.nativePolePrimitive_congr_ae, "Zeta23.CCM.PoleNeutralCompactH2SourceCongruence", "THEOREM"),
+    (``Zeta23.CCM.nativePoleSupportedRepresentative, "Zeta23.CCM.PoleNeutralCompactH2SourceCongruence", "DEF"),
+    (``Zeta23.CCM.nativePoleSupportedRepresentative_ae, "Zeta23.CCM.PoleNeutralCompactH2SourceCongruence", "THEOREM"),
+    (``Zeta23.CCM.nativePoleSupportedRepresentative_support, "Zeta23.CCM.PoleNeutralCompactH2SourceCongruence", "THEOREM"),
+    (``Zeta23.CCM.nativeOriginalIntegerDrive_finiteOrder_bound, "Zeta23.CCM.NativeIntegerDriveFiniteOrderBounds", "THEOREM"),
+    (``Zeta23.CCM.nativeOriginalIntegerDrive_rapid_bound, "Zeta23.CCM.NativeIntegerDriveFiniteOrderBounds", "THEOREM"),
+    (``Zeta23.CCM.nativeComplexPrimeField_eq_history_sum, "Zeta23.CCM.NativeCompactTranslateCalculus", "THEOREM"),
+    (``Zeta23.CCM.nativeComplexIntegerDrive_eq_history_sum, "Zeta23.CCM.NativeCompactTranslateCalculus", "THEOREM"),
+    (``Zeta23.CCM.nativeComplexPrimeField_contDiff, "Zeta23.CCM.NativeCompactTranslateCalculus", "THEOREM"),
+    (``Zeta23.CCM.nativeComplexIntegerDrive_contDiff, "Zeta23.CCM.NativeCompactTranslateCalculus", "THEOREM"),
+    (``Zeta23.CCM.nativeComplexPrimeField_hasDerivAt, "Zeta23.CCM.NativeCompactTranslateCalculus", "THEOREM"),
+    (``Zeta23.CCM.nativeComplexPrimeField_poleImage, "Zeta23.CCM.NativeCompactTranslateCalculus", "THEOREM"),
+    (``Zeta23.CCM.nativeComplexPrimeField_ofReal, "Zeta23.CCM.NativeCompactTranslateCalculus", "THEOREM"),
+    (``Zeta23.CCM.nativeComplexIntegerDrive_ofReal, "Zeta23.CCM.NativeCompactTranslateCalculus", "THEOREM"),
+    (``Zeta23.CCM.NativeComplexSourceSupported, "Zeta23.CCM.NativeCompactTranslateCalculus", "DEF"),
+    (``Zeta23.CCM.nativeComplexPrimeField, "Zeta23.CCM.NativeCompactTranslateCalculus", "DEF"),
+    (``Zeta23.CCM.nativeComplexIntegerDrive, "Zeta23.CCM.NativeCompactTranslateCalculus", "DEF"),
+    (``Zeta23.CCM.NativeComplexSourceSupported.deriv, "Zeta23.CCM.NativeCompactTranslateCalculus", "THEOREM"),
+    (``Zeta23.CCM.NativeComplexSourceSupported.hasCompactSupport, "Zeta23.CCM.NativeCompactTranslateCalculus", "THEOREM"),
+    (``Zeta23.CCM.nativeComplexSourceTranslate_zero_above_history, "Zeta23.CCM.NativeCompactTranslateCalculus", "THEOREM"),
+    (``Zeta23.CCM.nativeComplexPrimeField_summable, "Zeta23.CCM.NativeCompactTranslateCalculus", "THEOREM"),
+    (``Zeta23.CCM.nativeComplexPrimeField_deriv, "Zeta23.CCM.NativeCompactTranslateCalculus", "THEOREM"),
+    (``Zeta23.CCM.nativeComplexPrimeField_sub_const_mul, "Zeta23.CCM.NativeCompactTranslateCalculus", "THEOREM"),
+    (``Zeta23.CCM.NativeComplexSourceSupported.ofReal, "Zeta23.CCM.NativeCompactTranslateCalculus", "THEOREM"),
+    (``Zeta23.CCM.nativeComplexConvolution_supported, "Zeta23.CCM.OriginalSincNativeConvolution", "THEOREM"),
+    (``Zeta23.CCM.nativeComplexPrimeField_convolution, "Zeta23.CCM.OriginalSincNativeConvolution", "THEOREM"),
+    (``Zeta23.CCM.universalSincSecondKernel_eq_real, "Zeta23.CCM.OriginalSincNativeConvolution", "THEOREM"),
+    (``Zeta23.CCM.nativeOriginalKernelPrimeField_contDiff, "Zeta23.CCM.OriginalSincNativeConvolution", "THEOREM"),
+    (``Zeta23.CCM.nativeOriginalKernelPrimeField_poleImage, "Zeta23.CCM.OriginalSincNativeConvolution", "THEOREM"),
+    (``Zeta23.CCM.originalDetector_correlationField_eq_sourceConvolution, "Zeta23.CCM.OriginalSincNativeConvolution", "THEOREM"),
+    (``Zeta23.CCM.nativeOriginalKernelPrimeField, "Zeta23.CCM.OriginalSincNativeConvolution", "DEF"),
+    (``Zeta23.CCM.native_divisor_convolution_identity, "Zeta23.CCM.NativeCompletionPublicAPI", "THEOREM"),
+    (``Zeta23.CCM.nativePositiveCompletion_laplace, "Zeta23.CCM.NativeCompletionPublicAPI", "THEOREM"),
+    (``Zeta23.CCM.nativePositiveCompletion_laplace_half, "Zeta23.CCM.NativeCompletionPublicAPI", "THEOREM"),
+    (``Zeta23.CCM.nativePositiveCompletion_mass_lt, "Zeta23.CCM.NativeCompletionPublicAPI", "THEOREM"),
+    (``Zeta23.CCM.nativeOriginal_complexPrimeField_eq, "Zeta23.CCM.NativeCompletionPublicAPI", "THEOREM"),
+    (``Zeta23.CCM.nativeOriginal_complexIntegerDrive_eq, "Zeta23.CCM.NativeCompletionPublicAPI", "THEOREM"),
+    (``Zeta23.CCM.nativeCompletedInput_undamped_memLp, "Zeta23.CCM.NativeCompletionPublicAPI", "THEOREM"),
+    (``Zeta23.CCM.nativeWeilResponse_decomposition, "Zeta23.CCM.NativeWeilResponse", "THEOREM"),
+    (``Zeta23.CCM.nativeGammaBracket_quadratic_bound, "Zeta23.CCM.NativeWeilResponse", "THEOREM"),
+    (``Zeta23.CCM.nativeWeilArch_fourier_integrable, "Zeta23.CCM.NativeWeilResponse", "THEOREM"),
+    (``Zeta23.CCM.nativeWeilArchResponse_pairing, "Zeta23.CCM.NativeWeilResponse", "THEOREM"),
+    (``Zeta23.CCM.nativePaperFT_imaginary, "Zeta23.CCM.NativeWeilResponse", "THEOREM"),
+    (``Zeta23.CCM.nativeWeilPoleResponse_pairing, "Zeta23.CCM.NativeWeilResponse", "THEOREM"),
+    (``Zeta23.CCM.nativeWeilPrimeResponse_eq_history_sum, "Zeta23.CCM.NativeWeilResponse", "THEOREM"),
+    (``Zeta23.CCM.nativeWeilPrimeResponse_continuous, "Zeta23.CCM.NativeWeilResponse", "THEOREM"),
+    (``Zeta23.CCM.nativeWeilPoleResponse_continuous, "Zeta23.CCM.NativeWeilResponse", "THEOREM"),
+    (``Zeta23.CCM.nativeWeilPrimeResponse_pairing, "Zeta23.CCM.NativeWeilResponse", "THEOREM"),
+    (``Zeta23.CCM.nativeWeilArchResponse_continuous, "Zeta23.CCM.NativeWeilResponse", "THEOREM"),
+    (``Zeta23.CCM.nativeWeilResponse_continuous, "Zeta23.CCM.NativeWeilResponse", "THEOREM"),
+    (``Zeta23.CCM.nativeWeilResponse_memLp_two_on_interval, "Zeta23.CCM.NativeWeilResponse", "THEOREM"),
+    (``Zeta23.CCM.nativeWeilResponse_indicator_memLp_two, "Zeta23.CCM.NativeWeilResponse", "THEOREM"),
+    (``Zeta23.CCM.nativeWeilResponse_pairing, "Zeta23.CCM.NativeWeilResponse", "THEOREM"),
+    (``Zeta23.CCM.nativeWeilArch_fourier_memLp_two, "Zeta23.CCM.NativeWeilResponse", "THEOREM"),
+    (``Zeta23.CCM.nativeWeilArchResponse_memLp_two, "Zeta23.CCM.NativeWeilResponse", "THEOREM"),
+    (``Zeta23.CCM.nativeWeilArchResponse, "Zeta23.CCM.NativeWeilResponse", "DEF"),
+    (``Zeta23.CCM.nativeWeilPoleResponse, "Zeta23.CCM.NativeWeilResponse", "DEF"),
+    (``Zeta23.CCM.nativeWeilPrimeResponse, "Zeta23.CCM.NativeWeilResponse", "DEF"),
+    (``Zeta23.CCM.nativeWeilResponse, "Zeta23.CCM.NativeWeilResponse", "DEF"),
+    (``Zeta23.CCM.nativePhysicalH1Norm, "Zeta23.CCM.NativeWeilResponse", "DEF"),
+    (``Zeta23.CCM.nativePaperFT_parseval_of_integrable_sq, "Zeta23.CCM.NativeWeilResponseBounds", "THEOREM"),
+    (``Zeta23.CCM.nativePaperFT_weighted_sq_integrable, "Zeta23.CCM.NativeWeilResponseBounds", "THEOREM"),
+    (``Zeta23.CCM.nativePaperFT_H1_energy, "Zeta23.CCM.NativeWeilResponseBounds", "THEOREM"),
+    (``Zeta23.CCM.nativePaperFT_H1_mixed_bound, "Zeta23.CCM.NativeWeilResponseBounds", "THEOREM"),
+    (``Zeta23.CCM.nativePrimeMass_finite_bound, "Zeta23.CCM.NativeWeilResponseBounds", "THEOREM"),
+    (``Zeta23.CCM.nativeWeilArchResponse_bilinear_bound, "Zeta23.CCM.NativeWeilResponseBounds", "THEOREM"),
+    (``Zeta23.CCM.nativePhysicalL1_le_sqrt_length_L2, "Zeta23.CCM.NativeWeilResponseBounds", "THEOREM"),
+    (``Zeta23.CCM.nativeWeilTest_norm_le_H1, "Zeta23.CCM.NativeWeilResponseBounds", "THEOREM"),
+    (``Zeta23.CCM.nativeWeilPoleResponse_bilinear_bound, "Zeta23.CCM.NativeWeilResponseBounds", "THEOREM"),
+    (``Zeta23.CCM.nativeWeilTest_common_support, "Zeta23.CCM.NativeWeilResponseBounds", "THEOREM"),
+    (``Zeta23.CCM.nativeWeilPrimeCorrelation_bilinear_bound, "Zeta23.CCM.NativeWeilResponseBounds", "THEOREM"),
+    (``Zeta23.CCM.nativeWeilResponse_bilinear_bound, "Zeta23.CCM.NativeWeilResponseBounds", "THEOREM"),
+    (``Zeta23.CCM.nativePaperFT_sq_integrable, "Zeta23.CCM.NativeWeilResponseBounds", "THEOREM"),
+    (``Zeta23.CCM.nativePaperFT_deriv_sq_integrable, "Zeta23.CCM.NativeWeilResponseBounds", "THEOREM"),
+    (``Zeta23.CCM.nativePhysicalH1Norm_nonneg, "Zeta23.CCM.NativeWeilResponseBounds", "THEOREM"),
+    (``Zeta23.CCM.native_sum_inv_sqrt_succ_le, "Zeta23.CCM.NativeWeilResponseBounds", "THEOREM"),
+    (``Zeta23.CCM.nativePhysicalL2Norm, "Zeta23.CCM.NativeWeilResponseBounds", "DEF"),
+    (``Zeta23.CCM.nativePhysicalL2Norm_nonneg, "Zeta23.CCM.NativeWeilResponseBounds", "THEOREM"),
+    (``Zeta23.CCM.nativePhysicalL2Norm_le_H1, "Zeta23.CCM.NativeWeilResponseBounds", "THEOREM"),
+    (``Zeta23.CCM.nativePhysicalL1_le_sqrt_length_H1, "Zeta23.CCM.NativeWeilResponseBounds", "THEOREM"),
+    (``Zeta23.CCM.nativeWeilTest_norm_le_L2, "Zeta23.CCM.NativeWeilResponseBounds", "THEOREM"),
+    (``Zeta23.CCM.finitePhysicalSynthesis_add, "Zeta23.CCM.CanonicalPhysicalTrialRealization", "THEOREM"),
+    (``Zeta23.CCM.finitePhysicalSynthesis_sub, "Zeta23.CCM.CanonicalPhysicalTrialRealization", "THEOREM"),
+    (``Zeta23.CCM.canonicalPhysicalValue_ae, "Zeta23.CCM.CanonicalPhysicalTrialRealization", "THEOREM"),
+    (``Zeta23.CCM.canonicalPhysicalValue_norm, "Zeta23.CCM.CanonicalPhysicalTrialRealization", "THEOREM"),
+    (``Zeta23.CCM.canonicalPhysicalIsometry_ae, "Zeta23.CCM.CanonicalPhysicalTrialRealization", "THEOREM"),
+    (``Zeta23.CCM.canonicalPhysicalProjection_synthesis, "Zeta23.CCM.CanonicalPhysicalTrialRealization", "THEOREM"),
+    (``Zeta23.CCM.canonicalPhysicalProjection_inner, "Zeta23.CCM.CanonicalPhysicalTrialRealization", "THEOREM"),
+    (``Zeta23.CCM.canonicalPhysicalIsometry_centeredZeroExtend, "Zeta23.CCM.CanonicalPhysicalTrialRealization", "THEOREM"),
+    (``Zeta23.CCM.canonicalNativePhysicalIsometry_centeredZeroExtend, "Zeta23.CCM.CanonicalPhysicalTrialRealization", "THEOREM"),
+    (``Zeta23.CCM.canonicalNativePhysicalIsometry_predecessor, "Zeta23.CCM.CanonicalPhysicalTrialRealization", "THEOREM"),
+    (``Zeta23.CCM.canonicalNativePhysicalProjection_synthesis, "Zeta23.CCM.CanonicalPhysicalTrialRealization", "THEOREM"),
+    (``Zeta23.CCM.canonicalNativePhysicalIsometry_ae, "Zeta23.CCM.CanonicalPhysicalTrialRealization", "THEOREM"),
+    (``Zeta23.CCM.canonicalNativePhysicalProjection_inner, "Zeta23.CCM.CanonicalPhysicalTrialRealization", "THEOREM"),
+    (``Zeta23.CCM.canonicalNativePhysicalProjection_orthogonal, "Zeta23.CCM.CanonicalPhysicalTrialRealization", "THEOREM"),
+    (``Zeta23.CCM.canonicalNativePhysicalProjection_norm_le, "Zeta23.CCM.CanonicalPhysicalTrialRealization", "THEOREM"),
+    (``Zeta23.CCM.canonicalPhysicalSynthesis_deriv, "Zeta23.CCM.CanonicalPhysicalTrialRealization", "THEOREM"),
+    (``Zeta23.CCM.canonicalPhysicalDerivativeCoefficients_norm_sq_le, "Zeta23.CCM.CanonicalPhysicalTrialRealization", "THEOREM"),
+    (``Zeta23.CCM.canonicalPhysicalSynthesis_H1_bound, "Zeta23.CCM.CanonicalPhysicalTrialRealization", "THEOREM"),
+    (``Zeta23.CCM.canonicalNativeCoefficientInclusion_eq_ambient, "Zeta23.CCM.CanonicalPhysicalTrialRealization", "THEOREM"),
+    (``Zeta23.CCM.canonicalNativePhysicalSynthesis_H1_bound, "Zeta23.CCM.CanonicalPhysicalTrialRealization", "THEOREM"),
+    (``Zeta23.CCM.canonicalPhysicalSynthesis_mixed_Weil, "Zeta23.CCM.CanonicalPhysicalTrialRealization", "THEOREM"),
+    (``Zeta23.CCM.canonicalNativePhysical_mixed_compression, "Zeta23.CCM.CanonicalPhysicalTrialRealization", "THEOREM"),
+    (``Zeta23.CCM.canonicalNativePhysicalSynthesis_mixed_Weil, "Zeta23.CCM.CanonicalPhysicalTrialRealization", "THEOREM"),
+    (``Zeta23.CCM.canonicalNativePhysicalProjection_firstCutoff_zero, "Zeta23.CCM.CanonicalPhysicalTrialRealization", "THEOREM"),
+    (``Zeta23.CCM.CanonicalPhysicalL2, "Zeta23.CCM.CanonicalPhysicalTrialRealization", "DEF"),
+    (``Zeta23.CCM.canonicalPhysicalValue, "Zeta23.CCM.CanonicalPhysicalTrialRealization", "DEF"),
+    (``Zeta23.CCM.canonicalPhysicalIsometry, "Zeta23.CCM.CanonicalPhysicalTrialRealization", "DEF"),
+    (``Zeta23.CCM.canonicalPhysicalProjection, "Zeta23.CCM.CanonicalPhysicalTrialRealization", "DEF"),
+    (``Zeta23.CCM.canonicalNativeCoefficientInclusion, "Zeta23.CCM.CanonicalPhysicalTrialRealization", "DEF"),
+    (``Zeta23.CCM.canonicalNativePhysicalIsometry, "Zeta23.CCM.CanonicalPhysicalTrialRealization", "DEF"),
+    (``Zeta23.CCM.canonicalNativePhysicalProjection, "Zeta23.CCM.CanonicalPhysicalTrialRealization", "DEF"),
+    (``Zeta23.CCM.canonicalPhysicalDerivativeCoefficients, "Zeta23.CCM.CanonicalPhysicalTrialRealization", "DEF"),
+    (``Zeta23.CCM.universalSincSource, "Zeta23.CCM.UniversalSincSourceFacade", "DEF"),
+    (``Zeta23.CCM.originalDetectorFiniteImage, "Zeta23.CCM.OriginalDetectorFiniteTransport", "DEF"),
+    (``Zeta23.CCM.poleNeutralIndexEquiv, "Zeta23.CCM.CanonicalPoleNeutralGeometry", "DEF"),
+    (``Zeta23.CCM.poleNeutralEvenShiftedRay, "Zeta23.CCM.CanonicalPoleNeutralShiftedSecular", "DEF"),
+    (``Zeta23.CCM.DetectorRetainedSchurState, "Zeta23.CCM.DetectorRetainedSchurState", "INDUCTIVE"),
+    (``Zeta23.CCM.canonicalTrialResidual, "Zeta23.CCM.CanonicalTrialResidualChannels", "DEF"),
+    (``Zeta23.CCM.nativeOriginalPrimeField, "Zeta23.CCM.OriginalSincNativeSource", "DEF"),
+    (``Zeta23.CCM.nativeOriginalIntegerDrive, "Zeta23.CCM.OriginalSincNativeSource", "DEF"),
+    (``Zeta23.CCM.nativePositiveCompletion, "Zeta23.CCM.NativePositiveCompletion", "DEF"),
+    (``Zeta23.CCM.nativeCompletedInput, "Zeta23.CCM.NativeCompletedInput", "DEF"),
+    (``Zeta23.CCM.nativeAdjointResidualIterate, "Zeta23.CCM.NativeDampedCompletionResidual", "DEF"),
+    (``Zeta23.ExceptionalZero.nativeZeroJetAdjointWitness, "Zeta23.ExceptionalZero.NativeRangeZeroJetObstruction", "DEF"),
+    (``Zeta23.CCM.OriginalNativeExteriorRecord, "Zeta23.CCM.NativeOriginalExteriorHistory", "INDUCTIVE"),
+    (``Zeta23.CCM.Step123NativeOutput, "Zeta23.CCM.Step123OutputData", "INDUCTIVE"),
+    (``Zeta23.ExceptionalZero.GeneratedStep123Output, "Zeta23.ExceptionalZero.Step123OutputProducer", "INDUCTIVE"),
+    (``Zeta23.ExceptionalZero.exists_step123Output_of_offLine_zero, "Zeta23.ExceptionalZero.Step123OutputProducer", "THEOREM"),
+    (``Zeta23.ExceptionalZero.exists_eachPhase_cofinal_step123Output, "Zeta23.ExceptionalZero.Step123OutputProducer", "THEOREM"),
+    (``Zeta23.ExceptionalZero.riemannHypothesis_of_detectorSchurLoss_subexponential, "Zeta23.ExceptionalZero.Step4OutputSufficiency", "THEOREM"),
+    (``Zeta23.CCM.originalDetector_projectedForcing_eq, "Zeta23.CCM.OriginalDetectorNativeForcing", "THEOREM"),
+    (``Zeta23.CCM.originalNativeExterior_history_eq, "Zeta23.CCM.NativeOriginalExteriorHistory", "THEOREM"),
+    (``Zeta23.CCM.originalNativeExterior_residual_eq, "Zeta23.CCM.NativeOriginalExteriorHistory", "THEOREM"),
+    (``Zeta23.CCM.originalDetector_forcing_error_bound, "Zeta23.CCM.OriginalDetectorForcingError", "THEOREM"),
+    (``Zeta23.CCM.nativePoleCompactInverse_compactTest_duality, "Zeta23.CCM.OriginalDetectorCompactDuality", "THEOREM"),
+    (``Zeta23.CCM.NativeCompactPoleH2.localP_duality, "Zeta23.CCM.OriginalDetectorLocalDuality", "THEOREM"),
+    (``Zeta23.CCM.NativeCompactPoleH2.originalKernelPrimeField_localPairing, "Zeta23.CCM.OriginalDetectorLocalDuality", "THEOREM"),
+    (``Zeta23.CCM.nativePoleDifferential_translate, "Zeta23.CCM.OriginalDetectorPrimeHistoryCovariance", "THEOREM"),
+    (``Zeta23.CCM.nativePoleDifferential_reflect, "Zeta23.CCM.OriginalDetectorPrimeHistoryCovariance", "THEOREM"),
+    (``Zeta23.CCM.originalDetector_fourPrimeHistory_poleImages, "Zeta23.CCM.OriginalDetectorPrimeHistoryCovariance", "THEOREM"),
+    (``Zeta23.CCM.NativeCompactPoleH2.localP_duality_of_continuous, "Zeta23.CCM.OriginalDetectorFourHistoryLocalDuality", "THEOREM"),
+    (``Zeta23.CCM.NativeCompactPoleH2.originalKernelPrimeField_localPairing_of_continuous, "Zeta23.CCM.OriginalDetectorFourHistoryLocalDuality", "THEOREM"),
+    (``Zeta23.CCM.NativeCompactPoleH2.originalFourHistories_localP_dualities, "Zeta23.CCM.OriginalDetectorFourHistoryLocalDuality", "THEOREM"),
+    (``Zeta23.CCM.originalSmoothWeilResponse_compactPairing_split, "Zeta23.CCM.OriginalDetectorExteriorPairing", "THEOREM"),
+    (``Zeta23.CCM.originalSmoothRightBoundary_pointwise_cut, "Zeta23.CCM.OriginalDetectorBoundaryHistorySplit", "THEOREM"),
+    (``Zeta23.CCM.originalSmoothRightBoundary_convolution_split, "Zeta23.CCM.OriginalDetectorBoundaryHistorySplit", "THEOREM"),
+    (``Zeta23.ExceptionalZero.GeneratedStep123BoundaryPacket.fromActualGenerated, "Zeta23.ExceptionalZero.GeneratedStep123BoundaryPacket", "DEFINITION"),
+    (``Zeta23.ExceptionalZero.exists_generatedStep123BoundaryPacket, "Zeta23.ExceptionalZero.GeneratedStep123BoundaryPacket", "THEOREM"),
+    (``Zeta23.ExceptionalZero.exists_generatedStep123BoundaryPacket_cofinal, "Zeta23.ExceptionalZero.GeneratedStep123BoundaryPacket", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeArithmeticRangeEvidence.fromNative, "Zeta23.CCM.Step123NativeArithmeticRangeEvidence", "DEFINITION"),
+    (``Zeta23.CCM.Step123NativeSourceSpectralEvidence.fromNative, "Zeta23.CCM.Step123NativeSourceSpectralEvidence", "DEFINITION"),
+    (``Zeta23.CCM.GeneratedStep123ComposedEvidencePacket.fromIntegrated, "Zeta23.CCM.Step123NativeSourceSpectralEvidence", "DEFINITION"),
+    (``Zeta23.CCM.exists_generatedStep123ComposedEvidencePacket, "Zeta23.CCM.Step123NativeSourceSpectralEvidence", "THEOREM"),
+    (``Zeta23.CCM.exists_generatedStep123ComposedEvidencePacket_cofinal, "Zeta23.CCM.Step123NativeSourceSpectralEvidence", "THEOREM"),
+    (``Zeta23.CCM.GeneratedStep123IntegratedPacket.fromActualBoundary, "Zeta23.CCM.Step123NativeArithmeticRangeEvidence", "DEFINITION"),
+    (``Zeta23.CCM.exists_generatedStep123IntegratedPacket, "Zeta23.CCM.Step123NativeArithmeticRangeEvidence", "THEOREM"),
+    (``Zeta23.CCM.exists_generatedStep123IntegratedPacket_cofinal, "Zeta23.CCM.Step123NativeArithmeticRangeEvidence", "THEOREM"),
+    (``Zeta23.CCM.NativeCompactPoleH2.localP_transfer_of_continuous, "Zeta23.CCM.OriginalDetectorFourHistoryTransfer", "THEOREM"),
+    (``Zeta23.CCM.NativeCompactPoleH2.originalFourHistories_to_actualX, "Zeta23.CCM.OriginalDetectorFourHistoryTransfer", "THEOREM"),
+    (``Zeta23.CCM.NativeCompactPoleH2.originalSmoothFourPrimeHistories_to_actualX, "Zeta23.CCM.OriginalDetectorFourHistorySignedTransfer", "THEOREM"),
+    (``Zeta23.CCM.nativeOriginalPrimeField_eq_zero_of_nonpos, "Zeta23.CCM.OriginalDetectorFourHistoryLocalXBound", "THEOREM"),
+    (``Zeta23.CCM.nativeOriginalPrimeField_sq_integral_le, "Zeta23.CCM.OriginalDetectorFourHistoryLocalXBound", "THEOREM"),
+    (``Zeta23.CCM.nativePoleCompactInverse_eq_zero_of_nonpos, "Zeta23.CCM.OriginalDetectorFourHistoryLocalXBound", "THEOREM"),
+    (``Zeta23.CCM.originalDetector_primeResponse_pairing_le_sixteenKappa, "Zeta23.CCM.OriginalDetectorFourHistoryLocalXBound", "THEOREM"),
+    (``Zeta23.CCM.canonicalNativePhysicalSynthesis_poleMoments, "Zeta23.CCM.OriginalDetectorFourHistoryLocalXBound", "THEOREM"),
+    (``Zeta23.CCM.originalDetector_nativeTest_primeForcing_le_sixteenKappa, "Zeta23.CCM.OriginalDetectorFourHistoryLocalXBound", "THEOREM"),
+    (``Zeta23.CCM.Step123OriginalBoundaryEvidence.fromNative, "Zeta23.CCM.Step123OriginalBoundaryEvidence", "DEFINITION"),
+    (``Zeta23.CCM.generatedOriginalBoundaryEvidence, "Zeta23.CCM.Step123OriginalBoundaryEvidence", "DEFINITION"),
+    (``Zeta23.CCM.canonicalLegalPhysicalProjection_orthogonal, "Zeta23.CCM.Step123NativeAmbientGalerkin", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeOutput.selectedOuterGalerkin_orthogonal, "Zeta23.CCM.Step123NativeAmbientGalerkin", "THEOREM"),
+    (``Zeta23.CCM.Step123NativeOutput.selectedResponse_decomposition, "Zeta23.CCM.Step123NativeAmbientGalerkin", "THEOREM"),
+    (``Zeta23.RHRC.mc01_source_mass_one, "Zeta23.RHRC.Step123OutputContractCheck", "THEOREM"),
+    (``Zeta23.RHRC.mc02_original_detector_cofinal, "Zeta23.RHRC.Step123OutputContractCheck", "THEOREM"),
+    (``Zeta23.RHRC.mc03_physical_finite_image_unit, "Zeta23.RHRC.Step123OutputContractCheck", "THEOREM"),
+    (``Zeta23.RHRC.mc04_actual_selector, "Zeta23.RHRC.Step123OutputContractCheck", "THEOREM"),
+    (``Zeta23.RHRC.mc05_single_retained_state, "Zeta23.RHRC.Step123OutputContractCheck", "DEFINITION"),
+    (``Zeta23.RHRC.mc06_two_inverse_budget_consumer, "Zeta23.RHRC.Step123OutputContractCheck", "DEFINITION"),
+    (``Zeta23.RHRC.mc07_neutral_channel_consumer, "Zeta23.RHRC.Step123OutputContractCheck", "DEFINITION"),
+    (``Zeta23.RHRC.mc08_selected_ground_consumer, "Zeta23.RHRC.Step123OutputContractCheck", "DEFINITION"),
+    (``Zeta23.RHRC.mc09_compact_inverse_consumer, "Zeta23.RHRC.Step123OutputContractCheck", "DEFINITION"),
+    (``Zeta23.RHRC.mc10_original_four_history_consumer, "Zeta23.RHRC.Step123OutputContractCheck", "DEFINITION"),
+    (``Zeta23.RHRC.mc11_source_error_consumer, "Zeta23.RHRC.Step123OutputContractCheck", "DEFINITION"),
+    (``Zeta23.RHRC.mc12_original_exterior_is_canonical, "Zeta23.RHRC.Step123OutputContractCheck", "THEOREM"),
+    (``Zeta23.RHRC.mc13_actual_input_nonrange, "Zeta23.RHRC.Step123OutputContractCheck", "THEOREM"),
+    (``Zeta23.RHRC.mc14_one_source_full_consumer, "Zeta23.RHRC.Step123OutputContractCheck", "DEFINITION"),
+    (``Zeta23.RHRC.mc15_every_phase_separately_cofinal, "Zeta23.RHRC.Step123OutputContractCheck", "THEOREM"),
+    (``Zeta23.RHRC.mc16_three_conditional_cuts, "Zeta23.RHRC.Step123OutputContractCheck", "THEOREM")]
+  let queries := roots.map fun (name, mod, kind) =>
+    ({ sourceId := name.toString, moduleName := mod, shortName := name.toString,
+       sourceKind := kind } : Zeta23.RHRC.SourceCandidateQuery)
+  Zeta23.RHRC.resolveSourceCandidates queries
+  for (name, _, _) in roots do
+    -- The historical delaborated type is preserved above. Export the raw
+    -- typed expression as a self-contained LEAN_EXPR_DAG_V1 document so
+    -- implicit witness domains cannot vanish behind notation such as
+    -- `existsUnique u, True`, and shared type terms are never tree-expanded.
+    let info ← getConstInfo name
+    let fullType ← liftIO <| Zeta23.RHRC.Step123TypeExprExport.exportType info.type
+    liftIO <| IO.println s!"POST290_TYPE_EXPR\t{name}\t{fullType}"
+    match info with
+    | .inductInfo data =>
+        for ctor in data.ctors do
+          let ctorInfo ← getConstInfo ctor
+          let ctorType ← liftIO <| Zeta23.RHRC.Step123TypeExprExport.exportType ctorInfo.type
+          liftIO <| IO.println s!"POST290_CONSTRUCTOR_TYPE_EXPR\t{name}\t{ctor}\t{ctorType}"
+    | _ => pure ()
+    let axioms ← Lean.collectAxioms name
+    for ax in axioms do
+      unless ax == ``propext || ax == ``Classical.choice || ax == ``Quot.sound do
+        throwError "Unadmitted proof dependency in {name}: {ax}"
+    let names := String.intercalate "," (axioms.toList.map Name.toString)
+    liftIO <| IO.println s!"POST290_AXIOMS\t{name}\t{names}"

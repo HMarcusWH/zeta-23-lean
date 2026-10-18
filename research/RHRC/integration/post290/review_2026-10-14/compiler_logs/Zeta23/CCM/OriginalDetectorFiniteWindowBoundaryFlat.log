@@ -1,0 +1,9 @@
+'Zeta23.CCM.originalDetectorFiniteWindow_endpoint_jets' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.originalDetectorFiniteWindowImage_endpoint_jets' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.boundaryFlatCoefficients_of_left_endpoint_jets' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.originalDetectorFiniteWindowImageCoefficients_boundaryFlat' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.CCM.originalDetectorFiniteWindowImageCoefficients_hardWindow_contDiff' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

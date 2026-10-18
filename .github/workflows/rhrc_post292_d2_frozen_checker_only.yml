@@ -1,0 +1,204 @@
+name: PR292 D2 approved frozen checker only
+
+# WARNING: no search and no automatic trigger. This cannot resolve the 213
+# outstanding Q14-even search pieces without separately authorized mathematics.
+on:
+  workflow_dispatch:
+    inputs:
+      independent_checker_authorized:
+        description: "I explicitly authorize NEW fresh 768-bit checker-only execution; NO SEARCH"
+        required: true
+        type: boolean
+        default: false
+      authorization_reference:
+        description: "Exact approval token: APPROVE_PR292_D2_CHECKER_ONLY_768"
+        required: true
+        type: string
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: pr292-independent-frozen-d2-checker-only-v1
+  cancel-in-progress: false
+
+env:
+  ROUTE: research/RHRC/routes/R003_ccm_bridge
+  OPENBLAS_NUM_THREADS: '1'
+  OMP_NUM_THREADS: '1'
+  APPROVED_SOURCE: a55fbeeed6500bffe2ccac3960258ca5c590c7ee
+  APPROVED_CANDIDATE_RUN: '38569316691'
+
+jobs:
+  verify-consent-and-freeze:
+    if: ${{ inputs.independent_checker_authorized == true && inputs.authorization_reference == 'APPROVE_PR292_D2_CHECKER_ONLY_768' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    outputs:
+      shard_matrix: ${{ steps.matrix.outputs.shard_matrix }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: a55fbeeed6500bffe2ccac3960258ca5c590c7ee
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ github.token }}
+          run-id: 38569316691
+          name: k3-unrun460-candidate
+          path: /tmp/pr292-d2-candidate
+      - name: Verify exact frozen source, candidate and checker partition
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$GITHUB_RUN_ATTEMPT" = '1'
+          test "$(git rev-parse HEAD)" = "$APPROVED_SOURCE"
+          printf '%s  %s\n' 416534359a88b57dabf0efdbcef2b78bdf3c75919abeb79a7affac397083b473 /tmp/pr292-d2-candidate/manifest.json | sha256sum --check -
+          printf '%s  %s\n' 1002bfbbdcddaa91e372dedb72d083c0908c2cc8ddf98997a6c638cadd136420 /tmp/pr292-d2-candidate/checker-partition.json | sha256sum --check -
+          printf '%s  %s\n' 8070b0bb7e551091b52c7ab115466c6a5b65f96229e1a2fb374eda9225fe1469 /tmp/pr292-d2-candidate/source-revalidation.json | sha256sum --check -
+      - name: Freeze the exact 183 predeclared checker shard IDs
+        id: matrix
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json,os
+          from pathlib import Path
+          root=Path('/tmp/pr292-d2-candidate')
+          plan=json.loads((root/'checker-partition.json').read_text())
+          assert plan['protocol']=='SECOND_FRESH_768_SHARDED_v1'
+          assert plan['resources']['precision_bits']==768
+          chunks=plan['chunks']
+          ids=[x['id'] for x in chunks]
+          assert len(ids)==183 and len(set(ids))==183
+          assert json.loads((root/'manifest.json').read_text())['status']=='UNRESOLVED'
+          with open(os.environ['GITHUB_OUTPUT'],'a') as f:
+              f.write('shard_matrix='+json.dumps({'id':ids},separators=(',',':'))+'\n')
+          PY
+  fresh-second-shards:
+    needs: verify-consent-and-freeze
+    if: ${{ needs.verify-consent-and-freeze.result == 'success' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      max-parallel: 8
+      matrix: ${{ fromJson(needs.verify-consent-and-freeze.outputs.shard_matrix) }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: a55fbeeed6500bffe2ccac3960258ca5c590c7ee
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - run: |
+          set -euo pipefail
+          test "$GITHUB_RUN_ATTEMPT" = '1'
+          python -m pip install -r "$ROUTE/requirements.txt"
+      - uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ github.token }}
+          run-id: 38569316691
+          name: k3-unrun460-candidate
+          path: /tmp/pr292-d2-candidate
+      - name: Verify original checker bytes before a fresh independent evaluation
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$APPROVED_SOURCE"
+          printf '%s  %s\n' 1002bfbbdcddaa91e372dedb72d083c0908c2cc8ddf98997a6c638cadd136420 /tmp/pr292-d2-candidate/checker-partition.json | sha256sum --check -
+          printf '%s  %s\n' 416534359a88b57dabf0efdbcef2b78bdf3c75919abeb79a7affac397083b473 /tmp/pr292-d2-candidate/manifest.json | sha256sum --check -
+      - name: Evaluate only the frozen checker shard; absolutely no new search
+        env:
+          CHECKER_SHARD_ID: ${{ matrix.id }}
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/pr292-checker-output
+          python "$ROUTE/post290/k3_replay_shards.py" single \
+            /tmp/pr292-d2-candidate/checker-partition.json \
+            /tmp/pr292-d2-candidate \
+            /tmp/pr292-d2-candidate/source-revalidation.json \
+            --id "$CHECKER_SHARD_ID" --out /tmp/pr292-checker-output
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pr292-independent-check-${{ github.run_id }}-${{ matrix.id }}
+          path: /tmp/pr292-checker-output/
+          if-no-files-found: ignore
+          retention-days: 14
+
+  assemble-checker-disposition:
+    needs: [verify-consent-and-freeze, fresh-second-shards]
+    if: ${{ always() && needs.verify-consent-and-freeze.result == 'success' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: a55fbeeed6500bffe2ccac3960258ca5c590c7ee
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - run: python -m pip install -r "$ROUTE/requirements.txt"
+      - uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ github.token }}
+          run-id: 38569316691
+          name: k3-unrun460-candidate
+          path: /tmp/pr292-d2-candidate
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: pr292-independent-check-${{ github.run_id }}-*
+          merge-multiple: true
+          path: /tmp/pr292-checker-output
+          if-no-files-found: warn
+      - name: Assemble fresh checker evidence, preserving all missing shards
+        continue-on-error: true
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/pr292-independent-final
+          python "$ROUTE/post290/k3_replay_shards.py" assemble \
+            /tmp/pr292-d2-candidate/checker-partition.json \
+            /tmp/pr292-d2-candidate \
+            /tmp/pr292-d2-candidate/source-revalidation.json \
+            /tmp/pr292-checker-output \
+            --out /tmp/pr292-independent-final/full-checker.json
+      - name: Original strict 30-layer nonpartial gate; never upgrade unresolved coverage
+        continue-on-error: true
+        shell: bash
+        run: |
+          set -euo pipefail
+          python "$ROUTE/post290/k3_assemble_complete.py" final \
+            /tmp/pr292-d2-candidate \
+            /tmp/pr292-independent-final/full-checker.json \
+            --source-revalidation /tmp/pr292-d2-candidate/source-revalidation.json \
+            --out /tmp/pr292-independent-final/disposition.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pr292-checker-only-honest-disposition-${{ github.run_id }}
+          path: /tmp/pr292-independent-final/
+          if-no-files-found: warn
+          retention-days: 14
+      - name: Report incomplete certification as job failure
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('/tmp/pr292-independent-final/disposition.json')
+          if not p.is_file():
+              raise SystemExit('D2_OPEN: strict nonpartial certificate absent')
+          d=json.loads(p.read_text())
+          if (d.get('status')!='D2_COMPLETE' or d.get('complete_layers')!=30 or
+              d.get('independent_nonpartial_verified') is not True):
+              raise SystemExit('D2_OPEN: complete independent 30-layer certificate not established')
+          PY

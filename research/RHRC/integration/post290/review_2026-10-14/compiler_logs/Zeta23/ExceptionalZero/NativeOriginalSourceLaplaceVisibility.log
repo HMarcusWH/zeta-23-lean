@@ -1,0 +1,5 @@
+'Zeta23.ExceptionalZero.nativeOriginalSourceLaplace_formula' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.ExceptionalZero.nativeOriginalSourceLaplace_at_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.ExceptionalZero.nativeOriginalSourceLaplace_ne_zero_at_off_line_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

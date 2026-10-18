@@ -1,0 +1,133 @@
+{
+  "schema": "PR292_PORTABLE_EVIDENCE_CHECK_1.0",
+  "artifact_checks": [
+    {
+      "name": "PR292_efa6_compiler_artifact.zip",
+      "sha256": "61b349a177069bf6e42cbe668a86684fc22b43c3397f7b1ecd85330355fc6d90",
+      "crc_pass": true,
+      "members": 3
+    },
+    {
+      "name": "PR292_efa6_exact_controls.zip",
+      "sha256": "f1400971bf8e866ca96a06f6c2b810f2ae0d0f6bf3a83c3699ae9359e7162b35",
+      "crc_pass": true,
+      "members": 11
+    },
+    {
+      "name": "PR292_efa6_native_observations.zip",
+      "sha256": "5352f42e42a42e6f87498b2f5b6863870be0616b06a5bbaed5c6043f9dbbd2c9",
+      "crc_pass": true,
+      "members": 2
+    }
+  ],
+  "root_count": 944,
+  "theorem_count": 934,
+  "definition_count": 10,
+  "source_blob_entries": 185,
+  "control_comparison": [
+    {
+      "file": "argon_continuum_and_roots_exact.json",
+      "byte_identical": true,
+      "sha256": "8665c6cd62452d2b98205e936ef21dd3a85ec24639fe4dc93c221cfb70357f03"
+    },
+    {
+      "file": "deep_threshold_exact.json",
+      "byte_identical": true,
+      "sha256": "2021399882169b17ee4ccc076e9edf255191f13dd97862a6b5f550aed0436d3d"
+    },
+    {
+      "file": "detector_schur_provenance.json",
+      "byte_identical": true,
+      "sha256": "471f97deab5911b12a94950fa3fb1e9899892b6d1919e51b6ff2192932a9355a"
+    },
+    {
+      "file": "inverse_budgets_and_gap_exact.json",
+      "byte_identical": true,
+      "sha256": "13761445fd4ea964c303081e63ad2558a3d1b784dd3e7ce84581ecf63d37c644"
+    },
+    {
+      "file": "native_divisor_controls.json",
+      "byte_identical": true,
+      "sha256": "8475024c3e03e9ffd2e095fc4c2d4bd9a55ddc5989bfa56a61c662e980a93de7"
+    },
+    {
+      "file": "native_mass_candidate.json",
+      "byte_identical": true,
+      "sha256": "560e070a657fcb2f8c3089dc88d73c6aff1e2bf0216ae7de0239901ac73d4b38"
+    },
+    {
+      "file": "native_panel_check.json",
+      "byte_identical": true,
+      "sha256": "b55e68323a356ee242bc9e573e4456b9efd63f9457f18a9b0404c06b6fc63561"
+    },
+    {
+      "file": "native_panel_check_preseam.json",
+      "byte_identical": true,
+      "sha256": "794c7f4a836a8689457a063e730db2f9a925fcc65f102f630e87caff04780086"
+    },
+    {
+      "file": "output_mutations.json",
+      "byte_identical": true,
+      "sha256": "e4840227a7cc7430257bec96ed8798be516a135e4cd0aaa9b6a6eef800acb27e"
+    },
+    {
+      "file": "pole_neutral_exact.json",
+      "byte_identical": true,
+      "sha256": "cf998ec184657b55ab0329a33eea17b538418698ca6d3d325f1eb330163989df"
+    },
+    {
+      "file": "strict_odd_and_tie_exact.json",
+      "byte_identical": true,
+      "sha256": "facb33fef9fd0b3b37a66b6b3fc9c43e3a66ae8460f5f364efa146a4f1f1dc5d"
+    }
+  ],
+  "panel_difference_paths": [
+    "/pairs/0/elapsed_seconds",
+    "/pairs/1/elapsed_seconds",
+    "/pairs/2/elapsed_seconds",
+    "/pairs/3/elapsed_seconds",
+    "/pairs/4/elapsed_seconds",
+    "/pairs/5/elapsed_seconds",
+    "/pairs/6/elapsed_seconds",
+    "/pairs/7/elapsed_seconds",
+    "/pairs/8/elapsed_seconds",
+    "/pairs/9/elapsed_seconds",
+    "/pairs/10/elapsed_seconds",
+    "/pairs/11/elapsed_seconds",
+    "/pairs/12/elapsed_seconds",
+    "/pairs/13/elapsed_seconds",
+    "/pairs/14/elapsed_seconds",
+    "/pairs/15/elapsed_seconds",
+    "/pairs/16/elapsed_seconds",
+    "/pairs/17/elapsed_seconds",
+    "/pairs/18/elapsed_seconds",
+    "/pairs/19/elapsed_seconds",
+    "/pairs/20/elapsed_seconds",
+    "/pairs/21/elapsed_seconds",
+    "/pairs/22/elapsed_seconds",
+    "/pairs/23/elapsed_seconds",
+    "/pairs/24/elapsed_seconds",
+    "/pairs/25/elapsed_seconds",
+    "/pairs/26/elapsed_seconds",
+    "/pairs/27/elapsed_seconds",
+    "/pairs/28/elapsed_seconds",
+    "/pairs/29/elapsed_seconds",
+    "/pairs/30/elapsed_seconds",
+    "/pairs/31/elapsed_seconds",
+    "/pairs/32/elapsed_seconds",
+    "/pairs/33/elapsed_seconds",
+    "/pairs/34/elapsed_seconds",
+    "/pairs/35/elapsed_seconds",
+    "/pairs/36/elapsed_seconds",
+    "/pairs/37/elapsed_seconds",
+    "/pairs/38/elapsed_seconds",
+    "/pairs/39/elapsed_seconds",
+    "/pairs/40/elapsed_seconds",
+    "/pairs/41/elapsed_seconds",
+    "/pairs/42/elapsed_seconds",
+    "/pairs/43/elapsed_seconds",
+    "/source_identity/commit",
+    "/source_identity/tree"
+  ],
+  "claims": "Integrity/type/axiom audit only; historical producer remains incomplete; no new theorem authority."
+}

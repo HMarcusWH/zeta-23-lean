@@ -1,0 +1,5 @@
+'Zeta23.CCM.nativeRationalCausalKernel_complexDamped_integrableOn' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.CCM.nativeRationalCausalKernel_complexLaplace' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.nativeCompletionCorrection_complexLaplace' depends on axioms: [propext, Classical.choice, Quot.sound]

@@ -1,0 +1,26 @@
+Zeta23\CCM\CanonicalPoleNeutralPublicAPI.lean:140:0: warning: automatically included section variable(s) unused in theorem `Zeta23.CCM.nativeSymmetric_output_mem_kernelOrthogonal`:
+  [FiniteDimensional ℂ E]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [FiniteDimensional ℂ E] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+Zeta23\CCM\CanonicalPoleNeutralPublicAPI.lean:201:0: warning: automatically included section variable(s) unused in theorem `Zeta23.CCM.nativeKernelComplement_positive`:
+  [FiniteDimensional ℂ E]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [FiniteDimensional ℂ E] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+'Zeta23.CCM.poleNeutral_iff_exponentialMoments' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.poleNeutral_parity_finrank' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.poleNeutralGround_branch_exhaustive' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.poleNeutral_evenShifted_eigen_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.poleNeutral_evenShifted_det_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.poleNeutral_oddShifted_eigen_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.poleNeutral_oddShifted_det_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.nativeKernelComplementMap_injective' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.nativeKernelComplementResponse_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.nativeKernelComplement_positive' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.poleNeutral_tied_kernel_compatibility' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.poleNeutral_tied_complementary_response' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.poleNeutral_smallCutoff_eq_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.poleNeutral_tied_complements_positive' depends on axioms: [propext, Classical.choice, Quot.sound]

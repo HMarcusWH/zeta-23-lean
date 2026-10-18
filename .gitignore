@@ -1,4 +1,5 @@
-/.lake/
+# The clean CI worktree shares this dependency cache through a directory symlink.
+/.lake
 *.olean
 *.ilean
 __pycache__/

@@ -1,0 +1,9 @@
+'Zeta23.CCM.nativeCausalExponentialWitness_annihilates_rangeClosure_of_kernel_moments' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.CCM.nativeCompletedInput_not_mem_rangeClosure_of_moments' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.CCM.nativeCompletedInput_rangeResidual_lower_of_moments' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

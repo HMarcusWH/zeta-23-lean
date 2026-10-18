@@ -1,0 +1,8 @@
+'Zeta23.CCM.originalDetectorDividedLobeFourierCoeff_conj' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.originalDetectorDividedLobeFourierPartialSum_conj' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.CCM.originalDetectorPaddedRawFourierPartialSum_real' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.originalDetectorPaddedRawFourierPartialSum_re_nonneg' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

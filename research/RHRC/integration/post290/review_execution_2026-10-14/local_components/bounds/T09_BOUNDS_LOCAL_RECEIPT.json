@@ -1,0 +1,134 @@
+{
+  "status": "LOCAL_PINNED_COMPILER_PASS",
+  "recorded_at_utc": "2026-10-14T17:31:33.342602+00:00",
+  "repository_head_context": "77407a489d3a600e8219122ade03acb3f6b2d4db",
+  "source_path": "Zeta23/CCM/NativeWeilResponseBounds.lean",
+  "source_sha256": "2f5a08c9b3349cb3e9892922db3de846f91a70db81e2d4f180502587b12aaf5e",
+  "lean_toolchain": "leanprover/lean4:v4.33.0-rc2",
+  "mathlib_pin": "51e6992efd06126df61a496bebf8f49482a4e129",
+  "compiler_session_id": 36479,
+  "compiler_exit_code": 0,
+  "compiler_log_sha256": "61e46e1f8dfd52a2c214f653610f2f8478eda95dd6a023b14f73d4d2ec86d306",
+  "printed_root_count": 21,
+  "root_axioms": {
+    "Zeta23.CCM.nativePaperFT_parseval_of_integrable_sq": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Zeta23.CCM.nativePaperFT_weighted_sq_integrable": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Zeta23.CCM.nativePaperFT_H1_energy": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Zeta23.CCM.nativePaperFT_H1_mixed_bound": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Zeta23.CCM.nativePrimeMass_finite_bound": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Zeta23.CCM.nativeWeilArchResponse_bilinear_bound": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Zeta23.CCM.nativePhysicalL1_le_sqrt_length_L2": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Zeta23.CCM.nativeWeilTest_norm_le_H1": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Zeta23.CCM.nativeWeilPoleResponse_bilinear_bound": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Zeta23.CCM.nativeWeilTest_common_support": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Zeta23.CCM.nativeWeilPrimeCorrelation_bilinear_bound": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Zeta23.CCM.nativeWeilResponse_bilinear_bound": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Zeta23.CCM.nativePaperFT_sq_integrable": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Zeta23.CCM.nativePaperFT_deriv_sq_integrable": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Zeta23.CCM.nativePhysicalH1Norm_nonneg": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Zeta23.CCM.native_sum_inv_sqrt_succ_le": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Zeta23.CCM.nativePhysicalL2Norm": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Zeta23.CCM.nativePhysicalL2Norm_nonneg": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Zeta23.CCM.nativePhysicalL2Norm_le_H1": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Zeta23.CCM.nativePhysicalL1_le_sqrt_length_H1": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Zeta23.CCM.nativeWeilTest_norm_le_L2": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "typed_consumer_session_id": 32553,
+  "typed_consumer_exit_code": 0,
+  "typed_consumer_source_sha256": "5d7a3b1bb47dfb4f2626f457d823fb910a9093bf464a7d539a0c904cace14117",
+  "typed_consumer_log_sha256": "b185adf0d571ee8c6e019690925da203f1d9080e6f0a4b0ab7fc73e06c11dddc",
+  "response_import_checkpoint_source_sha256": "2a6d73321f8cc31e09e93e8be15503de1dd5b52b8fd1e3160e74bfb3dacd3f9e",
+  "response_import_checkpoint_olean_sha256": "b0ecdc2ee05926c3b5d5cbec1fcea5b04138261d52131df60fb79c104d29f58c",
+  "response_import_note": "The final Bounds compilation consumed the owning agent\u2019s checked 16-root NativeWeilResponse checkpoint. This receipt asserts no later global Arch-L2 extension.",
+  "proved_contract": "One positive source-constructed C_Q=C_A+6 works for all L>=0 and all complex C2 f,v supported in physical [0,L]: norm(zetaZeroConfig.W f v)<=C_Q*(1+L)*exp(L/2)*nativePhysicalH1Norm(f)*nativePhysicalH1Norm(v).",
+  "post_green_sha256": "469977bc74f6ce8106e6bf40376fd1dac8c3042d18ee03e926392c32489ee86d",
+  "limitations": [
+    "Local pinned compiler and typed direct-consumer evidence; no new hosted CI result is asserted.",
+    "This finite-aperture estimate does not establish a closing subexponential law, A-X, B-Y, C-Schur or RH.",
+    "This receipt does not mark the full 22-task build complete."
+  ]
+}

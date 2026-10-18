@@ -1,0 +1,7 @@
+'Zeta23.CCM.originalDetectorRawCutoff_sqrt_eventually_ge_mul' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.originalDetectorDividedLobeFourierJetTailBudget_mul_exp_tendsto_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.CCM.originalDetectorDividedLobeFourierJetTailBudget_eventually_lt_exp' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

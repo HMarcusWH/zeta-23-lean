@@ -1,0 +1,3 @@
+'Zeta23.CCM.originalDetectorPaddedFinitePhysicalUnit_eq_native_image' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

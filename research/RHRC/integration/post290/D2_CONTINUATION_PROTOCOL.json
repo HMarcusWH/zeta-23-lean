@@ -1,0 +1,32 @@
+{
+  "schema_version": "RH_POST290_D2_CONTINUATION_PROTOCOL_POINTER_1.0",
+  "status": "AUTHORIZED_CAMPAIGN_EXISTING_EXECUTION_ONLY",
+  "claim_cap": "RH_OPEN",
+  "authority": "POINTER_TO_ALREADY_APPROVED_IMMUTABLE_PROTOCOL_NOT_NEW_BUDGET",
+  "protocol_file": "research/RHRC/integration/post290/D2_UNRUN460_APPROVED_PROTOCOL.json",
+  "approved_run": {
+    "run_id": 38569316691,
+    "producer_head": "a55fbeeed6500bffe2ccac3960258ca5c590c7ee",
+    "producer_tree": "7ffdf5095db2d54ef97897c19797886d145b65d2",
+    "plan_sha256": "433107bbfe412625223fe1f08da36ca7d837bd82e7a536fc50a2d447886cf6ef"
+  },
+  "mandated": {
+    "original_children": 460,
+    "maximum_workers": 8,
+    "additional_search_runner_hours_cap": 230,
+    "source_bound": true,
+    "search_method": "SECOND",
+    "allow_duplicate_budget_claims": false,
+    "allow_retry_consumed_child": false
+  },
+  "final_checker": {
+    "precision_bits": 768,
+    "all_layers": 30,
+    "both_parities": true,
+    "search_during_final_check": false,
+    "nonpartial_required": true
+  },
+  "current_certificate_status": "OPEN",
+  "no_new_dispatch_or_budget_authorized_by_this_pointer": true,
+  "never_supplies_lean_hWindows": true
+}

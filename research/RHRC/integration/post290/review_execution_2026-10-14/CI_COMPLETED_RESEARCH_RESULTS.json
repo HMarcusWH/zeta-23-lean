@@ -1,0 +1,248 @@
+[
+  {
+    "artifact_id": 11916951858,
+    "artifact_name": "post287-wp6-signed-ray",
+    "artifact_digest": "sha256:34db487b324d93ccc60caa9f2b0bc1a7bfefda44f65f8a3e588cd4710007a19b",
+    "members": {
+      "post287-wp6.json": {
+        "disposition": "FALSIFIED_AT_BOUNDED_TRUE_SOURCE_APERTURES",
+        "not_claimed": [
+          "any first contact",
+          "the #247 negative selected ground",
+          "universal signed cancellation",
+          "RH"
+        ],
+        "observations": [
+          {
+            "aperture": [
+              3,
+              20
+            ],
+            "even_bottom": {
+              "ball": "[1.1344703992146222094552302983115738552 +/- 4.79e-38]",
+              "contains_zero": false,
+              "lower": "1.1344703992146222094552302983115738552",
+              "rel_accuracy_bits": 248,
+              "upper": "1.1344703992146222094552302983115738552"
+            },
+            "negative": false,
+            "negative_shift": -1,
+            "odd_bottom": {
+              "ball": "[1.9647176067737447438324358951156810018 +/- 4.91e-38]",
+              "contains_zero": false,
+              "lower": "1.9647176067737447438324358951156810018",
+              "rel_accuracy_bits": 247,
+              "upper": "1.9647176067737447438324358951156810018"
+            },
+            "physical_Q_shifted_ray": {
+              "ball": "[0.0011920692690262826566048075368179053925 +/- 1.93e-42]",
+              "contains_zero": false,
+              "lower": "0.0011920692690262826566048075368179053925",
+              "rel_accuracy_bits": 245,
+              "upper": "0.0011920692690262826566048075368179053925"
+            },
+            "physical_Q_v": {
+              "ball": "[0.029104869514437596730895460160692368419 +/- 2.28e-40]",
+              "contains_zero": false,
+              "lower": "0.029104869514437596730895460160692368419",
+              "rel_accuracy_bits": 244,
+              "upper": "0.029104869514437596730895460160692368419"
+            },
+            "physical_source": "exact pole/arch, no primes in cutoff Q1",
+            "positive": true,
+            "selected_ray_scale": {
+              "ball": "[0.20238015203509720753715329781772271249 +/- 2.33e-39]",
+              "contains_zero": false,
+              "lower": "0.20238015203509720753715329781772271249",
+              "rel_accuracy_bits": 248,
+              "upper": "0.20238015203509720753715329781772271249"
+            }
+          },
+          {
+            "aperture": [
+              69,
+              100
+            ],
+            "even_bottom": {
+              "ball": "[0.097077981343012840983536412541273859390 +/- 3.07e-40]",
+              "contains_zero": false,
+              "lower": "0.097077981343012840983536412541273859390",
+              "rel_accuracy_bits": 243,
+              "upper": "0.097077981343012840983536412541273859390"
+            },
+            "negative": true,
+            "negative_shift": -1,
+            "odd_bottom": {
+              "ball": "[0.43365374884620485018676649178464808840 +/- 3.94e-39]",
+              "contains_zero": false,
+              "lower": "0.43365374884620485018676649178464808840",
+              "rel_accuracy_bits": 245,
+              "upper": "0.43365374884620485018676649178464808840"
+            },
+            "physical_Q_shifted_ray": {
+              "ball": "[-0.039884739119187737540435587036357636702 +/- 4.20e-40]",
+              "contains_zero": false,
+              "lower": "-0.039884739119187737540435587036357636702",
+              "rel_accuracy_bits": 241,
+              "upper": "-0.039884739119187737540435587036357636702"
+            },
+            "physical_Q_v": {
+              "ball": "[-0.22771561084781023049637439222704586503 +/- 3.74e-39]",
+              "contains_zero": false,
+              "lower": "-0.22771561084781023049637439222704586503",
+              "rel_accuracy_bits": 241,
+              "upper": "-0.22771561084781023049637439222704586503"
+            },
+            "physical_source": "exact pole/arch, no primes in cutoff Q1",
+            "positive": false,
+            "selected_ray_scale": {
+              "ball": "[0.41851109480435988907942157576389140015 +/- 3.73e-39]",
+              "contains_zero": false,
+              "lower": "0.41851109480435988907942157576389140015",
+              "rel_accuracy_bits": 246,
+              "upper": "0.41851109480435988907942157576389140015"
+            }
+          }
+        ],
+        "schema": "post287.wp6.k2-sign-v1",
+        "status": "EXPERIMENTAL_SIGNAL",
+        "terminal_claim": "RH_OPEN",
+        "tested_target": "unrestricted complete physical Q>=0 on all B>0 shifted K2 rays"
+      }
+    }
+  },
+  {
+    "artifact_id": 11916722260,
+    "artifact_name": "post287-wp5-modified-prime",
+    "artifact_digest": "sha256:ee51e9b8098ad8f54fb7a0e356895fb4e5df9a1e3295957931a2929a876f0727",
+    "members": {
+      "post287-wp5.json": {
+        "checks": {
+          "left_model_even_positive": true,
+          "model_odd_positive_at_both_sample_endpoints": true,
+          "right_model_even_negative": true,
+          "same_exact_q3_cell": true,
+          "true_zeta_even_positive_at_both_sample_endpoints": true
+        },
+        "claim_status": "INTERVAL_EVIDENCE",
+        "complete_canonical_pole_arch_and_wCorrection": true,
+        "model_consistency": {
+          "all_2_3_powers_positive": true,
+          "non_prime_power_six_is_zero": true,
+          "q4_equals_q2_over_sqrt2": true,
+          "q8_equals_q4_over_sqrt2": true,
+          "q9_equals_q3_over_sqrt3": true
+        },
+        "model_is_actual_zeta": false,
+        "not_claimed": [
+          "global first contact",
+          "odd positivity over whole bracket",
+          "universal canonical positivity",
+          "RH"
+        ],
+        "precision_bits": 256,
+        "samples": [
+          {
+            "aperture": [
+              259,
+              200
+            ],
+            "certified_cutoff_cell": true,
+            "cutoff_Q": 3,
+            "modified": {
+              "even": {
+                "ball": "[8.902990988782997303442652890580795247839e-7 +/- 3.22e-47]",
+                "contains_zero": false,
+                "lower": "8.902990988782997303442652890580795247839e-7",
+                "rel_accuracy_bits": 225,
+                "upper": "8.902990988782997303442652890580795247839e-7"
+              },
+              "odd": {
+                "ball": "[0.0004243548391040711040257361001424061341729 +/- 4.07e-44]",
+                "contains_zero": false,
+                "lower": "0.0004243548391040711040257361001424061341729",
+                "rel_accuracy_bits": 234,
+                "upper": "0.0004243548391040711040257361001424061341729"
+              }
+            },
+            "signs": {
+              "modified_even_negative": false,
+              "modified_even_positive": true,
+              "modified_odd_positive": true,
+              "true_even_positive": true
+            },
+            "true": {
+              "even": {
+                "ball": "[1.766281792752142356146546350214529829187e-5 +/- 4.64e-45]",
+                "contains_zero": false,
+                "lower": "1.766281792752142356146546350214529829187e-5",
+                "rel_accuracy_bits": 230,
+                "upper": "1.766281792752142356146546350214529829187e-5"
+              },
+              "odd": {
+                "ball": "[0.0002880906980933680758335898062622048402536 +/- 1.71e-44]",
+                "contains_zero": false,
+                "lower": "0.0002880906980933680758335898062622048402536",
+                "rel_accuracy_bits": 234,
+                "upper": "0.0002880906980933680758335898062622048402536"
+              }
+            }
+          },
+          {
+            "aperture": [
+              162,
+              125
+            ],
+            "certified_cutoff_cell": true,
+            "cutoff_Q": 3,
+            "modified": {
+              "even": {
+                "ball": "[-1.816059327233102090302107273156487388219e-7 +/- 1.83e-47]",
+                "contains_zero": false,
+                "lower": "-1.816059327233102090302107273156487388219e-7",
+                "rel_accuracy_bits": 223,
+                "upper": "-1.816059327233102090302107273156487388219e-7"
+              },
+              "odd": {
+                "ball": "[0.0004107051067004575888367109164270034277498 +/- 2.66e-44]",
+                "contains_zero": false,
+                "lower": "0.0004107051067004575888367109164270034277498",
+                "rel_accuracy_bits": 234,
+                "upper": "0.0004107051067004575888367109164270034277498"
+              }
+            },
+            "signs": {
+              "modified_even_negative": true,
+              "modified_even_positive": false,
+              "modified_odd_positive": true,
+              "true_even_positive": true
+            },
+            "true": {
+              "even": {
+                "ball": "[1.669751917222926624057481604520471901640e-5 +/- 4.00e-45]",
+                "contains_zero": false,
+                "lower": "1.669751917222926624057481604520471901640e-5",
+                "rel_accuracy_bits": 230,
+                "upper": "1.669751917222926624057481604520471901640e-5"
+              },
+              "odd": {
+                "ball": "[0.0002743297538143284117336799351233369192416 +/- 2.87e-44]",
+                "contains_zero": false,
+                "lower": "0.0002743297538143284117336799351233369192416",
+                "rel_accuracy_bits": 234,
+                "upper": "0.0002743297538143284117336799351233369192416"
+              }
+            }
+          }
+        ],
+        "schema": "post287.wp5.arb-crossing.v1",
+        "terminal_claim": "RH_OPEN",
+        "weights": {
+          "a2": "490463763049119/1000000000000000",
+          "a3": "607742075660039/1000000000000000",
+          "c4": "a2/sqrt(2) (prime-power consistency; not in q3 cell)"
+        }
+      }
+    }
+  }
+]

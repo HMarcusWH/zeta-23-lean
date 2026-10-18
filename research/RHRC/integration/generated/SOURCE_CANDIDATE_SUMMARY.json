@@ -1,25 +1,25 @@
 {
-  "candidate_count": 3696,
+  "candidate_count": 5548,
   "interpretation": "Compiler identity exactification of source-discovery candidates only; source-only status does not imply mathematical independence or relevance.",
   "lean_toolchain": "leanprover/lean4:v4.33.0-rc2",
   "registered_compiler_receipt_sha256": "134eac5491f8d89575c1e5e1fa9a102d37382fe38758d2ac0ba0274e4503efaf",
   "resolution_counts": {
     "NO_COMPILER_MATCH": 3,
-    "RESOLVED_PRIVATE_OR_INTERNAL": 303,
-    "RESOLVED_UNIQUE": 3390
+    "RESOLVED_PRIVATE_OR_INTERNAL": 617,
+    "RESOLVED_UNIQUE": 4928
   },
-  "rhkg_subject_digest_sha256": "a18a94ce4542f558cd1a3d39c360c2e8ac9be00f017055f64c4c3cb517bf187a",
+  "rhkg_subject_digest_sha256": "1049b4b0590f910d8e6679bbfb7331ff702e75c1c5e819f5d1186a69a476c18b",
   "schema_version": "RHRC-source-candidate-summary-1.0",
   "scope": "RH_FORMAL_CORE_THEOREM_AND_LEMMA_SOURCE_SURFACE",
-  "source_only_public_theorem_count": 1360,
-  "source_surface_sha256": "d31408147debf0f50bc49c167982372c654938fd044daca177b3e8ebd9881011",
+  "source_only_public_theorem_count": 2898,
+  "source_surface_sha256": "94527e35df3ab8581583f3422228f4f83ff05aeafa2ada19c9fe06dde6708a9e",
   "terminal_claim": "RH_OPEN",
   "theorem_promotion": false,
   "visibility_counts": {
     "ALREADY_IN_REGISTERED_DEPENDENCY_CLOSURE": 1918,
     "ALREADY_REGISTERED_ROOT": 112,
-    "PRIVATE_OR_INTERNAL_SOURCE_OBJECT": 303,
-    "SOURCE_ONLY_PUBLIC_THEOREM": 1360,
+    "PRIVATE_OR_INTERNAL_SOURCE_OBJECT": 617,
+    "SOURCE_ONLY_PUBLIC_THEOREM": 2898,
     "UNRESOLVED_SOURCE_IDENTITY": 3
   }
 }

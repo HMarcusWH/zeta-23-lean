@@ -1,0 +1,162 @@
+{
+  "task": "T02",
+  "status": "PROVED_LOCAL_COMPONENT",
+  "intake_baseline_commit": "efa6ceea7bba2b34ff453a70a32a0800fee98b82",
+  "intake_baseline_tree": "511f6dc182d9a02b54e9404e93c32eb614fbff34",
+  "baseline_is_not_the_changed_source_tree": true,
+  "module": "Zeta23.ExceptionalZero.NativeAnalyticOutputSufficiency",
+  "source_sha256": "02e84f654ca08d9e31755a900b644ed71853a94c2b696eb895bedefe29033192",
+  "checked_source_unchanged": true,
+  "compiler": "Lean 4.33.0-rc2",
+  "mathlib_revision": "51e6992efd06126df61a496bebf8f49482a4e129",
+  "compiler_wrapper": "work/post290/run_lean.py",
+  "compiler_options": [
+    "-j",
+    "1",
+    "-DmaxHeartbeats=800000",
+    "-DrelaxedAutoImplicit=false",
+    "-Dpp.unicode.fun=true"
+  ],
+  "compiler_exit_code": 0,
+  "typed_capture_exit_code": 0,
+  "public_theorem_roots": [
+    {
+      "name": "Zeta23.CCM.nativeOriginalDampedPrimeField_continuous",
+      "kind": "THEOREM",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "Zeta23.CCM.nativeOriginalDampedPrimeField_norm_sq",
+      "kind": "THEOREM",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "Zeta23.CCM.nativeOriginalDampedPrimeField_memLp_iff_halfLineIntegral",
+      "kind": "THEOREM",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "Zeta23.CCM.nativeOriginalPrimeField_allDampedL2_iff_integral",
+      "kind": "THEOREM",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "Zeta23.CCM.nativeInput_allRangeClosure_of_originalPrimeField_allDampedL2",
+      "kind": "THEOREM",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "Zeta23.ExceptionalZero.riemannHypothesis_of_nativeInput_allRangeClosure",
+      "kind": "THEOREM",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "Zeta23.ExceptionalZero.riemannHypothesis_of_originalPrimeField_allDampedL2",
+      "kind": "THEOREM",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "Zeta23.ExceptionalZero.riemannHypothesis_of_originalPrimeField_allDampedIntegral",
+      "kind": "THEOREM",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    }
+  ],
+  "files": [
+    {
+      "path": "work/post290/repo/Zeta23/ExceptionalZero/NativeAnalyticOutputSufficiency.lean",
+      "sha256": "02e84f654ca08d9e31755a900b644ed71853a94c2b696eb895bedefe29033192",
+      "bytes": 7335
+    },
+    {
+      "path": "work/post292audit/validation/native/NativeAnalyticOutputSufficiency.log",
+      "sha256": "4e15e278e66863a42503771e8dd11543b85d70749fbfcbb034b37f618d2143bb",
+      "bytes": 1054
+    },
+    {
+      "path": "work/post292audit/validation/native/T02TypedCheck.lean",
+      "sha256": "a52f1bfdb7f94c329d1d3d931136777c9e6d35282dcd00287063fcb8750cc6a0",
+      "bytes": 1426
+    },
+    {
+      "path": "work/post292audit/validation/native/T02TypedCheck.log",
+      "sha256": "e09c90271d3a4b9d2310b186aa99e04af170e3edc6599e638bc2461de48dbde6",
+      "bytes": 2272
+    },
+    {
+      "path": "work/post292audit/validation/native/T02_proof_escape.log",
+      "sha256": "a2f0c8cb6075c25dc325f0cf6037340a8535ab4789e5e39f8dc4fbd2729fc3dd",
+      "bytes": 46
+    },
+    {
+      "path": "work/post292audit/validation/native/T02_POST_GREEN.md",
+      "sha256": "95f0c09291386c8250116c9f0be072fe5e843fb39627dd16c4a1831c02715679",
+      "bytes": 4421
+    },
+    {
+      "path": "work/post292audit/validation/native/bootstrap_terminal_adapter_receipt.json",
+      "sha256": "880ff756ee93e91748cb875d585ec00400004c17bbd9fd90aa53a36395ab78f0",
+      "bytes": 1419
+    }
+  ],
+  "direct_consumer": {
+    "module": "Zeta23.ExceptionalZero.Step4OutputSufficiency",
+    "status": "PENDING_SEPARATE_RECEIPT"
+  },
+  "global_contract_and_remote_CI": "PENDING_PARENT_INTEGRATION",
+  "RH_status": "OPEN",
+  "closing_premises": {
+    "A-X": "OPEN",
+    "B-Y": "OPEN",
+    "C-Schur": "OPEN"
+  },
+  "public_predicates": [
+    {
+      "name": "Zeta23.CCM.NativeOriginalPrimeFieldAllDampedL2",
+      "kind": "DEFINITION",
+      "status": "OPEN_PREMISE"
+    },
+    {
+      "name": "Zeta23.CCM.NativeOriginalPrimeFieldAllDampedIntegral",
+      "kind": "DEFINITION",
+      "status": "OPEN_PREMISE"
+    },
+    {
+      "name": "Zeta23.CCM.NativeInputAllRangeClosure",
+      "kind": "DEFINITION",
+      "status": "OPEN_PREMISE"
+    }
+  ],
+  "owned_regression_evidence": "T01_conventions.log and T01_conventions_optimized.log"
+}

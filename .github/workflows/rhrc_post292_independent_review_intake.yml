@@ -1,0 +1,65 @@
+name: PR292 independent 44-field review artifact intake (manual)
+
+# Manual only: verifies an EXTERNALLY authored review on the exact PR head.
+# Does not generate or approve any mathematical field automatically.
+on:
+  workflow_dispatch:
+    inputs:
+      reviewed_json_base64:
+        description: "Base64 UTF-8 of independently authored 44-field review JSON (NOT a generated template)"
+        required: true
+        type: string
+
+permissions:
+  contents: read
+  actions: read
+  pull-requests: read
+
+jobs:
+  validate-external-review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Validate original review is supplied, never minted by a template
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "${{ github.sha }}"
+          mkdir -p /tmp/pr292-external-review
+          python - <<'PY'
+          import base64,binascii,json,os
+          from pathlib import Path
+          event=json.loads(Path(os.environ['GITHUB_EVENT_PATH']).read_text())
+          source=event.get('inputs',{}).get('reviewed_json_base64','')
+          if len(source)<100 or len(source)>60000:
+              raise SystemExit('Externally authored review payload missing or too large for approved intake')
+          try:
+              raw=base64.b64decode(source,validate=True)
+          except binascii.Error:
+              raise SystemExit('Review must be exact base64 UTF-8 JSON')
+          review=json.loads(raw.decode('utf-8'))
+          if not isinstance(review,dict) or review.get('schema_version')!='POST290_INDEPENDENT_SEMANTIC_REVIEW_1.0':
+              raise SystemExit('Invalid independently authored review schema')
+          path=Path('/tmp/pr292-external-review/INDEPENDENT_SEMANTIC_REVIEW.json')
+          path.write_bytes(raw)
+          PY
+      - name: Require exact-tree non-source-author GitHub approval of signed field digest
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          python research/RHRC/routes/R003_ccm_bridge/post290/verify_semantic_review_provenance.py \
+            --review /tmp/pr292-external-review/INDEPENDENT_SEMANTIC_REVIEW.json \
+            --out /tmp/pr292-external-review/REVIEW_PROVENANCE_VERIFIED.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pr292-approved-independent-review-${{ github.sha }}
+          path: /tmp/pr292-external-review/
+          if-no-files-found: error
+          retention-days: 30

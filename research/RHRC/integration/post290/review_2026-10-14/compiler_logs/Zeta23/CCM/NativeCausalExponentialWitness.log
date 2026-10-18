@@ -1,0 +1,7 @@
+'Zeta23.CCM.nativeCausalExponentialPolynomial_norm_sq_integrable' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.CCM.nativeCausalExponentialPolynomial_memLp' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.nativeCausalExponentialPolynomialL2_coeFn' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.nativeCausalExponentialPolynomialL2_causal' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.nativeCausalExponentialWitness_ne_zero' depends on axioms: [propext, Classical.choice, Quot.sound]

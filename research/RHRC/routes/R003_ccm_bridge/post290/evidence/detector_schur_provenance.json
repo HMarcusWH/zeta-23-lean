@@ -1,0 +1,28 @@
+{
+  "status": "PASS",
+  "authority": "EXACT_FINITE_CONTROL",
+  "RH_status": "OPEN",
+  "scope": "one complex Hermitian split with two-dimensional detector complement",
+  "is_actual_zeta": false,
+  "Lean_authority": false,
+  "checks": {
+    "hermitian": true,
+    "same_trial_unit": true,
+    "same_trial_deep": true,
+    "predecessor_positive": true,
+    "completion_of_squares": true,
+    "complement_nonzero": true,
+    "detector_loss_lower": true,
+    "threshold_less_than_half_depth": true,
+    "complement_dimension_two": true,
+    "channels_sum_same_residual": true,
+    "variance_identity": true,
+    "complex_gram_sum": true,
+    "diagonal_only_gram_fails": true
+  },
+  "trial_energy": "-76/25",
+  "trial_depth": "3",
+  "threshold": "1",
+  "detector_schur_loss": "-2432/375",
+  "assertion_count": 13
+}

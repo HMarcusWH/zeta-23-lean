@@ -1,0 +1,616 @@
+{
+  "status": "PASS",
+  "authority": "EXACT_FINITE_CONTROL",
+  "Lean_authority": false,
+  "provenance_digest": "affc1f6d92336a34190e154078dd73def4ed0cb2cfb054e3fc35e82d39e7821f",
+  "external_archive_required": false,
+  "continuum_cases": [
+    {
+      "K": 3,
+      "a": "1/16",
+      "checks": {
+        "corrected_continuum_rank_one": true,
+        "zero_continuum_defect_is_false": true,
+        "pole_covariance_negative": true,
+        "legal_input_neutral_output_inference_fails": true,
+        "common_scalar_shift_invisible": true
+      },
+      "native_ground_eligible": false,
+      "ground_only_native_budget_observable": "NOT_APPLICABLE"
+    },
+    {
+      "K": 3,
+      "a": "1/4",
+      "checks": {
+        "corrected_continuum_rank_one": true,
+        "zero_continuum_defect_is_false": true,
+        "pole_covariance_negative": true,
+        "legal_input_neutral_output_inference_fails": true,
+        "common_scalar_shift_invisible": true
+      },
+      "native_ground_eligible": false,
+      "ground_only_native_budget_observable": "NOT_APPLICABLE"
+    },
+    {
+      "K": 3,
+      "a": "1",
+      "checks": {
+        "corrected_continuum_rank_one": true,
+        "zero_continuum_defect_is_false": true,
+        "pole_covariance_negative": true,
+        "legal_input_neutral_output_inference_fails": true,
+        "common_scalar_shift_invisible": true
+      },
+      "native_ground_eligible": false,
+      "ground_only_native_budget_observable": "NOT_APPLICABLE"
+    },
+    {
+      "K": 3,
+      "a": "4",
+      "checks": {
+        "corrected_continuum_rank_one": true,
+        "zero_continuum_defect_is_false": true,
+        "pole_covariance_negative": true,
+        "legal_input_neutral_output_inference_fails": true,
+        "common_scalar_shift_invisible": true
+      },
+      "native_ground_eligible": false,
+      "ground_only_native_budget_observable": "NOT_APPLICABLE"
+    },
+    {
+      "K": 4,
+      "a": "1/16",
+      "checks": {
+        "corrected_continuum_rank_one": true,
+        "zero_continuum_defect_is_false": true,
+        "pole_covariance_negative": true,
+        "legal_input_neutral_output_inference_fails": true,
+        "common_scalar_shift_invisible": true
+      },
+      "native_ground_eligible": false,
+      "ground_only_native_budget_observable": "NOT_APPLICABLE"
+    },
+    {
+      "K": 4,
+      "a": "1/4",
+      "checks": {
+        "corrected_continuum_rank_one": true,
+        "zero_continuum_defect_is_false": true,
+        "pole_covariance_negative": true,
+        "legal_input_neutral_output_inference_fails": true,
+        "common_scalar_shift_invisible": true
+      },
+      "native_ground_eligible": false,
+      "ground_only_native_budget_observable": "NOT_APPLICABLE"
+    },
+    {
+      "K": 4,
+      "a": "1",
+      "checks": {
+        "corrected_continuum_rank_one": true,
+        "zero_continuum_defect_is_false": true,
+        "pole_covariance_negative": true,
+        "legal_input_neutral_output_inference_fails": true,
+        "common_scalar_shift_invisible": true
+      },
+      "native_ground_eligible": false,
+      "ground_only_native_budget_observable": "NOT_APPLICABLE"
+    },
+    {
+      "K": 4,
+      "a": "4",
+      "checks": {
+        "corrected_continuum_rank_one": true,
+        "zero_continuum_defect_is_false": true,
+        "pole_covariance_negative": true,
+        "legal_input_neutral_output_inference_fails": true,
+        "common_scalar_shift_invisible": true
+      },
+      "native_ground_eligible": false,
+      "ground_only_native_budget_observable": "NOT_APPLICABLE"
+    },
+    {
+      "K": 5,
+      "a": "1/16",
+      "checks": {
+        "corrected_continuum_rank_one": true,
+        "zero_continuum_defect_is_false": true,
+        "pole_covariance_negative": true,
+        "legal_input_neutral_output_inference_fails": true,
+        "common_scalar_shift_invisible": true
+      },
+      "native_ground_eligible": false,
+      "ground_only_native_budget_observable": "NOT_APPLICABLE"
+    },
+    {
+      "K": 5,
+      "a": "1/4",
+      "checks": {
+        "corrected_continuum_rank_one": true,
+        "zero_continuum_defect_is_false": true,
+        "pole_covariance_negative": true,
+        "legal_input_neutral_output_inference_fails": true,
+        "common_scalar_shift_invisible": true
+      },
+      "native_ground_eligible": false,
+      "ground_only_native_budget_observable": "NOT_APPLICABLE"
+    },
+    {
+      "K": 5,
+      "a": "1",
+      "checks": {
+        "corrected_continuum_rank_one": true,
+        "zero_continuum_defect_is_false": true,
+        "pole_covariance_negative": true,
+        "legal_input_neutral_output_inference_fails": true,
+        "common_scalar_shift_invisible": true
+      },
+      "native_ground_eligible": false,
+      "ground_only_native_budget_observable": "NOT_APPLICABLE"
+    },
+    {
+      "K": 5,
+      "a": "4",
+      "checks": {
+        "corrected_continuum_rank_one": true,
+        "zero_continuum_defect_is_false": true,
+        "pole_covariance_negative": true,
+        "legal_input_neutral_output_inference_fails": true,
+        "common_scalar_shift_invisible": true
+      },
+      "native_ground_eligible": false,
+      "ground_only_native_budget_observable": "NOT_APPLICABLE"
+    },
+    {
+      "K": 6,
+      "a": "1/16",
+      "checks": {
+        "corrected_continuum_rank_one": true,
+        "zero_continuum_defect_is_false": true,
+        "pole_covariance_negative": true,
+        "legal_input_neutral_output_inference_fails": true,
+        "common_scalar_shift_invisible": true
+      },
+      "native_ground_eligible": false,
+      "ground_only_native_budget_observable": "NOT_APPLICABLE"
+    },
+    {
+      "K": 6,
+      "a": "1/4",
+      "checks": {
+        "corrected_continuum_rank_one": true,
+        "zero_continuum_defect_is_false": true,
+        "pole_covariance_negative": true,
+        "legal_input_neutral_output_inference_fails": true,
+        "common_scalar_shift_invisible": true
+      },
+      "native_ground_eligible": false,
+      "ground_only_native_budget_observable": "NOT_APPLICABLE"
+    },
+    {
+      "K": 6,
+      "a": "1",
+      "checks": {
+        "corrected_continuum_rank_one": true,
+        "zero_continuum_defect_is_false": true,
+        "pole_covariance_negative": true,
+        "legal_input_neutral_output_inference_fails": true,
+        "common_scalar_shift_invisible": true
+      },
+      "native_ground_eligible": false,
+      "ground_only_native_budget_observable": "NOT_APPLICABLE"
+    },
+    {
+      "K": 6,
+      "a": "4",
+      "checks": {
+        "corrected_continuum_rank_one": true,
+        "zero_continuum_defect_is_false": true,
+        "pole_covariance_negative": true,
+        "legal_input_neutral_output_inference_fails": true,
+        "common_scalar_shift_invisible": true
+      },
+      "native_ground_eligible": false,
+      "ground_only_native_budget_observable": "NOT_APPLICABLE"
+    },
+    {
+      "K": 7,
+      "a": "1/16",
+      "checks": {
+        "corrected_continuum_rank_one": true,
+        "zero_continuum_defect_is_false": true,
+        "pole_covariance_negative": true,
+        "legal_input_neutral_output_inference_fails": true,
+        "common_scalar_shift_invisible": true
+      },
+      "native_ground_eligible": false,
+      "ground_only_native_budget_observable": "NOT_APPLICABLE"
+    },
+    {
+      "K": 7,
+      "a": "1/4",
+      "checks": {
+        "corrected_continuum_rank_one": true,
+        "zero_continuum_defect_is_false": true,
+        "pole_covariance_negative": true,
+        "legal_input_neutral_output_inference_fails": true,
+        "common_scalar_shift_invisible": true
+      },
+      "native_ground_eligible": false,
+      "ground_only_native_budget_observable": "NOT_APPLICABLE"
+    },
+    {
+      "K": 7,
+      "a": "1",
+      "checks": {
+        "corrected_continuum_rank_one": true,
+        "zero_continuum_defect_is_false": true,
+        "pole_covariance_negative": true,
+        "legal_input_neutral_output_inference_fails": true,
+        "common_scalar_shift_invisible": true
+      },
+      "native_ground_eligible": false,
+      "ground_only_native_budget_observable": "NOT_APPLICABLE"
+    },
+    {
+      "K": 7,
+      "a": "4",
+      "checks": {
+        "corrected_continuum_rank_one": true,
+        "zero_continuum_defect_is_false": true,
+        "pole_covariance_negative": true,
+        "legal_input_neutral_output_inference_fails": true,
+        "common_scalar_shift_invisible": true
+      },
+      "native_ground_eligible": false,
+      "ground_only_native_budget_observable": "NOT_APPLICABLE"
+    }
+  ],
+  "explicit_K3_L_4pi": {
+    "checks": {
+      "input_pole_neutral": true,
+      "output_pole_moment_144_over_5": true,
+      "alpha_P_140": true,
+      "source_P0_10": true,
+      "even_rayleigh_8_over_5": true,
+      "odd_rayleigh_14_over_15": true,
+      "defect_pairing_minus_7200": true
+    },
+    "is_actual_continuum_formula": true,
+    "is_actual_zeta_negative_ground": false,
+    "native_ground_eligible": false
+  },
+  "root_cases": [
+    {
+      "K": 3,
+      "a": "1/16",
+      "budget": "143/261504",
+      "checks": {
+        "rational_source": true,
+        "M0": true,
+        "M2": true,
+        "pole_neutral": true,
+        "M4_leading_coefficient": true,
+        "simple_root_derivative": true,
+        "opposing_source_budget": true,
+        "budget_positive": true,
+        "phase_covariance_i": true,
+        "phase_covariance_one_plus_i": true
+      },
+      "root_pattern_constructed": true,
+      "has_native_ground_proof": false,
+      "native_ground_eligible": false,
+      "ground_only_native_budget_observable": "NOT_APPLICABLE"
+    },
+    {
+      "K": 3,
+      "a": "1",
+      "budget": "1/72",
+      "checks": {
+        "rational_source": true,
+        "M0": true,
+        "M2": true,
+        "pole_neutral": true,
+        "M4_leading_coefficient": true,
+        "simple_root_derivative": true,
+        "opposing_source_budget": true,
+        "budget_positive": true,
+        "phase_covariance_i": true,
+        "phase_covariance_one_plus_i": true
+      },
+      "root_pattern_constructed": true,
+      "has_native_ground_proof": false,
+      "native_ground_eligible": false,
+      "ground_only_native_budget_observable": "NOT_APPLICABLE"
+    },
+    {
+      "K": 3,
+      "a": "4",
+      "budget": "124/2421",
+      "checks": {
+        "rational_source": true,
+        "M0": true,
+        "M2": true,
+        "pole_neutral": true,
+        "M4_leading_coefficient": true,
+        "simple_root_derivative": true,
+        "opposing_source_budget": true,
+        "budget_positive": true,
+        "phase_covariance_i": true,
+        "phase_covariance_one_plus_i": true
+      },
+      "root_pattern_constructed": true,
+      "has_native_ground_proof": false,
+      "native_ground_eligible": false,
+      "ground_only_native_budget_observable": "NOT_APPLICABLE"
+    },
+    {
+      "K": 4,
+      "a": "1/16",
+      "budget": "34806973/1086797612160",
+      "checks": {
+        "rational_source": true,
+        "M0": true,
+        "M2": true,
+        "pole_neutral": true,
+        "M4_leading_coefficient": true,
+        "simple_root_derivative": true,
+        "opposing_source_budget": true,
+        "budget_positive": true,
+        "phase_covariance_i": true,
+        "phase_covariance_one_plus_i": true
+      },
+      "root_pattern_constructed": true,
+      "has_native_ground_proof": false,
+      "native_ground_eligible": false,
+      "ground_only_native_budget_observable": "NOT_APPLICABLE"
+    },
+    {
+      "K": 4,
+      "a": "1",
+      "budget": "6539/7377120",
+      "checks": {
+        "rational_source": true,
+        "M0": true,
+        "M2": true,
+        "pole_neutral": true,
+        "M4_leading_coefficient": true,
+        "simple_root_derivative": true,
+        "opposing_source_budget": true,
+        "budget_positive": true,
+        "phase_covariance_i": true,
+        "phase_covariance_one_plus_i": true
+      },
+      "root_pattern_constructed": true,
+      "has_native_ground_proof": false,
+      "native_ground_eligible": false,
+      "ground_only_native_budget_observable": "NOT_APPLICABLE"
+    },
+    {
+      "K": 4,
+      "a": "4",
+      "budget": "1075/297036",
+      "checks": {
+        "rational_source": true,
+        "M0": true,
+        "M2": true,
+        "pole_neutral": true,
+        "M4_leading_coefficient": true,
+        "simple_root_derivative": true,
+        "opposing_source_budget": true,
+        "budget_positive": true,
+        "phase_covariance_i": true,
+        "phase_covariance_one_plus_i": true
+      },
+      "root_pattern_constructed": true,
+      "has_native_ground_proof": false,
+      "native_ground_eligible": false,
+      "ground_only_native_budget_observable": "NOT_APPLICABLE"
+    },
+    {
+      "K": 5,
+      "a": "1/16",
+      "budget": "1431555501547/351012176325601920",
+      "checks": {
+        "rational_source": true,
+        "M0": true,
+        "M2": true,
+        "pole_neutral": true,
+        "M4_leading_coefficient": true,
+        "simple_root_derivative": true,
+        "opposing_source_budget": true,
+        "budget_positive": true,
+        "phase_covariance_i": true,
+        "phase_covariance_one_plus_i": true
+      },
+      "root_pattern_constructed": true,
+      "has_native_ground_proof": false,
+      "native_ground_eligible": false,
+      "ground_only_native_budget_observable": "NOT_APPLICABLE"
+    },
+    {
+      "K": 5,
+      "a": "1",
+      "budget": "2741167/24905479680",
+      "checks": {
+        "rational_source": true,
+        "M0": true,
+        "M2": true,
+        "pole_neutral": true,
+        "M4_leading_coefficient": true,
+        "simple_root_derivative": true,
+        "opposing_source_budget": true,
+        "budget_positive": true,
+        "phase_covariance_i": true,
+        "phase_covariance_one_plus_i": true
+      },
+      "root_pattern_constructed": true,
+      "has_native_ground_proof": false,
+      "native_ground_eligible": false,
+      "ground_only_native_budget_observable": "NOT_APPLICABLE"
+    },
+    {
+      "K": 5,
+      "a": "4",
+      "budget": "788225/1741058568",
+      "checks": {
+        "rational_source": true,
+        "M0": true,
+        "M2": true,
+        "pole_neutral": true,
+        "M4_leading_coefficient": true,
+        "simple_root_derivative": true,
+        "opposing_source_budget": true,
+        "budget_positive": true,
+        "phase_covariance_i": true,
+        "phase_covariance_one_plus_i": true
+      },
+      "root_pattern_constructed": true,
+      "has_native_ground_proof": false,
+      "native_ground_eligible": false,
+      "ground_only_native_budget_observable": "NOT_APPLICABLE"
+    },
+    {
+      "K": 6,
+      "a": "1/16",
+      "budget": "138172692519001069/172294151822081365287168",
+      "checks": {
+        "rational_source": true,
+        "M0": true,
+        "M2": true,
+        "pole_neutral": true,
+        "M4_leading_coefficient": true,
+        "simple_root_derivative": true,
+        "opposing_source_budget": true,
+        "budget_positive": true,
+        "phase_covariance_i": true,
+        "phase_covariance_one_plus_i": true
+      },
+      "root_pattern_constructed": true,
+      "has_native_ground_proof": false,
+      "native_ground_eligible": false,
+      "ground_only_native_budget_observable": "NOT_APPLICABLE"
+    },
+    {
+      "K": 6,
+      "a": "1",
+      "budget": "4857321157/233734918053888",
+      "checks": {
+        "rational_source": true,
+        "M0": true,
+        "M2": true,
+        "pole_neutral": true,
+        "M4_leading_coefficient": true,
+        "simple_root_derivative": true,
+        "opposing_source_budget": true,
+        "budget_positive": true,
+        "phase_covariance_i": true,
+        "phase_covariance_one_plus_i": true
+      },
+      "root_pattern_constructed": true,
+      "has_native_ground_proof": false,
+      "native_ground_eligible": false,
+      "ground_only_native_budget_observable": "NOT_APPLICABLE"
+    },
+    {
+      "K": 6,
+      "a": "4",
+      "budget": "99572395/1196499207168",
+      "checks": {
+        "rational_source": true,
+        "M0": true,
+        "M2": true,
+        "pole_neutral": true,
+        "M4_leading_coefficient": true,
+        "simple_root_derivative": true,
+        "opposing_source_budget": true,
+        "budget_positive": true,
+        "phase_covariance_i": true,
+        "phase_covariance_one_plus_i": true
+      },
+      "root_pattern_constructed": true,
+      "has_native_ground_proof": false,
+      "native_ground_eligible": false,
+      "ground_only_native_budget_observable": "NOT_APPLICABLE"
+    },
+    {
+      "K": 7,
+      "a": "1/16",
+      "budget": "7106965667853289846855/34048259330184212754633986304",
+      "checks": {
+        "rational_source": true,
+        "M0": true,
+        "M2": true,
+        "pole_neutral": true,
+        "M4_leading_coefficient": true,
+        "simple_root_derivative": true,
+        "opposing_source_budget": true,
+        "budget_positive": true,
+        "phase_covariance_i": true,
+        "phase_covariance_one_plus_i": true
+      },
+      "root_pattern_constructed": true,
+      "has_native_ground_proof": false,
+      "native_ground_eligible": false,
+      "ground_only_native_budget_observable": "NOT_APPLICABLE"
+    },
+    {
+      "K": 7,
+      "a": "1",
+      "budget": "2177396486369/418469952347062272",
+      "checks": {
+        "rational_source": true,
+        "M0": true,
+        "M2": true,
+        "pole_neutral": true,
+        "M4_leading_coefficient": true,
+        "simple_root_derivative": true,
+        "opposing_source_budget": true,
+        "budget_positive": true,
+        "phase_covariance_i": true,
+        "phase_covariance_one_plus_i": true
+      },
+      "root_pattern_constructed": true,
+      "has_native_ground_proof": false,
+      "native_ground_eligible": false,
+      "ground_only_native_budget_observable": "NOT_APPLICABLE"
+    },
+    {
+      "K": 7,
+      "a": "4",
+      "budget": "1424211324575/70834040664127488",
+      "checks": {
+        "rational_source": true,
+        "M0": true,
+        "M2": true,
+        "pole_neutral": true,
+        "M4_leading_coefficient": true,
+        "simple_root_derivative": true,
+        "opposing_source_budget": true,
+        "budget_positive": true,
+        "phase_covariance_i": true,
+        "phase_covariance_one_plus_i": true
+      },
+      "root_pattern_constructed": true,
+      "has_native_ground_proof": false,
+      "native_ground_eligible": false,
+      "ground_only_native_budget_observable": "NOT_APPLICABLE"
+    }
+  ],
+  "modified_prime_root_pattern": {
+    "checks": {
+      "rational_source_exact": true,
+      "M4_minus_720": true,
+      "root_pattern_not_excluded": true,
+      "simple_elementary_root": true
+    },
+    "is_actual_zeta": false,
+    "prime_coefficient_mutated": true,
+    "native_divisor_compatibility": "FAILS_AT_CHANGED_COEFFICIENT_2",
+    "native_ground_eligible": false
+  },
+  "assertion_count": 261,
+  "actual_selected_ground_root_classification": "INHERITED_PAPER_NOT_NEW_LEAN_PROOF",
+  "native_signed_budget_upper_bound": "OPEN",
+  "terminal_claim": "RH_OPEN"
+}
