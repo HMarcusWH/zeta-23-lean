@@ -30,6 +30,76 @@ ACTIVE_D2_JOB=('RHRC approved SECOND460 resource continuation','final-nonpartial
 RESEARCH_JOBS={ACTIVE_D2_JOB}  # Historical proposed workflow names are not actual D2 certification.
 ALLOW_AXIOMS={'propext','Classical.choice','Quot.sound'}
 CLASSIFICATIONS={'FORMAL_VALIDITY_GATE','REGRESSION_GATE','RESEARCH_PRODUCING_CHECK'}
+NATIVE_INPUT_BINDING_KEYS={'schema','run_id','panel_sha256','checker_sha256','source_head','source_tree'}
+
+
+def native_input_binding(panel_path, checker_path, run_id):
+    """Hash the selected files, without claiming their origin was approved."""
+    if type(run_id) is not int or run_id <= 0:
+        raise ValueError('selected native run ID must be a positive integer')
+    panel_bytes=Path(panel_path).read_bytes()
+    checker_bytes=Path(checker_path).read_bytes()
+    panel=json.loads(panel_bytes.decode('utf-8'))
+    identity=panel.get('source_identity') if isinstance(panel,dict) else None
+    if not isinstance(identity,dict):
+        raise ValueError('selected native panel has no exact source head/tree')
+    head,tree=identity.get('commit'),identity.get('tree')
+    if any(not isinstance(value,str) or re.fullmatch('[0-9a-f]{40}',value) is None
+           for value in (head,tree)):
+        raise ValueError('selected native panel has no exact source head/tree')
+    return {'schema':'PR292_NATIVE_INPUT_BYTE_BINDING_V1','run_id':run_id,
+            'panel_sha256':hashlib.sha256(panel_bytes).hexdigest(),
+            'checker_sha256':hashlib.sha256(checker_bytes).hexdigest(),
+            'source_head':head,'source_tree':tree}
+
+
+def validate_native_output_review(review, checked_head, tree):
+    """The signed job review commits to finite scope AND original file bytes."""
+    if (not isinstance(review,dict) or checked_head is None or
+        review.get('head')!=checked_head or review.get('source_tree')!=tree or
+        review.get('scope')!='FINITE_FIXED_PROBES' or
+        review.get('frozen_panel_complete') is not True or review.get('pair_count')!=44 or
+        review.get('row_count')!=176 or review.get('evaluated_rows')!=176 or
+        review.get('unresolved_rows')!=0 or review.get('verified_pairs')!=44 or
+        review.get('unresolved_pairs')!=0 or review.get('universal_theorem_authority') is not False):
+        raise ValueError('native finite observation output not independently reviewed')
+    for key in ('panel_sha256','checker_sha256'):
+        if not isinstance(review.get(key),str) or re.fullmatch('[0-9a-f]{64}',review[key]) is None:
+            raise ValueError('native panel/checker byte hashes are not independently reviewed')
+
+
+def validate_native_input_binding(binding, jobs, tree):
+    """Match actual selected inputs to the signed effective configured job.
+
+    The file hashes and run ID are not inferred from embedded source labels.
+    Latest-attempt selection and branch-versus-runner identities stay intact.
+    """
+    if (not isinstance(binding,dict) or set(binding)!=NATIVE_INPUT_BINDING_KEYS or
+        binding.get('schema')!='PR292_NATIVE_INPUT_BYTE_BINDING_V1' or
+        type(binding.get('run_id')) is not int or binding['run_id']<=0 or
+        binding.get('source_tree')!=tree):
+        raise ValueError('native selected input byte/run binding missing or malformed')
+    for key,length in (('panel_sha256',64),('checker_sha256',64),('source_head',40),('source_tree',40)):
+        if (not isinstance(binding.get(key),str) or
+            re.fullmatch('[0-9a-f]{'+str(length)+'}',binding[key]) is None):
+            raise ValueError('native selected input byte/run binding missing or malformed')
+    native=[job for job in effective_jobs(jobs)
+            if (job.get('workflow'),job.get('name'))==NATIVE_JOB
+            and job.get('run_id')==binding['run_id']]
+    if len(native)!=1:
+        raise ValueError('selected native run is not the effective configured native job')
+    job=native[0]
+    checked_head=checked_checkout(job,tree)
+    if (job.get('required') is not True or job.get('output_reviewed') is not True or
+        job.get('scientific_acceptance') is not True or
+        job.get('status')!='completed' or job.get('conclusion')!='success' or
+        checked_head!=binding['source_head']):
+        raise ValueError('selected native input has no accepted source-bound job review')
+    review=job.get('native_output_review')
+    validate_native_output_review(review,checked_head,tree)
+    if any(binding[key]!=review[key] for key in ('panel_sha256','checker_sha256')):
+        raise ValueError('selected native panel/checker bytes differ from signed job review')
+    return binding
 
 
 def checked_checkout(job, expected_tree):
@@ -102,7 +172,7 @@ def frozen_export_kinds(expected):
         raise ValueError('unrecognized required public source kind')
     return {row['requested_name']:kinds[row['required_kind']] for row in rows}
 
-def release_gaps(manifest, formal, d2, jobs):
+def release_gaps(manifest, formal, d2, jobs, native_inputs=None):
     gaps = []
     expected=frozen_spec()
     if manifest.get('claim_cap') != 'RH_OPEN':
@@ -252,12 +322,17 @@ def release_gaps(manifest, formal, d2, jobs):
             and job.get('scientific_acceptance') is True):
             formal_runner_matched=True
         if pair==NATIVE_JOB:
-            review=job.get('native_output_review',{})
-            if (review.get('head')!=checked_head or review.get('source_tree')!=tree or review.get('scope')!='FINITE_FIXED_PROBES'
-                or review.get('frozen_panel_complete') is not True or review.get('pair_count')!=44 or review.get('row_count')!=176
-                or review.get('evaluated_rows')!=176 or review.get('unresolved_rows')!=0 or review.get('verified_pairs')!=44
-                or review.get('unresolved_pairs')!=0 or review.get('universal_theorem_authority') is not False):
-                gaps.append('native finite observation output not independently reviewed')
+            try:
+                validate_native_output_review(job.get('native_output_review'),checked_head,tree)
+            except ValueError as exc:
+                gaps.append(str(exc))
+    try:
+        validate_native_input_binding(native_inputs,jobs,tree)
+        if (not isinstance(manifest.get('input_bindings'),dict) or
+            manifest['input_bindings'].get('native')!=native_inputs):
+            raise ValueError('manifest native input binding differs from actual selected files/run')
+    except (ValueError,KeyError,TypeError) as exc:
+        gaps.append('native input provenance not bound: '+str(exc))
     if FORMAL_JOB not in known_required:gaps.append('configured formal validity job missing')
     if not formal_runner_matched:gaps.append('compiler receipt does not match a validated formal runner checkout')
     if REGRESSION_JOB not in known_required:gaps.append('configured exact regression job missing')
@@ -275,12 +350,21 @@ if __name__ == '__main__':
     p.add_argument('--formal', type=Path, required=True)
     p.add_argument('--d2', type=Path, required=True)
     p.add_argument('--harvest', type=Path, required=True)
+    p.add_argument('--native-panel', type=Path)
+    p.add_argument('--native-checker', type=Path)
+    p.add_argument('--native-run-id', type=int)
     p.add_argument('--out', type=Path, required=True)
     args = p.parse_args()
     read = lambda path: json.loads(path.read_text())
     harvest_record=read(args.harvest)
+    supplied=(args.native_panel is not None,args.native_checker is not None,args.native_run_id is not None)
+    if any(supplied) and not all(supplied):
+        p.error('native input binding requires panel, checker and selected run ID together')
+    selected_native=None
+    if all(supplied):
+        selected_native=native_input_binding(args.native_panel,args.native_checker,args.native_run_id)
     gaps = release_gaps(read(args.manifest),read(args.formal),read(args.d2),
-                        harvest_record.get('jobs',[]))
+                        harvest_record.get('jobs',[]),native_inputs=selected_native)
     if (harvest_record.get('review_phase')!='PRE_RELEASE_PREREQUISITES'
         or harvest_record.get('includes_release_run') is not False):
         gaps.append('release prerequisite harvest is absent or self-referential')

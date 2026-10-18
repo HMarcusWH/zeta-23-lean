@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Verify independent PR292 field-review provenance against GitHub approval.
 
-The GitHub approval MUST cover the exact 44-field JSON digest and final head.
+The GitHub approval MUST cover the full review JSON digest and final head.
 This is reviewer/authorship provenance, NOT an automated mathematical proof.
 """
 from __future__ import annotations
@@ -19,10 +19,52 @@ PR_NUMBER=292
 REPO=Path(__file__).resolve().parents[5]
 REQUIRED={f"N{i:02d}" for i in range(1,41)} | {f"G{i:02d}" for i in range(1,5)}
 AUTHORIZED_REVIEW_ASSOCIATIONS=frozenset({"OWNER","MEMBER","COLLABORATOR"})
+SEMANTIC_REVIEW_TOKEN_PREFIX="PR292-SEMANTIC-REVIEW-SHA256="
 
 def field_digest(rows):
     raw=json.dumps(rows,sort_keys=True,separators=(",",":"),ensure_ascii=False)
     return hashlib.sha256(raw.encode("utf-8")).hexdigest()
+
+def semantic_review_digest(review):
+    """Sign all supplied review decisions except the eventual review URL.
+
+    Canonical JSON uses sorted keys, compact separators and literal UTF-8.
+    Excluding only external_review_reference avoids a URL/signature cycle;
+    that URL is separately checked against the authenticated selected review.
+    Unknown future fields remain signed rather than silently becoming inputs.
+    The legacy field_digest is a component hash, never sufficient approval.
+    """
+    if not isinstance(review,dict):
+        raise ValueError("semantic review must be a JSON object")
+    payload={key:value for key,value in review.items() if key!="external_review_reference"}
+    raw=json.dumps(payload,sort_keys=True,separators=(",",":"),ensure_ascii=False)
+    return hashlib.sha256(raw.encode("utf-8")).hexdigest()
+
+def source_author_logins(pr, commits):
+    """Fail closed unless every source author AND committer is attributable.
+
+    A linked Bot may be a source participant; reviewer eligibility is checked
+    separately. Null GitHub accounts cannot establish reviewer independence.
+    """
+    def login(account, role):
+        value=account.get("login") if isinstance(account,dict) else None
+        if not isinstance(value,str) or not value.strip() or value!=value.strip():
+            raise ValueError("unattributed GitHub source identity: "+role)
+        return value.casefold()
+    authors={login(pr.get("user"),"PR author")}
+    if not isinstance(commits,list) or not commits:
+        raise ValueError("source commit authorship inventory missing")
+    # GitHub caps the pull-request commits endpoint at 250 even with paging.
+    # A truncated list cannot establish that every source author is excluded.
+    count=pr.get("commits")
+    if type(count) is not int or count<=0 or count!=len(commits):
+        raise ValueError("source commit authorship inventory incomplete or count mismatched")
+    for commit in commits:
+        if not isinstance(commit,dict):
+            raise ValueError("malformed source commit authorship")
+        for role in ("author","committer"):
+            authors.add(login(commit.get(role),"commit "+role))
+    return authors
 
 def api(suffix):
     if not os.environ.get("GH_TOKEN"):
@@ -126,16 +168,12 @@ def validate(review,pr,github_reviews,commits,head,tree):
         raise ValueError("unidentified independent reviewer")
     if pr.get("number")!=PR_NUMBER or pr.get("head",{}).get("sha")!=head:
         raise ValueError("PR head changed before review verification")
-    authors={str(pr.get("user",{}).get("login","")).casefold()}
-    for commit in commits:
-        for field in ("author","committer"):
-            login=(commit.get(field) or {}).get("login")
-            if login:
-                authors.add(str(login).casefold())
+    authors=source_author_logins(pr,commits)
     if user in authors:
         raise ValueError("reviewer participated as source author or PR author")
     digest=field_digest(fields)
-    signed=f"PR292-44-FIELD-SHA256={digest}"
+    review_digest=semantic_review_digest(review)
+    signed=SEMANTIC_REVIEW_TOKEN_PREFIX+review_digest
     row = latest_submitted_review(github_reviews, user)
     authorization = require_repository_authorized_reviewer(row)
     reviewer = (row.get("user") or {}).get("login")
@@ -151,6 +189,8 @@ def validate(review,pr,github_reviews,commits,head,tree):
         "github_review_id":row["id"],"github_review_url":review_url,
         "reviewed_head":head,"reviewed_tree":tree,
         "reviewed_field_count":44,"field_reviews_sha256":digest,
+        "semantic_review_sha256":review_digest,
+        "source_commit_authorship_verified":True,"source_commit_count":len(commits),
         "not_mathematical_authority_by_itself":True,
         "claim_cap":"RH_OPEN",
     }

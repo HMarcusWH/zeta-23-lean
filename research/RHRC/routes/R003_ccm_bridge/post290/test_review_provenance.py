@@ -2,7 +2,8 @@
 """Synthetic independent-review approval tests; not mathematical authority."""
 import copy
 import unittest
-from verify_semantic_review_provenance import validate,field_digest
+from verify_semantic_review_provenance import (
+    validate,field_digest,semantic_review_digest,SEMANTIC_REVIEW_TOKEN_PREFIX)
 
 HEAD="a"*40
 TREE="b"*40
@@ -18,18 +19,79 @@ def fixture():
         "reviewer_is_source_author":False,"independent_assumption_review_pass":True,
         "reviewer_identity":"independent_review_test",
         "external_review_reference":url,"field_reviews":copy.deepcopy(FIELDS)}
-    pr={"number":292,"head":{"sha":HEAD},"user":{"login":"source_author"}}
+    pr={"number":292,"head":{"sha":HEAD},"user":{"login":"source_author"},"commits":1}
     github=[{"id":123,"html_url":url,"state":"APPROVED",
              "commit_id":HEAD,"submitted_at":"2026-10-15T12:00:00Z",
              "user":{"login":"independent_review_test","type":"User"},
              "author_association":"COLLABORATOR",
-             "body":"PR292-44-FIELD-SHA256="+field_digest(review["field_reviews"])}]
+             "body":SEMANTIC_REVIEW_TOKEN_PREFIX+semantic_review_digest(review)}]
     commits=[{"author":{"login":"source_author"},"committer":{"login":"ci_author"}}]
     return [review,pr,github,commits]
 
 class ReviewerProvenanceTests(unittest.TestCase):
     def test_exact_review_succeeds_only_as_synthetic_control(self):
         self.assertEqual(validate(*fixture(),HEAD,TREE)["integrity_status"],"PASS")
+    def test_full_review_and_component_hashes_are_both_receipted(self):
+        args=fixture();receipt=validate(*args,HEAD,TREE)
+        self.assertEqual(receipt["field_reviews_sha256"],field_digest(args[0]["field_reviews"]))
+        self.assertEqual(receipt["semantic_review_sha256"],semantic_review_digest(args[0]))
+        self.assertTrue(receipt["source_commit_authorship_verified"])
+        self.assertEqual(receipt["source_commit_count"],1)
+    def test_legacy_field_only_signature_is_not_full_review_approval(self):
+        args=fixture()
+        args[2][0]["body"]="PR292-44-FIELD-SHA256="+field_digest(args[0]["field_reviews"])
+        with self.assertRaisesRegex(ValueError,"latest independent"):
+            validate(*args,HEAD,TREE)
+    def test_false_assumption_decision_cannot_be_flipped_after_signature(self):
+        args=fixture();args[0]["independent_assumption_review_pass"]=False
+        args[2][0]["body"]=SEMANTIC_REVIEW_TOKEN_PREFIX+semantic_review_digest(args[0])
+        with self.assertRaises(ValueError):validate(*args,HEAD,TREE)
+        args[0]["independent_assumption_review_pass"]=True
+        with self.assertRaisesRegex(ValueError,"latest independent"):
+            validate(*args,HEAD,TREE)
+        args[2][0]["body"]=SEMANTIC_REVIEW_TOKEN_PREFIX+semantic_review_digest(args[0])
+        self.assertEqual(validate(*args,HEAD,TREE)["integrity_status"],"PASS")
+    def test_all_payload_fields_except_review_url_are_signed(self):
+        args=fixture();original=semantic_review_digest(args[0])
+        for key,value in (("schema_version","changed"),("reviewed_head","c"*40),
+                ("reviewed_tree","c"*40),("claim_cap","changed"),
+                ("reviewer_identity","other"),("reviewer_is_source_author",True),
+                ("independent_assumption_review_pass",False),("future_security_decision",False)):
+            with self.subTest(key=key):
+                review=copy.deepcopy(args[0]);review[key]=value
+                self.assertNotEqual(semantic_review_digest(review),original)
+        changed=copy.deepcopy(args[0]);changed["external_review_reference"]="eventual URL"
+        self.assertEqual(semantic_review_digest(changed),original)
+        reordered=dict(reversed(list(args[0].items())))
+        self.assertEqual(semantic_review_digest(reordered),original)
+    def test_unattributed_author_or_committer_fails_closed(self):
+        for role in ("author","committer"):
+            for account in (None,{}, {"login":None},{"login":""},{"login":" "},
+                            {"login":True},[],"unlinked"):
+                with self.subTest(role=role,account=account):
+                    args=fixture();args[3][0][role]=account
+                    with self.assertRaisesRegex(ValueError,"unattributed GitHub"):
+                        validate(*args,HEAD,TREE)
+            args=fixture();del args[3][0][role]
+            with self.assertRaisesRegex(ValueError,"unattributed GitHub"):
+                validate(*args,HEAD,TREE)
+        args=fixture();args[3]=[]
+        with self.assertRaisesRegex(ValueError,"authorship inventory"):
+            validate(*args,HEAD,TREE)
+    def test_attributed_bot_source_participant_remains_recorded(self):
+        args=fixture();args[3][0]["committer"]={"login":"github-actions[bot]","type":"Bot"}
+        self.assertEqual(validate(*args,HEAD,TREE)["integrity_status"],"PASS")
+    def test_source_commit_inventory_count_must_be_complete(self):
+        for count in (None,True,0,-1,"1",2,250,251):
+            with self.subTest(count=count):
+                args=fixture();args[1]["commits"]=count
+                with self.assertRaisesRegex(ValueError,"inventory incomplete or count mismatched"):
+                    validate(*args,HEAD,TREE)
+        args=fixture();del args[1]["commits"]
+        with self.assertRaisesRegex(ValueError,"inventory incomplete or count mismatched"):
+            validate(*args,HEAD,TREE)
+        args=fixture();args[3].append(copy.deepcopy(args[3][0]));args[1]["commits"]=2
+        self.assertEqual(validate(*args,HEAD,TREE)["source_commit_count"],2)
     def test_authorized_independent_repository_associations(self):
         for association in ("OWNER", "MEMBER", "COLLABORATOR"):
             with self.subTest(association=association):

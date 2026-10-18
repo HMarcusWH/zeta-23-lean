@@ -19,7 +19,7 @@ from pathlib import Path
 from build_step4_handoff import build as build_handoff
 from countermodel_survival import validate_survival_source_ids
 from prepare_field_review_package import produce as prepare_unapproved_44_field_dossier
-from output_contract_check import release_gaps, frozen_spec
+from output_contract_check import release_gaps, frozen_spec, native_input_binding, validate_native_input_binding
 from symbolic_step123_artifacts import (
     SOURCE_ID, CUT_ROOTS, build_symbolic_index, finite_residual_rows, matched_control_inventory,
 )
@@ -190,8 +190,25 @@ def output_packet(contract, formal, review, head, tree):
     }
 
 
-def materialize(inputs, outdir, semantic=None, reviewer_provenance=None):
+def materialize(inputs, outdir, semantic=None, reviewer_provenance=None, native_run_id=None):
     head, tree = git("rev-parse", "HEAD"), git("rev-parse", "HEAD^{tree}")
+    provenance = None
+    if (semantic is None) != (reviewer_provenance is None):
+        raise ValueError("semantic promotion requires both independent review and its provenance")
+    if reviewer_provenance is not None:
+        from verify_semantic_review_provenance import field_digest, semantic_review_digest
+        provenance = load(reviewer_provenance)
+        if (provenance.get("schema")!="PR292_GITHUB_INDEPENDENT_REVIEW_PROVENANCE_V1" or
+            provenance.get("integrity_status")!="PASS" or
+            provenance.get("reviewed_head")!=head or
+            provenance.get("reviewed_tree")!=tree or
+            provenance.get("reviewed_field_count")!=44 or
+            provenance.get("field_reviews_sha256")!=field_digest(semantic.get("field_reviews",[])) or
+            provenance.get("semantic_review_sha256")!=semantic_review_digest(semantic) or
+            not isinstance(provenance.get("reviewer"),str) or
+            provenance["reviewer"].casefold()!=str(semantic.get("reviewer_identity","")).casefold() or
+            provenance.get("github_review_url")!=semantic.get("external_review_reference")):
+            raise ValueError("independent review provenance is not for this exact signed semantic context")
     formal = load(inputs["formal"])
     fields = load(FIELD_CONTRACT)
     # These 44 candidates come from the ACTUAL exact-head compiler receipt.
@@ -222,6 +239,10 @@ def materialize(inputs, outdir, semantic=None, reviewer_provenance=None):
     comparison, survival, d2, harvest = (load(inputs[k]) for k in
                                          ("comparison", "survival", "d2", "harvest"))
     cuts = load(inputs["cuts"])
+    native_binding = (native_input_binding(inputs["panel"], inputs["checker"], native_run_id)
+                      if native_run_id is not None else None)
+    if semantic is not None or reviewer_provenance is not None:
+        validate_native_input_binding(native_binding, harvest.get("jobs", []), tree)
     if any(x.get("claim_cap", x.get("terminal_claim", "RH_OPEN")) != "RH_OPEN"
            for x in (lineage, comparison, survival, d2, harvest, cuts)):
         raise ValueError("source/observation claim firewall failed")
@@ -320,24 +341,15 @@ def materialize(inputs, outdir, semantic=None, reviewer_provenance=None):
     doc = build_handoff(formal, comparison, survival, d2, harvest,
                         {"head": head, "tree": tree})
     (outdir / "STEP4_RESEARCH_HANDOFF.md").write_text(doc, encoding="utf-8")
-    if reviewer_provenance is not None:
-        if semantic is None:
-            raise ValueError("reviewer provenance cannot be attached to an unreviewed output")
-        from verify_semantic_review_provenance import field_digest
-        provenance = load(reviewer_provenance)
-        if (provenance.get("schema")!="PR292_GITHUB_INDEPENDENT_REVIEW_PROVENANCE_V1" or
-            provenance.get("integrity_status")!="PASS" or
-            provenance.get("reviewed_head")!=head or
-            provenance.get("reviewed_tree")!=tree or
-            provenance.get("reviewed_field_count")!=44 or
-            provenance.get("field_reviews_sha256")!=field_digest(semantic.get("field_reviews",[]))):
-            raise ValueError("independent review provenance is not for this exact 44-field output")
+    if provenance is not None:
         write(outdir / "REVIEW_PROVENANCE_VERIFIED.json", provenance)
     required = [p.name for p in outdir.iterdir() if p.is_file()]
     write(outdir / "MATERIALIZATION_RECEIPT.json", {
         "schema": "post290.materialization-receipt.v1", "claim_cap": "RH_OPEN",
         "head": head, "tree": tree,
         "producer_complete": formal.get("producer_complete") is True,
+        "input_bindings": {"native": native_binding},
+        "input_binding_scope": "Selected run and actual file bytes; independent authorization requires signed job review.",
         "required_fields": len(packet["quantities"]),
         "verified_fields": sum(q["scope"]["independently_reviewed"]
                                for q in packet["quantities"]),
@@ -356,13 +368,14 @@ def main():
         p.add_argument("--" + key, required=True, type=Path)
     p.add_argument("--semantic-review", type=Path)
     p.add_argument("--review-provenance", type=Path)
+    p.add_argument("--native-run-id", type=int)
     p.add_argument("--out-dir", required=True, type=Path)
     a = p.parse_args()
     items = {key: getattr(a, key) for key in
              ("formal", "lineage", "panel", "checker", "comparison", "survival",
               "d2", "harvest", "cuts")}
     semantic = load(a.semantic_review) if a.semantic_review else None
-    out = materialize(items, a.out_dir, semantic, a.review_provenance)
+    out = materialize(items, a.out_dir, semantic, a.review_provenance, a.native_run_id)
     print(json.dumps({"receipt": str(out), "claim_cap": "RH_OPEN",
                       "authority": "NONE_CREATED_BY_MATERIALIZATION"}))
 

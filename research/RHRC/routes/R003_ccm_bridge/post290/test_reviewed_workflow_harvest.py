@@ -21,17 +21,49 @@ def provenance_fixture():
     _, reviewed = fixture()
     url = "https://github.com/mock/review/23"
     reviewed.update(reviewer_identity="synthetic-workflow-reviewer", external_review_reference=url)
-    pr = {"number":292,"head":{"sha":H},"user":{"login":"source-author"}}
+    pr = {"number":292,"head":{"sha":H},"user":{"login":"source-author"},"commits":1}
     github = [{"id":23,"html_url":url,"state":"APPROVED","commit_id":H,
                "submitted_at":"2026-10-18T00:00:00Z",
                "user":{"login":"synthetic-workflow-reviewer","type":"User"},
                "author_association":"COLLABORATOR",
                "body":"PR292-WORKFLOW-HARVEST-SHA256="+digest(reviewed)}]
-    commits = [{"author":{"login":"source-author"},"committer":None}]
+    commits = [{"author":{"login":"source-author"},"committer":{"login":"ci-author"}}]
     return reviewed,pr,github,commits
 
 class ReviewedHarvestTests(unittest.TestCase):
     def test_control_only(self):self.assertTrue(validate_jobs(*fixture()))
+    def test_unattributed_author_or_committer_fails_closed(self):
+        for role in ("author","committer"):
+            for account in (None,{}, {"login":None},{"login":""},{"login":" "},
+                            {"login":True},[],"unlinked"):
+                with self.subTest(role=role,account=account):
+                    args=provenance_fixture();args[3][0][role]=account
+                    with self.assertRaisesRegex(ValueError,"unattributed GitHub"):
+                        reviewer_receipt(*args)
+            args=provenance_fixture();del args[3][0][role]
+            with self.assertRaisesRegex(ValueError,"unattributed GitHub"):
+                reviewer_receipt(*args)
+        args=list(provenance_fixture());args[3]=[]
+        with self.assertRaisesRegex(ValueError,"authorship inventory"):
+            reviewer_receipt(*args)
+    def test_attributed_bot_source_participant_remains_recorded(self):
+        args=provenance_fixture()
+        args[3][0]["committer"]={"login":"github-actions[bot]","type":"Bot"}
+        receipt=reviewer_receipt(*args)
+        self.assertEqual(receipt["integrity_status"],"PASS")
+        self.assertTrue(receipt["source_commit_authorship_verified"])
+        self.assertEqual(receipt["source_commit_count"],1)
+    def test_source_commit_inventory_count_must_be_complete(self):
+        for count in (None,True,0,-1,"1",2,250,251):
+            with self.subTest(count=count):
+                args=provenance_fixture();args[1]["commits"]=count
+                with self.assertRaisesRegex(ValueError,"inventory incomplete or count mismatched"):
+                    reviewer_receipt(*args)
+        args=provenance_fixture();del args[1]["commits"]
+        with self.assertRaisesRegex(ValueError,"inventory incomplete or count mismatched"):
+            reviewer_receipt(*args)
+        args=provenance_fixture();args[3].append(copy.deepcopy(args[3][0]));args[1]["commits"]=2
+        self.assertEqual(reviewer_receipt(*args)["source_commit_count"],2)
     def test_authorized_independent_repository_associations(self):
         for association in ("OWNER", "MEMBER", "COLLABORATOR"):
             with self.subTest(association=association):

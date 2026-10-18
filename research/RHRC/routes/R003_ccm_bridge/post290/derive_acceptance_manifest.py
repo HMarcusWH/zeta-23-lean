@@ -18,7 +18,9 @@ from d2_source_equivalence import exact_numeric_source, verify_d2_receipt
 from build_formal_receipt import TYPED_CONTRACT_ROOTS
 from graph_precheck_receipt import validate_receipt
 from harvest_workflows import effective_jobs
-from output_contract_check import FORMAL_JOB, REGRESSION_JOB, NATIVE_JOB, RESEARCH_JOBS
+from output_contract_check import (FORMAL_JOB, REGRESSION_JOB, NATIVE_JOB, RESEARCH_JOBS,
+                                   validate_native_input_binding)
+from verify_semantic_review_provenance import field_digest, semantic_review_digest
 
 REPO = Path(__file__).resolve().parents[5]
 FROZEN = REPO / "research/RHRC/integration/post290/spec/BUILD_MANIFEST.json"
@@ -73,7 +75,7 @@ def htext(text: str) -> str:
     return hashlib.sha256(text.encode()).hexdigest()
 
 
-def accepted_review(review: dict, head: str, tree: str, roots: dict) -> bool:
+def accepted_review(review: dict, head: str, tree: str, roots: dict, provenance=None) -> bool:
     fields = review.get("field_reviews", [])
     required = {f"N{i:02d}" for i in range(1, 41)} | {f"G{i:02d}" for i in range(1, 5)}
     return (
@@ -90,10 +92,29 @@ def accepted_review(review: dict, head: str, tree: str, roots: dict) -> bool:
                 and f.get("evidence_verified") is True
                 and f.get("declaration_ref") in roots
                 and isinstance(f.get("reason"), str) and bool(f["reason"]) for f in fields)
+        and isinstance(provenance,dict)
+        and provenance.get("schema")=="PR292_GITHUB_INDEPENDENT_REVIEW_PROVENANCE_V1"
+        and provenance.get("integrity_status")=="PASS"
+        and provenance.get("reviewed_head")==head and provenance.get("reviewed_tree")==tree
+        and provenance.get("reviewed_field_count")==44
+        and provenance.get("field_reviews_sha256")==field_digest(fields)
+        and provenance.get("semantic_review_sha256")==semantic_review_digest(review)
+        and str(provenance.get("reviewer","")).casefold()==str(review.get("reviewer_identity","")).casefold()
+        and provenance.get("github_review_url")==review.get("external_review_reference")
     )
 
 
-def verified_outputs(directory: Path, head: str, tree: str) -> bool:
+def materialized_native_binding(directory: Path, head: str, tree: str, jobs: list):
+    receipt=read(directory / "MATERIALIZATION_RECEIPT.json")
+    if receipt.get("head")!=head or receipt.get("tree")!=tree:
+        raise ValueError("materialized native input has a stale checkout")
+    if not isinstance(receipt.get("input_bindings"),dict):
+        raise ValueError("materialized native input byte binding absent")
+    binding=receipt["input_bindings"].get("native")
+    return validate_native_input_binding(binding,jobs,tree)
+
+
+def verified_outputs(directory: Path, head: str, tree: str, jobs=None) -> bool:
     if not all((directory / name).is_file() and (directory / name).stat().st_size > 0
                for name in EXPECTED_PRODUCTS):
         return False
@@ -103,6 +124,10 @@ def verified_outputs(directory: Path, head: str, tree: str) -> bool:
         return False
     recorded = receipt.get("outputs", {})
     if not isinstance(recorded, dict):
+        return False
+    try:
+        materialized_native_binding(directory,head,tree,jobs or [])
+    except (ValueError,KeyError,TypeError,OSError):
         return False
     # The receipt does not hash itself, and the status file may be added later.
     for filename in EXPECTED_PRODUCTS:
@@ -163,7 +188,12 @@ def derive(formal: dict, review: dict, d2: dict, harvest: dict,
     baseline = read(FROZEN)
     head, tree = get_commit()
     roots = accepted_formal_roots(formal, head, tree)
-    reviewed = bool(roots) and accepted_review(review, head, tree, roots)
+    provenance=None
+    try:
+        provenance=read(output_dir / "REVIEW_PROVENANCE_VERIFIED.json")
+    except (ValueError,OSError):
+        pass
+    reviewed = bool(roots) and accepted_review(review, head, tree, roots, provenance)
     graph_checked = False
     graph_receipt_error = None
     try:
@@ -215,7 +245,12 @@ def derive(formal: dict, review: dict, d2: dict, harvest: dict,
         status[item["id"]] = passed
 
     complete_harvest = reviewed_prerequisite_harvest_complete(harvest, head)
-    all_outputs = verified_outputs(output_dir, head, tree)
+    all_outputs = verified_outputs(output_dir, head, tree, harvest.get("jobs",[]))
+    native_binding=None
+    try:
+        native_binding=materialized_native_binding(output_dir,head,tree,harvest.get("jobs",[]))
+    except (ValueError,KeyError,TypeError,OSError):
+        pass
     packages = []
     done = {}
     for item in baseline["work_packages"]:
@@ -248,9 +283,11 @@ def derive(formal: dict, review: dict, d2: dict, harvest: dict,
         "d2_identity_error": d2_identity_error,
         "every_job_scientific_reviewed": complete_harvest,
         "outputs_digest_verified": all_outputs,
+        "native_inputs_bound_to_reviewed_job": native_binding is not None,
         "status_not_mathematical_authority": True, "claim_cap": "RH_OPEN",
     }
     result["claim_cap"] = "RH_OPEN"
+    result["input_bindings"] = {"native": native_binding}
     return result
 
 

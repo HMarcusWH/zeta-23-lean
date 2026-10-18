@@ -9,6 +9,14 @@ from d2_source_equivalence import D2_PRODUCER_HEAD,D2_PRODUCER_TREE,D2_RUN_ID
 from build_formal_receipt import TYPED_CONTRACT_ROOTS, full_expression_record
 from test_formal_receipt import synthetic_type_expression
 
+SYNTHETIC_PANEL_BYTES=json.dumps({'source_identity':{'commit':'c'*40,'tree':'a'*40},
+                                'synthetic_only':True},sort_keys=True).encode()
+SYNTHETIC_CHECKER_BYTES=b'{"synthetic_checker_only":true}'
+SYNTHETIC_NATIVE_INPUTS={'schema':'PR292_NATIVE_INPUT_BYTE_BINDING_V1','run_id':103,
+    'panel_sha256':hashlib.sha256(SYNTHETIC_PANEL_BYTES).hexdigest(),
+    'checker_sha256':hashlib.sha256(SYNTHETIC_CHECKER_BYTES).hexdigest(),
+    'source_head':'c'*40,'source_tree':'a'*40}
+
 
 def synthetic_full_type_fields(name, kind):
     """Explicitly synthetic DAG fields, never actual compiler exports."""
@@ -42,7 +50,7 @@ def synthetic_release_gaps(manifest, formal, d2, jobs):
                return_value={'integrity_status':'PASS','d2_run_id':D2_RUN_ID}),
          patch('output_contract_check.verify_d2_receipt',
                side_effect=synthetic_verify_d2)):
-        return release_gaps(manifest,formal,d2,jobs)
+        return release_gaps(manifest,formal,d2,jobs,native_inputs=deepcopy(SYNTHETIC_NATIVE_INPUTS))
 
 
 
@@ -90,6 +98,9 @@ def fixture():
     jobs = [{'workflow':workflow,'name':name,'required':True,'head':'c'*40,'head_tree':tree,'status':'completed',
              'conclusion':'success','scientific_acceptance':True} for workflow,name in [FORMAL_JOB,REGRESSION_JOB,sorted(RESEARCH_JOBS)[0],NATIVE_JOB]]
     jobs[-1]['native_output_review']={'head':'c'*40,'source_tree':tree,'scope':'FINITE_FIXED_PROBES','frozen_panel_complete':True,'pair_count':44,'row_count':176,'evaluated_rows':176,'unresolved_rows':0,'verified_pairs':44,'unresolved_pairs':0,'universal_theorem_authority':False}
+    jobs[-1]['native_output_review'].update({key:SYNTHETIC_NATIVE_INPUTS[key]
+                                            for key in ('panel_sha256','checker_sha256')})
+    manifest['input_bindings']={'native':deepcopy(SYNTHETIC_NATIVE_INPUTS)}
     for index,job in enumerate(jobs):
         job.update(run_id=100+index,job_id=200+index,attempt=1,latest_attempt=True)
         if (job['workflow'],job['name']) in RESEARCH_JOBS:

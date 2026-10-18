@@ -14,9 +14,10 @@ import os
 import subprocess
 from pathlib import Path
 from harvest_workflows import inventory,harvest,APPROVED_D2_RUN_ID,effective_jobs
-from output_contract_check import checked_checkout,D2_PRODUCER_TREE
+from output_contract_check import checked_checkout,D2_PRODUCER_TREE,NATIVE_JOB,validate_native_output_review
 from verify_semantic_review_provenance import (
-    api,all_pages,latest_submitted_review,require_repository_authorized_reviewer)
+    api,all_pages,latest_submitted_review,require_repository_authorized_reviewer,
+    source_author_logins)
 
 REPO=Path(__file__).resolve().parents[5]
 ROLES={"FORMAL_VALIDITY_GATE","REGRESSION_GATE","RESEARCH_PRODUCING_CHECK"}
@@ -79,6 +80,9 @@ def validate_jobs(raw,review):
                           else row.get("head_tree"))
                 if checked_checkout(row,expected) is None:
                     raise ValueError("missing required actual checkout identity: "+str(key))
+            if (row.get("workflow"),row.get("name"))==NATIVE_JOB:
+                validate_native_output_review(row.get("native_output_review"),
+                    checked_checkout(row,row.get("head_tree")),row.get("head_tree"))
         if (row["latest_attempt"] is True and
             (row.get("status") != "completed" or
              not isinstance(row.get("conclusion"), str) or
@@ -92,11 +96,7 @@ def reviewer_receipt(review,pr,reviews,commits):
     if (pr.get("number")!=292 or pr.get("head",{}).get("sha")!=head or
         not user or user in ("self","automated","none")):
         raise ValueError("stale PR head or unnamed workflow reviewer")
-    authors={str(pr.get("user",{}).get("login","")).casefold()}
-    for c in commits:
-        for field in ("author","committer"):
-            login=(c.get(field) or {}).get("login")
-            if login:authors.add(str(login).casefold())
+    authors=source_author_logins(pr,commits)
     if user in authors:
         raise ValueError("source author self-reviewed workflow results")
     token="PR292-WORKFLOW-HARVEST-SHA256="+digest(review)
@@ -110,6 +110,7 @@ def reviewer_receipt(review,pr,reviews,commits):
         **authorization,
         "head":head,"reviewer":user,"reviewed_jobs_sha256":digest(review),
         "github_review_id":r["id"],"github_review_url":r["html_url"],
+        "source_commit_authorship_verified":True,"source_commit_count":len(commits),
         "integrity_status":"PASS","claim_cap":"RH_OPEN",
         "not_mathematical_authority_by_itself":True}
 

@@ -26,7 +26,7 @@ from test_forcing_history import causal, four
 from test_output_mutations import fixture, synthetic_release_gaps
 from test_reviewed_workflow_harvest import fixture as harvest_fixture
 from verify_semantic_review_provenance import (
-    REQUIRED, field_digest, validate as validate_semantic_review,
+    REQUIRED, field_digest, semantic_review_digest, validate as validate_semantic_review,
 )
 from verify_workflow_harvest import validate_jobs
 
@@ -320,13 +320,13 @@ def semantic_fixture() -> tuple:
                                   "evidence_verified": True, "declaration_ref": declaration,
                                   "reason": "Synthetic validator fixture; no mathematical review."}
                                  for field in sorted(REQUIRED)]}
-    pr = {"number": 292, "head": {"sha": head}, "user": {"login": "synthetic-author"}}
+    pr = {"number": 292, "head": {"sha": head}, "user": {"login": "synthetic-author"}, "commits": 1}
     github = [{"id": 17, "user": {"login": "synthetic-reviewer", "type": "User"},
                "author_association": "COLLABORATOR", "state": "APPROVED",
                "commit_id": head, "html_url": review_url,
                "submitted_at": "2026-10-17T00:00:00Z",
-               "body": "PR292-44-FIELD-SHA256="+field_digest(review["field_reviews"])}]
-    commits = [{"author": {"login": "synthetic-author"}, "committer": None}]
+               "body": "PR292-SEMANTIC-REVIEW-SHA256="+semantic_review_digest(review)}]
+    commits = [{"author": {"login": "synthetic-author"}, "committer": {"login":"synthetic-committer"}}]
     return review, pr, github, commits, head, tree, roots, kinds
 
 
