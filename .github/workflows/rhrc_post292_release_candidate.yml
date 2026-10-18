@@ -116,10 +116,13 @@ jobs:
           path: /tmp/post292-harvest
       - name: Require original D2 run ID and FINAL artifact (no retries or searches)
         shell: bash
+        env:
+          D2_RUN_ID: ${{ inputs.d2_run_id }}
+          D2_ARTIFACT_NAME: ${{ inputs.d2_artifact_name }}
         run: |
           set -euo pipefail
-          test "${{ inputs.d2_run_id }}" = "38569316691"
-          test "${{ inputs.d2_artifact_name }}" = "k3-unrun460-final-independent-result"
+          test "$D2_RUN_ID" = "38569316691"
+          test "$D2_ARTIFACT_NAME" = "k3-unrun460-final-independent-result"
           test -s /tmp/post292-d2/disposition.json
           python - <<'PY'
           import json
@@ -174,12 +177,14 @@ jobs:
             --review /tmp/post292-review/INDEPENDENT_SEMANTIC_REVIEW.json \
             --out /tmp/post292-checks/REVIEW_PROVENANCE_VERIFIED.json
       - name: Establish byte-exact numerical source identity across two Git commits
+        env:
+          D2_RUN_ID: ${{ inputs.d2_run_id }}
         run: |
           set -euo pipefail
           mkdir -p /tmp/post292-checks
           python research/RHRC/routes/R003_ccm_bridge/post290/d2_source_equivalence.py \
             --d2 /tmp/post292-d2/D2_CONTINUUM_RECEIPT.json \
-            --d2-run-id ${{ inputs.d2_run_id }} \
+            --d2-run-id "$D2_RUN_ID" \
             --out /tmp/post292-checks/D2_SOURCE_EQUIVALENCE.json
       - name: Compile complete audit roots and check admissible Lean axioms
         shell: bash
