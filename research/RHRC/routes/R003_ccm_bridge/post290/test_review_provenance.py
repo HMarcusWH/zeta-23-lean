@@ -21,7 +21,8 @@ def fixture():
     pr={"number":292,"head":{"sha":HEAD},"user":{"login":"source_author"}}
     github=[{"id":123,"html_url":url,"state":"APPROVED",
              "commit_id":HEAD,"submitted_at":"2026-10-15T12:00:00Z",
-             "user":{"login":"independent_review_test"},
+             "user":{"login":"independent_review_test","type":"User"},
+             "author_association":"COLLABORATOR",
              "body":"PR292-44-FIELD-SHA256="+field_digest(review["field_reviews"])}]
     commits=[{"author":{"login":"source_author"},"committer":{"login":"ci_author"}}]
     return [review,pr,github,commits]
@@ -29,6 +30,51 @@ def fixture():
 class ReviewerProvenanceTests(unittest.TestCase):
     def test_exact_review_succeeds_only_as_synthetic_control(self):
         self.assertEqual(validate(*fixture(),HEAD,TREE)["integrity_status"],"PASS")
+    def test_authorized_independent_repository_associations(self):
+        for association in ("OWNER", "MEMBER", "COLLABORATOR"):
+            with self.subTest(association=association):
+                args = fixture()
+                args[2][0]["author_association"] = association
+                receipt = validate(*args, HEAD, TREE)
+                self.assertEqual(receipt["integrity_status"], "PASS")
+                self.assertEqual(receipt["reviewer_author_association"], association)
+                self.assertEqual(receipt["reviewer_account_type"], "User")
+
+    def test_unauthorized_or_malformed_repository_association_rejected(self):
+        for association in ("NONE", "CONTRIBUTOR", "FIRST_TIMER", "FIRST_TIME_CONTRIBUTOR",
+                            "BOT", "UNKNOWN", "collaborator", "COLLABORATOR ",
+                            None, True, 1, [], {}):
+            with self.subTest(association=association):
+                args = fixture()
+                args[2][0]["author_association"] = association
+                with self.assertRaisesRegex(ValueError, "not repository-authorized"):
+                    validate(*args, HEAD, TREE)
+        args = fixture()
+        del args[2][0]["author_association"]
+        with self.assertRaisesRegex(ValueError, "not repository-authorized"):
+            validate(*args, HEAD, TREE)
+
+    def test_authorized_association_does_not_make_nonhuman_account_eligible(self):
+        for account_type in ("Bot", "Mannequin", "Organization", "user", None, True, []):
+            with self.subTest(account_type=account_type):
+                args = fixture()
+                args[2][0]["user"]["type"] = account_type
+                with self.assertRaisesRegex(ValueError, "not an authenticated GitHub User"):
+                    validate(*args, HEAD, TREE)
+        args = fixture()
+        del args[2][0]["user"]["type"]
+        with self.assertRaisesRegex(ValueError, "not an authenticated GitHub User"):
+            validate(*args, HEAD, TREE)
+
+    def test_unauthorized_latest_review_cannot_fall_back_to_older_authorized(self):
+        for changes in ({"author_association": "NONE"},
+                        {"user": {"login": "independent_review_test", "type": "Bot"}}):
+            with self.subTest(changes=changes):
+                args = fixture()
+                latest = dict(args[2][0], id=124, submitted_at="2026-10-17T12:00:00Z", **changes)
+                args[2].append(latest)
+                with self.assertRaisesRegex(ValueError, "not repository-authorized|not an authenticated GitHub"):
+                    validate(*args, HEAD, TREE)
     def test_latest_changes_requested_blocks_stale_approval(self):
         args = fixture()
         args[2].append(dict(args[2][0], id=124, state="CHANGES_REQUESTED",
@@ -105,6 +151,7 @@ class ReviewerProvenanceTests(unittest.TestCase):
 
     def test_source_author_cannot_review(self):
         a=fixture();a[0]["reviewer_identity"]="source_author";a[2][0]["user"]["login"]="source_author"
+        a[2][0]["author_association"]="OWNER"
         with self.assertRaises(ValueError):validate(*a,HEAD,TREE)
     def test_stale_commit_rejected(self):
         a=fixture();a[2][0]["commit_id"]="c"*40

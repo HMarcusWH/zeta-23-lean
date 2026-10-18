@@ -15,7 +15,8 @@ import subprocess
 from pathlib import Path
 from harvest_workflows import inventory,harvest,APPROVED_D2_RUN_ID,effective_jobs
 from output_contract_check import checked_checkout,D2_PRODUCER_TREE
-from verify_semantic_review_provenance import api,all_pages,latest_submitted_review
+from verify_semantic_review_provenance import (
+    api,all_pages,latest_submitted_review,require_repository_authorized_reviewer)
 
 REPO=Path(__file__).resolve().parents[5]
 ROLES={"FORMAL_VALIDITY_GATE","REGRESSION_GATE","RESEARCH_PRODUCING_CHECK"}
@@ -100,11 +101,13 @@ def reviewer_receipt(review,pr,reviews,commits):
         raise ValueError("source author self-reviewed workflow results")
     token="PR292-WORKFLOW-HARVEST-SHA256="+digest(review)
     r = latest_submitted_review(reviews, user)
+    authorization = require_repository_authorized_reviewer(r)
     if (r.get("state") != "APPROVED" or r.get("commit_id") != head
         or r.get("html_url") != review.get("external_review_reference")
         or not isinstance(r.get("body"), str) or token not in r["body"]):
         raise ValueError("latest workflow reviewer decision is not signed current-head APPROVED")
     return {"schema":"PR292_WORKFLOW_HARVEST_REVIEW_PROVENANCE_V1",
+        **authorization,
         "head":head,"reviewer":user,"reviewed_jobs_sha256":digest(review),
         "github_review_id":r["id"],"github_review_url":r["html_url"],
         "integrity_status":"PASS","claim_cap":"RH_OPEN",

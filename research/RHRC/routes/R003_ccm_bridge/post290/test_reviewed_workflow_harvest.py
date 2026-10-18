@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Read-only synthetic adversarial workflow review tests."""
 import copy,unittest
-from verify_workflow_harvest import validate_jobs
+from verify_workflow_harvest import validate_jobs,reviewer_receipt,digest
 H="a"*40
 def fixture():
     j={"run_id":11,"workflow":"mock workflow","job_id":19,"name":"example",
@@ -16,8 +16,70 @@ def fixture():
         output_reviewed=True,scientific_disposition="REPLAY_PRESERVED",
         review_reason="Synthetic human-reviewed fixture only",review_source_url=j["url"])
     return raw,reviewed
+
+def provenance_fixture():
+    _, reviewed = fixture()
+    url = "https://github.com/mock/review/23"
+    reviewed.update(reviewer_identity="synthetic-workflow-reviewer", external_review_reference=url)
+    pr = {"number":292,"head":{"sha":H},"user":{"login":"source-author"}}
+    github = [{"id":23,"html_url":url,"state":"APPROVED","commit_id":H,
+               "submitted_at":"2026-10-18T00:00:00Z",
+               "user":{"login":"synthetic-workflow-reviewer","type":"User"},
+               "author_association":"COLLABORATOR",
+               "body":"PR292-WORKFLOW-HARVEST-SHA256="+digest(reviewed)}]
+    commits = [{"author":{"login":"source-author"},"committer":None}]
+    return reviewed,pr,github,commits
+
 class ReviewedHarvestTests(unittest.TestCase):
     def test_control_only(self):self.assertTrue(validate_jobs(*fixture()))
+    def test_authorized_independent_repository_associations(self):
+        for association in ("OWNER", "MEMBER", "COLLABORATOR"):
+            with self.subTest(association=association):
+                args = provenance_fixture()
+                args[2][0]["author_association"] = association
+                receipt = reviewer_receipt(*args)
+                self.assertEqual(receipt["integrity_status"], "PASS")
+                self.assertEqual(receipt["reviewer_author_association"], association)
+                self.assertEqual(receipt["reviewer_account_type"], "User")
+    def test_unauthorized_or_malformed_repository_association_rejected(self):
+        for association in ("NONE", "CONTRIBUTOR", "FIRST_TIMER", "FIRST_TIME_CONTRIBUTOR",
+                            "BOT", "UNKNOWN", "collaborator", "COLLABORATOR ",
+                            None, True, 1, [], {}):
+            with self.subTest(association=association):
+                args = provenance_fixture()
+                args[2][0]["author_association"] = association
+                with self.assertRaisesRegex(ValueError, "not repository-authorized"):
+                    reviewer_receipt(*args)
+        args = provenance_fixture()
+        del args[2][0]["author_association"]
+        with self.assertRaisesRegex(ValueError, "not repository-authorized"):
+            reviewer_receipt(*args)
+    def test_authorized_association_does_not_make_nonhuman_account_eligible(self):
+        for account_type in ("Bot", "Mannequin", "Organization", "user", None, True, []):
+            with self.subTest(account_type=account_type):
+                args = provenance_fixture()
+                args[2][0]["user"]["type"] = account_type
+                with self.assertRaisesRegex(ValueError, "not an authenticated GitHub User"):
+                    reviewer_receipt(*args)
+        args = provenance_fixture()
+        del args[2][0]["user"]["type"]
+        with self.assertRaisesRegex(ValueError, "not an authenticated GitHub User"):
+            reviewer_receipt(*args)
+    def test_unauthorized_latest_review_cannot_fall_back_to_older_authorized(self):
+        for changes in ({"author_association":"NONE"},
+                        {"user":{"login":"synthetic-workflow-reviewer","type":"Bot"}}):
+            with self.subTest(changes=changes):
+                args = provenance_fixture()
+                args[2].append(dict(args[2][0], id=24,
+                    submitted_at="2026-10-18T01:00:00Z", **changes))
+                with self.assertRaisesRegex(ValueError, "not repository-authorized|not an authenticated GitHub"):
+                    reviewer_receipt(*args)
+    def test_repository_owner_is_still_ineligible_as_source_author(self):
+        args = provenance_fixture()
+        args[0]["reviewer_identity"] = "source-author"
+        args[2][0].update(author_association="OWNER", user={"login":"source-author","type":"User"})
+        with self.assertRaisesRegex(ValueError, "source author self-reviewed"):
+            reviewer_receipt(*args)
     def test_review_both_attempts_without_promoting_old_failure(self):
         raw, reviewed = fixture()
         old_raw = copy.deepcopy(raw["jobs"][0])

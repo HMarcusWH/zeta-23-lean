@@ -321,7 +321,8 @@ def semantic_fixture() -> tuple:
                                   "reason": "Synthetic validator fixture; no mathematical review."}
                                  for field in sorted(REQUIRED)]}
     pr = {"number": 292, "head": {"sha": head}, "user": {"login": "synthetic-author"}}
-    github = [{"id": 17, "user": {"login": "synthetic-reviewer"}, "state": "APPROVED",
+    github = [{"id": 17, "user": {"login": "synthetic-reviewer", "type": "User"},
+               "author_association": "COLLABORATOR", "state": "APPROVED",
                "commit_id": head, "html_url": review_url,
                "submitted_at": "2026-10-17T00:00:00Z",
                "body": "PR292-44-FIELD-SHA256="+field_digest(review["field_reviews"])}]

@@ -18,6 +18,7 @@ REPOSITORY="HMarcusWH/zeta-23-lean"
 PR_NUMBER=292
 REPO=Path(__file__).resolve().parents[5]
 REQUIRED={f"N{i:02d}" for i in range(1,41)} | {f"G{i:02d}" for i in range(1,5)}
+AUTHORIZED_REVIEW_ASSOCIATIONS=frozenset({"OWNER","MEMBER","COLLABORATOR"})
 
 def field_digest(rows):
     raw=json.dumps(rows,sort_keys=True,separators=(",",":"),ensure_ascii=False)
@@ -87,6 +88,23 @@ def latest_submitted_review(github_reviews, reviewer_identity):
     return max(eligible, key=lambda value: (value[0], value[1]))[2]
 
 
+def require_repository_authorized_reviewer(row):
+    """Require repository authorization on the authenticated selected review.
+
+    This is a repository-association policy, not a mathematical expertise check.
+    Apply it AFTER selecting the latest decision; an unauthorized new decision
+    must never reveal an older approval as a fallback.
+    """
+    user = row.get("user")
+    if not isinstance(user, dict) or user.get("type") != "User":
+        raise ValueError("latest reviewer account is not an authenticated GitHub User")
+    association = row.get("author_association")
+    if (not isinstance(association, str) or
+        association not in AUTHORIZED_REVIEW_ASSOCIATIONS):
+        raise ValueError("latest reviewer is not repository-authorized: OWNER/MEMBER/COLLABORATOR required")
+    return {"reviewer_author_association": association, "reviewer_account_type": user["type"]}
+
+
 def validate(review,pr,github_reviews,commits,head,tree):
     if (review.get("reviewed_head")!=head or review.get("reviewed_tree")!=tree or
         review.get("schema_version")!="POST290_INDEPENDENT_SEMANTIC_REVIEW_1.0" or
@@ -119,6 +137,7 @@ def validate(review,pr,github_reviews,commits,head,tree):
     digest=field_digest(fields)
     signed=f"PR292-44-FIELD-SHA256={digest}"
     row = latest_submitted_review(github_reviews, user)
+    authorization = require_repository_authorized_reviewer(row)
     reviewer = (row.get("user") or {}).get("login")
     review_url = row.get("html_url")
     if (row.get("state") != "APPROVED" or row.get("commit_id") != head or
@@ -128,6 +147,7 @@ def validate(review,pr,github_reviews,commits,head,tree):
     return {
         "schema":"PR292_GITHUB_INDEPENDENT_REVIEW_PROVENANCE_V1",
         "integrity_status":"PASS","reviewer":reviewer,
+        **authorization,
         "github_review_id":row["id"],"github_review_url":review_url,
         "reviewed_head":head,"reviewed_tree":tree,
         "reviewed_field_count":44,"field_reviews_sha256":digest,
