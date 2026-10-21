@@ -9,6 +9,7 @@ import argparse
 import hashlib
 import json
 from pathlib import Path
+import re
 import subprocess
 
 HERE = Path(__file__).resolve().parent
@@ -26,10 +27,93 @@ FROZEN_PAPER = {
         '9525d5dad6f0a2e3abd6050edeb39e3a234b6a361046e746878a181970a789f0',
 }
 AMENDMENT_V11_SHA256 = '16bb41d7ecc1b199ed97ace5ba37beb5ffc691ca648b4bc12597911be7250cbd'
+C1_SUPPORTING_DECLARATIONS = (
+    'sharpNormAlpha', 'sharpNormAlpha_pos', 'sharpNormAlpha_one_le',
+    'sharpNormAlpha_le_one_add', 'sharpNormAlpha_quadratic', 'sharpNormAlpha_sub_inv',
+    'sharpNormAlpha_zero', 'sharpNormAlpha_log_eq_arsinh',
+    'sharp_norm_first_scalar_identity', 'sharp_norm_first_scalar_bound',
+    'sharp_norm_first_log_upper', 'sharp_norm_first_log_norms',
+    'sharp_norm_first_arsinh_bound', 'sharp_norm_first_scalar_attained',
+    'sharp_norm_first_log_comparison',
+)
+C1_EXPECTED_TYPE_CONSUMERS = (
+    'expected_sharp_norm_first_arsinh_bound',
+    'expected_sharp_norm_first_scalar_attained',
+    'expected_sharp_norm_first_log_comparison',
+    'expected_sharp_norm_first_recovers_primary',
+)
+C1_EXPECTED_TYPE_CHECKS = ('Validation.lean explicitly checks sharp bound, equality witness, '
+    'positive-part bound and recovery of original primary comparison.')
+
+
+def lean_declaration_names(source: str) -> list[str]:
+    """Lexical inventory only: comments/strings cannot masquerade as declarations.
+
+    This does not elaborate a type or establish a proof; the external source-bound
+    compiler receipt has that separate responsibility.
+    """
+    clean, index, depth, quoted = [], 0, 0, False
+    while index < len(source):
+        char, pair = source[index], source[index:index + 2]
+        if depth:
+            if pair == '/-':
+                depth += 1
+                clean.extend('  ')
+                index += 2
+            elif pair == '-/':
+                depth -= 1
+                clean.extend('  ')
+                index += 2
+            else:
+                clean.append('\n' if char == '\n' else ' ')
+                index += 1
+        elif quoted:
+            if char == '\\':
+                clean.extend('  ')
+                index += 2
+            else:
+                quoted = char != '"'
+                clean.append('\n' if char == '\n' else ' ')
+                index += 1
+        elif pair == '/-':
+            depth = 1
+            clean.extend('  ')
+            index += 2
+        elif pair == '--':
+            end = source.find('\n', index)
+            if end == -1:
+                break
+            clean.append('\n')
+            index = end + 1
+        elif char == '"':
+            quoted = True
+            clean.append(' ')
+            index += 1
+        else:
+            clean.append(char)
+            index += 1
+    return re.findall(r'(?m)^(?:@\[[^\]\n]+\]\s*)?(?:noncomputable\s+)?'
+                      r'(?:def|lemma|theorem)\s+([A-Za-z_][A-Za-z0-9_]*)\b', ''.join(clean))
+
+
+def candidate1_source_errors(mathematical_source: str, validation_source: str) -> list[str]:
+    """Require the exact optional helper/consumer inventory, without claiming Lean validity."""
+    errors = []
+    helpers = [name for name in lean_declaration_names(mathematical_source)
+               if name.startswith('sharp')]
+    consumers = [name for name in lean_declaration_names(validation_source)
+                 if name.startswith('expected_sharp_')]
+    if helpers != list(C1_SUPPORTING_DECLARATIONS):
+        errors.append('C1 optional source helper inventory changed')
+    if consumers != list(C1_EXPECTED_TYPE_CONSUMERS):
+        errors.append('C1 explicit expected-type consumer inventory changed')
+    return errors
 
 
 def supplemental_errors(register: dict) -> list[str]:
     errors = []
+    if register.get('RH') != 'OPEN' or register.get('Step4') != 'OPEN':
+        errors.append('top-level supplemental claim firewall changed')
     inputs = register.get('supplemental_research_inputs', [])
     if len(inputs) != 1:
         return ['one exact supplemental v1.1 research input required']
@@ -53,10 +137,31 @@ def supplemental_errors(register: dict) -> list[str]:
         if (row.get('RH') != 'OPEN' or row.get('Step4') != 'OPEN'
                 or row.get('independent_closing_inequalities') != 'OPEN'):
             errors.append('supplemental claim firewall changed')
+        if row.get('candidate_id') == 'POST_GREEN_V1_1_C1':
+            if row.get('status') != 'PROVED_LOCAL_OPTIONAL':
+                errors.append('C1 local optional proof status changed')
+            if row.get('home') != 'Zeta23/OPICAFollowup/NormFirstTransfer.lean':
+                errors.append('C1 defining source changed')
+            if row.get('supporting_declarations') != list(C1_SUPPORTING_DECLARATIONS):
+                errors.append('C1 exact optional helper inventory changed')
+            if row.get('expected_type_checks') != C1_EXPECTED_TYPE_CHECKS:
+                errors.append('C1 explicit expected-type check description changed')
         if row.get('candidate_id') in {'POST_GREEN_V1_1_C2', 'POST_GREEN_V1_1_C4'} and row.get('status') != 'DERIVED_NOT_FORMALIZED':
             errors.append('unformalized measure proposal promoted')
         if row.get('candidate_id') == 'POST_GREEN_V1_1_C3' and row.get('status') != 'FIRST_INEQUALITY_FALSE_WITHOUT_EPSILON_RANGE_SECOND_BOUND_SURVIVES':
             errors.append('C3 falsification/repaired-domain boundary changed')
+    c3_evaluations = [row for row in register.get('amendment_v1_1_evaluation', {}).get('candidates', [])
+                      if row.get('id') == 'C3']
+    if (len(c3_evaluations) != 1 or c3_evaluations[0].get('counterexample_json_pointer')
+            != '/supplemental_crosswalk/2/falsification'):
+        errors.append('C3 embedded counterexample pointer missing or changed')
+    elif (len(overlay) < 3 or overlay[2].get('candidate_id') != 'POST_GREEN_V1_1_C3'
+            or not isinstance(overlay[2].get('falsification'), dict)
+            or overlay[2]['falsification'].get('authority')
+                != 'DERIVED_ANALYTIC_COUNTEREXAMPLE_NOT_LEAN_FORMALIZED'
+            or not {'regularizer', 'measure', 'facts'} <= set(overlay[2]['falsification'])
+            or not overlay[2]['falsification'].get('facts')):
+        errors.append('C3 embedded counterexample pointer does not resolve to its analytic record')
     return errors
 
 
@@ -107,6 +212,13 @@ def preflight(root: Path = REPO, here: Path = HERE) -> dict:
          'PARENT_EXTENSION.json', 'PROTECTED_STATE.json'))
     errors += metadata_errors(manifest, public, crosswalk, descriptor)
     errors += supplemental_errors(read('SOURCE_REGISTER.json'))
+    candidate1_source = root / 'Zeta23/OPICAFollowup/NormFirstTransfer.lean'
+    candidate1_validation = root / 'Zeta23/OPICAFollowup/Validation.lean'
+    if not candidate1_source.is_file() or not candidate1_validation.is_file():
+        errors.append('C1 optional helper/consumer source missing')
+    else:
+        errors += candidate1_source_errors(candidate1_source.read_text(encoding='utf-8'),
+                                           candidate1_validation.read_text(encoding='utf-8'))
     for row in manifest['paper_sources']:
         path = here / 'paper' / row['source']
         if not path.is_file() or len(path.read_bytes()) != row['bytes'] or digest(path) != row['sha256']:
@@ -149,6 +261,13 @@ def preflight(root: Path = REPO, here: Path = HERE) -> dict:
             'planned_roots': len(public['roots']), 'coverage_units': len(crosswalk['scope_units']),
             'missing_planned_files': missing, 'planned_files_present': len(creates) - len(missing),
             'compiler_coverage_audited': False, 'release_ready': False,
+            'optional_candidate1_evidence': {
+                'reported_status': 'PROVED_LOCAL_OPTIONAL',
+                'checked_here': 'EXACT_METADATA_AND_LEXICAL_SOURCE_INVENTORY_ONLY',
+                'expected_type_consumers': list(C1_EXPECTED_TYPE_CONSUMERS),
+                'compiler_receipt': 'EXTERNAL_NOT_VALIDATED_BY_PREPARATION',
+                'proof_established_by_this_gate': False,
+            },
             'release_blockers': ['Full 100-root exact type and physical-consumer coverage pending',
                                  'Complete current-tree P0 and child compiler receipts pending',
                                  'Full regression/runtime lock and canonical generated-state gate pending',

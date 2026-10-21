@@ -13,6 +13,12 @@ head/tree, command logs and source hashes belong in the external compiler
 receipt; a dirty working tree must be identified as such rather than called a
 tested commit.
 
+The completed subset audit exports all 72 public declarations in the three
+mathematical modules, 1,224 dependency nodes and 285 TYPE/VALUE/STRUCTURE
+channels. Its axiom inventory contains only `propext`, `Classical.choice` and
+`Quot.sound`. A fresh receipt must bind these facts to the final clean source
+tree after the provenance and metadata-review corrections below.
+
 The norm estimate and rate comparison hold in a seminormed additive group.
 They price the Type I norm and signed low-mask error separately; they do not
 require subexponential absolute error between squared energies. Finite limits
@@ -50,6 +56,12 @@ Parent acceptance was refreshed against merged commit
 `875a321edf0362bbc170cc3177007c18172eeef0` have exactly that tree. No final
 merge-specific CI run was found.
 
+The final read-through distinguished the event SHA from the actual checkout
+for the initial historical post268 replay. Its ten jobs checked out the PR
+head `553b426...`, despite the synthetic-merge event SHA `875a321...`.
+`PARENT_INTAKE.json` now records both identities separately. Their equal tree
+preserves the result; it does not make the commit identities interchangeable.
+
 FORMAL VALIDITY GATE: the exact parent compiler ZIP was downloaded, CRC/hash
 checked and revalidated with unchanged P0 functions. All three log-byte hashes,
 76 frozen reviewed root types, 613 public declarations, eight constructors and
@@ -59,7 +71,7 @@ artifact revalidation of authoritative CI, not a new local full parent build.
 REGRESSION GATES: 39,920 frozen exact checks in each Python mode, 33
 noninterval numerical cases, and the unchanged 154-test parent audit per mode
 passed. Child tests reject parent changes and metadata/receipt weakening.
-The final child mutation suite has 96 tests in each Python mode, including
+The final child mutation suite has 114 tests in each Python mode, including
 the optional-candidate, tested-defect and receipt-provenance firewalls.
 The complete paginated inventory, per-job classifications and comparisons with
 the prior head are retained in `PARENT_INTAKE.json`.
@@ -81,6 +93,12 @@ The accepted parent has merged without source-tree drift. The full normative
 specification and both foundational PDF inputs are preserved. The effective
 crosswalk now has a separately versioned optional v1.1 overlay; none of its
 candidate lemmas is a new mandatory root or acceptance unit.
+
+Preparation metadata now rejects unsupported C1 status/helper/consumer labels
+and top-level RH or Step 4 promotion. These are consistency checks on the
+reported optional proof inventory, not new primary acceptance roots or proof
+authority. The external compiler receipt remains necessary. C3's counterexample
+reference resolves to the analytic record embedded in `SOURCE_REGISTER.json`.
 
 The recovery wording is mathematically corrected: a nonzero observation with
 zero target still has optimal cost zero. Infinite-dimensional kernel inclusion

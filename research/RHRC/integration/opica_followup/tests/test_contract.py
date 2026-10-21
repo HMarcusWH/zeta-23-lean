@@ -17,6 +17,9 @@ class FrozenAcceptanceTests(unittest.TestCase):
         self.manifest, self.public, self.crosswalk, self.extension, self.register = map(read,
             ('BUILD_MANIFEST.json', 'PUBLIC_ROOTS.json', 'PAPER_CROSSWALK.json',
              'PARENT_EXTENSION.json', 'SOURCE_REGISTER.json'))
+        repo = HERE.parents[3]
+        self.helper_source = (repo / 'Zeta23/OPICAFollowup/NormFirstTransfer.lean').read_text(encoding='utf-8')
+        self.validation_source = (repo / 'Zeta23/OPICAFollowup/Validation.lean').read_text(encoding='utf-8')
 
     def test_original_inventory_and_supplement_pass(self):
         self.assertEqual(contract.metadata_errors(self.manifest, self.public,
@@ -71,6 +74,86 @@ class FrozenAcceptanceTests(unittest.TestCase):
 
     def test_optional_candidate_cannot_close_step4(self):
         self.register['supplemental_crosswalk'][0]['Step4'] = 'PROVED'
+        self.assertTrue(contract.supplemental_errors(self.register))
+
+    def test_top_level_rh_cannot_be_promoted(self):
+        self.register['RH'] = 'PROVED'
+        self.assertTrue(contract.supplemental_errors(self.register))
+
+    def test_top_level_step4_cannot_be_promoted(self):
+        self.register['Step4'] = 'PROVED'
+        self.assertTrue(contract.supplemental_errors(self.register))
+
+    def test_c1_proof_status_cannot_be_arbitrarily_promoted(self):
+        self.register['supplemental_crosswalk'][0]['status'] = 'PROVED_WITHOUT_RECEIPT'
+        self.assertTrue(contract.supplemental_errors(self.register))
+
+    def test_c1_missing_helper_rejected(self):
+        self.register['supplemental_crosswalk'][0]['supporting_declarations'].pop()
+        self.assertTrue(contract.supplemental_errors(self.register))
+
+    def test_c1_nonexistent_helper_rejected(self):
+        self.register['supplemental_crosswalk'][0]['supporting_declarations'][0] = 'NoSuchTheorem'
+        self.assertTrue(contract.supplemental_errors(self.register))
+
+    def test_c1_duplicate_helper_rejected(self):
+        helpers = self.register['supplemental_crosswalk'][0]['supporting_declarations']
+        helpers[-1] = helpers[0]
+        self.assertTrue(contract.supplemental_errors(self.register))
+
+    def test_c1_defining_source_cannot_change(self):
+        self.register['supplemental_crosswalk'][0]['home'] = 'Zeta23/Extra.lean'
+        self.assertTrue(contract.supplemental_errors(self.register))
+
+    def test_c1_expected_type_check_claim_cannot_disappear(self):
+        self.register['supplemental_crosswalk'][0]['expected_type_checks'] = 'none'
+        self.assertTrue(contract.supplemental_errors(self.register))
+
+    def test_exact_c1_source_and_consumers_pass_inventory(self):
+        self.assertEqual(contract.candidate1_source_errors(self.helper_source, self.validation_source), [])
+
+    def test_c1_helper_replaced_by_axiom_fails_inventory(self):
+        mutated = self.helper_source.replace('lemma sharpNormAlpha_pos', 'axiom sharpNormAlpha_pos', 1)
+        self.assertTrue(contract.candidate1_source_errors(mutated, self.validation_source))
+
+    def test_c1_renamed_expected_consumer_fails_inventory(self):
+        mutated = self.validation_source.replace('theorem expected_sharp_norm_first_arsinh_bound',
+            'theorem expected_unchecked_sharp_bound', 1)
+        self.assertTrue(contract.candidate1_source_errors(self.helper_source, mutated))
+
+    def test_c1_consumer_name_in_comment_is_not_a_declaration(self):
+        mutated = self.validation_source.replace('theorem expected_sharp_norm_first_arsinh_bound',
+            '/- theorem expected_sharp_norm_first_arsinh_bound -/', 1)
+        self.assertTrue(contract.candidate1_source_errors(self.helper_source, mutated))
+
+    def test_c1_duplicate_consumer_fails_inventory(self):
+        mutated = self.validation_source + '\ntheorem expected_sharp_norm_first_arsinh_bound : True := by trivial\n'
+        self.assertTrue(contract.candidate1_source_errors(self.helper_source, mutated))
+
+    def test_c1_nested_comments_and_strings_do_not_add_helpers(self):
+        extra = ('\n/- outer\n/- nested -/\nlemma sharp_fake : True := by trivial\n-/\n'
+                 'def fixtureString := "lemma sharp_fake : True := by trivial"\n')
+        self.assertEqual(contract.candidate1_source_errors(self.helper_source + extra,
+                                                         self.validation_source), [])
+
+    def test_comment_splitting_cannot_manufacture_declaration_keyword(self):
+        names = contract.lean_declaration_names('the/- comment -/orem expected_sharp_fake : True := by trivial\n')
+        self.assertEqual(names, [])
+
+    def test_c3_missing_embedded_counterexample_pointer_rejected(self):
+        candidate = next(row for row in self.register['amendment_v1_1_evaluation']['candidates']
+                         if row['id'] == 'C3')
+        candidate.pop('counterexample_json_pointer')
+        self.assertTrue(contract.supplemental_errors(self.register))
+
+    def test_c3_wrong_embedded_counterexample_pointer_rejected(self):
+        candidate = next(row for row in self.register['amendment_v1_1_evaluation']['candidates']
+                         if row['id'] == 'C3')
+        candidate['counterexample_json_pointer'] = '/supplemental_crosswalk/0/falsification'
+        self.assertTrue(contract.supplemental_errors(self.register))
+
+    def test_c3_embedded_counterexample_target_cannot_disappear(self):
+        self.register['supplemental_crosswalk'][2].pop('falsification')
         self.assertTrue(contract.supplemental_errors(self.register))
 
 

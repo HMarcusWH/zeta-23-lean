@@ -83,7 +83,7 @@ are not off-line zeta-zero experiments. The dependency lock records hashes of
 the actual downloaded platform-independent wheels.
 
 The unchanged parent mutation suite passed 154 tests in each Python mode.
-The 96 child tests per mode exercise exact parent preservation, workflow pagination and
+The 114 child tests per mode exercise exact parent preservation, workflow pagination and
 attempt selection, scientific dispositions, stale receipts, source drift and
 the optional-amendment firewall. The parent extension helper is pure and is
 not yet wired into the parent's validator; no historical validation predicate

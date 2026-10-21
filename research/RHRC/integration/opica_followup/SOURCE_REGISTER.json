@@ -5630,7 +5630,7 @@
         "tested_identity": "P_epsilon-N_epsilon = D_epsilon + integral f_epsilon dnu - nu({0})",
         "identity_assessment": "Correct, including the sign of D=<Fourier(nu)-nu,f> and the origin subtraction; w_epsilon(0)=1 and w_epsilon(n)=0 at every nonzero integer.",
         "error": "The first displayed inequality has no upper restriction on epsilon. Its replacement of the smoothing-support interval [-1-epsilon,1+epsilon] by [-2,2] is invalid when epsilon>1.",
-        "counterexample_file": "C3_COUNTEREXAMPLE.json",
+        "counterexample_json_pointer": "/supplemental_crosswalk/2/falsification",
         "repair_proposals": [
           {
             "kind": "ADDITIONAL_PREMISE_REQUIRES_EXPLICIT_AMENDMENT_APPROVAL",
@@ -5801,7 +5801,7 @@
           "Zeta23.OPICA.unitTriangle_continuous",
           "Zeta23.OPICA.unitTriangle_nonneg"
         ],
-        "source_change_required": "First source inequality omits epsilon<=1; counterexample C3_COUNTEREXAMPLE.json.",
+        "source_change_required": "First source inequality omits epsilon<=1; the counterexample is embedded at JSON pointer /supplemental_crosswalk/2/falsification in this register.",
         "adversarial_checks": [
           "Exact epsilon4 finite-atom counterexample.",
           "Sign-changing integer correction with zero off-lattice negative mass.",
