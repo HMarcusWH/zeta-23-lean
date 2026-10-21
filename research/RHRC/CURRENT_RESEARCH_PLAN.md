@@ -1600,3 +1600,13 @@ The first theorem-extraction question for the next PR is whether opposite-good a
 ## Post-#282 contact-calculus candidate
 
 PR #282 is merged theorem authority. PR #283 is the active candidate for compressed-first real-aperture C2, weighted production-test authority, the Euler-corrected pair balance, actual stationary response, and inherited strict-even stationarity. These are candidate declarations until exact-head CI and axiom/proof-escape gates pass. Arithmetic saturation exclusion (OBS-060O), fresh-born transverse crossing, odd/tie closure, endpoint barriers, and RH remain OPEN.
+
+## OPICA supporting theorem programme
+
+The additional [OPICA implementation](integration/opica/README.md) targets all
+76 required supporting roots and every clause of the 25 supplied paper families.
+Its generic implication theorems retain their hypotheses, and its native adapters
+use the existing original drive, physical completion, selected zero and same
+generated output. They provide no independent arithmetic upper, J5.2/MS1 input,
+contact-to-heat construction, or Step 4 closing theorem. Existing OPEN claims,
+D2 dispositions and independent-review gates retain their prior authority.

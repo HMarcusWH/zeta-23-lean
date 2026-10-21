@@ -1,0 +1,2099 @@
+{
+  "schema": "OPICA_REPO_BUILD_SPEC_V1",
+  "date": "2026-10-21",
+  "status": "SPECIFICATION_ONLY_NOT_IMPLEMENTED",
+  "repository": "HMarcusWH/zeta-23-lean",
+  "base_commit": "97926d6a949fed7af0429a373b47abc772012834",
+  "base_tree": "3b8fb2b29f53247ad5143a603c047e160bddd37c",
+  "proposed_branch": "research/opica-obstruction-preservation",
+  "proposed_pr_title": "Formalize OPICA preservation architecture and native source adapters",
+  "pr_number": null,
+  "lean_toolchain": "leanprover/lean4:v4.33.0-rc2",
+  "mathlib_commit": "51e6992efd06126df61a496bebf8f49482a4e129",
+  "scope": {
+    "required_paper_ids": [
+      "L1",
+      "L2",
+      "L3",
+      "L4",
+      "L5",
+      "E1",
+      "E2",
+      "E3",
+      "E4",
+      "E5",
+      "C1",
+      "C2",
+      "A1",
+      "A2",
+      "A3",
+      "B1",
+      "B2",
+      "O1",
+      "O2",
+      "O3",
+      "O4",
+      "H1",
+      "H2",
+      "H3",
+      "H4"
+    ],
+    "required_native_bindings": true,
+    "silent_deferral_permitted": false,
+    "generic_premises_remain_explicit": true,
+    "non_goals": [
+      "Native J5.2 or MS1 proof",
+      "Native contact-to-signed-heat-defect existence",
+      "A-X/B-Y/C-Schur/OPEN-J46 proof",
+      "RH theorem",
+      "D2 continuation or status promotion",
+      "Toolchain migration",
+      "Historical PR292 review/acceptance amendments"
+    ]
+  },
+  "create": [
+    {
+      "path": "Zeta23/OPICA/LocalData.lean",
+      "category": "lean",
+      "operation": "create",
+      "purpose": "Source-tagged simple-pole witnesses, exact multiplier-order data, punctured/genuine-neighborhood identities and normalized Taylor observations.",
+      "wave": 1,
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "path": "Zeta23/OPICA/LocalObstruction.lean",
+      "category": "lean",
+      "operation": "create",
+      "purpose": "Unit-residue and finite-order completion laws; lower-jet vanishing; residual congruence; repeated completion and factorial/binomial normalization.",
+      "wave": 1,
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "path": "Zeta23/OPICA/LocalQuotients.lean",
+      "category": "lean",
+      "operation": "create",
+      "purpose": "Holomorphic-germ/Taylor quotient construction; zero ideal equality; pole-carrier to leading-jet isomorphism. Full L2 quotient clauses, not merely its residual corollary.",
+      "wave": 2,
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "path": "Zeta23/OPICA/ResidueLimits.lean",
+      "category": "lean",
+      "operation": "create",
+      "purpose": "Contour-norm residue continuity on a common disk and the escaping-tail counterexample with separate convergence/continuation domains.",
+      "wave": 2,
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "path": "Zeta23/OPICA/AffineTransport.lean",
+      "category": "lean",
+      "operation": "create",
+      "purpose": "Finite affine recursion, correction ledger, product/order propagation; raw cancellation control.",
+      "wave": 1,
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "path": "Zeta23/OPICA/EnergyRate.lean",
+      "category": "lean",
+      "operation": "create",
+      "purpose": "Positive horizon schedules; real/complex log comparison; subexponential additive error, positive-part/magnitude rates, extended limsup/liminf, two-sided scale costs.",
+      "wave": 1,
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "path": "Zeta23/OPICA/Composition.lean",
+      "category": "lean",
+      "operation": "create",
+      "purpose": "Accumulated affine budget, cofinal consumer, quotient faithfulness and source-typed finite paths. Native rate hypotheses stay explicit.",
+      "wave": 1,
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "path": "Zeta23/OPICA/ObservationCompatibility.lean",
+      "category": "lean",
+      "operation": "create",
+      "purpose": "Kernel recovery criterion, finite-dimensional range/left-annihilator equivalence and exact distance formula; equivalent observations preserve solution sets.",
+      "wave": 1,
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "path": "Zeta23/OPICA/DivisorBounds.lean",
+      "category": "lean",
+      "operation": "create",
+      "purpose": "Ordered factorization counts with positive indices; submultiplicativity, array-surjection square bound, explicit harmonic and square-root sums.",
+      "wave": 2,
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "path": "Zeta23/OPICA/PrimitiveMasks.lean",
+      "category": "lean",
+      "operation": "create",
+      "purpose": "Actual finite-at-horizon translate sums, positive integer indices, gcd-reduced low/high masks, measurable cutoff and integrability interfaces.",
+      "wave": 2,
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "path": "Zeta23/OPICA/DivisorMask.lean",
+      "category": "lean",
+      "operation": "create",
+      "purpose": "Full low-primitive integral bound, both masked Type I estimates, balanced comparison and two-mask regrouping/rate consumer.",
+      "wave": 2,
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "path": "Zeta23/OPICA/WeightedLaplace.lean",
+      "category": "lean",
+      "operation": "create",
+      "purpose": "Weighted causal L2 holomorphy, all derivative estimates and source-identified continuation/pole incompatibility. Strict half-plane only.",
+      "wave": 2,
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "path": "Zeta23/OPICA/RangeSeparation.lean",
+      "category": "lean",
+      "operation": "create",
+      "purpose": "Continuous annihilator and positive distance from actual range closure; functional norm and zero cases treated explicitly.",
+      "wave": 1,
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "path": "Zeta23/OPICA/NativeJetAdapter.lean",
+      "category": "lean",
+      "operation": "create",
+      "purpose": "Bind OPICA to existing physical input/kernel jets, selected right zero, damping, multiplicity and a single GeneratedStep123CompleteOutput. No native nonzero-jet premise.",
+      "wave": 3,
+      "trust_zone": "RH_FORMAL_CORE"
+    },
+    {
+      "path": "Zeta23/OPICA/NativeArithmeticAdapter.lean",
+      "category": "lean",
+      "operation": "create",
+      "purpose": "Construct the original j-drive bounded-causal instance, finite palette compensation and the actual low-mask instance. No higher-source/J5.2/MS1 premise promoted.",
+      "wave": 3,
+      "trust_zone": "RH_FORMAL_CORE"
+    },
+    {
+      "path": "Zeta23/OPICA/Involution.lean",
+      "category": "lean",
+      "operation": "create",
+      "purpose": "H3 linear-involution commutator theorem and zero selfdual projection on the common admissible domain.",
+      "wave": 1,
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "path": "Zeta23/OPICA/LocallyFiniteSignedMeasure.lean",
+      "category": "lean",
+      "operation": "create",
+      "purpose": "Locally finite real signed-measure representation with linear total-variation growth and faithful embedding into tempered distributions. No finite-global-variation shortcut.",
+      "wave": 4,
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "path": "Zeta23/OPICA/SincTriangle.lean",
+      "category": "lean",
+      "operation": "create",
+      "purpose": "Exact sinc-squared/triangle Fourier pair; Gaussian regularization, legitimate signed pairings and lattice Poisson summation needed by H1/H4.",
+      "wave": 4,
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "path": "Zeta23/OPICA/SignedHeatSeparator.lean",
+      "category": "lean",
+      "operation": "create",
+      "purpose": "Full signed sharp-gap rigidity and global negative off-lattice mass bound; integer support, periodicity and origin atom.",
+      "wave": 4,
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "path": "Zeta23/OPICA/FejerCompletion.lean",
+      "category": "lean",
+      "operation": "create",
+      "purpose": "Convergent Fejer lattice sum, floor formula, exact affine native-completion transform and one-sided cusp derivatives, with analytic domains.",
+      "wave": 4,
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "path": "Zeta23/OPICA/FourierCompatibility.lean",
+      "category": "lean",
+      "operation": "create",
+      "purpose": "Stable public import surface for H1-H4; no assumed native contact-to-defect construction.",
+      "wave": 4,
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "path": "Zeta23/OPICA/Counterexamples.lean",
+      "category": "lean",
+      "operation": "create",
+      "purpose": "Kernel-checked exact controls for affine cancellation, inverse scale loss, accumulated cost, wrong masks, rank-one/PSD inferences, projection loss and overdetermination.",
+      "wave": 3,
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "path": "Zeta23/OPICA.lean",
+      "category": "lean",
+      "operation": "create",
+      "purpose": "Normal mathematical public facade. Imported directly as Zeta23.OPICA; not an audit executable and not added to legacy headline root.",
+      "wave": 4,
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "path": "Zeta23/OPICA/Validation.lean",
+      "category": "lean",
+      "operation": "create",
+      "purpose": "Explicit typed consumers covering every required statement clause and the actual same-state native adapters; #check/#print-axiom surface is audit-only, not in the normal facade.",
+      "wave": 5,
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "path": "Zeta23/RHRC/OpicaTypeExprExport.lean",
+      "category": "lean",
+      "operation": "create",
+      "purpose": "Audit-only, source-attributed copy/adaptation of the frozen private Expr DAG serializer. Public exportType helper; fail-closed size limits; no mathematical authority.",
+      "wave": 5,
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "path": "Zeta23/RHRC/OpicaBindings.lean",
+      "category": "lean",
+      "operation": "create",
+      "purpose": "Compiler environment enumeration; exact module/kind resolution, full type/constructor DAGs, root axiom footprints and TYPE/VALUE/STRUCTURE dependencies.",
+      "wave": 5,
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "path": "research/RHRC/integration/opica/README.md",
+      "category": "documentation",
+      "operation": "create",
+      "purpose": "Public scope, import/build commands, proof/experiment distinction, pointer to exact paper and specifications.",
+      "wave": 0,
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "path": "research/RHRC/integration/opica/BUILD_SPEC.md",
+      "category": "documentation",
+      "operation": "create",
+      "purpose": "Approved build specification and scope: this document copied with its source identity.",
+      "wave": 0,
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "path": "research/RHRC/integration/opica/BUILD_MANIFEST.json",
+      "category": "build_configuration",
+      "operation": "create",
+      "purpose": "Allowed source delta, package import DAG, whole-paper coverage and pinned preconditions.",
+      "wave": 0,
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "path": "research/RHRC/integration/opica/PUBLIC_ROOTS.json",
+      "category": "build_configuration",
+      "operation": "create",
+      "purpose": "Required semantic theorem roots, kinds, modules, paper IDs, signatures and full public-namespace inventory policy.",
+      "wave": 0,
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "path": "research/RHRC/integration/opica/PAPER_CROSSWALK.json",
+      "category": "build_configuration",
+      "operation": "create",
+      "purpose": "Every clause of all 25 paper statements and 38 corrections mapped to root(s), controls, native/external status.",
+      "wave": 0,
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "path": "research/RHRC/integration/opica/SOURCE_REGISTER.json",
+      "category": "build_configuration",
+      "operation": "create",
+      "purpose": "Immutable paper-input hashes, repo/Lean/Mathlib pins, source-attributed codec, inherited-vs-new evidence scope.",
+      "wave": 0,
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "path": "research/RHRC/integration/opica/PROTECTED_STATE.json",
+      "category": "build_configuration",
+      "operation": "create",
+      "purpose": "Baseline bytes and JSON object projections forbidden to change; historical claims and D2/review state.",
+      "wave": 0,
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "path": "research/RHRC/integration/opica/WORKFLOW_CONTRACT.json",
+      "category": "build_configuration",
+      "operation": "create",
+      "purpose": "Required OPICA jobs and complete inherited-workflow harvest policy with explicit skips and attempts.",
+      "wave": 0,
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "path": "research/RHRC/integration/opica/POST_GREEN_RESEARCH.md",
+      "category": "documentation",
+      "operation": "create",
+      "purpose": "Actual post-green proof/CI/discovery harvest to be completed when results exist, initially explicitly pending; never auto-approve mathematical review.",
+      "wave": 0,
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "path": "research/RHRC/integration/opica/validate_contract.py",
+      "category": "audit_executable",
+      "operation": "create",
+      "purpose": "Fail-closed static file/namespace/25-ID coverage/import/firewall/classifier validation; outputs to supplied external artifact directory.",
+      "wave": 5,
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "path": "research/RHRC/integration/opica/build_receipt.py",
+      "category": "audit_executable",
+      "operation": "create",
+      "purpose": "Read exact compiler logs, validate lossless type DAGs/constructor types/axioms/source binding, emit receipt outside tracked tree.",
+      "wave": 5,
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "path": "research/RHRC/integration/opica/harvest_workflows.py",
+      "category": "audit_executable",
+      "operation": "create",
+      "purpose": "Consume paginated GitHub check/job/run records, preserve attempts, resolve exact effective jobs and reject unresolved required evidence.",
+      "wave": 5,
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "path": "research/RHRC/integration/opica/dependency_delta.py",
+      "category": "research_executable",
+      "operation": "create",
+      "purpose": "Compare compiler-derived uses and theorem/paper coverage with baseline; emit structural research delta, no logical-equivalence promotion.",
+      "wave": 5,
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "path": "research/RHRC/integration/opica/check_exact.py",
+      "category": "regression_executable",
+      "operation": "create",
+      "purpose": "Reproduce the paper 5,112 finite controls using checks that remain active under Python -O; distinguish any additional controls.",
+      "wave": 5,
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "path": "research/RHRC/integration/opica/tests/test_contract.py",
+      "category": "audit_test",
+      "operation": "create",
+      "purpose": "Missing/wrong path, duplicate root, missing subclause, import-cycle and no-placeholder/forbidden-scope mutations.",
+      "wave": 5,
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "path": "research/RHRC/integration/opica/tests/test_receipt.py",
+      "category": "audit_test",
+      "operation": "create",
+      "purpose": "Stale head/tree, wrong module/kind/source, missing/duplicate root, truncated DAG, hidden typeclass premise, extra axiom and semantic nonclaim mutations.",
+      "wave": 5,
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "path": "research/RHRC/integration/opica/tests/test_workflow_harvest.py",
+      "category": "audit_test",
+      "operation": "create",
+      "purpose": "Running/skipped/cancelled required jobs, partial reruns, stale synthetic merge, foreign head/tree, duplicate and conflicted run identities.",
+      "wave": 5,
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "path": "research/RHRC/integration/opica/tests/test_file_classes.py",
+      "category": "audit_test",
+      "operation": "create",
+      "purpose": "All new paths classified; Validation/audit helpers AUDIT_ONLY; native adapters RH_FORMAL_CORE; historical fixtures stay fixtures.",
+      "wave": 5,
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "path": "research/RHRC/integration/opica/tests/test_no_scope_promotion.py",
+      "category": "audit_test",
+      "operation": "create",
+      "purpose": "Four original OPEN records, old 118 theorem rows, STEP4_CUTS, original proof bytes, D2 and review gates remain unchanged.",
+      "wave": 5,
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "path": "research/RHRC/integration/opica/tests/test_dependency_delta.py",
+      "category": "audit_test",
+      "operation": "create",
+      "purpose": "Dependency provenance and count/report drift; structural sharing must not be reported as mathematical equivalence or closure.",
+      "wave": 5,
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "path": "research/RHRC/integration/opica/paper/OPICA_Paper_Construction_v1_0_2026-10-21.md",
+      "category": "frozen_paper",
+      "operation": "create",
+      "purpose": "Exact paper source bytes; no silent corrections.",
+      "wave": 0,
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "path": "research/RHRC/integration/opica/paper/OPICA_Lean_Implementation_Contract_2026-10-21.md",
+      "category": "frozen_paper",
+      "operation": "create",
+      "purpose": "Exact source contract, with refinements explained only in BUILD_SPEC/PAPER_CROSSWALK.",
+      "wave": 0,
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "path": "research/RHRC/integration/opica/paper/OPICA_Theorem_and_Audit_Ledger_2026-10-21.json",
+      "category": "frozen_paper",
+      "operation": "create",
+      "purpose": "Exact paper ledger, including paper-only dependencies and OPEN targets; formal status belongs to separate new receipts.",
+      "wave": 0,
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "path": ".github/workflows/rhrc_opica.yml",
+      "category": "workflow",
+      "operation": "create",
+      "purpose": "Read-only explicit OPICA compile/audit, exact regression, dependency delta and component summary; protected legacy workflows unchanged.",
+      "wave": 5,
+      "trust_zone": "AUDIT_ONLY"
+    }
+  ],
+  "modify": [
+    {
+      "path": "Zeta23/RHRC/RegisteredClaimBindings.lean",
+      "operation": "modify",
+      "purpose": "Append direct imports for new registered theorem defining modules and exact #check/#print axioms lines. Existing rows unchanged; no import of Validation or OpicaBindings. Import list must equal registry-derived module set.",
+      "base_git_blob": "aced4f0aa04e05f208729a8a84ecea7b7de22cfc",
+      "base_sha256": "4be0a24ff804c0038c450630db28a9b576ac168c4b7a33a2b154eddfdacfcaa8",
+      "base_bytes": 27446
+    },
+    {
+      "path": "research/RHRC/CLAIM_REGISTRY.json",
+      "operation": "modify",
+      "purpose": "Append source-bound OPICA_* theorem claims only after those exact roots compile and pass semantic/axiom review. Generic claims state all premises. All existing 122 records unchanged. No new route assigned; no closing predicate promoted.",
+      "base_git_blob": "133d08a74383a462d2064908b1676e723134d105",
+      "base_sha256": "16604deab171e1281037eda559c50fe10d39962677c0d9342e361e5df3adf72c",
+      "base_bytes": 132435
+    },
+    {
+      "path": "research/RHRC/REGISTERED_THEOREM_BINDINGS.json",
+      "operation": "modify",
+      "purpose": "Append one binding per approved OPICA primary theorem root; source and module must match compiler. Preserve all old 118 bindings, candidate fields, schema and RH_OPEN.",
+      "base_git_blob": "4775a0d6e2f8ed6ed2b106f283b55187ce9aa263",
+      "base_sha256": "0c125d966191930f14190dfeb9685a59dbb0062b8f7c32fc075af92e4f6ad8dc",
+      "base_bytes": 28527
+    },
+    {
+      "path": "research/RHRC/graph/FILE_CLASSES.json",
+      "operation": "modify",
+      "purpose": "Insert narrow rules ahead of generic Zeta23 rule: OPICA Validation is AUDIT_ONLY; NativeJetAdapter and NativeArithmeticAdapter are RH_FORMAL_CORE; other OPICA modules are AUXILIARY_FORMALIZATION. Existing classifications unchanged.",
+      "base_git_blob": "96d0c6e897f7d15ccc55449a11af1ee05f217888",
+      "base_sha256": "67ec2b288c3a941b66a8cbbf8ee823cf495d484f93cfb48a940ec29b200ac2d3",
+      "base_bytes": 11573
+    },
+    {
+      "path": "research/RHRC/graph/SEMANTIC_CLOSURE_CONFIG.json",
+      "operation": "modify",
+      "purpose": "Add exact standalone-module roles for the 26 new Lean modules (mathematical API, native adapters, validation and audit exporters), preserving every old role. Root Zeta23.lean is unchanged, so old reachability must stay unchanged.",
+      "base_git_blob": "3cb03ba67c23c55cd7632fe5a714876ebf669653",
+      "base_sha256": "fbb06755461c4233a74c65cbeba564ae17579e62e88cb685553beb59e2f7270a",
+      "base_bytes": 29018
+    },
+    {
+      "path": "research/RHRC/tools/run_suite.py",
+      "operation": "modify",
+      "purpose": "Add dependency-light OPICA static contract check and unittest discovery. Preserve every existing check and --skip-derived-state meaning; do not silently invoke a generator or expensive independent research campaign.",
+      "base_git_blob": "8b9dd319e375c3c4b41001d3dfdaf3757497dcf3",
+      "base_sha256": "51a3fc9cfe679a9abf6fda97cf39024f1bd21f4b04d5544540af21bab1c79406",
+      "base_bytes": 3370
+    },
+    {
+      "path": "README.md",
+      "operation": "modify",
+      "purpose": "Add dated OPICA section with explicit import, dedicated build/CI, scope and OPEN firewall; do not rewrite historical authority sections or upstream headline theorems.",
+      "base_git_blob": "d3da5bc92550feebdd2a144bd560a3a033696522",
+      "base_sha256": "5f4b332f16e87df877b46b6fc71c069ecd2700b1bf320aed12284680f8c809aa",
+      "base_bytes": 37279
+    },
+    {
+      "path": "research/RHRC/README.md",
+      "operation": "modify",
+      "purpose": "Add OPICA package navigation and exact formalization/CI status with link to crosswalk and receipt artifact; preserve legacy route statuses.",
+      "base_git_blob": "5fba2538ac8a2ced7c48a1204b1ca1fb673fff93",
+      "base_sha256": "24ee89e20085223145902af40d323ad1f8aec054b77ebf6be8a8c2aa4fe6e4d8",
+      "base_bytes": 25340
+    },
+    {
+      "path": "research/RHRC/CURRENT_RESEARCH_PLAN.md",
+      "operation": "modify",
+      "purpose": "Add OPICA implementation checkpoint and post-green questions; retain all unresolved arithmetic/contact/native-rate targets and D2 disposition.",
+      "base_git_blob": "97330f2cad66fd2e7ef23b5a78e0cd06ccb22181",
+      "base_sha256": "dcb4607d037ab53d0c7ac6f01aaffe84aa384684a7864d33b962273367a21948",
+      "base_bytes": 72219
+    }
+  ],
+  "delete": [],
+  "regenerate": {
+    "producer": "research/RHRC/tools/materialize_derived_state.py --write",
+    "freshness_gate": "research/RHRC/tools/materialize_derived_state.py --check",
+    "paths": [
+      "research/RHRC/ffbbp/generated/RHKG_CANDIDATE_REDUCTION_ASSURANCE.json",
+      "research/RHRC/graph/compiler/REGISTERED_DECLARATION_DEPENDENCIES.jsonl",
+      "research/RHRC/graph/generated/CONTACT_QUOTIENT_DECLARATION_DEPENDENCIES.jsonl",
+      "research/RHRC/graph/generated/CONTACT_QUOTIENT_VIEW.json",
+      "research/RHRC/graph/generated/DEPENDENCY_BRIDGE_FRONTIERS.json",
+      "research/RHRC/graph/generated/DEPENDENCY_COHORT_ATOMS.json",
+      "research/RHRC/graph/generated/DEPENDENCY_COHORT_OVERLAP.json",
+      "research/RHRC/graph/generated/DEPENDENCY_KERNEL_ATLAS.json",
+      "research/RHRC/graph/generated/DEPENDENCY_KERNEL_QUOTIENT.json",
+      "research/RHRC/graph/generated/DEPENDENCY_PROJECTION_FRONTIERS.json",
+      "research/RHRC/graph/generated/DEPENDENCY_PROJECTION_QUOTIENTS.json",
+      "research/RHRC/graph/generated/DEPENDENCY_PROJECTION_SUMMARY.json",
+      "research/RHRC/graph/generated/DEPENDENCY_SIGNATURE_CLASSES.json",
+      "research/RHRC/graph/generated/DOCUMENT_SEMANTIC_CLOSURE.json",
+      "research/RHRC/graph/generated/ENTRYPOINT_REACHABILITY.json",
+      "research/RHRC/graph/generated/MODULE_SEMANTIC_CLOSURE.json",
+      "research/RHRC/graph/generated/REPOSITORY_COVERAGE.json",
+      "research/RHRC/graph/generated/THEOREM_CLAIM_MAP.json",
+      "research/RHRC/graph/generated/THEOREM_DEPENDENCY_CLOSURE.json",
+      "research/RHRC/graph/generated/UNRESOLVED_GRAPH_ITEMS.json",
+      "research/RHRC/graph/generated/lean_declarations.jsonl",
+      "research/RHRC/graph/generated/lean_modules.jsonl",
+      "research/RHRC/graph/generated/lean_source_declarations.jsonl",
+      "research/RHRC/graph/generated/registry_nodes.jsonl",
+      "research/RHRC/graph/generated/relations/relations-0.jsonl",
+      "research/RHRC/graph/generated/relations/relations-1.jsonl",
+      "research/RHRC/graph/generated/relations/relations-2.jsonl",
+      "research/RHRC/graph/generated/relations/relations-3.jsonl",
+      "research/RHRC/graph/generated/relations/relations-4.jsonl",
+      "research/RHRC/graph/generated/relations/relations-5.jsonl",
+      "research/RHRC/graph/generated/relations/relations-6.jsonl",
+      "research/RHRC/graph/generated/relations/relations-7.jsonl",
+      "research/RHRC/graph/generated/relations/relations-8.jsonl",
+      "research/RHRC/graph/generated/relations/relations-9.jsonl",
+      "research/RHRC/graph/generated/relations/relations-a.jsonl",
+      "research/RHRC/graph/generated/relations/relations-b.jsonl",
+      "research/RHRC/graph/generated/relations/relations-c.jsonl",
+      "research/RHRC/graph/generated/relations/relations-d.jsonl",
+      "research/RHRC/graph/generated/relations/relations-e.jsonl",
+      "research/RHRC/graph/generated/relations/relations-f.jsonl",
+      "research/RHRC/graph/generated/repository_files.jsonl",
+      "research/RHRC/integration/generated/RH_CORE_SOURCE_ONLY_THEOREMS.jsonl",
+      "research/RHRC/integration/generated/SOURCE_CANDIDATE_RESOLUTION.jsonl",
+      "research/RHRC/integration/generated/SOURCE_CANDIDATE_SUMMARY.json",
+      "research/RHRC/integration/generated/source_only_dependencies/SOURCE_ONLY_CANDIDATE_DEPENDENCIES-0.jsonl",
+      "research/RHRC/integration/generated/source_only_dependencies/SOURCE_ONLY_CANDIDATE_DEPENDENCIES-1.jsonl",
+      "research/RHRC/integration/generated/source_only_dependencies/SOURCE_ONLY_CANDIDATE_DEPENDENCIES-2.jsonl",
+      "research/RHRC/integration/generated/source_only_dependencies/SOURCE_ONLY_CANDIDATE_DEPENDENCIES-3.jsonl",
+      "research/RHRC/integration/generated/source_only_dependencies/SOURCE_ONLY_CANDIDATE_DEPENDENCIES-4.jsonl",
+      "research/RHRC/integration/generated/source_only_dependencies/SOURCE_ONLY_CANDIDATE_DEPENDENCIES-5.jsonl",
+      "research/RHRC/integration/generated/source_only_dependencies/SOURCE_ONLY_CANDIDATE_DEPENDENCIES-6.jsonl",
+      "research/RHRC/integration/generated/source_only_dependencies/SOURCE_ONLY_CANDIDATE_DEPENDENCIES-7.jsonl",
+      "research/RHRC/integration/generated/source_only_dependencies/SOURCE_ONLY_CANDIDATE_DEPENDENCIES-8.jsonl",
+      "research/RHRC/integration/generated/source_only_dependencies/SOURCE_ONLY_CANDIDATE_DEPENDENCIES-9.jsonl",
+      "research/RHRC/integration/generated/source_only_dependencies/SOURCE_ONLY_CANDIDATE_DEPENDENCIES-a.jsonl",
+      "research/RHRC/integration/generated/source_only_dependencies/SOURCE_ONLY_CANDIDATE_DEPENDENCIES-b.jsonl",
+      "research/RHRC/integration/generated/source_only_dependencies/SOURCE_ONLY_CANDIDATE_DEPENDENCIES-c.jsonl",
+      "research/RHRC/integration/generated/source_only_dependencies/SOURCE_ONLY_CANDIDATE_DEPENDENCIES-d.jsonl",
+      "research/RHRC/integration/generated/source_only_dependencies/SOURCE_ONLY_CANDIDATE_DEPENDENCIES-e.jsonl",
+      "research/RHRC/integration/generated/source_only_dependencies/SOURCE_ONLY_CANDIDATE_DEPENDENCIES-f.jsonl",
+      "research/RHRC/ool/generated/RHKG_OOL_PHASE_ATLAS.json",
+      "research/RHRC/ool/generated/RHKG_OOL_ROUTE_CONTACTS.jsonl"
+    ],
+    "expected_diff_semantics": "These exact existing outputs are all rerun; commit only resulting byte changes. Not a claim that every listed file must change.",
+    "forbidden": "No manual edits; no frozen history changes; do not fabricate new generated paths to silence a checker."
+  },
+  "modules": [
+    {
+      "path": "Zeta23/OPICA/LocalData.lean",
+      "module": "Zeta23.OPICA.LocalData",
+      "purpose": "Source-tagged simple-pole witnesses, exact multiplier-order data, punctured/genuine-neighborhood identities and normalized Taylor observations.",
+      "paper_ids": [],
+      "proposed_project_imports": [],
+      "existing_project_imports": [],
+      "wave": 1,
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "path": "Zeta23/OPICA/LocalObstruction.lean",
+      "module": "Zeta23.OPICA.LocalObstruction",
+      "purpose": "Unit-residue and finite-order completion laws; lower-jet vanishing; residual congruence; repeated completion and factorial/binomial normalization.",
+      "paper_ids": [
+        "L1",
+        "L2",
+        "L3"
+      ],
+      "proposed_project_imports": [
+        "Zeta23.OPICA.LocalData"
+      ],
+      "existing_project_imports": [],
+      "wave": 1,
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "path": "Zeta23/OPICA/LocalQuotients.lean",
+      "module": "Zeta23.OPICA.LocalQuotients",
+      "purpose": "Holomorphic-germ/Taylor quotient construction; zero ideal equality; pole-carrier to leading-jet isomorphism. Full L2 quotient clauses, not merely its residual corollary.",
+      "paper_ids": [
+        "L2"
+      ],
+      "proposed_project_imports": [
+        "Zeta23.OPICA.LocalObstruction"
+      ],
+      "existing_project_imports": [],
+      "wave": 2,
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "path": "Zeta23/OPICA/ResidueLimits.lean",
+      "module": "Zeta23.OPICA.ResidueLimits",
+      "purpose": "Contour-norm residue continuity on a common disk and the escaping-tail counterexample with separate convergence/continuation domains.",
+      "paper_ids": [
+        "L5"
+      ],
+      "proposed_project_imports": [
+        "Zeta23.OPICA.LocalData"
+      ],
+      "existing_project_imports": [],
+      "wave": 2,
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "path": "Zeta23/OPICA/AffineTransport.lean",
+      "module": "Zeta23.OPICA.AffineTransport",
+      "purpose": "Finite affine recursion, correction ledger, product/order propagation; raw cancellation control.",
+      "paper_ids": [
+        "L4"
+      ],
+      "proposed_project_imports": [
+        "Zeta23.OPICA.LocalObstruction"
+      ],
+      "existing_project_imports": [],
+      "wave": 1,
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "path": "Zeta23/OPICA/EnergyRate.lean",
+      "module": "Zeta23.OPICA.EnergyRate",
+      "purpose": "Positive horizon schedules; real/complex log comparison; subexponential additive error, positive-part/magnitude rates, extended limsup/liminf, two-sided scale costs.",
+      "paper_ids": [
+        "E1",
+        "E2",
+        "E3"
+      ],
+      "proposed_project_imports": [],
+      "existing_project_imports": [],
+      "wave": 1,
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "path": "Zeta23/OPICA/Composition.lean",
+      "module": "Zeta23.OPICA.Composition",
+      "purpose": "Accumulated affine budget, cofinal consumer, quotient faithfulness and source-typed finite paths. Native rate hypotheses stay explicit.",
+      "paper_ids": [
+        "E4",
+        "E5",
+        "C1",
+        "C2"
+      ],
+      "proposed_project_imports": [
+        "Zeta23.OPICA.AffineTransport",
+        "Zeta23.OPICA.EnergyRate"
+      ],
+      "existing_project_imports": [],
+      "wave": 1,
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "path": "Zeta23/OPICA/ObservationCompatibility.lean",
+      "module": "Zeta23.OPICA.ObservationCompatibility",
+      "purpose": "Kernel recovery criterion, finite-dimensional range/left-annihilator equivalence and exact distance formula; equivalent observations preserve solution sets.",
+      "paper_ids": [
+        "O1",
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "proposed_project_imports": [],
+      "existing_project_imports": [],
+      "wave": 1,
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "path": "Zeta23/OPICA/DivisorBounds.lean",
+      "module": "Zeta23.OPICA.DivisorBounds",
+      "purpose": "Ordered factorization counts with positive indices; submultiplicativity, array-surjection square bound, explicit harmonic and square-root sums.",
+      "paper_ids": [
+        "A1"
+      ],
+      "proposed_project_imports": [],
+      "existing_project_imports": [],
+      "wave": 2,
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "path": "Zeta23/OPICA/PrimitiveMasks.lean",
+      "module": "Zeta23.OPICA.PrimitiveMasks",
+      "purpose": "Actual finite-at-horizon translate sums, positive integer indices, gcd-reduced low/high masks, measurable cutoff and integrability interfaces.",
+      "paper_ids": [
+        "A2",
+        "A3"
+      ],
+      "proposed_project_imports": [],
+      "existing_project_imports": [],
+      "wave": 2,
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "path": "Zeta23/OPICA/DivisorMask.lean",
+      "module": "Zeta23.OPICA.DivisorMask",
+      "purpose": "Full low-primitive integral bound, both masked Type I estimates, balanced comparison and two-mask regrouping/rate consumer.",
+      "paper_ids": [
+        "A2",
+        "A3"
+      ],
+      "proposed_project_imports": [
+        "Zeta23.OPICA.DivisorBounds",
+        "Zeta23.OPICA.PrimitiveMasks",
+        "Zeta23.OPICA.EnergyRate"
+      ],
+      "existing_project_imports": [],
+      "wave": 2,
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "path": "Zeta23/OPICA/WeightedLaplace.lean",
+      "module": "Zeta23.OPICA.WeightedLaplace",
+      "purpose": "Weighted causal L2 holomorphy, all derivative estimates and source-identified continuation/pole incompatibility. Strict half-plane only.",
+      "paper_ids": [
+        "B1"
+      ],
+      "proposed_project_imports": [
+        "Zeta23.OPICA.LocalData"
+      ],
+      "existing_project_imports": [],
+      "wave": 2,
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "path": "Zeta23/OPICA/RangeSeparation.lean",
+      "module": "Zeta23.OPICA.RangeSeparation",
+      "purpose": "Continuous annihilator and positive distance from actual range closure; functional norm and zero cases treated explicitly.",
+      "paper_ids": [
+        "B2"
+      ],
+      "proposed_project_imports": [],
+      "existing_project_imports": [],
+      "wave": 1,
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "path": "Zeta23/OPICA/NativeJetAdapter.lean",
+      "module": "Zeta23.OPICA.NativeJetAdapter",
+      "purpose": "Bind OPICA to existing physical input/kernel jets, selected right zero, damping, multiplicity and a single GeneratedStep123CompleteOutput. No native nonzero-jet premise.",
+      "paper_ids": [],
+      "proposed_project_imports": [
+        "Zeta23.OPICA.LocalObstruction",
+        "Zeta23.OPICA.Composition",
+        "Zeta23.OPICA.RangeSeparation"
+      ],
+      "existing_project_imports": [
+        "Zeta23.ExceptionalZero.NativeActualInputZeroJets",
+        "Zeta23.ExceptionalZero.Step123CompleteOutput"
+      ],
+      "wave": 3,
+      "trust_zone": "RH_FORMAL_CORE"
+    },
+    {
+      "path": "Zeta23/OPICA/NativeArithmeticAdapter.lean",
+      "module": "Zeta23.OPICA.NativeArithmeticAdapter",
+      "purpose": "Construct the original j-drive bounded-causal instance, finite palette compensation and the actual low-mask instance. No higher-source/J5.2/MS1 premise promoted.",
+      "paper_ids": [],
+      "proposed_project_imports": [
+        "Zeta23.OPICA.DivisorMask"
+      ],
+      "existing_project_imports": [
+        "Zeta23.CCM.NativeIntegerDriveFiniteOrderBounds",
+        "Zeta23.CCM.OriginalSincNativeSource"
+      ],
+      "wave": 3,
+      "trust_zone": "RH_FORMAL_CORE"
+    },
+    {
+      "path": "Zeta23/OPICA/Involution.lean",
+      "module": "Zeta23.OPICA.Involution",
+      "purpose": "H3 linear-involution commutator theorem and zero selfdual projection on the common admissible domain.",
+      "paper_ids": [
+        "H3"
+      ],
+      "proposed_project_imports": [],
+      "existing_project_imports": [],
+      "wave": 1,
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "path": "Zeta23/OPICA/LocallyFiniteSignedMeasure.lean",
+      "module": "Zeta23.OPICA.LocallyFiniteSignedMeasure",
+      "purpose": "Locally finite real signed-measure representation with linear total-variation growth and faithful embedding into tempered distributions. No finite-global-variation shortcut.",
+      "paper_ids": [],
+      "proposed_project_imports": [],
+      "existing_project_imports": [],
+      "wave": 4,
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "path": "Zeta23/OPICA/SincTriangle.lean",
+      "module": "Zeta23.OPICA.SincTriangle",
+      "purpose": "Exact sinc-squared/triangle Fourier pair; Gaussian regularization, legitimate signed pairings and lattice Poisson summation needed by H1/H4.",
+      "paper_ids": [],
+      "proposed_project_imports": [
+        "Zeta23.OPICA.LocallyFiniteSignedMeasure"
+      ],
+      "existing_project_imports": [],
+      "wave": 4,
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "path": "Zeta23/OPICA/SignedHeatSeparator.lean",
+      "module": "Zeta23.OPICA.SignedHeatSeparator",
+      "purpose": "Full signed sharp-gap rigidity and global negative off-lattice mass bound; integer support, periodicity and origin atom.",
+      "paper_ids": [
+        "H1",
+        "H2"
+      ],
+      "proposed_project_imports": [
+        "Zeta23.OPICA.SincTriangle",
+        "Zeta23.OPICA.LocallyFiniteSignedMeasure"
+      ],
+      "existing_project_imports": [],
+      "wave": 4,
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "path": "Zeta23/OPICA/FejerCompletion.lean",
+      "module": "Zeta23.OPICA.FejerCompletion",
+      "purpose": "Convergent Fejer lattice sum, floor formula, exact affine native-completion transform and one-sided cusp derivatives, with analytic domains.",
+      "paper_ids": [
+        "H4"
+      ],
+      "proposed_project_imports": [
+        "Zeta23.OPICA.SincTriangle",
+        "Zeta23.OPICA.AffineTransport"
+      ],
+      "existing_project_imports": [
+        "Zeta23.CCM.NativePositiveCompletionCells",
+        "Zeta23.CCM.NativePositiveCompletionComplexLaplace"
+      ],
+      "wave": 4,
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "path": "Zeta23/OPICA/FourierCompatibility.lean",
+      "module": "Zeta23.OPICA.FourierCompatibility",
+      "purpose": "Stable public import surface for H1-H4; no assumed native contact-to-defect construction.",
+      "paper_ids": [
+        "H1",
+        "H2",
+        "H3",
+        "H4"
+      ],
+      "proposed_project_imports": [
+        "Zeta23.OPICA.Involution",
+        "Zeta23.OPICA.SignedHeatSeparator",
+        "Zeta23.OPICA.FejerCompletion"
+      ],
+      "existing_project_imports": [],
+      "wave": 4,
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "path": "Zeta23/OPICA/Counterexamples.lean",
+      "module": "Zeta23.OPICA.Counterexamples",
+      "purpose": "Kernel-checked exact controls for affine cancellation, inverse scale loss, accumulated cost, wrong masks, rank-one/PSD inferences, projection loss and overdetermination.",
+      "paper_ids": [
+        "L4",
+        "L5",
+        "E3",
+        "E4",
+        "A2",
+        "O1",
+        "O2",
+        "O3",
+        "H3"
+      ],
+      "proposed_project_imports": [
+        "Zeta23.OPICA.LocalObstruction",
+        "Zeta23.OPICA.AffineTransport",
+        "Zeta23.OPICA.EnergyRate",
+        "Zeta23.OPICA.Composition",
+        "Zeta23.OPICA.ObservationCompatibility",
+        "Zeta23.OPICA.PrimitiveMasks",
+        "Zeta23.OPICA.Involution"
+      ],
+      "existing_project_imports": [],
+      "wave": 3,
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "path": "Zeta23/OPICA.lean",
+      "module": "Zeta23.OPICA",
+      "purpose": "Normal mathematical public facade. Imported directly as Zeta23.OPICA; not an audit executable and not added to legacy headline root.",
+      "paper_ids": [],
+      "proposed_project_imports": [
+        "Zeta23.OPICA.LocalQuotients",
+        "Zeta23.OPICA.ResidueLimits",
+        "Zeta23.OPICA.Composition",
+        "Zeta23.OPICA.ObservationCompatibility",
+        "Zeta23.OPICA.DivisorMask",
+        "Zeta23.OPICA.WeightedLaplace",
+        "Zeta23.OPICA.RangeSeparation",
+        "Zeta23.OPICA.NativeJetAdapter",
+        "Zeta23.OPICA.NativeArithmeticAdapter",
+        "Zeta23.OPICA.FourierCompatibility",
+        "Zeta23.OPICA.Counterexamples"
+      ],
+      "existing_project_imports": [],
+      "wave": 4,
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "path": "Zeta23/OPICA/Validation.lean",
+      "module": "Zeta23.OPICA.Validation",
+      "purpose": "Explicit typed consumers covering every required statement clause and the actual same-state native adapters; #check/#print-axiom surface is audit-only, not in the normal facade.",
+      "paper_ids": [
+        "L1",
+        "L2",
+        "L3",
+        "L4",
+        "L5",
+        "E1",
+        "E2",
+        "E3",
+        "E4",
+        "E5",
+        "C1",
+        "C2",
+        "A1",
+        "A2",
+        "A3",
+        "B1",
+        "B2",
+        "O1",
+        "O2",
+        "O3",
+        "O4",
+        "H1",
+        "H2",
+        "H3",
+        "H4"
+      ],
+      "proposed_project_imports": [
+        "Zeta23.OPICA"
+      ],
+      "existing_project_imports": [],
+      "wave": 5,
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "path": "Zeta23/RHRC/OpicaTypeExprExport.lean",
+      "module": "Zeta23.RHRC.OpicaTypeExprExport",
+      "purpose": "Audit-only, source-attributed copy/adaptation of the frozen private Expr DAG serializer. Public exportType helper; fail-closed size limits; no mathematical authority.",
+      "paper_ids": [],
+      "proposed_project_imports": [],
+      "existing_project_imports": [],
+      "wave": 5,
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "path": "Zeta23/RHRC/OpicaBindings.lean",
+      "module": "Zeta23.RHRC.OpicaBindings",
+      "purpose": "Compiler environment enumeration; exact module/kind resolution, full type/constructor DAGs, root axiom footprints and TYPE/VALUE/STRUCTURE dependencies.",
+      "paper_ids": [],
+      "proposed_project_imports": [
+        "Zeta23.OPICA.Validation",
+        "Zeta23.RHRC.OpicaTypeExprExport"
+      ],
+      "existing_project_imports": [
+        "Zeta23.RHRC.DeclarationDependencyExport",
+        "Zeta23.RHRC.SourceCandidateResolution"
+      ],
+      "wave": 5,
+      "trust_zone": "AUDIT_ONLY"
+    }
+  ],
+  "required_theorem_roots": [
+    {
+      "id": "OPICA_L1_UNIT_MUL_SIMPLEPOLE_RESIDUE",
+      "paper_id": "L1",
+      "full_name": "Zeta23.OPICA.unit_mul_simplePole_residue",
+      "module": "Zeta23.OPICA.LocalObstruction",
+      "path": "Zeta23/OPICA/LocalObstruction.lean",
+      "kind": "THEOREM",
+      "requirement": "Exact finite multiplier order, analytic representative and normalized leading derivative; lower derivatives vanish; center equality never inferred from punctured totalized division.",
+      "required_for_full_pr": true,
+      "registry_after_proof": true,
+      "scope": "GENERIC_MATHEMATICAL_THEOREM",
+      "current_status": "PLANNED_NOT_IMPLEMENTED"
+    },
+    {
+      "id": "OPICA_L1_COMPLETION_REGULARREPRESENTATIVE_ANALYTIC",
+      "paper_id": "L1",
+      "full_name": "Zeta23.OPICA.completion_regularRepresentative_analytic",
+      "module": "Zeta23.OPICA.LocalObstruction",
+      "path": "Zeta23/OPICA/LocalObstruction.lean",
+      "kind": "THEOREM",
+      "requirement": "Exact finite multiplier order, analytic representative and normalized leading derivative; lower derivatives vanish; center equality never inferred from punctured totalized division.",
+      "required_for_full_pr": true,
+      "registry_after_proof": true,
+      "scope": "GENERIC_MATHEMATICAL_THEOREM",
+      "current_status": "PLANNED_NOT_IMPLEMENTED"
+    },
+    {
+      "id": "OPICA_L1_COMPLETION_ORDER",
+      "paper_id": "L1",
+      "full_name": "Zeta23.OPICA.completion_order",
+      "module": "Zeta23.OPICA.LocalObstruction",
+      "path": "Zeta23/OPICA/LocalObstruction.lean",
+      "kind": "THEOREM",
+      "requirement": "Exact finite multiplier order, analytic representative and normalized leading derivative; lower derivatives vanish; center equality never inferred from punctured totalized division.",
+      "required_for_full_pr": true,
+      "registry_after_proof": true,
+      "scope": "GENERIC_MATHEMATICAL_THEOREM",
+      "current_status": "PLANNED_NOT_IMPLEMENTED"
+    },
+    {
+      "id": "OPICA_L1_COMPLETION_LEADING_JET",
+      "paper_id": "L1",
+      "full_name": "Zeta23.OPICA.completion_leading_jet",
+      "module": "Zeta23.OPICA.LocalObstruction",
+      "path": "Zeta23/OPICA/LocalObstruction.lean",
+      "kind": "THEOREM",
+      "requirement": "Exact finite multiplier order, analytic representative and normalized leading derivative; lower derivatives vanish; center equality never inferred from punctured totalized division.",
+      "required_for_full_pr": true,
+      "registry_after_proof": true,
+      "scope": "GENERIC_MATHEMATICAL_THEOREM",
+      "current_status": "PLANNED_NOT_IMPLEMENTED"
+    },
+    {
+      "id": "OPICA_L2_ZERO_IDEAL_EQ_COORDINATE_POWER",
+      "paper_id": "L2",
+      "full_name": "Zeta23.OPICA.zero_ideal_eq_coordinate_power",
+      "module": "Zeta23.OPICA.LocalQuotients",
+      "path": "Zeta23/OPICA/LocalQuotients.lean",
+      "kind": "THEOREM",
+      "requirement": "Prove the actual holomorphic-germ ideals and quotient equivalences (existence of ring/linear equivalence with specified Taylor coordinates). Not substituted by an abstract isomorphism hypothesis.",
+      "required_for_full_pr": true,
+      "registry_after_proof": true,
+      "scope": "GENERIC_MATHEMATICAL_THEOREM",
+      "current_status": "PLANNED_NOT_IMPLEMENTED"
+    },
+    {
+      "id": "OPICA_L2_TRUNCATED_TAYLOR_QUOTIENT_EQUIV",
+      "paper_id": "L2",
+      "full_name": "Zeta23.OPICA.truncated_taylor_quotient_equiv",
+      "module": "Zeta23.OPICA.LocalQuotients",
+      "path": "Zeta23/OPICA/LocalQuotients.lean",
+      "kind": "THEOREM",
+      "requirement": "Prove the actual holomorphic-germ ideals and quotient equivalences (existence of ring/linear equivalence with specified Taylor coordinates). Not substituted by an abstract isomorphism hypothesis.",
+      "required_for_full_pr": true,
+      "registry_after_proof": true,
+      "scope": "GENERIC_MATHEMATICAL_THEOREM",
+      "current_status": "PLANNED_NOT_IMPLEMENTED"
+    },
+    {
+      "id": "OPICA_L2_COMPLETION_QUOTIENT_EQUIV",
+      "paper_id": "L2",
+      "full_name": "Zeta23.OPICA.completion_quotient_equiv",
+      "module": "Zeta23.OPICA.LocalQuotients",
+      "path": "Zeta23/OPICA/LocalQuotients.lean",
+      "kind": "THEOREM",
+      "requirement": "Prove the actual holomorphic-germ ideals and quotient equivalences (existence of ring/linear equivalence with specified Taylor coordinates). Not substituted by an abstract isomorphism hypothesis.",
+      "required_for_full_pr": true,
+      "registry_after_proof": true,
+      "scope": "GENERIC_MATHEMATICAL_THEOREM",
+      "current_status": "PLANNED_NOT_IMPLEMENTED"
+    },
+    {
+      "id": "OPICA_L2_RESIDUAL_CONGR_PRESERVES_RESIDUE",
+      "paper_id": "L2",
+      "full_name": "Zeta23.OPICA.residual_congr_preserves_residue",
+      "module": "Zeta23.OPICA.LocalObstruction",
+      "path": "Zeta23/OPICA/LocalObstruction.lean",
+      "kind": "THEOREM",
+      "requirement": "Residual class 1+(Z), any finite nonnegative power/product, exact residue and vanishing order of the difference.",
+      "required_for_full_pr": true,
+      "registry_after_proof": true,
+      "scope": "GENERIC_MATHEMATICAL_THEOREM",
+      "current_status": "PLANNED_NOT_IMPLEMENTED"
+    },
+    {
+      "id": "OPICA_L2_FINITE_RESIDUAL_PRODUCTS_PRESERVE_RESIDUE",
+      "paper_id": "L2",
+      "full_name": "Zeta23.OPICA.finite_residual_products_preserve_residue",
+      "module": "Zeta23.OPICA.LocalObstruction",
+      "path": "Zeta23/OPICA/LocalObstruction.lean",
+      "kind": "THEOREM",
+      "requirement": "Residual class 1+(Z), any finite nonnegative power/product, exact residue and vanishing order of the difference.",
+      "required_for_full_pr": true,
+      "registry_after_proof": true,
+      "scope": "GENERIC_MATHEMATICAL_THEOREM",
+      "current_status": "PLANNED_NOT_IMPLEMENTED"
+    },
+    {
+      "id": "OPICA_L3_ITERATED_COMPLETION_LEADING_JET",
+      "paper_id": "L3",
+      "full_name": "Zeta23.OPICA.iterated_completion_leading_jet",
+      "module": "Zeta23.OPICA.LocalObstruction",
+      "path": "Zeta23/OPICA/LocalObstruction.lean",
+      "kind": "THEOREM",
+      "requirement": "Exact order p*m-1 for positive counts; factorial-normalized coefficient and binomial factor; correction term retained.",
+      "required_for_full_pr": true,
+      "registry_after_proof": true,
+      "scope": "GENERIC_MATHEMATICAL_THEOREM",
+      "current_status": "PLANNED_NOT_IMPLEMENTED"
+    },
+    {
+      "id": "OPICA_L3_DOUBLE_COMPLETION_LEIBNIZ_FACTOR",
+      "paper_id": "L3",
+      "full_name": "Zeta23.OPICA.double_completion_leibniz_factor",
+      "module": "Zeta23.OPICA.LocalObstruction",
+      "path": "Zeta23/OPICA/LocalObstruction.lean",
+      "kind": "THEOREM",
+      "requirement": "Exact order p*m-1 for positive counts; factorial-normalized coefficient and binomial factor; correction term retained.",
+      "required_for_full_pr": true,
+      "registry_after_proof": true,
+      "scope": "GENERIC_MATHEMATICAL_THEOREM",
+      "current_status": "PLANNED_NOT_IMPLEMENTED"
+    },
+    {
+      "id": "OPICA_L4_AFFINE_TRANSPORT_CORRECTED_EQ",
+      "paper_id": "L4",
+      "full_name": "Zeta23.OPICA.affine_transport_corrected_eq",
+      "module": "Zeta23.OPICA.AffineTransport",
+      "path": "Zeta23/OPICA/AffineTransport.lean",
+      "kind": "THEOREM",
+      "requirement": "Finite correction recursion and expanded suffix-product sum; corrected leading class, not unconditional preservation of raw output.",
+      "required_for_full_pr": true,
+      "registry_after_proof": true,
+      "scope": "GENERIC_MATHEMATICAL_THEOREM",
+      "current_status": "PLANNED_NOT_IMPLEMENTED"
+    },
+    {
+      "id": "OPICA_L4_AFFINE_TRANSPORT_LEADING_JET",
+      "paper_id": "L4",
+      "full_name": "Zeta23.OPICA.affine_transport_leading_jet",
+      "module": "Zeta23.OPICA.AffineTransport",
+      "path": "Zeta23/OPICA/AffineTransport.lean",
+      "kind": "THEOREM",
+      "requirement": "Finite correction recursion and expanded suffix-product sum; corrected leading class, not unconditional preservation of raw output.",
+      "required_for_full_pr": true,
+      "registry_after_proof": true,
+      "scope": "GENERIC_MATHEMATICAL_THEOREM",
+      "current_status": "PLANNED_NOT_IMPLEMENTED"
+    },
+    {
+      "id": "OPICA_L4_ANALYTIC_ADDITION_CAN_CANCEL_COMPLETED_JET",
+      "paper_id": "L4",
+      "full_name": "Zeta23.OPICA.analytic_addition_can_cancel_completed_jet",
+      "module": "Zeta23.OPICA.Counterexamples",
+      "path": "Zeta23/OPICA/Counterexamples.lean",
+      "kind": "THEOREM",
+      "requirement": "Exact simple-pole/completion/background counterexample satisfying admitted hypotheses.",
+      "required_for_full_pr": true,
+      "registry_after_proof": true,
+      "scope": "GENERIC_MATHEMATICAL_THEOREM",
+      "current_status": "PLANNED_NOT_IMPLEMENTED"
+    },
+    {
+      "id": "OPICA_L5_RESIDUE_CONTINUOUS_OF_CIRCLE_UNIFORM",
+      "paper_id": "L5",
+      "full_name": "Zeta23.OPICA.residue_continuous_of_circle_uniform",
+      "module": "Zeta23.OPICA.ResidueLimits",
+      "path": "Zeta23/OPICA/ResidueLimits.lean",
+      "kind": "THEOREM",
+      "requirement": "Common meromorphic disk, only center pole, boundary uniform topology and quantitative radius bound; separate causal/safe-half-plane convergence counterexample.",
+      "required_for_full_pr": true,
+      "registry_after_proof": true,
+      "scope": "GENERIC_MATHEMATICAL_THEOREM",
+      "current_status": "PLANNED_NOT_IMPLEMENTED"
+    },
+    {
+      "id": "OPICA_L5_ESCAPING_TAIL_KEEPS_RESIDUE",
+      "paper_id": "L5",
+      "full_name": "Zeta23.OPICA.escaping_tail_keeps_residue",
+      "module": "Zeta23.OPICA.ResidueLimits",
+      "path": "Zeta23/OPICA/ResidueLimits.lean",
+      "kind": "THEOREM",
+      "requirement": "Common meromorphic disk, only center pole, boundary uniform topology and quantitative radius bound; separate causal/safe-half-plane convergence counterexample.",
+      "required_for_full_pr": true,
+      "registry_after_proof": true,
+      "scope": "GENERIC_MATHEMATICAL_THEOREM",
+      "current_status": "PLANNED_NOT_IMPLEMENTED"
+    },
+    {
+      "id": "OPICA_E1_LOG_ONE_ADD_POSPART_SUB_LE",
+      "paper_id": "E1",
+      "full_name": "Zeta23.OPICA.log_one_add_posPart_sub_le",
+      "module": "Zeta23.OPICA.EnergyRate",
+      "path": "Zeta23/OPICA/EnergyRate.lean",
+      "kind": "THEOREM",
+      "requirement": "Actual logarithmic inequalities for all real/complex inputs; norm of the difference is the error.",
+      "required_for_full_pr": true,
+      "registry_after_proof": true,
+      "scope": "GENERIC_MATHEMATICAL_THEOREM",
+      "current_status": "PLANNED_NOT_IMPLEMENTED"
+    },
+    {
+      "id": "OPICA_E1_LOG_ONE_ADD_NORM_SUB_LE",
+      "paper_id": "E1",
+      "full_name": "Zeta23.OPICA.log_one_add_norm_sub_le",
+      "module": "Zeta23.OPICA.EnergyRate",
+      "path": "Zeta23/OPICA/EnergyRate.lean",
+      "kind": "THEOREM",
+      "requirement": "Actual logarithmic inequalities for all real/complex inputs; norm of the difference is the error.",
+      "required_for_full_pr": true,
+      "registry_after_proof": true,
+      "scope": "GENERIC_MATHEMATICAL_THEOREM",
+      "current_status": "PLANNED_NOT_IMPLEMENTED"
+    },
+    {
+      "id": "OPICA_E2_SUBEXPALONG_ADD",
+      "paper_id": "E2",
+      "full_name": "Zeta23.OPICA.subexpAlong_add",
+      "module": "Zeta23.OPICA.EnergyRate",
+      "path": "Zeta23/OPICA/EnergyRate.lean",
+      "kind": "THEOREM",
+      "requirement": "Same positive cofinal schedule, full limit difference and equality of extended limsup/liminf; subexponential functions form a constant-scalar vector space, not an ideal of all sequences.",
+      "required_for_full_pr": true,
+      "registry_after_proof": true,
+      "scope": "GENERIC_MATHEMATICAL_THEOREM",
+      "current_status": "PLANNED_NOT_IMPLEMENTED"
+    },
+    {
+      "id": "OPICA_E2_SUBEXPALONG_MUL",
+      "paper_id": "E2",
+      "full_name": "Zeta23.OPICA.subexpAlong_mul",
+      "module": "Zeta23.OPICA.EnergyRate",
+      "path": "Zeta23/OPICA/EnergyRate.lean",
+      "kind": "THEOREM",
+      "requirement": "Same positive cofinal schedule, full limit difference and equality of extended limsup/liminf; subexponential functions form a constant-scalar vector space, not an ideal of all sequences.",
+      "required_for_full_pr": true,
+      "registry_after_proof": true,
+      "scope": "GENERIC_MATHEMATICAL_THEOREM",
+      "current_status": "PLANNED_NOT_IMPLEMENTED"
+    },
+    {
+      "id": "OPICA_E2_SUBEXPALONG_CONST_SMUL",
+      "paper_id": "E2",
+      "full_name": "Zeta23.OPICA.subexpAlong_const_smul",
+      "module": "Zeta23.OPICA.EnergyRate",
+      "path": "Zeta23/OPICA/EnergyRate.lean",
+      "kind": "THEOREM",
+      "requirement": "Same positive cofinal schedule, full limit difference and equality of extended limsup/liminf; subexponential functions form a constant-scalar vector space, not an ideal of all sequences.",
+      "required_for_full_pr": true,
+      "registry_after_proof": true,
+      "scope": "GENERIC_MATHEMATICAL_THEOREM",
+      "current_status": "PLANNED_NOT_IMPLEMENTED"
+    },
+    {
+      "id": "OPICA_E2_RATE_CONGR_OF_SUBEXP_ERROR",
+      "paper_id": "E2",
+      "full_name": "Zeta23.OPICA.rate_congr_of_subexp_error",
+      "module": "Zeta23.OPICA.EnergyRate",
+      "path": "Zeta23/OPICA/EnergyRate.lean",
+      "kind": "THEOREM",
+      "requirement": "Same positive cofinal schedule, full limit difference and equality of extended limsup/liminf; subexponential functions form a constant-scalar vector space, not an ideal of all sequences.",
+      "required_for_full_pr": true,
+      "registry_after_proof": true,
+      "scope": "GENERIC_MATHEMATICAL_THEOREM",
+      "current_status": "PLANNED_NOT_IMPLEMENTED"
+    },
+    {
+      "id": "OPICA_E2_POSRATE_CONGR_OF_SUBEXP_ERROR",
+      "paper_id": "E2",
+      "full_name": "Zeta23.OPICA.posRate_congr_of_subexp_error",
+      "module": "Zeta23.OPICA.EnergyRate",
+      "path": "Zeta23/OPICA/EnergyRate.lean",
+      "kind": "THEOREM",
+      "requirement": "Same positive cofinal schedule, full limit difference and equality of extended limsup/liminf; subexponential functions form a constant-scalar vector space, not an ideal of all sequences.",
+      "required_for_full_pr": true,
+      "registry_after_proof": true,
+      "scope": "GENERIC_MATHEMATICAL_THEOREM",
+      "current_status": "PLANNED_NOT_IMPLEMENTED"
+    },
+    {
+      "id": "OPICA_E2_RATE_LIMSUP_LIMINF_CONGR",
+      "paper_id": "E2",
+      "full_name": "Zeta23.OPICA.rate_limsup_liminf_congr",
+      "module": "Zeta23.OPICA.EnergyRate",
+      "path": "Zeta23/OPICA/EnergyRate.lean",
+      "kind": "THEOREM",
+      "requirement": "Same positive cofinal schedule, full limit difference and equality of extended limsup/liminf; subexponential functions form a constant-scalar vector space, not an ideal of all sequences.",
+      "required_for_full_pr": true,
+      "registry_after_proof": true,
+      "scope": "GENERIC_MATHEMATICAL_THEOREM",
+      "current_status": "PLANNED_NOT_IMPLEMENTED"
+    },
+    {
+      "id": "OPICA_E3_RATE_CONGR_OF_TEMPERED_SCALE",
+      "paper_id": "E3",
+      "full_name": "Zeta23.OPICA.rate_congr_of_tempered_scale",
+      "module": "Zeta23.OPICA.EnergyRate",
+      "path": "Zeta23/OPICA/EnergyRate.lean",
+      "kind": "THEOREM",
+      "requirement": "Nonzero scaling with magnitude AND inverse cost; positive-part variant requires positive real orientation.",
+      "required_for_full_pr": true,
+      "registry_after_proof": true,
+      "scope": "GENERIC_MATHEMATICAL_THEOREM",
+      "current_status": "PLANNED_NOT_IMPLEMENTED"
+    },
+    {
+      "id": "OPICA_E3_POSRATE_CONGR_OF_POSITIVE_TEMPERED_SCALE",
+      "paper_id": "E3",
+      "full_name": "Zeta23.OPICA.posRate_congr_of_positive_tempered_scale",
+      "module": "Zeta23.OPICA.EnergyRate",
+      "path": "Zeta23/OPICA/EnergyRate.lean",
+      "kind": "THEOREM",
+      "requirement": "Nonzero scaling with magnitude AND inverse cost; positive-part variant requires positive real orientation.",
+      "required_for_full_pr": true,
+      "registry_after_proof": true,
+      "scope": "GENERIC_MATHEMATICAL_THEOREM",
+      "current_status": "PLANNED_NOT_IMPLEMENTED"
+    },
+    {
+      "id": "OPICA_E4_AFFINE_CHAIN_EXPANSION",
+      "paper_id": "E4",
+      "full_name": "Zeta23.OPICA.affine_chain_expansion",
+      "module": "Zeta23.OPICA.Composition",
+      "path": "Zeta23/OPICA/Composition.lean",
+      "kind": "THEOREM",
+      "requirement": "Exact chain expansion and all suffix products; variable-depth conclusion consumes accumulated product/error, not pointwise fixed-stage bounds.",
+      "required_for_full_pr": true,
+      "registry_after_proof": true,
+      "scope": "GENERIC_MATHEMATICAL_THEOREM",
+      "current_status": "PLANNED_NOT_IMPLEMENTED"
+    },
+    {
+      "id": "OPICA_E4_AFFINE_CHAIN_BUDGET",
+      "paper_id": "E4",
+      "full_name": "Zeta23.OPICA.affine_chain_budget",
+      "module": "Zeta23.OPICA.Composition",
+      "path": "Zeta23/OPICA/Composition.lean",
+      "kind": "THEOREM",
+      "requirement": "Exact chain expansion and all suffix products; variable-depth conclusion consumes accumulated product/error, not pointwise fixed-stage bounds.",
+      "required_for_full_pr": true,
+      "registry_after_proof": true,
+      "scope": "GENERIC_MATHEMATICAL_THEOREM",
+      "current_status": "PLANNED_NOT_IMPLEMENTED"
+    },
+    {
+      "id": "OPICA_E4_RATE_CONGR_OF_ACCUMULATED_BUDGET",
+      "paper_id": "E4",
+      "full_name": "Zeta23.OPICA.rate_congr_of_accumulated_budget",
+      "module": "Zeta23.OPICA.Composition",
+      "path": "Zeta23/OPICA/Composition.lean",
+      "kind": "THEOREM",
+      "requirement": "Exact chain expansion and all suffix products; variable-depth conclusion consumes accumulated product/error, not pointwise fixed-stage bounds.",
+      "required_for_full_pr": true,
+      "registry_after_proof": true,
+      "scope": "GENERIC_MATHEMATICAL_THEOREM",
+      "current_status": "PLANNED_NOT_IMPLEMENTED"
+    },
+    {
+      "id": "OPICA_E5_QUIET_COFINAL_RATE_ZERO",
+      "paper_id": "E5",
+      "full_name": "Zeta23.OPICA.quiet_cofinal_rate_zero",
+      "module": "Zeta23.OPICA.Composition",
+      "path": "Zeta23/OPICA/Composition.lean",
+      "kind": "THEOREM",
+      "requirement": "Generic conditional full-rate consumer on the same observation; no production of quiet windows or proof of native J5.2/MS1.",
+      "required_for_full_pr": true,
+      "registry_after_proof": true,
+      "scope": "GENERIC_MATHEMATICAL_THEOREM",
+      "current_status": "PLANNED_NOT_IMPLEMENTED"
+    },
+    {
+      "id": "OPICA_C1_QUOTIENT_MAP_INJECTIVE_IFF",
+      "paper_id": "C1",
+      "full_name": "Zeta23.OPICA.quotient_map_injective_iff",
+      "module": "Zeta23.OPICA.Composition",
+      "path": "Zeta23/OPICA/Composition.lean",
+      "kind": "THEOREM",
+      "requirement": "Actual quotient map induced by a background-respecting linear map; injectivity iff preimage equality; composition.",
+      "required_for_full_pr": true,
+      "registry_after_proof": true,
+      "scope": "GENERIC_MATHEMATICAL_THEOREM",
+      "current_status": "PLANNED_NOT_IMPLEMENTED"
+    },
+    {
+      "id": "OPICA_C1_FAITHFUL_TRANSFER_COMP",
+      "paper_id": "C1",
+      "full_name": "Zeta23.OPICA.faithful_transfer_comp",
+      "module": "Zeta23.OPICA.Composition",
+      "path": "Zeta23/OPICA/Composition.lean",
+      "kind": "THEOREM",
+      "requirement": "Actual quotient map induced by a background-respecting linear map; injectivity iff preimage equality; composition.",
+      "required_for_full_pr": true,
+      "registry_after_proof": true,
+      "scope": "GENERIC_MATHEMATICAL_THEOREM",
+      "current_status": "PLANNED_NOT_IMPLEMENTED"
+    },
+    {
+      "id": "OPICA_C2_OBSTRUCTION_PATH_NONZERO",
+      "paper_id": "C2",
+      "full_name": "Zeta23.OPICA.obstruction_path_nonzero",
+      "module": "Zeta23.OPICA.Composition",
+      "path": "Zeta23/OPICA/Composition.lean",
+      "kind": "THEOREM",
+      "requirement": "Dependent state/carrier path, preserved admissibility and commuting/zero-reflecting maps or proved nonvanishing implications; finite induction only.",
+      "required_for_full_pr": true,
+      "registry_after_proof": true,
+      "scope": "GENERIC_MATHEMATICAL_THEOREM",
+      "current_status": "PLANNED_NOT_IMPLEMENTED"
+    },
+    {
+      "id": "OPICA_C2_IMPLICATION_PATH_NONZERO",
+      "paper_id": "C2",
+      "full_name": "Zeta23.OPICA.implication_path_nonzero",
+      "module": "Zeta23.OPICA.Composition",
+      "path": "Zeta23/OPICA/Composition.lean",
+      "kind": "THEOREM",
+      "requirement": "Dependent state/carrier path, preserved admissibility and commuting/zero-reflecting maps or proved nonvanishing implications; finite induction only.",
+      "required_for_full_pr": true,
+      "registry_after_proof": true,
+      "scope": "GENERIC_MATHEMATICAL_THEOREM",
+      "current_status": "PLANNED_NOT_IMPLEMENTED"
+    },
+    {
+      "id": "OPICA_A1_DIVISOR_COUNT_SUBMULTIPLICATIVE",
+      "paper_id": "A1",
+      "full_name": "Zeta23.OPICA.divisor_count_submultiplicative",
+      "module": "Zeta23.OPICA.DivisorBounds",
+      "path": "Zeta23/OPICA/DivisorBounds.lean",
+      "kind": "THEOREM",
+      "requirement": "Positive order and indices, X>=1; actual ordered-factorization counts and explicit order dependence; no asymptotic divisor bound premise.",
+      "required_for_full_pr": true,
+      "registry_after_proof": true,
+      "scope": "GENERIC_MATHEMATICAL_THEOREM",
+      "current_status": "PLANNED_NOT_IMPLEMENTED"
+    },
+    {
+      "id": "OPICA_A1_DIVISOR_COUNT_SQUARE_LE",
+      "paper_id": "A1",
+      "full_name": "Zeta23.OPICA.divisor_count_square_le",
+      "module": "Zeta23.OPICA.DivisorBounds",
+      "path": "Zeta23/OPICA/DivisorBounds.lean",
+      "kind": "THEOREM",
+      "requirement": "Positive order and indices, X>=1; actual ordered-factorization counts and explicit order dependence; no asymptotic divisor bound premise.",
+      "required_for_full_pr": true,
+      "registry_after_proof": true,
+      "scope": "GENERIC_MATHEMATICAL_THEOREM",
+      "current_status": "PLANNED_NOT_IMPLEMENTED"
+    },
+    {
+      "id": "OPICA_A1_DIVISOR_COUNT_HARMONIC_SUM_LE",
+      "paper_id": "A1",
+      "full_name": "Zeta23.OPICA.divisor_count_harmonic_sum_le",
+      "module": "Zeta23.OPICA.DivisorBounds",
+      "path": "Zeta23/OPICA/DivisorBounds.lean",
+      "kind": "THEOREM",
+      "requirement": "Positive order and indices, X>=1; actual ordered-factorization counts and explicit order dependence; no asymptotic divisor bound premise.",
+      "required_for_full_pr": true,
+      "registry_after_proof": true,
+      "scope": "GENERIC_MATHEMATICAL_THEOREM",
+      "current_status": "PLANNED_NOT_IMPLEMENTED"
+    },
+    {
+      "id": "OPICA_A1_DIVISOR_COUNT_SQRT_SUM_LE",
+      "paper_id": "A1",
+      "full_name": "Zeta23.OPICA.divisor_count_sqrt_sum_le",
+      "module": "Zeta23.OPICA.DivisorBounds",
+      "path": "Zeta23/OPICA/DivisorBounds.lean",
+      "kind": "THEOREM",
+      "requirement": "Positive order and indices, X>=1; actual ordered-factorization counts and explicit order dependence; no asymptotic divisor bound premise.",
+      "required_for_full_pr": true,
+      "registry_after_proof": true,
+      "scope": "GENERIC_MATHEMATICAL_THEOREM",
+      "current_status": "PLANNED_NOT_IMPLEMENTED"
+    },
+    {
+      "id": "OPICA_A2_PRIMITIVE_MASK_PARTITION",
+      "paper_id": "A2",
+      "full_name": "Zeta23.OPICA.primitive_mask_partition",
+      "module": "Zeta23.OPICA.PrimitiveMasks",
+      "path": "Zeta23/OPICA/PrimitiveMasks.lean",
+      "kind": "THEOREM",
+      "requirement": "Positive indices, gcd-reduced max mask, real cutoff, low includes diagonal; actual finite double-sum/integral partition under measurable/integrable source hypotheses.",
+      "required_for_full_pr": true,
+      "registry_after_proof": true,
+      "scope": "GENERIC_MATHEMATICAL_THEOREM",
+      "current_status": "PLANNED_NOT_IMPLEMENTED"
+    },
+    {
+      "id": "OPICA_A2_LOW_PRIMITIVE_BILINEAR_BOUND",
+      "paper_id": "A2",
+      "full_name": "Zeta23.OPICA.low_primitive_bilinear_bound",
+      "module": "Zeta23.OPICA.DivisorMask",
+      "path": "Zeta23/OPICA/DivisorMask.lean",
+      "kind": "THEOREM",
+      "requirement": "Full A2 coefficient and source hypotheses, with explicit 4*W*V^2*B*(1+log B)^(2*l-2)*(1+T)^(l*l), repeated indices retained; no assumed copy of the conclusion.",
+      "required_for_full_pr": true,
+      "registry_after_proof": true,
+      "scope": "GENERIC_MATHEMATICAL_THEOREM",
+      "current_status": "PLANNED_NOT_IMPLEMENTED"
+    },
+    {
+      "id": "OPICA_A2_MASKED_TYPEI_MIXED_BOUND",
+      "paper_id": "A2",
+      "full_name": "Zeta23.OPICA.masked_typeI_mixed_bound",
+      "module": "Zeta23.OPICA.DivisorMask",
+      "path": "Zeta23/OPICA/DivisorMask.lean",
+      "kind": "THEOREM",
+      "requirement": "Full A2 coefficient and source hypotheses, with explicit 4*W*V^2*B*(1+log B)^(2*l-2)*(1+T)^(l*l), repeated indices retained; no assumed copy of the conclusion.",
+      "required_for_full_pr": true,
+      "registry_after_proof": true,
+      "scope": "GENERIC_MATHEMATICAL_THEOREM",
+      "current_status": "PLANNED_NOT_IMPLEMENTED"
+    },
+    {
+      "id": "OPICA_A2_MASKED_TYPEI_SQUARE_BOUND",
+      "paper_id": "A2",
+      "full_name": "Zeta23.OPICA.masked_typeI_square_bound",
+      "module": "Zeta23.OPICA.DivisorMask",
+      "path": "Zeta23/OPICA/DivisorMask.lean",
+      "kind": "THEOREM",
+      "requirement": "Full A2 coefficient and source hypotheses, with explicit 4*W*V^2*B*(1+log B)^(2*l-2)*(1+T)^(l*l), repeated indices retained; no assumed copy of the conclusion.",
+      "required_for_full_pr": true,
+      "registry_after_proof": true,
+      "scope": "GENERIC_MATHEMATICAL_THEOREM",
+      "current_status": "PLANNED_NOT_IMPLEMENTED"
+    },
+    {
+      "id": "OPICA_A2_BALANCED_ENERGY_COMPARISON",
+      "paper_id": "A2",
+      "full_name": "Zeta23.OPICA.balanced_energy_comparison",
+      "module": "Zeta23.OPICA.DivisorMask",
+      "path": "Zeta23/OPICA/DivisorMask.lean",
+      "kind": "THEOREM",
+      "requirement": "Full A2 coefficient and source hypotheses, with explicit 4*W*V^2*B*(1+log B)^(2*l-2)*(1+T)^(l*l), repeated indices retained; no assumed copy of the conclusion.",
+      "required_for_full_pr": true,
+      "registry_after_proof": true,
+      "scope": "GENERIC_MATHEMATICAL_THEOREM",
+      "current_status": "PLANNED_NOT_IMPLEMENTED"
+    },
+    {
+      "id": "OPICA_A3_MASK_REGROUPING_DIFFERENCE",
+      "paper_id": "A3",
+      "full_name": "Zeta23.OPICA.mask_regrouping_difference",
+      "module": "Zeta23.OPICA.DivisorMask",
+      "path": "Zeta23/OPICA/DivisorMask.lean",
+      "kind": "THEOREM",
+      "requirement": "Two exact scalar expansions, two independently bounded low-mask terms and correct high-mask difference; no mask equality inferred from unmasked field equality.",
+      "required_for_full_pr": true,
+      "registry_after_proof": true,
+      "scope": "GENERIC_MATHEMATICAL_THEOREM",
+      "current_status": "PLANNED_NOT_IMPLEMENTED"
+    },
+    {
+      "id": "OPICA_A3_REGROUPED_MASK_RATE_CONGR",
+      "paper_id": "A3",
+      "full_name": "Zeta23.OPICA.regrouped_mask_rate_congr",
+      "module": "Zeta23.OPICA.DivisorMask",
+      "path": "Zeta23/OPICA/DivisorMask.lean",
+      "kind": "THEOREM",
+      "requirement": "Two exact scalar expansions, two independently bounded low-mask terms and correct high-mask difference; no mask equality inferred from unmasked field equality.",
+      "required_for_full_pr": true,
+      "registry_after_proof": true,
+      "scope": "GENERIC_MATHEMATICAL_THEOREM",
+      "current_status": "PLANNED_NOT_IMPLEMENTED"
+    },
+    {
+      "id": "OPICA_B1_LAPLACE_HOLOMORPHIC_OF_WEIGHTED_L2",
+      "paper_id": "B1",
+      "full_name": "Zeta23.OPICA.laplace_holomorphic_of_weighted_L2",
+      "module": "Zeta23.OPICA.WeightedLaplace",
+      "path": "Zeta23/OPICA/WeightedLaplace.lean",
+      "kind": "THEOREM",
+      "requirement": "Actual weighted L2 norm and integral; strict half-plane; factorial derivative bound and legitimate source-identified connected-domain continuation.",
+      "required_for_full_pr": true,
+      "registry_after_proof": true,
+      "scope": "GENERIC_MATHEMATICAL_THEOREM",
+      "current_status": "PLANNED_NOT_IMPLEMENTED"
+    },
+    {
+      "id": "OPICA_B1_LAPLACE_ITERATEDDERIV_BOUND_OF_WEIGHTED_L2",
+      "paper_id": "B1",
+      "full_name": "Zeta23.OPICA.laplace_iteratedDeriv_bound_of_weighted_L2",
+      "module": "Zeta23.OPICA.WeightedLaplace",
+      "path": "Zeta23/OPICA/WeightedLaplace.lean",
+      "kind": "THEOREM",
+      "requirement": "Actual weighted L2 norm and integral; strict half-plane; factorial derivative bound and legitimate source-identified connected-domain continuation.",
+      "required_for_full_pr": true,
+      "registry_after_proof": true,
+      "scope": "GENERIC_MATHEMATICAL_THEOREM",
+      "current_status": "PLANNED_NOT_IMPLEMENTED"
+    },
+    {
+      "id": "OPICA_B1_NO_VISIBLE_POLE_OF_WEIGHTED_L2",
+      "paper_id": "B1",
+      "full_name": "Zeta23.OPICA.no_visible_pole_of_weighted_L2",
+      "module": "Zeta23.OPICA.WeightedLaplace",
+      "path": "Zeta23/OPICA/WeightedLaplace.lean",
+      "kind": "THEOREM",
+      "requirement": "Actual weighted L2 norm and integral; strict half-plane; factorial derivative bound and legitimate source-identified connected-domain continuation.",
+      "required_for_full_pr": true,
+      "registry_after_proof": true,
+      "scope": "GENERIC_MATHEMATICAL_THEOREM",
+      "current_status": "PLANNED_NOT_IMPLEMENTED"
+    },
+    {
+      "id": "OPICA_B2_RANGE_DISTANCE_OF_ANNIHILATOR",
+      "paper_id": "B2",
+      "full_name": "Zeta23.OPICA.range_distance_of_annihilator",
+      "module": "Zeta23.OPICA.RangeSeparation",
+      "path": "Zeta23/OPICA/RangeSeparation.lean",
+      "kind": "THEOREM",
+      "requirement": "Bounded operator, nonzero continuous annihilator, actual nonzero pairing, closure and exact functional norm denominator.",
+      "required_for_full_pr": true,
+      "registry_after_proof": true,
+      "scope": "GENERIC_MATHEMATICAL_THEOREM",
+      "current_status": "PLANNED_NOT_IMPLEMENTED"
+    },
+    {
+      "id": "OPICA_B2_NOT_MEM_RANGECLOSURE_OF_ANNIHILATOR",
+      "paper_id": "B2",
+      "full_name": "Zeta23.OPICA.not_mem_rangeClosure_of_annihilator",
+      "module": "Zeta23.OPICA.RangeSeparation",
+      "path": "Zeta23/OPICA/RangeSeparation.lean",
+      "kind": "THEOREM",
+      "requirement": "Bounded operator, nonzero continuous annihilator, actual nonzero pairing, closure and exact functional norm denominator.",
+      "required_for_full_pr": true,
+      "registry_after_proof": true,
+      "scope": "GENERIC_MATHEMATICAL_THEOREM",
+      "current_status": "PLANNED_NOT_IMPLEMENTED"
+    },
+    {
+      "id": "OPICA_O1_OBSERVATION_FACTORS_IFF_KER_LE",
+      "paper_id": "O1",
+      "full_name": "Zeta23.OPICA.observation_factors_iff_ker_le",
+      "module": "Zeta23.OPICA.ObservationCompatibility",
+      "path": "Zeta23/OPICA/ObservationCompatibility.lean",
+      "kind": "THEOREM",
+      "requirement": "Existence of linear recovered functional on range iff kernel inclusion. Algebraic finite-dimensional result does not imply uniform norm control.",
+      "required_for_full_pr": true,
+      "registry_after_proof": true,
+      "scope": "GENERIC_MATHEMATICAL_THEOREM",
+      "current_status": "PLANNED_NOT_IMPLEMENTED"
+    },
+    {
+      "id": "OPICA_O1_CONTRAST_CANNOT_RECOVER_SUM",
+      "paper_id": "O1",
+      "full_name": "Zeta23.OPICA.contrast_cannot_recover_sum",
+      "module": "Zeta23.OPICA.Counterexamples",
+      "path": "Zeta23/OPICA/Counterexamples.lean",
+      "kind": "THEOREM",
+      "requirement": "Concrete contrast annihilates the all-ones vector while the target sum does not, for positive dimension.",
+      "required_for_full_pr": true,
+      "registry_after_proof": true,
+      "scope": "GENERIC_MATHEMATICAL_THEOREM",
+      "current_status": "PLANNED_NOT_IMPLEMENTED"
+    },
+    {
+      "id": "OPICA_O2_GRAM_INTEGRAL_POSSEMIDEF",
+      "paper_id": "O2",
+      "full_name": "Zeta23.OPICA.gram_integral_posSemidef",
+      "module": "Zeta23.OPICA.ObservationCompatibility",
+      "path": "Zeta23/OPICA/ObservationCompatibility.lean",
+      "kind": "THEOREM",
+      "requirement": "Well-defined finite-dimensional Hermitian Gram integral is PSD; no rank-one inference.",
+      "required_for_full_pr": true,
+      "registry_after_proof": true,
+      "scope": "GENERIC_MATHEMATICAL_THEOREM",
+      "current_status": "PLANNED_NOT_IMPLEMENTED"
+    },
+    {
+      "id": "OPICA_O2_GRAM_INTEGRAL_NOT_RANK_ONE",
+      "paper_id": "O2",
+      "full_name": "Zeta23.OPICA.gram_integral_not_rank_one",
+      "module": "Zeta23.OPICA.Counterexamples",
+      "path": "Zeta23/OPICA/Counterexamples.lean",
+      "kind": "THEOREM",
+      "requirement": "Actual rank-two Gram integral with determinant 1/12; a chosen-vector estimate fails to bound other directions; off-diagonal mask can be indefinite.",
+      "required_for_full_pr": true,
+      "registry_after_proof": true,
+      "scope": "GENERIC_MATHEMATICAL_THEOREM",
+      "current_status": "PLANNED_NOT_IMPLEMENTED"
+    },
+    {
+      "id": "OPICA_O2_SINGLE_VECTOR_BOUND_NOT_OPERATOR_BOUND",
+      "paper_id": "O2",
+      "full_name": "Zeta23.OPICA.single_vector_bound_not_operator_bound",
+      "module": "Zeta23.OPICA.Counterexamples",
+      "path": "Zeta23/OPICA/Counterexamples.lean",
+      "kind": "THEOREM",
+      "requirement": "Actual rank-two Gram integral with determinant 1/12; a chosen-vector estimate fails to bound other directions; off-diagonal mask can be indefinite.",
+      "required_for_full_pr": true,
+      "registry_after_proof": true,
+      "scope": "GENERIC_MATHEMATICAL_THEOREM",
+      "current_status": "PLANNED_NOT_IMPLEMENTED"
+    },
+    {
+      "id": "OPICA_O2_OFFDIAGONAL_MASK_NOT_POSSEMIDEF",
+      "paper_id": "O2",
+      "full_name": "Zeta23.OPICA.offDiagonal_mask_not_posSemidef",
+      "module": "Zeta23.OPICA.Counterexamples",
+      "path": "Zeta23/OPICA/Counterexamples.lean",
+      "kind": "THEOREM",
+      "requirement": "Actual rank-two Gram integral with determinant 1/12; a chosen-vector estimate fails to bound other directions; off-diagonal mask can be indefinite.",
+      "required_for_full_pr": true,
+      "registry_after_proof": true,
+      "scope": "GENERIC_MATHEMATICAL_THEOREM",
+      "current_status": "PLANNED_NOT_IMPLEMENTED"
+    },
+    {
+      "id": "OPICA_O3_INCOMPATIBLE_IFF_LEFT_ANNIHILATOR",
+      "paper_id": "O3",
+      "full_name": "Zeta23.OPICA.incompatible_iff_left_annihilator",
+      "module": "Zeta23.OPICA.ObservationCompatibility",
+      "path": "Zeta23/OPICA/ObservationCompatibility.lean",
+      "kind": "THEOREM",
+      "requirement": "Finite complex compatibility matrix, conjugate adjoint, left-null pairing and norm-one dual distance formula; handles zero residual/dimension cases.",
+      "required_for_full_pr": true,
+      "registry_after_proof": true,
+      "scope": "GENERIC_MATHEMATICAL_THEOREM",
+      "current_status": "PLANNED_NOT_IMPLEMENTED"
+    },
+    {
+      "id": "OPICA_O3_RANGE_DISTANCE_EQ_ANNIHILATOR_SUP",
+      "paper_id": "O3",
+      "full_name": "Zeta23.OPICA.range_distance_eq_annihilator_sup",
+      "module": "Zeta23.OPICA.ObservationCompatibility",
+      "path": "Zeta23/OPICA/ObservationCompatibility.lean",
+      "kind": "THEOREM",
+      "requirement": "Finite complex compatibility matrix, conjugate adjoint, left-null pairing and norm-one dual distance formula; handles zero residual/dimension cases.",
+      "required_for_full_pr": true,
+      "registry_after_proof": true,
+      "scope": "GENERIC_MATHEMATICAL_THEOREM",
+      "current_status": "PLANNED_NOT_IMPLEMENTED"
+    },
+    {
+      "id": "OPICA_O3_SEVEN_SAMPLES_SIX_COEFFICIENTS_CONSISTENT",
+      "paper_id": "O3",
+      "full_name": "Zeta23.OPICA.seven_samples_six_coefficients_consistent",
+      "module": "Zeta23.OPICA.Counterexamples",
+      "path": "Zeta23/OPICA/Counterexamples.lean",
+      "kind": "THEOREM",
+      "requirement": "Seven sampled data from one degree-five polynomial are compatible with six coefficients, with explicit witness.",
+      "required_for_full_pr": true,
+      "registry_after_proof": true,
+      "scope": "GENERIC_MATHEMATICAL_THEOREM",
+      "current_status": "PLANNED_NOT_IMPLEMENTED"
+    },
+    {
+      "id": "OPICA_O4_COMPATIBILITY_UNDER_INVERTIBLE_LEFT_MAP",
+      "paper_id": "O4",
+      "full_name": "Zeta23.OPICA.compatibility_under_invertible_left_map",
+      "module": "Zeta23.OPICA.ObservationCompatibility",
+      "path": "Zeta23/OPICA/ObservationCompatibility.lean",
+      "kind": "THEOREM",
+      "requirement": "Exact equality of solution sets under invertible left map; inclusion only for a general left map.",
+      "required_for_full_pr": true,
+      "registry_after_proof": true,
+      "scope": "GENERIC_MATHEMATICAL_THEOREM",
+      "current_status": "PLANNED_NOT_IMPLEMENTED"
+    },
+    {
+      "id": "OPICA_O4_SOLUTIONS_PRESERVED_UNDER_LEFT_MAP",
+      "paper_id": "O4",
+      "full_name": "Zeta23.OPICA.solutions_preserved_under_left_map",
+      "module": "Zeta23.OPICA.ObservationCompatibility",
+      "path": "Zeta23/OPICA/ObservationCompatibility.lean",
+      "kind": "THEOREM",
+      "requirement": "Exact equality of solution sets under invertible left map; inclusion only for a general left map.",
+      "required_for_full_pr": true,
+      "registry_after_proof": true,
+      "scope": "GENERIC_MATHEMATICAL_THEOREM",
+      "current_status": "PLANNED_NOT_IMPLEMENTED"
+    },
+    {
+      "id": "OPICA_H1_SIGNED_SHARP_GAP_SEPARATOR",
+      "paper_id": "H1",
+      "full_name": "Zeta23.OPICA.signed_sharp_gap_separator",
+      "module": "Zeta23.OPICA.SignedHeatSeparator",
+      "path": "Zeta23/OPICA/SignedHeatSeparator.lean",
+      "kind": "THEOREM",
+      "requirement": "Full locally finite real signed measure with linear total-variation growth, distributional Fourier selfduality, exact open unit gap and off-lattice positivity. No missing analytic conclusion assumed as certificate.",
+      "required_for_full_pr": true,
+      "registry_after_proof": true,
+      "scope": "GENERIC_MATHEMATICAL_THEOREM",
+      "current_status": "PLANNED_NOT_IMPLEMENTED"
+    },
+    {
+      "id": "OPICA_H2_SIGNED_GAP_NEGATIVE_MASS_BUDGET",
+      "paper_id": "H2",
+      "full_name": "Zeta23.OPICA.signed_gap_negative_mass_budget",
+      "module": "Zeta23.OPICA.SignedHeatSeparator",
+      "path": "Zeta23/OPICA/SignedHeatSeparator.lean",
+      "kind": "THEOREM",
+      "requirement": "Same legitimately proved signed pairing, global negative mass and finite E_(R,d) positive mass, correct 4*d^2/(pi^2*R^2).",
+      "required_for_full_pr": true,
+      "registry_after_proof": true,
+      "scope": "GENERIC_MATHEMATICAL_THEOREM",
+      "current_status": "PLANNED_NOT_IMPLEMENTED"
+    },
+    {
+      "id": "OPICA_H3_COMMUTATOR_ANTI_INVARIANT",
+      "paper_id": "H3",
+      "full_name": "Zeta23.OPICA.commutator_anti_invariant",
+      "module": "Zeta23.OPICA.Involution",
+      "path": "Zeta23/OPICA/Involution.lean",
+      "kind": "THEOREM",
+      "requirement": "Linear involution and common domain; actual selfdual input; commutator anti-invariant and selfdual projection zero.",
+      "required_for_full_pr": true,
+      "registry_after_proof": true,
+      "scope": "GENERIC_MATHEMATICAL_THEOREM",
+      "current_status": "PLANNED_NOT_IMPLEMENTED"
+    },
+    {
+      "id": "OPICA_H3_COMMUTATOR_SELFDUAL_PROJECTION_ZERO",
+      "paper_id": "H3",
+      "full_name": "Zeta23.OPICA.commutator_selfdual_projection_zero",
+      "module": "Zeta23.OPICA.Involution",
+      "path": "Zeta23/OPICA/Involution.lean",
+      "kind": "THEOREM",
+      "requirement": "Linear involution and common domain; actual selfdual input; commutator anti-invariant and selfdual projection zero.",
+      "required_for_full_pr": true,
+      "registry_after_proof": true,
+      "scope": "GENERIC_MATHEMATICAL_THEOREM",
+      "current_status": "PLANNED_NOT_IMPLEMENTED"
+    },
+    {
+      "id": "OPICA_H4_FEJER_FLOOR_FORMULA",
+      "paper_id": "H4",
+      "full_name": "Zeta23.OPICA.fejer_floor_formula",
+      "module": "Zeta23.OPICA.FejerCompletion",
+      "path": "Zeta23/OPICA/FejerCompletion.lean",
+      "kind": "THEOREM",
+      "requirement": "Convergent sinc lattice sum/Poisson pairing, floor endpoints, current native completion, mandatory rational affine correction and distinct one-sided cusp derivatives.",
+      "required_for_full_pr": true,
+      "registry_after_proof": true,
+      "scope": "GENERIC_MATHEMATICAL_THEOREM",
+      "current_status": "PLANNED_NOT_IMPLEMENTED"
+    },
+    {
+      "id": "OPICA_H4_FEJER_NATIVECOMPLETION_POINTWISE",
+      "paper_id": "H4",
+      "full_name": "Zeta23.OPICA.fejer_nativeCompletion_pointwise",
+      "module": "Zeta23.OPICA.FejerCompletion",
+      "path": "Zeta23/OPICA/FejerCompletion.lean",
+      "kind": "THEOREM",
+      "requirement": "Convergent sinc lattice sum/Poisson pairing, floor endpoints, current native completion, mandatory rational affine correction and distinct one-sided cusp derivatives.",
+      "required_for_full_pr": true,
+      "registry_after_proof": true,
+      "scope": "GENERIC_MATHEMATICAL_THEOREM",
+      "current_status": "PLANNED_NOT_IMPLEMENTED"
+    },
+    {
+      "id": "OPICA_H4_FEJER_COMPLETION_AFFINE_IDENTITY",
+      "paper_id": "H4",
+      "full_name": "Zeta23.OPICA.fejer_completion_affine_identity",
+      "module": "Zeta23.OPICA.FejerCompletion",
+      "path": "Zeta23/OPICA/FejerCompletion.lean",
+      "kind": "THEOREM",
+      "requirement": "Convergent sinc lattice sum/Poisson pairing, floor endpoints, current native completion, mandatory rational affine correction and distinct one-sided cusp derivatives.",
+      "required_for_full_pr": true,
+      "registry_after_proof": true,
+      "scope": "GENERIC_MATHEMATICAL_THEOREM",
+      "current_status": "PLANNED_NOT_IMPLEMENTED"
+    },
+    {
+      "id": "OPICA_H4_FEJER_LOGINTEGER_ONESIDEDDERIVATIVES",
+      "paper_id": "H4",
+      "full_name": "Zeta23.OPICA.fejer_logInteger_oneSidedDerivatives",
+      "module": "Zeta23.OPICA.FejerCompletion",
+      "path": "Zeta23/OPICA/FejerCompletion.lean",
+      "kind": "THEOREM",
+      "requirement": "Convergent sinc lattice sum/Poisson pairing, floor endpoints, current native completion, mandatory rational affine correction and distinct one-sided cusp derivatives.",
+      "required_for_full_pr": true,
+      "registry_after_proof": true,
+      "scope": "GENERIC_MATHEMATICAL_THEOREM",
+      "current_status": "PLANNED_NOT_IMPLEMENTED"
+    },
+    {
+      "id": "OPICA_NATIVE_NATIVE_COMPLETED_INPUT_OBSTRUCTION_ORDER",
+      "paper_id": "NATIVE",
+      "full_name": "Zeta23.OPICA.native_completed_input_obstruction_order",
+      "module": "Zeta23.OPICA.NativeJetAdapter",
+      "path": "Zeta23/OPICA/NativeJetAdapter.lean",
+      "kind": "THEOREM",
+      "requirement": "Instantiate from existing actual physical transform, actual zero/right-zero/damping and one same-state generated output. Only off-line-zero inputs from established producer; no extra caller source nonzero-jet or range upper premise.",
+      "required_for_full_pr": true,
+      "registry_after_proof": true,
+      "scope": "NATIVE_ADAPTER",
+      "current_status": "PLANNED_NOT_IMPLEMENTED"
+    },
+    {
+      "id": "OPICA_NATIVE_NATIVE_COMPLETED_INPUT_OBSTRUCTION_JET",
+      "paper_id": "NATIVE",
+      "full_name": "Zeta23.OPICA.native_completed_input_obstruction_jet",
+      "module": "Zeta23.OPICA.NativeJetAdapter",
+      "path": "Zeta23/OPICA/NativeJetAdapter.lean",
+      "kind": "THEOREM",
+      "requirement": "Instantiate from existing actual physical transform, actual zero/right-zero/damping and one same-state generated output. Only off-line-zero inputs from established producer; no extra caller source nonzero-jet or range upper premise.",
+      "required_for_full_pr": true,
+      "registry_after_proof": true,
+      "scope": "NATIVE_ADAPTER",
+      "current_status": "PLANNED_NOT_IMPLEMENTED"
+    },
+    {
+      "id": "OPICA_NATIVE_NATIVE_COMPLETED_INPUT_OBSTRUCTION_NE_ZERO",
+      "paper_id": "NATIVE",
+      "full_name": "Zeta23.OPICA.native_completed_input_obstruction_ne_zero",
+      "module": "Zeta23.OPICA.NativeJetAdapter",
+      "path": "Zeta23/OPICA/NativeJetAdapter.lean",
+      "kind": "THEOREM",
+      "requirement": "Instantiate from existing actual physical transform, actual zero/right-zero/damping and one same-state generated output. Only off-line-zero inputs from established producer; no extra caller source nonzero-jet or range upper premise.",
+      "required_for_full_pr": true,
+      "registry_after_proof": true,
+      "scope": "NATIVE_ADAPTER",
+      "current_status": "PLANNED_NOT_IMPLEMENTED"
+    },
+    {
+      "id": "OPICA_NATIVE_NATIVE_RANGE_DISTANCE_LOWER",
+      "paper_id": "NATIVE",
+      "full_name": "Zeta23.OPICA.native_range_distance_lower",
+      "module": "Zeta23.OPICA.NativeJetAdapter",
+      "path": "Zeta23/OPICA/NativeJetAdapter.lean",
+      "kind": "THEOREM",
+      "requirement": "Instantiate from existing actual physical transform, actual zero/right-zero/damping and one same-state generated output. Only off-line-zero inputs from established producer; no extra caller source nonzero-jet or range upper premise.",
+      "required_for_full_pr": true,
+      "registry_after_proof": true,
+      "scope": "NATIVE_ADAPTER",
+      "current_status": "PLANNED_NOT_IMPLEMENTED"
+    },
+    {
+      "id": "OPICA_NATIVE_STEP123_OUTPUT_OPICA_VIEW_CORRECT",
+      "paper_id": "NATIVE",
+      "full_name": "Zeta23.OPICA.step123_output_opica_view_correct",
+      "module": "Zeta23.OPICA.NativeJetAdapter",
+      "path": "Zeta23/OPICA/NativeJetAdapter.lean",
+      "kind": "THEOREM",
+      "requirement": "Instantiate from existing actual physical transform, actual zero/right-zero/damping and one same-state generated output. Only off-line-zero inputs from established producer; no extra caller source nonzero-jet or range upper premise.",
+      "required_for_full_pr": true,
+      "registry_after_proof": true,
+      "scope": "NATIVE_ADAPTER",
+      "current_status": "PLANNED_NOT_IMPLEMENTED"
+    },
+    {
+      "id": "OPICA_NATIVE_STEP123_EACHPHASE_OPICA_CONSUMER",
+      "paper_id": "NATIVE",
+      "full_name": "Zeta23.OPICA.step123_eachPhase_opica_consumer",
+      "module": "Zeta23.OPICA.NativeJetAdapter",
+      "path": "Zeta23/OPICA/NativeJetAdapter.lean",
+      "kind": "THEOREM",
+      "requirement": "Instantiate from existing actual physical transform, actual zero/right-zero/damping and one same-state generated output. Only off-line-zero inputs from established producer; no extra caller source nonzero-jet or range upper premise.",
+      "required_for_full_pr": true,
+      "registry_after_proof": true,
+      "scope": "NATIVE_ADAPTER",
+      "current_status": "PLANNED_NOT_IMPLEMENTED"
+    },
+    {
+      "id": "OPICA_NATIVE_NATIVE_ORIGINAL_DRIVE_LOW_MASK_BOUND",
+      "paper_id": "NATIVE",
+      "full_name": "Zeta23.OPICA.native_original_drive_low_mask_bound",
+      "module": "Zeta23.OPICA.NativeArithmeticAdapter",
+      "path": "Zeta23/OPICA/NativeArithmeticAdapter.lean",
+      "kind": "THEOREM",
+      "requirement": "Actual original j-drive with proof of continuity, boundedness and positive causal gap; finite palette compensation and literal translate mask. Higher-source uniformity and global tail cancellation not asserted.",
+      "required_for_full_pr": true,
+      "registry_after_proof": true,
+      "scope": "NATIVE_ADAPTER",
+      "current_status": "PLANNED_NOT_IMPLEMENTED"
+    }
+  ],
+  "registry": {
+    "old_claim_count": 122,
+    "old_proved_binding_count": 118,
+    "old_open_ids": [
+      "C_RH",
+      "R001_PRIME_UPPER",
+      "R002_WINDOWED_VISIBILITY",
+      "R003_COFINAL_CANONICAL_ARITHMETIC_CERTIFICATES"
+    ],
+    "new_claim_policy": "One route-less OPICA_* record per primary theorem root AFTER successful compilation and explicit type review; generic implication described as implication. Existing objects immutable.",
+    "expected_new_primary_bindings": 76,
+    "expected_final_binding_count": 194,
+    "expected_final_claim_count": 198
+  },
+  "do_not_modify": [
+    "Zeta23.lean",
+    "lakefile.toml",
+    "lake-manifest.json",
+    "lean-toolchain",
+    "formalization.yaml",
+    "comparator/**",
+    "Zeta23/CCM/**",
+    "Zeta23/ExceptionalZero/**",
+    "Zeta23/RHRC/Step123OutputBindings.lean",
+    "Zeta23/RHRC/Step123OutputContractCheck.lean",
+    "research/RHRC/BOUNDARY.json",
+    "research/RHRC/routes/ROUTE_REGISTRY.json",
+    "research/RHRC/R003_PROMOTED_BINDINGS.json",
+    "research/RHRC/integration/post290/**",
+    "research/RHRC/routes/R003_ccm_bridge/post290/**",
+    ".github/workflows/rhrc*.yml (all existing workflows; new rhrc_opica.yml is the sole exception)",
+    "research/RHRC/graph/generated/history/**",
+    "research/RHRC/ffbbp/generated/history/**",
+    "research/RHRC/ool/generated/history/**"
+  ],
+  "no_root_api_pollution": {
+    "normal_entrypoint": "Zeta23.OPICA",
+    "legacy_default_root_unchanged": true,
+    "required_build_targets": [
+      "Zeta23.OPICA",
+      "Zeta23.OPICA.Validation",
+      "Zeta23.RHRC.OpicaBindings",
+      "Zeta23.RHRC.RegisteredClaimBindings",
+      "Zeta23.RHRC.DeclarationDependencyExport",
+      "Zeta23.RHRC.SourceCandidateResolution"
+    ],
+    "historical_lean_sources_are_imported_not_modified": true
+  },
+  "new_jobs": [
+    {
+      "id": "opica-contract",
+      "classification": "FORMAL_VALIDITY_GATE",
+      "scope": "Source/type/manifest/firewall checks, not a kernel proof"
+    },
+    {
+      "id": "opica-formal",
+      "classification": "FORMAL_VALIDITY_GATE",
+      "scope": "All mathematical modules, exact typed consumers, public root enumeration, axiom/constructor/type-DAG receipt"
+    },
+    {
+      "id": "opica-regression",
+      "classification": "REGRESSION_GATE",
+      "scope": "Frozen 5112 exact controls plus parser/contract/authority mutations under normal and optimized Python"
+    },
+    {
+      "id": "opica-dependency-delta",
+      "classification": "RESEARCH_PRODUCING_CHECK",
+      "scope": "Compiler use-graph and paper-coverage delta only; no theorem or importance promotion"
+    },
+    {
+      "id": "opica-component-summary",
+      "classification": "FORMAL_VALIDITY_GATE",
+      "scope": "Fail-closed complete new-job summary; not full repository release or independent review"
+    }
+  ],
+  "prohibited_actions_in_specification_turn": [
+    "repo_writes",
+    "new_lean_proofs",
+    "new_CI_runs",
+    "claim_promotion"
+  ],
+  "execution_status": {
+    "repo_writes": false,
+    "branch_created": false,
+    "pr_created": false,
+    "new_Lean_roots": 0,
+    "new_CI_runs": 0,
+    "RH": "OPEN",
+    "Step4": "OPEN"
+  }
+}

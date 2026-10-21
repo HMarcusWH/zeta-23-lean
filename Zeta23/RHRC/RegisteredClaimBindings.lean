@@ -96,6 +96,24 @@ import Zeta23.CCM.CanonicalK2SourceSignInterval
 import Zeta23.CCM.CanonicalPrimeFreeSecondTest
 import Zeta23.CCM.CanonicalGlobalF04
 import Zeta23.CCM.CanonicalLocalBirdfishie
+import Zeta23.OPICA.AffineTransport
+import Zeta23.OPICA.Composition
+import Zeta23.OPICA.Counterexamples
+import Zeta23.OPICA.DivisorBounds
+import Zeta23.OPICA.DivisorMask
+import Zeta23.OPICA.EnergyRate
+import Zeta23.OPICA.FejerCompletion
+import Zeta23.OPICA.Involution
+import Zeta23.OPICA.LocalObstruction
+import Zeta23.OPICA.LocalQuotients
+import Zeta23.OPICA.NativeArithmeticAdapter
+import Zeta23.OPICA.NativeJetAdapter
+import Zeta23.OPICA.ObservationCompatibility
+import Zeta23.OPICA.PrimitiveMasks
+import Zeta23.OPICA.RangeSeparation
+import Zeta23.OPICA.ResidueLimits
+import Zeta23.OPICA.SignedHeatSeparator
+import Zeta23.OPICA.WeightedLaplace
 
 -- AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE
 #check Zeta23.ExceptionalZero.canonicalPrimeRemainderDominance_iff_riemannHypothesis
@@ -583,3 +601,156 @@ import Zeta23.CCM.CanonicalLocalBirdfishie
 #check Zeta23.CCM.GeneratedStrictEvenContact.completed_production_frontier_unconditional
 #print axioms Zeta23.CCM.GeneratedStrictEvenContact.completed_production_frontier_unconditional
 
+-- OPICA supporting laws; all closing obligations retain their prior scope.
+#check Zeta23.OPICA.unit_mul_simplePole_residue
+#print axioms Zeta23.OPICA.unit_mul_simplePole_residue
+#check Zeta23.OPICA.completion_regularRepresentative_analytic
+#print axioms Zeta23.OPICA.completion_regularRepresentative_analytic
+#check Zeta23.OPICA.completion_order
+#print axioms Zeta23.OPICA.completion_order
+#check Zeta23.OPICA.completion_leading_jet
+#print axioms Zeta23.OPICA.completion_leading_jet
+#check Zeta23.OPICA.zero_ideal_eq_coordinate_power
+#print axioms Zeta23.OPICA.zero_ideal_eq_coordinate_power
+#check Zeta23.OPICA.truncated_taylor_quotient_equiv
+#print axioms Zeta23.OPICA.truncated_taylor_quotient_equiv
+#check Zeta23.OPICA.completion_quotient_equiv
+#print axioms Zeta23.OPICA.completion_quotient_equiv
+#check Zeta23.OPICA.residual_congr_preserves_residue
+#print axioms Zeta23.OPICA.residual_congr_preserves_residue
+#check Zeta23.OPICA.finite_residual_products_preserve_residue
+#print axioms Zeta23.OPICA.finite_residual_products_preserve_residue
+#check Zeta23.OPICA.iterated_completion_leading_jet
+#print axioms Zeta23.OPICA.iterated_completion_leading_jet
+#check Zeta23.OPICA.double_completion_leibniz_factor
+#print axioms Zeta23.OPICA.double_completion_leibniz_factor
+#check Zeta23.OPICA.affine_transport_corrected_eq
+#print axioms Zeta23.OPICA.affine_transport_corrected_eq
+#check Zeta23.OPICA.affine_transport_leading_jet
+#print axioms Zeta23.OPICA.affine_transport_leading_jet
+#check Zeta23.OPICA.analytic_addition_can_cancel_completed_jet
+#print axioms Zeta23.OPICA.analytic_addition_can_cancel_completed_jet
+#check Zeta23.OPICA.residue_continuous_of_circle_uniform
+#print axioms Zeta23.OPICA.residue_continuous_of_circle_uniform
+#check Zeta23.OPICA.escaping_tail_keeps_residue
+#print axioms Zeta23.OPICA.escaping_tail_keeps_residue
+#check Zeta23.OPICA.log_one_add_posPart_sub_le
+#print axioms Zeta23.OPICA.log_one_add_posPart_sub_le
+#check Zeta23.OPICA.log_one_add_norm_sub_le
+#print axioms Zeta23.OPICA.log_one_add_norm_sub_le
+#check Zeta23.OPICA.subexpAlong_add
+#print axioms Zeta23.OPICA.subexpAlong_add
+#check Zeta23.OPICA.subexpAlong_mul
+#print axioms Zeta23.OPICA.subexpAlong_mul
+#check Zeta23.OPICA.subexpAlong_const_smul
+#print axioms Zeta23.OPICA.subexpAlong_const_smul
+#check Zeta23.OPICA.rate_congr_of_subexp_error
+#print axioms Zeta23.OPICA.rate_congr_of_subexp_error
+#check Zeta23.OPICA.posRate_congr_of_subexp_error
+#print axioms Zeta23.OPICA.posRate_congr_of_subexp_error
+#check Zeta23.OPICA.rate_limsup_liminf_congr
+#print axioms Zeta23.OPICA.rate_limsup_liminf_congr
+#check Zeta23.OPICA.rate_congr_of_tempered_scale
+#print axioms Zeta23.OPICA.rate_congr_of_tempered_scale
+#check Zeta23.OPICA.posRate_congr_of_positive_tempered_scale
+#print axioms Zeta23.OPICA.posRate_congr_of_positive_tempered_scale
+#check Zeta23.OPICA.affine_chain_expansion
+#print axioms Zeta23.OPICA.affine_chain_expansion
+#check Zeta23.OPICA.affine_chain_budget
+#print axioms Zeta23.OPICA.affine_chain_budget
+#check Zeta23.OPICA.rate_congr_of_accumulated_budget
+#print axioms Zeta23.OPICA.rate_congr_of_accumulated_budget
+#check Zeta23.OPICA.quiet_cofinal_rate_zero
+#print axioms Zeta23.OPICA.quiet_cofinal_rate_zero
+#check Zeta23.OPICA.quotient_map_injective_iff
+#print axioms Zeta23.OPICA.quotient_map_injective_iff
+#check Zeta23.OPICA.faithful_transfer_comp
+#print axioms Zeta23.OPICA.faithful_transfer_comp
+#check Zeta23.OPICA.obstruction_path_nonzero
+#print axioms Zeta23.OPICA.obstruction_path_nonzero
+#check Zeta23.OPICA.implication_path_nonzero
+#print axioms Zeta23.OPICA.implication_path_nonzero
+#check Zeta23.OPICA.divisor_count_submultiplicative
+#print axioms Zeta23.OPICA.divisor_count_submultiplicative
+#check Zeta23.OPICA.divisor_count_square_le
+#print axioms Zeta23.OPICA.divisor_count_square_le
+#check Zeta23.OPICA.divisor_count_harmonic_sum_le
+#print axioms Zeta23.OPICA.divisor_count_harmonic_sum_le
+#check Zeta23.OPICA.divisor_count_sqrt_sum_le
+#print axioms Zeta23.OPICA.divisor_count_sqrt_sum_le
+#check Zeta23.OPICA.primitive_mask_partition
+#print axioms Zeta23.OPICA.primitive_mask_partition
+#check Zeta23.OPICA.low_primitive_bilinear_bound
+#print axioms Zeta23.OPICA.low_primitive_bilinear_bound
+#check Zeta23.OPICA.masked_typeI_mixed_bound
+#print axioms Zeta23.OPICA.masked_typeI_mixed_bound
+#check Zeta23.OPICA.masked_typeI_square_bound
+#print axioms Zeta23.OPICA.masked_typeI_square_bound
+#check Zeta23.OPICA.balanced_energy_comparison
+#print axioms Zeta23.OPICA.balanced_energy_comparison
+#check Zeta23.OPICA.mask_regrouping_difference
+#print axioms Zeta23.OPICA.mask_regrouping_difference
+#check Zeta23.OPICA.regrouped_mask_rate_congr
+#print axioms Zeta23.OPICA.regrouped_mask_rate_congr
+#check Zeta23.OPICA.laplace_holomorphic_of_weighted_L2
+#print axioms Zeta23.OPICA.laplace_holomorphic_of_weighted_L2
+#check Zeta23.OPICA.laplace_iteratedDeriv_bound_of_weighted_L2
+#print axioms Zeta23.OPICA.laplace_iteratedDeriv_bound_of_weighted_L2
+#check Zeta23.OPICA.no_visible_pole_of_weighted_L2
+#print axioms Zeta23.OPICA.no_visible_pole_of_weighted_L2
+#check Zeta23.OPICA.range_distance_of_annihilator
+#print axioms Zeta23.OPICA.range_distance_of_annihilator
+#check Zeta23.OPICA.not_mem_rangeClosure_of_annihilator
+#print axioms Zeta23.OPICA.not_mem_rangeClosure_of_annihilator
+#check Zeta23.OPICA.observation_factors_iff_ker_le
+#print axioms Zeta23.OPICA.observation_factors_iff_ker_le
+#check Zeta23.OPICA.contrast_cannot_recover_sum
+#print axioms Zeta23.OPICA.contrast_cannot_recover_sum
+#check Zeta23.OPICA.gram_integral_posSemidef
+#print axioms Zeta23.OPICA.gram_integral_posSemidef
+#check Zeta23.OPICA.gram_integral_not_rank_one
+#print axioms Zeta23.OPICA.gram_integral_not_rank_one
+#check Zeta23.OPICA.single_vector_bound_not_operator_bound
+#print axioms Zeta23.OPICA.single_vector_bound_not_operator_bound
+#check Zeta23.OPICA.offDiagonal_mask_not_posSemidef
+#print axioms Zeta23.OPICA.offDiagonal_mask_not_posSemidef
+#check Zeta23.OPICA.incompatible_iff_left_annihilator
+#print axioms Zeta23.OPICA.incompatible_iff_left_annihilator
+#check Zeta23.OPICA.range_distance_eq_annihilator_sup
+#print axioms Zeta23.OPICA.range_distance_eq_annihilator_sup
+#check Zeta23.OPICA.seven_samples_six_coefficients_consistent
+#print axioms Zeta23.OPICA.seven_samples_six_coefficients_consistent
+#check Zeta23.OPICA.compatibility_under_invertible_left_map
+#print axioms Zeta23.OPICA.compatibility_under_invertible_left_map
+#check Zeta23.OPICA.solutions_preserved_under_left_map
+#print axioms Zeta23.OPICA.solutions_preserved_under_left_map
+#check Zeta23.OPICA.signed_sharp_gap_separator
+#print axioms Zeta23.OPICA.signed_sharp_gap_separator
+#check Zeta23.OPICA.signed_gap_negative_mass_budget
+#print axioms Zeta23.OPICA.signed_gap_negative_mass_budget
+#check Zeta23.OPICA.commutator_anti_invariant
+#print axioms Zeta23.OPICA.commutator_anti_invariant
+#check Zeta23.OPICA.commutator_selfdual_projection_zero
+#print axioms Zeta23.OPICA.commutator_selfdual_projection_zero
+#check Zeta23.OPICA.fejer_floor_formula
+#print axioms Zeta23.OPICA.fejer_floor_formula
+#check Zeta23.OPICA.fejer_nativeCompletion_pointwise
+#print axioms Zeta23.OPICA.fejer_nativeCompletion_pointwise
+#check Zeta23.OPICA.fejer_completion_affine_identity
+#print axioms Zeta23.OPICA.fejer_completion_affine_identity
+#check Zeta23.OPICA.fejer_logInteger_oneSidedDerivatives
+#print axioms Zeta23.OPICA.fejer_logInteger_oneSidedDerivatives
+#check Zeta23.OPICA.native_completed_input_obstruction_order
+#print axioms Zeta23.OPICA.native_completed_input_obstruction_order
+#check Zeta23.OPICA.native_completed_input_obstruction_jet
+#print axioms Zeta23.OPICA.native_completed_input_obstruction_jet
+#check Zeta23.OPICA.native_completed_input_obstruction_ne_zero
+#print axioms Zeta23.OPICA.native_completed_input_obstruction_ne_zero
+#check Zeta23.OPICA.native_range_distance_lower
+#print axioms Zeta23.OPICA.native_range_distance_lower
+#check Zeta23.OPICA.step123_output_opica_view_correct
+#print axioms Zeta23.OPICA.step123_output_opica_view_correct
+#check Zeta23.OPICA.step123_eachPhase_opica_consumer
+#print axioms Zeta23.OPICA.step123_eachPhase_opica_consumer
+#check Zeta23.OPICA.native_original_drive_low_mask_bound
+#print axioms Zeta23.OPICA.native_original_drive_low_mask_bound

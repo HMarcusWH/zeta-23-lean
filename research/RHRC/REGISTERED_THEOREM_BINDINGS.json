@@ -692,6 +692,386 @@
       "theorem": "Zeta23.CCM.productionContactF04DerivativeAuthority_of_pos",
       "source": "Zeta23/CCM/CanonicalGlobalF04.lean",
       "route": "R003_ccm_bridge"
+    },
+    {
+      "id": "OPICA_L1_UNIT_MUL_SIMPLEPOLE_RESIDUE",
+      "theorem": "Zeta23.OPICA.unit_mul_simplePole_residue",
+      "source": "Zeta23/OPICA/LocalObstruction.lean"
+    },
+    {
+      "id": "OPICA_L1_COMPLETION_REGULARREPRESENTATIVE_ANALYTIC",
+      "theorem": "Zeta23.OPICA.completion_regularRepresentative_analytic",
+      "source": "Zeta23/OPICA/LocalObstruction.lean"
+    },
+    {
+      "id": "OPICA_L1_COMPLETION_ORDER",
+      "theorem": "Zeta23.OPICA.completion_order",
+      "source": "Zeta23/OPICA/LocalObstruction.lean"
+    },
+    {
+      "id": "OPICA_L1_COMPLETION_LEADING_JET",
+      "theorem": "Zeta23.OPICA.completion_leading_jet",
+      "source": "Zeta23/OPICA/LocalObstruction.lean"
+    },
+    {
+      "id": "OPICA_L2_ZERO_IDEAL_EQ_COORDINATE_POWER",
+      "theorem": "Zeta23.OPICA.zero_ideal_eq_coordinate_power",
+      "source": "Zeta23/OPICA/LocalQuotients.lean"
+    },
+    {
+      "id": "OPICA_L2_TRUNCATED_TAYLOR_QUOTIENT_EQUIV",
+      "theorem": "Zeta23.OPICA.truncated_taylor_quotient_equiv",
+      "source": "Zeta23/OPICA/LocalQuotients.lean"
+    },
+    {
+      "id": "OPICA_L2_COMPLETION_QUOTIENT_EQUIV",
+      "theorem": "Zeta23.OPICA.completion_quotient_equiv",
+      "source": "Zeta23/OPICA/LocalQuotients.lean"
+    },
+    {
+      "id": "OPICA_L2_RESIDUAL_CONGR_PRESERVES_RESIDUE",
+      "theorem": "Zeta23.OPICA.residual_congr_preserves_residue",
+      "source": "Zeta23/OPICA/LocalObstruction.lean"
+    },
+    {
+      "id": "OPICA_L2_FINITE_RESIDUAL_PRODUCTS_PRESERVE_RESIDUE",
+      "theorem": "Zeta23.OPICA.finite_residual_products_preserve_residue",
+      "source": "Zeta23/OPICA/LocalObstruction.lean"
+    },
+    {
+      "id": "OPICA_L3_ITERATED_COMPLETION_LEADING_JET",
+      "theorem": "Zeta23.OPICA.iterated_completion_leading_jet",
+      "source": "Zeta23/OPICA/LocalObstruction.lean"
+    },
+    {
+      "id": "OPICA_L3_DOUBLE_COMPLETION_LEIBNIZ_FACTOR",
+      "theorem": "Zeta23.OPICA.double_completion_leibniz_factor",
+      "source": "Zeta23/OPICA/LocalObstruction.lean"
+    },
+    {
+      "id": "OPICA_L4_AFFINE_TRANSPORT_CORRECTED_EQ",
+      "theorem": "Zeta23.OPICA.affine_transport_corrected_eq",
+      "source": "Zeta23/OPICA/AffineTransport.lean"
+    },
+    {
+      "id": "OPICA_L4_AFFINE_TRANSPORT_LEADING_JET",
+      "theorem": "Zeta23.OPICA.affine_transport_leading_jet",
+      "source": "Zeta23/OPICA/AffineTransport.lean"
+    },
+    {
+      "id": "OPICA_L4_ANALYTIC_ADDITION_CAN_CANCEL_COMPLETED_JET",
+      "theorem": "Zeta23.OPICA.analytic_addition_can_cancel_completed_jet",
+      "source": "Zeta23/OPICA/Counterexamples.lean"
+    },
+    {
+      "id": "OPICA_L5_RESIDUE_CONTINUOUS_OF_CIRCLE_UNIFORM",
+      "theorem": "Zeta23.OPICA.residue_continuous_of_circle_uniform",
+      "source": "Zeta23/OPICA/ResidueLimits.lean"
+    },
+    {
+      "id": "OPICA_L5_ESCAPING_TAIL_KEEPS_RESIDUE",
+      "theorem": "Zeta23.OPICA.escaping_tail_keeps_residue",
+      "source": "Zeta23/OPICA/ResidueLimits.lean"
+    },
+    {
+      "id": "OPICA_E1_LOG_ONE_ADD_POSPART_SUB_LE",
+      "theorem": "Zeta23.OPICA.log_one_add_posPart_sub_le",
+      "source": "Zeta23/OPICA/EnergyRate.lean"
+    },
+    {
+      "id": "OPICA_E1_LOG_ONE_ADD_NORM_SUB_LE",
+      "theorem": "Zeta23.OPICA.log_one_add_norm_sub_le",
+      "source": "Zeta23/OPICA/EnergyRate.lean"
+    },
+    {
+      "id": "OPICA_E2_SUBEXPALONG_ADD",
+      "theorem": "Zeta23.OPICA.subexpAlong_add",
+      "source": "Zeta23/OPICA/EnergyRate.lean"
+    },
+    {
+      "id": "OPICA_E2_SUBEXPALONG_MUL",
+      "theorem": "Zeta23.OPICA.subexpAlong_mul",
+      "source": "Zeta23/OPICA/EnergyRate.lean"
+    },
+    {
+      "id": "OPICA_E2_SUBEXPALONG_CONST_SMUL",
+      "theorem": "Zeta23.OPICA.subexpAlong_const_smul",
+      "source": "Zeta23/OPICA/EnergyRate.lean"
+    },
+    {
+      "id": "OPICA_E2_RATE_CONGR_OF_SUBEXP_ERROR",
+      "theorem": "Zeta23.OPICA.rate_congr_of_subexp_error",
+      "source": "Zeta23/OPICA/EnergyRate.lean"
+    },
+    {
+      "id": "OPICA_E2_POSRATE_CONGR_OF_SUBEXP_ERROR",
+      "theorem": "Zeta23.OPICA.posRate_congr_of_subexp_error",
+      "source": "Zeta23/OPICA/EnergyRate.lean"
+    },
+    {
+      "id": "OPICA_E2_RATE_LIMSUP_LIMINF_CONGR",
+      "theorem": "Zeta23.OPICA.rate_limsup_liminf_congr",
+      "source": "Zeta23/OPICA/EnergyRate.lean"
+    },
+    {
+      "id": "OPICA_E3_RATE_CONGR_OF_TEMPERED_SCALE",
+      "theorem": "Zeta23.OPICA.rate_congr_of_tempered_scale",
+      "source": "Zeta23/OPICA/EnergyRate.lean"
+    },
+    {
+      "id": "OPICA_E3_POSRATE_CONGR_OF_POSITIVE_TEMPERED_SCALE",
+      "theorem": "Zeta23.OPICA.posRate_congr_of_positive_tempered_scale",
+      "source": "Zeta23/OPICA/EnergyRate.lean"
+    },
+    {
+      "id": "OPICA_E4_AFFINE_CHAIN_EXPANSION",
+      "theorem": "Zeta23.OPICA.affine_chain_expansion",
+      "source": "Zeta23/OPICA/Composition.lean"
+    },
+    {
+      "id": "OPICA_E4_AFFINE_CHAIN_BUDGET",
+      "theorem": "Zeta23.OPICA.affine_chain_budget",
+      "source": "Zeta23/OPICA/Composition.lean"
+    },
+    {
+      "id": "OPICA_E4_RATE_CONGR_OF_ACCUMULATED_BUDGET",
+      "theorem": "Zeta23.OPICA.rate_congr_of_accumulated_budget",
+      "source": "Zeta23/OPICA/Composition.lean"
+    },
+    {
+      "id": "OPICA_E5_QUIET_COFINAL_RATE_ZERO",
+      "theorem": "Zeta23.OPICA.quiet_cofinal_rate_zero",
+      "source": "Zeta23/OPICA/Composition.lean"
+    },
+    {
+      "id": "OPICA_C1_QUOTIENT_MAP_INJECTIVE_IFF",
+      "theorem": "Zeta23.OPICA.quotient_map_injective_iff",
+      "source": "Zeta23/OPICA/Composition.lean"
+    },
+    {
+      "id": "OPICA_C1_FAITHFUL_TRANSFER_COMP",
+      "theorem": "Zeta23.OPICA.faithful_transfer_comp",
+      "source": "Zeta23/OPICA/Composition.lean"
+    },
+    {
+      "id": "OPICA_C2_OBSTRUCTION_PATH_NONZERO",
+      "theorem": "Zeta23.OPICA.obstruction_path_nonzero",
+      "source": "Zeta23/OPICA/Composition.lean"
+    },
+    {
+      "id": "OPICA_C2_IMPLICATION_PATH_NONZERO",
+      "theorem": "Zeta23.OPICA.implication_path_nonzero",
+      "source": "Zeta23/OPICA/Composition.lean"
+    },
+    {
+      "id": "OPICA_A1_DIVISOR_COUNT_SUBMULTIPLICATIVE",
+      "theorem": "Zeta23.OPICA.divisor_count_submultiplicative",
+      "source": "Zeta23/OPICA/DivisorBounds.lean"
+    },
+    {
+      "id": "OPICA_A1_DIVISOR_COUNT_SQUARE_LE",
+      "theorem": "Zeta23.OPICA.divisor_count_square_le",
+      "source": "Zeta23/OPICA/DivisorBounds.lean"
+    },
+    {
+      "id": "OPICA_A1_DIVISOR_COUNT_HARMONIC_SUM_LE",
+      "theorem": "Zeta23.OPICA.divisor_count_harmonic_sum_le",
+      "source": "Zeta23/OPICA/DivisorBounds.lean"
+    },
+    {
+      "id": "OPICA_A1_DIVISOR_COUNT_SQRT_SUM_LE",
+      "theorem": "Zeta23.OPICA.divisor_count_sqrt_sum_le",
+      "source": "Zeta23/OPICA/DivisorBounds.lean"
+    },
+    {
+      "id": "OPICA_A2_PRIMITIVE_MASK_PARTITION",
+      "theorem": "Zeta23.OPICA.primitive_mask_partition",
+      "source": "Zeta23/OPICA/PrimitiveMasks.lean"
+    },
+    {
+      "id": "OPICA_A2_LOW_PRIMITIVE_BILINEAR_BOUND",
+      "theorem": "Zeta23.OPICA.low_primitive_bilinear_bound",
+      "source": "Zeta23/OPICA/DivisorMask.lean"
+    },
+    {
+      "id": "OPICA_A2_MASKED_TYPEI_MIXED_BOUND",
+      "theorem": "Zeta23.OPICA.masked_typeI_mixed_bound",
+      "source": "Zeta23/OPICA/DivisorMask.lean"
+    },
+    {
+      "id": "OPICA_A2_MASKED_TYPEI_SQUARE_BOUND",
+      "theorem": "Zeta23.OPICA.masked_typeI_square_bound",
+      "source": "Zeta23/OPICA/DivisorMask.lean"
+    },
+    {
+      "id": "OPICA_A2_BALANCED_ENERGY_COMPARISON",
+      "theorem": "Zeta23.OPICA.balanced_energy_comparison",
+      "source": "Zeta23/OPICA/DivisorMask.lean"
+    },
+    {
+      "id": "OPICA_A3_MASK_REGROUPING_DIFFERENCE",
+      "theorem": "Zeta23.OPICA.mask_regrouping_difference",
+      "source": "Zeta23/OPICA/DivisorMask.lean"
+    },
+    {
+      "id": "OPICA_A3_REGROUPED_MASK_RATE_CONGR",
+      "theorem": "Zeta23.OPICA.regrouped_mask_rate_congr",
+      "source": "Zeta23/OPICA/DivisorMask.lean"
+    },
+    {
+      "id": "OPICA_B1_LAPLACE_HOLOMORPHIC_OF_WEIGHTED_L2",
+      "theorem": "Zeta23.OPICA.laplace_holomorphic_of_weighted_L2",
+      "source": "Zeta23/OPICA/WeightedLaplace.lean"
+    },
+    {
+      "id": "OPICA_B1_LAPLACE_ITERATEDDERIV_BOUND_OF_WEIGHTED_L2",
+      "theorem": "Zeta23.OPICA.laplace_iteratedDeriv_bound_of_weighted_L2",
+      "source": "Zeta23/OPICA/WeightedLaplace.lean"
+    },
+    {
+      "id": "OPICA_B1_NO_VISIBLE_POLE_OF_WEIGHTED_L2",
+      "theorem": "Zeta23.OPICA.no_visible_pole_of_weighted_L2",
+      "source": "Zeta23/OPICA/WeightedLaplace.lean"
+    },
+    {
+      "id": "OPICA_B2_RANGE_DISTANCE_OF_ANNIHILATOR",
+      "theorem": "Zeta23.OPICA.range_distance_of_annihilator",
+      "source": "Zeta23/OPICA/RangeSeparation.lean"
+    },
+    {
+      "id": "OPICA_B2_NOT_MEM_RANGECLOSURE_OF_ANNIHILATOR",
+      "theorem": "Zeta23.OPICA.not_mem_rangeClosure_of_annihilator",
+      "source": "Zeta23/OPICA/RangeSeparation.lean"
+    },
+    {
+      "id": "OPICA_O1_OBSERVATION_FACTORS_IFF_KER_LE",
+      "theorem": "Zeta23.OPICA.observation_factors_iff_ker_le",
+      "source": "Zeta23/OPICA/ObservationCompatibility.lean"
+    },
+    {
+      "id": "OPICA_O1_CONTRAST_CANNOT_RECOVER_SUM",
+      "theorem": "Zeta23.OPICA.contrast_cannot_recover_sum",
+      "source": "Zeta23/OPICA/Counterexamples.lean"
+    },
+    {
+      "id": "OPICA_O2_GRAM_INTEGRAL_POSSEMIDEF",
+      "theorem": "Zeta23.OPICA.gram_integral_posSemidef",
+      "source": "Zeta23/OPICA/ObservationCompatibility.lean"
+    },
+    {
+      "id": "OPICA_O2_GRAM_INTEGRAL_NOT_RANK_ONE",
+      "theorem": "Zeta23.OPICA.gram_integral_not_rank_one",
+      "source": "Zeta23/OPICA/Counterexamples.lean"
+    },
+    {
+      "id": "OPICA_O2_SINGLE_VECTOR_BOUND_NOT_OPERATOR_BOUND",
+      "theorem": "Zeta23.OPICA.single_vector_bound_not_operator_bound",
+      "source": "Zeta23/OPICA/Counterexamples.lean"
+    },
+    {
+      "id": "OPICA_O2_OFFDIAGONAL_MASK_NOT_POSSEMIDEF",
+      "theorem": "Zeta23.OPICA.offDiagonal_mask_not_posSemidef",
+      "source": "Zeta23/OPICA/Counterexamples.lean"
+    },
+    {
+      "id": "OPICA_O3_INCOMPATIBLE_IFF_LEFT_ANNIHILATOR",
+      "theorem": "Zeta23.OPICA.incompatible_iff_left_annihilator",
+      "source": "Zeta23/OPICA/ObservationCompatibility.lean"
+    },
+    {
+      "id": "OPICA_O3_RANGE_DISTANCE_EQ_ANNIHILATOR_SUP",
+      "theorem": "Zeta23.OPICA.range_distance_eq_annihilator_sup",
+      "source": "Zeta23/OPICA/ObservationCompatibility.lean"
+    },
+    {
+      "id": "OPICA_O3_SEVEN_SAMPLES_SIX_COEFFICIENTS_CONSISTENT",
+      "theorem": "Zeta23.OPICA.seven_samples_six_coefficients_consistent",
+      "source": "Zeta23/OPICA/Counterexamples.lean"
+    },
+    {
+      "id": "OPICA_O4_COMPATIBILITY_UNDER_INVERTIBLE_LEFT_MAP",
+      "theorem": "Zeta23.OPICA.compatibility_under_invertible_left_map",
+      "source": "Zeta23/OPICA/ObservationCompatibility.lean"
+    },
+    {
+      "id": "OPICA_O4_SOLUTIONS_PRESERVED_UNDER_LEFT_MAP",
+      "theorem": "Zeta23.OPICA.solutions_preserved_under_left_map",
+      "source": "Zeta23/OPICA/ObservationCompatibility.lean"
+    },
+    {
+      "id": "OPICA_H1_SIGNED_SHARP_GAP_SEPARATOR",
+      "theorem": "Zeta23.OPICA.signed_sharp_gap_separator",
+      "source": "Zeta23/OPICA/SignedHeatSeparator.lean"
+    },
+    {
+      "id": "OPICA_H2_SIGNED_GAP_NEGATIVE_MASS_BUDGET",
+      "theorem": "Zeta23.OPICA.signed_gap_negative_mass_budget",
+      "source": "Zeta23/OPICA/SignedHeatSeparator.lean"
+    },
+    {
+      "id": "OPICA_H3_COMMUTATOR_ANTI_INVARIANT",
+      "theorem": "Zeta23.OPICA.commutator_anti_invariant",
+      "source": "Zeta23/OPICA/Involution.lean"
+    },
+    {
+      "id": "OPICA_H3_COMMUTATOR_SELFDUAL_PROJECTION_ZERO",
+      "theorem": "Zeta23.OPICA.commutator_selfdual_projection_zero",
+      "source": "Zeta23/OPICA/Involution.lean"
+    },
+    {
+      "id": "OPICA_H4_FEJER_FLOOR_FORMULA",
+      "theorem": "Zeta23.OPICA.fejer_floor_formula",
+      "source": "Zeta23/OPICA/FejerCompletion.lean"
+    },
+    {
+      "id": "OPICA_H4_FEJER_NATIVECOMPLETION_POINTWISE",
+      "theorem": "Zeta23.OPICA.fejer_nativeCompletion_pointwise",
+      "source": "Zeta23/OPICA/FejerCompletion.lean"
+    },
+    {
+      "id": "OPICA_H4_FEJER_COMPLETION_AFFINE_IDENTITY",
+      "theorem": "Zeta23.OPICA.fejer_completion_affine_identity",
+      "source": "Zeta23/OPICA/FejerCompletion.lean"
+    },
+    {
+      "id": "OPICA_H4_FEJER_LOGINTEGER_ONESIDEDDERIVATIVES",
+      "theorem": "Zeta23.OPICA.fejer_logInteger_oneSidedDerivatives",
+      "source": "Zeta23/OPICA/FejerCompletion.lean"
+    },
+    {
+      "id": "OPICA_NATIVE_NATIVE_COMPLETED_INPUT_OBSTRUCTION_ORDER",
+      "theorem": "Zeta23.OPICA.native_completed_input_obstruction_order",
+      "source": "Zeta23/OPICA/NativeJetAdapter.lean"
+    },
+    {
+      "id": "OPICA_NATIVE_NATIVE_COMPLETED_INPUT_OBSTRUCTION_JET",
+      "theorem": "Zeta23.OPICA.native_completed_input_obstruction_jet",
+      "source": "Zeta23/OPICA/NativeJetAdapter.lean"
+    },
+    {
+      "id": "OPICA_NATIVE_NATIVE_COMPLETED_INPUT_OBSTRUCTION_NE_ZERO",
+      "theorem": "Zeta23.OPICA.native_completed_input_obstruction_ne_zero",
+      "source": "Zeta23/OPICA/NativeJetAdapter.lean"
+    },
+    {
+      "id": "OPICA_NATIVE_NATIVE_RANGE_DISTANCE_LOWER",
+      "theorem": "Zeta23.OPICA.native_range_distance_lower",
+      "source": "Zeta23/OPICA/NativeJetAdapter.lean"
+    },
+    {
+      "id": "OPICA_NATIVE_STEP123_OUTPUT_OPICA_VIEW_CORRECT",
+      "theorem": "Zeta23.OPICA.step123_output_opica_view_correct",
+      "source": "Zeta23/OPICA/NativeJetAdapter.lean"
+    },
+    {
+      "id": "OPICA_NATIVE_STEP123_EACHPHASE_OPICA_CONSUMER",
+      "theorem": "Zeta23.OPICA.step123_eachPhase_opica_consumer",
+      "source": "Zeta23/OPICA/NativeJetAdapter.lean"
+    },
+    {
+      "id": "OPICA_NATIVE_NATIVE_ORIGINAL_DRIVE_LOW_MASK_BOUND",
+      "theorem": "Zeta23.OPICA.native_original_drive_low_mask_bound",
+      "source": "Zeta23/OPICA/NativeArithmeticAdapter.lean"
     }
   ],
   "candidate_scope": "OPEN_CANDIDATE_BINDINGS_AUDIT_ONLY_NOT_PROVED_AUTHORITY",

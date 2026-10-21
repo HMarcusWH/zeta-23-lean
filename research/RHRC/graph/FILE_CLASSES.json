@@ -120,6 +120,24 @@
       "trust_zone": "AUXILIARY_FORMALIZATION"
     },
     {
+      "id": "opica_validation_audit",
+      "pattern": "^Zeta23/OPICA/Validation\\.lean$",
+      "file_class": "LEAN_SOURCE",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "id": "opica_native_adapters",
+      "pattern": "^Zeta23/OPICA/(?:NativeJetAdapter|NativeArithmeticAdapter)\\.lean$",
+      "file_class": "LEAN_SOURCE",
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "id": "opica_math",
+      "pattern": "^Zeta23/OPICA(?:/.*)?\\.lean$",
+      "file_class": "LEAN_SOURCE",
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
       "id": "zeta_lean",
       "pattern": "^Zeta23/.*\\.lean$",
       "file_class": "LEAN_SOURCE",

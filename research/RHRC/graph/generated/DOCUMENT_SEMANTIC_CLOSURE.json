@@ -30,7 +30,7 @@
       "document_role": "DOCUMENTATION_ARTIFACT",
       "file_class": "DOCUMENTATION",
       "file_id": "rh:file:README.md",
-      "heading_count": 31,
+      "heading_count": 32,
       "path": "README.md",
       "route_mentions": [
         "R003_ccm_bridge"
@@ -92,7 +92,7 @@
       "document_role": "DOCUMENTATION_ARTIFACT",
       "file_class": "DOCUMENTATION",
       "file_id": "rh:file:research/RHRC/CURRENT_RESEARCH_PLAN.md",
-      "heading_count": 70,
+      "heading_count": 71,
       "path": "research/RHRC/CURRENT_RESEARCH_PLAN.md",
       "route_mentions": [
         "R003_ccm_bridge"
@@ -195,7 +195,7 @@
       "document_role": "LIVING_PROJECT_STATE",
       "file_class": "LIVING_SSOT",
       "file_id": "rh:file:research/RHRC/README.md",
-      "heading_count": 22,
+      "heading_count": 23,
       "path": "research/RHRC/README.md",
       "route_mentions": [
         "R003_ccm_bridge"
@@ -429,6 +429,68 @@
       "file_id": "rh:file:research/RHRC/integration/README.md",
       "heading_count": 6,
       "path": "research/RHRC/integration/README.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [
+        "C_RH",
+        "R001_PRIME_UPPER",
+        "R002_WINDOWED_VISIBILITY",
+        "R003_COFINAL_CANONICAL_ARITHMETIC_CERTIFICATES"
+      ],
+      "document_id": "rh:document:research/RHRC/integration/opica/BUILD_SPEC.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica/BUILD_SPEC.md",
+      "heading_count": 65,
+      "path": "research/RHRC/integration/opica/BUILD_SPEC.md",
+      "route_mentions": [
+        "R003_ccm_bridge"
+      ]
+    },
+    {
+      "claim_mentions": [
+        "C_RH",
+        "R001_PRIME_UPPER",
+        "R002_WINDOWED_VISIBILITY",
+        "R003_COFINAL_CANONICAL_ARITHMETIC_CERTIFICATES"
+      ],
+      "document_id": "rh:document:research/RHRC/integration/opica/POST_GREEN_RESEARCH.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica/POST_GREEN_RESEARCH.md",
+      "heading_count": 9,
+      "path": "research/RHRC/integration/opica/POST_GREEN_RESEARCH.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica/README.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica/README.md",
+      "heading_count": 1,
+      "path": "research/RHRC/integration/opica/README.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica/paper/OPICA_Lean_Implementation_Contract_2026-10-21.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica/paper/OPICA_Lean_Implementation_Contract_2026-10-21.md",
+      "heading_count": 36,
+      "path": "research/RHRC/integration/opica/paper/OPICA_Lean_Implementation_Contract_2026-10-21.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica/paper/OPICA_Paper_Construction_v1_0_2026-10-21.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica/paper/OPICA_Paper_Construction_v1_0_2026-10-21.md",
+      "heading_count": 74,
+      "path": "research/RHRC/integration/opica/paper/OPICA_Paper_Construction_v1_0_2026-10-21.md",
       "route_mentions": []
     },
     {
@@ -1723,7 +1785,7 @@
       ]
     }
   ],
-  "entry_count": 155,
+  "entry_count": 160,
   "graph_theorem_promotion": false,
   "mention_semantics": "claim_mentions and route_mentions are exact textual-token navigation hints only; they do not establish support, implication, supersession, or theorem authority.",
   "schema_version": "RHKG-final-document-closure-1.0",

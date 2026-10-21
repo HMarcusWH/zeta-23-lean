@@ -496,3 +496,12 @@ Theorem authority remains merged-green **PR #213**. Latest research evidence is 
 At that stage, the next target was **RETAINED_CROSS_PARITY_SECULAR_COMPLETION** on the exact forced negative root. Contact-locus ideas are explicitly demoted until a same-state contact bridge exists. The exact zero-shift response and resonant `1/(-lambda)` branch are resurrected secondary routes.
 
 **RH remains OPEN.**
+
+## OPICA supporting formalization
+
+The [OPICA package](integration/opica/README.md) adds local completion and quotient
+laws, energy and observation calculus, divisor-mask estimates, weighted Laplace
+obstructions, signed Fourier rigidity, and actual-source native consumers.
+Its normal import is `Zeta23.OPICA`; compiler instruments and expected-type
+consumers remain audit-only. Component evidence, repository-wide CI and
+independent mathematical review have separate authority.
