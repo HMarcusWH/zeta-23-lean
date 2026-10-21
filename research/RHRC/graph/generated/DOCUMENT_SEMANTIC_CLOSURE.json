@@ -449,12 +449,17 @@
       ]
     },
     {
-      "claim_mentions": [],
+      "claim_mentions": [
+        "C_RH",
+        "R001_PRIME_UPPER",
+        "R002_WINDOWED_VISIBILITY",
+        "R003_COFINAL_CANONICAL_ARITHMETIC_CERTIFICATES"
+      ],
       "document_id": "rh:document:research/RHRC/integration/opica/POST_GREEN_RESEARCH.md",
       "document_role": "DOCUMENTATION_ARTIFACT",
       "file_class": "DOCUMENTATION",
       "file_id": "rh:file:research/RHRC/integration/opica/POST_GREEN_RESEARCH.md",
-      "heading_count": 1,
+      "heading_count": 9,
       "path": "research/RHRC/integration/opica/POST_GREEN_RESEARCH.md",
       "route_mentions": []
     },
