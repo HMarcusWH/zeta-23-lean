@@ -1,3 +1,4 @@
+import Zeta23.OPICAFollowup.NativeTransformationWords
 import Mathlib.Analysis.Complex.CauchyIntegral
 import Mathlib.Analysis.Complex.Liouville
 import Mathlib.Analysis.Meromorphic.Basic
@@ -9,7 +10,7 @@ the circle budget is never supplied as a coefficient estimate premise. -/
 
 noncomputable section
 namespace Zeta23.OPICAFollowup
-open Filter Topology Metric Set Complex
+open Filter Topology Metric Set Complex MeasureTheory
 open scoped Real
 
 private def poleClearingOrder {f : ℂ → ℂ} {c : ℂ} (hf : MeromorphicAt f c) : ℕ :=
@@ -350,5 +351,73 @@ lemma laurent_equality_sharp_cancellation {f : ℂ → ℂ} {c : ℂ} {r : ℝ}
     have herr : g z-f z = -laurentMonomial a c j z := by dsimp [g]; ring
     rw [herr, norm_neg]
     exact laurentMonomial_circle_norm a c j hz
+
+
+
+lemma nativeWordCorrectedField_meromorphicAt (w : NativeWord)
+    (rho : Zeta23.zetaZeroConfig.carrier) (hright : 1/2<(rho:ℂ).re)
+    (history : NativeWordHistory ((rho:ℂ)-1/2)) :
+    MeromorphicAt (nativeWordCorrectedField w rho history) ((rho:ℂ)-1/2) := by
+  apply ((Zeta23.OPICA.multiplier_analytic (wordMultiplierOrderData w rho hright)).meromorphicAt.mul
+    (nativePrimeTransformGerm_meromorphic ((rho:ℂ)-1/2))).congr
+  exact Eventually.of_forall fun z => (nativeWordCorrectedField_eq_product w rho history z).symm
+
+lemma nativeWord_laurent_leading_coefficient (w : NativeWord)
+    (rho : Zeta23.zetaZeroConfig.carrier) (hright : 1/2<(rho:ℂ).re)
+    (history : NativeWordHistory ((rho:ℂ)-1/2)) :
+    laurentObservedCoefficient (nativeWordCorrectedField w rho history) ((rho:ℂ)-1/2)
+      (nativeWordCorrectedField_meromorphicAt w rho hright history)
+        (((wordCompletionCount w*zeroMult (rho:ℂ):ℕ):ℤ)-1)=nativeWordLeadingCoefficient w rho := by
+  exact (meromorphicLaurentCoefficient_of_germ_factorization
+    (nativeWordCorrectedField_meromorphicAt w rho hright history)
+    (nativeWordGermFactor_analytic w rho hright) (by omega)
+    (nativeWordCorrectedField_germ_factorization w rho hright history)).trans
+      (nativeWordGermFactor_value w rho hright)
+
+def nativeWordObservedField (raw correction recovery : ℂ → ℂ) : ℂ → ℂ :=
+  fun z => raw z-correction z+recovery z
+
+theorem nativeWord_contour_consumer (w : NativeWord)
+    (rho : Zeta23.zetaZeroConfig.carrier) (hright : 1/2<(rho:ℂ).re)
+    (history : NativeWordHistory ((rho:ℂ)-1/2))
+    (raw correction recovery : ℂ → ℂ) (r Eraw Ecorrection Erecovery : ℝ)
+    (hr : 0<r)
+    (hg : MeromorphicAt (nativeWordObservedField raw correction recovery) ((rho:ℂ)-1/2))
+    (hfd : AnalyticOnNhd ℂ (nativeWordCorrectedField w rho history)
+      (closedBall ((rho:ℂ)-1/2) r \ {((rho:ℂ)-1/2)}))
+    (hgd : AnalyticOnNhd ℂ (nativeWordObservedField raw correction recovery)
+      (closedBall ((rho:ℂ)-1/2) r \ {((rho:ℂ)-1/2)}))
+    (hraw : ContourErrorBudget (nativeWordTransformedField w rho history) raw ((rho:ℂ)-1/2) r Eraw)
+    (hcorrection : ContourErrorBudget (wordCorrection w history) correction ((rho:ℂ)-1/2) r Ecorrection)
+    (hrecovery : ∀ z∈sphere ((rho:ℂ)-1/2) r, ‖recovery z‖≤Erecovery)
+    (hstrict : Eraw+Ecorrection+Erecovery<‖nativeWordLeadingCoefficient w rho‖*
+      r^(((wordCompletionCount w*zeroMult (rho:ℂ):ℕ):ℤ)-1)) :
+    (∃ S : ℝ, wordHistorySafeThreshold w history≤S ∧ 1/2≤S ∧ ∀ z : ℂ, S<z.re →
+      (∀ term∈nativeWordCausalState w rho history,
+        Integrable (fun t : ℝ => Complex.exp (-z*(t:ℂ))*term.regular t)) ∧
+      (nativeWordCausalState w rho history).laplace z=nativeWordTransformedField w rho history z) ∧
+    laurentObservedCoefficient (nativeWordCorrectedField w rho history) ((rho:ℂ)-1/2)
+      (nativeWordCorrectedField_meromorphicAt w rho hright history)
+        (((wordCompletionCount w*zeroMult (rho:ℂ):ℕ):ℤ)-1)=nativeWordLeadingCoefficient w rho ∧
+    ‖laurentObservedCoefficient (nativeWordObservedField raw correction recovery) ((rho:ℂ)-1/2) hg
+      (((wordCompletionCount w*zeroMult (rho:ℂ):ℕ):ℤ)-1)-nativeWordLeadingCoefficient w rho‖≤
+        r^(-(((wordCompletionCount w*zeroMult (rho:ℂ):ℕ):ℤ)-1))*(Eraw+Ecorrection+Erecovery) ∧
+    laurentObservedCoefficient (nativeWordObservedField raw correction recovery) ((rho:ℂ)-1/2) hg
+      (((wordCompletionCount w*zeroMult (rho:ℂ):ℕ):ℤ)-1)≠0 := by
+  have hf := nativeWordCorrectedField_meromorphicAt w rho hright history
+  have hcoefficient := nativeWord_laurent_leading_coefficient w rho hright history
+  have hbudget : ContourErrorBudget (nativeWordCorrectedField w rho history)
+      (nativeWordObservedField raw correction recovery) ((rho:ℂ)-1/2) r
+        (Eraw+Ecorrection+Erecovery) := by
+    apply (hraw.sub hcorrection).trans
+    intro z hz
+    simpa only [nativeWordObservedField,add_sub_cancel_left] using hrecovery z hz
+  refine ⟨(nativeWord_corrected_transform w rho hright history).1,hcoefficient,?_,?_⟩
+  · simpa only [hcoefficient] using
+      laurent_coefficient_error_bound hr hf hg hfd hgd hbudget (j :=
+        (((wordCompletionCount w*zeroMult (rho:ℂ):ℕ):ℤ)-1)) (by omega)
+  · apply laurent_observation_survives hr hf hg hfd hgd hbudget (by omega)
+    simpa only [hcoefficient] using hstrict
+
 
 end Zeta23.OPICAFollowup

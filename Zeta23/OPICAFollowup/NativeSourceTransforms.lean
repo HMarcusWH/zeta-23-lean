@@ -511,4 +511,358 @@ theorem nativePrimePoleData_physical_laplace (rho : zetaZeroConfig.carrier)
       (nativePrimePoleData rho hright).field w :=
   (Classical.choose_spec (nativePrimeField_visiblePole rho hright)).2.2.2.2.2 w hw
 
+
+open Zeta23.CCM Zeta23.ExceptionalZero
+
+theorem integerDriveFamily_integrable_laplace (d : ℕ) {z : ℂ} (hz : 1/2<z.re) :
+    Integrable (fun t : ℝ => Complex.exp (-z*(t:ℂ))*(integerDriveFamily d t:ℂ)) ∧
+    (∫ t : ℝ, Complex.exp (-z*(t:ℂ))*(integerDriveFamily d t:ℂ))=
+      -sourceFamilyLaplace d z*deriv riemannZeta (z+1/2) := by
+  have h := complexWeightedTranslate_integrable_laplace
+    (fun n => (nativeIntegerDriveCoefficient n:ℂ))
+    (fun t => (sourceOrderFamily d t:ℂ)) z (sourceFamily_complexDamping_integrable d z)
+    (nativeIntegerDriveLaplaceCoefficient_summable_norm hz)
+  have hcast (t : ℝ) : (integerDriveFamily d t:ℂ)=
+      ∑' n : ℕ, (nativeIntegerDriveCoefficient n:ℂ)*(sourceOrderFamily d (t-Real.log n):ℂ) := by
+    simp only [integerDriveFamily,nativeIntegerDriveField,Complex.ofReal_tsum,Complex.ofReal_mul]
+  simp_rw [←hcast] at h
+  constructor
+  · exact h.1
+  · have he := h.2
+    rw [show (∑' n : ℕ, (nativeIntegerDriveCoefficient n:ℂ)*Complex.exp (-z*(Real.log n:ℂ)))=
+      -deriv riemannZeta (z+1/2) from nativeIntegerDriveLaplaceCoefficient_tsum hz] at he
+    exact he.trans (by unfold sourceFamilyLaplace; ring)
+
+theorem forwardKernel_integrable_laplace (d ell : ℕ) {z : ℂ} (hz : 1/2<z.re) :
+    Integrable (fun t : ℝ => Complex.exp (-z*(t:ℂ))*(forwardKernel d ell t:ℂ)) ∧
+    forwardKernelLaplace d ell z=forwardKernelTransformGerm d ell z := by
+  induction ell with
+  | zero => simpa only [forwardKernel,forwardKernelLaplace,forwardKernelTransformGerm,pow_zero,mul_one]
+      using integerDriveFamily_integrable_laplace d hz
+  | succ ell ih =>
+    have h := complexWeightedTranslate_integrable_laplace
+      (fun n => (nativeIntegerCoefficient n:ℂ)) (fun t => (forwardKernel d ell t:ℂ)) z ih.1
+      (nativeIntegerLaplaceCoefficient_summable_norm hz)
+    have hcast (t : ℝ) : (forwardKernel d (ell+1) t:ℂ)=
+        ∑' n : ℕ, (nativeIntegerCoefficient n:ℂ)*(forwardKernel d ell (t-Real.log n):ℂ) := by
+      simp only [forwardKernel,nativeIntegerTranslateAction,Complex.ofReal_tsum,Complex.ofReal_mul]
+    simp_rw [←hcast] at h
+    constructor
+    · exact h.1
+    · have he := h.2
+      rw [show (∑' n : ℕ, (nativeIntegerCoefficient n:ℂ)*Complex.exp (-z*(Real.log n:ℂ)))=
+        riemannZeta (z+1/2) from nativeIntegerLaplaceCoefficient_tsum hz] at he
+      change forwardKernelLaplace d (ell+1) z=
+        riemannZeta (z+1/2)*forwardKernelLaplace d ell z at he
+      rw [he,ih.2,forwardKernelTransformGerm,forwardKernelTransformGerm,pow_succ]
+      ring
+
+def zetaPoleCleared (s : ℂ) : ℂ :=
+  Function.update (fun u : ℂ => (u-1)*riemannZeta u) 1 1 s
+
+theorem zetaPoleCleared_eq {s : ℂ} (hs : s≠1) :
+    zetaPoleCleared s=(s-1)*riemannZeta s := Function.update_of_ne hs _ _
+
+theorem zetaPoleCleared_one : zetaPoleCleared 1=1 := by simp [zetaPoleCleared]
+
+theorem zetaPoleCleared_eventuallyEq {s : ℂ} (hs : s≠1) :
+    zetaPoleCleared =ᶠ[𝓝 s] fun u : ℂ => (u-1)*riemannZeta u := by
+  filter_upwards [eventually_ne_nhds hs] with u hu
+  exact zetaPoleCleared_eq hu
+
+theorem zetaPoleCleared_analyticAt (s : ℂ) : AnalyticAt ℂ zetaPoleCleared s := by
+  by_cases hs : s=1
+  · subst s
+    have hc : ContinuousAt zetaPoleCleared 1 := by
+      change ContinuousAt (Function.update (fun u : ℂ => (u-1)*riemannZeta u) 1 1) 1
+      simpa only [continuousAt_update_same] using riemannZeta_residue_one
+    have hd : ∀ᶠ u in 𝓝[≠] (1:ℂ), DifferentiableAt ℂ zetaPoleCleared u := by
+      filter_upwards [self_mem_nhdsWithin] with u hu
+      have hu' : u≠1 := by simpa using hu
+      exact ((differentiableAt_id.sub_const 1).mul (differentiableAt_riemannZeta hu')).congr_of_eventuallyEq
+        (zetaPoleCleared_eventuallyEq hu')
+    exact analyticAt_of_differentiable_on_punctured_nhds_of_continuousAt hd hc
+  · exact ((analyticAt_id.sub analyticAt_const).mul
+      (riemannZeta_analyticOnNhd_compl_one s hs)).congr (zetaPoleCleared_eventuallyEq hs).symm
+
+theorem zetaPoleCleared_deriv {s : ℂ} (hs : s≠1) :
+    deriv zetaPoleCleared s=riemannZeta s+(s-1)*deriv riemannZeta s := by
+  rw [(zetaPoleCleared_eventuallyEq hs).deriv_eq]
+  change deriv ((fun u : ℂ => u-1)*riemannZeta) s=_
+  simpa using (((hasDerivAt_id s).sub_const 1).mul (differentiableAt_riemannZeta hs).hasDerivAt).deriv
+
+theorem sourceFamilyLaplace_cleared_factor (d : ℕ) (z : ℂ) :
+    sourceFamilyLaplace d z=(z^2-1/4)^(d+2)*UniversalSinc.product UniversalSinc.fixedScale (I*z) := by
+  rw [sourceFamilyLaplace_factor,nativeOriginalSourceLaplace_formula]
+  have he : ((I*z)^2+1/4)^2=(z^2-1/4)^2 := by
+    calc
+      _ = (-(z^2-1/4))^2 := by congr 1; rw [mul_pow,I_sq]; ring
+      _ = _ := by ring
+  rw [he,pow_add]
+  ring
+
+def forwardKernelEntireContinuation (d ell : ℕ) (z : ℂ) : ℂ :=
+  -(z+1/2)^(d+2)*(z-1/2)^(d-ell)*UniversalSinc.product UniversalSinc.fixedScale (I*z)*
+    zetaPoleCleared (z+1/2)^ell*
+      ((z-1/2)*deriv zetaPoleCleared (z+1/2)-zetaPoleCleared (z+1/2))
+
+theorem forwardKernelEntireContinuation_analyticAt (d ell : ℕ) (z : ℂ) :
+    AnalyticAt ℂ (forwardKernelEntireContinuation d ell) z := by
+  have hshift : AnalyticAt ℂ (fun w : ℂ => w+1/2) z := by fun_prop
+  have hbox : AnalyticAt ℂ (fun w : ℂ => UniversalSinc.product UniversalSinc.fixedScale (I*w)) z :=
+    (UniversalSinc.analyticAt_product UniversalSinc.fixedScale_pos.le (I*z)).comp (by fun_prop)
+  have hH := (zetaPoleCleared_analyticAt (z+1/2)).comp
+    (f := fun w : ℂ => w+1/2) (x := z) hshift
+  have hD := (zetaPoleCleared_analyticAt (z+1/2)).deriv.comp
+    (f := fun w : ℂ => w+1/2) (x := z) hshift
+  exact (((((by fun_prop : AnalyticAt ℂ (fun w : ℂ => -(w+1/2)^(d+2)*(w-1/2)^(d-ell)) z).mul
+    hbox).mul (hH.pow ell)).mul
+      (((by fun_prop : AnalyticAt ℂ (fun w : ℂ => w-1/2) z).mul hD).sub hH)))
+
+theorem forwardKernelEntireContinuation_agrees (d ell : ℕ) (hd : ell≤d) {z : ℂ}
+    (hz : z≠1/2) : forwardKernelEntireContinuation d ell z=forwardKernelTransformGerm d ell z := by
+  have hs : z+1/2≠1 := by intro he; apply hz; linear_combination he
+  have hH : zetaPoleCleared (z+1/2)=(z-1/2)*riemannZeta (z+1/2) := by
+    rw [zetaPoleCleared_eq hs]
+    congr 1
+    ring
+  have hD : (z-1/2)*deriv zetaPoleCleared (z+1/2)-zetaPoleCleared (z+1/2)=
+      (z-1/2)^2*deriv riemannZeta (z+1/2) := by
+    rw [zetaPoleCleared_deriv hs,hH]
+    ring
+  have hp : (z-1/2)^(d+2)=(z-1/2)^(d-ell)*(z-1/2)^ell*(z-1/2)^2 := by
+    rw [←pow_add,←pow_add]
+    congr 1
+    omega
+  rw [forwardKernelEntireContinuation,forwardKernelTransformGerm,sourceFamilyLaplace_cleared_factor,
+    show z^2-1/4=(z-1/2)*(z+1/2) by ring,mul_pow,hp,hD,hH,mul_pow]
+  ring
+
+theorem forwardKernelEntireContinuation_diagonal_half (d : ℕ) :
+    forwardKernelEntireContinuation d d (1/2)=UniversalSinc.product UniversalSinc.fixedScale (I*(1/2)) := by
+  norm_num [forwardKernelEntireContinuation,zetaPoleCleared]
+
+theorem forwardKernelEntireContinuation_diagonal_half_ne_zero (d : ℕ) :
+    forwardKernelEntireContinuation d d (1/2) ≠ 0 := by
+  rw [forwardKernelEntireContinuation_diagonal_half]
+  exact UniversalSinc.product_ne_zero_of_im_ne_zero UniversalSinc.fixedScale_pos (by norm_num)
+
+theorem forwardKernelTransformGerm_half (d ell : ℕ) :
+    forwardKernelTransformGerm d ell (1/2)=0 := by
+  rw [forwardKernelTransformGerm,(sourceFamilyLaplace_elementary_zeros d).1]
+  ring
+
+theorem forwardKernelEntireContinuation_diagonal_half_ne_raw (d : ℕ) :
+    forwardKernelEntireContinuation d d (1/2) ≠ forwardKernelTransformGerm d d (1/2) := by
+  rw [forwardKernelTransformGerm_half]
+  exact forwardKernelEntireContinuation_diagonal_half_ne_zero d
+
+theorem forwardKernel_physical_laplace (d ell : ℕ) (hd : ell≤d) :
+    (∀ z : ℂ, 1/2<z.re →
+      Integrable (fun t : ℝ => Complex.exp (-z*(t:ℂ))*(forwardKernel d ell t:ℂ)) ∧
+      forwardKernelLaplace d ell z=
+        -sourceFamilyLaplace d z*riemannZeta (z+1/2)^ell*deriv riemannZeta (z+1/2)) ∧
+    (∀ z : ℂ, AnalyticAt ℂ (forwardKernelEntireContinuation d ell) z) ∧
+    (∀ z : ℂ, z≠1/2 →
+      forwardKernelEntireContinuation d ell z=
+        -sourceFamilyLaplace d z*riemannZeta (z+1/2)^ell*deriv riemannZeta (z+1/2)) :=
+  ⟨fun _z hz => forwardKernel_integrable_laplace d ell hz,
+    forwardKernelEntireContinuation_analyticAt d ell,
+    fun _z hz => forwardKernelEntireContinuation_agrees d ell hd hz⟩
+
+
+
+open Zeta23.CCM
+
+def realWeightedLogTranslate (c : ℕ → ℝ) (f : ℝ → ℝ) (t : ℝ) : ℝ :=
+  ∑' n : ℕ, c n*f (t-Real.log n)
+
+theorem lowerSupport_deriv {f : ℝ → ℝ} {a : ℝ} (hf : ∀ t<a, f t=0) :
+    ∀ t<a, deriv f t=0 := by
+  intro t ht
+  have heq : f =ᶠ[𝓝 t] fun _ : ℝ => 0 := by
+    filter_upwards [eventually_lt_nhds ht] with u hu
+    exact hf u hu
+  rw [heq.deriv_eq,deriv_const]
+
+theorem lowerSupport_iteratedDeriv {f : ℝ → ℝ} {a : ℝ} (hf : ∀ t<a, f t=0) (k : ℕ) :
+    ∀ t<a, iteratedDeriv k f t=0 := by
+  induction k with
+  | zero => exact hf
+  | succ k ih => rw [iteratedDeriv_succ]; exact lowerSupport_deriv ih
+
+theorem contDiff_infty_iteratedDeriv {f : ℝ → ℝ} (hf : ContDiff ℝ (⊤ : ℕ∞) f) (k : ℕ) :
+    ContDiff ℝ (⊤ : ℕ∞) (iteratedDeriv k f) := by
+  induction k with
+  | zero => exact hf
+  | succ k ih => rw [iteratedDeriv_succ]; exact (contDiff_infty_iff_deriv.mp ih).2
+
+theorem hasCompactSupport_iteratedDeriv {f : ℝ → ℝ} (hf : HasCompactSupport f) (k : ℕ) :
+    HasCompactSupport (iteratedDeriv k f) := by
+  induction k with
+  | zero => exact hf
+  | succ k ih => rw [iteratedDeriv_succ]; exact ih.deriv
+
+theorem realWeightedLogTranslate_history (c : ℕ → ℝ) {f : ℝ → ℝ} {a T t : ℝ}
+    (hf : ∀ u<a, f u=0) (ht : t≤T) :
+    realWeightedLogTranslate c f t=
+      ∑ n ∈ Finset.range (Nat.floor (Real.exp (T-a))+1), c n*f (t-Real.log n) := by
+  apply tsum_eq_sum
+  intro n hn
+  have hn' : Nat.floor (Real.exp (T-a))<n := by
+    have : ¬n<Nat.floor (Real.exp (T-a))+1 := by simpa only [Finset.mem_range] using hn
+    omega
+  have he : Real.exp (T-a)<(n:ℝ) := Nat.lt_of_floor_lt hn'
+  have hnpos : 0<(n:ℝ) := (Real.exp_pos _).trans he
+  have hlog : T-a<Real.log n := (Real.lt_log_iff_exp_lt hnpos).mpr he
+  rw [hf _ (by linarith),mul_zero]
+
+theorem realWeightedLogTranslate_contDiff (c : ℕ → ℝ) {f : ℝ → ℝ} {a : ℝ}
+    (hf : ∀ u<a, f u=0) (hfd : ContDiff ℝ (⊤ : ℕ∞) f) :
+    ContDiff ℝ (⊤ : ℕ∞) (realWeightedLogTranslate c f) := by
+  apply contDiff_iff_contDiffAt.mpr
+  intro t
+  have hc : ContDiff ℝ (⊤ : ℕ∞) (fun u : ℝ =>
+      ∑ n ∈ Finset.range (Nat.floor (Real.exp (t+1-a))+1), c n*f (u-Real.log n)) := by fun_prop
+  apply hc.contDiffAt.congr_of_eventuallyEq
+  filter_upwards [eventually_le_nhds (show t<t+1 by linarith)] with u hu
+  exact realWeightedLogTranslate_history c hf hu
+
+theorem realWeightedLogTranslate_hasDerivAt (c : ℕ → ℝ) {f : ℝ → ℝ} {a : ℝ}
+    (hf : ∀ u<a, f u=0) (hfd : Differentiable ℝ f) (t : ℝ) :
+    HasDerivAt (realWeightedLogTranslate c f) (realWeightedLogTranslate c (deriv f) t) t := by
+  have hsum : HasDerivAt (fun u : ℝ =>
+      ∑ n ∈ Finset.range (Nat.floor (Real.exp (t+1-a))+1), c n*f (u-Real.log n))
+      (∑ n ∈ Finset.range (Nat.floor (Real.exp (t+1-a))+1), c n*deriv f (t-Real.log n)) t := by
+    apply HasDerivAt.fun_sum
+    intro n hn
+    have hshift : HasDerivAt (fun u : ℝ => f (u-Real.log n)) (deriv f (t-Real.log n)) t := by
+      simpa only [one_smul,Function.comp_def,id_eq] using
+        ((hfd (t-Real.log n)).hasDerivAt.scomp t ((hasDerivAt_id t).sub_const (Real.log n)))
+    exact hshift.const_mul (c n)
+  rw [←realWeightedLogTranslate_history c (lowerSupport_deriv hf) (show t≤t+1 by linarith)] at hsum
+  apply hsum.congr_of_eventuallyEq
+  filter_upwards [eventually_le_nhds (show t<t+1 by linarith)] with u hu
+  exact realWeightedLogTranslate_history c hf hu
+
+theorem realWeightedLogTranslate_deriv (c : ℕ → ℝ) {f : ℝ → ℝ} {a : ℝ}
+    (hf : ∀ u<a, f u=0) (hfd : Differentiable ℝ f) :
+    deriv (realWeightedLogTranslate c f)=realWeightedLogTranslate c (deriv f) := by
+  funext t
+  exact (realWeightedLogTranslate_hasDerivAt c hf hfd t).deriv
+
+theorem realWeightedLogTranslate_iteratedDeriv (c : ℕ → ℝ) {f : ℝ → ℝ} {a : ℝ}
+    (hf : ∀ u<a, f u=0) (hfd : ContDiff ℝ (⊤ : ℕ∞) f) (k : ℕ) :
+    iteratedDeriv k (realWeightedLogTranslate c f)=realWeightedLogTranslate c (iteratedDeriv k f) := by
+  induction k with
+  | zero => rfl
+  | succ k ih =>
+    rw [iteratedDeriv_succ,ih,realWeightedLogTranslate_deriv c (lowerSupport_iteratedDeriv hf k)
+      ((contDiff_infty_iteratedDeriv hfd k).differentiable (by norm_num)),←iteratedDeriv_succ]
+
+theorem forwardKernel_contDiff (d ell : ℕ) : ContDiff ℝ (⊤ : ℕ∞) (forwardKernel d ell) := by
+  induction ell with
+  | zero => exact integerDriveFamily_contDiff d
+  | succ ell ih =>
+    exact realWeightedLogTranslate_contDiff nativeIntegerCoefficient
+      (fun t ht => forwardKernel_zero_before d ell ht) ih
+
+theorem sourceFamily_iteratedDeriv_complexDamping_integrable (d k : ℕ) (z : ℂ) :
+    Integrable (fun t : ℝ => Complex.exp (-z*(t:ℂ))*Complex.ofReal (iteratedDeriv k (sourceOrderFamily d) t)) := by
+  have hc : Continuous (fun t : ℝ => Complex.ofReal (iteratedDeriv k (sourceOrderFamily d) t)) :=
+    Complex.continuous_ofReal.comp (contDiff_infty_iteratedDeriv (sourceFamily_contDiff d) k).continuous
+  have hs : HasCompactSupport (fun t : ℝ => Complex.ofReal (iteratedDeriv k (sourceOrderFamily d) t)) :=
+    (hasCompactSupport_iteratedDeriv (sourceFamily_hasCompactSupport d) k).comp_left
+      (g := Complex.ofReal) Complex.ofReal_zero
+  exact ((by fun_prop : Continuous (fun t : ℝ => Complex.exp (-z*(t:ℂ)))).mul hc).integrable_of_hasCompactSupport hs.mul_left
+
+theorem forwardKernel_iteratedDeriv_integrable (d ell k : ℕ) {z : ℂ} (hz : 1/2<z.re) :
+    Integrable (fun t : ℝ => Complex.exp (-z*(t:ℂ))*Complex.ofReal (iteratedDeriv k (forwardKernel d ell) t)) := by
+  induction ell with
+  | zero =>
+    have hsupport : ∀ t < -UniversalSinc.fixedScale, sourceOrderFamily d t=0 := by
+      intro t ht
+      exact sourceFamily_supported d t (fun h => (not_le.mpr ht) h.1)
+    have heq := realWeightedLogTranslate_iteratedDeriv nativeIntegerDriveCoefficient hsupport (sourceFamily_contDiff d) k
+    change iteratedDeriv k (integerDriveFamily d)=_ at heq
+    change Integrable (fun t : ℝ => Complex.exp (-z*(t:ℂ))*Complex.ofReal (iteratedDeriv k (integerDriveFamily d) t))
+    rw [heq]
+    have h := (complexWeightedTranslate_integrable_laplace
+      (fun n => (nativeIntegerDriveCoefficient n:ℂ))
+      (fun t => Complex.ofReal (iteratedDeriv k (sourceOrderFamily d) t)) z
+      (sourceFamily_iteratedDeriv_complexDamping_integrable d k z)
+      (nativeIntegerDriveLaplaceCoefficient_summable_norm hz)).1
+    simpa only [realWeightedLogTranslate,Complex.ofReal_tsum,Complex.ofReal_mul] using h
+  | succ ell ih =>
+    have heq := realWeightedLogTranslate_iteratedDeriv nativeIntegerCoefficient
+      (fun t ht => forwardKernel_zero_before d ell ht) (forwardKernel_contDiff d ell) k
+    change iteratedDeriv k (forwardKernel d (ell+1))=_ at heq
+    rw [heq]
+    have h := (complexWeightedTranslate_integrable_laplace
+      (fun n => (nativeIntegerCoefficient n:ℂ))
+      (fun t => Complex.ofReal (iteratedDeriv k (forwardKernel d ell) t)) z ih
+      (nativeIntegerLaplaceCoefficient_summable_norm hz)).1
+    simpa only [realWeightedLogTranslate,Complex.ofReal_tsum,Complex.ofReal_mul] using h
+
+
+
+/-- Actual integration by parts. Weighted integrability of both functions
+discharges the boundary terms through the full-line integral theorem. -/
+theorem bilateralLaplace_real_deriv (f : ℝ → ℝ) (hfd : Differentiable ℝ f) (z : ℂ)
+    (hf : Integrable (fun t : ℝ => Complex.exp (-z*(t:ℂ))*Complex.ofReal (f t)))
+    (hdf : Integrable (fun t : ℝ => Complex.exp (-z*(t:ℂ))*Complex.ofReal (deriv f t))) :
+    (∫ t : ℝ, Complex.exp (-z*(t:ℂ))*Complex.ofReal (deriv f t))=
+      z*(∫ t : ℝ, Complex.exp (-z*(t:ℂ))*Complex.ofReal (f t)) := by
+  have hu (t : ℝ) : HasDerivAt (fun t : ℝ => Complex.exp (-z*(t:ℂ)))
+      ((-z)*Complex.exp (-z*(t:ℂ))) t := by
+    convert (((hasDerivAt_id (t:ℂ)).const_mul (-z)).cexp).comp_ofReal using 1 <;>
+      simp only [id_eq,mul_one,mul_comm]
+  have hv (t : ℝ) : HasDerivAt (fun t : ℝ => Complex.ofReal (f t))
+      (Complex.ofReal (deriv f t)) t := (hfd t).hasDerivAt.ofReal_comp
+  have hscaled : Integrable (fun t : ℝ => ((-z)*Complex.exp (-z*(t:ℂ)))*Complex.ofReal (f t)) := by
+    simpa only [mul_assoc] using hf.const_mul (-z)
+  have h := integral_mul_deriv_eq_deriv_mul_of_integrable
+    (u := fun t : ℝ => Complex.exp (-z*(t:ℂ)))
+    (u' := fun t : ℝ => (-z)*Complex.exp (-z*(t:ℂ)))
+    (v := fun t : ℝ => Complex.ofReal (f t)) (v' := fun t : ℝ => Complex.ofReal (deriv f t))
+    (fun t _ => hu t) (fun t _ => hv t) hdf hscaled hf
+  rw [h]
+  have he : (fun t : ℝ => ((-z)*Complex.exp (-z*(t:ℂ)))*Complex.ofReal (f t))=
+      fun t : ℝ => (-z)*(Complex.exp (-z*(t:ℂ))*Complex.ofReal (f t)) := by funext t; ring
+  rw [he,integral_const_mul]
+  ring
+
+
+theorem forwardKernel_iteratedDeriv_zero_before (d ell k : ℕ) {t : ℝ}
+    (ht : t<nativeCausalGap) : iteratedDeriv k (forwardKernel d ell) t=0 :=
+  lowerSupport_iteratedDeriv (fun _u hu => forwardKernel_zero_before d ell hu) k t ht
+
+theorem forwardKernel_iteratedDeriv_physical_laplace (d ell k : ℕ) {z : ℂ} (hz : 1/2<z.re) :
+    Integrable (fun t : ℝ => Complex.exp (-z*(t:ℂ))*Complex.ofReal (iteratedDeriv k (forwardKernel d ell) t)) ∧
+    (∫ t : ℝ, Complex.exp (-z*(t:ℂ))*Complex.ofReal (iteratedDeriv k (forwardKernel d ell) t))=
+      z^k*forwardKernelTransformGerm d ell z := by
+  refine ⟨forwardKernel_iteratedDeriv_integrable d ell k hz,?_⟩
+  induction k with
+  | zero =>
+    simpa only [iteratedDeriv_zero,pow_zero,one_mul,forwardKernelLaplace] using
+      (forwardKernel_integrable_laplace d ell hz).2
+  | succ k ih =>
+    have hdf : Integrable (fun t : ℝ => Complex.exp (-z*(t:ℂ))*
+        Complex.ofReal (deriv (iteratedDeriv k (forwardKernel d ell)) t)) := by
+      simpa only [iteratedDeriv_succ] using forwardKernel_iteratedDeriv_integrable d ell (k+1) hz
+    have he := bilateralLaplace_real_deriv (iteratedDeriv k (forwardKernel d ell))
+      ((contDiff_infty_iteratedDeriv (forwardKernel_contDiff d ell) k).differentiable (by norm_num))
+      z (forwardKernel_iteratedDeriv_integrable d ell k hz) hdf
+    rw [iteratedDeriv_succ,he,ih,pow_succ]
+    ring
+
+theorem forwardKernel_iteratedDeriv_laplace_entire (d ell k : ℕ) (hd : ell≤d)
+    {z : ℂ} (hz : 1/2<z.re) :
+    (∫ t : ℝ, Complex.exp (-z*(t:ℂ))*Complex.ofReal (iteratedDeriv k (forwardKernel d ell) t))=
+      z^k*forwardKernelEntireContinuation d ell z := by
+  have hz' : z≠1/2 := by intro he; rw [he] at hz; norm_num at hz
+  rw [(forwardKernel_iteratedDeriv_physical_laplace d ell k hz).2,
+    forwardKernelEntireContinuation_agrees d ell hd hz']
+
+
 end Zeta23.OPICAFollowup

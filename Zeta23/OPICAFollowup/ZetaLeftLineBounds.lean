@@ -1,3 +1,5 @@
+import Zeta23.RvM.ZetaGrowth
+import Mathlib.Analysis.Complex.Liouville
 import Zeta23.GammaFacts.Complete
 import Zeta23.Analytic.Stirling
 import Zeta23.WeilEF.VerticalLine
@@ -468,5 +470,262 @@ theorem zeta_left_line_uniform_bound : ∃ A0 : ℝ, 1 ≤ A0 ∧
     _ ≤ (Cr*B^(n+2))*Cz := mul_le_mul hr hz (by positivity) (by positivity)
     _ = (Cr*Cz)*B^(n+2) := by ring
     _ ≤ A0^(n+1)*B^(n+2) := mul_le_mul_of_nonneg_right (hCC.trans hpower) (by dsimp [B]; positivity)
+
+
+open Set Filter MeasureTheory
+open scoped Topology BigOperators
+
+/-- Absolute values in the genuine Beta integral only discard oscillation. -/
+theorem betaIntegral_norm_le_real_parts {u v : ℂ} (hu : 0<u.re) (hv : 0<v.re) :
+    ‖Complex.betaIntegral u v‖ ≤ ‖Complex.betaIntegral (u.re:ℂ) (v.re:ℂ)‖ := by
+  let f : ℝ → ℂ := fun x => (x:ℂ)^(u-1)*(1-(x:ℂ))^(v-1)
+  let g : ℝ → ℂ := fun x => (x:ℂ)^((u.re:ℂ)-1)*(1-(x:ℂ))^((v.re:ℂ)-1)
+  have hg0 := Complex.betaIntegral_convergent (u := (u.re:ℂ)) (v := (v.re:ℂ))
+    (by simpa only [Complex.ofReal_re] using hu) (by simpa only [Complex.ofReal_re] using hv)
+  have hg : Integrable g (volume.restrict (Ioo (0:ℝ) 1)) := hg0.1.mono_set Ioo_subset_Ioc_self
+  have hpoint (x : ℝ) (hx : x∈Ioo (0:ℝ) 1) : ‖f x‖=(g x).re := by
+    have hbase : (1:ℂ)-(x:ℂ)=((1-x:ℝ):ℂ) := by push_cast; rfl
+    have hreal : g x=((x^(u.re-1)*(1-x)^(v.re-1):ℝ):ℂ) := by
+      have huarg : (u.re:ℂ)-1=((u.re-1:ℝ):ℂ) := by push_cast; rfl
+      have hvarg : (v.re:ℂ)-1=((v.re-1:ℝ):ℂ) := by push_cast; rfl
+      dsimp [g]
+      rw [huarg,hvarg,hbase,←Complex.ofReal_cpow hx.1.le _,
+        ←Complex.ofReal_cpow (sub_pos.mpr hx.2).le _,←Complex.ofReal_mul]
+    calc
+      _ = x^(u.re-1)*(1-x)^(v.re-1) := by
+        dsimp [f]
+        rw [norm_mul,hbase,Complex.norm_cpow_eq_rpow_re_of_pos hx.1,
+          Complex.norm_cpow_eq_rpow_re_of_pos (sub_pos.mpr hx.2)]
+        simp only [Complex.sub_re,Complex.one_re]
+      _ = _ := by rw [hreal,Complex.ofReal_re]
+  simp only [Complex.betaIntegral,intervalIntegral.integral_of_le (by norm_num : (0:ℝ)≤1),
+    integral_Ioc_eq_integral_Ioo]
+  change ‖∫ x : ℝ in Ioo 0 1, f x‖ ≤ ‖∫ x : ℝ in Ioo 0 1, g x‖
+  calc
+    _ ≤ ∫ x : ℝ in Ioo 0 1, ‖f x‖ := norm_integral_le_integral_norm _
+    _ = ∫ x : ℝ in Ioo 0 1, (g x).re := by
+      apply integral_congr_ae
+      filter_upwards [ae_restrict_mem measurableSet_Ioo] with x hx
+      exact hpoint x hx
+    _ = (∫ x : ℝ in Ioo 0 1, g x).re := integral_re hg
+    _ ≤ _ := Complex.re_le_norm _
+
+/-- A positive fractional real part is compared to a genuinely larger integer
+line by the Beta integral. No digamma or Stirling premise is required. -/
+theorem gamma_vertical_compare_integer (n : ℕ) {σ : ℝ} (hσ : 0<σ)
+    (hσn : σ<(n:ℝ)+1) (τ : ℝ) :
+    ‖Complex.Gamma ((σ:ℂ)+I*(τ:ℂ))‖ ≤
+      ‖Complex.Gamma (σ:ℂ)‖*‖Complex.Gamma ((n:ℂ)+1+I*(τ:ℂ))‖ := by
+  let z : ℂ := (σ:ℂ)+I*(τ:ℂ)
+  let v : ℂ := (((n:ℝ)+1-σ:ℝ):ℂ)
+  have hz : 0<z.re := by simpa [z] using hσ
+  have hv : 0<v.re := by change 0<(n:ℝ)+1-σ; linarith
+  have hs : 0<(σ:ℂ).re := by simpa only [Complex.ofReal_re] using hσ
+  have hsum : z+v=(n:ℂ)+1+I*(τ:ℂ) := by dsimp [z,v]; push_cast; ring_nf
+  have hsum0 : (σ:ℂ)+v=(n:ℂ)+1 := by dsimp [v]; push_cast; ring_nf
+  have hc := congrArg norm (Complex.Gamma_mul_Gamma_eq_betaIntegral hz hv)
+  have hr := congrArg norm (Complex.Gamma_mul_Gamma_eq_betaIntegral hs hv)
+  simp only [norm_mul,hsum] at hc
+  simp only [norm_mul,hsum0] at hr
+  have hG : (1:ℝ)≤‖Complex.Gamma ((n:ℂ)+1)‖ := by
+    rw [Complex.Gamma_nat_eq_factorial,Complex.norm_natCast]
+    exact_mod_cast (show 1≤n.factorial from Nat.factorial_pos n)
+  have hβ : ‖Complex.betaIntegral (σ:ℂ) v‖ ≤ ‖Complex.Gamma (σ:ℂ)‖*‖Complex.Gamma v‖ := by
+    have h := mul_le_mul_of_nonneg_right hG (norm_nonneg (Complex.betaIntegral (σ:ℂ) v))
+    nlinarith [hr]
+  have hb : ‖Complex.betaIntegral z v‖ ≤ ‖Complex.betaIntegral (σ:ℂ) v‖ := by
+    have h := betaIntegral_norm_le_real_parts hz hv
+    simpa [z,v] using h
+  have hvne : Complex.Gamma v≠0 := Complex.Gamma_ne_zero (by
+    intro m hm
+    have h := congrArg Complex.re hm
+    simp only [Complex.neg_re,Complex.natCast_re] at h
+    nlinarith [Nat.cast_nonneg (α:=ℝ) m])
+  apply (mul_le_mul_iff_left₀ (norm_pos_iff.mpr hvne)).mp
+  calc
+    _ = ‖Complex.Gamma ((n:ℂ)+1+I*(τ:ℂ))‖*‖Complex.betaIntegral z v‖ := hc
+    _ ≤ ‖Complex.Gamma ((n:ℂ)+1+I*(τ:ℂ))‖*(‖Complex.Gamma (σ:ℂ)‖*‖Complex.Gamma v‖) :=
+      mul_le_mul_of_nonneg_left (hb.trans hβ) (norm_nonneg _)
+    _ = _ := by ring_nf
+
+/-- The exact exponential Gamma decay holds uniformly over every closed
+positive real strip, including all fractional real parts. -/
+theorem gamma_positive_fixed_strip_exp_bound {a b : ℝ} (ha : 0<a) (_hab : a≤b) :
+    ∃ C : ℝ, 0<C ∧ ∃ N : ℕ, ∀ (σ τ : ℝ), a≤σ → σ≤b →
+      ‖Complex.Gamma ((σ:ℂ)+I*(τ:ℂ))‖ ≤
+        C*(1+|τ|)^N*Real.exp (-(Real.pi*|τ|)/2) := by
+  have hcont : ContinuousOn (fun x : ℝ => Complex.Gamma (x:ℂ)) (Icc a b) := by
+    intro x hx
+    apply ContinuousAt.continuousWithinAt
+    have hne : ∀ m : ℕ, (x:ℂ)≠-(m:ℂ) := by
+      intro m hm
+      have h := congrArg Complex.re hm
+      simp only [Complex.ofReal_re,Complex.neg_re,Complex.natCast_re] at h
+      nlinarith [Nat.cast_nonneg (α:=ℝ) m,hx.1]
+    exact (Complex.differentiableAt_Gamma _ hne).continuousAt.comp Complex.continuous_ofReal.continuousAt
+  obtain ⟨M,hM⟩ := isCompact_Icc.exists_bound_of_continuousOn hcont
+  let n : ℕ := Nat.ceil b
+  let C : ℝ := (1+|M|)*2*(1+Real.pi)*((n:ℝ)+1)^n
+  refine ⟨C,by dsimp [C]; positivity, n+1,fun σ τ hσa hσb => ?_⟩
+  have hσ : 0<σ := ha.trans_le hσa
+  have hσn : σ<(n:ℝ)+1 := hσb.trans_lt (by
+    have h := Nat.le_ceil b
+    dsimp [n]
+    linarith)
+  have hg := gamma_vertical_compare_integer n hσ hσn τ
+  have hreal : ‖Complex.Gamma (σ:ℂ)‖ ≤ 1+|M| :=
+    (hM σ ⟨hσa,hσb⟩).trans (by linarith [le_abs_self M])
+  have hi := gamma_integer_vertical_exp_bound n τ
+  have hp : (n:ℝ)+1+|τ| ≤ ((n:ℝ)+1)*(1+|τ|) := by
+    nlinarith [Nat.cast_nonneg (α:=ℝ) n,abs_nonneg τ]
+  have hπ : 1+Real.pi*|τ| ≤ (1+Real.pi)*(1+|τ|) := by
+    nlinarith [Real.pi_pos,abs_nonneg τ]
+  calc
+    _ ≤ ‖Complex.Gamma (σ:ℂ)‖*‖Complex.Gamma ((n:ℂ)+1+I*(τ:ℂ))‖ := hg
+    _ ≤ (1+|M|)*(2*(1+Real.pi*|τ|)*((n:ℝ)+1+|τ|)^n*
+        Real.exp (-(Real.pi*|τ|)/2)) := mul_le_mul hreal hi (norm_nonneg _) (by positivity)
+    _ ≤ (1+|M|)*(2*((1+Real.pi)*(1+|τ|))*(((n:ℝ)+1)*(1+|τ|))^n*
+        Real.exp (-(Real.pi*|τ|)/2)) := by gcongr
+    _ = _ := by dsimp [C]; rw [mul_pow,pow_succ]; ring_nf
+
+/-- A fixed lower real-part bound gives polynomial growth on the entire
+half-plane at nonzero large height. Fractional left real parts use the actual
+functional equation and the positive-strip Beta estimate. -/
+theorem zeta_fixed_halfplane_polynomial_value_bound (a : ℝ) :
+    ∃ C : ℝ, 0<C ∧ ∃ N : ℕ, ∀ s : ℂ, a≤s.re → 1≤|s.im| →
+      ‖riemannZeta s‖ ≤ C*(1+|s.im|)^N := by
+  obtain ⟨G,hG,N,hΓ⟩ := gamma_positive_fixed_strip_exp_bound
+    (a := (1/2:ℝ)) (b := 1+|a|) (by norm_num) (by have h := abs_nonneg a; linarith)
+  let C : ℝ := 1+9/2+9*G
+  refine ⟨C,by dsimp [C]; positivity,N+1,fun s hs ht => ?_⟩
+  have hbase : 1≤1+|s.im| := by linarith [abs_nonneg s.im]
+  have hC₁ : (9/2:ℝ)≤C := by dsimp [C]; linarith
+  have hC₂ : 9*G≤C := by dsimp [C]; linarith
+  by_cases hr : (1/2:ℝ)≤s.re
+  · have h := RvM.riemannZeta_linear_growth (δ := (1/2:ℝ)) (by norm_num) hr ht
+    norm_num only [inv_div,inv_one,mul_one,one_div,one_mul] at h
+    have hpow : |s.im|≤(1+|s.im|)^(N+1) := by
+      calc
+        _ ≤ 1+|s.im| := by linarith
+        _ ≤ _ := by simpa only [pow_one] using pow_le_pow_right₀ hbase (show 1≤N+1 by omega)
+    calc
+      _ ≤ (9/2:ℝ)*|s.im| := by nlinarith [h]
+      _ ≤ C*(1+|s.im|)^(N+1) := mul_le_mul hC₁ hpow (abs_nonneg _) (by dsimp [C]; positivity)
+  · let w : ℂ := 1-s
+    have hwre : (1/2:ℝ)≤w.re := by change (1/2:ℝ)≤1-s.re; linarith
+    have hwupper : w.re≤1+|a| := by
+      change 1-s.re≤1+|a|
+      linarith [neg_abs_le a]
+    have hwim : |w.im|=|s.im| := by simp [w]
+    have hΓw : ‖Complex.Gamma w‖≤G*(1+|s.im|)^N*Real.exp (-(Real.pi*|s.im|)/2) := by
+      have h := hΓ w.re w.im hwre hwupper
+      have hrepr : (w.re:ℂ)+I*(w.im:ℂ)=w := by rw [mul_comm I,Complex.re_add_im]
+      rwa [hrepr,hwim] at h
+    have hζw : ‖riemannZeta w‖≤(9/2:ℝ)*|s.im| := by
+      have h := RvM.riemannZeta_linear_growth (δ := (1/2:ℝ)) (by norm_num) hwre (by simpa [hwim] using ht)
+      rw [hwim] at h
+      norm_num at h ⊢
+      exact h
+    have hn (m : ℕ) : w≠-(m:ℂ) := by
+      intro hm
+      have h := congrArg Complex.re hm
+      simp only [Complex.neg_re,Complex.natCast_re] at h
+      nlinarith [Nat.cast_nonneg (α:=ℝ) m]
+    have hw1 : w≠1 := by intro h; rw [h] at hwim; simp at hwim; linarith
+    have hζeq : riemannZeta s=zetaReflectionFactor w*riemannZeta w := by
+      have h := riemannZeta_one_sub hn hw1
+      have heq : 1-w=s := by dsimp [w]; ring_nf
+      rw [heq] at h
+      simpa only [zetaReflectionFactor,Complex.ofReal_mul,Complex.ofReal_ofNat] using h
+    have hp : ‖(((2*Real.pi:ℝ):ℂ)^(-w))‖≤1 := by
+      rw [Complex.norm_cpow_eq_rpow_re_of_pos (by positivity : (0:ℝ)<2*Real.pi),Complex.neg_re]
+      exact Real.rpow_le_one_of_one_le_of_nonpos
+        (by nlinarith [Real.pi_gt_three]) (by linarith)
+    have him : (((Real.pi:ℂ)*w/2).im)=Real.pi*w.im/2 := by simp
+    have habs : |(((Real.pi:ℂ)*w/2).im)|=Real.pi*|s.im|/2 := by
+      rw [him,abs_div,abs_mul,abs_of_pos Real.pi_pos,hwim]
+      norm_num
+    have hcos := complex_cos_norm_le_exp_abs_im ((Real.pi:ℂ)*w/2)
+    rw [habs] at hcos
+    have he : Real.exp (-(Real.pi*|s.im|)/2)*Real.exp (Real.pi*|s.im|/2)=1 := by
+      rw [←Real.exp_add]
+      convert Real.exp_zero using 1
+      ring_nf
+    calc
+      _ = 2*‖(((2*Real.pi:ℝ):ℂ)^(-w))‖*‖Complex.Gamma w‖*
+          ‖Complex.cos ((Real.pi:ℂ)*w/2)‖*‖riemannZeta w‖ := by
+        rw [hζeq]
+        simp only [zetaReflectionFactor,norm_mul,Complex.norm_ofNat]
+      _ ≤ 2*1*(G*(1+|s.im|)^N*Real.exp (-(Real.pi*|s.im|)/2))*
+          Real.exp (Real.pi*|s.im|/2)*((9/2:ℝ)*|s.im|) := by gcongr
+      _ = 9*G*|s.im| *(1+|s.im|)^N := by
+        calc
+          _ = (9*G*|s.im| *(1+|s.im|)^N)*
+              (Real.exp (-(Real.pi*|s.im|)/2)*Real.exp (Real.pi*|s.im|/2)) := by ring_nf
+          _ = _ := by rw [he,mul_one]
+      _ ≤ 9*G*(1+|s.im|)^(N+1) := by
+        calc
+          _ = (9*G*(1+|s.im|)^N)*|s.im| := by ring_nf
+          _ ≤ (9*G*(1+|s.im|)^N)*(1+|s.im|) :=
+            mul_le_mul_of_nonneg_left (by linarith) (by positivity)
+          _ = _ := by rw [pow_succ]; ring_nf
+      _ ≤ _ := mul_le_mul_of_nonneg_right hC₂ (by positivity)
+
+/-- A fixed-radius genuine Cauchy estimate prices the zeta derivative on the
+whole half-plane, using the value estimate on a slightly larger half-plane. -/
+theorem zeta_fixed_halfplane_polynomial_value_derivative_bound (a : ℝ) :
+    ∃ C : ℝ, 0<C ∧ ∃ N : ℕ, ∀ s : ℂ, a≤s.re → 2≤|s.im| →
+      ‖riemannZeta s‖+‖deriv riemannZeta s‖ ≤ C*(1+|s.im|)^N := by
+  obtain ⟨C,hC,N,hvalue⟩ := zeta_fixed_halfplane_polynomial_value_bound (a-1)
+  let D : ℝ := C*(1+2*2^N)
+  refine ⟨D,by dsimp [D]; positivity,N,fun s hs ht => ?_⟩
+  have hgeometry (z : ℂ) (hz : dist z s≤1/2) :
+      a-1≤z.re ∧ 1≤|z.im| ∧ 1+|z.im|≤2*(1+|s.im|) := by
+    have hnorm : ‖z-s‖≤1/2 := by simpa only [dist_eq_norm] using hz
+    have hre : |z.re-s.re|≤1/2 := by
+      simpa only [Complex.sub_re] using (Complex.abs_re_le_norm (z-s)).trans hnorm
+    have him : |z.im-s.im|≤1/2 := by
+      simpa only [Complex.sub_im] using (Complex.abs_im_le_norm (z-s)).trans hnorm
+    have hrere := abs_le.mp hre
+    have hdown := abs_sub_abs_le_abs_sub s.im z.im
+    rw [abs_sub_comm] at hdown
+    have hup := abs_sub_abs_le_abs_sub z.im s.im
+    exact ⟨by linarith,by linarith,by linarith [abs_nonneg s.im]⟩
+  have hdiff : DiffContOnCl ℂ riemannZeta (Metric.ball s (1/2)) := by
+    apply DifferentiableOn.diffContOnCl
+    rw [closure_ball s (by norm_num)]
+    intro z hz
+    have hgeom := hgeometry z (Metric.mem_closedBall.mp hz)
+    apply (differentiableAt_riemannZeta ?_).differentiableWithinAt
+    intro hz1
+    rw [hz1] at hgeom
+    norm_num at hgeom
+  have hsphere : ∀ z∈Metric.sphere s (1/2),
+      ‖riemannZeta z‖≤C*2^N*(1+|s.im|)^N := by
+    intro z hz
+    have hgeom := hgeometry z (Metric.mem_sphere.mp hz).le
+    calc
+      _ ≤ C*(1+|z.im|)^N := hvalue z hgeom.1 hgeom.2.1
+      _ ≤ C*(2*(1+|s.im|))^N := by gcongr; exact hgeom.2.2
+      _ = _ := by rw [mul_pow]; ring_nf
+  have hderiv : ‖deriv riemannZeta s‖≤2*C*2^N*(1+|s.im|)^N := by
+    calc
+      _ ≤ (C*2^N*(1+|s.im|)^N)/(1/2) :=
+        Complex.norm_deriv_le_of_forall_mem_sphere_norm_le (by norm_num) hdiff hsphere
+      _ = _ := by ring_nf
+  have hv := hvalue s (by linarith) (by linarith)
+  calc
+    _ ≤ C*(1+|s.im|)^N+2*C*2^N*(1+|s.im|)^N := add_le_add hv hderiv
+    _ = _ := by dsimp [D]; ring_nf
+
+theorem zeta_fixed_strip_polynomial_value_derivative_bound (a b : ℝ) :
+    ∃ C : ℝ, 0<C ∧ ∃ N : ℕ, ∀ (σ τ : ℝ), a≤σ → σ≤b → 2≤|τ| →
+      ‖riemannZeta ((σ:ℂ)+(τ:ℂ)*I)‖+‖deriv riemannZeta ((σ:ℂ)+(τ:ℂ)*I)‖ ≤
+        C*(1+|τ|)^N := by
+  obtain ⟨C,hC,N,h⟩ := zeta_fixed_halfplane_polynomial_value_derivative_bound a
+  refine ⟨C,hC,N,fun σ τ hσ _ ht => ?_⟩
+  simpa only [Complex.add_re,Complex.ofReal_re,Complex.mul_re,Complex.I_re,
+    mul_zero,Complex.ofReal_im,Complex.I_im,mul_one,sub_self,add_zero,Complex.add_im,
+    Complex.mul_im,zero_add] using h ((σ:ℂ)+(τ:ℂ)*I) (by simpa using hσ) (by simpa using ht)
 
 end Zeta23.OPICAFollowup

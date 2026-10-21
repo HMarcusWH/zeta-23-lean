@@ -10,17 +10,18 @@ closed. RH, Step 4 and the independent closing inequalities are OPEN.
 The current compiled mathematical slice comprises `NormFirstTransfer`,
 `JointObservation`, `Counterexamples`, `NativeSourceFamily`, `RobustLaurent`,
 `BalancedCoefficients`, `SourceVerticalBounds`, `ZetaLeftLineBounds`,
-`NativeSourceTransforms`, `NativeExplicitFormula`, `NativeFilters` and
-`ForwardLocalization`: twenty-eight original primary declarations.
+`NativeSourceTransforms`, `NativeExplicitFormula`, `NativeFilters`,
+`NativeTransformationWords`, `UniformSourceBounds` and
+`ForwardLocalization`: thirty-eight original primary declarations.
 The explicit types in `Validation.lean` check their intended domains and
-conclusions. These local results do not establish the missing native source,
+conclusions. These local results do not establish the missing native
 window-rate, complex-measure or spectral constructions. In particular, the
 library does not yet have the complete public sibling facade. The earlier
 eleven-root exact-source compiler receipt is historical; the current expected-type
 check does not promote that receipt to a new exact-tree audit.
 
-`SOURCE_REGISTER.json` contains dependency amendment `DEP_2026_10_21_02`,
-with its predecessor retained and hash checked.
+`SOURCE_REGISTER.json` contains dependency amendment `DEP_2026_10_21_03`,
+with both predecessors retained and hash checked.
 It explicitly records reuse of parent weighted moments and physical translation,
 and the removal of unnecessary filter/word dependencies from the unconditional
 arithmetic and synthetic-control proofs. The preparation validator checks those
@@ -29,6 +30,10 @@ statements and the optional status of the mathematical amendment are retained.
 The latest version also records the genuine parent zero-jet and gamma-density
 bridges and the direct differentiated-functional-equation proof of the uniform
 left-line bound. It does not add a zero-free or reciprocal-zeta premise.
+The current version also records the actual higher-source distributional
+adapter, direct original-pole word calculus and source-order Abel/L2 proofs.
+Actual forward integral transforms and their genuine entire representatives
+are proved. Actual fixed-order double-exponential decay, including every derivative and the initial interval, is also proved; native window rates remain unfinished.
 
 The source transformation slice constructs the actual all-multiplicity prime
 pole and its safe-half-plane physical integral. The actual translated-source
@@ -107,7 +112,7 @@ are not off-line zeta-zero experiments. The dependency lock records hashes of
 the actual downloaded platform-independent wheels.
 
 The unchanged parent mutation suite passed 154 tests in each Python mode.
-The 114 child tests per mode exercise exact parent preservation, workflow pagination and
+The 131 child tests per mode exercise exact parent preservation, workflow pagination and
 attempt selection, scientific dispositions, stale receipts, source drift and
 the optional-amendment firewall. The parent extension helper is pure and is
 not yet wired into the parent's validator; no historical validation predicate
@@ -122,13 +127,19 @@ python research/RHRC/integration/opica_followup/validate_contract.py --phase pre
 python research/RHRC/integration/opica_followup/replay_controls.py --modes normal optimized --include-numerical --output-dir <external-output-directory>
 ```
 
-`build_receipt.py --preparation-only` audits the explicitly selected eleven
-roots and all public declarations in their three defining modules. It exports
+`build_receipt.py --preparation-only` audits the explicitly selected thirty-eight
+roots and all public declarations in their fourteen defining modules. It exports
 full type DAGs, constructor types, allowed axioms and recursive project-helper
 TYPE/VALUE/STRUCTURE dependencies. The full release mode deliberately fails;
 a subset receipt cannot satisfy the 100-root acceptance contract.
 
-Still required: the remaining 89 primary declarations and companion clauses,
+The attempted exact 28-root snapshot audit built the mathematical modules and
+expected types, then failed its exporter because Lean cached a parent equation
+lemma in a child module. The updated exporter includes compiler-reserved
+equations with original-definition provenance and the same complete public
+type, axiom and dependency audit. That failed attempt is not a passing receipt.
+
+Still required: the remaining 62 primary declarations and companion clauses,
 all actual native constructors/consumers, complete mandatory expected-type
 contracts, full parent-extension integration, all child proof lanes and CI,
 global registration, exact canonical Linux regeneration, and final current-tree

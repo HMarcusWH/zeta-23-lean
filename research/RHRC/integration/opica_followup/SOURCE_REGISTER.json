@@ -5929,8 +5929,14 @@
     "Zeta23.OPICAFollowup.sourceFamily_zero_eq_original",
     "Zeta23.OPICAFollowup.sourceFamily_support_smooth_moments",
     "Zeta23.OPICAFollowup.sourceFamily_laplace_identity",
+    "Zeta23.OPICAFollowup.forwardKernel_physical_laplace",
     "Zeta23.OPICAFollowup.nativePrimeField_visiblePole",
+    "Zeta23.OPICAFollowup.nativeGenerator_transform",
     "Zeta23.OPICAFollowup.nativeGenerator_unit_or_completion",
+    "Zeta23.OPICAFollowup.nativeWord_corrected_transform",
+    "Zeta23.OPICAFollowup.nativeWord_order_and_leading",
+    "Zeta23.OPICAFollowup.nativeWord_first_nonzero_derivative",
+    "Zeta23.OPICAFollowup.nativeWord_factor_costs",
     "Zeta23.OPICAFollowup.norm_first_log_comparison",
     "Zeta23.OPICAFollowup.norm_first_rate_transfer",
     "Zeta23.OPICAFollowup.energy_allocation_bound",
@@ -5942,23 +5948,27 @@
     "Zeta23.OPICAFollowup.recovery_subexp_budget",
     "Zeta23.OPICAFollowup.laurent_coefficient_error_bound",
     "Zeta23.OPICAFollowup.laurent_observation_survives",
+    "Zeta23.OPICAFollowup.nativeWord_contour_consumer",
     "Zeta23.OPICAFollowup.source_product_vertical_bound",
     "Zeta23.OPICAFollowup.zeta_left_line_uniform_bound",
     "Zeta23.OPICAFollowup.forwardKernel_left_contour_budget",
+    "Zeta23.OPICAFollowup.forwardKernel_double_exp_decay",
     "Zeta23.OPICAFollowup.native_binomial_inverse_identity",
     "Zeta23.OPICAFollowup.balanced_coeff_divisor_bound",
     "Zeta23.OPICAFollowup.native_zero_count_summability",
     "Zeta23.OPICAFollowup.native_source_explicit_formula",
     "Zeta23.OPICAFollowup.native_zero_sup_bounds",
+    "Zeta23.OPICAFollowup.source_order_uniform_norms",
+    "Zeta23.OPICAFollowup.native_field_theta_envelope",
     "Zeta23.OPICAFollowup.coupled_gram_collision_control",
     "Zeta23.OPICAFollowup.norm_first_strictly_weaker_control",
     "Zeta23.OPICAFollowup.history_recovery_cost_control",
     "Zeta23.OPICAFollowup.forced_positive_gram_nonreal_control"
   ],
-  "type_fingerprint_scope": "The stored9-root type fingerprints are a historical subset. The current 28 primary roots have explicit independently stated expected-type consumers in Validation.lean, checked locally. Complete current-source closure fingerprints require a new external compiler receipt; no full100-root signature contract is claimed.",
+  "type_fingerprint_scope": "The stored9-root type fingerprints are a historical subset. The current 38 primary roots have explicit independently stated expected-type consumers in Validation.lean, checked locally. Complete current-source closure fingerprints require a new external compiler receipt; no full100-root signature contract is claimed.",
   "implementation_dependency_amendment": {
     "schema": "OPICA_IMPLEMENTATION_DEPENDENCY_AMENDMENT_V1",
-    "id": "DEP_2026_10_21_02",
+    "id": "DEP_2026_10_21_03",
     "status": "IMPLEMENTATION_ONLY_NO_MATHEMATICAL_SCOPE_CHANGE",
     "frozen_manifest_sha256": "c99ec7acbfe996455525b31088a7d04addd20653787e12098e4e51a4a7ce296e",
     "frozen_public_roots_sha256": "2239636f347449ecd447fc5ba78d7c75f1c0440d28a862cb72397c4f79597b41",
@@ -6066,12 +6076,64 @@
           "Zeta23.Analytic.Stirling"
         ],
         "approved_direct_project_imports": [
+          "Zeta23.RvM.ZetaGrowth",
           "Zeta23.GammaFacts.Complete",
           "Zeta23.Analytic.Stirling",
           "Zeta23.WeilEF.VerticalLine",
           "Zeta23.OPICAFollowup.SourceVerticalBounds"
         ],
-        "reason": "Reuse the proved fixed-strip digamma bound only at real part one and the elementary complex trig norm bounds. Differentiate the genuine functional equation directly, rather than duplicate a Cauchy derivative estimate. The same full uniform theorem statement is proved.",
+        "reason": "Reuse the proved fixed-strip digamma bound only at real part one and the elementary complex trig norm bounds. Differentiate the genuine functional equation directly, rather than duplicate a Cauchy derivative estimate. The same full uniform theorem statement is proved. The fixed-strip supporting extension reuses actual RvM right-half-plane zeta growth; a proved Beta integral comparison supplies fractional-real-part Gamma decay, and fixed-radius Cauchy supplies zeta derivative growth. This removes the horizontal-control gap without a zero-free premise.",
+        "theorem_statement_changes": [],
+        "new_assumptions": []
+      },
+      {
+        "module": "Zeta23.OPICAFollowup.NativeFilters",
+        "path": "Zeta23/OPICAFollowup/NativeFilters.lean",
+        "planned_direct_project_imports": [
+          "Zeta23.OPICAFollowup.NativeSourceTransforms",
+          "Zeta23.OPICA.NativeArithmeticAdapter"
+        ],
+        "approved_direct_project_imports": [
+          "Zeta23.OPICAFollowup.NativeSourceTransforms",
+          "Zeta23.OPICA.NativeArithmeticAdapter",
+          "Zeta23.CCM.NativeCompactTranslateCalculus"
+        ],
+        "reason": "Reuse the actual parent locally finite prime-translation differentiation theorem to prove the weak compact-test source-P action agrees with every literal higher source prime field; all endpoint distributions are retained.",
+        "theorem_statement_changes": [],
+        "new_assumptions": []
+      },
+      {
+        "module": "Zeta23.OPICAFollowup.NativeTransformationWords",
+        "path": "Zeta23/OPICAFollowup/NativeTransformationWords.lean",
+        "planned_direct_project_imports": [
+          "Zeta23.OPICAFollowup.NativeFilters",
+          "Zeta23.OPICA.AffineTransport",
+          "Zeta23.OPICA.NativeJetAdapter"
+        ],
+        "approved_direct_project_imports": [
+          "Zeta23.OPICAFollowup.NativeFilters",
+          "Zeta23.OPICA.LocalObstruction"
+        ],
+        "reason": "Use actual native causal actions plus the proved original simple-pole local obstruction API. The affine transport and jet adapter modules are unnecessary back edges: all histories, normalized derivatives and full costs are constructed directly from actual generator and pole data.",
+        "theorem_statement_changes": [],
+        "new_assumptions": []
+      },
+      {
+        "module": "Zeta23.OPICAFollowup.UniformSourceBounds",
+        "path": "Zeta23/OPICAFollowup/UniformSourceBounds.lean",
+        "planned_direct_project_imports": [
+          "Zeta23.OPICAFollowup.NativeExplicitFormula",
+          "Zeta23.OPICAFollowup.SourceVerticalBounds",
+          "Zeta23.CCM.UniversalSincInverseGevreyBounds"
+        ],
+        "approved_direct_project_imports": [
+          "Zeta23.OPICAFollowup.NativeExplicitFormula",
+          "Zeta23.OPICAFollowup.SourceVerticalBounds",
+          "Zeta23.CCM.UniversalSincInverseGevreyBounds",
+          "Zeta23.CCM.NativeAbelDiscrepancy",
+          "Zeta23.CCM.OriginalSincDriveLp"
+        ],
+        "reason": "Reuse the generic actual Abel discrepancy and original drive Lp norm APIs to derive every higher-source drive bound and literal continuum cancellation. No source-rate, Theta-rate, native budget or RH premise is added.",
         "theorem_statement_changes": [],
         "new_assumptions": []
       }
@@ -6080,8 +6142,8 @@
     "RH": "OPEN",
     "Step4": "OPEN",
     "independent_closing_inequalities": "OPEN",
-    "supersedes": "DEP_2026_10_21_01",
-    "previous_amendment_sha256": "32f2c2e57743f5c1a98176ac64f3b2671e8c45f8355361130ff0271361105a91"
+    "supersedes": "DEP_2026_10_21_02",
+    "previous_amendment_sha256": "54aa023b5d2c483abab95b696381ad7ce6eaeb7a1b17e66c2ce80eee2aed78e7"
   },
   "implementation_dependency_history": [
     {
@@ -6150,6 +6212,268 @@
       "RH": "OPEN",
       "Step4": "OPEN",
       "independent_closing_inequalities": "OPEN"
+    },
+    {
+      "schema": "OPICA_IMPLEMENTATION_DEPENDENCY_AMENDMENT_V1",
+      "id": "DEP_2026_10_21_02",
+      "status": "IMPLEMENTATION_ONLY_NO_MATHEMATICAL_SCOPE_CHANGE",
+      "frozen_manifest_sha256": "c99ec7acbfe996455525b31088a7d04addd20653787e12098e4e51a4a7ce296e",
+      "frozen_public_roots_sha256": "2239636f347449ecd447fc5ba78d7c75f1c0440d28a862cb72397c4f79597b41",
+      "primary_roots": 100,
+      "acceptance_units": 28,
+      "new_paths": 84,
+      "promoted_supporting_lemmas": [],
+      "theorem_statement_changes": [],
+      "new_assumptions": [],
+      "rows": [
+        {
+          "module": "Zeta23.OPICAFollowup.NativeSourceFamily",
+          "path": "Zeta23/OPICAFollowup/NativeSourceFamily.lean",
+          "planned_direct_project_imports": [
+            "Zeta23.CCM.OriginalSincNativeSource",
+            "Zeta23.CCM.UniversalSincInverseGevreyBounds"
+          ],
+          "approved_direct_project_imports": [
+            "Zeta23.CCM.OriginalSincNativeSource",
+            "Zeta23.CCM.UniversalSincInverseGevreyBounds",
+            "Zeta23.CCM.OriginalSincWeightedPoleMoments",
+            "Zeta23.CCM.NativeIntegerPrimeConvolution"
+          ],
+          "reason": "Reuse the actual parent weighted elementary moments and the actual physical integer translation operator, rather than duplicate them.",
+          "theorem_statement_changes": [],
+          "new_assumptions": []
+        },
+        {
+          "module": "Zeta23.OPICAFollowup.BalancedCoefficients",
+          "path": "Zeta23/OPICAFollowup/BalancedCoefficients.lean",
+          "planned_direct_project_imports": [
+            "Zeta23.OPICAFollowup.NativeFilters",
+            "Zeta23.OPICA.DivisorBounds"
+          ],
+          "approved_direct_project_imports": [
+            "Zeta23.OPICA.NativeArithmeticAdapter"
+          ],
+          "reason": "Separate the unconditional arithmetic convolution identity from causal filter implementation. NativeArithmeticAdapter transitively imports DivisorBounds and supplies the genuine integer palette and physical drive.",
+          "theorem_statement_changes": [],
+          "new_assumptions": []
+        },
+        {
+          "module": "Zeta23.OPICAFollowup.Counterexamples",
+          "path": "Zeta23/OPICAFollowup/Counterexamples.lean",
+          "planned_direct_project_imports": [
+            "Zeta23.OPICAFollowup.NormFirstTransfer",
+            "Zeta23.OPICAFollowup.JointObservation",
+            "Zeta23.OPICAFollowup.RobustLaurent",
+            "Zeta23.OPICAFollowup.SamplingCompatibility"
+          ],
+          "approved_direct_project_imports": [
+            "Zeta23.OPICAFollowup.NormFirstTransfer",
+            "Zeta23.OPICAFollowup.JointObservation"
+          ],
+          "reason": "The synthetic recovery and forced Gram controls need the actual joint observation and norm rates, but do not depend on native words or sampling compatibility. Removing those planned back-edges does not specialize any control.",
+          "theorem_statement_changes": [],
+          "new_assumptions": []
+        },
+        {
+          "module": "Zeta23.OPICAFollowup.NativeSourceTransforms",
+          "path": "Zeta23/OPICAFollowup/NativeSourceTransforms.lean",
+          "planned_direct_project_imports": [
+            "Zeta23.OPICAFollowup.NativeSourceFamily",
+            "Zeta23.OPICA.LocalData",
+            "Zeta23.CCM.NativeIntegerDriveComplexLaplace",
+            "Zeta23.CCM.NativeIntegerPrimeConvolution",
+            "Zeta23.ExceptionalZero.NativeOriginalSourceLaplaceVisibility"
+          ],
+          "approved_direct_project_imports": [
+            "Zeta23.OPICAFollowup.NativeSourceFamily",
+            "Zeta23.OPICA.LocalData",
+            "Zeta23.CCM.NativeIntegerDriveComplexLaplace",
+            "Zeta23.CCM.NativeIntegerPrimeConvolution",
+            "Zeta23.ExceptionalZero.NativeOriginalSourceLaplaceVisibility",
+            "Zeta23.ExceptionalZero.NativeZeroJetAnalyticFactors"
+          ],
+          "reason": "Reuse the actual parent zero-jet analytic factor and source entireness proofs. The physical prime and forward-transform identities remain separate obligations.",
+          "theorem_statement_changes": [],
+          "new_assumptions": []
+        },
+        {
+          "module": "Zeta23.OPICAFollowup.NativeExplicitFormula",
+          "path": "Zeta23/OPICAFollowup/NativeExplicitFormula.lean",
+          "planned_direct_project_imports": [
+            "Zeta23.OPICAFollowup.NativeSourceTransforms",
+            "Zeta23.WeilEF.Main",
+            "Zeta23.RvM.LocalCount"
+          ],
+          "approved_direct_project_imports": [
+            "Zeta23.RvM.LocalCount",
+            "Zeta23.WeilEF.Main",
+            "Zeta23.OPICAFollowup.NativeSourceTransforms",
+            "Zeta23.CCM.DictionaryArchSourceBridge",
+            "Zeta23.GammaFacts.Complete"
+          ],
+          "reason": "Reuse the generic proved gamma-density/Fubini bridge and concrete gammaFacts to derive the actual translated-source trivial-zero series; no explicit-formula premise or source evenness is added.",
+          "theorem_statement_changes": [],
+          "new_assumptions": []
+        },
+        {
+          "module": "Zeta23.OPICAFollowup.ZetaLeftLineBounds",
+          "path": "Zeta23/OPICAFollowup/ZetaLeftLineBounds.lean",
+          "planned_direct_project_imports": [
+            "Zeta23.GammaFacts.Complete",
+            "Zeta23.Analytic.Stirling"
+          ],
+          "approved_direct_project_imports": [
+            "Zeta23.GammaFacts.Complete",
+            "Zeta23.Analytic.Stirling",
+            "Zeta23.WeilEF.VerticalLine",
+            "Zeta23.OPICAFollowup.SourceVerticalBounds"
+          ],
+          "reason": "Reuse the proved fixed-strip digamma bound only at real part one and the elementary complex trig norm bounds. Differentiate the genuine functional equation directly, rather than duplicate a Cauchy derivative estimate. The same full uniform theorem statement is proved.",
+          "theorem_statement_changes": [],
+          "new_assumptions": []
+        }
+      ],
+      "authority": "Explicit implementation dependency refinement; compiler receipts separately establish actual TYPE/VALUE/STRUCTURE dependencies and validity.",
+      "RH": "OPEN",
+      "Step4": "OPEN",
+      "independent_closing_inequalities": "OPEN",
+      "supersedes": "DEP_2026_10_21_01",
+      "previous_amendment_sha256": "32f2c2e57743f5c1a98176ac64f3b2671e8c45f8355361130ff0271361105a91"
     }
-  ]
+  ],
+  "implementation_theorem_crosswalk_updates": {
+    "schema": "OPICA_IMPLEMENTATION_THEOREM_CROSSWALK_V1",
+    "frozen_crosswalk_sha256": "9e1252631f26fb81f4a5c60ac714e483c076be5c9858e25056e3835933ce6451",
+    "scope": "SUPPLEMENTAL_IMPLEMENTATION_EVIDENCE_NO_NORMATIVE_REPLACEMENT",
+    "rows": [
+      {
+        "id": "ACTUAL_FORWARD_CONTINUATION",
+        "status": "PROVED_LOCAL_GENUINE_LEAN_IMPORTS_EXACT_SOURCE_RECEIPT_PENDING",
+        "original_primary_roots": [
+          "Zeta23.OPICAFollowup.forwardKernel_physical_laplace"
+        ],
+        "original_root_ids": [
+          "OPICA_FOLLOWUP_FORWARDKERNEL_PHYSICAL_LAPLACE"
+        ],
+        "related_paper_ids": [
+          "J5.2",
+          "R2-Q2"
+        ],
+        "dependencies": [
+          "Zeta23.OPICAFollowup.sourceFamily_laplace_identity"
+        ],
+        "effect": "Actual repeated integer actions, weighted-L1 Fubini, literal integral identity and explicit entire pole-cleared representative; diagonal removable value differs from raw totalized formula.",
+        "original_statement_changes": [],
+        "mandatory_promotions": []
+      },
+      {
+        "id": "ACTUAL_GENERATOR_AND_WORDS",
+        "status": "PROVED_LOCAL_GENUINE_LEAN_IMPORTS_EXACT_SOURCE_RECEIPT_PENDING",
+        "original_primary_roots": [
+          "Zeta23.OPICAFollowup.nativeGenerator_transform",
+          "Zeta23.OPICAFollowup.nativeWord_corrected_transform",
+          "Zeta23.OPICAFollowup.nativeWord_order_and_leading",
+          "Zeta23.OPICAFollowup.nativeWord_first_nonzero_derivative",
+          "Zeta23.OPICAFollowup.nativeWord_factor_costs"
+        ],
+        "original_root_ids": [
+          "OPICA_FOLLOWUP_NATIVEGENERATOR_TRANSFORM",
+          "OPICA_FOLLOWUP_NATIVEWORD_CORRECTED_TRANSFORM",
+          "OPICA_FOLLOWUP_NATIVEWORD_ORDER_AND_LEADING",
+          "OPICA_FOLLOWUP_NATIVEWORD_FIRST_NONZERO_DERIVATIVE",
+          "OPICA_FOLLOWUP_NATIVEWORD_FACTOR_COSTS"
+        ],
+        "related_paper_ids": [
+          "R1-NB1"
+        ],
+        "dependencies": [
+          "Zeta23.OPICAFollowup.nativePrimeField_visiblePole",
+          "Zeta23.OPICAFollowup.nativeGenerator_unit_or_completion"
+        ],
+        "effect": "All actual causal actions and weak source-P adapters precede finite physical composition. Every independently identified analytic history is allowed in the local primary statements, with raw MeromorphicAt and exact physical safe-half-plane identity. A common connected domain is required only for the separate supporting global MeromorphicOn companion. Exact analytic multiplicity, source residue, affine histories and costs are retained.",
+        "original_statement_changes": [],
+        "mandatory_promotions": []
+      },
+      {
+        "id": "ACTUAL_WORD_CONTOUR",
+        "status": "PROVED_LOCAL_GENUINE_LEAN_IMPORTS_EXACT_SOURCE_RECEIPT_PENDING",
+        "original_primary_roots": [
+          "Zeta23.OPICAFollowup.nativeWord_contour_consumer"
+        ],
+        "original_root_ids": [
+          "OPICA_FOLLOWUP_NATIVEWORD_CONTOUR_CONSUMER"
+        ],
+        "related_paper_ids": [
+          "R1-NB1",
+          "R2-J1"
+        ],
+        "dependencies": [
+          "Zeta23.OPICAFollowup.nativeWord_order_and_leading",
+          "Zeta23.OPICAFollowup.laurent_coefficient_error_bound",
+          "Zeta23.OPICAFollowup.laurent_observation_survives"
+        ],
+        "effect": "Compose the actual degree p*m-1 and normalized native coefficient with separately priced raw, affine-correction and recovery circle errors; strict threshold and disk hypotheses remain explicit.",
+        "original_statement_changes": [],
+        "mandatory_promotions": []
+      },
+      {
+        "id": "SOURCE_FIXED_COST_AND_THETA_UPPER",
+        "status": "PROVED_LOCAL_GENUINE_LEAN_IMPORTS_EXACT_SOURCE_RECEIPT_PENDING",
+        "original_primary_roots": [
+          "Zeta23.OPICAFollowup.source_order_uniform_norms",
+          "Zeta23.OPICAFollowup.native_field_theta_envelope"
+        ],
+        "original_root_ids": [
+          "OPICA_FOLLOWUP_SOURCE_ORDER_UNIFORM_NORMS",
+          "OPICA_FOLLOWUP_NATIVE_FIELD_THETA_ENVELOPE"
+        ],
+        "related_paper_ids": [
+          "J5.2",
+          "MS1"
+        ],
+        "dependencies": [
+          "Zeta23.OPICAFollowup.native_source_explicit_formula",
+          "Zeta23.OPICAFollowup.native_zero_count_summability",
+          "Zeta23.OPICAFollowup.native_zero_sup_bounds"
+        ],
+        "effect": "Actual higher-source Gevrey jets, Abel continuum cancellation and drive L2 establish one uniform order cost; actual full zero/trivial sums and finite initial history establish the Theta upper envelope. Matching lower rates and independent closing uppers remain open.",
+        "original_statement_changes": [],
+        "mandatory_promotions": []
+      },
+      {
+        "id": "ACTUAL_FIXED_ORDER_FORWARD_DECAY",
+        "status": "PROVED_LOCAL_GENUINE_LEAN_IMPORTS_EXACT_SOURCE_RECEIPT_PENDING",
+        "original_primary_roots": [
+          "Zeta23.OPICAFollowup.forwardKernel_double_exp_decay"
+        ],
+        "original_root_ids": [
+          "OPICA_FOLLOWUP_FORWARDKERNEL_DOUBLE_EXP_DECAY"
+        ],
+        "related_paper_ids": [
+          "R2-Q2"
+        ],
+        "dependencies": [
+          "Zeta23.OPICAFollowup.forwardKernel_physical_laplace",
+          "Zeta23.OPICAFollowup.forwardKernel_left_contour_budget",
+          "Zeta23.OPICAFollowup.forwardKernel_iteratedDeriv_physical_laplace",
+          "Zeta23.OPICAFollowup.forwardEntire_vertical_line_shift",
+          "Zeta23.OPICAFollowup.bilateralLaplace_inverse",
+          "Zeta23.OPICAFollowup.integer_contour_saddle_decay"
+        ],
+        "effect": "Actual all-order derivative inversion and whole-strip contour shift establish the fixed-order double-exponential bound for every t>=0. Strip constants may depend on the chosen line only to justify the exact shift; the quantitative saddle uses the independently proved uniform C,D,B envelope. The n=1 estimate includes the entire initial interval.",
+        "original_statement_changes": [],
+        "mandatory_promotions": []
+      }
+    ],
+    "RH": "OPEN",
+    "Step4": "OPEN",
+    "independent_closing_inequalities": "OPEN"
+  },
+  "implementation_local_scope_review": {
+    "status": "STRONGER_IMPLEMENTATION_MATCHES_FROZEN_ALL_HISTORY_SCOPE",
+    "removed_unnecessary_premise": "Common joint connected history continuation domain on local primary word/jet/contour statements",
+    "retained_authority": "Actual individual connected continuation and initial physical Laplace identities; common-D global MeromorphicOn remains a supporting companion",
+    "frozen_statement_changes": [],
+    "new_assumptions": []
+  }
 }

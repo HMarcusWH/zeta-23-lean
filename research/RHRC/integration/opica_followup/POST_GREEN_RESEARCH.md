@@ -506,3 +506,259 @@ that pole and does not assert raw pointwise entireness there.
    harvest when the full follow-up implementation is green.
 
 RH, Step 4 and the independent closing inequalities remain OPEN.
+
+## Physical words, whole-source budgets and forward continuation: 37-root pass
+
+### What became formally true
+
+PROVED locally: all seven actual generator actions and their genuine common
+safe-half-plane transforms, including prime-power inverse Euler sums and the
+weak compact-test identification of source differentiation with the literal
+higher prime fields. All affine endpoint distributions remain in the state.
+The four full native-word roots and native contour consumer now compose these
+actual actions with the actual arbitrary-multiplicity prime pole. The order is
+p*m-1, including the p=0 residue; the normalized leading coefficient is exact
+and nonzero. For p>=1 every lower derivative vanishes and the leading derivative
+has its full factorial. Every constructor has an explicit local logarithmic
+cost. A local unit does not imply a global operator norm estimate.
+
+PROVED locally: one source-fixed order-cost constant controls the actual
+L-infinity and L1 first two source jets and literal integer-drive L2 norm. The
+continuum integral vanishes by both actual elementary moments. The genuine
+prime field has a source-priced Theta upper envelope; Theta is the actual
+supremum, with no maximizing zero assumption. Both ordinate signs, all analytic
+multiplicities, the entire trivial tail and the finite initial history remain.
+
+PROVED locally: the actual repeated integer field has the literal weighted-L1
+Laplace integral for Re z>1/2. For d>=ell the proved entire continuation agrees
+with its canonical formula away from z=1/2. At d=ell the genuine continuation
+there is the nonzero one-copy Q value; the raw totalized product is zero there.
+The distinction is proved by an explicit adversarial consumer.
+
+PROVED supporting helpers: the actual bilateral Laplace inverse follows from
+Fourier inversion with its 1/(2*pi) Jacobian. A uniform integer contour budget
+optimizes to the exact exp(t/(2*a)) inner scale, and its n=1 estimate covers the
+whole initial interval. Neither generic helper is counted as the unfinished
+actual forward decay root. Actual all-order derivative transforms are also
+proved from local lattice differentiation and genuine full-line integration
+by parts, retaining C-infinity regularity and the positive causal gap.
+Fractional Gamma decay on positive strips follows from the genuine Beta
+integral comparison; reflection and fixed-radius Cauchy give polynomial zeta
+and zeta-derivative control for every real part above a fixed lower bound at
+large height. A whole-strip majorant and the final composition must still
+connect the physical field to the optimized decay helper.
+
+### Workflow harvest
+
+There are no follow-up PR workflows yet. Direct genuine module builds and
+independently stated physical consumers are FORMAL VALIDITY GATES; their full
+axiom closures contain only propext, Classical.choice and Quot.sound. The 131
+child tests pass in both normal and optimized Python as REGRESSION GATES.
+Preparation still reports PASS_PREPARATION_ONLY with all 100 roots and 28
+acceptance units retained. It establishes no compiler coverage by itself.
+
+The isolated snapshot bfcd23655c71ce50a2030255f1d512165cc01d58, tree
+304087ce93c34f3eab64f653bf2d6fd0ced9e96f, built its mathematical modules and
+explicit expected types. Its exporter failed on a Lean-generated parent
+equation, nativeOriginalPrimeField.eq_1, cached in the child module. That
+attempt is FAILED, not a source-bound PASS. The repair enumerates the equation,
+checks its compiler-reserved original-definition name and retains complete
+type, allowed-axiom and recursive dependency audits. It does not skip the helper
+or relax primary root identities. A subsequent protocol precheck passed 37
+original roots, 952 public declarations, 15 constructors, 6,344 dependency nodes
+and 6,591 dependency channels. That precheck is not an exact-current-source
+receipt: supporting derivative and fractional-strip sources were subsequently
+integrated. The new committed-source receipt is pending.
+Accepted-parent workflow and scientific search dispositions remain unchanged.
+
+### What changed
+
+Actual time actions now discharge former generator/source adapter obligations;
+no desired transform is supplied as an input field. Word histories retain
+actual causal states, proven initial Laplace identities and a compatible common
+connected continuation domain. Compact histories construct that domain on the
+whole plane. Individually connected domains cannot silently establish a common
+connected intersection. All original frozen statements and scope remain.
+
+Dependency amendment DEP_2026_10_21_03 records reuse of the actual parent
+prime-translation differentiation, local pole and Abel/L2 APIs. Both prior
+versions are preserved by canonical hashes. No optional mathematical amendment
+candidate is promoted to mandatory scope, and no RH assumption is introduced.
+
+### Upstream implications
+
+DERIVED: actual compact-test differentiation, weighted translation/Fubini and
+the normalized simple-pole interface can replace repeated bespoke adapters.
+The canonical entire representative must be distinguished from raw totalized
+products throughout inversion and derivative consumers. Source Gevrey costs and
+the actual Abel cancellation now supply a common reusable order-cost spine.
+
+### Downstream implications
+
+DERIVED: the word contour consumer can price raw observation, every affine
+correction and recovery error against the exact native coefficient. It does
+not establish a small native observation error. The priced Theta envelope can
+feed auxiliary completion/window upper bounds; matching lower rates and an
+independent smaller closing upper remain separate open obligations.
+
+### Resurrected routes
+
+The actual-source word route no longer lacks an inverse-Euler physical action
+or a source-P distribution adapter. The fixed-order localization route no
+longer lacks an actual forward transform or a correct entire representative.
+Its remaining obstruction is now explicit derivative inversion plus control
+between moving vertical lines. Routes that needed a native source-cost packet
+can instead consume the newly proved source/drive estimates.
+
+### New RH-relevant clues
+
+LEAD / HYPOTHESIS: compose the exact word leading coefficient with priced source
+orders to identify which of correction, recovery, radius and multiplicity costs
+prevents a useful surviving observation. A separate lead is to combine the
+Theta upper envelope with actual auxiliary endpoint lower bounds. Neither
+composition yet gives Theta=0 or excludes an off-line zero.
+
+### Falsification checks
+
+The p=0 empty-word residue and p*m=1 degree-zero removable value are checked.
+Real residual cutoffs include Y=3/2. Arbitrary weak source derivatives retain
+their compact-test endpoint terms. No norm estimate is inferred from local
+multiplier nonvanishing. The continuum proof uses the correct negative-half
+exponential moments, not only one moment. The trivial-tail estimate starts at
+the proved threshold, with the earlier interval separately covered. The
+diagonal entire value explicitly falsifies naive raw pointwise entireness.
+Compiler-generated equation provenance is tested against arbitrary foreign
+names, absent origin dependencies and hidden project axioms.
+
+### Highest-leverage next moves
+
+1. Finish physical derivative inversion and a genuine whole-strip horizontal
+   majorant, then connect the contour budget to the already proved saddle.
+2. Construct explicit auxiliary completions, endpoint/Poisson/Laguerre and
+   arbitrary-multiplicity residual bounds using the priced source norms.
+3. Build the genuine locally finite complex-measure/variation and Jordan APIs
+   before heat separators, preserving the order-zero and growth quantifiers.
+4. Finish the full original 100-root acceptance scope and all child lanes;
+   perform exact current-tree parent/child audits, canonical regeneration and
+   the complete final workflow harvest before treating the PR as accepted.
+
+RH, Step 4 and the independent closing inequalities remain OPEN.
+
+## Actual fixed-order forward decay and all-history scope: 38-root pass
+
+### What became formally true
+
+PROVED locally: for every fixed d>=ell and k, there are A,c>0, independent of
+t, such that the literal physical forward field satisfies
+|D^k R_d,ell(t)| <= A exp(-c exp(t/(2(ell+1)))) for every t>=0. The full initial
+interval is included. The ell=0 consumer is the actual integer drive from the
+literal higher source, and every derivative vanishes at zero by its positive
+causal gap. The exact source bytes of ForwardLocalization at this gate have
+SHA-256 26d33a2ec71711906610f45afbcd31b4e7d78b0defe097190ed1617e9a56c226.
+
+Actual smooth lattice derivatives and weighted-L1 transforms feed genuine
+Fourier inversion on Re z=3/2. The 1/(2*pi) factor is derived with its absolute
+Jacobian. The correctly filled entire representative permits the full strip
+shift; the left line avoids the removable point before rewriting to the raw
+source/zeta product. A uniform C,D,B envelope is proved before the integer
+saddle is chosen. The n=1 bound covers the initial interval without assuming a
+compact-time bound or a desired decay estimate.
+
+PROVED locally: the local word transform, order, leading-jet and contour
+statements now allow every independently identified analytic history. They
+require no joint connected-domain packet. The actual common safe half-plane
+is constructed from the finite active history thresholds; raw MeromorphicAt
+at the chosen pole is proved locally. A separate global MeromorphicOn companion
+retains its independently established common domain. This removes an
+unnecessary implementation restriction and matches the unchanged frozen
+all-history contracts.
+
+### Workflow harvest
+
+The exact module save and independently stated full decay/actual-drive/zero-time
+consumers pass Lean. Root, contour, shift and consumer closures contain only
+the standard three axioms. Independent mathematical source review found no
+material gap in normalization, damping, derivative domain, strip crossing or
+the exact saddle exponent. The all-history word/contour module saves and
+independent consumers also pass with standard-only axiom closures.
+
+These are local FORMAL VALIDITY GATES. The 131 child tests in each Python mode
+are REGRESSION GATES. No follow-up PR workflow has run; no new research-job
+disposition is inferred. The earlier 28-root exporter attempt remains FAILED,
+and the 37-root protocol precheck remains historical. An isolated exact-source
+38-root receipt is the next audit, not a full 100-root acceptance. Parent
+workflow dispositions and independent closing claims are unchanged.
+
+### What changed
+
+The former exact-inversion and horizontal-control obligations are discharged
+for the literal field. Fixed-strip Gamma decay covers fractional real parts by
+the actual Beta integral comparison. Reflection and a fixed-radius Cauchy bound
+provide polynomial zeta and derivative growth at large height; the remaining
+compact height region is controlled using the genuine entire representative.
+All arguments are unconditional with respect to RH and reciprocal zeta.
+
+Strip constants may depend on the chosen n and t only to justify the exact
+shift. They are never used as the quantitative n-cost in the optimization.
+That cost comes exclusively from the separately proved uniform line envelope.
+Constants in the final theorem may depend on fixed d,ell,k; moving source or
+completion orders require their own priced argument.
+
+### Upstream implications
+
+DERIVED: the actual derivative/Fubini and bilateral inversion interfaces can
+replace redundant field-specific transform packets. The Beta comparison is a
+smaller reusable theorem behind fractional-strip Gamma decay; it avoids an
+additional wide-digamma import. Local germ authority needs individual actual
+history identification, while stronger global continuation has its own domain
+obligation. These interfaces should remain separate in downstream consumers.
+
+### Downstream implications
+
+DERIVED: the fixed-r log-slack sieve may now use actual forward-field decay,
+rather than a supplied localization estimate. The literal balanced coefficient
+support, palette delay, cutoff geometry and all physical finite histories still
+have to be proved together. The completed field's rapid decay does not imply
+that the original uncompleted prime field has zero rate.
+
+### Resurrected routes
+
+The forward-localization route is no longer blocked by a merely formal zeta
+product, missing derivatives, integer-only horizontal control, an unfilled
+removable point or an uncontrolled initial interval. The log-slack low-mask
+route can now proceed with actual quantitative input. Moving-order MS1 and the
+independent opposing signed upper remain separate open routes.
+
+### New RH-relevant clues
+
+LEAD / HYPOTHESIS: inspect the explicit contour constants as functions of the
+source order. Their factorial and polynomial dependence may combine with the
+proved source-fixed Gevrey cost to extend useful localization to slow source
+orders. A second lead is to compose the low-mask estimate with the exact
+norm-first/recovery-cost inventory. Neither lead supplies a cheap native
+recovery map, an independent defect upper or a zero exclusion.
+
+### Falsification checks
+
+All t>=0 and k>=0 are retained, including t=0. The diagonal d=ell removable
+value remains nonzero while the raw totalized value is zero. The n-dependent
+strip constants are not smuggled into the uniform saddle estimate. Fixed-order
+decay is not promoted to a moving-order assertion. Completion removes local
+poles and changes the observed jet, so rapid completed-field decay is not a
+quietness theorem for the uncompleted prime field. All-history local consumers
+no longer carry the unnecessary joint-domain restriction.
+
+### Highest-leverage next moves
+
+1. Complete actual log-slack tuple support, palette translation and both masks
+   with the original real cutoffs and full fixed-order quantifiers.
+2. Derive the endpoint-aware auxiliary completion/Poisson/Laguerre and finite
+   residual package; combine it with the source-priced Theta upper and actual
+   lower-rate mechanisms.
+3. Complete locally finite complex variation, compact convergence and Schwartz
+   tail compatibility before using complex profiles in heat separators.
+4. Audit the exact 38-root source snapshot while continuing every remaining
+   original primary root. Full 100-root acceptance, canonical state, child CI
+   and the final workflow/research harvest remain required.
+
+RH, Step 4 and the independent closing inequalities remain OPEN.

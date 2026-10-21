@@ -1,5 +1,6 @@
 import Zeta23.OPICAFollowup.NativeSourceTransforms
 import Zeta23.OPICA.NativeArithmeticAdapter
+import Zeta23.CCM.NativeCompactTranslateCalculus
 import Mathlib.Analysis.Convolution
 
 /-! Concrete finite native generators. Their physical causal actions and
@@ -1107,5 +1108,449 @@ theorem NativeCausalState.laplace_residualPowerRealAction (state : NativeCausalS
         (1-riemannZeta (z+1/2)*truncatedMoebiusRealMultiplier Y z)^r*state.laplace z := by
   simpa only [residualPowerRealAction,truncatedMoebiusRealMultiplier_eq_floor Y hY] using
     state.laplace_residualPowerAction (Nat.floor Y) r
+
+
+theorem complexWeightedDelay_integrable_laplace
+    (c : ℕ → ℂ) (tau : ℕ → ℝ) (f : ℝ → ℂ) (w : ℂ)
+    (hf : Integrable (fun t : ℝ => Complex.exp (-w*(t:ℂ))*f t))
+    (hc : Summable (fun n : ℕ => ‖c n*Complex.exp (-w*(tau n:ℂ))‖)) :
+    Integrable (fun t : ℝ => Complex.exp (-w*(t:ℂ))*
+      (∑' n : ℕ, c n*f (t-tau n))) ∧
+    (∫ t : ℝ, Complex.exp (-w*(t:ℂ))*(∑' n : ℕ, c n*f (t-tau n))) =
+      (∑' n : ℕ, c n*Complex.exp (-w*(tau n:ℂ)))*
+        ∫ t : ℝ, Complex.exp (-w*(t:ℂ))*f t := by
+  let b : ℝ → ℂ := fun t => Complex.exp (-w*(t:ℂ))*f t
+  let a : ℕ → ℂ := fun n => c n*Complex.exp (-w*(tau n:ℂ))
+  let term : ℕ → ℝ → ℂ := fun n t =>
+    Complex.exp (-w*(t:ℂ))*(c n*f (t-tau n))
+  have hfactor (n : ℕ) (t : ℝ) : term n t = a n*b (t-tau n) := by
+    have hexp : Complex.exp (-w*(t:ℂ)) =
+        Complex.exp (-w*(tau n:ℂ))*Complex.exp (-w*((t-tau n:ℝ):ℂ)) := by
+      rw [←Complex.exp_add]
+      congr 1
+      push_cast
+      ring
+    dsimp [term,a,b]
+    rw [hexp]
+    ring
+  have hterm (n : ℕ) : Integrable (term n) :=
+    ((hf.comp_sub_right (tau n)).const_mul (a n)).congr
+      (Eventually.of_forall fun t => (hfactor n t).symm)
+  have hnorm (n : ℕ) : (∫ t : ℝ, ‖term n t‖) = ‖a n‖*∫ t : ℝ, ‖b t‖ := by
+    simp_rw [hfactor,norm_mul]
+    rw [integral_const_mul]
+    congr 1
+    exact integral_sub_right_eq_self (fun t : ℝ => ‖b t‖) (tau n)
+  have hnormsum : Summable (fun n : ℕ => ∫ t : ℝ, ‖term n t‖) := by
+    simp_rw [hnorm]
+    exact hc.mul_right _
+  have hint (n : ℕ) : (∫ t : ℝ, term n t) = a n*∫ t : ℝ, b t := by
+    simp_rw [hfactor]
+    rw [integral_const_mul,integral_sub_right_eq_self]
+  have hpoint (t : ℝ) : Complex.exp (-w*(t:ℂ))*(∑' n : ℕ, c n*f (t-tau n)) =
+      ∑' n : ℕ, term n t := by
+    rw [←tsum_mul_left]
+  constructor
+  · exact (complex_tsum_integrable_of_summable_integral_norm term hterm hnormsum).congr
+      (Eventually.of_forall fun t => (hpoint t).symm)
+  · calc
+      _ = ∫ t : ℝ, ∑' n : ℕ, term n t := integral_congr_ae (Eventually.of_forall hpoint)
+      _ = ∑' n : ℕ, ∫ t : ℝ, term n t :=
+        (hasSum_integral_of_summable_integral_norm hterm hnormsum).tsum_eq.symm
+      _ = (∑' n : ℕ, a n)*∫ t : ℝ, b t := by simp_rw [hint]; rw [tsum_mul_right]
+
+
+theorem NativeRegularCausal.nonnegativeDelay_norm_le (f : NativeRegularCausal)
+    (t tau : ℝ) (htau : 0≤tau) :
+    ‖f (t-tau)‖ ≤ f.amplitude*Real.exp (f.exponent*t) := by
+  by_cases ht : t-tau<0
+  · rw [f.zero_before _ ht,norm_zero]
+    exact mul_nonneg f.amplitude_nonneg (Real.exp_pos _).le
+  · exact (f.norm_le _ (le_of_not_gt ht)).trans
+      (mul_le_mul_of_nonneg_left (Real.exp_le_exp.mpr
+        (mul_le_mul_of_nonneg_left (sub_le_self t htau) f.exponent_nonneg)) f.amplitude_nonneg)
+
+theorem NativeRegularCausal.geometricDelay_norm_summable (f : NativeRegularCausal)
+    (tau q : ℝ) (htau : 0≤tau) (hq0 : 0≤q) (hq1 : q<1) (t : ℝ) :
+    Summable (fun n : ℕ => ‖(q:ℂ)^n*f (t-(n:ℝ)*tau)‖) := by
+  apply ((summable_geometric_of_lt_one hq0 hq1).mul_right
+    (f.amplitude*Real.exp (f.exponent*t))).of_nonneg_of_le (fun n => norm_nonneg _) _
+  intro n
+  rw [norm_mul,norm_pow,Complex.norm_real,Real.norm_eq_abs,abs_of_nonneg hq0]
+  exact mul_le_mul_of_nonneg_left
+    (f.nonnegativeDelay_norm_le t ((n:ℝ)*tau) (mul_nonneg (Nat.cast_nonneg n) htau))
+    (pow_nonneg hq0 n)
+
+def NativeRegularCausal.geometricDelay (f : NativeRegularCausal)
+    (tau q : ℝ) (htau : 0≤tau) (hq0 : 0≤q) (hq1 : q<1) : NativeRegularCausal where
+  toFun t := ∑' n : ℕ, (q:ℂ)^n*f (t-(n:ℝ)*tau)
+  measurable := Measurable.tsum fun n => measurable_const.mul
+    (f.measurable.comp (by fun_prop))
+  zero_before := by
+    intro t ht
+    have hzero (n : ℕ) : (q:ℂ)^n*f (t-(n:ℝ)*tau)=0 := by
+      rw [f.zero_before _ (by nlinarith [mul_nonneg (Nat.cast_nonneg n) htau]),mul_zero]
+    simp only [hzero,tsum_zero]
+  amplitude := (1-q)⁻¹*f.amplitude
+  exponent := f.exponent
+  amplitude_nonneg := mul_nonneg (inv_nonneg.mpr (by linarith)) f.amplitude_nonneg
+  exponent_nonneg := f.exponent_nonneg
+  norm_le := by
+    intro t _
+    calc
+      _ ≤ ∑' n : ℕ, ‖(q:ℂ)^n*f (t-(n:ℝ)*tau)‖ :=
+        norm_tsum_le_tsum_norm (f.geometricDelay_norm_summable tau q htau hq0 hq1 t)
+      _ ≤ ∑' n : ℕ, q^n*(f.amplitude*Real.exp (f.exponent*t)) := by
+        apply Summable.tsum_le_tsum _ (f.geometricDelay_norm_summable tau q htau hq0 hq1 t)
+          ((summable_geometric_of_lt_one hq0 hq1).mul_right _)
+        intro n
+        rw [norm_mul,norm_pow,Complex.norm_real,Real.norm_eq_abs,abs_of_nonneg hq0]
+        exact mul_le_mul_of_nonneg_left
+          (f.nonnegativeDelay_norm_le t ((n:ℝ)*tau) (mul_nonneg (Nat.cast_nonneg n) htau))
+          (pow_nonneg hq0 n)
+      _ = _ := by rw [tsum_mul_right,tsum_geometric_of_lt_one hq0 hq1]; ring
+
+theorem NativeRegularCausal.geometricDelay_laplace (f : NativeRegularCausal)
+    (tau q : ℝ) (htau : 0≤tau) (hq0 : 0≤q) (hq1 : q<1) {z : ℂ}
+    (hz0 : 0≤z.re) (hf : Integrable (fun t : ℝ => Complex.exp (-z*(t:ℂ))*f t)) :
+    (∫ t : ℝ, Complex.exp (-z*(t:ℂ))*f.geometricDelay tau q htau hq0 hq1 t) =
+      (1-(q:ℂ)*Complex.exp (-z*(tau:ℂ)))⁻¹*
+        (∫ t : ℝ, Complex.exp (-z*(t:ℂ))*f t) := by
+  let v : ℂ := (q:ℂ)*Complex.exp (-z*(tau:ℂ))
+  have hv : ‖v‖<1 := by
+    dsimp [v]
+    rw [norm_mul,Complex.norm_real,Real.norm_eq_abs,abs_of_nonneg hq0,Complex.norm_exp]
+    have he : (-z*(tau:ℂ)).re = -z.re*tau := by simp
+    rw [he]
+    exact (mul_le_of_le_one_right hq0 (Real.exp_le_one_iff.mpr
+      (mul_nonpos_of_nonpos_of_nonneg (neg_nonpos.mpr hz0) htau))).trans_lt hq1
+  have hpower (n : ℕ) : (q:ℂ)^n*Complex.exp (-z*Complex.ofReal ((n:ℝ)*tau))=v^n := by
+    dsimp [v]
+    rw [mul_pow]
+    congr 1
+    rw [←Complex.exp_nat_mul]
+    congr 1
+    push_cast
+    ring
+  have hc : Summable (fun n : ℕ => ‖(q:ℂ)^n*Complex.exp (-z*Complex.ofReal ((n:ℝ)*tau))‖) := by
+    simp_rw [hpower]
+    exact (summable_geometric_of_norm_lt_one hv).norm
+  have h := (complexWeightedDelay_integrable_laplace (fun n => (q:ℂ)^n)
+    (fun n => (n:ℝ)*tau) f.toFun z hf hc).2
+  simp_rw [hpower] at h
+  rw [tsum_geometric_of_norm_lt_one hv] at h
+  exact h
+
+def NativeCausalState.inversePrimeEulerAction (state : NativeCausalState) (p : ℕ) :
+    NativeCausalState :=
+  if hp : 2≤p then
+    state.map fun term => {term with regular :=
+      (term.regular.geometricDelay (Real.log p) (Real.exp (-Real.log p/2))
+        (Real.log_natCast_nonneg p) ((Real.exp_pos _).le) (Real.exp_lt_one_iff.mpr (by
+          have hlog : 0<Real.log (p:ℝ) := Real.log_pos (by exact_mod_cast hp)
+          linarith)))}
+  else state
+
+theorem NativeCausalState.laplace_inversePrimeEulerAction (state : NativeCausalState)
+    (p : ℕ) (hp : 2≤p) :
+    ∃ S : ℝ, ∀ z : ℂ, S<z.re →
+      (state.inversePrimeEulerAction p).laplace z=
+        (1-Complex.exp (-(z+1/2)*(Real.log p:ℂ)))⁻¹*state.laplace z := by
+  obtain ⟨S,hS⟩ := state.exists_regular_laplace_threshold
+  refine ⟨max 0 S,fun z hz => ?_⟩
+  have hz0 : 0≤z.re := ((le_max_left _ _).trans_lt hz).le
+  have hq1 : Real.exp (-Real.log p/2)<1 := Real.exp_lt_one_iff.mpr (by
+    have hlog : 0<Real.log (p:ℝ) := Real.log_pos (by exact_mod_cast hp)
+    linarith)
+  have he : (Real.exp (-Real.log p/2):ℂ)*Complex.exp (-z*(Real.log p:ℂ))=
+      Complex.exp (-(z+1/2)*(Real.log p:ℂ)) := by
+    rw [Complex.ofReal_exp,←Complex.exp_add]
+    congr 1
+    push_cast
+    ring
+  have hi := hS z ((le_max_right _ _).trans_lt hz)
+  clear hS
+  unfold inversePrimeEulerAction
+  rw [dif_pos hp]
+  induction state with
+  | nil => simp [laplace]
+  | cons term state ih =>
+    simp only [List.map_cons,laplace,List.sum_cons] at ih ⊢
+    rw [term.regular.geometricDelay_laplace (Real.log p) (Real.exp (-Real.log p/2))
+      (Real.log_natCast_nonneg p) (Real.exp_pos _).le hq1 hz0 (hi term (by simp)),
+      he,ih (fun other ho => hi other (by simp [ho]))]
+    ring
+
+def NativeCausalState.inverseEulerListAction : NativeCausalState → List ℕ → NativeCausalState
+  | state, [] => state
+  | state, p::ps => (state.inversePrimeEulerAction p).inverseEulerListAction ps
+
+theorem NativeCausalState.laplace_inverseEulerListAction (state : NativeCausalState)
+    (primes : List ℕ) (hprimes : ∀ p∈primes, 2≤p) :
+    ∃ S : ℝ, ∀ z : ℂ, S<z.re →
+      (state.inverseEulerListAction primes).laplace z=
+        ((primes.map (fun p : ℕ => 1-Complex.exp (-(z+1/2)*(Real.log p:ℂ)))).prod)⁻¹*
+          state.laplace z := by
+  induction primes generalizing state with
+  | nil => exact ⟨0,fun z hz => by simp [inverseEulerListAction]⟩
+  | cons p ps ih =>
+    obtain ⟨S,hS⟩ := state.laplace_inversePrimeEulerAction p (hprimes p (by simp))
+    obtain ⟨T,hT⟩ := ih (state.inversePrimeEulerAction p)
+      (fun q hq => hprimes q (by simp [hq]))
+    refine ⟨max S T,fun z hz => ?_⟩
+    rw [inverseEulerListAction,hT z ((le_max_right _ _).trans_lt hz),
+      hS z ((le_max_left _ _).trans_lt hz)]
+    simp only [List.map_cons,List.prod_cons,mul_inv_rev]
+    ring
+
+def NativeCausalState.inverseFiniteEulerAction (state : NativeCausalState) (Q : ℕ) :
+    NativeCausalState := state.inverseEulerListAction Q.primeFactors.toList
+
+theorem NativeCausalState.laplace_inverseFiniteEulerAction (state : NativeCausalState)
+    (Q : ℕ) :
+    ∃ S : ℝ, ∀ z : ℂ, S<z.re →
+      (state.inverseFiniteEulerAction Q).laplace z=(finiteEulerMultiplier Q z)⁻¹*state.laplace z := by
+  have hp : ∀ p∈Q.primeFactors.toList, 2≤p := by
+    intro p hp
+    exact (Nat.prime_of_mem_primeFactors (Finset.mem_toList.mp hp)).two_le
+  simpa only [inverseFiniteEulerAction,finiteEulerMultiplier,Finset.prod_map_toList] using
+    state.laplace_inverseEulerListAction Q.primeFactors.toList hp
+
+
+
+
+def NativeCausalState.sourceDerivativeAction (state : NativeCausalState) (d : ℕ) :
+    NativeCausalState := NativeCausalState.sourceDifferentialAction^[d] state
+
+theorem NativeCausalState.laplace_sourceDerivativeAction (state : NativeCausalState)
+    (d : ℕ) (z : ℂ) :
+    (state.sourceDerivativeAction d).laplace z=(z^2-1/4)^d*state.laplace z := by
+  induction d with
+  | zero => simp [sourceDerivativeAction]
+  | succ d ih =>
+    change (NativeCausalState.sourceDifferentialAction^[d+1] state).laplace z=_
+    rw [Function.iterate_succ_apply',laplace_sourceDifferentialAction]
+    change (z^2-1/4)*(state.sourceDerivativeAction d).laplace z=_
+    rw [ih,pow_succ]
+    ring
+
+theorem NativeCausalState.exists_regular_exponent_bound (state : NativeCausalState) :
+    ∃ S : ℝ, ∀ term∈state, term.regular.exponent≤S := by
+  induction state with
+  | nil => exact ⟨0,fun term ht => by simp at ht⟩
+  | cons term state ih =>
+    obtain ⟨S,hS⟩ := ih
+    refine ⟨max term.regular.exponent S,fun other ho => ?_⟩
+    rcases List.mem_cons.mp ho with h | h
+    · subst other; exact le_max_left _ _
+    · exact (hS other h).trans (le_max_right _ _)
+
+def NativeGenerator.act (g : NativeGenerator) (state : NativeCausalState) : NativeCausalState :=
+  match g with
+  | .sourceDerivative d => state.sourceDerivativeAction d
+  | .delay tau htau => state.delayAction tau htau
+  | .finiteEuler Q _ => state.finiteEulerAction Q
+  | .inverseFiniteEuler Q _ => state.inverseFiniteEulerAction Q
+  | .rational a b _ hb => state.rationalAction a b hb
+  | .inverseRational a b ha _ => state.rationalAction b a ha
+  | .residualPower Y r => state.residualPowerAction Y r
+  | .completion => state.completionAction
+
+theorem NativeGenerator.act_laplace (g : NativeGenerator) (state : NativeCausalState) :
+    ∃ S : ℝ, ∀ z : ℂ, S<z.re →
+      (g.act state).laplace z=g.multiplier z*state.laplace z := by
+  cases g with
+  | sourceDerivative d => exact ⟨0,fun z hz => state.laplace_sourceDerivativeAction d z⟩
+  | delay tau htau => exact ⟨0,fun z hz => state.laplace_delayAction tau htau z⟩
+  | finiteEuler Q hQ => exact ⟨0,fun z hz => state.laplace_finiteEulerAction Q z⟩
+  | inverseFiniteEuler Q hQ => exact state.laplace_inverseFiniteEulerAction Q
+  | rational a b ha hb =>
+    obtain ⟨S,hS⟩ := state.exists_regular_exponent_bound
+    refine ⟨max 0 S,fun z hz => ?_⟩
+    exact state.laplace_rationalAction a b hb ((le_max_left _ _).trans_lt hz).le
+      (fun term ht => (hS term ht).trans_lt ((le_max_right _ _).trans_lt hz))
+  | inverseRational a b ha hb =>
+    obtain ⟨S,hS⟩ := state.exists_regular_exponent_bound
+    refine ⟨max 0 S,fun z hz => ?_⟩
+    exact state.laplace_rationalAction b a ha ((le_max_left _ _).trans_lt hz).le
+      (fun term ht => (hS term ht).trans_lt ((le_max_right _ _).trans_lt hz))
+  | residualPower Y r => exact state.laplace_residualPowerAction Y r
+  | completion =>
+    obtain ⟨S,hS⟩ := state.exists_regular_exponent_bound
+    refine ⟨max (1/2) S,fun z hz => ?_⟩
+    exact state.laplace_completionAction ((le_max_left _ _).trans_lt hz)
+      (fun term ht => (hS term ht).trans_lt ((le_max_right _ _).trans_lt hz))
+
+
+
+
+def NativeCompactTest.derivative (test : NativeCompactTest) : NativeCompactTest where
+  toFun := deriv test.toFun
+  smooth := (contDiff_infty_iff_deriv.mp test.smooth).2
+  compact := test.compact.deriv
+
+def NativeCompactTest.sourceDifferential (test : NativeCompactTest) : NativeCompactTest :=
+  test.derivative.derivative.add (test.constMul (-(1/4:ℂ)))
+
+theorem NativeCompactTest.iteratedDeriv_derivative (test : NativeCompactTest) (k : ℕ) :
+    iteratedDeriv k test.derivative.toFun=iteratedDeriv (k+1) test.toFun :=
+  (iteratedDeriv_succ').symm
+
+theorem NativeCausalState.applyTest_sourceDifferentialAction (state : NativeCausalState)
+    (test : NativeCompactTest) :
+    state.sourceDifferentialAction.applyTest test=state.applyTest test.sourceDifferential := by
+  rw [NativeCompactTest.sourceDifferential,applyTest_add,applyTest_constMul]
+  have hderiv : ∀ term : NativeCausalTerm,
+      iteratedDeriv term.order test.derivative.derivative.toFun=
+        iteratedDeriv (term.order+2) test.toFun := by
+    intro term
+    rw [test.derivative.iteratedDeriv_derivative,test.iteratedDeriv_derivative]
+  induction state with
+  | nil => simp [sourceDifferentialAction,applyTest]
+  | cons term state ih =>
+    simp only [sourceDifferentialAction,applyTest,List.map_append,List.map_cons,List.sum_append,
+      List.sum_cons,List.cons_append] at ih ⊢
+    rw [hderiv]
+    have hs : (-1:ℂ)^(term.order+2)=(-1:ℂ)^term.order := by
+      rw [pow_add]; norm_num
+    rw [hs]
+    linear_combination ih
+
+theorem NativeCausalState.sourceDifferentialAction_congr_weak
+    {state other : NativeCausalState}
+    (heq : ∀ test : NativeCompactTest, state.applyTest test=other.applyTest test)
+    (test : NativeCompactTest) :
+    state.sourceDifferentialAction.applyTest test=other.sourceDifferentialAction.applyTest test := by
+  rw [applyTest_sourceDifferentialAction,applyTest_sourceDifferentialAction,heq]
+
+theorem compactTest_second_integrationByParts (f : ℝ → ℂ)
+    (hf : ContDiff ℝ (⊤ : ℕ∞) f) (test : NativeCompactTest) :
+    (∫ t : ℝ, f t*deriv (deriv test.toFun) t)=
+      ∫ t : ℝ, deriv (deriv f) t*test t := by
+  have hf1 : ContDiff ℝ (⊤ : ℕ∞) (deriv f) := (contDiff_infty_iff_deriv.mp hf).2
+  have hf2 : ContDiff ℝ (⊤ : ℕ∞) (deriv (deriv f)) := (contDiff_infty_iff_deriv.mp hf1).2
+  have ht1 := test.derivative.smooth
+  have ht2 := test.derivative.derivative.smooth
+  have hfirst := integral_mul_deriv_eq_deriv_mul_of_integrable
+    (u := f) (u' := deriv f) (v := deriv test.toFun) (v' := deriv (deriv test.toFun))
+    (fun t _ => ((hf.differentiable (by norm_num)) t).hasDerivAt)
+    (fun t _ => ((ht1.differentiable (by norm_num)) t).hasDerivAt)
+    ((hf.continuous.mul ht2.continuous).integrable_of_hasCompactSupport test.derivative.derivative.compact.mul_left)
+    ((hf1.continuous.mul ht1.continuous).integrable_of_hasCompactSupport test.derivative.compact.mul_left)
+    ((hf.continuous.mul ht1.continuous).integrable_of_hasCompactSupport test.derivative.compact.mul_left)
+  have hsecond := integral_mul_deriv_eq_deriv_mul_of_integrable
+    (u := deriv f) (u' := deriv (deriv f)) (v := test.toFun) (v' := deriv test.toFun)
+    (fun t _ => ((hf1.differentiable (by norm_num)) t).hasDerivAt)
+    (fun t _ => ((test.smooth.differentiable (by norm_num)) t).hasDerivAt)
+    ((hf1.continuous.mul ht1.continuous).integrable_of_hasCompactSupport test.derivative.compact.mul_left)
+    ((hf2.continuous.mul test.smooth.continuous).integrable_of_hasCompactSupport test.compact.mul_left)
+    ((hf1.continuous.mul test.smooth.continuous).integrable_of_hasCompactSupport test.compact.mul_left)
+  rw [hfirst,hsecond,neg_neg]
+
+theorem compactTest_sourceDifferential_identity (f : ℝ → ℂ)
+    (hf : ContDiff ℝ (⊤ : ℕ∞) f) (test : NativeCompactTest) :
+    (∫ t : ℝ, CCM.universalSincDifferential f t*test t)=
+      ∫ t : ℝ, f t*test.sourceDifferential t := by
+  have hf1 : ContDiff ℝ (⊤ : ℕ∞) (deriv f) := (contDiff_infty_iff_deriv.mp hf).2
+  have hf2 : ContDiff ℝ (⊤ : ℕ∞) (deriv (deriv f)) := (contDiff_infty_iff_deriv.mp hf1).2
+  have hbase : Integrable (fun t : ℝ => f t*test t) :=
+    (hf.continuous.mul test.smooth.continuous).integrable_of_hasCompactSupport
+    test.compact.mul_left
+  have hleft : Integrable (fun t : ℝ => deriv (deriv f) t*test t) :=
+    (hf2.continuous.mul test.smooth.continuous).integrable_of_hasCompactSupport
+    test.compact.mul_left
+  have hright : Integrable (fun t : ℝ => f t*deriv (deriv test.toFun) t) :=
+    (hf.continuous.mul test.derivative.derivative.smooth.continuous).integrable_of_hasCompactSupport
+    test.derivative.derivative.compact.mul_left
+  have heL : (fun t : ℝ => CCM.universalSincDifferential f t*test t)=
+      fun t => deriv (deriv f) t*test t-(1/4:ℂ)*(f t*test t) := by
+    funext t
+    unfold CCM.universalSincDifferential
+    ring
+  have heR : (fun t : ℝ => f t*test.sourceDifferential t)=
+      fun t => f t*deriv (deriv test.toFun) t-(1/4:ℂ)*(f t*test t) := by
+    funext t
+    change f t*(deriv (deriv test.toFun) t+(-(1/4:ℂ))*test t)=_
+    ring
+  rw [heL,heR,integral_sub hleft (hbase.const_mul _),integral_sub hright (hbase.const_mul _),
+    compactTest_second_integrationByParts f hf test]
+
+theorem primeFamilyCausalState_applyTest (d : ℕ) (test : NativeCompactTest) :
+    (primeFamilyCausalState d).applyTest test=
+      ∫ t : ℝ, (primeFieldFamily d t:ℂ)*test t := by
+  simp [primeFamilyCausalState,NativeCausalState.applyTest,primeFamilyRegularCausal]
+
+
+open Zeta23.CCM
+
+theorem primeFieldFamily_complex_sourceDifferential (d : ℕ) :
+    universalSincDifferential (fun t : ℝ => (primeFieldFamily d t:ℂ))=
+      fun t : ℝ => (primeFieldFamily (d+1) t:ℂ) := by
+  have hsource : ContDiff ℝ 2 (sourceOrderFamily d) :=
+    (sourceFamily_contDiff d).of_le (ENat.natCast_le_of_coe_top_le_withTop le_rfl 2)
+  have hcomplex : ContDiff ℝ 2 (fun t : ℝ => (sourceOrderFamily d t:ℂ)) :=
+    (sourceFamily_complex_contDiff d).of_le (ENat.natCast_le_of_coe_top_le_withTop le_rfl 2)
+  have hP := nativeComplexPrimeField_poleImage
+    (NativeComplexSourceSupported.ofReal (sourceFamily_supported d)) hcomplex
+  have hcast (k : ℕ) : nativeComplexPrimeField (fun t : ℝ => (sourceOrderFamily k t:ℂ))=
+      fun t : ℝ => (primeFieldFamily k t:ℂ) :=
+    funext (nativeComplexPrimeField_ofReal (sourceFamily_supported k))
+  rw [hcast d,←sourceDifferential_complexify hsource] at hP
+  change universalSincDifferential (fun t : ℝ => (primeFieldFamily d t:ℂ))=
+    nativeComplexPrimeField (fun t : ℝ => (sourceOrderFamily (d+1) t:ℂ)) at hP
+  rw [hcast (d+1)] at hP
+  exact hP
+
+theorem primeFieldFamily_complex_iterated_sourceDifferential (d : ℕ) :
+    universalSincDifferential^[d] (fun t : ℝ => (primeFieldFamily 0 t:ℂ))=
+      fun t : ℝ => (primeFieldFamily d t:ℂ) := by
+  induction d with
+  | zero => rfl
+  | succ d ih =>
+    rw [Function.iterate_succ_apply',ih,primeFieldFamily_complex_sourceDifferential]
+
+
+theorem primeFamilyCausalState_sourceDifferential_applyTest (d : ℕ) (test : NativeCompactTest) :
+    (primeFamilyCausalState d).sourceDifferentialAction.applyTest test=
+      (primeFamilyCausalState (d+1)).applyTest test := by
+  rw [NativeCausalState.applyTest_sourceDifferentialAction,primeFamilyCausalState_applyTest,
+    primeFamilyCausalState_applyTest]
+  rw [←compactTest_sourceDifferential_identity (fun t : ℝ => (primeFieldFamily d t:ℂ))
+    (Complex.ofRealCLM.contDiff.comp (primeFieldFamily_contDiff d)) test,
+    primeFieldFamily_complex_sourceDifferential]
+
+theorem primeFamilyCausalState_sourceDerivative_applyTest (d : ℕ) :
+    ∀ test : NativeCompactTest,
+      ((NativeGenerator.sourceDerivative d).act (primeFamilyCausalState 0)).applyTest test=
+        (primeFamilyCausalState d).applyTest test := by
+  induction d with
+  | zero => intro test; rfl
+  | succ d ih =>
+    intro test
+    change (NativeCausalState.sourceDifferentialAction^[d+1] (primeFamilyCausalState 0)).applyTest test=_
+    rw [Function.iterate_succ_apply']
+    exact (NativeCausalState.sourceDifferentialAction_congr_weak ih test).trans
+      (primeFamilyCausalState_sourceDifferential_applyTest d test)
+
+/-- Every concrete generator has a physical causal action and its actual
+initial-half-plane transform law. The literal source-differentiation adapter
+is proved on every compact smooth test, so no endpoint term is discarded. -/
+theorem nativeGenerator_transform (g : NativeGenerator) (state : NativeCausalState) :
+    (∃ S : ℝ, ∀ z : ℂ, S<z.re →
+      (∀ term∈state, Integrable (fun t : ℝ => Complex.exp (-z*(t:ℂ))*term.regular t)) ∧
+      (∀ term∈g.act state, Integrable (fun t : ℝ => Complex.exp (-z*(t:ℂ))*term.regular t)) ∧
+      (g.act state).laplace z=g.multiplier z*state.laplace z) ∧
+    (∀ d : ℕ, ∀ test : NativeCompactTest,
+      ((NativeGenerator.sourceDerivative d).act (primeFamilyCausalState 0)).applyTest test=
+        (primeFamilyCausalState d).applyTest test) :=
+  by
+    obtain ⟨S,hS⟩ := g.act_laplace state
+    obtain ⟨T,hT⟩ := state.exists_regular_laplace_threshold
+    obtain ⟨U,hU⟩ := (g.act state).exists_regular_laplace_threshold
+    refine ⟨⟨max S (max T U),fun z hz => ?_⟩,primeFamilyCausalState_sourceDerivative_applyTest⟩
+    exact ⟨hT z ((le_trans (le_max_left T U) (le_max_right S _)).trans_lt hz),
+      hU z ((le_trans (le_max_right T U) (le_max_right S _)).trans_lt hz),
+      hS z ((le_max_left _ _).trans_lt hz)⟩
+
 
 end Zeta23.OPICAFollowup

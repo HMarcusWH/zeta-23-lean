@@ -1,3 +1,5 @@
+import Zeta23.OPICAFollowup.NativeTransformationWords
+import Zeta23.OPICAFollowup.UniformSourceBounds
 import Zeta23.OPICAFollowup.NativeFilters
 import Zeta23.OPICAFollowup.ForwardLocalization
 import Zeta23.OPICAFollowup.NativeSourceTransforms
@@ -11,7 +13,7 @@ import Zeta23.OPICAFollowup.NormFirstTransfer
 import Zeta23.OPICAFollowup.JointObservation
 import Zeta23.OPICAFollowup.Counterexamples
 
-/-! Partial expected-type audit: 28 of the 100 planned primary roots.
+/-! Partial expected-type audit: 38 of the 100 planned primary roots.
 This module does not assert full follow-up acceptance. -/
 
 
@@ -766,4 +768,396 @@ theorem expected_nonintegral_residual_cutoff (r : ℕ) (state : NativeCausalStat
 
 #print axioms expected_realCutoff_physical_transform
 #print axioms expected_nonintegral_residual_cutoff
+end Zeta23.OPICAFollowup.Validation
+
+open Complex MeasureTheory
+namespace Zeta23.OPICAFollowup.Validation
+theorem expected_nativeGenerator_transform (g : NativeGenerator) (state : NativeCausalState) :
+    (∃ S : ℝ, ∀ z : ℂ, S<z.re →
+      (∀ term∈state, Integrable (fun t : ℝ => Complex.exp (-z*(t:ℂ))*term.regular t)) ∧
+      (∀ term∈g.act state, Integrable (fun t : ℝ => Complex.exp (-z*(t:ℂ))*term.regular t)) ∧
+      (g.act state).laplace z=g.multiplier z*state.laplace z) ∧
+    (∀ d : ℕ, ∀ test : NativeCompactTest,
+      ((NativeGenerator.sourceDerivative d).act (primeFamilyCausalState 0)).applyTest test=
+        (primeFamilyCausalState d).applyTest test) :=
+  nativeGenerator_transform g state
+
+theorem expected_literal_source_differentiation (d : ℕ) (test : NativeCompactTest) :
+    ((NativeGenerator.sourceDerivative d).act (primeFamilyCausalState 0)).applyTest test=
+      ∫ t : ℝ, (CCM.nativePrimeField (sourceOrderFamily d) t:ℂ)*test t := by
+  rw [primeFamilyCausalState_sourceDerivative_applyTest,primeFamilyCausalState_applyTest]
+  rfl
+
+theorem expected_arbitrary_history_distributional_P (state : NativeCausalState)
+    (test : NativeCompactTest) :
+    state.sourceDifferentialAction.applyTest test=
+      state.applyTest (test.derivative.derivative.add (test.constMul (-(1/4:ℂ)))) :=
+  state.applyTest_sourceDifferentialAction test
+
+theorem expected_actual_completion_convolution (f : NativeRegularCausal) (t : ℝ) :
+    nativeCompletionCausalKernel.convolve f t=
+      ∫ s : ℝ, (CCM.nativePositiveCompletion s:ℂ)*f (t-s) := rfl
+
+theorem expected_actual_inverseEuler (Q : ℕ) (state : NativeCausalState) :
+    ∃ S : ℝ, ∀ z : ℂ, S<z.re →
+      (state.inverseFiniteEulerAction Q).laplace z=
+        (∏ p ∈ Q.primeFactors, (1-Complex.exp (-(z+1/2)*(Real.log p:ℂ))))⁻¹*state.laplace z :=
+  state.laplace_inverseFiniteEulerAction Q
+
+end Zeta23.OPICAFollowup.Validation
+
+open Complex MeasureTheory
+namespace Zeta23.OPICAFollowup.Validation
+theorem expected_forwardKernel_physical_laplace (d ell : ℕ) (hd : ell≤d) :
+    (∀ z : ℂ, 1/2<z.re →
+      Integrable (fun t : ℝ => Complex.exp (-z*(t:ℂ))*(forwardKernel d ell t:ℂ)) ∧
+      (∫ t : ℝ, Complex.exp (-z*(t:ℂ))*(forwardKernel d ell t:ℂ))=
+        -sourceFamilyLaplace d z*riemannZeta (z+1/2)^ell*deriv riemannZeta (z+1/2)) ∧
+    (∀ z : ℂ, AnalyticAt ℂ (forwardKernelEntireContinuation d ell) z) ∧
+    (∀ z : ℂ, z≠1/2 →
+      forwardKernelEntireContinuation d ell z=
+        -sourceFamilyLaplace d z*riemannZeta (z+1/2)^ell*deriv riemannZeta (z+1/2)) :=
+  forwardKernel_physical_laplace d ell hd
+
+theorem expected_forward_diagonal_removable_value (d : ℕ) :
+    forwardKernelEntireContinuation d d (1/2)=
+      CCM.UniversalSinc.product CCM.UniversalSinc.fixedScale (Complex.I*(1/2)) ∧
+    forwardKernelEntireContinuation d d (1/2) ≠ 0 ∧
+    forwardKernelTransformGerm d d (1/2)=0 ∧
+    forwardKernelEntireContinuation d d (1/2) ≠ forwardKernelTransformGerm d d (1/2) :=
+  ⟨forwardKernelEntireContinuation_diagonal_half d,
+    forwardKernelEntireContinuation_diagonal_half_ne_zero d,
+    forwardKernelTransformGerm_half d d,
+    forwardKernelEntireContinuation_diagonal_half_ne_raw d⟩
+
+end Zeta23.OPICAFollowup.Validation
+
+open Complex MeasureTheory Zeta23.CCM
+namespace Zeta23.OPICAFollowup.Validation
+
+/- Independent full Appendix order-norm and actual-field consumers. -/
+ theorem expected_source_order_uniform_norms :
+    ∃ C : ℝ, 0<C ∧ ∀ d : ℕ,
+      (∀ k : ℕ, k≤2 →
+        eLpNorm (iteratedDeriv k (sourceOrderFamily d)) (⊤:ENNReal) volume ≤
+          ENNReal.ofReal (Real.exp (C*((d:ℝ)+1)*Real.log ((d:ℝ)+2))) ∧
+        (eLpNorm (iteratedDeriv k (sourceOrderFamily d)) (⊤:ENNReal) volume).toReal +
+          (∫ u : ℝ, |iteratedDeriv k (sourceOrderFamily d) u|) ≤
+            Real.exp (C*((d:ℝ)+1)*Real.log ((d:ℝ)+2))) ∧
+      MemLp (nativeIntegerDriveField (sourceOrderFamily d)) 2 volume ∧
+      ‖(integerDriveFamily_memLp_two d).toLp (nativeIntegerDriveField (sourceOrderFamily d))‖ ≤
+        Real.exp (C*((d:ℝ)+1)*Real.log ((d:ℝ)+2)) ∧
+      (∀ t : ℝ, (∫ x : ℝ, if 0<x then Real.log x/Real.sqrt x*
+        sourceOrderFamily d (t-Real.log x) else 0)=0) := by
+  obtain ⟨C,hC,h⟩ := source_order_uniform_norms
+  refine ⟨C,hC,fun d => ?_⟩
+  have hd := h d
+  refine ⟨fun k hk => ⟨(hd.1 k hk).2.1,(hd.1 k hk).2.2⟩,hd.2.1,?_,?_⟩
+  · exact hd.2.2.1
+  · exact hd.2.2.2
+
+ theorem expected_native_field_theta_envelope :
+    ∃ C : ℝ, 0<C ∧ ∃ Cd : ℕ → ℝ, ∀ d : ℕ,
+      0<Cd d ∧
+      (∀ t : ℝ, 0≤t → |nativePrimeField (sourceOrderFamily d) t| ≤
+        Cd d*Real.exp ((sSup (insert 0 (Set.range
+          (fun rho : zetaZeroConfig.carrier => max ((rho:ℂ).re-1/2) 0))))*t)) ∧
+      Real.log (1+Cd d) ≤ C*((d:ℝ)+1)*Real.log ((d:ℝ)+2) := by
+  obtain ⟨C,hC,h⟩ := native_field_theta_envelope
+  refine ⟨C,hC,nativeFieldOrderConstant,fun d => ?_⟩
+  exact h d
+
+#print axioms source_order_uniform_norms
+#print axioms native_field_theta_envelope
+#print axioms expected_source_order_uniform_norms
+#print axioms expected_native_field_theta_envelope
+#print axioms uniform_nativeOrderLogDriveSummand_integral_zero
+#print axioms integerDriveFamilyL2_norm_eq
+
+end Zeta23.OPICAFollowup.Validation
+
+
+open Filter Complex Set MeasureTheory
+open scoped Topology BigOperators
+
+open Filter Complex Set MeasureTheory
+open scoped Topology BigOperators
+namespace Zeta23.OPICAFollowup.Validation
+
+theorem expected_nativeWord_corrected_transform (w : NativeWord)
+    (rho : Zeta23.zetaZeroConfig.carrier) (hright : 1/2<(rho:ℂ).re)
+    (history : NativeWordHistory ((rho:ℂ)-1/2)) :
+    (∃ S : ℝ, wordHistorySafeThreshold w history≤S ∧ 1/2≤S ∧ ∀ z : ℂ, S<z.re →
+      (∀ term∈nativeWordCausalState w rho history,
+        Integrable (fun t : ℝ => Complex.exp (-z*(t:ℂ))*term.regular t)) ∧
+      (nativeWordCausalState w rho history).laplace z=nativeWordTransformedField w rho history z) ∧
+    MeromorphicAt (nativeWordTransformedField w rho history) ((rho:ℂ)-1/2) ∧
+    (∀ z : ℂ, nativeWordCorrectedField w rho history z=
+      wordUnitFactor w z*riemannZeta (z+1/2)^wordCompletionCount w*nativePrimeTransformGerm z) ∧
+    wordUnitFactor w ((rho:ℂ)-1/2)≠0 ∧
+    (nativeWordPrimePole rho hright).source=Zeta23.CCM.nativeOriginalSource ∧
+    primeFieldFamily 0=Zeta23.CCM.nativeOriginalPrimeField ∧
+    (∀ d : ℕ, ∀ test : NativeCompactTest,
+      ((NativeGenerator.sourceDerivative d).act (primeFamilyCausalState 0)).applyTest test=
+        (primeFamilyCausalState d).applyTest test) :=
+  nativeWord_corrected_transform w rho hright history
+
+theorem expected_nativeWord_order_and_leading (w : NativeWord)
+    (rho : Zeta23.zetaZeroConfig.carrier) (hright : 1/2<(rho:ℂ).re)
+    (history : NativeWordHistory ((rho:ℂ)-1/2)) :
+    MeromorphicAt (nativeWordTransformedField w rho history) ((rho:ℂ)-1/2) ∧
+    meromorphicOrderAt (nativeWordCorrectedField w rho history) ((rho:ℂ)-1/2)=
+      (((wordCompletionCount w*zeroMult (rho:ℂ):ℕ):ℤ)-1:ℤ) ∧
+    (nativeWordCorrectedField w rho history =ᶠ[𝓝[≠] ((rho:ℂ)-1/2)]
+      fun z => (z-((rho:ℂ)-1/2))^
+        (((wordCompletionCount w*zeroMult (rho:ℂ):ℕ):ℤ)-1)*nativeWordGermFactor w rho hright z) ∧
+    AnalyticAt ℂ (nativeWordGermFactor w rho hright) ((rho:ℂ)-1/2) ∧
+    nativeWordGermFactor w rho hright ((rho:ℂ)-1/2)=
+      -(zeroMult (rho:ℂ):ℂ)*Zeta23.CCM.nativeOriginalSourceLaplace ((rho:ℂ)-1/2)*
+        wordUnitFactor w ((rho:ℂ)-1/2)*
+          (iteratedDeriv (zeroMult (rho:ℂ)) riemannZeta (rho:ℂ)/
+            ((zeroMult (rho:ℂ)).factorial:ℂ))^wordCompletionCount w ∧
+    nativeWordLeadingCoefficient w rho≠0 ∧
+    Tendsto (fun z => (z-((rho:ℂ)-1/2))^
+      (-(((wordCompletionCount w*zeroMult (rho:ℂ):ℕ):ℤ)-1))*
+        nativeWordCorrectedField w rho history z)
+      (𝓝[≠] ((rho:ℂ)-1/2)) (𝓝 (nativeWordLeadingCoefficient w rho)) ∧
+    (wordCompletionCount w=0 → Tendsto
+      (fun z => (z-((rho:ℂ)-1/2))*nativeWordCorrectedField w rho history z)
+      (𝓝[≠] ((rho:ℂ)-1/2)) (𝓝 (nativeWordLeadingCoefficient w rho))) :=
+  nativeWord_order_and_leading w rho hright history
+
+theorem expected_nativeWord_first_nonzero_derivative (w : NativeWord)
+    (rho : Zeta23.zetaZeroConfig.carrier) (hright : 1/2<(rho:ℂ).re)
+    (history : NativeWordHistory ((rho:ℂ)-1/2)) (hp : 0<wordCompletionCount w) :
+    (nativeWordCorrectedField w rho history =ᶠ[𝓝[≠] ((rho:ℂ)-1/2)]
+      nativeWordRegularRepresentative w rho hright) ∧
+    AnalyticAt ℂ (nativeWordRegularRepresentative w rho hright) ((rho:ℂ)-1/2) ∧
+    (∀ j : ℕ, j<wordCompletionCount w*zeroMult (rho:ℂ)-1 →
+      iteratedDeriv j (nativeWordRegularRepresentative w rho hright) ((rho:ℂ)-1/2)=0) ∧
+    iteratedDeriv (wordCompletionCount w*zeroMult (rho:ℂ)-1)
+      (nativeWordRegularRepresentative w rho hright) ((rho:ℂ)-1/2)=
+        ((wordCompletionCount w*zeroMult (rho:ℂ)-1).factorial:ℂ)*
+          (-(zeroMult (rho:ℂ):ℂ)*Zeta23.CCM.nativeOriginalSourceLaplace ((rho:ℂ)-1/2)*
+            wordUnitFactor w ((rho:ℂ)-1/2)*
+              (iteratedDeriv (zeroMult (rho:ℂ)) riemannZeta (rho:ℂ)/
+                ((zeroMult (rho:ℂ)).factorial:ℂ))^wordCompletionCount w) ∧
+    iteratedDeriv (wordCompletionCount w*zeroMult (rho:ℂ)-1)
+      (nativeWordRegularRepresentative w rho hright) ((rho:ℂ)-1/2)≠0 :=
+  nativeWord_first_nonzero_derivative w rho hright history hp
+
+theorem expected_nativeWord_factor_costs (w : NativeWord) (rho : Zeta23.zetaZeroConfig.carrier)
+    (hright : 1/2<(rho:ℂ).re) :
+    (∀ g : NativeGenerator, |Real.log ‖g.unitMultiplier ((rho:ℂ)-1/2)‖|≤
+      g.leadingLogCost ((rho:ℂ)-1/2)) ∧
+    |Real.log ‖nativeWordLeadingCoefficient w rho‖|≤
+      |Real.log ‖-(zeroMult (rho:ℂ):ℂ)*Zeta23.CCM.nativeOriginalSourceLaplace ((rho:ℂ)-1/2)‖|+
+        wordExplicitLogCost w ((rho:ℂ)-1/2)+(wordCompletionCount w:ℝ)*
+          |Real.log ‖iteratedDeriv (zeroMult (rho:ℂ)) riemannZeta (rho:ℂ)/
+            ((zeroMult (rho:ℂ)).factorial:ℂ)‖| ∧
+    (0<wordCompletionCount w → Real.log ‖iteratedDeriv (wordCompletionCount w*zeroMult (rho:ℂ)-1)
+      (nativeWordRegularRepresentative w rho hright) ((rho:ℂ)-1/2)‖-
+        Real.log ‖nativeWordLeadingCoefficient w rho‖=
+          Real.log ((wordCompletionCount w*zeroMult (rho:ℂ)-1).factorial:ℝ)) ∧
+    Real.log ((wordCompletionCount w*zeroMult (rho:ℂ)-1).factorial:ℝ)≤
+      (wordCompletionCount w*zeroMult (rho:ℂ)-1:ℕ)*
+        Real.log ((wordCompletionCount w*zeroMult (rho:ℂ)-1:ℕ)+2:ℝ) :=
+  nativeWord_factor_costs w rho hright
+
+example (w : NativeWord) (rho : Zeta23.zetaZeroConfig.carrier)
+    (hright : 1/2<(rho:ℂ).re) (history : NativeWordHistory ((rho:ℂ)-1/2)) (hp : 0<wordCompletionCount w)
+    (hdegree : wordCompletionCount w*zeroMult (rho:ℂ)=1) :
+    nativeWordRegularRepresentative w rho hright ((rho:ℂ)-1/2)≠0 := by
+  simpa only [hdegree,Nat.sub_self,iteratedDeriv_zero] using
+    (nativeWord_first_nonzero_derivative w rho hright history hp).2.2.2.2
+
+
+end Zeta23.OPICAFollowup.Validation
+
+open Complex Filter MeasureTheory
+open scoped Topology
+namespace Zeta23.OPICAFollowup.Validation
+
+example (rho : Zeta23.zetaZeroConfig.carrier) (hright : 1/2<(rho:ℂ).re)
+    (history : NativeWordHistory ((rho:ℂ)-1/2)) :
+    Tendsto (fun z => (z-((rho:ℂ)-1/2))*nativeWordCorrectedField [] rho history z)
+      (𝓝[≠] ((rho:ℂ)-1/2))
+      (𝓝 (-(zeroMult (rho:ℂ):ℂ)*Zeta23.CCM.nativeOriginalSourceLaplace ((rho:ℂ)-1/2))) := by
+  rcases nativeWord_order_and_leading [] rho hright history with ⟨_,_,_,_,_,_,_,hzero⟩
+  simpa only [nativeWordLeadingCoefficient,wordCompletionCount,wordUnitFactor,pow_zero,mul_one] using
+    hzero rfl
+
+example (Y : ℝ) (hY : 1≤Y) (r : ℕ) (z : ℂ) :
+    wordMultiplier [NativeGenerator.residualPowerReal Y r] z=
+      (1-riemannZeta (z+1/2)*truncatedMoebiusRealMultiplier Y z)^r := by
+  simp only [wordMultiplier,mul_one]
+  exact NativeGenerator.residualPowerReal_multiplier Y (by linarith) r z
+
+end Zeta23.OPICAFollowup.Validation
+
+
+open Filter Complex Set MeasureTheory
+open scoped Topology
+namespace Zeta23.OPICAFollowup.Validation
+
+/-- A common global continuation domain is sufficient for this additional
+    global statement and is not required by the local primary roots. -/
+theorem expected_nativeWord_global_continuation (w : NativeWord)
+    (rho : Zeta23.zetaZeroConfig.carrier)
+    (history : NativeWordHistory ((rho:ℂ)-1/2))
+    (D : NativeWordHistoryContinuationDomain w history) :
+    MeromorphicOn (nativeWordTransformedField w rho history) D.domain :=
+  nativeWordTransformedField_meromorphicOn w rho history D
+
+end Zeta23.OPICAFollowup.Validation
+
+open Complex Filter MeasureTheory
+open scoped Topology
+namespace Zeta23.OPICAFollowup.Validation
+
+example (rho : Zeta23.zetaZeroConfig.carrier) (hright : 1/2<(rho:ℂ).re)
+    (history : NativeWordHistory ((rho:ℂ)-1/2)) :
+    Tendsto (fun z => (z-((rho:ℂ)-1/2))*nativeWordCorrectedField [] rho history z)
+      (𝓝[≠] ((rho:ℂ)-1/2))
+      (𝓝 (-(zeroMult (rho:ℂ):ℂ)*Zeta23.CCM.nativeOriginalSourceLaplace ((rho:ℂ)-1/2))) := by
+  rcases nativeWord_order_and_leading [] rho hright history with ⟨_,_,_,_,_,_,_,hzero⟩
+  simpa only [nativeWordLeadingCoefficient,wordCompletionCount,wordUnitFactor,pow_zero,mul_one] using
+    hzero rfl
+
+example (Y : ℝ) (hY : 1≤Y) (r : ℕ) (z : ℂ) :
+    wordMultiplier [NativeGenerator.residualPowerReal Y r] z=
+      (1-riemannZeta (z+1/2)*truncatedMoebiusRealMultiplier Y z)^r := by
+  simp only [wordMultiplier,mul_one]
+  exact NativeGenerator.residualPowerReal_multiplier Y (by linarith) r z
+
+end Zeta23.OPICAFollowup.Validation
+
+
+
+
+open Filter Complex Set MeasureTheory Metric
+open scoped Topology BigOperators
+
+open Filter Complex Set MeasureTheory Metric
+open scoped Topology BigOperators
+namespace Zeta23.OPICAFollowup.Validation
+
+theorem expected_nativeWord_contour_consumer (w : NativeWord)
+    (rho : Zeta23.zetaZeroConfig.carrier) (hright : 1/2<(rho:ℂ).re)
+    (history : NativeWordHistory ((rho:ℂ)-1/2))
+    (raw correction recovery : ℂ → ℂ) (r Eraw Ecorrection Erecovery : ℝ)
+    (hr : 0<r)
+    (hg : MeromorphicAt (nativeWordObservedField raw correction recovery) ((rho:ℂ)-1/2))
+    (hfd : AnalyticOnNhd ℂ (nativeWordCorrectedField w rho history)
+      (closedBall ((rho:ℂ)-1/2) r \ {((rho:ℂ)-1/2)}))
+    (hgd : AnalyticOnNhd ℂ (nativeWordObservedField raw correction recovery)
+      (closedBall ((rho:ℂ)-1/2) r \ {((rho:ℂ)-1/2)}))
+    (hraw : ContourErrorBudget (nativeWordTransformedField w rho history) raw ((rho:ℂ)-1/2) r Eraw)
+    (hcorrection : ContourErrorBudget (wordCorrection w history) correction ((rho:ℂ)-1/2) r Ecorrection)
+    (hrecovery : ∀ z∈sphere ((rho:ℂ)-1/2) r, ‖recovery z‖≤Erecovery)
+    (hstrict : Eraw+Ecorrection+Erecovery<‖nativeWordLeadingCoefficient w rho‖*
+      r^(((wordCompletionCount w*zeroMult (rho:ℂ):ℕ):ℤ)-1)) :
+    (∃ S : ℝ, wordHistorySafeThreshold w history≤S ∧ 1/2≤S ∧ ∀ z : ℂ, S<z.re →
+      (∀ term∈nativeWordCausalState w rho history,
+        Integrable (fun t : ℝ => Complex.exp (-z*(t:ℂ))*term.regular t)) ∧
+      (nativeWordCausalState w rho history).laplace z=nativeWordTransformedField w rho history z) ∧
+    laurentObservedCoefficient (nativeWordCorrectedField w rho history) ((rho:ℂ)-1/2)
+      (nativeWordCorrectedField_meromorphicAt w rho hright history)
+        (((wordCompletionCount w*zeroMult (rho:ℂ):ℕ):ℤ)-1)=nativeWordLeadingCoefficient w rho ∧
+    ‖laurentObservedCoefficient (nativeWordObservedField raw correction recovery) ((rho:ℂ)-1/2) hg
+      (((wordCompletionCount w*zeroMult (rho:ℂ):ℕ):ℤ)-1)-nativeWordLeadingCoefficient w rho‖≤
+        r^(-(((wordCompletionCount w*zeroMult (rho:ℂ):ℕ):ℤ)-1))*(Eraw+Ecorrection+Erecovery) ∧
+    laurentObservedCoefficient (nativeWordObservedField raw correction recovery) ((rho:ℂ)-1/2) hg
+      (((wordCompletionCount w*zeroMult (rho:ℂ):ℕ):ℤ)-1)≠0 :=
+  nativeWord_contour_consumer w rho hright history raw correction recovery r Eraw Ecorrection Erecovery
+    hr hg hfd hgd hraw hcorrection hrecovery hstrict
+
+
+end Zeta23.OPICAFollowup.Validation
+
+
+
+
+
+#print axioms Zeta23.OPICAFollowup.nativeGenerator_transform
+#print axioms Zeta23.OPICAFollowup.forwardKernel_physical_laplace
+
+open Complex MeasureTheory
+namespace Zeta23.OPICAFollowup.Validation
+theorem expected_literal_forward_iteratedDeriv (d ell k : ℕ) {z : ℂ} (hz : 1/2<z.re) :
+    Integrable (fun t : ℝ => Complex.exp (-z*(t:ℂ))*
+      Complex.ofReal (iteratedDeriv k (forwardKernel d ell) t)) ∧
+    (∫ t : ℝ, Complex.exp (-z*(t:ℂ))*Complex.ofReal (iteratedDeriv k (forwardKernel d ell) t))=
+      z^k*(-sourceFamilyLaplace d z*riemannZeta (z+1/2)^ell*deriv riemannZeta (z+1/2)) :=
+  forwardKernel_iteratedDeriv_physical_laplace d ell k hz
+
+theorem expected_literal_forward_derivative_entire (d ell k : ℕ) (hd : ell≤d)
+    {z : ℂ} (hz : 1/2<z.re) :
+    (∫ t : ℝ, Complex.exp (-z*(t:ℂ))*Complex.ofReal (iteratedDeriv k (forwardKernel d ell) t))=
+      z^k*forwardKernelEntireContinuation d ell z :=
+  forwardKernel_iteratedDeriv_laplace_entire d ell k hd hz
+
+theorem expected_literal_forward_smooth_positive_gap (d ell k : ℕ) :
+    ContDiff ℝ (⊤ : ℕ∞) (forwardKernel d ell) ∧
+    0<Real.log 2-CCM.UniversalSinc.fixedScale ∧
+    (∀ t : ℝ, t<Real.log 2-CCM.UniversalSinc.fixedScale →
+      iteratedDeriv k (forwardKernel d ell) t=0) :=
+  ⟨forwardKernel_contDiff d ell,nativeCausalGap_pos,
+    fun _t ht => forwardKernel_iteratedDeriv_zero_before d ell k ht⟩
+
+end Zeta23.OPICAFollowup.Validation
+
+open Complex MeasureTheory
+namespace Zeta23.OPICAFollowup.Validation
+
+theorem expected_fractional_strip_zeta_control (a b : ℝ) :
+    ∃ C : ℝ, 0<C ∧ ∃ N : ℕ, ∀ (σ τ : ℝ), a≤σ → σ≤b → 2≤|τ| →
+      ‖riemannZeta ((σ:ℂ)+(τ:ℂ)*I)‖+‖deriv riemannZeta ((σ:ℂ)+(τ:ℂ)*I)‖ ≤
+        C*(1+|τ|)^N := zeta_fixed_strip_polynomial_value_derivative_bound a b
+
+theorem expected_positive_fractional_gamma_control :
+    ∃ C : ℝ, 0<C ∧ ∃ N : ℕ, ∀ (σ τ : ℝ), (1/2:ℝ)≤σ → σ≤2 →
+      ‖Complex.Gamma ((σ:ℂ)+I*(τ:ℂ))‖ ≤
+        C*(1+|τ|)^N*Real.exp (-(Real.pi*|τ|)/2) :=
+  gamma_positive_fixed_strip_exp_bound (by norm_num) (by norm_num)
+
+#print axioms expected_fractional_strip_zeta_control
+#print axioms expected_positive_fractional_gamma_control
+#print axioms bilateralLaplace_inverse
+#print axioms integer_contour_saddle_decay
+#print axioms norm_bilateralLaplace_inverse_le
+
+end Zeta23.OPICAFollowup.Validation
+
+
+noncomputable section
+open Complex MeasureTheory
+namespace Zeta23.OPICAFollowup.Validation
+
+theorem expected_forwardKernel_double_exp_decay (d ell k : ℕ) (hd : ell≤d) :
+    ∃ A c : ℝ, 0<A ∧ 0<c ∧ ∀ t : ℝ, 0≤t →
+      |iteratedDeriv k (forwardKernel d ell) t| ≤
+        A*Real.exp (-c*Real.exp (t/(2*((ell:ℝ)+1)))) :=
+  forwardKernel_double_exp_decay d ell k hd
+
+theorem expected_actual_integer_drive_double_exp_decay (d k : ℕ) :
+    ∃ A c : ℝ, 0<A ∧ 0<c ∧ ∀ t : ℝ, 0≤t →
+      |iteratedDeriv k (CCM.nativeIntegerDriveField (sourceOrderFamily d)) t| ≤
+        A*Real.exp (-c*Real.exp (t/2)) := by
+  simpa only [forwardKernel,integerDriveFamily,Nat.cast_zero,zero_add,mul_one] using
+    forwardKernel_double_exp_decay d 0 k (Nat.zero_le d)
+
+theorem expected_forward_all_derivatives_at_zero (d ell k : ℕ) :
+    iteratedDeriv k (forwardKernel d ell) 0=0 :=
+  forwardKernel_iteratedDeriv_zero_before d ell k nativeCausalGap_pos
+
+#print axioms forwardKernel_double_exp_decay
+#print axioms forwardKernel_iteratedDeriv_contour_formula
+#print axioms forwardKernel_iteratedDeriv_contour_norm
+#print axioms forwardEntire_fixed_strip_majorant
+#print axioms forwardEntire_vertical_line_shift
+#print axioms expected_forwardKernel_double_exp_decay
+#print axioms expected_actual_integer_drive_double_exp_decay
+#print axioms expected_forward_all_derivatives_at_zero
+
 end Zeta23.OPICAFollowup.Validation

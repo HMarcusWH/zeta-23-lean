@@ -3,6 +3,7 @@ import Zeta23.RHRC.OpicaTypeExprExport
 import Lean.Util.FoldConsts
 import Zeta23.RHRC.SourceCandidateResolution
 import Lean.Util.CollectAxioms
+import Lean.Meta.Eqns
 
 /-! AUDIT_ONLY source-bound enumeration of the implemented subset.
 The remaining planned roots are absent, never counted as proved. -/
@@ -145,13 +146,27 @@ private def opicaKind : ConstantInfo → String
   | .ctorInfo _ => "CONSTRUCTOR"
   | .recInfo _ => "RECURSOR"
 
+/-- Lean reserves these names for equations of an existing safe definition.
+The equation still receives the full public type, axiom and dependency audit. -/
+private def reservedEquationOrigin? (env : Environment) (name : Name)
+    (info : ConstantInfo) : Option Name := do
+  if opicaKind info != "THEOREM" then none else do
+    let (origin, suffix) ← Lean.Meta.declFromEqLikeName env name
+    if name == Lean.Meta.mkEqLikeNameFor env origin suffix then some origin else none
+
 run_cmd do
   let queries : Array SourceCandidateQuery := #[
     ({ sourceId := "OPICA_FOLLOWUP_SOURCEFAMILY_ZERO_EQ_ORIGINAL", moduleName := "Zeta23.OPICAFollowup.NativeSourceFamily", shortName := "Zeta23.OPICAFollowup.sourceFamily_zero_eq_original", sourceKind := "THEOREM" } : SourceCandidateQuery),
     ({ sourceId := "OPICA_FOLLOWUP_SOURCEFAMILY_SUPPORT_SMOOTH_MOMENTS", moduleName := "Zeta23.OPICAFollowup.NativeSourceFamily", shortName := "Zeta23.OPICAFollowup.sourceFamily_support_smooth_moments", sourceKind := "THEOREM" } : SourceCandidateQuery),
     ({ sourceId := "OPICA_FOLLOWUP_SOURCEFAMILY_LAPLACE_IDENTITY", moduleName := "Zeta23.OPICAFollowup.NativeSourceTransforms", shortName := "Zeta23.OPICAFollowup.sourceFamily_laplace_identity", sourceKind := "THEOREM" } : SourceCandidateQuery),
+    ({ sourceId := "OPICA_FOLLOWUP_FORWARDKERNEL_PHYSICAL_LAPLACE", moduleName := "Zeta23.OPICAFollowup.NativeSourceTransforms", shortName := "Zeta23.OPICAFollowup.forwardKernel_physical_laplace", sourceKind := "THEOREM" } : SourceCandidateQuery),
     ({ sourceId := "OPICA_FOLLOWUP_NATIVEPRIMEFIELD_VISIBLEPOLE", moduleName := "Zeta23.OPICAFollowup.NativeSourceTransforms", shortName := "Zeta23.OPICAFollowup.nativePrimeField_visiblePole", sourceKind := "THEOREM" } : SourceCandidateQuery),
+    ({ sourceId := "OPICA_FOLLOWUP_NATIVEGENERATOR_TRANSFORM", moduleName := "Zeta23.OPICAFollowup.NativeFilters", shortName := "Zeta23.OPICAFollowup.nativeGenerator_transform", sourceKind := "THEOREM" } : SourceCandidateQuery),
     ({ sourceId := "OPICA_FOLLOWUP_NATIVEGENERATOR_UNIT_OR_COMPLETION", moduleName := "Zeta23.OPICAFollowup.NativeFilters", shortName := "Zeta23.OPICAFollowup.nativeGenerator_unit_or_completion", sourceKind := "THEOREM" } : SourceCandidateQuery),
+    ({ sourceId := "OPICA_FOLLOWUP_NATIVEWORD_CORRECTED_TRANSFORM", moduleName := "Zeta23.OPICAFollowup.NativeTransformationWords", shortName := "Zeta23.OPICAFollowup.nativeWord_corrected_transform", sourceKind := "THEOREM" } : SourceCandidateQuery),
+    ({ sourceId := "OPICA_FOLLOWUP_NATIVEWORD_ORDER_AND_LEADING", moduleName := "Zeta23.OPICAFollowup.NativeTransformationWords", shortName := "Zeta23.OPICAFollowup.nativeWord_order_and_leading", sourceKind := "THEOREM" } : SourceCandidateQuery),
+    ({ sourceId := "OPICA_FOLLOWUP_NATIVEWORD_FIRST_NONZERO_DERIVATIVE", moduleName := "Zeta23.OPICAFollowup.NativeTransformationWords", shortName := "Zeta23.OPICAFollowup.nativeWord_first_nonzero_derivative", sourceKind := "THEOREM" } : SourceCandidateQuery),
+    ({ sourceId := "OPICA_FOLLOWUP_NATIVEWORD_FACTOR_COSTS", moduleName := "Zeta23.OPICAFollowup.NativeTransformationWords", shortName := "Zeta23.OPICAFollowup.nativeWord_factor_costs", sourceKind := "THEOREM" } : SourceCandidateQuery),
     ({ sourceId := "OPICA_FOLLOWUP_NORM_FIRST_LOG_COMPARISON", moduleName := "Zeta23.OPICAFollowup.NormFirstTransfer", shortName := "Zeta23.OPICAFollowup.norm_first_log_comparison", sourceKind := "THEOREM" } : SourceCandidateQuery),
     ({ sourceId := "OPICA_FOLLOWUP_NORM_FIRST_RATE_TRANSFER", moduleName := "Zeta23.OPICAFollowup.NormFirstTransfer", shortName := "Zeta23.OPICAFollowup.norm_first_rate_transfer", sourceKind := "THEOREM" } : SourceCandidateQuery),
     ({ sourceId := "OPICA_FOLLOWUP_ENERGY_ALLOCATION_BOUND", moduleName := "Zeta23.OPICAFollowup.NormFirstTransfer", shortName := "Zeta23.OPICAFollowup.energy_allocation_bound", sourceKind := "THEOREM" } : SourceCandidateQuery),
@@ -163,14 +178,18 @@ run_cmd do
     ({ sourceId := "OPICA_FOLLOWUP_RECOVERY_SUBEXP_BUDGET", moduleName := "Zeta23.OPICAFollowup.JointObservation", shortName := "Zeta23.OPICAFollowup.recovery_subexp_budget", sourceKind := "THEOREM" } : SourceCandidateQuery),
     ({ sourceId := "OPICA_FOLLOWUP_LAURENT_COEFFICIENT_ERROR_BOUND", moduleName := "Zeta23.OPICAFollowup.RobustLaurent", shortName := "Zeta23.OPICAFollowup.laurent_coefficient_error_bound", sourceKind := "THEOREM" } : SourceCandidateQuery),
     ({ sourceId := "OPICA_FOLLOWUP_LAURENT_OBSERVATION_SURVIVES", moduleName := "Zeta23.OPICAFollowup.RobustLaurent", shortName := "Zeta23.OPICAFollowup.laurent_observation_survives", sourceKind := "THEOREM" } : SourceCandidateQuery),
+    ({ sourceId := "OPICA_FOLLOWUP_NATIVEWORD_CONTOUR_CONSUMER", moduleName := "Zeta23.OPICAFollowup.RobustLaurent", shortName := "Zeta23.OPICAFollowup.nativeWord_contour_consumer", sourceKind := "THEOREM" } : SourceCandidateQuery),
     ({ sourceId := "OPICA_FOLLOWUP_SOURCE_PRODUCT_VERTICAL_BOUND", moduleName := "Zeta23.OPICAFollowup.SourceVerticalBounds", shortName := "Zeta23.OPICAFollowup.source_product_vertical_bound", sourceKind := "THEOREM" } : SourceCandidateQuery),
     ({ sourceId := "OPICA_FOLLOWUP_ZETA_LEFT_LINE_UNIFORM_BOUND", moduleName := "Zeta23.OPICAFollowup.ZetaLeftLineBounds", shortName := "Zeta23.OPICAFollowup.zeta_left_line_uniform_bound", sourceKind := "THEOREM" } : SourceCandidateQuery),
     ({ sourceId := "OPICA_FOLLOWUP_FORWARDKERNEL_LEFT_CONTOUR_BUDGET", moduleName := "Zeta23.OPICAFollowup.ForwardLocalization", shortName := "Zeta23.OPICAFollowup.forwardKernel_left_contour_budget", sourceKind := "THEOREM" } : SourceCandidateQuery),
+    ({ sourceId := "OPICA_FOLLOWUP_FORWARDKERNEL_DOUBLE_EXP_DECAY", moduleName := "Zeta23.OPICAFollowup.ForwardLocalization", shortName := "Zeta23.OPICAFollowup.forwardKernel_double_exp_decay", sourceKind := "THEOREM" } : SourceCandidateQuery),
     ({ sourceId := "OPICA_FOLLOWUP_NATIVE_BINOMIAL_INVERSE_IDENTITY", moduleName := "Zeta23.OPICAFollowup.BalancedCoefficients", shortName := "Zeta23.OPICAFollowup.native_binomial_inverse_identity", sourceKind := "THEOREM" } : SourceCandidateQuery),
     ({ sourceId := "OPICA_FOLLOWUP_BALANCED_COEFF_DIVISOR_BOUND", moduleName := "Zeta23.OPICAFollowup.BalancedCoefficients", shortName := "Zeta23.OPICAFollowup.balanced_coeff_divisor_bound", sourceKind := "THEOREM" } : SourceCandidateQuery),
     ({ sourceId := "OPICA_FOLLOWUP_NATIVE_ZERO_COUNT_SUMMABILITY", moduleName := "Zeta23.OPICAFollowup.NativeExplicitFormula", shortName := "Zeta23.OPICAFollowup.native_zero_count_summability", sourceKind := "THEOREM" } : SourceCandidateQuery),
     ({ sourceId := "OPICA_FOLLOWUP_NATIVE_SOURCE_EXPLICIT_FORMULA", moduleName := "Zeta23.OPICAFollowup.NativeExplicitFormula", shortName := "Zeta23.OPICAFollowup.native_source_explicit_formula", sourceKind := "THEOREM" } : SourceCandidateQuery),
     ({ sourceId := "OPICA_FOLLOWUP_NATIVE_ZERO_SUP_BOUNDS", moduleName := "Zeta23.OPICAFollowup.NativeExplicitFormula", shortName := "Zeta23.OPICAFollowup.native_zero_sup_bounds", sourceKind := "THEOREM" } : SourceCandidateQuery),
+    ({ sourceId := "OPICA_FOLLOWUP_SOURCE_ORDER_UNIFORM_NORMS", moduleName := "Zeta23.OPICAFollowup.UniformSourceBounds", shortName := "Zeta23.OPICAFollowup.source_order_uniform_norms", sourceKind := "THEOREM" } : SourceCandidateQuery),
+    ({ sourceId := "OPICA_FOLLOWUP_NATIVE_FIELD_THETA_ENVELOPE", moduleName := "Zeta23.OPICAFollowup.UniformSourceBounds", shortName := "Zeta23.OPICAFollowup.native_field_theta_envelope", sourceKind := "THEOREM" } : SourceCandidateQuery),
     ({ sourceId := "OPICA_FOLLOWUP_COUPLED_GRAM_COLLISION_CONTROL", moduleName := "Zeta23.OPICAFollowup.Counterexamples", shortName := "Zeta23.OPICAFollowup.coupled_gram_collision_control", sourceKind := "THEOREM" } : SourceCandidateQuery),
     ({ sourceId := "OPICA_FOLLOWUP_NORM_FIRST_STRICTLY_WEAKER_CONTROL", moduleName := "Zeta23.OPICAFollowup.Counterexamples", shortName := "Zeta23.OPICAFollowup.norm_first_strictly_weaker_control", sourceKind := "THEOREM" } : SourceCandidateQuery),
     ({ sourceId := "OPICA_FOLLOWUP_HISTORY_RECOVERY_COST_CONTROL", moduleName := "Zeta23.OPICAFollowup.Counterexamples", shortName := "Zeta23.OPICAFollowup.history_recovery_cost_control", sourceKind := "THEOREM" } : SourceCandidateQuery),
@@ -186,19 +205,22 @@ run_cmd do
     "Zeta23.OPICAFollowup.NativeFilters",
     "Zeta23.OPICAFollowup.NativeSourceFamily",
     "Zeta23.OPICAFollowup.NativeSourceTransforms",
+    "Zeta23.OPICAFollowup.NativeTransformationWords",
     "Zeta23.OPICAFollowup.NormFirstTransfer",
     "Zeta23.OPICAFollowup.RobustLaurent",
     "Zeta23.OPICAFollowup.SourceVerticalBounds",
+    "Zeta23.OPICAFollowup.UniformSourceBounds",
     "Zeta23.OPICAFollowup.ZetaLeftLineBounds"]
   let mut names : Array Name := #[]
   for (name, info) in env.constants.toList do
     if let some index := env.getModuleIdxFor? name then
       let definingModule := env.allImportedModuleNames[index.toNat]!
       if mathematicalModules.contains definingModule.toString && !name.isInternal && !isPrivateName name then
-        -- Lean may cache a generated congruence theorem in this module under
-        -- the constructor's original namespace. Include it in every audit.
+        -- Lean may cache generated equations or congruence theorems under the
+        -- reused definition's original namespace. Include them in every audit.
         unless name.toString.startsWith "Zeta23.OPICAFollowup." ||
-            (name.toString.endsWith ".congr_simp" && opicaKind info == "THEOREM") do
+            (name.toString.endsWith ".congr_simp" && opicaKind info == "THEOREM") ||
+            (reservedEquationOrigin? env name info).isSome do
           throwError "Public mathematical declaration escaped OPICA namespace: {name} in {definingModule}"
         names := names.push name
   names := names.qsort (fun a b => a.toString < b.toString)
@@ -216,6 +238,8 @@ run_cmd do
       unless ax == ``propext || ax == ``Classical.choice || ax == ``Quot.sound do
         throwError "OPICA unadmitted mathematical axiom: {name} uses {ax}"
     let axiomText := String.intercalate "," (axioms.toList.map Name.toString)
+    if let some origin := reservedEquationOrigin? env name info then
+      liftIO <| IO.println s!"OPICA_FOLLOWUP_GENERATED_EQUATION\t{name}\t{origin}"
     liftIO <| IO.println s!"OPICA_FOLLOWUP_DECL\t{name}\t{moduleName}\t{opicaKind info}\t{typeDag}\t{axiomText}"
     match info with
     | .inductInfo data =>

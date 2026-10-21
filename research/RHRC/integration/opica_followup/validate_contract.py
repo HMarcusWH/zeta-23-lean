@@ -62,10 +62,20 @@ DEPENDENCY_REFINEMENTS = {
         'Zeta23.RvM.LocalCount', 'Zeta23.WeilEF.Main', 'Zeta23.OPICAFollowup.NativeSourceTransforms',
         'Zeta23.CCM.DictionaryArchSourceBridge', 'Zeta23.GammaFacts.Complete'],
     'Zeta23.OPICAFollowup.ZetaLeftLineBounds': [
-        'Zeta23.GammaFacts.Complete', 'Zeta23.Analytic.Stirling', 'Zeta23.WeilEF.VerticalLine',
+        'Zeta23.RvM.ZetaGrowth', 'Zeta23.GammaFacts.Complete', 'Zeta23.Analytic.Stirling', 'Zeta23.WeilEF.VerticalLine',
         'Zeta23.OPICAFollowup.SourceVerticalBounds'],
+    'Zeta23.OPICAFollowup.NativeFilters': [
+        'Zeta23.OPICAFollowup.NativeSourceTransforms', 'Zeta23.OPICA.NativeArithmeticAdapter',
+        'Zeta23.CCM.NativeCompactTranslateCalculus'],
+    'Zeta23.OPICAFollowup.NativeTransformationWords': [
+        'Zeta23.OPICAFollowup.NativeFilters', 'Zeta23.OPICA.LocalObstruction'],
+    'Zeta23.OPICAFollowup.UniformSourceBounds': [
+        'Zeta23.OPICAFollowup.NativeExplicitFormula', 'Zeta23.OPICAFollowup.SourceVerticalBounds',
+        'Zeta23.CCM.UniversalSincInverseGevreyBounds', 'Zeta23.CCM.NativeAbelDiscrepancy',
+        'Zeta23.CCM.OriginalSincDriveLp'],
 }
 DEPENDENCY_V1_SHA256 = '32f2c2e57743f5c1a98176ac64f3b2671e8c45f8355361130ff0271361105a91'
+DEPENDENCY_V2_SHA256 = '54aa023b5d2c483abab95b696381ad7ce6eaeb7a1b17e66c2ce80eee2aed78e7'
 
 
 def dependency_amendment_errors(register: dict, manifest: dict, root: Path = REPO) -> list[str]:
@@ -78,9 +88,9 @@ def dependency_amendment_errors(register: dict, manifest: dict, root: Path = REP
     amendment = register.get('implementation_dependency_amendment', {})
     required = {
         'schema': 'OPICA_IMPLEMENTATION_DEPENDENCY_AMENDMENT_V1',
-        'id': 'DEP_2026_10_21_02',
-        'supersedes': 'DEP_2026_10_21_01',
-        'previous_amendment_sha256': DEPENDENCY_V1_SHA256,
+        'id': 'DEP_2026_10_21_03',
+        'supersedes': 'DEP_2026_10_21_02',
+        'previous_amendment_sha256': DEPENDENCY_V2_SHA256,
         'status': 'IMPLEMENTATION_ONLY_NO_MATHEMATICAL_SCOPE_CHANGE',
         'frozen_manifest_sha256': FROZEN_SPEC['BUILD_MANIFEST.json'],
         'frozen_public_roots_sha256': FROZEN_SPEC['PUBLIC_ROOTS.json'],
@@ -92,9 +102,10 @@ def dependency_amendment_errors(register: dict, manifest: dict, root: Path = REP
         if amendment.get(key) != value:
             errors.append('implementation dependency amendment changed: ' + key)
     history = register.get('implementation_dependency_history', [])
-    if (not isinstance(history, list) or len(history) != 1
-            or hashlib.sha256(json.dumps(history[0], sort_keys=True, separators=(',', ':'),
-                ensure_ascii=False).encode('utf-8')).hexdigest() != DEPENDENCY_V1_SHA256):
+    if (not isinstance(history, list) or len(history) != 2
+            or any(hashlib.sha256(json.dumps(row, sort_keys=True, separators=(',', ':'),
+                ensure_ascii=False).encode('utf-8')).hexdigest() != expected
+                for row, expected in zip(history, [DEPENDENCY_V1_SHA256, DEPENDENCY_V2_SHA256]))):
         errors.append('previous dependency amendment missing or changed')
     rows = amendment.get('rows', [])
     if (not isinstance(rows, list) or len(rows) != len(DEPENDENCY_REFINEMENTS)

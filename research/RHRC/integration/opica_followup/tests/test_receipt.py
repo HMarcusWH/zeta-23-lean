@@ -66,9 +66,46 @@ class DependencyReceiptTests(unittest.TestCase):
         self.reject()
 
     def test_all_implemented_roots_remain_original_names(self):
-        self.assertEqual(len(receipt.IMPLEMENTED_ROOT_NAMES), 28)
+        self.assertEqual(len(receipt.IMPLEMENTED_ROOT_NAMES), 38)
         self.assertTrue(all(name.startswith('Zeta23.OPICAFollowup.')
                             for name in receipt.IMPLEMENTED_ROOT_NAMES))
+
+
+class GeneratedEquationTests(unittest.TestCase):
+    def setUp(self):
+        self.origin = 'Zeta23.CCM.nativeOriginalPrimeField'
+        self.name = self.origin + '.eq_1'
+        self.equations = {self.name: self.origin}
+        self.declarations = {self.name: {'kind': 'THEOREM'}}
+        self.channels = {(self.name, 'TYPE'): [self.origin]}
+        self.nodes = {self.origin: ('Zeta23.CCM.OriginalSincNativeSource', 'DEFINITION', '0')}
+
+    def check(self):
+        receipt.validate_generated_equations(self.equations, self.declarations, self.channels, self.nodes)
+
+    def test_reserved_equation_receives_complete_audit(self):
+        self.check()
+
+    def test_arbitrary_foreign_name_is_not_a_generated_equation(self):
+        self.equations = {'Zeta23.CCM.hiddenPremise': self.origin}
+        self.declarations['Zeta23.CCM.hiddenPremise'] = {'kind': 'THEOREM'}
+        with self.assertRaises(ValueError):
+            self.check()
+
+    def test_reserved_suffix_alone_is_insufficient(self):
+        self.channels[(self.name, 'TYPE')] = []
+        with self.assertRaises(ValueError):
+            self.check()
+
+    def test_generated_equation_cannot_be_a_project_axiom(self):
+        self.declarations[self.name]['kind'] = 'AXIOM'
+        with self.assertRaises(ValueError):
+            self.check()
+
+    def test_original_definition_cannot_escape_dependency_audit(self):
+        self.nodes = {}
+        with self.assertRaises(ValueError):
+            self.check()
 
 
 if __name__ == '__main__':

@@ -21,9 +21,9 @@ from lean_expr_dag import validate_expression
 ALLOWED_AXIOMS = {'propext', 'Classical.choice', 'Quot.sound'}
 SHA40 = re.compile(r'[0-9a-f]{40}\Z')
 SHA256 = re.compile(r'[0-9a-f]{64}\Z')
-MATHEMATICAL_MODULES = frozenset(['Zeta23.OPICAFollowup.BalancedCoefficients', 'Zeta23.OPICAFollowup.Counterexamples', 'Zeta23.OPICAFollowup.ForwardLocalization', 'Zeta23.OPICAFollowup.JointObservation', 'Zeta23.OPICAFollowup.NativeExplicitFormula', 'Zeta23.OPICAFollowup.NativeFilters', 'Zeta23.OPICAFollowup.NativeSourceFamily', 'Zeta23.OPICAFollowup.NativeSourceTransforms', 'Zeta23.OPICAFollowup.NormFirstTransfer', 'Zeta23.OPICAFollowup.RobustLaurent', 'Zeta23.OPICAFollowup.SourceVerticalBounds', 'Zeta23.OPICAFollowup.ZetaLeftLineBounds'])
+MATHEMATICAL_MODULES = frozenset(['Zeta23.OPICAFollowup.BalancedCoefficients', 'Zeta23.OPICAFollowup.Counterexamples', 'Zeta23.OPICAFollowup.ForwardLocalization', 'Zeta23.OPICAFollowup.JointObservation', 'Zeta23.OPICAFollowup.NativeExplicitFormula', 'Zeta23.OPICAFollowup.NativeFilters', 'Zeta23.OPICAFollowup.NativeSourceFamily', 'Zeta23.OPICAFollowup.NativeSourceTransforms', 'Zeta23.OPICAFollowup.NativeTransformationWords', 'Zeta23.OPICAFollowup.NormFirstTransfer', 'Zeta23.OPICAFollowup.RobustLaurent', 'Zeta23.OPICAFollowup.SourceVerticalBounds', 'Zeta23.OPICAFollowup.UniformSourceBounds', 'Zeta23.OPICAFollowup.ZetaLeftLineBounds'])
 
-IMPLEMENTED_ROOT_NAMES = frozenset(['Zeta23.OPICAFollowup.approx_compatibility_left_null', 'Zeta23.OPICAFollowup.balanced_coeff_divisor_bound', 'Zeta23.OPICAFollowup.coupled_gram_collision_control', 'Zeta23.OPICAFollowup.energy_allocation_bound', 'Zeta23.OPICAFollowup.energy_allocation_rate_lower', 'Zeta23.OPICAFollowup.forced_positive_gram_nonreal_control', 'Zeta23.OPICAFollowup.forwardKernel_left_contour_budget', 'Zeta23.OPICAFollowup.history_recovery_cost_control', 'Zeta23.OPICAFollowup.joint_recovery_iff', 'Zeta23.OPICAFollowup.joint_recovery_noise_bound', 'Zeta23.OPICAFollowup.joint_recovery_optimal_norm', 'Zeta23.OPICAFollowup.laurent_coefficient_error_bound', 'Zeta23.OPICAFollowup.laurent_observation_survives', 'Zeta23.OPICAFollowup.nativeGenerator_unit_or_completion', 'Zeta23.OPICAFollowup.nativePrimeField_visiblePole', 'Zeta23.OPICAFollowup.native_binomial_inverse_identity', 'Zeta23.OPICAFollowup.native_source_explicit_formula', 'Zeta23.OPICAFollowup.native_zero_count_summability', 'Zeta23.OPICAFollowup.native_zero_sup_bounds', 'Zeta23.OPICAFollowup.norm_first_log_comparison', 'Zeta23.OPICAFollowup.norm_first_rate_transfer', 'Zeta23.OPICAFollowup.norm_first_strictly_weaker_control', 'Zeta23.OPICAFollowup.recovery_subexp_budget', 'Zeta23.OPICAFollowup.sourceFamily_laplace_identity', 'Zeta23.OPICAFollowup.sourceFamily_support_smooth_moments', 'Zeta23.OPICAFollowup.sourceFamily_zero_eq_original', 'Zeta23.OPICAFollowup.source_product_vertical_bound', 'Zeta23.OPICAFollowup.zeta_left_line_uniform_bound'])
+IMPLEMENTED_ROOT_NAMES = frozenset(['Zeta23.OPICAFollowup.approx_compatibility_left_null', 'Zeta23.OPICAFollowup.balanced_coeff_divisor_bound', 'Zeta23.OPICAFollowup.coupled_gram_collision_control', 'Zeta23.OPICAFollowup.energy_allocation_bound', 'Zeta23.OPICAFollowup.energy_allocation_rate_lower', 'Zeta23.OPICAFollowup.forced_positive_gram_nonreal_control', 'Zeta23.OPICAFollowup.forwardKernel_double_exp_decay', 'Zeta23.OPICAFollowup.forwardKernel_left_contour_budget', 'Zeta23.OPICAFollowup.forwardKernel_physical_laplace', 'Zeta23.OPICAFollowup.history_recovery_cost_control', 'Zeta23.OPICAFollowup.joint_recovery_iff', 'Zeta23.OPICAFollowup.joint_recovery_noise_bound', 'Zeta23.OPICAFollowup.joint_recovery_optimal_norm', 'Zeta23.OPICAFollowup.laurent_coefficient_error_bound', 'Zeta23.OPICAFollowup.laurent_observation_survives', 'Zeta23.OPICAFollowup.nativeGenerator_transform', 'Zeta23.OPICAFollowup.nativeGenerator_unit_or_completion', 'Zeta23.OPICAFollowup.nativePrimeField_visiblePole', 'Zeta23.OPICAFollowup.nativeWord_contour_consumer', 'Zeta23.OPICAFollowup.nativeWord_corrected_transform', 'Zeta23.OPICAFollowup.nativeWord_factor_costs', 'Zeta23.OPICAFollowup.nativeWord_first_nonzero_derivative', 'Zeta23.OPICAFollowup.nativeWord_order_and_leading', 'Zeta23.OPICAFollowup.native_binomial_inverse_identity', 'Zeta23.OPICAFollowup.native_field_theta_envelope', 'Zeta23.OPICAFollowup.native_source_explicit_formula', 'Zeta23.OPICAFollowup.native_zero_count_summability', 'Zeta23.OPICAFollowup.native_zero_sup_bounds', 'Zeta23.OPICAFollowup.norm_first_log_comparison', 'Zeta23.OPICAFollowup.norm_first_rate_transfer', 'Zeta23.OPICAFollowup.norm_first_strictly_weaker_control', 'Zeta23.OPICAFollowup.recovery_subexp_budget', 'Zeta23.OPICAFollowup.sourceFamily_laplace_identity', 'Zeta23.OPICAFollowup.sourceFamily_support_smooth_moments', 'Zeta23.OPICAFollowup.sourceFamily_zero_eq_original', 'Zeta23.OPICAFollowup.source_order_uniform_norms', 'Zeta23.OPICAFollowup.source_product_vertical_bound', 'Zeta23.OPICAFollowup.zeta_left_line_uniform_bound'])
 
 
 def require(condition, description):
@@ -89,6 +89,9 @@ def validate_compiler_records(receipt, expected_roots=()):
     """Revalidate serialized evidence without trusting its stored type hashes."""
     records = receipt['declarations']
     require(isinstance(records,list) and bool(records), 'empty or malformed public declaration inventory')
+    equations = receipt.get('generated_equations', {})
+    require(isinstance(equations,dict) and all(isinstance(name,str) and isinstance(origin,str)
+        for name,origin in equations.items()), 'malformed generated equation provenance')
     declarations = {}
     kinds = {'DEFINITION','THEOREM','OPAQUE','QUOTIENT','INDUCTIVE','CONSTRUCTOR','RECURSOR'}
     for record in records:
@@ -98,7 +101,8 @@ def validate_compiler_records(receipt, expected_roots=()):
         require(isinstance(name,str) and name not in declarations, 'invalid or duplicate public declaration')
         require(module in MATHEMATICAL_MODULES, 'foreign defining module')
         require(kind in kinds, 'unadmitted public declaration kind')
-        require(name.startswith('Zeta23.OPICAFollowup.') or (kind=='THEOREM' and name.endswith('.congr_simp')),
+        require(name.startswith('Zeta23.OPICAFollowup.') or
+            (kind=='THEOREM' and (name.endswith('.congr_simp') or name in equations)),
             'foreign declaration namespace')
         axioms = record['axioms']
         require(isinstance(axioms,list) and all(isinstance(ax,str) for ax in axioms)
@@ -127,6 +131,9 @@ def validate_compiler_records(receipt, expected_roots=()):
         'constructor inventory differs from public constructor declarations')
     validate_dependency_closure(records,receipt['dependency_declarations'],receipt['dependencies'])
     channels = {(item['source'],item['channel']):item['targets'] for item in receipt['dependencies']}
+    validate_generated_equations(equations,declarations,channels,
+        {row['name']:(row['module'],row['kind'],'1' if row['internal'] else '0')
+            for row in receipt['dependency_declarations']})
     for node in receipt['dependency_declarations']:
         if node['module'] in MATHEMATICAL_MODULES and not node['internal']:
             require(node['name'] in declarations, 'public mathematical dependency escaped enumeration: '+node['name'])
@@ -140,8 +147,22 @@ def validate_compiler_records(receipt, expected_roots=()):
         require(name in channels[family,'STRUCTURE'], 'constructor missing from inductive structural family')
 
 
+def validate_generated_equations(equations, declarations, channels, dependency_declarations):
+    """Reserved equation names are audited helpers, never additional roots."""
+    for name, origin in equations.items():
+        require(name in declarations and declarations[name]['kind'] == 'THEOREM',
+                'generated equation lacks public theorem audit')
+        require(re.fullmatch(re.escape(origin) + r'\.(?:eq_[0-9]+|eq_def|eq_unfold)', name) is not None,
+                'generated equation has noncanonical reserved name')
+        require(origin in channels.get((name, 'TYPE'), []),
+                'generated equation type does not reference its original definition')
+        require(origin in dependency_declarations and dependency_declarations[origin][1] == 'DEFINITION',
+                'generated equation origin is not an audited definition')
+
+
 def parse_compiler_output(text, expected_roots):
     declarations, constructors, candidates, channels, dependency_declarations = {}, {}, {}, {}, {}
+    generated_equations = {}
     count, complete = None, None
     for root in expected_roots:
         require(root['full_name'].startswith('Zeta23.OPICAFollowup.'), 'foreign primary root namespace')
@@ -159,7 +180,8 @@ def parse_compiler_output(text, expected_roots):
             # public helpers with the same type, axiom and dependency audits;
             # the exception never applies to primary root identities.
             generated_congruence = kind == 'THEOREM' and name.endswith('.congr_simp')
-            require(name.startswith('Zeta23.OPICAFollowup.') or generated_congruence,
+            generated_equation = kind == 'THEOREM' and name in generated_equations
+            require(name.startswith('Zeta23.OPICAFollowup.') or generated_congruence or generated_equation,
                 'foreign declaration namespace')
             metrics = validate_expression(expression)
             axioms = axioms_raw.split(',') if axioms_raw else []
@@ -169,6 +191,12 @@ def parse_compiler_output(text, expected_roots):
             declarations[name] = {'name':name, 'module':module, 'kind':kind,
                 'type_expression':json.loads(expression), 'type_metrics':metrics,
                 'type_sha256':hashlib.sha256(expression.encode()).hexdigest(), 'axioms':axioms}
+        elif line.startswith('OPICA_FOLLOWUP_GENERATED_EQUATION\t'):
+            parts = line.split('\t')
+            require(len(parts) == 3 and all(parts[1:]), 'malformed generated equation provenance')
+            _, name, origin = parts
+            require(name not in generated_equations, 'duplicate generated equation provenance')
+            generated_equations[name] = origin
         elif line.startswith('OPICA_FOLLOWUP_CONSTRUCTOR\t'):
             parts = line.split('\t')
             require(len(parts) == 4, 'malformed constructor')
@@ -226,7 +254,9 @@ def parse_compiler_output(text, expected_roots):
         record['full_type'] = candidate['full_type']
         if 'expected_type_sha256' in root:
             require(record['type_sha256'] == root['expected_type_sha256'], 'reviewed expected type changed: '+name)
+    validate_generated_equations(generated_equations, declarations, channels, dependency_declarations)
     result = {'declarations':list(declarations.values()), 'constructors':constructors,
+        'generated_equations':generated_equations,
         'dependency_declarations':[{'name':name,'module':module,'kind':kind,'internal':internal == '1'}
             for name,(module,kind,internal) in sorted(dependency_declarations.items())],
         'dependencies':[{'source':source,'channel':channel,'targets':targets}
@@ -277,17 +307,19 @@ def main():
             'frozen public root inventory changed')
     public = json.loads(root_bytes)['roots']
     roots = [row for row in public if row['full_name'] in IMPLEMENTED_ROOT_NAMES]
-    require(len(roots) == 28 and len({r['id'] for r in roots}) == 28,
-            'exact twenty-eight-root implemented subset required')
+    require(len(roots) == 38 and len({r['id'] for r in roots}) == 38,
+            'exact thirty-eight-root implemented subset required')
     before = source_manifest()
     records = []
     environment = os.environ.copy()
     environment['LEAN_NUM_THREADS'] = '2'
     for label, command in [
         ('version', [args.lake, 'env', 'lean', '--version']),
-        ('build', [args.lake, 'build', 'Zeta23.OPICAFollowup.Validation',
-                   'Zeta23.RHRC.OpicaFollowupBindings']),
-        ('export', [args.lake, 'env', 'lean', 'Zeta23/RHRC/OpicaFollowupBindings.lean'])]:
+        ('build', [args.lake, 'build', 'Zeta23.OPICAFollowup.Validation']),
+        # Compile the exporter once, emitting both its checked object and full
+        # protocol. Building it first would repeat the same expensive traversal.
+        ('export', [args.lake, 'env', 'lean', 'Zeta23/RHRC/OpicaFollowupBindings.lean',
+                    '-o', str(output / 'OpicaFollowupBindings.olean')])]:
         process = subprocess.run(command, cwd=REPO, env=environment, stdout=subprocess.PIPE,
                                  stderr=subprocess.STDOUT, timeout=3600)
         log = output / (label + '.log')
@@ -312,6 +344,8 @@ def main():
               'source_manifest': before,
               'source_manifest_sha256': hashlib.sha256(json.dumps(before, sort_keys=True).encode()).hexdigest(),
               'commands': records, 'implemented_primary_roots': [r['full_name'] for r in roots],
+              'compiled_export_sha256': hashlib.sha256(
+                  (output / 'OpicaFollowupBindings.olean').read_bytes()).hexdigest(),
               'missing_primary_roots': missing, 'full_primary_count': len(public),
               'type_review': 'Explicit expected-type consumers compiled; agent review is not independent human review',
               'independent_human_review': 'NOT_ESTABLISHED', 'RH': 'OPEN', 'Step4': 'OPEN', **parsed}
