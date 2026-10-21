@@ -5928,6 +5928,9 @@
   "implemented_root_names": [
     "Zeta23.OPICAFollowup.sourceFamily_zero_eq_original",
     "Zeta23.OPICAFollowup.sourceFamily_support_smooth_moments",
+    "Zeta23.OPICAFollowup.sourceFamily_laplace_identity",
+    "Zeta23.OPICAFollowup.nativePrimeField_visiblePole",
+    "Zeta23.OPICAFollowup.nativeGenerator_unit_or_completion",
     "Zeta23.OPICAFollowup.norm_first_log_comparison",
     "Zeta23.OPICAFollowup.norm_first_rate_transfer",
     "Zeta23.OPICAFollowup.energy_allocation_bound",
@@ -5940,17 +5943,22 @@
     "Zeta23.OPICAFollowup.laurent_coefficient_error_bound",
     "Zeta23.OPICAFollowup.laurent_observation_survives",
     "Zeta23.OPICAFollowup.source_product_vertical_bound",
+    "Zeta23.OPICAFollowup.zeta_left_line_uniform_bound",
+    "Zeta23.OPICAFollowup.forwardKernel_left_contour_budget",
     "Zeta23.OPICAFollowup.native_binomial_inverse_identity",
     "Zeta23.OPICAFollowup.balanced_coeff_divisor_bound",
+    "Zeta23.OPICAFollowup.native_zero_count_summability",
+    "Zeta23.OPICAFollowup.native_source_explicit_formula",
+    "Zeta23.OPICAFollowup.native_zero_sup_bounds",
     "Zeta23.OPICAFollowup.coupled_gram_collision_control",
     "Zeta23.OPICAFollowup.norm_first_strictly_weaker_control",
     "Zeta23.OPICAFollowup.history_recovery_cost_control",
     "Zeta23.OPICAFollowup.forced_positive_gram_nonreal_control"
   ],
-  "type_fingerprint_scope": "The stored9-root type fingerprints are a historical subset. The current 20 primary roots have explicit independently stated expected-type consumers in Validation.lean, checked locally. Complete current-source closure fingerprints require a new external compiler receipt; no full100-root signature contract is claimed.",
+  "type_fingerprint_scope": "The stored9-root type fingerprints are a historical subset. The current 28 primary roots have explicit independently stated expected-type consumers in Validation.lean, checked locally. Complete current-source closure fingerprints require a new external compiler receipt; no full100-root signature contract is claimed.",
   "implementation_dependency_amendment": {
     "schema": "OPICA_IMPLEMENTATION_DEPENDENCY_AMENDMENT_V1",
-    "id": "DEP_2026_10_21_01",
+    "id": "DEP_2026_10_21_02",
     "status": "IMPLEMENTATION_ONLY_NO_MATHEMATICAL_SCOPE_CHANGE",
     "frozen_manifest_sha256": "c99ec7acbfe996455525b31088a7d04addd20653787e12098e4e51a4a7ce296e",
     "frozen_public_roots_sha256": "2239636f347449ecd447fc5ba78d7c75f1c0440d28a862cb72397c4f79597b41",
@@ -6008,11 +6016,140 @@
         "reason": "The synthetic recovery and forced Gram controls need the actual joint observation and norm rates, but do not depend on native words or sampling compatibility. Removing those planned back-edges does not specialize any control.",
         "theorem_statement_changes": [],
         "new_assumptions": []
+      },
+      {
+        "module": "Zeta23.OPICAFollowup.NativeSourceTransforms",
+        "path": "Zeta23/OPICAFollowup/NativeSourceTransforms.lean",
+        "planned_direct_project_imports": [
+          "Zeta23.OPICAFollowup.NativeSourceFamily",
+          "Zeta23.OPICA.LocalData",
+          "Zeta23.CCM.NativeIntegerDriveComplexLaplace",
+          "Zeta23.CCM.NativeIntegerPrimeConvolution",
+          "Zeta23.ExceptionalZero.NativeOriginalSourceLaplaceVisibility"
+        ],
+        "approved_direct_project_imports": [
+          "Zeta23.OPICAFollowup.NativeSourceFamily",
+          "Zeta23.OPICA.LocalData",
+          "Zeta23.CCM.NativeIntegerDriveComplexLaplace",
+          "Zeta23.CCM.NativeIntegerPrimeConvolution",
+          "Zeta23.ExceptionalZero.NativeOriginalSourceLaplaceVisibility",
+          "Zeta23.ExceptionalZero.NativeZeroJetAnalyticFactors"
+        ],
+        "reason": "Reuse the actual parent zero-jet analytic factor and source entireness proofs. The physical prime and forward-transform identities remain separate obligations.",
+        "theorem_statement_changes": [],
+        "new_assumptions": []
+      },
+      {
+        "module": "Zeta23.OPICAFollowup.NativeExplicitFormula",
+        "path": "Zeta23/OPICAFollowup/NativeExplicitFormula.lean",
+        "planned_direct_project_imports": [
+          "Zeta23.OPICAFollowup.NativeSourceTransforms",
+          "Zeta23.WeilEF.Main",
+          "Zeta23.RvM.LocalCount"
+        ],
+        "approved_direct_project_imports": [
+          "Zeta23.RvM.LocalCount",
+          "Zeta23.WeilEF.Main",
+          "Zeta23.OPICAFollowup.NativeSourceTransforms",
+          "Zeta23.CCM.DictionaryArchSourceBridge",
+          "Zeta23.GammaFacts.Complete"
+        ],
+        "reason": "Reuse the generic proved gamma-density/Fubini bridge and concrete gammaFacts to derive the actual translated-source trivial-zero series; no explicit-formula premise or source evenness is added.",
+        "theorem_statement_changes": [],
+        "new_assumptions": []
+      },
+      {
+        "module": "Zeta23.OPICAFollowup.ZetaLeftLineBounds",
+        "path": "Zeta23/OPICAFollowup/ZetaLeftLineBounds.lean",
+        "planned_direct_project_imports": [
+          "Zeta23.GammaFacts.Complete",
+          "Zeta23.Analytic.Stirling"
+        ],
+        "approved_direct_project_imports": [
+          "Zeta23.GammaFacts.Complete",
+          "Zeta23.Analytic.Stirling",
+          "Zeta23.WeilEF.VerticalLine",
+          "Zeta23.OPICAFollowup.SourceVerticalBounds"
+        ],
+        "reason": "Reuse the proved fixed-strip digamma bound only at real part one and the elementary complex trig norm bounds. Differentiate the genuine functional equation directly, rather than duplicate a Cauchy derivative estimate. The same full uniform theorem statement is proved.",
+        "theorem_statement_changes": [],
+        "new_assumptions": []
       }
     ],
     "authority": "Explicit implementation dependency refinement; compiler receipts separately establish actual TYPE/VALUE/STRUCTURE dependencies and validity.",
     "RH": "OPEN",
     "Step4": "OPEN",
-    "independent_closing_inequalities": "OPEN"
-  }
+    "independent_closing_inequalities": "OPEN",
+    "supersedes": "DEP_2026_10_21_01",
+    "previous_amendment_sha256": "32f2c2e57743f5c1a98176ac64f3b2671e8c45f8355361130ff0271361105a91"
+  },
+  "implementation_dependency_history": [
+    {
+      "schema": "OPICA_IMPLEMENTATION_DEPENDENCY_AMENDMENT_V1",
+      "id": "DEP_2026_10_21_01",
+      "status": "IMPLEMENTATION_ONLY_NO_MATHEMATICAL_SCOPE_CHANGE",
+      "frozen_manifest_sha256": "c99ec7acbfe996455525b31088a7d04addd20653787e12098e4e51a4a7ce296e",
+      "frozen_public_roots_sha256": "2239636f347449ecd447fc5ba78d7c75f1c0440d28a862cb72397c4f79597b41",
+      "primary_roots": 100,
+      "acceptance_units": 28,
+      "new_paths": 84,
+      "promoted_supporting_lemmas": [],
+      "theorem_statement_changes": [],
+      "new_assumptions": [],
+      "rows": [
+        {
+          "module": "Zeta23.OPICAFollowup.NativeSourceFamily",
+          "path": "Zeta23/OPICAFollowup/NativeSourceFamily.lean",
+          "planned_direct_project_imports": [
+            "Zeta23.CCM.OriginalSincNativeSource",
+            "Zeta23.CCM.UniversalSincInverseGevreyBounds"
+          ],
+          "approved_direct_project_imports": [
+            "Zeta23.CCM.OriginalSincNativeSource",
+            "Zeta23.CCM.UniversalSincInverseGevreyBounds",
+            "Zeta23.CCM.OriginalSincWeightedPoleMoments",
+            "Zeta23.CCM.NativeIntegerPrimeConvolution"
+          ],
+          "reason": "Reuse the actual parent weighted elementary moments and the actual physical integer translation operator, rather than duplicate them.",
+          "theorem_statement_changes": [],
+          "new_assumptions": []
+        },
+        {
+          "module": "Zeta23.OPICAFollowup.BalancedCoefficients",
+          "path": "Zeta23/OPICAFollowup/BalancedCoefficients.lean",
+          "planned_direct_project_imports": [
+            "Zeta23.OPICAFollowup.NativeFilters",
+            "Zeta23.OPICA.DivisorBounds"
+          ],
+          "approved_direct_project_imports": [
+            "Zeta23.OPICA.NativeArithmeticAdapter"
+          ],
+          "reason": "Separate the unconditional arithmetic convolution identity from causal filter implementation. NativeArithmeticAdapter transitively imports DivisorBounds and supplies the genuine integer palette and physical drive.",
+          "theorem_statement_changes": [],
+          "new_assumptions": []
+        },
+        {
+          "module": "Zeta23.OPICAFollowup.Counterexamples",
+          "path": "Zeta23/OPICAFollowup/Counterexamples.lean",
+          "planned_direct_project_imports": [
+            "Zeta23.OPICAFollowup.NormFirstTransfer",
+            "Zeta23.OPICAFollowup.JointObservation",
+            "Zeta23.OPICAFollowup.RobustLaurent",
+            "Zeta23.OPICAFollowup.SamplingCompatibility"
+          ],
+          "approved_direct_project_imports": [
+            "Zeta23.OPICAFollowup.NormFirstTransfer",
+            "Zeta23.OPICAFollowup.JointObservation"
+          ],
+          "reason": "The synthetic recovery and forced Gram controls need the actual joint observation and norm rates, but do not depend on native words or sampling compatibility. Removing those planned back-edges does not specialize any control.",
+          "theorem_statement_changes": [],
+          "new_assumptions": []
+        }
+      ],
+      "authority": "Explicit implementation dependency refinement; compiler receipts separately establish actual TYPE/VALUE/STRUCTURE dependencies and validity.",
+      "RH": "OPEN",
+      "Step4": "OPEN",
+      "independent_closing_inequalities": "OPEN"
+    }
+  ]
 }

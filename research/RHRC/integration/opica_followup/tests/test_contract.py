@@ -59,6 +59,14 @@ class FrozenAcceptanceTests(unittest.TestCase):
         self.register['implementation_dependency_amendment']['rows'].pop()
         self.assertTrue(contract.dependency_amendment_errors(self.register, self.manifest))
 
+    def test_dependency_refinement_cannot_erase_previous_version(self):
+        self.register['implementation_dependency_history'] = []
+        self.assertTrue(contract.dependency_amendment_errors(self.register, self.manifest))
+
+    def test_dependency_refinement_cannot_rewrite_previous_version(self):
+        self.register['implementation_dependency_history'][0]['new_assumptions'] = ['RH']
+        self.assertTrue(contract.dependency_amendment_errors(self.register, self.manifest))
+
     def test_drop_hard_original_root(self):
         self.public['roots'] = [r for r in self.public['roots'] if r['full_name'] !=
                                'Zeta23.OPICAFollowup.native_slow_source_window_rate']

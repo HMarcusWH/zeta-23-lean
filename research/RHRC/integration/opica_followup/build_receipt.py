@@ -21,9 +21,9 @@ from lean_expr_dag import validate_expression
 ALLOWED_AXIOMS = {'propext', 'Classical.choice', 'Quot.sound'}
 SHA40 = re.compile(r'[0-9a-f]{40}\Z')
 SHA256 = re.compile(r'[0-9a-f]{64}\Z')
-MATHEMATICAL_MODULES = frozenset(['Zeta23.OPICAFollowup.BalancedCoefficients', 'Zeta23.OPICAFollowup.Counterexamples', 'Zeta23.OPICAFollowup.JointObservation', 'Zeta23.OPICAFollowup.NativeSourceFamily', 'Zeta23.OPICAFollowup.NormFirstTransfer', 'Zeta23.OPICAFollowup.RobustLaurent', 'Zeta23.OPICAFollowup.SourceVerticalBounds'])
+MATHEMATICAL_MODULES = frozenset(['Zeta23.OPICAFollowup.BalancedCoefficients', 'Zeta23.OPICAFollowup.Counterexamples', 'Zeta23.OPICAFollowup.ForwardLocalization', 'Zeta23.OPICAFollowup.JointObservation', 'Zeta23.OPICAFollowup.NativeExplicitFormula', 'Zeta23.OPICAFollowup.NativeFilters', 'Zeta23.OPICAFollowup.NativeSourceFamily', 'Zeta23.OPICAFollowup.NativeSourceTransforms', 'Zeta23.OPICAFollowup.NormFirstTransfer', 'Zeta23.OPICAFollowup.RobustLaurent', 'Zeta23.OPICAFollowup.SourceVerticalBounds', 'Zeta23.OPICAFollowup.ZetaLeftLineBounds'])
 
-IMPLEMENTED_ROOT_NAMES = frozenset(['Zeta23.OPICAFollowup.approx_compatibility_left_null', 'Zeta23.OPICAFollowup.balanced_coeff_divisor_bound', 'Zeta23.OPICAFollowup.coupled_gram_collision_control', 'Zeta23.OPICAFollowup.energy_allocation_bound', 'Zeta23.OPICAFollowup.energy_allocation_rate_lower', 'Zeta23.OPICAFollowup.forced_positive_gram_nonreal_control', 'Zeta23.OPICAFollowup.history_recovery_cost_control', 'Zeta23.OPICAFollowup.joint_recovery_iff', 'Zeta23.OPICAFollowup.joint_recovery_noise_bound', 'Zeta23.OPICAFollowup.joint_recovery_optimal_norm', 'Zeta23.OPICAFollowup.laurent_coefficient_error_bound', 'Zeta23.OPICAFollowup.laurent_observation_survives', 'Zeta23.OPICAFollowup.native_binomial_inverse_identity', 'Zeta23.OPICAFollowup.norm_first_log_comparison', 'Zeta23.OPICAFollowup.norm_first_rate_transfer', 'Zeta23.OPICAFollowup.norm_first_strictly_weaker_control', 'Zeta23.OPICAFollowup.recovery_subexp_budget', 'Zeta23.OPICAFollowup.sourceFamily_support_smooth_moments', 'Zeta23.OPICAFollowup.sourceFamily_zero_eq_original', 'Zeta23.OPICAFollowup.source_product_vertical_bound'])
+IMPLEMENTED_ROOT_NAMES = frozenset(['Zeta23.OPICAFollowup.approx_compatibility_left_null', 'Zeta23.OPICAFollowup.balanced_coeff_divisor_bound', 'Zeta23.OPICAFollowup.coupled_gram_collision_control', 'Zeta23.OPICAFollowup.energy_allocation_bound', 'Zeta23.OPICAFollowup.energy_allocation_rate_lower', 'Zeta23.OPICAFollowup.forced_positive_gram_nonreal_control', 'Zeta23.OPICAFollowup.forwardKernel_left_contour_budget', 'Zeta23.OPICAFollowup.history_recovery_cost_control', 'Zeta23.OPICAFollowup.joint_recovery_iff', 'Zeta23.OPICAFollowup.joint_recovery_noise_bound', 'Zeta23.OPICAFollowup.joint_recovery_optimal_norm', 'Zeta23.OPICAFollowup.laurent_coefficient_error_bound', 'Zeta23.OPICAFollowup.laurent_observation_survives', 'Zeta23.OPICAFollowup.nativeGenerator_unit_or_completion', 'Zeta23.OPICAFollowup.nativePrimeField_visiblePole', 'Zeta23.OPICAFollowup.native_binomial_inverse_identity', 'Zeta23.OPICAFollowup.native_source_explicit_formula', 'Zeta23.OPICAFollowup.native_zero_count_summability', 'Zeta23.OPICAFollowup.native_zero_sup_bounds', 'Zeta23.OPICAFollowup.norm_first_log_comparison', 'Zeta23.OPICAFollowup.norm_first_rate_transfer', 'Zeta23.OPICAFollowup.norm_first_strictly_weaker_control', 'Zeta23.OPICAFollowup.recovery_subexp_budget', 'Zeta23.OPICAFollowup.sourceFamily_laplace_identity', 'Zeta23.OPICAFollowup.sourceFamily_support_smooth_moments', 'Zeta23.OPICAFollowup.sourceFamily_zero_eq_original', 'Zeta23.OPICAFollowup.source_product_vertical_bound', 'Zeta23.OPICAFollowup.zeta_left_line_uniform_bound'])
 
 
 def require(condition, description):
@@ -277,8 +277,8 @@ def main():
             'frozen public root inventory changed')
     public = json.loads(root_bytes)['roots']
     roots = [row for row in public if row['full_name'] in IMPLEMENTED_ROOT_NAMES]
-    require(len(roots) == 20 and len({r['id'] for r in roots}) == 20,
-            'exact twenty-root implemented subset required')
+    require(len(roots) == 28 and len({r['id'] for r in roots}) == 28,
+            'exact twenty-eight-root implemented subset required')
     before = source_manifest()
     records = []
     environment = os.environ.copy()

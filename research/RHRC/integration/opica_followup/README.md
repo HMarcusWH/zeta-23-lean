@@ -9,20 +9,34 @@ closed. RH, Step 4 and the independent closing inequalities are OPEN.
 
 The current compiled mathematical slice comprises `NormFirstTransfer`,
 `JointObservation`, `Counterexamples`, `NativeSourceFamily`, `RobustLaurent`,
-`BalancedCoefficients` and `SourceVerticalBounds`: twenty original primary declarations.
+`BalancedCoefficients`, `SourceVerticalBounds`, `ZetaLeftLineBounds`,
+`NativeSourceTransforms`, `NativeExplicitFormula`, `NativeFilters` and
+`ForwardLocalization`: twenty-eight original primary declarations.
 The explicit types in `Validation.lean` check their intended domains and
 conclusions. These local results do not establish the missing native source,
 window-rate, complex-measure or spectral constructions. In particular, the
 library does not yet have the complete public sibling facade. The earlier
-eleven-root exact-source compiler receipt is historical; the twenty-root
-expected-type check does not promote that receipt to a new exact-tree audit.
+eleven-root exact-source compiler receipt is historical; the current expected-type
+check does not promote that receipt to a new exact-tree audit.
 
-`SOURCE_REGISTER.json` contains dependency amendment `DEP_2026_10_21_01`.
+`SOURCE_REGISTER.json` contains dependency amendment `DEP_2026_10_21_02`,
+with its predecessor retained and hash checked.
 It explicitly records reuse of parent weighted moments and physical translation,
 and the removal of unnecessary filter/word dependencies from the unconditional
 arithmetic and synthetic-control proofs. The preparation validator checks those
 actual imports against the amendment. The frozen manifest, all primary
 statements and the optional status of the mathematical amendment are retained.
+The latest version also records the genuine parent zero-jet and gamma-density
+bridges and the direct differentiated-functional-equation proof of the uniform
+left-line bound. It does not add a zero-free or reciprocal-zeta premise.
+
+The source transformation slice constructs the actual all-multiplicity prime
+pole and its safe-half-plane physical integral. The actual translated-source
+explicit formula retains both signs of ordinates and absolute nontrivial and
+trivial series. Generator unit coverage includes a proved real-cutoff adapter
+and a nonintegral cutoff physical consumer. The contour budget is uniform in
+the moving integer line before optimization. Physical forward-kernel inversion,
+the complete generator action root and the optimized decay root remain pending.
 
 ## Accepted parent and immutable sources
 

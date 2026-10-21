@@ -348,3 +348,161 @@ every divided cross-parameter denominator; the undivided identity remains.
 5. Audit the full current dependency closure and all exact workflow results
    after implementation; retain RH, Step 4 and the independent closing
    inequalities OPEN.
+
+## Research pass after Q1b's uniform left-line bound
+
+PROVED locally: `zeta_left_line_uniform_bound` has one A0>=1 quantified before
+all integer n>=1 and all real tau, for the sum of the actual zeta and zeta
+derivative norms at -n+i*tau, with exactly the prescribed exponent n+2.
+The imported independent expected-type consumer and the tau=0, n=2 trivial-zero
+consumer pass. The root and every audited supporting chain have only the
+standard three axioms. Another agent independently read the whole proof and
+found no material mathematical gap; this is not independent human review.
+
+No new CI workflow or research job is attached. The local compiler is a FORMAL
+VALIDITY GATE for the source-bound leaf and expected consumers. The previous
+parent workflow harvest remains historical evidence with its exact preserved
+dispositions. Full child workflow acceptance and the new full dependency receipt
+remain pending, and the complete scope remains one hundred roots.
+
+What changed: the proof obtains a stronger intermediate fixed prefactor before
+absorbing it into A0^(n+1). It derives the exact Gamma modulus on Re=1 by
+reflection, handles tau=0 separately, and uses integer recurrence for the moving
+line. Digamma's fixed-strip theorem is used only at Re=1, then recurred.
+Absolute Dirichlet series give one uniform bound for both zeta and its derivative
+on Re>=2. Differentiating the actual functional equation on the open half-plane
+provides the correctly signed derivative identity. The gamma decay cancels
+the trigonometric exponential growth exactly; the digamma estimate costs only
+one additional polynomial degree. No reciprocal zeta, cosine or sine enters.
+
+Upstream implication, DERIVED: a direct derivative identity avoids duplicating
+a moving-disk Cauchy estimate and exposes the exact source of the n+2 exponent.
+This proof-method/dependency refinement is recorded in DEP_2026_10_21_02;
+its predecessor is preserved rather than silently rewritten.
+
+Downstream implication, DERIVED: Q1a+Q1b now give the prescribed vertical
+source decay times a fully uniform growing polynomial on every integer left
+line. This is a genuine prerequisite for Q2's factorial integral envelope.
+It does not prove physical inversion, horizontal contour disappearance,
+the optimized saddle, or any native energy rate.
+
+Resurrected route: a contour argument blocked only by an unspecified
+n-dependent zeta derivative constant can now be revisited. Routes requiring
+the independent native upper inequality remain blocked for the same reason.
+
+LEAD / HYPOTHESIS: retain the factorial moment integral before saddle selection
+and see whether the exact polynomial degree compresses the localization budget
+across source and completion orders. The fastest falsification checks are the
+tau=0/trivial-zero cases, both signs of tau, n=1, and growing n with tau comparable
+to n^2. The theorem already covers these domains; the next check concerns how
+its constants compose with physical contour inversion and source-order costs.
+
+Highest-leverage next move: prove the full left-contour integral envelope before
+optimizing n, then justify the actual inversion and compact initial time range.
+RH, Step 4 and all independent closing inequalities remain OPEN.
+
+## Research pass after the actual-source and contour slice
+
+### What became formally true
+
+PROVED locally with imported independent expected types: the actual J_d
+integral factorization and nonvanishing at every actual right zero; the literal
+prime field's meromorphic simple pole with residue -m*J0 and its physical
+Laplace identification; the actual two-sided multiplicity-weighted zero
+summability and displacement supremum; the translated-source explicit formula
+with absolute nontrivial/trivial series; all concrete generator local units and
+counted completion factors; and the full uniform left-contour integral budget.
+This brings the implemented primary inventory to 28 of the original 100.
+The new full exact-tree dependency audit is still pending at this review.
+
+### Workflow harvest
+
+There are no child PR workflow jobs to harvest. Genuine module compilation,
+independent expanded physical consumers and standard-three-axiom checks are
+FORMAL VALIDITY GATES for these exact local inputs. The 124 child contract tests
+pass in both normal and optimized Python; these are REGRESSION GATES, not
+mathematical discovery. The accepted-parent workflow dispositions remain as
+recorded in PARENT_INTAKE.json, including the two inherited skips and the
+different scientific search budgets. No parent replay becomes new theorem
+authority merely because the child source/contour proofs now compile.
+
+### What changed
+
+The pole datum is constructed from the genuine zeta zero's analytic
+multiplicity and the literal original source, with global meromorphic and
+initial physical-transform clauses. No arbitrary pole packet or simplicity
+assumption is supplied. The explicit formula evaluates the actual gamma term
+through the proved parent density/Fubini bridge, retaining the translated test
+rather than replacing it by an even source. Its m=0 elementary contribution
+vanishes by the actual J_d(-1/2) identity; every remaining indexed decay is
+linked to an actual negative-even zeta zero.
+
+The contour moment is exactly 4*(2N+1)!/c^(2N+2). The shifted-power split and
+fixed factorial bound give constants C,D,B before all n>=1, for the literal
+source/zeta integrand on z=-n-1/2+i*tau. Integrability is separately proved.
+The analytic bound even permits all d,ell on those lines; physical entire
+continuation/inversion still requires the original d>=ell domain.
+
+### Upstream implications
+
+DERIVED: compact-source factorization, weighted-L1 translation/Fubini and the
+parent gamma-density bridge provide reusable genuine adapters. They remove
+the need for conclusion-shaped source/explicit-formula packets. Local
+generator multiplier units remain distinct from actual time actions.
+
+### Downstream implications
+
+The word calculus can now use the actual arbitrary-multiplicity source pole
+and normalized zeta unit, including the p=0 residue case. The actual zero sum
+and source coefficients can feed a Theta envelope once all source-order costs
+and initial/trivial-tail bounds are proved. The contour budget can feed saddle
+selection only after actual inversion and horizontal contour control; none of
+these results alone identifies the native window rate.
+
+### Resurrected routes
+
+A route blocked by a merely assumed native pole datum is now available for
+actual-source instantiation. A route blocked by an unevaluated archimedean term
+now has its genuine translated-source trivial series. A contour route blocked
+by unpriced line-dependent constants now has a fixed-order uniform budget.
+Routes requiring independent signed upper or boundary exclusions remain OPEN.
+
+### New RH-relevant clues
+
+LEAD / HYPOTHESIS: compose the actual multiplicity-weighted explicit formula,
+Gevrey source-order bounds and the fixed-order contour localization to locate
+the precise moving-order bottleneck in MS1/J5.2. A separate lead is to price
+word/recovery errors against the genuine normalized residue rather than an
+arbitrary scalar. These are research routes, not new zero-exclusion theorems.
+
+### Falsification checks
+
+The supremum includes zero explicitly and uses no maximizing zero or positive
+minimum displacement. Both signs of ordinates and all analytic multiplicities
+are retained. Real residual cutoffs are represented by a proved floor adapter
+for the actual finite physical history and transform, including Y=3/2; the
+class is not silently restricted to integer cutoff parameters.
+
+Two continuation traps were identified: separately connected history domains
+need not have a compatible connected intersection, and raw totalized products
+at removable points need not equal their analytic representatives. The word
+framework retains a common continuation certificate and actual regular
+representatives. In particular p*m=1 is degree zero, and d=ell at the elementary
+pole requires a genuine removable representative. The contour budget avoids
+that pole and does not assert raw pointwise entireness there.
+
+### Highest-leverage next moves
+
+1. Complete the actual forward transform/entire representative, horizontal
+   control, physical inversion and compact-initial-interval saddle bound.
+2. Finish the true locally finite inverse-Euler action and all-generator
+   physical composition, then instantiate the four native-word roots.
+3. Complete uniform source/drive L2 and Theta coefficient budgets, retaining
+   actual continuum cancellation and every source-order dependence.
+4. Continue all remaining original measure/profile/jet/spectral obligations;
+   preserve full scope and all optional-amendment boundaries.
+5. Audit every public helper, constructor and private dependency channel on an
+   isolated exact committed tree, then perform the complete final workflow
+   harvest when the full follow-up implementation is green.
+
+RH, Step 4 and the independent closing inequalities remain OPEN.

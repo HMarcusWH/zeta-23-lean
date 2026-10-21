@@ -1,3 +1,8 @@
+import Zeta23.OPICAFollowup.NativeFilters
+import Zeta23.OPICAFollowup.ForwardLocalization
+import Zeta23.OPICAFollowup.NativeSourceTransforms
+import Zeta23.OPICAFollowup.NativeExplicitFormula
+import Zeta23.OPICAFollowup.ZetaLeftLineBounds
 import Zeta23.OPICAFollowup.NativeSourceFamily
 import Zeta23.OPICAFollowup.SourceVerticalBounds
 import Zeta23.OPICAFollowup.BalancedCoefficients
@@ -6,7 +11,7 @@ import Zeta23.OPICAFollowup.NormFirstTransfer
 import Zeta23.OPICAFollowup.JointObservation
 import Zeta23.OPICAFollowup.Counterexamples
 
-/-! Partial expected-type audit: 20 of the 100 planned primary roots.
+/-! Partial expected-type audit: 28 of the 100 planned primary roots.
 This module does not assert full follow-up acceptance. -/
 
 
@@ -481,4 +486,284 @@ theorem expected_laurent_monomial_circle_norm (a c : ℂ) (j : ℤ) (r : ℝ)
 
 #print axioms Zeta23.OPICAFollowup.laurent_coefficient_error_bound
 #print axioms Zeta23.OPICAFollowup.laurent_observation_survives
+end Zeta23.OPICAFollowup.Validation
+
+noncomputable section
+namespace Zeta23.OPICAFollowup.Validation
+
+theorem expected_zeta_left_line_uniform_bound : ∃ A0 : ℝ, 1 ≤ A0 ∧
+    ∀ (n : ℕ), 1 ≤ n → ∀ τ : ℝ,
+      ‖riemannZeta (-(n:ℂ)+Complex.I*(τ:ℂ))‖+
+        ‖deriv riemannZeta (-(n:ℂ)+Complex.I*(τ:ℂ))‖ ≤
+      A0^(n+1)*((n:ℝ)+2+|τ|)^(n+2) :=
+  zeta_left_line_uniform_bound
+
+-- Includes zero ordinate and the trivial zero at -2, with the actual derivative.
+theorem expected_zeta_left_trivial_zero_boundary : ∃ A0 : ℝ, 1 ≤ A0 ∧
+    ‖riemannZeta (-2)‖+‖deriv riemannZeta (-2)‖ ≤ A0^3*4^4 := by
+  obtain ⟨A0,hA,h⟩ := expected_zeta_left_line_uniform_bound
+  refine ⟨A0,hA,?_⟩
+  convert h 2 (by norm_num) 0 using 1
+  all_goals norm_num
+
+#print axioms Zeta23.OPICAFollowup.gamma_one_vertical_norm_sq
+#print axioms Zeta23.OPICAFollowup.gamma_one_vertical_exp_bound
+#print axioms Zeta23.OPICAFollowup.gamma_integer_vertical_exp_bound
+#print axioms Zeta23.OPICAFollowup.zeta_right_halfplane_value_derivative_bound
+#print axioms Zeta23.OPICAFollowup.digamma_integer_vertical_bound
+#print axioms Zeta23.OPICAFollowup.zeta_reflected_value_derivative
+#print axioms Zeta23.OPICAFollowup.gamma_integer_trig_bound
+#print axioms Zeta23.OPICAFollowup.zeta_reflection_uniform_integer_bound
+#print axioms Zeta23.OPICAFollowup.zeta_left_line_uniform_bound
+end Zeta23.OPICAFollowup.Validation
+
+
+noncomputable section
+open MeasureTheory Complex
+namespace Zeta23.OPICAFollowup.Validation
+
+theorem expected_sourceFamily_laplace_identity (d : ℕ) :
+    (∀ w : ℂ, sourceFamilyLaplace d w = (w^2-1/4)^d*CCM.nativeOriginalSourceLaplace w) ∧
+    (∀ rho : zetaZeroConfig.carrier, 1/2<(rho:ℂ).re →
+      sourceFamilyLaplace d ((rho:ℂ)-1/2) ≠ 0) :=
+  sourceFamily_laplace_identity d
+
+theorem expected_nativePrimeField_visiblePole (rho : zetaZeroConfig.carrier)
+    (hright : 1/2<(rho:ℂ).re) :
+    ∃ pole : OPICA.SimplePoleData (ℝ → ℝ),
+      pole.source=CCM.nativeOriginalSource ∧ pole.center=(rho:ℂ)-1/2 ∧
+      pole.field=nativePrimeTransformGerm ∧
+      pole.residue=-(zeroMult (rho:ℂ):ℂ)*CCM.nativeOriginalSourceLaplace ((rho:ℂ)-1/2) ∧
+      Meromorphic pole.field ∧
+      (∀ w : ℂ, 1/2<w.re →
+        (∫ t : ℝ, Complex.exp (-w*(t:ℂ))*(CCM.nativeOriginalPrimeField t:ℂ))=pole.field w) :=
+  nativePrimeField_visiblePole rho hright
+
+theorem expected_nativePrimePole_physical_source (rho : zetaZeroConfig.carrier)
+    (hright : 1/2<(rho:ℂ).re) {w : ℂ} (hw : 1/2<w.re) :
+    (nativePrimePoleData rho hright).source=CCM.nativeOriginalSource ∧
+    (nativePrimePoleData rho hright).center=(rho:ℂ)-1/2 ∧
+    (nativePrimePoleData rho hright).residue=
+      -(zeroMult (rho:ℂ):ℂ)*CCM.nativeOriginalSourceLaplace ((rho:ℂ)-1/2) ∧
+    (∫ t : ℝ, Complex.exp (-w*(t:ℂ))*(CCM.nativeOriginalPrimeField t:ℂ))=
+      (nativePrimePoleData rho hright).field w :=
+  ⟨nativePrimePoleData_source rho hright,nativePrimePoleData_center rho hright,
+    nativePrimePoleData_residue rho hright,nativePrimePoleData_physical_laplace rho hright hw⟩
+
+end Zeta23.OPICAFollowup.Validation
+
+#print axioms Zeta23.OPICAFollowup.sourceFamily_laplace_identity
+#print axioms Zeta23.OPICAFollowup.nativePrimeField_visiblePole
+#print axioms Zeta23.OPICAFollowup.nativePrimePoleData
+#print axioms Zeta23.OPICAFollowup.actualZeta_meromorphic
+#print axioms Zeta23.OPICAFollowup.nativePrimeTransformGerm_meromorphic
+#print axioms Zeta23.OPICAFollowup.primeFieldFamily_physical_laplace
+#print axioms Zeta23.OPICAFollowup.Validation.expected_sourceFamily_laplace_identity
+#print axioms Zeta23.OPICAFollowup.Validation.expected_nativePrimeField_visiblePole
+#print axioms Zeta23.OPICAFollowup.Validation.expected_nativePrimePole_physical_source
+
+noncomputable section
+namespace Zeta23.OPICAFollowup.Validation
+open MeasureTheory Complex Zeta23.CCM
+/- Independently stated NativeExplicitFormula consumers for aggregate Validation. -/
+
+example : zetaZeroConfig.carrier = {rho : ℂ | IsNontrivialZero rho} := rfl
+example (rho : ℂ) : zetaZeroConfig.mult rho = (analyticOrderAt riemannZeta rho).toNat := rfl
+
+theorem expected_native_zero_count_summability :
+    Summable (fun rho : zetaZeroConfig.carrier =>
+      (zetaZeroConfig.mult rho : ℝ) / (1 + Complex.normSq (gammaOf rho))) ∧
+    Summable (fun rho : zetaZeroConfig.carrier =>
+      (zetaZeroConfig.mult rho : ℝ) / (1 + ((rho : ℂ).im)^2)) :=
+  native_zero_count_summability
+
+example : nativeZeroDisplacementSup =
+    sSup (insert 0 (Set.range (fun rho : zetaZeroConfig.carrier =>
+      max ((rho : ℂ).re - 1/2) 0))) := rfl
+
+theorem expected_native_zero_sup_bounds :
+    0 ≤ nativeZeroDisplacementSup ∧ nativeZeroDisplacementSup ≤ 1/2 ∧
+    (∀ rho : zetaZeroConfig.carrier,
+      max ((rho : ℂ).re - 1/2) 0 ≤ nativeZeroDisplacementSup) ∧
+    (∀ b : ℝ, 0 ≤ b → b < nativeZeroDisplacementSup →
+      ∃ rho : zetaZeroConfig.carrier, b < (rho : ℂ).re - 1/2) :=
+  native_zero_sup_bounds
+
+theorem expected_native_source_explicit_formula (d : ℕ) {t : ℝ} (ht : UniversalSinc.fixedScale < t) :
+    (paperFT (fun u : ℝ => (sourceOrderFamily d (t-u) : ℂ)) (I/2) +
+      paperFT (fun u : ℝ => (sourceOrderFamily d (t-u) : ℂ)) (-I/2) = 0) ∧
+    Summable (fun rho : zetaZeroConfig.carrier =>
+      ‖(zetaZeroConfig.mult rho : ℂ) *
+        (∫ u : ℝ, Complex.exp (-((rho : ℂ)-1/2)*(u:ℂ)) *
+          (sourceOrderFamily d u : ℂ)) *
+        Complex.exp (((rho : ℂ)-1/2)*(t:ℂ))‖) ∧
+    Summable (fun n : ℕ =>
+      ‖(∫ u : ℝ, Complex.exp (-(-((2*((n:ℝ)+1)+1/2 : ℝ):ℂ))*(u:ℂ)) *
+          (sourceOrderFamily d u : ℂ)) *
+        Complex.exp (-((2*((n:ℝ)+1)+1/2 : ℝ):ℂ)*(t:ℂ))‖) ∧
+    (nativePrimeField (sourceOrderFamily d) t : ℂ) =
+      -(∑' rho : zetaZeroConfig.carrier,
+        (zetaZeroConfig.mult rho : ℂ) *
+          (∫ u : ℝ, Complex.exp (-((rho : ℂ)-1/2)*(u:ℂ)) *
+            (sourceOrderFamily d u : ℂ)) *
+          Complex.exp (((rho : ℂ)-1/2)*(t:ℂ))) -
+      (∑' n : ℕ,
+        (∫ u : ℝ, Complex.exp (-(-((2*((n:ℝ)+1)+1/2 : ℝ):ℂ))*(u:ℂ)) *
+          (sourceOrderFamily d u : ℂ)) *
+        Complex.exp (-((2*((n:ℝ)+1)+1/2 : ℝ):ℂ)*(t:ℂ))) := by
+  exact native_source_explicit_formula d ht
+
+#print axioms native_zero_count_summability
+#print axioms native_zero_sup_bounds
+#print axioms native_source_explicit_formula
+
+example (n : ℕ) : riemannZeta (1/2-(2*((n:ℝ)+1)+1/2 : ℝ)) = 0 :=
+  nativeTrivialZeroDecay_zeta_zero n
+end Zeta23.OPICAFollowup.Validation
+
+
+noncomputable section
+open Complex
+namespace Zeta23.OPICAFollowup.Validation
+
+theorem expected_nativeGenerator_unit_or_completion (g : NativeGenerator)
+    (rho : zetaZeroConfig.carrier) (hright : 1/2<(rho:ℂ).re) :
+    (∀ z : ℂ, g.multiplier z=g.unitMultiplier z*riemannZeta (z+1/2)^g.completionCount) ∧
+    AnalyticAt ℂ g.unitMultiplier ((rho:ℂ)-1/2) ∧
+    g.unitMultiplier ((rho:ℂ)-1/2) ≠ 0 ∧
+    (∀ Y r : ℕ, (NativeGenerator.residualPower Y r).multiplier ((rho:ℂ)-1/2)=1) :=
+  nativeGenerator_unit_or_completion g rho hright
+
+theorem expected_source_generator_unit (d : ℕ) (rho : zetaZeroConfig.carrier)
+    (hright : 1/2<(rho:ℂ).re) :
+    AnalyticAt ℂ (fun z : ℂ => (z^2-1/4)^d) ((rho:ℂ)-1/2) ∧
+    (((rho:ℂ)-1/2)^2-1/4)^d ≠ 0 :=
+  ⟨(NativeGenerator.sourceDerivative d).unit_analytic rho hright,
+    (NativeGenerator.sourceDerivative d).unit_ne_zero rho hright⟩
+
+theorem expected_delay_generator_unit (tau : ℝ) (htau : 0≤tau)
+    (rho : zetaZeroConfig.carrier) (hright : 1/2<(rho:ℂ).re) :
+    AnalyticAt ℂ (fun z : ℂ => Complex.exp (-(tau:ℂ)*z)) ((rho:ℂ)-1/2) ∧
+    Complex.exp (-(tau:ℂ)*((rho:ℂ)-1/2)) ≠ 0 :=
+  ⟨(NativeGenerator.delay tau htau).unit_analytic rho hright,
+    (NativeGenerator.delay tau htau).unit_ne_zero rho hright⟩
+
+theorem expected_finiteEuler_generator_units (Q : ℕ) (hQ : 0<Q)
+    (rho : zetaZeroConfig.carrier) (hright : 1/2<(rho:ℂ).re) :
+    AnalyticAt ℂ (finiteEulerMultiplier Q) ((rho:ℂ)-1/2) ∧
+    finiteEulerMultiplier Q ((rho:ℂ)-1/2) ≠ 0 ∧
+    AnalyticAt ℂ (fun z => (finiteEulerMultiplier Q z)⁻¹) ((rho:ℂ)-1/2) ∧
+    (finiteEulerMultiplier Q ((rho:ℂ)-1/2))⁻¹ ≠ 0 :=
+  ⟨(NativeGenerator.finiteEuler Q hQ).unit_analytic rho hright,
+    (NativeGenerator.finiteEuler Q hQ).unit_ne_zero rho hright,
+    (NativeGenerator.inverseFiniteEuler Q hQ).unit_analytic rho hright,
+    (NativeGenerator.inverseFiniteEuler Q hQ).unit_ne_zero rho hright⟩
+
+theorem expected_rational_generator_units (a b : ℝ) (ha : 0<a) (hb : 0<b)
+    (rho : zetaZeroConfig.carrier) (hright : 1/2<(rho:ℂ).re) :
+    AnalyticAt ℂ (fun z : ℂ => (z+(a:ℂ))/(z+(b:ℂ))) ((rho:ℂ)-1/2) ∧
+    (((rho:ℂ)-1/2+(a:ℂ))/((rho:ℂ)-1/2+(b:ℂ))) ≠ 0 ∧
+    AnalyticAt ℂ (fun z : ℂ => (z+(b:ℂ))/(z+(a:ℂ))) ((rho:ℂ)-1/2) ∧
+    (((rho:ℂ)-1/2+(b:ℂ))/((rho:ℂ)-1/2+(a:ℂ))) ≠ 0 :=
+  ⟨(NativeGenerator.rational a b ha hb).unit_analytic rho hright,
+    (NativeGenerator.rational a b ha hb).unit_ne_zero rho hright,
+    (NativeGenerator.inverseRational a b ha hb).unit_analytic rho hright,
+    (NativeGenerator.inverseRational a b ha hb).unit_ne_zero rho hright⟩
+
+theorem expected_residual_generator_unit (Y r : ℕ) (rho : zetaZeroConfig.carrier)
+    (hright : 1/2<(rho:ℂ).re) :
+    AnalyticAt ℂ (fun z : ℂ => (1-riemannZeta (z+1/2)*truncatedMoebiusMultiplier Y z)^r)
+      ((rho:ℂ)-1/2) ∧
+    (1-riemannZeta (rho:ℂ)*truncatedMoebiusMultiplier Y ((rho:ℂ)-1/2))^r=1 := by
+  refine ⟨(NativeGenerator.residualPower Y r).unit_analytic rho hright,?_⟩
+  simpa only [NativeGenerator.multiplier,sub_add_cancel] using
+    NativeGenerator.residual_value_one Y r rho
+
+theorem expected_completion_generator_unit (rho : zetaZeroConfig.carrier)
+    (hright : 1/2<(rho:ℂ).re) :
+    (∀ z : ℂ, NativeGenerator.completion.multiplier z=
+      CCM.nativeCompletionRationalMultiplier z*riemannZeta (z+1/2)) ∧
+    AnalyticAt ℂ CCM.nativeCompletionRationalMultiplier ((rho:ℂ)-1/2) ∧
+    CCM.nativeCompletionRationalMultiplier ((rho:ℂ)-1/2) ≠ 0 :=
+  ⟨fun _ => rfl,NativeGenerator.completion.unit_analytic rho hright,
+    NativeGenerator.completion.unit_ne_zero rho hright⟩
+
+end Zeta23.OPICAFollowup.Validation
+
+#print axioms Zeta23.OPICAFollowup.nativeGenerator_unit_or_completion
+#print axioms Zeta23.OPICAFollowup.Validation.expected_nativeGenerator_unit_or_completion
+#print axioms Zeta23.OPICAFollowup.Validation.expected_source_generator_unit
+#print axioms Zeta23.OPICAFollowup.Validation.expected_delay_generator_unit
+#print axioms Zeta23.OPICAFollowup.Validation.expected_finiteEuler_generator_units
+#print axioms Zeta23.OPICAFollowup.Validation.expected_rational_generator_units
+#print axioms Zeta23.OPICAFollowup.Validation.expected_residual_generator_unit
+#print axioms Zeta23.OPICAFollowup.Validation.expected_completion_generator_unit
+
+noncomputable section
+open MeasureTheory
+namespace Zeta23.OPICAFollowup.Validation
+
+theorem expected_forwardKernel_left_contour_budget (d ell k : ℕ) :
+    ∃ C D : ℝ, ∃ B : ℕ, 0 < C ∧ 0 ≤ D ∧ ∀ n : ℕ, 1 ≤ n →
+      Integrable (fun τ : ℝ => (forwardLeftContour n τ)^k*
+        forwardKernelTransformGerm d ell (forwardLeftContour n τ)) ∧
+      (∫ τ : ℝ, ‖(forwardLeftContour n τ)^k*
+        forwardKernelTransformGerm d ell (forwardLeftContour n τ)‖) ≤
+        C*Real.exp (D*(n:ℝ))*(n:ℝ)^(2*(ell+1)*n+B) :=
+  forwardKernel_left_contour_budget d ell k
+
+-- The source in the contour is its literal physical compact-source integral.
+theorem expected_forward_contour_literal_source (d ell k n : ℕ) (τ : ℝ) :
+    forwardContourIntegrand d ell k n τ =
+      let z : ℂ := -(((n:ℝ)+1/2):ℂ)+Complex.I*(τ:ℂ)
+      z^k*(-(∫ u : ℝ, Complex.exp (-z*(u:ℂ))*(sourceOrderFamily d u:ℂ))*
+        riemannZeta (z+1/2)^ell*deriv riemannZeta (z+1/2)) := rfl
+
+theorem expected_forward_contour_zero_degree_moment {c : ℝ} (hc : 0 < c) :
+    (∫ τ : ℝ, Real.exp (-c*Real.sqrt |τ|)) = 4/c^2 := by
+  simpa using sqrt_decay_moment_integral hc 0
+
+#print axioms Zeta23.OPICAFollowup.sqrt_decay_moment_integral
+#print axioms Zeta23.OPICAFollowup.shifted_sqrt_decay_integral_bound
+#print axioms Zeta23.OPICAFollowup.fixed_linear_factorial_envelope
+#print axioms Zeta23.OPICAFollowup.forwardContour_pointwise_budget
+#print axioms Zeta23.OPICAFollowup.forwardKernel_left_contour_budget
+end Zeta23.OPICAFollowup.Validation
+
+noncomputable section
+open Complex
+namespace Zeta23.OPICAFollowup.Validation
+theorem expected_realCutoff_physical_transform (Y : ℝ) (hY : 1≤Y) (r : ℕ)
+    (state : NativeCausalState) :
+    (∀ f : ℝ → ℂ, ∀ t : ℝ,
+      (∑' n : ℕ, if (n:ℝ)≤Y then
+        (ArithmeticFunction.moebius n:ℂ)*(CCM.nativeIntegerCoefficient n:ℂ)*f (t-Real.log n) else 0) =
+      ∑ n ∈ Finset.range (Nat.floor Y+1),
+        (ArithmeticFunction.moebius n:ℂ)*(CCM.nativeIntegerCoefficient n:ℂ)*f (t-Real.log n)) ∧
+    (∀ z : ℂ, (NativeGenerator.residualPowerReal Y r).multiplier z=
+      (1-riemannZeta (z+1/2)*truncatedMoebiusRealMultiplier Y z)^r) ∧
+    (∃ S : ℝ, ∀ z : ℂ, S<z.re →
+      (state.residualPowerRealAction Y r).laplace z=
+        (1-riemannZeta (z+1/2)*truncatedMoebiusRealMultiplier Y z)^r*state.laplace z) :=
+  ⟨fun f t => truncatedMoebiusReal_physical_history Y (by linarith) f t,
+    NativeGenerator.residualPowerReal_multiplier Y (by linarith) r,
+    state.laplace_residualPowerRealAction Y (by linarith) r⟩
+
+theorem expected_nonintegral_residual_cutoff (r : ℕ) (state : NativeCausalState)
+    (rho : zetaZeroConfig.carrier) (hright : 1/2<(rho:ℂ).re) :
+    (∀ z : ℂ, (NativeGenerator.residualPowerReal (3/2) r).multiplier z=
+      (1-riemannZeta (z+1/2)*truncatedMoebiusRealMultiplier (3/2) z)^r) ∧
+    AnalyticAt ℂ (NativeGenerator.residualPowerReal (3/2) r).unitMultiplier ((rho:ℂ)-1/2) ∧
+    (NativeGenerator.residualPowerReal (3/2) r).unitMultiplier ((rho:ℂ)-1/2) ≠ 0 ∧
+    (∃ S : ℝ, ∀ z : ℂ, S<z.re →
+      (state.residualPowerRealAction (3/2) r).laplace z=
+        (1-riemannZeta (z+1/2)*truncatedMoebiusRealMultiplier (3/2) z)^r*state.laplace z) :=
+  ⟨NativeGenerator.residualPowerReal_multiplier (3/2) (by norm_num) r,
+    (NativeGenerator.residualPowerReal (3/2) r).unit_analytic rho hright,
+    (NativeGenerator.residualPowerReal (3/2) r).unit_ne_zero rho hright,
+    state.laplace_residualPowerRealAction (3/2) (by norm_num) r⟩
+
+
+#print axioms expected_realCutoff_physical_transform
+#print axioms expected_nonintegral_residual_cutoff
 end Zeta23.OPICAFollowup.Validation

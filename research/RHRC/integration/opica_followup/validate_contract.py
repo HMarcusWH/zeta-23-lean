@@ -53,7 +53,19 @@ DEPENDENCY_REFINEMENTS = {
     'Zeta23.OPICAFollowup.BalancedCoefficients': ['Zeta23.OPICA.NativeArithmeticAdapter'],
     'Zeta23.OPICAFollowup.Counterexamples': [
         'Zeta23.OPICAFollowup.NormFirstTransfer', 'Zeta23.OPICAFollowup.JointObservation'],
+    'Zeta23.OPICAFollowup.NativeSourceTransforms': [
+        'Zeta23.OPICAFollowup.NativeSourceFamily', 'Zeta23.OPICA.LocalData',
+        'Zeta23.CCM.NativeIntegerDriveComplexLaplace', 'Zeta23.CCM.NativeIntegerPrimeConvolution',
+        'Zeta23.ExceptionalZero.NativeOriginalSourceLaplaceVisibility',
+        'Zeta23.ExceptionalZero.NativeZeroJetAnalyticFactors'],
+    'Zeta23.OPICAFollowup.NativeExplicitFormula': [
+        'Zeta23.RvM.LocalCount', 'Zeta23.WeilEF.Main', 'Zeta23.OPICAFollowup.NativeSourceTransforms',
+        'Zeta23.CCM.DictionaryArchSourceBridge', 'Zeta23.GammaFacts.Complete'],
+    'Zeta23.OPICAFollowup.ZetaLeftLineBounds': [
+        'Zeta23.GammaFacts.Complete', 'Zeta23.Analytic.Stirling', 'Zeta23.WeilEF.VerticalLine',
+        'Zeta23.OPICAFollowup.SourceVerticalBounds'],
 }
+DEPENDENCY_V1_SHA256 = '32f2c2e57743f5c1a98176ac64f3b2671e8c45f8355361130ff0271361105a91'
 
 
 def dependency_amendment_errors(register: dict, manifest: dict, root: Path = REPO) -> list[str]:
@@ -66,7 +78,9 @@ def dependency_amendment_errors(register: dict, manifest: dict, root: Path = REP
     amendment = register.get('implementation_dependency_amendment', {})
     required = {
         'schema': 'OPICA_IMPLEMENTATION_DEPENDENCY_AMENDMENT_V1',
-        'id': 'DEP_2026_10_21_01',
+        'id': 'DEP_2026_10_21_02',
+        'supersedes': 'DEP_2026_10_21_01',
+        'previous_amendment_sha256': DEPENDENCY_V1_SHA256,
         'status': 'IMPLEMENTATION_ONLY_NO_MATHEMATICAL_SCOPE_CHANGE',
         'frozen_manifest_sha256': FROZEN_SPEC['BUILD_MANIFEST.json'],
         'frozen_public_roots_sha256': FROZEN_SPEC['PUBLIC_ROOTS.json'],
@@ -77,6 +91,11 @@ def dependency_amendment_errors(register: dict, manifest: dict, root: Path = REP
     for key, value in required.items():
         if amendment.get(key) != value:
             errors.append('implementation dependency amendment changed: ' + key)
+    history = register.get('implementation_dependency_history', [])
+    if (not isinstance(history, list) or len(history) != 1
+            or hashlib.sha256(json.dumps(history[0], sort_keys=True, separators=(',', ':'),
+                ensure_ascii=False).encode('utf-8')).hexdigest() != DEPENDENCY_V1_SHA256):
+        errors.append('previous dependency amendment missing or changed')
     rows = amendment.get('rows', [])
     if (not isinstance(rows, list) or len(rows) != len(DEPENDENCY_REFINEMENTS)
             or {r.get('module') for r in rows} != set(DEPENDENCY_REFINEMENTS)):
