@@ -70,6 +70,168 @@ jobs:
           name: opica-formal
           path: /tmp/opica-formal
           if-no-files-found: error
+      - name: Materialize canonical derived state for review on pushes
+        id: materialize-derived
+        if: github.event_name == 'push'
+        run: |
+          python - <<'PY'
+          import datetime, hashlib, json, os, shutil, subprocess, sys, tempfile
+          from pathlib import Path, PurePosixPath
+
+          repo = Path.cwd().resolve()
+          output = Path('/tmp/opica-materialized-state')
+          # Remove only this fixed external destination before any producer runs.
+          if output.is_symlink() or output.is_file():
+              output.unlink()
+          elif output.exists():
+              shutil.rmtree(output)
+
+          def require(condition, message):
+              if not condition:
+                  raise SystemExit(message)
+
+          def git(*args):
+              return subprocess.check_output(['git', *args], cwd=repo)
+
+          def paths(raw):
+              return sorted(p.decode('utf-8') for p in raw.split(b'\0') if p)
+
+          def source_path(relative):
+              require(isinstance(relative, str), 'Non-string manifest path')
+              pure = PurePosixPath(relative)
+              require(not pure.is_absolute() and pure.as_posix() == relative
+                  and '..' not in pure.parts and '\\' not in relative,
+                  'Invalid manifest path: ' + relative)
+              path = repo.joinpath(*pure.parts)
+              require(path.resolve().is_relative_to(repo) and path.is_file()
+                  and not any(parent.is_symlink() for parent in [path, *path.parents] if parent != repo),
+                  'Missing, symlinked or escaping manifest file: ' + relative)
+              return path
+
+          def sha(data):
+              return hashlib.sha256(data).hexdigest()
+
+          manifest = json.loads((repo / 'research/RHRC/integration/opica/BUILD_MANIFEST.json').read_bytes())
+          require(manifest.get('schema') == 'OPICA_REPO_BUILD_SPEC_V1', 'Unexpected manifest schema')
+          generated = manifest['regenerate']['paths']
+          sources = [item['path'] for item in manifest['create'] + manifest['modify']]
+          require(len(generated) == 62 and len(set(generated)) == 62
+              and len(sources) == 59 and len(set(sources)) == 59
+              and not set(generated) & set(sources), 'Wrong source/generated inventories')
+          require(manifest['regenerate']['producer'] == 'research/RHRC/tools/materialize_derived_state.py --write',
+              'Canonical producer identity changed')
+          require(set(paths(git('ls-files', '-z', '--', *generated))) == set(generated),
+              'Every generated target must already be tracked')
+          for relative in generated + sources:
+              source_path(relative)
+          receipt_bytes = Path('/tmp/opica-formal/compiler-receipt.json').read_bytes()
+          receipt = json.loads(receipt_bytes)
+          release = json.loads(Path('/tmp/opica-formal/release-contract.json').read_bytes())
+          head = git('rev-parse', 'HEAD').decode().strip()
+          tree = git('rev-parse', 'HEAD^{tree}').decode().strip()
+          require(receipt.get('schema') == 'OPICA_COMPILER_RECEIPT_V1'
+              and receipt.get('status') == 'COMPILER_VERIFIED'
+              and receipt.get('checked_commit') == head and receipt.get('checked_tree') == tree
+              and receipt.get('requested_head') == head and receipt.get('checkout_kind') == 'PR_HEAD',
+              'Materialization requires the completed current-push compiler receipt')
+          require(release.get('phase') == 'release' and release.get('status') == 'PASS'
+              and release.get('errors') == [] and release.get('checked_commit') == head
+              and release.get('checked_tree') == tree and release.get('tracked_source_dirty') is False
+              and release.get('source_sha256') == receipt['sources'], 'Current release validation is required')
+          require(os.environ.get('GITHUB_EVENT_NAME') == 'push' and os.environ.get('GITHUB_SHA') == head,
+              'Materialization transport is limited to the actual push head')
+          require(not git('status', '--porcelain', '-z'), 'Initial materialization checkout must be clean')
+
+          def unchanged_source():
+              require(git('rev-parse', 'HEAD').decode().strip() == head
+                  and git('rev-parse', 'HEAD^{tree}').decode().strip() == tree, 'Git identity changed')
+              actual = {relative: sha(source_path(relative).read_bytes()) for relative in sources}
+              require(actual == receipt['sources'], 'The exact 59 compiler-bound source hashes changed')
+              require(subprocess.run(['git', 'diff', '--cached', '--quiet', 'HEAD', '--'], cwd=repo).returncode == 0,
+                  'The canonical producer must not stage changes')
+              return actual
+
+          def generated_delta():
+              tracked = paths(git('diff', '--no-renames', '--name-only', '-z', 'HEAD', '--'))
+              untracked = paths(git('ls-files', '--others', '--exclude-standard', '-z'))
+              require((set(tracked) | set(untracked)) <= set(generated),
+                  'Producer changed a path outside the exact 62 generated targets')
+              return tracked, untracked
+
+          unchanged_source()
+          producer = [sys.executable, 'research/RHRC/tools/materialize_derived_state.py', '--write']
+          subprocess.run(producer, cwd=repo, check=True)
+          # No dedicated artifact directory exists until the complete unchanged
+          # pipeline exits zero and every source/delta/copy guard succeeds.
+          source_sha256 = unchanged_source()
+          tracked, untracked = generated_delta()
+          staging = Path(tempfile.mkdtemp(prefix='opica-materialized-state-', dir='/tmp'))
+          try:
+              inventory = []
+              for relative in generated:
+                  data = source_path(relative).read_bytes()
+                  target = staging / 'files' / relative
+                  target.parent.mkdir(parents=True, exist_ok=True)
+                  target.write_bytes(data)
+                  require(target.read_bytes() == data, 'Generated byte copy mismatch')
+                  inventory.append({'path': relative, 'bytes': len(data), 'sha256': sha(data)})
+              for record in inventory:
+                  current = source_path(record['path']).read_bytes()
+                  require(len(current) == record['bytes'] and sha(current) == record['sha256'],
+                      'Generated file changed during artifact capture')
+              require(unchanged_source() == source_sha256 and generated_delta() == (tracked, untracked),
+                  'Checkout changed during artifact capture')
+              generation = {
+                  'schema': 'OPICA_DERIVED_STATE_MATERIALIZATION_V1', 'status': 'MATERIALIZED',
+                  'generated_at_utc': datetime.datetime.now(datetime.timezone.utc).isoformat(),
+                  'checked_commit': head, 'checked_tree': tree, 'event': 'push',
+                  'workflow_run_id': os.environ['GITHUB_RUN_ID'],
+                  'workflow_run_attempt': os.environ['GITHUB_RUN_ATTEMPT'],
+                  'producer_argv': producer, 'producer_exit_code': 0,
+                  'compiler_receipt_sha256': sha(receipt_bytes), 'source_sha256': source_sha256,
+                  'generated_files': inventory, 'modified_tracked_paths': tracked, 'untracked_paths': untracked,
+                  'independent_review_approved': False, 'independent_human_review_approved': False,
+                  'workflow_green_inferred': False, 'RH': 'OPEN', 'Step4': 'OPEN',
+                  'authority': 'Exact canonical-producer bytes for review and a later commit; freshness is still gated.'}
+              (staging / 'generation.json').write_bytes((json.dumps(generation, indent=2) + '\n').encode('utf-8'))
+              require({p.relative_to(staging).as_posix() for p in staging.rglob('*') if p.is_file()}
+                  == {'generation.json'} | {'files/' + relative for relative in generated},
+                  'Dedicated artifact inventory differs from the exact 62 generated files')
+              os.replace(staging, output)
+          finally:
+              if staging.exists():
+                  shutil.rmtree(staging)
+          print('Captured all 62 canonical generated files; ' + str(len(tracked))
+              + ' tracked changes and ' + str(len(untracked)) + ' untracked changes. Freshness remains required.')
+          PY
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: github.event_name == 'push' && !cancelled() && steps.materialize-derived.outcome == 'success'
+        with:
+          name: opica-materialized-state
+          path: /tmp/opica-materialized-state
+          if-no-files-found: error
+      - name: Require canonical generated files to be committed
+        if: github.event_name == 'push' && !cancelled() && steps.materialize-derived.outcome == 'success'
+        run: |
+          python - <<'PY'
+          import json, subprocess
+          from pathlib import Path
+          manifest = json.loads(Path('research/RHRC/integration/opica/BUILD_MANIFEST.json').read_bytes())
+          allowed = manifest['regenerate']['paths']
+          if len(allowed) != 62 or len(set(allowed)) != 62:
+              raise SystemExit('Wrong generated freshness allowlist')
+          result = subprocess.run(['git', 'diff', '--quiet', 'HEAD', '--', *allowed])
+          if result.returncode not in (0, 1):
+              raise SystemExit('Generated freshness diff command failed')
+          changed = subprocess.check_output(['git', 'diff', '--no-renames', '--name-only', '-z', 'HEAD', '--', *allowed])
+          untracked = subprocess.check_output(['git', 'ls-files', '--others', '--exclude-standard', '-z', '--', *allowed])
+          tracked_paths = sorted(p.decode('utf-8') for p in changed.split(b'\0') if p)
+          untracked_paths = sorted(p.decode('utf-8') for p in untracked.split(b'\0') if p)
+          print(json.dumps({'modified_generated_paths': tracked_paths, 'untracked_generated_paths': untracked_paths}))
+          if result.returncode or untracked_paths:
+              raise SystemExit('Canonical generated files differ from HEAD; review the captured artifact and commit the exact bytes.')
+          print('All 62 canonical generated files match HEAD.')
+          PY
 
   opica-regression:
     runs-on: ubuntu-latest
