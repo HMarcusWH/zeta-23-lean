@@ -192,8 +192,23 @@
     "old_binding_objects_preserved": 118,
     "open_claims_preserved": 4,
     "independent_review_approved": false,
-    "final_complete_receipt": "PENDING",
-    "all_workflow_harvest": "PENDING"
+    "final_complete_receipt": "VERIFIED_AT_RECORDED_EARLIER_CHECKPOINT",
+    "all_workflow_harvest": "VERIFIED_AT_RECORDED_EARLIER_CHECKPOINT",
+    "evidence_checkpoint": {
+      "pr_head": "567d78de11ee3e3b7ae7e455fab0bf096ce90c34",
+      "pr_head_tree": "a77cd179801557a4c1a901ad74dc092d532624f5",
+      "checked_commit": "a6a4ce34cc82d5e54629ddfe6b013d8a92a18534",
+      "checked_tree": "a77cd179801557a4c1a901ad74dc092d532624f5",
+      "pr_test_merge": "a6a4ce34cc82d5e54629ddfe6b013d8a92a18534",
+      "pr_test_merge_tree": "a77cd179801557a4c1a901ad74dc092d532624f5",
+      "report": "POST_GREEN_RESEARCH.md",
+      "report_sha256": "6c79c24d9ae60dd0df6d30244a4eb328966c62b3c58ccf03fa01a10906db6dc6",
+      "external_binding_sha256": "76dca2f94f2acc32a307cd9da323979c6f4c38493539631b35228408d5d756ab",
+      "scope": "Earlier observed checkpoint only; publication head is rechecked externally.",
+      "independent_human_review_approved": false,
+      "RH": "OPEN",
+      "Step4": "OPEN"
+    }
   },
   "registry_dependency_derivation": "For each new supporting root, traverse all compiler TYPE/VALUE/STRUCTURE uses, including private/unregistered helpers, and map every reached registered theorem using both118old and76newbindings. Exclude the root itself; retain sorted distinct IDs. Release validation recomputes the exact list from the complete current compiler receipt. This is compiler-use provenance, not logical equivalence or proof of a generic antecedent."
 }

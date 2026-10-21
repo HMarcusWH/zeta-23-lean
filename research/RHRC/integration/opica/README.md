@@ -1,13 +1,15 @@
 # OPICA implementation
 
-**Status: kernel checks complete; integration and PR validation in progress.**
-All 76 required primary declarations and all 143 explicit expected-type consumers
-compile against the pinned Lean/Mathlib versions. The fresh historical native
-build completed all 4,461 jobs, and the complete native adapter build completed
-all 4,465 jobs. The required scope includes every clause of the 25 paper families
-and the native source consumers. The complete six-target build/public export,
-final registry audit, generated-state refresh and final PR workflow harvest
-must finish before a green release is claimed.
+**Status: complete validation at the recorded earlier checkpoint.**
+The [checkpoint report](POST_GREEN_RESEARCH.md) records PR head
+`567d78de11ee3e3b7ae7e455fab0bf096ce90c34`, actual compiler checkout
+`a6a4ce34cc82d5e54629ddfe6b013d8a92a18534`, their trees, complete compiler evidence
+and the paginated workflow dispositions. It includes all 76 primary roots,
+all 143 explicit consumers and every clause of the 25 paper families.
+This status describes that checkpoint. A later publication head requires
+fresh source/materialization receipts and workflow checks, retained
+externally. Independent mathematical/human approval remains false; RH
+and the existing closing obligations remain OPEN.
 
 The frozen `BUILD_SPEC.md`, `BUILD_MANIFEST.json`, `PUBLIC_ROOTS.json`,
 `PAPER_CROSSWALK.json`, and paper inputs describe the supplied specification.
