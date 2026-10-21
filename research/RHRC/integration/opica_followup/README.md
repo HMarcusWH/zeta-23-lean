@@ -12,13 +12,16 @@ The current compiled mathematical slice comprises `NormFirstTransfer`,
 `BalancedCoefficients`, `SourceVerticalBounds`, `ZetaLeftLineBounds`,
 `NativeSourceTransforms`, `NativeExplicitFormula`, `NativeFilters`,
 `NativeTransformationWords`, `UniformSourceBounds` and
-`ForwardLocalization`: thirty-eight original primary declarations.
+`ForwardLocalization`, plus `LogSlackBalance`: forty-one original primary declarations.
+`MaskedNativeRate`, `AuxiliaryCompletions` and `ComplexLocalMeasures` contain
+checked supporting work; their full primary contracts remain unfinished.
 The explicit types in `Validation.lean` check their intended domains and
 conclusions. These local results do not establish the missing native
 window-rate, complex-measure or spectral constructions. In particular, the
 library does not yet have the complete public sibling facade. The earlier
-eleven-root exact-source compiler receipt is historical; the current expected-type
-check does not promote that receipt to a new exact-tree audit.
+eleven-root receipt is historical. The clean checkpoint at `e52964d79263e8bd208a14d08745405d897e3610`
+passed the exact-source 38-root audit; the continuation requires its own fresh
+receipt and never inherits formal evidence for changed bytes.
 
 `SOURCE_REGISTER.json` contains dependency amendment `DEP_2026_10_21_03`,
 with both predecessors retained and hash checked.
@@ -41,7 +44,24 @@ explicit formula retains both signs of ordinates and absolute nontrivial and
 trivial series. Generator unit coverage includes a proved real-cutoff adapter
 and a nonintegral cutoff physical consumer. The contour budget is uniform in
 the moving integer line before optimization. Physical forward-kernel inversion,
-the complete generator action root and the optimized decay root remain pending.
+the complete generator action root and optimized fixed-order decay are proved.
+
+The continuation composes this actual decay with the full finite palette/filter
+history to prove the original Type I bound. Its constants precede every horizon
+and allowed squarefree palette. The fixed two-factor specialization uses the
+literal Pj source and retains both real cutoffs and all repeated-prime products.
+Separate actual low-mask bounds and the exact signed regrouping are supporting
+results; their scheduled L2/logarithmic-rate primaries remain open. Explicit
+`ArithmeticFunction` types prevent convolution powers from elaborating as
+pointwise function powers. An adversarial consumer proves that their coefficients
+at n=4, Q=1, Y=3/2, r=2 are respectively one and zero.
+
+Auxiliary support now includes the literal endpoint density, its explicit L1
+budget, the unit endpoint atom and both-sign Fourier decay. Actual Poisson,
+the complete Laplace domain and uniform ratios are still required. Complex
+measure support includes actual compact restrictions/coherence/integration,
+the priced factor-two variation comparison and compact test convergence.
+The common-growth Schwartz-tail bridge and complete primary remain required.
 
 ## Accepted parent and immutable sources
 
@@ -127,8 +147,8 @@ python research/RHRC/integration/opica_followup/validate_contract.py --phase pre
 python research/RHRC/integration/opica_followup/replay_controls.py --modes normal optimized --include-numerical --output-dir <external-output-directory>
 ```
 
-`build_receipt.py --preparation-only` audits the explicitly selected thirty-eight
-roots and all public declarations in their fourteen defining modules. It exports
+`build_receipt.py --preparation-only` audits the explicitly selected forty-one
+roots and all public declarations in eighteen mathematical modules. It exports
 full type DAGs, constructor types, allowed axioms and recursive project-helper
 TYPE/VALUE/STRUCTURE dependencies. The full release mode deliberately fails;
 a subset receipt cannot satisfy the 100-root acceptance contract.
@@ -139,8 +159,21 @@ lemma in a child module. The updated exporter includes compiler-reserved
 equations with original-definition provenance and the same complete public
 type, axiom and dependency audit. That failed attempt is not a passing receipt.
 
-Still required: the remaining 62 primary declarations and companion clauses,
+Still required: the remaining 59 primary declarations and companion clauses,
 all actual native constructors/consumers, complete mandatory expected-type
 contracts, full parent-extension integration, all child proof lanes and CI,
 global registration, exact canonical Linux regeneration, and final current-tree
 acceptance. Read `POST_GREEN_RESEARCH.md` before choosing the next theorem.
+
+The draft workflow checks preparation, the exact implemented subset and frozen
+regressions separately. Its full-release-readiness job deliberately reports
+`FAIL_RELEASE_INCOMPLETE`. These draft jobs do not fulfill the original complete
+four-lane/aggregate/generated/research-delta acceptance contract. All inherited
+parent workflows remain in place; their full integration and canonical-state
+requirements remain blockers. A green subset must not make this PR ready to merge.
+
+The original continuation's 39 payloads, six matching loose uploads and both patch
+replays were verified. Its 5,969 finite controls and 65 structural checks passed
+per Python mode. Lean elaboration corrections and the semantic convolution fix
+are recorded in `SOURCE_REGISTER.json`; the supplied paper text remains separately
+identified DERIVED/PAPER input. All 100 original roots and 28 units remain required.

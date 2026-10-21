@@ -1,6 +1,6 @@
 {
   "schema": "OPICA_FOLLOWUP_WORKFLOW_CONTRACT_PREPARATION_V1_1",
-  "status": "PARTIAL_NO_CHILD_CI_CREATED",
+  "status": "PARTIAL_DRAFT_SUBSET_CI_CONFIGURED_FULL_ACCEPTANCE_CLOSED",
   "full_acceptance_open": false,
   "planned_jobs": [
     {
@@ -83,5 +83,29 @@
   "primary_root_count_required": 100,
   "optional_amendment_candidates_required": false,
   "RH": "OPEN",
-  "Step4": "OPEN"
+  "Step4": "OPEN",
+  "actual_draft_jobs": [
+    {
+      "id": "preparation-contract",
+      "class": "FORMAL_VALIDITY_GATE_STATIC",
+      "scope": "Frozen inputs and parent preservation only"
+    },
+    {
+      "id": "subset-formal",
+      "class": "FORMAL_VALIDITY_GATE",
+      "scope": "Exact selected41 roots plus all public supporting declarations in18 modules; not full100"
+    },
+    {
+      "id": "frozen-regression",
+      "class": "REGRESSION_GATE",
+      "scope": "All frozen exact/numerical controls and child mutations"
+    },
+    {
+      "id": "full-release-readiness",
+      "class": "COMPLETENESS_GATE",
+      "scope": "Expected FAIL_RELEASE_INCOMPLETE until full original acceptance is implemented"
+    }
+  ],
+  "actual_draft_workflow": ".github/workflows/rhrc_opica_followup.yml",
+  "planned_jobs_status": "All original planned jobs remain mandatory; the draft jobs do not fulfill their complete acceptance contracts."
 }

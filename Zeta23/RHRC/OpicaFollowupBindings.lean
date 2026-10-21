@@ -156,6 +156,9 @@ private def reservedEquationOrigin? (env : Environment) (name : Name)
 
 run_cmd do
   let queries : Array SourceCandidateQuery := #[
+    ({ sourceId := "OPICA_FOLLOWUP_LOG_SLACK_NATIVE_DECOMPOSITION", moduleName := "Zeta23.OPICAFollowup.LogSlackBalance", shortName := "Zeta23.OPICAFollowup.log_slack_native_decomposition", sourceKind := "THEOREM" } : SourceCandidateQuery),
+    ({ sourceId := "OPICA_FOLLOWUP_LOG_SLACK_TYPEI_ERROR", moduleName := "Zeta23.OPICAFollowup.LogSlackBalance", shortName := "Zeta23.OPICAFollowup.log_slack_typeI_error", sourceKind := "THEOREM" } : SourceCandidateQuery),
+    ({ sourceId := "OPICA_FOLLOWUP_FIXED_TWO_FACTOR_PREPARATION", moduleName := "Zeta23.OPICAFollowup.LogSlackBalance", shortName := "Zeta23.OPICAFollowup.fixed_two_factor_preparation", sourceKind := "THEOREM" } : SourceCandidateQuery),
     ({ sourceId := "OPICA_FOLLOWUP_SOURCEFAMILY_ZERO_EQ_ORIGINAL", moduleName := "Zeta23.OPICAFollowup.NativeSourceFamily", shortName := "Zeta23.OPICAFollowup.sourceFamily_zero_eq_original", sourceKind := "THEOREM" } : SourceCandidateQuery),
     ({ sourceId := "OPICA_FOLLOWUP_SOURCEFAMILY_SUPPORT_SMOOTH_MOMENTS", moduleName := "Zeta23.OPICAFollowup.NativeSourceFamily", shortName := "Zeta23.OPICAFollowup.sourceFamily_support_smooth_moments", sourceKind := "THEOREM" } : SourceCandidateQuery),
     ({ sourceId := "OPICA_FOLLOWUP_SOURCEFAMILY_LAPLACE_IDENTITY", moduleName := "Zeta23.OPICAFollowup.NativeSourceTransforms", shortName := "Zeta23.OPICAFollowup.sourceFamily_laplace_identity", sourceKind := "THEOREM" } : SourceCandidateQuery),
@@ -197,6 +200,10 @@ run_cmd do
   resolveSourceCandidates queries
   let env ← getEnv
   let mathematicalModules : Array String := #[
+    "Zeta23.OPICAFollowup.AuxiliaryCompletions",
+    "Zeta23.OPICAFollowup.ComplexLocalMeasures",
+    "Zeta23.OPICAFollowup.LogSlackBalance",
+    "Zeta23.OPICAFollowup.MaskedNativeRate",
     "Zeta23.OPICAFollowup.BalancedCoefficients",
     "Zeta23.OPICAFollowup.Counterexamples",
     "Zeta23.OPICAFollowup.ForwardLocalization",

@@ -26,6 +26,21 @@ MATHEMATICAL_MODULES = frozenset(['Zeta23.OPICAFollowup.BalancedCoefficients', '
 IMPLEMENTED_ROOT_NAMES = frozenset(['Zeta23.OPICAFollowup.approx_compatibility_left_null', 'Zeta23.OPICAFollowup.balanced_coeff_divisor_bound', 'Zeta23.OPICAFollowup.coupled_gram_collision_control', 'Zeta23.OPICAFollowup.energy_allocation_bound', 'Zeta23.OPICAFollowup.energy_allocation_rate_lower', 'Zeta23.OPICAFollowup.forced_positive_gram_nonreal_control', 'Zeta23.OPICAFollowup.forwardKernel_double_exp_decay', 'Zeta23.OPICAFollowup.forwardKernel_left_contour_budget', 'Zeta23.OPICAFollowup.forwardKernel_physical_laplace', 'Zeta23.OPICAFollowup.history_recovery_cost_control', 'Zeta23.OPICAFollowup.joint_recovery_iff', 'Zeta23.OPICAFollowup.joint_recovery_noise_bound', 'Zeta23.OPICAFollowup.joint_recovery_optimal_norm', 'Zeta23.OPICAFollowup.laurent_coefficient_error_bound', 'Zeta23.OPICAFollowup.laurent_observation_survives', 'Zeta23.OPICAFollowup.nativeGenerator_transform', 'Zeta23.OPICAFollowup.nativeGenerator_unit_or_completion', 'Zeta23.OPICAFollowup.nativePrimeField_visiblePole', 'Zeta23.OPICAFollowup.nativeWord_contour_consumer', 'Zeta23.OPICAFollowup.nativeWord_corrected_transform', 'Zeta23.OPICAFollowup.nativeWord_factor_costs', 'Zeta23.OPICAFollowup.nativeWord_first_nonzero_derivative', 'Zeta23.OPICAFollowup.nativeWord_order_and_leading', 'Zeta23.OPICAFollowup.native_binomial_inverse_identity', 'Zeta23.OPICAFollowup.native_field_theta_envelope', 'Zeta23.OPICAFollowup.native_source_explicit_formula', 'Zeta23.OPICAFollowup.native_zero_count_summability', 'Zeta23.OPICAFollowup.native_zero_sup_bounds', 'Zeta23.OPICAFollowup.norm_first_log_comparison', 'Zeta23.OPICAFollowup.norm_first_rate_transfer', 'Zeta23.OPICAFollowup.norm_first_strictly_weaker_control', 'Zeta23.OPICAFollowup.recovery_subexp_budget', 'Zeta23.OPICAFollowup.sourceFamily_laplace_identity', 'Zeta23.OPICAFollowup.sourceFamily_support_smooth_moments', 'Zeta23.OPICAFollowup.sourceFamily_zero_eq_original', 'Zeta23.OPICAFollowup.source_order_uniform_norms', 'Zeta23.OPICAFollowup.source_product_vertical_bound', 'Zeta23.OPICAFollowup.zeta_left_line_uniform_bound'])
 
 
+# The continuation adds three original primary roots and supporting declarations
+# in four already planned modules. Support alone never increases the root count.
+MATHEMATICAL_MODULES = MATHEMATICAL_MODULES | frozenset({
+    'Zeta23.OPICAFollowup.LogSlackBalance',
+    'Zeta23.OPICAFollowup.MaskedNativeRate',
+    'Zeta23.OPICAFollowup.AuxiliaryCompletions',
+    'Zeta23.OPICAFollowup.ComplexLocalMeasures',
+})
+IMPLEMENTED_ROOT_NAMES = IMPLEMENTED_ROOT_NAMES | frozenset({
+    'Zeta23.OPICAFollowup.log_slack_native_decomposition',
+    'Zeta23.OPICAFollowup.log_slack_typeI_error',
+    'Zeta23.OPICAFollowup.fixed_two_factor_preparation',
+})
+
+
 def require(condition, description):
     if not condition:
         raise ValueError(description)
@@ -307,8 +322,8 @@ def main():
             'frozen public root inventory changed')
     public = json.loads(root_bytes)['roots']
     roots = [row for row in public if row['full_name'] in IMPLEMENTED_ROOT_NAMES]
-    require(len(roots) == 38 and len({r['id'] for r in roots}) == 38,
-            'exact thirty-eight-root implemented subset required')
+    require(len(roots) == 41 and len({r['id'] for r in roots}) == 41,
+            'exact forty-one-root implemented subset required')
     before = source_manifest()
     records = []
     environment = os.environ.copy()

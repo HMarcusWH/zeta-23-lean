@@ -1,5 +1,138 @@
 # Post-Green Research Pass: partial OPICA follow-up and v1.1
 
+## Current continuation disposition — 41 selected roots, 59 unfinished
+
+This section supersedes the historical pending/count statements below. The
+original scope remains all100 primary roots and28 acceptance units. Publication
+is a DRAFT checkpoint; full release remains closed. Exact commit/tree authority
+comes from the final external compiler receipt and the matching CI artifact,
+not from a theorem count or this narrative. The clean38-root checkpoint was
+e52964d79263e8bd208a14d08745405d897e3610 / b8585ce45ed158661be1298f436f1103f2c923d2.
+
+### What became formally true
+
+PROVED locally with independent full expected types and actual-domain consumers:
+`log_slack_native_decomposition`, `log_slack_typeI_error` and
+`fixed_two_factor_preparation`. These retain the fixed r>=2,d>=r-1,C>1,eta>=0,
+K>C+r*eta+2r scope, constants before T and Q, frozen squarefree palettes,
+actual finite filter delays/masses, real cutoffs, full window and the literal
+Pj two-factor source. The actual forward theorem discharges the source-tail
+estimate; the desired native bound is not an assumption.
+
+PROVED supporting results: separate genuine low-mask finite budgets and signed
+regrouping; exact endpoint density expansion/L1 budget plus its unit atom and
+both-sign literal Fourier bound; actual compact complex restrictions,
+coherence/integration, Euclidean-versus-coordinate variation comparison and
+compact-test error bound. No auxiliary, masked-rate or complex-measure primary
+is completed merely by these helpers. Fifty-nine original roots remain.
+
+### Workflow harvest
+
+FORMAL VALIDITY GATES: every new module and independent consumer passed the
+pinned local compiler; requested axiom closures contain only propext,
+Classical.choice and Quot.sound. The aggregate and exact committed-source
+export separately bind all18 mathematical modules, complete public types,
+constructors and recursive project-private TYPE/VALUE/STRUCTURE provenance.
+Consult their actual exit records; a completed module is not full100 acceptance.
+
+REGRESSION GATES: rerun131 child tests and154 unchanged parent tests in each
+Python mode, all39920 frozen exact controls per mode, and33 numerical
+consistency cases. The supplied continuation's5969 finite assertions and65
+structural checks also passed per mode. Thirty-nine payload hashes, six loose
+upload comparisons and both literal patch replays passed. These do not turn
+finite experiments or provenance checks into infinite analytic proofs.
+
+RESEARCH-PRODUCING CHECKS: no new RH exclusion or independent closing estimate.
+Parent WP4's dedicated18/18 certificate, embedded smaller-budget UNRESOLVED7/18
+and RHRC CONTINUE/RH_OPEN remain distinct inherited results. Current child
+workflow results must be harvested at the published head; pending jobs remain
+pending. The configured draft full-release-readiness job deliberately fails
+while the complete original scope is unfinished. Subset green cannot override it.
+
+### What changed
+
+The unchecked continuation now has genuine local proof/consumer evidence after
+Lean API, coercion and tactic repairs. A material elaboration distinction was
+made explicit: in a coefficient-function context an untyped power could become
+a pointwise function power. Every absorbed power is now typed ArithmeticFunction
+before coercion, preserving the intended Dirichlet convolution. A compiled
+adversarial consumer at Q=1,Y=3/2,r=2,n=4 proves the actual coefficient is1 and
+the pointwise substitute is0; the repeated-prime tuple(2,2) is retained.
+
+All four direct project import lists match the original planned modules.
+Additional Mathlib polynomial/binomial imports are recorded separately.
+Both PDFs, frozen normatives, all100 roots, optional C1-C4 status and P0 sources
+remain intact. No statement promotion, new mathematical assumption or global
+theorem registration is inferred. Earlier failed elaborations remain failures.
+
+### Upstream implications
+
+DERIVED: an explicitly typed arithmetic-function convolution interface is the
+canonical source for both physical actions and finite observation coefficients.
+The actual fixed-family common-decay lemma compresses repeated Type I tail
+arguments, with constants only for fixed source/factor orders. Coordinate and
+Euclidean variation controls are comparable with a priced factor, not equal.
+
+### Downstream implications
+
+DERIVED/PAPER: the two explicit low budgets have logarithmic growth at most
+sqrt(T)+O(log T) under polynomial palettes; the Type I window L2 norm tends to
+zero. The scheduled limit and actual L2/norm-first consumers remain required.
+Allowed Q(T) changes the physical drives, so the parent theorem fixing U,V
+throughout a sequence cannot silently be instantiated by a varying palette.
+Use actual families/scalar-sequence comparisons with the correct quantifiers.
+
+Endpoint Fourier decay can feed actual Poisson at k>=1, then the filled
+Laplace continuation and uniform ratios. Compact complex convergence needs
+the common-growth Schwartz-tail bridge before the full primary is established.
+
+### Resurrected routes
+
+The log-slack Type I route no longer needs an additional assumed arithmetic
+cancellation estimate. The auxiliary route now has a checked endpoint-aware
+Fourier input. The complex-measure route has an actual compact convergence
+estimate. Full native lower rates, moving-order arguments and the independent
+signed high-mask upper remain open for their original reasons.
+
+### New RH-relevant clues
+
+LEAD / HYPOTHESIS: combine the genuine small Type I norm with both priced low
+masks to isolate the remaining signed high observation. Compose endpoint decay
+and source-priced upper bounds only after the actual Poisson/residual chain.
+These combinations identify narrower bottlenecks; they do not establish a
+cheap recovery map, zero rate for the uncompleted field, or a zero exclusion.
+
+### Falsification checks
+
+Compiled consumers retain Y=3/2, nontrivial polynomial palettes, repeated-prime
+products, k=0 with the unit endpoint atom, both Fourier signs and true variation
+of the difference of restrictions. Omitting the atom fails a constant test by
+one. Individual growth bounds do not imply Schwartz convergence: exp(n^2)delta_n
+converges locally in variation to zero but pairs to one with exp(-x^2).
+The common-growth dyadic proof remains DERIVED/PAPER. Fixed-order decay has not
+been promoted to moving-order decay. Optional C3 remains falsified without its
+epsilon restriction. No green checker supplies an independent native upper.
+
+### Highest-leverage next moves
+
+1. Complete both scheduled masked-rate roots with actual horizon-dependent L2
+   fields and the original variable-palette quantifiers.
+2. Finish actual Poisson, the filled auxiliary Laplace domain, uniform ratios
+   and the endpoint/Laguerre/finite-residual/terminal-memory chain.
+3. Formalize the common-growth Schwartz-tail limit and complete global complex
+   arithmetic/realification compatibility before the heat/profile/spectral chain.
+4. Complete all59 original missing roots, full parent-extension integration,
+   registration, canonical Linux regeneration and all mandatory proof lanes.
+   Harvest every published CI/research job before treating the PR as accepted.
+
+RH, Step4 and the independent closing inequalities remain OPEN.
+
+---
+
+The following sections preserve the earlier research passes and their exact
+historical dispositions. Their former counts and pending-audit descriptions do
+not override the current section or later exact compiler/workflow evidence.
+
 Date: 21 October 2026. Authority is stated per result. This is not a complete
 green follow-up PR. The required scope remains 100 roots and 28 acceptance
 units; the full release gate is closed.

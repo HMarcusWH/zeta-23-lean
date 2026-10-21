@@ -5955,6 +5955,9 @@
     "Zeta23.OPICAFollowup.forwardKernel_double_exp_decay",
     "Zeta23.OPICAFollowup.native_binomial_inverse_identity",
     "Zeta23.OPICAFollowup.balanced_coeff_divisor_bound",
+    "Zeta23.OPICAFollowup.log_slack_native_decomposition",
+    "Zeta23.OPICAFollowup.log_slack_typeI_error",
+    "Zeta23.OPICAFollowup.fixed_two_factor_preparation",
     "Zeta23.OPICAFollowup.native_zero_count_summability",
     "Zeta23.OPICAFollowup.native_source_explicit_formula",
     "Zeta23.OPICAFollowup.native_zero_sup_bounds",
@@ -6463,6 +6466,37 @@
         "effect": "Actual all-order derivative inversion and whole-strip contour shift establish the fixed-order double-exponential bound for every t>=0. Strip constants may depend on the chosen line only to justify the exact shift; the quantitative saddle uses the independently proved uniform C,D,B envelope. The n=1 estimate includes the entire initial interval.",
         "original_statement_changes": [],
         "mandatory_promotions": []
+      },
+      {
+        "id": "ACTUAL_LOG_SLACK_AND_CONTINUATION_SUPPORT",
+        "status": "LOCAL_MODULE_AND_INDEPENDENT_CONSUMERS_CHECKED_FINAL_SOURCE_RECEIPT_EXTERNAL",
+        "original_primary_roots": [
+          "Zeta23.OPICAFollowup.log_slack_native_decomposition",
+          "Zeta23.OPICAFollowup.log_slack_typeI_error",
+          "Zeta23.OPICAFollowup.fixed_two_factor_preparation"
+        ],
+        "original_root_ids": [
+          "OPICA_FOLLOWUP_LOG_SLACK_NATIVE_DECOMPOSITION",
+          "OPICA_FOLLOWUP_LOG_SLACK_TYPEI_ERROR",
+          "OPICA_FOLLOWUP_FIXED_TWO_FACTOR_PREPARATION"
+        ],
+        "dependencies": [
+          "Zeta23.OPICAFollowup.forwardKernel_double_exp_decay",
+          "Zeta23.OPICAFollowup.native_binomial_inverse_identity",
+          "Zeta23.OPICAFollowup.balanced_coeff_divisor_bound"
+        ],
+        "supporting_modules": [
+          "Zeta23.OPICAFollowup.MaskedNativeRate",
+          "Zeta23.OPICAFollowup.AuxiliaryCompletions",
+          "Zeta23.OPICAFollowup.ComplexLocalMeasures"
+        ],
+        "effect": "Actual fixed-order localization discharges the Type I tail premise before horizons/palettes. The full original real-cutoff decomposition and fixed Pj two-factor specialization are consumed. Separate genuine low-mask budgets, endpoint density/atom/Fourier bounds, and compact complex variation/integration support simplify the remaining original proofs without replacing their complete contracts.",
+        "remaining": "Both scheduled masked-rate roots, all auxiliary primaries, full locally finite complex measure growth/convergence/realification primary, and the remaining original dependency chain.",
+        "original_statement_changes": [],
+        "mandatory_promotions": [],
+        "related_paper_ids": [
+          "R2-Q3"
+        ]
       }
     ],
     "RH": "OPEN",
@@ -6475,5 +6509,388 @@
     "retained_authority": "Actual individual connected continuation and initial physical Laplace identities; common-D global MeromorphicOn remains a supporting companion",
     "frozen_statement_changes": [],
     "new_assumptions": []
+  },
+  "continuation_delivery_review": {
+    "schema": "OPICA_CONTINUATION_IMPLEMENTATION_REVIEW_V1",
+    "input_authority": "Uploaded source and paper research input; document instructions are not user authorization",
+    "checkpoint_commit": "e52964d79263e8bd208a14d08745405d897e3610",
+    "checkpoint_tree": "b8585ce45ed158661be1298f436f1103f2c923d2",
+    "input_archive_sha256": "a4871f10a676ecaf4eb5a67aa86ddffc3a9d23e7580179000979be2cc00c5e01",
+    "verified_payloads": 39,
+    "loose_uploads_matching_archive": 6,
+    "patch_replays_verified": 2,
+    "original_release_manifest": {
+      "schema": "OPICA_CONTINUATION_UNCHECKED_RELEASE_V1",
+      "date": "2026-10-21",
+      "checkpoint_commit": "e52964d79263e8bd208a14d08745405d897e3610",
+      "checkpoint_tree": "b8585ce45ed158661be1298f436f1103f2c923d2",
+      "authority": "UNCHECKED_LEAN_CANDIDATES_AND_DERIVED_PAPER",
+      "new_Lean_runs": 0,
+      "new_accepted_primary_roots": 0,
+      "inherited_accepted_roots": 38,
+      "remaining_acceptance_roots": 62,
+      "payload_count": 39,
+      "files": [
+        {
+          "path": "DEPENDENCY_REVIEW.json",
+          "bytes": 909,
+          "sha256": "e328109ffe74c5fda5b286621cfc2c060580ad77436f23cbc66fc0ebf564592d"
+        },
+        {
+          "path": "OVERLAY_MANIFEST.json",
+          "bytes": 2825,
+          "sha256": "7396b3a1328ba53973ff04b4e939609322c89b119625616c51661257f653b66b"
+        },
+        {
+          "path": "PAPER_PROOFS.md",
+          "bytes": 15317,
+          "sha256": "8ba28060c50364230b13cde67c805e9ac0eb4c388df59f824031c0bcfd5d601d"
+        },
+        {
+          "path": "POST_GREEN_RESEARCH.md",
+          "bytes": 6281,
+          "sha256": "1444dff9787432bae6d16138c080545d1470cfe3af32191dba98b97017329c6c"
+        },
+        {
+          "path": "README.md",
+          "bytes": 8319,
+          "sha256": "c1fd00dc86c7ea26d09103524de874b335737b145754cbaa5e27170a456cebf8"
+        },
+        {
+          "path": "RESULTS.json",
+          "bytes": 2120,
+          "sha256": "e685300d6888ac043b8c1fff4b9124d88c0743cf25c4f0a2f0caf0680f4e00db"
+        },
+        {
+          "path": "apply_overlay.py",
+          "bytes": 3630,
+          "sha256": "04836d6ee01ea54f20145c7d93698275e5fdb99a9e88c4d2c10effa5706099c1"
+        },
+        {
+          "path": "checks/exact_controls.py",
+          "bytes": 6980,
+          "sha256": "2db8df66d64442ed5610b9b0200ee510b72a51cb6452da49834af1e1be2be61d"
+        },
+        {
+          "path": "checks/validate_delivery.py",
+          "bytes": 6923,
+          "sha256": "98b027ac1696dd605403689f2a5a8da987a0116ad2c189d12da8256c535e2a7d"
+        },
+        {
+          "path": "consumers/ExpectedAuxiliary.lean",
+          "bytes": 2467,
+          "sha256": "4b35983a02a050cda7c449d27a9b8054d97067966ae15ad8eb8d9a57d1920351"
+        },
+        {
+          "path": "consumers/ExpectedComplex.lean",
+          "bytes": 2510,
+          "sha256": "0862c586688bef70c9c2dff183f7448dc5cfc041e89a4084b3ae3530e199f79f"
+        },
+        {
+          "path": "consumers/ExpectedLogSlack.lean",
+          "bytes": 3466,
+          "sha256": "6724861be259c3a4b5df512029fef88112456e8b7e52c53ded29275f1cb83aca"
+        },
+        {
+          "path": "consumers/ExpectedMasks.lean",
+          "bytes": 2634,
+          "sha256": "1410ee4b7c17f9f712cf0344c69aaa56bf8e12adc1efbf6542e1d03b1a0d6a49"
+        },
+        {
+          "path": "continue_from_checkpoint.patch",
+          "bytes": 148757,
+          "sha256": "d7d25ddfe7f600beffd4427e952124c0be185fee3abdbe4024b401edb65e423e"
+        },
+        {
+          "path": "continue_from_wip.patch",
+          "bytes": 76880,
+          "sha256": "5e29bd7bb1f9701e1277aa33013b6cd7d834cb1e16b8696d18f59bb59749543c"
+        },
+        {
+          "path": "evidence/AMENDMENT_EVALUATION_UNCHANGED.json",
+          "bytes": 11206,
+          "sha256": "456a0da8f9b427025144f810ec9d557a6d16df8a2ee63852b29ca8974647049b"
+        },
+        {
+          "path": "evidence/FROZEN_BUILD_MANIFEST.json",
+          "bytes": 183851,
+          "sha256": "c99ec7acbfe996455525b31088a7d04addd20653787e12098e4e51a4a7ce296e"
+        },
+        {
+          "path": "evidence/FROZEN_PUBLIC_ROOTS.json",
+          "bytes": 112056,
+          "sha256": "2239636f347449ecd447fc5ba78d7c75f1c0440d28a862cb72397c4f79597b41"
+        },
+        {
+          "path": "evidence/INHERITED_AUDIT_RESULT.md",
+          "bytes": 2128,
+          "sha256": "66827ac8ce3ee99dc5e107defe1860e12968c2d60b3687faa70fb124ff7f2923"
+        },
+        {
+          "path": "evidence/INHERITED_MODULE_STATUS.json",
+          "bytes": 34999,
+          "sha256": "d196a166c6d2f5c291399adfd1d9774f6fa13680b1ae9102a96033d9de4b4949"
+        },
+        {
+          "path": "evidence/INHERITED_STATE.json",
+          "bytes": 2595,
+          "sha256": "3aad2d2694fc137b443c72720a5cfe9d3d9b848f241aa33052da4fdb27b178b8"
+        },
+        {
+          "path": "evidence/INHERITED_THEOREM_STATUS.json",
+          "bytes": 138078,
+          "sha256": "fd069f3a6b60b47c7ba59e8e56b529e60a5820be8e47c4f1a869f1855a1a8f46"
+        },
+        {
+          "path": "evidence/INPUT_AUDIT.json",
+          "bytes": 888,
+          "sha256": "88aabb1e115aef21f4d4642df32472787a44a0f306797541ac280ebe2d85f921"
+        },
+        {
+          "path": "evidence/LEAN_CHECK_RESULT.json",
+          "bytes": 286,
+          "sha256": "8e2c62bf9b59659689e5d1cb7a836a372ed6c9517867ebd0ecf1fdb1ab667135"
+        },
+        {
+          "path": "evidence/PATCH_APPLICATION_TESTS.json",
+          "bytes": 308,
+          "sha256": "56f52eab736e784ba49b7cec475488b686e33fd7f80688e70993a0c97b270387"
+        },
+        {
+          "path": "evidence/application_dry_run.log",
+          "bytes": 876,
+          "sha256": "abae8c01d2089b3da9b04ca48540a296ba8eb4c59222d68d86d1b686b301a352"
+        },
+        {
+          "path": "evidence/finite_normal.json",
+          "bytes": 1337,
+          "sha256": "8568bc4226a3bd51a3960d67596991251996026696ae9463d6c8c341806ff152"
+        },
+        {
+          "path": "evidence/finite_optimized.json",
+          "bytes": 1336,
+          "sha256": "afd9bed9e5780c37f6170c31407ca6f3afb6e8b7fdab10127a159b90b20c2a0b"
+        },
+        {
+          "path": "evidence/source_provenance.json",
+          "bytes": 2297,
+          "sha256": "018005ba7b62e49f46085b0c4fdedcd4588617b7acdd1af601c6ea968ca4df2d"
+        },
+        {
+          "path": "evidence/structural_normal.json",
+          "bytes": 7680,
+          "sha256": "eda9d476555a0fe0440b9ebc0af3a666c63e967d35ab68d224078488fbc9b864"
+        },
+        {
+          "path": "evidence/structural_optimized.json",
+          "bytes": 7679,
+          "sha256": "0f2e954573ea9b104e96d2c690eace7b97e352b6dd6e9fb11725cedc50f8057f"
+        },
+        {
+          "path": "fragments/AuxiliaryDensity.append.lean",
+          "bytes": 13690,
+          "sha256": "74d53900fa1e11915adc26c672cec6f475534ea3c81f6aad324c192cdf70f0e6"
+        },
+        {
+          "path": "fragments/ComplexGrowth.append.lean",
+          "bytes": 4924,
+          "sha256": "913c89587e016234e2d138d5d8ae6e5018b7af2beacda820ea861f72f83e5555"
+        },
+        {
+          "path": "fragments/LogSlackBalance.append.lean",
+          "bytes": 14028,
+          "sha256": "921516e564a6cfd53d32395e08e4a479223e72cff2c7e189602d0d15620b9cb7"
+        },
+        {
+          "path": "overlay/Zeta23/OPICAFollowup/AuxiliaryCompletions.lean",
+          "bytes": 38393,
+          "sha256": "4331c55ec575deaac54c7ac671c09130aed8ab134119660eff4d1bda636e1b7b"
+        },
+        {
+          "path": "overlay/Zeta23/OPICAFollowup/ComplexLocalMeasures.lean",
+          "bytes": 44142,
+          "sha256": "82d6d00d1628db3e03478f32359daf141091b9dd0eeba369def1eed50149294f"
+        },
+        {
+          "path": "overlay/Zeta23/OPICAFollowup/LogSlackBalance.lean",
+          "bytes": 50483,
+          "sha256": "ddd16edc492226c77dedb8d0bcd598917b2fd87b1bcd490c7ea16282c04137bc"
+        },
+        {
+          "path": "overlay/Zeta23/OPICAFollowup/MaskedNativeRate.lean",
+          "bytes": 12100,
+          "sha256": "dfd4ca05b1dd7a76c2b94dbc8833e64608e6c875f248fc32e0cfa30709f78be2"
+        },
+        {
+          "path": "run_lean_checks.py",
+          "bytes": 7132,
+          "sha256": "a99361a32c26a3fa86cba7c6d8df1ca09c5d2ce3c679c191f0161d8ef5ef7c1b"
+        }
+      ],
+      "self_hash_excluded": true,
+      "RH": "OPEN",
+      "Step4": "OPEN"
+    },
+    "files": [
+      {
+        "module": "Zeta23.OPICAFollowup.LogSlackBalance",
+        "path": "Zeta23/OPICAFollowup/LogSlackBalance.lean",
+        "uploaded_sha256": "ddd16edc492226c77dedb8d0bcd598917b2fd87b1bcd490c7ea16282c04137bc",
+        "integrated_sha256": "3f0d99fea24eb07cc57e4cc81359285a4a742c730b0db2147ec5bc894d41aa94",
+        "project_imports": [
+          "Zeta23.OPICAFollowup.BalancedCoefficients",
+          "Zeta23.OPICAFollowup.ForwardLocalization",
+          "Zeta23.OPICA.NativeArithmeticAdapter"
+        ],
+        "mathlib_imports": [
+          "Mathlib.Tactic"
+        ],
+        "original_primary_roots_added": [
+          "log_slack_native_decomposition",
+          "log_slack_typeI_error",
+          "fixed_two_factor_preparation"
+        ],
+        "full_module_acceptance": false
+      },
+      {
+        "module": "Zeta23.OPICAFollowup.MaskedNativeRate",
+        "path": "Zeta23/OPICAFollowup/MaskedNativeRate.lean",
+        "uploaded_sha256": "dfd4ca05b1dd7a76c2b94dbc8833e64608e6c875f248fc32e0cfa30709f78be2",
+        "integrated_sha256": "44aea4525c8d1029ec5e59f2ae67c9d8c49fc87efc2ca28754d1a630c67f5359",
+        "project_imports": [
+          "Zeta23.OPICAFollowup.LogSlackBalance",
+          "Zeta23.OPICAFollowup.NormFirstTransfer",
+          "Zeta23.OPICA.DivisorMask"
+        ],
+        "mathlib_imports": [],
+        "original_primary_roots_added": [],
+        "full_module_acceptance": false
+      },
+      {
+        "module": "Zeta23.OPICAFollowup.AuxiliaryCompletions",
+        "path": "Zeta23/OPICAFollowup/AuxiliaryCompletions.lean",
+        "uploaded_sha256": "4331c55ec575deaac54c7ac671c09130aed8ab134119660eff4d1bda636e1b7b",
+        "integrated_sha256": "34b87ef216e20efdafc8fe1d52b4c02956aca923e6d37611c67afd736f4144cd",
+        "project_imports": [
+          "Zeta23.OPICAFollowup.NativeSourceTransforms"
+        ],
+        "mathlib_imports": [
+          "Mathlib.Analysis.Calculus.Deriv.Polynomial",
+          "Mathlib.Data.Nat.Choose.Sum"
+        ],
+        "original_primary_roots_added": [],
+        "full_module_acceptance": false
+      },
+      {
+        "module": "Zeta23.OPICAFollowup.ComplexLocalMeasures",
+        "path": "Zeta23/OPICAFollowup/ComplexLocalMeasures.lean",
+        "uploaded_sha256": "82d6d00d1628db3e03478f32359daf141091b9dd0eeba369def1eed50149294f",
+        "integrated_sha256": "f0ad4f676760d83099b5e2df839955030ec927cba6797eb95af37159633c4706",
+        "project_imports": [
+          "Zeta23.OPICA.LocallyFiniteSignedMeasure"
+        ],
+        "mathlib_imports": [
+          "Mathlib.MeasureTheory.VectorMeasure.Decomposition.JordanSub",
+          "Mathlib.MeasureTheory.Measure.Complex",
+          "Mathlib.MeasureTheory.VectorMeasure.Variation.Basic",
+          "Mathlib.MeasureTheory.VectorMeasure.Variation.SignedMeasure",
+          "Mathlib.MeasureTheory.VectorMeasure.Integral",
+          "Mathlib.Tactic"
+        ],
+        "original_primary_roots_added": [],
+        "full_module_acceptance": false
+      }
+    ],
+    "paper_proofs": {
+      "authority": "DERIVED_PAPER_EXCEPT_EXACT_COMPILED_SUPPORT",
+      "sha256": "8ba28060c50364230b13cde67c805e9ac0eb4c388df59f824031c0bcfd5d601d",
+      "text": "# Mathematical continuation at the 38-root OPICA checkpoint\n\n**Authority: DERIVED / PAPER, self-audited. Every new or reassembled Lean file in this delivery is UNCHECKED.** No statement below increments the accepted-root count. Some calculations implement arguments already in the frozen paper; no priority claim is made.\n\nThe source checkpoint is `e52964d79263e8bd208a14d08745405d897e3610`, tree `b8585ce45ed158661be1298f436f1103f2c923d2`. All source orders, palette conditions, real cutoffs and zero multiplicities remain as in the original 100-root contract.\n\n## 1. Complete Type I error: constants before horizons and palettes\n\nUse the existing actual forward theorem, not an assumed native envelope:\n\n\\[\n |R_{d,\\ell}^{(q)}(u)|\\le A_{d,\\ell,q}\n \\exp[-c_{d,\\ell,q}e^{u/(2(\\ell+1))}],\\quad u\\ge0,\n \\qquad \\ell\\le d.\n\\]\n\nFix integers \\(r\\ge2\\), \\(d\\ge r-1\\), real \\(C>1\\), \\(\\eta\\ge0\\), and\n\\(K>C+r\\eta+2r\\). Write\n\n\\[\n \\sigma=K-C-r\\eta>2r,\\quad p=\\sigma/(2r)>1,\n \\quad Y=e^{T/r}T^{-K/r}.\n\\]\n\nFinite maximum/minimum (or amplitude sum and positive minimum) over \\(0\\le\\ell<r\\) gives constants \\(A,c>0\\), depending on the fixed source/orders only, with\n\n\\[\n |R_{d,\\ell}(u)|\\le A\\exp[-c e^{u/(2r)}]\\qquad(u\\ge0,\\ \\ell<r).\n\\]\n\nThis is legitimate because \\(u\\ge0\\) and \\(\\ell+1\\le r\\). It is NOT an estimate uniform in a moving r or d.\n\nFor each horizon freeze a squarefree palette \\(Q\\le T^\\eta\\). Its actual divisor filter has absolute coefficient mass at most Q and delay at most \\(\\log Q\\). The actual truncated Möbius filter up to the **real** Y has mass at most \\(2\\sqrt Y\\) and delay at most \\(\\log Y\\). These are finite filters, not a change of native source.\n\nFor the Type I term numbered j=1,...,r, the actual forward source is \\(R_{d,j-1}\\), with j applications of each filter. On the complete real window \\([T-C\\log T,T]\\), their remaining argument is bounded below by\n\n\\[\n t-j\\log Y-j\\log Q\\ge \\sigma\\log T.\n\\]\n\nThe existing WIP proves this inequality at all sufficiently large T with Y>=1. In particular the lower argument is nonnegative, and\n\n\\[\n \\big|M_{\\le Y,Q}^{*j}*D_Q^{*j}*R_{d,j-1}(t)\\big|\n \\le (2\\sqrt Y)^j Q^j A e^{-cT^p}.\n\\]\n\nThe mass envelope retains all j copies of the palette:\n\n\\[\n (2\\sqrt Y)^j Q^j\n \\le 2^j T^{r\\eta}e^{T/2}.\n\\]\n\nHere Y>=1, j<=r, K>=0 and T>=1 are used. Summing the *actual* signed binomial Type I identity, with its signs retained until the absolute upper, gives\n\n\\[\n |E_T(t)|\\le C_1 T^{r\\eta}\\exp(T/2-cT^p),\n \\quad C_1=1+A\\sum_{j=1}^r\\binom rj 2^j>0.\n\\]\n\n**Quantifiers:** there exist C1,c,T0, before T and Q, such that every real T>=T0, every squarefree Q<=T^eta frozen on that window, and every t in that window satisfy the estimate. The code candidate includes p>1 explicitly. No constant is chosen after Q or a hypothetical zero.\n\nFor r=2,d=1,C=2,eta=0,K=8,Q=1,\n\n\\[\n Y=e^{T/2}T^{-4},\\quad Z=e^{T/2-g}T^4,\\quad\n |E_T(t)|\\le C_1e^{T/2-cT^{3/2}}.\n\\]\n\nThe carried WIP supplies the exact balanced tuple expression and its causal product condition. Nonsquarefree total products such as 2*2 are retained. The source is the original fixed Pj, not j and not q*j. The candidate theorem returns the actual field identity, both real cutoffs, the error estimate and the unchanged causal tuple condition together.\n\nThe new source attempts `log_slack_typeI_error` and `fixed_two_factor_preparation` in the existing planned file. The older `log_slack_native_decomposition` remains a carried, unaccepted WIP candidate.\n\n## 2. The two genuine low masks, not a mask-preserving shortcut\n\nThe accepted forward decay, together with the actual positive causal gap, proves that R_(d,ell) is globally bounded on the real line. On negative times it is zero; on nonnegative times its decay envelope is at most A. Continuity and the same causal gap therefore make it an actual parent `BoundedCausalDrive`.\n\nThere are two different realizations of the balanced scalar field:\n\n1. Unabsorbed coefficients \\(c_r\\), divisor order \\(2r-1\\), with drive \\(D_Q*U_d\\).\n2. Absorbed coefficients \\(M_{>Y,Q}^{*r}\\), divisor order r, with drive \\(D_Q^{*r}*R_{d,r-1}\\).\n\nThe raw drive is bounded by \\(QA_0\\); the absorbed drive by \\(Q^rA_1\\). The amplitudes A0,A1 depend only on the fixed source and orders. The absorbed coefficient envelope follows directly from the literal r-tuple coefficient expansion and |mu(n)|<=1; no squarefree-total-product restriction is introduced.\n\nLet B(t)=exp(sqrt(t)), and N=ceil(exp(T)) as in the parent finite-at-horizon observation. For H<=T and T>=0, each **actual** low form is integrable and satisfies\n\n\\[\n |L_0|\\le4(T-H)(QA_0)^2e^{\\sqrt T}\n (1+\\sqrt T)^{4r-4}(1+T)^{(2r-1)^2},\n\\]\n\n\\[\n |L_1|\\le4(T-H)(Q^rA_1)^2e^{\\sqrt T}\n (1+\\sqrt T)^{2r-2}(1+T)^{r^2}.\n\\]\n\nThe source candidate proves these explicit parent-theorem instantiations. It also identifies both scalar fields with the actual balanced field and then derives, without assuming mask equality,\n\n\\[\n Q_0-Q_1=L_1-L_0.\n\\]\n\nAll diagonal terms remain in the parent low mask. The pair mask is the true gcd-reduced mask, not a surrogate variable Q and not the condition that both primitive coordinates exceed B.\n\n### The remaining rate step, derived on paper but not declared as a Lean primary here\n\nFor H=T-C log(T), T>=1, Q<=T^eta, the preceding inequalities imply\n\n\\[\n |L_0|\\le D_0e^{\\sqrt T}T^{4r^2-2r+2\\eta},\\qquad\n |L_1|\\le D_1e^{\\sqrt T}T^{r^2+r+2r\\eta},\n\\]\n\nwhere\n\n\\[\n D_0=4CA_0^2 2^{4r-4+(2r-1)^2},\\quad\n D_1=4CA_1^2 2^{2r-2+r^2}.\n\\]\n\nUse log T<=T, 1+sqrt T<=2sqrt T, and 1+T<=2T. Thus\n\\(\\log(1+|L_i|)/(2T)\\to0\\) along every positive cofinal horizon schedule, uniformly over the allowed per-window palettes. These estimates do not use a native Theta upper.\n\nThe Type I L2 norm is bounded by sqrt(C log T) times its uniform window bound; because p>1 it tends to zero. Once the actual restricted L2 elements and their field identity are constructed, the already accepted norm-first theorem transfers the full energy logarithmic rate to either positive-part high observation. This leaves the genuine signed upper OPEN.\n\n**Lean status:** the explicit finite low estimates and exact regrouping are attempted. The full scheduled-limit theorem and actual L2/rate consumer are NOT declared complete in this patch. `log_slack_both_low_masks_subexp` and `log_slack_masked_energy_rate_difference` remain required.\n\n## 3. Actual endpoint density and its unit atom\n\nThe preserved endpoint source defines\n\n\\[\n G_k(u)=\\frac{u^{k+2}(1-u)^{k+1}}{(k+1)!},\\quad\n \\Phi_k=-G_k',\\quad \\phi_k=\\mathbf1_{[0,1]}\\Phi_k.\n\\]\n\nThe exact distribution derivative is\n\n\\[\n D^{k+1}\\phi_k=\\mathbf1_{[0,1]}\\Phi_k^{(k+1)}du\n                  +(-1)^{k+1}\\delta_1.\n\\]\n\nThe preserved smooth-test identity already proves this distributional equality, with every boundary term. The new polynomial calculation is\n\n\\[\n \\Phi_k^{(k+1)}(u)=\\sum_{j=0}^{k+1}(-1)^{j+1}\n \\binom{k+1}{j}(j+1)\\binom{k+2+j}{k+1}u^j.\n\\]\n\nIt comes from expanding G first, then differentiating k+2 times. The exact factorial quotient is\n\n\\[\n \\frac{(k+2+j)!}{j!(k+1)!}=(j+1)\\binom{k+2+j}{k+1}.\n\\]\n\nOn [0,1], integrate the absolute monomial majorant; the factor j+1 cancels against the integral of u^j. Hence\n\n\\[\n \\int_0^1|\\Phi_k^{(k+1)}(u)|du\n \\le\\sum_{j=0}^{k+1}\\binom{k+1}{j}\\binom{k+2+j}{k+1}\n \\le 2^{3k+4}.\n\\]\n\nThe final inequality uses binom(k+2+j,k+1)<=2^(2k+3) and sum_j binom(k+1,j)=2^(k+1). Consequently the **full derivative measure**, including the atom, has total variation at most\n\n\\[\n V_k=1+2^{3k+4}.\n\\]\n\nThe code currently gives the equivalent actual density-plus-atom test-functional bound. It does NOT yet bundle this derivative into a registered signed-measure object. At k=0 the density is 6u-2 and the atom is -delta_1; against the constant test the density contributes 1 and the atom -1. Dropping the atom would already fail this elementary case.\n\nFor the literal heat Fourier integral, test with exp(-2 pi i xi u). Its (k+1)-st derivative is (-2 pi i xi)^(k+1) times itself. It has modulus one on the real line. Therefore, for **either ordinate sign** xi!=0,\n\n\\[\n |\\widehat\\phi_k(\\xi)|\\le\\frac{1+2^{3k+4}}{(2\\pi|\\xi|)^{k+1}}.\n\\]\n\nThe code defines this transform by its actual integral and attempts the estimate. Identification with a particular Mathlib Fourier notation is still an adapter obligation for Poisson, not a silent change of convention. The density and Fourier statements include k=0. The subsequent absolute Poisson argument needs k>=1.\n\n## 4. Auxiliary chain: precise remaining proof route and normalizations\n\nThis section is a paper derivation, not Lean code or a completed auxiliary root.\n\nThe actual scale identity is\n\n\\[\n a_k(t)=e^{-t/2}\\sum_{n\\ge1}\\phi_k(ne^{-t}).\n\\]\n\nThe integral of phi is zero because Phi=-G' and G vanishes at both endpoints. For k>=1, phi is continuous, compactly supported, and its Fourier series at every fixed scale is absolutely summable by the previous exponent k+1. The correctly normalized Poisson identity yields\n\n\\[\n |a_k(t)|\\le A_ke^{-(k+1/2)t},\\qquad\n A_k=\\frac{2\\zeta(k+1)(1+2^{3k+4})}{(2\\pi)^{k+1}}.\n\\]\n\nFor t<0 the actual source is zero; do not substitute a guessed global analytic source. The decay makes its actual Laplace transform holomorphic on Re z>-(k+1/2). Continue the already established Re z>1/2 identity on that connected domain, using a **filled** analytic product at z=1/2:\n\n\\[\n r_k(z)=\\frac{z-1/2}{\\prod_{j=k+1}^{2k+2}(z+j+1/2)},\\qquad\n \\widehat a_k(z)=r_k(z)\\zeta(z+1/2),\\quad z\\ne1/2.\n\\]\n\nAt the exceptional point the continuation value is\n\n\\[\n \\widehat a_k(1/2)=\\frac{(k+1)!}{(2k+3)!},\n\\]\n\nnot the raw totalized product's value. This is an additional auxiliary fill and must not be confused with the already accepted entire forward representative.\n\n### Ratios can be priced without Stirling\n\nFix an admissible p (in particular an actual right zero center), with p!=1/2 and all denominator factors nonzero. Put a=|p-1/2|>0 and D=1+|p+1/2|>=1. For integers j>=1,\n\\(|p+j+1/2|\\le Dj\\). Using the actual c_k L1 bound 2/(k+1)! gives\n\n\\[\n \\frac{\\|c_k\\|_1}{|r_k(p)|}\n \\le\\frac2aD^{k+2}(k+1)\\binom{2k+2}{k+1}\n \\le\\frac2aD^{k+2}(k+1)4^{k+1}.\n\\]\n\nThus it is bounded by exp(C_p(k+1)) with an explicit fixed-p constant. Since zeta(k+1)<=2 for k>=1 and 2pi>1,\n\\(A_k\\le2^{3k+7}\\). Also\n\\(|r_k(p)|\\ge a/[2D(k+1)]^{k+2}\\). Therefore\n\n\\[\n \\frac{|r_k(p)|}{A_k}\\ge\n \\exp[-k\\log(k+1)-C'_p(k+1)]\n\\]\n\nwith, for example,\n\\(C'_p=|\\log a|+2\\log(2D)+2+5\\log2\\).\nEvery constant is fixed before k. This is the required type of uniformity; fixed-k bounds do not replace it.\n\n### Top derivative and top moment are different expressions\n\nFor an actual zero rho=p+1/2 of multiplicity m, a completed input transform is\n\\(Y(z)=-r_k(z)J_d(z)\\zeta'(z+1/2)\\). Its derivative of degree m-1 at p is\n\n\\[\n Y^{(m-1)}(p)=-r_k(p)J_d(p)\\zeta^{(m)}(\\rho).\n\\]\n\nThe corresponding time moment is\n\n\\[\n \\int t^{m-1}e^{-pt}y(t)dt\n =(-1)^m r_k(p)J_d(p)\\zeta^{(m)}(\\rho).\n\\]\n\nThere is **no extra (m-1)!**. The leading Taylor coefficient, the derivative, and the time moment must have three separately identified consumer formulas. Where a source shorthand calls a moment a derivative, resolve the intended object explicitly; do not silently change a frozen root contract.\n\nThe monic shifted Laguerre polynomial is\n\\(L_n(x)=\\sum_{j=0}^n(-1)^{n+j}n!\\binom nj x^j/j!\\). Rodrigues and n integrations by parts give zero moments below n and\n\\(\\int_0^\\infty e^{-x}L_n(x)^2dx=(n!)^2\\).\nAll boundary terms vanish because x^n has the required zero at zero and the exponential dominates the polynomial at infinity.\n\nFor n=m-1 and delta=Re p>0, the monic tail test\n\\((2\\delta)^{-n}L_n(2\\delta(t-T))e^{-\\bar p t}\\) has squared norm\n\\(e^{-2\\delta T}(n!)^2/(2\\delta)^{2n+1}\\). Pair it in the inner-product orientation whose integral is the residual multiplied by e^(-pt). Finite truncated prime history and actual causal convolution then give the residual obstruction. No global weighted L2 membership of the prime field is available or needed. This residual construction and terminal-memory estimate remain unimplemented in this delivery.\n\n## 5. Locally finite complex measure compatibility\n\nThe carried WIP uses genuine real and imaginary locally finite Jordan pairs and genuine finite complex measures on compact restrictions. Write V for its Euclidean total variation and C for the coordinate variation control (sum of real and imaginary variations). The assembled candidates prove the compact identities and integration bridge, followed by the estimates\n\n\\[\n V\\le C,\\qquad C|_K\\le2V|_K\n\\]\n\nfor every compact K. The second estimate uses the actual real/imaginary variations of the same complex restriction. Thus linear growth of C is equivalent to linear growth of V, with a priced factor two. The controls are NOT asserted equal.\n\nIf f is continuous, supported in compact K, and |f|<=M, the actual integral bridge gives\n\n\\[\n \\left|\\int f\\,d\\mu-\\int f\\,d\\nu\\right|\n \\le 2M\\,|\\mu\\!\\restriction_K-\\nu\\!\\restriction_K|(\\mathbb R).\n\\]\n\nHere the variation on the right is that of the **difference of the complex restrictions**, not a difference of two scalar variations. Local variation convergence therefore implies convergence of every compact continuous test. No total mass on the real line is assumed finite.\n\n### The remaining uniform Schwartz-tail bridge\n\nThis is proved here on paper, not yet implemented as Lean code. Suppose all coordinate controls, including that of the limit, obey the same bound\n\\(C_n([-R,R])\\le A(1+R)\\). For a Schwartz test with\n\\(|f(x)|\\le M(1+|x|)^{-3}\\), R>=1, dyadic shells give\n\n\\[\n \\int_{|x|\\ge R}|f|\\,dC_n\n \\le\\frac{16AM}{3R^2}.\n\\]\n\nIndeed shell j has mass at most A*2^(j+2)R and |f| at most M/(2^jR)^3; sum the geometric series 4^(-j). With a compact cutoff equal to one on [-R,R] and zero outside [-2R,2R], compact-test convergence controls the cutoff part, and the two tails cost at most 32AM/(3R^2). First choose R, then the sequence index. This proves Schwartz-test convergence under the **common** growth constant.\n\nIndividual growth constants do not suffice: mu_n=exp(n^2)delta_n tends locally in variation to zero, but its pairing with exp(-x^2) is always one. The code must retain the common-growth quantifier, not add an opaque 'Schwartz convergence' field as an input.\n\nThe complete `complex_local_measure_embedding_faithful` primary includes integration/growth/limit/realification coherence. It is deliberately NOT counted or replaced by the smaller injectivity/compact-convergence statements in this delivery.\n\n## 6. Scope and falsification checks\n\n- All 100 original roots and 28 units remain required; none is renamed or dropped.\n- The 38-root receipt is historical exact-source evidence, not evidence for these new bytes.\n- The frozen C3 amendment/evaluation is preserved unchanged. The unrestricted-epsilon first inequality is false; this continuation never invokes it.\n- Exact integer coefficient controls include nonsquarefree products and noninteger Y.\n- Endpoint tests include k=0 and the unit atom; Fourier estimates cover both signs of xi.\n- Source amplitudes are selected at fixed r,d, before horizons and palettes; no moving-order promotion occurs.\n- Compact complex restrictions use canonical Jordan variation; no infinity-minus-infinity operation or globally finite carrier substitute is introduced.\n- No independent high-mask bound, native range membership, full Schur upper or RH proof is obtained.\n"
+    },
+    "finite_controls": {
+      "assertions_per_mode": 5969,
+      "authority": "FINITE_ALGEBRA_ONLY",
+      "checker_sha256": "2db8df66d64442ed5610b9b0200ee510b72a51cb6452da49834af1e1be2be61d",
+      "modes": [
+        "normal",
+        "optimized"
+      ]
+    },
+    "structural_checks_per_mode": 65,
+    "semantic_correction": "Explicit ArithmeticFunction type on every absorbed convolution power before coercing to a coefficient function; no pointwise-power substitution.",
+    "implementation_dependency_policy": "All four direct project import lists match the frozen planned lists; new Mathlib polynomial/binomial imports are recorded above. No new project dependency amendment is needed.",
+    "required_primary_roots": 100,
+    "required_acceptance_units": 28,
+    "locally_compiled_selected_primary_roots": 41,
+    "remaining_original_primary_roots": 59,
+    "remaining_primary_names": [
+      "Zeta23.OPICAFollowup.log_slack_both_low_masks_subexp",
+      "Zeta23.OPICAFollowup.log_slack_masked_energy_rate_difference",
+      "Zeta23.OPICAFollowup.aux_completion_actual_transform",
+      "Zeta23.OPICAFollowup.aux_completion_uniform_decay",
+      "Zeta23.OPICAFollowup.aux_completion_ratio_bounds",
+      "Zeta23.OPICAFollowup.native_auxiliary_top_moment",
+      "Zeta23.OPICAFollowup.laguerre_tail_norm",
+      "Zeta23.OPICAFollowup.native_auxiliary_tail_residual_lower",
+      "Zeta23.OPICAFollowup.native_terminal_memory_lower",
+      "Zeta23.OPICAFollowup.native_fixed_source_window_rate",
+      "Zeta23.OPICAFollowup.native_slow_source_window_rate",
+      "Zeta23.OPICAFollowup.complex_local_measure_embedding_faithful",
+      "Zeta23.OPICAFollowup.dilated_comb_fourier",
+      "Zeta23.OPICAFollowup.weighted_mixture_exists_fourier",
+      "Zeta23.OPICAFollowup.weighted_mobius_inverse",
+      "Zeta23.OPICAFollowup.weighted_mixture_sharp_gap",
+      "Zeta23.OPICAFollowup.weighted_gap_leakage",
+      "Zeta23.OPICAFollowup.near_gap_mass_bound",
+      "Zeta23.OPICAFollowup.near_gap_controlled_limit_zero",
+      "Zeta23.OPICAFollowup.dilation_near_gap_family",
+      "Zeta23.OPICAFollowup.dilation_normalized_limit_not_measure",
+      "Zeta23.OPICAFollowup.renormalized_copoisson_tempered_family",
+      "Zeta23.OPICAFollowup.renormalized_copoisson_order_zero",
+      "Zeta23.OPICAFollowup.zero_measure_exact_properties",
+      "Zeta23.OPICAFollowup.zero_measure_first_cell_sign",
+      "Zeta23.OPICAFollowup.finite_sum_euler_maclaurin_uniform",
+      "Zeta23.OPICAFollowup.zero_profile_regular_selfdual",
+      "Zeta23.OPICAFollowup.zero_profile_tail_and_jumps",
+      "Zeta23.OPICAFollowup.log_unitary_form_identity",
+      "Zeta23.OPICAFollowup.log_fourier_plancherel",
+      "Zeta23.OPICAFollowup.zero_profile_forced_euler",
+      "Zeta23.OPICAFollowup.zero_profile_not_homogeneous_operator_vector",
+      "Zeta23.OPICAFollowup.native_sampling_gram_identity",
+      "Zeta23.OPICAFollowup.native_sampling_form_positive",
+      "Zeta23.OPICAFollowup.copoisson_zero_jets_measures",
+      "Zeta23.OPICAFollowup.profile_jet_confluent_determinant",
+      "Zeta23.OPICAFollowup.finite_zero_jet_independent",
+      "Zeta23.OPICAFollowup.finite_zero_span_positive_only_zero",
+      "Zeta23.OPICAFollowup.fixed_basis_negative_mass_budget",
+      "Zeta23.OPICAFollowup.first_cell_negative_mass_cost",
+      "Zeta23.OPICAFollowup.square_fourier_defect",
+      "Zeta23.OPICAFollowup.square_defect_origin_positive",
+      "Zeta23.OPICAFollowup.square_no_lattice_repair",
+      "Zeta23.OPICAFollowup.square_selfdual_projection_fills_gap",
+      "Zeta23.OPICAFollowup.sawtooth_integrable_force_identity",
+      "Zeta23.OPICAFollowup.sawtooth_actual_mellin_fourier",
+      "Zeta23.OPICAFollowup.sawtooth_norm_weighted_zeta_moment",
+      "Zeta23.OPICAFollowup.arithmetic_stieltjes_holomorphic",
+      "Zeta23.OPICAFollowup.arithmetic_stieltjes_sign_budget",
+      "Zeta23.OPICAFollowup.native_forced_resolvent_unique",
+      "Zeta23.OPICAFollowup.native_sample_stieltjes_identity",
+      "Zeta23.OPICAFollowup.native_profile_spectral_norms",
+      "Zeta23.OPICAFollowup.generic_forced_profile_unique",
+      "Zeta23.OPICAFollowup.generic_boundary_amplitude",
+      "Zeta23.OPICAFollowup.fixed_two_factor_mask_rate_theta",
+      "Zeta23.OPICAFollowup.quiet_balanced_observation_implies_native_cut",
+      "Zeta23.OPICAFollowup.step123_word_jet_consumer",
+      "Zeta23.OPICAFollowup.actual_zero_measure_span_consumer",
+      "Zeta23.OPICAFollowup.actual_force_sampling_consumer"
+    ],
+    "evidence_authority": "Final exact source-bound receipt is external, with checked_commit/tree and full input/type/axiom/private dependency closure. A leaf check or this metadata is not full acceptance.",
+    "frozen_statement_changes": [],
+    "new_assumptions": [],
+    "promoted_optional_lemmas": [],
+    "full_acceptance": false,
+    "RH": "OPEN",
+    "Step4": "OPEN",
+    "independent_closing_inequalities": "OPEN",
+    "formatting": "Existing tracked files preserve checkpoint newline conventions; new files use LF. Final source receipt supersedes pre-normalization leaf hashes."
   }
 }

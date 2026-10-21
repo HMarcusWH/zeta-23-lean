@@ -1,3 +1,7 @@
+import Zeta23.OPICAFollowup.LogSlackBalance
+import Zeta23.OPICAFollowup.MaskedNativeRate
+import Zeta23.OPICAFollowup.AuxiliaryCompletions
+import Zeta23.OPICAFollowup.ComplexLocalMeasures
 import Zeta23.OPICAFollowup.NativeTransformationWords
 import Zeta23.OPICAFollowup.UniformSourceBounds
 import Zeta23.OPICAFollowup.NativeFilters
@@ -13,7 +17,7 @@ import Zeta23.OPICAFollowup.NormFirstTransfer
 import Zeta23.OPICAFollowup.JointObservation
 import Zeta23.OPICAFollowup.Counterexamples
 
-/-! Partial expected-type audit: 38 of the 100 planned primary roots.
+/-! Partial expected-type audit: 41 of the 100 planned primary roots.
 This module does not assert full follow-up acceptance. -/
 
 
@@ -1161,3 +1165,331 @@ theorem expected_forward_all_derivatives_at_zero (d ell k : ℕ) :
 #print axioms expected_forward_all_derivatives_at_zero
 
 end Zeta23.OPICAFollowup.Validation
+
+
+/-! CONTINUATION INDEPENDENT CONSUMERS: three full primary types and actual-domain supporting checks. Full100 acceptance remains closed. -/
+
+
+/-! Independently stated expected-type and actual-source consumers.
+These are not additions to the normative registry or a replacement for its
+complete Validation module. Compiler status is recorded in adjacent logs. -/
+noncomputable section
+open Set MeasureTheory Finset
+open Zeta23.OPICAFollowup
+namespace OPICAContinuationChecks
+
+theorem expected_log_slack_native_decomposition (r d : ℕ) (hr : 2≤r) (hd : r-1≤d)
+    (C eta K : ℝ) (hC : 1<C) (heta : 0≤eta)
+    (hK : C+(r:ℝ)*eta+2*(r:ℝ)<K) :
+    ∃ T0 : ℝ, 1≤T0 ∧ ∀ T : ℝ, T0≤T → ∀ Q : ℕ, Squarefree Q → (Q:ℝ)≤T^eta →
+      ∀ t∈Icc (T-C*Real.log T) T,
+        primeFieldFamily d t=typeIField d r Q (logSlackY r K T) t+
+          balancedField d r Q (logSlackY r K T) t ∧
+        balancedField d r Q (logSlackY r K T) t=
+          balancedTupleHistory d r Q (logSlackY r K T) (logSlackZ r K T) T t ∧
+        (∀ n : ℕ, ∀ w∈Nat.finMulAntidiag r n,
+          (∏ i, (ArithmeticFunction.moebius (w i):ℝ))/Real.sqrt (n:ℝ)*
+            paletteForwardKernel d (r-1) Q (t-Real.log n)≠0 →
+          (∏ i, (w i:ℝ))≤Real.exp (t-nativeCausalGap)) := by
+  exact log_slack_native_decomposition r d hr hd C eta K hC heta hK
+
+theorem expected_log_slack_typeI_error (r d : ℕ) (hr : 2 ≤ r) (hd : r-1 ≤ d)
+    (C eta K : ℝ) (hC : 1 < C) (heta : 0 ≤ eta)
+    (hK : C+(r:ℝ)*eta+2*(r:ℝ) < K) :
+    ∃ C1 c T0 : ℝ, 0 < C1 ∧ 0 < c ∧ 1 ≤ T0 ∧
+      1 < (K-C-(r:ℝ)*eta)/(2*(r:ℝ)) ∧
+      ∀ T : ℝ, T0 ≤ T → ∀ Q : ℕ, Squarefree Q → (Q:ℝ) ≤ T^eta →
+        ∀ t ∈ Icc (T-C*Real.log T) T,
+          |typeIField d r Q (logSlackY r K T) t| ≤
+            C1*T^((r:ℝ)*eta)*
+              Real.exp (T/2-c*T^((K-C-(r:ℝ)*eta)/(2*(r:ℝ)))) := by
+  exact log_slack_typeI_error r d hr hd C eta K hC heta hK
+
+/-- The top palette/source constants precede the horizon and every permitted
+squarefree palette. This consumer does not fix an integer horizon. -/
+example : ∃ A c T0 : ℝ, 0 < A ∧ 0 < c ∧ 1 ≤ T0 ∧
+    ∀ T : ℝ, T0 ≤ T → ∀ Q : ℕ, Squarefree Q → (Q:ℝ) ≤ T →
+      ∀ t ∈ Icc (T-2*Real.log T) T,
+        |typeIField 1 2 Q (logSlackY 2 10 T) t| ≤
+          A*T^(2:ℝ)*Real.exp (T/2-c*T^(3/2:ℝ)) := by
+  obtain ⟨A,c,T0,hA,hc,hT0,_hp,h⟩ :=
+    log_slack_typeI_error 2 1 (by norm_num) (by norm_num)
+      2 1 10 (by norm_num) (by norm_num) (by norm_num)
+  refine ⟨A,c,T0,hA,hc,hT0,?_⟩
+  norm_num at h ⊢
+  exact h
+
+theorem expected_fixed_two_factor_preparation : ∃ C1 c T0 : ℝ, 0 < C1 ∧ 0 < c ∧ 1 ≤ T0 ∧
+    ∀ T : ℝ, T0 ≤ T → ∀ t ∈ Icc (T-2*Real.log T) T,
+      logSlackY 2 8 T = Real.exp (T/2)*T^(-4:ℝ) ∧
+      logSlackZ 2 8 T = Real.exp (T/2-nativeCausalGap)*T^(4:ℝ) ∧
+      primeFieldFamily 1 t = typeIField 1 2 1 (logSlackY 2 8 T) t +
+        balancedField 1 2 1 (logSlackY 2 8 T) t ∧
+      balancedField 1 2 1 (logSlackY 2 8 T) t =
+        balancedTupleHistory 1 2 1 (logSlackY 2 8 T) (logSlackZ 2 8 T) T t ∧
+      |typeIField 1 2 1 (logSlackY 2 8 T) t| ≤
+        C1*Real.exp (T/2-c*T^(3/2:ℝ)) ∧
+      (∀ n : ℕ, ∀ w ∈ Nat.finMulAntidiag 2 n,
+        (∏ i, (ArithmeticFunction.moebius (w i):ℝ))/Real.sqrt (n:ℝ)*
+          paletteForwardKernel 1 1 1 (t-Real.log n) ≠ 0 →
+        (∏ i, (w i:ℝ)) ≤ Real.exp (t-nativeCausalGap)) := by
+  exact fixed_two_factor_preparation
+
+/-- The whole unchanged real-cutoff family is still available; the proof is
+not an integer-cutoff or source-order-zero substitute. -/
+example (r d Q : ℕ) (hr : 2 ≤ r) (_hQ : 0 < Q) (Y : ℝ) (hY : 1 ≤ Y) (t : ℝ) :
+    primeFieldFamily d t = typeIField d r Q Y t + balancedField d r Q Y t := by
+  exact native_balanced_physical_identity d r Q hr Y hY t
+
+example (d r Q : ℕ) (hr : 2 ≤ r) (_hQ : 0 < Q) (t : ℝ) :
+    primeFieldFamily d t = typeIField d r Q (3/2) t + balancedField d r Q (3/2) t := by
+  exact native_balanced_physical_identity d r Q hr (3/2) (by norm_num) t
+
+/-- The fixed source is the actual differential image of the parent source. -/
+example : sourceOrderFamily 1 = fun t : ℝ =>
+    deriv (deriv Zeta23.CCM.nativeOriginalSource) t-(1/4:ℝ)*Zeta23.CCM.nativeOriginalSource t := rfl
+
+example : primeFieldFamily 1 = Zeta23.CCM.nativePrimeField
+    (fun t : ℝ => deriv (deriv Zeta23.CCM.nativeOriginalSource) t-
+      (1/4:ℝ)*Zeta23.CCM.nativeOriginalSource t) := rfl
+
+/-- The compensation is the literal finite divisor filter with its square-root weights. -/
+example (d Q : ℕ) (hQ : 0<Q) (t : ℝ) : nativePaletteDrive d Q t=
+    ∑ n∈Q.divisors, (ArithmeticFunction.moebius n:ℝ)/Real.sqrt (n:ℝ)*
+      Zeta23.CCM.nativeIntegerDriveField (sourceOrderFamily d) (t-Real.log n) := by
+  simpa only [nativePaletteDrive,integerDriveFamily,Zeta23.OPICA.moebiusPaletteCoefficient] using
+    arithmeticHistoryAction_palette_finite Q hQ (integerDriveFamily d) t
+
+#print axioms expected_log_slack_native_decomposition
+#print axioms expected_log_slack_typeI_error
+#print axioms expected_fixed_two_factor_preparation
+
+#print axioms Zeta23.OPICAFollowup.forwardKernel_common_finite_tail
+#print axioms Zeta23.OPICAFollowup.small_palette_block_tail_bound
+#print axioms Zeta23.OPICAFollowup.logSlack_filter_mass_bound
+#print axioms Zeta23.OPICAFollowup.log_slack_native_decomposition
+#print axioms Zeta23.OPICAFollowup.log_slack_typeI_error
+#print axioms Zeta23.OPICAFollowup.fixed_two_factor_preparation
+end OPICAContinuationChecks
+end
+
+
+/-! Independent expected types for the auxiliary supporting continuation.
+No full auxiliary primary is certified by these helpers. -/
+noncomputable section
+open Set MeasureTheory Polynomial
+open Zeta23.OPICAFollowup
+namespace OPICAContinuationChecks
+
+example (k : ℕ) {z : ℂ} (hz : -((k:ℝ)+3/2)<z.re) :
+    Integrable (fun t : ℝ => Complex.exp (-z*(t:ℂ))*Complex.ofReal (auxCompletionFilter k t)) ∧
+    (∫ t : ℝ, Complex.exp (-z*(t:ℂ))*Complex.ofReal (auxCompletionFilter k t))=
+      (z-1/2)/(∏ j ∈ Finset.range (k+2), (z+(k+1+j:ℕ)+1/2)) :=
+  auxCompletionFilter_integrable_laplace k hz
+
+example (k : ℕ) {z : ℂ} (hz : 1/2<z.re) :
+    Integrable (fun t : ℝ => Complex.exp (-z*(t:ℂ))*Complex.ofReal (auxCompletionKernel k t)) ∧
+    (∫ t : ℝ, Complex.exp (-z*(t:ℂ))*Complex.ofReal (auxCompletionKernel k t))=
+      ((z-1/2)/(∏ j ∈ Finset.range (k+2), (z+(k+1+j:ℕ)+1/2)))*riemannZeta (z+1/2) :=
+  auxCompletionKernel_initial_laplace k hz
+
+example (k : ℕ) : (∫ t : ℝ, ‖auxCompletionFilter k t‖)≤2/(Nat.factorial (k+1):ℝ) :=
+  auxCompletionFilter_L1_bound k
+
+example (k j : ℕ) :
+    ((k+2+j).descFactorial (k+2):ℝ)/(Nat.factorial (k+1):ℝ)=
+      (j+1:ℕ)*((k+2+j).choose (k+1):ℝ) :=
+  auxDensity_descFactorial_ratio k j
+
+example (k : ℕ) :
+    (∫ u : ℝ in 0..1,
+      |(Polynomial.derivative^[k+1] (auxProfilePolynomial k)).eval u|) ≤
+      (2:ℝ)^(3*k+4) := by
+  exact auxCompletionProfile_density_L1_bound k
+
+example (k : ℕ) (ψ : ℝ → ℂ) (hψ : ContDiff ℝ (⊤ : ℕ∞) ψ)
+    (M : ℝ) (hM : 0 ≤ M) (hb : ∀ u ∈ Icc (0:ℝ) 1, ‖ψ u‖ ≤ M) :
+    ‖(-1:ℂ)^(k+1)*(∫ u : ℝ,
+      Complex.ofReal (auxCompletionProfile k u)*iteratedDeriv (k+1) ψ u)‖ ≤
+      (1+(2:ℝ)^(3*k+4))*M := by
+  exact auxCompletionProfile_derivative_test_bound k ψ hψ M hM hb
+
+example (k : ℕ) (ξ : ℝ) (hξ : ξ ≠ 0) :
+    ‖∫ u : ℝ, Complex.ofReal (auxCompletionProfile k u)*
+      Complex.exp (-((2*Real.pi*ξ:ℝ):ℂ)*Complex.I*(u:ℂ))‖ ≤
+      (1+(2:ℝ)^(3*k+4))/(2*Real.pi*|ξ|)^(k+1) := by
+  exact auxCompletionProfile_fourier_decay k ξ hξ
+
+/-- Negative ordinate is not removed by an accidental positive-frequency premise. -/
+example (k : ℕ) (ξ : ℝ) (hξ : ξ < 0) :
+    ‖auxProfileFourierIntegral k ξ‖ ≤
+      (1+(2:ℝ)^(3*k+4))/(2*Real.pi*|ξ|)^(k+1) := by
+  exact auxCompletionProfile_fourier_decay k ξ (ne_of_lt hξ)
+
+/-- k=0 still includes the endpoint atom, even though later Poisson continuity
+requires k>=1. This is the actual test identity, not only a density estimate. -/
+example (ψ : ℝ → ℂ) (hψ : ContDiff ℝ (⊤ : ℕ∞) ψ) :
+    (-1:ℂ)*(∫ u : ℝ, Complex.ofReal (auxCompletionProfile 0 u)*deriv ψ u) =
+      (∫ u : ℝ in 0..1, Complex.ofReal ((auxProfilePolynomial 0).derivative.eval u)*ψ u) - ψ 1 := by
+  simpa only [Nat.zero_add,Function.iterate_one,iteratedDeriv_one,pow_one,neg_mul,
+    one_mul,sub_eq_add_neg] using auxCompletionProfile_distributional_derivative 0 ψ hψ
+
+example (k : ℕ) : ‖(-1:ℂ)^(k+1)‖ = 1 := auxCompletionProfile_endpoint_atom_norm k
+
+#print axioms Zeta23.OPICAFollowup.auxDensityCoefficientBudget_le
+#print axioms Zeta23.OPICAFollowup.auxDensity_descFactorial_ratio
+#print axioms Zeta23.OPICAFollowup.auxProfilePrimitive_expansion
+#print axioms Zeta23.OPICAFollowup.auxProfileDensity_polynomial
+#print axioms Zeta23.OPICAFollowup.auxCompletionProfile_density_L1_bound
+#print axioms Zeta23.OPICAFollowup.auxCompletionProfile_distributional_derivative
+#print axioms Zeta23.OPICAFollowup.auxCompletionProfile_derivative_test_bound
+#print axioms Zeta23.OPICAFollowup.auxProfileFourierTest_iteratedDeriv
+#print axioms Zeta23.OPICAFollowup.auxCompletionProfile_fourier_decay
+#print axioms Zeta23.OPICAFollowup.auxCompletionFilter_integrable_laplace
+#print axioms Zeta23.OPICAFollowup.auxCompletionKernel_initial_laplace
+#print axioms Zeta23.OPICAFollowup.auxCompletionFilter_L1_bound
+end OPICAContinuationChecks
+end
+
+
+/-! UNCHECKED actual-domain consumers: arbitrary locally finite measures, not
+an easier globally finite ComplexMeasure replacement. -/
+noncomputable section
+open Set MeasureTheory Filter Complex
+open scoped Topology
+open Zeta23.OPICAFollowup
+namespace OPICAContinuationChecks
+
+example (mu : LocallyFiniteComplexMeasure) (K L : Set ℝ)
+    (hK : IsCompact K) (hL : IsCompact L) :
+    (mu.compactRestriction K hK).restrict L =
+      mu.compactRestriction (K∩L) (hK.inter_right hL.isClosed) := by
+  exact mu.compactRestriction_restrict K L hK hL
+
+example (mu : LocallyFiniteComplexMeasure) (K : Set ℝ) (hK : IsCompact K) :
+    mu.totalVariation.restrict K = (mu.compactRestriction K hK).variation := by
+  exact mu.totalVariation_restrict_compact K hK
+
+example (mu : LocallyFiniteComplexMeasure) :
+    mu.HasLinearGrowth ↔ Zeta23.OPICA.LinearMassGrowth mu.totalVariation := by
+  exact mu.hasLinearGrowth_iff_totalVariation
+
+example (mu nu : LocallyFiniteComplexMeasure) (K : Set ℝ) (hK : IsCompact K)
+    (f : ℝ → ℂ) (hf : Continuous f) (hs : Function.support f ⊆ K)
+    (M : ℝ) (hM : 0 ≤ M) (hb : ∀ x, ‖f x‖ ≤ M) :
+    ‖mu.integral f-nu.integral f‖ ≤
+      2*M*(mu.compactRestriction K hK-nu.compactRestriction K hK).variation.real univ := by
+  exact mu.compact_integral_difference_bound nu K hK f hf hs M hM hb
+
+example {seq : ℕ → LocallyFiniteComplexMeasure} {mu : LocallyFiniteComplexMeasure}
+    (h : LocalVariationConvergence seq mu) (f : ℝ → ℂ)
+    (hf : Continuous f) (hs : HasCompactSupport f) :
+    Tendsto (fun n => (seq n).integral f) atTop (𝓝 (mu.integral f)) := by
+  exact h.tendsto_compact_test f hf hs
+
+/-- Actual complex scalar restriction, including genuinely imaginary scalars. -/
+example (mu : LocallyFiniteComplexMeasure) (K : Set ℝ) (hK : IsCompact K) :
+    (mu.scale Complex.I).compactRestriction K hK = Complex.I • mu.compactRestriction K hK := by
+  exact mu.compactRestriction_scale Complex.I K hK
+
+#print axioms Zeta23.OPICAFollowup.LocallyFiniteComplexMeasure.totalVariation_restrict_compact
+#print axioms Zeta23.OPICAFollowup.LocallyFiniteComplexMeasure.hasLinearGrowth_iff_totalVariation
+#print axioms Zeta23.OPICAFollowup.LocallyFiniteComplexMeasure.compact_integral_difference_bound
+#print axioms Zeta23.OPICAFollowup.LocalVariationConvergence.tendsto_compact_test
+#print axioms Zeta23.OPICAFollowup.LocallyFiniteComplexMeasure.compactRestriction_scale
+end OPICAContinuationChecks
+end
+
+
+/-! Independent exact source/domain consumers. These do not certify the missing
+scheduled logarithmic/rate primary statements. -/
+noncomputable section
+open Set MeasureTheory
+open Zeta23.OPICA Zeta23.OPICAFollowup
+namespace OPICAContinuationChecks
+
+example (d ell : ℕ) (hd : ell ≤ d) :
+    ∃ A : ℝ, 0 < A ∧ ∀ t : ℝ, |forwardKernel d ell t| ≤ A := by
+  exact forwardKernel_actual_bounded d ell hd
+
+example (r d Q : ℕ) (hr : 2 ≤ r) (hd : r-1 ≤ d) (hQ : 0 < Q)
+    (Y : ℝ) (_hY : 1 ≤ Y) {T t : ℝ} (ht : t ≤ T) :
+    finiteDriveField (nativeRawPaletteDrive d Q) (driveIndexBound T)
+        (balancedInverseCoefficients Q Y r) t = balancedField d r Q Y t ∧
+    finiteDriveField (nativeAbsorbedPaletteDrive d r Q hd) (driveIndexBound T)
+        ((nativeLargeCoefficients Q Y ^ r : ArithmeticFunction ℝ)) t = balancedField d r Q Y t := by
+  exact native_balanced_two_realizations r d Q hr hd hQ Y ht
+
+example (r d Q : ℕ) (hr : 2 ≤ r) (hd : r-1 ≤ d) (hQ : 0 < Q)
+    (Y H T : ℝ) (hY : 1 ≤ Y) (hT : 0 ≤ T) (hHT : H ≤ T) :
+    highPairObservation (nativeRawPaletteDrive d Q) (driveIndexBound T)
+        (balancedInverseCoefficients Q Y r) nativeMovingPrimitiveCutoff (Icc H T) -
+      highPairObservation (nativeAbsorbedPaletteDrive d r Q hd) (driveIndexBound T)
+        ((nativeLargeCoefficients Q Y ^ r : ArithmeticFunction ℝ)) nativeMovingPrimitiveCutoff (Icc H T) =
+    lowPairObservation (nativeAbsorbedPaletteDrive d r Q hd) (driveIndexBound T)
+        ((nativeLargeCoefficients Q Y ^ r : ArithmeticFunction ℝ)) nativeMovingPrimitiveCutoff (Icc H T) -
+      lowPairObservation (nativeRawPaletteDrive d Q) (driveIndexBound T)
+        (balancedInverseCoefficients Q Y r) nativeMovingPrimitiveCutoff (Icc H T) := by
+  exact native_balanced_mask_regrouping r d Q hr hd hQ Y H T hY hT hHT
+
+example : Measurable nativeMovingPrimitiveCutoff := nativeMovingPrimitiveCutoff_measurable
+
+/-- Nonsquarefree product index 4 is not removed from the actual r-fold sum. -/
+example (Q : ℕ) (Y : ℝ) :
+    |((nativeLargeCoefficients Q Y ^ 2 : ArithmeticFunction ℝ)) 4| ≤ (divisorCount 2 4 : ℝ) := by
+  exact nativeLargeCoefficients_power_abs_le_divisor Q 2 4 Y
+
+example (B : ℝ) (d e : ℕ) : lowPrimitiveMask B d e + highPrimitiveMask B d e = 1 := by
+  exact primitiveMask_add_high _ _ _
+
+#print axioms Zeta23.OPICAFollowup.forwardKernel_actual_bounded
+#print axioms Zeta23.OPICAFollowup.nativeLargeCoefficients_power_abs_le_divisor
+#print axioms Zeta23.OPICAFollowup.native_balanced_two_realizations
+#print axioms Zeta23.OPICAFollowup.native_balanced_low_masks_explicit
+#print axioms Zeta23.OPICAFollowup.native_balanced_mask_regrouping
+end OPICAContinuationChecks
+end
+
+/-! Adversarial distinction: Dirichlet convolution versus pointwise powers. -/
+
+/-! Exact control distinguishing actual Dirichlet power from pointwise
+function power at a nonsquarefree total product. -/
+noncomputable section
+open Zeta23.OPICAFollowup
+namespace OPICAContinuationChecks
+
+theorem large_at_one : nativeLargeCoefficients 1 (3/2) 1=0 := by
+  norm_num [nativeLargeCoefficients]
+
+theorem large_at_two : nativeLargeCoefficients 1 (3/2) 2=(-1:ℝ) := by
+  norm_num [nativeLargeCoefficients,nativeInverseCoefficients,coprimeCoefficients,
+    ArithmeticFunction.moebius_apply_prime Nat.prime_two]
+
+theorem large_at_four : nativeLargeCoefficients 1 (3/2) 4=0 := by
+  have hmu : ArithmeticFunction.moebius 4=0 := by
+    convert ArithmeticFunction.moebius_apply_prime_pow Nat.prime_two (by decide : (2:ℕ)≠0) using 1 <;>
+      norm_num
+  norm_num [nativeLargeCoefficients,nativeInverseCoefficients,coprimeCoefficients,hmu]
+
+theorem actual_dirichlet_square_at_four :
+    (nativeLargeCoefficients 1 (3/2)^2 : ArithmeticFunction ℝ) 4=1 := by
+  have hanti : (4:ℕ).divisorsAntidiagonal={(1,4),(2,2),(4,1)} := by decide
+  rw [pow_two,ArithmeticFunction.mul_apply,hanti]
+  norm_num [large_at_one,large_at_two,large_at_four]
+
+theorem pointwise_square_at_four :
+    ((fun n : ℕ => nativeLargeCoefficients 1 (3/2) n)^2) 4=0 := by
+  change (nativeLargeCoefficients 1 (3/2) 4)^2=0
+  rw [large_at_four]
+  norm_num
+
+theorem dirichlet_square_differs_from_pointwise :
+    (nativeLargeCoefficients 1 (3/2)^2 : ArithmeticFunction ℝ) 4≠
+      ((fun n : ℕ => nativeLargeCoefficients 1 (3/2) n)^2) 4 := by
+  rw [actual_dirichlet_square_at_four,pointwise_square_at_four]
+  norm_num
+
+#print axioms actual_dirichlet_square_at_four
+#print axioms pointwise_square_at_four
+#print axioms dirichlet_square_differs_from_pointwise
+end OPICAContinuationChecks

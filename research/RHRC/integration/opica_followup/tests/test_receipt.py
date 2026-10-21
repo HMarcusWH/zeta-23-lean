@@ -66,7 +66,7 @@ class DependencyReceiptTests(unittest.TestCase):
         self.reject()
 
     def test_all_implemented_roots_remain_original_names(self):
-        self.assertEqual(len(receipt.IMPLEMENTED_ROOT_NAMES), 38)
+        self.assertEqual(len(receipt.IMPLEMENTED_ROOT_NAMES), 41)
         self.assertTrue(all(name.startswith('Zeta23.OPICAFollowup.')
                             for name in receipt.IMPLEMENTED_ROOT_NAMES))
 
