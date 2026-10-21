@@ -1,0 +1,87 @@
+{
+  "schema": "OPICA_FOLLOWUP_WORKFLOW_CONTRACT_PREPARATION_V1_1",
+  "status": "PARTIAL_NO_CHILD_CI_CREATED",
+  "full_acceptance_open": false,
+  "planned_jobs": [
+    {
+      "id": "followup-contract",
+      "class": "FORMAL_VALIDITY_GATE_STATIC",
+      "needs": [],
+      "meaning": "Parent pin and exact source/coverage/protection/extension contract; static pass is not a proof."
+    },
+    {
+      "id": "followup-regression",
+      "class": "REGRESSION_GATE",
+      "needs": [
+        "followup-contract"
+      ],
+      "meaning": "Unchanged39920 finite checks per mode including P0, child mutation/unit tests,33 numerical consistency cases explicitly noninterval-certified."
+    },
+    {
+      "id": "followup-formal",
+      "class": "FORMAL_VALIDITY_GATE",
+      "matrix": [
+        "local",
+        "arithmetic",
+        "heat",
+        "spectral"
+      ],
+      "needs": [
+        "followup-contract"
+      ],
+      "meaning": "Actual Lean targets per lane; missing foundation/measure/explicit-formula proof fails; no partial summary from successful easy lane."
+    },
+    {
+      "id": "followup-aggregate",
+      "class": "FORMAL_VALIDITY_GATE",
+      "needs": [
+        "followup-formal"
+      ],
+      "meaning": "Build sibling facade, typed Validation, P0 audits, global registered bindings and child exporter at one clean tree; recompute complete merged compiler receipt."
+    },
+    {
+      "id": "followup-generated",
+      "class": "REGRESSION_GATE",
+      "needs": [
+        "followup-aggregate"
+      ],
+      "meaning": "Existing canonical producer --check at current tracked tree; no CI repair or changed historical receipt."
+    },
+    {
+      "id": "followup-research-delta",
+      "class": "RESEARCH_PRODUCING_CHECK",
+      "needs": [
+        "followup-aggregate"
+      ],
+      "meaning": "Exact clause/native-consumer and TYPE/VALUE/STRUCTURE delta, prior research dispositions; no equivalence inferred from graph connectivity."
+    },
+    {
+      "id": "followup-summary",
+      "class": "COMPLETENESS_GATE",
+      "needs": [
+        "followup-contract",
+        "followup-regression",
+        "followup-formal",
+        "followup-aggregate",
+        "followup-generated",
+        "followup-research-delta"
+      ],
+      "meaning": "Fail on any missing/skipped/canceled/in-progress/failed required lane; record RH/Step4 OPEN and independent-review status separately."
+    }
+  ],
+  "implemented_root_type_sha256": {
+    "Zeta23.OPICAFollowup.approx_compatibility_left_null": "a751be76ff01579a1d3b72189aa52e53d6330f148395cfa80c4e1d8baf11e368",
+    "Zeta23.OPICAFollowup.energy_allocation_bound": "78b7110852a73f9655c41261a2bc8b998930c022d541b1af0ebb5df1cb778909",
+    "Zeta23.OPICAFollowup.energy_allocation_rate_lower": "7800e2fa95982f02615066668acb1cd1c147c5306708c44589ab6193a6ba7dce",
+    "Zeta23.OPICAFollowup.joint_recovery_iff": "8a2052d42af22eb3dc6ddddfb2f4560a823c33a7175596e09f5fa8a8e69bc0d2",
+    "Zeta23.OPICAFollowup.joint_recovery_noise_bound": "066006467bdb9618a7acc8cd66e310915ea1142a6a79bcbefa6f5963099df2dd",
+    "Zeta23.OPICAFollowup.joint_recovery_optimal_norm": "e7d47368db764310efa5cfc0f291ae6c9a5df9b5ec00765de88ee5e26a76ace7",
+    "Zeta23.OPICAFollowup.norm_first_log_comparison": "2a919286bfa9767c95541be7a54c6c66218671c24e98bdc26ad6b497350de657",
+    "Zeta23.OPICAFollowup.norm_first_rate_transfer": "156368915a1e30d76eb6ffccedea242e55424751345b45658c6ede02272629dc",
+    "Zeta23.OPICAFollowup.recovery_subexp_budget": "99e80215c0932413606fa8e59669e0b2866b78ebed1b0b9dfdb56cb98f9af912"
+  },
+  "primary_root_count_required": 100,
+  "optional_amendment_candidates_required": false,
+  "RH": "OPEN",
+  "Step4": "OPEN"
+}

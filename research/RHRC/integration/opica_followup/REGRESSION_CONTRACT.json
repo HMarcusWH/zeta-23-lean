@@ -1,0 +1,56 @@
+{
+  "schema": "OPICA_FOLLOWUP_REGRESSION_CONTRACT_V1",
+  "authority": "FROZEN_REGRESSION_NOT_MATHEMATICAL_PROOF",
+  "python": "3.13.5",
+  "sympy": "1.14.0",
+  "mpmath": "1.3.0",
+  "exact_checks_per_mode": 39920,
+  "modes": [
+    "normal",
+    "optimized"
+  ],
+  "numerical_cases": 33,
+  "interval_certified": false,
+  "sources": [
+    {
+      "path": "research/RHRC/integration/opica_followup/checks/frozen_round1_check_round1.py",
+      "bytes": 10015,
+      "sha256": "2348097d4b2918fb06fd0a92e34a79e27bcbc3baaf9cef3a4d60a1eddb8450a8",
+      "source": "frozen_round1_check_round1.py"
+    },
+    {
+      "path": "research/RHRC/integration/opica_followup/checks/frozen_round2_check_round2.py",
+      "bytes": 8077,
+      "sha256": "86452973526f9711b0c027e7609bf986a6d1bc9eaec82134d9eeeb9893e32c29",
+      "source": "frozen_round2_check_round2.py"
+    },
+    {
+      "path": "research/RHRC/integration/opica_followup/checks/check_final_exact.py",
+      "bytes": 4785,
+      "sha256": "87b2c328252dff666f2f414cf3fb09bf46abd95d64d241dbce223a2707448225",
+      "source": "check_final_exact.py"
+    },
+    {
+      "path": "research/RHRC/integration/opica_followup/checks/replay_copoisson_numeric.py",
+      "bytes": 2096,
+      "sha256": "298de5d144cdc18adcd0173843460d43be4611187228cb276dc03095704a5859",
+      "source": "replay_copoisson_numeric.py"
+    },
+    {
+      "path": "research/RHRC/integration/opica_followup/checks/frozen_round2_check_round2_numeric.py",
+      "bytes": 4889,
+      "sha256": "87be185b244b86633edd183eb88008d7c72ff31fb0ed83abc3fd36ec45453626",
+      "source": "frozen_round2_check_round2_numeric.py"
+    },
+    {
+      "path": "research/RHRC/integration/opica_followup/checks/check_final_numeric.py",
+      "bytes": 2641,
+      "sha256": "ee00bdfcd7d8f3d4bbf552f2fc54ff363ad672c4514de67f8cebfd6926b1e08d",
+      "source": "check_final_numeric.py"
+    }
+  ],
+  "dependency_lock_sha256": "1d507a182bcc46d6cb8689b842b87ecf6b1352da3bc70e9c21e81f7b187d3556",
+  "observed_replay_status": "PASS_FROZEN_REGRESSION_ONLY",
+  "original_script_bytes_preserved": true,
+  "full_child_release": false
+}

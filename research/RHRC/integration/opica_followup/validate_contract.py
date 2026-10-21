@@ -1,0 +1,180 @@
+"""Preparation gate for the full, still incomplete OPICA follow-up.
+
+A preflight pass validates frozen inputs and parent preservation. It cannot
+establish mathematical coverage, register a theorem, or open the release gate.
+"""
+from __future__ import annotations
+
+import argparse
+import hashlib
+import json
+from pathlib import Path
+import subprocess
+
+HERE = Path(__file__).resolve().parent
+REPO = HERE.parents[3]
+PROTECTED_SHA256 = 'c62aad1d5dba23e0413f084a4deb9ecdaeb655e803fe809cd603c8efc7bc1779'
+FROZEN_SPEC = {
+    'BUILD_SPEC.md': 'cacab08834aeb9badd578d90828be99cff33c7a617c609e75bb878eb5fa3b29c',
+    'BUILD_MANIFEST.json': 'c99ec7acbfe996455525b31088a7d04addd20653787e12098e4e51a4a7ce296e',
+    'PUBLIC_ROOTS.json': '2239636f347449ecd447fc5ba78d7c75f1c0440d28a862cb72397c4f79597b41',
+    'PAPER_CROSSWALK.json': '9e1252631f26fb81f4a5c60ac714e483c076be5c9858e25056e3835933ce6451',
+    'PARENT_EXTENSION.json': '2b88b5497861679e6b1f686af6c8b5b7dbe5a5887841be43d862ba9836187ac3',
+}
+FROZEN_PAPER = {
+    'OPICA_Followup_Final_Audited_Paper_2026-10-21.md':
+        '9525d5dad6f0a2e3abd6050edeb39e3a234b6a361046e746878a181970a789f0',
+}
+AMENDMENT_V11_SHA256 = '16bb41d7ecc1b199ed97ace5ba37beb5ffc691ca648b4bc12597911be7250cbd'
+
+
+def supplemental_errors(register: dict) -> list[str]:
+    errors = []
+    inputs = register.get('supplemental_research_inputs', [])
+    if len(inputs) != 1:
+        return ['one exact supplemental v1.1 research input required']
+    amendment = inputs[0]
+    payload = amendment.get('utf8', '').encode('utf-8')
+    if (amendment.get('id') != 'POST_GREEN_V1_1'
+            or amendment.get('sha256') != AMENDMENT_V11_SHA256
+            or hashlib.sha256(payload).hexdigest() != AMENDMENT_V11_SHA256
+            or amendment.get('bytes') != len(payload)):
+        errors.append('supplemental source identity changed')
+    if (amendment.get('required') is not False or amendment.get('new_mandatory_roots') != []
+            or amendment.get('new_paths') != []):
+        errors.append('v1.1 may not silently expand primary acceptance scope')
+    overlay = register.get('supplemental_crosswalk', [])
+    if len(overlay) != 4 or {row.get('candidate_id') for row in overlay} != {
+            'POST_GREEN_V1_1_C1', 'POST_GREEN_V1_1_C2', 'POST_GREEN_V1_1_C3', 'POST_GREEN_V1_1_C4'}:
+        errors.append('four distinct optional candidate crosswalk rows required')
+    for row in overlay:
+        if row.get('required') is not False or row.get('new_primary_root_ids') != []:
+            errors.append('optional helper promoted without a versioned mandatory amendment')
+        if (row.get('RH') != 'OPEN' or row.get('Step4') != 'OPEN'
+                or row.get('independent_closing_inequalities') != 'OPEN'):
+            errors.append('supplemental claim firewall changed')
+        if row.get('candidate_id') in {'POST_GREEN_V1_1_C2', 'POST_GREEN_V1_1_C4'} and row.get('status') != 'DERIVED_NOT_FORMALIZED':
+            errors.append('unformalized measure proposal promoted')
+        if row.get('candidate_id') == 'POST_GREEN_V1_1_C3' and row.get('status') != 'FIRST_INEQUALITY_FALSE_WITHOUT_EPSILON_RANGE_SECOND_BOUND_SURVIVES':
+            errors.append('C3 falsification/repaired-domain boundary changed')
+    return errors
+
+
+def digest(path: Path) -> str:
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def metadata_errors(manifest: dict, public: dict, crosswalk: dict, extension: dict) -> list[str]:
+    errors = []
+    roots = public.get('roots', [])
+    if roots != manifest.get('primary_roots'):
+        errors.append('manifest/public roots differ')
+    for key in ('id', 'full_name'):
+        values = [row.get(key) for row in roots]
+        if len(values) != 100 or len(set(values)) != 100 or None in values:
+            errors.append('exact 100 unique roots required: ' + key)
+    units = crosswalk.get('scope_units', [])
+    if len(units) != 28 or len({u.get('paper_id') for u in units}) != 28:
+        errors.append('28 distinct acceptance units required')
+    for unit in units:
+        expected = [row['full_name'] for row in roots if unit['paper_id'] in row['paper_ids']]
+        if not expected or set(unit['required_roots']) != set(expected):
+            errors.append('incomplete crosswalk: ' + unit['paper_id'])
+    for descriptor_key, manifest_key in [('new_exact_paths', 'create'),
+                                          ('modified_exact_paths', 'modify')]:
+        if extension.get(descriptor_key) != [row['path'] for row in manifest[manifest_key]]:
+            errors.append('path inventory mismatch: ' + descriptor_key)
+    if extension.get('generated_exact_paths') != manifest['regenerate']['paths']:
+        errors.append('generated allowlist mismatch')
+    if extension.get('child_claim_ids') != [row['id'] for row in roots]:
+        errors.append('child root identities differ')
+    if manifest.get('delete') or manifest.get('rename'):
+        errors.append('deletions/renames forbidden')
+    return errors
+
+
+def preflight(root: Path = REPO, here: Path = HERE) -> dict:
+    errors = []
+    for name, expected in {**FROZEN_SPEC, 'PROTECTED_STATE.json': PROTECTED_SHA256}.items():
+        path = here / name
+        if not path.is_file() or path.is_symlink() or digest(path) != expected:
+            errors.append('frozen input changed: ' + name)
+    if errors:
+        return {'status': 'FAIL', 'errors': errors, 'release_ready': False}
+    read = lambda name: json.loads((here / name).read_text(encoding='utf-8'))
+    manifest, public, crosswalk, descriptor, protected = map(read,
+        ('BUILD_MANIFEST.json', 'PUBLIC_ROOTS.json', 'PAPER_CROSSWALK.json',
+         'PARENT_EXTENSION.json', 'PROTECTED_STATE.json'))
+    errors += metadata_errors(manifest, public, crosswalk, descriptor)
+    errors += supplemental_errors(read('SOURCE_REGISTER.json'))
+    for row in manifest['paper_sources']:
+        path = here / 'paper' / row['source']
+        if not path.is_file() or len(path.read_bytes()) != row['bytes'] or digest(path) != row['sha256']:
+            errors.append('paper source changed: ' + row['source'])
+    for name, expected in FROZEN_PAPER.items():
+        if digest(here / 'paper' / name) != expected:
+            errors.append('controlling paper changed')
+    for row in manifest['regression_sources']:
+        path = root / row['path']
+        if not path.is_file() or len(path.read_bytes()) != row['bytes'] or digest(path) != row['sha256']:
+            errors.append('frozen checker changed: ' + row['path'])
+    exceptions = set(descriptor['modified_exact_paths'] + descriptor['generated_exact_paths'])
+    for row in protected['files']:
+        path = root / row['path']
+        if not path.is_file() or path.is_symlink() or not path.resolve().is_relative_to(root.resolve()):
+            errors.append('parent path missing/escaped: ' + row['path'])
+        elif row['path'] not in exceptions and digest(path) != row['sha256']:
+            errors.append('protected parent changed: ' + row['path'])
+    # Planned claims are deliberately absent from the global registry.
+    # Until the full exact projection and formal gate are wired, require the
+    # parent's complete raw registry/config bytes, including all OPEN objects.
+    for key, relative in [('claim_registry', 'research/RHRC/CLAIM_REGISTRY.json'),
+                           ('theorem_bindings', 'research/RHRC/REGISTERED_THEOREM_BINDINGS.json'),
+                           ('file_classes', 'research/RHRC/graph/FILE_CLASSES.json'),
+                           ('semantic_closure', 'research/RHRC/graph/SEMANTIC_CLOSURE_CONFIG.json')]:
+        if json.loads((root / relative).read_text(encoding='utf-8')) != protected[key]:
+            errors.append('pre-registration parent context changed: ' + key)
+    creates = {row['path'] for row in manifest['create']}
+    parent_paths = {row['path'] for row in protected['files']}
+    inventory = subprocess.run(['git', '-C', str(root), 'ls-files', '-z', '--cached',
+                                '--others', '--exclude-standard'], check=True,
+                               stdout=subprocess.PIPE).stdout.decode().split('\0')
+    extra = sorted(set(filter(None, inventory)) - parent_paths - creates)
+    if extra:
+        errors.append('unlisted files: ' + ', '.join(extra))
+    missing = sorted(path for path in creates if not (root / path).is_file())
+    return {'schema': 'OPICA_FOLLOWUP_PREPARATION_V1',
+            'status': 'FAIL' if errors else 'PASS_PREPARATION_ONLY', 'errors': errors,
+            'parent_head': protected['parent_head'], 'parent_tree': protected['parent_tree'],
+            'planned_roots': len(public['roots']), 'coverage_units': len(crosswalk['scope_units']),
+            'missing_planned_files': missing, 'planned_files_present': len(creates) - len(missing),
+            'compiler_coverage_audited': False, 'release_ready': False,
+            'release_blockers': ['Full 100-root exact type and physical-consumer coverage pending',
+                                 'Complete current-tree P0 and child compiler receipts pending',
+                                 'Full regression/runtime lock and canonical generated-state gate pending',
+                                 'Parent-extension wrapper and full child CI acceptance pending'],
+            'RH': 'OPEN', 'Step4': 'OPEN'}
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--phase', choices=['preflight', 'release'], required=True)
+    parser.add_argument('--parent-intake', type=Path)
+    parser.add_argument('--formal-receipt', type=Path)
+    parser.add_argument('--parent-formal-receipt', type=Path)
+    parser.add_argument('--output', type=Path, required=True)
+    args = parser.parse_args()
+    if args.output.resolve().is_relative_to(REPO.resolve()):
+        parser.error('execution receipts must be outside the repository')
+    report = preflight()
+    if args.phase == 'release':
+        report['status'] = 'FAIL_RELEASE_INCOMPLETE'
+        report['errors'].append('preparation cannot be promoted to full release')
+    args.output.parent.mkdir(parents=True, exist_ok=True)
+    args.output.write_text(json.dumps(report, indent=2) + '\n', encoding='utf-8')
+    print(json.dumps({k: v for k, v in report.items() if k != 'missing_planned_files'}, indent=2))
+    return 1 if report['errors'] else 0
+
+
+if __name__ == '__main__':
+    raise SystemExit(main())
