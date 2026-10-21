@@ -1,0 +1,199 @@
+{
+  "schema": "OPICA_SOURCE_REGISTER_V1",
+  "base_commit": "97926d6a949fed7af0429a373b47abc772012834",
+  "base_tree": "3b8fb2b29f53247ad5143a603c047e160bddd37c",
+  "lean_toolchain": "leanprover/lean4:v4.33.0-rc2",
+  "mathlib_commit": "51e6992efd06126df61a496bebf8f49482a4e129",
+  "paper_inputs": [
+    {
+      "path": "paper/OPICA_Paper_Construction_v1_0_2026-10-21.md",
+      "bytes": 90649,
+      "sha256": "6c6d43857636d635c6da018b38046b19cdff4bee780840ac67ae81d32bec1777",
+      "authority": "PAPER"
+    },
+    {
+      "path": "paper/OPICA_Lean_Implementation_Contract_2026-10-21.md",
+      "bytes": 20949,
+      "sha256": "ea8c59913b2733b4758b2d7cbdbc698d88dd5570d3d24f057a117ae12398a21a",
+      "authority": "PAPER"
+    },
+    {
+      "path": "paper/OPICA_Theorem_and_Audit_Ledger_2026-10-21.json",
+      "bytes": 27698,
+      "sha256": "ff8a163e47208996b0a4ef70197414461f956aee45c470c42b56b9386178c08f",
+      "authority": "PAPER"
+    }
+  ],
+  "specification_sources": [
+    {
+      "path": "BUILD_SPEC.md",
+      "source": "spec/OPICA_PR_BUILD_SPEC_2026-10-21.md",
+      "sha256": "97fbb13f569257a25843d8bce971be0586b4a155fad468e6573d2a257a4aeb44"
+    },
+    {
+      "path": "BUILD_MANIFEST.json",
+      "source": "spec/OPICA_PR_BUILD_MANIFEST_2026-10-21.json",
+      "sha256": "7314261622be27a1fd678e1cf37bdc14a224717e73d5929b666d067b6bdab4dc"
+    },
+    {
+      "path": "PUBLIC_ROOTS.json",
+      "source": "spec/OPICA_PR_PUBLIC_ROOTS_2026-10-21.json",
+      "sha256": "fc14faa899e504089546d0235676c3539d81197d0ff235437f434cf1e336582d"
+    },
+    {
+      "path": "PAPER_CROSSWALK.json",
+      "source": "spec/OPICA_PR_PAPER_CROSSWALK_2026-10-21.json",
+      "sha256": "82bcbfaeb54e84b58298a0309bac97eb4d4d3f76e163bf35d9442ee85ded8218"
+    },
+    {
+      "path": "PROTECTED_STATE.json",
+      "source": "spec/OPICA_PR_PROTECTED_BASELINE_2026-10-21.json",
+      "sha256": "0f6a28e2f9ebd14b95f0201e22918d29af6c81ec4dd3f044a85a8413239bb7c7"
+    }
+  ],
+  "fresh_evidence": "Live main branch read and isolated full Git clone; main matches the specification pin.",
+  "inherited_evidence": "Historical compiler receipts, research reviews and workflow dispositions are not new OPICA proof evidence.",
+  "codec_source": "Zeta23/RHRC/Step123OutputBindings.lean at the pinned base; any adaptation must retain source attribution.",
+  "mathematical_review_approved": false,
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "adapted_sources": [
+    {
+      "path": "check_exact.py",
+      "source": "checks/check_opica.py",
+      "upstream_sha256": "7e7087814aa6c410790c346fb124321c042a4b18242fe171bda9016b52b7e018",
+      "sha256": "42a1b29e979a415647b2ad477df4aa8e00b46f1afa52c1748748af4c79aa6985",
+      "adaptation": "Add external --output, count-drift rejection, repeatable CLI state and actual Git commit/tree/dirty metadata; all 5112 original mathematical controls are unchanged."
+    }
+  ],
+  "implementation_project_imports": {
+    "Zeta23.OPICA.LocalData": [],
+    "Zeta23.OPICA.LocalObstruction": [
+      "Zeta23.OPICA.LocalData"
+    ],
+    "Zeta23.OPICA.LocalQuotients": [
+      "Zeta23.OPICA.LocalData"
+    ],
+    "Zeta23.OPICA.ResidueLimits": [
+      "Zeta23.OPICA.LocalData"
+    ],
+    "Zeta23.OPICA.AffineTransport": [
+      "Zeta23.OPICA.LocalObstruction"
+    ],
+    "Zeta23.OPICA.EnergyRate": [],
+    "Zeta23.OPICA.Composition": [
+      "Zeta23.OPICA.EnergyRate"
+    ],
+    "Zeta23.OPICA.ObservationCompatibility": [],
+    "Zeta23.OPICA.DivisorBounds": [],
+    "Zeta23.OPICA.PrimitiveMasks": [],
+    "Zeta23.OPICA.DivisorMask": [
+      "Zeta23.OPICA.PrimitiveMasks",
+      "Zeta23.OPICA.EnergyRate",
+      "Zeta23.OPICA.DivisorBounds"
+    ],
+    "Zeta23.OPICA.WeightedLaplace": [
+      "Zeta23.CCM.NativeCausalLaplaceDerivatives"
+    ],
+    "Zeta23.OPICA.RangeSeparation": [],
+    "Zeta23.OPICA.NativeJetAdapter": [
+      "Zeta23.OPICA.LocalObstruction",
+      "Zeta23.OPICA.RangeSeparation",
+      "Zeta23.ExceptionalZero.Step123CompleteOutput"
+    ],
+    "Zeta23.OPICA.NativeArithmeticAdapter": [
+      "Zeta23.OPICA.PrimitiveMasks",
+      "Zeta23.OPICA.DivisorMask",
+      "Zeta23.CCM.OriginalSincDriveLp"
+    ],
+    "Zeta23.OPICA.Involution": [],
+    "Zeta23.OPICA.LocallyFiniteSignedMeasure": [],
+    "Zeta23.OPICA.SincTriangle": [
+      "Zeta23.OPICA.LocallyFiniteSignedMeasure"
+    ],
+    "Zeta23.OPICA.SignedHeatSeparator": [
+      "Zeta23.OPICA.SincTriangle"
+    ],
+    "Zeta23.OPICA.FejerCompletion": [
+      "Zeta23.CCM.NativePositiveCompletion",
+      "Zeta23.OPICA.SincTriangle",
+      "Zeta23.CCM.NativePositiveCompletionComplexLaplace",
+      "Zeta23.OPICA.WeightedLaplace"
+    ],
+    "Zeta23.OPICA.FourierCompatibility": [
+      "Zeta23.OPICA.Involution",
+      "Zeta23.OPICA.SignedHeatSeparator",
+      "Zeta23.OPICA.FejerCompletion"
+    ],
+    "Zeta23.OPICA.Counterexamples": [
+      "Zeta23.OPICA.EnergyRate"
+    ],
+    "Zeta23.OPICA": [
+      "Zeta23.OPICA.LocalQuotients",
+      "Zeta23.OPICA.ResidueLimits",
+      "Zeta23.OPICA.AffineTransport",
+      "Zeta23.OPICA.Composition",
+      "Zeta23.OPICA.ObservationCompatibility",
+      "Zeta23.OPICA.DivisorMask",
+      "Zeta23.OPICA.WeightedLaplace",
+      "Zeta23.OPICA.RangeSeparation",
+      "Zeta23.OPICA.NativeJetAdapter",
+      "Zeta23.OPICA.NativeArithmeticAdapter",
+      "Zeta23.OPICA.FourierCompatibility",
+      "Zeta23.OPICA.Counterexamples"
+    ],
+    "Zeta23.OPICA.Validation": [
+      "Zeta23.OPICA"
+    ],
+    "Zeta23.RHRC.OpicaTypeExprExport": [],
+    "Zeta23.RHRC.OpicaBindings": [
+      "Zeta23.OPICA.Validation",
+      "Zeta23.RHRC.OpicaTypeExprExport",
+      "Zeta23.RHRC.DeclarationDependencyExport",
+      "Zeta23.RHRC.SourceCandidateResolution"
+    ]
+  },
+  "implementation_refinements": [
+    "Actual affine transport is explicitly imported by the normal facade.",
+    "Weighted-L2 holomorphy supplies the full natural-domain Fejer affine continuation.",
+    "Compact smooth approximate identities replace Gaussian regularization while proving the same actual signed Fourier pairing.",
+    "The primary contour-continuity root combines the contour estimate with common-disk meromorphic residue identification for arbitrary finite pole order.",
+    "The H2 conclusion retains the weighted budget and includes the complete negative off-lattice mass as an ENNReal bound."
+  ],
+  "compiler_generated_public_auxiliaries": "Lean may define a public THEOREM ending exactly .congr_simp under the original constructor namespace. Such helpers are accepted only when the compiler assigns them to an exact manifest-listed mathematical module; they remain included in the full type, axiom and dependency closure audit. Every primary root retains its exact OPICA name.",
+  "implementation_file_classification_overrides": [
+    {
+      "path": "Zeta23/OPICA/NativeJetAdapter.lean",
+      "specified_trust_zone": "RH_FORMAL_CORE",
+      "implementation_trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "path": "Zeta23/OPICA/NativeArithmeticAdapter.lean",
+      "specified_trust_zone": "RH_FORMAL_CORE",
+      "implementation_trust_zone": "AUXILIARY_FORMALIZATION"
+    }
+  ],
+  "native_adapter_classification_refinement": {
+    "reason": "The immutable candidate_exactify.py validates every RH_FORMAL_CORE theorem source against a CCM/ExceptionalZero-only module guard. The frozen blueprint classification of the two new OPICA adapters would therefore make the unchanged transactional producer fail before compilation. Only these two newly created files are classified AUXILIARY_FORMALIZATION; their OPICA_SOURCE_BOUND_NATIVE_ADAPTER semantic roles and all exact native proofs, consumers and complete compiler receipt requirements remain mandatory. No old first-match classification, protected producer, registry status, route or mathematical authority is changed.",
+    "protected_guard": "research/RHRC/integration/candidate_exactify.py:validate_candidate_modules",
+    "selection": "research/RHRC/integration/source_candidates.py:select_rh_core_theorem_sources",
+    "independent_source_review": "Confirmed by separate parent and energy/composition agent source inspection; no mathematical acceptance inferred."
+  },
+  "implementation_checkpoint": {
+    "mathematical_source": "All prescribed mathematical modules compile; normal project library/facade and Validation build completed 4494 jobs.",
+    "typed_consumers": 143,
+    "primary_roots_reviewed": 76,
+    "bootstrap_scope": "Complete diagnostic public/type/axiom and dependency audit for70non-NativeJet roots plus exact6native primary type/axiom and full dependency closures. Final complete-current-public, clean-head receipt remains mandatory.",
+    "registry_claims": 198,
+    "proved_bindings": 194,
+    "new_supporting_laws": 76,
+    "compiler_derived_registered_use_links": 94,
+    "old_claim_objects_preserved": 122,
+    "old_binding_objects_preserved": 118,
+    "open_claims_preserved": 4,
+    "independent_review_approved": false,
+    "final_complete_receipt": "PENDING",
+    "all_workflow_harvest": "PENDING"
+  },
+  "registry_dependency_derivation": "For each new supporting root, traverse all compiler TYPE/VALUE/STRUCTURE uses, including private/unregistered helpers, and map every reached registered theorem using both118old and76newbindings. Exclude the root itself; retain sorted distinct IDs. Release validation recomputes the exact list from the complete current compiler receipt. This is compiler-use provenance, not logical equivalence or proof of a generic antecedent."
+}

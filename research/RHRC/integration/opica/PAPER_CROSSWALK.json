@@ -1,0 +1,817 @@
+{
+  "schema": "OPICA_PR_PAPER_CROSSWALK_V1",
+  "status": "PLANNED_NOT_IMPLEMENTED",
+  "paper_sha256": "6c6d43857636d635c6da018b38046b19cdff4bee780840ac67ae81d32bec1777",
+  "statements": [
+    {
+      "paper_id": "L1",
+      "title": "General local multiplier law",
+      "paper_section": "4.2",
+      "assumptions": [
+        "simple pole R/x+h with R != 0",
+        "holomorphic multiplier x^k u with u(0) != 0"
+      ],
+      "paper_conclusion": "Exact order k-1 and leading derivative (k-1)! u(0)R when k>=1",
+      "required_roots": [
+        "Zeta23.OPICA.unit_mul_simplePole_residue",
+        "Zeta23.OPICA.completion_regularRepresentative_analytic",
+        "Zeta23.OPICA.completion_order",
+        "Zeta23.OPICA.completion_leading_jet"
+      ],
+      "coverage_rule": "Every clause in the stated conclusion and cited paper proof is required; root-name presence is insufficient. Exact elaborated types and typed consumers are mandatory.",
+      "formal_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "paper_id": "L2",
+      "title": "Zero ideal, residual and completion quotients",
+      "paper_section": "4.3",
+      "assumptions": [
+        "Z has finite positive analytic order m",
+        "holomorphic coefficient germs"
+      ],
+      "paper_conclusion": "O/(Z) is truncated Taylor algebra; residual congruence preserves residue; completion induces an isomorphism of the stated one-dimensional carriers",
+      "required_roots": [
+        "Zeta23.OPICA.zero_ideal_eq_coordinate_power",
+        "Zeta23.OPICA.truncated_taylor_quotient_equiv",
+        "Zeta23.OPICA.completion_quotient_equiv",
+        "Zeta23.OPICA.residual_congr_preserves_residue",
+        "Zeta23.OPICA.finite_residual_products_preserve_residue"
+      ],
+      "coverage_rule": "Every clause in the stated conclusion and cited paper proof is required; root-name presence is insufficient. Exact elaborated types and typed consumers are mandatory.",
+      "formal_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "paper_id": "L3",
+      "title": "Repeated completions and normalization",
+      "paper_section": "4.4",
+      "assumptions": [
+        "positive finite completion count",
+        "nonzero leading units"
+      ],
+      "paper_conclusion": "Exact order pm-1, factorial coefficient, and the double-completion Leibniz binomial",
+      "required_roots": [
+        "Zeta23.OPICA.iterated_completion_leading_jet",
+        "Zeta23.OPICA.double_completion_leibniz_factor"
+      ],
+      "coverage_rule": "Every clause in the stated conclusion and cited paper proof is required; root-name presence is insufficient. Exact elaborated types and typed consumers are mandatory.",
+      "formal_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "paper_id": "L4",
+      "title": "Affine corrected finite composition",
+      "paper_section": "4.5",
+      "assumptions": [
+        "finite path",
+        "holomorphic backgrounds explicitly recorded",
+        "finite nonzero multipliers"
+      ],
+      "paper_conclusion": "Corrected output equals product multiplier times initial pole; raw output needs a separate background-vanishing condition",
+      "required_roots": [
+        "Zeta23.OPICA.affine_transport_corrected_eq",
+        "Zeta23.OPICA.affine_transport_leading_jet",
+        "Zeta23.OPICA.analytic_addition_can_cancel_completed_jet"
+      ],
+      "coverage_rule": "Every clause in the stated conclusion and cited paper proof is required; root-name presence is insufficient. Exact elaborated types and typed consumers are mandatory.",
+      "formal_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "paper_id": "L5",
+      "title": "Limit scope and residue continuity",
+      "paper_section": "4.7",
+      "assumptions": [
+        "common meromorphic disk and only center pole for continuity claim",
+        "uniform convergence on boundary circle"
+      ],
+      "paper_conclusion": "Residues converge under stated topology; compact-time or safe-half-plane convergence alone does not suffice",
+      "required_roots": [
+        "Zeta23.OPICA.residue_continuous_of_circle_uniform",
+        "Zeta23.OPICA.escaping_tail_keeps_residue"
+      ],
+      "coverage_rule": "Every clause in the stated conclusion and cited paper proof is required; root-name presence is insufficient. Exact elaborated types and typed consumers are mandatory.",
+      "formal_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "paper_id": "E1",
+      "title": "Logarithmic comparison inequality",
+      "paper_section": "5.2",
+      "assumptions": [
+        "real positive parts or real/complex magnitudes"
+      ],
+      "paper_conclusion": "Log-one-plus observations differ by at most log(1+absolute error)",
+      "required_roots": [
+        "Zeta23.OPICA.log_one_add_posPart_sub_le",
+        "Zeta23.OPICA.log_one_add_norm_sub_le"
+      ],
+      "coverage_rule": "Every clause in the stated conclusion and cited paper proof is required; root-name presence is insufficient. Exact elaborated types and typed consumers are mandatory.",
+      "formal_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "paper_id": "E2",
+      "title": "Subexponential additive rate preservation",
+      "paper_section": "5.3",
+      "assumptions": [
+        "T_n>0 tending to infinity",
+        "actual difference is subexponential on same schedule"
+      ],
+      "paper_conclusion": "Magnitude and positive-part rate differences vanish; limits and limsups/liminfs transfer",
+      "required_roots": [
+        "Zeta23.OPICA.subexpAlong_add",
+        "Zeta23.OPICA.subexpAlong_mul",
+        "Zeta23.OPICA.subexpAlong_const_smul",
+        "Zeta23.OPICA.rate_congr_of_subexp_error",
+        "Zeta23.OPICA.posRate_congr_of_subexp_error",
+        "Zeta23.OPICA.rate_limsup_liminf_congr"
+      ],
+      "coverage_rule": "Every clause in the stated conclusion and cited paper proof is required; root-name presence is insufficient. Exact elaborated types and typed consumers are mandatory.",
+      "formal_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "paper_id": "E3",
+      "title": "Tempered scaling and inverse cost",
+      "paper_section": "5.4",
+      "assumptions": [
+        "nonzero multiplier with subexponential magnitude and inverse",
+        "positive multiplier for positive-part claim"
+      ],
+      "paper_conclusion": "Magnitude rate preserved; positive-part requires orientation",
+      "required_roots": [
+        "Zeta23.OPICA.rate_congr_of_tempered_scale",
+        "Zeta23.OPICA.posRate_congr_of_positive_tempered_scale"
+      ],
+      "coverage_rule": "Every clause in the stated conclusion and cited paper proof is required; root-name presence is insufficient. Exact elaborated types and typed consumers are mandatory.",
+      "formal_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "paper_id": "E4",
+      "title": "Growing-chain accumulated budget",
+      "paper_section": "5.5",
+      "assumptions": [
+        "full product and propagated additive budget controlled"
+      ],
+      "paper_conclusion": "Exact affine expansion; rate comparison follows only with total budget",
+      "required_roots": [
+        "Zeta23.OPICA.affine_chain_expansion",
+        "Zeta23.OPICA.affine_chain_budget",
+        "Zeta23.OPICA.rate_congr_of_accumulated_budget"
+      ],
+      "coverage_rule": "Every clause in the stated conclusion and cited paper proof is required; root-name presence is insufficient. Exact elaborated types and typed consumers are mandatory.",
+      "formal_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "paper_id": "E5",
+      "title": "Quiet cofinal observations",
+      "paper_section": "5.6",
+      "assumptions": [
+        "full native rate limit separately supplied",
+        "same observable on cofinal sequence",
+        "zero limiting upper exponent and cost"
+      ],
+      "paper_conclusion": "The supplied full rate is zero; does not construct quiet windows",
+      "required_roots": [
+        "Zeta23.OPICA.quiet_cofinal_rate_zero"
+      ],
+      "coverage_rule": "Every clause in the stated conclusion and cited paper proof is required; root-name presence is insufficient. Exact elaborated types and typed consumers are mandatory.",
+      "formal_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "paper_id": "C1",
+      "title": "Faithful quotient map criterion",
+      "paper_section": "6.1",
+      "assumptions": [
+        "linear map respects the declared background subspaces"
+      ],
+      "paper_conclusion": "Induced quotient map is injective iff preimage of target background equals source background; faithful composition",
+      "required_roots": [
+        "Zeta23.OPICA.quotient_map_injective_iff",
+        "Zeta23.OPICA.faithful_transfer_comp"
+      ],
+      "coverage_rule": "Every clause in the stated conclusion and cited paper proof is required; root-name presence is insufficient. Exact elaborated types and typed consumers are mandatory.",
+      "formal_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "paper_id": "C2",
+      "title": "Typed finite-path nonvanishing",
+      "paper_section": "6.3",
+      "assumptions": [
+        "source/domain admissibility",
+        "proved commuting carrier maps that reflect zero, or proved nonvanishing implications"
+      ],
+      "paper_conclusion": "Nonzero observations persist along the finite typed path; bridges are not postulated",
+      "required_roots": [
+        "Zeta23.OPICA.obstruction_path_nonzero",
+        "Zeta23.OPICA.implication_path_nonzero"
+      ],
+      "coverage_rule": "Every clause in the stated conclusion and cited paper proof is required; root-name presence is insufficient. Exact elaborated types and typed consumers are mandatory.",
+      "formal_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "paper_id": "A1",
+      "title": "Explicit divisor bounds",
+      "paper_section": "7.2",
+      "assumptions": [
+        "positive integer order and indices",
+        "X>=1"
+      ],
+      "paper_conclusion": "Submultiplicativity, squared divisor bound, and two finite weighted sum inequalities",
+      "required_roots": [
+        "Zeta23.OPICA.divisor_count_submultiplicative",
+        "Zeta23.OPICA.divisor_count_square_le",
+        "Zeta23.OPICA.divisor_count_harmonic_sum_le",
+        "Zeta23.OPICA.divisor_count_sqrt_sum_le"
+      ],
+      "coverage_rule": "Every clause in the stated conclusion and cited paper proof is required; root-name presence is insufficient. Exact elaborated types and typed consumers are mandatory.",
+      "formal_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "paper_id": "A2",
+      "title": "Native low-mask and mixed-term bounds",
+      "paper_section": "7.3",
+      "assumptions": [
+        "bounded causal drive with nonnegative gap",
+        "finite window",
+        "coefficient divisor envelopes",
+        "actual same-index masks"
+      ],
+      "paper_conclusion": "DC1 bound and the complete masked Type I estimates; source-variable costs explicit",
+      "required_roots": [
+        "Zeta23.OPICA.primitive_mask_partition",
+        "Zeta23.OPICA.low_primitive_bilinear_bound",
+        "Zeta23.OPICA.masked_typeI_mixed_bound",
+        "Zeta23.OPICA.masked_typeI_square_bound",
+        "Zeta23.OPICA.balanced_energy_comparison"
+      ],
+      "coverage_rule": "Every clause in the stated conclusion and cited paper proof is required; root-name presence is insufficient. Exact elaborated types and typed consumers are mandatory.",
+      "formal_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "paper_id": "A3",
+      "title": "Lawful regrouped-mask adapter",
+      "paper_section": "7.4",
+      "assumptions": [
+        "two exact expansions of the same field",
+        "both low-mask budgets separately proved"
+      ],
+      "paper_conclusion": "High-mask difference equals difference of low masks; rate equality only with both costs controlled",
+      "required_roots": [
+        "Zeta23.OPICA.mask_regrouping_difference",
+        "Zeta23.OPICA.regrouped_mask_rate_congr"
+      ],
+      "coverage_rule": "Every clause in the stated conclusion and cited paper proof is required; root-name presence is insufficient. Exact elaborated types and typed consumers are mandatory.",
+      "formal_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "paper_id": "B1",
+      "title": "Weighted Laplace holomorphy and pole exclusion",
+      "paper_section": "8.1",
+      "assumptions": [
+        "actual causal weighted L2 premise",
+        "source-identified meromorphic continuation on connected domain"
+      ],
+      "paper_conclusion": "Holomorphy in Re z>epsilon and derivative bound; nonzero pole there contradicts the weighted norm",
+      "required_roots": [
+        "Zeta23.OPICA.laplace_holomorphic_of_weighted_L2",
+        "Zeta23.OPICA.laplace_iteratedDeriv_bound_of_weighted_L2",
+        "Zeta23.OPICA.no_visible_pole_of_weighted_L2"
+      ],
+      "coverage_rule": "Every clause in the stated conclusion and cited paper proof is required; root-name presence is insufficient. Exact elaborated types and typed consumers are mandatory.",
+      "formal_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "paper_id": "B2",
+      "title": "Range separation by an actual annihilator",
+      "paper_section": "8.2",
+      "assumptions": [
+        "bounded linear forward map",
+        "nonzero continuous annihilator",
+        "actual input pairing nonzero"
+      ],
+      "paper_conclusion": "Input outside range closure with quantitative distance lower bound",
+      "required_roots": [
+        "Zeta23.OPICA.range_distance_of_annihilator",
+        "Zeta23.OPICA.not_mem_rangeClosure_of_annihilator"
+      ],
+      "coverage_rule": "Every clause in the stated conclusion and cited paper proof is required; root-name presence is insufficient. Exact elaborated types and typed consumers are mandatory.",
+      "formal_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "paper_id": "O1",
+      "title": "Recovery after projection",
+      "paper_section": "9.1",
+      "assumptions": [
+        "linear maps on finite-dimensional spaces"
+      ],
+      "paper_conclusion": "Target factors through projection iff kernel inclusion; uniform cost needed across changing spaces",
+      "required_roots": [
+        "Zeta23.OPICA.observation_factors_iff_ker_le",
+        "Zeta23.OPICA.contrast_cannot_recover_sum"
+      ],
+      "coverage_rule": "Every clause in the stated conclusion and cited paper proof is required; root-name presence is insufficient. Exact elaborated types and typed consumers are mandatory.",
+      "formal_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "paper_id": "O2",
+      "title": "Gram-rank and operator-norm controls",
+      "paper_section": "9.2",
+      "assumptions": [
+        "well-defined finite-dimensional Gram integral"
+      ],
+      "paper_conclusion": "PSD does not imply rank one; rank-two exact fixture; one observed bound not an operator bound",
+      "required_roots": [
+        "Zeta23.OPICA.gram_integral_posSemidef",
+        "Zeta23.OPICA.gram_integral_not_rank_one",
+        "Zeta23.OPICA.single_vector_bound_not_operator_bound",
+        "Zeta23.OPICA.offDiagonal_mask_not_posSemidef"
+      ],
+      "coverage_rule": "Every clause in the stated conclusion and cited paper proof is required; root-name presence is insufficient. Exact elaborated types and typed consumers are mandatory.",
+      "formal_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "paper_id": "O3",
+      "title": "Finite compatibility dual certificate",
+      "paper_section": "9.3",
+      "assumptions": [
+        "finite complex matrix and data vector"
+      ],
+      "paper_conclusion": "Range failure iff nonzero left-null pairing; exact distance dual formula",
+      "required_roots": [
+        "Zeta23.OPICA.incompatible_iff_left_annihilator",
+        "Zeta23.OPICA.range_distance_eq_annihilator_sup",
+        "Zeta23.OPICA.seven_samples_six_coefficients_consistent"
+      ],
+      "coverage_rule": "Every clause in the stated conclusion and cited paper proof is required; root-name presence is insufficient. Exact elaborated types and typed consumers are mandatory.",
+      "formal_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "paper_id": "O4",
+      "title": "Equivalent observations preserve compatibility",
+      "paper_section": "9.4",
+      "assumptions": [
+        "invertible left map for equivalence"
+      ],
+      "paper_conclusion": "Source-derived repeated observations do not create new inconsistent data",
+      "required_roots": [
+        "Zeta23.OPICA.compatibility_under_invertible_left_map",
+        "Zeta23.OPICA.solutions_preserved_under_left_map"
+      ],
+      "coverage_rule": "Every clause in the stated conclusion and cited paper proof is required; root-name presence is insufficient. Exact elaborated types and typed consumers are mandatory.",
+      "formal_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "paper_id": "H1",
+      "title": "Signed sharp-gap separator",
+      "paper_section": "10.1",
+      "assumptions": [
+        "even real order-zero measure",
+        "linear total-variation growth",
+        "Fourier self-duality",
+        "exact open unit gap",
+        "nonnegative off-lattice restriction"
+      ],
+      "paper_conclusion": "Measure is zero; no native contact-to-measure map supplied",
+      "required_roots": [
+        "Zeta23.OPICA.signed_sharp_gap_separator"
+      ],
+      "coverage_rule": "Every clause in the stated conclusion and cited paper proof is required; root-name presence is insufficient. Exact elaborated types and typed consumers are mandatory.",
+      "formal_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "paper_id": "H2",
+      "title": "Global negative off-lattice mass budget",
+      "paper_section": "10.2",
+      "assumptions": [
+        "same growth, duality and gap",
+        "arbitrary signs off lattice"
+      ],
+      "paper_conclusion": "Weighted negative mass globally bounds the stated finite-region positive mass",
+      "required_roots": [
+        "Zeta23.OPICA.signed_gap_negative_mass_budget"
+      ],
+      "coverage_rule": "Every clause in the stated conclusion and cited paper proof is required; root-name presence is insufficient. Exact elaborated types and typed consumers are mandatory.",
+      "formal_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "paper_id": "H3",
+      "title": "Involution commutator parity",
+      "paper_section": "10.3",
+      "assumptions": [
+        "linear involution",
+        "well-defined map on common space",
+        "selfdual input"
+      ],
+      "paper_conclusion": "Commutator output is anti-selfdual; its selfdual projection is zero",
+      "required_roots": [
+        "Zeta23.OPICA.commutator_anti_invariant",
+        "Zeta23.OPICA.commutator_selfdual_projection_zero"
+      ],
+      "coverage_rule": "Every clause in the stated conclusion and cited paper proof is required; root-name presence is insufficient. Exact elaborated types and typed consumers are mandatory.",
+      "formal_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "paper_id": "H4",
+      "title": "Fejer identity with affine completion correction",
+      "paper_section": "10.4",
+      "assumptions": [
+        "squared-sinc/triangle Fourier convention",
+        "t>=0",
+        "legitimate convergent Poisson pairing"
+      ],
+      "paper_conclusion": "Exact fractional-part kernel, cusp behavior and non-omittable transform correction",
+      "required_roots": [
+        "Zeta23.OPICA.fejer_floor_formula",
+        "Zeta23.OPICA.fejer_nativeCompletion_pointwise",
+        "Zeta23.OPICA.fejer_completion_affine_identity",
+        "Zeta23.OPICA.fejer_logInteger_oneSidedDerivatives"
+      ],
+      "coverage_rule": "Every clause in the stated conclusion and cited paper proof is required; root-name presence is insufficient. Exact elaborated types and typed consumers are mandatory.",
+      "formal_status": "NOT_IMPLEMENTED"
+    }
+  ],
+  "corrections": [
+    {
+      "id": "C01",
+      "disposition": "RESOLVED_SOURCE_CONFLICT",
+      "finding": "M0608 kappa is a compact probe, not c*N.",
+      "source": "N5/N6 versus S3 §4.3",
+      "paper_sections": "2.3, 4.6",
+      "formal_resolution_status": "MUST_BE_ENFORCED_BY_TYPES_CONTROLS_OR_EXPLICIT_NONCLAIM",
+      "must_not_upgrade_to_theorem": true
+    },
+    {
+      "id": "C02",
+      "disposition": "SOURCE_IDENTITY_GAP",
+      "finding": "Q_obs is a shifted contact-source observation, not automatically original j or stable Y_j.",
+      "source": "N4/N5; S3 §4.5",
+      "paper_sections": "2.3",
+      "formal_resolution_status": "MUST_BE_ENFORCED_BY_TYPES_CONTROLS_OR_EXPLICIT_NONCLAIM",
+      "must_not_upgrade_to_theorem": true
+    },
+    {
+      "id": "C03",
+      "disposition": "DOMAIN_SCOPE_CORRECTION",
+      "finding": "Raw constrained normals have dimension 2q before parity; the six-dimensional primitive is a different carrier.",
+      "source": "N4/N5/N6; S3/S4",
+      "paper_sections": "2.3, 9.3",
+      "formal_resolution_status": "MUST_BE_ENFORCED_BY_TYPES_CONTROLS_OR_EXPLICIT_NONCLAIM",
+      "must_not_upgrade_to_theorem": true
+    },
+    {
+      "id": "C04",
+      "disposition": "HISTORICAL_CORRECTION",
+      "finding": "M0608 repairs constrained real-zero simplicity under explicit domain hypotheses; PSD alone is not its proof.",
+      "source": "S3 §3 versus earlier S4",
+      "paper_sections": "2.3",
+      "formal_resolution_status": "MUST_BE_ENFORCED_BY_TYPES_CONTROLS_OR_EXPLICIT_NONCLAIM",
+      "must_not_upgrade_to_theorem": true
+    },
+    {
+      "id": "C05",
+      "disposition": "FALSE_AS_STATED",
+      "finding": "The local zero ideal must be in holomorphic germs, not the meromorphic field.",
+      "source": "N6",
+      "paper_sections": "4.1–4.3",
+      "formal_resolution_status": "MUST_BE_ENFORCED_BY_TYPES_CONTROLS_OR_EXPLICIT_NONCLAIM",
+      "must_not_upgrade_to_theorem": true
+    },
+    {
+      "id": "C06",
+      "disposition": "FALSE_AS_STATED",
+      "finding": "Multipliers divisible by zeta or congruent to one do not exhaust all linear holomorphic multipliers.",
+      "source": "N6",
+      "paper_sections": "4.2–4.3",
+      "formal_resolution_status": "MUST_BE_ENFORCED_BY_TYPES_CONTROLS_OR_EXPLICIT_NONCLAIM",
+      "must_not_upgrade_to_theorem": true
+    },
+    {
+      "id": "C07",
+      "disposition": "FORMALIZATION_HAZARD",
+      "finding": "Punctured equality does not permit evaluating a totalized division expression at its singular center.",
+      "source": "All local-transform proposals",
+      "paper_sections": "4.1, 12.2",
+      "formal_resolution_status": "MUST_BE_ENFORCED_BY_TYPES_CONTROLS_OR_EXPLICIT_NONCLAIM",
+      "must_not_upgrade_to_theorem": true
+    },
+    {
+      "id": "C08",
+      "disposition": "NON_SEQUITUR",
+      "finding": "Holomorphic completed input can have the nonzero transferred jet; analyticity is not vanishing.",
+      "source": "N4/N5",
+      "paper_sections": "4.3, 4.6",
+      "formal_resolution_status": "MUST_BE_ENFORCED_BY_TYPES_CONTROLS_OR_EXPLICIT_NONCLAIM",
+      "must_not_upgrade_to_theorem": true
+    },
+    {
+      "id": "C09",
+      "disposition": "FALSE_AS_STATED",
+      "finding": "An entire addition can cancel a completed leading coefficient unless the correction is retained.",
+      "source": "Broad affine-preservation wording",
+      "paper_sections": "4.5",
+      "formal_resolution_status": "MUST_BE_ENFORCED_BY_TYPES_CONTROLS_OR_EXPLICIT_NONCLAIM",
+      "must_not_upgrade_to_theorem": true
+    },
+    {
+      "id": "C10",
+      "disposition": "NORMALIZATION_CORRECTION",
+      "finding": "Repeated completion derivatives require factorial and Leibniz binomial factors.",
+      "source": "N5",
+      "paper_sections": "4.4",
+      "formal_resolution_status": "MUST_BE_ENFORCED_BY_TYPES_CONTROLS_OR_EXPLICIT_NONCLAIM",
+      "must_not_upgrade_to_theorem": true
+    },
+    {
+      "id": "C11",
+      "disposition": "FALSE_AS_STATED",
+      "finding": "At order 2m-1 an extra completion does not automatically eliminate the history term.",
+      "source": "N5",
+      "paper_sections": "4.4",
+      "formal_resolution_status": "MUST_BE_ENFORCED_BY_TYPES_CONTROLS_OR_EXPLICIT_NONCLAIM",
+      "must_not_upgrade_to_theorem": true
+    },
+    {
+      "id": "C12",
+      "disposition": "UNPROVED_UNIVERSALITY",
+      "finding": "No theorem excludes all linear closing methods or all unlisted operators.",
+      "source": "N6; earlier assistant wording",
+      "paper_sections": "3, 11.5",
+      "formal_resolution_status": "MUST_BE_ENFORCED_BY_TYPES_CONTROLS_OR_EXPLICIT_NONCLAIM",
+      "must_not_upgrade_to_theorem": true
+    },
+    {
+      "id": "C13",
+      "disposition": "FALSE_AS_STATED",
+      "finding": "A positive integral of rank-one matrices need not have rank one.",
+      "source": "N5/N6",
+      "paper_sections": "9.2",
+      "formal_resolution_status": "MUST_BE_ENFORCED_BY_TYPES_CONTROLS_OR_EXPLICIT_NONCLAIM",
+      "must_not_upgrade_to_theorem": true
+    },
+    {
+      "id": "C14",
+      "disposition": "UNSUPPORTED_OPERATOR_CLAIM",
+      "finding": "DC1 does not preserve the exact dominant eigenvalue or give a universal operator norm.",
+      "source": "N6",
+      "paper_sections": "5.3, 9.2",
+      "formal_resolution_status": "MUST_BE_ENFORCED_BY_TYPES_CONTROLS_OR_EXPLICIT_NONCLAIM",
+      "must_not_upgrade_to_theorem": true
+    },
+    {
+      "id": "C15",
+      "disposition": "ASYMPTOTIC_SCOPE",
+      "finding": "A logarithmic rate equality is not an asymptotic-ratio statement E~exp(2Theta T).",
+      "source": "N5/N6",
+      "paper_sections": "5",
+      "formal_resolution_status": "MUST_BE_ENFORCED_BY_TYPES_CONTROLS_OR_EXPLICIT_NONCLAIM",
+      "must_not_upgrade_to_theorem": true
+    },
+    {
+      "id": "C16",
+      "disposition": "LIMIT_SCOPE",
+      "finding": "Small individual stage costs do not imply small accumulated products and propagated errors.",
+      "source": "Corridor proposals",
+      "paper_sections": "5.5",
+      "formal_resolution_status": "MUST_BE_ENFORCED_BY_TYPES_CONTROLS_OR_EXPLICIT_NONCLAIM",
+      "must_not_upgrade_to_theorem": true
+    },
+    {
+      "id": "C17",
+      "disposition": "UNIFORMITY_GAP",
+      "finding": "Fixed source/palette rapid decay does not provide a uniform O(1) localization under growing palette and order.",
+      "source": "N1/N2/N5",
+      "paper_sections": "7.3–7.4",
+      "formal_resolution_status": "MUST_BE_ENFORCED_BY_TYPES_CONTROLS_OR_EXPLICIT_NONCLAIM",
+      "must_not_upgrade_to_theorem": true
+    },
+    {
+      "id": "C18",
+      "disposition": "FALSE_MASK",
+      "finding": "High primitive mask is max(a,b)>B, not both a,b>B.",
+      "source": "N1/N2/N5/N6",
+      "paper_sections": "7.1",
+      "formal_resolution_status": "MUST_BE_ENFORCED_BY_TYPES_CONTROLS_OR_EXPLICIT_NONCLAIM",
+      "must_not_upgrade_to_theorem": true
+    },
+    {
+      "id": "C19",
+      "disposition": "FALSE_COEFFICIENT_RESTRICTION",
+      "finding": "For balanced c_r the common gcd can share primes with primitive indices; coprimality restriction can delete genuine terms.",
+      "source": "N2; repeated-prime fixture",
+      "paper_sections": "7.1",
+      "formal_resolution_status": "MUST_BE_ENFORCED_BY_TYPES_CONTROLS_OR_EXPLICIT_NONCLAIM",
+      "must_not_upgrade_to_theorem": true
+    },
+    {
+      "id": "C20",
+      "disposition": "REPAIRED_INTERFACE",
+      "finding": "Absorbing factors into the kernel preserves the scalar field, not the old mask; A3 supplies a separately priced comparison.",
+      "source": "N5/N6",
+      "paper_sections": "7.4",
+      "formal_resolution_status": "MUST_BE_ENFORCED_BY_TYPES_CONTROLS_OR_EXPLICIT_NONCLAIM",
+      "must_not_upgrade_to_theorem": true
+    },
+    {
+      "id": "C21",
+      "disposition": "FALSE_AS_STATED",
+      "finding": "The rational coherent channel includes off-diagonal pairs, not only d=e.",
+      "source": "N2/N5",
+      "paper_sections": "7.5, 11.3",
+      "formal_resolution_status": "MUST_BE_ENFORCED_BY_TYPES_CONTROLS_OR_EXPLICIT_NONCLAIM",
+      "must_not_upgrade_to_theorem": true
+    },
+    {
+      "id": "C22",
+      "disposition": "OBSERVABILITY_GAP",
+      "finding": "A contrast can annihilate exactly the target sum; a recovery theorem is necessary.",
+      "source": "N6 Path III",
+      "paper_sections": "9.1",
+      "formal_resolution_status": "MUST_BE_ENFORCED_BY_TYPES_CONTROLS_OR_EXPLICIT_NONCLAIM",
+      "must_not_upgrade_to_theorem": true
+    },
+    {
+      "id": "C23",
+      "disposition": "NON_SEQUITUR",
+      "finding": "Seven identities for six coefficients need not be inconsistent.",
+      "source": "N4/N5/N6 Path I",
+      "paper_sections": "9.3–9.4",
+      "formal_resolution_status": "MUST_BE_ENFORCED_BY_TYPES_CONTROLS_OR_EXPLICIT_NONCLAIM",
+      "must_not_upgrade_to_theorem": true
+    },
+    {
+      "id": "C24",
+      "disposition": "SOURCE_SCOPE",
+      "finding": "Off-line nonvanishing cannot be automatically applied at critical-line evaluation points where the real-zero generator may vanish.",
+      "source": "N6 Path I",
+      "paper_sections": "9.3",
+      "formal_resolution_status": "MUST_BE_ENFORCED_BY_TYPES_CONTROLS_OR_EXPLICIT_NONCLAIM",
+      "must_not_upgrade_to_theorem": true
+    },
+    {
+      "id": "C25",
+      "disposition": "UNPROVED_NECESSITY",
+      "finding": "Nonlinearity, cross-zero coupling and spatial truncation are candidates, not proven necessary escape rules.",
+      "source": "N2/N6",
+      "paper_sections": "11.5",
+      "formal_resolution_status": "MUST_BE_ENFORCED_BY_TYPES_CONTROLS_OR_EXPLICIT_NONCLAIM",
+      "must_not_upgrade_to_theorem": true
+    },
+    {
+      "id": "C26",
+      "disposition": "DOMAIN_FAILURE",
+      "finding": "L1 weight alone does not define the noncompact symmetric comb integral; e^(t/2) growth must be controlled.",
+      "source": "N1",
+      "paper_sections": "10.5",
+      "formal_resolution_status": "MUST_BE_ENFORCED_BY_TYPES_CONTROLS_OR_EXPLICIT_NONCLAIM",
+      "must_not_upgrade_to_theorem": true
+    },
+    {
+      "id": "C27",
+      "disposition": "INVALID_CONTINUATION_USE",
+      "finding": "A continued Laplace value outside its convergence half-plane is not a zero integral moment; zeta(rho) is not a convergent raw Dirichlet sum in the strip.",
+      "source": "N1/N2",
+      "paper_sections": "10.5",
+      "formal_resolution_status": "MUST_BE_ENFORCED_BY_TYPES_CONTROLS_OR_EXPLICIT_NONCLAIM",
+      "must_not_upgrade_to_theorem": true
+    },
+    {
+      "id": "C28",
+      "disposition": "TRANSFORM_CORRECTION",
+      "finding": "A causal Dirichlet shift has factor D(z+1/2), hence D(1-s) after the stated substitution.",
+      "source": "N1",
+      "paper_sections": "10.5",
+      "formal_resolution_status": "MUST_BE_ENFORCED_BY_TYPES_CONTROLS_OR_EXPLICIT_NONCLAIM",
+      "must_not_upgrade_to_theorem": true
+    },
+    {
+      "id": "C29",
+      "disposition": "SIGN_CORRECTION",
+      "finding": "The trigonometric expansion of 2Re[i(lambda-1/2)e^(-lambda t)] has the opposite sine sign from the printed expansion.",
+      "source": "N1",
+      "paper_sections": "10.5",
+      "formal_resolution_status": "MUST_BE_ENFORCED_BY_TYPES_CONTROLS_OR_EXPLICIT_NONCLAIM",
+      "must_not_upgrade_to_theorem": true
+    },
+    {
+      "id": "C30",
+      "disposition": "TRANSFORM_SIGN",
+      "finding": "The square of a decaying adjoint mode has Laplace pole at -2delta, not +2delta.",
+      "source": "N2",
+      "paper_sections": "10.5",
+      "formal_resolution_status": "MUST_BE_ENFORCED_BY_TYPES_CONTROLS_OR_EXPLICIT_NONCLAIM",
+      "must_not_upgrade_to_theorem": true
+    },
+    {
+      "id": "C31",
+      "disposition": "MISSING_AFFINE_TERM",
+      "finding": "Fejer kernel and native completion have a rational additive correction; a pointwise ratio does not identify convolution operators.",
+      "source": "N2",
+      "paper_sections": "10.4",
+      "formal_resolution_status": "MUST_BE_ENFORCED_BY_TYPES_CONTROLS_OR_EXPLICIT_NONCLAIM",
+      "must_not_upgrade_to_theorem": true
+    },
+    {
+      "id": "C32",
+      "disposition": "FALSE_REGULARITY",
+      "finding": "The summed Fejer kernel has cusps at log integers; termwise double zeros do not justify a zero derivative of the infinite sum.",
+      "source": "N2 exploratory code",
+      "paper_sections": "10.4",
+      "formal_resolution_status": "MUST_BE_ENFORCED_BY_TYPES_CONTROLS_OR_EXPLICIT_NONCLAIM",
+      "must_not_upgrade_to_theorem": true
+    },
+    {
+      "id": "C33",
+      "disposition": "WEAK_UPPER",
+      "finding": "The rapidly decaying Fejer weight already makes a crude native field square integrable; finiteness supplies no RH-strength upper.",
+      "source": "N2 quadratic route",
+      "paper_sections": "10.4",
+      "formal_resolution_status": "MUST_BE_ENFORCED_BY_TYPES_CONTROLS_OR_EXPLICIT_NONCLAIM",
+      "must_not_upgrade_to_theorem": true
+    },
+    {
+      "id": "C34",
+      "disposition": "WRONG_DUALITY_SIGN",
+      "finding": "The simplest spatial/Fourier commutator of a selfdual input is anti-selfdual.",
+      "source": "N6 Path IV",
+      "paper_sections": "10.3",
+      "formal_resolution_status": "MUST_BE_ENFORCED_BY_TYPES_CONTROLS_OR_EXPLICIT_NONCLAIM",
+      "must_not_upgrade_to_theorem": true
+    },
+    {
+      "id": "C35",
+      "disposition": "TEST_CLASS_SCOPE",
+      "finding": "The provided Fourier cutoff reaches +-1 and is C1, not a smooth compact interior-frequency bump.",
+      "source": "N2 and attached code",
+      "paper_sections": "10.5",
+      "formal_resolution_status": "MUST_BE_ENFORCED_BY_TYPES_CONTROLS_OR_EXPLICIT_NONCLAIM",
+      "must_not_upgrade_to_theorem": true
+    },
+    {
+      "id": "C36",
+      "disposition": "EXECUTION_SCOPE",
+      "finding": "Attached Python is 31 lines and computes six numerical samples only; it does not execute the later analytic claims.",
+      "source": "Attached gemini-code",
+      "paper_sections": "13.1",
+      "formal_resolution_status": "MUST_BE_ENFORCED_BY_TYPES_CONTROLS_OR_EXPLICIT_NONCLAIM",
+      "must_not_upgrade_to_theorem": true
+    },
+    {
+      "id": "C37",
+      "disposition": "GLOBAL_SIGN_BUDGET",
+      "finding": "A local positive pairing or locally reduced negative mass does not violate a global signed-measure balance without an exterior bound.",
+      "source": "N1 sign-tuning proposal",
+      "paper_sections": "10.2",
+      "formal_resolution_status": "MUST_BE_ENFORCED_BY_TYPES_CONTROLS_OR_EXPLICIT_NONCLAIM",
+      "must_not_upgrade_to_theorem": true
+    },
+    {
+      "id": "C38",
+      "disposition": "UNSUPPORTED_ESCAPE_CLAIM",
+      "finding": "The four named candidate paths are not barrier-free by construction.",
+      "source": "N6 ranking",
+      "paper_sections": "11",
+      "formal_resolution_status": "MUST_BE_ENFORCED_BY_TYPES_CONTROLS_OR_EXPLICIT_NONCLAIM",
+      "must_not_upgrade_to_theorem": true
+    }
+  ],
+  "native_paper_inputs_not_promoted": [
+    {
+      "id": "J5.2",
+      "authority": "INHERITED_PAPER",
+      "formalized_here": false
+    },
+    {
+      "id": "MS1",
+      "authority": "INHERITED_PAPER_SELF_REVIEW",
+      "formalized_here": false
+    },
+    {
+      "id": "M0608_contact_structure",
+      "authority": "INHERITED_PAPER_WITH_STATED_FOUNDATIONS",
+      "formalized_here": false
+    },
+    {
+      "id": "native_actual_zero_jets",
+      "authority": "INHERITED_LEAN_PINNED",
+      "new_build_here": false
+    }
+  ],
+  "open_closing_obligations": [
+    {
+      "id": "A-X",
+      "status": "OPEN"
+    },
+    {
+      "id": "B-Y",
+      "status": "OPEN"
+    },
+    {
+      "id": "C-Schur",
+      "status": "OPEN"
+    },
+    {
+      "id": "OPEN-J46",
+      "status": "OPEN"
+    },
+    {
+      "id": "native_contact_to_signed_heat_defect",
+      "status": "OPEN"
+    }
+  ]
+}

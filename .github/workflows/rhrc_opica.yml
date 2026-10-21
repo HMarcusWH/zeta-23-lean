@@ -1,0 +1,142 @@
+name: RHRC OPICA full paper components
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [research/opica-obstruction-preservation]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: rhrc-opica-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+env:
+  OPICA: research/RHRC/integration/opica
+  PYTHONUTF8: '1'
+
+jobs:
+  opica-contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: '3.14'
+      - name: Check full source contract and protected baseline
+        run: python "$OPICA/validate_contract.py" --output-dir /tmp/opica-contract
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: opica-contract
+          path: /tmp/opica-contract
+          if-no-files-found: error
+
+  opica-formal:
+    needs: opica-contract
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: '3.14'
+      - uses: leanprover/lean-action@24581d74d674803a25a81b10b059c5c0cdd344c6
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-mathlib-cache: true
+      - name: Build every required target and export complete compiler evidence
+        env:
+          REQUESTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: python "$OPICA/build_receipt.py" --requested-head "$REQUESTED_HEAD" --requested-base 97926d6a949fed7af0429a373b47abc772012834 --output-dir /tmp/opica-formal
+      - name: Verify release contract against the complete compiler receipt
+        run: python "$OPICA/validate_contract.py" --phase release --formal-receipt /tmp/opica-formal/compiler-receipt.json --output /tmp/opica-formal/release-contract.json
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: opica-formal
+          path: /tmp/opica-formal
+          if-no-files-found: error
+
+  opica-regression:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: '3.14'
+      - name: Reproduce all 5112 exact finite controls in both Python modes
+        run: |
+          python "$OPICA/check_exact.py" --output /tmp/opica-regression/exact.json
+          python -O "$OPICA/check_exact.py" --output /tmp/opica-regression/exact-optimized.json
+      - name: Exercise fail-closed evidence and authority mutations in both modes
+        run: |
+          python -m unittest discover -s "$OPICA/tests" -p 'test_*.py' -v
+          python -O -m unittest discover -s "$OPICA/tests" -p 'test_*.py' -v
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: opica-regression
+          path: /tmp/opica-regression
+          if-no-files-found: error
+
+  opica-dependency-delta:
+    needs: opica-formal
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: '3.14'
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: opica-formal
+          path: /tmp/opica-formal
+      - name: Compare source-bound compiler uses with the immutable baseline
+        run: python "$OPICA/dependency_delta.py" --formal-receipt /tmp/opica-formal/compiler-receipt.json --output /tmp/opica-delta/dependency-delta.json
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: opica-dependency-delta
+          path: /tmp/opica-delta
+          if-no-files-found: error
+
+  opica-component-summary:
+    if: always()
+    needs: [opica-contract, opica-formal, opica-regression, opica-dependency-delta]
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Require success from every OPICA component
+        env:
+          COMPONENTS: ${{ toJson(needs) }}
+        run: |
+          python - <<'PY'
+          import json, os
+          results = json.loads(os.environ['COMPONENTS'])
+          expected = {'opica-contract','opica-formal','opica-regression','opica-dependency-delta'}
+          if set(results) != expected or any(v['result'] != 'success' for v in results.values()):
+              raise SystemExit('An OPICA component is failed, pending, cancelled, or skipped')
+          print('All OPICA components passed. Repository-wide checks and mathematical review are separate requirements.')
+          PY

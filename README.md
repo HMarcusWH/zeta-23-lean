@@ -725,3 +725,11 @@ Theorem authority remains merged-green **PR #213**. Latest research evidence is 
 At that stage, the next target was **RETAINED_CROSS_PARITY_SECULAR_COMPLETION** on the exact forced negative root. Contact-locus ideas are explicitly demoted until a same-state contact bridge exists. The exact zero-shift response and resonant `1/(-lambda)` branch are resurrected secondary routes.
 
 **RH remains OPEN.**
+
+## OPICA obstruction preservation package
+
+The additional mathematical library is imported directly with `import Zeta23.OPICA`.
+Its [scope, paper inputs and validation commands](research/RHRC/integration/opica/README.md)
+target the full 25-family construction and its source-bound native adapters.
+The library retains explicit arithmetic, accumulated-budget and source hypotheses;
+RH and the existing closing obligations remain OPEN.

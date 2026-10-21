@@ -25,6 +25,9 @@ def main() -> int:
     )
     args = parser.parse_args()
 
+    opica = ROOT / "integration" / "opica"
+    run([sys.executable, str(opica / "validate_contract.py")])
+    run([sys.executable, "-m", "unittest", "discover", "-s", str(opica / "tests"), "-p", "test_*.py", "-v"])
     run([sys.executable, str(ROOT / "tools" / "claim_lint.py")])
     run([sys.executable, str(ROOT / "tools" / "registry_lint.py")])
     run([sys.executable, str(ROOT / "tools" / "promoted_binding_lint.py")])
