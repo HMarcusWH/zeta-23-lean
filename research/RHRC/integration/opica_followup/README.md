@@ -7,12 +7,22 @@ primary root has been removed or replaced by an easier statement. No child
 claim has been added to the global registry, and the full release gate remains
 closed. RH, Step 4 and the independent closing inequalities are OPEN.
 
-The compiled mathematical slice comprises `NormFirstTransfer`,
-`JointObservation` and `Counterexamples`: eleven original primary declarations.
+The current compiled mathematical slice comprises `NormFirstTransfer`,
+`JointObservation`, `Counterexamples`, `NativeSourceFamily`, `RobustLaurent`,
+`BalancedCoefficients` and `SourceVerticalBounds`: twenty original primary declarations.
 The explicit types in `Validation.lean` check their intended domains and
 conclusions. These local results do not establish the missing native source,
 window-rate, complex-measure or spectral constructions. In particular, the
-library does not yet have the complete public sibling facade.
+library does not yet have the complete public sibling facade. The earlier
+eleven-root exact-source compiler receipt is historical; the twenty-root
+expected-type check does not promote that receipt to a new exact-tree audit.
+
+`SOURCE_REGISTER.json` contains dependency amendment `DEP_2026_10_21_01`.
+It explicitly records reuse of parent weighted moments and physical translation,
+and the removal of unnecessary filter/word dependencies from the unconditional
+arithmetic and synthetic-control proofs. The preparation validator checks those
+actual imports against the amendment. The frozen manifest, all primary
+statements and the optional status of the mathematical amendment are retained.
 
 ## Accepted parent and immutable sources
 

@@ -44,6 +44,60 @@ C1_EXPECTED_TYPE_CONSUMERS = (
 )
 C1_EXPECTED_TYPE_CHECKS = ('Validation.lean explicitly checks sharp bound, equality witness, '
     'positive-part bound and recovery of original primary comparison.')
+DEPENDENCY_REFINEMENTS = {
+    'Zeta23.OPICAFollowup.NativeSourceFamily': [
+        'Zeta23.CCM.OriginalSincNativeSource',
+        'Zeta23.CCM.UniversalSincInverseGevreyBounds',
+        'Zeta23.CCM.OriginalSincWeightedPoleMoments',
+        'Zeta23.CCM.NativeIntegerPrimeConvolution'],
+    'Zeta23.OPICAFollowup.BalancedCoefficients': ['Zeta23.OPICA.NativeArithmeticAdapter'],
+    'Zeta23.OPICAFollowup.Counterexamples': [
+        'Zeta23.OPICAFollowup.NormFirstTransfer', 'Zeta23.OPICAFollowup.JointObservation'],
+}
+
+
+def dependency_amendment_errors(register: dict, manifest: dict, root: Path = REPO) -> list[str]:
+    """Check the narrow versioned import refinement, separately from proof authority.
+
+    The frozen statements and scope remain inputs; this does not establish that
+    importing a proved lemma proves any child theorem.
+    """
+    errors = []
+    amendment = register.get('implementation_dependency_amendment', {})
+    required = {
+        'schema': 'OPICA_IMPLEMENTATION_DEPENDENCY_AMENDMENT_V1',
+        'id': 'DEP_2026_10_21_01',
+        'status': 'IMPLEMENTATION_ONLY_NO_MATHEMATICAL_SCOPE_CHANGE',
+        'frozen_manifest_sha256': FROZEN_SPEC['BUILD_MANIFEST.json'],
+        'frozen_public_roots_sha256': FROZEN_SPEC['PUBLIC_ROOTS.json'],
+        'primary_roots': 100, 'acceptance_units': 28, 'new_paths': 84,
+        'promoted_supporting_lemmas': [], 'theorem_statement_changes': [], 'new_assumptions': [],
+        'RH': 'OPEN', 'Step4': 'OPEN', 'independent_closing_inequalities': 'OPEN',
+    }
+    for key, value in required.items():
+        if amendment.get(key) != value:
+            errors.append('implementation dependency amendment changed: ' + key)
+    rows = amendment.get('rows', [])
+    if (not isinstance(rows, list) or len(rows) != len(DEPENDENCY_REFINEMENTS)
+            or {r.get('module') for r in rows} != set(DEPENDENCY_REFINEMENTS)):
+        return errors + ['exact versioned dependency refinement inventory required']
+    plans = {r['module']: r for r in manifest['modules']}
+    for row in rows:
+        name = row['module']
+        plan = plans[name]
+        if (row.get('path') != plan['path']
+                or row.get('planned_direct_project_imports') != plan['direct_project_imports']
+                or row.get('approved_direct_project_imports') != DEPENDENCY_REFINEMENTS[name]
+                or not isinstance(row.get('reason'), str) or not row['reason'].strip()
+                or row.get('theorem_statement_changes') != [] or row.get('new_assumptions') != []):
+            errors.append('unreviewed implementation dependency refinement: ' + name)
+        path = root / plan['path']
+        actual = (re.findall(r'^import\s+(Zeta23\.[A-Za-z0-9_.]+)\s*$',
+                             path.read_text(encoding='utf-8'), re.MULTILINE)
+                  if path.is_file() else [])
+        if actual != DEPENDENCY_REFINEMENTS[name]:
+            errors.append('implementation imports differ from versioned refinement: ' + name)
+    return errors
 
 
 def lean_declaration_names(source: str) -> list[str]:
@@ -211,7 +265,9 @@ def preflight(root: Path = REPO, here: Path = HERE) -> dict:
         ('BUILD_MANIFEST.json', 'PUBLIC_ROOTS.json', 'PAPER_CROSSWALK.json',
          'PARENT_EXTENSION.json', 'PROTECTED_STATE.json'))
     errors += metadata_errors(manifest, public, crosswalk, descriptor)
-    errors += supplemental_errors(read('SOURCE_REGISTER.json'))
+    register = read('SOURCE_REGISTER.json')
+    errors += supplemental_errors(register)
+    errors += dependency_amendment_errors(register, manifest, root)
     candidate1_source = root / 'Zeta23/OPICAFollowup/NormFirstTransfer.lean'
     candidate1_validation = root / 'Zeta23/OPICAFollowup/Validation.lean'
     if not candidate1_source.is_file() or not candidate1_validation.is_file():

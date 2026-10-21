@@ -147,6 +147,8 @@ private def opicaKind : ConstantInfo → String
 
 run_cmd do
   let queries : Array SourceCandidateQuery := #[
+    ({ sourceId := "OPICA_FOLLOWUP_SOURCEFAMILY_ZERO_EQ_ORIGINAL", moduleName := "Zeta23.OPICAFollowup.NativeSourceFamily", shortName := "Zeta23.OPICAFollowup.sourceFamily_zero_eq_original", sourceKind := "THEOREM" } : SourceCandidateQuery),
+    ({ sourceId := "OPICA_FOLLOWUP_SOURCEFAMILY_SUPPORT_SMOOTH_MOMENTS", moduleName := "Zeta23.OPICAFollowup.NativeSourceFamily", shortName := "Zeta23.OPICAFollowup.sourceFamily_support_smooth_moments", sourceKind := "THEOREM" } : SourceCandidateQuery),
     ({ sourceId := "OPICA_FOLLOWUP_NORM_FIRST_LOG_COMPARISON", moduleName := "Zeta23.OPICAFollowup.NormFirstTransfer", shortName := "Zeta23.OPICAFollowup.norm_first_log_comparison", sourceKind := "THEOREM" } : SourceCandidateQuery),
     ({ sourceId := "OPICA_FOLLOWUP_NORM_FIRST_RATE_TRANSFER", moduleName := "Zeta23.OPICAFollowup.NormFirstTransfer", shortName := "Zeta23.OPICAFollowup.norm_first_rate_transfer", sourceKind := "THEOREM" } : SourceCandidateQuery),
     ({ sourceId := "OPICA_FOLLOWUP_ENERGY_ALLOCATION_BOUND", moduleName := "Zeta23.OPICAFollowup.NormFirstTransfer", shortName := "Zeta23.OPICAFollowup.energy_allocation_bound", sourceKind := "THEOREM" } : SourceCandidateQuery),
@@ -156,14 +158,25 @@ run_cmd do
     ({ sourceId := "OPICA_FOLLOWUP_JOINT_RECOVERY_NOISE_BOUND", moduleName := "Zeta23.OPICAFollowup.JointObservation", shortName := "Zeta23.OPICAFollowup.joint_recovery_noise_bound", sourceKind := "THEOREM" } : SourceCandidateQuery),
     ({ sourceId := "OPICA_FOLLOWUP_APPROX_COMPATIBILITY_LEFT_NULL", moduleName := "Zeta23.OPICAFollowup.JointObservation", shortName := "Zeta23.OPICAFollowup.approx_compatibility_left_null", sourceKind := "THEOREM" } : SourceCandidateQuery),
     ({ sourceId := "OPICA_FOLLOWUP_RECOVERY_SUBEXP_BUDGET", moduleName := "Zeta23.OPICAFollowup.JointObservation", shortName := "Zeta23.OPICAFollowup.recovery_subexp_budget", sourceKind := "THEOREM" } : SourceCandidateQuery),
+    ({ sourceId := "OPICA_FOLLOWUP_LAURENT_COEFFICIENT_ERROR_BOUND", moduleName := "Zeta23.OPICAFollowup.RobustLaurent", shortName := "Zeta23.OPICAFollowup.laurent_coefficient_error_bound", sourceKind := "THEOREM" } : SourceCandidateQuery),
+    ({ sourceId := "OPICA_FOLLOWUP_LAURENT_OBSERVATION_SURVIVES", moduleName := "Zeta23.OPICAFollowup.RobustLaurent", shortName := "Zeta23.OPICAFollowup.laurent_observation_survives", sourceKind := "THEOREM" } : SourceCandidateQuery),
+    ({ sourceId := "OPICA_FOLLOWUP_SOURCE_PRODUCT_VERTICAL_BOUND", moduleName := "Zeta23.OPICAFollowup.SourceVerticalBounds", shortName := "Zeta23.OPICAFollowup.source_product_vertical_bound", sourceKind := "THEOREM" } : SourceCandidateQuery),
+    ({ sourceId := "OPICA_FOLLOWUP_NATIVE_BINOMIAL_INVERSE_IDENTITY", moduleName := "Zeta23.OPICAFollowup.BalancedCoefficients", shortName := "Zeta23.OPICAFollowup.native_binomial_inverse_identity", sourceKind := "THEOREM" } : SourceCandidateQuery),
+    ({ sourceId := "OPICA_FOLLOWUP_BALANCED_COEFF_DIVISOR_BOUND", moduleName := "Zeta23.OPICAFollowup.BalancedCoefficients", shortName := "Zeta23.OPICAFollowup.balanced_coeff_divisor_bound", sourceKind := "THEOREM" } : SourceCandidateQuery),
     ({ sourceId := "OPICA_FOLLOWUP_COUPLED_GRAM_COLLISION_CONTROL", moduleName := "Zeta23.OPICAFollowup.Counterexamples", shortName := "Zeta23.OPICAFollowup.coupled_gram_collision_control", sourceKind := "THEOREM" } : SourceCandidateQuery),
-    ({ sourceId := "OPICA_FOLLOWUP_NORM_FIRST_STRICTLY_WEAKER_CONTROL", moduleName := "Zeta23.OPICAFollowup.Counterexamples", shortName := "Zeta23.OPICAFollowup.norm_first_strictly_weaker_control", sourceKind := "THEOREM" } : SourceCandidateQuery)]
+    ({ sourceId := "OPICA_FOLLOWUP_NORM_FIRST_STRICTLY_WEAKER_CONTROL", moduleName := "Zeta23.OPICAFollowup.Counterexamples", shortName := "Zeta23.OPICAFollowup.norm_first_strictly_weaker_control", sourceKind := "THEOREM" } : SourceCandidateQuery),
+    ({ sourceId := "OPICA_FOLLOWUP_HISTORY_RECOVERY_COST_CONTROL", moduleName := "Zeta23.OPICAFollowup.Counterexamples", shortName := "Zeta23.OPICAFollowup.history_recovery_cost_control", sourceKind := "THEOREM" } : SourceCandidateQuery),
+    ({ sourceId := "OPICA_FOLLOWUP_FORCED_POSITIVE_GRAM_NONREAL_CONTROL", moduleName := "Zeta23.OPICAFollowup.Counterexamples", shortName := "Zeta23.OPICAFollowup.forced_positive_gram_nonreal_control", sourceKind := "THEOREM" } : SourceCandidateQuery)]
   resolveSourceCandidates queries
   let env ← getEnv
   let mathematicalModules : Array String := #[
-    "Zeta23.OPICAFollowup.NormFirstTransfer",
+    "Zeta23.OPICAFollowup.BalancedCoefficients",
+    "Zeta23.OPICAFollowup.Counterexamples",
     "Zeta23.OPICAFollowup.JointObservation",
-    "Zeta23.OPICAFollowup.Counterexamples"]
+    "Zeta23.OPICAFollowup.NativeSourceFamily",
+    "Zeta23.OPICAFollowup.NormFirstTransfer",
+    "Zeta23.OPICAFollowup.RobustLaurent",
+    "Zeta23.OPICAFollowup.SourceVerticalBounds"]
   let mut names : Array Name := #[]
   for (name, info) in env.constants.toList do
     if let some index := env.getModuleIdxFor? name then

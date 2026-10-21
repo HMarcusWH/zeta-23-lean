@@ -226,3 +226,125 @@ bound; literal equality `E_T=exp(o(T))` is not implied by upper control alone.
 
 RH, Step 4, A-X, B-Y, C-Schur, OPEN-J46 and the independent signed-upper and
 boundary-amplitude exclusions remain OPEN.
+
+## Research pass after the twenty-root local type check
+
+### What became formally true
+
+PROVED locally: all four countercontrols, the literal differential source
+family's zero-order identity and smooth/support/causal-gap/moment theorem,
+the actual J17 convolution identity and both divisor envelopes, two common-disk
+Laurent observation roots with factorial and sharp-cancellation companions,
+and the whole-plane prescribed-product vertical bound. Together with the prior
+norm and joint-observation results this is twenty of the original hundred roots.
+The combined explicit expected types and physical consumers compiled without
+warnings; the printed root axiom closures contain only propext,
+Classical.choice and Quot.sound. The earlier eleven-root exact-source receipt
+does not certify this changed tree; a new complete closure audit is required.
+
+The source uses the parent's one-copy j, not an arbitrary source packet.
+Its d-th member is literally P^d j. The moment recurrence proves every degree
+below d+2 at both elementary exponents. The arithmetic identity uses actual
+Mobius coefficients, real cutoff Y, coprimality palette and all tuple products,
+including nonsquarefree total products. The product bound has exactly
+cq=log(8)*sqrt(s0)/4 and factor eight for every real sigma,tau.
+
+### Workflow harvest
+
+This local result has no child PR workflow attached. A leaf compiler pass and
+the aggregate expected-type pass are FORMAL VALIDITY GATES for their exact
+inputs; neither establishes complete release coverage or independent review.
+The child contract tests now have 122 passing cases in each normal/optimized
+Python mode, including rejection of dependency amendments that change scope,
+statements, assumptions or optional-lemma status. These are REGRESSION GATES.
+No new numerical research result was produced by these tests.
+
+The accepted-parent harvest and its exact dispositions remain the record in
+PARENT_INTAKE.json: 61 effective jobs, 59 success and two inherited skips.
+Its green scientific replays preserve their earlier results. They do not give
+the new child statements authority. In particular, larger-budget WP4 survival
+and smaller-budget UNRESOLVED results still have their different recorded
+budgets; none is an independent closing inequality.
+
+### What changed
+
+The new recovery control proves that an arbitrarily small nonzero history
+channel permits exact recovery while the optimum norm is 1/abs(epsilon).
+At epsilon=exp(-a*T) its magnitude rate is a/2, not zero. This makes the
+missing norm budget a theorem-level obstruction to using algebraic recovery
+alone. The forced Gram control is inhabited by an explicit positive diagonal
+system and two nonreal parameters; PSD and the undivided compatibility
+identities hold. The divided identity explicitly retains its nonzero difference
+denominator. These systems do not represent asserted zeta zeros.
+
+The Laurent error is controlled on the actual circle, not assumed at the
+coefficient. Pole clearing and normalized contour integrals agree. Equality
+in the threshold admits exact monomial cancellation, including degree -1.
+The strict inequality is mathematically necessary. The source product proof
+pays the full infinite tail's real-part exponential cost before taking limits.
+
+### Upstream implications
+
+DERIVED: the unconditional arithmetic identity is independent of the new causal
+generator implementation. Importing the existing arithmetic adapter compresses
+that graph without changing any coefficient. Likewise the synthetic controls
+need joint observation but no native word or sampling profile. These import
+refinements are recorded in DEP_2026_10_21_01 and checked separately from proof
+validity. Parent weighted moments and the actual translation operator eliminate
+duplicate source constructions.
+
+### Downstream implications
+
+The exact source product decay is now available for moving-left contour
+integrability. It does not replace the uniform zeta/derivative envelope,
+horizontal contour bounds, inversion, or saddle optimization. The actual
+binomial identity can feed native balanced fields once their localization and
+support-delay budgets are proved. The robust coefficient theorem can price a
+native word after its physical transform, exact leading value and combined
+history/recovery circle errors are independently established.
+
+### Resurrected routes
+
+Failure reason eliminated for a source-family adapter blocked only by repeated
+elementary moments: the full d+2 recurrence is proved. Failure reason weakened
+for native balanced arithmetic: exact coefficients and envelopes are available,
+but the physical localization budget remains. A recovery route blocked by an
+unpriced tiny history channel is still blocked; the new control explains why.
+An argument using positive Gram structure alone to exclude nonreal parameters
+is falsified by the inhabited synthetic control.
+
+### New RH-relevant clues
+
+LEAD / HYPOTHESIS: combine the concrete source decay with the actual
+multiplicity-weighted zero count and translated explicit formula, then track
+which dependence on source order survives. This could isolate the genuine
+uniformity bottleneck behind the native fixed/moving-window rates. A second
+lead is to compose the sharp norm comparison, exact arithmetic identity and
+joint optimal recovery cost only after all three budgets are priced in the
+same physical observation window. No independent subexponential estimate is
+obtained from their algebraic composition.
+
+### Falsification checks
+
+The product proof includes tau=0 and H=0, negative sigma and negative tau.
+The source identity includes d=0. The arithmetic consumer uses the actual P0
+source and its palette, plus a nonsquarefree n=4 check. Laurent equality is
+attacked by exact cancellation; radius independence follows from the germ
+coefficient rather than an arbitrary chosen circle. The recovery control
+allows either sign of epsilon and excludes only its genuinely noninvertible
+zero value. The Gram control requires a nonzero forcing vector and guards
+every divided cross-parameter denominator; the undivided identity remains.
+
+### Highest-leverage next moves
+
+1. Close the actual source/prime/forward transform bridges, including a genuine
+   connected analytic continuation domain for identified affine histories.
+2. Specialize the proved parent explicit formula to translated j_d, explicitly
+   derive its gamma-density/trivial-series normalization and absolute sums.
+3. Finish the moving-left zeta derivative bound with one uniform constant and
+   valid gamma estimates, then the actual contour localization estimates.
+4. Continue every remaining original measure, profile, jet and spectral root;
+   the twenty-root slice does not reduce the acceptance scope.
+5. Audit the full current dependency closure and all exact workflow results
+   after implementation; retain RH, Step 4 and the independent closing
+   inequalities OPEN.

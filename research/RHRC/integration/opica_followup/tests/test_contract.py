@@ -28,6 +28,37 @@ class FrozenAcceptanceTests(unittest.TestCase):
         self.assertEqual(len(self.public['roots']), 100)
         self.assertEqual(len(self.crosswalk['scope_units']), 28)
 
+    def test_versioned_dependency_refinement_passes(self):
+        self.assertEqual(contract.dependency_amendment_errors(self.register, self.manifest), [])
+
+    def test_dependency_refinement_cannot_drop_primary_scope(self):
+        self.register['implementation_dependency_amendment']['primary_roots'] = 99
+        self.assertTrue(contract.dependency_amendment_errors(self.register, self.manifest))
+
+    def test_dependency_refinement_cannot_change_statements(self):
+        self.register['implementation_dependency_amendment']['rows'][0]['theorem_statement_changes'] = ['weaken']
+        self.assertTrue(contract.dependency_amendment_errors(self.register, self.manifest))
+
+    def test_dependency_refinement_cannot_add_assumptions(self):
+        self.register['implementation_dependency_amendment']['rows'][0]['new_assumptions'] = ['RH']
+        self.assertTrue(contract.dependency_amendment_errors(self.register, self.manifest))
+
+    def test_dependency_refinement_cannot_authorize_arbitrary_import(self):
+        self.register['implementation_dependency_amendment']['rows'][0]['approved_direct_project_imports'].append('Zeta23.Fake')
+        self.assertTrue(contract.dependency_amendment_errors(self.register, self.manifest))
+
+    def test_dependency_refinement_cannot_rewrite_frozen_plan(self):
+        self.register['implementation_dependency_amendment']['rows'][0]['planned_direct_project_imports'] = []
+        self.assertTrue(contract.dependency_amendment_errors(self.register, self.manifest))
+
+    def test_dependency_refinement_cannot_promote_optional_lemma(self):
+        self.register['implementation_dependency_amendment']['promoted_supporting_lemmas'] = ['C1']
+        self.assertTrue(contract.dependency_amendment_errors(self.register, self.manifest))
+
+    def test_dependency_refinement_requires_exact_rows(self):
+        self.register['implementation_dependency_amendment']['rows'].pop()
+        self.assertTrue(contract.dependency_amendment_errors(self.register, self.manifest))
+
     def test_drop_hard_original_root(self):
         self.public['roots'] = [r for r in self.public['roots'] if r['full_name'] !=
                                'Zeta23.OPICAFollowup.native_slow_source_window_rate']

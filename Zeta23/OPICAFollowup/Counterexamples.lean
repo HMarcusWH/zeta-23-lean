@@ -1,6 +1,8 @@
 import Zeta23.OPICAFollowup.NormFirstTransfer
+import Zeta23.OPICAFollowup.JointObservation
 import Mathlib.Analysis.SpecialFunctions.ImproperIntegrals
 import Mathlib.LinearAlgebra.Matrix.NonsingularInverse
+import Mathlib.LinearAlgebra.Matrix.PosDef
 
 /-! Exact auxiliary countercontrols. None asserts an actual off-line zeta zero. -/
 
@@ -8,7 +10,7 @@ noncomputable section
 namespace Zeta23.OPICAFollowup
 open Filter Topology Set MeasureTheory
 open Zeta23.OPICA
-open scoped Matrix BigOperators
+open scoped Matrix BigOperators ComplexOrder
 
 /-- Constant unit-interval field, identified with its scalar `L²` value. -/
 def exponentialBalanced (T : HorizonSchedule) (θ : ℝ) (n : ℕ) : ℝ :=
@@ -299,5 +301,306 @@ lemma collisionGram_inverse_zero_zero_tendsto :
   apply (div_le_div_iff₀ h0 (sq_pos_of_pos h0)).mpr
   have hmul := mul_nonneg h0.le (show (0:ℝ) ≤ 1-2*h by linarith)
   nlinarith
+
+/-! The O2 rank-one control retains both the orthogonal contrast and history. -/
+
+def historyContrast {E : Type*} [NormedAddCommGroup E] [InnerProductSpace ℂ E]
+    (u : E) : E →L[ℂ] E :=
+  ContinuousLinearMap.id ℂ E - (innerSL ℂ u).smulRight u
+
+def historyChannel {E : Type*} [NormedAddCommGroup E] [InnerProductSpace ℂ E]
+    (u : E) (ε : ℝ) : E →L[ℂ] ℂ := (ε : ℂ) • innerSL ℂ u
+
+def historyRecovery (E : Type*) [NormedAddCommGroup E] [InnerProductSpace ℂ E]
+    (ε : ℝ) : WithLp 2 (E × ℂ) →L[ℂ] ℂ :=
+  (ε : ℂ)⁻¹ • WithLp.sndL 2 ℂ E ℂ
+
+lemma historyRecovery_recovers {E : Type*} [NormedAddCommGroup E]
+    [InnerProductSpace ℂ E] (u : E) {ε : ℝ} (hε : ε ≠ 0) (x : E) :
+    historyRecovery E ε (jointObservation (historyContrast u) (historyChannel u ε) x) =
+      inner ℂ u x := by
+  have hc : (ε : ℂ) ≠ 0 := by exact_mod_cast hε
+  simp [historyRecovery, historyChannel, jointObservation_apply, smul_eq_mul, hc]
+
+lemma historyObservation_unit {E : Type*} [NormedAddCommGroup E]
+    [InnerProductSpace ℂ E] (u : E) (hu : ‖u‖ = 1) (ε : ℝ) :
+    jointObservation (historyContrast u) (historyChannel u ε) u =
+      WithLp.toLp 2 ((0 : E), (ε : ℂ)) := by
+  simp [jointObservation_apply, historyContrast, historyChannel, hu]
+
+lemma historyRecovery_norm_le (E : Type*) [NormedAddCommGroup E]
+    [InnerProductSpace ℂ E] (ε : ℝ) : ‖historyRecovery E ε‖ ≤ 1 / |ε| := by
+  apply ContinuousLinearMap.opNorm_le_bound _ (by positivity)
+  intro y
+  change ‖(ε : ℂ)⁻¹ * y.snd‖ ≤ 1 / |ε| * ‖y‖
+  rw [norm_mul, norm_inv, Complex.norm_real, Real.norm_eq_abs, one_div]
+  exact mul_le_mul_of_nonneg_left
+    (WithLp.norm_snd_le (p := 2) (α := E) (β := ℂ) y) (by positivity)
+
+lemma historyRecovery_minimal {E : Type*} [NormedAddCommGroup E]
+    [InnerProductSpace ℂ E] (u : E) (hu : ‖u‖ = 1) {ε : ℝ} (hε : ε ≠ 0)
+    (R : WithLp 2 (E × ℂ) →L[ℂ] ℂ)
+    (hR : ∀ x, R (jointObservation (historyContrast u) (historyChannel u ε) x) = inner ℂ u x) :
+    1 / |ε| ≤ ‖R‖ := by
+  have hi : inner ℂ u u = 1 := by rw [inner_self_eq_norm_sq_to_K, hu]; norm_num
+  have heval : R (WithLp.toLp 2 ((0 : E), (ε : ℂ))) = 1 := by
+    rw [← historyObservation_unit u hu ε, hR, hi]
+  have h := R.le_opNorm (WithLp.toLp 2 ((0 : E), (ε : ℂ)))
+  rw [heval, norm_one, WithLp.norm_toLp_snd, Complex.norm_real, Real.norm_eq_abs] at h
+  exact (div_le_iff₀ (abs_pos.mpr hε)).mpr h
+
+lemma historyRecovery_norm {E : Type*} [NormedAddCommGroup E]
+    [InnerProductSpace ℂ E] (u : E) (hu : ‖u‖ = 1) {ε : ℝ} (hε : ε ≠ 0) :
+    ‖historyRecovery E ε‖ = 1 / |ε| :=
+  le_antisymm (historyRecovery_norm_le E ε)
+    (historyRecovery_minimal u hu hε (historyRecovery E ε) (historyRecovery_recovers u hε))
+
+/-- Algebraic recovery from an arbitrarily small history channel is exact, but
+its optimum norm is the reciprocal channel scale. The exponential schedule
+has a strictly positive recovery-norm rate. -/
+theorem history_recovery_cost_control {E : Type*} [NormedAddCommGroup E]
+    [InnerProductSpace ℂ E] (u : E) (hu : ‖u‖ = 1) :
+    (∀ ε : ℝ, ε ≠ 0 → ∃ R : WithLp 2 (E × ℂ) →L[ℂ] ℂ,
+      (∀ x, R (jointObservation (historyContrast u) (historyChannel u ε) x) = inner ℂ u x) ∧
+      ‖R‖ = 1 / |ε| ∧
+      (∀ R' : WithLp 2 (E × ℂ) →L[ℂ] ℂ,
+        (∀ x, R' (jointObservation (historyContrast u) (historyChannel u ε) x) = inner ℂ u x) →
+        ‖R‖ ≤ ‖R'‖)) ∧
+    (∀ (T : HorizonSchedule) (a : ℝ), 0 < a →
+      Tendsto (magnitudeRate T (fun n => historyRecovery E (Real.exp (-a*T.time n))))
+        atTop (𝓝 (a/2)) ∧
+      ¬ SubexpAlong T (fun n => historyRecovery E (Real.exp (-a*T.time n)))) := by
+  constructor
+  · intro ε hε
+    refine ⟨historyRecovery E ε, historyRecovery_recovers u hε, historyRecovery_norm u hu hε, ?_⟩
+    intro R' hR'
+    rw [historyRecovery_norm u hu hε]
+    exact historyRecovery_minimal u hu hε R' hR'
+  · intro T a ha
+    have hnorm (n : ℕ) : ‖historyRecovery E (Real.exp (-a*T.time n))‖ =
+        Real.exp (a*T.time n) := by
+      rw [historyRecovery_norm u hu (Real.exp_ne_zero _),
+        abs_of_pos (Real.exp_pos _), one_div, ← Real.exp_neg]
+      congr 1
+      ring
+    have hlim : Tendsto (magnitudeRate T (fun n => historyRecovery E (Real.exp (-a*T.time n))))
+        atTop (𝓝 (a/2)) := by
+      have heq : magnitudeRate T (fun n => historyRecovery E (Real.exp (-a*T.time n))) =
+          positiveRate T (fun n => Real.exp (a*T.time n)) := by
+        funext n
+        simp only [magnitudeRate, positiveRate, hnorm, max_eq_left (Real.exp_nonneg _)]
+      rw [heq]
+      exact exponential_positive_rate T ha.le
+    refine ⟨hlim, ?_⟩
+    intro hsub
+    have hh := tendsto_nhds_unique hlim hsub
+    linarith
+
+/-! Forced finite-dimensional controls. The pairing below is linear in its
+first argument, as in the paper, rather than Lean's `inner` convention. -/
+
+def forcedDiagonalProfile {δ : Type*} (a g : δ → ℝ) (κ : ℂ) : δ → ℂ :=
+  fun n => κ / ((a n : ℂ) - κ) * (g n : ℂ)
+
+def forcedProfileMatrix {ι δ : Type*} (a g : δ → ℝ) (κ : ι → ℂ) : Matrix ι δ ℂ :=
+  fun i => forcedDiagonalProfile a g (κ i)
+
+def forcedProfileGram {ι δ : Type*} [Fintype δ]
+    (a g : δ → ℝ) (κ : ι → ℂ) : Matrix ι ι ℂ :=
+  forcedProfileMatrix a g κ * (forcedProfileMatrix a g κ)ᴴ
+
+def forcedProfileEnergy {ι δ : Type*} [Fintype δ] [DecidableEq δ]
+    (a g : δ → ℝ) (κ : ι → ℂ) : Matrix ι ι ℂ :=
+  forcedProfileMatrix a g κ * Matrix.diagonal (fun n => (a n : ℂ)) *
+    (forcedProfileMatrix a g κ)ᴴ
+
+def forcedProfileSample {δ : Type*} [Fintype δ] (a g : δ → ℝ) (κ : ℂ) : ℂ :=
+  ∑ n, forcedDiagonalProfile a g κ n * (g n : ℂ)
+
+lemma forcedDiagonal_den_ne {a : ℝ} {κ : ℂ} (hκ : κ.im ≠ 0) : (a : ℂ) - κ ≠ 0 := by
+  intro h
+  have heq := sub_eq_zero.mp h
+  apply hκ
+  rw [← heq]
+  simp
+
+lemma forcedDiagonal_equation {δ : Type*} (a g : δ → ℝ) {κ : ℂ}
+    (hκ : κ.im ≠ 0) (n : δ) :
+    (a n : ℂ) * forcedDiagonalProfile a g κ n =
+      κ * (forcedDiagonalProfile a g κ n + (g n : ℂ)) := by
+  unfold forcedDiagonalProfile
+  field_simp [forcedDiagonal_den_ne hκ]
+  ring
+
+/-- The entry formula is the actual nonsingular matrix resolvent. -/
+lemma forcedDiagonalProfile_eq_resolvent {δ : Type*} [Fintype δ] [DecidableEq δ]
+    (a g : δ → ℝ) {κ : ℂ} (hκ : κ.im ≠ 0) :
+    forcedDiagonalProfile a g κ =
+      κ • ((Matrix.diagonal (fun n => (a n : ℂ)) - κ • (1 : Matrix δ δ ℂ))⁻¹ *ᵥ
+        (fun n => (g n : ℂ))) := by
+  classical
+  let A : Matrix δ δ ℂ := Matrix.diagonal (fun n => (a n : ℂ) - κ)
+  have heq : Matrix.diagonal (fun n => (a n : ℂ)) - κ • (1 : Matrix δ δ ℂ) = A := by
+    ext i j
+    by_cases hij : i = j <;> simp [A, hij]
+  have hdet : A.det ≠ 0 := by
+    rw [Matrix.det_diagonal]
+    exact Finset.prod_ne_zero_iff.mpr (fun n _ => forcedDiagonal_den_ne hκ)
+  have hunit : IsUnit A := A.isUnit_iff_isUnit_det.mpr (isUnit_iff_ne_zero.mpr hdet)
+  obtain ⟨hInv⟩ := hunit.nonempty_invertible
+  let : Invertible A := hInv
+  have hsolve : κ • (fun n => (g n : ℂ)) = A *ᵥ forcedDiagonalProfile a g κ := by
+    ext n
+    simp only [A, Matrix.mulVec_diagonal, Pi.smul_apply, smul_eq_mul, forcedDiagonalProfile]
+    field_simp [forcedDiagonal_den_ne hκ]
+  have hinv := Matrix.inv_mulVec_eq_vec hsolve
+  rw [Matrix.mulVec_smul] at hinv
+  rw [heq]
+  exact hinv.symm
+
+lemma forcedProfileGram_apply {ι δ : Type*} [Fintype δ]
+    (a g : δ → ℝ) (κ : ι → ℂ) (i j : ι) :
+    forcedProfileGram a g κ i j =
+      ∑ n, forcedDiagonalProfile a g (κ i) n * star (forcedDiagonalProfile a g (κ j) n) := by
+  simp [forcedProfileGram, Matrix.mul_apply, Matrix.conjTranspose_apply, forcedProfileMatrix]
+
+lemma forcedProfileEnergy_apply {ι δ : Type*} [Fintype δ] [DecidableEq δ]
+    (a g : δ → ℝ) (κ : ι → ℂ) (i j : ι) :
+    forcedProfileEnergy a g κ i j =
+      ∑ n, (a n : ℂ) * forcedDiagonalProfile a g (κ i) n *
+        star (forcedDiagonalProfile a g (κ j) n) := by
+  rw [forcedProfileEnergy, Matrix.mul_apply]
+  simp only [Matrix.mul_diagonal,
+    Matrix.conjTranspose_apply, forcedProfileMatrix]
+  apply Finset.sum_congr rfl
+  intro n _
+  ring
+
+lemma forcedProfileSample_star {δ : Type*} [Fintype δ] (a g : δ → ℝ) (κ : ℂ) :
+    star (forcedProfileSample a g κ) =
+      ∑ n, (g n : ℂ) * star (forcedDiagonalProfile a g κ n) := by
+  simp [forcedProfileSample, mul_comm]
+
+lemma forcedProfileGram_posSemidef {ι δ : Type*} [Fintype δ] [Finite ι]
+    (a g : δ → ℝ) (κ : ι → ℂ) : (forcedProfileGram a g κ).PosSemidef :=
+  Matrix.posSemidef_self_mul_conjTranspose (forcedProfileMatrix a g κ)
+
+lemma forcedProfileEnergy_posSemidef {ι δ : Type*} [Fintype δ] [DecidableEq δ] [Finite ι]
+    (a g : δ → ℝ) (κ : ι → ℂ) (ha : ∀ n, 0 ≤ a n) :
+    (forcedProfileEnergy a g κ).PosSemidef := by
+  have hd : (Matrix.diagonal (fun n => (a n : ℂ))).PosSemidef := by
+    apply Matrix.PosSemidef.diagonal
+    intro n
+    change (0 : ℂ) ≤ (a n : ℂ)
+    exact_mod_cast ha n
+  exact hd.mul_mul_conjTranspose_same (forcedProfileMatrix a g κ)
+
+lemma forcedProfileEnergy_identity {ι δ : Type*} [Fintype δ] [DecidableEq δ]
+    (a g : δ → ℝ) (κ : ι → ℂ) (i j : ι) (hκ : (κ i).im ≠ 0) :
+    forcedProfileEnergy a g κ i j =
+      κ i * (forcedProfileGram a g κ i j + star (forcedProfileSample a g (κ j))) := by
+  rw [forcedProfileEnergy_apply, forcedProfileGram_apply, forcedProfileSample_star]
+  calc
+    _ = ∑ n, κ i * (forcedDiagonalProfile a g (κ i) n *
+        star (forcedDiagonalProfile a g (κ j) n) +
+        (g n : ℂ) * star (forcedDiagonalProfile a g (κ j) n)) := by
+      apply Finset.sum_congr rfl
+      intro n _
+      rw [forcedDiagonal_equation a g hκ n]
+      ring
+    _ = _ := by rw [← Finset.sum_add_distrib, Finset.mul_sum]
+
+lemma forcedProfileGram_diag_positive {ι δ : Type*} [Fintype δ]
+    (a g : δ → ℝ) (κ : ι → ℂ) (hg : ∃ n, g n ≠ 0) (i : ι)
+    (hκ : (κ i).im ≠ 0) : 0 < (forcedProfileGram a g κ i i).re := by
+  have hk : κ i ≠ 0 := by intro h; apply hκ; simp [h]
+  obtain ⟨n₀, hn₀⟩ := hg
+  have hprofile : forcedDiagonalProfile a g (κ i) n₀ ≠ 0 := by
+    apply mul_ne_zero (div_ne_zero hk (forcedDiagonal_den_ne hκ))
+    exact_mod_cast hn₀
+  rw [forcedProfileGram_apply, Complex.re_sum]
+  simp only [Complex.star_def, Complex.mul_conj, Complex.ofReal_re]
+  exact Finset.sum_pos' (fun n _ => Complex.normSq_nonneg _)
+    ⟨n₀, Finset.mem_univ _, Complex.normSq_pos.mpr hprofile⟩
+
+lemma forcedProfile_shifted_positive {ι δ : Type*} [Fintype δ] [DecidableEq δ] [Finite ι]
+    (a g : δ → ℝ) (κ : ι → ℂ) (ha : ∀ n, 1/4 ≤ a n) :
+    (forcedProfileEnergy a g κ - (1/4 : ℂ) • forcedProfileGram a g κ).PosSemidef := by
+  -- The profiles must stay fixed when shifting the operator's quadratic form.
+  have hd : (Matrix.diagonal (fun n => ((a n : ℂ) - 1/4))).PosSemidef := by
+    apply Matrix.PosSemidef.diagonal
+    intro n
+    change (0 : ℂ) ≤ (a n : ℂ) - 1/4
+    apply Complex.le_def.mpr
+    constructor
+    · simpa using sub_nonneg.mpr (ha n)
+    · norm_num
+  have hp := hd.mul_mul_conjTranspose_same (forcedProfileMatrix a g κ)
+  convert hp using 1
+  ext i j
+  rw [Matrix.sub_apply, Matrix.smul_apply, forcedProfileEnergy_apply,
+    forcedProfileGram_apply, Matrix.mul_apply]
+  simp only [Matrix.mul_diagonal,
+    Matrix.conjTranspose_apply, forcedProfileMatrix, smul_eq_mul]
+  rw [Finset.mul_sum, ← Finset.sum_sub_distrib]
+  apply Finset.sum_congr rfl
+  intro n _
+  ring
+
+/-- Positive forced Gram identities admit arbitrary nonreal parameters. They
+do not assert the existence of actual zeta zeros at those parameters. -/
+theorem forced_positive_gram_nonreal_control {ι δ : Type*}
+    [Fintype ι] [Fintype δ] [DecidableEq δ]
+    (a g : δ → ℝ) (κ : ι → ℂ) (ha : ∀ n, 0 < a n)
+    (hg : ∃ n, g n ≠ 0) (hκ : ∀ i, (κ i).im ≠ 0) :
+    (forcedProfileGram a g κ).PosSemidef ∧
+    (forcedProfileEnergy a g κ).PosSemidef ∧
+    (∀ i, 0 < (forcedProfileGram a g κ i i).re) ∧
+    (∀ i, forcedDiagonalProfile a g (κ i) =
+      κ i • ((Matrix.diagonal (fun n => (a n : ℂ)) - κ i • (1 : Matrix δ δ ℂ))⁻¹ *ᵥ
+        (fun n => (g n : ℂ)))) ∧
+    (∀ i j,
+      forcedProfileEnergy a g κ i j =
+        κ i * (forcedProfileGram a g κ i j + star (forcedProfileSample a g (κ j))) ∧
+      forcedProfileEnergy a g κ i j =
+        star (κ j) * (forcedProfileGram a g κ i j + forcedProfileSample a g (κ i)) ∧
+      (κ i - star (κ j)) * forcedProfileGram a g κ i j =
+        star (κ j) * forcedProfileSample a g (κ i) -
+          κ i * star (forcedProfileSample a g (κ j)) ∧
+      (κ i - star (κ j) ≠ 0 →
+        forcedProfileGram a g κ i j / (κ i * star (κ j)) =
+          (forcedProfileSample a g (κ i) / κ i -
+            star (forcedProfileSample a g (κ j) / κ j)) / (κ i - star (κ j)))) ∧
+    ((∀ n, 1/4 ≤ a n) →
+      (forcedProfileEnergy a g κ - (1/4 : ℂ) • forcedProfileGram a g κ).PosSemidef) := by
+  have hN := forcedProfileGram_posSemidef a g κ
+  have hQ := forcedProfileEnergy_posSemidef a g κ (fun n => (ha n).le)
+  refine ⟨hN, hQ, fun i => forcedProfileGram_diag_positive a g κ hg i (hκ i),
+    fun i => forcedDiagonalProfile_eq_resolvent a g (hκ i), ?_, forcedProfile_shifted_positive a g κ⟩
+  intro i j
+  have hfirst := forcedProfileEnergy_identity a g κ i j (hκ i)
+  have hsecond : forcedProfileEnergy a g κ i j =
+      star (κ j) * (forcedProfileGram a g κ i j + forcedProfileSample a g (κ i)) := by
+    have hc := congrArg star (forcedProfileEnergy_identity a g κ j i (hκ j))
+    simpa only [star_mul', star_add, star_star, hQ.isHermitian.apply i j,
+      hN.isHermitian.apply i j] using hc
+  have hundiv : (κ i - star (κ j)) * forcedProfileGram a g κ i j =
+      star (κ j) * forcedProfileSample a g (κ i) -
+        κ i * star (forcedProfileSample a g (κ j)) := by
+    linear_combination hsecond - hfirst
+  refine ⟨hfirst, hsecond, hundiv, ?_⟩
+  intro hden
+  have hi : κ i ≠ 0 := by intro h; apply hκ i; simp [h]
+  have hj : κ j ≠ 0 := by intro h; apply hκ j; simp [h]
+  have hjs : star (κ j) ≠ 0 := star_ne_zero.mpr hj
+  simp only [star_div₀]
+  field_simp [hi, hjs, hden]
+  linear_combination hundiv
+
+/-- An explicit pair of nonreal parameters inhabits the synthetic control. -/
+def forcedNonrealParameters : Fin 2 → ℂ := ![Complex.I, 1 + 2*Complex.I]
+
+lemma forcedNonrealParameters_im_ne (i : Fin 2) : (forcedNonrealParameters i).im ≠ 0 := by
+  fin_cases i <;> norm_num [forcedNonrealParameters]
 
 end Zeta23.OPICAFollowup
