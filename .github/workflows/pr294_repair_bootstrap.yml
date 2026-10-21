@@ -1,0 +1,75 @@
+name: PR294 compiler bootstrap - NO PROOF ACCEPTANCE
+on:
+  push:
+    branches: [repair/pr294-20261022]
+    paths: [.github/workflows/pr294_repair_bootstrap.yml]
+permissions:
+  contents: read
+jobs:
+  bootstrap:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: leanprover/lean-action@24581d74d674803a25a81b10b059c5c0cdd344c6
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-mathlib-cache: true
+      - name: Package pinned compiler and existing cache only
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/pr294-bootstrap/{parts,evidence,root}
+          lake env lean --version | tee /tmp/pr294-bootstrap/evidence/version.log
+          test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = 51e6992efd06126df61a496bebf8f49482a4e129
+          test "$(cat lean-toolchain)" = leanprover/lean4:v4.33.0-rc2
+          git rev-parse HEAD HEAD^{tree} > /tmp/pr294-bootstrap/evidence/checkout.txt
+          TOOLCHAIN=$(dirname "$(dirname "$(elan which lean)")")
+          ln -s "$GITHUB_WORKSPACE" /tmp/pr294-bootstrap/root/repo
+          ln -s "$TOOLCHAIN" /tmp/pr294-bootstrap/root/toolchain
+          tar --dereference -cf - -C /tmp/pr294-bootstrap/root repo toolchain | zstd -T2 -3 | split -b 450M -d - /tmp/pr294-bootstrap/parts/bootstrap.tar.zst.part-
+          (cd /tmp/pr294-bootstrap/parts && sha256sum bootstrap.tar.zst.part-*) > /tmp/pr294-bootstrap/evidence/SHA256SUMS
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with: {name: pr294-bootstrap-evidence, path: /tmp/pr294-bootstrap/evidence}
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with: {name: pr294-bootstrap-00, path: /tmp/pr294-bootstrap/parts/bootstrap.tar.zst.part-00, compression-level: 0, if-no-files-found: ignore, retention-days: 2}
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with: {name: pr294-bootstrap-01, path: /tmp/pr294-bootstrap/parts/bootstrap.tar.zst.part-01, compression-level: 0, if-no-files-found: ignore, retention-days: 2}
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with: {name: pr294-bootstrap-02, path: /tmp/pr294-bootstrap/parts/bootstrap.tar.zst.part-02, compression-level: 0, if-no-files-found: ignore, retention-days: 2}
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with: {name: pr294-bootstrap-03, path: /tmp/pr294-bootstrap/parts/bootstrap.tar.zst.part-03, compression-level: 0, if-no-files-found: ignore, retention-days: 2}
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with: {name: pr294-bootstrap-04, path: /tmp/pr294-bootstrap/parts/bootstrap.tar.zst.part-04, compression-level: 0, if-no-files-found: ignore, retention-days: 2}
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with: {name: pr294-bootstrap-05, path: /tmp/pr294-bootstrap/parts/bootstrap.tar.zst.part-05, compression-level: 0, if-no-files-found: ignore, retention-days: 2}
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with: {name: pr294-bootstrap-06, path: /tmp/pr294-bootstrap/parts/bootstrap.tar.zst.part-06, compression-level: 0, if-no-files-found: ignore, retention-days: 2}
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with: {name: pr294-bootstrap-07, path: /tmp/pr294-bootstrap/parts/bootstrap.tar.zst.part-07, compression-level: 0, if-no-files-found: ignore, retention-days: 2}
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with: {name: pr294-bootstrap-08, path: /tmp/pr294-bootstrap/parts/bootstrap.tar.zst.part-08, compression-level: 0, if-no-files-found: ignore, retention-days: 2}
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with: {name: pr294-bootstrap-09, path: /tmp/pr294-bootstrap/parts/bootstrap.tar.zst.part-09, compression-level: 0, if-no-files-found: ignore, retention-days: 2}
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with: {name: pr294-bootstrap-10, path: /tmp/pr294-bootstrap/parts/bootstrap.tar.zst.part-10, compression-level: 0, if-no-files-found: ignore, retention-days: 2}
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with: {name: pr294-bootstrap-11, path: /tmp/pr294-bootstrap/parts/bootstrap.tar.zst.part-11, compression-level: 0, if-no-files-found: ignore, retention-days: 2}
