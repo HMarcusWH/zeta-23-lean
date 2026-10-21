@@ -160,7 +160,7 @@
       "trust_zone": "AUXILIARY_FORMALIZATION"
     },
     {
-      "compiler_dependency_surface_declaration_count": 1,
+      "compiler_dependency_surface_declaration_count": 2,
       "file_id": "rh:file:Zeta23/Analytic/Stirling.lean",
       "module": "Zeta23.Analytic.Stirling",
       "module_id": "rh:module:Zeta23.Analytic.Stirling",
@@ -681,7 +681,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 22,
       "file_id": "rh:file:Zeta23/CCM/CanonicalCenteredIndexPoincare.lean",
       "module": "Zeta23.CCM.CanonicalCenteredIndexPoincare",
       "module_id": "rh:module:Zeta23.CCM.CanonicalCenteredIndexPoincare",
@@ -802,7 +802,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 13,
       "file_id": "rh:file:Zeta23/CCM/CanonicalDeepThresholdGap.lean",
       "module": "Zeta23.CCM.CanonicalDeepThresholdGap",
       "module_id": "rh:module:Zeta23.CCM.CanonicalDeepThresholdGap",
@@ -1036,7 +1036,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 51,
       "file_id": "rh:file:Zeta23/CCM/CanonicalPhysicalTrialRealization.lean",
       "module": "Zeta23.CCM.CanonicalPhysicalTrialRealization",
       "module_id": "rh:module:Zeta23.CCM.CanonicalPhysicalTrialRealization",
@@ -1049,7 +1049,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 16,
       "file_id": "rh:file:Zeta23/CCM/CanonicalPoleExponentialMoments.lean",
       "module": "Zeta23.CCM.CanonicalPoleExponentialMoments",
       "module_id": "rh:module:Zeta23.CCM.CanonicalPoleExponentialMoments",
@@ -1062,7 +1062,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 9,
       "file_id": "rh:file:Zeta23/CCM/CanonicalPoleNeutralBottomNFlow.lean",
       "module": "Zeta23.CCM.CanonicalPoleNeutralBottomNFlow",
       "module_id": "rh:module:Zeta23.CCM.CanonicalPoleNeutralBottomNFlow",
@@ -1075,7 +1075,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 22,
       "file_id": "rh:file:Zeta23/CCM/CanonicalPoleNeutralCarrier.lean",
       "module": "Zeta23.CCM.CanonicalPoleNeutralCarrier",
       "module_id": "rh:module:Zeta23.CCM.CanonicalPoleNeutralCarrier",
@@ -1101,7 +1101,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 32,
       "file_id": "rh:file:Zeta23/CCM/CanonicalPoleNeutralGeometry.lean",
       "module": "Zeta23.CCM.CanonicalPoleNeutralGeometry",
       "module_id": "rh:module:Zeta23.CCM.CanonicalPoleNeutralGeometry",
@@ -1114,7 +1114,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 2,
       "file_id": "rh:file:Zeta23/CCM/CanonicalPoleNeutralGroundConstraints.lean",
       "module": "Zeta23.CCM.CanonicalPoleNeutralGroundConstraints",
       "module_id": "rh:module:Zeta23.CCM.CanonicalPoleNeutralGroundConstraints",
@@ -1127,7 +1127,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 8,
       "file_id": "rh:file:Zeta23/CCM/CanonicalPoleNeutralIndexRigidity.lean",
       "module": "Zeta23.CCM.CanonicalPoleNeutralIndexRigidity",
       "module_id": "rh:module:Zeta23.CCM.CanonicalPoleNeutralIndexRigidity",
@@ -1140,7 +1140,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 11,
       "file_id": "rh:file:Zeta23/CCM/CanonicalPoleNeutralIntertwining.lean",
       "module": "Zeta23.CCM.CanonicalPoleNeutralIntertwining",
       "module_id": "rh:module:Zeta23.CCM.CanonicalPoleNeutralIntertwining",
@@ -1153,7 +1153,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 32,
       "file_id": "rh:file:Zeta23/CCM/CanonicalPoleNeutralNesting.lean",
       "module": "Zeta23.CCM.CanonicalPoleNeutralNesting",
       "module_id": "rh:module:Zeta23.CCM.CanonicalPoleNeutralNesting",
@@ -1166,7 +1166,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 34,
       "file_id": "rh:file:Zeta23/CCM/CanonicalPoleNeutralNormals.lean",
       "module": "Zeta23.CCM.CanonicalPoleNeutralNormals",
       "module_id": "rh:module:Zeta23.CCM.CanonicalPoleNeutralNormals",
@@ -1179,7 +1179,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 41,
       "file_id": "rh:file:Zeta23/CCM/CanonicalPoleNeutralPublicAPI.lean",
       "module": "Zeta23.CCM.CanonicalPoleNeutralPublicAPI",
       "module_id": "rh:module:Zeta23.CCM.CanonicalPoleNeutralPublicAPI",
@@ -1192,7 +1192,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 54,
       "file_id": "rh:file:Zeta23/CCM/CanonicalPoleNeutralShiftedSecular.lean",
       "module": "Zeta23.CCM.CanonicalPoleNeutralShiftedSecular",
       "module_id": "rh:module:Zeta23.CCM.CanonicalPoleNeutralShiftedSecular",
@@ -1205,7 +1205,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 15,
       "file_id": "rh:file:Zeta23/CCM/CanonicalPoleNeutralSimpleEvenTie.lean",
       "module": "Zeta23.CCM.CanonicalPoleNeutralSimpleEvenTie",
       "module_id": "rh:module:Zeta23.CCM.CanonicalPoleNeutralSimpleEvenTie",
@@ -1218,7 +1218,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 13,
       "file_id": "rh:file:Zeta23/CCM/CanonicalPoleNeutralSourceMoment.lean",
       "module": "Zeta23.CCM.CanonicalPoleNeutralSourceMoment",
       "module_id": "rh:module:Zeta23.CCM.CanonicalPoleNeutralSourceMoment",
@@ -1231,7 +1231,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 17,
       "file_id": "rh:file:Zeta23/CCM/CanonicalPoleNeutralTiePackage.lean",
       "module": "Zeta23.CCM.CanonicalPoleNeutralTiePackage",
       "module_id": "rh:module:Zeta23.CCM.CanonicalPoleNeutralTiePackage",
@@ -1257,7 +1257,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 12,
       "file_id": "rh:file:Zeta23/CCM/CanonicalPoleNeutralTrialResidualChannels.lean",
       "module": "Zeta23.CCM.CanonicalPoleNeutralTrialResidualChannels",
       "module_id": "rh:module:Zeta23.CCM.CanonicalPoleNeutralTrialResidualChannels",
@@ -1545,7 +1545,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 14,
       "file_id": "rh:file:Zeta23/CCM/CanonicalSecularResolvent.lean",
       "module": "Zeta23.CCM.CanonicalSecularResolvent",
       "module_id": "rh:module:Zeta23.CCM.CanonicalSecularResolvent",
@@ -1576,7 +1576,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 3,
       "file_id": "rh:file:Zeta23/CCM/CanonicalShiftedSecular.lean",
       "module": "Zeta23.CCM.CanonicalShiftedSecular",
       "module_id": "rh:module:Zeta23.CCM.CanonicalShiftedSecular",
@@ -1686,7 +1686,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 24,
+      "compiler_dependency_surface_declaration_count": 25,
       "file_id": "rh:file:Zeta23/CCM/CanonicalSourceMomentAtoms.lean",
       "module": "Zeta23.CCM.CanonicalSourceMomentAtoms",
       "module_id": "rh:module:Zeta23.CCM.CanonicalSourceMomentAtoms",
@@ -1825,7 +1825,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 40,
       "file_id": "rh:file:Zeta23/CCM/CanonicalTrialResidualChannels.lean",
       "module": "Zeta23.CCM.CanonicalTrialResidualChannels",
       "module_id": "rh:module:Zeta23.CCM.CanonicalTrialResidualChannels",
@@ -1944,7 +1944,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 5,
       "file_id": "rh:file:Zeta23/CCM/CompactComplexIntegralFTC.lean",
       "module": "Zeta23.CCM.CompactComplexIntegralFTC",
       "module_id": "rh:module:Zeta23.CCM.CompactComplexIntegralFTC",
@@ -1957,7 +1957,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 4,
       "file_id": "rh:file:Zeta23/CCM/CompactPoleConvolution.lean",
       "module": "Zeta23.CCM.CompactPoleConvolution",
       "module_id": "rh:module:Zeta23.CCM.CompactPoleConvolution",
@@ -2050,7 +2050,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 38,
+      "compiler_dependency_surface_declaration_count": 39,
       "file_id": "rh:file:Zeta23/CCM/ConstrainedParity.lean",
       "module": "Zeta23.CCM.ConstrainedParity",
       "module_id": "rh:module:Zeta23.CCM.ConstrainedParity",
@@ -2448,7 +2448,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 21,
       "file_id": "rh:file:Zeta23/CCM/DetectorRetainedSchurState.lean",
       "module": "Zeta23.CCM.DetectorRetainedSchurState",
       "module_id": "rh:module:Zeta23.CCM.DetectorRetainedSchurState",
@@ -3212,7 +3212,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 22,
+      "compiler_dependency_surface_declaration_count": 23,
       "file_id": "rh:file:Zeta23/CCM/DictionaryTentMollifier.lean",
       "module": "Zeta23.CCM.DictionaryTentMollifier",
       "module_id": "rh:module:Zeta23.CCM.DictionaryTentMollifier",
@@ -3467,7 +3467,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 2,
       "file_id": "rh:file:Zeta23/CCM/FiniteBottomGapSelector.lean",
       "module": "Zeta23.CCM.FiniteBottomGapSelector",
       "module_id": "rh:module:Zeta23.CCM.FiniteBottomGapSelector",
@@ -3512,7 +3512,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 7,
       "file_id": "rh:file:Zeta23/CCM/FinitePhysicalNormalization.lean",
       "module": "Zeta23.CCM.FinitePhysicalNormalization",
       "module_id": "rh:module:Zeta23.CCM.FinitePhysicalNormalization",
@@ -4519,7 +4519,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 21,
       "file_id": "rh:file:Zeta23/CCM/IsometricDetectorSchur.lean",
       "module": "Zeta23.CCM.IsometricDetectorSchur",
       "module_id": "rh:module:Zeta23.CCM.IsometricDetectorSchur",
@@ -4532,7 +4532,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 4,
       "file_id": "rh:file:Zeta23/CCM/IsometricGroundSchur.lean",
       "module": "Zeta23.CCM.IsometricGroundSchur",
       "module_id": "rh:module:Zeta23.CCM.IsometricGroundSchur",
@@ -4670,7 +4670,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 34,
+      "compiler_dependency_surface_declaration_count": 35,
       "file_id": "rh:file:Zeta23/CCM/LocalizedFiniteSpace.lean",
       "module": "Zeta23.CCM.LocalizedFiniteSpace",
       "module_id": "rh:module:Zeta23.CCM.LocalizedFiniteSpace",
@@ -4686,7 +4686,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 49,
+      "compiler_dependency_surface_declaration_count": 52,
       "file_id": "rh:file:Zeta23/CCM/LocalizedFourierApproximation.lean",
       "module": "Zeta23.CCM.LocalizedFourierApproximation",
       "module_id": "rh:module:Zeta23.CCM.LocalizedFourierApproximation",
@@ -4734,7 +4734,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 2,
       "file_id": "rh:file:Zeta23/CCM/NativeAbelDiscrepancy.lean",
       "module": "Zeta23.CCM.NativeAbelDiscrepancy",
       "module_id": "rh:module:Zeta23.CCM.NativeAbelDiscrepancy",
@@ -4747,7 +4747,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 5,
       "file_id": "rh:file:Zeta23/CCM/NativeAdjointResidual.lean",
       "module": "Zeta23.CCM.NativeAdjointResidual",
       "module_id": "rh:module:Zeta23.CCM.NativeAdjointResidual",
@@ -4760,7 +4760,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 6,
       "file_id": "rh:file:Zeta23/CCM/NativeCausalAdjointZeroJets.lean",
       "module": "Zeta23.CCM.NativeCausalAdjointZeroJets",
       "module_id": "rh:module:Zeta23.CCM.NativeCausalAdjointZeroJets",
@@ -4786,7 +4786,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 20,
       "file_id": "rh:file:Zeta23/CCM/NativeCausalExponentialWitness.lean",
       "module": "Zeta23.CCM.NativeCausalExponentialWitness",
       "module_id": "rh:module:Zeta23.CCM.NativeCausalExponentialWitness",
@@ -4799,7 +4799,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 12,
       "file_id": "rh:file:Zeta23/CCM/NativeCausalKernelLaplaceDerivatives.lean",
       "module": "Zeta23.CCM.NativeCausalKernelLaplaceDerivatives",
       "module_id": "rh:module:Zeta23.CCM.NativeCausalKernelLaplaceDerivatives",
@@ -4812,7 +4812,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 4,
       "file_id": "rh:file:Zeta23/CCM/NativeCausalLaplaceDerivatives.lean",
       "module": "Zeta23.CCM.NativeCausalLaplaceDerivatives",
       "module_id": "rh:module:Zeta23.CCM.NativeCausalLaplaceDerivatives",
@@ -4825,7 +4825,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 9,
       "file_id": "rh:file:Zeta23/CCM/NativeCausalLaplaceMoments.lean",
       "module": "Zeta23.CCM.NativeCausalLaplaceMoments",
       "module_id": "rh:module:Zeta23.CCM.NativeCausalLaplaceMoments",
@@ -4838,7 +4838,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 2,
       "file_id": "rh:file:Zeta23/CCM/NativeCausalRangeObstruction.lean",
       "module": "Zeta23.CCM.NativeCausalRangeObstruction",
       "module_id": "rh:module:Zeta23.CCM.NativeCausalRangeObstruction",
@@ -4851,7 +4851,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 20,
       "file_id": "rh:file:Zeta23/CCM/NativeCompactTranslateCalculus.lean",
       "module": "Zeta23.CCM.NativeCompactTranslateCalculus",
       "module_id": "rh:module:Zeta23.CCM.NativeCompactTranslateCalculus",
@@ -4864,7 +4864,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 23,
       "file_id": "rh:file:Zeta23/CCM/NativeCompletedInput.lean",
       "module": "Zeta23.CCM.NativeCompletedInput",
       "module_id": "rh:module:Zeta23.CCM.NativeCompletedInput",
@@ -4877,7 +4877,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 4,
       "file_id": "rh:file:Zeta23/CCM/NativeCompletedInputComplexLaplace.lean",
       "module": "Zeta23.CCM.NativeCompletedInputComplexLaplace",
       "module_id": "rh:module:Zeta23.CCM.NativeCompletedInputComplexLaplace",
@@ -4903,7 +4903,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 13,
       "file_id": "rh:file:Zeta23/CCM/NativeCompletedInputZetaLaplace.lean",
       "module": "Zeta23.CCM.NativeCompletedInputZetaLaplace",
       "module_id": "rh:module:Zeta23.CCM.NativeCompletedInputZetaLaplace",
@@ -4916,7 +4916,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 7,
       "file_id": "rh:file:Zeta23/CCM/NativeCompletionComplexLaplace.lean",
       "module": "Zeta23.CCM.NativeCompletionComplexLaplace",
       "module_id": "rh:module:Zeta23.CCM.NativeCompletionComplexLaplace",
@@ -4929,7 +4929,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 8,
       "file_id": "rh:file:Zeta23/CCM/NativeCompletionEquation.lean",
       "module": "Zeta23.CCM.NativeCompletionEquation",
       "module_id": "rh:module:Zeta23.CCM.NativeCompletionEquation",
@@ -4942,7 +4942,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 7,
       "file_id": "rh:file:Zeta23/CCM/NativeCompletionIntegerKernel.lean",
       "module": "Zeta23.CCM.NativeCompletionIntegerKernel",
       "module_id": "rh:module:Zeta23.CCM.NativeCompletionIntegerKernel",
@@ -4955,7 +4955,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 1,
       "file_id": "rh:file:Zeta23/CCM/NativeCompletionPublicAPI.lean",
       "module": "Zeta23.CCM.NativeCompletionPublicAPI",
       "module_id": "rh:module:Zeta23.CCM.NativeCompletionPublicAPI",
@@ -4968,7 +4968,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 32,
       "file_id": "rh:file:Zeta23/CCM/NativeDampedCompletionOperator.lean",
       "module": "Zeta23.CCM.NativeDampedCompletionOperator",
       "module_id": "rh:module:Zeta23.CCM.NativeDampedCompletionOperator",
@@ -4994,7 +4994,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 16,
       "file_id": "rh:file:Zeta23/CCM/NativeDampedCompletionPrerequisites.lean",
       "module": "Zeta23.CCM.NativeDampedCompletionPrerequisites",
       "module_id": "rh:module:Zeta23.CCM.NativeDampedCompletionPrerequisites",
@@ -5007,7 +5007,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 26,
       "file_id": "rh:file:Zeta23/CCM/NativeDampedCompletionResidual.lean",
       "module": "Zeta23.CCM.NativeDampedCompletionResidual",
       "module_id": "rh:module:Zeta23.CCM.NativeDampedCompletionResidual",
@@ -5020,7 +5020,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 1,
       "file_id": "rh:file:Zeta23/CCM/NativeDeepThresholdEvenMoment.lean",
       "module": "Zeta23.CCM.NativeDeepThresholdEvenMoment",
       "module_id": "rh:module:Zeta23.CCM.NativeDeepThresholdEvenMoment",
@@ -5033,7 +5033,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 20,
       "file_id": "rh:file:Zeta23/CCM/NativeDeepThresholdGround.lean",
       "module": "Zeta23.CCM.NativeDeepThresholdGround",
       "module_id": "rh:module:Zeta23.CCM.NativeDeepThresholdGround",
@@ -5046,7 +5046,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 73,
       "file_id": "rh:file:Zeta23/CCM/NativeDeepThresholdInverseBudgets.lean",
       "module": "Zeta23.CCM.NativeDeepThresholdInverseBudgets",
       "module_id": "rh:module:Zeta23.CCM.NativeDeepThresholdInverseBudgets",
@@ -5059,7 +5059,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 16,
       "file_id": "rh:file:Zeta23/CCM/NativeDeepThresholdSimplicity.lean",
       "module": "Zeta23.CCM.NativeDeepThresholdSimplicity",
       "module_id": "rh:module:Zeta23.CCM.NativeDeepThresholdSimplicity",
@@ -5072,7 +5072,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 27,
       "file_id": "rh:file:Zeta23/CCM/NativeDetectorSchur.lean",
       "module": "Zeta23.CCM.NativeDetectorSchur",
       "module_id": "rh:module:Zeta23.CCM.NativeDetectorSchur",
@@ -5085,7 +5085,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 19,
       "file_id": "rh:file:Zeta23/CCM/NativeExteriorSourceRecord.lean",
       "module": "Zeta23.CCM.NativeExteriorSourceRecord",
       "module_id": "rh:module:Zeta23.CCM.NativeExteriorSourceRecord",
@@ -5098,7 +5098,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 12,
       "file_id": "rh:file:Zeta23/CCM/NativeFloorCompletionSource.lean",
       "module": "Zeta23.CCM.NativeFloorCompletionSource",
       "module_id": "rh:module:Zeta23.CCM.NativeFloorCompletionSource",
@@ -5111,7 +5111,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 9,
       "file_id": "rh:file:Zeta23/CCM/NativeIntegerDriveComplexLaplace.lean",
       "module": "Zeta23.CCM.NativeIntegerDriveComplexLaplace",
       "module_id": "rh:module:Zeta23.CCM.NativeIntegerDriveComplexLaplace",
@@ -5124,7 +5124,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 51,
       "file_id": "rh:file:Zeta23/CCM/NativeIntegerDriveFiniteOrderBounds.lean",
       "module": "Zeta23.CCM.NativeIntegerDriveFiniteOrderBounds",
       "module_id": "rh:module:Zeta23.CCM.NativeIntegerDriveFiniteOrderBounds",
@@ -5137,7 +5137,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 8,
       "file_id": "rh:file:Zeta23/CCM/NativeIntegerKernelComplexLaplace.lean",
       "module": "Zeta23.CCM.NativeIntegerKernelComplexLaplace",
       "module_id": "rh:module:Zeta23.CCM.NativeIntegerKernelComplexLaplace",
@@ -5150,7 +5150,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 15,
       "file_id": "rh:file:Zeta23/CCM/NativeIntegerPrimeConvolution.lean",
       "module": "Zeta23.CCM.NativeIntegerPrimeConvolution",
       "module_id": "rh:module:Zeta23.CCM.NativeIntegerPrimeConvolution",
@@ -5163,7 +5163,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 20,
       "file_id": "rh:file:Zeta23/CCM/NativeIntegerPrimeField.lean",
       "module": "Zeta23.CCM.NativeIntegerPrimeField",
       "module_id": "rh:module:Zeta23.CCM.NativeIntegerPrimeField",
@@ -5176,7 +5176,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 7,
       "file_id": "rh:file:Zeta23/CCM/NativeIntegerPrimeSource.lean",
       "module": "Zeta23.CCM.NativeIntegerPrimeSource",
       "module_id": "rh:module:Zeta23.CCM.NativeIntegerPrimeSource",
@@ -5189,7 +5189,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 4,
       "file_id": "rh:file:Zeta23/CCM/NativeLaplaceHalfPlaneContinuation.lean",
       "module": "Zeta23.CCM.NativeLaplaceHalfPlaneContinuation",
       "module_id": "rh:module:Zeta23.CCM.NativeLaplaceHalfPlaneContinuation",
@@ -5202,7 +5202,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 37,
       "file_id": "rh:file:Zeta23/CCM/NativeOriginalExteriorHistory.lean",
       "module": "Zeta23.CCM.NativeOriginalExteriorHistory",
       "module_id": "rh:module:Zeta23.CCM.NativeOriginalExteriorHistory",
@@ -5215,7 +5215,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 4,
       "file_id": "rh:file:Zeta23/CCM/NativePoleNeutralTrialDepth.lean",
       "module": "Zeta23.CCM.NativePoleNeutralTrialDepth",
       "module_id": "rh:module:Zeta23.CCM.NativePoleNeutralTrialDepth",
@@ -5228,7 +5228,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 9,
       "file_id": "rh:file:Zeta23/CCM/NativePositiveCompletion.lean",
       "module": "Zeta23.CCM.NativePositiveCompletion",
       "module_id": "rh:module:Zeta23.CCM.NativePositiveCompletion",
@@ -5241,7 +5241,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 3,
       "file_id": "rh:file:Zeta23/CCM/NativePositiveCompletionCells.lean",
       "module": "Zeta23.CCM.NativePositiveCompletionCells",
       "module_id": "rh:module:Zeta23.CCM.NativePositiveCompletionCells",
@@ -5254,7 +5254,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 141,
       "file_id": "rh:file:Zeta23/CCM/NativePositiveCompletionCertificate.lean",
       "module": "Zeta23.CCM.NativePositiveCompletionCertificate",
       "module_id": "rh:module:Zeta23.CCM.NativePositiveCompletionCertificate",
@@ -5267,7 +5267,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 6,
       "file_id": "rh:file:Zeta23/CCM/NativePositiveCompletionComplexLaplace.lean",
       "module": "Zeta23.CCM.NativePositiveCompletionComplexLaplace",
       "module_id": "rh:module:Zeta23.CCM.NativePositiveCompletionComplexLaplace",
@@ -5280,7 +5280,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 7,
       "file_id": "rh:file:Zeta23/CCM/NativePositiveCompletionHead.lean",
       "module": "Zeta23.CCM.NativePositiveCompletionHead",
       "module_id": "rh:module:Zeta23.CCM.NativePositiveCompletionHead",
@@ -5293,7 +5293,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 3,
       "file_id": "rh:file:Zeta23/CCM/NativePositiveCompletionMass.lean",
       "module": "Zeta23.CCM.NativePositiveCompletionMass",
       "module_id": "rh:module:Zeta23.CCM.NativePositiveCompletionMass",
@@ -5306,7 +5306,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 11,
       "file_id": "rh:file:Zeta23/CCM/NativePositiveCompletionTail.lean",
       "module": "Zeta23.CCM.NativePositiveCompletionTail",
       "module_id": "rh:module:Zeta23.CCM.NativePositiveCompletionTail",
@@ -5332,7 +5332,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 12,
       "file_id": "rh:file:Zeta23/CCM/NativeSelectedGroundSchur.lean",
       "module": "Zeta23.CCM.NativeSelectedGroundSchur",
       "module_id": "rh:module:Zeta23.CCM.NativeSelectedGroundSchur",
@@ -5345,7 +5345,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 34,
       "file_id": "rh:file:Zeta23/CCM/NativeWeilResponse.lean",
       "module": "Zeta23.CCM.NativeWeilResponse",
       "module_id": "rh:module:Zeta23.CCM.NativeWeilResponse",
@@ -5358,7 +5358,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 31,
       "file_id": "rh:file:Zeta23/CCM/NativeWeilResponseBounds.lean",
       "module": "Zeta23.CCM.NativeWeilResponseBounds",
       "module_id": "rh:module:Zeta23.CCM.NativeWeilResponseBounds",
@@ -5387,7 +5387,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 4,
       "file_id": "rh:file:Zeta23/CCM/OriginalDetectorActualForcingError.lean",
       "module": "Zeta23.CCM.OriginalDetectorActualForcingError",
       "module_id": "rh:module:Zeta23.CCM.OriginalDetectorActualForcingError",
@@ -5400,7 +5400,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 9,
       "file_id": "rh:file:Zeta23/CCM/OriginalDetectorAdmissibleSelector.lean",
       "module": "Zeta23.CCM.OriginalDetectorAdmissibleSelector",
       "module_id": "rh:module:Zeta23.CCM.OriginalDetectorAdmissibleSelector",
@@ -5413,7 +5413,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 5,
       "file_id": "rh:file:Zeta23/CCM/OriginalDetectorBoundaryHistorySplit.lean",
       "module": "Zeta23.CCM.OriginalDetectorBoundaryHistorySplit",
       "module_id": "rh:module:Zeta23.CCM.OriginalDetectorBoundaryHistorySplit",
@@ -5439,7 +5439,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 14,
       "file_id": "rh:file:Zeta23/CCM/OriginalDetectorDividedLobeBounds.lean",
       "module": "Zeta23.CCM.OriginalDetectorDividedLobeBounds",
       "module_id": "rh:module:Zeta23.CCM.OriginalDetectorDividedLobeBounds",
@@ -5452,7 +5452,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 2,
       "file_id": "rh:file:Zeta23/CCM/OriginalDetectorEtaControl.lean",
       "module": "Zeta23.CCM.OriginalDetectorEtaControl",
       "module_id": "rh:module:Zeta23.CCM.OriginalDetectorEtaControl",
@@ -5465,7 +5465,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 2,
       "file_id": "rh:file:Zeta23/CCM/OriginalDetectorExteriorPairing.lean",
       "module": "Zeta23.CCM.OriginalDetectorExteriorPairing",
       "module_id": "rh:module:Zeta23.CCM.OriginalDetectorExteriorPairing",
@@ -5478,7 +5478,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 3,
       "file_id": "rh:file:Zeta23/CCM/OriginalDetectorFinitePhaseApproximation.lean",
       "module": "Zeta23.CCM.OriginalDetectorFinitePhaseApproximation",
       "module_id": "rh:module:Zeta23.CCM.OriginalDetectorFinitePhaseApproximation",
@@ -5582,7 +5582,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 1,
       "file_id": "rh:file:Zeta23/CCM/OriginalDetectorFinitePhaseNormalization.lean",
       "module": "Zeta23.CCM.OriginalDetectorFinitePhaseNormalization",
       "module_id": "rh:module:Zeta23.CCM.OriginalDetectorFinitePhaseNormalization",
@@ -5595,7 +5595,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 4,
       "file_id": "rh:file:Zeta23/CCM/OriginalDetectorFinitePhasePlane.lean",
       "module": "Zeta23.CCM.OriginalDetectorFinitePhasePlane",
       "module_id": "rh:module:Zeta23.CCM.OriginalDetectorFinitePhasePlane",
@@ -5621,7 +5621,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 1,
       "file_id": "rh:file:Zeta23/CCM/OriginalDetectorFinitePhysicalNorm.lean",
       "module": "Zeta23.CCM.OriginalDetectorFinitePhysicalNorm",
       "module_id": "rh:module:Zeta23.CCM.OriginalDetectorFinitePhysicalNorm",
@@ -5634,7 +5634,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 3,
       "file_id": "rh:file:Zeta23/CCM/OriginalDetectorFinitePoleImage.lean",
       "module": "Zeta23.CCM.OriginalDetectorFinitePoleImage",
       "module_id": "rh:module:Zeta23.CCM.OriginalDetectorFinitePoleImage",
@@ -5725,7 +5725,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 15,
       "file_id": "rh:file:Zeta23/CCM/OriginalDetectorFiniteWindowImage.lean",
       "module": "Zeta23.CCM.OriginalDetectorFiniteWindowImage",
       "module_id": "rh:module:Zeta23.CCM.OriginalDetectorFiniteWindowImage",
@@ -5751,7 +5751,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 2,
       "file_id": "rh:file:Zeta23/CCM/OriginalDetectorFiniteWindowImageJets.lean",
       "module": "Zeta23.CCM.OriginalDetectorFiniteWindowImageJets",
       "module_id": "rh:module:Zeta23.CCM.OriginalDetectorFiniteWindowImageJets",
@@ -5764,7 +5764,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 2,
       "file_id": "rh:file:Zeta23/CCM/OriginalDetectorForcingError.lean",
       "module": "Zeta23.CCM.OriginalDetectorForcingError",
       "module_id": "rh:module:Zeta23.CCM.OriginalDetectorForcingError",
@@ -5777,7 +5777,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 1,
       "file_id": "rh:file:Zeta23/CCM/OriginalDetectorFourHistoryLocalDuality.lean",
       "module": "Zeta23.CCM.OriginalDetectorFourHistoryLocalDuality",
       "module_id": "rh:module:Zeta23.CCM.OriginalDetectorFourHistoryLocalDuality",
@@ -5790,7 +5790,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 12,
       "file_id": "rh:file:Zeta23/CCM/OriginalDetectorFourHistoryLocalXBound.lean",
       "module": "Zeta23.CCM.OriginalDetectorFourHistoryLocalXBound",
       "module_id": "rh:module:Zeta23.CCM.OriginalDetectorFourHistoryLocalXBound",
@@ -5803,7 +5803,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 3,
       "file_id": "rh:file:Zeta23/CCM/OriginalDetectorFourHistorySignedTransfer.lean",
       "module": "Zeta23.CCM.OriginalDetectorFourHistorySignedTransfer",
       "module_id": "rh:module:Zeta23.CCM.OriginalDetectorFourHistorySignedTransfer",
@@ -5816,7 +5816,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 2,
       "file_id": "rh:file:Zeta23/CCM/OriginalDetectorFourHistoryTransfer.lean",
       "module": "Zeta23.CCM.OriginalDetectorFourHistoryTransfer",
       "module_id": "rh:module:Zeta23.CCM.OriginalDetectorFourHistoryTransfer",
@@ -5829,7 +5829,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 2,
       "file_id": "rh:file:Zeta23/CCM/OriginalDetectorFourPrimeHistories.lean",
       "module": "Zeta23.CCM.OriginalDetectorFourPrimeHistories",
       "module_id": "rh:module:Zeta23.CCM.OriginalDetectorFourPrimeHistories",
@@ -5842,7 +5842,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 16,
       "file_id": "rh:file:Zeta23/CCM/OriginalDetectorFourierCoefficientBounds.lean",
       "module": "Zeta23.CCM.OriginalDetectorFourierCoefficientBounds",
       "module_id": "rh:module:Zeta23.CCM.OriginalDetectorFourierCoefficientBounds",
@@ -5855,7 +5855,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 14,
       "file_id": "rh:file:Zeta23/CCM/OriginalDetectorFourierPrerequisites.lean",
       "module": "Zeta23.CCM.OriginalDetectorFourierPrerequisites",
       "module_id": "rh:module:Zeta23.CCM.OriginalDetectorFourierPrerequisites",
@@ -5868,7 +5868,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 24,
       "file_id": "rh:file:Zeta23/CCM/OriginalDetectorFourierScalarTailBounds.lean",
       "module": "Zeta23.CCM.OriginalDetectorFourierScalarTailBounds",
       "module_id": "rh:module:Zeta23.CCM.OriginalDetectorFourierScalarTailBounds",
@@ -5881,7 +5881,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 2,
       "file_id": "rh:file:Zeta23/CCM/OriginalDetectorFourierTailAsymptotics.lean",
       "module": "Zeta23.CCM.OriginalDetectorFourierTailAsymptotics",
       "module_id": "rh:module:Zeta23.CCM.OriginalDetectorFourierTailAsymptotics",
@@ -5894,7 +5894,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 34,
       "file_id": "rh:file:Zeta23/CCM/OriginalDetectorFourierTailBounds.lean",
       "module": "Zeta23.CCM.OriginalDetectorFourierTailBounds",
       "module_id": "rh:module:Zeta23.CCM.OriginalDetectorFourierTailBounds",
@@ -5907,7 +5907,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 1,
       "file_id": "rh:file:Zeta23/CCM/OriginalDetectorLocalDuality.lean",
       "module": "Zeta23.CCM.OriginalDetectorLocalDuality",
       "module_id": "rh:module:Zeta23.CCM.OriginalDetectorLocalDuality",
@@ -5920,7 +5920,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 12,
       "file_id": "rh:file:Zeta23/CCM/OriginalDetectorNativeForcing.lean",
       "module": "Zeta23.CCM.OriginalDetectorNativeForcing",
       "module_id": "rh:module:Zeta23.CCM.OriginalDetectorNativeForcing",
@@ -5946,7 +5946,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 5,
       "file_id": "rh:file:Zeta23/CCM/OriginalDetectorOddPaddingIdentity.lean",
       "module": "Zeta23.CCM.OriginalDetectorOddPaddingIdentity",
       "module_id": "rh:module:Zeta23.CCM.OriginalDetectorOddPaddingIdentity",
@@ -5959,7 +5959,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 8,
       "file_id": "rh:file:Zeta23/CCM/OriginalDetectorOriginalPhaseL1Bounds.lean",
       "module": "Zeta23.CCM.OriginalDetectorOriginalPhaseL1Bounds",
       "module_id": "rh:module:Zeta23.CCM.OriginalDetectorOriginalPhaseL1Bounds",
@@ -5972,7 +5972,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 5,
       "file_id": "rh:file:Zeta23/CCM/OriginalDetectorPaddedFiniteH1Rate.lean",
       "module": "Zeta23.CCM.OriginalDetectorPaddedFiniteH1Rate",
       "module_id": "rh:module:Zeta23.CCM.OriginalDetectorPaddedFiniteH1Rate",
@@ -5985,7 +5985,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 7,
       "file_id": "rh:file:Zeta23/CCM/OriginalDetectorPaddedFiniteNativeFormConcreteRate.lean",
       "module": "Zeta23.CCM.OriginalDetectorPaddedFiniteNativeFormConcreteRate",
       "module_id": "rh:module:Zeta23.CCM.OriginalDetectorPaddedFiniteNativeFormConcreteRate",
@@ -5998,7 +5998,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 7,
       "file_id": "rh:file:Zeta23/CCM/OriginalDetectorPaddedFiniteNativeFormRate.lean",
       "module": "Zeta23.CCM.OriginalDetectorPaddedFiniteNativeFormRate",
       "module_id": "rh:module:Zeta23.CCM.OriginalDetectorPaddedFiniteNativeFormRate",
@@ -6011,7 +6011,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 13,
       "file_id": "rh:file:Zeta23/CCM/OriginalDetectorPaddedFiniteNormalizedErrors.lean",
       "module": "Zeta23.CCM.OriginalDetectorPaddedFiniteNormalizedErrors",
       "module_id": "rh:module:Zeta23.CCM.OriginalDetectorPaddedFiniteNormalizedErrors",
@@ -6024,7 +6024,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 8,
       "file_id": "rh:file:Zeta23/CCM/OriginalDetectorPaddedFinitePhaseApproximation.lean",
       "module": "Zeta23.CCM.OriginalDetectorPaddedFinitePhaseApproximation",
       "module_id": "rh:module:Zeta23.CCM.OriginalDetectorPaddedFinitePhaseApproximation",
@@ -6037,7 +6037,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 24,
       "file_id": "rh:file:Zeta23/CCM/OriginalDetectorPaddedFinitePhaseCarrier.lean",
       "module": "Zeta23.CCM.OriginalDetectorPaddedFinitePhaseCarrier",
       "module_id": "rh:module:Zeta23.CCM.OriginalDetectorPaddedFinitePhaseCarrier",
@@ -6050,7 +6050,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 16,
       "file_id": "rh:file:Zeta23/CCM/OriginalDetectorPaddedFinitePhaseDepth.lean",
       "module": "Zeta23.CCM.OriginalDetectorPaddedFinitePhaseDepth",
       "module_id": "rh:module:Zeta23.CCM.OriginalDetectorPaddedFinitePhaseDepth",
@@ -6063,7 +6063,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 6,
       "file_id": "rh:file:Zeta23/CCM/OriginalDetectorPaddedFinitePhaseL1Errors.lean",
       "module": "Zeta23.CCM.OriginalDetectorPaddedFinitePhaseL1Errors",
       "module_id": "rh:module:Zeta23.CCM.OriginalDetectorPaddedFinitePhaseL1Errors",
@@ -6076,7 +6076,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 6,
       "file_id": "rh:file:Zeta23/CCM/OriginalDetectorPaddedFinitePhaseMass.lean",
       "module": "Zeta23.CCM.OriginalDetectorPaddedFinitePhaseMass",
       "module_id": "rh:module:Zeta23.CCM.OriginalDetectorPaddedFinitePhaseMass",
@@ -6089,7 +6089,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 15,
       "file_id": "rh:file:Zeta23/CCM/OriginalDetectorPaddedFinitePhaseNativeProducer.lean",
       "module": "Zeta23.CCM.OriginalDetectorPaddedFinitePhaseNativeProducer",
       "module_id": "rh:module:Zeta23.CCM.OriginalDetectorPaddedFinitePhaseNativeProducer",
@@ -6102,7 +6102,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 4,
       "file_id": "rh:file:Zeta23/CCM/OriginalDetectorPaddedFinitePhaseNativeTransport.lean",
       "module": "Zeta23.CCM.OriginalDetectorPaddedFinitePhaseNativeTransport",
       "module_id": "rh:module:Zeta23.CCM.OriginalDetectorPaddedFinitePhaseNativeTransport",
@@ -6115,7 +6115,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 7,
       "file_id": "rh:file:Zeta23/CCM/OriginalDetectorPaddedFinitePhaseNormControl.lean",
       "module": "Zeta23.CCM.OriginalDetectorPaddedFinitePhaseNormControl",
       "module_id": "rh:module:Zeta23.CCM.OriginalDetectorPaddedFinitePhaseNormControl",
@@ -6128,7 +6128,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 5,
       "file_id": "rh:file:Zeta23/CCM/OriginalDetectorPaddedFinitePhaseNormalization.lean",
       "module": "Zeta23.CCM.OriginalDetectorPaddedFinitePhaseNormalization",
       "module_id": "rh:module:Zeta23.CCM.OriginalDetectorPaddedFinitePhaseNormalization",
@@ -6141,7 +6141,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 15,
       "file_id": "rh:file:Zeta23/CCM/OriginalDetectorPaddedFinitePhasePlane.lean",
       "module": "Zeta23.CCM.OriginalDetectorPaddedFinitePhasePlane",
       "module_id": "rh:module:Zeta23.CCM.OriginalDetectorPaddedFinitePhasePlane",
@@ -6154,7 +6154,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 5,
       "file_id": "rh:file:Zeta23/CCM/OriginalDetectorPaddedFinitePhaseSymmetry.lean",
       "module": "Zeta23.CCM.OriginalDetectorPaddedFinitePhaseSymmetry",
       "module_id": "rh:module:Zeta23.CCM.OriginalDetectorPaddedFinitePhaseSymmetry",
@@ -6167,7 +6167,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 8,
       "file_id": "rh:file:Zeta23/CCM/OriginalDetectorPaddedFinitePhaseWeilPadding.lean",
       "module": "Zeta23.CCM.OriginalDetectorPaddedFinitePhaseWeilPadding",
       "module_id": "rh:module:Zeta23.CCM.OriginalDetectorPaddedFinitePhaseWeilPadding",
@@ -6180,7 +6180,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 2,
       "file_id": "rh:file:Zeta23/CCM/OriginalDetectorPaddedFinitePhysicalUnitBridge.lean",
       "module": "Zeta23.CCM.OriginalDetectorPaddedFinitePhysicalUnitBridge",
       "module_id": "rh:module:Zeta23.CCM.OriginalDetectorPaddedFinitePhysicalUnitBridge",
@@ -6193,7 +6193,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 12,
       "file_id": "rh:file:Zeta23/CCM/OriginalDetectorPaddedFinitePoleImage.lean",
       "module": "Zeta23.CCM.OriginalDetectorPaddedFinitePoleImage",
       "module_id": "rh:module:Zeta23.CCM.OriginalDetectorPaddedFinitePoleImage",
@@ -6206,7 +6206,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 1,
       "file_id": "rh:file:Zeta23/CCM/OriginalDetectorPaddedFinitePoleImageAsymptotics.lean",
       "module": "Zeta23.CCM.OriginalDetectorPaddedFinitePoleImageAsymptotics",
       "module_id": "rh:module:Zeta23.CCM.OriginalDetectorPaddedFinitePoleImageAsymptotics",
@@ -6219,7 +6219,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 5,
       "file_id": "rh:file:Zeta23/CCM/OriginalDetectorPaddedFinitePoleImageC4.lean",
       "module": "Zeta23.CCM.OriginalDetectorPaddedFinitePoleImageC4",
       "module_id": "rh:module:Zeta23.CCM.OriginalDetectorPaddedFinitePoleImageC4",
@@ -6232,7 +6232,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 1,
       "file_id": "rh:file:Zeta23/CCM/OriginalDetectorPaddedFinitePoleImageNonzero.lean",
       "module": "Zeta23.CCM.OriginalDetectorPaddedFinitePoleImageNonzero",
       "module_id": "rh:module:Zeta23.CCM.OriginalDetectorPaddedFinitePoleImageNonzero",
@@ -6245,7 +6245,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 5,
       "file_id": "rh:file:Zeta23/CCM/OriginalDetectorPaddedFinitePoleImageTransport.lean",
       "module": "Zeta23.CCM.OriginalDetectorPaddedFinitePoleImageTransport",
       "module_id": "rh:module:Zeta23.CCM.OriginalDetectorPaddedFinitePoleImageTransport",
@@ -6258,7 +6258,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 9,
       "file_id": "rh:file:Zeta23/CCM/OriginalDetectorPaddedFinitePositivity.lean",
       "module": "Zeta23.CCM.OriginalDetectorPaddedFinitePositivity",
       "module_id": "rh:module:Zeta23.CCM.OriginalDetectorPaddedFinitePositivity",
@@ -6284,7 +6284,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 9,
       "file_id": "rh:file:Zeta23/CCM/OriginalDetectorPaddedFiniteWindowHigherFlat.lean",
       "module": "Zeta23.CCM.OriginalDetectorPaddedFiniteWindowHigherFlat",
       "module_id": "rh:module:Zeta23.CCM.OriginalDetectorPaddedFiniteWindowHigherFlat",
@@ -6297,7 +6297,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 16,
       "file_id": "rh:file:Zeta23/CCM/OriginalDetectorPaddedFiniteWindowImage.lean",
       "module": "Zeta23.CCM.OriginalDetectorPaddedFiniteWindowImage",
       "module_id": "rh:module:Zeta23.CCM.OriginalDetectorPaddedFiniteWindowImage",
@@ -6310,7 +6310,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 1,
       "file_id": "rh:file:Zeta23/CCM/OriginalDetectorPaddedFiniteWindowImageAsymptotics.lean",
       "module": "Zeta23.CCM.OriginalDetectorPaddedFiniteWindowImageAsymptotics",
       "module_id": "rh:module:Zeta23.CCM.OriginalDetectorPaddedFiniteWindowImageAsymptotics",
@@ -6323,7 +6323,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 12,
       "file_id": "rh:file:Zeta23/CCM/OriginalDetectorPaddedFiniteWindowImageJets.lean",
       "module": "Zeta23.CCM.OriginalDetectorPaddedFiniteWindowImageJets",
       "module_id": "rh:module:Zeta23.CCM.OriginalDetectorPaddedFiniteWindowImageJets",
@@ -6336,7 +6336,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 9,
       "file_id": "rh:file:Zeta23/CCM/OriginalDetectorPaddedFourierQuantitativeRates.lean",
       "module": "Zeta23.CCM.OriginalDetectorPaddedFourierQuantitativeRates",
       "module_id": "rh:module:Zeta23.CCM.OriginalDetectorPaddedFourierQuantitativeRates",
@@ -6349,7 +6349,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 5,
       "file_id": "rh:file:Zeta23/CCM/OriginalDetectorPaddedPhaseQuantitativeRates.lean",
       "module": "Zeta23.CCM.OriginalDetectorPaddedPhaseQuantitativeRates",
       "module_id": "rh:module:Zeta23.CCM.OriginalDetectorPaddedPhaseQuantitativeRates",
@@ -6362,7 +6362,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 13,
       "file_id": "rh:file:Zeta23/CCM/OriginalDetectorPaddedPhaseScalar.lean",
       "module": "Zeta23.CCM.OriginalDetectorPaddedPhaseScalar",
       "module_id": "rh:module:Zeta23.CCM.OriginalDetectorPaddedPhaseScalar",
@@ -6375,7 +6375,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 10,
       "file_id": "rh:file:Zeta23/CCM/OriginalDetectorPaddedRetainedSelection.lean",
       "module": "Zeta23.CCM.OriginalDetectorPaddedRetainedSelection",
       "module_id": "rh:module:Zeta23.CCM.OriginalDetectorPaddedRetainedSelection",
@@ -6388,7 +6388,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 12,
       "file_id": "rh:file:Zeta23/CCM/OriginalDetectorPositiveFourierPadding.lean",
       "module": "Zeta23.CCM.OriginalDetectorPositiveFourierPadding",
       "module_id": "rh:module:Zeta23.CCM.OriginalDetectorPositiveFourierPadding",
@@ -6401,7 +6401,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 11,
       "file_id": "rh:file:Zeta23/CCM/OriginalDetectorPositiveFourierPaddingReal.lean",
       "module": "Zeta23.CCM.OriginalDetectorPositiveFourierPaddingReal",
       "module_id": "rh:module:Zeta23.CCM.OriginalDetectorPositiveFourierPaddingReal",
@@ -6414,7 +6414,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 5,
       "file_id": "rh:file:Zeta23/CCM/OriginalDetectorPrimeHistoryCovariance.lean",
       "module": "Zeta23.CCM.OriginalDetectorPrimeHistoryCovariance",
       "module_id": "rh:module:Zeta23.CCM.OriginalDetectorPrimeHistoryCovariance",
@@ -6453,7 +6453,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 18,
       "file_id": "rh:file:Zeta23/CCM/OriginalDetectorWindowBounds.lean",
       "module": "Zeta23.CCM.OriginalDetectorWindowBounds",
       "module_id": "rh:module:Zeta23.CCM.OriginalDetectorWindowBounds",
@@ -6466,7 +6466,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 2,
       "file_id": "rh:file:Zeta23/CCM/OriginalSincCompactPotential.lean",
       "module": "Zeta23.CCM.OriginalSincCompactPotential",
       "module_id": "rh:module:Zeta23.CCM.OriginalSincCompactPotential",
@@ -6479,7 +6479,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 7,
       "file_id": "rh:file:Zeta23/CCM/OriginalSincDriveCancellation.lean",
       "module": "Zeta23.CCM.OriginalSincDriveCancellation",
       "module_id": "rh:module:Zeta23.CCM.OriginalSincDriveCancellation",
@@ -6492,7 +6492,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 18,
       "file_id": "rh:file:Zeta23/CCM/OriginalSincDriveDecay.lean",
       "module": "Zeta23.CCM.OriginalSincDriveDecay",
       "module_id": "rh:module:Zeta23.CCM.OriginalSincDriveDecay",
@@ -6505,7 +6505,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 4,
       "file_id": "rh:file:Zeta23/CCM/OriginalSincDriveDerivative.lean",
       "module": "Zeta23.CCM.OriginalSincDriveDerivative",
       "module_id": "rh:module:Zeta23.CCM.OriginalSincDriveDerivative",
@@ -6518,7 +6518,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 18,
       "file_id": "rh:file:Zeta23/CCM/OriginalSincDriveLp.lean",
       "module": "Zeta23.CCM.OriginalSincDriveLp",
       "module_id": "rh:module:Zeta23.CCM.OriginalSincDriveLp",
@@ -6531,7 +6531,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 12,
       "file_id": "rh:file:Zeta23/CCM/OriginalSincLogDrive.lean",
       "module": "Zeta23.CCM.OriginalSincLogDrive",
       "module_id": "rh:module:Zeta23.CCM.OriginalSincLogDrive",
@@ -6544,7 +6544,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 10,
       "file_id": "rh:file:Zeta23/CCM/OriginalSincNativeConvolution.lean",
       "module": "Zeta23.CCM.OriginalSincNativeConvolution",
       "module_id": "rh:module:Zeta23.CCM.OriginalSincNativeConvolution",
@@ -6570,7 +6570,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 10,
       "file_id": "rh:file:Zeta23/CCM/OriginalSincNativeSource.lean",
       "module": "Zeta23.CCM.OriginalSincNativeSource",
       "module_id": "rh:module:Zeta23.CCM.OriginalSincNativeSource",
@@ -6596,7 +6596,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 11,
       "file_id": "rh:file:Zeta23/CCM/OriginalSincWeightedPoleMoments.lean",
       "module": "Zeta23.CCM.OriginalSincWeightedPoleMoments",
       "module_id": "rh:module:Zeta23.CCM.OriginalSincWeightedPoleMoments",
@@ -6782,7 +6782,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 24,
       "file_id": "rh:file:Zeta23/CCM/PoleNeutralCompactH2.lean",
       "module": "Zeta23.CCM.PoleNeutralCompactH2",
       "module_id": "rh:module:Zeta23.CCM.PoleNeutralCompactH2",
@@ -6834,7 +6834,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 18,
       "file_id": "rh:file:Zeta23/CCM/PoleNeutralCompactInverseCore.lean",
       "module": "Zeta23.CCM.PoleNeutralCompactInverseCore",
       "module_id": "rh:module:Zeta23.CCM.PoleNeutralCompactInverseCore",
@@ -6860,7 +6860,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 7,
       "file_id": "rh:file:Zeta23/CCM/PoleNeutralCompactL2Energy.lean",
       "module": "Zeta23.CCM.PoleNeutralCompactL2Energy",
       "module_id": "rh:module:Zeta23.CCM.PoleNeutralCompactL2Energy",
@@ -6873,7 +6873,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 13,
       "file_id": "rh:file:Zeta23/CCM/PoleNeutralCompactL2Regularity.lean",
       "module": "Zeta23.CCM.PoleNeutralCompactL2Regularity",
       "module_id": "rh:module:Zeta23.CCM.PoleNeutralCompactL2Regularity",
@@ -7556,7 +7556,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 46,
+      "compiler_dependency_surface_declaration_count": 48,
       "file_id": "rh:file:Zeta23/CCM/SourceLatticeCoordinates.lean",
       "module": "Zeta23.CCM.SourceLatticeCoordinates",
       "module_id": "rh:module:Zeta23.CCM.SourceLatticeCoordinates",
@@ -7694,7 +7694,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 2,
+      "compiler_dependency_surface_declaration_count": 8,
       "file_id": "rh:file:Zeta23/CCM/SourceSignCountermodels.lean",
       "module": "Zeta23.CCM.SourceSignCountermodels",
       "module_id": "rh:module:Zeta23.CCM.SourceSignCountermodels",
@@ -7753,7 +7753,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 31,
       "file_id": "rh:file:Zeta23/CCM/Step123NativeAmbientGalerkin.lean",
       "module": "Zeta23.CCM.Step123NativeAmbientGalerkin",
       "module_id": "rh:module:Zeta23.CCM.Step123NativeAmbientGalerkin",
@@ -7779,7 +7779,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 12,
       "file_id": "rh:file:Zeta23/CCM/Step123NativeCorePacket.lean",
       "module": "Zeta23.CCM.Step123NativeCorePacket",
       "module_id": "rh:module:Zeta23.CCM.Step123NativeCorePacket",
@@ -7792,7 +7792,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 17,
       "file_id": "rh:file:Zeta23/CCM/Step123NativeFieldRecord.lean",
       "module": "Zeta23.CCM.Step123NativeFieldRecord",
       "module_id": "rh:module:Zeta23.CCM.Step123NativeFieldRecord",
@@ -7805,7 +7805,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 5,
       "file_id": "rh:file:Zeta23/CCM/Step123NativeResidualOutput.lean",
       "module": "Zeta23.CCM.Step123NativeResidualOutput",
       "module_id": "rh:module:Zeta23.CCM.Step123NativeResidualOutput",
@@ -7831,7 +7831,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 4,
       "file_id": "rh:file:Zeta23/CCM/Step123OriginalBoundaryEvidence.lean",
       "module": "Zeta23.CCM.Step123OriginalBoundaryEvidence",
       "module_id": "rh:module:Zeta23.CCM.Step123OriginalBoundaryEvidence",
@@ -7844,7 +7844,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 32,
       "file_id": "rh:file:Zeta23/CCM/Step123OutputData.lean",
       "module": "Zeta23.CCM.Step123OutputData",
       "module_id": "rh:module:Zeta23.CCM.Step123OutputData",
@@ -7857,7 +7857,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 5,
       "file_id": "rh:file:Zeta23/CCM/Step123OutputFieldEvidence.lean",
       "module": "Zeta23.CCM.Step123OutputFieldEvidence",
       "module_id": "rh:module:Zeta23.CCM.Step123OutputFieldEvidence",
@@ -7870,7 +7870,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 2,
       "file_id": "rh:file:Zeta23/CCM/Step123PhysicalImageIdentity.lean",
       "module": "Zeta23.CCM.Step123PhysicalImageIdentity",
       "module_id": "rh:module:Zeta23.CCM.Step123PhysicalImageIdentity",
@@ -7896,7 +7896,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 53,
       "file_id": "rh:file:Zeta23/CCM/Step123SameStateN21.lean",
       "module": "Zeta23.CCM.Step123SameStateN21",
       "module_id": "rh:module:Zeta23.CCM.Step123SameStateN21",
@@ -7909,7 +7909,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 19,
       "file_id": "rh:file:Zeta23/CCM/Step123SameStateN23.lean",
       "module": "Zeta23.CCM.Step123SameStateN23",
       "module_id": "rh:module:Zeta23.CCM.Step123SameStateN23",
@@ -7922,7 +7922,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 34,
       "file_id": "rh:file:Zeta23/CCM/Step123SameStateN36.lean",
       "module": "Zeta23.CCM.Step123SameStateN36",
       "module_id": "rh:module:Zeta23.CCM.Step123SameStateN36",
@@ -7935,7 +7935,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 48,
       "file_id": "rh:file:Zeta23/CCM/Step123SameStateN38.lean",
       "module": "Zeta23.CCM.Step123SameStateN38",
       "module_id": "rh:module:Zeta23.CCM.Step123SameStateN38",
@@ -7948,7 +7948,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 8,
       "file_id": "rh:file:Zeta23/CCM/Step123SameStateN39.lean",
       "module": "Zeta23.CCM.Step123SameStateN39",
       "module_id": "rh:module:Zeta23.CCM.Step123SameStateN39",
@@ -7976,7 +7976,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 18,
       "file_id": "rh:file:Zeta23/CCM/UniversalSincBoxDensity.lean",
       "module": "Zeta23.CCM.UniversalSincBoxDensity",
       "module_id": "rh:module:Zeta23.CCM.UniversalSincBoxDensity",
@@ -7989,7 +7989,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 36,
       "file_id": "rh:file:Zeta23/CCM/UniversalSincDetector.lean",
       "module": "Zeta23.CCM.UniversalSincDetector",
       "module_id": "rh:module:Zeta23.CCM.UniversalSincDetector",
@@ -8002,7 +8002,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 10,
       "file_id": "rh:file:Zeta23/CCM/UniversalSincDetectorBounds.lean",
       "module": "Zeta23.CCM.UniversalSincDetectorBounds",
       "module_id": "rh:module:Zeta23.CCM.UniversalSincDetectorBounds",
@@ -8015,7 +8015,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 9,
       "file_id": "rh:file:Zeta23/CCM/UniversalSincDetectorInverse.lean",
       "module": "Zeta23.CCM.UniversalSincDetectorInverse",
       "module_id": "rh:module:Zeta23.CCM.UniversalSincDetectorInverse",
@@ -8028,7 +8028,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 6,
       "file_id": "rh:file:Zeta23/CCM/UniversalSincInverseGevreyBounds.lean",
       "module": "Zeta23.CCM.UniversalSincInverseGevreyBounds",
       "module_id": "rh:module:Zeta23.CCM.UniversalSincInverseGevreyBounds",
@@ -8041,7 +8041,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 15,
       "file_id": "rh:file:Zeta23/CCM/UniversalSincPhysicalBounds.lean",
       "module": "Zeta23.CCM.UniversalSincPhysicalBounds",
       "module_id": "rh:module:Zeta23.CCM.UniversalSincPhysicalBounds",
@@ -8054,7 +8054,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 10,
       "file_id": "rh:file:Zeta23/CCM/UniversalSincProductMoments.lean",
       "module": "Zeta23.CCM.UniversalSincProductMoments",
       "module_id": "rh:module:Zeta23.CCM.UniversalSincProductMoments",
@@ -8067,7 +8067,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 2,
       "file_id": "rh:file:Zeta23/CCM/UniversalSincSourceCharacteristic.lean",
       "module": "Zeta23.CCM.UniversalSincSourceCharacteristic",
       "module_id": "rh:module:Zeta23.CCM.UniversalSincSourceCharacteristic",
@@ -8080,7 +8080,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 5,
       "file_id": "rh:file:Zeta23/CCM/UniversalSincSourceComplexTransform.lean",
       "module": "Zeta23.CCM.UniversalSincSourceComplexTransform",
       "module_id": "rh:module:Zeta23.CCM.UniversalSincSourceComplexTransform",
@@ -8093,7 +8093,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 16,
       "file_id": "rh:file:Zeta23/CCM/UniversalSincSourceDensity.lean",
       "module": "Zeta23.CCM.UniversalSincSourceDensity",
       "module_id": "rh:module:Zeta23.CCM.UniversalSincSourceDensity",
@@ -8106,7 +8106,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 8,
       "file_id": "rh:file:Zeta23/CCM/UniversalSincSourceDensityIdentification.lean",
       "module": "Zeta23.CCM.UniversalSincSourceDensityIdentification",
       "module_id": "rh:module:Zeta23.CCM.UniversalSincSourceDensityIdentification",
@@ -8119,7 +8119,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 10,
       "file_id": "rh:file:Zeta23/CCM/UniversalSincSourceDensityTransform.lean",
       "module": "Zeta23.CCM.UniversalSincSourceDensityTransform",
       "module_id": "rh:module:Zeta23.CCM.UniversalSincSourceDensityTransform",
@@ -8132,7 +8132,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 39,
       "file_id": "rh:file:Zeta23/CCM/UniversalSincSourceFacade.lean",
       "module": "Zeta23.CCM.UniversalSincSourceFacade",
       "module_id": "rh:module:Zeta23.CCM.UniversalSincSourceFacade",
@@ -8145,7 +8145,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 19,
       "file_id": "rh:file:Zeta23/CCM/UniversalSincSourceLaw.lean",
       "module": "Zeta23.CCM.UniversalSincSourceLaw",
       "module_id": "rh:module:Zeta23.CCM.UniversalSincSourceLaw",
@@ -8158,7 +8158,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 5,
       "file_id": "rh:file:Zeta23/CCM/UniversalSincSourceSymmetry.lean",
       "module": "Zeta23.CCM.UniversalSincSourceSymmetry",
       "module_id": "rh:module:Zeta23.CCM.UniversalSincSourceSymmetry",
@@ -8171,7 +8171,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 13,
       "file_id": "rh:file:Zeta23/CCM/UniversalSincSourceTail.lean",
       "module": "Zeta23.CCM.UniversalSincSourceTail",
       "module_id": "rh:module:Zeta23.CCM.UniversalSincSourceTail",
@@ -8357,7 +8357,7 @@
       "trust_zone": "AUXILIARY_FORMALIZATION"
     },
     {
-      "compiler_dependency_surface_declaration_count": 19,
+      "compiler_dependency_surface_declaration_count": 21,
       "file_id": "rh:file:Zeta23/Defs.lean",
       "module": "Zeta23.Defs",
       "module_id": "rh:module:Zeta23.Defs",
@@ -9292,7 +9292,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 13,
       "file_id": "rh:file:Zeta23/ExceptionalZero/NativeActualInputZeroJets.lean",
       "module": "Zeta23.ExceptionalZero.NativeActualInputZeroJets",
       "module_id": "rh:module:Zeta23.ExceptionalZero.NativeActualInputZeroJets",
@@ -9305,7 +9305,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 5,
       "file_id": "rh:file:Zeta23/ExceptionalZero/NativeActualKernelZeroJets.lean",
       "module": "Zeta23.ExceptionalZero.NativeActualKernelZeroJets",
       "module_id": "rh:module:Zeta23.ExceptionalZero.NativeActualKernelZeroJets",
@@ -9331,7 +9331,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 5,
       "file_id": "rh:file:Zeta23/ExceptionalZero/NativeOriginalSourceLaplaceVisibility.lean",
       "module": "Zeta23.ExceptionalZero.NativeOriginalSourceLaplaceVisibility",
       "module_id": "rh:module:Zeta23.ExceptionalZero.NativeOriginalSourceLaplaceVisibility",
@@ -9344,7 +9344,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 13,
       "file_id": "rh:file:Zeta23/ExceptionalZero/NativeRangeZeroJetObstruction.lean",
       "module": "Zeta23.ExceptionalZero.NativeRangeZeroJetObstruction",
       "module_id": "rh:module:Zeta23.ExceptionalZero.NativeRangeZeroJetObstruction",
@@ -9357,7 +9357,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 22,
       "file_id": "rh:file:Zeta23/ExceptionalZero/NativeZeroJetAnalyticFactors.lean",
       "module": "Zeta23.ExceptionalZero.NativeZeroJetAnalyticFactors",
       "module_id": "rh:module:Zeta23.ExceptionalZero.NativeZeroJetAnalyticFactors",
@@ -9477,7 +9477,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 3,
       "file_id": "rh:file:Zeta23/ExceptionalZero/PositiveLaplaceAnalytic.lean",
       "module": "Zeta23.ExceptionalZero.PositiveLaplaceAnalytic",
       "module_id": "rh:module:Zeta23.ExceptionalZero.PositiveLaplaceAnalytic",
@@ -9490,7 +9490,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 8,
       "file_id": "rh:file:Zeta23/ExceptionalZero/PositiveLaplaceBoundary.lean",
       "module": "Zeta23.ExceptionalZero.PositiveLaplaceBoundary",
       "module_id": "rh:module:Zeta23.ExceptionalZero.PositiveLaplaceBoundary",
@@ -9503,7 +9503,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 11,
       "file_id": "rh:file:Zeta23/ExceptionalZero/PositiveLaplaceTilt.lean",
       "module": "Zeta23.ExceptionalZero.PositiveLaplaceTilt",
       "module_id": "rh:module:Zeta23.ExceptionalZero.PositiveLaplaceTilt",
@@ -9516,7 +9516,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 5,
       "file_id": "rh:file:Zeta23/ExceptionalZero/PositiveMGFContinuation.lean",
       "module": "Zeta23.ExceptionalZero.PositiveMGFContinuation",
       "module_id": "rh:module:Zeta23.ExceptionalZero.PositiveMGFContinuation",
@@ -9529,7 +9529,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 2,
       "file_id": "rh:file:Zeta23/ExceptionalZero/PositiveMomentSeries.lean",
       "module": "Zeta23.ExceptionalZero.PositiveMomentSeries",
       "module_id": "rh:module:Zeta23.ExceptionalZero.PositiveMomentSeries",
@@ -9705,7 +9705,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 29,
       "file_id": "rh:file:Zeta23/ExceptionalZero/Step123CompleteOutput.lean",
       "module": "Zeta23.ExceptionalZero.Step123CompleteOutput",
       "module_id": "rh:module:Zeta23.ExceptionalZero.Step123CompleteOutput",
@@ -9718,7 +9718,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 14,
       "file_id": "rh:file:Zeta23/ExceptionalZero/Step123OutputProducer.lean",
       "module": "Zeta23.ExceptionalZero.Step123OutputProducer",
       "module_id": "rh:module:Zeta23.ExceptionalZero.Step123OutputProducer",
@@ -9731,7 +9731,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 5,
       "file_id": "rh:file:Zeta23/ExceptionalZero/Step123SameStateN14.lean",
       "module": "Zeta23.ExceptionalZero.Step123SameStateN14",
       "module_id": "rh:module:Zeta23.ExceptionalZero.Step123SameStateN14",
@@ -9744,7 +9744,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 1,
       "file_id": "rh:file:Zeta23/ExceptionalZero/Step123SameStateN37.lean",
       "module": "Zeta23.ExceptionalZero.Step123SameStateN37",
       "module_id": "rh:module:Zeta23.ExceptionalZero.Step123SameStateN37",
@@ -9952,7 +9952,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 6,
       "file_id": "rh:file:Zeta23/ExceptionalZero/UniversalSincCorrelationReal.lean",
       "module": "Zeta23.ExceptionalZero.UniversalSincCorrelationReal",
       "module_id": "rh:module:Zeta23.ExceptionalZero.UniversalSincCorrelationReal",
@@ -9965,7 +9965,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 6,
       "file_id": "rh:file:Zeta23/ExceptionalZero/UniversalSincDetectorVisibility.lean",
       "module": "Zeta23.ExceptionalZero.UniversalSincDetectorVisibility",
       "module_id": "rh:module:Zeta23.ExceptionalZero.UniversalSincDetectorVisibility",
@@ -9978,7 +9978,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 10,
       "file_id": "rh:file:Zeta23/ExceptionalZero/UniversalSincInitialLaplace.lean",
       "module": "Zeta23.ExceptionalZero.UniversalSincInitialLaplace",
       "module_id": "rh:module:Zeta23.ExceptionalZero.UniversalSincInitialLaplace",
@@ -9991,7 +9991,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 2,
       "file_id": "rh:file:Zeta23/ExceptionalZero/UniversalSincNativeSourceIdentification.lean",
       "module": "Zeta23.ExceptionalZero.UniversalSincNativeSourceIdentification",
       "module_id": "rh:module:Zeta23.ExceptionalZero.UniversalSincNativeSourceIdentification",
@@ -10004,7 +10004,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 21,
       "file_id": "rh:file:Zeta23/ExceptionalZero/UniversalSincOriginalPhaseDepth.lean",
       "module": "Zeta23.ExceptionalZero.UniversalSincOriginalPhaseDepth",
       "module_id": "rh:module:Zeta23.ExceptionalZero.UniversalSincOriginalPhaseDepth",
@@ -10017,7 +10017,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 17,
       "file_id": "rh:file:Zeta23/ExceptionalZero/UniversalSincPhysicalDetector.lean",
       "module": "Zeta23.ExceptionalZero.UniversalSincPhysicalDetector",
       "module_id": "rh:module:Zeta23.ExceptionalZero.UniversalSincPhysicalDetector",
@@ -10030,7 +10030,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 4,
       "file_id": "rh:file:Zeta23/ExceptionalZero/UniversalSincSignedExcursions.lean",
       "module": "Zeta23.ExceptionalZero.UniversalSincSignedExcursions",
       "module_id": "rh:module:Zeta23.ExceptionalZero.UniversalSincSignedExcursions",
@@ -10043,7 +10043,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 26,
       "file_id": "rh:file:Zeta23/ExceptionalZero/UniversalSincSignedLaplace.lean",
       "module": "Zeta23.ExceptionalZero.UniversalSincSignedLaplace",
       "module_id": "rh:module:Zeta23.ExceptionalZero.UniversalSincSignedLaplace",
@@ -10056,7 +10056,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 13,
       "file_id": "rh:file:Zeta23/ExceptionalZero/UniversalSincSignedPoleBound.lean",
       "module": "Zeta23.ExceptionalZero.UniversalSincSignedPoleBound",
       "module_id": "rh:module:Zeta23.ExceptionalZero.UniversalSincSignedPoleBound",
@@ -10069,7 +10069,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 8,
       "file_id": "rh:file:Zeta23/ExceptionalZero/UniversalSincSignedTailTransform.lean",
       "module": "Zeta23.ExceptionalZero.UniversalSincSignedTailTransform",
       "module_id": "rh:module:Zeta23.ExceptionalZero.UniversalSincSignedTailTransform",
@@ -10178,7 +10178,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 8,
       "file_id": "rh:file:Zeta23/ExceptionalZero/ZetaRealStripNonvanishing.lean",
       "module": "Zeta23.ExceptionalZero.ZetaRealStripNonvanishing",
       "module_id": "rh:module:Zeta23.ExceptionalZero.ZetaRealStripNonvanishing",
@@ -10191,7 +10191,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 32,
+      "compiler_dependency_surface_declaration_count": 33,
       "file_id": "rh:file:Zeta23/ExplicitFormula.lean",
       "module": "Zeta23.ExplicitFormula",
       "module_id": "rh:module:Zeta23.ExplicitFormula",
@@ -10209,7 +10209,7 @@
       "trust_zone": "AUXILIARY_FORMALIZATION"
     },
     {
-      "compiler_dependency_surface_declaration_count": 4,
+      "compiler_dependency_surface_declaration_count": 7,
       "file_id": "rh:file:Zeta23/ExplicitFormula/Bridge.lean",
       "module": "Zeta23.ExplicitFormula.Bridge",
       "module_id": "rh:module:Zeta23.ExplicitFormula.Bridge",
@@ -10526,7 +10526,7 @@
       "trust_zone": "UPSTREAM_DERIVED"
     },
     {
-      "compiler_dependency_surface_declaration_count": 3,
+      "compiler_dependency_surface_declaration_count": 5,
       "file_id": "rh:file:Zeta23/GammaFacts.lean",
       "module": "Zeta23.GammaFacts",
       "module_id": "rh:module:Zeta23.GammaFacts",
@@ -10544,7 +10544,7 @@
       "trust_zone": "AUXILIARY_FORMALIZATION"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 2,
       "file_id": "rh:file:Zeta23/GammaFacts/Complete.lean",
       "module": "Zeta23.GammaFacts.Complete",
       "module_id": "rh:module:Zeta23.GammaFacts.Complete",
@@ -10562,7 +10562,7 @@
       "trust_zone": "AUXILIARY_FORMALIZATION"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 6,
       "file_id": "rh:file:Zeta23/GammaFacts/IntMu.lean",
       "module": "Zeta23.GammaFacts.IntMu",
       "module_id": "rh:module:Zeta23.GammaFacts.IntMu",
@@ -10580,7 +10580,7 @@
       "trust_zone": "AUXILIARY_FORMALIZATION"
     },
     {
-      "compiler_dependency_surface_declaration_count": 8,
+      "compiler_dependency_surface_declaration_count": 15,
       "file_id": "rh:file:Zeta23/GammaFacts/Mu.lean",
       "module": "Zeta23.GammaFacts.Mu",
       "module_id": "rh:module:Zeta23.GammaFacts.Mu",
@@ -10616,7 +10616,7 @@
       "trust_zone": "AUXILIARY_FORMALIZATION"
     },
     {
-      "compiler_dependency_surface_declaration_count": 38,
+      "compiler_dependency_surface_declaration_count": 41,
       "file_id": "rh:file:Zeta23/GammaFacts/StirlingVert.lean",
       "module": "Zeta23.GammaFacts.StirlingVert",
       "module_id": "rh:module:Zeta23.GammaFacts.StirlingVert",
@@ -10634,7 +10634,7 @@
       "trust_zone": "AUXILIARY_FORMALIZATION"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 4,
       "file_id": "rh:file:Zeta23/Hypotheses.lean",
       "module": "Zeta23.Hypotheses",
       "module_id": "rh:module:Zeta23.Hypotheses",
@@ -10939,6 +10939,318 @@
       ],
       "registered_root_count": 0,
       "standalone_role": null,
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/OPICA.lean",
+      "module": "Zeta23.OPICA",
+      "module_id": "rh:module:Zeta23.OPICA",
+      "named_source_declaration_count": 0,
+      "path": "Zeta23/OPICA.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 0,
+      "standalone_role": "OPICA_GENERIC_FORMALIZATION",
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 6,
+      "file_id": "rh:file:Zeta23/OPICA/AffineTransport.lean",
+      "module": "Zeta23.OPICA.AffineTransport",
+      "module_id": "rh:module:Zeta23.OPICA.AffineTransport",
+      "named_source_declaration_count": 8,
+      "path": "Zeta23/OPICA/AffineTransport.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 2,
+      "standalone_role": "OPICA_GENERIC_FORMALIZATION",
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 15,
+      "file_id": "rh:file:Zeta23/OPICA/Composition.lean",
+      "module": "Zeta23.OPICA.Composition",
+      "module_id": "rh:module:Zeta23.OPICA.Composition",
+      "named_source_declaration_count": 15,
+      "path": "Zeta23/OPICA/Composition.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 8,
+      "standalone_role": "OPICA_GENERIC_FORMALIZATION",
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 12,
+      "file_id": "rh:file:Zeta23/OPICA/Counterexamples.lean",
+      "module": "Zeta23.OPICA.Counterexamples",
+      "module_id": "rh:module:Zeta23.OPICA.Counterexamples",
+      "named_source_declaration_count": 18,
+      "path": "Zeta23/OPICA/Counterexamples.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 6,
+      "standalone_role": "OPICA_GENERIC_FORMALIZATION",
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 13,
+      "file_id": "rh:file:Zeta23/OPICA/DivisorBounds.lean",
+      "module": "Zeta23.OPICA.DivisorBounds",
+      "module_id": "rh:module:Zeta23.OPICA.DivisorBounds",
+      "named_source_declaration_count": 13,
+      "path": "Zeta23/OPICA/DivisorBounds.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 4,
+      "standalone_role": "OPICA_GENERIC_FORMALIZATION",
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 34,
+      "file_id": "rh:file:Zeta23/OPICA/DivisorMask.lean",
+      "module": "Zeta23.OPICA.DivisorMask",
+      "module_id": "rh:module:Zeta23.OPICA.DivisorMask",
+      "named_source_declaration_count": 31,
+      "path": "Zeta23/OPICA/DivisorMask.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 6,
+      "standalone_role": "OPICA_GENERIC_FORMALIZATION",
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 28,
+      "file_id": "rh:file:Zeta23/OPICA/EnergyRate.lean",
+      "module": "Zeta23.OPICA.EnergyRate",
+      "module_id": "rh:module:Zeta23.OPICA.EnergyRate",
+      "named_source_declaration_count": 25,
+      "path": "Zeta23/OPICA/EnergyRate.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 10,
+      "standalone_role": "OPICA_GENERIC_FORMALIZATION",
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 53,
+      "file_id": "rh:file:Zeta23/OPICA/FejerCompletion.lean",
+      "module": "Zeta23.OPICA.FejerCompletion",
+      "module_id": "rh:module:Zeta23.OPICA.FejerCompletion",
+      "named_source_declaration_count": 45,
+      "path": "Zeta23/OPICA/FejerCompletion.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 4,
+      "standalone_role": "OPICA_GENERIC_FORMALIZATION",
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/OPICA/FourierCompatibility.lean",
+      "module": "Zeta23.OPICA.FourierCompatibility",
+      "module_id": "rh:module:Zeta23.OPICA.FourierCompatibility",
+      "named_source_declaration_count": 0,
+      "path": "Zeta23/OPICA/FourierCompatibility.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 0,
+      "standalone_role": "OPICA_GENERIC_FORMALIZATION",
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 6,
+      "file_id": "rh:file:Zeta23/OPICA/Involution.lean",
+      "module": "Zeta23.OPICA.Involution",
+      "module_id": "rh:module:Zeta23.OPICA.Involution",
+      "named_source_declaration_count": 4,
+      "path": "Zeta23/OPICA/Involution.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 2,
+      "standalone_role": "OPICA_GENERIC_FORMALIZATION",
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 35,
+      "file_id": "rh:file:Zeta23/OPICA/LocalData.lean",
+      "module": "Zeta23.OPICA.LocalData",
+      "module_id": "rh:module:Zeta23.OPICA.LocalData",
+      "named_source_declaration_count": 12,
+      "path": "Zeta23/OPICA/LocalData.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 0,
+      "standalone_role": "OPICA_GENERIC_FORMALIZATION",
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 23,
+      "file_id": "rh:file:Zeta23/OPICA/LocalObstruction.lean",
+      "module": "Zeta23.OPICA.LocalObstruction",
+      "module_id": "rh:module:Zeta23.OPICA.LocalObstruction",
+      "named_source_declaration_count": 22,
+      "path": "Zeta23/OPICA/LocalObstruction.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 8,
+      "standalone_role": "OPICA_GENERIC_FORMALIZATION",
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 98,
+      "file_id": "rh:file:Zeta23/OPICA/LocalQuotients.lean",
+      "module": "Zeta23.OPICA.LocalQuotients",
+      "module_id": "rh:module:Zeta23.OPICA.LocalQuotients",
+      "named_source_declaration_count": 54,
+      "path": "Zeta23/OPICA/LocalQuotients.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 3,
+      "standalone_role": "OPICA_GENERIC_FORMALIZATION",
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 32,
+      "file_id": "rh:file:Zeta23/OPICA/LocallyFiniteSignedMeasure.lean",
+      "module": "Zeta23.OPICA.LocallyFiniteSignedMeasure",
+      "module_id": "rh:module:Zeta23.OPICA.LocallyFiniteSignedMeasure",
+      "named_source_declaration_count": 35,
+      "path": "Zeta23/OPICA/LocallyFiniteSignedMeasure.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 0,
+      "standalone_role": "OPICA_GENERIC_FORMALIZATION",
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 7,
+      "file_id": "rh:file:Zeta23/OPICA/NativeArithmeticAdapter.lean",
+      "module": "Zeta23.OPICA.NativeArithmeticAdapter",
+      "module_id": "rh:module:Zeta23.OPICA.NativeArithmeticAdapter",
+      "named_source_declaration_count": 17,
+      "path": "Zeta23/OPICA/NativeArithmeticAdapter.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 1,
+      "standalone_role": "OPICA_SOURCE_BOUND_NATIVE_ADAPTER",
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 15,
+      "file_id": "rh:file:Zeta23/OPICA/NativeJetAdapter.lean",
+      "module": "Zeta23.OPICA.NativeJetAdapter",
+      "module_id": "rh:module:Zeta23.OPICA.NativeJetAdapter",
+      "named_source_declaration_count": 16,
+      "path": "Zeta23/OPICA/NativeJetAdapter.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 6,
+      "standalone_role": "OPICA_SOURCE_BOUND_NATIVE_ADAPTER",
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 10,
+      "file_id": "rh:file:Zeta23/OPICA/ObservationCompatibility.lean",
+      "module": "Zeta23.OPICA.ObservationCompatibility",
+      "module_id": "rh:module:Zeta23.OPICA.ObservationCompatibility",
+      "named_source_declaration_count": 8,
+      "path": "Zeta23/OPICA/ObservationCompatibility.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 6,
+      "standalone_role": "OPICA_GENERIC_FORMALIZATION",
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 28,
+      "file_id": "rh:file:Zeta23/OPICA/PrimitiveMasks.lean",
+      "module": "Zeta23.OPICA.PrimitiveMasks",
+      "module_id": "rh:module:Zeta23.OPICA.PrimitiveMasks",
+      "named_source_declaration_count": 19,
+      "path": "Zeta23/OPICA/PrimitiveMasks.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 1,
+      "standalone_role": "OPICA_GENERIC_FORMALIZATION",
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 3,
+      "file_id": "rh:file:Zeta23/OPICA/RangeSeparation.lean",
+      "module": "Zeta23.OPICA.RangeSeparation",
+      "module_id": "rh:module:Zeta23.OPICA.RangeSeparation",
+      "named_source_declaration_count": 3,
+      "path": "Zeta23/OPICA/RangeSeparation.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 2,
+      "standalone_role": "OPICA_GENERIC_FORMALIZATION",
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 15,
+      "file_id": "rh:file:Zeta23/OPICA/ResidueLimits.lean",
+      "module": "Zeta23.OPICA.ResidueLimits",
+      "module_id": "rh:module:Zeta23.OPICA.ResidueLimits",
+      "named_source_declaration_count": 22,
+      "path": "Zeta23/OPICA/ResidueLimits.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 2,
+      "standalone_role": "OPICA_GENERIC_FORMALIZATION",
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 56,
+      "file_id": "rh:file:Zeta23/OPICA/SignedHeatSeparator.lean",
+      "module": "Zeta23.OPICA.SignedHeatSeparator",
+      "module_id": "rh:module:Zeta23.OPICA.SignedHeatSeparator",
+      "named_source_declaration_count": 38,
+      "path": "Zeta23/OPICA/SignedHeatSeparator.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 2,
+      "standalone_role": "OPICA_GENERIC_FORMALIZATION",
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 43,
+      "file_id": "rh:file:Zeta23/OPICA/SincTriangle.lean",
+      "module": "Zeta23.OPICA.SincTriangle",
+      "module_id": "rh:module:Zeta23.OPICA.SincTriangle",
+      "named_source_declaration_count": 34,
+      "path": "Zeta23/OPICA/SincTriangle.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 0,
+      "standalone_role": "OPICA_GENERIC_FORMALIZATION",
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/OPICA/Validation.lean",
+      "module": "Zeta23.OPICA.Validation",
+      "module_id": "rh:module:Zeta23.OPICA.Validation",
+      "named_source_declaration_count": 143,
+      "path": "Zeta23/OPICA/Validation.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 0,
+      "standalone_role": "OPICA_AUDIT_ONLY",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 20,
+      "file_id": "rh:file:Zeta23/OPICA/WeightedLaplace.lean",
+      "module": "Zeta23.OPICA.WeightedLaplace",
+      "module_id": "rh:module:Zeta23.OPICA.WeightedLaplace",
+      "named_source_declaration_count": 11,
+      "path": "Zeta23/OPICA/WeightedLaplace.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 3,
+      "standalone_role": "OPICA_GENERIC_FORMALIZATION",
       "trust_zone": "AUXILIARY_FORMALIZATION"
     },
     {
@@ -11619,6 +11931,32 @@
       "reachable_from": [],
       "registered_root_count": 0,
       "standalone_role": "GRAPH_AUDIT_INFRASTRUCTURE",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/RHRC/OpicaBindings.lean",
+      "module": "Zeta23.RHRC.OpicaBindings",
+      "module_id": "rh:module:Zeta23.RHRC.OpicaBindings",
+      "named_source_declaration_count": 1,
+      "path": "Zeta23/RHRC/OpicaBindings.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 0,
+      "standalone_role": "OPICA_AUDIT_ONLY",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/RHRC/OpicaTypeExprExport.lean",
+      "module": "Zeta23.RHRC.OpicaTypeExprExport",
+      "module_id": "rh:module:Zeta23.RHRC.OpicaTypeExprExport",
+      "named_source_declaration_count": 29,
+      "path": "Zeta23/RHRC/OpicaTypeExprExport.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 0,
+      "standalone_role": "OPICA_AUDIT_ONLY",
       "trust_zone": "AUDIT_ONLY"
     },
     {
@@ -15341,7 +15679,7 @@
       "trust_zone": "AUXILIARY_FORMALIZATION"
     }
   ],
-  "entry_count": 1019,
+  "entry_count": 1045,
   "graph_theorem_promotion": false,
   "schema_version": "RHKG-final-module-closure-1.0",
   "scope": "ALL_LOCAL_LEAN_MODULES",
