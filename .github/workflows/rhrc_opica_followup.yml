@@ -291,6 +291,13 @@ jobs:
             Zeta23.OPICAFollowup.positiveLogMeasure_dirac_pos hx
           #print axioms Zeta23.OPICAFollowup.W06Independent.expected_log_nonpositive_atom
           #print axioms Zeta23.OPICAFollowup.W06Independent.expected_log_positive_atom
+          theorem expected_weighted_integer_atom (t : ℝ) (n : ℕ) (hn : 0 < n) :
+              Zeta23.OPICAFollowup.positiveLogMeasure
+                (Measure.dirac (Real.exp t * (n : ℝ))) =
+              ENNReal.ofReal (Real.exp (-t / 2) / Real.sqrt (n : ℝ)) •
+                Measure.dirac (t + Real.log (n : ℝ)) :=
+            Zeta23.OPICAFollowup.positiveLogMeasure_dilatedNat_dirac t n hn
+          #print axioms Zeta23.OPICAFollowup.W06Independent.expected_weighted_integer_atom
           #print axioms Zeta23.OPICAFollowup.W06Independent.expected_physical_integer_dilation
           end Zeta23.OPICAFollowup.W06Independent
           LEAN
@@ -301,7 +308,7 @@ jobs:
           data = Path('/tmp/opica-current-candidates/w06-expected.log').read_text()
           found = re.findall(r'depends on axioms:\s*\[([^\]]*)\]', data, re.S)
           allowed = {'propext', 'Classical.choice', 'Quot.sound'}
-          assert len(found) == 7, f'Expected seven axiom closures; saw {len(found)}'
+          assert len(found) == 8, f'Expected eight axiom closures; saw {len(found)}'
           for row in found:
               axioms = {x.strip() for x in row.split(',') if x.strip()}
               assert axioms <= allowed, f'Unexpected axioms: {sorted(axioms - allowed)}'
