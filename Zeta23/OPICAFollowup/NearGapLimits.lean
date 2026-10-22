@@ -80,6 +80,103 @@ theorem nearGap_dilatedComb_variation (t : ℝ) :
   simp [dilatedCombJordan,localJordanDifference,
     LocallyFiniteSignedMeasure.totalVariation]
 
+/-- Uniform interval mass bound for the actual positive lattice carrier,
+deduced from the original source-bound Poisson/dilation theorem. -/
+theorem nearGap_dilatedComb_interval_bound (t R : ℝ) (hR : 0 ≤ R) :
+    (dilatedCombJordan t).totalVariation.real (Icc (-R) R) ≤
+      Real.exp (t / 2) * (3 + 2 * Real.exp (-t) * R) := by
+  rw [nearGap_dilatedComb_variation]
+  have h := (dilated_comb_fourier t).1 R hR
+  have ht := ENNReal.toReal_mono ENNReal.ofReal_ne_top h
+  rwa [ENNReal.toReal_ofReal (by positivity)] at ht
+
+/-- A *common* linear-variation estimate for the actual CT1 signed carrier,
+valid for every 0 ≤ L ≤ log 2 with no global finite-mass assumption.
+
+The bound is on genuine canonical Jordan variation, not merely a coefficient
+envelope. It is deliberately independent of L, so it is suitable for the
+weak-limit/Schwartz tail argument once the other CT1 hypotheses are proved. -/
+theorem nearGapCombFamily_uniform_variation {L R : ℝ}
+    (hL : 0 ≤ L) (hu : L ≤ Real.log 2) (hR : 0 ≤ R) :
+    (nearGapCombFamily L).totalVariation.real (Icc (-R) R) ≤
+      18 * (1 + R) := by
+  let S : Set ℝ := Icc (-R) R
+  let μ := dilatedCombJordan L
+  let ν := dilatedCombJordan (-L)
+  let ξ := dilatedCombJordan 0
+  let c := |-(2 * Real.cosh (L / 2))|
+  have hμ : μ.totalVariation S ≠ ∞ := isCompact_Icc.measure_lt_top.ne
+  have hν : ν.totalVariation S ≠ ∞ := isCompact_Icc.measure_lt_top.ne
+  have hξ : ξ.totalVariation S ≠ ∞ := isCompact_Icc.measure_lt_top.ne
+  have hadd : (μ.totalVariation S + ν.totalVariation S) ≠ ∞ :=
+    ENNReal.add_ne_top.mpr ⟨hμ,hν⟩
+  have hmul : ENNReal.ofReal c * ξ.totalVariation S ≠ ∞ :=
+    ENNReal.mul_ne_top ENNReal.ofReal_ne_top hξ
+  have hfin : (μ.totalVariation S + ν.totalVariation S) +
+      ENNReal.ofReal c * ξ.totalVariation S ≠ ∞ :=
+    ENNReal.add_ne_top.mpr ⟨hadd,hmul⟩
+  have hle := ENNReal.toReal_mono hfin
+    (nearGapCombFamily_variation_le L S)
+  change ((nearGapCombFamily L).totalVariation S).toReal ≤
+    ((μ.totalVariation S + ν.totalVariation S) +
+      ENNReal.ofReal c * ξ.totalVariation S).toReal at hle
+  rw [ENNReal.toReal_add hadd hmul, ENNReal.toReal_add hμ hν,
+    ENNReal.toReal_mul, ENNReal.toReal_ofReal (abs_nonneg _)] at hle
+  have hcoeff : c = Real.exp (L / 2) + Real.exp (-L / 2) := by
+    dsimp [c]
+    rw [Real.cosh_eq]
+    have hnonneg : (0 : ℝ) ≤
+        2 * ((Real.exp (L / 2) + Real.exp (-(L / 2))) / 2) := by
+      positivity
+    rw [abs_neg, abs_of_nonneg hnonneg]
+    ring
+  have hμR := nearGap_dilatedComb_interval_bound L R hR
+  have hνR := nearGap_dilatedComb_interval_bound (-L) R hR
+  have hξR := nearGap_dilatedComb_interval_bound 0 R hR
+  have hξR' : ξ.totalVariation.real S ≤ 3 + 2 * R := by
+    simpa [ξ,S] using hξR
+  have hcoefpos : 0 ≤ Real.exp (L / 2) + Real.exp (-L / 2) := by
+    positivity
+  have hsum :
+      μ.totalVariation.real S + ν.totalVariation.real S +
+        c * ξ.totalVariation.real S ≤
+      Real.exp (L / 2) * (3 + 2 * Real.exp (-L) * R) +
+      Real.exp (-L / 2) * (3 + 2 * Real.exp L * R) +
+        (Real.exp (L / 2) + Real.exp (-L / 2)) * (3 + 2 * R) := by
+    rw [hcoeff]
+    have hν' : ν.totalVariation.real S ≤
+        Real.exp (-L / 2) * (3 + 2 * Real.exp L * R) := by
+      simpa [ν,S] using hνR
+    exact add_le_add (add_le_add (by simpa [μ,S] using hμR) hν')
+      (mul_le_mul_of_nonneg_left hξR' hcoefpos)
+  have he1 : Real.exp (L / 2) * Real.exp (-L) =
+      Real.exp (-L / 2) := by
+    rw [← Real.exp_add]
+    congr 1
+    ring
+  have he2 : Real.exp (-L / 2) * Real.exp L =
+      Real.exp (L / 2) := by
+    rw [← Real.exp_add]
+    congr 1
+    ring
+  have heq :
+      Real.exp (L / 2) * (3 + 2 * Real.exp (-L) * R) +
+      Real.exp (-L / 2) * (3 + 2 * Real.exp L * R) +
+        (Real.exp (L / 2) + Real.exp (-L / 2)) * (3 + 2 * R) =
+      (6 + 4 * R) * (Real.exp (L / 2) + Real.exp (-L / 2)) := by
+    calc
+      _ = (6 + 4 * R) * (Real.exp (L / 2) + Real.exp (-L / 2)) +
+          2 * R * (Real.exp (L / 2) * Real.exp (-L) - Real.exp (-L / 2)) +
+          2 * R * (Real.exp (-L / 2) * Real.exp L - Real.exp (L / 2)) := by
+          ring
+      _ = _ := by rw [he1, he2]; ring
+  calc
+    _ ≤ μ.totalVariation.real S + ν.totalVariation.real S +
+        c * ξ.totalVariation.real S := hle
+    _ ≤ _ := hsum
+    _ = _ := heq
+    _ ≤ _ := nearGap_dilation_uniform_scalar_budget hL hu hR
+
 /-- A common scalar bound for every dilation between the undeformed comb
 and the limiting two-to-one lattice scale. Both signs of L are retained. -/
 theorem nearGap_dilation_exp_sum_le_three {L : ℝ}
