@@ -29,6 +29,8 @@ theorem nearGapComb_origin_coefficient_zero (L : ℝ) :
     Real.exp (L / 2) + Real.exp (-L / 2) -
       2 * Real.cosh (L / 2) = 0 := by
   rw [Real.cosh_eq]
+  have hneg : -(L / 2) = -L / 2 := by ring
+  rw [hneg]
   ring
 
 /-- The original CT1 parameter range places the actual punctured gap
