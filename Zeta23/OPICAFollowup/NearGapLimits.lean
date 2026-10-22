@@ -49,6 +49,37 @@ theorem nearGapComb_radius_bounds {L : ℝ} (hL : 0 < L)
       Real.exp_lt_exp.mpr (by linarith)
     simpa only [Real.exp_zero] using h
 
+/-- The physical, canonically reduced CT1 Jordan variation is dominated
+by the three original lattice measures. The estimate remains valid even when
+their supports overlap; no false mutual-singularity premise is added. -/
+theorem nearGapCombFamily_variation_le (L : ℝ) :
+    (nearGapCombFamily L).totalVariation ≤
+      ((dilatedCombJordan L).totalVariation +
+       (dilatedCombJordan (-L)).totalVariation) +
+        ENNReal.ofReal |-(2 * Real.cosh (L / 2))| •
+          (dilatedCombJordan 0).totalVariation := by
+  unfold nearGapCombFamily
+  calc
+    (localJordanAdd
+      (localJordanAdd (dilatedCombJordan L) (dilatedCombJordan (-L)))
+      (localJordanScale (-(2 * Real.cosh (L / 2)))
+        (dilatedCombJordan 0))).totalVariation ≤
+      (localJordanAdd (dilatedCombJordan L)
+        (dilatedCombJordan (-L))).totalVariation +
+        (localJordanScale (-(2 * Real.cosh (L / 2)))
+          (dilatedCombJordan 0)).totalVariation :=
+      localJordanAdd_totalVariation_le _ _
+    _ ≤ _ := add_le_add
+      (localJordanAdd_totalVariation_le _ _)
+      (localJordanScale_totalVariation_le _ _)
+
+/-- The actual positive-comb Jordan variation is its original positive
+counting measure. This retains possible infinite whole-line mass. -/
+theorem nearGap_dilatedComb_variation (t : ℝ) :
+    (dilatedCombJordan t).totalVariation = dilatedCombMeasure t := by
+  simp [dilatedCombJordan,localJordanDifference,
+    LocallyFiniteSignedMeasure.totalVariation]
+
 /-- A common scalar bound for every dilation between the undeformed comb
 and the limiting two-to-one lattice scale. Both signs of L are retained. -/
 theorem nearGap_dilation_exp_sum_le_three {L : ℝ}
