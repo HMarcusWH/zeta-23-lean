@@ -217,6 +217,46 @@ theorem nearGap_dilatedComb_variation (t : ℝ) :
   simp [dilatedCombJordan,localJordanDifference,
     LocallyFiniteSignedMeasure.totalVariation]
 
+/-- Strong first-cell exclusion: the *canonical Jordan total variation*
+has zero mass on the punctured CT1 gap. The estimate comes from genuine
+positive lattice support and the proved Jordan-variation domination.
+No Fourier self-duality, supplied gap or zero-measure shortcut is assumed. -/
+theorem nearGapCombFamily_punctured_gap_variation_zero
+    {L : ℝ} (hL : 0 ≤ L) :
+    (nearGapCombFamily L).totalVariation
+      (Ioo (-Real.exp (-L)) (Real.exp (-L)) \ ({0} : Set ℝ)) = 0 := by
+  let E : Set ℝ :=
+    Ioo (-Real.exp (-L)) (Real.exp (-L)) \ ({0} : Set ℝ)
+  have hthree := nearGapComb_three_carriers_punctured_gap hL
+  change dilatedCombMeasure L E = 0 ∧
+    dilatedCombMeasure (-L) E = 0 ∧
+    dilatedCombMeasure 0 E = 0 at hthree
+  have hbound :
+      (nearGapCombFamily L).totalVariation E ≤
+        (dilatedCombMeasure L E + dilatedCombMeasure (-L) E) +
+          ENNReal.ofReal |-(2 * Real.cosh (L / 2))| *
+            dilatedCombMeasure 0 E := by
+    simpa only [nearGap_dilatedComb_variation,
+      Measure.add_apply, Measure.smul_apply, smul_eq_mul] using
+        (nearGapCombFamily_variation_le L E)
+  rw [hthree.1, hthree.2.1, hthree.2.2] at hbound
+  simpa [E] using (le_antisymm (by simpa using hbound) (zero_le _))
+
+/-- Hence both genuine Jordan parts vanish off the origin in the
+first-cell gap. This is stronger than a signed-measure cancellation. -/
+theorem nearGapCombFamily_punctured_gap_jordan_zero
+    {L : ℝ} (hL : 0 ≤ L) :
+    (nearGapCombFamily L).positive
+      (Ioo (-Real.exp (-L)) (Real.exp (-L)) \ ({0} : Set ℝ)) = 0 ∧
+    (nearGapCombFamily L).negative
+      (Ioo (-Real.exp (-L)) (Real.exp (-L)) \ ({0} : Set ℝ)) = 0 := by
+  have hz := nearGapCombFamily_punctured_gap_variation_zero hL
+  change ((nearGapCombFamily L).positive +
+      (nearGapCombFamily L).negative)
+    (Ioo (-Real.exp (-L)) (Real.exp (-L)) \ ({0} : Set ℝ)) = 0 at hz
+  rw [Measure.add_apply] at hz
+  exact add_eq_zero.mp hz
+
 /-- Uniform interval mass bound for the actual positive lattice carrier,
 deduced from the original source-bound Poisson/dilation theorem. -/
 theorem nearGap_dilatedComb_interval_bound (t R : ℝ) (hR : 0 ≤ R) :
