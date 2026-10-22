@@ -1054,5 +1054,47 @@ theorem near_gap_mass_bound (nu : LocallyFiniteSignedMeasure)
   convert hh using 1
   field_simp [hd.ne', (show R≠0 by linarith)]
 
+/-- Quantitative CT1 concentration away from the integers.
+
+This specializes the existing source-bound near-gap mass inequality
+to the *actual* canonical dilated-comb Jordan carrier, using its
+unconditional Fourier bridge, physical gap, off-lattice support,
+and uniform variation bound. As L tends to zero the right side
+vanishes at fixed finite R and d. It is not a total-variation
+convergence theorem and does not substitute for the original
+general controlled-limit root. -/
+theorem nearGapCombFamily_offinteger_mass_budget
+    {L R d : ℝ}
+    (hL : 0 < L) (hu : L < Real.log 2)
+    (hR : 1 ≤ R) (hd : 0 < d) (hdhalf : d ≤ 1 / 2) :
+    (nearGapCombFamily L).negative (signedBudgetRegion R d) = 0 ∧
+    (nearGapCombFamily L).positive.real (signedBudgetRegion R d) ≤
+      (Real.pi ^ 2 * R ^ 2 / (4 * d ^ 2)) *
+        (1 - Real.exp (-L)) * 36 := by
+  have he : Real.exp (-L) ≤ (1 : ℝ) := by
+    have h := Real.exp_le_exp.mpr
+      (show -L ≤ (0 : ℝ) by linarith)
+    simpa only [Real.exp_zero] using h
+  have hgap := nearGapCombFamily_actual_gap hL.le
+  have hmass := near_gap_mass_bound
+    (nearGapCombFamily L) (nearGapCombFamily_growth L)
+    (nearGapCombFamily_fourier_selfdual L)
+    (Real.exp_pos (-L)) he hgap
+    (nearGapCombFamily_offlattice_nonnegative L) hR hd hdhalf
+  have htv :
+      (nearGapCombFamily L).totalVariation.real
+        (Icc (-(1 : ℝ)) 1) ≤ 36 := by
+    have h := nearGapCombFamily_uniform_variation
+      hL.le hu.le (R := 1) (by norm_num)
+    norm_num at h ⊢
+    exact h
+  have hweight : 0 ≤
+      (Real.pi ^ 2 * R ^ 2 / (4 * d ^ 2)) *
+        (1 - Real.exp (-L)) := by
+    have hnonneg : 0 ≤ 1 - Real.exp (-L) := sub_nonneg.mpr he
+    positivity
+  refine ⟨hmass.1, ?_⟩
+  exact hmass.2.trans (mul_le_mul_of_nonneg_left htv hweight)
+
 #print axioms Zeta23.OPICAFollowup.near_gap_mass_bound
 end Zeta23.OPICAFollowup
