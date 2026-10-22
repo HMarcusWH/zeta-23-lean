@@ -31,6 +31,70 @@ lemma scaledLatticePoint_injective (t : ℝ) : Function.Injective (scaledLattice
   apply Int.cast_injective (α := ℝ)
   exact mul_left_cancel₀ (Real.exp_ne_zero t) h
 
+/-! ## Genuine first-cell support gap
+
+The only lattice point in (-exp(t), exp(t)) is zero. These lemmas
+use the actual mapped counting measure, not a synthetic gap witness.
+All measure bounds apply to the full noncompact counting carrier. -/
+
+/-- The integer indexing an actual scaled lattice point lying strictly
+between the two first nonzero lattice points is necessarily zero. -/
+theorem scaledLatticePoint_in_first_gap (t : ℝ) (n : ℤ)
+    (hn : scaledLatticePoint t n ∈ Ioo (-Real.exp t) (Real.exp t)) :
+    n = 0 := by
+  have hpos : 0 < Real.exp t := Real.exp_pos t
+  have hlo : Real.exp t * (-1 : ℝ) < Real.exp t * (n : ℝ) := by
+    simpa [scaledLatticePoint] using hn.1
+  have hhi : Real.exp t * (n : ℝ) < Real.exp t * (1 : ℝ) := by
+    simpa [scaledLatticePoint] using hn.2
+  have hnlo : (-1 : ℝ) < (n : ℝ) := (mul_lt_mul_left hpos).mp hlo
+  have hnhi : (n : ℝ) < (1 : ℝ) := (mul_lt_mul_left hpos).mp hhi
+  have hloZ : (-1 : ℤ) < n := by exact_mod_cast hnlo
+  have hhiZ : n < (1 : ℤ) := by exact_mod_cast hnhi
+  omega
+
+/-- The actual scaled counting measure assigns zero mass to the
+first-cell punctured interval, even though it has an origin atom. -/
+theorem scaledLatticeMeasure_punctured_gap (t : ℝ) :
+    scaledLatticeMeasure t (Ioo (-Real.exp t) (Real.exp t) \\ ({0} : Set ℝ)) =
+      0 := by
+  rw [scaledLatticeMeasure,
+    Measure.map_apply (scaledLatticePoint_measurable t)
+      (measurableSet_Ioo.diff (measurableSet_singleton 0))]
+  have hempty : (scaledLatticePoint t) ⁻¹'
+      (Ioo (-Real.exp t) (Real.exp t) \\ ({0} : Set ℝ)) = ∅ := by
+    ext n
+    constructor
+    · intro hn
+      have hzero : n = 0 := scaledLatticePoint_in_first_gap t n hn.1
+      exact hn.2 (by simp [scaledLatticePoint,hzero])
+    · intro hn
+      exact False.elim (Set.not_mem_empty n hn)
+  rw [hempty]
+  simp
+
+/-- The complete positive dilated comb has the same punctured gap.
+Its positive real amplitude never creates new support. -/
+theorem dilatedCombMeasure_punctured_gap (t : ℝ) :
+    dilatedCombMeasure t (Ioo (-Real.exp t) (Real.exp t) \\ ({0} : Set ℝ)) =
+      0 := by
+  rw [dilatedCombMeasure, Measure.smul_apply,
+    scaledLatticeMeasure_punctured_gap]
+  simp
+
+/-- Any smaller punctured first-cell interval is also mass-free. -/
+theorem dilatedCombMeasure_punctured_gap_of_le (t a : ℝ)
+    (ha : a ≤ Real.exp t) :
+    dilatedCombMeasure t (Ioo (-a) a \\ ({0} : Set ℝ)) = 0 := by
+  apply measure_mono_null
+    (μ := dilatedCombMeasure t)
+    (s := Ioo (-a) a \\ ({0} : Set ℝ))
+    (t := Ioo (-Real.exp t) (Real.exp t) \\ ({0} : Set ℝ))
+    ?_ (dilatedCombMeasure_punctured_gap t)
+  intro x hx
+  exact ⟨⟨lt_of_le_of_lt (neg_le_neg ha) hx.1.1,
+    lt_of_lt_of_le hx.1.2 ha⟩, hx.2⟩
+
 lemma scaledLattice_preimage_bound (t R : ℝ) (_hR : 0≤R) :
     (scaledLatticePoint t) ⁻¹' Icc (-R) R ⊆
       (↑(Finset.Icc (-(Nat.ceil (R/Real.exp t):ℤ)) (Nat.ceil (R/Real.exp t):ℤ)) : Set ℤ) := by
