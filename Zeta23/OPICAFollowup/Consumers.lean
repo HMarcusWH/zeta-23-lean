@@ -110,7 +110,10 @@ theorem step123_word_jet_consumer {rho : zetaZeroConfig.carrier} {beta : ℝ}
   · change -(zeroMult (rr:ℂ):ℂ)*nativeOriginalSourceLaplace ((rr:ℂ)-1/2)=_
     rw [hm]
   · simpa only [hm] using horder.2.1
-  · simp only [nativeWordLeadingCoefficient,hm]
+  · simp only [nativeWordLeadingCoefficient]
+    have hmWord : zeroMult (step123WordRightZero out : ℂ) =
+        zeroMult (rho : ℂ) := hm
+    rw [hmWord]
   · simpa only [hm] using horder.2.2.2.2.2.2.1
   · intro hp
     simpa only [hm] using nativeWord_first_nonzero_derivative w rr hr history hp
