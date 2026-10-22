@@ -396,6 +396,17 @@ jobs:
           #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_scaled_counting_atom
           #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_actual_dilation_atom
           #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_first_ct1_point_not_integer
+          theorem expected_CT1_positive_jordan_atom {L : ℝ}
+              (hL : 0 < L) (hu : L < Real.log 2) :
+              0 < (Zeta23.OPICAFollowup.nearGapCombFamily L).positive.real
+                ({Real.exp L} : Set ℝ) :=
+            Zeta23.OPICAFollowup.nearGapCombFamily_first_atom_positive_real_pos hL hu
+          theorem expected_CT1_positive_measure_nonzero {L : ℝ}
+              (hL : 0 < L) (hu : L < Real.log 2) :
+              (Zeta23.OPICAFollowup.nearGapCombFamily L).positive ≠ 0 :=
+            Zeta23.OPICAFollowup.nearGapCombFamily_positive_nonzero hL hu
+          #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_CT1_positive_jordan_atom
+          #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_CT1_positive_measure_nonzero
           #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_CT1_physical_nonzero_signed_atom
           theorem expected_CT1_canonical_equals_explicit_if_scalar_bridge
               (L : ℝ)
@@ -473,11 +484,11 @@ jobs:
           data = Path('/tmp/opica-current-candidates/w04-w07-expected.log').read_text()
           records = re.findall(r'depends on axioms:\s*\[([^\]]*)\]', data, re.S)
           allowed = {'propext', 'Classical.choice', 'Quot.sound'}
-          assert len(records) == 47, f'Expected forty-seven exact independent axiom receipts, got {len(records)}'
+          assert len(records) == 49, f'Expected forty-nine exact independent axiom receipts, got {len(records)}'
           for r in records:
               axioms = {x.strip() for x in r.split(',') if x.strip()}
               assert axioms <= allowed, f'Unexpected axiom(s): {sorted(axioms - allowed)}'
-          print('W04/W07 foundation and forty-seven independent domain/axiom checks: PASS. Full original roots OPEN')
+          print('W04/W07 foundation and forty-nine independent domain/axiom checks: PASS. Full original roots OPEN')
           PY
       - name: W06 logarithmic mixing weights and independent integer-dilation types
         if: always()
