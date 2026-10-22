@@ -204,6 +204,29 @@ theorem positiveLogMeasure_finite_integer_lattice
   refine Finset.sum_congr rfl (fun n hn => ?_)
   exact positiveLogMeasure_dilatedNat_dirac t n (hs n hn)
 
+/-- The actual positive integer lattice, with n=0 explicitly excluded.
+It is a noncompact counting measure, rather than a finite or caller-supplied
+packet, so it can be consumed by the genuine logarithmic inversion lane. -/
+def positiveIntegerLatticeInput (t : ℝ) : Measure ℝ :=
+  Measure.sum (fun n : ℕ =>
+    Measure.dirac (Real.exp t * (((n + 1 : ℕ) : ℝ))))
+
+/-- Exact all-integer log transport: every physical n >= 1 atom becomes
+the correct shifted log atom, carrying n^(-1/2) and the source dilation.
+This proof uses countable measure additivity; it neither assumes finite
+total output mass nor invokes a nonabsolute Möbius rearrangement. -/
+theorem positiveLogMeasure_integerLattice (t : ℝ) :
+    positiveLogMeasure (positiveIntegerLatticeInput t) =
+      Measure.sum (fun n : ℕ =>
+        ENNReal.ofReal (Real.exp (-t / 2) /
+          Real.sqrt (((n + 1 : ℕ) : ℝ))) •
+          Measure.dirac (t + Real.log (((n + 1 : ℕ) : ℝ)))) := by
+  unfold positiveIntegerLatticeInput
+  rw [positiveLogMeasure_sum]
+  congr 1
+  funext n
+  exact positiveLogMeasure_dilatedNat_dirac t (n + 1) (Nat.zero_lt_succ n)
+
 def weightedVariation (a : ℝ) (sigma : LocallyFiniteComplexMeasure) : ℝ≥0∞ :=
   ∫⁻ t, ENNReal.ofReal (Real.exp (-a*t)) ∂sigma.totalVariation
 
