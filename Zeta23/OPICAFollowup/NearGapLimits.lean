@@ -798,6 +798,42 @@ theorem nearGap_localJordanScale_growth
   change ((localJordanScale a mu).totalVariation (Icc (-R) R)).toReal ≤ _
   nlinarith
 
+/-- A negative real scalar acts on an ACTUAL positive dilated counting
+measure by placing the entire scaled mass in the negative canonical Jordan
+part. Its Schwartz distribution agrees with complex scalar multiplication.
+
+Unlike the preceding conditional bridge, this has no extra premise:
+the source is the genuine counting measure D_t and c is nonnegative.
+This is the exact missing CT1 Jordan-scalar compatibility. -/
+theorem nearGap_dilatedComb_negative_scale_pairing
+    (t c : ℝ) (hc : 0 ≤ c) :
+    (localJordanScale (-c) (dilatedCombJordan t)).distributionOfLinearGrowth
+      (nearGap_localJordanScale_growth (-c) (dilatedCombJordan t)
+        (dilatedCombJordan_growth t)) =
+    (-(c : ℂ)) • dilatedCombDistribution t := by
+  have hpositive :
+      (localJordanScale (-c) (dilatedCombJordan t)).positive = 0 := by
+    simp [localJordanScale, dilatedCombJordan, localJordanDifference,
+      Real.toNNReal_of_nonpos (neg_nonpos.mpr hc)]
+  have hnegative :
+      (localJordanScale (-c) (dilatedCombJordan t)).negative =
+        (Real.toNNReal c : ℝ≥0∞) • dilatedCombMeasure t := by
+    simp [localJordanScale, dilatedCombJordan, localJordanDifference,
+      Real.toNNReal_of_nonpos (neg_nonpos.mpr hc), NNReal.smul_def]
+  have hsource (f : SchwartzMap ℝ ℂ) :
+      dilatedCombDistribution t f =
+        ∫ x, f x ∂(dilatedCombMeasure t) := by
+    rw [dilatedCombDistribution,
+      LocallyFiniteSignedMeasure.distributionOfLinearGrowth_apply]
+    simp [dilatedCombJordan, localJordanDifference]
+  ext f
+  rw [LocallyFiniteSignedMeasure.distributionOfLinearGrowth_apply,
+    hpositive, hnegative, integral_zero_measure, zero_sub,
+    integral_smul_measure, hsource]
+  simp only [ENNReal.ofNNReal_toNNReal,
+    ENNReal.toReal_ofReal hc, RCLike.real_smul_eq_coe_mul, smul_eq_mul]
+  ring
+
 /-- Genuine global linear-growth certificate for the *actual* CT1
 Jordan measure at any dilation parameter. The uniform-in-L budget required
 by the controlled-limit root is a separate, still OPEN estimate. -/
