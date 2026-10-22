@@ -424,6 +424,38 @@ jobs:
             Zeta23.OPICAFollowup.nearGapCombDistribution_selfdual_of_scale_pairing
               L hscale
           #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_CT1_canonical_equals_explicit_if_scalar_bridge
+          theorem expected_CT1_physical_negative_scale_pairing (t c : ℝ)
+              (hc : 0 ≤ c) :
+              (Zeta23.OPICA.localJordanScale (-c)
+                (Zeta23.OPICAFollowup.dilatedCombJordan t)).distributionOfLinearGrowth
+                (Zeta23.OPICAFollowup.nearGap_localJordanScale_growth
+                  (-c) (Zeta23.OPICAFollowup.dilatedCombJordan t)
+                  (Zeta23.OPICAFollowup.dilatedCombJordan_growth t)) =
+                (-(c : ℂ)) • Zeta23.OPICAFollowup.dilatedCombDistribution t :=
+            Zeta23.OPICAFollowup.nearGap_dilatedComb_negative_scale_pairing t c hc
+          theorem expected_CT1_physical_equals_explicit (L : ℝ) :
+              Zeta23.OPICAFollowup.nearGapCombDistribution L =
+                Zeta23.OPICAFollowup.nearGapExplicitDilationDistribution L :=
+            Zeta23.OPICAFollowup.nearGapCombDistribution_eq_explicit L
+          theorem expected_CT1_physical_fourier_selfdual (L : ℝ) :
+              (Zeta23.OPICAFollowup.nearGapCombFamily L).FourierSelfdual
+                (Zeta23.OPICAFollowup.nearGapCombFamily_growth L) :=
+            Zeta23.OPICAFollowup.nearGapCombFamily_fourier_selfdual L
+          theorem expected_CT1_actual_offinteger_mass_budget
+              {L R d : ℝ} (hL : 0 < L) (hu : L < Real.log 2)
+              (hR : 1 ≤ R) (hd : 0 < d) (hdhalf : d ≤ 1 / 2) :
+              (Zeta23.OPICAFollowup.nearGapCombFamily L).negative
+                (Zeta23.OPICA.signedBudgetRegion R d) = 0 ∧
+              (Zeta23.OPICAFollowup.nearGapCombFamily L).positive.real
+                (Zeta23.OPICA.signedBudgetRegion R d) ≤
+                (Real.pi ^ 2 * R ^ 2 / (4 * d ^ 2)) *
+                  (1 - Real.exp (-L)) * 36 :=
+            Zeta23.OPICAFollowup.nearGapCombFamily_offinteger_mass_budget
+              hL hu hR hd hdhalf
+          #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_CT1_physical_negative_scale_pairing
+          #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_CT1_physical_equals_explicit
+          #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_CT1_physical_fourier_selfdual
+          #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_CT1_actual_offinteger_mass_budget
           #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_CT1_canonical_selfdual_if_scalar_bridge
           #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_explicit_CT1_source_fourier_selfdual
           #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_ct1_offlattice_nonnegative
@@ -441,11 +473,11 @@ jobs:
           data = Path('/tmp/opica-current-candidates/w04-w07-expected.log').read_text()
           records = re.findall(r'depends on axioms:\s*\[([^\]]*)\]', data, re.S)
           allowed = {'propext', 'Classical.choice', 'Quot.sound'}
-          assert len(records) == 43, f'Expected forty-three exact independent axiom receipts, got {len(records)}'
+          assert len(records) == 47, f'Expected forty-seven exact independent axiom receipts, got {len(records)}'
           for r in records:
               axioms = {x.strip() for x in r.split(',') if x.strip()}
               assert axioms <= allowed, f'Unexpected axiom(s): {sorted(axioms - allowed)}'
-          print('W04/W07 foundation and forty-three independent domain/axiom checks: PASS. Full original roots OPEN')
+          print('W04/W07 foundation and forty-seven independent domain/axiom checks: PASS. Full original roots OPEN')
           PY
       - name: W06 logarithmic mixing weights and independent integer-dilation types
         if: always()
