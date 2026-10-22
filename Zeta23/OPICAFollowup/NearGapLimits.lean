@@ -313,6 +313,40 @@ theorem nearGapCombFamily_punctured_gap_jordan_zero
   rw [Measure.add_apply] at hz
   exact add_eq_zero.mp hz
 
+/-- The ACTUAL canonical CT1 Jordan pair has a full open gap, including
+the origin. This composes independent physical facts: genuine first-cell
+support away from zero, and mutual-singularity-based cancellation of the
+origin atom. The original nonzero/Fourier/positivity family root remains
+OPEN; no synthetic measure or assumed gap enters this theorem. -/
+theorem nearGapCombFamily_actual_gap {L : ℝ} (hL : 0 ≤ L) :
+    hasNearGap (nearGapCombFamily L) (Real.exp (-L)) := by
+  let S : Set ℝ := Ioo (-Real.exp (-L)) (Real.exp (-L))
+  let E : Set ℝ := S \ ({0} : Set ℝ)
+  have hcover : S ⊆ E ∪ ({0} : Set ℝ) := by
+    intro x hx
+    by_cases hzero : x = 0
+    · exact Or.inr (by simpa [mem_singleton_iff] using hzero)
+    · exact Or.inl ⟨hx, by simpa only [mem_singleton_iff] using hzero⟩
+  have hzeroUnion (mu : Measure ℝ)
+      (hpunctured : mu E = 0) (horigin : mu ({0} : Set ℝ) = 0) :
+      mu S = 0 := by
+    have hu : mu (E ∪ ({0} : Set ℝ)) = 0 := by
+      apply le_antisymm
+      · calc
+          _ ≤ mu E + mu ({0} : Set ℝ) := measure_union_le _ _
+          _ = 0 := by rw [hpunctured, horigin]; simp
+      · exact zero_le _
+    exact measure_mono_null hcover hu
+  have hpunctured := nearGapCombFamily_punctured_gap_jordan_zero hL
+  have horigin := nearGapCombFamily_origin_jordan_zero L
+  change (nearGapCombFamily L).positive E = 0 ∧
+    (nearGapCombFamily L).negative E = 0 at hpunctured
+  unfold hasNearGap
+  change (nearGapCombFamily L).positive S = 0 ∧
+    (nearGapCombFamily L).negative S = 0
+  exact ⟨hzeroUnion _ hpunctured.1 horigin.1,
+    hzeroUnion _ hpunctured.2 horigin.2⟩
+
 /-- Uniform interval mass bound for the actual positive lattice carrier,
 deduced from the original source-bound Poisson/dilation theorem. -/
 theorem nearGap_dilatedComb_interval_bound (t R : ℝ) (hR : 0 ≤ R) :
