@@ -511,46 +511,6 @@ theorem nearGapCombFamily_first_atom_signed_pos {L : ℝ}
   rw [hsum]
   exact add_pos_of_pos_of_nonneg (Real.exp_pos _) hsecond
 
-/-- The CT1 witness x = exp L is a strictly positive atom of the
-canonical *positive Jordan measure*, not only a signed compact evaluation.
-The negative Jordan atom vanishes because it is supported on the original
-integer lattice, whereas exp L lies strictly between 1 and 2. -/
-theorem nearGapCombFamily_first_atom_positive_real_pos {L : ℝ}
-    (hL : 0 < L) (hu : L < Real.log 2) :
-    0 < (nearGapCombFamily L).positive.real ({Real.exp L} : Set ℝ) := by
-  let nu := nearGapCombFamily L
-  let S : Set ℝ := {Real.exp L}
-  have hS : MeasurableSet S := measurableSet_singleton _
-  have hsubset : S ⊆ integerLatticeᶜ := by
-    intro x hx
-    have heq : x = Real.exp L := by
-      simpa only [Set.mem_singleton_iff] using hx
-    subst x
-    exact nearGap_first_dilated_point_off_integer hL hu
-  have hn : nu.negative S = 0 :=
-    measure_mono_null hsubset (nearGapCombFamily_negative_integer_support L)
-  have hpos := nearGapCombFamily_first_atom_signed_pos hL hu
-  change 0 < localSignedCompactRestriction nu S isCompact_singleton S at hpos
-  rw [localSignedCompactRestriction_apply nu S isCompact_singleton S hS] at hpos
-  have hpositive : (nu.positive.restrict S).real S = nu.positive.real S := by
-    rw [Measure.real, Measure.real, Measure.restrict_apply hS]
-    simp
-  have hnegative : (nu.negative.restrict S).real S = 0 := by
-    rw [Measure.real, Measure.restrict_apply hS]
-    simpa [hn]
-  simpa only [hpositive, hnegative, sub_zero] using hpos
-
-/-- The actual near-gap family is a nonzero Jordan-measure object:
-its positive part has a witnessed nonzero atom away from the integers.
-No synthetic nonzero premise is supplied by the caller. -/
-theorem nearGapCombFamily_positive_nonzero {L : ℝ}
-    (hL : 0 < L) (hu : L < Real.log 2) :
-    (nearGapCombFamily L).positive ≠ 0 := by
-  intro hz
-  have hpos := nearGapCombFamily_first_atom_positive_real_pos hL hu
-  rw [hz] at hpos
-  simp at hpos
-
 /-- The genuine positive lattice comb has zero negative Jordan part,
 regardless of the dilation. This is a canonical Jordan property. -/
 theorem nearGap_dilatedComb_negative_zero (t : ℝ) :
@@ -601,6 +561,46 @@ Jordan pair, for every real dilation parameter. -/
 theorem nearGapCombFamily_offlattice_nonnegative (L : ℝ) :
     (nearGapCombFamily L).OffLatticeNonnegative :=
   nearGapCombFamily_negative_integer_support L
+
+/-- The CT1 witness x = exp L is a strictly positive atom of the
+canonical *positive Jordan measure*, not only a signed compact evaluation.
+The negative Jordan atom vanishes because it is supported on the original
+integer lattice, whereas exp L lies strictly between 1 and 2. -/
+theorem nearGapCombFamily_first_atom_positive_real_pos {L : ℝ}
+    (hL : 0 < L) (hu : L < Real.log 2) :
+    0 < (nearGapCombFamily L).positive.real ({Real.exp L} : Set ℝ) := by
+  let nu := nearGapCombFamily L
+  let S : Set ℝ := {Real.exp L}
+  have hS : MeasurableSet S := measurableSet_singleton _
+  have hsubset : S ⊆ integerLatticeᶜ := by
+    intro x hx
+    have heq : x = Real.exp L := by
+      simpa only [Set.mem_singleton_iff] using hx
+    subst x
+    exact nearGap_first_dilated_point_off_integer hL hu
+  have hn : nu.negative S = 0 :=
+    measure_mono_null hsubset (nearGapCombFamily_negative_integer_support L)
+  have hpos := nearGapCombFamily_first_atom_signed_pos hL hu
+  change 0 < localSignedCompactRestriction nu S isCompact_singleton S at hpos
+  rw [localSignedCompactRestriction_apply nu S isCompact_singleton S hS] at hpos
+  have hpositive : (nu.positive.restrict S).real S = nu.positive.real S := by
+    rw [Measure.real, Measure.real, Measure.restrict_apply hS]
+    simp
+  have hnegative : (nu.negative.restrict S).real S = 0 := by
+    rw [Measure.real, Measure.restrict_apply hS]
+    simpa [hn]
+  simpa only [hpositive, hnegative, sub_zero] using hpos
+
+/-- The actual near-gap family is a nonzero Jordan-measure object:
+its positive part has a witnessed nonzero atom away from the integers.
+No synthetic nonzero premise is supplied by the caller. -/
+theorem nearGapCombFamily_positive_nonzero {L : ℝ}
+    (hL : 0 < L) (hu : L < Real.log 2) :
+    (nearGapCombFamily L).positive ≠ 0 := by
+  intro hz
+  have hpos := nearGapCombFamily_first_atom_positive_real_pos hL hu
+  rw [hz] at hpos
+  simp at hpos
 
 /-- Uniform interval mass bound for the actual positive lattice carrier,
 deduced from the original source-bound Poisson/dilation theorem. -/
