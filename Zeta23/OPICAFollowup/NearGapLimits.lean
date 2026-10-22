@@ -988,6 +988,46 @@ theorem nearGapCombFamily_fourier_selfdual (L : ℝ) :
   rw [nearGapCombDistribution_eq_explicit]
   exact nearGapExplicitDilationDistribution_selfdual L
 
+/-- An independently typed evenness consequence of actual Fourier
+self-duality. The reflection is the canonical Schwartz pullback under
+x -> -x, not a caller-supplied symmetric test packet.
+
+Fourier inversion is valid on the genuine tempered-distribution and
+Schwartz spaces; the same Fourier conventions as the source Poisson
+identity are used throughout. -/
+theorem nearGapCombDistribution_even_schwartz
+    (L : ℝ) (f : SchwartzMap ℝ ℂ) :
+    nearGapCombDistribution L
+      (SchwartzMap.compCLMOfContinuousLinearEquiv ℂ
+        (LinearIsometryEquiv.neg ℝ (E := ℝ)) f) =
+      nearGapCombDistribution L f := by
+  let D : TemperedDistribution ℝ ℂ := nearGapCombDistribution L
+  have hFourier : 𝓕 D = D := nearGapCombFamily_fourier_selfdual L
+  have hInv : 𝓕⁻ D = D := by
+    calc
+      𝓕⁻ D = 𝓕⁻ (𝓕 D) :=
+        congrArg (fun T : TemperedDistribution ℝ ℂ => 𝓕⁻ T) hFourier.symm
+      _ = D := FourierTransform.fourierInv_fourier_eq D
+  have hpair (g : SchwartzMap ℝ ℂ) : D (𝓕⁻ g) = D g := by
+    calc
+      D (𝓕⁻ g) = (𝓕⁻ D) g := rfl
+      _ = D g := congrArg
+        (fun T : TemperedDistribution ℝ ℂ => T g) hInv
+  have hreflect :
+      𝓕⁻ (𝓕⁻ f) =
+        SchwartzMap.compCLMOfContinuousLinearEquiv ℂ
+          (LinearIsometryEquiv.neg ℝ (E := ℝ)) f := by
+    have h := SchwartzMap.fourierInv_apply_eq (𝓕⁻ f)
+    simpa only [FourierTransform.fourier_fourierInv_eq] using h
+  change D (SchwartzMap.compCLMOfContinuousLinearEquiv ℂ
+    (LinearIsometryEquiv.neg ℝ (E := ℝ)) f) = D f
+  calc
+    D (SchwartzMap.compCLMOfContinuousLinearEquiv ℂ
+        (LinearIsometryEquiv.neg ℝ (E := ℝ)) f) =
+        D (𝓕⁻ (𝓕⁻ f)) := congrArg D hreflect.symm
+    _ = D (𝓕⁻ f) := hpair (𝓕⁻ f)
+    _ = D f := hpair f
+
 lemma nearGap_origin_zero (mu : Measure ℝ) {a : ℝ} (ha : 0<a)
     (hgap : mu (Ioo (-a) a)=0) : mu {0}=0 := by
   apply measure_mono_null _ hgap
