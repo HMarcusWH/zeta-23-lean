@@ -214,6 +214,28 @@ theorem nearGapCombFamily_common_growth {L : ℝ}
     CommonLinearMassBound 18 (nearGapCombFamily L).totalVariation :=
   ⟨by norm_num, fun R hR => nearGapCombFamily_uniform_variation hL hu hR⟩
 
+/-- Uniform Schwartz tail control for the *actual* CT1 signed carrier.
+Combines the common physical Jordan variation bound with the previously proved
+dyadic-shell cubic-tail lemma. Crucially, no dependence on L enters the
+constant, even as the near-gap parameter approaches one.
+
+This proves the tail-control prerequisite, not compact weak convergence or
+the full near_gap_controlled_limit_zero primary theorem. -/
+theorem nearGapCombFamily_uniform_schwartz_tail {L R M : ℝ}
+    (hL : 0 ≤ L) (hu : L ≤ Real.log 2)
+    (hM : 0 ≤ M) (hR : 1 ≤ R)
+    (f : ℝ → ℂ) (hf : Continuous f)
+    (hdecay : ∀ x : ℝ, |x| ^ 3 * ‖f x‖ ≤ M) :
+    IntegrableOn f {x : ℝ | R ≤ |x|}
+      (nearGapCombFamily L).totalVariation ∧
+    (∫ x in {x : ℝ | R ≤ |x|}, ‖f x‖
+      ∂(nearGapCombFamily L).totalVariation) ≤ 72 * M / R ^ 2 := by
+  have h := common_linear_cubic_tail
+    (nearGapCombFamily L).totalVariation 18 M R
+    (nearGapCombFamily_common_growth hL hu) hM hR f hf hdecay
+  refine ⟨h.1, ?_⟩
+  simpa only [show (4 : ℝ) * 18 = 72 by norm_num, mul_assoc] using h.2
+
 /-- Genuine linear growth survives canonical Jordan addition; it is a
 consequence of the actual total-variation inequality, not a condition placed
 on the sum in advance. No whole-line finite-mass premise is used. -/
