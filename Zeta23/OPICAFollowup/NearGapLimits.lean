@@ -76,6 +76,41 @@ theorem nearGap_localJordanAdd_growth
   change (nu.totalVariation (Icc (-R) R)).toReal ≤ _ at hb
   nlinarith
 
+/-- Canonicalization of a locally finite Jordan sum preserves its actual
+Schwartz pairing. The needed source hypotheses are only linear growth of the
+two genuine input measures, not global finite variation or an arbitrary
+distribution identity provided by a caller. -/
+theorem nearGap_localJordanAdd_pairing
+    (mu nu : LocallyFiniteSignedMeasure)
+    (hmu : mu.HasLinearGrowth) (hnu : nu.HasLinearGrowth)
+    (f : SchwartzMap ℝ ℂ) :
+    (localJordanAdd mu nu).distributionOfLinearGrowth
+      (nearGap_localJordanAdd_growth mu nu hmu hnu) f =
+      mu.distributionOfLinearGrowth hmu f +
+      nu.distributionOfLinearGrowth hnu f := by
+  have hmp : Integrable f mu.positive := by
+    letI := (mu.parts_temperate_of_linear_growth hmu).1
+    exact f.integrable
+  have hmm : Integrable f mu.negative := by
+    letI := (mu.parts_temperate_of_linear_growth hmu).2
+    exact f.integrable
+  have hnp : Integrable f nu.positive := by
+    letI := (nu.parts_temperate_of_linear_growth hnu).1
+    exact f.integrable
+  have hnm : Integrable f nu.negative := by
+    letI := (nu.parts_temperate_of_linear_growth hnu).2
+    exact f.integrable
+  have hplus : Integrable f (mu.positive + nu.positive) :=
+    integrable_add_measure.mpr ⟨hmp,hnp⟩
+  have hminus : Integrable f (mu.negative + nu.negative) :=
+    integrable_add_measure.mpr ⟨hmm,hnm⟩
+  simp only [LocallyFiniteSignedMeasure.distributionOfLinearGrowth_apply,
+    localJordanAdd]
+  rw [localJordanDifference_integral
+    (mu.positive + nu.positive) (mu.negative + nu.negative) f hplus hminus,
+    integral_add_measure hmp hnp,integral_add_measure hmm hnm]
+  ring
+
 /-- Signed scalar multiplication preserves genuine linear variation growth,
 with the magnitude of the actual scalar explicitly charged. -/
 theorem nearGap_localJordanScale_growth
