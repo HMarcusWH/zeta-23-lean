@@ -174,6 +174,15 @@ jobs:
           #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_window_causal_zero
           #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_window_rate_nonneg
           #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_ct1_origin_coefficient
+          theorem expected_ct1_signed_growth (L : ℝ) :
+              (Zeta23.OPICAFollowup.nearGapCombFamily L).HasLinearGrowth :=
+            Zeta23.OPICAFollowup.nearGapCombFamily_growth L
+          theorem expected_ct1_distribution (L : ℝ) :
+              ∃ D : TemperedDistribution ℝ ℂ,
+                D = Zeta23.OPICAFollowup.nearGapCombDistribution L :=
+            ⟨Zeta23.OPICAFollowup.nearGapCombDistribution L, rfl⟩
+          #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_ct1_signed_growth
+          #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_ct1_distribution
           #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_ct1_radius
           end Zeta23.OPICAFollowup.W04W07Independent
           LEAN
@@ -184,11 +193,11 @@ jobs:
           data = Path('/tmp/opica-current-candidates/w04-w07-expected.log').read_text()
           records = re.findall(r'depends on axioms:\s*\[([^\]]*)\]', data, re.S)
           allowed = {'propext', 'Classical.choice', 'Quot.sound'}
-          assert len(records) == 8, f'Expected eight exact independent axiom receipts, got {len(records)}'
+          assert len(records) == 10, f'Expected ten exact independent axiom receipts, got {len(records)}'
           for r in records:
               axioms = {x.strip() for x in r.split(',') if x.strip()}
               assert axioms <= allowed, f'Unexpected axiom(s): {sorted(axioms - allowed)}'
-          print('W04/W07 foundation and eight independent domain/axiom checks: PASS. Full original roots OPEN')
+          print('W04/W07 foundation and ten independent domain/axiom checks: PASS. Full original roots OPEN')
           PY
       - name: W06 logarithmic mixing weights and independent integer-dilation types
         if: always()
@@ -199,6 +208,7 @@ jobs:
           lake build Zeta23.OPICAFollowup.WeightedMixing 2>&1 | tee /tmp/opica-current-candidates/w06-mixing-build.log
           cat > /tmp/opica-w06-expected.lean <<'LEAN'
           import Zeta23.OPICAFollowup.WeightedMixing
+          open MeasureTheory
           namespace Zeta23.OPICAFollowup.W06Independent
           theorem expected_log_weight (t : ℝ) :
               Zeta23.OPICAFollowup.positiveLogWeight (Real.exp t) =
@@ -220,6 +230,11 @@ jobs:
           #print axioms Zeta23.OPICAFollowup.W06Independent.expected_log_weight
           #print axioms Zeta23.OPICAFollowup.W06Independent.expected_complex_pullback
           #print axioms Zeta23.OPICAFollowup.W06Independent.expected_origin_excluded
+          theorem expected_weighted_log_dirac (t : ℝ) :
+              Zeta23.OPICAFollowup.positiveLogMeasure (Measure.dirac (Real.exp t)) =
+                ENNReal.ofReal (Real.exp (-t / 2)) • Measure.dirac t :=
+            Zeta23.OPICAFollowup.positiveLogMeasure_dirac t
+          #print axioms Zeta23.OPICAFollowup.W06Independent.expected_weighted_log_dirac
           #print axioms Zeta23.OPICAFollowup.W06Independent.expected_physical_integer_dilation
           end Zeta23.OPICAFollowup.W06Independent
           LEAN
@@ -230,7 +245,7 @@ jobs:
           data = Path('/tmp/opica-current-candidates/w06-expected.log').read_text()
           found = re.findall(r'depends on axioms:\s*\[([^\]]*)\]', data, re.S)
           allowed = {'propext', 'Classical.choice', 'Quot.sound'}
-          assert len(found) == 4, f'Expected four axiom closures; saw {len(found)}'
+          assert len(found) == 5, f'Expected five axiom closures; saw {len(found)}'
           for row in found:
               axioms = {x.strip() for x in row.split(',') if x.strip()}
               assert axioms <= allowed, f'Unexpected axioms: {sorted(axioms - allowed)}'
