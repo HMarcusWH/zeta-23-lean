@@ -228,6 +228,19 @@ jobs:
           #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_ct1_variation_domination
           #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_ct1_positive_variation
           #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_ct1_actual_uniform_variation
+          theorem expected_ct1_uniform_schwartz_tails {L R M : ℝ}
+              (hL : 0 ≤ L) (hu : L ≤ Real.log 2)
+              (hM : 0 ≤ M) (hR : 1 ≤ R)
+              (f : ℝ → ℂ) (hf : Continuous f)
+              (hdecay : ∀ x : ℝ, |x| ^ 3 * ‖f x‖ ≤ M) :
+              IntegrableOn f {x : ℝ | R ≤ |x|}
+                (Zeta23.OPICAFollowup.nearGapCombFamily L).totalVariation ∧
+              (∫ x in {x : ℝ | R ≤ |x|}, ‖f x‖
+                ∂(Zeta23.OPICAFollowup.nearGapCombFamily L).totalVariation) ≤
+                72 * M / R ^ 2 :=
+            Zeta23.OPICAFollowup.nearGapCombFamily_uniform_schwartz_tail
+              hL hu hM hR f hf hdecay
+          #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_ct1_uniform_schwartz_tails
           #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_ct1_common_schwartz_growth
           #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_ct1_radius
           end Zeta23.OPICAFollowup.W04W07Independent
@@ -239,11 +252,11 @@ jobs:
           data = Path('/tmp/opica-current-candidates/w04-w07-expected.log').read_text()
           records = re.findall(r'depends on axioms:\s*\[([^\]]*)\]', data, re.S)
           allowed = {'propext', 'Classical.choice', 'Quot.sound'}
-          assert len(records) == 17, f'Expected seventeen exact independent axiom receipts, got {len(records)}'
+          assert len(records) == 18, f'Expected eighteen exact independent axiom receipts, got {len(records)}'
           for r in records:
               axioms = {x.strip() for x in r.split(',') if x.strip()}
               assert axioms <= allowed, f'Unexpected axiom(s): {sorted(axioms - allowed)}'
-          print('W04/W07 foundation and seventeen independent domain/axiom checks: PASS. Full original roots OPEN')
+          print('W04/W07 foundation and eighteen independent domain/axiom checks: PASS. Full original roots OPEN')
           PY
       - name: W06 logarithmic mixing weights and independent integer-dilation types
         if: always()
