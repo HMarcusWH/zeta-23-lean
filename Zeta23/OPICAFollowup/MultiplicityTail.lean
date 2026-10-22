@@ -3,16 +3,17 @@ import Zeta23.OPICAFollowup.UniformSourceBounds
 import Zeta23.ExceptionalZero.NativeActualInputZeroJets
 import Mathlib.Analysis.Calculus.Deriv.Polynomial
 import Mathlib.MeasureTheory.Integral.Gamma
-import Mathlib.Analysis.InnerProductSpace.L2Space
+import Mathlib.MeasureTheory.Function.L2Space
 
 /-!
-UNCHECKED continuation at 9b6a9a3.  The genuine monic Laguerre tail test is
-constructed here with its exact norm, arbitrary degree, real lower endpoint
-and both imaginary signs.  Native convolution/top-moment and finite-residual
-primaries are not assumed by this calculation and remain separate obligations.
+The genuine monic Laguerre tail test is constructed here with its exact norm,
+arbitrary degree, real lower endpoint and both imaginary signs. The full norm
+root has independent type/domain consumers. Native convolution/top-moment,
+finite-residual and terminal-memory primaries remain separate obligations.
 -/
 
 noncomputable section
+set_option backward.isDefEq.respectTransparency.types false
 open Set MeasureTheory Filter Polynomial
 open scoped Topology
 namespace Zeta23.OPICAFollowup
@@ -33,12 +34,15 @@ lemma exp_neg_polynomial_integrable (P : Polynomial ℝ) :
     IntegrableOn (fun x : ℝ => Real.exp (-x)*P.eval x) (Ioi 0) := by
   induction P using Polynomial.induction_on' with
   | add P Q hP hQ =>
-    simpa only [Polynomial.eval_add,mul_add] using hP.add hQ
+    convert hP.add hQ using 1 <;>
+      first | rfl | (simp only [Polynomial.eval_add,mul_add]; rfl)
   | monomial n a =>
     have h := integrableOn_rpow_mul_exp_neg_mul_rpow (p := (1:ℝ)) (s := n)
-      (b := (1:ℝ)) (by positivity) (by norm_num) (by norm_num)
-    simpa only [Real.rpow_one,Real.rpow_natCast,one_mul,Polynomial.eval_monomial,
-      mul_comm,mul_left_comm,mul_assoc] using h.const_mul a
+      (b := (1:ℝ)) (by linarith [Nat.cast_nonneg (α := ℝ) n]) (by norm_num) (by norm_num)
+    convert h.const_mul a using 1
+    first | rfl | simp only [Real.rpow_one,Real.rpow_natCast,Polynomial.eval_monomial,
+      mul_comm,mul_assoc,mul_neg_one]
+    rfl
 
 lemma exp_neg_polynomial_tendsto_zero (P : Polynomial ℝ) :
     Tendsto (fun x : ℝ => Real.exp (-x)*P.eval x) atTop (𝓝 0) := by
@@ -46,7 +50,7 @@ lemma exp_neg_polynomial_tendsto_zero (P : Polynomial ℝ) :
   | add P Q hP hQ =>
     simpa only [Polynomial.eval_add,mul_add,add_zero] using hP.add hQ
   | monomial n a =>
-    have h := tendsto_pow_mul_exp_neg_atTop_nhds_zero n
+    have h := Real.tendsto_pow_mul_exp_neg_atTop_nhds_zero n
     simpa only [Polynomial.eval_monomial,mul_comm,mul_left_comm,mul_assoc,mul_zero] using
       h.const_mul a
 
@@ -86,16 +90,14 @@ lemma laguerre_weighted_ibp (P Q : Polynomial ℝ) :
       (fun x : ℝ => Real.exp (-x)*(P*Q).eval x)
       (Real.exp (-x)*((laguerreRodriguesStep P)*Q+P*Q.derivative).eval x) x := by
     have h := ((hasDerivAt_neg x).exp).mul ((P*Q).hasDerivAt x)
-    convert h using 1
-    · funext y; rfl
-    · simp only [Polynomial.derivative_mul,Polynomial.eval_mul,Polynomial.eval_add,
-        Polynomial.eval_sub,laguerreRodriguesStep]
-      ring
+    convert h using 1 <;>
+      first | rfl | (simp only [Polynomial.derivative_mul,Polynomial.eval_mul,
+        Polynomial.eval_add,laguerreRodriguesStep,Polynomial.eval_sub]; ring)
   have hi := exp_neg_polynomial_integrable ((laguerreRodriguesStep P)*Q+P*Q.derivative)
   have hz := exp_neg_polynomial_tendsto_zero (P*Q)
   have h := integral_Ioi_of_hasDerivAt_of_tendsto'
     (fun x (_hx : x∈Ici (0:ℝ)) => hd x) hi hz
-  simp only [Polynomial.eval_add,Polynomial.eval_mul,mul_add] at h
+  simp only [Polynomial.eval_add,Polynomial.eval_mul,mul_add,←mul_assoc] at h
   rw [integral_add (laguerreWeightedPair_integrable (laguerreRodriguesStep P) Q)
     (laguerreWeightedPair_integrable P Q.derivative)] at h
   simpa only [Real.exp_zero,neg_zero,one_mul,Polynomial.eval_mul,zero_sub,
@@ -163,7 +165,7 @@ lemma laguerre_iterate_top_coeff (n j : ℕ) :
 
 lemma monicLaguerre_natDegree_le (n : ℕ) : (monicLaguerre n).natDegree≤n := by
   exact (Polynomial.natDegree_mul_le ..).trans (by
-    simpa only [monicLaguerre,Polynomial.natDegree_C,zero_add] using
+    simpa only [monicLaguerre,Polynomial.natDegree_C,zero_add,Polynomial.natDegree_X_pow] using
       laguerre_iterate_degree_le n (Polynomial.X^n:Polynomial ℝ))
 
 lemma monicLaguerre_top_coeff (n : ℕ) : (monicLaguerre n).coeff n=1 := by
@@ -186,7 +188,7 @@ lemma polynomial_top_iterated_derivative (P : Polynomial ℝ) (n : ℕ)
   · subst j
     simp [Nat.descFactorial_self,nsmul_eq_mul]
   · have hcoeff : P.coeff (j+n)=0 := Polynomial.coeff_eq_zero_of_natDegree_lt (by omega)
-    simp [hcoeff,Polynomial.coeff_C,hj]
+    simp [hcoeff,hj]
 
 lemma monicLaguerre_top_derivative (n : ℕ) :
     Polynomial.derivative^[n] (monicLaguerre n)=Polynomial.C (n.factorial:ℝ) := by
@@ -202,7 +204,10 @@ lemma monicLaguerre_orthogonality (n : ℕ) (Q : Polynomial ℝ) (hQ : Q.natDegr
 lemma monicLaguerre_exact_norm_sq (n : ℕ) :
     (∫ x : ℝ in Ioi 0, Real.exp (-x)*((monicLaguerre n).eval x)^2) =
       (n.factorial:ℝ)^2 := by
-  change laguerreWeightedPair (monicLaguerre n) (monicLaguerre n)=_
+  have hp : (∫ x : ℝ in Ioi 0, Real.exp (-x)*((monicLaguerre n).eval x)^2)=
+      laguerreWeightedPair (monicLaguerre n) (monicLaguerre n) := by
+    simp only [laguerreWeightedPair,pow_two,mul_assoc]
+  rw [hp]
   rw [monicLaguerre,laguerreWeightedPair_const_mul_left,
     laguerre_iterated_ibp n _ _ dvd_rfl]
   change (-1:ℝ)^n*((-1:ℝ)^n*
@@ -231,12 +236,13 @@ lemma laguerreSquareProfile_integrable (n : ℕ) : Integrable (laguerreSquarePro
   have hc : IntegrableOn (fun x : ℝ => Real.exp (-x)*((monicLaguerre n).eval x)^2)
       (Ici 0) := by
     apply (integrableOn_Ici_iff_integrableOn_Ioi (by finiteness)).mpr
-    convert h using 1 <;> ext x <;> ring
+    simpa only [pow_two,mul_assoc] using h
   exact hc.integrable_indicator measurableSet_Ici
 
 lemma laguerreSquareProfile_integral (n : ℕ) :
     (∫ x : ℝ,laguerreSquareProfile n x)=(n.factorial:ℝ)^2 := by
-  rw [laguerreSquareProfile,integral_indicator measurableSet_Ici,
+  unfold laguerreSquareProfile
+  rw [integral_indicator measurableSet_Ici,
     integral_Ici_eq_integral_Ioi,monicLaguerre_exact_norm_sq]
 
 lemma monicLaguerreTail_norm_sq (n : ℕ) (p : ℂ) (T t : ℝ) (hp : 0<p.re) :
@@ -246,14 +252,17 @@ lemma monicLaguerreTail_norm_sq (n : ℕ) (p : ℂ) (T t : ℝ) (hp : 0<p.re) :
   have ha : 0<2*p.re := by linarith
   by_cases ht : T≤t
   · have hu : 0≤2*p.re*(t-T) := mul_nonneg ha.le (sub_nonneg.mpr ht)
-    simp only [monicLaguerreTail,indicator_of_mem ht,laguerreSquareProfile,
-      indicator_of_mem hu,norm_mul,Complex.norm_real,Real.norm_eq_abs,Complex.norm_exp,
+    have htmem : t ∈ Ici T := ht
+    have humem : 2*p.re*(t-T) ∈ Ici (0:ℝ) := hu
+    simp only [monicLaguerreTail,indicator_of_mem htmem,laguerreSquareProfile,
+      indicator_of_mem humem,norm_mul,Complex.norm_real,Real.norm_eq_abs,Complex.norm_exp,
       Complex.neg_re,Complex.conj_re,Complex.mul_re,Complex.ofReal_re,
-      Complex.ofReal_im,mul_zero,sub_zero,mul_pow,abs_sq]
+      Complex.ofReal_im,mul_zero,sub_zero,mul_pow]
     have he : (Real.exp (-p.re*t))^2=
         Real.exp (-2*p.re*T)*Real.exp (-(2*p.re*(t-T))) := by
       rw [←Real.exp_nat_mul,←Real.exp_add]; congr 1; ring
     rw [he]
+    simp only [sq_abs]
     ring
   · have hu : ¬0≤2*p.re*(t-T) := by nlinarith
     simp [monicLaguerreTail,laguerreSquareProfile,ht,hu]
@@ -276,8 +285,9 @@ lemma monicLaguerreTail_integral_norm_sq (n : ℕ) (p : ℂ) (T : ℝ) (hp : 0<p
       Real.exp (-2*p.re*T)*(n.factorial:ℝ)^2/(2*p.re)^(2*n+1) := by
   simp_rw [monicLaguerreTail_norm_sq n p T _ hp]
   rw [integral_const_mul]
-  have hshift := integral_comp_sub_right
-    (fun u : ℝ => laguerreSquareProfile n (2*p.re*u)) T
+  have hshift : (∫ t : ℝ,laguerreSquareProfile n (2*p.re*(t-T)))=
+      ∫ u : ℝ,laguerreSquareProfile n (2*p.re*u) :=
+    integral_sub_right_eq_self (fun u : ℝ => laguerreSquareProfile n (2*p.re*u)) T
   rw [hshift,Measure.integral_comp_mul_left (laguerreSquareProfile n) (2*p.re),
     smul_eq_mul,abs_of_pos (inv_pos.mpr (by positivity : 0<2*p.re)),
     laguerreSquareProfile_integral]
@@ -285,10 +295,10 @@ lemma monicLaguerreTail_integral_norm_sq (n : ℕ) (p : ℂ) (T : ℝ) (hp : 0<p
   ring
 
 /-- The actual L2 vector is constructed from the actual integrable tail test. -/
-def monicLaguerreTailL2 (n : ℕ) (p : ℂ) (T : ℝ) (hp : 0<p.re) : Lp ℂ 2 volume :=
+def monicLaguerreTailL2 (n : ℕ) (p : ℂ) (T : ℝ) (hp : 0<p.re) : Lp (α := ℝ) ℂ 2 (volume : Measure ℝ) :=
   (monicLaguerreTail_memLp n p T hp).toLp (monicLaguerreTail n p T)
 
-/-- Original Laguerre primary candidate, full m>=1, delta>0, T real scope.
+/-- Original Laguerre primary, full m>=1, delta>0, T real scope.
 The output gives the actual representative and squared norm as well as the
 paper's norm, eliminating any hidden choice of normalization. -/
 theorem laguerre_tail_norm (m : ℕ) (hm : 1≤m) (p : ℂ) (hp : 0<p.re) (T : ℝ) :
@@ -307,6 +317,7 @@ theorem laguerre_tail_norm (m : ℕ) (hm : 1≤m) (p : ℂ) (hp : 0<p.re) (T : �
     rw [←real_inner_self_eq_norm_sq,L2.inner_def]
     apply integral_congr_ae
     filter_upwards [(monicLaguerreTail_memLp (m-1) p T hp).coeFn_toLp] with t ht
+    dsimp only [monicLaguerreTailL2]
     rw [ht,real_inner_self_eq_norm_sq]
   have hsq := hnorm.trans (monicLaguerreTail_integral_norm_sq (m-1) p T hp)
   refine ⟨monicLaguerre_monic _,fun Q hQ => monicLaguerre_orthogonality _ Q hQ,
@@ -315,17 +326,26 @@ theorem laguerre_tail_norm (m : ℕ) (hm : 1≤m) (p : ℂ) (hp : 0<p.re) (T : �
   have hMp : (0:ℝ)<2*p.re := by linarith
   have hright : 0≤Real.exp (-p.re*T)*((m-1).factorial:ℝ)/(2*p.re)^((m:ℝ)-1/2) := by
     positivity
-  apply (sq_eq_sq₀ (norm_nonneg _) hright).mp
-  rw [hsq,div_pow,mul_pow,←Real.exp_nat_mul,
-    ←Real.rpow_natCast (2*p.re) 2,←Real.rpow_mul hMp.le]
   have hcast : ((m:ℝ)-1/2)*2=(2*(m-1)+1:ℕ) := by
     have hmreal : ((m-1:ℕ):ℝ)=(m:ℝ)-1 := by
       rw [Nat.cast_sub hm]; norm_num
     push_cast
     rw [hmreal]
     ring
-  rw [hcast,Real.rpow_natCast]
-  congr 2
-  ring
+  have hden : ((2*p.re)^((m:ℝ)-1/2))^2=(2*p.re)^(2*(m-1)+1) := by
+    rw [←Real.rpow_natCast ((2*p.re)^((m:ℝ)-1/2)) 2,←Real.rpow_mul hMp.le]
+    norm_num only [Nat.cast_ofNat]
+    rw [hcast,Real.rpow_natCast]
+  have he : (Real.exp (-p.re*T))^2=Real.exp (-2*p.re*T) := by
+    rw [←Real.exp_nat_mul]
+    congr 1
+    ring
+  have hsquare : (Real.exp (-p.re*T)*((m-1).factorial:ℝ)/(2*p.re)^((m:ℝ)-1/2))^2=
+      Real.exp (-2*p.re*T)*((m-1).factorial:ℝ)^2/(2*p.re)^(2*(m-1)+1) := by
+    calc
+      _ = (Real.exp (-p.re*T))^2*((m-1).factorial:ℝ)^2/
+          ((2*p.re)^((m:ℝ)-1/2))^2 := by ring
+      _ = _ := by rw [he,hden]
+  exact (sq_eq_sq₀ (norm_nonneg _) hright).mp (hsq.trans hsquare.symm)
 
 end Zeta23.OPICAFollowup

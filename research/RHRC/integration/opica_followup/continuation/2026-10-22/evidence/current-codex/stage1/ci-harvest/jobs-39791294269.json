@@ -1,0 +1,137 @@
+{
+  "total_count": 1,
+  "jobs": [
+    {
+      "id": 119868170447,
+      "run_id": 39791294269,
+      "workflow_name": "RHRC post-202 Q14 composite parity gap",
+      "head_branch": "research/opica-native-followup",
+      "run_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/runs/39791294269",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOT94UfM8AAAAb6LMgzw",
+      "head_sha": "9ccea78eb5ee0c097bde05424e43de58a589b713",
+      "url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/jobs/119868170447",
+      "html_url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39791294269/job/119868170447",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-22T13:56:52Z",
+      "started_at": "2026-10-22T14:09:30Z",
+      "completed_at": "2026-10-22T14:28:30Z",
+      "name": "post202-q14-composite-parity-gap",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-22T14:09:31Z",
+          "completed_at": "2026-10-22T14:09:32Z"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-22T14:09:32Z",
+          "completed_at": "2026-10-22T14:10:43Z"
+        },
+        {
+          "name": "Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-22T14:10:43Z",
+          "completed_at": "2026-10-22T14:10:43Z"
+        },
+        {
+          "name": "Install R003 numerical audit requirements",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-22T14:10:43Z",
+          "completed_at": "2026-10-22T14:10:59Z"
+        },
+        {
+          "name": "Recheck inherited post-#201 paired discrepancy jets",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-22T14:10:59Z",
+          "completed_at": "2026-10-22T14:12:05Z"
+        },
+        {
+          "name": "Recheck inherited post-#201 discrepancy scope firewall",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-10-22T14:12:05Z",
+          "completed_at": "2026-10-22T14:12:06Z"
+        },
+        {
+          "name": "Check post-#202 theorem-aligned parity contrast jets",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-10-22T14:12:06Z",
+          "completed_at": "2026-10-22T14:12:44Z"
+        },
+        {
+          "name": "Check post-#202 composite parity-gap scope",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-10-22T14:12:44Z",
+          "completed_at": "2026-10-22T14:12:44Z"
+        },
+        {
+          "name": "Probe post-#202 composite parity-gap schedule",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-10-22T14:12:44Z",
+          "completed_at": "2026-10-22T14:12:45Z"
+        },
+        {
+          "name": "Certify post-#202 Q14 composite parity-gap mechanism",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-10-22T14:12:45Z",
+          "completed_at": "2026-10-22T14:28:28Z"
+        },
+        {
+          "name": "Post Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 19,
+          "started_at": "2026-10-22T14:28:28Z",
+          "completed_at": "2026-10-22T14:28:28Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 20,
+          "started_at": "2026-10-22T14:28:28Z",
+          "completed_at": "2026-10-22T14:28:28Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 21,
+          "started_at": "2026-10-22T14:28:28Z",
+          "completed_at": "2026-10-22T14:28:28Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/check-runs/119868170447",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 1000117231,
+      "runner_name": "GitHub Actions 1000117231",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    }
+  ]
+}

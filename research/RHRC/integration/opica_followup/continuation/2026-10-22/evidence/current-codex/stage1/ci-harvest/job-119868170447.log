@@ -1,0 +1,718 @@
+﻿2026-10-22T14:09:31.7868576Z Current runner version: '2.338.0'
+2026-10-22T14:09:31.7910041Z ##[group]Runner Image Provisioner
+2026-10-22T14:09:31.7910758Z Hosted Compute Agent
+2026-10-22T14:09:31.7911364Z Version: 20261015.610
+2026-10-22T14:09:31.7911884Z Commit: 267fdb4e8bbec4ab5ea31367f3a00d5c480c7656
+2026-10-22T14:09:31.7912572Z Build Date: 2026-10-14T17:06:54Z
+2026-10-22T14:09:31.7913130Z Worker ID: {b913ec45-1458-48e9-8d22-df93a072d095}
+2026-10-22T14:09:31.7913691Z Region: westus3
+2026-10-22T14:09:31.7914195Z Cloud: Azure
+2026-10-22T14:09:31.7914642Z ##[endgroup]
+2026-10-22T14:09:31.7915995Z ##[group]Operating System
+2026-10-22T14:09:31.7916613Z Ubuntu
+2026-10-22T14:09:31.7917042Z 26.04.1
+2026-10-22T14:09:31.7917545Z LTS
+2026-10-22T14:09:31.7917967Z ##[endgroup]
+2026-10-22T14:09:31.7918483Z ##[group]Runner Image
+2026-10-22T14:09:31.7918990Z Image: ubuntu-26.04
+2026-10-22T14:09:31.7919460Z Version: 20261018.168.1
+2026-10-22T14:09:31.7920555Z Included Software: https://github.com/actions/runner-images/blob/ubuntu26/20261018.168/images/ubuntu/Ubuntu2604-Readme.md
+2026-10-22T14:09:31.7921866Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu26%2F20261018.168
+2026-10-22T14:09:31.7922666Z ##[endgroup]
+2026-10-22T14:09:31.7923696Z ##[group]GITHUB_TOKEN Permissions
+2026-10-22T14:09:31.7925235Z Contents: read
+2026-10-22T14:09:31.7925723Z Metadata: read
+2026-10-22T14:09:31.7926455Z Packages: read
+2026-10-22T14:09:31.7926913Z ##[endgroup]
+2026-10-22T14:09:31.7929000Z Secret source: Actions
+2026-10-22T14:09:31.7929865Z Cache mode: write
+2026-10-22T14:09:31.7930599Z Prepare workflow directory
+2026-10-22T14:09:31.8235474Z Prepare all required actions
+2026-10-22T14:09:31.8274892Z Getting action download info
+2026-10-22T14:09:32.1096552Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-10-22T14:09:32.3273794Z Download action repository 'actions/setup-python@v5' (SHA:a26af69be951a213d495a4c3e4e4022e16d87065)
+2026-10-22T14:09:32.4967820Z Complete job name: post202-q14-composite-parity-gap
+2026-10-22T14:09:32.5751887Z ##[group]Run actions/checkout@v4
+2026-10-22T14:09:32.5752636Z with:
+2026-10-22T14:09:32.5753027Z   repository: HMarcusWH/zeta-23-lean
+2026-10-22T14:09:32.5756965Z   token: ***
+2026-10-22T14:09:32.5757357Z   ssh-strict: true
+2026-10-22T14:09:32.5757753Z   ssh-user: git
+2026-10-22T14:09:32.5758141Z   persist-credentials: true
+2026-10-22T14:09:32.5758575Z   clean: true
+2026-10-22T14:09:32.5758960Z   sparse-checkout-cone-mode: true
+2026-10-22T14:09:32.5759412Z   fetch-depth: 1
+2026-10-22T14:09:32.5759786Z   fetch-tags: false
+2026-10-22T14:09:32.5760186Z   show-progress: true
+2026-10-22T14:09:32.5760586Z   lfs: false
+2026-10-22T14:09:32.5760962Z   submodules: false
+2026-10-22T14:09:32.5761372Z   set-safe-directory: true
+2026-10-22T14:09:32.5761818Z   allow-unsafe-pr-checkout: false
+2026-10-22T14:09:32.5762430Z ##[endgroup]
+2026-10-22T14:09:32.6630003Z Syncing repository: HMarcusWH/zeta-23-lean
+2026-10-22T14:09:32.6632308Z ##[group]Getting Git version info
+2026-10-22T14:09:32.6633515Z Working directory is '/home/runner/work/zeta-23-lean/zeta-23-lean'
+2026-10-22T14:09:32.6635067Z [command]/usr/bin/git version
+2026-10-22T14:09:32.6635951Z git version 2.55.0
+2026-10-22T14:09:32.6638540Z ##[endgroup]
+2026-10-22T14:09:32.6644721Z Temporarily overriding HOME='/home/runner/work/_temp/99e2b84e-7b94-48a0-8cf0-669294c636b4' before making global git config changes
+2026-10-22T14:09:32.6648097Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-22T14:09:32.6649880Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/zeta-23-lean/zeta-23-lean
+2026-10-22T14:09:32.6713968Z Deleting the contents of '/home/runner/work/zeta-23-lean/zeta-23-lean'
+2026-10-22T14:09:32.6717080Z ##[group]Initializing the repository
+2026-10-22T14:09:32.6721624Z [command]/usr/bin/git init /home/runner/work/zeta-23-lean/zeta-23-lean
+2026-10-22T14:09:32.7065444Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-10-22T14:09:32.7067841Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-10-22T14:09:32.7068933Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-10-22T14:09:32.7069595Z hint: call:
+2026-10-22T14:09:32.7070304Z hint:
+2026-10-22T14:09:32.7070788Z hint: 	git config --global init.defaultBranch <name>
+2026-10-22T14:09:32.7071356Z hint:
+2026-10-22T14:09:32.7071875Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-10-22T14:09:32.7072699Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-10-22T14:09:32.7073389Z hint:
+2026-10-22T14:09:32.7073792Z hint: 	git branch -m <name>
+2026-10-22T14:09:32.7074218Z hint:
+2026-10-22T14:09:32.7074773Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-10-22T14:09:32.7075685Z Initialized empty Git repository in /home/runner/work/zeta-23-lean/zeta-23-lean/.git/
+2026-10-22T14:09:32.7097548Z [command]/usr/bin/git remote add origin https://github.com/HMarcusWH/zeta-23-lean
+2026-10-22T14:09:32.7154008Z ##[endgroup]
+2026-10-22T14:09:32.7155125Z ##[group]Disabling automatic garbage collection
+2026-10-22T14:09:32.7157121Z [command]/usr/bin/git config --local gc.auto 0
+2026-10-22T14:09:32.7262053Z ##[endgroup]
+2026-10-22T14:09:32.7263212Z ##[group]Setting up auth
+2026-10-22T14:09:32.7269777Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-22T14:09:32.7305384Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-22T14:09:32.7687882Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-22T14:09:32.7718276Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-22T14:09:32.7953908Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-22T14:09:32.7982197Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-22T14:09:32.8219655Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-10-22T14:09:32.8256849Z ##[endgroup]
+2026-10-22T14:09:32.8257596Z ##[group]Fetching the repository
+2026-10-22T14:09:32.8264324Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +48724d2fa0b9d534ad374aa844dc79cc98348ca8:refs/remotes/pull/294/merge
+2026-10-22T14:10:42.3484692Z From https://github.com/HMarcusWH/zeta-23-lean
+2026-10-22T14:10:42.3485483Z  * [new ref]         48724d2fa0b9d534ad374aa844dc79cc98348ca8 -> pull/294/merge
+2026-10-22T14:10:42.3489450Z ##[endgroup]
+2026-10-22T14:10:42.3490075Z ##[group]Determining the checkout info
+2026-10-22T14:10:42.3491522Z ##[endgroup]
+2026-10-22T14:10:42.3496878Z [command]/usr/bin/git sparse-checkout disable
+2026-10-22T14:10:42.3544395Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-10-22T14:10:42.3569644Z ##[group]Checking out the ref
+2026-10-22T14:10:42.3572744Z [command]/usr/bin/git checkout --progress --force refs/remotes/pull/294/merge
+2026-10-22T14:10:43.4214625Z Updating files:  60% (1604/2661)
+2026-10-22T14:10:43.4252043Z Updating files:  61% (1624/2661)
+2026-10-22T14:10:43.4282061Z Updating files:  62% (1650/2661)
+2026-10-22T14:10:43.4296230Z Updating files:  63% (1677/2661)
+2026-10-22T14:10:43.4324725Z Updating files:  64% (1704/2661)
+2026-10-22T14:10:43.4337189Z Updating files:  65% (1730/2661)
+2026-10-22T14:10:43.4374827Z Updating files:  66% (1757/2661)
+2026-10-22T14:10:43.4442999Z Updating files:  67% (1783/2661)
+2026-10-22T14:10:43.4495414Z Updating files:  68% (1810/2661)
+2026-10-22T14:10:43.4536869Z Updating files:  69% (1837/2661)
+2026-10-22T14:10:43.4552467Z Updating files:  70% (1863/2661)
+2026-10-22T14:10:43.4577323Z Updating files:  71% (1890/2661)
+2026-10-22T14:10:43.4590198Z Updating files:  72% (1916/2661)
+2026-10-22T14:10:43.4628573Z Updating files:  73% (1943/2661)
+2026-10-22T14:10:43.4675049Z Updating files:  74% (1970/2661)
+2026-10-22T14:10:43.4682170Z Updating files:  75% (1996/2661)
+2026-10-22T14:10:43.4689148Z Updating files:  76% (2023/2661)
+2026-10-22T14:10:43.4697548Z Updating files:  77% (2049/2661)
+2026-10-22T14:10:43.4708321Z Updating files:  78% (2076/2661)
+2026-10-22T14:10:43.4749289Z Updating files:  79% (2103/2661)
+2026-10-22T14:10:43.4760611Z Updating files:  80% (2129/2661)
+2026-10-22T14:10:43.4769860Z Updating files:  81% (2156/2661)
+2026-10-22T14:10:43.4786203Z Updating files:  82% (2183/2661)
+2026-10-22T14:10:43.4833286Z Updating files:  83% (2209/2661)
+2026-10-22T14:10:43.4979470Z Updating files:  84% (2236/2661)
+2026-10-22T14:10:43.4992185Z Updating files:  85% (2262/2661)
+2026-10-22T14:10:43.5006831Z Updating files:  86% (2289/2661)
+2026-10-22T14:10:43.5023819Z Updating files:  87% (2316/2661)
+2026-10-22T14:10:43.5038653Z Updating files:  88% (2342/2661)
+2026-10-22T14:10:43.5051593Z Updating files:  89% (2369/2661)
+2026-10-22T14:10:43.5063086Z Updating files:  90% (2395/2661)
+2026-10-22T14:10:43.5072842Z Updating files:  91% (2422/2661)
+2026-10-22T14:10:43.5101849Z Updating files:  92% (2449/2661)
+2026-10-22T14:10:43.5119892Z Updating files:  93% (2475/2661)
+2026-10-22T14:10:43.5134817Z Updating files:  94% (2502/2661)
+2026-10-22T14:10:43.5149485Z Updating files:  95% (2528/2661)
+2026-10-22T14:10:43.5164797Z Updating files:  96% (2555/2661)
+2026-10-22T14:10:43.5181562Z Updating files:  97% (2582/2661)
+2026-10-22T14:10:43.5194544Z Updating files:  98% (2608/2661)
+2026-10-22T14:10:43.5207262Z Updating files:  99% (2635/2661)
+2026-10-22T14:10:43.5207621Z Updating files: 100% (2661/2661)
+2026-10-22T14:10:43.5207945Z Updating files: 100% (2661/2661), done.
+2026-10-22T14:10:43.5231851Z Note: switching to 'refs/remotes/pull/294/merge'.
+2026-10-22T14:10:43.5232558Z 
+2026-10-22T14:10:43.5232933Z You are in 'detached HEAD' state. You can look around, make experimental
+2026-10-22T14:10:43.5233571Z changes and commit them, and you can discard any commits you make in this
+2026-10-22T14:10:43.5234130Z state without impacting any branches by switching back to a branch.
+2026-10-22T14:10:43.5234481Z 
+2026-10-22T14:10:43.5234712Z If you want to create a new branch to retain commits you create, you may
+2026-10-22T14:10:43.5319289Z do so (now or later) by using -c with the switch command. Example:
+2026-10-22T14:10:43.5319705Z 
+2026-10-22T14:10:43.5319863Z   git switch -c <new-branch-name>
+2026-10-22T14:10:43.5320106Z 
+2026-10-22T14:10:43.5320237Z Or undo this operation with:
+2026-10-22T14:10:43.5320392Z 
+2026-10-22T14:10:43.5320483Z   git switch -
+2026-10-22T14:10:43.5320601Z 
+2026-10-22T14:10:43.5320783Z Turn off this advice by setting config variable advice.detachedHead to false
+2026-10-22T14:10:43.5321083Z 
+2026-10-22T14:10:43.5321402Z HEAD is now at 48724d2 Merge 9ccea78eb5ee0c097bde05424e43de58a589b713 into d53dd70d38b0762af130b1d19b795af259f505f5
+2026-10-22T14:10:43.5322618Z ##[endgroup]
+2026-10-22T14:10:43.5338582Z [command]/usr/bin/git log -1 --format=%H
+2026-10-22T14:10:43.5359862Z 48724d2fa0b9d534ad374aa844dc79cc98348ca8
+2026-10-22T14:10:43.5597296Z ##[group]Run actions/setup-python@v5
+2026-10-22T14:10:43.5597553Z with:
+2026-10-22T14:10:43.5597733Z   python-version: 3.14
+2026-10-22T14:10:43.5597950Z   check-latest: false
+2026-10-22T14:10:43.5600041Z   token: ***
+2026-10-22T14:10:43.5600230Z   update-environment: true
+2026-10-22T14:10:43.5600448Z   allow-prereleases: false
+2026-10-22T14:10:43.5600652Z   freethreaded: false
+2026-10-22T14:10:43.5600841Z ##[endgroup]
+2026-10-22T14:10:43.6637404Z ##[group]Installed versions
+2026-10-22T14:10:43.6718195Z (node:2279) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-22T14:10:43.6718924Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-22T14:10:43.6719735Z Successfully set up CPython (3.14.8)
+2026-10-22T14:10:43.6720303Z ##[endgroup]
+2026-10-22T14:10:43.6936626Z ##[group]Run python -m pip install -r research/RHRC/routes/R003_ccm_bridge/requirements.txt
+2026-10-22T14:10:43.6937518Z [36;1mpython -m pip install -r research/RHRC/routes/R003_ccm_bridge/requirements.txt[0m
+2026-10-22T14:10:43.7128089Z shell: /usr/bin/bash -e {0}
+2026-10-22T14:10:43.7128389Z env:
+2026-10-22T14:10:43.7128642Z   pythonLocation: /opt/hostedtoolcache/Python/3.14.8/x64
+2026-10-22T14:10:43.7129013Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.14.8/x64/lib/pkgconfig
+2026-10-22T14:10:43.7129359Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.14.8/x64
+2026-10-22T14:10:43.7129661Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.14.8/x64
+2026-10-22T14:10:43.7129967Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.14.8/x64
+2026-10-22T14:10:43.7130274Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.14.8/x64/lib
+2026-10-22T14:10:43.7130576Z ##[endgroup]
+2026-10-22T14:10:45.2316899Z Collecting numpy (from -r research/RHRC/routes/R003_ccm_bridge/requirements.txt (line 1))
+2026-10-22T14:10:45.2729011Z   Downloading numpy-2.5.4-cp314-cp314-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (6.6 kB)
+2026-10-22T14:10:45.3649425Z Collecting mpmath (from -r research/RHRC/routes/R003_ccm_bridge/requirements.txt (line 2))
+2026-10-22T14:10:45.3745252Z   Downloading mpmath-1.4.1-py3-none-any.whl.metadata (9.1 kB)
+2026-10-22T14:10:45.4825069Z Collecting scipy (from -r research/RHRC/routes/R003_ccm_bridge/requirements.txt (line 3))
+2026-10-22T14:10:45.4923278Z   Downloading scipy-1.18.1-cp314-cp314-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (62 kB)
+2026-10-22T14:10:45.6038649Z Collecting sympy (from -r research/RHRC/routes/R003_ccm_bridge/requirements.txt (line 4))
+2026-10-22T14:10:45.6137062Z   Downloading sympy-1.14.0-py3-none-any.whl.metadata (12 kB)
+2026-10-22T14:10:45.6372912Z Collecting python-flint==0.9.0 (from -r research/RHRC/routes/R003_ccm_bridge/requirements.txt (line 5))
+2026-10-22T14:10:45.6473372Z   Downloading python_flint-0.9.0-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (23 kB)
+2026-10-22T14:10:45.6536219Z Collecting mpmath (from -r research/RHRC/routes/R003_ccm_bridge/requirements.txt (line 2))
+2026-10-22T14:10:45.6633142Z   Downloading mpmath-1.3.0-py3-none-any.whl.metadata (8.6 kB)
+2026-10-22T14:10:45.6765931Z Downloading python_flint-0.9.0-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (10.2 MB)
+2026-10-22T14:10:45.8540972Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 10.2/10.2 MB 60.7 MB/s  0:00:00
+2026-10-22T14:10:45.8640099Z Downloading numpy-2.5.4-cp314-cp314-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (16.7 MB)
+2026-10-22T14:10:45.9932995Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 16.7/16.7 MB 129.5 MB/s  0:00:00
+2026-10-22T14:10:46.0032931Z Downloading scipy-1.18.1-cp314-cp314-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (35.3 MB)
+2026-10-22T14:10:46.3167327Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 35.3/35.3 MB 112.6 MB/s  0:00:00
+2026-10-22T14:10:46.3269201Z Downloading sympy-1.14.0-py3-none-any.whl (6.3 MB)
+2026-10-22T14:10:46.4890872Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.3/6.3 MB 37.7 MB/s  0:00:00
+2026-10-22T14:10:46.4991629Z Downloading mpmath-1.3.0-py3-none-any.whl (536 kB)
+2026-10-22T14:10:46.5384175Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 536.2/536.2 kB 7.3 MB/s  0:00:00
+2026-10-22T14:10:46.6637976Z Installing collected packages: mpmath, sympy, python-flint, numpy, scipy
+2026-10-22T14:10:59.8193339Z 
+2026-10-22T14:10:59.8202897Z Successfully installed mpmath-1.3.0 numpy-2.5.4 python-flint-0.9.0 scipy-1.18.1 sympy-1.14.0
+2026-10-22T14:10:59.8210408Z 
+2026-10-22T14:10:59.8210834Z [notice] A new release of pip is available: 26.2.1 -> 26.2.2
+2026-10-22T14:10:59.8211713Z [notice] To update, run: pip install --upgrade pip
+2026-10-22T14:10:59.9031042Z ##[group]Run python research/RHRC/routes/R003_ccm_bridge/check_post200_fb05_q14_discrepancy_channel_jets_scope.py
+2026-10-22T14:10:59.9031860Z [36;1mpython research/RHRC/routes/R003_ccm_bridge/check_post200_fb05_q14_discrepancy_channel_jets_scope.py[0m
+2026-10-22T14:10:59.9087277Z shell: /usr/bin/bash -e {0}
+2026-10-22T14:10:59.9087497Z env:
+2026-10-22T14:10:59.9087728Z   pythonLocation: /opt/hostedtoolcache/Python/3.14.8/x64
+2026-10-22T14:10:59.9088086Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.14.8/x64/lib/pkgconfig
+2026-10-22T14:10:59.9088423Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.14.8/x64
+2026-10-22T14:10:59.9088740Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.14.8/x64
+2026-10-22T14:10:59.9089040Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.14.8/x64
+2026-10-22T14:10:59.9089340Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.14.8/x64/lib
+2026-10-22T14:10:59.9089602Z ##[endgroup]
+2026-10-22T14:12:05.3585271Z {
+2026-10-22T14:12:05.3586088Z   "schema_version": "POST200_FB05_Q14_DISCREPANCY_CHANNEL_JET_CHECK_v1",
+2026-10-22T14:12:05.3586571Z   "status": "PASS",
+2026-10-22T14:12:05.3586871Z   "paired_channels": [
+2026-10-22T14:12:05.3587169Z     "pole_prime_discrepancy",
+2026-10-22T14:12:05.3587489Z     "direct_arch_signed"
+2026-10-22T14:12:05.3587771Z   ],
+2026-10-22T14:12:05.3588007Z   "points": [
+2026-10-22T14:12:05.3588267Z     {
+2026-10-22T14:12:05.3588513Z       "label": "Q13_midpoint",
+2026-10-22T14:12:05.3588810Z       "Q": 13,
+2026-10-22T14:12:05.3589047Z       "L": {
+2026-10-22T14:12:05.3589381Z         "ball": "[2.60200334353839767528803615323 +/- 3.34e-30]",
+2026-10-22T14:12:05.3589824Z         "lower": "2.60200334353839767528803615323",
+2026-10-22T14:12:05.3590204Z         "upper": "2.60200334353839767528803615323",
+2026-10-22T14:12:05.3590568Z         "contains_zero": false,
+2026-10-22T14:12:05.3590888Z         "rel_accuracy_bits": 189
+2026-10-22T14:12:05.3591188Z       },
+2026-10-22T14:12:05.3591444Z       "paired_reconstruction": {
+2026-10-22T14:12:05.3591776Z         "matrix_overlap": true,
+2026-10-22T14:12:05.3592089Z         "matrix_prime_overlap": true,
+2026-10-22T14:12:05.3592439Z         "matrix_second_overlap": true
+2026-10-22T14:12:05.3592748Z       },
+2026-10-22T14:12:05.3593021Z       "paired_channel_second_derivative_checks": {
+2026-10-22T14:12:05.3593281Z         "pole_prime_discrepancy": {
+2026-10-22T14:12:05.3593525Z           "first_derivative_difference_ladder": [
+2026-10-22T14:12:05.3593755Z             {
+2026-10-22T14:12:05.3593927Z               "h_bit": 14,
+2026-10-22T14:12:05.3594133Z               "from_first_ok": true
+2026-10-22T14:12:05.3594351Z             },
+2026-10-22T14:12:05.3594515Z             {
+2026-10-22T14:12:05.3594681Z               "h_bit": 18,
+2026-10-22T14:12:05.3594870Z               "from_first_ok": true
+2026-10-22T14:12:05.3595067Z             },
+2026-10-22T14:12:05.3595231Z             {
+2026-10-22T14:12:05.3595395Z               "h_bit": 22,
+2026-10-22T14:12:05.3595591Z               "from_first_ok": true
+2026-10-22T14:12:05.3595950Z             }
+2026-10-22T14:12:05.3596156Z           ],
+2026-10-22T14:12:05.3596347Z           "value_second_difference_final_ok": true
+2026-10-22T14:12:05.3596593Z         },
+2026-10-22T14:12:05.3596762Z         "direct_arch_signed": {
+2026-10-22T14:12:05.3596985Z           "first_derivative_difference_ladder": [
+2026-10-22T14:12:05.3597210Z             {
+2026-10-22T14:12:05.3597370Z               "h_bit": 14,
+2026-10-22T14:12:05.3597556Z               "from_first_ok": true
+2026-10-22T14:12:05.3597750Z             },
+2026-10-22T14:12:05.3597904Z             {
+2026-10-22T14:12:05.3598059Z               "h_bit": 18,
+2026-10-22T14:12:05.3598244Z               "from_first_ok": true
+2026-10-22T14:12:05.3598438Z             },
+2026-10-22T14:12:05.3598600Z             {
+2026-10-22T14:12:05.3598757Z               "h_bit": 22,
+2026-10-22T14:12:05.3598941Z               "from_first_ok": true
+2026-10-22T14:12:05.3599132Z             }
+2026-10-22T14:12:05.3599287Z           ],
+2026-10-22T14:12:05.3599891Z           "value_second_difference_final_ok": true
+2026-10-22T14:12:05.3600125Z         }
+2026-10-22T14:12:05.3600406Z       }
+2026-10-22T14:12:05.3600558Z     },
+2026-10-22T14:12:05.3600712Z     {
+2026-10-22T14:12:05.3600887Z       "label": "Q14_determinant_basin",
+2026-10-22T14:12:05.3601100Z       "Q": 14,
+2026-10-22T14:12:05.3601271Z       "L": {
+2026-10-22T14:12:05.3601478Z         "ball": "[2.66714845418588520311105268755 +/- 3.58e-30]",
+2026-10-22T14:12:05.3601745Z         "lower": "2.66714845418588520311105268755",
+2026-10-22T14:12:05.3601984Z         "upper": "2.66714845418588520311105268755",
+2026-10-22T14:12:05.3602216Z         "contains_zero": false,
+2026-10-22T14:12:05.3602423Z         "rel_accuracy_bits": 189
+2026-10-22T14:12:05.3602624Z       },
+2026-10-22T14:12:05.3602825Z       "paired_reconstruction": {
+2026-10-22T14:12:05.3603033Z         "matrix_overlap": true,
+2026-10-22T14:12:05.3603250Z         "matrix_prime_overlap": true,
+2026-10-22T14:12:05.3603483Z         "matrix_second_overlap": true
+2026-10-22T14:12:05.3603691Z       },
+2026-10-22T14:12:05.3603880Z       "paired_channel_second_derivative_checks": {
+2026-10-22T14:12:05.3604136Z         "pole_prime_discrepancy": {
+2026-10-22T14:12:05.3604367Z           "first_derivative_difference_ladder": [
+2026-10-22T14:12:05.3604594Z             {
+2026-10-22T14:12:05.3604763Z               "h_bit": 14,
+2026-10-22T14:12:05.3604955Z               "from_first_ok": true
+2026-10-22T14:12:05.3605154Z             },
+2026-10-22T14:12:05.3605313Z             {
+2026-10-22T14:12:05.3605474Z               "h_bit": 18,
+2026-10-22T14:12:05.3605660Z               "from_first_ok": true
+2026-10-22T14:12:05.3606041Z             },
+2026-10-22T14:12:05.3606201Z             {
+2026-10-22T14:12:05.3606364Z               "h_bit": 22,
+2026-10-22T14:12:05.3606551Z               "from_first_ok": true
+2026-10-22T14:12:05.3606740Z             }
+2026-10-22T14:12:05.3606894Z           ],
+2026-10-22T14:12:05.3607083Z           "value_second_difference_final_ok": true
+2026-10-22T14:12:05.3607306Z         },
+2026-10-22T14:12:05.3607473Z         "direct_arch_signed": {
+2026-10-22T14:12:05.3607694Z           "first_derivative_difference_ladder": [
+2026-10-22T14:12:05.3607922Z             {
+2026-10-22T14:12:05.3608106Z               "h_bit": 14,
+2026-10-22T14:12:05.3608291Z               "from_first_ok": true
+2026-10-22T14:12:05.3608484Z             },
+2026-10-22T14:12:05.3608642Z             {
+2026-10-22T14:12:05.3608804Z               "h_bit": 18,
+2026-10-22T14:12:05.3608987Z               "from_first_ok": true
+2026-10-22T14:12:05.3609191Z             },
+2026-10-22T14:12:05.3609350Z             {
+2026-10-22T14:12:05.3609505Z               "h_bit": 22,
+2026-10-22T14:12:05.3609687Z               "from_first_ok": true
+2026-10-22T14:12:05.3609879Z             }
+2026-10-22T14:12:05.3610039Z           ],
+2026-10-22T14:12:05.3610214Z           "value_second_difference_final_ok": true
+2026-10-22T14:12:05.3610432Z         }
+2026-10-22T14:12:05.3610589Z       }
+2026-10-22T14:12:05.3610746Z     },
+2026-10-22T14:12:05.3610903Z     {
+2026-10-22T14:12:05.3611068Z       "label": "Q15_midpoint",
+2026-10-22T14:12:05.3611267Z       "Q": 15,
+2026-10-22T14:12:05.3611420Z       "L": {
+2026-10-22T14:12:05.3611618Z         "ball": "[2.74031946167099565183246652799 +/- 7.10e-31]",
+2026-10-22T14:12:05.3611880Z         "lower": "2.74031946167099565183246652799",
+2026-10-22T14:12:05.3612124Z         "upper": "2.74031946167099565183246652799",
+2026-10-22T14:12:05.3612349Z         "contains_zero": false,
+2026-10-22T14:12:05.3612549Z         "rel_accuracy_bits": 189
+2026-10-22T14:12:05.3612740Z       },
+2026-10-22T14:12:05.3612907Z       "paired_reconstruction": {
+2026-10-22T14:12:05.3613111Z         "matrix_overlap": true,
+2026-10-22T14:12:05.3613314Z         "matrix_prime_overlap": true,
+2026-10-22T14:12:05.3613533Z         "matrix_second_overlap": true
+2026-10-22T14:12:05.3613732Z       },
+2026-10-22T14:12:05.3613916Z       "paired_channel_second_derivative_checks": {
+2026-10-22T14:12:05.3614328Z         "pole_prime_discrepancy": {
+2026-10-22T14:12:05.3614639Z           "first_derivative_difference_ladder": [
+2026-10-22T14:12:05.3614966Z             {
+2026-10-22T14:12:05.3615136Z               "h_bit": 14,
+2026-10-22T14:12:05.3615329Z               "from_first_ok": true
+2026-10-22T14:12:05.3615531Z             },
+2026-10-22T14:12:05.3615690Z             {
+2026-10-22T14:12:05.3616001Z               "h_bit": 18,
+2026-10-22T14:12:05.3616189Z               "from_first_ok": true
+2026-10-22T14:12:05.3616384Z             },
+2026-10-22T14:12:05.3616541Z             {
+2026-10-22T14:12:05.3616702Z               "h_bit": 22,
+2026-10-22T14:12:05.3616886Z               "from_first_ok": true
+2026-10-22T14:12:05.3617080Z             }
+2026-10-22T14:12:05.3617236Z           ],
+2026-10-22T14:12:05.3617420Z           "value_second_difference_final_ok": true
+2026-10-22T14:12:05.3617655Z         },
+2026-10-22T14:12:05.3617822Z         "direct_arch_signed": {
+2026-10-22T14:12:05.3618049Z           "first_derivative_difference_ladder": [
+2026-10-22T14:12:05.3618273Z             {
+2026-10-22T14:12:05.3618442Z               "h_bit": 14,
+2026-10-22T14:12:05.3618644Z               "from_first_ok": true
+2026-10-22T14:12:05.3618843Z             },
+2026-10-22T14:12:05.3619000Z             {
+2026-10-22T14:12:05.3619166Z               "h_bit": 18,
+2026-10-22T14:12:05.3619353Z               "from_first_ok": true
+2026-10-22T14:12:05.3619553Z             },
+2026-10-22T14:12:05.3619719Z             {
+2026-10-22T14:12:05.3619879Z               "h_bit": 22,
+2026-10-22T14:12:05.3620063Z               "from_first_ok": true
+2026-10-22T14:12:05.3620256Z             }
+2026-10-22T14:12:05.3620411Z           ],
+2026-10-22T14:12:05.3620599Z           "value_second_difference_final_ok": true
+2026-10-22T14:12:05.3620829Z         }
+2026-10-22T14:12:05.3620988Z       }
+2026-10-22T14:12:05.3621143Z     }
+2026-10-22T14:12:05.3621293Z   ],
+2026-10-22T14:12:05.3621446Z   "checks": {
+2026-10-22T14:12:05.3621642Z     "pairing_occurs_at_matrix_jet_level": true,
+2026-10-22T14:12:05.3621937Z     "paired_M_Mprime_Msecond_reconstruction_required": true,
+2026-10-22T14:12:05.3622258Z     "paired_second_matches_first_derivative_differences": true,
+2026-10-22T14:12:05.3622575Z     "paired_second_matches_value_second_differences": true
+2026-10-22T14:12:05.3622825Z   },
+2026-10-22T14:12:05.3622997Z   "theorem_promotion": false,
+2026-10-22T14:12:05.3623200Z   "rh_claim": false
+2026-10-22T14:12:05.3623374Z }
+2026-10-22T14:12:05.4688229Z ##[group]Run python research/RHRC/routes/R003_ccm_bridge/check_post200_fb05_q14_discrepancy_mechanism_scope.py
+2026-10-22T14:12:05.4688849Z [36;1mpython research/RHRC/routes/R003_ccm_bridge/check_post200_fb05_q14_discrepancy_mechanism_scope.py[0m
+2026-10-22T14:12:05.4743470Z shell: /usr/bin/bash -e {0}
+2026-10-22T14:12:05.4743685Z env:
+2026-10-22T14:12:05.4743912Z   pythonLocation: /opt/hostedtoolcache/Python/3.14.8/x64
+2026-10-22T14:12:05.4744252Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.14.8/x64/lib/pkgconfig
+2026-10-22T14:12:05.4762416Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.14.8/x64
+2026-10-22T14:12:05.4762809Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.14.8/x64
+2026-10-22T14:12:05.4763162Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.14.8/x64
+2026-10-22T14:12:05.4763475Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.14.8/x64/lib
+2026-10-22T14:12:05.4763738Z ##[endgroup]
+2026-10-22T14:12:06.0317541Z {
+2026-10-22T14:12:06.0317931Z   "status": "PASS",
+2026-10-22T14:12:06.0318251Z   "base_main_sha": "759c2146a74b8374ec80a97fa2ae4e4e51ab54c0",
+2026-10-22T14:12:06.0318552Z   "research_authority_pr": 199,
+2026-10-22T14:12:06.0318769Z   "routing_sync_pr": 200,
+2026-10-22T14:12:06.0318965Z   "precision_bits": 384,
+2026-10-22T14:12:06.0319170Z   "paired_channels": [
+2026-10-22T14:12:06.0319373Z     "pole_prime_discrepancy",
+2026-10-22T14:12:06.0319592Z     "direct_arch_signed"
+2026-10-22T14:12:06.0319777Z   ],
+2026-10-22T14:12:06.0319937Z   "primary_hull": {
+2026-10-22T14:12:06.0320108Z     "Q": 14,
+2026-10-22T14:12:06.0320280Z     "lo_num": 114296060900476,
+2026-10-22T14:12:06.0320478Z     "hi_num": 114914536191100,
+2026-10-22T14:12:06.0320895Z     "den": 281474976710656
+2026-10-22T14:12:06.0321071Z   },
+2026-10-22T14:12:06.0321270Z   "control_blind_mechanism_selection_required": true,
+2026-10-22T14:12:06.0321535Z   "theorem_promotion": false,
+2026-10-22T14:12:06.0321730Z   "rh_claim": false
+2026-10-22T14:12:06.0321903Z }
+2026-10-22T14:12:06.1366373Z ##[group]Run python research/RHRC/routes/R003_ccm_bridge/check_post202_fb05_q14_parity_contrast_jets_scope.py
+2026-10-22T14:12:06.1367026Z [36;1mpython research/RHRC/routes/R003_ccm_bridge/check_post202_fb05_q14_parity_contrast_jets_scope.py[0m
+2026-10-22T14:12:06.1421891Z shell: /usr/bin/bash -e {0}
+2026-10-22T14:12:06.1422114Z env:
+2026-10-22T14:12:06.1422343Z   pythonLocation: /opt/hostedtoolcache/Python/3.14.8/x64
+2026-10-22T14:12:06.1422698Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.14.8/x64/lib/pkgconfig
+2026-10-22T14:12:06.1423053Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.14.8/x64
+2026-10-22T14:12:06.1423381Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.14.8/x64
+2026-10-22T14:12:06.1423713Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.14.8/x64
+2026-10-22T14:12:06.1424018Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.14.8/x64/lib
+2026-10-22T14:12:06.1424282Z ##[endgroup]
+2026-10-22T14:12:43.9243880Z {
+2026-10-22T14:12:43.9246305Z   "schema_version": "POST202_FB05_Q14_PARITY_CONTRAST_JET_CHECK_v1",
+2026-10-22T14:12:43.9246820Z   "status": "PASS",
+2026-10-22T14:12:43.9247085Z   "contrast_metadata": {
+2026-10-22T14:12:43.9247362Z     "dimension": 7,
+2026-10-22T14:12:43.9247605Z     "symmetric": true,
+2026-10-22T14:12:43.9247851Z     "trace_zero": true,
+2026-10-22T14:12:43.9248096Z     "nonzero": true,
+2026-10-22T14:12:43.9248346Z     "noninteger_entry_count": 25,
+2026-10-22T14:12:43.9248678Z     "exact_rational_conversion_required": true,
+2026-10-22T14:12:43.9249007Z     "even_norm_sq": 70,
+2026-10-22T14:12:43.9249253Z     "odd_norm_sq": 10
+2026-10-22T14:12:43.9249479Z   },
+2026-10-22T14:12:43.9249694Z   "points": [
+2026-10-22T14:12:43.9249910Z     {
+2026-10-22T14:12:43.9250151Z       "label": "Q13_midpoint",
+2026-10-22T14:12:43.9250423Z       "Q": 13,
+2026-10-22T14:12:43.9250642Z       "L": {
+2026-10-22T14:12:43.9250919Z         "ball": "[2.60200334353839767528803615323 +/- 3.34e-30]",
+2026-10-22T14:12:43.9251331Z         "lower": "2.60200334353839767528803615323",
+2026-10-22T14:12:43.9251679Z         "upper": "2.60200334353839767528803615323",
+2026-10-22T14:12:43.9251992Z         "contains_zero": false,
+2026-10-22T14:12:43.9252274Z         "rel_accuracy_bits": 189
+2026-10-22T14:12:43.9252533Z       },
+2026-10-22T14:12:43.9252749Z       "contrast_checks": {
+2026-10-22T14:12:43.9253015Z         "G_direct_overlap": true,
+2026-10-22T14:12:43.9253305Z         "G_prime_direct_overlap": true,
+2026-10-22T14:12:43.9253636Z         "G_second_direct_overlap": true,
+2026-10-22T14:12:43.9253951Z         "contrast_trace_zero": true,
+2026-10-22T14:12:43.9254288Z         "exact_rational_contrast_conversion": true,
+2026-10-22T14:12:43.9254661Z         "scalar_removed_before_contraction": true
+2026-10-22T14:12:43.9254977Z       },
+2026-10-22T14:12:43.9255211Z       "independent_level_reconstruction": {
+2026-10-22T14:12:43.9255559Z         "G_matches_independent_O_minus_E": true,
+2026-10-22T14:12:43.9256121Z         "G_prime_matches_independent_O_prime_minus_E_prime": true,
+2026-10-22T14:12:43.9256592Z         "G_second_matches_independent_O_second_minus_E_second": true
+2026-10-22T14:12:43.9256966Z       },
+2026-10-22T14:12:43.9257191Z       "finite_difference_ladder": [
+2026-10-22T14:12:43.9257467Z         {
+2026-10-22T14:12:43.9257669Z           "h_bit": 14,
+2026-10-22T14:12:43.9257926Z           "G_prime_from_value_ok": true,
+2026-10-22T14:12:43.9258230Z           "G_second_from_first_ok": true
+2026-10-22T14:12:43.9258521Z         },
+2026-10-22T14:12:43.9258721Z         {
+2026-10-22T14:12:43.9258938Z           "h_bit": 18,
+2026-10-22T14:12:43.9259191Z           "G_prime_from_value_ok": true,
+2026-10-22T14:12:43.9259497Z           "G_second_from_first_ok": true
+2026-10-22T14:12:43.9259773Z         },
+2026-10-22T14:12:43.9260425Z         {
+2026-10-22T14:12:43.9260630Z           "h_bit": 22,
+2026-10-22T14:12:43.9260875Z           "G_prime_from_value_ok": true,
+2026-10-22T14:12:43.9261175Z           "G_second_from_first_ok": true
+2026-10-22T14:12:43.9261456Z         }
+2026-10-22T14:12:43.9261926Z       ],
+2026-10-22T14:12:43.9262153Z       "G_second_from_value_ok": true
+2026-10-22T14:12:43.9262444Z     },
+2026-10-22T14:12:43.9262640Z     {
+2026-10-22T14:12:43.9262858Z       "label": "Q14_determinant_basin",
+2026-10-22T14:12:43.9263138Z       "Q": 14,
+2026-10-22T14:12:43.9263347Z       "L": {
+2026-10-22T14:12:43.9263615Z         "ball": "[2.66714845418588520311105268755 +/- 3.58e-30]",
+2026-10-22T14:12:43.9263985Z         "lower": "2.66714845418588520311105268755",
+2026-10-22T14:12:43.9264311Z         "upper": "2.66714845418588520311105268755",
+2026-10-22T14:12:43.9264611Z         "contains_zero": false,
+2026-10-22T14:12:43.9264896Z         "rel_accuracy_bits": 189
+2026-10-22T14:12:43.9265156Z       },
+2026-10-22T14:12:43.9265379Z       "contrast_checks": {
+2026-10-22T14:12:43.9265640Z         "G_direct_overlap": true,
+2026-10-22T14:12:43.9266097Z         "G_prime_direct_overlap": true,
+2026-10-22T14:12:43.9266403Z         "G_second_direct_overlap": true,
+2026-10-22T14:12:43.9266715Z         "contrast_trace_zero": true,
+2026-10-22T14:12:43.9267036Z         "exact_rational_contrast_conversion": true,
+2026-10-22T14:12:43.9267384Z         "scalar_removed_before_contraction": true
+2026-10-22T14:12:43.9267691Z       },
+2026-10-22T14:12:43.9267917Z       "independent_level_reconstruction": {
+2026-10-22T14:12:43.9268250Z         "G_matches_independent_O_minus_E": true,
+2026-10-22T14:12:43.9268665Z         "G_prime_matches_independent_O_prime_minus_E_prime": true,
+2026-10-22T14:12:43.9269132Z         "G_second_matches_independent_O_second_minus_E_second": true
+2026-10-22T14:12:43.9269504Z       },
+2026-10-22T14:12:43.9269725Z       "finite_difference_ladder": [
+2026-10-22T14:12:43.9269999Z         {
+2026-10-22T14:12:43.9270213Z           "h_bit": 14,
+2026-10-22T14:12:43.9270463Z           "G_prime_from_value_ok": true,
+2026-10-22T14:12:43.9270767Z           "G_second_from_first_ok": true
+2026-10-22T14:12:43.9271041Z         },
+2026-10-22T14:12:43.9271241Z         {
+2026-10-22T14:12:43.9271450Z           "h_bit": 18,
+2026-10-22T14:12:43.9271696Z           "G_prime_from_value_ok": true,
+2026-10-22T14:12:43.9271984Z           "G_second_from_first_ok": true
+2026-10-22T14:12:43.9272260Z         },
+2026-10-22T14:12:43.9272454Z         {
+2026-10-22T14:12:43.9272657Z           "h_bit": 22,
+2026-10-22T14:12:43.9272903Z           "G_prime_from_value_ok": true,
+2026-10-22T14:12:43.9273195Z           "G_second_from_first_ok": true
+2026-10-22T14:12:43.9273473Z         }
+2026-10-22T14:12:43.9273665Z       ],
+2026-10-22T14:12:43.9273882Z       "G_second_from_value_ok": true
+2026-10-22T14:12:43.9274156Z     },
+2026-10-22T14:12:43.9274355Z     {
+2026-10-22T14:12:43.9274572Z       "label": "Q15_midpoint",
+2026-10-22T14:12:43.9274831Z       "Q": 15,
+2026-10-22T14:12:43.9275054Z       "L": {
+2026-10-22T14:12:43.9275312Z         "ball": "[2.74031946167099565183246652799 +/- 7.10e-31]",
+2026-10-22T14:12:43.9275666Z         "lower": "2.74031946167099565183246652799",
+2026-10-22T14:12:43.9276170Z         "upper": "2.74031946167099565183246652799",
+2026-10-22T14:12:43.9276473Z         "contains_zero": false,
+2026-10-22T14:12:43.9276748Z         "rel_accuracy_bits": 189
+2026-10-22T14:12:43.9277004Z       },
+2026-10-22T14:12:43.9277214Z       "contrast_checks": {
+2026-10-22T14:12:43.9277474Z         "G_direct_overlap": true,
+2026-10-22T14:12:43.9277760Z         "G_prime_direct_overlap": true,
+2026-10-22T14:12:43.9278078Z         "G_second_direct_overlap": true,
+2026-10-22T14:12:43.9278409Z         "contrast_trace_zero": true,
+2026-10-22T14:12:43.9278748Z         "exact_rational_contrast_conversion": true,
+2026-10-22T14:12:43.9279121Z         "scalar_removed_before_contraction": true
+2026-10-22T14:12:43.9279431Z       },
+2026-10-22T14:12:43.9279909Z       "independent_level_reconstruction": {
+2026-10-22T14:12:43.9280243Z         "G_matches_independent_O_minus_E": true,
+2026-10-22T14:12:43.9280640Z         "G_prime_matches_independent_O_prime_minus_E_prime": true,
+2026-10-22T14:12:43.9281270Z         "G_second_matches_independent_O_second_minus_E_second": true
+2026-10-22T14:12:43.9281649Z       },
+2026-10-22T14:12:43.9281870Z       "finite_difference_ladder": [
+2026-10-22T14:12:43.9282143Z         {
+2026-10-22T14:12:43.9282346Z           "h_bit": 14,
+2026-10-22T14:12:43.9282589Z           "G_prime_from_value_ok": true,
+2026-10-22T14:12:43.9282893Z           "G_second_from_first_ok": true
+2026-10-22T14:12:43.9283167Z         },
+2026-10-22T14:12:43.9283369Z         {
+2026-10-22T14:12:43.9283567Z           "h_bit": 18,
+2026-10-22T14:12:43.9283830Z           "G_prime_from_value_ok": true,
+2026-10-22T14:12:43.9284132Z           "G_second_from_first_ok": true
+2026-10-22T14:12:43.9284418Z         },
+2026-10-22T14:12:43.9284616Z         {
+2026-10-22T14:12:43.9284822Z           "h_bit": 22,
+2026-10-22T14:12:43.9285066Z           "G_prime_from_value_ok": true,
+2026-10-22T14:12:43.9285362Z           "G_second_from_first_ok": true
+2026-10-22T14:12:43.9285638Z         }
+2026-10-22T14:12:43.9285957Z       ],
+2026-10-22T14:12:43.9286182Z       "G_second_from_value_ok": true
+2026-10-22T14:12:43.9286454Z     }
+2026-10-22T14:12:43.9286662Z   ],
+2026-10-22T14:12:43.9286863Z   "checks": {
+2026-10-22T14:12:43.9287119Z     "theorem_aligned_w_correction_removal": true,
+2026-10-22T14:12:43.9287532Z     "scalar_identity_annihilated_before_transport": true,
+2026-10-22T14:12:43.9287941Z     "exact_rational_contrast_conversion_required": true,
+2026-10-22T14:12:43.9288406Z     "independent_normalized_O_minus_E_reconstruction_required": true,
+2026-10-22T14:12:43.9288858Z     "direct_total_reconstruction_required": true,
+2026-10-22T14:12:43.9289214Z     "G_prime_matches_value_differences": true,
+2026-10-22T14:12:43.9289596Z     "G_second_matches_first_derivative_differences": true,
+2026-10-22T14:12:43.9290000Z     "G_second_matches_value_second_differences": true
+2026-10-22T14:12:43.9290312Z   },
+2026-10-22T14:12:43.9290530Z   "theorem_promotion": false,
+2026-10-22T14:12:43.9290802Z   "rh_claim": false
+2026-10-22T14:12:43.9291018Z }
+2026-10-22T14:12:44.0430561Z ##[group]Run python research/RHRC/routes/R003_ccm_bridge/check_post202_fb05_q14_composite_parity_gap_scope.py
+2026-10-22T14:12:44.0431201Z [36;1mpython research/RHRC/routes/R003_ccm_bridge/check_post202_fb05_q14_composite_parity_gap_scope.py[0m
+2026-10-22T14:12:44.0486056Z shell: /usr/bin/bash -e {0}
+2026-10-22T14:12:44.0486279Z env:
+2026-10-22T14:12:44.0486510Z   pythonLocation: /opt/hostedtoolcache/Python/3.14.8/x64
+2026-10-22T14:12:44.0486867Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.14.8/x64/lib/pkgconfig
+2026-10-22T14:12:44.0487213Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.14.8/x64
+2026-10-22T14:12:44.0487515Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.14.8/x64
+2026-10-22T14:12:44.0487819Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.14.8/x64
+2026-10-22T14:12:44.0488140Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.14.8/x64/lib
+2026-10-22T14:12:44.0488418Z ##[endgroup]
+2026-10-22T14:12:44.6226746Z {
+2026-10-22T14:12:44.6227213Z   "status": "PASS",
+2026-10-22T14:12:44.6227583Z   "base_main_sha": "cd556456c661c797c3602f90c1f54e24add08acd",
+2026-10-22T14:12:44.6227957Z   "research_authority_pr": 201,
+2026-10-22T14:12:44.6228248Z   "routing_sync_pr": 202,
+2026-10-22T14:12:44.6228505Z   "precision_bits": 384,
+2026-10-22T14:12:44.6228774Z   "center_kill_switch_pattern": {
+2026-10-22T14:12:44.6229069Z     "E": "STRICT_POSITIVE",
+2026-10-22T14:12:44.6229334Z     "G": "STRICT_POSITIVE",
+2026-10-22T14:12:44.6229597Z     "G_prime": "NONNEGATIVE",
+2026-10-22T14:12:44.6229882Z     "E_prime": "NONPOSITIVE"
+2026-10-22T14:12:44.6230099Z   },
+2026-10-22T14:12:44.6230262Z   "primary_hull": {
+2026-10-22T14:12:44.6230444Z     "Q": 14,
+2026-10-22T14:12:44.6230618Z     "lo_num": 114296060900476,
+2026-10-22T14:12:44.6231134Z     "hi_num": 114914536191100,
+2026-10-22T14:12:44.6231326Z     "den": 281474976710656
+2026-10-22T14:12:44.6231505Z   },
+2026-10-22T14:12:44.6231701Z   "full_composite_only_classifier_required": true,
+2026-10-22T14:12:44.6232006Z   "exact_rational_contrast_conversion_required": true,
+2026-10-22T14:12:44.6232348Z   "independent_normalized_O_minus_E_reconstruction_required": true,
+2026-10-22T14:12:44.6232647Z   "theorem_promotion": false,
+2026-10-22T14:12:44.6232846Z   "rh_claim": false
+2026-10-22T14:12:44.6233016Z }
+2026-10-22T14:12:44.7653749Z ##[group]Run python research/RHRC/routes/R003_ccm_bridge/probe_post202_fb05_q14_composite_parity_gap_scope.py \
+2026-10-22T14:12:44.7654374Z [36;1mpython research/RHRC/routes/R003_ccm_bridge/probe_post202_fb05_q14_composite_parity_gap_scope.py \[0m
+2026-10-22T14:12:44.7654952Z [36;1m  --input research/RHRC/routes/R003_ccm_bridge/fixtures/post202_fb05_q14_composite_parity_gap_v1.json \[0m
+2026-10-22T14:12:44.7655428Z [36;1m  --output /tmp/POST202_FB05_Q14_COMPOSITE_PARITY_GAP_SCHEDULE.json[0m
+2026-10-22T14:12:44.7710418Z shell: /usr/bin/bash -e {0}
+2026-10-22T14:12:44.7710639Z env:
+2026-10-22T14:12:44.7710869Z   pythonLocation: /opt/hostedtoolcache/Python/3.14.8/x64
+2026-10-22T14:12:44.7711219Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.14.8/x64/lib/pkgconfig
+2026-10-22T14:12:44.7711553Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.14.8/x64
+2026-10-22T14:12:44.7711860Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.14.8/x64
+2026-10-22T14:12:44.7712216Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.14.8/x64
+2026-10-22T14:12:44.7712522Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.14.8/x64/lib
+2026-10-22T14:12:44.7712786Z ##[endgroup]
+2026-10-22T14:12:45.3339978Z {
+2026-10-22T14:12:45.3340283Z   "status": "PASS",
+2026-10-22T14:12:45.3340567Z   "primary_hull": {
+2026-10-22T14:12:45.3340809Z     "Q": 14,
+2026-10-22T14:12:45.3341067Z     "lo_num": 114296060900476,
+2026-10-22T14:12:45.3341363Z     "hi_num": 114914536191100,
+2026-10-22T14:12:45.3341672Z     "den": 281474976710656
+2026-10-22T14:12:45.3341921Z   },
+2026-10-22T14:12:45.3342134Z   "primary_box_count": 6,
+2026-10-22T14:12:45.3342410Z   "control_box_count": 5,
+2026-10-22T14:12:45.3342697Z   "center_kill_switch_pattern": {
+2026-10-22T14:12:45.3343005Z     "E": "STRICT_POSITIVE",
+2026-10-22T14:12:45.3343274Z     "G": "STRICT_POSITIVE",
+2026-10-22T14:12:45.3343544Z     "G_prime": "NONNEGATIVE",
+2026-10-22T14:12:45.3343850Z     "E_prime": "NONPOSITIVE"
+2026-10-22T14:12:45.3344106Z   },
+2026-10-22T14:12:45.3344339Z   "precision_bits": 384,
+2026-10-22T14:12:45.3344644Z   "center_gate_before_full_cover_required": true
+2026-10-22T14:12:45.3344975Z }
+2026-10-22T14:12:45.4632737Z ##[group]Run python research/RHRC/routes/R003_ccm_bridge/certify_post202_fb05_q14_composite_parity_gap_scope.py \
+2026-10-22T14:12:45.4633386Z [36;1mpython research/RHRC/routes/R003_ccm_bridge/certify_post202_fb05_q14_composite_parity_gap_scope.py \[0m
+2026-10-22T14:12:45.4633968Z [36;1m  --input research/RHRC/routes/R003_ccm_bridge/fixtures/post202_fb05_q14_composite_parity_gap_v1.json \[0m
+2026-10-22T14:12:45.4634499Z [36;1m  --schedule /tmp/POST202_FB05_Q14_COMPOSITE_PARITY_GAP_SCHEDULE.json \[0m
+2026-10-22T14:12:45.4634897Z [36;1m  --output /tmp/POST202_FB05_Q14_COMPOSITE_PARITY_GAP_CERTIFICATE.json[0m
+2026-10-22T14:12:45.4690444Z shell: /usr/bin/bash -e {0}
+2026-10-22T14:12:45.4690672Z env:
+2026-10-22T14:12:45.4690912Z   pythonLocation: /opt/hostedtoolcache/Python/3.14.8/x64
+2026-10-22T14:12:45.4691264Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.14.8/x64/lib/pkgconfig
+2026-10-22T14:12:45.4691602Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.14.8/x64
+2026-10-22T14:12:45.4691957Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.14.8/x64
+2026-10-22T14:12:45.4692262Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.14.8/x64
+2026-10-22T14:12:45.4692564Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.14.8/x64/lib
+2026-10-22T14:12:45.4692827Z ##[endgroup]
+2026-10-22T14:28:28.0336395Z {
+2026-10-22T14:28:28.0336718Z   "status": "PASS",
+2026-10-22T14:28:28.0337556Z   "post197_classification": "GLOBAL_MONOTONE_ORIENTATION",
+2026-10-22T14:28:28.0338020Z   "post197_uniform_orientation": "J_POSITIVE",
+2026-10-22T14:28:28.0338498Z   "post201_mechanism_classification": "DISCREPANCY_REPRESENTATION_DEPENDENCY_UNRESOLVED",
+2026-10-22T14:28:28.0338871Z   "center_kill_switch_survives": false,
+2026-10-22T14:28:28.0339110Z   "full_cover_executed": false,
+2026-10-22T14:28:28.0339326Z   "completed_leaf_count": 0,
+2026-10-22T14:28:28.0339544Z   "gap_positive_leaf_count": null,
+2026-10-22T14:28:28.0339775Z   "gap_unresolved_leaf_count": null,
+2026-10-22T14:28:28.0340015Z   "pattern_lock_leaf_count": null,
+2026-10-22T14:28:28.0340236Z   "cooperative_lock_leaf_count": null,
+2026-10-22T14:28:28.0340531Z   "mechanism_classification": "COMPOSITE_PARITY_GAP_PATTERN_FALSIFIED",
+2026-10-22T14:28:28.0340893Z   "control_transfer_status": "PATTERN_FALSIFIED_BEFORE_FULL_COVER",
+2026-10-22T14:28:28.0341192Z   "theorem_promotion": false,
+2026-10-22T14:28:28.0341401Z   "fb05_closed": false,
+2026-10-22T14:28:28.0341597Z   "negative_root_exclusion": false,
+2026-10-22T14:28:28.0341805Z   "rh_claim": false
+2026-10-22T14:28:28.0341984Z }
+2026-10-22T14:28:28.1436988Z Post job cleanup.
+2026-10-22T14:28:28.2385314Z (node:2579) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-22T14:28:28.2386177Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-22T14:28:28.2531755Z Post job cleanup.
+2026-10-22T14:28:28.3245220Z [command]/usr/bin/git version
+2026-10-22T14:28:28.3289454Z git version 2.55.0
+2026-10-22T14:28:28.3334315Z Temporarily overriding HOME='/home/runner/work/_temp/50185385-7581-4d60-8e86-cbc0c8dfb75f' before making global git config changes
+2026-10-22T14:28:28.3335420Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-22T14:28:28.3339417Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/zeta-23-lean/zeta-23-lean
+2026-10-22T14:28:28.3383998Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-22T14:28:28.3457257Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-22T14:28:28.3742776Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-22T14:28:28.3772911Z http.https://github.com/.extraheader
+2026-10-22T14:28:28.3776174Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-10-22T14:28:28.3811320Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-22T14:28:28.4078734Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-22T14:28:28.4109071Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-22T14:28:28.4490701Z Cleaning up orphan processes
+2026-10-22T14:28:28.4781527Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

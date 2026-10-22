@@ -1,0 +1,141 @@
+{
+  "schema": "OPICA_STAGE1_FIRST_CELL_LOCAL_GATE_V1",
+  "status": "SCOPED_LOCAL_FORMAL_GREEN_AGGREGATE_ACCEPTANCE_NOT_CLAIMED",
+  "recorded_utc": "2026-10-22T14:39:05.036217+00:00",
+  "main_base_commit": "9ccea78eb5ee0c097bde05424e43de58a589b713",
+  "main_base_tree": "40ad2bb6e78f9dcd944870233e991220f573a412",
+  "source_identity": "The exact dirty-overlay bytes below were checked. The bare base commit/tree does not contain these edits.",
+  "audit_base_commit": "9b6a9a3a2badb4cff62a56c1158d9cef8759d30d",
+  "toolchain": "leanprover/lean4:v4.33.0-rc2",
+  "lake_executable": "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+  "LEAN_NUM_THREADS": "1",
+  "narrow_own_module_saves_only": true,
+  "sources": [
+    {
+      "path": "Zeta23/OPICAFollowup/RenormalizedCoPoisson.lean",
+      "sha256": "ad5546231c74696031e5980dac9b8b445d6ff388326679fd4f8fbd68dedda39f",
+      "bytes": 19440,
+      "main_audit_bytes_equal": true,
+      "authored_placeholder_scan": "PASS",
+      "imports": [
+        "Zeta23.OPICAFollowup.ComplexLocalMeasures",
+        "Zeta23.ExceptionalZero.ZetaRealStripNonvanishing",
+        "Mathlib.Analysis.SpecialFunctions.Complex.Log",
+        "Mathlib.Analysis.SpecialFunctions.Trigonometric.Complex",
+        "Mathlib.Analysis.SpecialFunctions.Trigonometric.DerivHyp",
+        "Mathlib.Analysis.Real.Pi.Bounds",
+        "Mathlib.Tactic"
+      ]
+    },
+    {
+      "path": "Zeta23/OPICAFollowup/FirstCellCost.lean",
+      "sha256": "badaa178fb17a03b71b01bbf17372ee73688fcb5f8607cb5a47c0f55412ceeeb",
+      "bytes": 15796,
+      "main_audit_bytes_equal": true,
+      "authored_placeholder_scan": "PASS",
+      "imports": [
+        "Zeta23.OPICAFollowup.RenormalizedCoPoisson",
+        "Zeta23.OPICA.SignedHeatSeparator",
+        "Mathlib.Analysis.Real.Pi.Bounds",
+        "Mathlib.Analysis.SpecialFunctions.Trigonometric.Bounds",
+        "Mathlib.MeasureTheory.Integral.IntervalIntegral.IntegrationByParts",
+        "Mathlib.Tactic"
+      ]
+    },
+    {
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedFirstCell.lean",
+      "sha256": "a3a18d428b3d35ef2b14f1dce9839e0e70e86a98eb6e7345db062f7cd47d4d4a",
+      "bytes": 5893,
+      "main_audit_bytes_equal": true,
+      "authored_placeholder_scan": "PASS",
+      "imports": [
+        "Zeta23.OPICAFollowup.FirstCellCost"
+      ]
+    }
+  ],
+  "gates": [
+    {
+      "kind": "GENUINE_IMPORTED_MODULE",
+      "source": "Zeta23/OPICAFollowup/RenormalizedCoPoisson.lean",
+      "source_sha256": "ad5546231c74696031e5980dac9b8b445d6ff388326679fd4f8fbd68dedda39f",
+      "log": "renorm-final.log",
+      "decoded_log_sha256": "5d8ebe9d16aa751bd604b1f9d806b5d21b1ebb51ecc0026d7d9c792d37deb704",
+      "exit_code": 0,
+      "warnings": 0,
+      "axioms_reported": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "olean_path": "work/opica-audit28/.lake/build/lib/lean/Zeta23/OPICAFollowup/RenormalizedCoPoisson.olean",
+      "olean_sha256": "b5e9e5e3827e26d51339e4e8b94ff931b0d3c5f44d739a18bd9621053774f2c0"
+    },
+    {
+      "kind": "GENUINE_IMPORTED_MODULE",
+      "source": "Zeta23/OPICAFollowup/FirstCellCost.lean",
+      "source_sha256": "badaa178fb17a03b71b01bbf17372ee73688fcb5f8607cb5a47c0f55412ceeeb",
+      "log": "first-cell-final.log",
+      "decoded_log_sha256": "92d67573c0ca4da3787dd4de443adba29471d3b330cea1e6ec9ebf4aa50b89f5",
+      "exit_code": 0,
+      "warnings": 0,
+      "axioms_reported": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "olean_path": "work/opica-audit28/.lake/build/lib/lean/Zeta23/OPICAFollowup/FirstCellCost.olean",
+      "olean_sha256": "cb951a432b9ab37e9e831c21c0e3c02fb58d31d78cbd5559811dcfd5ab1a4c3b"
+    },
+    {
+      "kind": "INDEPENDENT_EXPECTED_TYPES_AND_FALSIFICATION_CONTROLS",
+      "source": "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedFirstCell.lean",
+      "source_sha256": "a3a18d428b3d35ef2b14f1dce9839e0e70e86a98eb6e7345db062f7cd47d4d4a",
+      "log": "consumer-04.log",
+      "decoded_log_sha256": "3e16029f003e4b97fb0cec6ace58aeaa53987e862cd82dbf422d675be9252928",
+      "exit_code": 0,
+      "warnings": 0,
+      "axioms_reported": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "olean_path": "work/opica-stage1-2026-10-22/first-cell/ExpectedFirstCell.olean",
+      "olean_sha256": "44bdfe6d53b9afe5a955a6422ba7273a67548e57b9c563942f8a3354a773f94a"
+    }
+  ],
+  "primary_roots": [
+    "Zeta23.OPICAFollowup.zero_measure_first_cell_sign",
+    "Zeta23.OPICAFollowup.first_cell_negative_mass_cost"
+  ],
+  "independent_consumer_count": 8,
+  "consumer_names": [
+    "expected_first_cell_sign_full_domain",
+    "expected_first_cell_mass_full_domain",
+    "expected_actual_zero_first_cell_cost",
+    "expected_negative_ordinate_endpoint",
+    "expected_positive_ordinate_endpoint",
+    "expected_online_cost_both_ordinates",
+    "expected_online_imaginary_projection_zero",
+    "expected_conjugate_pair_first_cell_cancellation"
+  ],
+  "import_cache_authority": "Genuine root-built parent SignedHeatSeparator/SincTriangle and actual ComplexLocalMeasures/ZetaRealStripNonvanishing imports. Temporary inlined development leaves are not counted.",
+  "initial_diagnostics_preserved": {
+    "consumer-01.log": "Input root restriction only; body not elaborated.",
+    "consumer-02.log": "Independent consumer expression normalization and unused tactic errors; no primary source failure.",
+    "consumer-03.log": "Unchanged repeated run was interrupted after a Python launcher failed; no mathematical result.",
+    "other_development_logs": "Failed elaboration iterations preserved. Compiler-created sorryAx after errors is not authored source or accepted evidence."
+  },
+  "complete_100_root_source_bound_receipt": "PENDING_ROOT_INTEGRATION",
+  "GitHub_CI_for_these_edits": "NOT_TRIGGERED_BY_THIS_TASK",
+  "independent_human_review": "NOT_ESTABLISHED",
+  "global_roots": [
+    "renormalized_copoisson_tempered_family",
+    "renormalized_copoisson_order_zero",
+    "zero_measure_exact_properties"
+  ],
+  "global_root_status": "OPEN",
+  "accepted_root_count_changed_by_this_receipt": false,
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "full_release_ready": false
+}

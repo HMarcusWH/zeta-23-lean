@@ -6,12 +6,46 @@ import json
 from pathlib import Path
 import tempfile
 import unittest
+import sys
 from unittest.mock import patch
 
 HERE = Path(__file__).resolve().parents[1]
 spec = importlib.util.spec_from_file_location('followup_contract', HERE / 'validate_contract.py')
 contract = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(contract)
+
+
+class FullReleaseLinkageTests(unittest.TestCase):
+    def run_release(self, gate_result=None, gate_error=None):
+        with tempfile.TemporaryDirectory() as tmp:
+            output = Path(tmp)/'release.json'
+            argv = ['validate_contract.py','--phase','release','--formal-receipt',str(Path(tmp)/'receipt.json'),
+                '--output',str(output)]
+            basic = {'status':'PASS_PREPARATION_ONLY','errors':[],'release_ready':False,'RH':'OPEN','Step4':'OPEN'}
+            with patch.object(sys,'argv',argv), patch.object(contract,'full_compiler_gate',
+                    return_value=gate_result,side_effect=gate_error) as gate, \
+                    patch.object(contract,'preflight',return_value=basic) as prep, patch('builtins.print'):
+                code = contract.main()
+                return code,json.loads(output.read_text(encoding='utf-8')),gate.call_count,prep.call_args
+
+    def test_partial_receipt_failure_cannot_authorize_registered_extension(self):
+        code,report,count,call = self.run_release(gate_error=ValueError('subset cannot satisfy full100'))
+        self.assertEqual(code,1)
+        self.assertEqual(count,1)
+        self.assertFalse(call.kwargs['full_registry_verified'])
+        self.assertIn('subset',report['errors'][0])
+        self.assertFalse(report['release_ready'])
+
+    def test_full_compiler_replay_does_not_discharge_other_release_companions(self):
+        code,report,count,call = self.run_release(gate_result={
+            'status':'FRESH_COMPILER_REPLAY_VERIFIED_FULL_100','release_ready':False})
+        self.assertEqual(code,1)
+        self.assertEqual(count,1)
+        self.assertTrue(call.kwargs['full_registry_verified'])
+        self.assertEqual(report['status'],'FAIL_RELEASE_INCOMPLETE')
+        self.assertEqual(len(report['unwired_release_companions']),3)
+        self.assertFalse(report['release_ready'])
+        self.assertEqual((report['RH'],report['Step4']),('OPEN','OPEN'))
 
 
 class FrozenAcceptanceTests(unittest.TestCase):

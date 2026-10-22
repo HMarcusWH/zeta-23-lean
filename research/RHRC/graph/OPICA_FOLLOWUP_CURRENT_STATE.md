@@ -19,8 +19,8 @@ All **100 roots and 28 acceptance units remain required**.
 flowchart TD
   required["Required: 100 roots / 28 acceptance units"]
   required --> historical["41: historical source-bound subset"]
-  required --> narrow["6: independent narrow local gates passed"]
-  required --> wip["5: candidate roots unaccepted / WIP"]
+  required --> narrow["10: independent narrow local gates passed"]
+  required --> wip["1: candidate root unaccepted / WIP"]
   required --> absent["48: primary implementations absent"]
   historical -. "current-tree replay still needed" .-> acceptance["OPEN: current aggregate export and full release"]
   narrow -. "no aggregate promotion" .-> acceptance
@@ -32,22 +32,26 @@ flowchart TD
 | Surface | What the evidence establishes | Where to inspect it |
 |---|---|---|
 | Historical 41 | A source-bound subset at its recorded historical base; this is not a fresh aggregate receipt for the continuation. | [Historical compiler receipt, gzip](../integration/opica_followup/continuation/2026-10-22/evidence/provided/cold41/subset/compiler-receipt.json.gz) |
-| Six repaired roots | Exact module saves, unchanged independent expected-type/domain consumers, and standard-only printed axiom closures for three modules. | [Current independent status and hashes](../integration/opica_followup/continuation/2026-10-22/evidence/current-codex/lean-review/STATUS.json), [review](../integration/opica_followup/continuation/2026-10-22/evidence/current-codex/lean-review/REVIEW.md) |
-| Five WIP roots | Preserved candidates that have not passed complete independent acceptance; source presence alone proves nothing. | [Per-root gates](../integration/opica_followup/continuation/2026-10-22/ROOT_LEDGER_100.json), [historical diagnostics](../integration/opica_followup/continuation/2026-10-22/evidence/historical-codex-review/REVIEW_AND_REMAINING_WORK.md) |
+| Ten repaired roots | Exact module saves, independent expected-type/domain consumers and standard-only printed axiom closures for seven modules. | [Stage 1 handover and new receipts](../integration/opica_followup/continuation/2026-10-22/STAGE1_HANDOVER.md), [retained six-root receipt](../integration/opica_followup/continuation/2026-10-22/evidence/current-codex/lean-review/STATUS.json) |
+| One WIP root | The same-output Step 1–3 word/jet candidate remains unaccepted pending genuine parent dependencies and independent gates. | [Per-root gates](../integration/opica_followup/continuation/2026-10-22/ROOT_LEDGER_100.json), [historical diagnostics](../integration/opica_followup/continuation/2026-10-22/evidence/historical-codex-review/REVIEW_AND_REMAINING_WORK.md) |
 | 48 absent roots | Original obligations without complete primary implementations. Some belong to modules that already contain other candidate declarations. | [Remaining work](../integration/opica_followup/continuation/2026-10-22/REMAINING_WORK.md) |
 
-**41 historical plus six narrow local results is not a current 47-root aggregate
+**41 historical plus ten narrow local results is not a current 51-root aggregate
 acceptance.** The current aggregate source export and full release remain OPEN.
 A successful historical replay, local consumer, or documentation graph cannot
 change that boundary.
 
-## Find the six locally verified roots
+## Find the ten locally verified roots
 
 | Module | Locally verified primary declarations | Boundary to retain |
 |---|---|---|
 | [MaskedNativeRate](../../../Zeta23/OPICAFollowup/MaskedNativeRate.lean) | `log_slack_both_low_masks_subexp`; `log_slack_masked_energy_rate_difference` | Constants precede every horizon and allowed moving palette. Both actual mask realizations survive. The rate difference tends to zero; equality with Theta is not established. |
 | [ComplexLocalMeasures](../../../Zeta23/OPICAFollowup/ComplexLocalMeasures.lean) | `complex_local_measure_embedding_faithful` | Genuine locally finite complex measures, compact Euclidean variation, faithful tempered embedding and common-growth convergence. Actual native co-Poisson/jet measures remain separate work. |
 | [AuxiliaryCompletions](../../../Zeta23/OPICAFollowup/AuxiliaryCompletions.lean) | `aux_completion_actual_transform`; `aux_completion_uniform_decay`; `aux_completion_ratio_bounds` | Actual beta filter and integer action, endpoint atom, extended convergent transform domain, filled half-point value, and one ratio constant for all k. These do not supply terminal memory or the full native window rate. |
+| [MultiplicityTail](../../../Zeta23/OPICAFollowup/MultiplicityTail.lean) | `laguerre_tail_norm` | Arbitrary multiplicity, positive real part and every real tail threshold; actual Rodrigues polynomial, orthogonality and L2 tail norm. Native residual and memory remain separate. |
+| [DilatedComb](../../../Zeta23/OPICAFollowup/DilatedComb.lean) | `dilated_comb_fourier` | Actual scaled integer counting measure, absolute Schwartz pairing, exact heat amplitude and origin atom, Fourier reflection for every real dilation. Noncompact weighted mixing remains OPEN. |
+| [RenormalizedCoPoisson](../../../Zeta23/OPICAFollowup/RenormalizedCoPoisson.lean) | `zero_measure_first_cell_sign` | Literal finite-sum density and exact phase/height cases. The global order-zero measure and its identification are still absent. |
+| [FirstCellCost](../../../Zeta23/OPICAFollowup/FirstCellCost.lean) | `first_cell_negative_mass_cost` | Exact interval density, pi/6 negative mass and 8pi/(27 gamma²) sinc-weighted cost, both ordinate signs and delta=0 controls. No native source-to-measure estimate follows. |
 
 All declarations above have namespace `Zeta23.OPICAFollowup`. Read the
 [independent mathematical review](../integration/opica_followup/continuation/2026-10-22/evidence/current-codex/lean-review/SEMANTIC_REVIEW.md)
@@ -67,12 +71,14 @@ flowchart LR
   arithmetic --> masks["Two mask roots: narrow local green"]
   source --> explicit["Explicit formula / source bounds: historical subset"]
   explicit --> auxiliary["Three auxiliary roots: narrow local green"]
-  auxiliary --> tail["Multiplicity tail / residual / memory: OPEN + WIP"]
+  auxiliary --> norm["Laguerre tail norm: narrow local green"]
+  norm --> tail["Native moments / residual / memory: OPEN"]
   tail --> rate["Native fixed / moving source rate: OPEN"]
   masks --> consumers["Actual native output consumers: OPEN + WIP"]
   rate --> consumers
-  complex["Complex measure root: narrow local green"] --> comb["Dilated comb: WIP"]
-  comb --> heat["Co-Poisson / jets / first-cell / separation: OPEN + WIP"]
+  complex["Complex measure root: narrow local green"] --> comb["Dilated comb: narrow local green"]
+  comb --> mixing["Noncompact mixing / co-Poisson / jets: OPEN"]
+  mixing --> heat["First-cell sign and cost: narrow local green; global identification OPEN"]
   heat --> consumers
   spectral["Profiles / log Sobolev / forced sampling / resolvent: OPEN"] --> consumers
 ```
@@ -83,11 +89,11 @@ Useful next entrypoints are
 [RenormalizedCoPoisson](../../../Zeta23/OPICAFollowup/RenormalizedCoPoisson.lean),
 [FirstCellCost](../../../Zeta23/OPICAFollowup/FirstCellCost.lean) and
 [Consumers](../../../Zeta23/OPICAFollowup/Consumers.lean).
-Their five currently recorded WIP roots are respectively `laguerre_tail_norm`,
-`dilated_comb_fourier`, `zero_measure_first_cell_sign`,
-`first_cell_negative_mass_cost` and `step123_word_jet_consumer`.
-That list is not their full required scope: consult the ledger for the other
-absent roots in those same modules.
+The first four named candidate roots now have narrow proof/type/domain/axiom
+evidence. `step123_word_jet_consumer` remains WIP. These are not the full required
+scope of those modules: consult the ledger for their other absent roots and
+canonical interfaces. Read the [Stage 1 proof crosswalk](../integration/opica_followup/continuation/2026-10-22/provenance/STAGE1_PROOF_CROSSWALK.json)
+for exact source and import refinements.
 
 The multiplicity route still requires actual top moments, stable-input control,
 finite residuals and terminal memory before J5.2/MS1. The heat route still
@@ -107,7 +113,7 @@ in dependency order. See [the graph guide](README.md#pr-validation-versus-materi
 for the distinction between PR validation and checked-in snapshots.
 
 Use that existing producer chain for exact graph materialization. Do not edit
-generated registry/graph records to insert the six narrow results, and do not
+generated registry/graph records to insert the ten narrow results, and do not
 infer current compiler dependencies from this page's arrows or module imports.
 An exact current-head receipt and the full claim gates are required for any
 future aggregate or registration change. Frozen input/specification graphs and

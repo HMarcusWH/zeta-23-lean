@@ -1,0 +1,25 @@
+{
+  "total_count": 1,
+  "artifacts": [
+    {
+      "id": 12433009560,
+      "node_id": "MDg6QXJ0aWZhY3QxMjQzMzAwOTU2MA==",
+      "name": "post268-extended-1-9ccea78eb5ee0c097bde05424e43de58a589b713",
+      "size_in_bytes": 12437,
+      "url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/artifacts/12433009560",
+      "archive_download_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/artifacts/12433009560/zip",
+      "expired": false,
+      "digest": "sha256:8096e7dc6b2d74b760b8c4a754f5918b87f681f2f1b9d51f2693f309589a0206",
+      "created_at": "2026-10-22T14:36:58Z",
+      "updated_at": "2026-10-22T14:36:58Z",
+      "expires_at": "2026-11-21T14:36:57Z",
+      "workflow_run": {
+        "id": 39791293886,
+        "repository_id": 1339954300,
+        "head_repository_id": 1339954300,
+        "head_branch": "research/opica-native-followup",
+        "head_sha": "9ccea78eb5ee0c097bde05424e43de58a589b713"
+      }
+    }
+  ]
+}

@@ -1,5 +1,11 @@
 # Post-Green Research Pass: combined draft checkpoint
 
+This is the retained six-root pass from the earlier combined source checkpoint.
+The subsequent [Stage 1 handover](STAGE1_HANDOVER.md) links the four new
+candidate-repair passes, exact receipts and bounded all-workflow harvest. Read
+the current ledger before treating historical unfinished-work counts below as
+current status.
+
 ## What became formally true
 
 The exact repaired sources and all three independently stated consumer files

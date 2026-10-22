@@ -1,0 +1,12 @@
+[
+  {
+    "checks": {
+      "left_model_even_positive": true,
+      "model_odd_positive_at_both_sample_endpoints": true,
+      "right_model_even_negative": true,
+      "same_exact_q3_cell": true,
+      "true_zeta_even_positive_at_both_sample_endpoints": true
+    },
+    "status": "INTERVAL_EVIDENCE"
+  }
+]

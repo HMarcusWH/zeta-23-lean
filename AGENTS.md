@@ -13,9 +13,10 @@ blocks retain their historical anchor and do not route the active PR #294.
 
 The original follow-up requires **100 primary roots in 28 acceptance units**.
 The historical exact-source subset contains 41 roots. New local candidate gates
-remain separate from aggregate registration and full release acceptance. Five
-supplied modules contain failed or unchecked candidates; 48 original roots still
-lack complete implementations. Read each ledger gate rather than adding root
+remain separate from aggregate registration and full release acceptance. Ten
+additional roots passed narrow gates; one supplied consumer remains blocked
+and 48 original roots still lack complete implementations. Read the continuation
+STAGE1_HANDOVER.md for exact proof and infrastructure evidence. Read each ledger gate rather than adding root
 names or supporting lemmas to a completion count.
 
 Keep the original Markdown/JSON contracts and both foundational PDFs unchanged.
@@ -42,7 +43,7 @@ false inequality and repaired supporting forms.
 - Assign a single owner to broad cache-writing builds. Independent narrow
   modules can use separate controlled output paths with real dependencies.
 - Never count a stale inherited object as compilation of modified source.
-- Use the continuation runner for the three repaired modules and independent
+- Use the continuation runner for the seven repaired modules and independent
   consumers. It is a narrow gate, not a full-100 receipt.
 - Record exact source hashes, compiler version, checkout/head/tree, command exit
   codes, logs, assumptions and transitive axioms. A successful process with a

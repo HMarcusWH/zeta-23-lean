@@ -2,8 +2,9 @@
 
 Use this index with [root AGENTS.md](../../../../../../AGENTS.md) and the
 [continuation guide](README.md). It describes the 22 October OPICA source
-checkpoint `a77ae604`; read the live Git head and workflow results before editing.
-Later documentation commits preserve that mathematical source checkpoint.
+checkpoint and its staged repairs; read [STAGE1_HANDOVER.md](STAGE1_HANDOVER.md)
+for the latest exact sources and gates. Check the live Git head and workflow
+results before editing.
 
 ## Reading order
 
@@ -50,11 +51,11 @@ Later documentation commits preserve that mathematical source checkpoint.
 - [Historical cold receipt](evidence/provided/cold41/subset/compiler-receipt.json.gz):
   exactly the original 41-root subset. It binds the earlier `9b6a9a3` source;
   it cannot accept the whole continuation.
-- [Six-root narrow receipt](evidence/current-codex/lean-review/STATUS.json):
+- [Original six-root narrow receipt](evidence/current-codex/lean-review/STATUS.json):
   hashes, module saves, independent consumers and standard-only printed axioms.
   It supplies no all-100 public/type/constructor/private-DAG export.
-- [Current documentation/gate review](evidence/current-codex/documentation-review):
-  latest bounded CI snapshot, navigation checks and the documentation-path
+- [Earlier documentation/gate review](evidence/current-codex/documentation-review):
+  the earlier bounded CI snapshot, navigation checks and documentation-path
   mutation/regression tests. Static tests do not add mathematical roots.
 - [Earlier child and parent review](evidence/current-codex/contracts/PYTHON_ADOPTION_REVIEW.md):
   structural fixes and environmental failures. The full parent local attempt
@@ -62,9 +63,13 @@ Later documentation commits preserve that mathematical source checkpoint.
 - [Post-Green research](POST_GREEN_RESEARCH.md): all nine required mathematical
   review conclusions. Repeat the pass when meaningful proof evidence changes.
 
-The full child receipt reader/CLI linkage, all 100 implementations and consumers,
-compiler-derived claim dependencies, complete facade/registration, canonical
-regeneration and final workflow harvest remain required. Full-release readiness
+[Stage 1](STAGE1_HANDOVER.md) adds four narrow primary results and tested
+full100 receipt infrastructure. Its [evidence](evidence/current-codex/stage1)
+includes exact proof receipts, independent review, 185 tests per Python mode and
+a bounded all-job scientific harvest. The independent full review seal, actual
+full compiler production/replay, all missing implementations/consumers, release
+companions, complete facade/registration, canonical regeneration and final
+workflow harvest remain required. Full-release readiness
 and parent extension correctly reject the incomplete package.
 
 ## Maintaining these documents

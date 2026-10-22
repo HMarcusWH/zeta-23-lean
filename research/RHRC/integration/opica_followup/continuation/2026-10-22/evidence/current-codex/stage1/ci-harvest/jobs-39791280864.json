@@ -1,0 +1,440 @@
+{
+  "total_count": 5,
+  "jobs": [
+    {
+      "id": 119867678855,
+      "run_id": 39791280864,
+      "workflow_name": "OPICA follow-up draft checkpoint",
+      "head_branch": "research/opica-native-followup",
+      "run_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/runs/39791280864",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOT94UfM8AAAAb6Kughw",
+      "head_sha": "9ccea78eb5ee0c097bde05424e43de58a589b713",
+      "url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/jobs/119867678855",
+      "html_url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39791280864/job/119867678855",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-22T13:55:59Z",
+      "started_at": "2026-10-22T13:56:44Z",
+      "completed_at": "2026-10-22T13:57:16Z",
+      "name": "Draft preparation contract (no theorem authority)",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-22T13:56:45Z",
+          "completed_at": "2026-10-22T13:56:46Z"
+        },
+        {
+          "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-22T13:56:46Z",
+          "completed_at": "2026-10-22T13:57:10Z"
+        },
+        {
+          "name": "Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-22T13:57:10Z",
+          "completed_at": "2026-10-22T13:57:10Z"
+        },
+        {
+          "name": "Run python \"$FOLLOWUP/validate_contract.py\" --phase preflight --output /tmp/opica-followup-contract.json",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-22T13:57:10Z",
+          "completed_at": "2026-10-22T13:57:12Z"
+        },
+        {
+          "name": "Verify the ledger-derived module navigation table (no theorem authority)",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-22T13:57:12Z",
+          "completed_at": "2026-10-22T13:57:12Z"
+        },
+        {
+          "name": "Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-10-22T13:57:12Z",
+          "completed_at": "2026-10-22T13:57:13Z"
+        },
+        {
+          "name": "Post Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11,
+          "started_at": "2026-10-22T13:57:13Z",
+          "completed_at": "2026-10-22T13:57:13Z"
+        },
+        {
+          "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12,
+          "started_at": "2026-10-22T13:57:13Z",
+          "completed_at": "2026-10-22T13:57:14Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13,
+          "started_at": "2026-10-22T13:57:14Z",
+          "completed_at": "2026-10-22T13:57:14Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/check-runs/119867678855",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 1000117152,
+      "runner_name": "GitHub Actions 1000117152",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    },
+    {
+      "id": 119867679374,
+      "run_id": 39791280864,
+      "workflow_name": "OPICA follow-up draft checkpoint",
+      "head_branch": "research/opica-native-followup",
+      "run_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/runs/39791280864",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOT94UfM8AAAAb6Kuijg",
+      "head_sha": "9ccea78eb5ee0c097bde05424e43de58a589b713",
+      "url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/jobs/119867679374",
+      "html_url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39791280864/job/119867679374",
+      "status": "completed",
+      "conclusion": "failure",
+      "created_at": "2026-10-22T13:55:59Z",
+      "started_at": "2026-10-22T14:03:57Z",
+      "completed_at": "2026-10-22T14:04:36Z",
+      "name": "Full release readiness (expected FAIL while scope is incomplete)",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-22T14:03:58Z",
+          "completed_at": "2026-10-22T14:03:59Z"
+        },
+        {
+          "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-22T14:03:59Z",
+          "completed_at": "2026-10-22T14:04:26Z"
+        },
+        {
+          "name": "Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-22T14:04:26Z",
+          "completed_at": "2026-10-22T14:04:26Z"
+        },
+        {
+          "name": "Preserve the complete release gate and report its actual disposition",
+          "status": "completed",
+          "conclusion": "failure",
+          "number": 4,
+          "started_at": "2026-10-22T14:04:26Z",
+          "completed_at": "2026-10-22T14:04:32Z"
+        },
+        {
+          "name": "Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-22T14:04:32Z",
+          "completed_at": "2026-10-22T14:04:34Z"
+        },
+        {
+          "name": "Post Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 9,
+          "started_at": "2026-10-22T14:04:34Z",
+          "completed_at": "2026-10-22T14:04:34Z"
+        },
+        {
+          "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-10-22T14:04:34Z",
+          "completed_at": "2026-10-22T14:04:34Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11,
+          "started_at": "2026-10-22T14:04:34Z",
+          "completed_at": "2026-10-22T14:04:34Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/check-runs/119867679374",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 1000117201,
+      "runner_name": "GitHub Actions 1000117201",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    },
+    {
+      "id": 119868396406,
+      "run_id": 39791280864,
+      "workflow_name": "OPICA follow-up draft checkpoint",
+      "head_branch": "research/opica-native-followup",
+      "run_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/runs/39791280864",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOT94UfM8AAAAb6LaTdg",
+      "head_sha": "9ccea78eb5ee0c097bde05424e43de58a589b713",
+      "url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/jobs/119868396406",
+      "html_url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39791280864/job/119868396406",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-22T13:57:16Z",
+      "started_at": "2026-10-22T14:04:16Z",
+      "completed_at": "2026-10-22T14:26:04Z",
+      "name": "Exact-source implemented subset (full 100 remains required)",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-22T14:04:17Z",
+          "completed_at": "2026-10-22T14:04:18Z"
+        },
+        {
+          "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-22T14:04:18Z",
+          "completed_at": "2026-10-22T14:04:42Z"
+        },
+        {
+          "name": "Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-22T14:04:42Z",
+          "completed_at": "2026-10-22T14:04:42Z"
+        },
+        {
+          "name": "Run leanprover/lean-action@24581d74d674803a25a81b10b059c5c0cdd344c6",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-22T14:04:42Z",
+          "completed_at": "2026-10-22T14:07:04Z"
+        },
+        {
+          "name": "Build typed consumers and export complete subset provenance",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-22T14:07:04Z",
+          "completed_at": "2026-10-22T14:26:00Z"
+        },
+        {
+          "name": "Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-10-22T14:26:00Z",
+          "completed_at": "2026-10-22T14:26:02Z"
+        },
+        {
+          "name": "Post Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11,
+          "started_at": "2026-10-22T14:26:02Z",
+          "completed_at": "2026-10-22T14:26:02Z"
+        },
+        {
+          "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12,
+          "started_at": "2026-10-22T14:26:02Z",
+          "completed_at": "2026-10-22T14:26:02Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13,
+          "started_at": "2026-10-22T14:26:02Z",
+          "completed_at": "2026-10-22T14:26:03Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/check-runs/119868396406",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 1000117204,
+      "runner_name": "GitHub Actions 1000117204",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    },
+    {
+      "id": 119868396668,
+      "run_id": 39791280864,
+      "workflow_name": "OPICA follow-up draft checkpoint",
+      "head_branch": "research/opica-native-followup",
+      "run_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/runs/39791280864",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOT94UfM8AAAAb6LaUfA",
+      "head_sha": "9ccea78eb5ee0c097bde05424e43de58a589b713",
+      "url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/jobs/119868396668",
+      "html_url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39791280864/job/119868396668",
+      "status": "queued",
+      "conclusion": null,
+      "created_at": "2026-10-22T13:57:16Z",
+      "started_at": "2026-10-22T13:57:16Z",
+      "completed_at": null,
+      "name": "Narrow repaired candidates (aggregate acceptance remains open)",
+      "steps": [],
+      "check_run_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/check-runs/119868396668",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 0,
+      "runner_name": "",
+      "runner_group_id": 0,
+      "runner_group_name": ""
+    },
+    {
+      "id": 119868396959,
+      "run_id": 39791280864,
+      "workflow_name": "OPICA follow-up draft checkpoint",
+      "head_branch": "research/opica-native-followup",
+      "run_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/runs/39791280864",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOT94UfM8AAAAb6LaVnw",
+      "head_sha": "9ccea78eb5ee0c097bde05424e43de58a589b713",
+      "url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/jobs/119868396959",
+      "html_url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39791280864/job/119868396959",
+      "status": "in_progress",
+      "conclusion": null,
+      "created_at": "2026-10-22T13:57:16Z",
+      "started_at": "2026-10-22T14:36:48Z",
+      "completed_at": null,
+      "name": "Frozen regression and fail-closed evidence tests",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-22T14:36:48Z",
+          "completed_at": "2026-10-22T14:36:49Z"
+        },
+        {
+          "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-22T14:36:49Z",
+          "completed_at": "2026-10-22T14:37:12Z"
+        },
+        {
+          "name": "Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-22T14:37:12Z",
+          "completed_at": "2026-10-22T14:37:13Z"
+        },
+        {
+          "name": "Run python -m pip install --require-hashes --only-binary=:all: -r \"$FOLLOWUP/python-checks.lock\"",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-22T14:37:13Z",
+          "completed_at": "2026-10-22T14:37:20Z"
+        },
+        {
+          "name": "Replay all frozen controls and explicitly noninterval numerical cases",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-22T14:37:20Z",
+          "completed_at": "2026-10-22T14:38:10Z"
+        },
+        {
+          "name": "Exercise complete child validation suite in both Python modes",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-10-22T14:38:10Z",
+          "completed_at": "2026-10-22T14:38:15Z"
+        },
+        {
+          "name": "Exercise repaired parent contract module without platform skips",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-10-22T14:38:15Z",
+          "completed_at": "2026-10-22T14:38:21Z"
+        },
+        {
+          "name": "Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-10-22T14:38:21Z",
+          "completed_at": "2026-10-22T14:38:22Z"
+        },
+        {
+          "name": "Post Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15,
+          "started_at": "2026-10-22T14:38:22Z",
+          "completed_at": "2026-10-22T14:38:22Z"
+        },
+        {
+          "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 16,
+          "started_at": "2026-10-22T14:38:22Z",
+          "completed_at": "2026-10-22T14:38:23Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 17,
+          "started_at": "2026-10-22T14:38:23Z",
+          "completed_at": "2026-10-22T14:38:23Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/check-runs/119868396959",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 1000117288,
+      "runner_name": "GitHub Actions 1000117288",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    }
+  ]
+}

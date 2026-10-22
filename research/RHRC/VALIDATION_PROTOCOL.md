@@ -5,10 +5,11 @@ The active OPICA work is draft PR #294, following accepted parent PR #293.
 Read the [current guide](integration/opica_followup/continuation/2026-10-22/README.md),
 [documentation/evidence index](integration/opica_followup/continuation/2026-10-22/DOCUMENTATION_INDEX.md) and
 [100-root stage ledger](integration/opica_followup/continuation/2026-10-22/ROOT_LEDGER_100.json).
-The recorded source checkpoint is `a77ae604`; check the live head and actual CI.
+Read the continuation Stage 1 handover for exact repaired source hashes;
+check the live head and actual CI before asserting current acceptance.
 
 The target remains 100 roots / 28 acceptance units: 41 historical source-bound
-roots, six additional narrow local results, five unaccepted candidates and 48
+roots, ten additional narrow local results, one unaccepted candidate and 48
 absent implementations. Current aggregate/release acceptance remains OPEN.
 The generated Control-v2 block and dated current/next wording below retain their
 historical authority scope. They do not describe current PR routing or accept

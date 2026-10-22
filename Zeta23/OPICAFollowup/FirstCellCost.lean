@@ -6,9 +6,9 @@ import Mathlib.MeasureTheory.Integral.IntervalIntegral.IntegrationByParts
 import Mathlib.Tactic
 
 /-!
-UNCHECKED primary candidate at 9b6a9a3. The density is the actual inclusive
-finite-power-sum density, not a synthetic negative test. Both signs of gamma
-and delta=0 are retained. The measure construction remains a separate root.
+The bounds use the literal inclusive finite-power-sum density. Both signs of
+gamma and delta=0 are retained. The global measure construction remains a
+separate obligation.
 -/
 noncomputable section
 open Set MeasureTheory Filter
@@ -34,7 +34,7 @@ lemma firstCellLog_geometry (gamma : ℝ) (hg : 16≤|gamma|) :
     firstCellUpperLog gamma<1/3 ∧ firstCellUpperLog gamma<Real.log (3/2) ∧
     ∀ u∈Icc (firstCellLowerLog gamma) (firstCellUpperLog gamma),
       0<u ∧ Real.exp u<3/2 ∧ u<Real.log 2 := by
-  have hgp : 0<|gamma| := by linarith
+  have hgp : 0< |gamma| := by linarith
   have hpi := Real.pi_lt_d2
   have hlo : 0<firstCellLowerLog gamma := by unfold firstCellLowerLog; positivity
   have hlt : firstCellLowerLog gamma<firstCellUpperLog gamma := by
@@ -69,11 +69,11 @@ lemma firstCell_sine_bound (G u : ℝ) (hG : 0<G)
   have hv : |v|≤Real.pi/6 := by dsimp [v]; apply abs_le.mpr; constructor <;> linarith
   have hv2 : v^2≤(Real.pi/6)^2 := by
     simpa only [sq_abs] using pow_le_pow_left₀ (abs_nonneg v) hv 2
-  have hcos := Real.one_sub_sq_div_two_le_cos v
+  have hcos := Real.one_sub_sq_div_two_le_cos (x := v)
   have hpi := Real.pi_lt_d2
   have hsmall : (Real.pi/6)^2<1/2 := by nlinarith [Real.pi_pos]
   have hs : Real.sin (G*u) = -Real.cos v := by
-    rw [show G*u=v+(Real.pi+Real.pi/2) by dsimp [v]; ring,
+    rw [show G*u=v+(Real.pi/2+Real.pi) by dsimp [v]; ring,
       Real.sin_add,Real.sin_add_pi,Real.cos_add_pi,Real.sin_pi_div_two,Real.cos_pi_div_two]
     ring
   rw [hs]
@@ -93,8 +93,8 @@ lemma firstCell_density_upper (delta gamma u : ℝ) (hd : |delta|<1/2)
     (hg : 16≤|gamma|)
     (hu : u∈Icc (firstCellLowerLog gamma) (firstCellUpperLog gamma)) :
     coPoissonRealDensity (coPoissonRho delta gamma) (Real.exp u) ≤
-      -|gamma|*Real.exp (-u/2)/2 := by
-  have hgp : 0<|gamma| := by linarith
+      -|gamma| *Real.exp (-u/2)/2 := by
+  have hgp : 0< |gamma| := by linarith
   have hgne : gamma≠0 := abs_pos.mp hgp
   obtain ⟨_,_,hub,_,hgeometry⟩ := firstCellLog_geometry gamma hg
   obtain ⟨hup,hexp,hu2⟩ := hgeometry u hu
@@ -116,44 +116,48 @@ lemma firstCell_density_upper (delta gamma u : ℝ) (hd : |delta|<1/2)
     have hl := Real.one_sub_inv_le_log_of_pos (by norm_num : (0:ℝ)<3/2)
     have hlt : |delta*u|<Real.log (3/2) := by norm_num at hl; linarith
     exact (Real.exp_lt_exp.mpr hlt).trans_eq (Real.exp_log (by norm_num))
-  have hosc : |delta*(v-1)*Real.sinh (delta*u)*Real.cos (|gamma|*u)|≤1 := by
+  have hosc : |delta*(v-1)*Real.sinh (delta*u)*Real.cos (|gamma| *u)|≤1 := by
     have hv : |v-1|≤1 := by apply abs_le.mpr; constructor <;> linarith
     rw [abs_mul,abs_mul,abs_mul]
     have hs := (sinh_abs_le_exp_abs (delta*u)).trans he.le
-    have hc := Real.abs_cos_le_one (|gamma|*u)
+    have hc := Real.abs_cos_le_one (|gamma| *u)
     calc
       _ ≤ (1/2:ℝ)*1*(3/2)*1 := by gcongr
       _ ≤ 1 := by norm_num
-  have hsin : Real.sin (|gamma|*u)≤-3/4 := firstCell_sine_bound |gamma| u hgp hu
+  have hsin : Real.sin (|gamma| *u)≤-3/4 := firstCell_sine_bound |gamma| u hgp hu
   have hcosh : 1≤Real.cosh (delta*u) := Real.one_le_cosh _
-  have hcoef : |gamma|≤|gamma|*(1+v)*Real.cosh (delta*u) := by
+  have hcoef : |gamma|≤|gamma| *(1+v)*Real.cosh (delta*u) := by
     nlinarith [mul_nonneg hgp.le hv0,mul_nonneg (mul_nonneg hgp.le (by linarith : 0≤1+v))
       (sub_nonneg.mpr hcosh)]
-  have hterm : |gamma|*(1+v)*Real.cosh (delta*u)*Real.sin (|gamma|*u)≤-3*|gamma|/4 := by
+  have hterm : |gamma| *(1+v)*Real.cosh (delta*u)*Real.sin (|gamma| *u)≤-3*|gamma|/4 := by
     calc
-      _ ≤ (|gamma|*(1+v)*Real.cosh (delta*u))*(-3/4) :=
+      _ ≤ (|gamma| *(1+v)*Real.cosh (delta*u))*(-3/4) :=
         mul_le_mul_of_nonneg_left hsin (by positivity)
       _ ≤ _ := by nlinarith
-  have hsum : delta*(v-1)*Real.sinh (delta*u)*Real.cos (|gamma|*u)+
-      |gamma|*(1+v)*Real.cosh (delta*u)*Real.sin (|gamma|*u)≤-|gamma|/2 := by
-    have := (le_abs_self (delta*(v-1)*Real.sinh (delta*u)*Real.cos (|gamma|*u))).trans hosc
+  have hsum : delta*(v-1)*Real.sinh (delta*u)*Real.cos (|gamma| *u)+
+      |gamma| *(1+v)*Real.cosh (delta*u)*Real.sin (|gamma| *u)≤-|gamma|/2 := by
+    have := (le_abs_self (delta*(v-1)*Real.sinh (delta*u)*Real.cos (|gamma| *u))).trans hosc
     linarith
   change Real.exp (-u/2)*(_+_)≤_
-  simpa only [mul_div_assoc,mul_comm (Real.exp (-u/2))] using
-    mul_le_mul_of_nonneg_left hsum (Real.exp_nonneg _)
+  calc
+    _ ≤ Real.exp (-u/2)*(-|gamma|/2) :=
+      mul_le_mul_of_nonneg_left hsum (Real.exp_nonneg (-u/2))
+    _ = _ := by ring
 
 lemma coPoissonRealDensity_continuousOn_firstCell (delta gamma : ℝ) (hg : gamma≠0) :
     ContinuousOn (coPoissonRealDensity (coPoissonRho delta gamma)) (Ioo (1:ℝ) 2) := by
   have hlog : ContinuousOn Real.log (Ioo (1:ℝ) 2) :=
-    fun x hx => (Real.continuousAt_log (by linarith : x≠0)).continuousWithinAt
+    fun x hx => (Real.continuousAt_log (by linarith [hx.1] : x≠0)).continuousWithinAt
   have heq (x : ℝ) (hx : x∈Ioo (1:ℝ) 2) :=
     coPoisson_first_cell_real delta gamma (Real.log x) hg
-      (Real.log_pos hx.1) (Real.log_lt_log (by linarith : 0<x) hx.2)
+      (Real.log_pos hx.1) (Real.log_lt_log (by linarith [hx.1] : 0<x) hx.2)
   have hcont : ContinuousOn (fun x : ℝ => Real.exp (-Real.log x/2)*
       (delta*(1/(4*(delta^2+gamma^2))-1)*Real.sinh (delta*Real.log x)*Real.cos (gamma*Real.log x)+
        gamma*(1+1/(4*(delta^2+gamma^2)))*Real.cosh (delta*Real.log x)*Real.sin (gamma*Real.log x)))
       (Ioo (1:ℝ) 2) := by fun_prop
-  exact hcont.congr (fun x hx => (by simpa only [Real.exp_log (show 0<x by linarith [hx.1])] using heq x hx).symm)
+  apply hcont.congr
+  intro x hx
+  simpa only [Real.exp_log (show 0<x by linarith [hx.1])] using heq x hx
 
 lemma firstCell_interval_integrable (delta gamma : ℝ) (hg : 16≤|gamma|) :
     IntervalIntegrable (firstCellNegativePart delta gamma) volume
@@ -165,23 +169,23 @@ lemma firstCell_interval_integrable (delta gamma : ℝ) (hg : 16≤|gamma|) :
     intro x hx
     have hl := Real.one_lt_exp_iff.mpr ha
     have hu := (hgeometry (firstCellUpperLog gamma) ⟨hab.le,le_rfl⟩).2.1
-    constructor <;> linarith
+    constructor <;> linarith [hx.1,hx.2]
   have hc := (coPoissonRealDensity_continuousOn_firstCell delta gamma (by
-    have : 0<|gamma| := by linarith
+    have : 0< |gamma| := by linarith
     exact abs_pos.mp this)).mono hsub
   have hn : ContinuousOn (firstCellNegativePart delta gamma)
       (Icc (Real.exp (firstCellLowerLog gamma)) (Real.exp (firstCellUpperLog gamma))) :=
-    hc.neg.max continuousOn_const
+    hc.neg.sup continuousOn_const
   constructor
-  · exact hn.intervalIntegrable (Real.exp_le_exp.mpr hab.le)
-  · exact (sincSquared_continuous.continuousOn.mul hn).intervalIntegrable (Real.exp_le_exp.mpr hab.le)
+  · exact hn.intervalIntegrable_of_Icc (Real.exp_le_exp.mpr hab.le)
+  · exact (sincSquared_continuous.continuousOn.mul hn).intervalIntegrable_of_Icc (Real.exp_le_exp.mpr hab.le)
 
 lemma firstCell_sinc_lower (gamma u : ℝ) (hg : 16≤|gamma|)
     (hu : u∈Icc (firstCellLowerLog gamma) (firstCellUpperLog gamma)) :
     16/(9*gamma^2)≤sincSquared (Real.exp u) := by
   obtain ⟨ha,hab,hb,hblog,hgeometry⟩ := firstCellLog_geometry gamma hg
   obtain ⟨hup,hxupper,hu2⟩ := hgeometry u hu
-  have hgpos : 0<|gamma| := by linarith
+  have hgpos : 0< |gamma| := by linarith
   have hgap : firstCellLowerLog gamma≤Real.exp u-1 := by
     have hh := Real.add_one_le_exp u
     linarith [hu.1]
@@ -198,7 +202,8 @@ lemma firstCell_sinc_lower (gamma u : ℝ) (hg : 16≤|gamma|)
   have hs := sine_abs_lower_of_integer_distance ha hdist
   have hs2 : 4*(firstCellLowerLog gamma)^2≤Real.sin (Real.pi*Real.exp u)^2 := by
     have h := pow_le_pow_left₀ (by positivity : 0≤2*firstCellLowerLog gamma) hs 2
-    simpa only [sq_abs,mul_pow] using h
+    norm_num only [sq_abs,mul_pow] at h ⊢
+    exact h
   have hx2 : (Real.exp u)^2≤4 := by nlinarith [Real.exp_pos u]
   have hid : sincSquared (Real.exp u)*(Real.pi^2*(Real.exp u)^2)=
       Real.sin (Real.pi*Real.exp u)^2 := by
@@ -206,11 +211,19 @@ lemma firstCell_sinc_lower (gamma u : ℝ) (hg : 16≤|gamma|)
     field_simp
   have hfinal : (firstCellLowerLog gamma)^2/Real.pi^2≤sincSquared (Real.exp u) := by
     apply (div_le_iff₀ (sq_pos_of_pos Real.pi_pos)).mpr
-    nlinarith [sincSquared_nonneg (Real.exp u)]
+    have hscaled : 4*(firstCellLowerLog gamma)^2 ≤ 4*(sincSquared (Real.exp u)*Real.pi^2) := by
+      calc
+        _ ≤ Real.sin (Real.pi*Real.exp u)^2 := hs2
+        _ = sincSquared (Real.exp u)*(Real.pi^2*(Real.exp u)^2) := hid.symm
+        _ ≤ sincSquared (Real.exp u)*(Real.pi^2*4) :=
+          mul_le_mul_of_nonneg_left (mul_le_mul_of_nonneg_left hx2 (sq_nonneg _))
+            (sincSquared_nonneg _)
+        _ = _ := by ring
+    linarith
   convert hfinal using 1
   unfold firstCellLowerLog
-  rw [div_pow,mul_pow,sq_abs]
-  field_simp
+  simp only [div_pow,mul_pow,sq_abs]
+  field_simp [Real.pi_ne_zero,abs_pos.mp hgpos]
   ring
 
 /-- Full first-cell correction-cost root. The two costs integrate the actual
@@ -219,7 +232,7 @@ theorem first_cell_negative_mass_cost (delta gamma : ℝ) (hd : |delta|<1/2)
     (hg : 16≤|gamma|) :
     (∀ u∈Icc (firstCellLowerLog gamma) (firstCellUpperLog gamma),
       coPoissonRealDensity (coPoissonRho delta gamma) (Real.exp u)≤
-        -|gamma|*Real.exp (-u/2)/2) ∧
+        -|gamma| *Real.exp (-u/2)/2) ∧
     Real.pi/6≤firstCellNegativeMass delta gamma ∧
     8*Real.pi/(27*gamma^2)≤firstCellNegativeSincMass delta gamma := by
   have hp := firstCell_density_upper delta gamma
@@ -229,8 +242,8 @@ theorem first_cell_negative_mass_cost (delta gamma : ℝ) (hd : |delta|<1/2)
   have hcont : ContinuousOn (firstCellNegativePart delta gamma)
       (Real.exp '' uIcc (firstCellLowerLog gamma) (firstCellUpperLog gamma)) := by
     apply ((coPoissonRealDensity_continuousOn_firstCell delta gamma (by
-      have h : 0<|gamma| := by linarith
-      exact abs_pos.mp h)).neg.max continuousOn_const).mono
+      have h : 0< |gamma| := by linarith
+      exact abs_pos.mp h)).neg.sup continuousOn_const).mono
     rintro x ⟨u,hu,rfl⟩
     rw [uIcc_of_le hab.le] at hu
     have h := hgeometry u hu
@@ -251,17 +264,22 @@ theorem first_cell_negative_mass_cost (delta gamma : ℝ) (hd : |delta|<1/2)
       _ ≤ _ := by
         apply intervalIntegral.integral_mono_on hab.le
           (intervalIntegrable_const) ((hcont.comp (Real.continuous_exp.continuousOn)
-            (fun u hu => mem_image_of_mem _ hu)).mul Real.continuous_exp.continuousOn |>.intervalIntegrable hab.le)
+            (fun u hu => mem_image_of_mem _ hu)).mul Real.continuous_exp.continuousOn |>.intervalIntegrable)
         intro u hu
         have hU := firstCell_density_upper delta gamma u hd hg hu
-        have hN : |gamma|*Real.exp (-u/2)/2≤firstCellNegativePart delta gamma (Real.exp u) :=
+        have hN : |gamma| *Real.exp (-u/2)/2≤firstCellNegativePart delta gamma (Real.exp u) :=
           (by unfold firstCellNegativePart; exact le_trans (by linarith) (le_max_left _ _))
         have he : Real.exp (-u/2)*Real.exp u=Real.exp (u/2) := by rw [←Real.exp_add]; congr 1; ring
         have hu0 : 0≤u := (ha.le.trans hu.1)
         have he1 : 1≤Real.exp (u/2) := Real.one_le_exp_iff.mpr (by linarith)
         have hx := mul_le_mul_of_nonneg_right hN (Real.exp_nonneg u)
-        rw [show |gamma|*Real.exp (-u/2)/2*Real.exp u=|gamma|/2*Real.exp (u/2) by rw [←mul_assoc,←mul_assoc]; rw [←he]; ring] at hx
-        exact (mul_le_mul_of_nonneg_left he1 (by positivity)).trans hx
+        have hecalc : |gamma| *Real.exp (-u/2)/2*Real.exp u=|gamma|/2*Real.exp (u/2) := by
+          calc
+            _ = |gamma|/2*(Real.exp (-u/2)*Real.exp u) := by ring
+            _ = _ := by rw [he]
+        rw [hecalc] at hx
+        simpa only [Pi.mul_apply,Function.comp_apply,mul_one] using
+          (mul_le_mul_of_nonneg_left he1 (by positivity : 0≤|gamma|/2)).trans hx
   refine ⟨fun u hu => firstCell_density_upper delta gamma u hd hg hu,hm,?_⟩
   have hweight : (16/(9*gamma^2))*firstCellNegativeMass delta gamma≤firstCellNegativeSincMass delta gamma := by
     unfold firstCellNegativeMass firstCellNegativeSincMass
@@ -282,3 +300,5 @@ theorem first_cell_negative_mass_cost (delta gamma : ℝ) (hd : |delta|<1/2)
   exact hmul.trans hweight
 
 end Zeta23.OPICAFollowup
+
+#print axioms Zeta23.OPICAFollowup.first_cell_negative_mass_cost

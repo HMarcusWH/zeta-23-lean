@@ -12,8 +12,10 @@ import time
 
 HERE = Path(__file__).resolve().parent
 REPO = HERE.parents[5]
-MODULES = ('MaskedNativeRate', 'ComplexLocalMeasures', 'AuxiliaryCompletions')
-CONSUMERS = ('ExpectedMasks', 'ExpectedComplex', 'ExpectedAuxiliary')
+MODULES = ('MaskedNativeRate', 'ComplexLocalMeasures', 'AuxiliaryCompletions',
+           'MultiplicityTail', 'DilatedComb', 'RenormalizedCoPoisson', 'FirstCellCost')
+CONSUMERS = ('ExpectedMasks', 'ExpectedComplex', 'ExpectedAuxiliary',
+             'ExpectedMultiplicity', 'ExpectedComb', 'ExpectedFirstCell')
 ALLOWED_AXIOMS = {'propext', 'Classical.choice', 'Quot.sound'}
 
 

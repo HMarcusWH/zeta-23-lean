@@ -1,0 +1,129 @@
+{
+  "total_count": 1,
+  "jobs": [
+    {
+      "id": 119868478872,
+      "run_id": 39791294705,
+      "workflow_name": "RHRC post-200 Q14 discrepancy mechanism",
+      "head_branch": "research/opica-native-followup",
+      "run_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/runs/39791294705",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOT94UfM8AAAAb6LfVmA",
+      "head_sha": "9ccea78eb5ee0c097bde05424e43de58a589b713",
+      "url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/jobs/119868478872",
+      "html_url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39791294705/job/119868478872",
+      "status": "in_progress",
+      "conclusion": null,
+      "created_at": "2026-10-22T13:57:26Z",
+      "started_at": "2026-10-22T14:17:36Z",
+      "completed_at": null,
+      "name": "post200-q14-discrepancy-mechanism",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-22T14:17:37Z",
+          "completed_at": "2026-10-22T14:17:37Z"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-22T14:17:37Z",
+          "completed_at": "2026-10-22T14:18:45Z"
+        },
+        {
+          "name": "Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-22T14:18:45Z",
+          "completed_at": "2026-10-22T14:18:45Z"
+        },
+        {
+          "name": "Install R003 numerical audit requirements",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-22T14:18:45Z",
+          "completed_at": "2026-10-22T14:19:05Z"
+        },
+        {
+          "name": "Recheck inherited four-way second-derivative implementation",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-22T14:19:05Z",
+          "completed_at": "2026-10-22T14:21:57Z"
+        },
+        {
+          "name": "Recheck inherited post-#199 source-mechanism scope firewall",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-10-22T14:21:57Z",
+          "completed_at": "2026-10-22T14:21:58Z"
+        },
+        {
+          "name": "Check post-#200 paired discrepancy channel jets",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-10-22T14:21:58Z",
+          "completed_at": "2026-10-22T14:23:24Z"
+        },
+        {
+          "name": "Check post-#200 discrepancy mechanism scope",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-10-22T14:23:24Z",
+          "completed_at": "2026-10-22T14:23:25Z"
+        },
+        {
+          "name": "Probe post-#200 discrepancy mechanism schedule",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-10-22T14:23:25Z",
+          "completed_at": "2026-10-22T14:23:26Z"
+        },
+        {
+          "name": "Certify post-#200 Q14 discrepancy mechanism",
+          "status": "in_progress",
+          "conclusion": null,
+          "number": 10,
+          "started_at": "2026-10-22T14:23:26Z",
+          "completed_at": null
+        },
+        {
+          "name": "Post Run actions/setup-python@v5",
+          "status": "pending",
+          "conclusion": null,
+          "number": 19,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "pending",
+          "conclusion": null,
+          "number": 20,
+          "started_at": null,
+          "completed_at": null
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/check-runs/119868478872",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 1000117247,
+      "runner_name": "GitHub Actions 1000117247",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    }
+  ]
+}

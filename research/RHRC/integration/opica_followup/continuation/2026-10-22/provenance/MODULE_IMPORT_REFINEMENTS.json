@@ -148,14 +148,15 @@
     {
       "module": "Zeta23.OPICAFollowup.DilatedComb",
       "path": "Zeta23/OPICAFollowup/DilatedComb.lean",
-      "source_sha256": "3eb6177419b40cf9ffb0fe8c428f2f924cb560c5a87fd4db039e288b63aef3bf",
-      "validation_status": "WIP_UNACCEPTED_NO_NEW_COMPILER_ACCEPTANCE",
+      "source_sha256": "6fd8a4016305e8898b58c64c38807b50d417e5a763487d5ccad5c6cabd4ecfc1",
+      "validation_status": "GREEN_INDEPENDENT_NARROW_MODULE_AND_CONSUMER_GATES_AGGREGATE_OPEN",
       "frozen_direct_project_imports": [
         "Zeta23.OPICAFollowup.ComplexLocalMeasures",
         "Zeta23.OPICA.SincTriangle"
       ],
       "actual_direct_imports": [
         "Zeta23.OPICAFollowup.ComplexLocalMeasures",
+        "Zeta23.OPICA.SincTriangle",
         "Mathlib.MeasureTheory.Measure.Count",
         "Mathlib.MeasureTheory.Integral.Bochner.SumMeasure",
         "Mathlib.Analysis.Fourier.PoissonSummation",
@@ -163,25 +164,25 @@
         "Mathlib.Tactic"
       ],
       "actual_direct_project_imports": [
-        "Zeta23.OPICAFollowup.ComplexLocalMeasures"
-      ],
-      "added_project_imports": [],
-      "omitted_planned_project_imports": [
+        "Zeta23.OPICAFollowup.ComplexLocalMeasures",
         "Zeta23.OPICA.SincTriangle"
       ],
+      "added_project_imports": [],
+      "omitted_planned_project_imports": [],
       "baseline_9b_source_present": false,
       "baseline_9b_direct_imports": null,
       "reconciliation_status": "PARTIAL_WIP_IMPORT_DELTA_RECORDED;FULL_FROZEN_CONTRACT_RECONCILIATION_OPEN",
-      "reason": "Imported as a preserved WIP candidate. This provenance inventory records actual dependencies but does not certify elaboration, scope completeness, or imported conclusions.",
+      "reason": "Stage1 exact narrow proof and interface/import delta reviewed in STAGE1_PROOF_CROSSWALK.json. Other original roots and global dependency reconciliation remain OPEN.",
       "theorem_statement_changes_authorized": [],
       "new_assumptions_authorized": [],
-      "aggregate_dependency_audit": "OPEN"
+      "aggregate_dependency_audit": "OPEN",
+      "independent_receipt": "evidence/current-codex/stage1/comb/STATUS.json"
     },
     {
       "module": "Zeta23.OPICAFollowup.FirstCellCost",
       "path": "Zeta23/OPICAFollowup/FirstCellCost.lean",
-      "source_sha256": "f33cb041e817a158bc2c2d8720ab933d0ea3d73f1b86e734e220eb6d2f5e06e6",
-      "validation_status": "WIP_UNACCEPTED_NO_NEW_COMPILER_ACCEPTANCE",
+      "source_sha256": "badaa178fb17a03b71b01bbf17372ee73688fcb5f8607cb5a47c0f55412ceeeb",
+      "validation_status": "GREEN_INDEPENDENT_NARROW_MODULE_AND_CONSUMER_GATES_AGGREGATE_OPEN",
       "frozen_direct_project_imports": [
         "Zeta23.OPICAFollowup.RenormalizedCoPoisson"
       ],
@@ -204,10 +205,11 @@
       "baseline_9b_source_present": false,
       "baseline_9b_direct_imports": null,
       "reconciliation_status": "PARTIAL_WIP_IMPORT_DELTA_RECORDED;FULL_FROZEN_CONTRACT_RECONCILIATION_OPEN",
-      "reason": "Imported as a preserved WIP candidate. This provenance inventory records actual dependencies but does not certify elaboration, scope completeness, or imported conclusions.",
+      "reason": "Stage1 exact narrow proof and interface/import delta reviewed in STAGE1_PROOF_CROSSWALK.json. Other original roots and global dependency reconciliation remain OPEN.",
       "theorem_statement_changes_authorized": [],
       "new_assumptions_authorized": [],
-      "aggregate_dependency_audit": "OPEN"
+      "aggregate_dependency_audit": "OPEN",
+      "independent_receipt": "evidence/current-codex/stage1/first-cell/STATUS.json"
     },
     {
       "module": "Zeta23.OPICAFollowup.MaskedNativeRate",
@@ -248,8 +250,8 @@
     {
       "module": "Zeta23.OPICAFollowup.MultiplicityTail",
       "path": "Zeta23/OPICAFollowup/MultiplicityTail.lean",
-      "source_sha256": "5cd8bc952f6a1dcc7894d49b3113569e1d828491149ebdd672cf9d0b8a218780",
-      "validation_status": "WIP_UNACCEPTED_NO_NEW_COMPILER_ACCEPTANCE",
+      "source_sha256": "4fff73ef0f59ae602cfafcbdc9d3fa557316aedaf75429e27be19566a7d3926a",
+      "validation_status": "GREEN_INDEPENDENT_NARROW_MODULE_AND_CONSUMER_GATES_AGGREGATE_OPEN",
       "frozen_direct_project_imports": [
         "Zeta23.OPICAFollowup.AuxiliaryCompletions",
         "Zeta23.OPICAFollowup.UniformSourceBounds",
@@ -261,7 +263,7 @@
         "Zeta23.ExceptionalZero.NativeActualInputZeroJets",
         "Mathlib.Analysis.Calculus.Deriv.Polynomial",
         "Mathlib.MeasureTheory.Integral.Gamma",
-        "Mathlib.Analysis.InnerProductSpace.L2Space"
+        "Mathlib.MeasureTheory.Function.L2Space"
       ],
       "actual_direct_project_imports": [
         "Zeta23.OPICAFollowup.AuxiliaryCompletions",
@@ -273,16 +275,17 @@
       "baseline_9b_source_present": false,
       "baseline_9b_direct_imports": null,
       "reconciliation_status": "PROJECT_IMPORT_SET_MATCHES_FROZEN_PLAN",
-      "reason": "Imported as a preserved WIP candidate. This provenance inventory records actual dependencies but does not certify elaboration, scope completeness, or imported conclusions.",
+      "reason": "Stage1 exact narrow proof and interface/import delta reviewed in STAGE1_PROOF_CROSSWALK.json. Other original roots and global dependency reconciliation remain OPEN.",
       "theorem_statement_changes_authorized": [],
       "new_assumptions_authorized": [],
-      "aggregate_dependency_audit": "OPEN"
+      "aggregate_dependency_audit": "OPEN",
+      "independent_receipt": "evidence/current-codex/stage1/multiplicity/LAGUERRE_STATUS.json"
     },
     {
       "module": "Zeta23.OPICAFollowup.RenormalizedCoPoisson",
       "path": "Zeta23/OPICAFollowup/RenormalizedCoPoisson.lean",
-      "source_sha256": "219bb69956bf69f3a517da69eac72e04cd5aab33e350b10d701e0eec58b8bfad",
-      "validation_status": "WIP_UNACCEPTED_NO_NEW_COMPILER_ACCEPTANCE",
+      "source_sha256": "ad5546231c74696031e5980dac9b8b445d6ff388326679fd4f8fbd68dedda39f",
+      "validation_status": "GREEN_INDEPENDENT_NARROW_MODULE_AND_CONSUMER_GATES_AGGREGATE_OPEN",
       "frozen_direct_project_imports": [
         "Zeta23.OPICAFollowup.DilatedComb"
       ],
@@ -291,6 +294,7 @@
         "Zeta23.ExceptionalZero.ZetaRealStripNonvanishing",
         "Mathlib.Analysis.SpecialFunctions.Complex.Log",
         "Mathlib.Analysis.SpecialFunctions.Trigonometric.Complex",
+        "Mathlib.Analysis.SpecialFunctions.Trigonometric.DerivHyp",
         "Mathlib.Analysis.Real.Pi.Bounds",
         "Mathlib.Tactic"
       ],
@@ -299,8 +303,8 @@
         "Zeta23.ExceptionalZero.ZetaRealStripNonvanishing"
       ],
       "added_project_imports": [
-        "Zeta23.OPICAFollowup.ComplexLocalMeasures",
-        "Zeta23.ExceptionalZero.ZetaRealStripNonvanishing"
+        "Zeta23.ExceptionalZero.ZetaRealStripNonvanishing",
+        "Zeta23.OPICAFollowup.ComplexLocalMeasures"
       ],
       "omitted_planned_project_imports": [
         "Zeta23.OPICAFollowup.DilatedComb"
@@ -308,10 +312,12 @@
       "baseline_9b_source_present": false,
       "baseline_9b_direct_imports": null,
       "reconciliation_status": "PARTIAL_WIP_IMPORT_DELTA_RECORDED;FULL_FROZEN_CONTRACT_RECONCILIATION_OPEN",
-      "reason": "Imported as a preserved WIP candidate. This provenance inventory records actual dependencies but does not certify elaboration, scope completeness, or imported conclusions.",
+      "reason": "Stage1 exact narrow proof and interface/import delta reviewed in STAGE1_PROOF_CROSSWALK.json. Other original roots and global dependency reconciliation remain OPEN.",
       "theorem_statement_changes_authorized": [],
       "new_assumptions_authorized": [],
-      "aggregate_dependency_audit": "OPEN"
+      "aggregate_dependency_audit": "OPEN",
+      "independent_receipt": "evidence/current-codex/stage1/first-cell/STATUS.json"
     }
-  ]
+  ],
+  "latest_stage_crosswalk": "provenance/STAGE1_PROOF_CROSSWALK.json"
 }

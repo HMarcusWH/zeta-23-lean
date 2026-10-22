@@ -1,0 +1,25 @@
+{
+  "total_count": 1,
+  "artifacts": [
+    {
+      "id": 12430394100,
+      "node_id": "MDg6QXJ0aWZhY3QxMjQzMDM5NDEwMA==",
+      "name": "post287-wp6-signed-ray",
+      "size_in_bytes": 1134,
+      "url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/artifacts/12430394100",
+      "archive_download_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/artifacts/12430394100/zip",
+      "expired": false,
+      "digest": "sha256:ed7c5e498539c31768971d6857b64b48ac3023a4f9f3b6dc50bd413f3a830304",
+      "created_at": "2026-10-22T13:59:45Z",
+      "updated_at": "2026-10-22T13:59:45Z",
+      "expires_at": "2027-01-20T13:56:02Z",
+      "workflow_run": {
+        "id": 39791294212,
+        "repository_id": 1339954300,
+        "head_repository_id": 1339954300,
+        "head_branch": "research/opica-native-followup",
+        "head_sha": "9ccea78eb5ee0c097bde05424e43de58a589b713"
+      }
+    }
+  ]
+}

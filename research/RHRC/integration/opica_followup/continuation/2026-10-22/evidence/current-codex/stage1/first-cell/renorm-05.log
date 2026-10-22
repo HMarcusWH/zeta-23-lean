@@ -1,0 +1,108 @@
+Zeta23/OPICAFollowup/RenormalizedCoPoisson.lean:119:33: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Zeta23/OPICAFollowup/RenormalizedCoPoisson.lean:142:13: warning: This simp argument is unused:
+  mul_zero
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Complex.mul_re, Complex.mul_im, Complex.ofReal_re, Complex.ofReal_im, zero_mul, sub_zero, add_zero,
+    zero_add]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+Zeta23/OPICAFollowup/RenormalizedCoPoisson.lean:142:40: warning: This simp argument is unused:
+  zero_add
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Complex.mul_re, Complex.mul_im, Complex.ofReal_re, Complex.ofReal_im, zero_mul, mul_zero, sub_zero,
+    add_zero]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+Zeta23/OPICAFollowup/RenormalizedCoPoisson.lean:264:10: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  Real.sinh ?m.544 = 0
+in the target expression
+  Real.sinh (delta * (a / |gamma|)) ≠ 0
+
+case left
+delta gamma : ℝ
+hdelta : delta ≠ 0
+hheight : 2 * Real.pi / Real.log 2 < |gamma|
+z : ℂ
+hz : z ≠ 0
+hg : 0 < |gamma|
+hgne : gamma ≠ 0
+A : ℂ := ⋯
+hA : A ≠ 0
+hpoint :
+  ∀ (a : ℝ), 0 < a → a ≤ 2 * Real.pi → 0 < a / |gamma| ∧ a / |gamma| < Real.log 2 ∧ Real.exp (a / |gamma|) ∈ Set.Ioo 1 2
+htrig : ∀ (a : ℝ), gamma * (a / |gamma|) = if 0 < gamma then a else -a
+a : ℝ
+ha : 0 < a
+hpos : 0 < a / |gamma|
+⊢ Real.sinh (delta * (a / |gamma|)) ≠ 0
+Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+Zeta23/OPICAFollowup/RenormalizedCoPoisson.lean:280:54: error: unsolved goals
+delta gamma : ℝ
+hdelta : delta ≠ 0
+hheight : 2 * Real.pi / Real.log 2 < |gamma|
+z : ℂ
+hz : z ≠ 0
+hg : 0 < |gamma|
+hgne : gamma ≠ 0
+A : ℂ := z * ((1 / 4 - (↑delta + ↑gamma * I) ^ 2) / (↑delta + ↑gamma * I))
+hA : A ≠ 0
+hpoint :
+  ∀ (a : ℝ), 0 < a → a ≤ 2 * Real.pi → 0 < a / |gamma| ∧ a / |gamma| < Real.log 2 ∧ Real.exp (a / |gamma|) ∈ Set.Ioo 1 2
+htrig : ∀ (a : ℝ), gamma * (a / |gamma|) = if 0 < gamma then a else -a
+hsinh : ∀ (a : ℝ), 0 < a → Real.sinh (delta * (a / |gamma|)) ≠ 0 ∧ (0 < Real.sinh (delta * (a / |gamma|)) ↔ 0 < delta)
+hAre : A.re = 0
+hAi : A.im ≠ 0
+hu₀ : 0 < Real.pi / 2 / |gamma|
+hu₁ : Real.pi / 2 / |gamma| < Real.log 2
+hx : Real.exp (Real.pi / 2 / |gamma|) ∈ Set.Ioo 1 2
+hv₀ : 0 < 3 * Real.pi / 2 / |gamma|
+hv₁ : 3 * Real.pi / 2 / |gamma| < Real.log 2
+hy : Real.exp (3 * Real.pi / 2 / |gamma|) ∈ Set.Ioo 1 2
+hxf :
+  (z * coPoissonComplexDensity (coPoissonRho delta gamma) (Real.exp (Real.pi / (2 * |gamma|)))).re =
+    have A := z * ((1 / 4 - (↑delta + ↑gamma * I) ^ 2) / (↑delta + ↑gamma * I));
+    Real.exp (-(Real.pi / (2 * |gamma|)) / 2) *
+      (A.re * Real.sinh (delta * (Real.pi / (2 * |gamma|))) * Real.cos (gamma * (Real.pi / (2 * |gamma|))) -
+        A.im * Real.cosh (delta * (Real.pi / (2 * |gamma|))) * Real.sin (gamma * (Real.pi / (2 * |gamma|))))
+hyf :
+  (z * coPoissonComplexDensity (coPoissonRho delta gamma) (Real.exp (3 * Real.pi / (2 * |gamma|)))).re =
+    have A := z * ((1 / 4 - (↑delta + ↑gamma * I) ^ 2) / (↑delta + ↑gamma * I));
+    Real.exp (-(3 * Real.pi / (2 * |gamma|)) / 2) *
+      (A.re * Real.sinh (delta * (3 * Real.pi / (2 * |gamma|))) * Real.cos (gamma * (3 * Real.pi / (2 * |gamma|))) -
+        A.im * Real.cosh (delta * (3 * Real.pi / (2 * |gamma|))) * Real.sin (gamma * (3 * Real.pi / (2 * |gamma|))))
+hhalf : gamma * (Real.pi / (2 * |gamma|)) = if 0 < gamma then Real.pi / 2 else -Real.pi / 2
+hthree : gamma * (3 * Real.pi / (2 * |gamma|)) = if 0 < gamma then Real.pi / 2 + Real.pi else -(Real.pi / 2 + Real.pi)
+h✝ : ¬0 < gamma
+hpos :
+  0 <
+    Real.exp (-(Real.pi / (2 * |gamma|)) / 2) * Real.exp (-(3 * Real.pi / (2 * |gamma|)) / 2) * A.im ^ 2 *
+        Real.cosh (delta * (Real.pi / (2 * |gamma|))) *
+      Real.cosh (delta * (3 * Real.pi / (2 * |gamma|)))
+⊢ Real.exp (Real.pi * |gamma|⁻¹ * (-1 / 4)) * A.im ^ 2 * Real.cosh (Real.pi * |gamma|⁻¹ * delta * (1 / 2)) *
+          Real.sin (Real.pi * (-1 / 2)) *
+        Real.exp (Real.pi * |gamma|⁻¹ * (-3 / 4)) *
+      Real.cosh (Real.pi * |gamma|⁻¹ * delta * (3 / 2)) =
+    -(Real.exp (Real.pi * |gamma|⁻¹ * (-1 / 4)) * A.im ^ 2 * Real.cosh (Real.pi * |gamma|⁻¹ * delta * (1 / 2)) *
+          Real.exp (Real.pi * |gamma|⁻¹ * (-3 / 4)) *
+        Real.cosh (Real.pi * |gamma|⁻¹ * delta * (3 / 2)))

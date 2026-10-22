@@ -4,9 +4,9 @@ Original scope: 100 primary identities and 28 acceptance units. Current gate evi
 
 ## Status
 - 41: `PROVED_IN_ORIGINAL_41_ROOT_SOURCE_BOUND_SUBSET`
-- 6: `PROVED_NARROW_LOCAL_GATES_AGGREGATE_PENDING`, including all three auxiliary roots with preserved independent consumer and axiom checks
+- 10: `PROVED_NARROW_LOCAL_GATES_AGGREGATE_PENDING`, including four original candidate repairs in [Stage 1](STAGE1_HANDOVER.md)
 - 48: `OPEN_NO_COMPLETE_CANDIDATE`
-- 5: `PRIOR_CANDIDATE_FAILED_OR_BLOCKED_UNACCEPTED`
+- 1: `PRIOR_CANDIDATE_FAILED_OR_BLOCKED_UNACCEPTED`: `step123_word_jet_consumer`
 
 ## 48 roots without complete candidate implementations
 
@@ -120,8 +120,8 @@ Original scope: 100 primary identities and 28 acceptance units. Current gate evi
 
 ## Other unfinished gates
 
-Repair and verify all five previous candidates and implement the 48 absent roots above. The six mask, complex-measure and auxiliary roots have passed narrow module, independent consumer and standard-axiom gates; the auxiliary consumer rerun is preserved. These local results do not establish current aggregate acceptance. Revalidate all changed dependencies and the original 41 in the current aggregate. Complete the facade, actual-domain consumers, full type/constructor/axiom/private TYPE-VALUE-STRUCTURE closure, all-100 evidence linkage, compiler-derived mapped registered dependencies, route-less registration, canonical generation and every required final workflow.
+Finish and verify the retained same-output word/jet candidate and implement the 48 absent roots above. Ten roots now have narrow module, independent consumer and standard-axiom gates; the four Stage 1 candidate repairs are documented separately. These local results do not establish current aggregate acceptance. Revalidate all changed dependencies and the original 41 in the current aggregate. Complete the facade, actual-domain consumers, full type/constructor/axiom/private TYPE-VALUE-STRUCTURE closure, all-100 evidence linkage, compiler-derived mapped registered dependencies, route-less registration, canonical generation and every required final workflow.
 
-The parent metadata repairs and selected tests do not establish complete extension acceptance. Existing subset builders still select 41 roots. Full release deliberately remains closed.
+The parent metadata repairs and infrastructure tests do not establish complete extension acceptance. The explicit subset builder still selects 41 historical roots. The new full100 protocol requires an independent unset review seal and actual cold production/replay; parent/runtime/generated/workflow companions remain unfinished. Full release deliberately remains closed.
 
 Retain the original real cutoff, palette delay, source-order, multiplicity, endpoint atom, initial-interval and growth scope. Do not substitute hypotheses asserting a desired native conclusion. RH and Step 4 remain OPEN.

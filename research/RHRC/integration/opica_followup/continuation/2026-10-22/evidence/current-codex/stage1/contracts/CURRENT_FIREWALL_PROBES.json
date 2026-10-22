@@ -1,0 +1,33 @@
+{
+  "schema": "OPICA_STAGE1_CURRENT_FIREWALL_PROBES_V1",
+  "checked_head": "9ccea78eb5ee0c097bde05424e43de58a589b713",
+  "working_tree_dirty": true,
+  "source_sha256": {
+    "build_receipt.py": "595f6ddca04699c9bc47e61cdcfa3a4c50a6e95d44871cd839b6976e7d688c8a",
+    "validate_contract.py": "4e0fe00909b8e18018bbb8161598237d8cbbac8c6c67a13eb671526e58190766",
+    "tests/test_receipt.py": "05178dec40cd432eb0d2d1707fc9f01073917e16d8b2e3d7f3827afbe6527872",
+    "tests/test_contract.py": "5d18b98b74ad3cef78d9d10755f3a665f5385b4e5b0979b57d4ae8f7fd0fb8e1"
+  },
+  "cases": [
+    {
+      "case": "current-full-production",
+      "exit_code": 1,
+      "log": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage1-2026-10-22\\contracts\\current-full-production.log",
+      "sha256": "e67b2419ecb7b7a935330d2d100d8dcb609378b41c0a739ca13fbede69f0d5de",
+      "rejects_unestablished_independent_review": true
+    },
+    {
+      "case": "historical41-release",
+      "exit_code": 1,
+      "log": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage1-2026-10-22\\contracts\\historical41-release.log",
+      "sha256": "5dbf08ec07396cf1bd02a59662e6c53df70ee9b05dbb0258a748cdef405a509e",
+      "rejects_unestablished_independent_review": true
+    }
+  ],
+  "full_production_output_exists": false,
+  "Lean_proof_build_invoked": false,
+  "release_ready": false,
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "scope": "Failure probes only; no all100 proof or parent acceptance created."
+}

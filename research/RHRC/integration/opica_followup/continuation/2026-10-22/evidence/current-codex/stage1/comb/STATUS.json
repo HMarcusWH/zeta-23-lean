@@ -1,0 +1,105 @@
+{
+  "schema": "OPICA_STAGE1_COMB_NARROW_PROOF_V1",
+  "status": "PASS_NARROW_EXACT_SOURCE_IMPORTED_FULL_TYPE_DOMAIN_AND_STANDARD_AXIOMS",
+  "root": "Zeta23.OPICAFollowup.dilated_comb_fourier",
+  "source": "Zeta23/OPICAFollowup/DilatedComb.lean",
+  "source_sha256": "6fd8a4016305e8898b58c64c38807b50d417e5a763487d5ccad5c6cabd4ecfc1",
+  "consumer": "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedComb.lean",
+  "consumer_sha256": "3a5305b65175d6b046075ecbebc9a9f37690e6677bb74ed9d3bd8796d58100f9",
+  "main_source_equal_isolated_compiled_source": true,
+  "observed_main_head": "9ccea78eb5ee0c097bde05424e43de58a589b713",
+  "isolated_base_head": "9b6a9a3a2badb4cff62a56c1158d9cef8759d30d",
+  "scope": "Owned source overlay in isolated checkout; not a whole-main-tree or full100 compiler build",
+  "compiler": "Lean (version 4.33.0-rc2, x86_64-w64-windows-gnu, commit d8b18978322de05a8f3dba51ef03cf5461676c17, Release)",
+  "mathlib_commit": "51e6992efd06126df61a496bebf8f49482a4e129",
+  "saved_object_sha256": "bbd8517c5aed5bec88535826a307c373885314e9c0ae278e671ca03fc0285e78",
+  "commands": [
+    {
+      "label": "dilated-comb-final",
+      "cwd": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-audit28",
+      "command": [
+        "C:\\Users\\macka\\.elan\\toolchains\\leanprover--lean4---v4.33.0-rc2\\bin\\lake.exe",
+        "env",
+        "lean",
+        "-DmaxHeartbeats=800000",
+        "-DrelaxedAutoImplicit=false",
+        "-o",
+        ".lake/build/lib/lean/Zeta23/OPICAFollowup/DilatedComb.olean",
+        "Zeta23/OPICAFollowup/DilatedComb.lean"
+      ],
+      "started": "2026-10-22T14:33:20.646488+00:00",
+      "base_head": "9b6a9a3a2badb4cff62a56c1158d9cef8759d30d",
+      "scope": "Isolated source overlay; source hashes must be bound before proof promotion",
+      "exit_code": 0,
+      "seconds": 119.79167180007789,
+      "finished": "2026-10-22T14:35:20.481960+00:00",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "expected-comb-final",
+      "cwd": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-audit28",
+      "command": [
+        "C:\\Users\\macka\\.elan\\toolchains\\leanprover--lean4---v4.33.0-rc2\\bin\\lake.exe",
+        "env",
+        "lean",
+        "-DmaxHeartbeats=800000",
+        "-DrelaxedAutoImplicit=false",
+        "C:/Users/macka/.codex/.chatgpt-projects/g-p-6a353c7268b08191b685956e466d73e4/work/opica-followup-repo/research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedComb.lean"
+      ],
+      "started": "2026-10-22T14:35:43.296209+00:00",
+      "base_head": "9b6a9a3a2badb4cff62a56c1158d9cef8759d30d",
+      "scope": "Isolated source overlay; source hashes must be bound before proof promotion",
+      "exit_code": 0,
+      "seconds": 95.60095170000568,
+      "finished": "2026-10-22T14:37:18.949560+00:00",
+      "log_sha256": "734c070f4cda62336fd2eee3017a5143b7831b2e17fbe4ef8c33e2c91b227ac6"
+    }
+  ],
+  "printed_axiom_closures": {
+    "Zeta23.OPICAFollowup.dilated_comb_fourier": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Zeta23.OPICAFollowup.expected_dilated_comb_fourier": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Zeta23.OPICAFollowup.dilatedCombMeasure_origin": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Zeta23.OPICAFollowup.expected_comb_absolute_pairing": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Zeta23.OPICAFollowup.expected_comb_negative_dilation": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "actual_domain_controls": [
+    "literal scaled counting measure on all integers",
+    "origin atom exp(t/2)",
+    "both integer signs",
+    "all real dilations including t=-log(2)",
+    "t=0 Fourier self-duality",
+    "actual absolute Schwartz pairing",
+    "all R>=0 point counts"
+  ],
+  "canonical_interfaces": [
+    "dilatedComb",
+    "combPairing"
+  ],
+  "new_assumptions": [],
+  "frozen_statement_changes": [],
+  "aggregate_current_source_export": "OPEN",
+  "full_release_acceptance": "OPEN",
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "independent_closing_inequalities": "OPEN"
+}

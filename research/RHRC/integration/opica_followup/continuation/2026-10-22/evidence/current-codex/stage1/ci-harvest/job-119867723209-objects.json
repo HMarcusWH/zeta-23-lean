@@ -1,0 +1,15 @@
+[
+  {
+    "status": "EXPERIMENTAL_SIGNAL",
+    "signs": [
+      [
+        true,
+        false
+      ],
+      [
+        false,
+        true
+      ]
+    ]
+  }
+]

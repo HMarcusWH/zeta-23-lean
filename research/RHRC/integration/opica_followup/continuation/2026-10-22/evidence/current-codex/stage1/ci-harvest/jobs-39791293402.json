@@ -1,0 +1,129 @@
+{
+  "total_count": 1,
+  "jobs": [
+    {
+      "id": 119867716007,
+      "run_id": 39791293402,
+      "workflow_name": "RHRC post-214 kernel dual geometry",
+      "head_branch": "research/opica-native-followup",
+      "run_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/runs/39791293402",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOT94UfM8AAAAb6Kwxpw",
+      "head_sha": "9ccea78eb5ee0c097bde05424e43de58a589b713",
+      "url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/jobs/119867716007",
+      "html_url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39791293402/job/119867716007",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-22T13:56:03Z",
+      "started_at": "2026-10-22T14:05:43Z",
+      "completed_at": "2026-10-22T14:07:26Z",
+      "name": "post214-kernel-dual-geometry",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-22T14:05:44Z",
+          "completed_at": "2026-10-22T14:05:45Z"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-22T14:05:45Z",
+          "completed_at": "2026-10-22T14:06:58Z"
+        },
+        {
+          "name": "Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-22T14:06:58Z",
+          "completed_at": "2026-10-22T14:06:58Z"
+        },
+        {
+          "name": "Install R003 numerical audit requirements",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-22T14:06:58Z",
+          "completed_at": "2026-10-22T14:07:19Z"
+        },
+        {
+          "name": "Check post-#214 kernel dual-geometry scope",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-22T14:07:19Z",
+          "completed_at": "2026-10-22T14:07:19Z"
+        },
+        {
+          "name": "Freeze inherited post-#214 dual-geometry centers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-10-22T14:07:19Z",
+          "completed_at": "2026-10-22T14:07:20Z"
+        },
+        {
+          "name": "Independently check dual-geometry implementation",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-10-22T14:07:20Z",
+          "completed_at": "2026-10-22T14:07:22Z"
+        },
+        {
+          "name": "Certify post-#214 kernel dual geometry",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-10-22T14:07:22Z",
+          "completed_at": "2026-10-22T14:07:24Z"
+        },
+        {
+          "name": "Check certificate claim firewall",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-10-22T14:07:24Z",
+          "completed_at": "2026-10-22T14:07:24Z"
+        },
+        {
+          "name": "Post Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 17,
+          "started_at": "2026-10-22T14:07:24Z",
+          "completed_at": "2026-10-22T14:07:24Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 18,
+          "started_at": "2026-10-22T14:07:24Z",
+          "completed_at": "2026-10-22T14:07:25Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 19,
+          "started_at": "2026-10-22T14:07:25Z",
+          "completed_at": "2026-10-22T14:07:25Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/check-runs/119867716007",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 1000117214,
+      "runner_name": "GitHub Actions 1000117214",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    }
+  ]
+}

@@ -16,6 +16,11 @@ The repaired parent wrapper still rejects the missing full-100 reviewed type
 table and receipt linkage. Its regression/metadata checks do not prove any new
 child mathematics or grant registration authority.
 
+The follow-up [Stage 1 handover](../opica_followup/continuation/2026-10-22/STAGE1_HANDOVER.md)
+records new narrow Laguerre/comb/first-cell proofs and full100 receipt
+infrastructure. Its unset full review seal and unfinished independent release
+companions keep overall child acceptance closed.
+
 Import accepted APIs with `import Zeta23.OPICA`. Preserve parent mathematical
 Lean sources, frozen contracts and existing OPEN claims. The earlier checkpoint
 report and command examples below remain historical provenance; obtain fresh

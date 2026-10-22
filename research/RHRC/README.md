@@ -7,12 +7,12 @@ For active OPICA work, start with [the root README](../../README.md),
 [root agent instructions](../../AGENTS.md) and the
 [22 October continuation guide](integration/opica_followup/continuation/2026-10-22/README.md).
 The active branch is `research/opica-native-followup`, draft PR #294. The accepted
-OPICA parent is merged PR #293; the combined proof-source checkpoint is `a77ae604`.
+OPICA parent is merged PR #293. Read the [Stage 1 handover](integration/opica_followup/continuation/2026-10-22/STAGE1_HANDOVER.md) for new repaired source hashes.
 
 The full target remains 100 original roots in 28 acceptance units: 41 historical
-source-bound roots, six additional narrow local results, five unaccepted
-candidates and 48 absent implementations. These counts do not establish
-aggregate 47-root acceptance. Use the
+source-bound roots, ten additional narrow local results, one unaccepted
+candidate and 48 absent implementations. These counts do not establish
+aggregate 51-root acceptance. Use the
 [per-root ledger](integration/opica_followup/continuation/2026-10-22/ROOT_LEDGER_100.json)
 for actual proof/consumer/axiom/aggregate stages.
 

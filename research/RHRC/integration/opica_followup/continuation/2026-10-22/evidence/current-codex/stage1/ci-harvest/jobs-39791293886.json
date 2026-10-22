@@ -1,0 +1,378 @@
+{
+  "total_count": 9,
+  "jobs": [
+    {
+      "id": 119871864523,
+      "run_id": 39791293886,
+      "workflow_name": "RHRC post268 complete audit replay",
+      "head_branch": "research/opica-native-followup",
+      "run_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/runs/39791293886",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOT94UfM8AAAAb6Ot-yw",
+      "head_sha": "9ccea78eb5ee0c097bde05424e43de58a589b713",
+      "url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/jobs/119871864523",
+      "html_url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39791293886/job/119871864523",
+      "status": "in_progress",
+      "conclusion": null,
+      "created_at": "2026-10-22T14:04:16Z",
+      "started_at": "2026-10-22T14:35:20Z",
+      "completed_at": null,
+      "name": "Extended audit shard 1",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-22T14:35:21Z",
+          "completed_at": "2026-10-22T14:35:23Z"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-22T14:35:23Z",
+          "completed_at": "2026-10-22T14:36:32Z"
+        },
+        {
+          "name": "Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-22T14:36:32Z",
+          "completed_at": "2026-10-22T14:36:32Z"
+        },
+        {
+          "name": "Install complete numerical environment",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-22T14:36:32Z",
+          "completed_at": "2026-10-22T14:36:43Z"
+        },
+        {
+          "name": "Run every assigned check without hiding failures",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-22T14:36:43Z",
+          "completed_at": "2026-10-22T14:36:57Z"
+        },
+        {
+          "name": "Run actions/upload-artifact@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-10-22T14:36:57Z",
+          "completed_at": "2026-10-22T14:36:58Z"
+        },
+        {
+          "name": "Post Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11,
+          "started_at": "2026-10-22T14:36:58Z",
+          "completed_at": "2026-10-22T14:36:58Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12,
+          "started_at": "2026-10-22T14:36:58Z",
+          "completed_at": "2026-10-22T14:36:59Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13,
+          "started_at": "2026-10-22T14:36:59Z",
+          "completed_at": "2026-10-22T14:36:59Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/check-runs/119871864523",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 1000117282,
+      "runner_name": "GitHub Actions 1000117282",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    },
+    {
+      "id": 119871864806,
+      "run_id": 39791293886,
+      "workflow_name": "RHRC post268 complete audit replay",
+      "head_branch": "research/opica-native-followup",
+      "run_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/runs/39791293886",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOT94UfM8AAAAb6Ot_5g",
+      "head_sha": "9ccea78eb5ee0c097bde05424e43de58a589b713",
+      "url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/jobs/119871864806",
+      "html_url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39791293886/job/119871864806",
+      "status": "queued",
+      "conclusion": null,
+      "created_at": "2026-10-22T14:04:16Z",
+      "started_at": "2026-10-22T14:04:16Z",
+      "completed_at": null,
+      "name": "Extended audit shard 6",
+      "steps": [],
+      "check_run_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/check-runs/119871864806",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 0,
+      "runner_name": "",
+      "runner_group_id": 0,
+      "runner_group_name": ""
+    },
+    {
+      "id": 119871864827,
+      "run_id": 39791293886,
+      "workflow_name": "RHRC post268 complete audit replay",
+      "head_branch": "research/opica-native-followup",
+      "run_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/runs/39791293886",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOT94UfM8AAAAb6Ot_-w",
+      "head_sha": "9ccea78eb5ee0c097bde05424e43de58a589b713",
+      "url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/jobs/119871864827",
+      "html_url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39791293886/job/119871864827",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-22T14:04:16Z",
+      "started_at": "2026-10-22T14:08:34Z",
+      "completed_at": "2026-10-22T14:09:46Z",
+      "name": "Audit runner adversarial regressions",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-22T14:08:35Z",
+          "completed_at": "2026-10-22T14:08:36Z"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-22T14:08:36Z",
+          "completed_at": "2026-10-22T14:09:42Z"
+        },
+        {
+          "name": "Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-22T14:09:42Z",
+          "completed_at": "2026-10-22T14:09:42Z"
+        },
+        {
+          "name": "Test producer-consumer and fail-closed harvest contracts",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-22T14:09:42Z",
+          "completed_at": "2026-10-22T14:09:43Z"
+        },
+        {
+          "name": "Post Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-10-22T14:09:43Z",
+          "completed_at": "2026-10-22T14:09:43Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-10-22T14:09:43Z",
+          "completed_at": "2026-10-22T14:09:43Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-10-22T14:09:43Z",
+          "completed_at": "2026-10-22T14:09:43Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/check-runs/119871864827",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 1000117227,
+      "runner_name": "GitHub Actions 1000117227",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    },
+    {
+      "id": 119871864937,
+      "run_id": 39791293886,
+      "workflow_name": "RHRC post268 complete audit replay",
+      "head_branch": "research/opica-native-followup",
+      "run_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/runs/39791293886",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOT94UfM8AAAAb6OuAaQ",
+      "head_sha": "9ccea78eb5ee0c097bde05424e43de58a589b713",
+      "url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/jobs/119871864937",
+      "html_url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39791293886/job/119871864937",
+      "status": "queued",
+      "conclusion": null,
+      "created_at": "2026-10-22T14:04:16Z",
+      "started_at": "2026-10-22T14:04:16Z",
+      "completed_at": null,
+      "name": "Extended audit shard 2",
+      "steps": [],
+      "check_run_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/check-runs/119871864937",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 0,
+      "runner_name": "",
+      "runner_group_id": 0,
+      "runner_group_name": ""
+    },
+    {
+      "id": 119871864976,
+      "run_id": 39791293886,
+      "workflow_name": "RHRC post268 complete audit replay",
+      "head_branch": "research/opica-native-followup",
+      "run_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/runs/39791293886",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOT94UfM8AAAAb6OuAkA",
+      "head_sha": "9ccea78eb5ee0c097bde05424e43de58a589b713",
+      "url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/jobs/119871864976",
+      "html_url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39791293886/job/119871864976",
+      "status": "queued",
+      "conclusion": null,
+      "created_at": "2026-10-22T14:04:16Z",
+      "started_at": "2026-10-22T14:04:16Z",
+      "completed_at": null,
+      "name": "Extended audit shard 7",
+      "steps": [],
+      "check_run_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/check-runs/119871864976",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 0,
+      "runner_name": "",
+      "runner_group_id": 0,
+      "runner_group_name": ""
+    },
+    {
+      "id": 119871864987,
+      "run_id": 39791293886,
+      "workflow_name": "RHRC post268 complete audit replay",
+      "head_branch": "research/opica-native-followup",
+      "run_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/runs/39791293886",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOT94UfM8AAAAb6OuAmw",
+      "head_sha": "9ccea78eb5ee0c097bde05424e43de58a589b713",
+      "url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/jobs/119871864987",
+      "html_url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39791293886/job/119871864987",
+      "status": "queued",
+      "conclusion": null,
+      "created_at": "2026-10-22T14:04:16Z",
+      "started_at": "2026-10-22T14:04:16Z",
+      "completed_at": null,
+      "name": "Extended audit shard 4",
+      "steps": [],
+      "check_run_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/check-runs/119871864987",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 0,
+      "runner_name": "",
+      "runner_group_id": 0,
+      "runner_group_name": ""
+    },
+    {
+      "id": 119871865008,
+      "run_id": 39791293886,
+      "workflow_name": "RHRC post268 complete audit replay",
+      "head_branch": "research/opica-native-followup",
+      "run_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/runs/39791293886",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOT94UfM8AAAAb6OuAsA",
+      "head_sha": "9ccea78eb5ee0c097bde05424e43de58a589b713",
+      "url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/jobs/119871865008",
+      "html_url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39791293886/job/119871865008",
+      "status": "queued",
+      "conclusion": null,
+      "created_at": "2026-10-22T14:04:16Z",
+      "started_at": "2026-10-22T14:04:16Z",
+      "completed_at": null,
+      "name": "Extended audit shard 3",
+      "steps": [],
+      "check_run_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/check-runs/119871865008",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 0,
+      "runner_name": "",
+      "runner_group_id": 0,
+      "runner_group_name": ""
+    },
+    {
+      "id": 119871865120,
+      "run_id": 39791293886,
+      "workflow_name": "RHRC post268 complete audit replay",
+      "head_branch": "research/opica-native-followup",
+      "run_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/runs/39791293886",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOT94UfM8AAAAb6OuBIA",
+      "head_sha": "9ccea78eb5ee0c097bde05424e43de58a589b713",
+      "url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/jobs/119871865120",
+      "html_url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39791293886/job/119871865120",
+      "status": "queued",
+      "conclusion": null,
+      "created_at": "2026-10-22T14:04:16Z",
+      "started_at": "2026-10-22T14:04:16Z",
+      "completed_at": null,
+      "name": "Extended audit shard 0",
+      "steps": [],
+      "check_run_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/check-runs/119871865120",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 0,
+      "runner_name": "",
+      "runner_group_id": 0,
+      "runner_group_name": ""
+    },
+    {
+      "id": 119871865229,
+      "run_id": 39791293886,
+      "workflow_name": "RHRC post268 complete audit replay",
+      "head_branch": "research/opica-native-followup",
+      "run_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/runs/39791293886",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOT94UfM8AAAAb6OuBjQ",
+      "head_sha": "9ccea78eb5ee0c097bde05424e43de58a589b713",
+      "url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/jobs/119871865229",
+      "html_url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39791293886/job/119871865229",
+      "status": "queued",
+      "conclusion": null,
+      "created_at": "2026-10-22T14:04:16Z",
+      "started_at": "2026-10-22T14:04:16Z",
+      "completed_at": null,
+      "name": "Extended audit shard 5",
+      "steps": [],
+      "check_run_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/check-runs/119871865229",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 0,
+      "runner_name": "",
+      "runner_group_id": 0,
+      "runner_group_name": ""
+    }
+  ]
+}

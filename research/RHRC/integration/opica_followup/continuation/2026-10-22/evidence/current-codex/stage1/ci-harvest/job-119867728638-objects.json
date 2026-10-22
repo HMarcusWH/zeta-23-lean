@@ -1,0 +1,873 @@
+[
+  {
+    "status": "PASS",
+    "authority": "EXACT_FINITE_CONTROL",
+    "RH_status": "OPEN",
+    "scope": "28 rational geometries, K=3..9; one symbolic modified-prime source-atom control",
+    "is_actual_zeta": false,
+    "Lean_authority": false,
+    "assertion_count": 311,
+    "modified_atom_checks": {
+      "original_rank_one": true,
+      "corrected_rank_one": true,
+      "uncorrected_source_is_false": true
+    }
+  },
+  {
+    "status": "PASS",
+    "authority": "EXACT_FINITE_CONTROL",
+    "RH_status": "OPEN",
+    "scope": "complex 2D adjoint sign control and four pole-neutral scalar tie controls",
+    "is_actual_zeta": false,
+    "Lean_authority": false,
+    "strict_odd_checks": {
+      "rank_one_identity": true,
+      "adjoint_identity": true,
+      "strict_odd_ground": true,
+      "odd_reconstruction": true,
+      "odd_overlap_nonzero": true,
+      "odd_ray_normalization": true,
+      "missing_minus_fails": true,
+      "unitary_inverse_substitution_fails": true,
+      "unconjugated_riesz_fails": true,
+      "odd_determinant_at_-5": true,
+      "odd_determinant_at_-3": true,
+      "odd_determinant_at_-2": true,
+      "odd_determinant_at_0": true
+    },
+    "assertion_count": 38
+  },
+  {
+    "status": "PASS",
+    "authority": "EXACT_FINITE_CONTROL",
+    "RH_status": "OPEN",
+    "scope": "one complex Hermitian split with two-dimensional detector complement",
+    "is_actual_zeta": false,
+    "Lean_authority": false,
+    "checks": {
+      "hermitian": true,
+      "same_trial_unit": true,
+      "same_trial_deep": true,
+      "predecessor_positive": true,
+      "completion_of_squares": true,
+      "complement_nonzero": true,
+      "detector_loss_lower": true,
+      "threshold_less_than_half_depth": true,
+      "complement_dimension_two": true,
+      "channels_sum_same_residual": true,
+      "variance_identity": true,
+      "complex_gram_sum": true,
+      "diagonal_only_gram_fails": true
+    },
+    "trial_energy": "-76/25",
+    "trial_depth": "3",
+    "threshold": "1",
+    "detector_schur_loss": "-2432/375",
+    "assertion_count": 13
+  },
+  {
+    "status": "PASS",
+    "authority": "EXACT_FINITE_CONTROL",
+    "RH_status": "OPEN",
+    "is_actual_zeta": false,
+    "Lean_authority": false,
+    "scope": "192 rational nested-bottom controls with both parities and explicit empty predecessor",
+    "branch_counts": {
+      "STRICT_EVEN": 59,
+      "STRICT_ODD": 67,
+      "TIE": 66
+    },
+    "empty_predecessor_cases": 8,
+    "assertion_count": 1722
+  },
+  {
+    "status": "PASS",
+    "authority": "EXACT_FINITE_CONTROL",
+    "is_actual_zeta": false,
+    "is_generated_detector": false,
+    "Lean_authority": false,
+    "RH_status": "OPEN",
+    "inverse_budget_checks": {
+      "threshold_window": true,
+      "lambda_separate_from_threshold": true,
+      "both_predecessors_threshold_gap": true,
+      "ground_shift_gap_2g": true,
+      "detector_shift_gap_g": true,
+      "ground_budget_exact": true,
+      "detector_budget_exact": true,
+      "wrong_ground_budget_for_detector_fails": true
+    },
+    "ground_inverse_budget": "2",
+    "detector_inverse_budget": "4",
+    "eta": "5",
+    "lambda": "-21/4",
+    "gap": "1/4",
+    "conclusion": "Cutoff predecessor separation does not bound the parity gap. Common-shift-invariant source data do not determine the absolute energy.",
+    "assertion_count": 112
+  },
+  {
+    "status": "PASS",
+    "assertion_count": 261,
+    "terminal_claim": "RH_OPEN"
+  },
+  {
+    "status": "PASS",
+    "controls": 4,
+    "adversarial_mutations_rejected": 4,
+    "scope": "two supplied fixed exact controls plus separate synthetic PN trial/range controls",
+    "RH": "OPEN",
+    "Lean_authority": false
+  },
+  {
+    "status": "PASS",
+    "controls": 4,
+    "adversarial_mutations_rejected": 4,
+    "scope": "two supplied fixed exact controls plus separate synthetic PN trial/range controls",
+    "RH": "OPEN",
+    "Lean_authority": false
+  },
+  {
+    "authority": "SYNTHETIC_VALIDATOR_TEST_ONLY",
+    "claim_cap": "RH_OPEN",
+    "handoff_receipt_mutation_count": 43,
+    "handoff_receipt_mutations": [
+      "failed compiler named-root receipt",
+      "failed receipt integrity",
+      "stale compiler head",
+      "stale compiler tree",
+      "missing compiler context",
+      "stale compiler context head",
+      "stale compiler context tree",
+      "wrong declared Lean toolchain",
+      "wrong actual Lean compiler",
+      "wrong Mathlib revision",
+      "unclean tracked compiler sources",
+      "missing pinned dependency context",
+      "wrong pinned dependency revision",
+      "unclean pinned dependency",
+      "duplicate pinned dependency",
+      "missing compiler log hash",
+      "wrong audited root count",
+      "empty claimed compiler audit",
+      "forged normalized type hash",
+      "changed normalized type",
+      "missing full type expression",
+      "changed full type expression",
+      "wrong full type expression format",
+      "missing constructor inventory",
+      "missing inductive constructor types",
+      "changed constructor expression",
+      "duplicate constructor expression",
+      "constructor inventory on theorem",
+      "wrong compiler origin module",
+      "wrong compiler declaration kind",
+      "stale per-root tree",
+      "failed per-root axiom audit",
+      "unadmitted root axiom",
+      "missing root axioms",
+      "theorem authority on wrong root",
+      "mismatched theorem alias",
+      "unregistered forged compiler root",
+      "duplicated audited compiler root",
+      "dossier missing literal type",
+      "dossier changed constructor type",
+      "failed five-name exploit",
+      "names-only exploit",
+      "explicit failed sparse receipt"
+    ],
+    "schema": "post290.research-artifact-mutations.v1",
+    "source_identity_mutation_count": 37,
+    "source_identity_mutations": [
+      "legacy scalar source hash",
+      "empty raw source map",
+      "empty normalized source map",
+      "missing normalized source map",
+      "missing raw source path",
+      "missing normalized source path",
+      "same-key truncated source maps",
+      "same-key unexpected source path",
+      "source_raw_sha256 uppercase hash",
+      "source_raw_sha256 short hash",
+      "source_raw_sha256 nonhex hash",
+      "source_raw_sha256 nonstring hash",
+      "source_sha256 uppercase hash",
+      "source_sha256 short hash",
+      "source_sha256 nonhex hash",
+      "source_sha256 nonstring hash",
+      "missing commit",
+      "commit short",
+      "commit nonhex",
+      "commit nonstring",
+      "missing tree",
+      "tree short",
+      "tree nonhex",
+      "tree nonstring",
+      "dirty",
+      "numeric dirty flag",
+      "string dirty flag",
+      "missing clean source flag",
+      "wrong source normalization mode",
+      "checker raw map impersonates normalized map",
+      "wrong checker source normalization mode",
+      "missing checker raw map",
+      "empty checker raw map",
+      "checker raw scalar",
+      "missing checker raw path",
+      "unexpected checker raw path",
+      "malformed checker raw hash"
+    ],
+    "status": "PASS",
+    "tested": [
+      "44-pair identity",
+      "numerical inconsistency",
+      "same-source protection",
+      "no generated-detector impersonation",
+      "missing replay",
+      "OPEN cuts",
+      "44 unreviewed proof fields",
+      "compiler-candidate dossier",
+      "unapproved template integrity",
+      "independent review gate",
+      "handoff cap",
+      "exact compiler receipt authority guard",
+      "worked same-source lower/upper comparison",
+      "literal full type and constructor visibility",
+      "canonical per-path source identity maps"
+    ]
+  },
+  {
+    "authority": "SYNTHETIC_VALIDATOR_TEST_ONLY",
+    "claim_cap": "RH_OPEN",
+    "handoff_receipt_mutation_count": 43,
+    "handoff_receipt_mutations": [
+      "failed compiler named-root receipt",
+      "failed receipt integrity",
+      "stale compiler head",
+      "stale compiler tree",
+      "missing compiler context",
+      "stale compiler context head",
+      "stale compiler context tree",
+      "wrong declared Lean toolchain",
+      "wrong actual Lean compiler",
+      "wrong Mathlib revision",
+      "unclean tracked compiler sources",
+      "missing pinned dependency context",
+      "wrong pinned dependency revision",
+      "unclean pinned dependency",
+      "duplicate pinned dependency",
+      "missing compiler log hash",
+      "wrong audited root count",
+      "empty claimed compiler audit",
+      "forged normalized type hash",
+      "changed normalized type",
+      "missing full type expression",
+      "changed full type expression",
+      "wrong full type expression format",
+      "missing constructor inventory",
+      "missing inductive constructor types",
+      "changed constructor expression",
+      "duplicate constructor expression",
+      "constructor inventory on theorem",
+      "wrong compiler origin module",
+      "wrong compiler declaration kind",
+      "stale per-root tree",
+      "failed per-root axiom audit",
+      "unadmitted root axiom",
+      "missing root axioms",
+      "theorem authority on wrong root",
+      "mismatched theorem alias",
+      "unregistered forged compiler root",
+      "duplicated audited compiler root",
+      "dossier missing literal type",
+      "dossier changed constructor type",
+      "failed five-name exploit",
+      "names-only exploit",
+      "explicit failed sparse receipt"
+    ],
+    "schema": "post290.research-artifact-mutations.v1",
+    "source_identity_mutation_count": 37,
+    "source_identity_mutations": [
+      "legacy scalar source hash",
+      "empty raw source map",
+      "empty normalized source map",
+      "missing normalized source map",
+      "missing raw source path",
+      "missing normalized source path",
+      "same-key truncated source maps",
+      "same-key unexpected source path",
+      "source_raw_sha256 uppercase hash",
+      "source_raw_sha256 short hash",
+      "source_raw_sha256 nonhex hash",
+      "source_raw_sha256 nonstring hash",
+      "source_sha256 uppercase hash",
+      "source_sha256 short hash",
+      "source_sha256 nonhex hash",
+      "source_sha256 nonstring hash",
+      "missing commit",
+      "commit short",
+      "commit nonhex",
+      "commit nonstring",
+      "missing tree",
+      "tree short",
+      "tree nonhex",
+      "tree nonstring",
+      "dirty",
+      "numeric dirty flag",
+      "string dirty flag",
+      "missing clean source flag",
+      "wrong source normalization mode",
+      "checker raw map impersonates normalized map",
+      "wrong checker source normalization mode",
+      "missing checker raw map",
+      "empty checker raw map",
+      "checker raw scalar",
+      "missing checker raw path",
+      "unexpected checker raw path",
+      "malformed checker raw hash"
+    ],
+    "status": "PASS",
+    "tested": [
+      "44-pair identity",
+      "numerical inconsistency",
+      "same-source protection",
+      "no generated-detector impersonation",
+      "missing replay",
+      "OPEN cuts",
+      "44 unreviewed proof fields",
+      "compiler-candidate dossier",
+      "unapproved template integrity",
+      "independent review gate",
+      "handoff cap",
+      "exact compiler receipt authority guard",
+      "worked same-source lower/upper comparison",
+      "literal full type and constructor visibility",
+      "canonical per-path source identity maps"
+    ]
+  },
+  {
+    "status": "PASS",
+    "synthetic_only": true,
+    "adversarial_rejections": 23,
+    "finite_rows_preserved": 176,
+    "symbolic_rows": 7,
+    "field_statements": 44,
+    "independent_semantic_approval": false,
+    "RH": "OPEN"
+  },
+  {
+    "status": "PASS",
+    "synthetic_only": true,
+    "adversarial_rejections": 23,
+    "finite_rows_preserved": 176,
+    "symbolic_rows": 7,
+    "field_statements": 44,
+    "independent_semantic_approval": false,
+    "RH": "OPEN"
+  },
+  {
+    "Lean_authority": false,
+    "claim_cap": "RH_OPEN",
+    "rejected_mutation_count": 43,
+    "row_count": 20,
+    "rows": [
+      {
+        "Lean_authority": false,
+        "authority": "EXACT_FINITE_CONTROL",
+        "label": "SOURCE_MISMATCH",
+        "reason": "The P-squared source has one Q factor; correlation has Q squared.",
+        "rejected_mutations": [
+          "replace single Q by Q squared"
+        ],
+        "row": 1,
+        "status": "PASS"
+      },
+      {
+        "Lean_authority": false,
+        "authority": "EXACT_FINITE_CONTROL",
+        "label": "WRONG_TRANSFORM_POINT",
+        "reason": "The correct shifted physical-Y zero is p=w+epsilon, with no conjugation.",
+        "rejected_mutations": [
+          "pair at conjugate w",
+          "omit positive damping shift"
+        ],
+        "row": 2,
+        "status": "PASS"
+      },
+      {
+        "Lean_authority": false,
+        "authority": "EXACT_FINITE_CONTROL",
+        "label": "WRONG_ZERO_JET_ORDER",
+        "reason": "Differentiating a multiplicity-m zero makes Y have order m-1.",
+        "rejected_mutations": [
+          "use zero multiplicity m as Y order"
+        ],
+        "row": 3,
+        "status": "PASS"
+      },
+      {
+        "Lean_authority": false,
+        "authority": "EXACT_FINITE_CONTROL",
+        "label": "WRONG_JET_COEFFICIENT",
+        "reason": "The exact derivative and Laplace parity give (-1)^m R J m! once.",
+        "rejected_mutations": [
+          "extra factorial",
+          "omit parity sign"
+        ],
+        "row": 4,
+        "status": "PASS"
+      },
+      {
+        "Lean_authority": false,
+        "authority": "EXACT_FINITE_CONTROL",
+        "label": "EXCEPTIONAL_POINT_MISMATCH",
+        "reason": "A removable pole product is evaluated by its limit, not 0 times 0.",
+        "rejected_mutations": [
+          "totalized zero times pole at exceptional point"
+        ],
+        "row": 5,
+        "status": "PASS"
+      },
+      {
+        "Lean_authority": false,
+        "authority": "EXACT_FINITE_CONTROL",
+        "label": "WRONG_SHIFT_BUDGET",
+        "reason": "The exact predecessor inverses attain distinct 6 and 12 budgets.",
+        "rejected_mutations": [
+          "swap lambda and minus-eta inverse budgets"
+        ],
+        "row": 6,
+        "status": "PASS"
+      },
+      {
+        "Lean_authority": false,
+        "authority": "EXACT_FINITE_CONTROL",
+        "label": "UNSUPPORTED_SPECTRAL_IDENTIFICATION",
+        "reason": "A separated selector lambda and arbitrarily small strict parity gap remain distinct.",
+        "rejected_mutations": [
+          "identify lambda with minus eta",
+          "replace actual parity gap by depth third"
+        ],
+        "row": 7,
+        "status": "PASS"
+      },
+      {
+        "Lean_authority": false,
+        "authority": "EXACT_FINITE_CONTROL",
+        "label": "WRONG_CARRIER_MAP",
+        "reason": "A nonunitary D0 needs its inverse in the even reconstruction.",
+        "rejected_mutations": [
+          "drop D0 inverse"
+        ],
+        "row": 8,
+        "status": "PASS"
+      },
+      {
+        "Lean_authority": false,
+        "authority": "EXACT_FINITE_CONTROL",
+        "label": "WRONG_ADJOINT_IDENTITY",
+        "reason": "The complex odd identity requires the adjoint and its reconstruction minus sign.",
+        "rejected_mutations": [
+          "drop strict-odd minus sign",
+          "substitute D0 inverse for D0 adjoint",
+          "treat D0 as unitary in the odd ray"
+        ],
+        "row": 9,
+        "status": "PASS"
+      },
+      {
+        "Lean_authority": false,
+        "authority": "EXACT_FINITE_CONTROL",
+        "label": "INAPPLICABLE_BRANCH",
+        "reason": "The even carrier guard rejects a nonzero odd vector before using M4.",
+        "rejected_mutations": [
+          "apply even residual premise to odd vector"
+        ],
+        "row": 10,
+        "status": "PASS"
+      },
+      {
+        "Lean_authority": false,
+        "authority": "EXACT_FINITE_CONTROL",
+        "label": "OMITTED_NORMAL_TERM",
+        "reason": "The retained K3 continuum defect is the nonzero corrected normal term.",
+        "rejected_mutations": [
+          "set neutral continuum defect to zero"
+        ],
+        "row": 11,
+        "status": "PASS"
+      },
+      {
+        "Lean_authority": false,
+        "authority": "EXACT_FINITE_CONTROL",
+        "label": "WRONG_SCHUR_SPACE",
+        "reason": "The full detector Schur completion fails after a nonzero complement component is lost.",
+        "rejected_mutations": [
+          "replace two-dimensional detector complement by first shell"
+        ],
+        "row": 12,
+        "status": "PASS"
+      },
+      {
+        "Lean_authority": false,
+        "authority": "EXACT_FINITE_CONTROL",
+        "label": "INCOMPLETE_FORCING",
+        "reason": "All four signed prime arguments and the nonzero interior contribution are retained.",
+        "rejected_mutations": [
+          "delete reflected fourth prime history",
+          "discard original interior history"
+        ],
+        "row": 13,
+        "status": "PASS"
+      },
+      {
+        "Lean_authority": false,
+        "authority": "EXACT_FINITE_CONTROL",
+        "label": "WRONG_COMPRESSION",
+        "reason": "The legal K3 response has a nonzero pole-normal component removed by Qe.",
+        "rejected_mutations": [
+          "replace neutral response by legal response"
+        ],
+        "row": 14,
+        "status": "PASS"
+      },
+      {
+        "Lean_authority": false,
+        "authority": "EXACT_FINITE_CONTROL",
+        "label": "UNPROVED_PROPERTY_TRANSPORT",
+        "reason": "A positive source does not make a distinct negative-eigenvalue ground positive.",
+        "rejected_mutations": [
+          "transfer source positivity to sign-changing finite ground"
+        ],
+        "row": 15,
+        "status": "PASS"
+      },
+      {
+        "Lean_authority": false,
+        "authority": "EXACT_FINITE_CONTROL",
+        "label": "MISSING_DOMAIN_LIMIT_THEOREM",
+        "reason": "An invisible adjoint-kernel component persists despite finite observed decay.",
+        "rejected_mutations": [
+          "promote observed finite decay to full range membership"
+        ],
+        "row": 16,
+        "status": "PASS"
+      },
+      {
+        "Lean_authority": false,
+        "authority": "VALIDATOR_CONTROL",
+        "label": "INCOMPLETE_NUMERICAL_COVERAGE",
+        "reason": "Real release and harvest guards reject missing coverage and skipped/unrun work.",
+        "rejected_mutations": [
+          "mark unrun_tiles complete",
+          "mark unresolved_tiles complete",
+          "mark unverified_tiles complete",
+          "required skipped checker reported passed",
+          "harvest accepts completed/skipped as scientific completion",
+          "harvest accepts in_progress/None as scientific completion"
+        ],
+        "row": 17,
+        "status": "PASS"
+      },
+      {
+        "Lean_authority": false,
+        "authority": "VALIDATOR_CONTROL",
+        "label": "EVIDENCE_INTEGRITY_FAILURE",
+        "reason": "Real compiler/receipt validators reject tree/type drift, duplicate roots, APIs and kinds.",
+        "rejected_mutations": [
+          "stale source tree",
+          "duplicate compiler root",
+          "missing public API",
+          "wrong declaration kind",
+          "stale normalized theorem type hash",
+          "missing requested public API receipt"
+        ],
+        "row": 18,
+        "status": "PASS"
+      },
+      {
+        "Lean_authority": false,
+        "authority": "VALIDATOR_CONTROL",
+        "label": "INCOMPLETE_PRODUCER",
+        "reason": "Real complete-output, provenance and release validators require review and typed consumers.",
+        "rejected_mutations": [
+          "completion without separately supplied semantic review",
+          "typed contract root comes from an unrelated module",
+          "claimed approval with no signed GitHub review",
+          "completion with an unresolved field review",
+          "source author labelled independent reviewer",
+          "completion flag with absent typed contract",
+          "producer completion flag alone"
+        ],
+        "row": 19,
+        "status": "PASS"
+      },
+      {
+        "Lean_authority": false,
+        "authority": "VALIDATOR_CONTROL",
+        "label": "SCIENTIFIC_DISPOSITION_MISMATCH",
+        "reason": "An honest UNRESOLVED diagnostic is preserved and cannot satisfy the finite positivity gate.",
+        "rejected_mutations": [
+          "diagnostic unresolved rows promoted to positivity",
+          "rewrite a successful diagnostic job result as POSITIVE"
+        ],
+        "row": 20,
+        "status": "PASS"
+      }
+    ],
+    "scope": "Exact finite mathematical and synthetic real-validator controls; no release authority.",
+    "status": "PASS"
+  },
+  {
+    "Lean_authority": false,
+    "claim_cap": "RH_OPEN",
+    "rejected_mutation_count": 43,
+    "row_count": 20,
+    "rows": [
+      {
+        "Lean_authority": false,
+        "authority": "EXACT_FINITE_CONTROL",
+        "label": "SOURCE_MISMATCH",
+        "reason": "The P-squared source has one Q factor; correlation has Q squared.",
+        "rejected_mutations": [
+          "replace single Q by Q squared"
+        ],
+        "row": 1,
+        "status": "PASS"
+      },
+      {
+        "Lean_authority": false,
+        "authority": "EXACT_FINITE_CONTROL",
+        "label": "WRONG_TRANSFORM_POINT",
+        "reason": "The correct shifted physical-Y zero is p=w+epsilon, with no conjugation.",
+        "rejected_mutations": [
+          "pair at conjugate w",
+          "omit positive damping shift"
+        ],
+        "row": 2,
+        "status": "PASS"
+      },
+      {
+        "Lean_authority": false,
+        "authority": "EXACT_FINITE_CONTROL",
+        "label": "WRONG_ZERO_JET_ORDER",
+        "reason": "Differentiating a multiplicity-m zero makes Y have order m-1.",
+        "rejected_mutations": [
+          "use zero multiplicity m as Y order"
+        ],
+        "row": 3,
+        "status": "PASS"
+      },
+      {
+        "Lean_authority": false,
+        "authority": "EXACT_FINITE_CONTROL",
+        "label": "WRONG_JET_COEFFICIENT",
+        "reason": "The exact derivative and Laplace parity give (-1)^m R J m! once.",
+        "rejected_mutations": [
+          "extra factorial",
+          "omit parity sign"
+        ],
+        "row": 4,
+        "status": "PASS"
+      },
+      {
+        "Lean_authority": false,
+        "authority": "EXACT_FINITE_CONTROL",
+        "label": "EXCEPTIONAL_POINT_MISMATCH",
+        "reason": "A removable pole product is evaluated by its limit, not 0 times 0.",
+        "rejected_mutations": [
+          "totalized zero times pole at exceptional point"
+        ],
+        "row": 5,
+        "status": "PASS"
+      },
+      {
+        "Lean_authority": false,
+        "authority": "EXACT_FINITE_CONTROL",
+        "label": "WRONG_SHIFT_BUDGET",
+        "reason": "The exact predecessor inverses attain distinct 6 and 12 budgets.",
+        "rejected_mutations": [
+          "swap lambda and minus-eta inverse budgets"
+        ],
+        "row": 6,
+        "status": "PASS"
+      },
+      {
+        "Lean_authority": false,
+        "authority": "EXACT_FINITE_CONTROL",
+        "label": "UNSUPPORTED_SPECTRAL_IDENTIFICATION",
+        "reason": "A separated selector lambda and arbitrarily small strict parity gap remain distinct.",
+        "rejected_mutations": [
+          "identify lambda with minus eta",
+          "replace actual parity gap by depth third"
+        ],
+        "row": 7,
+        "status": "PASS"
+      },
+      {
+        "Lean_authority": false,
+        "authority": "EXACT_FINITE_CONTROL",
+        "label": "WRONG_CARRIER_MAP",
+        "reason": "A nonunitary D0 needs its inverse in the even reconstruction.",
+        "rejected_mutations": [
+          "drop D0 inverse"
+        ],
+        "row": 8,
+        "status": "PASS"
+      },
+      {
+        "Lean_authority": false,
+        "authority": "EXACT_FINITE_CONTROL",
+        "label": "WRONG_ADJOINT_IDENTITY",
+        "reason": "The complex odd identity requires the adjoint and its reconstruction minus sign.",
+        "rejected_mutations": [
+          "drop strict-odd minus sign",
+          "substitute D0 inverse for D0 adjoint",
+          "treat D0 as unitary in the odd ray"
+        ],
+        "row": 9,
+        "status": "PASS"
+      },
+      {
+        "Lean_authority": false,
+        "authority": "EXACT_FINITE_CONTROL",
+        "label": "INAPPLICABLE_BRANCH",
+        "reason": "The even carrier guard rejects a nonzero odd vector before using M4.",
+        "rejected_mutations": [
+          "apply even residual premise to odd vector"
+        ],
+        "row": 10,
+        "status": "PASS"
+      },
+      {
+        "Lean_authority": false,
+        "authority": "EXACT_FINITE_CONTROL",
+        "label": "OMITTED_NORMAL_TERM",
+        "reason": "The retained K3 continuum defect is the nonzero corrected normal term.",
+        "rejected_mutations": [
+          "set neutral continuum defect to zero"
+        ],
+        "row": 11,
+        "status": "PASS"
+      },
+      {
+        "Lean_authority": false,
+        "authority": "EXACT_FINITE_CONTROL",
+        "label": "WRONG_SCHUR_SPACE",
+        "reason": "The full detector Schur completion fails after a nonzero complement component is lost.",
+        "rejected_mutations": [
+          "replace two-dimensional detector complement by first shell"
+        ],
+        "row": 12,
+        "status": "PASS"
+      },
+      {
+        "Lean_authority": false,
+        "authority": "EXACT_FINITE_CONTROL",
+        "label": "INCOMPLETE_FORCING",
+        "reason": "All four signed prime arguments and the nonzero interior contribution are retained.",
+        "rejected_mutations": [
+          "delete reflected fourth prime history",
+          "discard original interior history"
+        ],
+        "row": 13,
+        "status": "PASS"
+      },
+      {
+        "Lean_authority": false,
+        "authority": "EXACT_FINITE_CONTROL",
+        "label": "WRONG_COMPRESSION",
+        "reason": "The legal K3 response has a nonzero pole-normal component removed by Qe.",
+        "rejected_mutations": [
+          "replace neutral response by legal response"
+        ],
+        "row": 14,
+        "status": "PASS"
+      },
+      {
+        "Lean_authority": false,
+        "authority": "EXACT_FINITE_CONTROL",
+        "label": "UNPROVED_PROPERTY_TRANSPORT",
+        "reason": "A positive source does not make a distinct negative-eigenvalue ground positive.",
+        "rejected_mutations": [
+          "transfer source positivity to sign-changing finite ground"
+        ],
+        "row": 15,
+        "status": "PASS"
+      },
+      {
+        "Lean_authority": false,
+        "authority": "EXACT_FINITE_CONTROL",
+        "label": "MISSING_DOMAIN_LIMIT_THEOREM",
+        "reason": "An invisible adjoint-kernel component persists despite finite observed decay.",
+        "rejected_mutations": [
+          "promote observed finite decay to full range membership"
+        ],
+        "row": 16,
+        "status": "PASS"
+      },
+      {
+        "Lean_authority": false,
+        "authority": "VALIDATOR_CONTROL",
+        "label": "INCOMPLETE_NUMERICAL_COVERAGE",
+        "reason": "Real release and harvest guards reject missing coverage and skipped/unrun work.",
+        "rejected_mutations": [
+          "mark unrun_tiles complete",
+          "mark unresolved_tiles complete",
+          "mark unverified_tiles complete",
+          "required skipped checker reported passed",
+          "harvest accepts completed/skipped as scientific completion",
+          "harvest accepts in_progress/None as scientific completion"
+        ],
+        "row": 17,
+        "status": "PASS"
+      },
+      {
+        "Lean_authority": false,
+        "authority": "VALIDATOR_CONTROL",
+        "label": "EVIDENCE_INTEGRITY_FAILURE",
+        "reason": "Real compiler/receipt validators reject tree/type drift, duplicate roots, APIs and kinds.",
+        "rejected_mutations": [
+          "stale source tree",
+          "duplicate compiler root",
+          "missing public API",
+          "wrong declaration kind",
+          "stale normalized theorem type hash",
+          "missing requested public API receipt"
+        ],
+        "row": 18,
+        "status": "PASS"
+      },
+      {
+        "Lean_authority": false,
+        "authority": "VALIDATOR_CONTROL",
+        "label": "INCOMPLETE_PRODUCER",
+        "reason": "Real complete-output, provenance and release validators require review and typed consumers.",
+        "rejected_mutations": [
+          "completion without separately supplied semantic review",
+          "typed contract root comes from an unrelated module",
+          "claimed approval with no signed GitHub review",
+          "completion with an unresolved field review",
+          "source author labelled independent reviewer",
+          "completion flag with absent typed contract",
+          "producer completion flag alone"
+        ],
+        "row": 19,
+        "status": "PASS"
+      },
+      {
+        "Lean_authority": false,
+        "authority": "VALIDATOR_CONTROL",
+        "label": "SCIENTIFIC_DISPOSITION_MISMATCH",
+        "reason": "An honest UNRESOLVED diagnostic is preserved and cannot satisfy the finite positivity gate.",
+        "rejected_mutations": [
+          "diagnostic unresolved rows promoted to positivity",
+          "rewrite a successful diagnostic job result as POSITIVE"
+        ],
+        "row": 20,
+        "status": "PASS"
+      }
+    ],
+    "scope": "Exact finite mathematical and synthetic real-validator controls; no release authority.",
+    "status": "PASS"
+  }
+]

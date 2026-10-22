@@ -2,16 +2,16 @@ import Zeta23.OPICAFollowup.ComplexLocalMeasures
 import Zeta23.ExceptionalZero.ZetaRealStripNonvanishing
 import Mathlib.Analysis.SpecialFunctions.Complex.Log
 import Mathlib.Analysis.SpecialFunctions.Trigonometric.Complex
+import Mathlib.Analysis.SpecialFunctions.Trigonometric.DerivHyp
 import Mathlib.Analysis.Real.Pi.Bounds
 import Mathlib.Tactic
 
 /-!
-UNCHECKED continuation at 9b6a9a3.  The density below is the literal finite
-power-sum density of the frozen co-Poisson construction.  The first-cell sign
-root is attempted without assuming positivity, a synthetic zero, or existence
-of a measure with desired Fourier properties.  The distributional construction,
-local-total-variation identification and complete zero-measure property roots
-remain OPEN; this file does not hide them inside a structure field.
+The density below is the literal inclusive finite-power-sum density of the
+frozen co-Poisson construction. Its first-cell sign identities use no positivity
+assumption, synthetic zero or assumed measure with desired Fourier properties.
+The distributional construction, local-total-variation identification and
+complete zero-measure property roots remain OPEN and are separate obligations.
 -/
 
 noncomputable section
@@ -38,8 +38,9 @@ def coPoissonKappa (rho : ℂ) : ℂ := rho*(1-rho)
 
 lemma coPoisson_first_cell_sum (rho : ℂ) {x : ℝ} (hx : x∈Ioo (1:ℝ) 2) :
     coPoissonPowerSums rho x=(x:ℂ)^(-rho)-(x:ℂ)^(rho-1) := by
-  have hfloor : Nat.floor x=1 := Nat.floor_eq_iff (by linarith : 0≤x) |>.2
-    ⟨hx.1.le,hx.2⟩
+  have hx0 : (0:ℝ)≤x := zero_le_one.trans hx.1.le
+  have hfloor : Nat.floor x=1 := (Nat.floor_eq_iff hx0).2
+    (by norm_num; exact ⟨hx.1.le,hx.2⟩)
   simp [coPoissonPowerSums,hfloor]
 
 lemma coPoisson_normalizer (rho : ℂ) (h0 : rho≠0) (h1 : rho≠1) :
@@ -51,9 +52,11 @@ lemma coPoisson_normalizer (rho : ℂ) (h0 : rho≠0) (h1 : rho≠1) :
 lemma coPoissonRho_ne_real_special (delta gamma : ℝ) (hg : gamma≠0) :
     coPoissonRho delta gamma≠0 ∧ coPoissonRho delta gamma≠1 ∧
       coPoissonRho delta gamma≠1/2 ∧ (delta:ℂ)+(gamma:ℂ)*I≠0 := by
-  have hi : (coPoissonRho delta gamma).im=gamma := by simp [coPoissonRho]
-  refine ⟨?_,?_,?_,?_⟩ <;> intro h <;>
-    have hh := congrArg Complex.im h <;> simp_all [coPoissonRho]
+  refine ⟨?_,?_,?_,?_⟩ <;> intro h <;> apply hg
+  all_goals
+    have hi := congrArg Complex.im h
+    norm_num [coPoissonRho,Complex.div_im] at hi
+    exact hi
 
 /-- Exact first-cell complex formula, derived from the actual finite sums. -/
 lemma coPoisson_first_cell_exp (delta gamma u : ℝ) (hg : gamma≠0)
@@ -73,24 +76,30 @@ lemma coPoisson_first_cell_exp (delta gamma u : ℝ) (hg : gamma≠0)
   have hb := coPoisson_normalizer rho h0 h1
   have hk : rho*(1-rho)=1/4-lam^2 := by dsimp [rho,coPoissonRho,lam]; ring
   have hnum : 1-2*rho=-2*lam := by dsimp [rho,coPoissonRho,lam]; ring
-  have hsplit₋ : Complex.exp ((u:ℂ)*(-rho))=
+  have hsplit_neg : Complex.exp ((u:ℂ)*(-rho))=
       ((Real.exp (-u/2):ℝ):ℂ)*Complex.exp (-(lam*(u:ℂ))) := by
-    rw [←Complex.ofReal_exp,←Complex.exp_add]
+    rw [Complex.ofReal_exp,←Complex.exp_add]
     congr 1
     dsimp [rho,coPoissonRho,lam]
     push_cast
     ring
-  have hsplit₊ : Complex.exp ((u:ℂ)*(rho-1))=
+  have hsplit_pos : Complex.exp ((u:ℂ)*(rho-1))=
       ((Real.exp (-u/2):ℝ):ℂ)*Complex.exp (lam*(u:ℂ)) := by
-    rw [←Complex.ofReal_exp,←Complex.exp_add]
+    rw [Complex.ofReal_exp,←Complex.exp_add]
     congr 1
     dsimp [rho,coPoissonRho,lam]
     push_cast
     ring
   unfold coPoissonComplexDensity
   rw [abs_of_pos (Real.exp_pos u),coPoisson_first_cell_sum rho hx,hpow,hpow,
-    hsplit₋,hsplit₊,hb,hk,hnum,Complex.sinh_eq]
-  field_simp [hL]
+    hsplit_neg,hsplit_pos,hb,hk,hnum,Complex.sinh]
+  change (((Real.exp (-u/2):ℝ):ℂ)*Complex.exp (-(lam*(u:ℂ))) -
+      ((Real.exp (-u/2):ℝ):ℂ)*Complex.exp (lam*(u:ℂ))) /
+      (-2*lam/(1/4-lam^2)) =
+    ((Real.exp (-u/2):ℝ):ℂ)*((1/4-lam^2)/lam)*
+      ((Complex.exp (lam*(u:ℂ))-Complex.exp (-(lam*(u:ℂ))))/2)
+  have hlam : lam≠0 := hL
+  field_simp [hlam]
   ring
 
 lemma coPoisson_quotient_re_im (delta gamma : ℝ) (hg : gamma≠0) :
@@ -102,12 +111,20 @@ lemma coPoisson_quotient_re_im (delta gamma : ℝ) (hg : gamma≠0) :
   have hsplit : (1/4-((delta:ℂ)+(gamma:ℂ)*I)^2)/((delta:ℂ)+(gamma:ℂ)*I)=
       (1/4:ℂ)/((delta:ℂ)+(gamma:ℂ)*I)-((delta:ℂ)+(gamma:ℂ)*I) := by
     field_simp [(coPoissonRho_ne_real_special delta gamma hg).2.2.2]
-    ring
   rw [hsplit]
   constructor <;> simp only [Complex.sub_re,Complex.sub_im,Complex.div_re,Complex.div_im,
     Complex.add_re,Complex.add_im,Complex.mul_re,Complex.mul_im,Complex.ofReal_re,
-    Complex.ofReal_im,Complex.I_re,Complex.I_im,Complex.normSq_apply] <;>
-    norm_num <;> field_simp [hs] <;> ring
+    Complex.ofReal_im,Complex.I_re,Complex.I_im,Complex.normSq_apply]
+  all_goals norm_num
+  all_goals field_simp [hs]
+  all_goals ring
+
+lemma coPoisson_sinh_re_im (a b : ℝ) :
+    (Complex.sinh ((a:ℂ)+(b:ℂ)*I)).re=Real.sinh a*Real.cos b ∧
+    (Complex.sinh ((a:ℂ)+(b:ℂ)*I)).im=Real.cosh a*Real.sin b := by
+  rw [Complex.sinh_add,Complex.cosh_mul_I,Complex.sinh_mul_I]
+  simp [Complex.mul_re,Complex.mul_im,Complex.sinh_ofReal_re,
+    Complex.cos_ofReal_re,Complex.sin_ofReal_re]
 
 lemma coPoisson_first_cell_real (delta gamma u : ℝ) (hg : gamma≠0)
     (hu : 0<u) (hu1 : u<Real.log 2) :
@@ -118,10 +135,13 @@ lemma coPoisson_first_cell_real (delta gamma u : ℝ) (hg : gamma≠0)
   unfold coPoissonRealDensity
   rw [coPoisson_first_cell_exp delta gamma u hg hu hu1]
   obtain ⟨hre,him⟩ := coPoisson_quotient_re_im delta gamma hg
-  simp only [Complex.mul_re,Complex.ofReal_re,Complex.ofReal_im,zero_mul,sub_zero,
-    Complex.sinh_re,Complex.sinh_im,Complex.add_re,Complex.add_im,Complex.mul_im,
-    Complex.I_re,Complex.I_im,mul_zero,mul_one,add_zero,zero_add]
-  rw [hre,him]
+  have harg : ((delta:ℂ)+(gamma:ℂ)*I)*(u:ℂ)=((delta*u:ℝ):ℂ)+((gamma*u:ℝ):ℂ)*I := by
+    push_cast
+    ring
+  obtain ⟨hsre,hsim⟩ := coPoisson_sinh_re_im (delta*u) (gamma*u)
+  simp only [Complex.mul_re,Complex.mul_im,Complex.ofReal_re,Complex.ofReal_im,
+    zero_mul,sub_zero,add_zero]
+  rw [harg,hsre,hsim,hre,him]
   ring
 
 lemma coPoisson_first_cell_gamma_abs (delta gamma u : ℝ) (hg : gamma≠0)
@@ -137,14 +157,14 @@ lemma coPoisson_first_cell_gamma_abs (delta gamma u : ℝ) (hg : gamma≠0)
 /-- A selected first-cell point has an exactly calculated negative density.
 The height threshold is strict, so the point lies inside the open cell. -/
 lemma coPoisson_first_cell_negative_value (delta gamma : ℝ)
-    (hgamma : 3*Real.pi/(2*Real.log 2)<|gamma|) :
+    (hgamma : 3*Real.pi/(2*Real.log 2) < |gamma|) :
     let u := 3*Real.pi/(2*|gamma|)
     0<u ∧ u<Real.log 2 ∧
     coPoissonRealDensity (coPoissonRho delta gamma) (Real.exp u)=
-      -|gamma|*(1+1/(4*(delta^2+gamma^2)))*
+      -|gamma| *(1+1/(4*(delta^2+gamma^2)))*
         Real.exp (-u/2)*Real.cosh (delta*u) ∧
     coPoissonRealDensity (coPoissonRho delta gamma) (Real.exp u)<0 := by
-  have hg : 0<|gamma| := lt_trans (by positivity) hgamma
+  have hg : 0< |gamma| := lt_trans (by positivity) hgamma
   have hgne : gamma≠0 := abs_pos.mp hg
   have hlog : 0<Real.log 2 := Real.log_pos (by norm_num)
   dsimp only
@@ -155,12 +175,12 @@ lemma coPoisson_first_cell_negative_value (delta gamma : ℝ)
     nlinarith
   have he := coPoisson_first_cell_real delta |gamma| (3*Real.pi/(2*|gamma|))
     hg.ne' hu hu1
-  have hang : |gamma|*(3*Real.pi/(2*|gamma|))=Real.pi+Real.pi/2 := by
+  have hang : |gamma| *(3*Real.pi/(2*|gamma|))=Real.pi/2+Real.pi := by
     field_simp [hg.ne']; ring
   rw [hang,Real.cos_add_pi,Real.sin_add_pi,Real.cos_pi_div_two,Real.sin_pi_div_two] at he
   have hid : coPoissonRealDensity (coPoissonRho delta gamma)
       (Real.exp (3*Real.pi/(2*|gamma|))) =
-      -|gamma|*(1+1/(4*(delta^2+gamma^2)))*
+      -|gamma| *(1+1/(4*(delta^2+gamma^2)))*
         Real.exp (-(3*Real.pi/(2*|gamma|))/2)*Real.cosh (delta*(3*Real.pi/(2*|gamma|))) := by
     rw [coPoisson_first_cell_gamma_abs delta gamma _ hgne hu hu1,he]
     simp only [sq_abs,neg_zero,mul_zero,mul_neg_one,zero_add]
@@ -180,21 +200,31 @@ lemma coPoisson_phase_formula (delta gamma u : ℝ) (z : ℂ) (hg : gamma≠0)
         A.im*Real.cosh (delta*u)*Real.sin (gamma*u)) := by
   rw [coPoisson_first_cell_exp delta gamma u hg hu hu1]
   dsimp only
-  rw [show z*((Real.exp (-u/2):ℝ):ℂ)*
-    ((1/4-((delta:ℂ)+(gamma:ℂ)*I)^2)/((delta:ℂ)+(gamma:ℂ)*I))*
-      Complex.sinh (((delta:ℂ)+(gamma:ℂ)*I)*(u:ℂ)) =
-    ((Real.exp (-u/2):ℝ):ℂ)*(z*((1/4-((delta:ℂ)+(gamma:ℂ)*I)^2)/
-      ((delta:ℂ)+(gamma:ℂ)*I))*Complex.sinh (((delta:ℂ)+(gamma:ℂ)*I)*(u:ℂ)) by ring]
-  simp [Complex.mul_re,Complex.sinh_re,Complex.sinh_im]
+  let Q : ℂ := (1/4-((delta:ℂ)+(gamma:ℂ)*I)^2)/((delta:ℂ)+(gamma:ℂ)*I)
+  have hmul : z*(((Real.exp (-u/2):ℝ):ℂ)*Q*
+      Complex.sinh (((delta:ℂ)+(gamma:ℂ)*I)*(u:ℂ))) =
+      ((Real.exp (-u/2):ℝ):ℂ)*((z*Q)*
+        Complex.sinh (((delta:ℂ)+(gamma:ℂ)*I)*(u:ℂ))) := by ring
+  change (z*(((Real.exp (-u/2):ℝ):ℂ)*Q*
+      Complex.sinh (((delta:ℂ)+(gamma:ℂ)*I)*(u:ℂ)))).re = _
+  rw [hmul]
+  have harg : ((delta:ℂ)+(gamma:ℂ)*I)*(u:ℂ)=((delta*u:ℝ):ℂ)+((gamma*u:ℝ):ℂ)*I := by
+    push_cast
+    ring
+  obtain ⟨hsre,hsim⟩ := coPoisson_sinh_re_im (delta*u) (gamma*u)
+  simp only [Complex.mul_re,Complex.ofReal_re,Complex.ofReal_im,zero_mul,sub_zero]
+  rw [harg,hsre,hsim]
+  dsimp [Q]
+  ring
 
 /-- Finite phase tuning cannot repair the sign of an off-line first-cell
 profile. The four test points lie in (0,log 2) before their signs are used. -/
 lemma coPoisson_phase_both_signs (delta gamma : ℝ) (hdelta : delta≠0)
-    (hheight : 2*Real.pi/Real.log 2<|gamma|) (z : ℂ) (hz : z≠0) :
-    ∃ x y ∈ Ioo (1:ℝ) 2,
+    (hheight : 2*Real.pi/Real.log 2 < |gamma|) (z : ℂ) (hz : z≠0) :
+    ∃ x y : ℝ, x∈Ioo (1:ℝ) 2 ∧ y∈Ioo (1:ℝ) 2 ∧
       0<(z*coPoissonComplexDensity (coPoissonRho delta gamma) x).re ∧
       (z*coPoissonComplexDensity (coPoissonRho delta gamma) y).re<0 := by
-  have hg : 0<|gamma| := lt_trans (by positivity) hheight
+  have hg : 0< |gamma| := lt_trans (by positivity) hheight
   have hgne : gamma≠0 := abs_pos.mp hg
   let A := z*((1/4-((delta:ℂ)+(gamma:ℂ)*I)^2)/((delta:ℂ)+(gamma:ℂ)*I))
   have hA : A≠0 := by
@@ -204,8 +234,14 @@ lemma coPoisson_phase_both_signs (delta gamma : ℝ) (hdelta : delta≠0)
     have hfac : (((delta:ℂ)+(gamma:ℂ)*I)-1/2)*
         (((delta:ℂ)+(gamma:ℂ)*I)+1/2)=0 := by linear_combination -h
     rcases mul_eq_zero.mp hfac with hm | hp
-    · have := congrArg Complex.im hm; simp_all
-    · have := congrArg Complex.im hp; simp_all
+    · apply hgne
+      have hi := congrArg Complex.im hm
+      norm_num [Complex.div_im] at hi
+      exact hi
+    · apply hgne
+      have hi := congrArg Complex.im hp
+      norm_num [Complex.div_im] at hi
+      exact hi
   have hpoint (a : ℝ) (ha : 0<a) (ha2 : a≤2*Real.pi) :
       0<a/|gamma| ∧ a/|gamma|<Real.log 2 ∧ Real.exp (a/|gamma|)∈Ioo (1:ℝ) 2 := by
     have hlog : 0<Real.log 2 := Real.log_pos (by norm_num)
@@ -220,14 +256,7 @@ lemma coPoisson_phase_both_signs (delta gamma : ℝ) (hdelta : delta≠0)
     split_ifs with h
     · rw [abs_of_pos h]; field_simp
     · have hn : gamma<0 := lt_of_le_of_ne (le_of_not_gt h) hgne
-      rw [abs_of_neg hn]; field_simp; ring
-  have hsinh (a : ℝ) (ha : 0<a) :
-      Real.sinh (delta*(a/|gamma|))≠0 ∧
-      (0<Real.sinh (delta*(a/|gamma|)) ↔ 0<delta) := by
-    have hpos := div_pos ha hg
-    constructor
-    · rw [Real.sinh_eq_zero]; exact mul_ne_zero hdelta hpos.ne'
-    · rw [Real.sinh_pos_iff]; exact mul_pos_iff_of_pos_right hpos
+      rw [abs_of_neg hn]; field_simp
   by_cases hAre : A.re=0
   · have hAi : A.im≠0 := by
       intro h
@@ -236,9 +265,9 @@ lemma coPoisson_phase_both_signs (delta gamma : ℝ) (hdelta : delta≠0)
     obtain ⟨hu₀,hu₁,hx⟩ := hpoint (Real.pi/2) (by positivity) (by linarith [Real.pi_pos])
     obtain ⟨hv₀,hv₁,hy⟩ := hpoint (3*Real.pi/2) (by positivity) (by linarith [Real.pi_pos])
     have hxf := coPoisson_phase_formula delta gamma (Real.pi/(2*|gamma|)) z hgne
-      (by convert hu₀ using 1 <;> ring) (by convert hu₁ using 1 <;> ring)
+      (by simpa only [div_div] using hu₀) (by simpa only [div_div] using hu₁)
     have hyf := coPoisson_phase_formula delta gamma (3*Real.pi/(2*|gamma|)) z hgne
-      (by convert hv₀ using 1 <;> ring) (by convert hv₁ using 1 <;> ring)
+      (by simpa only [div_div] using hv₀) (by simpa only [div_div] using hv₁)
     have hxy : (z*coPoissonComplexDensity (coPoissonRho delta gamma)
         (Real.exp (Real.pi/(2*|gamma|)))).re *
       (z*coPoissonComplexDensity (coPoissonRho delta gamma)
@@ -248,21 +277,26 @@ lemma coPoisson_phase_both_signs (delta gamma : ℝ) (hdelta : delta≠0)
         A.im*Real.cosh _*Real.sin _)) * (Real.exp _*(A.re*Real.sinh _*Real.cos _ -
         A.im*Real.cosh _*Real.sin _)) < 0
       rw [hAre]
-      have hhalf : gamma*(Real.pi/(2*|gamma|))=if 0<gamma then Real.pi/2 else -Real.pi/2 := by
-        convert htrig (Real.pi/2) using 1 <;> ring
-      have hthree : gamma*(3*Real.pi/(2*|gamma|))=if 0<gamma then Real.pi+Real.pi/2 else -(Real.pi+Real.pi/2) := by
-        convert htrig (3*Real.pi/2) using 1 <;> ring
+      have hhalf : gamma*(Real.pi/(2*|gamma|))=if 0<gamma then Real.pi/2 else -(Real.pi/2) := by
+        simpa only [div_div] using htrig (Real.pi/2)
+      have hthree : gamma*(3*Real.pi/(2*|gamma|))=if 0<gamma then Real.pi/2+Real.pi else -(Real.pi/2+Real.pi) := by
+        calc
+          _ = gamma*((Real.pi/2+Real.pi)/|gamma|) := by congr 1; ring
+          _ = _ := htrig (Real.pi/2+Real.pi)
       rw [hhalf,hthree]
       split_ifs <;> simp only [Real.sin_pi_div_two,Real.sin_add_pi,Real.sin_neg,
-        zero_mul,zero_sub,neg_neg,mul_neg_one,mul_one] <;>
-        nlinarith [Real.exp_pos (-(Real.pi/(2*|gamma|))/2),
-          Real.exp_pos (-(3*Real.pi/(2*|gamma|))/2),
-          Real.cosh_pos (delta*(Real.pi/(2*|gamma|))),
-          Real.cosh_pos (delta*(3*Real.pi/(2*|gamma|))),sq_pos_of_ne_zero hAi]
+        zero_mul,zero_sub,neg_neg,mul_neg_one,mul_one]
+      all_goals
+        have hpos : 0<Real.exp (-(Real.pi/(2*|gamma|))/2)*
+            Real.exp (-(3*Real.pi/(2*|gamma|))/2)*A.im^2*
+            Real.cosh (delta*(Real.pi/(2*|gamma|)))*
+            Real.cosh (delta*(3*Real.pi/(2*|gamma|))) := by positivity
+        convert (neg_lt_zero.mpr hpos) using 1
+        ring
     have hx' : Real.exp (Real.pi/(2*|gamma|)) ∈ Ioo (1:ℝ) 2 := by
-      convert hx using 1 <;> congr 1 <;> ring
+      simpa only [div_div] using hx
     have hy' : Real.exp (3*Real.pi/(2*|gamma|)) ∈ Ioo (1:ℝ) 2 := by
-      convert hy using 1 <;> congr 1 <;> ring
+      simpa only [div_div] using hy
     by_cases hp : 0 < (z*coPoissonComplexDensity (coPoissonRho delta gamma)
         (Real.exp (Real.pi/(2*|gamma|)))).re
     · have hn : (z*coPoissonComplexDensity (coPoissonRho delta gamma)
@@ -299,9 +333,14 @@ lemma coPoisson_phase_both_signs (delta gamma : ℝ) (hdelta : delta≠0)
         A.im*Real.cosh _*Real.sin _)) < 0
       rw [htrig Real.pi,htrig (2*Real.pi)]
       split_ifs <;> simp only [Real.cos_pi,Real.sin_pi,Real.cos_two_pi,Real.sin_two_pi,
-        Real.cos_neg,Real.sin_neg,neg_zero,mul_zero,sub_zero,mul_one,mul_neg_one] <;>
-        nlinarith [mul_pos (Real.exp_pos (-(Real.pi/|gamma|)/2))
-          (Real.exp_pos (-(2*Real.pi/|gamma|)/2)),sq_pos_of_ne_zero hAre]
+        Real.cos_neg,Real.sin_neg,neg_zero,mul_zero,sub_zero,mul_one,mul_neg_one]
+      all_goals
+        have hpos : 0<Real.exp (-(Real.pi/|gamma|)/2)*
+            Real.exp (-(2*Real.pi/|gamma|)/2)*A.re^2*
+            (Real.sinh (delta*(Real.pi/|gamma|))*Real.sinh (delta*(2*Real.pi/|gamma|))) :=
+          mul_pos (by positivity) hsign
+        convert (neg_lt_zero.mpr hpos) using 1
+        ring
     by_cases hp : 0 < (z*coPoissonComplexDensity (coPoissonRho delta gamma)
         (Real.exp (Real.pi/|gamma|))).re
     · have hn : (z*coPoissonComplexDensity (coPoissonRho delta gamma)
@@ -322,17 +361,19 @@ lemma coPoisson_phase_both_signs (delta gamma : ℝ) (hdelta : delta≠0)
 clause applies on AND off the critical line; the phase clause explicitly
 requires nonzero off-line displacement. -/
 theorem zero_measure_first_cell_sign (delta gamma : ℝ)
-    (hheight : 3*Real.pi/(2*Real.log 2)<|gamma|) :
+    (hheight : 3*Real.pi/(2*Real.log 2) < |gamma|) :
     (let u := 3*Real.pi/(2*|gamma|)
      0<u ∧ u<Real.log 2 ∧
      coPoissonRealDensity (coPoissonRho delta gamma) (Real.exp u)=
-       -|gamma|*(1+1/(4*(delta^2+gamma^2)))*Real.exp (-u/2)*Real.cosh (delta*u) ∧
+       -|gamma| *(1+1/(4*(delta^2+gamma^2)))*Real.exp (-u/2)*Real.cosh (delta*u) ∧
      coPoissonRealDensity (coPoissonRho delta gamma) (Real.exp u)<0) ∧
-    (delta≠0 → 2*Real.pi/Real.log 2<|gamma| → ∀ z : ℂ, z≠0 →
-      ∃ x y ∈ Ioo (1:ℝ) 2,
+    (delta≠0 → 2*Real.pi/Real.log 2 < |gamma| → ∀ z : ℂ, z≠0 →
+      ∃ x y : ℝ, x∈Ioo (1:ℝ) 2 ∧ y∈Ioo (1:ℝ) 2 ∧
         0<(z*coPoissonComplexDensity (coPoissonRho delta gamma) x).re ∧
         (z*coPoissonComplexDensity (coPoissonRho delta gamma) y).re<0) := by
   exact ⟨coPoisson_first_cell_negative_value delta gamma hheight,
     fun hd hh z hz => coPoisson_phase_both_signs delta gamma hd hh z hz⟩
 
 end Zeta23.OPICAFollowup
+
+#print axioms Zeta23.OPICAFollowup.zero_measure_first_cell_sign

@@ -1,0 +1,85 @@
+{
+  "total_count": 4,
+  "artifacts": [
+    {
+      "id": 12434630011,
+      "node_id": "MDg6QXJ0aWZhY3QxMjQzNDYzMDAxMQ==",
+      "name": "opica-followup-subset-formal",
+      "size_in_bytes": 3473414,
+      "url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/artifacts/12434630011",
+      "archive_download_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/artifacts/12434630011/zip",
+      "expired": false,
+      "digest": "sha256:0d7e9dfa36d31a647f7e297dbb12898e2b74a99d260dae5d8df704286411caa6",
+      "created_at": "2026-10-22T14:36:16Z",
+      "updated_at": "2026-10-22T14:36:16Z",
+      "expires_at": "2027-01-20T13:56:02Z",
+      "workflow_run": {
+        "id": 39791294140,
+        "repository_id": 1339954300,
+        "head_repository_id": 1339954300,
+        "head_branch": "research/opica-native-followup",
+        "head_sha": "9ccea78eb5ee0c097bde05424e43de58a589b713"
+      }
+    },
+    {
+      "id": 12432908805,
+      "node_id": "MDg6QXJ0aWZhY3QxMjQzMjkwODgwNQ==",
+      "name": "opica-followup-frozen-regression",
+      "size_in_bytes": 26717,
+      "url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/artifacts/12432908805",
+      "archive_download_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/artifacts/12432908805/zip",
+      "expired": false,
+      "digest": "sha256:53b443d42c3f5ea829dc655fe29d7d8c3cfa40e990ef5ad5fda2098524725598",
+      "created_at": "2026-10-22T14:28:29Z",
+      "updated_at": "2026-10-22T14:28:29Z",
+      "expires_at": "2027-01-20T13:56:02Z",
+      "workflow_run": {
+        "id": 39791294140,
+        "repository_id": 1339954300,
+        "head_repository_id": 1339954300,
+        "head_branch": "research/opica-native-followup",
+        "head_sha": "9ccea78eb5ee0c097bde05424e43de58a589b713"
+      }
+    },
+    {
+      "id": 12432805286,
+      "node_id": "MDg6QXJ0aWZhY3QxMjQzMjgwNTI4Ng==",
+      "name": "opica-followup-full-release-readiness",
+      "size_in_bytes": 1310,
+      "url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/artifacts/12432805286",
+      "archive_download_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/artifacts/12432805286/zip",
+      "expired": false,
+      "digest": "sha256:90196031a33c8fff373c88fe8a166e80ac07ae20cef2911678e29aee129f8b35",
+      "created_at": "2026-10-22T14:07:34Z",
+      "updated_at": "2026-10-22T14:07:34Z",
+      "expires_at": "2027-01-20T13:56:02Z",
+      "workflow_run": {
+        "id": 39791294140,
+        "repository_id": 1339954300,
+        "head_repository_id": 1339954300,
+        "head_branch": "research/opica-native-followup",
+        "head_sha": "9ccea78eb5ee0c097bde05424e43de58a589b713"
+      }
+    },
+    {
+      "id": 12430864158,
+      "node_id": "MDg6QXJ0aWZhY3QxMjQzMDg2NDE1OA==",
+      "name": "opica-followup-preparation",
+      "size_in_bytes": 1255,
+      "url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/artifacts/12430864158",
+      "archive_download_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/artifacts/12430864158/zip",
+      "expired": false,
+      "digest": "sha256:42ff84afbd3a11f9114af877a695a8966a17e888e1dc7c3b2047f0f13548bb06",
+      "created_at": "2026-10-22T14:03:29Z",
+      "updated_at": "2026-10-22T14:03:29Z",
+      "expires_at": "2027-01-20T13:56:02Z",
+      "workflow_run": {
+        "id": 39791294140,
+        "repository_id": 1339954300,
+        "head_repository_id": 1339954300,
+        "head_branch": "research/opica-native-followup",
+        "head_sha": "9ccea78eb5ee0c097bde05424e43de58a589b713"
+      }
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+[
+  {
+    "path": "AUDIT.md",
+    "bytes": 27820,
+    "sha256": "3ae31acfb36eef59bb63e0781f6fde66a2a5d3d46b859bc81ffc00dabc8f4e09"
+  },
+  {
+    "path": "FORK_NOTES.md",
+    "bytes": 21249,
+    "sha256": "aaab3241840ba6cb3085452fb2791c19391f3c14f43ebcdaabbb2baa3a144cac"
+  },
+  {
+    "path": "research/RHRC/DOCUMENTATION_AUTHORITY.md",
+    "bytes": 34241,
+    "sha256": "34df2bc6c5ff56566d29b3a8317f36534dbba6bae7140841b81d5280f01a7f6b"
+  },
+  {
+    "path": "research/RHRC/VALIDATION_PROTOCOL.md",
+    "bytes": 41426,
+    "sha256": "736a67742c61816f70d9aa0be846d47bfed9e16f3f311172b3217f66c4235289"
+  },
+  {
+    "path": "research/RHRC/graph/OPICA_FOLLOWUP_CURRENT_STATE.md",
+    "bytes": 9501,
+    "sha256": "408b886fb0f220a10562b9cdff77332de86199be2e683dacb1a73ce3a87df72f"
+  },
+  {
+    "path": "research/RHRC/graph/README.md",
+    "bytes": 17623,
+    "sha256": "5247bb075493796b493dfcd2137334ebb4718bc4ba1e2c37a9e6fbc98835f06e"
+  },
+  {
+    "path": "research/RHRC/integration/README.md",
+    "bytes": 5483,
+    "sha256": "cac2f05b95b905ad3d3ea22b59d9a0c36158965306818b7ef05cb997f1543b9e"
+  }
+]

@@ -1,0 +1,498 @@
+﻿2026-10-22T14:05:44.6802948Z Current runner version: '2.338.0'
+2026-10-22T14:05:44.6873822Z ##[group]Runner Image Provisioner
+2026-10-22T14:05:44.6875395Z Hosted Compute Agent
+2026-10-22T14:05:44.6876821Z Version: 20261012.601
+2026-10-22T14:05:44.6878093Z Commit: f3dc54e1fb89da6852db922499a0233137369e1d
+2026-10-22T14:05:44.6879401Z Build Date: 2026-10-12T17:48:21Z
+2026-10-22T14:05:44.6880655Z Worker ID: {de48007e-d53f-4045-b145-1776c2e2bd86}
+2026-10-22T14:05:44.6882027Z Region: eastus
+2026-10-22T14:05:44.6882946Z Cloud: Azure
+2026-10-22T14:05:44.6883885Z ##[endgroup]
+2026-10-22T14:05:44.6886818Z ##[group]Operating System
+2026-10-22T14:05:44.6887984Z Ubuntu
+2026-10-22T14:05:44.6889044Z 26.04.1
+2026-10-22T14:05:44.6889942Z LTS
+2026-10-22T14:05:44.6890854Z ##[endgroup]
+2026-10-22T14:05:44.6891822Z ##[group]Runner Image
+2026-10-22T14:05:44.6892933Z Image: ubuntu-26.04
+2026-10-22T14:05:44.6894209Z Version: 20261012.163.1
+2026-10-22T14:05:44.6896614Z Included Software: https://github.com/actions/runner-images/blob/ubuntu26/20261012.163/images/ubuntu/Ubuntu2604-Readme.md
+2026-10-22T14:05:44.6899292Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu26%2F20261012.163
+2026-10-22T14:05:44.6900902Z ##[endgroup]
+2026-10-22T14:05:44.6903100Z ##[group]GITHUB_TOKEN Permissions
+2026-10-22T14:05:44.6906524Z Contents: read
+2026-10-22T14:05:44.6907491Z Metadata: read
+2026-10-22T14:05:44.6908409Z Packages: read
+2026-10-22T14:05:44.6909536Z ##[endgroup]
+2026-10-22T14:05:44.6912550Z Secret source: Actions
+2026-10-22T14:05:44.6914300Z Cache mode: write
+2026-10-22T14:05:44.6915458Z Prepare workflow directory
+2026-10-22T14:05:44.7410858Z Prepare all required actions
+2026-10-22T14:05:44.7484384Z Getting action download info
+2026-10-22T14:05:44.9306952Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-10-22T14:05:45.0346873Z Download action repository 'actions/setup-python@v5' (SHA:a26af69be951a213d495a4c3e4e4022e16d87065)
+2026-10-22T14:05:45.2012554Z Complete job name: post214-kernel-dual-geometry
+2026-10-22T14:05:45.3036599Z ##[group]Run actions/checkout@v4
+2026-10-22T14:05:45.3038016Z with:
+2026-10-22T14:05:45.3038759Z   repository: HMarcusWH/zeta-23-lean
+2026-10-22T14:05:45.3047014Z   token: ***
+2026-10-22T14:05:45.3047753Z   ssh-strict: true
+2026-10-22T14:05:45.3048496Z   ssh-user: git
+2026-10-22T14:05:45.3049247Z   persist-credentials: true
+2026-10-22T14:05:45.3050085Z   clean: true
+2026-10-22T14:05:45.3050841Z   sparse-checkout-cone-mode: true
+2026-10-22T14:05:45.3051736Z   fetch-depth: 1
+2026-10-22T14:05:45.3052470Z   fetch-tags: false
+2026-10-22T14:05:45.3053231Z   show-progress: true
+2026-10-22T14:05:45.3053987Z   lfs: false
+2026-10-22T14:05:45.3054702Z   submodules: false
+2026-10-22T14:05:45.3055463Z   set-safe-directory: true
+2026-10-22T14:05:45.3056539Z   allow-unsafe-pr-checkout: false
+2026-10-22T14:05:45.3057808Z ##[endgroup]
+2026-10-22T14:05:45.4123125Z Syncing repository: HMarcusWH/zeta-23-lean
+2026-10-22T14:05:45.4124990Z ##[group]Getting Git version info
+2026-10-22T14:05:45.4126345Z Working directory is '/home/runner/work/zeta-23-lean/zeta-23-lean'
+2026-10-22T14:05:45.4127542Z [command]/usr/bin/git version
+2026-10-22T14:05:45.4162731Z git version 2.55.0
+2026-10-22T14:05:45.4188064Z ##[endgroup]
+2026-10-22T14:05:45.4204992Z Temporarily overriding HOME='/home/runner/work/_temp/6acc35b1-affd-4a08-b60f-48719a5c7531' before making global git config changes
+2026-10-22T14:05:45.4206879Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-22T14:05:45.4211464Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/zeta-23-lean/zeta-23-lean
+2026-10-22T14:05:45.4280765Z Deleting the contents of '/home/runner/work/zeta-23-lean/zeta-23-lean'
+2026-10-22T14:05:45.4283481Z ##[group]Initializing the repository
+2026-10-22T14:05:45.4289082Z [command]/usr/bin/git init /home/runner/work/zeta-23-lean/zeta-23-lean
+2026-10-22T14:05:45.4428014Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-10-22T14:05:45.4434822Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-10-22T14:05:45.4436744Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-10-22T14:05:45.4438003Z hint: call:
+2026-10-22T14:05:45.4438789Z hint:
+2026-10-22T14:05:45.4439875Z hint: 	git config --global init.defaultBranch <name>
+2026-10-22T14:05:45.4440943Z hint:
+2026-10-22T14:05:45.4441632Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-10-22T14:05:45.4442666Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-10-22T14:05:45.4443520Z hint:
+2026-10-22T14:05:45.4444025Z hint: 	git branch -m <name>
+2026-10-22T14:05:45.4444677Z hint:
+2026-10-22T14:05:45.4445501Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-10-22T14:05:45.4447548Z Initialized empty Git repository in /home/runner/work/zeta-23-lean/zeta-23-lean/.git/
+2026-10-22T14:05:45.4449511Z [command]/usr/bin/git remote add origin https://github.com/HMarcusWH/zeta-23-lean
+2026-10-22T14:05:45.4503865Z ##[endgroup]
+2026-10-22T14:05:45.4505080Z ##[group]Disabling automatic garbage collection
+2026-10-22T14:05:45.4509251Z [command]/usr/bin/git config --local gc.auto 0
+2026-10-22T14:05:45.4546340Z ##[endgroup]
+2026-10-22T14:05:45.4547573Z ##[group]Setting up auth
+2026-10-22T14:05:45.4554588Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-22T14:05:45.4591075Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-22T14:05:45.5139476Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-22T14:05:45.5177340Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-22T14:05:45.5453093Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-22T14:05:45.5491197Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-22T14:05:45.5772067Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-10-22T14:05:45.5812490Z ##[endgroup]
+2026-10-22T14:05:45.5813437Z ##[group]Fetching the repository
+2026-10-22T14:05:45.5822945Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +48724d2fa0b9d534ad374aa844dc79cc98348ca8:refs/remotes/pull/294/merge
+2026-10-22T14:06:57.1922016Z From https://github.com/HMarcusWH/zeta-23-lean
+2026-10-22T14:06:57.1923418Z  * [new ref]         48724d2fa0b9d534ad374aa844dc79cc98348ca8 -> pull/294/merge
+2026-10-22T14:06:57.1929445Z ##[endgroup]
+2026-10-22T14:06:57.1930371Z ##[group]Determining the checkout info
+2026-10-22T14:06:57.1931800Z ##[endgroup]
+2026-10-22T14:06:57.1938525Z [command]/usr/bin/git sparse-checkout disable
+2026-10-22T14:06:57.2010439Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-10-22T14:06:57.2039807Z ##[group]Checking out the ref
+2026-10-22T14:06:57.2043627Z [command]/usr/bin/git checkout --progress --force refs/remotes/pull/294/merge
+2026-10-22T14:06:58.2796475Z Updating files:  59% (1578/2661)
+2026-10-22T14:06:58.4811080Z Updating files:  60% (1597/2661)
+2026-10-22T14:06:58.4856835Z Updating files:  61% (1624/2661)
+2026-10-22T14:06:58.4889627Z Updating files:  62% (1650/2661)
+2026-10-22T14:06:58.4906410Z Updating files:  63% (1677/2661)
+2026-10-22T14:06:58.4941664Z Updating files:  64% (1704/2661)
+2026-10-22T14:06:58.4956415Z Updating files:  65% (1730/2661)
+2026-10-22T14:06:58.4995024Z Updating files:  66% (1757/2661)
+2026-10-22T14:06:58.5081744Z Updating files:  67% (1783/2661)
+2026-10-22T14:06:58.5158141Z Updating files:  68% (1810/2661)
+2026-10-22T14:06:58.5207187Z Updating files:  69% (1837/2661)
+2026-10-22T14:06:58.5227611Z Updating files:  70% (1863/2661)
+2026-10-22T14:06:58.5258406Z Updating files:  71% (1890/2661)
+2026-10-22T14:06:58.5275377Z Updating files:  72% (1916/2661)
+2026-10-22T14:06:58.5322723Z Updating files:  73% (1943/2661)
+2026-10-22T14:06:58.5379113Z Updating files:  74% (1970/2661)
+2026-10-22T14:06:58.5389063Z Updating files:  75% (1996/2661)
+2026-10-22T14:06:58.5399390Z Updating files:  76% (2023/2661)
+2026-10-22T14:06:58.5409574Z Updating files:  77% (2049/2661)
+2026-10-22T14:06:58.5424279Z Updating files:  78% (2076/2661)
+2026-10-22T14:06:58.5474644Z Updating files:  79% (2103/2661)
+2026-10-22T14:06:58.5489706Z Updating files:  80% (2129/2661)
+2026-10-22T14:06:58.5501998Z Updating files:  81% (2156/2661)
+2026-10-22T14:06:58.5522882Z Updating files:  82% (2183/2661)
+2026-10-22T14:06:58.5579088Z Updating files:  83% (2209/2661)
+2026-10-22T14:06:58.5751355Z Updating files:  84% (2236/2661)
+2026-10-22T14:06:58.5767959Z Updating files:  85% (2262/2661)
+2026-10-22T14:06:58.5786233Z Updating files:  86% (2289/2661)
+2026-10-22T14:06:58.5808226Z Updating files:  87% (2316/2661)
+2026-10-22T14:06:58.5827328Z Updating files:  88% (2342/2661)
+2026-10-22T14:06:58.5843628Z Updating files:  89% (2369/2661)
+2026-10-22T14:06:58.5858489Z Updating files:  90% (2395/2661)
+2026-10-22T14:06:58.5871390Z Updating files:  91% (2422/2661)
+2026-10-22T14:06:58.5907286Z Updating files:  92% (2449/2661)
+2026-10-22T14:06:58.5929842Z Updating files:  93% (2475/2661)
+2026-10-22T14:06:58.5949083Z Updating files:  94% (2502/2661)
+2026-10-22T14:06:58.5967457Z Updating files:  95% (2528/2661)
+2026-10-22T14:06:58.5986805Z Updating files:  96% (2555/2661)
+2026-10-22T14:06:58.6007718Z Updating files:  97% (2582/2661)
+2026-10-22T14:06:58.6024274Z Updating files:  98% (2608/2661)
+2026-10-22T14:06:58.6041266Z Updating files:  99% (2635/2661)
+2026-10-22T14:06:58.6041886Z Updating files: 100% (2661/2661)
+2026-10-22T14:06:58.6042457Z Updating files: 100% (2661/2661), done.
+2026-10-22T14:06:58.6071959Z Note: switching to 'refs/remotes/pull/294/merge'.
+2026-10-22T14:06:58.6072598Z 
+2026-10-22T14:06:58.6073308Z You are in 'detached HEAD' state. You can look around, make experimental
+2026-10-22T14:06:58.6074153Z changes and commit them, and you can discard any commits you make in this
+2026-10-22T14:06:58.6075207Z state without impacting any branches by switching back to a branch.
+2026-10-22T14:06:58.6076151Z 
+2026-10-22T14:06:58.6076621Z If you want to create a new branch to retain commits you create, you may
+2026-10-22T14:06:58.6077646Z do so (now or later) by using -c with the switch command. Example:
+2026-10-22T14:06:58.6078248Z 
+2026-10-22T14:06:58.6158423Z   git switch -c <new-branch-name>
+2026-10-22T14:06:58.6158896Z 
+2026-10-22T14:06:58.6159113Z Or undo this operation with:
+2026-10-22T14:06:58.6159410Z 
+2026-10-22T14:06:58.6159568Z   git switch -
+2026-10-22T14:06:58.6159786Z 
+2026-10-22T14:06:58.6160168Z Turn off this advice by setting config variable advice.detachedHead to false
+2026-10-22T14:06:58.6160735Z 
+2026-10-22T14:06:58.6161354Z HEAD is now at 48724d2 Merge 9ccea78eb5ee0c097bde05424e43de58a589b713 into d53dd70d38b0762af130b1d19b795af259f505f5
+2026-10-22T14:06:58.6164094Z ##[endgroup]
+2026-10-22T14:06:58.6182276Z [command]/usr/bin/git log -1 --format=%H
+2026-10-22T14:06:58.6208683Z 48724d2fa0b9d534ad374aa844dc79cc98348ca8
+2026-10-22T14:06:58.6512770Z ##[group]Run actions/setup-python@v5
+2026-10-22T14:06:58.6513112Z with:
+2026-10-22T14:06:58.6513392Z   python-version: 3.14
+2026-10-22T14:06:58.6513629Z   check-latest: false
+2026-10-22T14:06:58.6516514Z   token: ***
+2026-10-22T14:06:58.6516748Z   update-environment: true
+2026-10-22T14:06:58.6517003Z   allow-prereleases: false
+2026-10-22T14:06:58.6517246Z   freethreaded: false
+2026-10-22T14:06:58.6517478Z ##[endgroup]
+2026-10-22T14:06:58.7889196Z ##[group]Installed versions
+2026-10-22T14:06:58.8004685Z (node:2415) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-22T14:06:58.8006132Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-22T14:06:58.8006951Z Successfully set up CPython (3.14.8)
+2026-10-22T14:06:58.8007744Z ##[endgroup]
+2026-10-22T14:06:58.8278774Z ##[group]Run python -m pip install -r research/RHRC/routes/R003_ccm_bridge/requirements.txt
+2026-10-22T14:06:58.8279956Z [36;1mpython -m pip install -r research/RHRC/routes/R003_ccm_bridge/requirements.txt[0m
+2026-10-22T14:06:58.8564314Z shell: /usr/bin/bash -e {0}
+2026-10-22T14:06:58.8564645Z env:
+2026-10-22T14:06:58.8564956Z   pythonLocation: /opt/hostedtoolcache/Python/3.14.8/x64
+2026-10-22T14:06:58.8565435Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.14.8/x64/lib/pkgconfig
+2026-10-22T14:06:58.8566224Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.14.8/x64
+2026-10-22T14:06:58.8566671Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.14.8/x64
+2026-10-22T14:06:58.8567100Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.14.8/x64
+2026-10-22T14:06:58.8567528Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.14.8/x64/lib
+2026-10-22T14:06:58.8567931Z ##[endgroup]
+2026-10-22T14:07:01.6759074Z Collecting numpy (from -r research/RHRC/routes/R003_ccm_bridge/requirements.txt (line 1))
+2026-10-22T14:07:01.7000862Z   Downloading numpy-2.5.4-cp314-cp314-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (6.6 kB)
+2026-10-22T14:07:01.7330270Z Collecting mpmath (from -r research/RHRC/routes/R003_ccm_bridge/requirements.txt (line 2))
+2026-10-22T14:07:01.7366187Z   Downloading mpmath-1.4.1-py3-none-any.whl.metadata (9.1 kB)
+2026-10-22T14:07:01.8566645Z Collecting scipy (from -r research/RHRC/routes/R003_ccm_bridge/requirements.txt (line 3))
+2026-10-22T14:07:01.8605806Z   Downloading scipy-1.18.1-cp314-cp314-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (62 kB)
+2026-10-22T14:07:01.8912530Z Collecting sympy (from -r research/RHRC/routes/R003_ccm_bridge/requirements.txt (line 4))
+2026-10-22T14:07:01.8954961Z   Downloading sympy-1.14.0-py3-none-any.whl.metadata (12 kB)
+2026-10-22T14:07:01.9326353Z Collecting python-flint==0.9.0 (from -r research/RHRC/routes/R003_ccm_bridge/requirements.txt (line 5))
+2026-10-22T14:07:01.9369889Z   Downloading python_flint-0.9.0-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (23 kB)
+2026-10-22T14:07:01.9451173Z Collecting mpmath (from -r research/RHRC/routes/R003_ccm_bridge/requirements.txt (line 2))
+2026-10-22T14:07:01.9607658Z   Downloading mpmath-1.3.0-py3-none-any.whl.metadata (8.6 kB)
+2026-10-22T14:07:01.9708950Z Downloading python_flint-0.9.0-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (10.2 MB)
+2026-10-22T14:07:02.0697813Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 10.2/10.2 MB 110.0 MB/s  0:00:00
+2026-10-22T14:07:02.0737601Z Downloading numpy-2.5.4-cp314-cp314-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (16.7 MB)
+2026-10-22T14:07:02.1411853Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 16.7/16.7 MB 253.6 MB/s  0:00:00
+2026-10-22T14:07:02.1455980Z Downloading scipy-1.18.1-cp314-cp314-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (35.3 MB)
+2026-10-22T14:07:02.2843497Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 35.3/35.3 MB 258.2 MB/s  0:00:00
+2026-10-22T14:07:02.2882642Z Downloading sympy-1.14.0-py3-none-any.whl (6.3 MB)
+2026-10-22T14:07:02.3146823Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.3/6.3 MB 255.7 MB/s  0:00:00
+2026-10-22T14:07:02.3187788Z Downloading mpmath-1.3.0-py3-none-any.whl (536 kB)
+2026-10-22T14:07:02.3282499Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 536.2/536.2 kB 38.6 MB/s  0:00:00
+2026-10-22T14:07:02.5911634Z Installing collected packages: mpmath, sympy, python-flint, numpy, scipy
+2026-10-22T14:07:19.1241880Z 
+2026-10-22T14:07:19.1256505Z Successfully installed mpmath-1.3.0 numpy-2.5.4 python-flint-0.9.0 scipy-1.18.1 sympy-1.14.0
+2026-10-22T14:07:19.1268993Z 
+2026-10-22T14:07:19.1269469Z [notice] A new release of pip is available: 26.2.1 -> 26.2.2
+2026-10-22T14:07:19.1270318Z [notice] To update, run: pip install --upgrade pip
+2026-10-22T14:07:19.2307511Z ##[group]Run python research/RHRC/routes/R003_ccm_bridge/check_post214_fb05_kernel_dual_geometry_scope.py
+2026-10-22T14:07:19.2308540Z [36;1mpython research/RHRC/routes/R003_ccm_bridge/check_post214_fb05_kernel_dual_geometry_scope.py[0m
+2026-10-22T14:07:19.2373209Z shell: /usr/bin/bash -e {0}
+2026-10-22T14:07:19.2373537Z env:
+2026-10-22T14:07:19.2373886Z   pythonLocation: /opt/hostedtoolcache/Python/3.14.8/x64
+2026-10-22T14:07:19.2374416Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.14.8/x64/lib/pkgconfig
+2026-10-22T14:07:19.2374935Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.14.8/x64
+2026-10-22T14:07:19.2375389Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.14.8/x64
+2026-10-22T14:07:19.2376192Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.14.8/x64
+2026-10-22T14:07:19.2376689Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.14.8/x64/lib
+2026-10-22T14:07:19.2377087Z ##[endgroup]
+2026-10-22T14:07:19.2701289Z {
+2026-10-22T14:07:19.2702061Z   "adaptive_point_search": false,
+2026-10-22T14:07:19.2702791Z   "adaptive_precision_increase": false,
+2026-10-22T14:07:19.2703549Z   "arb_precision_bits": 384,
+2026-10-22T14:07:19.2704163Z   "frozen_K": 3,
+2026-10-22T14:07:19.2704709Z   "frozen_center_count": 3,
+2026-10-22T14:07:19.2705243Z   "frozen_parity": "even",
+2026-10-22T14:07:19.2705913Z   "rh_claim": false,
+2026-10-22T14:07:19.2706268Z   "status": "PASS",
+2026-10-22T14:07:19.2706617Z   "theorem_promotion": false
+2026-10-22T14:07:19.2706981Z }
+2026-10-22T14:07:19.2784006Z ##[group]Run python research/RHRC/routes/R003_ccm_bridge/probe_post214_fb05_kernel_dual_geometry_scope.py \
+2026-10-22T14:07:19.2784826Z [36;1mpython research/RHRC/routes/R003_ccm_bridge/probe_post214_fb05_kernel_dual_geometry_scope.py \[0m
+2026-10-22T14:07:19.2785882Z [36;1m  --input research/RHRC/routes/R003_ccm_bridge/fixtures/post214_fb05_kernel_dual_geometry_v1.json \[0m
+2026-10-22T14:07:19.2786538Z [36;1m  --output /tmp/POST214_FB05_KERNEL_DUAL_GEOMETRY_SCHEDULE.json[0m
+2026-10-22T14:07:19.2849877Z shell: /usr/bin/bash -e {0}
+2026-10-22T14:07:19.2850179Z env:
+2026-10-22T14:07:19.2850511Z   pythonLocation: /opt/hostedtoolcache/Python/3.14.8/x64
+2026-10-22T14:07:19.2851027Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.14.8/x64/lib/pkgconfig
+2026-10-22T14:07:19.2851534Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.14.8/x64
+2026-10-22T14:07:19.2851991Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.14.8/x64
+2026-10-22T14:07:19.2852472Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.14.8/x64
+2026-10-22T14:07:19.2852932Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.14.8/x64/lib
+2026-10-22T14:07:19.2853322Z ##[endgroup]
+2026-10-22T14:07:20.3482980Z {
+2026-10-22T14:07:20.3483562Z   "status": "PASS",
+2026-10-22T14:07:20.3484102Z   "centers": [
+2026-10-22T14:07:20.3484632Z     {
+2026-10-22T14:07:20.3485162Z       "label": "Q13_midpoint",
+2026-10-22T14:07:20.3486157Z       "Q": 13,
+2026-10-22T14:07:20.3486677Z       "center_num": 140737488355328,
+2026-10-22T14:07:20.3487309Z       "den": 281474976710656,
+2026-10-22T14:07:20.3487942Z       "primary": false,
+2026-10-22T14:07:20.3488602Z       "fast_wedge": -8.708480514561605e-05,
+2026-10-22T14:07:20.3489252Z       "fast_R_min": -2.5205066499575527e-08,
+2026-10-22T14:07:20.3489907Z       "fast_R_max": 3.731181729802576e-05
+2026-10-22T14:07:20.3490437Z     },
+2026-10-22T14:07:20.3490794Z     {
+2026-10-22T14:07:20.3491207Z       "label": "Q14_determinant_basin",
+2026-10-22T14:07:20.3491787Z       "Q": 14,
+2026-10-22T14:07:20.3492263Z       "center_num": 114605298545788,
+2026-10-22T14:07:20.3492814Z       "den": 281474976710656,
+2026-10-22T14:07:20.3493337Z       "primary": true,
+2026-10-22T14:07:20.3493793Z       "fast_wedge": -7.928560469351765e-07,
+2026-10-22T14:07:20.3494395Z       "fast_R_min": -7.605474740510818e-11,
+2026-10-22T14:07:20.3494974Z       "fast_R_max": 1.0249716144901035e-06
+2026-10-22T14:07:20.3495811Z     },
+2026-10-22T14:07:20.3496239Z     {
+2026-10-22T14:07:20.3496687Z       "label": "Q15_midpoint",
+2026-10-22T14:07:20.3497253Z       "Q": 15,
+2026-10-22T14:07:20.3497753Z       "center_num": 140737488355328,
+2026-10-22T14:07:20.3498765Z       "den": 281474976710656,
+2026-10-22T14:07:20.3499303Z       "primary": false,
+2026-10-22T14:07:20.3499731Z       "fast_wedge": -6.0132714612867375e-05,
+2026-10-22T14:07:20.3500374Z       "fast_R_min": -1.6330751711773233e-08,
+2026-10-22T14:07:20.3500859Z       "fast_R_max": 2.7457748629681838e-05
+2026-10-22T14:07:20.3501299Z     }
+2026-10-22T14:07:20.3501596Z   ],
+2026-10-22T14:07:20.3501951Z   "adaptive_point_search": false,
+2026-10-22T14:07:20.3502596Z   "claim_cap": "POST214_EXACT_KERNEL_DUAL_GEOMETRY_RESEARCH_ONLY"
+2026-10-22T14:07:20.3502970Z }
+2026-10-22T14:07:20.4651134Z ##[group]Run python research/RHRC/routes/R003_ccm_bridge/check_post214_fb05_kernel_dual_geometry_independent.py
+2026-10-22T14:07:20.4651980Z [36;1mpython research/RHRC/routes/R003_ccm_bridge/check_post214_fb05_kernel_dual_geometry_independent.py[0m
+2026-10-22T14:07:20.4714306Z shell: /usr/bin/bash -e {0}
+2026-10-22T14:07:20.4714579Z env:
+2026-10-22T14:07:20.4714867Z   pythonLocation: /opt/hostedtoolcache/Python/3.14.8/x64
+2026-10-22T14:07:20.4715375Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.14.8/x64/lib/pkgconfig
+2026-10-22T14:07:20.4716147Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.14.8/x64
+2026-10-22T14:07:20.4716577Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.14.8/x64
+2026-10-22T14:07:20.4717000Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.14.8/x64
+2026-10-22T14:07:20.4717423Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.14.8/x64/lib
+2026-10-22T14:07:20.4717781Z ##[endgroup]
+2026-10-22T14:07:21.9946382Z {
+2026-10-22T14:07:21.9947162Z   "exact_geometry": {
+2026-10-22T14:07:21.9947710Z     "D_energy_gram": [
+2026-10-22T14:07:21.9948142Z       [
+2026-10-22T14:07:21.9948502Z         "40",
+2026-10-22T14:07:21.9948875Z         "72"
+2026-10-22T14:07:21.9949176Z       ],
+2026-10-22T14:07:21.9949436Z       [
+2026-10-22T14:07:21.9949658Z         "72",
+2026-10-22T14:07:21.9949888Z         "180"
+2026-10-22T14:07:21.9950114Z       ]
+2026-10-22T14:07:21.9950335Z     ],
+2026-10-22T14:07:21.9950600Z     "D_energy_gram_det": "2016",
+2026-10-22T14:07:21.9950912Z     "basis": [
+2026-10-22T14:07:21.9972173Z       [
+2026-10-22T14:07:21.9972466Z         "0",
+2026-10-22T14:07:21.9972771Z         "1"
+2026-10-22T14:07:21.9973066Z       ],
+2026-10-22T14:07:21.9973378Z       [
+2026-10-22T14:07:21.9973678Z         "1",
+2026-10-22T14:07:21.9973910Z         "0"
+2026-10-22T14:07:21.9974098Z       ],
+2026-10-22T14:07:21.9974276Z       [
+2026-10-22T14:07:21.9974484Z         "-4",
+2026-10-22T14:07:21.9974676Z         "-9"
+2026-10-22T14:07:21.9974858Z       ],
+2026-10-22T14:07:21.9975044Z       [
+2026-10-22T14:07:21.9975226Z         "6",
+2026-10-22T14:07:21.9975403Z         "16"
+2026-10-22T14:07:21.9975884Z       ],
+2026-10-22T14:07:21.9976087Z       [
+2026-10-22T14:07:21.9976272Z         "-4",
+2026-10-22T14:07:21.9976464Z         "-9"
+2026-10-22T14:07:21.9976643Z       ],
+2026-10-22T14:07:21.9976816Z       [
+2026-10-22T14:07:21.9976987Z         "1",
+2026-10-22T14:07:21.9977166Z         "0"
+2026-10-22T14:07:21.9977358Z       ],
+2026-10-22T14:07:21.9977532Z       [
+2026-10-22T14:07:21.9977702Z         "0",
+2026-10-22T14:07:21.9977885Z         "1"
+2026-10-22T14:07:21.9978060Z       ]
+2026-10-22T14:07:21.9978233Z     ],
+2026-10-22T14:07:21.9978417Z     "dimension": 2,
+2026-10-22T14:07:21.9978653Z     "moment_four_covector": [
+2026-10-22T14:07:21.9978890Z       "24",
+2026-10-22T14:07:21.9979069Z       "144"
+2026-10-22T14:07:21.9979241Z     ],
+2026-10-22T14:07:21.9979432Z     "quadratic_normal": [
+2026-10-22T14:07:21.9979649Z       "5",
+2026-10-22T14:07:21.9979823Z       "0",
+2026-10-22T14:07:21.9980005Z       "-3",
+2026-10-22T14:07:21.9980180Z       "-4",
+2026-10-22T14:07:21.9980353Z       "-3",
+2026-10-22T14:07:21.9980529Z       "0",
+2026-10-22T14:07:21.9980703Z       "5"
+2026-10-22T14:07:21.9980885Z     ],
+2026-10-22T14:07:21.9981084Z     "quadratic_normal_denominator": "84",
+2026-10-22T14:07:21.9981378Z     "scalar_identity_annihilation": [
+2026-10-22T14:07:21.9981632Z       "0",
+2026-10-22T14:07:21.9982169Z       "0"
+2026-10-22T14:07:21.9982343Z     ]
+2026-10-22T14:07:21.9982515Z   },
+2026-10-22T14:07:21.9982706Z   "precision_bits": 192,
+2026-10-22T14:07:21.9982938Z   "rh_claim": false,
+2026-10-22T14:07:21.9983143Z   "rows": [
+2026-10-22T14:07:21.9983324Z     {
+2026-10-22T14:07:21.9983495Z       "Q": 13,
+2026-10-22T14:07:21.9983778Z       "classification": "FULL_SPACE_DUAL_INDEPENDENCE_CERTIFIED",
+2026-10-22T14:07:21.9984154Z       "full_space_sign_indefinite_certified": true,
+2026-10-22T14:07:21.9984464Z       "label": "Q13_midpoint",
+2026-10-22T14:07:21.9984943Z       "wedge_excludes_zero": true
+2026-10-22T14:07:21.9985183Z     },
+2026-10-22T14:07:21.9985357Z     {
+2026-10-22T14:07:21.9985766Z       "Q": 14,
+2026-10-22T14:07:21.9986068Z       "classification": "FULL_SPACE_DUAL_INDEPENDENCE_CERTIFIED",
+2026-10-22T14:07:21.9986438Z       "full_space_sign_indefinite_certified": true,
+2026-10-22T14:07:21.9986738Z       "label": "Q14_determinant_basin",
+2026-10-22T14:07:21.9987016Z       "wedge_excludes_zero": true
+2026-10-22T14:07:21.9987257Z     },
+2026-10-22T14:07:21.9987431Z     {
+2026-10-22T14:07:21.9987606Z       "Q": 15,
+2026-10-22T14:07:21.9987873Z       "classification": "FULL_SPACE_DUAL_INDEPENDENCE_CERTIFIED",
+2026-10-22T14:07:21.9988234Z       "full_space_sign_indefinite_certified": true,
+2026-10-22T14:07:21.9988525Z       "label": "Q15_midpoint",
+2026-10-22T14:07:21.9988769Z       "wedge_excludes_zero": true
+2026-10-22T14:07:21.9988996Z     }
+2026-10-22T14:07:21.9989170Z   ],
+2026-10-22T14:07:21.9989348Z   "status": "PASS",
+2026-10-22T14:07:21.9989582Z   "symbolic_det_identity": true,
+2026-10-22T14:07:21.9989835Z   "theorem_promotion": false
+2026-10-22T14:07:21.9990061Z }
+2026-10-22T14:07:22.1245288Z ##[group]Run python research/RHRC/routes/R003_ccm_bridge/certify_post214_fb05_kernel_dual_geometry_scope.py \
+2026-10-22T14:07:22.1246679Z [36;1mpython research/RHRC/routes/R003_ccm_bridge/certify_post214_fb05_kernel_dual_geometry_scope.py \[0m
+2026-10-22T14:07:22.1247554Z [36;1m  --input research/RHRC/routes/R003_ccm_bridge/fixtures/post214_fb05_kernel_dual_geometry_v1.json \[0m
+2026-10-22T14:07:22.1248294Z [36;1m  --schedule /tmp/POST214_FB05_KERNEL_DUAL_GEOMETRY_SCHEDULE.json \[0m
+2026-10-22T14:07:22.1248869Z [36;1m  --output /tmp/POST214_FB05_KERNEL_DUAL_GEOMETRY_CERTIFICATE.json[0m
+2026-10-22T14:07:22.1309880Z shell: /usr/bin/bash -e {0}
+2026-10-22T14:07:22.1310164Z env:
+2026-10-22T14:07:22.1310446Z   pythonLocation: /opt/hostedtoolcache/Python/3.14.8/x64
+2026-10-22T14:07:22.1310928Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.14.8/x64/lib/pkgconfig
+2026-10-22T14:07:22.1311404Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.14.8/x64
+2026-10-22T14:07:22.1311894Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.14.8/x64
+2026-10-22T14:07:22.1312353Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.14.8/x64
+2026-10-22T14:07:22.1312812Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.14.8/x64/lib
+2026-10-22T14:07:22.1313199Z ##[endgroup]
+2026-10-22T14:07:24.5289103Z {
+2026-10-22T14:07:24.5289629Z   "status": "PASS",
+2026-10-22T14:07:24.5290247Z   "classification": "FULL_SPACE_DUAL_INDEPENDENCE_CERTIFIED",
+2026-10-22T14:07:24.5291195Z   "sign_route_classification": "FULL_SPACE_SIGN_INDEFINITE_CERTIFIED",
+2026-10-22T14:07:24.5292208Z   "control_transfer_status": "DUAL_INDEPENDENCE_SURVIVES_Q13_Q15_CONTROLS",
+2026-10-22T14:07:24.5293100Z   "primary_wedge": {
+2026-10-22T14:07:24.5293735Z     "ball": "[-7.92856142933793718521707742118e-7 +/- 2.44e-37]",
+2026-10-22T14:07:24.5294489Z     "lower": "-7.92856142933793718521707742118e-7",
+2026-10-22T14:07:24.5295163Z     "upper": "-7.92856142933793718521707742118e-7",
+2026-10-22T14:07:24.5296109Z     "contains_zero": false,
+2026-10-22T14:07:24.5296667Z     "rel_accuracy_bits": 345
+2026-10-22T14:07:24.5297066Z   },
+2026-10-22T14:07:24.5297279Z   "primary_R_min": {
+2026-10-22T14:07:24.5297594Z     "ball": "[-7.60547660138399452560501190345e-11 +/- 1.90e-41]",
+2026-10-22T14:07:24.5297948Z     "lower": "-7.60547660138399452560501190345e-11",
+2026-10-22T14:07:24.5298589Z     "upper": "-7.60547660138399452560501190345e-11",
+2026-10-22T14:07:24.5298871Z     "contains_zero": false,
+2026-10-22T14:07:24.5299101Z     "rel_accuracy_bits": 335
+2026-10-22T14:07:24.5299317Z   },
+2026-10-22T14:07:24.5299493Z   "primary_R_max": {
+2026-10-22T14:07:24.5299747Z     "ball": "[1.02497161190896926446719955942e-6 +/- 3.03e-36]",
+2026-10-22T14:07:24.5300074Z     "lower": "1.02497161190896926446719955942e-6",
+2026-10-22T14:07:24.5300357Z     "upper": "1.02497161190896926446719955942e-6",
+2026-10-22T14:07:24.5300631Z     "contains_zero": false,
+2026-10-22T14:07:24.5300857Z     "rel_accuracy_bits": 349
+2026-10-22T14:07:24.5301071Z   },
+2026-10-22T14:07:24.5301253Z   "obs_059i_closed": false,
+2026-10-22T14:07:24.5301466Z   "rh_claim": false
+2026-10-22T14:07:24.5301657Z }
+2026-10-22T14:07:24.6457844Z ##[group]Run python - <<'PY'
+2026-10-22T14:07:24.6458204Z [36;1mpython - <<'PY'[0m
+2026-10-22T14:07:24.6458462Z [36;1mimport json[0m
+2026-10-22T14:07:24.6458890Z [36;1mp = json.load(open('/tmp/POST214_FB05_KERNEL_DUAL_GEOMETRY_CERTIFICATE.json'))[0m
+2026-10-22T14:07:24.6459395Z [36;1massert p['status'] == 'PASS'[0m
+2026-10-22T14:07:24.6459787Z [36;1massert p['claim_cap'] == 'POST214_EXACT_KERNEL_DUAL_GEOMETRY_RESEARCH_ONLY'[0m
+2026-10-22T14:07:24.6460220Z [36;1massert p['classification'] in {[0m
+2026-10-22T14:07:24.6460545Z [36;1m    'FULL_SPACE_DUAL_INDEPENDENCE_CERTIFIED',[0m
+2026-10-22T14:07:24.6460893Z [36;1m    'DUAL_PROPORTIONALITY_NOT_FALSIFIED',[0m
+2026-10-22T14:07:24.6461193Z [36;1m    'DUAL_GEOMETRY_UNRESOLVED',[0m
+2026-10-22T14:07:24.6461449Z [36;1m}[0m
+2026-10-22T14:07:24.6461677Z [36;1massert p['theorem_promotion'] is False[0m
+2026-10-22T14:07:24.6461990Z [36;1massert p['obs_059i_closed'] is False[0m
+2026-10-22T14:07:24.6462372Z [36;1massert p['simultaneous_odd_bad_excluded'] is False[0m
+2026-10-22T14:07:24.6462737Z [36;1massert p['odd_selected_closed'] is False[0m
+2026-10-22T14:07:24.6463064Z [36;1massert p['negative_root_exclusion'] is False[0m
+2026-10-22T14:07:24.6463408Z [36;1massert p['finite_to_infinite_closure'] is False[0m
+2026-10-22T14:07:24.6463720Z [36;1massert p['rh_claim'] is False[0m
+2026-10-22T14:07:24.6463987Z [36;1mprint(json.dumps({[0m
+2026-10-22T14:07:24.6464224Z [36;1m    'status': 'PASS',[0m
+2026-10-22T14:07:24.6464496Z [36;1m    'classification': p['classification'],[0m
+2026-10-22T14:07:24.6464879Z [36;1m    'sign_route_classification': p['sign_route_classification'],[0m
+2026-10-22T14:07:24.6465322Z [36;1m    'control_transfer_status': p['control_transfer_status'],[0m
+2026-10-22T14:07:24.6466087Z [36;1m    'rh_claim': p['rh_claim'],[0m
+2026-10-22T14:07:24.6466364Z [36;1m}, indent=2))[0m
+2026-10-22T14:07:24.6466571Z [36;1mPY[0m
+2026-10-22T14:07:24.6526420Z shell: /usr/bin/bash -e {0}
+2026-10-22T14:07:24.6526685Z env:
+2026-10-22T14:07:24.6526953Z   pythonLocation: /opt/hostedtoolcache/Python/3.14.8/x64
+2026-10-22T14:07:24.6527384Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.14.8/x64/lib/pkgconfig
+2026-10-22T14:07:24.6527817Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.14.8/x64
+2026-10-22T14:07:24.6528191Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.14.8/x64
+2026-10-22T14:07:24.6528558Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.14.8/x64
+2026-10-22T14:07:24.6528952Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.14.8/x64/lib
+2026-10-22T14:07:24.6529287Z ##[endgroup]
+2026-10-22T14:07:24.6800962Z {
+2026-10-22T14:07:24.6801287Z   "status": "PASS",
+2026-10-22T14:07:24.6801710Z   "classification": "FULL_SPACE_DUAL_INDEPENDENCE_CERTIFIED",
+2026-10-22T14:07:24.6802297Z   "sign_route_classification": "FULL_SPACE_SIGN_INDEFINITE_CERTIFIED",
+2026-10-22T14:07:24.6802916Z   "control_transfer_status": "DUAL_INDEPENDENCE_SURVIVES_Q13_Q15_CONTROLS",
+2026-10-22T14:07:24.6803411Z   "rh_claim": false
+2026-10-22T14:07:24.6803693Z }
+2026-10-22T14:07:24.6939812Z Post job cleanup.
+2026-10-22T14:07:24.8183048Z (node:2487) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-22T14:07:24.8184857Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-22T14:07:24.8453939Z Post job cleanup.
+2026-10-22T14:07:24.9367456Z [command]/usr/bin/git version
+2026-10-22T14:07:24.9394362Z git version 2.55.0
+2026-10-22T14:07:24.9438283Z Temporarily overriding HOME='/home/runner/work/_temp/dd86e5a2-1e07-4439-8837-9feb3c716883' before making global git config changes
+2026-10-22T14:07:24.9439591Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-22T14:07:24.9443866Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/zeta-23-lean/zeta-23-lean
+2026-10-22T14:07:24.9488592Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-22T14:07:24.9531680Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-22T14:07:24.9844200Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-22T14:07:24.9873256Z http.https://github.com/.extraheader
+2026-10-22T14:07:24.9885376Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-10-22T14:07:24.9928429Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-22T14:07:25.0256517Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-22T14:07:25.0299210Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-22T14:07:25.0758337Z Cleaning up orphan processes
+2026-10-22T14:07:25.1185152Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

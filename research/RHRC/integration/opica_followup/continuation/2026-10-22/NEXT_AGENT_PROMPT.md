@@ -14,10 +14,10 @@ evidence. Reconcile any newer work. Source and gate states are separate: the old
 41-root source-bound receipt does not cover the new package; supplied/local
 narrow results do not establish aggregate registration or full release.
 
-Repair all five remaining supplied candidates and implement the 48 absent roots
-listed in REMAINING_WORK.md. Keep already repaired mask, complex-measure and
-auxiliary statements at full scope. Recheck independent consumer and axiom gates
-before promoting any state; use run_candidate_checks.py for the three modules.
+Read STAGE1_HANDOVER.md. Finish the one retained word/jet consumer and
+implement the 48 absent roots listed in REMAINING_WORK.md. Keep all ten narrow
+local results at full scope. Recheck independent consumer and axiom gates before
+promoting any state; run_candidate_checks.py covers seven modules/six consumers.
 
 Preserve uniform constants before varying schedules/palettes/indices, actual
 Dirichlet convolution, both mask realizations, actual physical L2 fields, endpoint
@@ -35,8 +35,9 @@ Preserve frozen originals and record necessary implementation refinements throug
 explicit versioned overlays. ROOT_LEDGER_100 contains full original contracts,
 not a new weaker inventory. Do not count helper declarations as primary roots.
 
-Complete the full child receipt reader and release CLI linkage, deriving mapped
-registered dependencies from compiler TYPE/VALUE/STRUCTURE closures. Retain the
+Exercise the new full child receipt producer/reader and cold replay on actual
+full mathematics after independent review. Finish the still-closed release
+companions. Preserve compiler-derived registered TYPE/VALUE/STRUCTURE edges. Retain the
 parent wrapper's route/statement/dependency metadata repairs and raw fail-closed
 fallback. Neither editable reviewed rows nor a parent/41-root receipt can grant
 full child acceptance. Add mutation and end-to-end tests for actual receipt,

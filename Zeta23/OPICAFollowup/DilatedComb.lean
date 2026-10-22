@@ -1,4 +1,5 @@
 import Zeta23.OPICAFollowup.ComplexLocalMeasures
+import Zeta23.OPICA.SincTriangle
 import Mathlib.MeasureTheory.Measure.Count
 import Mathlib.MeasureTheory.Integral.Bochner.SumMeasure
 import Mathlib.Analysis.Fourier.PoissonSummation
@@ -6,7 +7,7 @@ import Mathlib.Analysis.Distribution.SchwartzSpace.Fourier
 import Mathlib.Tactic
 
 /-!
-UNCHECKED actual scaled integer-comb construction. The positive measure is a
+Actual scaled integer-comb construction. The positive measure is a
 push-forward of counting measure with its real amplitude. Temperateness is
 proved from point counts, rather than attached as an unproved packet field.
 -/
@@ -23,14 +24,14 @@ def dilatedCombMeasure (t : ℝ) : Measure ℝ :=
   ENNReal.ofReal (Real.exp (t/2)) • scaledLatticeMeasure t
 
 lemma scaledLatticePoint_measurable (t : ℝ) : Measurable (scaledLatticePoint t) :=
-  measurable_from_countable _
+  measurable_of_countable _
 
 lemma scaledLatticePoint_injective (t : ℝ) : Function.Injective (scaledLatticePoint t) := by
   intro m n h
-  apply Int.cast_injective (R := ℝ)
+  apply Int.cast_injective (α := ℝ)
   exact mul_left_cancel₀ (Real.exp_ne_zero t) h
 
-lemma scaledLattice_preimage_bound (t R : ℝ) (hR : 0≤R) :
+lemma scaledLattice_preimage_bound (t R : ℝ) (_hR : 0≤R) :
     (scaledLatticePoint t) ⁻¹' Icc (-R) R ⊆
       (↑(Finset.Icc (-(Nat.ceil (R/Real.exp t):ℤ)) (Nat.ceil (R/Real.exp t):ℤ)) : Set ℤ) := by
   intro n hn
@@ -42,7 +43,9 @@ lemma scaledLattice_preimage_bound (t R : ℝ) (hR : 0≤R) :
   have hnx : |(n:ℝ)|≤(Nat.ceil (R/Real.exp t):ℝ) := hx.trans hc
   have h := abs_le.mp hnx
   simp only [Finset.mem_coe,Finset.mem_Icc]
-  constructor <;> exact_mod_cast (by first | exact h.1 | exact h.2)
+  constructor
+  · exact_mod_cast h.1
+  · exact_mod_cast h.2
 
 lemma scaledLattice_integer_box_card (N : ℕ) :
     (Finset.Icc (-(N:ℤ)) (N:ℤ)).card=2*N+1 := by
@@ -60,6 +63,8 @@ lemma scaledLatticeMeasure_interval_bound (t R : ℝ) (hR : 0≤R) :
   have hreal : ((2*Nat.ceil (R/Real.exp t)+1:ℕ):ℝ)≤3+2*Real.exp (-t)*R := by
     rw [Real.exp_neg]
     push_cast
+    rw [div_eq_mul_inv] at hceil
+    rw [div_eq_mul_inv]
     nlinarith
   exact_mod_cast (ENNReal.ofReal_le_ofReal hreal)
 
@@ -81,6 +86,8 @@ lemma scaledLatticeMeasure_linearGrowth (t : ℝ) : LinearMassGrowth (scaledLatt
 
 instance dilatedCombMeasure_locallyFinite (t : ℝ) : IsLocallyFiniteMeasure (dilatedCombMeasure t) := by
   unfold dilatedCombMeasure
+  have := IsFiniteMeasureOnCompacts.smul (scaledLatticeMeasure t)
+    (c := ENNReal.ofReal (Real.exp (t/2))) ENNReal.ofReal_ne_top
   infer_instance
 
 lemma dilatedCombMeasure_linearGrowth (t : ℝ) : LinearMassGrowth (dilatedCombMeasure t) := by
@@ -96,7 +103,8 @@ def dilatedCombJordan (t : ℝ) : LocallyFiniteSignedMeasure :=
   localJordanDifference (dilatedCombMeasure t) 0
 
 lemma dilatedCombJordan_growth (t : ℝ) : (dilatedCombJordan t).HasLinearGrowth := by
-  simpa [dilatedCombJordan,localJordanDifference,LocallyFiniteSignedMeasure.totalVariation]
+  simpa [dilatedCombJordan,localJordanDifference,LocallyFiniteSignedMeasure.HasLinearGrowth,
+    LocallyFiniteSignedMeasure.totalVariation,Measure.zero_sub]
     using dilatedCombMeasure_linearGrowth t
 
 def dilatedCombDistribution (t : ℝ) : TemperedDistribution ℝ ℂ :=
@@ -104,7 +112,7 @@ def dilatedCombDistribution (t : ℝ) : TemperedDistribution ℝ ℂ :=
 
 lemma scaledLatticeMeasure_integrable_schwartz (t : ℝ) (f : SchwartzMap ℝ ℂ) :
     Integrable f (scaledLatticeMeasure t) := by
-  letI := hasTemperateGrowth_of_linear_growth _ (scaledLatticeMeasure_linearGrowth t)
+  have := hasTemperateGrowth_of_linear_growth _ (scaledLatticeMeasure_linearGrowth t)
   exact f.integrable
 
 lemma dilatedComb_schwartz_summable (t : ℝ) (f : SchwartzMap ℝ ℂ) :
@@ -113,13 +121,13 @@ lemma dilatedComb_schwartz_summable (t : ℝ) (f : SchwartzMap ℝ ℂ) :
   have hm := (integrable_map_measure hf.aestronglyMeasurable
     (scaledLatticePoint_measurable t).aemeasurable).mp hf
   have hs : Summable (fun n : ℤ => ‖f (Real.exp t*(n:ℝ))‖) := by
-    simpa only [scaledLatticePoint,integrable_count_iff] using hm
+    simpa only [Function.comp_def,scaledLatticePoint,integrable_count_iff] using hm
   exact hs.of_norm
 
 lemma dilatedCombDistribution_apply (t : ℝ) (f : SchwartzMap ℝ ℂ) :
     dilatedCombDistribution t f=(Real.exp (t/2):ℂ)*∑' n : ℤ, f (Real.exp t*(n:ℝ)) := by
   rw [dilatedCombDistribution,LocallyFiniteSignedMeasure.distributionOfLinearGrowth_apply]
-  simp only [dilatedCombJordan,localJordanDifference,Measure.sub_zero,zero_sub,
+  simp only [dilatedCombJordan,localJordanDifference,Measure.sub_zero,Measure.zero_sub,
     integral_zero_measure,sub_zero,dilatedCombMeasure,integral_smul_measure,
     ENNReal.toReal_ofReal (Real.exp_pos _).le]
   rw [scaledLatticeMeasure,integral_map (scaledLatticePoint_measurable t).aemeasurable
@@ -130,6 +138,7 @@ lemma dilatedCombDistribution_apply (t : ℝ) (f : SchwartzMap ℝ ℂ) :
     exact scaledLatticeMeasure_integrable_schwartz t f
   rw [integral_countable hc]
   simp only [count_real_singleton,one_smul,scaledLatticePoint,RCLike.real_smul_eq_coe_mul]
+  rfl
 
 lemma fourier_positive_scale (f : ℝ→ℂ) (a xi : ℝ) (ha : 0<a) :
     𝓕 (fun x : ℝ => f (a*x)) xi=(a⁻¹:ℝ) • 𝓕 f (xi/a) := by
@@ -141,42 +150,31 @@ lemma fourier_positive_scale (f : ℝ→ℂ) (a xi : ℝ) (ha : 0<a) :
     dsimp [F]
     congr 2
     push_cast
-    field_simp
-    ring
+    field_simp [ha.ne', Complex.ofReal_ne_zero.mpr ha.ne']
   simp only [smul_eq_mul]
   rw [heq,Measure.integral_comp_mul_left F a,abs_inv,abs_of_pos ha]
 
-lemma schwartz_scaled_decay_two (f : SchwartzMap ℝ ℂ) (a : ℝ) (ha : 0<a) :
-    (fun x : ℝ => f (a*x)) =O[cocompact ℝ] (fun x : ℝ => |x|^(-2:ℝ)) := by
-  obtain ⟨C,hC,hbound⟩ := f.decay 2 0
-  simp only [norm_iteratedFDeriv_zero] at hbound
-  refine ⟨C/a^2,?_⟩
-  filter_upwards [Filter.cocompact_le_cofinite (Filter.eventually_cofinite_ne (0:ℝ))] with x hx
-  have hxpos : 0<|x| := abs_pos.mpr hx
-  have h := hbound (a*x)
-  rw [Real.norm_eq_abs,abs_mul,abs_of_pos ha,mul_pow] at h
-  rw [Real.norm_eq_abs,abs_of_nonneg (Real.rpow_nonneg (abs_nonneg x) _),
-    Real.rpow_neg (abs_nonneg x),Real.rpow_two]
-  have ha0 := ha.ne'
-  have hx0 := hxpos.ne'
-  field_simp [ha0,hx0] at h ⊢
-  nlinarith
+/-- Positive dilation acts on genuine Schwartz functions by a continuous linear equivalence. -/
+def schwartzPositiveScale (a : ℝ) (ha : 0<a) (f : SchwartzMap ℝ ℂ) : SchwartzMap ℝ ℂ :=
+  SchwartzMap.compCLMOfContinuousLinearEquiv ℂ
+    (ContinuousLinearEquiv.unitsEquivAut ℝ (Units.mk0 a ha.ne')) f
+
+lemma schwartzPositiveScale_apply (a : ℝ) (ha : 0<a) (f : SchwartzMap ℝ ℂ) (x : ℝ) :
+    schwartzPositiveScale a ha f x=f (a*x) := by
+  simp [schwartzPositiveScale,mul_comm]
 
 lemma scaled_poisson_schwartz (f : SchwartzMap ℝ ℂ) (a : ℝ) (ha : 0<a) :
     (∑' n : ℤ, f (a*(n:ℝ)))=(a⁻¹:ℝ) • ∑' n : ℤ, (𝓕 f) ((n:ℝ)/a) := by
-  have hf : Continuous (fun x : ℝ => f (a*x)) := f.continuous.comp (continuous_const.mul continuous_id)
-  have hsum : Summable (fun n : ℤ => 𝓕 (fun x : ℝ => f (a*x)) n) := by
-    simp_rw [fourier_positive_scale _ _ _ ha]
-    have h := dilatedComb_schwartz_summable (-Real.log a) (𝓕 f)
-    rw [Real.exp_neg,Real.exp_log ha] at h
-    simpa only [div_eq_mul_inv,mul_comm] using h.const_smul a⁻¹
-  have h := Real.tsum_eq_tsum_fourier_of_rpow_decay_of_summable hf
-    (by norm_num : (1:ℝ)<2) (schwartz_scaled_decay_two f a ha) hsum 0
-  simp only [zero_add,fourier_coe_apply,ofReal_zero,mul_zero,zero_mul,
-    Complex.exp_zero,mul_one] at h
-  rw [h]
-  simp_rw [fourier_positive_scale _ _ _ ha]
-  exact tsum_const_smul
+  let g := schwartzPositiveScale a ha f
+  have hg : (g : ℝ→ℂ) = fun x => f (a*x) := by
+    funext x
+    exact schwartzPositiveScale_apply a ha f x
+  have hfourier (x : ℝ) : (𝓕 g) x=(a⁻¹:ℝ) • (𝓕 f) (x/a) := by
+    rw [SchwartzMap.fourier_coe,hg,fourier_positive_scale _ _ _ ha]
+    rfl
+  have h := g.tsum_eq_tsum_fourier 0
+  simp only [zero_add,hfourier,AddCircle.coe_zero,fourier_eval_zero,mul_one] at h
+  simpa only [g,schwartzPositiveScale_apply,tsum_const_smul''] using h
 
 /-- Full original comb root: true positive point-counting measure, genuine
 Schwartz absolute convergence, exact amplitude and Fourier reflection t↦-t. -/
@@ -190,17 +188,44 @@ theorem dilated_comb_fourier (t : ℝ) :
   · intro R hR
     rw [dilatedCombMeasure,Measure.smul_apply,smul_eq_mul,
       ENNReal.ofReal_mul (Real.exp_pos _).le]
-    exact mul_le_mul_left' (scaledLatticeMeasure_interval_bound t R hR) _
+    exact mul_le_mul_right (scaledLatticeMeasure_interval_bound t R hR) _
   · ext f
     change dilatedCombDistribution t (𝓕 f)=dilatedCombDistribution (-t) f
     rw [dilatedCombDistribution_apply,dilatedCombDistribution_apply]
     have h := scaled_poisson_schwartz f (Real.exp (-t)) (Real.exp_pos _)
-    simp only [Real.exp_neg,inv_inv,div_inv_eq_mul,mul_comm (Real.exp t)] at h
+    have hi : (Real.exp (-t))⁻¹=Real.exp t := by rw [Real.exp_neg,inv_inv]
+    have hd (n : ℤ) : (n:ℝ)/Real.exp (-t)=Real.exp t*(n:ℝ) := by
+      rw [div_eq_mul_inv,hi,mul_comm]
+    simp only [hi,hd] at h
     rw [h]
-    simp only [RCLike.real_smul_eq_coe_mul,mul_assoc]
-    congr 1
-    rw [←Complex.ofReal_mul,←Real.exp_add]
-    congr 2
-    ring
+    simp only [RCLike.real_smul_eq_coe_mul]
+    have he : Real.exp (t/2)=Real.exp (-t/2)*Real.exp t := by
+      rw [←Real.exp_add]
+      congr 1
+      ring
+    rw [he,Complex.ofReal_mul]
+    exact mul_assoc (Real.exp (-t/2) : ℂ) (Real.exp t : ℂ)
+      (∑' n : ℤ, (𝓕 f) (Real.exp t*(n:ℝ)))
+
+/-- The planned public comb interface is the actual positive lattice distribution. -/
+abbrev dilatedComb (t : ℝ) : TemperedDistribution ℝ ℂ := dilatedCombDistribution t
+
+/-- Its physical Schwartz pairing, with the prescribed heat amplitude. -/
+def combPairing (t : ℝ) (f : SchwartzMap ℝ ℂ) : ℂ :=
+  (Real.exp (t/2):ℂ)*∑' n : ℤ, f (Real.exp t*(n:ℝ))
+
+theorem dilatedComb_apply (t : ℝ) (f : SchwartzMap ℝ ℂ) :
+    dilatedComb t f=combPairing t f := dilatedCombDistribution_apply t f
+
+/-- The origin atom has the prescribed amplitude for every real dilation. -/
+theorem dilatedCombMeasure_origin (t : ℝ) :
+    dilatedCombMeasure t ({0} : Set ℝ)=ENNReal.ofReal (Real.exp (t/2)) := by
+  rw [dilatedCombMeasure,Measure.smul_apply,scaledLatticeMeasure,
+    Measure.map_apply (scaledLatticePoint_measurable t) (measurableSet_singleton 0)]
+  have hpre : scaledLatticePoint t ⁻¹' ({0} : Set ℝ)=({0} : Set ℤ) := by
+    ext n
+    simp [scaledLatticePoint,Real.exp_ne_zero]
+  rw [hpre]
+  simp
 
 end Zeta23.OPICAFollowup

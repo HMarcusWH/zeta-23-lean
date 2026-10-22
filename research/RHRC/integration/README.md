@@ -10,8 +10,8 @@ It does **not** create mathematical theorem authority.
 
 For draft PR #294, start with the [manual current-state graph](../graph/OPICA_FOLLOWUP_CURRENT_STATE.md)
 and the [repository continuation guide](opica_followup/continuation/2026-10-22/README.md).
-The current ledger separates 41 historical roots, six narrow local verifications,
-five unaccepted WIP roots and 48 absent primary implementations; all 100 remain
+The current ledger separates 41 historical roots, ten narrow local verifications,
+one unaccepted WIP root and 48 absent primary implementations; all 100 remain
 required. Aggregate/full-release acceptance, RH and Step 4 are OPEN. The anchor
 descriptions below preserve the earlier integration-foundation context.
 

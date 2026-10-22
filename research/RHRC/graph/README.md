@@ -11,8 +11,8 @@ The governing document is [CONSTITUTION.md](CONSTITUTION.md).
 
 Use the [manual OPICA current-state map](OPICA_FOLLOWUP_CURRENT_STATE.md) to
 find the 100-root ledger, exact local receipts and unfinished proof lanes.
-It distinguishes 41 historical subset roots, six independently verified narrow
-roots, five unaccepted WIP roots and 48 absent primary implementations.
+It distinguishes 41 historical subset roots, ten independently verified narrow
+roots, one unaccepted WIP root and 48 absent primary implementations.
 This navigation view is separate from the generated compiler dependency DAG;
 current aggregate/full-release acceptance, RH and Step 4 remain OPEN.
 

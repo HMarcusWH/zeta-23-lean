@@ -4,10 +4,12 @@ This checkpoint combines the existing PR #294 implementation, the supplied
 22 October repair kit, and the Codex audit/provenance. It is **not a completed
 100-root release**. RH, Step 4 and the independent closing inequalities are OPEN.
 
-For a complete file/authority map, read [DOCUMENTATION_INDEX.md](DOCUMENTATION_INDEX.md).
+The latest [Stage 1 handover](STAGE1_HANDOVER.md) records four new candidate
+repairs, full-scope receipt infrastructure and exact evidence. For a complete
+file/authority map, read [DOCUMENTATION_INDEX.md](DOCUMENTATION_INDEX.md).
 Use [MODULE_STATUS.md](MODULE_STATUS.md) to choose a source module and the
 [manual progress graph](../../../../graph/OPICA_FOLLOWUP_CURRENT_STATE.md) to
-orient proof lanes. The [dated CI review](evidence/current-codex/documentation-review/CI_SNAPSHOT.md)
+orient proof lanes. The [dated CI harvest](evidence/current-codex/stage1/ci-harvest/CI_HARVEST.md)
 records actual results and pending work at the source checkpoint; refresh live
 GitHub results before making current claims.
 
@@ -26,10 +28,10 @@ beside this guide separates each root's implementation, compilation, consumers,
 axioms and aggregate acceptance. `REMAINING_WORK.md` lists the 48 absent proofs.
 
 - 41 roots have a historical cold exact-source subset receipt at the old base.
-- Six mask, complex-measure and auxiliary roots passed independent local
-  module, full-type/domain consumer and standard-axiom checks. The auxiliary
-  consumer rerun is now preserved. Aggregate acceptance remains pending.
-- Five other supplied candidates remain failed, unchecked or dependency-blocked.
+- Ten additional mask, complex-measure, auxiliary, Laguerre, comb and
+  first-cell roots passed independent local module, full-type/domain consumer
+  and standard-axiom checks. Aggregate acceptance remains pending.
+- One supplied same-output word/jet candidate remains dependency-blocked.
 - 48 original primary implementations are still absent.
 
 Consult `evidence/current-codex/` and the ledger for any newer replay evidence in
@@ -53,7 +55,7 @@ python -B research/RHRC/integration/opica_followup/continuation/2026-10-22/run_c
   --lake lake --output-dir /tmp/opica-current-candidates
 ```
 
-The second command builds the three repaired modules from current source, checks
+The second command builds seven repaired modules from current source, checks
 the explicit independent consumers and their named standard-only axiom closures,
 and records source/head/tree/log hashes. It neither registers roots nor accepts
 the complete PR. Use an OS-appropriate external output path on Windows.
@@ -65,16 +67,20 @@ lake build Zeta23.OPICAFollowup.Validation \
   Zeta23.RHRC.OpicaTypeExprExport Zeta23.RHRC.SourceCandidateResolution
 ```
 
-The builder remains a partial receipt producer. Full release readiness must stay
-closed until actual all-100 compiler linkage and every remaining gate exist.
+The builder preserves the explicit historical subset protocol and now includes
+a full100 producer/reader with fresh cold replay. Its independent full review
+seal is unset, so current full production rejects before Lean. Actual full
+production, parent acceptance and other release companions remain unfinished;
+full release readiness stays closed. Read the Stage 1 infrastructure handover.
 
 ## Next work
 
 Read `NEXT_AGENT_PROMPT.md`, the exact ledger contracts and
 `evidence/historical-codex-review/` before choosing a proof lane.
 
-Repair the Laguerre, comb, first-cell sign/cost and Step 1–3 consumer candidates;
-then complete the 48 absent roots without replacing them by supporting lemmas.
+Finish the Step 1–3 word/jet consumer candidate and complete the 48 absent
+roots without replacing them by supporting lemmas. The other four earlier
+candidates now have narrow source/type/domain/axiom evidence in Stage 1.
 The auxiliary/top-moment/residual/memory/rate chain and the global complex
 measure/co-Poisson/profile/sampling chain are distinct unfinished obligations.
 
@@ -86,15 +92,16 @@ all 28 acceptance units. Record dependency/interface refinements explicitly.
 
 The repaired parent wrapper rejects the three reported metadata bypasses before
 projection. It still correctly rejects the current incomplete reviewed type table
-and preserves the raw parent context. The supplied full-reader draft was not in
-the delivery; no such implementation is claimed here.
+and preserves the raw parent context. Stage 1 adds the strict full compiler
+receipt infrastructure with 185 passing fixture tests per Python mode; actual
+full mathematics and independent acceptance companions are still required.
 
 ## Evidence map
 
 - `inputs/`: both foundational PDFs, original specifications, amendment and
   historical research/input texts. The original controlling files remain above.
-- `consumers/`: independent expected-type/domain consumers for the three repaired
-  modules. They are actual Lean sources used by the narrow replay.
+- `consumers/`: six independent expected-type/domain consumer files covering
+  seven repaired modules. They are actual Lean sources used by narrow replay.
 - `provided/`: unchanged delivery state, documents, tools and old-base patch.
   Some tools require omitted offline-runtime material; read the CORE caveat.
 - `evidence/provided/`: supplied receipts/logs and the historical cold receipt.

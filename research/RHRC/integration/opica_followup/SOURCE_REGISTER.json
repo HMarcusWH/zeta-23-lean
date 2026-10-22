@@ -5968,7 +5968,7 @@
     "Zeta23.OPICAFollowup.history_recovery_cost_control",
     "Zeta23.OPICAFollowup.forced_positive_gram_nonreal_control"
   ],
-  "type_fingerprint_scope": "The stored9-root type fingerprints are historical and are not a complete current signature table. The selected41-root historical exact-source subset and six additional narrow-local primary roots retain distinct evidence stages in continuation/2026-10-22/ROOT_LEDGER_100.json. The selected subset has independently stated Validation.lean consumers; the three repaired modules have separate independent continuation consumers. Neither41historical+6narrow nor these9stored fingerprints establish a current aggregate47-root or full100-root signature contract; complete current-source type, consumer and dependency linkage remains OPEN.",
+  "type_fingerprint_scope": "The stored9-root type fingerprints are historical and are not a complete current signature table. The selected41-root historical exact-source subset and ten additional narrow-local primary roots retain distinct evidence stages in continuation/2026-10-22/ROOT_LEDGER_100.json. The selected subset has independently stated Validation.lean consumers; seven repaired modules have six separate independent continuation consumer files. Neither41historical+10narrow nor these9stored fingerprints establish a current aggregate51-root or full100-root signature contract; complete current-source type, consumer and dependency linkage remains OPEN. Stage1 full receipt infrastructure is fixture-tested; its independent full review seal is deliberately unset and actual full compiler production/replay remains pending.",
   "implementation_dependency_amendment": {
     "schema": "OPICA_IMPLEMENTATION_DEPENDENCY_AMENDMENT_V1",
     "id": "DEP_2026_10_21_03",
@@ -6902,15 +6902,18 @@
     "original_primary_roots": 100,
     "acceptance_units": 28,
     "historical_subset_roots": 41,
-    "additional_narrow_local_roots": 6,
+    "additional_narrow_local_roots": 10,
     "auxiliary_module_only_roots": 0,
-    "other_unaccepted_candidates": 5,
+    "other_unaccepted_candidates": 1,
     "absent_complete_candidates": 48,
     "aggregate_registration_accepted": false,
     "full_release_ready": false,
     "new_mandatory_roots": [],
     "RH": "OPEN",
     "Step4": "OPEN",
-    "independent_closing_inequalities": "OPEN"
+    "independent_closing_inequalities": "OPEN",
+    "latest_stage": "continuation/2026-10-22/STAGE1_HANDOVER.md",
+    "full_compiler_protocol": "IMPLEMENTED_FIXTURE_TESTED_INDEPENDENT_SEAL_UNSET_ACTUAL_FULL_RUN_PENDING",
+    "full_release_companions": "PARENT_RUNTIME_CANONICAL_WORKFLOW_UNWIRED_FAIL_CLOSED"
   }
 }

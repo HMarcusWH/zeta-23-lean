@@ -72,6 +72,68 @@ FOLLOWUP_GLOBAL_FILES = {
     'semantic_closure': 'research/RHRC/graph/SEMANTIC_CLOSURE_CONFIG.json',
 }
 
+# Separately reviewed Stage1 documentation navigation bytes. This exact seven-
+# file exception is independent of the full100-root child extension below.
+# Neither an editable child register nor a continuation manifest can repin it.
+# The original PROTECTED_STATE.json and historical registry objects stay frozen.
+FOLLOWUP_DOCUMENTATION_PATHS = frozenset({
+    'AUDIT.md', 'FORK_NOTES.md',
+    'research/RHRC/DOCUMENTATION_AUTHORITY.md',
+    'research/RHRC/VALIDATION_PROTOCOL.md',
+    'research/RHRC/graph/OPICA_FOLLOWUP_CURRENT_STATE.md',
+    'research/RHRC/graph/README.md', 'research/RHRC/integration/README.md',
+})
+FOLLOWUP_DOCUMENTATION_REVIEW = (
+    ('AUDIT.md', 27820, '3ae31acfb36eef59bb63e0781f6fde66a2a5d3d46b859bc81ffc00dabc8f4e09'),
+    ('FORK_NOTES.md', 21249, 'aaab3241840ba6cb3085452fb2791c19391f3c14f43ebcdaabbb2baa3a144cac'),
+    ('research/RHRC/DOCUMENTATION_AUTHORITY.md', 34241, '34df2bc6c5ff56566d29b3a8317f36534dbba6bae7140841b81d5280f01a7f6b'),
+    ('research/RHRC/VALIDATION_PROTOCOL.md', 41426, '736a67742c61816f70d9aa0be846d47bfed9e16f3f311172b3217f66c4235289'),
+    ('research/RHRC/graph/OPICA_FOLLOWUP_CURRENT_STATE.md', 9501, '408b886fb0f220a10562b9cdff77332de86199be2e683dacb1a73ce3a87df72f'),
+    ('research/RHRC/graph/README.md', 17623, '5247bb075493796b493dfcd2137334ebb4718bc4ba1e2c37a9e6fbc98835f06e'),
+    ('research/RHRC/integration/README.md', 5483, 'cac2f05b95b905ad3d3ea22b59d9a0c36158965306818b7ef05cb997f1543b9e'),
+)
+FOLLOWUP_DOCUMENTATION_REVIEW_SHA256 = '60262d0de871b497278af8197fc806b02665e7a1f2b14c5a2a3a5419637cbb86'
+PROTECTED_STATE_OBJECT_SHA256 = '5ad6d198133f07a5ed7ac8abc9ec9bb6523db4a9729b69a61f7fe15a7820ce99'
+
+
+def _canonical_object_sha256(document):
+    return hashlib.sha256(json.dumps(document,sort_keys=True,separators=(',', ':'),
+        ensure_ascii=False).encode('utf-8')).hexdigest()
+
+
+def reviewed_documentation_paths(repo: Path):
+    """Return the exact all-or-nothing documentation exception, never proof scope.
+
+    A separate fixed seal prevents self-repinning the table while editing a
+    manifest. The parent validator's own source identity is pinned by the full
+    child builder; changing that trusted code requires independent review.
+    """
+    try:
+        rows = [{'path':p,'bytes':size,'sha256':digest}
+                for p,size,digest in FOLLOWUP_DOCUMENTATION_REVIEW]
+        paths = [row['path'] for row in rows]
+        if (len(rows) != 7 or len({p.casefold() for p in paths}) != 7
+                or set(paths) != FOLLOWUP_DOCUMENTATION_PATHS
+                or paths != sorted(paths)
+                or _canonical_object_sha256(rows) != FOLLOWUP_DOCUMENTATION_REVIEW_SHA256):
+            raise ValueError('exact sealed seven-path inventory required')
+        identities = set()
+        for row in rows:
+            path = _safe_checkout_file(Path(repo).absolute(),row['path'])
+            if path.resolve() != Path(repo).resolve()/row['path']:
+                raise ValueError('aliased documentation path: '+row['path'])
+            stat = path.stat()
+            identity = (stat.st_dev,stat.st_ino)
+            if stat.st_nlink != 1 or identity in identities:
+                raise ValueError('aliased documentation file: '+row['path'])
+            identities.add(identity)
+            data = path.read_bytes()
+            if len(data) != row['bytes'] or hashlib.sha256(data).hexdigest() != row['sha256']:
+                raise ValueError('reviewed documentation bytes changed: '+row['path'])
+        return set(paths), []
+    except (OSError,ValueError,TypeError,KeyError) as exc:
+        return set(), ['documentation review rejected: '+str(exc)]
+
 
 def _extension_require(condition, message):
     # Deliberately not an assert: python -O must retain every rejection.
@@ -373,19 +435,47 @@ def forbidden_lean(text):
 
 def protected_errors(repo: Path, protection):
     errors = []
+    # Compare the passed object as well as the separately pinned input file.
+    # Editing a protected entry alongside a changed document cannot re-freeze it.
+    if _canonical_object_sha256(protection) != PROTECTED_STATE_OBJECT_SHA256:
+        errors.append('frozen protection object changed')
+    reviewed_paths, review_errors = set(), []
+    documentation_exception_needed = False
     for entry in protection['byte_protected_files']:
-        path = repo / entry['path']
-        if not path.is_file():
-            errors.append('protected file missing: ' + entry['path'])
+        if entry['path'] in FOLLOWUP_DOCUMENTATION_PATHS:
+            try:
+                data = _safe_checkout_file(Path(repo).absolute(),entry['path']).read_bytes()
+                if len(data) != entry['bytes'] or hashlib.sha256(data).hexdigest() != entry['sha256']:
+                    documentation_exception_needed = True
+            except (OSError,ValueError):
+                documentation_exception_needed = True
+    if documentation_exception_needed:
+        reviewed_paths, review_errors = reviewed_documentation_paths(repo)
+        errors.extend(review_errors)
+    seen_paths = set()
+    for entry in protection['byte_protected_files']:
+        relative = entry['path']
+        if relative.casefold() in seen_paths:
+            errors.append('duplicate or aliased protected path: '+relative)
+        seen_paths.add(relative.casefold())
+        try:
+            path = _safe_checkout_file(Path(repo).absolute(),relative)
+        except (OSError,ValueError) as exc:
+            errors.append('protected file missing or unsafe: '+relative+': '+str(exc))
             continue
         data = path.read_bytes()
         if len(data) != entry['bytes'] or hashlib.sha256(data).hexdigest() != entry['sha256']:
-            errors.append('protected bytes changed: ' + entry['path'])
+            if relative not in reviewed_paths:
+                errors.append('protected bytes changed: ' + relative)
     for name, key, baseline_key in [
         ('CLAIM_REGISTRY.json', 'claims', 'claim_objects_all_existing'),
         ('REGISTERED_THEOREM_BINDINGS.json', 'bindings', 'registered_bindings_all_existing'),
     ]:
-        actual = read_json(repo / 'research/RHRC' / name)[key]
+        try:
+            actual = read_json(_safe_checkout_file(Path(repo).absolute(),'research/RHRC/'+name))[key]
+        except (OSError,ValueError,KeyError) as exc:
+            errors.append('protected registry missing or unsafe: '+name+': '+str(exc))
+            continue
         old = protection[baseline_key]
         ids = [item['id'] for item in actual]
         if len(ids) != len(set(ids)):

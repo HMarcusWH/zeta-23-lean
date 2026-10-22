@@ -1,0 +1,104 @@
+Zeta23/OPICAFollowup/RenormalizedCoPoisson.lean:81:8: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  cexp ↑?x
+in the target expression
+  cexp (↑u * -rho) = ↑(Real.exp (-u / 2)) * cexp (-(lam * ↑u))
+
+delta gamma u : ℝ
+hg : gamma ≠ 0
+hu : 0 < u
+hu1 : u < Real.log 2
+lam : ℂ := ↑delta + ↑gamma * I
+rho : ℂ := coPoissonRho delta gamma
+h0 : coPoissonRho delta gamma ≠ 0
+h1 : coPoissonRho delta gamma ≠ 1
+hh : coPoissonRho delta gamma ≠ 1 / 2
+hL : ↑delta + ↑gamma * I ≠ 0
+hx : Real.exp u ∈ Set.Ioo 1 2
+hpow : ∀ (z : ℂ), ↑(Real.exp u) ^ z = cexp (↑u * z)
+hb : coPoissonOriginNormalizer rho = (1 - 2 * rho) / (rho * (1 - rho))
+hk : rho * (1 - rho) = 1 / 4 - lam ^ 2
+hnum : 1 - 2 * rho = -2 * lam
+⊢ cexp (↑u * -rho) = ↑(Real.exp (-u / 2)) * cexp (-(lam * ↑u))
+Zeta23/OPICAFollowup/RenormalizedCoPoisson.lean:88:8: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  cexp ↑?x
+in the target expression
+  cexp (↑u * (rho - 1)) = ↑(Real.exp (-u / 2)) * cexp (lam * ↑u)
+
+delta gamma u : ℝ
+hg : gamma ≠ 0
+hu : 0 < u
+hu1 : u < Real.log 2
+lam : ℂ := ↑delta + ↑gamma * I
+rho : ℂ := coPoissonRho delta gamma
+h0 : coPoissonRho delta gamma ≠ 0
+h1 : coPoissonRho delta gamma ≠ 1
+hh : coPoissonRho delta gamma ≠ 1 / 2
+hL : ↑delta + ↑gamma * I ≠ 0
+hx : Real.exp u ∈ Set.Ioo 1 2
+hpow : ∀ (z : ℂ), ↑(Real.exp u) ^ z = cexp (↑u * z)
+hb : coPoissonOriginNormalizer rho = (1 - 2 * rho) / (rho * (1 - rho))
+hk : rho * (1 - rho) = 1 / 4 - lam ^ 2
+hnum : 1 - 2 * rho = -2 * lam
+hsplit_neg : cexp (↑u * -rho) = ↑(Real.exp (-u / 2)) * cexp (-(lam * ↑u))
+⊢ cexp (↑u * (rho - 1)) = ↑(Real.exp (-u / 2)) * cexp (lam * ↑u)
+Zeta23/OPICAFollowup/RenormalizedCoPoisson.lean:95:37: error(lean.unknownIdentifier): Unknown constant `Complex.sinh_eq`
+Zeta23/OPICAFollowup/RenormalizedCoPoisson.lean:67:54: error: unsolved goals
+delta gamma u : ℝ
+hg : gamma ≠ 0
+hu : 0 < u
+hu1 : u < Real.log 2
+lam : ℂ := ↑delta + ↑gamma * I
+rho : ℂ := coPoissonRho delta gamma
+h0 : coPoissonRho delta gamma ≠ 0
+h1 : coPoissonRho delta gamma ≠ 1
+hh : coPoissonRho delta gamma ≠ 1 / 2
+hL : ↑delta + ↑gamma * I ≠ 0
+hx : Real.exp u ∈ Set.Ioo 1 2
+hpow : ∀ (z : ℂ), ↑(Real.exp u) ^ z = cexp (↑u * z)
+hb : coPoissonOriginNormalizer rho = (1 - 2 * rho) / (rho * (1 - rho))
+hk : rho * (1 - rho) = 1 / 4 - lam ^ 2
+hnum : 1 - 2 * rho = -2 * lam
+hsplit_neg : cexp (↑u * -rho) = ↑(Real.exp (-u / 2)) * cexp (-(lam * ↑u))
+hsplit_pos : cexp (↑u * (rho - 1)) = ↑(Real.exp (-u / 2)) * cexp (lam * ↑u)
+⊢ (↑(Real.exp (-u / 2)) * cexp (-(lam * ↑u)) - ↑(Real.exp (-u / 2)) * cexp (lam * ↑u)) /
+      (-2 * lam / (1 / 4 - lam ^ 2)) =
+    ↑(Real.exp (-u / 2)) * ((1 / 4 - (↑delta + ↑gamma * I) ^ 2) / (↑delta + ↑gamma * I)) *
+      sinh ((↑delta + ↑gamma * I) * ↑u)
+Zeta23/OPICAFollowup/RenormalizedCoPoisson.lean:112:33: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Zeta23/OPICAFollowup/RenormalizedCoPoisson.lean:116:64: error: unsolved goals
+a b : ℝ
+⊢ ((cos ↑b).re = Real.cos b ∨ Real.sinh a = 0) ∧ ((sin ↑b).re = Real.sin b ∨ Real.cosh a = 0)
+Zeta23/OPICAFollowup/RenormalizedCoPoisson.lean:134:25: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ((1 / 4 - (↑delta + ↑gamma * I) ^ 2) / (↑delta + ↑gamma * I)).im
+in the target expression
+  Real.exp (-u / 2) * (delta * (1 / (4 * (delta ^ 2 + gamma ^ 2)) - 1)) *
+        (Real.sinh (delta * u) * Real.cos (gamma * u)) -
+      (↑(Real.exp (-u / 2)) * ((1 / 4 - (↑delta + ↑gamma * I) ^ 2) / (↑delta + ↑gamma * I))).im *
+        (Real.cosh (delta * u) * Real.sin (gamma * u)) =
+    Real.exp (-u / 2) *
+      (delta * (1 / (4 * (delta ^ 2 + gamma ^ 2)) - 1) * Real.sinh (delta * u) * Real.cos (gamma * u) +
+        gamma * (1 + 1 / (4 * (delta ^ 2 + gamma ^ 2))) * Real.cosh (delta * u) * Real.sin (gamma * u))
+
+delta gamma u : ℝ
+hg : gamma ≠ 0
+hu : 0 < u
+hu1 : u < Real.log 2
+hre : ((1 / 4 - (↑delta + ↑gamma * I) ^ 2) / (↑delta + ↑gamma * I)).re = delta * (1 / (4 * (delta ^ 2 + gamma ^ 2)) - 1)
+him :
+  ((1 / 4 - (↑delta + ↑gamma * I) ^ 2) / (↑delta + ↑gamma * I)).im = -gamma * (1 + 1 / (4 * (delta ^ 2 + gamma ^ 2)))
+harg : (↑delta + ↑gamma * I) * ↑u = ↑(delta * u) + ↑(gamma * u) * I
+hsre : (sinh (↑(delta * u) + ↑(gamma * u) * I)).re = Real.sinh (delta * u) * Real.cos (gamma * u)
+hsim : (sinh (↑(delta * u) + ↑(gamma * u) * I)).im = Real.cosh (delta * u) * Real.sin (gamma * u)
+⊢ Real.exp (-u / 2) * (delta * (1 / (4 * (delta ^ 2 + gamma ^ 2)) - 1)) *
+        (Real.sinh (delta * u) * Real.cos (gamma * u)) -
+      (↑(Real.exp (-u / 2)) * ((1 / 4 - (↑delta + ↑gamma * I) ^ 2) / (↑delta + ↑gamma * I))).im *
+        (Real.cosh (delta * u) * Real.sin (gamma * u)) =
+    Real.exp (-u / 2) *
+      (delta * (1 / (4 * (delta ^ 2 + gamma ^ 2)) - 1) * Real.sinh (delta * u) * Real.cos (gamma * u) +
+        gamma * (1 + 1 / (4 * (delta ^ 2 + gamma ^ 2))) * Real.cosh (delta * u) * Real.sin (gamma * u))
+Zeta23/OPICAFollowup/RenormalizedCoPoisson.lean:154:13: error: unexpected token '|*'; expected '|' or '|ₘ'
+Zeta23/OPICAFollowup/RenormalizedCoPoisson.lean:197:75: error: unexpected token 'from'; expected ')', ',' or ':'
+Zeta23/OPICAFollowup/RenormalizedCoPoisson.lean:209:9: error: unexpected token '∈'; expected ','
+Zeta23/OPICAFollowup/RenormalizedCoPoisson.lean:344:14: error: unexpected token '|*'; expected '|' or '|ₘ'

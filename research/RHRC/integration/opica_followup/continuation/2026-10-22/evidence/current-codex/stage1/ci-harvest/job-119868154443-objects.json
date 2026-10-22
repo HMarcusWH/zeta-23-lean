@@ -1,0 +1,411 @@
+[
+  {
+    "schema_version": "POST198_FB05_Q14_FOUR_WAY_SECOND_DERIVATIVE_CHECK_v1",
+    "status": "PASS",
+    "points": [
+      {
+        "label": "Q13_midpoint",
+        "Q": 13,
+        "L": {
+          "ball": "[2.60200334353839767528803615323 +/- 3.34e-30]",
+          "lower": "2.60200334353839767528803615323",
+          "upper": "2.60200334353839767528803615323",
+          "contains_zero": false,
+          "rel_accuracy_bits": 189
+        },
+        "direct_value_channel_overlaps": {
+          "pole": true,
+          "arch_signed": true,
+          "prime_signed": true,
+          "scalar_shift": true
+        },
+        "channel_second_derivative_checks": {
+          "pole": {
+            "first_derivative_difference_ladder": [
+              {
+                "h_bit": 14,
+                "from_first_ok": true
+              },
+              {
+                "h_bit": 18,
+                "from_first_ok": true
+              },
+              {
+                "h_bit": 22,
+                "from_first_ok": true
+              }
+            ],
+            "value_second_difference_final_ok": true
+          },
+          "arch_signed": {
+            "first_derivative_difference_ladder": [
+              {
+                "h_bit": 14,
+                "from_first_ok": true
+              },
+              {
+                "h_bit": 18,
+                "from_first_ok": true
+              },
+              {
+                "h_bit": 22,
+                "from_first_ok": true
+              }
+            ],
+            "value_second_difference_final_ok": true
+          },
+          "prime_signed": {
+            "first_derivative_difference_ladder": [
+              {
+                "h_bit": 14,
+                "from_first_ok": true
+              },
+              {
+                "h_bit": 18,
+                "from_first_ok": true
+              },
+              {
+                "h_bit": 22,
+                "from_first_ok": true
+              }
+            ],
+            "value_second_difference_final_ok": true
+          },
+          "scalar_shift": {
+            "first_derivative_difference_ladder": [
+              {
+                "h_bit": 14,
+                "from_first_ok": true
+              },
+              {
+                "h_bit": 18,
+                "from_first_ok": true
+              },
+              {
+                "h_bit": 22,
+                "from_first_ok": true
+              }
+            ],
+            "value_second_difference_final_ok": true
+          }
+        },
+        "c_correction_second_derivative_ladder": [
+          {
+            "h_bit": 14,
+            "ok": true
+          },
+          {
+            "h_bit": 18,
+            "ok": true
+          },
+          {
+            "h_bit": 22,
+            "ok": true
+          }
+        ]
+      },
+      {
+        "label": "Q14_determinant_basin",
+        "Q": 14,
+        "L": {
+          "ball": "[2.66714845418588520311105268755 +/- 3.58e-30]",
+          "lower": "2.66714845418588520311105268755",
+          "upper": "2.66714845418588520311105268755",
+          "contains_zero": false,
+          "rel_accuracy_bits": 189
+        },
+        "direct_value_channel_overlaps": {
+          "pole": true,
+          "arch_signed": true,
+          "prime_signed": true,
+          "scalar_shift": true
+        },
+        "channel_second_derivative_checks": {
+          "pole": {
+            "first_derivative_difference_ladder": [
+              {
+                "h_bit": 14,
+                "from_first_ok": true
+              },
+              {
+                "h_bit": 18,
+                "from_first_ok": true
+              },
+              {
+                "h_bit": 22,
+                "from_first_ok": true
+              }
+            ],
+            "value_second_difference_final_ok": true
+          },
+          "arch_signed": {
+            "first_derivative_difference_ladder": [
+              {
+                "h_bit": 14,
+                "from_first_ok": true
+              },
+              {
+                "h_bit": 18,
+                "from_first_ok": true
+              },
+              {
+                "h_bit": 22,
+                "from_first_ok": true
+              }
+            ],
+            "value_second_difference_final_ok": true
+          },
+          "prime_signed": {
+            "first_derivative_difference_ladder": [
+              {
+                "h_bit": 14,
+                "from_first_ok": true
+              },
+              {
+                "h_bit": 18,
+                "from_first_ok": true
+              },
+              {
+                "h_bit": 22,
+                "from_first_ok": true
+              }
+            ],
+            "value_second_difference_final_ok": true
+          },
+          "scalar_shift": {
+            "first_derivative_difference_ladder": [
+              {
+                "h_bit": 14,
+                "from_first_ok": true
+              },
+              {
+                "h_bit": 18,
+                "from_first_ok": true
+              },
+              {
+                "h_bit": 22,
+                "from_first_ok": true
+              }
+            ],
+            "value_second_difference_final_ok": true
+          }
+        },
+        "c_correction_second_derivative_ladder": [
+          {
+            "h_bit": 14,
+            "ok": true
+          },
+          {
+            "h_bit": 18,
+            "ok": true
+          },
+          {
+            "h_bit": 22,
+            "ok": true
+          }
+        ]
+      },
+      {
+        "label": "Q15_midpoint",
+        "Q": 15,
+        "L": {
+          "ball": "[2.74031946167099565183246652799 +/- 7.10e-31]",
+          "lower": "2.74031946167099565183246652799",
+          "upper": "2.74031946167099565183246652799",
+          "contains_zero": false,
+          "rel_accuracy_bits": 189
+        },
+        "direct_value_channel_overlaps": {
+          "pole": true,
+          "arch_signed": true,
+          "prime_signed": true,
+          "scalar_shift": true
+        },
+        "channel_second_derivative_checks": {
+          "pole": {
+            "first_derivative_difference_ladder": [
+              {
+                "h_bit": 14,
+                "from_first_ok": true
+              },
+              {
+                "h_bit": 18,
+                "from_first_ok": true
+              },
+              {
+                "h_bit": 22,
+                "from_first_ok": true
+              }
+            ],
+            "value_second_difference_final_ok": true
+          },
+          "arch_signed": {
+            "first_derivative_difference_ladder": [
+              {
+                "h_bit": 14,
+                "from_first_ok": true
+              },
+              {
+                "h_bit": 18,
+                "from_first_ok": true
+              },
+              {
+                "h_bit": 22,
+                "from_first_ok": true
+              }
+            ],
+            "value_second_difference_final_ok": true
+          },
+          "prime_signed": {
+            "first_derivative_difference_ladder": [
+              {
+                "h_bit": 14,
+                "from_first_ok": true
+              },
+              {
+                "h_bit": 18,
+                "from_first_ok": true
+              },
+              {
+                "h_bit": 22,
+                "from_first_ok": true
+              }
+            ],
+            "value_second_difference_final_ok": true
+          },
+          "scalar_shift": {
+            "first_derivative_difference_ladder": [
+              {
+                "h_bit": 14,
+                "from_first_ok": true
+              },
+              {
+                "h_bit": 18,
+                "from_first_ok": true
+              },
+              {
+                "h_bit": 22,
+                "from_first_ok": true
+              }
+            ],
+            "value_second_difference_final_ok": true
+          }
+        },
+        "c_correction_second_derivative_ladder": [
+          {
+            "h_bit": 14,
+            "ok": true
+          },
+          {
+            "h_bit": 18,
+            "ok": true
+          },
+          {
+            "h_bit": 22,
+            "ok": true
+          }
+        ]
+      }
+    ],
+    "zero_weight_seams": [
+      {
+        "k": 14,
+        "left_Q": 13,
+        "right_Q": 14,
+        "channel_overlaps": {
+          "pole": true,
+          "arch_signed": true,
+          "prime_signed": true,
+          "scalar_shift": true
+        },
+        "all_overlap": true
+      },
+      {
+        "k": 15,
+        "left_Q": 14,
+        "right_Q": 15,
+        "channel_overlaps": {
+          "pole": true,
+          "arch_signed": true,
+          "prime_signed": true,
+          "scalar_shift": true
+        },
+        "all_overlap": true
+      }
+    ],
+    "checks": {
+      "four_way_value_matches_direct_baseline": true,
+      "four_way_second_matches_first_derivative_differences": true,
+      "four_way_second_matches_value_second_differences": true,
+      "scalar_shift_second_independently_checked": true,
+      "total_M_Mprime_Msecond_reconstruction_required": true
+    },
+    "theorem_promotion": false,
+    "rh_claim": false
+  },
+  {
+    "status": "PASS",
+    "base_main_sha": "87d9bded427571fcd89f13d86f64e1358811a153",
+    "research_authority_pr": 197,
+    "routing_sync_pr": 198,
+    "precision_bits": 384,
+    "four_way_channels": [
+      "pole",
+      "arch_signed",
+      "prime_signed",
+      "scalar_shift"
+    ],
+    "collapsed_channels": [
+      "pole",
+      "direct_arch_signed",
+      "prime_signed"
+    ],
+    "primary_hull": {
+      "Q": 14,
+      "lo_num": 114296060900476,
+      "hi_num": 114914536191100,
+      "den": 281474976710656
+    },
+    "control_blind_mechanism_selection_required": true,
+    "theorem_promotion": false,
+    "rh_claim": false
+  },
+  {
+    "status": "PASS",
+    "primary_hull": {
+      "Q": 14,
+      "lo_num": 114296060900476,
+      "hi_num": 114914536191100,
+      "den": 281474976710656
+    },
+    "primary_box_count": 6,
+    "control_box_count": 5,
+    "four_way_channels": [
+      "pole",
+      "arch_signed",
+      "prime_signed",
+      "scalar_shift"
+    ],
+    "collapsed_channels": [
+      "pole",
+      "direct_arch_signed",
+      "prime_signed"
+    ],
+    "control_blind_mechanism_selection_required": true
+  },
+  {
+    "status": "PASS",
+    "post197_classification": "GLOBAL_MONOTONE_ORIENTATION",
+    "post197_uniform_orientation": "J_POSITIVE",
+    "completed_leaf_count": 49,
+    "mechanism_classification": "SOURCE_DECOMPOSITION_DEPENDENCY_UNRESOLVED",
+    "four_way_classification": "SOURCE_DECOMPOSITION_DEPENDENCY_UNRESOLVED",
+    "collapsed_three_way_classification": "SOURCE_DECOMPOSITION_DEPENDENCY_UNRESOLVED",
+    "selected_collapsed_uniform_lock_group": null,
+    "control_transfer_status": "NO_UNIQUE_COLLAPSED_UNIFORM_LOCK",
+    "theorem_promotion": false,
+    "fb05_closed": false,
+    "negative_root_exclusion": false,
+    "rh_claim": false
+  }
+]

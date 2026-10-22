@@ -1,0 +1,30 @@
+{
+  "schema": "EXACT_WSL_NATIVE_PYTHON_TEST_ISOLATION_V1",
+  "status": "SOURCE_BYTES_AND_GIT_IDENTITY_VERIFIED",
+  "native_path": "/tmp/opica-stage1-parent-review-mtef1ta7",
+  "head": "9ccea78eb5ee0c097bde05424e43de58a589b713",
+  "tree": "40ad2bb6e78f9dcd944870233e991220f573a412",
+  "source_count": 2869,
+  "source_manifest_sha256": "a4873e621183df1a9e4c13f0ade7f4ff204bd8d5b701567c6072e6712a14f644",
+  "git_objects_alternates": "/mnt/c/Users/macka/.codex/.chatgpt-projects/g-p-6a353c7268b08191b685956e466d73e4/work/opica-followup-repo/.git/objects",
+  "GIT_NO_LAZY_FETCH": "1",
+  "GIT_OPTIONAL_LOCKS": "0",
+  "normalization": "NONE",
+  "compiler_rerun": "NONE",
+  "recorded_utc": "2026-10-22T15:06:04.422652+00:00",
+  "tests": [
+    {
+      "mode": "normal",
+      "exit_code": 0,
+      "log": "parent-suite-native-final-normal.log",
+      "sha256": "587ab84434d4edfbe6ac393a27960fc1e440f1562ebc89ce5ee51a4b03424dd2"
+    },
+    {
+      "mode": "optimized",
+      "exit_code": 0,
+      "log": "parent-suite-native-final-optimized.log",
+      "sha256": "c01a16c11c566fb0c352b5a1845d7150562ccfce5eb99270ecf88347b8ce6b95"
+    }
+  ],
+  "all_snapshot_sources_unchanged_after_tests": true
+}

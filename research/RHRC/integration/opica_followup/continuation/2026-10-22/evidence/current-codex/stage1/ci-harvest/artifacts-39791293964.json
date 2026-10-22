@@ -1,0 +1,45 @@
+{
+  "total_count": 2,
+  "artifacts": [
+    {
+      "id": 12433322493,
+      "node_id": "MDg6QXJ0aWZhY3QxMjQzMzMyMjQ5Mw==",
+      "name": "opica-regression",
+      "size_in_bytes": 1660,
+      "url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/artifacts/12433322493",
+      "archive_download_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/artifacts/12433322493/zip",
+      "expired": false,
+      "digest": "sha256:6f9023cef59a726bae5d9c0648fa920714151dc701f5467ed92f2a5688227428",
+      "created_at": "2026-10-22T14:29:41Z",
+      "updated_at": "2026-10-22T14:29:41Z",
+      "expires_at": "2027-01-20T13:56:02Z",
+      "workflow_run": {
+        "id": 39791293964,
+        "repository_id": 1339954300,
+        "head_repository_id": 1339954300,
+        "head_branch": "research/opica-native-followup",
+        "head_sha": "9ccea78eb5ee0c097bde05424e43de58a589b713"
+      }
+    },
+    {
+      "id": 12431961674,
+      "node_id": "MDg6QXJ0aWZhY3QxMjQzMTk2MTY3NA==",
+      "name": "opica-contract",
+      "size_in_bytes": 8052,
+      "url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/artifacts/12431961674",
+      "archive_download_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/artifacts/12431961674/zip",
+      "expired": false,
+      "digest": "sha256:3d7c66e6504758e18b19974c6fc55ba48d3cdfa1a655c6f0ffb92a7880d57d12",
+      "created_at": "2026-10-22T14:03:31Z",
+      "updated_at": "2026-10-22T14:03:31Z",
+      "expires_at": "2027-01-20T13:56:02Z",
+      "workflow_run": {
+        "id": 39791293964,
+        "repository_id": 1339954300,
+        "head_repository_id": 1339954300,
+        "head_branch": "research/opica-native-followup",
+        "head_sha": "9ccea78eb5ee0c097bde05424e43de58a589b713"
+      }
+    }
+  ]
+}

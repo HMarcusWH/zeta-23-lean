@@ -7,6 +7,7 @@ from __future__ import annotations
 
 import argparse
 import hashlib
+import importlib.util
 import json
 from pathlib import Path
 import re
@@ -76,7 +77,7 @@ DEPENDENCY_REFINEMENTS = {
 }
 DEPENDENCY_V1_SHA256 = '32f2c2e57743f5c1a98176ac64f3b2671e8c45f8355361130ff0271361105a91'
 DEPENDENCY_V2_SHA256 = '54aa023b5d2c483abab95b696381ad7ce6eaeb7a1b17e66c2ce80eee2aed78e7'
-CONTINUATION_MANIFEST_SHA256 = '8a3e8374998c4e7e1d20e2913c375a97036db22973a79c51d25a9ef9b526fd80'
+CONTINUATION_MANIFEST_SHA256 = '598174fa2ef737262e4ced01424748fa190c9349b96fa9bf0de1de9d3c07e91e'
 CONTINUATION_FOLDER = 'research/RHRC/integration/opica_followup'
 CONTINUATION_ARTIFACT_PREFIX = CONTINUATION_FOLDER + '/continuation/2026-10-22/'
 CONTINUATION_DOCUMENTATION_PATHS = frozenset({
@@ -388,7 +389,7 @@ def metadata_errors(manifest: dict, public: dict, crosswalk: dict, extension: di
     return errors
 
 
-def preflight(root: Path = REPO, here: Path = HERE) -> dict:
+def preflight(root: Path = REPO, here: Path = HERE, *, full_registry_verified: bool = False) -> dict:
     errors = []
     for name, expected in {**FROZEN_SPEC, 'PROTECTED_STATE.json': PROTECTED_SHA256}.items():
         path = here / name
@@ -439,7 +440,7 @@ def preflight(root: Path = REPO, here: Path = HERE) -> dict:
                            ('theorem_bindings', 'research/RHRC/REGISTERED_THEOREM_BINDINGS.json'),
                            ('file_classes', 'research/RHRC/graph/FILE_CLASSES.json'),
                            ('semantic_closure', 'research/RHRC/graph/SEMANTIC_CLOSURE_CONFIG.json')]:
-        if json.loads((root / relative).read_text(encoding='utf-8')) != protected[key]:
+        if not full_registry_verified and json.loads((root / relative).read_text(encoding='utf-8')) != protected[key]:
             errors.append('pre-registration parent context changed: ' + key)
     creates = {row['path'] for row in manifest['create']}
     parent_paths = {row['path'] for row in protected['files']}
@@ -477,20 +478,57 @@ def preflight(root: Path = REPO, here: Path = HERE) -> dict:
             'RH': 'OPEN', 'Step4': 'OPEN'}
 
 
+def full_compiler_gate(formal_receipt: Path, output: Path, *, root: Path = REPO, lake: str = 'lake') -> dict:
+    """Validate supplied evidence, then execute a fresh full100 compiler replay.
+
+    This is one release gate. Its success never establishes parent acceptance,
+    runtime/regression, generated-state freshness or completed workflow review.
+    """
+    spec = importlib.util.spec_from_file_location('opica_followup_full_release_builder',
+        root/'research/RHRC/integration/opica_followup/build_receipt.py')
+    builder = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(builder)
+    if formal_receipt.is_symlink() or not formal_receipt.is_file():
+        raise ValueError('full compiler receipt must be an actual regular artifact')
+    receipt = builder.unique_json(formal_receipt.read_bytes())
+    return builder.verify_full_receipt_replay(receipt,root,formal_receipt.parent,
+        output.parent/(output.stem+'.fresh-full-replay'),lake)
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--phase', choices=['preflight', 'release'], required=True)
     parser.add_argument('--parent-intake', type=Path)
     parser.add_argument('--formal-receipt', type=Path)
     parser.add_argument('--parent-formal-receipt', type=Path)
+    parser.add_argument('--lake', default='lake')
     parser.add_argument('--output', type=Path, required=True)
     args = parser.parse_args()
     if args.output.resolve().is_relative_to(REPO.resolve()):
         parser.error('execution receipts must be outside the repository')
-    report = preflight()
+    full_gate = None
+    gate_error = None
+    if args.phase == 'release':
+        try:
+            if args.formal_receipt is None:
+                raise ValueError('full100 formal receipt is required; preparation/subset receipts are not accepted')
+            full_gate = full_compiler_gate(args.formal_receipt,args.output,lake=args.lake)
+        except (KeyError,TypeError,ValueError,OSError,RuntimeError,subprocess.SubprocessError) as exc:
+            gate_error = 'full compiler gate rejected: '+str(exc)
+    # Only the actual fresh compiler gate can authorize full registered context
+    # in this CLI. A caller-supplied status or JSON boolean is never consulted.
+    report = preflight(full_registry_verified=full_gate is not None)
     if args.phase == 'release':
         report['status'] = 'FAIL_RELEASE_INCOMPLETE'
-        report['errors'].append('preparation cannot be promoted to full release')
+        report['full_compiler_gate'] = full_gate or {'status':'REJECTED','release_ready':False}
+        if gate_error:
+            report['errors'].append(gate_error)
+        report['unwired_release_companions'] = [
+            'Exact trusted parent acceptance intake and current-tree P0 compiler replay',
+            'Complete source-bound runtime/regression and numerical dispositions',
+            'Canonical generated-state freshness and complete required workflow harvest']
+        report['errors'].append('full release remains closed until all independent release companions are wired and verified')
+        report['release_ready'] = False
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(report, indent=2) + '\n', encoding='utf-8')
     print(json.dumps({k: v for k, v in report.items() if k != 'missing_planned_files'}, indent=2))
