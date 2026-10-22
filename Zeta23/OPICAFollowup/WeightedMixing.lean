@@ -125,6 +125,26 @@ theorem positiveLogMeasure_dirac_pos {x : ℝ} (hx : 0 < x) :
   simp only [Set.mem_Ioi, hx, ↓reduceIte]
   rw [Measure.dirac_withDensity, Measure.map_smul, Measure.map_dirac]
 
+/-- Exact logarithmic transport of one physical positive integer-lattice
+atom. The n^(-1/2) factor comes from the same native weighted test as the
+eventual Möbius convolution; n=0 is excluded by the proven origin firewall. -/
+theorem positiveLogMeasure_dilatedNat_dirac (t : ℝ) (n : ℕ) (hn : 0 < n) :
+    positiveLogMeasure (Measure.dirac (Real.exp t * (n : ℝ))) =
+      ENNReal.ofReal (Real.exp (-t / 2) / Real.sqrt (n : ℝ)) •
+        Measure.dirac (t + Real.log (n : ℝ)) := by
+  have hnreal : (0 : ℝ) < (n : ℝ) := by exact_mod_cast hn
+  have hprod : 0 < Real.exp t * (n : ℝ) :=
+    mul_pos (Real.exp_pos t) hnreal
+  have hw := weightedPositiveLogTest_at_dilatedNat (fun _ => (1 : ℂ)) t n hn
+  have hweight : positiveLogWeight (Real.exp t * (n : ℝ)) =
+      Real.exp (-t / 2) / Real.sqrt (n : ℝ) := by
+    apply Complex.ofReal_injective
+    simpa [weightedPositiveLogTest] using hw
+  have hlog : Real.log (Real.exp t * (n : ℝ)) =
+      t + Real.log (n : ℝ) := by
+    rw [Real.log_mul (Real.exp_pos t).ne' hnreal.ne', Real.log_exp]
+  rw [positiveLogMeasure_dirac_pos hprod, hweight, hlog]
+
 def weightedVariation (a : ℝ) (sigma : LocallyFiniteComplexMeasure) : ℝ≥0∞ :=
   ∫⁻ t, ENNReal.ofReal (Real.exp (-a*t)) ∂sigma.totalVariation
 
