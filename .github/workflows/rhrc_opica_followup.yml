@@ -368,6 +368,11 @@ jobs:
           #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_integer_comb_offlattice_zero
           #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_negative_jordan_source_bound
           #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_ct1_negative_integer_support
+          theorem expected_explicit_CT1_source_fourier_selfdual (L : ℝ) :
+              𝓕 (Zeta23.OPICAFollowup.nearGapExplicitDilationDistribution L) =
+                Zeta23.OPICAFollowup.nearGapExplicitDilationDistribution L :=
+            Zeta23.OPICAFollowup.nearGapExplicitDilationDistribution_selfdual L
+          #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_explicit_CT1_source_fourier_selfdual
           #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_ct1_offlattice_nonnegative
           #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_ct1_genuine_jordan_gap
           #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_ct1_origin_every_compact
@@ -383,11 +388,11 @@ jobs:
           data = Path('/tmp/opica-current-candidates/w04-w07-expected.log').read_text()
           records = re.findall(r'depends on axioms:\s*\[([^\]]*)\]', data, re.S)
           allowed = {'propext', 'Classical.choice', 'Quot.sound'}
-          assert len(records) == 36, f'Expected thirty-six exact independent axiom receipts, got {len(records)}'
+          assert len(records) == 37, f'Expected thirty-seven exact independent axiom receipts, got {len(records)}'
           for r in records:
               axioms = {x.strip() for x in r.split(',') if x.strip()}
               assert axioms <= allowed, f'Unexpected axiom(s): {sorted(axioms - allowed)}'
-          print('W04/W07 foundation and thirty-six independent domain/axiom checks: PASS. Full original roots OPEN')
+          print('W04/W07 foundation and thirty-seven independent domain/axiom checks: PASS. Full original roots OPEN')
           PY
       - name: W06 logarithmic mixing weights and independent integer-dilation types
         if: always()
