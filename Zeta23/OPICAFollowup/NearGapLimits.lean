@@ -814,6 +814,84 @@ using the proved local-Jordan linear-growth certificate. -/
 def nearGapCombDistribution (L : ℝ) : TemperedDistribution ℝ ℂ :=
   (nearGapCombFamily L).distributionOfLinearGrowth (nearGapCombFamily_growth L)
 
+/-- A precise conditional reduction of CT1 canonical Fourier
+self-duality to the missing *scalar Jordan pairing* bridge.
+
+The scalar bridge below is an explicit hypothesis and MUST NOT be
+counted as an accepted original root. It has no RH consequence by itself.
+All three carrier distributions are the actual source-backed Poisson combs;
+only compatibility of Jordan scalar multiplication with the Schwartz
+distribution is left to establish. -/
+theorem nearGapCombDistribution_eq_explicit_of_scale_pairing
+    (L : ℝ)
+    (hscale :
+      (localJordanScale (-(2 * Real.cosh (L / 2)))
+        (dilatedCombJordan 0)).distributionOfLinearGrowth
+        (nearGap_localJordanScale_growth _ _
+          (dilatedCombJordan_growth 0)) =
+        (-(((2 * Real.cosh (L / 2) : ℝ) : ℂ))) •
+          dilatedCombDistribution 0) :
+    nearGapCombDistribution L = nearGapExplicitDilationDistribution L := by
+  let A : LocallyFiniteSignedMeasure :=
+    localJordanAdd (dilatedCombJordan L) (dilatedCombJordan (-L))
+  let B : LocallyFiniteSignedMeasure :=
+    localJordanScale (-(2 * Real.cosh (L / 2))) (dilatedCombJordan 0)
+  let hA : A.HasLinearGrowth :=
+    nearGap_localJordanAdd_growth _ _
+      (dilatedCombJordan_growth L) (dilatedCombJordan_growth (-L))
+  let hB : B.HasLinearGrowth :=
+    nearGap_localJordanScale_growth _ _
+      (dilatedCombJordan_growth 0)
+  have hAB :
+      (localJordanAdd A B).distributionOfLinearGrowth
+        (nearGap_localJordanAdd_growth A B hA hB) =
+      A.distributionOfLinearGrowth hA +
+        B.distributionOfLinearGrowth hB := by
+    ext f
+    exact nearGap_localJordanAdd_pairing A B hA hB f
+  have hAeq :
+      A.distributionOfLinearGrowth hA =
+        dilatedCombDistribution L + dilatedCombDistribution (-L) := by
+    ext f
+    exact nearGap_localJordanAdd_pairing
+      (dilatedCombJordan L) (dilatedCombJordan (-L))
+      (dilatedCombJordan_growth L)
+      (dilatedCombJordan_growth (-L)) f
+  calc
+    nearGapCombDistribution L =
+        (localJordanAdd A B).distributionOfLinearGrowth
+          (nearGap_localJordanAdd_growth A B hA hB) := by
+      rfl
+    _ = A.distributionOfLinearGrowth hA +
+          B.distributionOfLinearGrowth hB := hAB
+    _ = (dilatedCombDistribution L + dilatedCombDistribution (-L)) +
+          (-(((2 * Real.cosh (L / 2) : ℝ) : ℂ))) •
+            dilatedCombDistribution 0 := by
+      rw [hAeq]
+      exact congrArg
+        (fun T : TemperedDistribution ℝ ℂ =>
+          (dilatedCombDistribution L + dilatedCombDistribution (-L)) + T)
+        hscale
+    _ = nearGapExplicitDilationDistribution L := by
+      simp only [nearGapExplicitDilationDistribution, sub_eq_add_neg, neg_smul]
+
+/-- A conditional FT consequence with no new mathematical assumption beyond
+the one explicitly identified Jordan-scale pairing obligation. The actual
+unconditional FourierSelfdual clause remains OPEN until it is discharged. -/
+theorem nearGapCombDistribution_selfdual_of_scale_pairing
+    (L : ℝ)
+    (hscale :
+      (localJordanScale (-(2 * Real.cosh (L / 2)))
+        (dilatedCombJordan 0)).distributionOfLinearGrowth
+        (nearGap_localJordanScale_growth _ _
+          (dilatedCombJordan_growth 0)) =
+        (-(((2 * Real.cosh (L / 2) : ℝ) : ℂ))) •
+          dilatedCombDistribution 0) :
+    (nearGapCombFamily L).FourierSelfdual (nearGapCombFamily_growth L) := by
+  change 𝓕 (nearGapCombDistribution L) = nearGapCombDistribution L
+  rw [nearGapCombDistribution_eq_explicit_of_scale_pairing L hscale]
+  exact nearGapExplicitDilationDistribution_selfdual L
+
 lemma nearGap_origin_zero (mu : Measure ℝ) {a : ℝ} (ha : 0<a)
     (hgap : mu (Ioo (-a) a)=0) : mu {0}=0 := by
   apply measure_mono_null _ hgap
