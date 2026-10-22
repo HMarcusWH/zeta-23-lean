@@ -1,0 +1,48 @@
+{
+  "root": "Zeta23.OPICAFollowup.native_auxiliary_top_moment",
+  "status": "EXTERNAL_EXACT_SOURCE_LEAF_GREEN_IMPORTED_PLANNED_MODULE_CONSUMER_PENDING",
+  "source": "NativeAuxiliaryComplete.lean",
+  "source_sha256": "18a1294b301edcd06ab419be5875d0db7b2dede6e71d9d40fac103d8df21853c",
+  "source_log": "native-physical-top-moment-01.log",
+  "source_log_sha256": "4ee9959a479587d4900ece59693c665e537e6b0207bb596e8bb519a7586f91e6",
+  "source_exit": 0,
+  "source_warning_records": 0,
+  "printed_closures": [
+    "nativeAuxiliaryInput_completedPrime",
+    "native_auxiliary_top_moment"
+  ],
+  "axioms_in_both_printed_transitive_closures": ["propext", "Classical.choice", "Quot.sound"],
+  "full_domain": "Every k,d natural, every actual rho in zetaZeroConfig.carrier with Re rho>1/2; multiplicity is actual zeroMult(rho), no simple-zero restriction",
+  "actual_input": "literal c_k convolved with log(n)/sqrt(n)-weighted U_d",
+  "actual_physical_equation": "literal a_k*F_d equals literal c_k*U_d via genuine parent arithmetic causal convolution commutation",
+  "complete_leaf_conclusions": [
+    "actual causal L2 vector, actual representative, physical MemLp2 and norm bound",
+    "actual moments integrable and zero for every j<m-1",
+    "actual top moment integrable and exactly (-1)^m*r_k(p)*J_d(p)*iteratedDeriv(m,zeta,rho)",
+    "actual top moment nonzero"
+  ],
+  "extra_caller_mathematical_premises": [],
+  "global_prime_field_L2_assumed": false,
+  "planned_consumer": "ExpectedNativeAuxiliary.lean",
+  "planned_consumer_status": "PREPARED_NOT_RUN_AGAINST_PLANNED_MODULE_SAVE",
+  "new_primary_count_promoted": 0,
+  "main_source_edited": false,
+  "integration_stage": "Stage2 after integrating owner seals Stage1",
+  "dependency_refinement_when_integrated": {
+    "added_project_import": "Zeta23.CCM.NativeCompletionEquation",
+    "reason": "Actual causal arithmetic a_k*F_d=c_k*U_d without global prime-field L2",
+    "unchanged_parent_source_sha256": "455f705f4f6e352e1b9fff7867b101e14afc1da30c79e7cf54697c1418969224",
+    "parent_narrow_save_exit": 0,
+    "parent_save_log": "native-completion-equation-save.log",
+    "added_mathlib_imports": ["Mathlib.MeasureTheory.Function.AEEqOfIntegral", "Mathlib.Analysis.Convolution"]
+  },
+  "required_definitions": {
+    "nativeTruncatedResidual": "Authored in next external suffix, not integrated or accepted",
+    "tailMemory": "Authored as exact weighted L1 memory in next external suffix, not integrated or accepted"
+  },
+  "other_native_primary_roots": "native_auxiliary_tail_residual_lower/native_terminal_memory_lower remain absent",
+  "full_aggregate": "OPEN",
+  "full_release": "OPEN",
+  "RH": "OPEN",
+  "Step4": "OPEN"
+}

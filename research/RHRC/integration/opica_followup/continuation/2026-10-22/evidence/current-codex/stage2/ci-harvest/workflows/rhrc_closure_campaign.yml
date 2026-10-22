@@ -1,0 +1,331 @@
+name: RHRC parallel closure campaign
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'Zeta23/CCM/**'
+      - 'Zeta23/ExceptionalZero/**'
+      - 'Zeta23/RHRC/**'
+      - 'Zeta23/Spectral.lean'
+      - 'Zeta23/Spectral/**'
+      - 'research/RHRC/closure_batch/**'
+      - 'research/RHRC/graph/**'
+      - '.github/workflows/rhrc_closure_campaign.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: rhrc-closure-campaign-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  fast-integrity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install numerical research dependencies
+        run: python -m pip install -r research/RHRC/routes/R003_ccm_bridge/requirements.txt
+      - name: Syntax, adversarial evidence tests, and four-track research harvest
+        run: |
+          python -m compileall -q research/RHRC/closure_batch
+          python -m unittest discover -s research/RHRC/closure_batch -p 'test_*.py' -v
+          python research/RHRC/closure_batch/run_campaign.py --repo . --output-dir /tmp/closure-results
+      - uses: actions/upload-artifact@v4
+        with:
+          name: closure-fast-results
+          path: /tmp/closure-results
+          retention-days: 30
+
+  lean-a:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-mathlib-cache: true
+      - name: Build Track A
+        run: |
+          lake build \
+            Zeta23.CCM.SourceContraction \
+            Zeta23.CCM.SourceContractionLocalized \
+            Zeta23.CCM.CanonicalArchUpperBound \
+            Zeta23.CCM.DictionaryArchFiniteDensity \
+            Zeta23.CCM.CanonicalArchDensityClosure \
+            Zeta23.CCM.CanonicalSmallApertureGroundSpectrum \
+            Zeta23.CCM.CanonicalPoleUniformBound \
+            Zeta23.CCM.CanonicalPoleSourceBound \
+            Zeta23.CCM.CanonicalSmallApertureCoercivity \
+            Zeta23.CCM.CanonicalPrimeSeamTaylor \
+            Zeta23.CCM.ParityGroundPerturbation \
+            Zeta23.CCM.ParityRayleighPerturbation \
+            Zeta23.CCM.CanonicalSeamGroundTransfer \
+            Zeta23.CCM.GroundComparisonPrinciple \
+            Zeta23.CCM.CanonicalGroundPropagation \
+            Zeta23.CCM.CanonicalAllAperturePositivity
+      - name: Audit Track A theorem axioms
+        run: |
+          python research/RHRC/tools/axiom_audit.py \
+            Zeta23/CCM/CanonicalArchUpperBound.lean \
+            Zeta23/CCM/DictionaryArchFiniteDensity.lean \
+            Zeta23/CCM/CanonicalArchDensityClosure.lean \
+            Zeta23/CCM/CanonicalSmallApertureGroundSpectrum.lean \
+            Zeta23/CCM/CanonicalPoleSourceBound.lean \
+            Zeta23/CCM/CanonicalPrimeSeamTaylor.lean \
+            Zeta23/CCM/CanonicalSeamGroundTransfer.lean \
+            Zeta23/CCM/CanonicalSmallApertureCoercivity.lean \
+            Zeta23/CCM/GroundComparisonPrinciple.lean \
+            Zeta23/CCM/ParityRayleighPerturbation.lean \
+            Zeta23/CCM/SourceContraction.lean \
+            Zeta23/CCM/SourceContractionLocalized.lean
+
+  lean-b:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-mathlib-cache: true
+      - name: Build Track B
+        run: |
+          lake build Zeta23.CCM.CanonicalSchurCertificate
+          lake build Zeta23.CCM.CanonicalModeTailBound
+          lake build Zeta23.CCM.CanonicalUniformDomination
+      - name: Audit Track B theorem axioms
+        run: |
+          python research/RHRC/tools/axiom_audit.py \
+            Zeta23/CCM/CanonicalSchurCertificate.lean \
+            Zeta23/CCM/CanonicalModeTailBound.lean \
+            Zeta23/CCM/CanonicalUniformDomination.lean
+
+  lean-c:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-mathlib-cache: true
+      - name: Build Track C
+        run: |
+          lake build Zeta23.CCM.CanonicalFullSpaceSourceBridge
+          lake build Zeta23.Spectral
+      - name: Audit Track C theorem axioms
+        run: |
+          python research/RHRC/tools/axiom_audit.py \
+            Zeta23/CCM/CanonicalFullSpaceSourceBridge.lean \
+            Zeta23/Spectral/CanonicalCharacteristic.lean \
+            Zeta23/Spectral/CanonicalOperator.lean \
+            Zeta23/Spectral/CharacteristicCompactBounds.lean \
+            Zeta23/Spectral/CharacteristicNormalization.lean \
+            Zeta23/Spectral/CharacteristicXiIdentification.lean \
+            Zeta23/Spectral/RealZeroLimitTransfer.lean
+
+  lean-d-bindings:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-mathlib-cache: true
+      - name: Build Track D and exact obligation bindings
+        run: |
+          lake build Zeta23.ExceptionalZero.QuantitativeDetectorFamily
+          lake build Zeta23.ExceptionalZero.QuantitativeCanonicalWitness
+          lake build Zeta23.RHRC.ClosureObligationBindings
+      - name: Reject proof escapes in closure-campaign modules
+        run: python research/RHRC/closure_batch/check_lean_proof_escapes.py --scope closure
+      - name: Audit Track D and obligation-binding theorem axioms
+        run: |
+          python research/RHRC/tools/axiom_audit.py \
+            Zeta23/ExceptionalZero/QuantitativeDetectorFamily.lean \
+            Zeta23/RHRC/ClosureObligationBindings.lean
+
+
+  lean-strength-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-mathlib-cache: true
+      - name: Build post-#276 sign opposition and terminal-strength audits
+        run: |
+          lake build Zeta23.ExceptionalZero.GlobalParityBottomSignOpposition
+          lake build Zeta23.RHRC.ClosureStrengthAudit
+      - name: Audit post-#276 sign-opposition/strength theorem axioms
+        run: |
+          python research/RHRC/tools/axiom_audit.py \
+            Zeta23/ExceptionalZero/GlobalParityBottomSignOpposition.lean \
+            Zeta23/RHRC/ClosureStrengthAudit.lean
+
+  lean-contact:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-mathlib-cache: true
+      - name: Build post-#277 fixed-N zero-contact surface
+        run: |
+          lake build Zeta23.CCM.CanonicalGroundContinuity
+          lake build Zeta23.CCM.GlobalParityBottomFirstContact
+          lake build Zeta23.CCM.GlobalParityBottomContactNormalForm
+          lake build Zeta23.ExceptionalZero.GlobalParityBottomFirstContact
+      - name: Audit post-#277 zero-contact theorem axioms
+        run: |
+          python research/RHRC/tools/axiom_audit.py \
+            Zeta23/CCM/CanonicalGroundContinuity.lean \
+            Zeta23/CCM/GlobalParityBottomFirstContact.lean \
+            Zeta23/CCM/GlobalParityBottomContactNormalForm.lean \
+            Zeta23/ExceptionalZero/GlobalParityBottomFirstContact.lean
+
+
+  lean-first-crossing:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-mathlib-cache: true
+      - name: Build post-#278 parity first-crossing reduction
+        run: |
+          lake build Zeta23.CCM.ParityFirstNegativeBoundary
+          lake build Zeta23.CCM.ParityZeroPlateau
+          lake build Zeta23.CCM.ParityKernelTower
+          lake build Zeta23.CCM.CanonicalParityFirstCrossingShell
+          lake build Zeta23.CCM.FirstCrossingContactRegime
+          lake build Zeta23.CCM.FirstCrossingContactEquations
+          lake build Zeta23.CCM.FirstCrossingSuccessorDeterminant
+          lake build Zeta23.CCM.FirstCrossingSchurReduction
+          lake build Zeta23.CCM.FirstCrossingSourceDynamics
+          lake build Zeta23.CCM.FirstCrossingBranchBridge
+          lake build Zeta23.CCM.FirstCrossingLiftedFeatures
+          lake build Zeta23.CCM.FirstCrossingStructuralCompatibility
+          lake build Zeta23.CCM.FirstCrossingArithmeticCompatibility
+          lake build Zeta23.CCM.FirstCrossingSourceCertificate
+          lake build Zeta23.CCM.FirstCrossingSourceQuotient
+          lake build Zeta23.CCM.FirstCrossingStrictEvenSourceEnergy
+          lake build Zeta23.CCM.FirstCrossingOptimizedCurvatureAlgebra
+          lake build Zeta23.CCM.FirstCrossingProductionArithmetic
+          lake build Zeta23.CCM.FirstCrossingProductionSaturation
+          lake build Zeta23.CCM.GlobalParityFirstNegativeBoundary
+          lake build Zeta23.CCM.FirstCrossingGlobalAlignment
+          lake build Zeta23.CCM.CanonicalCompressedSeamJets
+          lake build Zeta23.CCM.CanonicalFrozenApertureC2
+          lake build Zeta23.CCM.CanonicalCompressedApertureC2
+          lake build Zeta23.CCM.ProductionWeightedTestCalculus
+          lake build Zeta23.CCM.ProductionWeightedGlobalTests
+          lake build Zeta23.CCM.ProductionNormalSourceAuthority
+          lake build Zeta23.CCM.FirstCrossingProductionRemainderAuthority
+          lake build Zeta23.CCM.ProductionPhysicalFunctionalCongruence
+          lake build Zeta23.CCM.FirstCrossingProductionRemainderValueAuthority
+          lake build Zeta23.CCM.StationarySchurContact
+          lake build Zeta23.CCM.FirstCrossingInheritedStationarity
+          lake build Zeta23.CCM.FirstCrossingProductionTests
+          lake build Zeta23.CCM.FirstCrossingProductionRemainder
+          lake build Zeta23.CCM.FirstCrossingProductionFirstVariation
+          lake build Zeta23.CCM.FirstCrossingProductionResponse
+          lake build Zeta23.CCM.FirstCrossingProductionCurvatureBridge
+          lake build Zeta23.CCM.FirstCrossingGeneratedStrictEvenFrontier
+          lake build Zeta23.ExceptionalZero.GlobalParityFirstNegativeBoundary
+          lake build Zeta23.CCM.CanonicalApertureLocation
+          lake build Zeta23.CCM.CanonicalInteriorFirstCrossingBarrier
+          lake build Zeta23.CCM.CanonicalSeamFirstCrossingBarrier
+          lake build Zeta23.CCM.CanonicalFirstCrossingBarrier
+          lake build Zeta23.ExceptionalZero.CanonicalParityFirstCrossingShell
+          lake build Zeta23.ExceptionalZero.CanonicalFirstCrossingConditionalRH
+      - name: Audit post-#278 first-crossing theorem axioms
+        run: |
+          python research/RHRC/tools/axiom_audit.py \
+            Zeta23/CCM/ParityFirstNegativeBoundary.lean \
+            Zeta23/CCM/ParityZeroPlateau.lean \
+            Zeta23/CCM/ParityKernelTower.lean \
+            Zeta23/CCM/CanonicalParityFirstCrossingShell.lean \
+            Zeta23/CCM/FirstCrossingContactRegime.lean \
+            Zeta23/CCM/FirstCrossingContactEquations.lean \
+            Zeta23/CCM/FirstCrossingSuccessorDeterminant.lean \
+            Zeta23/CCM/FirstCrossingSchurReduction.lean \
+            Zeta23/CCM/FirstCrossingSourceDynamics.lean \
+            Zeta23/CCM/FirstCrossingBranchBridge.lean \
+            Zeta23/CCM/FirstCrossingLiftedFeatures.lean \
+            Zeta23/CCM/FirstCrossingStructuralCompatibility.lean \
+            Zeta23/CCM/FirstCrossingArithmeticCompatibility.lean \
+            Zeta23/CCM/FirstCrossingSourceCertificate.lean \
+            Zeta23/CCM/FirstCrossingSourceQuotient.lean \
+            Zeta23/CCM/FirstCrossingStrictEvenSourceEnergy.lean \
+            Zeta23/CCM/FirstCrossingOptimizedCurvatureAlgebra.lean \
+            Zeta23/CCM/FirstCrossingProductionArithmetic.lean \
+            Zeta23/CCM/FirstCrossingProductionSaturation.lean \
+            Zeta23/CCM/GlobalParityFirstNegativeBoundary.lean \
+            Zeta23/CCM/FirstCrossingGlobalAlignment.lean \
+            Zeta23/CCM/CanonicalCompressedSeamJets.lean \
+            Zeta23/CCM/CanonicalFrozenApertureC2.lean \
+            Zeta23/CCM/CanonicalCompressedApertureC2.lean \
+            Zeta23/CCM/ProductionWeightedTestCalculus.lean \
+            Zeta23/CCM/ProductionWeightedGlobalTests.lean \
+            Zeta23/CCM/ProductionNormalSourceAuthority.lean \
+            Zeta23/CCM/FirstCrossingProductionRemainderAuthority.lean \
+            Zeta23/CCM/ProductionPhysicalFunctionalCongruence.lean \
+            Zeta23/CCM/FirstCrossingProductionRemainderValueAuthority.lean \
+            Zeta23/CCM/StationarySchurContact.lean \
+            Zeta23/CCM/FirstCrossingInheritedStationarity.lean \
+            Zeta23/CCM/FirstCrossingProductionTests.lean \
+            Zeta23/CCM/FirstCrossingProductionRemainder.lean \
+            Zeta23/CCM/FirstCrossingProductionFirstVariation.lean \
+            Zeta23/CCM/FirstCrossingProductionResponse.lean \
+            Zeta23/CCM/FirstCrossingProductionCurvatureBridge.lean \
+            Zeta23/CCM/FirstCrossingGeneratedStrictEvenFrontier.lean \
+            Zeta23/ExceptionalZero/GlobalParityFirstNegativeBoundary.lean \
+            Zeta23/CCM/CanonicalApertureLocation.lean \
+            Zeta23/CCM/CanonicalInteriorFirstCrossingBarrier.lean \
+            Zeta23/CCM/CanonicalSeamFirstCrossingBarrier.lean \
+            Zeta23/CCM/CanonicalFirstCrossingBarrier.lean \
+            Zeta23/ExceptionalZero/CanonicalParityFirstCrossingShell.lean \
+            Zeta23/ExceptionalZero/CanonicalFirstCrossingConditionalRH.lean
+
+  campaign-complete:
+    needs: [fast-integrity, lean-a, lean-b, lean-c, lean-d-bindings, lean-strength-audit, lean-contact, lean-first-crossing]
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo 'Parallel closure campaign completed; theorem and research dispositions remain separately classified.'

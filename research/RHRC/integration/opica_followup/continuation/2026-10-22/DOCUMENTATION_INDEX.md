@@ -2,7 +2,7 @@
 
 Use this index with [root AGENTS.md](../../../../../../AGENTS.md) and the
 [continuation guide](README.md). It describes the 22 October OPICA source
-checkpoint and its staged repairs; read [STAGE1_HANDOVER.md](STAGE1_HANDOVER.md)
+checkpoint and its staged repairs; read [STAGE2_HANDOVER.md](STAGE2_HANDOVER.md)
 for the latest exact sources and gates. Check the live Git head and workflow
 results before editing.
 
@@ -63,7 +63,8 @@ results before editing.
 - [Post-Green research](POST_GREEN_RESEARCH.md): all nine required mathematical
   review conclusions. Repeat the pass when meaningful proof evidence changes.
 
-[Stage 1](STAGE1_HANDOVER.md) adds four narrow primary results and tested
+[Stage 2](STAGE2_HANDOVER.md) adds five narrow primary results and exact proof-lane
+handovers. [Stage 1](STAGE1_HANDOVER.md) adds four earlier narrow results and tested
 full100 receipt infrastructure. Its [evidence](evidence/current-codex/stage1)
 includes exact proof receipts, independent review, 185 tests per Python mode and
 a bounded all-job scientific harvest. The independent full review seal, actual

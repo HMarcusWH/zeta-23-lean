@@ -1,0 +1,43 @@
+{
+  "scope": "External supporting actual auxiliary-input construction only; no primary root promotion",
+  "source": "NativeAuxiliaryStableInput.lean",
+  "source_sha256": "98f997f2306f256cfec52b77ee28ce3d266211ae4d03991ebea02b880092584b",
+  "source_leaf_exit": 0,
+  "source_log": "native-stable-input-03.log",
+  "source_log_sha256": "b3dce7ff4d245ee302d40a3256de352b0c317abb93a7ff0283c674d65dbc438a",
+  "source_warning_records": 0,
+  "printed_declarations": [
+    "nativeAuxiliaryStableVector_norm_le",
+    "nativeAuxiliaryStableVector_factorial_bound",
+    "nativeAuxiliaryStableVector_coe_input",
+    "nativeAuxiliaryInput_memLp_two"
+  ],
+  "all_printed_axiom_closures": ["propext", "Classical.choice", "Quot.sound"],
+  "physical_definition": "nativeAuxiliaryInput k d t = integral_s (auxCompletionFilter k s:Complex) * (integerDriveFamily d (t-s):Complex)",
+  "drive_definition": "integerDriveFamily d = nativeIntegerDriveField (sourceOrderFamily d); nativeIntegerDriveCoefficient n = log(n)/sqrt(n)",
+  "proved_support": [
+    "actual complexified c_k and log-weighted U_d have MemLp2",
+    "actual Bochner L2 convolution integral is integrable",
+    "actual convolution L2 vector is causal",
+    "vector a.e. representative is literal physical convolution",
+    "physical convolution has MemLp2 and vanishes before zero",
+    "norm bound by L1(c_k)*L2(U_d), then exact 2/(k+1)! bound"
+  ],
+  "not_yet_proved_in_this_prefix": [
+    "a_k*F_d equals c_k*U_d",
+    "native auxiliary top moment root",
+    "native auxiliary finite-truncation residual lower root",
+    "native terminal memory lower root"
+  ],
+  "independent_imported_consumers": "PENDING eventual integration; this is an exact external source check",
+  "saved_olean": false,
+  "main_source_edited": false,
+  "new_primary_root_count": 0,
+  "full_aggregate": "OPEN",
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "toolchain": "leanprover/lean4:v4.33.0-rc2",
+  "maxHeartbeats": 800000,
+  "LEAN_NUM_THREADS": 1,
+  "isolated_checkout": "work/opica-audit28"
+}

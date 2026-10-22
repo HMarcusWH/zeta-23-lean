@@ -2,119 +2,79 @@
 
 This is a **manual navigation view**, dated 22 October 2026, for
 [draft PR #294](https://github.com/HMarcusWH/zeta-23-lean/pull/294).
-It is separate from RHKG's generated compiler dependency graph. The diagrams
-organize obligations and evidence; their arrows are not `USES_CONSTANT` edges,
-theorem implications, or claim promotions. **RH, Step 4 and the independent
-closing inequalities remain OPEN.**
+It is separate from RHKG's generated compiler dependency graph. Its arrows are
+route orientation, not `USES_CONSTANT` edges, theorem implications or promotions.
+**RH, Step 4 and the independent closing inequalities remain OPEN.**
 
-Start with the [repository continuation guide](../integration/opica_followup/continuation/2026-10-22/README.md)
-and the [100-root ledger](../integration/opica_followup/continuation/2026-10-22/ROOT_LEDGER_100.json).
-The ledger's embedded contracts preserve the original
-[PUBLIC_ROOTS.json](../integration/opica_followup/PUBLIC_ROOTS.json).
+Start with the [continuation guide](../integration/opica_followup/continuation/2026-10-22/README.md),
+[documentation and evidence index](../integration/opica_followup/continuation/2026-10-22/DOCUMENTATION_INDEX.md),
+[current root ledger](../integration/opica_followup/continuation/2026-10-22/ROOT_LEDGER_100.json) and [current module status](../integration/opica_followup/continuation/2026-10-22/MODULE_STATUS.md).
+Their current-stage handover and exact source receipts govern moving status;
+dated checkpoint evidence retains the source and scope it actually checked.
+The ledger preserves the original [PUBLIC_ROOTS.json](../integration/opica_followup/PUBLIC_ROOTS.json).
 All **100 roots and 28 acceptance units remain required**.
 
-## Read the status correctly
+## Read the evidence categories
 
 ```mermaid
 flowchart TD
   required["Required: 100 roots / 28 acceptance units"]
-  required --> historical["41: historical source-bound subset"]
-  required --> narrow["10: independent narrow local gates passed"]
-  required --> wip["1: candidate root unaccepted / WIP"]
-  required --> absent["48: primary implementations absent"]
-  historical -. "current-tree replay still needed" .-> acceptance["OPEN: current aggregate export and full release"]
-  narrow -. "no aggregate promotion" .-> acceptance
-  wip -. "repair and verify" .-> acceptance
-  absent -. "implement and verify" .-> acceptance
+  required --> historical["Historical source-bound evidence"]
+  required --> narrow["Narrow local proof and consumer gates"]
+  required --> candidates["Unaccepted candidates and unfinished obligations"]
+  historical -. "replay exact current sources" .-> acceptance["OPEN: current aggregate export and full release"]
+  narrow -. "separate aggregate gates" .-> acceptance
+  candidates -. "implement and verify" .-> acceptance
   acceptance --> terminal["RH / Step 4 / closing inequalities: OPEN"]
 ```
 
-| Surface | What the evidence establishes | Where to inspect it |
+| Surface | What to inspect | Authority boundary |
 |---|---|---|
-| Historical 41 | A source-bound subset at its recorded historical base; this is not a fresh aggregate receipt for the continuation. | [Historical compiler receipt, gzip](../integration/opica_followup/continuation/2026-10-22/evidence/provided/cold41/subset/compiler-receipt.json.gz) |
-| Ten repaired roots | Exact module saves, independent expected-type/domain consumers and standard-only printed axiom closures for seven modules. | [Stage 1 handover and new receipts](../integration/opica_followup/continuation/2026-10-22/STAGE1_HANDOVER.md), [retained six-root receipt](../integration/opica_followup/continuation/2026-10-22/evidence/current-codex/lean-review/STATUS.json) |
-| One WIP root | The same-output Step 1–3 word/jet candidate remains unaccepted pending genuine parent dependencies and independent gates. | [Per-root gates](../integration/opica_followup/continuation/2026-10-22/ROOT_LEDGER_100.json), [historical diagnostics](../integration/opica_followup/continuation/2026-10-22/evidence/historical-codex-review/REVIEW_AND_REMAINING_WORK.md) |
-| 48 absent roots | Original obligations without complete primary implementations. Some belong to modules that already contain other candidate declarations. | [Remaining work](../integration/opica_followup/continuation/2026-10-22/REMAINING_WORK.md) |
+| Historical evidence | [documentation and evidence index](../integration/opica_followup/continuation/2026-10-22/DOCUMENTATION_INDEX.md) | A receipt applies to its recorded source object. |
+| Current local gates | [current root ledger](../integration/opica_followup/continuation/2026-10-22/ROOT_LEDGER_100.json) and [current module status](../integration/opica_followup/continuation/2026-10-22/MODULE_STATUS.md) | A local result does not establish the full required module or package. |
+| Unfinished work | [remaining obligations](../integration/opica_followup/continuation/2026-10-22/REMAINING_WORK.md) and [next-agent instructions](../integration/opica_followup/continuation/2026-10-22/NEXT_AGENT_PROMPT.md) | Candidate text and supporting lemmas do not fill absent primary roots. |
+| Stage handover | [continuation guide](../integration/opica_followup/continuation/2026-10-22/README.md) | Read exact declarations, source hashes, consumers and retained limitations. |
 
-**41 historical plus ten narrow local results is not a current 51-root aggregate
-acceptance.** The current aggregate source export and full release remain OPEN.
-A successful historical replay, local consumer, or documentation graph cannot
-change that boundary.
+Current counts and per-root dispositions come from the linked ledger rather
+than duplicate numeric labels here. Historical replay, local consumers and this
+manual map do not establish current aggregate acceptance or a new registered claim.
 
-## Find the ten locally verified roots
+## Orient the proof lanes
 
-| Module | Locally verified primary declarations | Boundary to retain |
-|---|---|---|
-| [MaskedNativeRate](../../../Zeta23/OPICAFollowup/MaskedNativeRate.lean) | `log_slack_both_low_masks_subexp`; `log_slack_masked_energy_rate_difference` | Constants precede every horizon and allowed moving palette. Both actual mask realizations survive. The rate difference tends to zero; equality with Theta is not established. |
-| [ComplexLocalMeasures](../../../Zeta23/OPICAFollowup/ComplexLocalMeasures.lean) | `complex_local_measure_embedding_faithful` | Genuine locally finite complex measures, compact Euclidean variation, faithful tempered embedding and common-growth convergence. Actual native co-Poisson/jet measures remain separate work. |
-| [AuxiliaryCompletions](../../../Zeta23/OPICAFollowup/AuxiliaryCompletions.lean) | `aux_completion_actual_transform`; `aux_completion_uniform_decay`; `aux_completion_ratio_bounds` | Actual beta filter and integer action, endpoint atom, extended convergent transform domain, filled half-point value, and one ratio constant for all k. These do not supply terminal memory or the full native window rate. |
-| [MultiplicityTail](../../../Zeta23/OPICAFollowup/MultiplicityTail.lean) | `laguerre_tail_norm` | Arbitrary multiplicity, positive real part and every real tail threshold; actual Rodrigues polynomial, orthogonality and L2 tail norm. Native residual and memory remain separate. |
-| [DilatedComb](../../../Zeta23/OPICAFollowup/DilatedComb.lean) | `dilated_comb_fourier` | Actual scaled integer counting measure, absolute Schwartz pairing, exact heat amplitude and origin atom, Fourier reflection for every real dilation. Noncompact weighted mixing remains OPEN. |
-| [RenormalizedCoPoisson](../../../Zeta23/OPICAFollowup/RenormalizedCoPoisson.lean) | `zero_measure_first_cell_sign` | Literal finite-sum density and exact phase/height cases. The global order-zero measure and its identification are still absent. |
-| [FirstCellCost](../../../Zeta23/OPICAFollowup/FirstCellCost.lean) | `first_cell_negative_mass_cost` | Exact interval density, pi/6 negative mass and 8pi/(27 gamma²) sinc-weighted cost, both ordinate signs and delta=0 controls. No native source-to-measure estimate follows. |
-
-All declarations above have namespace `Zeta23.OPICAFollowup`. Read the
-[independent mathematical review](../integration/opica_followup/continuation/2026-10-22/evidence/current-codex/lean-review/SEMANTIC_REVIEW.md)
-and [actual import refinements](../integration/opica_followup/continuation/2026-10-22/provenance/MODULE_IMPORT_REFINEMENTS.json)
-before changing interfaces. The import record preserves implementation deltas;
-global dependency-contract reconciliation remains OPEN.
-
-## Orient the unfinished proof lanes
-
-The following is a route map of work, not an exact mathematical dependency DAG.
-Each OPEN box still needs the original full contracts and actual constructors.
+The following is a status-neutral route map, not a mathematical dependency DAG.
+Consult the ledger for each node's actual proved, candidate and open subclauses.
 
 ```mermaid
 flowchart LR
-  source["Actual source / transforms: historical subset"]
-  source --> arithmetic["Localization / log-slack: historical subset"]
-  arithmetic --> masks["Two mask roots: narrow local green"]
-  source --> explicit["Explicit formula / source bounds: historical subset"]
-  explicit --> auxiliary["Three auxiliary roots: narrow local green"]
-  auxiliary --> norm["Laguerre tail norm: narrow local green"]
-  norm --> tail["Native moments / residual / memory: OPEN"]
-  tail --> rate["Native fixed / moving source rate: OPEN"]
-  masks --> consumers["Actual native output consumers: OPEN + WIP"]
+  source["Actual source / transforms"] --> arithmetic["Localization / log-slack / masks"]
+  source --> explicit["Explicit formula / source bounds"]
+  explicit --> tail["Auxiliary fields / multiplicity / residual / memory"]
+  tail --> rate["Native fixed / moving source rate"]
+  arithmetic --> consumers["Actual native output consumers"]
   rate --> consumers
-  complex["Complex measure root: narrow local green"] --> comb["Dilated comb: narrow local green"]
-  comb --> mixing["Noncompact mixing / co-Poisson / jets: OPEN"]
-  mixing --> heat["First-cell sign and cost: narrow local green; global identification OPEN"]
-  heat --> consumers
-  spectral["Profiles / log Sobolev / forced sampling / resolvent: OPEN"] --> consumers
+  complex["Locally finite complex measures"] --> comb["Dilated combs"]
+  comb --> mixing["Weighted mixing / near-gap limits"]
+  mixing --> global["Global co-Poisson / parameter jets / realification"]
+  global --> signs["Profiles / first-cell costs / separation"]
+  signs --> consumers
+  spectral["Log Sobolev / forced sampling / resolvent"] --> consumers
 ```
 
-Useful next entrypoints are
-[MultiplicityTail](../../../Zeta23/OPICAFollowup/MultiplicityTail.lean),
-[DilatedComb](../../../Zeta23/OPICAFollowup/DilatedComb.lean),
-[RenormalizedCoPoisson](../../../Zeta23/OPICAFollowup/RenormalizedCoPoisson.lean),
-[FirstCellCost](../../../Zeta23/OPICAFollowup/FirstCellCost.lean) and
-[Consumers](../../../Zeta23/OPICAFollowup/Consumers.lean).
-The first four named candidate roots now have narrow proof/type/domain/axiom
-evidence. `step123_word_jet_consumer` remains WIP. These are not the full required
-scope of those modules: consult the ledger for their other absent roots and
-canonical interfaces. Read the [Stage 1 proof crosswalk](../integration/opica_followup/continuation/2026-10-22/provenance/STAGE1_PROOF_CROSSWALK.json)
-for exact source and import refinements.
+For exact current declarations, imported source refinements and unresolved
+physical consumers, follow the [current root ledger](../integration/opica_followup/continuation/2026-10-22/ROOT_LEDGER_100.json), [current module status](../integration/opica_followup/continuation/2026-10-22/MODULE_STATUS.md) and [documentation and evidence index](../integration/opica_followup/continuation/2026-10-22/DOCUMENTATION_INDEX.md).
+The [post-green research pass](../integration/opica_followup/continuation/2026-10-22/POST_GREEN_RESEARCH.md)
+records implications and falsification checks with their claim labels.
 
-The multiplicity route still requires actual top moments, stable-input control,
-finite residuals and terminal memory before J5.2/MS1. The heat route still
-requires actual local-measure construction, convergence, parameter jets,
-realification and sign/separation arguments. The spectral route and independent
-closing inequalities are also unfinished. Choose the next proof using the
-[next-agent instructions](../integration/opica_followup/continuation/2026-10-22/NEXT_AGENT_PROMPT.md)
-and [post-green research pass](../integration/opica_followup/continuation/2026-10-22/POST_GREEN_RESEARCH.md).
-
-## Keep the graph and proof authorities separate
+## Keep graph and proof authorities separate
 
 [RHKG build.py](build.py) and [views.py](views.py) produce the deterministic
 products under `graph/generated/`. The repository pipeline
 [materialize_derived_state.py](../tools/materialize_derived_state.py) refreshes
 the registered compiler receipt, graph products and downstream integration views
-in dependency order. See [the graph guide](README.md#pr-validation-versus-materialized-snapshots)
-for the distinction between PR validation and checked-in snapshots.
+in dependency order. See the [graph guide](README.md#pr-validation-versus-materialized-snapshots).
 
-Use that existing producer chain for exact graph materialization. Do not edit
-generated registry/graph records to insert the ten narrow results, and do not
-infer current compiler dependencies from this page's arrows or module imports.
+Use the existing producer chain for exact graph materialization. Do not edit
+generated registry/graph records to insert local results, and do not infer
+current compiler dependencies from this page's arrows or module imports.
 An exact current-head receipt and the full claim gates are required for any
-future aggregate or registration change. Frozen input/specification graphs and
-the original contracts remain unchanged.
+future aggregate or registration change. Frozen inputs and contracts remain unchanged.

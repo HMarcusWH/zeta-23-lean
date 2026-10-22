@@ -9,10 +9,10 @@ The governing document is [CONSTITUTION.md](CONSTITUTION.md).
 
 ## OPICA follow-up orientation (PR #294)
 
-Use the [manual OPICA current-state map](OPICA_FOLLOWUP_CURRENT_STATE.md) to
-find the 100-root ledger, exact local receipts and unfinished proof lanes.
-It distinguishes 41 historical subset roots, ten independently verified narrow
-roots, one unaccepted WIP root and 48 absent primary implementations.
+Use the [manual OPICA route map](OPICA_FOLLOWUP_CURRENT_STATE.md) for orientation,
+and the [current root ledger](../integration/opica_followup/continuation/2026-10-22/ROOT_LEDGER_100.json) and [current module status](../integration/opica_followup/continuation/2026-10-22/MODULE_STATUS.md)
+for current scoped results, candidates and unfinished obligations.
+The [continuation guide](../integration/opica_followup/continuation/2026-10-22/README.md) links the current-stage handover and exact receipts.
 This navigation view is separate from the generated compiler dependency DAG;
 current aggregate/full-release acceptance, RH and Step 4 remain OPEN.
 

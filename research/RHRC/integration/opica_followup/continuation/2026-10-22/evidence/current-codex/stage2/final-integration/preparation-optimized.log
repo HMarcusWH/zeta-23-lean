@@ -1,0 +1,41 @@
+{
+  "schema": "OPICA_FOLLOWUP_PREPARATION_V1",
+  "status": "FAIL",
+  "errors": [
+    "unlisted files: research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage2/final-integration/RESULTS.json, research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage2/final-integration/child-normal.log, research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage2/final-integration/child-optimized.log, research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage2/final-integration/preparation-normal.json, research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage2/final-integration/preparation-normal.log, research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage2/final-integration/preparation-optimized.log, research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage2/parent-dependency-build/STATUS.json, research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage2/parent-dependency-build/build-snapshot.log, research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage2/quality/STAGE_REVIEW.json"
+  ],
+  "parent_head": "d53dd70d38b0762af130b1d19b795af259f505f5",
+  "parent_tree": "12691099f1a155a8bfa3ad4f6689146175b233b2",
+  "planned_roots": 100,
+  "coverage_units": 28,
+  "planned_files_present": 64,
+  "compiler_coverage_audited": false,
+  "release_ready": false,
+  "continuation_checkpoint": {
+    "status": "HASH_PINNED_ARTIFACT_INVENTORY_ONLY",
+    "manifest_sha256": "6238251c5c8cf29116b6618965cc51f183e3b9cfea892e861a9968accbc0ade8",
+    "verified_artifacts": 655,
+    "proof_established_by_this_gate": false,
+    "formal_acceptance": false
+  },
+  "optional_candidate1_evidence": {
+    "reported_status": "PROVED_LOCAL_OPTIONAL",
+    "checked_here": "EXACT_METADATA_AND_LEXICAL_SOURCE_INVENTORY_ONLY",
+    "expected_type_consumers": [
+      "expected_sharp_norm_first_arsinh_bound",
+      "expected_sharp_norm_first_scalar_attained",
+      "expected_sharp_norm_first_log_comparison",
+      "expected_sharp_norm_first_recovers_primary"
+    ],
+    "compiler_receipt": "EXTERNAL_NOT_VALIDATED_BY_PREPARATION",
+    "proof_established_by_this_gate": false
+  },
+  "release_blockers": [
+    "Full 100-root exact type and physical-consumer coverage pending",
+    "Complete current-tree P0 and child compiler receipts pending",
+    "Full regression/runtime lock and canonical generated-state gate pending",
+    "Parent-extension wrapper and full child CI acceptance pending"
+  ],
+  "RH": "OPEN",
+  "Step4": "OPEN"
+}

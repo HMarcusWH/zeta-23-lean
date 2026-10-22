@@ -4,12 +4,13 @@ This checkpoint combines the existing PR #294 implementation, the supplied
 22 October repair kit, and the Codex audit/provenance. It is **not a completed
 100-root release**. RH, Step 4 and the independent closing inequalities are OPEN.
 
-The latest [Stage 1 handover](STAGE1_HANDOVER.md) records four new candidate
-repairs, full-scope receipt infrastructure and exact evidence. For a complete
+The latest [Stage 2 handover](STAGE2_HANDOVER.md) records five newly implemented
+original roots, exact evidence and the next mathematical routes.
+[Stage 1](STAGE1_HANDOVER.md) preserves the earlier four repairs and infrastructure. For a complete
 file/authority map, read [DOCUMENTATION_INDEX.md](DOCUMENTATION_INDEX.md).
 Use [MODULE_STATUS.md](MODULE_STATUS.md) to choose a source module and the
 [manual progress graph](../../../../graph/OPICA_FOLLOWUP_CURRENT_STATE.md) to
-orient proof lanes. The [dated CI harvest](evidence/current-codex/stage1/ci-harvest/CI_HARVEST.md)
+orient proof lanes. The [dated CI harvest](evidence/current-codex/stage2/ci-harvest/CI_HARVEST.md)
 records actual results and pending work at the source checkpoint; refresh live
 GitHub results before making current claims.
 
@@ -25,14 +26,14 @@ The controlling obligations remain the unchanged `PUBLIC_ROOTS.json`,
 `BUILD_SPEC.md`, `BUILD_MANIFEST.json`, `PAPER_CROSSWALK.json` and
 `PARENT_EXTENSION.json` two directories above this file. `ROOT_LEDGER_100.json`
 beside this guide separates each root's implementation, compilation, consumers,
-axioms and aggregate acceptance. `REMAINING_WORK.md` lists the 48 absent proofs.
+axioms and aggregate acceptance. `REMAINING_WORK.md` lists the 43 absent proofs.
 
 - 41 roots have a historical cold exact-source subset receipt at the old base.
-- Ten additional mask, complex-measure, auxiliary, Laguerre, comb and
-  first-cell roots passed independent local module, full-type/domain consumer
-  and standard-axiom checks. Aggregate acceptance remains pending.
+- Fifteen additional original roots passed independent local module, full-type/
+  domain consumer and standard-axiom checks. The nonzero near-gap family witness
+  is still absent; aggregate and full acceptance remain pending.
 - One supplied same-output word/jet candidate remains dependency-blocked.
-- 48 original primary implementations are still absent.
+- 43 original primary implementations are still absent.
 
 Consult `evidence/current-codex/` and the ledger for any newer replay evidence in
 this checkpoint. Do not infer a current aggregate receipt from the old subset.
@@ -55,7 +56,7 @@ python -B research/RHRC/integration/opica_followup/continuation/2026-10-22/run_c
   --lake lake --output-dir /tmp/opica-current-candidates
 ```
 
-The second command builds seven repaired modules from current source, checks
+The second command builds nine repaired modules from current source, checks
 the explicit independent consumers and their named standard-only axiom closures,
 and records source/head/tree/log hashes. It neither registers roots nor accepts
 the complete PR. Use an OS-appropriate external output path on Windows.
@@ -78,11 +79,12 @@ full release readiness stays closed. Read the Stage 1 infrastructure handover.
 Read `NEXT_AGENT_PROMPT.md`, the exact ledger contracts and
 `evidence/historical-codex-review/` before choosing a proof lane.
 
-Finish the Step 1–3 word/jet consumer candidate and complete the 48 absent
+Finish the Step 1–3 word/jet consumer candidate and complete the 43 absent
 roots without replacing them by supporting lemmas. The other four earlier
 candidates now have narrow source/type/domain/axiom evidence in Stage 1.
-The auxiliary/top-moment/residual/memory/rate chain and the global complex
-measure/co-Poisson/profile/sampling chain are distinct unfinished obligations.
+The actual native moment/residual/memory chain is now proved locally; fixed and
+moving source window rates are next. The weighted inverse/gap results, near-gap
+limit/family results and global co-Poisson/profile/sampling chain remain OPEN.
 
 Finish independent full types and physical/domain consumers, actual definitions,
 the public facade, complete declaration/constructor/private-dependency export,
@@ -100,8 +102,8 @@ full mathematics and independent acceptance companions are still required.
 
 - `inputs/`: both foundational PDFs, original specifications, amendment and
   historical research/input texts. The original controlling files remain above.
-- `consumers/`: six independent expected-type/domain consumer files covering
-  seven repaired modules. They are actual Lean sources used by narrow replay.
+- `consumers/`: eight independent expected-type/domain consumer files covering
+  nine repaired modules. They are actual Lean sources used by narrow replay.
 - `provided/`: unchanged delivery state, documents, tools and old-base patch.
   Some tools require omitted offline-runtime material; read the CORE caveat.
 - `evidence/provided/`: supplied receipts/logs and the historical cold receipt.
@@ -121,8 +123,9 @@ full mathematics and independent acceptance companions are still required.
   paths, pinned by the artifact manifest. Frozen control blocks, specifications,
   registered claims and canonical graph products retain their prior authority.
 
-The completed local [Post-Green Research Pass](POST_GREEN_RESEARCH.md) records
-all nine required conclusions and remaining mathematical obligations.
+The [Stage 2 Post-Green Research Pass](evidence/current-codex/stage2/INTEGRATION_POST_GREEN.md)
+records all nine conclusions, new proof implications and remaining obligations.
+The earlier [six-root research pass](POST_GREEN_RESEARCH.md) retains its historical scope.
 
 After meaningful green results, perform the Post-Green Research Pass described
 in root `AGENTS.md`. After full CI, harvest every job and scientific artifact

@@ -11,15 +11,16 @@ and [next-agent task](integration/opica_followup/continuation/2026-10-22/NEXT_AG
 Capture the live head/tree/status and reconcile concurrent work.
 
 The scope is unchanged: 100 original roots and 28 acceptance units. The current
-Stage 1 checkpoint records 41 historical source-bound roots, ten additional
-narrow local results, one unaccepted candidate and 48 absent implementations.
-Read its exact source/gate evidence in the continuation STAGE1_HANDOVER.md. Full current-tree aggregate acceptance remains OPEN.
+Stage 2 checkpoint records 41 historical source-bound roots, fifteen additional
+narrow local results, one unaccepted candidate and 43 absent implementations.
+Read its exact source/gate evidence in the continuation STAGE2_HANDOVER.md. Full current-tree aggregate acceptance remains OPEN.
 
 1. Finish the retained same-output word/jet consumer against genuine parent
    dependencies, with independent full-type, physical-domain and axiom checks.
-   The Laguerre, comb and first-cell repairs now have narrow green evidence.
-2. Complete the 48 absent roots in their planned modules. The highest-information
-   chains are actual native multiplicity/residual/memory/window rates and the
+   Laguerre, comb, first-cell, native moments/residual/memory, weighted mixture
+   and the near-gap mass estimate now have narrow green evidence.
+2. Complete the 43 absent roots in their planned modules. The highest-information
+   chains are actual native window rates and the
    global co-Poisson/measure construction feeding profiles and sampling.
    Generic formulas do not construct these missing native objects.
 3. Exercise the new all-100 child receipt producer/reader on actual full

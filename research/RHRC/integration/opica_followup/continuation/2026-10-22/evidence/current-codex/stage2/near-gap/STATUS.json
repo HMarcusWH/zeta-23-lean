@@ -1,0 +1,74 @@
+{
+  "schema": "OPICA_STAGE2_NEAR_GAP_SCOPED_GATE_V1",
+  "status": "PRIMARY_AND_FOUR_IMPORTED_PHYSICAL_CONSUMERS_GREEN_FULL_FOUR_ROOT_SCOPE_OPEN",
+  "main_base_commit": "96dfba7082fb0cc7a93f7b25e31d449951ee9e4d",
+  "main_base_tree": "c7a86500bcb1fb9fee009cb4b4500ed8927aae82",
+  "source_overlay": [
+    {
+      "path": "Zeta23/OPICAFollowup/NearGapLimits.lean",
+      "sha256": "aa5915cea7e35ea7efb90f4d4d95f6d3773b42666b0690a4a491f8b73fce1c5a",
+      "bytes": 5836,
+      "main_audit_bytes_equal": true,
+      "line_endings": "LF"
+    },
+    {
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedNearGap.lean",
+      "sha256": "e6e20f293af961a40dbd26f944fa56fe1f7247c43acbf656c9afed3b53981e76",
+      "bytes": 3610,
+      "main_audit_bytes_equal": true,
+      "line_endings": "LF"
+    }
+  ],
+  "primary_root": "Zeta23.OPICAFollowup.near_gap_mass_bound",
+  "primary_scope": "Every actual mutually singular locally finite real Jordan measure with actual Fourier selfduality, linear total variation growth,0<a<=1,gap(-a,a),nonnegative offZ,R>=1,0<d<=1/2; no evenness assumption.",
+  "physical_conclusions": "Negative Jordan mass of actual E_R,d is0; positive mass<=pi\u00b2R\u00b2*(1-a)*actualTV[-1,1]/(4d\u00b2).",
+  "independent_consumers": [
+    "Full literal Jordan-gap/distance-region/total-variation type with actual tempered Fourier selfduality",
+    "Explicit commonC linear-growth companion with exactpi\u00b2R\u00b2*C*(1-a)/(2d\u00b2)",
+    "a=1zero mass budget boundary",
+    "d=1/2exact endpoint coefficient"
+  ],
+  "gates": [
+    {
+      "log": "module-final.log",
+      "sha256": "b98a3cc4cd2a6b81e75f5709e677af06d7318abb98b708ecde90ed32d4b874a4",
+      "exit_code": 0,
+      "warnings": 0,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "log": "consumer-03.log",
+      "sha256": "72a9ef5272f725a5db69d217218aa99cafbb2b7d75bc79e732591a6734334348",
+      "exit_code": 0,
+      "warnings": 0,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    }
+  ],
+  "module_olean_sha256": "680c1b7d02f6eb4b013d162100190bcce0a4e0e098452f3329cf88dbe92b6e37",
+  "consumer_olean_sha256": "86c68255ce6f642cb459d8052e534559906ab4446a59c231c9957af737ddcdb7",
+  "toolchain": "leanprover/lean4:v4.33.0-rc2",
+  "LEAN_NUM_THREADS": 1,
+  "narrow_own_module_only": true,
+  "proof_reading": "Genuine Gaussian-regularized signed sinc/triangle identity; near-gap gives origin0 and triangle<=1-a; negative lattice support plus origin0 kills negative sinc integral; actual positive sinc lower bound on compactdistance region supplies exactconstant. Mutual singularity makes positive+negative the actual total variation.",
+  "remaining_primary_roots": {
+    "near_gap_controlled_limit_zero": "OPEN: commonC compactweak extraction and uniform Schwartz tails required; no TV shortcut",
+    "dilation_near_gap_family": "OPEN: actual nonzero nu_L full properties and uniform growth not yet formalized",
+    "dilation_normalized_limit_not_measure": "OPEN: actual normalized Schwartz limit with delta derivatives/nonzero/notorderzero required"
+  },
+  "physical_consumer_limit": "Universal actual-carrier consumers passed. A genuine nonzero nu_L witness is absent and remains an OPEN acceptance gate; zero measure is not used to claim it.",
+  "initial_diagnostics": "consumer01only undefined numerical simp lemma; consumer02 stale-copy invocation interrupted after path error; correctedconsumer03passed. No failed check promoted.",
+  "aggregate_release_receipt": "NOT_ESTABLISHED_FOR_THIS_NEW_SOURCE_OVERLAY",
+  "new_accepted_full_release_roots": 0,
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "full_release_ready": false,
+  "independent_human_review": "NOT_ESTABLISHED"
+}

@@ -1,0 +1,19 @@
+test_any_changed_reviewed_byte_rejects_entire_exception (test_contract.DocumentationReview.test_any_changed_reviewed_byte_rejects_entire_exception) ... ok
+test_edited_manifest_or_register_cannot_repin_document (test_contract.DocumentationReview.test_edited_manifest_or_register_cannot_repin_document) ... ok
+test_exact_seven_reviewed_files_pass (test_contract.DocumentationReview.test_exact_seven_reviewed_files_pass) ... ok
+test_full_root_extension_still_rejects_absent_full_reviewed_types (test_contract.DocumentationReview.test_full_root_extension_still_rejects_absent_full_reviewed_types) ... ok
+test_hardlink_alias_rejected_even_with_exact_bytes (test_contract.DocumentationReview.test_hardlink_alias_rejected_even_with_exact_bytes) ... ok
+test_hardlink_guard_without_host_link_privilege (test_contract.DocumentationReview.test_hardlink_guard_without_host_link_privilege) ... ok
+test_historical_registry_objects_still_reject_mutation (test_contract.DocumentationReview.test_historical_registry_objects_still_reject_mutation) ... ok
+test_missing_file_rejects_entire_exception (test_contract.DocumentationReview.test_missing_file_rejects_entire_exception) ... ok
+test_protection_object_cannot_self_repin_changed_document (test_contract.DocumentationReview.test_protection_object_cannot_self_repin_changed_document) ... ok
+test_symlink_guard_without_host_link_privilege (test_contract.DocumentationReview.test_symlink_guard_without_host_link_privilege) ... ok
+test_symlink_rejected_even_if_target_has_exact_reviewed_bytes (test_contract.DocumentationReview.test_symlink_rejected_even_if_target_has_exact_reviewed_bytes) ... ok
+test_table_cannot_self_repin_without_separate_seal (test_contract.DocumentationReview.test_table_cannot_self_repin_without_separate_seal) ... ok
+test_traversal_case_and_duplicate_table_paths_rejected (test_contract.DocumentationReview.test_traversal_case_and_duplicate_table_paths_rejected) ... ok
+test_unlisted_readme_source_and_registry_never_gain_byte_exception (test_contract.DocumentationReview.test_unlisted_readme_source_and_registry_never_gain_byte_exception) ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 10.383s
+
+OK

@@ -1,0 +1,102 @@
+Zeta23/OPICAFollowup/MultiplicityTail.lean:37:4: error: Type mismatch: After simplification, term
+  IntegrableOn.add hP hQ
+ has type
+  @IntegrableOn ℝ ℝ Real.measureSpace.toMeasurableSpace PseudoMetricSpace.toUniformSpace.toTopologicalSpace
+    NormedAddCommGroup.toENormedAddCommMonoid.toContinuousENorm
+    ((fun x => Real.exp (-x) * eval x P) + fun x => Real.exp (-x) * eval x Q) (Ioi 0) volume
+but is expected to have type
+  @IntegrableOn ℝ ℝ Real.measureSpace.toMeasurableSpace PseudoMetricSpace.toUniformSpace.toTopologicalSpace
+    SeminormedAddGroup.toContinuousENorm (fun x => Real.exp (-x) * eval x P + Real.exp (-x) * eval x Q) (Ioi 0) volume
+Zeta23/OPICAFollowup/MultiplicityTail.lean:41:4: error: Type mismatch: After simplification, term
+  Integrable.const_mul h a
+ has type
+  Integrable (fun x => a * (x ^ n * Real.exp (-x))) (volume.restrict (Ioi 0))
+but is expected to have type
+  IntegrableOn (fun x => a * (x ^ n * Real.exp (-x))) (Ioi 0) volume
+Zeta23/OPICAFollowup/MultiplicityTail.lean:91:6: error: `simp` made no progress
+Zeta23/OPICAFollowup/MultiplicityTail.lean:91:6: error: `simp` made no progress
+Zeta23/OPICAFollowup/MultiplicityTail.lean:91:17: warning: This simp argument is unused:
+  Pi.mul_apply
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Polynomial.derivative_mul, Polynomial.eval_mul, Polynomial.eval_add, laguerreRodriguesStep,
+    Polynomial.eval_sub]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+Zeta23/OPICAFollowup/MultiplicityTail.lean:188:17: warning: This simp argument is unused:
+  Polynomial.coeff_C
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [hcoeff, hj]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+Zeta23/OPICAFollowup/MultiplicityTail.lean:251:2: error: unsolved goals
+case pos
+n : ℕ
+p : ℂ
+T t : ℝ
+hp : 0 < p.re
+ha : 0 < 2 * p.re
+ht : T ≤ t
+hu : 0 ≤ 2 * p.re * (t - T)
+htmem : t ∈ Ici T
+humem : 2 * p.re * (t - T) ∈ Ici 0
+he : Real.exp (-p.re * t) ^ 2 = Real.exp (-2 * p.re * T) * Real.exp (-(2 * p.re * (t - T)))
+⊢ |p.re⁻¹ ^ n * 2⁻¹ ^ n| ^ 2 * |eval (p.re * t * 2 - p.re * T * 2) (monicLaguerre n)| ^ 2 * Real.exp (-(p.re * T * 2)) *
+      Real.exp (-(p.re * t * 2) + p.re * T * 2) =
+    p.re⁻¹ ^ (n * 2) * 2⁻¹ ^ (n * 2) * Real.exp (-(p.re * T * 2)) * Real.exp (-(p.re * t * 2) + p.re * T * 2) *
+      eval (p.re * t * 2 - p.re * T * 2) (monicLaguerre n) ^ 2
+Zeta23/OPICAFollowup/MultiplicityTail.lean:257:50: warning: This simp argument is unused:
+  abs_sq
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [monicLaguerreTail, indicator_of_mem htmem, laguerreSquareProfile, indicator_of_mem humem, norm_mul,
+    Complex.norm_real, Real.norm_eq_abs, Complex.norm_exp, Complex.neg_re, Complex.conj_re, Complex.mul_re,
+    Complex.ofReal_re, Complex.ofReal_im, mul_zero, sub_zero, mul_pow]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+Zeta23/OPICAFollowup/MultiplicityTail.lean:284:17: error: typeclass instance problem is stuck
+  Measure.IsAddRightInvariant ?m.103
+
+Note: Lean will not try to resolve this typeclass instance problem because the fourth type argument to `Measure.IsAddRightInvariant` is a metavariable. This argument must be fully determined before Lean will try to resolve the typeclass.
+
+Hint: Adding type annotations and supplying implicit arguments to functions can give Lean more information for typeclass resolution. For example, if you have a variable `x` that you intend to be a `Nat`, but Lean reports it as having an unresolved type like `?m`, replacing `x` with `(x : Nat)` can get typeclass resolution un-stuck.
+Zeta23/OPICAFollowup/MultiplicityTail.lean:315:8: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ↑↑(MemLp.toLp (monicLaguerreTail (m - 1) p T) ⋯) t
+in the target expression
+  inner ℝ (↑↑(monicLaguerreTailL2 (m - 1) p T hp) t) (↑↑(monicLaguerreTailL2 (m - 1) p T hp) t) =
+    ‖monicLaguerreTail (m - 1) p T t‖ ^ 2
+
+m : ℕ
+hm : 1 ≤ m
+p : ℂ
+hp : 0 < p.re
+T t : ℝ
+ht : ↑↑(MemLp.toLp (monicLaguerreTail (m - 1) p T) ⋯) t = monicLaguerreTail (m - 1) p T t
+⊢ inner ℝ (↑↑(monicLaguerreTailL2 (m - 1) p T hp) t) (↑↑(monicLaguerreTailL2 (m - 1) p T hp) t) =
+    ‖monicLaguerreTail (m - 1) p T t‖ ^ 2
+Zeta23/OPICAFollowup/MultiplicityTail.lean:324:26: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  Real.exp ?x ^ ?n
+in the target expression
+  Real.exp (-2 * p.re * T) * ↑(m - 1).factorial ^ 2 / (2 ^ (2 * (m - 1) + 1) * p.re ^ (2 * (m - 1) + 1)) =
+    (Real.exp (-p.re * T) * ↑(m - 1).factorial) ^ 2 / ((2 * p.re) ^ (↑m - 1 / 2)) ^ 2
+
+m : ℕ
+hm : 1 ≤ m
+p : ℂ
+hp : 0 < p.re
+T : ℝ
+hnorm : ‖monicLaguerreTailL2 (m - 1) p T hp‖ ^ 2 = ∫ (t : ℝ), ‖monicLaguerreTail (m - 1) p T t‖ ^ 2
+hsq :
+  ‖monicLaguerreTailL2 (m - 1) p T hp‖ ^ 2 =
+    Real.exp (-2 * p.re * T) * ↑(m - 1).factorial ^ 2 / (2 * p.re) ^ (2 * (m - 1) + 1)
+hMp : 0 < 2 * p.re
+hright : 0 ≤ Real.exp (-p.re * T) * ↑(m - 1).factorial / (2 * p.re) ^ (↑m - 1 / 2)
+⊢ Real.exp (-2 * p.re * T) * ↑(m - 1).factorial ^ 2 / (2 ^ (2 * (m - 1) + 1) * p.re ^ (2 * (m - 1) + 1)) =
+    (Real.exp (-p.re * T) * ↑(m - 1).factorial) ^ 2 / ((2 * p.re) ^ (↑m - 1 / 2)) ^ 2

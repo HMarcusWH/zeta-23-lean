@@ -1,0 +1,556 @@
+<!-- OPICA_AGENT_NAVIGATION_2026_10_22 -->
+## Current audit routing — 22 October 2026
+
+The active OPICA work is draft PR #294, following accepted parent PR #293.
+Read the [current guide](research/RHRC/integration/opica_followup/continuation/2026-10-22/README.md),
+[documentation/evidence index](research/RHRC/integration/opica_followup/continuation/2026-10-22/DOCUMENTATION_INDEX.md) and
+[100-root stage ledger](research/RHRC/integration/opica_followup/continuation/2026-10-22/ROOT_LEDGER_100.json).
+Read the continuation Stage 1 handover for exact repaired source hashes;
+check the live head and actual CI before asserting current acceptance.
+
+The target remains 100 roots / 28 acceptance units: 41 historical source-bound
+roots, ten additional narrow local results, one unaccepted candidate and 48
+absent implementations. Current aggregate/release acceptance remains OPEN.
+The generated Control-v2 block and dated current/next wording below retain their
+historical authority scope. They do not describe current PR routing or accept
+the child package. Frozen specifications define obligations; live exact-source
+compiler/CI evidence determines what is proved. Graph/framework views do not.
+
+RH, Step 4 and the independent closing inequalities remain OPEN.
+
+---
+
+# RHRC formal audit — merged theorem authority PR #272; research evidence PR #223
+
+> **RH remains OPEN.**
+
+<!-- RHRC_CURRENT_STATE_BEGIN -->
+## Current RHRC state
+
+THEOREM AUTHORITY
+- merged theorem authority = PR #287
+- validated final head = 40495f39b7510b49a7fe3493b42d9fe3880d6d22
+- merge commit = ecc6450f28eb6aed944bda8fe9a09296d033fc3e
+- tree = a105ffd52c96cd0c39712dcdba45e967282efc9d
+- status = MERGED_GREEN_THEOREM_STATE
+- PR #275 full-space small-aperture coercive base = PROVED
+- PR #276 exact legal successor ground >= 1 on 0 < L <= 1/512 = PROVED
+- fixed-N production continuity = PROVED_MERGED_PR_278
+- same-N off-line-zero contact = PROVED_MERGED_PR_278
+- PR #284 compressed contact calculus = PROVED_MERGED_PR_284_C2_AND_INHERITED_FIRST_VARIATION; F04_PAIR_BALANCE_AND_FRONTIER_PROMOTED_AFTER_MERGED_PR_287
+- PR #285 post-284 source-inertia package = PROVED_MERGED_PR_285
+- PR #287 post-285 M70-M77 build = PROVED_MERGED_PR_287
+- PR #272 CofinalCanonicalArithmeticCertificates <-> Mathlib RiemannHypothesis = PROVED / AUDIT-ONLY
+- RH = OPEN
+
+CURRENT RESEARCH FRONTIER
+- current candidate PR = #NONE / NO_OPEN_CANDIDATE_PR
+- candidate theorem-validation head = NONE
+- candidate theorem-validation status = NONE
+- merged experimental research evidence = PR #273 / CERTIFIED_CURRENT_PRIME_GROUND_RESPONSE
+- fixed-N sign opposition = PROVED_MERGED_PR_277
+- global ground propagation strength = RH_SUFFICIENT_AUDIT_PROVED_PR_277
+- uniform domination strength = RH_SUFFICIENT_AUDIT_PROVED_PR_277
+- active obstruction = OBS-060_GROUND_SPECTRUM_FIRST_CROSSING_BARRIER
+- active subobligation = OBS-060O_CONTACT_CONDITIONED_PRODUCTION_SATURATION_EXCLUSION
+- F04 production derivative authority = PROVED_MERGED_PR_287
+- M74 canonical secular instantiation = PROVED_MERGED_PR_287
+- next research target = POST285_CANONICAL_SECULAR_RAY_PRIME_FREE_F04_AND_FULL_ARITHMETIC_SOURCE_INEQUALITY
+- required new information = INDEPENDENT_FULL_ARITHMETIC_SOURCE_RESTRICTION_ON_THE_RESOLVENT_SELECTED_CONTACT_RAY
+- RH-sufficient terminal formulations are not counted as independent sub-RH progress
+
+FRAMEWORK / GRAPH STATE
+- PR #270 = FFBBP 1.7 / OoL-MVS 2.7.7 framework architecture authority
+- post-#276 exactified source-only theorem/lemma roots = 711
+- post-#276 FFBBP source-only module cohorts = 212
+- post-#276 OoL theorem-value-erased frontier contacts = 522
+- post-#276 RHKG relations = 311826
+- framework output -> Lean theorem authority = FORBIDDEN
+
+RESEARCH / CONTROL FIREWALL
+- latest independent bounded research evidence = PR #223
+- merged first-contact atlas evidence = PR #273 / EXPERIMENTAL_SIGNAL_ONLY
+- frozen Control-v2 semantic authority = PR #117
+- selected formal first break = E4A4-SCHUR-FB-05 (historical/frozen control semantics)
+- R003 phase = DISCOVERY
+- confirmatory execution = NOT AUTHORIZED
+- terminal claim = RH_OPEN
+<!-- RHRC_CURRENT_STATE_END -->
+
+## Post-#247 programme override
+
+PR #246 and PR #247 supersede older "current", "next", and candidate labels below. Historical sections are retained as provenance unless this override explicitly reactivates them.
+
+The active research interpretation is **Riemann Wearing Glasses v2**: one canonical Weil object is viewed through exact spectral, carrier, source and arithmetic coordinates. Coordinate changes do not create information; they are used to expose a nonvacuous arithmetic/analytic law on unconditional objects. Residual-state-only compatibility laws cannot count as new closure information merely because they are renamed: #247 proves residual-state exclusion itself is RH-equivalent.
+
+Canonical post-#247 programme: research/RHRC/routes/R003_ccm_bridge/POST_247_RIEMANN_WEARING_GLASSES_PROGRAM.md. Frozen post-green deltas: RESEARCH_LEADS_POST_247_GLOBAL_BOTTOM_GLASSES_DELTA.md, OBSTRUCTION_LEDGER_POST_247_DELTA.md, and DEAD_ROUTES_POST_247_DELTA.md.
+
+**Claim firewall:** RH remains OPEN.
+
+## Post-#247 audit summary
+
+**PROVED:** #246 exposes the exact weighted-von-Mangoldt remainder normal form and proves the major proposed terminal positivity/dominance formulations are RH-equivalent.
+
+**PROVED:** #247 packages the hypothetical bad configuration at the true global parity bottom and forces the exact #246 prime-remainder failure on the same true ground trial, with branch-specific source/transfer structure attached dependently.
+
+**PROVED / AUDIT-ONLY:** GlobalBottomResidualExclusion <-> RiemannHypothesis. This is now an anti-circularity warning: a law whose only content is "every residual state is impossible" is RH-strength and vacuous if RH is true.
+
+**OPEN:** small-aperture/base positivity, an unconditional ground-eigenspace prime-weight interface, multiplicity-safe fixed-cell spectral dynamics, the exact threshold law needed for a first-crossing barrier, and RH.
+
+
+## Post-#237 audit override
+
+Exact merged authority: PR #237, validated head `8b7ba6b25c6f8977ff27890196e5b43ca3459b78`, merge `267d417216f1731c6860b7553ba87397843fe258`, tree `28b22a2a4c96f32874fc09cd1e73f2fb09807e9d`. All 13 attached jobs completed successfully. Compiler authority is limited to the exact #237 declarations; the Gamma/alpha reductions listed above are DERIVED compositions until separately formalized. **RH remains OPEN.**
+
+
+## Post-#231 current-state override
+
+PR #231 proves the generic correction/source-coupling bridge, its production-channel
+rewrite, the exact Gamma shell balance, and the retained factor-preserving source
+balance. On the selected-even / odd-good retained branch, the existing source
+nonvanishing theorem cancels the source factor and gives the exact same-state
+balance
+`q - J = M4 - S*C`.
+
+PR #231 does **not** prove alpha reality/sign, a sign for the source coupling,
+canonical simultaneous odd-bad exclusion, odd-selected closure, parity-complete
+retained-state exclusion, negative-root exclusion, the terminal Mathlib RH seam,
+or RH.
+
+The #231 workflow harvest completed 11/11 attached workflows green on the exact
+validated head `f9623be705955bd98ef563aa75d3244712009cac`. Latest independent
+research evidence remains PR #223; Control-v2 semantic authority remains PR #117.
+
+The next theorem target is `RETAINED_CROSS_PARITY_SOURCE_GRAM_DISK`: use
+good-sector Gram control only as an intermediate bridge, then compose it with
+the #231 same-state source balance. The required new information is
+`GOOD_SECTOR_GRAM_CONTROL_COMPOSED_WITH_RETAINED_SOURCE_BALANCE`.
+A proof of `canonicalOneStepDomination` obtained merely by restating successor
+positivity is not by itself independent FB-05 information.
+
+Detailed post-green pass:
+`RESEARCH_LEADS_POST_231_SOURCE_BALANCE_DELTA.md` and
+`OBSTRUCTION_LEDGER_POST_231_DELTA.md`.
+
+Any older "current", "next", or routing labels below this override are historical
+snapshots unless re-established above.
+
+```text
+ACTION_REGISTRY.current_frontier
+  = frozen PR #117 control-semantic frontier
+
+CONTROL_STATE.active_research_route.next_research_target
+  = current descriptive research operation
+  = RETAINED_CROSS_PARITY_SOURCE_GRAM_DISK
+```
+
+## Post-#229 current-state override
+
+PR #229 proves the generic correction-functional Riesz representation
+`chi(y) = <R b,y>/<c,c>` and the exact alpha/Gamma mixed-resolvent corollaries.
+It does **not** prove that alpha is real, positive, or sign-controlled.
+
+The next theorem target is `CROSS_PARITY_CORRECTION_SOURCE_COUPLING`: formalize
+the derived bridge `star (1-alpha) * <c,c> = cubicShellCoupling (R d)`, rewrite
+it through the production canonical source channels, and then derive the
+retained source-balance identity under an explicit nonzero source moment.
+Those statements are **OPEN / NEXT**, not theorem authority yet.
+
+The #229 workflow harvest completed 13/13 green jobs. Latest independent
+research evidence remains PR #223; Control-v2 semantic authority remains PR #117.
+OBS-059I, simultaneous odd-bad exclusion, odd-selected closure,
+parity-complete retained-state exclusion, the terminal Mathlib RH seam, and RH
+remain OPEN.
+
+Detailed post-green pass:
+`RESEARCH_LEADS_POST_229_RIESZ_DELTA.md` and
+`OBSTRUCTION_LEDGER_POST_229_DELTA.md`.
+
+Any older "current", "next", or routing labels below this override are
+historical snapshots unless re-established above.
+
+## Historical post-#227 audit settlement
+
+Exact merged theorem authority is PR #227: final head `b8d29733167a95e16f5721eddfced6b650a3b641`, merge `7aace87a5644f837e2c8b64bdcf5e66b2dc0b020`, tree `1dd1cdefcf4f4f7929b310697fdd1615a861ca1a`. The PR synthetic merge that passed the full Lean/RHRC gate had the same tree.
+
+PR #226 proves the predecessor correction proportionality. PR #227 proves the safe and zero-shift alpha/Gamma affine collapses, denominator-free one-coefficient transfer, kernel-direction collapse, and the selected-even bi-regular one-coefficient normal form. Headline `#print axioms` output is restricted to `propext`, `Classical.choice`, and `Quot.sound`; the CCM and ExceptionalZero builds and forbidden-placeholder scan passed.
+
+Not proved: alpha reality/sign, simultaneous odd-bad exclusion, selected-even WLOG, odd-selected closure, negative-root exclusion, the terminal Mathlib RH seam, or RH.
+
+Current theorem-extraction target: `CROSS_PARITY_CORRECTION_FUNCTIONAL_RIESZ_REPRESENTATION`.
+
+
+## Historical post-#224 audit settlement
+
+PR #224 advances theorem authority only for the exact cubic projection closed form
+`cubicProjectionResidual_eq_oddCubicProjectionSlope_smul`.
+
+The advertised predecessor-correction proportionality remains OPEN. The current next theorem target is `CROSS_PARITY_PREDECESSOR_CORRECTION_PROPORTIONALITY`; the alpha/Gamma and one-coefficient zero-shift collapses remain derived conditional statements until separately formalized.
+
+The odd-selected branch and terminal Mathlib RH seam remain OPEN. **RH remains OPEN.**
+
+
+Live GitHub head + exact compiler/CI evidence outrank this prose.
+
+## Historical authority split through PR #201
+
+```text
+THEOREM AUTHORITY
+PR #184
+head  = a756494ebe7e2530715e996b9a9a341fbe07c683
+merge = 6f04e94473eb112b59eeaa2c6fc6ac6cbe7fe30e
+tree  = 6c77cd470809959a403b3bcc5f08d39f4076fa4c
+
+LATEST RESEARCH EVIDENCE
+PR #201
+head  = be5b98dfce12777436bc40b39a37b04669ae4311
+merge = 319db6f68f65bdcffc0657c03bea76502da59a57
+tree  = 840a2e8b0bf690507bc3385fbe122210e6d32c7a
+research disposition = DISCREPANCY_REPRESENTATION_DEPENDENCY_UNRESOLVED
+
+CONTROL SEMANTIC AUTHORITY
+PR #117
+selected first break = E4A4-SCHUR-FB-05
+terminal claim = RH_OPEN
+```
+
+## Historical formal theorem state through PR #184
+
+No Lean theorem has been added after PR #184. The formal package still proves the Hermitian Schur/contact algebra, frozen parity production/log-cover family, exact fixed-cell production bridge, N2 predecessor/canonical-shell geometry, and the conditional decomposition
+
+```text
+M~(t)=-tI+R~(t)
+P_t' = -envelopeNormSq + remainderEnvelopeDerivative
+remainderEnvelopeDerivative < envelopeNormSq -> P_t' < 0.
+```
+
+Still not proved: source-specific domination, contact existence/uniqueness, same-state opposing first-bad orientation, first-bad exclusion, negative-root exclusion or RH.
+
+## Historical research audit: #186 -> #201
+
+### #186 -> #190 — ambient selector surface consumed
+
+PR #186 returned `DOMINATION_SIGNAL_MIXED`. PR #188 froze the normalization-safe selector family. PR #189 showed individual ambient separability. PR #190 then established `JOINT_EXACT_VECTOR_SEPARABLE` and `JOINT_THRESHOLD_SIGNATURE_SEPARABLE`, so all 127 nonempty selector subsets are insufficient in the audited ambient normalized algebra.
+
+### #192 — canonical production realizability
+
+The Layer 0 -> Layer 5 canonical production realizability ladder was executed. `EXACT_TWIN_SURVIVES` records the reflected mechanism surviving the early ambient/source-coupling layers; `EXACT_TWIN_EXCLUDED_BY_IDENTITY` records exclusion of the specific negative-scalar witness by the exact scalar-aperture identity. The general reflected class remains `UNRESOLVED`.
+
+### #193 — first-order parity trajectory
+
+```text
+J = o'e - e'o
+P2 = L*J/(o*e)
+sign(P1') = sign(P2) = sign(J) under L,e,o>0
+```
+
+All six exact inherited centers satisfy `e>0`, `o>0`, `J>0`, `P2>0`, but the first-order finite-width result was `TRAJECTORY_RIGIDITY_UNRESOLVED`. **Do not infer this from points:** exact-center positivity did not establish finite-width monotonicity.
+
+### #195 — second-order sharp enclosure
+
+Historical exact result:
+
+```text
+J' = o''e - e''o
+PARTIAL_TRAJECTORY_ORIENTATION
+48 J_POSITIVE
+48 J_UNRESOLVED
+0 J_NEGATIVE
+0 H1_UNRESOLVED
+second_order_h1_recovery_count = 63
+representation_conflict_count = 0
+unresolved_span_count = 1
+certified_t_fraction = 63/64
+global_positive_hull = false
+bounded_distinct_aperture_twin_exclusion = false
+```
+
+### #197 — unique residual-cell replay
+
+The unique inherited `MAX_CELL_BUDGET` leaf is evaluated once with the unchanged evaluator:
+
+```text
+A = J_UNRESOLVED
+B = J_POSITIVE
+C = J_POSITIVE
+GLOBAL_MONOTONE_ORIENTATION
+uniform orientation = J_POSITIVE
+certified t-fraction = 1
+global_positive_hull = true
+bounded_distinct_aperture_twin_exclusion = true
+```
+
+This remains a complete signed Arb interval cover of the declared frozen Q14 domain, hence `RIGOROUS BOUNDED RESEARCH`.
+
+### #199 — source-mechanism audit
+
+PR #199 first replays the exact #197 49-leaf complete positive cover. It then validates four-way and collapsed source-interaction reconstruction against independent direct Method C.
+
+```text
+mechanism_classification = SOURCE_DECOMPOSITION_DEPENDENCY_UNRESOLVED
+four_way_classification = SOURCE_DECOMPOSITION_DEPENDENCY_UNRESOLVED
+collapsed_three_way_classification = SOURCE_DECOMPOSITION_DEPENDENCY_UNRESOLVED
+selected_collapsed_uniform_lock_group = null
+control_transfer_status = NO_UNIQUE_COLLAPSED_UNIFORM_LOCK
+```
+
+This is a representation/dependency diagnosis, not a loss of direct `J_POSITIVE`.
+
+### #201 — cancellation-preserving discrepancy-first audit
+
+PR #201 tests the explicit escape left open after #199. It constructs
+
+```text
+D = pole + prime_signed
+A = direct_arch_signed
+M = D + A
+```
+
+at matrix `M,M',M''` level **before** parity restriction and centered second-order interval transport. The paired matrix, first-derivative and second-derivative reconstructions all pass, and the direct #197 `GLOBAL_MONOTONE_ORIENTATION / J_POSITIVE` replay remains intact.
+
+The final certified result is:
+
+```text
+completed_leaf_count = 49
+paired_source_sum_positive_leaf_count = 0
+paired_source_sum_unresolved_leaf_count = 49
+mechanism_classification = DISCREPANCY_REPRESENTATION_DEPENDENCY_UNRESOLVED
+selected_uniform_lock_group = null
+control_transfer_status = NO_UNIQUE_PRIMARY_LOCK
+theorem_promotion = false
+fb05_closed = false
+negative_root_exclusion = false
+rh_claim = false
+```
+
+This is stronger than the #199 representation diagnosis: even theorem-motivated pole-prime pairing performed upstream does not retain enough interval dependency information to expose the sign of the already-signed direct total.
+
+It still does **not** prove that no arithmetic/source mechanism exists.
+
+## Current post-green frontier
+
+Do not continue rearranging linear source buckets without a new theorem that singles out the representation. The consumed source-level sequence is now:
+
+```text
+four-way source attribution                    -> dependency unresolved
+collapsed three-way attribution                -> dependency unresolved
+discrepancy/direct-arch upstream pairing       -> dependency unresolved
+```
+
+The next Pair-A test should preserve the fully assembled canonical parity object and ask whether a higher-level composite identity exposes a simpler independent sign mechanism. Merely re-encoding `J>0` as `(o/e)'>0` does not add mathematical information.
+
+## Claim firewall
+
+```text
+#184 theorem package
+  -/-> source-specific sign law
+
+#197 GLOBAL_MONOTONE_ORIENTATION on frozen Q14
+  -> rigorous bounded research
+  -/-> arbitrary-Q theorem
+  -/-> global canonical injectivity
+
+#199 SOURCE_DECOMPOSITION_DEPENDENCY_UNRESOLVED
+  -> independent source attribution is dependency-limited
+
+#201 DISCREPANCY_REPRESENTATION_DEPENDENCY_UNRESOLVED
+  -> upstream pole-prime pairing still loses sign resolution
+  -/-> loss of direct #197 J_POSITIVE
+  -/-> source mechanism impossible
+  -/-> FB-05 closure
+  -/-> negative-root exclusion
+  -/-> RH
+```
+
+## Historical post-#203 audit addendum — research authority at that point
+
+The stale #201 authority/frontier wording above is preserved as history. Current research authority is PR #203:
+
+```text
+head  = c8196830a8b49e657b28d36b364e1cff68c568d6
+merge = ab660e812a78d482145eadc3e42d186a63fa812b
+tree  = 7360e366fe8d623ef63ca902c23522bb72935848
+research disposition = COMPOSITE_PARITY_GAP_PATTERN_FALSIFIED
+center_kill_switch_survives = false
+full_cover_executed = false
+completed_leaf_count = 0
+control_transfer_status = PATTERN_FALSIFIED_BEFORE_FULL_COVER
+```
+
+The repaired #203 implementation validates exact-rational parity-contrast transport and independent `G = O-E`, `G' = O'-E'`, `G'' = O''-E''` reconstruction. The preregistered sign pattern `E > 0`, `G > 0`, `G' >= 0`, `E' <= 0` fails before full-cover execution. This is a successful falsification result, not CI failure.
+
+Pair-A **representation engineering** is therefore consumed/downgraded as the default research tactic. This does not prove that every possible Pair-A theorem is false. The next highest-information route is Pair D — same-state two-parity squeeze; Pair B — negative-index separation versus localized critical-line sampling rigidity — is secondary.
+
+**Do not count them as two independent** constraints when two formulations instantiate the same underlying mechanism. Global Schur monotonicity remains quarantined. Theorem authority remains #184; negative-root exclusion remains OPEN; **RH remains OPEN.**
+
+## Post-#205 audit addendum — generic Pair-D lane consumed
+
+Historical post-#205 research authority was PR #205:
+
+```text
+head  = 73b78297da54b9f5b2d47584a8033356a6b2e2a8
+merge = deaa69ae190ada511cf8228f174846184673ff3a
+tree  = 3d715612eabf25a9056ab84b0c5e968f71354666
+research disposition = PAIR_D_GENERIC_SIMULTANEOUS_BAD_COUNTERMODEL_CERTIFIED
+```
+
+The exact executable C1 fixture uses the actual radius-3 centered boundary-flat parity geometry with a generic reversal-symmetric diagonal operator. It certifies both predecessor parity forms positive (`70`, `10`), while exact negative successor witnesses exist in both parities (`-130`, `-410`). The selected even compressed root is `-13/42`, and the centered-index commutator vanishes exactly.
+
+This is `EXACT EXECUTABLE RESEARCH / RIGOROUS FINITE SYNTHETIC COUNTERMODEL`, not Lean theorem authority and not a canonical CCM counterexample. `canonical_realizability = false`.
+
+Therefore generic predecessor positivity + parity/shell geometry + reversal symmetry + displacement commutation cannot supply the simultaneous-badness contradiction. DR-012 and DR-013 are strengthened by current executable evidence. Pair D remains open only in a **canonical-arithmetic** form: a later exclusion must identify a property of `canonicalSourceMatrix` that fails on C1.
+
+The next cheapest falsifier should attack the generic quadratic-normal-defect-versus-`M4` implication. The canonical `sourceMoment <-> M4` question, odd-selected first-bad closure, FB-05, negative-root exclusion and RH remain OPEN. Theorem authority remains #184.
+
+## Post-#207 audit addendum — theorem authority advances
+
+```text
+THEOREM AUTHORITY = PR #207
+validated theorem head = 7e186ede13beece95e8a08b2449cd3accbe5b2f5
+merged theorem commit = 76cf4e3b5ef4b7ab904a861b6d4cb01fdcd8d0e0
+validated theorem tree = d6509407cc7b667b0ff3e7faab2acd525ae32db9
+
+LATEST RESEARCH EVIDENCE = PR #205
+research disposition = PAIR_D_GENERIC_SIMULTANEOUS_BAD_COUNTERMODEL_CERTIFIED
+```
+
+PR #207 is compiler-validated theorem authority. It proves the canonical Pair-D self-energy identity and the retained odd-good branch theorem
+
+```text
+evenShiftedSourceMomentMomentFour_re_pos_of_even_of_not_oddBad
+evenShiftedMomentFour_ne_zero_of_even_of_not_oddBad
+evenShiftedMixedSourceSeventhJet_ne_zero_of_even_of_not_oddBad
+oddBad_or_sourceMomentMomentFour_re_pos_of_even
+```
+
+Hence the even-selected + odd-good retained branch is PROVED THROUGH #207: the exact sourceMoment/`M4` Hermitian pairing is strictly positive, the source moment is nonzero, `M4` is nonzero, and the mixed seventh source jet is nonzero.
+
+The simultaneous odd-bad branch remains OPEN. The odd-selected first-bad branch remains OPEN. No unconditional `sourceMoment -> M4` implication is proved. The generic defect/`M4` falsifier is **SUPERSEDED / UNNECESSARY** as the next gate, not falsified.
+
+The next theorem-level information gain is quantitative coercivity:
+
+```text
+-lam * ||Dv||^2 <= re(star(sourceMoment) * M4)
+```
+
+which is DERIVED from the #207 proof pattern but not yet separately formalized. Negative-root exclusion remains OPEN. **RH remains OPEN.**
+
+## Post-#209 audit addendum — quantitative Pair-D theorem authority
+
+```text
+THEOREM AUTHORITY = PR #209
+validated theorem head = a6f0e5d3db988eeaf3ed54cf283f85b8d23f5392
+merged theorem commit = e029af769e01a547ebbc6ed045509bb2cbdd6cff
+validated theorem tree = 6a75278ebf3f2bd19a77419238872cb81835ec13
+
+LATEST RESEARCH EVIDENCE = PR #205
+research disposition = PAIR_D_GENERIC_SIMULTANEOUS_BAD_COUNTERMODEL_CERTIFIED
+```
+
+PR #209 is compiler-validated theorem authority. It proves quantitative Pair-D coercivity, the exact sourceMoment/seventh-jet rewrite, the quantitative upper bound, and strict anti-alignment on a genuine negative even eigenmode with odd successor good.
+
+On the retained even-selected state, the theorem package includes
+
+```text
+evenShiftedSourceMomentMomentFour_coercive_of_even_of_not_oddBad
+evenShiftedSourceMomentMixedJet_re_le_of_even_of_not_oddBad
+evenShiftedSourceMomentMixedJet_re_neg_of_even_of_not_oddBad
+oddBad_or_sourceMomentMixedJet_re_neg_of_even
+evenShiftedRieszEight_eq_nine_iff_endpointScalar_eq_zero_of_even_of_not_oddBad
+```
+
+Thus `OBS-059Q` is CLOSED / PROVED BY #209. The even-selected + odd-good branch is PROVED THROUGH #209 and now carries a quantitative complete-source/local-jet anti-alignment. The simultaneous odd-bad branch and odd-selected first-bad branch remain OPEN. Endpoint-scalar sign remains OPEN.
+
+The active research sub-obligation is `OBS-059I`: find genuinely independent complete-canonical-functional information incompatible with the #209 anti-alignment or magnitude budget on the same retained state. A rearrangement of #209 itself is not independent information. The Riesz lane is reactivated/nondegenerate on this branch, but no endpoint-scalar sign or high-order Riesz limit theorem is claimed.
+
+Negative-root exclusion remains OPEN. **RH remains OPEN.**
+
+## Post-#211 audit addendum — complete-functional theorem authority
+
+This section is the current authority override and preserves earlier post-green sections as historical ancestry.
+
+```text
+THEOREM AUTHORITY = PR #211
+validated theorem head = 704a69e41871269814ba091e9476fe76b2d09844
+merged theorem commit = dd42e6368e48957c9922a9e917e10f60a2582b9f
+validated theorem tree = a735f6149aeaa9f8358394c33fd6dcee8062f68e
+
+LATEST RESEARCH EVIDENCE = PR #205
+research disposition = PAIR_D_GENERIC_SIMULTANEOUS_BAD_COUNTERMODEL_CERTIFIED
+
+CONTROL SEMANTIC AUTHORITY = PR #117
+selected first break = E4A4-SCHUR-FB-05
+terminal claim = RH_OPEN
+```
+
+PR #209 remains the provenance of quantitative Pair-D coercivity, strict sourceMoment/seventh-jet anti-alignment and Riesz-8/Riesz-9 nondegeneracy. PR #211 proves the mixed dictionary bridge and the exact complete-functional representation
+
+```text
+explicitCanonicalSourceMoment L K v
+  = canonicalQuadraticNormalSourceFunctional L (quadraticNormalSourceAtom K v).
+```
+
+On the retained state the fork can now be stated as
+
+```text
+odd successor bad
+OR
+re(star(Λ_L(h_v)) * h_v^(7)(0)) < 0.
+```
+
+This is a representation/interface rewrite of the #209 obstruction, not an independent opposing sign theorem.
+
+`OBS-059I` remains **OPEN / ACTIVE**. Its representation prerequisite is CLOSED / PROVED BY #211. The next theoremization target is `SOURCE_COORDINATE_KERNEL_FOR_COMPLETE_FUNCTIONAL`: derive the exact source-coordinate integral-plus-prime representation from the theorem-authoritative `literatureRHS` and the proved endpoint identities, without prerecording guessed constants or signs.
+
+The required new information remains `INDEPENDENT_COMPLETE_CANONICAL_FUNCTIONAL_INCOMPATIBILITY`. The simultaneous odd-bad branch, odd-selected first-bad branch, endpoint-scalar sign, negative-root exclusion and **RH remain OPEN.**
+
+## Post-#213 theorem-authority synchronization
+
+```text
+THEOREM AUTHORITY = PR #213
+validated theorem head = 703c3764a7d35aa4801e791a1929efa54c2533a1
+merged theorem commit = ee341a6071d177c75bbea0a5f92ebe3b3bb16696
+validated theorem tree = db00686b2bbb821adb857e5c68f422d19c4f91cd
+
+LATEST RESEARCH EVIDENCE = PR #205
+CONTROL SEMANTIC AUTHORITY = PR #117
+terminal claim = RH_OPEN
+```
+
+PR #209 remains the provenance of quantitative Pair-D coercivity and strict anti-alignment. PR #211 remains the complete-functional interface milestone. PR #213 proves the exact complete physical/source-coordinate kernel and the retained source-kernel anti-alignment rewrite.
+
+```text
+SOURCE_COORDINATE_KERNEL_FOR_COMPLETE_FUNCTIONAL
+  = CLOSED / PROVED #213
+
+OBS-059I
+  = OPEN / ACTIVE
+
+next research operation
+  = EXACT_KERNEL_ADVERSARIAL_FALSIFICATION
+```
+
+The next research lanes are SIGN, MAGNITUDE, and DUAL / GRAM / EXTREMAL GEOMETRY.
+
+Same-observable firewall: existing `CanonicalPolePrimeRiesz` results act on `sourceAtomRealEnergy`; #213 acts on `quadraticNormalSourceAtom`. Direct composition is not established.
+
+No claim IDs, action scores, first-break semantics, route digests, or confirmation permissions change. **RH remains OPEN.**
+
+## Post-#215 audit settlement
+
+PR #215 passed its dedicated rigorous Arb certificate and the ordinary RHRC/Lean workflow family. Exact research disposition:
+```text
+FULL_SPACE_DUAL_INDEPENDENCE_CERTIFIED
+FULL_SPACE_SIGN_INDEFINITE_CERTIFIED
+DUAL_INDEPENDENCE_SURVIVES_Q13_Q15_CONTROLS
+```
+Q14 primary values:
+```text
+wedge  = -7.92856142933793718521707742118e-7
+R_min  = -7.60547660138399452560501190345e-11
+R_max  =  1.02497161190896926446719955942e-6
+```
+
+No Lean theorem changed. Theorem authority remains #213. The retained-state implication was not tested. The current active target is the exact retained negative-root cross-parity secular composition, not a universal full-carrier sign and not an unproved contact-state substitution.
+
+**RH remains OPEN.**

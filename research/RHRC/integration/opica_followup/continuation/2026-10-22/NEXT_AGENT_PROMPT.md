@@ -14,18 +14,21 @@ evidence. Reconcile any newer work. Source and gate states are separate: the old
 41-root source-bound receipt does not cover the new package; supplied/local
 narrow results do not establish aggregate registration or full release.
 
-Read STAGE1_HANDOVER.md. Finish the one retained word/jet consumer and
-implement the 48 absent roots listed in REMAINING_WORK.md. Keep all ten narrow
-local results at full scope. Recheck independent consumer and axiom gates before
-promoting any state; run_candidate_checks.py covers seven modules/six consumers.
+Read STAGE2_HANDOVER.md and its proof-lane handovers. Finish the retained word/jet
+consumer and implement the 43 absent roots listed in REMAINING_WORK.md. Keep all
+fifteen narrow local results at full scope. Recheck independent consumers and
+axioms before promotion; run_candidate_checks.py covers nine modules/eight
+consumer files. The nonzero near-gap family witness remains an OPEN physical
+acceptance gate; the mass estimate does not construct that family.
 
 Preserve uniform constants before varying schedules/palettes/indices, actual
 Dirichlet convolution, both mask realizations, actual physical L2 fields, endpoint
 atoms, both frequency/ordinate signs, the filled half-point transform, arbitrary
 multiplicity and real tail thresholds, one common growth budget for Schwartz
 limits, strict first-cell height qualifiers and all-history local-word scope.
-Generic norm or density formulas do not construct the missing native residuals,
-global measures or rate bridges. Keep the force term in forced Euler/resolvent
+The native residual and terminal memory are now constructed at full scope.
+Generic norm or density formulas still do not construct missing global measures
+or native rate bridges. Keep the force term in forced Euler/resolvent
 equations and independent quiet-observation premises visible.
 
 Supply actual required interfaces, full expected-type and physical/domain

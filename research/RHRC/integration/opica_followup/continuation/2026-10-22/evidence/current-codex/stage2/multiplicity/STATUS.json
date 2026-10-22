@@ -1,0 +1,219 @@
+{
+  "status": "GREEN_EXACT_PLANNED_MODULE_IMPORTED_FULL_THEOREM_CONSUMERS_STANDARD_AXIOMS",
+  "stage": "Stage2 native MultiplicityTail completion",
+  "base_commit": "96dfba7082fb0cc7a93f7b25e31d449951ee9e4d",
+  "base_tree": "c7a86500bcb1fb9fee009cb4b4500ed8927aae82",
+  "checked_object": "Exact source/consumer working-tree overlay at the recorded hashes, genuinely compiled in isolated checkout; not a whole-head or aggregate build",
+  "source_path": "Zeta23/OPICAFollowup/MultiplicityTail.lean",
+  "source_sha256": "43466c43684b91e5f4cff2b34ea5df178d1bf196c35946e8411bab9cdfb2e123",
+  "consumer_path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedMultiplicity.lean",
+  "consumer_sha256": "7457d65c129374a9f13bbee5e2dd67f53882eb64fd56dfb0d6ff5e673e85498f",
+  "source_exit": 0,
+  "consumer_exit": 0,
+  "source_log": "multiplicity-stage2-final-save.log",
+  "source_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "consumer_log": "expected-multiplicity-stage2-final.log",
+  "consumer_log_sha256": "b4b3f21df84d6c631858934e4c138ef71741982d7f903b8ee6f0d892e163ba95",
+  "source_warning_records": 0,
+  "consumer_warning_records": 0,
+  "saved_olean_sha256": "7edf9517ad0fe92210b1ee8a0942bb562e18317687ddf9b09cc40c2a3f80f401",
+  "primary_roots": [
+    "Zeta23.OPICAFollowup.laguerre_tail_norm",
+    "Zeta23.OPICAFollowup.native_auxiliary_top_moment",
+    "Zeta23.OPICAFollowup.native_auxiliary_tail_residual_lower",
+    "Zeta23.OPICAFollowup.native_terminal_memory_lower"
+  ],
+  "newly_completed_native_primary_roots": 3,
+  "previous_laguerre_signature_and_body_preserved": true,
+  "required_definitions": [
+    "nativeTruncatedResidual",
+    "tailMemory"
+  ],
+  "canonical_memory": "Integral over [0,T] of exp(-alpha*(T-s))*abs(primeFieldFamily d s), weighted L1",
+  "actual_drive": "nativeIntegerDriveField(sourceOrderFamily d), coefficient log(n)/sqrt(n), not unweighted source translate",
+  "complete_native_domain": "Every source order d, every actual right zero rho of actual arbitrary multiplicity; top moment all k natural, residual/memory all k>=1 and every real T",
+  "new_caller_conclusion_premises": [],
+  "global_prime_field_L2_assumed": false,
+  "source_statement_weakening": false,
+  "new_axioms": [],
+  "printed_axiom_closures": [
+    {
+      "declaration": "Zeta23.OPICAFollowup.laguerre_tail_norm",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "Zeta23.OPICAFollowup.monicLaguerre_exact_norm_sq",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "Zeta23.OPICAFollowup.monicLaguerre_orthogonality",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "Zeta23.OPICAFollowup.laguerre_iterated_ibp",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "Zeta23.OPICAFollowup.monicLaguerreTail_integral_norm_sq",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "Zeta23.OPICAFollowup.native_auxiliary_top_moment",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "Zeta23.OPICAFollowup.native_auxiliary_tail_residual_lower",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "Zeta23.OPICAFollowup.native_terminal_memory_lower",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "Zeta23.OPICAFollowup.Validation.expected_native_auxiliary_top_moment",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "Zeta23.OPICAFollowup.nativeAuxiliaryInput_completedPrime",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "Zeta23.OPICAFollowup.nativeAuxiliaryInputLaplace_eq_continuation",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "Zeta23.OPICAFollowup.Validation.expected_actual_logweighted_drive",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "Zeta23.OPICAFollowup.Validation.expected_actual_auxiliary_integrand",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "Zeta23.OPICAFollowup.Validation.expected_actual_auxiliary_safe_laplace",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "Zeta23.OPICAFollowup.Validation.expected_actual_simple_zero_phase",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "Zeta23.OPICAFollowup.Validation.expected_native_auxiliary_tail_residual_lower",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "Zeta23.OPICAFollowup.Validation.expected_native_terminal_memory_lower",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    }
+  ],
+  "consumer_declaration_kind": "THEOREM for all new named expected_* proofs; independently stated literal integral/formula types",
+  "consumer_print_names": "All fully qualified; direct prints include all4 primary roots",
+  "added_project_import": "Zeta23.CCM.NativeCompletionEquation",
+  "added_project_import_reason": "Genuine actual causal arithmetic completion a_k*F_d=c_k*U_d before any global F_d L2/range assertion",
+  "frozen_direct_project_imports": [
+    "Zeta23.OPICAFollowup.AuxiliaryCompletions",
+    "Zeta23.OPICAFollowup.UniformSourceBounds",
+    "Zeta23.ExceptionalZero.NativeActualInputZeroJets"
+  ],
+  "actual_direct_project_imports": [
+    "Zeta23.CCM.NativeCompletionEquation",
+    "Zeta23.OPICAFollowup.AuxiliaryCompletions",
+    "Zeta23.OPICAFollowup.UniformSourceBounds",
+    "Zeta23.ExceptionalZero.NativeActualInputZeroJets"
+  ],
+  "added_mathlib_imports": [
+    "Mathlib.MeasureTheory.Function.AEEqOfIntegral",
+    "Mathlib.Analysis.Convolution"
+  ],
+  "native_completion_equation_unchanged_source_sha256": "455f705f4f6e352e1b9fff7867b101e14afc1da30c79e7cf54697c1418969224",
+  "native_completion_equation_save_exit": 0,
+  "native_completion_equation_save_log": "native-completion-equation-save.log",
+  "frozen_specs_changed": false,
+  "parent_math_sources_changed": false,
+  "sources_synced_project_changed": false,
+  "git_diff_check": "PASS for both owned files",
+  "source_and_consumer_line_endings": "LF",
+  "toolchain": "leanprover/lean4:v4.33.0-rc2",
+  "maxHeartbeats": 800000,
+  "LEAN_NUM_THREADS": 1,
+  "isolated_checkout": "work/opica-audit28",
+  "isolated_base_head": "9b6a9a3a2badb4cff62a56c1158d9cef8759d30d",
+  "source_and_consumer_frozen": true,
+  "own_compiler_processes": "None; writer released",
+  "no_commit_or_push_by_theory": true,
+  "aggregate_promotion": "NONE; integrating owner controls ledger and aggregate gates",
+  "full_aggregate": "OPEN",
+  "full_release": "OPEN",
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "final_handover": "STAGE2_NEXT_MATH_HANDOVER.md",
+  "final_post_green": "STAGE2_POST_GREEN_RESEARCH.md"
+}

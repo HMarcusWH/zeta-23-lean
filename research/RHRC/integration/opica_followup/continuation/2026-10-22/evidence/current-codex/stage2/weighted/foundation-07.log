@@ -1,0 +1,20 @@
+C:/Users/macka/.codex/.chatgpt-projects/g-p-6a353c7268b08191b685956e466d73e4/work/opica-stage2-2026-10-22/weighted/WeightedMixing.lean:405:4: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  SFinite (reflectedMixingPositiveMeasure mu)
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+C:/Users/macka/.codex/.chatgpt-projects/g-p-6a353c7268b08191b685956e466d73e4/work/opica-stage2-2026-10-22/weighted/WeightedMixing.lean:401:79: error: unsolved goals
+mu : Measure ℝ
+inst✝ : SFinite mu
+a : ℝ
+ha : 1 / 2 ≤ a
+hm : positiveMixingMoment a mu < ∞
+f : 𝓢(ℝ, ℂ)
+hmr : positiveMixingMoment a (reflectedMixingPositiveMeasure mu) < ∞
+⊢ ∫ (t : ℝ), (dilatedCombDistribution t) (𝓕 f) ∂mu =
+    ∫ (x : ℝ), f x ∂positiveDilationMixture (reflectedMixingPositiveMeasure mu)
+'Zeta23.OPICAFollowup.weightedDilationMixture_pairing' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.OPICAFollowup.weightedDilationMixture_growth' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.OPICAFollowup.positiveDilationMixture_fourier_pairing' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]

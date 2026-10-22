@@ -1,0 +1,60 @@
+C:/Users/macka/.codex/.chatgpt-projects/g-p-6a353c7268b08191b685956e466d73e4/work/opica-stage1-2026-10-22/multiplicity/NativeTailPairing.lean:867:4: error: Type mismatch: After simplification, term
+  coeff_comp_degree_mul_degree fun a_1 => scaledMonicLaguerrePolynomial_topCoeff._proof_1_1 n T hq a_1
+ has type
+  ((monicLaguerre n).comp (C a * (X - C T))).coeff (n * (C a * (X - C T)).natDegree) =
+    (C a * (X - C T)).leadingCoeff ^ n
+but is expected to have type
+  ((monicLaguerre n).comp (C a * (X - C T))).coeff n = a ^ n
+C:/Users/macka/.codex/.chatgpt-projects/g-p-6a353c7268b08191b685956e466d73e4/work/opica-stage1-2026-10-22/multiplicity/NativeTailPairing.lean:875:14: error: Application type mismatch: The argument
+  P
+has type
+  ℝ[X]
+but is expected to have type
+  ℂ[X]
+in the application
+  eval (↑t) P
+C:/Users/macka/.codex/.chatgpt-projects/g-p-6a353c7268b08191b685956e466d73e4/work/opica-stage1-2026-10-22/multiplicity/NativeTailPairing.lean:878:27: error: Application type mismatch: The argument
+  P
+has type
+  ℝ[X]
+but is expected to have type
+  ℂ[X]
+in the application
+  eval (↑t) P
+C:/Users/macka/.codex/.chatgpt-projects/g-p-6a353c7268b08191b685956e466d73e4/work/opica-stage1-2026-10-22/multiplicity/NativeTailPairing.lean:880:42: error: Application type mismatch: The argument
+  t
+has type
+  ℂ
+but is expected to have type
+  ℝ
+in the application
+  f t
+C:/Users/macka/.codex/.chatgpt-projects/g-p-6a353c7268b08191b685956e466d73e4/work/opica-stage1-2026-10-22/multiplicity/NativeTailPairing.lean:913:36: error: `simp` made no progress
+
+Note: The target expression is not type-correct under the `implicit` transparency level, which may have triggered the failure. This is usually caused by unfolding of semireducible definitions in prior tactic steps. Use `set_option linter.tacticCheckInstances true` to investigate the source of the issue.
+Full error:
+  Application type mismatch: The argument
+    rho
+  has type
+    @Elem ℂ zetaZeroConfig.carrier
+  but is expected to have type
+    @Subtype ℂ fun x => IsNontrivialZero x
+  in the application
+    ↑rho
+C:/Users/macka/.codex/.chatgpt-projects/g-p-6a353c7268b08191b685956e466d73e4/work/opica-stage1-2026-10-22/multiplicity/NativeTailPairing.lean:919:15: error: Application type mismatch: The argument
+  Q
+has type
+  ℝ[X]
+but is expected to have type
+  ℂ[X]
+in the application
+  eval (↑t) Q
+C:/Users/macka/.codex/.chatgpt-projects/g-p-6a353c7268b08191b685956e466d73e4/work/opica-stage1-2026-10-22/multiplicity/NativeTailPairing.lean:934:25: error: Application type mismatch: The argument
+  Q
+has type
+  ℝ[X]
+but is expected to have type
+  ℂ[X]
+in the application
+  eval (↑t) Q
+'Zeta23.OPICAFollowup.nativeResidual_laguerre_inner' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]

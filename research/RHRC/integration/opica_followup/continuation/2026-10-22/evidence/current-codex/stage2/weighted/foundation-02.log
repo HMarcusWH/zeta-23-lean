@@ -1,0 +1,41 @@
+C:/Users/macka/.codex/.chatgpt-projects/g-p-6a353c7268b08191b685956e466d73e4/work/opica-stage2-2026-10-22/weighted/WeightedMixing.lean:85:58: error: unsolved goals
+case pos
+mu : Measure ℝ
+inst✝ : SFinite mu
+s : Set ℝ
+hs : MeasurableSet s
+hpre : MeasurableSet (mixtureLatticePoint ⁻¹' s)
+t : ℝ
+hsection : MeasurableSet (scaledLatticePoint t ⁻¹' s)
+n : ℤ
+hn : Real.exp t * ↑n ∈ s
+⊢ (if (t, n) ∈ mixtureLatticePoint ⁻¹' s then ENNReal.ofReal (Real.exp (t / 2)) else 0) =
+    if n ∈ scaledLatticePoint t ⁻¹' s then ENNReal.ofReal (Real.exp (t / 2)) else 0
+
+case neg
+mu : Measure ℝ
+inst✝ : SFinite mu
+s : Set ℝ
+hs : MeasurableSet s
+hpre : MeasurableSet (mixtureLatticePoint ⁻¹' s)
+t : ℝ
+hsection : MeasurableSet (scaledLatticePoint t ⁻¹' s)
+n : ℤ
+hn : Real.exp t * ↑n ∉ s
+⊢ (if (t, n) ∈ mixtureLatticePoint ⁻¹' s then ENNReal.ofReal (Real.exp (t / 2)) else 0) =
+    if n ∈ scaledLatticePoint t ⁻¹' s then ENNReal.ofReal (Real.exp (t / 2)) else 0
+C:/Users/macka/.codex/.chatgpt-projects/g-p-6a353c7268b08191b685956e466d73e4/work/opica-stage2-2026-10-22/weighted/WeightedMixing.lean:107:10: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ENNReal.ofReal (3 + 2 * R) * ENNReal.ofReal ?m.113
+in the target expression
+  ENNReal.ofReal (Real.exp (t / 2) * (3 + 2 * Real.exp (-t) * R)) ≤
+    (fun a_1 => ENNReal.ofReal (3 + 2 * R) * ENNReal.ofReal (Real.exp (a * |a_1|))) t
+
+mu : Measure ℝ
+inst✝ : SFinite mu
+a : ℝ
+ha : 1 / 2 ≤ a
+R : ℝ
+hR : 0 ≤ R
+t : ℝ
+⊢ ENNReal.ofReal (Real.exp (t / 2) * (3 + 2 * Real.exp (-t) * R)) ≤
+    (fun a_1 => ENNReal.ofReal (3 + 2 * R) * ENNReal.ofReal (Real.exp (a * |a_1|))) t

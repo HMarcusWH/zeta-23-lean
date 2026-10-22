@@ -1,0 +1,46 @@
+C:/Users/macka/.codex/.chatgpt-projects/g-p-6a353c7268b08191b685956e466d73e4/work/opica-stage2-2026-10-22/weighted/WeightedMixing.lean:150:2: warning: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+C:/Users/macka/.codex/.chatgpt-projects/g-p-6a353c7268b08191b685956e466d73e4/work/opica-stage2-2026-10-22/weighted/WeightedMixing.lean:151:2: warning: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+C:/Users/macka/.codex/.chatgpt-projects/g-p-6a353c7268b08191b685956e466d73e4/work/opica-stage2-2026-10-22/weighted/WeightedMixing.lean:166:2: error: Type mismatch: After simplification, term
+  hw
+ has type
+  Integrable (fun x => ↑(ENNReal.ofReal (Real.exp (x.1 / 2))).toReal * f (mixtureLatticePoint x))
+    (mu.prod Measure.count)
+but is expected to have type
+  Integrable (fun z => cexp (↑z.1 / 2) * f (mixtureLatticePoint z)) (mu.prod Measure.count)
+C:/Users/macka/.codex/.chatgpt-projects/g-p-6a353c7268b08191b685956e466d73e4/work/opica-stage2-2026-10-22/weighted/WeightedMixing.lean:198:6: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ∫ (z : ℝ × ℤ), ↑(Real.exp (z.1 / 2)) * f (mixtureLatticePoint z) ∂mu.prod Measure.count
+in the target expression
+  ∫ (x : ℝ × ℤ), ↑(Real.exp (x.1 / 2)) * f (mixtureLatticePoint x) ∂mu.prod Measure.count =
+    ∫ (t : ℝ), (dilatedCombDistribution t) f ∂mu
+
+mu : Measure ℝ
+inst✝ : SFinite mu
+a : ℝ
+ha : 1 / 2 ≤ a
+hm : positiveMixingMoment a mu < ∞
+f : 𝓢(ℝ, ℂ)
+⊢ ∫ (x : ℝ × ℤ), ↑(Real.exp (x.1 / 2)) * f (mixtureLatticePoint x) ∂mu.prod Measure.count =
+    ∫ (t : ℝ), (dilatedCombDistribution t) f ∂mu
+'Zeta23.OPICAFollowup.LocallyFiniteComplexMeasure.variationControl_le_twice' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.positiveDilationMixture_origin' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.OPICAFollowup.positiveDilationMixture_linearGrowth' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.OPICAFollowup.positiveDilationMixture_integral' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]

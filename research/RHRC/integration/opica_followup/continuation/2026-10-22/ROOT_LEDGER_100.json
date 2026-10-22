@@ -4,10 +4,10 @@
   "acceptance_units": 28,
   "current_aggregate_accepted": false,
   "status_counts": {
-    "OPEN_NO_COMPLETE_CANDIDATE": 48,
+    "OPEN_NO_COMPLETE_CANDIDATE": 43,
     "PRIOR_CANDIDATE_FAILED_OR_BLOCKED_UNACCEPTED": 1,
     "PROVED_IN_ORIGINAL_41_ROOT_SOURCE_BOUND_SUBSET": 41,
-    "PROVED_NARROW_LOCAL_GATES_AGGREGATE_PENDING": 10
+    "PROVED_NARROW_LOCAL_GATES_AGGREGATE_PENDING": 15
   },
   "roots": [
     {
@@ -1833,20 +1833,26 @@
         "register_only_after_proof_and_type_review": true,
         "status": "PLANNED_NOT_PROVED"
       },
-      "current_status": "OPEN_NO_COMPLETE_CANDIDATE",
+      "current_status": "PROVED_NARROW_LOCAL_GATES_AGGREGATE_PENDING",
       "gates": {
-        "implementation": "OPEN",
-        "module_compilation": "NOT_ESTABLISHED",
-        "expected_type_consumer": "NOT_ESTABLISHED",
-        "actual_domain_consumer": "NOT_ESTABLISHED",
-        "axiom_check": "NOT_ESTABLISHED",
+        "implementation": "IMPLEMENTED_FULL_FROZEN_CONTRACT_REVIEWED_NARROW",
+        "module_compilation": "PASS_EXACT_SOURCE_ISOLATED_OVERLAY",
+        "expected_type_consumer": "PASS_IMPORTED_INDEPENDENT_EXPLICIT_FULL_TYPE",
+        "actual_domain_consumer": "PASS_ACTUAL_CONSTRUCTORS_AND_BOUNDARY_CONTROLS",
+        "axiom_check": "STANDARD_ONLY_TRANSITIVE_PRINTED_CLOSURES",
         "aggregate_current_source_export": "OPEN",
         "full_release_acceptance": "OPEN"
       },
       "source_file_present": true,
-      "declaration_lexically_present": false,
-      "source_sha256": "4fff73ef0f59ae602cfafcbdc9d3fa557316aedaf75429e27be19566a7d3926a",
-      "evidence": []
+      "declaration_lexically_present": true,
+      "source_sha256": "43466c43684b91e5f4cff2b34ea5df178d1bf196c35946e8411bab9cdfb2e123",
+      "evidence": [
+        "evidence/current-codex/stage2/multiplicity/STATUS.json"
+      ],
+      "independent_consumer": {
+        "path": "consumers/ExpectedMultiplicity.lean",
+        "sha256": "7457d65c129374a9f13bbee5e2dd67f53882eb64fd56dfb0d6ff5e673e85498f"
+      }
     },
     {
       "id": "OPICA_FOLLOWUP_LAGUERRE_TAIL_NORM",
@@ -1884,13 +1890,14 @@
       },
       "source_file_present": true,
       "declaration_lexically_present": true,
-      "source_sha256": "4fff73ef0f59ae602cfafcbdc9d3fa557316aedaf75429e27be19566a7d3926a",
+      "source_sha256": "43466c43684b91e5f4cff2b34ea5df178d1bf196c35946e8411bab9cdfb2e123",
       "evidence": [
-        "evidence/current-codex/stage1/multiplicity/LAGUERRE_STATUS.json"
+        "evidence/current-codex/stage1/multiplicity/LAGUERRE_STATUS.json",
+        "evidence/current-codex/stage2/multiplicity/STATUS.json"
       ],
       "independent_consumer": {
         "path": "consumers/ExpectedMultiplicity.lean",
-        "sha256": "4ff677a40e47c6a948399ee781346c163b10dbea541bf792b41353bae296ef6d"
+        "sha256": "7457d65c129374a9f13bbee5e2dd67f53882eb64fd56dfb0d6ff5e673e85498f"
       }
     },
     {
@@ -1917,20 +1924,26 @@
         "register_only_after_proof_and_type_review": true,
         "status": "PLANNED_NOT_PROVED"
       },
-      "current_status": "OPEN_NO_COMPLETE_CANDIDATE",
+      "current_status": "PROVED_NARROW_LOCAL_GATES_AGGREGATE_PENDING",
       "gates": {
-        "implementation": "OPEN",
-        "module_compilation": "NOT_ESTABLISHED",
-        "expected_type_consumer": "NOT_ESTABLISHED",
-        "actual_domain_consumer": "NOT_ESTABLISHED",
-        "axiom_check": "NOT_ESTABLISHED",
+        "implementation": "IMPLEMENTED_FULL_FROZEN_CONTRACT_REVIEWED_NARROW",
+        "module_compilation": "PASS_EXACT_SOURCE_ISOLATED_OVERLAY",
+        "expected_type_consumer": "PASS_IMPORTED_INDEPENDENT_EXPLICIT_FULL_TYPE",
+        "actual_domain_consumer": "PASS_ACTUAL_CONSTRUCTORS_AND_BOUNDARY_CONTROLS",
+        "axiom_check": "STANDARD_ONLY_TRANSITIVE_PRINTED_CLOSURES",
         "aggregate_current_source_export": "OPEN",
         "full_release_acceptance": "OPEN"
       },
       "source_file_present": true,
-      "declaration_lexically_present": false,
-      "source_sha256": "4fff73ef0f59ae602cfafcbdc9d3fa557316aedaf75429e27be19566a7d3926a",
-      "evidence": []
+      "declaration_lexically_present": true,
+      "source_sha256": "43466c43684b91e5f4cff2b34ea5df178d1bf196c35946e8411bab9cdfb2e123",
+      "evidence": [
+        "evidence/current-codex/stage2/multiplicity/STATUS.json"
+      ],
+      "independent_consumer": {
+        "path": "consumers/ExpectedMultiplicity.lean",
+        "sha256": "7457d65c129374a9f13bbee5e2dd67f53882eb64fd56dfb0d6ff5e673e85498f"
+      }
     },
     {
       "id": "OPICA_FOLLOWUP_NATIVE_TERMINAL_MEMORY_LOWER",
@@ -1956,20 +1969,26 @@
         "register_only_after_proof_and_type_review": true,
         "status": "PLANNED_NOT_PROVED"
       },
-      "current_status": "OPEN_NO_COMPLETE_CANDIDATE",
+      "current_status": "PROVED_NARROW_LOCAL_GATES_AGGREGATE_PENDING",
       "gates": {
-        "implementation": "OPEN",
-        "module_compilation": "NOT_ESTABLISHED",
-        "expected_type_consumer": "NOT_ESTABLISHED",
-        "actual_domain_consumer": "NOT_ESTABLISHED",
-        "axiom_check": "NOT_ESTABLISHED",
+        "implementation": "IMPLEMENTED_FULL_FROZEN_CONTRACT_REVIEWED_NARROW",
+        "module_compilation": "PASS_EXACT_SOURCE_ISOLATED_OVERLAY",
+        "expected_type_consumer": "PASS_IMPORTED_INDEPENDENT_EXPLICIT_FULL_TYPE",
+        "actual_domain_consumer": "PASS_ACTUAL_CONSTRUCTORS_AND_BOUNDARY_CONTROLS",
+        "axiom_check": "STANDARD_ONLY_TRANSITIVE_PRINTED_CLOSURES",
         "aggregate_current_source_export": "OPEN",
         "full_release_acceptance": "OPEN"
       },
       "source_file_present": true,
-      "declaration_lexically_present": false,
-      "source_sha256": "4fff73ef0f59ae602cfafcbdc9d3fa557316aedaf75429e27be19566a7d3926a",
-      "evidence": []
+      "declaration_lexically_present": true,
+      "source_sha256": "43466c43684b91e5f4cff2b34ea5df178d1bf196c35946e8411bab9cdfb2e123",
+      "evidence": [
+        "evidence/current-codex/stage2/multiplicity/STATUS.json"
+      ],
+      "independent_consumer": {
+        "path": "consumers/ExpectedMultiplicity.lean",
+        "sha256": "7457d65c129374a9f13bbee5e2dd67f53882eb64fd56dfb0d6ff5e673e85498f"
+      }
     },
     {
       "id": "OPICA_FOLLOWUP_NATIVE_FIXED_SOURCE_WINDOW_RATE",
@@ -2178,20 +2197,26 @@
         "register_only_after_proof_and_type_review": true,
         "status": "PLANNED_NOT_PROVED"
       },
-      "current_status": "OPEN_NO_COMPLETE_CANDIDATE",
+      "current_status": "PROVED_NARROW_LOCAL_GATES_AGGREGATE_PENDING",
       "gates": {
-        "implementation": "OPEN",
-        "module_compilation": "NOT_ESTABLISHED",
-        "expected_type_consumer": "NOT_ESTABLISHED",
-        "actual_domain_consumer": "NOT_ESTABLISHED",
-        "axiom_check": "NOT_ESTABLISHED",
+        "implementation": "IMPLEMENTED_FULL_FROZEN_CONTRACT_REVIEWED_NARROW",
+        "module_compilation": "PASS_EXACT_SOURCE_ISOLATED_OVERLAY",
+        "expected_type_consumer": "PASS_IMPORTED_INDEPENDENT_EXPLICIT_FULL_TYPE",
+        "actual_domain_consumer": "PASS_ACTUAL_CONSTRUCTORS_AND_BOUNDARY_CONTROLS",
+        "axiom_check": "STANDARD_ONLY_TRANSITIVE_PRINTED_CLOSURES",
         "aggregate_current_source_export": "OPEN",
         "full_release_acceptance": "OPEN"
       },
-      "source_file_present": false,
-      "declaration_lexically_present": false,
-      "source_sha256": null,
-      "evidence": []
+      "source_file_present": true,
+      "declaration_lexically_present": true,
+      "source_sha256": "5b0d86adcf72167a45b3922689911a5591da4c3ecab7fd19ceb246de5f00998a",
+      "evidence": [
+        "evidence/current-codex/stage2/weighted/STATUS.json"
+      ],
+      "independent_consumer": {
+        "path": "consumers/ExpectedWeighted.lean",
+        "sha256": "e137ed312f799cd589126a89281470c9f45293bcccf1386598dd66de30639bad"
+      }
     },
     {
       "id": "OPICA_FOLLOWUP_WEIGHTED_MOBIUS_INVERSE",
@@ -2226,9 +2251,9 @@
         "aggregate_current_source_export": "OPEN",
         "full_release_acceptance": "OPEN"
       },
-      "source_file_present": false,
+      "source_file_present": true,
       "declaration_lexically_present": false,
-      "source_sha256": null,
+      "source_sha256": "5b0d86adcf72167a45b3922689911a5591da4c3ecab7fd19ceb246de5f00998a",
       "evidence": []
     },
     {
@@ -2264,9 +2289,9 @@
         "aggregate_current_source_export": "OPEN",
         "full_release_acceptance": "OPEN"
       },
-      "source_file_present": false,
+      "source_file_present": true,
       "declaration_lexically_present": false,
-      "source_sha256": null,
+      "source_sha256": "5b0d86adcf72167a45b3922689911a5591da4c3ecab7fd19ceb246de5f00998a",
       "evidence": []
     },
     {
@@ -2302,9 +2327,9 @@
         "aggregate_current_source_export": "OPEN",
         "full_release_acceptance": "OPEN"
       },
-      "source_file_present": false,
+      "source_file_present": true,
       "declaration_lexically_present": false,
-      "source_sha256": null,
+      "source_sha256": "5b0d86adcf72167a45b3922689911a5591da4c3ecab7fd19ceb246de5f00998a",
       "evidence": []
     },
     {
@@ -2330,20 +2355,28 @@
         "register_only_after_proof_and_type_review": true,
         "status": "PLANNED_NOT_PROVED"
       },
-      "current_status": "OPEN_NO_COMPLETE_CANDIDATE",
+      "current_status": "PROVED_NARROW_LOCAL_GATES_AGGREGATE_PENDING",
       "gates": {
-        "implementation": "OPEN",
-        "module_compilation": "NOT_ESTABLISHED",
-        "expected_type_consumer": "NOT_ESTABLISHED",
-        "actual_domain_consumer": "NOT_ESTABLISHED",
-        "axiom_check": "NOT_ESTABLISHED",
+        "implementation": "IMPLEMENTED_FULL_FROZEN_CONTRACT_REVIEWED_NARROW",
+        "module_compilation": "PASS_EXACT_SOURCE_ISOLATED_OVERLAY",
+        "expected_type_consumer": "PASS_IMPORTED_INDEPENDENT_EXPLICIT_FULL_TYPE",
+        "actual_domain_consumer": "PASS_ACTUAL_CONSTRUCTORS_AND_BOUNDARY_CONTROLS",
+        "axiom_check": "STANDARD_ONLY_TRANSITIVE_PRINTED_CLOSURES",
         "aggregate_current_source_export": "OPEN",
-        "full_release_acceptance": "OPEN"
+        "full_release_acceptance": "OPEN",
+        "additional_nonzero_family_physical_acceptance": "OPEN_ACTUAL_NEAR_GAP_COMB_FAMILY_ABSENT"
       },
-      "source_file_present": false,
-      "declaration_lexically_present": false,
-      "source_sha256": null,
-      "evidence": []
+      "source_file_present": true,
+      "declaration_lexically_present": true,
+      "source_sha256": "aa5915cea7e35ea7efb90f4d4d95f6d3773b42666b0690a4a491f8b73fce1c5a",
+      "evidence": [
+        "evidence/current-codex/stage2/near-gap/STATUS.json"
+      ],
+      "independent_consumer": {
+        "path": "consumers/ExpectedNearGap.lean",
+        "sha256": "e6e20f293af961a40dbd26f944fa56fe1f7247c43acbf656c9afed3b53981e76"
+      },
+      "actual_domain_limit": "Universal actual-carrier mass estimate and boundary consumers passed. Nonzero nearGapCombFamily witness is absent; this additional family/domain acceptance gate and the other three original near-gap roots remain OPEN."
     },
     {
       "id": "OPICA_FOLLOWUP_NEAR_GAP_CONTROLLED_LIMIT_ZERO",
@@ -2378,9 +2411,9 @@
         "aggregate_current_source_export": "OPEN",
         "full_release_acceptance": "OPEN"
       },
-      "source_file_present": false,
+      "source_file_present": true,
       "declaration_lexically_present": false,
-      "source_sha256": null,
+      "source_sha256": "aa5915cea7e35ea7efb90f4d4d95f6d3773b42666b0690a4a491f8b73fce1c5a",
       "evidence": []
     },
     {
@@ -2416,9 +2449,9 @@
         "aggregate_current_source_export": "OPEN",
         "full_release_acceptance": "OPEN"
       },
-      "source_file_present": false,
+      "source_file_present": true,
       "declaration_lexically_present": false,
-      "source_sha256": null,
+      "source_sha256": "aa5915cea7e35ea7efb90f4d4d95f6d3773b42666b0690a4a491f8b73fce1c5a",
       "evidence": []
     },
     {
@@ -2454,9 +2487,9 @@
         "aggregate_current_source_export": "OPEN",
         "full_release_acceptance": "OPEN"
       },
-      "source_file_present": false,
+      "source_file_present": true,
       "declaration_lexically_present": false,
-      "source_sha256": null,
+      "source_sha256": "aa5915cea7e35ea7efb90f4d4d95f6d3773b42666b0690a4a491f8b73fce1c5a",
       "evidence": []
     },
     {
@@ -4100,23 +4133,30 @@
   "evidence_paths_relative_to": "research/RHRC/integration/opica_followup/continuation/2026-10-22",
   "verification_summary": {
     "historical_source_bound_subset_roots": 41,
-    "independently_verified_narrow_roots": 10,
+    "independently_verified_narrow_roots": 15,
     "prior_failed_or_blocked_unaccepted_roots": 1,
-    "open_no_complete_candidate_roots": 48,
+    "open_no_complete_candidate_roots": 43,
     "full_required_roots": 100,
     "acceptance_units": 28,
-    "receipt": "STAGE1_HANDOVER.md",
+    "receipt": "STAGE2_HANDOVER.md",
     "independent_source_repairs": [],
     "independent_consumer_repairs": [],
     "historical41_status_unchanged": true,
     "current_aggregate_accepted": false,
-    "meaning": "41historical+10narrow-local is not an aggregate51-root acceptance. One candidate and48 absent roots retain their gates; all100/28 and fullrelease remain required.",
-    "receipt_scope": "Index of four source-bound narrow proof receipts plus retained six-root evidence; not an aggregate receipt",
+    "meaning": "41 historical plus15 narrow local results is not aggregate56-root acceptance. One retained candidate and43 absent implementations plus all remaining domain/integration gates remain OPEN; original100/28 scope unchanged.",
+    "receipt_scope": "Index of five Stage2 and ten retained narrow original-root results, not an aggregate receipt",
     "additional_stage1_primary_roots": [
       "laguerre_tail_norm",
       "dilated_comb_fourier",
       "zero_measure_first_cell_sign",
       "first_cell_negative_mass_cost"
+    ],
+    "additional_stage2_primary_roots": [
+      "native_auxiliary_top_moment",
+      "native_auxiliary_tail_residual_lower",
+      "native_terminal_memory_lower",
+      "weighted_mixture_exists_fourier",
+      "near_gap_mass_bound"
     ]
   }
 }

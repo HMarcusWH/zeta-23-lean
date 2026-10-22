@@ -4,17 +4,11 @@ Original scope: 100 primary identities and 28 acceptance units. Current gate evi
 
 ## Status
 - 41: `PROVED_IN_ORIGINAL_41_ROOT_SOURCE_BOUND_SUBSET`
-- 10: `PROVED_NARROW_LOCAL_GATES_AGGREGATE_PENDING`, including four original candidate repairs in [Stage 1](STAGE1_HANDOVER.md)
-- 48: `OPEN_NO_COMPLETE_CANDIDATE`
+- 15: `PROVED_NARROW_LOCAL_GATES_AGGREGATE_PENDING`, including four original candidate repairs in [Stage 1](STAGE1_HANDOVER.md)
+- 43: `OPEN_NO_COMPLETE_CANDIDATE`
 - 1: `PRIOR_CANDIDATE_FAILED_OR_BLOCKED_UNACCEPTED`: `step123_word_jet_consumer`
 
-## 48 roots without complete candidate implementations
-
-### Zeta23.OPICAFollowup.MultiplicityTail
-
-- `native_auxiliary_top_moment`
-- `native_auxiliary_tail_residual_lower`
-- `native_terminal_memory_lower`
+## 43 roots without complete candidate implementations
 
 ### Zeta23.OPICAFollowup.NativeWindowRate
 
@@ -26,14 +20,12 @@ Original scope: 100 primary identities and 28 acceptance units. Current gate evi
 
 ### Zeta23.OPICAFollowup.WeightedMixing
 
-- `weighted_mixture_exists_fourier`
 - `weighted_mobius_inverse`
 - `weighted_mixture_sharp_gap`
 - `weighted_gap_leakage`
 
 ### Zeta23.OPICAFollowup.NearGapLimits
 
-- `near_gap_mass_bound`
 - `near_gap_controlled_limit_zero`
 - `dilation_near_gap_family`
 - `dilation_normalized_limit_not_measure`
@@ -120,7 +112,7 @@ Original scope: 100 primary identities and 28 acceptance units. Current gate evi
 
 ## Other unfinished gates
 
-Finish and verify the retained same-output word/jet candidate and implement the 48 absent roots above. Ten roots now have narrow module, independent consumer and standard-axiom gates; the four Stage 1 candidate repairs are documented separately. These local results do not establish current aggregate acceptance. Revalidate all changed dependencies and the original 41 in the current aggregate. Complete the facade, actual-domain consumers, full type/constructor/axiom/private TYPE-VALUE-STRUCTURE closure, all-100 evidence linkage, compiler-derived mapped registered dependencies, route-less registration, canonical generation and every required final workflow.
+Finish and verify the retained same-output word/jet candidate and implement the 43 absent roots above. Fifteen roots now have narrow module, independent consumer and standard-axiom gates; the four Stage 1 repairs and five Stage 2 implementations are documented separately. The nonzero near-gap family witness and all three remaining near-gap roots remain OPEN. These local results do not establish current aggregate acceptance. Revalidate all changed dependencies and the original 41 in the current aggregate. Complete the facade, actual-domain consumers, full type/constructor/axiom/private TYPE-VALUE-STRUCTURE closure, all-100 evidence linkage, compiler-derived mapped registered dependencies, route-less registration, canonical generation and every required final workflow.
 
 The parent metadata repairs and infrastructure tests do not establish complete extension acceptance. The explicit subset builder still selects 41 historical roots. The new full100 protocol requires an independent unset review seal and actual cold production/replay; parent/runtime/generated/workflow companions remain unfinished. Full release deliberately remains closed.
 

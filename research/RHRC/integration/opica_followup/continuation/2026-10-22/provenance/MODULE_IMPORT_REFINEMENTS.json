@@ -250,7 +250,7 @@
     {
       "module": "Zeta23.OPICAFollowup.MultiplicityTail",
       "path": "Zeta23/OPICAFollowup/MultiplicityTail.lean",
-      "source_sha256": "4fff73ef0f59ae602cfafcbdc9d3fa557316aedaf75429e27be19566a7d3926a",
+      "source_sha256": "43466c43684b91e5f4cff2b34ea5df178d1bf196c35946e8411bab9cdfb2e123",
       "validation_status": "GREEN_INDEPENDENT_NARROW_MODULE_AND_CONSUMER_GATES_AGGREGATE_OPEN",
       "frozen_direct_project_imports": [
         "Zeta23.OPICAFollowup.AuxiliaryCompletions",
@@ -258,6 +258,9 @@
         "Zeta23.ExceptionalZero.NativeActualInputZeroJets"
       ],
       "actual_direct_imports": [
+        "Zeta23.CCM.NativeCompletionEquation",
+        "Mathlib.MeasureTheory.Function.AEEqOfIntegral",
+        "Mathlib.Analysis.Convolution",
         "Zeta23.OPICAFollowup.AuxiliaryCompletions",
         "Zeta23.OPICAFollowup.UniformSourceBounds",
         "Zeta23.ExceptionalZero.NativeActualInputZeroJets",
@@ -266,20 +269,23 @@
         "Mathlib.MeasureTheory.Function.L2Space"
       ],
       "actual_direct_project_imports": [
+        "Zeta23.CCM.NativeCompletionEquation",
         "Zeta23.OPICAFollowup.AuxiliaryCompletions",
         "Zeta23.OPICAFollowup.UniformSourceBounds",
         "Zeta23.ExceptionalZero.NativeActualInputZeroJets"
       ],
-      "added_project_imports": [],
+      "added_project_imports": [
+        "Zeta23.CCM.NativeCompletionEquation"
+      ],
       "omitted_planned_project_imports": [],
       "baseline_9b_source_present": false,
       "baseline_9b_direct_imports": null,
       "reconciliation_status": "PROJECT_IMPORT_SET_MATCHES_FROZEN_PLAN",
-      "reason": "Stage1 exact narrow proof and interface/import delta reviewed in STAGE1_PROOF_CROSSWALK.json. Other original roots and global dependency reconciliation remain OPEN.",
+      "reason": "Stage2 exact narrow proof/import review in STAGE2_PROOF_CROSSWALK.json; all other original roots and full dependency reconciliation remain required.",
       "theorem_statement_changes_authorized": [],
       "new_assumptions_authorized": [],
       "aggregate_dependency_audit": "OPEN",
-      "independent_receipt": "evidence/current-codex/stage1/multiplicity/LAGUERRE_STATUS.json"
+      "independent_receipt": "evidence/current-codex/stage2/multiplicity/STATUS.json"
     },
     {
       "module": "Zeta23.OPICAFollowup.RenormalizedCoPoisson",
@@ -317,7 +323,55 @@
       "new_assumptions_authorized": [],
       "aggregate_dependency_audit": "OPEN",
       "independent_receipt": "evidence/current-codex/stage1/first-cell/STATUS.json"
+    },
+    {
+      "module": "Zeta23.OPICAFollowup.NearGapLimits",
+      "path": "Zeta23/OPICAFollowup/NearGapLimits.lean",
+      "source_sha256": "aa5915cea7e35ea7efb90f4d4d95f6d3773b42666b0690a4a491f8b73fce1c5a",
+      "frozen_direct_project_imports": [
+        "Zeta23.OPICAFollowup.DilatedComb",
+        "Zeta23.OPICA.SignedHeatSeparator"
+      ],
+      "actual_direct_imports": [
+        "Zeta23.OPICAFollowup.DilatedComb",
+        "Zeta23.OPICA.SignedHeatSeparator"
+      ],
+      "actual_direct_project_imports": [
+        "Zeta23.OPICAFollowup.DilatedComb",
+        "Zeta23.OPICA.SignedHeatSeparator"
+      ],
+      "added_project_imports": [],
+      "omitted_planned_project_imports": [],
+      "validation_status": "GREEN_INDEPENDENT_NARROW_MODULE_AND_CONSUMER_GATES_AGGREGATE_OPEN",
+      "independent_receipt": "evidence/current-codex/stage2/near-gap/STATUS.json",
+      "reason": "Stage2 exact narrow proof/import review in STAGE2_PROOF_CROSSWALK.json; all other original roots and full dependency reconciliation remain required."
+    },
+    {
+      "module": "Zeta23.OPICAFollowup.WeightedMixing",
+      "path": "Zeta23/OPICAFollowup/WeightedMixing.lean",
+      "source_sha256": "5b0d86adcf72167a45b3922689911a5591da4c3ecab7fd19ceb246de5f00998a",
+      "frozen_direct_project_imports": [
+        "Zeta23.OPICAFollowup.DilatedComb",
+        "Zeta23.CCM.NativeIntegerPrimeConvolution"
+      ],
+      "actual_direct_imports": [
+        "Zeta23.OPICAFollowup.DilatedComb",
+        "Mathlib.MeasureTheory.Integral.Prod",
+        "Mathlib.MeasureTheory.Measure.WithDensity",
+        "Mathlib.MeasureTheory.Integral.Bochner.ContinuousLinearMap",
+        "Mathlib.Tactic"
+      ],
+      "actual_direct_project_imports": [
+        "Zeta23.OPICAFollowup.DilatedComb"
+      ],
+      "added_project_imports": [],
+      "omitted_planned_project_imports": [
+        "Zeta23.CCM.NativeIntegerPrimeConvolution"
+      ],
+      "validation_status": "GREEN_INDEPENDENT_NARROW_MODULE_AND_CONSUMER_GATES_AGGREGATE_OPEN",
+      "independent_receipt": "evidence/current-codex/stage2/weighted/STATUS.json",
+      "reason": "Stage2 exact narrow proof/import review in STAGE2_PROOF_CROSSWALK.json; all other original roots and full dependency reconciliation remain required."
     }
   ],
-  "latest_stage_crosswalk": "provenance/STAGE1_PROOF_CROSSWALK.json"
+  "latest_stage_crosswalk": "provenance/STAGE2_PROOF_CROSSWALK.json"
 }

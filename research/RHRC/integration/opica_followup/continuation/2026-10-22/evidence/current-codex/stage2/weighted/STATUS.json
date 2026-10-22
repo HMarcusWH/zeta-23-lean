@@ -1,0 +1,141 @@
+{
+  "schema": "OPICA_SCOPED_MATHEMATICAL_LEAF_REVIEW_V1",
+  "status": "FULL_FIRST_WEIGHTED_ROOT_AND_EIGHT_IMPORTED_CONSUMERS_GREEN",
+  "scope": "ONE_ORIGINAL_ROOT_ONLY_NOT_FULL100_ACCEPTANCE",
+  "base_commit": "96dfba7082fb0cc7a93f7b25e31d449951ee9e4d",
+  "base_tree": "c7a86500bcb1fb9fee009cb4b4500ed8927aae82",
+  "integrated_source": "Zeta23/OPICAFollowup/WeightedMixing.lean",
+  "source": {
+    "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage2-2026-10-22\\weighted\\WeightedMixing.lean",
+    "bytes": 29713,
+    "sha256": "5b0d86adcf72167a45b3922689911a5591da4c3ecab7fd19ceb246de5f00998a",
+    "crlf_count": 0
+  },
+  "integrated_consumer": "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedWeighted.lean",
+  "consumer": {
+    "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage2-2026-10-22\\weighted\\ExpectedWeighted.lean",
+    "bytes": 5650,
+    "sha256": "e137ed312f799cd589126a89281470c9f45293bcccf1386598dd66de30639bad",
+    "crlf_count": 0
+  },
+  "source_equal_external_main_audit": true,
+  "consumer_equal_external_main": true,
+  "proved_original_root": "Zeta23.OPICAFollowup.weighted_mixture_exists_fourier",
+  "root_scope": {
+    "parameter_carrier": "genuine LocallyFiniteComplexMeasure, no compact-support premise",
+    "moment": "integral exp(a*abs(t)) against actual complex totalVariation is finite",
+    "threshold": "1/2 < a",
+    "actual_constructor": "weighted product pushforward of parameter measure and counting measure on all integers",
+    "clauses": [
+      "derived local finiteness",
+      "derived linear growth",
+      "actual constructor equality",
+      "literal Schwartz parameter pairing",
+      "Fourier reflection retaining complex coefficients",
+      "exact true compact-restriction origin atom",
+      "all four absolute product-Fubini integrability gates"
+    ]
+  },
+  "supporting_construction_threshold": "1/2 <= a, with no inverse or gap endpoint claim",
+  "canonical_definitions_present": [
+    "weightedVariation",
+    "weightedDilationMixture"
+  ],
+  "canonical_definitions_absent_open": [
+    "positiveLogMeasure"
+  ],
+  "original_roots_absent_open": [
+    "weighted_mobius_inverse",
+    "weighted_mixture_sharp_gap",
+    "weighted_gap_leakage"
+  ],
+  "consumer_theorems": [
+    "OPICAWeightedIndependent.expected_weighted_mixture_exists_fourier",
+    "OPICAWeightedIndependent.expected_positive_actual_measure",
+    "OPICAWeightedIndependent.expected_positive_parameter_atom",
+    "OPICAWeightedIndependent.expected_infinite_output_mass",
+    "OPICAWeightedIndependent.expected_positive_origin",
+    "OPICAWeightedIndependent.expected_imaginary_origin",
+    "OPICAWeightedIndependent.expected_full_product_integrability",
+    "OPICAWeightedIndependent.expected_real_parameter_output"
+  ],
+  "observed_axioms_for_primary_and_all_consumers": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "gates": [
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage2-2026-10-22\\weighted\\foundation-11.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "crlf_count": 0,
+      "observed_exit_code": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage2-2026-10-22\\weighted\\genuine-save-02.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "crlf_count": 0,
+      "observed_exit_code": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage2-2026-10-22\\weighted\\imported-consumers-02.log",
+      "bytes": 1074,
+      "sha256": "0f2abbe1b551abf30bf0e0af7a141df065990327aa4cb21872f1006bf5057d4e",
+      "crlf_count": 13,
+      "observed_exit_code": 0,
+      "warnings": 0,
+      "errors": 0
+    }
+  ],
+  "direct_project_imports": [
+    "Zeta23.OPICAFollowup.DilatedComb"
+  ],
+  "deferred_planned_import": {
+    "module": "Zeta23.CCM.NativeIntegerPrimeConvolution",
+    "reason": "not used by existence/Fourier construction; arithmetic convolution belongs to open inverse lane"
+  },
+  "direct_foundations": [
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\OPICAFollowup\\DilatedComb.lean",
+      "bytes": 11370,
+      "sha256": "6fd8a4016305e8898b58c64c38807b50d417e5a763487d5ccad5c6cabd4ecfc1",
+      "crlf_count": 0
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\OPICAFollowup\\ComplexLocalMeasures.lean",
+      "bytes": 66114,
+      "sha256": "43d96d5474819b79c29853a81f8b4398f16d298470c2100fdade3fcada3a25b8",
+      "crlf_count": 0
+    }
+  ],
+  "independent_mathematical_review": {
+    "reviewer": "parent_harvest",
+    "scope": "source read against BUILD_SPEC lines1304-1308 and PUBLIC_ROOTS",
+    "disposition": "NO_MATERIAL_SCOPE_GAP_FOUND; real specialization made explicit in consumer"
+  },
+  "handover": {
+    "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage2-2026-10-22\\weighted\\HANDOVER.md",
+    "bytes": 6772,
+    "sha256": "1e6877b3bf4af4eef1ebbe5e8e3cec58748ab3cc230f772082201e72dabe8a34",
+    "crlf_count": 0
+  },
+  "post_green_research": {
+    "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage2-2026-10-22\\weighted\\POST_GREEN_RESEARCH.md",
+    "bytes": 4583,
+    "sha256": "28de06f965f2b47042817f2057281a4f4e95e4d0f294ca131979b5ed18b08840",
+    "crlf_count": 0
+  },
+  "processes_owned_by_this_lane_running": [],
+  "aggregate_source_audit": "NOT_RUN_BY_THIS_LANE; ROOT_OWNS",
+  "remote_workflow_claim": "NONE; LOCAL_LEAF_GATES_ONLY",
+  "release_ready": false,
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "independent_closing_inequalities": "OPEN"
+}
