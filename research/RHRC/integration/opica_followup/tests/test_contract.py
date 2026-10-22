@@ -258,6 +258,30 @@ class ContinuationCheckpointTests(unittest.TestCase):
             'AGENTS.md', self.prefix + 'papers/foundation.md'})
         self.assertNotIn('Zeta23/OPICAFollowup/Validation.lean', allowed)
 
+    def test_navigation_exceptions_are_exactly_seven_individually_pinned_documents(self):
+        expected = frozenset({
+            'AUDIT.md', 'FORK_NOTES.md',
+            'research/RHRC/DOCUMENTATION_AUTHORITY.md',
+            'research/RHRC/VALIDATION_PROTOCOL.md',
+            'research/RHRC/graph/README.md',
+            'research/RHRC/integration/README.md',
+            'research/RHRC/graph/OPICA_FOLLOWUP_CURRENT_STATE.md',
+        })
+        self.assertIsInstance(contract.CONTINUATION_DOCUMENTATION_PATHS, frozenset)
+        self.assertEqual(contract.CONTINUATION_DOCUMENTATION_PATHS, expected)
+        for relative in expected:
+            target = self.root / relative
+            target.parent.mkdir(parents=True, exist_ok=True)
+            data = ('Current routing only: ' + relative).encode()
+            target.write_bytes(data)
+            self.document['artifacts'].append({'path': relative, 'bytes': len(data),
+                'sha256': hashlib.sha256(data).hexdigest()})
+        self.document['artifacts'].sort(key=lambda row: row['path'])
+        allowed, errors = self.check()
+        self.assertEqual(errors, [])
+        self.assertTrue(expected <= allowed)
+        self.assertEqual(len(allowed), len(self.document['artifacts']) + 1)
+
     def test_missing_manifest_rejected(self):
         allowed, errors = contract.continuation_checkpoint(self.root, self.here)
         self.assertEqual(allowed, set())
@@ -317,7 +341,10 @@ class ContinuationCheckpointTests(unittest.TestCase):
 
     def test_parent_and_lean_sources_cannot_be_artifact_exceptions(self):
         row = self.document['artifacts'][0]
-        for name in ['README.md', 'Zeta23/OPICAFollowup/Validation.lean',
+        for name in ['README.md', 'research/RHRC/README.md',
+                     'research/RHRC/routes/R003_ccm_bridge/README.md',
+                     'research/RHRC/graph/UNLISTED.md',
+                     'Zeta23/OPICAFollowup/Validation.lean',
                      'Zeta23/OPICA/LocalData.lean',
                      contract.CONTINUATION_FOLDER + '/PUBLIC_ROOTS.json',
                      contract.CONTINUATION_FOLDER + '/tests/test_contract.py',
@@ -405,6 +432,15 @@ class ContinuationCheckpointTests(unittest.TestCase):
             path = self.root / relative
             path.parent.mkdir(parents=True, exist_ok=True)
             path.write_text('{}')
+        navigation = 'research/RHRC/graph/README.md'
+        navigation_file = self.root / navigation
+        navigation_bytes = b'New current routing header\nPreserved historical body\n'
+        navigation_file.write_bytes(navigation_bytes)
+        protected['files'].append({'path': navigation,
+            'sha256': hashlib.sha256(b'Preserved historical body\n').hexdigest()})
+        self.document['artifacts'].append({'path': navigation, 'bytes': len(navigation_bytes),
+            'sha256': hashlib.sha256(navigation_bytes).hexdigest()})
+        self.document['artifacts'].sort(key=lambda row: row['path'])
         data = json.dumps(protected).encode()
         (self.here / 'PROTECTED_STATE.json').write_bytes(data)
         for name, value in {
@@ -444,6 +480,13 @@ class ContinuationCheckpointTests(unittest.TestCase):
             run.return_value = SimpleNamespace(stdout=('\0'.join(expected + ['rogue.md']) + '\0').encode())
             result = contract.preflight(self.root, self.here)
             self.assertTrue(any('unlisted files: rogue.md' in error for error in result['errors']))
+            # Once the pinned doc bytes differ, the original parent protection
+            # applies again. The constant whitelist is never a blanket bypass.
+            navigation_file.write_bytes(b'Tampered current navigation\n')
+            result = contract.preflight(self.root, self.here)
+            self.assertTrue(any('continuation checkpoint rejected' in error for error in result['errors']))
+            self.assertIn('protected parent changed: ' + navigation, result['errors'])
+            self.assertFalse(result['release_ready'])
 
 
 if __name__ == '__main__':

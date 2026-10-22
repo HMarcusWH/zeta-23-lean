@@ -1,0 +1,170 @@
+[
+  {
+    "stored": "PR294_CI_SNAPSHOT.json",
+    "bytes": 120145,
+    "sha256": "10cb45c17ba031ff223a34dbb7456ede77b790925fc0ac75a2494059dc40995f",
+    "origin": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-docs-2026-10-22\\remote-evidence\\PR294_CI_SNAPSHOT.json"
+  },
+  {
+    "stored": "completed-artifact-reports.json",
+    "bytes": 17731,
+    "sha256": "9cc77389a79e9123b88b1bc5fb1b60645bb53d429f01b46c7e6b459f7eb8c299",
+    "origin": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-docs-2026-10-22\\remote-evidence\\completed-artifact-reports.json"
+  },
+  {
+    "stored": "completed-log-research-results.json",
+    "bytes": 59097,
+    "sha256": "c7d3fb9620dfb961c1f68c190e79db93d3a5391d59e7ba2cf3a90af3c8665762",
+    "origin": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-docs-2026-10-22\\remote-evidence\\completed-log-research-results.json"
+  },
+  {
+    "stored": "downloaded-artifact-verification.json",
+    "bytes": 1377,
+    "sha256": "eebce4efae4affae4ed83b7cd3f7ea997a105dea3b5ff1ed2886d877abf7158e",
+    "origin": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-docs-2026-10-22\\remote-evidence\\downloaded-artifact-verification.json"
+  },
+  {
+    "stored": "head_commit.json",
+    "bytes": 1322,
+    "sha256": "72bcb70a6ccafa5aca16d0878da33419c0f4d92545ecd267261236e87e3fdb3f",
+    "origin": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-docs-2026-10-22\\remote-evidence\\head_commit.json"
+  },
+  {
+    "stored": "merge_commit.json",
+    "bytes": 2842,
+    "sha256": "b9cf65849f992645ceadbaff6f2e8d84e2e24fd542047494ddff996912eb5f08",
+    "origin": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-docs-2026-10-22\\remote-evidence\\merge_commit.json"
+  },
+  {
+    "stored": "POST_GREEN_RESEARCH.json",
+    "bytes": 3760,
+    "sha256": "26ee0a03a53c7c886acf7dc458541413f0e085207f1d96f933973b11b6106e59",
+    "origin": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-docs-2026-10-22\\remote-evidence\\POST_GREEN_RESEARCH.json"
+  },
+  {
+    "stored": "job-119858537091.log",
+    "bytes": 66954,
+    "sha256": "fcae48925f55e1ab8d4ad288df0490e567710283f556f763d7664e53070b12fd",
+    "origin": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-docs-2026-10-22\\remote-evidence\\job-119858537091.log"
+  },
+  {
+    "stored": "job-119858537507.log",
+    "bytes": 66967,
+    "sha256": "138a90b9a7da671ac9ba51418b519a16313491fb6cfc05efdcc08bb4667dabd5",
+    "origin": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-docs-2026-10-22\\remote-evidence\\job-119858537507.log"
+  },
+  {
+    "stored": "job-119858567351.log",
+    "bytes": 18917,
+    "sha256": "9a495717bf94a0d40508091380865b0b0e4f5667686138fab6712a8b3c7c76aa",
+    "origin": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-docs-2026-10-22\\remote-evidence\\job-119858567351.log"
+  },
+  {
+    "stored": "job-119858567700.log",
+    "bytes": 24515,
+    "sha256": "a5737110f5c46807a45abbc053a885d7ca308a1fc89ab34f8e05dfcec5027a21",
+    "origin": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-docs-2026-10-22\\remote-evidence\\job-119858567700.log"
+  },
+  {
+    "stored": "job-119858567740.log",
+    "bytes": 22696,
+    "sha256": "bb552c2c2b8ef1a2e9cfcaf2a3785868875e524ccd67162d8c2bf454aca5956d",
+    "origin": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-docs-2026-10-22\\remote-evidence\\job-119858567740.log"
+  },
+  {
+    "stored": "job-119858567934.log",
+    "bytes": 24524,
+    "sha256": "a499c2260fcc9b651922b13c90fac49544c70605338ffb6bd52e144c113b9839",
+    "origin": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-docs-2026-10-22\\remote-evidence\\job-119858567934.log"
+  },
+  {
+    "stored": "job-119858567961.log",
+    "bytes": 120798,
+    "sha256": "a04dea4c859cd4ea2737e1652ba2797dd77ba7fafe4bf78565c74402e31aa4b0",
+    "origin": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-docs-2026-10-22\\remote-evidence\\job-119858567961.log"
+  },
+  {
+    "stored": "job-119858568603.log",
+    "bytes": 38194,
+    "sha256": "9013f90358e31f6d463821ec8b1c54910a2a183dba37a03b5f816057ed1a5ef8",
+    "origin": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-docs-2026-10-22\\remote-evidence\\job-119858568603.log"
+  },
+  {
+    "stored": "job-119858568634.log",
+    "bytes": 135270,
+    "sha256": "1330c1e6c423b077c12c22880b011517097c74bbd3e27d9e208f202f94d92953",
+    "origin": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-docs-2026-10-22\\remote-evidence\\job-119858568634.log"
+  },
+  {
+    "stored": "job-119858569429.log",
+    "bytes": 23106,
+    "sha256": "e6be5fd7ff257b5500c2ad6036cfe48f1dc5766afbf57f48ef2d171e82430eb5",
+    "origin": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-docs-2026-10-22\\remote-evidence\\job-119858569429.log"
+  },
+  {
+    "stored": "job-119858569498.log",
+    "bytes": 25580,
+    "sha256": "f2043d9c8a904a701537764ad90877ba84512ebc4942a1704e3cc32092a59f19",
+    "origin": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-docs-2026-10-22\\remote-evidence\\job-119858569498.log"
+  },
+  {
+    "stored": "job-119858570468.log",
+    "bytes": 28309,
+    "sha256": "0dd7ffcbf9b4d45c4a7fd3a781a4ce965c1d1c4416db9262632614616b676143",
+    "origin": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-docs-2026-10-22\\remote-evidence\\job-119858570468.log"
+  },
+  {
+    "stored": "DOCUMENTATION_GATE_TEST_EXECUTIONS.json",
+    "bytes": 4726,
+    "sha256": "97fef92b4193f06c13923e38090c423beec5ffb11f97559a1c23b19714527486",
+    "origin": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-publish-2026-10-22\\contracts\\DOCUMENTATION_GATE_TEST_EXECUTIONS.json"
+  },
+  {
+    "stored": "documentation-all-child-normal.log",
+    "bytes": 20884,
+    "sha256": "b47728c3c0a4164b0e5a475b21cde4b965c1b9577d94cf39d647cc7ed377fb26",
+    "origin": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-publish-2026-10-22\\contracts\\documentation-all-child-normal.log"
+  },
+  {
+    "stored": "documentation-all-child-optimized.log",
+    "bytes": 20884,
+    "sha256": "c7ce5ce35a2ce64149992b3f4b2f84abed822bac23a516968a9cb1e7717b6b25",
+    "origin": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-publish-2026-10-22\\contracts\\documentation-all-child-optimized.log"
+  },
+  {
+    "stored": "documentation-checkpoint-normal.log",
+    "bytes": 2906,
+    "sha256": "65706b3f7e7bf1516c718fdfa75a94b37c52e1097b077bd287f28af5c8be3050",
+    "origin": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-publish-2026-10-22\\contracts\\documentation-checkpoint-normal.log"
+  },
+  {
+    "stored": "documentation-checkpoint-optimized.log",
+    "bytes": 2906,
+    "sha256": "94f1f012516d71408c6d25e3071f8bd2a7186e538ceaaa5d3c1b35d5400522fc",
+    "origin": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-publish-2026-10-22\\contracts\\documentation-checkpoint-optimized.log"
+  },
+  {
+    "stored": "documentation-contract-normal.log",
+    "bytes": 8806,
+    "sha256": "9cc236cc8901b9491b86a8813ae85052c95e3ae7e3149928dc9e2697dd44fbbc",
+    "origin": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-publish-2026-10-22\\contracts\\documentation-contract-normal.log"
+  },
+  {
+    "stored": "documentation-contract-optimized.log",
+    "bytes": 8806,
+    "sha256": "91e8f4f66302bfdeab07414fbf862af6bd23a63cb4d29471011c6d777aa39822",
+    "origin": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-publish-2026-10-22\\contracts\\documentation-contract-optimized.log"
+  },
+  {
+    "stored": "graph-NAVIGATION_CHECKS.json",
+    "bytes": 6774,
+    "sha256": "5230b54227b34ac3b72fc38fc1d2da6ac20a3d8c81a6ea6de2a241900ee4d2e2",
+    "origin": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-publish-2026-10-22\\doc-review\\NAVIGATION_CHECKS.json"
+  },
+  {
+    "stored": "graph-INSERTION_BYTE_CHECKS.json",
+    "bytes": 655,
+    "sha256": "47a92078b1b13a83f2ad00b1b1b3722900b27c8ccd8d10c4b113e44d6459a706",
+    "origin": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-publish-2026-10-22\\doc-review\\INSERTION_BYTE_CHECKS.json"
+  }
+]

@@ -96,6 +96,11 @@
       "scope": "Exact selected41 roots plus all public supporting declarations in18 modules; not full100"
     },
     {
+      "id": "repaired-candidates",
+      "class": "FORMAL_VALIDITY_GATE",
+      "scope": "Three current repaired modules and independent consumers with standard-only named axiom closures; six narrow roots, no aggregate or full100 acceptance"
+    },
+    {
       "id": "frozen-regression",
       "class": "REGRESSION_GATE",
       "scope": "All frozen exact/numerical controls and child mutations"

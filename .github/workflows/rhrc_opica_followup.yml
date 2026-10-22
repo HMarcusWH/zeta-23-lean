@@ -32,6 +32,8 @@ jobs:
         with:
           python-version: '3.13'
       - run: python "$FOLLOWUP/validate_contract.py" --phase preflight --output /tmp/opica-followup-contract.json
+      - name: Verify the ledger-derived module navigation table (no theorem authority)
+        run: python -B "$FOLLOWUP/continuation/2026-10-22/refresh_navigation.py" --check
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()
         with:

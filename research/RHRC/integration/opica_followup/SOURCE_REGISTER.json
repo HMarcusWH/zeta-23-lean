@@ -5968,7 +5968,7 @@
     "Zeta23.OPICAFollowup.history_recovery_cost_control",
     "Zeta23.OPICAFollowup.forced_positive_gram_nonreal_control"
   ],
-  "type_fingerprint_scope": "The stored9-root type fingerprints are a historical subset. The current 38 primary roots have explicit independently stated expected-type consumers in Validation.lean, checked locally. Complete current-source closure fingerprints require a new external compiler receipt; no full100-root signature contract is claimed.",
+  "type_fingerprint_scope": "The stored9-root type fingerprints are historical and are not a complete current signature table. The selected41-root historical exact-source subset and six additional narrow-local primary roots retain distinct evidence stages in continuation/2026-10-22/ROOT_LEDGER_100.json. The selected subset has independently stated Validation.lean consumers; the three repaired modules have separate independent continuation consumers. Neither41historical+6narrow nor these9stored fingerprints establish a current aggregate47-root or full100-root signature contract; complete current-source type, consumer and dependency linkage remains OPEN.",
   "implementation_dependency_amendment": {
     "schema": "OPICA_IMPLEMENTATION_DEPENDENCY_AMENDMENT_V1",
     "id": "DEP_2026_10_21_03",

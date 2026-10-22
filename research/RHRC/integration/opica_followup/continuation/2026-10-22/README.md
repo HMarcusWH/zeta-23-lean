@@ -4,6 +4,13 @@ This checkpoint combines the existing PR #294 implementation, the supplied
 22 October repair kit, and the Codex audit/provenance. It is **not a completed
 100-root release**. RH, Step 4 and the independent closing inequalities are OPEN.
 
+For a complete file/authority map, read [DOCUMENTATION_INDEX.md](DOCUMENTATION_INDEX.md).
+Use [MODULE_STATUS.md](MODULE_STATUS.md) to choose a source module and the
+[manual progress graph](../../../../graph/OPICA_FOLLOWUP_CURRENT_STATE.md) to
+orient proof lanes. The [dated CI review](evidence/current-codex/documentation-review/CI_SNAPSHOT.md)
+records actual results and pending work at the source checkpoint; refresh live
+GitHub results before making current claims.
+
 ## Current source and evidence
 
 The working source is `Zeta23/OPICAFollowup/` in this checkout. Do not restore
@@ -100,6 +107,12 @@ the delivery; no such implementation is claimed here.
   mapping; no cache or compiled object is part of the source delivery.
 - `CONTINUATION_MANIFEST.json` above: exact artifact inventory and source-scope
   preservation. Its preparation gate creates no theorem authority.
+- `DOCUMENTATION_INDEX.md` and `MODULE_STATUS.md`: current navigation and the
+  deterministic per-module projection of the full ledger. Regenerate the table
+  with `refresh_navigation.py --write`; verify with `--check`.
+- `provenance/DOC_NAVIGATION_AMENDMENT.json`: seven named documentation-only
+  paths, pinned by the artifact manifest. Frozen control blocks, specifications,
+  registered claims and canonical graph products retain their prior authority.
 
 The completed local [Post-Green Research Pass](POST_GREEN_RESEARCH.md) records
 all nine required conclusions and remaining mathematical obligations.

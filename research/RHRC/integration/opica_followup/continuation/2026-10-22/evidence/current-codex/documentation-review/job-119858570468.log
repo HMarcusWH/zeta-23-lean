@@ -1,0 +1,380 @@
+﻿2026-10-22T13:39:17.1338887Z Current runner version: '2.338.0'
+2026-10-22T13:39:17.1374703Z ##[group]Runner Image Provisioner
+2026-10-22T13:39:17.1376096Z Hosted Compute Agent
+2026-10-22T13:39:17.1377170Z Version: 20261015.610
+2026-10-22T13:39:17.1378436Z Commit: 267fdb4e8bbec4ab5ea31367f3a00d5c480c7656
+2026-10-22T13:39:17.1379982Z Build Date: 2026-10-14T17:06:54Z
+2026-10-22T13:39:17.1381228Z Worker ID: {96f8c832-75a4-4a31-9bca-230598aa688e}
+2026-10-22T13:39:17.1382543Z Region: eastus
+2026-10-22T13:39:17.1383818Z Cloud: Azure
+2026-10-22T13:39:17.1384834Z ##[endgroup]
+2026-10-22T13:39:17.1387194Z ##[group]Operating System
+2026-10-22T13:39:17.1388317Z Ubuntu
+2026-10-22T13:39:17.1389226Z 26.04.1
+2026-10-22T13:39:17.1390244Z LTS
+2026-10-22T13:39:17.1391214Z ##[endgroup]
+2026-10-22T13:39:17.1392293Z ##[group]Runner Image
+2026-10-22T13:39:17.1393777Z Image: ubuntu-26.04
+2026-10-22T13:39:17.1394827Z Version: 20261018.168.1
+2026-10-22T13:39:17.1397260Z Included Software: https://github.com/actions/runner-images/blob/ubuntu26/20261018.168/images/ubuntu/Ubuntu2604-Readme.md
+2026-10-22T13:39:17.1400166Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu26%2F20261018.168
+2026-10-22T13:39:17.1401947Z ##[endgroup]
+2026-10-22T13:39:17.1404342Z ##[group]GITHUB_TOKEN Permissions
+2026-10-22T13:39:17.1407538Z Contents: read
+2026-10-22T13:39:17.1408552Z Metadata: read
+2026-10-22T13:39:17.1409713Z Packages: read
+2026-10-22T13:39:17.1410726Z ##[endgroup]
+2026-10-22T13:39:17.1414438Z Secret source: Actions
+2026-10-22T13:39:17.1416163Z Cache mode: write
+2026-10-22T13:39:17.1417983Z Prepare workflow directory
+2026-10-22T13:39:17.1907717Z Prepare all required actions
+2026-10-22T13:39:17.1980706Z Getting action download info
+2026-10-22T13:39:17.3677856Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-10-22T13:39:17.4723048Z Download action repository 'actions/setup-python@v5' (SHA:a26af69be951a213d495a4c3e4e4022e16d87065)
+2026-10-22T13:39:17.6339650Z Complete job name: post192-parity-trajectory-rigidity
+2026-10-22T13:39:17.7214962Z ##[group]Run actions/checkout@v4
+2026-10-22T13:39:17.7215833Z with:
+2026-10-22T13:39:17.7216302Z   repository: HMarcusWH/zeta-23-lean
+2026-10-22T13:39:17.7220536Z   token: ***
+2026-10-22T13:39:17.7220976Z   ssh-strict: true
+2026-10-22T13:39:17.7221434Z   ssh-user: git
+2026-10-22T13:39:17.7221872Z   persist-credentials: true
+2026-10-22T13:39:17.7222359Z   clean: true
+2026-10-22T13:39:17.7222814Z   sparse-checkout-cone-mode: true
+2026-10-22T13:39:17.7223685Z   fetch-depth: 1
+2026-10-22T13:39:17.7224126Z   fetch-tags: false
+2026-10-22T13:39:17.7224566Z   show-progress: true
+2026-10-22T13:39:17.7225050Z   lfs: false
+2026-10-22T13:39:17.7225496Z   submodules: false
+2026-10-22T13:39:17.7225946Z   set-safe-directory: true
+2026-10-22T13:39:17.7226456Z   allow-unsafe-pr-checkout: false
+2026-10-22T13:39:17.7227306Z ##[endgroup]
+2026-10-22T13:39:17.8262805Z Syncing repository: HMarcusWH/zeta-23-lean
+2026-10-22T13:39:17.8265665Z ##[group]Getting Git version info
+2026-10-22T13:39:17.8266989Z Working directory is '/home/runner/work/zeta-23-lean/zeta-23-lean'
+2026-10-22T13:39:17.8268734Z [command]/usr/bin/git version
+2026-10-22T13:39:17.8269566Z git version 2.55.0
+2026-10-22T13:39:17.8283560Z ##[endgroup]
+2026-10-22T13:39:17.8298979Z Temporarily overriding HOME='/home/runner/work/_temp/d9c3cee7-9f21-4d0b-8358-26c8ad019574' before making global git config changes
+2026-10-22T13:39:17.8301419Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-22T13:39:17.8304505Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/zeta-23-lean/zeta-23-lean
+2026-10-22T13:39:17.8367738Z Deleting the contents of '/home/runner/work/zeta-23-lean/zeta-23-lean'
+2026-10-22T13:39:17.8370888Z ##[group]Initializing the repository
+2026-10-22T13:39:17.8376573Z [command]/usr/bin/git init /home/runner/work/zeta-23-lean/zeta-23-lean
+2026-10-22T13:39:17.8495070Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-10-22T13:39:17.8504199Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-10-22T13:39:17.8505227Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-10-22T13:39:17.8506486Z hint: call:
+2026-10-22T13:39:17.8507187Z hint:
+2026-10-22T13:39:17.8507743Z hint: 	git config --global init.defaultBranch <name>
+2026-10-22T13:39:17.8508349Z hint:
+2026-10-22T13:39:17.8508925Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-10-22T13:39:17.8509845Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-10-22T13:39:17.8510581Z hint:
+2026-10-22T13:39:17.8511002Z hint: 	git branch -m <name>
+2026-10-22T13:39:17.8511474Z hint:
+2026-10-22T13:39:17.8512101Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-10-22T13:39:17.8513107Z Initialized empty Git repository in /home/runner/work/zeta-23-lean/zeta-23-lean/.git/
+2026-10-22T13:39:17.8515392Z [command]/usr/bin/git remote add origin https://github.com/HMarcusWH/zeta-23-lean
+2026-10-22T13:39:17.8564389Z ##[endgroup]
+2026-10-22T13:39:17.8565769Z ##[group]Disabling automatic garbage collection
+2026-10-22T13:39:17.8568962Z [command]/usr/bin/git config --local gc.auto 0
+2026-10-22T13:39:17.8605214Z ##[endgroup]
+2026-10-22T13:39:17.8606428Z ##[group]Setting up auth
+2026-10-22T13:39:17.8613452Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-22T13:39:17.8651147Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-22T13:39:17.9106096Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-22T13:39:17.9146094Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-22T13:39:17.9436671Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-22T13:39:17.9472582Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-22T13:39:17.9775250Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-10-22T13:39:17.9805269Z ##[endgroup]
+2026-10-22T13:39:17.9806351Z ##[group]Fetching the repository
+2026-10-22T13:39:17.9820710Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +2735cbb15830808c5e6294c428f857d31ff09219:refs/remotes/pull/294/merge
+2026-10-22T13:40:16.3862420Z From https://github.com/HMarcusWH/zeta-23-lean
+2026-10-22T13:40:16.3863851Z  * [new ref]         2735cbb15830808c5e6294c428f857d31ff09219 -> pull/294/merge
+2026-10-22T13:40:16.3868076Z ##[endgroup]
+2026-10-22T13:40:16.3869354Z ##[group]Determining the checkout info
+2026-10-22T13:40:16.3871979Z ##[endgroup]
+2026-10-22T13:40:16.3878382Z [command]/usr/bin/git sparse-checkout disable
+2026-10-22T13:40:16.3930843Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-10-22T13:40:16.3962589Z ##[group]Checking out the ref
+2026-10-22T13:40:16.3966718Z [command]/usr/bin/git checkout --progress --force refs/remotes/pull/294/merge
+2026-10-22T13:40:17.4740179Z Updating files:  60% (1577/2617)
+2026-10-22T13:40:17.6706893Z Updating files:  61% (1597/2617)
+2026-10-22T13:40:17.6757329Z Updating files:  62% (1623/2617)
+2026-10-22T13:40:17.6789512Z Updating files:  63% (1649/2617)
+2026-10-22T13:40:17.6810206Z Updating files:  64% (1675/2617)
+2026-10-22T13:40:17.6852157Z Updating files:  65% (1702/2617)
+2026-10-22T13:40:17.6969330Z Updating files:  66% (1728/2617)
+2026-10-22T13:40:17.6987152Z Updating files:  67% (1754/2617)
+2026-10-22T13:40:17.7067108Z Updating files:  68% (1780/2617)
+2026-10-22T13:40:17.7111086Z Updating files:  69% (1806/2617)
+2026-10-22T13:40:17.7141430Z Updating files:  70% (1832/2617)
+2026-10-22T13:40:17.7162565Z Updating files:  71% (1859/2617)
+2026-10-22T13:40:17.7188233Z Updating files:  72% (1885/2617)
+2026-10-22T13:40:17.7248643Z Updating files:  73% (1911/2617)
+2026-10-22T13:40:17.7282911Z Updating files:  74% (1937/2617)
+2026-10-22T13:40:17.7292665Z Updating files:  75% (1963/2617)
+2026-10-22T13:40:17.7303094Z Updating files:  76% (1989/2617)
+2026-10-22T13:40:17.7314519Z Updating files:  77% (2016/2617)
+2026-10-22T13:40:17.7331948Z Updating files:  78% (2042/2617)
+2026-10-22T13:40:17.7382495Z Updating files:  79% (2068/2617)
+2026-10-22T13:40:17.7395067Z Updating files:  80% (2094/2617)
+2026-10-22T13:40:17.7407465Z Updating files:  81% (2120/2617)
+2026-10-22T13:40:17.7433572Z Updating files:  82% (2146/2617)
+2026-10-22T13:40:17.7607932Z Updating files:  83% (2173/2617)
+2026-10-22T13:40:17.7659619Z Updating files:  84% (2199/2617)
+2026-10-22T13:40:17.7678079Z Updating files:  85% (2225/2617)
+2026-10-22T13:40:17.7695952Z Updating files:  86% (2251/2617)
+2026-10-22T13:40:17.7718577Z Updating files:  87% (2277/2617)
+2026-10-22T13:40:17.7737315Z Updating files:  88% (2303/2617)
+2026-10-22T13:40:17.7753488Z Updating files:  89% (2330/2617)
+2026-10-22T13:40:17.7767536Z Updating files:  90% (2356/2617)
+2026-10-22T13:40:17.7780451Z Updating files:  91% (2382/2617)
+2026-10-22T13:40:17.7818396Z Updating files:  92% (2408/2617)
+2026-10-22T13:40:17.7840253Z Updating files:  93% (2434/2617)
+2026-10-22T13:40:17.7860507Z Updating files:  94% (2460/2617)
+2026-10-22T13:40:17.7879242Z Updating files:  95% (2487/2617)
+2026-10-22T13:40:17.7897990Z Updating files:  96% (2513/2617)
+2026-10-22T13:40:17.7919269Z Updating files:  97% (2539/2617)
+2026-10-22T13:40:17.7935496Z Updating files:  98% (2565/2617)
+2026-10-22T13:40:17.7952400Z Updating files:  99% (2591/2617)
+2026-10-22T13:40:17.7953118Z Updating files: 100% (2617/2617)
+2026-10-22T13:40:17.7954034Z Updating files: 100% (2617/2617), done.
+2026-10-22T13:40:17.7982902Z Note: switching to 'refs/remotes/pull/294/merge'.
+2026-10-22T13:40:17.7984023Z 
+2026-10-22T13:40:17.7984495Z You are in 'detached HEAD' state. You can look around, make experimental
+2026-10-22T13:40:17.7985565Z changes and commit them, and you can discard any commits you make in this
+2026-10-22T13:40:17.7986869Z state without impacting any branches by switching back to a branch.
+2026-10-22T13:40:17.7987345Z 
+2026-10-22T13:40:17.7987654Z If you want to create a new branch to retain commits you create, you may
+2026-10-22T13:40:17.7988401Z do so (now or later) by using -c with the switch command. Example:
+2026-10-22T13:40:17.7988834Z 
+2026-10-22T13:40:17.7989008Z   git switch -c <new-branch-name>
+2026-10-22T13:40:17.7989295Z 
+2026-10-22T13:40:17.7989463Z Or undo this operation with:
+2026-10-22T13:40:17.7989717Z 
+2026-10-22T13:40:17.7989859Z   git switch -
+2026-10-22T13:40:17.7990049Z 
+2026-10-22T13:40:17.7990407Z Turn off this advice by setting config variable advice.detachedHead to false
+2026-10-22T13:40:17.7990919Z 
+2026-10-22T13:40:17.7991524Z HEAD is now at 2735cbb Merge a77ae60427423e8b6f098596f300c8cecc6392b6 into d53dd70d38b0762af130b1d19b795af259f505f5
+2026-10-22T13:40:17.8035906Z ##[endgroup]
+2026-10-22T13:40:17.8088400Z [command]/usr/bin/git log -1 --format=%H
+2026-10-22T13:40:17.8115305Z 2735cbb15830808c5e6294c428f857d31ff09219
+2026-10-22T13:40:17.8485640Z ##[group]Run actions/setup-python@v5
+2026-10-22T13:40:17.8485966Z with:
+2026-10-22T13:40:17.8486190Z   python-version: 3.14
+2026-10-22T13:40:17.8486431Z   check-latest: false
+2026-10-22T13:40:17.8488905Z   token: ***
+2026-10-22T13:40:17.8489128Z   update-environment: true
+2026-10-22T13:40:17.8489391Z   allow-prereleases: false
+2026-10-22T13:40:17.8489628Z   freethreaded: false
+2026-10-22T13:40:17.8489846Z ##[endgroup]
+2026-10-22T13:40:17.9845036Z ##[group]Installed versions
+2026-10-22T13:40:17.9954016Z (node:2493) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-22T13:40:17.9955695Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-22T13:40:17.9957007Z Successfully set up CPython (3.14.8)
+2026-10-22T13:40:17.9958014Z ##[endgroup]
+2026-10-22T13:40:18.0151155Z ##[group]Run python -m pip install -r research/RHRC/routes/R003_ccm_bridge/requirements.txt
+2026-10-22T13:40:18.0151934Z [36;1mpython -m pip install -r research/RHRC/routes/R003_ccm_bridge/requirements.txt[0m
+2026-10-22T13:40:18.0378092Z shell: /usr/bin/bash -e {0}
+2026-10-22T13:40:18.0378445Z env:
+2026-10-22T13:40:18.0378740Z   pythonLocation: /opt/hostedtoolcache/Python/3.14.8/x64
+2026-10-22T13:40:18.0379221Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.14.8/x64/lib/pkgconfig
+2026-10-22T13:40:18.0379669Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.14.8/x64
+2026-10-22T13:40:18.0380066Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.14.8/x64
+2026-10-22T13:40:18.0380458Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.14.8/x64
+2026-10-22T13:40:18.0380870Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.14.8/x64/lib
+2026-10-22T13:40:18.0381247Z ##[endgroup]
+2026-10-22T13:40:18.9941714Z Collecting numpy (from -r research/RHRC/routes/R003_ccm_bridge/requirements.txt (line 1))
+2026-10-22T13:40:19.0185682Z   Downloading numpy-2.5.4-cp314-cp314-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (6.6 kB)
+2026-10-22T13:40:19.0359296Z Collecting mpmath (from -r research/RHRC/routes/R003_ccm_bridge/requirements.txt (line 2))
+2026-10-22T13:40:19.0408657Z   Downloading mpmath-1.4.1-py3-none-any.whl.metadata (9.1 kB)
+2026-10-22T13:40:19.1582066Z Collecting scipy (from -r research/RHRC/routes/R003_ccm_bridge/requirements.txt (line 3))
+2026-10-22T13:40:19.1618132Z   Downloading scipy-1.18.1-cp314-cp314-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (62 kB)
+2026-10-22T13:40:19.1887602Z Collecting sympy (from -r research/RHRC/routes/R003_ccm_bridge/requirements.txt (line 4))
+2026-10-22T13:40:19.1923073Z   Downloading sympy-1.14.0-py3-none-any.whl.metadata (12 kB)
+2026-10-22T13:40:19.2150637Z Collecting python-flint==0.9.0 (from -r research/RHRC/routes/R003_ccm_bridge/requirements.txt (line 5))
+2026-10-22T13:40:19.2192399Z   Downloading python_flint-0.9.0-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (23 kB)
+2026-10-22T13:40:19.2272666Z Collecting mpmath (from -r research/RHRC/routes/R003_ccm_bridge/requirements.txt (line 2))
+2026-10-22T13:40:19.2308461Z   Downloading mpmath-1.3.0-py3-none-any.whl.metadata (8.6 kB)
+2026-10-22T13:40:19.2396957Z Downloading python_flint-0.9.0-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (10.2 MB)
+2026-10-22T13:40:19.2947706Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 10.2/10.2 MB 192.1 MB/s  0:00:00
+2026-10-22T13:40:19.2989020Z Downloading numpy-2.5.4-cp314-cp314-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (16.7 MB)
+2026-10-22T13:40:19.3891074Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 16.7/16.7 MB 190.3 MB/s  0:00:00
+2026-10-22T13:40:19.3929203Z Downloading scipy-1.18.1-cp314-cp314-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (35.3 MB)
+2026-10-22T13:40:19.6365895Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 35.3/35.3 MB 147.2 MB/s  0:00:00
+2026-10-22T13:40:19.6404511Z Downloading sympy-1.14.0-py3-none-any.whl (6.3 MB)
+2026-10-22T13:40:19.6660387Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.3/6.3 MB 260.6 MB/s  0:00:00
+2026-10-22T13:40:19.6704890Z Downloading mpmath-1.3.0-py3-none-any.whl (536 kB)
+2026-10-22T13:40:19.6755506Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 536.2/536.2 kB 94.4 MB/s  0:00:00
+2026-10-22T13:40:19.8249006Z Installing collected packages: mpmath, sympy, python-flint, numpy, scipy
+2026-10-22T13:40:35.7828830Z 
+2026-10-22T13:40:35.7844293Z Successfully installed mpmath-1.3.0 numpy-2.5.4 python-flint-0.9.0 scipy-1.18.1 sympy-1.14.0
+2026-10-22T13:40:35.7856810Z 
+2026-10-22T13:40:35.7857270Z [notice] A new release of pip is available: 26.2.1 -> 26.2.2
+2026-10-22T13:40:35.7858280Z [notice] To update, run: pip install --upgrade pip
+2026-10-22T13:40:35.8835756Z ##[group]Run python research/RHRC/routes/R003_ccm_bridge/check_post192_fb05_q14_parity_trajectory_rigidity_scope.py
+2026-10-22T13:40:35.8836836Z [36;1mpython research/RHRC/routes/R003_ccm_bridge/check_post192_fb05_q14_parity_trajectory_rigidity_scope.py[0m
+2026-10-22T13:40:35.8901205Z shell: /usr/bin/bash -e {0}
+2026-10-22T13:40:35.8901532Z env:
+2026-10-22T13:40:35.8901891Z   pythonLocation: /opt/hostedtoolcache/Python/3.14.8/x64
+2026-10-22T13:40:35.8902490Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.14.8/x64/lib/pkgconfig
+2026-10-22T13:40:35.8903057Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.14.8/x64
+2026-10-22T13:40:35.8903846Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.14.8/x64
+2026-10-22T13:40:35.8904359Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.14.8/x64
+2026-10-22T13:40:35.8904882Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.14.8/x64/lib
+2026-10-22T13:40:35.8905309Z ##[endgroup]
+2026-10-22T13:40:36.9419835Z {
+2026-10-22T13:40:36.9420403Z   "status": "PASS",
+2026-10-22T13:40:36.9420929Z   "base_main_sha": "c3e4c8012945d6b86c2236d9e0cce27e3a4c20d9",
+2026-10-22T13:40:36.9421520Z   "primary_box_count": 6,
+2026-10-22T13:40:36.9421909Z   "control_box_count": 5,
+2026-10-22T13:40:36.9422246Z   "primary_hull": {
+2026-10-22T13:40:36.9422546Z     "Q": 14,
+2026-10-22T13:40:36.9422842Z     "lo_num": 114296060900476,
+2026-10-22T13:40:36.9423450Z     "hi_num": 114914536191100,
+2026-10-22T13:40:36.9423821Z     "den": 281474976710656
+2026-10-22T13:40:36.9424160Z   },
+2026-10-22T13:40:36.9424451Z   "max_refinement_depth": 12,
+2026-10-22T13:40:36.9424834Z   "max_evaluated_cells": 96,
+2026-10-22T13:40:36.9425227Z   "synthetic_controls": "PASS",
+2026-10-22T13:40:36.9425654Z   "new_selector_features_permitted": false,
+2026-10-22T13:40:36.9426119Z   "target_sign_import_permitted": false,
+2026-10-22T13:40:36.9426544Z   "theorem_promotion": false,
+2026-10-22T13:40:36.9426905Z   "rh_claim": false
+2026-10-22T13:40:36.9427199Z }
+2026-10-22T13:40:37.0565657Z ##[group]Run python research/RHRC/routes/R003_ccm_bridge/probe_post192_fb05_q14_parity_trajectory_rigidity_scope.py \
+2026-10-22T13:40:37.0566727Z [36;1mpython research/RHRC/routes/R003_ccm_bridge/probe_post192_fb05_q14_parity_trajectory_rigidity_scope.py \[0m
+2026-10-22T13:40:37.0567701Z [36;1m  --input research/RHRC/routes/R003_ccm_bridge/fixtures/post192_fb05_q14_parity_trajectory_rigidity_v1.json \[0m
+2026-10-22T13:40:37.0568496Z [36;1m  --output /tmp/POST192_FB05_Q14_PARITY_TRAJECTORY_SCHEDULE.json[0m
+2026-10-22T13:40:37.0629722Z shell: /usr/bin/bash -e {0}
+2026-10-22T13:40:37.0630068Z env:
+2026-10-22T13:40:37.0630430Z   pythonLocation: /opt/hostedtoolcache/Python/3.14.8/x64
+2026-10-22T13:40:37.0631058Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.14.8/x64/lib/pkgconfig
+2026-10-22T13:40:37.0631682Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.14.8/x64
+2026-10-22T13:40:37.0632238Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.14.8/x64
+2026-10-22T13:40:37.0632821Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.14.8/x64
+2026-10-22T13:40:37.0633714Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.14.8/x64/lib
+2026-10-22T13:40:37.0634200Z ##[endgroup]
+2026-10-22T13:40:37.7390326Z {
+2026-10-22T13:40:37.7390905Z   "status": "PASS",
+2026-10-22T13:40:37.7391285Z   "primary_box_count": 6,
+2026-10-22T13:40:37.7391670Z   "control_box_count": 5,
+2026-10-22T13:40:37.7392020Z   "primary_hull": {
+2026-10-22T13:40:37.7392325Z     "Q": 14,
+2026-10-22T13:40:37.7392633Z     "lo_num": 114296060900476,
+2026-10-22T13:40:37.7393008Z     "hi_num": 114914536191100,
+2026-10-22T13:40:37.7393635Z     "den": 281474976710656
+2026-10-22T13:40:37.7393964Z   },
+2026-10-22T13:40:37.7394252Z   "max_refinement_depth": 12,
+2026-10-22T13:40:37.7394627Z   "max_evaluated_cells": 96,
+2026-10-22T13:40:37.7395015Z   "deterministic_refinement": true,
+2026-10-22T13:40:37.7395443Z   "target_sign_import_permitted": false
+2026-10-22T13:40:37.7395869Z }
+2026-10-22T13:40:37.8515905Z ##[group]Run python research/RHRC/routes/R003_ccm_bridge/certify_post192_fb05_q14_parity_trajectory_rigidity_scope.py \
+2026-10-22T13:40:37.8516853Z [36;1mpython research/RHRC/routes/R003_ccm_bridge/certify_post192_fb05_q14_parity_trajectory_rigidity_scope.py \[0m
+2026-10-22T13:40:37.8517886Z [36;1m  --input research/RHRC/routes/R003_ccm_bridge/fixtures/post192_fb05_q14_parity_trajectory_rigidity_v1.json \[0m
+2026-10-22T13:40:37.8518587Z [36;1m  --schedule /tmp/POST192_FB05_Q14_PARITY_TRAJECTORY_SCHEDULE.json \[0m
+2026-10-22T13:40:37.8519108Z [36;1m  --output /tmp/POST192_FB05_Q14_PARITY_TRAJECTORY_CERTIFICATE.json[0m
+2026-10-22T13:40:37.8580776Z shell: /usr/bin/bash -e {0}
+2026-10-22T13:40:37.8581031Z env:
+2026-10-22T13:40:37.8581304Z   pythonLocation: /opt/hostedtoolcache/Python/3.14.8/x64
+2026-10-22T13:40:37.8581773Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.14.8/x64/lib/pkgconfig
+2026-10-22T13:40:37.8582271Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.14.8/x64
+2026-10-22T13:40:37.8582677Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.14.8/x64
+2026-10-22T13:40:37.8583094Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.14.8/x64
+2026-10-22T13:40:37.8583784Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.14.8/x64/lib
+2026-10-22T13:40:37.8584156Z ##[endgroup]
+2026-10-22T13:42:50.4085192Z {
+2026-10-22T13:42:50.4085759Z   "status": "PASS",
+2026-10-22T13:42:50.4086532Z   "classification": "TRAJECTORY_RIGIDITY_UNRESOLVED",
+2026-10-22T13:42:50.4087351Z   "evaluated_cell_count": 96,
+2026-10-22T13:42:50.4088037Z   "leaf_count": 97,
+2026-10-22T13:42:50.4088591Z   "max_evaluated_depth": 6,
+2026-10-22T13:42:50.4089030Z   "evaluated_orientation_counts": {
+2026-10-22T13:42:50.4089482Z     "J_NEGATIVE": 0,
+2026-10-22T13:42:50.4089847Z     "J_POSITIVE": 0,
+2026-10-22T13:42:50.4090213Z     "J_UNRESOLVED": 33,
+2026-10-22T13:42:50.4090596Z     "H1_UNRESOLVED": 63
+2026-10-22T13:42:50.4090956Z   },
+2026-10-22T13:42:50.4091290Z   "budget_exhausted_leaf_count": 97,
+2026-10-22T13:42:50.4091809Z   "primary_center_orientations": [
+2026-10-22T13:42:50.4092245Z     {
+2026-10-22T13:42:50.4092606Z       "label": "det_left_o2^-10_r2^-13",
+2026-10-22T13:42:50.4114981Z       "center_e_positive": true,
+2026-10-22T13:42:50.4115446Z       "center_o_positive": true,
+2026-10-22T13:42:50.4115894Z       "J_orientation": "J_POSITIVE",
+2026-10-22T13:42:50.4116371Z       "P2_orientation": "J_POSITIVE"
+2026-10-22T13:42:50.4116786Z     },
+2026-10-22T13:42:50.4117080Z     {
+2026-10-22T13:42:50.4117414Z       "label": "det_right_o2^-10_r2^-13",
+2026-10-22T13:42:50.4117884Z       "center_e_positive": true,
+2026-10-22T13:42:50.4118304Z       "center_o_positive": true,
+2026-10-22T13:42:50.4118730Z       "J_orientation": "J_POSITIVE",
+2026-10-22T13:42:50.4119162Z       "P2_orientation": "J_POSITIVE"
+2026-10-22T13:42:50.4119580Z     },
+2026-10-22T13:42:50.4119884Z     {
+2026-10-22T13:42:50.4120215Z       "label": "det_left_o2^-13_r2^-16",
+2026-10-22T13:42:50.4120699Z       "center_e_positive": true,
+2026-10-22T13:42:50.4121165Z       "center_o_positive": true,
+2026-10-22T13:42:50.4121627Z       "J_orientation": "J_POSITIVE",
+2026-10-22T13:42:50.4122121Z       "P2_orientation": "J_POSITIVE"
+2026-10-22T13:42:50.4122580Z     },
+2026-10-22T13:42:50.4122790Z     {
+2026-10-22T13:42:50.4123000Z       "label": "det_right_o2^-13_r2^-16",
+2026-10-22T13:42:50.4123635Z       "center_e_positive": true,
+2026-10-22T13:42:50.4123909Z       "center_o_positive": true,
+2026-10-22T13:42:50.4124166Z       "J_orientation": "J_POSITIVE",
+2026-10-22T13:42:50.4124446Z       "P2_orientation": "J_POSITIVE"
+2026-10-22T13:42:50.4124692Z     },
+2026-10-22T13:42:50.4124874Z     {
+2026-10-22T13:42:50.4125073Z       "label": "det_left_o2^-16_r2^-19",
+2026-10-22T13:42:50.4125340Z       "center_e_positive": true,
+2026-10-22T13:42:50.4125584Z       "center_o_positive": true,
+2026-10-22T13:42:50.4125828Z       "J_orientation": "J_POSITIVE",
+2026-10-22T13:42:50.4126084Z       "P2_orientation": "J_POSITIVE"
+2026-10-22T13:42:50.4126327Z     },
+2026-10-22T13:42:50.4126929Z     {
+2026-10-22T13:42:50.4127137Z       "label": "det_right_o2^-16_r2^-19",
+2026-10-22T13:42:50.4127414Z       "center_e_positive": true,
+2026-10-22T13:42:50.4127660Z       "center_o_positive": true,
+2026-10-22T13:42:50.4128080Z       "J_orientation": "J_POSITIVE",
+2026-10-22T13:42:50.4128337Z       "P2_orientation": "J_POSITIVE"
+2026-10-22T13:42:50.4128574Z     }
+2026-10-22T13:42:50.4128742Z   ],
+2026-10-22T13:42:50.4128930Z   "orientation_sequence": [],
+2026-10-22T13:42:50.4129174Z   "unresolved_span_count": 1,
+2026-10-22T13:42:50.4129432Z   "unresolved_span_widths": [
+2026-10-22T13:42:50.4129666Z     "9/4096"
+2026-10-22T13:42:50.4129846Z   ],
+2026-10-22T13:42:50.4130038Z   "certified_t_fraction": "0",
+2026-10-22T13:42:50.4130339Z   "distinct_aperture_twin_excluded_outside_fold": false,
+2026-10-22T13:42:50.4130675Z   "P1_P2_crosschecks": true,
+2026-10-22T13:42:50.4130923Z   "theorem_promotion": false,
+2026-10-22T13:42:50.4131164Z   "fb05_closed": false,
+2026-10-22T13:42:50.4131409Z   "negative_root_exclusion": false,
+2026-10-22T13:42:50.4131670Z   "rh_claim": false
+2026-10-22T13:42:50.4131865Z }
+2026-10-22T13:42:50.5302859Z Post job cleanup.
+2026-10-22T13:42:50.6531104Z (node:2589) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-22T13:42:50.6532420Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-22T13:42:50.6707615Z Post job cleanup.
+2026-10-22T13:42:50.7618085Z [command]/usr/bin/git version
+2026-10-22T13:42:50.7668020Z git version 2.55.0
+2026-10-22T13:42:50.7713558Z Temporarily overriding HOME='/home/runner/work/_temp/75bb8314-af02-44eb-ac4a-da1b846cc252' before making global git config changes
+2026-10-22T13:42:50.7715603Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-22T13:42:50.7719906Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/zeta-23-lean/zeta-23-lean
+2026-10-22T13:42:50.7765029Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-22T13:42:50.7804113Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-22T13:42:50.8114474Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-22T13:42:50.8141310Z http.https://github.com/.extraheader
+2026-10-22T13:42:50.8153465Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-10-22T13:42:50.8197017Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-22T13:42:50.8656022Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-22T13:42:50.8738610Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-22T13:42:50.9234820Z Cleaning up orphan processes
+2026-10-22T13:42:50.9591775Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+

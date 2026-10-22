@@ -76,9 +76,18 @@ DEPENDENCY_REFINEMENTS = {
 }
 DEPENDENCY_V1_SHA256 = '32f2c2e57743f5c1a98176ac64f3b2671e8c45f8355361130ff0271361105a91'
 DEPENDENCY_V2_SHA256 = '54aa023b5d2c483abab95b696381ad7ce6eaeb7a1b17e66c2ce80eee2aed78e7'
-CONTINUATION_MANIFEST_SHA256 = 'a09bdfdabb9a9bfd8306ce08712207bdaeadf94ffc54ffd7b8a21ebf752b39a8'
+CONTINUATION_MANIFEST_SHA256 = '8a3e8374998c4e7e1d20e2913c375a97036db22973a79c51d25a9ef9b526fd80'
 CONTINUATION_FOLDER = 'research/RHRC/integration/opica_followup'
 CONTINUATION_ARTIFACT_PREFIX = CONTINUATION_FOLDER + '/continuation/2026-10-22/'
+CONTINUATION_DOCUMENTATION_PATHS = frozenset({
+    'AUDIT.md',
+    'FORK_NOTES.md',
+    'research/RHRC/DOCUMENTATION_AUTHORITY.md',
+    'research/RHRC/VALIDATION_PROTOCOL.md',
+    'research/RHRC/graph/README.md',
+    'research/RHRC/integration/README.md',
+    'research/RHRC/graph/OPICA_FOLLOWUP_CURRENT_STATE.md',
+})
 
 
 def continuation_checkpoint(root: Path, here: Path) -> tuple[set[str], list[str]]:
@@ -157,7 +166,9 @@ def continuation_checkpoint(root: Path, here: Path) -> tuple[set[str], list[str]
         verified = set()
         for row in rows:
             relative = row['path']
-            if relative != 'AGENTS.md' and not relative.startswith(CONTINUATION_ARTIFACT_PREFIX):
+            if (relative != 'AGENTS.md'
+                    and relative not in CONTINUATION_DOCUMENTATION_PATHS
+                    and not relative.startswith(CONTINUATION_ARTIFACT_PREFIX)):
                 reject('artifact outside exact continuation scope: ' + relative)
             if (type(row['bytes']) is not int or row['bytes'] < 0
                     or not isinstance(row['sha256'], str)
@@ -413,7 +424,8 @@ def preflight(root: Path = REPO, here: Path = HERE) -> dict:
         path = root / row['path']
         if not path.is_file() or len(path.read_bytes()) != row['bytes'] or digest(path) != row['sha256']:
             errors.append('frozen checker changed: ' + row['path'])
-    exceptions = set(descriptor['modified_exact_paths'] + descriptor['generated_exact_paths'])
+    exceptions = (set(descriptor['modified_exact_paths'] + descriptor['generated_exact_paths'])
+                  | (checkpoint_paths & CONTINUATION_DOCUMENTATION_PATHS))
     for row in protected['files']:
         path = root / row['path']
         if not path.is_file() or path.is_symlink() or not path.resolve().is_relative_to(root.resolve()):

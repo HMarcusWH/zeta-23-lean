@@ -1,3 +1,24 @@
+<!-- OPICA_AGENT_NAVIGATION_2026_10_22 -->
+## Current documentation precedence — 22 October 2026
+
+The active OPICA work is draft PR #294, following accepted parent PR #293.
+Read the [current guide](integration/opica_followup/continuation/2026-10-22/README.md),
+[documentation/evidence index](integration/opica_followup/continuation/2026-10-22/DOCUMENTATION_INDEX.md) and
+[100-root stage ledger](integration/opica_followup/continuation/2026-10-22/ROOT_LEDGER_100.json).
+The recorded source checkpoint is `a77ae604`; check the live head and actual CI.
+
+The target remains 100 roots / 28 acceptance units: 41 historical source-bound
+roots, six additional narrow local results, five unaccepted candidates and 48
+absent implementations. Current aggregate/release acceptance remains OPEN.
+The generated Control-v2 block and dated current/next wording below retain their
+historical authority scope. They do not describe current PR routing or accept
+the child package. Frozen specifications define obligations; live exact-source
+compiler/CI evidence determines what is proved. Graph/framework views do not.
+
+RH, Step 4 and the independent closing inequalities remain OPEN.
+
+---
+
 # RHRC documentation authority and update law
 
 This file defines which documentation is authoritative and how to prevent research-state drift after rapid theorem and discovery changes.

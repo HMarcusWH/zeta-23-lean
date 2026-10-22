@@ -1,11 +1,10 @@
 # Remaining work
 
-Original scope: 100 primary identities and 28 acceptance units. Current gate evidence is in `state/ROOT_LEDGER_100.json`; no full-release promotion is claimed.
+Original scope: 100 primary identities and 28 acceptance units. Current gate evidence is in [ROOT_LEDGER_100.json](ROOT_LEDGER_100.json) beside this guide; no current aggregate or full-release acceptance is claimed.
 
 ## Status
 - 41: `PROVED_IN_ORIGINAL_41_ROOT_SOURCE_BOUND_SUBSET`
-- 3: `PROVED_NARROW_LOCAL_GATES_AGGREGATE_PENDING`
-- 3: `COMPILED_MODULE_CONSUMER_ACCEPTANCE_PENDING`
+- 6: `PROVED_NARROW_LOCAL_GATES_AGGREGATE_PENDING`, including all three auxiliary roots with preserved independent consumer and axiom checks
 - 48: `OPEN_NO_COMPLETE_CANDIDATE`
 - 5: `PRIOR_CANDIDATE_FAILED_OR_BLOCKED_UNACCEPTED`
 
@@ -121,7 +120,7 @@ Original scope: 100 primary identities and 28 acceptance units. Current gate evi
 
 ## Other unfinished gates
 
-Repair and verify all five previous candidates. Finish the auxiliary independent consumer gates. Revalidate all changed dependencies and the original 41 in the current aggregate. Complete the facade, actual-domain consumers, full type/constructor/axiom/private TYPE-VALUE-STRUCTURE closure, all-100 evidence linkage, compiler-derived mapped registered dependencies, route-less registration, canonical generation and every required final workflow.
+Repair and verify all five previous candidates and implement the 48 absent roots above. The six mask, complex-measure and auxiliary roots have passed narrow module, independent consumer and standard-axiom gates; the auxiliary consumer rerun is preserved. These local results do not establish current aggregate acceptance. Revalidate all changed dependencies and the original 41 in the current aggregate. Complete the facade, actual-domain consumers, full type/constructor/axiom/private TYPE-VALUE-STRUCTURE closure, all-100 evidence linkage, compiler-derived mapped registered dependencies, route-less registration, canonical generation and every required final workflow.
 
 The parent metadata repairs and selected tests do not establish complete extension acceptance. Existing subset builders still select 41 roots. Full release deliberately remains closed.
 

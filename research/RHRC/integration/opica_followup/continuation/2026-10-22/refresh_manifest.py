@@ -7,6 +7,7 @@ from pathlib import Path
 import hashlib
 import json
 import re
+import sys
 
 HERE = Path(__file__).resolve().parent
 REPO = HERE.parents[5]
@@ -15,6 +16,12 @@ CONTRACT = HERE.parents[1]
 
 def main():
     artifacts = [REPO/'AGENTS.md']
+    sys.path.insert(0, str(CONTRACT))
+    from validate_contract import CONTINUATION_DOCUMENTATION_PATHS
+    refinement = json.loads((HERE/'provenance/DOC_NAVIGATION_AMENDMENT.json').read_bytes())
+    if set(refinement['additional_exact_documentation_paths']) != CONTINUATION_DOCUMENTATION_PATHS:
+        raise ValueError('Documentation amendment differs from exact validator allowlist')
+    artifacts += [REPO/path for path in sorted(CONTINUATION_DOCUMENTATION_PATHS)]
     for path in HERE.rglob('*'):
         if path.is_symlink():
             raise ValueError('Symlink in checkpoint: '+str(path))
@@ -35,6 +42,8 @@ def main():
         'new_mandatory_roots': [], 'frozen_statement_changes': [],
         'parent_mathematical_source_changes': [],
         'authority': 'EXACT_DRAFT_ARTIFACT_INVENTORY_ONLY_NOT_COMPILER_OR_RELEASE_EVIDENCE',
+        'documentation_navigation_amendment': 'DOC_NAV_2026_10_22_01',
+        'additional_documentation_paths': sorted(CONTINUATION_DOCUMENTATION_PATHS),
         'scope_note': 'The original84-file plan is frozen. These additional audited handover/input/evidence paths are an explicit checkpoint refinement. Full-extension/canonical reconciliation remains OPEN.',
         'artifacts': rows,
     }

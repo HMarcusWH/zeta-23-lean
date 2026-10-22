@@ -2,6 +2,9 @@
 
 Continue the current PR #294 checkout. Read root AGENTS.md, this directory's
 README, ROOT_LEDGER_100.json and the unchanged controlling specifications.
+Use DOCUMENTATION_INDEX.md, MODULE_STATUS.md and the manual OPICA progress map
+to locate current source/evidence and unfinished proof lanes. Check the live
+head and CI; historical Control-v2 candidate labels are not current PR routing.
 The user's requested outcome is all 100 original roots / 28 acceptance units,
 with no narrowed theorem, invented assumption, optional-lemma substitution or
 omitted physical/domain acceptance requirement.

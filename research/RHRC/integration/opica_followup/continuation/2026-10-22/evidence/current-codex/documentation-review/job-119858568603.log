@@ -1,0 +1,454 @@
+﻿2026-10-22T13:43:56.7919856Z Current runner version: '2.338.0'
+2026-10-22T13:43:56.7956330Z ##[group]Runner Image Provisioner
+2026-10-22T13:43:56.7957503Z Hosted Compute Agent
+2026-10-22T13:43:56.7958471Z Version: 20261015.610
+2026-10-22T13:43:56.7959496Z Commit: 267fdb4e8bbec4ab5ea31367f3a00d5c480c7656
+2026-10-22T13:43:56.7960817Z Build Date: 2026-10-14T17:06:54Z
+2026-10-22T13:43:56.7961926Z Worker ID: {bca17a92-0545-43db-a28e-127260f13977}
+2026-10-22T13:43:56.7963021Z Region: eastus2
+2026-10-22T13:43:56.7963950Z Cloud: Azure
+2026-10-22T13:43:56.7964842Z ##[endgroup]
+2026-10-22T13:43:56.7968242Z ##[group]Operating System
+2026-10-22T13:43:56.7969188Z Ubuntu
+2026-10-22T13:43:56.7969964Z 26.04.1
+2026-10-22T13:43:56.7970874Z LTS
+2026-10-22T13:43:56.7971627Z ##[endgroup]
+2026-10-22T13:43:56.7972472Z ##[group]Runner Image
+2026-10-22T13:43:56.7973330Z Image: ubuntu-26.04
+2026-10-22T13:43:56.7974156Z Version: 20261018.168.1
+2026-10-22T13:43:56.7976324Z Included Software: https://github.com/actions/runner-images/blob/ubuntu26/20261018.168/images/ubuntu/Ubuntu2604-Readme.md
+2026-10-22T13:43:56.7978924Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu26%2F20261018.168
+2026-10-22T13:43:56.7980488Z ##[endgroup]
+2026-10-22T13:43:56.7982446Z ##[group]GITHUB_TOKEN Permissions
+2026-10-22T13:43:56.7985706Z Contents: read
+2026-10-22T13:43:56.7986783Z Metadata: read
+2026-10-22T13:43:56.7987633Z Packages: read
+2026-10-22T13:43:56.7988556Z ##[endgroup]
+2026-10-22T13:43:56.7991925Z Secret source: Actions
+2026-10-22T13:43:56.7993456Z Cache mode: write
+2026-10-22T13:43:56.7995006Z Prepare workflow directory
+2026-10-22T13:43:56.8471500Z Prepare all required actions
+2026-10-22T13:43:56.8541283Z Getting action download info
+2026-10-22T13:43:57.0592174Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-10-22T13:43:57.1550298Z Download action repository 'leanprover/lean-action@v1' (SHA:24581d74d674803a25a81b10b059c5c0cdd344c6)
+2026-10-22T13:43:57.4199026Z Getting action download info
+2026-10-22T13:43:57.5471156Z Download action repository 'actions/cache@caa296126883cff596d87d8935842f9db880ef25' (SHA:caa296126883cff596d87d8935842f9db880ef25)
+2026-10-22T13:43:57.8130562Z Complete job name: lean-permansson
+2026-10-22T13:43:57.9146400Z ##[group]Run actions/checkout@v4
+2026-10-22T13:43:57.9147851Z with:
+2026-10-22T13:43:57.9148791Z   repository: HMarcusWH/zeta-23-lean
+2026-10-22T13:43:57.9157829Z   token: ***
+2026-10-22T13:43:57.9158745Z   ssh-strict: true
+2026-10-22T13:43:57.9159689Z   ssh-user: git
+2026-10-22T13:43:57.9160628Z   persist-credentials: true
+2026-10-22T13:43:57.9161640Z   clean: true
+2026-10-22T13:43:57.9162589Z   sparse-checkout-cone-mode: true
+2026-10-22T13:43:57.9163691Z   fetch-depth: 1
+2026-10-22T13:43:57.9164603Z   fetch-tags: false
+2026-10-22T13:43:57.9165641Z   show-progress: true
+2026-10-22T13:43:57.9166582Z   lfs: false
+2026-10-22T13:43:57.9167483Z   submodules: false
+2026-10-22T13:43:57.9168451Z   set-safe-directory: true
+2026-10-22T13:43:57.9169508Z   allow-unsafe-pr-checkout: false
+2026-10-22T13:43:57.9170929Z ##[endgroup]
+2026-10-22T13:43:58.0334829Z Syncing repository: HMarcusWH/zeta-23-lean
+2026-10-22T13:43:58.0340775Z ##[group]Getting Git version info
+2026-10-22T13:43:58.0343146Z Working directory is '/home/runner/work/zeta-23-lean/zeta-23-lean'
+2026-10-22T13:43:58.0346559Z [command]/usr/bin/git version
+2026-10-22T13:43:58.0348151Z git version 2.55.0
+2026-10-22T13:43:58.0353014Z ##[endgroup]
+2026-10-22T13:43:58.0361885Z Temporarily overriding HOME='/home/runner/work/_temp/ad2bee8e-f5c0-48ea-bf7f-ab4e6a64a7fb' before making global git config changes
+2026-10-22T13:43:58.0366517Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-22T13:43:58.0370173Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/zeta-23-lean/zeta-23-lean
+2026-10-22T13:43:58.0375589Z Deleting the contents of '/home/runner/work/zeta-23-lean/zeta-23-lean'
+2026-10-22T13:43:58.0378851Z ##[group]Initializing the repository
+2026-10-22T13:43:58.0381416Z [command]/usr/bin/git init /home/runner/work/zeta-23-lean/zeta-23-lean
+2026-10-22T13:43:58.0424176Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-10-22T13:43:58.0427584Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-10-22T13:43:58.0430711Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-10-22T13:43:58.0434627Z hint: call:
+2026-10-22T13:43:58.0436570Z hint:
+2026-10-22T13:43:58.0438378Z hint: 	git config --global init.defaultBranch <name>
+2026-10-22T13:43:58.0440526Z hint:
+2026-10-22T13:43:58.0442512Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-10-22T13:43:58.0445818Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-10-22T13:43:58.0448447Z hint:
+2026-10-22T13:43:58.0449956Z hint: 	git branch -m <name>
+2026-10-22T13:43:58.0452080Z hint:
+2026-10-22T13:43:58.0453989Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-10-22T13:43:58.0458384Z Initialized empty Git repository in /home/runner/work/zeta-23-lean/zeta-23-lean/.git/
+2026-10-22T13:43:58.0462316Z [command]/usr/bin/git remote add origin https://github.com/HMarcusWH/zeta-23-lean
+2026-10-22T13:43:58.0506738Z ##[endgroup]
+2026-10-22T13:43:58.0509832Z ##[group]Disabling automatic garbage collection
+2026-10-22T13:43:58.0512016Z [command]/usr/bin/git config --local gc.auto 0
+2026-10-22T13:43:58.0555183Z ##[endgroup]
+2026-10-22T13:43:58.0557474Z ##[group]Setting up auth
+2026-10-22T13:43:58.0562252Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-22T13:43:58.0600499Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-22T13:43:58.1055321Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-22T13:43:58.1097161Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-22T13:43:58.1409241Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-22T13:43:58.1448595Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-22T13:43:58.1745432Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-10-22T13:43:58.1787995Z ##[endgroup]
+2026-10-22T13:43:58.1789647Z ##[group]Fetching the repository
+2026-10-22T13:43:58.1801026Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +2735cbb15830808c5e6294c428f857d31ff09219:refs/remotes/pull/294/merge
+2026-10-22T13:45:03.3387406Z From https://github.com/HMarcusWH/zeta-23-lean
+2026-10-22T13:45:03.3388341Z  * [new ref]         2735cbb15830808c5e6294c428f857d31ff09219 -> pull/294/merge
+2026-10-22T13:45:03.3390633Z ##[endgroup]
+2026-10-22T13:45:03.3391267Z ##[group]Determining the checkout info
+2026-10-22T13:45:03.3393298Z ##[endgroup]
+2026-10-22T13:45:03.3400502Z [command]/usr/bin/git sparse-checkout disable
+2026-10-22T13:45:03.3456514Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-10-22T13:45:03.3492365Z ##[group]Checking out the ref
+2026-10-22T13:45:03.3497832Z [command]/usr/bin/git checkout --progress --force refs/remotes/pull/294/merge
+2026-10-22T13:45:04.5083145Z Updating files:  60% (1575/2617)
+2026-10-22T13:45:04.7163567Z Updating files:  61% (1597/2617)
+2026-10-22T13:45:04.7210546Z Updating files:  62% (1623/2617)
+2026-10-22T13:45:04.7245554Z Updating files:  63% (1649/2617)
+2026-10-22T13:45:04.7259293Z Updating files:  64% (1675/2617)
+2026-10-22T13:45:04.7291333Z Updating files:  65% (1702/2617)
+2026-10-22T13:45:04.7394660Z Updating files:  66% (1728/2617)
+2026-10-22T13:45:04.7404455Z Updating files:  67% (1754/2617)
+2026-10-22T13:45:04.7482923Z Updating files:  68% (1780/2617)
+2026-10-22T13:45:04.7529033Z Updating files:  69% (1806/2617)
+2026-10-22T13:45:04.7559682Z Updating files:  70% (1832/2617)
+2026-10-22T13:45:04.7580527Z Updating files:  71% (1859/2617)
+2026-10-22T13:45:04.7605639Z Updating files:  72% (1885/2617)
+2026-10-22T13:45:04.7667828Z Updating files:  73% (1911/2617)
+2026-10-22T13:45:04.7702645Z Updating files:  74% (1937/2617)
+2026-10-22T13:45:04.7711641Z Updating files:  75% (1963/2617)
+2026-10-22T13:45:04.7721402Z Updating files:  76% (1989/2617)
+2026-10-22T13:45:04.7732358Z Updating files:  77% (2016/2617)
+2026-10-22T13:45:04.7749695Z Updating files:  78% (2042/2617)
+2026-10-22T13:45:04.7801001Z Updating files:  79% (2068/2617)
+2026-10-22T13:45:04.7813414Z Updating files:  80% (2094/2617)
+2026-10-22T13:45:04.7824738Z Updating files:  81% (2120/2617)
+2026-10-22T13:45:04.7852271Z Updating files:  82% (2146/2617)
+2026-10-22T13:45:04.8041873Z Updating files:  83% (2173/2617)
+2026-10-22T13:45:04.8095749Z Updating files:  84% (2199/2617)
+2026-10-22T13:45:04.8113168Z Updating files:  85% (2225/2617)
+2026-10-22T13:45:04.8131050Z Updating files:  86% (2251/2617)
+2026-10-22T13:45:04.8153718Z Updating files:  87% (2277/2617)
+2026-10-22T13:45:04.8171774Z Updating files:  88% (2303/2617)
+2026-10-22T13:45:04.8187579Z Updating files:  89% (2330/2617)
+2026-10-22T13:45:04.8200197Z Updating files:  90% (2356/2617)
+2026-10-22T13:45:04.8212693Z Updating files:  91% (2382/2617)
+2026-10-22T13:45:04.8251809Z Updating files:  92% (2408/2617)
+2026-10-22T13:45:04.8273450Z Updating files:  93% (2434/2617)
+2026-10-22T13:45:04.8293431Z Updating files:  94% (2460/2617)
+2026-10-22T13:45:04.8311556Z Updating files:  95% (2487/2617)
+2026-10-22T13:45:04.8330168Z Updating files:  96% (2513/2617)
+2026-10-22T13:45:04.8350958Z Updating files:  97% (2539/2617)
+2026-10-22T13:45:04.8366472Z Updating files:  98% (2565/2617)
+2026-10-22T13:45:04.8382678Z Updating files:  99% (2591/2617)
+2026-10-22T13:45:04.8383324Z Updating files: 100% (2617/2617)
+2026-10-22T13:45:04.8383727Z Updating files: 100% (2617/2617), done.
+2026-10-22T13:45:04.8413014Z Note: switching to 'refs/remotes/pull/294/merge'.
+2026-10-22T13:45:04.8413719Z 
+2026-10-22T13:45:04.8414006Z You are in 'detached HEAD' state. You can look around, make experimental
+2026-10-22T13:45:04.8414507Z changes and commit them, and you can discard any commits you make in this
+2026-10-22T13:45:04.8414979Z state without impacting any branches by switching back to a branch.
+2026-10-22T13:45:04.8415527Z 
+2026-10-22T13:45:04.8415734Z If you want to create a new branch to retain commits you create, you may
+2026-10-22T13:45:04.8416192Z do so (now or later) by using -c with the switch command. Example:
+2026-10-22T13:45:04.8416447Z 
+2026-10-22T13:45:04.8416558Z   git switch -c <new-branch-name>
+2026-10-22T13:45:04.8416740Z 
+2026-10-22T13:45:04.8416846Z Or undo this operation with:
+2026-10-22T13:45:04.8417009Z 
+2026-10-22T13:45:04.8417097Z   git switch -
+2026-10-22T13:45:04.8417241Z 
+2026-10-22T13:45:04.8417463Z Turn off this advice by setting config variable advice.detachedHead to false
+2026-10-22T13:45:04.8417777Z 
+2026-10-22T13:45:04.8418137Z HEAD is now at 2735cbb Merge a77ae60427423e8b6f098596f300c8cecc6392b6 into d53dd70d38b0762af130b1d19b795af259f505f5
+2026-10-22T13:45:04.8467055Z ##[endgroup]
+2026-10-22T13:45:04.8520961Z [command]/usr/bin/git log -1 --format=%H
+2026-10-22T13:45:04.8556496Z 2735cbb15830808c5e6294c428f857d31ff09219
+2026-10-22T13:45:04.9081030Z ##[group]Run leanprover/lean-action@v1
+2026-10-22T13:45:04.9081366Z with:
+2026-10-22T13:45:04.9081577Z   auto-config: false
+2026-10-22T13:45:04.9081804Z   build: false
+2026-10-22T13:45:04.9082016Z   test: false
+2026-10-22T13:45:04.9082211Z   lint: false
+2026-10-22T13:45:04.9082420Z   use-mathlib-cache: true
+2026-10-22T13:45:04.9082680Z   use-github-cache: false
+2026-10-22T13:45:04.9082922Z   mk_all-check: false
+2026-10-22T13:45:04.9083164Z   check-reservoir-eligibility: false
+2026-10-22T13:45:04.9083440Z   leanchecker: false
+2026-10-22T13:45:04.9083866Z   lean4checker: false
+2026-10-22T13:45:04.9084088Z   nanoda: false
+2026-10-22T13:45:04.9084311Z   nanoda-allow-sorry: true
+2026-10-22T13:45:04.9084547Z   axiom-audit: false
+2026-10-22T13:45:04.9084833Z   axiom-audit-allow: propext,Classical.choice,Quot.sound
+2026-10-22T13:45:04.9085472Z   lake-package-directory: .
+2026-10-22T13:45:04.9085751Z   reinstall-transient-toolchain: false
+2026-10-22T13:45:04.9086047Z ##[endgroup]
+2026-10-22T13:45:04.9159174Z ##[start-action display=install elan;id=__leanprover_lean-action.__run]
+2026-10-22T13:45:04.9209799Z ##[group]Run : Install Elan
+2026-10-22T13:45:04.9210192Z [36;1m: Install Elan[0m
+2026-10-22T13:45:04.9210545Z [36;1m${GITHUB_ACTION_PATH}/scripts/install_elan.sh[0m
+2026-10-22T13:45:04.9379772Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-10-22T13:45:04.9380176Z ##[endgroup]
+2026-10-22T13:45:04.9541959Z ##[group]Elan Installation Output
+2026-10-22T13:45:05.0102574Z info: downloading installer
+2026-10-22T13:45:05.7607832Z info: downloading https://releases.lean-lang.org/lean4/v4.33.0-rc2/lean-4.33.0-rc2-linux.tar.zst
+2026-10-22T13:45:09.2115731Z info: installing /home/runner/.elan/toolchains/leanprover--lean4---v4.33.0-rc2
+2026-10-22T13:45:16.5422605Z Lean (version 4.33.0-rc2, x86_64-unknown-linux-gnu, commit d8b18978322de05a8f3dba51ef03cf5461676c17, Release)
+2026-10-22T13:45:16.5857037Z Lake version 5.0.0-src+d8b1897 (Lean version 4.33.0-rc2)
+2026-10-22T13:45:16.5868300Z ##[endgroup]
+2026-10-22T13:45:16.5868601Z 
+2026-10-22T13:45:16.5916488Z ##[end-action id=__leanprover_lean-action.__run;outcome=success;conclusion=success;duration_ms=11675]
+2026-10-22T13:45:16.5925741Z ##[start-action display=configure `lean-action`;id=__leanprover_lean-action.config]
+2026-10-22T13:45:16.5954491Z ##[group]Run : Configure Lean Action
+2026-10-22T13:45:16.5954944Z [36;1m: Configure Lean Action[0m
+2026-10-22T13:45:16.5955581Z [36;1m${GITHUB_ACTION_PATH}/scripts/config.sh[0m
+2026-10-22T13:45:16.6034563Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-10-22T13:45:16.6034941Z env:
+2026-10-22T13:45:16.6035459Z   AUTO_CONFIG: false
+2026-10-22T13:45:16.6035681Z   BUILD: false
+2026-10-22T13:45:16.6035879Z   TEST: false
+2026-10-22T13:45:16.6036074Z   LINT: false
+2026-10-22T13:45:16.6036264Z ##[endgroup]
+2026-10-22T13:45:16.6168208Z ##[group]Configure lean-action
+2026-10-22T13:45:16.6260863Z ##[end-action id=__leanprover_lean-action.config;outcome=success;conclusion=success;duration_ms=33]
+2026-10-22T13:45:16.6265964Z ##[start-action display=reinstall transient toolchain;id=__leanprover_lean-action.__run_2]
+2026-10-22T13:45:16.6283412Z ##[end-action id=__leanprover_lean-action.__run_2;outcome=skipped;conclusion=skipped;duration_ms=0]
+2026-10-22T13:45:16.6286698Z ##[start-action display=ensure all files are imported;id=__leanprover_lean-action.mk_all]
+2026-10-22T13:45:16.6290313Z ##[end-action id=__leanprover_lean-action.mk_all;outcome=skipped;conclusion=skipped;duration_ms=0]
+2026-10-22T13:45:16.6292458Z ##[start-action display=Run actions/cache/restore@caa296126883cff596d87d8935842f9db880ef25;id=__leanprover_lean-action.cache-restore]
+2026-10-22T13:45:16.6296298Z ##[end-action id=__leanprover_lean-action.cache-restore;outcome=skipped;conclusion=skipped;duration_ms=0]
+2026-10-22T13:45:16.6298172Z ##[start-action display=detect mathlib;id=__leanprover_lean-action.detect-mathlib]
+2026-10-22T13:45:16.6301711Z ##[end-action id=__leanprover_lean-action.detect-mathlib;outcome=skipped;conclusion=skipped;duration_ms=0]
+2026-10-22T13:45:16.6303767Z ##[start-action display=get mathlib cache;id=__leanprover_lean-action.__run_3]
+2026-10-22T13:45:16.6374997Z ##[group]Run : Get Mathlib Cache
+2026-10-22T13:45:16.6375588Z [36;1m: Get Mathlib Cache[0m
+2026-10-22T13:45:16.6375862Z [36;1mecho "::group::Mathlib Cache"[0m
+2026-10-22T13:45:16.6376149Z [36;1mlake exe cache get[0m
+2026-10-22T13:45:16.6376393Z [36;1mecho "::endgroup::"[0m
+2026-10-22T13:45:16.6376632Z [36;1mecho[0m
+2026-10-22T13:45:16.6443846Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-10-22T13:45:16.6444396Z ##[endgroup]
+2026-10-22T13:45:16.6531269Z ##[group]Mathlib Cache
+2026-10-22T13:45:16.6942128Z info: mathlib: cloning https://github.com/leanprover-community/mathlib4
+2026-10-22T13:45:48.0687697Z info: mathlib: checking out revision '51e6992efd06126df61a496bebf8f49482a4e129'
+2026-10-22T13:45:50.1418145Z info: plausible: cloning https://github.com/leanprover-community/plausible
+2026-10-22T13:45:50.4169563Z info: plausible: checking out revision '123d15766ba49356c02ebad2a4462dfe12d79899'
+2026-10-22T13:45:50.4313535Z info: LeanSearchClient: cloning https://github.com/leanprover-community/LeanSearchClient
+2026-10-22T13:45:50.6184474Z info: LeanSearchClient: checking out revision 'f5c090429dff3cf66cb65562526c9ea6e8edfbcb'
+2026-10-22T13:45:50.6321207Z info: importGraph: cloning https://github.com/leanprover-community/import-graph
+2026-10-22T13:45:50.8636680Z info: importGraph: checking out revision 'bb3469a87774349fe01898d8bf2fc6a1ce6411ca'
+2026-10-22T13:45:50.8832687Z info: proofwidgets: cloning https://github.com/leanprover-community/ProofWidgets4
+2026-10-22T13:45:51.2598700Z info: proofwidgets: checking out revision '222c58dad7706a6e7cae46c0edd65ea881d3ee27'
+2026-10-22T13:45:51.9078324Z info: aesop: cloning https://github.com/leanprover-community/aesop
+2026-10-22T13:45:52.4023955Z info: aesop: checking out revision '7db8190085343afde2f5d2cdcc9bac719b6ec02c'
+2026-10-22T13:45:52.4222897Z info: Qq: cloning https://github.com/leanprover-community/quote4
+2026-10-22T13:45:52.6519549Z info: Qq: checking out revision 'ef42f8944eaf5b6cbfbe75d1917d824c7dd6cf33'
+2026-10-22T13:45:52.6665844Z info: batteries: cloning https://github.com/leanprover-community/batteries
+2026-10-22T13:45:57.9599628Z info: batteries: checking out revision '76e1c118b0700b4ceafe99532e887d6431625e1a'
+2026-10-22T13:45:57.9994198Z info: Cli: cloning https://github.com/leanprover/lean4-cli
+2026-10-22T13:45:58.1969701Z info: Cli: checking out revision '1319485273bf87833fa472afbcefdedecb16b45f'
+2026-10-22T13:45:58.6119992Z ✔ [1/5] Built Cache.Cli (361ms)
+2026-10-22T13:45:58.7121364Z ✔ [2/5] Built Cache.Lean (399ms)
+2026-10-22T13:46:03.1229056Z ✔ [7/26] Built Cache.Cli:c.o (191ms)
+2026-10-22T13:46:03.2233152Z ✔ [9/26] Built Cache.Lean:c.o (264ms)
+2026-10-22T13:46:03.4239268Z ✔ [10/26] Built Cache.Infra (472ms)
+2026-10-22T13:46:03.6241909Z ✔ [11/26] Built Cache.Infra:c.o (203ms)
+2026-10-22T13:46:04.4256807Z ✔ [12/26] Built Cache.IO (1.5s)
+2026-10-22T13:46:05.2257929Z ✔ [13/26] Built Cache.Hashing (812ms)
+2026-10-22T13:46:05.6266168Z ✔ [14/26] Built Cache.Hashing:c.o (425ms)
+2026-10-22T13:46:06.2294382Z ✔ [15/26] Built Cache.IO:c.o (1.8s)
+2026-10-22T13:46:07.3309094Z ✔ [16/26] Built Cache.Requests (2.1s)
+2026-10-22T13:46:07.9314820Z ✔ [17/26] Built Cache.Marker (599ms)
+2026-10-22T13:46:08.1310601Z ✔ [18/26] Built Cache.Marker:c.o (131ms)
+2026-10-22T13:46:08.7347186Z ✔ [19/26] Built Cache.Query (782ms)
+2026-10-22T13:46:09.1322781Z ✔ [20/26] Built Cache.Query:c.o (403ms)
+2026-10-22T13:46:09.5339669Z ✔ [21/26] Built Cache.Warning (832ms)
+2026-10-22T13:46:09.8333071Z ✔ [22/26] Built Cache.Warning:c.o (267ms)
+2026-10-22T13:46:10.3338067Z ✔ [23/26] Built Cache.Requests:c.o (2.9s)
+2026-10-22T13:46:10.8344427Z ✔ [24/26] Built Cache.Main (1.3s)
+2026-10-22T13:46:11.7355929Z ✔ [25/26] Built Cache.Main:c.o (864ms)
+2026-10-22T13:46:12.4364491Z ✔ [26/26] Built cache:exe (763ms)
+2026-10-22T13:46:15.3877860Z Current branch: HEAD
+2026-10-22T13:46:15.3878803Z Using cache from origin: (some leanprover-community/mathlib4)
+2026-10-22T13:46:15.3888272Z Attempting to download 8681 file(s) from leanprover-community/mathlib4 cache at https://lakecache.blob.core.windows.net/mathlib4-master
+2026-10-22T13:46:15.9211122Z 
+2026-10-22T13:46:16.0246378Z Downloaded: 1 file(s) [attempted 1/8681 = 0%, 95 KB/s], Decompressed: 0
+2026-10-22T13:46:16.1244923Z Downloaded: 61 file(s) [attempted 61/8681 = 0%, 1480 KB/s], Decompressed: 11
+2026-10-22T13:46:16.2405492Z Downloaded: 151 file(s) [attempted 151/8681 = 1%, 478 KB/s], Decompressed: 26
+2026-10-22T13:46:16.3417827Z Downloaded: 235 file(s) [attempted 235/8681 = 2%, 2298 KB/s], Decompressed: 70
+2026-10-22T13:46:16.4447562Z Downloaded: 360 file(s) [attempted 360/8681 = 4%, 294 KB/s], Decompressed: 70
+2026-10-22T13:46:16.5458427Z Downloaded: 469 file(s) [attempted 469/8681 = 5%, 2867 KB/s], Decompressed: 70
+2026-10-22T13:46:16.6454705Z Downloaded: 597 file(s) [attempted 597/8681 = 6%, 222 KB/s], Decompressed: 70
+2026-10-22T13:46:16.7496598Z Downloaded: 720 file(s) [attempted 720/8681 = 8%, 954 KB/s], Decompressed: 70
+2026-10-22T13:46:16.8473285Z Downloaded: 837 file(s) [attempted 837/8681 = 9%, 4520 KB/s], Decompressed: 224
+2026-10-22T13:46:16.9648040Z Downloaded: 971 file(s) [attempted 971/8681 = 11%, 1532 KB/s], Decompressed: 224
+2026-10-22T13:46:17.0675416Z Downloaded: 1075 file(s) [attempted 1075/8681 = 12%, 4548 KB/s], Decompressed: 224
+2026-10-22T13:46:17.1796478Z Downloaded: 1182 file(s) [attempted 1182/8681 = 13%, 513 KB/s], Decompressed: 224
+2026-10-22T13:46:17.2866460Z Downloaded: 1297 file(s) [attempted 1297/8681 = 14%, 1106 KB/s], Decompressed: 224
+2026-10-22T13:46:17.3899122Z Downloaded: 1424 file(s) [attempted 1424/8681 = 16%, 837 KB/s], Decompressed: 224
+2026-10-22T13:46:17.4916604Z Downloaded: 1561 file(s) [attempted 1561/8681 = 17%, 182 KB/s], Decompressed: 224
+2026-10-22T13:46:17.5921957Z Downloaded: 1674 file(s) [attempted 1674/8681 = 19%, 983 KB/s], Decompressed: 224
+2026-10-22T13:46:17.6924029Z Downloaded: 1785 file(s) [attempted 1785/8681 = 20%, 3336 KB/s], Decompressed: 224
+2026-10-22T13:46:17.7943621Z Downloaded: 1914 file(s) [attempted 1914/8681 = 22%, 2487 KB/s], Decompressed: 224
+2026-10-22T13:46:17.8942338Z Downloaded: 2036 file(s) [attempted 2036/8681 = 23%, 1132 KB/s], Decompressed: 224
+2026-10-22T13:46:17.9951625Z Downloaded: 2156 file(s) [attempted 2156/8681 = 24%, 447 KB/s], Decompressed: 224
+2026-10-22T13:46:18.0990071Z Downloaded: 2276 file(s) [attempted 2276/8681 = 26%, 1286 KB/s], Decompressed: 224
+2026-10-22T13:46:18.1978550Z Downloaded: 2409 file(s) [attempted 2409/8681 = 27%, 2201 KB/s], Decompressed: 224
+2026-10-22T13:46:18.2989266Z Downloaded: 2536 file(s) [attempted 2536/8681 = 29%, 306 KB/s], Decompressed: 224
+2026-10-22T13:46:18.4021833Z Downloaded: 2647 file(s) [attempted 2647/8681 = 30%, 1432 KB/s], Decompressed: 224
+2026-10-22T13:46:18.5039023Z Downloaded: 2764 file(s) [attempted 2764/8681 = 31%, 1030 KB/s], Decompressed: 224
+2026-10-22T13:46:18.6056187Z Downloaded: 2889 file(s) [attempted 2889/8681 = 33%, 2601 KB/s], Decompressed: 224
+2026-10-22T13:46:18.7232546Z Downloaded: 3026 file(s) [attempted 3026/8681 = 34%, 368 KB/s], Decompressed: 224
+2026-10-22T13:46:18.8246467Z Downloaded: 3153 file(s) [attempted 3153/8681 = 36%, 643 KB/s], Decompressed: 224
+2026-10-22T13:46:18.9254801Z Downloaded: 3278 file(s) [attempted 3278/8681 = 37%, 577 KB/s], Decompressed: 804
+2026-10-22T13:46:19.0246366Z Downloaded: 3373 file(s) [attempted 3373/8681 = 38%, 755 KB/s], Decompressed: 804
+2026-10-22T13:46:19.1347070Z Downloaded: 3475 file(s) [attempted 3475/8681 = 40%, 978 KB/s], Decompressed: 804
+2026-10-22T13:46:19.3646523Z Downloaded: 3608 file(s) [attempted 3608/8681 = 41%, 84 KB/s], Decompressed: 804
+2026-10-22T13:46:19.4854405Z Downloaded: 3683 file(s) [attempted 3683/8681 = 42%, 322 KB/s], Decompressed: 804
+2026-10-22T13:46:19.5866660Z Downloaded: 3734 file(s) [attempted 3734/8681 = 43%, 1161 KB/s], Decompressed: 804
+2026-10-22T13:46:19.6896890Z Downloaded: 3812 file(s) [attempted 3812/8681 = 43%, 218 KB/s], Decompressed: 804
+2026-10-22T13:46:19.7916878Z Downloaded: 3871 file(s) [attempted 3871/8681 = 44%, 1364 KB/s], Decompressed: 804
+2026-10-22T13:46:19.8898177Z Downloaded: 4001 file(s) [attempted 4001/8681 = 46%, 202 KB/s], Decompressed: 804
+2026-10-22T13:46:19.9937232Z Downloaded: 4118 file(s) [attempted 4118/8681 = 47%, 1548 KB/s], Decompressed: 804
+2026-10-22T13:46:20.0927724Z Downloaded: 4243 file(s) [attempted 4243/8681 = 48%, 307 KB/s], Decompressed: 804
+2026-10-22T13:46:20.1966620Z Downloaded: 4370 file(s) [attempted 4370/8681 = 50%, 190 KB/s], Decompressed: 804
+2026-10-22T13:46:20.3297865Z Downloaded: 4502 file(s) [attempted 4502/8681 = 51%, 4503 KB/s], Decompressed: 804
+2026-10-22T13:46:20.4326527Z Downloaded: 4562 file(s) [attempted 4562/8681 = 52%, 738 KB/s], Decompressed: 804
+2026-10-22T13:46:20.5300732Z Downloaded: 4678 file(s) [attempted 4678/8681 = 53%, 1123 KB/s], Decompressed: 804
+2026-10-22T13:46:20.6405725Z Downloaded: 4794 file(s) [attempted 4794/8681 = 55%, 89 KB/s], Decompressed: 804
+2026-10-22T13:46:20.7416762Z Downloaded: 4903 file(s) [attempted 4903/8681 = 56%, 2493 KB/s], Decompressed: 804
+2026-10-22T13:46:20.8535961Z Downloaded: 5014 file(s) [attempted 5014/8681 = 57%, 133 KB/s], Decompressed: 804
+2026-10-22T13:46:20.9641360Z Downloaded: 5119 file(s) [attempted 5119/8681 = 58%, 248 KB/s], Decompressed: 804
+2026-10-22T13:46:21.0683104Z Downloaded: 5210 file(s) [attempted 5210/8681 = 60%, 7667 KB/s], Decompressed: 804
+2026-10-22T13:46:21.1708555Z Downloaded: 5315 file(s) [attempted 5315/8681 = 61%, 489 KB/s], Decompressed: 804
+2026-10-22T13:46:21.2688569Z Downloaded: 5448 file(s) [attempted 5448/8681 = 62%, 593 KB/s], Decompressed: 804
+2026-10-22T13:46:21.3781808Z Downloaded: 5581 file(s) [attempted 5581/8681 = 64%, 880 KB/s], Decompressed: 804
+2026-10-22T13:46:21.4786513Z Downloaded: 5696 file(s) [attempted 5696/8681 = 65%, 1429 KB/s], Decompressed: 804
+2026-10-22T13:46:21.5814066Z Downloaded: 5827 file(s) [attempted 5827/8681 = 67%, 1512 KB/s], Decompressed: 804
+2026-10-22T13:46:21.6861255Z Downloaded: 5952 file(s) [attempted 5952/8681 = 68%, 515 KB/s], Decompressed: 804
+2026-10-22T13:46:21.7856301Z Downloaded: 6074 file(s) [attempted 6074/8681 = 69%, 674 KB/s], Decompressed: 804
+2026-10-22T13:46:21.8870302Z Downloaded: 6196 file(s) [attempted 6196/8681 = 71%, 201 KB/s], Decompressed: 804
+2026-10-22T13:46:22.0178350Z Downloaded: 6298 file(s) [attempted 6298/8681 = 72%, 184 KB/s], Decompressed: 804
+2026-10-22T13:46:22.1206932Z Downloaded: 6420 file(s) [attempted 6420/8681 = 73%, 355 KB/s], Decompressed: 804
+2026-10-22T13:46:22.2192477Z Downloaded: 6545 file(s) [attempted 6545/8681 = 75%, 74 KB/s], Decompressed: 804
+2026-10-22T13:46:22.3207778Z Downloaded: 6675 file(s) [attempted 6675/8681 = 76%, 144 KB/s], Decompressed: 804
+2026-10-22T13:46:22.4228197Z Downloaded: 6793 file(s) [attempted 6793/8681 = 78%, 717 KB/s], Decompressed: 804
+2026-10-22T13:46:22.5262353Z Downloaded: 6926 file(s) [attempted 6926/8681 = 79%, 941 KB/s], Decompressed: 804
+2026-10-22T13:46:22.6276964Z Downloaded: 7064 file(s) [attempted 7064/8681 = 81%, 1771 KB/s], Decompressed: 804
+2026-10-22T13:46:22.7290893Z Downloaded: 7197 file(s) [attempted 7197/8681 = 82%, 1180 KB/s], Decompressed: 804
+2026-10-22T13:46:22.8272552Z Downloaded: 7326 file(s) [attempted 7326/8681 = 84%, 5524 KB/s], Decompressed: 804
+2026-10-22T13:46:22.9416966Z Downloaded: 7459 file(s) [attempted 7459/8681 = 85%, 579 KB/s], Decompressed: 804
+2026-10-22T13:46:23.0416299Z Downloaded: 7585 file(s) [attempted 7585/8681 = 87%, 372 KB/s], Decompressed: 804
+2026-10-22T13:46:23.1404162Z Downloaded: 7694 file(s) [attempted 7694/8681 = 88%, 422 KB/s], Decompressed: 804
+2026-10-22T13:46:23.2576962Z Downloaded: 7801 file(s) [attempted 7801/8681 = 89%, 1057 KB/s], Decompressed: 804
+2026-10-22T13:46:23.3844389Z Downloaded: 7912 file(s) [attempted 7912/8681 = 91%, 1064 KB/s], Decompressed: 804
+2026-10-22T13:46:23.4838144Z Downloaded: 8009 file(s) [attempted 8009/8681 = 92%, 1364 KB/s], Decompressed: 804
+2026-10-22T13:46:23.5842825Z Downloaded: 8109 file(s) [attempted 8109/8681 = 93%, 2800 KB/s], Decompressed: 804
+2026-10-22T13:46:23.6839957Z Downloaded: 8240 file(s) [attempted 8240/8681 = 94%, 142 KB/s], Decompressed: 804
+2026-10-22T13:46:23.7906936Z Downloaded: 8362 file(s) [attempted 8362/8681 = 96%, 288 KB/s], Decompressed: 804
+2026-10-22T13:46:24.0203834Z Downloaded: 8470 file(s) [attempted 8470/8681 = 97%, 4063 KB/s], Decompressed: 804
+2026-10-22T13:46:24.1528319Z Downloaded: 8568 file(s) [attempted 8568/8681 = 98%, 1613 KB/s], Decompressed: 804
+2026-10-22T13:46:24.2776707Z Downloaded: 8664 file(s) [attempted 8664/8681 = 99%, 756 KB/s], Decompressed: 804
+2026-10-22T13:46:24.4177187Z Downloaded: 8677 file(s) [attempted 8677/8681 = 99%, 60 KB/s], Decompressed: 804
+2026-10-22T13:46:24.4248287Z Downloaded: 8681 file(s) [attempted 8681/8681 = 100%, 414 KB/s], Decompressed: 804
+2026-10-22T13:46:24.4249329Z Downloaded: 8681 file(s) [attempted 8681/8681 = 100%, 414 KB/s], Decompressed: 804
+2026-10-22T13:46:44.9854542Z Decompressed 8681 file(s)
+2026-10-22T13:46:44.9854894Z Already decompressed 8681 file(s)
+2026-10-22T13:46:45.0522005Z ##[endgroup]
+2026-10-22T13:46:45.0522242Z 
+2026-10-22T13:46:45.0532088Z ##[end-action id=__leanprover_lean-action.__run_3;outcome=success;conclusion=success;duration_ms=88422]
+2026-10-22T13:46:45.0563884Z ##[start-action display=build HMarcusWH/zeta-23-lean;id=__leanprover_lean-action.build]
+2026-10-22T13:46:45.0569317Z ##[end-action id=__leanprover_lean-action.build;outcome=skipped;conclusion=skipped;duration_ms=0]
+2026-10-22T13:46:45.0573045Z ##[start-action display=test HMarcusWH/zeta-23-lean;id=__leanprover_lean-action.test]
+2026-10-22T13:46:45.0577898Z ##[end-action id=__leanprover_lean-action.test;outcome=skipped;conclusion=skipped;duration_ms=0]
+2026-10-22T13:46:45.0580555Z ##[start-action display=lint HMarcusWH/zeta-23-lean;id=__leanprover_lean-action.lint]
+2026-10-22T13:46:45.0584844Z ##[end-action id=__leanprover_lean-action.lint;outcome=skipped;conclusion=skipped;duration_ms=0]
+2026-10-22T13:46:45.0587331Z ##[start-action display=Run actions/cache/save@caa296126883cff596d87d8935842f9db880ef25;id=__leanprover_lean-action.__actions_cache]
+2026-10-22T13:46:45.0598755Z ##[end-action id=__leanprover_lean-action.__actions_cache;outcome=skipped;conclusion=skipped;duration_ms=0]
+2026-10-22T13:46:45.0600757Z ##[start-action display=check reservoir eligibility;id=__leanprover_lean-action.__run_4]
+2026-10-22T13:46:45.0604269Z ##[end-action id=__leanprover_lean-action.__run_4;outcome=skipped;conclusion=skipped;duration_ms=0]
+2026-10-22T13:46:45.0607251Z ##[start-action display=check environment with leanchecker;id=__leanprover_lean-action.__run_5]
+2026-10-22T13:46:45.0611889Z ##[end-action id=__leanprover_lean-action.__run_5;outcome=skipped;conclusion=skipped;duration_ms=0]
+2026-10-22T13:46:45.0613989Z ##[start-action display=check environment with nanoda;id=__leanprover_lean-action.nanoda]
+2026-10-22T13:46:45.0617314Z ##[end-action id=__leanprover_lean-action.nanoda;outcome=skipped;conclusion=skipped;duration_ms=0]
+2026-10-22T13:46:45.0619580Z ##[start-action display=audit axioms with axiom-audit;id=__leanprover_lean-action.axiom-audit]
+2026-10-22T13:46:45.0622685Z ##[end-action id=__leanprover_lean-action.axiom-audit;outcome=skipped;conclusion=skipped;duration_ms=0]
+2026-10-22T13:46:45.0683777Z ##[group]Run lake build Zeta23.Permansson.Theorem31
+2026-10-22T13:46:45.0684201Z [36;1mlake build Zeta23.Permansson.Theorem31[0m
+2026-10-22T13:46:45.0786444Z shell: /usr/bin/bash -e {0}
+2026-10-22T13:46:45.0786718Z ##[endgroup]
+2026-10-22T13:46:48.9157655Z ⚠ [3001/3002] Built Zeta23.Permansson.GeneralFramework (2.3s)
+2026-10-22T13:46:48.9158235Z warning: Zeta23/Permansson/GeneralFramework.lean:56:2: Try this: 
+2026-10-22T13:46:48.9158909Z   letI̵
+2026-10-22T13:46:48.9159047Z 
+2026-10-22T13:46:48.9159223Z The goal is a proposition, so `let` is preferred over `letI`.
+2026-10-22T13:46:48.9159680Z The difference between `let` and `letI` is that `letI` inlines the value.
+2026-10-22T13:46:48.9160138Z But this is not relevant for proofs because of proof irrelevance.
+2026-10-22T13:46:48.9160397Z 
+2026-10-22T13:46:48.9160624Z Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+2026-10-22T13:46:48.9161184Z warning: Zeta23/Permansson/GeneralFramework.lean:57:2: Try this: 
+2026-10-22T13:46:48.9161559Z   letI̵
+2026-10-22T13:46:48.9161665Z 
+2026-10-22T13:46:48.9161827Z The goal is a proposition, so `let` is preferred over `letI`.
+2026-10-22T13:46:48.9162256Z The difference between `let` and `letI` is that `letI` inlines the value.
+2026-10-22T13:46:48.9162696Z But this is not relevant for proofs because of proof irrelevance.
+2026-10-22T13:46:48.9163384Z 
+2026-10-22T13:46:48.9163600Z Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+2026-10-22T13:46:51.2177201Z ⚠ [3002/3002] Built Zeta23.Permansson.Theorem31 (2.2s)
+2026-10-22T13:46:51.2178382Z warning: Zeta23/Permansson/Theorem31.lean:40:0: automatically included section variable(s) unused in theorem `Permansson.appendPrefix_pair`:
+2026-10-22T13:46:51.2179386Z   [MeasurableSpace S]
+2026-10-22T13:46:51.2179731Z   [MeasurableSpace X]
+2026-10-22T13:46:51.2180496Z consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+2026-10-22T13:46:51.2181495Z   omit [MeasurableSpace S] [MeasurableSpace X] in theorem ...
+2026-10-22T13:46:51.2181896Z 
+2026-10-22T13:46:51.2182234Z Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+2026-10-22T13:46:51.2183049Z warning: Zeta23/Permansson/Theorem31.lean:110:2: Try this: 
+2026-10-22T13:46:51.2183660Z   haveI̵
+2026-10-22T13:46:51.2183851Z 
+2026-10-22T13:46:51.2184106Z The goal is a proposition, so `have` is preferred over `haveI`.
+2026-10-22T13:46:51.2184575Z The difference between `have` and `haveI` is that `haveI` inlines the value.
+2026-10-22T13:46:51.2185223Z But this is not relevant for proofs because of proof irrelevance.
+2026-10-22T13:46:51.2185634Z 
+2026-10-22T13:46:51.2185980Z Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+2026-10-22T13:46:51.2186786Z warning: Zeta23/Permansson/Theorem31.lean:144:2: Try this: 
+2026-10-22T13:46:51.2187331Z   letI̵
+2026-10-22T13:46:51.2187554Z 
+2026-10-22T13:46:51.2187812Z The goal is a proposition, so `let` is preferred over `letI`.
+2026-10-22T13:46:51.2188498Z The difference between `let` and `letI` is that `letI` inlines the value.
+2026-10-22T13:46:51.2189290Z But this is not relevant for proofs because of proof irrelevance.
+2026-10-22T13:46:51.2189739Z 
+2026-10-22T13:46:51.2190083Z Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+2026-10-22T13:46:51.2190839Z warning: Zeta23/Permansson/Theorem31.lean:168:2: Try this: 
+2026-10-22T13:46:51.2191361Z   letI̵
+2026-10-22T13:46:51.2191511Z 
+2026-10-22T13:46:51.2191762Z The goal is a proposition, so `let` is preferred over `letI`.
+2026-10-22T13:46:51.2192441Z The difference between `let` and `letI` is that `letI` inlines the value.
+2026-10-22T13:46:51.2193157Z But this is not relevant for proofs because of proof irrelevance.
+2026-10-22T13:46:51.2193572Z 
+2026-10-22T13:46:51.2193891Z Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+2026-10-22T13:46:51.2329539Z Build completed successfully (3002 jobs).
+2026-10-22T13:46:51.3267797Z ##[group]Run if grep -R -n -E '\bsorry\b|^[[:space:]]*axiom[[:space:]]' Zeta23/Permansson --include='*.lean'; then
+2026-10-22T13:46:51.3268953Z [36;1mif grep -R -n -E '\bsorry\b|^[[:space:]]*axiom[[:space:]]' Zeta23/Permansson --include='*.lean'; then[0m
+2026-10-22T13:46:51.3269800Z [36;1m  echo 'Forbidden placeholder or axiom detected'[0m
+2026-10-22T13:46:51.3270335Z [36;1m  exit 1[0m
+2026-10-22T13:46:51.3270587Z [36;1mfi[0m
+2026-10-22T13:46:51.3347196Z shell: /usr/bin/bash -e {0}
+2026-10-22T13:46:51.3347477Z ##[endgroup]
+2026-10-22T13:46:51.4187786Z Post job cleanup.
+2026-10-22T13:46:51.5054768Z [command]/usr/bin/git version
+2026-10-22T13:46:51.5102245Z git version 2.55.0
+2026-10-22T13:46:51.5178306Z Temporarily overriding HOME='/home/runner/work/_temp/aadc1aae-3742-4c26-b387-8e935f252788' before making global git config changes
+2026-10-22T13:46:51.5179710Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-22T13:46:51.5181035Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/zeta-23-lean/zeta-23-lean
+2026-10-22T13:46:51.5660076Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-22T13:46:51.5729278Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-22T13:46:51.6196223Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-22T13:46:51.6240531Z http.https://github.com/.extraheader
+2026-10-22T13:46:51.6254536Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-10-22T13:46:51.6304067Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-22T13:46:51.6621258Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-22T13:46:51.6659082Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-22T13:46:51.7124552Z Cleaning up orphan processes
+2026-10-22T13:46:51.7507277Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+

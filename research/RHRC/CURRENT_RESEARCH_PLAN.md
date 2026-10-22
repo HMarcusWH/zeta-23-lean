@@ -1,3 +1,52 @@
+# Current execution plan — OPICA follow-up
+
+<!-- OPICA_AGENT_NAVIGATION_2026_10_22 -->
+**RH, Step 4 and the independent closing inequalities remain OPEN.**
+
+Continue draft PR #294 on `research/opica-native-followup`. Before editing, read
+[AGENTS.md](../../AGENTS.md), the
+[current guide](integration/opica_followup/continuation/2026-10-22/README.md),
+[100-root ledger](integration/opica_followup/continuation/2026-10-22/ROOT_LEDGER_100.json)
+and [next-agent task](integration/opica_followup/continuation/2026-10-22/NEXT_AGENT_PROMPT.md).
+Capture the live head/tree/status and reconcile concurrent work.
+
+The scope is unchanged: 100 original roots and 28 acceptance units. The current
+proof-source checkpoint is `a77ae604`: 41 historical source-bound roots, six
+additional narrow local results, five unaccepted candidates and 48 absent
+implementations. Full current-tree aggregate acceptance remains OPEN.
+
+1. Repair the five retained Laguerre/comb/first-cell/consumer candidates with
+   independent full-type, physical-domain and axiom checks.
+2. Complete the 48 absent roots in their planned modules. The highest-information
+   chains are actual native multiplicity/residual/memory/window rates and the
+   global co-Poisson/measure construction feeding profiles and sampling.
+   Generic formulas do not construct these missing native objects.
+3. Finish the all-100 child receipt reader and CLI linkage, compiler-derived
+   dependencies, full consumer/facade coverage and reviewed registration. Parent
+   projection must continue rejecting incomplete or self-certified metadata.
+4. Reconcile implementation imports explicitly, regenerate canonical outputs
+   with the prescribed producer and verify every exact-head acceptance gate.
+   A navigation diagram does not replace the generated compiler graph.
+5. Harvest every workflow, inspect the successful proofs and complete all nine
+   Post-Green Research conclusions after meaningful green results.
+
+Use the [named remaining-work inventory](integration/opica_followup/continuation/2026-10-22/REMAINING_WORK.md)
+and [progress map](graph/OPICA_FOLLOWUP_CURRENT_STATE.md) to assign proof lanes.
+The Post-Green Amendment remains supporting research; no optional proposal has
+become a mandatory primary. Do not weaken frozen statements, invent premises,
+or turn a subset/metadata check into full release authority.
+
+The historical programme below records earlier research targets and their own
+authority anchors. Its current/next wording does not override this execution
+plan or live compiler/workflow evidence.
+
+<details>
+<summary>Historical programme and generated control snapshot</summary>
+
+The material below preserves earlier checkpoints. Its dated current/next labels
+and renderer-owned state block describe those recorded states. They do not
+override the current OPICA guide and exact-source evidence linked above.
+
 # RHRC current research plan
 
 > **Claim firewall: RH remains OPEN.**
@@ -1610,3 +1659,6 @@ use the existing original drive, physical completion, selected zero and same
 generated output. They provide no independent arithmetic upper, J5.2/MS1 input,
 contact-to-heat construction, or Step 4 closing theorem. Existing OPEN claims,
 D2 dispositions and independent-review gates retain their prior authority.
+
+
+</details>

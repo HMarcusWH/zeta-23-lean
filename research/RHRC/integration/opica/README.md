@@ -1,3 +1,36 @@
+# OPICA — accepted parent and current follow-up
+
+<!-- OPICA_AGENT_NAVIGATION_2026_10_22 -->
+The accepted parent is [merged PR #293](https://github.com/HMarcusWH/zeta-23-lean/pull/293),
+commit `d53dd70d38b0762af130b1d19b795af259f505f5`, tree
+`12691099f1a155a8bfa3ad4f6689146175b233b2`. The
+[refreshed parent acceptance record](../opica_followup/PARENT_INTAKE.json)
+binds the merged tree to tested source and workflow evidence. The parent has
+76 primary roots; its acceptance is separate from the child draft.
+
+For current implementation, use the
+[OPICA follow-up guide](../opica_followup/continuation/2026-10-22/README.md)
+and [100-root ledger](../opica_followup/continuation/2026-10-22/ROOT_LEDGER_100.json).
+Draft PR #294 extends the accepted parent; it has not completed child acceptance.
+The repaired parent wrapper still rejects the missing full-100 reviewed type
+table and receipt linkage. Its regression/metadata checks do not prove any new
+child mathematics or grant registration authority.
+
+Import accepted APIs with `import Zeta23.OPICA`. Preserve parent mathematical
+Lean sources, frozen contracts and existing OPEN claims. The earlier checkpoint
+report and command examples below remain historical provenance; obtain fresh
+exact-source evidence for the actual checkout before asserting current release
+acceptance. Independent mathematical/human approval is not established.
+
+**RH, Step 4 and the independent closing inequalities remain OPEN.**
+
+<details>
+<summary>Historical programme and generated control snapshot</summary>
+
+The material below preserves earlier checkpoints. Its dated current/next labels
+and renderer-owned state block describe those recorded states. They do not
+override the current OPICA guide and exact-source evidence linked above.
+
 # OPICA implementation
 
 **Status: complete validation at the recorded earlier checkpoint.**
@@ -88,3 +121,6 @@ against both the 118 historical bindings and the 76 OPICA bindings. Self and
 unrelated identities are excluded. This records proof-use provenance; it does
 not infer logical equivalence or prove any theorem antecedent. The release
 contract compares those lists with the complete current compiler receipt.
+
+
+</details>

@@ -5,6 +5,12 @@ Read `research/RHRC/integration/opica_followup/README.md` and then
 Use the current checkout and that continuation's ledger; reconcile newer work
 before applying any historical overlay or patch.
 
+For a repository-wide entry point, read root README.md and the continuation's
+DOCUMENTATION_INDEX.md and MODULE_STATUS.md. The manual OPICA progress map is
+`research/RHRC/graph/OPICA_FOLLOWUP_CURRENT_STATE.md`; its arrows organize work,
+not compiler uses or mathematical implications. Older renderer-owned Control-v2
+blocks retain their historical anchor and do not route the active PR #294.
+
 The original follow-up requires **100 primary roots in 28 acceptance units**.
 The historical exact-source subset contains 41 roots. New local candidate gates
 remain separate from aggregate registration and full release acceptance. Five
@@ -48,6 +54,12 @@ All continuation artifacts are individually listed and hash-bound in
 `CONTINUATION_MANIFEST.json`. New work must update the explicit checkpoint
 provenance/pin when changing those artifacts; this never grants proof authority
 or permission to edit protected parent files.
+
+The explicit DOC_NAV_2026_10_22_01 refinement covers seven named documentation
+paths only. Verify their exact bytes through the manifest; it does not authorize
+other parent changes. After changing ledger stages, run the continuation's
+`refresh_navigation.py --write` and check its module table. Refresh the artifact
+manifest after reviewed documentation changes and preserve renderer blocks.
 
 ## Green begins the next investigation
 
