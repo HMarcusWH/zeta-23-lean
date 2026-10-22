@@ -246,6 +246,19 @@ jobs:
               hL hu hM hR f hf hdecay
           #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_ct1_uniform_schwartz_tails
           #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_ct1_common_schwartz_growth
+          theorem expected_ct1_compact_measure_identity (L : ℝ)
+              (K : Set ℝ) (hK : IsCompact K) :
+              Zeta23.OPICA.localSignedCompactRestriction
+                (Zeta23.OPICAFollowup.nearGapCombFamily L) K hK =
+              Zeta23.OPICA.localSignedCompactRestriction
+                (Zeta23.OPICAFollowup.dilatedCombJordan L) K hK +
+              Zeta23.OPICA.localSignedCompactRestriction
+                (Zeta23.OPICAFollowup.dilatedCombJordan (-L)) K hK -
+              (2 * Real.cosh (L / 2)) •
+                Zeta23.OPICA.localSignedCompactRestriction
+                  (Zeta23.OPICAFollowup.dilatedCombJordan 0) K hK :=
+            Zeta23.OPICAFollowup.nearGapCombFamily_compactRestriction L K hK
+          #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_ct1_compact_measure_identity
           #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_ct1_radius
           end Zeta23.OPICAFollowup.W04W07Independent
           LEAN
@@ -256,11 +269,11 @@ jobs:
           data = Path('/tmp/opica-current-candidates/w04-w07-expected.log').read_text()
           records = re.findall(r'depends on axioms:\s*\[([^\]]*)\]', data, re.S)
           allowed = {'propext', 'Classical.choice', 'Quot.sound'}
-          assert len(records) == 18, f'Expected eighteen exact independent axiom receipts, got {len(records)}'
+          assert len(records) == 19, f'Expected nineteen exact independent axiom receipts, got {len(records)}'
           for r in records:
               axioms = {x.strip() for x in r.split(',') if x.strip()}
               assert axioms <= allowed, f'Unexpected axiom(s): {sorted(axioms - allowed)}'
-          print('W04/W07 foundation and eighteen independent domain/axiom checks: PASS. Full original roots OPEN')
+          print('W04/W07 foundation and nineteen independent domain/axiom checks: PASS. Full original roots OPEN')
           PY
       - name: W06 logarithmic mixing weights and independent integer-dilation types
         if: always()
@@ -290,6 +303,16 @@ jobs:
                 ((Real.exp (-t / 2) / Real.sqrt (n : ℝ) : ℝ) : ℂ) *
                   f (t + Real.log (n : ℝ)) :=
             Zeta23.OPICAFollowup.weightedPositiveLogTest_at_dilatedNat f t n hn
+          theorem expected_log_measure_add (mu nu : Measure ℝ) :
+              Zeta23.OPICAFollowup.positiveLogMeasure (mu + nu) =
+                Zeta23.OPICAFollowup.positiveLogMeasure mu +
+                Zeta23.OPICAFollowup.positiveLogMeasure nu :=
+            Zeta23.OPICAFollowup.positiveLogMeasure_add mu nu
+          theorem expected_log_measure_zero :
+              Zeta23.OPICAFollowup.positiveLogMeasure (0 : Measure ℝ) = 0 :=
+            Zeta23.OPICAFollowup.positiveLogMeasure_zero
+          #print axioms Zeta23.OPICAFollowup.W06Independent.expected_log_measure_add
+          #print axioms Zeta23.OPICAFollowup.W06Independent.expected_log_measure_zero
           #print axioms Zeta23.OPICAFollowup.W06Independent.expected_log_weight
           #print axioms Zeta23.OPICAFollowup.W06Independent.expected_complex_pullback
           #print axioms Zeta23.OPICAFollowup.W06Independent.expected_origin_excluded
@@ -325,7 +348,7 @@ jobs:
           data = Path('/tmp/opica-current-candidates/w06-expected.log').read_text()
           found = re.findall(r'depends on axioms:\s*\[([^\]]*)\]', data, re.S)
           allowed = {'propext', 'Classical.choice', 'Quot.sound'}
-          assert len(found) == 8, f'Expected eight axiom closures; saw {len(found)}'
+          assert len(found) == 10, f'Expected ten axiom closures; saw {len(found)}'
           for row in found:
               axioms = {x.strip() for x in row.split(',') if x.strip()}
               assert axioms <= allowed, f'Unexpected axioms: {sorted(axioms - allowed)}'
