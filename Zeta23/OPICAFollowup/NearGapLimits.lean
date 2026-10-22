@@ -347,6 +347,100 @@ theorem nearGapCombFamily_actual_gap {L : ℝ} (hL : 0 ≤ L) :
   exact ⟨hzeroUnion _ hpunctured.1 horigin.1,
     hzeroUnion _ hpunctured.2 horigin.2⟩
 
+/-- Negative Jordan mass of a canonical sum is bounded by the genuine
+negative sources. The positive/negative cancellation internal to
+localJordanDifference can only REDUCE negative mass. -/
+theorem nearGap_localJordanAdd_negative_le
+    (mu nu : LocallyFiniteSignedMeasure) :
+    (localJordanAdd mu nu).negative ≤ mu.negative + nu.negative := by
+  change (mu.negative + nu.negative) -
+    (mu.positive + nu.positive) ≤ mu.negative + nu.negative
+  exact Measure.sub_le _ _
+
+/-- Scaling a signed source cannot create negative measure on a set where
+the source's actual total variation vanishes. -/
+theorem nearGap_localJordanScale_negative_zero
+    (a : ℝ) (mu : LocallyFiniteSignedMeasure) (E : Set ℝ)
+    (hz : mu.totalVariation E = 0) :
+    (localJordanScale a mu).negative E = 0 := by
+  have hvar := localJordanScale_totalVariation_le a mu E
+  simp only [Measure.smul_apply, smul_eq_mul, hz, mul_zero] at hvar
+  have hnegative :
+      (localJordanScale a mu).negative E ≤
+        (localJordanScale a mu).totalVariation E := by
+    rw [LocallyFiniteSignedMeasure.totalVariation, Measure.add_apply]
+    exact le_add_of_nonneg_left (zero_le _)
+  exact le_antisymm (hnegative.trans hvar) (zero_le _)
+
+/-- The true integer comb D_0 has no mass away from the literal
+integer lattice. This is checked on the preimage of the actual
+Measure.map counting construction, not stipulated as a support packet. -/
+theorem nearGap_undilatedComb_integer_support :
+    dilatedCombMeasure 0 integerLatticeᶜ = 0 := by
+  rw [dilatedCombMeasure, Measure.smul_apply,
+    scaledLatticeMeasure,
+    Measure.map_apply (scaledLatticePoint_measurable 0)
+      integerLattice_measurable.compl]
+  have hpre :
+      (scaledLatticePoint 0) ⁻¹' integerLatticeᶜ = ∅ := by
+    apply Set.eq_empty_iff_forall_not_mem.mpr
+    intro n hn
+    apply hn
+    exact ⟨n, by simp [scaledLatticePoint]⟩
+  rw [hpre]
+  simp
+
+/-- The genuine positive lattice comb has zero negative Jordan part,
+regardless of the dilation. This is a canonical Jordan property. -/
+theorem nearGap_dilatedComb_negative_zero (t : ℝ) :
+    (dilatedCombJordan t).negative = 0 := by
+  simp [dilatedCombJordan, localJordanDifference]
+
+/-- The sum of the two positive dilated lattice carriers has no negative
+Jordan mass. Overlapping positive supports cannot change this. -/
+theorem nearGap_two_positive_combs_negative_zero (L : ℝ) :
+    (localJordanAdd (dilatedCombJordan L)
+      (dilatedCombJordan (-L))).negative = 0 := by
+  simp [localJordanAdd, localJordanDifference,
+    nearGap_dilatedComb_negative_zero]
+
+/-- The actual CT1 negative Jordan part is supported on the integers.
+This is stronger than an off-lattice signed-integral inequality. The
+only negative input carrier is the undilated integer comb; all
+noninteger lattice atoms enter through nonnegative counting measures.
+No positivity property is assumed for the unknown output measure. -/
+theorem nearGapCombFamily_negative_integer_support (L : ℝ) :
+    (nearGapCombFamily L).negative integerLatticeᶜ = 0 := by
+  let plus : LocallyFiniteSignedMeasure :=
+    localJordanAdd (dilatedCombJordan L) (dilatedCombJordan (-L))
+  let minus : LocallyFiniteSignedMeasure :=
+    localJordanScale (-(2 * Real.cosh (L / 2)))
+      (dilatedCombJordan 0)
+  have hplus : plus.negative = 0 := by
+    exact nearGap_two_positive_combs_negative_zero L
+  have hsource : (dilatedCombJordan 0).totalVariation
+      integerLatticeᶜ = 0 := by
+    rw [nearGap_dilatedComb_variation]
+    exact nearGap_undilatedComb_integer_support
+  have hminus : minus.negative integerLatticeᶜ = 0 :=
+    nearGap_localJordanScale_negative_zero
+      (-(2 * Real.cosh (L / 2))) (dilatedCombJordan 0)
+      integerLatticeᶜ hsource
+  have hbound :
+      (nearGapCombFamily L).negative integerLatticeᶜ ≤
+        plus.negative integerLatticeᶜ +
+          minus.negative integerLatticeᶜ := by
+    change (localJordanAdd plus minus).negative integerLatticeᶜ ≤ _
+    exact nearGap_localJordanAdd_negative_le plus minus integerLatticeᶜ
+  rw [hplus, Measure.zero_apply, hminus, zero_add] at hbound
+  exact le_antisymm hbound (zero_le _)
+
+/-- Physical off-lattice nonnegativity of the genuine CT1 canonical
+Jordan pair, for every real dilation parameter. -/
+theorem nearGapCombFamily_offlattice_nonnegative (L : ℝ) :
+    (nearGapCombFamily L).OffLatticeNonnegative :=
+  nearGapCombFamily_negative_integer_support L
+
 /-- Uniform interval mass bound for the actual positive lattice carrier,
 deduced from the original source-bound Poisson/dilation theorem. -/
 theorem nearGap_dilatedComb_interval_bound (t R : ℝ) (hR : 0 ≤ R) :
