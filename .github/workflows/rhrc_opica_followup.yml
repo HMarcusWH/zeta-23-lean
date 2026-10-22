@@ -313,6 +313,21 @@ jobs:
             Zeta23.OPICAFollowup.positiveLogMeasure_zero
           #print axioms Zeta23.OPICAFollowup.W06Independent.expected_log_measure_add
           #print axioms Zeta23.OPICAFollowup.W06Independent.expected_log_measure_zero
+          theorem expected_finite_logarithmic_additivity {ι : Type*}
+              (s : Finset ι) (mu : ι → Measure ℝ) :
+              Zeta23.OPICAFollowup.positiveLogMeasure (∑ i ∈ s, mu i) =
+                ∑ i ∈ s, Zeta23.OPICAFollowup.positiveLogMeasure (mu i) :=
+            Zeta23.OPICAFollowup.positiveLogMeasure_finset_sum s mu
+          theorem expected_finite_integer_atoms
+              (t : ℝ) (s : Finset ℕ) (hs : ∀ n ∈ s, 0 < n) :
+              Zeta23.OPICAFollowup.positiveLogMeasure
+                (∑ n ∈ s, Measure.dirac (Real.exp t * (n : ℝ))) =
+                ∑ n ∈ s,
+                  ENNReal.ofReal (Real.exp (-t / 2) / Real.sqrt (n : ℝ)) •
+                    Measure.dirac (t + Real.log (n : ℝ)) :=
+            Zeta23.OPICAFollowup.positiveLogMeasure_finite_integer_lattice t s hs
+          #print axioms Zeta23.OPICAFollowup.W06Independent.expected_finite_logarithmic_additivity
+          #print axioms Zeta23.OPICAFollowup.W06Independent.expected_finite_integer_atoms
           #print axioms Zeta23.OPICAFollowup.W06Independent.expected_log_weight
           #print axioms Zeta23.OPICAFollowup.W06Independent.expected_complex_pullback
           #print axioms Zeta23.OPICAFollowup.W06Independent.expected_origin_excluded
@@ -348,7 +363,7 @@ jobs:
           data = Path('/tmp/opica-current-candidates/w06-expected.log').read_text()
           found = re.findall(r'depends on axioms:\s*\[([^\]]*)\]', data, re.S)
           allowed = {'propext', 'Classical.choice', 'Quot.sound'}
-          assert len(found) == 10, f'Expected ten axiom closures; saw {len(found)}'
+          assert len(found) == 12, f'Expected twelve axiom closures; saw {len(found)}'
           for row in found:
               axioms = {x.strip() for x in row.split(',') if x.strip()}
               assert axioms <= allowed, f'Unexpected axioms: {sorted(axioms - allowed)}'
