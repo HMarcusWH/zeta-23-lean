@@ -101,6 +101,39 @@ theorem nearGapComb_three_carriers_punctured_gap {L : ℝ} (hL : 0 ≤ L) :
     dilatedCombMeasure_punctured_gap_of_le (-L) _ le_rfl,
     dilatedCombMeasure_punctured_gap_of_le 0 _ hone⟩
 
+/-- The genuine CT1 signed Jordan measure vanishes on the punctured
+first-cell gap, evaluated on an arbitrary compact restriction. The proof
+uses the three actual positive counting carriers, the canonical Jordan
+compact identity, and no hypothesized Fourier or positivity property.
+Origin cancellation is a separate established candidate. -/
+theorem nearGapCombFamily_punctured_gap_signed
+    {L : ℝ} (hL : 0 ≤ L) (K : Set ℝ) (hK : IsCompact K) :
+    localSignedCompactRestriction (nearGapCombFamily L) K hK
+      (Ioo (-Real.exp (-L)) (Real.exp (-L)) \ ({0} : Set ℝ)) = 0 := by
+  let E : Set ℝ :=
+    Ioo (-Real.exp (-L)) (Real.exp (-L)) \ ({0} : Set ℝ)
+  have hE : MeasurableSet E :=
+    measurableSet_Ioo.diff (measurableSet_singleton 0)
+  have hthree := nearGapComb_three_carriers_punctured_gap hL
+  change dilatedCombMeasure L E = 0 ∧
+    dilatedCombMeasure (-L) E = 0 ∧
+    dilatedCombMeasure 0 E = 0 at hthree
+  have hterm (t : ℝ) (hz : dilatedCombMeasure t E = 0) :
+      localSignedCompactRestriction (dilatedCombJordan t) K hK E = 0 := by
+    rw [localSignedCompactRestriction_apply _ _ _ E hE]
+    have hrestricted : (dilatedCombMeasure t).restrict K E = 0 := by
+      rw [Measure.restrict_apply hE]
+      exact measure_mono_null inter_subset_right hz
+    simp [dilatedCombJordan, localJordanDifference, hrestricted]
+  have hLzero := hterm L hthree.1
+  have hMinusZero := hterm (-L) hthree.2.1
+  have hOriginZero := hterm 0 hthree.2.2
+  have hcombine := congrArg (fun m : SignedMeasure ℝ => m E)
+    (nearGapCombFamily_compactRestriction L K hK)
+  simpa only [_root_.add_apply, _root_.sub_apply, smul_apply,
+    smul_eq_mul, hLzero, hMinusZero, hOriginZero,
+    zero_add, mul_zero, sub_zero] using hcombine
+
 /-- The original CT1 parameter range places the actual punctured gap
 strictly between the half-unit and the unit gap. -/
 theorem nearGapComb_radius_bounds {L : ℝ} (hL : 0 < L)
