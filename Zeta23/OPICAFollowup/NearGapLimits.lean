@@ -38,6 +38,30 @@ theorem nearGapCombFamily_compactRestriction (L : ℝ)
     localJordanScale_compactRestriction]
   simp only [neg_smul, sub_eq_add_neg]
 
+/-- Explicit CT1 Fourier source before transporting the identity through
+canonical locally finite Jordan measures. The use of the real scalar
+2 cosh(L/2) keeps the original paper's exact normalization. -/
+def nearGapExplicitDilationDistribution (L : ℝ) : TemperedDistribution ℝ ℂ :=
+  dilatedCombDistribution L + dilatedCombDistribution (-L) -
+    ((2 * Real.cosh (L / 2) : ℝ) : ℂ) • dilatedCombDistribution 0
+
+/-- The genuine scaled Poisson-summation identities show that the explicit
+three-comb CT1 distribution is Fourier self-dual for EVERY real L. This
+does not yet identify it with the canonical Jordan distribution; that
+independent physical-equality bridge remains required for the original
+dilation_near_gap_family root. -/
+theorem nearGapExplicitDilationDistribution_selfdual (L : ℝ) :
+    𝓕 (nearGapExplicitDilationDistribution L) =
+      nearGapExplicitDilationDistribution L := by
+  have hL := (dilated_comb_fourier L).2.2
+  have hminus := (dilated_comb_fourier (-L)).2.2
+  have hzero := (dilated_comb_fourier 0).2.2
+  unfold nearGapExplicitDilationDistribution
+  simp only [sub_eq_add_neg, FourierTransform.fourier_add,
+    FourierTransform.fourier_neg, FourierTransform.fourier_smul,
+    hL, hminus, hzero, neg_neg, neg_zero]
+  abel
+
 /-- Exact cancellation of the origin coefficient in the CT1 signed dilation
 comb.  This is the coefficient identity; its realization as an atom of the
 canonical Jordan carrier is a separate physical measure obligation. -/
