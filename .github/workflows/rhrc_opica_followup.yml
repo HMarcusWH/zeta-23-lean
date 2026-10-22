@@ -182,6 +182,16 @@ jobs:
                 D = Zeta23.OPICAFollowup.nearGapCombDistribution L :=
             ⟨Zeta23.OPICAFollowup.nearGapCombDistribution L, rfl⟩
           #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_ct1_signed_growth
+          theorem expected_jordan_add_pairing
+              (mu nu : Zeta23.OPICA.LocallyFiniteSignedMeasure)
+              (hmu : mu.HasLinearGrowth) (hnu : nu.HasLinearGrowth)
+              (f : SchwartzMap ℝ ℂ) :
+              (Zeta23.OPICA.localJordanAdd mu nu).distributionOfLinearGrowth
+                (Zeta23.OPICAFollowup.nearGap_localJordanAdd_growth mu nu hmu hnu) f =
+              mu.distributionOfLinearGrowth hmu f +
+              nu.distributionOfLinearGrowth hnu f :=
+            Zeta23.OPICAFollowup.nearGap_localJordanAdd_pairing mu nu hmu hnu f
+          #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_jordan_add_pairing
           #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_ct1_distribution
           #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_ct1_radius
           end Zeta23.OPICAFollowup.W04W07Independent
@@ -193,11 +203,11 @@ jobs:
           data = Path('/tmp/opica-current-candidates/w04-w07-expected.log').read_text()
           records = re.findall(r'depends on axioms:\s*\[([^\]]*)\]', data, re.S)
           allowed = {'propext', 'Classical.choice', 'Quot.sound'}
-          assert len(records) == 10, f'Expected ten exact independent axiom receipts, got {len(records)}'
+          assert len(records) == 11, f'Expected eleven exact independent axiom receipts, got {len(records)}'
           for r in records:
               axioms = {x.strip() for x in r.split(',') if x.strip()}
               assert axioms <= allowed, f'Unexpected axiom(s): {sorted(axioms - allowed)}'
-          print('W04/W07 foundation and ten independent domain/axiom checks: PASS. Full original roots OPEN')
+          print('W04/W07 foundation and eleven independent domain/axiom checks: PASS. Full original roots OPEN')
           PY
       - name: W06 logarithmic mixing weights and independent integer-dilation types
         if: always()
