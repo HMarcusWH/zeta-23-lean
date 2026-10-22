@@ -22,6 +22,22 @@ def nearGapCombFamily (L : ℝ) : LocallyFiniteSignedMeasure :=
     (localJordanAdd (dilatedCombJordan L) (dilatedCombJordan (-L)))
     (localJordanScale (-(2 * Real.cosh (L / 2))) (dilatedCombJordan 0))
 
+/-- The original CT1 signed dilation identity holds as an equality of
+actual finite signed measures on every compact set. This is stronger than a
+formal Schwartz coefficient calculation: the construction already resolves
+overlaps of the three lattice supports by its canonical Jordan operations. -/
+theorem nearGapCombFamily_compactRestriction (L : ℝ)
+    (K : Set ℝ) (hK : IsCompact K) :
+    localSignedCompactRestriction (nearGapCombFamily L) K hK =
+      localSignedCompactRestriction (dilatedCombJordan L) K hK +
+      localSignedCompactRestriction (dilatedCombJordan (-L)) K hK -
+      (2 * Real.cosh (L / 2)) •
+        localSignedCompactRestriction (dilatedCombJordan 0) K hK := by
+  unfold nearGapCombFamily
+  rw [localJordanAdd_compactRestriction, localJordanAdd_compactRestriction,
+    localJordanScale_compactRestriction]
+  simp only [neg_smul, sub_eq_add_neg]
+
 /-- Exact cancellation of the origin coefficient in the CT1 signed dilation
 comb.  This is the coefficient identity; its realization as an atom of the
 canonical Jordan carrier is a separate physical measure obligation. -/
