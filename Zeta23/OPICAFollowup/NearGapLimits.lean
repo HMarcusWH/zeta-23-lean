@@ -69,6 +69,54 @@ theorem nearGap_dilatedComb_origin_signed (t : ℝ) :
       ENNReal.toReal_ofReal (Real.exp_pos _).le]
   simpa [dilatedCombJordan, localJordanDifference] using hmass
 
+/-- Mutual singularity prevents cancellation of nonzero Jordan atoms
+at a SINGLE point. Thus a vanishing real signed evaluation forces the
+positive and negative atoms to vanish separately. Local finiteness
+rules out the misleading toReal(∞) = 0 possibility. -/
+theorem nearGap_jordan_singleton_of_signed_zero
+    (mu : LocallyFiniteSignedMeasure) (x : ℝ)
+    (hzero : localSignedCompactRestriction mu ({x} : Set ℝ)
+      isCompact_singleton ({x} : Set ℝ) = 0) :
+    mu.positive ({x} : Set ℝ) = 0 ∧
+      mu.negative ({x} : Set ℝ) = 0 := by
+  have hreal : mu.positive.real ({x} : Set ℝ) =
+      mu.negative.real ({x} : Set ℝ) := by
+    rw [localSignedCompactRestriction_apply _ _ _ _
+      (measurableSet_singleton x)] at hzero
+    simp only [Measure.real,
+      Measure.restrict_apply (measurableSet_singleton x),
+      inter_self] at hzero
+    exact sub_eq_zero.mp hzero
+  obtain ⟨s, hs, hposnull, hnegnull⟩ := mu.mutuallySingular
+  by_cases hx : x ∈ s
+  · have hsub : ({x} : Set ℝ) ⊆ s := by
+      intro y hy
+      rcases mem_singleton_iff.mp hy with rfl
+      exact hx
+    have hp : mu.positive ({x} : Set ℝ) = 0 :=
+      measure_mono_null hsub hposnull
+    refine ⟨hp, ?_⟩
+    have hpReal : mu.positive.real ({x} : Set ℝ) = 0 := by
+      simp [Measure.real, hp]
+    have hnReal : mu.negative.real ({x} : Set ℝ) = 0 := by
+      rw [← hreal]
+      exact hpReal
+    exact (measureReal_eq_zero_iff
+      (isCompact_singleton.measure_lt_top.ne)).mp hnReal
+  · have hsub : ({x} : Set ℝ) ⊆ sᶜ := by
+      intro y hy
+      rcases mem_singleton_iff.mp hy with rfl
+      exact hx
+    have hn : mu.negative ({x} : Set ℝ) = 0 :=
+      measure_mono_null hsub hnegnull
+    refine ⟨?_, hn⟩
+    have hnReal : mu.negative.real ({x} : Set ℝ) = 0 := by
+      simp [Measure.real, hn]
+    have hpReal : mu.positive.real ({x} : Set ℝ) = 0 :=
+      hreal.trans hnReal
+    exact (measureReal_eq_zero_iff
+      (isCompact_singleton.measure_lt_top.ne)).mp hpReal
+
 /-- The genuine CT1 signed measure has zero mass at its origin on the
 finite singleton restriction. This closes the physical origin cancellation
 step, separately from Jordan-part nonnegativity, gap and Fourier properties. -/
@@ -81,6 +129,14 @@ theorem nearGapCombFamily_origin_signed_zero (L : ℝ) :
     smul_eq_mul, nearGap_dilatedComb_origin_signed,
     Real.exp_zero, zero_div, neg_div, mul_one] at h
   exact h.trans (nearGapComb_origin_coefficient_zero L)
+
+/-- Full canonical Jordan origin cancellation of the genuine CT1
+signed measure, not merely its signed scalar coefficient. -/
+theorem nearGapCombFamily_origin_jordan_zero (L : ℝ) :
+    (nearGapCombFamily L).positive ({0} : Set ℝ) = 0 ∧
+      (nearGapCombFamily L).negative ({0} : Set ℝ) = 0 :=
+  nearGap_jordan_singleton_of_signed_zero
+    (nearGapCombFamily L) 0 (nearGapCombFamily_origin_signed_zero L)
 
 /-- Local Jordan evaluation of an origin atom is independent of the compact
 collar, provided the collar actually contains the origin. This is an
