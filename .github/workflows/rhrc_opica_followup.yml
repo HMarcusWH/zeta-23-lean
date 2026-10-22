@@ -78,6 +78,9 @@ jobs:
   repaired-candidates:
     name: Narrow repaired candidates (aggregate acceptance remains open)
     needs: preparation-contract
+    # Compile actual mathematics even when independent preflight metadata is
+    # red. The failed preparation still remains a required failing gate.
+    if: ${{ always() && !cancelled() }}
     runs-on: ubuntu-latest
     timeout-minutes: 120
     steps:
@@ -104,6 +107,7 @@ jobs:
         if: always()
         shell: bash
         run: |
+          set -euo pipefail
           mkdir -p /tmp/opica-current-candidates
           lake build Zeta23.OPICAFollowup.Consumers 2>&1 | tee /tmp/opica-current-candidates/w01-consumer-build.log
           printf '%s\n' \
