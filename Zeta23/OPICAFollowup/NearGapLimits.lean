@@ -156,6 +156,8 @@ theorem nearGapCombFamily_uniform_variation {L R : ℝ}
         2 * ((Real.exp (L / 2) + Real.exp (-(L / 2))) / 2) := by
       positivity
     rw [abs_neg, abs_of_nonneg hnonneg]
+    have hneg : -(L / 2) = -L / 2 := by ring
+    rw [hneg]
     ring
   have hμR := nearGap_dilatedComb_interval_bound L R hR
   have hνR := nearGap_dilatedComb_interval_bound (-L) R hR
