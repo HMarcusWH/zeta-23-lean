@@ -178,6 +178,52 @@ jobs:
               assert axioms <= allowed, f'Unexpected axiom(s): {sorted(axioms - allowed)}'
           print('W04/W07 foundation and six independent domain/axiom checks: PASS. Full original roots OPEN')
           PY
+      - name: W06 logarithmic mixing weights and independent integer-dilation types
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/opica-current-candidates
+          lake build Zeta23.OPICAFollowup.WeightedMixing 2>&1 | tee /tmp/opica-current-candidates/w06-mixing-build.log
+          cat > /tmp/opica-w06-expected.lean <<'LEAN'
+          import Zeta23.OPICAFollowup.WeightedMixing
+          namespace Zeta23.OPICAFollowup.W06Independent
+          theorem expected_log_weight (t : ℝ) :
+              Zeta23.OPICAFollowup.positiveLogWeight (Real.exp t) =
+                Real.exp (-t / 2) :=
+            Zeta23.OPICAFollowup.positiveLogWeight_exp t
+          theorem expected_complex_pullback (f : ℝ → ℂ) (t : ℝ) :
+              Zeta23.OPICAFollowup.weightedPositiveLogTest f (Real.exp t) =
+                (Real.exp (-t / 2) : ℂ) * f t :=
+            Zeta23.OPICAFollowup.weightedPositiveLogTest_exp f t
+          theorem expected_origin_excluded (f : ℝ → ℂ) {x : ℝ} (hx : x ≤ 0) :
+              Zeta23.OPICAFollowup.weightedPositiveLogTest f x = 0 :=
+            Zeta23.OPICAFollowup.weightedPositiveLogTest_nonpos f hx
+          theorem expected_physical_integer_dilation
+              (f : ℝ → ℂ) (t : ℝ) (n : ℕ) (hn : 0 < n) :
+              Zeta23.OPICAFollowup.weightedPositiveLogTest f (Real.exp t * (n : ℝ)) =
+                ((Real.exp (-t / 2) / Real.sqrt (n : ℝ) : ℝ) : ℂ) *
+                  f (t + Real.log (n : ℝ)) :=
+            Zeta23.OPICAFollowup.weightedPositiveLogTest_at_dilatedNat f t n hn
+          #print axioms Zeta23.OPICAFollowup.W06Independent.expected_log_weight
+          #print axioms Zeta23.OPICAFollowup.W06Independent.expected_complex_pullback
+          #print axioms Zeta23.OPICAFollowup.W06Independent.expected_origin_excluded
+          #print axioms Zeta23.OPICAFollowup.W06Independent.expected_physical_integer_dilation
+          end Zeta23.OPICAFollowup.W06Independent
+          LEAN
+          lake env lean /tmp/opica-w06-expected.lean 2>&1 | tee /tmp/opica-current-candidates/w06-expected.log
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          data = Path('/tmp/opica-current-candidates/w06-expected.log').read_text()
+          found = re.findall(r'depends on axioms:\s*\[([^\]]*)\]', data, re.S)
+          allowed = {'propext', 'Classical.choice', 'Quot.sound'}
+          assert len(found) == 4, f'Expected four axiom closures; saw {len(found)}'
+          for row in found:
+              axioms = {x.strip() for x in row.split(',') if x.strip()}
+              assert axioms <= allowed, f'Unexpected axioms: {sorted(axioms - allowed)}'
+          print('W06 source-bound finite transport proofs: PASS; Möbius inversion root still OPEN')
+          PY
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()
         with:
