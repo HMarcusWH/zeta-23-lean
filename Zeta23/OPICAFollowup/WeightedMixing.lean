@@ -44,6 +44,39 @@ theorem weightedPositiveLogTest_exp (f : ℝ → ℂ) (t : ℝ) :
       (Real.exp (-t / 2) : ℂ) * f t := by
   simp only [weightedPositiveLogTest, positiveLogWeight_exp, Real.log_exp]
 
+/-- The logarithmic pullback vanishes on nonpositive arguments, retaining
+the zero-origin atom separately in the later measure construction. -/
+theorem weightedPositiveLogTest_nonpos (f : ℝ → ℂ) {x : ℝ}
+    (hx : x ≤ 0) : weightedPositiveLogTest f x = 0 := by
+  simp only [weightedPositiveLogTest, positiveLogWeight, if_neg (not_lt.mpr hx)]
+  simp
+
+/-- Every actual positive integer dilation has the required n^(-1/2) factor
+after the x^(-1/2) logarithmic pullback.  This is a genuine finite pointwise
+identity, not yet a Möbius measure inversion or a Fubini theorem. -/
+theorem weightedPositiveLogTest_at_dilatedNat (f : ℝ → ℂ) (t : ℝ)
+    (n : ℕ) (hn : 0 < n) :
+    weightedPositiveLogTest f (Real.exp t * (n : ℝ)) =
+      ((Real.exp (-t / 2) / Real.sqrt (n : ℝ) : ℝ) : ℂ) *
+        f (t + Real.log (n : ℝ)) := by
+  have hnreal : (0 : ℝ) < (n : ℝ) := by exact_mod_cast hn
+  have hprod : 0 < Real.exp t * (n : ℝ) :=
+    mul_pos (Real.exp_pos t) hnreal
+  have hsqrt : Real.sqrt (Real.exp t * (n : ℝ)) =
+      Real.exp (t / 2) * Real.sqrt (n : ℝ) := by
+    rw [Real.sqrt_mul (Real.exp_nonneg t), weighted_sqrt_exp_half]
+  have hlog : Real.log (Real.exp t * (n : ℝ)) =
+      t + Real.log (n : ℝ) := by
+    rw [Real.log_mul (Real.exp_pos t).ne' hnreal.ne', Real.log_exp]
+  have hweight : positiveLogWeight (Real.exp t * (n : ℝ)) =
+      Real.exp (-t / 2) / Real.sqrt (n : ℝ) := by
+    unfold positiveLogWeight
+    rw [if_pos hprod, hsqrt, mul_inv_rev]
+    rw [show -t / 2 = -(t / 2) by ring, Real.exp_neg]
+    ring
+  unfold weightedPositiveLogTest
+  rw [hweight, hlog]
+
 def weightedVariation (a : ℝ) (sigma : LocallyFiniteComplexMeasure) : ℝ≥0∞ :=
   ∫⁻ t, ENNReal.ofReal (Real.exp (-a*t)) ∂sigma.totalVariation
 
