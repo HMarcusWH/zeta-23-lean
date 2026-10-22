@@ -191,6 +191,17 @@ jobs:
               mu.distributionOfLinearGrowth hmu f +
               nu.distributionOfLinearGrowth hnu f :=
             Zeta23.OPICAFollowup.nearGap_localJordanAdd_pairing mu nu hmu hnu f
+          theorem expected_ct1_exp_sum_uniform {L : ℝ}
+              (hL : 0 ≤ L) (hu : L ≤ Real.log 2) :
+              Real.exp (L / 2) + Real.exp (-L / 2) ≤ 3 :=
+            Zeta23.OPICAFollowup.nearGap_dilation_exp_sum_le_three hL hu
+          theorem expected_ct1_uniform_scalar_budget {L R : ℝ}
+              (hL : 0 ≤ L) (hu : L ≤ Real.log 2) (hR : 0 ≤ R) :
+              (6 + 4 * R) * (Real.exp (L / 2) + Real.exp (-L / 2)) ≤
+                18 * (1 + R) :=
+            Zeta23.OPICAFollowup.nearGap_dilation_uniform_scalar_budget hL hu hR
+          #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_ct1_exp_sum_uniform
+          #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_ct1_uniform_scalar_budget
           #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_jordan_add_pairing
           #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_ct1_distribution
           #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_ct1_radius
@@ -203,11 +214,11 @@ jobs:
           data = Path('/tmp/opica-current-candidates/w04-w07-expected.log').read_text()
           records = re.findall(r'depends on axioms:\s*\[([^\]]*)\]', data, re.S)
           allowed = {'propext', 'Classical.choice', 'Quot.sound'}
-          assert len(records) == 11, f'Expected eleven exact independent axiom receipts, got {len(records)}'
+          assert len(records) == 13, f'Expected thirteen exact independent axiom receipts, got {len(records)}'
           for r in records:
               axioms = {x.strip() for x in r.split(',') if x.strip()}
               assert axioms <= allowed, f'Unexpected axiom(s): {sorted(axioms - allowed)}'
-          print('W04/W07 foundation and eleven independent domain/axiom checks: PASS. Full original roots OPEN')
+          print('W04/W07 foundation and thirteen independent domain/axiom checks: PASS. Full original roots OPEN')
           PY
       - name: W06 logarithmic mixing weights and independent integer-dilation types
         if: always()
