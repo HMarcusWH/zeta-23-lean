@@ -49,6 +49,39 @@ theorem nearGapComb_origin_coefficient_zero (L : ℝ) :
   rw [hneg]
   ring
 
+/-- The actual positive dilated counting measure assigns its prescribed
+atom at the origin, after compact restriction and signed Jordan embedding.
+This is a physical measure statement, not just the formal coefficient law. -/
+theorem nearGap_dilatedComb_origin_signed (t : ℝ) :
+    localSignedCompactRestriction (dilatedCombJordan t)
+      ({0} : Set ℝ) isCompact_singleton ({0} : Set ℝ) =
+        Real.exp (t / 2) := by
+  rw [localSignedCompactRestriction_apply _ _ _
+    ({0} : Set ℝ) (measurableSet_singleton 0)]
+  have hmass :
+      ((dilatedCombMeasure t).restrict ({0} : Set ℝ)).real
+        ({0} : Set ℝ) = Real.exp (t / 2) := by
+    change (((dilatedCombMeasure t).restrict ({0} : Set ℝ))
+      ({0} : Set ℝ)).toReal = Real.exp (t / 2)
+    rw [Measure.restrict_apply (measurableSet_singleton (0 : ℝ))]
+    simp only [inter_self]
+    rw [dilatedCombMeasure_origin,
+      ENNReal.toReal_ofReal (Real.exp_pos _).le]
+  simpa [dilatedCombJordan, localJordanDifference] using hmass
+
+/-- The genuine CT1 signed measure has zero mass at its origin on the
+finite singleton restriction. This closes the physical origin cancellation
+step, separately from Jordan-part nonnegativity, gap and Fourier properties. -/
+theorem nearGapCombFamily_origin_signed_zero (L : ℝ) :
+    localSignedCompactRestriction (nearGapCombFamily L)
+      ({0} : Set ℝ) isCompact_singleton ({0} : Set ℝ) = 0 := by
+  have h := congrArg (fun m : SignedMeasure ℝ => m ({0} : Set ℝ))
+    (nearGapCombFamily_compactRestriction L ({0} : Set ℝ) isCompact_singleton)
+  simp only [_root_.add_apply, _root_.sub_apply, smul_apply,
+    smul_eq_mul, nearGap_dilatedComb_origin_signed,
+    Real.exp_zero, zero_div, neg_div, mul_one] at h
+  exact h.trans (nearGapComb_origin_coefficient_zero L)
+
 /-- The original CT1 parameter range places the actual punctured gap
 strictly between the half-unit and the unit gap. -/
 theorem nearGapComb_radius_bounds {L : ℝ} (hL : 0 < L)
