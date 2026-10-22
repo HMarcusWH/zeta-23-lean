@@ -82,6 +82,42 @@ theorem nearGapCombFamily_origin_signed_zero (L : ℝ) :
     Real.exp_zero, zero_div, neg_div, mul_one] at h
   exact h.trans (nearGapComb_origin_coefficient_zero L)
 
+/-- Local Jordan evaluation of an origin atom is independent of the compact
+collar, provided the collar actually contains the origin. This is an
+ordinary measure restriction identity, not a special CT1 hypothesis. -/
+theorem nearGap_signed_origin_restriction_of_mem
+    (mu : LocallyFiniteSignedMeasure) (K : Set ℝ) (hK : IsCompact K)
+    (h0 : (0 : ℝ) ∈ K) :
+    localSignedCompactRestriction mu K hK ({0} : Set ℝ) =
+      localSignedCompactRestriction mu ({0} : Set ℝ)
+        isCompact_singleton ({0} : Set ℝ) := by
+  have hset : K ∩ ({0} : Set ℝ) = ({0} : Set ℝ) := by
+    ext x
+    simp only [mem_inter_iff, mem_singleton_iff]
+    constructor
+    · exact And.right
+    · intro hx
+      subst x
+      exact ⟨h0, rfl⟩
+  rw [localSignedCompactRestriction_apply _ _ _ _
+        (measurableSet_singleton (0 : ℝ)),
+      localSignedCompactRestriction_apply _ _ _ _
+        (measurableSet_singleton (0 : ℝ))]
+  simp only [Measure.real,
+    Measure.restrict_apply (measurableSet_singleton (0 : ℝ)),
+    hset, inter_self]
+
+/-- The physical signed origin cancellation of the CT1 measure survives
+every genuine compact restriction containing zero. The zero atom cannot
+be hidden by choosing a different compact cutoff. -/
+theorem nearGapCombFamily_origin_signed_zero_on_compact (L : ℝ)
+    (K : Set ℝ) (hK : IsCompact K) (h0 : (0 : ℝ) ∈ K) :
+    localSignedCompactRestriction (nearGapCombFamily L) K hK
+      ({0} : Set ℝ) = 0 := by
+  rw [nearGap_signed_origin_restriction_of_mem
+    (nearGapCombFamily L) K hK h0]
+  exact nearGapCombFamily_origin_signed_zero L
+
 /-- All three actual positive lattice carriers vanish on the same
 punctured interval (-exp(-L), exp(-L)) whenever L is nonnegative.
 This is source-backed support, not a stipulated signed gap; the origin
