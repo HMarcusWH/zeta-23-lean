@@ -928,6 +928,26 @@ theorem nearGapCombDistribution_selfdual_of_scale_pairing
   rw [nearGapCombDistribution_eq_explicit_of_scale_pairing L hscale]
   exact nearGapExplicitDilationDistribution_selfdual L
 
+/-- The canonical CT1 Jordan distribution is exactly the physical
+three-comb source distribution. The previously explicit scalar bridge has
+now been discharged by the positive-counting-measure Jordan calculation.
+No conditional Fourier premise is present in this theorem. -/
+theorem nearGapCombDistribution_eq_explicit (L : ℝ) :
+    nearGapCombDistribution L = nearGapExplicitDilationDistribution L := by
+  exact nearGapCombDistribution_eq_explicit_of_scale_pairing L
+    (nearGap_dilatedComb_negative_scale_pairing
+      0 (2 * Real.cosh (L / 2)) (by positivity))
+
+/-- Unconditional Fourier self-duality of the actual canonical CT1 Jordan
+carrier, given the preceding source-preserving distribution identity.
+The full original CT1 root still includes its nonzero, evenness, gap,
+off-lattice, growth and domain clauses. -/
+theorem nearGapCombFamily_fourier_selfdual (L : ℝ) :
+    (nearGapCombFamily L).FourierSelfdual (nearGapCombFamily_growth L) := by
+  change 𝓕 (nearGapCombDistribution L) = nearGapCombDistribution L
+  rw [nearGapCombDistribution_eq_explicit]
+  exact nearGapExplicitDilationDistribution_selfdual L
+
 lemma nearGap_origin_zero (mu : Measure ℝ) {a : ℝ} (ha : 0<a)
     (hgap : mu (Ioo (-a) a)=0) : mu {0}=0 := by
   apply measure_mono_null _ hgap
