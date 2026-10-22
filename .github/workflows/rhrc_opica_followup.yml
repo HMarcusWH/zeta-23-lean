@@ -139,6 +139,7 @@ jobs:
           import Zeta23.OPICAFollowup.NativeWindowRate
           import Zeta23.OPICAFollowup.NearGapLimits
           open Set MeasureTheory
+          open scoped FourierTransform
           namespace Zeta23.OPICAFollowup.W04W07Independent
           theorem expected_window_integrable (d : ℕ) (C T : ℝ) :
               IntegrableOn (fun t : ℝ => |Zeta23.OPICAFollowup.primeFieldFamily d t| ^ 2)
@@ -396,6 +397,34 @@ jobs:
           #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_actual_dilation_atom
           #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_first_ct1_point_not_integer
           #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_CT1_physical_nonzero_signed_atom
+          theorem expected_CT1_canonical_equals_explicit_if_scalar_bridge
+              (L : ℝ)
+              (hscale :
+                (Zeta23.OPICA.localJordanScale (-(2 * Real.cosh (L / 2)))
+                  (Zeta23.OPICAFollowup.dilatedCombJordan 0)).distributionOfLinearGrowth
+                  (Zeta23.OPICAFollowup.nearGap_localJordanScale_growth _ _
+                    (Zeta23.OPICAFollowup.dilatedCombJordan_growth 0)) =
+                  (-(((2 * Real.cosh (L / 2) : ℝ) : ℂ))) •
+                    Zeta23.OPICAFollowup.dilatedCombDistribution 0) :
+              Zeta23.OPICAFollowup.nearGapCombDistribution L =
+                Zeta23.OPICAFollowup.nearGapExplicitDilationDistribution L :=
+            Zeta23.OPICAFollowup.nearGapCombDistribution_eq_explicit_of_scale_pairing
+              L hscale
+          theorem expected_CT1_canonical_selfdual_if_scalar_bridge
+              (L : ℝ)
+              (hscale :
+                (Zeta23.OPICA.localJordanScale (-(2 * Real.cosh (L / 2)))
+                  (Zeta23.OPICAFollowup.dilatedCombJordan 0)).distributionOfLinearGrowth
+                  (Zeta23.OPICAFollowup.nearGap_localJordanScale_growth _ _
+                    (Zeta23.OPICAFollowup.dilatedCombJordan_growth 0)) =
+                  (-(((2 * Real.cosh (L / 2) : ℝ) : ℂ))) •
+                    Zeta23.OPICAFollowup.dilatedCombDistribution 0) :
+              (Zeta23.OPICAFollowup.nearGapCombFamily L).FourierSelfdual
+                (Zeta23.OPICAFollowup.nearGapCombFamily_growth L) :=
+            Zeta23.OPICAFollowup.nearGapCombDistribution_selfdual_of_scale_pairing
+              L hscale
+          #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_CT1_canonical_equals_explicit_if_scalar_bridge
+          #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_CT1_canonical_selfdual_if_scalar_bridge
           #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_explicit_CT1_source_fourier_selfdual
           #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_ct1_offlattice_nonnegative
           #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_ct1_genuine_jordan_gap
@@ -412,11 +441,11 @@ jobs:
           data = Path('/tmp/opica-current-candidates/w04-w07-expected.log').read_text()
           records = re.findall(r'depends on axioms:\s*\[([^\]]*)\]', data, re.S)
           allowed = {'propext', 'Classical.choice', 'Quot.sound'}
-          assert len(records) == 41, f'Expected forty-one exact independent axiom receipts, got {len(records)}'
+          assert len(records) == 43, f'Expected forty-three exact independent axiom receipts, got {len(records)}'
           for r in records:
               axioms = {x.strip() for x in r.split(',') if x.strip()}
               assert axioms <= allowed, f'Unexpected axiom(s): {sorted(axioms - allowed)}'
-          print('W04/W07 foundation and forty-one independent domain/axiom checks: PASS. Full original roots OPEN')
+          print('W04/W07 foundation and forty-three independent domain/axiom checks: PASS. Full original roots OPEN')
           PY
       - name: W06 logarithmic mixing weights and independent integer-dilation types
         if: always()
