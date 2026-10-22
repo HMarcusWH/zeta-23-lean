@@ -90,6 +90,33 @@ theorem nearGap_dilatedComb_interval_bound (t R : ℝ) (hR : 0 ≤ R) :
   have ht := ENNReal.toReal_mono ENNReal.ofReal_ne_top h
   rwa [ENNReal.toReal_ofReal (by positivity)] at ht
 
+/-- A common scalar bound for every dilation between the undeformed comb
+and the limiting two-to-one lattice scale. Both signs of L are retained. -/
+theorem nearGap_dilation_exp_sum_le_three {L : ℝ}
+    (hL : 0 ≤ L) (hu : L ≤ Real.log 2) :
+    Real.exp (L / 2) + Real.exp (-L / 2) ≤ 3 := by
+  have hhalf : L / 2 ≤ Real.log 2 := by linarith
+  have hplus : Real.exp (L / 2) ≤ 2 := by
+    have he := Real.exp_le_exp.mpr hhalf
+    simpa only [Real.exp_log (by norm_num : (0 : ℝ) < 2)] using he
+  have hminus : Real.exp (-L / 2) ≤ 1 := by
+    have he := Real.exp_le_exp.mpr (show -L / 2 ≤ 0 by linarith)
+    simpa only [Real.exp_zero] using he
+  linarith
+
+/-- Universal parameter budget for the three actual dilation amplitudes and
+their interval-counting coefficients. The future uniform Jordan-variation
+theorem must still prove that the actual measure is bounded by this scalar. -/
+theorem nearGap_dilation_uniform_scalar_budget {L R : ℝ}
+    (hL : 0 ≤ L) (hu : L ≤ Real.log 2) (hR : 0 ≤ R) :
+    (6 + 4 * R) * (Real.exp (L / 2) + Real.exp (-L / 2)) ≤
+      18 * (1 + R) := by
+  have hsum := nearGap_dilation_exp_sum_le_three hL hu
+  calc
+    _ ≤ (6 + 4 * R) * 3 :=
+      mul_le_mul_of_nonneg_left hsum (by linarith)
+    _ ≤ 18 * (1 + R) := by nlinarith
+
 /-- A *common* linear-variation estimate for the actual CT1 signed carrier,
 valid for every 0 ≤ L ≤ log 2 with no global finite-mass assumption.
 
@@ -176,33 +203,6 @@ theorem nearGapCombFamily_uniform_variation {L R : ℝ}
     _ ≤ _ := hsum
     _ = _ := heq
     _ ≤ _ := nearGap_dilation_uniform_scalar_budget hL hu hR
-
-/-- A common scalar bound for every dilation between the undeformed comb
-and the limiting two-to-one lattice scale. Both signs of L are retained. -/
-theorem nearGap_dilation_exp_sum_le_three {L : ℝ}
-    (hL : 0 ≤ L) (hu : L ≤ Real.log 2) :
-    Real.exp (L / 2) + Real.exp (-L / 2) ≤ 3 := by
-  have hhalf : L / 2 ≤ Real.log 2 := by linarith
-  have hplus : Real.exp (L / 2) ≤ 2 := by
-    have he := Real.exp_le_exp.mpr hhalf
-    simpa only [Real.exp_log (by norm_num : (0 : ℝ) < 2)] using he
-  have hminus : Real.exp (-L / 2) ≤ 1 := by
-    have he := Real.exp_le_exp.mpr (show -L / 2 ≤ 0 by linarith)
-    simpa only [Real.exp_zero] using he
-  linarith
-
-/-- Universal parameter budget for the three actual dilation amplitudes and
-their interval-counting coefficients. The future uniform Jordan-variation
-theorem must still prove that the actual measure is bounded by this scalar. -/
-theorem nearGap_dilation_uniform_scalar_budget {L R : ℝ}
-    (hL : 0 ≤ L) (hu : L ≤ Real.log 2) (hR : 0 ≤ R) :
-    (6 + 4 * R) * (Real.exp (L / 2) + Real.exp (-L / 2)) ≤
-      18 * (1 + R) := by
-  have hsum := nearGap_dilation_exp_sum_le_three hL hu
-  calc
-    _ ≤ (6 + 4 * R) * 3 :=
-      mul_le_mul_of_nonneg_left hsum (by linarith)
-    _ ≤ 18 * (1 + R) := by nlinarith
 
 /-- Genuine linear growth survives canonical Jordan addition; it is a
 consequence of the actual total-variation inequality, not a condition placed
