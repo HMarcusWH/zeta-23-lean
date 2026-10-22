@@ -22,6 +22,31 @@ def nearGapCombFamily (L : ℝ) : LocallyFiniteSignedMeasure :=
     (localJordanAdd (dilatedCombJordan L) (dilatedCombJordan (-L)))
     (localJordanScale (-(2 * Real.cosh (L / 2))) (dilatedCombJordan 0))
 
+/-- Exact cancellation of the origin coefficient in the CT1 signed dilation
+comb.  This is the coefficient identity; its realization as an atom of the
+canonical Jordan carrier is a separate physical measure obligation. -/
+theorem nearGapComb_origin_coefficient_zero (L : ℝ) :
+    Real.exp (L / 2) + Real.exp (-L / 2) -
+      2 * Real.cosh (L / 2) = 0 := by
+  rw [Real.cosh_eq]
+  ring
+
+/-- The original CT1 parameter range places the actual punctured gap
+strictly between the half-unit and the unit gap. -/
+theorem nearGapComb_radius_bounds {L : ℝ} (hL : 0 < L)
+    (hupper : L < Real.log 2) :
+    (1 / 2 : ℝ) < Real.exp (-L) ∧ Real.exp (-L) < 1 := by
+  constructor
+  · have h : Real.exp (-Real.log (2 : ℝ)) < Real.exp (-L) :=
+      Real.exp_lt_exp.mpr (by linarith)
+    have heq : Real.exp (-Real.log (2 : ℝ)) = (1 / 2 : ℝ) := by
+      rw [Real.exp_neg, Real.exp_log (by norm_num : (0 : ℝ) < 2)]
+      norm_num
+    rwa [heq] at h
+  · have h : Real.exp (-L) < Real.exp (0 : ℝ) :=
+      Real.exp_lt_exp.mpr (by linarith)
+    simpa only [Real.exp_zero] using h
+
 lemma nearGap_origin_zero (mu : Measure ℝ) {a : ℝ} (ha : 0<a)
     (hgap : mu (Ioo (-a) a)=0) : mu {0}=0 := by
   apply measure_mono_null _ hgap
