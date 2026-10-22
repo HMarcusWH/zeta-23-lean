@@ -77,6 +77,30 @@ theorem weightedPositiveLogTest_at_dilatedNat (f : ℝ → ℂ) (t : ℝ)
   unfold weightedPositiveLogTest
   rw [hweight, hlog]
 
+/-- Actual positive-axis weighted logarithmic pushforward. The restriction
+eliminates the zero atom *before* taking logarithms. Every nonzero integer
+lattice atom is weighted by x^(-1/2); neither an assumed inverse transform
+nor a globally finite measure is part of this definition.
+
+This is the positive-measure component of the eventual complex Jordan-coordinate
+inversion. The complete complex Möbius identity remains OPEN. -/
+def positiveLogMeasure (mu : Measure ℝ) : Measure ℝ :=
+  Measure.map Real.log
+    ((mu.restrict (Ioi (0 : ℝ))).withDensity
+      (fun x : ℝ => ENNReal.ofReal (positiveLogWeight x)))
+
+/-- The new logarithmic measure has the correct physical normalization for
+every true positive Dirac atom, including arbitrary real dilation. -/
+theorem positiveLogMeasure_dirac (t : ℝ) :
+    positiveLogMeasure (Measure.dirac (Real.exp t)) =
+      ENNReal.ofReal (Real.exp (-t / 2)) • (Measure.dirac t) := by
+  classical
+  unfold positiveLogMeasure
+  rw [Measure.restrict_dirac]
+  simp only [Set.mem_Ioi, Real.exp_pos, ↓reduceIte]
+  rw [Measure.dirac_withDensity, positiveLogWeight_exp, Measure.map_smul,
+    Measure.map_dirac, Real.log_exp]
+
 def weightedVariation (a : ℝ) (sigma : LocallyFiniteComplexMeasure) : ℝ≥0∞ :=
   ∫⁻ t, ENNReal.ofReal (Real.exp (-a*t)) ∂sigma.totalVariation
 
