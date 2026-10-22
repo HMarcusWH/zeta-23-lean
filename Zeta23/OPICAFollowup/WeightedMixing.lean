@@ -101,6 +101,30 @@ theorem positiveLogMeasure_dirac (t : ℝ) :
   rw [Measure.dirac_withDensity, positiveLogWeight_exp, Measure.map_smul,
     Measure.map_dirac, Real.log_exp]
 
+/-- Zero and negative atomic inputs disappear *before* logarithmic transport.
+This is the origin firewall: the integer comb's 0 atom must be accounted for
+separately rather than silently pushed to Real.log 0. -/
+theorem positiveLogMeasure_dirac_nonpos {x : ℝ} (hx : x ≤ 0) :
+    positiveLogMeasure (Measure.dirac x) = 0 := by
+  classical
+  unfold positiveLogMeasure
+  rw [Measure.restrict_dirac]
+  have hnot : x ∉ Ioi (0 : ℝ) := not_lt.mpr hx
+  simp only [Set.mem_Ioi] at hnot
+  simp [hnot]
+
+/-- Dirac normalisation on every positive input, not only exponential inputs.
+The compact logarithmic measure is weighted by the original inverse
+square-root source rather than an artificially normalized mass. -/
+theorem positiveLogMeasure_dirac_pos {x : ℝ} (hx : 0 < x) :
+    positiveLogMeasure (Measure.dirac x) =
+      ENNReal.ofReal (positiveLogWeight x) • (Measure.dirac (Real.log x)) := by
+  classical
+  unfold positiveLogMeasure
+  rw [Measure.restrict_dirac]
+  simp only [Set.mem_Ioi, hx, ↓reduceIte]
+  rw [Measure.dirac_withDensity, Measure.map_smul, Measure.map_dirac]
+
 def weightedVariation (a : ℝ) (sigma : LocallyFiniteComplexMeasure) : ℝ≥0∞ :=
   ∫⁻ t, ENNReal.ofReal (Real.exp (-a*t)) ∂sigma.totalVariation
 
