@@ -120,3 +120,12 @@ Read the [complete Stage 2 research pass](evidence/current-codex/stage2/INTEGRAT
 and the per-lane research passes. Refresh all workflows at the eventual exact
 head before asserting current CI or full acceptance. Publishing this checkpoint
 creates no RH authority.
+
+## Subsequent compiler checkpoint
+
+The parent adapter build subsequently finished successfully; all490project
+import sources match main exactly. The genuine Consumers build then failed,
+including zero-multiplicity/leading-coefficient normalization diagnostics.
+Read [Stage3STATUS](evidence/current-codex/stage3/STATUS.json) and its exact raw
+compiler log. The candidate remains unaccepted; root counts are unchanged.
+No compiler process remains from this check.

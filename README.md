@@ -31,7 +31,7 @@ The required scope remains **100 original primary roots / 28 acceptance units**.
 | ---: | --- |
 | 41 | Historical exact-source cold subset evidence at `9b6a9a3`; a fresh whole-package receipt is still required. |
 | 15 | Additional original roots passed narrow local module, independent full-type/domain-consumer and standard-axiom checks. Stage 2 adds native moments, residual and memory, weighted mixture and the near-gap mass bound. Aggregate acceptance and the nonzero near-gap family witness remain OPEN. |
-| 1 | The supplied Step 1–3 word/jet consumer remains dependency-blocked and unaccepted. |
+| 1 | The supplied Step 1–3 word/jet consumer fails genuine compilation and remains unaccepted. |
 | 43 | Original roots still lack complete candidate implementations. |
 
 This is not aggregate acceptance of 56 roots or a completed release. The

@@ -1,7 +1,7 @@
 # OPICA module status — navigation only
 
 Generated from [ROOT_LEDGER_100.json](ROOT_LEDGER_100.json) and actual source presence.
-Ledger SHA256: `e67f0654892bb697d18c0cd771f0b0438e0c31006b69cc18fbc83a680c11cc6b`.
+Ledger SHA256: `20eb9a0c646aa0979d40aa6fe744ca7f514f8acc0e358fc6f668de1a78e150b0`.
 
 The original target remains 100 primary roots / 28 acceptance units. Historical
 and narrow local evidence remain separate; every current aggregate/full-release

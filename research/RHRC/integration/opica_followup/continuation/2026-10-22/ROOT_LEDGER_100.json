@@ -4029,7 +4029,7 @@
       "current_status": "PRIOR_CANDIDATE_FAILED_OR_BLOCKED_UNACCEPTED",
       "gates": {
         "implementation": "LAST_DELIVERED_CANDIDATE",
-        "module_compilation": "FAILED_OR_BLOCKED_IN_INDEPENDENT_REVIEW",
+        "module_compilation": "FAIL_GENUINE_PINNED_COMPILER_AFTER_PARENT_DEPENDENCIES",
         "expected_type_consumer": "NOT_ESTABLISHED",
         "actual_domain_consumer": "NOT_ESTABLISHED",
         "axiom_check": "NOT_ESTABLISHED",
@@ -4040,7 +4040,8 @@
       "declaration_lexically_present": true,
       "source_sha256": "d5e0df823e358f4b273313150f2b06ccbd4a1eb049a628087d6e34f061001324",
       "evidence": [
-        "evidence/historical-codex-review/ROOT_LEDGER_100.json"
+        "evidence/current-codex/stage3/STATUS.json",
+        "evidence/current-codex/stage3/consumer-stage3-01.log"
       ]
     },
     {

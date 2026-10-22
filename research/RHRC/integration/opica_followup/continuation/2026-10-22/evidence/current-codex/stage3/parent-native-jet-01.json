@@ -1,0 +1,16 @@
+{
+  "label": "parent-native-jet-01",
+  "cwd": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-audit28",
+  "command": [
+    "C:\\Users\\macka\\.elan\\toolchains\\leanprover--lean4---v4.33.0-rc2\\bin\\lake.exe",
+    "build",
+    "Zeta23.OPICA.NativeJetAdapter"
+  ],
+  "started": "2026-10-22T14:01:30.899278+00:00",
+  "base_head": "9b6a9a3a2badb4cff62a56c1158d9cef8759d30d",
+  "scope": "Isolated source overlay; source hashes must be bound before proof promotion",
+  "exit_code": 0,
+  "seconds": 5278.56476400001,
+  "finished": "2026-10-22T15:29:29.499370+00:00",
+  "log_sha256": "119d15cd03cfdc6dfa147d3eb87f627bee97e41e29cec5f383842179e408a02b"
+}

@@ -30,8 +30,8 @@
   "artifacts": [
     {
       "path": "AGENTS.md",
-      "bytes": 5380,
-      "sha256": "3509f79d326f7ede177ec49e1bbf019c4b9e796090aea422d8bd3e837a8a070a"
+      "bytes": 5382,
+      "sha256": "20884a03ea59264acbdfe9f2c700a8ae6b8022c482e81439739e9ca14bb57034"
     },
     {
       "path": "AUDIT.md",
@@ -76,7 +76,7 @@
     {
       "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/MODULE_STATUS.md",
       "bytes": 4830,
-      "sha256": "7eb9fcb8e3b7577b0b23c9e44c719c93997b61837291f4f653b17777b6eca44a"
+      "sha256": "6b26194cfb2343f0d7a392bcaed80dda2be35a94d5cd96caeb11df9799ff459e"
     },
     {
       "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/NEXT_AGENT_PROMPT.md",
@@ -100,8 +100,8 @@
     },
     {
       "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/ROOT_LEDGER_100.json",
-      "bytes": 223798,
-      "sha256": "e67f0654892bb697d18c0cd771f0b0438e0c31006b69cc18fbc83a680c11cc6b"
+      "bytes": 223866,
+      "sha256": "20eb9a0c646aa0979d40aa6fe744ca7f514f8acc0e358fc6f668de1a78e150b0"
     },
     {
       "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/STAGE1_HANDOVER.md",
@@ -110,8 +110,8 @@
     },
     {
       "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/STAGE2_HANDOVER.md",
-      "bytes": 9042,
-      "sha256": "2e5ed651d178b0c853cd20bc0324d602ad48c1975317610e304b957f513ee062"
+      "bytes": 9505,
+      "sha256": "54a7a4265c245fe9202b6326a1684daddfc018b3f7035397c65f9ce3a2dfdbfa"
     },
     {
       "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedAuxiliary.lean",
@@ -2917,6 +2917,166 @@
       "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage2/weighted/imported-consumers-02.log",
       "bytes": 1074,
       "sha256": "0f2abbe1b551abf30bf0e0af7a141df065990327aa4cb21872f1006bf5057d4e"
+    },
+    {
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage3/POST_GREEN_RESEARCH.md",
+      "bytes": 2181,
+      "sha256": "bc76106821e8a8b98fc59b2159608162a66f24c2f32fea6e5baf90faa0b502ba"
+    },
+    {
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage3/STATUS.json",
+      "bytes": 167404,
+      "sha256": "a2fe2534adb3ab60c2d04b85450f3b37dcf286077dce8f5ca4cef3fcd20b9db2"
+    },
+    {
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage3/ci-harvest/SNAPSHOT.json",
+      "bytes": 22296,
+      "sha256": "5e7732e4aa700e50b25242d40af0f668d850cd6a8c74308854505058d814d3cb"
+    },
+    {
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage3/ci-harvest/head.json",
+      "bytes": 1330,
+      "sha256": "135594741483046bf84e1903191af3cf9fcacf5485b4879029973849386e9911"
+    },
+    {
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage3/ci-harvest/jobs-39805351054.json",
+      "bytes": 2298,
+      "sha256": "f83bb086630120f027eed79868508464e6f27e894ae9d711bf9e2e43a2c647b1"
+    },
+    {
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage3/ci-harvest/jobs-39805361222.json",
+      "bytes": 1150,
+      "sha256": "c649fa91c8fc7eea286a8ee53a10f0ffc71af8fbd380b22484ff6b934a50bb6f"
+    },
+    {
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage3/ci-harvest/jobs-39805361225.json",
+      "bytes": 3337,
+      "sha256": "8ce58ead7feff753f77c4e5d25ee5f8b3ce1bd7540d9de307050ed7e6609c40a"
+    },
+    {
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage3/ci-harvest/jobs-39805361250.json",
+      "bytes": 37,
+      "sha256": "96d97734621cbc60b36338e1e6436535313870ca18fd2dd60f5e10c573463b28"
+    },
+    {
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage3/ci-harvest/jobs-39805361271.json",
+      "bytes": 37,
+      "sha256": "96d97734621cbc60b36338e1e6436535313870ca18fd2dd60f5e10c573463b28"
+    },
+    {
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage3/ci-harvest/jobs-39805361303.json",
+      "bytes": 1152,
+      "sha256": "769251ed6729d0c26c9e7d2e2e5290e1e93ecc8288db42fc10f7607f0f2ba694"
+    },
+    {
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage3/ci-harvest/jobs-39805361321.json",
+      "bytes": 4379,
+      "sha256": "9eefe5051475856a362e89bbb29efc79783c4ceae7e34ebff94e649d7dc83822"
+    },
+    {
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage3/ci-harvest/jobs-39805361330.json",
+      "bytes": 37,
+      "sha256": "96d97734621cbc60b36338e1e6436535313870ca18fd2dd60f5e10c573463b28"
+    },
+    {
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage3/ci-harvest/jobs-39805361338.json",
+      "bytes": 1150,
+      "sha256": "96bb4ec5af8fcc0cf1026b676021c4813db2c19c743ec3ff8634539052416141"
+    },
+    {
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage3/ci-harvest/jobs-39805361366.json",
+      "bytes": 1149,
+      "sha256": "881b5e1b5807e749c21a06f4085f8374430257c57588101344b2c6002e054963"
+    },
+    {
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage3/ci-harvest/jobs-39805361473.json",
+      "bytes": 3353,
+      "sha256": "3bf89bd28dad5347be254a5b1a2719b80fcaaccdf4c04ef6cbb3a8979c05fd9d"
+    },
+    {
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage3/ci-harvest/jobs-39805361586.json",
+      "bytes": 1154,
+      "sha256": "be4d2dc9ffb3114ef816b5bc4ae51d59366bf9c28f8fb420799f05b0ca2b690c"
+    },
+    {
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage3/ci-harvest/jobs-39805361597.json",
+      "bytes": 1147,
+      "sha256": "980b8f8834813dcce0e5e67a72e2c138929a106edd9adddba4203cdd6fd684ad"
+    },
+    {
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage3/ci-harvest/jobs-39805361609.json",
+      "bytes": 1154,
+      "sha256": "a7db7ead6fb5f085214445124db9f854f4cfbcb3cf415434920be65abc535bd3"
+    },
+    {
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage3/ci-harvest/jobs-39805361610.json",
+      "bytes": 2298,
+      "sha256": "d3c3427414b885676c5d6d81e07825993fc0b5d8b6c27fc451246d8fa5598368"
+    },
+    {
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage3/ci-harvest/jobs-39805361625.json",
+      "bytes": 1168,
+      "sha256": "acf8afe1f915c6b7556d72337b00e73274dd8ca309ae16f3f3bc6e15ed7fb4fb"
+    },
+    {
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage3/ci-harvest/jobs-39805361626.json",
+      "bytes": 3351,
+      "sha256": "7ec6000baffbeb720b0dc8f417f4da05a8fab7159730366329dd99adce01ba72"
+    },
+    {
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage3/ci-harvest/jobs-39805361665.json",
+      "bytes": 8704,
+      "sha256": "9effcd6330ad8ac421ec331790b0d2acdcb9a09d1adf5dd2ddc78bc5fc18d011"
+    },
+    {
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage3/ci-harvest/jobs-39805361726.json",
+      "bytes": 1132,
+      "sha256": "5a1d73b35183b75b6e5c0fa1298ef54011a0bfed429a0a7aaa514073d64f0b15"
+    },
+    {
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage3/ci-harvest/jobs-39805361949.json",
+      "bytes": 2215,
+      "sha256": "eea860a353e12898e5f34c00b9ad4c6aa80e818e963bf57fa7a589c57518ceb2"
+    },
+    {
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage3/ci-harvest/jobs-39805362284.json",
+      "bytes": 1157,
+      "sha256": "93f0c440ba4805328ed7818f592485778712b822ef51ca6a5631cba96efc20bf"
+    },
+    {
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage3/ci-harvest/jobs-39805362315.json",
+      "bytes": 1142,
+      "sha256": "12d0bc288c09e49333fbff2911907f30a0edd5a6979b3915887001695a70c0a3"
+    },
+    {
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage3/ci-harvest/pr294.json",
+      "bytes": 23465,
+      "sha256": "ae80a4e787f0079a2ab97e5124223523027d17b2e0147403dee3ba7669a2deb3"
+    },
+    {
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage3/ci-harvest/runs.json",
+      "bytes": 345785,
+      "sha256": "be9793fbdb45f01c274f083ba692a4d1f94f8da4428f0cd34de89d61444ff1a5"
+    },
+    {
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage3/consumer-stage3-01.json",
+      "bytes": 710,
+      "sha256": "70abe58a17d4b90be4b84e7b3389e6efed9cc4e46722fd55117d2f881f7fdafb"
+    },
+    {
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage3/consumer-stage3-01.log",
+      "bytes": 433729,
+      "sha256": "477d90acdc1d4c19a183ea44a47549b8ffa289f353dd58432c39e35b7af8e647"
+    },
+    {
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage3/parent-native-jet-01.json",
+      "bytes": 710,
+      "sha256": "d57d80183a31ea8b9be6e0da08c2fdb56a07365a8796c6b6273cbde6a8d6314e"
+    },
+    {
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage3/parent-native-jet-01.log",
+      "bytes": 426535,
+      "sha256": "119d15cd03cfdc6dfa147d3eb87f627bee97e41e29cec5f383842179e408a02b"
     },
     {
       "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/historical-codex-review/INDEPENDENT_CHECKS.json",

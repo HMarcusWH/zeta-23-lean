@@ -1,0 +1,32 @@
+{
+  "total_count": 1,
+  "jobs": [
+    {
+      "id": 119917055700,
+      "run_id": 39805361222,
+      "workflow_name": "RHRC post-196 Q14 residual cell replay",
+      "head_branch": "research/opica-native-followup",
+      "run_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/runs/39805361222",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOT94UfM8AAAAb650O1A",
+      "head_sha": "6c44ff564df025770a315f9dbfc091fc10ff6f36",
+      "url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/jobs/119917055700",
+      "html_url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39805361222/job/119917055700",
+      "status": "queued",
+      "conclusion": null,
+      "created_at": "2026-10-22T15:29:49Z",
+      "started_at": "2026-10-22T15:29:49Z",
+      "completed_at": null,
+      "name": "post196-q14-residual-cell-replay",
+      "steps": [],
+      "check_run_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/check-runs/119917055700",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 0,
+      "runner_name": "",
+      "runner_group_id": 0,
+      "runner_group_name": ""
+    }
+  ]
+}
