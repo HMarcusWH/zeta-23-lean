@@ -18,6 +18,35 @@ open Set MeasureTheory Filter
 open scoped Topology
 namespace Zeta23.OPICAFollowup
 
+/-- The open interval of completion-rate parameters is nonempty exactly
+when the chosen actual right zero has sufficient displacement.  This is
+the strict feasibility calculation in the J5.2 terminal-memory argument;
+the right zero and constants are chosen BEFORE a varying horizon. -/
+theorem nativeWindow_rate_parameter_interval {C Theta delta b : ℝ}
+    (hC : 1 < C) (hdelta : Theta + (C - 1) * b < C * delta) :
+    ∃ xi : ℝ, (Theta - delta) / (C - 1) < xi ∧ xi < delta - b := by
+  have hden : 0 < C - 1 := by linarith
+  have hstrict : (Theta - delta) / (C - 1) < delta - b := by
+    apply (div_lt_iff₀ hden).mpr
+    nlinarith [hdelta]
+  refine ⟨((Theta - delta) / (C - 1) + (delta - b)) / 2, ?_, ?_⟩
+  · linarith
+  · linarith
+
+/-- The two strict exponential separations: early memory decays relative to
+the completed terminal witness, and that witness exceeds the test rate b.
+This does NOT assume the missing analytic memory estimate as an input. -/
+theorem nativeWindow_rate_exponent_margin {C Theta delta b xi : ℝ}
+    (hC : 1 < C)
+    (hlow : (Theta - delta) / (C - 1) < xi)
+    (hhigh : xi < delta - b) :
+    Theta - C * xi < delta - xi ∧ b < delta - xi := by
+  have hden : 0 < C - 1 := by linarith
+  have hstrict := (div_lt_iff₀ hden).mp hlow
+  constructor
+  · nlinarith [hstrict]
+  · linarith
+
 /-- Physical energy of the actual d-th native prime field on the literal
 terminal interval [T-C log T,T]. No integer-horizon replacement is made. -/
 def nativeWindowEnergy (d : ℕ) (C T : ℝ) : ℝ :=
