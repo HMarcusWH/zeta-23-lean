@@ -447,6 +447,70 @@ theorem nearGap_undilatedComb_first_dilated_atom_zero {L : ℝ}
   subst x
   exact nearGap_first_dilated_point_off_integer hL hu
 
+/-- The signed compact evaluation of an actual positive dilated comb
+is precisely its positive counting-measure evaluation. This keeps all
+atomic masses and compact-domain restrictions physical. -/
+theorem nearGap_dilatedComb_compact_signed_apply
+    (t : ℝ) (K : Set ℝ) (hK : IsCompact K) (E : Set ℝ)
+    (hE : MeasurableSet E) :
+    localSignedCompactRestriction (dilatedCombJordan t) K hK E =
+      ((dilatedCombMeasure t).restrict K).real E := by
+  rw [localSignedCompactRestriction_apply _ _ _ E hE]
+  simp [dilatedCombJordan, localJordanDifference]
+
+/-- Every actual dilated integer atom has strictly positive signed
+evaluation on its compact singleton restriction. -/
+theorem nearGap_dilatedComb_compact_signed_atom (t : ℝ) (n : ℤ) :
+    localSignedCompactRestriction (dilatedCombJordan t)
+      ({scaledLatticePoint t n} : Set ℝ) isCompact_singleton
+      ({scaledLatticePoint t n} : Set ℝ) = Real.exp (t / 2) := by
+  rw [nearGap_dilatedComb_compact_signed_apply t _ _ _
+    (measurableSet_singleton _)]
+  change (((dilatedCombMeasure t).restrict
+      ({scaledLatticePoint t n} : Set ℝ))
+      ({scaledLatticePoint t n} : Set ℝ)).toReal = Real.exp (t / 2)
+  rw [Measure.restrict_apply (measurableSet_singleton _)]
+  simp only [inter_self]
+  rw [dilatedCombMeasure_atom, ENNReal.toReal_ofReal (Real.exp_pos _).le]
+
+/-- Physical first noninteger atom of the CT1 signed measure is POSITIVE:
+D_L supplies exp(L/2), the reflected comb supplies a nonnegative
+additional mass, and the undilated negative comb has no atom there.
+No off-lattice positivity premise is assumed about the result. -/
+theorem nearGapCombFamily_first_atom_signed_pos {L : ℝ}
+    (hL : 0 < L) (hu : L < Real.log 2) :
+    0 < localSignedCompactRestriction (nearGapCombFamily L)
+      ({Real.exp L} : Set ℝ) isCompact_singleton
+      ({Real.exp L} : Set ℝ) := by
+  let S : Set ℝ := {Real.exp L}
+  have hS : MeasurableSet S := measurableSet_singleton _
+  have hfirst :
+      localSignedCompactRestriction (dilatedCombJordan L)
+        S isCompact_singleton S = Real.exp (L / 2) := by
+    simpa only [S, scaledLatticePoint, Int.cast_one, mul_one] using
+      nearGap_dilatedComb_compact_signed_atom L (1 : ℤ)
+  have hsecond :
+      0 ≤ localSignedCompactRestriction (dilatedCombJordan (-L))
+        S isCompact_singleton S := by
+    rw [nearGap_dilatedComb_compact_signed_apply _ _ _ _ hS]
+    exact measureReal_nonneg
+  have hthird :
+      localSignedCompactRestriction (dilatedCombJordan 0)
+        S isCompact_singleton S = 0 := by
+    rw [nearGap_dilatedComb_compact_signed_apply _ _ _ _ hS]
+    have hz : ((dilatedCombMeasure 0).restrict S) S = 0 := by
+      rw [Measure.restrict_apply hS, inter_self]
+      exact nearGap_undilatedComb_first_dilated_atom_zero hL hu
+    exact (measureReal_eq_zero_iff
+      (isCompact_singleton.measure_lt_top.ne)).mpr hz
+  have hsum := congrArg (fun mu : SignedMeasure ℝ => mu S)
+    (nearGapCombFamily_compactRestriction L S isCompact_singleton)
+  simp only [_root_.add_apply, _root_.sub_apply,
+    smul_apply, smul_eq_mul, hfirst, hthird,
+    mul_zero, sub_zero] at hsum
+  rw [hsum]
+  exact add_pos_of_pos_of_nonneg (Real.exp_pos _) hsecond
+
 /-- The genuine positive lattice comb has zero negative Jordan part,
 regardless of the dilation. This is a canonical Jordan property. -/
 theorem nearGap_dilatedComb_negative_zero (t : ℝ) :
