@@ -56,13 +56,13 @@ theorem scaledLatticePoint_in_first_gap (t : ℝ) (n : ℤ)
 /-- The actual scaled counting measure assigns zero mass to the
 first-cell punctured interval, even though it has an origin atom. -/
 theorem scaledLatticeMeasure_punctured_gap (t : ℝ) :
-    scaledLatticeMeasure t (Ioo (-Real.exp t) (Real.exp t) \\ ({0} : Set ℝ)) =
+    scaledLatticeMeasure t (Ioo (-Real.exp t) (Real.exp t) \ ({0} : Set ℝ)) =
       0 := by
   rw [scaledLatticeMeasure,
     Measure.map_apply (scaledLatticePoint_measurable t)
       (measurableSet_Ioo.diff (measurableSet_singleton 0))]
   have hempty : (scaledLatticePoint t) ⁻¹'
-      (Ioo (-Real.exp t) (Real.exp t) \\ ({0} : Set ℝ)) = ∅ := by
+      (Ioo (-Real.exp t) (Real.exp t) \ ({0} : Set ℝ)) = ∅ := by
     ext n
     constructor
     · intro hn
@@ -76,7 +76,7 @@ theorem scaledLatticeMeasure_punctured_gap (t : ℝ) :
 /-- The complete positive dilated comb has the same punctured gap.
 Its positive real amplitude never creates new support. -/
 theorem dilatedCombMeasure_punctured_gap (t : ℝ) :
-    dilatedCombMeasure t (Ioo (-Real.exp t) (Real.exp t) \\ ({0} : Set ℝ)) =
+    dilatedCombMeasure t (Ioo (-Real.exp t) (Real.exp t) \ ({0} : Set ℝ)) =
       0 := by
   rw [dilatedCombMeasure, Measure.smul_apply,
     scaledLatticeMeasure_punctured_gap]
@@ -85,12 +85,8 @@ theorem dilatedCombMeasure_punctured_gap (t : ℝ) :
 /-- Any smaller punctured first-cell interval is also mass-free. -/
 theorem dilatedCombMeasure_punctured_gap_of_le (t a : ℝ)
     (ha : a ≤ Real.exp t) :
-    dilatedCombMeasure t (Ioo (-a) a \\ ({0} : Set ℝ)) = 0 := by
-  apply measure_mono_null
-    (μ := dilatedCombMeasure t)
-    (s := Ioo (-a) a \\ ({0} : Set ℝ))
-    (t := Ioo (-Real.exp t) (Real.exp t) \\ ({0} : Set ℝ))
-    ?_ (dilatedCombMeasure_punctured_gap t)
+    dilatedCombMeasure t (Ioo (-a) a \ ({0} : Set ℝ)) = 0 := by
+  apply measure_mono_null ?_ (dilatedCombMeasure_punctured_gap t)
   intro x hx
   exact ⟨⟨lt_of_le_of_lt (neg_le_neg ha) hx.1.1,
     lt_of_lt_of_le hx.1.2 ha⟩, hx.2⟩
