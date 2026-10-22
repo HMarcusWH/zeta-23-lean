@@ -414,6 +414,39 @@ theorem nearGap_undilatedComb_integer_support :
   rw [hpre]
   simp
 
+/-- In the exact CT1 range, the first dilated point lies strictly
+between consecutive integers 1 and 2, hence is off the integer lattice. -/
+theorem nearGap_first_dilated_point_off_integer {L : ℝ}
+    (hL : 0 < L) (hu : L < Real.log 2) :
+    Real.exp L ∉ integerLattice := by
+  intro hx
+  obtain ⟨n, hn⟩ := hx
+  have hlo : (1 : ℝ) < Real.exp L := by
+    have h := Real.exp_lt_exp.mpr hL
+    simpa only [Real.exp_zero] using h
+  have hhi : Real.exp L < (2 : ℝ) := by
+    have h := Real.exp_lt_exp.mpr hu
+    simpa only [Real.exp_log (by norm_num : (0 : ℝ) < 2)] using h
+  have hnlo : (1 : ℝ) < (n : ℝ) := by simpa only [hn] using hlo
+  have hnhi : (n : ℝ) < (2 : ℝ) := by simpa only [hn] using hhi
+  have ha : (1 : ℤ) < n := by exact_mod_cast hnlo
+  have hb : n < (2 : ℤ) := by exact_mod_cast hnhi
+  omega
+
+/-- The negative source carrier D_0 has no atom at the first positive
+dilated point of D_L. This separates the genuine positive noninteger
+witness from any possible cancellation by the undilated lattice. -/
+theorem nearGap_undilatedComb_first_dilated_atom_zero {L : ℝ}
+    (hL : 0 < L) (hu : L < Real.log 2) :
+    dilatedCombMeasure 0 ({Real.exp L} : Set ℝ) = 0 := by
+  apply measure_mono_null
+    (s := ({Real.exp L} : Set ℝ))
+    (t := integerLatticeᶜ) ?_ nearGap_undilatedComb_integer_support
+  intro x hx
+  have hx' : x = Real.exp L := by simpa only [Set.mem_singleton_iff] using hx
+  subst x
+  exact nearGap_first_dilated_point_off_integer hL hu
+
 /-- The genuine positive lattice comb has zero negative Jordan part,
 regardless of the dilation. This is a canonical Jordan property. -/
 theorem nearGap_dilatedComb_negative_zero (t : ℝ) :
