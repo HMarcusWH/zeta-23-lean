@@ -91,6 +91,21 @@ def positiveLogMeasure (mu : Measure ℝ) : Measure ℝ :=
 
 /-- The new logarithmic measure has the correct physical normalization for
 every true positive Dirac atom, including arbitrary real dilation. -/
+/-- The actual positive-axis logarithmic transport is additive for
+arbitrary input measures, even if they have infinite global mass. This is the
+measure-level linearity needed to assemble individual atoms into the integer
+comb before the Möbius inverse is applied. -/
+theorem positiveLogMeasure_add (mu nu : Measure ℝ) :
+    positiveLogMeasure (mu + nu) =
+      positiveLogMeasure mu + positiveLogMeasure nu := by
+  unfold positiveLogMeasure
+  rw [Measure.restrict_add, Measure.withDensity_add_measure]
+  exact Measure.map_add _ _ Real.measurable_log
+
+/-- The canonical zero input has no positive logarithmic mass. -/
+theorem positiveLogMeasure_zero : positiveLogMeasure (0 : Measure ℝ) = 0 := by
+  simp [positiveLogMeasure, Measure.withDensity_zero_left]
+
 theorem positiveLogMeasure_dirac (t : ℝ) :
     positiveLogMeasure (Measure.dirac (Real.exp t)) =
       ENNReal.ofReal (Real.exp (-t / 2)) • (Measure.dirac t) := by
