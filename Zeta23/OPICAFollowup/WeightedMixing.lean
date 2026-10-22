@@ -13,6 +13,37 @@ open scoped ENNReal Topology FourierTransform SchwartzMap
 open Zeta23.OPICA
 namespace Zeta23.OPICAFollowup
 
+/-- The positive-axis logarithmic inversion needs the true x^(-1/2)
+weight, not the unweighted log pushforward. This is its physical test weight,
+defined as zero off the positive axis. It does not construct a measure. -/
+def positiveLogWeight (x : ℝ) : ℝ :=
+  if 0 < x then (Real.sqrt x)⁻¹ else 0
+
+private theorem weighted_sqrt_exp_half (t : ℝ) :
+    Real.sqrt (Real.exp t) = Real.exp (t / 2) := by
+  have hsplit : Real.exp t = Real.exp (t / 2) * Real.exp (t / 2) := by
+    rw [← Real.exp_add]
+    congr 1
+    ring
+  rw [hsplit, Real.sqrt_mul_self (Real.exp_pos _).le]
+
+/-- The exact Jacobian normalization behind the future positiveLogMeasure. -/
+theorem positiveLogWeight_exp (t : ℝ) :
+    positiveLogWeight (Real.exp t) = Real.exp (-t / 2) := by
+  simp only [positiveLogWeight, if_pos (Real.exp_pos t), weighted_sqrt_exp_half]
+  rw [show -t / 2 = -(t / 2) by ring, Real.exp_neg]
+
+/-- Real logarithmic pullback of a complex test, before constructing the
+locally finite weighted pushforward and proving absolute Möbius Fubini. -/
+def weightedPositiveLogTest (f : ℝ → ℂ) (x : ℝ) : ℂ :=
+  (positiveLogWeight x : ℂ) * f (Real.log x)
+
+/-- Pullback evaluated on an actual positive dilation parameter. -/
+theorem weightedPositiveLogTest_exp (f : ℝ → ℂ) (t : ℝ) :
+    weightedPositiveLogTest f (Real.exp t) =
+      (Real.exp (-t / 2) : ℂ) * f t := by
+  simp only [weightedPositiveLogTest, positiveLogWeight_exp, Real.log_exp]
+
 def weightedVariation (a : ℝ) (sigma : LocallyFiniteComplexMeasure) : ℝ≥0∞ :=
   ∫⁻ t, ENNReal.ofReal (Real.exp (-a*t)) ∂sigma.totalVariation
 
