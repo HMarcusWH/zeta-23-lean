@@ -12,6 +12,16 @@ open Zeta23.OPICA
 def hasNearGap (nu : LocallyFiniteSignedMeasure) (a : ℝ) : Prop :=
   nu.positive (Ioo (-a) a)=0 ∧ nu.negative (Ioo (-a) a)=0
 
+/-- The actual canonical Jordan carrier for the CT1 auxiliary dilation defect.
+It represents D_L + D_(-L) - 2 cosh(L/2) D_0.  Canonicalization is
+necessary: scaled lattice supports can meet the integer lattice, so the
+uncancelled positive/negative measures need not be mutually singular.
+The nonzero, gap, self-duality and normalized-limit roots are still OPEN. -/
+def nearGapCombFamily (L : ℝ) : LocallyFiniteSignedMeasure :=
+  localJordanAdd
+    (localJordanAdd (dilatedCombJordan L) (dilatedCombJordan (-L)))
+    (localJordanScale (-(2 * Real.cosh (L / 2))) (dilatedCombJordan 0))
+
 lemma nearGap_origin_zero (mu : Measure ℝ) {a : ℝ} (ha : 0<a)
     (hgap : mu (Ioo (-a) a)=0) : mu {0}=0 := by
   apply measure_mono_null _ hgap
