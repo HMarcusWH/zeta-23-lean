@@ -1176,5 +1176,50 @@ theorem nearGapCombFamily_offinteger_mass_budget
   refine ⟨hmass.1, ?_⟩
   exact hmass.2.trans (mul_le_mul_of_nonneg_left htv hweight)
 
+/-- Original CT1 (R1-CT1) actual dilation-near-gap family, with all
+physical source and domain clauses in the theorem type.
+
+No hypotheses give the conclusion: the only premises restrict the genuine
+dilation parameter to 0 < L < log 2. The Schwartz pairing records evenness
+at the distribution level; the signed compact-identity component prevents
+substitution of an unrelated self-dual distribution. Uniform variation,
+canonical Jordan gap/origin, integer support of negative mass, and positive
+nonzero atom are all carried by the exact same source measure.
+
+This is a FULL-TYPE CANDIDATE only until the pinned Lean compiler,
+independent consumer/axiom closure and aggregate release checks accept it. -/
+theorem dilation_near_gap_family
+    (L : ℝ) (hL : 0 < L) (hu : L < Real.log 2) :
+    (∀ K : Set ℝ, ∀ hK : IsCompact K,
+      localSignedCompactRestriction (nearGapCombFamily L) K hK =
+        localSignedCompactRestriction (dilatedCombJordan L) K hK +
+        localSignedCompactRestriction (dilatedCombJordan (-L)) K hK -
+        (2 * Real.cosh (L / 2)) •
+          localSignedCompactRestriction (dilatedCombJordan 0) K hK) ∧
+    (nearGapCombFamily L).HasLinearGrowth ∧
+    CommonLinearMassBound 18 (nearGapCombFamily L).totalVariation ∧
+    (nearGapCombFamily L).FourierSelfdual (nearGapCombFamily_growth L) ∧
+    (∀ f : SchwartzMap ℝ ℂ,
+      nearGapCombDistribution L
+        (SchwartzMap.compCLMOfContinuousLinearEquiv ℂ
+          (LinearIsometryEquiv.neg ℝ (E := ℝ)) f) =
+        nearGapCombDistribution L f) ∧
+    hasNearGap (nearGapCombFamily L) (Real.exp (-L)) ∧
+    ((1 / 2 : ℝ) < Real.exp (-L) ∧ Real.exp (-L) < 1) ∧
+    (nearGapCombFamily L).OffLatticeNonnegative ∧
+    ((nearGapCombFamily L).positive ({0} : Set ℝ) = 0 ∧
+      (nearGapCombFamily L).negative ({0} : Set ℝ) = 0) ∧
+    (nearGapCombFamily L).positive ≠ 0 := by
+  exact ⟨fun K hK => nearGapCombFamily_compactRestriction L K hK,
+    nearGapCombFamily_growth L,
+    nearGapCombFamily_common_growth hL.le hu.le,
+    nearGapCombFamily_fourier_selfdual L,
+    fun f => nearGapCombDistribution_even_schwartz L f,
+    nearGapCombFamily_actual_gap hL.le,
+    nearGapComb_radius_bounds hL hu,
+    nearGapCombFamily_offlattice_nonnegative L,
+    nearGapCombFamily_origin_jordan_zero L,
+    nearGapCombFamily_positive_nonzero hL hu⟩
+
 #print axioms Zeta23.OPICAFollowup.near_gap_mass_bound
 end Zeta23.OPICAFollowup
