@@ -160,6 +160,33 @@ theorem positiveLogMeasure_dilatedNat_dirac (t : ℝ) (n : ℕ) (hn : 0 < n) :
     rw [Real.log_mul (Real.exp_pos t).ne' hnreal.ne', Real.log_exp]
   rw [positiveLogMeasure_dirac_pos hprod, hweight, hlog]
 
+/-- Genuine finite arithmetic superpositions commute with the
+positive-axis weighted log transport. This is the finite precursor of the
+counting-measure Fubini theorem, not a replacement for infinite inversion. -/
+theorem positiveLogMeasure_finset_sum {ι : Type*} (s : Finset ι)
+    (mu : ι → Measure ℝ) :
+    positiveLogMeasure (∑ i ∈ s, mu i) =
+      ∑ i ∈ s, positiveLogMeasure (mu i) := by
+  classical
+  induction s using Finset.induction_on with
+  | empty => simp only [Finset.sum_empty, positiveLogMeasure_zero]
+  | @insert a s ha ih =>
+      simp only [Finset.sum_insert ha, positiveLogMeasure_add, ih]
+
+/-- Physical finite integer atoms transport to the exact weighted logarithmic
+lattice, with coefficient 1/sqrt(n) and a retained common time translation.
+Every atom is genuinely positive and nonzero before taking logarithms. -/
+theorem positiveLogMeasure_finite_integer_lattice
+    (t : ℝ) (s : Finset ℕ) (hs : ∀ n ∈ s, 0 < n) :
+    positiveLogMeasure
+      (∑ n ∈ s, Measure.dirac (Real.exp t * (n : ℝ))) =
+      ∑ n ∈ s,
+        ENNReal.ofReal (Real.exp (-t / 2) / Real.sqrt (n : ℝ)) •
+          Measure.dirac (t + Real.log (n : ℝ)) := by
+  rw [positiveLogMeasure_finset_sum]
+  refine Finset.sum_congr rfl (fun n hn => ?_)
+  exact positiveLogMeasure_dilatedNat_dirac t n (hs n hn)
+
 def weightedVariation (a : ℝ) (sigma : LocallyFiniteComplexMeasure) : ℝ≥0∞ :=
   ∫⁻ t, ENNReal.ofReal (Real.exp (-a*t)) ∂sigma.totalVariation
 
