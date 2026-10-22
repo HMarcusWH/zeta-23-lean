@@ -1,0 +1,35 @@
+{
+  "sha": "9b6a9a3a2badb4cff62a56c1158d9cef8759d30d",
+  "node_id": "C_kwDOT94UfNoAKDliNmE5YTNhMmJhZGI0Y2ZmNjJhNTZjMTE1OGQ5Y2VmODc1OWQzMGQ",
+  "url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/git/commits/9b6a9a3a2badb4cff62a56c1158d9cef8759d30d",
+  "html_url": "https://github.com/HMarcusWH/zeta-23-lean/commit/9b6a9a3a2badb4cff62a56c1158d9cef8759d30d",
+  "author": {
+    "name": "HMarcusWH",
+    "email": "Marcus@hmwh.se",
+    "date": "2026-10-21T20:21:13Z"
+  },
+  "committer": {
+    "name": "HMarcusWH",
+    "email": "Marcus@hmwh.se",
+    "date": "2026-10-21T20:21:13Z"
+  },
+  "tree": {
+    "sha": "545ea182910db9c8d05c4c7e8ee229d119a9aa28",
+    "url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/git/trees/545ea182910db9c8d05c4c7e8ee229d119a9aa28"
+  },
+  "message": "Fix draft workflow YAML command quoting",
+  "parents": [
+    {
+      "sha": "74ee797ae3f9e8641316d5897ad319ed8e9500ec",
+      "url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/git/commits/74ee797ae3f9e8641316d5897ad319ed8e9500ec",
+      "html_url": "https://github.com/HMarcusWH/zeta-23-lean/commit/74ee797ae3f9e8641316d5897ad319ed8e9500ec"
+    }
+  ],
+  "verification": {
+    "verified": false,
+    "reason": "unsigned",
+    "signature": null,
+    "payload": null,
+    "verified_at": null
+  }
+}

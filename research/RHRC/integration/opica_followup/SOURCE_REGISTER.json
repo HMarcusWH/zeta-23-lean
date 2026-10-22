@@ -6892,5 +6892,25 @@
     "Step4": "OPEN",
     "independent_closing_inequalities": "OPEN",
     "formatting": "Existing tracked files preserve checkpoint newline conventions; new files use LF. Final source receipt supersedes pre-normalization leaf hashes."
+  },
+  "continuation_checkpoint": {
+    "id": "CP_2026_10_22_01",
+    "status": "DRAFT_NO_FULL_ACCEPTANCE",
+    "manifest": "CONTINUATION_MANIFEST.json",
+    "guide": "continuation/2026-10-22/README.md",
+    "root_ledger": "continuation/2026-10-22/ROOT_LEDGER_100.json",
+    "original_primary_roots": 100,
+    "acceptance_units": 28,
+    "historical_subset_roots": 41,
+    "additional_narrow_local_roots": 6,
+    "auxiliary_module_only_roots": 0,
+    "other_unaccepted_candidates": 5,
+    "absent_complete_candidates": 48,
+    "aggregate_registration_accepted": false,
+    "full_release_ready": false,
+    "new_mandatory_roots": [],
+    "RH": "OPEN",
+    "Step4": "OPEN",
+    "independent_closing_inequalities": "OPEN"
   }
 }

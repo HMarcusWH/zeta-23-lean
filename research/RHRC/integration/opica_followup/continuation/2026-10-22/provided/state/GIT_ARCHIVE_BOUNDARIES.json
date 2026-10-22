@@ -1,0 +1,55 @@
+{
+  "shallow_boundaries": [
+    {
+      "commit": "97926d6a949fed7af0429a373b47abc772012834",
+      "missing_parents": [
+        "9583bbcc587aca8d87e74981b222e6813238d670",
+        "87e7221afb80fa45fa5f437dc6ac368f5affbb5b"
+      ]
+    }
+  ],
+  "commits_without_tree_payload": [
+    {
+      "commit": "27b337c2b8d9b71adaf77296ba68d9b26e4593c0",
+      "missing_tree": "65e20e9e0095e1008c3e37a521e5c9488b740939"
+    },
+    {
+      "commit": "3a2088e984806c99cd096581689e06e8473e3a23",
+      "missing_tree": "00a741540c4d3100acbb16ba8db1f17aadef4ad6"
+    },
+    {
+      "commit": "42851c70ac1f983cd690f466172e6a4920bda4ed",
+      "missing_tree": "374778de15994a620dc02fcc43e506331c6ea742"
+    },
+    {
+      "commit": "567d78de11ee3e3b7ae7e455fab0bf096ce90c34",
+      "missing_tree": "a77cd179801557a4c1a901ad74dc092d532624f5"
+    },
+    {
+      "commit": "6444b916ec21548fbd3e720de07555bf27480207",
+      "missing_tree": "bb0bb5d605071d507e3a02d901a28cdb3ca02f47"
+    },
+    {
+      "commit": "68848d9a01ca0cee77461ff265e65c76f73c5563",
+      "missing_tree": "00fcc12162afd1f6ca53573e7455f2dc6e8cf483"
+    },
+    {
+      "commit": "74ee797ae3f9e8641316d5897ad319ed8e9500ec",
+      "missing_tree": "505cacaf2e18f01f0cca855ed7c78ab7a918ee1a"
+    },
+    {
+      "commit": "bfcd23655c71ce50a2030255f1d512165cc01d58",
+      "missing_tree": "304087ce93c34f3eab64f653bf2d6fd0ced9e96f"
+    },
+    {
+      "commit": "d88d1f05c425d68907fa0216bda2d850a3b3c7fd",
+      "missing_tree": "e4456d7c5700bd49bbe2a117736abd1bbed89b9f"
+    },
+    {
+      "commit": "e52964d79263e8bd208a14d08745405d897e3610",
+      "missing_tree": "b8585ce45ed158661be1298f436f1103f2c923d2"
+    }
+  ],
+  "ordinary_clone_supported": false,
+  "restore_policy": "Use exact object-pack import and pinned-tree checkout; selected history is not a complete repository clone."
+}

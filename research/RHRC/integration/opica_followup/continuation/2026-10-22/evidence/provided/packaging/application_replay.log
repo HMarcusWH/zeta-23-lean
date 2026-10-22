@@ -1,0 +1,10 @@
+{
+  "status": "APPLIED_UNACCEPTED_SNAPSHOT",
+  "paths": 11,
+  "committed": false,
+  "pushed": false,
+  "full_release_accepted": false
+}
+/mnt/data/OPICA_Single_Source_Kit_2026-10-22/patches/current_from_9b.patch:2266: trailing whitespace.
+    nativeWindowVector_sub] 
+warning: 1 line adds whitespace errors.

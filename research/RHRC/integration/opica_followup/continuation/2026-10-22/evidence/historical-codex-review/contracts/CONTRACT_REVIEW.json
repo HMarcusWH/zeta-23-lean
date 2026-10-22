@@ -1,0 +1,285 @@
+{
+  "schema": "OPICA_SECOND_DELIVERY_CONTRACT_REVIEW_V1",
+  "created_utc": "2026-10-21T23:10:49.750716+00:00",
+  "status": "REVIEW_COMPLETE_WITH_MATERIAL_GAPS",
+  "main_head": "9b6a9a3a2badb4cff62a56c1158d9cef8759d30d",
+  "main_repo_clean": true,
+  "candidate_input_sha256": {
+    "build_receipt.py": "aec907fd83b8dfacf67c5ad148fc2564b6c119a1093c4cc6e8bb2d43496c909e",
+    "validate_contract.py": "147a283aab1a9f015159f6736aed052e5a5481d61023d795ccd5707567ff3229",
+    "test_contract.py": "8c46db4d941a1efe90c5ed21356437afbde1aee84eeab0ecdc6f176cb26a4c2f"
+  },
+  "fixture": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-review-2026-10-22\\contracts\\fixture-native",
+  "fixture_exact_git_byte_differences": [
+    "research/RHRC/integration/opica/tests/test_contract.py",
+    "research/RHRC/integration/opica/validate_contract.py",
+    "research/RHRC/integration/opica_followup/build_receipt.py"
+  ],
+  "source_edits_outside_fixture": false,
+  "lean_compiler_invocations": 0,
+  "main_repo_edits": false,
+  "network_activity": "No GitHub/plugin/web calls. A Git cat-file read of a missing main-cache promisor blob attempted an automatic fetch and failed at name resolution; subsequent probes set GIT_NO_LAZY_FETCH=1 and used local read-only alternates only.",
+  "supplied_logs": [
+    {
+      "name": "parent_projection_selected_normal.log",
+      "sha256": "59626aaeaefe3cf120ec7f763263f52a012e17b796eb6c511b5c62d0e8034856",
+      "reported_test_count": 30,
+      "command_and_source_identity_present": false
+    },
+    {
+      "name": "parent_projection_selected_optimized.log",
+      "sha256": "fa768894feb4b142891a5fc2672f06ec2299f86466afba6b398d36f6922fb107",
+      "reported_test_count": 30,
+      "command_and_source_identity_present": false
+    },
+    {
+      "name": "child_extension_normal.log",
+      "sha256": "9cca007f57de27c4f453f0cff1914db4d5cad62b7cb6599751c094d6b495e83a",
+      "reported_test_count": 26,
+      "command_and_source_identity_present": false
+    },
+    {
+      "name": "child_extension_optimized.log",
+      "sha256": "a08f96d6de436aac02e13ea9b61c38d74a9ffdbabd731bbb0c14030def916372",
+      "reported_test_count": 26,
+      "command_and_source_identity_present": false
+    }
+  ],
+  "test_matrix": [
+    {
+      "lane": "parent-full-56",
+      "mode": "normal",
+      "tests_run": 56,
+      "summary": "FAILED (errors=2)",
+      "passed": false,
+      "log": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-review-2026-10-22\\contracts\\parent-full-56-normal.log",
+      "sha256": "84b60df9d1c44a96ec4aada2329fe120ea69a97b0ba6e488f7a7bf961eaee1bc"
+    },
+    {
+      "lane": "parent-full-56",
+      "mode": "optimized",
+      "tests_run": 56,
+      "summary": "FAILED (errors=2)",
+      "passed": false,
+      "log": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-review-2026-10-22\\contracts\\parent-full-56-optimized.log",
+      "sha256": "7bfcf2ad09167efb2a1a1015f836de8fd5db72806cd7f9c776954634d0c0acd0"
+    },
+    {
+      "lane": "parent-supported-55",
+      "mode": "normal",
+      "tests_run": 55,
+      "summary": "FAILED (errors=1)",
+      "passed": false,
+      "log": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-review-2026-10-22\\contracts\\parent-supported-55-normal.log",
+      "sha256": "9e276de50dff5453ce4183142a12d3782aeb34a4ee02f8e8c4d84d38a81e77bb"
+    },
+    {
+      "lane": "parent-supported-55",
+      "mode": "optimized",
+      "tests_run": 55,
+      "summary": "FAILED (errors=1)",
+      "passed": false,
+      "log": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-review-2026-10-22\\contracts\\parent-supported-55-optimized.log",
+      "sha256": "15c8441c0bf703ae9216c99caca0bc45e42923ad5591adcc35ba8305a3769fdc"
+    },
+    {
+      "lane": "parent-selected-30",
+      "mode": "normal",
+      "tests_run": 30,
+      "summary": "FAILED (errors=1)",
+      "passed": false,
+      "log": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-review-2026-10-22\\contracts\\parent-selected-30-normal.log",
+      "sha256": "60d042d298d4ff1e767cf46aa6b5e1a6cc167bdd2f929c7bb002c29f6f597239"
+    },
+    {
+      "lane": "parent-selected-30",
+      "mode": "optimized",
+      "tests_run": 30,
+      "summary": "FAILED (errors=1)",
+      "passed": false,
+      "log": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-review-2026-10-22\\contracts\\parent-selected-30-optimized.log",
+      "sha256": "1a2be6a62876c6c5fccfd47133275c3fac318b9a2f35289984def59c2c3ef20e"
+    },
+    {
+      "lane": "parent-projection-21",
+      "mode": "normal",
+      "tests_run": 21,
+      "summary": "FAILED (errors=1)",
+      "passed": false,
+      "log": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-review-2026-10-22\\contracts\\parent-projection-21-normal.log",
+      "sha256": "d649cd18bc4b149b18146dddce7fdc0153614b5b8b9b1f6bce0546e52337ffd4"
+    },
+    {
+      "lane": "parent-projection-21",
+      "mode": "optimized",
+      "tests_run": 21,
+      "summary": "FAILED (errors=1)",
+      "passed": false,
+      "log": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-review-2026-10-22\\contracts\\parent-projection-21-optimized.log",
+      "sha256": "da79ea6e2f1d57e566dee78620717234d427bea436aeef035d2514f683b62fde"
+    },
+    {
+      "lane": "child-full-26",
+      "mode": "normal",
+      "tests_run": 26,
+      "summary": "OK",
+      "passed": true,
+      "log": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-review-2026-10-22\\contracts\\child-full-26-normal.log",
+      "sha256": "a77bfdf319e1cb4a2daa47f42094c1ffff0c261b9faaf5849af3862d38f53c75"
+    },
+    {
+      "lane": "child-full-26",
+      "mode": "optimized",
+      "tests_run": 26,
+      "summary": "OK",
+      "passed": true,
+      "log": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-review-2026-10-22\\contracts\\child-full-26-optimized.log",
+      "sha256": "93abf51aa75f694a67a9a8f8baa54f295efb459304d2dd1528b34c865add18b0"
+    },
+    {
+      "lane": "parent-supported-54",
+      "mode": "normal",
+      "tests_run": 54,
+      "summary": "OK",
+      "passed": true,
+      "log": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-review-2026-10-22\\contracts\\parent-supported-54-normal.log",
+      "sha256": "ddcfdc2f9fac495bc300d038b64e47d7a1fffebd045026b5f4b6b7e0b37f491d"
+    },
+    {
+      "lane": "parent-supported-54",
+      "mode": "optimized",
+      "tests_run": 54,
+      "summary": "OK",
+      "passed": true,
+      "log": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-review-2026-10-22\\contracts\\parent-supported-54-optimized.log",
+      "sha256": "fadf49c0312036f17cde8d9b5194e7b61bba946fc40bfd902ee2b66256ab630b"
+    },
+    {
+      "lane": "parent-selected-supported-29",
+      "mode": "normal",
+      "tests_run": 29,
+      "summary": "OK",
+      "passed": true,
+      "log": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-review-2026-10-22\\contracts\\parent-selected-supported-29-normal.log",
+      "sha256": "981133892c46df20089f8b8aa23fe2a2222796760d1485d064d66dbac2c21381"
+    },
+    {
+      "lane": "parent-selected-supported-29",
+      "mode": "optimized",
+      "tests_run": 29,
+      "summary": "OK",
+      "passed": true,
+      "log": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-review-2026-10-22\\contracts\\parent-selected-supported-29-optimized.log",
+      "sha256": "fce5e711f748d740492a513a379071fa05f0ee8b9f1bf981794650325f295b18"
+    },
+    {
+      "lane": "parent-projection-supported-20",
+      "mode": "normal",
+      "tests_run": 20,
+      "summary": "OK",
+      "passed": true,
+      "log": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-review-2026-10-22\\contracts\\parent-projection-supported-20-normal.log",
+      "sha256": "b4a5d4055396c5261f3ca514f5c59d3b716715607b4e85c8235c1fc2a808ed61"
+    },
+    {
+      "lane": "parent-projection-supported-20",
+      "mode": "optimized",
+      "tests_run": 20,
+      "summary": "OK",
+      "passed": true,
+      "log": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-review-2026-10-22\\contracts\\parent-projection-supported-20-optimized.log",
+      "sha256": "89d605bba250fb20136e92aa938dc34f22370be0b8838ec7b7695a31e6000d5e"
+    }
+  ],
+  "selection_caveat": "Supplied30-test parent logs contain no commands/test identities. The independent selected30 definition is explicitly recorded in TEST_EXECUTIONS.json; it cannot identify the original selection.",
+  "full_parent_module_tests": 56,
+  "new_projection_tests": 21,
+  "child_extension_module_tests": 26,
+  "unique_runnable_tests_per_mode": 80,
+  "environment_blocks": [
+    {
+      "test": "FollowupSourceBoundProjectionTests.test_source_symlink_rejected",
+      "reason": "Windows WinError1314; no privilege to create a real symlink. No skip counted as pass and no admin escalation."
+    },
+    {
+      "test": "ContractMutations.test_missing_files_fail_closed",
+      "reason": "git diff against historical979 base requires missing blob bfc2944e2a864325f9d10903f23d73f49148542f for generated RHKG_CANDIDATE_REDUCTION_ASSURANCE.json. No network repair."
+    }
+  ],
+  "fixture_history": "First native checkout inherited autocrlf=true; those failed logs are preserved in INITIAL_CRLF_FIXTURE. Final tracked files were rematerialized directly from2437 immutable Git blobs and three byte-identical candidate inputs overlaid. No frozen descriptor was edited or normalized in place.",
+  "immutable_baseline_verified": {
+    "disposition": "VERIFIED"
+  },
+  "actual41_wrapper": {
+    "disposition": "REJECTED",
+    "exception": "ValueError",
+    "message": "OPICA follow-up extension: full child reviewed type table absent; subset cannot extend parent"
+  },
+  "actual41_fallback": {
+    "disposition": "REJECTED",
+    "errors": [
+      "follow-up extension rejected: OPICA follow-up extension: full child reviewed type table absent; subset cannot extend parent"
+    ],
+    "allowed_delta_count": 0,
+    "raw_context_preserved": true
+  },
+  "independent_probes": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-review-2026-10-22\\contracts\\INDEPENDENT_PROBES.json",
+  "actual_parent_static_check": {
+    "status": "ENVIRONMENT_BLOCKED",
+    "exception": "CalledProcessError",
+    "message": "Command '['git', 'diff', '--no-renames', '--name-status', '97926d6a949fed7af0429a373b47abc772012834']' returned non-zero exit status 128.",
+    "required_roots": null,
+    "missing_roots": null,
+    "missing_files": null,
+    "authority": null,
+    "formal_acceptance": null,
+    "RH": null,
+    "Step4": null,
+    "error_count": 0,
+    "extension_errors": [],
+    "unauthorized_tracked_delta_count": 0
+  },
+  "findings": [
+    {
+      "id": "COLD_EXPORT_PREREQUISITE_INCOMPLETE",
+      "severity": "P1",
+      "source": "build_receipt.py:335",
+      "finding": "Adds OpicaTypeExprExport but omits the direct exporter import SourceCandidateResolution from both complete explicit target closures.",
+      "effect": "The delivered change does not establish a clean Linux exporter build. No cold-build pass was performed in this lane.",
+      "evidence": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-review-2026-10-22\\INDEPENDENT_CHECKS.json"
+    },
+    {
+      "id": "CHILD_ROUTE_FIREWALL_MISSING",
+      "severity": "P2",
+      "source": "validate_contract.py:197",
+      "finding": "Reviewed child claim and binding may carry route=R001_exceptional_zero. Parent registration_errors checks the projected parent, so its route-less check does not cover these child objects.",
+      "probe": "child_route_authority_metadata",
+      "current_exposure": "Latent; actual41 is rejected and child release is still hard closed."
+    },
+    {
+      "id": "CHILD_STATEMENT_FIREWALL_MISSING",
+      "severity": "P2",
+      "source": "validate_contract.py:197",
+      "finding": "An empty child quantified statement passes the structural review helper and is absent from the projected parent registration check.",
+      "probe": "empty_child_quantified_statement"
+    },
+    {
+      "id": "CHILD_DEPENDENCY_FIREWALL_MISSING",
+      "severity": "P2",
+      "source": "validate_contract.py:197",
+      "finding": "Unknown, self and duplicate child dependency identities pass the structural helper. Parent release dependency mapping is called only for the 76 projected parent roots.",
+      "probe": "invalid_child_dependency_identities"
+    },
+    {
+      "id": "FULL_CHILD_COMPILER_LINKAGE_OPEN",
+      "severity": "OPEN_INTEGRATION_OBLIGATION",
+      "source": "validate_contract.py:158",
+      "finding": "100 editable reviewed-object rows and matching editable type digests are structural metadata. The wrapper does not consume a complete source-bound child compiler receipt; its docstring requires that separate gate. The existing child release gate always rejects full release.",
+      "effect": "Do not promote this wrapper or the 41-root subset receipt to full100 acceptance."
+    }
+  ],
+  "full100_acceptance": false,
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "independent_closing": "OPEN"
+}

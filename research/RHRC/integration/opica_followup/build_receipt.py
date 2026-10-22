@@ -330,7 +330,11 @@ def main():
     environment['LEAN_NUM_THREADS'] = '2'
     for label, command in [
         ('version', [args.lake, 'env', 'lean', '--version']),
-        ('build', [args.lake, 'build', 'Zeta23.OPICAFollowup.Validation']),
+        # Each project import of the exporter needs its own built object.
+        ('build', [args.lake, 'build',
+                   'Zeta23.OPICAFollowup.Validation',
+                   'Zeta23.RHRC.OpicaTypeExprExport',
+                   'Zeta23.RHRC.SourceCandidateResolution']),
         # Compile the exporter once, emitting both its checked object and full
         # protocol. Building it first would repeat the same expensive traversal.
         ('export', [args.lake, 'env', 'lean', 'Zeta23/RHRC/OpicaFollowupBindings.lean',

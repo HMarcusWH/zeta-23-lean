@@ -1,0 +1,30 @@
+[
+  {
+    "module": "parent",
+    "mode": "normal",
+    "exit_code": 0,
+    "log": "parent_normal.log",
+    "sha256": "fa649e86111c0ba6394b71e9142450a757f3f90b8803f9eeb2d8473bca9b1d8f"
+  },
+  {
+    "module": "child",
+    "mode": "normal",
+    "exit_code": 0,
+    "log": "child_normal.log",
+    "sha256": "c36df07b851914162a56b304ec483d3d56a6bb899e7cfe63817077c51b5d2343"
+  },
+  {
+    "module": "parent",
+    "mode": "optimized",
+    "exit_code": 0,
+    "log": "parent_optimized.log",
+    "sha256": "d59cec2b56d5f7b3138055574f0839f3a975d18deb371d49a8d0abd51db30a86"
+  },
+  {
+    "module": "child",
+    "mode": "optimized",
+    "exit_code": 0,
+    "log": "child_optimized.log",
+    "sha256": "f92839b46210bb570c1a0ed1bb01ff6b6c1e466c04de485cfc50f2d96254ddf0"
+  }
+]

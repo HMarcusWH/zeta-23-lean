@@ -1,0 +1,205 @@
+# OPICA follow-up to PR #293 — complete handover
+
+Prepared 21 October 2026 at the user's request to transfer the remaining proof work to Pro.
+
+**38 of the original 100 primary roots have passed the final exact-source Lean subset audit and independently stated consumers. 62 acceptance roots remain unfinished. The full PR is not ready to push. No follow-up PR or remote branch has been published. RH, Step 4 and the independent closing inequalities remain OPEN.**
+
+The remaining count includes one additional primary declaration in the log-slack WIP that passed a direct leaf check but has not passed its independent imported-consumer, axiom and acceptance gates. It is deliberately not counted among the 38.
+
+## Start here
+
+1. Read this handover and `START_HERE_FOR_PRO.md`.
+2. Read `inputs/OPICA_FOLLOWUP_PR_SPEC_PACKAGE_2026-10-21.zip`, especially the full normative build specification, root inventory, theorem crosswalk, manifests and validation contracts. The two foundational PDFs and every original uploaded Markdown/JSON are also in `inputs/original_uploads/`.
+3. Inspect `code/committed_source.zip` for the complete repository snapshot. The small Git bundle and the patch against merged PR293 are alternative ways to restore the same code.
+4. Apply the three files under `wip_overlay/` when continuing. They are intentionally outside the verified commit and are not completed acceptance modules.
+5. Read the three detailed lane handovers in `notes/`, then consult `REMAINING_62_PROOFS.md` and `THEOREM_STATUS.json`. They list every outstanding original root and its unchanged contract.
+6. Read `AUDIT_RESULT.md` for the final disposition of the exact-source subset audit and `notes/HANDOVER_AUDIT_POST_GREEN.md` for its Post-Green Research Pass. It is separate from full release acceptance.
+
+`STATE.json` is the machine-readable checkpoint. `CHECKSUMS.sha256` binds the package payloads. All included proof attempts are research material; their individual status comes from the handover notes and matching source hashes, not from their presence in the ZIP.
+
+## Exact code checkpoint
+
+| Item | Value |
+|---|---|
+| Repository | https://github.com/HMarcusWH/zeta-23-lean |
+| Parent PR | https://github.com/HMarcusWH/zeta-23-lean/pull/293 |
+| Local branch | `research/opica-native-followup` |
+| Verified-work snapshot commit | `e52964d79263e8bd208a14d08745405d897e3610` |
+| Snapshot tree | `b8585ce45ed158661be1298f436f1103f2c923d2` |
+| Accepted merged parent | `d53dd70d38b0762af130b1d19b795af259f505f5` |
+| Accepted parent tree | `12691099f1a155a8bfa3ad4f6689146175b233b2` |
+| Lean toolchain | `leanprover/lean4:v4.33.0-rc2` |
+| Lean compiler commit | `d8b18978322de05a8f3dba51ef03cf5461676c17` |
+| Mathlib revision | `51e6992efd06126df61a496bebf8f49482a4e129` |
+| Full required scope | 100 primary roots; 28 acceptance units; 43 Lean files; 84 new paths; 12 permitted existing edits; 62 canonical regenerated paths |
+
+The local repository is:
+
+`C:/Users/macka/.codex/.chatgpt-projects/g-p-6a353c7268b08191b685956e466d73e4/work/opica-followup-repo`
+
+The isolated audit checkout is `work/opica-audit28`. Its historical directory name does not describe its current contents: it was advanced cleanly to the exact 38-root snapshot above. Its project build cache is separate from the working repository; the pinned package cache is shared.
+
+The three untracked working files are `AuxiliaryCompletions.lean`, `ComplexLocalMeasures.lean` and `LogSlackBalance.lean`. They are preserved byte-for-byte in `wip_overlay/`. There were no source edits or new mathematical checks by the agents after the user's handover request; current in-flight checks were allowed to finish and their results were collected.
+
+Some lane notes identify the exact bytes at an earlier successful leaf gate. A final whitespace-only cleanup removed trailing space/extra end-of-file blank lines before the snapshot. For committed source bytes, the final 38-root receipt and committed archive take precedence. Frozen normative files still carry their original historical PLANNED/PROPOSED labels; live implementation status is deliberately recorded separately in `THEOREM_STATUS.json` and the compiler evidence.
+
+## What has been built
+
+All module paths below begin with `Zeta23/OPICAFollowup/`. Exact root names, original contracts and consumers are in `IMPLEMENTED_38_PROOFS.md`; the complete source is in the code archive. The final audit's human-readable full Lean signatures are exported to `VERIFIED_THEOREM_TYPES.md`.
+
+| Module | Primary roots | Actual result |
+|---|---:|---|
+| `NativeSourceFamily` | 2 | Literal one-copy higher source `j_d=P^d j=P^(d+2)q`; original order-zero identities, smoothness, support, both elementary moments and actual causal prime/integer histories. |
+| `NativeSourceTransforms` | 3 | Actual source Laplace identity/nonvanishing; actual original prime-field arbitrary-multiplicity pole; actual forward weighted-L1 transform and correctly filled entire representative. Supporting results include every physical forward derivative transform. |
+| `NativeFilters` | 2 | All seven actual causal/distributional actions and safe-half-plane transforms; source-P compact-test agreement; local units/completion factors. Includes actual inverse Euler and real cutoff adapters, including Y=3/2. |
+| `NativeTransformationWords` | 4 | Actual physical finite-word composition, every affine history, local corrected germ, order `p*m-1`, exact nonzero leading coefficient and factorial derivative, explicit constructor costs. Local results allow every independently identified history. |
+| `NormFirstTransfer` | 4 | Full norm-first log/rate transfer and allocation statements. Also 15 optional sharp arsinh comparison supporting declarations from amendment C1. |
+| `JointObservation` | 5 | Joint observation/recovery criterion, optimal cost, noise, incompatibility and subexponential cost composition; zero-target and singular cases retained. |
+| `RobustLaurent` | 3 | Genuine disk/circle coefficient estimates, strict survival and actual native-word contour consumer with raw/correction/recovery errors. |
+| `Counterexamples` | 4 | Coupled Gram collision, norm-first strict weakening, exponential history-recovery cost and actual finite positive nonreal resolvent Gram controls. These controls are not assertions about an off-line zeta zero. |
+| `SourceVerticalBounds` | 1 | Genuine infinite-product vertical bound for the literal one-copy Q, with the fixed square-root exponential decay and complete floor/tail constants. |
+| `ZetaLeftLineBounds` | 1 | A single A0 before every integer n bounds actual zeta and zeta derivative on moving left lines. Additional Beta/Gamma/reflection/Cauchy lemmas cover fractional fixed strips. No reciprocal-zeta or zero-free premise. |
+| `ForwardLocalization` | 2 | Uniform actual contour envelope before choosing n; genuine derivative inversion and whole-strip shift; actual fixed-order double-exponential decay for every derivative and all t>=0, including the initial interval. |
+| `BalancedCoefficients` | 2 | Actual full signed binomial/Mobius convolution identity and divisor bound, real cutoffs and physical palette drive. Nonsquarefree products inside convolution powers are retained. |
+| `NativeExplicitFormula` | 3 | Actual multiplicity-weighted zero summability, supremum bounds and translated-source explicit formula with the actual archimedean/trivial-zero series. Both ordinate signs remain. |
+| `UniformSourceBounds` | 2 | Source-fixed actual L-infinity/L1 first-two-jet and integer-drive L2 costs; actual continuum cancellation; source-priced actual prime-field Theta upper envelope, including full zero sums, trivial tail and finite initial history. |
+| **Total** | **38** | Full original statements are the acceptance target; a supporting helper is not counted as another primary root. |
+
+The forward-decay result is specifically:
+
+For fixed natural d,ell,k with ell<=d, there exist A,c>0 independent of t such that
+
+`|D^k forwardKernel(d,ell)(t)| <= A * exp(-c * exp(t / (2*(ell+1))))`
+
+for every real t>=0. Fixed-strip constants justify the exact contour shift for each n; the quantitative saddle uses only the separately proved uniform C,D,B line envelope. No n-dependent strip constant is substituted into that uniform budget. This is a fixed-order result, not a moving-order theorem.
+
+## Critical scope correction already made
+
+The first implementation of the local word roots carried an unnecessary joint connected continuation-domain packet. Review caught that restriction before the handover snapshot. The three local word/jet roots and the contour consumer were strengthened to all `NativeWordHistory` inputs, with actual physical safe-half-plane identification and raw `MeromorphicAt` at the pole.
+
+Individual histories still carry their genuine causal state, actual initial Laplace identity and independently established connected analytic continuation. A separate supporting **global** `MeromorphicOn` companion retains a common-domain certificate. Do not reintroduce that extra certificate as a mandatory premise on the local primary theorems. Do not weaken individual history identification to separately patched unrelated germs.
+
+The raw totalized forward product at z=1/2 is also deliberately distinguished from its entire representative. At d=ell the representative is nonzero there while the raw product is zero. Both facts have explicit compiled consumers. The analogous degree-zero `p*m=1` word jet is retained.
+
+## What remains — all 62 original acceptance roots
+
+The complete list with original statement text, module path, paper unit, expected consumer and rejection conditions is in `REMAINING_62_PROOFS.md`. `THEOREM_STATUS.json` covers all 100 roots, and `MODULE_STATUS.json` includes all 43 planned Lean modules and their import graph.
+
+| Proof lane | Remaining roots | Modules |
+|---|---:|---|
+| Arithmetic, masks and native rates | 14 | `LogSlackBalance`, `MaskedNativeRate`, `AuxiliaryCompletions`, `MultiplicityTail`, `NativeWindowRate`, `MovingSourceWindowRate` |
+| Complex measures and heat family | 14 | `ComplexLocalMeasures`, `DilatedComb`, `WeightedMixing`, `NearGapLimits`, `RenormalizedCoPoisson` |
+| Profiles, Sobolev/ODE, sampling and separation | 15 | `ProfileEulerMaclaurin`, `ZeroProfiles`, `LogFourierSobolev`, `ForcedEuler`, `SamplingCompatibility`, `CoPoissonJets`, `ConfluentProfiles`, `FiniteSpanSeparation`, `FirstCellCost` |
+| Square and sawtooth obstructions | 7 | `SquareDefect`, `SawtoothForce` |
+| Spectral/boundary package | 7 | `WeightedSpectralMeasure`, `NativeResolvent`, `BoundaryAmplitude` |
+| Final consumers | 5 | `Consumers` |
+| **Total** | **62** | No roots have been dropped or replaced. |
+
+The sibling public facade, complete expected-type/physical consumers, full parent-extension wiring, all proof lanes, final global registration and exact canonical Linux regeneration also remain. The current release validator deliberately fails full release; preparation or a subset receipt must never satisfy the 100-root contract.
+
+## Preserved unfinished work — continue from these files
+
+### Log-slack and the two masks
+
+Read `notes/log-slack-balance-handover.json` first.
+
+`wip_overlay/Zeta23/OPICAFollowup/LogSlackBalance.lean` is 736 lines, SHA-256 `d17e6b6a2223c49d924e42c83c228a02565baba9a2ac27198291770cce209fb6`. Its last direct leaf check passed with an empty log. It has not been saved/imported as a checked module, independently consumed, or given a complete axiom audit.
+
+It contains literal source/coefficient/tuple histories, cutoff geometry, local finite Fubini, exact native decomposition and signed tuple corridor/causal product bounds. The required `log_slack_native_decomposition` is present as a candidate. The required `log_slack_typeI_error` and `fixed_two_factor_preparation` are absent; `MaskedNativeRate.lean` is unstarted.
+
+Preserve the full fixed r>=2, d>=r-1, C>1, eta>=0, K>C+r*eta+2*r scope, squarefree Q(T)<=T^eta frozen per window, actual palette delay, real Y/Z cutoffs and signed tuples. The remaining bridge is the genuine Type I error using actual forward decay and the complete low/high-mask estimates. Do not replace them by supplied native mask budgets.
+
+### Auxiliary completion and multiplicity tail
+
+Read `notes/THEORY_PRO_HANDOVER_2026-10-21.md` first.
+
+The exact saved supporting prefix `AuxiliaryCompletions.lean` has SHA-256 `881877ebfa87c209effaf45408f00bfa6d91b9c830dd80cb23c56e256bdde2cd`. All three required auxiliary primary roots are absent. It already defines the literal c_k,b_k,a_k,r_k,alpha_k,A_k and proves the actual beta integral and c_k weighted-L1/Laplace identity.
+
+The external `AuxiliaryCompletionsDraft.lean` is a green extension with the initial actual a_k transform on Re z>1/2 and an explicit c_k L1 bound, but was not integrated. `AuxiliaryEndpointProfiles.lean` passed its final direct check with one unused-simp warning. It proves the actual higher derivative profile identity, retaining the unit endpoint atom at 1. It does not yet construct the signed measure or establish the density variation bound. A full standalone auxiliary axiom/consumer audit has not run.
+
+Highest-leverage continuation: derive the explicit density variation bound, Fourier decay with the endpoint atom, actual Poisson sum, enlarged actual Laplace domain and uniform ratios. Then construct the actual convolution/top-moment/Laguerre/finite-residual/terminal-memory chain. `MultiplicityTail.lean` is unstarted. Do not assume global weighted L2 of the prime field, drop endpoint atoms, add an extra top-moment factorial, or assume the desired native rate.
+
+### Locally finite complex measures
+
+Read `notes/PRO_HANDOVER_COMPLEX_MEASURES_2026-10-21.md` first.
+
+The exact saved WIP `ComplexLocalMeasures.lean` has SHA-256 `066f7ea69ceb69f78e347a7290ac0795a283745e3af610e88b6f49c53f16d9e5`. It passed a genuine own-module save with no diagnostics. The required primary `complex_local_measure_embedding_faithful` remains absent, and its full imported expected-type/axiom audit has not run.
+
+The supporting implementation has actual real/imaginary locally finite Jordan pairs, compact finite complex restrictions, actual integration and linear-growth Schwartz embedding, an injectivity proof, global locally finite Jordan arithmetic and compact Euclidean variation control. Whole-line mass is unrestricted. External arithmetic is green but unintegrated. The repaired compact-coherence candidate has not been rechecked; the integral bridge has never been checked. These distinctions are explicit in the lane handover.
+
+Finish compact restriction coherence, exact integration/growth bridges, local variation convergence and Schwartz-tail compatibility before declaring the full primary root. Do not substitute globally finite `ComplexMeasure` for the locally finite carrier, treat a loose positive pair as canonical Jordan variation, or use infinity-minus-infinity arithmetic.
+
+## Post-Green Amendment v1.1
+
+The complete original amendment is included and is also embedded with its hash in `SOURCE_REGISTER.json`. It is additional research input. No versioned promotion to mandatory acceptance has occurred.
+
+| Candidate | Current mathematical disposition |
+|---|---|
+| C1 — sharp norm comparison | Fifteen optional supporting declarations are proved and consumed; original primary statements are unchanged. |
+| C2 — polynomial-growth signed sharp-gap classification | Derived research route, not yet separately formalized. Polynomial temperateness, autocorrelation/Fatou and lattice periodicity bridges remain. |
+| C3 — four-cost approximate separator | First displayed bound is false for unrestricted epsilon; the exact epsilon=4 analytic counterexample is preserved. Proposed repairs are epsilon<=1 or the enlarged variation window. The second bound already has a sufficient small-epsilon condition. No native independent defect upper is supplied. |
+| C4 — fixed lattice repair obstruction | Derived with explicit fixed order-zero lattice measure and full distributional self-duality/all shrinking tests. It does not exclude cancellation of one fixed test or arbitrary epsilon-dependent repairs. Original square obligations remain. |
+
+For C3 the supported native target is an upper growth statement `log(1+E_T)=o(T)` or `E_T<=exp(o(T))`. Literal equality `E_T=exp(o(T))` would need additional lower control. Do not silently formalize a repaired statement as if it were the original source text.
+
+## Parent acceptance and evidence
+
+PR293 was merged at 2026-10-21 13:13:17 UTC. The original PR head `553b4263b58d9fec178320de251ff299a0bd702a`, tested synthetic merge `875a321edf0362bbc170cc3177007c18172eeef0` and accepted merge d53dd70d have the same tree shown above. The refreshed `PARENT_INTAKE.json` preserves the historical intake separately from the current acceptance record.
+
+The workflow harvest covers 71 raw jobs / 61 effective jobs: 59 successful dispositions and two documented inherited skips across 21 effective workflow/event scopes. The dedicated larger-budget WP4 check certified 18/18 frozen boxes; the embedded smaller-budget search remained UNRESOLVED after 7/18. RHRC's disposition was CONTINUE with RH_OPEN. These are different research results, not interchangeable green labels.
+
+The actual parent formal artifact was downloaded and revalidated using the unchanged parent validator: 76 roots, 613 public declarations, 8 constructors, 10,655 dependency declarations, and 59 checked source hashes. Its artifact SHA is `1ffbc5055e27576599e957f3ad8a0a47ed5c69090d1281bd096d3e5cb4d3ad03`. Parent CI evidence and the same-tree equivalence do not establish a fresh complete parent build in the child environment. The original broad local rebuild suffered resource/read failures; those failures are not recorded as passes. A complete current-environment P0 receipt remains a full-release obligation.
+
+The original Markdown/JSON normatives and five frozen paper / six regression sources remain byte-frozen. Both foundational PDFs are unchanged. The implementation dependency overlay is `DEP_2026_10_21_03`, with both predecessors hash preserved. It records justified actual imports without changing the 100-root inventory or promoting optional lemmas. Protected P0 files and canonical claims have not been rewritten; no child claim has been registered globally.
+
+## Verification and its limits
+
+- The final isolated audit passed at the exact clean commit/tree above: `PASS_SOURCE_BOUND_SUBSET_ONLY`. It binds 2,432 input files and enumerates 988 public declarations, 15 constructors, 6,403 dependency declarations and 6,708 TYPE/VALUE/STRUCTURE channels. A separate revalidation checked the stored receipt and all input hashes against the main checkout. The three untracked WIP files are excluded.
+- The combined 38-root expected-type module passed locally. Individual physical/boundary consumers and the full listed root/helper axiom closures use only `propext`, `Classical.choice`, `Quot.sound`.
+- 131 child validation/mutation tests pass in normal Python and 131 in optimized Python. Preparation reports `PASS_PREPARATION_ONLY`, with full release closed.
+- Earlier frozen scientific replay passed 39,920 exact controls in each mode and 33 numerical consistency cases. The numerical cases are not interval certificates or off-line zero experiments. The unchanged parent mutation suite passed 154 tests in each mode. These are historical replay evidence, not a new run at this handover commit.
+- The historical 11-root exact-source receipt, failed 28-root exporter attempt and successful 37-root protocol precheck are not the current 38-root receipt. The 37-root precheck covered 952 public declarations, 15 constructors, 6,344 dependency nodes and 6,591 channels before later supporting additions and scope corrections.
+- The exporter failure was repaired by auditing Lean's compiler-reserved equation lemmas with original-definition provenance, full type/axiom checks and dependency closure. Generated helpers are enumerated, not omitted. The final disposition is in `AUDIT_RESULT.md`.
+- No follow-up GitHub CI or final whole-PR workflow harvest has occurred. Agent mathematical review is not independent human review. Green infrastructure/supporting theorems are not a proof of RH.
+
+## Practical continuation
+
+The code snapshot contains the authoritative source files and validation scripts. Keep the pinned `lean-toolchain` and `lake-manifest.json`; do not refresh dependency versions casually.
+
+For the existing Windows workspace:
+
+```powershell
+$lake = 'C:\Users\macka\.elan\toolchains\leanprover--lean4---v4.33.0-rc2\bin\lake.exe'
+$env:LEAN_NUM_THREADS = '1'
+& $lake env lean Zeta23/OPICAFollowup/YourPlannedModule.lean
+```
+
+Use a writable task directory for `TEMP` and `TMP` when running Python tests in this sandbox. The bundled Python is `work/tools/python-3.13.5-embed-amd64/python.exe` with SymPy 1.14.0 and mpmath 1.3.0 for the frozen replay.
+
+Avoid concurrent broad cache-writing builds. Independent read-only leaf checks and disjoint narrow own-module saves were workable after prerequisites were cached. A broad writer should announce its ownership. Do not copy Windows compiled oleans into a Linux validation environment.
+
+The subset audit command is:
+
+```text
+python research/RHRC/integration/opica_followup/build_receipt.py --preparation-only --requested-head <exact-commit> --requested-base d53dd70d38b0762af130b1d19b795af259f505f5 --output-dir <outside-checkout> --lake <pinned-lake>
+```
+
+Its selected root list is explicit, not inferred from module presence. Update it only after a full original primary statement, independent expected type, physical consumer and source/proof review are complete. It deliberately cannot authorize full release. Never rerun old workspace helper scripts blindly: several historical scripts hard-code 11/20/28 roots and would overwrite the current aggregate.
+
+To restore elsewhere, clone the public parent repository, make the accepted parent available, and fetch `code/followup-commits.bundle`. The bundle was verified and contains the local follow-up commits up to the exact snapshot. Alternatively apply `code/changes_from_pr293.patch` at the accepted parent, or inspect the full source ZIP. After restoring the exact commit, copy the three WIP files separately. They are not covered by the committed subset receipt.
+
+Every file under the ChatGPT project's synced `sources/` directory is read-only. Those files were not edited and must not be used as an implementation destination.
+
+## Recommended first Pro pass
+
+1. Confirm the 38-root checkpoint and read all three lane handovers before editing.
+2. Review and integrate the green but unintegrated auxiliary and complex-arithmetic candidates; retain exact evidence boundaries.
+3. Promote the log-slack decomposition only after the independent full contract/type/physical/axiom gates; finish the Type I error and both masks using actual decay.
+4. Close the endpoint variation/Poisson/ratio and Laguerre/residual chain; it is the main prerequisite for the actual native lower rate.
+5. Close the actual locally finite complex measure convergence/embedding contract, then continue the full heat/profile/spectral chain in the frozen dependency order.
+6. Keep all 100 roots required. Finish the full validation wrapper, lanes, registration, canonical generated state and exact current-parent/current-child receipts before publishing as complete.
+7. After every meaningful green result, perform the project's Post-Green Research Pass. Harvest every final CI/research job and classify its actual disposition before planning another theorem PR.
+
+Useful leads for Pro, explicitly **LEAD / HYPOTHESIS**: the explicit forward contour constants may support a priced slow-source localization argument; the source-priced Theta upper envelope may combine with actual auxiliary endpoint lower bounds; exact word coefficients may expose whether correction, recovery, radius or multiplicity cost is the true obstruction. None supplies an independent closing inequality.
+
+The user requested this handover rather than another round of mathematical implementation. All unfinished attempts are preserved so the continuation can build on them. RH, Step 4 and the independent closing inequalities remain OPEN.

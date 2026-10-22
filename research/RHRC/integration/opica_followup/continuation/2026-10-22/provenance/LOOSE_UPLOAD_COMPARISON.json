@@ -1,0 +1,72 @@
+[
+  {
+    "upload": "MaskedNativeRate (1).lean",
+    "kit_path": "workspace/Zeta23/OPICAFollowup/MaskedNativeRate.lean",
+    "identical": true
+  },
+  {
+    "upload": "ComplexLocalMeasures (1).lean",
+    "kit_path": "workspace/Zeta23/OPICAFollowup/ComplexLocalMeasures.lean",
+    "identical": true
+  },
+  {
+    "upload": "AuxiliaryCompletions (2).lean",
+    "kit_path": "workspace/Zeta23/OPICAFollowup/AuxiliaryCompletions.lean",
+    "identical": true
+  },
+  {
+    "upload": "ExpectedMasks.lean",
+    "kit_path": "consumers/ExpectedMasks.lean",
+    "identical": true
+  },
+  {
+    "upload": "ExpectedComplex.lean",
+    "kit_path": "consumers/ExpectedComplex.lean",
+    "identical": true
+  },
+  {
+    "upload": "MaskedNativeRate.json",
+    "kit_path": "evidence/latest_repair_delivery/evidence/lean/MaskedNativeRate.json",
+    "identical": true
+  },
+  {
+    "upload": "ExpectedMasks.json",
+    "kit_path": "evidence/latest_repair_delivery/evidence/lean/ExpectedMasks.json",
+    "identical": true
+  },
+  {
+    "upload": "ComplexLocalMeasures.json",
+    "kit_path": "evidence/latest_repair_delivery/evidence/lean/ComplexLocalMeasures.json",
+    "identical": true
+  },
+  {
+    "upload": "ExpectedComplex.json",
+    "kit_path": "evidence/latest_repair_delivery/evidence/lean/ExpectedComplex.json",
+    "identical": true
+  },
+  {
+    "upload": "AuxiliaryCompletions.json",
+    "kit_path": "evidence/latest_repair_delivery/evidence/lean/AuxiliaryCompletions.json",
+    "identical": true
+  },
+  {
+    "upload": "parent_full_normal.log",
+    "kit_path": "evidence/latest_repair_delivery/evidence/parent_full_normal.log",
+    "identical": true
+  },
+  {
+    "upload": "parent_full_optimized.log",
+    "kit_path": "evidence/latest_repair_delivery/evidence/parent_full_optimized.log",
+    "identical": true
+  },
+  {
+    "upload": "child_extension_normal (1).log",
+    "kit_path": "evidence/latest_repair_delivery/evidence/child_extension_normal.log",
+    "identical": true
+  },
+  {
+    "upload": "child_extension_optimized (1).log",
+    "kit_path": "evidence/latest_repair_delivery/evidence/child_extension_optimized.log",
+    "identical": true
+  }
+]

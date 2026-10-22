@@ -76,6 +76,101 @@ DEPENDENCY_REFINEMENTS = {
 }
 DEPENDENCY_V1_SHA256 = '32f2c2e57743f5c1a98176ac64f3b2671e8c45f8355361130ff0271361105a91'
 DEPENDENCY_V2_SHA256 = '54aa023b5d2c483abab95b696381ad7ce6eaeb7a1b17e66c2ce80eee2aed78e7'
+CONTINUATION_MANIFEST_SHA256 = 'a09bdfdabb9a9bfd8306ce08712207bdaeadf94ffc54ffd7b8a21ebf752b39a8'
+CONTINUATION_FOLDER = 'research/RHRC/integration/opica_followup'
+CONTINUATION_ARTIFACT_PREFIX = CONTINUATION_FOLDER + '/continuation/2026-10-22/'
+
+
+def continuation_checkpoint(root: Path, here: Path) -> tuple[set[str], list[str]]:
+    """Authorize exact pinned draft artifacts only; never sources or proof authority.
+
+    Any invalid record rejects the entire exception. The frozen create/modify
+    inventory and mathematical release requirements remain separate inputs.
+    """
+    root, here = Path(root).absolute(), Path(here).absolute()
+    manifest_relative = CONTINUATION_FOLDER + '/CONTINUATION_MANIFEST.json'
+    errors = []
+
+    def reject(message):
+        raise ValueError(message)
+
+    def unique_object(pairs):
+        result = {}
+        for key, value in pairs:
+            if key in result:
+                reject('duplicate checkpoint JSON key: ' + key)
+            result[key] = value
+        return result
+
+    def regular_file(relative):
+        if (not isinstance(relative, str) or not relative
+                or '\\' in relative or ':' in relative
+                or any(part in {'', '.', '..'} for part in relative.split('/'))
+                or any(ord(char) < 32 or ord(char) == 127 for char in relative)):
+            reject('unsafe artifact path')
+        path = root / relative
+        if any(parent.is_symlink() for parent in [path, *path.parents]
+               if parent.is_relative_to(root)):
+            reject('symlink in checkpoint path: ' + relative)
+        resolved_root, resolved_path = root.resolve(), path.resolve()
+        if (not path.is_file() or not resolved_path.is_relative_to(resolved_root)
+                or resolved_path != resolved_root / relative):
+            reject('missing or escaped checkpoint file: ' + relative)
+        return path
+
+    try:
+        if here != root / CONTINUATION_FOLDER:
+            reject('checkpoint location differs from exact child directory')
+        data = regular_file(manifest_relative).read_bytes()
+        if hashlib.sha256(data).hexdigest() != CONTINUATION_MANIFEST_SHA256:
+            reject('unreviewed continuation manifest bytes')
+        document = json.loads(data, object_pairs_hook=unique_object)
+        required = {
+            'schema': 'OPICA_CONTINUATION_CHECKPOINT_V1',
+            'id': 'CP_2026_10_22_01',
+            'status': 'DRAFT_NO_FULL_ACCEPTANCE',
+            'base_commit': '9b6a9a3a2badb4cff62a56c1158d9cef8759d30d',
+            'parent_commit': 'd53dd70d38b0762af130b1d19b795af259f505f5',
+            'original_primary_roots': 100,
+            'acceptance_units': 28,
+            'frozen_public_roots_sha256': '2239636f347449ecd447fc5ba78d7c75f1c0440d28a862cb72397c4f79597b41',
+            'release_ready': False,
+            'RH': 'OPEN', 'Step4': 'OPEN', 'independent_closing_inequalities': 'OPEN',
+        }
+        if not isinstance(document, dict):
+            reject('checkpoint manifest must be an object')
+        for key, expected in required.items():
+            actual = document.get(key)
+            if type(actual) is not type(expected) or actual != expected:
+                reject('checkpoint scope or authority changed: ' + key)
+        rows = document.get('artifacts')
+        if not isinstance(rows, list) or not rows:
+            reject('nonempty exact artifact inventory required')
+        if any(not isinstance(row, dict) or set(row) != {'path', 'bytes', 'sha256'}
+               for row in rows):
+            reject('artifact records must contain exactly path, bytes and sha256')
+        paths = [row['path'] for row in rows]
+        if any(not isinstance(path, str) for path in paths):
+            reject('artifact path must be a string')
+        if paths != sorted(paths) or len({path.casefold() for path in paths}) != len(paths):
+            reject('artifact paths must be sorted and unique, including case aliases')
+        verified = set()
+        for row in rows:
+            relative = row['path']
+            if relative != 'AGENTS.md' and not relative.startswith(CONTINUATION_ARTIFACT_PREFIX):
+                reject('artifact outside exact continuation scope: ' + relative)
+            if (type(row['bytes']) is not int or row['bytes'] < 0
+                    or not isinstance(row['sha256'], str)
+                    or re.fullmatch('[0-9a-f]{64}', row['sha256']) is None):
+                reject('invalid artifact byte count or SHA256: ' + relative)
+            payload = regular_file(relative).read_bytes()
+            if len(payload) != row['bytes'] or hashlib.sha256(payload).hexdigest() != row['sha256']:
+                reject('checkpoint artifact bytes changed: ' + relative)
+            verified.add(relative)
+        return {manifest_relative, *verified}, []
+    except (OSError, ValueError, TypeError, KeyError, RecursionError) as exc:
+        errors.append('continuation checkpoint rejected: ' + str(exc))
+        return set(), errors
 
 
 def dependency_amendment_errors(register: dict, manifest: dict, root: Path = REPO) -> list[str]:
@@ -294,6 +389,8 @@ def preflight(root: Path = REPO, here: Path = HERE) -> dict:
     manifest, public, crosswalk, descriptor, protected = map(read,
         ('BUILD_MANIFEST.json', 'PUBLIC_ROOTS.json', 'PAPER_CROSSWALK.json',
          'PARENT_EXTENSION.json', 'PROTECTED_STATE.json'))
+    checkpoint_paths, checkpoint_errors = continuation_checkpoint(root, here)
+    errors += checkpoint_errors
     errors += metadata_errors(manifest, public, crosswalk, descriptor)
     register = read('SOURCE_REGISTER.json')
     errors += supplemental_errors(register)
@@ -337,7 +434,7 @@ def preflight(root: Path = REPO, here: Path = HERE) -> dict:
     inventory = subprocess.run(['git', '-C', str(root), 'ls-files', '-z', '--cached',
                                 '--others', '--exclude-standard'], check=True,
                                stdout=subprocess.PIPE).stdout.decode().split('\0')
-    extra = sorted(set(filter(None, inventory)) - parent_paths - creates)
+    extra = sorted(set(filter(None, inventory)) - parent_paths - creates - checkpoint_paths)
     if extra:
         errors.append('unlisted files: ' + ', '.join(extra))
     missing = sorted(path for path in creates if not (root / path).is_file())
@@ -347,6 +444,13 @@ def preflight(root: Path = REPO, here: Path = HERE) -> dict:
             'planned_roots': len(public['roots']), 'coverage_units': len(crosswalk['scope_units']),
             'missing_planned_files': missing, 'planned_files_present': len(creates) - len(missing),
             'compiler_coverage_audited': False, 'release_ready': False,
+            'continuation_checkpoint': {
+                'status': 'REJECTED' if checkpoint_errors else 'HASH_PINNED_ARTIFACT_INVENTORY_ONLY',
+                'manifest_sha256': CONTINUATION_MANIFEST_SHA256,
+                'verified_artifacts': max(0, len(checkpoint_paths) - 1),
+                'proof_established_by_this_gate': False,
+                'formal_acceptance': False,
+            },
             'optional_candidate1_evidence': {
                 'reported_status': 'PROVED_LOCAL_OPTIONAL',
                 'checked_here': 'EXACT_METADATA_AND_LEXICAL_SOURCE_INVENTORY_ONLY',

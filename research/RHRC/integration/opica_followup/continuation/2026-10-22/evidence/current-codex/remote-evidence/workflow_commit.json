@@ -1,0 +1,35 @@
+{
+  "sha": "077aab1aa736299768296afb7929263a8a4cf4bd",
+  "node_id": "C_kwDOT94UfNoAKDA3N2FhYjFhYTczNjI5OTc2ODI5NmFmYjc5MjkyNjNhOGE0Y2Y0YmQ",
+  "url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/git/commits/077aab1aa736299768296afb7929263a8a4cf4bd",
+  "html_url": "https://github.com/HMarcusWH/zeta-23-lean/commit/077aab1aa736299768296afb7929263a8a4cf4bd",
+  "author": {
+    "name": "Marcus Hermansson",
+    "email": "marcus@hmwh.se",
+    "date": "2026-10-22T01:31:48Z"
+  },
+  "committer": {
+    "name": "Marcus Hermansson",
+    "email": "marcus@hmwh.se",
+    "date": "2026-10-22T01:31:48Z"
+  },
+  "tree": {
+    "sha": "547f98dc78eeb361f9a2fffd8cf7cb1c3afa5860",
+    "url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/git/trees/547f98dc78eeb361f9a2fffd8cf7cb1c3afa5860"
+  },
+  "message": "Add isolated pinned Linux environment and cold-prerequisite audit (no release promotion)",
+  "parents": [
+    {
+      "sha": "9b6a9a3a2badb4cff62a56c1158d9cef8759d30d",
+      "url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/git/commits/9b6a9a3a2badb4cff62a56c1158d9cef8759d30d",
+      "html_url": "https://github.com/HMarcusWH/zeta-23-lean/commit/9b6a9a3a2badb4cff62a56c1158d9cef8759d30d"
+    }
+  ],
+  "verification": {
+    "verified": false,
+    "reason": "unsigned",
+    "signature": null,
+    "payload": null,
+    "verified_at": null
+  }
+}

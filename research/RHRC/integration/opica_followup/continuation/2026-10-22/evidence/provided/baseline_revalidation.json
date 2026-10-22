@@ -1,0 +1,19 @@
+{
+  "status": "PASS_BYTE_REVALIDATION_NOT_NEW_COMPILATION",
+  "source_count": 2437,
+  "source_mismatches": [],
+  "command_logs": [
+    {
+      "log": "version.log",
+      "match": true
+    },
+    {
+      "log": "build.log",
+      "match": true
+    },
+    {
+      "log": "export.log",
+      "match": true
+    }
+  ]
+}

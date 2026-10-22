@@ -1,0 +1,35 @@
+{
+  "counts": {
+    "BASELINE_LOCALLY_VERIFIED_SUBSET": 41,
+    "NO_COMPLETE_CANDIDATE_DELIVERED": 48,
+    "UNCHECKED_CANDIDATE_DELIVERED": 11
+  },
+  "artifact_sha256": "8a83803e516fc5e4817a375c30efaefb75a3d980e0e26f7c2a9f21410d9b67e1",
+  "artifact_contents": [
+    "build.log",
+    "export.log",
+    "version.log"
+  ],
+  "separate_log_comparisons": {
+    "build.log": {
+      "member": "build.log",
+      "identical_to_separate_upload": true
+    },
+    "export.log": {
+      "member": "export.log",
+      "identical_to_separate_upload": true
+    }
+  },
+  "candidate_builder_explicit_targets": [
+    "Zeta23.OPICAFollowup.Validation",
+    "Zeta23.RHRC.OpicaTypeExprExport"
+  ],
+  "exporter_direct_project_imports": [
+    "Zeta23.OPICAFollowup.Validation",
+    "Zeta23.RHRC.OpicaTypeExprExport",
+    "Zeta23.RHRC.SourceCandidateResolution"
+  ],
+  "imports_outside_candidate_build_closure": [
+    "Zeta23.RHRC.SourceCandidateResolution"
+  ]
+}

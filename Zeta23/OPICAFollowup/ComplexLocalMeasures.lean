@@ -1,3 +1,4 @@
+
 import Mathlib.MeasureTheory.VectorMeasure.Decomposition.JordanSub
 import Zeta23.OPICA.LocallyFiniteSignedMeasure
 import Mathlib.MeasureTheory.Measure.Complex
@@ -784,5 +785,397 @@ theorem LocalVariationConvergence.tendsto_compact_test_with_error
   apply tendsto_iff_norm_sub_tendsto_zero.mpr
   exact squeeze_zero (fun n => norm_nonneg _) hb
     (by simpa using (h K hK).const_mul (2*M))
+
+
+/-!
+## Uniform local-variation to Schwartz convergence
+
+UNCHECKED continuation at 9b6a9a3.  The common growth constant below is a
+hypothesis about the actual variation measures, not the desired convergence.
+The tail estimate is proved before passing to the limit.  Global finite mass
+is never assumed.
+-/
+
+open scoped ENNReal NNReal
+open Zeta23.OPICA
+
+/-- A quantified growth budget for a particular positive measure. -/
+def CommonLinearMassBound (C : ℝ) (μ : Measure ℝ) : Prop :=
+  0 ≤ C ∧ ∀ R : ℝ, 0 ≤ R → μ.real (Icc (-R) R) ≤ C*(1+R)
+
+lemma CommonLinearMassBound.linearGrowth {C : ℝ} {μ : Measure ℝ}
+    (h : CommonLinearMassBound C μ) : LinearMassGrowth μ := ⟨C,h.1,h.2⟩
+
+lemma CommonLinearMassBound.mono {C : ℝ} {μ ν : Measure ℝ}
+    [IsLocallyFiniteMeasure μ] (h : CommonLinearMassBound C μ) (hle : ν ≤ μ) :
+    CommonLinearMassBound C ν := by
+  refine ⟨h.1,fun R hR => ?_⟩
+  exact (ENNReal.toReal_mono isCompact_Icc.measure_lt_top.ne (hle _)).trans (h.2 R hR)
+
+/-- Closed shells can overlap on boundaries.  The proof deliberately uses
+subadditivity, not an unproved disjointness assertion for atomic measures. -/
+def complexTailShell (R : ℝ) (n : ℕ) : Set ℝ :=
+  Icc (-(R*(2:ℝ)^(n+1))) (R*(2:ℝ)^(n+1)) \
+    Ioo (-(R*(2:ℝ)^n)) (R*(2:ℝ)^n)
+
+lemma complexTailShell_compact (R : ℝ) (n : ℕ) : IsCompact (complexTailShell R n) :=
+  isCompact_Icc.diff isOpen_Ioo
+
+lemma complexTailShell_cover {R : ℝ} (hR : 0<R) :
+    (⋃ n : ℕ, complexTailShell R n) = {x : ℝ | R ≤ |x|} := by
+  ext x
+  constructor
+  · intro hmem
+    obtain ⟨n,hn⟩ := mem_iUnion.mp hmem
+    have hn' : x ∈ complexTailShell R n := hn
+    have hlow : R*(2:ℝ)^n ≤ |x| := by
+      by_contra h
+      exact hn'.2 (abs_lt.mp (lt_of_not_ge h))
+    exact (le_mul_of_one_le_right hR.le (one_le_pow₀ (by norm_num))).trans hlow
+  · intro hx
+    obtain ⟨n,hn,hnnext⟩ := exists_nat_pow_near
+      ((le_div_iff₀ hR).mpr (by simpa using hx)) (by norm_num : (1:ℝ)<2)
+    apply mem_iUnion.mpr
+    refine ⟨n,?_,?_⟩
+    · apply abs_le.mp
+      have h := (div_lt_iff₀ hR).mp hnnext
+      simpa only [mul_comm] using h.le
+    · intro hsmall
+      have h := (le_div_iff₀ hR).mp hn
+      have h' := abs_lt.mpr hsmall
+      nlinarith
+
+lemma integral_norm_iUnion_le_tsum {μ : Measure ℝ} (s : ℕ→Set ℝ) (f : ℝ→ℂ)
+    (hi : ∀ n, IntegrableOn f (s n) μ)
+    (hs : Summable (fun n => ∫ x in s n, ‖f x‖ ∂μ)) :
+    (∫ x in ⋃ n, s n, ‖f x‖ ∂μ) ≤ ∑' n, ∫ x in s n, ‖f x‖ ∂μ := by
+  have hu := integrableOn_iUnion_of_summable_integral_norm hi hs
+  apply (ENNReal.ofReal_le_ofReal_iff (tsum_nonneg (fun n => integral_nonneg (fun _ => norm_nonneg _)))).mp
+  rw [ENNReal.ofReal_tsum_of_nonneg (fun n => integral_nonneg (fun _ => norm_nonneg _)) hs]
+  rw [ofReal_integral_eq_lintegral_ofReal hu.norm
+    (Eventually.of_forall (fun x => norm_nonneg (f x)))]
+  simp_rw [ofReal_integral_eq_lintegral_ofReal (hi _).norm
+    (Eventually.of_forall (fun x => norm_nonneg (f x)))]
+  exact lintegral_iUnion_le s (fun x => ENNReal.ofReal ‖f x‖)
+
+/-- Quantitative tail estimate derived from a common linear mass bound and
+an actual cubic pointwise decay.  This remains valid for atoms on shell edges. -/
+theorem common_linear_cubic_tail (μ : Measure ℝ) [IsLocallyFiniteMeasure μ]
+    (C M R : ℝ) (hμ : CommonLinearMassBound C μ) (hM : 0≤M) (hR : 1≤R)
+    (f : ℝ→ℂ) (hf : Continuous f)
+    (hdecay : ∀ x, |x|^3*‖f x‖≤M) :
+    IntegrableOn f {x : ℝ | R≤|x|} μ ∧
+    (∫ x in {x : ℝ | R≤|x|}, ‖f x‖ ∂μ) ≤ 4*C*M/R^2 := by
+  have hRp : 0<R := lt_of_lt_of_le zero_lt_one hR
+  have hi (n : ℕ) : IntegrableOn f (complexTailShell R n) μ :=
+    hf.continuousOn.integrableOn_compact (complexTailShell_compact R n)
+  have hbound (n : ℕ) :
+      (∫ x in complexTailShell R n, ‖f x‖ ∂μ) ≤ (3*C*M/R^2)*(1/4:ℝ)^n := by
+    have hRn : 0<R*(2:ℝ)^n := by positivity
+    have hpoint (x : ℝ) (hx : x∈complexTailShell R n) :
+        ‖f x‖ ≤ M/(R*(2:ℝ)^n)^3 := by
+      have hlow : R*(2:ℝ)^n ≤ |x| := by
+        by_contra h
+        exact hx.2 (abs_lt.mp (lt_of_not_ge h))
+      apply (le_div_iff₀ (by positivity)).mpr
+      have h := (mul_le_mul_of_nonneg_right (pow_le_pow_left₀ hRn.le hlow 3)
+        (norm_nonneg (f x))).trans (hdecay x)
+      simpa only [mul_comm] using h
+    have hmass : μ.real (complexTailShell R n) ≤ 3*C*R*(2:ℝ)^n := by
+      calc
+        _ ≤ μ.real (Icc (-(R*(2:ℝ)^(n+1))) (R*(2:ℝ)^(n+1))) :=
+          measureReal_mono (fun _ hx => hx.1) isCompact_Icc.measure_lt_top.ne
+        _ ≤ C*(1+R*(2:ℝ)^(n+1)) := by
+          simpa only [neg_mul] using hμ.2 (R*(2:ℝ)^(n+1)) (by positivity)
+        _ ≤ _ := by
+          have hp : 1≤(2:ℝ)^n := one_le_pow₀ (by norm_num)
+          rw [pow_succ]
+          nlinarith [hμ.1,mul_le_mul hR hp (by norm_num : (0:ℝ)≤1) (by positivity : (0:ℝ)≤R)]
+    calc
+      _ = ‖∫ x in complexTailShell R n, ‖f x‖ ∂μ‖ := by
+        rw [Real.norm_eq_abs,abs_of_nonneg (integral_nonneg (fun _ => norm_nonneg _))]
+      _ ≤ (M/(R*(2:ℝ)^n)^3)*μ.real (complexTailShell R n) :=
+        norm_setIntegral_le_of_norm_le_const (complexTailShell_compact R n).measure_lt_top
+          (fun x hx => by simpa only [norm_norm] using hpoint x hx)
+      _ ≤ (M/(R*(2:ℝ)^n)^3)*(3*C*R*(2:ℝ)^n) :=
+        mul_le_mul_of_nonneg_left hmass (by positivity)
+      _ = _ := by
+        rw [div_pow,one_pow,mul_pow]
+        have hp : (2:ℝ)^n≠0 := by positivity
+        field_simp
+        ring_nf
+        rw [show (4:ℝ)=(2:ℝ)^2 by norm_num, ←pow_mul, Nat.mul_comm 2 n]
+  have hsmajor : Summable (fun n : ℕ => (3*C*M/R^2)*(1/4:ℝ)^n) :=
+    (summable_geometric_of_abs_lt_one (by norm_num : |(1/4:ℝ)|<1)).mul_left _
+  have hs : Summable (fun n => ∫ x in complexTailShell R n, ‖f x‖ ∂μ) :=
+    Summable.of_nonneg_of_le (fun _ => integral_nonneg (fun _ => norm_nonneg _)) hbound hsmajor
+  have hc := complexTailShell_cover hRp
+  constructor
+  · rw [←hc]
+    exact integrableOn_iUnion_of_summable_integral_norm hi hs
+  · rw [←hc]
+    apply (integral_norm_iUnion_le_tsum (complexTailShell R) f hi hs).trans
+    calc
+      _ ≤ ∑' n : ℕ, (3*C*M/R^2)*(1/4:ℝ)^n := hs.tsum_le_tsum hbound hsmajor
+      _ = 4*C*M/R^2 := by
+        rw [tsum_mul_left,tsum_geometric_of_abs_lt_one (by norm_num : |(1/4:ℝ)|<1)]
+        ring
+
+lemma LocallyFiniteComplexMeasure.integrable_schwartz
+    (μ : LocallyFiniteComplexMeasure) (hμ : μ.HasLinearGrowth) (f : SchwartzMap ℝ ℂ) :
+    Integrable f μ.variationControl := by
+  letI := hasTemperateGrowth_of_linear_growth μ.variationControl hμ
+  exact f.integrable
+
+lemma complexIntegral_norm_le_control (μ : LocallyFiniteComplexMeasure)
+    (f : ℝ→ℂ) (hf : Integrable f μ.variationControl) :
+    ‖μ.integral f‖ ≤ ∫ x, ‖f x‖ ∂μ.variationControl := by
+  have hp := integrable_add_measure.mp hf
+  have hr := integrable_add_measure.mp hp.1
+  have hi := integrable_add_measure.mp hp.2
+  unfold LocallyFiniteComplexMeasure.integral LocallyFiniteComplexMeasure.variationControl
+  rw [integral_add_measure hp.1.norm hp.2.norm]
+  simp only [LocallyFiniteSignedMeasure.totalVariation]
+  rw [integral_add_measure hr.1.norm hr.2.norm,
+    integral_add_measure hi.1.norm hi.2.norm]
+  calc
+    _ ≤ ‖(∫ x, f x ∂μ.rePart.positive)-(∫ x, f x ∂μ.rePart.negative)‖+
+        ‖I*((∫ x, f x ∂μ.imPart.positive)-(∫ x, f x ∂μ.imPart.negative))‖ := norm_add_le _ _
+    _ ≤ (‖∫ x, f x ∂μ.rePart.positive‖+‖∫ x, f x ∂μ.rePart.negative‖)+
+        (‖∫ x, f x ∂μ.imPart.positive‖+‖∫ x, f x ∂μ.imPart.negative‖) := by
+      simp only [norm_mul,Complex.norm_I,one_mul]
+      exact add_le_add (norm_sub_le _ _) (norm_sub_le _ _)
+    _ ≤ _ := add_le_add (add_le_add (norm_integral_le_integral_norm _) (norm_integral_le_integral_norm _))
+      (add_le_add (norm_integral_le_integral_norm _) (norm_integral_le_integral_norm _))
+
+lemma complexIntegral_add_test (μ : LocallyFiniteComplexMeasure) (f g : ℝ→ℂ)
+    (hf : Integrable f μ.variationControl) (hg : Integrable g μ.variationControl) :
+    μ.integral (fun x => f x+g x)=μ.integral f+μ.integral g := by
+  have hfr := integrable_add_measure.mp (integrable_add_measure.mp hf).1
+  have hfi := integrable_add_measure.mp (integrable_add_measure.mp hf).2
+  have hgr := integrable_add_measure.mp (integrable_add_measure.mp hg).1
+  have hgi := integrable_add_measure.mp (integrable_add_measure.mp hg).2
+  simp only [LocallyFiniteComplexMeasure.integral,integral_add hfr.1 hgr.1,
+    integral_add hfr.2 hgr.2,integral_add hfi.1 hgi.1,integral_add hfi.2 hgi.2]
+  ring
+
+lemma complexIntegral_cutoff_error (μ : LocallyFiniteComplexMeasure)
+    (C M R : ℝ) (hμ : CommonLinearMassBound C μ.variationControl) (hM : 0≤M)
+    (hR : 1≤R) (f : SchwartzMap ℝ ℂ)
+    (hdecay : ∀ x, |x|^3*‖f x‖≤M) :
+    ‖μ.integral f-finiteComplexIntegral (μ.compactRestriction (Icc (-R) R) isCompact_Icc) f‖
+      ≤ 4*C*M/R^2 := by
+  let K : Set ℝ := Icc (-R) R
+  have hi := μ.integrable_schwartz hμ.linearGrowth f
+  have hKf : Integrable (K.indicator (fun x => f x)) μ.variationControl :=
+    hi.indicator (show MeasurableSet K from measurableSet_Icc)
+  have hKcf : Integrable (Kᶜ.indicator (fun x => f x)) μ.variationControl :=
+    hi.indicator (show MeasurableSet Kᶜ from measurableSet_Icc.compl)
+  have hsplit : (fun x : ℝ => K.indicator (fun y => f y) x+
+      Kᶜ.indicator (fun y => f y) x) = f := by
+    funext x
+    by_cases hx : x∈K <;> simp [hx]
+  have hlocal : μ.integral (K.indicator (fun y => f y))=
+      finiteComplexIntegral (μ.compactRestriction K isCompact_Icc) f := by
+    rw [μ.finiteComplexIntegral_compactRestriction K isCompact_Icc f hi.integrableOn]
+    simp only [LocallyFiniteComplexMeasure.integral,
+      integral_indicator (show MeasurableSet K from measurableSet_Icc)]
+  have heq := complexIntegral_add_test μ _ _ hKf hKcf
+  rw [hsplit,hlocal] at heq
+  rw [heq,add_sub_cancel_left]
+  apply (complexIntegral_norm_le_control μ _ hKcf).trans
+  have htail := (common_linear_cubic_tail μ.variationControl C M R hμ hM hR f
+    f.continuous hdecay).2
+  have hsub : Kᶜ ⊆ {x : ℝ | R≤|x|} := by
+    intro x hx
+    by_contra h
+    exact hx (abs_le.mp (lt_of_not_ge h).le)
+  calc
+    (∫ x, ‖Kᶜ.indicator (fun y => f y) x‖ ∂μ.variationControl)
+        = ∫ x in Kᶜ, ‖f x‖ ∂μ.variationControl := by
+      rw [←integral_indicator (show MeasurableSet Kᶜ from measurableSet_Icc.compl)]
+      apply integral_congr_ae
+      filter_upwards with x
+      by_cases hx : x∈K <;> simp [hx]
+    _ ≤ ∫ x in {x : ℝ | R≤|x|}, ‖f x‖ ∂μ.variationControl :=
+      setIntegral_mono_set hi.norm.integrableOn (Filter.Eventually.of_forall (fun _ => norm_nonneg _)) (Filter.Eventually.of_forall hsub)
+    _ ≤ _ := htail
+
+/-- Local convergence plus ONE common growth budget yields convergence on
+all Schwartz tests.  The tails are not inserted as an extra hypothesis. -/
+theorem LocalVariationConvergence.tendsto_schwartz_common_growth
+    {seq : ℕ→LocallyFiniteComplexMeasure} {μ : LocallyFiniteComplexMeasure}
+    (hlocal : LocalVariationConvergence seq μ) (C : ℝ)
+    (hseq : ∀ n, CommonLinearMassBound C (seq n).variationControl)
+    (hμ : CommonLinearMassBound C μ.variationControl) (f : SchwartzMap ℝ ℂ) :
+    Tendsto (fun n => (seq n).integral f) atTop (𝓝 (μ.integral f)) := by
+  obtain ⟨M,hM,hdecay⟩ := f.decay 3 0
+  simp only [norm_iteratedFDeriv_zero,Real.norm_eq_abs] at hdecay
+  obtain ⟨B,hB,hbound⟩ := f.decay 0 0
+  simp only [pow_zero,one_mul,norm_iteratedFDeriv_zero] at hbound
+  apply Metric.tendsto_atTop.mpr
+  intro ε hε
+  have htail : Tendsto (fun R : ℝ => 8*C*M/R^2) atTop (𝓝 0) := by
+    exact tendsto_const_nhds.div_atTop (tendsto_pow_atTop (by norm_num))
+  obtain ⟨R,hR,hs⟩ : ∃ R : ℝ, 1≤R ∧ 8*C*M/R^2<ε/2 := by
+    have he := htail.eventually (gt_mem_nhds (half_pos hε))
+    obtain ⟨R,hR,hs⟩ := (eventually_ge_atTop (1:ℝ)).and he |>.exists
+    exact ⟨R,hR,hs⟩
+  have hc := hlocal.tendsto_local_test (Icc (-R) R) isCompact_Icc f
+    f.continuous.stronglyMeasurable B hB.le hbound
+  obtain ⟨N,hN⟩ := Metric.tendsto_atTop.mp hc (ε/2) (half_pos hε)
+  refine ⟨N,fun n hn => ?_⟩
+  have h1 := complexIntegral_cutoff_error (seq n) C M R (hseq n) hM.le hR f hdecay
+  have h2 := complexIntegral_cutoff_error μ C M R hμ hM.le hR f hdecay
+  have h3 := hN n hn
+  rw [dist_eq_norm] at h3 ⊢
+  have htri : ‖(seq n).integral f-μ.integral f‖ ≤
+      ‖(seq n).integral f-finiteComplexIntegral ((seq n).compactRestriction (Icc (-R) R) isCompact_Icc) f‖+
+      ‖finiteComplexIntegral ((seq n).compactRestriction (Icc (-R) R) isCompact_Icc) f-
+        finiteComplexIntegral (μ.compactRestriction (Icc (-R) R) isCompact_Icc) f‖+
+      ‖μ.integral f-finiteComplexIntegral (μ.compactRestriction (Icc (-R) R) isCompact_Icc) f‖ := by
+    have h := norm_add_le
+      ((seq n).integral f-finiteComplexIntegral ((seq n).compactRestriction (Icc (-R) R) isCompact_Icc) f)
+      ((finiteComplexIntegral ((seq n).compactRestriction (Icc (-R) R) isCompact_Icc) f-
+        finiteComplexIntegral (μ.compactRestriction (Icc (-R) R) isCompact_Icc) f)+
+        (finiteComplexIntegral (μ.compactRestriction (Icc (-R) R) isCompact_Icc) f-μ.integral f))
+    have h' := norm_add_le
+      (finiteComplexIntegral ((seq n).compactRestriction (Icc (-R) R) isCompact_Icc) f-
+        finiteComplexIntegral (μ.compactRestriction (Icc (-R) R) isCompact_Icc) f)
+      (finiteComplexIntegral (μ.compactRestriction (Icc (-R) R) isCompact_Icc) f-μ.integral f)
+    rw [norm_sub_rev (finiteComplexIntegral (μ.compactRestriction (Icc (-R) R) isCompact_Icc) f)] at h'
+    have he : ((seq n).integral f-finiteComplexIntegral ((seq n).compactRestriction (Icc (-R) R) isCompact_Icc) f)+
+      ((finiteComplexIntegral ((seq n).compactRestriction (Icc (-R) R) isCompact_Icc) f-
+        finiteComplexIntegral (μ.compactRestriction (Icc (-R) R) isCompact_Icc) f)+
+        (finiteComplexIntegral (μ.compactRestriction (Icc (-R) R) isCompact_Icc) f-μ.integral f))=
+      (seq n).integral f-μ.integral f := by ring
+    rw [he] at h
+    linarith
+  have he : 8*C*M/R^2 = 2*(4*C*M/R^2) := by ring
+  rw [he] at hs
+  linarith
+
+lemma localJordanAdd_totalVariation_le (μ ν : LocallyFiniteSignedMeasure) :
+    (localJordanAdd μ ν).totalVariation≤μ.totalVariation+ν.totalVariation := by
+  exact (localJordanDifference_variation_le _ _).trans_eq (by
+    simp only [LocallyFiniteSignedMeasure.totalVariation]; abel)
+
+lemma localJordanScale_totalVariation_le (a : ℝ) (μ : LocallyFiniteSignedMeasure) :
+    (localJordanScale a μ).totalVariation ≤ ENNReal.ofReal |a| • μ.totalVariation := by
+  apply (localJordanDifference_variation_le _ _).trans_eq
+  rw [LocallyFiniteSignedMeasure.totalVariation,smul_add]
+  ext s hs
+  simp only [Measure.add_apply,Measure.smul_apply,NNReal.smul_def,ENNReal.smul_def]
+  have ha : (Real.toNNReal a:ℝ≥0∞)+(Real.toNNReal (-a):ℝ≥0∞)=ENNReal.ofReal |a| := by
+    rcases le_total 0 a with ha|ha
+    · simp [Real.toNNReal_of_nonpos (neg_nonpos.mpr ha),abs_of_nonneg ha, ENNReal.ofReal]
+    · simp [Real.toNNReal_of_nonpos ha,abs_of_nonpos ha, ENNReal.ofReal]
+  rw [←ha]
+  ring
+
+lemma LocallyFiniteComplexMeasure.add_control_le (μ ν : LocallyFiniteComplexMeasure) :
+    (μ.add ν).variationControl≤μ.variationControl+ν.variationControl := by
+  apply (add_le_add (localJordanAdd_totalVariation_le _ _) (localJordanAdd_totalVariation_le _ _)).trans_eq
+  simp only [variationControl]
+  abel
+
+lemma LocallyFiniteComplexMeasure.scale_control_le (μ : LocallyFiniteComplexMeasure) (c : ℂ) :
+    (μ.scale c).variationControl ≤ ENNReal.ofReal (|c.re|+|c.im|) • μ.variationControl := by
+  apply (add_le_add
+    ((localJordanAdd_totalVariation_le _ _).trans
+      (add_le_add (localJordanScale_totalVariation_le _ _) (localJordanScale_totalVariation_le _ _)))
+    ((localJordanAdd_totalVariation_le _ _).trans
+      (add_le_add (localJordanScale_totalVariation_le _ _) (localJordanScale_totalVariation_le _ _)))).trans_eq
+  simp only [variationControl,abs_neg,ENNReal.ofReal_add (abs_nonneg _) (abs_nonneg _),add_smul,smul_add]
+  abel
+
+lemma LocallyFiniteComplexMeasure.hasLinearGrowth_add (μ ν : LocallyFiniteComplexMeasure)
+    (hμ : μ.HasLinearGrowth) (hν : ν.HasLinearGrowth) : (μ.add ν).HasLinearGrowth := by
+  obtain ⟨A,hA,hAb⟩ := hμ
+  obtain ⟨B,hB,hBb⟩ := hν
+  refine ⟨A+B,add_nonneg hA hB,fun R hR => ?_⟩
+  have hmfin : μ.variationControl (Icc (-R) R)≠∞ := isCompact_Icc.measure_lt_top.ne
+  have hnfin : ν.variationControl (Icc (-R) R)≠∞ := isCompact_Icc.measure_lt_top.ne
+  have hsumfin : (μ.variationControl+ν.variationControl) (Icc (-R) R)≠∞ := by
+    rw [Measure.add_apply]
+    exact ENNReal.add_ne_top.mpr ⟨hmfin,hnfin⟩
+  have h := ENNReal.toReal_mono hsumfin (μ.add_control_le ν (Icc (-R) R))
+  rw [Measure.add_apply,ENNReal.toReal_add hmfin hnfin] at h
+  have ha := hAb R hR
+  have hb := hBb R hR
+  change ((μ.add ν).variationControl (Icc (-R) R)).toReal≤_ at h ⊢
+  change (μ.variationControl (Icc (-R) R)).toReal≤_ at ha
+  change (ν.variationControl (Icc (-R) R)).toReal≤_ at hb
+  nlinarith
+
+lemma LocallyFiniteComplexMeasure.hasLinearGrowth_scale (μ : LocallyFiniteComplexMeasure)
+    (hμ : μ.HasLinearGrowth) (c : ℂ) : (μ.scale c).HasLinearGrowth := by
+  obtain ⟨A,hA,hAb⟩ := hμ
+  let B : ℝ := |c.re|+|c.im|
+  have hB : 0≤B := by dsimp [B]; positivity
+  refine ⟨B*A,mul_nonneg hB hA,fun R hR => ?_⟩
+  have hle := μ.scale_control_le c (Icc (-R) R)
+  rw [Measure.smul_apply,smul_eq_mul] at hle
+  have hfin : ENNReal.ofReal B*μ.variationControl (Icc (-R) R)≠∞ :=
+    ENNReal.mul_ne_top ENNReal.ofReal_ne_top isCompact_Icc.measure_lt_top.ne
+  have hh := ENNReal.toReal_mono hfin hle
+  rw [ENNReal.toReal_mul,ENNReal.toReal_ofReal hB] at hh
+  have ha := hAb R hR
+  change (μ.variationControl (Icc (-R) R)).toReal≤_ at ha
+  change ((μ.scale c).variationControl (Icc (-R) R)).toReal≤_
+  nlinarith
+
+/-- Realification is an actual inverse to taking the real part of the
+embedded distribution.  It retains the parent canonical Jordan carrier. -/
+def realifyComplexDistribution (T : TemperedDistribution ℝ ℂ) (f : SchwartzMap ℝ ℂ) : ℂ :=
+  (T f+starRingEnd ℂ (T (complexSchwartzConj f)))/2
+
+lemma LocallyFiniteComplexMeasure.realify_distribution (μ : LocallyFiniteComplexMeasure)
+    (hμ : μ.HasLinearGrowth) (f : SchwartzMap ℝ ℂ) :
+    realifyComplexDistribution (μ.distributionOfLinearGrowth hμ) f =
+      μ.rePart.distributionOfLinearGrowth (μ.re_hasLinearGrowth hμ) f := by
+  unfold realifyComplexDistribution distributionOfLinearGrowth
+  simp only [ContinuousLinearMap.add_apply,ContinuousLinearMap.smul_apply,smul_eq_mul,
+    realJordan_distribution_conj,map_add,map_mul,Complex.conj_I,Complex.conj_conj]
+  field_simp
+  ring
+
+/-- Full primary interface: genuine compact restrictions and variation,
+faithful growth-domain distribution, canonical realification and actual
+common-growth Schwartz convergence.  No native convergence is a field in
+an input packet. -/
+theorem complex_local_measure_embedding_faithful :
+    (∀ μ : LocallyFiniteComplexMeasure, μ.totalVariation≤μ.variationControl ∧
+      (μ.HasLinearGrowth ↔ LinearMassGrowth μ.totalVariation)) ∧
+    (∀ μ : LocallyFiniteComplexMeasure, ∀ K L : Set ℝ, ∀ hK : IsCompact K, ∀ hL : IsCompact L,
+      (μ.compactRestriction K hK).restrict L=μ.compactRestriction (K∩L) (hK.inter_right hL.isClosed)) ∧
+    (∀ μ : LocallyFiniteComplexMeasure, ∀ K : Set ℝ, ∀ hK : IsCompact K,
+      μ.totalVariation.restrict K=(μ.compactRestriction K hK).variation) ∧
+    (∀ μ ν : LocallyFiniteComplexMeasure, ∀ c : ℂ, ∀ K : Set ℝ, ∀ hK : IsCompact K,
+      (μ.add ν).compactRestriction K hK=μ.compactRestriction K hK+ν.compactRestriction K hK ∧
+      (μ.scale c).compactRestriction K hK=c • μ.compactRestriction K hK) ∧
+    Function.Injective (fun μ : {μ : LocallyFiniteComplexMeasure // μ.HasLinearGrowth} =>
+      μ.val.distributionOfLinearGrowth μ.property) ∧
+    (∀ μ : LocallyFiniteComplexMeasure, ∀ hμ : μ.HasLinearGrowth, ∀ f : SchwartzMap ℝ ℂ,
+      μ.distributionOfLinearGrowth hμ f=μ.integral f ∧
+      realifyComplexDistribution (μ.distributionOfLinearGrowth hμ) f=
+        μ.rePart.distributionOfLinearGrowth (μ.re_hasLinearGrowth hμ) f) ∧
+    (∀ seq : ℕ→LocallyFiniteComplexMeasure, ∀ μ : LocallyFiniteComplexMeasure,
+      LocalVariationConvergence seq μ → ∀ f : ℝ→ℂ,
+      Continuous f → HasCompactSupport f →
+      Tendsto (fun n => (seq n).integral f) atTop (𝓝 (μ.integral f))) ∧
+    (∀ seq : ℕ→LocallyFiniteComplexMeasure, ∀ μ : LocallyFiniteComplexMeasure,
+      LocalVariationConvergence seq μ → ∀ C : ℝ,
+      (∀ n, CommonLinearMassBound C (seq n).variationControl) →
+      CommonLinearMassBound C μ.variationControl → ∀ f : SchwartzMap ℝ ℂ,
+      Tendsto (fun n => (seq n).integral f) atTop (𝓝 (μ.integral f))) := by
+  refine ⟨fun μ => ⟨μ.totalVariation_le_control,μ.hasLinearGrowth_iff_totalVariation⟩,
+    fun μ K L hK hL => μ.compactRestriction_restrict K L hK hL,
+    fun μ K hK => μ.totalVariation_restrict_compact K hK,
+    fun μ ν c K hK => ⟨μ.compactRestriction_add ν K hK,μ.compactRestriction_scale c K hK⟩,
+    LocallyFiniteComplexMeasure.distributionOfLinearGrowth_injective,
+    fun μ hμ f => ⟨μ.distributionOfLinearGrowth_apply hμ f,μ.realify_distribution hμ f⟩,
+    fun seq μ h f hf hc => h.tendsto_compact_test f hf hc,
+    fun seq μ h C hs hm f => h.tendsto_schwartz_common_growth C hs hm f⟩
 
 end Zeta23.OPICAFollowup

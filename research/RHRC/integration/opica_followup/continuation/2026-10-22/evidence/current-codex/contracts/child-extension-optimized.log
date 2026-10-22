@@ -1,0 +1,31 @@
+test_candidate_binding_mutation (test_parent_extension.ParentExtensionTests.test_candidate_binding_mutation) ... ok
+test_changed_parent_registry_metadata (test_parent_extension.ParentExtensionTests.test_changed_parent_registry_metadata) ... ok
+test_child_binding_wrong_theorem (test_parent_extension.ParentExtensionTests.test_child_binding_wrong_theorem) ... ok
+test_child_statement_mutation (test_parent_extension.ParentExtensionTests.test_child_statement_mutation) ... ok
+test_coordinated_theorem_substitution (test_parent_extension.ParentExtensionTests.test_coordinated_theorem_substitution) ... ok
+test_descriptor_allowlist_expansion (test_parent_extension.ParentExtensionTests.test_descriptor_allowlist_expansion) ... ok
+test_duplicate_claim_identity (test_parent_extension.ParentExtensionTests.test_duplicate_claim_identity) ... ok
+test_exact_projection_preserves_every_parent_value (test_parent_extension.ParentExtensionTests.test_exact_projection_preserves_every_parent_value) ... ok
+test_missing_descriptor (test_parent_extension.ParentExtensionTests.test_missing_descriptor) ... ok
+test_missing_full_scope_file (test_parent_extension.ParentExtensionTests.test_missing_full_scope_file) ... ok
+test_missing_parent_source (test_parent_extension.ParentExtensionTests.test_missing_parent_source) ... ok
+test_missing_root_inventory (test_parent_extension.ParentExtensionTests.test_missing_root_inventory) ... ok
+test_old_binding_mutation (test_parent_extension.ParentExtensionTests.test_old_binding_mutation) ... ok
+test_old_claim_deletion (test_parent_extension.ParentExtensionTests.test_old_claim_deletion) ... ok
+test_old_claim_mutation (test_parent_extension.ParentExtensionTests.test_old_claim_mutation) ... ok
+test_old_role_changed (test_parent_extension.ParentExtensionTests.test_old_role_changed) ... ok
+test_only_generated_and_authorized_edits_may_change (test_parent_extension.ParentExtensionTests.test_only_generated_and_authorized_edits_may_change) ... ok
+test_path_traversal (test_parent_extension.ParentExtensionTests.test_path_traversal) ... ok
+test_protected_source_drift (test_parent_extension.ParentExtensionTests.test_protected_source_drift) ... ok
+test_raw_state_cannot_be_projected (test_parent_extension.ParentExtensionTests.test_raw_state_cannot_be_projected) ... ok
+test_shadowing_parent_classification (test_parent_extension.ParentExtensionTests.test_shadowing_parent_classification) ... ok
+test_symlink_mode (test_parent_extension.ParentExtensionTests.test_symlink_mode) ... ok
+test_unlisted_child_claim (test_parent_extension.ParentExtensionTests.test_unlisted_child_claim) ... ok
+test_unlisted_source (test_parent_extension.ParentExtensionTests.test_unlisted_source) ... ok
+test_wrong_parent (test_parent_extension.ParentExtensionTests.test_wrong_parent) ... ok
+test_wrong_tree (test_parent_extension.ParentExtensionTests.test_wrong_tree) ... ok
+
+----------------------------------------------------------------------
+Ran 26 tests in 0.840s
+
+OK

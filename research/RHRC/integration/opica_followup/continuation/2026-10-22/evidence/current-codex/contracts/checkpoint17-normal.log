@@ -1,0 +1,22 @@
+test_bool_integer_and_float_aliases_cannot_change_scope (__main__.ContinuationCheckpointTests.test_bool_integer_and_float_aliases_cannot_change_scope) ... ok
+test_duplicate_unsorted_and_case_alias_records_rejected (__main__.ContinuationCheckpointTests.test_duplicate_unsorted_and_case_alias_records_rejected) ... ok
+test_every_scope_and_authority_field_remains_exact (__main__.ContinuationCheckpointTests.test_every_scope_and_authority_field_remains_exact) ... ok
+test_exact_pinned_draft_artifacts_have_only_exact_exceptions (__main__.ContinuationCheckpointTests.test_exact_pinned_draft_artifacts_have_only_exact_exceptions) ... ok
+test_false_length_or_digest_rejected (__main__.ContinuationCheckpointTests.test_false_length_or_digest_rejected) ... ok
+test_malformed_json_and_duplicate_keys_rejected_even_with_honest_pin (__main__.ContinuationCheckpointTests.test_malformed_json_and_duplicate_keys_rejected_even_with_honest_pin) ... ok
+test_manifest_cannot_be_read_from_a_different_directory (__main__.ContinuationCheckpointTests.test_manifest_cannot_be_read_from_a_different_directory) ... ok
+test_missing_manifest_rejected (__main__.ContinuationCheckpointTests.test_missing_manifest_rejected) ... ok
+test_missing_or_changed_artifact_rejects_entire_exception (__main__.ContinuationCheckpointTests.test_missing_or_changed_artifact_rejects_entire_exception) ... ok
+test_nonempty_record_inventory_required (__main__.ContinuationCheckpointTests.test_nonempty_record_inventory_required) ... ok
+test_parent_and_lean_sources_cannot_be_artifact_exceptions (__main__.ContinuationCheckpointTests.test_parent_and_lean_sources_cannot_be_artifact_exceptions) ... ok
+test_preflight_exempts_verified_artifacts_but_never_grants_acceptance (__main__.ContinuationCheckpointTests.test_preflight_exempts_verified_artifacts_but_never_grants_acceptance) ... ok
+test_resolved_escape_rejected (__main__.ContinuationCheckpointTests.test_resolved_escape_rejected) ... ok
+test_rows_require_exact_fields_and_types (__main__.ContinuationCheckpointTests.test_rows_require_exact_fields_and_types) ... ok
+test_symlink_file_or_ancestor_flag_rejected (__main__.ContinuationCheckpointTests.test_symlink_file_or_ancestor_flag_rejected) ... ok
+test_unpinned_manifest_cannot_refreeze_itself (__main__.ContinuationCheckpointTests.test_unpinned_manifest_cannot_refreeze_itself) ... ok
+test_unsafe_paths_rejected_within_the_allowed_prefix (__main__.ContinuationCheckpointTests.test_unsafe_paths_rejected_within_the_allowed_prefix) ... ok
+
+----------------------------------------------------------------------
+Ran 17 tests in 0.549s
+
+OK

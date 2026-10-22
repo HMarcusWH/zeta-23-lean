@@ -1,0 +1,245 @@
+{
+  "as_of": "2026-10-22T15:29:27.8789746+02:00",
+  "status": "ALL_THREE_LOCAL_CHECKS_GREEN",
+  "isolated_base": "9b6a9a3a2badb4cff62a56c1158d9cef8759d30d",
+  "archive_sha256": "9c076a533291adb814f776018126330b6b2125a852548622ce196c6a0afcf88d",
+  "toolchain": "leanprover/lean4:v4.33.0-rc2",
+  "compiler_arguments": [
+    "env",
+    "lean",
+    "-DmaxHeartbeats=800000"
+  ],
+  "LEAN_NUM_THREADS": "1",
+  "checks": [
+    {
+      "module": "MaskedNativeRate",
+      "status": "GREEN_LOCAL_EXACT_SOURCE_AND_IMPORTED_CONSUMER",
+      "candidate_primary_roots": 2,
+      "source_sha256": "3fcb70e2fa504b5ef14d44c5a9d862f9bac4c8853556ed6e64a6f7e1066545c4",
+      "source_matches_archive": true,
+      "consumer": "ExpectedMasks",
+      "consumer_sha256": "46ebd67a354c4d73b4fbdd777a62594d10cbafe38b3d8db8029c5ba5570d6503",
+      "consumer_matches_archive": true,
+      "source_exit": 0,
+      "consumer_exit": 0,
+      "source_error_records": 0,
+      "source_warning_records": 8,
+      "consumer_error_records": 0,
+      "consumer_warning_records": 0,
+      "source_log": {
+        "file": "MaskedNativeRate-module-save-01.log",
+        "sha256": "91a3ec6f57b999b465b5694972a05e416890b6fdf10890626b999166ac1a08f1"
+      },
+      "consumer_log": {
+        "file": "ExpectedMasks-imported-02.log",
+        "sha256": "d5ff6e12e49176813036c1c647f5416168861a18c50e25dd19f4219e103cae9c"
+      },
+      "standard_axioms_only": true,
+      "printed_axiom_closures": [
+        {
+          "declaration": "Zeta23.OPICAFollowup.log_slack_both_low_masks_subexp",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "Zeta23.OPICAFollowup.log_slack_masked_energy_rate_difference",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "Zeta23.OPICAFollowup.nativeWindowVector_norm_sq",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "Zeta23.OPICAFollowup.nativeTypeIWindowVector_tendsto_zero",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        }
+      ],
+      "saved_module_artifacts": [
+        {
+          "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-audit28\\.lake\\build\\lib\\lean\\Zeta23\\OPICAFollowup\\MaskedNativeRate.olean",
+          "bytes": 1622448,
+          "last_write": "2026-10-22T15:23:18.5988140+02:00",
+          "sha256": "aae86f3df2554650256f8bc71c9a578d7bc0df525680faa9fba9a99e046e04a3"
+        }
+      ]
+    },
+    {
+      "module": "ComplexLocalMeasures",
+      "status": "GREEN_LOCAL_EXACT_SOURCE_AND_IMPORTED_CONSUMER",
+      "candidate_primary_roots": 1,
+      "source_sha256": "43d96d5474819b79c29853a81f8b4398f16d298470c2100fdade3fcada3a25b8",
+      "source_matches_archive": true,
+      "consumer": "ExpectedComplex",
+      "consumer_sha256": "2d84b62e92e93c133bed5b827e44e583db9d22d7c48bc38868f1ddf5c5373c1c",
+      "consumer_matches_archive": true,
+      "source_exit": 0,
+      "consumer_exit": 0,
+      "source_error_records": 0,
+      "source_warning_records": 4,
+      "consumer_error_records": 0,
+      "consumer_warning_records": 0,
+      "source_log": {
+        "file": "ComplexLocalMeasures-module-save-01.log",
+        "sha256": "f83ca775c12727abfc3cfd292f006997ab24589438d21b3d47872417e984dac8"
+      },
+      "consumer_log": {
+        "file": "ExpectedComplex-imported-01.log",
+        "sha256": "bea8eb8367a2417315441a05cd2693069f801d6614737c1b59d7fe01943f46e8"
+      },
+      "standard_axioms_only": true,
+      "printed_axiom_closures": [
+        {
+          "declaration": "Zeta23.OPICAFollowup.complex_local_measure_embedding_faithful",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "Zeta23.OPICAFollowup.LocalVariationConvergence.tendsto_schwartz_common_growth",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "Zeta23.OPICAFollowup.common_linear_cubic_tail",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "Zeta23.OPICAFollowup.LocallyFiniteComplexMeasure.hasLinearGrowth_iff_totalVariation",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        }
+      ],
+      "saved_module_artifacts": [
+        {
+          "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-audit28\\.lake\\build\\lib\\lean\\Zeta23\\OPICAFollowup\\ComplexLocalMeasures.olean",
+          "bytes": 1648592,
+          "last_write": "2026-10-22T15:25:53.6513824+02:00",
+          "sha256": "75b5b3becae940d9ec06a6de62c7decd6bbeff992eefffeff3b6172f0d8cde55"
+        }
+      ]
+    },
+    {
+      "module": "AuxiliaryCompletions",
+      "status": "GREEN_LOCAL_EXACT_SOURCE_AND_IMPORTED_CONSUMER",
+      "candidate_primary_roots": 3,
+      "source_sha256": "4dd849389b193ec3fbdbe718c30d62c7212b2d9e4b369437640d8b81804746dd",
+      "source_matches_archive": true,
+      "consumer": "ExpectedAuxiliary",
+      "consumer_sha256": "133c23de7e4f473575d0a18645dc47ae9924c73fe1066c00d63ccb069da31623",
+      "consumer_matches_archive": true,
+      "source_exit": 0,
+      "consumer_exit": 0,
+      "source_error_records": 0,
+      "source_warning_records": 9,
+      "consumer_error_records": 0,
+      "consumer_warning_records": 0,
+      "source_log": {
+        "file": "AuxiliaryCompletions-module-save-01.log",
+        "sha256": "99950d5ade707272afddc351d926aaf14bb0d81620423bdfbf2776dcfea68897"
+      },
+      "consumer_log": {
+        "file": "ExpectedAuxiliary-imported-01.log",
+        "sha256": "f833bfeea7207ee881f305d519337947904a383b98484a0e85bbe834b0783b30"
+      },
+      "standard_axioms_only": true,
+      "printed_axiom_closures": [
+        {
+          "declaration": "Zeta23.OPICAFollowup.aux_completion_actual_transform",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "Zeta23.OPICAFollowup.aux_completion_uniform_decay",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "Zeta23.OPICAFollowup.aux_completion_ratio_bounds",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "Zeta23.OPICAFollowup.auxCompletionProfile_distributional_derivative",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "Zeta23.OPICAFollowup.auxCompletionKernel_scaled_profile",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "declaration": "Zeta23.OPICAFollowup.auxCompletionFilledTransform_at_half",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        }
+      ],
+      "saved_module_artifacts": [
+        {
+          "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-audit28\\.lake\\build\\lib\\lean\\Zeta23\\OPICAFollowup\\AuxiliaryCompletions.olean",
+          "bytes": 4108912,
+          "last_write": "2026-10-22T15:27:32.8046335+02:00",
+          "sha256": "998f52ebff4a2675ec43880e8960f7b70a72fa4c85b4f050efd66cc29b3f4289"
+        }
+      ]
+    }
+  ],
+  "locally_verified_candidate_primary_roots": 6,
+  "formal_root_promotion_by_reviewer": 0,
+  "full_required_roots": 100,
+  "source_repairs": [],
+  "consumer_repairs": [],
+  "main_modified_by_reviewer": false,
+  "broad_builds": false,
+  "source_DAG_or_CI_acceptance": "PENDING_INTEGRATING_OWNER",
+  "rh_status": "OPEN",
+  "initial_serial_attempt": "Mask source completed exit0; wrapper and started consumer interrupted for parallel orchestration, then independent consumer rerun exit0",
+  "final_process_state": "All task compiler sessions completed; no broad cache writer remains",
+  "semantic_review": "SEMANTIC_REVIEW.md",
+  "provenance": "INPUT_PROVENANCE.json"
+}

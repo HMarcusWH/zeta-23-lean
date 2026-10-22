@@ -1,0 +1,20 @@
+{
+  "command": [
+    "/mnt/data/opica_repair_20261022/toolchain/bin/lean",
+    "-DmaxHeartbeats=800000",
+    "-DrelaxedAutoImplicit=false",
+    "-o",
+    "/mnt/data/opica_repair_20261022/candidate_olean/Zeta23/OPICAFollowup/MaskedNativeRate.olean",
+    "Zeta23/OPICAFollowup/MaskedNativeRate.lean"
+  ],
+  "returncode": 0,
+  "seconds": 96.78538011799992,
+  "log_sha256": "b93d1dc0a3c5cff8592000bcf889d7c99bc863ad6ea79983b7129d79480184ad",
+  "sources": [
+    {
+      "path": "Zeta23/OPICAFollowup/MaskedNativeRate.lean",
+      "sha256": "3fcb70e2fa504b5ef14d44c5a9d862f9bac4c8853556ed6e64a6f7e1066545c4"
+    }
+  ],
+  "full_acceptance": false
+}

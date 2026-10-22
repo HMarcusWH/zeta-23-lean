@@ -1,9 +1,12 @@
 """Supplemental inputs cannot silently replace or expand frozen acceptance."""
 from copy import deepcopy
+import hashlib
 import importlib.util
 import json
 from pathlib import Path
+import tempfile
 import unittest
+from unittest.mock import patch
 
 HERE = Path(__file__).resolve().parents[1]
 spec = importlib.util.spec_from_file_location('followup_contract', HERE / 'validate_contract.py')
@@ -202,6 +205,245 @@ class FrozenAcceptanceTests(unittest.TestCase):
     def test_c3_embedded_counterexample_target_cannot_disappear(self):
         self.register['supplemental_crosswalk'][2].pop('falsification')
         self.assertTrue(contract.supplemental_errors(self.register))
+
+
+class ContinuationCheckpointTests(unittest.TestCase):
+    def setUp(self):
+        temporary = tempfile.TemporaryDirectory()
+        self.addCleanup(temporary.cleanup)
+        self.root = Path(temporary.name)
+        self.here = self.root / contract.CONTINUATION_FOLDER
+        self.here.mkdir(parents=True)
+        self.prefix = contract.CONTINUATION_ARTIFACT_PREFIX
+        self.manifest_path = self.here / 'CONTINUATION_MANIFEST.json'
+        self.document = {
+            'schema': 'OPICA_CONTINUATION_CHECKPOINT_V1', 'id': 'CP_2026_10_22_01',
+            'status': 'DRAFT_NO_FULL_ACCEPTANCE',
+            'base_commit': '9b6a9a3a2badb4cff62a56c1158d9cef8759d30d',
+            'parent_commit': 'd53dd70d38b0762af130b1d19b795af259f505f5',
+            'original_primary_roots': 100, 'acceptance_units': 28,
+            'frozen_public_roots_sha256': contract.FROZEN_SPEC['PUBLIC_ROOTS.json'],
+            'release_ready': False, 'RH': 'OPEN', 'Step4': 'OPEN',
+            'independent_closing_inequalities': 'OPEN', 'artifacts': [],
+        }
+        for name, data in [('AGENTS.md', b'draft agent instructions\n'),
+                           (self.prefix + 'papers/foundation.md', b'reference only\n')]:
+            target = self.root / name
+            target.parent.mkdir(parents=True, exist_ok=True)
+            target.write_bytes(data)
+            self.document['artifacts'].append({'path': name, 'bytes': len(data),
+                'sha256': hashlib.sha256(data).hexdigest()})
+        self.document['artifacts'].sort(key=lambda row: row['path'])
+
+    def write_manifest(self, data=None):
+        encoded = (json.dumps(self.document, sort_keys=True).encode('utf-8')
+                   if data is None else data)
+        self.manifest_path.write_bytes(encoded)
+        return hashlib.sha256(encoded).hexdigest()
+
+    def check(self):
+        pin = self.write_manifest()
+        with patch.object(contract, 'CONTINUATION_MANIFEST_SHA256', pin):
+            return contract.continuation_checkpoint(self.root, self.here)
+
+    def reject(self):
+        allowed, errors = self.check()
+        self.assertEqual(allowed, set())
+        self.assertTrue(errors)
+
+    def test_exact_pinned_draft_artifacts_have_only_exact_exceptions(self):
+        allowed, errors = self.check()
+        self.assertEqual(errors, [])
+        self.assertEqual(allowed, {contract.CONTINUATION_FOLDER + '/CONTINUATION_MANIFEST.json',
+            'AGENTS.md', self.prefix + 'papers/foundation.md'})
+        self.assertNotIn('Zeta23/OPICAFollowup/Validation.lean', allowed)
+
+    def test_missing_manifest_rejected(self):
+        allowed, errors = contract.continuation_checkpoint(self.root, self.here)
+        self.assertEqual(allowed, set())
+        self.assertTrue(errors)
+
+    def test_unpinned_manifest_cannot_refreeze_itself(self):
+        self.write_manifest()
+        with patch.object(contract, 'CONTINUATION_MANIFEST_SHA256', 'f' * 64):
+            allowed, errors = contract.continuation_checkpoint(self.root, self.here)
+        self.assertEqual(allowed, set())
+        self.assertTrue(any('unreviewed' in error for error in errors))
+
+    def test_every_scope_and_authority_field_remains_exact(self):
+        for key, value in list(self.document.items()):
+            if key == 'artifacts':
+                continue
+            with self.subTest(key=key):
+                changed = 'PROVED' if isinstance(value, str) else 0
+                self.document[key] = changed
+                self.reject()
+                self.document[key] = value
+
+    def test_bool_integer_and_float_aliases_cannot_change_scope(self):
+        for key, value in [('release_ready', 0), ('original_primary_roots', 100.0),
+                           ('acceptance_units', 28.0)]:
+            with self.subTest(key=key):
+                original = self.document[key]
+                self.document[key] = value
+                self.reject()
+                self.document[key] = original
+
+    def test_malformed_json_and_duplicate_keys_rejected_even_with_honest_pin(self):
+        for data in [b'{', b'[]', b'{"schema":"x","schema":"y"}']:
+            with self.subTest(data=data):
+                pin = self.write_manifest(data)
+                with patch.object(contract, 'CONTINUATION_MANIFEST_SHA256', pin):
+                    allowed, errors = contract.continuation_checkpoint(self.root, self.here)
+                self.assertEqual(allowed, set())
+                self.assertTrue(errors)
+
+    def test_nonempty_record_inventory_required(self):
+        for value in [[], None, {}, 'files']:
+            with self.subTest(value=value):
+                self.document['artifacts'] = value
+                self.reject()
+
+    def test_rows_require_exact_fields_and_types(self):
+        original = deepcopy(self.document['artifacts'][0])
+        for value in [None, {}, {**original, 'authority': 'PROVED'},
+                      {**original, 'path': None}, {**original, 'bytes': True},
+                      {**original, 'bytes': -1}, {**original, 'bytes': 1.0},
+                      {**original, 'sha256': 'F' * 64}]:
+            with self.subTest(value=value):
+                self.document['artifacts'][0] = value
+                self.reject()
+        self.document['artifacts'][0] = original
+
+    def test_parent_and_lean_sources_cannot_be_artifact_exceptions(self):
+        row = self.document['artifacts'][0]
+        for name in ['README.md', 'Zeta23/OPICAFollowup/Validation.lean',
+                     'Zeta23/OPICA/LocalData.lean',
+                     contract.CONTINUATION_FOLDER + '/PUBLIC_ROOTS.json',
+                     contract.CONTINUATION_FOLDER + '/tests/test_contract.py',
+                     contract.CONTINUATION_FOLDER + '/continuation/2026-10-23/paper.md']:
+            with self.subTest(name=name):
+                row['path'] = name
+                self.document['artifacts'].sort(key=lambda item: item['path'])
+                self.reject()
+
+    def test_unsafe_paths_rejected_within_the_allowed_prefix(self):
+        for suffix in ['../escape', 'a/../b', './paper', 'a//b', 'a\\b',
+                       'C:/x', 'a\n.md', '']:
+            with self.subTest(suffix=suffix):
+                self.document['artifacts'][-1]['path'] = self.prefix + suffix
+                self.reject()
+
+    def test_duplicate_unsorted_and_case_alias_records_rejected(self):
+        rows = deepcopy(self.document['artifacts'])
+        for changed in [[rows[1], rows[0]], [rows[0], deepcopy(rows[0]), rows[1]],
+                        [rows[0], {**rows[0], 'path': 'agents.md'}, rows[1]]]:
+            with self.subTest(paths=[row['path'] for row in changed]):
+                self.document['artifacts'] = changed
+                self.reject()
+
+    def test_missing_or_changed_artifact_rejects_entire_exception(self):
+        target = self.root / self.document['artifacts'][-1]['path']
+        target.write_bytes(b'changed bytes\n')
+        self.reject()
+        target.unlink()
+        self.reject()
+
+    def test_false_length_or_digest_rejected(self):
+        row = self.document['artifacts'][0]
+        for key, value in [('bytes', row['bytes'] + 1), ('sha256', '0' * 64)]:
+            with self.subTest(key=key):
+                original = row[key]
+                row[key] = value
+                self.reject()
+                row[key] = original
+
+    def test_symlink_file_or_ancestor_flag_rejected(self):
+        # Exercise the actual stat rejection branch without requiring native
+        # Windows symlink privileges; this is not an OS symlink-creation test.
+        pin = self.write_manifest()
+        for marked in [self.manifest_path, self.root / 'AGENTS.md',
+                       self.here / 'continuation']:
+            with self.subTest(marked=marked), \
+                 patch.object(contract, 'CONTINUATION_MANIFEST_SHA256', pin), \
+                 patch.object(Path, 'is_symlink', lambda path: path == marked):
+                allowed, errors = contract.continuation_checkpoint(self.root, self.here)
+                self.assertEqual(allowed, set())
+                self.assertTrue(any('symlink' in error for error in errors))
+
+    def test_resolved_escape_rejected(self):
+        pin = self.write_manifest()
+        target = self.root / 'AGENTS.md'
+        original_resolve = Path.resolve
+        for destination in [self.root.parent / 'escaped.md',
+                            self.root / 'Zeta23/OPICAFollowup/Validation.lean']:
+            def resolve(path, *args, **kwargs):
+                return destination if path == target else original_resolve(path, *args, **kwargs)
+            with self.subTest(destination=destination), \
+                 patch.object(contract, 'CONTINUATION_MANIFEST_SHA256', pin), \
+                 patch.object(Path, 'resolve', resolve):
+                allowed, errors = contract.continuation_checkpoint(self.root, self.here)
+                self.assertEqual(allowed, set())
+                self.assertTrue(any('escaped' in error for error in errors))
+
+    def test_manifest_cannot_be_read_from_a_different_directory(self):
+        self.write_manifest()
+        allowed, errors = contract.continuation_checkpoint(self.root, self.root)
+        self.assertEqual(allowed, set())
+        self.assertTrue(errors)
+
+    def test_preflight_exempts_verified_artifacts_but_never_grants_acceptance(self):
+        # Other frozen-preflight branches have their own tests. This fixture
+        # isolates inventory integration while calling the real checkpoint gate.
+        protected = {'files': [], 'parent_head': 'parent', 'parent_tree': 'tree'}
+        contexts = {'claim_registry': 'research/RHRC/CLAIM_REGISTRY.json',
+                    'theorem_bindings': 'research/RHRC/REGISTERED_THEOREM_BINDINGS.json',
+                    'file_classes': 'research/RHRC/graph/FILE_CLASSES.json',
+                    'semantic_closure': 'research/RHRC/graph/SEMANTIC_CLOSURE_CONFIG.json'}
+        for key, relative in contexts.items():
+            protected[key] = {}
+            path = self.root / relative
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_text('{}')
+        data = json.dumps(protected).encode()
+        (self.here / 'PROTECTED_STATE.json').write_bytes(data)
+        for name, value in {
+            'BUILD_MANIFEST.json': {'paper_sources': [], 'regression_sources': [], 'create': []},
+            'PUBLIC_ROOTS.json': {'roots': [{}] * 100},
+            'PAPER_CROSSWALK.json': {'scope_units': [{}] * 28},
+            'PARENT_EXTENSION.json': {'modified_exact_paths': [], 'generated_exact_paths': []},
+            'SOURCE_REGISTER.json': {},
+        }.items():
+            (self.here / name).write_text(json.dumps(value))
+        for name in ['NormFirstTransfer.lean', 'Validation.lean']:
+            path = self.root / 'Zeta23/OPICAFollowup' / name
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_text('-- fixture')
+        pin = self.write_manifest()
+        expected = [row['path'] for row in self.document['artifacts']]
+        expected.append(contract.CONTINUATION_FOLDER + '/CONTINUATION_MANIFEST.json')
+        from types import SimpleNamespace
+        with patch.object(contract, 'FROZEN_SPEC', {}), \
+             patch.object(contract, 'FROZEN_PAPER', {}), \
+             patch.object(contract, 'PROTECTED_SHA256', hashlib.sha256(data).hexdigest()), \
+             patch.object(contract, 'CONTINUATION_MANIFEST_SHA256', pin), \
+             patch.object(contract, 'metadata_errors', return_value=[]), \
+             patch.object(contract, 'supplemental_errors', return_value=[]), \
+             patch.object(contract, 'dependency_amendment_errors', return_value=[]), \
+             patch.object(contract, 'candidate1_source_errors', return_value=[]), \
+             patch.object(contract.subprocess, 'run') as run:
+            run.return_value = SimpleNamespace(stdout=('\0'.join(expected) + '\0').encode())
+            result = contract.preflight(self.root, self.here)
+            self.assertEqual(result['errors'], [])
+            self.assertEqual(result['status'], 'PASS_PREPARATION_ONLY')
+            self.assertEqual((result['planned_roots'], result['coverage_units']), (100, 28))
+            self.assertFalse(result['release_ready'])
+            self.assertFalse(result['compiler_coverage_audited'])
+            self.assertFalse(result['continuation_checkpoint']['formal_acceptance'])
+            self.assertFalse(result['continuation_checkpoint']['proof_established_by_this_gate'])
+            run.return_value = SimpleNamespace(stdout=('\0'.join(expected + ['rogue.md']) + '\0').encode())
+            result = contract.preflight(self.root, self.here)
+            self.assertTrue(any('unlisted files: rogue.md' in error for error in result['errors']))
 
 
 if __name__ == '__main__':

@@ -1,0 +1,99 @@
+{
+  "status": "PASS_OFFLINE_REVALIDATION_OF_HISTORICAL_41_ROOT_SUBSET_ONLY",
+  "checked_commit": "9b6a9a3a2badb4cff62a56c1158d9cef8759d30d",
+  "checked_tree": "545ea182910db9c8d05c4c7e8ee229d119a9aa28",
+  "workflow_commit": "077aab1aa736299768296afb7929263a8a4cf4bd",
+  "workflow_run": 39706211959,
+  "workflow_attempt": 1,
+  "source_files_verified_against_git_objects": 2437,
+  "source_manifest_sha256": "bc26ce33e9ba228a15270374579b254af279d65bd984062bdaac9a0d3b68627b",
+  "commands": [
+    {
+      "log": "version.log",
+      "sha256": "d2b0b0a275a0c043b1650ebc4faf0b9c9c686656f0b0f066fc6f77df4f135d3a",
+      "bytes": 110,
+      "exit_code": 0
+    },
+    {
+      "log": "build.log",
+      "sha256": "1f4de0ff8f05cc7b100a134ed8d556ddef74068920a0a59bde6c88ad2455749b",
+      "bytes": 122140,
+      "exit_code": 0
+    },
+    {
+      "log": "export.log",
+      "sha256": "89921360d993711b14f7d1515086220a51ef1b93a884c6e49ccdc43350042025",
+      "bytes": 11449410,
+      "exit_code": 0
+    }
+  ],
+  "compiled_export_sha256": "06612c8080365a0bdb74b9d74b293a1a4741d3e34b90b3a5cb50e15ba2e46e31",
+  "receipt_sha256": "6465c4d3b794f940579884e2d70c90f89a29b594e6406e4b843cc346ecdc5327",
+  "receipt_bytes": 30189993,
+  "primary_roots": 41,
+  "missing_primary_roots": 59,
+  "public_declarations": 1270,
+  "constructors": 16,
+  "dependency_nodes": 7359,
+  "dependency_channels": 8196,
+  "axiom_union": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "compiler_records_revalidated": true,
+  "compiler_export_reparsed_equal": true,
+  "github_artifact_id": 12395917030,
+  "github_artifact_sha256": "a39438a4a0755947faac14806b5ce12f87cda9ab7909f7a77060a4f9e5ca0e7c",
+  "github_artifact_crc_verified": true,
+  "github_artifact_checkout_verified": true,
+  "package_sha256": "9c076a533291adb814f776018126330b6b2125a852548622ce196c6a0afcf88d",
+  "package_cold_files_equal_github_artifact": [
+    {
+      "path": "cold-prerequisites.log",
+      "bytes": 131634,
+      "sha256": "2e3713c0348068860f7d8e67eb49a5b1e54d360a5d24f4780ef42100d7cad15a"
+    },
+    {
+      "path": "EXPORT_SHA256.txt",
+      "bytes": 1218,
+      "sha256": "149c25b467f51e2f7a0880c3cf2f22c259809deafa3f462c552cbad39db2afbe"
+    },
+    {
+      "path": "subset/compiler-receipt.json",
+      "bytes": 30189993,
+      "sha256": "6465c4d3b794f940579884e2d70c90f89a29b594e6406e4b843cc346ecdc5327"
+    },
+    {
+      "path": "subset/build.log",
+      "bytes": 122140,
+      "sha256": "1f4de0ff8f05cc7b100a134ed8d556ddef74068920a0a59bde6c88ad2455749b"
+    },
+    {
+      "path": "subset/OpicaFollowupBindings.olean",
+      "bytes": 376304,
+      "sha256": "06612c8080365a0bdb74b9d74b293a1a4741d3e34b90b3a5cb50e15ba2e46e31"
+    },
+    {
+      "path": "subset/export.log",
+      "bytes": 11449410,
+      "sha256": "89921360d993711b14f7d1515086220a51ef1b93a884c6e49ccdc43350042025"
+    },
+    {
+      "path": "subset/version.log",
+      "bytes": 110,
+      "sha256": "d2b0b0a275a0c043b1650ebc4faf0b9c9c686656f0b0f066fc6f77df4f135d3a"
+    },
+    {
+      "path": "version.log",
+      "bytes": 110,
+      "sha256": "d2b0b0a275a0c043b1650ebc4faf0b9c9c686656f0b0f066fc6f77df4f135d3a"
+    }
+  ],
+  "release_ready": false,
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "new_uploaded_repairs_compiler_coverage": "NOT_ESTABLISHED_BY_THIS_HISTORICAL_RECEIPT",
+  "compiler_rerun": "NONE; offline evidence revalidation only",
+  "human_independent_review": "NOT_ESTABLISHED"
+}

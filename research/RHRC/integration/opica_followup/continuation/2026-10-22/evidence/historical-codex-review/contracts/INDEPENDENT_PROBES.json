@@ -1,0 +1,101 @@
+{
+  "actual_immutable_parent_baseline": {
+    "disposition": "VERIFIED"
+  },
+  "reframed_parent_capture": {
+    "disposition": "REJECTED",
+    "exception": "ValueError",
+    "message": "OPICA follow-up extension: parent bytes differ: .github/workflows/permansson-formal.yml"
+  },
+  "reframed_parent_registry_capture": {
+    "disposition": "REJECTED",
+    "exception": "ValueError",
+    "message": "OPICA follow-up extension: parent registry/configuration capture differs: claim_registry"
+  },
+  "actual_current_41_wrapper": {
+    "disposition": "REJECTED",
+    "exception": "ValueError",
+    "message": "OPICA follow-up extension: full child reviewed type table absent; subset cannot extend parent"
+  },
+  "actual_current_41_fallback": {
+    "disposition": "REJECTED",
+    "errors": [
+      "follow-up extension rejected: OPICA follow-up extension: full child reviewed type table absent; subset cannot extend parent"
+    ],
+    "allowed_delta_count": 0,
+    "raw_context_preserved": true
+  },
+  "child_route_authority_metadata": {
+    "disposition": "ACCEPTED_BY_STRUCTURAL_REVIEW_HELPER",
+    "claim": {
+      "id": "OPICA_FOLLOWUP_SOURCEFAMILY_ZERO_EQ_ORIGINAL",
+      "theorem": "Zeta23.OPICAFollowup.sourceFamily_zero_eq_original",
+      "source": "Zeta23/OPICAFollowup/NativeSourceFamily.lean",
+      "status": "PROVED_UNCONDITIONAL",
+      "promotion_cap": "PROVED_UNCONDITIONAL",
+      "statement": "SYNTHETIC TEST OBJECT; NEVER REGISTER",
+      "route": "R001_exceptional_zero"
+    },
+    "binding": {
+      "id": "OPICA_FOLLOWUP_SOURCEFAMILY_ZERO_EQ_ORIGINAL",
+      "theorem": "Zeta23.OPICAFollowup.sourceFamily_zero_eq_original",
+      "source": "Zeta23/OPICAFollowup/NativeSourceFamily.lean",
+      "route": "R001_exceptional_zero"
+    },
+    "compiler_authority": false
+  },
+  "empty_child_quantified_statement": {
+    "disposition": "ACCEPTED_BY_STRUCTURAL_REVIEW_HELPER",
+    "claim": {
+      "id": "OPICA_FOLLOWUP_SOURCEFAMILY_ZERO_EQ_ORIGINAL",
+      "theorem": "Zeta23.OPICAFollowup.sourceFamily_zero_eq_original",
+      "source": "Zeta23/OPICAFollowup/NativeSourceFamily.lean",
+      "status": "PROVED_UNCONDITIONAL",
+      "promotion_cap": "PROVED_UNCONDITIONAL",
+      "statement": ""
+    },
+    "binding": {
+      "id": "OPICA_FOLLOWUP_SOURCEFAMILY_ZERO_EQ_ORIGINAL",
+      "theorem": "Zeta23.OPICAFollowup.sourceFamily_zero_eq_original",
+      "source": "Zeta23/OPICAFollowup/NativeSourceFamily.lean"
+    },
+    "compiler_authority": false
+  },
+  "invalid_child_dependency_identities": {
+    "disposition": "ACCEPTED_BY_STRUCTURAL_REVIEW_HELPER",
+    "claim": {
+      "id": "OPICA_FOLLOWUP_SOURCEFAMILY_ZERO_EQ_ORIGINAL",
+      "theorem": "Zeta23.OPICAFollowup.sourceFamily_zero_eq_original",
+      "source": "Zeta23/OPICAFollowup/NativeSourceFamily.lean",
+      "status": "PROVED_UNCONDITIONAL",
+      "promotion_cap": "PROVED_UNCONDITIONAL",
+      "statement": "SYNTHETIC TEST OBJECT; NEVER REGISTER",
+      "dependencies": [
+        "UNKNOWN",
+        "OPICA_FOLLOWUP_SOURCEFAMILY_ZERO_EQ_ORIGINAL",
+        "OPICA_FOLLOWUP_SOURCEFAMILY_ZERO_EQ_ORIGINAL"
+      ]
+    },
+    "binding": {
+      "id": "OPICA_FOLLOWUP_SOURCEFAMILY_ZERO_EQ_ORIGINAL",
+      "theorem": "Zeta23.OPICAFollowup.sourceFamily_zero_eq_original",
+      "source": "Zeta23/OPICAFollowup/NativeSourceFamily.lean"
+    },
+    "compiler_authority": false
+  },
+  "actual_parent_static_check": {
+    "status": "ENVIRONMENT_BLOCKED",
+    "exception": "CalledProcessError",
+    "message": "Command '['git', 'diff', '--no-renames', '--name-status', '97926d6a949fed7af0429a373b47abc772012834']' returned non-zero exit status 128.",
+    "required_roots": null,
+    "missing_roots": null,
+    "missing_files": null,
+    "authority": null,
+    "formal_acceptance": null,
+    "RH": null,
+    "Step4": null,
+    "error_count": 0,
+    "extension_errors": [],
+    "unauthorized_tracked_delta_count": 0
+  }
+}

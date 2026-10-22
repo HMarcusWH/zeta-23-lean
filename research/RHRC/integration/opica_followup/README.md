@@ -1,3 +1,30 @@
+# Current draft checkpoint — 22 October 2026
+
+The combined source and handover are now in the repository. Start at
+[the continuation guide](continuation/2026-10-22/README.md), read root AGENTS.md,
+and use its exact 100-root stage ledger. The original scope remains 100 roots /
+28 acceptance units; full release acceptance, RH, Step 4 and independent closing
+inequalities remain OPEN.
+
+The checkpoint retains the historical 41-root exact-source subset and records six
+additional primary roots with narrow local module, independent consumer and axiom
+checks. It preserves five other unchecked candidates plus all 48 absent primary
+obligations. Local proof evidence and aggregate acceptance remain separate.
+The cold exporter prerequisite fix and repaired parent metadata checks are included.
+The new narrow candidate CI lane does not replace the full release gate.
+
+Both foundational PDFs, preserved source inputs, independent consumers, prior
+Codex audits, new evidence review and a next-agent prompt are under that guide.
+The versioned CONTINUATION_MANIFEST.json records these additional audit/handover
+paths without altering the frozen original footprint or mandatory theorem scope.
+Final full-extension reconciliation and all-100 compiler linkage remain required.
+
+The following text preserves the earlier 9b baseline description and research
+history. Its statements that the newly repaired candidate primaries remain open
+refer to that earlier checkpoint; use the current ledger for individual gates.
+
+---
+
 # OPICA follow-up: partial implementation and supplemental research review
 
 This is an **incomplete implementation checkpoint**, not the full follow-up

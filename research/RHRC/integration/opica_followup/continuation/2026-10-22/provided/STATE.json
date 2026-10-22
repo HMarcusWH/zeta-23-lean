@@ -1,0 +1,35 @@
+{
+  "schema": "OPICA_SSOT_STATE_V1",
+  "snapshot_date": "2026-10-22",
+  "purpose": "Consolidated continuation kit, not completed PR release",
+  "source_base_commit": "9b6a9a3a2badb4cff62a56c1158d9cef8759d30d",
+  "source_base_tree": "545ea182910db9c8d05c4c7e8ee229d119a9aa28",
+  "accepted_parent_commit": "d53dd70d38b0762af130b1d19b795af259f505f5",
+  "accepted_parent_tree": "12691099f1a155a8bfa3ad4f6689146175b233b2",
+  "assembled_workspace_tree_not_accepted_commit": "023d49708f9d55a289de0ede477116897d149efd",
+  "current_source_directory": "workspace",
+  "required_roots": 100,
+  "acceptance_units": 28,
+  "status_counts": {
+    "PROVED_IN_ORIGINAL_41_ROOT_SOURCE_BOUND_SUBSET": 41,
+    "PROVED_NARROW_LOCAL_GATES_AGGREGATE_PENDING": 3,
+    "COMPILED_MODULE_CONSUMER_ACCEPTANCE_PENDING": 3,
+    "OPEN_NO_COMPLETE_CANDIDATE": 48,
+    "PRIOR_CANDIDATE_FAILED_OR_BLOCKED_UNACCEPTED": 5
+  },
+  "lean_toolchain": "leanprover/lean4:v4.33.0-rc2",
+  "compiler_commit": "d8b18978322de05a8f3dba51ef03cf5461676c17",
+  "mathlib_declared_revision": "51e6992efd06126df61a496bebf8f49482a4e129",
+  "runtime_provenance": "Exact SHA256-bound original CI export; dependency Git metadata omitted; use path overrides",
+  "live_remote_tip_refreshed_during_packaging": false,
+  "full_release_ready": false,
+  "independent_human_review": "NOT_ESTABLISHED",
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "independent_closing_inequalities": "OPEN",
+  "evidence_limitations": [
+    "The successful auxiliary consumer rerun was reported during an interrupted packaging attempt, but its complete raw result/receipt was not preserved in the available uploads. It is not used to promote this ledger; rerun the supplied unchanged consumer.",
+    "Some original successful leaf logs were not attached separately; their source-bound receipts and recorded log hashes are retained.",
+    "Later interrupted scratch edits to five WIP modules and a draft all-100 receipt reader were not delivered as files. Last available candidates remain explicitly unaccepted."
+  ]
+}

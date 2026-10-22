@@ -1,0 +1,13 @@
+{
+  "status": "PASS_STRUCTURAL_ONLY",
+  "original_roots": 100,
+  "acceptance_units": 28,
+  "status_counts": {
+    "PROVED_IN_ORIGINAL_41_ROOT_SOURCE_BOUND_SUBSET": 41,
+    "PROVED_NARROW_LOCAL_GATES_AGGREGATE_PENDING": 3,
+    "COMPILED_MODULE_CONSUMER_ACCEPTANCE_PENDING": 3,
+    "OPEN_NO_COMPLETE_CANDIDATE": 48,
+    "PRIOR_CANDIDATE_FAILED_OR_BLOCKED_UNACCEPTED": 5
+  },
+  "full_release_accepted": false
+}
