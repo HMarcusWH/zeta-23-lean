@@ -204,6 +204,14 @@ theorem nearGapCombFamily_uniform_variation {L R : ℝ}
     _ = _ := heq
     _ ≤ _ := nearGap_dilation_uniform_scalar_budget hL hu hR
 
+/-- Uniform-in-parameter source-bound growth, in the exact common-budget
+interface already used by the locally finite complex Schwartz-limit theorem.
+This strengthens the earlier L-dependent existential growth witness. -/
+theorem nearGapCombFamily_common_growth {L : ℝ}
+    (hL : 0 ≤ L) (hu : L ≤ Real.log 2) :
+    CommonLinearMassBound 18 (nearGapCombFamily L).totalVariation :=
+  ⟨by norm_num, fun R hR => nearGapCombFamily_uniform_variation hL hu hR⟩
+
 /-- Genuine linear growth survives canonical Jordan addition; it is a
 consequence of the actual total-variation inequality, not a condition placed
 on the sum in advance. No whole-line finite-mass premise is used. -/
