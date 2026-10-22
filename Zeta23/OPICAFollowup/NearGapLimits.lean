@@ -49,6 +49,67 @@ theorem nearGapComb_radius_bounds {L : ℝ} (hL : 0 < L)
       Real.exp_lt_exp.mpr (by linarith)
     simpa only [Real.exp_zero] using h
 
+/-- Genuine linear growth survives canonical Jordan addition; it is a
+consequence of the actual total-variation inequality, not a condition placed
+on the sum in advance. No whole-line finite-mass premise is used. -/
+theorem nearGap_localJordanAdd_growth
+    (mu nu : LocallyFiniteSignedMeasure)
+    (hmu : mu.HasLinearGrowth) (hnu : nu.HasLinearGrowth) :
+    (localJordanAdd mu nu).HasLinearGrowth := by
+  obtain ⟨A,hA,hAb⟩ := hmu
+  obtain ⟨B,hB,hBb⟩ := hnu
+  refine ⟨A+B,add_nonneg hA hB,fun R hR => ?_⟩
+  have hmfin : mu.totalVariation (Icc (-R) R) ≠ ∞ :=
+    isCompact_Icc.measure_lt_top.ne
+  have hnfin : nu.totalVariation (Icc (-R) R) ≠ ∞ :=
+    isCompact_Icc.measure_lt_top.ne
+  have hsumfin : (mu.totalVariation+nu.totalVariation) (Icc (-R) R) ≠ ∞ := by
+    rw [Measure.add_apply]
+    exact ENNReal.add_ne_top.mpr ⟨hmfin,hnfin⟩
+  have hle := ENNReal.toReal_mono hsumfin
+    (localJordanAdd_totalVariation_le mu nu (Icc (-R) R))
+  rw [Measure.add_apply,ENNReal.toReal_add hmfin hnfin] at hle
+  have ha := hAb R hR
+  have hb := hBb R hR
+  change ((localJordanAdd mu nu).totalVariation (Icc (-R) R)).toReal ≤ _ at hle ⊢
+  change (mu.totalVariation (Icc (-R) R)).toReal ≤ _ at ha
+  change (nu.totalVariation (Icc (-R) R)).toReal ≤ _ at hb
+  nlinarith
+
+/-- Signed scalar multiplication preserves genuine linear variation growth,
+with the magnitude of the actual scalar explicitly charged. -/
+theorem nearGap_localJordanScale_growth
+    (a : ℝ) (mu : LocallyFiniteSignedMeasure) (hmu : mu.HasLinearGrowth) :
+    (localJordanScale a mu).HasLinearGrowth := by
+  obtain ⟨A,hA,hAb⟩ := hmu
+  refine ⟨|a|*A,mul_nonneg (abs_nonneg _) hA,fun R hR => ?_⟩
+  have hle := localJordanScale_totalVariation_le a mu (Icc (-R) R)
+  rw [Measure.smul_apply,smul_eq_mul] at hle
+  have hfin : ENNReal.ofReal |a|*mu.totalVariation (Icc (-R) R) ≠ ∞ :=
+    ENNReal.mul_ne_top ENNReal.ofReal_ne_top isCompact_Icc.measure_lt_top.ne
+  have hh := ENNReal.toReal_mono hfin hle
+  rw [ENNReal.toReal_mul,ENNReal.toReal_ofReal (abs_nonneg _)] at hh
+  have ha := hAb R hR
+  change (mu.totalVariation (Icc (-R) R)).toReal ≤ _ at ha
+  change ((localJordanScale a mu).totalVariation (Icc (-R) R)).toReal ≤ _
+  nlinarith
+
+/-- Genuine global linear-growth certificate for the *actual* CT1
+Jordan measure at any dilation parameter. The uniform-in-L budget required
+by the controlled-limit root is a separate, still OPEN estimate. -/
+theorem nearGapCombFamily_growth (L : ℝ) :
+    (nearGapCombFamily L).HasLinearGrowth := by
+  exact nearGap_localJordanAdd_growth _ _
+    (nearGap_localJordanAdd_growth _ _
+      (dilatedCombJordan_growth L) (dilatedCombJordan_growth (-L)))
+    (nearGap_localJordanScale_growth _ _
+      (dilatedCombJordan_growth 0))
+
+/-- The CT1 object is now represented by a genuine tempered distribution,
+using the proved local-Jordan linear-growth certificate. -/
+def nearGapCombDistribution (L : ℝ) : TemperedDistribution ℝ ℂ :=
+  (nearGapCombFamily L).distributionOfLinearGrowth (nearGapCombFamily_growth L)
+
 lemma nearGap_origin_zero (mu : Measure ℝ) {a : ℝ} (ha : 0<a)
     (hgap : mu (Ioo (-a) a)=0) : mu {0}=0 := by
   apply measure_mono_null _ hgap
