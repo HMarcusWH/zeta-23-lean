@@ -204,6 +204,31 @@ jobs:
           #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_ct1_uniform_scalar_budget
           #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_jordan_add_pairing
           #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_ct1_distribution
+          theorem expected_ct1_variation_domination (L : ℝ) :
+              (Zeta23.OPICAFollowup.nearGapCombFamily L).totalVariation ≤
+                ((Zeta23.OPICAFollowup.dilatedCombJordan L).totalVariation +
+                 (Zeta23.OPICAFollowup.dilatedCombJordan (-L)).totalVariation) +
+                ENNReal.ofReal |-(2 * Real.cosh (L / 2))| •
+                  (Zeta23.OPICAFollowup.dilatedCombJordan 0).totalVariation :=
+            Zeta23.OPICAFollowup.nearGapCombFamily_variation_le L
+          theorem expected_ct1_positive_variation (t : ℝ) :
+              (Zeta23.OPICAFollowup.dilatedCombJordan t).totalVariation =
+              Zeta23.OPICAFollowup.dilatedCombMeasure t :=
+            Zeta23.OPICAFollowup.nearGap_dilatedComb_variation t
+          theorem expected_ct1_actual_uniform_variation {L R : ℝ}
+              (hL : 0 ≤ L) (hu : L ≤ Real.log 2) (hR : 0 ≤ R) :
+              (Zeta23.OPICAFollowup.nearGapCombFamily L).totalVariation.real
+                (Icc (-R) R) ≤ 18 * (1 + R) :=
+            Zeta23.OPICAFollowup.nearGapCombFamily_uniform_variation hL hu hR
+          theorem expected_ct1_common_schwartz_growth {L : ℝ}
+              (hL : 0 ≤ L) (hu : L ≤ Real.log 2) :
+              Zeta23.OPICAFollowup.CommonLinearMassBound 18
+                (Zeta23.OPICAFollowup.nearGapCombFamily L).totalVariation :=
+            Zeta23.OPICAFollowup.nearGapCombFamily_common_growth hL hu
+          #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_ct1_variation_domination
+          #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_ct1_positive_variation
+          #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_ct1_actual_uniform_variation
+          #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_ct1_common_schwartz_growth
           #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_ct1_radius
           end Zeta23.OPICAFollowup.W04W07Independent
           LEAN
@@ -214,11 +239,11 @@ jobs:
           data = Path('/tmp/opica-current-candidates/w04-w07-expected.log').read_text()
           records = re.findall(r'depends on axioms:\s*\[([^\]]*)\]', data, re.S)
           allowed = {'propext', 'Classical.choice', 'Quot.sound'}
-          assert len(records) == 13, f'Expected thirteen exact independent axiom receipts, got {len(records)}'
+          assert len(records) == 17, f'Expected seventeen exact independent axiom receipts, got {len(records)}'
           for r in records:
               axioms = {x.strip() for x in r.split(',') if x.strip()}
               assert axioms <= allowed, f'Unexpected axiom(s): {sorted(axioms - allowed)}'
-          print('W04/W07 foundation and thirteen independent domain/axiom checks: PASS. Full original roots OPEN')
+          print('W04/W07 foundation and seventeen independent domain/axiom checks: PASS. Full original roots OPEN')
           PY
       - name: W06 logarithmic mixing weights and independent integer-dilation types
         if: always()
@@ -256,6 +281,16 @@ jobs:
                 ENNReal.ofReal (Real.exp (-t / 2)) • Measure.dirac t :=
             Zeta23.OPICAFollowup.positiveLogMeasure_dirac t
           #print axioms Zeta23.OPICAFollowup.W06Independent.expected_weighted_log_dirac
+          theorem expected_log_nonpositive_atom {x : ℝ} (hx : x ≤ 0) :
+              Zeta23.OPICAFollowup.positiveLogMeasure (Measure.dirac x) = 0 :=
+            Zeta23.OPICAFollowup.positiveLogMeasure_dirac_nonpos hx
+          theorem expected_log_positive_atom {x : ℝ} (hx : 0 < x) :
+              Zeta23.OPICAFollowup.positiveLogMeasure (Measure.dirac x) =
+                ENNReal.ofReal (Zeta23.OPICAFollowup.positiveLogWeight x) •
+                  (Measure.dirac (Real.log x)) :=
+            Zeta23.OPICAFollowup.positiveLogMeasure_dirac_pos hx
+          #print axioms Zeta23.OPICAFollowup.W06Independent.expected_log_nonpositive_atom
+          #print axioms Zeta23.OPICAFollowup.W06Independent.expected_log_positive_atom
           #print axioms Zeta23.OPICAFollowup.W06Independent.expected_physical_integer_dilation
           end Zeta23.OPICAFollowup.W06Independent
           LEAN
@@ -266,7 +301,7 @@ jobs:
           data = Path('/tmp/opica-current-candidates/w06-expected.log').read_text()
           found = re.findall(r'depends on axioms:\s*\[([^\]]*)\]', data, re.S)
           allowed = {'propext', 'Classical.choice', 'Quot.sound'}
-          assert len(found) == 5, f'Expected five axiom closures; saw {len(found)}'
+          assert len(found) == 7, f'Expected seven axiom closures; saw {len(found)}'
           for row in found:
               axioms = {x.strip() for x in row.split(',') if x.strip()}
               assert axioms <= allowed, f'Unexpected axioms: {sorted(axioms - allowed)}'
