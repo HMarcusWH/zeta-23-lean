@@ -102,6 +102,23 @@ theorem positiveLogMeasure_add (mu nu : Measure ℝ) :
   rw [Measure.restrict_add, Measure.withDensity_add_measure]
   exact Measure.map_add _ _ Real.measurable_log
 
+/-- The positive-axis weighted logarithmic pushforward commutes with
+arbitrary nonnegative measure sums. This is the measure-level bridge from
+finite integer atoms to the noncompact lattice, before complex Jordan
+assembly and absolute Mobius Fubini. Neither a synthetic transform nor a
+whole-line finite-output hypothesis is used. -/
+theorem positiveLogMeasure_sum {ι : Type*} (mu : ι → Measure ℝ) :
+    positiveLogMeasure (Measure.sum mu) =
+      Measure.sum (fun i => positiveLogMeasure (mu i)) := by
+  unfold positiveLogMeasure
+  ext s hs
+  rw [Measure.map_apply Real.measurable_log hs,
+    Measure.restrict_sum mu measurableSet_Ioi,
+    Measure.withDensity_sum,
+    Measure.sum_apply _ (Real.measurable_log hs),
+    Measure.sum_apply _ hs]
+  simp_rw [Measure.map_apply Real.measurable_log hs]
+
 /-- The canonical zero input has no positive logarithmic mass. -/
 theorem positiveLogMeasure_zero : positiveLogMeasure (0 : Measure ℝ) = 0 := by
   simp [positiveLogMeasure, Measure.withDensity_zero_left]
