@@ -31,6 +31,40 @@ lemma scaledLatticePoint_injective (t : ℝ) : Function.Injective (scaledLattice
   apply Int.cast_injective (α := ℝ)
   exact mul_left_cancel₀ (Real.exp_ne_zero t) h
 
+/-- The exact mass of every physical atom of the scaled integer
+counting measure. Noncompact global mass is immaterial to a singleton. -/
+theorem scaledLatticeMeasure_atom (t : ℝ) (n : ℤ) :
+    scaledLatticeMeasure t ({scaledLatticePoint t n} : Set ℝ) = 1 := by
+  rw [scaledLatticeMeasure,
+    Measure.map_apply (scaledLatticePoint_measurable t)
+      (measurableSet_singleton _)]
+  have hpre :
+      (scaledLatticePoint t) ⁻¹'
+        ({scaledLatticePoint t n} : Set ℝ) = ({n} : Set ℤ) := by
+    ext m
+    simp only [Set.mem_preimage, Set.mem_singleton_iff]
+    constructor
+    · exact scaledLatticePoint_injective t
+    · rintro rfl
+      rfl
+  rw [hpre]
+  simp
+
+/-- The full positive dilated comb has the exact source amplitude at every
+genuine lattice point. This is the atomic input for CT1 nonvanishing. -/
+theorem dilatedCombMeasure_atom (t : ℝ) (n : ℤ) :
+    dilatedCombMeasure t ({scaledLatticePoint t n} : Set ℝ) =
+      ENNReal.ofReal (Real.exp (t / 2)) := by
+  rw [dilatedCombMeasure, Measure.smul_apply, scaledLatticeMeasure_atom]
+  simp
+
+/-- The first nonzero positive atom is genuinely present. -/
+theorem dilatedCombMeasure_first_positive_atom (t : ℝ) :
+    dilatedCombMeasure t ({Real.exp t} : Set ℝ) =
+      ENNReal.ofReal (Real.exp (t / 2)) := by
+  simpa only [scaledLatticePoint, Int.cast_one, mul_one] using
+    dilatedCombMeasure_atom t (1 : ℤ)
+
 /-! ## Genuine first-cell support gap
 
 The only lattice point in (-exp(t), exp(t)) is zero. These lemmas
