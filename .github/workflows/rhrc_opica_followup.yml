@@ -296,6 +296,24 @@ jobs:
           #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_actual_integer_first_gap
           #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_actual_positive_comb_punctured_gap
           #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_actual_three_carriers_gap
+          theorem expected_signed_origin_collar
+              (mu : Zeta23.OPICA.LocallyFiniteSignedMeasure)
+              (K : Set ℝ) (hK : IsCompact K) (h0 : (0 : ℝ) ∈ K) :
+              Zeta23.OPICAFollowup.localSignedCompactRestriction mu K hK
+                ({0} : Set ℝ) =
+              Zeta23.OPICAFollowup.localSignedCompactRestriction mu
+                ({0} : Set ℝ) isCompact_singleton ({0} : Set ℝ) :=
+            Zeta23.OPICAFollowup.nearGap_signed_origin_restriction_of_mem
+              mu K hK h0
+          theorem expected_ct1_origin_every_compact (L : ℝ)
+              (K : Set ℝ) (hK : IsCompact K) (h0 : (0 : ℝ) ∈ K) :
+              Zeta23.OPICAFollowup.localSignedCompactRestriction
+                (Zeta23.OPICAFollowup.nearGapCombFamily L) K hK
+                ({0} : Set ℝ) = 0 :=
+            Zeta23.OPICAFollowup.nearGapCombFamily_origin_signed_zero_on_compact
+              L K hK h0
+          #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_signed_origin_collar
+          #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_ct1_origin_every_compact
           #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_actual_ct1_signed_compact_gap
           #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_ct1_compact_measure_identity
           #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_ct1_radius
@@ -308,11 +326,11 @@ jobs:
           data = Path('/tmp/opica-current-candidates/w04-w07-expected.log').read_text()
           records = re.findall(r'depends on axioms:\s*\[([^\]]*)\]', data, re.S)
           allowed = {'propext', 'Classical.choice', 'Quot.sound'}
-          assert len(records) == 25, f'Expected twenty-five exact independent axiom receipts, got {len(records)}'
+          assert len(records) == 27, f'Expected twenty-seven exact independent axiom receipts, got {len(records)}'
           for r in records:
               axioms = {x.strip() for x in r.split(',') if x.strip()}
               assert axioms <= allowed, f'Unexpected axiom(s): {sorted(axioms - allowed)}'
-          print('W04/W07 foundation and twenty-five independent domain/axiom checks: PASS. Full original roots OPEN')
+          print('W04/W07 foundation and twenty-seven independent domain/axiom checks: PASS. Full original roots OPEN')
           PY
       - name: W06 logarithmic mixing weights and independent integer-dilation types
         if: always()
