@@ -100,6 +100,30 @@ jobs:
         run: >-
           python -B "$FOLLOWUP/continuation/2026-10-22/run_candidate_checks.py"
           --lake lake --output-dir /tmp/opica-current-candidates
+      - name: W01 same-output word/jet compiler and standard-axiom check (narrow)
+        if: always()
+        shell: bash
+        run: |
+          mkdir -p /tmp/opica-current-candidates
+          lake build Zeta23.OPICAFollowup.Consumers 2>&1 | tee /tmp/opica-current-candidates/w01-consumer-build.log
+          printf '%s\n' \
+            'import Zeta23.OPICAFollowup.Consumers' \
+            '#print axioms Zeta23.OPICAFollowup.step123_word_jet_consumer' \
+            '#print axioms Zeta23.OPICAFollowup.step123_word_contour_consumer' \
+            > /tmp/opica-w01-axioms.lean
+          lake env lean /tmp/opica-w01-axioms.lean 2>&1 | tee /tmp/opica-current-candidates/w01-axioms.log
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          report = Path('/tmp/opica-current-candidates/w01-axioms.log').read_text()
+          matches = re.findall(r"depends on axioms:\s*\[([^\]]*)\]", report, flags=re.S)
+          allowed = {'propext', 'Classical.choice', 'Quot.sound'}
+          assert len(matches) == 2, f'Expected two explicit axiom closures; got {len(matches)}'
+          for row in matches:
+              actual = {x.strip() for x in row.split(',') if x.strip()}
+              assert actual <= allowed, f'Nonstandard axioms: {sorted(actual - allowed)}'
+          print('W01 narrow compiler and two standard-only axiom closures: PASS; full100 still OPEN')
+          PY
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()
         with:
