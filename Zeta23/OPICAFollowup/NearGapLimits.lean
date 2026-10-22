@@ -82,6 +82,25 @@ theorem nearGapCombFamily_origin_signed_zero (L : ℝ) :
     Real.exp_zero, zero_div, neg_div, mul_one] at h
   exact h.trans (nearGapComb_origin_coefficient_zero L)
 
+/-- All three actual positive lattice carriers vanish on the same
+punctured interval (-exp(-L), exp(-L)) whenever L is nonnegative.
+This is source-backed support, not a stipulated signed gap; the origin
+atom is deliberately excluded and handled separately. -/
+theorem nearGapComb_three_carriers_punctured_gap {L : ℝ} (hL : 0 ≤ L) :
+    dilatedCombMeasure L
+      (Ioo (-Real.exp (-L)) (Real.exp (-L)) \ ({0} : Set ℝ)) = 0 ∧
+    dilatedCombMeasure (-L)
+      (Ioo (-Real.exp (-L)) (Real.exp (-L)) \ ({0} : Set ℝ)) = 0 ∧
+    dilatedCombMeasure 0
+      (Ioo (-Real.exp (-L)) (Real.exp (-L)) \ ({0} : Set ℝ)) = 0 := by
+  have hwide : Real.exp (-L) ≤ Real.exp L :=
+    Real.exp_le_exp.mpr (by linarith)
+  have hone : Real.exp (-L) ≤ Real.exp (0 : ℝ) :=
+    Real.exp_le_exp.mpr (by linarith)
+  exact ⟨dilatedCombMeasure_punctured_gap_of_le L _ hwide,
+    dilatedCombMeasure_punctured_gap_of_le (-L) _ le_rfl,
+    dilatedCombMeasure_punctured_gap_of_le 0 _ hone⟩
+
 /-- The original CT1 parameter range places the actual punctured gap
 strictly between the half-unit and the unit gap. -/
 theorem nearGapComb_radius_bounds {L : ℝ} (hL : 0 < L)
