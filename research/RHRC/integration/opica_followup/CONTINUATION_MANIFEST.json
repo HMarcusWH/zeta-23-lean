@@ -184,6 +184,11 @@
       "sha256": "a3a18d428b3d35ef2b14f1dce9839e0e70e86a98eb6e7345db062f7cd47d4d4a"
     },
     {
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedForcedEuler.lean",
+      "bytes": 9558,
+      "sha256": "230723787b3badebfa2862fc6168f6f7e76210fd9c00c009729d3f1906fdfca5"
+    },
+    {
       "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedLogFourierSobolev.lean",
       "bytes": 15072,
       "sha256": "29b6f838afddbdbf369bcc209583031f6a3f1d5746783217707e5532efa36136"
@@ -4740,8 +4745,8 @@
     },
     {
       "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/run_candidate_checks.py",
-      "bytes": 6602,
-      "sha256": "d63474043454df03e64fc88add3abaeab6274b25ae890639aef9a1f2a98b2e08"
+      "bytes": 6653,
+      "sha256": "4d0b513561c80f18148f073d8c2633588c52b30238d79aeb9e1f977855470c90"
     }
   ]
 }
