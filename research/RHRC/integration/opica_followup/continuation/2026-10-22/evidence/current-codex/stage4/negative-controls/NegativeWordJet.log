@@ -1,0 +1,88 @@
+NegativeWordJet.lean:139:2: error: Type mismatch
+  OPICAFollowup.step123_word_jet_consumer out w history
+has type
+  let rr := OPICAFollowup.step123WordRightZero out;
+  have hr := ⋯;
+  (step123OpicaView out).source = nativeOriginalIntegerDrive ∧
+    (step123OpicaView out).field = nativeOriginalPrimeField ∧
+      (step123OpicaView out).input = nativeCompletedInput ∧
+        Step123SameStateFieldRecord out.generated.native ∧
+          GeneratedStep123RangeObstruction rho ⋯ ∧
+            zeroMult ↑rr = zeroMult ↑rho ∧
+              nativeZeroJetParameter rho + ↑(nativeZeroJetDamping rho) = ↑rr - 1 / 2 ∧
+                0 < nativeZeroJetDamping rho ∧
+                  (OPICAFollowup.nativeWordPrimePole rr hr).source = nativeOriginalSource ∧
+                    (OPICAFollowup.nativeWordPrimePole rr hr).center = ↑rr - 1 / 2 ∧
+                      (OPICAFollowup.nativeWordPrimePole rr hr).field = OPICAFollowup.nativePrimeTransformGerm ∧
+                        (OPICAFollowup.nativeWordPrimePole rr hr).residue =
+                            -↑(zeroMult ↑rho) * nativeOriginalSourceLaplace (↑rr - 1 / 2) ∧
+                          (∃ S,
+                              OPICAFollowup.wordHistorySafeThreshold w history ≤ S ∧
+                                1 / 2 ≤ S ∧
+                                  ∀ (z : ℂ),
+                                    S < z.re →
+                                      (∀ term ∈ OPICAFollowup.nativeWordCausalState w rr history,
+                                          Integrable (fun t => cexp (-z * ↑t) * term.regular.toFun t) volume) ∧
+                                        (OPICAFollowup.nativeWordCausalState w rr history).laplace z =
+                                          OPICAFollowup.nativeWordTransformedField w rr history z) ∧
+                            MeromorphicAt (OPICAFollowup.nativeWordTransformedField w rr history) (↑rr - 1 / 2) ∧
+                              (∀ (z : ℂ),
+                                  OPICAFollowup.nativeWordCorrectedField w rr history z =
+                                    OPICAFollowup.wordUnitFactor w z *
+                                        riemannZeta (z + 1 / 2) ^ OPICAFollowup.wordCompletionCount w *
+                                      OPICAFollowup.nativePrimeTransformGerm z) ∧
+                                meromorphicOrderAt (OPICAFollowup.nativeWordCorrectedField w rr history) (↑rr - 1 / 2) =
+                                    ↑(↑(OPICAFollowup.wordCompletionCount w * zeroMult ↑rho) - 1) ∧
+                                  OPICAFollowup.nativeWordLeadingCoefficient w rr =
+                                      -↑(zeroMult ↑rho) * nativeOriginalSourceLaplace (↑rr - 1 / 2) *
+                                          OPICAFollowup.wordUnitFactor w (↑rr - 1 / 2) *
+                                        (iteratedDeriv (zeroMult ↑rho) riemannZeta ↑rr / ↑(zeroMult ↑rho).factorial) ^
+                                          OPICAFollowup.wordCompletionCount w ∧
+                                    OPICAFollowup.nativeWordLeadingCoefficient w rr ≠ 0 ∧
+                                      Tendsto
+                                          (fun z =>
+                                            (z - (↑rr - 1 / 2)) ^
+                                                (-(↑(OPICAFollowup.wordCompletionCount w * zeroMult ↑rho) - 1)) *
+                                              OPICAFollowup.nativeWordCorrectedField w rr history z)
+                                          (𝓝[≠] (↑rr - 1 / 2)) (𝓝 (OPICAFollowup.nativeWordLeadingCoefficient w rr)) ∧
+                                        (0 < OPICAFollowup.wordCompletionCount w →
+                                            OPICAFollowup.nativeWordCorrectedField w rr history =ᶠ[𝓝[≠] (↑rr - 1 / 2)]
+                                                OPICAFollowup.nativeWordRegularRepresentative w rr hr ∧
+                                              AnalyticAt ℂ (OPICAFollowup.nativeWordRegularRepresentative w rr hr)
+                                                  (↑rr - 1 / 2) ∧
+                                                (∀ j < OPICAFollowup.wordCompletionCount w * zeroMult ↑rho - 1,
+                                                    iteratedDeriv j
+                                                        (OPICAFollowup.nativeWordRegularRepresentative w rr hr)
+                                                        (↑rr - 1 / 2) =
+                                                      0) ∧
+                                                  iteratedDeriv
+                                                        (OPICAFollowup.wordCompletionCount w * zeroMult ↑rho - 1)
+                                                        (OPICAFollowup.nativeWordRegularRepresentative w rr hr)
+                                                        (↑rr - 1 / 2) =
+                                                      ↑(OPICAFollowup.wordCompletionCount w * zeroMult ↑rho -
+                                                              1).factorial *
+                                                        OPICAFollowup.nativeWordLeadingCoefficient w rr ∧
+                                                    iteratedDeriv
+                                                        (OPICAFollowup.wordCompletionCount w * zeroMult ↑rho - 1)
+                                                        (OPICAFollowup.nativeWordRegularRepresentative w rr hr)
+                                                        (↑rr - 1 / 2) ≠
+                                                      0) ∧
+                                          inner ℂ (nativeZeroJetAdjointWitness rho ⋯)
+                                                (nativeCompletedInputCausalL2 (nativeZeroJetDamping rho) ⋯) =
+                                              (-1) ^ zeroMult ↑rho * nativeCompletionRationalMultiplier (↑rr - 1 / 2) *
+                                                  nativeOriginalSourceLaplace (↑rr - 1 / 2) *
+                                                iteratedDeriv (zeroMult ↑rho) riemannZeta ↑rr ∧
+                                            inner ℂ (nativeZeroJetAdjointWitness rho ⋯)
+                                                (nativeCompletedInputCausalL2 (nativeZeroJetDamping rho) ⋯) ≠
+                                              0
+but is expected to have type
+  WordJetConclusion out w history
+'OPICAWordJetNegative.expected_step123_word_jet_consumer' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'OPICAWordJetNegative.expected_step123_word_jet_actual_domain' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'OPICAWordJetNegative.expected_step123_word_right_zero' depends on axioms: [propext, Classical.choice, Quot.sound]

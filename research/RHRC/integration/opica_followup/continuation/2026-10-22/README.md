@@ -4,8 +4,9 @@ This checkpoint combines the existing PR #294 implementation, the supplied
 22 October repair kit, and the Codex audit/provenance. It is **not a completed
 100-root release**. RH, Step 4 and the independent closing inequalities are OPEN.
 
-The latest [Stage 2 handover](STAGE2_HANDOVER.md) records five newly implemented
-original roots, exact evidence and the next mathematical routes.
+The latest [Stage 4 handover](STAGE4_HANDOVER.md) records the restored compiling
+W06/W07 sources, the CT1 dilation family and the word/jet consumer with exact
+evidence. [Stage 2](STAGE2_HANDOVER.md) records five earlier original roots and
 [Stage 1](STAGE1_HANDOVER.md) preserves the earlier four repairs and infrastructure. For a complete
 file/authority map, read [DOCUMENTATION_INDEX.md](DOCUMENTATION_INDEX.md).
 Use [MODULE_STATUS.md](MODULE_STATUS.md) to choose a source module and the
@@ -26,14 +27,14 @@ The controlling obligations remain the unchanged `PUBLIC_ROOTS.json`,
 `BUILD_SPEC.md`, `BUILD_MANIFEST.json`, `PAPER_CROSSWALK.json` and
 `PARENT_EXTENSION.json` two directories above this file. `ROOT_LEDGER_100.json`
 beside this guide separates each root's implementation, compilation, consumers,
-axioms and aggregate acceptance. `REMAINING_WORK.md` lists the 43 absent proofs.
+axioms and aggregate acceptance. `REMAINING_WORK.md` lists the 42 absent proofs.
 
 - 41 roots have a historical cold exact-source subset receipt at the old base.
-- Fifteen additional original roots passed independent local module, full-type/
-  domain consumer and standard-axiom checks. The nonzero near-gap family witness
-  is still absent; aggregate and full acceptance remain pending.
-- One supplied same-output word/jet candidate remains dependency-blocked.
-- 43 original primary implementations are still absent.
+- Seventeen additional original roots passed independent local module, full-type/
+  domain consumer and standard-axiom checks, including the CT1 dilation family
+  and the same-output word/jet consumer (Stage 4); aggregate and full acceptance
+  remain pending.
+- 42 original primary implementations are still absent.
 
 Consult `evidence/current-codex/` and the ledger for any newer replay evidence in
 this checkpoint. Do not infer a current aggregate receipt from the old subset.
@@ -79,12 +80,12 @@ full release readiness stays closed. Read the Stage 1 infrastructure handover.
 Read `NEXT_AGENT_PROMPT.md`, the exact ledger contracts and
 `evidence/historical-codex-review/` before choosing a proof lane.
 
-Finish the Step 1–3 word/jet consumer candidate and complete the 43 absent
-roots without replacing them by supporting lemmas. The other four earlier
+Complete the 42 absent roots without replacing them by supporting lemmas. The other four earlier
 candidates now have narrow source/type/domain/axiom evidence in Stage 1.
 The actual native moment/residual/memory chain is now proved locally; fixed and
-moving source window rates are next. The weighted inverse/gap results, near-gap
-limit/family results and global co-Poisson/profile/sampling chain remain OPEN.
+moving source window rates are next. The weighted inverse/gap results, the HT2
+controlled limit, the CT1 normalized limit and the global
+co-Poisson/profile/sampling chain remain OPEN.
 
 Finish independent full types and physical/domain consumers, actual definitions,
 the public facade, complete declaration/constructor/private-dependency export,

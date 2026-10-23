@@ -4,10 +4,9 @@
   "acceptance_units": 28,
   "current_aggregate_accepted": false,
   "status_counts": {
-    "OPEN_NO_COMPLETE_CANDIDATE": 43,
-    "PRIOR_CANDIDATE_FAILED_OR_BLOCKED_UNACCEPTED": 1,
+    "OPEN_NO_COMPLETE_CANDIDATE": 42,
     "PROVED_IN_ORIGINAL_41_ROOT_SOURCE_BOUND_SUBSET": 41,
-    "PROVED_NARROW_LOCAL_GATES_AGGREGATE_PENDING": 15
+    "PROVED_NARROW_LOCAL_GATES_AGGREGATE_PENDING": 17
   },
   "roots": [
     {
@@ -2023,9 +2022,9 @@
         "aggregate_current_source_export": "OPEN",
         "full_release_acceptance": "OPEN"
       },
-      "source_file_present": false,
+      "source_file_present": true,
       "declaration_lexically_present": false,
-      "source_sha256": null,
+      "source_sha256": "b25a378990f42845940ab74dc75574b8dba355b51f5524d33ee1d4592c2f1376",
       "evidence": []
     },
     {
@@ -2156,7 +2155,7 @@
       "current_status": "PROVED_NARROW_LOCAL_GATES_AGGREGATE_PENDING",
       "gates": {
         "implementation": "IMPLEMENTED_FULL_FROZEN_CONTRACT_REVIEWED_NARROW",
-        "module_compilation": "PASS_EXACT_SOURCE_ISOLATED_OVERLAY",
+        "module_compilation": "PASS_EXACT_COMMITTED_SOURCE_PINNED_LINUX_STAGE4_REVERIFIED",
         "expected_type_consumer": "PASS_IMPORTED_INDEPENDENT_EXPLICIT_FULL_TYPE",
         "actual_domain_consumer": "PASS_ACTUAL_CONSTRUCTORS_AND_BOUNDARY_CONTROLS",
         "axiom_check": "STANDARD_ONLY_TRANSITIVE_PRINTED_CLOSURES",
@@ -2165,9 +2164,10 @@
       },
       "source_file_present": true,
       "declaration_lexically_present": true,
-      "source_sha256": "6fd8a4016305e8898b58c64c38807b50d417e5a763487d5ccad5c6cabd4ecfc1",
+      "source_sha256": "f78c1f4d68c81d8dc0d7d65b4c355cdb68c2b22a3310e71766a1f9de245a2d31",
       "evidence": [
-        "evidence/current-codex/stage1/comb/STATUS.json"
+        "evidence/current-codex/stage1/comb/STATUS.json",
+        "evidence/current-codex/stage4/STATUS.json"
       ],
       "independent_consumer": {
         "path": "consumers/ExpectedComb.lean",
@@ -2200,7 +2200,7 @@
       "current_status": "PROVED_NARROW_LOCAL_GATES_AGGREGATE_PENDING",
       "gates": {
         "implementation": "IMPLEMENTED_FULL_FROZEN_CONTRACT_REVIEWED_NARROW",
-        "module_compilation": "PASS_EXACT_SOURCE_ISOLATED_OVERLAY",
+        "module_compilation": "PASS_EXACT_COMMITTED_SOURCE_PINNED_LINUX_STAGE4_REVERIFIED",
         "expected_type_consumer": "PASS_IMPORTED_INDEPENDENT_EXPLICIT_FULL_TYPE",
         "actual_domain_consumer": "PASS_ACTUAL_CONSTRUCTORS_AND_BOUNDARY_CONTROLS",
         "axiom_check": "STANDARD_ONLY_TRANSITIVE_PRINTED_CLOSURES",
@@ -2209,9 +2209,10 @@
       },
       "source_file_present": true,
       "declaration_lexically_present": true,
-      "source_sha256": "5b0d86adcf72167a45b3922689911a5591da4c3ecab7fd19ceb246de5f00998a",
+      "source_sha256": "30713fed1c36c09af553428d770745cccdac375b7ba817e0e7babffedff624b5",
       "evidence": [
-        "evidence/current-codex/stage2/weighted/STATUS.json"
+        "evidence/current-codex/stage2/weighted/STATUS.json",
+        "evidence/current-codex/stage4/STATUS.json"
       ],
       "independent_consumer": {
         "path": "consumers/ExpectedWeighted.lean",
@@ -2253,7 +2254,7 @@
       },
       "source_file_present": true,
       "declaration_lexically_present": false,
-      "source_sha256": "5b0d86adcf72167a45b3922689911a5591da4c3ecab7fd19ceb246de5f00998a",
+      "source_sha256": "30713fed1c36c09af553428d770745cccdac375b7ba817e0e7babffedff624b5",
       "evidence": []
     },
     {
@@ -2291,7 +2292,7 @@
       },
       "source_file_present": true,
       "declaration_lexically_present": false,
-      "source_sha256": "5b0d86adcf72167a45b3922689911a5591da4c3ecab7fd19ceb246de5f00998a",
+      "source_sha256": "30713fed1c36c09af553428d770745cccdac375b7ba817e0e7babffedff624b5",
       "evidence": []
     },
     {
@@ -2329,7 +2330,7 @@
       },
       "source_file_present": true,
       "declaration_lexically_present": false,
-      "source_sha256": "5b0d86adcf72167a45b3922689911a5591da4c3ecab7fd19ceb246de5f00998a",
+      "source_sha256": "30713fed1c36c09af553428d770745cccdac375b7ba817e0e7babffedff624b5",
       "evidence": []
     },
     {
@@ -2358,19 +2359,20 @@
       "current_status": "PROVED_NARROW_LOCAL_GATES_AGGREGATE_PENDING",
       "gates": {
         "implementation": "IMPLEMENTED_FULL_FROZEN_CONTRACT_REVIEWED_NARROW",
-        "module_compilation": "PASS_EXACT_SOURCE_ISOLATED_OVERLAY",
+        "module_compilation": "PASS_EXACT_COMMITTED_SOURCE_PINNED_LINUX_STAGE4_REVERIFIED",
         "expected_type_consumer": "PASS_IMPORTED_INDEPENDENT_EXPLICIT_FULL_TYPE",
         "actual_domain_consumer": "PASS_ACTUAL_CONSTRUCTORS_AND_BOUNDARY_CONTROLS",
         "axiom_check": "STANDARD_ONLY_TRANSITIVE_PRINTED_CLOSURES",
         "aggregate_current_source_export": "OPEN",
         "full_release_acceptance": "OPEN",
-        "additional_nonzero_family_physical_acceptance": "OPEN_ACTUAL_NEAR_GAP_COMB_FAMILY_ABSENT"
+        "additional_nonzero_family_physical_acceptance": "PASS_ACTUAL_CT1_FAMILY_INSTANTIATION_STAGE4"
       },
       "source_file_present": true,
       "declaration_lexically_present": true,
-      "source_sha256": "aa5915cea7e35ea7efb90f4d4d95f6d3773b42666b0690a4a491f8b73fce1c5a",
+      "source_sha256": "3e77deea6ca49cb187e839ac3099a2dd361c31fe4c28bdbcaeef80be47c066b0",
       "evidence": [
-        "evidence/current-codex/stage2/near-gap/STATUS.json"
+        "evidence/current-codex/stage2/near-gap/STATUS.json",
+        "evidence/current-codex/stage4/STATUS.json"
       ],
       "independent_consumer": {
         "path": "consumers/ExpectedNearGap.lean",
@@ -2413,7 +2415,7 @@
       },
       "source_file_present": true,
       "declaration_lexically_present": false,
-      "source_sha256": "aa5915cea7e35ea7efb90f4d4d95f6d3773b42666b0690a4a491f8b73fce1c5a",
+      "source_sha256": "3e77deea6ca49cb187e839ac3099a2dd361c31fe4c28bdbcaeef80be47c066b0",
       "evidence": []
     },
     {
@@ -2439,20 +2441,22 @@
         "register_only_after_proof_and_type_review": true,
         "status": "PLANNED_NOT_PROVED"
       },
-      "current_status": "OPEN_NO_COMPLETE_CANDIDATE",
+      "current_status": "PROVED_NARROW_LOCAL_GATES_AGGREGATE_PENDING",
       "gates": {
-        "implementation": "OPEN",
-        "module_compilation": "NOT_ESTABLISHED",
-        "expected_type_consumer": "NOT_ESTABLISHED",
-        "actual_domain_consumer": "NOT_ESTABLISHED",
-        "axiom_check": "NOT_ESTABLISHED",
+        "implementation": "IMPLEMENTED_FULL_FROZEN_CONTRACT_REVIEWED_NARROW",
+        "module_compilation": "PASS_EXACT_COMMITTED_SOURCE_PINNED_LINUX",
+        "expected_type_consumer": "PASS_INDEPENDENT_EXPLICIT_12_CLAUSE_TYPE",
+        "actual_domain_consumer": "PASS_GENUINE_CANONICAL_JORDAN_FAMILY_ALL_0_LT_L_LT_LOG2",
+        "axiom_check": "STANDARD_ONLY_TRANSITIVE_PRINTED_CLOSURES",
         "aggregate_current_source_export": "OPEN",
         "full_release_acceptance": "OPEN"
       },
       "source_file_present": true,
-      "declaration_lexically_present": false,
-      "source_sha256": "aa5915cea7e35ea7efb90f4d4d95f6d3773b42666b0690a4a491f8b73fce1c5a",
-      "evidence": []
+      "declaration_lexically_present": true,
+      "source_sha256": "3e77deea6ca49cb187e839ac3099a2dd361c31fe4c28bdbcaeef80be47c066b0",
+      "evidence": [
+        "evidence/current-codex/stage4/STATUS.json"
+      ]
     },
     {
       "id": "OPICA_FOLLOWUP_DILATION_NORMALIZED_LIMIT_NOT_MEASURE",
@@ -2489,7 +2493,7 @@
       },
       "source_file_present": true,
       "declaration_lexically_present": false,
-      "source_sha256": "aa5915cea7e35ea7efb90f4d4d95f6d3773b42666b0690a4a491f8b73fce1c5a",
+      "source_sha256": "3e77deea6ca49cb187e839ac3099a2dd361c31fe4c28bdbcaeef80be47c066b0",
       "evidence": []
     },
     {
@@ -3960,7 +3964,7 @@
       },
       "source_file_present": true,
       "declaration_lexically_present": false,
-      "source_sha256": "d5e0df823e358f4b273313150f2b06ccbd4a1eb049a628087d6e34f061001324",
+      "source_sha256": "537bc6d368dc3785fa0745ba0a245e554a3ca0dca7f9546f553e672be8f5cf16",
       "evidence": []
     },
     {
@@ -3999,7 +4003,7 @@
       },
       "source_file_present": true,
       "declaration_lexically_present": false,
-      "source_sha256": "d5e0df823e358f4b273313150f2b06ccbd4a1eb049a628087d6e34f061001324",
+      "source_sha256": "537bc6d368dc3785fa0745ba0a245e554a3ca0dca7f9546f553e672be8f5cf16",
       "evidence": []
     },
     {
@@ -4026,22 +4030,23 @@
         "register_only_after_proof_and_type_review": true,
         "status": "PLANNED_NOT_PROVED"
       },
-      "current_status": "PRIOR_CANDIDATE_FAILED_OR_BLOCKED_UNACCEPTED",
+      "current_status": "PROVED_NARROW_LOCAL_GATES_AGGREGATE_PENDING",
       "gates": {
-        "implementation": "LAST_DELIVERED_CANDIDATE",
-        "module_compilation": "FAIL_GENUINE_PINNED_COMPILER_AFTER_PARENT_DEPENDENCIES",
-        "expected_type_consumer": "NOT_ESTABLISHED",
-        "actual_domain_consumer": "NOT_ESTABLISHED",
-        "axiom_check": "NOT_ESTABLISHED",
+        "implementation": "IMPLEMENTED_FULL_FROZEN_CONTRACT_REVIEWED_NARROW",
+        "module_compilation": "PASS_GENUINE_PINNED_LINUX_AFTER_PARENT_DEPENDENCIES",
+        "expected_type_consumer": "PASS_INDEPENDENT_EXPLICIT_22_CLAUSE_TYPE",
+        "actual_domain_consumer": "PASS_PARENT_GENERATED_STEP123_OUTPUT_CONSTRUCTOR",
+        "axiom_check": "STANDARD_ONLY_TRANSITIVE_PRINTED_CLOSURES",
         "aggregate_current_source_export": "OPEN",
         "full_release_acceptance": "OPEN"
       },
       "source_file_present": true,
       "declaration_lexically_present": true,
-      "source_sha256": "d5e0df823e358f4b273313150f2b06ccbd4a1eb049a628087d6e34f061001324",
+      "source_sha256": "537bc6d368dc3785fa0745ba0a245e554a3ca0dca7f9546f553e672be8f5cf16",
       "evidence": [
         "evidence/current-codex/stage3/STATUS.json",
-        "evidence/current-codex/stage3/consumer-stage3-01.log"
+        "evidence/current-codex/stage3/consumer-stage3-01.log",
+        "evidence/current-codex/stage4/STATUS.json"
       ]
     },
     {
@@ -4081,7 +4086,7 @@
       },
       "source_file_present": true,
       "declaration_lexically_present": false,
-      "source_sha256": "d5e0df823e358f4b273313150f2b06ccbd4a1eb049a628087d6e34f061001324",
+      "source_sha256": "537bc6d368dc3785fa0745ba0a245e554a3ca0dca7f9546f553e672be8f5cf16",
       "evidence": []
     },
     {
@@ -4122,7 +4127,7 @@
       },
       "source_file_present": true,
       "declaration_lexically_present": false,
-      "source_sha256": "d5e0df823e358f4b273313150f2b06ccbd4a1eb049a628087d6e34f061001324",
+      "source_sha256": "537bc6d368dc3785fa0745ba0a245e554a3ca0dca7f9546f553e672be8f5cf16",
       "evidence": []
     }
   ],
@@ -4134,18 +4139,18 @@
   "evidence_paths_relative_to": "research/RHRC/integration/opica_followup/continuation/2026-10-22",
   "verification_summary": {
     "historical_source_bound_subset_roots": 41,
-    "independently_verified_narrow_roots": 15,
-    "prior_failed_or_blocked_unaccepted_roots": 1,
-    "open_no_complete_candidate_roots": 43,
+    "independently_verified_narrow_roots": 17,
+    "prior_failed_or_blocked_unaccepted_roots": 0,
+    "open_no_complete_candidate_roots": 42,
     "full_required_roots": 100,
     "acceptance_units": 28,
-    "receipt": "STAGE2_HANDOVER.md",
+    "receipt": "STAGE4_HANDOVER.md",
     "independent_source_repairs": [],
     "independent_consumer_repairs": [],
     "historical41_status_unchanged": true,
     "current_aggregate_accepted": false,
-    "meaning": "41 historical plus15 narrow local results is not aggregate56-root acceptance. One retained candidate and43 absent implementations plus all remaining domain/integration gates remain OPEN; original100/28 scope unchanged.",
-    "receipt_scope": "Index of five Stage2 and ten retained narrow original-root results, not an aggregate receipt",
+    "meaning": "41 historical plus 17 narrow local results is not aggregate 58-root acceptance. 42 absent implementations plus all remaining domain/integration gates remain OPEN; original100/28 scope unchanged.",
+    "receipt_scope": "Index of two Stage4 and fifteen retained narrow original-root results, not an aggregate receipt",
     "additional_stage1_primary_roots": [
       "laguerre_tail_norm",
       "dilated_comb_fourier",
@@ -4158,6 +4163,10 @@
       "native_terminal_memory_lower",
       "weighted_mixture_exists_fourier",
       "near_gap_mass_bound"
+    ],
+    "additional_stage4_primary_roots": [
+      "dilation_near_gap_family",
+      "step123_word_jet_consumer"
     ]
   }
 }
