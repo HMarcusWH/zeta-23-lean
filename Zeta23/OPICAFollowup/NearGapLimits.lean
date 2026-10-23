@@ -1,9 +1,9 @@
 import Zeta23.OPICAFollowup.DilatedComb
 import Zeta23.OPICA.SignedHeatSeparator
 
-/-! Actual near-gap Jordan-measure budget and the explicit CT1 dilation family.
-The controlled weak-limit theorem and the normalized nonmeasure limit remain
-OPEN until their own roots and consumers pass. -/
+/-! Actual near-gap Jordan-measure budget, the explicit CT1 dilation family and
+the quantitative HT2 controlled limit. The CT1 normalized nonmeasure limit
+remains OPEN until its own root and consumers pass. -/
 noncomputable section
 open Set MeasureTheory Filter
 open scoped Topology FourierTransform SchwartzMap ENNReal NNReal
@@ -1443,5 +1443,732 @@ theorem dilation_near_gap_family
     nearGapCombFamily_jordan_even L,
     nearGapCombFamily_gap_edge_atom hL hu⟩
 
+
+/-! ## R1-HT2 controlled limit (quantitative, compactness-free) -/
+
+/-- Fourier transform of a real translate of a genuine Schwartz test: the
+translation becomes the exact phase exp(-2πi y ξ). -/
+theorem nearGap_fourier_translate (test : SchwartzMap ℝ ℂ) (y ξ : ℝ) :
+    (𝓕 (test.compSubConstCLM ℂ y)) ξ =
+      Complex.exp (((-2 * Real.pi * y * ξ) : ℝ) * Complex.I) * (𝓕 test) ξ := by
+  change 𝓕 (test.compSubConstCLM ℂ y : ℝ → ℂ) ξ = _
+  rw [SchwartzMap.fourier_coe, Real.fourier_real_eq_integral_exp_smul,
+    Real.fourier_real_eq_integral_exp_smul]
+  simp only [smul_eq_mul, SchwartzMap.compSubConstCLM_apply]
+  let F := fun x : ℝ => Complex.exp (((-2 * Real.pi * x * ξ) : ℝ) * Complex.I) *
+    test (x - y)
+  change (∫ x : ℝ, F x) = _
+  rw [← integral_add_right_eq_self F y, ← integral_const_mul]
+  apply integral_congr_ae
+  filter_upwards with x
+  dsimp only [F]
+  rw [add_sub_cancel_right, ← mul_assoc, ← Complex.exp_add]
+  congr 2
+  push_cast
+  ring
+
+/-- Translated sinc/triangle identity for every linearly growing
+Fourier-self-dual Jordan pair and every real shift y. It is the parent H1
+regularization argument applied to the translated regularized triangle. -/
+theorem translated_sinc_triangle_pairing (ν : LocallyFiniteSignedMeasure)
+    (hν : ν.HasLinearGrowth) (hself : ν.FourierSelfdual hν) (y : ℝ) :
+    (∫ x, Complex.exp (((-2 * Real.pi * y * x) : ℝ) * Complex.I) * (sincSquared x : ℂ)
+        ∂ν.positive) -
+      (∫ x, Complex.exp (((-2 * Real.pi * y * x) : ℝ) * Complex.I) * (sincSquared x : ℂ)
+        ∂ν.negative) =
+    (∫ x, (unitTriangle (x - y) : ℂ) ∂ν.positive) -
+      (∫ x, (unitTriangle (x - y) : ℂ) ∂ν.negative) := by
+  let e : ℝ → ℂ := fun x => Complex.exp (((-2 * Real.pi * y * x) : ℝ) * Complex.I)
+  have he (x : ℝ) : ‖e x‖ = 1 := by
+    simp only [e]
+    exact Complex.norm_exp_ofReal_mul_I _
+  let T : ℕ → SchwartzMap ℝ ℂ := fun n =>
+    (regularizedTriangle (separatorBump n)).compSubConstCLM ℂ y
+  have hleft (μ : Measure ℝ) [IsLocallyFiniteMeasure μ] (hμ : LinearMassGrowth μ) :
+      Tendsto (fun n => ∫ x, 𝓕 (T n : ℝ → ℂ) x ∂μ) atTop
+        (𝓝 (∫ x, e x * (sincSquared x : ℂ) ∂μ)) := by
+    have hrw (n : ℕ) (x : ℝ) : 𝓕 (T n : ℝ → ℂ) x =
+        e x * 𝓕 (regularizedTriangle (separatorBump n) : ℝ → ℂ) x := by
+      have h := nearGap_fourier_translate (regularizedTriangle (separatorBump n)) y x
+      simpa only [T, e, SchwartzMap.fourier_coe] using h
+    simp_rw [hrw]
+    apply tendsto_integral_of_dominated_convergence sincSquared
+    · intro n
+      have hc : Continuous e := by simp only [e]; fun_prop
+      exact (hc.mul (𝓕 (regularizedTriangle (separatorBump n))).continuous).aestronglyMeasurable
+    · exact sincSquared_integrable_of_linear_growth μ hμ
+    · intro n
+      refine Eventually.of_forall (fun x => ?_)
+      rw [norm_mul, he, one_mul]
+      exact regularizedTriangle_fourier_norm_le _ x
+    · refine Eventually.of_forall (fun x => ?_)
+      exact (regularizedTriangle_fourier_tendsto x).const_mul (e x)
+  have hright (μ : Measure ℝ) [IsLocallyFiniteMeasure μ] :
+      Tendsto (fun n => ∫ x, T n x ∂μ) atTop
+        (𝓝 (∫ x, (unitTriangle (x - y) : ℂ) ∂μ)) := by
+    apply tendsto_integral_of_dominated_convergence
+      (fun x => (Icc (-2 : ℝ) 2).indicator (fun _ => (1 : ℝ)) (x - y))
+    · intro n
+      exact (T n).continuous.aestronglyMeasurable
+    · have hK : IsCompact (Icc (y - 2) (y + 2)) := isCompact_Icc
+      have hind : (fun x => (Icc (-2 : ℝ) 2).indicator (fun _ => (1 : ℝ)) (x - y)) =
+          (Icc (y - 2) (y + 2)).indicator (fun _ => (1 : ℝ)) := by
+        funext x
+        by_cases hx : x ∈ Icc (y - 2) (y + 2)
+        · rw [indicator_of_mem hx, indicator_of_mem]
+          exact ⟨by linarith [hx.1], by linarith [hx.2]⟩
+        · rw [indicator_of_notMem hx, indicator_of_notMem]
+          intro h
+          exact hx ⟨by linarith [h.1], by linarith [h.2]⟩
+      rw [hind]
+      exact (integrableOn_const (μ := μ) (s := Icc (y - 2) (y + 2)) (C := (1 : ℝ))
+        hK.measure_lt_top.ne).integrable_indicator measurableSet_Icc
+    · intro n
+      refine Eventually.of_forall (fun x => ?_)
+      simpa only [T, SchwartzMap.compSubConstCLM_apply] using
+        regularizedTriangle_norm_le_indicator n (x - y)
+    · refine Eventually.of_forall (fun x => ?_)
+      simpa only [T, SchwartzMap.compSubConstCLM_apply] using
+        regularizedTriangle_tendsto (x - y)
+  have hL := (hleft ν.positive (ν.positive_hasLinearGrowth hν)).sub
+    (hleft ν.negative (ν.negative_hasLinearGrowth hν))
+  have hR := (hright ν.positive).sub (hright ν.negative)
+  have heq (n : ℕ) :
+      (∫ x, 𝓕 (T n : ℝ → ℂ) x ∂ν.positive) - (∫ x, 𝓕 (T n : ℝ → ℂ) x ∂ν.negative) =
+      (∫ x, T n x ∂ν.positive) - (∫ x, T n x ∂ν.negative) := by
+    exact congrArg (fun D : TemperedDistribution ℝ ℂ => D (T n)) hself
+  exact tendsto_nhds_unique hL (hR.congr' (Eventually.of_forall (fun n => (heq n).symm)))
+
+
+/-- Positive sinc mass of a near-gapped self-dual off-lattice-nonnegative
+Jordan pair is bounded by the gap deficit times the local variation. -/
+theorem nearGap_sinc_positive_le (nu : LocallyFiniteSignedMeasure)
+    (hnu : nu.HasLinearGrowth) (hself : nu.FourierSelfdual hnu)
+    {a : ℝ} (ha : 0 < a) (ha1 : a ≤ 1) (hgap : hasNearGap nu a)
+    (hoff : nu.OffLatticeNonnegative) :
+    (∫ x, sincSquared x ∂nu.positive) ≤ (1 - a) * nu.totalVariation.real (Icc (-1) 1) := by
+  have hpair := signed_sinc_triangle_pairing nu hnu hself
+  change (∫ x, sincSquared x ∂nu.positive) - (∫ x, sincSquared x ∂nu.negative) =
+    (∫ x, unitTriangle x ∂nu.positive) - (∫ x, unitTriangle x ∂nu.negative) at hpair
+  rw [nearGap_sinc_negative_zero nu hnu ha hgap hoff, sub_zero] at hpair
+  have htriangle := nearGap_triangle_bound nu.positive ha1 hgap.1
+  have htri_nonneg : 0 ≤ ∫ x, unitTriangle x ∂nu.negative :=
+    integral_nonneg unitTriangle_nonneg
+  have htv : nu.positive.real (Icc (-1) 1) ≤ nu.totalVariation.real (Icc (-1) 1) := by
+    apply ENNReal.toReal_mono isCompact_Icc.measure_lt_top.ne
+    change nu.positive _ ≤ (nu.positive + nu.negative) _
+    rw [Measure.add_apply]
+    exact le_add_of_nonneg_right (by positivity)
+  rw [hpair]
+  exact (sub_le_self _ htri_nonneg).trans (htriangle.trans
+    (mul_le_mul_of_nonneg_left htv (by linarith)))
+
+/-- Uniform translated-triangle bound: for every real shift y, the actual
+signed triangle mass around y is at most the gap deficit times the local
+variation. No compactness or limiting measure is used. -/
+theorem nearGap_translated_triangle_bound (nu : LocallyFiniteSignedMeasure)
+    (hnu : nu.HasLinearGrowth) (hself : nu.FourierSelfdual hnu)
+    {a : ℝ} (ha : 0 < a) (ha1 : a ≤ 1) (hgap : hasNearGap nu a)
+    (hoff : nu.OffLatticeNonnegative) (y : ℝ) :
+    |(∫ x, unitTriangle (x - y) ∂nu.positive) - (∫ x, unitTriangle (x - y) ∂nu.negative)| ≤
+      (1 - a) * nu.totalVariation.real (Icc (-1) 1) := by
+  let e : ℝ → ℂ := fun x => Complex.exp (((-2 * Real.pi * y * x) : ℝ) * Complex.I)
+  have he (x : ℝ) : ‖e x‖ = 1 := by
+    simp only [e]
+    exact Complex.norm_exp_ofReal_mul_I _
+  have hid := translated_sinc_triangle_pairing nu hnu hself y
+  have hneg0 : (∫ x, sincSquared x ∂nu.negative) = 0 :=
+    nearGap_sinc_negative_zero nu hnu ha hgap hoff
+  have hsi : Integrable sincSquared nu.negative :=
+    sincSquared_integrable_of_linear_growth nu.negative (nu.negative_hasLinearGrowth hnu)
+  have hae : sincSquared =ᵐ[nu.negative] 0 :=
+    (integral_eq_zero_iff_of_nonneg sincSquared_nonneg hsi).mp hneg0
+  have hnegE : (∫ x, e x * (sincSquared x : ℂ) ∂nu.negative) = 0 := by
+    apply integral_eq_zero_of_ae
+    filter_upwards [hae] with x hx
+    simp only [Pi.zero_apply] at hx
+    simp [hx]
+  have hpos_le : ‖∫ x, e x * (sincSquared x : ℂ) ∂nu.positive‖ ≤
+      ∫ x, sincSquared x ∂nu.positive := by
+    refine (norm_integral_le_integral_norm _).trans_eq ?_
+    apply integral_congr_ae
+    filter_upwards with x
+    rw [norm_mul, he, one_mul, Complex.norm_real, Real.norm_eq_abs,
+      abs_of_nonneg (sincSquared_nonneg x)]
+  have hcomplex : ((∫ x, unitTriangle (x - y) ∂nu.positive) -
+      (∫ x, unitTriangle (x - y) ∂nu.negative) : ℝ) =
+      (∫ x, e x * (sincSquared x : ℂ) ∂nu.positive) := by
+    push_cast
+    rw [← integral_complex_ofReal, ← integral_complex_ofReal]
+    rw [← hid, hnegE, sub_zero]
+  have habs : |(∫ x, unitTriangle (x - y) ∂nu.positive) -
+      (∫ x, unitTriangle (x - y) ∂nu.negative)| =
+      ‖∫ x, e x * (sincSquared x : ℂ) ∂nu.positive‖ := by
+    rw [← hcomplex, Complex.norm_real, Real.norm_eq_abs]
+  rw [habs]
+  exact hpos_le.trans (nearGap_sinc_positive_le nu hnu hself ha ha1 hgap hoff)
+
+/-! ## Integer tent interpolation -/
+
+theorem unitTriangle_sub_floor (x : ℝ) :
+    unitTriangle (x - (⌊x⌋ : ℝ)) = 1 - Int.fract x := by
+  rw [Int.self_sub_floor, unitTriangle, abs_of_nonneg (Int.fract_nonneg x)]
+  exact max_eq_left (by linarith [Int.fract_lt_one x])
+
+theorem unitTriangle_sub_floor_succ (x : ℝ) :
+    unitTriangle (x - ((⌊x⌋ + 1 : ℤ) : ℝ)) = Int.fract x := by
+  have h : x - ((⌊x⌋ + 1 : ℤ) : ℝ) = Int.fract x - 1 := by
+    rw [← Int.self_sub_floor]; push_cast; ring
+  have hneg : Int.fract x - 1 < 0 := by linarith [Int.fract_lt_one x]
+  rw [h, unitTriangle, abs_of_neg hneg, max_eq_left] <;> linarith [Int.fract_nonneg x]
+
+theorem unitTriangle_sub_int_eq_zero (x : ℝ) (j : ℤ)
+    (h1 : j ≠ ⌊x⌋) (h2 : j ≠ ⌊x⌋ + 1) : unitTriangle (x - j) = 0 := by
+  apply unitTriangle_eq_zero_of_one_le_abs
+  have hfl := Int.floor_le x
+  have hlt := Int.lt_floor_add_one x
+  rcases lt_or_gt_of_ne h1 with hj | hj
+  · have hj' : (j : ℝ) ≤ (⌊x⌋ : ℝ) - 1 := by
+      have : j ≤ ⌊x⌋ - 1 := by omega
+      exact_mod_cast this
+    rw [abs_of_nonneg (by linarith)]
+    linarith
+  · have hj2 : ⌊x⌋ + 2 ≤ j := by omega
+    have hj' : (⌊x⌋ : ℝ) + 2 ≤ (j : ℝ) := by exact_mod_cast hj2
+    rw [abs_of_neg (by linarith)]
+    linarith
+
+/-- Closed form of any finite tent sum: only the two lattice points ⌊x⌋ and
+⌊x⌋ + 1 can contribute, with the piecewise-linear weights. -/
+theorem tent_sum_eq (S : Finset ℤ) (c : ℤ → ℂ) (x : ℝ) :
+    ∑ j ∈ S, c j * (unitTriangle (x - j) : ℂ) =
+      (if ⌊x⌋ ∈ S then c ⌊x⌋ * ((1 - Int.fract x : ℝ) : ℂ) else 0) +
+      (if ⌊x⌋ + 1 ∈ S then c (⌊x⌋ + 1) * ((Int.fract x : ℝ) : ℂ) else 0) := by
+  classical
+  let k := ⌊x⌋
+  let T : Finset ℤ := {k, k + 1}
+  let F : ℤ → ℂ := fun j => c j * (unitTriangle (x - j) : ℂ)
+  have hsub : ∑ j ∈ S, F j = ∑ j ∈ T.filter (· ∈ S), F j := by
+    symm
+    apply Finset.sum_subset
+    · intro j hj
+      exact (Finset.mem_filter.mp hj).2
+    · intro j hjS hjT
+      have hnot : j ≠ k ∧ j ≠ k + 1 := by
+        constructor
+        · rintro rfl
+          exact hjT (Finset.mem_filter.mpr ⟨by simp [T], hjS⟩)
+        · rintro rfl
+          exact hjT (Finset.mem_filter.mpr ⟨by simp [T], hjS⟩)
+      simp only [F, unitTriangle_sub_int_eq_zero x j hnot.1 hnot.2, Complex.ofReal_zero, mul_zero]
+  rw [show (∑ j ∈ S, c j * (unitTriangle (x - j) : ℂ)) = ∑ j ∈ S, F j from rfl, hsub,
+    Finset.sum_filter, Finset.sum_pair (by omega : k ≠ k + 1)]
+  simp only [F, k, unitTriangle_sub_floor, unitTriangle_sub_floor_succ]
+
+/-- Finite tent interpolant of a test at the integers in [-(N+1), N+1]. -/
+def tentInterpolant (φ : ℝ → ℂ) (N : ℕ) (x : ℝ) : ℂ :=
+  ∑ j ∈ Finset.Icc (-(N : ℤ) - 1) ((N : ℤ) + 1), φ j * (unitTriangle (x - j) : ℂ)
+
+theorem tentInterpolant_continuous (φ : ℝ → ℂ) (N : ℕ) :
+    Continuous (tentInterpolant φ N) := by
+  unfold tentInterpolant
+  refine continuous_finsetSum _ (fun j _ => ?_)
+  exact continuous_const.mul (Complex.continuous_ofReal.comp
+    (unitTriangle_continuous.comp (continuous_id.sub continuous_const)))
+
+theorem unitTriangle_shift_integrable (μ : Measure ℝ) [IsLocallyFiniteMeasure μ] (y : ℝ) :
+    Integrable (fun x => (unitTriangle (x - y) : ℂ)) μ := by
+  have hK : IsCompact (Icc (y - 1) (y + 1)) := isCompact_Icc
+  refine Integrable.mono' ((integrableOn_const (μ := μ) (s := Icc (y - 1) (y + 1))
+      (C := (1 : ℝ)) hK.measure_lt_top.ne).integrable_indicator measurableSet_Icc)
+    (Complex.continuous_ofReal.comp
+      (unitTriangle_continuous.comp (continuous_id.sub continuous_const))).aestronglyMeasurable ?_
+  refine Eventually.of_forall (fun x => ?_)
+  rw [Complex.norm_real, Real.norm_eq_abs, abs_of_nonneg (unitTriangle_nonneg _)]
+  by_cases hx : x ∈ Icc (y - 1) (y + 1)
+  · rw [indicator_of_mem hx]
+    exact max_le (by linarith [abs_nonneg (x - y)]) (by norm_num)
+  · rw [indicator_of_notMem hx, unitTriangle_eq_zero_of_one_le_abs]
+    by_contra h
+    have h' := abs_lt.mp (lt_of_not_ge h)
+    exact hx ⟨by linarith [h'.1], by linarith [h'.2]⟩
+
+theorem tentInterpolant_integrable (φ : ℝ → ℂ) (N : ℕ) (μ : Measure ℝ)
+    [IsLocallyFiniteMeasure μ] : Integrable (tentInterpolant φ N) μ := by
+  unfold tentInterpolant
+  exact integrable_finsetSum _ (fun j _ => (unitTriangle_shift_integrable μ j).const_mul _)
+
+theorem tentInterpolant_integral (φ : ℝ → ℂ) (N : ℕ) (μ : Measure ℝ)
+    [IsLocallyFiniteMeasure μ] :
+    (∫ x, tentInterpolant φ N x ∂μ) =
+      ∑ j ∈ Finset.Icc (-(N : ℤ) - 1) ((N : ℤ) + 1),
+        φ j * (((∫ x, unitTriangle (x - j) ∂μ) : ℝ) : ℂ) := by
+  unfold tentInterpolant
+  rw [integral_finsetSum (Finset.Icc (-(N : ℤ) - 1) ((N : ℤ) + 1))
+    (f := fun (j : ℤ) (x : ℝ) => φ j * (unitTriangle (x - j) : ℂ))
+    (fun j _ => (unitTriangle_shift_integrable μ j).const_mul _)]
+  refine Finset.sum_congr rfl (fun j _ => ?_)
+  rw [integral_const_mul, integral_complex_ofReal]
+
+/-- On [-N, N] the interpolant is the genuine piecewise-linear interpolant. -/
+theorem tentInterpolant_interior (φ : ℝ → ℂ) (N : ℕ) {x : ℝ} (hx : |x| ≤ N) :
+    tentInterpolant φ N x =
+      φ ⌊x⌋ * ((1 - Int.fract x : ℝ) : ℂ) + φ (⌊x⌋ + 1 : ℤ) * ((Int.fract x : ℝ) : ℂ) := by
+  have hb := abs_le.mp hx
+  have hlo : -(N : ℤ) ≤ ⌊x⌋ := Int.le_floor.mpr (by push_cast; linarith)
+  have hhi : ⌊x⌋ ≤ (N : ℤ) := by
+    have h2 : (⌊x⌋ : ℝ) ≤ N := (Int.floor_le x).trans hb.2
+    exact_mod_cast h2
+  unfold tentInterpolant
+  rw [tent_sum_eq, if_pos (Finset.mem_Icc.mpr ⟨by omega, by omega⟩),
+    if_pos (Finset.mem_Icc.mpr ⟨by omega, by omega⟩)]
+
+/-- Pointwise size of the interpolant by its two active nodes. -/
+theorem tentInterpolant_norm_le (φ : ℝ → ℂ) (N : ℕ) (x : ℝ) :
+    ‖tentInterpolant φ N x‖ ≤
+      ‖φ ⌊x⌋‖ * (1 - Int.fract x) + ‖φ (⌊x⌋ + 1 : ℤ)‖ * Int.fract x := by
+  have ht0 := Int.fract_nonneg x
+  have ht1 := Int.fract_lt_one x
+  unfold tentInterpolant
+  rw [tent_sum_eq]
+  refine (norm_add_le _ _).trans (add_le_add ?_ ?_)
+  · split_ifs
+    · rw [norm_mul, Complex.norm_real, Real.norm_eq_abs, abs_of_nonneg (by linarith)]
+    · simp only [norm_zero]; exact mul_nonneg (norm_nonneg _) (by linarith)
+  · split_ifs
+    · rw [norm_mul, Complex.norm_real, Real.norm_eq_abs, abs_of_nonneg ht0]
+    · simp only [norm_zero]; exact mul_nonneg (norm_nonneg _) ht0
+
+/-- The fractional weight product is dominated by the distance to every integer. -/
+theorem fract_mul_one_sub_le_abs_sub_int (x : ℝ) (n : ℤ) :
+    Int.fract x * (1 - Int.fract x) ≤ |x - n| := by
+  have ht0 := Int.fract_nonneg x
+  have ht1 := Int.fract_lt_one x
+  have hx : x = ⌊x⌋ + Int.fract x := (Int.floor_add_fract x).symm
+  rcases le_or_gt n ⌊x⌋ with hn | hn
+  · have hn' : (n : ℝ) ≤ ⌊x⌋ := by exact_mod_cast hn
+    have : Int.fract x ≤ |x - n| := by rw [abs_of_nonneg (by linarith)]; linarith
+    nlinarith
+  · have hn2 : ⌊x⌋ + 1 ≤ n := by omega
+    have hn' : (⌊x⌋ : ℝ) + 1 ≤ n := by exact_mod_cast hn2
+    have : 1 - Int.fract x ≤ |x - n| := by rw [abs_of_neg (by linarith)]; linarith
+    nlinarith
+
+/-! ## Schwartz Lipschitz and decay constants -/
+
+/-- The derivative sup-norm constant of a genuine Schwartz test. -/
+def schwartzLipConst (φ : SchwartzMap ℝ ℂ) : ℝ :=
+  SchwartzMap.seminorm ℝ 0 0 (SchwartzMap.derivCLM ℝ ℂ φ)
+
+theorem schwartz_lipschitz (φ : SchwartzMap ℝ ℂ) (x y : ℝ) :
+    ‖φ x - φ y‖ ≤ schwartzLipConst φ * |x - y| := by
+  have h := Convex.norm_image_sub_le_of_norm_deriv_le (𝕜 := ℝ) (f := (φ : ℝ → ℂ)) (s := univ)
+    (fun z _ => φ.differentiableAt) (fun z _ => by
+      have := SchwartzMap.norm_le_seminorm ℝ (SchwartzMap.derivCLM ℝ ℂ φ) z
+      simpa [schwartzLipConst] using this) convex_univ (mem_univ y) (mem_univ x)
+  simpa [Real.norm_eq_abs, schwartzLipConst] using h
+
+/-- Interior interpolation error: at most twice the Lipschitz constant times the
+fractional weight product, which vanishes on the lattice. -/
+theorem tentInterpolant_interior_error (φ : SchwartzMap ℝ ℂ) (N : ℕ) {x : ℝ} (hx : |x| ≤ N) :
+    ‖φ x - tentInterpolant φ N x‖ ≤
+      2 * schwartzLipConst φ * (Int.fract x * (1 - Int.fract x)) := by
+  have ht0 := Int.fract_nonneg x
+  have ht1 := Int.fract_lt_one x
+  have hxk : x - ⌊x⌋ = Int.fract x := Int.self_sub_floor x
+  rw [tentInterpolant_interior φ N hx]
+  have hsplit : φ x - (φ ⌊x⌋ * ((1 - Int.fract x : ℝ) : ℂ) +
+      φ (⌊x⌋ + 1 : ℤ) * ((Int.fract x : ℝ) : ℂ)) =
+      (φ x - φ ⌊x⌋) * ((1 - Int.fract x : ℝ) : ℂ) +
+        (φ x - φ (⌊x⌋ + 1 : ℤ)) * ((Int.fract x : ℝ) : ℂ) := by
+    push_cast; ring
+  rw [hsplit]
+  have h1 := schwartz_lipschitz φ x ⌊x⌋
+  have h2 := schwartz_lipschitz φ x (⌊x⌋ + 1 : ℤ)
+  have hd1 : |x - (⌊x⌋ : ℝ)| = Int.fract x := by rw [hxk, abs_of_nonneg ht0]
+  have hd2 : |x - ((⌊x⌋ + 1 : ℤ) : ℝ)| = 1 - Int.fract x := by
+    push_cast
+    rw [show x - ((⌊x⌋ : ℝ) + 1) = Int.fract x - 1 by rw [← hxk]; ring,
+      abs_of_neg (by linarith)]
+    ring
+  rw [hd1] at h1
+  rw [hd2] at h2
+  have hM : 0 ≤ schwartzLipConst φ := by
+    unfold schwartzLipConst; exact apply_nonneg _ _
+  calc _ ≤ ‖(φ x - φ ⌊x⌋) * ((1 - Int.fract x : ℝ) : ℂ)‖ +
+        ‖(φ x - φ (⌊x⌋ + 1 : ℤ)) * ((Int.fract x : ℝ) : ℂ)‖ := norm_add_le _ _
+    _ = ‖φ x - φ ⌊x⌋‖ * (1 - Int.fract x) + ‖φ x - φ (⌊x⌋ + 1 : ℤ)‖ * Int.fract x := by
+        rw [norm_mul, norm_mul, Complex.norm_real, Complex.norm_real, Real.norm_eq_abs,
+          Real.norm_eq_abs, abs_of_nonneg (by linarith), abs_of_nonneg ht0]
+    _ ≤ (schwartzLipConst φ * Int.fract x) * (1 - Int.fract x) +
+        (schwartzLipConst φ * (1 - Int.fract x)) * Int.fract x := by
+        gcongr
+    _ = _ := by ring
+
+/-- Cubic decay of the interpolation remainder, uniformly on the whole line. -/
+theorem tentInterpolant_remainder_decay (φ : SchwartzMap ℝ ℂ) (N : ℕ) (x : ℝ) :
+    |x| ^ 3 * ‖φ x - tentInterpolant φ N x‖ ≤
+      9 * SchwartzMap.seminorm ℝ 3 0 φ + 8 * SchwartzMap.seminorm ℝ 0 0 φ := by
+  set B := SchwartzMap.seminorm ℝ 3 0 φ
+  set K := SchwartzMap.seminorm ℝ 0 0 φ
+  have hB (z : ℝ) : |z| ^ 3 * ‖φ z‖ ≤ B := by
+    simpa using SchwartzMap.le_seminorm' ℝ 3 0 φ z
+  have hK (z : ℝ) : ‖φ z‖ ≤ K := SchwartzMap.norm_le_seminorm ℝ φ z
+  have hK0 : 0 ≤ K := (norm_nonneg _).trans (hK 0)
+  have hB0 : 0 ≤ B := (mul_nonneg (by positivity) (norm_nonneg _)).trans (hB 0)
+  have ht0 := Int.fract_nonneg x
+  have ht1 := Int.fract_lt_one x
+  have hg := tentInterpolant_norm_le (φ : ℝ → ℂ) N x
+  have hx3 : 0 ≤ |x| ^ 3 := by positivity
+  have hmain : |x| ^ 3 * ‖tentInterpolant φ N x‖ ≤ 8 * B + 8 * K := by
+    by_cases hsmall : |x| ≤ 2
+    · have hgK : ‖tentInterpolant φ N x‖ ≤ K := by
+        refine hg.trans ?_
+        nlinarith [hK ⌊x⌋, hK (⌊x⌋ + 1 : ℤ)]
+      have : |x| ^ 3 ≤ 8 := by
+        have := pow_le_pow_left₀ (abs_nonneg x) hsmall 3
+        norm_num at this ⊢; linarith
+      nlinarith [norm_nonneg (tentInterpolant φ N x)]
+    · replace hsmall : 2 < |x| := lt_of_not_ge hsmall
+      have hnode (j : ℤ) (hj : |x - j| ≤ 1) : |x| ^ 3 * ‖φ j‖ ≤ 8 * B := by
+        have hjx : |x| / 2 ≤ |(j : ℝ)| := by
+          have := abs_sub_abs_le_abs_sub x j
+          linarith
+        have hjpow : (|x| / 2) ^ 3 ≤ |(j : ℝ)| ^ 3 :=
+          pow_le_pow_left₀ (by positivity) hjx 3
+        have := hB j
+        nlinarith [norm_nonneg (φ j)]
+      have hk : |x - (⌊x⌋ : ℝ)| ≤ 1 := by
+        rw [Int.self_sub_floor, abs_of_nonneg ht0]; linarith
+      have hk1 : |x - ((⌊x⌋ + 1 : ℤ) : ℝ)| ≤ 1 := by
+        push_cast
+        rw [show x - ((⌊x⌋ : ℝ) + 1) = Int.fract x - 1 by rw [← Int.self_sub_floor]; ring,
+          abs_of_neg (by linarith)]
+        linarith
+      have h1 := hnode ⌊x⌋ hk
+      have h2 := hnode (⌊x⌋ + 1 : ℤ) hk1
+      calc |x| ^ 3 * ‖tentInterpolant φ N x‖ ≤
+          |x| ^ 3 * (‖φ ⌊x⌋‖ * (1 - Int.fract x) + ‖φ (⌊x⌋ + 1 : ℤ)‖ * Int.fract x) :=
+            mul_le_mul_of_nonneg_left hg hx3
+        _ = (|x| ^ 3 * ‖φ ⌊x⌋‖) * (1 - Int.fract x) +
+            (|x| ^ 3 * ‖φ (⌊x⌋ + 1 : ℤ)‖) * Int.fract x := by ring
+        _ ≤ (8 * B) * (1 - Int.fract x) + (8 * B) * Int.fract x := by
+            gcongr
+        _ = 8 * B := by ring
+        _ ≤ 8 * B + 8 * K := by linarith
+  calc |x| ^ 3 * ‖φ x - tentInterpolant φ N x‖ ≤
+      |x| ^ 3 * ‖φ x‖ + |x| ^ 3 * ‖tentInterpolant φ N x‖ := by
+        rw [← mul_add]; exact mul_le_mul_of_nonneg_left (norm_sub_le _ _) hx3
+    _ ≤ B + (8 * B + 8 * K) := add_le_add (hB x) hmain
+    _ = _ := by ring
+
+
+/-! ## Quantitative Schwartz pairing bound and the controlled limit -/
+
+/-- Explicit single-measure estimate behind HT2. For a near-gapped Fourier
+self-dual off-lattice-nonnegative Jordan pair with common linear variation C,
+every Schwartz pairing is controlled by the gap deficit, an interpolation
+cost 2·Lip(φ)·d and a uniform cubic tail. Constants depend only on φ, C, N, d. -/
+theorem nearGap_schwartz_pairing_bound (nu : LocallyFiniteSignedMeasure)
+    (hnu : nu.HasLinearGrowth) (hself : nu.FourierSelfdual hnu)
+    {a C : ℝ} (ha : 0 < a) (ha1 : a ≤ 1) (hgap : hasNearGap nu a)
+    (hoff : nu.OffLatticeNonnegative) (hC : CommonLinearMassBound C nu.totalVariation)
+    (φ : SchwartzMap ℝ ℂ) {N : ℕ} (hN : 1 ≤ N) {d : ℝ} (hd : 0 < d) (hd2 : d ≤ 1 / 2) :
+    ‖nu.distributionOfLinearGrowth hnu φ‖ ≤
+      (1 - a) * (2 * C * ((2 * N + 3) * SchwartzMap.seminorm ℝ 0 0 φ)) +
+      2 * schwartzLipConst φ * d * (C * (1 + N)) +
+      2 * SchwartzMap.seminorm ℝ 0 0 φ *
+        ((Real.pi ^ 2 * (N : ℝ) ^ 2 / (4 * d ^ 2)) * (1 - a) * (2 * C)) +
+      4 * C * (9 * SchwartzMap.seminorm ℝ 3 0 φ + 8 * SchwartzMap.seminorm ℝ 0 0 φ) /
+        (N : ℝ) ^ 2 := by
+  set K := SchwartzMap.seminorm ℝ 0 0 φ with hKdef
+  set B := SchwartzMap.seminorm ℝ 3 0 φ with hBdef
+  set M := schwartzLipConst φ with hMdef
+  set V := nu.totalVariation.real (Icc (-1) 1) with hVdef
+  have hK (z : ℝ) : ‖φ z‖ ≤ K := SchwartzMap.norm_le_seminorm ℝ φ z
+  have hK0 : 0 ≤ K := (norm_nonneg _).trans (hK 0)
+  have hM0 : 0 ≤ M := by rw [hMdef]; unfold schwartzLipConst; exact apply_nonneg _ _
+  have hC0 : 0 ≤ C := hC.1
+  have hV : V ≤ 2 * C := by
+    have h1 := hC.2 1 (by norm_num)
+    rw [hVdef]; linarith
+  have hV0 : 0 ≤ V := measureReal_nonneg
+  have h1a : 0 ≤ 1 - a := by linarith
+  have hNr : (1 : ℝ) ≤ N := by exact_mod_cast hN
+  -- integrability
+  have hφp : Integrable φ nu.positive := by
+    let := (nu.parts_temperate_of_linear_growth hnu).1; exact φ.integrable
+  have hφn : Integrable φ nu.negative := by
+    let := (nu.parts_temperate_of_linear_growth hnu).2; exact φ.integrable
+  set g := tentInterpolant (φ : ℝ → ℂ) N with hgdef
+  have hgp : Integrable g nu.positive := tentInterpolant_integrable _ N _
+  have hgn : Integrable g nu.negative := tentInterpolant_integrable _ N _
+  set h : ℝ → ℂ := fun x => φ x - g x with hhdef
+  have hhp : Integrable h nu.positive := hφp.sub hgp
+  have hhn : Integrable h nu.negative := hφn.sub hgn
+  have hsplit (μ : Measure ℝ) (hg' : Integrable g μ) (hh' : Integrable h μ) :
+      (∫ x, φ x ∂μ) = (∫ x, g x ∂μ) + ∫ x, h x ∂μ := by
+    rw [← integral_add hg' hh']
+    congr 1
+    funext x
+    simp only [hhdef]
+    ring
+  rw [LocallyFiniteSignedMeasure.distributionOfLinearGrowth_apply,
+    hsplit _ hgp hhp, hsplit _ hgn hhn]
+  -- interpolant part
+  have htri (j : ℤ) := nearGap_translated_triangle_bound nu hnu hself ha ha1 hgap hoff (j : ℝ)
+  have hgpart : ‖(∫ x, g x ∂nu.positive) - ∫ x, g x ∂nu.negative‖ ≤
+      (1 - a) * (2 * C * ((2 * N + 3) * K)) := by
+    rw [hgdef, tentInterpolant_integral, tentInterpolant_integral, ← Finset.sum_sub_distrib]
+    refine (norm_sum_le _ _).trans ?_
+    have hterm : ∀ j ∈ Finset.Icc (-(N : ℤ) - 1) ((N : ℤ) + 1),
+        ‖φ j * (((∫ x, unitTriangle (x - j) ∂nu.positive) : ℝ) : ℂ) -
+          φ j * (((∫ x, unitTriangle (x - j) ∂nu.negative) : ℝ) : ℂ)‖ ≤ K * ((1 - a) * (2 * C)) := by
+      intro j _
+      rw [← mul_sub, ← Complex.ofReal_sub, norm_mul, Complex.norm_real, Real.norm_eq_abs]
+      exact mul_le_mul (hK j) ((htri j).trans (mul_le_mul_of_nonneg_left hV h1a))
+        (abs_nonneg _) hK0
+    refine (Finset.sum_le_sum hterm).trans ?_
+    rw [Finset.sum_const, Int.card_Icc, nsmul_eq_mul]
+    have hcard : ((((N : ℤ) + 1 + 1 - (-(N : ℤ) - 1)).toNat : ℕ) : ℝ) = 2 * N + 3 := by
+      have : ((N : ℤ) + 1 + 1 - (-(N : ℤ) - 1)) = ((2 * N + 3 : ℕ) : ℤ) := by push_cast; ring
+      rw [this, Int.toNat_natCast]; push_cast; ring
+    rw [hcard]
+    nlinarith [mul_nonneg h1a hC0]
+  -- split h into interior A = {|x| < N} and tail
+  set A : Set ℝ := {x | |x| < N} with hAdef
+  have hA : MeasurableSet A := measurableSet_lt continuous_abs.measurable measurable_const
+  have hAc : Aᶜ = {x : ℝ | (N : ℝ) ≤ |x|} := by
+    ext x; simp [hAdef, not_lt]
+  have hAsub : A ⊆ Icc (-(N : ℝ)) N := by
+    intro x hx
+    have hx' : |x| < (N : ℝ) := hx
+    have := abs_lt.mp hx'
+    exact ⟨this.1.le, this.2.le⟩
+  rw [← integral_add_compl hA hhp, ← integral_add_compl hA hhn]
+  -- negative interior vanishes: negative mass sits on integers where h = 0
+  have hneg_int : (∫ x in A, h x ∂nu.negative) = 0 := by
+    apply integral_eq_zero_of_ae
+    rw [EventuallyEq, ae_restrict_iff' hA]
+    have hlat : ∀ᵐ x ∂nu.negative, x ∈ integerLattice := ae_iff.mpr (show nu.negative integerLatticeᶜ = 0 from hoff)
+    filter_upwards [hlat] with x hx hxA
+    obtain ⟨n, rfl⟩ := hx
+    have herr := tentInterpolant_interior_error φ N (le_of_lt (show |((n : ℤ) : ℝ)| < (N : ℝ) from hxA))
+    have hfr : Int.fract ((n : ℤ) : ℝ) = 0 := Int.fract_intCast n
+    rw [hfr] at herr
+    simp only [zero_mul, mul_zero, sub_zero] at herr
+    simpa [hhdef] using norm_le_zero_iff.mp herr
+  -- positive interior bound
+  set E := signedBudgetRegion (N : ℝ) d with hEdef
+  have hE : MeasurableSet E := signedBudgetRegion_measurable _ _
+  have hmass := (near_gap_mass_bound nu hnu hself ha ha1 hgap hoff hNr hd hd2).2
+  have hAfin : nu.positive A ≠ ∞ :=
+    (measure_mono hAsub).trans_lt isCompact_Icc.measure_lt_top |>.ne
+  have hpoint : ∀ x ∈ A, ‖h x‖ ≤ 2 * M * d + E.indicator (fun _ => 2 * K) x := by
+    intro x hxA
+    have hxN : |x| ≤ N := le_of_lt (show |x| < (N : ℝ) from hxA)
+    by_cases hxE : x ∈ E
+    · rw [indicator_of_mem hxE]
+      have hg := tentInterpolant_norm_le (φ : ℝ → ℂ) N x
+      have ht0 := Int.fract_nonneg x
+      have ht1 := Int.fract_lt_one x
+      have hgK : ‖g x‖ ≤ K := by
+        refine hg.trans ?_
+        nlinarith [hK ⌊x⌋, hK (⌊x⌋ + 1 : ℤ)]
+      have : ‖h x‖ ≤ 2 * K := by
+        simp only [hhdef]
+        exact (norm_sub_le _ _).trans (by linarith [hK x])
+      nlinarith [mul_nonneg hM0 hd.le]
+    · rw [indicator_of_notMem hxE, add_zero]
+      have hlt : Metric.infDist x integerLattice < d := by
+        by_contra hge
+        exact hxE ⟨hxN, le_of_not_gt hge⟩
+      obtain ⟨y, ⟨n, rfl⟩, hdist⟩ :=
+        (Metric.infDist_lt_iff (show integerLattice.Nonempty from ⟨(0 : ℝ), ⟨0, by simp⟩⟩)).mp hlt
+      rw [Real.dist_eq] at hdist
+      have hw := fract_mul_one_sub_le_abs_sub_int x n
+      have herr := tentInterpolant_interior_error φ N hxN
+      simp only [hhdef]
+      calc ‖φ x - g x‖ ≤ 2 * M * (Int.fract x * (1 - Int.fract x)) := herr
+        _ ≤ 2 * M * d := by
+            apply mul_le_mul_of_nonneg_left _ (by linarith)
+            linarith
+  have hpos_int : ‖∫ x in A, h x ∂nu.positive‖ ≤
+      2 * M * d * (C * (1 + N)) +
+        2 * K * ((Real.pi ^ 2 * (N : ℝ) ^ 2 / (4 * d ^ 2)) * (1 - a) * (2 * C)) := by
+    refine (norm_integral_le_integral_norm _).trans ?_
+    have hint1 : IntegrableOn (fun x => ‖h x‖) A nu.positive := hhp.norm.integrableOn
+    have hint2 : IntegrableOn (fun x => 2 * M * d + E.indicator (fun _ => 2 * K) x)
+        A nu.positive := by
+      refine (integrableOn_const (C := 2 * M * d) hAfin).add ?_
+      exact ((integrableOn_const (C := 2 * K) hAfin).indicator hE)
+    refine (setIntegral_mono_on hint1 hint2 hA hpoint).trans ?_
+    rw [integral_add (integrableOn_const (C := 2 * M * d) hAfin)
+        ((integrableOn_const (C := 2 * K) hAfin).indicator hE),
+      setIntegral_const, setIntegral_indicator hE, setIntegral_const, smul_eq_mul, smul_eq_mul]
+    have hAreal : nu.positive.real A ≤ C * (1 + N) := by
+      have h1 : nu.positive.real A ≤ nu.positive.real (Icc (-(N : ℝ)) N) :=
+        measureReal_mono hAsub isCompact_Icc.measure_lt_top.ne
+      have h2 : nu.positive.real (Icc (-(N : ℝ)) N) ≤
+          nu.totalVariation.real (Icc (-(N : ℝ)) N) := by
+        apply ENNReal.toReal_mono isCompact_Icc.measure_lt_top.ne
+        change nu.positive _ ≤ (nu.positive + nu.negative) _
+        rw [Measure.add_apply]
+        exact le_add_of_nonneg_right (by positivity)
+      exact h1.trans (h2.trans (hC.2 N (by positivity)))
+    have hAEreal : nu.positive.real (A ∩ E) ≤
+        (Real.pi ^ 2 * (N : ℝ) ^ 2 / (4 * d ^ 2)) * (1 - a) * (2 * C) := by
+      have h1 : nu.positive.real (A ∩ E) ≤ nu.positive.real E :=
+        measureReal_mono inter_subset_right (signedBudgetRegion_finite nu.positive _ _).ne
+      refine h1.trans (hmass.trans ?_)
+      have hcoef : 0 ≤ Real.pi ^ 2 * (N : ℝ) ^ 2 / (4 * d ^ 2) * (1 - a) := by positivity
+      exact mul_le_mul_of_nonneg_left hV hcoef
+    have hMd : 0 ≤ 2 * M * d := by positivity
+    nlinarith [measureReal_nonneg (μ := nu.positive) (s := A),
+      measureReal_nonneg (μ := nu.positive) (s := A ∩ E)]
+  -- tail
+  have htail : ‖(∫ x in Aᶜ, h x ∂nu.positive) - ∫ x in Aᶜ, h x ∂nu.negative‖ ≤
+      4 * C * (9 * B + 8 * K) / (N : ℝ) ^ 2 := by
+    have hhc : Continuous h := φ.continuous.sub (tentInterpolant_continuous _ N)
+    have hdec := tentInterpolant_remainder_decay φ N
+    have ht := common_linear_cubic_tail nu.totalVariation C (9 * B + 8 * K) N hC
+      (by positivity) hNr h hhc hdec
+    rw [← hAc] at ht
+    refine (norm_sub_le _ _).trans ?_
+    refine (add_le_add (norm_integral_le_integral_norm _) (norm_integral_le_integral_norm _)).trans ?_
+    have hsum : (∫ x in Aᶜ, ‖h x‖ ∂nu.positive) + (∫ x in Aᶜ, ‖h x‖ ∂nu.negative) =
+        ∫ x in Aᶜ, ‖h x‖ ∂nu.totalVariation := by
+      rw [LocallyFiniteSignedMeasure.totalVariation, Measure.restrict_add,
+        integral_add_measure hhp.norm.integrableOn hhn.norm.integrableOn]
+    rw [hsum]
+    simpa only [show (4 : ℝ) * C * (9 * B + 8 * K) / (N : ℝ) ^ 2 =
+      4 * C * (9 * B + 8 * K) / (N : ℝ) ^ 2 from rfl] using ht.2
+  -- assemble
+  rw [hneg_int, zero_add]
+  calc ‖(∫ x, g x ∂nu.positive) + ((∫ x in A, h x ∂nu.positive) + ∫ x in Aᶜ, h x ∂nu.positive) -
+        ((∫ x, g x ∂nu.negative) + ∫ x in Aᶜ, h x ∂nu.negative)‖ =
+      ‖((∫ x, g x ∂nu.positive) - ∫ x, g x ∂nu.negative) + (∫ x in A, h x ∂nu.positive) +
+        ((∫ x in Aᶜ, h x ∂nu.positive) - ∫ x in Aᶜ, h x ∂nu.negative)‖ := by
+          congr 1; ring
+    _ ≤ ‖(∫ x, g x ∂nu.positive) - ∫ x, g x ∂nu.negative‖ + ‖∫ x in A, h x ∂nu.positive‖ +
+        ‖(∫ x in Aᶜ, h x ∂nu.positive) - ∫ x in Aᶜ, h x ∂nu.negative‖ :=
+          norm_add₃_le
+    _ ≤ _ := by linarith [hgpart, hpos_int, htail]
+
+
+/-- Original R1-HT2 controlled limit. Real locally finite Jordan pairs with one
+common linear total-variation constant, Fourier self-duality, off-lattice
+nonnegativity and gaps a_n → 1 converge to zero on every Schwartz test.
+No total-variation convergence, limiting measure or evenness premise is used:
+the proof is a quantitative estimate (`nearGap_schwartz_pairing_bound`) built
+from translated sinc/triangle identities, integer tent interpolation and the
+uniform cubic Schwartz tail of the common growth budget. -/
+theorem near_gap_controlled_limit_zero
+    (nu : ℕ → LocallyFiniteSignedMeasure) (C : ℝ)
+    (hC : ∀ n, CommonLinearMassBound C (nu n).totalVariation)
+    (hself : ∀ n, (nu n).FourierSelfdual (hC n).linearGrowth)
+    (a : ℕ → ℝ) (ha : ∀ n, 0 < a n) (ha1 : ∀ n, a n ≤ 1)
+    (hgap : ∀ n, hasNearGap (nu n) (a n))
+    (hoff : ∀ n, (nu n).OffLatticeNonnegative)
+    (hlim : Tendsto a atTop (𝓝 1)) (φ : SchwartzMap ℝ ℂ) :
+    Tendsto (fun n => (nu n).distributionOfLinearGrowth (hC n).linearGrowth φ)
+      atTop (𝓝 0) := by
+  set K := SchwartzMap.seminorm ℝ 0 0 φ with hKdef
+  set B := SchwartzMap.seminorm ℝ 3 0 φ with hBdef
+  set M := schwartzLipConst φ with hMdef
+  have hK0 : 0 ≤ K := (norm_nonneg _).trans (SchwartzMap.norm_le_seminorm ℝ φ 0)
+  have hB0 : 0 ≤ B := by
+    have := SchwartzMap.le_seminorm' ℝ 3 0 φ 0
+    exact (mul_nonneg (by positivity) (norm_nonneg _)).trans this
+  have hM0 : 0 ≤ M := by rw [hMdef]; unfold schwartzLipConst; exact apply_nonneg _ _
+  have hC0 : 0 ≤ C := (hC 0).1
+  rw [Metric.tendsto_atTop]
+  intro ε hε
+  -- tail scale
+  obtain ⟨N0, hN0⟩ := exists_nat_gt (12 * C * (9 * B + 8 * K) / ε + 1)
+  set N : ℕ := N0 with hNdef
+  have hNr : (1 : ℝ) < N := by
+    have : 0 ≤ 12 * C * (9 * B + 8 * K) / ε := by positivity
+    linarith
+  have hN : 1 ≤ N := by exact_mod_cast hNr.le
+  have htail : 4 * C * (9 * B + 8 * K) / (N : ℝ) ^ 2 < ε / 3 := by
+    have hNpos : (0 : ℝ) < N := by linarith
+    have hsq : (N : ℝ) ≤ (N : ℝ) ^ 2 := by nlinarith
+    have hT : 0 ≤ 4 * C * (9 * B + 8 * K) := by positivity
+    calc 4 * C * (9 * B + 8 * K) / (N : ℝ) ^ 2 ≤ 4 * C * (9 * B + 8 * K) / (N : ℝ) :=
+          div_le_div_of_nonneg_left hT hNpos hsq
+      _ < ε / 3 := by
+          rw [div_lt_iff₀ hNpos]
+          have h12 : 12 * C * (9 * B + 8 * K) / ε < N := by linarith
+          rw [div_lt_iff₀ hε] at h12
+          nlinarith
+  -- interpolation scale
+  set Lc : ℝ := M * (C * (1 + N)) with hLc
+  have hLc0 : 0 ≤ Lc := by positivity
+  set d : ℝ := min (1 / 2) (ε / (6 * (Lc + 1))) with hddef
+  have hd : 0 < d := lt_min (by norm_num) (by positivity)
+  have hd2 : d ≤ 1 / 2 := min_le_left _ _
+  have hd3 : d ≤ ε / (6 * (Lc + 1)) := min_le_right _ _
+  have hinterp : 2 * M * d * (C * (1 + N)) < ε / 3 := by
+    have : 2 * M * d * (C * (1 + N)) = 2 * Lc * d := by rw [hLc]; ring
+    rw [this]
+    have h1 : 2 * Lc * d ≤ 2 * Lc * (ε / (6 * (Lc + 1))) :=
+      mul_le_mul_of_nonneg_left hd3 (by positivity)
+    have h2 : 2 * Lc * (ε / (6 * (Lc + 1))) < ε / 3 := by
+      rw [show 2 * Lc * (ε / (6 * (Lc + 1))) = (ε / 3) * (Lc / (Lc + 1)) by
+        field_simp; ring]
+      have : Lc / (Lc + 1) < 1 := (div_lt_one (by positivity)).mpr (by linarith)
+      nlinarith
+    linarith
+  -- gap-deficit coefficient
+  set Q : ℝ := 2 * C * ((2 * N + 3) * K) +
+    2 * K * ((Real.pi ^ 2 * (N : ℝ) ^ 2 / (4 * d ^ 2)) * (2 * C)) with hQ
+  have hQ0 : 0 ≤ Q := by positivity
+  obtain ⟨N1, hN1⟩ := Metric.tendsto_atTop.mp hlim (ε / (3 * (Q + 1))) (by positivity)
+  refine ⟨N1, fun n hn => ?_⟩
+  have hdist := hN1 n hn
+  rw [Real.dist_eq] at hdist
+  have hdef : 0 ≤ 1 - a n := by linarith [ha1 n]
+  have hgapdef : 1 - a n < ε / (3 * (Q + 1)) := by
+    have := abs_lt.mp hdist
+    linarith [this.1]
+  have hbound := nearGap_schwartz_pairing_bound (nu n) (hC n).linearGrowth (hself n)
+    (ha n) (ha1 n) (hgap n) (hoff n) (hC n) φ hN hd hd2
+  rw [dist_zero_right]
+  have hdeficit : (1 - a n) * (2 * C * ((2 * N + 3) * K)) +
+      2 * K * ((Real.pi ^ 2 * (N : ℝ) ^ 2 / (4 * d ^ 2)) * (1 - a n) * (2 * C)) =
+      (1 - a n) * Q := by rw [hQ]; ring
+  have hQbound : (1 - a n) * Q < ε / 3 := by
+    have h1 : (1 - a n) * Q ≤ (ε / (3 * (Q + 1))) * Q :=
+      mul_le_mul_of_nonneg_right hgapdef.le hQ0
+    have h2 : (ε / (3 * (Q + 1))) * Q < ε / 3 := by
+      rw [show (ε / (3 * (Q + 1))) * Q = (ε / 3) * (Q / (Q + 1)) by field_simp]
+      have : Q / (Q + 1) < 1 := (div_lt_one (by positivity)).mpr (by linarith)
+      nlinarith
+    linarith
+  linarith [hbound, hdeficit, hQbound, hinterp, htail]
+
+/-- Actual-domain instance of the HT2 controlled limit: the genuine CT1 dilation
+family along any parameters L_n → 0 with 0 < L_n < log 2 (gaps exp(-L_n) → 1,
+common variation constant 18) tends to zero on every Schwartz test. -/
+theorem nearGapCombFamily_controlled_limit (L : ℕ → ℝ) (hL : ∀ n, 0 < L n)
+    (hu : ∀ n, L n < Real.log 2) (hlim : Tendsto L atTop (𝓝 0))
+    (φ : SchwartzMap ℝ ℂ) :
+    Tendsto (fun n => nearGapCombDistribution (L n) φ) atTop (𝓝 0) := by
+  have hC : ∀ n, CommonLinearMassBound 18 (nearGapCombFamily (L n)).totalVariation :=
+    fun n => nearGapCombFamily_common_growth (hL n).le (hu n).le
+  have ha : Tendsto (fun n => Real.exp (-L n)) atTop (𝓝 1) := by
+    have hneg : Tendsto (fun n => -L n) atTop (𝓝 0) := by simpa using hlim.neg
+    have := (Real.continuous_exp.tendsto 0).comp hneg
+    simpa [Function.comp_def] using this
+  have h := near_gap_controlled_limit_zero (fun n => nearGapCombFamily (L n)) 18 hC
+    (fun n => nearGapCombFamily_fourier_selfdual (L n))
+    (fun n => Real.exp (-L n)) (fun n => Real.exp_pos _)
+    (fun n => (nearGapComb_radius_bounds (hL n) (hu n)).2.le)
+    (fun n => nearGapCombFamily_actual_gap (hL n).le)
+    (fun n => nearGapCombFamily_offlattice_nonnegative (L n)) ha φ
+  exact h
+
 #print axioms Zeta23.OPICAFollowup.near_gap_mass_bound
+#print axioms Zeta23.OPICAFollowup.near_gap_controlled_limit_zero
 end Zeta23.OPICAFollowup
