@@ -4,11 +4,14 @@ import Zeta23.OPICAFollowup.WeightedMixing
 `weighted_mobius_inverse`, `weighted_mixture_sharp_gap` and `weighted_gap_leakage`.
 
 Definition audits pin the lattice measures N, M⁺, M⁻ and the weighted norm to
-their explicit formulas. The root types are restated in full. Actual-domain
-consumers use genuine point-mass mixers built from canonical Jordan pairs:
-the leakage lower bound is strictly positive for δ₋₁, and the sharp-gap
-hypotheses are satisfied by δ₀, whose mixture is exactly the integer comb
-(so the sharp-gap theorem is not vacuous). -/
+their explicit formulas. The root types are restated in full, including the
+Jordan pair M⁺ ⟂ M⁻ behind ‖M_μ‖ and the leakage bound with the genuine complex
+variations. Actual-domain consumers use genuine point-mass mixers built from
+canonical Jordan pairs: the leakage lower bound is strictly positive for δ₋₁, the
+sharp-gap hypotheses are satisfied by δ₀, whose mixture is exactly the integer comb
+(so the sharp-gap theorem is not vacuous), leakage fails without the
+negative-support restriction, and the endpoint witness e^(-b|t|) dt is an
+admissible actual mixer whose mixture has the explicit density r_h. -/
 noncomputable section
 open Set MeasureTheory Filter
 open scoped ENNReal Topology FourierTransform SchwartzMap
@@ -61,12 +64,13 @@ theorem expected_weighted_mobius_inverse_real (σ : LocallyFiniteComplexMeasure)
       σ.rePart.negative +
         (moebiusPlusComb ∗ positiveLogMeasure (weightedDilationMixture σ a ha.le hm).rePart.positive +
           moebiusMinusComb ∗ positiveLogMeasure (weightedDilationMixture σ a ha.le hm).rePart.negative) ∧
+    moebiusPlusComb ⟂ₘ moebiusMinusComb ∧
     weightedLogNorm a (moebiusPlusComb + moebiusMinusComb) =
         ENNReal.ofReal (∑' n : ℕ, (|ArithmeticFunction.moebius n| : ℝ) * (n : ℝ) ^ (-(a + 1 / 2))) ∧
     ((∑' n : ℕ, (|ArithmeticFunction.moebius n| : ℝ) * (n : ℝ) ^ (-(a + 1 / 2)) : ℝ) : ℂ) =
       riemannZeta ((a + 1 / 2 : ℝ) : ℂ) / riemannZeta ((2 * a + 1 : ℝ) : ℂ) := by
   obtain ⟨-, hre, -, -, hinv, -, -, -, -, -, hM⟩ := weighted_mobius_inverse σ a ha hm
-  exact ⟨hre, hinv, hM.1, hM.2⟩
+  exact ⟨hre, hinv, hM⟩
 
 theorem expected_weighted_mixture_sharp_gap (σ : LocallyFiniteComplexMeasure) (a : ℝ)
     (ha : 1 / 2 < a) (hm : mixingExponentialMoment a σ < ∞)
@@ -84,6 +88,15 @@ theorem expected_weighted_mixture_sharp_gap (σ : LocallyFiniteComplexMeasure) (
   obtain ⟨-, h1, h2, -, h3⟩ := weighted_mixture_sharp_gap σ a ha hm hself hgap
   exact ⟨h1, h2, fun h0 => (h3 h0).2.2⟩
 
+/-- HT1.7 with the genuine complex variations |σ| and |ν|. -/
+theorem expected_complex_gap_leakage (σ : LocallyFiniteComplexMeasure) (a : ℝ)
+    (ha : 1 / 2 < a) (hm : mixingExponentialMoment a σ < ∞) :
+    ENNReal.ofReal ((riemannZeta ((2 * a + 1 : ℝ) : ℂ) / riemannZeta ((a + 1 / 2 : ℝ) : ℂ)).re) *
+        ∫⁻ t in Iio 0, ENNReal.ofReal (Real.exp (-a * t)) ∂σ.totalVariation ≤
+      ∫⁻ x in Ioo 0 1, ENNReal.ofReal (x ^ (-a - 1 / 2))
+        ∂(weightedDilationMixture σ a ha.le hm).totalVariation :=
+  (weighted_gap_leakage.1 σ a ha hm).1
+
 theorem expected_weighted_gap_leakage_real (σ : LocallyFiniteComplexMeasure) (a : ℝ)
     (ha : 1 / 2 < a) (hm : mixingExponentialMoment a σ < ∞) :
     ENNReal.ofReal ((riemannZeta ((2 * a + 1 : ℝ) : ℂ) / riemannZeta ((a + 1 / 2 : ℝ) : ℂ)).re) *
@@ -92,7 +105,7 @@ theorem expected_weighted_gap_leakage_real (σ : LocallyFiniteComplexMeasure) (a
       ∫⁻ x in Ioo 0 1, ENNReal.ofReal (x ^ (-a - 1 / 2))
         ∂((weightedDilationMixture σ a ha.le hm).rePart.positive +
           (weightedDilationMixture σ a ha.le hm).rePart.negative) :=
-  (weighted_gap_leakage.1 σ a ha hm).1
+  (weighted_gap_leakage.1 σ a ha hm).2.1
 
 /-! ### Actual point-mass mixers -/
 
@@ -125,7 +138,7 @@ theorem expected_point_mixer_leakage_positive (a : ℝ) (ha : 1 / 2 < a) :
         ∂(weightedDilationMixture (pointMixer (-1)) a ha.le (pointMixer_moment (-1) a)).rePart.totalVariation ∧
     0 < ∫⁻ x in Ioo 0 1, ENNReal.ofReal (x ^ (-a - 1 / 2))
         ∂(weightedDilationMixture (pointMixer (-1)) a ha.le (pointMixer_moment (-1) a)).rePart.totalVariation := by
-  have hL := (weighted_gap_leakage.1 (pointMixer (-1)) a ha (pointMixer_moment (-1) a)).1
+  have hL := (weighted_gap_leakage.1 (pointMixer (-1)) a ha (pointMixer_moment (-1) a)).2.1
   have hσ : ∫⁻ t in Iio 0, ENNReal.ofReal (Real.exp (-a * t)) ∂(pointMixer (-1)).rePart.totalVariation =
       ENNReal.ofReal (Real.exp a) := by
     change ∫⁻ t in Iio 0, ENNReal.ofReal (Real.exp (-a * t))
@@ -256,7 +269,45 @@ theorem expected_density_leakage :
     (∀ b : ℝ, 1 / 2 < b → ∃ h : ℝ → ℂ, Continuous h ∧ (∀ t, h (-t) = h t) ∧
       (∀ t, ‖h t‖ ≤ 1 * Real.exp (-b * |t|)) ∧
       ∫⁻ t, ENNReal.ofReal (Real.exp (b * |t|) * ‖h t‖) = ∞) :=
-  ⟨weighted_gap_leakage.2.1, weighted_gap_leakage.2.2.2⟩
+  ⟨weighted_gap_leakage.2.1, weighted_gap_leakage.2.2.2.1⟩
+
+/-- r_h is the actual density: restatement of the density identification. -/
+theorem expected_density_identification (h : ℝ → ℂ) (hc : Continuous h) (H b : ℝ)
+    (hb : 1 / 2 < b) (hd : ∀ t, ‖h t‖ ≤ H * Real.exp (-b * |t|)) :
+    (∀ a : ℝ, a < b → mixingExponentialMoment a (densityMixer h hc) < ∞) ∧
+    (∀ s : Set ℝ, MeasurableSet s → s ⊆ Ioi 0 →
+      positiveDilationMixture (mixingCoordinate (densityMixer h hc) 0) s =
+        ∫⁻ x in s, ENNReal.ofReal (Real.sqrt x)⁻¹ * ∑' n : ℕ,
+          (if n = 0 then 0 else ENNReal.ofReal (Real.sqrt (n : ℝ))⁻¹) *
+            ENNReal.ofReal (h (Real.log (x / n))).re) ∧
+    (∀ x : ℝ, 0 < x → mixtureDensity h x =
+      (((positiveMixtureDensity (fun t => ENNReal.ofReal (densityCoordinate h 0 t)) x).toReal -
+        (positiveMixtureDensity (fun t => ENNReal.ofReal (densityCoordinate h 1 t)) x).toReal :
+          ℝ) : ℂ) +
+      Complex.I * (((positiveMixtureDensity
+          (fun t => ENNReal.ofReal (densityCoordinate h 2 t)) x).toReal -
+        (positiveMixtureDensity (fun t => ENNReal.ofReal (densityCoordinate h 3 t)) x).toReal :
+          ℝ) : ℂ)) := by
+  obtain ⟨hmom, hcoord, -, hpt⟩ := weighted_gap_leakage.2.2.2.2 h hc H b hb hd
+  refine ⟨hmom, fun s hs hpos => ?_, hpt⟩
+  rw [hcoord 0 s hs hpos]
+  rfl
+
+/-- Domain check: the endpoint witness e^(-b|t|) dt is an admissible actual mixer below b,
+and its actual mixture has the explicit density x^(-1/2) Σ n^(-1/2) e^(-b|log(x/n)|). -/
+theorem expected_endpoint_witness_mixture (b : ℝ) (hb : 1 / 2 < b) :
+    ∃ hc : Continuous (fun t : ℝ => ((Real.exp (-b * |t|) : ℝ) : ℂ)),
+      mixingExponentialMoment ((1 / 2 + b) / 2) (densityMixer _ hc) < ∞ ∧
+      ∀ s : Set ℝ, MeasurableSet s → s ⊆ Ioi 0 →
+        positiveDilationMixture (mixingCoordinate (densityMixer _ hc) 0) s =
+          ∫⁻ x in s, ENNReal.ofReal (Real.sqrt x)⁻¹ * ∑' n : ℕ,
+            (if n = 0 then 0 else ENNReal.ofReal (Real.sqrt (n : ℝ))⁻¹) *
+              ENNReal.ofReal (Real.exp (-b * |Real.log (x / n)|)) := by
+  obtain ⟨hc, -, hd, -⟩ := endpoint_density_witness b
+  refine ⟨hc, (expected_density_identification _ hc 1 b hb hd).1 _ (by linarith),
+    fun s hs hpos => ?_⟩
+  rw [(expected_density_identification _ hc 1 b hb hd).2.1 s hs hpos]
+  simp only [Complex.ofReal_re]
 
 end OPICAWeightedInverseIndependent
 #print axioms Zeta23.OPICAFollowup.weighted_mobius_inverse
@@ -266,9 +317,13 @@ end OPICAWeightedInverseIndependent
 #print axioms OPICAWeightedInverseIndependent.expected_moebius_lattice_identity
 #print axioms OPICAWeightedInverseIndependent.expected_weighted_mobius_inverse_real
 #print axioms OPICAWeightedInverseIndependent.expected_weighted_mixture_sharp_gap
+#print axioms OPICAWeightedInverseIndependent.expected_complex_gap_leakage
 #print axioms OPICAWeightedInverseIndependent.expected_weighted_gap_leakage_real
 #print axioms OPICAWeightedInverseIndependent.expected_point_mixer_leakage_positive
 #print axioms OPICAWeightedInverseIndependent.expected_point_mixer_gap
 #print axioms OPICAWeightedInverseIndependent.expected_point_mixer_sharp_gap_instance
 #print axioms OPICAWeightedInverseIndependent.expected_density_leakage
 #print axioms OPICAWeightedInverseIndependent.expected_leakage_needs_negative_support
+#print axioms OPICAWeightedInverseIndependent.expected_density_identification
+#print axioms OPICAWeightedInverseIndependent.expected_endpoint_witness_mixture
+#print axioms Zeta23.OPICAFollowup.complex_gap_leakage

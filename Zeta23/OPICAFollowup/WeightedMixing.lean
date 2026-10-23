@@ -12,7 +12,9 @@ import Mathlib.Analysis.SpecialFunctions.ImproperIntegrals
 /-! Actual noncompact mixing (R1-HT1): the locally finite weighted mixture with
 its Fourier transport and origin law, the weighted Möbius inverse in the
 positive lattice algebra, the noncompact sharp gap and the quantitative gap
-leakage in measure and continuous-density supremum forms. -/
+leakage in measure form (with the genuine complex variations) and in
+continuous-density supremum form, where the density r_h is identified with the
+actual density of the mixture of h(t) dt on the positive axis. -/
 noncomputable section
 open Set MeasureTheory Filter Complex
 open scoped ENNReal Topology FourierTransform SchwartzMap
@@ -1358,6 +1360,43 @@ lemma mixture_log_part_norm {a : ℝ} (ha : 1 / 2 < a) (μp μn : Measure ℝ)
   rw [positiveLogMeasure_positiveDilationMixture, weightedLogNorm_conv]
   exact ENNReal.mul_lt_top (weightedLogNorm_integerLogComb_lt_top ha) hp
 
+/-- M⁺ and M⁻ live on disjoint lattice points, so (M⁺, M⁻) is the Jordan pair of M_μ and
+the variation of M_μ is M⁺ + M⁻. -/
+theorem moebiusComb_mutuallySingular : moebiusPlusComb ⟂ₘ moebiusMinusComb := by
+  classical
+  set S : Set ℝ := (fun k : ℕ => Real.log k) '' {k | ArithmeticFunction.moebius k = 1} with hS
+  have hSm : MeasurableSet S := (Set.Countable.image (Set.to_countable _) _).measurableSet
+  refine ⟨Sᶜ, hSm.compl, ?_, ?_⟩
+  · unfold moebiusPlusComb latticeMeasure
+    rw [Measure.sum_apply _ hSm.compl, ENNReal.tsum_eq_zero]
+    intro k
+    rw [Measure.smul_apply, smul_eq_mul]
+    dsimp only
+    split_ifs with hk
+    · rw [Measure.dirac_apply' _ hSm.compl, Set.indicator_of_notMem, mul_zero]
+      exact fun h => h ⟨k, hk, rfl⟩
+    · rw [zero_mul]
+  · rw [compl_compl]
+    unfold moebiusMinusComb latticeMeasure
+    rw [Measure.sum_apply _ hSm, ENNReal.tsum_eq_zero]
+    intro k
+    rw [Measure.smul_apply, smul_eq_mul]
+    dsimp only
+    split_ifs with hk
+    · rw [Measure.dirac_apply' _ hSm, Set.indicator_of_notMem, mul_zero]
+      rintro ⟨j, hj, hjk⟩
+      have hj0 : j ≠ 0 := by rintro rfl; simp at hj
+      have hk0 : k ≠ 0 := by rintro rfl; simp at hk
+      have hjk' : j = k := by
+        have := Real.log_injOn_pos (Set.mem_Ioi.mpr (Nat.cast_pos.mpr (Nat.pos_of_ne_zero hj0)))
+          (Set.mem_Ioi.mpr (Nat.cast_pos.mpr (Nat.pos_of_ne_zero hk0))) hjk
+        exact_mod_cast this
+      subst hjk'
+      simp only [Set.mem_ofPred_eq] at hj
+      rw [hj] at hk
+      norm_num at hk
+    · rw [zero_mul]
+
 /-- Original R1-HT1 root: the actual weighted Möbius inverse. For a complex mixing
 measure with exponential moment a > 1/2 and its genuine mixture ν, the weighted
 logarithmic pushforward η of ν restricted to the positive axis satisfies
@@ -1365,7 +1404,8 @@ logarithmic pushforward η of ν restricted to the positive axis satisfies
 the weighted algebra of positive measures with finite norm ∫ e^(-a y), with
 Jordan parts kept positive (no subtraction of infinite measures). The norm is
 exactly multiplicative for the genuine product-measure convolution, with
-‖N‖ = ζ(a+1/2) and ‖M_μ‖ = Σ|μ(n)| n^(-a-1/2) = ζ(a+1/2)/ζ(2a+1). -/
+‖N‖ = ζ(a+1/2) and ‖M_μ‖ = Σ|μ(n)| n^(-a-1/2) = ζ(a+1/2)/ζ(2a+1); here M⁺ ⟂ M⁻, so
+(M⁺, M⁻) is the Jordan pair of M_μ and M⁺ + M⁻ is its variation. -/
 theorem weighted_mobius_inverse (σ : LocallyFiniteComplexMeasure) (a : ℝ) (ha : 1 / 2 < a)
     (hm : mixingExponentialMoment a σ < ∞) :
     (∀ i : Fin 4, positiveLogMeasure (positiveDilationMixture (mixingCoordinate σ i)) =
@@ -1400,7 +1440,8 @@ theorem weighted_mobius_inverse (σ : LocallyFiniteComplexMeasure) (a : ℝ) (ha
       weightedLogNorm a (μ ∗ ρ) = weightedLogNorm a μ * weightedLogNorm a ρ) ∧
     (weightedLogNorm a integerLogComb = ENNReal.ofReal (∑' n : ℕ, (n : ℝ) ^ (-(a + 1 / 2))) ∧
       ((∑' n : ℕ, (n : ℝ) ^ (-(a + 1 / 2)) : ℝ) : ℂ) = riemannZeta ((a + 1 / 2 : ℝ) : ℂ)) ∧
-    (weightedLogNorm a (moebiusPlusComb + moebiusMinusComb) =
+    (moebiusPlusComb ⟂ₘ moebiusMinusComb ∧
+      weightedLogNorm a (moebiusPlusComb + moebiusMinusComb) =
         ENNReal.ofReal (∑' n : ℕ, (|ArithmeticFunction.moebius n| : ℝ) * (n : ℝ) ^ (-(a + 1 / 2))) ∧
       ((∑' n : ℕ, (|ArithmeticFunction.moebius n| : ℝ) * (n : ℝ) ^ (-(a + 1 / 2)) : ℝ) : ℂ) =
         riemannZeta ((a + 1 / 2 : ℝ) : ℂ) / riemannZeta ((2 * a + 1 : ℝ) : ℂ)) := by
@@ -1427,7 +1468,7 @@ theorem weighted_mobius_inverse (σ : LocallyFiniteComplexMeasure) (a : ℝ) (ha
     moebiusPlus_conv_integerLogComb, ?_, ?_, hn, ⟨?_, ?_, ?_, ?_⟩,
     fun μ ρ _ => weightedLogNorm_conv a μ ρ,
     ⟨weightedLogNorm_integerLogComb ha, real_tsum_rpow_eq_zeta hs⟩,
-    ⟨weightedLogNorm_moebiusComb ha, ?_⟩⟩
+    ⟨moebiusComb_mutuallySingular, weightedLogNorm_moebiusComb ha, ?_⟩⟩
   · exact moebius_inverse_jordan ha _ _ _ _ (hn 0) (hn 1) hre
   · exact moebius_inverse_jordan ha _ _ _ _ (hn 2) (hn 3) him
   · exact mixture_log_part_norm ha (mixingCoordinate σ 0) (mixingCoordinate σ 1) (hn 0)
@@ -1614,7 +1655,7 @@ theorem weighted_mixture_sharp_gap (σ : LocallyFiniteComplexMeasure) (a : ℝ) 
     congrArg Subtype.val (LocallyFiniteComplexMeasure.distributionOfLinearGrowth_injective
       (a₁ := ⟨_, weightedDilationMixture_growth _ a ha.le hm'⟩)
       (a₂ := ⟨ν, weightedDilationMixture_growth σ a ha.le hm⟩) hdist)
-  obtain ⟨-, -, -, -, hinvre, hinvim, -, ⟨hηrp, hηrn, hηip, hηin⟩, -, -, ⟨hMnorm, -⟩⟩ :=
+  obtain ⟨-, -, -, -, hinvre, hinvim, -, ⟨hηrp, hηrn, hηip, hηin⟩, -, -, ⟨-, hMnorm, -⟩⟩ :=
     weighted_mobius_inverse σ a ha hm
   obtain ⟨-, -, -, -, hinvre', hinvim', -⟩ :=
     weighted_mobius_inverse (reflectedMixingMeasure σ) a ha hm'
@@ -2178,17 +2219,795 @@ lemma endpoint_density_witness (b : ℝ) :
     simp only [hone, ENNReal.ofReal_one, lintegral_const, one_mul]
     exact Real.volume_univ
 
-/-- Original R1-HT1 root: exact weighted gap leakage. (1) Measure form (HT1.7):
-for every complex mixer with exponential moment a > 1/2 and its genuine mixture ν,
-each real Jordan part satisfies
-∫_(0,1) x^(-a-1/2) d|ν_part| ≥ ζ(2a+1)/ζ(a+1/2) ∫_(-∞,0) e^(-a t) d|σ_part|,
-and so does the coordinate variation control. (2) Continuous-density supremum
-form (HT1.9) at the endpoint exponent b for the paper's density r_h, without any
-b-moment. (3) The measure form applies to h dt at every a ∈ (1/2, b), while
-(4) the endpoint b-moment may be infinite under the supremum hypotheses. -/
+/-! ### Positive-axis density of the actual mixture -/
+
+/-- The coordinate density x^(-1/2) Σ_n n^(-1/2) g(log(x/n)) of a positive density g. -/
+def positiveMixtureDensity (g : ℝ → ℝ≥0∞) (x : ℝ) : ℝ≥0∞ :=
+  ENNReal.ofReal (Real.sqrt x)⁻¹ * ∑' n : ℕ, latticeWeight n * g (Real.log (x / n))
+
+lemma dilatedCombMeasure_apply_pos (t : ℝ) {s : Set ℝ} (hs : MeasurableSet s)
+    (hpos : s ⊆ Ioi 0) :
+    dilatedCombMeasure t s =
+      ∑' n : ℕ, ENNReal.ofReal (Real.exp (t / 2)) * s.indicator 1 (Real.exp t * n) := by
+  rw [dilatedCombMeasure, Measure.smul_apply, smul_eq_mul, scaledLatticeMeasure,
+    Measure.map_apply (scaledLatticePoint_measurable t) hs, ENNReal.tsum_mul_left]
+  congr 1
+  rw [← lintegral_indicator_one (MeasurableSet.of_discrete), lintegral_count]
+  have hsupp : Function.support (fun n : ℤ => (scaledLatticePoint t ⁻¹' s).indicator
+      (1 : ℤ → ℝ≥0∞) n) ⊆
+      Set.range (Nat.cast : ℕ → ℤ) := by
+    intro n hn
+    rw [Function.mem_support] at hn
+    have hmem : scaledLatticePoint t n ∈ s := by
+      by_contra h
+      exact hn (Set.indicator_of_notMem (show n ∉ scaledLatticePoint t ⁻¹' s from h) _)
+    have hp := hpos hmem
+    simp only [scaledLatticePoint, Set.mem_Ioi] at hp
+    have hn0 : (0 : ℝ) < n := by
+      by_contra h
+      push Not at h
+      exact absurd hp (not_lt.mpr (mul_nonpos_of_nonneg_of_nonpos (Real.exp_pos t).le h))
+    exact ⟨n.toNat, by have : (0 : ℤ) < n := by exact_mod_cast hn0
+                       omega⟩
+  rw [← Nat.cast_injective.tsum_eq hsupp]
+  rfl
+
+/-- Change of variables x = e^t n along one lattice ray. -/
+lemma lattice_ray_change_of_variables (g : ℝ → ℝ≥0∞) {n : ℕ} (hn : 0 < n) {s : Set ℝ}
+    (hs : MeasurableSet s) (hpos : s ⊆ Ioi 0) :
+    ∫⁻ t, g t * (ENNReal.ofReal (Real.exp (t / 2)) * s.indicator 1 (Real.exp t * n)) =
+      ∫⁻ x in s, ENNReal.ofReal (Real.sqrt x)⁻¹ * (latticeWeight n * g (Real.log (x / n))) := by
+  have hn' : (0 : ℝ) < n := Nat.cast_pos.mpr hn
+  set F : ℝ → ℝ≥0∞ := s.indicator (fun x => ENNReal.ofReal (Real.sqrt x)⁻¹ *
+    (latticeWeight n * g (Real.log (x / n)))) with hF
+  have himage : (fun t : ℝ => Real.exp t * n) '' univ = Ioi 0 := by
+    ext x
+    constructor
+    · rintro ⟨t, -, rfl⟩
+      exact mul_pos (Real.exp_pos t) hn'
+    · intro hx
+      refine ⟨Real.log (x / n), mem_univ _, ?_⟩
+      show Real.exp (Real.log (x / n)) * n = x
+      rw [Real.exp_log (div_pos hx hn')]
+      field_simp
+  have hcv := lintegral_image_eq_lintegral_abs_deriv_mul MeasurableSet.univ
+    (f := fun t : ℝ => Real.exp t * n) (f' := fun t => Real.exp t * n)
+    (fun t _ => ((Real.hasDerivAt_exp t).mul_const (n : ℝ)).hasDerivWithinAt)
+    (fun a _ b _ hab => Real.exp_injective (mul_right_cancel₀ hn'.ne' hab)) F
+  rw [himage, Measure.restrict_univ] at hcv
+  have hleft : ∫⁻ x in Ioi 0, F x = ∫⁻ x in s, ENNReal.ofReal (Real.sqrt x)⁻¹ *
+      (latticeWeight n * g (Real.log (x / n))) := by
+    rw [hF, lintegral_indicator hs, Measure.restrict_restrict hs, Set.inter_eq_left.mpr hpos]
+  rw [← hleft, hcv]
+  refine lintegral_congr (fun t => ?_)
+  by_cases hmem : Real.exp t * n ∈ s
+  · rw [hF, Set.indicator_of_mem hmem, Set.indicator_of_mem hmem, Pi.one_apply, mul_one,
+      latticeWeight, if_neg hn.ne', abs_of_pos (mul_pos (Real.exp_pos t) hn')]
+    have hlog : Real.log (Real.exp t * n / n) = t := by
+      rw [mul_div_assoc, div_self hn'.ne', mul_one, Real.log_exp]
+    rw [hlog]
+    have hsq : Real.sqrt (Real.exp t * n) = Real.exp (t / 2) * Real.sqrt n := by
+      rw [Real.sqrt_mul (Real.exp_pos t).le, Real.exp_half]
+    have h1 : Real.sqrt n * Real.sqrt n = n := Real.mul_self_sqrt hn'.le
+    have h2 : Real.exp (t / 2) * Real.exp (t / 2) = Real.exp t := by
+      rw [← Real.exp_add]; ring_nf
+    have h3 : 0 < Real.sqrt n := Real.sqrt_pos.mpr hn'
+    have h4 : 0 < Real.exp (t / 2) := Real.exp_pos _
+    have hkey : Real.exp t * n * ((Real.sqrt (Real.exp t * n))⁻¹ * (Real.sqrt n)⁻¹) =
+        Real.exp (t / 2) := by
+      rw [hsq]
+      calc Real.exp t * n * ((Real.exp (t / 2) * Real.sqrt n)⁻¹ * (Real.sqrt n)⁻¹) =
+          (Real.exp (t / 2) * Real.exp (t / 2)) * (Real.sqrt n * Real.sqrt n) *
+            ((Real.exp (t / 2) * Real.sqrt n)⁻¹ * (Real.sqrt n)⁻¹) := by rw [h2, h1]
+        _ = Real.exp (t / 2) := by field_simp
+    rw [← mul_assoc, ← mul_assoc, ← ENNReal.ofReal_mul (by positivity),
+      ← ENNReal.ofReal_mul (by positivity), mul_assoc (Real.exp t * n), hkey, mul_comm]
+  · rw [hF, Set.indicator_of_notMem hmem, Set.indicator_of_notMem hmem, mul_zero, mul_zero,
+      mul_zero]
+
+/-- The actual mixture of a positive density g is given on (0,∞) by the explicit
+coordinate density (HT1.8, positive coordinate form). -/
+theorem positiveDilationMixture_withDensity_apply {g : ℝ → ℝ≥0∞} (hg : Measurable g)
+    {s : Set ℝ} (hs : MeasurableSet s) (hpos : s ⊆ Ioi 0) :
+    positiveDilationMixture (volume.withDensity g) s = ∫⁻ x in s, positiveMixtureDensity g x := by
+  have hind (n : ℕ) : Measurable (fun t : ℝ => s.indicator (1 : ℝ → ℝ≥0∞) (Real.exp t * n)) :=
+    (measurable_const.indicator hs).comp (by fun_prop)
+  have hmeas : Measurable (fun t : ℝ => ∑' n : ℕ,
+      ENNReal.ofReal (Real.exp (t / 2)) * s.indicator 1 (Real.exp t * n)) :=
+    Measurable.tsum (fun n => (by fun_prop : Measurable fun t : ℝ =>
+      ENNReal.ofReal (Real.exp (t / 2))).mul (hind n))
+  rw [positiveDilationMixture_apply _ s hs]
+  rw [lintegral_congr (fun t => dilatedCombMeasure_apply_pos t hs hpos),
+    lintegral_withDensity_eq_lintegral_mul _ hg hmeas]
+  simp only [Pi.mul_apply]
+  simp_rw [← ENNReal.tsum_mul_left]
+  refine (lintegral_tsum (fun n => ?_)).trans ?_
+  · exact (hg.mul ((by fun_prop : Measurable fun t : ℝ =>
+      ENNReal.ofReal (Real.exp (t / 2))).mul (hind n))).aemeasurable
+  unfold positiveMixtureDensity
+  simp_rw [← ENNReal.tsum_mul_left]
+  refine Eq.trans ?_ (lintegral_tsum (fun n => ?_)).symm
+  rotate_left
+  · exact ((by fun_prop : Measurable fun x : ℝ => ENNReal.ofReal (Real.sqrt x)⁻¹).mul
+      (measurable_const.mul (hg.comp (by fun_prop)))).aemeasurable
+  refine tsum_congr (fun n => ?_)
+  rcases Nat.eq_zero_or_pos n with rfl | hn
+  · have h0 : (0 : ℝ) ∉ s := fun h => lt_irrefl (0 : ℝ) (hpos h)
+    simp [latticeWeight, Set.indicator_of_notMem h0]
+  · exact lattice_ray_change_of_variables g hn hs hpos
+
+/-- The actual complex mixer h(t) dt of a continuous density, with its canonical
+Jordan pairs (Re h)^± dt and (Im h)^± dt. -/
+def densityMixer (h : ℝ → ℂ) (hc : Continuous h) : LocallyFiniteComplexMeasure where
+  rePart :=
+    { positive := volume.withDensity (fun t => ENNReal.ofReal (h t).re)
+      negative := volume.withDensity (fun t => ENNReal.ofReal (-(h t).re))
+      positive_locallyFinite := IsLocallyFiniteMeasure.withDensity_ofReal
+        (Complex.continuous_re.comp hc)
+      negative_locallyFinite := IsLocallyFiniteMeasure.withDensity_ofReal
+        (Complex.continuous_re.comp hc).neg
+      mutuallySingular := withDensity_ofReal_mutuallySingular
+        (Complex.continuous_re.comp hc).measurable }
+  imPart :=
+    { positive := volume.withDensity (fun t => ENNReal.ofReal (h t).im)
+      negative := volume.withDensity (fun t => ENNReal.ofReal (-(h t).im))
+      positive_locallyFinite := IsLocallyFiniteMeasure.withDensity_ofReal
+        (Complex.continuous_im.comp hc)
+      negative_locallyFinite := IsLocallyFiniteMeasure.withDensity_ofReal
+        (Complex.continuous_im.comp hc).neg
+      mutuallySingular := withDensity_ofReal_mutuallySingular
+        (Complex.continuous_im.comp hc).measurable }
+
+/-- The four real coordinate functions Re⁺, Re⁻, Im⁺, Im⁻ (before positive parts). -/
+def densityCoordinate (h : ℝ → ℂ) (i : Fin 4) (t : ℝ) : ℝ :=
+  if i = 0 then (h t).re else if i = 1 then -(h t).re else if i = 2 then (h t).im else -(h t).im
+
+@[simp] lemma densityCoordinate_zero (h : ℝ → ℂ) (t : ℝ) : densityCoordinate h 0 t = (h t).re := by
+  simp [densityCoordinate]
+
+@[simp] lemma densityCoordinate_one (h : ℝ → ℂ) (t : ℝ) : densityCoordinate h 1 t = -(h t).re := by
+  simp [densityCoordinate]
+
+@[simp] lemma densityCoordinate_two (h : ℝ → ℂ) (t : ℝ) : densityCoordinate h 2 t = (h t).im := by
+  simp [densityCoordinate]
+
+@[simp] lemma densityCoordinate_three (h : ℝ → ℂ) (t : ℝ) :
+    densityCoordinate h 3 t = -(h t).im := by
+  simp [densityCoordinate]
+
+lemma mixingCoordinate_densityMixer (h : ℝ → ℂ) (hc : Continuous h) (i : Fin 4) :
+    mixingCoordinate (densityMixer h hc) i =
+      volume.withDensity (fun t => ENNReal.ofReal (densityCoordinate h i t)) := by
+  fin_cases i <;> rfl
+
+lemma densityCoordinate_measurable (h : ℝ → ℂ) (hc : Continuous h) (i : Fin 4) :
+    Measurable (densityCoordinate h i) := by
+  have hre := (Complex.continuous_re.comp hc).measurable
+  have him := (Complex.continuous_im.comp hc).measurable
+  fin_cases i
+  · exact hre
+  · exact hre.neg
+  · exact him
+  · exact him.neg
+
+lemma norm_densityCoordinate_le (h : ℝ → ℂ) (i : Fin 4) (t : ℝ) :
+    |densityCoordinate h i t| ≤ ‖h t‖ := by
+  fin_cases i
+  · exact Complex.abs_re_le_norm _
+  · simpa [densityCoordinate] using Complex.abs_re_le_norm (h t)
+  · exact Complex.abs_im_le_norm _
+  · simpa [densityCoordinate] using Complex.abs_im_le_norm (h t)
+
+/-- The density mixer lies in every exponential class below its decay rate. -/
+lemma densityMixer_moment {h : ℝ → ℂ} (hc : Continuous h) {H a b : ℝ} (hab : a < b)
+    (hdecay : ∀ t, ‖h t‖ ≤ H * Real.exp (-b * |t|)) :
+    mixingExponentialMoment a (densityMixer h hc) < ∞ := by
+  have hfin := lintegral_exp_mul_abs_decay_lt_top hab hdecay
+  have hcoord (i : Fin 4) : ∫⁻ t, ENNReal.ofReal (Real.exp (a * |t|))
+      ∂(mixingCoordinate (densityMixer h hc) i) < ∞ := by
+    rw [mixingCoordinate_densityMixer, lintegral_withDensity_eq_lintegral_mul _
+      (densityCoordinate_measurable h hc i).ennreal_ofReal (by fun_prop)]
+    refine lt_of_le_of_lt (lintegral_mono (fun t => ?_)) hfin
+    simp only [Pi.mul_apply]
+    rw [mul_comm, ← ENNReal.ofReal_mul (Real.exp_pos _).le]
+    exact ENNReal.ofReal_le_ofReal (mul_le_mul_of_nonneg_left
+      ((le_abs_self _).trans (norm_densityCoordinate_le h i t)) (Real.exp_pos _).le)
+  refine lt_of_le_of_lt (lintegral_mono' (LocallyFiniteComplexMeasure.totalVariation_le_control _)
+    le_rfl) ?_
+  have hsplit : (densityMixer h hc).variationControl =
+      ((mixingCoordinate (densityMixer h hc) 0 + mixingCoordinate (densityMixer h hc) 1) +
+        (mixingCoordinate (densityMixer h hc) 2 + mixingCoordinate (densityMixer h hc) 3)) := rfl
+  rw [hsplit, lintegral_add_measure, lintegral_add_measure, lintegral_add_measure]
+  exact ENNReal.add_lt_top.mpr ⟨ENNReal.add_lt_top.mpr ⟨hcoord 0, hcoord 1⟩,
+    ENNReal.add_lt_top.mpr ⟨hcoord 2, hcoord 3⟩⟩
+
+lemma latticeWeight_eq_ofReal (n : ℕ) : latticeWeight n = ENNReal.ofReal (latticeWeightR n) := by
+  unfold latticeWeight latticeWeightR
+  split_ifs <;> simp
+
+lemma mixtureDensity_summable {h : ℝ → ℂ} {H b : ℝ} (hb : 1 / 2 < b)
+    (hdecay : ∀ t, ‖h t‖ ≤ H * Real.exp (-b * |t|)) {x : ℝ} (hx : 0 < x) :
+    Summable (fun n : ℕ => latticeWeightR n * ‖h (Real.log (x / n))‖) := by
+  have hH : 0 ≤ H := by
+    have := (norm_nonneg _).trans (hdecay 0)
+    simpa using this
+  refine Summable.of_nonneg_of_le (fun n => mul_nonneg (latticeWeightR_nonneg n) (norm_nonneg _))
+    (fun n => ?_) ((summable_nat_rpow_neg (by linarith : 1 < b + 1 / 2)).mul_left
+      (H * Real.exp (b * Real.log x)))
+  rcases Nat.eq_zero_or_pos n with rfl | hn
+  · rw [show latticeWeightR 0 = 0 by simp [latticeWeightR], zero_mul]
+    exact mul_nonneg (mul_nonneg hH (Real.exp_pos _).le) (Real.rpow_nonneg (Nat.cast_nonneg 0) _)
+  · have hn' : (0 : ℝ) < n := Nat.cast_pos.mpr hn
+    have hlog : Real.log (x / n) = Real.log x - Real.log n := Real.log_div hx.ne' hn'.ne'
+    have hb0 : 0 ≤ b := by linarith
+    have h1 : ‖h (Real.log (x / n))‖ ≤ H * Real.exp (-b * (Real.log n - Real.log x)) := by
+      refine (hdecay _).trans (mul_le_mul_of_nonneg_left (Real.exp_le_exp.mpr ?_) hH)
+      rw [hlog, abs_sub_comm]
+      nlinarith [le_abs_self (Real.log n - Real.log x)]
+    calc latticeWeightR n * ‖h (Real.log (x / n))‖
+        ≤ latticeWeightR n * (H * Real.exp (-b * (Real.log n - Real.log x))) :=
+          mul_le_mul_of_nonneg_left h1 (latticeWeightR_nonneg n)
+      _ = H * Real.exp (b * Real.log x) * (latticeWeightR n * Real.exp (-b * Real.log n)) := by
+          rw [show -b * (Real.log n - Real.log x) = b * Real.log x + -b * Real.log n by ring,
+            Real.exp_add]
+          ring
+      _ = H * Real.exp (b * Real.log x) * (n : ℝ) ^ (-(b + 1 / 2)) := by
+          rw [latticeWeightR_rpow (by linarith) n]
+
+/-- toReal of a coordinate density as a real series. -/
+lemma positiveMixtureDensity_toReal {f : ℝ → ℝ} {x : ℝ}
+    (hs : Summable (fun n : ℕ => latticeWeightR n * |f (Real.log (x / n))|)) :
+    (positiveMixtureDensity (fun t => ENNReal.ofReal (f t)) x).toReal =
+      (Real.sqrt x)⁻¹ * ∑' n : ℕ, latticeWeightR n * max (f (Real.log (x / n))) 0 := by
+  have hterm (n : ℕ) : latticeWeight n * ENNReal.ofReal (f (Real.log (x / n))) =
+      ENNReal.ofReal (latticeWeightR n * max (f (Real.log (x / n))) 0) := by
+    rcases le_total (f (Real.log (x / n))) 0 with h0 | h0
+    · rw [ENNReal.ofReal_of_nonpos h0, mul_zero, max_eq_right h0, mul_zero, ENNReal.ofReal_zero]
+    · rw [max_eq_left h0, latticeWeight_eq_ofReal,
+        ENNReal.ofReal_mul (latticeWeightR_nonneg n)]
+  have hnn (n : ℕ) : 0 ≤ latticeWeightR n * max (f (Real.log (x / n))) 0 :=
+    mul_nonneg (latticeWeightR_nonneg n) (le_max_right _ _)
+  have hsum : Summable (fun n : ℕ => latticeWeightR n * max (f (Real.log (x / n))) 0) :=
+    hs.of_nonneg_of_le hnn (fun n => mul_le_mul_of_nonneg_left
+      (max_le (le_abs_self _) (abs_nonneg _)) (latticeWeightR_nonneg n))
+  unfold positiveMixtureDensity
+  simp_rw [hterm]
+  rw [← ENNReal.ofReal_tsum_of_nonneg hnn hsum, ENNReal.toReal_mul,
+    ENNReal.toReal_ofReal (inv_nonneg.mpr (Real.sqrt_nonneg x)),
+    ENNReal.toReal_ofReal (tsum_nonneg hnn)]
+
+lemma positiveMixtureDensity_lt_top {f : ℝ → ℝ} {x : ℝ}
+    (hs : Summable (fun n : ℕ => latticeWeightR n * |f (Real.log (x / n))|)) :
+    positiveMixtureDensity (fun t => ENNReal.ofReal (f t)) x < ∞ := by
+  have hterm (n : ℕ) : latticeWeight n * ENNReal.ofReal (f (Real.log (x / n))) ≤
+      ENNReal.ofReal (latticeWeightR n * |f (Real.log (x / n))|) := by
+    rw [latticeWeight_eq_ofReal, ← ENNReal.ofReal_mul (latticeWeightR_nonneg n)]
+    exact ENNReal.ofReal_le_ofReal (mul_le_mul_of_nonneg_left (le_abs_self _)
+      (latticeWeightR_nonneg n))
+  unfold positiveMixtureDensity
+  refine ENNReal.mul_lt_top ENNReal.ofReal_lt_top (lt_of_le_of_lt (ENNReal.tsum_le_tsum hterm) ?_)
+  rw [← ENNReal.ofReal_tsum_of_nonneg (fun n => mul_nonneg (latticeWeightR_nonneg n)
+    (abs_nonneg _)) hs]
+  exact ENNReal.ofReal_lt_top
+
+/-- The actual mixture of h(t) dt has positive-axis density r_h (HT1.8): its four coordinate
+mixtures have the explicit densities D_i on (0,∞), each finite, and
+r_h = (D_0 - D_1) + i (D_2 - D_3) pointwise. -/
+theorem densityMixer_mixture_density {h : ℝ → ℂ} (hc : Continuous h) {H b : ℝ} (hb : 1 / 2 < b)
+    (hdecay : ∀ t, ‖h t‖ ≤ H * Real.exp (-b * |t|)) :
+    (∀ i : Fin 4, ∀ s : Set ℝ, MeasurableSet s → s ⊆ Ioi 0 →
+      positiveDilationMixture (mixingCoordinate (densityMixer h hc) i) s =
+        ∫⁻ x in s, positiveMixtureDensity
+          (fun t => ENNReal.ofReal (densityCoordinate h i t)) x) ∧
+    (∀ i : Fin 4, ∀ x : ℝ, 0 < x →
+      positiveMixtureDensity (fun t => ENNReal.ofReal (densityCoordinate h i t)) x < ∞) ∧
+    (∀ x : ℝ, 0 < x → mixtureDensity h x =
+      (((positiveMixtureDensity (fun t => ENNReal.ofReal (densityCoordinate h 0 t)) x).toReal -
+        (positiveMixtureDensity (fun t => ENNReal.ofReal (densityCoordinate h 1 t)) x).toReal :
+          ℝ) : ℂ) +
+      Complex.I * (((positiveMixtureDensity
+          (fun t => ENNReal.ofReal (densityCoordinate h 2 t)) x).toReal -
+        (positiveMixtureDensity (fun t => ENNReal.ofReal (densityCoordinate h 3 t)) x).toReal :
+          ℝ) : ℂ)) := by
+  have hcoordsum (i : Fin 4) {x : ℝ} (hx : 0 < x) :
+      Summable (fun n : ℕ => latticeWeightR n * |densityCoordinate h i (Real.log (x / n))|) :=
+    (mixtureDensity_summable hb hdecay hx).of_nonneg_of_le
+      (fun n => mul_nonneg (latticeWeightR_nonneg n) (abs_nonneg _))
+      (fun n => mul_le_mul_of_nonneg_left (norm_densityCoordinate_le h i _)
+        (latticeWeightR_nonneg n))
+  refine ⟨fun i s hs hpos => ?_, fun i x hx => positiveMixtureDensity_lt_top (hcoordsum i hx),
+    fun x hx => ?_⟩
+  · rw [mixingCoordinate_densityMixer]
+    exact positiveDilationMixture_withDensity_apply
+      (densityCoordinate_measurable h hc i).ennreal_ofReal hs hpos
+  · rw [positiveMixtureDensity_toReal (hcoordsum 0 hx), positiveMixtureDensity_toReal (hcoordsum 1 hx),
+      positiveMixtureDensity_toReal (hcoordsum 2 hx), positiveMixtureDensity_toReal (hcoordsum 3 hx)]
+    have hS (i : Fin 4) : Summable (fun n : ℕ => latticeWeightR n *
+        max (densityCoordinate h i (Real.log (x / n))) 0) :=
+      (hcoordsum i hx).of_nonneg_of_le
+        (fun n => mul_nonneg (latticeWeightR_nonneg n) (le_max_right _ _))
+        (fun n => mul_le_mul_of_nonneg_left (max_le (le_abs_self _) (abs_nonneg _))
+          (latticeWeightR_nonneg n))
+    have hre : (∑' n : ℕ, latticeWeightR n * max (densityCoordinate h 0 (Real.log (x / n))) 0) -
+        ∑' n : ℕ, latticeWeightR n * max (densityCoordinate h 1 (Real.log (x / n))) 0 =
+        ∑' n : ℕ, latticeWeightR n * (h (Real.log (x / n))).re := by
+      rw [← (hS 0).tsum_sub (hS 1)]
+      refine tsum_congr (fun n => ?_)
+      rw [densityCoordinate_zero, densityCoordinate_one, ← mul_sub,
+        max_zero_sub_max_neg_zero_eq_self]
+    have him : (∑' n : ℕ, latticeWeightR n * max (densityCoordinate h 2 (Real.log (x / n))) 0) -
+        ∑' n : ℕ, latticeWeightR n * max (densityCoordinate h 3 (Real.log (x / n))) 0 =
+        ∑' n : ℕ, latticeWeightR n * (h (Real.log (x / n))).im := by
+      rw [← (hS 2).tsum_sub (hS 3)]
+      refine tsum_congr (fun n => ?_)
+      rw [densityCoordinate_two, densityCoordinate_three, ← mul_sub,
+        max_zero_sub_max_neg_zero_eq_self]
+    have hTsum : Summable (fun n : ℕ => (latticeWeightR n : ℂ) * h (Real.log (x / n))) := by
+      refine Summable.of_norm ?_
+      simpa [norm_mul, Complex.norm_real, Real.norm_eq_abs,
+        abs_of_nonneg (latticeWeightR_nonneg _)] using mixtureDensity_summable hb hdecay hx
+    obtain ⟨h1, h2⟩ := (Complex.hasSum_iff _ _).mp hTsum.hasSum
+    have hTre : (∑' n : ℕ, (latticeWeightR n : ℂ) * h (Real.log (x / n))).re =
+        ∑' n : ℕ, latticeWeightR n * (h (Real.log (x / n))).re := by
+      rw [← h1.tsum_eq]
+      exact tsum_congr (fun n => Complex.re_ofReal_mul _ _)
+    have hTim : (∑' n : ℕ, (latticeWeightR n : ℂ) * h (Real.log (x / n))).im =
+        ∑' n : ℕ, latticeWeightR n * (h (Real.log (x / n))).im := by
+      rw [← h2.tsum_eq]
+      exact tsum_congr (fun n => Complex.im_ofReal_mul _ _)
+    rw [← mul_sub, ← mul_sub, hre, him]
+    unfold mixtureDensity
+    apply Complex.ext
+    · simp [Complex.mul_re, hTre]
+    · simp [Complex.mul_im, hTim]
+
+
+/-! ### Exact leakage with genuine complex variations (HT1.7) -/
+
+/-- A real rotation of a finite complex measure has no larger variation. -/
+lemma complexMeasure_rotation_variation_le (c : ComplexMeasure ℝ) {α β : ℝ}
+    (hαβ : α ^ 2 + β ^ 2 ≤ 1) :
+    (α • ComplexMeasure.re c + β • ComplexMeasure.im c).variation ≤ c.variation := by
+  refine VectorMeasure.variation_le_of_forall_enorm_le (fun E hE => ?_)
+  refine le_trans ?_ (VectorMeasure.enorm_measure_le_variation c E)
+  rw [← ofReal_norm, ← ofReal_norm]
+  refine ENNReal.ofReal_le_ofReal ?_
+  simp only [add_apply, smul_apply, ComplexMeasure.re_apply,
+    ComplexMeasure.im_apply, smul_eq_mul, Real.norm_eq_abs]
+  have hz : ‖c E‖ ^ 2 = (c E).re ^ 2 + (c E).im ^ 2 := by
+    rw [Complex.sq_norm, Complex.normSq_apply]; ring
+  have hsq : (α * (c E).re + β * (c E).im) ^ 2 ≤ ‖c E‖ ^ 2 := by
+    rw [hz]
+    nlinarith [sq_nonneg (α * (c E).im - β * (c E).re), sq_nonneg (c E).re, sq_nonneg (c E).im]
+  exact abs_le.mpr (abs_le_of_sq_le_sq' hsq (norm_nonneg _))
+
+/-- Real integral against a compact Jordan restriction. -/
+lemma localSignedCompactRestriction_integral_real (μ : Zeta23.OPICA.LocallyFiniteSignedMeasure)
+    {K : Set ℝ} (hK : IsCompact K) {g : ℝ → ℝ} (hg : Measurable g) {C : ℝ}
+    (hgC : ∀ x, |g x| ≤ C) (hsupp : ∀ x ∉ K, g x = 0) :
+    ∫ᵛ x, g x ∂<•localSignedCompactRestriction μ K hK =
+      (∫ x, g x ∂μ.positive) - ∫ x, g x ∂μ.negative := by
+  have : IsFiniteMeasure (μ.positive.restrict K) :=
+    isFiniteMeasure_restrict.mpr hK.measure_lt_top.ne
+  have : IsFiniteMeasure (μ.negative.restrict K) :=
+    isFiniteMeasure_restrict.mpr hK.measure_lt_top.ne
+  have hp : (μ.positive.restrict K).toSignedMeasure.Integrable g := by
+    simp only [VectorMeasure.Integrable, Measure.variation_toSignedMeasure]
+    exact Integrable.of_bound hg.aestronglyMeasurable C (Eventually.of_forall hgC)
+  have hn : (μ.negative.restrict K).toSignedMeasure.Integrable g := by
+    simp only [VectorMeasure.Integrable, Measure.variation_toSignedMeasure]
+    exact Integrable.of_bound hg.aestronglyMeasurable C (Eventually.of_forall hgC)
+  rw [localSignedCompactRestriction, VectorMeasure.integral_sub_vectorMeasure hp hn,
+    VectorMeasure.integral_toSignedMeasure, VectorMeasure.integral_toSignedMeasure,
+    setIntegral_eq_integral_of_forall_compl_eq_zero hsupp,
+    setIntegral_eq_integral_of_forall_compl_eq_zero hsupp]
+
+/-- Exact complex integral bound for a nonnegative real weight: the complex number
+∫ g dν (assembled from the Jordan parts) has modulus at most ∫ g d|ν|, with |ν| the genuine
+complex variation. -/
+lemma complexIntegral_real_norm_le (μ : LocallyFiniteComplexMeasure) {K : Set ℝ}
+    (hK : IsCompact K) {g : ℝ → ℝ} (hg : Measurable g) (hg0 : ∀ x, 0 ≤ g x) {C : ℝ}
+    (hgC : ∀ x, g x ≤ C) (hsupp : ∀ x ∉ K, g x = 0) :
+    ENNReal.ofReal ‖((((∫ x, g x ∂μ.rePart.positive) - ∫ x, g x ∂μ.rePart.negative : ℝ)) : ℂ) +
+        I * ((((∫ x, g x ∂μ.imPart.positive) - ∫ x, g x ∂μ.imPart.negative : ℝ)) : ℂ)‖ ≤
+      ∫⁻ x, ENNReal.ofReal (g x) ∂μ.totalVariation := by
+  set c := μ.compactRestriction K hK with hc
+  have hgC' : ∀ x, |g x| ≤ C := fun x => by rw [abs_of_nonneg (hg0 x)]; exact hgC x
+  set A : ℝ := (∫ x, g x ∂μ.rePart.positive) - ∫ x, g x ∂μ.rePart.negative with hA
+  set B : ℝ := (∫ x, g x ∂μ.imPart.positive) - ∫ x, g x ∂μ.imPart.negative with hB
+  have hcA : ∫ᵛ x, g x ∂<•(ComplexMeasure.re c) = A := by
+    rw [hc, LocallyFiniteComplexMeasure.compactRestriction_re]
+    exact localSignedCompactRestriction_integral_real _ hK hg hgC' hsupp
+  have hcB : ∫ᵛ x, g x ∂<•(ComplexMeasure.im c) = B := by
+    rw [hc, LocallyFiniteComplexMeasure.compactRestriction_im]
+    exact localSignedCompactRestriction_integral_real _ hK hg hgC' hsupp
+  set z : ℂ := (A : ℂ) + I * (B : ℂ) with hz
+  have hzre : z.re = A := by simp [hz]
+  have hzim : z.im = B := by simp [hz]
+  by_cases hz0 : z = 0
+  · rw [hz0, norm_zero, ENNReal.ofReal_zero]
+    exact zero_le
+  have hnz : 0 < ‖z‖ := norm_pos_iff.mpr hz0
+  have hnormsq : ‖z‖ ^ 2 = A ^ 2 + B ^ 2 := by
+    rw [Complex.sq_norm, Complex.normSq_apply, hzre, hzim]; ring
+  set α : ℝ := A / ‖z‖ with hα
+  set β : ℝ := B / ‖z‖ with hβ
+  have hαβ : α ^ 2 + β ^ 2 ≤ 1 := by
+    rw [hα, hβ, div_pow, div_pow, ← add_div, ← hnormsq, div_self (by positivity)]
+  set ρ : SignedMeasure ℝ := α • ComplexMeasure.re c + β • ComplexMeasure.im c with hρ
+  have hfinre : IsFiniteMeasure (ComplexMeasure.re c).variation := inferInstance
+  have hfinim : IsFiniteMeasure (ComplexMeasure.im c).variation := inferInstance
+  have hire : (ComplexMeasure.re c).Integrable g :=
+    Integrable.of_bound hg.aestronglyMeasurable C (Eventually.of_forall hgC')
+  have hiim : (ComplexMeasure.im c).Integrable g :=
+    Integrable.of_bound hg.aestronglyMeasurable C (Eventually.of_forall hgC')
+  have hint : ∫ᵛ x, g x ∂<•ρ = ‖z‖ := by
+    rw [hρ, VectorMeasure.integral_add_vectorMeasure (hire.smul_vectorMeasure α)
+      (hiim.smul_vectorMeasure β), VectorMeasure.integral_smul_vectorMeasure,
+      VectorMeasure.integral_smul_vectorMeasure, hcA, hcB, smul_eq_mul, smul_eq_mul, hα, hβ]
+    field_simp
+    rw [← hnormsq]
+  have hbound := VectorMeasure.enorm_integral_le_lintegral_enorm_transpose
+    (μ := ρ) (f := g) (B := (ContinuousLinearMap.lsmul ℝ ℝ).flip)
+  rw [VectorMeasure.variation_transpose_lsmul_flip, hint] at hbound
+  calc ENNReal.ofReal ‖z‖ = ‖(‖z‖ : ℝ)‖ₑ := by rw [Real.enorm_eq_ofReal (norm_nonneg _)]
+    _ ≤ ∫⁻ x, ‖g x‖ₑ ∂ρ.variation := hbound
+    _ = ∫⁻ x, ENNReal.ofReal (g x) ∂ρ.variation :=
+        lintegral_congr (fun x => Real.enorm_eq_ofReal (hg0 x))
+    _ ≤ ∫⁻ x, ENNReal.ofReal (g x) ∂c.variation :=
+        lintegral_mono' (complexMeasure_rotation_variation_le c hαβ) le_rfl
+    _ ≤ ∫⁻ x, ENNReal.ofReal (g x) ∂μ.totalVariation :=
+        lintegral_mono' (μ.compactRestriction_variation_le_totalVariation K hK) le_rfl
+
+/-- The weighted logarithmic transport of a bounded negative-axis set, as a real weight. -/
+lemma positiveLogMeasure_apply_eq_lintegral (m : Measure ℝ) {G : Set ℝ} (hG : MeasurableSet G) :
+    positiveLogMeasure m G = ∫⁻ x, ENNReal.ofReal
+      ((Ioi 0 ∩ Real.log ⁻¹' G).indicator (fun x => (Real.sqrt x)⁻¹) x) ∂m := by
+  rw [← lintegral_indicator_one hG,
+    lintegral_positiveLogMeasure m (f := G.indicator (1 : ℝ → ℝ≥0∞)) (measurable_one.indicator hG)]
+  refine lintegral_congr (fun x => ?_)
+  by_cases hx : 0 < x
+  · by_cases hl : Real.log x ∈ G
+    · rw [Set.indicator_of_mem (show x ∈ Ioi (0 : ℝ) from hx),
+        Set.indicator_of_mem (show x ∈ Ioi 0 ∩ Real.log ⁻¹' G from ⟨hx, hl⟩),
+        Set.indicator_of_mem hl, Pi.one_apply, mul_one, positiveLogWeight, if_pos hx]
+    · rw [Set.indicator_of_mem (show x ∈ Ioi (0 : ℝ) from hx),
+        Set.indicator_of_notMem (show x ∉ Ioi 0 ∩ Real.log ⁻¹' G from fun h => hl h.2),
+        Set.indicator_of_notMem hl, mul_zero, ENNReal.ofReal_zero]
+  · rw [Set.indicator_of_notMem (show x ∉ Ioi (0 : ℝ) from hx),
+      Set.indicator_of_notMem (show x ∉ Ioi 0 ∩ Real.log ⁻¹' G from fun h => hx h.1),
+      ENNReal.ofReal_zero]
+
+/-- The log transport of the actual complex measure is dominated by the transport of its
+genuine variation, on bounded sets of the closed negative axis. -/
+lemma positiveLogMeasure_complex_bound (ν : LocallyFiniteComplexMeasure) {G : Set ℝ}
+    (hG : MeasurableSet G) {R : ℝ} (hGR : G ⊆ Icc (-R) 0) :
+    ENNReal.ofReal ‖((((positiveLogMeasure ν.rePart.positive G).toReal -
+          (positiveLogMeasure ν.rePart.negative G).toReal : ℝ)) : ℂ) +
+        I * ((((positiveLogMeasure ν.imPart.positive G).toReal -
+          (positiveLogMeasure ν.imPart.negative G).toReal : ℝ)) : ℂ)‖ ≤
+      positiveLogMeasure ν.totalVariation G := by
+  set g : ℝ → ℝ := (Ioi 0 ∩ Real.log ⁻¹' G).indicator (fun x => (Real.sqrt x)⁻¹) with hgdef
+  have hS : MeasurableSet (Ioi (0 : ℝ) ∩ Real.log ⁻¹' G) :=
+    measurableSet_Ioi.inter (Real.measurable_log hG)
+  have hgm : Measurable g := (by fun_prop : Measurable fun x : ℝ => (Real.sqrt x)⁻¹).indicator hS
+  have hg0 : ∀ x, 0 ≤ g x := fun x => Set.indicator_nonneg (fun _ _ => by positivity) x
+  have hmemK : ∀ x ∈ Ioi (0 : ℝ) ∩ Real.log ⁻¹' G, x ∈ Icc (Real.exp (-R)) 1 := by
+    intro x hx
+    have hl := hGR hx.2
+    have hx0 : (0 : ℝ) < x := hx.1
+    refine ⟨?_, ?_⟩
+    · rw [← Real.exp_log hx0]; exact Real.exp_le_exp.mpr hl.1
+    · rw [← Real.exp_log hx0, ← Real.exp_zero]; exact Real.exp_le_exp.mpr hl.2
+  have hsupp : ∀ x ∉ Icc (Real.exp (-R)) 1, g x = 0 :=
+    fun x hx => Set.indicator_of_notMem (fun h => hx (hmemK x h)) _
+  have hgC : ∀ x, g x ≤ Real.exp (R / 2) := by
+    intro x
+    by_cases hx : x ∈ Ioi (0 : ℝ) ∩ Real.log ⁻¹' G
+    · rw [hgdef, Set.indicator_of_mem hx]
+      have hK := hmemK x hx
+      have hsq : Real.exp (-R / 2) ≤ Real.sqrt x := by
+        rw [show -R / 2 = (-R) / 2 by ring, Real.exp_half]
+        exact Real.sqrt_le_sqrt hK.1
+      rw [inv_le_comm₀ (Real.sqrt_pos.mpr hx.1) (Real.exp_pos _), ← Real.exp_neg]
+      have h2 : -(R / 2) = -R / 2 := by ring
+      rw [h2]
+      exact hsq
+    · rw [hgdef, Set.indicator_of_notMem hx]; exact (Real.exp_pos _).le
+  have hval (m : Measure ℝ) : positiveLogMeasure m G = ∫⁻ x, ENNReal.ofReal (g x) ∂m :=
+    positiveLogMeasure_apply_eq_lintegral m hG
+  have hreal (m : Measure ℝ) : (positiveLogMeasure m G).toReal = ∫ x, g x ∂m := by
+    rw [hval, integral_eq_lintegral_of_nonneg_ae (Eventually.of_forall hg0)
+      hgm.aestronglyMeasurable]
+  rw [hreal, hreal, hreal, hreal, hval]
+  exact complexIntegral_real_norm_le ν isCompact_Icc hgm hg0 hgC hsupp
+
+/-- Real form of a lattice convolution value. -/
+lemma latticeMeasure_conv_toReal (w : ℕ → ℝ≥0∞) (ρ : Measure ℝ) [SFinite ρ] {F : Set ℝ}
+    (hF : MeasurableSet F) (hfin : (latticeMeasure w ∗ ρ) F ≠ ∞) :
+    Summable (fun k : ℕ => (w k).toReal * (ρ ((fun y => Real.log k + y) ⁻¹' F)).toReal) ∧
+    ((latticeMeasure w ∗ ρ) F).toReal =
+      ∑' k : ℕ, (w k).toReal * (ρ ((fun y => Real.log k + y) ⁻¹' F)).toReal := by
+  rw [latticeMeasure_conv_apply _ _ hF] at hfin ⊢
+  have hterm (k : ℕ) := ENNReal.ne_top_of_tsum_ne_top hfin k
+  refine ⟨?_, ?_⟩
+  · simpa only [ENNReal.toReal_mul] using ENNReal.summable_toReal hfin
+  · rw [ENNReal.tsum_toReal_eq hterm]
+    simp only [ENNReal.toReal_mul]
+
+lemma moebiusComb_add_eq_latticeMeasure :
+    moebiusPlusComb + moebiusMinusComb = latticeMeasure (fun k =>
+      (if ArithmeticFunction.moebius k = 1 then latticeWeight k else 0) +
+      (if ArithmeticFunction.moebius k = -1 then latticeWeight k else 0)) := by
+  unfold moebiusPlusComb moebiusMinusComb latticeMeasure
+  rw [Measure.sum_add_sum]
+  simp_rw [add_smul]
+
+lemma latticeShift_subset {F : Set ℝ} {R : ℝ} (hFR : F ⊆ Icc (-R) 0) (k : ℕ) :
+    (fun y => Real.log k + y) ⁻¹' F ⊆ Icc (-(R + Real.log k)) 0 := by
+  intro y hy
+  have h := hFR hy
+  have hk : 0 ≤ Real.log k := Real.log_natCast_nonneg k
+  simp only [mem_Icc] at h ⊢
+  constructor <;> linarith [h.1, h.2]
+
+/-- Causal Möbius expansion of a complex value on a bounded negative-axis set, bounded term by
+term by a dominating measure V of the transported complex values. -/
+lemma moebius_complex_value_bound
+    {P Q P' Q' ηp ηn ξp ξn V : Measure ℝ} [SFinite ηp] [SFinite ηn] [SFinite ξp] [SFinite ξn]
+    [SFinite V]
+    (hre : P + (moebiusPlusComb ∗ ηn + moebiusMinusComb ∗ ηp) =
+      Q + (moebiusPlusComb ∗ ηp + moebiusMinusComb ∗ ηn))
+    (him : P' + (moebiusPlusComb ∗ ξn + moebiusMinusComb ∗ ξp) =
+      Q' + (moebiusPlusComb ∗ ξp + moebiusMinusComb ∗ ξn))
+    (hη : ∀ G : Set ℝ, MeasurableSet G → ∀ R' : ℝ, G ⊆ Icc (-R') 0 →
+      ENNReal.ofReal ‖((((ηp G).toReal - (ηn G).toReal : ℝ)) : ℂ) +
+        I * ((((ξp G).toReal - (ξn G).toReal : ℝ)) : ℂ)‖ ≤ V G)
+    {F : Set ℝ} (hF : MeasurableSet F) {R : ℝ} (hFR : F ⊆ Icc (-R) 0)
+    (hP : P F ≠ ∞) (hQ : Q F ≠ ∞) (hP' : P' F ≠ ∞) (hQ' : Q' F ≠ ∞)
+    (h1 : (moebiusPlusComb ∗ ηp) F ≠ ∞) (h2 : (moebiusPlusComb ∗ ηn) F ≠ ∞)
+    (h3 : (moebiusMinusComb ∗ ηp) F ≠ ∞) (h4 : (moebiusMinusComb ∗ ηn) F ≠ ∞)
+    (h5 : (moebiusPlusComb ∗ ξp) F ≠ ∞) (h6 : (moebiusPlusComb ∗ ξn) F ≠ ∞)
+    (h7 : (moebiusMinusComb ∗ ξp) F ≠ ∞) (h8 : (moebiusMinusComb ∗ ξn) F ≠ ∞) :
+    ENNReal.ofReal ‖((((P F).toReal - (Q F).toReal : ℝ)) : ℂ) +
+        I * ((((P' F).toReal - (Q' F).toReal : ℝ)) : ℂ)‖ ≤
+      ((moebiusPlusComb + moebiusMinusComb) ∗ V) F := by
+  set wp : ℕ → ℝ≥0∞ := fun k => if ArithmeticFunction.moebius k = 1 then latticeWeight k else 0
+    with hwp
+  set wm : ℕ → ℝ≥0∞ := fun k => if ArithmeticFunction.moebius k = -1 then latticeWeight k else 0
+    with hwm
+  have hMp : moebiusPlusComb = latticeMeasure wp := rfl
+  have hMm : moebiusMinusComb = latticeMeasure wm := rfl
+  set sh : ℕ → Set ℝ := fun k => (fun y => Real.log k + y) ⁻¹' F with hsh
+  -- real forms of the eight lattice values
+  obtain ⟨s1, e1⟩ := latticeMeasure_conv_toReal wp ηp hF (hMp ▸ h1)
+  obtain ⟨s2, e2⟩ := latticeMeasure_conv_toReal wp ηn hF (hMp ▸ h2)
+  obtain ⟨s3, e3⟩ := latticeMeasure_conv_toReal wm ηp hF (hMm ▸ h3)
+  obtain ⟨s4, e4⟩ := latticeMeasure_conv_toReal wm ηn hF (hMm ▸ h4)
+  obtain ⟨s5, e5⟩ := latticeMeasure_conv_toReal wp ξp hF (hMp ▸ h5)
+  obtain ⟨s6, e6⟩ := latticeMeasure_conv_toReal wp ξn hF (hMp ▸ h6)
+  obtain ⟨s7, e7⟩ := latticeMeasure_conv_toReal wm ξp hF (hMm ▸ h7)
+  obtain ⟨s8, e8⟩ := latticeMeasure_conv_toReal wm ξn hF (hMm ▸ h8)
+  -- the real Jordan identities at F
+  have hreF := congrArg (fun m : Measure ℝ => (m F).toReal) hre
+  have himF := congrArg (fun m : Measure ℝ => (m F).toReal) him
+  simp only [Measure.add_apply] at hreF himF
+  rw [ENNReal.toReal_add hP (ENNReal.add_ne_top.mpr ⟨h2, h3⟩), ENNReal.toReal_add h2 h3,
+    ENNReal.toReal_add hQ (ENNReal.add_ne_top.mpr ⟨h1, h4⟩), ENNReal.toReal_add h1 h4] at hreF
+  rw [ENNReal.toReal_add hP' (ENNReal.add_ne_top.mpr ⟨h6, h7⟩), ENNReal.toReal_add h6 h7,
+    ENNReal.toReal_add hQ' (ENNReal.add_ne_top.mpr ⟨h5, h8⟩), ENNReal.toReal_add h5 h8] at himF
+  rw [hMp, hMm] at hreF himF
+  rw [e1, e2, e3, e4] at hreF
+  rw [e5, e6, e7, e8] at himF
+  set m : ℕ → ℝ := fun k => (wp k).toReal - (wm k).toReal with hm
+  set u : ℕ → ℝ := fun k => (ηp (sh k)).toReal - (ηn (sh k)).toReal with hu
+  set v : ℕ → ℝ := fun k => (ξp (sh k)).toReal - (ξn (sh k)).toReal with hv
+  have hsu : Summable (fun k => m k * u k) := by
+    have := ((s1.add s4).sub s2).sub s3
+    refine this.congr (fun k => ?_)
+    simp only [hm, hu, hsh]; ring
+  have hsv : Summable (fun k => m k * v k) := by
+    have := ((s5.add s8).sub s6).sub s7
+    refine this.congr (fun k => ?_)
+    simp only [hm, hv, hsh]; ring
+  have hA : (P F).toReal - (Q F).toReal = ∑' k, m k * u k := by
+    have hcomb : ∑' k, m k * u k = (∑' k, (wp k).toReal * (ηp (sh k)).toReal) +
+        (∑' k, (wm k).toReal * (ηn (sh k)).toReal) -
+        (∑' k, (wp k).toReal * (ηn (sh k)).toReal) -
+        (∑' k, (wm k).toReal * (ηp (sh k)).toReal) := by
+      rw [← s1.tsum_add s4, ← (s1.add s4).tsum_sub s2, ← ((s1.add s4).sub s2).tsum_sub s3]
+      refine tsum_congr (fun k => ?_)
+      simp only [hm, hu]; ring
+    rw [hcomb]
+    linarith
+  have hB : (P' F).toReal - (Q' F).toReal = ∑' k, m k * v k := by
+    have hcomb : ∑' k, m k * v k = (∑' k, (wp k).toReal * (ξp (sh k)).toReal) +
+        (∑' k, (wm k).toReal * (ξn (sh k)).toReal) -
+        (∑' k, (wp k).toReal * (ξn (sh k)).toReal) -
+        (∑' k, (wm k).toReal * (ξp (sh k)).toReal) := by
+      rw [← s5.tsum_add s8, ← (s5.add s8).tsum_sub s6, ← ((s5.add s8).sub s6).tsum_sub s7]
+      refine tsum_congr (fun k => ?_)
+      simp only [hm, hv]; ring
+    rw [hcomb]
+    linarith
+  -- complex series
+  set c : ℕ → ℂ := fun k => ((u k : ℝ) : ℂ) + I * ((v k : ℝ) : ℂ) with hc
+  have hterm (k : ℕ) : ((m k * u k : ℝ) : ℂ) + I * ((m k * v k : ℝ) : ℂ) = (m k : ℂ) * c k := by
+    simp only [hc]; push_cast; ring
+  have hz : HasSum (fun k => (m k : ℂ) * c k)
+      ((((P F).toReal - (Q F).toReal : ℝ) : ℂ) + I * (((P' F).toReal - (Q' F).toReal : ℝ) : ℂ)) := by
+    rw [hA, hB]
+    have h1' := (Complex.hasSum_ofReal.mpr hsu.hasSum)
+    have h2' := (Complex.hasSum_ofReal.mpr hsv.hasSum).mul_left I
+    exact (h1'.add h2').congr_fun (fun k => (hterm k).symm)
+  have hnormc (k : ℕ) : ‖(m k : ℂ) * c k‖ ≤ |m k * u k| + |m k * v k| := by
+    rw [← hterm k]
+    refine (norm_add_le _ _).trans ?_
+    simp only [Complex.norm_real, Real.norm_eq_abs, norm_mul, Complex.norm_I, one_mul, abs_mul,
+      le_refl]
+  have hsn : Summable (fun k => ‖(m k : ℂ) * c k‖) :=
+    (hsu.abs.add hsv.abs).of_nonneg_of_le (fun k => norm_nonneg _) hnormc
+  rw [← hz.tsum_eq]
+  refine le_trans (ENNReal.ofReal_le_ofReal (norm_tsum_le_tsum_norm hsn)) ?_
+  rw [ENNReal.ofReal_tsum_of_nonneg (fun k => norm_nonneg _) hsn, moebiusComb_add_eq_latticeMeasure,
+    latticeMeasure_conv_apply _ _ hF]
+  refine ENNReal.tsum_le_tsum (fun k => ?_)
+  have hwpf : wp k ≠ ∞ := by
+    simp only [hwp, latticeWeight]; split_ifs <;> simp
+  have hwmf : wm k ≠ ∞ := by
+    simp only [hwm, latticeWeight]; split_ifs <;> simp
+  rw [norm_mul, Complex.norm_real, Real.norm_eq_abs, ENNReal.ofReal_mul (abs_nonneg _)]
+  refine mul_le_mul ?_ ?_ zero_le zero_le
+  · have habs : |m k| ≤ (wp k).toReal + (wm k).toReal := by
+      simp only [hm]
+      rw [abs_le]
+      constructor <;> linarith [ENNReal.toReal_nonneg (a := wp k), ENNReal.toReal_nonneg (a := wm k)]
+    calc ENNReal.ofReal |m k| ≤ ENNReal.ofReal ((wp k).toReal + (wm k).toReal) :=
+          ENNReal.ofReal_le_ofReal habs
+      _ = wp k + wm k := by
+          rw [ENNReal.ofReal_add ENNReal.toReal_nonneg ENNReal.toReal_nonneg,
+            ENNReal.ofReal_toReal hwpf, ENNReal.ofReal_toReal hwmf]
+  · exact hη (sh k) (measurable_const_add _ hF) (R + Real.log k) (latticeShift_subset hFR k)
+
+lemma measure_le_weightedLogNorm (ρ : Measure ℝ) {a : ℝ} (ha : 0 ≤ a) {F : Set ℝ}
+    (hF : MeasurableSet F) (hneg : F ⊆ Iic 0) : ρ F ≤ weightedLogNorm a ρ := by
+  rw [← lintegral_indicator_one hF]
+  refine lintegral_mono (fun t => ?_)
+  by_cases ht : t ∈ F
+  · rw [Set.indicator_of_mem ht, Pi.one_apply, ← ENNReal.ofReal_one]
+    refine ENNReal.ofReal_le_ofReal (Real.one_le_exp ?_)
+    have : t ≤ 0 := hneg ht
+    nlinarith
+  · rw [Set.indicator_of_notMem ht]; exact zero_le
+
+/-- Exact weighted gap leakage with the genuine complex variations |σ| and |ν| (HT1.7). -/
+theorem complex_gap_leakage (σ : LocallyFiniteComplexMeasure) (a : ℝ) (ha : 1 / 2 < a)
+    (hm : mixingExponentialMoment a σ < ∞) :
+    ENNReal.ofReal ((riemannZeta ((2 * a + 1 : ℝ) : ℂ) / riemannZeta ((a + 1 / 2 : ℝ) : ℂ)).re) *
+        ∫⁻ t in Iio 0, ENNReal.ofReal (Real.exp (-a * t)) ∂σ.totalVariation ≤
+      ∫⁻ x in Ioo 0 1, ENNReal.ofReal (x ^ (-a - 1 / 2))
+        ∂(weightedDilationMixture σ a ha.le hm).totalVariation := by
+  have ha0 : 0 ≤ a := by linarith
+  have hs : 1 < a + 1 / 2 := by linarith
+  set ν := weightedDilationMixture σ a ha.le hm with hν
+  set S := ∑' n : ℕ, (|ArithmeticFunction.moebius n| : ℝ) * (n : ℝ) ^ (-(a + 1 / 2)) with hSdef
+  have hS : 0 < S := tsum_abs_moebius_rpow_pos hs
+  have hratio : (riemannZeta ((2 * a + 1 : ℝ) : ℂ) / riemannZeta ((a + 1 / 2 : ℝ) : ℂ)).re = S⁻¹ := by
+    rw [← zeta_ratio_re hs]; congr 3; ring_nf
+  have hMnorm : weightedLogNorm a (moebiusPlusComb + moebiusMinusComb) = ENNReal.ofReal S :=
+    weightedLogNorm_moebiusComb ha
+  obtain ⟨-, -, -, -, hinvre, hinvim, -, ⟨hηrp, hηrn, hηip, hηin⟩, -⟩ :=
+    weighted_mobius_inverse σ a ha hm
+  have hMp := (weightedLogNorm_moebiusComb_lt_top ha).1
+  have hMm := (weightedLogNorm_moebiusComb_lt_top ha).2
+  set W := positiveLogMeasure ν.totalVariation with hW
+  set V₀ := W.restrict (Iio 0) with hV₀
+  set Λ := (moebiusPlusComb + moebiusMinusComb) ∗ V₀ with hΛ
+  -- finiteness of the eight lattice values on bounded negative sets
+  have hconv {ρ : Measure ℝ} [SFinite ρ] (hρ : weightedLogNorm a ρ < ∞) {M : Measure ℝ}
+      (hM : weightedLogNorm a M < ∞) {F : Set ℝ} (hF : MeasurableSet F) (hneg : F ⊆ Iic 0) :
+      (M ∗ ρ) F ≠ ∞ := by
+    refine ne_top_of_le_ne_top ?_ (measure_le_weightedLogNorm _ ha0 hF hneg)
+    rw [weightedLogNorm_conv]
+    exact ENNReal.mul_ne_top hM.ne hρ.ne
+  -- the measure inequality on each compact window
+  have hwindow (n : ℕ) (A : Set ℝ) (hA : MeasurableSet A) :
+      σ.totalVariation (A ∩ Iio 0 ∩ localMeasureInterval n) ≤ Λ A := by
+    set K := localMeasureInterval n with hK
+    have hKc : IsCompact K := isCompact_Icc
+    set c := σ.compactRestriction K hKc with hc
+    have hvar : (c.restrict (Iio 0)).variation ≤ Λ := by
+      refine VectorMeasure.variation_le_of_forall_enorm_le (fun E hE => ?_)
+      set F := E ∩ Iio 0 ∩ K with hFdef
+      have hFm : MeasurableSet F := (hE.inter measurableSet_Iio).inter hKc.measurableSet
+      have hFR : F ⊆ Icc (-(n : ℝ)) 0 := fun y hy => ⟨hy.2.1, hy.1.2.le⟩
+      have hFneg : F ⊆ Iic 0 := fun y hy => (show y < 0 from hy.1.2).le
+      have hcE : (c.restrict (Iio 0)) E =
+          (((σ.rePart.positive F).toReal - (σ.rePart.negative F).toReal : ℝ) : ℂ) +
+            I * (((σ.imPart.positive F).toReal - (σ.imPart.negative F).toReal : ℝ) : ℂ) := by
+        rw [VectorMeasure.restrict_apply _ measurableSet_Iio hE]
+        apply Complex.ext
+        · show (ComplexMeasure.re c) (E ∩ Iio 0) = _
+          rw [hc, LocallyFiniteComplexMeasure.compactRestriction_re,
+            localSignedCompactRestriction_apply _ _ hKc _ (hE.inter measurableSet_Iio)]
+          simp [Measure.real, Measure.restrict_apply (hE.inter measurableSet_Iio), hFdef]
+        · show (ComplexMeasure.im c) (E ∩ Iio 0) = _
+          rw [hc, LocallyFiniteComplexMeasure.compactRestriction_im,
+            localSignedCompactRestriction_apply _ _ hKc _ (hE.inter measurableSet_Iio)]
+          simp [Measure.real, Measure.restrict_apply (hE.inter measurableSet_Iio), hFdef]
+      rw [hcE, ← ofReal_norm]
+      have hfinK (m : Measure ℝ) [IsLocallyFiniteMeasure m] : m F ≠ ∞ :=
+        ne_top_of_le_ne_top (hKc.measure_lt_top.ne) (measure_mono inter_subset_right)
+      have hbound := moebius_complex_value_bound (V := W) hinvre hinvim
+        (fun G hG R' hGR => positiveLogMeasure_complex_bound ν hG hGR) hFm hFR
+        (hfinK _) (hfinK _) (hfinK _) (hfinK _)
+        (hconv hηrp hMp hFm hFneg) (hconv hηrn hMp hFm hFneg)
+        (hconv hηrp hMm hFm hFneg) (hconv hηrn hMm hFm hFneg)
+        (hconv hηip hMp hFm hFneg) (hconv hηin hMp hFm hFneg)
+        (hconv hηip hMm hFm hFneg) (hconv hηin hMm hFm hFneg)
+      refine hbound.trans ?_
+      have hcaus := latticeMeasure_conv_restrict_Iio (fun k =>
+        (if ArithmeticFunction.moebius k = 1 then latticeWeight k else 0) +
+        (if ArithmeticFunction.moebius k = -1 then latticeWeight k else 0)) (by simp) W
+      rw [← moebiusComb_add_eq_latticeMeasure] at hcaus
+      calc ((moebiusPlusComb + moebiusMinusComb) ∗ W) F
+          = (((moebiusPlusComb + moebiusMinusComb) ∗ W).restrict (Iio 0)) F := by
+            rw [Measure.restrict_apply hFm, Set.inter_eq_left.mpr (fun y hy => hy.1.2)]
+        _ ≤ Λ F := Measure.le_iff'.mp hcaus F
+        _ ≤ Λ E := measure_mono (fun y hy => hy.1.1)
+    rw [VectorMeasure.variation_restrict measurableSet_Iio, hc,
+      ← LocallyFiniteComplexMeasure.totalVariation_restrict_compact] at hvar
+    have := Measure.le_iff'.mp hvar A
+    rw [Measure.restrict_apply hA, Measure.restrict_apply (hA.inter measurableSet_Iio)] at this
+    exact this
+  have hle : σ.totalVariation.restrict (Iio 0) ≤ Λ := by
+    refine Measure.le_iff.mpr (fun A hA => ?_)
+    rw [Measure.restrict_apply hA]
+    have hU : A ∩ Iio 0 = ⋃ n : ℕ, A ∩ Iio 0 ∩ localMeasureInterval n := by
+      rw [← Set.inter_iUnion, localMeasureInterval_cover, Set.inter_univ]
+    have hmono : Monotone (fun n : ℕ => A ∩ Iio 0 ∩ localMeasureInterval n) := by
+      intro i j hij x hx
+      refine ⟨hx.1, ?_⟩
+      have hij' : (i : ℝ) ≤ j := by exact_mod_cast hij
+      exact ⟨by linarith [hx.2.1], by linarith [hx.2.2]⟩
+    rw [hU, hmono.measure_iUnion]
+    exact iSup_le (fun n => hwindow n A hA)
+  -- integrate the weight
+  have hint : ∫⁻ t in Iio 0, ENNReal.ofReal (Real.exp (-a * t)) ∂σ.totalVariation ≤
+      ENNReal.ofReal S * ∫⁻ x in Ioo 0 1, ENNReal.ofReal (x ^ (-a - 1 / 2)) ∂ν.totalVariation := by
+    calc ∫⁻ t in Iio 0, ENNReal.ofReal (Real.exp (-a * t)) ∂σ.totalVariation
+        ≤ ∫⁻ t, ENNReal.ofReal (Real.exp (-a * t)) ∂Λ := lintegral_mono' hle le_rfl
+      _ = weightedLogNorm a (moebiusPlusComb + moebiusMinusComb) * weightedLogNorm a V₀ :=
+          weightedLogNorm_conv a _ _
+      _ = _ := by
+          rw [hMnorm, weightedLogNorm, hV₀, hW, setLIntegral_positiveLogMeasure_Iio]
+  calc ENNReal.ofReal ((riemannZeta ((2 * a + 1 : ℝ) : ℂ) /
+        riemannZeta ((a + 1 / 2 : ℝ) : ℂ)).re) *
+        ∫⁻ t in Iio 0, ENNReal.ofReal (Real.exp (-a * t)) ∂σ.totalVariation
+      ≤ ENNReal.ofReal S⁻¹ * (ENNReal.ofReal S *
+          ∫⁻ x in Ioo 0 1, ENNReal.ofReal (x ^ (-a - 1 / 2)) ∂ν.totalVariation) := by
+        rw [hratio]; exact mul_le_mul le_rfl hint zero_le zero_le
+    _ = _ := by
+        rw [← mul_assoc, ← ENNReal.ofReal_mul (inv_nonneg.mpr hS.le), inv_mul_cancel₀ hS.ne',
+          ENNReal.ofReal_one, one_mul]
+
+
+/-- Original R1-HT1 root: exact weighted gap leakage. (1) Measure form (HT1.7): for
+every complex mixer with exponential moment a > 1/2 and its genuine mixture ν,
+∫_(0,1) x^(-a-1/2) d|ν| ≥ ζ(2a+1)/ζ(a+1/2) ∫_(-∞,0) e^(-a t) d|σ| with the genuine complex
+variations |σ|, |ν|; the same exact bound holds for each real Jordan part and for the
+coordinate variation control. (2) Continuous-density supremum form (HT1.9) at the endpoint
+exponent b for the paper's density r_h, without any b-moment. (3) The measure form applies to
+h dt at every a ∈ (1/2, b), while (4) the endpoint b-moment may be infinite under the supremum
+hypotheses. (5) r_h is the actual density: for the genuine mixer h(t) dt the four coordinate
+mixtures have explicit finite densities D_i on (0,∞) and r_h = (D_0 - D_1) + i (D_2 - D_3). -/
 theorem weighted_gap_leakage :
     (∀ (σ : LocallyFiniteComplexMeasure) (a : ℝ) (ha : 1 / 2 < a)
         (hm : mixingExponentialMoment a σ < ∞),
+      ENNReal.ofReal ((riemannZeta ((2 * a + 1 : ℝ) : ℂ) / riemannZeta ((a + 1 / 2 : ℝ) : ℂ)).re) *
+          ∫⁻ t in Iio 0, ENNReal.ofReal (Real.exp (-a * t)) ∂σ.totalVariation ≤
+        ∫⁻ x in Ioo 0 1, ENNReal.ofReal (x ^ (-a - 1 / 2))
+          ∂(weightedDilationMixture σ a ha.le hm).totalVariation ∧
       ENNReal.ofReal ((riemannZeta ((2 * a + 1 : ℝ) : ℂ) / riemannZeta ((a + 1 / 2 : ℝ) : ℂ)).re) *
           ∫⁻ t in Iio 0, ENNReal.ofReal (Real.exp (-a * t)) ∂σ.rePart.totalVariation ≤
         ∫⁻ x in Ioo 0 1, ENNReal.ofReal (x ^ (-a - 1 / 2))
@@ -2210,10 +3029,30 @@ theorem weighted_gap_leakage :
       ∫⁻ t, ENNReal.ofReal (Real.exp (a * |t|) * ‖h t‖) < ∞) ∧
     (∀ b : ℝ, 1 / 2 < b → ∃ h : ℝ → ℂ, Continuous h ∧ (∀ t, h (-t) = h t) ∧
       (∀ t, ‖h t‖ ≤ 1 * Real.exp (-b * |t|)) ∧
-      ∫⁻ t, ENNReal.ofReal (Real.exp (b * |t|) * ‖h t‖) = ∞) := by
-  refine ⟨fun σ a ha hm => ?_, fun h H b hb hc he hd => density_gap_leakage_sup hb hc he hd,
+      ∫⁻ t, ENNReal.ofReal (Real.exp (b * |t|) * ‖h t‖) = ∞) ∧
+    (∀ (h : ℝ → ℂ) (hc : Continuous h) (H b : ℝ), 1 / 2 < b →
+      (∀ t, ‖h t‖ ≤ H * Real.exp (-b * |t|)) →
+      (∀ a : ℝ, a < b → mixingExponentialMoment a (densityMixer h hc) < ∞) ∧
+      (∀ i : Fin 4, ∀ s : Set ℝ, MeasurableSet s → s ⊆ Ioi 0 →
+        positiveDilationMixture (mixingCoordinate (densityMixer h hc) i) s =
+          ∫⁻ x in s, positiveMixtureDensity
+            (fun t => ENNReal.ofReal (densityCoordinate h i t)) x) ∧
+      (∀ i : Fin 4, ∀ x : ℝ, 0 < x →
+        positiveMixtureDensity (fun t => ENNReal.ofReal (densityCoordinate h i t)) x < ∞) ∧
+      (∀ x : ℝ, 0 < x → mixtureDensity h x =
+        (((positiveMixtureDensity (fun t => ENNReal.ofReal (densityCoordinate h 0 t)) x).toReal -
+          (positiveMixtureDensity (fun t => ENNReal.ofReal (densityCoordinate h 1 t)) x).toReal :
+            ℝ) : ℂ) +
+        Complex.I * (((positiveMixtureDensity
+            (fun t => ENNReal.ofReal (densityCoordinate h 2 t)) x).toReal -
+          (positiveMixtureDensity (fun t => ENNReal.ofReal (densityCoordinate h 3 t)) x).toReal :
+            ℝ) : ℂ))) := by
+  refine ⟨fun σ a ha hm => ⟨complex_gap_leakage σ a ha hm, ?_⟩,
+    fun h H b hb hc he hd => density_gap_leakage_sup hb hc he hd,
     fun h H a b hab hd => lintegral_exp_mul_abs_decay_lt_top hab hd,
-    fun b _ => ⟨_, endpoint_density_witness b⟩⟩
+    fun b _ => ⟨_, endpoint_density_witness b⟩,
+    fun h hc H b hb hd => ⟨fun a hab => densityMixer_moment hc hab hd,
+      densityMixer_mixture_density hc hb hd⟩⟩
   have hs : 1 < a + 1 / 2 := by linarith
   set S := ∑' n : ℕ, (|ArithmeticFunction.moebius n| : ℝ) * (n : ℝ) ^ (-(a + 1 / 2)) with hSdef
   have hS : 0 < S := tsum_abs_moebius_rpow_pos hs
