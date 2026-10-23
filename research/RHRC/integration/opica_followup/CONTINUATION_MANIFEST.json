@@ -219,6 +219,11 @@
       "sha256": "01f2f5d3c22aedcae2a3ec06b403129c78b7c76bf89b5673cd3b3e28968e9fe7"
     },
     {
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedZeroProfiles.lean",
+      "bytes": 9605,
+      "sha256": "33ad11294eda85f3b5b3bddb83287e5208ed4bb965d574e42c227ec0ef74a485"
+    },
+    {
       "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/checkpoint-validation/CHECKPOINT_VALIDATION.json",
       "bytes": 1805,
       "sha256": "7f6bc0477af3f8e3fd5757ed938694e94e2ff70a068852a24ea87d566a449beb"
@@ -4400,8 +4405,8 @@
     },
     {
       "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/run_candidate_checks.py",
-      "bytes": 6501,
-      "sha256": "ca8f59bcfd91d226fa6a0b067b6a40a0e9b455441e921e38707e79bcabe0a810"
+      "bytes": 6541,
+      "sha256": "c36640e7976806e421f13c23d40c14ad8aacd285a2408fe46f139a74246442cd"
     }
   ]
 }
