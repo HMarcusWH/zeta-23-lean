@@ -18,7 +18,7 @@ MODULES = ('MaskedNativeRate', 'ComplexLocalMeasures', 'AuxiliaryCompletions',
 CONSUMERS = ('ExpectedMasks', 'ExpectedComplex', 'ExpectedAuxiliary',
              'ExpectedMultiplicity', 'ExpectedComb', 'ExpectedFirstCell',
              'ExpectedWeighted', 'ExpectedNearGap', 'ExpectedNearGapLimit',
-             'ExpectedNormalizedLimit')
+             'ExpectedNormalizedLimit', 'ExpectedWeightedInverse')
 ALLOWED_AXIOMS = {'propext', 'Classical.choice', 'Quot.sound'}
 
 

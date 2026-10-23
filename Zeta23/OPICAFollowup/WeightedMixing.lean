@@ -3,10 +3,16 @@ import Mathlib.MeasureTheory.Integral.Prod
 import Mathlib.MeasureTheory.Measure.WithDensity
 import Mathlib.MeasureTheory.Integral.Bochner.ContinuousLinearMap
 import Mathlib.Tactic
+import Mathlib.MeasureTheory.Group.Convolution
+import Mathlib.NumberTheory.ArithmeticFunction.Moebius
+import Mathlib.NumberTheory.TsumDivisorsAntidiagonal
+import Mathlib.NumberTheory.EulerProduct.DirichletLSeries
+import Mathlib.Analysis.SpecialFunctions.ImproperIntegrals
 
-/-! Actual noncompact mixing foundation. No primary WeightedMixing root is
-claimed until the locally finite measure, absolute transport, and physical
-origin law have all been proved. -/
+/-! Actual noncompact mixing (R1-HT1): the locally finite weighted mixture with
+its Fourier transport and origin law, the weighted Möbius inverse in the
+positive lattice algebra, the noncompact sharp gap and the quantitative gap
+leakage in measure and continuous-density supremum forms. -/
 noncomputable section
 open Set MeasureTheory Filter Complex
 open scoped ENNReal Topology FourierTransform SchwartzMap
@@ -754,5 +760,1506 @@ theorem weighted_mixture_exists_fourier (sigma : LocallyFiniteComplexMeasure) (a
   · intro f i
     exact positiveDilationMixture_product_integrable _ a ha.le
       (mixingCoordinate_moment sigma a hm i) f
+
+/-! ### Discrete logarithmic lattice measures (the weighted measure algebra) -/
+
+/-- The weight k^(-1/2) on positive integers, zero at k = 0. -/
+def latticeWeight (k : ℕ) : ℝ≥0∞ :=
+  if k = 0 then 0 else ENNReal.ofReal (Real.sqrt (k : ℝ))⁻¹
+
+/-- The positive lattice measure Σ_k w(k) δ_(log k). -/
+def latticeMeasure (w : ℕ → ℝ≥0∞) : Measure ℝ :=
+  Measure.sum (fun k : ℕ => w k • Measure.dirac (Real.log k))
+
+/-- N = Σ_(n ≥ 1) n^(-1/2) δ_(log n). -/
+def integerLogComb : Measure ℝ := latticeMeasure latticeWeight
+
+/-- M⁺ = Σ_(μ(n) = 1) n^(-1/2) δ_(log n). -/
+def moebiusPlusComb : Measure ℝ :=
+  latticeMeasure (fun k => if ArithmeticFunction.moebius k = 1 then latticeWeight k else 0)
+
+/-- M⁻ = Σ_(μ(n) = -1) n^(-1/2) δ_(log n). -/
+def moebiusMinusComb : Measure ℝ :=
+  latticeMeasure (fun k => if ArithmeticFunction.moebius k = -1 then latticeWeight k else 0)
+
+instance latticeMeasure_sFinite (w : ℕ → ℝ≥0∞) : SFinite (latticeMeasure w) := by
+  unfold latticeMeasure
+  infer_instance
+
+instance integerLogComb_sFinite : SFinite integerLogComb := by
+  unfold integerLogComb; infer_instance
+instance moebiusPlusComb_sFinite : SFinite moebiusPlusComb := by
+  unfold moebiusPlusComb; infer_instance
+instance moebiusMinusComb_sFinite : SFinite moebiusMinusComb := by
+  unfold moebiusMinusComb; infer_instance
+
+theorem lintegral_latticeMeasure (w : ℕ → ℝ≥0∞) (f : ℝ → ℝ≥0∞) :
+    ∫⁻ x, f x ∂latticeMeasure w = ∑' k, w k * f (Real.log k) := by
+  unfold latticeMeasure
+  rw [lintegral_sum_measure]
+  congr 1
+  funext k
+  rw [lintegral_smul_measure, lintegral_dirac, smul_eq_mul]
+
+theorem latticeMeasure_conv (w : ℕ → ℝ≥0∞) (ρ : Measure ℝ) [SFinite ρ] :
+    latticeMeasure w ∗ ρ =
+      Measure.sum (fun k : ℕ => w k • ρ.map (fun y => Real.log k + y)) := by
+  refine Measure.ext_of_lintegral _ (fun f hf => ?_)
+  rw [Measure.lintegral_conv hf, lintegral_latticeMeasure, lintegral_sum_measure]
+  congr 1
+  funext k
+  rw [lintegral_smul_measure, lintegral_map hf (by fun_prop), smul_eq_mul]
+
+theorem latticeMeasure_conv_apply (w : ℕ → ℝ≥0∞) (ρ : Measure ℝ) [SFinite ρ]
+    {s : Set ℝ} (hs : MeasurableSet s) :
+    (latticeMeasure w ∗ ρ) s = ∑' k, w k * ρ ((fun y => Real.log k + y) ⁻¹' s) := by
+  rw [latticeMeasure_conv, Measure.sum_apply _ hs]
+  congr 1
+  funext k
+  rw [Measure.smul_apply, Measure.map_apply (by fun_prop) hs, smul_eq_mul]
+
+lemma latticeWeight_mul {i j : ℕ} (hi : i ≠ 0) (hj : j ≠ 0) :
+    latticeWeight i * latticeWeight j = latticeWeight (i * j) := by
+  have hij : i * j ≠ 0 := mul_ne_zero hi hj
+  simp only [latticeWeight, if_neg hi, if_neg hj, if_neg hij]
+  rw [← ENNReal.ofReal_mul (by positivity), Nat.cast_mul,
+    Real.sqrt_mul (Nat.cast_nonneg _), mul_inv]
+
+/-- Regrouping a positive double lattice sum by products (absolute Fubini for
+positive coefficients). -/
+theorem tsum_lattice_pairs (F : ℕ → ℕ → ℝ≥0∞) (hF : ∀ i j, i = 0 ∨ j = 0 → F i j = 0) :
+    ∑' i, ∑' j, F i j = ∑' k : ℕ, ∑ p ∈ Nat.divisorsAntidiagonal k, F p.1 p.2 := by
+  rw [← ENNReal.tsum_prod]
+  -- restrict to positive pairs
+  have hpos : ∑' p : ℕ × ℕ, F p.1 p.2 = ∑' p : ℕ+ × ℕ+, F p.1 p.2 := by
+    let e : ℕ+ × ℕ+ → ℕ × ℕ := fun p => ((p.1 : ℕ), (p.2 : ℕ))
+    have he : Function.Injective e := by
+      intro p q h
+      simp only [e, Prod.mk.injEq] at h
+      exact Prod.ext (PNat.coe_injective h.1) (PNat.coe_injective h.2)
+    refine (he.tsum_eq ?_).symm
+    intro p hp
+    rw [Function.mem_support] at hp
+    have h1 : p.1 ≠ 0 := fun h => hp (hF _ _ (Or.inl h))
+    have h2 : p.2 ≠ 0 := fun h => hp (hF _ _ (Or.inr h))
+    exact ⟨(⟨p.1, Nat.pos_of_ne_zero h1⟩, ⟨p.2, Nat.pos_of_ne_zero h2⟩), rfl⟩
+  rw [hpos, ← sigmaAntidiagonalEquivProd.tsum_eq, ENNReal.tsum_sigma']
+  have hk0 : ∑' k : ℕ, ∑ p ∈ k.divisorsAntidiagonal, F p.1 p.2 =
+      ∑' k : ℕ+, ∑ p ∈ (k : ℕ).divisorsAntidiagonal, F p.1 p.2 := by
+    rw [tsum_pnat_eq_tsum_succ (f := fun k : ℕ => ∑ p ∈ Nat.divisorsAntidiagonal k, F p.1 p.2),
+      tsum_eq_zero_add' ENNReal.summable]
+    simp
+  rw [hk0]
+  refine tsum_congr (fun n => ?_)
+  rw [tsum_fintype, ← Finset.sum_attach ((n : ℕ).divisorsAntidiagonal)
+    (fun p => F p.1 p.2), Finset.univ_eq_attach]
+  rfl
+
+theorem latticeMeasure_conv_latticeMeasure (v w : ℕ → ℝ≥0∞) (hv : v 0 = 0) (hw : w 0 = 0) :
+    latticeMeasure v ∗ latticeMeasure w =
+      latticeMeasure (fun k : ℕ => ∑ p ∈ Nat.divisorsAntidiagonal k, v p.1 * w p.2) := by
+  refine Measure.ext_of_lintegral _ (fun f hf => ?_)
+  rw [Measure.lintegral_conv hf, lintegral_latticeMeasure, lintegral_latticeMeasure]
+  simp_rw [lintegral_latticeMeasure, ← ENNReal.tsum_mul_left, Finset.sum_mul]
+  rw [tsum_lattice_pairs (fun i j => v i * (w j * f (Real.log i + Real.log j)))]
+  · refine tsum_congr (fun k => Finset.sum_congr rfl (fun p hp => ?_))
+    have hp' := Nat.mem_divisorsAntidiagonal.mp hp
+    have h1 : p.1 ≠ 0 := left_ne_zero_of_mul (hp'.1 ▸ hp'.2 : p.1 * p.2 ≠ 0)
+    have h2 : p.2 ≠ 0 := right_ne_zero_of_mul (hp'.1 ▸ hp'.2 : p.1 * p.2 ≠ 0)
+    rw [← Real.log_mul (by exact_mod_cast h1) (by exact_mod_cast h2), ← Nat.cast_mul, hp'.1]
+    ring
+  · rintro i j (rfl | rfl)
+    · simp [hv]
+    · simp [hw]
+
+
+/-! ### Möbius inversion in the positive lattice algebra -/
+
+lemma moebius_divisor_sum (k : ℕ) :
+    ∑ d ∈ k.divisors, ArithmeticFunction.moebius d = if k = 1 then 1 else 0 := by
+  have h := congrArg (fun F : ArithmeticFunction ℤ => F k) ArithmeticFunction.moebius_mul_coe_zeta
+  simp only [ArithmeticFunction.coe_mul_zeta_apply] at h
+  rw [h, ArithmeticFunction.one_apply]
+
+lemma moebius_plus_minus_card {k : ℕ} (hk : k ≠ 1) :
+    (k.divisors.filter (fun d => ArithmeticFunction.moebius d = 1)).card =
+      (k.divisors.filter (fun d => ArithmeticFunction.moebius d = -1)).card := by
+  have hsplit : ∀ d, ArithmeticFunction.moebius d =
+      (if ArithmeticFunction.moebius d = 1 then 1 else 0) -
+        (if ArithmeticFunction.moebius d = -1 then 1 else 0) := by
+    intro d
+    rcases ArithmeticFunction.moebius_eq_or d with h | h | h <;> simp [h]
+  have h := moebius_divisor_sum k
+  rw [if_neg hk, Finset.sum_congr rfl (fun d _ => hsplit d), Finset.sum_sub_distrib,
+    Finset.sum_boole, Finset.sum_boole, sub_eq_zero] at h
+  exact_mod_cast h
+
+/-- Coefficient form of M⁺ ∗ N = δ₀ + M⁻ ∗ N. -/
+lemma moebius_lattice_coefficients (k : ℕ) :
+    ∑ p ∈ Nat.divisorsAntidiagonal k,
+        (if ArithmeticFunction.moebius p.1 = 1 then latticeWeight p.1 else 0) * latticeWeight p.2 =
+      (if k = 1 then 1 else 0) +
+        ∑ p ∈ Nat.divisorsAntidiagonal k,
+          (if ArithmeticFunction.moebius p.1 = -1 then latticeWeight p.1 else 0) *
+            latticeWeight p.2 := by
+  have hterm (c : ℤ) : ∀ p ∈ Nat.divisorsAntidiagonal k,
+      (if ArithmeticFunction.moebius p.1 = c then latticeWeight p.1 else 0) * latticeWeight p.2 =
+        (if ArithmeticFunction.moebius p.1 = c then 1 else 0) * latticeWeight k := by
+    intro p hp
+    have hp' := Nat.mem_divisorsAntidiagonal.mp hp
+    have h1 : p.1 ≠ 0 := left_ne_zero_of_mul (hp'.1 ▸ hp'.2 : p.1 * p.2 ≠ 0)
+    have h2 : p.2 ≠ 0 := right_ne_zero_of_mul (hp'.1 ▸ hp'.2 : p.1 * p.2 ≠ 0)
+    split_ifs
+    · rw [one_mul, latticeWeight_mul h1 h2, hp'.1]
+    · simp
+  rw [Finset.sum_congr rfl (hterm 1), Finset.sum_congr rfl (hterm (-1)), ← Finset.sum_mul,
+    ← Finset.sum_mul, Finset.sum_boole, Finset.sum_boole]
+  have hcard (c : ℤ) : ((Nat.divisorsAntidiagonal k).filter
+      (fun p => ArithmeticFunction.moebius p.1 = c)).card =
+      (k.divisors.filter (fun d => ArithmeticFunction.moebius d = c)).card := by
+    rw [← Nat.map_div_right_divisors, Finset.filter_map, Finset.card_map]
+    rfl
+  rw [hcard 1, hcard (-1)]
+  by_cases hk : k = 1
+  · subst hk
+    simp [latticeWeight, Finset.filter_singleton]
+  · rw [if_neg hk, zero_add, moebius_plus_minus_card hk]
+
+theorem moebiusPlus_conv_integerLogComb :
+    moebiusPlusComb ∗ integerLogComb = Measure.dirac 0 + moebiusMinusComb ∗ integerLogComb := by
+  have hp0 : (if ArithmeticFunction.moebius 0 = 1 then latticeWeight 0 else 0) = 0 := by simp
+  have hm0 : (if ArithmeticFunction.moebius 0 = -1 then latticeWeight 0 else 0) = 0 := by simp
+  have hl0 : latticeWeight 0 = 0 := by simp [latticeWeight]
+  unfold moebiusPlusComb moebiusMinusComb integerLogComb
+  rw [latticeMeasure_conv_latticeMeasure _ _ hp0 hl0, latticeMeasure_conv_latticeMeasure _ _ hm0 hl0]
+  refine Measure.ext_of_lintegral _ (fun f hf => ?_)
+  rw [lintegral_add_measure, lintegral_latticeMeasure, lintegral_latticeMeasure, lintegral_dirac]
+  simp_rw [moebius_lattice_coefficients, add_mul]
+  rw [ENNReal.tsum_add]
+  congr 1
+  rw [tsum_eq_single 1 (fun k hk => by simp [hk])]
+  simp
+
+/-- Positive form of σ = M_μ ∗ (N ∗ σ): M⁺∗N∗ρ = ρ + M⁻∗N∗ρ, by associativity of
+the genuine product-measure convolution (absolute Fubini). -/
+theorem moebius_inverse_positive (ρ : Measure ℝ) [SFinite ρ] :
+    moebiusPlusComb ∗ (integerLogComb ∗ ρ) = ρ + moebiusMinusComb ∗ (integerLogComb ∗ ρ) := by
+  rw [← Measure.conv_assoc, ← Measure.conv_assoc, moebiusPlus_conv_integerLogComb,
+    Measure.add_conv, Measure.dirac_zero_conv]
+
+/-! ### Weighted norms -/
+
+/-- The weighted variation norm ‖τ‖_(-a) = ∫ e^(-a y) dτ of a positive measure. -/
+def weightedLogNorm (a : ℝ) (ρ : Measure ℝ) : ℝ≥0∞ :=
+  ∫⁻ y, ENNReal.ofReal (Real.exp (-a * y)) ∂ρ
+
+/-- The weighted norm is exactly multiplicative for positive convolution. -/
+theorem weightedLogNorm_conv (a : ℝ) (μ ρ : Measure ℝ) [SFinite ρ] :
+    weightedLogNorm a (μ ∗ ρ) = weightedLogNorm a μ * weightedLogNorm a ρ := by
+  unfold weightedLogNorm
+  rw [Measure.lintegral_conv (by fun_prop)]
+  have h (x y : ℝ) : ENNReal.ofReal (Real.exp (-a * (x + y))) =
+      ENNReal.ofReal (Real.exp (-a * x)) * ENNReal.ofReal (Real.exp (-a * y)) := by
+    rw [← ENNReal.ofReal_mul (Real.exp_pos _).le, ← Real.exp_add]
+    ring_nf
+  simp_rw [h]
+  simp_rw [lintegral_const_mul _ (by fun_prop : Measurable fun y : ℝ =>
+    ENNReal.ofReal (Real.exp (-a * y)))]
+  rw [lintegral_mul_const _ (by fun_prop)]
+
+theorem weightedLogNorm_latticeMeasure (a : ℝ) (w : ℕ → ℝ≥0∞) :
+    weightedLogNorm a (latticeMeasure w) =
+      ∑' k, w k * ENNReal.ofReal (Real.exp (-a * Real.log k)) := by
+  unfold weightedLogNorm
+  rw [lintegral_latticeMeasure]
+
+lemma latticeWeight_exp {a : ℝ} (ha : 0 < a + 1 / 2) (k : ℕ) :
+    latticeWeight k * ENNReal.ofReal (Real.exp (-a * Real.log k)) =
+      ENNReal.ofReal ((k : ℝ) ^ (-(a + 1 / 2))) := by
+  rcases Nat.eq_zero_or_pos k with rfl | hk
+  · rw [Nat.cast_zero, Real.zero_rpow (by linarith)]
+    simp [latticeWeight]
+  · have hk' : (0 : ℝ) < k := by exact_mod_cast hk
+    simp only [latticeWeight, if_neg hk.ne']
+    rw [← ENNReal.ofReal_mul (by positivity)]
+    congr 1
+    rw [Real.sqrt_eq_rpow, ← Real.rpow_neg hk'.le, mul_comm (-a), ← Real.rpow_def_of_pos hk',
+      ← Real.rpow_add hk']
+    ring_nf
+
+/-! ### Norm values: ‖N‖ = ζ(s) and ‖M_μ‖ = ζ(s)/ζ(2s), s = a + 1/2 -/
+
+lemma real_tsum_rpow_eq_zeta {s : ℝ} (hs : 1 < s) :
+    ((∑' n : ℕ, (n : ℝ) ^ (-s) : ℝ) : ℂ) = riemannZeta s := by
+  rw [zeta_eq_tsum_one_div_nat_cpow (by simpa using hs), Complex.ofReal_tsum]
+  refine tsum_congr (fun n => ?_)
+  rw [Real.rpow_neg (Nat.cast_nonneg n), Complex.ofReal_inv, one_div,
+    Complex.ofReal_cpow (Nat.cast_nonneg n), Complex.ofReal_natCast]
+
+lemma summable_nat_rpow_neg {s : ℝ} (hs : 1 < s) : Summable (fun n : ℕ => (n : ℝ) ^ (-s)) :=
+  Real.summable_nat_rpow.mpr (by linarith)
+
+theorem weightedLogNorm_integerLogComb {a : ℝ} (ha : 1 / 2 < a) :
+    weightedLogNorm a integerLogComb = ENNReal.ofReal (∑' n : ℕ, (n : ℝ) ^ (-(a + 1 / 2))) := by
+  unfold integerLogComb
+  rw [weightedLogNorm_latticeMeasure]
+  simp_rw [latticeWeight_exp (by linarith : 0 < a + 1 / 2)]
+  rw [ENNReal.ofReal_tsum_of_nonneg (fun n => by positivity)
+    (summable_nat_rpow_neg (by linarith))]
+
+/-- The norm of the Möbius lattice |M_μ| = M⁺ + M⁻. -/
+theorem weightedLogNorm_moebiusComb {a : ℝ} (ha : 1 / 2 < a) :
+    weightedLogNorm a (moebiusPlusComb + moebiusMinusComb) =
+      ENNReal.ofReal (∑' n : ℕ, (|ArithmeticFunction.moebius n| : ℝ) * (n : ℝ) ^ (-(a + 1 / 2))) := by
+  have hpos : 0 < a + 1 / 2 := by linarith
+  unfold weightedLogNorm moebiusPlusComb moebiusMinusComb
+  rw [lintegral_add_measure]
+  change weightedLogNorm a _ + weightedLogNorm a _ = _
+  rw [weightedLogNorm_latticeMeasure, weightedLogNorm_latticeMeasure, ← ENNReal.tsum_add]
+  have hsum : Summable (fun n : ℕ =>
+      (|ArithmeticFunction.moebius n| : ℝ) * (n : ℝ) ^ (-(a + 1 / 2))) := by
+    refine (summable_nat_rpow_neg (by linarith : 1 < a + 1 / 2)).of_nonneg_of_le
+      (fun n => by positivity) (fun n => ?_)
+    have h := ArithmeticFunction.abs_moebius_le_one (n := n)
+    have h' : (|ArithmeticFunction.moebius n| : ℝ) ≤ 1 := by exact_mod_cast h
+    calc _ ≤ 1 * (n : ℝ) ^ (-(a + 1 / 2)) := mul_le_mul_of_nonneg_right h' (by positivity)
+      _ = _ := one_mul _
+  rw [ENNReal.ofReal_tsum_of_nonneg (fun n => by positivity) hsum]
+  refine tsum_congr (fun n => ?_)
+  rcases ArithmeticFunction.moebius_eq_or n with h | h | h
+  · simp [h]
+  · simp only [h, if_true, show (1 : ℤ) ≠ -1 by decide, if_false, zero_mul, add_zero,
+      latticeWeight_exp hpos]
+    norm_num
+  · simp only [h, show (-1 : ℤ) ≠ 1 by decide, if_true, if_false, zero_mul, zero_add,
+      latticeWeight_exp hpos]
+    norm_num
+
+/-- Σ |μ(n)| n^(-s) = ζ(s)/ζ(2s) for real s > 1, via Euler products. -/
+theorem tsum_abs_moebius_rpow {s : ℝ} (hs : 1 < s) :
+    ((∑' n : ℕ, (|ArithmeticFunction.moebius n| : ℝ) * (n : ℝ) ^ (-s) : ℝ) : ℂ) =
+      riemannZeta s / riemannZeta (2 * s) := by
+  set f : ℕ → ℂ := fun n => ((|ArithmeticFunction.moebius n| : ℝ) : ℂ) * (n : ℂ) ^ (-(s : ℂ))
+    with hfdef
+  have hs0 : (s : ℂ) ≠ 0 := by exact_mod_cast (by linarith : s ≠ 0)
+  have hf0 : f 0 = 0 := by simp [hfdef]
+  have hf1 : f 1 = 1 := by simp [hfdef]
+  have hmul : ∀ {m n : ℕ}, Nat.Coprime m n → f (m * n) = f m * f n := by
+    intro m n hmn
+    simp only [hfdef]
+    rw [ArithmeticFunction.isMultiplicative_moebius.map_mul_of_coprime hmn, Nat.cast_mul,
+      Complex.natCast_mul_natCast_cpow]
+    simp only [Int.cast_mul, abs_mul, Complex.ofReal_mul]
+    ring
+  have hnorm (n : ℕ) : ‖f n‖ = (|ArithmeticFunction.moebius n| : ℝ) * (n : ℝ) ^ (-s) := by
+    rcases Nat.eq_zero_or_pos n with rfl | hn
+    · simp [hfdef]
+    · simp only [hfdef, norm_mul, Complex.norm_real, Real.norm_eq_abs, abs_abs]
+      rw [Complex.norm_natCast_cpow_of_pos hn]
+      simp
+  have hsumR : Summable (fun n : ℕ => (|ArithmeticFunction.moebius n| : ℝ) * (n : ℝ) ^ (-s)) := by
+    refine (summable_nat_rpow_neg hs).of_nonneg_of_le (fun n => by positivity) (fun n => ?_)
+    have h' : (|ArithmeticFunction.moebius n| : ℝ) ≤ 1 := by
+      exact_mod_cast ArithmeticFunction.abs_moebius_le_one
+    calc _ ≤ 1 * (n : ℝ) ^ (-s) := mul_le_mul_of_nonneg_right h' (by positivity)
+      _ = _ := one_mul _
+  have hsum : Summable (‖f ·‖) := by simpa only [hnorm] using hsumR
+  have hcast : (∑' n, f n) =
+      ((∑' n : ℕ, (|ArithmeticFunction.moebius n| : ℝ) * (n : ℝ) ^ (-s) : ℝ) : ℂ) := by
+    rw [Complex.ofReal_tsum]
+    refine tsum_congr (fun n => ?_)
+    simp only [hfdef]
+    rw [Complex.ofReal_mul, show -(s : ℂ) = ((-s : ℝ) : ℂ) by push_cast; ring,
+      ← Complex.ofReal_natCast n, ← Complex.ofReal_cpow (Nat.cast_nonneg n)]
+  -- local Euler factors
+  have hfactor (p : Nat.Primes) : ∑' e, f ((p : ℕ) ^ e) = 1 + (p : ℂ) ^ (-(s : ℂ)) := by
+    have hp := p.prop
+    rw [tsum_eq_sum (s := Finset.range 2)]
+    · simp only [Finset.sum_range_succ, Finset.range_one, Finset.sum_singleton, pow_zero, pow_one,
+        hf1]
+      simp only [hfdef, ArithmeticFunction.moebius_apply_prime hp]
+      simp
+    · intro e he
+      have he2 : 2 ≤ e := by simp at he; omega
+      simp only [hfdef]
+      rw [ArithmeticFunction.moebius_apply_prime_pow hp (by omega), if_neg (by omega)]
+      simp
+  have hE := EulerProduct.eulerProduct_hasProd hf1 hmul hsum hf0
+  simp_rw [hfactor] at hE
+  have h2s : 1 < ((2 * s : ℝ) : ℂ).re := by simp; linarith
+  have hZ2 := riemannZeta_eulerProduct_hasProd h2s
+  have hZ := riemannZeta_eulerProduct_hasProd (s := (s : ℂ)) (by simpa using hs)
+  have hprod := hE.mul hZ2
+  have hpt (p : Nat.Primes) : (1 + (p : ℂ) ^ (-(s : ℂ))) * (1 - (p : ℂ) ^ (-((2 * s : ℝ) : ℂ)))⁻¹ =
+      (1 - (p : ℂ) ^ (-(s : ℂ)))⁻¹ := by
+    set x : ℂ := (p : ℂ) ^ (-(s : ℂ)) with hx
+    have hx2 : (p : ℂ) ^ (-((2 * s : ℝ) : ℂ)) = x ^ 2 := by
+      rw [hx, ← Complex.cpow_nat_mul]
+      push_cast
+      ring_nf
+    have hp1 : (1 : ℝ) < (p : ℕ) := by exact_mod_cast p.prop.one_lt
+    have hxn : ‖x‖ < 1 := by
+      rw [hx, Complex.norm_natCast_cpow_of_pos p.prop.pos]
+      simp only [Complex.neg_re, Complex.ofReal_re]
+      exact Real.rpow_lt_one_of_one_lt_of_neg hp1 (by linarith)
+    have h1 : 1 - x ≠ 0 := by
+      intro h
+      have : x = 1 := by linear_combination -h
+      rw [this, norm_one] at hxn
+      exact lt_irrefl _ hxn
+    have h2 : 1 + x ≠ 0 := by
+      intro h
+      have : x = -1 := by linear_combination h
+      rw [this, norm_neg, norm_one] at hxn
+      exact lt_irrefl _ hxn
+    rw [hx2, show (1 : ℂ) - x ^ 2 = (1 - x) * (1 + x) by ring, mul_inv]
+    field_simp
+  simp_rw [hpt] at hprod
+  have hunique := hprod.unique hZ
+  have hz2 : riemannZeta ((2 * s : ℝ) : ℂ) ≠ 0 := riemannZeta_ne_zero_of_one_lt_re h2s
+  rw [← hcast, eq_div_iff (by simpa using hz2)]
+  have : ((2 * s : ℝ) : ℂ) = 2 * (s : ℂ) := by push_cast; ring
+  rw [this] at hunique
+  exact hunique
+
+/-! ### η = N ∗ σ for the actual mixture -/
+
+lemma positiveLogWeight_dilated (t : ℝ) {n : ℕ} (hn : 0 < n) :
+    positiveLogWeight (Real.exp t * n) = Real.exp (-t / 2) / Real.sqrt n := by
+  have hnreal : (0 : ℝ) < n := by exact_mod_cast hn
+  have hprod : 0 < Real.exp t * (n : ℝ) := mul_pos (Real.exp_pos t) hnreal
+  have hsqrt : Real.sqrt (Real.exp t * (n : ℝ)) = Real.exp (t / 2) * Real.sqrt (n : ℝ) := by
+    rw [Real.sqrt_mul (Real.exp_nonneg t)]
+    congr 1
+    rw [show Real.exp t = Real.exp (t / 2) * Real.exp (t / 2) by rw [← Real.exp_add]; ring_nf,
+      Real.sqrt_mul_self (Real.exp_pos _).le]
+  unfold positiveLogWeight
+  rw [if_pos hprod, hsqrt, mul_inv_rev, show -t / 2 = -(t / 2) by ring, Real.exp_neg]
+  ring
+
+instance positiveLogMeasure_sFinite (ρ : Measure ℝ) [SFinite ρ] :
+    SFinite (positiveLogMeasure ρ) := by
+  unfold positiveLogMeasure
+  infer_instance
+
+lemma lintegral_positiveLogMeasure (ρ : Measure ℝ) {f : ℝ → ℝ≥0∞} (hf : Measurable f) :
+    ∫⁻ y, f y ∂positiveLogMeasure ρ =
+      ∫⁻ x, (Ioi (0 : ℝ)).indicator
+        (fun x => ENNReal.ofReal (positiveLogWeight x) * f (Real.log x)) x ∂ρ := by
+  have hw : Measurable (fun x : ℝ => ENNReal.ofReal (positiveLogWeight x)) := by
+    unfold positiveLogWeight
+    exact ENNReal.measurable_ofReal.comp
+      (Measurable.ite measurableSet_Ioi (by fun_prop) measurable_const)
+  have h := lintegral_withDensity_eq_lintegral_mul (ρ.restrict (Ioi 0)) hw
+    (hf.comp Real.measurable_log)
+  simp only [Function.comp_def] at h
+  unfold positiveLogMeasure
+  rw [lintegral_map hf Real.measurable_log, h, lintegral_indicator measurableSet_Ioi]
+  rfl
+
+/-- The paper's (HT1.4): the weighted logarithmic pushforward of the actual
+positive-axis mixture is the genuine convolution N ∗ μ. -/
+theorem positiveLogMeasure_positiveDilationMixture (μ : Measure ℝ) [SFinite μ] :
+    positiveLogMeasure (positiveDilationMixture μ) = integerLogComb ∗ μ := by
+  refine Measure.ext_of_lintegral _ (fun f hf => ?_)
+  have hg : Measurable ((Ioi (0 : ℝ)).indicator
+      (fun x => ENNReal.ofReal (positiveLogWeight x) * f (Real.log x))) := by
+    refine Measurable.indicator ?_ measurableSet_Ioi
+    unfold positiveLogWeight
+    exact (ENNReal.measurable_ofReal.comp
+      (Measurable.ite measurableSet_Ioi (by fun_prop) measurable_const)).mul
+      (hf.comp Real.measurable_log)
+  set G := (Ioi (0 : ℝ)).indicator
+      (fun x => ENNReal.ofReal (positiveLogWeight x) * f (Real.log x)) with hG
+  have hGL : Measurable (fun z : ℝ × ℤ => G (mixtureLatticePoint z)) :=
+    hg.comp mixtureLatticePoint_measurable
+  rw [lintegral_positiveLogMeasure _ hf, positiveDilationMixture,
+    lintegral_map hg mixtureLatticePoint_measurable,
+    lintegral_withDensity_eq_lintegral_mul _ mixtureAmplitude_measurable hGL,
+    lintegral_prod _ ((mixtureAmplitude_measurable.mul hGL).aemeasurable)]
+  rw [Measure.lintegral_conv hf]
+  unfold integerLogComb
+  rw [lintegral_latticeMeasure]
+  simp_rw [lintegral_count, Pi.mul_apply]
+  have hterm (t : ℝ) : (∑' n : ℤ, mixtureAmplitude (t, n) * G (mixtureLatticePoint (t, n))) =
+      ∑' k : ℕ, latticeWeight k * f (Real.log k + t) := by
+    let F : ℤ → ℝ≥0∞ := fun n => mixtureAmplitude (t, n) * G (mixtureLatticePoint (t, n))
+    change ∑' n, F n = _
+    have hsupp : Function.support F ⊆ Set.range (fun k : ℕ => (k : ℤ)) := by
+      intro n hn
+      by_contra hcon
+      apply hn
+      have hn0 : n ≤ 0 := by
+        by_contra h
+        exact hcon ⟨n.toNat, Int.toNat_of_nonneg (by omega)⟩
+      simp only [F, hG, mixtureLatticePoint]
+      rw [Set.indicator_of_notMem, mul_zero]
+      simp only [Set.mem_Ioi, not_lt]
+      exact mul_nonpos_of_nonneg_of_nonpos (Real.exp_pos t).le (by exact_mod_cast hn0)
+    rw [← (Nat.cast_injective (R := ℤ)).tsum_eq hsupp]
+    refine tsum_congr (fun k => ?_)
+    rcases Nat.eq_zero_or_pos k with rfl | hk
+    · simp [F, hG, latticeWeight, mixtureLatticePoint]
+    · have hpos : 0 < Real.exp t * (k : ℝ) := mul_pos (Real.exp_pos t) (by exact_mod_cast hk)
+      simp only [F, hG, mixtureLatticePoint, Int.cast_natCast]
+      rw [Set.indicator_of_mem (show Real.exp t * (k : ℝ) ∈ Ioi 0 from hpos),
+        positiveLogWeight_dilated t hk, Real.log_mul (Real.exp_pos t).ne'
+          (by exact_mod_cast hk.ne'), Real.log_exp, add_comm t, ← mul_assoc]
+      congr 1
+      simp only [mixtureAmplitude, latticeWeight, if_neg hk.ne']
+      rw [← ENNReal.ofReal_mul (Real.exp_pos _).le]
+      congr 1
+      rw [mul_div, ← Real.exp_add, show t / 2 + -t / 2 = 0 by ring, Real.exp_zero, one_div]
+  simp_rw [hterm]
+  rw [lintegral_tsum]
+  · refine tsum_congr (fun k => ?_)
+    rw [lintegral_const_mul]
+    exact hf.comp (by fun_prop)
+  · intro k
+    exact ((hf.comp (by fun_prop : Measurable fun x : ℝ => Real.log k + x)).const_mul _).aemeasurable
+
+/-! ### Weighted finiteness and cancellation -/
+
+lemma weightedLogNorm_le_moment (a : ℝ) (ha : 0 ≤ a) (ρ : Measure ℝ) :
+    weightedLogNorm a ρ ≤ positiveMixingMoment a ρ := by
+  unfold weightedLogNorm positiveMixingMoment
+  refine lintegral_mono (fun t => ENNReal.ofReal_le_ofReal (Real.exp_le_exp.mpr ?_))
+  nlinarith [neg_abs_le t, abs_nonneg t]
+
+lemma measure_Icc_lt_top_of_weightedLogNorm {a : ℝ} (ha : 0 ≤ a) {ρ : Measure ℝ}
+    (hρ : weightedLogNorm a ρ < ∞) (R : ℝ) : ρ (Icc (-R) R) < ∞ := by
+  have hle : ENNReal.ofReal (Real.exp (-a * R)) * ρ (Icc (-R) R) ≤ weightedLogNorm a ρ := by
+    calc ENNReal.ofReal (Real.exp (-a * R)) * ρ (Icc (-R) R) =
+        ∫⁻ y in Icc (-R) R, ENNReal.ofReal (Real.exp (-a * R)) ∂ρ := by
+          rw [setLIntegral_const, mul_comm]
+      _ ≤ ∫⁻ y in Icc (-R) R, ENNReal.ofReal (Real.exp (-a * y)) ∂ρ := by
+          refine setLIntegral_mono (by fun_prop) (fun y hy => ?_)
+          exact ENNReal.ofReal_le_ofReal (Real.exp_le_exp.mpr (by nlinarith [hy.2]))
+      _ ≤ weightedLogNorm a ρ := setLIntegral_le_lintegral _ _
+  have hpos : ENNReal.ofReal (Real.exp (-a * R)) ≠ 0 := by
+    simp [Real.exp_pos]
+  by_contra h
+  rw [not_lt, top_le_iff] at h
+  rw [h, ENNReal.mul_top hpos, top_le_iff] at hle
+  exact (hρ.trans_le hle.ge).ne rfl
+
+/-- Cancellation of a measure that is finite on every compact interval. -/
+lemma measure_add_right_cancel_of_Icc {A B X : Measure ℝ}
+    (hX : ∀ R : ℝ, X (Icc (-R) R) < ∞) (h : A + X = B + X) : A = B := by
+  apply Measure.ext_of_iUnion_eq_univ localMeasureInterval_cover
+  intro n
+  ext s hs
+  have hs' := congrArg (fun μ : Measure ℝ => μ (s ∩ localMeasureInterval n)) h
+  simp only [Measure.add_apply] at hs'
+  rw [Measure.restrict_apply hs, Measure.restrict_apply hs]
+  have hfin : X (s ∩ localMeasureInterval n) ≠ ∞ :=
+    (measure_mono inter_subset_right).trans_lt (hX n) |>.ne
+  exact (ENNReal.add_left_inj hfin).mp hs'
+
+lemma positiveLogMeasure_mono {μ ν : Measure ℝ} (h : μ ≤ ν) :
+    positiveLogMeasure μ ≤ positiveLogMeasure ν := by
+  refine Measure.le_iff.mpr (fun s hs => ?_)
+  have hf : Measurable (s.indicator (1 : ℝ → ℝ≥0∞)) :=
+    measurable_const.indicator hs
+  rw [← lintegral_indicator_one hs, ← lintegral_indicator_one hs,
+    lintegral_positiveLogMeasure _ hf, lintegral_positiveLogMeasure _ hf]
+  exact lintegral_mono' h le_rfl
+
+lemma weightedLogNorm_mono (a : ℝ) {μ ν : Measure ℝ} (h : μ ≤ ν) :
+    weightedLogNorm a μ ≤ weightedLogNorm a ν :=
+  lintegral_mono' h le_rfl
+
+lemma weightedLogNorm_add (a : ℝ) (μ ν : Measure ℝ) :
+    weightedLogNorm a (μ + ν) = weightedLogNorm a μ + weightedLogNorm a ν := by
+  unfold weightedLogNorm
+  rw [lintegral_add_measure]
+
+lemma weightedLogNorm_integerLogComb_lt_top {a : ℝ} (ha : 1 / 2 < a) :
+    weightedLogNorm a integerLogComb < ∞ := by
+  rw [weightedLogNorm_integerLogComb ha]
+  exact ENNReal.ofReal_lt_top
+
+lemma weightedLogNorm_moebiusComb_lt_top {a : ℝ} (ha : 1 / 2 < a) :
+    weightedLogNorm a moebiusPlusComb < ∞ ∧ weightedLogNorm a moebiusMinusComb < ∞ := by
+  have h := weightedLogNorm_moebiusComb ha
+  rw [weightedLogNorm_add] at h
+  have ht : weightedLogNorm a moebiusPlusComb + weightedLogNorm a moebiusMinusComb < ∞ := by
+    rw [h]; exact ENNReal.ofReal_lt_top
+  exact ⟨lt_of_le_of_lt le_self_add ht, lt_of_le_of_lt le_add_self ht⟩
+
+/-! ### The complex inverse for the actual mixture -/
+
+/-- Real-part form of σ = M_μ ∗ η from η = N ∗ σ (positive form, no subtraction). -/
+theorem moebius_inverse_jordan {a : ℝ} (ha : 1 / 2 < a)
+    (σp σn ηp ηn : Measure ℝ) [SFinite σp] [SFinite σn] [SFinite ηp] [SFinite ηn]
+    (hσp : weightedLogNorm a σp < ∞) (hσn : weightedLogNorm a σn < ∞)
+    (hη : ηp + integerLogComb ∗ σn = ηn + integerLogComb ∗ σp) :
+    σp + (moebiusPlusComb ∗ ηn + moebiusMinusComb ∗ ηp) =
+      σn + (moebiusPlusComb ∗ ηp + moebiusMinusComb ∗ ηn) := by
+  have ha0 : 0 ≤ a := by linarith
+  have h1 := congrArg (fun μ => moebiusPlusComb ∗ μ) hη
+  have h2 := congrArg (fun μ => moebiusMinusComb ∗ μ) hη
+  simp only [Measure.conv_add, moebius_inverse_positive] at h1 h2
+  set X := moebiusMinusComb ∗ (integerLogComb ∗ σn) + moebiusMinusComb ∗ (integerLogComb ∗ σp)
+    with hXdef
+  have hXnorm : weightedLogNorm a X < ∞ := by
+    rw [hXdef, weightedLogNorm_add, weightedLogNorm_conv, weightedLogNorm_conv,
+      weightedLogNorm_conv, weightedLogNorm_conv]
+    have hM := (weightedLogNorm_moebiusComb_lt_top ha).2
+    have hN := weightedLogNorm_integerLogComb_lt_top ha
+    exact ENNReal.add_lt_top.mpr ⟨ENNReal.mul_lt_top hM (ENNReal.mul_lt_top hN hσn),
+      ENNReal.mul_lt_top hM (ENNReal.mul_lt_top hN hσp)⟩
+  refine measure_add_right_cancel_of_Icc (X := X)
+    (fun R => measure_Icc_lt_top_of_weightedLogNorm ha0 hXnorm R) ?_
+  calc σp + (moebiusPlusComb ∗ ηn + moebiusMinusComb ∗ ηp) + X =
+      (moebiusPlusComb ∗ ηn + (σp + moebiusMinusComb ∗ (integerLogComb ∗ σp))) +
+        (moebiusMinusComb ∗ ηp + moebiusMinusComb ∗ (integerLogComb ∗ σn)) := by
+        rw [hXdef]; abel
+    _ = (moebiusPlusComb ∗ ηp + (σn + moebiusMinusComb ∗ (integerLogComb ∗ σn))) +
+        (moebiusMinusComb ∗ ηn + moebiusMinusComb ∗ (integerLogComb ∗ σp)) := by
+        rw [← h1, h2]
+    _ = σn + (moebiusPlusComb ∗ ηp + moebiusMinusComb ∗ ηn) + X := by
+        rw [hXdef]; abel
+
+lemma mixingCoordinate_zero (σ : LocallyFiniteComplexMeasure) :
+    mixingCoordinate σ 0 = σ.rePart.positive := rfl
+lemma mixingCoordinate_one (σ : LocallyFiniteComplexMeasure) :
+    mixingCoordinate σ 1 = σ.rePart.negative := rfl
+lemma mixingCoordinate_two (σ : LocallyFiniteComplexMeasure) :
+    mixingCoordinate σ 2 = σ.imPart.positive := rfl
+lemma mixingCoordinate_three (σ : LocallyFiniteComplexMeasure) :
+    mixingCoordinate σ 3 = σ.imPart.negative := rfl
+
+lemma weightedLogNorm_mixingCoordinate {σ : LocallyFiniteComplexMeasure} {a : ℝ}
+    (ha : 1 / 2 < a) (hm : mixingExponentialMoment a σ < ∞) (i : Fin 4) :
+    weightedLogNorm a (mixingCoordinate σ i) < ∞ :=
+  (weightedLogNorm_le_moment a (by linarith) _).trans_lt (mixingCoordinate_moment σ a hm i)
+
+/-- η = N ∗ σ for one Jordan coordinate pair of the actual mixture. -/
+lemma mixture_log_jordan (μp μn : Measure ℝ) [IsLocallyFiniteMeasure (positiveDilationMixture μp)]
+    [IsLocallyFiniteMeasure (positiveDilationMixture μn)] [SFinite μp] [SFinite μn] :
+    positiveLogMeasure (localJordanDifference (positiveDilationMixture μp)
+        (positiveDilationMixture μn)).positive + integerLogComb ∗ μn =
+      positiveLogMeasure (localJordanDifference (positiveDilationMixture μp)
+        (positiveDilationMixture μn)).negative + integerLogComb ∗ μp := by
+  have h := congrArg positiveLogMeasure
+    (locallyFiniteMeasure_jordan_cross_sum (positiveDilationMixture μp) (positiveDilationMixture μn))
+  rw [positiveLogMeasure_add, positiveLogMeasure_add, positiveLogMeasure_positiveDilationMixture,
+    positiveLogMeasure_positiveDilationMixture] at h
+  exact h
+
+lemma mixture_log_part_norm {a : ℝ} (ha : 1 / 2 < a) (μp μn : Measure ℝ)
+    [IsLocallyFiniteMeasure (positiveDilationMixture μp)]
+    [IsLocallyFiniteMeasure (positiveDilationMixture μn)] [SFinite μp]
+    (hp : weightedLogNorm a μp < ∞) :
+    weightedLogNorm a (positiveLogMeasure (localJordanDifference (positiveDilationMixture μp)
+        (positiveDilationMixture μn)).positive) < ∞ := by
+  refine (weightedLogNorm_mono a (positiveLogMeasure_mono Measure.sub_le)).trans_lt ?_
+  rw [positiveLogMeasure_positiveDilationMixture, weightedLogNorm_conv]
+  exact ENNReal.mul_lt_top (weightedLogNorm_integerLogComb_lt_top ha) hp
+
+/-- Original R1-HT1 root: the actual weighted Möbius inverse. For a complex mixing
+measure with exponential moment a > 1/2 and its genuine mixture ν, the weighted
+logarithmic pushforward η of ν restricted to the positive axis satisfies
+η = N ∗ σ, the lattice identity M_μ ∗ N = δ₀ holds, and σ = M_μ ∗ η, all in
+the weighted algebra of positive measures with finite norm ∫ e^(-a y), with
+Jordan parts kept positive (no subtraction of infinite measures). The norm is
+exactly multiplicative for the genuine product-measure convolution, with
+‖N‖ = ζ(a+1/2) and ‖M_μ‖ = Σ|μ(n)| n^(-a-1/2) = ζ(a+1/2)/ζ(2a+1). -/
+theorem weighted_mobius_inverse (σ : LocallyFiniteComplexMeasure) (a : ℝ) (ha : 1 / 2 < a)
+    (hm : mixingExponentialMoment a σ < ∞) :
+    (∀ i : Fin 4, positiveLogMeasure (positiveDilationMixture (mixingCoordinate σ i)) =
+      integerLogComb ∗ mixingCoordinate σ i) ∧
+    (positiveLogMeasure (weightedDilationMixture σ a ha.le hm).rePart.positive +
+        integerLogComb ∗ σ.rePart.negative =
+      positiveLogMeasure (weightedDilationMixture σ a ha.le hm).rePart.negative +
+        integerLogComb ∗ σ.rePart.positive) ∧
+    (positiveLogMeasure (weightedDilationMixture σ a ha.le hm).imPart.positive +
+        integerLogComb ∗ σ.imPart.negative =
+      positiveLogMeasure (weightedDilationMixture σ a ha.le hm).imPart.negative +
+        integerLogComb ∗ σ.imPart.positive) ∧
+    (moebiusPlusComb ∗ integerLogComb = Measure.dirac 0 + moebiusMinusComb ∗ integerLogComb) ∧
+    (σ.rePart.positive +
+        (moebiusPlusComb ∗ positiveLogMeasure (weightedDilationMixture σ a ha.le hm).rePart.negative +
+          moebiusMinusComb ∗ positiveLogMeasure (weightedDilationMixture σ a ha.le hm).rePart.positive) =
+      σ.rePart.negative +
+        (moebiusPlusComb ∗ positiveLogMeasure (weightedDilationMixture σ a ha.le hm).rePart.positive +
+          moebiusMinusComb ∗ positiveLogMeasure (weightedDilationMixture σ a ha.le hm).rePart.negative)) ∧
+    (σ.imPart.positive +
+        (moebiusPlusComb ∗ positiveLogMeasure (weightedDilationMixture σ a ha.le hm).imPart.negative +
+          moebiusMinusComb ∗ positiveLogMeasure (weightedDilationMixture σ a ha.le hm).imPart.positive) =
+      σ.imPart.negative +
+        (moebiusPlusComb ∗ positiveLogMeasure (weightedDilationMixture σ a ha.le hm).imPart.positive +
+          moebiusMinusComb ∗ positiveLogMeasure (weightedDilationMixture σ a ha.le hm).imPart.negative)) ∧
+    (∀ i : Fin 4, weightedLogNorm a (mixingCoordinate σ i) < ∞) ∧
+    (weightedLogNorm a (positiveLogMeasure (weightedDilationMixture σ a ha.le hm).rePart.positive) < ∞ ∧
+      weightedLogNorm a (positiveLogMeasure (weightedDilationMixture σ a ha.le hm).rePart.negative) < ∞ ∧
+      weightedLogNorm a (positiveLogMeasure (weightedDilationMixture σ a ha.le hm).imPart.positive) < ∞ ∧
+      weightedLogNorm a (positiveLogMeasure (weightedDilationMixture σ a ha.le hm).imPart.negative) < ∞) ∧
+    (∀ (μ ρ : Measure ℝ) [SFinite ρ],
+      weightedLogNorm a (μ ∗ ρ) = weightedLogNorm a μ * weightedLogNorm a ρ) ∧
+    (weightedLogNorm a integerLogComb = ENNReal.ofReal (∑' n : ℕ, (n : ℝ) ^ (-(a + 1 / 2))) ∧
+      ((∑' n : ℕ, (n : ℝ) ^ (-(a + 1 / 2)) : ℝ) : ℂ) = riemannZeta ((a + 1 / 2 : ℝ) : ℂ)) ∧
+    (weightedLogNorm a (moebiusPlusComb + moebiusMinusComb) =
+        ENNReal.ofReal (∑' n : ℕ, (|ArithmeticFunction.moebius n| : ℝ) * (n : ℝ) ^ (-(a + 1 / 2))) ∧
+      ((∑' n : ℕ, (|ArithmeticFunction.moebius n| : ℝ) * (n : ℝ) ^ (-(a + 1 / 2)) : ℝ) : ℂ) =
+        riemannZeta ((a + 1 / 2 : ℝ) : ℂ) / riemannZeta ((2 * a + 1 : ℝ) : ℂ)) := by
+  have hs : 1 < a + 1 / 2 := by linarith
+  let m (i : Fin 4) := positiveDilationMixture (mixingCoordinate σ i)
+  have hfin (i : Fin 4) : IsLocallyFiniteMeasure (m i) :=
+    positiveDilationMixture_locallyFinite _ a ha.le (mixingCoordinate_moment σ a hm i)
+  have := hfin 0
+  have := hfin 1
+  have := hfin 2
+  have := hfin 3
+  have hre : positiveLogMeasure (weightedDilationMixture σ a ha.le hm).rePart.positive +
+        integerLogComb ∗ σ.rePart.negative =
+      positiveLogMeasure (weightedDilationMixture σ a ha.le hm).rePart.negative +
+        integerLogComb ∗ σ.rePart.positive :=
+    mixture_log_jordan (mixingCoordinate σ 0) (mixingCoordinate σ 1)
+  have him : positiveLogMeasure (weightedDilationMixture σ a ha.le hm).imPart.positive +
+        integerLogComb ∗ σ.imPart.negative =
+      positiveLogMeasure (weightedDilationMixture σ a ha.le hm).imPart.negative +
+        integerLogComb ∗ σ.imPart.positive :=
+    mixture_log_jordan (mixingCoordinate σ 2) (mixingCoordinate σ 3)
+  have hn := weightedLogNorm_mixingCoordinate ha hm
+  refine ⟨fun i => positiveLogMeasure_positiveDilationMixture _, hre, him,
+    moebiusPlus_conv_integerLogComb, ?_, ?_, hn, ⟨?_, ?_, ?_, ?_⟩,
+    fun μ ρ _ => weightedLogNorm_conv a μ ρ,
+    ⟨weightedLogNorm_integerLogComb ha, real_tsum_rpow_eq_zeta hs⟩,
+    ⟨weightedLogNorm_moebiusComb ha, ?_⟩⟩
+  · exact moebius_inverse_jordan ha _ _ _ _ (hn 0) (hn 1) hre
+  · exact moebius_inverse_jordan ha _ _ _ _ (hn 2) (hn 3) him
+  · exact mixture_log_part_norm ha (mixingCoordinate σ 0) (mixingCoordinate σ 1) (hn 0)
+  · exact mixture_log_part_norm ha (mixingCoordinate σ 1) (mixingCoordinate σ 0) (hn 1)
+  · exact mixture_log_part_norm ha (mixingCoordinate σ 2) (mixingCoordinate σ 3) (hn 2)
+  · exact mixture_log_part_norm ha (mixingCoordinate σ 3) (mixingCoordinate σ 2) (hn 3)
+  · rw [tsum_abs_moebius_rpow hs]
+    congr 2
+    push_cast
+    ring
+
+
+/-! ### Jordan uniqueness, causality and the noncompact sharp gap -/
+
+lemma jordan_le_of_add_eq {P Q U V : Measure ℝ} (hPQ : P ⟂ₘ Q) (h : P + U = Q + V) : P ≤ V := by
+  obtain ⟨s, hs, hPs, hQs⟩ := hPQ
+  refine Measure.le_iff.mpr (fun E hE => ?_)
+  have hsplit : P E = P (E ∩ sᶜ) := by
+    have h1 : P (E ∩ s) = 0 := measure_mono_null inter_subset_right hPs
+    rw [← measure_inter_add_sdiff E hs, h1, zero_add, sdiff_eq]
+  have hE' := congrArg (fun μ : Measure ℝ => μ (E ∩ sᶜ)) h
+  simp only [Measure.add_apply] at hE'
+  have hQ0 : Q (E ∩ sᶜ) = 0 := measure_mono_null inter_subset_right hQs
+  rw [hQ0, zero_add] at hE'
+  calc P E = P (E ∩ sᶜ) := hsplit
+    _ ≤ P (E ∩ sᶜ) + U (E ∩ sᶜ) := le_self_add
+    _ = V (E ∩ sᶜ) := hE'
+    _ ≤ V E := measure_mono inter_subset_left
+
+lemma jordan_unique {P Q P' Q' X Y : Measure ℝ} (hPQ : P ⟂ₘ Q) (hPQ' : P' ⟂ₘ Q')
+    (hXY : ∀ R : ℝ, (X + Y) (Icc (-R) R) < ∞)
+    (h1 : P + X = Q + Y) (h2 : P' + X = Q' + Y) : P = P' ∧ Q = Q' := by
+  have hcross : P + Q' = Q + P' := by
+    refine measure_add_right_cancel_of_Icc hXY ?_
+    calc P + Q' + (X + Y) = (P + X) + (Q' + Y) := by abel
+      _ = (Q + Y) + (P' + X) := by rw [h1, ← h2]
+      _ = Q + P' + (X + Y) := by abel
+  have hcross' : P' + Q = Q' + P := by
+    calc P' + Q = Q + P' := add_comm _ _
+      _ = P + Q' := hcross.symm
+      _ = Q' + P := add_comm _ _
+  refine ⟨le_antisymm (jordan_le_of_add_eq hPQ hcross) (jordan_le_of_add_eq hPQ' hcross'), ?_⟩
+  have h3 : Q + P' = P + Q' := hcross.symm
+  have h4 : Q' + P = P' + Q := hcross'.symm
+  exact le_antisymm (jordan_le_of_add_eq hPQ.symm h3) (jordan_le_of_add_eq hPQ'.symm h4)
+
+lemma positiveLogMeasure_Iio_eq_zero {ρ : Measure ℝ} (h : ρ (Ioo 0 1) = 0) :
+    positiveLogMeasure ρ (Iio 0) = 0 := by
+  have hf : Measurable ((Iio (0 : ℝ)).indicator (1 : ℝ → ℝ≥0∞)) :=
+    measurable_const.indicator measurableSet_Iio
+  rw [← lintegral_indicator_one measurableSet_Iio, lintegral_positiveLogMeasure _ hf]
+  refine le_antisymm ?_ zero_le
+  calc _ ≤ ∫⁻ x, (Ioo (0 : ℝ) 1).indicator (fun _ => ∞) x ∂ρ := by
+        refine lintegral_mono (fun x => ?_)
+        by_cases hx : x ∈ Ioi (0 : ℝ)
+        · rw [Set.indicator_of_mem hx]
+          by_cases hx1 : x < 1
+          · rw [Set.indicator_of_mem (show x ∈ Ioo (0 : ℝ) 1 from ⟨hx, hx1⟩)]
+            exact le_top
+          · have hlog : ¬ Real.log x < 0 := by
+              rw [not_lt]; exact Real.log_nonneg (not_lt.mp hx1)
+            simp [Set.indicator_of_notMem (show Real.log x ∉ Iio (0 : ℝ) from hlog)]
+        · rw [Set.indicator_of_notMem hx]; exact zero_le
+    _ = 0 := by
+        rw [lintegral_indicator measurableSet_Ioo, setLIntegral_measure_zero _ _ h]
+
+lemma latticeMeasure_conv_Iio_eq_zero (w : ℕ → ℝ≥0∞) (hw : w 0 = 0) (ρ : Measure ℝ)
+    [SFinite ρ] (h : ρ (Iio 0) = 0) : (latticeMeasure w ∗ ρ) (Iio 0) = 0 := by
+  rw [latticeMeasure_conv_apply _ _ measurableSet_Iio]
+  refine ENNReal.tsum_eq_zero.mpr (fun k => ?_)
+  rcases Nat.eq_zero_or_pos k with rfl | hk
+  · simp [hw]
+  · have hlog : 0 ≤ Real.log k := Real.log_nonneg (by exact_mod_cast hk)
+    have hsub : (fun y => Real.log k + y) ⁻¹' Iio 0 ⊆ Iio 0 := by
+      intro y hy
+      simp only [mem_preimage, mem_Iio] at hy ⊢
+      linarith
+    rw [measure_mono_null hsub h, mul_zero]
+
+lemma moebiusComb_conv_Iio_eq_zero (ρ : Measure ℝ) [SFinite ρ] (h : ρ (Iio 0) = 0) :
+    (moebiusPlusComb ∗ ρ) (Iio 0) = 0 ∧ (moebiusMinusComb ∗ ρ) (Iio 0) = 0 :=
+  ⟨latticeMeasure_conv_Iio_eq_zero _ (by simp) ρ h,
+    latticeMeasure_conv_Iio_eq_zero _ (by simp) ρ h⟩
+
+lemma measure_eq_dirac_zero {μ : Measure ℝ} (hneg : μ (Iio 0) = 0) (hpos : μ (Ioi 0) = 0) :
+    μ = μ {0} • Measure.dirac 0 := by
+  ext s hs
+  rw [Measure.smul_apply, Measure.dirac_apply' _ hs, smul_eq_mul]
+  have hcompl : μ ({0}ᶜ) = 0 := by
+    rw [← Set.Iio_union_Ioi]
+    exact measure_union_null hneg hpos
+  have hsplit := measure_inter_add_sdiff s (measurableSet_singleton (0 : ℝ)) (μ := μ)
+  have hdiff : μ (s \ {0}) = 0 := measure_mono_null (fun x hx => hx.2) hcompl
+  rw [hdiff, add_zero] at hsplit
+  rw [← hsplit]
+  by_cases h0 : (0 : ℝ) ∈ s
+  · rw [Set.indicator_of_mem h0, Pi.one_apply, mul_one,
+      inter_eq_right.mpr (singleton_subset_iff.mpr h0)]
+  · rw [Set.indicator_of_notMem h0, mul_zero, Set.inter_singleton_eq_empty.mpr h0, measure_empty]
+
+lemma measure_null_of_le {μ ν : Measure ℝ} (h : μ ≤ ν) {s : Set ℝ} (hs : ν s = 0) : μ s = 0 :=
+  le_antisymm ((Measure.le_iff'.mp h s).trans hs.le) zero_le
+
+lemma reflected_apply_Ioi (μ : Measure ℝ) :
+    reflectedMixingPositiveMeasure μ (Ioi 0) = μ (Iio 0) := by
+  rw [reflectedMixingPositiveMeasure, Measure.map_apply measurable_neg measurableSet_Ioi]
+  congr 1
+  ext x
+  simp
+
+/-- One Jordan pair of an even mixing measure is concentrated at the origin when
+both lattice correction terms vanish on the negative axis. -/
+lemma jordan_pair_concentrated {P Q X Y : Measure ℝ} (hPQ : P ⟂ₘ Q)
+    (hPQr : reflectedMixingPositiveMeasure P ⟂ₘ reflectedMixingPositiveMeasure Q)
+    (hXY : ∀ R : ℝ, (X + Y) (Icc (-R) R) < ∞)
+    (h1 : P + X = Q + Y)
+    (h2 : reflectedMixingPositiveMeasure P + X = reflectedMixingPositiveMeasure Q + Y)
+    (hX : X (Iio 0) = 0) (hY : Y (Iio 0) = 0) :
+    P (Iio 0) = 0 ∧ P (Ioi 0) = 0 ∧ Q (Iio 0) = 0 ∧ Q (Ioi 0) = 0 := by
+  obtain ⟨hPe, hQe⟩ := jordan_unique hPQ hPQr hXY h1 h2
+  have hPn : P (Iio 0) = 0 :=
+    measure_null_of_le (jordan_le_of_add_eq hPQ h1) hY
+  have hQn : Q (Iio 0) = 0 :=
+    measure_null_of_le (jordan_le_of_add_eq hPQ.symm h1.symm) hX
+  refine ⟨hPn, ?_, hQn, ?_⟩
+  · rw [hPe, reflected_apply_Ioi, hPn]
+  · rw [hQe, reflected_apply_Ioi, hQn]
+
+lemma complexIntegral_point_mass (σ : LocallyFiniteComplexMeasure)
+    (hpt : ∀ i : Fin 4, mixingCoordinate σ i = mixingCoordinate σ i {0} • Measure.dirac 0)
+    (g : ℝ → ℂ) : σ.integral g = g 0 * σ.integral (fun _ => 1) := by
+  unfold LocallyFiniteComplexMeasure.integral
+  rw [show σ.rePart.positive = _ from hpt 0, show σ.rePart.negative = _ from hpt 1,
+    show σ.imPart.positive = _ from hpt 2, show σ.imPart.negative = _ from hpt 3]
+  simp only [integral_smul_measure, integral_dirac, Complex.real_smul]
+  ring
+
+lemma point_masses_singular_zero {c d : ℝ≥0∞}
+    (h : (c • Measure.dirac (0 : ℝ)) ⟂ₘ (d • Measure.dirac 0)) : c = 0 ∨ d = 0 := by
+  obtain ⟨s, hs, h1, h2⟩ := h
+  by_cases h0 : (0 : ℝ) ∈ s
+  · left
+    simpa [Measure.dirac_apply' _ hs, h0] using h1
+  · right
+    simpa [Measure.dirac_apply' _ hs.compl, h0] using h2
+
+lemma positiveDilationMixture_zero : positiveDilationMixture (0 : Measure ℝ) = 0 := by
+  simp [positiveDilationMixture]
+
+/-- Original R1-HT1 root: the noncompact sharp gap. If the genuine weighted
+mixture of a complex mixer with exponential moment a > 1/2 is Fourier self-dual
+and its restriction to (-1,1) \ {0} vanishes, then the mixer is a point mass c δ₀,
+the mixture is c times the integer comb D₀ = dilatedCombDistribution 0 with
+c its origin atom, and a zero origin atom forces mixer and mixture to vanish.
+No positivity premise is used; the strict threshold a > 1/2 is retained. -/
+theorem weighted_mixture_sharp_gap (σ : LocallyFiniteComplexMeasure) (a : ℝ) (ha : 1 / 2 < a)
+    (hm : mixingExponentialMoment a σ < ∞)
+    (hself : 𝓕 ((weightedDilationMixture σ a ha.le hm).distributionOfLinearGrowth
+        (weightedDilationMixture_growth σ a ha.le hm)) =
+      (weightedDilationMixture σ a ha.le hm).distributionOfLinearGrowth
+        (weightedDilationMixture_growth σ a ha.le hm))
+    (hgap : (weightedDilationMixture σ a ha.le hm).variationControl (Ioo (-1) 1 \ {0}) = 0) :
+    (∀ i : Fin 4, mixingCoordinate σ i = mixingCoordinate σ i {0} • Measure.dirac 0) ∧
+    σ.variationControl ({0}ᶜ) = 0 ∧
+    (weightedDilationMixture σ a ha.le hm).distributionOfLinearGrowth
+        (weightedDilationMixture_growth σ a ha.le hm) =
+      σ.integral (fun _ => 1) • dilatedCombDistribution 0 ∧
+    (weightedDilationMixture σ a ha.le hm).compactRestriction {0} isCompact_singleton {0} =
+      σ.integral (fun _ => 1) ∧
+    ((weightedDilationMixture σ a ha.le hm).compactRestriction {0} isCompact_singleton {0} = 0 →
+      (∀ i : Fin 4, mixingCoordinate σ i = 0) ∧
+      (weightedDilationMixture σ a ha.le hm).distributionOfLinearGrowth
+        (weightedDilationMixture_growth σ a ha.le hm) = 0 ∧
+      (weightedDilationMixture σ a ha.le hm).variationControl = 0) := by
+  have ha0 : (0 : ℝ) ≤ a := by linarith
+  set ν := weightedDilationMixture σ a ha.le hm with hνdef
+  have hm' := mixingExponentialMoment_reflect_lt_top σ a hm
+  -- self-duality and faithfulness give ν_(σ^∨) = ν_σ
+  have hdist : (weightedDilationMixture (reflectedMixingMeasure σ) a ha.le hm').distributionOfLinearGrowth
+      (weightedDilationMixture_growth _ a ha.le hm') =
+      ν.distributionOfLinearGrowth (weightedDilationMixture_growth σ a ha.le hm) := by
+    rw [← weightedDilationMixture_fourier σ a ha.le hm, hself]
+  have hνr : weightedDilationMixture (reflectedMixingMeasure σ) a ha.le hm' = ν :=
+    congrArg Subtype.val (LocallyFiniteComplexMeasure.distributionOfLinearGrowth_injective
+      (a₁ := ⟨_, weightedDilationMixture_growth _ a ha.le hm'⟩)
+      (a₂ := ⟨ν, weightedDilationMixture_growth σ a ha.le hm⟩) hdist)
+  obtain ⟨-, -, -, -, hinvre, hinvim, -, ⟨hηrp, hηrn, hηip, hηin⟩, -, -, ⟨hMnorm, -⟩⟩ :=
+    weighted_mobius_inverse σ a ha hm
+  obtain ⟨-, -, -, -, hinvre', hinvim', -⟩ :=
+    weighted_mobius_inverse (reflectedMixingMeasure σ) a ha hm'
+  rw [hνr] at hinvre' hinvim'
+  -- finiteness of the correction terms on bounded sets
+  have hM := weightedLogNorm_moebiusComb_lt_top ha
+  have hfinXY (ηp ηn : Measure ℝ) [SFinite ηp] [SFinite ηn]
+      (hp : weightedLogNorm a ηp < ∞) (hn : weightedLogNorm a ηn < ∞) (R : ℝ) :
+      ((moebiusPlusComb ∗ ηn + moebiusMinusComb ∗ ηp) +
+        (moebiusPlusComb ∗ ηp + moebiusMinusComb ∗ ηn)) (Icc (-R) R) < ∞ := by
+    refine measure_Icc_lt_top_of_weightedLogNorm ha0 ?_ R
+    simp only [weightedLogNorm_add, weightedLogNorm_conv]
+    exact ENNReal.add_lt_top.mpr
+      ⟨ENNReal.add_lt_top.mpr ⟨ENNReal.mul_lt_top hM.1 hn, ENNReal.mul_lt_top hM.2 hp⟩,
+        ENNReal.add_lt_top.mpr ⟨ENNReal.mul_lt_top hM.1 hp, ENNReal.mul_lt_top hM.2 hn⟩⟩
+  -- the gap empties every η part on the negative axis
+  have hsub : Ioo (0 : ℝ) 1 ⊆ Ioo (-1) 1 \ {0} := fun x hx =>
+    ⟨⟨by linarith [hx.1], hx.2⟩, by simpa using hx.1.ne'⟩
+  have hgap0 : ν.variationControl (Ioo 0 1) = 0 := measure_mono_null hsub hgap
+  have hpart (ρ : Measure ℝ) (hle : ρ ≤ ν.variationControl) : positiveLogMeasure ρ (Iio 0) = 0 :=
+    positiveLogMeasure_Iio_eq_zero (measure_null_of_le hle hgap0)
+  have hrp : ν.rePart.positive ≤ ν.variationControl :=
+    (weightedJordanPositive_le_totalVariation _).trans (weightedReal_le_control _)
+  have hrn : ν.rePart.negative ≤ ν.variationControl :=
+    (weightedJordanNegative_le_totalVariation _).trans (weightedReal_le_control _)
+  have hip : ν.imPart.positive ≤ ν.variationControl :=
+    (weightedJordanPositive_le_totalVariation _).trans (weightedImaginary_le_control _)
+  have hin : ν.imPart.negative ≤ ν.variationControl :=
+    (weightedJordanNegative_le_totalVariation _).trans (weightedImaginary_le_control _)
+  have hvanish (ηp ηn : Measure ℝ) [SFinite ηp] [SFinite ηn]
+      (hp : ηp (Iio 0) = 0) (hn : ηn (Iio 0) = 0) :
+      (moebiusPlusComb ∗ ηn + moebiusMinusComb ∗ ηp) (Iio 0) = 0 ∧
+      (moebiusPlusComb ∗ ηp + moebiusMinusComb ∗ ηn) (Iio 0) = 0 := by
+    simp only [Measure.add_apply, (moebiusComb_conv_Iio_eq_zero _ hp).1,
+      (moebiusComb_conv_Iio_eq_zero _ hp).2, (moebiusComb_conv_Iio_eq_zero _ hn).1,
+      (moebiusComb_conv_Iio_eq_zero _ hn).2, add_zero, and_self]
+  have hre := jordan_pair_concentrated σ.rePart.mutuallySingular
+    (reflectedMixingMeasure σ).rePart.mutuallySingular (hfinXY _ _ hηrp hηrn) hinvre hinvre'
+    (hvanish _ _ (hpart _ hrp) (hpart _ hrn)).1 (hvanish _ _ (hpart _ hrp) (hpart _ hrn)).2
+  have him := jordan_pair_concentrated σ.imPart.mutuallySingular
+    (reflectedMixingMeasure σ).imPart.mutuallySingular (hfinXY _ _ hηip hηin) hinvim hinvim'
+    (hvanish _ _ (hpart _ hip) (hpart _ hin)).1 (hvanish _ _ (hpart _ hip) (hpart _ hin)).2
+  have hpt : ∀ i : Fin 4, mixingCoordinate σ i = mixingCoordinate σ i {0} • Measure.dirac 0 := by
+    intro i
+    fin_cases i
+    · exact measure_eq_dirac_zero hre.1 hre.2.1
+    · exact measure_eq_dirac_zero hre.2.2.1 hre.2.2.2
+    · exact measure_eq_dirac_zero him.1 him.2.1
+    · exact measure_eq_dirac_zero him.2.2.1 him.2.2.2
+  have hcompl (μ : Measure ℝ) (h1 : μ (Iio 0) = 0) (h2 : μ (Ioi 0) = 0) : μ ({0}ᶜ) = 0 := by
+    rw [← Set.Iio_union_Ioi]; exact measure_union_null h1 h2
+  have hdistr : ν.distributionOfLinearGrowth (weightedDilationMixture_growth σ a ha.le hm) =
+      σ.integral (fun _ => 1) • dilatedCombDistribution 0 := by
+    ext1 f
+    change ν.integral f = σ.integral (fun _ => 1) * dilatedCombDistribution 0 f
+    rw [weightedDilationMixture_pairing, complexIntegral_point_mass σ hpt, mul_comm]
+  have horigin : ν.compactRestriction {0} isCompact_singleton {0} = σ.integral (fun _ => 1) := by
+    rw [weightedDilationMixture_origin, complexIntegral_point_mass σ hpt]
+    simp
+  refine ⟨hpt, ?_, hdistr, horigin, fun h0 => ?_⟩
+  · change ((σ.rePart.positive + σ.rePart.negative) + (σ.imPart.positive + σ.imPart.negative))
+      ({0}ᶜ) = 0
+    simp only [Measure.add_apply, hcompl _ hre.1 hre.2.1, hcompl _ hre.2.2.1 hre.2.2.2,
+      hcompl _ him.1 him.2.1, hcompl _ him.2.2.1 him.2.2.2, add_zero]
+  · rw [horigin] at h0
+    have hval := h0
+    rw [show σ.integral (fun _ => 1) = σ.integral (fun _ => 1) from rfl] at hval
+    unfold LocallyFiniteComplexMeasure.integral at hval
+    rw [show σ.rePart.positive = _ from hpt 0, show σ.rePart.negative = _ from hpt 1,
+      show σ.imPart.positive = _ from hpt 2, show σ.imPart.negative = _ from hpt 3] at hval
+    simp only [integral_smul_measure, integral_dirac, Complex.real_smul, mul_one] at hval
+    have hre0 := congrArg Complex.re hval
+    have him0 := congrArg Complex.im hval
+    simp at hre0 him0
+    have hfin (i : Fin 4) : mixingCoordinate σ i {0} ≠ ∞ :=
+      (isCompact_singleton.measure_lt_top (μ := mixingCoordinate σ i)).ne
+    have hs01 := σ.rePart.mutuallySingular
+    rw [show σ.rePart.positive = _ from hpt 0, show σ.rePart.negative = _ from hpt 1] at hs01
+    have hs23 := σ.imPart.mutuallySingular
+    rw [show σ.imPart.positive = _ from hpt 2, show σ.imPart.negative = _ from hpt 3] at hs23
+    have hsing01 := point_masses_singular_zero hs01
+    have hsing23 := point_masses_singular_zero hs23
+    have hz01 : mixingCoordinate σ 0 {0} = 0 ∧ mixingCoordinate σ 1 {0} = 0 := by
+      rcases hsing01 with h | h
+      · refine ⟨h, ?_⟩
+        rw [h, ENNReal.toReal_zero] at hre0
+        exact (ENNReal.toReal_eq_zero_iff _).mp (by linarith) |>.resolve_right (hfin 1)
+      · refine ⟨?_, h⟩
+        rw [h, ENNReal.toReal_zero] at hre0
+        exact (ENNReal.toReal_eq_zero_iff _).mp (by linarith) |>.resolve_right (hfin 0)
+    have hz23 : mixingCoordinate σ 2 {0} = 0 ∧ mixingCoordinate σ 3 {0} = 0 := by
+      rcases hsing23 with h | h
+      · refine ⟨h, ?_⟩
+        rw [h, ENNReal.toReal_zero] at him0
+        exact (ENNReal.toReal_eq_zero_iff _).mp (by linarith) |>.resolve_right (hfin 3)
+      · refine ⟨?_, h⟩
+        rw [h, ENNReal.toReal_zero] at him0
+        exact (ENNReal.toReal_eq_zero_iff _).mp (by linarith) |>.resolve_right (hfin 2)
+    have hzero : ∀ i : Fin 4, mixingCoordinate σ i = 0 := by
+      intro i
+      fin_cases i
+      · show mixingCoordinate σ 0 = 0
+        rw [hpt 0, hz01.1, zero_smul]
+      · show mixingCoordinate σ 1 = 0
+        rw [hpt 1, hz01.2, zero_smul]
+      · show mixingCoordinate σ 2 = 0
+        rw [hpt 2, hz23.1, zero_smul]
+      · show mixingCoordinate σ 3 = 0
+        rw [hpt 3, hz23.2, zero_smul]
+    refine ⟨hzero, ?_, ?_⟩
+    · exact hdistr.trans (by rw [h0]; ext1 f; simp)
+    · change ((positiveDilationMixture (mixingCoordinate σ 0) -
+          positiveDilationMixture (mixingCoordinate σ 1)) +
+        (positiveDilationMixture (mixingCoordinate σ 1) -
+          positiveDilationMixture (mixingCoordinate σ 0))) +
+        ((positiveDilationMixture (mixingCoordinate σ 2) -
+          positiveDilationMixture (mixingCoordinate σ 3)) +
+        (positiveDilationMixture (mixingCoordinate σ 3) -
+          positiveDilationMixture (mixingCoordinate σ 2))) = 0
+      simp only [hzero, positiveDilationMixture_zero, Measure.sub_self, add_zero]
+
+
+/-! ### Quantitative gap leakage (measure form) -/
+
+lemma latticeMeasure_conv_restrict_Iio (w : ℕ → ℝ≥0∞) (hw : w 0 = 0) (ρ : Measure ℝ)
+    [SFinite ρ] :
+    (latticeMeasure w ∗ ρ).restrict (Iio 0) ≤ latticeMeasure w ∗ ρ.restrict (Iio 0) := by
+  refine Measure.le_iff.mpr (fun E hE => ?_)
+  rw [Measure.restrict_apply hE, latticeMeasure_conv_apply _ _ (hE.inter measurableSet_Iio),
+    latticeMeasure_conv_apply _ _ hE]
+  refine ENNReal.tsum_le_tsum (fun k => ?_)
+  rcases Nat.eq_zero_or_pos k with rfl | hk
+  · simp [hw]
+  · have hsub : ρ ((fun y => Real.log k + y) ⁻¹' (E ∩ Iio 0)) ≤
+        (ρ.restrict (Iio 0)) ((fun y => Real.log k + y) ⁻¹' E) := by
+      rw [Measure.restrict_apply (measurable_const_add _ hE)]
+      refine measure_mono (fun y hy => ⟨hy.1, ?_⟩)
+      have hlog : 0 ≤ Real.log k := Real.log_nonneg (by exact_mod_cast hk)
+      have h2 : Real.log k + y < 0 := hy.2
+      show y < 0
+      linarith
+    exact mul_le_mul le_rfl hsub zero_le zero_le
+
+lemma setLIntegral_positiveLogMeasure_Iio (a : ℝ) (ρ : Measure ℝ) :
+    ∫⁻ y in Iio 0, ENNReal.ofReal (Real.exp (-a * y)) ∂positiveLogMeasure ρ =
+      ∫⁻ x in Ioo 0 1, ENNReal.ofReal (x ^ (-a - 1 / 2)) ∂ρ := by
+  have hf : Measurable ((Iio (0 : ℝ)).indicator (fun y => ENNReal.ofReal (Real.exp (-a * y)))) :=
+    (by fun_prop : Measurable fun y : ℝ => ENNReal.ofReal (Real.exp (-a * y))).indicator
+      measurableSet_Iio
+  rw [← lintegral_indicator measurableSet_Iio, lintegral_positiveLogMeasure _ hf,
+    ← lintegral_indicator measurableSet_Ioo]
+  refine lintegral_congr (fun x => ?_)
+  by_cases hx : x ∈ Ioo (0 : ℝ) 1
+  · have hx0 : x ∈ Ioi (0 : ℝ) := hx.1
+    have hlog : Real.log x ∈ Iio (0 : ℝ) := Real.log_neg hx.1 hx.2
+    rw [Set.indicator_of_mem hx0, Set.indicator_of_mem hlog, Set.indicator_of_mem hx]
+    simp only [positiveLogWeight, if_pos hx.1]
+    rw [← ENNReal.ofReal_mul (by positivity)]
+    congr 1
+    rw [Real.sqrt_eq_rpow, ← Real.rpow_neg hx.1.le, mul_comm (-a), ← Real.rpow_def_of_pos hx.1,
+      ← Real.rpow_add hx.1]
+    ring_nf
+  · rw [Set.indicator_of_notMem hx]
+    by_cases hx0 : x ∈ Ioi (0 : ℝ)
+    · rw [Set.indicator_of_mem hx0]
+      have hlog : Real.log x ∉ Iio (0 : ℝ) := by
+        simp only [mem_Iio, not_lt]
+        refine Real.log_nonneg ?_
+        by_contra h
+        exact hx ⟨hx0, lt_of_not_ge h⟩
+      rw [Set.indicator_of_notMem hlog, mul_zero]
+    · rw [Set.indicator_of_notMem hx0]
+
+lemma tsum_abs_moebius_rpow_pos {s : ℝ} (hs : 1 < s) :
+    0 < ∑' n : ℕ, (|ArithmeticFunction.moebius n| : ℝ) * (n : ℝ) ^ (-s) := by
+  have hsum : Summable (fun n : ℕ => (|ArithmeticFunction.moebius n| : ℝ) * (n : ℝ) ^ (-s)) := by
+    refine (summable_nat_rpow_neg hs).of_nonneg_of_le (fun n => by positivity) (fun n => ?_)
+    have h' : (|ArithmeticFunction.moebius n| : ℝ) ≤ 1 := by
+      exact_mod_cast ArithmeticFunction.abs_moebius_le_one
+    calc _ ≤ 1 * (n : ℝ) ^ (-s) := mul_le_mul_of_nonneg_right h' (by positivity)
+      _ = _ := one_mul _
+  refine lt_of_lt_of_le ?_ (hsum.le_tsum 1 (fun n _ => by positivity))
+  simp
+
+lemma zeta_ratio_re {s : ℝ} (hs : 1 < s) :
+    (riemannZeta ((2 * s : ℝ) : ℂ) / riemannZeta (s : ℂ)).re =
+      (∑' n : ℕ, (|ArithmeticFunction.moebius n| : ℝ) * (n : ℝ) ^ (-s))⁻¹ := by
+  have h := tsum_abs_moebius_rpow hs
+  have hz : riemannZeta (s : ℂ) ≠ 0 := riemannZeta_ne_zero_of_one_lt_re (by simpa using hs)
+  have hz2 : riemannZeta ((2 * s : ℝ) : ℂ) ≠ 0 :=
+    riemannZeta_ne_zero_of_one_lt_re (by simp; linarith)
+  have hcast : ((2 * s : ℝ) : ℂ) = 2 * (s : ℂ) := by push_cast; ring
+  rw [hcast, ← inv_div, ← h, ← Complex.ofReal_inv, Complex.ofReal_re]
+
+/-- Leakage for one Jordan pair: the negative-axis weighted variation of the mixer
+is bounded by ‖M_μ‖ times the interior-gap variation of η. -/
+theorem jordan_gap_leakage (a : ℝ) {P Q ηp ηn : Measure ℝ}
+    [SFinite ηp] [SFinite ηn] (hPQ : P ⟂ₘ Q)
+    (h : P + (moebiusPlusComb ∗ ηn + moebiusMinusComb ∗ ηp) =
+      Q + (moebiusPlusComb ∗ ηp + moebiusMinusComb ∗ ηn)) :
+    ∫⁻ t in Iio 0, ENNReal.ofReal (Real.exp (-a * t)) ∂(P + Q) ≤
+      weightedLogNorm a (moebiusPlusComb + moebiusMinusComb) *
+        ∫⁻ y in Iio 0, ENNReal.ofReal (Real.exp (-a * y)) ∂(ηp + ηn) := by
+  have hle : P + Q ≤ (moebiusPlusComb + moebiusMinusComb) ∗ (ηp + ηn) := by
+    have h1 := jordan_le_of_add_eq hPQ h
+    have h2 := jordan_le_of_add_eq hPQ.symm h.symm
+    calc P + Q ≤ (moebiusPlusComb ∗ ηp + moebiusMinusComb ∗ ηn) +
+          (moebiusPlusComb ∗ ηn + moebiusMinusComb ∗ ηp) := add_le_add h1 h2
+      _ = (moebiusPlusComb + moebiusMinusComb) ∗ (ηp + ηn) := by
+          rw [Measure.add_conv, Measure.conv_add, Measure.conv_add]; abel
+  have hcaus : ((moebiusPlusComb + moebiusMinusComb) ∗ (ηp + ηn)).restrict (Iio 0) ≤
+      (moebiusPlusComb + moebiusMinusComb) ∗ (ηp + ηn).restrict (Iio 0) := by
+    have hw : (fun k => (if ArithmeticFunction.moebius k = 1 then latticeWeight k else 0) +
+        (if ArithmeticFunction.moebius k = -1 then latticeWeight k else 0)) 0 = 0 := by simp
+    have hsum : moebiusPlusComb + moebiusMinusComb = latticeMeasure (fun k =>
+        (if ArithmeticFunction.moebius k = 1 then latticeWeight k else 0) +
+        (if ArithmeticFunction.moebius k = -1 then latticeWeight k else 0)) := by
+      unfold moebiusPlusComb moebiusMinusComb latticeMeasure
+      rw [Measure.sum_add_sum]
+      simp_rw [add_smul]
+    rw [hsum]
+    exact latticeMeasure_conv_restrict_Iio _ hw _
+  calc ∫⁻ t in Iio 0, ENNReal.ofReal (Real.exp (-a * t)) ∂(P + Q)
+      ≤ ∫⁻ t, ENNReal.ofReal (Real.exp (-a * t))
+          ∂((moebiusPlusComb + moebiusMinusComb) ∗ (ηp + ηn)).restrict (Iio 0) :=
+        lintegral_mono' (Measure.restrict_mono subset_rfl hle) le_rfl
+    _ ≤ ∫⁻ t, ENNReal.ofReal (Real.exp (-a * t))
+          ∂((moebiusPlusComb + moebiusMinusComb) ∗ (ηp + ηn).restrict (Iio 0)) :=
+        lintegral_mono' hcaus le_rfl
+    _ = _ := weightedLogNorm_conv a _ _
+
+/-! ### Continuous-density supremum counterpart (HT1.8-HT1.9) -/
+
+/-- Real lattice weight k^(-1/2), zero at k = 0. -/
+def latticeWeightR (k : ℕ) : ℝ := if k = 0 then 0 else (Real.sqrt k)⁻¹
+
+lemma latticeWeightR_nonneg (k : ℕ) : 0 ≤ latticeWeightR k := by
+  unfold latticeWeightR; split_ifs <;> positivity
+
+lemma latticeWeightR_mul {i j : ℕ} (hi : i ≠ 0) (hj : j ≠ 0) :
+    latticeWeightR i * latticeWeightR j = latticeWeightR (i * j) := by
+  simp only [latticeWeightR, if_neg hi, if_neg hj, if_neg (mul_ne_zero hi hj)]
+  rw [Nat.cast_mul, Real.sqrt_mul (Nat.cast_nonneg _), mul_inv]
+
+lemma latticeWeightR_rpow {b : ℝ} (hb : 0 < b + 1 / 2) (k : ℕ) :
+    latticeWeightR k * Real.exp (-b * Real.log k) = (k : ℝ) ^ (-(b + 1 / 2)) := by
+  rcases Nat.eq_zero_or_pos k with rfl | hk
+  · rw [Nat.cast_zero, Real.zero_rpow (by linarith)]; simp [latticeWeightR]
+  · have hk' : (0 : ℝ) < k := by exact_mod_cast hk
+    simp only [latticeWeightR, if_neg hk.ne']
+    rw [Real.sqrt_eq_rpow, ← Real.rpow_neg hk'.le, mul_comm (-b), ← Real.rpow_def_of_pos hk',
+      ← Real.rpow_add hk']
+    ring_nf
+
+/-- The lattice transform g = N ∗ h of a function. -/
+def latticeTransform (h : ℝ → ℂ) (y : ℝ) : ℂ :=
+  ∑' n : ℕ, (latticeWeightR n : ℂ) * h (y - Real.log n)
+
+/-- The paper's positive-axis mixture density r_h(x) = x^(-1/2) Σ h(log(x/n)) n^(-1/2). -/
+def mixtureDensity (h : ℝ → ℂ) (x : ℝ) : ℂ :=
+  ((Real.sqrt x)⁻¹ : ℝ) * ∑' n : ℕ, (latticeWeightR n : ℂ) * h (Real.log (x / n))
+
+lemma mixtureDensity_exp (h : ℝ → ℂ) (y : ℝ) :
+    ((Real.exp (y / 2) : ℝ) : ℂ) * mixtureDensity h (Real.exp y) = latticeTransform h y := by
+  unfold mixtureDensity latticeTransform
+  rw [← mul_assoc, ← Complex.ofReal_mul]
+  have hsq : Real.sqrt (Real.exp y) = Real.exp (y / 2) := by
+    rw [show Real.exp y = Real.exp (y / 2) * Real.exp (y / 2) by rw [← Real.exp_add]; ring_nf,
+      Real.sqrt_mul_self (Real.exp_pos _).le]
+  rw [hsq, mul_inv_cancel₀ (Real.exp_pos _).ne', Complex.ofReal_one, one_mul]
+  refine tsum_congr (fun n => ?_)
+  rcases Nat.eq_zero_or_pos n with rfl | hn
+  · simp [latticeWeightR]
+  · rw [Real.log_div (Real.exp_pos _).ne' (by exact_mod_cast hn.ne'), Real.log_exp]
+
+lemma decay_bound_nonpos {h : ℝ → ℂ} {H b : ℝ} (hdecay : ∀ t, ‖h t‖ ≤ H * Real.exp (-b * |t|))
+    {z : ℝ} (hz : z ≤ 0) : ‖h z‖ ≤ H * Real.exp (b * z) := by
+  have := hdecay z
+  rwa [abs_of_nonpos hz, neg_mul_neg] at this
+
+/-- Absolute double-series Möbius inversion of the lattice transform on y ≤ 0. -/
+theorem latticeTransform_moebius_inverse {h : ℝ → ℂ} {H b : ℝ} (hb : 1 / 2 < b)
+    (hdecay : ∀ t, ‖h t‖ ≤ H * Real.exp (-b * |t|)) {y : ℝ} (hy : y ≤ 0) :
+    ∑' m : ℕ, ((ArithmeticFunction.moebius m : ℝ) : ℂ) * (latticeWeightR m : ℂ) *
+      latticeTransform h (y - Real.log m) = h y := by
+  have hs : 1 < b + 1 / 2 := by linarith
+  set F : ℕ × ℕ → ℂ := fun p => ((ArithmeticFunction.moebius p.1 : ℝ) : ℂ) *
+    (latticeWeightR p.1 : ℂ) * ((latticeWeightR p.2 : ℂ) * h (y - Real.log p.1 - Real.log p.2))
+    with hFdef
+  have hF0 : ∀ p : ℕ × ℕ, p.1 = 0 ∨ p.2 = 0 → F p = 0 := by
+    rintro ⟨i, j⟩ (h0 | h0) <;> simp only at h0 <;> simp [hFdef, h0, latticeWeightR]
+  -- domination by a product of summable weights
+  have hbound (p : ℕ × ℕ) : ‖F p‖ ≤ (H * Real.exp (b * y)) *
+      ((p.1 : ℝ) ^ (-(b + 1 / 2)) * (p.2 : ℝ) ^ (-(b + 1 / 2))) := by
+    rcases p with ⟨i, j⟩
+    rcases Nat.eq_zero_or_pos i with rfl | hi
+    · rw [hF0 _ (Or.inl rfl), norm_zero]
+      rw [Nat.cast_zero, Real.zero_rpow (by linarith), zero_mul, mul_zero]
+    rcases Nat.eq_zero_or_pos j with rfl | hj
+    · rw [hF0 _ (Or.inr rfl), norm_zero]
+      rw [Nat.cast_zero, Real.zero_rpow (by linarith), mul_zero, mul_zero]
+    have hli : 0 ≤ Real.log i := Real.log_nonneg (by exact_mod_cast hi)
+    have hlj : 0 ≤ Real.log j := Real.log_nonneg (by exact_mod_cast hj)
+    have hz : y - Real.log i - Real.log j ≤ 0 := by linarith
+    have hμ : |(ArithmeticFunction.moebius i : ℝ)| ≤ 1 := by
+      exact_mod_cast ArithmeticFunction.abs_moebius_le_one
+    have hhz := decay_bound_nonpos hdecay hz
+    have hexp : Real.exp (b * (y - Real.log i - Real.log j)) =
+        Real.exp (b * y) * (Real.exp (-b * Real.log i) * Real.exp (-b * Real.log j)) := by
+      rw [← Real.exp_add, ← Real.exp_add]; ring_nf
+    have hwi := latticeWeightR_rpow (by linarith : 0 < b + 1 / 2) i
+    have hwj := latticeWeightR_rpow (by linarith : 0 < b + 1 / 2) j
+    have hwi0 := latticeWeightR_nonneg i
+    have hwj0 := latticeWeightR_nonneg j
+    have key : ‖F (i, j)‖ = |(ArithmeticFunction.moebius i : ℝ)| * latticeWeightR i *
+        (latticeWeightR j * ‖h (y - Real.log i - Real.log j)‖) := by
+      simp only [hFdef, norm_mul, Complex.norm_real, Real.norm_eq_abs,
+        abs_of_nonneg hwi0, abs_of_nonneg hwj0]
+    calc ‖F (i, j)‖ = _ := key
+      _ ≤ 1 * latticeWeightR i * (latticeWeightR j * (H * Real.exp (b * (y - Real.log i -
+            Real.log j)))) :=
+          mul_le_mul (mul_le_mul_of_nonneg_right hμ hwi0) (mul_le_mul_of_nonneg_left hhz hwj0)
+            (mul_nonneg hwj0 (norm_nonneg _)) (by rw [one_mul]; exact hwi0)
+      _ = (H * Real.exp (b * y)) * ((latticeWeightR i * Real.exp (-b * Real.log i)) *
+          (latticeWeightR j * Real.exp (-b * Real.log j))) := by rw [hexp]; ring
+      _ = _ := by rw [hwi, hwj]
+  have hsumR := summable_nat_rpow_neg hs
+  have hsumP : Summable (fun p : ℕ × ℕ =>
+      (p.1 : ℝ) ^ (-(b + 1 / 2)) * (p.2 : ℝ) ^ (-(b + 1 / 2))) :=
+    hsumR.mul_of_nonneg hsumR (fun _ => by positivity) (fun _ => by positivity)
+  have hsum : Summable F := (hsumP.mul_left (H * Real.exp (b * y))).of_norm_bounded hbound
+  -- rewrite the left side as the double series
+  have hleft : ∑' m : ℕ, ((ArithmeticFunction.moebius m : ℝ) : ℂ) * (latticeWeightR m : ℂ) *
+      latticeTransform h (y - Real.log m) = ∑' p, F p := by
+    rw [hsum.tsum_prod]
+    refine tsum_congr (fun m => ?_)
+    unfold latticeTransform
+    rw [← tsum_mul_left]
+  rw [hleft]
+  -- reindex by products
+  have hpos : ∑' p : ℕ × ℕ, F p = ∑' p : ℕ+ × ℕ+, F ((p.1 : ℕ), (p.2 : ℕ)) := by
+    let e : ℕ+ × ℕ+ → ℕ × ℕ := fun p => ((p.1 : ℕ), (p.2 : ℕ))
+    have he : Function.Injective e := by
+      intro p q hpq
+      simp only [e, Prod.mk.injEq] at hpq
+      exact Prod.ext (PNat.coe_injective hpq.1) (PNat.coe_injective hpq.2)
+    refine (he.tsum_eq ?_).symm
+    intro p hp
+    rw [Function.mem_support] at hp
+    have h1 : p.1 ≠ 0 := fun h0 => hp (hF0 p (Or.inl h0))
+    have h2 : p.2 ≠ 0 := fun h0 => hp (hF0 p (Or.inr h0))
+    exact ⟨(⟨p.1, Nat.pos_of_ne_zero h1⟩, ⟨p.2, Nat.pos_of_ne_zero h2⟩), rfl⟩
+  have hsumPN : Summable (fun p : ℕ+ × ℕ+ => F ((p.1 : ℕ), (p.2 : ℕ))) := by
+    have he : Function.Injective (fun p : ℕ+ × ℕ+ => ((p.1 : ℕ), (p.2 : ℕ))) := by
+      intro p q hpq
+      simp only [Prod.mk.injEq] at hpq
+      exact Prod.ext (PNat.coe_injective hpq.1) (PNat.coe_injective hpq.2)
+    exact hsum.comp_injective he
+  rw [hpos, ← sigmaAntidiagonalEquivProd.tsum_eq]
+  have hsig : Summable (fun c : (Σ n : ℕ+, Nat.divisorsAntidiagonal (n : ℕ)) =>
+      F (((sigmaAntidiagonalEquivProd c).1 : ℕ), ((sigmaAntidiagonalEquivProd c).2 : ℕ))) :=
+    sigmaAntidiagonalEquivProd.summable_iff.mpr hsumPN
+  rw [hsig.tsum_sigma]
+  -- each fibre contributes w(k) h(y - log k) Σ_(d|k) μ(d)
+  have hfibre (k : ℕ+) : ∑' x : Nat.divisorsAntidiagonal (k : ℕ),
+      F (((sigmaAntidiagonalEquivProd ⟨k, x⟩).1 : ℕ), ((sigmaAntidiagonalEquivProd ⟨k, x⟩).2 : ℕ)) =
+      if (k : ℕ) = 1 then h y else 0 := by
+    rw [tsum_fintype]
+    have hx (x : Nat.divisorsAntidiagonal (k : ℕ)) :
+        F (((sigmaAntidiagonalEquivProd ⟨k, x⟩).1 : ℕ), ((sigmaAntidiagonalEquivProd ⟨k, x⟩).2 : ℕ)) =
+        ((ArithmeticFunction.moebius x.1.1 : ℝ) : ℂ) * ((latticeWeightR k : ℂ) *
+          h (y - Real.log k)) := by
+      have hmem := Nat.mem_divisorsAntidiagonal.mp x.2
+      have hk0 : x.1.1 * x.1.2 ≠ 0 := by rw [hmem.1]; exact hmem.2
+      have h1 : x.1.1 ≠ 0 := left_ne_zero_of_mul hk0
+      have h2 : x.1.2 ≠ 0 := right_ne_zero_of_mul hk0
+      have hw : latticeWeightR x.1.1 * latticeWeightR x.1.2 = latticeWeightR k := by
+        rw [latticeWeightR_mul h1 h2, hmem.1]
+      have hwc : ((latticeWeightR x.1.1 : ℝ) : ℂ) * (latticeWeightR x.1.2 : ℂ) =
+          (latticeWeightR k : ℂ) := by rw [← Complex.ofReal_mul, hw]
+      change F (x.1.1, x.1.2) = _
+      simp only [hFdef]
+      rw [sub_sub, ← Real.log_mul (by exact_mod_cast h1) (by exact_mod_cast h2), ← Nat.cast_mul,
+        hmem.1]
+      linear_combination (((ArithmeticFunction.moebius x.1.1 : ℝ) : ℂ) * h (y - Real.log k)) * hwc
+    simp_rw [hx]
+    rw [← Finset.sum_mul]
+    have hsumμ : ∑ x : Nat.divisorsAntidiagonal (k : ℕ),
+        ((ArithmeticFunction.moebius x.1.1 : ℝ) : ℂ) =
+        ∑ d ∈ (k : ℕ).divisors, ((ArithmeticFunction.moebius d : ℝ) : ℂ) := by
+      rw [Finset.sum_coe_sort (Nat.divisorsAntidiagonal (k : ℕ))
+        (fun p => ((ArithmeticFunction.moebius p.1 : ℝ) : ℂ))]
+      rw [Nat.sum_divisorsAntidiagonal (fun i _ => ((ArithmeticFunction.moebius i : ℝ) : ℂ))]
+    rw [hsumμ]
+    have hcast : ∑ d ∈ (k : ℕ).divisors, ((ArithmeticFunction.moebius d : ℝ) : ℂ) =
+        ((∑ d ∈ (k : ℕ).divisors, ArithmeticFunction.moebius d : ℤ) : ℂ) := by push_cast; rfl
+    rw [hcast, moebius_divisor_sum]
+    split_ifs with hk1
+    · rw [hk1]; simp [latticeWeightR]
+    · simp
+  simp_rw [hfibre]
+  rw [tsum_eq_single 1]
+  · simp
+  · intro k hk
+    rw [if_neg (fun h1 => hk (PNat.coe_eq_one_iff.mp h1))]
+
+/-- The pointwise supremum leakage at the endpoint exponent b (HT1.9). No
+b-moment of h is assumed. -/
+theorem density_gap_leakage_sup {h : ℝ → ℂ} {H b : ℝ} (hb : 1 / 2 < b) (hcont : Continuous h)
+    (heven : ∀ t, h (-t) = h t) (hdecay : ∀ t, ‖h t‖ ≤ H * Real.exp (-b * |t|)) :
+    ENNReal.ofReal ((riemannZeta ((2 * b + 1 : ℝ) : ℂ) / riemannZeta ((b + 1 / 2 : ℝ) : ℂ)).re) *
+        (⨆ t ∈ Ici (0 : ℝ), ENNReal.ofReal (Real.exp (b * t) * ‖h t‖)) ≤
+      ⨆ x ∈ Ioo (0 : ℝ) 1, ENNReal.ofReal (x ^ (1 / 2 - b) * ‖mixtureDensity h x‖) := by
+  have hs : 1 < b + 1 / 2 := by linarith
+  set S := ∑' n : ℕ, (|ArithmeticFunction.moebius n| : ℝ) * (n : ℝ) ^ (-(b + 1 / 2)) with hSdef
+  have hS : 0 < S := tsum_abs_moebius_rpow_pos hs
+  have hratio : (riemannZeta ((2 * b + 1 : ℝ) : ℂ) / riemannZeta ((b + 1 / 2 : ℝ) : ℂ)).re = S⁻¹ := by
+    rw [← zeta_ratio_re hs]
+    congr 3
+    ring_nf
+  rw [hratio]
+  set G := ⨆ x ∈ Ioo (0 : ℝ) 1, ENNReal.ofReal (x ^ (1 / 2 - b) * ‖mixtureDensity h x‖) with hGdef
+  rcases eq_or_ne G ⊤ with hG | hG
+  · rw [hG]; exact le_top
+  set Gr := G.toReal with hGr
+  have hGr0 : 0 ≤ Gr := ENNReal.toReal_nonneg
+  -- Claim A: the lattice transform is bounded by e^(b y) Gr on y < 0
+  have hA (y : ℝ) (hy : y < 0) : ‖latticeTransform h y‖ ≤ Real.exp (b * y) * Gr := by
+    have hx : Real.exp y ∈ Ioo (0 : ℝ) 1 := ⟨Real.exp_pos y, Real.exp_lt_one_iff.mpr hy⟩
+    have hle : ENNReal.ofReal ((Real.exp y) ^ (1 / 2 - b) * ‖mixtureDensity h (Real.exp y)‖) ≤ G :=
+      le_iSup₂ (f := fun x (_ : x ∈ Ioo (0 : ℝ) 1) =>
+        ENNReal.ofReal (x ^ (1 / 2 - b) * ‖mixtureDensity h x‖)) (Real.exp y) hx
+    have hle' : (Real.exp y) ^ (1 / 2 - b) * ‖mixtureDensity h (Real.exp y)‖ ≤ Gr :=
+      (ENNReal.ofReal_le_iff_le_toReal hG).mp hle
+    rw [← mixtureDensity_exp, norm_mul, Complex.norm_real, Real.norm_eq_abs,
+      abs_of_pos (Real.exp_pos _)]
+    have hpow : (Real.exp y) ^ (1 / 2 - b) = Real.exp ((1 / 2 - b) * y) := by
+      rw [Real.rpow_def_of_pos (Real.exp_pos y), Real.log_exp, mul_comm]
+    rw [hpow] at hle'
+    calc Real.exp (y / 2) * ‖mixtureDensity h (Real.exp y)‖ =
+        Real.exp (b * y) * (Real.exp ((1 / 2 - b) * y) * ‖mixtureDensity h (Real.exp y)‖) := by
+          rw [← mul_assoc, ← Real.exp_add]; ring_nf
+      _ ≤ Real.exp (b * y) * Gr := mul_le_mul_of_nonneg_left hle' (Real.exp_pos _).le
+  -- Claim B: e^(-b y) ‖h y‖ ≤ S Gr on y < 0
+  have hB (y : ℝ) (hy : y < 0) : Real.exp (-b * y) * ‖h y‖ ≤ S * Gr := by
+    have hinv := latticeTransform_moebius_inverse hb hdecay hy.le
+    have hterm (m : ℕ) : ‖((ArithmeticFunction.moebius m : ℝ) : ℂ) * (latticeWeightR m : ℂ) *
+        latticeTransform h (y - Real.log m)‖ ≤
+        (Real.exp (b * y) * Gr) * ((|ArithmeticFunction.moebius m| : ℝ) * (m : ℝ) ^ (-(b + 1 / 2))) := by
+      rcases Nat.eq_zero_or_pos m with rfl | hm
+      · simp [latticeWeightR]
+      have hlog : 0 ≤ Real.log m := Real.log_nonneg (by exact_mod_cast hm)
+      have hAm := hA (y - Real.log m) (by linarith)
+      have hw := latticeWeightR_rpow (by linarith : 0 < b + 1 / 2) m
+      have hexp : Real.exp (b * (y - Real.log m)) = Real.exp (b * y) * Real.exp (-b * Real.log m) := by
+        rw [← Real.exp_add]; ring_nf
+      rw [norm_mul, norm_mul, Complex.norm_real, Complex.norm_real, Real.norm_eq_abs,
+        Real.norm_eq_abs, abs_of_nonneg (latticeWeightR_nonneg m)]
+      calc |(ArithmeticFunction.moebius m : ℝ)| * latticeWeightR m *
+            ‖latticeTransform h (y - Real.log m)‖ ≤
+          |(ArithmeticFunction.moebius m : ℝ)| * latticeWeightR m *
+            (Real.exp (b * (y - Real.log m)) * Gr) :=
+            mul_le_mul_of_nonneg_left hAm (mul_nonneg (abs_nonneg _) (latticeWeightR_nonneg m))
+        _ = (Real.exp (b * y) * Gr) * (|(ArithmeticFunction.moebius m : ℝ)| *
+            (latticeWeightR m * Real.exp (-b * Real.log m))) := by rw [hexp]; ring
+        _ = _ := by rw [hw]
+    have hsumB : Summable (fun m : ℕ =>
+        (Real.exp (b * y) * Gr) * ((|ArithmeticFunction.moebius m| : ℝ) * (m : ℝ) ^ (-(b + 1 / 2)))) := by
+      refine Summable.mul_left _ ?_
+      refine (summable_nat_rpow_neg hs).of_nonneg_of_le (fun n => by positivity) (fun n => ?_)
+      have h' : (|ArithmeticFunction.moebius n| : ℝ) ≤ 1 := by
+        exact_mod_cast ArithmeticFunction.abs_moebius_le_one
+      calc _ ≤ 1 * (n : ℝ) ^ (-(b + 1 / 2)) := mul_le_mul_of_nonneg_right h' (by positivity)
+        _ = _ := one_mul _
+    have hnorm : ‖h y‖ ≤ (Real.exp (b * y) * Gr) * S := by
+      rw [← hinv, hSdef, ← tsum_mul_left]
+      exact (norm_tsum_le_tsum_norm (hsumB.of_norm_bounded hterm |>.norm)).trans
+        (hsumB.of_norm_bounded hterm |>.norm.tsum_le_tsum hterm hsumB) |>.trans_eq rfl
+    calc Real.exp (-b * y) * ‖h y‖ ≤ Real.exp (-b * y) * ((Real.exp (b * y) * Gr) * S) :=
+          mul_le_mul_of_nonneg_left hnorm (Real.exp_pos _).le
+      _ = S * Gr := by
+          rw [show Real.exp (-b * y) * (Real.exp (b * y) * Gr * S) =
+            (Real.exp (-b * y) * Real.exp (b * y)) * (S * Gr) by ring, ← Real.exp_add]
+          simp
+  -- Claim C: e^(b t) ‖h t‖ ≤ S Gr for t ≥ 0
+  have hC (t : ℝ) (ht : 0 ≤ t) : Real.exp (b * t) * ‖h t‖ ≤ S * Gr := by
+    have hpos (t : ℝ) (ht : 0 < t) : Real.exp (b * t) * ‖h t‖ ≤ S * Gr := by
+      have := hB (-t) (by linarith)
+      rwa [heven, neg_mul_neg] at this
+    rcases ht.lt_or_eq with ht | rfl
+    · exact hpos t ht
+    · have hcf : Continuous (fun t => Real.exp (b * t) * ‖h t‖) := by fun_prop
+      have hlim : Tendsto (fun t => Real.exp (b * t) * ‖h t‖) (𝓝[>] 0)
+          (𝓝 (Real.exp (b * 0) * ‖h 0‖)) := (hcf.tendsto 0).mono_left nhdsWithin_le_nhds
+      exact le_of_tendsto hlim (eventually_nhdsWithin_of_forall (fun t ht => hpos t ht))
+  have hsup : (⨆ t ∈ Ici (0 : ℝ), ENNReal.ofReal (Real.exp (b * t) * ‖h t‖)) ≤
+      ENNReal.ofReal S * G := by
+    refine iSup₂_le (fun t ht => ?_)
+    rw [← ENNReal.ofReal_toReal hG, ← ENNReal.ofReal_mul hS.le]
+    exact ENNReal.ofReal_le_ofReal (hC t ht)
+  calc ENNReal.ofReal S⁻¹ * (⨆ t ∈ Ici (0 : ℝ), ENNReal.ofReal (Real.exp (b * t) * ‖h t‖)) ≤
+      ENNReal.ofReal S⁻¹ * (ENNReal.ofReal S * G) := mul_le_mul le_rfl hsup zero_le zero_le
+    _ = G := by
+      rw [← mul_assoc, ← ENNReal.ofReal_mul (inv_nonneg.mpr hS.le), inv_mul_cancel₀ hS.ne',
+        ENNReal.ofReal_one, one_mul]
+
+/-! ### Endpoint distinction and the leakage root -/
+
+lemma exp_neg_abs_le_inv_one_add_sq {c : ℝ} (hc : 0 < c) (t : ℝ) :
+    Real.exp (-c * |t|) ≤ (1 + 2 / c ^ 2) * (1 + t ^ 2)⁻¹ := by
+  have hx : 0 ≤ c * |t| := by positivity
+  have hq := Real.quadratic_le_exp_of_nonneg hx
+  have hexp : Real.exp (-c * |t|) * Real.exp (c * |t|) = 1 := by
+    rw [← Real.exp_add]; ring_nf; exact Real.exp_zero
+  have hE : 0 < Real.exp (c * |t|) := Real.exp_pos _
+  rw [le_mul_inv_iff₀ (by positivity)]
+  have ht2 : t ^ 2 = |t| ^ 2 := (sq_abs t).symm
+  have h1 : Real.exp (-c * |t|) ≤ 1 := by
+    rw [Real.exp_le_one_iff]; nlinarith [abs_nonneg t]
+  have h2 : Real.exp (-c * |t|) * t ^ 2 ≤ 2 / c ^ 2 := by
+    rw [le_div_iff₀ (by positivity), ht2]
+    have hpos : 0 < Real.exp (-c * |t|) := Real.exp_pos _
+    calc Real.exp (-c * |t|) * |t| ^ 2 * c ^ 2 =
+        2 * (Real.exp (-c * |t|) * ((c * |t|) ^ 2 / 2)) := by ring
+      _ ≤ 2 * (Real.exp (-c * |t|) * Real.exp (c * |t|)) := by
+          gcongr; linarith [hq, hx]
+      _ = 2 := by rw [hexp, mul_one]
+  nlinarith
+
+lemma lintegral_exp_mul_abs_decay_lt_top {h : ℝ → ℂ} {H a b : ℝ} (hab : a < b)
+    (hdecay : ∀ t, ‖h t‖ ≤ H * Real.exp (-b * |t|)) :
+    ∫⁻ t, ENNReal.ofReal (Real.exp (a * |t|) * ‖h t‖) < ∞ := by
+  have hc : 0 < b - a := by linarith
+  have hint : Integrable (fun t : ℝ => (|H| * (1 + 2 / (b - a) ^ 2)) * (1 + t ^ 2)⁻¹) :=
+    integrable_inv_one_add_sq.const_mul _
+  refine lt_of_le_of_lt (lintegral_mono (fun t => ENNReal.ofReal_le_ofReal ?_))
+    hint.lintegral_lt_top
+  calc Real.exp (a * |t|) * ‖h t‖ ≤ Real.exp (a * |t|) * (H * Real.exp (-b * |t|)) :=
+        mul_le_mul_of_nonneg_left (hdecay t) (Real.exp_pos _).le
+    _ = H * Real.exp (-(b - a) * |t|) := by
+        rw [mul_left_comm, ← Real.exp_add]; ring_nf
+    _ ≤ |H| * Real.exp (-(b - a) * |t|) :=
+        mul_le_mul_of_nonneg_right (le_abs_self H) (Real.exp_pos _).le
+    _ ≤ |H| * ((1 + 2 / (b - a) ^ 2) * (1 + t ^ 2)⁻¹) :=
+        mul_le_mul_of_nonneg_left (exp_neg_abs_le_inv_one_add_sq hc t) (abs_nonneg _)
+    _ = _ := by ring
+
+lemma endpoint_density_witness (b : ℝ) :
+    let h : ℝ → ℂ := fun t => ((Real.exp (-b * |t|) : ℝ) : ℂ)
+    Continuous h ∧ (∀ t, h (-t) = h t) ∧ (∀ t, ‖h t‖ ≤ 1 * Real.exp (-b * |t|)) ∧
+      ∫⁻ t, ENNReal.ofReal (Real.exp (b * |t|) * ‖h t‖) = ∞ := by
+  intro h
+  refine ⟨by fun_prop, fun t => by simp [h, abs_neg], fun t => ?_, ?_⟩
+  · show ‖((Real.exp (-b * |t|) : ℝ) : ℂ)‖ ≤ 1 * Real.exp (-b * |t|)
+    rw [Complex.norm_real, Real.norm_eq_abs, abs_of_pos (Real.exp_pos _), one_mul]
+  · have hone (t : ℝ) : Real.exp (b * |t|) * ‖h t‖ = 1 := by
+      simp only [h, Complex.norm_real, Real.norm_eq_abs, abs_of_pos (Real.exp_pos _),
+        ← Real.exp_add]
+      ring_nf
+      exact Real.exp_zero
+    simp only [hone, ENNReal.ofReal_one, lintegral_const, one_mul]
+    exact Real.volume_univ
+
+/-- Original R1-HT1 root: exact weighted gap leakage. (1) Measure form (HT1.7):
+for every complex mixer with exponential moment a > 1/2 and its genuine mixture ν,
+each real Jordan part satisfies
+∫_(0,1) x^(-a-1/2) d|ν_part| ≥ ζ(2a+1)/ζ(a+1/2) ∫_(-∞,0) e^(-a t) d|σ_part|,
+and so does the coordinate variation control. (2) Continuous-density supremum
+form (HT1.9) at the endpoint exponent b for the paper's density r_h, without any
+b-moment. (3) The measure form applies to h dt at every a ∈ (1/2, b), while
+(4) the endpoint b-moment may be infinite under the supremum hypotheses. -/
+theorem weighted_gap_leakage :
+    (∀ (σ : LocallyFiniteComplexMeasure) (a : ℝ) (ha : 1 / 2 < a)
+        (hm : mixingExponentialMoment a σ < ∞),
+      ENNReal.ofReal ((riemannZeta ((2 * a + 1 : ℝ) : ℂ) / riemannZeta ((a + 1 / 2 : ℝ) : ℂ)).re) *
+          ∫⁻ t in Iio 0, ENNReal.ofReal (Real.exp (-a * t)) ∂σ.rePart.totalVariation ≤
+        ∫⁻ x in Ioo 0 1, ENNReal.ofReal (x ^ (-a - 1 / 2))
+          ∂(weightedDilationMixture σ a ha.le hm).rePart.totalVariation ∧
+      ENNReal.ofReal ((riemannZeta ((2 * a + 1 : ℝ) : ℂ) / riemannZeta ((a + 1 / 2 : ℝ) : ℂ)).re) *
+          ∫⁻ t in Iio 0, ENNReal.ofReal (Real.exp (-a * t)) ∂σ.imPart.totalVariation ≤
+        ∫⁻ x in Ioo 0 1, ENNReal.ofReal (x ^ (-a - 1 / 2))
+          ∂(weightedDilationMixture σ a ha.le hm).imPart.totalVariation ∧
+      ENNReal.ofReal ((riemannZeta ((2 * a + 1 : ℝ) : ℂ) / riemannZeta ((a + 1 / 2 : ℝ) : ℂ)).re) *
+          ∫⁻ t in Iio 0, ENNReal.ofReal (Real.exp (-a * t)) ∂σ.variationControl ≤
+        ∫⁻ x in Ioo 0 1, ENNReal.ofReal (x ^ (-a - 1 / 2))
+          ∂(weightedDilationMixture σ a ha.le hm).variationControl) ∧
+    (∀ (h : ℝ → ℂ) (H b : ℝ), 1 / 2 < b → Continuous h → (∀ t, h (-t) = h t) →
+      (∀ t, ‖h t‖ ≤ H * Real.exp (-b * |t|)) →
+      ENNReal.ofReal ((riemannZeta ((2 * b + 1 : ℝ) : ℂ) / riemannZeta ((b + 1 / 2 : ℝ) : ℂ)).re) *
+          (⨆ t ∈ Ici (0 : ℝ), ENNReal.ofReal (Real.exp (b * t) * ‖h t‖)) ≤
+        ⨆ x ∈ Ioo (0 : ℝ) 1, ENNReal.ofReal (x ^ (1 / 2 - b) * ‖mixtureDensity h x‖)) ∧
+    (∀ (h : ℝ → ℂ) (H a b : ℝ), a < b → (∀ t, ‖h t‖ ≤ H * Real.exp (-b * |t|)) →
+      ∫⁻ t, ENNReal.ofReal (Real.exp (a * |t|) * ‖h t‖) < ∞) ∧
+    (∀ b : ℝ, 1 / 2 < b → ∃ h : ℝ → ℂ, Continuous h ∧ (∀ t, h (-t) = h t) ∧
+      (∀ t, ‖h t‖ ≤ 1 * Real.exp (-b * |t|)) ∧
+      ∫⁻ t, ENNReal.ofReal (Real.exp (b * |t|) * ‖h t‖) = ∞) := by
+  refine ⟨fun σ a ha hm => ?_, fun h H b hb hc he hd => density_gap_leakage_sup hb hc he hd,
+    fun h H a b hab hd => lintegral_exp_mul_abs_decay_lt_top hab hd,
+    fun b _ => ⟨_, endpoint_density_witness b⟩⟩
+  have hs : 1 < a + 1 / 2 := by linarith
+  set S := ∑' n : ℕ, (|ArithmeticFunction.moebius n| : ℝ) * (n : ℝ) ^ (-(a + 1 / 2)) with hSdef
+  have hS : 0 < S := tsum_abs_moebius_rpow_pos hs
+  have hratio : (riemannZeta ((2 * a + 1 : ℝ) : ℂ) / riemannZeta ((a + 1 / 2 : ℝ) : ℂ)).re = S⁻¹ := by
+    rw [← zeta_ratio_re hs]; congr 3; ring_nf
+  have hMnorm : weightedLogNorm a (moebiusPlusComb + moebiusMinusComb) = ENNReal.ofReal S :=
+    weightedLogNorm_moebiusComb ha
+  obtain ⟨-, -, -, -, hinvre, hinvim, -⟩ := weighted_mobius_inverse σ a ha hm
+  -- one Jordan pair at a time
+  have hpart (P Q : Measure ℝ) (ηp ηn : Measure ℝ) [SFinite ηp] [SFinite ηn]
+      (νp νn : Measure ℝ) (hηp : ηp = positiveLogMeasure νp) (hηn : ηn = positiveLogMeasure νn)
+      (hPQ : P ⟂ₘ Q)
+      (hinv : P + (moebiusPlusComb ∗ ηn + moebiusMinusComb ∗ ηp) =
+        Q + (moebiusPlusComb ∗ ηp + moebiusMinusComb ∗ ηn)) :
+      ENNReal.ofReal S⁻¹ * ∫⁻ t in Iio 0, ENNReal.ofReal (Real.exp (-a * t)) ∂(P + Q) ≤
+        ∫⁻ x in Ioo 0 1, ENNReal.ofReal (x ^ (-a - 1 / 2)) ∂(νp + νn) := by
+    have hL := jordan_gap_leakage a hPQ hinv
+    have hη : ∫⁻ y in Iio 0, ENNReal.ofReal (Real.exp (-a * y)) ∂(ηp + ηn) =
+        ∫⁻ x in Ioo 0 1, ENNReal.ofReal (x ^ (-a - 1 / 2)) ∂(νp + νn) := by
+      rw [Measure.restrict_add, lintegral_add_measure, hηp, hηn,
+        setLIntegral_positiveLogMeasure_Iio, setLIntegral_positiveLogMeasure_Iio,
+        ← lintegral_add_measure, ← Measure.restrict_add]
+    rw [hMnorm, hη] at hL
+    calc ENNReal.ofReal S⁻¹ * ∫⁻ t in Iio 0, ENNReal.ofReal (Real.exp (-a * t)) ∂(P + Q) ≤
+        ENNReal.ofReal S⁻¹ * (ENNReal.ofReal S *
+          ∫⁻ x in Ioo 0 1, ENNReal.ofReal (x ^ (-a - 1 / 2)) ∂(νp + νn)) :=
+          mul_le_mul le_rfl hL zero_le zero_le
+      _ = _ := by
+          rw [← mul_assoc, ← ENNReal.ofReal_mul (inv_nonneg.mpr hS.le), inv_mul_cancel₀ hS.ne',
+            ENNReal.ofReal_one, one_mul]
+  have hre := hpart _ _ _ _ _ _ rfl rfl σ.rePart.mutuallySingular hinvre
+  have him := hpart _ _ _ _ _ _ rfl rfl σ.imPart.mutuallySingular hinvim
+  rw [hratio]
+  refine ⟨hre, him, ?_⟩
+  change ENNReal.ofReal S⁻¹ * ∫⁻ t in Iio 0, ENNReal.ofReal (Real.exp (-a * t))
+      ∂(σ.rePart.totalVariation + σ.imPart.totalVariation) ≤
+    ∫⁻ x in Ioo 0 1, ENNReal.ofReal (x ^ (-a - 1 / 2))
+      ∂((weightedDilationMixture σ a ha.le hm).rePart.totalVariation +
+        (weightedDilationMixture σ a ha.le hm).imPart.totalVariation)
+  rw [Measure.restrict_add, lintegral_add_measure, mul_add, Measure.restrict_add,
+    lintegral_add_measure]
+  exact add_le_add hre him
+
+#print axioms Zeta23.OPICAFollowup.weighted_mixture_exists_fourier
+#print axioms Zeta23.OPICAFollowup.weighted_mobius_inverse
+#print axioms Zeta23.OPICAFollowup.weighted_mixture_sharp_gap
+#print axioms Zeta23.OPICAFollowup.weighted_gap_leakage
 
 end Zeta23.OPICAFollowup
