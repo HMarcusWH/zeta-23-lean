@@ -1,0 +1,156 @@
+{
+ "schema": "OPICA_STAGE6_NARROW_GATE_V1",
+ "status": "PASS_NARROW_LOCAL_GATES_ONLY_AGGREGATE_AND_FULL_RELEASE_OPEN",
+ "checked_commit": "068933fdd647d12395e99743866035e6c6f3e42a",
+ "checked_tree": "45a1815a51c57eea80852f90f15558165a9ec78d",
+ "dirty_status_during_checks": "",
+ "compiler": "Lean 4.33.0-rc2 commit d8b18978322de05a8f3dba51ef03cf5461676c17 (Linux x86_64), Lake 5.0.0-src+d8b1897",
+ "mathlib": "51e6992efd06126df61a496bebf8f49482a4e129 (pins unchanged; no lake update)",
+ "mathlib_helper_import_delta": {
+  "module": "Zeta23.OPICAFollowup.WeightedMixing",
+  "added": [
+   "Mathlib.MeasureTheory.Group.Convolution",
+   "Mathlib.NumberTheory.ArithmeticFunction.Moebius",
+   "Mathlib.NumberTheory.TsumDivisorsAntidiagonal",
+   "Mathlib.NumberTheory.EulerProduct.DirichletLSeries",
+   "Mathlib.Analysis.SpecialFunctions.ImproperIntegrals"
+  ],
+  "authority": "BUILD_SPEC: Mathlib helper imports remain on the frozen revision and are recorded in the actual source receipt; no project import changed"
+ },
+ "cache_owner": "single local process; genuine module builds from the committed source",
+ "sources": [
+  {
+   "path": "Zeta23/OPICAFollowup/WeightedMixing.lean",
+   "sha256": "5225572875d72ef14c2adc912d0548b92f5bccf9fcec807830e5ef01ef04cf50",
+   "bytes": 174596
+  },
+  {
+   "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedWeightedInverse.lean",
+   "sha256": "d803b68b053f867a4ca7fd51484dbc13ddd1508accca481aadd2d133f5dc5773",
+   "bytes": 20301
+  },
+  {
+   "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/run_candidate_checks.py",
+   "sha256": "81bb5c2e739222121852dbe6a7c80e87e8e708cfc25fb3c7d7e1aba0f8124783",
+   "bytes": 6344
+  },
+  {
+   "path": ".github/workflows/rhrc_opica_followup.yml",
+   "sha256": "ae43b1b9a19429ee8f51e9c3099d5825e4b96d50e04914cd896edada942668ad",
+   "bytes": 44419
+  },
+  {
+   "path": "lean-toolchain",
+   "sha256": "0d3c76ccd8772d8bcbe207241421a760312b71a6aa82f84194391fdf5cb026d6",
+   "bytes": 29
+  },
+  {
+   "path": "lake-manifest.json",
+   "sha256": "1847b362e15efd927e75aa8b5442e491f998e4a3f730f9dcaca9841f2957c448",
+   "bytes": 3200
+  }
+ ],
+ "roots": {
+  "Zeta23.OPICAFollowup.weighted_mobius_inverse": {
+   "paper": "R1-HT1",
+   "statement": "For every complex mixer with exponential moment a > 1/2: eta = N * sigma per Jordan coordinate of the actual mixture and in positive Jordan form; M+ * N = delta_0 + M- * N; sigma = M_mu * eta for real and imaginary parts in positive Jordan form; all weighted norms finite; exact multiplicativity of int e^(-a y) for the genuine product-measure convolution; ||N|| = zeta(a+1/2); M+ and M- mutually singular and ||M+ + M-|| = sum mu(n)^2 n^(-a-1/2) = zeta(a+1/2)/zeta(2a+1).",
+   "method": "Positive lattice measure algebra (divisor-antidiagonal regrouping of positive double series), finite divisor identity for mu, cancellation of locally finite measures on intervals, Mathlib Euler products for zeta(s) and the squarefree series.",
+   "formalization_choice": "Signed identities stated in positive Jordan form; every term has finite weighted norm, so they are the signed identities of the weighted algebra.",
+   "expected_type_consumer": "consumers/ExpectedWeightedInverse.lean expected_weighted_mobius_inverse_real, expected_moebius_lattice_identity and definition audits",
+   "actual_domain": "actual point mixers from canonical Jordan pairs; explicit lattice identity",
+   "axioms": "propext, Classical.choice, Quot.sound"
+  },
+  "Zeta23.OPICAFollowup.weighted_mixture_sharp_gap": {
+   "paper": "R1-HT1",
+   "statement": "Canonical Fourier self-duality of the actual mixture distribution and nu.variationControl(Ioo(-1,1) minus {0}) = 0 force sigma = c delta_0 coordinatewise, nu = c Sha with c the origin atom, and zero origin atom forces zero.",
+   "method": "Fourier transport law and faithfulness give sigma reflected = sigma; the gap makes eta vanish on the negative axis; causality of M_mu transfers it to sigma; evenness concentrates sigma at 0.",
+   "expected_type_consumer": "consumers/ExpectedWeightedInverse.lean expected_weighted_mixture_sharp_gap",
+   "actual_domain": "the delta_0 mixer satisfies both hypotheses (Poisson summation and the punctured comb gap); the theorem returns c = 1 and the integer comb",
+   "axioms": "propext, Classical.choice, Quot.sound"
+  },
+  "Zeta23.OPICAFollowup.weighted_gap_leakage": {
+   "paper": "R1-HT1",
+   "statement": "(1) zeta(2a+1)/zeta(a+1/2) int_(-oo,0) e^(-a t) d|sigma| <= int_(0,1) x^(-a-1/2) d|nu| with genuine complex variations, plus per-Jordan-part and coordinate-control forms; (2) HT1.9 endpoint supremum form without b-moment; (3) finite a-moments for a < b; (4) endpoint witness with infinite b-moment; (5) r_h is the actual positive-axis density of the mixture of h(t) dt.",
+   "method": "Real rotations of compact restrictions have no larger variation; exact bound |int g dnu| <= int g d|nu| for nonnegative weights via vector-measure integrals; log transport dominated by transport of |nu|; causal Mobius expansion on bounded negative-axis sets; Mathlib variation_le_of_forall_enorm_le. Density: change of variables x = e^t n along each lattice ray.",
+   "expected_type_consumer": "consumers/ExpectedWeightedInverse.lean expected_complex_gap_leakage, expected_weighted_gap_leakage_real, expected_density_leakage, expected_density_identification",
+   "actual_domain": "delta_(-1) mixer gives a strictly positive bound; leakage fails without the negative-support restriction (delta_0); endpoint witness e^(-b|t|) dt is an admissible actual mixer with explicit density",
+   "not_included": "r_h = O(x^(b-1/2)) and the affine-correction corollary (paper 6.6), outside the root contract; OPEN supporting work",
+   "axioms": "propext, Classical.choice, Quot.sound"
+  },
+  "re_verified_narrow_roots": [
+   "weighted_mixture_exists_fourier",
+   "and all roots consumed by the eleven runner consumer files"
+  ]
+ },
+ "gates": [
+  {
+   "label": "narrow runner (9 modules, 11 consumer files)",
+   "log": "runner/CHECK_RESULT.json",
+   "sha256": "c88e656ad99b9ebbe0829d9407b2f13b4b73f3139504ead5bc7327572cd6538f",
+   "exit_code": 0,
+   "runner_status": "PASS_NARROW_ONLY",
+   "consumer_receipts": {
+    "ExpectedMasks": 4,
+    "ExpectedComplex": 4,
+    "ExpectedAuxiliary": 6,
+    "ExpectedMultiplicity": 17,
+    "ExpectedComb": 5,
+    "ExpectedFirstCell": 5,
+    "ExpectedWeighted": 9,
+    "ExpectedNearGap": 5,
+    "ExpectedNearGapLimit": 10,
+    "ExpectedNormalizedLimit": 9,
+    "ExpectedWeightedInverse": 17
+   }
+  },
+  {
+   "label": "W04/W07 workflow consumer (unchanged heredoc)",
+   "log": "consumers/opica-w04-w07-expected.log",
+   "sha256": "47bf37f88ae44589a223145e24dd07655b7172bfca6a30bf819bb33c5251ac1e",
+   "exit_code": 0,
+   "standard_axiom_receipts": 52
+  },
+  {
+   "label": "W06 workflow consumer (unchanged heredoc) on the new WeightedMixing",
+   "log": "consumers/opica-w06-expected.log",
+   "sha256": "8564fc7fe7d8a2ef4ae561975e207ce6aa8e42accc8c35f0e6ed618ed26078ca",
+   "exit_code": 0,
+   "standard_axiom_receipts": 14
+  },
+  {
+   "label": "W01 consumers and exact-source subset",
+   "note": "not re-run: no module imports WeightedMixing; unchanged since Stage 4 and green in CI at c0ab8aa2"
+  },
+  {
+   "label": "child suite and parent contract tests",
+   "result": "child 185/185 and parent 82/82 in normal and optimized Python"
+  },
+  {
+   "label": "frozen control replay",
+   "result": "normal and optimized modes; copoisson, round2 and final numerical suites CONSISTENCY_ONLY"
+  }
+ ],
+ "negative_controls": [
+  {
+   "file": "negative-controls/negative-w06.lean",
+   "expected": "REJECTED",
+   "observed": "REJECTED: inverted zeta ratio; missing M- * N term; missing self-duality; endpoint a = 1/2; zeta(a) for zeta(a+1/2); one-sided gap; density identification with decay b <= 1/2; M+ = M- claimed",
+   "log_sha256": "bbc19d633bfe5eefbb27f91837ac7186d9e7d724e2607fafeb8cd77aafa68bf8"
+  }
+ ],
+ "ci_harvest": {
+  "file": "ci-harvest-c0ab8aa2.json",
+  "sha256": "5f5c76c02d1116c3c0a80038a54e390b2d06bf50bfc07df823f6bede4f0044de"
+ },
+ "not_established": [
+  "aggregate current-source export",
+  "full100 compiler receipt production/replay",
+  "facade and registration",
+  "parent-extension acceptance",
+  "canonical regeneration (rhkg-compiler-receipt remains red)",
+  "CI on the Stage 6 head (pending at publication)"
+ ],
+ "RH": "OPEN",
+ "Step4": "OPEN",
+ "independent_closing_inequalities": "OPEN"
+}

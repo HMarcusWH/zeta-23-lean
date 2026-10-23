@@ -1,7 +1,7 @@
 # OPICA module status — navigation only
 
 Generated from [ROOT_LEDGER_100.json](ROOT_LEDGER_100.json) and actual source presence.
-Ledger SHA256: `ed46ed863ed7d31b303f5bbc0c5f29e9eff8595928993f3c4538180b8f5bd25b`.
+Ledger SHA256: `1b736b7daca60cf8570cb5cbad8d2cee4a84a7106197f2698b31244951d16c3d`.
 
 The original target remains 100 primary roots / 28 acceptance units. Historical
 and narrow local evidence remain separate; every current aggregate/full-release
@@ -45,11 +45,11 @@ gate is OPEN. File presence does not establish proof or type coverage.
 | `SourceVerticalBounds` | 1 | 1 | 0 | 0 | 0 | [present](../../../../../../Zeta23/OPICAFollowup/SourceVerticalBounds.lean) |
 | `SquareDefect` | 4 | 0 | 0 | 0 | 4 | planned / missing |
 | `UniformSourceBounds` | 2 | 2 | 0 | 0 | 0 | [present](../../../../../../Zeta23/OPICAFollowup/UniformSourceBounds.lean) |
-| `WeightedMixing` | 4 | 0 | 1 | 0 | 3 | [present](../../../../../../Zeta23/OPICAFollowup/WeightedMixing.lean) |
+| `WeightedMixing` | 4 | 0 | 4 | 0 | 0 | [present](../../../../../../Zeta23/OPICAFollowup/WeightedMixing.lean) |
 | `WeightedSpectralMeasure` | 2 | 0 | 0 | 0 | 2 | planned / missing |
 | `ZeroProfiles` | 2 | 0 | 0 | 0 | 2 | planned / missing |
 | `ZetaLeftLineBounds` | 1 | 1 | 0 | 0 | 0 | [present](../../../../../../Zeta23/OPICAFollowup/ZetaLeftLineBounds.lean) |
-| **Total** | **100** | **41** | **19** | **0** | **40** | |
+| **Total** | **100** | **41** | **22** | **0** | **37** | |
 
 Regenerate with `python refresh_navigation.py --write`; verify with `--check`.
 Read the [named remaining work](REMAINING_WORK.md) and [next-agent task](NEXT_AGENT_PROMPT.md)

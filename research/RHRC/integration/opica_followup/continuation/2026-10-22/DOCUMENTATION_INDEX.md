@@ -2,7 +2,7 @@
 
 Use this index with [root AGENTS.md](../../../../../../AGENTS.md) and the
 [continuation guide](README.md). It describes the 22 October OPICA source
-checkpoint and its staged repairs; read [STAGE5_HANDOVER.md](STAGE5_HANDOVER.md)
+checkpoint and its staged repairs; read [STAGE6_HANDOVER.md](STAGE6_HANDOVER.md)
 for the latest exact sources and gates. Check the live Git head and workflow
 results before editing.
 
@@ -63,6 +63,12 @@ results before editing.
 - [Post-Green research](POST_GREEN_RESEARCH.md): all nine required mathematical
   review conclusions. Repeat the pass when meaningful proof evidence changes.
 
+[Stage 6](STAGE6_HANDOVER.md) proves the three remaining R1-HT1 roots: the weighted
+Mobius inverse in the positive lattice algebra, the noncompact sharp gap, and the exact
+gap leakage with genuine complex variations together with the identification of the
+paper's density r_h as the actual mixture density; its
+[evidence](evidence/current-codex/stage6/STATUS.json) binds every log and source and
+harvests CI on the Stage 5 head.
 [Stage 5](STAGE5_HANDOVER.md) proves the HT2 controlled limit by a quantitative
 compactness-free estimate and the CT1 normalized limit (x^2 Sha')' as a genuine
 non-order-zero tempered distribution; its [evidence](evidence/current-codex/stage5/STATUS.json)

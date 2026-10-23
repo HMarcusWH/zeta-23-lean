@@ -1,0 +1,172 @@
+{
+ "schema": "OPICA_STAGE6_CI_HARVEST_V1",
+ "head": "c0ab8aa2909381487e44bbc7df94016d0743612e",
+ "harvested_at": "2026-10-23T11:03Z",
+ "scope": "Every workflow run GitHub reported for the PR #294 head c0ab8aa2 (Stage 5 publication). No run was cancelled; the post-284 campaign completed at 08:04Z, after which none was in progress or queued.",
+ "runs": [
+  {
+   "id": 39909711381,
+   "name": "RHRC post-214 kernel dual geometry",
+   "event": "pull_request",
+   "conclusion": "success"
+  },
+  {
+   "id": 39909711368,
+   "name": "RHRC post287 bounded signed-ray probe",
+   "event": "pull_request",
+   "conclusion": "success"
+  },
+  {
+   "id": 39909711447,
+   "name": "RHRC post-190 canonical realizability audit",
+   "event": "pull_request",
+   "conclusion": "success"
+  },
+  {
+   "id": 39909711359,
+   "name": "Permansson v0.1.6 formal verification",
+   "event": "pull_request",
+   "conclusion": "success"
+  },
+  {
+   "id": 39909711438,
+   "name": "RHRC post287 focused Step3 checks",
+   "event": "pull_request",
+   "conclusion": "success"
+  },
+  {
+   "id": 39909711573,
+   "name": "RHRC post290 source and output proof components",
+   "event": "pull_request",
+   "conclusion": "success"
+  },
+  {
+   "id": 39909711477,
+   "name": "RHRC post-194 parity trajectory sharp enclosure",
+   "event": "pull_request",
+   "conclusion": "success"
+  },
+  {
+   "id": 39909711431,
+   "name": "RHRC post-196 Q14 residual cell replay",
+   "event": "pull_request",
+   "conclusion": "success"
+  },
+  {
+   "id": 39909711358,
+   "name": "RHRC post268 complete audit replay",
+   "event": "pull_request",
+   "conclusion": "success"
+  },
+  {
+   "id": 39909711471,
+   "name": "RHRC post-222 bi-regular zero-shift scalar",
+   "event": "pull_request",
+   "conclusion": "success"
+  },
+  {
+   "id": 39909711363,
+   "name": "RHRC OPICA full paper components",
+   "event": "pull_request",
+   "conclusion": "failure"
+  },
+  {
+   "id": 39909711360,
+   "name": "RHRC post-192 parity trajectory rigidity",
+   "event": "pull_request",
+   "conclusion": "success"
+  },
+  {
+   "id": 39909711478,
+   "name": "RHRC post-284 source inertia campaign",
+   "event": "pull_request",
+   "conclusion": "success"
+  },
+  {
+   "id": 39909711413,
+   "name": "RHRC post-282 contact calculus",
+   "event": "pull_request",
+   "conclusion": "success"
+  },
+  {
+   "id": 39909711356,
+   "name": "RHRC post-202 Q14 composite parity gap",
+   "event": "pull_request",
+   "conclusion": "success"
+  },
+  {
+   "id": 39909711361,
+   "name": "RHRC research and Lean checks",
+   "event": "pull_request",
+   "conclusion": "failure"
+  },
+  {
+   "id": 39909711474,
+   "name": "OPICA follow-up draft checkpoint",
+   "event": "pull_request",
+   "conclusion": "failure"
+  },
+  {
+   "id": 39909711383,
+   "name": "RHRC parallel closure campaign",
+   "event": "pull_request",
+   "conclusion": "success"
+  },
+  {
+   "id": 39909711335,
+   "name": "RHRC post-198 Q14 parity source mechanism",
+   "event": "pull_request",
+   "conclusion": "success"
+  },
+  {
+   "id": 39909711442,
+   "name": "RHRC post-200 Q14 discrepancy mechanism",
+   "event": "pull_request",
+   "conclusion": "success"
+  },
+  {
+   "id": 39909711395,
+   "name": "RHRC post287 WP2 and WP4 interval research",
+   "event": "pull_request",
+   "conclusion": "success"
+  },
+  {
+   "id": 39909706765,
+   "name": "OPICA follow-up draft checkpoint",
+   "event": "push",
+   "conclusion": "failure"
+  }
+ ],
+ "job_dispositions": {
+  "OPICA follow-up draft checkpoint (pull_request 39909711474 and push 39909706765)": {
+   "Draft preparation contract": "success (both runs), including the ledger-derived module navigation table",
+   "Exact-source implemented subset": "success (both runs)",
+   "Narrow repaired candidates": "success (both runs): runner over nine modules and ten consumer files including ExpectedNearGapLimit and ExpectedNormalizedLimit, W01, W04/W07 (52 receipts), W06 (14 receipts)",
+   "Frozen regression and fail-closed evidence tests": "success (both runs)",
+   "Full release readiness": "failure, expected: FAIL_RELEASE_INCOMPLETE while the 100-root scope is incomplete"
+  },
+  "RHRC OPICA full paper components (39909711363)": {
+   "opica-regression": "success (5112 exact finite controls in both Python modes; fail-closed mutations)",
+   "opica-contract": "failure, pre-existing and fail-closed by design: the parent static contract reports unauthorized tracked deltas for continuation files (same as at 40fd51b and 6a2e20b)",
+   "opica-formal": "skipped (needs opica-contract)",
+   "opica-dependency-delta": "skipped (needs opica-contract)",
+   "opica-component-summary": "failure (requires every component)"
+  },
+  "RHRC research and Lean checks (39909711361)": {
+   "lean": "success (CCM, ClaimBindings, registered surfaces, exceptional-zero foundation, closure surfaces, placeholder rejection, anti-circularity firewalls, kernel axiom audits)",
+   "r003-normalization-audit": "success",
+   "python-rhrc": "failure, pre-existing: RHRC claim and regression suite rejects the incomplete child extension (same as earlier heads)",
+   "rhkg-compiler-receipt": "failure, pre-existing: step \"Validate committed RHKG state BEFORE any generator writes\" reports disposition drift for unregistered Zeta23.OPICAFollowup modules; canonical regeneration/registration is OPEN and generated graph products must not be hand-edited"
+  },
+  "RHRC post-284 source inertia campaign (39909711478)": {
+   "lean-source-inertia": "success",
+   "source-falsifier-research": "success (including WP2 materialized K2 M51 intervals and WP4 K3 feasibility gate, UNRESOLVED allowed)",
+   "post287-full-k3": "skipped by workflow condition"
+  },
+  "inherited research replays": "success: post-190/192/194/196/198/200/202/214/222, post268 complete audit replay, post-282 contact calculus, post-284 source inertia, post287 focused/probe/WP2-WP4, post290, parallel closure campaign, Permansson v0.1.6"
+ },
+ "research_disposition": "Inherited replays create no new OPICA theorem authority; the narrow job is the only CI job exercising the repaired OPICA sources.",
+ "RH": "OPEN",
+ "Step4": "OPEN",
+ "independent_closing_inequalities": "OPEN"
+}
