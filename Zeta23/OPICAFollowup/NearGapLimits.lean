@@ -1,9 +1,10 @@
 import Zeta23.OPICAFollowup.DilatedComb
 import Zeta23.OPICA.SignedHeatSeparator
+import Mathlib.Analysis.Normed.Group.Tannery
 
-/-! Actual near-gap Jordan-measure budget, the explicit CT1 dilation family and
-the quantitative HT2 controlled limit. The CT1 normalized nonmeasure limit
-remains OPEN until its own root and consumers pass. -/
+/-! Actual near-gap Jordan-measure budget, the explicit CT1 dilation family, the
+quantitative HT2 controlled limit and the CT1 normalized distributional limit
+(x² Ш')' = Σ_n (n² δ_n'' − 2n δ_n'), which is not of order zero. -/
 noncomputable section
 open Set MeasureTheory Filter
 open scoped Topology FourierTransform SchwartzMap ENNReal NNReal
@@ -2169,6 +2170,701 @@ theorem nearGapCombFamily_controlled_limit (L : ℕ → ℝ) (hL : ∀ n, 0 < L 
     (fun n => nearGapCombFamily_offlattice_nonnegative (L n)) ha φ
   exact h
 
+/-! ## R1-CT1 normalized distributional limit -/
+
+/-- Symmetric second-difference estimate from two mean-value inequalities:
+if ‖q'' - c‖ ≤ M on [-|h|, |h|], then the even second difference differs from
+c h² by at most 2 M h². -/
+theorem second_difference_bound {q q' q'' : ℝ → ℂ}
+    (hq : ∀ t, HasDerivAt q (q' t) t) (hq' : ∀ t, HasDerivAt q' (q'' t) t)
+    (c : ℂ) {h M : ℝ} (hM : ∀ u, |u| ≤ |h| → ‖q'' u - c‖ ≤ M) :
+    ‖q h + q (-h) - 2 * q 0 - c * ((h ^ 2 : ℝ) : ℂ)‖ ≤ 2 * M * h ^ 2 := by
+  set s : Set ℝ := Icc (-|h|) |h| with hs
+  have hconv : Convex ℝ s := convex_Icc _ _
+  have hM0 : 0 ≤ M := (norm_nonneg _).trans (hM 0 (by simp))
+  have hmem (u : ℝ) : u ∈ s ↔ |u| ≤ |h| := by rw [hs, mem_Icc, abs_le]
+  let m : ℝ → ℂ := fun t => q' t - c * (t : ℂ)
+  have hm (t : ℝ) : HasDerivAt m (q'' t - c) t := by
+    have h1 : HasDerivAt (fun t : ℝ => c * (t : ℂ)) (c * 1) t :=
+      ((hasDerivAt_id t).ofReal_comp).const_mul c
+    have h2 := (hq' t).sub h1
+    rw [mul_one] at h2
+    exact h2
+  have hmb (t : ℝ) (ht : t ∈ s) : ‖m t - m (-t)‖ ≤ M * (2 * |t|) := by
+    have htn : -t ∈ s := by rw [hmem, abs_neg]; exact (hmem t).mp ht
+    have := hconv.norm_image_sub_le_of_norm_hasDerivWithin_le
+      (fun x _ => (hm x).hasDerivWithinAt) (fun x hx => hM x ((hmem x).mp hx)) htn ht
+    calc ‖m t - m (-t)‖ ≤ M * ‖t - -t‖ := this
+      _ = M * (2 * |t|) := by
+        rw [sub_neg_eq_add, Real.norm_eq_abs, ← two_mul, abs_mul, abs_two]
+  let k : ℝ → ℂ := fun t => q t + q (-t) - 2 * q 0 - c * ((t ^ 2 : ℝ) : ℂ)
+  have hk (t : ℝ) : HasDerivAt k (m t - m (-t)) t := by
+    have h1 : HasDerivAt (fun t : ℝ => q (-t)) ((-1 : ℝ) • q' (-t)) t :=
+      (hq (-t)).scomp t (hasDerivAt_neg t)
+    have h2 : HasDerivAt (fun t : ℝ => c * ((t ^ 2 : ℝ) : ℂ))
+        (c * (((2 : ℕ) : ℝ) * t ^ (2 - 1) : ℝ)) t :=
+      ((hasDerivAt_pow 2 t).ofReal_comp).const_mul c
+    have h3 := (((hq t).add h1).sub_const (2 * q 0)).sub h2
+    refine h3.congr_deriv ?_
+    show q' t + (-1 : ℝ) • q' (-t) - c * (((2 : ℕ) : ℝ) * t ^ (2 - 1) : ℝ) =
+      (q' t - c * (t : ℂ)) - (q' (-t) - c * ((-t : ℝ) : ℂ))
+    rw [Complex.real_smul]
+    push_cast
+    ring
+  have hkb (t : ℝ) (ht : t ∈ s) : ‖m t - m (-t)‖ ≤ 2 * M * |h| := by
+    calc ‖m t - m (-t)‖ ≤ M * (2 * |t|) := hmb t ht
+      _ ≤ M * (2 * |h|) := mul_le_mul_of_nonneg_left (by linarith [(hmem t).mp ht]) hM0
+      _ = 2 * M * |h| := by ring
+  have h0 : (0 : ℝ) ∈ s := (hmem 0).mpr (by simp)
+  have hh : h ∈ s := (hmem h).mpr le_rfl
+  have hmv := hconv.norm_image_sub_le_of_norm_hasDerivWithin_le
+    (fun x _ => (hk x).hasDerivWithinAt) hkb h0 hh
+  have hk0 : k 0 = 0 := by simp [k]; ring
+  have hkh : k h = q h + q (-h) - 2 * q 0 - c * ((h ^ 2 : ℝ) : ℂ) := rfl
+  rw [hk0, sub_zero, hkh, sub_zero, Real.norm_eq_abs] at hmv
+  calc _ ≤ 2 * M * |h| * |h| := hmv
+    _ = 2 * M * h ^ 2 := by rw [mul_assoc, ← sq, sq_abs]
+
+/-- The CT1 per-lattice-point profile q(t) = e^{t/2}(φ(e^t n) - φ(n)). -/
+def ct1Profile (φ : SchwartzMap ℝ ℂ) (n : ℤ) (t : ℝ) : ℂ :=
+  (Real.exp (t / 2) : ℂ) * (φ (Real.exp t * n) - φ n)
+
+def ct1Profile' (φ : SchwartzMap ℝ ℂ) (n : ℤ) (t : ℝ) : ℂ :=
+  (Real.exp (t / 2) : ℂ) * ((φ (Real.exp t * n) - φ n) / 2 +
+    ((Real.exp t * n : ℝ) : ℂ) * deriv φ (Real.exp t * n))
+
+def ct1Profile'' (φ : SchwartzMap ℝ ℂ) (n : ℤ) (t : ℝ) : ℂ :=
+  (Real.exp (t / 2) : ℂ) * ((φ (Real.exp t * n) - φ n) / 4 +
+    2 * ((Real.exp t * n : ℝ) : ℂ) * deriv φ (Real.exp t * n) +
+    ((Real.exp t * n : ℝ) : ℂ) ^ 2 * deriv (deriv φ) (Real.exp t * n))
+
+lemma ct1_exp_half_hasDerivAt (t : ℝ) :
+    HasDerivAt (fun t : ℝ => (Real.exp (t / 2) : ℂ)) ((Real.exp (t / 2) : ℂ) / 2) t := by
+  have h := ((Real.hasDerivAt_exp (t / 2)).comp t ((hasDerivAt_id t).div_const 2)).ofReal_comp
+  convert h using 1
+  simp only [Function.comp_apply, id_eq]
+  push_cast
+  ring
+
+lemma ct1_scale_hasDerivAt (n : ℤ) (t : ℝ) :
+    HasDerivAt (fun t : ℝ => Real.exp t * n) (Real.exp t * n) t :=
+  (Real.hasDerivAt_exp t).mul_const _
+
+lemma ct1_comp_hasDerivAt (ψ : SchwartzMap ℝ ℂ) (n : ℤ) (t : ℝ) :
+    HasDerivAt (fun t : ℝ => ψ (Real.exp t * n))
+      (((Real.exp t * n : ℝ) : ℂ) * deriv ψ (Real.exp t * n)) t := by
+  have h := (ψ.hasDerivAt (Real.exp t * n)).scomp t (ct1_scale_hasDerivAt n t)
+  simpa only [Complex.real_smul, Function.comp_def] using h
+
+theorem ct1Profile_hasDerivAt (φ : SchwartzMap ℝ ℂ) (n : ℤ) (t : ℝ) :
+    HasDerivAt (ct1Profile φ n) (ct1Profile' φ n t) t := by
+  have h := (ct1_exp_half_hasDerivAt t).mul ((ct1_comp_hasDerivAt φ n t).sub_const (φ n))
+  refine h.congr_deriv ?_
+  unfold ct1Profile'
+  ring
+
+theorem ct1Profile'_hasDerivAt (φ : SchwartzMap ℝ ℂ) (n : ℤ) (t : ℝ) :
+    HasDerivAt (ct1Profile' φ n) (ct1Profile'' φ n t) t := by
+  let φ' : SchwartzMap ℝ ℂ := SchwartzMap.derivCLM ℝ ℂ φ
+  have hφ' : (φ' : ℝ → ℂ) = deriv φ := rfl
+  have hX : HasDerivAt (fun t : ℝ => ((Real.exp t * n : ℝ) : ℂ))
+      ((Real.exp t * n : ℝ) : ℂ) t := (ct1_scale_hasDerivAt n t).ofReal_comp
+  have hD := ct1_comp_hasDerivAt φ' n t
+  rw [hφ'] at hD
+  have hR := (((ct1_comp_hasDerivAt φ n t).sub_const (φ n)).div_const 2).add (hX.mul hD)
+  have h := (ct1_exp_half_hasDerivAt t).mul hR
+  refine h.congr_deriv ?_
+  unfold ct1Profile''
+  simp only [Pi.add_apply, Pi.mul_apply]
+  have hd2 : deriv (deriv φ) = deriv (φ' : ℝ → ℂ) := by rw [hφ']
+  rw [hd2]
+  ring
+
+theorem ct1Profile''_continuous (φ : SchwartzMap ℝ ℂ) (n : ℤ) :
+    Continuous (ct1Profile'' φ n) := by
+  let φ' : SchwartzMap ℝ ℂ := SchwartzMap.derivCLM ℝ ℂ φ
+  let φ'' : SchwartzMap ℝ ℂ := SchwartzMap.derivCLM ℝ ℂ φ'
+  have h1 : deriv φ = (φ' : ℝ → ℂ) := rfl
+  have h2 : deriv (φ' : ℝ → ℂ) = (φ'' : ℝ → ℂ) := rfl
+  have hc0 := φ.continuous
+  have hc1 := φ'.continuous
+  have hc2 := φ''.continuous
+  unfold ct1Profile''
+  rw [h1, h2]
+  fun_prop
+
+theorem ct1Profile_zero (φ : SchwartzMap ℝ ℂ) (n : ℤ) : ct1Profile φ n 0 = 0 := by
+  simp [ct1Profile]
+
+theorem ct1Profile''_zero (φ : SchwartzMap ℝ ℂ) (n : ℤ) :
+    ct1Profile'' φ n 0 = (n : ℂ) ^ 2 * deriv (deriv φ) n + 2 * n * deriv φ n := by
+  simp only [ct1Profile'', Real.exp_zero, zero_div, one_mul, sub_self, zero_div, zero_add,
+    Complex.ofReal_one, Complex.ofReal_intCast]
+  ring
+
+
+/-- Exact CT1 pairing as a lattice sum of even profile second differences. -/
+theorem nearGapCombDistribution_profile_sum (L : ℝ) (φ : SchwartzMap ℝ ℂ) :
+    nearGapCombDistribution L φ = ∑' n : ℤ, (ct1Profile φ n L + ct1Profile φ n (-L)) := by
+  rw [nearGapCombDistribution_eq_explicit]
+  change dilatedCombDistribution L φ + dilatedCombDistribution (-L) φ -
+    ((2 * Real.cosh (L / 2) : ℝ) : ℂ) • dilatedCombDistribution 0 φ = _
+  rw [dilatedCombDistribution_apply, dilatedCombDistribution_apply,
+    dilatedCombDistribution_apply]
+  have ha := (dilatedComb_schwartz_summable L φ).hasSum
+  have hb := (dilatedComb_schwartz_summable (-L) φ).hasSum
+  have hc := (dilatedComb_schwartz_summable 0 φ).hasSum
+  have hsum := ((ha.mul_left (Real.exp (L / 2) : ℂ)).add
+    (hb.mul_left (Real.exp (-L / 2) : ℂ))).sub
+    (hc.mul_left (((2 * Real.cosh (L / 2) : ℝ) : ℂ) * (Real.exp (0 / 2) : ℂ)))
+  have hterm : (fun n : ℤ => ct1Profile φ n L + ct1Profile φ n (-L)) = fun b : ℤ =>
+      (Real.exp (L / 2) : ℂ) * φ (Real.exp L * b) +
+        (Real.exp (-L / 2) : ℂ) * φ (Real.exp (-L) * b) -
+        ((2 * Real.cosh (L / 2) : ℝ) : ℂ) * (Real.exp (0 / 2) : ℂ) * φ (Real.exp 0 * b) := by
+    funext n
+    simp only [ct1Profile, Real.cosh_eq, Real.exp_zero, zero_div, one_mul, neg_div]
+    push_cast
+    ring
+  rw [hterm, hsum.tsum_eq, smul_eq_mul]
+  ring
+
+/-- Uniform lattice decay of Schwartz values along dilations with |u| ≤ 1. -/
+theorem ct1_dilated_decay (ψ : SchwartzMap ℝ ℂ) (j : ℕ) (n : ℤ) {u : ℝ} (hu : |u| ≤ 1) :
+    |Real.exp u * n| ^ j * ‖ψ (Real.exp u * n)‖ ≤
+      Real.exp 2 * (SchwartzMap.seminorm ℝ j 0 ψ + SchwartzMap.seminorm ℝ (j + 2) 0 ψ) /
+        (1 + (n : ℝ) ^ 2) := by
+  set x : ℝ := Real.exp u * n with hx
+  have h1 := SchwartzMap.norm_pow_mul_le_seminorm ℝ ψ j x
+  have h2 := SchwartzMap.norm_pow_mul_le_seminorm ℝ ψ (j + 2) x
+  rw [Real.norm_eq_abs] at h1 h2
+  set P : ℝ := |x| ^ j * ‖ψ x‖ with hP
+  have hP0 : 0 ≤ P := by positivity
+  have hPx : |x| ^ (j + 2) * ‖ψ x‖ = P * x ^ 2 := by
+    rw [hP, pow_add, sq_abs]; ring
+  have hn : 1 + (n : ℝ) ^ 2 ≤ Real.exp 2 * (1 + x ^ 2) := by
+    have he1 : 1 ≤ Real.exp 2 := Real.one_le_exp (by norm_num)
+    have hexp : 1 ≤ Real.exp 2 * Real.exp u ^ 2 := by
+      rw [← Real.exp_nat_mul, ← Real.exp_add]
+      apply Real.one_le_exp
+      have := (abs_le.mp hu).1
+      push_cast
+      linarith
+    have hxx : x ^ 2 = Real.exp u ^ 2 * (n : ℝ) ^ 2 := by rw [hx]; ring
+    rw [hxx]
+    nlinarith [sq_nonneg (n : ℝ)]
+  rw [le_div_iff₀ (by positivity)]
+  calc P * (1 + (n : ℝ) ^ 2) ≤ P * (Real.exp 2 * (1 + x ^ 2)) :=
+        mul_le_mul_of_nonneg_left hn hP0
+    _ = Real.exp 2 * (P + P * x ^ 2) := by ring
+    _ ≤ Real.exp 2 * (SchwartzMap.seminorm ℝ j 0 ψ + SchwartzMap.seminorm ℝ (j + 2) 0 ψ) := by
+        exact mul_le_mul_of_nonneg_left (add_le_add h1 (by rw [← hPx]; exact h2))
+          (Real.exp_pos 2).le
+
+/-- Uniform constant controlling the second profile derivative on |u| ≤ 1. -/
+def ct1DecayConst (φ : SchwartzMap ℝ ℂ) : ℝ :=
+  Real.exp (1 / 2) * Real.exp 2 *
+    ((SchwartzMap.seminorm ℝ 0 0 φ + SchwartzMap.seminorm ℝ 2 0 φ) / 2 +
+      2 * (SchwartzMap.seminorm ℝ 1 0 (SchwartzMap.derivCLM ℝ ℂ φ) +
+        SchwartzMap.seminorm ℝ 3 0 (SchwartzMap.derivCLM ℝ ℂ φ)) +
+      (SchwartzMap.seminorm ℝ 2 0 (SchwartzMap.derivCLM ℝ ℂ (SchwartzMap.derivCLM ℝ ℂ φ)) +
+        SchwartzMap.seminorm ℝ 4 0 (SchwartzMap.derivCLM ℝ ℂ (SchwartzMap.derivCLM ℝ ℂ φ))))
+
+theorem ct1Profile''_bound (φ : SchwartzMap ℝ ℂ) (n : ℤ) {u : ℝ} (hu : |u| ≤ 1) :
+    ‖ct1Profile'' φ n u‖ ≤ ct1DecayConst φ / (1 + (n : ℝ) ^ 2) := by
+  let φ' : SchwartzMap ℝ ℂ := SchwartzMap.derivCLM ℝ ℂ φ
+  let φ'' : SchwartzMap ℝ ℂ := SchwartzMap.derivCLM ℝ ℂ φ'
+  have e1 : deriv φ = (φ' : ℝ → ℂ) := rfl
+  have e2 : deriv (φ' : ℝ → ℂ) = (φ'' : ℝ → ℂ) := rfl
+  set x : ℝ := Real.exp u * n with hx
+  set D : ℝ := 1 + (n : ℝ) ^ 2 with hD
+  have hD0 : 0 < D := by positivity
+  have hφx := ct1_dilated_decay φ 0 n hu
+  have hφn := ct1_dilated_decay φ 0 n (u := 0) (by simp)
+  have hφ'x := ct1_dilated_decay φ' 1 n hu
+  have hφ''x := ct1_dilated_decay φ'' 2 n hu
+  simp only [pow_zero, one_mul, Real.exp_zero, zero_add, pow_one] at hφx hφn hφ'x hφ''x
+  rw [← hx] at hφx hφ'x hφ''x
+  have hexp : ‖(Real.exp (u / 2) : ℂ)‖ ≤ Real.exp (1 / 2) := by
+    rw [Complex.norm_real, Real.norm_eq_abs, abs_of_pos (Real.exp_pos _)]
+    exact Real.exp_le_exp.mpr (by linarith [(abs_le.mp hu).2])
+  have hinner : ‖(φ x - φ n) / 4 + 2 * (x : ℂ) * deriv φ x + (x : ℂ) ^ 2 * deriv (deriv φ) x‖ ≤
+      Real.exp 2 * ((SchwartzMap.seminorm ℝ 0 0 φ + SchwartzMap.seminorm ℝ 2 0 φ) / 2 +
+        2 * (SchwartzMap.seminorm ℝ 1 0 φ' + SchwartzMap.seminorm ℝ 3 0 φ') +
+        (SchwartzMap.seminorm ℝ 2 0 φ'' + SchwartzMap.seminorm ℝ 4 0 φ'')) / D := by
+    rw [e1, e2]
+    have t1 : ‖(φ x - φ n) / 4‖ ≤ (‖φ x‖ + ‖φ (n : ℝ)‖) / 4 := by
+      rw [norm_div]
+      simp only [RCLike.norm_ofNat]
+      gcongr
+      exact norm_sub_le _ _
+    have t2 : ‖2 * (x : ℂ) * φ' x‖ = 2 * (|x| * ‖φ' x‖) := by
+      rw [norm_mul, norm_mul, Complex.norm_real, Real.norm_eq_abs]
+      simp only [RCLike.norm_ofNat]
+      ring
+    have t3 : ‖(x : ℂ) ^ 2 * φ'' x‖ = |x| ^ 2 * ‖φ'' x‖ := by
+      rw [norm_mul, norm_pow, Complex.norm_real, Real.norm_eq_abs]
+    calc _ ≤ ‖(φ x - φ n) / 4‖ + ‖2 * (x : ℂ) * φ' x‖ + ‖(x : ℂ) ^ 2 * φ'' x‖ :=
+          norm_add₃_le
+      _ ≤ (‖φ x‖ + ‖φ (n : ℝ)‖) / 4 + 2 * (|x| * ‖φ' x‖) + |x| ^ 2 * ‖φ'' x‖ := by
+          rw [t2, t3]; linarith [t1]
+      _ ≤ (Real.exp 2 * (SchwartzMap.seminorm ℝ 0 0 φ + SchwartzMap.seminorm ℝ 2 0 φ) / D +
+            Real.exp 2 * (SchwartzMap.seminorm ℝ 0 0 φ + SchwartzMap.seminorm ℝ 2 0 φ) / D) / 4 +
+          2 * (Real.exp 2 * (SchwartzMap.seminorm ℝ 1 0 φ' + SchwartzMap.seminorm ℝ 3 0 φ') / D) +
+          Real.exp 2 * (SchwartzMap.seminorm ℝ 2 0 φ'' + SchwartzMap.seminorm ℝ 4 0 φ'') / D := by
+          gcongr
+      _ = _ := by field_simp; ring
+  unfold ct1Profile''
+  rw [norm_mul, ← hx]
+  calc _ ≤ Real.exp (1 / 2) * (Real.exp 2 *
+        ((SchwartzMap.seminorm ℝ 0 0 φ + SchwartzMap.seminorm ℝ 2 0 φ) / 2 +
+          2 * (SchwartzMap.seminorm ℝ 1 0 φ' + SchwartzMap.seminorm ℝ 3 0 φ') +
+          (SchwartzMap.seminorm ℝ 2 0 φ'' + SchwartzMap.seminorm ℝ 4 0 φ'')) / D) :=
+        mul_le_mul hexp hinner (norm_nonneg _) (Real.exp_pos _).le
+    _ = _ := by unfold ct1DecayConst; ring
+
+theorem ct1_inverse_square_summable :
+    Summable (fun n : ℤ => 1 / (1 + (n : ℝ) ^ 2)) := by
+  refine Summable.of_norm_bounded_eventually (Real.summable_one_div_int_pow.mpr one_lt_two) ?_
+  filter_upwards [(Set.finite_singleton (0 : ℤ)).compl_mem_cofinite] with n hn
+  have hn0 : (n : ℝ) ≠ 0 := by exact_mod_cast hn
+  rw [Real.norm_eq_abs, abs_of_pos (by positivity)]
+  exact one_div_le_one_div_of_le (by positivity) (by linarith)
+
+/-- Pointwise per-lattice-point limit of the normalized second difference. -/
+theorem ct1Profile_second_difference_tendsto (φ : SchwartzMap ℝ ℂ) (n : ℤ) :
+    Tendsto (fun L : ℝ => (ct1Profile φ n L + ct1Profile φ n (-L)) / (L : ℂ) ^ 2)
+      (𝓝[≠] 0) (𝓝 (ct1Profile'' φ n 0)) := by
+  rw [Metric.tendsto_nhdsWithin_nhds]
+  intro ε hε
+  obtain ⟨δ, hδ, hcont⟩ := Metric.continuous_iff.mp (ct1Profile''_continuous φ n) 0
+    (ε / 4) (by positivity)
+  refine ⟨δ, hδ, fun L hL hLd => ?_⟩
+  have hL0 : L ≠ 0 := hL
+  rw [Real.dist_eq, sub_zero] at hLd
+  have hM : ∀ u, |u| ≤ |L| → ‖ct1Profile'' φ n u - ct1Profile'' φ n 0‖ ≤ ε / 4 := by
+    intro u hu
+    have := hcont u (by rw [Real.dist_eq, sub_zero]; linarith)
+    rw [dist_eq_norm] at this
+    exact this.le
+  have hb := second_difference_bound (ct1Profile_hasDerivAt φ n) (ct1Profile'_hasDerivAt φ n)
+    (ct1Profile'' φ n 0) hM
+  rw [ct1Profile_zero, mul_zero, sub_zero] at hb
+  have hL2 : (0 : ℝ) < L ^ 2 := by positivity
+  have hLc : ((L : ℂ) ^ 2) ≠ 0 := by exact_mod_cast pow_ne_zero 2 hL0
+  rw [dist_eq_norm]
+  have heq : (ct1Profile φ n L + ct1Profile φ n (-L)) / (L : ℂ) ^ 2 - ct1Profile'' φ n 0 =
+      (ct1Profile φ n L + ct1Profile φ n (-L) - ct1Profile'' φ n 0 * ((L ^ 2 : ℝ) : ℂ)) /
+        ((L ^ 2 : ℝ) : ℂ) := by
+    push_cast
+    rw [eq_div_iff hLc, sub_mul, div_mul_cancel₀ _ hLc]
+  rw [heq, norm_div, Complex.norm_real, Real.norm_eq_abs, abs_of_pos hL2,
+    div_lt_iff₀ hL2]
+  nlinarith
+
+/-- Dominating bound for the normalized second differences, |L| ≤ 1. -/
+theorem ct1Profile_second_difference_bound (φ : SchwartzMap ℝ ℂ) (n : ℤ) {L : ℝ}
+    (hL0 : L ≠ 0) (hL1 : |L| ≤ 1) :
+    ‖(ct1Profile φ n L + ct1Profile φ n (-L)) / (L : ℂ) ^ 2‖ ≤
+      2 * (ct1DecayConst φ / (1 + (n : ℝ) ^ 2)) := by
+  have hM : ∀ u, |u| ≤ |L| → ‖ct1Profile'' φ n u - 0‖ ≤ ct1DecayConst φ / (1 + (n : ℝ) ^ 2) := by
+    intro u hu
+    rw [sub_zero]
+    exact ct1Profile''_bound φ n (hu.trans hL1)
+  have hb := second_difference_bound (ct1Profile_hasDerivAt φ n) (ct1Profile'_hasDerivAt φ n)
+    0 hM
+  rw [ct1Profile_zero, mul_zero, sub_zero, zero_mul, sub_zero] at hb
+  have hL2 : (0 : ℝ) < L ^ 2 := by positivity
+  rw [norm_div, norm_pow, Complex.norm_real, Real.norm_eq_abs, sq_abs, div_le_iff₀ hL2]
+  linarith
+
+/-- The normalized CT1 pairing converges to the lattice sum of profile
+second derivatives at 0. -/
+theorem ct1_normalized_pairing_tendsto (φ : SchwartzMap ℝ ℂ) :
+    Tendsto (fun L : ℝ => nearGapCombDistribution L φ / (L : ℂ) ^ 2) (𝓝[≠] 0)
+      (𝓝 (∑' n : ℤ, ct1Profile'' φ n 0)) := by
+  have hrw : (fun L : ℝ => nearGapCombDistribution L φ / (L : ℂ) ^ 2) =
+      fun L : ℝ => ∑' n : ℤ, (ct1Profile φ n L + ct1Profile φ n (-L)) / (L : ℂ) ^ 2 := by
+    funext L
+    rw [nearGapCombDistribution_profile_sum, tsum_div_const]
+  rw [hrw]
+  refine tendsto_tsum_of_dominated_convergence
+    ((ct1_inverse_square_summable.mul_left (2 * ct1DecayConst φ)))
+    (fun n => ct1Profile_second_difference_tendsto φ n) ?_
+  have hne : ∀ᶠ L in 𝓝[≠] (0 : ℝ), L ≠ 0 := self_mem_nhdsWithin
+  have hsmall : ∀ᶠ L in 𝓝[≠] (0 : ℝ), |L| < 1 := by
+    refine nhdsWithin_le_nhds ?_
+    filter_upwards [Metric.ball_mem_nhds (0 : ℝ) one_pos] with L hL
+    simpa [Metric.mem_ball, Real.dist_eq] using hL
+  filter_upwards [hne, hsmall] with L hL0 hL1 n
+  have := ct1Profile_second_difference_bound φ n hL0 hL1.le
+  calc _ ≤ 2 * (ct1DecayConst φ / (1 + (n : ℝ) ^ 2)) := this
+    _ = 2 * ct1DecayConst φ * (1 / (1 + (n : ℝ) ^ 2)) := by ring
+
+
+/-! ### The normalized limit as a genuine tempered distribution -/
+
+/-- The CT1 normalized limit T = (x² Ш')', where Ш is the actual integer
+Dirac comb `dilatedCombDistribution 0`. Pointwise it is
+Σ_n (n² δ_n'' − 2n δ_n'). -/
+def ct1NormalizedLimit : TemperedDistribution ℝ ℂ :=
+  TemperedDistribution.derivCLM ℂ
+    (TemperedDistribution.smulLeftCLM ℂ (fun x : ℝ => (x : ℂ) ^ 2)
+      (TemperedDistribution.derivCLM ℂ (dilatedCombDistribution 0)))
+
+lemma ct1_sq_temperate : (fun x : ℝ => (x : ℂ) ^ 2).HasTemperateGrowth := by
+  fun_prop
+
+theorem ct1NormalizedLimit_apply (φ : SchwartzMap ℝ ℂ) :
+    ct1NormalizedLimit φ =
+      ∑' n : ℤ, ((n : ℂ) ^ 2 * deriv (deriv φ) n + 2 * n * deriv φ n) := by
+  unfold ct1NormalizedLimit
+  rw [TemperedDistribution.derivCLM_apply_apply, TemperedDistribution.smulLeftCLM_apply_apply,
+    TemperedDistribution.derivCLM_apply_apply, dilatedCombDistribution_apply]
+  simp only [Real.exp_zero, zero_div, Complex.ofReal_one, one_mul, map_neg, neg_neg]
+  congr 1
+  funext n
+  rw [SchwartzMap.derivCLM_apply]
+  have hF : ((SchwartzMap.smulLeftCLM ℂ (fun x : ℝ => (x : ℂ) ^ 2))
+      (SchwartzMap.derivCLM ℂ ℂ φ) : ℝ → ℂ) = fun y : ℝ => (y : ℂ) ^ 2 * deriv φ y := by
+    funext y
+    rw [SchwartzMap.smulLeftCLM_apply_apply ct1_sq_temperate, SchwartzMap.derivCLM_apply,
+      smul_eq_mul]
+  rw [hF]
+  have h1 : HasDerivAt (fun y : ℝ => (y : ℂ) ^ 2) (((2 : ℕ) : ℂ) * (n : ℂ) ^ (2 - 1)) (n : ℝ) :=
+    (hasDerivAt_pow 2 ((n : ℝ) : ℂ)).comp_ofReal
+  have h2 : HasDerivAt (deriv φ) (deriv (deriv φ) n) (n : ℝ) :=
+    (SchwartzMap.derivCLM ℝ ℂ φ).hasDerivAt (n : ℝ)
+  have h3 : HasDerivAt (fun y : ℝ => (y : ℂ) ^ 2 * deriv φ y)
+      (((2 : ℕ) : ℂ) * (n : ℂ) ^ (2 - 1) * deriv φ n + ((n : ℝ) : ℂ) ^ 2 * deriv (deriv φ) n)
+      (n : ℝ) := h1.mul h2
+  rw [h3.deriv]
+  push_cast
+  ring
+
+/-- Each lattice term of the limit is the paper's n² δ_n'' − 2n δ_n'. -/
+theorem ct1_delta_term_apply (n : ℤ) (φ : SchwartzMap ℝ ℂ) :
+    ((n : ℂ) ^ 2 • TemperedDistribution.derivCLM ℂ
+        (TemperedDistribution.derivCLM ℂ (TemperedDistribution.delta (n : ℝ))) -
+      (2 * (n : ℂ)) • TemperedDistribution.derivCLM ℂ (TemperedDistribution.delta (n : ℝ))) φ =
+      (n : ℂ) ^ 2 * deriv (deriv φ) n + 2 * n * deriv φ n := by
+  change (n : ℂ) ^ 2 * TemperedDistribution.derivCLM ℂ
+        (TemperedDistribution.derivCLM ℂ (TemperedDistribution.delta (n : ℝ))) φ -
+      (2 * (n : ℂ)) * TemperedDistribution.derivCLM ℂ (TemperedDistribution.delta (n : ℝ)) φ = _
+  have hc : ((SchwartzMap.derivCLM ℂ ℂ φ) : ℝ → ℂ) = deriv φ := rfl
+  simp only [TemperedDistribution.derivCLM_apply_apply, TemperedDistribution.delta_apply,
+    map_neg, neg_neg, SchwartzMap.derivCLM_apply]
+  rw [hc]
+  ring
+
+theorem ct1_lattice_terms_summable (φ : SchwartzMap ℝ ℂ) :
+    Summable (fun n : ℤ => (n : ℂ) ^ 2 * deriv (deriv φ) n + 2 * n * deriv φ n) := by
+  refine Summable.of_norm_bounded
+    (ct1_inverse_square_summable.mul_left (ct1DecayConst φ)) (fun n => ?_)
+  rw [← ct1Profile''_zero]
+  have := ct1Profile''_bound φ n (u := 0) (by simp)
+  calc _ ≤ ct1DecayConst φ / (1 + (n : ℝ) ^ 2) := this
+    _ = ct1DecayConst φ * (1 / (1 + (n : ℝ) ^ 2)) := by ring
+
+theorem ct1NormalizedLimit_hasSum_delta (φ : SchwartzMap ℝ ℂ) :
+    HasSum (fun n : ℤ => ((n : ℂ) ^ 2 • TemperedDistribution.derivCLM ℂ
+        (TemperedDistribution.derivCLM ℂ (TemperedDistribution.delta (n : ℝ))) -
+      (2 * (n : ℂ)) • TemperedDistribution.derivCLM ℂ (TemperedDistribution.delta (n : ℝ))) φ)
+      (ct1NormalizedLimit φ) := by
+  simp only [ct1_delta_term_apply]
+  rw [ct1NormalizedLimit_apply]
+  exact (ct1_lattice_terms_summable φ).hasSum
+
+/-- Localization: a test whose support meets the integers only at n sees only
+the n-th lattice term. -/
+theorem ct1NormalizedLimit_local (φ : SchwartzMap ℝ ℂ) (n : ℤ)
+    (hφ : ∀ m : ℤ, m ≠ n → (m : ℝ) ∉ tsupport φ) :
+    ct1NormalizedLimit φ = (n : ℂ) ^ 2 * deriv (deriv φ) n + 2 * n * deriv φ n := by
+  rw [ct1NormalizedLimit_apply]
+  refine tsum_eq_single n (fun m hm => ?_)
+  have hm' := hφ m hm
+  have h1 : deriv φ m = 0 :=
+    Function.notMem_support.mp (fun h => hm' (support_deriv_subset h))
+  have h2 : deriv (deriv φ) m = 0 :=
+    Function.notMem_support.mp (fun h => hm' (tsupport_deriv_subset (support_deriv_subset h)))
+  rw [h1, h2]
+  ring
+
+lemma ct1_int_eq_of_near {m n : ℤ} {r : ℝ} (hr : r < 1) (h : |(m : ℝ) - n| ≤ r) : m = n := by
+  have h' : |((m - n : ℤ) : ℝ)| < 1 := by push_cast; linarith
+  have : |m - n| < 1 := by exact_mod_cast h'
+  have := abs_lt.mp this
+  omega
+
+theorem ct1NormalizedLimit_local_Icc (φ : SchwartzMap ℝ ℂ) (n : ℤ)
+    (hφ : tsupport φ ⊆ Icc ((n : ℝ) - 1 / 2) (n + 1 / 2)) :
+    ct1NormalizedLimit φ = (n : ℂ) ^ 2 * deriv (deriv φ) n + 2 * n * deriv φ n := by
+  refine ct1NormalizedLimit_local φ n (fun m hm hmem => hm ?_)
+  have h := hφ hmem
+  exact ct1_int_eq_of_near (r := 1 / 2) (by norm_num)
+    (abs_le.mpr ⟨by linarith [h.1], by linarith [h.2]⟩)
+
+/-! ### Localized quadratic bump tests -/
+
+/-- The smooth bump of radii ε/2, ε at an integer n. -/
+def ct1Bump (n : ℤ) {ε : ℝ} (hε : 0 < ε) : ContDiffBump (n : ℝ) :=
+  ⟨ε / 2, ε, half_pos hε, half_lt_self hε⟩
+
+def ct1BumpProfile (n : ℤ) {ε : ℝ} (hε : 0 < ε) (x : ℝ) : ℂ :=
+  (((x - n) ^ 2 * ct1Bump n hε x : ℝ) : ℂ)
+
+lemma ct1BumpProfile_contDiff (n : ℤ) {ε : ℝ} (hε : 0 < ε) :
+    ContDiff ℝ ((⊤ : ℕ∞) : WithTop ℕ∞) (ct1BumpProfile n hε) := by
+  have hb : ContDiff ℝ ((⊤ : ℕ∞) : WithTop ℕ∞) (fun x : ℝ => ct1Bump n hε x) := (ct1Bump n hε).contDiff
+  have hp : ContDiff ℝ ((⊤ : ℕ∞) : WithTop ℕ∞) (fun x : ℝ => (x - n) ^ 2) := by fun_prop
+  exact Complex.ofRealCLM.contDiff.comp (hp.mul hb)
+
+lemma ct1BumpProfile_tsupport (n : ℤ) {ε : ℝ} (hε : 0 < ε) :
+    tsupport (ct1BumpProfile n hε) ⊆ Metric.closedBall (n : ℝ) ε := by
+  have h1 : tsupport (ct1BumpProfile n hε) ⊆
+      tsupport (fun x : ℝ => (x - n) ^ 2 * ct1Bump n hε x) :=
+    tsupport_comp_subset Complex.ofReal_zero _
+  have h2 : tsupport (fun x : ℝ => (x - n) ^ 2 * ct1Bump n hε x) ⊆ tsupport (ct1Bump n hε) :=
+    tsupport_mul_subset_right
+  rw [ContDiffBump.tsupport_eq] at h2
+  exact h1.trans h2
+
+lemma ct1BumpProfile_hasCompactSupport (n : ℤ) {ε : ℝ} (hε : 0 < ε) :
+    HasCompactSupport (ct1BumpProfile n hε) :=
+  (isCompact_closedBall (n : ℝ) ε).of_isClosed_subset (isClosed_tsupport _)
+    (ct1BumpProfile_tsupport n hε)
+
+def ct1BumpTest (n : ℤ) {ε : ℝ} (hε : 0 < ε) : SchwartzMap ℝ ℂ :=
+  (ct1BumpProfile_hasCompactSupport n hε).toSchwartzMap (ct1BumpProfile_contDiff n hε)
+
+lemma ct1BumpTest_coe (n : ℤ) {ε : ℝ} (hε : 0 < ε) :
+    (ct1BumpTest n hε : ℝ → ℂ) = ct1BumpProfile n hε := rfl
+
+lemma ct1BumpProfile_eventually (n : ℤ) {ε : ℝ} (hε : 0 < ε) :
+    ct1BumpProfile n hε =ᶠ[𝓝 (n : ℝ)] fun x : ℝ => (((x - n) ^ 2 : ℝ) : ℂ) := by
+  filter_upwards [(ct1Bump n hε).eventuallyEq_one] with x hx
+  simp only [ct1BumpProfile, hx, Pi.one_apply, mul_one]
+
+lemma ct1_quadratic_deriv (n : ℤ) :
+    deriv (fun x : ℝ => (((x - n) ^ 2 : ℝ) : ℂ)) = fun x => ((2 * (x - n) : ℝ) : ℂ) := by
+  funext x
+  have h0 : HasDerivAt (fun x : ℝ => (x - n) ^ 2) (2 * (x - n)) x := by
+    exact (((hasDerivAt_id' x).sub_const (n : ℝ)).fun_pow 2).congr_deriv (by norm_num)
+  exact h0.ofReal_comp.deriv
+
+lemma ct1BumpTest_deriv (n : ℤ) {ε : ℝ} (hε : 0 < ε) :
+    deriv (ct1BumpTest n hε) n = 0 ∧ deriv (deriv (ct1BumpTest n hε)) n = 2 := by
+  rw [ct1BumpTest_coe]
+  have hev := ct1BumpProfile_eventually n hε
+  have hd : deriv (ct1BumpProfile n hε) =ᶠ[𝓝 (n : ℝ)] fun x => ((2 * (x - n) : ℝ) : ℂ) := by
+    rw [← ct1_quadratic_deriv n]
+    exact hev.deriv
+  refine ⟨?_, ?_⟩
+  · rw [hd.eq_of_nhds]
+    simp
+  · rw [hd.deriv_eq]
+    have h0 : HasDerivAt (fun x : ℝ => 2 * (x - n)) 2 (n : ℝ) := by
+      exact (((hasDerivAt_id' (n : ℝ)).sub_const (n : ℝ)).const_mul (2 : ℝ)).congr_deriv
+        (by norm_num)
+    rw [h0.ofReal_comp.deriv]
+    norm_num
+
+lemma ct1BumpTest_seminorm_le (n : ℤ) {ε : ℝ} (hε : 0 < ε) :
+    SchwartzMap.seminorm ℝ 0 0 (ct1BumpTest n hε) ≤ ε ^ 2 := by
+  refine SchwartzMap.seminorm_le_bound ℝ 0 0 _ (by positivity) (fun x => ?_)
+  rw [pow_zero, one_mul, norm_iteratedFDeriv_zero, ct1BumpTest_coe]
+  unfold ct1BumpProfile
+  rw [Complex.norm_real, Real.norm_eq_abs]
+  have hb0 := (ct1Bump n hε).nonneg' x
+  have hb1 : (ct1Bump n hε) x ≤ 1 := (ct1Bump n hε).le_one
+  rw [abs_of_nonneg (by positivity)]
+  by_cases hx : dist x n < ε
+  · have hxn : (x - n) ^ 2 ≤ ε ^ 2 := by
+      rw [Real.dist_eq] at hx
+      rw [← sq_abs]
+      exact pow_le_pow_left₀ (abs_nonneg _) hx.le 2
+    calc (x - n) ^ 2 * (ct1Bump n hε) x ≤ ε ^ 2 * 1 :=
+          mul_le_mul hxn hb1 hb0 (by positivity)
+      _ = ε ^ 2 := mul_one _
+  · have : (ct1Bump n hε) x = 0 := (ct1Bump n hε).zero_of_le_dist (not_lt.mp hx)
+    rw [this, mul_zero]
+    positivity
+
+lemma ct1BumpTest_tsupport_Icc (n : ℤ) {ε : ℝ} (hε : 0 < ε) (hε2 : ε ≤ 1 / 2) :
+    tsupport (ct1BumpTest n hε) ⊆ Icc ((n : ℝ) - 1 / 2) (n + 1 / 2) := by
+  rw [ct1BumpTest_coe]
+  intro x hx
+  have h := ct1BumpProfile_tsupport n hε hx
+  rw [Metric.mem_closedBall, Real.dist_eq] at h
+  have := abs_le.mp h
+  exact ⟨by linarith [this.1], by linarith [this.2]⟩
+
+theorem ct1NormalizedLimit_bumpTest (n : ℤ) {ε : ℝ} (hε : 0 < ε) (hε2 : ε ≤ 1 / 2) :
+    ct1NormalizedLimit (ct1BumpTest n hε) = 2 * (n : ℂ) ^ 2 := by
+  rw [ct1NormalizedLimit_local_Icc _ n (ct1BumpTest_tsupport_Icc n hε hε2),
+    (ct1BumpTest_deriv n hε).1, (ct1BumpTest_deriv n hε).2]
+  ring
+
+/-- The normalized limit is not of order zero at any nonzero integer. -/
+theorem ct1NormalizedLimit_not_order_zero (n : ℤ) (hn : n ≠ 0) :
+    ¬ ∃ C : ℝ, ∀ φ : SchwartzMap ℝ ℂ, tsupport φ ⊆ Icc ((n : ℝ) - 1 / 2) (n + 1 / 2) →
+      ‖ct1NormalizedLimit φ‖ ≤ C * SchwartzMap.seminorm ℝ 0 0 φ := by
+  rintro ⟨C, hC⟩
+  set C' : ℝ := max C 0 with hC'
+  have hC'0 : 0 ≤ C' := le_max_right _ _
+  have hn2 : (1 : ℝ) ≤ (n : ℝ) ^ 2 := by
+    have : (1 : ℤ) ≤ n ^ 2 := by nlinarith [sq_nonneg n, Int.one_le_abs hn, sq_abs n]
+    exact_mod_cast this
+  set ε : ℝ := min (1 / 4) (1 / (C' + 1)) with hεdef
+  have hε : 0 < ε := lt_min (by norm_num) (by positivity)
+  have hε2 : ε ≤ 1 / 2 := (min_le_left _ _).trans (by norm_num)
+  have hε1 : ε ≤ 1 := hε2.trans (by norm_num)
+  have hεC : C' * ε < 1 := by
+    have h1 : ε ≤ 1 / (C' + 1) := min_le_right _ _
+    have h2 : C' * ε ≤ C' * (1 / (C' + 1)) := mul_le_mul_of_nonneg_left h1 hC'0
+    have h3 : C' * (1 / (C' + 1)) < 1 := by
+      rw [mul_one_div, div_lt_one (by positivity)]; linarith
+    linarith
+  have hT := hC (ct1BumpTest n hε) (ct1BumpTest_tsupport_Icc n hε hε2)
+  rw [ct1NormalizedLimit_bumpTest n hε hε2] at hT
+  have hS0 : 0 ≤ SchwartzMap.seminorm ℝ 0 0 (ct1BumpTest n hε) := apply_nonneg _ _
+  have hS := ct1BumpTest_seminorm_le n hε
+  have hnorm : ‖2 * (n : ℂ) ^ 2‖ = 2 * (n : ℝ) ^ 2 := by
+    rw [norm_mul, norm_pow, Complex.norm_intCast, sq_abs]
+    simp
+  rw [hnorm] at hT
+  have h1 : C * SchwartzMap.seminorm ℝ 0 0 (ct1BumpTest n hε) ≤
+      C' * SchwartzMap.seminorm ℝ 0 0 (ct1BumpTest n hε) :=
+    mul_le_mul_of_nonneg_right (le_max_left _ _) hS0
+  have h2 : C' * SchwartzMap.seminorm ℝ 0 0 (ct1BumpTest n hε) ≤ C' * ε ^ 2 :=
+    mul_le_mul_of_nonneg_left hS hC'0
+  have h3 : C' * ε ^ 2 ≤ C' * ε := by
+    apply mul_le_mul_of_nonneg_left _ hC'0
+    nlinarith
+  nlinarith
+
+/-- Order-zero bound for every locally finite Jordan pair on a compact interval. -/
+theorem jordan_pairing_order_zero (μ : LocallyFiniteSignedMeasure) (a b : ℝ)
+    (φ : SchwartzMap ℝ ℂ) (hφ : tsupport φ ⊆ Icc a b) :
+    ‖(∫ x, φ x ∂μ.positive) - (∫ x, φ x ∂μ.negative)‖ ≤
+      ((μ.positive.real (Icc a b)) + (μ.negative.real (Icc a b))) *
+        SchwartzMap.seminorm ℝ 0 0 φ := by
+  have hzero : ∀ x ∉ Icc a b, φ x = 0 := fun x hx =>
+    image_eq_zero_of_notMem_tsupport (fun h => hx (hφ h))
+  have hbound : ∀ x ∈ Icc a b, ‖φ x‖ ≤ SchwartzMap.seminorm ℝ 0 0 φ :=
+    fun x _ => SchwartzMap.norm_le_seminorm ℝ φ x
+  have hone (ν : Measure ℝ) [IsLocallyFiniteMeasure ν] :
+      ‖∫ x, φ x ∂ν‖ ≤ SchwartzMap.seminorm ℝ 0 0 φ * ν.real (Icc a b) := by
+    rw [← setIntegral_eq_integral_of_forall_compl_eq_zero hzero]
+    exact norm_setIntegral_le_of_norm_le_const isCompact_Icc.measure_lt_top hbound
+  calc _ ≤ ‖∫ x, φ x ∂μ.positive‖ + ‖∫ x, φ x ∂μ.negative‖ := norm_sub_le _ _
+    _ ≤ SchwartzMap.seminorm ℝ 0 0 φ * μ.positive.real (Icc a b) +
+        SchwartzMap.seminorm ℝ 0 0 φ * μ.negative.real (Icc a b) :=
+        add_le_add (hone _) (hone _)
+    _ = _ := by ring
+
+/-- The normalized limit is not given by any locally finite Jordan pair. -/
+theorem ct1NormalizedLimit_not_measure :
+    ¬ ∃ μ : LocallyFiniteSignedMeasure, ∀ φ : SchwartzMap ℝ ℂ,
+      (∫ x, φ x ∂μ.positive) - (∫ x, φ x ∂μ.negative) = ct1NormalizedLimit φ := by
+  rintro ⟨μ, hμ⟩
+  refine ct1NormalizedLimit_not_order_zero 1 one_ne_zero
+    ⟨μ.positive.real (Icc ((1 : ℤ) - 1 / 2 : ℝ) ((1 : ℤ) + 1 / 2)) +
+      μ.negative.real (Icc ((1 : ℤ) - 1 / 2 : ℝ) ((1 : ℤ) + 1 / 2)), fun φ hφ => ?_⟩
+  rw [← hμ φ]
+  exact jordan_pairing_order_zero μ _ _ φ hφ
+
+/-- Normalized total variation near 1 is unbounded: the gap-edge atom has mass
+e^(-L/2) while the normalization divides by L². -/
+theorem ct1_normalized_variation_unbounded :
+    Tendsto (fun L : ℝ => (nearGapCombFamily L).totalVariation.real (Icc (1 / 2) (3 / 2)) / L ^ 2)
+      (𝓝[>] 0) atTop := by
+  have hlog : (0 : ℝ) < min 1 (Real.log 2) := lt_min one_pos (Real.log_pos (by norm_num))
+  have hev : ∀ᶠ L in 𝓝[>] (0 : ℝ), L ∈ Ioo 0 (min 1 (Real.log 2)) := Ioo_mem_nhdsGT hlog
+  refine tendsto_atTop_mono' _ ?_
+    ((tendsto_inv_nhdsGT_zero (𝕜 := ℝ)).const_mul_atTop (Real.exp_pos (-1 / 2)))
+  filter_upwards [hev] with L hL
+  obtain ⟨hL0, hL1⟩ := hL
+  have hLone : L < 1 := lt_of_lt_of_le hL1 (min_le_left _ _)
+  have hLlog : L < Real.log 2 := lt_of_lt_of_le hL1 (min_le_right _ _)
+  have hatom := (nearGapCombFamily_gap_edge_atom hL0 hLlog).1
+  obtain ⟨hr1, hr2⟩ := nearGapComb_radius_bounds hL0 hLlog
+  have hmem : ({Real.exp (-L)} : Set ℝ) ⊆ Icc (1 / 2) (3 / 2) := by
+    intro x hx
+    rw [mem_singleton_iff] at hx
+    rw [hx]
+    exact ⟨hr1.le, by linarith⟩
+  have hfin : (nearGapCombFamily L).totalVariation (Icc (1 / 2) (3 / 2)) ≠ ∞ :=
+    isCompact_Icc.measure_lt_top.ne
+  have hpos_le : (nearGapCombFamily L).positive.real (Icc (1 / 2) (3 / 2)) ≤
+      (nearGapCombFamily L).totalVariation.real (Icc (1 / 2) (3 / 2)) := by
+    unfold LocallyFiniteSignedMeasure.totalVariation at hfin ⊢
+    simp only [measureReal_def, Measure.add_apply] at hfin ⊢
+    exact ENNReal.toReal_mono hfin le_self_add
+  have hatom_le : Real.exp (-L / 2) ≤
+      (nearGapCombFamily L).totalVariation.real (Icc (1 / 2) (3 / 2)) := by
+    rw [← hatom]
+    exact (measureReal_mono hmem isCompact_Icc.measure_lt_top.ne).trans hpos_le
+  have hexp : Real.exp (-1 / 2) ≤ Real.exp (-L / 2) := Real.exp_le_exp.mpr (by linarith)
+  have hL2 : 0 < L ^ 2 := by positivity
+  rw [le_div_iff₀ hL2]
+  calc Real.exp (-1 / 2) * L⁻¹ * L ^ 2 = Real.exp (-1 / 2) * L := by field_simp
+    _ ≤ Real.exp (-1 / 2) * 1 := mul_le_mul_of_nonneg_left hLone.le (Real.exp_pos _).le
+    _ ≤ Real.exp (-L / 2) := by rw [mul_one]; exact hexp
+    _ ≤ _ := hatom_le
+
+
+/-- Original R1-CT1 normalized-limit root. The genuine CT1 distributions ν_L,
+divided by L², converge as L → 0 (L ≠ 0) in the tempered-distribution
+topology, and on every Schwartz test, to
+T = Σ_n (n² δ_n'' − 2n δ_n') = (x² Ш')'. The limit is a nonzero tempered
+distribution whose restriction near each nonzero integer n is n² δ_n'' − 2n δ_n';
+it is not of order zero at any nonzero integer, is not given by any locally
+finite Jordan pair, and the normalized variation near 1 is unbounded. -/
+theorem dilation_normalized_limit_not_measure :
+    Tendsto (fun L : ℝ => ((L : ℂ) ^ 2)⁻¹ • nearGapCombDistribution L) (𝓝[≠] 0)
+        (𝓝 ct1NormalizedLimit) ∧
+    (∀ φ : SchwartzMap ℝ ℂ,
+      Tendsto (fun L : ℝ => nearGapCombDistribution L φ / (L : ℂ) ^ 2) (𝓝[≠] 0)
+        (𝓝 (∑' n : ℤ, ((n : ℂ) ^ 2 * deriv (deriv φ) n + 2 * n * deriv φ n)))) ∧
+    (∀ φ : SchwartzMap ℝ ℂ,
+      HasSum (fun n : ℤ => ((n : ℂ) ^ 2 • TemperedDistribution.derivCLM ℂ
+          (TemperedDistribution.derivCLM ℂ (TemperedDistribution.delta (n : ℝ))) -
+        (2 * (n : ℂ)) • TemperedDistribution.derivCLM ℂ
+          (TemperedDistribution.delta (n : ℝ))) φ) (ct1NormalizedLimit φ)) ∧
+    (∀ (n : ℤ) (φ : SchwartzMap ℝ ℂ), tsupport φ ⊆ Icc ((n : ℝ) - 1 / 2) (n + 1 / 2) →
+      ct1NormalizedLimit φ = (n : ℂ) ^ 2 * deriv (deriv φ) n + 2 * n * deriv φ n) ∧
+    ct1NormalizedLimit ≠ 0 ∧
+    (∀ n : ℤ, n ≠ 0 → ¬ ∃ C : ℝ, ∀ φ : SchwartzMap ℝ ℂ,
+      tsupport φ ⊆ Icc ((n : ℝ) - 1 / 2) (n + 1 / 2) →
+        ‖ct1NormalizedLimit φ‖ ≤ C * SchwartzMap.seminorm ℝ 0 0 φ) ∧
+    (¬ ∃ μ : LocallyFiniteSignedMeasure, ∀ φ : SchwartzMap ℝ ℂ,
+      (∫ x, φ x ∂μ.positive) - (∫ x, φ x ∂μ.negative) = ct1NormalizedLimit φ) ∧
+    Tendsto (fun L : ℝ =>
+        (nearGapCombFamily L).totalVariation.real (Icc (1 / 2) (3 / 2)) / L ^ 2)
+      (𝓝[>] 0) atTop := by
+  have hpoint (φ : SchwartzMap ℝ ℂ) :
+      Tendsto (fun L : ℝ => nearGapCombDistribution L φ / (L : ℂ) ^ 2) (𝓝[≠] 0)
+        (𝓝 (∑' n : ℤ, ((n : ℂ) ^ 2 * deriv (deriv φ) n + 2 * n * deriv φ n))) := by
+    have h := ct1_normalized_pairing_tendsto φ
+    simp only [ct1Profile''_zero] at h
+    exact h
+  refine ⟨?_, hpoint, ct1NormalizedLimit_hasSum_delta,
+    fun n φ hφ => ct1NormalizedLimit_local_Icc φ n hφ, ?_,
+    ct1NormalizedLimit_not_order_zero, ct1NormalizedLimit_not_measure,
+    ct1_normalized_variation_unbounded⟩
+  · rw [PointwiseConvergenceCLM.tendsto_iff_forall_tendsto]
+    intro φ
+    rw [ct1NormalizedLimit_apply]
+    refine (hpoint φ).congr (fun L => ?_)
+    change nearGapCombDistribution L φ / (L : ℂ) ^ 2 =
+      ((L : ℂ) ^ 2)⁻¹ * nearGapCombDistribution L φ
+    rw [div_eq_inv_mul]
+  · intro hzero
+    have h := ct1NormalizedLimit_bumpTest 1 (ε := 1 / 4) (by norm_num) (by norm_num)
+    rw [hzero] at h
+    norm_num at h
+
 #print axioms Zeta23.OPICAFollowup.near_gap_mass_bound
 #print axioms Zeta23.OPICAFollowup.near_gap_controlled_limit_zero
+#print axioms Zeta23.OPICAFollowup.dilation_normalized_limit_not_measure
 end Zeta23.OPICAFollowup
