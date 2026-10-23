@@ -19,7 +19,7 @@ CONSUMERS = ('ExpectedMasks', 'ExpectedComplex', 'ExpectedAuxiliary',
              'ExpectedMultiplicity', 'ExpectedComb', 'ExpectedFirstCell',
              'ExpectedWeighted', 'ExpectedNearGap', 'ExpectedNearGapLimit',
              'ExpectedNormalizedLimit', 'ExpectedWeightedInverse',
-             'ExpectedCoPoissonFamily')
+             'ExpectedCoPoissonFamily', 'ExpectedCoPoissonOrderZero', 'ExpectedZeroMeasure')
 ALLOWED_AXIOMS = {'propext', 'Classical.choice', 'Quot.sound'}
 
 
