@@ -14,12 +14,13 @@ HERE = Path(__file__).resolve().parent
 REPO = HERE.parents[5]
 MODULES = ('MaskedNativeRate', 'ComplexLocalMeasures', 'AuxiliaryCompletions',
            'MultiplicityTail', 'DilatedComb', 'RenormalizedCoPoisson', 'FirstCellCost',
-           'WeightedMixing', 'NearGapLimits')
+           'WeightedMixing', 'NearGapLimits', 'ProfileEulerMaclaurin')
 CONSUMERS = ('ExpectedMasks', 'ExpectedComplex', 'ExpectedAuxiliary',
              'ExpectedMultiplicity', 'ExpectedComb', 'ExpectedFirstCell',
              'ExpectedWeighted', 'ExpectedNearGap', 'ExpectedNearGapLimit',
              'ExpectedNormalizedLimit', 'ExpectedWeightedInverse',
-             'ExpectedCoPoissonFamily', 'ExpectedCoPoissonOrderZero', 'ExpectedZeroMeasure')
+             'ExpectedCoPoissonFamily', 'ExpectedCoPoissonOrderZero', 'ExpectedZeroMeasure',
+             'ExpectedEulerMaclaurin')
 ALLOWED_AXIOMS = {'propext', 'Classical.choice', 'Quot.sound'}
 
 
