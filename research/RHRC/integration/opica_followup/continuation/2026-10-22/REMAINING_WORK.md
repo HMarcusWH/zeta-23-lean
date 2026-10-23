@@ -4,11 +4,11 @@ Original scope: 100 primary identities and 28 acceptance units. Current gate evi
 
 ## Status
 - 41: `PROVED_IN_ORIGINAL_41_ROOT_SOURCE_BOUND_SUBSET`
-- 28: `PROVED_NARROW_LOCAL_GATES_AGGREGATE_PENDING`, including four original candidate repairs in [Stage 1](STAGE1_HANDOVER.md), five Stage 2 roots, the [Stage 4](STAGE4_HANDOVER.md) CT1 family and word/jet consumer, the [Stage 5](STAGE5_HANDOVER.md) HT2 controlled limit and CT1 normalized limit, the [Stage 6](STAGE6_HANDOVER.md) weighted Mobius inverse, sharp gap and gap leakage, the [Stage 7](STAGE7_HANDOVER.md) co-Poisson tempered family, order zero and zero-measure properties, the [Stage 8](STAGE8_HANDOVER.md) finite-sum Euler-Maclaurin expansion, and the [Stage 9](STAGE9_HANDOVER.md) regular self-dual zero profile and its tail and jumps
-- 31: `OPEN_NO_COMPLETE_CANDIDATE`
+- 30: `PROVED_NARROW_LOCAL_GATES_AGGREGATE_PENDING`, including four original candidate repairs in [Stage 1](STAGE1_HANDOVER.md), five Stage 2 roots, the [Stage 4](STAGE4_HANDOVER.md) CT1 family and word/jet consumer, the [Stage 5](STAGE5_HANDOVER.md) HT2 controlled limit and CT1 normalized limit, the [Stage 6](STAGE6_HANDOVER.md) weighted Mobius inverse, sharp gap and gap leakage, the [Stage 7](STAGE7_HANDOVER.md) co-Poisson tempered family, order zero and zero-measure properties, the [Stage 8](STAGE8_HANDOVER.md) finite-sum Euler-Maclaurin expansion, the [Stage 9](STAGE9_HANDOVER.md) regular self-dual zero profile and its tail and jumps, and the [Stage 10](STAGE10_HANDOVER.md) log-unitary form identity and log-Fourier Plancherel package
+- 29: `OPEN_NO_COMPLETE_CANDIDATE`
 - 0: `PRIOR_CANDIDATE_FAILED_OR_BLOCKED_UNACCEPTED`
 
-## 31 roots without complete candidate implementations
+## 29 roots without complete candidate implementations
 
 ### Zeta23.OPICAFollowup.NativeWindowRate
 
@@ -17,11 +17,6 @@ Original scope: 100 primary identities and 28 acceptance units. Current gate evi
 ### Zeta23.OPICAFollowup.MovingSourceWindowRate
 
 - `native_slow_source_window_rate`
-
-### Zeta23.OPICAFollowup.LogFourierSobolev
-
-- `log_unitary_form_identity`
-- `log_fourier_plancherel`
 
 ### Zeta23.OPICAFollowup.ForcedEuler
 
@@ -85,7 +80,7 @@ Original scope: 100 primary identities and 28 acceptance units. Current gate evi
 
 ## Other unfinished gates
 
-Implement the 31 absent roots above. Twenty-eight roots now have narrow module, independent consumer and standard-axiom gates; the four Stage 1 repairs, five Stage 2 implementations, two Stage 4 roots (CT1 family, word/jet consumer), two Stage 5 roots (HT2 controlled limit, CT1 normalized limit), three Stage 6 roots (weighted Mobius inverse, sharp gap, gap leakage) three Stage 7 roots (co-Poisson tempered family, order zero, zero-measure properties) one Stage 8 root (finite-sum Euler-Maclaurin expansion) and two Stage 9 roots (regular self-dual zero profile, tail and jumps) are documented separately. All four NearGapLimits roots, all four WeightedMixing roots, all four RenormalizedCoPoisson roots, the ProfileEulerMaclaurin root and both ZeroProfiles roots now have narrow gates; the HT2 proof-method refinement and the W06, CP1, Euler-Maclaurin and zero-profile formalization choices are recorded in the ledger. These local results do not establish current aggregate acceptance. Revalidate all changed dependencies and the original 41 in the current aggregate. Complete the facade, actual-domain consumers, full type/constructor/axiom/private TYPE-VALUE-STRUCTURE closure, all-100 evidence linkage, compiler-derived mapped registered dependencies, route-less registration, canonical generation and every required final workflow.
+Implement the 29 absent roots above. Thirty roots now have narrow module, independent consumer and standard-axiom gates; the four Stage 1 repairs, five Stage 2 implementations, two Stage 4 roots (CT1 family, word/jet consumer), two Stage 5 roots (HT2 controlled limit, CT1 normalized limit), three Stage 6 roots (weighted Mobius inverse, sharp gap, gap leakage) three Stage 7 roots (co-Poisson tempered family, order zero, zero-measure properties) one Stage 8 root (finite-sum Euler-Maclaurin expansion), two Stage 9 roots (regular self-dual zero profile, tail and jumps) and two Stage 10 roots (log-unitary form identity, log-Fourier Plancherel) are documented separately. All four NearGapLimits roots, all four WeightedMixing roots, all four RenormalizedCoPoisson roots, the ProfileEulerMaclaurin root, both ZeroProfiles roots and both LogFourierSobolev roots now have narrow gates; the HT2 proof-method refinement and the W06, CP1, Euler-Maclaurin, zero-profile and log-Fourier-Sobolev formalization choices are recorded in the ledger. These local results do not establish current aggregate acceptance. Revalidate all changed dependencies and the original 41 in the current aggregate. Complete the facade, actual-domain consumers, full type/constructor/axiom/private TYPE-VALUE-STRUCTURE closure, all-100 evidence linkage, compiler-derived mapped registered dependencies, route-less registration, canonical generation and every required final workflow.
 
 The parent metadata repairs and infrastructure tests do not establish complete extension acceptance. The explicit subset builder still selects 41 historical roots. The new full100 protocol requires an independent unset review seal and actual cold production/replay; parent/runtime/generated/workflow companions remain unfinished. Full release deliberately remains closed.
 

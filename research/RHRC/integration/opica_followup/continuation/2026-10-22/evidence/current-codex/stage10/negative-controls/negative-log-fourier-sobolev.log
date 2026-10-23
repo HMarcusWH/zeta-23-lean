@@ -1,0 +1,52 @@
+negative-log-fourier-sobolev.lean:8:2: error: Type mismatch
+  (log_unitary_form_identity h h' hD).right.right.right.right.left
+has type
+  logForm h' = (∫ (t : ℝ), ‖logUnitaryDeriv h h' t‖ ^ 2) + 1 / 4 * ∫ (x : ℝ) in Ioi 0, ‖h x‖ ^ 2
+but is expected to have type
+  logForm h' = (∫ (t : ℝ), ‖logUnitaryDeriv h h' t‖ ^ 2) - 1 / 4 * ∫ (x : ℝ) in Ioi 0, ‖h x‖ ^ 2
+negative-log-fourier-sobolev.lean:12:2: error: Type mismatch
+  (log_unitary_form_identity h h' hD).right.left
+has type
+  ∫ (t : ℝ), ‖logUnitary h t‖ ^ 2 = ∫ (x : ℝ) in Ioi 0, ‖h x‖ ^ 2
+but is expected to have type
+  ∫ (t : ℝ), ‖h (rexp t)‖ ^ 2 = ∫ (x : ℝ) in Ioi 0, ‖h x‖ ^ 2
+negative-log-fourier-sobolev.lean:15:2: error: Type mismatch
+  log_fourier_plancherel.right.left f ξ
+has type
+  logFourier f ξ = 𝓕 f (ξ / (2 * π))
+but is expected to have type
+  logFourier f ξ = 𝓕 f ξ
+negative-log-fourier-sobolev.lean:19:2: error: Type mismatch
+  (log_fourier_plancherel.right.right.left f h1 h2).right
+has type
+  ∫ (t : ℝ), ‖f t‖ ^ 2 = 1 / (2 * π) * ∫ (ξ : ℝ), ‖logFourier f ξ‖ ^ 2
+but is expected to have type
+  ∫ (t : ℝ), ‖f t‖ ^ 2 = ∫ (ξ : ℝ), ‖logFourier f ξ‖ ^ 2
+negative-log-fourier-sobolev.lean:24:2: error: Type mismatch
+  log_fourier_plancherel.right.right.right.left f h1 hd h2 ξ
+has type
+  logFourier (deriv f) ξ = ↑ξ * I * logFourier f ξ
+but is expected to have type
+  logFourier (deriv f) ξ = 2 * ↑π * ↑ξ * I * logFourier f ξ
+negative-log-fourier-sobolev.lean:30:2: error: Type mismatch
+  log_fourier_plancherel.right.right.right.right.left f h1 h2 hd hd1 hd2
+has type
+  (∫ (t : ℝ), ‖deriv f t‖ ^ 2) + 1 / 4 * ∫ (t : ℝ), ‖f t‖ ^ 2 =
+    1 / (2 * π) * ∫ (ξ : ℝ), (ξ ^ 2 + 1 / 4) * ‖logFourier f ξ‖ ^ 2
+but is expected to have type
+  (∫ (t : ℝ), ‖deriv f t‖ ^ 2) + 1 / 4 * ∫ (t : ℝ), ‖f t‖ ^ 2 =
+    1 / (2 * π) * ∫ (ξ : ℝ), (ξ ^ 2 + 1) * ‖logFourier f ξ‖ ^ 2
+negative-log-fourier-sobolev.lean:35:2: error: Type mismatch
+  log_fourier_plancherel.right.right.right.right.right.right w φ φ' hw hφ
+has type
+  ‖∫ (t : ℝ), w t * (φ' t - φ t / 2)‖ ≤
+    (∫ (t : ℝ), ‖w t‖ ^ 2) ^ (1 / 2) * ((∫ (t : ℝ), ‖φ' t‖ ^ 2) + 1 / 4 * ∫ (t : ℝ), ‖φ t‖ ^ 2) ^ (1 / 2)
+but is expected to have type
+  ‖∫ (t : ℝ), w t * (φ' t + φ t / 2)‖ ≤
+    (∫ (t : ℝ), ‖w t‖ ^ 2) ^ (1 / 2) * ((∫ (t : ℝ), ‖φ' t‖ ^ 2) + 1 / 4 * ∫ (t : ℝ), ‖φ t‖ ^ 2) ^ (1 / 2)
+negative-log-fourier-sobolev.lean:39:2: error: Invalid projection: Projections cannot be used on functions, and
+  log_fourier_plancherel.right.right.left f h1
+has function type
+  MemLp f 2 volume →
+    Integrable (fun ξ => ‖logFourier f ξ‖ ^ 2) volume ∧
+      ∫ (t : ℝ), ‖f t‖ ^ 2 = 1 / (2 * π) * ∫ (ξ : ℝ), ‖logFourier f ξ‖ ^ 2

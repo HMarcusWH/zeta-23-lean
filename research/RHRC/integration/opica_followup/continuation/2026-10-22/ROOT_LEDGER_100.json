@@ -4,9 +4,9 @@
   "acceptance_units": 28,
   "current_aggregate_accepted": false,
   "status_counts": {
-    "OPEN_NO_COMPLETE_CANDIDATE": 31,
+    "OPEN_NO_COMPLETE_CANDIDATE": 29,
     "PROVED_IN_ORIGINAL_41_ROOT_SOURCE_BOUND_SUBSET": 41,
-    "PROVED_NARROW_LOCAL_GATES_AGGREGATE_PENDING": 28
+    "PROVED_NARROW_LOCAL_GATES_AGGREGATE_PENDING": 30
   },
   "roots": [
     {
@@ -2877,20 +2877,27 @@
         "register_only_after_proof_and_type_review": true,
         "status": "PLANNED_NOT_PROVED"
       },
-      "current_status": "OPEN_NO_COMPLETE_CANDIDATE",
+      "current_status": "PROVED_NARROW_LOCAL_GATES_AGGREGATE_PENDING",
       "gates": {
-        "implementation": "OPEN",
-        "module_compilation": "NOT_ESTABLISHED",
-        "expected_type_consumer": "NOT_ESTABLISHED",
-        "actual_domain_consumer": "NOT_ESTABLISHED",
-        "axiom_check": "NOT_ESTABLISHED",
+        "implementation": "IMPLEMENTED_FULL_FROZEN_CONTRACT_REVIEWED_NARROW",
+        "module_compilation": "PASS_EXACT_COMMITTED_SOURCE_PINNED_LINUX",
+        "expected_type_consumer": "PASS_INDEPENDENT_FULL_TYPE_AND_DEFINITION_AUDITS",
+        "actual_domain_consumer": "PASS_ROOT_COMPATIBILITY_NONEMPTY_DOMAIN_AND_ACTUAL_ZERO_PROFILE_IN_FORM_DOMAIN_S1_5",
+        "axiom_check": "STANDARD_ONLY_TRANSITIVE_PRINTED_CLOSURES",
         "aggregate_current_source_export": "OPEN",
         "full_release_acceptance": "OPEN"
       },
-      "source_file_present": false,
-      "declaration_lexically_present": false,
-      "source_sha256": null,
-      "evidence": []
+      "source_file_present": true,
+      "declaration_lexically_present": true,
+      "source_sha256": "e83a452a615021238d912756f608ad346dd87187f70d0a177db6a2581e9afd9a",
+      "evidence": [
+        "evidence/current-codex/stage10/STATUS.json"
+      ],
+      "independent_consumer": {
+        "path": "consumers/ExpectedLogFourierSobolev.lean",
+        "sha256": "29b6f838afddbdbf369bcc209583031f6a3f1d5746783217707e5532efa36136"
+      },
+      "statement_formalization": "Actual form domain LogFormDomain h h': h b - h a = int_a^b h' for all a, b > 0 (local absolute continuity as a primitive representation), h' measurable and interval integrable on compact subintervals of (0, oo), h in L2(0, oo) and x h' in L2(0, oo); h' is a measurable representative (the form depends on h' only a.e.). Clauses: logUnitary h (t) = e^(t/2) h(e^t) is in L2(R) with int |U h|^2 = int_0^oo |h|^2 (unitary L2 conversion); weak derivative statement as the primitive representation U h (b) - U h (a) = int_a^b U' h for all real a, b, with U' h (t) = e^(t/2)(h(e^t)/2 + e^t h'(e^t)) in L2(R); U h in H1(R) (LogH1); and logForm h' = int_0^oo x^2 |h'|^2 = int |U' h|^2 + (1/4) int_0^oo |h|^2. The boundary terms x|h(x)|^2 are proved to vanish at 0 and oo from the domain hypotheses (no decay assumption). Proofs use the Mathlib FTC for absolutely continuous functions on real and imaginary parts and the substitution x = e^t on all of R. The consumer proves that the actual zero profile at an actual zero lies in the domain with its explicit right derivative, giving the paper identity (S1.5) for h_kappa."
     },
     {
       "id": "OPICA_FOLLOWUP_LOG_FOURIER_PLANCHEREL",
@@ -2916,20 +2923,27 @@
         "register_only_after_proof_and_type_review": true,
         "status": "PLANNED_NOT_PROVED"
       },
-      "current_status": "OPEN_NO_COMPLETE_CANDIDATE",
+      "current_status": "PROVED_NARROW_LOCAL_GATES_AGGREGATE_PENDING",
       "gates": {
-        "implementation": "OPEN",
-        "module_compilation": "NOT_ESTABLISHED",
-        "expected_type_consumer": "NOT_ESTABLISHED",
-        "actual_domain_consumer": "NOT_ESTABLISHED",
-        "axiom_check": "NOT_ESTABLISHED",
+        "implementation": "IMPLEMENTED_FULL_FROZEN_CONTRACT_REVIEWED_NARROW",
+        "module_compilation": "PASS_EXACT_COMMITTED_SOURCE_PINNED_LINUX",
+        "expected_type_consumer": "PASS_INDEPENDENT_FULL_TYPE_AND_DEFINITION_AUDITS",
+        "actual_domain_consumer": "PASS_ROOT_COMPATIBILITY_SHIFT_NORM_EQUALS_LOG_FORM_AND_CONVENTION_AUDIT",
+        "axiom_check": "STANDARD_ONLY_TRANSITIVE_PRINTED_CLOSURES",
         "aggregate_current_source_export": "OPEN",
         "full_release_acceptance": "OPEN"
       },
-      "source_file_present": false,
-      "declaration_lexically_present": false,
-      "source_sha256": null,
-      "evidence": []
+      "source_file_present": true,
+      "declaration_lexically_present": true,
+      "source_sha256": "e83a452a615021238d912756f608ad346dd87187f70d0a177db6a2581e9afd9a",
+      "evidence": [
+        "evidence/current-codex/stage10/STATUS.json"
+      ],
+      "independent_consumer": {
+        "path": "consumers/ExpectedLogFourierSobolev.lean",
+        "sha256": "29b6f838afddbdbf369bcc209583031f6a3f1d5746783217707e5532efa36136"
+      },
+      "statement_formalization": "logFourier f xi = int f(t) e^(-i xi t) dt (no 2pi in the phase); exact conversion logFourier f xi = F f (xi/(2 pi)) to the pinned Mathlib transform; for f in L1 cap L2: int |f|^2 = (1/(2pi)) int |logFourier f|^2 (Plancherel factor 1/(2pi)), proved by identifying the Mathlib L2 Fourier transform with the integral transform through tempered distributions; differentiation logFourier (f') = i xi logFourier f (Mathlib hypotheses: f, f' integrable, f differentiable); the H1 norm with the spectral weight a(xi) = xi^2 + 1/4: int |f'|^2 + (1/4) int |f|^2 = (1/(2pi)) int a |logFourier f|^2; and the actual-force pairing <-(d/dt + 1/2) w, phi> := int w (phi' - phi/2) for w in L2 and phi in H1(R) (LogH1: primitive of a measurable phi' with phi, phi' in L2), with ||phi' - phi/2||_2^2 = ||phi'||_2^2 + ||phi||_2^2/4 (the cross term vanishes) and |<-(d/dt+1/2)w, phi>| <= ||w||_2 (||phi'||_2^2 + ||phi||_2^2/4)^(1/2), i.e. a continuous H-1/H1 pairing with constant ||w||_2. No exponentially growing force term is transformed separately."
     },
     {
       "id": "OPICA_FOLLOWUP_ZERO_PROFILE_FORCED_EULER",
@@ -4220,18 +4234,18 @@
   "evidence_paths_relative_to": "research/RHRC/integration/opica_followup/continuation/2026-10-22",
   "verification_summary": {
     "historical_source_bound_subset_roots": 41,
-    "independently_verified_narrow_roots": 28,
+    "independently_verified_narrow_roots": 30,
     "prior_failed_or_blocked_unaccepted_roots": 0,
-    "open_no_complete_candidate_roots": 31,
+    "open_no_complete_candidate_roots": 29,
     "full_required_roots": 100,
     "acceptance_units": 28,
-    "receipt": "STAGE9_HANDOVER.md",
+    "receipt": "STAGE10_HANDOVER.md",
     "independent_source_repairs": [],
     "independent_consumer_repairs": [],
     "historical41_status_unchanged": true,
     "current_aggregate_accepted": false,
-    "meaning": "41 historical plus 28 narrow local results is not aggregate 69-root acceptance. 31 absent implementations plus all remaining domain/integration gates remain OPEN; original100/28 scope unchanged.",
-    "receipt_scope": "Index of two Stage9, one Stage8, three Stage7, three Stage6, two Stage5, two Stage4 and fifteen retained narrow original-root results, not an aggregate receipt",
+    "meaning": "41 historical plus 30 narrow local results is not aggregate 71-root acceptance. 29 absent implementations plus all remaining domain/integration gates remain OPEN; original100/28 scope unchanged.",
+    "receipt_scope": "Index of two Stage10, two Stage9, one Stage8, three Stage7, three Stage6, two Stage5, two Stage4 and fifteen retained narrow original-root results, not an aggregate receipt",
     "additional_stage1_primary_roots": [
       "laguerre_tail_norm",
       "dilated_comb_fourier",
@@ -4269,6 +4283,10 @@
     "additional_stage9_primary_roots": [
       "zero_profile_regular_selfdual",
       "zero_profile_tail_and_jumps"
+    ],
+    "additional_stage10_primary_roots": [
+      "log_unitary_form_identity",
+      "log_fourier_plancherel"
     ]
   }
 }

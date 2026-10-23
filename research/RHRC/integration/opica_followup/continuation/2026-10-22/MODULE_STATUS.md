@@ -1,7 +1,7 @@
 # OPICA module status — navigation only
 
 Generated from [ROOT_LEDGER_100.json](ROOT_LEDGER_100.json) and actual source presence.
-Ledger SHA256: `076ac9d6dc344948c07a029a341a98622aa9f095c9d51e19c5a0e74a50d76efa`.
+Ledger SHA256: `88355111eaf14132241528b7ab0c80ad8f7a8827de4b92d33f98288fa0b2596b`.
 
 The original target remains 100 primary roots / 28 acceptance units. Historical
 and narrow local evidence remain separate; every current aggregate/full-release
@@ -23,7 +23,7 @@ gate is OPEN. File presence does not establish proof or type coverage.
 | `ForcedEuler` | 2 | 0 | 0 | 0 | 2 | planned / missing |
 | `ForwardLocalization` | 2 | 2 | 0 | 0 | 0 | [present](../../../../../../Zeta23/OPICAFollowup/ForwardLocalization.lean) |
 | `JointObservation` | 5 | 5 | 0 | 0 | 0 | [present](../../../../../../Zeta23/OPICAFollowup/JointObservation.lean) |
-| `LogFourierSobolev` | 2 | 0 | 0 | 0 | 2 | planned / missing |
+| `LogFourierSobolev` | 2 | 0 | 2 | 0 | 0 | [present](../../../../../../Zeta23/OPICAFollowup/LogFourierSobolev.lean) |
 | `LogSlackBalance` | 3 | 3 | 0 | 0 | 0 | [present](../../../../../../Zeta23/OPICAFollowup/LogSlackBalance.lean) |
 | `MaskedNativeRate` | 2 | 0 | 2 | 0 | 0 | [present](../../../../../../Zeta23/OPICAFollowup/MaskedNativeRate.lean) |
 | `MovingSourceWindowRate` | 1 | 0 | 0 | 0 | 1 | planned / missing |
@@ -49,7 +49,7 @@ gate is OPEN. File presence does not establish proof or type coverage.
 | `WeightedSpectralMeasure` | 2 | 0 | 0 | 0 | 2 | planned / missing |
 | `ZeroProfiles` | 2 | 0 | 2 | 0 | 0 | [present](../../../../../../Zeta23/OPICAFollowup/ZeroProfiles.lean) |
 | `ZetaLeftLineBounds` | 1 | 1 | 0 | 0 | 0 | [present](../../../../../../Zeta23/OPICAFollowup/ZetaLeftLineBounds.lean) |
-| **Total** | **100** | **41** | **28** | **0** | **31** | |
+| **Total** | **100** | **41** | **30** | **0** | **29** | |
 
 Regenerate with `python refresh_navigation.py --write`; verify with `--check`.
 Read the [named remaining work](REMAINING_WORK.md) and [next-agent task](NEXT_AGENT_PROMPT.md)

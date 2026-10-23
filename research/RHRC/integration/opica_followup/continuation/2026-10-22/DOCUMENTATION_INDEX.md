@@ -2,7 +2,7 @@
 
 Use this index with [root AGENTS.md](../../../../../../AGENTS.md) and the
 [continuation guide](README.md). It describes the 22 October OPICA source
-checkpoint and its staged repairs; read [STAGE9_HANDOVER.md](STAGE9_HANDOVER.md)
+checkpoint and its staged repairs; read [STAGE10_HANDOVER.md](STAGE10_HANDOVER.md)
 for the latest exact sources and gates. Check the live Git head and workflow
 results before editing.
 
@@ -63,6 +63,13 @@ results before editing.
 - [Post-Green research](POST_GREEN_RESEARCH.md): all nine required mathematical
   review conclusions. Repeat the pass when meaningful proof evidence changes.
 
+[Stage 10](STAGE10_HANDOVER.md) proves both LogFourierSobolev roots (R2-S1b, F1-F3): for the
+actual form domain, U h(t) = e^(t/2) h(e^t) is unitary into L^2(R), lies in H^1(R) with the
+explicit weak derivative, and int_0^oo x^2|h'|^2 = int|psi'|^2 + (1/4) int_0^oo |h|^2; the
+e^(-i xi t) log-Fourier transform has Plancherel factor 1/(2pi), differentiation i xi, H^1 weight
+xi^2 + 1/4 and the H^-1/H^1 force pairing with constant ||w||_2. The consumer places the actual
+zero profile in the form domain (S1.5); the
+[evidence](evidence/current-codex/stage10/STATUS.json) binds every log and source.
 [Stage 9](STAGE9_HANDOVER.md) proves both ZeroProfiles roots (R2-S1a): the actual zero profile
 h = 1 - S_rho/b_rho is even, continuous, in L^1 and L^2, equal to 1 on [-1, 1], Fourier self-dual
 (F h = h) with half-line integral 1/2, and has tail kappa B2/(2x^2) + O(x^-3), exact cell
