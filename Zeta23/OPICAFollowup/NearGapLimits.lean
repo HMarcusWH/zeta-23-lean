@@ -1,11 +1,12 @@
 import Zeta23.OPICAFollowup.DilatedComb
 import Zeta23.OPICA.SignedHeatSeparator
 
-/-! Actual near-gap Jordan-measure budget. The controlled weak-limit theorem,
-explicit nonzero dilation family and normalized nonmeasure limit remain OPEN. -/
+/-! Actual near-gap Jordan-measure budget and the explicit CT1 dilation family.
+The controlled weak-limit theorem and the normalized nonmeasure limit remain
+OPEN until their own roots and consumers pass. -/
 noncomputable section
 open Set MeasureTheory Filter
-open scoped Topology FourierTransform SchwartzMap
+open scoped Topology FourierTransform SchwartzMap ENNReal NNReal
 namespace Zeta23.OPICAFollowup
 open Zeta23.OPICA
 
@@ -15,8 +16,7 @@ def hasNearGap (nu : LocallyFiniteSignedMeasure) (a : ℝ) : Prop :=
 /-- The actual canonical Jordan carrier for the CT1 auxiliary dilation defect.
 It represents D_L + D_(-L) - 2 cosh(L/2) D_0.  Canonicalization is
 necessary: scaled lattice supports can meet the integer lattice, so the
-uncancelled positive/negative measures need not be mutually singular.
-The nonzero, gap, self-duality and normalized-limit roots are still OPEN. -/
+uncancelled positive/negative measures need not be mutually singular. -/
 def nearGapCombFamily (L : ℝ) : LocallyFiniteSignedMeasure :=
   localJordanAdd
     (localJordanAdd (dilatedCombJordan L) (dilatedCombJordan (-L)))
@@ -36,7 +36,9 @@ theorem nearGapCombFamily_compactRestriction (L : ℝ)
   unfold nearGapCombFamily
   rw [localJordanAdd_compactRestriction, localJordanAdd_compactRestriction,
     localJordanScale_compactRestriction]
-  simp only [neg_smul, sub_eq_add_neg]
+  first
+    | rw [sub_eq_add_neg, neg_smul]
+    | (ext s hs; simp [sub_eq_add_neg])
 
 /-- Explicit CT1 Fourier source before transporting the identity through
 canonical locally finite Jordan measures. The use of the real scalar
@@ -152,7 +154,9 @@ theorem nearGapCombFamily_origin_signed_zero (L : ℝ) :
   simp only [_root_.add_apply, _root_.sub_apply, smul_apply,
     smul_eq_mul, nearGap_dilatedComb_origin_signed,
     Real.exp_zero, zero_div, neg_div, mul_one] at h
-  exact h.trans (nearGapComb_origin_coefficient_zero L)
+  have hc := nearGapComb_origin_coefficient_zero L
+  rw [neg_div] at hc
+  exact h.trans hc
 
 /-- Full canonical Jordan origin cancellation of the genuine CT1
 signed measure, not merely its signed scalar coefficient. -/
@@ -171,14 +175,14 @@ theorem nearGap_signed_origin_restriction_of_mem
     localSignedCompactRestriction mu K hK ({0} : Set ℝ) =
       localSignedCompactRestriction mu ({0} : Set ℝ)
         isCompact_singleton ({0} : Set ℝ) := by
-  have hset : K ∩ ({0} : Set ℝ) = ({0} : Set ℝ) := by
+  have hset : ({0} : Set ℝ) ∩ K = ({0} : Set ℝ) := by
     ext x
     simp only [mem_inter_iff, mem_singleton_iff]
     constructor
-    · exact And.right
+    · exact And.left
     · intro hx
       subst x
-      exact ⟨h0, rfl⟩
+      exact ⟨rfl, h0⟩
   rw [localSignedCompactRestriction_apply _ _ _ _
         (measurableSet_singleton (0 : ℝ)),
       localSignedCompactRestriction_apply _ _ _ _
@@ -239,8 +243,8 @@ theorem nearGapCombFamily_punctured_gap_signed
     rw [localSignedCompactRestriction_apply _ _ _ E hE]
     have hrestricted : (dilatedCombMeasure t).restrict K E = 0 := by
       rw [Measure.restrict_apply hE]
-      exact measure_mono_null inter_subset_right hz
-    simp [dilatedCombJordan, localJordanDifference, hrestricted]
+      exact measure_mono_null inter_subset_left hz
+    simp [dilatedCombJordan, localJordanDifference, Measure.real, hrestricted]
   have hLzero := hterm L hthree.1
   have hMinusZero := hterm (-L) hthree.2.1
   have hOriginZero := hterm 0 hthree.2.2
@@ -320,7 +324,7 @@ theorem nearGapCombFamily_punctured_gap_variation_zero
       Measure.add_apply, Measure.smul_apply, smul_eq_mul] using
         (nearGapCombFamily_variation_le L E)
   rw [hthree.1, hthree.2.1, hthree.2.2] at hbound
-  simpa [E] using (le_antisymm (by simpa using hbound) (zero_le _))
+  simpa [E] using (le_antisymm (by simpa using hbound) (zero_le))
 
 /-- Hence both genuine Jordan parts vanish off the origin in the
 first-cell gap. This is stronger than a signed-measure cancellation. -/
@@ -359,7 +363,7 @@ theorem nearGapCombFamily_actual_gap {L : ℝ} (hL : 0 ≤ L) :
       · calc
           _ ≤ mu E + mu ({0} : Set ℝ) := measure_union_le _ _
           _ = 0 := by rw [hpunctured, horigin]; simp
-      · exact zero_le _
+      · exact zero_le
     exact measure_mono_null hcover hu
   have hpunctured := nearGapCombFamily_punctured_gap_jordan_zero hL
   have horigin := nearGapCombFamily_origin_jordan_zero L
@@ -379,7 +383,7 @@ theorem nearGap_localJordanAdd_negative_le
     (localJordanAdd mu nu).negative ≤ mu.negative + nu.negative := by
   change (mu.negative + nu.negative) -
     (mu.positive + nu.positive) ≤ mu.negative + nu.negative
-  exact Measure.sub_le _ _
+  exact Measure.sub_le
 
 /-- Scaling a signed source cannot create negative measure on a set where
 the source's actual total variation vanishes. -/
@@ -393,8 +397,8 @@ theorem nearGap_localJordanScale_negative_zero
       (localJordanScale a mu).negative E ≤
         (localJordanScale a mu).totalVariation E := by
     rw [LocallyFiniteSignedMeasure.totalVariation, Measure.add_apply]
-    exact le_add_of_nonneg_left (zero_le _)
-  exact le_antisymm (hnegative.trans hvar) (zero_le _)
+    exact le_add_of_nonneg_left (zero_le)
+  exact le_antisymm (hnegative.trans hvar) (zero_le)
 
 /-- The true integer comb D_0 has no mass away from the literal
 integer lattice. This is checked on the preimage of the actual
@@ -407,7 +411,7 @@ theorem nearGap_undilatedComb_integer_support :
       integerLattice_measurable.compl]
   have hpre :
       (scaledLatticePoint 0) ⁻¹' integerLatticeᶜ = ∅ := by
-    apply Set.eq_empty_iff_forall_not_mem.mpr
+    apply Set.eq_empty_iff_forall_notMem.mpr
     intro n hn
     apply hn
     exact ⟨n, by simp [scaledLatticePoint]⟩
@@ -553,8 +557,8 @@ theorem nearGapCombFamily_negative_integer_support (L : ℝ) :
           minus.negative integerLatticeᶜ := by
     change (localJordanAdd plus minus).negative integerLatticeᶜ ≤ _
     exact nearGap_localJordanAdd_negative_le plus minus integerLatticeᶜ
-  rw [hplus, Measure.zero_apply, hminus, zero_add] at hbound
-  exact le_antisymm hbound (zero_le _)
+  rw [hplus, Measure.coe_zero, Pi.zero_apply, hminus, zero_add] at hbound
+  exact le_antisymm hbound (zero_le)
 
 /-- Physical off-lattice nonnegativity of the genuine CT1 canonical
 Jordan pair, for every real dilation parameter. -/
@@ -574,8 +578,7 @@ theorem nearGapCombFamily_first_atom_positive_real_pos {L : ℝ}
   have hS : MeasurableSet S := measurableSet_singleton _
   have hsubset : S ⊆ integerLatticeᶜ := by
     intro x hx
-    have heq : x = Real.exp L := by
-      simpa only [Set.mem_singleton_iff] using hx
+    have heq : x = Real.exp L := hx
     subst x
     exact nearGap_first_dilated_point_off_integer hL hu
   have hn : nu.negative S = 0 :=
@@ -588,7 +591,7 @@ theorem nearGapCombFamily_first_atom_positive_real_pos {L : ℝ}
     simp
   have hnegative : (nu.negative.restrict S).real S = 0 := by
     rw [Measure.real, Measure.restrict_apply hS]
-    simpa [hn]
+    simp [hn]
   simpa only [hpositive, hnegative, sub_zero] using hpos
 
 /-- The actual near-gap family is a nonzero Jordan-measure object:
@@ -601,6 +604,112 @@ theorem nearGapCombFamily_positive_nonzero {L : ℝ}
   have hpos := nearGapCombFamily_first_atom_positive_real_pos hL hu
   rw [hz] at hpos
   simp at hpos
+
+/-- A positive dilated comb has no atom at a point that is not one of its
+actual lattice points. -/
+theorem nearGap_dilatedComb_atom_zero_of_not_lattice (t x : ℝ)
+    (hx : ∀ n : ℤ, scaledLatticePoint t n ≠ x) :
+    dilatedCombMeasure t ({x} : Set ℝ) = 0 := by
+  rw [dilatedCombMeasure, Measure.smul_apply, scaledLatticeMeasure,
+    Measure.map_apply (scaledLatticePoint_measurable t) (measurableSet_singleton x)]
+  have hpre : scaledLatticePoint t ⁻¹' ({x} : Set ℝ) = ∅ := by
+    apply Set.eq_empty_iff_forall_notMem.mpr
+    intro n hn
+    exact hx n hn
+  rw [hpre]
+  simp
+
+/-- The dilated comb D_L has no atom at the gap edge exp(-L) when L > 0:
+exp(L) n = exp(-L) would force 0 < n < 1. -/
+theorem nearGap_forward_comb_gap_edge_atom_zero {L : ℝ} (hL : 0 < L) :
+    dilatedCombMeasure L ({Real.exp (-L)} : Set ℝ) = 0 := by
+  apply nearGap_dilatedComb_atom_zero_of_not_lattice
+  intro n hn
+  have hn' : Real.exp L * (n : ℝ) = Real.exp (-L) := hn
+  have hpos : (0 : ℝ) < (n : ℝ) := by
+    by_contra h
+    have h' : Real.exp L * (n : ℝ) ≤ 0 :=
+      mul_nonpos_of_nonneg_of_nonpos (Real.exp_pos L).le (not_lt.mp h)
+    linarith [Real.exp_pos (-L)]
+  have hlt : (n : ℝ) < 1 := by
+    have hexp : Real.exp (-L) < Real.exp L := Real.exp_lt_exp.mpr (by linarith)
+    by_contra h
+    have h' : Real.exp L * 1 ≤ Real.exp L * (n : ℝ) :=
+      mul_le_mul_of_nonneg_left (not_lt.mp h) (Real.exp_pos L).le
+    linarith
+  have h0 : (0 : ℤ) < n := by exact_mod_cast hpos
+  have h1 : n < (1 : ℤ) := by exact_mod_cast hlt
+  omega
+
+/-- In the CT1 range the gap edge exp(-L) lies strictly between 0 and 1,
+hence off the integer lattice. -/
+theorem nearGap_gap_edge_off_integer {L : ℝ} (hL : 0 < L)
+    (hu : L < Real.log 2) : Real.exp (-L) ∉ integerLattice := by
+  intro hx
+  obtain ⟨n, hn⟩ := hx
+  have hb := nearGapComb_radius_bounds hL hu
+  have hlo : (0 : ℝ) < (n : ℝ) := by
+    have : (n : ℝ) = Real.exp (-L) := hn
+    rw [this]; exact Real.exp_pos _
+  have hhi : (n : ℝ) < 1 := by
+    have : (n : ℝ) = Real.exp (-L) := hn
+    rw [this]; exact hb.2
+  have h0 : (0 : ℤ) < n := by exact_mod_cast hlo
+  have h1 : n < (1 : ℤ) := by exact_mod_cast hhi
+  omega
+
+/-- The paper's CT1 nonzero witness: the gap-edge atom at exp(-L) has the
+exact positive Jordan mass exp(-L/2) and no negative Jordan mass. Only the
+reflected comb D_(-L) contributes (its n = 1 point); D_L and the integer comb
+D_0 have no atom there. This also shows that the gap radius exp(-L) is sharp. -/
+theorem nearGapCombFamily_gap_edge_atom {L : ℝ}
+    (hL : 0 < L) (hu : L < Real.log 2) :
+    (nearGapCombFamily L).positive.real ({Real.exp (-L)} : Set ℝ) =
+      Real.exp (-L / 2) ∧
+    (nearGapCombFamily L).negative ({Real.exp (-L)} : Set ℝ) = 0 := by
+  let nu := nearGapCombFamily L
+  let S : Set ℝ := {Real.exp (-L)}
+  have hS : MeasurableSet S := measurableSet_singleton _
+  have hneg : nu.negative S = 0 := by
+    apply measure_mono_null ?_ (nearGapCombFamily_negative_integer_support L)
+    intro x hx
+    have heq : x = Real.exp (-L) := hx
+    subst x
+    exact nearGap_gap_edge_off_integer hL hu
+  have hreflected :
+      localSignedCompactRestriction (dilatedCombJordan (-L))
+        S isCompact_singleton S = Real.exp (-L / 2) := by
+    simpa only [S, scaledLatticePoint, Int.cast_one, mul_one] using
+      nearGap_dilatedComb_compact_signed_atom (-L) (1 : ℤ)
+  have hzero_of (t : ℝ) (hz : dilatedCombMeasure t S = 0) :
+      localSignedCompactRestriction (dilatedCombJordan t)
+        S isCompact_singleton S = 0 := by
+    rw [nearGap_dilatedComb_compact_signed_apply _ _ _ _ hS]
+    have hr : ((dilatedCombMeasure t).restrict S) S = 0 := by
+      rw [Measure.restrict_apply hS, inter_self]
+      exact hz
+    exact (measureReal_eq_zero_iff (isCompact_singleton.measure_lt_top.ne)).mpr hr
+  have hforward := hzero_of L (nearGap_forward_comb_gap_edge_atom_zero hL)
+  have hinteger : dilatedCombMeasure 0 S = 0 := by
+    apply measure_mono_null ?_ nearGap_undilatedComb_integer_support
+    intro x hx
+    have heq : x = Real.exp (-L) := hx
+    subst x
+    exact nearGap_gap_edge_off_integer hL hu
+  have hthird := hzero_of 0 hinteger
+  have hsum := congrArg (fun mu : SignedMeasure ℝ => mu S)
+    (nearGapCombFamily_compactRestriction L S isCompact_singleton)
+  simp only [_root_.add_apply, _root_.sub_apply, smul_apply, smul_eq_mul,
+    hforward, hreflected, hthird, mul_zero, sub_zero, zero_add] at hsum
+  rw [localSignedCompactRestriction_apply nu S isCompact_singleton S hS] at hsum
+  have hpositive : (nu.positive.restrict S).real S = nu.positive.real S := by
+    rw [Measure.real, Measure.real, Measure.restrict_apply hS, inter_self]
+  have hnegative : (nu.negative.restrict S).real S = 0 := by
+    rw [Measure.real, Measure.restrict_apply hS, inter_self, hneg]
+    simp
+  refine ⟨?_, hneg⟩
+  rw [hpositive, hnegative, sub_zero] at hsum
+  exact hsum
 
 /-- Uniform interval mass bound for the actual positive lattice carrier,
 deduced from the original source-bound Poisson/dilation theorem. -/
@@ -798,16 +907,16 @@ theorem nearGap_localJordanAdd_pairing
       mu.distributionOfLinearGrowth hmu f +
       nu.distributionOfLinearGrowth hnu f := by
   have hmp : Integrable f mu.positive := by
-    letI := (mu.parts_temperate_of_linear_growth hmu).1
+    let := (mu.parts_temperate_of_linear_growth hmu).1
     exact f.integrable
   have hmm : Integrable f mu.negative := by
-    letI := (mu.parts_temperate_of_linear_growth hmu).2
+    let := (mu.parts_temperate_of_linear_growth hmu).2
     exact f.integrable
   have hnp : Integrable f nu.positive := by
-    letI := (nu.parts_temperate_of_linear_growth hnu).1
+    let := (nu.parts_temperate_of_linear_growth hnu).1
     exact f.integrable
   have hnm : Integrable f nu.negative := by
-    letI := (nu.parts_temperate_of_linear_growth hnu).2
+    let := (nu.parts_temperate_of_linear_growth hnu).2
     exact f.integrable
   have hplus : Integrable f (mu.positive + nu.positive) :=
     integrable_add_measure.mpr ⟨hmp,hnp⟩
@@ -826,17 +935,17 @@ theorem nearGap_localJordanScale_growth
     (a : ℝ) (mu : LocallyFiniteSignedMeasure) (hmu : mu.HasLinearGrowth) :
     (localJordanScale a mu).HasLinearGrowth := by
   obtain ⟨A,hA,hAb⟩ := hmu
-  refine ⟨|a|*A,mul_nonneg (abs_nonneg _) hA,fun R hR => ?_⟩
+  refine ⟨(|a|) * A,mul_nonneg (abs_nonneg _) hA,fun R hR => ?_⟩
   have hle := localJordanScale_totalVariation_le a mu (Icc (-R) R)
   rw [Measure.smul_apply,smul_eq_mul] at hle
-  have hfin : ENNReal.ofReal |a|*mu.totalVariation (Icc (-R) R) ≠ ∞ :=
+  have hfin : ENNReal.ofReal |a| * mu.totalVariation (Icc (-R) R) ≠ ∞ :=
     ENNReal.mul_ne_top ENNReal.ofReal_ne_top isCompact_Icc.measure_lt_top.ne
   have hh := ENNReal.toReal_mono hfin hle
   rw [ENNReal.toReal_mul,ENNReal.toReal_ofReal (abs_nonneg _)] at hh
   have ha := hAb R hR
   change (mu.totalVariation (Icc (-R) R)).toReal ≤ _ at ha
   change ((localJordanScale a mu).totalVariation (Icc (-R) R)).toReal ≤ _
-  nlinarith
+  exact hh.trans ((mul_le_mul_of_nonneg_left ha (abs_nonneg a)).trans_eq (by ring))
 
 /-- A negative real scalar acts on an ACTUAL positive dilated counting
 measure by placing the entire scaled mass in the negative canonical Jordan
@@ -859,7 +968,7 @@ theorem nearGap_dilatedComb_negative_scale_pairing
       (localJordanScale (-c) (dilatedCombJordan t)).negative =
         (Real.toNNReal c : ℝ≥0∞) • dilatedCombMeasure t := by
     simp [localJordanScale, dilatedCombJordan, localJordanDifference,
-      Real.toNNReal_of_nonpos (neg_nonpos.mpr hc), NNReal.smul_def]
+      Real.toNNReal_of_nonpos (neg_nonpos.mpr hc)]
   have hsource (f : SchwartzMap ℝ ℂ) :
       dilatedCombDistribution t f =
         ∫ x, f x ∂(dilatedCombMeasure t) := by
@@ -869,10 +978,14 @@ theorem nearGap_dilatedComb_negative_scale_pairing
   ext f
   rw [LocallyFiniteSignedMeasure.distributionOfLinearGrowth_apply,
     hpositive, hnegative, integral_zero_measure, zero_sub,
-    integral_smul_measure, hsource]
+    integral_smul_measure]
+  rw [show ((-(c : ℂ)) • dilatedCombDistribution t) f =
+      (-(c : ℂ)) * dilatedCombDistribution t f from rfl, hsource]
   simp only [ENNReal.ofNNReal_toNNReal,
-    ENNReal.toReal_ofReal hc, RCLike.real_smul_eq_coe_mul, smul_eq_mul]
-  ring
+    ENNReal.toReal_ofReal hc, RCLike.real_smul_eq_coe_mul]
+  first
+    | ring1
+    | exact (neg_mul _ _).symm
 
 /-- Genuine global linear-growth certificate for the *actual* CT1
 Jordan measure at any dilation parameter. The uniform-in-L budget required
@@ -949,7 +1062,10 @@ theorem nearGapCombDistribution_eq_explicit_of_scale_pairing
           (dilatedCombDistribution L + dilatedCombDistribution (-L)) + T)
         hscale
     _ = nearGapExplicitDilationDistribution L := by
-      simp only [nearGapExplicitDilationDistribution, sub_eq_add_neg, neg_smul]
+      simp only [nearGapExplicitDilationDistribution]
+      first
+        | rw [neg_smul, ← sub_eq_add_neg]
+        | (ext f; simp [sub_eq_add_neg])
 
 /-- A conditional FT consequence with no new mathematical assumption beyond
 the one explicitly identified Jordan-scale pairing obligation. The actual
@@ -1027,6 +1143,104 @@ theorem nearGapCombDistribution_even_schwartz
         D (𝓕⁻ (𝓕⁻ f)) := congrArg D hreflect.symm
     _ = D (𝓕⁻ f) := hpair (𝓕⁻ f)
     _ = D f := hpair f
+
+/-! ## Measure-level evenness from Fourier self-duality
+
+Since 𝓕∘𝓕 is reflection, every linearly growing Fourier-self-dual Jordan pair
+is even as a distribution. The parent faithfulness theorem
+`parts_eq_of_distribution_eq` then upgrades this to reflection invariance of
+both canonical Jordan measures. Evenness therefore never has to be assumed
+separately for self-dual measures in this class. -/
+
+lemma nearGap_map_neg_locallyFinite (μ : Measure ℝ) [IsLocallyFiniteMeasure μ] :
+    IsLocallyFiniteMeasure (Measure.map (fun x : ℝ => -x) μ) := by
+  have : IsFiniteMeasureOnCompacts (Measure.map (fun x : ℝ => -x) μ) := ⟨fun K hK => by
+    rw [Measure.map_apply measurable_neg hK.measurableSet]
+    exact hK.neg.measure_lt_top⟩
+  infer_instance
+
+/-- Reflection x ↦ -x of an actual Jordan pair; both parts are pushed forward. -/
+def jordanReflect (ν : LocallyFiniteSignedMeasure) : LocallyFiniteSignedMeasure where
+  positive := Measure.map (fun x : ℝ => -x) ν.positive
+  negative := Measure.map (fun x : ℝ => -x) ν.negative
+  positive_locallyFinite := nearGap_map_neg_locallyFinite _
+  negative_locallyFinite := nearGap_map_neg_locallyFinite _
+  mutuallySingular := by
+    obtain ⟨s, hs, hp, hn⟩ := ν.mutuallySingular
+    refine ⟨(fun x : ℝ => -x) ⁻¹' s, measurable_neg hs, ?_, ?_⟩
+    · rw [Measure.map_apply measurable_neg (measurable_neg hs)]
+      simpa [Set.preimage_preimage] using hp
+    · rw [Measure.map_apply measurable_neg (measurable_neg hs).compl]
+      simpa [Set.preimage_preimage, Set.preimage_compl] using hn
+
+/-- Reflection preserves linear variation growth with the same constant,
+because the test intervals are symmetric. -/
+lemma jordanReflect_growth (ν : LocallyFiniteSignedMeasure) (hν : ν.HasLinearGrowth) :
+    (jordanReflect ν).HasLinearGrowth := by
+  obtain ⟨C, hC, hb⟩ := hν
+  refine ⟨C, hC, fun R hR => ?_⟩
+  have hpre : (fun x : ℝ => -x) ⁻¹' Icc (-R) R = Icc (-R) R := by
+    ext x
+    simp only [mem_preimage, mem_Icc]
+    constructor <;> intro h <;> constructor <;> linarith [h.1, h.2]
+  change ((Measure.map (fun x : ℝ => -x) ν.positive +
+    Measure.map (fun x : ℝ => -x) ν.negative) (Icc (-R) R)).toReal ≤ _
+  rw [Measure.add_apply, Measure.map_apply measurable_neg measurableSet_Icc,
+    Measure.map_apply measurable_neg measurableSet_Icc, hpre]
+  simpa [LocallyFiniteSignedMeasure.totalVariation, Measure.real] using hb R hR
+
+/-- Distributional evenness of any self-dual linearly growing Jordan pair. -/
+theorem even_schwartz_of_selfdual (ν : LocallyFiniteSignedMeasure)
+    (hν : ν.HasLinearGrowth) (hself : ν.FourierSelfdual hν) (f : SchwartzMap ℝ ℂ) :
+    ν.distributionOfLinearGrowth hν
+      (SchwartzMap.compCLMOfContinuousLinearEquiv ℂ (LinearIsometryEquiv.neg ℝ (E := ℝ)) f) =
+    ν.distributionOfLinearGrowth hν f := by
+  let D : TemperedDistribution ℝ ℂ := ν.distributionOfLinearGrowth hν
+  have hFourier : 𝓕 D = D := hself
+  have hInv : 𝓕⁻ D = D := by
+    calc 𝓕⁻ D = 𝓕⁻ (𝓕 D) :=
+          congrArg (fun T : TemperedDistribution ℝ ℂ => 𝓕⁻ T) hFourier.symm
+      _ = D := FourierTransform.fourierInv_fourier_eq D
+  have hpair (g : SchwartzMap ℝ ℂ) : D (𝓕⁻ g) = D g := by
+    calc D (𝓕⁻ g) = (𝓕⁻ D) g := rfl
+      _ = D g := congrArg (fun T : TemperedDistribution ℝ ℂ => T g) hInv
+  have hreflect : 𝓕⁻ (𝓕⁻ f) = SchwartzMap.compCLMOfContinuousLinearEquiv ℂ
+      (LinearIsometryEquiv.neg ℝ (E := ℝ)) f := by
+    have h := SchwartzMap.fourierInv_apply_eq (𝓕⁻ f)
+    simpa only [FourierTransform.fourier_fourierInv_eq] using h
+  change D (SchwartzMap.compCLMOfContinuousLinearEquiv ℂ
+    (LinearIsometryEquiv.neg ℝ (E := ℝ)) f) = D f
+  rw [← hreflect, hpair, hpair]
+
+/-- Measure-level evenness: both canonical Jordan parts of a linearly growing
+Fourier-self-dual Jordan pair are invariant under x ↦ -x. -/
+theorem jordan_even_of_selfdual (ν : LocallyFiniteSignedMeasure)
+    (hν : ν.HasLinearGrowth) (hself : ν.FourierSelfdual hν) :
+    Measure.map (fun x : ℝ => -x) ν.positive = ν.positive ∧
+      Measure.map (fun x : ℝ => -x) ν.negative = ν.negative := by
+  have hdist : (jordanReflect ν).distributionOfLinearGrowth (jordanReflect_growth ν hν) =
+      ν.distributionOfLinearGrowth hν := by
+    ext f
+    rw [← even_schwartz_of_selfdual ν hν hself f,
+      LocallyFiniteSignedMeasure.distributionOfLinearGrowth_apply,
+      LocallyFiniteSignedMeasure.distributionOfLinearGrowth_apply]
+    change (∫ x, f x ∂Measure.map (fun x : ℝ => -x) ν.positive) -
+        (∫ x, f x ∂Measure.map (fun x : ℝ => -x) ν.negative) = _
+    rw [integral_map measurable_neg.aemeasurable f.continuous.aestronglyMeasurable,
+      integral_map measurable_neg.aemeasurable f.continuous.aestronglyMeasurable]
+    rfl
+  exact (ν.parts_eq_of_distribution_eq _ hν (jordanReflect_growth ν hν) hdist.symm).imp
+    (fun h => h.symm) (fun h => h.symm)
+
+/-- The CT1 family is even at the level of its genuine canonical Jordan
+measures, as the paper's CT1 statement requires. -/
+theorem nearGapCombFamily_jordan_even (L : ℝ) :
+    Measure.map (fun x : ℝ => -x) (nearGapCombFamily L).positive =
+        (nearGapCombFamily L).positive ∧
+      Measure.map (fun x : ℝ => -x) (nearGapCombFamily L).negative =
+        (nearGapCombFamily L).negative :=
+  jordan_even_of_selfdual _ (nearGapCombFamily_growth L)
+    (nearGapCombFamily_fourier_selfdual L)
 
 lemma nearGap_origin_zero (mu : Measure ℝ) {a : ℝ} (ha : 0<a)
     (hgap : mu (Ioo (-a) a)=0) : mu {0}=0 := by
@@ -1180,14 +1394,13 @@ theorem nearGapCombFamily_offinteger_mass_budget
 physical source and domain clauses in the theorem type.
 
 No hypotheses give the conclusion: the only premises restrict the genuine
-dilation parameter to 0 < L < log 2. The Schwartz pairing records evenness
-at the distribution level; the signed compact-identity component prevents
-substitution of an unrelated self-dual distribution. Uniform variation,
-canonical Jordan gap/origin, integer support of negative mass, and positive
-nonzero atom are all carried by the exact same source measure.
-
-This is a FULL-TYPE CANDIDATE only until the pinned Lean compiler,
-independent consumer/axiom closure and aggregate release checks accept it. -/
+dilation parameter to 0 < L < log 2. Evenness is stated both for Schwartz
+pairings and for the canonical Jordan measures themselves; the signed
+compact-identity component prevents substitution of an unrelated self-dual
+distribution. Uniform variation, canonical Jordan gap/origin, integer support
+of negative mass, the nonzero positive part and the paper's exact gap-edge
+atom exp(-L/2) at exp(-L) are all carried by the exact same source measure.
+Aggregate registration and full release remain separate gates. -/
 theorem dilation_near_gap_family
     (L : ℝ) (hL : 0 < L) (hu : L < Real.log 2) :
     (∀ K : Set ℝ, ∀ hK : IsCompact K,
@@ -1209,7 +1422,14 @@ theorem dilation_near_gap_family
     (nearGapCombFamily L).OffLatticeNonnegative ∧
     ((nearGapCombFamily L).positive ({0} : Set ℝ) = 0 ∧
       (nearGapCombFamily L).negative ({0} : Set ℝ) = 0) ∧
-    (nearGapCombFamily L).positive ≠ 0 := by
+    (nearGapCombFamily L).positive ≠ 0 ∧
+    (Measure.map (fun x : ℝ => -x) (nearGapCombFamily L).positive =
+        (nearGapCombFamily L).positive ∧
+      Measure.map (fun x : ℝ => -x) (nearGapCombFamily L).negative =
+        (nearGapCombFamily L).negative) ∧
+    ((nearGapCombFamily L).positive.real ({Real.exp (-L)} : Set ℝ) =
+        Real.exp (-L / 2) ∧
+      (nearGapCombFamily L).negative ({Real.exp (-L)} : Set ℝ) = 0) := by
   exact ⟨fun K hK => nearGapCombFamily_compactRestriction L K hK,
     nearGapCombFamily_growth L,
     nearGapCombFamily_common_growth hL.le hu.le,
@@ -1219,7 +1439,9 @@ theorem dilation_near_gap_family
     nearGapComb_radius_bounds hL hu,
     nearGapCombFamily_offlattice_nonnegative L,
     nearGapCombFamily_origin_jordan_zero L,
-    nearGapCombFamily_positive_nonzero hL hu⟩
+    nearGapCombFamily_positive_nonzero hL hu,
+    nearGapCombFamily_jordan_even L,
+    nearGapCombFamily_gap_edge_atom hL hu⟩
 
 #print axioms Zeta23.OPICAFollowup.near_gap_mass_bound
 end Zeta23.OPICAFollowup

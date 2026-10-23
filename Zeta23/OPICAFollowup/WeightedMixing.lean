@@ -89,8 +89,6 @@ def positiveLogMeasure (mu : Measure ℝ) : Measure ℝ :=
     ((mu.restrict (Ioi (0 : ℝ))).withDensity
       (fun x : ℝ => ENNReal.ofReal (positiveLogWeight x)))
 
-/-- The new logarithmic measure has the correct physical normalization for
-every true positive Dirac atom, including arbitrary real dilation. -/
 /-- The actual positive-axis logarithmic transport is additive for
 arbitrary input measures, even if they have infinite global mass. This is the
 measure-level linearity needed to assemble individual atoms into the integer
@@ -99,7 +97,7 @@ theorem positiveLogMeasure_add (mu nu : Measure ℝ) :
     positiveLogMeasure (mu + nu) =
       positiveLogMeasure mu + positiveLogMeasure nu := by
   unfold positiveLogMeasure
-  rw [Measure.restrict_add, Measure.withDensity_add_measure]
+  rw [Measure.restrict_add, MeasureTheory.withDensity_add_measure]
   exact Measure.map_add _ _ Real.measurable_log
 
 /-- The positive-axis weighted logarithmic pushforward commutes with
@@ -114,23 +112,23 @@ theorem positiveLogMeasure_sum {ι : Type*} (mu : ι → Measure ℝ) :
   ext s hs
   rw [Measure.map_apply Real.measurable_log hs,
     Measure.restrict_sum mu measurableSet_Ioi,
-    Measure.withDensity_sum,
+    MeasureTheory.withDensity_sum,
     Measure.sum_apply _ (Real.measurable_log hs),
     Measure.sum_apply _ hs]
   simp_rw [Measure.map_apply Real.measurable_log hs]
 
 /-- The canonical zero input has no positive logarithmic mass. -/
 theorem positiveLogMeasure_zero : positiveLogMeasure (0 : Measure ℝ) = 0 := by
-  simp [positiveLogMeasure, Measure.withDensity_zero_left]
+  simp [positiveLogMeasure, MeasureTheory.withDensity_zero_left]
 
 theorem positiveLogMeasure_dirac (t : ℝ) :
     positiveLogMeasure (Measure.dirac (Real.exp t)) =
       ENNReal.ofReal (Real.exp (-t / 2)) • (Measure.dirac t) := by
   classical
   unfold positiveLogMeasure
-  rw [Measure.restrict_dirac]
+  rw [MeasureTheory.restrict_dirac]
   simp only [Set.mem_Ioi, Real.exp_pos, ↓reduceIte]
-  rw [Measure.dirac_withDensity, positiveLogWeight_exp, Measure.map_smul,
+  rw [MeasureTheory.dirac_withDensity, positiveLogWeight_exp, Measure.map_smul,
     Measure.map_dirac, Real.log_exp]
 
 /-- Zero and negative atomic inputs disappear *before* logarithmic transport.
@@ -140,7 +138,7 @@ theorem positiveLogMeasure_dirac_nonpos {x : ℝ} (hx : x ≤ 0) :
     positiveLogMeasure (Measure.dirac x) = 0 := by
   classical
   unfold positiveLogMeasure
-  rw [Measure.restrict_dirac]
+  rw [MeasureTheory.restrict_dirac]
   have hnot : x ∉ Ioi (0 : ℝ) := not_lt.mpr hx
   simp only [Set.mem_Ioi] at hnot
   simp [hnot]
@@ -153,9 +151,9 @@ theorem positiveLogMeasure_dirac_pos {x : ℝ} (hx : 0 < x) :
       ENNReal.ofReal (positiveLogWeight x) • (Measure.dirac (Real.log x)) := by
   classical
   unfold positiveLogMeasure
-  rw [Measure.restrict_dirac]
+  rw [MeasureTheory.restrict_dirac]
   simp only [Set.mem_Ioi, hx, ↓reduceIte]
-  rw [Measure.dirac_withDensity, Measure.map_smul, Measure.map_dirac]
+  rw [MeasureTheory.dirac_withDensity, Measure.map_smul, Measure.map_dirac]
 
 /-- Exact logarithmic transport of one physical positive integer-lattice
 atom. The n^(-1/2) factor comes from the same native weighted test as the

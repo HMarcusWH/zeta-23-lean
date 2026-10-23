@@ -44,7 +44,7 @@ theorem scaledLatticeMeasure_atom (t : ℝ) (n : ℤ) :
     ext m
     simp only [Set.mem_preimage, Set.mem_singleton_iff]
     constructor
-    · exact scaledLatticePoint_injective t
+    · exact fun h => scaledLatticePoint_injective t h
     · rintro rfl
       rfl
   rw [hpre]
@@ -81,8 +81,8 @@ theorem scaledLatticePoint_in_first_gap (t : ℝ) (n : ℤ)
     simpa [scaledLatticePoint] using hn.1
   have hhi : Real.exp t * (n : ℝ) < Real.exp t * (1 : ℝ) := by
     simpa [scaledLatticePoint] using hn.2
-  have hnlo : (-1 : ℝ) < (n : ℝ) := (mul_lt_mul_left hpos).mp hlo
-  have hnhi : (n : ℝ) < (1 : ℝ) := (mul_lt_mul_left hpos).mp hhi
+  have hnlo : (-1 : ℝ) < (n : ℝ) := lt_of_mul_lt_mul_left hlo hpos.le
+  have hnhi : (n : ℝ) < (1 : ℝ) := lt_of_mul_lt_mul_left hhi hpos.le
   have hloZ : (-1 : ℤ) < n := by exact_mod_cast hnlo
   have hhiZ : n < (1 : ℤ) := by exact_mod_cast hnhi
   omega
@@ -103,7 +103,7 @@ theorem scaledLatticeMeasure_punctured_gap (t : ℝ) :
       have hzero : n = 0 := scaledLatticePoint_in_first_gap t n hn.1
       exact hn.2 (by simp [scaledLatticePoint,hzero])
     · intro hn
-      exact False.elim (Set.not_mem_empty n hn)
+      exact False.elim (Set.notMem_empty n hn)
   rw [hempty]
   simp
 

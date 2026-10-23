@@ -116,17 +116,22 @@ jobs:
             '#print axioms Zeta23.OPICAFollowup.step123_word_contour_consumer' \
             > /tmp/opica-w01-axioms.lean
           lake env lean /tmp/opica-w01-axioms.lean 2>&1 | tee /tmp/opica-current-candidates/w01-axioms.log
+          lake env lean -DmaxHeartbeats=800000 -DrelaxedAutoImplicit=false \
+            "$FOLLOWUP/continuation/2026-10-22/consumers/ExpectedWordJet.lean" 2>&1 \
+            | tee /tmp/opica-current-candidates/w01-independent-consumers.log
           python - <<'PY'
           from pathlib import Path
           import re
-          report = Path('/tmp/opica-current-candidates/w01-axioms.log').read_text()
-          matches = re.findall(r"depends on axioms:\s*\[([^\]]*)\]", report, flags=re.S)
           allowed = {'propext', 'Classical.choice', 'Quot.sound'}
-          assert len(matches) == 2, f'Expected two explicit axiom closures; got {len(matches)}'
-          for row in matches:
-              actual = {x.strip() for x in row.split(',') if x.strip()}
-              assert actual <= allowed, f'Nonstandard axioms: {sorted(actual - allowed)}'
-          print('W01 narrow compiler and two standard-only axiom closures: PASS; full100 still OPEN')
+          for name, expected in (('w01-axioms.log', 2), ('w01-independent-consumers.log', 3)):
+              report = Path('/tmp/opica-current-candidates/' + name).read_text()
+              assert 'sorryAx' not in report, f'Placeholder in {name}'
+              matches = re.findall(r"depends on axioms:\s*\[([^\]]*)\]", report, flags=re.S)
+              assert len(matches) == expected, f'{name}: expected {expected} axiom closures; got {len(matches)}'
+              for row in matches:
+                  actual = {x.strip() for x in row.split(',') if x.strip()}
+                  assert actual <= allowed, f'Nonstandard axioms: {sorted(actual - allowed)}'
+          print('W01 compiler, independent 22-clause type, actual-domain consumer and five standard-only axiom closures: PASS; full100 still OPEN')
           PY
       - name: W04 W07 actual foundation modules and independently stated domains
         if: always()
@@ -191,7 +196,7 @@ jobs:
               (mu nu : Zeta23.OPICA.LocallyFiniteSignedMeasure)
               (hmu : mu.HasLinearGrowth) (hnu : nu.HasLinearGrowth)
               (f : SchwartzMap ℝ ℂ) :
-              (Zeta23.OPICA.localJordanAdd mu nu).distributionOfLinearGrowth
+              (Zeta23.OPICAFollowup.localJordanAdd mu nu).distributionOfLinearGrowth
                 (Zeta23.OPICAFollowup.nearGap_localJordanAdd_growth mu nu hmu hnu) f =
               mu.distributionOfLinearGrowth hmu f +
               nu.distributionOfLinearGrowth hnu f :=
@@ -249,14 +254,14 @@ jobs:
           #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_ct1_common_schwartz_growth
           theorem expected_ct1_compact_measure_identity (L : ℝ)
               (K : Set ℝ) (hK : IsCompact K) :
-              Zeta23.OPICA.localSignedCompactRestriction
+              Zeta23.OPICAFollowup.localSignedCompactRestriction
                 (Zeta23.OPICAFollowup.nearGapCombFamily L) K hK =
-              Zeta23.OPICA.localSignedCompactRestriction
+              Zeta23.OPICAFollowup.localSignedCompactRestriction
                 (Zeta23.OPICAFollowup.dilatedCombJordan L) K hK +
-              Zeta23.OPICA.localSignedCompactRestriction
+              Zeta23.OPICAFollowup.localSignedCompactRestriction
                 (Zeta23.OPICAFollowup.dilatedCombJordan (-L)) K hK -
               (2 * Real.cosh (L / 2)) •
-                Zeta23.OPICA.localSignedCompactRestriction
+                Zeta23.OPICAFollowup.localSignedCompactRestriction
                   (Zeta23.OPICAFollowup.dilatedCombJordan 0) K hK :=
             Zeta23.OPICAFollowup.nearGapCombFamily_compactRestriction L K hK
           theorem expected_dilated_comb_physical_origin (t : ℝ) :
@@ -356,7 +361,7 @@ jobs:
             Zeta23.OPICAFollowup.nearGap_undilatedComb_integer_support
           theorem expected_negative_jordan_source_bound
               (mu nu : Zeta23.OPICA.LocallyFiniteSignedMeasure) :
-              (Zeta23.OPICA.localJordanAdd mu nu).negative ≤
+              (Zeta23.OPICAFollowup.localJordanAdd mu nu).negative ≤
                 mu.negative + nu.negative :=
             Zeta23.OPICAFollowup.nearGap_localJordanAdd_negative_le mu nu
           theorem expected_ct1_negative_integer_support (L : ℝ) :
@@ -409,14 +414,14 @@ jobs:
           theorem expected_dilation_near_gap_family
               (L : ℝ) (hL : 0 < L) (hu : L < Real.log 2) :
               (∀ K : Set ℝ, ∀ hK : IsCompact K,
-                Zeta23.OPICA.localSignedCompactRestriction
+                Zeta23.OPICAFollowup.localSignedCompactRestriction
                   (Zeta23.OPICAFollowup.nearGapCombFamily L) K hK =
-                Zeta23.OPICA.localSignedCompactRestriction
+                Zeta23.OPICAFollowup.localSignedCompactRestriction
                   (Zeta23.OPICAFollowup.dilatedCombJordan L) K hK +
-                Zeta23.OPICA.localSignedCompactRestriction
+                Zeta23.OPICAFollowup.localSignedCompactRestriction
                   (Zeta23.OPICAFollowup.dilatedCombJordan (-L)) K hK -
                 (2 * Real.cosh (L / 2)) •
-                  Zeta23.OPICA.localSignedCompactRestriction
+                  Zeta23.OPICAFollowup.localSignedCompactRestriction
                     (Zeta23.OPICAFollowup.dilatedCombJordan 0) K hK) ∧
               (Zeta23.OPICAFollowup.nearGapCombFamily L).HasLinearGrowth ∧
               Zeta23.OPICAFollowup.CommonLinearMassBound 18
@@ -436,15 +441,39 @@ jobs:
                   ({0} : Set ℝ) = 0 ∧
                 (Zeta23.OPICAFollowup.nearGapCombFamily L).negative
                   ({0} : Set ℝ) = 0) ∧
-              (Zeta23.OPICAFollowup.nearGapCombFamily L).positive ≠ 0 :=
+              (Zeta23.OPICAFollowup.nearGapCombFamily L).positive ≠ 0 ∧
+              (MeasureTheory.Measure.map (fun x : ℝ => -x)
+                  (Zeta23.OPICAFollowup.nearGapCombFamily L).positive =
+                  (Zeta23.OPICAFollowup.nearGapCombFamily L).positive ∧
+                MeasureTheory.Measure.map (fun x : ℝ => -x)
+                  (Zeta23.OPICAFollowup.nearGapCombFamily L).negative =
+                  (Zeta23.OPICAFollowup.nearGapCombFamily L).negative) ∧
+              ((Zeta23.OPICAFollowup.nearGapCombFamily L).positive.real
+                  ({Real.exp (-L)} : Set ℝ) = Real.exp (-L / 2) ∧
+                (Zeta23.OPICAFollowup.nearGapCombFamily L).negative
+                  ({Real.exp (-L)} : Set ℝ) = 0) :=
             Zeta23.OPICAFollowup.dilation_near_gap_family L hL hu
           #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_dilation_near_gap_family
+          theorem expected_selfdual_jordan_even
+              (nu : Zeta23.OPICA.LocallyFiniteSignedMeasure)
+              (hnu : nu.HasLinearGrowth) (hself : nu.FourierSelfdual hnu) :
+              MeasureTheory.Measure.map (fun x : ℝ => -x) nu.positive = nu.positive ∧
+                MeasureTheory.Measure.map (fun x : ℝ => -x) nu.negative = nu.negative :=
+            Zeta23.OPICAFollowup.jordan_even_of_selfdual nu hnu hself
+          theorem expected_CT1_gap_edge_atom {L : ℝ} (hL : 0 < L) (hu : L < Real.log 2) :
+              (Zeta23.OPICAFollowup.nearGapCombFamily L).positive.real
+                  ({Real.exp (-L)} : Set ℝ) = Real.exp (-L / 2) ∧
+                (Zeta23.OPICAFollowup.nearGapCombFamily L).negative
+                  ({Real.exp (-L)} : Set ℝ) = 0 :=
+            Zeta23.OPICAFollowup.nearGapCombFamily_gap_edge_atom hL hu
+          #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_selfdual_jordan_even
+          #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_CT1_gap_edge_atom
           #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_CT1_positive_measure_nonzero
           #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_CT1_physical_nonzero_signed_atom
           theorem expected_CT1_canonical_equals_explicit_if_scalar_bridge
               (L : ℝ)
               (hscale :
-                (Zeta23.OPICA.localJordanScale (-(2 * Real.cosh (L / 2)))
+                (Zeta23.OPICAFollowup.localJordanScale (-(2 * Real.cosh (L / 2)))
                   (Zeta23.OPICAFollowup.dilatedCombJordan 0)).distributionOfLinearGrowth
                   (Zeta23.OPICAFollowup.nearGap_localJordanScale_growth _ _
                     (Zeta23.OPICAFollowup.dilatedCombJordan_growth 0)) =
@@ -457,7 +486,7 @@ jobs:
           theorem expected_CT1_canonical_selfdual_if_scalar_bridge
               (L : ℝ)
               (hscale :
-                (Zeta23.OPICA.localJordanScale (-(2 * Real.cosh (L / 2)))
+                (Zeta23.OPICAFollowup.localJordanScale (-(2 * Real.cosh (L / 2)))
                   (Zeta23.OPICAFollowup.dilatedCombJordan 0)).distributionOfLinearGrowth
                   (Zeta23.OPICAFollowup.nearGap_localJordanScale_growth _ _
                     (Zeta23.OPICAFollowup.dilatedCombJordan_growth 0)) =
@@ -470,7 +499,7 @@ jobs:
           #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_CT1_canonical_equals_explicit_if_scalar_bridge
           theorem expected_CT1_physical_negative_scale_pairing (t c : ℝ)
               (hc : 0 ≤ c) :
-              (Zeta23.OPICA.localJordanScale (-c)
+              (Zeta23.OPICAFollowup.localJordanScale (-c)
                 (Zeta23.OPICAFollowup.dilatedCombJordan t)).distributionOfLinearGrowth
                 (Zeta23.OPICAFollowup.nearGap_localJordanScale_growth
                   (-c) (Zeta23.OPICAFollowup.dilatedCombJordan t)
@@ -517,11 +546,11 @@ jobs:
           data = Path('/tmp/opica-current-candidates/w04-w07-expected.log').read_text()
           records = re.findall(r'depends on axioms:\s*\[([^\]]*)\]', data, re.S)
           allowed = {'propext', 'Classical.choice', 'Quot.sound'}
-          assert len(records) == 50, f'Expected fifty exact independent axiom receipts, got {len(records)}'
+          assert len(records) == 52, f'Expected fifty-two exact independent axiom receipts, got {len(records)}'
           for r in records:
               axioms = {x.strip() for x in r.split(',') if x.strip()}
               assert axioms <= allowed, f'Unexpected axiom(s): {sorted(axioms - allowed)}'
-          print('W04/W07 foundation and fifty independent domain/axiom checks: PASS. Full original roots OPEN')
+          print('W04/W07 foundation and fifty-two independent domain/axiom checks: PASS. Full original roots OPEN')
           PY
       - name: W06 logarithmic mixing weights and independent integer-dilation types
         if: always()
