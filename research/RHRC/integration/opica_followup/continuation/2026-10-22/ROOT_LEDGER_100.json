@@ -4,9 +4,9 @@
   "acceptance_units": 28,
   "current_aggregate_accepted": false,
   "status_counts": {
-    "OPEN_NO_COMPLETE_CANDIDATE": 33,
+    "OPEN_NO_COMPLETE_CANDIDATE": 31,
     "PROVED_IN_ORIGINAL_41_ROOT_SOURCE_BOUND_SUBSET": 41,
-    "PROVED_NARROW_LOCAL_GATES_AGGREGATE_PENDING": 26
+    "PROVED_NARROW_LOCAL_GATES_AGGREGATE_PENDING": 28
   },
   "roots": [
     {
@@ -2784,20 +2784,27 @@
         "register_only_after_proof_and_type_review": true,
         "status": "PLANNED_NOT_PROVED"
       },
-      "current_status": "OPEN_NO_COMPLETE_CANDIDATE",
+      "current_status": "PROVED_NARROW_LOCAL_GATES_AGGREGATE_PENDING",
       "gates": {
-        "implementation": "OPEN",
-        "module_compilation": "NOT_ESTABLISHED",
-        "expected_type_consumer": "NOT_ESTABLISHED",
-        "actual_domain_consumer": "NOT_ESTABLISHED",
-        "axiom_check": "NOT_ESTABLISHED",
+        "implementation": "IMPLEMENTED_FULL_FROZEN_CONTRACT_REVIEWED_NARROW",
+        "module_compilation": "PASS_EXACT_COMMITTED_SOURCE_PINNED_LINUX",
+        "expected_type_consumer": "PASS_INDEPENDENT_FULL_TYPE_AND_DEFINITION_AUDITS",
+        "actual_domain_consumer": "PASS_DENSITY_RELATION_ORIGIN_VALUE_FOURIER_AT_ZERO_AND_CONSTRUCTION_NONVACUOUS_AT_3_4",
+        "axiom_check": "STANDARD_ONLY_TRANSITIVE_PRINTED_CLOSURES",
         "aggregate_current_source_export": "OPEN",
         "full_release_acceptance": "OPEN"
       },
-      "source_file_present": false,
-      "declaration_lexically_present": false,
-      "source_sha256": null,
-      "evidence": []
+      "source_file_present": true,
+      "declaration_lexically_present": true,
+      "source_sha256": "d5ee76f621001bcd97e555cd6a92517349080d4315c86a496289acf49a7af7fc",
+      "evidence": [
+        "evidence/current-codex/stage9/STATUS.json"
+      ],
+      "independent_consumer": {
+        "path": "consumers/ExpectedZeroProfiles.lean",
+        "sha256": "33ad11294eda85f3b5b3bddb83287e5208ed4bb965d574e42c227ec0ef74a485"
+      },
+      "statement_formalization": "Premises: riemannZeta rho = 0 and 0 < Re rho < 1 (an actual nontrivial zero). rho != 1/2 is derived, not assumed (zeta is negative on the real segment (0, 1), parent ZetaRealStripNonvanishing), so b_rho = normalizationBrho rho != 0. zeroProfile rho x = 1 - finiteSumSrho rho |x| / b_rho is built from the frozen inclusive CP1 finite sums; spectralKappa rho = rho(1 - rho). zeta(1 - rho) = 0 comes from Mathlib's functional equation riemannZeta_one_sub. Clauses: evenness; continuity (cell branches glue at every integer); Integrable and MemLp 2 (|h| <= K/(1+x^2) from the Euler-Maclaurin tail, which uses zeta(1-rho) = 0); h = 1 on [-1, 1]; ordinary Fourier self-duality F h = h of the L1 continuous function (Mathlib F on functions), derived from Schwartz pairings via the multiplication formula and uniqueness against smooth compactly supported tests; pairing self-duality int h F(phi) = int h phi; the paper identity nu = (dx + delta_0 - D_0) - h dx on Schwartz tests with nu the Stage 7 zeroMeasure; int h = 1 (= h(0)); int over (0, oo) of h = 1/2."
     },
     {
       "id": "OPICA_FOLLOWUP_ZERO_PROFILE_TAIL_AND_JUMPS",
@@ -2822,20 +2829,27 @@
         "register_only_after_proof_and_type_review": true,
         "status": "PLANNED_NOT_PROVED"
       },
-      "current_status": "OPEN_NO_COMPLETE_CANDIDATE",
+      "current_status": "PROVED_NARROW_LOCAL_GATES_AGGREGATE_PENDING",
       "gates": {
-        "implementation": "OPEN",
-        "module_compilation": "NOT_ESTABLISHED",
-        "expected_type_consumer": "NOT_ESTABLISHED",
-        "actual_domain_consumer": "NOT_ESTABLISHED",
-        "axiom_check": "NOT_ESTABLISHED",
+        "implementation": "IMPLEMENTED_FULL_FROZEN_CONTRACT_REVIEWED_NARROW",
+        "module_compilation": "PASS_EXACT_COMMITTED_SOURCE_PINNED_LINUX",
+        "expected_type_consumer": "PASS_INDEPENDENT_FULL_TYPE_AND_DEFINITION_AUDITS",
+        "actual_domain_consumer": "PASS_JUMP_UNIQUENESS_LATTICE_SUMMABILITY_DENSITY_RELATION_AND_CONSTRUCTION_NONVACUOUS_AT_3_4",
+        "axiom_check": "STANDARD_ONLY_TRANSITIVE_PRINTED_CLOSURES",
         "aggregate_current_source_export": "OPEN",
         "full_release_acceptance": "OPEN"
       },
-      "source_file_present": false,
-      "declaration_lexically_present": false,
-      "source_sha256": null,
-      "evidence": []
+      "source_file_present": true,
+      "declaration_lexically_present": true,
+      "source_sha256": "d5ee76f621001bcd97e555cd6a92517349080d4315c86a496289acf49a7af7fc",
+      "evidence": [
+        "evidence/current-codex/stage9/STATUS.json"
+      ],
+      "independent_consumer": {
+        "path": "consumers/ExpectedZeroProfiles.lean",
+        "sha256": "33ad11294eda85f3b5b3bddb83287e5208ed4bb965d574e42c227ec0ef74a485"
+      },
+      "statement_formalization": "Premises: riemannZeta rho = 0 and 0 < Re rho < 1 (an actual nontrivial zero). rho != 1/2 is derived, not assumed (zeta is negative on the real segment (0, 1), parent ZetaRealStripNonvanishing), so b_rho = normalizationBrho rho != 0. zeroProfile rho x = 1 - finiteSumSrho rho |x| / b_rho is built from the frozen inclusive CP1 finite sums; spectralKappa rho = rho(1 - rho). zeta(1 - rho) = 0 comes from Mathlib's functional equation riemannZeta_one_sub. Clauses: tail ||h(x) - kappa B2({|x|})/(2x^2)|| <= C |x|^(-3) for |x| >= 1 (C explicit); exact cell derivative h' = -S'_cell/b_rho on every (n, n+1) from the differentiated finite sums (srhoCellDeriv); ||deriv h x|| <= C x^(-2) on cells above 1; sharper leading form ||deriv h x - kappa B1({x})/x^2|| <= C x^(-4); at every integer n+1 >= 1 there are right and left derivatives (within Ici/Iic, unique) with dR - dL = -kappa/(n+1)^2; h'(1-) = 0 as HasDerivWithinAt h 0 (Iic 1) 1; x h'(x) in L2(0, oo) with h' = deriv h (equal to the cell derivative off the null set of integers). The positive half-line is stated; the negative side follows by evenness."
     },
     {
       "id": "OPICA_FOLLOWUP_LOG_UNITARY_FORM_IDENTITY",
@@ -4206,18 +4220,18 @@
   "evidence_paths_relative_to": "research/RHRC/integration/opica_followup/continuation/2026-10-22",
   "verification_summary": {
     "historical_source_bound_subset_roots": 41,
-    "independently_verified_narrow_roots": 26,
+    "independently_verified_narrow_roots": 28,
     "prior_failed_or_blocked_unaccepted_roots": 0,
-    "open_no_complete_candidate_roots": 33,
+    "open_no_complete_candidate_roots": 31,
     "full_required_roots": 100,
     "acceptance_units": 28,
-    "receipt": "STAGE8_HANDOVER.md",
+    "receipt": "STAGE9_HANDOVER.md",
     "independent_source_repairs": [],
     "independent_consumer_repairs": [],
     "historical41_status_unchanged": true,
     "current_aggregate_accepted": false,
-    "meaning": "41 historical plus 26 narrow local results is not aggregate 67-root acceptance. 33 absent implementations plus all remaining domain/integration gates remain OPEN; original100/28 scope unchanged.",
-    "receipt_scope": "Index of one Stage8, three Stage7, three Stage6, two Stage5, two Stage4 and fifteen retained narrow original-root results, not an aggregate receipt",
+    "meaning": "41 historical plus 28 narrow local results is not aggregate 69-root acceptance. 31 absent implementations plus all remaining domain/integration gates remain OPEN; original100/28 scope unchanged.",
+    "receipt_scope": "Index of two Stage9, one Stage8, three Stage7, three Stage6, two Stage5, two Stage4 and fifteen retained narrow original-root results, not an aggregate receipt",
     "additional_stage1_primary_roots": [
       "laguerre_tail_norm",
       "dilated_comb_fourier",
@@ -4251,6 +4265,10 @@
     ],
     "additional_stage8_primary_roots": [
       "finite_sum_euler_maclaurin_uniform"
+    ],
+    "additional_stage9_primary_roots": [
+      "zero_profile_regular_selfdual",
+      "zero_profile_tail_and_jumps"
     ]
   }
 }

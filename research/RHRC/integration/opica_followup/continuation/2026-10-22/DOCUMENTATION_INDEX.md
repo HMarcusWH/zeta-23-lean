@@ -2,7 +2,7 @@
 
 Use this index with [root AGENTS.md](../../../../../../AGENTS.md) and the
 [continuation guide](README.md). It describes the 22 October OPICA source
-checkpoint and its staged repairs; read [STAGE8_HANDOVER.md](STAGE8_HANDOVER.md)
+checkpoint and its staged repairs; read [STAGE9_HANDOVER.md](STAGE9_HANDOVER.md)
 for the latest exact sources and gates. Check the live Git head and workflow
 results before editing.
 
@@ -63,6 +63,12 @@ results before editing.
 - [Post-Green research](POST_GREEN_RESEARCH.md): all nine required mathematical
   review conclusions. Repeat the pass when meaningful proof evidence changes.
 
+[Stage 9](STAGE9_HANDOVER.md) proves both ZeroProfiles roots (R2-S1a): the actual zero profile
+h = 1 - S_rho/b_rho is even, continuous, in L^1 and L^2, equal to 1 on [-1, 1], Fourier self-dual
+(F h = h) with half-line integral 1/2, and has tail kappa B2/(2x^2) + O(x^-3), exact cell
+derivatives, h' = O(x^-2), jumps -kappa/n^2 and x h' in L^2; its
+[evidence](evidence/current-codex/stage9/STATUS.json) binds every log and source and harvests
+CI on the Stage 8 head.
 [Stage 8](STAGE8_HANDOVER.md) proves the finite-sum Euler-Maclaurin root (R2-S1a, R2-H1, F3):
 the right-endpoint expansion with explicit remainder O(x^(-Re s - 2)), locally uniform in
 0 < Re s, s != 1, holomorphic in s, with the exact differentiated finite sums inside cells,
