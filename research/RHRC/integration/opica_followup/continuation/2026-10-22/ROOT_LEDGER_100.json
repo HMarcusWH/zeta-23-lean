@@ -4,9 +4,9 @@
   "acceptance_units": 28,
   "current_aggregate_accepted": false,
   "status_counts": {
-    "OPEN_NO_COMPLETE_CANDIDATE": 34,
+    "OPEN_NO_COMPLETE_CANDIDATE": 33,
     "PROVED_IN_ORIGINAL_41_ROOT_SOURCE_BOUND_SUBSET": 41,
-    "PROVED_NARROW_LOCAL_GATES_AGGREGATE_PENDING": 25
+    "PROVED_NARROW_LOCAL_GATES_AGGREGATE_PENDING": 26
   },
   "roots": [
     {
@@ -2739,20 +2739,27 @@
         "register_only_after_proof_and_type_review": true,
         "status": "PLANNED_NOT_PROVED"
       },
-      "current_status": "OPEN_NO_COMPLETE_CANDIDATE",
+      "current_status": "PROVED_NARROW_LOCAL_GATES_AGGREGATE_PENDING",
       "gates": {
-        "implementation": "OPEN",
-        "module_compilation": "NOT_ESTABLISHED",
-        "expected_type_consumer": "NOT_ESTABLISHED",
-        "actual_domain_consumer": "NOT_ESTABLISHED",
-        "axiom_check": "NOT_ESTABLISHED",
+        "implementation": "IMPLEMENTED_FULL_FROZEN_CONTRACT_REVIEWED_NARROW",
+        "module_compilation": "PASS_EXACT_COMMITTED_SOURCE_PINNED_LINUX",
+        "expected_type_consumer": "PASS_INDEPENDENT_FULL_TYPE_AND_DEFINITION_AUDITS",
+        "actual_domain_consumer": "PASS_BIGO_FORM_RIGHT_ENDPOINT_JUMP_ACTUAL_SRHO_COMPOSITION_ZERO_TAIL_X3_AND_NONVACUOUS_HALF",
+        "axiom_check": "STANDARD_ONLY_TRANSITIVE_PRINTED_CLOSURES",
         "aggregate_current_source_export": "OPEN",
         "full_release_acceptance": "OPEN"
       },
-      "source_file_present": false,
-      "declaration_lexically_present": false,
-      "source_sha256": null,
-      "evidence": []
+      "source_file_present": true,
+      "declaration_lexically_present": true,
+      "source_sha256": "c4ee9e0c04d0f7c53b26c92dee78287800e6ddd331377832cb8b271885441c8b",
+      "evidence": [
+        "evidence/current-codex/stage8/STATUS.json"
+      ],
+      "independent_consumer": {
+        "path": "consumers/ExpectedEulerMaclaurin.lean",
+        "sha256": "2a6736080dec794de13cdcaeb249aeb81264876f26d0c95940918ea522f96ff4"
+      },
+      "statement_formalization": "Domain 0 < Re s, s != 1 (contains the open critical strip, hence both specializations s = rho and s = 1 - rho and every compact parameter disk inside the strip, as R2-S1a/R2-H1 require); every real cutoff x >= 1 (uniform across real cutoffs). rightPowerSum s x = sum_(n in [1, floor x]) n^(-s) keeps the right integer endpoint (constant on every cell [n, n+1)); B1({x}) = fract x - 1/2 equals -1/2 at integers; B2({x}) = fract^2 - fract + 1/6. Exact identity rightPowerSum s x = zeta(s) + x^(1-s)/(1-s) - B1 x^(-s) - s B2 x^(-s-1)/2 + R(s,x) with the explicit remainder R(s,x) = -(s(s+1)/6) B3({x}) x^(-s-2) + (s(s+1)(s+2)/6) int_x^oo B3({t}) t^(-s-3) dt. Bound ||R(s,x)|| <= (|s|(|s|+1)/6 + |s|(|s|+1)(|s|+2)/12) x^(-Re s - 2) for every Re s > 0 and x > 0; \"locally uniformly\" is formalized as: for every compact K in the domain there is one C with ||sum - main terms|| <= C x^(-Re s - 2) for all s in K and x >= 1 (the proved constant is uniform on bounded sets, not in the height). R(., x) is holomorphic on the domain. \"Differentiated finite sums\" (BUILD_SPEC module text; S1a proof \"exact differentiated finite sums\"): the finite sum has derivative 0 inside every open cell and the remainder has the exact cell derivative -(s(s+1)/2) B2({x}) x^(-s-2). zeta is Mathlib riemannZeta; the identity zeta(s) = s/(s-1) - 1/2 - s int_1^oo B1({t}) t^(-s-1) dt is proved (Dirichlet series for Re s > 1, Mellin holomorphy and the identity theorem on a star-convex domain), not assumed. Mathlib imports only (BUILD_MANIFEST direct_project_imports = []); required definitions bernoulliOneRight and bernoulliTwo present. No premise."
     },
     {
       "id": "OPICA_FOLLOWUP_ZERO_PROFILE_REGULAR_SELFDUAL",
@@ -4199,18 +4206,18 @@
   "evidence_paths_relative_to": "research/RHRC/integration/opica_followup/continuation/2026-10-22",
   "verification_summary": {
     "historical_source_bound_subset_roots": 41,
-    "independently_verified_narrow_roots": 25,
+    "independently_verified_narrow_roots": 26,
     "prior_failed_or_blocked_unaccepted_roots": 0,
-    "open_no_complete_candidate_roots": 34,
+    "open_no_complete_candidate_roots": 33,
     "full_required_roots": 100,
     "acceptance_units": 28,
-    "receipt": "STAGE7_HANDOVER.md",
+    "receipt": "STAGE8_HANDOVER.md",
     "independent_source_repairs": [],
     "independent_consumer_repairs": [],
     "historical41_status_unchanged": true,
     "current_aggregate_accepted": false,
-    "meaning": "41 historical plus 25 narrow local results is not aggregate 66-root acceptance. 34 absent implementations plus all remaining domain/integration gates remain OPEN; original100/28 scope unchanged.",
-    "receipt_scope": "Index of three Stage7, three Stage6, two Stage5, two Stage4 and fifteen retained narrow original-root results, not an aggregate receipt",
+    "meaning": "41 historical plus 26 narrow local results is not aggregate 67-root acceptance. 33 absent implementations plus all remaining domain/integration gates remain OPEN; original100/28 scope unchanged.",
+    "receipt_scope": "Index of one Stage8, three Stage7, three Stage6, two Stage5, two Stage4 and fifteen retained narrow original-root results, not an aggregate receipt",
     "additional_stage1_primary_roots": [
       "laguerre_tail_norm",
       "dilated_comb_fourier",
@@ -4241,6 +4248,9 @@
       "renormalized_copoisson_tempered_family",
       "renormalized_copoisson_order_zero",
       "zero_measure_exact_properties"
+    ],
+    "additional_stage8_primary_roots": [
+      "finite_sum_euler_maclaurin_uniform"
     ]
   }
 }

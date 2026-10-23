@@ -2,7 +2,7 @@
 
 Use this index with [root AGENTS.md](../../../../../../AGENTS.md) and the
 [continuation guide](README.md). It describes the 22 October OPICA source
-checkpoint and its staged repairs; read [STAGE7_HANDOVER.md](STAGE7_HANDOVER.md)
+checkpoint and its staged repairs; read [STAGE8_HANDOVER.md](STAGE8_HANDOVER.md)
 for the latest exact sources and gates. Check the live Git head and workflow
 results before editing.
 
@@ -63,6 +63,12 @@ results before editing.
 - [Post-Green research](POST_GREEN_RESEARCH.md): all nine required mathematical
   review conclusions. Repeat the pass when meaningful proof evidence changes.
 
+[Stage 8](STAGE8_HANDOVER.md) proves the finite-sum Euler-Maclaurin root (R2-S1a, R2-H1, F3):
+the right-endpoint expansion with explicit remainder O(x^(-Re s - 2)), locally uniform in
+0 < Re s, s != 1, holomorphic in s, with the exact differentiated finite sums inside cells,
+and an independent consumer composing it with the actual CP1 S_rho; its
+[evidence](evidence/current-codex/stage8/STATUS.json) binds every log and source and harvests
+CI on the Stage 7 head.
 [Stage 7](STAGE7_HANDOVER.md) proves the three remaining R1-CP1 roots: the renormalized
 co-Poisson tempered family, the order-zero identification (actual cutoff measures, local
 total-variation limit with origin atom 1/rho, the family equal to that measure on every Schwartz

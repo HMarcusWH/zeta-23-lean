@@ -1,7 +1,7 @@
 # OPICA module status — navigation only
 
 Generated from [ROOT_LEDGER_100.json](ROOT_LEDGER_100.json) and actual source presence.
-Ledger SHA256: `ee411afcce0cd6b835b96ad6fb228cc9c096f1b5c7672ced5c309ba78d55a912`.
+Ledger SHA256: `b5c2a45a48d7ee328149d7bca9cd6c9748677f1616ce8fb1e2c4a8a0ffa79546`.
 
 The original target remains 100 primary roots / 28 acceptance units. Historical
 and narrow local evidence remain separate; every current aggregate/full-release
@@ -37,7 +37,7 @@ gate is OPEN. File presence does not establish proof or type coverage.
 | `NativeWindowRate` | 1 | 0 | 0 | 0 | 1 | [present](../../../../../../Zeta23/OPICAFollowup/NativeWindowRate.lean) |
 | `NearGapLimits` | 4 | 0 | 4 | 0 | 0 | [present](../../../../../../Zeta23/OPICAFollowup/NearGapLimits.lean) |
 | `NormFirstTransfer` | 4 | 4 | 0 | 0 | 0 | [present](../../../../../../Zeta23/OPICAFollowup/NormFirstTransfer.lean) |
-| `ProfileEulerMaclaurin` | 1 | 0 | 0 | 0 | 1 | planned / missing |
+| `ProfileEulerMaclaurin` | 1 | 0 | 1 | 0 | 0 | [present](../../../../../../Zeta23/OPICAFollowup/ProfileEulerMaclaurin.lean) |
 | `RenormalizedCoPoisson` | 4 | 0 | 4 | 0 | 0 | [present](../../../../../../Zeta23/OPICAFollowup/RenormalizedCoPoisson.lean) |
 | `RobustLaurent` | 3 | 3 | 0 | 0 | 0 | [present](../../../../../../Zeta23/OPICAFollowup/RobustLaurent.lean) |
 | `SamplingCompatibility` | 2 | 0 | 0 | 0 | 2 | planned / missing |
@@ -49,7 +49,7 @@ gate is OPEN. File presence does not establish proof or type coverage.
 | `WeightedSpectralMeasure` | 2 | 0 | 0 | 0 | 2 | planned / missing |
 | `ZeroProfiles` | 2 | 0 | 0 | 0 | 2 | planned / missing |
 | `ZetaLeftLineBounds` | 1 | 1 | 0 | 0 | 0 | [present](../../../../../../Zeta23/OPICAFollowup/ZetaLeftLineBounds.lean) |
-| **Total** | **100** | **41** | **25** | **0** | **34** | |
+| **Total** | **100** | **41** | **26** | **0** | **33** | |
 
 Regenerate with `python refresh_navigation.py --write`; verify with `--check`.
 Read the [named remaining work](REMAINING_WORK.md) and [next-agent task](NEXT_AGENT_PROMPT.md)
