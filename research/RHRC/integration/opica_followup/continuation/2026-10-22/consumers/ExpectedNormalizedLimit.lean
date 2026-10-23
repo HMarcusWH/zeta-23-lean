@@ -94,6 +94,14 @@ theorem expected_no_common_normalized_variation :
   obtain ⟨L, hL1, hL2⟩ := (hev.and hdom).exists
   linarith [hC L hL2.1 hL2.2]
 
+/-- Self-duality of the limit, restated with the canonical Fourier transform
+evaluated on tests: T(𝓕φ) = T(φ). -/
+theorem expected_normalized_limit_selfdual (φ : SchwartzMap ℝ ℂ) :
+    ct1NormalizedLimit (𝓕 φ) = ct1NormalizedLimit φ := by
+  have h := ct1NormalizedLimit_fourier_selfdual
+  calc ct1NormalizedLimit (𝓕 φ) = (𝓕 ct1NormalizedLimit) φ := rfl
+    _ = ct1NormalizedLimit φ := by rw [h]
+
 end OPICANormalizedLimitIndependent
 #print axioms Zeta23.OPICAFollowup.dilation_normalized_limit_not_measure
 #print axioms Zeta23.OPICAFollowup.ct1NormalizedLimit_apply
@@ -102,3 +110,5 @@ end OPICANormalizedLimitIndependent
 #print axioms OPICANormalizedLimitIndependent.expected_origin_coefficient_zero
 #print axioms OPICANormalizedLimitIndependent.expected_integer_coefficients
 #print axioms OPICANormalizedLimitIndependent.expected_no_common_normalized_variation
+#print axioms Zeta23.OPICAFollowup.ct1NormalizedLimit_fourier_selfdual
+#print axioms OPICANormalizedLimitIndependent.expected_normalized_limit_selfdual

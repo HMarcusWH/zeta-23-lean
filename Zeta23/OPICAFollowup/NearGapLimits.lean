@@ -2864,6 +2864,28 @@ theorem dilation_normalized_limit_not_measure :
     rw [hzero] at h
     norm_num at h
 
+/-- The CT1 normalized limit inherits canonical Fourier self-duality from the
+self-dual finite stages: (x² Ш')' = 𝓕 (x² Ш')'. -/
+theorem ct1NormalizedLimit_fourier_selfdual :
+    𝓕 ct1NormalizedLimit = ct1NormalizedLimit := by
+  have hlim := dilation_normalized_limit_not_measure.1
+  rw [PointwiseConvergenceCLM.tendsto_iff_forall_tendsto] at hlim
+  ext φ
+  have h1 := hlim (𝓕 φ)
+  have h2 := hlim φ
+  have hstage (L : ℝ) : (((L : ℂ) ^ 2)⁻¹ • nearGapCombDistribution L) (𝓕 φ) =
+      (((L : ℂ) ^ 2)⁻¹ • nearGapCombDistribution L) φ := by
+    change ((L : ℂ) ^ 2)⁻¹ * nearGapCombDistribution L (𝓕 φ) =
+      ((L : ℂ) ^ 2)⁻¹ * nearGapCombDistribution L φ
+    congr 1
+    have hself : 𝓕 (nearGapCombDistribution L) = nearGapCombDistribution L :=
+      nearGapCombFamily_fourier_selfdual L
+    calc nearGapCombDistribution L (𝓕 φ) = (𝓕 (nearGapCombDistribution L)) φ := rfl
+      _ = nearGapCombDistribution L φ := by rw [hself]
+  have h1' := h1.congr (fun L => hstage L)
+  change ct1NormalizedLimit (𝓕 φ) = ct1NormalizedLimit φ
+  exact tendsto_nhds_unique h1' h2
+
 #print axioms Zeta23.OPICAFollowup.near_gap_mass_bound
 #print axioms Zeta23.OPICAFollowup.near_gap_controlled_limit_zero
 #print axioms Zeta23.OPICAFollowup.dilation_normalized_limit_not_measure
