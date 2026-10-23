@@ -2,7 +2,7 @@
 
 Use this index with [root AGENTS.md](../../../../../../AGENTS.md) and the
 [continuation guide](README.md). It describes the 22 October OPICA source
-checkpoint and its staged repairs; read [STAGE6_HANDOVER.md](STAGE6_HANDOVER.md)
+checkpoint and its staged repairs; read [STAGE7_HANDOVER.md](STAGE7_HANDOVER.md)
 for the latest exact sources and gates. Check the live Git head and workflow
 results before editing.
 
@@ -63,6 +63,12 @@ results before editing.
 - [Post-Green research](POST_GREEN_RESEARCH.md): all nine required mathematical
   review conclusions. Repeat the pass when meaningful proof evidence changes.
 
+[Stage 7](STAGE7_HANDOVER.md) proves the three remaining R1-CP1 roots: the renormalized
+co-Poisson tempered family, the order-zero identification (actual cutoff measures, local
+total-variation limit with origin atom 1/rho, the family equal to that measure on every Schwartz
+test) and the exact properties of the normalized zero measure at actual zeros; its
+[evidence](evidence/current-codex/stage7/STATUS.json) binds every log and source and harvests CI
+on the Stage 6 head.
 [Stage 6](STAGE6_HANDOVER.md) proves the three remaining R1-HT1 roots: the weighted
 Mobius inverse in the positive lattice algebra, the noncompact sharp gap, and the exact
 gap leakage with genuine complex variations together with the identification of the

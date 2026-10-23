@@ -1,7 +1,7 @@
 # OPICA module status — navigation only
 
 Generated from [ROOT_LEDGER_100.json](ROOT_LEDGER_100.json) and actual source presence.
-Ledger SHA256: `1b736b7daca60cf8570cb5cbad8d2cee4a84a7106197f2698b31244951d16c3d`.
+Ledger SHA256: `ee411afcce0cd6b835b96ad6fb228cc9c096f1b5c7672ced5c309ba78d55a912`.
 
 The original target remains 100 primary roots / 28 acceptance units. Historical
 and narrow local evidence remain separate; every current aggregate/full-release
@@ -38,7 +38,7 @@ gate is OPEN. File presence does not establish proof or type coverage.
 | `NearGapLimits` | 4 | 0 | 4 | 0 | 0 | [present](../../../../../../Zeta23/OPICAFollowup/NearGapLimits.lean) |
 | `NormFirstTransfer` | 4 | 4 | 0 | 0 | 0 | [present](../../../../../../Zeta23/OPICAFollowup/NormFirstTransfer.lean) |
 | `ProfileEulerMaclaurin` | 1 | 0 | 0 | 0 | 1 | planned / missing |
-| `RenormalizedCoPoisson` | 4 | 0 | 1 | 0 | 3 | [present](../../../../../../Zeta23/OPICAFollowup/RenormalizedCoPoisson.lean) |
+| `RenormalizedCoPoisson` | 4 | 0 | 4 | 0 | 0 | [present](../../../../../../Zeta23/OPICAFollowup/RenormalizedCoPoisson.lean) |
 | `RobustLaurent` | 3 | 3 | 0 | 0 | 0 | [present](../../../../../../Zeta23/OPICAFollowup/RobustLaurent.lean) |
 | `SamplingCompatibility` | 2 | 0 | 0 | 0 | 2 | planned / missing |
 | `SawtoothForce` | 3 | 0 | 0 | 0 | 3 | planned / missing |
@@ -49,7 +49,7 @@ gate is OPEN. File presence does not establish proof or type coverage.
 | `WeightedSpectralMeasure` | 2 | 0 | 0 | 0 | 2 | planned / missing |
 | `ZeroProfiles` | 2 | 0 | 0 | 0 | 2 | planned / missing |
 | `ZetaLeftLineBounds` | 1 | 1 | 0 | 0 | 0 | [present](../../../../../../Zeta23/OPICAFollowup/ZetaLeftLineBounds.lean) |
-| **Total** | **100** | **41** | **22** | **0** | **37** | |
+| **Total** | **100** | **41** | **25** | **0** | **34** | |
 
 Regenerate with `python refresh_navigation.py --write`; verify with `--check`.
 Read the [named remaining work](REMAINING_WORK.md) and [next-agent task](NEXT_AGENT_PROMPT.md)

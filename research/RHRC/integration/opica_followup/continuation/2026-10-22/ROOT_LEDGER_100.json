@@ -4,9 +4,9 @@
   "acceptance_units": 28,
   "current_aggregate_accepted": false,
   "status_counts": {
-    "OPEN_NO_COMPLETE_CANDIDATE": 37,
+    "OPEN_NO_COMPLETE_CANDIDATE": 34,
     "PROVED_IN_ORIGINAL_41_ROOT_SOURCE_BOUND_SUBSET": 41,
-    "PROVED_NARROW_LOCAL_GATES_AGGREGATE_PENDING": 22
+    "PROVED_NARROW_LOCAL_GATES_AGGREGATE_PENDING": 25
   },
   "roots": [
     {
@@ -2557,20 +2557,27 @@
         "register_only_after_proof_and_type_review": true,
         "status": "PLANNED_NOT_PROVED"
       },
-      "current_status": "OPEN_NO_COMPLETE_CANDIDATE",
+      "current_status": "PROVED_NARROW_LOCAL_GATES_AGGREGATE_PENDING",
       "gates": {
-        "implementation": "OPEN",
-        "module_compilation": "NOT_ESTABLISHED",
-        "expected_type_consumer": "NOT_ESTABLISHED",
-        "actual_domain_consumer": "NOT_ESTABLISHED",
-        "axiom_check": "NOT_ESTABLISHED",
+        "implementation": "IMPLEMENTED_FULL_FROZEN_CONTRACT_REVIEWED_NARROW",
+        "module_compilation": "PASS_EXACT_COMMITTED_SOURCE_PINNED_LINUX",
+        "expected_type_consumer": "PASS_INDEPENDENT_FULL_TYPE_AND_DEFINITION_AUDITS",
+        "actual_domain_consumer": "PASS_LITERAL_CP1_1_PAIRING_DECAY_2ZETA2_ENTIRE_AND_SELFDUAL_PAIRING",
+        "axiom_check": "STANDARD_ONLY_TRANSITIVE_PRINTED_CLOSURES",
         "aggregate_current_source_export": "OPEN",
         "full_release_acceptance": "OPEN"
       },
       "source_file_present": true,
-      "declaration_lexically_present": false,
-      "source_sha256": "ad5546231c74696031e5980dac9b8b445d6ff388326679fd4f8fbd68dedda39f",
-      "evidence": []
+      "declaration_lexically_present": true,
+      "source_sha256": "3a3ecb500669fb3986786a7e697cd3aed940c8e058c829893e55a4a75a9a75de",
+      "evidence": [
+        "evidence/current-codex/stage7/STATUS.json"
+      ],
+      "independent_consumer": {
+        "path": "consumers/ExpectedCoPoissonFamily.lean",
+        "sha256": "1fd0255554f7a095a9ae441731c4329ea3220f994d7d5a9713fc42ada7073cfe"
+      },
+      "statement_formalization": "K_t = A_t + F A_t with A_t = D_t - e^(t/2) delta_0, proved equal to D_t + D_(-t) - e^(t/2)(delta_0 + F delta_0) with F delta_0 = dx on Schwartz tests. |<A_t, phi>| <= (sum_(n!=0)|n|^(-k)) p_k(phi) e^((1/2-k)t) for every real t and k >= 2, with the lattice constant equal to 2 zeta(k). V_lam is the tempered distribution W_lam + F W_lam, W_lam(phi) = int_(0,oo) e^(-lam t) <A_t, phi> dt (a continuous linear functional from an explicit Schwartz seminorm bound), and V_lam(phi) = int_(0,oo) e^(-lam t) K_t(phi) dt. \"Entire tempered-distribution-valued family\" is formalized as: lam -> V_lam(phi) is entire for every Schwartz test (testwise holomorphy, the standard weak notion), with each V_lam a tempered distribution. Every K_t and V_lam is canonically Fourier self-dual and even on Schwartz tests. No premise; all lam in C."
     },
     {
       "id": "OPICA_FOLLOWUP_RENORMALIZED_COPOISSON_ORDER_ZERO",
@@ -2595,20 +2602,27 @@
         "register_only_after_proof_and_type_review": true,
         "status": "PLANNED_NOT_PROVED"
       },
-      "current_status": "OPEN_NO_COMPLETE_CANDIDATE",
+      "current_status": "PROVED_NARROW_LOCAL_GATES_AGGREGATE_PENDING",
       "gates": {
-        "implementation": "OPEN",
-        "module_compilation": "NOT_ESTABLISHED",
-        "expected_type_consumer": "NOT_ESTABLISHED",
-        "actual_domain_consumer": "NOT_ESTABLISHED",
-        "axiom_check": "NOT_ESTABLISHED",
+        "implementation": "IMPLEMENTED_FULL_FROZEN_CONTRACT_REVIEWED_NARROW",
+        "module_compilation": "PASS_EXACT_COMMITTED_SOURCE_PINNED_LINUX",
+        "expected_type_consumer": "PASS_INDEPENDENT_FULL_TYPE_AND_DEFINITION_AUDITS",
+        "actual_domain_consumer": "PASS_ORIGIN_ATOMS_NEAR_ORIGIN_DENSITY_CUTOFF_PAIRING_LIMIT_LOCAL_TESTS_AND_NONVACUOUS_HALF",
+        "axiom_check": "STANDARD_ONLY_TRANSITIVE_PRINTED_CLOSURES",
         "aggregate_current_source_export": "OPEN",
         "full_release_acceptance": "OPEN"
       },
       "source_file_present": true,
-      "declaration_lexically_present": false,
-      "source_sha256": "ad5546231c74696031e5980dac9b8b445d6ff388326679fd4f8fbd68dedda39f",
-      "evidence": []
+      "declaration_lexically_present": true,
+      "source_sha256": "3a3ecb500669fb3986786a7e697cd3aed940c8e058c829893e55a4a75a9a75de",
+      "evidence": [
+        "evidence/current-codex/stage7/STATUS.json"
+      ],
+      "independent_consumer": {
+        "path": "consumers/ExpectedCoPoissonOrderZero.lean",
+        "sha256": "68a01d31ef49ae9ac79dc06b1752577758413740cc4190fd4dca3763061c8453"
+      },
+      "statement_formalization": "On 0 < Re rho < 1 with lam = rho - 1/2: the actual cutoffs int_0^T e^(-lam t) K_t dt (T >= 0) are proved equal on every Schwartz test to the locally finite complex measures r_T dx + ((1 - e^(-rho T))/rho) delta_0 (coPoissonCutoff, canonical Jordan pairs), r_T the explicit (CP1.5) density of the two lattice-ray families minus (e^((1-rho)T) - 1)/(1-rho), by the change of variables x = (n+1) e^(+-t) on every ray. Local total variation: for every compact K the genuine finite complex variation of the difference of compact restrictions tends to 0 as T -> oo (real cutoff), and the parent LocalVariationConvergence holds for T = n. The limit is coPoissonLimitMeasure = rho^-1 delta_0 + [S_rho(|x|) + zeta(rho)|x|^(rho-1) + (1-rho)^-1] dx with S_rho the frozen inclusive finite sums (finiteSumSrho = coPoissonPowerSums). zeta(rho) enters through the Euler-Maclaurin form of the partial sums (CP1.6, parent PNT+ port), not through a divergent Dirichlet series. Additionally proved: V_(rho-1/2)(phi) equals the pairing with the limit measure for every Schwartz test (dominated convergence with an explicit polynomial-times-|x|^(sigma-1) majorant). Origin correction: cutoff atom (1-e^(-rho T))/rho, limit atom 1/rho."
     },
     {
       "id": "OPICA_FOLLOWUP_ZERO_MEASURE_EXACT_PROPERTIES",
@@ -2633,20 +2647,27 @@
         "register_only_after_proof_and_type_review": true,
         "status": "PLANNED_NOT_PROVED"
       },
-      "current_status": "OPEN_NO_COMPLETE_CANDIDATE",
+      "current_status": "PROVED_NARROW_LOCAL_GATES_AGGREGATE_PENDING",
       "gates": {
-        "implementation": "OPEN",
-        "module_compilation": "NOT_ESTABLISHED",
-        "expected_type_consumer": "NOT_ESTABLISHED",
-        "actual_domain_consumer": "NOT_ESTABLISHED",
-        "axiom_check": "NOT_ESTABLISHED",
+        "implementation": "IMPLEMENTED_FULL_FROZEN_CONTRACT_REVIEWED_NARROW",
+        "module_compilation": "PASS_EXACT_COMMITTED_SOURCE_PINNED_LINUX",
+        "expected_type_consumer": "PASS_INDEPENDENT_FULL_TYPE_AND_DEFINITION_AUDITS",
+        "actual_domain_consumer": "PASS_PARENT_H1_PREDICATES_ATOM_MINUS_ONE_OFFLATTICE_FAILURE_ABOVE_HEIGHT_AND_NONVACUOUS_CONSTRUCTION",
+        "axiom_check": "STANDARD_ONLY_TRANSITIVE_PRINTED_CLOSURES",
         "aggregate_current_source_export": "OPEN",
         "full_release_acceptance": "OPEN"
       },
       "source_file_present": true,
-      "declaration_lexically_present": false,
-      "source_sha256": "ad5546231c74696031e5980dac9b8b445d6ff388326679fd4f8fbd68dedda39f",
-      "evidence": []
+      "declaration_lexically_present": true,
+      "source_sha256": "3a3ecb500669fb3986786a7e697cd3aed940c8e058c829893e55a4a75a9a75de",
+      "evidence": [
+        "evidence/current-codex/stage7/STATUS.json"
+      ],
+      "independent_consumer": {
+        "path": "consumers/ExpectedZeroMeasure.lean",
+        "sha256": "01f2f5d3c22aedcae2a3ec06b403129c78b7c76bf89b5673cd3b3e28968e9fe7"
+      },
+      "statement_formalization": "Premises: riemannZeta rho = 0, 0 < Re rho < 1, rho != 1/2 (actual nontrivial zero). The normalized complex measure zeroMeasure rho = (S_rho(|x|)/b_rho) dx - sum_(n!=0) delta_n has explicit canonical Jordan pairs (positive/negative parts of Re and Im of the parent coPoissonComplexDensity; the punctured lattice is the comb D_0 restricted to the complement of 0) and is proved equal on every Schwartz test to b_rho^-1 (V_(rho-1/2) - c_rho(delta_0 + dx) - b_rho D_0), i.e. (CP1.7) divided by b_rho, with b_rho = (1-2rho)/kappa = 1/rho - 1/(1-rho) != 0 and kappa = rho(1-rho). Properties: linear variation growth (S_rho = O_rho(1) via the Euler-Maclaurin partial sums), canonical Fourier self-duality of its tempered distribution, all four Jordan parts even (Measure.map neg), exact open unit gap as variationControl(Ioo (-1) 1) = 0, zero origin atom, atom -1 at 1 (real negative part mass 1, all other parts 0). Real part eta_rho = f_rho dx - sum_(n!=0) delta_n (f_rho = parent coPoissonRealDensity): linear growth, canonical Fourier self-duality (from evenness and conj(F phi) = F(conj phi o (-.))), unit gap, zero origin atom, atom -1 at 1, nonzero. Evenness of eta is the Jordan-part map clause. The H1 predicate bundle (HasUnitGap, FourierSelfdual, HasLinearGrowth) is checked in the consumer against the parent definitions."
     },
     {
       "id": "OPICA_FOLLOWUP_ZERO_MEASURE_FIRST_CELL_SIGN",
@@ -2674,7 +2695,7 @@
       "current_status": "PROVED_NARROW_LOCAL_GATES_AGGREGATE_PENDING",
       "gates": {
         "implementation": "IMPLEMENTED_FULL_FROZEN_CONTRACT_REVIEWED_NARROW",
-        "module_compilation": "PASS_EXACT_SOURCE_ISOLATED_OVERLAY",
+        "module_compilation": "PASS_EXACT_COMMITTED_SOURCE_PINNED_LINUX_STAGE7_REVERIFIED",
         "expected_type_consumer": "PASS_IMPORTED_INDEPENDENT_EXPLICIT_FULL_TYPE",
         "actual_domain_consumer": "PASS_ACTUAL_CONSTRUCTORS_AND_BOUNDARY_CONTROLS",
         "axiom_check": "STANDARD_ONLY_TRANSITIVE_PRINTED_CLOSURES",
@@ -2683,9 +2704,10 @@
       },
       "source_file_present": true,
       "declaration_lexically_present": true,
-      "source_sha256": "ad5546231c74696031e5980dac9b8b445d6ff388326679fd4f8fbd68dedda39f",
+      "source_sha256": "3a3ecb500669fb3986786a7e697cd3aed940c8e058c829893e55a4a75a9a75de",
       "evidence": [
-        "evidence/current-codex/stage1/first-cell/STATUS.json"
+        "evidence/current-codex/stage1/first-cell/STATUS.json",
+        "evidence/current-codex/stage7/STATUS.json"
       ],
       "independent_consumer": {
         "path": "consumers/ExpectedFirstCell.lean",
@@ -4177,18 +4199,18 @@
   "evidence_paths_relative_to": "research/RHRC/integration/opica_followup/continuation/2026-10-22",
   "verification_summary": {
     "historical_source_bound_subset_roots": 41,
-    "independently_verified_narrow_roots": 22,
+    "independently_verified_narrow_roots": 25,
     "prior_failed_or_blocked_unaccepted_roots": 0,
-    "open_no_complete_candidate_roots": 37,
+    "open_no_complete_candidate_roots": 34,
     "full_required_roots": 100,
     "acceptance_units": 28,
-    "receipt": "STAGE6_HANDOVER.md",
+    "receipt": "STAGE7_HANDOVER.md",
     "independent_source_repairs": [],
     "independent_consumer_repairs": [],
     "historical41_status_unchanged": true,
     "current_aggregate_accepted": false,
-    "meaning": "41 historical plus 22 narrow local results is not aggregate 63-root acceptance. 37 absent implementations plus all remaining domain/integration gates remain OPEN; original100/28 scope unchanged.",
-    "receipt_scope": "Index of three Stage6, two Stage5, two Stage4 and fifteen retained narrow original-root results, not an aggregate receipt",
+    "meaning": "41 historical plus 25 narrow local results is not aggregate 66-root acceptance. 34 absent implementations plus all remaining domain/integration gates remain OPEN; original100/28 scope unchanged.",
+    "receipt_scope": "Index of three Stage7, three Stage6, two Stage5, two Stage4 and fifteen retained narrow original-root results, not an aggregate receipt",
     "additional_stage1_primary_roots": [
       "laguerre_tail_norm",
       "dilated_comb_fourier",
@@ -4214,6 +4236,11 @@
       "weighted_mobius_inverse",
       "weighted_mixture_sharp_gap",
       "weighted_gap_leakage"
+    ],
+    "additional_stage7_primary_roots": [
+      "renormalized_copoisson_tempered_family",
+      "renormalized_copoisson_order_zero",
+      "zero_measure_exact_properties"
     ]
   }
 }
