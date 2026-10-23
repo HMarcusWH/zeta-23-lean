@@ -1,4 +1,5 @@
 import Zeta23.OPICAFollowup.ComplexLocalMeasures
+import Zeta23.OPICAFollowup.DilatedComb
 import Zeta23.ExceptionalZero.ZetaRealStripNonvanishing
 import Mathlib.Analysis.SpecialFunctions.Complex.Log
 import Mathlib.Analysis.SpecialFunctions.Trigonometric.Complex
@@ -10,8 +11,9 @@ import Mathlib.Tactic
 The density below is the literal inclusive finite-power-sum density of the
 frozen co-Poisson construction. Its first-cell sign identities use no positivity
 assumption, synthetic zero or assumed measure with desired Fourier properties.
-The distributional construction, local-total-variation identification and
-complete zero-measure property roots remain OPEN and are separate obligations.
+The distributional construction is the renormalized tempered family below. The
+local-total-variation identification and the complete zero-measure property roots
+remain OPEN and are separate obligations.
 -/
 
 noncomputable section
@@ -374,6 +376,483 @@ theorem zero_measure_first_cell_sign (delta gamma : ℝ)
   exact ⟨coPoisson_first_cell_negative_value delta gamma hheight,
     fun hd hh z hz => coPoisson_phase_both_signs delta gamma hd hh z hz⟩
 
+/-! ### The renormalized co-Poisson tempered family (CP1.1-CP1.2) -/
+
+section TemperedFamily
+open scoped FourierTransform SchwartzMap
+
+/-- A_t = D_t − e^(t/2) δ₀: the dilated comb with its origin atom removed. -/
+def coPoissonA (t : ℝ) : TemperedDistribution ℝ ℂ :=
+  dilatedCombDistribution t - ((Real.exp (t / 2) : ℝ) : ℂ) • TemperedDistribution.delta (0 : ℝ)
+
+lemma coPoissonA_apply (t : ℝ) (φ : 𝓢(ℝ, ℂ)) :
+    coPoissonA t φ = (Real.exp (t / 2) : ℂ) *
+      ∑' n : ℤ, if n = 0 then 0 else φ (Real.exp t * n) := by
+  have hs := dilatedComb_schwartz_summable t φ
+  rw [coPoissonA, sub_apply, smul_apply,
+    dilatedCombDistribution_apply, TemperedDistribution.delta_apply, hs.tsum_eq_add_tsum_ite 0]
+  simp only [Int.cast_zero, mul_zero, smul_eq_mul]
+  ring
+
+/-- The lattice constant Σ_(n ≠ 0) |n|^(-k) = 2ζ(k). -/
+def latticeZetaConst (k : ℕ) : ℝ := ∑' n : ℤ, |(n : ℝ)| ^ (-(k : ℝ))
+
+/-- |⟨A_t, φ⟩| ≤ (Σ_(n≠0) |n|^(-k)) p_k(φ) e^((1/2-k) t) for every real t and k ≥ 2. -/
+lemma coPoissonA_norm_le (t : ℝ) (φ : 𝓢(ℝ, ℂ)) {k : ℕ} (hk : 2 ≤ k) :
+    ‖coPoissonA t φ‖ ≤
+      latticeZetaConst k * SchwartzMap.seminorm ℂ k 0 φ * Real.exp ((1 / 2 - k) * t) := by
+  have hk1 : (1 : ℝ) < k := by exact_mod_cast (by omega : 1 < k)
+  set S := SchwartzMap.seminorm ℂ k 0 φ with hS
+  have hS0 : 0 ≤ S := apply_nonneg _ _
+  have hterm (n : ℤ) : ‖(if n = 0 then (0 : ℂ) else φ (Real.exp t * n))‖ ≤
+      S * Real.exp (-(k * t)) * |(n : ℝ)| ^ (-(k : ℝ)) := by
+    by_cases hn : n = 0
+    · subst hn
+      simp only [if_true, norm_zero, Int.cast_zero, abs_zero]
+      rw [Real.zero_rpow (ne_of_lt (by linarith : -(k : ℝ) < 0))]; simp
+    · rw [if_neg hn]
+      have hn' : (0 : ℝ) < |(n : ℝ)| := abs_pos.mpr (by exact_mod_cast hn)
+      have hb := SchwartzMap.norm_pow_mul_le_seminorm ℂ φ k (Real.exp t * n)
+      rw [Real.norm_eq_abs, abs_mul, abs_of_pos (Real.exp_pos t), mul_pow] at hb
+      have hpos : 0 < Real.exp t ^ k * |(n : ℝ)| ^ k := by positivity
+      have hφ : ‖φ (Real.exp t * n)‖ ≤ S / (Real.exp t ^ k * |(n : ℝ)| ^ k) := by
+        rw [le_div_iff₀ hpos]; linarith
+      refine hφ.trans (le_of_eq ?_)
+      rw [Real.rpow_neg hn'.le, Real.rpow_natCast, ← Real.exp_nat_mul, Real.exp_neg,
+        div_eq_mul_inv, mul_inv]
+      ring
+  have hsum : Summable (fun n : ℤ => S * Real.exp (-(k * t)) * |(n : ℝ)| ^ (-(k : ℝ))) :=
+    (Real.summable_abs_int_rpow hk1).mul_left _
+  rw [coPoissonA_apply, norm_mul, Complex.norm_real, Real.norm_eq_abs,
+    abs_of_pos (Real.exp_pos _)]
+  have htsum := tsum_of_norm_bounded hsum.hasSum hterm
+  rw [tsum_mul_left] at htsum
+  calc Real.exp (t / 2) * ‖∑' n : ℤ, if n = 0 then (0 : ℂ) else φ (Real.exp t * n)‖
+      ≤ Real.exp (t / 2) * (S * Real.exp (-(k * t)) * latticeZetaConst k) :=
+        mul_le_mul_of_nonneg_left htsum (Real.exp_pos _).le
+    _ = latticeZetaConst k * S * Real.exp ((1 / 2 - k) * t) := by
+        rw [show (1 / 2 - (k : ℝ)) * t = t / 2 + -(k * t) by ring, Real.exp_add]
+        ring
+lemma coPoissonA_term_continuous (φ : 𝓢(ℝ, ℂ)) (n : ℤ) :
+    Continuous (fun t : ℝ => if n = 0 then (0 : ℂ) else φ (Real.exp t * n)) := by
+  by_cases hn : n = 0
+  · simp only [hn, if_true]; exact continuous_const
+  · simp only [hn, if_false]
+    exact φ.continuous.comp (Real.continuous_exp.mul continuous_const)
+
+/-- t ↦ ⟨A_t, φ⟩ is continuous (locally uniform lattice convergence). -/
+lemma coPoissonA_continuous (φ : 𝓢(ℝ, ℂ)) : Continuous (fun t : ℝ => coPoissonA t φ) := by
+  have hS0 : 0 ≤ SchwartzMap.seminorm ℂ 2 0 φ := apply_nonneg _ _
+  have hsum : Continuous (fun t : ℝ => ∑' n : ℤ,
+      if n = 0 then (0 : ℂ) else φ (Real.exp t * n)) := by
+    refine continuous_iff_continuousAt.mpr (fun t₀ => ?_)
+    have hon : ContinuousOn (fun t : ℝ => ∑' n : ℤ,
+        if n = 0 then (0 : ℂ) else φ (Real.exp t * n)) (Ioi (t₀ - 1)) := by
+      refine continuousOn_tsum (fun n => (coPoissonA_term_continuous φ n).continuousOn)
+        ((Real.summable_abs_int_rpow (by norm_num : (1 : ℝ) < 2)).mul_left
+          (SchwartzMap.seminorm ℂ 2 0 φ * Real.exp (-(2 * (t₀ - 1))))) (fun n t ht => ?_)
+      by_cases hn : n = 0
+      · subst hn; simp only [if_true, norm_zero, Int.cast_zero, abs_zero]
+        rw [Real.zero_rpow (by norm_num)]; simp
+      · rw [if_neg hn]
+        have hn' : (0 : ℝ) < |(n : ℝ)| := abs_pos.mpr (by exact_mod_cast hn)
+        have hb := SchwartzMap.norm_pow_mul_le_seminorm ℂ φ 2 (Real.exp t * n)
+        rw [Real.norm_eq_abs, abs_mul, abs_of_pos (Real.exp_pos t), mul_pow] at hb
+        have hpos : 0 < Real.exp t ^ 2 * |(n : ℝ)| ^ 2 := by positivity
+        have hφ : ‖φ (Real.exp t * n)‖ ≤ SchwartzMap.seminorm ℂ 2 0 φ /
+            (Real.exp t ^ 2 * |(n : ℝ)| ^ 2) := by
+          rw [le_div_iff₀ hpos]; linarith
+        refine hφ.trans ?_
+        rw [div_le_iff₀ hpos]
+        have hexp : Real.exp (-(2 * (t₀ - 1))) * Real.exp t ^ 2 ≥ 1 := by
+          rw [← Real.exp_nat_mul, ← Real.exp_add]
+          exact Real.one_le_exp (by push_cast; nlinarith [show t₀ - 1 < t from ht])
+        have hrp : |(n : ℝ)| ^ (-((2 : ℕ) : ℝ)) * |(n : ℝ)| ^ 2 = 1 := by
+          rw [Real.rpow_neg hn'.le, Real.rpow_natCast, inv_mul_cancel₀ (by positivity)]
+        calc SchwartzMap.seminorm ℂ 2 0 φ = SchwartzMap.seminorm ℂ 2 0 φ * 1 * 1 := by ring
+          _ ≤ SchwartzMap.seminorm ℂ 2 0 φ * (Real.exp (-(2 * (t₀ - 1))) * Real.exp t ^ 2) *
+              (|(n : ℝ)| ^ (-((2 : ℕ) : ℝ)) * |(n : ℝ)| ^ 2) := by
+            rw [hrp]; gcongr
+          _ = _ := by push_cast; ring
+    exact hon.continuousAt (Ioi_mem_nhds (by linarith))
+  have h : (fun t : ℝ => coPoissonA t φ) = fun t => (Real.exp (t / 2) : ℂ) *
+      ∑' n : ℤ, if n = 0 then (0 : ℂ) else φ (Real.exp t * n) := by
+    funext t; exact coPoissonA_apply t φ
+  rw [h]
+  exact (Complex.continuous_ofReal.comp (Real.continuous_exp.comp
+    (continuous_id.div_const 2))).mul hsum
+
+/-- The exponent choice making e^(-lamt) ⟨A_t, φ⟩ integrable at infinity. -/
+def coPoissonOrder (lam : ℂ) : ℕ := 2 + Nat.ceil |lam.re|
+
+lemma coPoissonOrder_two_le (lam : ℂ) : 2 ≤ coPoissonOrder lam := by
+  unfold coPoissonOrder; omega
+
+lemma coPoissonOrder_exponent_neg (lam : ℂ) :
+    (1 / 2 - (coPoissonOrder lam : ℝ) - lam.re) < 0 := by
+  unfold coPoissonOrder
+  have h1 := Nat.le_ceil |lam.re|
+  have h2 := neg_abs_le lam.re
+  push_cast
+  linarith
+
+lemma norm_cexp_neg_mul_ofReal (lam : ℂ) (t : ℝ) :
+    ‖cexp (-lam * t)‖ = Real.exp (-lam.re * t) := by
+  rw [Complex.norm_exp]
+  congr 1
+  simp
+
+lemma coPoissonA_laplace_bound (lam : ℂ) (φ : 𝓢(ℝ, ℂ)) (t : ℝ) :
+    ‖cexp (-lam * t) * coPoissonA t φ‖ ≤
+      latticeZetaConst (coPoissonOrder lam) * SchwartzMap.seminorm ℂ (coPoissonOrder lam) 0 φ *
+        Real.exp ((1 / 2 - (coPoissonOrder lam : ℝ) - lam.re) * t) := by
+  rw [norm_mul, norm_cexp_neg_mul_ofReal]
+  have h := coPoissonA_norm_le t φ (coPoissonOrder_two_le lam)
+  calc Real.exp (-lam.re * t) * ‖coPoissonA t φ‖
+      ≤ Real.exp (-lam.re * t) * (latticeZetaConst (coPoissonOrder lam) *
+          SchwartzMap.seminorm ℂ (coPoissonOrder lam) 0 φ *
+          Real.exp ((1 / 2 - (coPoissonOrder lam : ℝ)) * t)) :=
+        mul_le_mul_of_nonneg_left h (Real.exp_pos _).le
+    _ = _ := by
+        rw [show (1 / 2 - (coPoissonOrder lam : ℝ) - lam.re) * t =
+          (1 / 2 - (coPoissonOrder lam : ℝ)) * t + -lam.re * t by ring, Real.exp_add]
+        ring
+
+lemma coPoissonA_laplace_integrable (lam : ℂ) (φ : 𝓢(ℝ, ℂ)) :
+    IntegrableOn (fun t : ℝ => cexp (-lam * t) * coPoissonA t φ) (Ioi 0) := by
+  have hg : IntegrableOn (fun t : ℝ => latticeZetaConst (coPoissonOrder lam) *
+      SchwartzMap.seminorm ℂ (coPoissonOrder lam) 0 φ *
+        Real.exp ((1 / 2 - (coPoissonOrder lam : ℝ) - lam.re) * t)) (Ioi 0) :=
+    (integrableOn_exp_mul_Ioi (coPoissonOrder_exponent_neg lam) 0).const_mul _
+  refine hg.mono' ?_ (Eventually.of_forall (fun t => coPoissonA_laplace_bound lam φ t))
+  exact ((Complex.continuous_exp.comp ((continuous_const).mul
+    Complex.continuous_ofReal)).mul (coPoissonA_continuous φ)).aestronglyMeasurable
+
+/-- The Laplace pairing ∫_(0,∞) e^(-lam t) ⟨A_t, φ⟩ dt. -/
+def coPoissonWfun (lam : ℂ) (φ : 𝓢(ℝ, ℂ)) : ℂ :=
+  ∫ t in Ioi (0 : ℝ), cexp (-lam * t) * coPoissonA t φ
+
+lemma coPoissonWfun_bound (lam : ℂ) (φ : 𝓢(ℝ, ℂ)) :
+    ‖coPoissonWfun lam φ‖ ≤ (latticeZetaConst (coPoissonOrder lam) *
+      ∫ t in Ioi 0, Real.exp ((1 / 2 - (coPoissonOrder lam : ℝ) - lam.re) * t)) *
+        SchwartzMap.seminorm ℂ (coPoissonOrder lam) 0 φ := by
+  have hg := (integrableOn_exp_mul_Ioi (coPoissonOrder_exponent_neg lam) 0).const_mul
+    (latticeZetaConst (coPoissonOrder lam) * SchwartzMap.seminorm ℂ (coPoissonOrder lam) 0 φ)
+  refine (norm_integral_le_of_norm_le hg
+    (Eventually.of_forall (fun t => coPoissonA_laplace_bound lam φ t))).trans (le_of_eq ?_)
+  rw [integral_const_mul]
+  ring
+
+/-- W_lam as a genuine tempered distribution (continuity from the Schwartz seminorm bound). -/
+def coPoissonW (lam : ℂ) : TemperedDistribution ℝ ℂ :=
+  ContinuousLinearMap.toPointwiseConvergenceCLM _ _ _ _ <|
+    SchwartzMap.mkCLMtoNormedSpace (σ := RingHom.id ℂ) (coPoissonWfun lam)
+      (fun f g => by
+        unfold coPoissonWfun
+        simp_rw [map_add, mul_add]
+        exact integral_add (coPoissonA_laplace_integrable lam f)
+          (coPoissonA_laplace_integrable lam g))
+      (fun a f => by
+        unfold coPoissonWfun
+        simp_rw [map_smul, smul_eq_mul, RingHom.id_apply]
+        rw [← integral_const_mul]
+        congr 1; funext t; ring)
+      ⟨{(coPoissonOrder lam, 0)}, latticeZetaConst (coPoissonOrder lam) *
+        ∫ t in Ioi 0, Real.exp ((1 / 2 - (coPoissonOrder lam : ℝ) - lam.re) * t),
+        by
+          refine mul_nonneg ?_ (setIntegral_nonneg measurableSet_Ioi (fun t _ => (Real.exp_pos _).le))
+          exact tsum_nonneg (fun n => Real.rpow_nonneg (abs_nonneg _) _),
+        fun f => by
+          rw [Finset.sup_singleton, SchwartzMap.schwartzSeminormFamily_apply]
+          exact coPoissonWfun_bound lam f⟩
+
+lemma coPoissonW_apply (lam : ℂ) (φ : 𝓢(ℝ, ℂ)) :
+    coPoissonW lam φ = ∫ t in Ioi (0 : ℝ), cexp (-lam * t) * coPoissonA t φ := rfl
+
+/-- K_t = A_t + 𝓕 A_t. -/
+def renormalizedCombKernel (t : ℝ) : TemperedDistribution ℝ ℂ := coPoissonA t + 𝓕 (coPoissonA t)
+
+lemma renormalizedCombKernel_apply (t : ℝ) (φ : 𝓢(ℝ, ℂ)) :
+    renormalizedCombKernel t φ = coPoissonA t φ + coPoissonA t (𝓕 φ) := rfl
+
+lemma schwartz_fourier_fourier_apply (φ : 𝓢(ℝ, ℂ)) (x : ℝ) : 𝓕 (𝓕 φ) x = φ (-x) := by
+  have h : 𝓕⁻ (𝓕 φ) = φ := FourierPair.fourierInv_fourier_eq (F := 𝓢(ℝ, ℂ)) φ
+  rw [SchwartzMap.fourierInv_apply_eq] at h
+  have h' := congrArg (fun ψ : 𝓢(ℝ, ℂ) => ψ (-x)) h
+  simpa using h'
+
+lemma coPoissonA_fourier_fourier (t : ℝ) (φ : 𝓢(ℝ, ℂ)) :
+    coPoissonA t (𝓕 (𝓕 φ)) = coPoissonA t φ := by
+  have hD : dilatedCombDistribution t (𝓕 (𝓕 φ)) = dilatedCombDistribution t φ := by
+    change (𝓕 (𝓕 (dilatedCombDistribution t))) φ = _
+    rw [(dilated_comb_fourier t).2.2, (dilated_comb_fourier (-t)).2.2, neg_neg]
+  rw [coPoissonA, sub_apply, sub_apply, smul_apply, smul_apply, hD,
+    TemperedDistribution.delta_apply, TemperedDistribution.delta_apply,
+    schwartz_fourier_fourier_apply, neg_zero]
+
+/-- Every K_t is canonically Fourier self-dual. -/
+theorem renormalizedCombKernel_fourier (t : ℝ) : 𝓕 (renormalizedCombKernel t) = renormalizedCombKernel t := by
+  ext φ
+  change renormalizedCombKernel t (𝓕 φ) = renormalizedCombKernel t φ
+  rw [renormalizedCombKernel_apply, renormalizedCombKernel_apply, coPoissonA_fourier_fourier, add_comm]
+
+lemma fourier_delta_zero_apply (φ : 𝓢(ℝ, ℂ)) :
+    (𝓕 (TemperedDistribution.delta (0 : ℝ))) φ = ∫ x, φ x := by
+  change (𝓕 φ) 0 = _
+  rw [SchwartzMap.fourier_coe, Real.fourier_real_eq_integral_exp_smul]
+  simp
+
+/-- The explicit cancellation form K_t = D_t + D_(-t) - e^(t/2)(δ₀ + dx). -/
+theorem renormalizedCombKernel_eq (t : ℝ) : renormalizedCombKernel t = dilatedCombDistribution t +
+    dilatedCombDistribution (-t) - ((Real.exp (t / 2) : ℝ) : ℂ) •
+      (TemperedDistribution.delta (0 : ℝ) + 𝓕 (TemperedDistribution.delta (0 : ℝ))) := by
+  ext φ
+  have hD : dilatedCombDistribution t (𝓕 φ) = dilatedCombDistribution (-t) φ := by
+    change (𝓕 (dilatedCombDistribution t)) φ = _
+    rw [(dilated_comb_fourier t).2.2]
+  rw [renormalizedCombKernel_apply, coPoissonA, sub_apply, sub_apply, smul_apply, smul_apply,
+    hD, sub_apply, add_apply, smul_apply, add_apply]
+  change _ = _ + _ - _ • (_ + (𝓕 φ) 0)
+  rw [TemperedDistribution.delta_apply, TemperedDistribution.delta_apply]
+  ring
+
+/-- The renormalized co-Poisson family V_lam = ∫_0^∞ e^(-lam t) K_t dt. -/
+def coPoissonFamily (lam : ℂ) : TemperedDistribution ℝ ℂ := coPoissonW lam + 𝓕 (coPoissonW lam)
+
+lemma renormalizedCombKernel_laplace_integrable (lam : ℂ) (φ : 𝓢(ℝ, ℂ)) :
+    IntegrableOn (fun t : ℝ => cexp (-lam * t) * renormalizedCombKernel t φ) (Ioi 0) := by
+  have h := (coPoissonA_laplace_integrable lam φ).add (coPoissonA_laplace_integrable lam (𝓕 φ))
+  refine h.congr_fun (fun t _ => ?_) measurableSet_Ioi
+  simp only [Pi.add_apply, renormalizedCombKernel_apply]
+  ring
+
+theorem coPoissonFamily_apply (lam : ℂ) (φ : 𝓢(ℝ, ℂ)) :
+    coPoissonFamily lam φ = ∫ t in Ioi (0 : ℝ), cexp (-lam * t) * renormalizedCombKernel t φ := by
+  rw [coPoissonFamily, add_apply]
+  change coPoissonW lam φ + coPoissonW lam (𝓕 φ) = _
+  rw [coPoissonW_apply, coPoissonW_apply, ← integral_add (coPoissonA_laplace_integrable lam φ)
+    (coPoissonA_laplace_integrable lam (𝓕 φ))]
+  congr 1
+  funext t
+  rw [renormalizedCombKernel_apply]
+  ring
+
+/-- V_lam is canonically Fourier self-dual for every lam. -/
+theorem coPoissonFamily_fourier (lam : ℂ) : 𝓕 (coPoissonFamily lam) = coPoissonFamily lam := by
+  ext φ
+  change coPoissonFamily lam (𝓕 φ) = coPoissonFamily lam φ
+  rw [coPoissonFamily_apply, coPoissonFamily_apply]
+  congr 1
+  funext t
+  congr 1
+  exact congrArg (fun T : TemperedDistribution ℝ ℂ => T φ) (renormalizedCombKernel_fourier t)
+
+/-- A Laplace transform over (0,∞) of a continuous function with all exponential decay
+rates e^((1/2-k) t), k ≥ 2, is entire. -/
+lemma laplace_entire {f : ℝ → ℂ} (hf : Continuous f)
+    (hb : ∀ k : ℕ, 2 ≤ k → ∃ M : ℝ, ∀ t : ℝ, ‖f t‖ ≤ M * Real.exp ((1 / 2 - k) * t)) :
+    Differentiable ℂ (fun lam : ℂ => ∫ t in Ioi (0 : ℝ), cexp (-lam * t) * f t) := by
+  intro lam0
+  set N := coPoissonOrder lam0 with hN
+  obtain ⟨M, hM⟩ := hb (N + 2) (by have := coPoissonOrder_two_le lam0; omega)
+  have hneg := coPoissonOrder_exponent_neg lam0
+  set c : ℝ := 1 / 2 - (N : ℝ) - lam0.re with hc
+  have hcont (lam : ℂ) : Continuous (fun t : ℝ => cexp (-lam * t) * f t) :=
+    (Complex.continuous_exp.comp (continuous_const.mul Complex.continuous_ofReal)).mul hf
+  have hF'cont : Continuous (fun t : ℝ => -(t : ℂ) * cexp (-lam0 * t) * f t) :=
+    (Complex.continuous_ofReal.neg.mul
+      (Complex.continuous_exp.comp (continuous_const.mul Complex.continuous_ofReal))).mul hf
+  have hbound_int : Integrable (fun t : ℝ => M * Real.exp (c * t)) (volume.restrict (Ioi 0)) :=
+    (integrableOn_exp_mul_Ioi hneg 0).const_mul M
+  have hMnn (t : ℝ) : 0 ≤ M * Real.exp ((1 / 2 - ((N + 2 : ℕ) : ℝ)) * t) :=
+    (norm_nonneg _).trans (hM t)
+  have hderiv_bound : ∀ᵐ (t : ℝ) ∂(volume.restrict (Ioi (0 : ℝ))), ∀ lam ∈ Metric.ball lam0 1,
+      ‖-(t : ℂ) * cexp (-lam * t) * f t‖ ≤ M * Real.exp (c * t) := by
+    filter_upwards [ae_restrict_mem measurableSet_Ioi] with t ht lam hlam
+    have ht0 : (0 : ℝ) ≤ t := le_of_lt ht
+    have hre : lam0.re - 1 ≤ lam.re := by
+      have h1 : |lam.re - lam0.re| ≤ ‖lam - lam0‖ := by
+        rw [← Complex.sub_re]; exact Complex.abs_re_le_norm _
+      have h2 : ‖lam - lam0‖ < 1 := by rwa [Metric.mem_ball, dist_eq_norm] at hlam
+      linarith [abs_le.mp h1]
+    rw [norm_mul, norm_mul, norm_neg, Complex.norm_real, Real.norm_eq_abs, abs_of_nonneg ht0,
+      norm_cexp_neg_mul_ofReal]
+    have hte : t ≤ Real.exp t := by linarith [Real.add_one_le_exp t]
+    have hexp : Real.exp (-lam.re * t) ≤ Real.exp ((1 - lam0.re) * t) :=
+      Real.exp_le_exp.mpr (mul_le_mul_of_nonneg_right (by linarith) ht0)
+    calc t * Real.exp (-lam.re * t) * ‖f t‖
+        ≤ Real.exp t * Real.exp ((1 - lam0.re) * t) *
+            (M * Real.exp ((1 / 2 - ((N + 2 : ℕ) : ℝ)) * t)) :=
+          mul_le_mul (mul_le_mul hte hexp (Real.exp_pos _).le (Real.exp_pos _).le) (hM t)
+            (norm_nonneg _) (by positivity)
+      _ = M * Real.exp (c * t) := by
+          rw [← mul_assoc, mul_comm _ M, mul_assoc M, ← Real.exp_add, ← Real.exp_add]
+          congr 2
+          rw [hc]; push_cast; ring
+  have key := hasDerivAt_integral_of_dominated_loc_of_deriv_le (μ := volume.restrict (Ioi 0))
+    (F := fun lam t => cexp (-lam * t) * f t)
+    (F' := fun lam t => -(t : ℂ) * cexp (-lam * t) * f t) (x₀ := lam0)
+    (bound := fun t => M * Real.exp (c * t)) (Metric.ball_mem_nhds lam0 one_pos)
+    (Eventually.of_forall (fun lam => (hcont lam).aestronglyMeasurable))
+    (by
+      refine hbound_int.mono' (hcont lam0).aestronglyMeasurable ?_
+      filter_upwards [ae_restrict_mem measurableSet_Ioi] with t ht
+      have h := hderiv_bound
+      have ht0 : (0 : ℝ) ≤ t := le_of_lt ht
+      rw [norm_mul, norm_cexp_neg_mul_ofReal]
+      calc Real.exp (-lam0.re * t) * ‖f t‖
+          ≤ Real.exp (-lam0.re * t) * (M * Real.exp ((1 / 2 - ((N + 2 : ℕ) : ℝ)) * t)) :=
+            mul_le_mul_of_nonneg_left (hM t) (Real.exp_pos _).le
+        _ ≤ Real.exp (-lam0.re * t) * (M * Real.exp ((1 / 2 - ((N + 2 : ℕ) : ℝ)) * t)) *
+              Real.exp (2 * t) := le_mul_of_one_le_right (by positivity [hMnn t])
+                (Real.one_le_exp (by linarith))
+        _ = M * Real.exp (c * t) := by
+            rw [mul_comm (Real.exp _) (M * _), mul_assoc M, mul_assoc M, ← Real.exp_add,
+              ← Real.exp_add]
+            congr 2
+            rw [hc]; push_cast; ring)
+    hF'cont.aestronglyMeasurable hderiv_bound hbound_int
+    (Eventually.of_forall (fun t lam _ => by
+      have h1 : HasDerivAt (fun lam : ℂ => -lam * (t : ℂ)) (-(t : ℂ)) lam := by
+        simpa using ((hasDerivAt_id lam).neg.mul_const (t : ℂ))
+      have h2 := h1.cexp.mul_const (f t)
+      exact h2.congr_deriv (by ring)))
+  exact key.2.differentiableAt
+
+lemma renormalizedCombKernel_continuous (φ : 𝓢(ℝ, ℂ)) : Continuous (fun t : ℝ => renormalizedCombKernel t φ) :=
+  (coPoissonA_continuous φ).add (coPoissonA_continuous (𝓕 φ))
+
+lemma renormalizedCombKernel_norm_le (t : ℝ) (φ : 𝓢(ℝ, ℂ)) {k : ℕ} (hk : 2 ≤ k) :
+    ‖renormalizedCombKernel t φ‖ ≤ latticeZetaConst k *
+      (SchwartzMap.seminorm ℂ k 0 φ + SchwartzMap.seminorm ℂ k 0 (𝓕 φ)) *
+        Real.exp ((1 / 2 - k) * t) := by
+  rw [renormalizedCombKernel_apply]
+  refine (norm_add_le _ _).trans ?_
+  have h1 := coPoissonA_norm_le t φ hk
+  have h2 := coPoissonA_norm_le t (𝓕 φ) hk
+  nlinarith [h1, h2]
+
+/-- The renormalized family is entire in lam on every Schwartz test. -/
+theorem coPoissonFamily_entire (φ : 𝓢(ℝ, ℂ)) : Differentiable ℂ (fun lam : ℂ => coPoissonFamily lam φ) := by
+  have h := laplace_entire (renormalizedCombKernel_continuous φ) (fun k hk =>
+    ⟨_, fun t => renormalizedCombKernel_norm_le t φ hk⟩)
+  simpa only [coPoissonFamily_apply] using h
+
+/-- Reflection x ↦ -x on Schwartz tests. -/
+def schwartzReflect (φ : 𝓢(ℝ, ℂ)) : 𝓢(ℝ, ℂ) :=
+  SchwartzMap.compCLMOfContinuousLinearEquiv ℂ (LinearIsometryEquiv.neg ℝ (E := ℝ)) φ
+
+lemma schwartzReflect_apply (φ : 𝓢(ℝ, ℂ)) (x : ℝ) : schwartzReflect φ x = φ (-x) := rfl
+
+lemma fourier_schwartzReflect (φ : 𝓢(ℝ, ℂ)) : 𝓕 (schwartzReflect φ) = schwartzReflect (𝓕 φ) := by
+  have h : 𝓕⁻ φ = schwartzReflect (𝓕 φ) := SchwartzMap.fourierInv_apply_eq φ
+  rw [← h]
+  ext x
+  rw [SchwartzMap.fourierInv_coe, SchwartzMap.fourier_coe, Real.fourierInv_eq_fourier_comp_neg]
+  rfl
+
+lemma coPoissonA_reflect (t : ℝ) (φ : 𝓢(ℝ, ℂ)) :
+    coPoissonA t (schwartzReflect φ) = coPoissonA t φ := by
+  rw [coPoissonA_apply, coPoissonA_apply]
+  congr 1
+  rw [← (Equiv.neg ℤ).tsum_eq]
+  refine tsum_congr (fun n => ?_)
+  simp only [Equiv.neg_apply, neg_eq_zero, schwartzReflect_apply, Int.cast_neg, mul_neg, neg_neg]
+
+/-- Every K_t is even. -/
+lemma renormalizedCombKernel_reflect (t : ℝ) (φ : 𝓢(ℝ, ℂ)) :
+    renormalizedCombKernel t (schwartzReflect φ) = renormalizedCombKernel t φ := by
+  rw [renormalizedCombKernel_apply, renormalizedCombKernel_apply, fourier_schwartzReflect, coPoissonA_reflect,
+    coPoissonA_reflect]
+
+lemma coPoissonFamily_reflect (lam : ℂ) (φ : 𝓢(ℝ, ℂ)) :
+    coPoissonFamily lam (schwartzReflect φ) = coPoissonFamily lam φ := by
+  rw [coPoissonFamily_apply, coPoissonFamily_apply]
+  simp_rw [renormalizedCombKernel_reflect]
+
+lemma latticeZeta_nat_term {k : ℕ} (hk : 2 ≤ k) (n : ℕ) :
+    |((n : ℤ) : ℝ)| ^ (-(k : ℝ)) = 1 / (n : ℝ) ^ k := by
+  rcases Nat.eq_zero_or_pos n with rfl | hn
+  · have hk0 : (0 : ℝ) < k := by exact_mod_cast (by omega : 0 < k)
+    simp only [Nat.cast_zero, Int.cast_zero, abs_zero]
+    rw [Real.zero_rpow (by linarith), zero_pow (by omega : k ≠ 0), div_zero]
+  · rw [Int.cast_natCast, abs_of_nonneg (Nat.cast_nonneg _), Real.rpow_neg (Nat.cast_nonneg _),
+      Real.rpow_natCast, one_div]
+
+lemma latticeZeta_neg_term (k : ℕ) (n : ℕ) :
+    |(((-((n : ℤ) + 1) : ℤ)) : ℝ)| ^ (-(k : ℝ)) = 1 / ((n : ℝ) + 1) ^ k := by
+  have h : (((-((n : ℤ) + 1) : ℤ)) : ℝ) = -((n : ℝ) + 1) := by push_cast; ring
+  rw [h, abs_neg, abs_of_pos (by positivity), Real.rpow_neg (by positivity), Real.rpow_natCast,
+    one_div]
+
+lemma summable_one_div_nat_pow' {k : ℕ} (hk : 2 ≤ k) :
+    Summable (fun n : ℕ => 1 / (n : ℝ) ^ k) :=
+  Real.summable_one_div_nat_pow.mpr (by omega)
+
+/-- The lattice constant is 2ζ(k), as in the paper's estimate. -/
+lemma latticeZetaConst_eq {k : ℕ} (hk : 2 ≤ k) :
+    ((latticeZetaConst k : ℝ) : ℂ) = 2 * riemannZeta k := by
+  have hs := summable_one_div_nat_pow' hk
+  have hs1 : Summable (fun n : ℕ => 1 / ((n : ℝ) + 1) ^ k) := by
+    have := (summable_nat_add_iff 1).mpr hs
+    simpa only [Nat.cast_add, Nat.cast_one] using this
+  have hnat : Summable (fun n : ℕ => |((n : ℤ) : ℝ)| ^ (-(k : ℝ))) :=
+    hs.congr (fun n => (latticeZeta_nat_term hk n).symm)
+  have hneg : Summable (fun n : ℕ => |(((-((n : ℤ) + 1) : ℤ)) : ℝ)| ^ (-(k : ℝ))) :=
+    hs1.congr (fun n => (latticeZeta_neg_term k n).symm)
+  have hsplit := tsum_of_nat_of_neg_add_one (f := fun m : ℤ => |(m : ℝ)| ^ (-(k : ℝ))) hnat hneg
+  have hshift : ∑' n : ℕ, 1 / ((n : ℝ) + 1) ^ k = ∑' n : ℕ, 1 / (n : ℝ) ^ k := by
+    rw [hs.tsum_eq_zero_add, Nat.cast_zero, zero_pow (by omega : k ≠ 0), div_zero, zero_add]
+    simp only [Nat.cast_add, Nat.cast_one]
+  have hz : ((∑' n : ℕ, 1 / (n : ℝ) ^ k : ℝ) : ℂ) = riemannZeta k := by
+    rw [zeta_nat_eq_tsum_of_gt_one (by omega), Complex.ofReal_tsum]
+    refine tsum_congr (fun n => ?_)
+    rw [Complex.ofReal_div, Complex.ofReal_one, Complex.ofReal_pow, Complex.ofReal_natCast]
+  have hL : latticeZetaConst k = 2 * ∑' n : ℕ, 1 / (n : ℝ) ^ k := by
+    unfold latticeZetaConst
+    rw [hsplit, tsum_congr (latticeZeta_nat_term hk), tsum_congr (latticeZeta_neg_term k), hshift]
+    ring
+  rw [hL, Complex.ofReal_mul, hz]
+  norm_num
+
+
+/-- Original R1-CP1 root: the renormalized co-Poisson family. For t ≥ 0 the kernel
+K_t = A_t + 𝓕 A_t with A_t = D_t - e^(t/2) δ₀ equals D_t + D_(-t) - e^(t/2)(δ₀ + dx), where
+𝓕 δ₀ is the Lebesgue functional. The origin atom is cancelled before integration: ⟨A_t, φ⟩ is
+the lattice sum without its n = 0 term and decays like 2ζ(k) p_k(φ) e^((1/2-k) t) for every
+k ≥ 2. Hence V_lam = ∫_0^∞ e^(-lam t) K_t dt is an actual tempered distribution for every
+complex lam, given by absolutely convergent Schwartz-test integrals, entire in lam on every
+test, even and canonically Fourier self-dual, as is every K_t. -/
+theorem renormalized_copoisson_tempered_family :
+    (∀ t : ℝ, renormalizedCombKernel t = dilatedCombDistribution t +
+      dilatedCombDistribution (-t) - ((Real.exp (t / 2) : ℝ) : ℂ) •
+        (TemperedDistribution.delta (0 : ℝ) + 𝓕 (TemperedDistribution.delta (0 : ℝ)))) ∧
+    (∀ φ : 𝓢(ℝ, ℂ), (𝓕 (TemperedDistribution.delta (0 : ℝ))) φ = ∫ x, φ x) ∧
+    (∀ (t : ℝ) (φ : 𝓢(ℝ, ℂ)), coPoissonA t φ = (Real.exp (t / 2) : ℂ) *
+      ∑' n : ℤ, if n = 0 then 0 else φ (Real.exp t * n)) ∧
+    (∀ (t : ℝ) (φ : 𝓢(ℝ, ℂ)) (k : ℕ), 2 ≤ k → ‖coPoissonA t φ‖ ≤
+      latticeZetaConst k * SchwartzMap.seminorm ℂ k 0 φ * Real.exp ((1 / 2 - k) * t)) ∧
+    (∀ k : ℕ, 2 ≤ k → ((latticeZetaConst k : ℝ) : ℂ) = 2 * riemannZeta k) ∧
+    (∀ t : ℝ, 𝓕 (renormalizedCombKernel t) = renormalizedCombKernel t) ∧
+    (∀ (t : ℝ) (φ : 𝓢(ℝ, ℂ)),
+      renormalizedCombKernel t (schwartzReflect φ) = renormalizedCombKernel t φ) ∧
+    (∀ (lam : ℂ) (φ : 𝓢(ℝ, ℂ)),
+      IntegrableOn (fun t : ℝ => cexp (-lam * t) * renormalizedCombKernel t φ) (Set.Ioi 0)) ∧
+    (∀ (lam : ℂ) (φ : 𝓢(ℝ, ℂ)), coPoissonFamily lam φ =
+      ∫ t in Set.Ioi (0 : ℝ), cexp (-lam * t) * renormalizedCombKernel t φ) ∧
+    (∀ φ : 𝓢(ℝ, ℂ), Differentiable ℂ (fun lam : ℂ => coPoissonFamily lam φ)) ∧
+    (∀ lam : ℂ, 𝓕 (coPoissonFamily lam) = coPoissonFamily lam) ∧
+    (∀ (lam : ℂ) (φ : 𝓢(ℝ, ℂ)),
+      coPoissonFamily lam (schwartzReflect φ) = coPoissonFamily lam φ) :=
+  ⟨renormalizedCombKernel_eq, fourier_delta_zero_apply, coPoissonA_apply,
+    fun t φ _ hk => coPoissonA_norm_le t φ hk, fun _ hk => latticeZetaConst_eq hk,
+    renormalizedCombKernel_fourier, renormalizedCombKernel_reflect,
+    renormalizedCombKernel_laplace_integrable, coPoissonFamily_apply, coPoissonFamily_entire,
+    coPoissonFamily_fourier, coPoissonFamily_reflect⟩
+
+end TemperedFamily
+
 end Zeta23.OPICAFollowup
 
 #print axioms Zeta23.OPICAFollowup.zero_measure_first_cell_sign
+#print axioms Zeta23.OPICAFollowup.renormalized_copoisson_tempered_family
