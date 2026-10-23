@@ -1,7 +1,7 @@
 # OPICA module status — navigation only
 
 Generated from [ROOT_LEDGER_100.json](ROOT_LEDGER_100.json) and actual source presence.
-Ledger SHA256: `092dda29350b4b022adf0709c42049aba0701eebfb1166e73569c0a20779a90b`.
+Ledger SHA256: `ed46ed863ed7d31b303f5bbc0c5f29e9eff8595928993f3c4538180b8f5bd25b`.
 
 The original target remains 100 primary roots / 28 acceptance units. Historical
 and narrow local evidence remain separate; every current aggregate/full-release
@@ -35,7 +35,7 @@ gate is OPEN. File presence does not establish proof or type coverage.
 | `NativeSourceTransforms` | 3 | 3 | 0 | 0 | 0 | [present](../../../../../../Zeta23/OPICAFollowup/NativeSourceTransforms.lean) |
 | `NativeTransformationWords` | 4 | 4 | 0 | 0 | 0 | [present](../../../../../../Zeta23/OPICAFollowup/NativeTransformationWords.lean) |
 | `NativeWindowRate` | 1 | 0 | 0 | 0 | 1 | [present](../../../../../../Zeta23/OPICAFollowup/NativeWindowRate.lean) |
-| `NearGapLimits` | 4 | 0 | 2 | 0 | 2 | [present](../../../../../../Zeta23/OPICAFollowup/NearGapLimits.lean) |
+| `NearGapLimits` | 4 | 0 | 4 | 0 | 0 | [present](../../../../../../Zeta23/OPICAFollowup/NearGapLimits.lean) |
 | `NormFirstTransfer` | 4 | 4 | 0 | 0 | 0 | [present](../../../../../../Zeta23/OPICAFollowup/NormFirstTransfer.lean) |
 | `ProfileEulerMaclaurin` | 1 | 0 | 0 | 0 | 1 | planned / missing |
 | `RenormalizedCoPoisson` | 4 | 0 | 1 | 0 | 3 | [present](../../../../../../Zeta23/OPICAFollowup/RenormalizedCoPoisson.lean) |
@@ -49,7 +49,7 @@ gate is OPEN. File presence does not establish proof or type coverage.
 | `WeightedSpectralMeasure` | 2 | 0 | 0 | 0 | 2 | planned / missing |
 | `ZeroProfiles` | 2 | 0 | 0 | 0 | 2 | planned / missing |
 | `ZetaLeftLineBounds` | 1 | 1 | 0 | 0 | 0 | [present](../../../../../../Zeta23/OPICAFollowup/ZetaLeftLineBounds.lean) |
-| **Total** | **100** | **41** | **17** | **0** | **42** | |
+| **Total** | **100** | **41** | **19** | **0** | **40** | |
 
 Regenerate with `python refresh_navigation.py --write`; verify with `--check`.
 Read the [named remaining work](REMAINING_WORK.md) and [next-agent task](NEXT_AGENT_PROMPT.md)

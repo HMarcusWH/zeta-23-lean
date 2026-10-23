@@ -2,7 +2,7 @@
 
 Use this index with [root AGENTS.md](../../../../../../AGENTS.md) and the
 [continuation guide](README.md). It describes the 22 October OPICA source
-checkpoint and its staged repairs; read [STAGE4_HANDOVER.md](STAGE4_HANDOVER.md)
+checkpoint and its staged repairs; read [STAGE5_HANDOVER.md](STAGE5_HANDOVER.md)
 for the latest exact sources and gates. Check the live Git head and workflow
 results before editing.
 
@@ -63,6 +63,10 @@ results before editing.
 - [Post-Green research](POST_GREEN_RESEARCH.md): all nine required mathematical
   review conclusions. Repeat the pass when meaningful proof evidence changes.
 
+[Stage 5](STAGE5_HANDOVER.md) proves the HT2 controlled limit by a quantitative
+compactness-free estimate and the CT1 normalized limit (x^2 Sha')' as a genuine
+non-order-zero tempered distribution; its [evidence](evidence/current-codex/stage5/STATUS.json)
+binds every log and source and harvests the first uncancelled narrow CI run.
 [Stage 4](STAGE4_HANDOVER.md) restores compiling W06/W07 sources, completes the CT1
 dilation family and the word/jet consumer, and records the CI cancellation gap; its
 [evidence](evidence/current-codex/stage4/STATUS.json) binds every log and source.

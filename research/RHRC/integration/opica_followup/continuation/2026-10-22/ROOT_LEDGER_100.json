@@ -4,9 +4,9 @@
   "acceptance_units": 28,
   "current_aggregate_accepted": false,
   "status_counts": {
-    "OPEN_NO_COMPLETE_CANDIDATE": 42,
+    "OPEN_NO_COMPLETE_CANDIDATE": 40,
     "PROVED_IN_ORIGINAL_41_ROOT_SOURCE_BOUND_SUBSET": 41,
-    "PROVED_NARROW_LOCAL_GATES_AGGREGATE_PENDING": 17
+    "PROVED_NARROW_LOCAL_GATES_AGGREGATE_PENDING": 19
   },
   "roots": [
     {
@@ -2359,7 +2359,7 @@
       "current_status": "PROVED_NARROW_LOCAL_GATES_AGGREGATE_PENDING",
       "gates": {
         "implementation": "IMPLEMENTED_FULL_FROZEN_CONTRACT_REVIEWED_NARROW",
-        "module_compilation": "PASS_EXACT_COMMITTED_SOURCE_PINNED_LINUX_STAGE4_REVERIFIED",
+        "module_compilation": "PASS_EXACT_COMMITTED_SOURCE_PINNED_LINUX_STAGE5_REVERIFIED",
         "expected_type_consumer": "PASS_IMPORTED_INDEPENDENT_EXPLICIT_FULL_TYPE",
         "actual_domain_consumer": "PASS_ACTUAL_CONSTRUCTORS_AND_BOUNDARY_CONTROLS",
         "axiom_check": "STANDARD_ONLY_TRANSITIVE_PRINTED_CLOSURES",
@@ -2369,16 +2369,17 @@
       },
       "source_file_present": true,
       "declaration_lexically_present": true,
-      "source_sha256": "3e77deea6ca49cb187e839ac3099a2dd361c31fe4c28bdbcaeef80be47c066b0",
+      "source_sha256": "300aba8c18e0079c7df0b02dd804ed3d2dc266dacd18930c7bab962cf7dd8b35",
       "evidence": [
         "evidence/current-codex/stage2/near-gap/STATUS.json",
-        "evidence/current-codex/stage4/STATUS.json"
+        "evidence/current-codex/stage4/STATUS.json",
+        "evidence/current-codex/stage5/STATUS.json"
       ],
       "independent_consumer": {
         "path": "consumers/ExpectedNearGap.lean",
         "sha256": "e6e20f293af961a40dbd26f944fa56fe1f7247c43acbf656c9afed3b53981e76"
       },
-      "actual_domain_limit": "Universal actual-carrier mass estimate and boundary consumers passed. Nonzero nearGapCombFamily witness is absent; this additional family/domain acceptance gate and the other three original near-gap roots remain OPEN."
+      "actual_domain_limit": "Universal actual-carrier mass estimate and boundary consumers passed; the nonzero CT1 family instance passed in Stage 4, and the bound is consumed by the Stage 5 HT2 controlled limit. Aggregate export and full release remain OPEN."
     },
     {
       "id": "OPICA_FOLLOWUP_NEAR_GAP_CONTROLLED_LIMIT_ZERO",
@@ -2403,20 +2404,27 @@
         "register_only_after_proof_and_type_review": true,
         "status": "PLANNED_NOT_PROVED"
       },
-      "current_status": "OPEN_NO_COMPLETE_CANDIDATE",
+      "current_status": "PROVED_NARROW_LOCAL_GATES_AGGREGATE_PENDING",
       "gates": {
-        "implementation": "OPEN",
-        "module_compilation": "NOT_ESTABLISHED",
-        "expected_type_consumer": "NOT_ESTABLISHED",
-        "actual_domain_consumer": "NOT_ESTABLISHED",
-        "axiom_check": "NOT_ESTABLISHED",
+        "implementation": "IMPLEMENTED_FULL_FROZEN_CONCLUSION_REVIEWED_NARROW_METHOD_REFINEMENT_RECORDED",
+        "module_compilation": "PASS_EXACT_COMMITTED_SOURCE_PINNED_LINUX",
+        "expected_type_consumer": "PASS_INDEPENDENT_EXPANDED_FULL_TYPE_AND_EXPLICIT_ESTIMATE",
+        "actual_domain_consumer": "PASS_GENUINE_CT1_SEQUENCE_NONZERO_TERMS_AND_UNIT_GAP_BOUNDARY",
+        "axiom_check": "STANDARD_ONLY_TRANSITIVE_PRINTED_CLOSURES",
         "aggregate_current_source_export": "OPEN",
         "full_release_acceptance": "OPEN"
       },
       "source_file_present": true,
-      "declaration_lexically_present": false,
-      "source_sha256": "3e77deea6ca49cb187e839ac3099a2dd361c31fe4c28bdbcaeef80be47c066b0",
-      "evidence": []
+      "declaration_lexically_present": true,
+      "source_sha256": "300aba8c18e0079c7df0b02dd804ed3d2dc266dacd18930c7bab962cf7dd8b35",
+      "evidence": [
+        "evidence/current-codex/stage5/STATUS.json"
+      ],
+      "independent_consumer": {
+        "path": "consumers/ExpectedNearGapLimit.lean",
+        "sha256": "dbd1ba447e025ceea3797e6843ba741365d404ddf3392bae47d665caa39405be"
+      },
+      "implementation_refinement": "Proof-method refinement, recorded explicitly: the frozen contract text prescribes compact-limit extraction and uniform tails. The implementation proves the identical conclusion (every Schwartz pairing tends to zero) under the identical common linear total-variation constant, self-duality, off-lattice positivity and gaps a_n -> 1, by an explicit quantitative estimate (nearGap_schwartz_pairing_bound: translated sinc/triangle identities, integer tent interpolation, the near-gap mass bound and the uniform cubic Schwartz tail). Uniform tails are proved; no compact extraction, limiting measure or total-variation convergence is used. The source evenness premise is not assumed because jordan_even_of_selfdual derives it. No premise was added and no domain narrowed."
     },
     {
       "id": "OPICA_FOLLOWUP_DILATION_NEAR_GAP_FAMILY",
@@ -2444,7 +2452,7 @@
       "current_status": "PROVED_NARROW_LOCAL_GATES_AGGREGATE_PENDING",
       "gates": {
         "implementation": "IMPLEMENTED_FULL_FROZEN_CONTRACT_REVIEWED_NARROW",
-        "module_compilation": "PASS_EXACT_COMMITTED_SOURCE_PINNED_LINUX",
+        "module_compilation": "PASS_EXACT_COMMITTED_SOURCE_PINNED_LINUX_STAGE5_REVERIFIED",
         "expected_type_consumer": "PASS_INDEPENDENT_EXPLICIT_12_CLAUSE_TYPE",
         "actual_domain_consumer": "PASS_GENUINE_CANONICAL_JORDAN_FAMILY_ALL_0_LT_L_LT_LOG2",
         "axiom_check": "STANDARD_ONLY_TRANSITIVE_PRINTED_CLOSURES",
@@ -2453,9 +2461,10 @@
       },
       "source_file_present": true,
       "declaration_lexically_present": true,
-      "source_sha256": "3e77deea6ca49cb187e839ac3099a2dd361c31fe4c28bdbcaeef80be47c066b0",
+      "source_sha256": "300aba8c18e0079c7df0b02dd804ed3d2dc266dacd18930c7bab962cf7dd8b35",
       "evidence": [
-        "evidence/current-codex/stage4/STATUS.json"
+        "evidence/current-codex/stage4/STATUS.json",
+        "evidence/current-codex/stage5/STATUS.json"
       ]
     },
     {
@@ -2481,20 +2490,27 @@
         "register_only_after_proof_and_type_review": true,
         "status": "PLANNED_NOT_PROVED"
       },
-      "current_status": "OPEN_NO_COMPLETE_CANDIDATE",
+      "current_status": "PROVED_NARROW_LOCAL_GATES_AGGREGATE_PENDING",
       "gates": {
-        "implementation": "OPEN",
-        "module_compilation": "NOT_ESTABLISHED",
-        "expected_type_consumer": "NOT_ESTABLISHED",
-        "actual_domain_consumer": "NOT_ESTABLISHED",
-        "axiom_check": "NOT_ESTABLISHED",
+        "implementation": "IMPLEMENTED_FULL_FROZEN_CONTRACT_REVIEWED_NARROW",
+        "module_compilation": "PASS_EXACT_COMMITTED_SOURCE_PINNED_LINUX",
+        "expected_type_consumer": "PASS_INDEPENDENT_EXISTENTIAL_RESTATEMENT_PINNED_BY_LATTICE_FORMULA",
+        "actual_domain_consumer": "PASS_EXPLICIT_THREE_COMB_PAIRING_0_LT_L_LT_LOG2_ORIGIN_AND_INTEGER_COEFFICIENT_CONTROLS",
+        "axiom_check": "STANDARD_ONLY_TRANSITIVE_PRINTED_CLOSURES",
         "aggregate_current_source_export": "OPEN",
         "full_release_acceptance": "OPEN"
       },
       "source_file_present": true,
-      "declaration_lexically_present": false,
-      "source_sha256": "3e77deea6ca49cb187e839ac3099a2dd361c31fe4c28bdbcaeef80be47c066b0",
-      "evidence": []
+      "declaration_lexically_present": true,
+      "source_sha256": "300aba8c18e0079c7df0b02dd804ed3d2dc266dacd18930c7bab962cf7dd8b35",
+      "evidence": [
+        "evidence/current-codex/stage5/STATUS.json"
+      ],
+      "independent_consumer": {
+        "path": "consumers/ExpectedNormalizedLimit.lean",
+        "sha256": "e833dad08f5c3a1fd477ab56f65db12d984fa51e18fd638d2b2aeddae77f9187"
+      },
+      "statement_formalization": "Limit T = (x^2 Sha')' = sum_n (n^2 delta_n'' - 2n delta_n') is a genuine Mathlib TemperedDistribution built from the actual integer Dirac comb. Convergence of nu_L / L^2 is proved as L -> 0 through all L != 0 (which contains the paper domain 0 < L < log 2 as L -> 0+, derived in the consumer), both in the tempered-distribution topology and on every Schwartz test. \"Not order zero\" is formalized at every nonzero integer n against the sup seminorm on tests supported in [n - 1/2, n + 1/2]; added clauses: not given by any locally finite Jordan pair, local form near each integer, and unbounded normalized variation near 1. Supporting result: T is Fourier self-dual."
     },
     {
       "id": "OPICA_FOLLOWUP_RENORMALIZED_COPOISSON_TEMPERED_FAMILY",
@@ -4139,18 +4155,18 @@
   "evidence_paths_relative_to": "research/RHRC/integration/opica_followup/continuation/2026-10-22",
   "verification_summary": {
     "historical_source_bound_subset_roots": 41,
-    "independently_verified_narrow_roots": 17,
+    "independently_verified_narrow_roots": 19,
     "prior_failed_or_blocked_unaccepted_roots": 0,
-    "open_no_complete_candidate_roots": 42,
+    "open_no_complete_candidate_roots": 40,
     "full_required_roots": 100,
     "acceptance_units": 28,
-    "receipt": "STAGE4_HANDOVER.md",
+    "receipt": "STAGE5_HANDOVER.md",
     "independent_source_repairs": [],
     "independent_consumer_repairs": [],
     "historical41_status_unchanged": true,
     "current_aggregate_accepted": false,
-    "meaning": "41 historical plus 17 narrow local results is not aggregate 58-root acceptance. 42 absent implementations plus all remaining domain/integration gates remain OPEN; original100/28 scope unchanged.",
-    "receipt_scope": "Index of two Stage4 and fifteen retained narrow original-root results, not an aggregate receipt",
+    "meaning": "41 historical plus 19 narrow local results is not aggregate 60-root acceptance. 40 absent implementations plus all remaining domain/integration gates remain OPEN; original100/28 scope unchanged.",
+    "receipt_scope": "Index of two Stage5, two Stage4 and fifteen retained narrow original-root results, not an aggregate receipt",
     "additional_stage1_primary_roots": [
       "laguerre_tail_norm",
       "dilated_comb_fourier",
@@ -4167,6 +4183,10 @@
     "additional_stage4_primary_roots": [
       "dilation_near_gap_family",
       "step123_word_jet_consumer"
+    ],
+    "additional_stage5_primary_roots": [
+      "near_gap_controlled_limit_zero",
+      "dilation_normalized_limit_not_measure"
     ]
   }
 }

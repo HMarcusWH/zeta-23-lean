@@ -1,0 +1,25 @@
+negative-ct1-limit.lean:9:2: error: Type mismatch
+  dilation_normalized_limit_not_measure.right.left φ
+has type
+  Tendsto (fun L => (nearGapCombDistribution L) φ / ↑L ^ 2) (𝓝[≠] 0)
+    (𝓝 (∑' (n : ℤ), (↑n ^ 2 * deriv (deriv ⇑φ) ↑n + 2 * ↑n * deriv ⇑φ ↑n)))
+but is expected to have type
+  Tendsto (fun L => (nearGapCombDistribution L) φ / ↑L ^ 2) (𝓝[≠] 0)
+    (𝓝 (∑' (n : ℤ), (↑n ^ 2 * deriv (deriv ⇑φ) ↑n - 2 * ↑n * deriv ⇑φ ↑n)))
+negative-ct1-limit.lean:14:2: error: Type mismatch
+  dilation_normalized_limit_not_measure.right.left φ
+has type
+  Tendsto (fun L => (nearGapCombDistribution L) φ / ↑L ^ 2) (𝓝[≠] 0)
+    (𝓝 (∑' (n : ℤ), (↑n ^ 2 * deriv (deriv ⇑φ) ↑n + 2 * ↑n * deriv ⇑φ ↑n)))
+but is expected to have type
+  Tendsto (fun L => (nearGapCombDistribution L) φ / ↑L) (𝓝[≠] 0)
+    (𝓝 (∑' (n : ℤ), (↑n ^ 2 * deriv (deriv ⇑φ) ↑n + 2 * ↑n * deriv ⇑φ ↑n)))
+negative-ct1-limit.lean:18:2: error: Type mismatch
+  dilation_normalized_limit_not_measure.right.right.right.right.right.right.left
+has type
+  ¬∃ μ, ∀ (φ : SchwartzMap ℝ ℂ), ∫ (x : ℝ), φ x ∂μ.positive - ∫ (x : ℝ), φ x ∂μ.negative = ct1NormalizedLimit φ
+but is expected to have type
+  ∃ μ, ∀ (φ : SchwartzMap ℝ ℂ), ∫ (x : ℝ), φ x ∂μ.positive - ∫ (x : ℝ), φ x ∂μ.negative = ct1NormalizedLimit φ
+negative-ct1-limit.lean:23:58: error: Tactic `decide` proved that the proposition
+  0 ≠ 0
+is false

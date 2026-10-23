@@ -4,11 +4,11 @@ Original scope: 100 primary identities and 28 acceptance units. Current gate evi
 
 ## Status
 - 41: `PROVED_IN_ORIGINAL_41_ROOT_SOURCE_BOUND_SUBSET`
-- 17: `PROVED_NARROW_LOCAL_GATES_AGGREGATE_PENDING`, including four original candidate repairs in [Stage 1](STAGE1_HANDOVER.md), five Stage 2 roots and the [Stage 4](STAGE4_HANDOVER.md) CT1 family and word/jet consumer
-- 42: `OPEN_NO_COMPLETE_CANDIDATE`
+- 19: `PROVED_NARROW_LOCAL_GATES_AGGREGATE_PENDING`, including four original candidate repairs in [Stage 1](STAGE1_HANDOVER.md), five Stage 2 roots, the [Stage 4](STAGE4_HANDOVER.md) CT1 family and word/jet consumer, and the [Stage 5](STAGE5_HANDOVER.md) HT2 controlled limit and CT1 normalized limit
+- 40: `OPEN_NO_COMPLETE_CANDIDATE`
 - 0: `PRIOR_CANDIDATE_FAILED_OR_BLOCKED_UNACCEPTED`
 
-## 42 roots without complete candidate implementations
+## 40 roots without complete candidate implementations
 
 ### Zeta23.OPICAFollowup.NativeWindowRate
 
@@ -23,11 +23,6 @@ Original scope: 100 primary identities and 28 acceptance units. Current gate evi
 - `weighted_mobius_inverse`
 - `weighted_mixture_sharp_gap`
 - `weighted_gap_leakage`
-
-### Zeta23.OPICAFollowup.NearGapLimits
-
-- `near_gap_controlled_limit_zero`
-- `dilation_normalized_limit_not_measure`
 
 ### Zeta23.OPICAFollowup.RenormalizedCoPoisson
 
@@ -111,7 +106,7 @@ Original scope: 100 primary identities and 28 acceptance units. Current gate evi
 
 ## Other unfinished gates
 
-Implement the 42 absent roots above. Seventeen roots now have narrow module, independent consumer and standard-axiom gates; the four Stage 1 repairs, five Stage 2 implementations and two Stage 4 roots (CT1 family, word/jet consumer) are documented separately. The HT2 controlled limit and the CT1 normalized nonmeasure limit remain OPEN. These local results do not establish current aggregate acceptance. Revalidate all changed dependencies and the original 41 in the current aggregate. Complete the facade, actual-domain consumers, full type/constructor/axiom/private TYPE-VALUE-STRUCTURE closure, all-100 evidence linkage, compiler-derived mapped registered dependencies, route-less registration, canonical generation and every required final workflow.
+Implement the 40 absent roots above. Nineteen roots now have narrow module, independent consumer and standard-axiom gates; the four Stage 1 repairs, five Stage 2 implementations, two Stage 4 roots (CT1 family, word/jet consumer) and two Stage 5 roots (HT2 controlled limit, CT1 normalized limit) are documented separately. All four NearGapLimits roots now have narrow gates; the HT2 proof-method refinement is recorded in the ledger. These local results do not establish current aggregate acceptance. Revalidate all changed dependencies and the original 41 in the current aggregate. Complete the facade, actual-domain consumers, full type/constructor/axiom/private TYPE-VALUE-STRUCTURE closure, all-100 evidence linkage, compiler-derived mapped registered dependencies, route-less registration, canonical generation and every required final workflow.
 
 The parent metadata repairs and infrastructure tests do not establish complete extension acceptance. The explicit subset builder still selects 41 historical roots. The new full100 protocol requires an independent unset review seal and actual cold production/replay; parent/runtime/generated/workflow companions remain unfinished. Full release deliberately remains closed.
 
