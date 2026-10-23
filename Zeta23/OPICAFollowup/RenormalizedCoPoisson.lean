@@ -15,7 +15,8 @@ The distributional construction is the renormalized tempered family below. Secti
 `OrderZero` identifies its actual cutoffs with locally finite complex measures, proves
 their local-total-variation convergence (origin atom included) to the order-zero limit
 measure and identifies the family with that measure on every Schwartz test. The
-zero-measure property root remains OPEN and is a separate obligation.
+Section `ZeroMeasure` builds the normalized actual zero measure (CP1.7)/b_ρ and proves
+its exact properties at every actual nontrivial zero ρ ≠ 1/2.
 -/
 
 noncomputable section
@@ -2424,8 +2425,693 @@ theorem renormalized_copoisson_order_zero (ρ : ℂ) (h0 : 0 < ρ.re) (h1 : ρ.r
 
 end OrderZero
 
+section ZeroMeasure
+open scoped ENNReal NNReal SchwartzMap FourierTransform
+
+/-! ### The normalization constant and the punctured integer lattice -/
+
+/-- b_ρ = (1 - 2ρ)/(ρ(1 - ρ)). -/
+def normalizationBrho (ρ : ℂ) : ℂ := (1 - 2 * ρ) / (ρ * (1 - ρ))
+
+lemma coPoissonOriginNormalizer_eq_brho {ρ : ℂ} (h0 : ρ ≠ 0) (h1 : ρ ≠ 1) :
+    coPoissonOriginNormalizer ρ = normalizationBrho ρ := coPoisson_normalizer ρ h0 h1
+
+lemma normalizationBrho_ne_zero {ρ : ℂ} (h0 : ρ ≠ 0) (h1 : ρ ≠ 1) (hh : ρ ≠ 1 / 2) :
+    normalizationBrho ρ ≠ 0 := by
+  unfold normalizationBrho
+  have h1' : (1 : ℂ) - ρ ≠ 0 := sub_ne_zero.mpr (Ne.symm h1)
+  refine div_ne_zero ?_ (mul_ne_zero h0 h1')
+  intro h
+  apply hh
+  linear_combination -(1 / 2 : ℂ) * h
+
+/-- The punctured integer lattice Σ_(n≠0) δ_n, the comb D_0 with its origin atom removed. -/
+def puncturedLattice : Measure ℝ := (dilatedCombMeasure 0).restrict {0}ᶜ
+
+instance puncturedLattice_locallyFinite : IsLocallyFiniteMeasure puncturedLattice := by
+  unfold puncturedLattice
+  infer_instance
+
+lemma count_neg_preimage (A : Set ℤ) :
+    Measure.count ((fun n : ℤ => -n) ⁻¹' A) = Measure.count A := by
+  rw [Measure.count_apply (MeasurableSet.of_discrete), Measure.count_apply (MeasurableSet.of_discrete)]
+  have h : (fun n : ℤ => -n) ⁻¹' A = (fun n : ℤ => -n) '' A := by
+    rw [Set.image_neg_eq_neg]; rfl
+  rw [h, neg_injective.encard_image]
+
+lemma dilatedCombMeasure_map_neg (t : ℝ) :
+    Measure.map (fun x : ℝ => -x) (dilatedCombMeasure t) = dilatedCombMeasure t := by
+  unfold dilatedCombMeasure scaledLatticeMeasure
+  rw [Measure.map_smul]
+  congr 1
+  ext s hs
+  rw [Measure.map_apply measurable_neg hs,
+    Measure.map_apply (scaledLatticePoint_measurable t) (measurable_neg hs),
+    Measure.map_apply (scaledLatticePoint_measurable t) hs]
+  have hpre : scaledLatticePoint t ⁻¹' ((fun x : ℝ => -x) ⁻¹' s) =
+      (fun n : ℤ => -n) ⁻¹' (scaledLatticePoint t ⁻¹' s) := by
+    ext n; simp [scaledLatticePoint]
+  rw [hpre, count_neg_preimage]
+
+lemma puncturedLattice_map_neg :
+    Measure.map (fun x : ℝ => -x) puncturedLattice = puncturedLattice := by
+  have hs : MeasurableSet ({0}ᶜ : Set ℝ) := (measurableSet_singleton 0).compl
+  have hpre : (fun x : ℝ => -x) ⁻¹' ({0}ᶜ : Set ℝ) = {0}ᶜ := by ext x; simp
+  unfold puncturedLattice
+  conv_lhs => rw [← hpre]
+  rw [← Measure.restrict_map measurable_neg hs, dilatedCombMeasure_map_neg]
+
+lemma puncturedLattice_gap : puncturedLattice (Ioo (-1) 1) = 0 := by
+  unfold puncturedLattice
+  rw [Measure.restrict_apply measurableSet_Ioo, ← Set.sdiff_eq]
+  have h := dilatedCombMeasure_punctured_gap 0
+  rwa [Real.exp_zero] at h
+
+lemma puncturedLattice_one : puncturedLattice {1} = 1 := by
+  unfold puncturedLattice
+  rw [Measure.restrict_apply (measurableSet_singleton 1)]
+  have h1 : ({1} : Set ℝ) ∩ {0}ᶜ = {scaledLatticePoint 0 1} := by
+    ext x; simp [scaledLatticePoint]
+  rw [h1, dilatedCombMeasure_atom]
+  simp
+
+lemma puncturedLattice_linearGrowth : Zeta23.OPICA.LinearMassGrowth puncturedLattice :=
+  (dilatedCombMeasure_linearGrowth 0).mono Measure.restrict_le_self
+
+lemma integerRange_null : volume (Set.range (fun n : ℤ => (n : ℝ))) = 0 :=
+  (Set.countable_range _).measure_zero volume
+
+lemma puncturedLattice_support : puncturedLattice (Set.range (fun n : ℤ => (n : ℝ)))ᶜ = 0 := by
+  have hD : dilatedCombMeasure 0 (Set.range (fun n : ℤ => (n : ℝ)))ᶜ = 0 := by
+    unfold dilatedCombMeasure scaledLatticeMeasure
+    rw [Measure.smul_apply, Measure.map_apply (scaledLatticePoint_measurable 0)
+      (Set.countable_range _).measurableSet.compl]
+    have hpre : scaledLatticePoint 0 ⁻¹' (Set.range (fun n : ℤ => (n : ℝ)))ᶜ = ∅ := by
+      ext n; simp [scaledLatticePoint]
+    rw [hpre]; simp
+  exact le_antisymm ((Measure.restrict_le_self (μ := dilatedCombMeasure 0) (s := {0}ᶜ) _).trans
+    hD.le) zero_le
+
+/-! ### The normalized density -/
+
+lemma measurable_finiteSumSrho_abs (ρ : ℂ) : Measurable (fun x : ℝ => finiteSumSrho ρ |x|) := by
+  have habs : Measurable (fun x : ℝ => |x|) := continuous_abs.measurable
+  have h1 := measurable_natPair_sum'
+    (fun p : ℕ × ℕ => ∑ n ∈ Finset.Icc 1 p.2, (n : ℂ) ^ (ρ - 1)) habs habs
+  have h2 := measurable_natPair_sum'
+    (fun p : ℕ × ℕ => ∑ n ∈ Finset.Icc 1 p.2, (n : ℂ) ^ (-ρ)) habs habs
+  exact ((measurable_abs_cpow _).mul h1).sub ((measurable_abs_cpow _).mul h2)
+
+/-- One power-sum term: y^c Σ_(n ≤ ⌊y⌋) n^(-s) is bounded on y ≥ 1 when c = s - 1. -/
+lemma rpow_mul_partialZeta_le {s : ℂ} (hσ : 0 < s.re) (hσ1 : s.re < 1) (hs1 : s ≠ 1) {y : ℝ}
+    (hN : 1 ≤ ⌊y⌋₊) :
+    ‖((y : ℝ) : ℂ) ^ (s - 1) * ∑ n ∈ Finset.Icc 1 ⌊y⌋₊, (n : ℂ) ^ (-s)‖ ≤
+      1 / ‖1 - s‖ + ‖riemannZeta s‖ + (1 / 2 + ‖s‖ / s.re) := by
+  set N := ⌊y⌋₊ with hNdef
+  have hy1 : (1 : ℝ) ≤ y := (Nat.one_le_floor_iff y).mp hN
+  have hy : 0 < y := lt_of_lt_of_le one_pos hy1
+  have hNpos : (0 : ℝ) < N := by exact_mod_cast hN
+  have hNy : (N : ℝ) ≤ y := Nat.floor_le hy.le
+  have he := partialZeta_error_nat hσ hs1 hN
+  have hNs : ‖(N : ℂ) ^ (1 - s) / (1 - s)‖ = (N : ℝ) ^ (1 - s.re) / ‖1 - s‖ := by
+    rw [norm_div, Complex.norm_natCast_cpow_of_pos (by omega)]; simp
+  have hsum : ‖∑ n ∈ Finset.Icc 1 N, (n : ℂ) ^ (-s)‖ ≤
+      (N : ℝ) ^ (1 - s.re) / ‖1 - s‖ + ‖riemannZeta s‖ + (1 / 2 + ‖s‖ / s.re) := by
+    have hle : (N : ℝ) ^ (-s.re) ≤ 1 :=
+      Real.rpow_le_one_of_one_le_of_nonpos (by exact_mod_cast hN) (by linarith)
+    have hC : 0 ≤ 1 / 2 + ‖s‖ / s.re := by positivity
+    have h3 : (1 / 2 + ‖s‖ / s.re) * (N : ℝ) ^ (-s.re) ≤ 1 / 2 + ‖s‖ / s.re := by
+      nlinarith [Real.rpow_nonneg hNpos.le (-s.re)]
+    calc ‖∑ n ∈ Finset.Icc 1 N, (n : ℂ) ^ (-s)‖
+        ≤ ‖∑ n ∈ Finset.Icc 1 N, (n : ℂ) ^ (-s) - (N : ℂ) ^ (1 - s) / (1 - s) - riemannZeta s‖ +
+            ‖(N : ℂ) ^ (1 - s) / (1 - s)‖ + ‖riemannZeta s‖ := by
+          have h3' : ‖(∑ n ∈ Finset.Icc 1 N, (n : ℂ) ^ (-s) - (N : ℂ) ^ (1 - s) / (1 - s) -
+              riemannZeta s) + (N : ℂ) ^ (1 - s) / (1 - s) + riemannZeta s‖ ≤
+              ‖∑ n ∈ Finset.Icc 1 N, (n : ℂ) ^ (-s) - (N : ℂ) ^ (1 - s) / (1 - s) - riemannZeta s‖ +
+                ‖(N : ℂ) ^ (1 - s) / (1 - s)‖ + ‖riemannZeta s‖ := norm_add₃_le
+          have hid : (∑ n ∈ Finset.Icc 1 N, (n : ℂ) ^ (-s) - (N : ℂ) ^ (1 - s) / (1 - s) -
+              riemannZeta s) + (N : ℂ) ^ (1 - s) / (1 - s) + riemannZeta s =
+              ∑ n ∈ Finset.Icc 1 N, (n : ℂ) ^ (-s) := by ring
+          rw [hid] at h3'
+          exact h3'
+      _ ≤ _ := by rw [hNs]; linarith
+  rw [norm_mul, Complex.norm_cpow_eq_rpow_re_of_pos hy]
+  have hre : (s - 1).re = s.re - 1 := by simp
+  rw [hre]
+  have hp1 : y ^ (s.re - 1) ≤ 1 := Real.rpow_le_one_of_one_le_of_nonpos hy1 (by linarith)
+  have hp2 : y ^ (s.re - 1) * (N : ℝ) ^ (1 - s.re) ≤ 1 := by
+    have h := Real.rpow_le_rpow hNpos.le hNy (by linarith : 0 ≤ 1 - s.re)
+    have h' : y ^ (s.re - 1) * y ^ (1 - s.re) = 1 := by
+      rw [← Real.rpow_add hy]; simp
+    calc y ^ (s.re - 1) * (N : ℝ) ^ (1 - s.re) ≤ y ^ (s.re - 1) * y ^ (1 - s.re) :=
+          mul_le_mul_of_nonneg_left h (Real.rpow_nonneg hy.le _)
+      _ = 1 := h'
+  have hq : 0 ≤ ‖riemannZeta s‖ + (1 / 2 + ‖s‖ / s.re) := by positivity
+  have hp0 : 0 ≤ y ^ (s.re - 1) := Real.rpow_nonneg hy.le _
+  calc y ^ (s.re - 1) * ‖∑ n ∈ Finset.Icc 1 N, (n : ℂ) ^ (-s)‖
+      ≤ y ^ (s.re - 1) * ((N : ℝ) ^ (1 - s.re) / ‖1 - s‖ + ‖riemannZeta s‖ +
+          (1 / 2 + ‖s‖ / s.re)) := mul_le_mul_of_nonneg_left hsum hp0
+    _ = y ^ (s.re - 1) * (N : ℝ) ^ (1 - s.re) * (1 / ‖1 - s‖) +
+          y ^ (s.re - 1) * (‖riemannZeta s‖ + (1 / 2 + ‖s‖ / s.re)) := by ring
+    _ ≤ 1 * (1 / ‖1 - s‖) + 1 * (‖riemannZeta s‖ + (1 / 2 + ‖s‖ / s.re)) := by
+        gcongr
+    _ = _ := by ring
+
+/-- S_ρ is bounded on [0, ∞) (paper: S_ρ(x) = O_ρ(1) for x ≥ 1, S_ρ = 0 on [0, 1)). -/
+def finiteSumSrhoBound (ρ : ℂ) : ℝ :=
+  (1 / ‖1 - (1 - ρ)‖ + ‖riemannZeta (1 - ρ)‖ + (1 / 2 + ‖1 - ρ‖ / (1 - ρ).re)) +
+    (1 / ‖1 - ρ‖ + ‖riemannZeta ρ‖ + (1 / 2 + ‖ρ‖ / ρ.re))
+
+lemma finiteSumSrho_norm_le_bound {ρ : ℂ} (h0 : 0 < ρ.re) (h1 : ρ.re < 1) (y : ℝ) :
+    ‖finiteSumSrho ρ y‖ ≤ finiteSumSrhoBound ρ := by
+  have hB : 0 ≤ finiteSumSrhoBound ρ := by
+    unfold finiteSumSrhoBound
+    have : 0 < (1 - ρ).re := by simp; linarith
+    positivity
+  rcases Nat.eq_zero_or_pos ⌊y⌋₊ with hN | hN
+  · unfold finiteSumSrho coPoissonPowerSums
+    rw [hN]; simpa using hB
+  · have hρ0 : ρ ≠ 0 := fun h => by simp [h] at h0
+    have hρ1 : ρ ≠ 1 := fun h => by simp [h] at h1
+    have hA := rpow_mul_partialZeta_le (s := 1 - ρ) (by simp; linarith) (by simp; linarith)
+      (fun h => hρ0 (by linear_combination -h)) hN
+    have hC := rpow_mul_partialZeta_le (s := ρ) h0 h1 hρ1 hN
+    rw [show (1 - ρ) - 1 = -ρ by ring, show -(1 - ρ) = ρ - 1 by ring] at hA
+    unfold finiteSumSrho coPoissonPowerSums finiteSumSrhoBound
+    exact (norm_sub_le _ _).trans (add_le_add hA hC)
+
+lemma measurable_coPoissonComplexDensity (ρ : ℂ) : Measurable (coPoissonComplexDensity ρ) :=
+  (measurable_finiteSumSrho_abs ρ).div_const _
+
+lemma coPoissonComplexDensity_small (ρ : ℂ) {x : ℝ} (hx : |x| < 1) :
+    coPoissonComplexDensity ρ x = 0 := by
+  have hf : ⌊|x|⌋₊ = 0 := Nat.floor_eq_zero.mpr hx
+  simp [coPoissonComplexDensity, coPoissonPowerSums, hf]
+
+lemma coPoissonComplexDensity_neg (ρ : ℂ) (x : ℝ) :
+    coPoissonComplexDensity ρ (-x) = coPoissonComplexDensity ρ x := by
+  simp [coPoissonComplexDensity]
+
+lemma locallyIntegrable_coPoissonComplexDensity (ρ : ℂ) :
+    LocallyIntegrable (coPoissonComplexDensity ρ) volume := by
+  refine locallyIntegrable_of_abs_le_bound (measurable_coPoissonComplexDensity ρ) (fun R _ => ?_)
+  obtain ⟨M, hM⟩ := finiteSumSrho_abs_bound ρ R
+  refine ⟨M / ‖coPoissonOriginNormalizer ρ‖, fun x hx => ?_⟩
+  unfold coPoissonComplexDensity
+  rw [norm_div]
+  exact div_le_div_of_nonneg_right (hM x hx) (norm_nonneg _)
+
+lemma coPoissonComplexDensity_norm_le {ρ : ℂ} (h0 : 0 < ρ.re) (h1 : ρ.re < 1) (x : ℝ) :
+    ‖coPoissonComplexDensity ρ x‖ ≤ finiteSumSrhoBound ρ / ‖coPoissonOriginNormalizer ρ‖ := by
+  unfold coPoissonComplexDensity
+  rw [norm_div]
+  exact div_le_div_of_nonneg_right (finiteSumSrho_norm_le_bound h0 h1 _) (norm_nonneg _)
+
+lemma volume_mutuallySingular_puncturedLattice : volume ⟂ₘ puncturedLattice :=
+  ⟨Set.range (fun n : ℤ => (n : ℝ)), (Set.countable_range _).measurableSet, integerRange_null,
+    puncturedLattice_support⟩
+
+/-- The normalized actual zero measure (CP1.7)/b_ρ = (S_ρ(|x|)/b_ρ) dx - Σ_(n≠0) δ_n, with its
+canonical Jordan pairs. -/
+def zeroMeasure (ρ : ℂ) : LocallyFiniteComplexMeasure where
+  rePart :=
+    { positive := volume.withDensity (fun x => ENNReal.ofReal (coPoissonRealDensity ρ x))
+      negative := volume.withDensity (fun x => ENNReal.ofReal (-coPoissonRealDensity ρ x)) +
+        puncturedLattice
+      positive_locallyFinite :=
+        isLocallyFinite_withDensity_ofReal (locallyIntegrable_complex_re
+          (locallyIntegrable_coPoissonComplexDensity ρ))
+      negative_locallyFinite := by
+        have hneg : LocallyIntegrable (fun x => -coPoissonRealDensity ρ x) volume :=
+          (locallyIntegrable_complex_re (locallyIntegrable_coPoissonComplexDensity ρ)).neg
+        have := isLocallyFinite_withDensity_ofReal hneg
+        exact locallyFiniteMeasure_add _ _
+      mutuallySingular :=
+        (withDensity_ofReal_mutuallySingular (Complex.measurable_re.comp
+          (measurable_coPoissonComplexDensity ρ))).add_right
+          (volume_mutuallySingular_puncturedLattice.mono_ac
+            (withDensity_absolutelyContinuous _ _) Measure.AbsolutelyContinuous.rfl) }
+  imPart :=
+    { positive := volume.withDensity (fun x => ENNReal.ofReal (coPoissonComplexDensity ρ x).im)
+      negative := volume.withDensity (fun x => ENNReal.ofReal (-(coPoissonComplexDensity ρ x).im))
+      positive_locallyFinite :=
+        isLocallyFinite_withDensity_ofReal (locallyIntegrable_complex_im
+          (locallyIntegrable_coPoissonComplexDensity ρ))
+      negative_locallyFinite := by
+        have hneg : LocallyIntegrable (fun x => -(coPoissonComplexDensity ρ x).im) volume :=
+          (locallyIntegrable_complex_im (locallyIntegrable_coPoissonComplexDensity ρ)).neg
+        exact isLocallyFinite_withDensity_ofReal hneg
+      mutuallySingular := withDensity_ofReal_mutuallySingular (Complex.measurable_im.comp
+          (measurable_coPoissonComplexDensity ρ)) }
+
+/-! ### Gap, origin, atoms, evenness and growth of the zero measure -/
+
+lemma withDensity_ofReal_gap {u : ℝ → ℝ} (hu : ∀ x, |x| < 1 → u x = 0) :
+    volume.withDensity (fun x => ENNReal.ofReal (u x)) (Ioo (-1) 1) = 0 := by
+  rw [withDensity_apply _ measurableSet_Ioo]
+  refine (setLIntegral_congr_fun measurableSet_Ioo (fun x hx => ?_)).trans (lintegral_zero)
+  show ENNReal.ofReal (u x) = 0
+  rw [hu x (abs_lt.mpr hx), ENNReal.ofReal_zero]
+
+lemma withDensity_singleton_zero (u : ℝ → ℝ≥0∞) (a : ℝ) : volume.withDensity u {a} = 0 := by
+  rw [withDensity_apply _ (measurableSet_singleton a)]
+  exact setLIntegral_measure_zero _ _ (measure_singleton a)
+
+lemma map_neg_withDensity_even {u : ℝ → ℝ≥0∞} (hu : Measurable u) (heven : ∀ x, u (-x) = u x) :
+    Measure.map (fun x : ℝ => -x) (volume.withDensity u) = volume.withDensity u := by
+  ext s hs
+  rw [Measure.map_apply measurable_neg hs, withDensity_apply _ (measurable_neg hs),
+    withDensity_apply _ hs]
+  have h := (Measure.measurePreserving_neg (volume : Measure ℝ)).setLIntegral_comp_preimage hs hu
+  simp only [heven] at h
+  exact h
+
+lemma zeroMeasure_density_gap (ρ : ℂ) {x : ℝ} (hx : |x| < 1) :
+    coPoissonRealDensity ρ x = 0 ∧ (coPoissonComplexDensity ρ x).im = 0 := by
+  unfold coPoissonRealDensity; rw [coPoissonComplexDensity_small ρ hx]; simp
+
+/-- Exact open unit gap: all four Jordan parts vanish on (-1, 1). -/
+theorem zeroMeasure_gap (ρ : ℂ) : (zeroMeasure ρ).variationControl (Ioo (-1) 1) = 0 := by
+  have h1 := withDensity_ofReal_gap (u := fun x => coPoissonRealDensity ρ x)
+    (fun x hx => (zeroMeasure_density_gap ρ hx).1)
+  have h2 := withDensity_ofReal_gap (u := fun x => -coPoissonRealDensity ρ x)
+    (fun x hx => by rw [(zeroMeasure_density_gap ρ hx).1, neg_zero])
+  have h3 := withDensity_ofReal_gap (u := fun x => (coPoissonComplexDensity ρ x).im)
+    (fun x hx => (zeroMeasure_density_gap ρ hx).2)
+  have h4 := withDensity_ofReal_gap (u := fun x => -(coPoissonComplexDensity ρ x).im)
+    (fun x hx => by rw [(zeroMeasure_density_gap ρ hx).2, neg_zero])
+  change ((zeroMeasure ρ).rePart.positive + (zeroMeasure ρ).rePart.negative +
+    ((zeroMeasure ρ).imPart.positive + (zeroMeasure ρ).imPart.negative)) (Ioo (-1) 1) = 0
+  simp only [Measure.add_apply, zeroMeasure]
+  rw [h1, h2, h3, h4, puncturedLattice_gap]
+  simp
+
+theorem zeroMeasure_origin (ρ : ℂ) : (zeroMeasure ρ).variationControl {0} = 0 :=
+  measure_mono_null (fun x hx => by
+    simp only [mem_singleton_iff] at hx; subst hx; norm_num) (zeroMeasure_gap ρ)
+
+/-- The atom at 1 is -1: the real negative part carries mass 1 there and nothing else does. -/
+theorem zeroMeasure_atom_one (ρ : ℂ) :
+    (zeroMeasure ρ).rePart.positive {1} = 0 ∧ (zeroMeasure ρ).rePart.negative {1} = 1 ∧
+      (zeroMeasure ρ).imPart.positive {1} = 0 ∧ (zeroMeasure ρ).imPart.negative {1} = 0 := by
+  refine ⟨withDensity_singleton_zero _ 1, ?_, withDensity_singleton_zero _ 1,
+    withDensity_singleton_zero _ 1⟩
+  change (volume.withDensity (fun x => ENNReal.ofReal (-coPoissonRealDensity ρ x)) +
+    puncturedLattice) {1} = 1
+  rw [Measure.add_apply, withDensity_singleton_zero, puncturedLattice_one, zero_add]
+
+/-- Evenness of all four canonical Jordan parts. -/
+theorem zeroMeasure_even (ρ : ℂ) :
+    Measure.map (fun x : ℝ => -x) (zeroMeasure ρ).rePart.positive = (zeroMeasure ρ).rePart.positive ∧
+    Measure.map (fun x : ℝ => -x) (zeroMeasure ρ).rePart.negative = (zeroMeasure ρ).rePart.negative ∧
+    Measure.map (fun x : ℝ => -x) (zeroMeasure ρ).imPart.positive = (zeroMeasure ρ).imPart.positive ∧
+    Measure.map (fun x : ℝ => -x) (zeroMeasure ρ).imPart.negative =
+      (zeroMeasure ρ).imPart.negative := by
+  have hm := measurable_coPoissonComplexDensity ρ
+  have hre : Measurable (fun x => coPoissonRealDensity ρ x) := Complex.measurable_re.comp hm
+  have him : Measurable (fun x => (coPoissonComplexDensity ρ x).im) := Complex.measurable_im.comp hm
+  have hev (x : ℝ) : coPoissonRealDensity ρ (-x) = coPoissonRealDensity ρ x := by
+    unfold coPoissonRealDensity; rw [coPoissonComplexDensity_neg]
+  have hevi (x : ℝ) : (coPoissonComplexDensity ρ (-x)).im = (coPoissonComplexDensity ρ x).im := by
+    rw [coPoissonComplexDensity_neg]
+  refine ⟨?_, ?_, ?_, ?_⟩
+  · exact map_neg_withDensity_even (ENNReal.measurable_ofReal.comp hre) (fun x => by simp only [hev])
+  · change Measure.map (fun x : ℝ => -x) (volume.withDensity
+      (fun x => ENNReal.ofReal (-coPoissonRealDensity ρ x)) + puncturedLattice) = _
+    have hw := map_neg_withDensity_even (u := fun x => ENNReal.ofReal (-coPoissonRealDensity ρ x))
+      (ENNReal.measurable_ofReal.comp hre.neg) (fun x => by simp only [hev])
+    rw [Measure.map_add _ _ measurable_neg, puncturedLattice_map_neg]
+    erw [hw]
+    rfl
+  · exact map_neg_withDensity_even (ENNReal.measurable_ofReal.comp him) (fun x => by simp only [hevi])
+  · exact map_neg_withDensity_even (u := fun x => ENNReal.ofReal (-(coPoissonComplexDensity ρ x).im))
+      (ENNReal.measurable_ofReal.comp him.neg) (fun x => by simp only [hevi])
+
+lemma linearMassGrowth_add {μ ν : Measure ℝ} [IsLocallyFiniteMeasure μ] [IsLocallyFiniteMeasure ν]
+    (hμ : Zeta23.OPICA.LinearMassGrowth μ) (hν : Zeta23.OPICA.LinearMassGrowth ν) :
+    Zeta23.OPICA.LinearMassGrowth (μ + ν) := by
+  obtain ⟨C, hC, hb⟩ := hμ
+  obtain ⟨D, hD, hd⟩ := hν
+  refine ⟨C + D, add_nonneg hC hD, fun R hR => ?_⟩
+  rw [measureReal_add_apply isCompact_Icc.measure_lt_top.ne isCompact_Icc.measure_lt_top.ne]
+  linarith [hb R hR, hd R hR]
+
+lemma linearMassGrowth_smul_volume (c : ℝ≥0) :
+    Zeta23.OPICA.LinearMassGrowth ((c : ℝ≥0∞) • (volume : Measure ℝ)) := by
+  refine ⟨2 * c, by positivity, fun R hR => ?_⟩
+  rw [Measure.real, Measure.smul_apply, Real.volume_Icc, smul_eq_mul, ENNReal.toReal_mul,
+    ENNReal.coe_toReal, ENNReal.toReal_ofReal (by linarith)]
+  nlinarith [c.coe_nonneg]
+
+/-- Linear total-variation growth (the paper: S_ρ = O_ρ(1), lattice mass O(R)). -/
+theorem zeroMeasure_hasLinearGrowth {ρ : ℂ} (h0 : 0 < ρ.re) (h1 : ρ.re < 1) :
+    (zeroMeasure ρ).HasLinearGrowth := by
+  set B : ℝ := finiteSumSrhoBound ρ / ‖coPoissonOriginNormalizer ρ‖ with hB
+  have hB0 : 0 ≤ B := (norm_nonneg _).trans (coPoissonComplexDensity_norm_le h0 h1 0)
+  set c : ℝ≥0 := B.toNNReal with hc
+  have hdom (u : ℝ → ℝ) (hu : ∀ x, u x ≤ B) :
+      volume.withDensity (fun x => ENNReal.ofReal (u x)) ≤ (c : ℝ≥0∞) • volume := by
+    rw [← withDensity_const]
+    refine withDensity_mono (Eventually.of_forall (fun x => ?_))
+    change ENNReal.ofReal (u x) ≤ ENNReal.ofReal B
+    exact ENNReal.ofReal_le_ofReal (hu x)
+  have hg (x : ℝ) := coPoissonComplexDensity_norm_le h0 h1 x
+  have hle : (zeroMeasure ρ).variationControl ≤
+      (((c : ℝ≥0∞) • volume + ((c : ℝ≥0∞) • volume + puncturedLattice)) +
+        ((c : ℝ≥0∞) • volume + (c : ℝ≥0∞) • volume)) := by
+    change (zeroMeasure ρ).rePart.positive + (zeroMeasure ρ).rePart.negative +
+      ((zeroMeasure ρ).imPart.positive + (zeroMeasure ρ).imPart.negative) ≤ _
+    refine add_le_add (add_le_add ?_ (add_le_add ?_ le_rfl)) (add_le_add ?_ ?_)
+    · exact hdom _ (fun x => (Complex.re_le_norm _).trans (hg x))
+    · exact hdom _ (fun x => (neg_le_abs _).trans ((Complex.abs_re_le_norm _).trans (hg x)))
+    · exact hdom _ (fun x => (Complex.im_le_norm _).trans (hg x))
+    · exact hdom _ (fun x => (neg_le_abs _).trans ((Complex.abs_im_le_norm _).trans (hg x)))
+  have : IsFiniteMeasureOnCompacts ((c : ℝ≥0∞) • (volume : Measure ℝ)) :=
+    IsFiniteMeasureOnCompacts.smul _ ENNReal.coe_ne_top
+  have hv := linearMassGrowth_smul_volume c
+  have hL := puncturedLattice_linearGrowth
+  have hgrowth := linearMassGrowth_add (linearMassGrowth_add hv (linearMassGrowth_add hv hL))
+    (linearMassGrowth_add hv hv)
+  exact hgrowth.mono hle
+
+/-! ### Pairing of the zero measure and its identification with (CP1.7) -/
+
+lemma integral_withDensity_ofReal {h : ℝ → ℝ} (hm : Measurable h) {f : ℝ → ℂ}
+    (hfm : AEStronglyMeasurable f volume) (hf : Integrable (fun x => (h x : ℂ) * f x)) :
+    Integrable f (volume.withDensity fun x => ENNReal.ofReal (h x)) ∧
+      ∫ x, f x ∂(volume.withDensity fun x => ENNReal.ofReal (h x)) =
+        ∫ x, ((max (h x) 0 : ℝ) : ℂ) * f x := by
+  have he : densityAtomPart h 0 = volume.withDensity fun x => ENNReal.ofReal (h x) := by
+    simp [densityAtomPart]
+  have hd := integral_densityAtomPart hm 0 hfm hf
+  rw [he] at hd
+  refine ⟨hd.1, hd.2.trans ?_⟩
+  simp
+
+lemma integral_max_sub_max {u : ℝ → ℝ} (hum : Measurable u) {f : ℝ → ℂ}
+    (hfm : AEStronglyMeasurable f volume) (hu : Integrable (fun x => (u x : ℂ) * f x)) :
+    (∫ x, ((max (u x) 0 : ℝ) : ℂ) * f x) - (∫ x, ((max (-u x) 0 : ℝ) : ℂ) * f x) =
+      ∫ x, (u x : ℂ) * f x := by
+  have hum' : Measurable (fun x => -u x) := hum.neg
+  have hb (v : ℝ → ℝ) (hv : Measurable v) (hle : ∀ x, |v x| ≤ |u x|) :
+      Integrable (fun x => (v x : ℂ) * f x) := by
+    refine hu.mono ((Complex.measurable_ofReal.comp hv).aestronglyMeasurable.mul hfm)
+      (Eventually.of_forall (fun x => ?_))
+    rw [norm_mul, norm_mul, Complex.norm_real, Complex.norm_real, Real.norm_eq_abs,
+      Real.norm_eq_abs]
+    exact mul_le_mul_of_nonneg_right (hle x) (norm_nonneg _)
+  have hip := hb (fun x => max (u x) 0) (hum.max measurable_const) (fun x => by
+    rw [abs_of_nonneg (le_max_right _ _)]; exact max_le (le_abs_self _) (abs_nonneg _))
+  have hin := hb (fun x => max (-u x) 0) (hum'.max measurable_const) (fun x => by
+    rw [abs_of_nonneg (le_max_right _ _)]; exact max_le (neg_le_abs _) (abs_nonneg _))
+  rw [← integral_sub hip hin]
+  congr 1
+  funext x
+  rw [← sub_mul]
+  congr 1
+  rcases le_total 0 (u x) with h | h
+  · rw [max_eq_left h, max_eq_right (by linarith : -u x ≤ 0)]; simp
+  · rw [max_eq_right h, max_eq_left (by linarith : 0 ≤ -u x)]; push_cast; ring
+
+lemma integral_dilatedCombMeasure_zero (φ : 𝓢(ℝ, ℂ)) :
+    ∫ x, φ x ∂dilatedCombMeasure 0 = dilatedCombDistribution 0 φ := by
+  rw [dilatedCombDistribution, Zeta23.OPICA.LocallyFiniteSignedMeasure.distributionOfLinearGrowth_apply]
+  simp only [dilatedCombJordan, localJordanDifference, Measure.sub_zero, Measure.zero_sub,
+    integral_zero_measure, sub_zero]
+
+lemma integral_puncturedLattice (φ : 𝓢(ℝ, ℂ)) :
+    Integrable φ puncturedLattice ∧
+      ∫ x, φ x ∂puncturedLattice = ∑' n : ℤ, if n = 0 then (0 : ℂ) else φ n := by
+  have hD : Integrable φ (dilatedCombMeasure 0) :=
+    (scaledLatticeMeasure_integrable_schwartz 0 φ).smul_measure ENNReal.ofReal_ne_top
+  refine ⟨hD.restrict, ?_⟩
+  have hsplit := integral_add_compl (measurableSet_singleton (0 : ℝ)) hD
+  rw [integral_singleton, measureReal_def, dilatedCombMeasure_origin] at hsplit
+  simp only [zero_div, Real.exp_zero, ENNReal.ofReal_one, ENNReal.toReal_one, one_smul] at hsplit
+  have hA := coPoissonA_apply 0 φ
+  rw [coPoissonA, sub_apply, smul_apply, TemperedDistribution.delta_apply] at hA
+  simp only [zero_div, Real.exp_zero, Complex.ofReal_one, one_smul, one_mul] at hA
+  unfold puncturedLattice
+  rw [integral_dilatedCombMeasure_zero] at hsplit
+  rw [← hA]
+  linear_combination hsplit
+
+/-- Pairing of the zero measure on Schwartz tests: ∫ (S_ρ(|x|)/b_ρ) φ - Σ_(n≠0) φ(n). -/
+theorem zeroMeasure_integral {ρ : ℂ} (h0 : 0 < ρ.re) (h1 : ρ.re < 1) (φ : 𝓢(ℝ, ℂ)) :
+    (zeroMeasure ρ).integral φ =
+      (∫ x, coPoissonComplexDensity ρ x * φ x) - ∑' n : ℤ, if n = 0 then (0 : ℂ) else φ n := by
+  set g := coPoissonComplexDensity ρ with hgdef
+  have hgm : Measurable g := measurable_coPoissonComplexDensity ρ
+  have hfm : AEStronglyMeasurable (fun x => φ x) volume := φ.continuous.aestronglyMeasurable
+  have hgφ : Integrable (fun x => g x * φ x) := by
+    refine (φ.integrable.norm.const_mul (finiteSumSrhoBound ρ / ‖coPoissonOriginNormalizer ρ‖)).mono'
+      (hgm.aestronglyMeasurable.mul hfm) (Eventually.of_forall (fun x => ?_))
+    rw [norm_mul]
+    exact mul_le_mul_of_nonneg_right (coPoissonComplexDensity_norm_le h0 h1 x) (norm_nonneg _)
+  have hb (v : ℝ → ℝ) (hv : Measurable v) (hle : ∀ x, |v x| ≤ ‖g x‖) :
+      Integrable (fun x => (v x : ℂ) * φ x) := by
+    refine hgφ.mono ((Complex.measurable_ofReal.comp hv).aestronglyMeasurable.mul hfm)
+      (Eventually.of_forall (fun x => ?_))
+    rw [norm_mul, norm_mul, Complex.norm_real, Real.norm_eq_abs]
+    exact mul_le_mul_of_nonneg_right (hle x) (norm_nonneg _)
+  have hre : Measurable (fun x => (g x).re) := Complex.measurable_re.comp hgm
+  have him : Measurable (fun x => (g x).im) := Complex.measurable_im.comp hgm
+  have hire := hb _ hre (fun x => Complex.abs_re_le_norm _)
+  have hiim := hb _ him (fun x => Complex.abs_im_le_norm _)
+  have hr1 := integral_withDensity_ofReal hre hfm hire
+  have hre' : Measurable (fun x => -(g x).re) := hre.neg
+  have him' : Measurable (fun x => -(g x).im) := him.neg
+  have hr2 := integral_withDensity_ofReal hre' hfm (hb _ hre' (fun x => by
+    rw [abs_neg]; exact Complex.abs_re_le_norm _))
+  have hi1 := integral_withDensity_ofReal him hfm hiim
+  have hi2 := integral_withDensity_ofReal him' hfm (hb _ him' (fun x => by
+    rw [abs_neg]; exact Complex.abs_im_le_norm _))
+  obtain ⟨hL, hLint⟩ := integral_puncturedLattice φ
+  unfold LocallyFiniteComplexMeasure.integral
+  change ((∫ x, φ x ∂volume.withDensity fun x => ENNReal.ofReal (g x).re) -
+      (∫ x, φ x ∂(volume.withDensity (fun x => ENNReal.ofReal (-(g x).re)) + puncturedLattice))) +
+    I * ((∫ x, φ x ∂volume.withDensity fun x => ENNReal.ofReal (g x).im) -
+      (∫ x, φ x ∂volume.withDensity fun x => ENNReal.ofReal (-(g x).im))) = _
+  rw [integral_add_measure hr2.1 hL, hr1.2, hr2.2, hi1.2, hi2.2, hLint]
+  have hre_split := integral_max_sub_max hre hfm hire
+  have him_split := integral_max_sub_max him hfm hiim
+  have hgsplit : (∫ x, g x * φ x) = (∫ x, ((g x).re : ℂ) * φ x) + I * ∫ x, ((g x).im : ℂ) * φ x := by
+    rw [← integral_const_mul, ← integral_add hire (hiim.const_mul I)]
+    congr 1
+    funext x
+    conv_lhs => rw [← Complex.re_add_im (g x)]
+    ring
+  rw [hgsplit, ← hre_split, ← him_split]
+  ring
+
+/-- (CP1.7) divided by b_ρ: at an actual zero the normalized measure is
+b_ρ⁻¹ (V_(ρ-1/2) - c_ρ(δ₀ + dx) - b_ρ D_0) on every Schwartz test. -/
+theorem zeroMeasure_eq_construction {ρ : ℂ} (hz : riemannZeta ρ = 0) (h0 : 0 < ρ.re)
+    (h1 : ρ.re < 1) (hh : ρ ≠ 1 / 2) (φ : 𝓢(ℝ, ℂ)) :
+    (zeroMeasure ρ).integral φ =
+      (coPoissonFamily (ρ - 1 / 2) φ - 1 / (1 - ρ) * (φ 0 + ∫ x, φ x) -
+        normalizationBrho ρ * dilatedCombDistribution 0 φ) / normalizationBrho ρ := by
+  have hρ0 : ρ ≠ 0 := fun h => by simp [h] at h0
+  have hρ1 : ρ ≠ 1 := fun h => by simp [h] at h1
+  have hb := normalizationBrho_ne_zero hρ0 hρ1 hh
+  have hbeq := coPoissonOriginNormalizer_eq_brho hρ0 hρ1
+  have hS : Integrable (fun x => finiteSumSrho ρ |x| * φ x) := by
+    refine (φ.integrable.norm.const_mul (finiteSumSrhoBound ρ)).mono'
+      ((measurable_finiteSumSrho_abs ρ).aestronglyMeasurable.mul
+        φ.continuous.aestronglyMeasurable) (Eventually.of_forall (fun x => ?_))
+    rw [norm_mul]
+    exact mul_le_mul_of_nonneg_right (finiteSumSrho_norm_le_bound h0 h1 _) (norm_nonneg _)
+  have hV := coPoissonFamily_eq_limit h0 h1 φ
+  have hR : (∫ x, coPoissonLimitDensity ρ x * φ x) =
+      (∫ x, finiteSumSrho ρ |x| * φ x) + 1 / (1 - ρ) * ∫ x, φ x := by
+    rw [← integral_const_mul, ← integral_add hS (φ.integrable.const_mul _)]
+    congr 1
+    funext x
+    unfold coPoissonLimitDensity
+    rw [hz]
+    ring
+  have hg : (∫ x, coPoissonComplexDensity ρ x * φ x) =
+      (∫ x, finiteSumSrho ρ |x| * φ x) / normalizationBrho ρ := by
+    rw [← integral_div]
+    congr 1
+    funext x
+    unfold coPoissonComplexDensity
+    rw [hbeq]
+    ring
+  obtain ⟨-, hLint⟩ := integral_puncturedLattice φ
+  have hD : dilatedCombDistribution 0 φ = φ 0 + ∑' n : ℤ, if n = 0 then (0 : ℂ) else φ n := by
+    have hA := coPoissonA_apply 0 φ
+    rw [coPoissonA, sub_apply, smul_apply, TemperedDistribution.delta_apply] at hA
+    simp only [zero_div, Real.exp_zero, Complex.ofReal_one, one_smul, one_mul] at hA
+    rw [← hA]; ring
+  have hb' : normalizationBrho ρ = 1 / ρ - 1 / (1 - ρ) := by rw [← hbeq]; rfl
+  have h1' : (1 : ℂ) - ρ ≠ 0 := sub_ne_zero.mpr (Ne.symm hρ1)
+  rw [zeroMeasure_integral h0 h1, hV, hR, hg, hD]
+  rw [eq_div_iff hb]
+  have key : (∫ x, finiteSumSrho ρ |x| * φ x) / normalizationBrho ρ * normalizationBrho ρ =
+      ∫ x, finiteSumSrho ρ |x| * φ x := div_mul_cancel₀ _ hb
+  linear_combination key + φ 0 * hb'
+
+/-! ### Fourier self-duality of the zero measure and of its real part -/
+
+lemma complexSchwartzConj_apply (φ : 𝓢(ℝ, ℂ)) (x : ℝ) :
+    complexSchwartzConj φ x = starRingEnd ℂ (φ x) := rfl
+
+/-- conj(𝓕φ) = 𝓕(conj φ ∘ (-·)). -/
+lemma complexSchwartzConj_fourier (φ : 𝓢(ℝ, ℂ)) :
+    complexSchwartzConj (𝓕 φ) = 𝓕 (schwartzReflect (complexSchwartzConj φ)) := by
+  ext ξ
+  rw [complexSchwartzConj_apply, SchwartzMap.fourier_coe, SchwartzMap.fourier_coe,
+    Real.fourier_real_eq_integral_exp_smul, Real.fourier_real_eq_integral_exp_smul,
+    ← integral_conj]
+  rw [← integral_neg_eq_self (fun v : ℝ => cexp (((-2 * Real.pi * v * ξ : ℝ)) * I) •
+    (schwartzReflect (complexSchwartzConj φ)) v)]
+  congr 1
+  funext v
+  rw [schwartzReflect_apply, complexSchwartzConj_apply, neg_neg, smul_eq_mul, smul_eq_mul,
+    map_mul, ← Complex.exp_conj]
+  congr 2
+  rw [map_mul, Complex.conj_ofReal, Complex.conj_I]
+  push_cast
+  ring
+
+/-- A complex measure that is Fourier self-dual and even on Schwartz tests has a Fourier
+self-dual real part (conjugation commutes with 𝓕 on even distributions). -/
+theorem rePart_fourierSelfdual_of_complex (μ : LocallyFiniteComplexMeasure) (h : μ.HasLinearGrowth)
+    (hself : ∀ φ : 𝓢(ℝ, ℂ), μ.integral ((𝓕 φ : 𝓢(ℝ, ℂ)) : ℝ → ℂ) = μ.integral φ)
+    (heven : ∀ φ : 𝓢(ℝ, ℂ), μ.integral (schwartzReflect φ) = μ.integral φ) :
+    𝓕 (μ.rePart.distributionOfLinearGrowth (μ.re_hasLinearGrowth h)) =
+      μ.rePart.distributionOfLinearGrowth (μ.re_hasLinearGrowth h) := by
+  set η := μ.rePart.distributionOfLinearGrowth (μ.re_hasLinearGrowth h) with hηdef
+  set ξ := μ.imPart.distributionOfLinearGrowth (μ.im_hasLinearGrowth h) with hξdef
+  have hsplit (ψ : 𝓢(ℝ, ℂ)) : μ.integral ψ = η ψ + I * ξ ψ := rfl
+  have hreal (ψ : 𝓢(ℝ, ℂ)) :
+      η ψ = (μ.integral ψ + starRingEnd ℂ (μ.integral (complexSchwartzConj ψ))) / 2 := by
+    rw [hsplit, hsplit, hηdef, hξdef, realJordan_distribution_conj, realJordan_distribution_conj]
+    simp only [map_add, map_mul, Complex.conj_conj, Complex.conj_I]
+    ring
+  ext φ
+  change η (𝓕 φ) = η φ
+  rw [hreal, hreal, hself, complexSchwartzConj_fourier, hself, heven]
+
+lemma dilatedCombDistribution_zero_fourier (φ : 𝓢(ℝ, ℂ)) :
+    dilatedCombDistribution 0 (𝓕 φ) = dilatedCombDistribution 0 φ := by
+  change (𝓕 (dilatedCombDistribution 0)) φ = _
+  rw [(dilated_comb_fourier 0).2.2, neg_zero]
+
+lemma schwartz_integral_fourier (φ : 𝓢(ℝ, ℂ)) : ∫ x, (𝓕 φ) x = φ 0 := by
+  rw [← fourier_delta_zero_apply]
+  change (𝓕 (𝓕 φ)) 0 = _
+  rw [schwartz_fourier_fourier_apply, neg_zero]
+
+lemma schwartz_fourier_zero (φ : 𝓢(ℝ, ℂ)) : (𝓕 φ) 0 = ∫ x, φ x := by
+  rw [← fourier_delta_zero_apply]; rfl
+
+theorem zeroMeasure_integral_fourier {ρ : ℂ} (hz : riemannZeta ρ = 0) (h0 : 0 < ρ.re)
+    (h1 : ρ.re < 1) (hh : ρ ≠ 1 / 2) (φ : 𝓢(ℝ, ℂ)) :
+    (zeroMeasure ρ).integral ((𝓕 φ : 𝓢(ℝ, ℂ)) : ℝ → ℂ) = (zeroMeasure ρ).integral φ := by
+  rw [zeroMeasure_eq_construction hz h0 h1 hh, zeroMeasure_eq_construction hz h0 h1 hh,
+    dilatedCombDistribution_zero_fourier, schwartz_integral_fourier, schwartz_fourier_zero]
+  have hV : coPoissonFamily (ρ - 1 / 2) (𝓕 φ) = coPoissonFamily (ρ - 1 / 2) φ :=
+    congrArg (fun T : TemperedDistribution ℝ ℂ => T φ) (coPoissonFamily_fourier (ρ - 1 / 2))
+  rw [hV]
+  ring
+
+theorem zeroMeasure_integral_reflect {ρ : ℂ} (h0 : 0 < ρ.re) (h1 : ρ.re < 1) (φ : 𝓢(ℝ, ℂ)) :
+    (zeroMeasure ρ).integral (schwartzReflect φ) = (zeroMeasure ρ).integral φ := by
+  rw [zeroMeasure_integral h0 h1, zeroMeasure_integral h0 h1]
+  congr 1
+  · rw [← integral_neg_eq_self (fun x => coPoissonComplexDensity ρ x * φ x)]
+    congr 1
+    funext x
+    rw [schwartzReflect_apply, coPoissonComplexDensity_neg]
+  · rw [← (Equiv.neg ℤ).tsum_eq (fun n : ℤ => if n = 0 then (0 : ℂ) else φ n)]
+    refine tsum_congr (fun n => ?_)
+    simp only [Equiv.neg_apply, neg_eq_zero, schwartzReflect_apply, Int.cast_neg]
+
+/-- Fourier self-duality of the normalized zero measure as a tempered distribution. -/
+theorem zeroMeasure_fourierSelfdual {ρ : ℂ} (hz : riemannZeta ρ = 0) (h0 : 0 < ρ.re)
+    (h1 : ρ.re < 1) (hh : ρ ≠ 1 / 2) :
+    𝓕 ((zeroMeasure ρ).distributionOfLinearGrowth (zeroMeasure_hasLinearGrowth h0 h1)) =
+      (zeroMeasure ρ).distributionOfLinearGrowth (zeroMeasure_hasLinearGrowth h0 h1) := by
+  ext φ
+  exact zeroMeasure_integral_fourier hz h0 h1 hh φ
+
+theorem zeroMeasure_rePart_fourierSelfdual {ρ : ℂ} (hz : riemannZeta ρ = 0) (h0 : 0 < ρ.re)
+    (h1 : ρ.re < 1) (hh : ρ ≠ 1 / 2) :
+    𝓕 ((zeroMeasure ρ).rePart.distributionOfLinearGrowth
+        ((zeroMeasure ρ).re_hasLinearGrowth (zeroMeasure_hasLinearGrowth h0 h1))) =
+      (zeroMeasure ρ).rePart.distributionOfLinearGrowth
+        ((zeroMeasure ρ).re_hasLinearGrowth (zeroMeasure_hasLinearGrowth h0 h1)) :=
+  rePart_fourierSelfdual_of_complex (zeroMeasure ρ) (zeroMeasure_hasLinearGrowth h0 h1)
+    (zeroMeasure_integral_fourier hz h0 h1 hh)
+    (zeroMeasure_integral_reflect h0 h1)
+
+/-- R1-CP1 zero-measure properties. For an actual nontrivial zero ρ ≠ 1/2 of ζ in the open strip,
+the normalized complex measure (CP1.7)/b_ρ = (S_ρ(|x|)/b_ρ) dx - Σ_(n≠0) δ_n has linear
+variation growth, canonical Fourier self-duality, even Jordan parts, the exact open unit gap,
+zero origin atom and atom -1 at 1; its real part η_ρ = f_ρ dx - Σ_(n≠0) δ_n has the
+corresponding real properties. -/
+theorem zero_measure_exact_properties (ρ : ℂ) (hz : riemannZeta ρ = 0) (h0 : 0 < ρ.re)
+    (h1 : ρ.re < 1) (hh : ρ ≠ 1 / 2) :
+    normalizationBrho ρ = (1 - 2 * ρ) / coPoissonKappa ρ ∧
+    normalizationBrho ρ = 1 / ρ - 1 / (1 - ρ) ∧ normalizationBrho ρ ≠ 0 ∧
+    (∀ φ : 𝓢(ℝ, ℂ), (zeroMeasure ρ).integral φ =
+      (coPoissonFamily (ρ - 1 / 2) φ - 1 / (1 - ρ) * (φ 0 + ∫ x, φ x) -
+        normalizationBrho ρ * dilatedCombDistribution 0 φ) / normalizationBrho ρ) ∧
+    (∀ φ : 𝓢(ℝ, ℂ), (zeroMeasure ρ).integral φ =
+      (∫ x, coPoissonComplexDensity ρ x * φ x) - ∑' n : ℤ, if n = 0 then (0 : ℂ) else φ n) ∧
+    (zeroMeasure ρ).HasLinearGrowth ∧
+    𝓕 ((zeroMeasure ρ).distributionOfLinearGrowth (zeroMeasure_hasLinearGrowth h0 h1)) =
+      (zeroMeasure ρ).distributionOfLinearGrowth (zeroMeasure_hasLinearGrowth h0 h1) ∧
+    (Measure.map (fun x : ℝ => -x) (zeroMeasure ρ).rePart.positive = (zeroMeasure ρ).rePart.positive ∧
+      Measure.map (fun x : ℝ => -x) (zeroMeasure ρ).rePart.negative = (zeroMeasure ρ).rePart.negative ∧
+      Measure.map (fun x : ℝ => -x) (zeroMeasure ρ).imPart.positive = (zeroMeasure ρ).imPart.positive ∧
+      Measure.map (fun x : ℝ => -x) (zeroMeasure ρ).imPart.negative =
+        (zeroMeasure ρ).imPart.negative) ∧
+    (zeroMeasure ρ).variationControl (Ioo (-1) 1) = 0 ∧
+    (zeroMeasure ρ).variationControl {0} = 0 ∧
+    ((zeroMeasure ρ).rePart.positive {1} = 0 ∧ (zeroMeasure ρ).rePart.negative {1} = 1 ∧
+      (zeroMeasure ρ).imPart.positive {1} = 0 ∧ (zeroMeasure ρ).imPart.negative {1} = 0) ∧
+    ((zeroMeasure ρ).rePart.positive =
+        volume.withDensity (fun x => ENNReal.ofReal (coPoissonRealDensity ρ x)) ∧
+      (zeroMeasure ρ).rePart.negative =
+        volume.withDensity (fun x => ENNReal.ofReal (-coPoissonRealDensity ρ x)) + puncturedLattice) ∧
+    (zeroMeasure ρ).rePart.HasLinearGrowth ∧
+    𝓕 ((zeroMeasure ρ).rePart.distributionOfLinearGrowth
+        ((zeroMeasure ρ).re_hasLinearGrowth (zeroMeasure_hasLinearGrowth h0 h1))) =
+      (zeroMeasure ρ).rePart.distributionOfLinearGrowth
+        ((zeroMeasure ρ).re_hasLinearGrowth (zeroMeasure_hasLinearGrowth h0 h1)) ∧
+    ((zeroMeasure ρ).rePart.positive (Ioo (-1) 1) = 0 ∧
+      (zeroMeasure ρ).rePart.negative (Ioo (-1) 1) = 0) ∧
+    ((zeroMeasure ρ).rePart.positive {0} = 0 ∧ (zeroMeasure ρ).rePart.negative {0} = 0) ∧
+    ((zeroMeasure ρ).rePart.positive.real {1} = 0 ∧ (zeroMeasure ρ).rePart.negative.real {1} = 1) ∧
+    (zeroMeasure ρ).rePart.negative ≠ 0 := by
+  have hρ0 : ρ ≠ 0 := fun h => by simp [h] at h0
+  have hρ1 : ρ ≠ 1 := fun h => by simp [h] at h1
+  have hgap := zeroMeasure_gap ρ
+  have horigin := zeroMeasure_origin ρ
+  change ((zeroMeasure ρ).rePart.positive + (zeroMeasure ρ).rePart.negative +
+    ((zeroMeasure ρ).imPart.positive + (zeroMeasure ρ).imPart.negative)) _ = 0 at hgap horigin
+  simp only [Measure.add_apply, add_eq_zero] at hgap horigin
+  obtain ⟨ha1, ha2, ha3, ha4⟩ := zeroMeasure_atom_one ρ
+  refine ⟨rfl, (coPoissonOriginNormalizer_eq_brho hρ0 hρ1).symm,
+    normalizationBrho_ne_zero hρ0 hρ1 hh, zeroMeasure_eq_construction hz h0 h1 hh,
+    zeroMeasure_integral h0 h1, zeroMeasure_hasLinearGrowth h0 h1,
+    zeroMeasure_fourierSelfdual hz h0 h1 hh, zeroMeasure_even ρ, zeroMeasure_gap ρ,
+    zeroMeasure_origin ρ, ⟨ha1, ha2, ha3, ha4⟩, ⟨rfl, rfl⟩,
+    (zeroMeasure ρ).re_hasLinearGrowth (zeroMeasure_hasLinearGrowth h0 h1),
+    zeroMeasure_rePart_fourierSelfdual hz h0 h1 hh, ⟨hgap.1.1, hgap.1.2⟩,
+    ⟨horigin.1.1, horigin.1.2⟩, ⟨by rw [measureReal_def, ha1]; rfl,
+      by rw [measureReal_def, ha2]; rfl⟩, fun h => ?_⟩
+  rw [h] at ha2
+  simp at ha2
+
+end ZeroMeasure
+
 end Zeta23.OPICAFollowup
 
 #print axioms Zeta23.OPICAFollowup.zero_measure_first_cell_sign
 #print axioms Zeta23.OPICAFollowup.renormalized_copoisson_tempered_family
 #print axioms Zeta23.OPICAFollowup.renormalized_copoisson_order_zero
+#print axioms Zeta23.OPICAFollowup.zero_measure_exact_properties
