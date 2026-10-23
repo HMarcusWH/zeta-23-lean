@@ -11,9 +11,11 @@ import Mathlib.Tactic
 The density below is the literal inclusive finite-power-sum density of the
 frozen co-Poisson construction. Its first-cell sign identities use no positivity
 assumption, synthetic zero or assumed measure with desired Fourier properties.
-The distributional construction is the renormalized tempered family below. The
-local-total-variation identification and the complete zero-measure property roots
-remain OPEN and are separate obligations.
+The distributional construction is the renormalized tempered family below. Section
+`OrderZero` identifies its actual cutoffs with locally finite complex measures, proves
+their local-total-variation convergence (origin atom included) to the order-zero limit
+measure and identifies the family with that measure on every Schwartz test. The
+zero-measure property root remains OPEN and is a separate obligation.
 -/
 
 noncomputable section
@@ -852,7 +854,1578 @@ theorem renormalized_copoisson_tempered_family :
 
 end TemperedFamily
 
+section OrderZero
+open scoped ENNReal NNReal SchwartzMap FourierTransform
+
+/-- Finite power sums against the Euler–Maclaurin form of ζ (Re s > 0, s ≠ 1). -/
+lemma partialZeta_eq {s : ℂ} (hσ : 0 < s.re) (hs1 : s ≠ 1) {N : ℕ} (hN : 1 ≤ N) :
+    ∑ n ∈ Finset.Icc 1 N, (n : ℂ) ^ (-s) = riemannZeta s + (N : ℂ) ^ (1 - s) / (1 - s) +
+      (N : ℂ) ^ (-s) / 2 - s * ∫ x in Ioi (N : ℝ), (⌊x⌋ + 1 / 2 - x) / (x : ℂ) ^ (s + 1) := by
+  have hs0 : s ≠ 0 := fun h => by simp [h] at hσ
+  have h := Zeta0EqZeta (N := N) (by omega) hσ hs1
+  rw [riemannZeta0] at h
+  have hrange : ∑ n ∈ Finset.range (N + 1), 1 / (n : ℂ) ^ s =
+      ∑ n ∈ Finset.Icc 1 N, (n : ℂ) ^ (-s) := by
+    rw [Finset.range_eq_Ico, Finset.sum_eq_sum_Ico_succ_bot (by omega), Finset.Ico_add_one_right_eq_Icc]
+    simp only [Nat.cast_zero, Complex.zero_cpow hs0, div_zero, zero_add]
+    refine Finset.sum_congr rfl (fun n _ => ?_)
+    rw [Complex.cpow_neg, one_div]
+  rw [hrange] at h
+  rw [← h]
+  ring
+
+lemma partialZeta_error_nat {s : ℂ} (hσ : 0 < s.re) (hs1 : s ≠ 1) {N : ℕ} (hN : 1 ≤ N) :
+    ‖∑ n ∈ Finset.Icc 1 N, (n : ℂ) ^ (-s) - (N : ℂ) ^ (1 - s) / (1 - s) - riemannZeta s‖ ≤
+      (1 / 2 + ‖s‖ / s.re) * (N : ℝ) ^ (-s.re) := by
+  rw [partialZeta_eq hσ hs1 hN]
+  have hint := ZetaBnd_aux1b N hN (σ := s.re) (t := s.im) hσ
+  rw [re_add_im] at hint
+  have hNpos : (0 : ℝ) < N := by exact_mod_cast hN
+  have hNs : ‖(N : ℂ) ^ (-s)‖ = (N : ℝ) ^ (-s.re) := by
+    rw [Complex.norm_natCast_cpow_of_pos (by omega)]; simp
+  calc ‖riemannZeta s + (N : ℂ) ^ (1 - s) / (1 - s) + (N : ℂ) ^ (-s) / 2 -
+        s * (∫ x in Ioi (N : ℝ), (⌊x⌋ + 1 / 2 - x) / (x : ℂ) ^ (s + 1)) -
+        (N : ℂ) ^ (1 - s) / (1 - s) - riemannZeta s‖
+      = ‖(N : ℂ) ^ (-s) / 2 - s * (∫ x in Ioi (N : ℝ), (⌊x⌋ + 1 / 2 - x) / (x : ℂ) ^ (s + 1))‖ := by
+        ring_nf
+    _ ≤ ‖(N : ℂ) ^ (-s) / 2‖ + ‖s‖ * ‖∫ x in Ioi (N : ℝ), (⌊x⌋ + 1 / 2 - x) / (x : ℂ) ^ (s + 1)‖ := by
+        refine (norm_sub_le _ _).trans ?_
+        rw [norm_mul]
+    _ ≤ (N : ℝ) ^ (-s.re) / 2 + ‖s‖ * ((N : ℝ) ^ (-s.re) / s.re) := by
+        rw [norm_div, hNs]
+        gcongr
+        simp
+    _ = _ := by ring
+
+/-- (CP1.6) for real X ≥ 1: Σ_(n≤X) n^(-s) = X^(1-s)/(1-s) + ζ(s) + O(⌊X⌋^(-Re s)). -/
+lemma partialZeta_error {s : ℂ} (hσ : 0 < s.re) (hs1 : s ≠ 1) {X : ℝ} (hX : 1 ≤ X) :
+    ‖∑ n ∈ Finset.Icc 1 ⌊X⌋₊, (n : ℂ) ^ (-s) - (X : ℂ) ^ (1 - s) / (1 - s) - riemannZeta s‖ ≤
+      (3 / 2 + ‖s‖ / s.re) * ((⌊X⌋₊ : ℕ) : ℝ) ^ (-s.re) := by
+  set N := ⌊X⌋₊ with hNdef
+  have hN : 1 ≤ N := Nat.le_floor (by simpa using hX)
+  have hNpos : (0 : ℝ) < N := by exact_mod_cast hN
+  have hNX : (N : ℝ) ≤ X := Nat.floor_le (by linarith)
+  have hXN : X - N < 1 := by have := Nat.lt_floor_add_one X; linarith
+  have hs1' : (1 : ℂ) - s ≠ 0 := sub_ne_zero.mpr (Ne.symm hs1)
+  have hmvt : ‖(X : ℂ) ^ (1 - s) / (1 - s) - (N : ℂ) ^ (1 - s) / (1 - s)‖ ≤
+      (N : ℝ) ^ (-s.re) := by
+    have hderiv : ∀ u ∈ Icc (N : ℝ) X, HasDerivWithinAt (fun y : ℝ => (y : ℂ) ^ (1 - s) / (1 - s))
+        ((u : ℂ) ^ (-s)) (Icc (N : ℝ) X) u := by
+      intro u hu
+      have hu0 : u ≠ 0 := ne_of_gt (lt_of_lt_of_le hNpos hu.1)
+      have h := (hasDerivAt_ofReal_cpow_const hu0 hs1').div_const (1 - s)
+      have heq : (1 - s) * (u : ℂ) ^ (1 - s - 1) / (1 - s) = (u : ℂ) ^ (-s) := by
+        rw [show (1 : ℂ) - s - 1 = -s by ring]; field_simp
+      rw [heq] at h
+      exact h.hasDerivWithinAt
+    have hbound : ∀ u ∈ Ico (N : ℝ) X, ‖(u : ℂ) ^ (-s)‖ ≤ (N : ℝ) ^ (-s.re) := by
+      intro u hu
+      have hu0 : 0 < u := lt_of_lt_of_le hNpos hu.1
+      rw [Complex.norm_cpow_eq_rpow_re_of_pos hu0, Complex.neg_re]
+      exact Real.rpow_le_rpow_of_nonpos hNpos hu.1 (by linarith)
+    have h := norm_image_sub_le_of_norm_deriv_le_segment' hderiv hbound X ⟨hNX, le_rfl⟩
+    refine h.trans ?_
+    have hpos : 0 ≤ (N : ℝ) ^ (-s.re) := Real.rpow_nonneg hNpos.le _
+    nlinarith
+  have hnat := partialZeta_error_nat hσ hs1 hN
+  calc ‖∑ n ∈ Finset.Icc 1 N, (n : ℂ) ^ (-s) - (X : ℂ) ^ (1 - s) / (1 - s) - riemannZeta s‖
+      = ‖(∑ n ∈ Finset.Icc 1 N, (n : ℂ) ^ (-s) - (N : ℂ) ^ (1 - s) / (1 - s) - riemannZeta s) -
+          ((X : ℂ) ^ (1 - s) / (1 - s) - (N : ℂ) ^ (1 - s) / (1 - s))‖ := by ring_nf
+    _ ≤ (1 / 2 + ‖s‖ / s.re) * (N : ℝ) ^ (-s.re) + (N : ℝ) ^ (-s.re) :=
+        (norm_sub_le _ _).trans (add_le_add hnat hmvt)
+    _ = _ := by ring
+
+/-- ⌊X⌋^(-σ) ≤ 2^σ X^(-σ) for X ≥ 1 and σ ≥ 0. -/
+lemma floor_rpow_neg_le {X σ : ℝ} (hX : 1 ≤ X) (hσ : 0 ≤ σ) :
+    ((⌊X⌋₊ : ℕ) : ℝ) ^ (-σ) ≤ 2 ^ σ * X ^ (-σ) := by
+  have hN : 1 ≤ ⌊X⌋₊ := Nat.le_floor (by simpa using hX)
+  have hNpos : (0 : ℝ) < ⌊X⌋₊ := by exact_mod_cast hN
+  have hhalf : X / 2 ≤ (⌊X⌋₊ : ℝ) := by
+    have h1 := Nat.lt_floor_add_one X
+    have h2 : (1 : ℝ) ≤ ⌊X⌋₊ := by exact_mod_cast hN
+    linarith
+  calc ((⌊X⌋₊ : ℕ) : ℝ) ^ (-σ) ≤ (X / 2) ^ (-σ) :=
+        Real.rpow_le_rpow_of_nonpos (by linarith) hhalf (by linarith)
+    _ = 2 ^ σ * X ^ (-σ) := by
+        rw [Real.div_rpow (by linarith) (by norm_num), Real.rpow_neg (by norm_num : (0:ℝ) ≤ 2)]
+        field_simp
+
+/-! ### Complex measures from a locally integrable density and an origin atom -/
+
+lemma isLocallyFinite_withDensity_ofReal {f : ℝ → ℝ} (hf : LocallyIntegrable f volume) :
+    IsLocallyFiniteMeasure (volume.withDensity (fun x => ENNReal.ofReal (f x))) := by
+  refine ⟨fun x => ?_⟩
+  obtain ⟨U, hU, hint⟩ := hf x
+  refine ⟨interior U, interior_mem_nhds.mpr hU, ?_⟩
+  rw [withDensity_apply _ isOpen_interior.measurableSet]
+  refine lt_of_le_of_lt (lintegral_mono_set interior_subset) ?_
+  refine lt_of_le_of_lt (lintegral_mono (fun y => ?_)) hint.2
+  rw [← ofReal_norm]
+  exact ENNReal.ofReal_le_ofReal (le_abs_self _)
+
+/-- Density part plus atom c at the origin, as a positive measure. -/
+def densityAtomPart (f : ℝ → ℝ) (a : ℝ) : Measure ℝ :=
+  volume.withDensity (fun x => ENNReal.ofReal (f x)) + ENNReal.ofReal a • Measure.dirac 0
+
+lemma isLocallyFinite_densityAtomPart {f : ℝ → ℝ} (hf : LocallyIntegrable f volume) (a : ℝ) :
+    IsLocallyFiniteMeasure (densityAtomPart f a) := by
+  have := isLocallyFinite_withDensity_ofReal hf
+  have : IsFiniteMeasure (ENNReal.ofReal a • Measure.dirac (0 : ℝ)) := ⟨by simp⟩
+  unfold densityAtomPart
+  infer_instance
+
+lemma locallyIntegrable_complex_re {g : ℝ → ℂ} (hg : LocallyIntegrable g volume) :
+    LocallyIntegrable (fun x => (g x).re) volume := by
+  intro x
+  obtain ⟨U, hU, hint⟩ := hg x
+  exact ⟨U, hU, hint.re⟩
+
+lemma locallyIntegrable_complex_im {g : ℝ → ℂ} (hg : LocallyIntegrable g volume) :
+    LocallyIntegrable (fun x => (g x).im) volume := by
+  intro x
+  obtain ⟨U, hU, hint⟩ := hg x
+  exact ⟨U, hU, hint.im⟩
+
+/-- The genuine locally finite complex measure g dx + c δ₀, with canonical Jordan pairs. -/
+def densityAtomMeasure (g : ℝ → ℂ) (c : ℂ) (hg : LocallyIntegrable g volume) :
+    LocallyFiniteComplexMeasure :=
+  haveI := isLocallyFinite_densityAtomPart (locallyIntegrable_complex_re hg) c.re
+  haveI := isLocallyFinite_densityAtomPart (locallyIntegrable_complex_re hg).neg (-c.re)
+  haveI := isLocallyFinite_densityAtomPart (locallyIntegrable_complex_im hg) c.im
+  haveI := isLocallyFinite_densityAtomPart (locallyIntegrable_complex_im hg).neg (-c.im)
+  ⟨localJordanDifference (densityAtomPart (fun x => (g x).re) c.re)
+      (densityAtomPart (fun x => -(g x).re) (-c.re)),
+    localJordanDifference (densityAtomPart (fun x => (g x).im) c.im)
+      (densityAtomPart (fun x => -(g x).im) (-c.im))⟩
+
+lemma lintegral_ofReal_lt_top_of_integrableOn {f : ℝ → ℝ} {A : Set ℝ}
+    (hint : IntegrableOn f A volume) : ∫⁻ x in A, ENNReal.ofReal (f x) < ⊤ := by
+  refine lt_of_le_of_lt (lintegral_mono (fun x => ?_)) hint.2
+  rw [← ofReal_norm]
+  exact ENNReal.ofReal_le_ofReal (le_abs_self _)
+
+lemma densityAtomPart_toReal_sub {f : ℝ → ℝ} (hf : LocallyIntegrable f volume) (a : ℝ)
+    {K A : Set ℝ} (hK : IsCompact K) (hA : MeasurableSet A) (hAK : A ⊆ K) :
+    (densityAtomPart f a A).toReal - (densityAtomPart (fun x => -f x) (-a) A).toReal =
+      (∫ x in A, f x) + A.indicator (fun _ => a) 0 := by
+  have hint : IntegrableOn f A volume := (hf.integrableOn_isCompact hK).mono_set hAK
+  have h1 := lintegral_ofReal_lt_top_of_integrableOn hint
+  have h2 : ∫⁻ x in A, ENNReal.ofReal (-f x) < ⊤ := lintegral_ofReal_lt_top_of_integrableOn hint.neg
+  have hdirac (b : ℝ) : (ENNReal.ofReal b • Measure.dirac (0 : ℝ)) A =
+      ENNReal.ofReal (A.indicator (fun _ => b) 0) := by
+    rw [Measure.smul_apply, Measure.dirac_apply' _ hA, smul_eq_mul]
+    by_cases h0 : (0 : ℝ) ∈ A
+    · simp [Set.indicator_of_mem h0]
+    · simp [Set.indicator_of_notMem h0]
+  unfold densityAtomPart
+  beta_reduce
+  rw [Measure.add_apply, Measure.add_apply, withDensity_apply _ hA, withDensity_apply _ hA,
+    hdirac, hdirac, ENNReal.toReal_add h1.ne ENNReal.ofReal_ne_top,
+    ENNReal.toReal_add h2.ne ENNReal.ofReal_ne_top,
+    integral_eq_lintegral_pos_part_sub_lintegral_neg_part hint]
+  by_cases h0 : (0 : ℝ) ∈ A
+  · simp only [Set.indicator_of_mem h0, ENNReal.toReal_ofReal']
+    rcases le_total 0 a with ha | ha
+    · rw [max_eq_left ha, max_eq_right (by linarith : -a ≤ 0)]; ring
+    · rw [max_eq_right ha, max_eq_left (by linarith : 0 ≤ -a)]; ring
+  · simp only [Set.indicator_of_notMem h0, ENNReal.ofReal_zero, ENNReal.toReal_zero]
+    ring
+
+/-- The value of the compact restriction of g dx + c δ₀ on a measurable set. -/
+lemma densityAtomMeasure_compactRestriction_apply (g : ℝ → ℂ) (c : ℂ)
+    (hg : LocallyIntegrable g volume) {K : Set ℝ} (hK : IsCompact K) {E : Set ℝ}
+    (hE : MeasurableSet E) :
+    (densityAtomMeasure g c hg).compactRestriction K hK E =
+      (∫ x in E ∩ K, g x) + (E ∩ K).indicator (fun _ => c) 0 := by
+  have := isLocallyFinite_densityAtomPart (locallyIntegrable_complex_re hg) c.re
+  have := isLocallyFinite_densityAtomPart (locallyIntegrable_complex_re hg).neg (-c.re)
+  have := isLocallyFinite_densityAtomPart (locallyIntegrable_complex_im hg) c.im
+  have := isLocallyFinite_densityAtomPart (locallyIntegrable_complex_im hg).neg (-c.im)
+  have hEK : MeasurableSet (E ∩ K) := hE.inter hK.measurableSet
+  have hgint : IntegrableOn g (E ∩ K) volume :=
+    (hg.integrableOn_isCompact hK).mono_set inter_subset_right
+  have hre := densityAtomPart_toReal_sub (locallyIntegrable_complex_re hg) c.re hK hEK
+    inter_subset_right
+  have him := densityAtomPart_toReal_sub (locallyIntegrable_complex_im hg) c.im hK hEK
+    inter_subset_right
+  apply Complex.ext
+  · change (ComplexMeasure.re ((densityAtomMeasure g c hg).compactRestriction K hK)) E = _
+    rw [LocallyFiniteComplexMeasure.compactRestriction_re]
+    change localSignedCompactRestriction (localJordanDifference _ _) K hK E = _
+    rw [localJordanDifference_compactRestriction]
+    simp only [sub_apply, Measure.toSignedMeasure_apply_measurable hE]
+    rw [Measure.real, Measure.real, Measure.restrict_apply hE, Measure.restrict_apply hE,
+      hre, Complex.add_re]
+    have hint_re : (∫ x in E ∩ K, g x).re = ∫ x in E ∩ K, (g x).re := by
+      have := integral_re hgint
+      simpa using this.symm
+    rw [hint_re]
+    by_cases h0 : (0 : ℝ) ∈ E ∩ K
+    · simp [Set.indicator_of_mem h0]
+    · simp [Set.indicator_of_notMem h0]
+  · change (ComplexMeasure.im ((densityAtomMeasure g c hg).compactRestriction K hK)) E = _
+    rw [LocallyFiniteComplexMeasure.compactRestriction_im]
+    change localSignedCompactRestriction (localJordanDifference _ _) K hK E = _
+    rw [localJordanDifference_compactRestriction]
+    simp only [sub_apply, Measure.toSignedMeasure_apply_measurable hE]
+    rw [Measure.real, Measure.real, Measure.restrict_apply hE, Measure.restrict_apply hE,
+      him, Complex.add_im]
+    have hint_im : (∫ x in E ∩ K, g x).im = ∫ x in E ∩ K, (g x).im := by
+      have := integral_im hgint
+      simpa using this.symm
+    rw [hint_im]
+    by_cases h0 : (0 : ℝ) ∈ E ∩ K
+    · simp [Set.indicator_of_mem h0]
+    · simp [Set.indicator_of_notMem h0]
+
+/-- Local variation of a difference of two density-plus-atom measures on a compact window. -/
+lemma densityAtom_variation_diff_le {g₁ g₂ : ℝ → ℂ} {c₁ c₂ : ℂ}
+    (hg₁ : LocallyIntegrable g₁ volume) (hg₂ : LocallyIntegrable g₂ volume)
+    {K : Set ℝ} (hK : IsCompact K) :
+    ((densityAtomMeasure g₁ c₁ hg₁).compactRestriction K hK -
+        (densityAtomMeasure g₂ c₂ hg₂).compactRestriction K hK).variation.real univ ≤
+      (∫ x in K, ‖g₁ x - g₂ x‖) + ‖c₁ - c₂‖ := by
+  have hi₁ : IntegrableOn g₁ K volume := hg₁.integrableOn_isCompact hK
+  have hi₂ : IntegrableOn g₂ K volume := hg₂.integrableOn_isCompact hK
+  have hid : IntegrableOn (fun x => g₁ x - g₂ x) K volume := hi₁.sub hi₂
+  set m : Measure ℝ := (volume.restrict K).withDensity (fun x => ‖g₁ x - g₂ x‖ₑ) +
+    ‖c₁ - c₂‖ₑ • Measure.dirac 0 with hm
+  have hle : ((densityAtomMeasure g₁ c₁ hg₁).compactRestriction K hK -
+      (densityAtomMeasure g₂ c₂ hg₂).compactRestriction K hK).variation ≤ m := by
+    refine VectorMeasure.variation_le_of_forall_enorm_le (fun E hE => ?_)
+    rw [sub_apply, densityAtomMeasure_compactRestriction_apply _ _ _ hK hE,
+      densityAtomMeasure_compactRestriction_apply _ _ _ hK hE]
+    have hEK : MeasurableSet (E ∩ K) := hE.inter hK.measurableSet
+    have h1 : (∫ x in E ∩ K, g₁ x) + (E ∩ K).indicator (fun _ => c₁) 0 -
+        ((∫ x in E ∩ K, g₂ x) + (E ∩ K).indicator (fun _ => c₂) 0) =
+        (∫ x in E ∩ K, (g₁ x - g₂ x)) + (E ∩ K).indicator (fun _ => c₁ - c₂) 0 := by
+      rw [integral_sub (hi₁.mono_set inter_subset_right) (hi₂.mono_set inter_subset_right)]
+      by_cases h0 : (0 : ℝ) ∈ E ∩ K
+      · simp only [Set.indicator_of_mem h0]; ring
+      · simp only [Set.indicator_of_notMem h0]; ring
+    rw [h1]
+    refine (enorm_add_le _ _).trans ?_
+    rw [hm, Measure.add_apply, withDensity_apply _ hE, Measure.restrict_restrict hE,
+      Measure.smul_apply, Measure.dirac_apply' _ hE, smul_eq_mul]
+    refine add_le_add (enorm_integral_le_lintegral_enorm _) ?_
+    by_cases h0 : (0 : ℝ) ∈ E ∩ K
+    · rw [Set.indicator_of_mem h0, Set.indicator_of_mem h0.1]; simp
+    · rw [Set.indicator_of_notMem h0, enorm_zero]; exact zero_le
+  have hmfin : m univ ≠ ⊤ := by
+    rw [hm, Measure.add_apply, withDensity_apply _ MeasurableSet.univ, Measure.restrict_univ]
+    refine ENNReal.add_ne_top.mpr ⟨hid.2.ne, ?_⟩
+    simp
+  calc ((densityAtomMeasure g₁ c₁ hg₁).compactRestriction K hK -
+        (densityAtomMeasure g₂ c₂ hg₂).compactRestriction K hK).variation.real univ
+      ≤ (m univ).toReal := ENNReal.toReal_mono hmfin (hle univ)
+    _ = (∫ x in K, ‖g₁ x - g₂ x‖) + ‖c₁ - c₂‖ := by
+        rw [hm, Measure.add_apply, withDensity_apply _ MeasurableSet.univ, Measure.restrict_univ,
+          ENNReal.toReal_add hid.2.ne (by simp), integral_norm_eq_lintegral_enorm
+            hid.aestronglyMeasurable]
+        simp
+
+/-! ### Cutoff and limit densities (CP1.3-CP1.5) -/
+
+/-- S_ρ, the paper's finite-sum function (inclusive right integer endpoint). -/
+abbrev finiteSumSrho (ρ : ℂ) (x : ℝ) : ℂ := coPoissonPowerSums ρ x
+
+/-- Density of the T-cutoff of (CP1.2) at x (even in x): the two lattice-ray families
+x^(-ρ) Σ_(x e^(-T) ≤ n ≤ x) n^(ρ-1) and x^(ρ-1) Σ_(x < n ≤ x e^T) n^(-ρ), minus the
+integrated continuum (e^((1-ρ)T) - 1)/(1-ρ). -/
+def coPoissonCutoffDensity (ρ : ℂ) (T : ℝ) (x : ℝ) : ℂ :=
+  ((|x| : ℝ) : ℂ) ^ (-ρ) *
+      ∑ n ∈ Finset.Icc (max 1 ⌈|x| * Real.exp (-T)⌉₊) ⌊|x|⌋₊, (n : ℂ) ^ (ρ - 1) +
+    ((|x| : ℝ) : ℂ) ^ (ρ - 1) * ∑ n ∈ Finset.Ioc ⌊|x|⌋₊ ⌊|x| * Real.exp T⌋₊, (n : ℂ) ^ (-ρ) -
+    (cexp ((1 - ρ) * T) - 1) / (1 - ρ)
+
+/-- Origin atom of the T-cutoff: ∫_0^T e^(-ρ t) dt. -/
+def coPoissonCutoffAtom (ρ : ℂ) (T : ℝ) : ℂ := (1 - cexp (-ρ * T)) / ρ
+
+/-- The limit density S_ρ(|x|) + ζ(ρ)|x|^(ρ-1) + 1/(1-ρ) of (CP1.4). -/
+def coPoissonLimitDensity (ρ : ℂ) (x : ℝ) : ℂ :=
+  finiteSumSrho ρ |x| + riemannZeta ρ * ((|x| : ℝ) : ℂ) ^ (ρ - 1) + 1 / (1 - ρ)
+
+lemma Icc_one_eq_Ioc_zero (a : ℕ) : Finset.Icc 1 a = Finset.Ioc 0 a := by
+  ext n; simp; omega
+
+/-- Near the origin both lattice families are empty. -/
+lemma coPoissonCutoff_sub_limit_small {ρ : ℂ} {T x : ℝ} (hT : 0 ≤ T)
+    (hx : |x| * Real.exp T < 1) :
+    coPoissonCutoffDensity ρ T x - coPoissonLimitDensity ρ x =
+      -(cexp ((1 - ρ) * T) / (1 - ρ)) - riemannZeta ρ * ((|x| : ℝ) : ℂ) ^ (ρ - 1) := by
+  have hx1 : |x| < 1 := by
+    have : 1 ≤ Real.exp T := Real.one_le_exp hT
+    nlinarith [abs_nonneg x]
+  have hf0 : ⌊|x|⌋₊ = 0 := Nat.floor_eq_zero.mpr hx1
+  have hf1 : ⌊|x| * Real.exp T⌋₊ = 0 := Nat.floor_eq_zero.mpr hx
+  have hempty : Finset.Icc (max 1 ⌈|x| * Real.exp (-T)⌉₊) 0 = ∅ :=
+    Finset.Icc_eq_empty (by omega)
+  unfold coPoissonCutoffDensity coPoissonLimitDensity finiteSumSrho coPoissonPowerSums
+  rw [hf0, hf1, hempty]
+  simp only [Finset.sum_empty, Finset.Ioc_self, Finset.Icc_eq_empty_of_lt (by norm_num : 0 < 1)]
+  field_simp
+  ring
+
+/-- Away from the origin the first family stabilizes and the second telescopes into the
+finite power sum up to X = |x| e^T. -/
+lemma coPoissonCutoff_sub_limit_main {ρ : ℂ} {T x : ℝ} (hT : 0 ≤ T) (hx0 : 0 < |x|)
+    (hx2 : |x| * Real.exp (-T) ≤ 1) :
+    coPoissonCutoffDensity ρ T x - coPoissonLimitDensity ρ x =
+      ((|x| : ℝ) : ℂ) ^ (ρ - 1) *
+        (∑ n ∈ Finset.Icc 1 ⌊|x| * Real.exp T⌋₊, (n : ℂ) ^ (-ρ) -
+          (((|x| * Real.exp T : ℝ)) : ℂ) ^ (1 - ρ) / (1 - ρ) - riemannZeta ρ) := by
+  have hceil : max 1 ⌈|x| * Real.exp (-T)⌉₊ = 1 :=
+    max_eq_left (Nat.ceil_le.mpr (by simpa using hx2))
+  have hle : ⌊|x|⌋₊ ≤ ⌊|x| * Real.exp T⌋₊ :=
+    Nat.floor_le_floor (le_mul_of_one_le_right (abs_nonneg x) (Real.one_le_exp hT))
+  have hsplit : ∑ n ∈ Finset.Ioc ⌊|x|⌋₊ ⌊|x| * Real.exp T⌋₊, (n : ℂ) ^ (-ρ) =
+      ∑ n ∈ Finset.Icc 1 ⌊|x| * Real.exp T⌋₊, (n : ℂ) ^ (-ρ) -
+        ∑ n ∈ Finset.Icc 1 ⌊|x|⌋₊, (n : ℂ) ^ (-ρ) := by
+    rw [Icc_one_eq_Ioc_zero, Icc_one_eq_Ioc_zero,
+      ← Finset.sum_Ioc_consecutive _ (Nat.zero_le _) hle]
+    ring
+  have hpow : ((|x| : ℝ) : ℂ) ^ (ρ - 1) * (((|x| * Real.exp T : ℝ)) : ℂ) ^ (1 - ρ) =
+      cexp ((1 - ρ) * T) := by
+    rw [Complex.ofReal_mul, Complex.mul_cpow_ofReal_nonneg (abs_nonneg x) (Real.exp_pos T).le,
+      ← mul_assoc, ← Complex.cpow_add _ _ (by exact_mod_cast hx0.ne'),
+      show ρ - 1 + (1 - ρ) = 0 by ring, Complex.cpow_zero, one_mul,
+      Complex.cpow_def_of_ne_zero (by exact_mod_cast (Real.exp_pos T).ne'),
+      ← Complex.ofReal_log (Real.exp_pos T).le, Real.log_exp]
+    ring_nf
+  unfold coPoissonCutoffDensity coPoissonLimitDensity finiteSumSrho coPoissonPowerSums
+  have h1 : ((|x| : ℝ) : ℂ) ^ (ρ - 1) * ((((|x| * Real.exp T : ℝ)) : ℂ) ^ (1 - ρ) / (1 - ρ)) =
+      cexp ((1 - ρ) * T) / (1 - ρ) := by rw [← mul_div_assoc, hpow]
+  rw [hceil, hsplit]
+  linear_combination h1
+
+/-! ### Measurability and local integrability -/
+
+lemma measurable_abs_cpow (c : ℂ) : Measurable (fun x : ℝ => ((|x| : ℝ) : ℂ) ^ c) :=
+  (Complex.measurable_ofReal.comp continuous_abs.measurable).pow_const c
+
+lemma measurable_natPair_sum (F : ℕ × ℕ → ℂ) {a b : ℝ → ℝ} (ha : Measurable a)
+    (hb : Measurable b) : Measurable (fun x => F (⌈a x⌉₊, ⌊b x⌋₊)) :=
+  (measurable_of_countable F).comp ((Nat.measurable_ceil.comp ha).prodMk (Nat.measurable_floor.comp hb))
+
+lemma measurable_natPair_sum' (F : ℕ × ℕ → ℂ) {a b : ℝ → ℝ} (ha : Measurable a)
+    (hb : Measurable b) : Measurable (fun x => F (⌊a x⌋₊, ⌊b x⌋₊)) :=
+  (measurable_of_countable F).comp ((Nat.measurable_floor.comp ha).prodMk (Nat.measurable_floor.comp hb))
+
+lemma measurable_coPoissonCutoffDensity (ρ : ℂ) (T : ℝ) :
+    Measurable (coPoissonCutoffDensity ρ T) := by
+  have habs : Measurable (fun x : ℝ => |x|) := continuous_abs.measurable
+  have h1 := measurable_natPair_sum
+    (fun p : ℕ × ℕ => ∑ n ∈ Finset.Icc (max 1 p.1) p.2, (n : ℂ) ^ (ρ - 1))
+    (habs.mul_const (Real.exp (-T))) habs
+  have h2 := measurable_natPair_sum'
+    (fun p : ℕ × ℕ => ∑ n ∈ Finset.Ioc p.1 p.2, (n : ℂ) ^ (-ρ))
+    habs (habs.mul_const (Real.exp T))
+  exact (((measurable_abs_cpow _).mul h1).add ((measurable_abs_cpow _).mul h2)).sub_const _
+
+lemma measurable_coPoissonLimitDensity (ρ : ℂ) : Measurable (coPoissonLimitDensity ρ) := by
+  have habs : Measurable (fun x : ℝ => |x|) := continuous_abs.measurable
+  have h1 := measurable_natPair_sum'
+    (fun p : ℕ × ℕ => ∑ n ∈ Finset.Icc 1 p.2, (n : ℂ) ^ (ρ - 1)) habs habs
+  have h2 := measurable_natPair_sum'
+    (fun p : ℕ × ℕ => ∑ n ∈ Finset.Icc 1 p.2, (n : ℂ) ^ (-ρ)) habs habs
+  have hS : Measurable (fun x : ℝ => finiteSumSrho ρ |x|) :=
+    ((measurable_abs_cpow _).mul h1).sub ((measurable_abs_cpow _).mul h2)
+  exact (hS.add (measurable_const.mul (measurable_abs_cpow _))).add_const _
+
+/-- |x|^c times a finite sum whose nonemptiness forces |x| ≥ a. -/
+lemma norm_abs_cpow_mul_sum_le {c : ℂ} {y a R : ℝ} {S U : Finset ℕ} {f : ℕ → ℂ} (ha : 0 < a)
+    (hy0 : 0 ≤ y) (hyR : y ≤ R) (hS : S ⊆ U) (hya : S.Nonempty → a ≤ y) :
+    ‖((y : ℝ) : ℂ) ^ c * ∑ n ∈ S, f n‖ ≤ (a ^ c.re + R ^ c.re) * ∑ n ∈ U, ‖f n‖ := by
+  have hU : 0 ≤ ∑ n ∈ U, ‖f n‖ := Finset.sum_nonneg (fun _ _ => norm_nonneg _)
+  have hR : 0 ≤ R := hy0.trans hyR
+  have hpow : 0 ≤ a ^ c.re + R ^ c.re := add_nonneg (Real.rpow_nonneg ha.le _) (Real.rpow_nonneg hR _)
+  rcases S.eq_empty_or_nonempty with hS0 | hS0
+  · rw [hS0, Finset.sum_empty, mul_zero, norm_zero]
+    exact mul_nonneg hpow hU
+  · have hay := hya hS0
+    have hy : 0 < y := ha.trans_le hay
+    rw [norm_mul, Complex.norm_cpow_eq_rpow_re_of_pos hy]
+    refine mul_le_mul ?_ ((norm_sum_le _ _).trans (Finset.sum_le_sum_of_subset_of_nonneg hS
+      (fun _ _ _ => norm_nonneg _))) (norm_nonneg _) hpow
+    rcases le_total 0 c.re with hc | hc
+    · exact (Real.rpow_le_rpow hy0 hyR hc).trans (le_add_of_nonneg_left (Real.rpow_nonneg ha.le _))
+    · exact (Real.rpow_le_rpow_of_nonpos ha hay hc).trans (le_add_of_nonneg_right (Real.rpow_nonneg hR _))
+
+lemma locallyIntegrable_of_abs_le_bound {f : ℝ → ℂ} (hf : Measurable f)
+    (hb : ∀ R : ℝ, 0 < R → ∃ M : ℝ, ∀ x : ℝ, |x| ≤ R → ‖f x‖ ≤ M) :
+    LocallyIntegrable f volume := by
+  refine locallyIntegrable_iff.mpr (fun K hK => ?_)
+  obtain ⟨R, hR0, hR⟩ := hK.isBounded.subset_closedBall_lt 0 0
+  obtain ⟨M, hM⟩ := hb R hR0
+  refine Measure.integrableOn_of_bounded (M := M) hK.measure_lt_top.ne hf.aestronglyMeasurable ?_
+  refine (ae_restrict_iff' hK.measurableSet).mpr (Eventually.of_forall (fun x hx => hM x ?_))
+  have := hR hx
+  simpa [Metric.mem_closedBall, Real.dist_eq] using this
+
+lemma coPoissonCutoffDensity_bound (ρ : ℂ) (T : ℝ) (R : ℝ) :
+    ∃ M : ℝ, ∀ x : ℝ, |x| ≤ R → ‖coPoissonCutoffDensity ρ T x‖ ≤ M := by
+  refine ⟨((1 : ℝ) ^ (-ρ).re + R ^ (-ρ).re) * ∑ n ∈ Finset.Icc 1 ⌊R⌋₊, ‖(n : ℂ) ^ (ρ - 1)‖ +
+    (Real.exp (-T) ^ (ρ - 1).re + R ^ (ρ - 1).re) *
+      ∑ n ∈ Finset.Icc 1 ⌊R * Real.exp T⌋₊, ‖(n : ℂ) ^ (-ρ)‖ +
+    ‖(cexp ((1 - ρ) * T) - 1) / (1 - ρ)‖, fun x hx => ?_⟩
+  have hx0 : 0 ≤ |x| := abs_nonneg x
+  unfold coPoissonCutoffDensity
+  refine (norm_sub_le _ _).trans (add_le_add_left ((norm_add_le _ _).trans (add_le_add ?_ ?_)) _)
+  · refine norm_abs_cpow_mul_sum_le one_pos hx0 hx (fun n hn => ?_) (fun ⟨n, hn⟩ => ?_)
+    · rw [Finset.mem_Icc] at hn ⊢
+      exact ⟨le_of_max_le_left hn.1, hn.2.trans (Nat.floor_le_floor hx)⟩
+    · rw [Finset.mem_Icc] at hn
+      have h1 : 1 ≤ ⌊|x|⌋₊ := (le_of_max_le_left hn.1).trans hn.2
+      exact (Nat.one_le_floor_iff _).mp h1
+  · refine norm_abs_cpow_mul_sum_le (Real.exp_pos _) hx0 hx (fun n hn => ?_) (fun ⟨n, hn⟩ => ?_)
+    · rw [Finset.mem_Ioc] at hn
+      rw [Finset.mem_Icc]
+      exact ⟨by omega, hn.2.trans (Nat.floor_le_floor (mul_le_mul_of_nonneg_right hx
+        (Real.exp_pos T).le))⟩
+    · rw [Finset.mem_Ioc] at hn
+      have h1 : 1 ≤ ⌊|x| * Real.exp T⌋₊ := by omega
+      have h2 := (Nat.one_le_floor_iff _).mp h1
+      rw [Real.exp_neg]
+      rw [inv_le_iff_one_le_mul₀ (Real.exp_pos T)]
+      linarith [mul_comm (|x|) (Real.exp T)]
+
+lemma locallyIntegrable_coPoissonCutoffDensity (ρ : ℂ) (T : ℝ) :
+    LocallyIntegrable (coPoissonCutoffDensity ρ T) volume :=
+  locallyIntegrable_of_abs_le_bound (measurable_coPoissonCutoffDensity ρ T)
+    (fun R _ => coPoissonCutoffDensity_bound ρ T R)
+
+lemma integrableOn_abs_rpow_Icc {r : ℝ} (hr : -1 < r) {R : ℝ} (hR : 0 ≤ R) :
+    IntegrableOn (fun x : ℝ => |x| ^ r) (Icc (-R) R) := by
+  have h1 : IntervalIntegrable (fun x : ℝ => |x| ^ r) volume 0 R := by
+    refine (intervalIntegral.intervalIntegrable_rpow' (a := 0) (b := R) hr).congr (fun x hx => ?_)
+    rw [Set.uIoc_of_le hR] at hx
+    simp [abs_of_pos hx.1]
+  have h2 : IntervalIntegrable (fun x : ℝ => |x| ^ r) volume (-R) 0 := by
+    have := (IntervalIntegrable.iff_comp_neg (f := fun x : ℝ => |x| ^ r)).mp h1
+    simp only [abs_neg, neg_zero] at this
+    exact this.symm
+  exact (intervalIntegrable_iff_integrableOn_Icc_of_le (by linarith)).mp (h2.trans h1)
+
+/-- |x|^(ρ-1) is locally integrable for Re ρ > 0. -/
+lemma locallyIntegrable_abs_cpow {ρ : ℂ} (h0 : 0 < ρ.re) :
+    LocallyIntegrable (fun x : ℝ => ((|x| : ℝ) : ℂ) ^ (ρ - 1)) volume := by
+  refine locallyIntegrable_iff.mpr (fun K hK => ?_)
+  obtain ⟨R, hR0, hR⟩ := hK.isBounded.subset_closedBall_lt 0 0
+  have hsub : K ⊆ Icc (-R) R := fun x hx => by
+    have := hR hx
+    rw [Metric.mem_closedBall, Real.dist_eq, sub_zero] at this
+    exact abs_le.mp this
+  have hint := (integrableOn_abs_rpow_Icc (r := (ρ - 1).re) (by simp; linarith) hR0.le).mono_set
+    hsub
+  refine hint.mono' (measurable_abs_cpow _).aestronglyMeasurable
+    (Eventually.of_forall (fun x => ?_))
+  refine (Complex.norm_cpow_le _ _).trans (le_of_eq ?_)
+  rw [Complex.arg_ofReal_of_nonneg (abs_nonneg x), Complex.norm_real, Real.norm_eq_abs, abs_abs]
+  simp
+
+lemma finiteSumSrho_abs_bound (ρ : ℂ) (R : ℝ) :
+    ∃ M : ℝ, ∀ x : ℝ, |x| ≤ R → ‖finiteSumSrho ρ |x|‖ ≤ M := by
+  refine ⟨((1 : ℝ) ^ (-ρ).re + R ^ (-ρ).re) * ∑ n ∈ Finset.Icc 1 ⌊R⌋₊, ‖(n : ℂ) ^ (ρ - 1)‖ +
+    ((1 : ℝ) ^ (ρ - 1).re + R ^ (ρ - 1).re) * ∑ n ∈ Finset.Icc 1 ⌊R⌋₊, ‖(n : ℂ) ^ (-ρ)‖,
+    fun x hx => ?_⟩
+  have hx0 : 0 ≤ |x| := abs_nonneg x
+  have hsub : Finset.Icc 1 ⌊|x|⌋₊ ⊆ Finset.Icc 1 ⌊R⌋₊ := fun n hn => by
+    rw [Finset.mem_Icc] at hn ⊢; exact ⟨hn.1, hn.2.trans (Nat.floor_le_floor hx)⟩
+  have hne : (Finset.Icc 1 ⌊|x|⌋₊).Nonempty → 1 ≤ |x| := fun ⟨n, hn⟩ => by
+    rw [Finset.mem_Icc] at hn; exact (Nat.one_le_floor_iff _).mp (hn.1.trans hn.2)
+  unfold finiteSumSrho coPoissonPowerSums
+  exact (norm_sub_le _ _).trans (add_le_add (norm_abs_cpow_mul_sum_le one_pos hx0 hx hsub hne)
+    (norm_abs_cpow_mul_sum_le one_pos hx0 hx hsub hne))
+
+lemma locallyIntegrable_coPoissonLimitDensity {ρ : ℂ} (h0 : 0 < ρ.re) :
+    LocallyIntegrable (coPoissonLimitDensity ρ) volume := by
+  have habs : Measurable (fun x : ℝ => |x|) := continuous_abs.measurable
+  have hS : LocallyIntegrable (fun x : ℝ => finiteSumSrho ρ |x|) volume := by
+    refine locallyIntegrable_of_abs_le_bound ?_ (fun R _ => finiteSumSrho_abs_bound ρ R)
+    have h1 := measurable_natPair_sum'
+      (fun p : ℕ × ℕ => ∑ n ∈ Finset.Icc 1 p.2, (n : ℂ) ^ (ρ - 1)) habs habs
+    have h2 := measurable_natPair_sum'
+      (fun p : ℕ × ℕ => ∑ n ∈ Finset.Icc 1 p.2, (n : ℂ) ^ (-ρ)) habs habs
+    exact ((measurable_abs_cpow _).mul h1).sub ((measurable_abs_cpow _).mul h2)
+  have hZ : LocallyIntegrable (fun x : ℝ => riemannZeta ρ * ((|x| : ℝ) : ℂ) ^ (ρ - 1)) volume :=
+    locallyIntegrable_iff.mpr (fun K hK =>
+      (locallyIntegrable_iff.mp (locallyIntegrable_abs_cpow h0) K hK).const_mul (riemannZeta ρ))
+  exact (hS.add hZ).add (locallyIntegrable_const _)
+
+/-- The T-cutoff of (CP1.2) as a genuine locally finite complex measure
+r_T(x) dx + ((1 - e^(-ρT))/ρ) δ₀. -/
+def coPoissonCutoff (ρ : ℂ) (T : ℝ) : LocallyFiniteComplexMeasure :=
+  densityAtomMeasure (coPoissonCutoffDensity ρ T) (coPoissonCutoffAtom ρ T)
+    (locallyIntegrable_coPoissonCutoffDensity ρ T)
+
+/-- The limit measure ρ⁻¹ δ₀ + [S_ρ(|x|) + ζ(ρ)|x|^(ρ-1) + (1-ρ)⁻¹] dx of (CP1.4). -/
+def coPoissonLimitMeasure (ρ : ℂ) (h0 : 0 < ρ.re) : LocallyFiniteComplexMeasure :=
+  densityAtomMeasure (coPoissonLimitDensity ρ) (1 / ρ) (locallyIntegrable_coPoissonLimitDensity h0)
+
+/-! ### Pointwise cutoff error -/
+
+/-- The uniform constant of the cutoff error. -/
+def coPoissonErrorConst (ρ : ℂ) : ℝ :=
+  1 / ‖1 - ρ‖ + ‖riemannZeta ρ‖ + (3 / 2 + ‖ρ‖ / ρ.re) * 2 ^ ρ.re
+
+lemma coPoissonCutoff_sub_limit_decay {ρ : ℂ} (h0 : 0 < ρ.re) (h1 : ρ.re < 1) {T x : ℝ}
+    (hT : 0 ≤ T) (hx0 : x ≠ 0) (hxT : |x| ≤ Real.exp T) (hX : 1 ≤ |x| * Real.exp T) :
+    ‖coPoissonCutoffDensity ρ T x - coPoissonLimitDensity ρ x‖ ≤
+      (3 / 2 + ‖ρ‖ / ρ.re) * 2 ^ ρ.re * (|x| ^ (ρ.re - 1) * (|x| * Real.exp T) ^ (-ρ.re)) := by
+  have hρ1 : ρ ≠ 1 := fun h => by simp [h] at h1
+  have hax : 0 < |x| := abs_pos.mpr hx0
+  have hx2 : |x| * Real.exp (-T) ≤ 1 := by
+    rw [Real.exp_neg, ← div_eq_mul_inv, div_le_one (Real.exp_pos T)]; exact hxT
+  rw [coPoissonCutoff_sub_limit_main hT hax hx2, norm_mul,
+    Complex.norm_cpow_eq_rpow_re_of_pos hax]
+  have he := partialZeta_error h0 hρ1 hX
+  have hf := floor_rpow_neg_le hX h0.le
+  have hC : 0 ≤ 3 / 2 + ‖ρ‖ / ρ.re := by positivity
+  simp only [Complex.sub_re, Complex.one_re]
+  calc |x| ^ (ρ.re - 1) * ‖∑ n ∈ Finset.Icc 1 ⌊|x| * Real.exp T⌋₊, (n : ℂ) ^ (-ρ) -
+        (((|x| * Real.exp T : ℝ)) : ℂ) ^ (1 - ρ) / (1 - ρ) - riemannZeta ρ‖
+      ≤ |x| ^ (ρ.re - 1) * ((3 / 2 + ‖ρ‖ / ρ.re) * (2 ^ ρ.re * (|x| * Real.exp T) ^ (-ρ.re))) :=
+        mul_le_mul_of_nonneg_left (he.trans (mul_le_mul_of_nonneg_left hf hC))
+          (Real.rpow_nonneg hax.le _)
+    _ = _ := by ring
+
+lemma coPoissonCutoff_sub_limit_le {ρ : ℂ} (h0 : 0 < ρ.re) (h1 : ρ.re < 1) {T x : ℝ}
+    (hT : 0 ≤ T) (hx0 : x ≠ 0) (hxT : |x| ≤ Real.exp T) :
+    ‖coPoissonCutoffDensity ρ T x - coPoissonLimitDensity ρ x‖ ≤
+      coPoissonErrorConst ρ * |x| ^ (ρ.re - 1) := by
+  have hax : 0 < |x| := abs_pos.mpr hx0
+  have hpow : 0 ≤ |x| ^ (ρ.re - 1) := Real.rpow_nonneg hax.le _
+  have hρ1 : (1 : ℂ) - ρ ≠ 0 := fun h => by
+    have := congrArg Complex.re h; simp at this; linarith
+  have hC : 0 ≤ (3 / 2 + ‖ρ‖ / ρ.re) * 2 ^ ρ.re := by positivity
+  rcases lt_or_ge (|x| * Real.exp T) 1 with hX | hX
+  · rw [coPoissonCutoff_sub_limit_small hT hX]
+    have hexp : ‖cexp ((1 - ρ) * T)‖ ≤ |x| ^ (ρ.re - 1) := by
+      rw [Complex.norm_exp]
+      have hre : ((1 - ρ) * (T : ℂ)).re = (1 - ρ.re) * T := by simp
+      rw [hre, mul_comm, Real.exp_mul]
+      have hle : Real.exp T ≤ |x|⁻¹ := by
+        rw [le_inv_comm₀ (Real.exp_pos T) hax]
+        rw [← Real.exp_neg]
+        have : |x| * Real.exp T * Real.exp (-T) = |x| := by
+          rw [mul_assoc, ← Real.exp_add]; simp
+        nlinarith [Real.exp_pos (-T)]
+      calc Real.exp T ^ (1 - ρ.re) ≤ |x|⁻¹ ^ (1 - ρ.re) :=
+            Real.rpow_le_rpow (Real.exp_pos T).le hle (by linarith)
+        _ = |x| ^ (ρ.re - 1) := by
+            rw [Real.inv_rpow hax.le, ← Real.rpow_neg hax.le]; ring_nf
+    have hz : ‖riemannZeta ρ * ((|x| : ℝ) : ℂ) ^ (ρ - 1)‖ = ‖riemannZeta ρ‖ * |x| ^ (ρ.re - 1) := by
+      rw [norm_mul, Complex.norm_cpow_eq_rpow_re_of_pos hax]; simp
+    calc ‖-(cexp ((1 - ρ) * T) / (1 - ρ)) - riemannZeta ρ * ((|x| : ℝ) : ℂ) ^ (ρ - 1)‖
+        ≤ ‖cexp ((1 - ρ) * T)‖ / ‖1 - ρ‖ + ‖riemannZeta ρ‖ * |x| ^ (ρ.re - 1) := by
+          refine (norm_sub_le _ _).trans (le_of_eq ?_)
+          rw [norm_neg, norm_div, hz]
+      _ ≤ |x| ^ (ρ.re - 1) / ‖1 - ρ‖ + ‖riemannZeta ρ‖ * |x| ^ (ρ.re - 1) := by
+          gcongr
+      _ ≤ coPoissonErrorConst ρ * |x| ^ (ρ.re - 1) := by
+          have h3 : 0 ≤ (3 / 2 + ‖ρ‖ / ρ.re) * 2 ^ ρ.re * |x| ^ (ρ.re - 1) := mul_nonneg hC hpow
+          have h4 : coPoissonErrorConst ρ * |x| ^ (ρ.re - 1) = |x| ^ (ρ.re - 1) / ‖1 - ρ‖ +
+              ‖riemannZeta ρ‖ * |x| ^ (ρ.re - 1) +
+                (3 / 2 + ‖ρ‖ / ρ.re) * 2 ^ ρ.re * |x| ^ (ρ.re - 1) := by
+            unfold coPoissonErrorConst; ring
+          linarith
+  · refine (coPoissonCutoff_sub_limit_decay h0 h1 hT hx0 hxT hX).trans ?_
+    have hle1 : (|x| * Real.exp T) ^ (-ρ.re) ≤ 1 :=
+      Real.rpow_le_one_of_one_le_of_nonpos hX (by linarith)
+    calc (3 / 2 + ‖ρ‖ / ρ.re) * 2 ^ ρ.re * (|x| ^ (ρ.re - 1) * (|x| * Real.exp T) ^ (-ρ.re))
+        ≤ (3 / 2 + ‖ρ‖ / ρ.re) * 2 ^ ρ.re * (|x| ^ (ρ.re - 1) * 1) := by gcongr
+      _ ≤ coPoissonErrorConst ρ * |x| ^ (ρ.re - 1) := by
+          have h3 : 0 ≤ (1 / ‖1 - ρ‖ + ‖riemannZeta ρ‖) * |x| ^ (ρ.re - 1) :=
+            mul_nonneg (by positivity) hpow
+          have h4 : coPoissonErrorConst ρ * |x| ^ (ρ.re - 1) =
+              (1 / ‖1 - ρ‖ + ‖riemannZeta ρ‖) * |x| ^ (ρ.re - 1) +
+                (3 / 2 + ‖ρ‖ / ρ.re) * 2 ^ ρ.re * (|x| ^ (ρ.re - 1) * 1) := by
+            unfold coPoissonErrorConst; ring
+          linarith
+
+/-- Pointwise convergence of the cutoff density off the origin. -/
+lemma coPoissonCutoff_tendsto_pointwise {ρ : ℂ} (h0 : 0 < ρ.re) (h1 : ρ.re < 1) {x : ℝ}
+    (hx0 : x ≠ 0) :
+    Tendsto (fun T : ℝ => ‖coPoissonCutoffDensity ρ T x - coPoissonLimitDensity ρ x‖) atTop
+      (𝓝 0) := by
+  have hax : 0 < |x| := abs_pos.mpr hx0
+  set C := (3 / 2 + ‖ρ‖ / ρ.re) * 2 ^ ρ.re with hC
+  have hlim : Tendsto (fun T : ℝ => C * (|x| ^ (ρ.re - 1) * (|x| * Real.exp T) ^ (-ρ.re)))
+      atTop (𝓝 0) := by
+    have heq : (fun T : ℝ => C * (|x| ^ (ρ.re - 1) * (|x| * Real.exp T) ^ (-ρ.re))) =
+        fun T => C * |x| ^ (ρ.re - 1) * |x| ^ (-ρ.re) * Real.exp (-(ρ.re * T)) := by
+      funext T
+      rw [Real.mul_rpow hax.le (Real.exp_pos T).le, ← Real.exp_mul]
+      ring_nf
+    rw [heq]
+    have ht : Tendsto (fun T : ℝ => Real.exp (-(ρ.re * T))) atTop (𝓝 0) :=
+      Real.tendsto_exp_neg_atTop_nhds_zero.comp (tendsto_id.const_mul_atTop h0)
+    simpa using ht.const_mul (C * |x| ^ (ρ.re - 1) * |x| ^ (-ρ.re))
+  refine squeeze_zero' (Eventually.of_forall (fun _ => norm_nonneg _)) ?_ hlim
+  filter_upwards [eventually_ge_atTop 0, eventually_ge_atTop (Real.log |x|),
+    eventually_ge_atTop (-Real.log |x|)] with T hT hT1 hT2
+  have hxT : |x| ≤ Real.exp T := by
+    rw [← Real.exp_log hax]; exact Real.exp_le_exp.mpr hT1
+  have hX : 1 ≤ |x| * Real.exp T := by
+    rw [← Real.exp_log hax, ← Real.exp_add]; exact Real.one_le_exp (by linarith)
+  exact coPoissonCutoff_sub_limit_decay h0 h1 hT hx0 hxT hX
+
+/-! ### Local total-variation convergence (CP1.5) -/
+
+lemma coPoissonCutoffAtom_sub_norm (ρ : ℂ) (T : ℝ) :
+    ‖coPoissonCutoffAtom ρ T - 1 / ρ‖ = Real.exp (-(ρ.re * T)) / ‖ρ‖ := by
+  unfold coPoissonCutoffAtom
+  rw [show (1 - cexp (-ρ * T)) / ρ - 1 / ρ = -(cexp (-ρ * T) / ρ) by ring, norm_neg, norm_div,
+    Complex.norm_exp]
+  congr 2
+  simp
+
+lemma ae_ne_zero_real : ∀ᵐ x : ℝ ∂volume, x ≠ 0 :=
+  compl_mem_ae_iff.mpr (measure_singleton (0 : ℝ))
+
+/-- (CP1.5) On every compact window the actual cutoffs converge to the limit measure in the
+genuine finite complex variation, origin atom included. -/
+theorem coPoissonCutoff_localVariation_tendsto {ρ : ℂ} (h0 : 0 < ρ.re) (h1 : ρ.re < 1)
+    (K : Set ℝ) (hK : IsCompact K) :
+    Tendsto (fun T : ℝ => ((coPoissonCutoff ρ T).compactRestriction K hK -
+      (coPoissonLimitMeasure ρ h0).compactRestriction K hK).variation.real univ) atTop (𝓝 0) := by
+  obtain ⟨R, hR0, hR⟩ := hK.isBounded.subset_closedBall_lt 0 0
+  have hsub : K ⊆ Icc (-R) R := fun x hx => by
+    have := hR hx
+    rw [Metric.mem_closedBall, Real.dist_eq, sub_zero] at this
+    exact abs_le.mp this
+  have hbound (T : ℝ) : ((coPoissonCutoff ρ T).compactRestriction K hK -
+      (coPoissonLimitMeasure ρ h0).compactRestriction K hK).variation.real univ ≤
+      (∫ x in K, ‖coPoissonCutoffDensity ρ T x - coPoissonLimitDensity ρ x‖) +
+        ‖coPoissonCutoffAtom ρ T - 1 / ρ‖ :=
+    densityAtom_variation_diff_le _ _ hK
+  have hae : ∀ᵐ x ∂(volume.restrict K), x ∈ K ∧ x ≠ 0 :=
+    (ae_restrict_mem hK.measurableSet).and (ae_restrict_of_ae ae_ne_zero_real)
+  have hint : Tendsto (fun T : ℝ => ∫ x in K,
+      ‖coPoissonCutoffDensity ρ T x - coPoissonLimitDensity ρ x‖) atTop (𝓝 0) := by
+    have h := tendsto_integral_filter_of_dominated_convergence (μ := volume.restrict K)
+      (l := atTop) (F := fun T x => ‖coPoissonCutoffDensity ρ T x - coPoissonLimitDensity ρ x‖)
+      (f := fun _ => (0 : ℝ)) (fun x => coPoissonErrorConst ρ * |x| ^ (ρ.re - 1))
+      (Eventually.of_forall (fun T => ((measurable_coPoissonCutoffDensity ρ T).sub
+        (measurable_coPoissonLimitDensity ρ)).norm.aestronglyMeasurable))
+      ?_ (((integrableOn_abs_rpow_Icc (r := ρ.re - 1) (by linarith) hR0.le).mono_set
+        hsub).const_mul _) ?_
+    · simpa using h
+    · filter_upwards [eventually_ge_atTop 0, eventually_ge_atTop (Real.log R)] with T hT hTR
+      filter_upwards [hae] with x hx
+      have hxR : |x| ≤ R := abs_le.mpr (hsub hx.1)
+      have hxT : |x| ≤ Real.exp T :=
+        hxR.trans (by rw [← Real.exp_log hR0]; exact Real.exp_le_exp.mpr hTR)
+      rw [norm_norm]
+      exact coPoissonCutoff_sub_limit_le h0 h1 hT hx.2 hxT
+    · filter_upwards [hae] with x hx
+      exact coPoissonCutoff_tendsto_pointwise h0 h1 hx.2
+  have hatom : Tendsto (fun T : ℝ => ‖coPoissonCutoffAtom ρ T - 1 / ρ‖) atTop (𝓝 0) := by
+    simp_rw [coPoissonCutoffAtom_sub_norm]
+    have ht : Tendsto (fun T : ℝ => Real.exp (-(ρ.re * T))) atTop (𝓝 0) :=
+      Real.tendsto_exp_neg_atTop_nhds_zero.comp (tendsto_id.const_mul_atTop h0)
+    simpa using ht.div_const ‖ρ‖
+  exact squeeze_zero (fun T => measureReal_nonneg) hbound (by simpa using hint.add hatom)
+
+/-- The same convergence in the parent's sequential notion `LocalVariationConvergence`. -/
+theorem coPoissonCutoff_localVariationConvergence {ρ : ℂ} (h0 : 0 < ρ.re) (h1 : ρ.re < 1) :
+    LocalVariationConvergence (fun n : ℕ => coPoissonCutoff ρ n) (coPoissonLimitMeasure ρ h0) :=
+  fun K hK => (coPoissonCutoff_localVariation_tendsto h0 h1 K hK).comp tendsto_natCast_atTop_atTop
+
+/-! ### Pairing of a density-plus-atom measure with a test -/
+
+lemma integral_densityAtomPart {h : ℝ → ℝ} (hm : Measurable h) (a : ℝ) {f : ℝ → ℂ}
+    (hfm : AEStronglyMeasurable f volume) (hf : Integrable (fun x => (h x : ℂ) * f x)) :
+    Integrable f (densityAtomPart h a) ∧
+      ∫ x, f x ∂(densityAtomPart h a) =
+        (∫ x, ((max (h x) 0 : ℝ) : ℂ) * f x) + ((max a 0 : ℝ) : ℂ) * f 0 := by
+  have hNN : Measurable (fun x => (h x).toNNReal) := hm.real_toNNReal
+  have hsmul : (fun x => (h x).toNNReal • f x) = fun x => ((max (h x) 0 : ℝ) : ℂ) * f x := by
+    funext x
+    rw [NNReal.smul_def, Real.coe_toNNReal', Complex.real_smul]
+  have hint : Integrable (fun x => ((max (h x) 0 : ℝ) : ℂ) * f x) := by
+    refine hf.mono ((Complex.measurable_ofReal.comp (hm.max measurable_const)).aestronglyMeasurable.mul
+      hfm) (Eventually.of_forall (fun x => ?_))
+    rw [norm_mul, norm_mul, Complex.norm_real, Complex.norm_real, Real.norm_eq_abs,
+      Real.norm_eq_abs]
+    refine mul_le_mul_of_nonneg_right ?_ (norm_nonneg _)
+    rw [abs_of_nonneg (le_max_right _ _)]
+    exact max_le (le_abs_self _) (abs_nonneg _)
+  have h1 : Integrable f (volume.withDensity (fun x => ENNReal.ofReal (h x))) := by
+    change Integrable f (volume.withDensity (fun x => ((h x).toNNReal : ℝ≥0∞)))
+    rw [integrable_withDensity_iff_integrable_smul hNN, hsmul]
+    exact hint
+  have h2 : Integrable f (ENNReal.ofReal a • Measure.dirac (0 : ℝ)) :=
+    (integrable_dirac enorm_lt_top).smul_measure ENNReal.ofReal_ne_top
+  refine ⟨h1.add_measure h2, ?_⟩
+  unfold densityAtomPart
+  rw [integral_add_measure h1 h2, integral_smul_measure, integral_dirac]
+  change (∫ x, f x ∂(volume.withDensity (fun x => ((h x).toNNReal : ℝ≥0∞)))) + _ = _
+  rw [integral_withDensity_eq_integral_smul hNN, hsmul, ENNReal.toReal_ofReal', Complex.real_smul]
+
+/-- ⟨g dx + c δ₀, f⟩ = ∫ g f + c f(0) for the canonical Jordan pairs. -/
+theorem densityAtomMeasure_integral {g : ℝ → ℂ} (c : ℂ) (hg : LocallyIntegrable g volume)
+    (hgm : Measurable g) {f : ℝ → ℂ} (hfm : AEStronglyMeasurable f volume)
+    (hgf : Integrable (fun x => g x * f x)) :
+    (densityAtomMeasure g c hg).integral f = (∫ x, g x * f x) + c * f 0 := by
+  have := isLocallyFinite_densityAtomPart (locallyIntegrable_complex_re hg) c.re
+  have := isLocallyFinite_densityAtomPart (locallyIntegrable_complex_re hg).neg (-c.re)
+  have := isLocallyFinite_densityAtomPart (locallyIntegrable_complex_im hg) c.im
+  have := isLocallyFinite_densityAtomPart (locallyIntegrable_complex_im hg).neg (-c.im)
+  have hre : Measurable (fun x => (g x).re) := Complex.measurable_re.comp hgm
+  have him : Measurable (fun x => (g x).im) := Complex.measurable_im.comp hgm
+  have hbound (u : ℝ → ℝ) (hu : ∀ x, |u x| ≤ ‖g x‖) (hum : Measurable u) :
+      Integrable (fun x => (u x : ℂ) * f x) := by
+    refine hgf.mono ((Complex.measurable_ofReal.comp hum).aestronglyMeasurable.mul hfm)
+      (Eventually.of_forall (fun x => ?_))
+    rw [norm_mul, norm_mul, Complex.norm_real, Real.norm_eq_abs]
+    exact mul_le_mul_of_nonneg_right (hu x) (norm_nonneg _)
+  have hr1 := integral_densityAtomPart hre c.re hfm (hbound _ (fun x => Complex.abs_re_le_norm _) hre)
+  have hre' : Measurable (fun x => -(g x).re) := hre.neg
+  have him' : Measurable (fun x => -(g x).im) := him.neg
+  have hr2 := integral_densityAtomPart hre' (-c.re) hfm
+    (hbound _ (fun x => by rw [abs_neg]; exact Complex.abs_re_le_norm _) hre')
+  have hi1 := integral_densityAtomPart him c.im hfm (hbound _ (fun x => Complex.abs_im_le_norm _) him)
+  have hi2 := integral_densityAtomPart him' (-c.im) hfm
+    (hbound _ (fun x => by rw [abs_neg]; exact Complex.abs_im_le_norm _) him')
+  unfold LocallyFiniteComplexMeasure.integral densityAtomMeasure
+  dsimp only
+  rw [localJordanDifference_integral _ _ f hr1.1 hr2.1, localJordanDifference_integral _ _ f hi1.1 hi2.1,
+    hr1.2, hr2.2, hi1.2, hi2.2]
+  have hpm (u : ℝ) : ((max u 0 : ℝ) : ℂ) - ((max (-u) 0 : ℝ) : ℂ) = (u : ℂ) := by
+    rcases le_total 0 u with hu | hu
+    · rw [max_eq_left hu, max_eq_right (by linarith : -u ≤ 0)]; simp
+    · rw [max_eq_right hu, max_eq_left (by linarith : 0 ≤ -u)]; push_cast; ring
+  have hint (u : ℝ → ℝ) (hum : Measurable u) (hu : ∀ x, |u x| ≤ ‖g x‖) :
+      (∫ x, ((max (u x) 0 : ℝ) : ℂ) * f x) - (∫ x, ((max (-u x) 0 : ℝ) : ℂ) * f x) =
+        ∫ x, (u x : ℂ) * f x := by
+    have hip : Integrable (fun x => ((max (u x) 0 : ℝ) : ℂ) * f x) := by
+      refine (hbound u hu hum).mono ((Complex.measurable_ofReal.comp
+        (hum.max measurable_const)).aestronglyMeasurable.mul hfm) (Eventually.of_forall (fun x => ?_))
+      rw [norm_mul, norm_mul, Complex.norm_real, Complex.norm_real, Real.norm_eq_abs,
+        Real.norm_eq_abs, abs_of_nonneg (le_max_right _ _)]
+      exact mul_le_mul_of_nonneg_right (max_le (le_abs_self _) (abs_nonneg _)) (norm_nonneg _)
+    have hin : Integrable (fun x => ((max (-u x) 0 : ℝ) : ℂ) * f x) := by
+      have hum' : Measurable (fun x => -u x) := hum.neg
+      refine (hbound u hu hum).mono ((Complex.measurable_ofReal.comp
+        (hum'.max measurable_const)).aestronglyMeasurable.mul hfm) (Eventually.of_forall (fun x => ?_))
+      rw [norm_mul, norm_mul, Complex.norm_real, Complex.norm_real, Real.norm_eq_abs,
+        Real.norm_eq_abs, abs_of_nonneg (le_max_right _ _)]
+      exact mul_le_mul_of_nonneg_right (max_le (neg_le_abs _) (abs_nonneg _)) (norm_nonneg _)
+    rw [← integral_sub hip hin]
+    congr 1
+    funext x
+    rw [← sub_mul, hpm]
+  rw [show ∀ (A B C D : ℂ), A + C - (B + D) = (A - B) + (C - D) from fun _ _ _ _ => by ring,
+    show ∀ (A B C D : ℂ), A + C - (B + D) = (A - B) + (C - D) from fun _ _ _ _ => by ring,
+    hint _ hre (fun x => Complex.abs_re_le_norm _), hint _ him (fun x => Complex.abs_im_le_norm _),
+    ← sub_mul, ← sub_mul, hpm, hpm]
+  have hgsplit : (∫ x, g x * f x) = (∫ x, ((g x).re : ℂ) * f x) + I * ∫ x, ((g x).im : ℂ) * f x := by
+    rw [← integral_const_mul, ← integral_add (hbound _ (fun x => Complex.abs_re_le_norm _) hre)
+      ((hbound _ (fun x => Complex.abs_im_le_norm _) him).const_mul I)]
+    congr 1
+    funext x
+    conv_lhs => rw [← Complex.re_add_im (g x)]
+    ring
+  rw [hgsplit]
+  conv_rhs => rw [← Complex.re_add_im c]
+  ring
+
+/-! ### Lattice-ray change of variables -/
+
+lemma ofReal_mul_exp_cpow {m : ℝ} (hm : 0 < m) (u : ℝ) (c : ℂ) :
+    (((m * Real.exp u : ℝ)) : ℂ) ^ c = (m : ℂ) ^ c * cexp (c * u) := by
+  have he : ((Real.exp u : ℝ) : ℂ) ^ c = cexp (c * u) := by
+    rw [Complex.cpow_def_of_ne_zero (by exact_mod_cast (Real.exp_pos u).ne'),
+      ← Complex.ofReal_log (Real.exp_pos u).le, Real.log_exp, mul_comm]
+  rw [Complex.ofReal_mul, Complex.mul_cpow_ofReal_nonneg hm.le (Real.exp_pos u).le, he]
+
+/-- Change of variables y = m e^u along one lattice ray. -/
+lemma ray_change_of_variables (μ : ℂ) {m : ℝ} (hm : 0 < m) (a b : ℝ) {g : ℝ → ℂ}
+    (hg : Continuous g) :
+    ∫ u in a..b, cexp ((1 / 2 - μ) * u) * g (m * Real.exp u) =
+      (m : ℂ) ^ (μ - 1 / 2) * ∫ y in m * Real.exp a..m * Real.exp b,
+        (y : ℂ) ^ (-1 / 2 - μ) * g y := by
+  have hderiv : ∀ u ∈ uIcc a b, HasDerivAt (fun u : ℝ => m * Real.exp u) (m * Real.exp u) u :=
+    fun u _ => (Real.hasDerivAt_exp u).const_mul m
+  have hcont' : ContinuousOn (fun u : ℝ => m * Real.exp u) (uIcc a b) :=
+    (continuous_const.mul Real.continuous_exp).continuousOn
+  have hG : ContinuousOn (fun y : ℝ => (m : ℂ) ^ (μ - 1 / 2) * ((y : ℂ) ^ (-1 / 2 - μ) * g y))
+      ((fun u : ℝ => m * Real.exp u) '' uIcc a b) := by
+    rintro _ ⟨u, -, rfl⟩
+    have hpos : 0 < m * Real.exp u := mul_pos hm (Real.exp_pos u)
+    refine (continuousAt_const.mul (ContinuousAt.mul ?_ hg.continuousAt)).continuousWithinAt
+    exact (continuousAt_cpow_const (Complex.ofReal_mem_slitPlane.mpr hpos)).comp
+      Complex.continuous_ofReal.continuousAt
+  have h := intervalIntegral.integral_deriv_smul_comp' hderiv hcont' hG
+  rw [intervalIntegral.integral_const_mul] at h
+  rw [← h]
+  refine intervalIntegral.integral_congr (fun u _ => ?_)
+  simp only [Function.comp_apply, Complex.real_smul]
+  rw [ofReal_mul_exp_cpow hm u]
+  have hm0 : (m : ℂ) ≠ 0 := by exact_mod_cast hm.ne'
+  have hpow : (m : ℂ) * ((m : ℂ) ^ (μ - 1 / 2) * (m : ℂ) ^ (-1 / 2 - μ)) = 1 := by
+    rw [← Complex.cpow_add _ _ hm0, show μ - 1 / 2 + (-1 / 2 - μ) = -1 by ring,
+      Complex.cpow_neg_one, mul_inv_cancel₀ hm0]
+  have hexp : ((Real.exp u : ℝ) : ℂ) * cexp ((-1 / 2 - μ) * u) = cexp ((1 / 2 - μ) * u) := by
+    rw [Complex.ofReal_exp, ← Complex.exp_add]; ring_nf
+  rw [Complex.ofReal_mul]
+  calc cexp ((1 / 2 - μ) * u) * g (m * Real.exp u)
+      = ((m : ℂ) * ((m : ℂ) ^ (μ - 1 / 2) * (m : ℂ) ^ (-1 / 2 - μ))) *
+          (((Real.exp u : ℝ) : ℂ) * cexp ((-1 / 2 - μ) * u)) * g (m * Real.exp u) := by
+        rw [hpow, hexp, one_mul]
+    _ = _ := by ring
+
+
+/-- ‖φ(y)‖ ≤ p_k(φ) |y|^(-k) for y ≠ 0. -/
+lemma schwartz_norm_le_rpow (φ : 𝓢(ℝ, ℂ)) (k : ℕ) {y : ℝ} (hy : y ≠ 0) :
+    ‖φ y‖ ≤ SchwartzMap.seminorm ℂ k 0 φ * |y| ^ (-(k : ℝ)) := by
+  have hb := SchwartzMap.norm_pow_mul_le_seminorm ℂ φ k y
+  have hy' : 0 < |y| := abs_pos.mpr hy
+  rw [Real.norm_eq_abs] at hb
+  rw [Real.rpow_neg hy'.le, Real.rpow_natCast, ← div_eq_mul_inv, le_div_iff₀ (by positivity)]
+  linarith [mul_comm (|y| ^ k) ‖φ y‖]
+
+/-- y^c ≤ p^c + q^c on [p, q] ⊂ (0, ∞). -/
+lemma rpow_le_endpoints {p q y c : ℝ} (hp : 0 < p) (hy : y ∈ Icc p q) :
+    y ^ c ≤ p ^ c + q ^ c := by
+  have hy0 : 0 ≤ y := hp.le.trans hy.1
+  rcases le_total 0 c with hc | hc
+  · exact (Real.rpow_le_rpow hy0 hy.2 hc).trans (le_add_of_nonneg_left (Real.rpow_nonneg hp.le _))
+  · exact (Real.rpow_le_rpow_of_nonpos hp hy.1 hc).trans
+      (le_add_of_nonneg_right (Real.rpow_nonneg (hp.le.trans (hy.1.trans hy.2)) _))
+
+lemma summable_nat_add_one_rpow_neg {r : ℝ} (hr : 1 < r) :
+    Summable (fun n : ℕ => ((n : ℝ) + 1) ^ (-r)) := by
+  have h := (summable_nat_add_iff 1).mpr (Real.summable_nat_rpow.mpr (by linarith : -r < -1))
+  simpa using h
+
+/-- The integral of a tsum of functions with summable L¹ norms is integrable. -/
+lemma integrable_tsum_of_summable_norm {F : ℕ → ℝ → ℂ} {m : Measure ℝ}
+    (hF : ∀ n, Integrable (F n) m) (hs : Summable (fun n => ∫ x, ‖F n x‖ ∂m))
+    (hmeas : AEStronglyMeasurable (fun x => ∑' n, F n x) m) :
+    Integrable (fun x => ∑' n, F n x) m := by
+  refine ⟨hmeas, ?_⟩
+  unfold HasFiniteIntegral
+  calc ∫⁻ x, ‖∑' n, F n x‖ₑ ∂m ≤ ∫⁻ x, ∑' n, ‖F n x‖ₑ ∂m :=
+        lintegral_mono (fun x => enorm_tsum_le_tsum_enorm)
+    _ = ∑' n, ∫⁻ x, ‖F n x‖ₑ ∂m := lintegral_tsum (fun n => (hF n).aestronglyMeasurable.enorm)
+    _ = ∑' n, ENNReal.ofReal (∫ x, ‖F n x‖ ∂m) := by
+        congr 1; funext n; rw [ofReal_integral_norm_eq_lintegral_enorm (hF n)]
+    _ < ⊤ := by
+        rw [← ENNReal.ofReal_tsum_of_nonneg (fun n => integral_nonneg (fun x => norm_nonneg _)) hs]
+        exact ENNReal.ofReal_lt_top
+
+/-- t-side: the lattice-ray series may be integrated term by term over a bounded window. -/
+lemma tside_tsum_integral (μ : ℂ) {a b : ℝ} (hab : a ≤ b) (φ : 𝓢(ℝ, ℂ)) :
+    ∫ u in a..b, cexp ((1 / 2 - μ) * u) * ∑' n : ℕ, φ (((n : ℝ) + 1) * Real.exp u) =
+      ∑' n : ℕ, ∫ u in a..b, cexp ((1 / 2 - μ) * u) * φ (((n : ℝ) + 1) * Real.exp u) := by
+  set F : ℕ → ℝ → ℂ := fun n u => cexp ((1 / 2 - μ) * u) * φ (((n : ℝ) + 1) * Real.exp u) with hF
+  have hcont (n : ℕ) : Continuous (F n) :=
+    (Complex.continuous_exp.comp (continuous_const.mul Complex.continuous_ofReal)).mul
+      (φ.continuous.comp (continuous_const.mul Real.continuous_exp))
+  set E : ℝ := Real.exp (|1 / 2 - μ.re| * (|a| + |b|)) with hE
+  set P : ℝ := SchwartzMap.seminorm ℂ 2 0 φ with hP
+  have hbound (n : ℕ) (u : ℝ) (hu : u ∈ Ioc a b) :
+      ‖F n u‖ ≤ E * P * Real.exp (-(2 * a)) * ((n : ℝ) + 1) ^ (-(2 : ℝ)) := by
+    have hn : (0 : ℝ) < (n : ℝ) + 1 := by positivity
+    have hy : ((n : ℝ) + 1) * Real.exp u ≠ 0 := (mul_pos hn (Real.exp_pos u)).ne'
+    have h1 : ‖cexp ((1 / 2 - μ) * u)‖ ≤ E := by
+      rw [Complex.norm_exp]
+      refine Real.exp_le_exp.mpr ?_
+      have : ((1 / 2 - μ) * (u : ℂ)).re = (1 / 2 - μ.re) * u := by simp
+      rw [this]
+      have hu' : |u| ≤ |a| + |b| := by
+        rcases le_total 0 u with h | h
+        · rw [abs_of_nonneg h]; linarith [hu.2, le_abs_self b, abs_nonneg a]
+        · rw [abs_of_nonpos h]; linarith [hu.1, neg_abs_le a, abs_nonneg b]
+      calc (1 / 2 - μ.re) * u ≤ |1 / 2 - μ.re| * |u| := by
+            rw [← abs_mul]; exact le_abs_self _
+        _ ≤ _ := mul_le_mul_of_nonneg_left hu' (abs_nonneg _)
+    have h2 := schwartz_norm_le_rpow φ 2 hy
+    rw [abs_of_pos (mul_pos hn (Real.exp_pos u)), Real.mul_rpow hn.le (Real.exp_pos u).le,
+      ← Real.exp_mul] at h2
+    have h3 : Real.exp (u * -((2 : ℕ) : ℝ)) ≤ Real.exp (-(2 * a)) := by
+      refine Real.exp_le_exp.mpr ?_; push_cast; linarith [hu.1]
+    calc ‖F n u‖ = ‖cexp ((1 / 2 - μ) * u)‖ * ‖φ (((n : ℝ) + 1) * Real.exp u)‖ := norm_mul _ _
+      _ ≤ E * (P * (((n : ℝ) + 1) ^ (-((2 : ℕ) : ℝ)) * Real.exp (-(2 * a)))) := by
+          refine mul_le_mul h1 (h2.trans ?_) (norm_nonneg _) (Real.exp_pos _).le
+          refine mul_le_mul_of_nonneg_left ?_ (apply_nonneg _ _)
+          exact mul_le_mul_of_nonneg_left h3 (Real.rpow_nonneg hn.le _)
+      _ = _ := by push_cast; ring
+  have hint (n : ℕ) : Integrable (F n) (volume.restrict (Ioc a b)) :=
+    ((hcont n).integrableOn_Icc).mono_set Ioc_subset_Icc_self
+  have hsum : Summable (fun n => ∫ u in Ioc a b, ‖F n u‖) := by
+    refine Summable.of_nonneg_of_le (fun n => integral_nonneg (fun _ => norm_nonneg _))
+      (fun n => ?_) ((summable_nat_add_one_rpow_neg (by norm_num : (1 : ℝ) < 2)).mul_left
+        ((b - a) * (E * P * Real.exp (-(2 * a)))))
+    have h := norm_setIntegral_le_of_norm_le_const (f := fun u => ‖F n u‖) (μ := volume)
+      (s := Ioc a b) (C := E * P * Real.exp (-(2 * a)) *
+      ((n : ℝ) + 1) ^ (-(2 : ℝ))) measure_Ioc_lt_top
+      (fun u hu => by rw [norm_norm]; exact hbound n u hu)
+    rw [Real.norm_of_nonneg (integral_nonneg (fun _ => norm_nonneg _)), Measure.real,
+      Real.volume_Ioc, ENNReal.toReal_ofReal (by linarith)] at h
+    linarith
+  rw [intervalIntegral.integral_of_le hab]
+  simp_rw [intervalIntegral.integral_of_le hab]
+  rw [integral_tsum_of_summable_integral_norm hint hsum]
+  congr 1
+  funext u
+  rw [← tsum_mul_left]
+
+/-- The n-th lattice-ray term of the positive-axis density, on a ray window S n. -/
+def rayTerm (μ : ℂ) (S : ℕ → Set ℝ) (φ : ℝ → ℂ) (n : ℕ) (y : ℝ) : ℂ :=
+  (S n).indicator (fun y => ((((n : ℝ) + 1 : ℝ)) : ℂ) ^ (μ - 1 / 2) * ((y : ℂ) ^ (-1 / 2 - μ) * φ y)) y
+
+lemma continuousOn_cpow_mul_schwartz (c : ℂ) (φ : 𝓢(ℝ, ℂ)) {p q : ℝ} (hp : 0 < p) :
+    ContinuousOn (fun y : ℝ => (y : ℂ) ^ c * φ y) (Icc p q) := by
+  intro y hy
+  have hy0 : 0 < y := hp.trans_le hy.1
+  refine (ContinuousAt.mul ?_ φ.continuous.continuousAt).continuousWithinAt
+  exact (continuousAt_cpow_const (Complex.ofReal_mem_slitPlane.mpr hy0)).comp
+    Complex.continuous_ofReal.continuousAt
+
+/-- y-side: the lattice-ray terms are integrable with summable L¹ norms, and the bounded-window
+lattice integral is the integral of their sum. -/
+lemma yside_rays (μ : ℂ) {a b : ℝ} (hab : a ≤ b) (φ : 𝓢(ℝ, ℂ)) {S : ℕ → Set ℝ}
+    (hSm : ∀ n, MeasurableSet (S n))
+    (hSsub : ∀ n, S n ⊆ Icc (((n : ℝ) + 1) * Real.exp a) (((n : ℝ) + 1) * Real.exp b))
+    (hSae : ∀ n, S n =ᵐ[volume] Ioc (((n : ℝ) + 1) * Real.exp a) (((n : ℝ) + 1) * Real.exp b)) :
+    (∀ n, Integrable (rayTerm μ S φ n)) ∧ Summable (fun n => ∫ y, ‖rayTerm μ S φ n y‖) ∧
+      ∫ u in a..b, cexp ((1 / 2 - μ) * u) * ∑' n : ℕ, φ (((n : ℝ) + 1) * Real.exp u) =
+        ∫ y, ∑' n : ℕ, rayTerm μ S φ n y := by
+  have hn (n : ℕ) : (0 : ℝ) < (n : ℝ) + 1 := by positivity
+  have hp (n : ℕ) : 0 < ((n : ℝ) + 1) * Real.exp a := mul_pos (hn n) (Real.exp_pos a)
+  have hpq (n : ℕ) : ((n : ℝ) + 1) * Real.exp a ≤ ((n : ℝ) + 1) * Real.exp b :=
+    mul_le_mul_of_nonneg_left (Real.exp_le_exp.mpr hab) (hn n).le
+  have hon (n : ℕ) : IntegrableOn (fun y : ℝ => ((((n : ℝ) + 1 : ℝ)) : ℂ) ^ (μ - 1 / 2) *
+      ((y : ℂ) ^ (-1 / 2 - μ) * φ y)) (S n) := by
+    have hI : IntegrableOn (fun y : ℝ => (y : ℂ) ^ (-1 / 2 - μ) * φ y)
+        (Icc (((n : ℝ) + 1) * Real.exp a) (((n : ℝ) + 1) * Real.exp b)) :=
+      (continuousOn_cpow_mul_schwartz _ φ (hp n)).integrableOn_Icc
+    exact IntegrableOn.mono_set (hI.const_mul _) (hSsub n)
+  have hint (n : ℕ) : Integrable (rayTerm μ S φ n) := (integrable_indicator_iff (hSm n)).mpr (hon n)
+  set P : ℝ := SchwartzMap.seminorm ℂ 3 0 φ with hP
+  set e : ℝ := -7 / 2 - μ.re with he
+  set K : ℝ := P * (Real.exp (a * e) + Real.exp (b * e)) * (Real.exp b - Real.exp a) with hK
+  have hnorm (n : ℕ) : ∫ y, ‖rayTerm μ S φ n y‖ ≤ K * ((n : ℝ) + 1) ^ (-(3 : ℝ)) := by
+    have hC : ∀ y ∈ S n, ‖((((n : ℝ) + 1 : ℝ)) : ℂ) ^ (μ - 1 / 2) * ((y : ℂ) ^ (-1 / 2 - μ) * φ y)‖ ≤
+        ((n : ℝ) + 1) ^ (μ.re - 1 / 2) * P * (((n : ℝ) + 1) ^ e *
+          (Real.exp (a * e) + Real.exp (b * e))) := by
+      intro y hy
+      have hyI := hSsub n hy
+      have hy0 : 0 < y := (hp n).trans_le hyI.1
+      rw [norm_mul, norm_mul, Complex.norm_cpow_eq_rpow_re_of_pos (hn n),
+        Complex.norm_cpow_eq_rpow_re_of_pos hy0]
+      have hφ := schwartz_norm_le_rpow φ 3 hy0.ne'
+      rw [abs_of_pos hy0] at hφ
+      have hye : y ^ (-1 / 2 - μ).re * (P * y ^ (-((3 : ℕ) : ℝ))) = P * y ^ e := by
+        rw [mul_left_comm, ← Real.rpow_add hy0]; congr 2; simp [he]; ring
+      have hend := rpow_le_endpoints (c := e) (hp n) hyI
+      rw [Real.mul_rpow (hn n).le (Real.exp_pos a).le, Real.mul_rpow (hn n).le (Real.exp_pos b).le,
+        ← Real.exp_mul, ← Real.exp_mul, ← mul_add] at hend
+      have hsub : (μ - 1 / 2).re = μ.re - 1 / 2 := by simp
+      rw [hsub, mul_assoc]
+      refine mul_le_mul_of_nonneg_left ?_ (Real.rpow_nonneg (hn n).le _)
+      calc y ^ (-1 / 2 - μ).re * ‖φ y‖ ≤ y ^ (-1 / 2 - μ).re * (P * y ^ (-((3 : ℕ) : ℝ))) :=
+            mul_le_mul_of_nonneg_left hφ (Real.rpow_nonneg hy0.le _)
+        _ = P * y ^ e := hye
+        _ ≤ _ := mul_le_mul_of_nonneg_left hend (apply_nonneg _ _)
+    have h := norm_setIntegral_le_of_norm_le_const (μ := volume) (s := S n)
+      (f := fun y : ℝ => ‖((((n : ℝ) + 1 : ℝ)) : ℂ) ^ (μ - 1 / 2) * ((y : ℂ) ^ (-1 / 2 - μ) * φ y)‖)
+      ((measure_mono (hSsub n)).trans_lt measure_Icc_lt_top) (fun y hy => by
+        rw [norm_norm]; exact hC y hy)
+    have hvol : volume.real (S n) ≤ ((n : ℝ) + 1) * (Real.exp b - Real.exp a) := by
+      rw [Measure.real]
+      refine (ENNReal.toReal_mono measure_Icc_lt_top.ne (measure_mono (hSsub n))).trans ?_
+      rw [Real.volume_Icc, ENNReal.toReal_ofReal (by linarith [hpq n])]
+      ring_nf; rfl
+    have hrw : ∫ y, ‖rayTerm μ S φ n y‖ = ∫ y in S n,
+        ‖((((n : ℝ) + 1 : ℝ)) : ℂ) ^ (μ - 1 / 2) * ((y : ℂ) ^ (-1 / 2 - μ) * φ y)‖ := by
+      unfold rayTerm
+      simp_rw [norm_indicator_eq_indicator_norm]
+      rw [integral_indicator (hSm n)]
+    rw [hrw]
+    rw [Real.norm_of_nonneg (integral_nonneg (fun _ => norm_nonneg _))] at h
+    have hCn : 0 ≤ ((n : ℝ) + 1) ^ (μ.re - 1 / 2) * P * (((n : ℝ) + 1) ^ e *
+        (Real.exp (a * e) + Real.exp (b * e))) := by
+      have := apply_nonneg (SchwartzMap.seminorm ℂ 3 0) φ
+      positivity
+    refine h.trans ((mul_le_mul_of_nonneg_left hvol hCn).trans (le_of_eq ?_))
+    have hpow : ((n : ℝ) + 1) ^ (μ.re - 1 / 2) * ((n : ℝ) + 1) ^ e * ((n : ℝ) + 1) =
+        ((n : ℝ) + 1) ^ (-(3 : ℝ)) := by
+      rw [← Real.rpow_add (hn n), ← Real.rpow_add_one (hn n).ne']
+      congr 1; rw [he]; ring
+    rw [hK, ← hpow]
+    ring
+  have hsum : Summable (fun n => ∫ y, ‖rayTerm μ S φ n y‖) :=
+    Summable.of_nonneg_of_le (fun n => integral_nonneg (fun _ => norm_nonneg _)) hnorm
+      ((summable_nat_add_one_rpow_neg (by norm_num : (1 : ℝ) < 3)).mul_left K)
+  refine ⟨hint, hsum, ?_⟩
+  rw [tside_tsum_integral μ hab φ, ← integral_tsum_of_summable_integral_norm hint hsum]
+  refine tsum_congr (fun n => ?_)
+  rw [ray_change_of_variables μ (hn n) a b φ.continuous, intervalIntegral.integral_of_le (hpq n),
+    ← setIntegral_congr_set (hSae n), ← integral_const_mul]
+  unfold rayTerm
+  rw [integral_indicator (hSm n)]
+
+/-- A_u φ through the positive lattice rays of the even part φ(y) + φ(-y). -/
+lemma coPoissonA_eq_rays (u : ℝ) (φ : 𝓢(ℝ, ℂ)) :
+    coPoissonA u φ = (Real.exp (u / 2) : ℂ) *
+      ∑' n : ℕ, (φ + schwartzReflect φ) (((n : ℝ) + 1) * Real.exp u) := by
+  have hs := dilatedComb_schwartz_summable u φ
+  set g : ℤ → ℂ := fun n => φ (Real.exp u * (n : ℝ)) with hg
+  have hpos : Summable (fun n : ℕ => g n) := hs.comp_injective Nat.cast_injective
+  have hneg : Summable (fun n : ℕ => g (-((n : ℤ) + 1))) :=
+    hs.comp_injective (fun a b h => by simpa using h)
+  have hsplit := tsum_of_nat_of_neg_add_one hpos hneg
+  have hzero := hpos.tsum_eq_zero_add
+  have hpos' : Summable (fun n : ℕ => g ((n + 1 : ℕ) : ℤ)) :=
+    (summable_nat_add_iff 1).mpr hpos
+  rw [coPoissonA, sub_apply, smul_apply, dilatedCombDistribution_apply,
+    TemperedDistribution.delta_apply, smul_eq_mul]
+  change (Real.exp (u / 2) : ℂ) * ∑' n : ℤ, g n - _ = _
+  rw [hsplit, hzero]
+  have h0 : g ((0 : ℕ) : ℤ) = φ 0 := by simp [hg]
+  rw [h0]
+  have hsum : ∑' n : ℕ, (φ + schwartzReflect φ) (((n : ℝ) + 1) * Real.exp u) =
+      ∑' n : ℕ, g ((n + 1 : ℕ) : ℤ) + ∑' n : ℕ, g (-((n : ℤ) + 1)) := by
+    rw [← hpos'.tsum_add hneg]
+    refine tsum_congr (fun n => ?_)
+    simp only [hg, add_apply, schwartzReflect_apply]
+    push_cast
+    congr 1
+    · ring_nf
+    · ring_nf
+  rw [hsum]
+  push_cast
+  ring
+
+lemma tsum_rayIndicator_eq {S : ℕ → Set ℝ} {y : ℝ} {s : Finset ℕ} (h0 : 0 ∉ s)
+    (hS : ∀ n, y ∈ S n ↔ n + 1 ∈ s) (c : ℕ → ℂ) :
+    ∑' n : ℕ, (S n).indicator (fun _ => c (n + 1)) y = ∑ m ∈ s, c m := by
+  classical
+  set f : ℕ → ℂ := fun m => if m ∈ s then c m else 0 with hf
+  have hfs : Summable f := summable_of_ne_finset_zero (s := s) (fun m hm => if_neg hm)
+  have h1 : ∀ n, (S n).indicator (fun _ => c (n + 1)) y = f (n + 1) := by
+    intro n
+    by_cases h : y ∈ S n
+    · rw [Set.indicator_of_mem h, hf]; simp only [(hS n).mp h, if_true]
+    · rw [Set.indicator_of_notMem h, hf]
+      simp only [show n + 1 ∉ s from fun h' => h ((hS n).mpr h'), if_false]
+  simp_rw [h1]
+  have h2 := hfs.tsum_eq_zero_add
+  have hf0 : f 0 = 0 := if_neg h0
+  rw [hf0, zero_add] at h2
+  rw [← h2, tsum_eq_sum (s := s) (fun m hm => if_neg hm)]
+  exact Finset.sum_congr rfl (fun m hm => if_pos hm)
+
+/-- Pairing of one cutoff lattice family: ∫_a^b e^(-μu) A_u φ du = ∫ P(|x|) φ(x) dx, where P is the
+explicit positive-axis density of the ray windows S n. -/
+lemma family_pairing (μ : ℂ) {a b : ℝ} (hab : a ≤ b) (φ : 𝓢(ℝ, ℂ)) {S : ℕ → Set ℝ}
+    (hSm : ∀ n, MeasurableSet (S n))
+    (hSsub : ∀ n, S n ⊆ Icc (((n : ℝ) + 1) * Real.exp a) (((n : ℝ) + 1) * Real.exp b))
+    (hSae : ∀ n, S n =ᵐ[volume] Ioc (((n : ℝ) + 1) * Real.exp a) (((n : ℝ) + 1) * Real.exp b))
+    {P : ℝ → ℂ} (hPm : Measurable P) (hP0 : P 0 = 0)
+    (hP : ∀ y : ℝ, 0 < y → (y : ℂ) ^ (-1 / 2 - μ) *
+      ∑' n : ℕ, (S n).indicator (fun _ => ((((n : ℝ) + 1 : ℝ)) : ℂ) ^ (μ - 1 / 2)) y = P y) :
+    Integrable (fun x => P |x| * φ x) ∧
+      ∫ u in a..b, cexp (-μ * u) * coPoissonA u φ = ∫ x, P |x| * φ x := by
+  have hpos (n : ℕ) (y : ℝ) (hy : y ∈ S n) : 0 < y :=
+    (mul_pos (by positivity : (0 : ℝ) < (n : ℝ) + 1) (Real.exp_pos a)).trans_le (hSsub n hy).1
+  have hW (ψ : 𝓢(ℝ, ℂ)) (y : ℝ) :
+      ∑' n : ℕ, rayTerm μ S ψ n y = (Ioi (0 : ℝ)).indicator (fun y => P y * ψ y) y := by
+    by_cases hy : 0 < y
+    · rw [Set.indicator_of_mem (show y ∈ Ioi (0 : ℝ) from hy), ← hP y hy]
+      have h1 : ∀ n, rayTerm μ S ψ n y = (S n).indicator
+          (fun _ => ((((n : ℝ) + 1 : ℝ)) : ℂ) ^ (μ - 1 / 2)) y * ((y : ℂ) ^ (-1 / 2 - μ) * ψ y) := by
+        intro n
+        unfold rayTerm
+        by_cases h : y ∈ S n
+        · rw [Set.indicator_of_mem h, Set.indicator_of_mem h]
+        · rw [Set.indicator_of_notMem h, Set.indicator_of_notMem h, zero_mul]
+      simp_rw [h1]
+      rw [tsum_mul_right]
+      ring
+    · rw [Set.indicator_of_notMem (show y ∉ Ioi (0 : ℝ) from hy)]
+      refine (tsum_congr (fun n => ?_)).trans tsum_zero
+      unfold rayTerm
+      exact Set.indicator_of_notMem (fun h => hy (hpos n y h)) _
+  have hWm (ψ : 𝓢(ℝ, ℂ)) : Measurable (fun y => (Ioi (0 : ℝ)).indicator (fun y => P y * ψ y) y) :=
+    (hPm.mul ψ.continuous.measurable).indicator measurableSet_Ioi
+  have hWi (ψ : 𝓢(ℝ, ℂ)) : Integrable (fun y => (Ioi (0 : ℝ)).indicator (fun y => P y * ψ y) y) := by
+    obtain ⟨hint, hsum, -⟩ := yside_rays μ hab ψ hSm hSsub hSae
+    have h := integrable_tsum_of_summable_norm hint hsum
+      (by simp_rw [hW ψ]; exact (hWm ψ).aestronglyMeasurable)
+    simpa only [hW ψ] using h
+  set φr := schwartzReflect φ with hφr
+  have hpt : (fun x => P |x| * φ x) = fun x =>
+      (Ioi (0 : ℝ)).indicator (fun y => P y * φ y) x +
+        (Ioi (0 : ℝ)).indicator (fun y => P y * φr y) (-x) := by
+    funext x
+    rcases lt_trichotomy x 0 with hx | rfl | hx
+    · rw [Set.indicator_of_notMem (show x ∉ Ioi (0 : ℝ) from fun h => lt_asymm hx h),
+        Set.indicator_of_mem (show -x ∈ Ioi (0 : ℝ) from neg_pos.mpr hx), hφr,
+        schwartzReflect_apply, neg_neg, abs_of_neg hx, zero_add]
+    · simp [hP0]
+    · rw [Set.indicator_of_mem (show x ∈ Ioi (0 : ℝ) from hx),
+        Set.indicator_of_notMem (show -x ∉ Ioi (0 : ℝ) from fun h => by
+          simp only [Set.mem_Ioi] at h; linarith), abs_of_pos hx, add_zero]
+  have hint : Integrable (fun x => P |x| * φ x) := by
+    rw [hpt]; exact (hWi φ).add (hWi φr).comp_neg
+  refine ⟨hint, ?_⟩
+  have hexp (u : ℝ) : cexp (-μ * u) * coPoissonA u φ =
+      cexp ((1 / 2 - μ) * u) * ∑' n : ℕ, (φ + φr) (((n : ℝ) + 1) * Real.exp u) := by
+    rw [coPoissonA_eq_rays, ← mul_assoc, Complex.ofReal_exp, ← Complex.exp_add]
+    congr 2
+    push_cast; ring
+  simp_rw [hexp]
+  obtain ⟨-, -, hrays⟩ := yside_rays μ hab (φ + φr) hSm hSsub hSae
+  rw [hrays]
+  simp_rw [hW (φ + φr)]
+  have hadd : (fun y => (Ioi (0 : ℝ)).indicator (fun y => P y * (φ + φr) y) y) = fun y =>
+      (Ioi (0 : ℝ)).indicator (fun y => P y * φ y) y +
+        (Ioi (0 : ℝ)).indicator (fun y => P y * φr y) y := by
+    funext y
+    by_cases hy : y ∈ Ioi (0 : ℝ)
+    · rw [Set.indicator_of_mem hy, Set.indicator_of_mem hy, Set.indicator_of_mem hy, add_apply]
+      ring
+    · rw [Set.indicator_of_notMem hy, Set.indicator_of_notMem hy, Set.indicator_of_notMem hy,
+        add_zero]
+  rw [hadd, integral_add (hWi φ) (hWi φr), hpt, integral_add (hWi φ) (hWi φr).comp_neg,
+    integral_neg_eq_self (fun y => (Ioi (0 : ℝ)).indicator (fun y => P y * φr y) y)]
+
+
+/-! ### Identification of the actual cutoff -/
+
+/-- K_t φ = A_t φ + A_(-t) φ + e^(-t/2) φ(0) - e^(t/2) ∫ φ. -/
+lemma renormalizedCombKernel_apply_split (t : ℝ) (φ : 𝓢(ℝ, ℂ)) :
+    renormalizedCombKernel t φ = coPoissonA t φ + coPoissonA (-t) φ +
+      (Real.exp (-t / 2) : ℂ) * φ 0 - (Real.exp (t / 2) : ℂ) * ∫ x, φ x := by
+  rw [renormalizedCombKernel_eq]
+  simp only [sub_apply, add_apply, smul_apply, smul_eq_mul, coPoissonA,
+    TemperedDistribution.delta_apply, fourier_delta_zero_apply]
+  rw [neg_div]
+  ring
+
+/-- Positive-axis density of the first cutoff family (rays x = (n+1) e^t, 0 ≤ t ≤ T). -/
+def cutoffFamilyOne (ρ : ℂ) (T : ℝ) (y : ℝ) : ℂ :=
+  (y : ℂ) ^ (-ρ) * ∑ n ∈ Finset.Icc (max 1 ⌈y * Real.exp (-T)⌉₊) ⌊y⌋₊, (n : ℂ) ^ (ρ - 1)
+
+/-- Positive-axis density of the second cutoff family (rays x = (n+1) e^(-t), 0 ≤ t ≤ T). -/
+def cutoffFamilyTwo (ρ : ℂ) (T : ℝ) (y : ℝ) : ℂ :=
+  (y : ℂ) ^ (ρ - 1) * ∑ n ∈ Finset.Ioc ⌊y⌋₊ ⌊y * Real.exp T⌋₊, (n : ℂ) ^ (-ρ)
+
+lemma cutoffFamily_density (ρ : ℂ) (T x : ℝ) :
+    coPoissonCutoffDensity ρ T x = cutoffFamilyOne ρ T |x| + cutoffFamilyTwo ρ T |x| -
+      (cexp ((1 - ρ) * T) - 1) / (1 - ρ) := rfl
+
+lemma cutoffFamilyOne_pairing (ρ : ℂ) {T : ℝ} (hT : 0 ≤ T) (φ : 𝓢(ℝ, ℂ)) :
+    Integrable (fun x => cutoffFamilyOne ρ T |x| * φ x) ∧
+      ∫ t in (0 : ℝ)..T, cexp (-(ρ - 1 / 2) * t) * coPoissonA t φ =
+        ∫ x, cutoffFamilyOne ρ T |x| * φ x := by
+  have hn (n : ℕ) : (0 : ℝ) < (n : ℝ) + 1 := by positivity
+  refine family_pairing (ρ - 1 / 2) hT φ
+    (S := fun n => Icc (((n : ℝ) + 1) * Real.exp 0) (((n : ℝ) + 1) * Real.exp T))
+    (fun n => measurableSet_Icc) (fun n => subset_rfl) (fun n => Ioc_ae_eq_Icc.symm) ?_ ?_ ?_
+  · have habs : Measurable (fun y : ℝ => y) := measurable_id
+    exact (Complex.measurable_ofReal.pow_const _).mul (measurable_natPair_sum
+      (fun p : ℕ × ℕ => ∑ n ∈ Finset.Icc (max 1 p.1) p.2, (n : ℂ) ^ (ρ - 1))
+      (habs.mul_const _) habs)
+  · unfold cutoffFamilyOne
+    rw [Nat.floor_zero, Finset.Icc_eq_empty (by omega), Finset.sum_empty, mul_zero]
+  · intro y hy
+    have hiff : ∀ n : ℕ, y ∈ Icc (((n : ℝ) + 1) * Real.exp 0) (((n : ℝ) + 1) * Real.exp T) ↔
+        n + 1 ∈ Finset.Icc (max 1 ⌈y * Real.exp (-T)⌉₊) ⌊y⌋₊ := by
+      intro n
+      rw [Real.exp_zero, mul_one, Set.mem_Icc, Finset.mem_Icc, max_le_iff, Nat.ceil_le,
+        Nat.le_floor_iff hy.le, Real.exp_neg, ← div_eq_mul_inv, div_le_iff₀ (Real.exp_pos T)]
+      push_cast
+      constructor
+      · rintro ⟨h1, h2⟩; exact ⟨⟨trivial, h2⟩, h1⟩
+      · rintro ⟨⟨-, h2⟩, h1⟩; exact ⟨h1, h2⟩
+    have h0 : 0 ∉ Finset.Icc (max 1 ⌈y * Real.exp (-T)⌉₊) ⌊y⌋₊ := by
+      rw [Finset.mem_Icc]; omega
+    have h := tsum_rayIndicator_eq h0 hiff (fun m => (((m : ℕ) : ℝ) : ℂ) ^ (ρ - 1 / 2 - 1 / 2))
+    simp only [Nat.cast_add, Nat.cast_one, Complex.ofReal_natCast] at h
+    unfold cutoffFamilyOne
+    rw [show -1 / 2 - (ρ - 1 / 2) = -ρ by ring, show ρ - 1 / 2 - 1 / 2 = ρ - 1 by ring] at *
+    rw [← h]
+
+lemma cutoffFamilyTwo_pairing (ρ : ℂ) {T : ℝ} (hT : 0 ≤ T) (φ : 𝓢(ℝ, ℂ)) :
+    Integrable (fun x => cutoffFamilyTwo ρ T |x| * φ x) ∧
+      ∫ t in (0 : ℝ)..T, cexp (-(ρ - 1 / 2) * t) * coPoissonA (-t) φ =
+        ∫ x, cutoffFamilyTwo ρ T |x| * φ x := by
+  have hfam := family_pairing (1 / 2 - ρ) (a := -T) (b := 0) (by linarith) φ
+    (S := fun n => Ico (((n : ℝ) + 1) * Real.exp (-T)) (((n : ℝ) + 1) * Real.exp 0))
+    (fun n => measurableSet_Ico) (fun n => Ico_subset_Icc_self) (fun n => Ico_ae_eq_Ioc)
+    (P := cutoffFamilyTwo ρ T) ?_ ?_ ?_
+  · refine ⟨hfam.1, ?_⟩
+    have key := intervalIntegral.integral_comp_neg (a := 0) (b := T)
+      (fun u : ℝ => cexp (-(1 / 2 - ρ) * u) * coPoissonA u φ)
+    rw [neg_zero] at key
+    rw [← hfam.2, ← key]
+    congr 1
+    funext t
+    congr 2
+    push_cast
+    ring
+  · have habs : Measurable (fun y : ℝ => y) := measurable_id
+    exact (Complex.measurable_ofReal.pow_const _).mul (measurable_natPair_sum'
+      (fun p : ℕ × ℕ => ∑ n ∈ Finset.Ioc p.1 p.2, (n : ℂ) ^ (-ρ)) habs (habs.mul_const _))
+  · unfold cutoffFamilyTwo
+    simp
+  · intro y hy
+    have hiff : ∀ n : ℕ, y ∈ Ico (((n : ℝ) + 1) * Real.exp (-T)) (((n : ℝ) + 1) * Real.exp 0) ↔
+        n + 1 ∈ Finset.Ioc ⌊y⌋₊ ⌊y * Real.exp T⌋₊ := by
+      intro n
+      rw [Real.exp_zero, mul_one, Set.mem_Ico, Finset.mem_Ioc, Nat.floor_lt hy.le,
+        Nat.le_floor_iff (mul_nonneg hy.le (Real.exp_pos T).le), Real.exp_neg, ← div_eq_mul_inv,
+        div_le_iff₀ (Real.exp_pos T)]
+      push_cast
+      exact And.comm
+    have h0 : 0 ∉ Finset.Ioc ⌊y⌋₊ ⌊y * Real.exp T⌋₊ := by
+      rw [Finset.mem_Ioc]; omega
+    have h := tsum_rayIndicator_eq h0 hiff (fun m => (((m : ℕ) : ℝ) : ℂ) ^ (1 / 2 - ρ - 1 / 2))
+    simp only [Nat.cast_add, Nat.cast_one, Complex.ofReal_natCast] at h
+    unfold cutoffFamilyTwo
+    rw [show -1 / 2 - (1 / 2 - ρ) = ρ - 1 by ring, show 1 / 2 - ρ - 1 / 2 = -ρ by ring] at *
+    rw [← h]
+
+/-- (CP1.2)-(CP1.3) The actual cutoff ∫_0^T e^(-(ρ-1/2)t) K_t dt on every Schwartz test is the
+pairing with the density r_T and the origin atom (1 - e^(-ρT))/ρ. -/
+theorem coPoissonCutoff_pairing {ρ : ℂ} (hρ0 : ρ ≠ 0) (hρ1 : ρ ≠ 1) {T : ℝ} (hT : 0 ≤ T)
+    (φ : 𝓢(ℝ, ℂ)) :
+    Integrable (fun x => coPoissonCutoffDensity ρ T x * φ x) ∧
+      ∫ t in (0 : ℝ)..T, cexp (-(ρ - 1 / 2) * t) * renormalizedCombKernel t φ =
+        (∫ x, coPoissonCutoffDensity ρ T x * φ x) + coPoissonCutoffAtom ρ T * φ 0 := by
+  obtain ⟨hi1, he1⟩ := cutoffFamilyOne_pairing ρ hT φ
+  obtain ⟨hi2, he2⟩ := cutoffFamilyTwo_pairing ρ hT φ
+  set c : ℂ := (cexp ((1 - ρ) * T) - 1) / (1 - ρ) with hc
+  have hsplit : (fun x => coPoissonCutoffDensity ρ T x * φ x) = fun x =>
+      cutoffFamilyOne ρ T |x| * φ x + cutoffFamilyTwo ρ T |x| * φ x - c * φ x := by
+    funext x; rw [cutoffFamily_density]; ring
+  have hint : Integrable (fun x => coPoissonCutoffDensity ρ T x * φ x) := by
+    rw [hsplit]; exact (hi1.add hi2).sub (φ.integrable.const_mul c)
+  refine ⟨hint, ?_⟩
+  have hρ1' : (1 : ℂ) - ρ ≠ 0 := sub_ne_zero.mpr (Ne.symm hρ1)
+  have hpt (t : ℝ) : cexp (-(ρ - 1 / 2) * t) * renormalizedCombKernel t φ =
+      cexp (-(ρ - 1 / 2) * t) * coPoissonA t φ + cexp (-(ρ - 1 / 2) * t) * coPoissonA (-t) φ +
+        φ 0 * cexp (-ρ * t) - (∫ x, φ x) * cexp ((1 - ρ) * t) := by
+    rw [renormalizedCombKernel_apply_split, Complex.ofReal_exp, Complex.ofReal_exp]
+    have e1 : cexp (-(ρ - 1 / 2) * t) * cexp (((-t / 2 : ℝ)) : ℂ) = cexp (-ρ * t) := by
+      rw [← Complex.exp_add]; congr 1; push_cast; ring
+    have e2 : cexp (-(ρ - 1 / 2) * t) * cexp (((t / 2 : ℝ)) : ℂ) = cexp ((1 - ρ) * t) := by
+      rw [← Complex.exp_add]; congr 1; push_cast; ring
+    linear_combination (φ 0) * e1 - (∫ x, φ x) * e2
+  have hcexp (z : ℂ) : Continuous (fun t : ℝ => cexp (z * t)) :=
+    Complex.continuous_exp.comp (continuous_const.mul Complex.continuous_ofReal)
+  have hA : Continuous (fun t : ℝ => cexp (-(ρ - 1 / 2) * t) * coPoissonA t φ) :=
+    (hcexp _).mul (coPoissonA_continuous φ)
+  have hB : Continuous (fun t : ℝ => cexp (-(ρ - 1 / 2) * t) * coPoissonA (-t) φ) :=
+    (hcexp _).mul ((coPoissonA_continuous φ).comp continuous_neg)
+  have hC : Continuous (fun t : ℝ => φ 0 * cexp (-ρ * t)) := continuous_const.mul (hcexp _)
+  have hD : Continuous (fun t : ℝ => (∫ x, φ x) * cexp ((1 - ρ) * t)) :=
+    continuous_const.mul (hcexp _)
+  have hi12 : Integrable (fun x => cutoffFamilyOne ρ T |x| * φ x + cutoffFamilyTwo ρ T |x| * φ x) :=
+    hi1.add hi2
+  have hAB : Continuous (fun t : ℝ => cexp (-(ρ - 1 / 2) * t) * coPoissonA t φ +
+      cexp (-(ρ - 1 / 2) * t) * coPoissonA (-t) φ) := hA.add hB
+  have hABC : Continuous (fun t : ℝ => cexp (-(ρ - 1 / 2) * t) * coPoissonA t φ +
+      cexp (-(ρ - 1 / 2) * t) * coPoissonA (-t) φ + φ 0 * cexp (-ρ * t)) := hAB.add hC
+  simp_rw [hpt]
+  rw [intervalIntegral.integral_sub (hABC.intervalIntegrable _ _) (hD.intervalIntegrable _ _),
+    intervalIntegral.integral_add (hAB.intervalIntegrable _ _) (hC.intervalIntegrable _ _),
+    intervalIntegral.integral_add (hA.intervalIntegrable _ _) (hB.intervalIntegrable _ _),
+    he1, he2, intervalIntegral.integral_const_mul, intervalIntegral.integral_const_mul,
+    integral_exp_mul_complex (neg_ne_zero.mpr hρ0), integral_exp_mul_complex hρ1', hsplit,
+    integral_sub hi12 (φ.integrable.const_mul c), integral_add hi1 hi2,
+    integral_const_mul]
+  unfold coPoissonCutoffAtom
+  rw [hc]
+  simp only [Complex.ofReal_zero, mul_zero, Complex.exp_zero]
+  generalize cexp (-ρ * T) = E1
+  generalize cexp ((1 - ρ) * T) = E2
+  field_simp
+  ring
+
+/-- The cutoff measure is the actual cutoff distribution on Schwartz tests. -/
+theorem coPoissonCutoff_integral {ρ : ℂ} (hρ0 : ρ ≠ 0) (hρ1 : ρ ≠ 1) {T : ℝ} (hT : 0 ≤ T)
+    (φ : 𝓢(ℝ, ℂ)) :
+    (coPoissonCutoff ρ T).integral φ =
+      ∫ t in (0 : ℝ)..T, cexp (-(ρ - 1 / 2) * t) * renormalizedCombKernel t φ := by
+  obtain ⟨hint, heq⟩ := coPoissonCutoff_pairing hρ0 hρ1 hT φ
+  rw [heq]
+  exact densityAtomMeasure_integral _ _ (measurable_coPoissonCutoffDensity ρ T)
+    φ.continuous.aestronglyMeasurable hint
+
+/-! ### Identification of V_λ with the limit measure on Schwartz tests -/
+
+lemma norm_sum_natCast_cpow_le_card {S : Finset ℕ} {z : ℂ} (hz : z.re ≤ 0) (h0 : 0 ∉ S) :
+    ‖∑ n ∈ S, (n : ℂ) ^ z‖ ≤ S.card := by
+  refine (norm_sum_le _ _).trans ?_
+  have hle : ∀ n ∈ S, ‖(n : ℂ) ^ z‖ ≤ 1 := fun n hn => by
+    have hn0 : 0 < n := Nat.pos_of_ne_zero (fun h => h0 (h ▸ hn))
+    rw [Complex.norm_natCast_cpow_of_pos hn0]
+    exact Real.rpow_le_one_of_one_le_of_nonpos (by exact_mod_cast hn0) hz
+  calc ∑ n ∈ S, ‖(n : ℂ) ^ z‖ ≤ S.card • (1 : ℝ) := Finset.sum_le_card_nsmul _ _ _ hle
+    _ = S.card := by simp
+
+lemma rpow_mul_floor_le {y c : ℝ} (hy : 0 < y) (hc : c ≤ 0) : y ^ c * (⌊y⌋₊ : ℝ) ≤ y := by
+  rcases Nat.eq_zero_or_pos ⌊y⌋₊ with h | h
+  · rw [h, Nat.cast_zero, mul_zero]; exact hy.le
+  · have h1 : (1 : ℝ) ≤ y := (Nat.one_le_floor_iff y).mp h
+    calc y ^ c * (⌊y⌋₊ : ℝ) ≤ 1 * y :=
+          mul_le_mul (Real.rpow_le_one_of_one_le_of_nonpos h1 hc) (Nat.floor_le hy.le)
+            (Nat.cast_nonneg _) zero_le_one
+      _ = y := one_mul y
+
+lemma finiteSumSrho_norm_le {ρ : ℂ} (h0 : 0 < ρ.re) (h1 : ρ.re < 1) {y : ℝ} (hy : 0 < y) :
+    ‖finiteSumSrho ρ y‖ ≤ 2 * y := by
+  have hS0 : 0 ∉ Finset.Icc 1 ⌊y⌋₊ := by rw [Finset.mem_Icc]; omega
+  have hcard : ((Finset.Icc 1 ⌊y⌋₊).card : ℝ) = ⌊y⌋₊ := by rw [Nat.card_Icc]; simp
+  have hA := norm_sum_natCast_cpow_le_card (S := Finset.Icc 1 ⌊y⌋₊) (z := ρ - 1)
+    (by simp; linarith) hS0
+  have hB := norm_sum_natCast_cpow_le_card (S := Finset.Icc 1 ⌊y⌋₊) (z := -ρ)
+    (by simp; linarith) hS0
+  rw [hcard] at hA hB
+  unfold finiteSumSrho coPoissonPowerSums
+  refine (norm_sub_le _ _).trans ?_
+  rw [norm_mul, norm_mul, Complex.norm_cpow_eq_rpow_re_of_pos hy,
+    Complex.norm_cpow_eq_rpow_re_of_pos hy]
+  have h1 := rpow_mul_floor_le hy (c := (-ρ).re) (by simp; linarith)
+  have h2 := rpow_mul_floor_le hy (c := (ρ - 1).re) (by simp; linarith)
+  have h3 := mul_le_mul_of_nonneg_left hA (Real.rpow_nonneg hy.le (-ρ).re)
+  have h4 := mul_le_mul_of_nonneg_left hB (Real.rpow_nonneg hy.le (ρ - 1).re)
+  linarith
+
+lemma coPoissonLimitDensity_norm_le {ρ : ℂ} (h0 : 0 < ρ.re) (h1 : ρ.re < 1) {x : ℝ}
+    (hx : x ≠ 0) :
+    ‖coPoissonLimitDensity ρ x‖ ≤ 2 * |x| + ‖riemannZeta ρ‖ * |x| ^ (ρ.re - 1) + 1 / ‖1 - ρ‖ := by
+  have hax : 0 < |x| := abs_pos.mpr hx
+  unfold coPoissonLimitDensity
+  refine (norm_add_le _ _).trans (add_le_add ((norm_add_le _ _).trans (add_le_add
+    (finiteSumSrho_norm_le h0 h1 hax) (le_of_eq ?_))) (le_of_eq ?_))
+  · rw [norm_mul, Complex.norm_cpow_eq_rpow_re_of_pos hax]; simp
+  · rw [norm_div, norm_one]
+
+lemma coPoissonCutoffDensity_far_le {ρ : ℂ} (h0 : 0 < ρ.re) (h1 : ρ.re < 1) {T x : ℝ}
+    (hT : 0 ≤ T) (hx : Real.exp T < |x|) :
+    ‖coPoissonCutoffDensity ρ T x‖ ≤ |x| + |x| ^ 2 + (|x| + 1) / ‖1 - ρ‖ := by
+  set y := |x| with hydef
+  have hy1 : 1 ≤ y := (Real.one_le_exp hT).trans hx.le
+  have hy : 0 < y := lt_of_lt_of_le one_pos hy1
+  rw [cutoffFamily_density]
+  refine (norm_sub_le _ _).trans (add_le_add ((norm_add_le _ _).trans (add_le_add ?_ ?_)) ?_)
+  · unfold cutoffFamilyOne
+    have hS0 : 0 ∉ Finset.Icc (max 1 ⌈y * Real.exp (-T)⌉₊) ⌊y⌋₊ := by
+      rw [Finset.mem_Icc]; omega
+    have hA := norm_sum_natCast_cpow_le_card (z := ρ - 1) (by simp; linarith) hS0
+    have hcard : ((Finset.Icc (max 1 ⌈y * Real.exp (-T)⌉₊) ⌊y⌋₊).card : ℝ) ≤ ⌊y⌋₊ := by
+      rw [Nat.card_Icc]; exact_mod_cast (by omega)
+    rw [norm_mul, Complex.norm_cpow_eq_rpow_re_of_pos hy]
+    calc y ^ (-ρ).re * ‖∑ n ∈ Finset.Icc (max 1 ⌈y * Real.exp (-T)⌉₊) ⌊y⌋₊, (n : ℂ) ^ (ρ - 1)‖
+        ≤ y ^ (-ρ).re * (⌊y⌋₊ : ℝ) :=
+          mul_le_mul_of_nonneg_left (hA.trans hcard) (Real.rpow_nonneg hy.le _)
+      _ ≤ y := rpow_mul_floor_le hy (by simp; linarith)
+  · unfold cutoffFamilyTwo
+    have hS0 : 0 ∉ Finset.Ioc ⌊y⌋₊ ⌊y * Real.exp T⌋₊ := by rw [Finset.mem_Ioc]; omega
+    have hA := norm_sum_natCast_cpow_le_card (z := -ρ) (by simp; linarith) hS0
+    have hcard : ((Finset.Ioc ⌊y⌋₊ ⌊y * Real.exp T⌋₊).card : ℝ) ≤ y * y := by
+      rw [Nat.card_Ioc]
+      calc ((⌊y * Real.exp T⌋₊ - ⌊y⌋₊ : ℕ) : ℝ) ≤ (⌊y * Real.exp T⌋₊ : ℝ) := by
+            exact_mod_cast Nat.sub_le _ _
+        _ ≤ y * Real.exp T := Nat.floor_le (by positivity)
+        _ ≤ y * y := mul_le_mul_of_nonneg_left hx.le hy.le
+    rw [norm_mul, Complex.norm_cpow_eq_rpow_re_of_pos hy]
+    have hpow : y ^ (ρ - 1).re ≤ 1 := Real.rpow_le_one_of_one_le_of_nonpos hy1 (by simp; linarith)
+    calc y ^ (ρ - 1).re * ‖∑ n ∈ Finset.Ioc ⌊y⌋₊ ⌊y * Real.exp T⌋₊, (n : ℂ) ^ (-ρ)‖
+        ≤ 1 * (y * y) := mul_le_mul hpow (hA.trans hcard) (norm_nonneg _) zero_le_one
+      _ = y ^ 2 := by ring
+  · rw [norm_div]
+    gcongr
+    refine (norm_sub_le _ _).trans ?_
+    rw [Complex.norm_exp, norm_one]
+    have hre : ((1 - ρ) * (T : ℂ)).re = (1 - ρ.re) * T := by simp
+    rw [hre]
+    have : Real.exp ((1 - ρ.re) * T) ≤ y :=
+      (Real.exp_le_exp.mpr (by nlinarith)).trans hx.le
+    linarith
+
+/-- The uniform majorant of the cutoff densities. -/
+def coPoissonMajorant (ρ : ℂ) (x : ℝ) : ℝ :=
+  (coPoissonErrorConst ρ + ‖riemannZeta ρ‖) * |x| ^ (ρ.re - 1) +
+    (3 + 2 / ‖1 - ρ‖) * (1 + |x| + |x| ^ 2)
+
+lemma coPoissonCutoffDensity_le_majorant {ρ : ℂ} (h0 : 0 < ρ.re) (h1 : ρ.re < 1) {T x : ℝ}
+    (hT : 0 ≤ T) (hx : x ≠ 0) :
+    ‖coPoissonCutoffDensity ρ T x‖ ≤ coPoissonMajorant ρ x := by
+  have hax : 0 < |x| := abs_pos.mpr hx
+  have hp : 0 ≤ |x| ^ (ρ.re - 1) := Real.rpow_nonneg hax.le _
+  have hM : 0 ≤ coPoissonErrorConst ρ := by unfold coPoissonErrorConst; positivity
+  have hq : 0 ≤ 1 / ‖1 - ρ‖ := by positivity
+  unfold coPoissonMajorant
+  rcases le_or_gt |x| (Real.exp T) with hxT | hxT
+  · have hd := coPoissonCutoff_sub_limit_le h0 h1 hT hx hxT
+    have hR := coPoissonLimitDensity_norm_le h0 h1 hx
+    have htri := norm_le_norm_add_norm_sub' (coPoissonCutoffDensity ρ T x)
+      (coPoissonLimitDensity ρ x)
+    have h2 : 2 / ‖1 - ρ‖ = 2 * (1 / ‖1 - ρ‖) := by ring
+    rw [h2]
+    nlinarith [sq_nonneg |x|, abs_nonneg x]
+  · have hf := coPoissonCutoffDensity_far_le h0 h1 hT hxT
+    have h2 : (|x| + 1) / ‖1 - ρ‖ = (|x| + 1) * (1 / ‖1 - ρ‖) := by ring
+    rw [h2] at hf
+    have h3 : 2 / ‖1 - ρ‖ = 2 * (1 / ‖1 - ρ‖) := by ring
+    rw [h3]
+    have hz : 0 ≤ (coPoissonErrorConst ρ + ‖riemannZeta ρ‖) * |x| ^ (ρ.re - 1) :=
+      mul_nonneg (by positivity) hp
+    nlinarith [sq_nonneg |x|, abs_nonneg x]
+
+lemma integrable_abs_rpow_mul_schwartz {r : ℝ} (hr1 : -1 < r) (hr0 : r ≤ 0) (φ : 𝓢(ℝ, ℂ)) :
+    Integrable (fun x : ℝ => |x| ^ r * ‖φ x‖) := by
+  set C := SchwartzMap.seminorm ℂ 0 0 φ with hC
+  have hg : Integrable (fun x : ℝ => (Icc (-1 : ℝ) 1).indicator (fun x => |x| ^ r * C) x + ‖φ x‖) :=
+    ((integrable_indicator_iff measurableSet_Icc).mpr
+      ((integrableOn_abs_rpow_Icc hr1 zero_le_one).mul_const C)).add φ.integrable.norm
+  refine hg.mono' ((continuous_abs.measurable.pow_const r).mul
+    φ.continuous.norm.measurable).aestronglyMeasurable (Eventually.of_forall (fun x => ?_))
+  rw [Real.norm_of_nonneg (mul_nonneg (Real.rpow_nonneg (abs_nonneg x) _) (norm_nonneg _))]
+  by_cases hx : x ∈ Icc (-1 : ℝ) 1
+  · rw [Set.indicator_of_mem hx]
+    have := mul_le_mul_of_nonneg_left (SchwartzMap.norm_le_seminorm ℂ φ x)
+      (Real.rpow_nonneg (abs_nonneg x) r)
+    linarith [norm_nonneg (φ x)]
+  · rw [Set.indicator_of_notMem hx, zero_add]
+    have h1 : 1 < |x| := by
+      rw [Set.mem_Icc, not_and_or, not_le, not_le] at hx
+      rcases hx with h | h
+      · rw [abs_of_neg (by linarith)]; linarith
+      · rw [abs_of_pos (by linarith)]; exact h
+    have := Real.rpow_le_one_of_one_le_of_nonpos h1.le hr0
+    nlinarith [norm_nonneg (φ x)]
+
+lemma integrable_majorant_mul_schwartz {ρ : ℂ} (h0 : 0 < ρ.re) (h1 : ρ.re < 1) (φ : 𝓢(ℝ, ℂ)) :
+    Integrable (fun x : ℝ => coPoissonMajorant ρ x * ‖φ x‖) := by
+  have hk (k : ℕ) : Integrable (fun x : ℝ => |x| ^ k * ‖φ x‖) := by
+    simpa [Real.norm_eq_abs] using SchwartzMap.integrable_pow_mul volume φ k
+  have ha := (integrable_abs_rpow_mul_schwartz (r := ρ.re - 1) (by linarith) (by linarith) φ).const_mul
+    (coPoissonErrorConst ρ + ‖riemannZeta ρ‖)
+  have hb := (((hk 0).add (hk 1)).add (hk 2)).const_mul (3 + 2 / ‖1 - ρ‖)
+  refine (ha.add hb).congr (Eventually.of_forall (fun x => ?_))
+  simp only [Pi.add_apply, coPoissonMajorant, pow_zero, pow_one, one_mul]
+  ring
+
+lemma integrable_coPoissonLimitDensity_mul {ρ : ℂ} (h0 : 0 < ρ.re) (h1 : ρ.re < 1)
+    (φ : 𝓢(ℝ, ℂ)) : Integrable (fun x => coPoissonLimitDensity ρ x * φ x) := by
+  refine (integrable_majorant_mul_schwartz h0 h1 φ).mono'
+    ((measurable_coPoissonLimitDensity ρ).mul φ.continuous.measurable).aestronglyMeasurable ?_
+  filter_upwards [ae_ne_zero_real] with x hx
+  have hax : 0 < |x| := abs_pos.mpr hx
+  rw [norm_mul]
+  refine mul_le_mul_of_nonneg_right ((coPoissonLimitDensity_norm_le h0 h1 hx).trans ?_)
+    (norm_nonneg _)
+  have hM : 0 ≤ coPoissonErrorConst ρ := by unfold coPoissonErrorConst; positivity
+  have hp : 0 ≤ |x| ^ (ρ.re - 1) := Real.rpow_nonneg hax.le _
+  have hq : 0 ≤ 1 / ‖1 - ρ‖ := by positivity
+  unfold coPoissonMajorant
+  have h3 : 2 / ‖1 - ρ‖ = 2 * (1 / ‖1 - ρ‖) := by ring
+  rw [h3]
+  nlinarith [sq_nonneg |x|, abs_nonneg x]
+
+/-- (CP1.4) On every Schwartz test the entire family is the pairing with the limit measure:
+V_(ρ-1/2)(φ) = ρ⁻¹ φ(0) + ∫ [S_ρ(|x|) + ζ(ρ)|x|^(ρ-1) + (1-ρ)⁻¹] φ(x) dx. -/
+theorem coPoissonFamily_eq_limit {ρ : ℂ} (h0 : 0 < ρ.re) (h1 : ρ.re < 1) (φ : 𝓢(ℝ, ℂ)) :
+    coPoissonFamily (ρ - 1 / 2) φ = (∫ x, coPoissonLimitDensity ρ x * φ x) + 1 / ρ * φ 0 := by
+  have hρ0 : ρ ≠ 0 := fun h => by simp [h] at h0
+  have hρ1 : ρ ≠ 1 := fun h => by simp [h] at h1
+  have hV : Tendsto (fun T : ℝ => ∫ t in (0 : ℝ)..T, cexp (-(ρ - 1 / 2) * t) *
+      renormalizedCombKernel t φ) atTop (𝓝 (coPoissonFamily (ρ - 1 / 2) φ)) := by
+    rw [coPoissonFamily_apply]
+    exact intervalIntegral_tendsto_integral_Ioi 0
+      (renormalizedCombKernel_laplace_integrable _ φ) tendsto_id
+  have hdens : Tendsto (fun T : ℝ => ∫ x, coPoissonCutoffDensity ρ T x * φ x) atTop
+      (𝓝 (∫ x, coPoissonLimitDensity ρ x * φ x)) := by
+    refine tendsto_integral_filter_of_dominated_convergence
+      (fun x => coPoissonMajorant ρ x * ‖φ x‖)
+      (Eventually.of_forall (fun T => ((measurable_coPoissonCutoffDensity ρ T).mul
+        φ.continuous.measurable).aestronglyMeasurable)) ?_
+      (integrable_majorant_mul_schwartz h0 h1 φ) ?_
+    · filter_upwards [eventually_ge_atTop 0] with T hT
+      filter_upwards [ae_ne_zero_real] with x hx
+      rw [norm_mul]
+      exact mul_le_mul_of_nonneg_right (coPoissonCutoffDensity_le_majorant h0 h1 hT hx)
+        (norm_nonneg _)
+    · filter_upwards [ae_ne_zero_real] with x hx
+      have h := coPoissonCutoff_tendsto_pointwise h0 h1 hx
+      have h' : Tendsto (fun T : ℝ => coPoissonCutoffDensity ρ T x) atTop
+          (𝓝 (coPoissonLimitDensity ρ x)) := tendsto_iff_norm_sub_tendsto_zero.mpr h
+      exact h'.mul_const (φ x)
+  have hatom : Tendsto (fun T : ℝ => coPoissonCutoffAtom ρ T) atTop (𝓝 (1 / ρ)) := by
+    refine tendsto_iff_norm_sub_tendsto_zero.mpr ?_
+    simp_rw [coPoissonCutoffAtom_sub_norm]
+    have ht : Tendsto (fun T : ℝ => Real.exp (-(ρ.re * T))) atTop (𝓝 0) :=
+      Real.tendsto_exp_neg_atTop_nhds_zero.comp (tendsto_id.const_mul_atTop h0)
+    simpa using ht.div_const ‖ρ‖
+  have hcut : Tendsto (fun T : ℝ => ∫ t in (0 : ℝ)..T, cexp (-(ρ - 1 / 2) * t) *
+      renormalizedCombKernel t φ) atTop
+      (𝓝 ((∫ x, coPoissonLimitDensity ρ x * φ x) + 1 / ρ * φ 0)) := by
+    refine Tendsto.congr' ?_ (hdens.add (hatom.mul_const (φ 0)))
+    filter_upwards [eventually_ge_atTop 0] with T hT
+    exact ((coPoissonCutoff_pairing hρ0 hρ1 hT φ).2).symm
+  exact tendsto_nhds_unique hV hcut
+
+/-- The same identification through the measure object. -/
+theorem coPoissonFamily_eq_limitMeasure {ρ : ℂ} (h0 : 0 < ρ.re) (h1 : ρ.re < 1)
+    (φ : 𝓢(ℝ, ℂ)) :
+    coPoissonFamily (ρ - 1 / 2) φ = (coPoissonLimitMeasure ρ h0).integral φ := by
+  rw [coPoissonFamily_eq_limit h0 h1 φ]
+  exact (densityAtomMeasure_integral _ _ (measurable_coPoissonLimitDensity ρ)
+    φ.continuous.aestronglyMeasurable (integrable_coPoissonLimitDensity_mul h0 h1 φ)).symm
+
+
+/-- R1-CP1 order zero. On the open strip 0 < Re ρ < 1 the actual cutoffs
+∫_0^T e^(-(ρ-1/2)t) K_t dt are the locally finite complex measures r_T dx + ((1-e^(-ρT))/ρ) δ₀,
+they converge in local total variation (origin atom included) to
+ρ⁻¹ δ₀ + [S_ρ(|x|) + ζ(ρ)|x|^(ρ-1) + (1-ρ)⁻¹] dx, and the entire family V_(ρ-1/2) is that
+measure on every Schwartz test. -/
+theorem renormalized_copoisson_order_zero (ρ : ℂ) (h0 : 0 < ρ.re) (h1 : ρ.re < 1) :
+    (∀ T : ℝ, 0 ≤ T → ∀ φ : 𝓢(ℝ, ℂ), (coPoissonCutoff ρ T).integral φ =
+      ∫ t in (0 : ℝ)..T, cexp (-(ρ - 1 / 2) * t) * renormalizedCombKernel t φ) ∧
+    (∀ T : ℝ, 0 ≤ T → ∀ φ : 𝓢(ℝ, ℂ), (coPoissonCutoff ρ T).integral φ =
+      (∫ x, coPoissonCutoffDensity ρ T x * φ x) + (1 - cexp (-ρ * T)) / ρ * φ 0) ∧
+    (∀ (T : ℝ) (K : Set ℝ) (hK : IsCompact K) (E : Set ℝ), MeasurableSet E →
+      (coPoissonCutoff ρ T).compactRestriction K hK E =
+        (∫ x in E ∩ K, coPoissonCutoffDensity ρ T x) +
+          (E ∩ K).indicator (fun _ => (1 - cexp (-ρ * T)) / ρ) 0) ∧
+    (∀ (K : Set ℝ) (hK : IsCompact K) (E : Set ℝ), MeasurableSet E →
+      (coPoissonLimitMeasure ρ h0).compactRestriction K hK E =
+        (∫ x in E ∩ K, (finiteSumSrho ρ |x| + riemannZeta ρ * ((|x| : ℝ) : ℂ) ^ (ρ - 1) +
+          1 / (1 - ρ))) + (E ∩ K).indicator (fun _ => 1 / ρ) 0) ∧
+    (∀ (K : Set ℝ) (hK : IsCompact K), Tendsto (fun T : ℝ =>
+      ((coPoissonCutoff ρ T).compactRestriction K hK -
+        (coPoissonLimitMeasure ρ h0).compactRestriction K hK).variation.real univ) atTop (𝓝 0)) ∧
+    LocalVariationConvergence (fun n : ℕ => coPoissonCutoff ρ n) (coPoissonLimitMeasure ρ h0) ∧
+    (∀ φ : 𝓢(ℝ, ℂ), coPoissonFamily (ρ - 1 / 2) φ = (coPoissonLimitMeasure ρ h0).integral φ) ∧
+    (∀ φ : 𝓢(ℝ, ℂ), coPoissonFamily (ρ - 1 / 2) φ =
+      (∫ x, (finiteSumSrho ρ |x| + riemannZeta ρ * ((|x| : ℝ) : ℂ) ^ (ρ - 1) + 1 / (1 - ρ)) * φ x) +
+        1 / ρ * φ 0) := by
+  have hρ0 : ρ ≠ 0 := fun h => by simp [h] at h0
+  have hρ1 : ρ ≠ 1 := fun h => by simp [h] at h1
+  refine ⟨fun T hT φ => coPoissonCutoff_integral hρ0 hρ1 hT φ, fun T hT φ => ?_,
+    fun T K hK E hE => densityAtomMeasure_compactRestriction_apply _ _ _ hK hE,
+    fun K hK E hE => densityAtomMeasure_compactRestriction_apply _ _ _ hK hE,
+    fun K hK => coPoissonCutoff_localVariation_tendsto h0 h1 K hK,
+    coPoissonCutoff_localVariationConvergence h0 h1,
+    fun φ => coPoissonFamily_eq_limitMeasure h0 h1 φ,
+    fun φ => coPoissonFamily_eq_limit h0 h1 φ⟩
+  rw [coPoissonCutoff_integral hρ0 hρ1 hT φ]
+  exact (coPoissonCutoff_pairing hρ0 hρ1 hT φ).2
+
+end OrderZero
+
 end Zeta23.OPICAFollowup
 
 #print axioms Zeta23.OPICAFollowup.zero_measure_first_cell_sign
 #print axioms Zeta23.OPICAFollowup.renormalized_copoisson_tempered_family
+#print axioms Zeta23.OPICAFollowup.renormalized_copoisson_order_zero
