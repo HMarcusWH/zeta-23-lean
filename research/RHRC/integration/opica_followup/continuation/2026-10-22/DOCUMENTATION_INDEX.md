@@ -2,7 +2,7 @@
 
 Use this index with [root AGENTS.md](../../../../../../AGENTS.md) and the
 [continuation guide](README.md). It describes the 22 October OPICA source
-checkpoint and its staged repairs; read [STAGE13_HANDOVER.md](STAGE13_HANDOVER.md)
+checkpoint and its staged repairs; read [STAGE14_HANDOVER.md](STAGE14_HANDOVER.md)
 for the latest exact sources and gates. Check the live Git head and workflow
 results before editing.
 
@@ -63,6 +63,11 @@ results before editing.
 - [Post-Green research](POST_GREEN_RESEARCH.md): all nine required mathematical
   review conclusions. Repeat the pass when meaningful proof evidence changes.
 
+[Stage 14](STAGE14_HANDOVER.md) proves both WeightedSpectralMeasure roots (F2): the measure
+d omega = |zeta(1/2 + i xi)|^2 d xi/(2 pi) has int d omega/a = log(2 pi) - EulerGamma with a = xi^2 + 1/4,
+M(kappa) = int d omega/(a - kappa) is locally absolutely convergent and holomorphic off [1/4, oo), and
+for Im kappa != 0, Im M/Im kappa = int d omega/|a - kappa|^2 > 0 with the explicit source budget; the
+[evidence](evidence/current-codex/stage14/STATUS.json) binds every log and source.
 [Stage 13](STAGE13_HANDOVER.md) proves all three SawtoothForce roots (F1): w = e^(-t/2){e^t} is in
 L^1 and L^2, the force g = -(D + 1/2) w is the actual tempered distribution and equals
 sum n^(-1/2) delta_(log n) - e^(t/2) dt only on compact tests, int_0^oo {x} x^(-s-1) = -zeta(s)/s on the
