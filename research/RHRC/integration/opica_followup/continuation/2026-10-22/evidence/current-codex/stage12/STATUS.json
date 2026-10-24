@@ -1,0 +1,196 @@
+{
+ "schema": "OPICA_STAGE12_NARROW_GATE_V1",
+ "status": "PASS_NARROW_LOCAL_GATES_ONLY_AGGREGATE_AND_FULL_RELEASE_OPEN",
+ "checked_commit": "7b81e03b4f231be0581cde6a4871fb456577a1c8",
+ "checked_tree": "a9d71e91e0377d89fec860422df0dac981de77d3",
+ "dirty_status_during_checks": "",
+ "compiler": "Lean 4.33.0-rc2 commit d8b18978322de05a8f3dba51ef03cf5461676c17 (Linux x86_64), Lake 5.0.0-src+d8b1897",
+ "mathlib": "51e6992efd06126df61a496bebf8f49482a4e129 (pins unchanged; no lake update)",
+ "new_module": {
+  "module": "Zeta23.OPICAFollowup.SamplingCompatibility",
+  "project_imports": [
+   "Zeta23.OPICAFollowup.ForcedEuler"
+  ],
+  "authority": "BUILD_MANIFEST direct_project_imports of this module is exactly [ForcedEuler]; other imports come through it",
+  "required_definitions": [
+   "profileGram",
+   "profileFormGram",
+   "profileSample"
+  ],
+  "new_definitions": [
+   "profileGram",
+   "profileFormGram",
+   "profileSample",
+   "profileSampleDefect",
+   "controlVector"
+  ],
+  "supporting_results": [
+   "gram_finite",
+   "gram_boundary_tendsto",
+   "gram_identity",
+   "posSemidef_gram",
+   "logFormDomain_sum",
+   "posSemidef_finite_gram",
+   "finite_countercontrol"
+  ]
+ },
+ "existing_lean_sources_changed": false,
+ "cache_owner": "single local process; the module was built from this exact source in the session (lake rebuilds on source hash change), and the runner build re-validated it",
+ "sources": [
+  {
+   "path": "Zeta23/OPICAFollowup/SamplingCompatibility.lean",
+   "sha256": "f6463e72b4469b7229f594899964ded881678da631fbe599d08a0af2c74b95dc",
+   "bytes": 42556
+  },
+  {
+   "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedSamplingCompatibility.lean",
+   "sha256": "6cbfca4ac5b49becffd45a81a380ef3e4a49a6b9fbe19f134f28a897bf0011e6",
+   "bytes": 12562
+  },
+  {
+   "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/run_candidate_checks.py",
+   "sha256": "068e2a2d2cbe175b3908bceeed402f0946d3d21c4662dc3addc43fb0168d463a",
+   "bytes": 6711
+  },
+  {
+   "path": ".github/workflows/rhrc_opica_followup.yml",
+   "sha256": "ae43b1b9a19429ee8f51e9c3099d5825e4b96d50e04914cd896edada942668ad",
+   "bytes": 44419
+  },
+  {
+   "path": "lean-toolchain",
+   "sha256": "0d3c76ccd8772d8bcbe207241421a760312b71a6aa82f84194391fdf5cb026d6",
+   "bytes": 29
+  },
+  {
+   "path": "lake-manifest.json",
+   "sha256": "1847b362e15efd927e75aa8b5442e491f998e4a3f730f9dcaca9841f2957c448",
+   "bytes": 3200
+  }
+ ],
+ "roots": {
+  "Zeta23.OPICAFollowup.native_sampling_gram_identity": {
+   "paper": "R2-S2 (S2.1)",
+   "expected_type_consumer": "consumers/ExpectedSamplingCompatibility.lean (11 receipts, shared)",
+   "actual_domain": "diagonal: N_ii > 0 real and Q_ii - N_ii/4 real nonnegative; a zero on the critical line forces b real; conjugate coincidence: conj rho is an actual zero with kappa(conj rho) = conj kappa(rho), and the retained undivided identity gives b_rho = conj b_(conj rho); finite-cell pairing at rho = 3/4, sigma = 2/3",
+   "premises": "riemannZeta rho_i = 0, 0 < Re rho_i < 1 for every index (rho_i != 1/2 derived)",
+   "axioms": "propext, Classical.choice, Quot.sound"
+  },
+  "Zeta23.OPICAFollowup.native_sampling_form_positive": {
+   "paper": "R2-S2 (S2.2-S2.4, Q - N/4)",
+   "expected_type_consumer": "consumers/ExpectedSamplingCompatibility.lean (11 receipts, shared)",
+   "actual_domain": "same diagonal and conjugate-coincidence consumers; the finite countercontrol is exercised with A = 1, g = 1, kappa = i (N_00 = 1/2, S2.1 holds)",
+   "premises": "riemannZeta rho_i = 0, 0 < Re rho_i < 1 for every index of a finite family",
+   "axioms": "propext, Classical.choice, Quot.sound"
+  },
+  "re_verified_narrow_roots": [
+   "all roots consumed by the nineteen runner consumer files"
+  ]
+ },
+ "gates": [
+  {
+   "label": "narrow runner (14 modules, 19 consumer files)",
+   "log": "runner/CHECK_RESULT.json",
+   "sha256": "2cd08ad2160b4beda8d27b9c95b12ce2672807c9516dc89dce17b1691102ab44",
+   "exit_code": 0,
+   "runner_status": "PASS_NARROW_ONLY",
+   "consumer_receipts": {
+    "ExpectedMasks": 4,
+    "ExpectedComplex": 4,
+    "ExpectedAuxiliary": 6,
+    "ExpectedMultiplicity": 17,
+    "ExpectedComb": 5,
+    "ExpectedFirstCell": 5,
+    "ExpectedWeighted": 9,
+    "ExpectedNearGap": 5,
+    "ExpectedNearGapLimit": 10,
+    "ExpectedNormalizedLimit": 9,
+    "ExpectedWeightedInverse": 17,
+    "ExpectedCoPoissonFamily": 7,
+    "ExpectedCoPoissonOrderZero": 10,
+    "ExpectedZeroMeasure": 7,
+    "ExpectedEulerMaclaurin": 10,
+    "ExpectedZeroProfiles": 11,
+    "ExpectedLogFourierSobolev": 10,
+    "ExpectedForcedEuler": 10,
+    "ExpectedSamplingCompatibility": 11
+   }
+  },
+  {
+   "label": "W04/W07 workflow consumer (unchanged heredoc)",
+   "log": "consumers/opica-w04-w07-expected.log",
+   "sha256": "47bf37f88ae44589a223145e24dd07655b7172bfca6a30bf819bb33c5251ac1e",
+   "exit_code": 0,
+   "standard_axiom_receipts": 52
+  },
+  {
+   "label": "W06 workflow consumer (unchanged heredoc)",
+   "log": "consumers/opica-w06-expected.log",
+   "sha256": "8564fc7fe7d8a2ef4ae561975e207ce6aa8e42accc8c35f0e6ed618ed26078ca",
+   "exit_code": 0,
+   "standard_axiom_receipts": 14
+  },
+  {
+   "label": "W01 consumers and exact-source subset",
+   "note": "not re-run locally: no existing Lean source changed and no W01 or subset module imports the new module; green in CI at the Stage 10 head 7b156e06 (stage11/ci-harvest-7b156e06.json, the latest harvested head)"
+  },
+  {
+   "label": "child suite and parent contract tests",
+   "result": "child 185/185 and parent 82/82 in normal and optimized Python"
+  },
+  {
+   "label": "frozen control replay",
+   "result": "normal and optimized modes (p0 5112, round1 18862, round2 14672, final 1274 checks each); copoisson, round2 and final numerical suites CONSISTENCY_ONLY"
+  },
+  {
+   "label": "numerical falsification (mpmath 1.3.0, not interval certified)",
+   "script": "numerical-falsification.py",
+   "script_sha256": "ba224f87316915a28c770d13682e0b5b4dd7caa30aebc9f149a5c085373270fd",
+   "log": "numerical-falsification.log",
+   "log_sha256": "a3f3a2607049ca5b65b89f8152dda5553aaf0a26e5d2247a5a10f2fe8d197a4d",
+   "result": "first two zeros, cutoffs L = 200 and 400 with a Hurwitz-zeta tail for Q: max |Q_ij - kappa_i(N_ij + conj b_j)| = 2.4e-4 and 3.2e-5 (relative about 2e-9 and 3e-10, decaying like L^-3); Q_ii - N_ii/4 and N_ii positive; the divided difference agrees to 10 digits; dropping -1/2 misses by |kappa_1|/2 = 100.02; the paper finite countercontrol with three nonreal parameters satisfies S2.1 to 1.2e-20 with nonnegative Gram eigenvalues; at the non-zero rho = 3/4 the sample partial sums grow like L^(3/4) (no zero hypothesis, no sampling law)"
+  }
+ ],
+ "experimental_signals": [
+  {
+   "label": "F2 consistency at actual on-line zeros (EXPERIMENTAL SIGNAL, not a gate, not interval certified)",
+   "script": "f2-consistency.py",
+   "script_sha256": "4383da72770254d4fea126a2c1075c499ded802714100fe30cc15f4203c94096",
+   "log": "f2-consistency.log",
+   "log_sha256": "39f95fa7eab5a1784be25d7700e35388db8806b2a5679e9e9e5fa21ae5237ff7",
+   "result": "kappa M(kappa), M = (1/2pi) int |zeta(1/2+i xi)|^2/(xi^2+1/4-kappa), against the sampled b at the first two zeros: relative gaps 1e-3 and 4e-3 at cutoff 200, 7e-5 and 2e-4 at 400, 2e-7 and 2e-5 at 800 (mean-value tail model)"
+  },
+  {
+   "label": "F2.4 norm formulas at the first zero (EXPERIMENTAL SIGNAL, not a gate, not interval certified)",
+   "script": "f2-norms.py",
+   "script_sha256": "b5d559e36955e307efe0407802eb257aa64d55fe8094b78a3f60fa027ec3eded",
+   "log": "f2-norms.log",
+   "log_sha256": "da341ba052a96e6f6c8bab5ca656b261939aeb7c2d0c4d9feda4ddfacf0812f9",
+   "result": "|kappa|^2 int d omega/(a-kappa)^2 = 73.68102 and |kappa|^2 int a d omega/(a-kappa)^2 = 17319.83 at cutoff 400, against N_11 = 73.68139 and Q_11 = 17319.72"
+  }
+ ],
+ "negative_controls": [
+  {
+   "file": "negative-controls/negative-sampling-compatibility.lean",
+   "expected": "REJECTED",
+   "observed": "REJECTED (10 errors, exit 1): unconjugated sample kappa_i (N + b_j); unconjugated kappa_j in the second form; S instead of b = S - 1/2; half-line integral 1 instead of 1/2; boundary limit kappa instead of 0; Q - N/2 instead of Q - N/4; divided identity without the nonzero-denominator hypothesis; S2.4 with sign -N/|kappa|^2; no zero hypothesis; finite countercontrol without nonreal parameters",
+   "log_sha256": "e78b6419f570731289a6d5078a47df45109b9ec430444454ef7a5911ae4e3ae6"
+  }
+ ],
+ "ci_harvest": {
+  "file": "../stage11/ci-harvest-7b156e06.json",
+  "sha256": "efb6a8d8cf2182acc7046a40429357fdfcf817dc2580074c82024cac07c44a16",
+  "note": "latest completed harvest; CI on the Stage 11 head b9627cc1 was in progress at record time and is harvested with the next stage"
+ },
+ "not_established": [
+  "aggregate current-source export",
+  "full100 compiler receipt production/replay",
+  "facade and registration",
+  "parent-extension acceptance",
+  "canonical regeneration (rhkg-compiler-receipt remains red)",
+  "CI on the Stage 12 head (pending at publication)"
+ ],
+ "RH": "OPEN",
+ "Step4": "OPEN",
+ "independent_closing_inequalities": "OPEN"
+}

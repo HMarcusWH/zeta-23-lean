@@ -2,7 +2,7 @@
 
 Use this index with [root AGENTS.md](../../../../../../AGENTS.md) and the
 [continuation guide](README.md). It describes the 22 October OPICA source
-checkpoint and its staged repairs; read [STAGE11_HANDOVER.md](STAGE11_HANDOVER.md)
+checkpoint and its staged repairs; read [STAGE12_HANDOVER.md](STAGE12_HANDOVER.md)
 for the latest exact sources and gates. Check the live Git head and workflow
 results before editing.
 
@@ -63,6 +63,13 @@ results before editing.
 - [Post-Green research](POST_GREEN_RESEARCH.md): all nine required mathematical
   review conclusions. Repeat the pass when meaningful proof evidence changes.
 
+[Stage 12](STAGE12_HANDOVER.md) proves both SamplingCompatibility roots (R2-S2): for any family
+of actual zeros, with linear-first pairings N_ij = int h_i conj h_j and Q_ij = int x^2 h_i' conj h_j',
+every sample sum, integral and boundary limit converges and Q_ij = kappa_i (N_ij + conj b_j) =
+conj kappa_j (N_ij + b_i); for finite families N, Q and Q - N/4 are positive semidefinite, the
+undivided identity always holds and the divided difference only with a nonzero denominator; the
+paper's finite countercontrol with nonreal parameters is formal; the
+[evidence](evidence/current-codex/stage12/STATUS.json) binds every log and source.
 [Stage 11](STAGE11_HANDOVER.md) proves both ForcedEuler roots (R2-S1b): at an actual zero,
 -(x^2 h')' = kappa (h - 1 + sum_{n>=1} delta_n) in distributions on (0, oo), with the ordinary part
 between integers, continuity at the integers and the jump n^2 (h'(n+) - h'(n-)) = -kappa producing

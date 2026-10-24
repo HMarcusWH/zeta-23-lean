@@ -1,7 +1,7 @@
 # OPICA module status — navigation only
 
 Generated from [ROOT_LEDGER_100.json](ROOT_LEDGER_100.json) and actual source presence.
-Ledger SHA256: `727dba438c27a73db4390e23a355dd938b906d8e4e6a616907a99b6ee3d2d908`.
+Ledger SHA256: `0bcfa9c1893f712ed8047a9108567cc6ed37d02d8a204d7ec838bce98bb60ed3`.
 
 The original target remains 100 primary roots / 28 acceptance units. Historical
 and narrow local evidence remain separate; every current aggregate/full-release
@@ -40,7 +40,7 @@ gate is OPEN. File presence does not establish proof or type coverage.
 | `ProfileEulerMaclaurin` | 1 | 0 | 1 | 0 | 0 | [present](../../../../../../Zeta23/OPICAFollowup/ProfileEulerMaclaurin.lean) |
 | `RenormalizedCoPoisson` | 4 | 0 | 4 | 0 | 0 | [present](../../../../../../Zeta23/OPICAFollowup/RenormalizedCoPoisson.lean) |
 | `RobustLaurent` | 3 | 3 | 0 | 0 | 0 | [present](../../../../../../Zeta23/OPICAFollowup/RobustLaurent.lean) |
-| `SamplingCompatibility` | 2 | 0 | 0 | 0 | 2 | planned / missing |
+| `SamplingCompatibility` | 2 | 0 | 2 | 0 | 0 | [present](../../../../../../Zeta23/OPICAFollowup/SamplingCompatibility.lean) |
 | `SawtoothForce` | 3 | 0 | 0 | 0 | 3 | planned / missing |
 | `SourceVerticalBounds` | 1 | 1 | 0 | 0 | 0 | [present](../../../../../../Zeta23/OPICAFollowup/SourceVerticalBounds.lean) |
 | `SquareDefect` | 4 | 0 | 0 | 0 | 4 | planned / missing |
@@ -49,7 +49,7 @@ gate is OPEN. File presence does not establish proof or type coverage.
 | `WeightedSpectralMeasure` | 2 | 0 | 0 | 0 | 2 | planned / missing |
 | `ZeroProfiles` | 2 | 0 | 2 | 0 | 0 | [present](../../../../../../Zeta23/OPICAFollowup/ZeroProfiles.lean) |
 | `ZetaLeftLineBounds` | 1 | 1 | 0 | 0 | 0 | [present](../../../../../../Zeta23/OPICAFollowup/ZetaLeftLineBounds.lean) |
-| **Total** | **100** | **41** | **32** | **0** | **27** | |
+| **Total** | **100** | **41** | **34** | **0** | **25** | |
 
 Regenerate with `python refresh_navigation.py --write`; verify with `--check`.
 Read the [named remaining work](REMAINING_WORK.md) and [next-agent task](NEXT_AGENT_PROMPT.md)

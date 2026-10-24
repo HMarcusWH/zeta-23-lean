@@ -1,0 +1,105 @@
+negative-sampling-compatibility.lean:9:2: error: Type mismatch
+  (native_sampling_gram_identity ρ hz h0 h1).right.right.right.right.right.right.left i j
+has type
+  profileFormGram (ρ i) (ρ j) =
+    spectralKappa (ρ i) * (profileGram (ρ i) (ρ j) + (starRingEnd ℂ) (profileSampleDefect (ρ j)))
+but is expected to have type
+  profileFormGram (ρ i) (ρ j) = spectralKappa (ρ i) * (profileGram (ρ i) (ρ j) + profileSampleDefect (ρ j))
+negative-sampling-compatibility.lean:14:2: error: Type mismatch
+  (native_sampling_gram_identity ρ hz h0 h1).right.right.right.right.right.right.right i j
+has type
+  profileFormGram (ρ i) (ρ j) =
+    (starRingEnd ℂ) (spectralKappa (ρ j)) * (profileGram (ρ i) (ρ j) + profileSampleDefect (ρ i))
+but is expected to have type
+  profileFormGram (ρ i) (ρ j) = spectralKappa (ρ j) * (profileGram (ρ i) (ρ j) + profileSampleDefect (ρ i))
+negative-sampling-compatibility.lean:19:2: error: Type mismatch
+  (native_sampling_gram_identity ρ hz h0 h1).right.right.right.right.right.right.left i j
+has type
+  profileFormGram (ρ i) (ρ j) =
+    spectralKappa (ρ i) * (profileGram (ρ i) (ρ j) + (starRingEnd ℂ) (profileSampleDefect (ρ j)))
+but is expected to have type
+  profileFormGram (ρ i) (ρ j) = spectralKappa (ρ i) * (profileGram (ρ i) (ρ j) + (starRingEnd ℂ) (profileSample (ρ j)))
+negative-sampling-compatibility.lean:24:2: error: Type mismatch
+  (native_sampling_gram_identity ρ hz h0 h1).right.right.right.left i
+has type
+  ∫ (x : ℝ) in Ioi 0, zeroProfile (ρ i) x = 1 / 2
+but is expected to have type
+  ∫ (x : ℝ) in Ioi 0, zeroProfile (ρ i) x = 1
+negative-sampling-compatibility.lean:31:2: error: Type mismatch
+  (native_sampling_gram_identity ρ hz h0 h1).right.right.right.right.right.left i j
+has type
+  Tendsto
+    (fun N =>
+      ↑(↑N + 1) ^ 2 * -(srhoCellDeriv (ρ i) N (↑N + 1) / normalizationBrho (ρ i)) *
+        (starRingEnd ℂ) (zeroProfile (ρ j) (↑N + 1)))
+    atTop (𝓝 0)
+but is expected to have type
+  Tendsto
+    (fun N =>
+      ↑(↑N + 1) ^ 2 * -(srhoCellDeriv (ρ i) N (↑N + 1) / normalizationBrho (ρ i)) *
+        (starRingEnd ℂ) (zeroProfile (ρ j) (↑N + 1)))
+    atTop (𝓝 (spectralKappa (ρ i)))
+negative-sampling-compatibility.lean:36:2: error: Type mismatch
+  (native_sampling_form_positive ρ hz h0 h1).right.right.left
+has type
+  (Matrix.of fun i j => profileFormGram (ρ i) (ρ j) - profileGram (ρ i) (ρ j) / 4).PosSemidef
+but is expected to have type
+  (Matrix.of fun i j => profileFormGram (ρ i) (ρ j) - profileGram (ρ i) (ρ j) / 2).PosSemidef
+negative-sampling-compatibility.lean:44:2: error: Type mismatch
+  (native_sampling_form_positive ρ hz h0 h1).right.right.right.right.left i j
+has type
+  spectralKappa (ρ i) - (starRingEnd ℂ) (spectralKappa (ρ j)) ≠ 0 →
+    profileGram (ρ i) (ρ j) / (spectralKappa (ρ i) * (starRingEnd ℂ) (spectralKappa (ρ j))) =
+      (profileSampleDefect (ρ i) / spectralKappa (ρ i) -
+          (starRingEnd ℂ) (profileSampleDefect (ρ j) / spectralKappa (ρ j))) /
+        (spectralKappa (ρ i) - (starRingEnd ℂ) (spectralKappa (ρ j)))
+but is expected to have type
+  profileGram (ρ i) (ρ j) / (spectralKappa (ρ i) * (starRingEnd ℂ) (spectralKappa (ρ j))) =
+    (profileSampleDefect (ρ i) / spectralKappa (ρ i) -
+        (starRingEnd ℂ) (profileSampleDefect (ρ j) / spectralKappa (ρ j))) /
+      (spectralKappa (ρ i) - (starRingEnd ℂ) (spectralKappa (ρ j)))
+negative-sampling-compatibility.lean:50:2: error: Type mismatch
+  ((native_sampling_form_positive ρ hz h0 h1).right.right.right.right.right i hi).left
+has type
+  (profileSampleDefect (ρ i) / spectralKappa (ρ i)).im / (spectralKappa (ρ i)).im =
+    (∫ (x : ℝ) in Ioi 0, ‖zeroProfile (ρ i) x‖ ^ 2) / ‖spectralKappa (ρ i)‖ ^ 2
+but is expected to have type
+  (profileSampleDefect (ρ i) / spectralKappa (ρ i)).im / (spectralKappa (ρ i)).im =
+    (-∫ (x : ℝ) in Ioi 0, ‖zeroProfile (ρ i) x‖ ^ 2) / ‖spectralKappa (ρ i)‖ ^ 2
+negative-sampling-compatibility.lean:54:35: error: Application type mismatch: The argument
+  h0
+has type
+  ∀ (i : ι), 0 < (ρ i).re
+but is expected to have type
+  ∀ (i : ι), riemannZeta (ρ i) = 0
+in the application
+  native_sampling_gram_identity ρ h0
+negative-sampling-compatibility.lean:61:2: error: Invalid projection: Projections cannot be used on functions, and
+  finite_countercontrol a g ha κ
+has function type
+  (∀ (i : ι), (κ i).im ≠ 0) →
+    (Matrix.of fun i j => ∑ k, controlVector a g (κ i) k * (starRingEnd ℂ) (controlVector a g (κ j) k)).PosSemidef ∧
+      (Matrix.of fun i j =>
+            ∑ k, ↑(a k) * controlVector a g (κ i) k * (starRingEnd ℂ) (controlVector a g (κ j) k)).PosSemidef ∧
+        (∀ (i j : ι),
+            ∑ k, ↑(a k) * controlVector a g (κ i) k * (starRingEnd ℂ) (controlVector a g (κ j) k) =
+              κ i *
+                (∑ k, controlVector a g (κ i) k * (starRingEnd ℂ) (controlVector a g (κ j) k) +
+                  (starRingEnd ℂ) (∑ k, ↑(g k) * controlVector a g (κ j) k))) ∧
+          (∀ (i j : ι),
+              ∑ k, ↑(a k) * controlVector a g (κ i) k * (starRingEnd ℂ) (controlVector a g (κ j) k) =
+                (starRingEnd ℂ) (κ j) *
+                  (∑ k, controlVector a g (κ i) k * (starRingEnd ℂ) (controlVector a g (κ j) k) +
+                    ∑ k, ↑(g k) * controlVector a g (κ i) k)) ∧
+            (∀ (i j : ι),
+                (κ i - (starRingEnd ℂ) (κ j)) *
+                    ∑ k, controlVector a g (κ i) k * (starRingEnd ℂ) (controlVector a g (κ j) k) =
+                  (starRingEnd ℂ) (κ j) * ∑ k, ↑(g k) * controlVector a g (κ i) k -
+                    κ i * (starRingEnd ℂ) (∑ k, ↑(g k) * controlVector a g (κ j) k)) ∧
+              ∀ (i j : ι),
+                κ i - (starRingEnd ℂ) (κ j) ≠ 0 →
+                  (∑ k, controlVector a g (κ i) k * (starRingEnd ℂ) (controlVector a g (κ j) k)) /
+                      (κ i * (starRingEnd ℂ) (κ j)) =
+                    ((∑ k, ↑(g k) * controlVector a g (κ i) k) / κ i -
+                        (starRingEnd ℂ) ((∑ k, ↑(g k) * controlVector a g (κ j) k) / κ j)) /
+                      (κ i - (starRingEnd ℂ) (κ j))
