@@ -8,6 +8,7 @@ import hashlib
 import json
 import re
 import sys
+import subprocess
 
 HERE = Path(__file__).resolve().parent
 REPO = HERE.parents[5]
@@ -22,10 +23,16 @@ def main():
     if set(refinement['additional_exact_documentation_paths']) != CONTINUATION_DOCUMENTATION_PATHS:
         raise ValueError('Documentation amendment differs from exact validator allowlist')
     artifacts += [REPO/path for path in sorted(CONTINUATION_DOCUMENTATION_PATHS)]
+    # Checkpoint artifacts must actually survive a clean Git checkout.
+    # Compiler objects and other ignored caches are not source artifacts.
+    visible = set(filter(None, subprocess.check_output(
+        ['git', '-C', str(REPO), 'ls-files', '-z', '--cached', '--others',
+         '--exclude-standard']).decode('utf-8').split('\0')))
     for path in HERE.rglob('*'):
         if path.is_symlink():
             raise ValueError('Symlink in checkpoint: '+str(path))
-        if path.is_file() and '__pycache__' not in path.parts and path.suffix != '.pyc':
+        if (path.is_file() and '__pycache__' not in path.parts and path.suffix != '.pyc'
+                and path.relative_to(REPO).as_posix() in visible):
             artifacts.append(path)
     rows = [{'path': p.relative_to(REPO).as_posix(), 'bytes': p.stat().st_size,
              'sha256': hashlib.sha256(p.read_bytes()).hexdigest()} for p in artifacts]

@@ -7284,26 +7284,6 @@
       "sha256": "ee0358bba953c333785507fda9c775e17a53ba03551d3232770934e17d21aaf3"
     },
     {
-      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage22/controls/objects/ConfluentProfilesFactorialControls.olean",
-      "bytes": 137000,
-      "sha256": "bcf4d7adedd2255d78e81e667485ccc6e056fda43be4f4448129f0f166897bbe"
-    },
-    {
-      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage22/controls/objects/ConfluentProfilesReflectionControl.olean",
-      "bytes": 149304,
-      "sha256": "dacbf6b23e8192ed486660563ee372638551a8f72203e005a2d769316e253129"
-    },
-    {
-      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage22/controls/objects/DuplicateBasisControlFinal.olean",
-      "bytes": 38360,
-      "sha256": "e32d47720e15df9ff4955382cb8abd2a9cb674c8d10c0ad2857e5d981f2caafd"
-    },
-    {
-      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage22/controls/objects/WeightedControlsFinal.olean",
-      "bytes": 108944,
-      "sha256": "e21623dbe27273919143cb1fb22c1b3b1ed6a51820968b9ca4ac9dd50fdb8793"
-    },
-    {
       "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage22/controls/source-after.json",
       "bytes": 1255718,
       "sha256": "fc58cef9a93017ae59b764654ca83d676f2dead5ae8b2b1f6e16ba396a094daa"
@@ -10500,8 +10480,8 @@
     },
     {
       "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/refresh_manifest.py",
-      "bytes": 3347,
-      "sha256": "9a5079173fb5430cb76d9cfd6b034d4f556859dd5bc1f535612aca763d1b6202"
+      "bytes": 3770,
+      "sha256": "851f011cfe01c49edbb5459afe1d9452c1429f984ec0c6740fb6e91498104593"
     },
     {
       "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/refresh_navigation.py",
