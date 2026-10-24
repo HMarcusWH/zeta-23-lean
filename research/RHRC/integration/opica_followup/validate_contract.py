@@ -186,7 +186,7 @@ def continuation_checkpoint(root: Path, here: Path) -> tuple[set[str], list[str]
 
 
 
-PARENT_EXACT_WRAPPER_SHA256 = 'da9b701c5077a0b08013867238cdd743b49292c1746d83c42717508573560fb9'
+PARENT_EXACT_WRAPPER_SHA256 = '4f7fc52039351e0ddb763ab75db557a34e635f20e49311b7d006652c657f35d0'
 
 
 def exact_policy_context(root: Path):

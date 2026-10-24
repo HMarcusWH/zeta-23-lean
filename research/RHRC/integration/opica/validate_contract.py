@@ -595,7 +595,7 @@ def registration_errors(claims, bindings, roots, protection, manifest):
     return errors
 
 
-def config_errors(classes, closure, baseline_classes, baseline_closure, modules, baseline_paths):
+def _legacy_config_errors(classes, closure, baseline_classes, baseline_closure, modules, baseline_paths):
     errors = []
     old_rules = baseline_classes['rules']
     positions = [index for index,rule in enumerate(old_rules) if rule['id'] == 'zeta_lean']
@@ -628,6 +628,20 @@ def config_errors(classes, closure, baseline_classes, baseline_closure, modules,
     if closure != expected_closure:
         errors.append('semantic closure config must preserve every immutable field/role and append exactly the 26 OPICA roles')
     return errors
+
+
+def config_errors(classes, closure, baseline_classes, baseline_closure, modules, baseline_paths):
+    """Authenticate only the actual raw config pair before strict legacy checks."""
+    raw_classes = read_json(REPO/FOLLOWUP_GLOBAL_FILES['file_classes'])
+    raw_closure = read_json(REPO/FOLLOWUP_GLOBAL_FILES['semantic_closure'])
+    if classes == raw_classes and closure == raw_closure:
+        projected, _, errors = _parent_view_or_raw(REPO,
+            keys={'file_classes','semantic_closure'})
+        if errors:
+            return errors
+        classes, closure = projected['file_classes'], projected['semantic_closure']
+    return _legacy_config_errors(classes,closure,baseline_classes,baseline_closure,
+        modules,baseline_paths)
 
 
 def classification_errors(classes, modules, register):
