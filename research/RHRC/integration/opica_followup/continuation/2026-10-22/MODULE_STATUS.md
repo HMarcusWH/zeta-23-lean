@@ -1,7 +1,7 @@
 # OPICA module status — navigation only
 
 Generated from [ROOT_LEDGER_100.json](ROOT_LEDGER_100.json) and actual source presence.
-Ledger SHA256: `07ea927ce0a8bcfc4925918cb8bb9de56b24623a864f728221952af8a22510f6`.
+Ledger SHA256: `05f873d1d1d1edc68366f1a0a25fe61152fcef5ca18d5883b9b598d1652069b0`.
 
 The original target remains 100 primary roots / 28 acceptance units. Historical
 and narrow local evidence remain separate; every current aggregate/full-release
@@ -30,7 +30,7 @@ gate is OPEN. File presence does not establish proof or type coverage.
 | `MultiplicityTail` | 4 | 0 | 4 | 0 | 0 | [present](../../../../../../Zeta23/OPICAFollowup/MultiplicityTail.lean) |
 | `NativeExplicitFormula` | 3 | 3 | 0 | 0 | 0 | [present](../../../../../../Zeta23/OPICAFollowup/NativeExplicitFormula.lean) |
 | `NativeFilters` | 2 | 2 | 0 | 0 | 0 | [present](../../../../../../Zeta23/OPICAFollowup/NativeFilters.lean) |
-| `NativeResolvent` | 3 | 0 | 0 | 0 | 3 | planned / missing |
+| `NativeResolvent` | 3 | 0 | 3 | 0 | 0 | [present](../../../../../../Zeta23/OPICAFollowup/NativeResolvent.lean) |
 | `NativeSourceFamily` | 2 | 2 | 0 | 0 | 0 | [present](../../../../../../Zeta23/OPICAFollowup/NativeSourceFamily.lean) |
 | `NativeSourceTransforms` | 3 | 3 | 0 | 0 | 0 | [present](../../../../../../Zeta23/OPICAFollowup/NativeSourceTransforms.lean) |
 | `NativeTransformationWords` | 4 | 4 | 0 | 0 | 0 | [present](../../../../../../Zeta23/OPICAFollowup/NativeTransformationWords.lean) |
@@ -49,7 +49,7 @@ gate is OPEN. File presence does not establish proof or type coverage.
 | `WeightedSpectralMeasure` | 2 | 0 | 2 | 0 | 0 | [present](../../../../../../Zeta23/OPICAFollowup/WeightedSpectralMeasure.lean) |
 | `ZeroProfiles` | 2 | 0 | 2 | 0 | 0 | [present](../../../../../../Zeta23/OPICAFollowup/ZeroProfiles.lean) |
 | `ZetaLeftLineBounds` | 1 | 1 | 0 | 0 | 0 | [present](../../../../../../Zeta23/OPICAFollowup/ZetaLeftLineBounds.lean) |
-| **Total** | **100** | **41** | **39** | **0** | **20** | |
+| **Total** | **100** | **41** | **42** | **0** | **17** | |
 
 Regenerate with `python refresh_navigation.py --write`; verify with `--check`.
 Read the [named remaining work](REMAINING_WORK.md) and [next-agent task](NEXT_AGENT_PROMPT.md)

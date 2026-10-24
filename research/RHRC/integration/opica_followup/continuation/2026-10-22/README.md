@@ -4,7 +4,9 @@ This checkpoint combines the existing PR #294 implementation, the supplied
 22 October repair kit, and the Codex audit/provenance. It is **not a completed
 100-root release**. RH, Step 4 and the independent closing inequalities are OPEN.
 
-The latest [Stage 14 handover](STAGE14_HANDOVER.md) records the arithmetic spectral measure and
+The latest [Stage 15 handover](STAGE15_HANDOVER.md) records the native forced log-resolvent: the
+zero profile as the unique H¹ forced resolvent, b = κM(κ) and the spectral norms (F2).
+[Stage 14](STAGE14_HANDOVER.md) records the arithmetic spectral measure and
 its Stieltjes function: holomorphy off the cut and the sign and source budget (F2).
 [Stage 13](STAGE13_HANDOVER.md) records the arithmetic sawtooth force: its
 tempered construction, Mellin/Fourier transforms and weighted zeta moment (F1).
@@ -45,10 +47,10 @@ The controlling obligations remain the unchanged `PUBLIC_ROOTS.json`,
 `BUILD_SPEC.md`, `BUILD_MANIFEST.json`, `PAPER_CROSSWALK.json` and
 `PARENT_EXTENSION.json` two directories above this file. `ROOT_LEDGER_100.json`
 beside this guide separates each root's implementation, compilation, consumers,
-axioms and aggregate acceptance. `REMAINING_WORK.md` lists the 20 absent proofs.
+axioms and aggregate acceptance. `REMAINING_WORK.md` lists the 17 absent proofs.
 
 - 41 roots have a historical cold exact-source subset receipt at the old base.
-- Thirty-nine additional original roots passed independent local module, full-type/
+- Forty-two additional original roots passed independent local module, full-type/
   domain consumer and standard-axiom checks, including the CT1 dilation family
   and the same-output word/jet consumer (Stage 4), the HT2 controlled limit and
   CT1 normalized limit (Stage 5), the three remaining R1-HT1 weighted-mixing
@@ -56,9 +58,10 @@ axioms and aggregate acceptance. `REMAINING_WORK.md` lists the 20 absent proofs.
   finite-sum Euler-Maclaurin root (Stage 8), the two zero-profile roots (Stage 9),
   the two log-Fourier-Sobolev roots (Stage 10), the two forced-Euler roots
   (Stage 11), the two sampling-compatibility roots (Stage 12), the three
-  sawtooth-force roots (Stage 13) and the two arithmetic Stieltjes roots
-  (Stage 14); aggregate and full acceptance remain pending.
-- 20 original primary implementations are still absent.
+  sawtooth-force roots (Stage 13), the two arithmetic Stieltjes roots
+  (Stage 14) and the three native-resolvent roots (Stage 15); aggregate and
+  full acceptance remain pending.
+- 17 original primary implementations are still absent.
 
 Consult `evidence/current-codex/` and the ledger for any newer replay evidence in
 this checkpoint. Do not infer a current aggregate receipt from the old subset.
@@ -104,7 +107,7 @@ full release readiness stays closed. Read the Stage 1 infrastructure handover.
 Read `NEXT_AGENT_PROMPT.md`, the exact ledger contracts and
 `evidence/historical-codex-review/` before choosing a proof lane.
 
-Complete the 20 absent roots without replacing them by supporting lemmas. The other four earlier
+Complete the 17 absent roots without replacing them by supporting lemmas. The other four earlier
 candidates now have narrow source/type/domain/axiom evidence in Stage 1.
 The actual native moment/residual/memory chain is now proved locally; fixed and
 moving source window rates are next. The profile/sampling chain beyond R1-CP1 remains
@@ -113,8 +116,8 @@ inverse, sharp gap and leakage roots (Stage 6), the co-Poisson tempered family, 
 zero and zero-measure roots (Stage 7), the finite-sum Euler-Maclaurin root (Stage 8),
 the two zero-profile roots (Stage 9), the two log-Fourier-Sobolev roots (Stage 10),
 the two forced-Euler roots (Stage 11), the two sampling-compatibility roots (Stage 12),
-the three sawtooth-force roots (Stage 13) and the two arithmetic Stieltjes roots
-(Stage 14) now have narrow gates.
+the three sawtooth-force roots (Stage 13), the two arithmetic Stieltjes roots
+(Stage 14) and the three native-resolvent roots (Stage 15) now have narrow gates.
 
 Finish independent full types and physical/domain consumers, actual definitions,
 the public facade, complete declaration/constructor/private-dependency export,

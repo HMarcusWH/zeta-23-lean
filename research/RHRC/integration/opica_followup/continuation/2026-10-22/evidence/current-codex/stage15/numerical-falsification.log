@@ -1,0 +1,46 @@
+cutoff L = 200 ; ||w||_2^2 = log(2 pi) - gamma = 1.260661402
+zero 1: gamma = 14.13472514, kappa = 200.0404548 (on the cut; off-cut roots not tested)
+  (1) b = sum h(n) - 1/2 = 12.89968468;  int_0^oo {x} h' dx = 12.89968482;  |diff| = 1.39e-7
+  (2) int w (psi' - psi/2) dt = 12.89968482;  |diff from b| = 1.39e-7
+  (3) |b| = 12.899685 <= ||w|| sqrt(Q) = 147.76433 (Q = 17319.71699)
+  (4) xi =    0.0: (a - kappa) F = (-292.12998 + 0.0j), kappa zeta = (-292.12998 + 0.0j), |diff|/|kappa zeta| = 7.56e-9;  control (a + kappa) F: rel. diff 2.0
+  (4) xi =    5.0: (a - kappa) F = (140.39087 + 46.216947j), kappa zeta = (140.39087 + 46.216948j), |diff|/|kappa zeta| = 1.95e-8;  control (a + kappa) F: rel. diff 2.29
+  (4) xi =   10.0: (a - kappa) F = (309.04154 - 23.071962j), kappa zeta = (309.04154 - 23.071959j), |diff|/|kappa zeta| = 8.67e-9;  control (a + kappa) F: rel. diff 4.01
+  (4) xi = 17.135: (a - kappa) F = (410.68401 + 156.3716j), kappa zeta = (410.68401 + 156.3716j), |diff|/|kappa zeta| = 9.29e-9;  control (a + kappa) F: rel. diff 4.26
+  (4) xi =   30.0: (a - kappa) F = (-24.133385 - 116.76183j), kappa zeta = (-24.133338 - 116.76186j), |diff|/|kappa zeta| = 4.38e-7;  control (a + kappa) F: rel. diff 0.571
+  EXPERIMENTAL SIGNAL: at xi = gamma, F_log psi = (-0.88240168 + 5.5427675j) vs removable value kappa i zeta'(rho)/(2 gamma) = (-0.88240169 + 5.5427675j) (rel. diff 6.49e-9)
+  falsification: endpoint h(n) in every cell gives 13.816126, off from b by 0.916441 (h(0) = 1 enters)
+zero 2: gamma = 21.02203964, kappa = 442.1761506 (on the cut; off-cut roots not tested)
+  (1) b = sum h(n) - 1/2 = 6.184264823;  int_0^oo {x} h' dx = 6.18426513;  |diff| = 3.07e-7
+  (2) int w (psi' - psi/2) dt = 6.18426513;  |diff from b| = 3.07e-7
+  (3) |b| = 6.1842648 <= ||w|| sqrt(Q) = 379.50144 (Q = 114242.683)
+  (4) xi =    0.0: (a - kappa) F = (-645.73392 + 0.0j), kappa zeta = (-645.73394 + 0.0j), |diff|/|kappa zeta| = 1.67e-8;  control (a + kappa) F: rel. diff 2.0
+  (4) xi =    5.0: (a - kappa) F = (310.32471 + 102.15949j), kappa zeta = (310.32469 + 102.1595j), |diff|/|kappa zeta| = 4.66e-8;  control (a + kappa) F: rel. diff 2.12
+  (4) xi =   10.0: (a - kappa) F = (683.11582 - 50.999055j), kappa zeta = (683.11582 - 50.999034j), |diff|/|kappa zeta| = 2.97e-8;  control (a + kappa) F: rel. diff 2.59
+  (4) xi = 24.022: (a - kappa) F = (410.50785 - 259.35661j), kappa zeta = (410.50787 - 259.35662j), |diff|/|kappa zeta| = 3.69e-8;  control (a + kappa) F: rel. diff 6.54
+  (4) xi =   30.0: (a - kappa) F = (-53.34521 - 258.0943j), kappa zeta = (-53.345142 - 258.09433j), |diff|/|kappa zeta| = 2.86e-7;  control (a + kappa) F: rel. diff 1.93
+  EXPERIMENTAL SIGNAL: at xi = gamma, F_log psi = (2.6158828 + 11.666424j) vs removable value kappa i zeta'(rho)/(2 gamma) = (2.6158827 + 11.666424j) (rel. diff 9.77e-9)
+  falsification: endpoint h(n) in every cell gives 6.9995643, off from b by 0.815299 (h(0) = 1 enters)
+cutoff L = 400 ; ||w||_2^2 = log(2 pi) - gamma = 1.260661402
+zero 1: gamma = 14.13472514, kappa = 200.0404548 (on the cut; off-cut roots not tested)
+  (1) b = sum h(n) - 1/2 = 12.89968693;  int_0^oo {x} h' dx = 12.89968695;  |diff| = 1.74e-8
+  (2) int w (psi' - psi/2) dt = 12.89968695;  |diff from b| = 1.74e-8
+  (3) |b| = 12.899687 <= ||w|| sqrt(Q) = 147.76434 (Q = 17319.71782)
+  (4) xi =    0.0: (a - kappa) F = (-292.12998 + 0.0j), kappa zeta = (-292.12998 + 0.0j), |diff|/|kappa zeta| = 6.68e-10;  control (a + kappa) F: rel. diff 2.0
+  (4) xi =    5.0: (a - kappa) F = (140.39087 + 46.216948j), kappa zeta = (140.39087 + 46.216948j), |diff|/|kappa zeta| = 1.73e-9;  control (a + kappa) F: rel. diff 2.29
+  (4) xi =   10.0: (a - kappa) F = (309.04154 - 23.071959j), kappa zeta = (309.04154 - 23.071959j), |diff|/|kappa zeta| = 7.66e-10;  control (a + kappa) F: rel. diff 4.01
+  (4) xi = 17.135: (a - kappa) F = (410.68401 + 156.3716j), kappa zeta = (410.68401 + 156.3716j), |diff|/|kappa zeta| = 8.21e-10;  control (a + kappa) F: rel. diff 4.26
+  (4) xi =   30.0: (a - kappa) F = (-24.133335 - 116.76185j), kappa zeta = (-24.133338 - 116.76186j), |diff|/|kappa zeta| = 3.87e-8;  control (a + kappa) F: rel. diff 0.571
+  EXPERIMENTAL SIGNAL: at xi = gamma, F_log psi = (-0.88240169 + 5.5427675j) vs removable value kappa i zeta'(rho)/(2 gamma) = (-0.88240169 + 5.5427675j) (rel. diff 5.74e-10)
+  falsification: endpoint h(n) in every cell gives 13.85796, off from b by 0.958273 (h(0) = 1 enters)
+zero 2: gamma = 21.02203964, kappa = 442.1761506 (on the cut; off-cut roots not tested)
+  (1) b = sum h(n) - 1/2 = 6.184275184;  int_0^oo {x} h' dx = 6.184275222;  |diff| = 3.84e-8
+  (2) int w (psi' - psi/2) dt = 6.184275222;  |diff from b| = 3.84e-8
+  (3) |b| = 6.1842752 <= ||w|| sqrt(Q) = 379.50145 (Q = 114242.6919)
+  (4) xi =    0.0: (a - kappa) F = (-645.73393 + 0.0j), kappa zeta = (-645.73394 + 0.0j), |diff|/|kappa zeta| = 1.48e-9;  control (a + kappa) F: rel. diff 2.0
+  (4) xi =    5.0: (a - kappa) F = (310.32469 + 102.1595j), kappa zeta = (310.32469 + 102.1595j), |diff|/|kappa zeta| = 4.12e-9;  control (a + kappa) F: rel. diff 2.12
+  (4) xi =   10.0: (a - kappa) F = (683.11582 - 50.999036j), kappa zeta = (683.11582 - 50.999034j), |diff|/|kappa zeta| = 2.63e-9;  control (a + kappa) F: rel. diff 2.59
+  (4) xi = 24.022: (a - kappa) F = (410.50787 - 259.35662j), kappa zeta = (410.50787 - 259.35662j), |diff|/|kappa zeta| = 3.26e-9;  control (a + kappa) F: rel. diff 6.54
+  (4) xi =   30.0: (a - kappa) F = (-53.345137 - 258.09433j), kappa zeta = (-53.345142 - 258.09433j), |diff|/|kappa zeta| = 2.53e-8;  control (a + kappa) F: rel. diff 1.93
+  EXPERIMENTAL SIGNAL: at xi = gamma, F_log psi = (2.6158827 + 11.666424j) vs removable value kappa i zeta'(rho)/(2 gamma) = (2.6158827 + 11.666424j) (rel. diff 8.63e-10)
+  falsification: endpoint h(n) in every cell gives 7.09204, off from b by 0.907765 (h(0) = 1 enters)

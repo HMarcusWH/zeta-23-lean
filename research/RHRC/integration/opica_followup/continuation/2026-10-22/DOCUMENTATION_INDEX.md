@@ -2,7 +2,7 @@
 
 Use this index with [root AGENTS.md](../../../../../../AGENTS.md) and the
 [continuation guide](README.md). It describes the 22 October OPICA source
-checkpoint and its staged repairs; read [STAGE14_HANDOVER.md](STAGE14_HANDOVER.md)
+checkpoint and its staged repairs; read [STAGE15_HANDOVER.md](STAGE15_HANDOVER.md)
 for the latest exact sources and gates. Check the live Git head and workflow
 results before editing.
 
@@ -63,6 +63,13 @@ results before editing.
 - [Post-Green research](POST_GREEN_RESEARCH.md): all nine required mathematical
   review conclusions. Repeat the pass when meaningful proof evidence changes.
 
+[Stage 15](STAGE15_HANDOVER.md) proves all three NativeResolvent roots (F2): for an actual zero with
+kappa off [1/4, oo), psi = e^(t/2) h(e^t) is the unique H1 weak solution of (-D^2 + 1/4 - kappa) psi =
+kappa g with log-Fourier quotient kappa zeta(1/2 + i xi)/(a - kappa) and equals the forced
+log-resolvent; b = sum h(n) - 1/2 = int_0^oo {x} h' = int w (psi' - psi/2) = kappa M(kappa); and the
+norm, Euler form and mixed pairings are the matching omega-integrals with |b| <= |kappa|(1 +
+|kappa|/|Im kappa|)(log(2 pi) - EulerGamma); the [evidence](evidence/current-codex/stage15/STATUS.json)
+binds every log and source.
 [Stage 14](STAGE14_HANDOVER.md) proves both WeightedSpectralMeasure roots (F2): the measure
 d omega = |zeta(1/2 + i xi)|^2 d xi/(2 pi) has int d omega/a = log(2 pi) - EulerGamma with a = xi^2 + 1/4,
 M(kappa) = int d omega/(a - kappa) is locally absolutely convergent and holomorphic off [1/4, oo), and
