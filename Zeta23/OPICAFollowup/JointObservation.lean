@@ -216,3 +216,117 @@ theorem recovery_subexp_budget {F : ℕ → Type*}
 
 end
 end Zeta23.OPICAFollowup
+
+
+noncomputable section
+namespace Zeta23.OPICAFollowup
+
+variable {𝕜 E Y H : Type*} [RCLike 𝕜]
+  [NormedAddCommGroup E] [InnerProductSpace 𝕜 E] [FiniteDimensional 𝕜 E]
+  [NormedAddCommGroup Y] [InnerProductSpace 𝕜 Y]
+  [NormedAddCommGroup H] [InnerProductSpace 𝕜 H]
+
+/-- The actual optimal ratio cost, with the usual real supremum convention.
+Its recovery interpretation is proved under the necessary kernel condition. -/
+def optimalRecoveryCost (P : E →L[𝕜] Y) (C : E →L[𝕜] H) (ell : E →L[𝕜] 𝕜) : ℝ :=
+  sSup {q : ℝ | ∃ x : E, jointObservation P C x ≠ 0 ∧
+    q = ‖ell x‖ / ‖jointObservation P C x‖}
+
+/-- The target descends to the quotient by the actual observation kernel,
+then is transported to the actual range. No recovery conclusion is assumed. -/
+def jointRangeRecovery (P : E →L[𝕜] Y) (C : E →L[𝕜] H)
+    (ell : E →L[𝕜] 𝕜) (hker : P.ker ⊓ C.ker ≤ ell.ker) :
+    (jointObservation P C).range →L[𝕜] 𝕜 :=
+  let A := jointObservation P C
+  let hk : A.ker ≤ ell.ker := by simpa [A, jointObservation_ker] using hker
+  ((A.toLinearMap.ker.liftQ ell.toLinearMap hk).comp
+    A.toLinearMap.quotKerEquivRange.symm.toLinearMap).toContinuousLinearMap
+
+theorem jointRangeRecovery_on_range (P : E →L[𝕜] Y) (C : E →L[𝕜] H)
+    (ell : E →L[𝕜] 𝕜) (hker : P.ker ⊓ C.ker ≤ ell.ker) (x : E) :
+    jointRangeRecovery P C ell hker
+      (⟨jointObservation P C x, ⟨x, rfl⟩⟩ : (jointObservation P C).range) = ell x := by
+  let A := jointObservation P C
+  have hk : A.ker ≤ ell.ker := by simpa [A, jointObservation_ker] using hker
+  have hx : A.toLinearMap x ∈ A.toLinearMap.range := ⟨x, rfl⟩
+  change A.toLinearMap.ker.liftQ ell.toLinearMap hk
+    (A.toLinearMap.quotKerEquivRange.symm ⟨A.toLinearMap x, hx⟩) = ell x
+  exact congrArg (A.toLinearMap.ker.liftQ ell.toLinearMap hk)
+    (A.toLinearMap.quotKerEquivRange_symm_apply_image x hx)
+
+/-- Canonical whole-space recovery: quotient/range factor followed by the
+orthogonal projection onto the actual finite-dimensional observation range. -/
+def orthogonalRecovery (P : E →L[𝕜] Y) (C : E →L[𝕜] H)
+    (ell : E →L[𝕜] 𝕜) (hker : P.ker ⊓ C.ker ≤ ell.ker) :
+    WithLp 2 (Y × H) →L[𝕜] 𝕜 :=
+  (jointRangeRecovery P C ell hker).comp
+    (jointObservation P C).range.orthogonalProjectionOnto
+
+theorem orthogonalRecovery_on_observation (P : E →L[𝕜] Y) (C : E →L[𝕜] H)
+    (ell : E →L[𝕜] 𝕜) (hker : P.ker ⊓ C.ker ≤ ell.ker) (x : E) :
+    orthogonalRecovery P C ell hker (jointObservation P C x) = ell x := by
+  change jointRangeRecovery P C ell hker
+    ((jointObservation P C).range.orthogonalProjectionOnto (jointObservation P C x)) = ell x
+  rw [(jointObservation P C).range.orthogonalProjectionOnto_mem_subspace_eq_self
+    (⟨jointObservation P C x, ⟨x, rfl⟩⟩ : (jointObservation P C).range)]
+  exact jointRangeRecovery_on_range P C ell hker x
+
+theorem orthogonalRecovery_zero_on_orthogonal (P : E →L[𝕜] Y) (C : E →L[𝕜] H)
+    (ell : E →L[𝕜] 𝕜) (hker : P.ker ⊓ C.ker ≤ ell.ker)
+    (y : WithLp 2 (Y × H)) (hy : y ∈ (jointObservation P C).rangeᗮ) :
+    orthogonalRecovery P C ell hker y = 0 := by
+  rw [orthogonalRecovery, ContinuousLinearMap.comp_apply,
+    (jointObservation P C).range.orthogonalProjectionOnto_eq_zero_iff.mpr hy, map_zero]
+
+theorem orthogonalRecovery_minimal (P : E →L[𝕜] Y) (C : E →L[𝕜] H)
+    (ell : E →L[𝕜] 𝕜) (hker : P.ker ⊓ C.ker ≤ ell.ker)
+    (R : WithLp 2 (Y × H) →L[𝕜] 𝕜)
+    (hR : ∀ x, R (jointObservation P C x) = ell x) :
+    ‖orthogonalRecovery P C ell hker‖ ≤ ‖R‖ := by
+  have hr : ‖jointRangeRecovery P C ell hker‖ ≤ ‖R‖ := by
+    apply (jointRangeRecovery P C ell hker).opNorm_le_bound (norm_nonneg R)
+    rintro ⟨y, ⟨x, rfl⟩⟩
+    change ‖jointRangeRecovery P C ell hker
+      (⟨jointObservation P C x, ⟨x, rfl⟩⟩ : (jointObservation P C).range)‖ ≤
+        ‖R‖ * ‖jointObservation P C x‖
+    rw [jointRangeRecovery_on_range, ← hR x]
+    exact R.le_opNorm (jointObservation P C x)
+  calc
+    ‖orthogonalRecovery P C ell hker‖ ≤
+        ‖jointRangeRecovery P C ell hker‖ *
+          ‖(jointObservation P C).range.orthogonalProjectionOnto‖ :=
+      (jointRangeRecovery P C ell hker).opNorm_comp_le _
+    _ ≤ ‖jointRangeRecovery P C ell hker‖ * 1 :=
+      mul_le_mul_of_nonneg_left
+        (jointObservation P C).range.orthogonalProjectionOnto_norm_le
+          (norm_nonneg (jointRangeRecovery P C ell hker))
+    _ = ‖jointRangeRecovery P C ell hker‖ := mul_one _
+    _ ≤ ‖R‖ := hr
+
+theorem orthogonalRecovery_norm_eq_optimalRecoveryCost
+    (P : E →L[𝕜] Y) (C : E →L[𝕜] H)
+    (ell : E →L[𝕜] 𝕜) (hker : P.ker ⊓ C.ker ≤ ell.ker) :
+    ‖orthogonalRecovery P C ell hker‖ = optimalRecoveryCost P C ell := by
+  obtain ⟨R,hR,hcost,-,hmin⟩ := joint_recovery_optimal_norm P C ell hker
+  have hlo := hmin (orthogonalRecovery P C ell hker)
+    (orthogonalRecovery_on_observation P C ell hker)
+  have hhi := orthogonalRecovery_minimal P C ell hker R hR
+  exact (le_antisymm hhi hlo).trans hcost
+
+theorem orthogonalRecovery_noise_bound (P : E →L[𝕜] Y) (C : E →L[𝕜] H)
+    (ell : E →L[𝕜] 𝕜) (hker : P.ker ⊓ C.ker ≤ ell.ker)
+    (epsilon : ℝ) (hepsilon : 0 ≤ epsilon) (x : E) (y : WithLp 2 (Y × H))
+    (herror : ‖y - jointObservation P C x‖ ≤ epsilon) :
+    ‖ell x - orthogonalRecovery P C ell hker y‖ ≤ optimalRecoveryCost P C ell * epsilon := by
+  have h := joint_recovery_noise_bound P C ell (orthogonalRecovery P C ell hker)
+    (orthogonalRecovery_on_observation P C ell hker) epsilon hepsilon x y herror
+  rwa [orthogonalRecovery_norm_eq_optimalRecoveryCost] at h
+
+end Zeta23.OPICAFollowup
+
+#print axioms Zeta23.OPICAFollowup.jointRangeRecovery_on_range
+#print axioms Zeta23.OPICAFollowup.orthogonalRecovery_on_observation
+#print axioms Zeta23.OPICAFollowup.orthogonalRecovery_zero_on_orthogonal
+#print axioms Zeta23.OPICAFollowup.orthogonalRecovery_minimal
+#print axioms Zeta23.OPICAFollowup.orthogonalRecovery_norm_eq_optimalRecoveryCost
+#print axioms Zeta23.OPICAFollowup.orthogonalRecovery_noise_bound

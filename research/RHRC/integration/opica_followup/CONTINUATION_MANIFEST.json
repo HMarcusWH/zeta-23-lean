@@ -229,6 +229,16 @@
       "sha256": "24665dcf253694e0d76c0f9555b10f23aa3cdf1f5122d0dc6c1adbd8e88c9668"
     },
     {
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedCT1SincBudget.lean",
+      "bytes": 2953,
+      "sha256": "fb3e4d769e45309d030f18263aa6ea9a711e7362956294214384acd577752f33"
+    },
+    {
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedCanonicalInterfaces.lean",
+      "bytes": 4997,
+      "sha256": "da2fffd4a18ae4598417f23dfaee33cc99b0a7da24dcdef19ba388bb3f14d800"
+    },
+    {
       "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedCoPoissonFamily.lean",
       "bytes": 5435,
       "sha256": "1fd0255554f7a095a9ae441731c4329ea3220f994d7d5a9713fc42ada7073cfe"
@@ -247,6 +257,11 @@
       "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedComb.lean",
       "bytes": 2168,
       "sha256": "3a5305b65175d6b046075ecbebc9a9f37690e6677bb74ed9d3bd8796d58100f9"
+    },
+    {
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedCompactContinuousExtraction.lean",
+      "bytes": 2295,
+      "sha256": "2a403187ff1e3a96c5ef2cf4d4dc40ed3ba8b760c7981e36bd21769af76d6c9f"
     },
     {
       "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedComplex.lean",
@@ -284,6 +299,16 @@
       "sha256": "3c8b892698091f69c5987c1f3d2b2e7a0bd3f068610c5355a1fe61fbf5b7eba2"
     },
     {
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedFullSquareDomain.lean",
+      "bytes": 4069,
+      "sha256": "ff528b9e71454374dab8f944d565156fca26425dd8ef8b62dedd4d558f7dc5ea"
+    },
+    {
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedIndependentFullContracts.lean",
+      "bytes": 14791,
+      "sha256": "c7e5936ff169cafa803cd31282ef5a5b4efa56b01675903f4ab306e4dd94ab15"
+    },
+    {
       "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedLogFourierSobolev.lean",
       "bytes": 15072,
       "sha256": "29b6f838afddbdbf369bcc209583031f6a3f1d5746783217707e5532efa36136"
@@ -319,6 +344,16 @@
       "sha256": "e833dad08f5c3a1fd477ab56f65db12d984fa51e18fd638d2b2aeddae77f9187"
     },
     {
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedOffcriticalControls.lean",
+      "bytes": 2528,
+      "sha256": "82cb98b85b98b3b8a8cd1ae62db99e6a2e09c096595447281571b16938e29e9f"
+    },
+    {
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedOffcriticalRealBasis.lean",
+      "bytes": 6375,
+      "sha256": "8f9880d1e9e6776372c13ff951706bac726b788c51cc8cd72fa75553a010d507"
+    },
+    {
       "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedPhysicalRates.lean",
       "bytes": 4242,
       "sha256": "0adcee1919d6a4bc897a7c9bd0077e772c6faf3dce8e6c7a3ae93bebc1b256c1"
@@ -347,6 +382,16 @@
       "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedSquareDefect.lean",
       "bytes": 8317,
       "sha256": "3735135eb0abad1f30935652c9bcdfc3ccee4e490697fe7a18b29806573176b2"
+    },
+    {
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedSquarePhysical.lean",
+      "bytes": 6328,
+      "sha256": "b1b33c58a0f778f78b6ea8830969b209b3cbfe53796e2ede4daaaefa07bac575"
+    },
+    {
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedSquareSpanComposition.lean",
+      "bytes": 1588,
+      "sha256": "bdc119dc93bfdd0321ce30867f71b7ab0aca109adef4d3978c448528b252bdd2"
     },
     {
       "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedWeighted.lean",
@@ -8490,8 +8535,8 @@
     },
     {
       "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/run_candidate_checks.py",
-      "bytes": 7270,
-      "sha256": "65c479c0b7e4de7e69a913031a4aefef882db898fa6cb452ceb8291269f8bf14"
+      "bytes": 7602,
+      "sha256": "257d354fd339c1255bc336cc97fa609e5b20c96dbcc217f705347d0151dd657c"
     },
     {
       "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/tools/stage_record/README.md",

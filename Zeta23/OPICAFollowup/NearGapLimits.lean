@@ -1,3 +1,4 @@
+import Mathlib.Analysis.Calculus.BumpFunction.SmoothApprox
 import Zeta23.OPICAFollowup.DilatedComb
 import Zeta23.OPICA.SignedHeatSeparator
 import Mathlib.Analysis.Normed.Group.Tannery
@@ -2890,3 +2891,365 @@ theorem ct1NormalizedLimit_fourier_selfdual :
 #print axioms Zeta23.OPICAFollowup.near_gap_controlled_limit_zero
 #print axioms Zeta23.OPICAFollowup.dilation_normalized_limit_not_measure
 end Zeta23.OPICAFollowup
+
+
+noncomputable section
+open Set MeasureTheory Filter
+open scoped Topology ENNReal NNReal
+namespace Zeta23.OPICAFollowup.CT13Support
+open Zeta23.OPICA
+
+lemma triangle_integrable (μ : Measure ℝ) [IsLocallyFiniteMeasure μ] :
+    Integrable unitTriangle μ := by
+  have hi : Integrable (fun x => (unitTriangle x : ℂ)) μ :=
+    (Complex.continuous_ofReal.comp unitTriangle_continuous).integrable_of_hasCompactSupport
+      unitTriangle_hasCompactSupport
+  simpa using hi.re
+
+lemma triangle_lattice_zero {t : ℝ} (ht : 1 / 2 ≤ Real.exp t)
+    (n : ℤ) (hn : n ∉ ({-1, 0, 1} : Finset ℤ)) :
+    unitTriangle (Real.exp t * (n : ℝ)) = 0 := by
+  have hn' : n ≠ -1 ∧ n ≠ 0 ∧ n ≠ 1 := by simpa using hn
+  have hnabs : (2 : ℤ) ≤ |n| := by
+    by_cases h : 0 ≤ n
+    · rw [abs_of_nonneg h]; omega
+    · rw [abs_of_neg (lt_of_not_ge h)]; omega
+  have hnreal : (2 : ℝ) ≤ |(n : ℝ)| := by exact_mod_cast hnabs
+  apply unitTriangle_eq_zero_of_one_le_abs
+  rw [abs_mul, abs_of_pos (Real.exp_pos t)]
+  nlinarith
+
+lemma triangle_comb_pairing {t : ℝ} (ht : 1 / 2 ≤ Real.exp t) :
+    (∫ x, unitTriangle x ∂dilatedCombMeasure t) =
+      Real.exp (t / 2) * (1 + 2 * max (1 - Real.exp t) 0) := by
+  have hf : Integrable unitTriangle (scaledLatticeMeasure t) := triangle_integrable _
+  rw [dilatedCombMeasure, integral_smul_measure,
+    ENNReal.toReal_ofReal (Real.exp_pos _).le,
+    scaledLatticeMeasure, integral_map (scaledLatticePoint_measurable t).aemeasurable
+      unitTriangle_continuous.aestronglyMeasurable]
+  have hc : Integrable (fun n : ℤ => unitTriangle (scaledLatticePoint t n)) Measure.count :=
+    (integrable_map_measure unitTriangle_continuous.aestronglyMeasurable
+      (scaledLatticePoint_measurable t).aemeasurable).mp hf
+  rw [integral_countable hc]
+  simp only [count_real_singleton, scaledLatticePoint, smul_eq_mul, one_mul]
+  rw [tsum_eq_sum (s := ({-1, 0, 1} : Finset ℤ)) (triangle_lattice_zero ht)]
+  simp [unitTriangle, abs_of_pos (Real.exp_pos t)]
+  ring
+
+lemma jordan_add_triangle (μ ν : LocallyFiniteSignedMeasure) :
+    (localJordanAdd μ ν).integral unitTriangle =
+      μ.integral unitTriangle + ν.integral unitTriangle := by
+  unfold LocallyFiniteSignedMeasure.integral localJordanAdd
+  rw [localJordanDifference_integral _ _ _ (triangle_integrable _) (triangle_integrable _),
+    integral_add_measure (triangle_integrable _) (triangle_integrable _),
+    integral_add_measure (triangle_integrable _) (triangle_integrable _)]
+  ring
+
+lemma negative_comb_triangle (c t : ℝ) (hc : 0 ≤ c) :
+    (localJordanScale (-c) (dilatedCombJordan t)).integral unitTriangle =
+      -c * (∫ x, unitTriangle x ∂dilatedCombMeasure t) := by
+  have hp : (localJordanScale (-c) (dilatedCombJordan t)).positive = 0 := by
+    simp [localJordanScale, dilatedCombJordan, localJordanDifference,
+      Real.toNNReal_of_nonpos (neg_nonpos.mpr hc)]
+  have hn : (localJordanScale (-c) (dilatedCombJordan t)).negative =
+      (Real.toNNReal c : ℝ≥0∞) • dilatedCombMeasure t := by
+    simp [localJordanScale, dilatedCombJordan, localJordanDifference,
+      Real.toNNReal_of_nonpos (neg_nonpos.mpr hc)]
+  rw [LocallyFiniteSignedMeasure.integral, hp, hn, integral_zero_measure,
+    integral_smul_measure]
+  simp [hc, smul_eq_mul]
+
+/-- Exact original CT1.3 triangle mass on the actual canonical Jordan family. -/
+theorem triangle_identity {L : ℝ} (hL : 0 < L) (hu : L < Real.log 2) :
+    (nearGapCombFamily L).integral unitTriangle =
+      2 * Real.exp (-L / 2) * (1 - Real.exp (-L)) := by
+  have hp : (1 : ℝ) < Real.exp L := by simpa using Real.exp_lt_exp.mpr hL
+  have hm := nearGapComb_radius_bounds hL hu
+  have hhalf : (1 / 2 : ℝ) ≤ Real.exp L := by linarith
+  have hc : 0 ≤ 2 * Real.cosh (L / 2) := by positivity
+  unfold nearGapCombFamily
+  rw [jordan_add_triangle, jordan_add_triangle, negative_comb_triangle _ _ hc]
+  have hcomb (t : ℝ) : (dilatedCombJordan t).integral unitTriangle =
+      ∫ x, unitTriangle x ∂dilatedCombMeasure t := by
+    simp [LocallyFiniteSignedMeasure.integral, dilatedCombJordan, localJordanDifference]
+  rw [hcomb, hcomb, triangle_comb_pairing hhalf, triangle_comb_pairing hm.1.le,
+    triangle_comb_pairing (t := 0) (by norm_num)]
+  rw [max_eq_right (by linarith : 1 - Real.exp L ≤ 0),
+    max_eq_left (by linarith : 0 ≤ 1 - Real.exp (-L))]
+  simp only [Real.exp_zero, zero_div, sub_self, max_self, mul_zero, add_zero, mul_one]
+  have hc := nearGapComb_origin_coefficient_zero L
+  have he : Real.exp (-L / 2) = Real.exp ((-L) / 2) := rfl
+  nlinarith
+
+/-- Sinc pairing is derived from actual growth and Fourier self-duality. -/
+theorem sinc_identity {L : ℝ} (hL : 0 < L) (hu : L < Real.log 2) :
+    (nearGapCombFamily L).integral sincSquared =
+      2 * Real.exp (-L / 2) * (1 - Real.exp (-L)) := by
+  rw [signed_sinc_triangle_pairing _ (nearGapCombFamily_growth L)
+    (nearGapCombFamily_fourier_selfdual L), triangle_identity hL hu]
+
+/-- The negative sinc mass is zero on the actual off-integer-nonnegative family. -/
+theorem negative_sinc_mass_zero {L : ℝ} (hL : 0 < L) :
+    (∫ x, sincSquared x ∂(nearGapCombFamily L).negative) = 0 :=
+  nearGap_sinc_negative_zero _ (nearGapCombFamily_growth L) (Real.exp_pos (-L))
+    (nearGapCombFamily_actual_gap hL.le) (nearGapCombFamily_offlattice_nonnegative L)
+
+theorem positive_sinc_mass {L : ℝ} (hL : 0 < L) (hu : L < Real.log 2) :
+    (∫ x, sincSquared x ∂(nearGapCombFamily L).positive) =
+      2 * Real.exp (-L / 2) * (1 - Real.exp (-L)) := by
+  have h := sinc_identity hL hu
+  change (∫ x, sincSquared x ∂(nearGapCombFamily L).positive) -
+    (∫ x, sincSquared x ∂(nearGapCombFamily L).negative) = _ at h
+  rwa [negative_sinc_mass_zero hL, sub_zero] at h
+
+end Zeta23.OPICAFollowup.CT13Support
+#print axioms Zeta23.OPICAFollowup.CT13Support.triangle_identity
+#print axioms Zeta23.OPICAFollowup.CT13Support.sinc_identity
+#print axioms Zeta23.OPICAFollowup.CT13Support.positive_sinc_mass
+
+
+noncomputable section
+open Set MeasureTheory Filter
+open scoped Topology
+namespace Zeta23.OPICAFollowup.CT13Support
+open Zeta23.OPICA
+
+theorem sinc_identity_original {L : ℝ} (hL : 0 < L) (hu : L < Real.log 2) :
+    (nearGapCombFamily L).integral sincSquared =
+      2 * (Real.exp L - 1) / (Real.exp L) ^ (3 / 2 : ℝ) := by
+  rw [sinc_identity hL hu, Real.rpow_def_of_pos (Real.exp_pos L), Real.log_exp]
+  rw [show L * (3 / 2 : ℝ) = L + L / 2 by ring, Real.exp_add,
+    show -L / 2 = -(L / 2) by ring, Real.exp_neg, Real.exp_neg]
+  field_simp
+
+lemma explicit_sinc_slope :
+    Tendsto (fun L : ℝ => (2 * Real.exp (-L / 2) * (1 - Real.exp (-L))) / L)
+      (𝓝[>] 0) (𝓝 2) := by
+  have h₁ : HasDerivAt (fun L : ℝ => Real.exp (-L / 2)) (-(1 / 2)) 0 := by
+    simpa [Function.comp_def, div_eq_mul_inv] using
+      (Real.hasDerivAt_exp (-((0 : ℝ)) / 2)).comp 0 (((hasDerivAt_id (0 : ℝ)).neg).div_const 2)
+  have h₂ : HasDerivAt (fun L : ℝ => 1 - Real.exp (-L)) 1 0 := by
+    simpa [Function.comp_def] using
+      ((Real.hasDerivAt_exp (-((0 : ℝ)))).comp 0 ((hasDerivAt_id (0 : ℝ)).neg)).const_sub 1
+  have h := ((h₁.const_mul 2).mul h₂).tendsto_slope_zero_right
+  simpa [div_eq_mul_inv, mul_comm] using h
+
+theorem positive_sinc_mass_slope :
+    Tendsto (fun L : ℝ => (∫ x, sincSquared x ∂(nearGapCombFamily L).positive) / L)
+      (𝓝[>] 0) (𝓝 2) := by
+  apply explicit_sinc_slope.congr'
+  have hlog : (0 : ℝ) < Real.log 2 := Real.log_pos (by norm_num)
+  filter_upwards [self_mem_nhdsWithin,
+    (eventually_lt_nhds hlog).filter_mono nhdsWithin_le_nhds] with L hL hu
+  rw [positive_sinc_mass hL hu]
+
+theorem positive_sinc_mass_normalization_cost :
+    Tendsto (fun L : ℝ => (∫ x, sincSquared x ∂(nearGapCombFamily L).positive) / L ^ 2)
+      (𝓝[>] 0) atTop := by
+  have h := positive_sinc_mass_slope.pos_mul_atTop (by norm_num : (0 : ℝ) < 2)
+    (tendsto_inv_nhdsGT_zero : Tendsto (fun L : ℝ => L⁻¹) (𝓝[>] 0) atTop)
+  convert h using 1
+  ext L
+  simp [div_eq_mul_inv, pow_two]
+  ring
+
+end Zeta23.OPICAFollowup.CT13Support
+#print axioms Zeta23.OPICAFollowup.CT13Support.sinc_identity_original
+#print axioms Zeta23.OPICAFollowup.CT13Support.positive_sinc_mass_slope
+#print axioms Zeta23.OPICAFollowup.CT13Support.positive_sinc_mass_normalization_cost
+
+
+noncomputable section
+open Set Filter MeasureTheory Complex Metric
+open scoped Topology ENNReal FourierTransform SchwartzMap
+namespace Zeta23.OPICAFollowup.IndependentCompactExtraction
+open Zeta23.OPICA
+
+/- Uniform smooth approximation with one support interval chosen before
+epsilon. This is the local-variation control needed to pass from Schwartz
+convergence to genuine compactly supported continuous-test convergence. -/
+theorem compact_continuous_schwartz_approximation
+    (f : ℝ → ℂ) (continuous : Continuous f) (compact : HasCompactSupport f) :
+    ∃ R : ℝ, 0 < R ∧ tsupport f ⊆ Icc (-R) R ∧
+      ∀ ε : ℝ, 0 < ε → ∃ g : SchwartzMap ℝ ℂ,
+        tsupport (g : ℝ → ℂ) ⊆ Icc (-R) R ∧ ∀ x, ‖g x - f x‖ ≤ ε := by
+  obtain ⟨r, hr, supportBound⟩ := compact.isBounded.exists_pos_norm_le
+  let χ : ContDiffBump (0 : ℝ) := ⟨r, r+1, hr, by linarith⟩
+  have supportF : tsupport f ⊆ Icc (-(r+1)) (r+1) := by
+    intro x hx
+    have := supportBound x hx
+    rw [Real.norm_eq_abs, abs_le] at this
+    constructor <;> linarith [this.1, this.2]
+  refine ⟨r+1, by linarith, supportF, fun ε hε => ?_⟩
+  have uniformly : UniformContinuous f :=
+    continuous.uniformContinuous_of_tendsto_cocompact compact.is_zero_at_infty
+  obtain ⟨h, smooth, close⟩ := uniformly.exists_contDiff_dist_le hε
+  let g : ℝ → ℂ := fun x => χ x • h x
+  have compactG : HasCompactSupport g := χ.hasCompactSupport.smul_right
+  have smoothG : ContDiff ℝ (⊤ : ℕ∞) g := χ.contDiff.smul smooth
+  refine ⟨compactG.toSchwartzMap smoothG, ?_, ?_⟩
+  · intro x hx
+    have hxχ : x ∈ tsupport χ := (tsupport_smul_subset_left (χ : ℝ → ℝ) h) hx
+    rw [χ.tsupport_eq, mem_closedBall, dist_zero_right, Real.norm_eq_abs, abs_le] at hxχ
+    exact hxχ
+  · intro x
+    have cutoff : χ x • f x = f x := by
+      by_cases hx : x ∈ tsupport f
+      · have heq : χ x = 1 := χ.one_of_mem_closedBall (by
+          rw [mem_closedBall, dist_zero_right]
+          exact supportBound x hx)
+        rw [heq, one_smul]
+      · rw [image_eq_zero_of_notMem_tsupport hx, smul_zero]
+    change ‖χ x • h x - f x‖ ≤ ε
+    rw [← cutoff, ← smul_sub, norm_smul, Real.norm_eq_abs, abs_of_nonneg χ.nonneg]
+    calc
+      χ x * ‖h x - f x‖ ≤ 1 * ‖h x - f x‖ :=
+        mul_le_mul_of_nonneg_right χ.le_one (norm_nonneg _)
+      _ ≤ ε := by simpa only [one_mul, ← dist_eq_norm] using (close x).le
+
+def signedCompactPairing (ν : LocallyFiniteSignedMeasure) (f : ℝ → ℂ) : ℂ :=
+  (∫ x, f x ∂ν.positive) - (∫ x, f x ∂ν.negative)
+
+theorem compact_pairing_difference_bound
+    (ν : LocallyFiniteSignedMeasure) (C R δ : ℝ)
+    (common : CommonLinearMassBound C ν.totalVariation) (hR : 0 ≤ R) (hδ : 0 ≤ δ)
+    (f g : ℝ → ℂ) (continuousF : Continuous f) (continuousG : Continuous g)
+    (supportF : tsupport f ⊆ Icc (-R) R) (supportG : tsupport g ⊆ Icc (-R) R)
+    (close : ∀ x, ‖f x - g x‖ ≤ δ) :
+    ‖signedCompactPairing ν f - signedCompactPairing ν g‖ ≤ δ * (C*(1+R)) := by
+  have compactF : HasCompactSupport f := isCompact_Icc.of_isClosed_subset (isClosed_tsupport f) supportF
+  have compactG : HasCompactSupport g := isCompact_Icc.of_isClosed_subset (isClosed_tsupport g) supportG
+  have hfp := continuousF.integrable_of_hasCompactSupport compactF (μ := ν.positive)
+  have hfn := continuousF.integrable_of_hasCompactSupport compactF (μ := ν.negative)
+  have hgp := continuousG.integrable_of_hasCompactSupport compactG (μ := ν.positive)
+  have hgn := continuousG.integrable_of_hasCompactSupport compactG (μ := ν.negative)
+  have vanish : ∀ x, x ∉ Icc (-R) R → (f x - g x) = 0 := by
+    intro x hx
+    rw [image_eq_zero_of_notMem_tsupport (fun hf => hx (supportF hf)),
+      image_eq_zero_of_notMem_tsupport (fun hg => hx (supportG hg)), sub_self]
+  have positiveBound : ‖∫ x, (f x-g x) ∂ν.positive‖ ≤ δ * ν.positive.real (Icc (-R) R) := by
+    rw [← setIntegral_eq_integral_of_forall_compl_eq_zero vanish]
+    exact norm_setIntegral_le_of_norm_le_const_ae' isCompact_Icc.measure_lt_top
+      (Eventually.of_forall (fun x _ => close x))
+  have negativeBound : ‖∫ x, (f x-g x) ∂ν.negative‖ ≤ δ * ν.negative.real (Icc (-R) R) := by
+    rw [← setIntegral_eq_integral_of_forall_compl_eq_zero vanish]
+    exact norm_setIntegral_le_of_norm_le_const_ae' isCompact_Icc.measure_lt_top
+      (Eventually.of_forall (fun x _ => close x))
+  have difference : signedCompactPairing ν f - signedCompactPairing ν g =
+      (∫ x, (f x-g x) ∂ν.positive) - (∫ x, (f x-g x) ∂ν.negative) := by
+    rw [integral_sub hfp hgp, integral_sub hfn hgn]
+    simp only [signedCompactPairing]
+    ring
+  calc
+    ‖signedCompactPairing ν f - signedCompactPairing ν g‖ ≤
+      ‖∫ x, (f x-g x) ∂ν.positive‖ + ‖∫ x, (f x-g x) ∂ν.negative‖ := by
+        rw [difference]; exact norm_sub_le _ _
+    _ ≤ δ * ν.positive.real (Icc (-R) R) + δ * ν.negative.real (Icc (-R) R) :=
+      add_le_add positiveBound negativeBound
+    _ = δ * ν.totalVariation.real (Icc (-R) R) := by
+      rw [LocallyFiniteSignedMeasure.totalVariation, measureReal_add_apply
+        isCompact_Icc.measure_lt_top.ne isCompact_Icc.measure_lt_top.ne]
+      ring
+    _ ≤ δ * (C*(1+R)) := mul_le_mul_of_nonneg_left (common.2 R hR) hδ
+
+theorem schwartz_zero_implies_compact_continuous_zero
+    (ν : ℕ → LocallyFiniteSignedMeasure) (C : ℝ)
+    (common : ∀ n, CommonLinearMassBound C (ν n).totalVariation)
+    (growth : ∀ n, (ν n).HasLinearGrowth)
+    (schwartz : ∀ φ : SchwartzMap ℝ ℂ,
+      Tendsto (fun n => (ν n).distributionOfLinearGrowth (growth n) φ) atTop (𝓝 0))
+    (f : ℝ → ℂ) (continuous : Continuous f) (compact : HasCompactSupport f) :
+    Tendsto (fun n => signedCompactPairing (ν n) f) atTop (𝓝 0) := by
+  obtain ⟨R, hR, supportF, approx⟩ := compact_continuous_schwartz_approximation f continuous compact
+  have hC : 0 ≤ C := (common 0).1
+  let B : ℝ := C*(1+R)
+  have hB : 0 ≤ B := by dsimp [B]; positivity
+  rw [Metric.tendsto_atTop]
+  intro ε hε
+  let δ : ℝ := ε/(2*(B+1))
+  have hδ : 0 < δ := by dsimp [δ]; positivity
+  have cost : δ*B ≤ ε/2 := by
+    have hmul : δ*(2*(B+1)) = ε := div_mul_cancel₀ ε (by positivity)
+    nlinarith
+  obtain ⟨g, supportG, close⟩ := approx δ hδ
+  have schwartzG : Tendsto (fun n => signedCompactPairing (ν n) g) atTop (𝓝 0) := by
+    simpa only [LocallyFiniteSignedMeasure.distributionOfLinearGrowth_apply, signedCompactPairing]
+      using schwartz g
+  obtain ⟨N, bound⟩ := Metric.tendsto_atTop.mp schwartzG (ε/2) (half_pos hε)
+  refine ⟨N, fun n hn => ?_⟩
+  have error := compact_pairing_difference_bound (ν n) C R δ (common n) hR.le hδ.le
+    f g continuous g.continuous supportF supportG
+    (fun x => by simpa only [norm_sub_rev] using close x)
+  have small : ‖signedCompactPairing (ν n) g‖ < ε/2 := by
+    simpa only [dist_zero_right] using bound n hn
+  rw [dist_zero_right]
+  calc
+    ‖signedCompactPairing (ν n) f‖ =
+      ‖(signedCompactPairing (ν n) f - signedCompactPairing (ν n) g) +
+        signedCompactPairing (ν n) g‖ := by congr 1; abel
+    _ ≤ ‖signedCompactPairing (ν n) f - signedCompactPairing (ν n) g‖ +
+      ‖signedCompactPairing (ν n) g‖ := norm_add_le _ _
+    _ < ε := by dsimp [B] at cost; linarith
+
+def extractedZeroMeasure : LocallyFiniteSignedMeasure :=
+  ⟨0, 0, inferInstance, inferInstance, Measure.MutuallySingular.zero_left⟩
+
+theorem extractedZeroMeasure_growth : extractedZeroMeasure.HasLinearGrowth := by
+  refine ⟨0, le_rfl, fun R hR => ?_⟩
+  simp [LocallyFiniteSignedMeasure.totalVariation, extractedZeroMeasure]
+
+/- The HT2 conclusion on the genuine C_c topology, not just compact smooth
+tests. Every integral is against the actual original Jordan measure. -/
+theorem expected_near_gap_compact_continuous_limit_zero
+    (ν : ℕ → LocallyFiniteSignedMeasure) (C : ℝ)
+    (common : ∀ n, 0 ≤ C ∧ ∀ R : ℝ, 0 ≤ R →
+      (ν n).totalVariation.real (Icc (-R) R) ≤ C*(1+R))
+    (growth : ∀ n, (ν n).HasLinearGrowth)
+    (selfdual : ∀ n, (ν n).FourierSelfdual (growth n))
+    (positiveOff : ∀ n, (ν n).negative integerLatticeᶜ = 0)
+    (a : ℕ → ℝ) (ha : ∀ n, 0 < a n ∧ a n ≤ 1)
+    (gap : ∀ n, (ν n).positive (Ioo (-a n) (a n)) = 0 ∧
+      (ν n).negative (Ioo (-a n) (a n)) = 0)
+    (sharp : Tendsto a atTop (𝓝 1)) :
+    ∀ f : ℝ → ℂ, Continuous f → HasCompactSupport f →
+      Tendsto (fun n => (∫ x, f x ∂(ν n).positive) - (∫ x, f x ∂(ν n).negative))
+        atTop (𝓝 ((∫ x, f x ∂extractedZeroMeasure.positive) -
+          (∫ x, f x ∂extractedZeroMeasure.negative))) := by
+  intro f continuous compact
+  have schwartz : ∀ φ : SchwartzMap ℝ ℂ,
+      Tendsto (fun n => (ν n).distributionOfLinearGrowth (growth n) φ) atTop (𝓝 0) :=
+    near_gap_controlled_limit_zero ν C common selfdual a
+      (fun n => (ha n).1) (fun n => (ha n).2) gap positiveOff sharp
+  simpa only [signedCompactPairing, extractedZeroMeasure, integral_zero_measure, sub_self] using
+    schwartz_zero_implies_compact_continuous_zero ν C common growth schwartz f continuous compact
+
+/- A genuine zero signed-measure limit along a strictly increasing
+subsequence. The entire original sequence already converges in C_c tests,
+so identity extraction is valid. This is not general Radon compactness. -/
+theorem expected_near_gap_genuine_zero_measure_extraction
+    (ν : ℕ → LocallyFiniteSignedMeasure) (C : ℝ)
+    (common : ∀ n, 0 ≤ C ∧ ∀ R : ℝ, 0 ≤ R →
+      (ν n).totalVariation.real (Icc (-R) R) ≤ C*(1+R))
+    (growth : ∀ n, (ν n).HasLinearGrowth)
+    (selfdual : ∀ n, (ν n).FourierSelfdual (growth n))
+    (positiveOff : ∀ n, (ν n).negative integerLatticeᶜ = 0)
+    (a : ℕ → ℝ) (ha : ∀ n, 0 < a n ∧ a n ≤ 1)
+    (gap : ∀ n, (ν n).positive (Ioo (-a n) (a n)) = 0 ∧
+      (ν n).negative (Ioo (-a n) (a n)) = 0)
+    (sharp : Tendsto a atTop (𝓝 1)) :
+    ∃ subseq : ℕ → ℕ, ∃ limit : LocallyFiniteSignedMeasure,
+      StrictMono subseq ∧ limit.positive = 0 ∧ limit.negative = 0 ∧ limit.HasLinearGrowth ∧
+      ∀ f : ℝ → ℂ, Continuous f → HasCompactSupport f →
+        Tendsto (fun n => (∫ x, f x ∂(ν (subseq n)).positive) -
+          (∫ x, f x ∂(ν (subseq n)).negative)) atTop
+          (𝓝 ((∫ x, f x ∂limit.positive) - (∫ x, f x ∂limit.negative))) := by
+  refine ⟨id, extractedZeroMeasure, strictMono_id, rfl, rfl, extractedZeroMeasure_growth, ?_⟩
+  exact expected_near_gap_compact_continuous_limit_zero ν C common growth selfdual positiveOff a ha gap sharp
+
+#print axioms Zeta23.OPICAFollowup.IndependentCompactExtraction.compact_continuous_schwartz_approximation
+#print axioms Zeta23.OPICAFollowup.IndependentCompactExtraction.compact_pairing_difference_bound
+#print axioms Zeta23.OPICAFollowup.IndependentCompactExtraction.schwartz_zero_implies_compact_continuous_zero
+#print axioms Zeta23.OPICAFollowup.IndependentCompactExtraction.expected_near_gap_compact_continuous_limit_zero
+#print axioms Zeta23.OPICAFollowup.IndependentCompactExtraction.expected_near_gap_genuine_zero_measure_extraction
+
+end Zeta23.OPICAFollowup.IndependentCompactExtraction

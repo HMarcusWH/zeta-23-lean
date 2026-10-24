@@ -1554,3 +1554,79 @@ theorem nativeGenerator_transform (g : NativeGenerator) (state : NativeCausalSta
 
 
 end Zeta23.OPICAFollowup
+
+
+noncomputable section
+namespace Zeta23.OPICAFollowup
+
+/-- Actual finite Euler action on the local causal state, including its
+endpoint distributions. This is not an abstract multiplier premise. -/
+def finiteEulerFilter (Q : ℕ) (state : NativeCausalState) : NativeCausalState :=
+  state.finiteEulerAction Q
+
+/-- Actual locally finite inverse Euler action. No global finite-variation
+claim is made for its geometric delay series. -/
+def inverseFiniteEulerFilter (Q : ℕ) (state : NativeCausalState) : NativeCausalState :=
+  state.inverseFiniteEulerAction Q
+
+/-- The actual rational causal action uses its positive decay parameter. -/
+def rationalCausalFilter (a b : ℝ) (hb : 0 < b) (state : NativeCausalState) :
+    NativeCausalState := state.rationalAction a b hb
+
+/-- The physical residual accepts a real cutoff and all power orders. Its
+finite floor is the exact cutoff implementation, not an integer-only domain. -/
+def truncatedInverseResidual (Y : ℝ) (r : ℕ) (state : NativeCausalState) :
+    NativeCausalState := state.residualPowerRealAction Y r
+
+theorem finiteEulerFilter_actual_action (Q : ℕ) (hQ : 0 < Q)
+    (state : NativeCausalState) :
+    finiteEulerFilter Q state = (NativeGenerator.finiteEuler Q hQ).act state := rfl
+
+theorem inverseFiniteEulerFilter_actual_action (Q : ℕ) (hQ : 0 < Q)
+    (state : NativeCausalState) :
+    inverseFiniteEulerFilter Q state =
+      (NativeGenerator.inverseFiniteEuler Q hQ).act state := rfl
+
+theorem rationalCausalFilter_actual_action (a b : ℝ) (ha : 0 < a) (hb : 0 < b)
+    (state : NativeCausalState) :
+    rationalCausalFilter a b hb state = (NativeGenerator.rational a b ha hb).act state := rfl
+
+theorem truncatedInverseResidual_actual_action (Y : ℝ) (r : ℕ)
+    (state : NativeCausalState) :
+    truncatedInverseResidual Y r state = (NativeGenerator.residualPowerReal Y r).act state := rfl
+
+theorem finiteEulerFilter_laplace (Q : ℕ) (state : NativeCausalState) (z : ℂ) :
+    (finiteEulerFilter Q state).laplace z = finiteEulerMultiplier Q z * state.laplace z :=
+  state.laplace_finiteEulerAction Q z
+
+theorem inverseFiniteEulerFilter_laplace (Q : ℕ) (state : NativeCausalState) :
+    ∃ S : ℝ, ∀ z : ℂ, S < z.re →
+      (inverseFiniteEulerFilter Q state).laplace z =
+        (finiteEulerMultiplier Q z)⁻¹ * state.laplace z :=
+  state.laplace_inverseFiniteEulerAction Q
+
+theorem rationalCausalFilter_laplace (a b : ℝ) (hb : 0 < b)
+    (state : NativeCausalState) {z : ℂ} (hz0 : 0 ≤ z.re)
+    (hz : ∀ term ∈ state, term.regular.exponent < z.re) :
+    (rationalCausalFilter a b hb state).laplace z =
+      ((z + (a : ℂ)) / (z + (b : ℂ))) * state.laplace z :=
+  state.laplace_rationalAction a b hb hz0 hz
+
+theorem truncatedInverseResidual_laplace (Y : ℝ) (hY : 0 ≤ Y) (r : ℕ)
+    (state : NativeCausalState) :
+    ∃ S : ℝ, ∀ z : ℂ, S < z.re →
+      (truncatedInverseResidual Y r state).laplace z =
+        (1 - riemannZeta (z + 1 / 2) * truncatedMoebiusRealMultiplier Y z) ^ r *
+          state.laplace z :=
+  state.laplace_residualPowerRealAction Y hY r
+
+end Zeta23.OPICAFollowup
+
+#print axioms Zeta23.OPICAFollowup.finiteEulerFilter_actual_action
+#print axioms Zeta23.OPICAFollowup.inverseFiniteEulerFilter_actual_action
+#print axioms Zeta23.OPICAFollowup.rationalCausalFilter_actual_action
+#print axioms Zeta23.OPICAFollowup.truncatedInverseResidual_actual_action
+#print axioms Zeta23.OPICAFollowup.finiteEulerFilter_laplace
+#print axioms Zeta23.OPICAFollowup.inverseFiniteEulerFilter_laplace
+#print axioms Zeta23.OPICAFollowup.rationalCausalFilter_laplace
+#print axioms Zeta23.OPICAFollowup.truncatedInverseResidual_laplace

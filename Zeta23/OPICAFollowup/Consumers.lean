@@ -394,3 +394,89 @@ theorem actual_zero_measure_span_consumer (data : List JetDatum)
 
 #print axioms Zeta23.OPICAFollowup.actual_zero_measure_span_consumer
 end Zeta23.OPICAFollowup
+
+
+noncomputable section
+namespace Zeta23.OPICAFollowup
+open Zeta23 Zeta23.CCM Zeta23.OPICA Zeta23.ExceptionalZero
+
+/-- The actual existing generated Step123 complete output, with the same
+zero, aperture, phase and horizon parameters. No new assertion packet. -/
+abbrev FollowupNativeOutput (rho : zetaZeroConfig.carrier) (beta : ℝ)
+    (phase : ReversalParity) (late : ℝ) :=
+  GeneratedStep123CompleteOutput rho beta phase late
+
+theorem followupNativeOutput_actual_source_and_input
+    {rho : zetaZeroConfig.carrier} {beta : ℝ} {phase : ReversalParity} {late : ℝ}
+    (out : FollowupNativeOutput rho beta phase late) :
+    (step123OpicaView out).source = nativeOriginalIntegerDrive ∧
+    (step123OpicaView out).field = nativeOriginalPrimeField ∧
+    (step123OpicaView out).input = nativeCompletedInput ∧
+    Step123SameStateFieldRecord out.generated.native ∧
+    GeneratedStep123RangeObstruction rho out.generated.offLine :=
+  step123_output_opica_view_correct out
+
+theorem followupNativeOutput_eachPhase (rho : zetaZeroConfig.carrier) {beta : ℝ}
+    (hbeta : 0 < beta) (hgap : beta < |(rho : ℂ).re - 1 / 2|) :
+    ∀ (phase : ReversalParity) (late : ℝ),
+      ∃ out : FollowupNativeOutput rho beta phase late,
+        max late step123SameStateThreshold <
+          fixedOriginalSincTrialAperture out.generated.sourceData.separation ∧
+        (step123OpicaView out).source = nativeOriginalIntegerDrive ∧
+        (step123OpicaView out).field = nativeOriginalPrimeField ∧
+        (step123OpicaView out).input = nativeCompletedInput ∧
+        Step123SameStateFieldRecord out.generated.native ∧
+        GeneratedStep123RangeObstruction rho out.generated.offLine :=
+  step123_eachPhase_opica_consumer rho hbeta hgap
+
+end Zeta23.OPICAFollowup
+
+#print axioms Zeta23.OPICAFollowup.followupNativeOutput_actual_source_and_input
+#print axioms Zeta23.OPICAFollowup.followupNativeOutput_eachPhase
+
+noncomputable section
+open Set MeasureTheory Filter Complex
+open scoped Topology FourierTransform SchwartzMap
+namespace Zeta23.OPICAFollowup
+open Zeta23.OPICA
+
+/-- The actual nonlinear square distribution of an actual zeta-zero profile.
+Its plateau is one; it is distinct from the gapped linear zero-jet measure. -/
+def actualZeroSquareDistribution (ρ:ℂ) (hz:riemannZeta ρ=0) (h0:0<ρ.re) (h1:ρ.re<1) :
+    TemperedDistribution ℝ ℂ := by
+  have hp := zero_profile_regular_selfdual ρ hz h0 h1
+  have hv : Tendsto (zeroProfile ρ) (cocompact ℝ) (𝓝 0) := by
+    rw [←hp.2.2.2.2.2.1]
+    exact Real.zero_at_infty_fourier _
+  exact (squareGapJordan (zeroProfile ρ) 1 hp.2.1).distributionOfLinearGrowth
+    (squareGapJordan_growth hp.2.1 hv 1)
+
+/-- Actual square + arbitrary actual finite zero-jet span + arbitrary genuine
+Euclidean-temperate lattice measure still cannot be Fourier selfdual. -/
+theorem actual_square_zero_jet_lattice_barrier (ρ:ℂ) (hz:riemannZeta ρ=0)
+    (h0:0<ρ.re) (h1:ρ.re<1)
+    (data:List FiniteSpan.JetDatum) (hdata:∀j∈data,FiniteSpan.ValidJet j)
+    (σ:LocallyFiniteComplexMeasure) [σ.totalVariation.HasTemperateGrowth]
+    (hσ:σ.totalVariation (Set.range (fun n:ℤ=>(n:ℝ)))ᶜ=0) :
+    𝓕 (actualZeroSquareDistribution ρ hz h0 h1+
+      (zeroJetRealSpan data).distributionOfLinearGrowth (FiniteSpan.zeroJetRealSpan_growth data hdata)+
+        SquarePhysicalSupport.correctionDistribution σ) ≠
+      actualZeroSquareDistribution ρ hz h0 h1+
+      (zeroJetRealSpan data).distributionOfLinearGrowth (FiniteSpan.zeroJetRealSpan_growth data hdata)+
+        SquarePhysicalSupport.correctionDistribution σ := by
+  have hp := zero_profile_regular_selfdual ρ hz h0 h1
+  have hv : Tendsto (zeroProfile ρ) (cocompact ℝ) (𝓝 0) := by
+    rw [←hp.2.2.2.2.2.1]
+    exact Real.zero_at_infty_fourier _
+  have hn : zeroProfile ρ≠0 := by
+    intro heq
+    have hval := hp.2.2.2.2.1 0 (by simp)
+    simp only [heq,Pi.zero_apply] at hval
+    exact zero_ne_one hval
+  exact square_actual_no_selfdual_and_measure_repair hp.1 hp.2.1 hp.2.2.1 hp.2.2.2.1
+    hp.2.2.2.2.2.1 hv hp.2.2.2.2.1 hn
+    ((zeroJetRealSpan data).distributionOfLinearGrowth (FiniteSpan.zeroJetRealSpan_growth data hdata))
+    (FiniteSpan.zeroJetRealSpan_selfdual data hdata) σ hσ
+
+end Zeta23.OPICAFollowup
+#print axioms Zeta23.OPICAFollowup.actual_square_zero_jet_lattice_barrier
