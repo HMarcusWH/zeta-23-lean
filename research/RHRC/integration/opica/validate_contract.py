@@ -350,8 +350,8 @@ def _source_bound_followup_context_v1(repo: Path):
 
 
 # Version2 policy authority is distinct from compiler validity and human review.
-# Deliberately unset pending genuine independent exact-subject/caller review.
-TRUSTED_EXACT_EXTENSION_POLICY_SHA256 = None
+# Bound to the actual independently reviewed exact-subject/caller objects.
+TRUSTED_EXACT_EXTENSION_POLICY_SHA256 = 'd0a5b6927345383ad2693356b9ca85f316abee7b6c1db73501a317958d39a74d'
 EXACT_EXTENSION_PROVIDER_SHA256 = '62a42ba629ddfff42d44194031e1e53a1c74c2d1b95f316117c36ab975040bca'
 
 

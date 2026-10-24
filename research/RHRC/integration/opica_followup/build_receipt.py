@@ -309,15 +309,15 @@ def source_manifest():
 
 FULL_RECEIPT_SCHEMA = 'OPICA_FOLLOWUP_FULL_COMPILER_RECEIPT_V1'
 FULL_REVIEW_SCHEMA = 'OPICA_FOLLOWUP_FULL_REVIEW_V1'
-# No all100 semantic/type review has been accepted. This is intentionally unset;
-# filling it requires an independent review, never copying a producer's digest.
-FULL_REVIEW_SHA256 = None
+# Actual independent all100 semantic/type/domain review is separately bound.
+# Compiler and release acceptance remain separate mandatory gates.
+FULL_REVIEW_SHA256 = '772e049ae72649d1a1d4a56b73a2eb4f116797e536fcd339f285e22dd681a312'
 FULL_TEMPLATE_SHA256 = '41b5dc78dd06d51336cec5ccfa3581da41952674a3bbcfdee8728fb55c6defd0'
 ACCEPTED_PARENT = 'd53dd70d38b0762af130b1d19b795af259f505f5'
 ACCEPTED_PARENT_TREE = '12691099f1a155a8bfa3ad4f6689146175b233b2'
 COMPILER_COMMIT = 'd8b18978322de05a8f3dba51ef03cf5461676c17'
 PARENT_BUILDER_SHA256 = 'c4918486016d25b16caa1013666a22979f8ebe86e41369cbf616a8a2b9512ddc'
-PARENT_PROJECTION_VALIDATOR_SHA256 = '3b3ca7cb137d3b6cc239730afd960659c9c5e09492acdd4b8f76b59cb3ade079'
+PARENT_PROJECTION_VALIDATOR_SHA256 = 'da9b701c5077a0b08013867238cdd743b49292c1746d83c42717508573560fb9'
 FROZEN_FULL_INPUTS = {
     'BUILD_SPEC.md': 'cacab08834aeb9badd578d90828be99cff33c7a617c609e75bb878eb5fa3b29c',
     'BUILD_MANIFEST.json': 'c99ec7acbfe996455525b31088a7d04addd20653787e12098e4e51a4a7ce296e',
