@@ -8416,3 +8416,171 @@ theorem expected_full_HT2_compact_continuous_extraction
 
 #print axioms Zeta23.OPICAFollowup.Validation.expected_full_HT2_compact_continuous_extraction
 end Zeta23.OPICAFollowup.Validation
+
+
+
+noncomputable section
+open Set MeasureTheory Complex
+open scoped ENNReal
+open Zeta23.OPICA
+
+namespace Zeta23.OPICAFollowup.Validation
+
+/-- Independently packaged full complex weighted inverse contract.  The four
+coordinates belong to the actual physical mixture, rather than caller-supplied
+eta data.  Both complex coordinate equations and the absolute convolution
+integrals are retained. -/
+def independentlyIntendedComplexMobius
+    (sigma : LocallyFiniteComplexMeasure) (a : ℝ)
+    (ha : 1 / 2 < a) (hm : mixingExponentialMoment a sigma < ∞) : Prop :=
+  let physical := weightedDilationMixture sigma a ha.le hm
+  let etaReP := positiveLogMeasure physical.rePart.positive
+  let etaReN := positiveLogMeasure physical.rePart.negative
+  let etaImP := positiveLogMeasure physical.imPart.positive
+  let etaImN := positiveLogMeasure physical.imPart.negative
+  let absoluteMobius := moebiusPlusComb + moebiusMinusComb
+  -- eta = N * sigma, with BOTH real and imaginary coordinates.
+  (etaReP + integerLogComb ∗ sigma.rePart.negative =
+    etaReN + integerLogComb ∗ sigma.rePart.positive) ∧
+  (etaImP + integerLogComb ∗ sigma.imPart.negative =
+    etaImN + integerLogComb ∗ sigma.imPart.positive) ∧
+  -- sigma = M_mu * eta, with BOTH real and imaginary coordinates.
+  (sigma.rePart.positive +
+      (moebiusPlusComb ∗ etaReN + moebiusMinusComb ∗ etaReP) =
+    sigma.rePart.negative +
+      (moebiusPlusComb ∗ etaReP + moebiusMinusComb ∗ etaReN)) ∧
+  (sigma.imPart.positive +
+      (moebiusPlusComb ∗ etaImN + moebiusMinusComb ∗ etaImP) =
+    sigma.imPart.negative +
+      (moebiusPlusComb ∗ etaImP + moebiusMinusComb ∗ etaImN)) ∧
+  -- All physical input/output coordinates lie in the weighted algebra.
+  (∀ i : Fin 4, weightedLogNorm a (mixingCoordinate sigma i) < ∞) ∧
+  (∀ i : Fin 4, weightedLogNorm a
+    (positiveLogMeasure (mixingCoordinate physical i)) < ∞) ∧
+  -- Absolute weighted Fubini for every coordinate, including imaginary ones.
+  (∀ i : Fin 4, weightedLogNorm a
+    (absoluteMobius ∗ positiveLogMeasure (mixingCoordinate physical i)) < ∞) ∧
+  (∀ i : Fin 4,
+    (∫⁻ x, ∫⁻ y, ENNReal.ofReal (Real.exp (-a * (x + y)))
+      ∂(positiveLogMeasure (mixingCoordinate physical i)) ∂absoluteMobius) < ∞) ∧
+  -- The positive/negative physical Mobius combs form its Jordan pair.
+  (moebiusPlusComb ⟂ₘ moebiusMinusComb) ∧
+  -- Exact weighted variation norm, not merely an upper bound.
+  weightedLogNorm a absoluteMobius = ENNReal.ofReal
+    ((riemannZeta ((a + 1 / 2 : ℝ) : ℂ) /
+      riemannZeta ((2 * a + 1 : ℝ) : ℂ)).re)
+
+theorem expected_independent_complete_complex_mobius
+    (sigma : LocallyFiniteComplexMeasure) (a : ℝ)
+    (ha : 1 / 2 < a) (hm : mixingExponentialMoment a sigma < ∞) :
+    independentlyIntendedComplexMobius sigma a ha hm
+    := by
+  rcases weighted_mobius_inverse sigma a ha hm with
+    ⟨hraw, hre, him, hunit, hinvre, hinvim, hsigma, heta, hmul, hn, hmobius⟩
+  let physical := weightedDilationMixture sigma a ha.le hm
+  have hetaAll (i : Fin 4) : weightedLogNorm a
+      (positiveLogMeasure (mixingCoordinate physical i)) < ∞ := by
+    fin_cases i
+    · exact heta.1
+    · exact heta.2.1
+    · exact heta.2.2.1
+    · exact heta.2.2.2
+  have habsolute : weightedLogNorm a (moebiusPlusComb + moebiusMinusComb) < ∞ := by
+    rw [weightedLogNorm_add]
+    exact ENNReal.add_lt_top.mpr (weightedLogNorm_moebiusComb_lt_top ha)
+  have hconv (i : Fin 4) : weightedLogNorm a
+      ((moebiusPlusComb + moebiusMinusComb) ∗
+        positiveLogMeasure (mixingCoordinate physical i)) < ∞ := by
+    rw [hmul]
+    exact ENNReal.mul_lt_top habsolute (hetaAll i)
+  have hfubini (i : Fin 4) :
+      (∫⁻ x, ∫⁻ y, ENNReal.ofReal (Real.exp (-a * (x + y)))
+        ∂(positiveLogMeasure (mixingCoordinate physical i))
+        ∂(moebiusPlusComb + moebiusMinusComb)) < ∞ := by
+    rw [← Measure.lintegral_conv (by fun_prop :
+      Measurable (fun z : ℝ => ENNReal.ofReal (Real.exp (-a * z))))]
+    exact hconv i
+  have hexact : weightedLogNorm a (moebiusPlusComb + moebiusMinusComb) =
+      ENNReal.ofReal ((riemannZeta ((a + 1 / 2 : ℝ) : ℂ) /
+        riemannZeta ((2 * a + 1 : ℝ) : ℂ)).re) := by
+    rw [hmobius.2.1]
+    exact congrArg ENNReal.ofReal (by simpa using congrArg Complex.re hmobius.2.2)
+  exact ⟨hre, him, hinvre, hinvim, hsigma, hetaAll, hconv, hfubini, hmobius.1, hexact⟩
+
+#print axioms Zeta23.OPICAFollowup.Validation.expected_independent_complete_complex_mobius
+
+/-- Postseal auxiliary interface: these explicit clauses were added only after
+inspection of the production root.  No blind-authorship claim is made for them.
+Together with the independently sealed core they preserve every original root
+interface clause, while the core also exposes finite absolute double integrals. -/
+def postSealMobiusAuxiliaryInterface
+    (sigma : LocallyFiniteComplexMeasure) (a : ℝ) : Prop :=
+  (∀ i : Fin 4, positiveLogMeasure (positiveDilationMixture (mixingCoordinate sigma i)) =
+    integerLogComb ∗ mixingCoordinate sigma i) ∧
+  (moebiusPlusComb ∗ integerLogComb =
+    Measure.dirac 0 + moebiusMinusComb ∗ integerLogComb) ∧
+  (∀ (mu rho : Measure ℝ) [SFinite rho],
+    weightedLogNorm a (mu ∗ rho) = weightedLogNorm a mu * weightedLogNorm a rho) ∧
+  (weightedLogNorm a integerLogComb = ENNReal.ofReal
+      (∑' n : ℕ, (n : ℝ) ^ (-(a + 1 / 2))) ∧
+    ((∑' n : ℕ, (n : ℝ) ^ (-(a + 1 / 2)) : ℝ) : ℂ) =
+      riemannZeta ((a + 1 / 2 : ℝ) : ℂ)) ∧
+  (weightedLogNorm a (moebiusPlusComb + moebiusMinusComb) = ENNReal.ofReal
+      (∑' n : ℕ, (|ArithmeticFunction.moebius n| : ℝ) * (n : ℝ) ^ (-(a + 1 / 2))) ∧
+    ((∑' n : ℕ, (|ArithmeticFunction.moebius n| : ℝ) * (n : ℝ) ^ (-(a + 1 / 2)) : ℝ) : ℂ) =
+      riemannZeta ((a + 1 / 2 : ℝ) : ℂ) / riemannZeta ((2 * a + 1 : ℝ) : ℂ))
+
+theorem expected_independent_complex_mobius_full_interface
+    (sigma : LocallyFiniteComplexMeasure) (a : ℝ)
+    (ha : 1 / 2 < a) (hm : mixingExponentialMoment a sigma < ∞) :
+    independentlyIntendedComplexMobius sigma a ha hm ∧
+      postSealMobiusAuxiliaryInterface sigma a := by
+  rcases weighted_mobius_inverse sigma a ha hm with
+    ⟨hraw, hre, him, hunit, hinvre, hinvim, hsigma, heta, hmul, hn, hmobius⟩
+  refine ⟨expected_independent_complete_complex_mobius sigma a ha hm, ?_⟩
+  exact ⟨hraw, hunit, hmul, hn, hmobius.2.1, hmobius.2.2⟩
+
+#print axioms Zeta23.OPICAFollowup.Validation.expected_independent_complex_mobius_full_interface
+
+end Zeta23.OPICAFollowup.Validation
+
+
+
+
+noncomputable section
+open Set MeasureTheory Filter Complex
+open scoped Topology FourierTransform SchwartzMap
+
+namespace Zeta23.OPICAFollowup.Validation
+
+/-! This compound preserves both existing interfaces as genuine conjuncts.
+Authored by the contract reviewer as an implementation leaf at the owner's
+explicit request; its independent semantic review must come from the owner or
+another nonauthor. It is not a new primary root or an approval artifact. -/
+
+theorem expected_square_original_and_full_distribution_domain
+    {h : ℝ → ℂ} {A : ℂ}
+    (hev : ∀ x, h (-x) = h x) (hcont : Continuous h) (hint : Integrable h)
+    (hL2 : MemLp h 2) (hsd : 𝓕 h = h)
+    (hvan : Tendsto h (cocompact ℝ) (𝓝 0))
+    (hpl : ∀ x, |x| ≤ 1 → h x = A) (hne : h ≠ 0) :
+    (¬ ∃ c : ℤ → ℂ, TemperedLatticeWeights c ∧
+      ∀ φ : 𝓢(ℝ, ℂ),
+        squareGapMeasure h A (𝓕 φ) + latticePairing c (𝓕 φ) =
+          squareGapMeasure h A φ + latticePairing c φ) ∧
+    (∀ (σ : LocallyFiniteComplexMeasure) (T : TemperedDistribution ℝ ℂ),
+      σ.totalVariation (Set.range (fun n : ℤ => (n : ℝ)))ᶜ = 0 →
+      (∀ φ : 𝓢(ℝ, ℂ), HasCompactSupport (φ : ℝ → ℂ) →
+        T φ = σ.integral φ) →
+      𝓕 ((squareGapJordan h A hcont).distributionOfLinearGrowth
+          (squareGapJordan_growth hcont hvan A) + T) ≠
+        (squareGapJordan h A hcont).distributionOfLinearGrowth
+          (squareGapJordan_growth hcont hvan A) + T) := by
+  refine ⟨square_no_lattice_repair hev hcont hint hL2 hsd hvan hpl hne, ?_⟩
+  intro σ T hσ hT
+  exact square_actual_no_distribution_tempered_measure_repair
+    hev hcont hint hL2 hsd hvan hpl hne σ T hσ hT
+
+#print axioms Zeta23.OPICAFollowup.Validation.expected_square_original_and_full_distribution_domain
+
+end Zeta23.OPICAFollowup.Validation
