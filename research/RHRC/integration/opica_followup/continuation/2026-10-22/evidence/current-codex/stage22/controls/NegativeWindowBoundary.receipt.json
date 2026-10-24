@@ -1,0 +1,41 @@
+{
+  "name": "NegativeWindowBoundary",
+  "file": "NegativeWindowBoundary.lean",
+  "source_sha256": "17e071f1a779ebedc2d311a793b5ae1d8d816fd62008ec3743ad7bd07fb39598",
+  "expected": "REJECTED",
+  "scope": "Rate/physical consumer contract mutation",
+  "origin": {
+    "kind": "EXACT_STAGE21_BYTES",
+    "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\NegativeWindowBoundary.lean",
+    "sha256": "17e071f1a779ebedc2d311a793b5ae1d8d816fd62008ec3743ad7bd07fb39598",
+    "receipt": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\CHECK_RESULT.json",
+    "receipt_sha256": "277a7e7fde8c600848bc59ce730faf3c9ceab1ca436ac36c58c00420f429aa0a"
+  },
+  "required_diagnostic_regex": [
+    "unsolved goals",
+    "False"
+  ],
+  "passed": true,
+  "observed": "REJECTED_INTENDED_MUTATION",
+  "failure_reasons": [],
+  "requested_axiom_names": [],
+  "axioms": {},
+  "error_recovery_sorryAx_in_rejected_output": false,
+  "formal_authority_from_failed_declarations": false,
+  "command": [
+    "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+    "env",
+    "lean",
+    "--root=C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\sources",
+    "-DautoImplicit=false",
+    "-DrelaxedAutoImplicit=false",
+    "-DmaxHeartbeats=800000",
+    "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\sources\\NegativeWindowBoundary.lean",
+    "-o",
+    "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\objects\\NegativeWindowBoundary.olean"
+  ],
+  "exit_code": 1,
+  "log": "NegativeWindowBoundary.log",
+  "log_sha256": "85b5a287f75c358ed4530f75170c17169d42f2bdad30f35bc4be2df905591532",
+  "seconds": 46.23724739998579
+}

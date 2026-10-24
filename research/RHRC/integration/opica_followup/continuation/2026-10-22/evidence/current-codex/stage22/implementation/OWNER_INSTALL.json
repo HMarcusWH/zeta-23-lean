@@ -1,0 +1,101 @@
+{
+  "schema": "OPICA_STAGE22_OWNER_ASSEMBLY_V1",
+  "base_record_commit": "5ad2fc2df49ed551a8e3040a0dff65939aef015a",
+  "base_record_tree": "bb9a2c03d02f34db68e59ee89bb80a1e24e31c7b",
+  "prior_code_commit": "139c1a0d88cc0fb2d8a0d8ea71e152b25b14c36e",
+  "status": "INSTALLED_UNCOMPILED_NO_ACCEPTANCE",
+  "files": [
+    {
+      "destination": "Zeta23/OPICAFollowup/NativeFilters.lean",
+      "sealed_source": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-release\\overlay\\Zeta23\\OPICAFollowup\\NativeFilters.lean",
+      "sealed_sha256": "7584d93680bee677279fe6d5134d20b4de307bae6c995b30c09ddf0dfa79d084",
+      "integration": "Exact base source bytes plus sealed fragment body after removing standalone self-import."
+    },
+    {
+      "destination": "Zeta23/OPICAFollowup/JointObservation.lean",
+      "sealed_source": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-release\\overlay\\Zeta23\\OPICAFollowup\\JointObservation.lean",
+      "sealed_sha256": "8a6feb290570d7f6bf8a415489a86f91966bbbdefec5083fa7df6eafe269c162",
+      "integration": "Exact base source bytes plus sealed fragment body after removing standalone self-import."
+    },
+    {
+      "destination": "Zeta23/OPICAFollowup/Consumers.lean",
+      "sealed_source": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-release\\overlay\\Zeta23\\OPICAFollowup\\Consumers.lean",
+      "sealed_sha256": "c908d1119260ad7e776513fca8f14cb6f1e2c48fdb49e41d92308c2a90eff7ad",
+      "integration": "Exact base source bytes plus sealed fragment body after removing standalone self-import."
+    },
+    {
+      "destination": "Zeta23/OPICAFollowup/Validation.lean",
+      "sealed_source": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-release\\overlay\\Zeta23\\OPICAFollowup\\Validation.lean",
+      "sealed_sha256": "bbcd2a3d8ee9b41be17111184deb8015f0931acd37bd28c55f591f429cbd4a8c",
+      "integration": "Complete explicit Validation proposal; facade imports only Consumers."
+    },
+    {
+      "destination": "Zeta23/OPICAFollowup.lean",
+      "sealed_source": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-release\\overlay\\Zeta23\\OPICAFollowup.lean",
+      "sealed_sha256": "eae095b71e77fcc68e74125746240e1709dcfaba3fc20f8e07a9dece8157935c",
+      "retained_owner_sha256": "1c02efe3d8aba87ff52160939da6b1ce0151f5e563c95295a8a98c51e5baebe1",
+      "integration": "Keep owner facade bytes. The outside proposal has a different comment, with the identical one-import DAG; its seal does not transfer to owner bytes."
+    },
+    {
+      "destination": "Zeta23/OPICAFollowup/SquareDefect.lean",
+      "sealed_source": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-square-physical\\SquareDefectPhysicalFullCandidate.lean",
+      "sealed_sha256": "c65b7b8eb6894a89a12a85e36ea660c97ca8deeb47900392786b20ae81b4ee58",
+      "integration": "Original four primary roots/imports/types/proofs retained as exact byte prefix; add actual physical adapters."
+    },
+    {
+      "destination": "Zeta23/OPICAFollowup/FiniteSpanSeparation.lean",
+      "sealed_source": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-offcritical-real-basis\\stage22-payload\\Zeta23\\OPICAFollowup\\OffcriticalRealBasis.lean",
+      "sealed_sha256": "382d35c51bd7b8fc3f498fcfce527570dfc46f79f8653653fd1b7b2b365d014a",
+      "integration": "Remove only standalone self-import; nest supporting namespace under Zeta23.OPICAFollowup and qualify prints; append to existing planned module. Zero primary delta."
+    },
+    {
+      "destination": "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedSquarePhysical.lean",
+      "sealed_source": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-square-physical\\ExpectedSquarePhysicalFinal.lean",
+      "source_sha256": "aa954b908dde1f81697bb1c164eba16600d714523deb825f7a8dc58591fcd5e7",
+      "integration": "Exact independent source with explicit recorded import/namespace adaptation only."
+    },
+    {
+      "destination": "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedSquareSpanComposition.lean",
+      "sealed_source": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-square-physical\\ExpectedSquareSpanCompositionFinal.lean",
+      "source_sha256": "375d23d913681a26882d76223b61ce94cee68cbffa29226964dfc79933663b1a",
+      "integration": "Exact independent source with explicit recorded import/namespace adaptation only."
+    },
+    {
+      "destination": "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedCanonicalInterfaces.lean",
+      "sealed_source": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-release\\ExpectedCanonicalInterfaces.lean",
+      "source_sha256": "da2fffd4a18ae4598417f23dfaee33cc99b0a7da24dcdef19ba388bb3f14d800",
+      "integration": "Exact independent source with explicit recorded import/namespace adaptation only."
+    },
+    {
+      "destination": "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedOffcriticalRealBasis.lean",
+      "sealed_source": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-offcritical-real-basis\\stage22-payload\\ExpectedOffcriticalRealBasis.lean",
+      "source_sha256": "f7546bb6d97a10eab5f698ec5062c0eaa26561fe9584efdb0f00424207049321",
+      "integration": "Exact independent source with explicit recorded import/namespace adaptation only."
+    },
+    {
+      "destination": "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedOffcriticalControls.lean",
+      "sealed_source": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-offcritical-real-basis\\stage22-payload\\OffcriticalControls.lean",
+      "source_sha256": "c9d5d5c1e1eb75785da3f0e8a1f27a50556e07f75fa3742f219c0ec2de38245a",
+      "integration": "Exact independent source with explicit recorded import/namespace adaptation only."
+    }
+  ],
+  "final_sha256": {
+    "Zeta23/OPICAFollowup/NativeFilters.lean": "7584d93680bee677279fe6d5134d20b4de307bae6c995b30c09ddf0dfa79d084",
+    "Zeta23/OPICAFollowup/JointObservation.lean": "8a6feb290570d7f6bf8a415489a86f91966bbbdefec5083fa7df6eafe269c162",
+    "Zeta23/OPICAFollowup/Consumers.lean": "29d0a3d4eb5c243ca77d2b3d20296cdd8f4eb3130b413a9a4fb90914e86df377",
+    "Zeta23/OPICAFollowup/Validation.lean": "ad9b16d1df0c40cb188862d38fc490db82e0bdd9925a0f0cf8befb89aa80231d",
+    "Zeta23/OPICAFollowup/SquareDefect.lean": "c65b7b8eb6894a89a12a85e36ea660c97ca8deeb47900392786b20ae81b4ee58",
+    "Zeta23/OPICAFollowup/FiniteSpanSeparation.lean": "69d2d89a32311dec71bc9831b21717097e94a980d7b9dfcd0f8dbf10f8fbb9f5",
+    "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedSquarePhysical.lean": "b1b33c58a0f778f78b6ea8830969b209b3cbfe53796e2ede4daaaefa07bac575",
+    "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedSquareSpanComposition.lean": "bdc119dc93bfdd0321ce30867f71b7ab0aca109adef4d3978c448528b252bdd2",
+    "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedCanonicalInterfaces.lean": "da2fffd4a18ae4598417f23dfaee33cc99b0a7da24dcdef19ba388bb3f14d800",
+    "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedOffcriticalRealBasis.lean": "5afd07e87e5c6708a54ea64c62239e6b5dfa2f50797ec10bfe0c3014958abe11",
+    "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedOffcriticalControls.lean": "986707a8ae7af3d163a992dc8c8b6c16f82224d3b19ad866124354b1ba69b1f5",
+    "research/RHRC/integration/opica_followup/continuation/2026-10-22/run_candidate_checks.py": "bd4eb604c9a40148af5ddbb245cc68015ffaff73884a424c0177fabc94346477"
+  },
+  "original_primary_delta": 0,
+  "full_review_seal": "UNSET",
+  "full_release_accepted": false,
+  "RH": "OPEN",
+  "Step4": "OPEN"
+}

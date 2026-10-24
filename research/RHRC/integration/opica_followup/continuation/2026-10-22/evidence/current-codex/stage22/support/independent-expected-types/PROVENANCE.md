@@ -1,0 +1,5 @@
+# Independent statement provenance
+
+The first version of ExpectedFullContracts.lean was written before any elaboration and without reading Validation.lean, its generated full-signature consumers, or the seven producer theorem statement blocks. The only producer content consulted was physical definitions/interfaces and declaration names. Source contracts consulted: frozen PUBLIC_ROOTS.json; BUILD_SPEC.md sections R1-HT2, R1-CT1, R2-H2b, J5.2/MS1 and paragraph 745; frozen paper A1--A3, HT2.1--HT2.3, CT1.1--CT1.3, R2-H2b. Source/drive definitions identify the literal native original-source family; near-gap definitions identify Jordan restrictions and actual dilated combs; finite-span definitions identify literal real/imaginary jet lists and coefficient sums.
+
+The statement file is copied and SHA256-sealed as ORIGINAL_PRE_ELABORATION.lean before the first native Lean invocation. Subsequent changes must be documented as interface/mathematical adaptations, retaining this first independently written version. No claim of human review, CI approval, or RH progress is made.

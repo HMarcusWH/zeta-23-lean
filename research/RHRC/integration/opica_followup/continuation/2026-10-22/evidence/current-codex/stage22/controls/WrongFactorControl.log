@@ -1,0 +1,6 @@
+C:\Users\macka\.codex\.chatgpt-projects\g-p-6a353c7268b08191b685956e466d73e4\work\opica-stage22\clean-controls\sources\WrongFactorControl.lean:7:2: error: Type mismatch
+  CT13Support.sinc_identity_original hL hlog
+has type
+  (nearGapCombFamily L).integral sincSquared = 2 * (Real.exp L - 1) / Real.exp L ^ (3 / 2)
+but is expected to have type
+  (nearGapCombFamily L).integral sincSquared = (Real.exp L - 1) / Real.exp L ^ (3 / 2)

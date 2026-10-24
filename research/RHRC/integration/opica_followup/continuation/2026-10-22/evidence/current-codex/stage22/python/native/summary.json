@@ -1,0 +1,76 @@
+{
+  "status": "PASS_TESTS_AND_FROZEN_REPLAY_ONLY",
+  "source_before": {
+    "head": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+    "tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+    "dirty": ""
+  },
+  "source_after": {
+    "head": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+    "tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+    "dirty": ""
+  },
+  "commands": [
+    {
+      "name": "child-normal",
+      "command": [
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\tools\\python-3.13.5-embed-amd64\\python.exe",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "research/RHRC/integration/opica_followup/tests",
+        "-p",
+        "test_*.py"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-10-24T18:11:16.958698+00:00",
+      "finished_at": "2026-10-24T18:12:06.231457+00:00",
+      "log": "child-normal.log",
+      "log_sha256": "38627769b62ee3eb51542a16f4d9e56836de8bebc98fd5292f82114546c273f7"
+    },
+    {
+      "name": "child-optimized",
+      "command": [
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\tools\\python-3.13.5-embed-amd64\\python.exe",
+        "-B",
+        "-O",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "research/RHRC/integration/opica_followup/tests",
+        "-p",
+        "test_*.py"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-10-24T18:12:06.231746+00:00",
+      "finished_at": "2026-10-24T18:12:49.562053+00:00",
+      "log": "child-optimized.log",
+      "log_sha256": "9b73a2a4afab70b42a5d8d27c5eec07075ade0e5c3252f7abcaac53ce2a69bed"
+    },
+    {
+      "name": "frozen-replay",
+      "command": [
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\tools\\python-3.13.5-embed-amd64\\python.exe",
+        "-B",
+        "research/RHRC/integration/opica_followup/replay_controls.py",
+        "--modes",
+        "normal",
+        "optimized",
+        "--include-numerical",
+        "--output-dir",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\record-validation\\native\\frozen"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-10-24T18:12:49.562179+00:00",
+      "finished_at": "2026-10-24T18:14:57.442288+00:00",
+      "log": "frozen-replay.log",
+      "log_sha256": "5712cc23631f494f65b223a13b68d5fb0ce56f7345b08be54cec70081c111761"
+    }
+  ],
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "release_accepted": false
+}

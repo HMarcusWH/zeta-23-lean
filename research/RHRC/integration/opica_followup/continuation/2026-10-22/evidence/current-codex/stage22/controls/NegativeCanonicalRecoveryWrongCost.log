@@ -1,0 +1,22 @@
+C:\Users\macka\.codex\.chatgpt-projects\g-p-6a353c7268b08191b685956e466d73e4\work\opica-stage22\clean-controls\sources\NegativeCanonicalRecoveryWrongCost.lean:31:4: error: Application type mismatch: The argument
+  orthogonalRecovery_norm_eq_optimalRecoveryCost P C ell hker
+has type
+  ‖orthogonalRecovery P C ell hker‖ = optimalRecoveryCost P C ell
+but is expected to have type
+  ‖orthogonalRecovery P C ell hker‖ =
+    sSup {q | ∃ x, (jointObservation P C) x ≠ 0 ∧ q = ‖ell x‖ / ‖(jointObservation P C) x‖} + 1
+in the application
+  And.intro (orthogonalRecovery_norm_eq_optimalRecoveryCost P C ell hker)
+'Zeta23.OPICAFollowup.Validation.expected_canonical_recovery' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.Validation.expected_filter_causal_actions' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.Validation.expected_followup_native_output' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.Validation.expected_followup_native_output_each_phase' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

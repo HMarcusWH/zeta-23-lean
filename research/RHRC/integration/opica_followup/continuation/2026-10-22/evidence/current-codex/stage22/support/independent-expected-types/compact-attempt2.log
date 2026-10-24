@@ -1,0 +1,16 @@
+../audit-independent-expected-types/CompactContinuousExtraction.lean:62:74: error: Application type mismatch: The argument
+  isClosed_tsupport
+has type
+  ∀ (f : ?m.83 → ?m.84), IsClosed[?m.86] (tsupport f)
+but is expected to have type
+  IsClosed (tsupport f)
+in the application
+  IsCompact.of_isClosed_subset isCompact_Icc isClosed_tsupport
+../audit-independent-expected-types/CompactContinuousExtraction.lean:63:74: error: Application type mismatch: The argument
+  isClosed_tsupport
+has type
+  ∀ (f : ?m.103 → ?m.104), IsClosed[?m.106] (tsupport f)
+but is expected to have type
+  IsClosed (tsupport g)
+in the application
+  IsCompact.of_isClosed_subset isCompact_Icc isClosed_tsupport

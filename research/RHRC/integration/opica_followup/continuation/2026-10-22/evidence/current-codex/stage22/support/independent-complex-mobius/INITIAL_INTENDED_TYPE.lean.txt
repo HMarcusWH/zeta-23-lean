@@ -1,0 +1,59 @@
+import Zeta23.OPICAFollowup.WeightedMixing
+
+noncomputable section
+open Set MeasureTheory Complex
+open scoped ENNReal
+open Zeta23.OPICA
+
+namespace Zeta23.OPICAFollowup.Validation
+
+/-- Independently packaged full complex weighted inverse contract.  The four
+coordinates belong to the actual physical mixture, rather than caller-supplied
+eta data.  Both complex coordinate equations and the absolute convolution
+integrals are retained. -/
+def independentlyIntendedComplexMobius
+    (sigma : LocallyFiniteComplexMeasure) (a : ℝ)
+    (ha : 1 / 2 < a) (hm : mixingExponentialMoment a sigma < ∞) : Prop :=
+  let physical := weightedDilationMixture sigma a ha.le hm
+  let etaReP := positiveLogMeasure physical.rePart.positive
+  let etaReN := positiveLogMeasure physical.rePart.negative
+  let etaImP := positiveLogMeasure physical.imPart.positive
+  let etaImN := positiveLogMeasure physical.imPart.negative
+  let absoluteMobius := moebiusPlusComb + moebiusMinusComb
+  -- eta = N * sigma, with BOTH real and imaginary coordinates.
+  (etaReP + integerLogComb ∗ sigma.rePart.negative =
+    etaReN + integerLogComb ∗ sigma.rePart.positive) ∧
+  (etaImP + integerLogComb ∗ sigma.imPart.negative =
+    etaImN + integerLogComb ∗ sigma.imPart.positive) ∧
+  -- sigma = M_mu * eta, with BOTH real and imaginary coordinates.
+  (sigma.rePart.positive +
+      (moebiusPlusComb ∗ etaReN + moebiusMinusComb ∗ etaReP) =
+    sigma.rePart.negative +
+      (moebiusPlusComb ∗ etaReP + moebiusMinusComb ∗ etaReN)) ∧
+  (sigma.imPart.positive +
+      (moebiusPlusComb ∗ etaImN + moebiusMinusComb ∗ etaImP) =
+    sigma.imPart.negative +
+      (moebiusPlusComb ∗ etaImP + moebiusMinusComb ∗ etaImN)) ∧
+  -- All physical input/output coordinates lie in the weighted algebra.
+  (∀ i : Fin 4, weightedLogNorm a (mixingCoordinate sigma i) < ∞) ∧
+  (∀ i : Fin 4, weightedLogNorm a
+    (positiveLogMeasure (mixingCoordinate physical i)) < ∞) ∧
+  -- Absolute weighted Fubini for every coordinate, including imaginary ones.
+  (∀ i : Fin 4, weightedLogNorm a
+    (absoluteMobius ∗ positiveLogMeasure (mixingCoordinate physical i)) < ∞) ∧
+  (∀ i : Fin 4,
+    (∫⁻ x, ∫⁻ y, ENNReal.ofReal (Real.exp (-a * (x + y)))
+      ∂(positiveLogMeasure (mixingCoordinate physical i)) ∂absoluteMobius) < ∞) ∧
+  -- The positive/negative physical Mobius combs form its Jordan pair.
+  (moebiusPlusComb ⟂ₘ moebiusMinusComb) ∧
+  -- Exact weighted variation norm, not merely an upper bound.
+  weightedLogNorm a absoluteMobius = ENNReal.ofReal
+    ((riemannZeta ((a + 1 / 2 : ℝ) : ℂ) /
+      riemannZeta ((2 * a + 1 : ℝ) : ℂ)).re)
+
+theorem expected_independent_complete_complex_mobius
+    (sigma : LocallyFiniteComplexMeasure) (a : ℝ)
+    (ha : 1 / 2 < a) (hm : mixingExponentialMoment a sigma < ∞) :
+    independentlyIntendedComplexMobius sigma a ha hm
+
+end Zeta23.OPICAFollowup.Validation

@@ -1,0 +1,43 @@
+C:\Users\macka\.codex\.chatgpt-projects\g-p-6a353c7268b08191b685956e466d73e4\work\audit-offcritical-real-basis\OffcriticalRealBasis.lean:28:35: warning: Try `simp at h1` instead of `simpa using h1`
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+C:\Users\macka\.codex\.chatgpt-projects\g-p-6a353c7268b08191b685956e466d73e4\work\audit-offcritical-real-basis\OffcriticalRealBasis.lean:92:32: warning: `ContinuousLinearMap.add_apply` has been deprecated: Use `add_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.add_apply` to `add_apply x`).
+C:\Users\macka\.codex\.chatgpt-projects\g-p-6a353c7268b08191b685956e466d73e4\work\audit-offcritical-real-basis\OffcriticalRealBasis.lean:92:62: warning: `ContinuousLinearMap.smul_apply` has been deprecated: Use `smul_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.smul_apply` to `smul_apply x`).
+C:\Users\macka\.codex\.chatgpt-projects\g-p-6a353c7268b08191b685956e466d73e4\work\audit-offcritical-real-basis\OffcriticalRealBasis.lean:93:6: warning: `ContinuousLinearMap.zero_apply` has been deprecated: Use `zero_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.zero_apply` to `zero_apply x`).
+C:\Users\macka\.codex\.chatgpt-projects\g-p-6a353c7268b08191b685956e466d73e4\work\audit-offcritical-real-basis\OffcriticalRealBasis.lean:98:32: warning: `ContinuousLinearMap.add_apply` has been deprecated: Use `add_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.add_apply` to `add_apply x`).
+C:\Users\macka\.codex\.chatgpt-projects\g-p-6a353c7268b08191b685956e466d73e4\work\audit-offcritical-real-basis\OffcriticalRealBasis.lean:98:62: warning: `ContinuousLinearMap.smul_apply` has been deprecated: Use `smul_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.smul_apply` to `smul_apply x`).
+C:\Users\macka\.codex\.chatgpt-projects\g-p-6a353c7268b08191b685956e466d73e4\work\audit-offcritical-real-basis\OffcriticalRealBasis.lean:99:6: warning: `ContinuousLinearMap.zero_apply` has been deprecated: Use `zero_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.zero_apply` to `zero_apply x`).
+C:\Users\macka\.codex\.chatgpt-projects\g-p-6a353c7268b08191b685956e466d73e4\work\audit-offcritical-real-basis\OffcriticalRealBasis.lean:109:4: error: linarith failed to find a contradiction
+case «1».h1
+ρ : ℂ
+hz : riemannZeta ρ = 0
+h0 : 0 < ρ.re
+h1 : ρ.re < 1
+hk : (spectralKappa ρ).im ≠ 0
+a : Fin 2 → ℝ
+ha : ∑ i, a i • (FiniteSpan.zeroJetRealSpan (canonicalBasis ρ i)).distributionOfLinearGrowth ⋯ = 0
+c : Fin 2 → ℂ := ![↑(a 0) - I * ↑(a 1), ↑(a 0) + I * ↑(a 1)]
+hcomplex :
+  let nodes := ![ρ, (starRingEnd ℂ) ρ];
+  have hz' := ⋯;
+  have h0' := ⋯;
+  have h1' := ⋯;
+  LinearIndependent ℂ fun i => (normalizedZeroMeasureJet (nodes i) 0).distributionOfLinearGrowth ⋯
+hc : ↑(a 0) - I * ↑(a 1) = 0
+hr : a 0 = 0
+hi : a 1 = 0
+a✝ : a ((fun i => i) ⟨1, ⋯⟩) < 0
+⊢ False
+failed

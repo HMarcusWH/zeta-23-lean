@@ -1,0 +1,760 @@
+{
+  "review_kind": "ACTUAL_NONAUTHOR_MATHEMATICAL_REVIEW",
+  "scope": "Read-only installed source review and pinned scratch/production evidence, not release approval",
+  "owner": {
+    "NearGapLimits": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\OPICAFollowup\\NearGapLimits.lean",
+      "sha256": "add140c0c5e9bb4c002d4a53d896f656dd380c13f526d44837de112c092f0a03",
+      "expected_sha256": "add140c0c5e9bb4c002d4a53d896f656dd380c13f526d44837de112c092f0a03"
+    },
+    "Validation": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\OPICAFollowup\\Validation.lean",
+      "sha256": "5c242bc9aca48ca2adac002b629fd5154bab6b09a11aa566f2e3bac2e507faa6",
+      "expected_sha256": "5c242bc9aca48ca2adac002b629fd5154bab6b09a11aa566f2e3bac2e507faa6"
+    },
+    "native_owner_build": "PASS_WARM_PRODUCTION_COMPLETE_SUPPORT_4548_JOBS",
+    "clean_final_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+    "clean_final_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+    "working_status": "",
+    "clean_44_consumer_replay": "RUNNING_NOT_COUNTED_AS_PASSED"
+  },
+  "ownerProofEvidence": {
+    "production_log_sha256": "2f38b93d9d0083129031b71baa75e9ab85d0c0a6380d18224ba043ac9bf0f4fa",
+    "production_log_success_4548_jobs": true,
+    "production_log_has_error": false,
+    "precommit_result_sha256": "12087cc56502c12104513fdcb529bb09fb107b5afc564f4b172801ab7bf601be",
+    "precommit_status": "PASS_PRECOMMIT_ONLY",
+    "source_unchanged": true,
+    "recorded_source_count": 1081,
+    "all_precommit_sources_still_match": true,
+    "checks": [
+      {
+        "name": "ExpectedIndependentFullContracts",
+        "exit_code": 0,
+        "axioms": {
+          "Zeta23.OPICAFollowup.IndependentExpected.expected_source_order_uniform_norms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICAFollowup.IndependentExpected.expected_native_field_theta_envelope": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICAFollowup.IndependentExpected.expected_near_gap_mass_bound": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICAFollowup.IndependentExpected.expected_near_gap_controlled_limit_zero": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICAFollowup.IndependentExpected.expected_dilation_near_gap_family": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICAFollowup.IndependentExpected.expected_dilation_normalized_limit_not_measure": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICAFollowup.IndependentExpected.expected_fixed_basis_negative_mass_budget": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICAFollowup.IndependentExpected.actual_basis_independence_iff_Jordan_kernel": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "Zeta23.OPICAFollowup.IndependentExpected.expected_controlled_uniform_tails": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        }
+      },
+      {
+        "name": "ExpectedCT1SincBudget",
+        "exit_code": 0,
+        "axioms": {
+          "OPICACT1SincBudgetIndependent.expected_ct13_original_pairing": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "OPICACT1SincBudgetIndependent.expected_ct13_jordan_masses": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "OPICACT1SincBudgetIndependent.expected_ct13_first_order_cost": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "OPICACT1SincBudgetIndependent.expected_ct13_second_order_cost": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "OPICACT1SincBudgetIndependent.expected_ct13_not_unit_gap": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        }
+      },
+      {
+        "name": "ExpectedCompactContinuousExtraction",
+        "exit_code": 0,
+        "axioms": {
+          "Zeta23.OPICAFollowup.IndependentCompactExtractionConsumer.expected_full_HT2_compact_continuous_extraction": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        }
+      }
+    ],
+    "scope": "Production build and three standalone native consumers on preserved precommit source bytes; warm dependencies; clean44 replay and cold aggregate protocol remain separate."
+  },
+  "archives": [
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-independent-expected-types\\HT2_COMPACT_CONTINUOUS_EXTRACTION_2026-10-24.zip",
+      "sha256": "cbc9ed21a69cbf1f95a2bb9d310d9ef55632a4e82c8c171009414ad67b009cd1"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-ct13\\OPICA_CT13_SINC_BUDGET_2026-10-24.zip",
+      "sha256": "69039c8f1c8f36871421ba3b4a542dfce326ea080c98a7e7b15ed5353b118273"
+    }
+  ],
+  "cc_receipt_sha256": "5ef5cf6895d2204c3c258a2db546310e3ca6adaf0889d6f2cd1b082a99a75e6c",
+  "ct_receipt_sha256": "b0440b6e6df891092f5c4585a081817b8f8241418d8ec3b344bb29b379423c00",
+  "allCcProducerFilesMatch": true,
+  "allCtProducerFilesMatch": true,
+  "ccChecks": [
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-independent-expected-types\\CompactContinuousExtraction.lean",
+      "recorded_sha256": "65759fc7d1ebc2d0056b56e73a9afaf8b31f9632d00d0300ab9d725ae91dc093",
+      "actual_sha256": "65759fc7d1ebc2d0056b56e73a9afaf8b31f9632d00d0300ab9d725ae91dc093",
+      "matches": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-independent-expected-types\\CompactContinuousExtraction.olean",
+      "recorded_sha256": "b7599bec3a7d2bdb48f0485d720d0d706920cc32e345351cf633ed0af94f36bd",
+      "actual_sha256": "b7599bec3a7d2bdb48f0485d720d0d706920cc32e345351cf633ed0af94f36bd",
+      "matches": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-independent-expected-types\\ExpectedCompactContinuousExtraction.lean",
+      "recorded_sha256": "20ede7c2007f36d37ff5fab91a9534ec88d7559f9c93ed1f462897d8351641e5",
+      "actual_sha256": "20ede7c2007f36d37ff5fab91a9534ec88d7559f9c93ed1f462897d8351641e5",
+      "matches": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-independent-expected-types\\ExpectedCompactContinuousExtraction.olean",
+      "recorded_sha256": "7135af85d7f12024fba0f50044b2842ced290418e864859e089f0664e2e0082f",
+      "actual_sha256": "7135af85d7f12024fba0f50044b2842ced290418e864859e089f0664e2e0082f",
+      "matches": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-independent-expected-types\\ExpectedCompactContinuousExtraction.setup.json",
+      "recorded_sha256": "1812b0786e96b1c06327a793d02bd50714a484101b197e13a34fd9dbffafae4f",
+      "actual_sha256": "1812b0786e96b1c06327a793d02bd50714a484101b197e13a34fd9dbffafae4f",
+      "matches": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-independent-expected-types\\ExpectedCompactContinuousExtractionProduction.lean",
+      "recorded_sha256": "2a403187ff1e3a96c5ef2cf4d4dc40ed3ba8b760c7981e36bd21769af76d6c9f",
+      "actual_sha256": "2a403187ff1e3a96c5ef2cf4d4dc40ed3ba8b760c7981e36bd21769af76d6c9f",
+      "matches": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-independent-expected-types\\NearGapLimitsCompactExtraction.append.lean",
+      "recorded_sha256": "f4f11c2b31a2f70dbff00ae5b4e7154b31dadc0d98a27c2019a3d6f931eb6ca0",
+      "actual_sha256": "f4f11c2b31a2f70dbff00ae5b4e7154b31dadc0d98a27c2019a3d6f931eb6ca0",
+      "matches": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-independent-expected-types\\NegativeNoCommonBudget.lean",
+      "recorded_sha256": "bac9ae8d548269fc83c53a3ed3a47a9a5cd1cedfe12e579aa75315d4db97ccdb",
+      "actual_sha256": "bac9ae8d548269fc83c53a3ed3a47a9a5cd1cedfe12e579aa75315d4db97ccdb",
+      "matches": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-independent-expected-types\\NegativeNoCommonBudget.setup.json",
+      "recorded_sha256": "319c0211c3dc6c0d2e981af8e727b57db654a639f2f0719ba0a23216811394d1",
+      "actual_sha256": "319c0211c3dc6c0d2e981af8e727b57db654a639f2f0719ba0a23216811394d1",
+      "matches": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-independent-expected-types\\compact-attempt1.log",
+      "recorded_sha256": "f1b90d4d21cdeea225db357ac43f5cc16b82c100d0f5be44eff81616a2f919f9",
+      "actual_sha256": "f1b90d4d21cdeea225db357ac43f5cc16b82c100d0f5be44eff81616a2f919f9",
+      "matches": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-independent-expected-types\\compact-attempt2.log",
+      "recorded_sha256": "c8925b001b3cb8adc4035fe1a9fa8299b72542a3e134a409806699e1893a2b02",
+      "actual_sha256": "c8925b001b3cb8adc4035fe1a9fa8299b72542a3e134a409806699e1893a2b02",
+      "matches": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-independent-expected-types\\compact-attempt3.log",
+      "recorded_sha256": "06bce2db0b0cbf08db0271bcec35645417378feffd2bfa3ed3bf3a634fcc936d",
+      "actual_sha256": "06bce2db0b0cbf08db0271bcec35645417378feffd2bfa3ed3bf3a634fcc936d",
+      "matches": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-independent-expected-types\\compact-positive-consumer.log",
+      "recorded_sha256": "45657169524ec001cb5d076b388ca597e407e62349b19ea9e7d5375e91cd4cd4",
+      "actual_sha256": "45657169524ec001cb5d076b388ca597e407e62349b19ea9e7d5375e91cd4cd4",
+      "matches": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-independent-expected-types\\compact-negative-no-common-budget.log",
+      "recorded_sha256": "7ede6783e2369da7e6dc938219b512815ccb9c655537895f012c0c6ccff64ad8",
+      "actual_sha256": "7ede6783e2369da7e6dc938219b512815ccb9c655537895f012c0c6ccff64ad8",
+      "matches": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-independent-expected-types\\HT2_COMPACT_EXTRACTION_README.md",
+      "recorded_sha256": "eda904eaf0792500265d25307fe10499aacc976eff83b4ef48ea159a919e4ec8",
+      "actual_sha256": "eda904eaf0792500265d25307fe10499aacc976eff83b4ef48ea159a919e4ec8",
+      "matches": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-independent-expected-types\\seal_compact_extraction.py",
+      "recorded_sha256": "386983dbab7310a8cb29eb01715409a1da53b6c1f17583ee114cae4ed7dd19b1",
+      "actual_sha256": "386983dbab7310a8cb29eb01715409a1da53b6c1f17583ee114cae4ed7dd19b1",
+      "matches": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-independent-expected-types\\ExpectedFullContracts.lean",
+      "recorded_sha256": "c7e5936ff169cafa803cd31282ef5a5b4efa56b01675903f4ab306e4dd94ab15",
+      "actual_sha256": "c7e5936ff169cafa803cd31282ef5a5b4efa56b01675903f4ab306e4dd94ab15",
+      "matches": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-independent-expected-types\\ORIGINAL_PRE_ELABORATION.lean",
+      "recorded_sha256": "3e9dedc694dbe6c32b9db82842456064bd1eddce50c5bca84c18067b2011f414",
+      "actual_sha256": "3e9dedc694dbe6c32b9db82842456064bd1eddce50c5bca84c18067b2011f414",
+      "matches": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-independent-expected-types\\INDEPENDENT_EXPECTED_CONSUMERS_RECEIPT.json",
+      "recorded_sha256": "959adba7d5748e66e8a292a0471a7bbf2abec5560e7f5c623b5c9efeaa1378cd",
+      "actual_sha256": "959adba7d5748e66e8a292a0471a7bbf2abec5560e7f5c623b5c9efeaa1378cd",
+      "matches": true
+    }
+  ],
+  "ctChecks": [
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-ct13\\API.lean",
+      "recorded_sha256": "a98c6c94dced5592f799a6023c66d387def2eeaefb72edb104ac9b95e6086426",
+      "actual_sha256": "a98c6c94dced5592f799a6023c66d387def2eeaefb72edb104ac9b95e6086426",
+      "matches": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-ct13\\API.log",
+      "recorded_sha256": "b720c8043a9ddec34f3742e65e912c00121bbfd1316c857d8abb2ba13b8dbcfc",
+      "actual_sha256": "b720c8043a9ddec34f3742e65e912c00121bbfd1316c857d8abb2ba13b8dbcfc",
+      "matches": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-ct13\\API.receipt.json",
+      "recorded_sha256": "6ac6e7d41e84886297259bbbd94a3aeda63879f89c4559734baa6647a216e9b4",
+      "actual_sha256": "6ac6e7d41e84886297259bbbd94a3aeda63879f89c4559734baa6647a216e9b4",
+      "matches": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-ct13\\assemble_production.py",
+      "recorded_sha256": "9f3f4410890024845a37c536d916195e88a3d6c21f6d9778487c42df0f558239",
+      "actual_sha256": "9f3f4410890024845a37c536d916195e88a3d6c21f6d9778487c42df0f558239",
+      "matches": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-ct13\\compile.py",
+      "recorded_sha256": "9b9490eab22d1082a986125b53b231d526dc1ea9968fe70b1ad13e2863ac3a14",
+      "actual_sha256": "9b9490eab22d1082a986125b53b231d526dc1ea9968fe70b1ad13e2863ac3a14",
+      "matches": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-ct13\\CT13.failed-v1.lean.txt",
+      "recorded_sha256": "608f115bba17efd8e8cff3aa9089889151305ef8f67066d8d994849bb31b74b3",
+      "actual_sha256": "608f115bba17efd8e8cff3aa9089889151305ef8f67066d8d994849bb31b74b3",
+      "matches": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-ct13\\CT13.failed-v1.log",
+      "recorded_sha256": "2957fd4841c5f3def5b4e7458d582d98a32eb0e20c3eeecdef5e2294d764bf66",
+      "actual_sha256": "2957fd4841c5f3def5b4e7458d582d98a32eb0e20c3eeecdef5e2294d764bf66",
+      "matches": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-ct13\\CT13.failed-v1.receipt.json",
+      "recorded_sha256": "e4694139b930de23cbc7c4fb91710a7f2379af75229623a7807ecc6e2a130269",
+      "actual_sha256": "e4694139b930de23cbc7c4fb91710a7f2379af75229623a7807ecc6e2a130269",
+      "matches": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-ct13\\CT13.lean",
+      "recorded_sha256": "a6f8a1a3b9552efa2a1f6a9d3bcb2d4e7a62840fc4f9d79770bab85d128161b3",
+      "actual_sha256": "a6f8a1a3b9552efa2a1f6a9d3bcb2d4e7a62840fc4f9d79770bab85d128161b3",
+      "matches": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-ct13\\CT13.log",
+      "recorded_sha256": "9596c1051eda472c920f7580d0a251302dbf72984a02873cb14ce2d603d92b52",
+      "actual_sha256": "9596c1051eda472c920f7580d0a251302dbf72984a02873cb14ce2d603d92b52",
+      "matches": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-ct13\\CT13.receipt.json",
+      "recorded_sha256": "0a6379d0fb6d4dabaf59163cd5022400cf8608ea31f4f41e001e50ff655282cd",
+      "actual_sha256": "0a6379d0fb6d4dabaf59163cd5022400cf8608ea31f4f41e001e50ff655282cd",
+      "matches": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-ct13\\CT13Limits.failed-v1.lean.txt",
+      "recorded_sha256": "4f7b8f7f3a0a74734743b8ea5f4bbd5924220bc0453b3ed34fce768d5e20c417",
+      "actual_sha256": "4f7b8f7f3a0a74734743b8ea5f4bbd5924220bc0453b3ed34fce768d5e20c417",
+      "matches": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-ct13\\CT13Limits.failed-v1.log",
+      "recorded_sha256": "e728713b5b7e2e2068237e6d65d29a27a1963d328ec20b87a249bc2404fcc1c4",
+      "actual_sha256": "e728713b5b7e2e2068237e6d65d29a27a1963d328ec20b87a249bc2404fcc1c4",
+      "matches": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-ct13\\CT13Limits.failed-v1.receipt.json",
+      "recorded_sha256": "42211f811c809aa7db121d4de8b7b82862453c33173804b6f97745a1579f7e0e",
+      "actual_sha256": "42211f811c809aa7db121d4de8b7b82862453c33173804b6f97745a1579f7e0e",
+      "matches": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-ct13\\CT13Limits.failed-v2.lean.txt",
+      "recorded_sha256": "93b9c461b3a4a86432f5aa33966df81ff75634d014a7c353b6a1a1a45ccc7e92",
+      "actual_sha256": "93b9c461b3a4a86432f5aa33966df81ff75634d014a7c353b6a1a1a45ccc7e92",
+      "matches": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-ct13\\CT13Limits.failed-v2.log",
+      "recorded_sha256": "2de11ab1210f6be0a7b1016128f4dc64dc006083b72559c3a50e80c2d6969caf",
+      "actual_sha256": "2de11ab1210f6be0a7b1016128f4dc64dc006083b72559c3a50e80c2d6969caf",
+      "matches": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-ct13\\CT13Limits.failed-v2.receipt.json",
+      "recorded_sha256": "08726a2bd0eb902303df676c08d0517f6d53782c414f4e9a911aced25279c753",
+      "actual_sha256": "08726a2bd0eb902303df676c08d0517f6d53782c414f4e9a911aced25279c753",
+      "matches": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-ct13\\CT13Limits.failed-v3.lean.txt",
+      "recorded_sha256": "751fad0ade14e61bc2fcafea5e73c43f219f7c165c2a45630e8d64df7bc8ff80",
+      "actual_sha256": "751fad0ade14e61bc2fcafea5e73c43f219f7c165c2a45630e8d64df7bc8ff80",
+      "matches": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-ct13\\CT13Limits.failed-v3.log",
+      "recorded_sha256": "c1d9b18b5ece038e3d6cd76acf05244d4e8df56cb98cf73021398eb3d0891619",
+      "actual_sha256": "c1d9b18b5ece038e3d6cd76acf05244d4e8df56cb98cf73021398eb3d0891619",
+      "matches": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-ct13\\CT13Limits.failed-v3.receipt.json",
+      "recorded_sha256": "c94880f5715c1487ce9740db82eb0ffba55b6ad78e49e14ab40394bee48a7e0a",
+      "actual_sha256": "c94880f5715c1487ce9740db82eb0ffba55b6ad78e49e14ab40394bee48a7e0a",
+      "matches": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-ct13\\CT13Limits.lean",
+      "recorded_sha256": "7b553738734e3f55f7ad65ffebe9a4958c8a0af59c41397677522463648c1c2c",
+      "actual_sha256": "7b553738734e3f55f7ad65ffebe9a4958c8a0af59c41397677522463648c1c2c",
+      "matches": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-ct13\\CT13Limits.log",
+      "recorded_sha256": "ec58e9b4922acf8351b2fdf3bec463d48517b7d7eff39a6db35090a1bd3fa4f9",
+      "actual_sha256": "ec58e9b4922acf8351b2fdf3bec463d48517b7d7eff39a6db35090a1bd3fa4f9",
+      "matches": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-ct13\\CT13Limits.receipt.json",
+      "recorded_sha256": "567152279e181691c9522d1fd271b7944a4943f26ac5011cbe5ac6af45dd5f02",
+      "actual_sha256": "567152279e181691c9522d1fd271b7944a4943f26ac5011cbe5ac6af45dd5f02",
+      "matches": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-ct13\\ExpectedCT1SincBudget.failed-v1.lean.txt",
+      "recorded_sha256": "836360e3c7f993f105e0807608b4dcada9006f49d367cbb62edf25d491c61faf",
+      "actual_sha256": "836360e3c7f993f105e0807608b4dcada9006f49d367cbb62edf25d491c61faf",
+      "matches": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-ct13\\ExpectedCT1SincBudget.failed-v1.log",
+      "recorded_sha256": "62db2f093246267199732e9bfe71ef946f40dc9a581c3b3d19c915abc6d27f62",
+      "actual_sha256": "62db2f093246267199732e9bfe71ef946f40dc9a581c3b3d19c915abc6d27f62",
+      "matches": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-ct13\\ExpectedCT1SincBudget.failed-v1.receipt.json",
+      "recorded_sha256": "70b3b3a1f9363c067042c430283112ab8da0db51d7718d3d840c03e239fe2210",
+      "actual_sha256": "70b3b3a1f9363c067042c430283112ab8da0db51d7718d3d840c03e239fe2210",
+      "matches": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-ct13\\ExpectedCT1SincBudget.lean",
+      "recorded_sha256": "e43ba7f1663cf8cb2d3dbaa2e4609a9611668794b212169347ad623621822a26",
+      "actual_sha256": "e43ba7f1663cf8cb2d3dbaa2e4609a9611668794b212169347ad623621822a26",
+      "matches": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-ct13\\ExpectedCT1SincBudget.log",
+      "recorded_sha256": "9e08ee15f1b92185871e51c3142c90212b08f55640253d9a70e02da96b6012ca",
+      "actual_sha256": "9e08ee15f1b92185871e51c3142c90212b08f55640253d9a70e02da96b6012ca",
+      "matches": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-ct13\\ExpectedCT1SincBudget.receipt.json",
+      "recorded_sha256": "c6d8f0d8e1dabdaec5a4f99983723bb9393c497a486528bca1091608ce8fa9a7",
+      "actual_sha256": "c6d8f0d8e1dabdaec5a4f99983723bb9393c497a486528bca1091608ce8fa9a7",
+      "matches": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-ct13\\ExpectedCT1SincBudgetProduction.lean",
+      "recorded_sha256": "fb3e4d769e45309d030f18263aa6ea9a711e7362956294214384acd577752f33",
+      "actual_sha256": "fb3e4d769e45309d030f18263aa6ea9a711e7362956294214384acd577752f33",
+      "matches": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-ct13\\NearGapCT13Append.lean.txt",
+      "recorded_sha256": "5113880adedf9a4154af79e117c10b85302caa668b0752e9e43600bc9ab074fd",
+      "actual_sha256": "5113880adedf9a4154af79e117c10b85302caa668b0752e9e43600bc9ab074fd",
+      "matches": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-ct13\\negative-controls.json",
+      "recorded_sha256": "5cd02a20613de184f3ab205d099efdeefcc026a3a4b1855dbcde9fae441921bf",
+      "actual_sha256": "5cd02a20613de184f3ab205d099efdeefcc026a3a4b1855dbcde9fae441921bf",
+      "matches": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-ct13\\POST_GREEN_CT13_2026-10-24.md",
+      "recorded_sha256": "f46d5e2a74362f78b0987ef6d0b3b8258e58f183bf1bce9a50faf74db9fab8c7",
+      "actual_sha256": "f46d5e2a74362f78b0987ef6d0b3b8258e58f183bf1bce9a50faf74db9fab8c7",
+      "matches": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-ct13\\production-append-proposal.json",
+      "recorded_sha256": "e552a3027a28a1f94a1c28509838458e6422241810fc048b2e5600aa0ef42bfa",
+      "actual_sha256": "e552a3027a28a1f94a1c28509838458e6422241810fc048b2e5600aa0ef42bfa",
+      "matches": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-ct13\\run_controls.py",
+      "recorded_sha256": "8e41b6554536b96d9597d32362ecec2b63a8c16b4cf84a0f93a4f619e0bd056c",
+      "actual_sha256": "8e41b6554536b96d9597d32362ecec2b63a8c16b4cf84a0f93a4f619e0bd056c",
+      "matches": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-ct13\\seal.py",
+      "recorded_sha256": "dd81ebbc8ebee6cdbf7eb71d7aa888c921c558e8e3dbe23d93f78e56267f2032",
+      "actual_sha256": "dd81ebbc8ebee6cdbf7eb71d7aa888c921c558e8e3dbe23d93f78e56267f2032",
+      "matches": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-ct13\\sealed-receipt.json",
+      "recorded_sha256": "b0440b6e6df891092f5c4585a081817b8f8241418d8ec3b344bb29b379423c00",
+      "actual_sha256": "b0440b6e6df891092f5c4585a081817b8f8241418d8ec3b344bb29b379423c00",
+      "matches": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-ct13\\WrongFactorControl.lean",
+      "recorded_sha256": "4281f8ae48238583187b622d04c9aaad4f6f758da430134c4c2f1e4222197e7b",
+      "actual_sha256": "4281f8ae48238583187b622d04c9aaad4f6f758da430134c4c2f1e4222197e7b",
+      "matches": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-ct13\\WrongFactorControl.log",
+      "recorded_sha256": "35f3a7231915ece8e82eb0251f544bab85dd82834b16b531abb6b152a38fb507",
+      "actual_sha256": "35f3a7231915ece8e82eb0251f544bab85dd82834b16b531abb6b152a38fb507",
+      "matches": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-ct13\\WrongFactorControl.receipt.json",
+      "recorded_sha256": "4c6eb6e8a66da3a2d54ad9df302c90ab481890312c2cee83ea2f99b372eb403c",
+      "actual_sha256": "4c6eb6e8a66da3a2d54ad9df302c90ab481890312c2cee83ea2f99b372eb403c",
+      "matches": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-ct13\\WrongSlopeControl.lean",
+      "recorded_sha256": "842ba28c1c5525ac4af74cc223d38008b1339ef89f7142261c24c8c8b1c54976",
+      "actual_sha256": "842ba28c1c5525ac4af74cc223d38008b1339ef89f7142261c24c8c8b1c54976",
+      "matches": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-ct13\\WrongSlopeControl.log",
+      "recorded_sha256": "c36c6e437fd4418dbeeaa22a70cd1189b3febed2042733e0274d9b5581e558ce",
+      "actual_sha256": "c36c6e437fd4418dbeeaa22a70cd1189b3febed2042733e0274d9b5581e558ce",
+      "matches": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-ct13\\WrongSlopeControl.receipt.json",
+      "recorded_sha256": "a7cbf39a25edd454c2eb90ba2dcbdb3807688ec43e8978c2a1158dc1ed26ae4d",
+      "actual_sha256": "a7cbf39a25edd454c2eb90ba2dcbdb3807688ec43e8978c2a1158dc1ed26ae4d",
+      "matches": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-ct13\\production-overlay\\Zeta23\\OPICAFollowup\\NearGapLimits.lean",
+      "recorded_sha256": "a3e9dbeafb2104d32b33301b083af6684650180343be97db08d33e5ccf7e9aa7",
+      "actual_sha256": "a3e9dbeafb2104d32b33301b083af6684650180343be97db08d33e5ccf7e9aa7",
+      "matches": true
+    }
+  ],
+  "logs": [
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-independent-expected-types\\compact-attempt3.log",
+      "sha256": "06bce2db0b0cbf08db0271bcec35645417378feffd2bfa3ed3bf3a634fcc936d",
+      "producer_recorded_exit_code": 0,
+      "has_compiler_error": false,
+      "closures": [
+        {
+          "name": "Zeta23.OPICAFollowup.IndependentCompactExtraction.compact_continuous_schwartz_approximation",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "Zeta23.OPICAFollowup.IndependentCompactExtraction.compact_pairing_difference_bound",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "Zeta23.OPICAFollowup.IndependentCompactExtraction.schwartz_zero_implies_compact_continuous_zero",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "Zeta23.OPICAFollowup.IndependentCompactExtraction.expected_near_gap_compact_continuous_limit_zero",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "Zeta23.OPICAFollowup.IndependentCompactExtraction.expected_near_gap_genuine_zero_measure_extraction",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        }
+      ],
+      "all_printed_closures_standard_only": true,
+      "classification": "POSITIVE_WARM_FORMAL_VALIDITY"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-independent-expected-types\\compact-positive-consumer.log",
+      "sha256": "45657169524ec001cb5d076b388ca597e407e62349b19ea9e7d5375e91cd4cd4",
+      "producer_recorded_exit_code": 0,
+      "has_compiler_error": false,
+      "closures": [
+        {
+          "name": "Zeta23.OPICAFollowup.IndependentCompactExtractionConsumer.expected_full_HT2_compact_continuous_extraction",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        }
+      ],
+      "all_printed_closures_standard_only": true,
+      "classification": "POSITIVE_WARM_FORMAL_VALIDITY"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-independent-expected-types\\compact-negative-no-common-budget.log",
+      "sha256": "7ede6783e2369da7e6dc938219b512815ccb9c655537895f012c0c6ccff64ad8",
+      "producer_recorded_exit_code": 1,
+      "has_compiler_error": true,
+      "closures": [],
+      "all_printed_closures_standard_only": true,
+      "classification": "EXPECTED_COMPILER_REJECTION_NOT_PROOF_AUTHORITY"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-ct13\\CT13.log",
+      "sha256": "9596c1051eda472c920f7580d0a251302dbf72984a02873cb14ce2d603d92b52",
+      "producer_recorded_exit_code": 0,
+      "has_compiler_error": false,
+      "closures": [
+        {
+          "name": "Zeta23.OPICAFollowup.CT13Support.triangle_identity",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "Zeta23.OPICAFollowup.CT13Support.sinc_identity",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "Zeta23.OPICAFollowup.CT13Support.positive_sinc_mass",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        }
+      ],
+      "all_printed_closures_standard_only": true,
+      "classification": "POSITIVE_WARM_FORMAL_VALIDITY"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-ct13\\CT13Limits.log",
+      "sha256": "ec58e9b4922acf8351b2fdf3bec463d48517b7d7eff39a6db35090a1bd3fa4f9",
+      "producer_recorded_exit_code": 0,
+      "has_compiler_error": false,
+      "closures": [
+        {
+          "name": "Zeta23.OPICAFollowup.CT13Support.sinc_identity_original",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "Zeta23.OPICAFollowup.CT13Support.positive_sinc_mass_slope",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "Zeta23.OPICAFollowup.CT13Support.positive_sinc_mass_normalization_cost",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        }
+      ],
+      "all_printed_closures_standard_only": true,
+      "classification": "POSITIVE_WARM_FORMAL_VALIDITY"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-ct13\\ExpectedCT1SincBudget.log",
+      "sha256": "9e08ee15f1b92185871e51c3142c90212b08f55640253d9a70e02da96b6012ca",
+      "producer_recorded_exit_code": 0,
+      "has_compiler_error": false,
+      "closures": [
+        {
+          "name": "OPICACT1SincBudgetIndependent.expected_ct13_original_pairing",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "OPICACT1SincBudgetIndependent.expected_ct13_jordan_masses",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "OPICACT1SincBudgetIndependent.expected_ct13_first_order_cost",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "OPICACT1SincBudgetIndependent.expected_ct13_second_order_cost",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "OPICACT1SincBudgetIndependent.expected_ct13_not_unit_gap",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        }
+      ],
+      "all_printed_closures_standard_only": true,
+      "classification": "POSITIVE_WARM_FORMAL_VALIDITY"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-ct13\\WrongFactorControl.log",
+      "sha256": "35f3a7231915ece8e82eb0251f544bab85dd82834b16b531abb6b152a38fb507",
+      "producer_recorded_exit_code": 1,
+      "has_compiler_error": true,
+      "closures": [],
+      "all_printed_closures_standard_only": true,
+      "classification": "EXPECTED_COMPILER_REJECTION_NOT_PROOF_AUTHORITY"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-ct13\\WrongSlopeControl.log",
+      "sha256": "c36c6e437fd4418dbeeaa22a70cd1189b3febed2042733e0274d9b5581e558ce",
+      "producer_recorded_exit_code": 1,
+      "has_compiler_error": true,
+      "closures": [],
+      "all_printed_closures_standard_only": true,
+      "classification": "EXPECTED_COMPILER_REJECTION_NOT_PROOF_AUTHORITY"
+    }
+  ],
+  "identity": {
+    "old_source_sha256": "300aba8c18e0079c7df0b02dd804ed3d2dc266dacd18930c7bab962cf7dd8b35",
+    "old_expected_sha256": "300aba8c18e0079c7df0b02dd804ed3d2dc266dacd18930c7bab962cf7dd8b35",
+    "old_source_offset_bytes": 59,
+    "old_body_exact_after_single_new_import": true,
+    "CT13_append_exact_normalized": true,
+    "Cc_append_exact_normalized": true,
+    "Cc_Validation_consumer_exact_after_namespace_import_adaptation": true,
+    "CT13_Validation_consumers_exact_after_namespace_import_adaptation": true,
+    "independent_expected_source_unchanged": true
+  },
+  "topology_disposition": "PRIOR_Cc_FINDING_CLOSED_MATHEMATICALLY_AT_EXACT_CLEAN_INSTALLED_SOURCES_WITH_NATIVE_PROOFS",
+  "CT13_disposition": "EXACT_FROZEN_SINC_TRIANGLE_CHECK_AND_POSITIVE_SINC_NORMALIZATION_COST_PROVED_AND_INSTALLED_WITH_NATIVE_REPLAY",
+  "owner_compilation_disposition": "PASS_WARM_PRODUCTION_SUPPORT_REPLAY_NOT_COLD_AGGREGATE",
+  "human_review": "NOT_ESTABLISHED",
+  "seal_created": false,
+  "new_primary_roots": 0,
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "independent_closing_inequalities": "OPEN",
+  "aggregate": "OPEN",
+  "full_release": "OPEN"
+}

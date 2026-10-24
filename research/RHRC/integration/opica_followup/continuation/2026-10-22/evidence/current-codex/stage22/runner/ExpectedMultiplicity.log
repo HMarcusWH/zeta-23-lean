@@ -1,0 +1,33 @@
+'Zeta23.OPICAFollowup.laguerre_tail_norm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.OPICAFollowup.monicLaguerre_exact_norm_sq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.OPICAFollowup.monicLaguerre_orthogonality' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.OPICAFollowup.laguerre_iterated_ibp' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.OPICAFollowup.monicLaguerreTail_integral_norm_sq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.OPICAFollowup.native_auxiliary_top_moment' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.OPICAFollowup.native_auxiliary_tail_residual_lower' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.OPICAFollowup.native_terminal_memory_lower' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.OPICAFollowup.Validation.expected_native_auxiliary_top_moment' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.nativeAuxiliaryInput_completedPrime' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.OPICAFollowup.nativeAuxiliaryInputLaplace_eq_continuation' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.Validation.expected_actual_logweighted_drive' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.Validation.expected_actual_auxiliary_integrand' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.Validation.expected_actual_auxiliary_safe_laplace' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.Validation.expected_actual_simple_zero_phase' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.Validation.expected_native_auxiliary_tail_residual_lower' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.Validation.expected_native_terminal_memory_lower' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

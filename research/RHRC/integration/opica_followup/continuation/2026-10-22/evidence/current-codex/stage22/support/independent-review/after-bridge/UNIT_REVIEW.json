@@ -1,0 +1,822 @@
+{
+  "review_kind": "ACTUAL_NONAUTHOR_MATHEMATICAL_CONTRACT_REVIEW",
+  "review_status": "COMPLETED_NO_ADDITIONAL_MATHEMATICAL_CONTRACT_GAP_FOUND_IN_PINNED_CANDIDATE_PLUS_BRIDGE",
+  "human_review": "NOT_ESTABLISHED",
+  "seal_created": false,
+  "owner_head": "139c1a0d88cc0fb2d8a0d8ea71e152b25b14c36e",
+  "owner_tree": "3e63b0c72fc04da7bab45388d6096e82e95c4acb",
+  "all100_root_source_present": true,
+  "all100_required_expected_consumers_present": true,
+  "canonical_definitions": 83,
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "independent_closing_inequalities": "OPEN",
+  "aggregate": "OPEN",
+  "full_release": "OPEN",
+  "units": [
+    {
+      "paper_id": "R1-NB1",
+      "title": "Concrete finite native transformation word",
+      "paper_location": "Part IV / NB1",
+      "source_premises": "Finite actual generator identities; off-line actual zero of arbitrary finite multiplicity; correction ledger retained.",
+      "source_conclusion": "Corrected order p*m-1 and explicit nonzero leading coefficient.",
+      "source_scope": "Expands a specified native instantiation; not a universal no-go or independent exclusion.",
+      "source_authority": "DERIVED_PAPER_SELF_AUDIT",
+      "required_roots": [
+        "Zeta23.OPICAFollowup.sourceFamily_zero_eq_original",
+        "Zeta23.OPICAFollowup.sourceFamily_support_smooth_moments",
+        "Zeta23.OPICAFollowup.sourceFamily_laplace_identity",
+        "Zeta23.OPICAFollowup.nativePrimeField_visiblePole",
+        "Zeta23.OPICAFollowup.nativeGenerator_transform",
+        "Zeta23.OPICAFollowup.nativeGenerator_unit_or_completion",
+        "Zeta23.OPICAFollowup.nativeWord_corrected_transform",
+        "Zeta23.OPICAFollowup.nativeWord_order_and_leading",
+        "Zeta23.OPICAFollowup.nativeWord_first_nonzero_derivative",
+        "Zeta23.OPICAFollowup.nativeWord_factor_costs",
+        "Zeta23.OPICAFollowup.nativeWord_contour_consumer",
+        "Zeta23.OPICAFollowup.step123_word_jet_consumer"
+      ],
+      "coverage": "All source conclusion subclauses plus stated premises, source identities, domains and adverse controls. Presence/name-only coverage is insufficient.",
+      "status": "NONAUTHOR_FROZEN_UNIT_REVIEWED_NO_ADDITIONAL_MATHEMATICAL_GAP_FOUND",
+      "review_note": "Literal source and actual weak causal generator states; finite words preserve affine histories and arbitrary zero multiplicity. Optional contour cost remains explicit.",
+      "root_review_names": [
+        "Zeta23.OPICAFollowup.sourceFamily_zero_eq_original",
+        "Zeta23.OPICAFollowup.sourceFamily_support_smooth_moments",
+        "Zeta23.OPICAFollowup.sourceFamily_laplace_identity",
+        "Zeta23.OPICAFollowup.nativePrimeField_visiblePole",
+        "Zeta23.OPICAFollowup.nativeGenerator_transform",
+        "Zeta23.OPICAFollowup.nativeGenerator_unit_or_completion",
+        "Zeta23.OPICAFollowup.nativeWord_corrected_transform",
+        "Zeta23.OPICAFollowup.nativeWord_order_and_leading",
+        "Zeta23.OPICAFollowup.nativeWord_first_nonzero_derivative",
+        "Zeta23.OPICAFollowup.nativeWord_factor_costs",
+        "Zeta23.OPICAFollowup.nativeWord_contour_consumer",
+        "Zeta23.OPICAFollowup.step123_word_jet_consumer"
+      ],
+      "acceptance": "NO_UNIT_ACCEPTANCE_SEAL_CREATED"
+    },
+    {
+      "paper_id": "R1-AT1",
+      "title": "Norm-first arithmetic rate transfer",
+      "paper_location": "Part IV / AT1",
+      "source_premises": "Exact F=S+B, real Q=norm(B)^2-L, common positive cofinal schedule.",
+      "source_conclusion": "Subexponential Type I L2 norm and low-mask cost suffice for logarithmic energy-rate comparison.",
+      "source_scope": "Weakens earlier sufficient error requirements; no new signed upper or source-order schedule optimized.",
+      "source_authority": "DERIVED_PAPER_SELF_AUDIT",
+      "required_roots": [
+        "Zeta23.OPICAFollowup.norm_first_log_comparison",
+        "Zeta23.OPICAFollowup.norm_first_rate_transfer",
+        "Zeta23.OPICAFollowup.balanced_coeff_divisor_bound",
+        "Zeta23.OPICAFollowup.log_slack_both_low_masks_subexp",
+        "Zeta23.OPICAFollowup.log_slack_masked_energy_rate_difference",
+        "Zeta23.OPICAFollowup.norm_first_strictly_weaker_control"
+      ],
+      "coverage": "All source conclusion subclauses plus stated premises, source identities, domains and adverse controls. Presence/name-only coverage is insufficient.",
+      "status": "NONAUTHOR_FROZEN_UNIT_REVIEWED_NO_ADDITIONAL_MATHEMATICAL_GAP_FOUND",
+      "review_note": "Generic seminormed-group result covers real/complex Hilbert cases; actual native masks and norm-first transfer use exact same field. No signed upper inferred.",
+      "root_review_names": [
+        "Zeta23.OPICAFollowup.norm_first_log_comparison",
+        "Zeta23.OPICAFollowup.norm_first_rate_transfer",
+        "Zeta23.OPICAFollowup.balanced_coeff_divisor_bound",
+        "Zeta23.OPICAFollowup.log_slack_both_low_masks_subexp",
+        "Zeta23.OPICAFollowup.log_slack_masked_energy_rate_difference",
+        "Zeta23.OPICAFollowup.norm_first_strictly_weaker_control"
+      ],
+      "acceptance": "NO_UNIT_ACCEPTANCE_SEAL_CREATED"
+    },
+    {
+      "paper_id": "R1-AT2",
+      "title": "Native energy allocation inequality",
+      "paper_location": "Part IV / AT2",
+      "source_premises": "Exact same field/mask partition; causal source and coefficient hypotheses for low-mask instance.",
+      "source_conclusion": "Complete energy <= 2 TypeI energy + 2 positive high-mask + 2 absolute low-mask.",
+      "source_scope": "Positive rate must survive in a maximum if low cost is subexponential; no branchwise equality asserted.",
+      "source_authority": "DERIVED_PAPER_SELF_AUDIT",
+      "required_roots": [
+        "Zeta23.OPICAFollowup.energy_allocation_bound",
+        "Zeta23.OPICAFollowup.energy_allocation_rate_lower"
+      ],
+      "coverage": "All source conclusion subclauses plus stated premises, source identities, domains and adverse controls. Presence/name-only coverage is insufficient.",
+      "status": "NONAUTHOR_FROZEN_UNIT_REVIEWED_NO_ADDITIONAL_MATHEMATICAL_GAP_FOUND",
+      "review_note": "Exact allocation and maximum-rate lower result; no common maximizing branch or branchwise equality.",
+      "root_review_names": [
+        "Zeta23.OPICAFollowup.energy_allocation_bound",
+        "Zeta23.OPICAFollowup.energy_allocation_rate_lower"
+      ],
+      "acceptance": "NO_UNIT_ACCEPTANCE_SEAL_CREATED"
+    },
+    {
+      "paper_id": "R1-HT1",
+      "title": "Noncompact weighted-mixing obstruction and gap leakage",
+      "paper_location": "Part IV / HT1",
+      "source_premises": "Mixing measure has absolute exponential moment a>1/2; actual comb family and Fourier transport.",
+      "source_conclusion": "Actual weighted Mobius inverse; sharp selfdual gap forces scalar comb; explicit weighted gap-leakage bound.",
+      "source_scope": "Extends compact M0043 to a particular noncompact class; not all renormalized or critical-tail maps.",
+      "source_authority": "DERIVED_PAPER_SELF_AUDIT",
+      "required_roots": [
+        "Zeta23.OPICAFollowup.dilated_comb_fourier",
+        "Zeta23.OPICAFollowup.weighted_mixture_exists_fourier",
+        "Zeta23.OPICAFollowup.weighted_mobius_inverse",
+        "Zeta23.OPICAFollowup.weighted_mixture_sharp_gap",
+        "Zeta23.OPICAFollowup.weighted_gap_leakage"
+      ],
+      "coverage": "All source conclusion subclauses plus stated premises, source identities, domains and adverse controls. Presence/name-only coverage is insufficient.",
+      "status": "NONAUTHOR_FROZEN_UNIT_REVIEWED_NO_ADDITIONAL_MATHEMATICAL_GAP_FOUND",
+      "review_note": "Actual noncompact mixer, weighted logarithmic Mobius inverse and actual sharp gap/leakage. Strict moment threshold and endpoint density distinction retained.",
+      "root_review_names": [
+        "Zeta23.OPICAFollowup.dilated_comb_fourier",
+        "Zeta23.OPICAFollowup.weighted_mixture_exists_fourier",
+        "Zeta23.OPICAFollowup.weighted_mobius_inverse",
+        "Zeta23.OPICAFollowup.weighted_mixture_sharp_gap",
+        "Zeta23.OPICAFollowup.weighted_gap_leakage"
+      ],
+      "acceptance": "NO_UNIT_ACCEPTANCE_SEAL_CREATED"
+    },
+    {
+      "paper_id": "R1-HT2",
+      "title": "Near-sharp gap estimate and controlled limit",
+      "paper_location": "Part IV / HT2",
+      "source_premises": "Even real selfdual locally finite signed measures; common linear total-variation growth; positivity off integers; gaps tend to one.",
+      "source_conclusion": "Finite-region off-lattice mass bounded by (1-a) variation budget; controlled sequence tends to zero on Schwartz tests.",
+      "source_scope": "Not convergence in total variation; no statement about unbounded normalization costs.",
+      "source_authority": "DERIVED_PAPER_SELF_AUDIT",
+      "required_roots": [
+        "Zeta23.OPICAFollowup.near_gap_mass_bound",
+        "Zeta23.OPICAFollowup.near_gap_controlled_limit_zero"
+      ],
+      "coverage": "All source conclusion subclauses plus stated premises, source identities, domains and adverse controls. Presence/name-only coverage is insufficient.",
+      "status": "NONAUTHOR_FROZEN_UNIT_REVIEWED_NO_ADDITIONAL_MATHEMATICAL_GAP_FOUND",
+      "review_note": "Actual signed Jordan measures, exact near-gap finite-region constant and Schwartz limit under a single common TV budget. Full companions retain complete types.",
+      "root_review_names": [
+        "Zeta23.OPICAFollowup.near_gap_mass_bound",
+        "Zeta23.OPICAFollowup.near_gap_controlled_limit_zero"
+      ],
+      "acceptance": "NO_UNIT_ACCEPTANCE_SEAL_CREATED"
+    },
+    {
+      "paper_id": "R1-CT1",
+      "title": "Almost-gapped comb family and normalized distributional limit",
+      "paper_location": "Part IV / CT1",
+      "source_premises": "Explicit positive/negative dilation comb combination, 0<L<log 2.",
+      "source_conclusion": "Finite-stage near-gap conditions hold; normalized limit has nonzero delta derivatives and leaves measure class.",
+      "source_scope": "Auxiliary counterexample to an unqualified limit passage, not a zeta counterexample.",
+      "source_authority": "DERIVED_PAPER_SELF_AUDIT",
+      "required_roots": [
+        "Zeta23.OPICAFollowup.dilated_comb_fourier",
+        "Zeta23.OPICAFollowup.dilation_near_gap_family",
+        "Zeta23.OPICAFollowup.dilation_normalized_limit_not_measure"
+      ],
+      "coverage": "All source conclusion subclauses plus stated premises, source identities, domains and adverse controls. Presence/name-only coverage is insufficient.",
+      "status": "NONAUTHOR_FROZEN_UNIT_REVIEWED_NO_ADDITIONAL_MATHEMATICAL_GAP_FOUND",
+      "review_note": "Actual near-gap comb family and normalized nonmeasure limit. Required nonzero-only consumer is insufficient alone; complete family/limit companions must be included.",
+      "root_review_names": [
+        "Zeta23.OPICAFollowup.dilated_comb_fourier",
+        "Zeta23.OPICAFollowup.dilation_near_gap_family",
+        "Zeta23.OPICAFollowup.dilation_normalized_limit_not_measure"
+      ],
+      "acceptance": "NO_UNIT_ACCEPTANCE_SEAL_CREATED"
+    },
+    {
+      "paper_id": "R1-MC1",
+      "title": "Two-zero coupled-conditioning control",
+      "paper_location": "Part IV / MC1",
+      "source_premises": "Explicit rational inner model and true exponential Gram, 0<h<1.",
+      "source_conclusion": "Singular Gram inverse paired with coupled data has cost (2-h^2)/(1-h^2), tending to two.",
+      "source_scope": "No actual zeta zeros used; finite Gram theory already exists in archive.",
+      "source_authority": "DERIVED_PAPER_SELF_AUDIT",
+      "required_roots": [
+        "Zeta23.OPICAFollowup.coupled_gram_collision_control"
+      ],
+      "coverage": "All source conclusion subclauses plus stated premises, source identities, domains and adverse controls. Presence/name-only coverage is insufficient.",
+      "status": "NONAUTHOR_FROZEN_UNIT_REVIEWED_NO_ADDITIONAL_MATHEMATICAL_GAP_FOUND",
+      "review_note": "Explicit rational inner targets and actual integral exponential Gram. Supporting inverse-entry divergence accompanies finite coupled cost; synthetic control only.",
+      "root_review_names": [
+        "Zeta23.OPICAFollowup.coupled_gram_collision_control"
+      ],
+      "acceptance": "NO_UNIT_ACCEPTANCE_SEAL_CREATED"
+    },
+    {
+      "paper_id": "R1-CP1",
+      "title": "Renormalized actual-zero heat measure and explicit sign failure",
+      "paper_location": "Part IV / CP1",
+      "source_premises": "Actual zeta zero 0<Re(rho)<1, rho!=1/2; subtractions before cutoff limit; local measure proof.",
+      "source_conclusion": "Nonzero even real selfdual signed measure, exact unit gap, zero origin, linear variation. Explicit negative density in first interval when |Im rho|>3*pi/(2 log 2). For off-line zeros with |Im rho|>2*pi/log 2, every nonzero real scalar projection of this single-zero measure has both density signs in the first lattice interval.",
+      "source_scope": "New derivation this round, related classical co-Poisson theory; off-lattice positivity fails, including critical-line case. Not literal-j/contact identity or RH exclusion.",
+      "source_authority": "DERIVED_PAPER_SELF_AUDIT",
+      "required_roots": [
+        "Zeta23.OPICAFollowup.complex_local_measure_embedding_faithful",
+        "Zeta23.OPICAFollowup.dilated_comb_fourier",
+        "Zeta23.OPICAFollowup.renormalized_copoisson_tempered_family",
+        "Zeta23.OPICAFollowup.renormalized_copoisson_order_zero",
+        "Zeta23.OPICAFollowup.zero_measure_exact_properties",
+        "Zeta23.OPICAFollowup.zero_measure_first_cell_sign",
+        "Zeta23.OPICAFollowup.actual_zero_measure_span_consumer"
+      ],
+      "coverage": "All source conclusion subclauses plus stated premises, source identities, domains and adverse controls. Presence/name-only coverage is insufficient.",
+      "status": "NONAUTHOR_FROZEN_UNIT_REVIEWED_NO_ADDITIONAL_MATHEMATICAL_GAP_FOUND",
+      "review_note": "Actual cutoff local-TV measure identification, normalized actual-zero properties and height-qualified sign failure; no contact/source identity or RH exclusion.",
+      "root_review_names": [
+        "Zeta23.OPICAFollowup.complex_local_measure_embedding_faithful",
+        "Zeta23.OPICAFollowup.dilated_comb_fourier",
+        "Zeta23.OPICAFollowup.renormalized_copoisson_tempered_family",
+        "Zeta23.OPICAFollowup.renormalized_copoisson_order_zero",
+        "Zeta23.OPICAFollowup.zero_measure_exact_properties",
+        "Zeta23.OPICAFollowup.zero_measure_first_cell_sign",
+        "Zeta23.OPICAFollowup.actual_zero_measure_span_consumer"
+      ],
+      "acceptance": "NO_UNIT_ACCEPTANCE_SEAL_CREATED"
+    },
+    {
+      "paper_id": "R2-Q1a",
+      "title": "Uniform source-product vertical bound",
+      "paper_location": "Part V / R2-Q1a",
+      "source_premises": "Literal infinite-box q, real sigma and tau; entire normally convergent product.",
+      "source_conclusion": "|Q0(sigma+i tau)| <= 8 exp(s0 |sigma|) exp(-cq sqrt(|tau|)), cq=(log 8)sqrt(s0)/4.",
+      "source_scope": "A uniform source estimate; not a reciprocal-zeta estimate.",
+      "source_authority": "DERIVED_PAPER_SELF_AUDIT",
+      "required_roots": [
+        "Zeta23.OPICAFollowup.source_product_vertical_bound"
+      ],
+      "coverage": "All source conclusion subclauses plus stated premises, source identities, domains and adverse controls. Presence/name-only coverage is insufficient.",
+      "status": "NONAUTHOR_FROZEN_UNIT_REVIEWED_NO_ADDITIONAL_MATHEMATICAL_GAP_FOUND",
+      "review_note": "Literal infinite source product, normal limiting identity, whole-plane bound and exact fixed decay coefficient.",
+      "root_review_names": [
+        "Zeta23.OPICAFollowup.source_product_vertical_bound"
+      ],
+      "acceptance": "NO_UNIT_ACCEPTANCE_SEAL_CREATED"
+    },
+    {
+      "paper_id": "R2-Q1b",
+      "title": "Uniform moving left-line zeta/derivative envelope",
+      "paper_location": "Part V / R2-Q1b",
+      "source_premises": "Integer n>=1, all real tau; classical zeta functional equation and gamma strip bound.",
+      "source_conclusion": "|zeta(-n+i tau)|+|zeta_prime(-n+i tau)| <= A0^(n+1)(n+2+|tau|)^(n+2).",
+      "source_scope": "Existence of a universal A0; its numerical value is not certified.",
+      "source_authority": "DERIVED_PAPER_SELF_AUDIT",
+      "required_roots": [
+        "Zeta23.OPICAFollowup.zeta_left_line_uniform_bound"
+      ],
+      "coverage": "All source conclusion subclauses plus stated premises, source identities, domains and adverse controls. Presence/name-only coverage is insufficient.",
+      "status": "NONAUTHOR_FROZEN_UNIT_REVIEWED_NO_ADDITIONAL_MATHEMATICAL_GAP_FOUND",
+      "review_note": "Moving integer left line, all real ordinates and both zeta/derivative; one universal constant, no reciprocal-zeta premise.",
+      "root_review_names": [
+        "Zeta23.OPICAFollowup.zeta_left_line_uniform_bound"
+      ],
+      "acceptance": "NO_UNIT_ACCEPTANCE_SEAL_CREATED"
+    },
+    {
+      "paper_id": "R2-Q2",
+      "title": "Fixed-order double-exponential forward localization",
+      "paper_location": "Part V / R2-Q2",
+      "source_premises": "Fixed m>=ell>=0,d>=0; exact entire forward transform R_m,ell.",
+      "source_conclusion": "|R_m,ell^(d)(t)| <= A exp(-c exp(t/(2(ell+1)))) for t>=0.",
+      "source_scope": "Orders fixed before limit. Generalizes the inherited ell=0 scale; not an optimality claim.",
+      "source_authority": "DERIVED_PAPER_SELF_AUDIT",
+      "required_roots": [
+        "Zeta23.OPICAFollowup.sourceFamily_support_smooth_moments",
+        "Zeta23.OPICAFollowup.forwardKernel_physical_laplace",
+        "Zeta23.OPICAFollowup.forwardKernel_left_contour_budget",
+        "Zeta23.OPICAFollowup.forwardKernel_double_exp_decay"
+      ],
+      "coverage": "All source conclusion subclauses plus stated premises, source identities, domains and adverse controls. Presence/name-only coverage is insufficient.",
+      "status": "NONAUTHOR_FROZEN_UNIT_REVIEWED_NO_ADDITIONAL_MATHEMATICAL_GAP_FOUND",
+      "review_note": "Physical forward kernel inversion and uniform contour envelope before optimization; fixed orders and all t>=0.",
+      "root_review_names": [
+        "Zeta23.OPICAFollowup.sourceFamily_support_smooth_moments",
+        "Zeta23.OPICAFollowup.forwardKernel_physical_laplace",
+        "Zeta23.OPICAFollowup.forwardKernel_left_contour_budget",
+        "Zeta23.OPICAFollowup.forwardKernel_double_exp_decay"
+      ],
+      "acceptance": "NO_UNIT_ACCEPTANCE_SEAL_CREATED"
+    },
+    {
+      "paper_id": "R2-Q3",
+      "title": "Logarithmic-slack balanced native decomposition",
+      "paper_location": "Part V / R2-Q3",
+      "source_premises": "Fixed r>=2,m>=r-1,C>1,eta>=0; finite squarefree Q_T frozen per window, Q_T<=T^eta; K>C+r eta+2r.",
+      "source_conclusion": "Y=e^(T/r)T^(-K/r), Z=e^(T/r-g)T^(K(r-1)/r); exact F_m=E+B with sup error <=C1 T^(r eta) exp(T/2-c T^p), p>1.",
+      "source_scope": "No signed upper for B, no improved zero-free strip, no MS1 required. No certified numeric starting horizon.",
+      "source_authority": "DERIVED_PAPER_SELF_AUDIT",
+      "required_roots": [
+        "Zeta23.OPICAFollowup.native_binomial_inverse_identity",
+        "Zeta23.OPICAFollowup.balanced_coeff_divisor_bound",
+        "Zeta23.OPICAFollowup.log_slack_native_decomposition",
+        "Zeta23.OPICAFollowup.log_slack_typeI_error",
+        "Zeta23.OPICAFollowup.fixed_two_factor_preparation",
+        "Zeta23.OPICAFollowup.log_slack_both_low_masks_subexp",
+        "Zeta23.OPICAFollowup.log_slack_masked_energy_rate_difference",
+        "Zeta23.OPICAFollowup.fixed_two_factor_mask_rate_theta",
+        "Zeta23.OPICAFollowup.quiet_balanced_observation_implies_native_cut"
+      ],
+      "coverage": "All source conclusion subclauses plus stated premises, source identities, domains and adverse controls. Presence/name-only coverage is insufficient.",
+      "status": "NONAUTHOR_FROZEN_UNIT_REVIEWED_NO_ADDITIONAL_MATHEMATICAL_GAP_FOUND",
+      "review_note": "Actual arithmetic Dirichlet products and repeated primes; real slack cutoffs, frozen per-window palette, full support delay and fixed Pj instance.",
+      "root_review_names": [
+        "Zeta23.OPICAFollowup.native_binomial_inverse_identity",
+        "Zeta23.OPICAFollowup.balanced_coeff_divisor_bound",
+        "Zeta23.OPICAFollowup.log_slack_native_decomposition",
+        "Zeta23.OPICAFollowup.log_slack_typeI_error",
+        "Zeta23.OPICAFollowup.fixed_two_factor_preparation",
+        "Zeta23.OPICAFollowup.log_slack_both_low_masks_subexp",
+        "Zeta23.OPICAFollowup.log_slack_masked_energy_rate_difference",
+        "Zeta23.OPICAFollowup.fixed_two_factor_mask_rate_theta",
+        "Zeta23.OPICAFollowup.quiet_balanced_observation_implies_native_cut"
+      ],
+      "acceptance": "NO_UNIT_ACCEPTANCE_SEAL_CREATED"
+    },
+    {
+      "paper_id": "R2-O1",
+      "title": "Joint source-history observation recovery and optimal norm",
+      "paper_location": "Part V / R2-O1",
+      "source_premises": "Finite-dimensional complex Hilbert spaces; joint observation A=(P,C), target linear functional ell.",
+      "source_conclusion": "Recovery iff ker P intersect ker C subset ker ell; exact norm sup |ell(x)|/||Ax||, with zero-map convention.",
+      "source_scope": "A native recovery hypothesis and subexponential cost must still be established for any application.",
+      "source_authority": "DERIVED_PAPER_SELF_AUDIT",
+      "required_roots": [
+        "Zeta23.OPICAFollowup.joint_recovery_iff",
+        "Zeta23.OPICAFollowup.joint_recovery_optimal_norm"
+      ],
+      "coverage": "All source conclusion subclauses plus stated premises, source identities, domains and adverse controls. Presence/name-only coverage is insufficient.",
+      "status": "NONAUTHOR_FROZEN_UNIT_REVIEWED_NO_ADDITIONAL_MATHEMATICAL_GAP_FOUND",
+      "review_note": "Actual joint observation, genuine quotient/range/orthogonal recovery, exact canonical cost and zero-target convention.",
+      "root_review_names": [
+        "Zeta23.OPICAFollowup.joint_recovery_iff",
+        "Zeta23.OPICAFollowup.joint_recovery_optimal_norm"
+      ],
+      "acceptance": "NO_UNIT_ACCEPTANCE_SEAL_CREATED"
+    },
+    {
+      "paper_id": "R2-O2",
+      "title": "Noisy recovery and quantitative compatibility test",
+      "paper_location": "Part V / R2-O2",
+      "source_premises": "Same O1 data; measurement error at most epsilon; finite compatibility matrix B.",
+      "source_conclusion": "Target error <= recovery_norm epsilon; a unit left-null vector with pairing >epsilon certifies no epsilon-approximate compatibility.",
+      "source_scope": "Algebraic injectivity need not have acceptable cost; epsilon=e^(-aT) control exhibits exponential recovery.",
+      "source_authority": "DERIVED_PAPER_SELF_AUDIT",
+      "required_roots": [
+        "Zeta23.OPICAFollowup.joint_recovery_noise_bound",
+        "Zeta23.OPICAFollowup.approx_compatibility_left_null",
+        "Zeta23.OPICAFollowup.recovery_subexp_budget",
+        "Zeta23.OPICAFollowup.history_recovery_cost_control"
+      ],
+      "coverage": "All source conclusion subclauses plus stated premises, source identities, domains and adverse controls. Presence/name-only coverage is insufficient.",
+      "status": "NONAUTHOR_FROZEN_UNIT_REVIEWED_NO_ADDITIONAL_MATHEMATICAL_GAP_FOUND",
+      "review_note": "Canonical optimal noise bound and actual left-null certificate. History errors and recovery cost remain visible; no cheap-native-recovery inference.",
+      "root_review_names": [
+        "Zeta23.OPICAFollowup.joint_recovery_noise_bound",
+        "Zeta23.OPICAFollowup.approx_compatibility_left_null",
+        "Zeta23.OPICAFollowup.recovery_subexp_budget",
+        "Zeta23.OPICAFollowup.history_recovery_cost_control"
+      ],
+      "acceptance": "NO_UNIT_ACCEPTANCE_SEAL_CREATED"
+    },
+    {
+      "paper_id": "R2-J1",
+      "title": "Robust Laurent jets with changing completion depth",
+      "paper_location": "Part V / R2-J1",
+      "source_premises": "Common contour radius r; meromorphic error with only central pole; finite sup bound E; coefficient degree j>=-1.",
+      "source_conclusion": "Coefficient error <= r^(-j)E; nonzero if E<|a_j|r^j; derivative version includes j!.",
+      "source_scope": "Does not establish the actual contour error bound; compact-time convergence is insufficient.",
+      "source_authority": "DERIVED_PAPER_SELF_AUDIT",
+      "required_roots": [
+        "Zeta23.OPICAFollowup.laurent_coefficient_error_bound",
+        "Zeta23.OPICAFollowup.laurent_observation_survives",
+        "Zeta23.OPICAFollowup.nativeWord_contour_consumer",
+        "Zeta23.OPICAFollowup.step123_word_jet_consumer"
+      ],
+      "coverage": "All source conclusion subclauses plus stated premises, source identities, domains and adverse controls. Presence/name-only coverage is insufficient.",
+      "status": "NONAUTHOR_FROZEN_UNIT_REVIEWED_NO_ADDITIONAL_MATHEMATICAL_GAP_FOUND",
+      "review_note": "Actual meromorphic disk and integer Laurent degree; explicit native word coefficient/corrections/recovery, factorial and sharp boundary companions.",
+      "root_review_names": [
+        "Zeta23.OPICAFollowup.laurent_coefficient_error_bound",
+        "Zeta23.OPICAFollowup.laurent_observation_survives",
+        "Zeta23.OPICAFollowup.nativeWord_contour_consumer",
+        "Zeta23.OPICAFollowup.step123_word_jet_consumer"
+      ],
+      "acceptance": "NO_UNIT_ACCEPTANCE_SEAL_CREATED"
+    },
+    {
+      "paper_id": "R2-S1a",
+      "title": "Actual-zero co-Poisson profile tail, self-duality and regularity",
+      "paper_location": "Part V / R2-S1a",
+      "source_premises": "Actual nontrivial zero 0<Re rho<1, rho!=1/2; kappa=rho(1-rho); normalized CP1 density.",
+      "source_conclusion": "h=1-g is even continuous selfdual L1 and L2, equals one on [-1,1], integral half-line 1/2, tail kappa B2/(2x^2)+O(x^-3), h_prime=O(x^-2), integer jump -kappa/n^2.",
+      "source_scope": "Not positivity of h; not a literal-j/contact identity; no assumption of simple zeros.",
+      "source_authority": "DERIVED_PAPER_SELF_AUDIT",
+      "required_roots": [
+        "Zeta23.OPICAFollowup.finite_sum_euler_maclaurin_uniform",
+        "Zeta23.OPICAFollowup.zero_profile_regular_selfdual",
+        "Zeta23.OPICAFollowup.zero_profile_tail_and_jumps"
+      ],
+      "coverage": "All source conclusion subclauses plus stated premises, source identities, domains and adverse controls. Presence/name-only coverage is insufficient.",
+      "status": "NONAUTHOR_FROZEN_UNIT_REVIEWED_NO_ADDITIONAL_MATHEMATICAL_GAP_FOUND",
+      "review_note": "Actual zero profile, Bernoulli expansion and endpoint jumps; even/continuous/selfdual/L1/L2, no positivity or simplicity assumption.",
+      "root_review_names": [
+        "Zeta23.OPICAFollowup.finite_sum_euler_maclaurin_uniform",
+        "Zeta23.OPICAFollowup.zero_profile_regular_selfdual",
+        "Zeta23.OPICAFollowup.zero_profile_tail_and_jumps"
+      ],
+      "acceptance": "NO_UNIT_ACCEPTANCE_SEAL_CREATED"
+    },
+    {
+      "paper_id": "R2-S1b",
+      "title": "Forced Euler equation and form-domain distinction",
+      "paper_location": "Part V / R2-S1b",
+      "source_premises": "Same actual zero profile.",
+      "source_conclusion": "-(x^2 h_prime)_prime = kappa(h-1+sum positive_integer_delta); positive form identity under log coordinates; nonzero atomic forcing prevents homogeneous L2 eigenproblem.",
+      "source_scope": "Does not infer kappa is real or invoke self-adjoint eigenvalue theory on a vector outside that operator domain.",
+      "source_authority": "DERIVED_PAPER_SELF_AUDIT",
+      "required_roots": [
+        "Zeta23.OPICAFollowup.log_unitary_form_identity",
+        "Zeta23.OPICAFollowup.zero_profile_forced_euler",
+        "Zeta23.OPICAFollowup.zero_profile_not_homogeneous_operator_vector",
+        "Zeta23.OPICAFollowup.actual_force_sampling_consumer"
+      ],
+      "coverage": "All source conclusion subclauses plus stated premises, source identities, domains and adverse controls. Presence/name-only coverage is insufficient.",
+      "status": "NONAUTHOR_FROZEN_UNIT_REVIEWED_NO_ADDITIONAL_MATHEMATICAL_GAP_FOUND",
+      "review_note": "Actual integer atomic forcing and log form domain; no homogeneous self-adjoint eigenvector inference.",
+      "root_review_names": [
+        "Zeta23.OPICAFollowup.log_unitary_form_identity",
+        "Zeta23.OPICAFollowup.zero_profile_forced_euler",
+        "Zeta23.OPICAFollowup.zero_profile_not_homogeneous_operator_vector",
+        "Zeta23.OPICAFollowup.actual_force_sampling_consumer"
+      ],
+      "acceptance": "NO_UNIT_ACCEPTANCE_SEAL_CREATED"
+    },
+    {
+      "paper_id": "R2-S2",
+      "title": "Native multi-zero sampling compatibility",
+      "paper_location": "Part V / R2-S2",
+      "source_premises": "Finite actual zero profiles, distinct kappa representatives; absolute integrability and summability from S1.",
+      "source_conclusion": "Qij=kappa_i(Nij+conj b_j)=conj kappa_j(Nij+b_i); undivided identity; conditional divided-difference positivity; Q-(1/4)N PSD.",
+      "source_scope": "No uniform conditioning or independent bound/reality for sample sums. Synthetic forced models satisfy the same identities at nonreal parameters.",
+      "source_authority": "DERIVED_PAPER_SELF_AUDIT",
+      "required_roots": [
+        "Zeta23.OPICAFollowup.native_sampling_gram_identity",
+        "Zeta23.OPICAFollowup.native_sampling_form_positive",
+        "Zeta23.OPICAFollowup.forced_positive_gram_nonreal_control"
+      ],
+      "coverage": "All source conclusion subclauses plus stated premises, source identities, domains and adverse controls. Presence/name-only coverage is insufficient.",
+      "status": "NONAUTHOR_FROZEN_UNIT_REVIEWED_NO_ADDITIONAL_MATHEMATICAL_GAP_FOUND",
+      "review_note": "Actual samples and Gram integrals, convergent endpoint boundary limits, PSD forms and undivided identity at conjugate coincidence.",
+      "root_review_names": [
+        "Zeta23.OPICAFollowup.native_sampling_gram_identity",
+        "Zeta23.OPICAFollowup.native_sampling_form_positive",
+        "Zeta23.OPICAFollowup.forced_positive_gram_nonreal_control"
+      ],
+      "acceptance": "NO_UNIT_ACCEPTANCE_SEAL_CREATED"
+    },
+    {
+      "paper_id": "R2-H1",
+      "title": "Multiplicity-sensitive zero-jet measures",
+      "paper_location": "Part V / R2-H1",
+      "source_premises": "Actual zeros of multiplicities m_j; local inverse rho(kappa); derivative orders k<m_j.",
+      "source_conclusion": "Normalized parameter jets are order-zero even selfdual measures, with exact gap/origin and linear growth; forced differentiated chain retained.",
+      "source_scope": "No gap beyond the actual multiplicity; this R2-H1 is not the original P0-H1 signed separator.",
+      "source_authority": "DERIVED_PAPER_SELF_AUDIT",
+      "required_roots": [
+        "Zeta23.OPICAFollowup.complex_local_measure_embedding_faithful",
+        "Zeta23.OPICAFollowup.finite_sum_euler_maclaurin_uniform",
+        "Zeta23.OPICAFollowup.copoisson_zero_jets_measures",
+        "Zeta23.OPICAFollowup.actual_zero_measure_span_consumer"
+      ],
+      "coverage": "All source conclusion subclauses plus stated premises, source identities, domains and adverse controls. Presence/name-only coverage is insufficient.",
+      "status": "NONAUTHOR_FROZEN_UNIT_REVIEWED_NO_ADDITIONAL_MATHEMATICAL_GAP_FOUND",
+      "review_note": "Actual multiplicity-bounded kappa jets, local inverse and parameter limits; true measures and actual growth/gap/origin/forced chain.",
+      "root_review_names": [
+        "Zeta23.OPICAFollowup.complex_local_measure_embedding_faithful",
+        "Zeta23.OPICAFollowup.finite_sum_euler_maclaurin_uniform",
+        "Zeta23.OPICAFollowup.copoisson_zero_jets_measures",
+        "Zeta23.OPICAFollowup.actual_zero_measure_span_consumer"
+      ],
+      "acceptance": "NO_UNIT_ACCEPTANCE_SEAL_CREATED"
+    },
+    {
+      "paper_id": "R2-H2a",
+      "title": "Finite zero-jet independence and explicit confluent determinant",
+      "paper_location": "Part V / R2-H2a",
+      "source_premises": "Finite distinct nonzero kappa nodes, total multiplicity M; reflection-duplicate parameters removed.",
+      "source_conclusion": "Measures independent; determinant=(-1)^(M(M-1)/2) product kappa_j^m_j product_(i<j)(kappa_j-kappa_i)^(m_i m_j).",
+      "source_scope": "No uniform inverse norm at colliding or growing zero systems. Conjugacy handled when forming real measures.",
+      "source_authority": "DERIVED_PAPER_SELF_AUDIT",
+      "required_roots": [
+        "Zeta23.OPICAFollowup.profile_jet_confluent_determinant",
+        "Zeta23.OPICAFollowup.finite_zero_jet_independent"
+      ],
+      "coverage": "All source conclusion subclauses plus stated premises, source identities, domains and adverse controls. Presence/name-only coverage is insufficient.",
+      "status": "NONAUTHOR_FROZEN_UNIT_REVIEWED_NO_ADDITIONAL_MATHEMATICAL_GAP_FOUND",
+      "review_note": "Full confluent determinant of actual normalized first-cell rows; distinct kappa nodes remove reflection duplicates; no collision conditioning claim.",
+      "root_review_names": [
+        "Zeta23.OPICAFollowup.profile_jet_confluent_determinant",
+        "Zeta23.OPICAFollowup.finite_zero_jet_independent"
+      ],
+      "acceptance": "NO_UNIT_ACCEPTANCE_SEAL_CREATED"
+    },
+    {
+      "paper_id": "R2-H2b",
+      "title": "Finite-span sign separation and fixed-basis negative-mass budget",
+      "paper_location": "Part V / R2-H2b",
+      "source_premises": "Real finite combinations of the H1 zero jets; all H1 measure hypotheses.",
+      "source_conclusion": "Only zero can be nonnegative off lattice; on a fixed independent real basis, weighted negative mass >= c_basis ||coefficients||.",
+      "source_scope": "Finite generated span only; no exclusion of arbitrary nonlinear or uncontrolled infinite constructions.",
+      "source_authority": "DERIVED_PAPER_SELF_AUDIT",
+      "required_roots": [
+        "Zeta23.OPICAFollowup.finite_zero_span_positive_only_zero",
+        "Zeta23.OPICAFollowup.fixed_basis_negative_mass_budget",
+        "Zeta23.OPICAFollowup.actual_zero_measure_span_consumer"
+      ],
+      "coverage": "All source conclusion subclauses plus stated premises, source identities, domains and adverse controls. Presence/name-only coverage is insufficient.",
+      "status": "NONAUTHOR_FROZEN_UNIT_REVIEWED_NO_ADDITIONAL_MATHEMATICAL_GAP_FOUND",
+      "review_note": "Actual finite realified jet span and fixed independent real-basis sinc-weighted negative budget. Extra offcritical 2D pair is supporting only.",
+      "root_review_names": [
+        "Zeta23.OPICAFollowup.finite_zero_span_positive_only_zero",
+        "Zeta23.OPICAFollowup.fixed_basis_negative_mass_budget",
+        "Zeta23.OPICAFollowup.actual_zero_measure_span_consumer"
+      ],
+      "acceptance": "NO_UNIT_ACCEPTANCE_SEAL_CREATED"
+    },
+    {
+      "paper_id": "R2-H3",
+      "title": "Explicit first-interval correction cost",
+      "paper_location": "Part V / R2-H3",
+      "source_premises": "Normalized real actual-zero density; |delta|<1/2; |gamma|>=16.",
+      "source_conclusion": "On log interval [4pi/(3|gamma|),5pi/(3|gamma|)], density <=-|gamma| e^(-u/2)/2; negative mass >=pi/6 and weighted mass >=8pi/(27 gamma^2).",
+      "source_scope": "Height hypothesis retained; also applies on critical line, so not an off-line-zero exclusion.",
+      "source_authority": "DERIVED_PAPER_SELF_AUDIT",
+      "required_roots": [
+        "Zeta23.OPICAFollowup.first_cell_negative_mass_cost"
+      ],
+      "coverage": "All source conclusion subclauses plus stated premises, source identities, domains and adverse controls. Presence/name-only coverage is insufficient.",
+      "status": "NONAUTHOR_FROZEN_UNIT_REVIEWED_NO_ADDITIONAL_MATHEMATICAL_GAP_FOUND",
+      "review_note": "Explicit first interval and exact mass constants with all height/displacement qualifiers; critical-line applicability prevents zero-exclusion overclaim.",
+      "root_review_names": [
+        "Zeta23.OPICAFollowup.first_cell_negative_mass_cost"
+      ],
+      "acceptance": "NO_UNIT_ACCEPTANCE_SEAL_CREATED"
+    },
+    {
+      "paper_id": "R2-S3",
+      "title": "Nonlinear square defect, no lattice repair, and gap-filling projection",
+      "paper_location": "Part V / R2-S3",
+      "source_premises": "Even continuous selfdual h in L1 intersect L2, h=A on [-1,1], vanishing at infinity, h nonzero.",
+      "source_conclusion": "Positive gapped square measure has duality defect h*conj h-|h|^2, positive at origin; no lattice-supported tempered measure repairs it; selfdual projection fills gap near origin.",
+      "source_scope": "Specific square family only, including finite profile combinations; not a universal prohibition on nonlinear constructions.",
+      "source_authority": "DERIVED_PAPER_SELF_AUDIT",
+      "required_roots": [
+        "Zeta23.OPICAFollowup.square_fourier_defect",
+        "Zeta23.OPICAFollowup.square_defect_origin_positive",
+        "Zeta23.OPICAFollowup.square_no_lattice_repair",
+        "Zeta23.OPICAFollowup.square_selfdual_projection_fills_gap"
+      ],
+      "coverage": "All source conclusion subclauses plus stated premises, source identities, domains and adverse controls. Presence/name-only coverage is insufficient.",
+      "status": "NONAUTHOR_FROZEN_UNIT_REVIEWED_NO_ADDITIONAL_MATHEMATICAL_GAP_FOUND_WITH_FULL_DOMAIN_BRIDGE",
+      "review_note": "Actual canonical tau measure, density Fourier defect and genuine tempered projection retained. The compiled direct compact-compatible tempered-extension theorem supplies the broader original lattice-correction domain without true-TV-growth. This closes the previously isolated mathematical interpretation boundary for the candidate, with no additional primary root or scope amendment.",
+      "root_review_names": [
+        "Zeta23.OPICAFollowup.square_fourier_defect",
+        "Zeta23.OPICAFollowup.square_defect_origin_positive",
+        "Zeta23.OPICAFollowup.square_no_lattice_repair",
+        "Zeta23.OPICAFollowup.square_selfdual_projection_fills_gap"
+      ],
+      "acceptance": "NO_UNIT_ACCEPTANCE_SEAL_CREATED",
+      "prior_status": "NONAUTHOR_REVIEW_WITH_EXTENSION_DOMAIN_GAP",
+      "physical_domain_completion": {
+        "theorem": "Zeta23.OPICAFollowup.square_actual_no_distribution_tempered_measure_repair",
+        "source": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-tempered-lattice\\TemperedLatticeNoRepair.lean",
+        "sha256": "bd0c74c720d1c7eb56f19d60b8845b887db8c2ba54bfec000f02c4007da11af5",
+        "line": 72,
+        "full_domain_consumer": "Zeta23.OPICAFollowup.expected_original_distribution_tempered_domain",
+        "expected_source": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-tempered-lattice\\ExpectedTemperedLatticeNoRepair.lean",
+        "expected_sha256": "9e9edd98bda335a4b3a04aa490a7816639ca7620f14757e53fba30f1c52d7cc8",
+        "consumer_line": 9,
+        "disposition": "CORRECT_CANDIDATE_FORMALLY_COMPILED",
+        "owner_final_source_replay": "PENDING"
+      }
+    },
+    {
+      "paper_id": "F1",
+      "title": "Actual tempered arithmetic force and its Mellin budget",
+      "paper_location": "Part III / F1",
+      "source_premises": "Literal integer comb; w(t)=exp(-t/2){exp t}; log Fourier convention exp(-i xi t)",
+      "source_conclusion": "g=-(D+1/2)w=N-exp(t/2)dt on compact tests; Flog(g)=zeta(1/2+i xi); exact weighted moment log(2pi)-EulerGamma",
+      "source_scope": "Tempered extension is after subtraction. This is a classical moment in the required normalization, not a novelty claim.",
+      "source_authority": "DERIVED_PAPER_SELF_AUDIT",
+      "required_roots": [
+        "Zeta23.OPICAFollowup.log_unitary_form_identity",
+        "Zeta23.OPICAFollowup.log_fourier_plancherel",
+        "Zeta23.OPICAFollowup.sawtooth_integrable_force_identity",
+        "Zeta23.OPICAFollowup.sawtooth_actual_mellin_fourier",
+        "Zeta23.OPICAFollowup.sawtooth_norm_weighted_zeta_moment",
+        "Zeta23.OPICAFollowup.actual_force_sampling_consumer"
+      ],
+      "coverage": "All source conclusion subclauses plus stated premises, source identities, domains and adverse controls. Presence/name-only coverage is insufficient.",
+      "status": "NONAUTHOR_FROZEN_UNIT_REVIEWED_NO_ADDITIONAL_MATHEMATICAL_GAP_FOUND",
+      "review_note": "Actual sawtooth derivative force with subtraction before temperate extension, both Fourier conventions and exact finite weighted zeta moment.",
+      "root_review_names": [
+        "Zeta23.OPICAFollowup.log_unitary_form_identity",
+        "Zeta23.OPICAFollowup.log_fourier_plancherel",
+        "Zeta23.OPICAFollowup.sawtooth_integrable_force_identity",
+        "Zeta23.OPICAFollowup.sawtooth_actual_mellin_fourier",
+        "Zeta23.OPICAFollowup.sawtooth_norm_weighted_zeta_moment",
+        "Zeta23.OPICAFollowup.actual_force_sampling_consumer"
+      ],
+      "acceptance": "NO_UNIT_ACCEPTANCE_SEAL_CREATED"
+    },
+    {
+      "paper_id": "F2",
+      "title": "Actual sampling Stieltjes representation",
+      "paper_location": "Part III / F2",
+      "source_premises": "Actual off-line zero profile; kappa nonreal; R2-S1 measure/profile identities",
+      "source_conclusion": "b_kappa=kappa integral |zeta(1/2+i xi)|^2/(xi^2+1/4-kappa) dxi/(2pi); norm/form and priced source-moment bounds",
+      "source_scope": "Positive spectral density permits nonreal forced parameters; no independent exclusion or assumed sample reality.",
+      "source_authority": "DERIVED_PAPER_SELF_AUDIT",
+      "required_roots": [
+        "Zeta23.OPICAFollowup.log_unitary_form_identity",
+        "Zeta23.OPICAFollowup.log_fourier_plancherel",
+        "Zeta23.OPICAFollowup.arithmetic_stieltjes_holomorphic",
+        "Zeta23.OPICAFollowup.arithmetic_stieltjes_sign_budget",
+        "Zeta23.OPICAFollowup.native_forced_resolvent_unique",
+        "Zeta23.OPICAFollowup.native_sample_stieltjes_identity",
+        "Zeta23.OPICAFollowup.native_profile_spectral_norms",
+        "Zeta23.OPICAFollowup.actual_force_sampling_consumer"
+      ],
+      "coverage": "All source conclusion subclauses plus stated premises, source identities, domains and adverse controls. Presence/name-only coverage is insufficient.",
+      "status": "NONAUTHOR_FROZEN_UNIT_REVIEWED_NO_ADDITIONAL_MATHEMATICAL_GAP_FOUND",
+      "review_note": "Actual forced H1 resolvent, H-1/H1 sample pairing, positive arithmetic Stieltjes density and norm/form budgets at nonreal kappa.",
+      "root_review_names": [
+        "Zeta23.OPICAFollowup.log_unitary_form_identity",
+        "Zeta23.OPICAFollowup.log_fourier_plancherel",
+        "Zeta23.OPICAFollowup.arithmetic_stieltjes_holomorphic",
+        "Zeta23.OPICAFollowup.arithmetic_stieltjes_sign_budget",
+        "Zeta23.OPICAFollowup.native_forced_resolvent_unique",
+        "Zeta23.OPICAFollowup.native_sample_stieltjes_identity",
+        "Zeta23.OPICAFollowup.native_profile_spectral_norms",
+        "Zeta23.OPICAFollowup.actual_force_sampling_consumer"
+      ],
+      "acceptance": "NO_UNIT_ACCEPTANCE_SEAL_CREATED"
+    },
+    {
+      "paper_id": "F3",
+      "title": "Generic forced resolvent and exact plateau coefficient",
+      "paper_location": "Part III / F3",
+      "source_premises": "1/2<Re rho<1, Im rho !=0, b_rho=(1-2rho)/(rho(1-rho))",
+      "source_conclusion": "Unique log-form solution is 1-S_rho/b_rho-zeta(rho)x^(rho-1)/b_rho; plateau iff zeta(rho)=0",
+      "source_scope": "Diagnostic source identity, not a new proposed equivalent-condition campaign or proof of zero exclusion.",
+      "source_authority": "DERIVED_PAPER_SELF_AUDIT",
+      "required_roots": [
+        "Zeta23.OPICAFollowup.finite_sum_euler_maclaurin_uniform",
+        "Zeta23.OPICAFollowup.log_unitary_form_identity",
+        "Zeta23.OPICAFollowup.generic_forced_profile_unique",
+        "Zeta23.OPICAFollowup.generic_boundary_amplitude",
+        "Zeta23.OPICAFollowup.actual_force_sampling_consumer"
+      ],
+      "coverage": "All source conclusion subclauses plus stated premises, source identities, domains and adverse controls. Presence/name-only coverage is insufficient.",
+      "status": "NONAUTHOR_FROZEN_UNIT_REVIEWED_NO_ADDITIONAL_MATHEMATICAL_GAP_FOUND",
+      "review_note": "Generic forced profile at nonzero-zeta parameters, actual boundary amplitude and plateau iff zero. Diagnostic only.",
+      "root_review_names": [
+        "Zeta23.OPICAFollowup.finite_sum_euler_maclaurin_uniform",
+        "Zeta23.OPICAFollowup.log_unitary_form_identity",
+        "Zeta23.OPICAFollowup.generic_forced_profile_unique",
+        "Zeta23.OPICAFollowup.generic_boundary_amplitude",
+        "Zeta23.OPICAFollowup.actual_force_sampling_consumer"
+      ],
+      "acceptance": "NO_UNIT_ACCEPTANCE_SEAL_CREATED"
+    },
+    {
+      "paper_id": "J5.2",
+      "title": "Native fixed-source logarithmic-window rate",
+      "paper_location": "Part II.1-II.4",
+      "source_authority": "INHERITED_PAPER_EXPANDED_IN_FINAL_MASTER",
+      "required_roots": [
+        "Zeta23.OPICAFollowup.sourceFamily_zero_eq_original",
+        "Zeta23.OPICAFollowup.sourceFamily_laplace_identity",
+        "Zeta23.OPICAFollowup.forwardKernel_physical_laplace",
+        "Zeta23.OPICAFollowup.native_zero_count_summability",
+        "Zeta23.OPICAFollowup.native_source_explicit_formula",
+        "Zeta23.OPICAFollowup.native_zero_sup_bounds",
+        "Zeta23.OPICAFollowup.source_order_uniform_norms",
+        "Zeta23.OPICAFollowup.native_field_theta_envelope",
+        "Zeta23.OPICAFollowup.aux_completion_actual_transform",
+        "Zeta23.OPICAFollowup.aux_completion_uniform_decay",
+        "Zeta23.OPICAFollowup.aux_completion_ratio_bounds",
+        "Zeta23.OPICAFollowup.native_auxiliary_top_moment",
+        "Zeta23.OPICAFollowup.laguerre_tail_norm",
+        "Zeta23.OPICAFollowup.native_auxiliary_tail_residual_lower",
+        "Zeta23.OPICAFollowup.native_terminal_memory_lower",
+        "Zeta23.OPICAFollowup.native_fixed_source_window_rate",
+        "Zeta23.OPICAFollowup.fixed_two_factor_mask_rate_theta",
+        "Zeta23.OPICAFollowup.quiet_balanced_observation_implies_native_cut"
+      ],
+      "coverage": "Actual physical explicit formula, zero count, source norms, uniform completion, all-multiplicity residual and full limit; a generic rate hypothesis is not a replacement.",
+      "status": "NONAUTHOR_FROZEN_UNIT_REVIEWED_NO_ADDITIONAL_MATHEMATICAL_GAP_FOUND",
+      "review_note": "Actual full continuous real-horizon rate for every fixed d,C>1, arbitrary multiplicity and Theta=0; entire residual/memory chain actual.",
+      "root_review_names": [
+        "Zeta23.OPICAFollowup.sourceFamily_zero_eq_original",
+        "Zeta23.OPICAFollowup.sourceFamily_laplace_identity",
+        "Zeta23.OPICAFollowup.forwardKernel_physical_laplace",
+        "Zeta23.OPICAFollowup.native_zero_count_summability",
+        "Zeta23.OPICAFollowup.native_source_explicit_formula",
+        "Zeta23.OPICAFollowup.native_zero_sup_bounds",
+        "Zeta23.OPICAFollowup.source_order_uniform_norms",
+        "Zeta23.OPICAFollowup.native_field_theta_envelope",
+        "Zeta23.OPICAFollowup.aux_completion_actual_transform",
+        "Zeta23.OPICAFollowup.aux_completion_uniform_decay",
+        "Zeta23.OPICAFollowup.aux_completion_ratio_bounds",
+        "Zeta23.OPICAFollowup.native_auxiliary_top_moment",
+        "Zeta23.OPICAFollowup.laguerre_tail_norm",
+        "Zeta23.OPICAFollowup.native_auxiliary_tail_residual_lower",
+        "Zeta23.OPICAFollowup.native_terminal_memory_lower",
+        "Zeta23.OPICAFollowup.native_fixed_source_window_rate",
+        "Zeta23.OPICAFollowup.fixed_two_factor_mask_rate_theta",
+        "Zeta23.OPICAFollowup.quiet_balanced_observation_implies_native_cut"
+      ],
+      "acceptance": "NO_UNIT_ACCEPTANCE_SEAL_CREATED"
+    },
+    {
+      "paper_id": "MS1",
+      "title": "Slowly changing native source logarithmic-window rate",
+      "paper_location": "Part II.1-II.4",
+      "source_authority": "INHERITED_PAPER_EXPANDED_IN_FINAL_MASTER",
+      "required_roots": [
+        "Zeta23.OPICAFollowup.native_zero_sup_bounds",
+        "Zeta23.OPICAFollowup.source_order_uniform_norms",
+        "Zeta23.OPICAFollowup.native_field_theta_envelope",
+        "Zeta23.OPICAFollowup.aux_completion_actual_transform",
+        "Zeta23.OPICAFollowup.aux_completion_uniform_decay",
+        "Zeta23.OPICAFollowup.aux_completion_ratio_bounds",
+        "Zeta23.OPICAFollowup.native_auxiliary_top_moment",
+        "Zeta23.OPICAFollowup.laguerre_tail_norm",
+        "Zeta23.OPICAFollowup.native_auxiliary_tail_residual_lower",
+        "Zeta23.OPICAFollowup.native_terminal_memory_lower",
+        "Zeta23.OPICAFollowup.native_slow_source_window_rate"
+      ],
+      "coverage": "Actual physical explicit formula, zero count, source norms, uniform completion, all-multiplicity residual and full limit; a generic rate hypothesis is not a replacement.",
+      "status": "NONAUTHOR_FROZEN_UNIT_REVIEWED_NO_ADDITIONAL_MATHEMATICAL_GAP_FOUND",
+      "review_note": "Any cofinal real horizon sequence with d log(d+2)/T->0; both signs of source multiplier cost, fixed chosen zero before each lower-limit argument.",
+      "root_review_names": [
+        "Zeta23.OPICAFollowup.native_zero_sup_bounds",
+        "Zeta23.OPICAFollowup.source_order_uniform_norms",
+        "Zeta23.OPICAFollowup.native_field_theta_envelope",
+        "Zeta23.OPICAFollowup.aux_completion_actual_transform",
+        "Zeta23.OPICAFollowup.aux_completion_uniform_decay",
+        "Zeta23.OPICAFollowup.aux_completion_ratio_bounds",
+        "Zeta23.OPICAFollowup.native_auxiliary_top_moment",
+        "Zeta23.OPICAFollowup.laguerre_tail_norm",
+        "Zeta23.OPICAFollowup.native_auxiliary_tail_residual_lower",
+        "Zeta23.OPICAFollowup.native_terminal_memory_lower",
+        "Zeta23.OPICAFollowup.native_slow_source_window_rate"
+      ],
+      "acceptance": "NO_UNIT_ACCEPTANCE_SEAL_CREATED"
+    }
+  ],
+  "bridge_disposition": "CORRECT_CANDIDATE_FORMALLY_COMPILED",
+  "owner_production_bridge_replay": "NOT_ESTABLISHED_BY_THIS_REVIEW",
+  "review_scope": "Carry forward the exact earlier all100/28/83 assembled review and independently inspect the final compiled bridge delta; final clean owner source pin still requires refresh.",
+  "preserved_findings": [
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-independent-contract-review\\INDEPENDENT_FINDINGS.md",
+      "sha256": "ab8aef054f81c292ff3384cb3188efc0e9734dba92334451c6f8faec5f353cbe"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-independent-contract-review\\all100-semantic-review.json",
+      "sha256": "e20892ea56f06832deb018499970b16b9e7d7510ddae2723b91de684bcdb8bad"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-independent-contract-review\\stage22\\REREVIEW_FINDINGS.md",
+      "sha256": "dc9b862beafd73eb57788b38ee17110d2436bffb42deb4ac1ad49816f853f267"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-independent-contract-review\\stage22\\ROOT_REVIEW.json",
+      "sha256": "a35c6fd994d0b04534014dd4f160c0b50708a77fbef449759855fed326a7d379"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-independent-contract-review\\stage22\\UNIT_REVIEW.json",
+      "sha256": "48015516a5d47d0d58ce2c9c5c835dab3d018561a3b10e83f730e87113ed32e3"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-independent-contract-review\\stage22\\DEFINITION_REVIEW.json",
+      "sha256": "966edf6894cbd1b7b3f25c6ab9c8b618ecff2f62baff5882bab3799857aeb305"
+    }
+  ],
+  "bridge_source_pins": [
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-tempered-lattice\\SchwartzCompactApprox.lean",
+      "sha256": "f2ceb97fa0d10b67bcf7036709e898087dfd04bf44808098ac0f4461a1600ad9"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-tempered-lattice\\TemperedLatticeNoRepair.lean",
+      "sha256": "bd0c74c720d1c7eb56f19d60b8845b887db8c2ba54bfec000f02c4007da11af5"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-tempered-lattice\\ExpectedTemperedLatticeNoRepair.lean",
+      "sha256": "9e9edd98bda335a4b3a04aa490a7816639ca7620f14757e53fba30f1c52d7cc8"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-tempered-lattice\\TemperedLatticeAxiomAudit.lean",
+      "sha256": "e973810f23cdbe19fe27d0aebfdf356251d778edf78074c1e261a1ed243d3d93"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-tempered-lattice\\NegativeOmitsCompactCompatibility.lean",
+      "sha256": "a45273eb9bf5e980dc7c5a1e900493773cd8fcd606c07dd886644b0fdb0a46f2"
+    }
+  ]
+}

@@ -47,6 +47,21 @@
       "source_sha256": "c4adaf7a1b6b066a3906b58f4d48e8a536f2aa768bf3f193af19047a9087ad26",
       "evidence": [
         "evidence/provided/cold41/subset/compiler-receipt.json.gz"
+      ],
+      "revalidations": [
+        {
+          "stage": 22,
+          "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+          "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+          "source_sha256": "c4adaf7a1b6b066a3906b58f4d48e8a536f2aa768bf3f193af19047a9087ad26",
+          "prior_source_sha256": "c4adaf7a1b6b066a3906b58f4d48e8a536f2aa768bf3f193af19047a9087ad26",
+          "status": "PASS_MODULE_AND_EXPLICIT_CONSUMER_REVALIDATION_NOT_AGGREGATE",
+          "evidence": [
+            "evidence/current-codex/stage22/runner/CHECK_RESULT.json"
+          ],
+          "root_count_delta": 0,
+          "full_release_acceptance": false
+        }
       ]
     },
     {
@@ -88,6 +103,21 @@
       "source_sha256": "c4adaf7a1b6b066a3906b58f4d48e8a536f2aa768bf3f193af19047a9087ad26",
       "evidence": [
         "evidence/provided/cold41/subset/compiler-receipt.json.gz"
+      ],
+      "revalidations": [
+        {
+          "stage": 22,
+          "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+          "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+          "source_sha256": "c4adaf7a1b6b066a3906b58f4d48e8a536f2aa768bf3f193af19047a9087ad26",
+          "prior_source_sha256": "c4adaf7a1b6b066a3906b58f4d48e8a536f2aa768bf3f193af19047a9087ad26",
+          "status": "PASS_MODULE_AND_EXPLICIT_CONSUMER_REVALIDATION_NOT_AGGREGATE",
+          "evidence": [
+            "evidence/current-codex/stage22/runner/CHECK_RESULT.json"
+          ],
+          "root_count_delta": 0,
+          "full_release_acceptance": false
+        }
       ]
     },
     {
@@ -129,6 +159,21 @@
       "source_sha256": "583b058717bce98919f60234bc3891c9a9c6afabdf873f3db7640a4417cb3343",
       "evidence": [
         "evidence/provided/cold41/subset/compiler-receipt.json.gz"
+      ],
+      "revalidations": [
+        {
+          "stage": 22,
+          "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+          "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+          "source_sha256": "583b058717bce98919f60234bc3891c9a9c6afabdf873f3db7640a4417cb3343",
+          "prior_source_sha256": "583b058717bce98919f60234bc3891c9a9c6afabdf873f3db7640a4417cb3343",
+          "status": "PASS_MODULE_AND_EXPLICIT_CONSUMER_REVALIDATION_NOT_AGGREGATE",
+          "evidence": [
+            "evidence/current-codex/stage22/runner/CHECK_RESULT.json"
+          ],
+          "root_count_delta": 0,
+          "full_release_acceptance": false
+        }
       ]
     },
     {
@@ -170,6 +215,21 @@
       "source_sha256": "583b058717bce98919f60234bc3891c9a9c6afabdf873f3db7640a4417cb3343",
       "evidence": [
         "evidence/provided/cold41/subset/compiler-receipt.json.gz"
+      ],
+      "revalidations": [
+        {
+          "stage": 22,
+          "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+          "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+          "source_sha256": "583b058717bce98919f60234bc3891c9a9c6afabdf873f3db7640a4417cb3343",
+          "prior_source_sha256": "583b058717bce98919f60234bc3891c9a9c6afabdf873f3db7640a4417cb3343",
+          "status": "PASS_MODULE_AND_EXPLICIT_CONSUMER_REVALIDATION_NOT_AGGREGATE",
+          "evidence": [
+            "evidence/current-codex/stage22/runner/CHECK_RESULT.json"
+          ],
+          "root_count_delta": 0,
+          "full_release_acceptance": false
+        }
       ]
     },
     {
@@ -210,6 +270,21 @@
       "source_sha256": "583b058717bce98919f60234bc3891c9a9c6afabdf873f3db7640a4417cb3343",
       "evidence": [
         "evidence/provided/cold41/subset/compiler-receipt.json.gz"
+      ],
+      "revalidations": [
+        {
+          "stage": 22,
+          "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+          "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+          "source_sha256": "583b058717bce98919f60234bc3891c9a9c6afabdf873f3db7640a4417cb3343",
+          "prior_source_sha256": "583b058717bce98919f60234bc3891c9a9c6afabdf873f3db7640a4417cb3343",
+          "status": "PASS_MODULE_AND_EXPLICIT_CONSUMER_REVALIDATION_NOT_AGGREGATE",
+          "evidence": [
+            "evidence/current-codex/stage22/runner/CHECK_RESULT.json"
+          ],
+          "root_count_delta": 0,
+          "full_release_acceptance": false
+        }
       ]
     },
     {
@@ -247,9 +322,24 @@
       },
       "source_file_present": true,
       "declaration_lexically_present": true,
-      "source_sha256": "0ecee77fe44be5391e34d5efe8a45f2bd986bb61fc5272178262e07d34bfd2f9",
+      "source_sha256": "7584d93680bee677279fe6d5134d20b4de307bae6c995b30c09ddf0dfa79d084",
       "evidence": [
         "evidence/provided/cold41/subset/compiler-receipt.json.gz"
+      ],
+      "revalidations": [
+        {
+          "stage": 22,
+          "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+          "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+          "source_sha256": "7584d93680bee677279fe6d5134d20b4de307bae6c995b30c09ddf0dfa79d084",
+          "prior_source_sha256": "0ecee77fe44be5391e34d5efe8a45f2bd986bb61fc5272178262e07d34bfd2f9",
+          "status": "PASS_MODULE_AND_EXPLICIT_CONSUMER_REVALIDATION_NOT_AGGREGATE",
+          "evidence": [
+            "evidence/current-codex/stage22/runner/CHECK_RESULT.json"
+          ],
+          "root_count_delta": 0,
+          "full_release_acceptance": false
+        }
       ]
     },
     {
@@ -287,9 +377,24 @@
       },
       "source_file_present": true,
       "declaration_lexically_present": true,
-      "source_sha256": "0ecee77fe44be5391e34d5efe8a45f2bd986bb61fc5272178262e07d34bfd2f9",
+      "source_sha256": "7584d93680bee677279fe6d5134d20b4de307bae6c995b30c09ddf0dfa79d084",
       "evidence": [
         "evidence/provided/cold41/subset/compiler-receipt.json.gz"
+      ],
+      "revalidations": [
+        {
+          "stage": 22,
+          "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+          "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+          "source_sha256": "7584d93680bee677279fe6d5134d20b4de307bae6c995b30c09ddf0dfa79d084",
+          "prior_source_sha256": "0ecee77fe44be5391e34d5efe8a45f2bd986bb61fc5272178262e07d34bfd2f9",
+          "status": "PASS_MODULE_AND_EXPLICIT_CONSUMER_REVALIDATION_NOT_AGGREGATE",
+          "evidence": [
+            "evidence/current-codex/stage22/runner/CHECK_RESULT.json"
+          ],
+          "root_count_delta": 0,
+          "full_release_acceptance": false
+        }
       ]
     },
     {
@@ -330,6 +435,21 @@
       "source_sha256": "eed074e8857b15a7f4794a4a346740aa4743560a9d72395cd4d3d917baba6125",
       "evidence": [
         "evidence/provided/cold41/subset/compiler-receipt.json.gz"
+      ],
+      "revalidations": [
+        {
+          "stage": 22,
+          "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+          "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+          "source_sha256": "eed074e8857b15a7f4794a4a346740aa4743560a9d72395cd4d3d917baba6125",
+          "prior_source_sha256": "eed074e8857b15a7f4794a4a346740aa4743560a9d72395cd4d3d917baba6125",
+          "status": "PASS_MODULE_AND_EXPLICIT_CONSUMER_REVALIDATION_NOT_AGGREGATE",
+          "evidence": [
+            "evidence/current-codex/stage22/runner/CHECK_RESULT.json"
+          ],
+          "root_count_delta": 0,
+          "full_release_acceptance": false
+        }
       ]
     },
     {
@@ -370,6 +490,21 @@
       "source_sha256": "eed074e8857b15a7f4794a4a346740aa4743560a9d72395cd4d3d917baba6125",
       "evidence": [
         "evidence/provided/cold41/subset/compiler-receipt.json.gz"
+      ],
+      "revalidations": [
+        {
+          "stage": 22,
+          "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+          "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+          "source_sha256": "eed074e8857b15a7f4794a4a346740aa4743560a9d72395cd4d3d917baba6125",
+          "prior_source_sha256": "eed074e8857b15a7f4794a4a346740aa4743560a9d72395cd4d3d917baba6125",
+          "status": "PASS_MODULE_AND_EXPLICIT_CONSUMER_REVALIDATION_NOT_AGGREGATE",
+          "evidence": [
+            "evidence/current-codex/stage22/runner/CHECK_RESULT.json"
+          ],
+          "root_count_delta": 0,
+          "full_release_acceptance": false
+        }
       ]
     },
     {
@@ -410,6 +545,21 @@
       "source_sha256": "eed074e8857b15a7f4794a4a346740aa4743560a9d72395cd4d3d917baba6125",
       "evidence": [
         "evidence/provided/cold41/subset/compiler-receipt.json.gz"
+      ],
+      "revalidations": [
+        {
+          "stage": 22,
+          "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+          "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+          "source_sha256": "eed074e8857b15a7f4794a4a346740aa4743560a9d72395cd4d3d917baba6125",
+          "prior_source_sha256": "eed074e8857b15a7f4794a4a346740aa4743560a9d72395cd4d3d917baba6125",
+          "status": "PASS_MODULE_AND_EXPLICIT_CONSUMER_REVALIDATION_NOT_AGGREGATE",
+          "evidence": [
+            "evidence/current-codex/stage22/runner/CHECK_RESULT.json"
+          ],
+          "root_count_delta": 0,
+          "full_release_acceptance": false
+        }
       ]
     },
     {
@@ -450,6 +600,21 @@
       "source_sha256": "eed074e8857b15a7f4794a4a346740aa4743560a9d72395cd4d3d917baba6125",
       "evidence": [
         "evidence/provided/cold41/subset/compiler-receipt.json.gz"
+      ],
+      "revalidations": [
+        {
+          "stage": 22,
+          "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+          "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+          "source_sha256": "eed074e8857b15a7f4794a4a346740aa4743560a9d72395cd4d3d917baba6125",
+          "prior_source_sha256": "eed074e8857b15a7f4794a4a346740aa4743560a9d72395cd4d3d917baba6125",
+          "status": "PASS_MODULE_AND_EXPLICIT_CONSUMER_REVALIDATION_NOT_AGGREGATE",
+          "evidence": [
+            "evidence/current-codex/stage22/runner/CHECK_RESULT.json"
+          ],
+          "root_count_delta": 0,
+          "full_release_acceptance": false
+        }
       ]
     },
     {
@@ -490,6 +655,21 @@
       "source_sha256": "4a56926bb024d939c35cd4b137c1dd9b75752d8d24089aab5ff63163079f2fdf",
       "evidence": [
         "evidence/provided/cold41/subset/compiler-receipt.json.gz"
+      ],
+      "revalidations": [
+        {
+          "stage": 22,
+          "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+          "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+          "source_sha256": "4a56926bb024d939c35cd4b137c1dd9b75752d8d24089aab5ff63163079f2fdf",
+          "prior_source_sha256": "4a56926bb024d939c35cd4b137c1dd9b75752d8d24089aab5ff63163079f2fdf",
+          "status": "PASS_MODULE_AND_EXPLICIT_CONSUMER_REVALIDATION_NOT_AGGREGATE",
+          "evidence": [
+            "evidence/current-codex/stage22/runner/CHECK_RESULT.json"
+          ],
+          "root_count_delta": 0,
+          "full_release_acceptance": false
+        }
       ]
     },
     {
@@ -530,6 +710,21 @@
       "source_sha256": "4a56926bb024d939c35cd4b137c1dd9b75752d8d24089aab5ff63163079f2fdf",
       "evidence": [
         "evidence/provided/cold41/subset/compiler-receipt.json.gz"
+      ],
+      "revalidations": [
+        {
+          "stage": 22,
+          "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+          "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+          "source_sha256": "4a56926bb024d939c35cd4b137c1dd9b75752d8d24089aab5ff63163079f2fdf",
+          "prior_source_sha256": "4a56926bb024d939c35cd4b137c1dd9b75752d8d24089aab5ff63163079f2fdf",
+          "status": "PASS_MODULE_AND_EXPLICIT_CONSUMER_REVALIDATION_NOT_AGGREGATE",
+          "evidence": [
+            "evidence/current-codex/stage22/runner/CHECK_RESULT.json"
+          ],
+          "root_count_delta": 0,
+          "full_release_acceptance": false
+        }
       ]
     },
     {
@@ -570,6 +765,21 @@
       "source_sha256": "4a56926bb024d939c35cd4b137c1dd9b75752d8d24089aab5ff63163079f2fdf",
       "evidence": [
         "evidence/provided/cold41/subset/compiler-receipt.json.gz"
+      ],
+      "revalidations": [
+        {
+          "stage": 22,
+          "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+          "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+          "source_sha256": "4a56926bb024d939c35cd4b137c1dd9b75752d8d24089aab5ff63163079f2fdf",
+          "prior_source_sha256": "4a56926bb024d939c35cd4b137c1dd9b75752d8d24089aab5ff63163079f2fdf",
+          "status": "PASS_MODULE_AND_EXPLICIT_CONSUMER_REVALIDATION_NOT_AGGREGATE",
+          "evidence": [
+            "evidence/current-codex/stage22/runner/CHECK_RESULT.json"
+          ],
+          "root_count_delta": 0,
+          "full_release_acceptance": false
+        }
       ]
     },
     {
@@ -610,6 +820,21 @@
       "source_sha256": "4a56926bb024d939c35cd4b137c1dd9b75752d8d24089aab5ff63163079f2fdf",
       "evidence": [
         "evidence/provided/cold41/subset/compiler-receipt.json.gz"
+      ],
+      "revalidations": [
+        {
+          "stage": 22,
+          "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+          "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+          "source_sha256": "4a56926bb024d939c35cd4b137c1dd9b75752d8d24089aab5ff63163079f2fdf",
+          "prior_source_sha256": "4a56926bb024d939c35cd4b137c1dd9b75752d8d24089aab5ff63163079f2fdf",
+          "status": "PASS_MODULE_AND_EXPLICIT_CONSUMER_REVALIDATION_NOT_AGGREGATE",
+          "evidence": [
+            "evidence/current-codex/stage22/runner/CHECK_RESULT.json"
+          ],
+          "root_count_delta": 0,
+          "full_release_acceptance": false
+        }
       ]
     },
     {
@@ -647,9 +872,24 @@
       },
       "source_file_present": true,
       "declaration_lexically_present": true,
-      "source_sha256": "b6670b9ad6d89b43337f4298ef4f411deb216e6426b86f60c670c1e46ef89179",
+      "source_sha256": "8a6feb290570d7f6bf8a415489a86f91966bbbdefec5083fa7df6eafe269c162",
       "evidence": [
         "evidence/provided/cold41/subset/compiler-receipt.json.gz"
+      ],
+      "revalidations": [
+        {
+          "stage": 22,
+          "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+          "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+          "source_sha256": "8a6feb290570d7f6bf8a415489a86f91966bbbdefec5083fa7df6eafe269c162",
+          "prior_source_sha256": "b6670b9ad6d89b43337f4298ef4f411deb216e6426b86f60c670c1e46ef89179",
+          "status": "PASS_MODULE_AND_EXPLICIT_CONSUMER_REVALIDATION_NOT_AGGREGATE",
+          "evidence": [
+            "evidence/current-codex/stage22/runner/CHECK_RESULT.json"
+          ],
+          "root_count_delta": 0,
+          "full_release_acceptance": false
+        }
       ]
     },
     {
@@ -687,9 +927,24 @@
       },
       "source_file_present": true,
       "declaration_lexically_present": true,
-      "source_sha256": "b6670b9ad6d89b43337f4298ef4f411deb216e6426b86f60c670c1e46ef89179",
+      "source_sha256": "8a6feb290570d7f6bf8a415489a86f91966bbbdefec5083fa7df6eafe269c162",
       "evidence": [
         "evidence/provided/cold41/subset/compiler-receipt.json.gz"
+      ],
+      "revalidations": [
+        {
+          "stage": 22,
+          "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+          "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+          "source_sha256": "8a6feb290570d7f6bf8a415489a86f91966bbbdefec5083fa7df6eafe269c162",
+          "prior_source_sha256": "b6670b9ad6d89b43337f4298ef4f411deb216e6426b86f60c670c1e46ef89179",
+          "status": "PASS_MODULE_AND_EXPLICIT_CONSUMER_REVALIDATION_NOT_AGGREGATE",
+          "evidence": [
+            "evidence/current-codex/stage22/runner/CHECK_RESULT.json"
+          ],
+          "root_count_delta": 0,
+          "full_release_acceptance": false
+        }
       ]
     },
     {
@@ -727,9 +982,24 @@
       },
       "source_file_present": true,
       "declaration_lexically_present": true,
-      "source_sha256": "b6670b9ad6d89b43337f4298ef4f411deb216e6426b86f60c670c1e46ef89179",
+      "source_sha256": "8a6feb290570d7f6bf8a415489a86f91966bbbdefec5083fa7df6eafe269c162",
       "evidence": [
         "evidence/provided/cold41/subset/compiler-receipt.json.gz"
+      ],
+      "revalidations": [
+        {
+          "stage": 22,
+          "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+          "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+          "source_sha256": "8a6feb290570d7f6bf8a415489a86f91966bbbdefec5083fa7df6eafe269c162",
+          "prior_source_sha256": "b6670b9ad6d89b43337f4298ef4f411deb216e6426b86f60c670c1e46ef89179",
+          "status": "PASS_MODULE_AND_EXPLICIT_CONSUMER_REVALIDATION_NOT_AGGREGATE",
+          "evidence": [
+            "evidence/current-codex/stage22/runner/CHECK_RESULT.json"
+          ],
+          "root_count_delta": 0,
+          "full_release_acceptance": false
+        }
       ]
     },
     {
@@ -767,9 +1037,24 @@
       },
       "source_file_present": true,
       "declaration_lexically_present": true,
-      "source_sha256": "b6670b9ad6d89b43337f4298ef4f411deb216e6426b86f60c670c1e46ef89179",
+      "source_sha256": "8a6feb290570d7f6bf8a415489a86f91966bbbdefec5083fa7df6eafe269c162",
       "evidence": [
         "evidence/provided/cold41/subset/compiler-receipt.json.gz"
+      ],
+      "revalidations": [
+        {
+          "stage": 22,
+          "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+          "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+          "source_sha256": "8a6feb290570d7f6bf8a415489a86f91966bbbdefec5083fa7df6eafe269c162",
+          "prior_source_sha256": "b6670b9ad6d89b43337f4298ef4f411deb216e6426b86f60c670c1e46ef89179",
+          "status": "PASS_MODULE_AND_EXPLICIT_CONSUMER_REVALIDATION_NOT_AGGREGATE",
+          "evidence": [
+            "evidence/current-codex/stage22/runner/CHECK_RESULT.json"
+          ],
+          "root_count_delta": 0,
+          "full_release_acceptance": false
+        }
       ]
     },
     {
@@ -807,9 +1092,24 @@
       },
       "source_file_present": true,
       "declaration_lexically_present": true,
-      "source_sha256": "b6670b9ad6d89b43337f4298ef4f411deb216e6426b86f60c670c1e46ef89179",
+      "source_sha256": "8a6feb290570d7f6bf8a415489a86f91966bbbdefec5083fa7df6eafe269c162",
       "evidence": [
         "evidence/provided/cold41/subset/compiler-receipt.json.gz"
+      ],
+      "revalidations": [
+        {
+          "stage": 22,
+          "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+          "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+          "source_sha256": "8a6feb290570d7f6bf8a415489a86f91966bbbdefec5083fa7df6eafe269c162",
+          "prior_source_sha256": "b6670b9ad6d89b43337f4298ef4f411deb216e6426b86f60c670c1e46ef89179",
+          "status": "PASS_MODULE_AND_EXPLICIT_CONSUMER_REVALIDATION_NOT_AGGREGATE",
+          "evidence": [
+            "evidence/current-codex/stage22/runner/CHECK_RESULT.json"
+          ],
+          "root_count_delta": 0,
+          "full_release_acceptance": false
+        }
       ]
     },
     {
@@ -850,6 +1150,21 @@
       "source_sha256": "95a832fc0749f970b09d151a2626c9961bc804c54e7542637d1e045853a70dbb",
       "evidence": [
         "evidence/provided/cold41/subset/compiler-receipt.json.gz"
+      ],
+      "revalidations": [
+        {
+          "stage": 22,
+          "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+          "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+          "source_sha256": "95a832fc0749f970b09d151a2626c9961bc804c54e7542637d1e045853a70dbb",
+          "prior_source_sha256": "95a832fc0749f970b09d151a2626c9961bc804c54e7542637d1e045853a70dbb",
+          "status": "PASS_MODULE_AND_EXPLICIT_CONSUMER_REVALIDATION_NOT_AGGREGATE",
+          "evidence": [
+            "evidence/current-codex/stage22/runner/CHECK_RESULT.json"
+          ],
+          "root_count_delta": 0,
+          "full_release_acceptance": false
+        }
       ]
     },
     {
@@ -890,6 +1205,21 @@
       "source_sha256": "95a832fc0749f970b09d151a2626c9961bc804c54e7542637d1e045853a70dbb",
       "evidence": [
         "evidence/provided/cold41/subset/compiler-receipt.json.gz"
+      ],
+      "revalidations": [
+        {
+          "stage": 22,
+          "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+          "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+          "source_sha256": "95a832fc0749f970b09d151a2626c9961bc804c54e7542637d1e045853a70dbb",
+          "prior_source_sha256": "95a832fc0749f970b09d151a2626c9961bc804c54e7542637d1e045853a70dbb",
+          "status": "PASS_MODULE_AND_EXPLICIT_CONSUMER_REVALIDATION_NOT_AGGREGATE",
+          "evidence": [
+            "evidence/current-codex/stage22/runner/CHECK_RESULT.json"
+          ],
+          "root_count_delta": 0,
+          "full_release_acceptance": false
+        }
       ]
     },
     {
@@ -931,6 +1261,21 @@
       "source_sha256": "95a832fc0749f970b09d151a2626c9961bc804c54e7542637d1e045853a70dbb",
       "evidence": [
         "evidence/provided/cold41/subset/compiler-receipt.json.gz"
+      ],
+      "revalidations": [
+        {
+          "stage": 22,
+          "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+          "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+          "source_sha256": "95a832fc0749f970b09d151a2626c9961bc804c54e7542637d1e045853a70dbb",
+          "prior_source_sha256": "95a832fc0749f970b09d151a2626c9961bc804c54e7542637d1e045853a70dbb",
+          "status": "PASS_MODULE_AND_EXPLICIT_CONSUMER_REVALIDATION_NOT_AGGREGATE",
+          "evidence": [
+            "evidence/current-codex/stage22/runner/CHECK_RESULT.json"
+          ],
+          "root_count_delta": 0,
+          "full_release_acceptance": false
+        }
       ]
     },
     {
@@ -971,6 +1316,21 @@
       "source_sha256": "15b8284f0d2062957fa22cbbcef50a60c44cde67184ab82032e81a385fd8d229",
       "evidence": [
         "evidence/provided/cold41/subset/compiler-receipt.json.gz"
+      ],
+      "revalidations": [
+        {
+          "stage": 22,
+          "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+          "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+          "source_sha256": "15b8284f0d2062957fa22cbbcef50a60c44cde67184ab82032e81a385fd8d229",
+          "prior_source_sha256": "15b8284f0d2062957fa22cbbcef50a60c44cde67184ab82032e81a385fd8d229",
+          "status": "PASS_MODULE_AND_EXPLICIT_CONSUMER_REVALIDATION_NOT_AGGREGATE",
+          "evidence": [
+            "evidence/current-codex/stage22/runner/CHECK_RESULT.json"
+          ],
+          "root_count_delta": 0,
+          "full_release_acceptance": false
+        }
       ]
     },
     {
@@ -1011,6 +1371,21 @@
       "source_sha256": "d8d2498bfbfdd60dd40dfd6bd9f089ed5fb010129fba0efb7815d3c66f647e58",
       "evidence": [
         "evidence/provided/cold41/subset/compiler-receipt.json.gz"
+      ],
+      "revalidations": [
+        {
+          "stage": 22,
+          "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+          "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+          "source_sha256": "d8d2498bfbfdd60dd40dfd6bd9f089ed5fb010129fba0efb7815d3c66f647e58",
+          "prior_source_sha256": "d8d2498bfbfdd60dd40dfd6bd9f089ed5fb010129fba0efb7815d3c66f647e58",
+          "status": "PASS_MODULE_AND_EXPLICIT_CONSUMER_REVALIDATION_NOT_AGGREGATE",
+          "evidence": [
+            "evidence/current-codex/stage22/runner/CHECK_RESULT.json"
+          ],
+          "root_count_delta": 0,
+          "full_release_acceptance": false
+        }
       ]
     },
     {
@@ -1051,6 +1426,21 @@
       "source_sha256": "60e639f880f12caccecc2ba469a1fd65e407f30bcc9a0328685c4405d797de1f",
       "evidence": [
         "evidence/provided/cold41/subset/compiler-receipt.json.gz"
+      ],
+      "revalidations": [
+        {
+          "stage": 22,
+          "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+          "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+          "source_sha256": "60e639f880f12caccecc2ba469a1fd65e407f30bcc9a0328685c4405d797de1f",
+          "prior_source_sha256": "60e639f880f12caccecc2ba469a1fd65e407f30bcc9a0328685c4405d797de1f",
+          "status": "PASS_MODULE_AND_EXPLICIT_CONSUMER_REVALIDATION_NOT_AGGREGATE",
+          "evidence": [
+            "evidence/current-codex/stage22/runner/CHECK_RESULT.json"
+          ],
+          "root_count_delta": 0,
+          "full_release_acceptance": false
+        }
       ]
     },
     {
@@ -1091,6 +1481,21 @@
       "source_sha256": "60e639f880f12caccecc2ba469a1fd65e407f30bcc9a0328685c4405d797de1f",
       "evidence": [
         "evidence/provided/cold41/subset/compiler-receipt.json.gz"
+      ],
+      "revalidations": [
+        {
+          "stage": 22,
+          "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+          "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+          "source_sha256": "60e639f880f12caccecc2ba469a1fd65e407f30bcc9a0328685c4405d797de1f",
+          "prior_source_sha256": "60e639f880f12caccecc2ba469a1fd65e407f30bcc9a0328685c4405d797de1f",
+          "status": "PASS_MODULE_AND_EXPLICIT_CONSUMER_REVALIDATION_NOT_AGGREGATE",
+          "evidence": [
+            "evidence/current-codex/stage22/runner/CHECK_RESULT.json"
+          ],
+          "root_count_delta": 0,
+          "full_release_acceptance": false
+        }
       ]
     },
     {
@@ -1131,6 +1536,21 @@
       "source_sha256": "921728358a333c7b3e6d2bbc94d1cefc942b3f79ed7011a972e8c906bbb5dc0c",
       "evidence": [
         "evidence/provided/cold41/subset/compiler-receipt.json.gz"
+      ],
+      "revalidations": [
+        {
+          "stage": 22,
+          "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+          "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+          "source_sha256": "921728358a333c7b3e6d2bbc94d1cefc942b3f79ed7011a972e8c906bbb5dc0c",
+          "prior_source_sha256": "921728358a333c7b3e6d2bbc94d1cefc942b3f79ed7011a972e8c906bbb5dc0c",
+          "status": "PASS_MODULE_AND_EXPLICIT_CONSUMER_REVALIDATION_NOT_AGGREGATE",
+          "evidence": [
+            "evidence/current-codex/stage22/runner/CHECK_RESULT.json"
+          ],
+          "root_count_delta": 0,
+          "full_release_acceptance": false
+        }
       ]
     },
     {
@@ -1172,6 +1592,21 @@
       "source_sha256": "921728358a333c7b3e6d2bbc94d1cefc942b3f79ed7011a972e8c906bbb5dc0c",
       "evidence": [
         "evidence/provided/cold41/subset/compiler-receipt.json.gz"
+      ],
+      "revalidations": [
+        {
+          "stage": 22,
+          "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+          "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+          "source_sha256": "921728358a333c7b3e6d2bbc94d1cefc942b3f79ed7011a972e8c906bbb5dc0c",
+          "prior_source_sha256": "921728358a333c7b3e6d2bbc94d1cefc942b3f79ed7011a972e8c906bbb5dc0c",
+          "status": "PASS_MODULE_AND_EXPLICIT_CONSUMER_REVALIDATION_NOT_AGGREGATE",
+          "evidence": [
+            "evidence/current-codex/stage22/runner/CHECK_RESULT.json"
+          ],
+          "root_count_delta": 0,
+          "full_release_acceptance": false
+        }
       ]
     },
     {
@@ -1212,6 +1647,21 @@
       "source_sha256": "3f0d99fea24eb07cc57e4cc81359285a4a742c730b0db2147ec5bc894d41aa94",
       "evidence": [
         "evidence/provided/cold41/subset/compiler-receipt.json.gz"
+      ],
+      "revalidations": [
+        {
+          "stage": 22,
+          "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+          "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+          "source_sha256": "3f0d99fea24eb07cc57e4cc81359285a4a742c730b0db2147ec5bc894d41aa94",
+          "prior_source_sha256": "3f0d99fea24eb07cc57e4cc81359285a4a742c730b0db2147ec5bc894d41aa94",
+          "status": "PASS_MODULE_AND_EXPLICIT_CONSUMER_REVALIDATION_NOT_AGGREGATE",
+          "evidence": [
+            "evidence/current-codex/stage22/runner/CHECK_RESULT.json"
+          ],
+          "root_count_delta": 0,
+          "full_release_acceptance": false
+        }
       ]
     },
     {
@@ -1252,6 +1702,21 @@
       "source_sha256": "3f0d99fea24eb07cc57e4cc81359285a4a742c730b0db2147ec5bc894d41aa94",
       "evidence": [
         "evidence/provided/cold41/subset/compiler-receipt.json.gz"
+      ],
+      "revalidations": [
+        {
+          "stage": 22,
+          "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+          "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+          "source_sha256": "3f0d99fea24eb07cc57e4cc81359285a4a742c730b0db2147ec5bc894d41aa94",
+          "prior_source_sha256": "3f0d99fea24eb07cc57e4cc81359285a4a742c730b0db2147ec5bc894d41aa94",
+          "status": "PASS_MODULE_AND_EXPLICIT_CONSUMER_REVALIDATION_NOT_AGGREGATE",
+          "evidence": [
+            "evidence/current-codex/stage22/runner/CHECK_RESULT.json"
+          ],
+          "root_count_delta": 0,
+          "full_release_acceptance": false
+        }
       ]
     },
     {
@@ -1292,6 +1757,21 @@
       "source_sha256": "3f0d99fea24eb07cc57e4cc81359285a4a742c730b0db2147ec5bc894d41aa94",
       "evidence": [
         "evidence/provided/cold41/subset/compiler-receipt.json.gz"
+      ],
+      "revalidations": [
+        {
+          "stage": 22,
+          "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+          "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+          "source_sha256": "3f0d99fea24eb07cc57e4cc81359285a4a742c730b0db2147ec5bc894d41aa94",
+          "prior_source_sha256": "3f0d99fea24eb07cc57e4cc81359285a4a742c730b0db2147ec5bc894d41aa94",
+          "status": "PASS_MODULE_AND_EXPLICIT_CONSUMER_REVALIDATION_NOT_AGGREGATE",
+          "evidence": [
+            "evidence/current-codex/stage22/runner/CHECK_RESULT.json"
+          ],
+          "root_count_delta": 0,
+          "full_release_acceptance": false
+        }
       ]
     },
     {
@@ -1354,7 +1834,22 @@
         ],
         "aggregate_promotion": false,
         "scope": "Exact source-save and independently typed actual-domain consumers only; current aggregate export and full release remain OPEN."
-      }
+      },
+      "revalidations": [
+        {
+          "stage": 22,
+          "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+          "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+          "source_sha256": "3fcb70e2fa504b5ef14d44c5a9d862f9bac4c8853556ed6e64a6f7e1066545c4",
+          "prior_source_sha256": "3fcb70e2fa504b5ef14d44c5a9d862f9bac4c8853556ed6e64a6f7e1066545c4",
+          "status": "PASS_MODULE_AND_EXPLICIT_CONSUMER_REVALIDATION_NOT_AGGREGATE",
+          "evidence": [
+            "evidence/current-codex/stage22/runner/CHECK_RESULT.json"
+          ],
+          "root_count_delta": 0,
+          "full_release_acceptance": false
+        }
+      ]
     },
     {
       "id": "OPICA_FOLLOWUP_LOG_SLACK_MASKED_ENERGY_RATE_DIFFERENCE",
@@ -1416,7 +1911,22 @@
         ],
         "aggregate_promotion": false,
         "scope": "Exact source-save and independently typed actual-domain consumers only; current aggregate export and full release remain OPEN."
-      }
+      },
+      "revalidations": [
+        {
+          "stage": 22,
+          "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+          "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+          "source_sha256": "3fcb70e2fa504b5ef14d44c5a9d862f9bac4c8853556ed6e64a6f7e1066545c4",
+          "prior_source_sha256": "3fcb70e2fa504b5ef14d44c5a9d862f9bac4c8853556ed6e64a6f7e1066545c4",
+          "status": "PASS_MODULE_AND_EXPLICIT_CONSUMER_REVALIDATION_NOT_AGGREGATE",
+          "evidence": [
+            "evidence/current-codex/stage22/runner/CHECK_RESULT.json"
+          ],
+          "root_count_delta": 0,
+          "full_release_acceptance": false
+        }
+      ]
     },
     {
       "id": "OPICA_FOLLOWUP_NATIVE_ZERO_COUNT_SUMMABILITY",
@@ -1456,6 +1966,21 @@
       "source_sha256": "442a2601350001ea50a18db8d761a555fae3279851f438959a8e4a854eedcca5",
       "evidence": [
         "evidence/provided/cold41/subset/compiler-receipt.json.gz"
+      ],
+      "revalidations": [
+        {
+          "stage": 22,
+          "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+          "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+          "source_sha256": "442a2601350001ea50a18db8d761a555fae3279851f438959a8e4a854eedcca5",
+          "prior_source_sha256": "442a2601350001ea50a18db8d761a555fae3279851f438959a8e4a854eedcca5",
+          "status": "PASS_MODULE_AND_EXPLICIT_CONSUMER_REVALIDATION_NOT_AGGREGATE",
+          "evidence": [
+            "evidence/current-codex/stage22/runner/CHECK_RESULT.json"
+          ],
+          "root_count_delta": 0,
+          "full_release_acceptance": false
+        }
       ]
     },
     {
@@ -1496,6 +2021,21 @@
       "source_sha256": "442a2601350001ea50a18db8d761a555fae3279851f438959a8e4a854eedcca5",
       "evidence": [
         "evidence/provided/cold41/subset/compiler-receipt.json.gz"
+      ],
+      "revalidations": [
+        {
+          "stage": 22,
+          "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+          "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+          "source_sha256": "442a2601350001ea50a18db8d761a555fae3279851f438959a8e4a854eedcca5",
+          "prior_source_sha256": "442a2601350001ea50a18db8d761a555fae3279851f438959a8e4a854eedcca5",
+          "status": "PASS_MODULE_AND_EXPLICIT_CONSUMER_REVALIDATION_NOT_AGGREGATE",
+          "evidence": [
+            "evidence/current-codex/stage22/runner/CHECK_RESULT.json"
+          ],
+          "root_count_delta": 0,
+          "full_release_acceptance": false
+        }
       ]
     },
     {
@@ -1537,6 +2077,21 @@
       "source_sha256": "442a2601350001ea50a18db8d761a555fae3279851f438959a8e4a854eedcca5",
       "evidence": [
         "evidence/provided/cold41/subset/compiler-receipt.json.gz"
+      ],
+      "revalidations": [
+        {
+          "stage": 22,
+          "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+          "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+          "source_sha256": "442a2601350001ea50a18db8d761a555fae3279851f438959a8e4a854eedcca5",
+          "prior_source_sha256": "442a2601350001ea50a18db8d761a555fae3279851f438959a8e4a854eedcca5",
+          "status": "PASS_MODULE_AND_EXPLICIT_CONSUMER_REVALIDATION_NOT_AGGREGATE",
+          "evidence": [
+            "evidence/current-codex/stage22/runner/CHECK_RESULT.json"
+          ],
+          "root_count_delta": 0,
+          "full_release_acceptance": false
+        }
       ]
     },
     {
@@ -1578,6 +2133,21 @@
       "source_sha256": "4c27940d617e68a78e17d7d4bde902558e60d6a2783abc86b2759cef0a3ceb04",
       "evidence": [
         "evidence/provided/cold41/subset/compiler-receipt.json.gz"
+      ],
+      "revalidations": [
+        {
+          "stage": 22,
+          "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+          "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+          "source_sha256": "4c27940d617e68a78e17d7d4bde902558e60d6a2783abc86b2759cef0a3ceb04",
+          "prior_source_sha256": "4c27940d617e68a78e17d7d4bde902558e60d6a2783abc86b2759cef0a3ceb04",
+          "status": "PASS_MODULE_AND_EXPLICIT_CONSUMER_REVALIDATION_NOT_AGGREGATE",
+          "evidence": [
+            "evidence/current-codex/stage22/runner/CHECK_RESULT.json"
+          ],
+          "root_count_delta": 0,
+          "full_release_acceptance": false
+        }
       ]
     },
     {
@@ -1619,6 +2189,21 @@
       "source_sha256": "4c27940d617e68a78e17d7d4bde902558e60d6a2783abc86b2759cef0a3ceb04",
       "evidence": [
         "evidence/provided/cold41/subset/compiler-receipt.json.gz"
+      ],
+      "revalidations": [
+        {
+          "stage": 22,
+          "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+          "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+          "source_sha256": "4c27940d617e68a78e17d7d4bde902558e60d6a2783abc86b2759cef0a3ceb04",
+          "prior_source_sha256": "4c27940d617e68a78e17d7d4bde902558e60d6a2783abc86b2759cef0a3ceb04",
+          "status": "PASS_MODULE_AND_EXPLICIT_CONSUMER_REVALIDATION_NOT_AGGREGATE",
+          "evidence": [
+            "evidence/current-codex/stage22/runner/CHECK_RESULT.json"
+          ],
+          "root_count_delta": 0,
+          "full_release_acceptance": false
+        }
       ]
     },
     {
@@ -1681,7 +2266,22 @@
         ],
         "aggregate_promotion": false,
         "scope": "Exact source-save and independently typed actual-domain consumers only; current aggregate export and full release remain OPEN."
-      }
+      },
+      "revalidations": [
+        {
+          "stage": 22,
+          "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+          "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+          "source_sha256": "4dd849389b193ec3fbdbe718c30d62c7212b2d9e4b369437640d8b81804746dd",
+          "prior_source_sha256": "4dd849389b193ec3fbdbe718c30d62c7212b2d9e4b369437640d8b81804746dd",
+          "status": "PASS_MODULE_AND_EXPLICIT_CONSUMER_REVALIDATION_NOT_AGGREGATE",
+          "evidence": [
+            "evidence/current-codex/stage22/runner/CHECK_RESULT.json"
+          ],
+          "root_count_delta": 0,
+          "full_release_acceptance": false
+        }
+      ]
     },
     {
       "id": "OPICA_FOLLOWUP_AUX_COMPLETION_UNIFORM_DECAY",
@@ -1743,7 +2343,22 @@
         ],
         "aggregate_promotion": false,
         "scope": "Exact source-save and independently typed actual-domain consumers only; current aggregate export and full release remain OPEN."
-      }
+      },
+      "revalidations": [
+        {
+          "stage": 22,
+          "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+          "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+          "source_sha256": "4dd849389b193ec3fbdbe718c30d62c7212b2d9e4b369437640d8b81804746dd",
+          "prior_source_sha256": "4dd849389b193ec3fbdbe718c30d62c7212b2d9e4b369437640d8b81804746dd",
+          "status": "PASS_MODULE_AND_EXPLICIT_CONSUMER_REVALIDATION_NOT_AGGREGATE",
+          "evidence": [
+            "evidence/current-codex/stage22/runner/CHECK_RESULT.json"
+          ],
+          "root_count_delta": 0,
+          "full_release_acceptance": false
+        }
+      ]
     },
     {
       "id": "OPICA_FOLLOWUP_AUX_COMPLETION_RATIO_BOUNDS",
@@ -1805,7 +2420,22 @@
         ],
         "aggregate_promotion": false,
         "scope": "Exact source-save and independently typed actual-domain consumers only; current aggregate export and full release remain OPEN."
-      }
+      },
+      "revalidations": [
+        {
+          "stage": 22,
+          "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+          "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+          "source_sha256": "4dd849389b193ec3fbdbe718c30d62c7212b2d9e4b369437640d8b81804746dd",
+          "prior_source_sha256": "4dd849389b193ec3fbdbe718c30d62c7212b2d9e4b369437640d8b81804746dd",
+          "status": "PASS_MODULE_AND_EXPLICIT_CONSUMER_REVALIDATION_NOT_AGGREGATE",
+          "evidence": [
+            "evidence/current-codex/stage22/runner/CHECK_RESULT.json"
+          ],
+          "root_count_delta": 0,
+          "full_release_acceptance": false
+        }
+      ]
     },
     {
       "id": "OPICA_FOLLOWUP_NATIVE_AUXILIARY_TOP_MOMENT",
@@ -1850,7 +2480,22 @@
       "independent_consumer": {
         "path": "consumers/ExpectedMultiplicity.lean",
         "sha256": "7457d65c129374a9f13bbee5e2dd67f53882eb64fd56dfb0d6ff5e673e85498f"
-      }
+      },
+      "revalidations": [
+        {
+          "stage": 22,
+          "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+          "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+          "source_sha256": "43466c43684b91e5f4cff2b34ea5df178d1bf196c35946e8411bab9cdfb2e123",
+          "prior_source_sha256": "43466c43684b91e5f4cff2b34ea5df178d1bf196c35946e8411bab9cdfb2e123",
+          "status": "PASS_MODULE_AND_EXPLICIT_CONSUMER_REVALIDATION_NOT_AGGREGATE",
+          "evidence": [
+            "evidence/current-codex/stage22/runner/CHECK_RESULT.json"
+          ],
+          "root_count_delta": 0,
+          "full_release_acceptance": false
+        }
+      ]
     },
     {
       "id": "OPICA_FOLLOWUP_LAGUERRE_TAIL_NORM",
@@ -1896,7 +2541,22 @@
       "independent_consumer": {
         "path": "consumers/ExpectedMultiplicity.lean",
         "sha256": "7457d65c129374a9f13bbee5e2dd67f53882eb64fd56dfb0d6ff5e673e85498f"
-      }
+      },
+      "revalidations": [
+        {
+          "stage": 22,
+          "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+          "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+          "source_sha256": "43466c43684b91e5f4cff2b34ea5df178d1bf196c35946e8411bab9cdfb2e123",
+          "prior_source_sha256": "43466c43684b91e5f4cff2b34ea5df178d1bf196c35946e8411bab9cdfb2e123",
+          "status": "PASS_MODULE_AND_EXPLICIT_CONSUMER_REVALIDATION_NOT_AGGREGATE",
+          "evidence": [
+            "evidence/current-codex/stage22/runner/CHECK_RESULT.json"
+          ],
+          "root_count_delta": 0,
+          "full_release_acceptance": false
+        }
+      ]
     },
     {
       "id": "OPICA_FOLLOWUP_NATIVE_AUXILIARY_TAIL_RESIDUAL_LOWER",
@@ -1941,7 +2601,22 @@
       "independent_consumer": {
         "path": "consumers/ExpectedMultiplicity.lean",
         "sha256": "7457d65c129374a9f13bbee5e2dd67f53882eb64fd56dfb0d6ff5e673e85498f"
-      }
+      },
+      "revalidations": [
+        {
+          "stage": 22,
+          "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+          "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+          "source_sha256": "43466c43684b91e5f4cff2b34ea5df178d1bf196c35946e8411bab9cdfb2e123",
+          "prior_source_sha256": "43466c43684b91e5f4cff2b34ea5df178d1bf196c35946e8411bab9cdfb2e123",
+          "status": "PASS_MODULE_AND_EXPLICIT_CONSUMER_REVALIDATION_NOT_AGGREGATE",
+          "evidence": [
+            "evidence/current-codex/stage22/runner/CHECK_RESULT.json"
+          ],
+          "root_count_delta": 0,
+          "full_release_acceptance": false
+        }
+      ]
     },
     {
       "id": "OPICA_FOLLOWUP_NATIVE_TERMINAL_MEMORY_LOWER",
@@ -1986,7 +2661,22 @@
       "independent_consumer": {
         "path": "consumers/ExpectedMultiplicity.lean",
         "sha256": "7457d65c129374a9f13bbee5e2dd67f53882eb64fd56dfb0d6ff5e673e85498f"
-      }
+      },
+      "revalidations": [
+        {
+          "stage": 22,
+          "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+          "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+          "source_sha256": "43466c43684b91e5f4cff2b34ea5df178d1bf196c35946e8411bab9cdfb2e123",
+          "prior_source_sha256": "43466c43684b91e5f4cff2b34ea5df178d1bf196c35946e8411bab9cdfb2e123",
+          "status": "PASS_MODULE_AND_EXPLICIT_CONSUMER_REVALIDATION_NOT_AGGREGATE",
+          "evidence": [
+            "evidence/current-codex/stage22/runner/CHECK_RESULT.json"
+          ],
+          "root_count_delta": 0,
+          "full_release_acceptance": false
+        }
+      ]
     },
     {
       "id": "OPICA_FOLLOWUP_NATIVE_FIXED_SOURCE_WINDOW_RATE",
@@ -2033,7 +2723,22 @@
         "sha256": "0adcee1919d6a4bc897a7c9bd0077e772c6faf3dce8e6c7a3ae93bebc1b256c1",
         "expected_declaration": "IndependentPhysicalWindowRates.expected_fixed_source"
       },
-      "statement_formalization": "For each fixed d>=0,C>1, Tendsto [log(1+integral_[T-C log T,T]|F_d|^2)/(2T)] atTop (nhds Theta), including the Theta=0 case and arbitrary zero multiplicity. Exact current physical/domain audit: ACTUAL_CONTINUOUS_WINDOW_ALL_SOURCE_ORDERS_C_GT_ONE_THETA_ZERO_ALL_MULTIPLICITIES. Original contracts unchanged; no synthetic substitute or caller-supplied conclusion."
+      "statement_formalization": "For each fixed d>=0,C>1, Tendsto [log(1+integral_[T-C log T,T]|F_d|^2)/(2T)] atTop (nhds Theta), including the Theta=0 case and arbitrary zero multiplicity. Exact current physical/domain audit: ACTUAL_CONTINUOUS_WINDOW_ALL_SOURCE_ORDERS_C_GT_ONE_THETA_ZERO_ALL_MULTIPLICITIES. Original contracts unchanged; no synthetic substitute or caller-supplied conclusion.",
+      "revalidations": [
+        {
+          "stage": 22,
+          "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+          "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+          "source_sha256": "1b388ffd7828390307605cc4804d7d9e1400343a3bafa0858a9d76aa0f369b33",
+          "prior_source_sha256": "1b388ffd7828390307605cc4804d7d9e1400343a3bafa0858a9d76aa0f369b33",
+          "status": "PASS_MODULE_AND_EXPLICIT_CONSUMER_REVALIDATION_NOT_AGGREGATE",
+          "evidence": [
+            "evidence/current-codex/stage22/runner/CHECK_RESULT.json"
+          ],
+          "root_count_delta": 0,
+          "full_release_acceptance": false
+        }
+      ]
     },
     {
       "id": "OPICA_FOLLOWUP_NATIVE_SLOW_SOURCE_WINDOW_RATE",
@@ -2080,7 +2785,22 @@
         "sha256": "0adcee1919d6a4bc897a7c9bd0077e772c6faf3dce8e6c7a3ae93bebc1b256c1",
         "expected_declaration": "IndependentPhysicalWindowRates.expected_slow_source"
       },
-      "statement_formalization": "For any real cofinal horizons T_n (positive eventually; normalize a finite prefix for HorizonSchedule) and integer d_n with d_n log(d_n+2)=o(T_n), fixed C>1, the actual F_d_n window energy rate tends to Theta; source factor both signs priced. Exact current physical/domain audit: ARBITRARY_REAL_COFINAL_TIME_ORIGINAL_MS1_SCHEDULE_FINITE_NONPOSITIVE_PREFIX. Original contracts unchanged; no synthetic substitute or caller-supplied conclusion."
+      "statement_formalization": "For any real cofinal horizons T_n (positive eventually; normalize a finite prefix for HorizonSchedule) and integer d_n with d_n log(d_n+2)=o(T_n), fixed C>1, the actual F_d_n window energy rate tends to Theta; source factor both signs priced. Exact current physical/domain audit: ARBITRARY_REAL_COFINAL_TIME_ORIGINAL_MS1_SCHEDULE_FINITE_NONPOSITIVE_PREFIX. Original contracts unchanged; no synthetic substitute or caller-supplied conclusion.",
+      "revalidations": [
+        {
+          "stage": 22,
+          "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+          "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+          "source_sha256": "31fb27cf1e3f75a45b2ae1bfbf65625fc8784d7b6aba2f8251f9762be52ee51d",
+          "prior_source_sha256": "31fb27cf1e3f75a45b2ae1bfbf65625fc8784d7b6aba2f8251f9762be52ee51d",
+          "status": "PASS_MODULE_AND_EXPLICIT_CONSUMER_REVALIDATION_NOT_AGGREGATE",
+          "evidence": [
+            "evidence/current-codex/stage22/runner/CHECK_RESULT.json"
+          ],
+          "root_count_delta": 0,
+          "full_release_acceptance": false
+        }
+      ]
     },
     {
       "id": "OPICA_FOLLOWUP_COMPLEX_LOCAL_MEASURE_EMBEDDING_FAITHFUL",
@@ -2142,7 +2862,22 @@
         ],
         "aggregate_promotion": false,
         "scope": "Exact source-save and independently typed actual-domain consumers only; current aggregate export and full release remain OPEN."
-      }
+      },
+      "revalidations": [
+        {
+          "stage": 22,
+          "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+          "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+          "source_sha256": "43d96d5474819b79c29853a81f8b4398f16d298470c2100fdade3fcada3a25b8",
+          "prior_source_sha256": "43d96d5474819b79c29853a81f8b4398f16d298470c2100fdade3fcada3a25b8",
+          "status": "PASS_MODULE_AND_EXPLICIT_CONSUMER_REVALIDATION_NOT_AGGREGATE",
+          "evidence": [
+            "evidence/current-codex/stage22/runner/CHECK_RESULT.json"
+          ],
+          "root_count_delta": 0,
+          "full_release_acceptance": false
+        }
+      ]
     },
     {
       "id": "OPICA_FOLLOWUP_DILATED_COMB_FOURIER",
@@ -2189,7 +2924,22 @@
       "independent_consumer": {
         "path": "consumers/ExpectedComb.lean",
         "sha256": "3a5305b65175d6b046075ecbebc9a9f37690e6677bb74ed9d3bd8796d58100f9"
-      }
+      },
+      "revalidations": [
+        {
+          "stage": 22,
+          "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+          "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+          "source_sha256": "f78c1f4d68c81d8dc0d7d65b4c355cdb68c2b22a3310e71766a1f9de245a2d31",
+          "prior_source_sha256": "f78c1f4d68c81d8dc0d7d65b4c355cdb68c2b22a3310e71766a1f9de245a2d31",
+          "status": "PASS_MODULE_AND_EXPLICIT_CONSUMER_REVALIDATION_NOT_AGGREGATE",
+          "evidence": [
+            "evidence/current-codex/stage22/runner/CHECK_RESULT.json"
+          ],
+          "root_count_delta": 0,
+          "full_release_acceptance": false
+        }
+      ]
     },
     {
       "id": "OPICA_FOLLOWUP_WEIGHTED_MIXTURE_EXISTS_FOURIER",
@@ -2235,7 +2985,22 @@
       "independent_consumer": {
         "path": "consumers/ExpectedWeighted.lean",
         "sha256": "e137ed312f799cd589126a89281470c9f45293bcccf1386598dd66de30639bad"
-      }
+      },
+      "revalidations": [
+        {
+          "stage": 22,
+          "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+          "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+          "source_sha256": "5225572875d72ef14c2adc912d0548b92f5bccf9fcec807830e5ef01ef04cf50",
+          "prior_source_sha256": "5225572875d72ef14c2adc912d0548b92f5bccf9fcec807830e5ef01ef04cf50",
+          "status": "PASS_MODULE_AND_EXPLICIT_CONSUMER_REVALIDATION_NOT_AGGREGATE",
+          "evidence": [
+            "evidence/current-codex/stage22/runner/CHECK_RESULT.json"
+          ],
+          "root_count_delta": 0,
+          "full_release_acceptance": false
+        }
+      ]
     },
     {
       "id": "OPICA_FOLLOWUP_WEIGHTED_MOBIUS_INVERSE",
@@ -2280,7 +3045,22 @@
         "path": "consumers/ExpectedWeightedInverse.lean",
         "sha256": "d803b68b053f867a4ca7fd51484dbc13ddd1508accca481aadd2d133f5dc5773"
       },
-      "statement_formalization": "Weighted measure algebra: positive measures with finite norm int e^(-a y); N = sum_n n^(-1/2) delta_(log n) and M_mu = M+ - M- (M+- the mu = +-1 lattice combs) are genuine measures; convolution is Mathlib Measure.conv (product measure), so absolute Fubini is used. eta = N * sigma is proved for each of the four Jordan coordinates of the actual mixture and in positive Jordan form; M_mu * N = delta_0 is stated as M+ * N = delta_0 + M- * N; sigma = M_mu * eta is stated for the real and imaginary parts in positive Jordan form (no subtraction of measures). Every term has finite weighted norm (proved), so these are the signed identities of the weighted algebra. The norm is exactly multiplicative; ||N|| = zeta(a+1/2); M+ and M- are mutually singular, so M+ + M- is the variation of M_mu and ||M_mu|| = sum |mu(n)| n^(-a-1/2) = zeta(a+1/2)/zeta(2a+1) (absolutely convergent squarefree Euler product). No premise added; strict a > 1/2 retained."
+      "statement_formalization": "Weighted measure algebra: positive measures with finite norm int e^(-a y); N = sum_n n^(-1/2) delta_(log n) and M_mu = M+ - M- (M+- the mu = +-1 lattice combs) are genuine measures; convolution is Mathlib Measure.conv (product measure), so absolute Fubini is used. eta = N * sigma is proved for each of the four Jordan coordinates of the actual mixture and in positive Jordan form; M_mu * N = delta_0 is stated as M+ * N = delta_0 + M- * N; sigma = M_mu * eta is stated for the real and imaginary parts in positive Jordan form (no subtraction of measures). Every term has finite weighted norm (proved), so these are the signed identities of the weighted algebra. The norm is exactly multiplicative; ||N|| = zeta(a+1/2); M+ and M- are mutually singular, so M+ + M- is the variation of M_mu and ||M_mu|| = sum |mu(n)| n^(-a-1/2) = zeta(a+1/2)/zeta(2a+1) (absolutely convergent squarefree Euler product). No premise added; strict a > 1/2 retained.",
+      "revalidations": [
+        {
+          "stage": 22,
+          "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+          "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+          "source_sha256": "5225572875d72ef14c2adc912d0548b92f5bccf9fcec807830e5ef01ef04cf50",
+          "prior_source_sha256": "5225572875d72ef14c2adc912d0548b92f5bccf9fcec807830e5ef01ef04cf50",
+          "status": "PASS_MODULE_AND_EXPLICIT_CONSUMER_REVALIDATION_NOT_AGGREGATE",
+          "evidence": [
+            "evidence/current-codex/stage22/runner/CHECK_RESULT.json"
+          ],
+          "root_count_delta": 0,
+          "full_release_acceptance": false
+        }
+      ]
     },
     {
       "id": "OPICA_FOLLOWUP_WEIGHTED_MIXTURE_SHARP_GAP",
@@ -2325,7 +3105,22 @@
         "path": "consumers/ExpectedWeightedInverse.lean",
         "sha256": "d803b68b053f867a4ca7fd51484dbc13ddd1508accca481aadd2d133f5dc5773"
       },
-      "statement_formalization": "Fourier self-duality is canonical self-duality of the actual tempered distribution of the mixture. The gap nu|(-1,1)\\{0} = 0 as a restriction of measures is formalized as nu.variationControl(Ioo(-1,1) \\ {0}) = 0, i.e. all four Jordan parts vanish there (equivalent). Conclusions: every mixing coordinate is a multiple of delta_0, sigma vanishes off the origin, nu = c Sha with c = sigma.integral 1 equal to the origin atom, and a zero origin atom forces all coordinates, the distribution and the variation of nu to vanish. No positivity premise; strict a > 1/2 retained. The consumer exhibits the actual delta_0 mixer satisfying both hypotheses."
+      "statement_formalization": "Fourier self-duality is canonical self-duality of the actual tempered distribution of the mixture. The gap nu|(-1,1)\\{0} = 0 as a restriction of measures is formalized as nu.variationControl(Ioo(-1,1) \\ {0}) = 0, i.e. all four Jordan parts vanish there (equivalent). Conclusions: every mixing coordinate is a multiple of delta_0, sigma vanishes off the origin, nu = c Sha with c = sigma.integral 1 equal to the origin atom, and a zero origin atom forces all coordinates, the distribution and the variation of nu to vanish. No positivity premise; strict a > 1/2 retained. The consumer exhibits the actual delta_0 mixer satisfying both hypotheses.",
+      "revalidations": [
+        {
+          "stage": 22,
+          "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+          "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+          "source_sha256": "5225572875d72ef14c2adc912d0548b92f5bccf9fcec807830e5ef01ef04cf50",
+          "prior_source_sha256": "5225572875d72ef14c2adc912d0548b92f5bccf9fcec807830e5ef01ef04cf50",
+          "status": "PASS_MODULE_AND_EXPLICIT_CONSUMER_REVALIDATION_NOT_AGGREGATE",
+          "evidence": [
+            "evidence/current-codex/stage22/runner/CHECK_RESULT.json"
+          ],
+          "root_count_delta": 0,
+          "full_release_acceptance": false
+        }
+      ]
     },
     {
       "id": "OPICA_FOLLOWUP_WEIGHTED_GAP_LEAKAGE",
@@ -2370,7 +3165,22 @@
         "path": "consumers/ExpectedWeightedInverse.lean",
         "sha256": "d803b68b053f867a4ca7fd51484dbc13ddd1508accca481aadd2d133f5dc5773"
       },
-      "statement_formalization": "(1) HT1.7 verbatim: zeta(2a+1)/zeta(a+1/2) int_(-oo,0) e^(-a t) d|sigma| <= int_(0,1) x^(-a-1/2) d|nu| with the genuine complex variations (LocallyFiniteComplexMeasure.totalVariation); the same exact bound is also proved for each real Jordan part and for the coordinate variation control. (2) HT1.9: zeta(2b+1)/zeta(b+1/2) sup_(t>=0) e^(b t)|h(t)| <= sup_(0<x<1) x^(1/2-b)|r_h(x)| for continuous even h with |h| <= H e^(-b|t|), b > 1/2, with no b-moment; stated for the pointwise representative r_h = x^(-1/2) sum h(log(x/n)) n^(-1/2) as in the paper. (3) finite a-moments for a < b. (4) an endpoint witness with infinite b-moment. (5) r_h is the actual density: for the genuine mixer h(t) dt (canonical Jordan pairs of Re h, Im h) the four coordinate mixtures have explicit finite densities D_i on (0,oo) and r_h = (D_0 - D_1) + i(D_2 - D_3). Not included (supporting, OPEN): r_h = O(x^(b-1/2)) and the affine-correction corollary of paper section 6.6."
+      "statement_formalization": "(1) HT1.7 verbatim: zeta(2a+1)/zeta(a+1/2) int_(-oo,0) e^(-a t) d|sigma| <= int_(0,1) x^(-a-1/2) d|nu| with the genuine complex variations (LocallyFiniteComplexMeasure.totalVariation); the same exact bound is also proved for each real Jordan part and for the coordinate variation control. (2) HT1.9: zeta(2b+1)/zeta(b+1/2) sup_(t>=0) e^(b t)|h(t)| <= sup_(0<x<1) x^(1/2-b)|r_h(x)| for continuous even h with |h| <= H e^(-b|t|), b > 1/2, with no b-moment; stated for the pointwise representative r_h = x^(-1/2) sum h(log(x/n)) n^(-1/2) as in the paper. (3) finite a-moments for a < b. (4) an endpoint witness with infinite b-moment. (5) r_h is the actual density: for the genuine mixer h(t) dt (canonical Jordan pairs of Re h, Im h) the four coordinate mixtures have explicit finite densities D_i on (0,oo) and r_h = (D_0 - D_1) + i(D_2 - D_3). Not included (supporting, OPEN): r_h = O(x^(b-1/2)) and the affine-correction corollary of paper section 6.6.",
+      "revalidations": [
+        {
+          "stage": 22,
+          "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+          "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+          "source_sha256": "5225572875d72ef14c2adc912d0548b92f5bccf9fcec807830e5ef01ef04cf50",
+          "prior_source_sha256": "5225572875d72ef14c2adc912d0548b92f5bccf9fcec807830e5ef01ef04cf50",
+          "status": "PASS_MODULE_AND_EXPLICIT_CONSUMER_REVALIDATION_NOT_AGGREGATE",
+          "evidence": [
+            "evidence/current-codex/stage22/runner/CHECK_RESULT.json"
+          ],
+          "root_count_delta": 0,
+          "full_release_acceptance": false
+        }
+      ]
     },
     {
       "id": "OPICA_FOLLOWUP_NEAR_GAP_MASS_BOUND",
@@ -2408,7 +3218,7 @@
       },
       "source_file_present": true,
       "declaration_lexically_present": true,
-      "source_sha256": "300aba8c18e0079c7df0b02dd804ed3d2dc266dacd18930c7bab962cf7dd8b35",
+      "source_sha256": "add140c0c5e9bb4c002d4a53d896f656dd380c13f526d44837de112c092f0a03",
       "evidence": [
         "evidence/current-codex/stage2/near-gap/STATUS.json",
         "evidence/current-codex/stage4/STATUS.json",
@@ -2418,7 +3228,22 @@
         "path": "consumers/ExpectedNearGap.lean",
         "sha256": "e6e20f293af961a40dbd26f944fa56fe1f7247c43acbf656c9afed3b53981e76"
       },
-      "actual_domain_limit": "Universal actual-carrier mass estimate and boundary consumers passed; the nonzero CT1 family instance passed in Stage 4, and the bound is consumed by the Stage 5 HT2 controlled limit. Aggregate export and full release remain OPEN."
+      "actual_domain_limit": "Universal actual-carrier mass estimate and boundary consumers passed; the nonzero CT1 family instance passed in Stage 4, and the bound is consumed by the Stage 5 HT2 controlled limit. Aggregate export and full release remain OPEN.",
+      "revalidations": [
+        {
+          "stage": 22,
+          "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+          "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+          "source_sha256": "add140c0c5e9bb4c002d4a53d896f656dd380c13f526d44837de112c092f0a03",
+          "prior_source_sha256": "300aba8c18e0079c7df0b02dd804ed3d2dc266dacd18930c7bab962cf7dd8b35",
+          "status": "PASS_MODULE_AND_EXPLICIT_CONSUMER_REVALIDATION_NOT_AGGREGATE",
+          "evidence": [
+            "evidence/current-codex/stage22/runner/CHECK_RESULT.json"
+          ],
+          "root_count_delta": 0,
+          "full_release_acceptance": false
+        }
+      ]
     },
     {
       "id": "OPICA_FOLLOWUP_NEAR_GAP_CONTROLLED_LIMIT_ZERO",
@@ -2455,7 +3280,7 @@
       },
       "source_file_present": true,
       "declaration_lexically_present": true,
-      "source_sha256": "300aba8c18e0079c7df0b02dd804ed3d2dc266dacd18930c7bab962cf7dd8b35",
+      "source_sha256": "add140c0c5e9bb4c002d4a53d896f656dd380c13f526d44837de112c092f0a03",
       "evidence": [
         "evidence/current-codex/stage5/STATUS.json"
       ],
@@ -2463,7 +3288,22 @@
         "path": "consumers/ExpectedNearGapLimit.lean",
         "sha256": "dbd1ba447e025ceea3797e6843ba741365d404ddf3392bae47d665caa39405be"
       },
-      "implementation_refinement": "Proof-method refinement, recorded explicitly: the frozen contract text prescribes compact-limit extraction and uniform tails. The implementation proves the identical conclusion (every Schwartz pairing tends to zero) under the identical common linear total-variation constant, self-duality, off-lattice positivity and gaps a_n -> 1, by an explicit quantitative estimate (nearGap_schwartz_pairing_bound: translated sinc/triangle identities, integer tent interpolation, the near-gap mass bound and the uniform cubic Schwartz tail). Uniform tails are proved; no compact extraction, limiting measure or total-variation convergence is used. The source evenness premise is not assumed because jordan_even_of_selfdual derives it. No premise was added and no domain narrowed."
+      "implementation_refinement": "Proof-method refinement, recorded explicitly: the frozen contract text prescribes compact-limit extraction and uniform tails. The implementation proves the identical conclusion (every Schwartz pairing tends to zero) under the identical common linear total-variation constant, self-duality, off-lattice positivity and gaps a_n -> 1, by an explicit quantitative estimate (nearGap_schwartz_pairing_bound: translated sinc/triangle identities, integer tent interpolation, the near-gap mass bound and the uniform cubic Schwartz tail). Uniform tails are proved; no compact extraction, limiting measure or total-variation convergence is used. The source evenness premise is not assumed because jordan_even_of_selfdual derives it. No premise was added and no domain narrowed.",
+      "revalidations": [
+        {
+          "stage": 22,
+          "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+          "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+          "source_sha256": "add140c0c5e9bb4c002d4a53d896f656dd380c13f526d44837de112c092f0a03",
+          "prior_source_sha256": "300aba8c18e0079c7df0b02dd804ed3d2dc266dacd18930c7bab962cf7dd8b35",
+          "status": "PASS_MODULE_AND_EXPLICIT_CONSUMER_REVALIDATION_NOT_AGGREGATE",
+          "evidence": [
+            "evidence/current-codex/stage22/runner/CHECK_RESULT.json"
+          ],
+          "root_count_delta": 0,
+          "full_release_acceptance": false
+        }
+      ]
     },
     {
       "id": "OPICA_FOLLOWUP_DILATION_NEAR_GAP_FAMILY",
@@ -2500,10 +3340,25 @@
       },
       "source_file_present": true,
       "declaration_lexically_present": true,
-      "source_sha256": "300aba8c18e0079c7df0b02dd804ed3d2dc266dacd18930c7bab962cf7dd8b35",
+      "source_sha256": "add140c0c5e9bb4c002d4a53d896f656dd380c13f526d44837de112c092f0a03",
       "evidence": [
         "evidence/current-codex/stage4/STATUS.json",
         "evidence/current-codex/stage5/STATUS.json"
+      ],
+      "revalidations": [
+        {
+          "stage": 22,
+          "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+          "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+          "source_sha256": "add140c0c5e9bb4c002d4a53d896f656dd380c13f526d44837de112c092f0a03",
+          "prior_source_sha256": "300aba8c18e0079c7df0b02dd804ed3d2dc266dacd18930c7bab962cf7dd8b35",
+          "status": "PASS_MODULE_AND_EXPLICIT_CONSUMER_REVALIDATION_NOT_AGGREGATE",
+          "evidence": [
+            "evidence/current-codex/stage22/runner/CHECK_RESULT.json"
+          ],
+          "root_count_delta": 0,
+          "full_release_acceptance": false
+        }
       ]
     },
     {
@@ -2541,7 +3396,7 @@
       },
       "source_file_present": true,
       "declaration_lexically_present": true,
-      "source_sha256": "300aba8c18e0079c7df0b02dd804ed3d2dc266dacd18930c7bab962cf7dd8b35",
+      "source_sha256": "add140c0c5e9bb4c002d4a53d896f656dd380c13f526d44837de112c092f0a03",
       "evidence": [
         "evidence/current-codex/stage5/STATUS.json"
       ],
@@ -2549,7 +3404,22 @@
         "path": "consumers/ExpectedNormalizedLimit.lean",
         "sha256": "e833dad08f5c3a1fd477ab56f65db12d984fa51e18fd638d2b2aeddae77f9187"
       },
-      "statement_formalization": "Limit T = (x^2 Sha')' = sum_n (n^2 delta_n'' - 2n delta_n') is a genuine Mathlib TemperedDistribution built from the actual integer Dirac comb. Convergence of nu_L / L^2 is proved as L -> 0 through all L != 0 (which contains the paper domain 0 < L < log 2 as L -> 0+, derived in the consumer), both in the tempered-distribution topology and on every Schwartz test. \"Not order zero\" is formalized at every nonzero integer n against the sup seminorm on tests supported in [n - 1/2, n + 1/2]; added clauses: not given by any locally finite Jordan pair, local form near each integer, and unbounded normalized variation near 1. Supporting result: T is Fourier self-dual."
+      "statement_formalization": "Limit T = (x^2 Sha')' = sum_n (n^2 delta_n'' - 2n delta_n') is a genuine Mathlib TemperedDistribution built from the actual integer Dirac comb. Convergence of nu_L / L^2 is proved as L -> 0 through all L != 0 (which contains the paper domain 0 < L < log 2 as L -> 0+, derived in the consumer), both in the tempered-distribution topology and on every Schwartz test. \"Not order zero\" is formalized at every nonzero integer n against the sup seminorm on tests supported in [n - 1/2, n + 1/2]; added clauses: not given by any locally finite Jordan pair, local form near each integer, and unbounded normalized variation near 1. Supporting result: T is Fourier self-dual.",
+      "revalidations": [
+        {
+          "stage": 22,
+          "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+          "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+          "source_sha256": "add140c0c5e9bb4c002d4a53d896f656dd380c13f526d44837de112c092f0a03",
+          "prior_source_sha256": "300aba8c18e0079c7df0b02dd804ed3d2dc266dacd18930c7bab962cf7dd8b35",
+          "status": "PASS_MODULE_AND_EXPLICIT_CONSUMER_REVALIDATION_NOT_AGGREGATE",
+          "evidence": [
+            "evidence/current-codex/stage22/runner/CHECK_RESULT.json"
+          ],
+          "root_count_delta": 0,
+          "full_release_acceptance": false
+        }
+      ]
     },
     {
       "id": "OPICA_FOLLOWUP_RENORMALIZED_COPOISSON_TEMPERED_FAMILY",
@@ -2594,7 +3464,22 @@
         "path": "consumers/ExpectedCoPoissonFamily.lean",
         "sha256": "1fd0255554f7a095a9ae441731c4329ea3220f994d7d5a9713fc42ada7073cfe"
       },
-      "statement_formalization": "K_t = A_t + F A_t with A_t = D_t - e^(t/2) delta_0, proved equal to D_t + D_(-t) - e^(t/2)(delta_0 + F delta_0) with F delta_0 = dx on Schwartz tests. |<A_t, phi>| <= (sum_(n!=0)|n|^(-k)) p_k(phi) e^((1/2-k)t) for every real t and k >= 2, with the lattice constant equal to 2 zeta(k). V_lam is the tempered distribution W_lam + F W_lam, W_lam(phi) = int_(0,oo) e^(-lam t) <A_t, phi> dt (a continuous linear functional from an explicit Schwartz seminorm bound), and V_lam(phi) = int_(0,oo) e^(-lam t) K_t(phi) dt. \"Entire tempered-distribution-valued family\" is formalized as: lam -> V_lam(phi) is entire for every Schwartz test (testwise holomorphy, the standard weak notion), with each V_lam a tempered distribution. Every K_t and V_lam is canonically Fourier self-dual and even on Schwartz tests. No premise; all lam in C."
+      "statement_formalization": "K_t = A_t + F A_t with A_t = D_t - e^(t/2) delta_0, proved equal to D_t + D_(-t) - e^(t/2)(delta_0 + F delta_0) with F delta_0 = dx on Schwartz tests. |<A_t, phi>| <= (sum_(n!=0)|n|^(-k)) p_k(phi) e^((1/2-k)t) for every real t and k >= 2, with the lattice constant equal to 2 zeta(k). V_lam is the tempered distribution W_lam + F W_lam, W_lam(phi) = int_(0,oo) e^(-lam t) <A_t, phi> dt (a continuous linear functional from an explicit Schwartz seminorm bound), and V_lam(phi) = int_(0,oo) e^(-lam t) K_t(phi) dt. \"Entire tempered-distribution-valued family\" is formalized as: lam -> V_lam(phi) is entire for every Schwartz test (testwise holomorphy, the standard weak notion), with each V_lam a tempered distribution. Every K_t and V_lam is canonically Fourier self-dual and even on Schwartz tests. No premise; all lam in C.",
+      "revalidations": [
+        {
+          "stage": 22,
+          "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+          "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+          "source_sha256": "3a3ecb500669fb3986786a7e697cd3aed940c8e058c829893e55a4a75a9a75de",
+          "prior_source_sha256": "3a3ecb500669fb3986786a7e697cd3aed940c8e058c829893e55a4a75a9a75de",
+          "status": "PASS_MODULE_AND_EXPLICIT_CONSUMER_REVALIDATION_NOT_AGGREGATE",
+          "evidence": [
+            "evidence/current-codex/stage22/runner/CHECK_RESULT.json"
+          ],
+          "root_count_delta": 0,
+          "full_release_acceptance": false
+        }
+      ]
     },
     {
       "id": "OPICA_FOLLOWUP_RENORMALIZED_COPOISSON_ORDER_ZERO",
@@ -2639,7 +3524,22 @@
         "path": "consumers/ExpectedCoPoissonOrderZero.lean",
         "sha256": "68a01d31ef49ae9ac79dc06b1752577758413740cc4190fd4dca3763061c8453"
       },
-      "statement_formalization": "On 0 < Re rho < 1 with lam = rho - 1/2: the actual cutoffs int_0^T e^(-lam t) K_t dt (T >= 0) are proved equal on every Schwartz test to the locally finite complex measures r_T dx + ((1 - e^(-rho T))/rho) delta_0 (coPoissonCutoff, canonical Jordan pairs), r_T the explicit (CP1.5) density of the two lattice-ray families minus (e^((1-rho)T) - 1)/(1-rho), by the change of variables x = (n+1) e^(+-t) on every ray. Local total variation: for every compact K the genuine finite complex variation of the difference of compact restrictions tends to 0 as T -> oo (real cutoff), and the parent LocalVariationConvergence holds for T = n. The limit is coPoissonLimitMeasure = rho^-1 delta_0 + [S_rho(|x|) + zeta(rho)|x|^(rho-1) + (1-rho)^-1] dx with S_rho the frozen inclusive finite sums (finiteSumSrho = coPoissonPowerSums). zeta(rho) enters through the Euler-Maclaurin form of the partial sums (CP1.6, parent PNT+ port), not through a divergent Dirichlet series. Additionally proved: V_(rho-1/2)(phi) equals the pairing with the limit measure for every Schwartz test (dominated convergence with an explicit polynomial-times-|x|^(sigma-1) majorant). Origin correction: cutoff atom (1-e^(-rho T))/rho, limit atom 1/rho."
+      "statement_formalization": "On 0 < Re rho < 1 with lam = rho - 1/2: the actual cutoffs int_0^T e^(-lam t) K_t dt (T >= 0) are proved equal on every Schwartz test to the locally finite complex measures r_T dx + ((1 - e^(-rho T))/rho) delta_0 (coPoissonCutoff, canonical Jordan pairs), r_T the explicit (CP1.5) density of the two lattice-ray families minus (e^((1-rho)T) - 1)/(1-rho), by the change of variables x = (n+1) e^(+-t) on every ray. Local total variation: for every compact K the genuine finite complex variation of the difference of compact restrictions tends to 0 as T -> oo (real cutoff), and the parent LocalVariationConvergence holds for T = n. The limit is coPoissonLimitMeasure = rho^-1 delta_0 + [S_rho(|x|) + zeta(rho)|x|^(rho-1) + (1-rho)^-1] dx with S_rho the frozen inclusive finite sums (finiteSumSrho = coPoissonPowerSums). zeta(rho) enters through the Euler-Maclaurin form of the partial sums (CP1.6, parent PNT+ port), not through a divergent Dirichlet series. Additionally proved: V_(rho-1/2)(phi) equals the pairing with the limit measure for every Schwartz test (dominated convergence with an explicit polynomial-times-|x|^(sigma-1) majorant). Origin correction: cutoff atom (1-e^(-rho T))/rho, limit atom 1/rho.",
+      "revalidations": [
+        {
+          "stage": 22,
+          "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+          "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+          "source_sha256": "3a3ecb500669fb3986786a7e697cd3aed940c8e058c829893e55a4a75a9a75de",
+          "prior_source_sha256": "3a3ecb500669fb3986786a7e697cd3aed940c8e058c829893e55a4a75a9a75de",
+          "status": "PASS_MODULE_AND_EXPLICIT_CONSUMER_REVALIDATION_NOT_AGGREGATE",
+          "evidence": [
+            "evidence/current-codex/stage22/runner/CHECK_RESULT.json"
+          ],
+          "root_count_delta": 0,
+          "full_release_acceptance": false
+        }
+      ]
     },
     {
       "id": "OPICA_FOLLOWUP_ZERO_MEASURE_EXACT_PROPERTIES",
@@ -2684,7 +3584,22 @@
         "path": "consumers/ExpectedZeroMeasure.lean",
         "sha256": "01f2f5d3c22aedcae2a3ec06b403129c78b7c76bf89b5673cd3b3e28968e9fe7"
       },
-      "statement_formalization": "Premises: riemannZeta rho = 0, 0 < Re rho < 1, rho != 1/2 (actual nontrivial zero). The normalized complex measure zeroMeasure rho = (S_rho(|x|)/b_rho) dx - sum_(n!=0) delta_n has explicit canonical Jordan pairs (positive/negative parts of Re and Im of the parent coPoissonComplexDensity; the punctured lattice is the comb D_0 restricted to the complement of 0) and is proved equal on every Schwartz test to b_rho^-1 (V_(rho-1/2) - c_rho(delta_0 + dx) - b_rho D_0), i.e. (CP1.7) divided by b_rho, with b_rho = (1-2rho)/kappa = 1/rho - 1/(1-rho) != 0 and kappa = rho(1-rho). Properties: linear variation growth (S_rho = O_rho(1) via the Euler-Maclaurin partial sums), canonical Fourier self-duality of its tempered distribution, all four Jordan parts even (Measure.map neg), exact open unit gap as variationControl(Ioo (-1) 1) = 0, zero origin atom, atom -1 at 1 (real negative part mass 1, all other parts 0). Real part eta_rho = f_rho dx - sum_(n!=0) delta_n (f_rho = parent coPoissonRealDensity): linear growth, canonical Fourier self-duality (from evenness and conj(F phi) = F(conj phi o (-.))), unit gap, zero origin atom, atom -1 at 1, nonzero. Evenness of eta is the Jordan-part map clause. The H1 predicate bundle (HasUnitGap, FourierSelfdual, HasLinearGrowth) is checked in the consumer against the parent definitions."
+      "statement_formalization": "Premises: riemannZeta rho = 0, 0 < Re rho < 1, rho != 1/2 (actual nontrivial zero). The normalized complex measure zeroMeasure rho = (S_rho(|x|)/b_rho) dx - sum_(n!=0) delta_n has explicit canonical Jordan pairs (positive/negative parts of Re and Im of the parent coPoissonComplexDensity; the punctured lattice is the comb D_0 restricted to the complement of 0) and is proved equal on every Schwartz test to b_rho^-1 (V_(rho-1/2) - c_rho(delta_0 + dx) - b_rho D_0), i.e. (CP1.7) divided by b_rho, with b_rho = (1-2rho)/kappa = 1/rho - 1/(1-rho) != 0 and kappa = rho(1-rho). Properties: linear variation growth (S_rho = O_rho(1) via the Euler-Maclaurin partial sums), canonical Fourier self-duality of its tempered distribution, all four Jordan parts even (Measure.map neg), exact open unit gap as variationControl(Ioo (-1) 1) = 0, zero origin atom, atom -1 at 1 (real negative part mass 1, all other parts 0). Real part eta_rho = f_rho dx - sum_(n!=0) delta_n (f_rho = parent coPoissonRealDensity): linear growth, canonical Fourier self-duality (from evenness and conj(F phi) = F(conj phi o (-.))), unit gap, zero origin atom, atom -1 at 1, nonzero. Evenness of eta is the Jordan-part map clause. The H1 predicate bundle (HasUnitGap, FourierSelfdual, HasLinearGrowth) is checked in the consumer against the parent definitions.",
+      "revalidations": [
+        {
+          "stage": 22,
+          "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+          "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+          "source_sha256": "3a3ecb500669fb3986786a7e697cd3aed940c8e058c829893e55a4a75a9a75de",
+          "prior_source_sha256": "3a3ecb500669fb3986786a7e697cd3aed940c8e058c829893e55a4a75a9a75de",
+          "status": "PASS_MODULE_AND_EXPLICIT_CONSUMER_REVALIDATION_NOT_AGGREGATE",
+          "evidence": [
+            "evidence/current-codex/stage22/runner/CHECK_RESULT.json"
+          ],
+          "root_count_delta": 0,
+          "full_release_acceptance": false
+        }
+      ]
     },
     {
       "id": "OPICA_FOLLOWUP_ZERO_MEASURE_FIRST_CELL_SIGN",
@@ -2729,7 +3644,22 @@
       "independent_consumer": {
         "path": "consumers/ExpectedFirstCell.lean",
         "sha256": "a3a18d428b3d35ef2b14f1dce9839e0e70e86a98eb6e7345db062f7cd47d4d4a"
-      }
+      },
+      "revalidations": [
+        {
+          "stage": 22,
+          "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+          "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+          "source_sha256": "3a3ecb500669fb3986786a7e697cd3aed940c8e058c829893e55a4a75a9a75de",
+          "prior_source_sha256": "3a3ecb500669fb3986786a7e697cd3aed940c8e058c829893e55a4a75a9a75de",
+          "status": "PASS_MODULE_AND_EXPLICIT_CONSUMER_REVALIDATION_NOT_AGGREGATE",
+          "evidence": [
+            "evidence/current-codex/stage22/runner/CHECK_RESULT.json"
+          ],
+          "root_count_delta": 0,
+          "full_release_acceptance": false
+        }
+      ]
     },
     {
       "id": "OPICA_FOLLOWUP_FINITE_SUM_EULER_MACLAURIN_UNIFORM",
@@ -2776,7 +3706,22 @@
         "path": "consumers/ExpectedEulerMaclaurin.lean",
         "sha256": "2a6736080dec794de13cdcaeb249aeb81264876f26d0c95940918ea522f96ff4"
       },
-      "statement_formalization": "Domain 0 < Re s, s != 1 (contains the open critical strip, hence both specializations s = rho and s = 1 - rho and every compact parameter disk inside the strip, as R2-S1a/R2-H1 require); every real cutoff x >= 1 (uniform across real cutoffs). rightPowerSum s x = sum_(n in [1, floor x]) n^(-s) keeps the right integer endpoint (constant on every cell [n, n+1)); B1({x}) = fract x - 1/2 equals -1/2 at integers; B2({x}) = fract^2 - fract + 1/6. Exact identity rightPowerSum s x = zeta(s) + x^(1-s)/(1-s) - B1 x^(-s) - s B2 x^(-s-1)/2 + R(s,x) with the explicit remainder R(s,x) = -(s(s+1)/6) B3({x}) x^(-s-2) + (s(s+1)(s+2)/6) int_x^oo B3({t}) t^(-s-3) dt. Bound ||R(s,x)|| <= (|s|(|s|+1)/6 + |s|(|s|+1)(|s|+2)/12) x^(-Re s - 2) for every Re s > 0 and x > 0; \"locally uniformly\" is formalized as: for every compact K in the domain there is one C with ||sum - main terms|| <= C x^(-Re s - 2) for all s in K and x >= 1 (the proved constant is uniform on bounded sets, not in the height). R(., x) is holomorphic on the domain. \"Differentiated finite sums\" (BUILD_SPEC module text; S1a proof \"exact differentiated finite sums\"): the finite sum has derivative 0 inside every open cell and the remainder has the exact cell derivative -(s(s+1)/2) B2({x}) x^(-s-2). zeta is Mathlib riemannZeta; the identity zeta(s) = s/(s-1) - 1/2 - s int_1^oo B1({t}) t^(-s-1) dt is proved (Dirichlet series for Re s > 1, Mellin holomorphy and the identity theorem on a star-convex domain), not assumed. Mathlib imports only (BUILD_MANIFEST direct_project_imports = []); required definitions bernoulliOneRight and bernoulliTwo present. No premise."
+      "statement_formalization": "Domain 0 < Re s, s != 1 (contains the open critical strip, hence both specializations s = rho and s = 1 - rho and every compact parameter disk inside the strip, as R2-S1a/R2-H1 require); every real cutoff x >= 1 (uniform across real cutoffs). rightPowerSum s x = sum_(n in [1, floor x]) n^(-s) keeps the right integer endpoint (constant on every cell [n, n+1)); B1({x}) = fract x - 1/2 equals -1/2 at integers; B2({x}) = fract^2 - fract + 1/6. Exact identity rightPowerSum s x = zeta(s) + x^(1-s)/(1-s) - B1 x^(-s) - s B2 x^(-s-1)/2 + R(s,x) with the explicit remainder R(s,x) = -(s(s+1)/6) B3({x}) x^(-s-2) + (s(s+1)(s+2)/6) int_x^oo B3({t}) t^(-s-3) dt. Bound ||R(s,x)|| <= (|s|(|s|+1)/6 + |s|(|s|+1)(|s|+2)/12) x^(-Re s - 2) for every Re s > 0 and x > 0; \"locally uniformly\" is formalized as: for every compact K in the domain there is one C with ||sum - main terms|| <= C x^(-Re s - 2) for all s in K and x >= 1 (the proved constant is uniform on bounded sets, not in the height). R(., x) is holomorphic on the domain. \"Differentiated finite sums\" (BUILD_SPEC module text; S1a proof \"exact differentiated finite sums\"): the finite sum has derivative 0 inside every open cell and the remainder has the exact cell derivative -(s(s+1)/2) B2({x}) x^(-s-2). zeta is Mathlib riemannZeta; the identity zeta(s) = s/(s-1) - 1/2 - s int_1^oo B1({t}) t^(-s-1) dt is proved (Dirichlet series for Re s > 1, Mellin holomorphy and the identity theorem on a star-convex domain), not assumed. Mathlib imports only (BUILD_MANIFEST direct_project_imports = []); required definitions bernoulliOneRight and bernoulliTwo present. No premise.",
+      "revalidations": [
+        {
+          "stage": 22,
+          "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+          "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+          "source_sha256": "c4ee9e0c04d0f7c53b26c92dee78287800e6ddd331377832cb8b271885441c8b",
+          "prior_source_sha256": "c4ee9e0c04d0f7c53b26c92dee78287800e6ddd331377832cb8b271885441c8b",
+          "status": "PASS_MODULE_AND_EXPLICIT_CONSUMER_REVALIDATION_NOT_AGGREGATE",
+          "evidence": [
+            "evidence/current-codex/stage22/runner/CHECK_RESULT.json"
+          ],
+          "root_count_delta": 0,
+          "full_release_acceptance": false
+        }
+      ]
     },
     {
       "id": "OPICA_FOLLOWUP_ZERO_PROFILE_REGULAR_SELFDUAL",
@@ -2821,7 +3766,22 @@
         "path": "consumers/ExpectedZeroProfiles.lean",
         "sha256": "33ad11294eda85f3b5b3bddb83287e5208ed4bb965d574e42c227ec0ef74a485"
       },
-      "statement_formalization": "Premises: riemannZeta rho = 0 and 0 < Re rho < 1 (an actual nontrivial zero). rho != 1/2 is derived, not assumed (zeta is negative on the real segment (0, 1), parent ZetaRealStripNonvanishing), so b_rho = normalizationBrho rho != 0. zeroProfile rho x = 1 - finiteSumSrho rho |x| / b_rho is built from the frozen inclusive CP1 finite sums; spectralKappa rho = rho(1 - rho). zeta(1 - rho) = 0 comes from Mathlib's functional equation riemannZeta_one_sub. Clauses: evenness; continuity (cell branches glue at every integer); Integrable and MemLp 2 (|h| <= K/(1+x^2) from the Euler-Maclaurin tail, which uses zeta(1-rho) = 0); h = 1 on [-1, 1]; ordinary Fourier self-duality F h = h of the L1 continuous function (Mathlib F on functions), derived from Schwartz pairings via the multiplication formula and uniqueness against smooth compactly supported tests; pairing self-duality int h F(phi) = int h phi; the paper identity nu = (dx + delta_0 - D_0) - h dx on Schwartz tests with nu the Stage 7 zeroMeasure; int h = 1 (= h(0)); int over (0, oo) of h = 1/2."
+      "statement_formalization": "Premises: riemannZeta rho = 0 and 0 < Re rho < 1 (an actual nontrivial zero). rho != 1/2 is derived, not assumed (zeta is negative on the real segment (0, 1), parent ZetaRealStripNonvanishing), so b_rho = normalizationBrho rho != 0. zeroProfile rho x = 1 - finiteSumSrho rho |x| / b_rho is built from the frozen inclusive CP1 finite sums; spectralKappa rho = rho(1 - rho). zeta(1 - rho) = 0 comes from Mathlib's functional equation riemannZeta_one_sub. Clauses: evenness; continuity (cell branches glue at every integer); Integrable and MemLp 2 (|h| <= K/(1+x^2) from the Euler-Maclaurin tail, which uses zeta(1-rho) = 0); h = 1 on [-1, 1]; ordinary Fourier self-duality F h = h of the L1 continuous function (Mathlib F on functions), derived from Schwartz pairings via the multiplication formula and uniqueness against smooth compactly supported tests; pairing self-duality int h F(phi) = int h phi; the paper identity nu = (dx + delta_0 - D_0) - h dx on Schwartz tests with nu the Stage 7 zeroMeasure; int h = 1 (= h(0)); int over (0, oo) of h = 1/2.",
+      "revalidations": [
+        {
+          "stage": 22,
+          "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+          "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+          "source_sha256": "d5ee76f621001bcd97e555cd6a92517349080d4315c86a496289acf49a7af7fc",
+          "prior_source_sha256": "d5ee76f621001bcd97e555cd6a92517349080d4315c86a496289acf49a7af7fc",
+          "status": "PASS_MODULE_AND_EXPLICIT_CONSUMER_REVALIDATION_NOT_AGGREGATE",
+          "evidence": [
+            "evidence/current-codex/stage22/runner/CHECK_RESULT.json"
+          ],
+          "root_count_delta": 0,
+          "full_release_acceptance": false
+        }
+      ]
     },
     {
       "id": "OPICA_FOLLOWUP_ZERO_PROFILE_TAIL_AND_JUMPS",
@@ -2866,7 +3826,22 @@
         "path": "consumers/ExpectedZeroProfiles.lean",
         "sha256": "33ad11294eda85f3b5b3bddb83287e5208ed4bb965d574e42c227ec0ef74a485"
       },
-      "statement_formalization": "Premises: riemannZeta rho = 0 and 0 < Re rho < 1 (an actual nontrivial zero). rho != 1/2 is derived, not assumed (zeta is negative on the real segment (0, 1), parent ZetaRealStripNonvanishing), so b_rho = normalizationBrho rho != 0. zeroProfile rho x = 1 - finiteSumSrho rho |x| / b_rho is built from the frozen inclusive CP1 finite sums; spectralKappa rho = rho(1 - rho). zeta(1 - rho) = 0 comes from Mathlib's functional equation riemannZeta_one_sub. Clauses: tail ||h(x) - kappa B2({|x|})/(2x^2)|| <= C |x|^(-3) for |x| >= 1 (C explicit); exact cell derivative h' = -S'_cell/b_rho on every (n, n+1) from the differentiated finite sums (srhoCellDeriv); ||deriv h x|| <= C x^(-2) on cells above 1; sharper leading form ||deriv h x - kappa B1({x})/x^2|| <= C x^(-4); at every integer n+1 >= 1 there are right and left derivatives (within Ici/Iic, unique) with dR - dL = -kappa/(n+1)^2; h'(1-) = 0 as HasDerivWithinAt h 0 (Iic 1) 1; x h'(x) in L2(0, oo) with h' = deriv h (equal to the cell derivative off the null set of integers). The positive half-line is stated; the negative side follows by evenness."
+      "statement_formalization": "Premises: riemannZeta rho = 0 and 0 < Re rho < 1 (an actual nontrivial zero). rho != 1/2 is derived, not assumed (zeta is negative on the real segment (0, 1), parent ZetaRealStripNonvanishing), so b_rho = normalizationBrho rho != 0. zeroProfile rho x = 1 - finiteSumSrho rho |x| / b_rho is built from the frozen inclusive CP1 finite sums; spectralKappa rho = rho(1 - rho). zeta(1 - rho) = 0 comes from Mathlib's functional equation riemannZeta_one_sub. Clauses: tail ||h(x) - kappa B2({|x|})/(2x^2)|| <= C |x|^(-3) for |x| >= 1 (C explicit); exact cell derivative h' = -S'_cell/b_rho on every (n, n+1) from the differentiated finite sums (srhoCellDeriv); ||deriv h x|| <= C x^(-2) on cells above 1; sharper leading form ||deriv h x - kappa B1({x})/x^2|| <= C x^(-4); at every integer n+1 >= 1 there are right and left derivatives (within Ici/Iic, unique) with dR - dL = -kappa/(n+1)^2; h'(1-) = 0 as HasDerivWithinAt h 0 (Iic 1) 1; x h'(x) in L2(0, oo) with h' = deriv h (equal to the cell derivative off the null set of integers). The positive half-line is stated; the negative side follows by evenness.",
+      "revalidations": [
+        {
+          "stage": 22,
+          "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+          "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+          "source_sha256": "d5ee76f621001bcd97e555cd6a92517349080d4315c86a496289acf49a7af7fc",
+          "prior_source_sha256": "d5ee76f621001bcd97e555cd6a92517349080d4315c86a496289acf49a7af7fc",
+          "status": "PASS_MODULE_AND_EXPLICIT_CONSUMER_REVALIDATION_NOT_AGGREGATE",
+          "evidence": [
+            "evidence/current-codex/stage22/runner/CHECK_RESULT.json"
+          ],
+          "root_count_delta": 0,
+          "full_release_acceptance": false
+        }
+      ]
     },
     {
       "id": "OPICA_FOLLOWUP_LOG_UNITARY_FORM_IDENTITY",
@@ -2914,7 +3889,22 @@
         "path": "consumers/ExpectedLogFourierSobolev.lean",
         "sha256": "29b6f838afddbdbf369bcc209583031f6a3f1d5746783217707e5532efa36136"
       },
-      "statement_formalization": "Actual form domain LogFormDomain h h': h b - h a = int_a^b h' for all a, b > 0 (local absolute continuity as a primitive representation), h' measurable and interval integrable on compact subintervals of (0, oo), h in L2(0, oo) and x h' in L2(0, oo); h' is a measurable representative (the form depends on h' only a.e.). Clauses: logUnitary h (t) = e^(t/2) h(e^t) is in L2(R) with int |U h|^2 = int_0^oo |h|^2 (unitary L2 conversion); weak derivative statement as the primitive representation U h (b) - U h (a) = int_a^b U' h for all real a, b, with U' h (t) = e^(t/2)(h(e^t)/2 + e^t h'(e^t)) in L2(R); U h in H1(R) (LogH1); and logForm h' = int_0^oo x^2 |h'|^2 = int |U' h|^2 + (1/4) int_0^oo |h|^2. The boundary terms x|h(x)|^2 are proved to vanish at 0 and oo from the domain hypotheses (no decay assumption). Proofs use the Mathlib FTC for absolutely continuous functions on real and imaginary parts and the substitution x = e^t on all of R. The consumer proves that the actual zero profile at an actual zero lies in the domain with its explicit right derivative, giving the paper identity (S1.5) for h_kappa."
+      "statement_formalization": "Actual form domain LogFormDomain h h': h b - h a = int_a^b h' for all a, b > 0 (local absolute continuity as a primitive representation), h' measurable and interval integrable on compact subintervals of (0, oo), h in L2(0, oo) and x h' in L2(0, oo); h' is a measurable representative (the form depends on h' only a.e.). Clauses: logUnitary h (t) = e^(t/2) h(e^t) is in L2(R) with int |U h|^2 = int_0^oo |h|^2 (unitary L2 conversion); weak derivative statement as the primitive representation U h (b) - U h (a) = int_a^b U' h for all real a, b, with U' h (t) = e^(t/2)(h(e^t)/2 + e^t h'(e^t)) in L2(R); U h in H1(R) (LogH1); and logForm h' = int_0^oo x^2 |h'|^2 = int |U' h|^2 + (1/4) int_0^oo |h|^2. The boundary terms x|h(x)|^2 are proved to vanish at 0 and oo from the domain hypotheses (no decay assumption). Proofs use the Mathlib FTC for absolutely continuous functions on real and imaginary parts and the substitution x = e^t on all of R. The consumer proves that the actual zero profile at an actual zero lies in the domain with its explicit right derivative, giving the paper identity (S1.5) for h_kappa.",
+      "revalidations": [
+        {
+          "stage": 22,
+          "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+          "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+          "source_sha256": "e83a452a615021238d912756f608ad346dd87187f70d0a177db6a2581e9afd9a",
+          "prior_source_sha256": "e83a452a615021238d912756f608ad346dd87187f70d0a177db6a2581e9afd9a",
+          "status": "PASS_MODULE_AND_EXPLICIT_CONSUMER_REVALIDATION_NOT_AGGREGATE",
+          "evidence": [
+            "evidence/current-codex/stage22/runner/CHECK_RESULT.json"
+          ],
+          "root_count_delta": 0,
+          "full_release_acceptance": false
+        }
+      ]
     },
     {
       "id": "OPICA_FOLLOWUP_LOG_FOURIER_PLANCHEREL",
@@ -2960,7 +3950,22 @@
         "path": "consumers/ExpectedLogFourierSobolev.lean",
         "sha256": "29b6f838afddbdbf369bcc209583031f6a3f1d5746783217707e5532efa36136"
       },
-      "statement_formalization": "logFourier f xi = int f(t) e^(-i xi t) dt (no 2pi in the phase); exact conversion logFourier f xi = F f (xi/(2 pi)) to the pinned Mathlib transform; for f in L1 cap L2: int |f|^2 = (1/(2pi)) int |logFourier f|^2 (Plancherel factor 1/(2pi)), proved by identifying the Mathlib L2 Fourier transform with the integral transform through tempered distributions; differentiation logFourier (f') = i xi logFourier f (Mathlib hypotheses: f, f' integrable, f differentiable); the H1 norm with the spectral weight a(xi) = xi^2 + 1/4: int |f'|^2 + (1/4) int |f|^2 = (1/(2pi)) int a |logFourier f|^2; and the actual-force pairing <-(d/dt + 1/2) w, phi> := int w (phi' - phi/2) for w in L2 and phi in H1(R) (LogH1: primitive of a measurable phi' with phi, phi' in L2), with ||phi' - phi/2||_2^2 = ||phi'||_2^2 + ||phi||_2^2/4 (the cross term vanishes) and |<-(d/dt+1/2)w, phi>| <= ||w||_2 (||phi'||_2^2 + ||phi||_2^2/4)^(1/2), i.e. a continuous H-1/H1 pairing with constant ||w||_2. No exponentially growing force term is transformed separately."
+      "statement_formalization": "logFourier f xi = int f(t) e^(-i xi t) dt (no 2pi in the phase); exact conversion logFourier f xi = F f (xi/(2 pi)) to the pinned Mathlib transform; for f in L1 cap L2: int |f|^2 = (1/(2pi)) int |logFourier f|^2 (Plancherel factor 1/(2pi)), proved by identifying the Mathlib L2 Fourier transform with the integral transform through tempered distributions; differentiation logFourier (f') = i xi logFourier f (Mathlib hypotheses: f, f' integrable, f differentiable); the H1 norm with the spectral weight a(xi) = xi^2 + 1/4: int |f'|^2 + (1/4) int |f|^2 = (1/(2pi)) int a |logFourier f|^2; and the actual-force pairing <-(d/dt + 1/2) w, phi> := int w (phi' - phi/2) for w in L2 and phi in H1(R) (LogH1: primitive of a measurable phi' with phi, phi' in L2), with ||phi' - phi/2||_2^2 = ||phi'||_2^2 + ||phi||_2^2/4 (the cross term vanishes) and |<-(d/dt+1/2)w, phi>| <= ||w||_2 (||phi'||_2^2 + ||phi||_2^2/4)^(1/2), i.e. a continuous H-1/H1 pairing with constant ||w||_2. No exponentially growing force term is transformed separately.",
+      "revalidations": [
+        {
+          "stage": 22,
+          "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+          "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+          "source_sha256": "e83a452a615021238d912756f608ad346dd87187f70d0a177db6a2581e9afd9a",
+          "prior_source_sha256": "e83a452a615021238d912756f608ad346dd87187f70d0a177db6a2581e9afd9a",
+          "status": "PASS_MODULE_AND_EXPLICIT_CONSUMER_REVALIDATION_NOT_AGGREGATE",
+          "evidence": [
+            "evidence/current-codex/stage22/runner/CHECK_RESULT.json"
+          ],
+          "root_count_delta": 0,
+          "full_release_acceptance": false
+        }
+      ]
     },
     {
       "id": "OPICA_FOLLOWUP_ZERO_PROFILE_FORCED_EULER",
@@ -3005,7 +4010,22 @@
         "path": "consumers/ExpectedForcedEuler.lean",
         "sha256": "230723787b3badebfa2862fc6168f6f7e76210fd9c00c009729d3f1906fdfca5"
       },
-      "statement_formalization": "Distributions on (0, oo): test functions PositiveAxisTest phi (smooth, compact support, tsupport in Ioi 0, complex valued). The Euler image eulerImage rho phi := -int_0^oo h (x^2 phi')' is <-(x^2 h')', phi> with h' the distributional derivative of h. At an actual zero (zeta rho = 0, 0 < Re rho < 1): eulerImage rho phi = kappa (int_0^oo (h - 1) phi + sum_{n>=1} phi(n)) for every test (S1.4); the a.e. derivative deriv h gives the same value int x^2 h' phi'; between integers (x^2 h')' = kappa (1 - h) (ordinary part); at every integer n >= 1 h is continuous (no delta derivative) and the one-sided derivatives satisfy n^2 (h'(n+) - h'(n-)) = -kappa (the actual jump producing the atom kappa delta_n). The proof telescopes exact cell integrations by parts: each cell branch solves (x^2 g')' + kappa g = 0. The identity itself holds for every strip parameter rho != 1/2 (forced_euler_identity); the root states it for actual zeros, where rho != 1/2 is derived."
+      "statement_formalization": "Distributions on (0, oo): test functions PositiveAxisTest phi (smooth, compact support, tsupport in Ioi 0, complex valued). The Euler image eulerImage rho phi := -int_0^oo h (x^2 phi')' is <-(x^2 h')', phi> with h' the distributional derivative of h. At an actual zero (zeta rho = 0, 0 < Re rho < 1): eulerImage rho phi = kappa (int_0^oo (h - 1) phi + sum_{n>=1} phi(n)) for every test (S1.4); the a.e. derivative deriv h gives the same value int x^2 h' phi'; between integers (x^2 h')' = kappa (1 - h) (ordinary part); at every integer n >= 1 h is continuous (no delta derivative) and the one-sided derivatives satisfy n^2 (h'(n+) - h'(n-)) = -kappa (the actual jump producing the atom kappa delta_n). The proof telescopes exact cell integrations by parts: each cell branch solves (x^2 g')' + kappa g = 0. The identity itself holds for every strip parameter rho != 1/2 (forced_euler_identity); the root states it for actual zeros, where rho != 1/2 is derived.",
+      "revalidations": [
+        {
+          "stage": 22,
+          "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+          "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+          "source_sha256": "fbf5c1bb6aabcf2f171ce1d11aeb289ff71ea14243d7099a09f3e05153dd8657",
+          "prior_source_sha256": "fbf5c1bb6aabcf2f171ce1d11aeb289ff71ea14243d7099a09f3e05153dd8657",
+          "status": "PASS_MODULE_AND_EXPLICIT_CONSUMER_REVALIDATION_NOT_AGGREGATE",
+          "evidence": [
+            "evidence/current-codex/stage22/runner/CHECK_RESULT.json"
+          ],
+          "root_count_delta": 0,
+          "full_release_acceptance": false
+        }
+      ]
     },
     {
       "id": "OPICA_FOLLOWUP_ZERO_PROFILE_NOT_HOMOGENEOUS_OPERATOR_VECTOR",
@@ -3050,7 +4070,22 @@
         "path": "consumers/ExpectedForcedEuler.lean",
         "sha256": "230723787b3badebfa2862fc6168f6f7e76210fd9c00c009729d3f1906fdfca5"
       },
-      "statement_formalization": "At an actual zero: kappa != 0; there is no g locally integrable on (0, oo) with eulerImage rho phi = int_0^oo g phi for all tests (the atoms are detected by shrinking bumps at 1 and dominated convergence); in particular no g in L2(0, oo), so h is not in the operator domain of the L2 self-adjoint realization of -d/dx (x^2 d/dx); for every c in C the homogeneous eigenvalue equation eulerImage rho phi = c int h phi fails; and the positive form identity is retained: LogFormDomain h (zeroProfileDeriv rho) with int_0^oo x^2 |h'|^2 = int |psi'|^2 + (1/4) int_0^oo |h|^2 (S1.5), zeroProfileDeriv the explicit cell derivative (the right derivative on (0, oo), equal to deriv h off the integers)."
+      "statement_formalization": "At an actual zero: kappa != 0; there is no g locally integrable on (0, oo) with eulerImage rho phi = int_0^oo g phi for all tests (the atoms are detected by shrinking bumps at 1 and dominated convergence); in particular no g in L2(0, oo), so h is not in the operator domain of the L2 self-adjoint realization of -d/dx (x^2 d/dx); for every c in C the homogeneous eigenvalue equation eulerImage rho phi = c int h phi fails; and the positive form identity is retained: LogFormDomain h (zeroProfileDeriv rho) with int_0^oo x^2 |h'|^2 = int |psi'|^2 + (1/4) int_0^oo |h|^2 (S1.5), zeroProfileDeriv the explicit cell derivative (the right derivative on (0, oo), equal to deriv h off the integers).",
+      "revalidations": [
+        {
+          "stage": 22,
+          "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+          "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+          "source_sha256": "fbf5c1bb6aabcf2f171ce1d11aeb289ff71ea14243d7099a09f3e05153dd8657",
+          "prior_source_sha256": "fbf5c1bb6aabcf2f171ce1d11aeb289ff71ea14243d7099a09f3e05153dd8657",
+          "status": "PASS_MODULE_AND_EXPLICIT_CONSUMER_REVALIDATION_NOT_AGGREGATE",
+          "evidence": [
+            "evidence/current-codex/stage22/runner/CHECK_RESULT.json"
+          ],
+          "root_count_delta": 0,
+          "full_release_acceptance": false
+        }
+      ]
     },
     {
       "id": "OPICA_FOLLOWUP_NATIVE_SAMPLING_GRAM_IDENTITY",
@@ -3095,7 +4130,22 @@
         "path": "consumers/ExpectedSamplingCompatibility.lean",
         "sha256": "6cbfca4ac5b49becffd45a81a380ef3e4a49a6b9fbe19f134f28a897bf0011e6"
       },
-      "statement_formalization": "For any family rho : iota -> C of actual zeros (zeta rho_i = 0, 0 < Re rho_i < 1), with h_i = zeroProfile rho_i, kappa_i = rho_i (1 - rho_i) and the pairings linear in the first argument: N_ij = profileGram = int_0^oo h_i conj h_j, Q_ij = profileFormGram = int_0^oo x^2 h_i' conj h_j' (deriv h, equal a.e. to the cell derivative), S_i = profileSample = sum_{n>=1} h_i(n), b_i = profileSampleDefect = S_i - 1/2. All proved: every sample series is summable, both pairings are integrable on (0, oo), int_0^oo h_i = 1/2, the finite-cell pairing of (S1.4) with conj h_j on [0, N+1] equals kappa_i (int (h_i - 1) conj h_j + sum_{m<N} conj h_j(m+1)) plus the explicit outer boundary term (N+1)^2 h_i'((N+1)-) conj h_j(N+1), that boundary term tends to 0, and Q_ij = kappa_i (N_ij + conj b_j) = conj kappa_j (N_ij + b_i) (S2.1). The paper writes one representative per distinct kappa; the theorem holds for every family, so no domain is narrowed."
+      "statement_formalization": "For any family rho : iota -> C of actual zeros (zeta rho_i = 0, 0 < Re rho_i < 1), with h_i = zeroProfile rho_i, kappa_i = rho_i (1 - rho_i) and the pairings linear in the first argument: N_ij = profileGram = int_0^oo h_i conj h_j, Q_ij = profileFormGram = int_0^oo x^2 h_i' conj h_j' (deriv h, equal a.e. to the cell derivative), S_i = profileSample = sum_{n>=1} h_i(n), b_i = profileSampleDefect = S_i - 1/2. All proved: every sample series is summable, both pairings are integrable on (0, oo), int_0^oo h_i = 1/2, the finite-cell pairing of (S1.4) with conj h_j on [0, N+1] equals kappa_i (int (h_i - 1) conj h_j + sum_{m<N} conj h_j(m+1)) plus the explicit outer boundary term (N+1)^2 h_i'((N+1)-) conj h_j(N+1), that boundary term tends to 0, and Q_ij = kappa_i (N_ij + conj b_j) = conj kappa_j (N_ij + b_i) (S2.1). The paper writes one representative per distinct kappa; the theorem holds for every family, so no domain is narrowed.",
+      "revalidations": [
+        {
+          "stage": 22,
+          "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+          "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+          "source_sha256": "f6463e72b4469b7229f594899964ded881678da631fbe599d08a0af2c74b95dc",
+          "prior_source_sha256": "f6463e72b4469b7229f594899964ded881678da631fbe599d08a0af2c74b95dc",
+          "status": "PASS_MODULE_AND_EXPLICIT_CONSUMER_REVALIDATION_NOT_AGGREGATE",
+          "evidence": [
+            "evidence/current-codex/stage22/runner/CHECK_RESULT.json"
+          ],
+          "root_count_delta": 0,
+          "full_release_acceptance": false
+        }
+      ]
     },
     {
       "id": "OPICA_FOLLOWUP_NATIVE_SAMPLING_FORM_POSITIVE",
@@ -3140,7 +4190,22 @@
         "path": "consumers/ExpectedSamplingCompatibility.lean",
         "sha256": "6cbfca4ac5b49becffd45a81a380ef3e4a49a6b9fbe19f134f28a897bf0011e6"
       },
-      "statement_formalization": "For any finite family of actual zeros: the matrices N, Q and Q - N/4 are positive semidefinite (Matrix.PosSemidef, hence Hermitian; Q - N/4 via the S1.5 form identity applied to each finite linear combination of profiles in LogFormDomain); the undivided identity (kappa_i - conj kappa_j) N_ij = conj kappa_j b_i - kappa_i conj b_j (S2.2) holds always, including conjugate coincidence; the divided difference N_ij / (kappa_i conj kappa_j) = (M_i - conj M_j) / (kappa_i - conj kappa_j), M = b / kappa (S2.3), is stated only under kappa_i - conj kappa_j != 0; and when Im kappa_i != 0, Im M_i / Im kappa_i = N_ii / |kappa_i|^2 with N_ii > 0 (S2.4). The paper's auxiliary finite-dimensional control (finite_countercontrol: h_i = kappa_i (A - kappa_i)^(-1) g, A positive real diagonal, g real, kappa_i nonreal) satisfies the same identities with positive semidefinite Gram matrices; it is not a zeta system."
+      "statement_formalization": "For any finite family of actual zeros: the matrices N, Q and Q - N/4 are positive semidefinite (Matrix.PosSemidef, hence Hermitian; Q - N/4 via the S1.5 form identity applied to each finite linear combination of profiles in LogFormDomain); the undivided identity (kappa_i - conj kappa_j) N_ij = conj kappa_j b_i - kappa_i conj b_j (S2.2) holds always, including conjugate coincidence; the divided difference N_ij / (kappa_i conj kappa_j) = (M_i - conj M_j) / (kappa_i - conj kappa_j), M = b / kappa (S2.3), is stated only under kappa_i - conj kappa_j != 0; and when Im kappa_i != 0, Im M_i / Im kappa_i = N_ii / |kappa_i|^2 with N_ii > 0 (S2.4). The paper's auxiliary finite-dimensional control (finite_countercontrol: h_i = kappa_i (A - kappa_i)^(-1) g, A positive real diagonal, g real, kappa_i nonreal) satisfies the same identities with positive semidefinite Gram matrices; it is not a zeta system.",
+      "revalidations": [
+        {
+          "stage": 22,
+          "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+          "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+          "source_sha256": "f6463e72b4469b7229f594899964ded881678da631fbe599d08a0af2c74b95dc",
+          "prior_source_sha256": "f6463e72b4469b7229f594899964ded881678da631fbe599d08a0af2c74b95dc",
+          "status": "PASS_MODULE_AND_EXPLICIT_CONSUMER_REVALIDATION_NOT_AGGREGATE",
+          "evidence": [
+            "evidence/current-codex/stage22/runner/CHECK_RESULT.json"
+          ],
+          "root_count_delta": 0,
+          "full_release_acceptance": false
+        }
+      ]
     },
     {
       "id": "OPICA_FOLLOWUP_COPOISSON_ZERO_JETS_MEASURES",
@@ -3185,7 +4250,22 @@
         "path": "consumers/ExpectedCoPoissonJets.lean",
         "sha256": "871a4419cbb3c02b699d07be9b815bb119d127cce6ab553a4c1d20afad5d7155"
       },
-      "statement_formalization": "zeroJetOrder rho := analyticOrderNatAt riemannZeta rho; normalizedZeroMeasureJet rho k := the CP1 zeroMeasure at k = 0, and the canonical-Jordan density measure of (1/k!) d^k/dkappa^k g_kappa(|x|) at kappa0 = rho(1 - rho) for k >= 1, with g_kappa the entire kappa-family kappa sum_(1 <= k <= |y|) (e^(-u/2)/k) Sh(1/4 - kappa, u) of the actual finite sums (equal to S_rho(|y|)/b_rho for every strip rho != 1/2). For an actual zero with 0 < Re rho < 1 and every k < m: m >= 1 is the analytic order; the local inverse rho(kappa) is holomorphic at kappa0 with derivative -1/(2rho - 1) and zeta o rho(.) has order m; on Schwartz tests nu_k is (1/k!) d^k/dkappa^k of the actual construction (CP1.7)/b along rho(kappa), explicitly int g_k phi - [k = 0] sum_(n != 0) phi(n) (H1.1); exact open unit gap, zero origin atom, even Jordan parts, linear variation growth; jet densities [k = 0] - ([k = 0] kappa0 + [k = 1]) B2({|x|})/(2x^2) + O(|x|^-3); Fourier self-duality on Schwartz tests and as tempered distributions, also for the real part; the differentiated forced chain (H1.2) (L - kappa0) h0 = kappa0 G, (L - kappa0) h1 = h0 + G, (L - kappa0) hk = h(k-1) on positive-axis tests; 1 - rho has the same multiplicity, node and jets; conj rho has the same multiplicity and nu_k(conj rho)(phi) = conj(nu_k(rho)(conj phi)). Recorded choice: the measure is defined from the kappa-jet of the density and identified with the parameter jets of the actual construction by theorem."
+      "statement_formalization": "zeroJetOrder rho := analyticOrderNatAt riemannZeta rho; normalizedZeroMeasureJet rho k := the CP1 zeroMeasure at k = 0, and the canonical-Jordan density measure of (1/k!) d^k/dkappa^k g_kappa(|x|) at kappa0 = rho(1 - rho) for k >= 1, with g_kappa the entire kappa-family kappa sum_(1 <= k <= |y|) (e^(-u/2)/k) Sh(1/4 - kappa, u) of the actual finite sums (equal to S_rho(|y|)/b_rho for every strip rho != 1/2). For an actual zero with 0 < Re rho < 1 and every k < m: m >= 1 is the analytic order; the local inverse rho(kappa) is holomorphic at kappa0 with derivative -1/(2rho - 1) and zeta o rho(.) has order m; on Schwartz tests nu_k is (1/k!) d^k/dkappa^k of the actual construction (CP1.7)/b along rho(kappa), explicitly int g_k phi - [k = 0] sum_(n != 0) phi(n) (H1.1); exact open unit gap, zero origin atom, even Jordan parts, linear variation growth; jet densities [k = 0] - ([k = 0] kappa0 + [k = 1]) B2({|x|})/(2x^2) + O(|x|^-3); Fourier self-duality on Schwartz tests and as tempered distributions, also for the real part; the differentiated forced chain (H1.2) (L - kappa0) h0 = kappa0 G, (L - kappa0) h1 = h0 + G, (L - kappa0) hk = h(k-1) on positive-axis tests; 1 - rho has the same multiplicity, node and jets; conj rho has the same multiplicity and nu_k(conj rho)(phi) = conj(nu_k(rho)(conj phi)). Recorded choice: the measure is defined from the kappa-jet of the density and identified with the parameter jets of the actual construction by theorem.",
+      "revalidations": [
+        {
+          "stage": 22,
+          "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+          "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+          "source_sha256": "dfb21b90906e2cbc23acdfd46b874c04d4ea6ae0217aa316b50c5b404c0d7134",
+          "prior_source_sha256": "dfb21b90906e2cbc23acdfd46b874c04d4ea6ae0217aa316b50c5b404c0d7134",
+          "status": "PASS_MODULE_AND_EXPLICIT_CONSUMER_REVALIDATION_NOT_AGGREGATE",
+          "evidence": [
+            "evidence/current-codex/stage22/runner/CHECK_RESULT.json"
+          ],
+          "root_count_delta": 0,
+          "full_release_acceptance": false
+        }
+      ]
     },
     {
       "id": "OPICA_FOLLOWUP_PROFILE_JET_CONFLUENT_DETERMINANT",
@@ -3260,6 +4340,19 @@
             ],
             "current_status": "PROVED_NARROW_LOCAL_GATES_AGGREGATE_PENDING"
           }
+        },
+        {
+          "stage": 22,
+          "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+          "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+          "source_sha256": "a84c72ac8b91bf053c499c9ca33458f69ad1849f0ba2766e520dfa9fbe61e29f",
+          "prior_source_sha256": "a84c72ac8b91bf053c499c9ca33458f69ad1849f0ba2766e520dfa9fbe61e29f",
+          "status": "PASS_MODULE_AND_EXPLICIT_CONSUMER_REVALIDATION_NOT_AGGREGATE",
+          "evidence": [
+            "evidence/current-codex/stage22/runner/CHECK_RESULT.json"
+          ],
+          "root_count_delta": 0,
+          "full_release_acceptance": false
         }
       ]
     },
@@ -3336,6 +4429,19 @@
             ],
             "current_status": "PROVED_NARROW_LOCAL_GATES_AGGREGATE_PENDING"
           }
+        },
+        {
+          "stage": 22,
+          "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+          "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+          "source_sha256": "a84c72ac8b91bf053c499c9ca33458f69ad1849f0ba2766e520dfa9fbe61e29f",
+          "prior_source_sha256": "a84c72ac8b91bf053c499c9ca33458f69ad1849f0ba2766e520dfa9fbe61e29f",
+          "status": "PASS_MODULE_AND_EXPLICIT_CONSUMER_REVALIDATION_NOT_AGGREGATE",
+          "evidence": [
+            "evidence/current-codex/stage22/runner/CHECK_RESULT.json"
+          ],
+          "root_count_delta": 0,
+          "full_release_acceptance": false
         }
       ]
     },
@@ -3374,7 +4480,7 @@
       },
       "source_file_present": true,
       "declaration_lexically_present": true,
-      "source_sha256": "8e69e7c90abb572cf45d71bd70c0446b6844372d4ae954aeb8274ea3e1f1e5ef",
+      "source_sha256": "69d2d89a32311dec71bc9831b21717097e94a980d7b9dfcd0f8dbf10f8fbb9f5",
       "evidence": [
         "evidence/current-codex/stage21/STATUS.json",
         "evidence/current-codex/stage21/runner/CHECK_RESULT.json"
@@ -3384,7 +4490,22 @@
         "sha256": "3c8b892698091f69c5987c1f3d2b2e7a0bd3f068610c5355a1fe61fbf5b7eba2",
         "expected_declaration": "IndependentFullFiniteSpan.full_original_domain_and_independent_basis"
       },
-      "statement_formalization": "Any real finite combination nonnegative off Z is zero, and on an independent real basis all coefficients are zero; this does not classify arbitrary infinite/nonlinear families. Current actual-domain audit: ACTUAL_AVAILABLE_ZERO_JETS_BOTH_UNIVERSAL_MEASURE_AND_INDEPENDENT_REAL_BASIS_CLAUSES. Original contract unchanged."
+      "statement_formalization": "Any real finite combination nonnegative off Z is zero, and on an independent real basis all coefficients are zero; this does not classify arbitrary infinite/nonlinear families. Current actual-domain audit: ACTUAL_AVAILABLE_ZERO_JETS_BOTH_UNIVERSAL_MEASURE_AND_INDEPENDENT_REAL_BASIS_CLAUSES. Original contract unchanged.",
+      "revalidations": [
+        {
+          "stage": 22,
+          "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+          "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+          "source_sha256": "69d2d89a32311dec71bc9831b21717097e94a980d7b9dfcd0f8dbf10f8fbb9f5",
+          "prior_source_sha256": "8e69e7c90abb572cf45d71bd70c0446b6844372d4ae954aeb8274ea3e1f1e5ef",
+          "status": "PASS_MODULE_AND_EXPLICIT_CONSUMER_REVALIDATION_NOT_AGGREGATE",
+          "evidence": [
+            "evidence/current-codex/stage22/runner/CHECK_RESULT.json"
+          ],
+          "root_count_delta": 0,
+          "full_release_acceptance": false
+        }
+      ]
     },
     {
       "id": "OPICA_FOLLOWUP_FIXED_BASIS_NEGATIVE_MASS_BUDGET",
@@ -3421,7 +4542,7 @@
       },
       "source_file_present": true,
       "declaration_lexically_present": true,
-      "source_sha256": "8e69e7c90abb572cf45d71bd70c0446b6844372d4ae954aeb8274ea3e1f1e5ef",
+      "source_sha256": "69d2d89a32311dec71bc9831b21717097e94a980d7b9dfcd0f8dbf10f8fbb9f5",
       "evidence": [
         "evidence/current-codex/stage21/STATUS.json",
         "evidence/current-codex/stage21/runner/CHECK_RESULT.json"
@@ -3431,7 +4552,22 @@
         "sha256": "9883387228ae6b161058a81055710bdde19c3ff00177154783577a04b3a0c2bd",
         "expected_declaration": "IndependentActualFixedBudget.expected_full_actual_euclidean_budget"
       },
-      "statement_formalization": "For each fixed independent real basis exists c_basis>0 such that global sinc-weighted negative mass >=c_basis*coefficient Euclidean norm; no uniform collision/growing-set constant. Current actual-domain audit: ACTUAL_CANONICAL_GLOBAL_OFF_INTEGER_NEGATIVE_MASS_LITERAL_EUCLIDEAN_SQRT_SUM_SQUARES. Original contract unchanged."
+      "statement_formalization": "For each fixed independent real basis exists c_basis>0 such that global sinc-weighted negative mass >=c_basis*coefficient Euclidean norm; no uniform collision/growing-set constant. Current actual-domain audit: ACTUAL_CANONICAL_GLOBAL_OFF_INTEGER_NEGATIVE_MASS_LITERAL_EUCLIDEAN_SQRT_SUM_SQUARES. Original contract unchanged.",
+      "revalidations": [
+        {
+          "stage": 22,
+          "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+          "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+          "source_sha256": "69d2d89a32311dec71bc9831b21717097e94a980d7b9dfcd0f8dbf10f8fbb9f5",
+          "prior_source_sha256": "8e69e7c90abb572cf45d71bd70c0446b6844372d4ae954aeb8274ea3e1f1e5ef",
+          "status": "PASS_MODULE_AND_EXPLICIT_CONSUMER_REVALIDATION_NOT_AGGREGATE",
+          "evidence": [
+            "evidence/current-codex/stage22/runner/CHECK_RESULT.json"
+          ],
+          "root_count_delta": 0,
+          "full_release_acceptance": false
+        }
+      ]
     },
     {
       "id": "OPICA_FOLLOWUP_FIRST_CELL_NEGATIVE_MASS_COST",
@@ -3475,7 +4611,22 @@
       "independent_consumer": {
         "path": "consumers/ExpectedFirstCell.lean",
         "sha256": "a3a18d428b3d35ef2b14f1dce9839e0e70e86a98eb6e7345db062f7cd47d4d4a"
-      }
+      },
+      "revalidations": [
+        {
+          "stage": 22,
+          "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+          "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+          "source_sha256": "badaa178fb17a03b71b01bbf17372ee73688fcb5f8607cb5a47c0f55412ceeeb",
+          "prior_source_sha256": "badaa178fb17a03b71b01bbf17372ee73688fcb5f8607cb5a47c0f55412ceeeb",
+          "status": "PASS_MODULE_AND_EXPLICIT_CONSUMER_REVALIDATION_NOT_AGGREGATE",
+          "evidence": [
+            "evidence/current-codex/stage22/runner/CHECK_RESULT.json"
+          ],
+          "root_count_delta": 0,
+          "full_release_acceptance": false
+        }
+      ]
     },
     {
       "id": "OPICA_FOLLOWUP_SQUARE_FOURIER_DEFECT",
@@ -3512,7 +4663,7 @@
       },
       "source_file_present": true,
       "declaration_lexically_present": true,
-      "source_sha256": "da73276d089068c1711f3854a9520fbcbbbc877d77ccc33fe20cb9ceb83d64d1",
+      "source_sha256": "98c3688c4e293519aa79e3da6aaba02bcb2bca6d132ae18f16dbc4c58986ff48",
       "evidence": [
         "evidence/current-codex/stage16/STATUS.json"
       ],
@@ -3547,12 +4698,26 @@
             ],
             "current_status": "PROVED_NARROW_LOCAL_GATES_AGGREGATE_PENDING"
           }
+        },
+        {
+          "stage": 22,
+          "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+          "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+          "source_sha256": "98c3688c4e293519aa79e3da6aaba02bcb2bca6d132ae18f16dbc4c58986ff48",
+          "prior_source_sha256": "da73276d089068c1711f3854a9520fbcbbbc877d77ccc33fe20cb9ceb83d64d1",
+          "status": "PASS_MODULE_AND_EXPLICIT_CONSUMER_REVALIDATION_NOT_AGGREGATE",
+          "evidence": [
+            "evidence/current-codex/stage22/runner/CHECK_RESULT.json"
+          ],
+          "root_count_delta": 0,
+          "full_release_acceptance": false
         }
       ],
       "full_contract_followup": {
-        "status": "OPEN_PHYSICAL_MEASURE_ADAPTER_AND_GENERAL_LATTICE_REPAIR_DOMAIN",
-        "review": "evidence/current-codex/stage21/support/independent-review/INDEPENDENT_FINDINGS.md",
-        "meaning": "Existing compiled proposition is retained as narrow evidence; it does not by itself discharge every original physical-domain obligation."
+        "status": "MATHEMATICAL_DOMAIN_FINDINGS_CLOSED_NARROW_SOURCE_PINNED_REVIEW_FULL_EXPORT_PENDING",
+        "review": "evidence/current-codex/stage22/support/independent-review/after-bridge/BRIDGE_REVIEW_ADDENDUM.md",
+        "actual_measure_and_distribution_tempered_domain": true,
+        "full_release_acceptance": false
       }
     },
     {
@@ -3590,7 +4755,7 @@
       },
       "source_file_present": true,
       "declaration_lexically_present": true,
-      "source_sha256": "da73276d089068c1711f3854a9520fbcbbbc877d77ccc33fe20cb9ceb83d64d1",
+      "source_sha256": "98c3688c4e293519aa79e3da6aaba02bcb2bca6d132ae18f16dbc4c58986ff48",
       "evidence": [
         "evidence/current-codex/stage16/STATUS.json"
       ],
@@ -3625,12 +4790,26 @@
             ],
             "current_status": "PROVED_NARROW_LOCAL_GATES_AGGREGATE_PENDING"
           }
+        },
+        {
+          "stage": 22,
+          "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+          "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+          "source_sha256": "98c3688c4e293519aa79e3da6aaba02bcb2bca6d132ae18f16dbc4c58986ff48",
+          "prior_source_sha256": "da73276d089068c1711f3854a9520fbcbbbc877d77ccc33fe20cb9ceb83d64d1",
+          "status": "PASS_MODULE_AND_EXPLICIT_CONSUMER_REVALIDATION_NOT_AGGREGATE",
+          "evidence": [
+            "evidence/current-codex/stage22/runner/CHECK_RESULT.json"
+          ],
+          "root_count_delta": 0,
+          "full_release_acceptance": false
         }
       ],
       "full_contract_followup": {
-        "status": "OPEN_PHYSICAL_MEASURE_ADAPTER_AND_GENERAL_LATTICE_REPAIR_DOMAIN",
-        "review": "evidence/current-codex/stage21/support/independent-review/INDEPENDENT_FINDINGS.md",
-        "meaning": "Existing compiled proposition is retained as narrow evidence; it does not by itself discharge every original physical-domain obligation."
+        "status": "MATHEMATICAL_DOMAIN_FINDINGS_CLOSED_NARROW_SOURCE_PINNED_REVIEW_FULL_EXPORT_PENDING",
+        "review": "evidence/current-codex/stage22/support/independent-review/after-bridge/BRIDGE_REVIEW_ADDENDUM.md",
+        "actual_measure_and_distribution_tempered_domain": true,
+        "full_release_acceptance": false
       }
     },
     {
@@ -3668,7 +4847,7 @@
       },
       "source_file_present": true,
       "declaration_lexically_present": true,
-      "source_sha256": "da73276d089068c1711f3854a9520fbcbbbc877d77ccc33fe20cb9ceb83d64d1",
+      "source_sha256": "98c3688c4e293519aa79e3da6aaba02bcb2bca6d132ae18f16dbc4c58986ff48",
       "evidence": [
         "evidence/current-codex/stage16/STATUS.json"
       ],
@@ -3703,12 +4882,26 @@
             ],
             "current_status": "PROVED_NARROW_LOCAL_GATES_AGGREGATE_PENDING"
           }
+        },
+        {
+          "stage": 22,
+          "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+          "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+          "source_sha256": "98c3688c4e293519aa79e3da6aaba02bcb2bca6d132ae18f16dbc4c58986ff48",
+          "prior_source_sha256": "da73276d089068c1711f3854a9520fbcbbbc877d77ccc33fe20cb9ceb83d64d1",
+          "status": "PASS_MODULE_AND_EXPLICIT_CONSUMER_REVALIDATION_NOT_AGGREGATE",
+          "evidence": [
+            "evidence/current-codex/stage22/runner/CHECK_RESULT.json"
+          ],
+          "root_count_delta": 0,
+          "full_release_acceptance": false
         }
       ],
       "full_contract_followup": {
-        "status": "OPEN_PHYSICAL_MEASURE_ADAPTER_AND_GENERAL_LATTICE_REPAIR_DOMAIN",
-        "review": "evidence/current-codex/stage21/support/independent-review/INDEPENDENT_FINDINGS.md",
-        "meaning": "Existing compiled proposition is retained as narrow evidence; it does not by itself discharge every original physical-domain obligation."
+        "status": "MATHEMATICAL_DOMAIN_FINDINGS_CLOSED_NARROW_SOURCE_PINNED_REVIEW_FULL_EXPORT_PENDING",
+        "review": "evidence/current-codex/stage22/support/independent-review/after-bridge/BRIDGE_REVIEW_ADDENDUM.md",
+        "actual_measure_and_distribution_tempered_domain": true,
+        "full_release_acceptance": false
       }
     },
     {
@@ -3746,7 +4939,7 @@
       },
       "source_file_present": true,
       "declaration_lexically_present": true,
-      "source_sha256": "da73276d089068c1711f3854a9520fbcbbbc877d77ccc33fe20cb9ceb83d64d1",
+      "source_sha256": "98c3688c4e293519aa79e3da6aaba02bcb2bca6d132ae18f16dbc4c58986ff48",
       "evidence": [
         "evidence/current-codex/stage16/STATUS.json"
       ],
@@ -3781,12 +4974,26 @@
             ],
             "current_status": "PROVED_NARROW_LOCAL_GATES_AGGREGATE_PENDING"
           }
+        },
+        {
+          "stage": 22,
+          "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+          "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+          "source_sha256": "98c3688c4e293519aa79e3da6aaba02bcb2bca6d132ae18f16dbc4c58986ff48",
+          "prior_source_sha256": "da73276d089068c1711f3854a9520fbcbbbc877d77ccc33fe20cb9ceb83d64d1",
+          "status": "PASS_MODULE_AND_EXPLICIT_CONSUMER_REVALIDATION_NOT_AGGREGATE",
+          "evidence": [
+            "evidence/current-codex/stage22/runner/CHECK_RESULT.json"
+          ],
+          "root_count_delta": 0,
+          "full_release_acceptance": false
         }
       ],
       "full_contract_followup": {
-        "status": "OPEN_PHYSICAL_MEASURE_ADAPTER_AND_GENERAL_LATTICE_REPAIR_DOMAIN",
-        "review": "evidence/current-codex/stage21/support/independent-review/INDEPENDENT_FINDINGS.md",
-        "meaning": "Existing compiled proposition is retained as narrow evidence; it does not by itself discharge every original physical-domain obligation."
+        "status": "MATHEMATICAL_DOMAIN_FINDINGS_CLOSED_NARROW_SOURCE_PINNED_REVIEW_FULL_EXPORT_PENDING",
+        "review": "evidence/current-codex/stage22/support/independent-review/after-bridge/BRIDGE_REVIEW_ADDENDUM.md",
+        "actual_measure_and_distribution_tempered_domain": true,
+        "full_release_acceptance": false
       }
     },
     {
@@ -3832,7 +5039,22 @@
         "path": "consumers/ExpectedSawtoothForce.lean",
         "sha256": "fcbaf41bb5a4e4b0be7bf900568f61849e93e39c97bcedf68a498a757b100be0"
       },
-      "statement_formalization": "sawtoothWeight t := e^(-t/2) {e^t} (real, as a complex function) is Integrable and MemLp 2 on R, equals e^(t/2) for t < 0 and has |w(t)| <= e^(-t/2). The force nativeLogForce := -(derivCLM w) - (1/2) w is built from Mathlib's tempered-distribution derivative of the L2 tempered distribution of w, so it is an actual tempered distribution; on Schwartz tests it acts by int w (phi' - phi/2). Only on smooth compactly supported tests (HasCompactSupport.toSchwartzMap) it equals the difference sum_{n>=1} n^(-1/2) phi(log n) - int e^(t/2) phi; neither exponentially growing summand is treated as a tempered distribution separately. At every t = log n, n >= 1 (n = 1 included), w has left limit n^(-1/2) and value 0."
+      "statement_formalization": "sawtoothWeight t := e^(-t/2) {e^t} (real, as a complex function) is Integrable and MemLp 2 on R, equals e^(t/2) for t < 0 and has |w(t)| <= e^(-t/2). The force nativeLogForce := -(derivCLM w) - (1/2) w is built from Mathlib's tempered-distribution derivative of the L2 tempered distribution of w, so it is an actual tempered distribution; on Schwartz tests it acts by int w (phi' - phi/2). Only on smooth compactly supported tests (HasCompactSupport.toSchwartzMap) it equals the difference sum_{n>=1} n^(-1/2) phi(log n) - int e^(t/2) phi; neither exponentially growing summand is treated as a tempered distribution separately. At every t = log n, n >= 1 (n = 1 included), w has left limit n^(-1/2) and value 0.",
+      "revalidations": [
+        {
+          "stage": 22,
+          "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+          "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+          "source_sha256": "b5af67cb5f365b2c3197722a653658615aeabcf579ed505ac93ccdbef0de8f40",
+          "prior_source_sha256": "b5af67cb5f365b2c3197722a653658615aeabcf579ed505ac93ccdbef0de8f40",
+          "status": "PASS_MODULE_AND_EXPLICIT_CONSUMER_REVALIDATION_NOT_AGGREGATE",
+          "evidence": [
+            "evidence/current-codex/stage22/runner/CHECK_RESULT.json"
+          ],
+          "root_count_delta": 0,
+          "full_release_acceptance": false
+        }
+      ]
     },
     {
       "id": "OPICA_FOLLOWUP_SAWTOOTH_ACTUAL_MELLIN_FOURIER",
@@ -3877,7 +5099,22 @@
         "path": "consumers/ExpectedSawtoothForce.lean",
         "sha256": "fcbaf41bb5a4e4b0be7bf900568f61849e93e39c97bcedf68a498a757b100be0"
       },
-      "statement_formalization": "For 0 < Re s < 1: {x} x^(-s-1) is integrable on (0, oo) and int_0^oo {x} x^(-s-1) dx = -zeta(s)/s, derived from the Stage 8 Euler-Maclaurin continuation (no zeta functional equation premise). Hence, with the Stage 10 2pi-free convention, logFourier w (xi) = -zeta(1/2 + i xi)/(1/2 + i xi) and -(1/2 + i xi) logFourier w (xi) = zeta(1/2 + i xi); as tempered distributions in the Mathlib convention, (F nativeLogForce) phi = int zeta(1/2 + 2 pi i eta) phi(eta) d eta."
+      "statement_formalization": "For 0 < Re s < 1: {x} x^(-s-1) is integrable on (0, oo) and int_0^oo {x} x^(-s-1) dx = -zeta(s)/s, derived from the Stage 8 Euler-Maclaurin continuation (no zeta functional equation premise). Hence, with the Stage 10 2pi-free convention, logFourier w (xi) = -zeta(1/2 + i xi)/(1/2 + i xi) and -(1/2 + i xi) logFourier w (xi) = zeta(1/2 + i xi); as tempered distributions in the Mathlib convention, (F nativeLogForce) phi = int zeta(1/2 + 2 pi i eta) phi(eta) d eta.",
+      "revalidations": [
+        {
+          "stage": 22,
+          "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+          "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+          "source_sha256": "b5af67cb5f365b2c3197722a653658615aeabcf579ed505ac93ccdbef0de8f40",
+          "prior_source_sha256": "b5af67cb5f365b2c3197722a653658615aeabcf579ed505ac93ccdbef0de8f40",
+          "status": "PASS_MODULE_AND_EXPLICIT_CONSUMER_REVALIDATION_NOT_AGGREGATE",
+          "evidence": [
+            "evidence/current-codex/stage22/runner/CHECK_RESULT.json"
+          ],
+          "root_count_delta": 0,
+          "full_release_acceptance": false
+        }
+      ]
     },
     {
       "id": "OPICA_FOLLOWUP_SAWTOOTH_NORM_WEIGHTED_ZETA_MOMENT",
@@ -3922,7 +5159,22 @@
         "path": "consumers/ExpectedSawtoothForce.lean",
         "sha256": "fcbaf41bb5a4e4b0be7bf900568f61849e93e39c97bcedf68a498a757b100be0"
       },
-      "statement_formalization": "Exact cells: int_0^1 {x}^2/x^2 = 1 and int_n^(n+1) {x}^2/x^2 = 1 + n/(n+1) - 2n log(1 + 1/n); closed form int_0^L = 2L - H_L - 2(L-1) log L + 2 log Gamma(L); limit (Stirling and harmonic asymptotics) log(2 pi) - EulerGamma; ||w||_2^2 = log(2 pi) - EulerGamma; |zeta(1/2 + i xi)|^2/(xi^2 + 1/4) is integrable and (1/2pi) int |zeta(1/2 + i xi)|^2/(xi^2 + 1/4) = log(2 pi) - EulerGamma (Stage 10 Plancherel with the convention and factor proved there); g in H^-1: |<g, phi>| <= (log(2 pi) - EulerGamma)^(1/2) ||phi||_(H1) with ||phi||_(H1)^2 = ||phi'||^2 + ||phi||^2/4, on LogH1 pairs and on Schwartz tests."
+      "statement_formalization": "Exact cells: int_0^1 {x}^2/x^2 = 1 and int_n^(n+1) {x}^2/x^2 = 1 + n/(n+1) - 2n log(1 + 1/n); closed form int_0^L = 2L - H_L - 2(L-1) log L + 2 log Gamma(L); limit (Stirling and harmonic asymptotics) log(2 pi) - EulerGamma; ||w||_2^2 = log(2 pi) - EulerGamma; |zeta(1/2 + i xi)|^2/(xi^2 + 1/4) is integrable and (1/2pi) int |zeta(1/2 + i xi)|^2/(xi^2 + 1/4) = log(2 pi) - EulerGamma (Stage 10 Plancherel with the convention and factor proved there); g in H^-1: |<g, phi>| <= (log(2 pi) - EulerGamma)^(1/2) ||phi||_(H1) with ||phi||_(H1)^2 = ||phi'||^2 + ||phi||^2/4, on LogH1 pairs and on Schwartz tests.",
+      "revalidations": [
+        {
+          "stage": 22,
+          "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+          "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+          "source_sha256": "b5af67cb5f365b2c3197722a653658615aeabcf579ed505ac93ccdbef0de8f40",
+          "prior_source_sha256": "b5af67cb5f365b2c3197722a653658615aeabcf579ed505ac93ccdbef0de8f40",
+          "status": "PASS_MODULE_AND_EXPLICIT_CONSUMER_REVALIDATION_NOT_AGGREGATE",
+          "evidence": [
+            "evidence/current-codex/stage22/runner/CHECK_RESULT.json"
+          ],
+          "root_count_delta": 0,
+          "full_release_acceptance": false
+        }
+      ]
     },
     {
       "id": "OPICA_FOLLOWUP_ARITHMETIC_STIELTJES_HOLOMORPHIC",
@@ -3967,7 +5219,22 @@
         "path": "consumers/ExpectedWeightedSpectralMeasure.lean",
         "sha256": "3f5843a25bc9b01179292b46b963e5807c59d459d5cc8e19b273475bfe40ee71"
       },
-      "statement_formalization": "spectralEnergy xi := xi^2 + 1/4 (a); arithmeticSpectralMeasure := volume.withDensity (ofReal (|zeta(1/2 + i xi)|^2/(2 pi))) (d omega, a positive measure; no finite total mass is asserted or used); arithmeticStieltjes kappa := int (a - kappa)^(-1) d omega (M); spectralResolventSet := {Im kappa != 0 or Re kappa < 1/4}, proved equal to C \\ [1/4, oo) and open. Proved: the density is nonnegative; 1/a is omega-integrable with int d omega/a = log(2 pi) - EulerGamma (F1.4); locally absolutely convergent: every kappa0 off the cut has a ball on which |(a - kappa)^(-1)| <= C/a uniformly (gap from [1/4, oo)); the kernel is omega-integrable on the resolvent set; HasDerivAt M (int d omega/(a - kappa)^2) at every resolvent point (dominated differentiation); DifferentiableOn C M on the resolvent set (holomorphic)."
+      "statement_formalization": "spectralEnergy xi := xi^2 + 1/4 (a); arithmeticSpectralMeasure := volume.withDensity (ofReal (|zeta(1/2 + i xi)|^2/(2 pi))) (d omega, a positive measure; no finite total mass is asserted or used); arithmeticStieltjes kappa := int (a - kappa)^(-1) d omega (M); spectralResolventSet := {Im kappa != 0 or Re kappa < 1/4}, proved equal to C \\ [1/4, oo) and open. Proved: the density is nonnegative; 1/a is omega-integrable with int d omega/a = log(2 pi) - EulerGamma (F1.4); locally absolutely convergent: every kappa0 off the cut has a ball on which |(a - kappa)^(-1)| <= C/a uniformly (gap from [1/4, oo)); the kernel is omega-integrable on the resolvent set; HasDerivAt M (int d omega/(a - kappa)^2) at every resolvent point (dominated differentiation); DifferentiableOn C M on the resolvent set (holomorphic).",
+      "revalidations": [
+        {
+          "stage": 22,
+          "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+          "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+          "source_sha256": "0fdc93080087bea2d07cab551261df7bbb9964fd4a8163e00b35c014b7cc789d",
+          "prior_source_sha256": "0fdc93080087bea2d07cab551261df7bbb9964fd4a8163e00b35c014b7cc789d",
+          "status": "PASS_MODULE_AND_EXPLICIT_CONSUMER_REVALIDATION_NOT_AGGREGATE",
+          "evidence": [
+            "evidence/current-codex/stage22/runner/CHECK_RESULT.json"
+          ],
+          "root_count_delta": 0,
+          "full_release_acceptance": false
+        }
+      ]
     },
     {
       "id": "OPICA_FOLLOWUP_ARITHMETIC_STIELTJES_SIGN_BUDGET",
@@ -4012,7 +5279,22 @@
         "path": "consumers/ExpectedWeightedSpectralMeasure.lean",
         "sha256": "3f5843a25bc9b01179292b46b963e5807c59d459d5cc8e19b273475bfe40ee71"
       },
-      "statement_formalization": "For Im kappa != 0: 1/|a - kappa|^2 is omega-integrable; Im M(kappa)/Im kappa = int d omega/|a - kappa|^2 (Im (a - kappa)^(-1) = Im kappa/|a - kappa|^2) and this integral is > 0 because omega is nonzero (its weighted moment is positive); explicit weighted-source bounds |M(kappa)| <= (1 + |kappa|/|Im kappa|)(log(2 pi) - EulerGamma) and int d omega/|a - kappa|^2 <= (1 + |kappa|/|Im kappa|)(log(2 pi) - EulerGamma)/|Im kappa|. No reality of any sample is asserted."
+      "statement_formalization": "For Im kappa != 0: 1/|a - kappa|^2 is omega-integrable; Im M(kappa)/Im kappa = int d omega/|a - kappa|^2 (Im (a - kappa)^(-1) = Im kappa/|a - kappa|^2) and this integral is > 0 because omega is nonzero (its weighted moment is positive); explicit weighted-source bounds |M(kappa)| <= (1 + |kappa|/|Im kappa|)(log(2 pi) - EulerGamma) and int d omega/|a - kappa|^2 <= (1 + |kappa|/|Im kappa|)(log(2 pi) - EulerGamma)/|Im kappa|. No reality of any sample is asserted.",
+      "revalidations": [
+        {
+          "stage": 22,
+          "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+          "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+          "source_sha256": "0fdc93080087bea2d07cab551261df7bbb9964fd4a8163e00b35c014b7cc789d",
+          "prior_source_sha256": "0fdc93080087bea2d07cab551261df7bbb9964fd4a8163e00b35c014b7cc789d",
+          "status": "PASS_MODULE_AND_EXPLICIT_CONSUMER_REVALIDATION_NOT_AGGREGATE",
+          "evidence": [
+            "evidence/current-codex/stage22/runner/CHECK_RESULT.json"
+          ],
+          "root_count_delta": 0,
+          "full_release_acceptance": false
+        }
+      ]
     },
     {
       "id": "OPICA_FOLLOWUP_NATIVE_FORCED_RESOLVENT_UNIQUE",
@@ -4057,7 +5339,22 @@
         "path": "consumers/ExpectedNativeResolvent.lean",
         "sha256": "df50d36b3726e70979f0bce5ba28d39348f22d46aed30d49c4f4fa5ae2f6196b"
       },
-      "statement_formalization": "nativeLogResolvent kappa t := (1/2pi) int e^(i xi t) kappa zeta(1/2 + i xi)/(a(xi) - kappa) d xi (the inverse log-Fourier transform of the actual arithmetic quotient). For an actual zero rho with 0 < Re rho < 1 and kappa = rho(1 - rho) in the resolvent set C \\ [1/4, oo) (this contains every nonreal kappa, i.e. every off-line zero; recorded refinement: proved on the full resolvent set): psi = logUnitary h = e^(t/2) h(e^t) with psi' = logUnitaryDeriv h h' is a LogH1 pair; it solves the weak forced equation int psi' phi' + (1/4 - kappa) int psi phi = kappa nativeLogForce(phi) for every Schwartz phi (forced Euler equation on compact log tests, then a cutoff extension); every LogH1 weak solution equals psi (the multiplier xi^2 + 1/4 - kappa never vanishes, so the difference has zero L2 Fourier transform); logFourier psi xi = kappa zeta(1/2 + i xi)/(a - kappa); psi = nativeLogResolvent kappa (Fourier inversion; the quotient is integrable). Supporting, not promoted: the undivided identity (a - kappa) logFourier psi = kappa zeta(1/2 + i xi) for every zero in the strip."
+      "statement_formalization": "nativeLogResolvent kappa t := (1/2pi) int e^(i xi t) kappa zeta(1/2 + i xi)/(a(xi) - kappa) d xi (the inverse log-Fourier transform of the actual arithmetic quotient). For an actual zero rho with 0 < Re rho < 1 and kappa = rho(1 - rho) in the resolvent set C \\ [1/4, oo) (this contains every nonreal kappa, i.e. every off-line zero; recorded refinement: proved on the full resolvent set): psi = logUnitary h = e^(t/2) h(e^t) with psi' = logUnitaryDeriv h h' is a LogH1 pair; it solves the weak forced equation int psi' phi' + (1/4 - kappa) int psi phi = kappa nativeLogForce(phi) for every Schwartz phi (forced Euler equation on compact log tests, then a cutoff extension); every LogH1 weak solution equals psi (the multiplier xi^2 + 1/4 - kappa never vanishes, so the difference has zero L2 Fourier transform); logFourier psi xi = kappa zeta(1/2 + i xi)/(a - kappa); psi = nativeLogResolvent kappa (Fourier inversion; the quotient is integrable). Supporting, not promoted: the undivided identity (a - kappa) logFourier psi = kappa zeta(1/2 + i xi) for every zero in the strip.",
+      "revalidations": [
+        {
+          "stage": 22,
+          "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+          "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+          "source_sha256": "16b2965ef6cdbdcccd0b564f03ac72cc25146cab530a2fe605b68169d004cf2d",
+          "prior_source_sha256": "16b2965ef6cdbdcccd0b564f03ac72cc25146cab530a2fe605b68169d004cf2d",
+          "status": "PASS_MODULE_AND_EXPLICIT_CONSUMER_REVALIDATION_NOT_AGGREGATE",
+          "evidence": [
+            "evidence/current-codex/stage22/runner/CHECK_RESULT.json"
+          ],
+          "root_count_delta": 0,
+          "full_release_acceptance": false
+        }
+      ]
     },
     {
       "id": "OPICA_FOLLOWUP_NATIVE_SAMPLE_STIELTJES_IDENTITY",
@@ -4102,7 +5399,22 @@
         "path": "consumers/ExpectedNativeResolvent.lean",
         "sha256": "df50d36b3726e70979f0bce5ba28d39348f22d46aed30d49c4f4fa5ae2f6196b"
       },
-      "statement_formalization": "For an actual zero with kappa in the resolvent set: b = profileSampleDefect = sum_{n >= 1} h(n) - 1/2 (definitional); every cell int_n^(n+1) {x} h' = h(n+1) - int_n^(n+1) h (endpoint terms); {x} h' is integrable on (0, oo) and b = int_0^oo {x} h'(x) dx (summation by parts and the limit); b = int w (psi' - psi/2) dt, the H^-1-H1 pairing of the actual force g = -(D + 1/2) w with psi, with |b| <= ||w||_2 (int |psi'|^2 + 1/4 int |psi|^2)^(1/2); w is real (conjugation); b = (1/2pi) int conj(F_log w)(i xi - 1/2) F_log psi d xi (normalization); b = kappa M(kappa)."
+      "statement_formalization": "For an actual zero with kappa in the resolvent set: b = profileSampleDefect = sum_{n >= 1} h(n) - 1/2 (definitional); every cell int_n^(n+1) {x} h' = h(n+1) - int_n^(n+1) h (endpoint terms); {x} h' is integrable on (0, oo) and b = int_0^oo {x} h'(x) dx (summation by parts and the limit); b = int w (psi' - psi/2) dt, the H^-1-H1 pairing of the actual force g = -(D + 1/2) w with psi, with |b| <= ||w||_2 (int |psi'|^2 + 1/4 int |psi|^2)^(1/2); w is real (conjugation); b = (1/2pi) int conj(F_log w)(i xi - 1/2) F_log psi d xi (normalization); b = kappa M(kappa).",
+      "revalidations": [
+        {
+          "stage": 22,
+          "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+          "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+          "source_sha256": "16b2965ef6cdbdcccd0b564f03ac72cc25146cab530a2fe605b68169d004cf2d",
+          "prior_source_sha256": "16b2965ef6cdbdcccd0b564f03ac72cc25146cab530a2fe605b68169d004cf2d",
+          "status": "PASS_MODULE_AND_EXPLICIT_CONSUMER_REVALIDATION_NOT_AGGREGATE",
+          "evidence": [
+            "evidence/current-codex/stage22/runner/CHECK_RESULT.json"
+          ],
+          "root_count_delta": 0,
+          "full_release_acceptance": false
+        }
+      ]
     },
     {
       "id": "OPICA_FOLLOWUP_NATIVE_PROFILE_SPECTRAL_NORMS",
@@ -4147,7 +5459,22 @@
         "path": "consumers/ExpectedNativeResolvent.lean",
         "sha256": "df50d36b3726e70979f0bce5ba28d39348f22d46aed30d49c4f4fa5ae2f6196b"
       },
-      "statement_formalization": "For an actual zero with Im kappa != 0: int_0^oo |h|^2 = |kappa|^2 int d omega/|a - kappa|^2 = |kappa|^2 Im M/Im kappa; the Euler form logForm h' = int x^2 |h'|^2 = |kappa|^2 int a d omega/|a - kappa|^2; for every second actual zero sigma with kappa_sigma in the resolvent set (mixed compatibility): N(rho, sigma) = kappa_rho conj kappa_sigma int d omega/((a - kappa_rho)(a - conj kappa_sigma)), Q(rho, sigma) = kappa_rho conj kappa_sigma int a d omega/((a - kappa_rho)(a - conj kappa_sigma)), and the resolvent identity under omega gives the undivided S2 identity (kappa_rho - conj kappa_sigma) N = conj kappa_sigma b_rho - kappa_rho conj b_sigma; (F2.5) |b| <= |kappa|(1 + |kappa|/|Im kappa|)(log(2pi) - EulerGamma)."
+      "statement_formalization": "For an actual zero with Im kappa != 0: int_0^oo |h|^2 = |kappa|^2 int d omega/|a - kappa|^2 = |kappa|^2 Im M/Im kappa; the Euler form logForm h' = int x^2 |h'|^2 = |kappa|^2 int a d omega/|a - kappa|^2; for every second actual zero sigma with kappa_sigma in the resolvent set (mixed compatibility): N(rho, sigma) = kappa_rho conj kappa_sigma int d omega/((a - kappa_rho)(a - conj kappa_sigma)), Q(rho, sigma) = kappa_rho conj kappa_sigma int a d omega/((a - kappa_rho)(a - conj kappa_sigma)), and the resolvent identity under omega gives the undivided S2 identity (kappa_rho - conj kappa_sigma) N = conj kappa_sigma b_rho - kappa_rho conj b_sigma; (F2.5) |b| <= |kappa|(1 + |kappa|/|Im kappa|)(log(2pi) - EulerGamma).",
+      "revalidations": [
+        {
+          "stage": 22,
+          "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+          "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+          "source_sha256": "16b2965ef6cdbdcccd0b564f03ac72cc25146cab530a2fe605b68169d004cf2d",
+          "prior_source_sha256": "16b2965ef6cdbdcccd0b564f03ac72cc25146cab530a2fe605b68169d004cf2d",
+          "status": "PASS_MODULE_AND_EXPLICIT_CONSUMER_REVALIDATION_NOT_AGGREGATE",
+          "evidence": [
+            "evidence/current-codex/stage22/runner/CHECK_RESULT.json"
+          ],
+          "root_count_delta": 0,
+          "full_release_acceptance": false
+        }
+      ]
     },
     {
       "id": "OPICA_FOLLOWUP_GENERIC_FORCED_PROFILE_UNIQUE",
@@ -4192,7 +5519,22 @@
         "path": "consumers/ExpectedBoundaryAmplitude.lean",
         "sha256": "b114b1a7ac9e264cac4f6cf4606ac9a4d6b1b9f4f28b5853dbf11dc6d86ec6cc"
       },
-      "statement_formalization": "boundaryAmplitude rho := zeta(rho)/b_rho; genericForcedProfile rho x := (1 - S_rho(|x|)/b_rho) - (zeta(rho)/b_rho)|x|^(rho-1) with the actual finite sums; genericForcedProfileDeriv its explicit derivative. For an arbitrary parameter 1/2 < Re rho < 1, Im rho != 0 (not necessarily a zero): h~ lies in LogFormDomain; it satisfies the actual physical force equation int x^2 h~' phi' = kappa (int (h~ - 1) phi + sum_(n >= 1) phi(n)) on positive-axis tests; every LogFormDomain solution of that equation equals h~ on (0, oo); its log profile is LogH1, solves the weak equation (-D^2 + 1/4 - kappa) psi = kappa g on Schwartz tests and is the unique LogH1 weak solution; its log-Fourier transform is kappa zeta(1/2 + i xi)/(a - kappa); it equals nativeLogResolvent kappa; both ends are controlled (h~ = O(x^(Re rho - 1)), |h~'| = |A (rho - 1)| x^(Re rho - 2) near 0; h~ = O(x^(-Re rho)), h~' = O(x^(-Re rho - 1)) at infinity)."
+      "statement_formalization": "boundaryAmplitude rho := zeta(rho)/b_rho; genericForcedProfile rho x := (1 - S_rho(|x|)/b_rho) - (zeta(rho)/b_rho)|x|^(rho-1) with the actual finite sums; genericForcedProfileDeriv its explicit derivative. For an arbitrary parameter 1/2 < Re rho < 1, Im rho != 0 (not necessarily a zero): h~ lies in LogFormDomain; it satisfies the actual physical force equation int x^2 h~' phi' = kappa (int (h~ - 1) phi + sum_(n >= 1) phi(n)) on positive-axis tests; every LogFormDomain solution of that equation equals h~ on (0, oo); its log profile is LogH1, solves the weak equation (-D^2 + 1/4 - kappa) psi = kappa g on Schwartz tests and is the unique LogH1 weak solution; its log-Fourier transform is kappa zeta(1/2 + i xi)/(a - kappa); it equals nativeLogResolvent kappa; both ends are controlled (h~ = O(x^(Re rho - 1)), |h~'| = |A (rho - 1)| x^(Re rho - 2) near 0; h~ = O(x^(-Re rho)), h~' = O(x^(-Re rho - 1)) at infinity).",
+      "revalidations": [
+        {
+          "stage": 22,
+          "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+          "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+          "source_sha256": "38a3bb888d00dc1860c3baae5c85827f6d00a03b470062bb7390ddc46c7c9b18",
+          "prior_source_sha256": "38a3bb888d00dc1860c3baae5c85827f6d00a03b470062bb7390ddc46c7c9b18",
+          "status": "PASS_MODULE_AND_EXPLICIT_CONSUMER_REVALIDATION_NOT_AGGREGATE",
+          "evidence": [
+            "evidence/current-codex/stage22/runner/CHECK_RESULT.json"
+          ],
+          "root_count_delta": 0,
+          "full_release_acceptance": false
+        }
+      ]
     },
     {
       "id": "OPICA_FOLLOWUP_GENERIC_BOUNDARY_AMPLITUDE",
@@ -4237,7 +5579,22 @@
         "path": "consumers/ExpectedBoundaryAmplitude.lean",
         "sha256": "b114b1a7ac9e264cac4f6cf4606ac9a4d6b1b9f4f28b5853dbf11dc6d86ec6cc"
       },
-      "statement_formalization": "For 1/2 < Re rho < 1 (the Im rho != 0 hypothesis is not needed): boundaryAmplitude rho = zeta(rho)/b_rho with b_rho = (1 - 2 rho)/kappa; on (0, 1) h~ = 1 - (zeta(rho)/b_rho) x^(rho-1); the plateau h~ = 1 on (0, 1) holds iff zeta(rho) = 0, and then h~ is the zero profile; at infinity |h~ - (-(zeta(1-rho)/b_rho) x^(-rho) + kappa B2({x})/(2x^2))| <= C x^(-3). No integrability of h~ is asserted for generic rho."
+      "statement_formalization": "For 1/2 < Re rho < 1 (the Im rho != 0 hypothesis is not needed): boundaryAmplitude rho = zeta(rho)/b_rho with b_rho = (1 - 2 rho)/kappa; on (0, 1) h~ = 1 - (zeta(rho)/b_rho) x^(rho-1); the plateau h~ = 1 on (0, 1) holds iff zeta(rho) = 0, and then h~ is the zero profile; at infinity |h~ - (-(zeta(1-rho)/b_rho) x^(-rho) + kappa B2({x})/(2x^2))| <= C x^(-3). No integrability of h~ is asserted for generic rho.",
+      "revalidations": [
+        {
+          "stage": 22,
+          "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+          "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+          "source_sha256": "38a3bb888d00dc1860c3baae5c85827f6d00a03b470062bb7390ddc46c7c9b18",
+          "prior_source_sha256": "38a3bb888d00dc1860c3baae5c85827f6d00a03b470062bb7390ddc46c7c9b18",
+          "status": "PASS_MODULE_AND_EXPLICIT_CONSUMER_REVALIDATION_NOT_AGGREGATE",
+          "evidence": [
+            "evidence/current-codex/stage22/runner/CHECK_RESULT.json"
+          ],
+          "root_count_delta": 0,
+          "full_release_acceptance": false
+        }
+      ]
     },
     {
       "id": "OPICA_FOLLOWUP_COUPLED_GRAM_COLLISION_CONTROL",
@@ -4277,6 +5634,21 @@
       "source_sha256": "7754e222bbff917216dca02539b50d607c47202e339c95f89b16587b2a106d34",
       "evidence": [
         "evidence/provided/cold41/subset/compiler-receipt.json.gz"
+      ],
+      "revalidations": [
+        {
+          "stage": 22,
+          "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+          "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+          "source_sha256": "7754e222bbff917216dca02539b50d607c47202e339c95f89b16587b2a106d34",
+          "prior_source_sha256": "7754e222bbff917216dca02539b50d607c47202e339c95f89b16587b2a106d34",
+          "status": "PASS_MODULE_AND_EXPLICIT_CONSUMER_REVALIDATION_NOT_AGGREGATE",
+          "evidence": [
+            "evidence/current-codex/stage22/runner/CHECK_RESULT.json"
+          ],
+          "root_count_delta": 0,
+          "full_release_acceptance": false
+        }
       ]
     },
     {
@@ -4317,6 +5689,21 @@
       "source_sha256": "7754e222bbff917216dca02539b50d607c47202e339c95f89b16587b2a106d34",
       "evidence": [
         "evidence/provided/cold41/subset/compiler-receipt.json.gz"
+      ],
+      "revalidations": [
+        {
+          "stage": 22,
+          "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+          "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+          "source_sha256": "7754e222bbff917216dca02539b50d607c47202e339c95f89b16587b2a106d34",
+          "prior_source_sha256": "7754e222bbff917216dca02539b50d607c47202e339c95f89b16587b2a106d34",
+          "status": "PASS_MODULE_AND_EXPLICIT_CONSUMER_REVALIDATION_NOT_AGGREGATE",
+          "evidence": [
+            "evidence/current-codex/stage22/runner/CHECK_RESULT.json"
+          ],
+          "root_count_delta": 0,
+          "full_release_acceptance": false
+        }
       ]
     },
     {
@@ -4357,6 +5744,21 @@
       "source_sha256": "7754e222bbff917216dca02539b50d607c47202e339c95f89b16587b2a106d34",
       "evidence": [
         "evidence/provided/cold41/subset/compiler-receipt.json.gz"
+      ],
+      "revalidations": [
+        {
+          "stage": 22,
+          "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+          "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+          "source_sha256": "7754e222bbff917216dca02539b50d607c47202e339c95f89b16587b2a106d34",
+          "prior_source_sha256": "7754e222bbff917216dca02539b50d607c47202e339c95f89b16587b2a106d34",
+          "status": "PASS_MODULE_AND_EXPLICIT_CONSUMER_REVALIDATION_NOT_AGGREGATE",
+          "evidence": [
+            "evidence/current-codex/stage22/runner/CHECK_RESULT.json"
+          ],
+          "root_count_delta": 0,
+          "full_release_acceptance": false
+        }
       ]
     },
     {
@@ -4397,6 +5799,21 @@
       "source_sha256": "7754e222bbff917216dca02539b50d607c47202e339c95f89b16587b2a106d34",
       "evidence": [
         "evidence/provided/cold41/subset/compiler-receipt.json.gz"
+      ],
+      "revalidations": [
+        {
+          "stage": 22,
+          "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+          "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+          "source_sha256": "7754e222bbff917216dca02539b50d607c47202e339c95f89b16587b2a106d34",
+          "prior_source_sha256": "7754e222bbff917216dca02539b50d607c47202e339c95f89b16587b2a106d34",
+          "status": "PASS_MODULE_AND_EXPLICIT_CONSUMER_REVALIDATION_NOT_AGGREGATE",
+          "evidence": [
+            "evidence/current-codex/stage22/runner/CHECK_RESULT.json"
+          ],
+          "root_count_delta": 0,
+          "full_release_acceptance": false
+        }
       ]
     },
     {
@@ -4435,7 +5852,7 @@
       },
       "source_file_present": true,
       "declaration_lexically_present": true,
-      "source_sha256": "3098cbda01dfb1e89c3b3505365c1b60f3f15b0b6d3c35a054c7ee38f16530c8",
+      "source_sha256": "29d0a3d4eb5c243ca77d2b3d20296cdd8f4eb3130b413a9a4fb90914e86df377",
       "evidence": [
         "evidence/current-codex/stage20/STATUS.json",
         "evidence/current-codex/stage20/runner/CHECK_RESULT.json"
@@ -4473,6 +5890,19 @@
             ],
             "current_status": "PROVED_NARROW_LOCAL_GATES_AGGREGATE_PENDING"
           }
+        },
+        {
+          "stage": 22,
+          "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+          "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+          "source_sha256": "29d0a3d4eb5c243ca77d2b3d20296cdd8f4eb3130b413a9a4fb90914e86df377",
+          "prior_source_sha256": "3098cbda01dfb1e89c3b3505365c1b60f3f15b0b6d3c35a054c7ee38f16530c8",
+          "status": "PASS_MODULE_AND_EXPLICIT_CONSUMER_REVALIDATION_NOT_AGGREGATE",
+          "evidence": [
+            "evidence/current-codex/stage22/runner/CHECK_RESULT.json"
+          ],
+          "root_count_delta": 0,
+          "full_release_acceptance": false
         }
       ]
     },
@@ -4512,7 +5942,7 @@
       },
       "source_file_present": true,
       "declaration_lexically_present": true,
-      "source_sha256": "3098cbda01dfb1e89c3b3505365c1b60f3f15b0b6d3c35a054c7ee38f16530c8",
+      "source_sha256": "29d0a3d4eb5c243ca77d2b3d20296cdd8f4eb3130b413a9a4fb90914e86df377",
       "evidence": [
         "evidence/current-codex/stage20/STATUS.json",
         "evidence/current-codex/stage20/runner/CHECK_RESULT.json"
@@ -4550,6 +5980,19 @@
             ],
             "current_status": "PROVED_NARROW_LOCAL_GATES_AGGREGATE_PENDING"
           }
+        },
+        {
+          "stage": 22,
+          "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+          "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+          "source_sha256": "29d0a3d4eb5c243ca77d2b3d20296cdd8f4eb3130b413a9a4fb90914e86df377",
+          "prior_source_sha256": "3098cbda01dfb1e89c3b3505365c1b60f3f15b0b6d3c35a054c7ee38f16530c8",
+          "status": "PASS_MODULE_AND_EXPLICIT_CONSUMER_REVALIDATION_NOT_AGGREGATE",
+          "evidence": [
+            "evidence/current-codex/stage22/runner/CHECK_RESULT.json"
+          ],
+          "root_count_delta": 0,
+          "full_release_acceptance": false
         }
       ]
     },
@@ -4589,7 +6032,7 @@
       },
       "source_file_present": true,
       "declaration_lexically_present": true,
-      "source_sha256": "3098cbda01dfb1e89c3b3505365c1b60f3f15b0b6d3c35a054c7ee38f16530c8",
+      "source_sha256": "29d0a3d4eb5c243ca77d2b3d20296cdd8f4eb3130b413a9a4fb90914e86df377",
       "evidence": [
         "evidence/current-codex/stage3/STATUS.json",
         "evidence/current-codex/stage3/consumer-stage3-01.log",
@@ -4698,6 +6141,19 @@
             ],
             "current_status": "PROVED_NARROW_LOCAL_GATES_AGGREGATE_PENDING"
           }
+        },
+        {
+          "stage": 22,
+          "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+          "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+          "source_sha256": "29d0a3d4eb5c243ca77d2b3d20296cdd8f4eb3130b413a9a4fb90914e86df377",
+          "prior_source_sha256": "3098cbda01dfb1e89c3b3505365c1b60f3f15b0b6d3c35a054c7ee38f16530c8",
+          "status": "PASS_MODULE_AND_EXPLICIT_CONSUMER_REVALIDATION_NOT_AGGREGATE",
+          "evidence": [
+            "evidence/current-codex/stage22/runner/CHECK_RESULT.json"
+          ],
+          "root_count_delta": 0,
+          "full_release_acceptance": false
         }
       ]
     },
@@ -4738,7 +6194,7 @@
       },
       "source_file_present": true,
       "declaration_lexically_present": true,
-      "source_sha256": "3098cbda01dfb1e89c3b3505365c1b60f3f15b0b6d3c35a054c7ee38f16530c8",
+      "source_sha256": "29d0a3d4eb5c243ca77d2b3d20296cdd8f4eb3130b413a9a4fb90914e86df377",
       "evidence": [
         "evidence/current-codex/stage21/STATUS.json",
         "evidence/current-codex/stage21/runner/CHECK_RESULT.json"
@@ -4748,7 +6204,22 @@
         "sha256": "143da66a5595d0206bf10ea6ec0143a887d318318f64e51c259b8fa372f2c444",
         "expected_declaration": "IndependentSpanPhysicalConsumer.expected_actual_zero_measure_span_consumer"
       },
-      "statement_formalization": "Instantiate true zero profile/jet objects and all P0 separator premises on each actual finite real combination; derive the finite-span exclusion without assuming measure status. Current actual-domain audit: ACTUAL_ZERO_PROFILES_ZEROTH_JET_IDENTIFICATION_SELFDUALITY_GAP_AND_BOTH_SPAN_CONCLUSIONS. Original contract unchanged."
+      "statement_formalization": "Instantiate true zero profile/jet objects and all P0 separator premises on each actual finite real combination; derive the finite-span exclusion without assuming measure status. Current actual-domain audit: ACTUAL_ZERO_PROFILES_ZEROTH_JET_IDENTIFICATION_SELFDUALITY_GAP_AND_BOTH_SPAN_CONCLUSIONS. Original contract unchanged.",
+      "revalidations": [
+        {
+          "stage": 22,
+          "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+          "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+          "source_sha256": "29d0a3d4eb5c243ca77d2b3d20296cdd8f4eb3130b413a9a4fb90914e86df377",
+          "prior_source_sha256": "3098cbda01dfb1e89c3b3505365c1b60f3f15b0b6d3c35a054c7ee38f16530c8",
+          "status": "PASS_MODULE_AND_EXPLICIT_CONSUMER_REVALIDATION_NOT_AGGREGATE",
+          "evidence": [
+            "evidence/current-codex/stage22/runner/CHECK_RESULT.json"
+          ],
+          "root_count_delta": 0,
+          "full_release_acceptance": false
+        }
+      ]
     },
     {
       "id": "OPICA_FOLLOWUP_ACTUAL_FORCE_SAMPLING_CONSUMER",
@@ -4788,7 +6259,7 @@
       },
       "source_file_present": true,
       "declaration_lexically_present": true,
-      "source_sha256": "3098cbda01dfb1e89c3b3505365c1b60f3f15b0b6d3c35a054c7ee38f16530c8",
+      "source_sha256": "29d0a3d4eb5c243ca77d2b3d20296cdd8f4eb3130b413a9a4fb90914e86df377",
       "evidence": [
         "evidence/current-codex/stage19/STATUS.json",
         "evidence/current-codex/stage19/runner/CHECK_RESULT.json"
@@ -4853,6 +6324,19 @@
             ],
             "current_status": "PROVED_NARROW_LOCAL_GATES_AGGREGATE_PENDING"
           }
+        },
+        {
+          "stage": 22,
+          "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+          "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+          "source_sha256": "29d0a3d4eb5c243ca77d2b3d20296cdd8f4eb3130b413a9a4fb90914e86df377",
+          "prior_source_sha256": "3098cbda01dfb1e89c3b3505365c1b60f3f15b0b6d3c35a054c7ee38f16530c8",
+          "status": "PASS_MODULE_AND_EXPLICIT_CONSUMER_REVALIDATION_NOT_AGGREGATE",
+          "evidence": [
+            "evidence/current-codex/stage22/runner/CHECK_RESULT.json"
+          ],
+          "root_count_delta": 0,
+          "full_release_acceptance": false
         }
       ]
     }
@@ -4870,12 +6354,12 @@
     "open_no_complete_candidate_roots": 0,
     "full_required_roots": 100,
     "acceptance_units": 28,
-    "receipt": "STAGE21_HANDOVER.md",
+    "receipt": "STAGE22_HANDOVER.md",
     "independent_source_repairs": [],
     "independent_consumer_repairs": [],
     "historical41_status_unchanged": true,
     "current_aggregate_accepted": false,
-    "meaning": "41 historical plus59 narrow roots gives100-root body/evidence coverage, not aggregate original-contract acceptance. Fresh SquareDefect physical/interface findings and all full release gates remain OPEN.",
+    "meaning": "41 historical +59 narrow original roots; Stage22 closes physical/canonical/continuous-compact domain findings at exact source. Full aggregate acceptance and registered-source export remain OPEN.",
     "receipt_scope": "Six Stage20 original primaries, with retained word/jet and force/sampling revalidation; supporting audit declarations are not additional roots. Prior index: One Stage 19 original primary and revalidation of the existing Stage 4 word/jet root; supporting ExpectedSampleSign is not a primary. Prior index: Index of one Stage18, two Stage17, four Stage16, three Stage15, two Stage14, three Stage13, two Stage12, two Stage11, two Stage10, two Stage9, one Stage8, three Stage7, three Stage6, two Stage5, two Stage4 and fifteen retained narrow original-root results, not an aggregate receipt",
     "additional_stage1_primary_roots": [
       "laguerre_tail_norm",
@@ -4998,6 +6482,11 @@
       "tree": "3e63b0c72fc04da7bab45388d6096e82e95c4acb",
       "status": "evidence/current-codex/stage21/STATUS.json"
     },
-    "full_original_contract_audit": "OPEN_SEE_STAGE21_FRESH_NONAUTHOR_FINDINGS"
+    "full_original_contract_audit": "INDEPENDENT_MATHEMATICAL_FINDINGS_CLOSED_FULL_SOURCE_TYPE_EXPORT_SEAL_PENDING",
+    "stage22_checked_source": {
+      "commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+      "tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+      "status": "evidence/current-codex/stage22/STATUS.json"
+    }
   }
 }

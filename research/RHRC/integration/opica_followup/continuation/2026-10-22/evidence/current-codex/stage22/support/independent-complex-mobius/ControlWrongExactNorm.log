@@ -1,0 +1,26 @@
+../audit-independent-complex-mobius/ControlWrongExactNorm.lean:88:38: error: Type mismatch: After simplification, term
+  congrArg re hmobius.right.right
+ has type
+  ∑' (n : ℕ), |↑(ArithmeticFunction.moebius n)| * ↑n ^ (-2⁻¹ + -a) =
+    (riemannZeta (↑a + 2⁻¹) / riemannZeta (2 * ↑a + 1)).re
+but is expected to have type
+  ∑' (n : ℕ), |↑(ArithmeticFunction.moebius n)| * ↑n ^ (-2⁻¹ + -a) =
+    (riemannZeta (↑a + 2⁻¹) / riemannZeta (2 * ↑a + 2)).re
+'Zeta23.OPICAFollowup.Validation.expected_independent_complete_complex_mobius' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+../audit-independent-complex-mobius/ControlWrongExactNorm.lean:122:45: error: Application type mismatch: The argument
+  hmobius.right.right
+has type
+  ↑(∑' (n : ℕ), |↑(ArithmeticFunction.moebius n)| * ↑n ^ (-(a + 1 / 2))) =
+    riemannZeta ↑(a + 1 / 2) / riemannZeta ↑(2 * a + 1)
+but is expected to have type
+  ↑(∑' (n : ℕ), |↑(ArithmeticFunction.moebius n)| * ↑n ^ (-(a + 1 / 2))) =
+    riemannZeta ↑(a + 1 / 2) / riemannZeta ↑(2 * a + 2)
+in the application
+  ⟨hmobius.right.left, hmobius.right.right⟩
+'Zeta23.OPICAFollowup.Validation.expected_independent_complex_mobius_full_interface' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]

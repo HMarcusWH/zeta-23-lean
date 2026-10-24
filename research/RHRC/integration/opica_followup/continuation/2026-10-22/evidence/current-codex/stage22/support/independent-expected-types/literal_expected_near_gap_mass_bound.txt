@@ -1,0 +1,9 @@
+theorem expected_near_gap_mass_bound
+    (ν : LocallyFiniteSignedMeasure) (growth : ν.HasLinearGrowth)
+    (selfdual : ν.FourierSelfdual growth) (positiveOff : ν.negative integerLatticeᶜ = 0)
+    (a R d : ℝ) (ha : 0 < a) (ha1 : a ≤ 1)
+    (gap : ν.positive (Ioo (-a) a) = 0 ∧ ν.negative (Ioo (-a) a) = 0)
+    (hR : 1 ≤ R) (hd : 0 < d) (hd2 : d ≤ 1/2) :
+    ν.negative {x | |x| ≤ R ∧ d ≤ Metric.infDist x integerLattice} = 0 ∧
+    ν.positive.real {x | |x| ≤ R ∧ d ≤ Metric.infDist x integerLattice} ≤
+      Real.pi^2 * R^2 * (1-a) * ν.totalVariation.real (Icc (-1) 1) / (4*d^2)

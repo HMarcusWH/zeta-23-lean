@@ -1,0 +1,76 @@
+{
+  "status": "PASS_FOCUSED_PARENT_TESTS_ONLY",
+  "source_before": {
+    "head": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+    "tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+    "dirty": "",
+    "files": {
+      "research/RHRC/integration/opica/validate_contract.py": "37784b8c89d75f3aae1aed52ff2fe046c2614d78247edfd717f6b30a2d41953a",
+      "research/RHRC/integration/opica/tests/test_contract.py": "17da5f0929c47499ea6cd11131fece1e50a53ff27adb4179ffa8fc96dfc07fce",
+      "research/RHRC/graph/OPICA_FOLLOWUP_CURRENT_STATE.md": "de9aabe7985f839c39b62e82c3407c97bc21d831e283199ab5d81784fe68f327",
+      "research/RHRC/integration/opica_followup/validate_contract.py": "ae8506ff02100c98cd97fa2d1ccb0bbb9ffcb2bf849e302351bc79f969b1a540",
+      "research/RHRC/integration/opica_followup/CONTINUATION_MANIFEST.json": "02bb6915acd2863567b9959184104060640e08e488c4748d4ad53a852c9deaba"
+    }
+  },
+  "source_after": {
+    "head": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+    "tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+    "dirty": "",
+    "files": {
+      "research/RHRC/integration/opica/validate_contract.py": "37784b8c89d75f3aae1aed52ff2fe046c2614d78247edfd717f6b30a2d41953a",
+      "research/RHRC/integration/opica/tests/test_contract.py": "17da5f0929c47499ea6cd11131fece1e50a53ff27adb4179ffa8fc96dfc07fce",
+      "research/RHRC/graph/OPICA_FOLLOWUP_CURRENT_STATE.md": "de9aabe7985f839c39b62e82c3407c97bc21d831e283199ab5d81784fe68f327",
+      "research/RHRC/integration/opica_followup/validate_contract.py": "ae8506ff02100c98cd97fa2d1ccb0bbb9ffcb2bf849e302351bc79f969b1a540",
+      "research/RHRC/integration/opica_followup/CONTINUATION_MANIFEST.json": "02bb6915acd2863567b9959184104060640e08e488c4748d4ad53a852c9deaba"
+    }
+  },
+  "source_hashes_unchanged": true,
+  "commands": [
+    {
+      "name": "normal",
+      "command": [
+        "/usr/bin/python3",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "research/RHRC/integration/opica/tests",
+        "-p",
+        "test_contract.py"
+      ],
+      "started_at": "2026-10-24T18:13:15.273068+00:00",
+      "finished_at": "2026-10-24T18:17:07.759529+00:00",
+      "exit_code": 0,
+      "log": "normal.log",
+      "log_sha256": "8251ba60d5a346d6062946de63cfc0b46ac220ffe7d25984f7d616edc73eeec5",
+      "tmpdir": "/tmp/opica-stage22-repaired-normal-4296388z"
+    },
+    {
+      "name": "optimized",
+      "command": [
+        "/usr/bin/python3",
+        "-B",
+        "-O",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "research/RHRC/integration/opica/tests",
+        "-p",
+        "test_contract.py"
+      ],
+      "started_at": "2026-10-24T18:13:15.274024+00:00",
+      "finished_at": "2026-10-24T18:15:36.311947+00:00",
+      "exit_code": 0,
+      "log": "optimized.log",
+      "log_sha256": "ce0b841a468a3b64fe6055ec3b8744368bf026df35d0beb9991e2d97908f93b5",
+      "tmpdir": "/tmp/opica-stage22-repaired-optimized-z4t5shr8"
+    }
+  ],
+  "python": "3.14.4 (main, Aug 20 2026, 10:41:58) [GCC 15.2.0]",
+  "platform": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.43",
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "release_accepted": false
+}

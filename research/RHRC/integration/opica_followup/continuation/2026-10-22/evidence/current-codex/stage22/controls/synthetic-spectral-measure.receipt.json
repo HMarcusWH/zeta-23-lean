@@ -1,0 +1,41 @@
+{
+  "name": "synthetic-spectral-measure",
+  "file": "synthetic-spectral-measure.lean",
+  "source_sha256": "6327f48499d723aade54c6472a41e1a81ed4413fe9324582e81e81a0c094aba8",
+  "expected": "REJECTED",
+  "scope": "Stage19 force/sampling contract mutation",
+  "origin": {
+    "kind": "EXACT_STAGE21_BYTES",
+    "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\synthetic-spectral-measure.lean",
+    "sha256": "6327f48499d723aade54c6472a41e1a81ed4413fe9324582e81e81a0c094aba8",
+    "receipt": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\CHECK_RESULT.json",
+    "receipt_sha256": "277a7e7fde8c600848bc59ce730faf3c9ceab1ca436ac36c58c00420f429aa0a"
+  },
+  "required_diagnostic_regex": [
+    "arithmeticSpectralMeasure",
+    "not definitionally equal"
+  ],
+  "passed": true,
+  "observed": "REJECTED_INTENDED_MUTATION",
+  "failure_reasons": [],
+  "requested_axiom_names": [],
+  "axioms": {},
+  "error_recovery_sorryAx_in_rejected_output": false,
+  "formal_authority_from_failed_declarations": false,
+  "command": [
+    "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+    "env",
+    "lean",
+    "--root=C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\sources",
+    "-DautoImplicit=false",
+    "-DrelaxedAutoImplicit=false",
+    "-DmaxHeartbeats=800000",
+    "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\sources\\synthetic-spectral-measure.lean",
+    "-o",
+    "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\objects\\synthetic-spectral-measure.olean"
+  ],
+  "exit_code": 1,
+  "log": "synthetic-spectral-measure.log",
+  "log_sha256": "c7d1cb13ab4455d4e168177cab34662156f0e79e36d14451f1de239287c7b28a",
+  "seconds": 47.88446440000553
+}

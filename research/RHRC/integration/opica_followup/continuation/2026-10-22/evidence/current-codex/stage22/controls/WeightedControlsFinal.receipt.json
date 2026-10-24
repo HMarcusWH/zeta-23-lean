@@ -1,0 +1,52 @@
+{
+  "name": "WeightedControlsFinal",
+  "file": "WeightedControlsFinal.lean",
+  "source_sha256": "9569499f8cc45570644a3612d7cb84a9c6dd35462809c00785021130507f1d20",
+  "expected": "PASS",
+  "scope": "Actual finite-span clause / independent-basis / reflection / selfduality falsification",
+  "origin": {
+    "kind": "EXACT_STAGE21_BYTES",
+    "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\WeightedControlsFinal.lean",
+    "sha256": "9569499f8cc45570644a3612d7cb84a9c6dd35462809c00785021130507f1d20",
+    "receipt": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\CHECK_RESULT.json",
+    "receipt_sha256": "277a7e7fde8c600848bc59ce730faf3c9ceab1ca436ac36c58c00420f429aa0a"
+  },
+  "required_diagnostic_regex": [],
+  "passed": true,
+  "observed": "PASS_ACTUAL_FALSIFICATION_CONTROL",
+  "failure_reasons": [],
+  "requested_axiom_names": [
+    "IndependentWeightedBudgetControls.diracTwo_weighted_zero",
+    "IndependentWeightedBudgetControls.diracTwo_not_selfdual"
+  ],
+  "axioms": {
+    "IndependentWeightedBudgetControls.diracTwo_weighted_zero": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "IndependentWeightedBudgetControls.diracTwo_not_selfdual": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "error_recovery_sorryAx_in_rejected_output": false,
+  "formal_authority_from_failed_declarations": false,
+  "command": [
+    "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+    "env",
+    "lean",
+    "--root=C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\sources",
+    "-DautoImplicit=false",
+    "-DrelaxedAutoImplicit=false",
+    "-DmaxHeartbeats=800000",
+    "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\sources\\WeightedControlsFinal.lean",
+    "-o",
+    "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\objects\\WeightedControlsFinal.olean"
+  ],
+  "exit_code": 0,
+  "log": "WeightedControlsFinal.log",
+  "log_sha256": "e308c595513f66b84e74b3584b9500d8652b74fd8affa09bed6231ba76afaaa6",
+  "seconds": 72.09987469995394
+}

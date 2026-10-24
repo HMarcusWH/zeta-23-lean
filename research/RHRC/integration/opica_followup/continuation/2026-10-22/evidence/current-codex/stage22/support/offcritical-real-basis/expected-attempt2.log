@@ -1,0 +1,27 @@
+C:\Users\macka\.codex\.chatgpt-projects\g-p-6a353c7268b08191b685956e466d73e4\work\audit-offcritical-real-basis\ExpectedOffcriticalRealBasis.lean:21:62: error: unsolved goals
+ρ : ℂ
+hz : riemannZeta ρ = 0
+h0 : 0 < ρ.re
+h1 : ρ.re < 1
+c : ℂ
+φ : 𝓢(ℝ, ℂ)
+⊢ ↑c.re * ∫ (x : ℝ), φ x ∂(normalizedZeroMeasureJet ρ 0).rePart.positive -
+        ↑c.re * ∫ (x : ℝ), φ x ∂(normalizedZeroMeasureJet ρ 0).rePart.negative +
+      -(↑c.im * ∫ (x : ℝ), φ x ∂(normalizedZeroMeasureJet ρ 0).imPart.positive) =
+    ↑c.re * ∫ (x : ℝ), φ x ∂(normalizedZeroMeasureJet ρ 0).rePart.positive -
+        ↑c.re * ∫ (x : ℝ), φ x ∂(normalizedZeroMeasureJet ρ 0).rePart.negative -
+      ↑c.im * ∫ (x : ℝ), φ x ∂(normalizedZeroMeasureJet ρ 0).imPart.positive
+'IndependentOffcriticalRealBasis.actual_offcritical_kappa' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IndependentOffcriticalRealBasis.actual_offcritical_negative_mass_restriction' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'IndependentOffcriticalRealBasis.actual_real_imaginary_pair_independent' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'IndependentOffcriticalRealBasis.actual_two_coefficient_euclidean_negative_budget' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'IndependentOffcriticalRealBasis.actual_no_nonzero_positive_combination' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

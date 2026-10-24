@@ -1,0 +1,12 @@
+{
+  "status": "OFFICIAL_PINNED_LINUX_COMPILER_ARCHIVE_VERIFIED",
+  "url": "https://github.com/leanprover/lean4/releases/download/v4.33.0-rc2/lean-4.33.0-rc2-linux.tar.zst",
+  "release_tag": "v4.33.0-rc2",
+  "release_api": "https://api.github.com/repos/leanprover/lean4/releases/tags/v4.33.0-rc2",
+  "expected_sha256": "48010c7d6264dc992574e9b0e09ece1f9c648e8f5106066b2cdb6834a6a60a6c",
+  "actual_sha256": "48010c7d6264dc992574e9b0e09ece1f9c648e8f5106066b2cdb6834a6a60a6c",
+  "bytes": 574905502,
+  "verified_at": "2026-10-24T18:43:51.022782+00:00",
+  "native_cache_modified": false,
+  "accepted_cold_receipt_created": false
+}

@@ -1,0 +1,39 @@
+{
+  "name": "NegativeOmitsCompactCompatibility",
+  "file": "NegativeOmitsCompactCompatibility.lean",
+  "source_sha256": "0ed8a24d7c41dc1b2e1f6a4da0e32432690eb09a758966d4db213ee91354f931",
+  "expected": "REJECTED",
+  "scope": "Support of an unrelated measure does not constrain an arbitrary tempered distribution without compact compatibility.",
+  "origin": {
+    "kind": "SEALED_COMPACT_COMPATIBILITY_IMPORT_ONLY",
+    "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-tempered-lattice\\SEALED_TEMPERED_LATTICE_2026-10-24\\NegativeOmitsCompactCompatibility.lean",
+    "sha256": "a45273eb9bf5e980dc7c5a1e900493773cd8fcd606c07dd886644b0fdb0a46f2"
+  },
+  "required_diagnostic_regex": [
+    "extension_annihilates_lattice_zero",
+    "ExtendsCompactPairing"
+  ],
+  "passed": true,
+  "observed": "REJECTED_INTENDED_MUTATION",
+  "failure_reasons": [],
+  "requested_axiom_names": [],
+  "axioms": {},
+  "error_recovery_sorryAx_in_rejected_output": false,
+  "formal_authority_from_failed_declarations": false,
+  "command": [
+    "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+    "env",
+    "lean",
+    "--root=C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\sources",
+    "-DautoImplicit=false",
+    "-DrelaxedAutoImplicit=false",
+    "-DmaxHeartbeats=800000",
+    "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\sources\\NegativeOmitsCompactCompatibility.lean",
+    "-o",
+    "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\objects\\NegativeOmitsCompactCompatibility.olean"
+  ],
+  "exit_code": 1,
+  "log": "NegativeOmitsCompactCompatibility.log",
+  "log_sha256": "dfdf4e54ee6b68ad882d5c64dae319c0edf5d3b75aa29e7ee2bc1e9f7a21a28b",
+  "seconds": 82.8957487998996
+}

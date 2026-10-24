@@ -1,0 +1,8 @@
+../audit-independent-expected-types/NegativeNoCommonBudget.lean:14:67: error: unsolved goals
+ν : ℕ → LocallyFiniteSignedMeasure
+growth : ∀ (n : ℕ), (ν n).HasLinearGrowth
+schwartz : ∀ (φ : 𝓢(ℝ, ℂ)), Tendsto (fun n => ((ν n).distributionOfLinearGrowth ⋯) φ) atTop (𝓝 0)
+f : ℝ → ℂ
+continuous : Continuous f
+compact : HasCompactSupport f
+⊢ ∀ (n : ℕ), Zeta23.OPICAFollowup.CommonLinearMassBound 1 (ν n).totalVariation

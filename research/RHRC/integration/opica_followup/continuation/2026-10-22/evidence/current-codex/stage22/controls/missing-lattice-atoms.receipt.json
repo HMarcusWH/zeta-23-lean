@@ -1,0 +1,41 @@
+{
+  "name": "missing-lattice-atoms",
+  "file": "missing-lattice-atoms.lean",
+  "source_sha256": "071661e22bb39c2604b73f68d1a7c07e10ed9766c2bfe90aae1f961a3dd7df15",
+  "expected": "REJECTED",
+  "scope": "Stage19 force/sampling contract mutation",
+  "origin": {
+    "kind": "EXACT_STAGE21_BYTES",
+    "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\missing-lattice-atoms.lean",
+    "sha256": "071661e22bb39c2604b73f68d1a7c07e10ed9766c2bfe90aae1f961a3dd7df15",
+    "receipt": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\CHECK_RESULT.json",
+    "receipt_sha256": "277a7e7fde8c600848bc59ce730faf3c9ceab1ca436ac36c58c00420f429aa0a"
+  },
+  "required_diagnostic_regex": [
+    "nativeLogForce",
+    "sawtooth_integrable_force_identity"
+  ],
+  "passed": true,
+  "observed": "REJECTED_INTENDED_MUTATION",
+  "failure_reasons": [],
+  "requested_axiom_names": [],
+  "axioms": {},
+  "error_recovery_sorryAx_in_rejected_output": false,
+  "formal_authority_from_failed_declarations": false,
+  "command": [
+    "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+    "env",
+    "lean",
+    "--root=C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\sources",
+    "-DautoImplicit=false",
+    "-DrelaxedAutoImplicit=false",
+    "-DmaxHeartbeats=800000",
+    "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\sources\\missing-lattice-atoms.lean",
+    "-o",
+    "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\objects\\missing-lattice-atoms.olean"
+  ],
+  "exit_code": 1,
+  "log": "missing-lattice-atoms.log",
+  "log_sha256": "3a25fa348e98af7739a34e4e792f73460b6560bc98cecb8cc43c31cf0809a1c6",
+  "seconds": 48.20968880003784
+}

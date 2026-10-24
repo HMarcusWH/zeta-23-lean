@@ -1,0 +1,41 @@
+{
+  "name": "NegativeSquareMissingTemperedGrowth",
+  "file": "NegativeSquareMissingTemperedGrowth.lean",
+  "source_sha256": "33d361e92f73c057433d53629afed0f4a4278199065b75d0a657e7aa50ce388b",
+  "expected": "REJECTED",
+  "scope": "The canonical Schwartz embedding needs actual temperate variation growth.",
+  "origin": {
+    "kind": "SEALED_SQUARE_EXAMPLE_SPLIT_IMPORT_ONLY",
+    "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-square-physical\\SEALED_SQUARE_PHYSICAL_2026-10-24\\NegativeSquarePhysicalFinal.lean",
+    "sha256": "22b6be21f52213996abc3a427d7b78b33955bf37a2ab337028acf07c6a7f6a35",
+    "example_index": 2,
+    "adaptation": "Split the three original example bodies into separate files; change only standalone module import."
+  },
+  "required_diagnostic_regex": [
+    "failed to synthesize",
+    "HasTemperateGrowth"
+  ],
+  "passed": true,
+  "observed": "REJECTED_INTENDED_MUTATION",
+  "failure_reasons": [],
+  "requested_axiom_names": [],
+  "axioms": {},
+  "error_recovery_sorryAx_in_rejected_output": false,
+  "formal_authority_from_failed_declarations": false,
+  "command": [
+    "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+    "env",
+    "lean",
+    "--root=C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\sources",
+    "-DautoImplicit=false",
+    "-DrelaxedAutoImplicit=false",
+    "-DmaxHeartbeats=800000",
+    "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\sources\\NegativeSquareMissingTemperedGrowth.lean",
+    "-o",
+    "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\objects\\NegativeSquareMissingTemperedGrowth.olean"
+  ],
+  "exit_code": 1,
+  "log": "NegativeSquareMissingTemperedGrowth.log",
+  "log_sha256": "9e2124d57877d10e0da1a938e4e02860f9046e4c05c6a5f16c8fc69e0b8e3007",
+  "seconds": 81.19603780005127
+}

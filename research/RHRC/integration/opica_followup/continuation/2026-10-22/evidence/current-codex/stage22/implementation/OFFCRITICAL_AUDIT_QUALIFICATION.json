@@ -1,0 +1,18 @@
+{
+  "schema": "OPICA_AUDIT_NAME_QUALIFICATION_ONLY_V1",
+  "reason": "The native Lean commands exit0 and print standard axioms, but the first precommit matcher correctly fails because requested short names differ from the fully qualified printed identities. Preserve that FAIL; qualify only the two consumer audit lists and replay them.",
+  "files": [
+    {
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedOffcriticalRealBasis.lean",
+      "before_sha256": "5afd07e87e5c6708a54ea64c62239e6b5dfa2f50797ec10bfe0c3014958abe11",
+      "after_sha256": "8f9880d1e9e6776372c13ff951706bac726b788c51cc8cd72fa75553a010d507",
+      "proof_and_types_byte_identical_after_removing_print_commands": true
+    },
+    {
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedOffcriticalControls.lean",
+      "before_sha256": "986707a8ae7af3d163a992dc8c8b6c16f82224d3b19ad866124354b1ba69b1f5",
+      "after_sha256": "82cb98b85b98b3b8a8cd1ae62db99e6a2e09c096595447281571b16938e29e9f",
+      "proof_and_types_byte_identical_after_removing_print_commands": true
+    }
+  ]
+}

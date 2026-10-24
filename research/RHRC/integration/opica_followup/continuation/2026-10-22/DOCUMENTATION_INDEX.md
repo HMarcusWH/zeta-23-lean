@@ -1,3 +1,5 @@
+> Current checkpoint: [Stage22](STAGE22_HANDOVER.md), checked code `2440dcde7607baa7bcff2ce9626effa1ae9f3f07`, tree `dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99`. All100 original bodies have historical/narrow evidence. Physical/canonical and continuous-compact domain findings are mathematically closed; full export, registry, parent extension, canonical and release acceptance remain OPEN. Earlier statements retain their historical scope.
+
 > Current checkpoint: [Stage21](STAGE21_HANDOVER.md), checked code `139c1a0d88cc0fb2d8a0d8ea71e152b25b14c36e`, tree `3e63b0c72fc04da7bab45388d6096e82e95c4acb`. Ledger:41 historical +59 narrow +0 absent bodies; this is not original-contract/aggregate acceptance. Fresh physical/interface findings and all release obligations remain OPEN. Earlier stage statements below retain their historical scope.
 
 > Current source-pinned research report: [Stage 20](STAGE20_HANDOVER.md). Read its exact theorem domains, controls, all-workflow provenance and novelty comparison before using older stage descriptions. Status:41 historical + 56 narrow + 3 absent; full release/RH/Step4 OPEN.

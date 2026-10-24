@@ -1,0 +1,17 @@
+{
+  "date_utc": "2026-10-24T18:34:42.597131+00:00",
+  "status": "DERIVED_MATHEMATICAL_NOTE_NOT_LEAN_THEOREM",
+  "note_sha256": "92cc2e03a9a67670cc994ab95e72feded20d329a60fb97f2c1edcbf75845ffef",
+  "inspected_code_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+  "inspected_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+  "source_sha256": "69d2d89a32311dec71bc9831b21717097e94a980d7b9dfcd0f8dbf10f8fbb9f5",
+  "paper5_sha256": "79fcbc48e5ad95f25f46eb4285d0b107e11b0bac7ab90ab0d4af918052bfaba1",
+  "cone_closedness_assumed": false,
+  "finite_dimensional_convex_interior_step_explicit": true,
+  "sharp_cardinality_scope": "n>=1, one-sided real linear integral tests only",
+  "new_Lean_declarations": 0,
+  "new_primary_roots": 0,
+  "originality_claim": false,
+  "RH": "OPEN",
+  "Step4": "OPEN"
+}

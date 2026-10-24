@@ -1,0 +1,7 @@
+C:\Users\macka\.codex\.chatgpt-projects\g-p-6a353c7268b08191b685956e466d73e4\work\opica-stage22\clean-controls\sources\NegativeConfluentProfilesDistinctness.lean:14:2: error: Type mismatch
+  finite_zero_jet_independent ρ hz h0 h1
+has type
+  distinctSpectralNodes ρ →
+    LinearIndependent ℂ fun p => (normalizedZeroMeasureJet (ρ p.fst) ↑p.snd).distributionOfLinearGrowth ⋯
+but is expected to have type
+  LinearIndependent ℂ fun p => (normalizedZeroMeasureJet (ρ p.fst) ↑p.snd).distributionOfLinearGrowth ⋯

@@ -1,0 +1,28 @@
+{
+  "schema": "OPICA_INDEPENDENT_FULL_AST_RECOMPUTATION_V1",
+  "status": "ACTUAL_COMPLETE_WIRE_REPARSED_AND_ALL_DAG_HASHES_RECOMPUTED",
+  "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+  "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+  "export": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\warm-export-smoke-rooted\\bindings.log",
+  "export_sha256": "60d11cab7988b1539b347d97c5b1e2e9d7b671a48ef26873fad4e21882b01d62",
+  "producer_result": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\warm-export-smoke-rooted\\RESULT.json",
+  "producer_result_sha256": "e79183fc99f981b7e3b61b494a3ce091b894a373f51520b08899061c7ff90ea0",
+  "unchanged_parser_source_sha256": "ae4421afe295cb3d0c7a7614da6cc0f4e43dee2904281812a233f70a990d1209",
+  "independent_parser_source_sha256": "42dab51e00e50356c9221df8b1276eb5fc6eaa52b7c8a62aec0b0b5dcc9e8685",
+  "counts": {
+    "public_declarations": 3788,
+    "constructors": 18,
+    "roots": 100,
+    "consumers": 327,
+    "definitions": 83,
+    "dependency_nodes": 16333
+  },
+  "mathematical_sources_unchanged": true,
+  "semantic_final_inspection": "PENDING",
+  "cold_isolation": false,
+  "human_review": "NOT_ESTABLISHED",
+  "seal_created": false,
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "full_release": "OPEN"
+}

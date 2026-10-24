@@ -1,0 +1,23 @@
+{
+  "name": "OffcriticalControls",
+  "package": "Zeta23",
+  "isModule": false,
+  "plugins": [],
+  "dynlibs": [],
+  "options": {
+    "relaxedAutoImplicit": false,
+    "maxHeartbeats": 800000
+  },
+  "importArts": {
+    "OffcriticalRealBasis": [
+      [
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-offcritical-real-basis\\OffcriticalRealBasis.olean"
+      ]
+    ],
+    "ExpectedOffcriticalRealBasis": [
+      [
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-offcritical-real-basis\\ExpectedOffcriticalRealBasis.olean"
+      ]
+    ]
+  }
+}

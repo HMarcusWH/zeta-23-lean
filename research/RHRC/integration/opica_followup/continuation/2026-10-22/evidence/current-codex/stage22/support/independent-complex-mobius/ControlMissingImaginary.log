@@ -1,0 +1,30 @@
+../audit-independent-complex-mobius/ControlMissingImaginary.lean:94:14: error: Application type mismatch: The argument
+  him
+has type
+  True
+but is expected to have type
+  positiveLogMeasure (weightedDilationMixture sigma a ⋯ hm).imPart.positive + integerLogComb ∗ sigma.imPart.negative =
+    positiveLogMeasure (weightedDilationMixture sigma a ⋯ hm).imPart.negative + integerLogComb ∗ sigma.imPart.positive
+in the application
+  And.intro him
+../audit-independent-complex-mobius/ControlMissingImaginary.lean:94:27: error: Application type mismatch: The argument
+  hinvim
+has type
+  True
+but is expected to have type
+  sigma.imPart.positive +
+      (moebiusPlusComb ∗ positiveLogMeasure (weightedDilationMixture sigma a ⋯ hm).imPart.negative +
+        moebiusMinusComb ∗ positiveLogMeasure (weightedDilationMixture sigma a ⋯ hm).imPart.positive) =
+    sigma.imPart.negative +
+      (moebiusPlusComb ∗ positiveLogMeasure (weightedDilationMixture sigma a ⋯ hm).imPart.positive +
+        moebiusMinusComb ∗ positiveLogMeasure (weightedDilationMixture sigma a ⋯ hm).imPart.negative)
+in the application
+  And.intro hinvim
+'Zeta23.OPICAFollowup.Validation.expected_independent_complete_complex_mobius' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.Validation.expected_independent_complex_mobius_full_interface' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]

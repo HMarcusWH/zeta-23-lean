@@ -1,0 +1,41 @@
+{
+  "name": "NegativeConfluentProfilesDeterminantSign",
+  "file": "NegativeConfluentProfilesDeterminantSign.lean",
+  "source_sha256": "cbc604c6922a9c02681ba0111fa743bee65ddcc64aff4e140b6272f4257fa522",
+  "expected": "REJECTED",
+  "scope": "H2a full statement mutation",
+  "origin": {
+    "kind": "EXACT_STAGE21_BYTES",
+    "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\NegativeConfluentProfilesDeterminantSign.lean",
+    "sha256": "cbc604c6922a9c02681ba0111fa743bee65ddcc64aff4e140b6272f4257fa522",
+    "receipt": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\CHECK_RESULT.json",
+    "receipt_sha256": "277a7e7fde8c600848bc59ce730faf3c9ceab1ca436ac36c58c00420f429aa0a"
+  },
+  "required_diagnostic_regex": [
+    "profile_jet_confluent_determinant",
+    "profileJetMatrix"
+  ],
+  "passed": true,
+  "observed": "REJECTED_INTENDED_MUTATION",
+  "failure_reasons": [],
+  "requested_axiom_names": [],
+  "axioms": {},
+  "error_recovery_sorryAx_in_rejected_output": false,
+  "formal_authority_from_failed_declarations": false,
+  "command": [
+    "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+    "env",
+    "lean",
+    "--root=C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\sources",
+    "-DautoImplicit=false",
+    "-DrelaxedAutoImplicit=false",
+    "-DmaxHeartbeats=800000",
+    "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\sources\\NegativeConfluentProfilesDeterminantSign.lean",
+    "-o",
+    "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\objects\\NegativeConfluentProfilesDeterminantSign.olean"
+  ],
+  "exit_code": 1,
+  "log": "NegativeConfluentProfilesDeterminantSign.log",
+  "log_sha256": "05adb528e162769c95026ad8a29df948bbce9e69ece50590882ff56b314a3ca8",
+  "seconds": 45.69863370002713
+}

@@ -1,0 +1,306 @@
+{
+  "review_kind": "ACTUAL_NONAUTHOR_MATHEMATICAL_CONTRACT_REVIEW",
+  "review_status": "COMPLETED_NO_ADDITIONAL_MATHEMATICAL_CONTRACT_GAP_FOUND_IN_PINNED_CANDIDATE_PLUS_BRIDGE",
+  "bridge_disposition": "CORRECT_CANDIDATE_FORMALLY_COMPILED",
+  "human_review": "NOT_ESTABLISHED",
+  "seal_created": false,
+  "owner_production_bridge_replay": "NOT_ESTABLISHED_BY_THIS_REVIEW",
+  "aggregate": "OPEN",
+  "full_release": "OPEN",
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "independent_closing_inequalities": "OPEN",
+  "review_scope": "Carry forward the exact earlier all100/28/83 assembled review and independently inspect the final compiled bridge delta; final clean owner source pin still requires refresh.",
+  "preserved_findings": [
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-independent-contract-review\\INDEPENDENT_FINDINGS.md",
+      "sha256": "ab8aef054f81c292ff3384cb3188efc0e9734dba92334451c6f8faec5f353cbe"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-independent-contract-review\\all100-semantic-review.json",
+      "sha256": "e20892ea56f06832deb018499970b16b9e7d7510ddae2723b91de684bcdb8bad"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-independent-contract-review\\stage22\\REREVIEW_FINDINGS.md",
+      "sha256": "dc9b862beafd73eb57788b38ee17110d2436bffb42deb4ac1ad49816f853f267"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-independent-contract-review\\stage22\\ROOT_REVIEW.json",
+      "sha256": "a35c6fd994d0b04534014dd4f160c0b50708a77fbef449759855fed326a7d379"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-independent-contract-review\\stage22\\UNIT_REVIEW.json",
+      "sha256": "48015516a5d47d0d58ce2c9c5c835dab3d018561a3b10e83f730e87113ed32e3"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-independent-contract-review\\stage22\\DEFINITION_REVIEW.json",
+      "sha256": "966edf6894cbd1b7b3f25c6ab9c8b618ecff2f62baff5882bab3799857aeb305"
+    }
+  ],
+  "bridge_source_pins": [
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-tempered-lattice\\SchwartzCompactApprox.lean",
+      "sha256": "f2ceb97fa0d10b67bcf7036709e898087dfd04bf44808098ac0f4461a1600ad9"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-tempered-lattice\\TemperedLatticeNoRepair.lean",
+      "sha256": "bd0c74c720d1c7eb56f19d60b8845b887db8c2ba54bfec000f02c4007da11af5"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-tempered-lattice\\ExpectedTemperedLatticeNoRepair.lean",
+      "sha256": "9e9edd98bda335a4b3a04aa490a7816639ca7620f14757e53fba30f1c52d7cc8"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-tempered-lattice\\TemperedLatticeAxiomAudit.lean",
+      "sha256": "e973810f23cdbe19fe27d0aebfdf356251d778edf78074c1e261a1ed243d3d93"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-tempered-lattice\\NegativeOmitsCompactCompatibility.lean",
+      "sha256": "a45273eb9bf5e980dc7c5a1e900493773cd8fcd606c07dd886644b0fdb0a46f2"
+    }
+  ],
+  "sources": [
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-tempered-lattice\\SchwartzCompactApprox.lean",
+      "sha256": "f2ceb97fa0d10b67bcf7036709e898087dfd04bf44808098ac0f4461a1600ad9"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-tempered-lattice\\TemperedLatticeNoRepair.lean",
+      "sha256": "bd0c74c720d1c7eb56f19d60b8845b887db8c2ba54bfec000f02c4007da11af5"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-tempered-lattice\\ExpectedTemperedLatticeNoRepair.lean",
+      "sha256": "9e9edd98bda335a4b3a04aa490a7816639ca7620f14757e53fba30f1c52d7cc8"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-tempered-lattice\\TemperedLatticeAxiomAudit.lean",
+      "sha256": "e973810f23cdbe19fe27d0aebfdf356251d778edf78074c1e261a1ed243d3d93"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-tempered-lattice\\NegativeOmitsCompactCompatibility.lean",
+      "sha256": "a45273eb9bf5e980dc7c5a1e900493773cd8fcd606c07dd886644b0fdb0a46f2"
+    }
+  ],
+  "receipts": [
+    {
+      "name": "cutoff7",
+      "receipt_sha256": "5c225a31aba5af6f759f679e0b3e7a0221e78ca48e847bbc337bc753890dcaeb",
+      "exit_code": 0,
+      "source_unchanged": true,
+      "head": "5ad2fc2df49ed551a8e3040a0dff65939aef015a",
+      "tree": "bb9a2c03d02f34db68e59ee89bb80a1e24e31c7b",
+      "compiler_version": "Lean (version 4.33.0-rc2, x86_64-w64-windows-gnu, commit d8b18978322de05a8f3dba51ef03cf5461676c17, Release)",
+      "command": [
+        "C:\\Users\\macka\\.elan\\toolchains\\leanprover--lean4---v4.33.0-rc2\\bin\\lean.exe",
+        "-R",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-tempered-lattice",
+        "-o",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-tempered-lattice\\SchwartzCompactApprox.olean",
+        "-DautoImplicit=false",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-tempered-lattice\\SchwartzCompactApprox.lean"
+      ],
+      "recorded_log_sha256": "08436bcc7fc45ef2feab030ce18c03d0c0c1912380248103463de55e0f02c6b5",
+      "actual_log_sha256": "08436bcc7fc45ef2feab030ce18c03d0c0c1912380248103463de55e0f02c6b5",
+      "all_recorded_files_match": true,
+      "recorded_files": 3,
+      "reviewed_source_checks": [
+        {
+          "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-tempered-lattice\\SchwartzCompactApprox.lean",
+          "before": "f2ceb97fa0d10b67bcf7036709e898087dfd04bf44808098ac0f4461a1600ad9",
+          "after": "f2ceb97fa0d10b67bcf7036709e898087dfd04bf44808098ac0f4461a1600ad9",
+          "current": "f2ceb97fa0d10b67bcf7036709e898087dfd04bf44808098ac0f4461a1600ad9"
+        }
+      ],
+      "log": "'Zeta23.OPICAFollowup.TemperedLatticeBridge.cutoff_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]\n'Zeta23.OPICAFollowup.TemperedLatticeBridge.compactApprox_tendsto' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'Zeta23.OPICAFollowup.TemperedLatticeBridge.compactApprox_hasCompactSupport' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n"
+    },
+    {
+      "name": "bridge1",
+      "receipt_sha256": "e0fd3b85d8b6cfaa15f4ddbf6e3f5a66ac8afa0890d780a548d56d51bc869c4d",
+      "exit_code": 0,
+      "source_unchanged": true,
+      "head": "5ad2fc2df49ed551a8e3040a0dff65939aef015a",
+      "tree": "bb9a2c03d02f34db68e59ee89bb80a1e24e31c7b",
+      "compiler_version": "Lean (version 4.33.0-rc2, x86_64-w64-windows-gnu, commit d8b18978322de05a8f3dba51ef03cf5461676c17, Release)",
+      "command": [
+        "C:\\Users\\macka\\.elan\\toolchains\\leanprover--lean4---v4.33.0-rc2\\bin\\lean.exe",
+        "-R",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-tempered-lattice",
+        "-o",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-tempered-lattice\\TemperedLatticeNoRepair.olean",
+        "-DautoImplicit=false",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-tempered-lattice\\TemperedLatticeNoRepair.lean"
+      ],
+      "recorded_log_sha256": "9704766a90959044e80ffede57e09e38125c753478ddb96b186778dd76c9de66",
+      "actual_log_sha256": "9704766a90959044e80ffede57e09e38125c753478ddb96b186778dd76c9de66",
+      "all_recorded_files_match": true,
+      "recorded_files": 201,
+      "reviewed_source_checks": [
+        {
+          "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-square-physical\\SquareDefectPhysicalFullCandidate.lean",
+          "before": "c65b7b8eb6894a89a12a85e36ea660c97ca8deeb47900392786b20ae81b4ee58",
+          "after": "c65b7b8eb6894a89a12a85e36ea660c97ca8deeb47900392786b20ae81b4ee58",
+          "current": "c65b7b8eb6894a89a12a85e36ea660c97ca8deeb47900392786b20ae81b4ee58"
+        },
+        {
+          "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-square-physical\\SquareDefectPhysicalFullCandidate.olean",
+          "before": "9af012f979487f978c706c4884612074abad61f8246b4ce16965a4f8c1f606bc",
+          "after": "9af012f979487f978c706c4884612074abad61f8246b4ce16965a4f8c1f606bc",
+          "current": "9af012f979487f978c706c4884612074abad61f8246b4ce16965a4f8c1f606bc"
+        },
+        {
+          "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-tempered-lattice\\SchwartzCompactApprox.lean",
+          "before": "f2ceb97fa0d10b67bcf7036709e898087dfd04bf44808098ac0f4461a1600ad9",
+          "after": "f2ceb97fa0d10b67bcf7036709e898087dfd04bf44808098ac0f4461a1600ad9",
+          "current": "f2ceb97fa0d10b67bcf7036709e898087dfd04bf44808098ac0f4461a1600ad9"
+        },
+        {
+          "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-tempered-lattice\\SchwartzCompactApprox.olean",
+          "before": "2c34489607214fae31bbe0dd3e2779c4127d0ff520493f84ec85c2d1f8202a0d",
+          "after": "2c34489607214fae31bbe0dd3e2779c4127d0ff520493f84ec85c2d1f8202a0d",
+          "current": "2c34489607214fae31bbe0dd3e2779c4127d0ff520493f84ec85c2d1f8202a0d"
+        },
+        {
+          "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-tempered-lattice\\TemperedLatticeNoRepair.lean",
+          "before": "bd0c74c720d1c7eb56f19d60b8845b887db8c2ba54bfec000f02c4007da11af5",
+          "after": "bd0c74c720d1c7eb56f19d60b8845b887db8c2ba54bfec000f02c4007da11af5",
+          "current": "bd0c74c720d1c7eb56f19d60b8845b887db8c2ba54bfec000f02c4007da11af5"
+        }
+      ],
+      "log": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-tempered-lattice\\TemperedLatticeNoRepair.lean:94:57: warning: `ContinuousLinearMap.add_apply` has been deprecated: Use `add_apply` instead\n\nNote: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.add_apply` to `add_apply x`).\n'Zeta23.OPICAFollowup.TemperedLatticeBridge.extension_annihilates_lattice_zero' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'Zeta23.OPICAFollowup.TemperedLatticeBridge.eq_of_compact_agreement' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'Zeta23.OPICAFollowup.TemperedLatticeBridge.extension_unique' depends on axioms: [propext, Classical.choice, Quot.sound]\n'Zeta23.OPICAFollowup.TemperedLatticeBridge.extension_congr_on_lattice' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'Zeta23.OPICAFollowup.square_actual_no_distribution_tempered_measure_repair' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'Zeta23.OPICAFollowup.square_actual_no_selfdual_and_distribution_tempered_measure_repair' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n"
+    },
+    {
+      "name": "expected1",
+      "receipt_sha256": "70befafb20118a04c4b203ecb6a5fa91a491fb37277759b7481284f1190b2309",
+      "exit_code": 0,
+      "source_unchanged": true,
+      "head": "5ad2fc2df49ed551a8e3040a0dff65939aef015a",
+      "tree": "bb9a2c03d02f34db68e59ee89bb80a1e24e31c7b",
+      "compiler_version": "Lean (version 4.33.0-rc2, x86_64-w64-windows-gnu, commit d8b18978322de05a8f3dba51ef03cf5461676c17, Release)",
+      "command": [
+        "C:\\Users\\macka\\.elan\\toolchains\\leanprover--lean4---v4.33.0-rc2\\bin\\lean.exe",
+        "-R",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-tempered-lattice",
+        "-o",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-tempered-lattice\\ExpectedTemperedLatticeNoRepair.olean",
+        "-DautoImplicit=false",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-tempered-lattice\\ExpectedTemperedLatticeNoRepair.lean"
+      ],
+      "recorded_log_sha256": "8d145b57335914568c2e3e2b68b377c79f0240530f1c69cd4c07a018ca7f2a98",
+      "actual_log_sha256": "8d145b57335914568c2e3e2b68b377c79f0240530f1c69cd4c07a018ca7f2a98",
+      "all_recorded_files_match": true,
+      "recorded_files": 203,
+      "reviewed_source_checks": [
+        {
+          "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-square-physical\\SquareDefectPhysicalFullCandidate.lean",
+          "before": "c65b7b8eb6894a89a12a85e36ea660c97ca8deeb47900392786b20ae81b4ee58",
+          "after": "c65b7b8eb6894a89a12a85e36ea660c97ca8deeb47900392786b20ae81b4ee58",
+          "current": "c65b7b8eb6894a89a12a85e36ea660c97ca8deeb47900392786b20ae81b4ee58"
+        },
+        {
+          "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-square-physical\\SquareDefectPhysicalFullCandidate.olean",
+          "before": "9af012f979487f978c706c4884612074abad61f8246b4ce16965a4f8c1f606bc",
+          "after": "9af012f979487f978c706c4884612074abad61f8246b4ce16965a4f8c1f606bc",
+          "current": "9af012f979487f978c706c4884612074abad61f8246b4ce16965a4f8c1f606bc"
+        },
+        {
+          "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-tempered-lattice\\ExpectedTemperedLatticeNoRepair.lean",
+          "before": "9e9edd98bda335a4b3a04aa490a7816639ca7620f14757e53fba30f1c52d7cc8",
+          "after": "9e9edd98bda335a4b3a04aa490a7816639ca7620f14757e53fba30f1c52d7cc8",
+          "current": "9e9edd98bda335a4b3a04aa490a7816639ca7620f14757e53fba30f1c52d7cc8"
+        },
+        {
+          "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-tempered-lattice\\SchwartzCompactApprox.lean",
+          "before": "f2ceb97fa0d10b67bcf7036709e898087dfd04bf44808098ac0f4461a1600ad9",
+          "after": "f2ceb97fa0d10b67bcf7036709e898087dfd04bf44808098ac0f4461a1600ad9",
+          "current": "f2ceb97fa0d10b67bcf7036709e898087dfd04bf44808098ac0f4461a1600ad9"
+        },
+        {
+          "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-tempered-lattice\\SchwartzCompactApprox.olean",
+          "before": "2c34489607214fae31bbe0dd3e2779c4127d0ff520493f84ec85c2d1f8202a0d",
+          "after": "2c34489607214fae31bbe0dd3e2779c4127d0ff520493f84ec85c2d1f8202a0d",
+          "current": "2c34489607214fae31bbe0dd3e2779c4127d0ff520493f84ec85c2d1f8202a0d"
+        },
+        {
+          "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-tempered-lattice\\TemperedLatticeNoRepair.lean",
+          "before": "bd0c74c720d1c7eb56f19d60b8845b887db8c2ba54bfec000f02c4007da11af5",
+          "after": "bd0c74c720d1c7eb56f19d60b8845b887db8c2ba54bfec000f02c4007da11af5",
+          "current": "bd0c74c720d1c7eb56f19d60b8845b887db8c2ba54bfec000f02c4007da11af5"
+        },
+        {
+          "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-tempered-lattice\\TemperedLatticeNoRepair.olean",
+          "before": "aa6e80c3a7f9b2c58fa868dd3a678f8c15adbd01cf71f5a1225b0836eb5ffd10",
+          "after": "aa6e80c3a7f9b2c58fa868dd3a678f8c15adbd01cf71f5a1225b0836eb5ffd10",
+          "current": "aa6e80c3a7f9b2c58fa868dd3a678f8c15adbd01cf71f5a1225b0836eb5ffd10"
+        }
+      ],
+      "log": "'Zeta23.OPICAFollowup.expected_original_distribution_tempered_domain' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'Zeta23.OPICAFollowup.expected_existing_strong_domain_is_instance' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'Zeta23.OPICAFollowup.expected_compact_extension_unique' depends on axioms: [propext, Classical.choice, Quot.sound]\n'Zeta23.OPICAFollowup.expected_full_domain_mixed_selfdual_barrier' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'Zeta23.OPICAFollowup.compact_compatibility_cannot_be_omitted' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n"
+    },
+    {
+      "name": "negative1",
+      "receipt_sha256": "28a6356be339e8279e6f1351bd5ea5294976b41e092562bdd224f5aac5480314",
+      "exit_code": 1,
+      "source_unchanged": true,
+      "head": "5ad2fc2df49ed551a8e3040a0dff65939aef015a",
+      "tree": "bb9a2c03d02f34db68e59ee89bb80a1e24e31c7b",
+      "compiler_version": "Lean (version 4.33.0-rc2, x86_64-w64-windows-gnu, commit d8b18978322de05a8f3dba51ef03cf5461676c17, Release)",
+      "command": [
+        "C:\\Users\\macka\\.elan\\toolchains\\leanprover--lean4---v4.33.0-rc2\\bin\\lean.exe",
+        "-R",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-tempered-lattice",
+        "-o",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-tempered-lattice\\NegativeOmitsCompactCompatibility.olean",
+        "-DautoImplicit=false",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-tempered-lattice\\NegativeOmitsCompactCompatibility.lean"
+      ],
+      "recorded_log_sha256": "3a680934478e1df25b70c581fd49cf51977f6472a45715a0edb5b244d9262ad1",
+      "actual_log_sha256": "3a680934478e1df25b70c581fd49cf51977f6472a45715a0edb5b244d9262ad1",
+      "all_recorded_files_match": true,
+      "recorded_files": 203,
+      "reviewed_source_checks": [
+        {
+          "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-square-physical\\SquareDefectPhysicalFullCandidate.lean",
+          "before": "c65b7b8eb6894a89a12a85e36ea660c97ca8deeb47900392786b20ae81b4ee58",
+          "after": "c65b7b8eb6894a89a12a85e36ea660c97ca8deeb47900392786b20ae81b4ee58",
+          "current": "c65b7b8eb6894a89a12a85e36ea660c97ca8deeb47900392786b20ae81b4ee58"
+        },
+        {
+          "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-square-physical\\SquareDefectPhysicalFullCandidate.olean",
+          "before": "9af012f979487f978c706c4884612074abad61f8246b4ce16965a4f8c1f606bc",
+          "after": "9af012f979487f978c706c4884612074abad61f8246b4ce16965a4f8c1f606bc",
+          "current": "9af012f979487f978c706c4884612074abad61f8246b4ce16965a4f8c1f606bc"
+        },
+        {
+          "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-tempered-lattice\\NegativeOmitsCompactCompatibility.lean",
+          "before": "a45273eb9bf5e980dc7c5a1e900493773cd8fcd606c07dd886644b0fdb0a46f2",
+          "after": "a45273eb9bf5e980dc7c5a1e900493773cd8fcd606c07dd886644b0fdb0a46f2",
+          "current": "a45273eb9bf5e980dc7c5a1e900493773cd8fcd606c07dd886644b0fdb0a46f2"
+        },
+        {
+          "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-tempered-lattice\\SchwartzCompactApprox.lean",
+          "before": "f2ceb97fa0d10b67bcf7036709e898087dfd04bf44808098ac0f4461a1600ad9",
+          "after": "f2ceb97fa0d10b67bcf7036709e898087dfd04bf44808098ac0f4461a1600ad9",
+          "current": "f2ceb97fa0d10b67bcf7036709e898087dfd04bf44808098ac0f4461a1600ad9"
+        },
+        {
+          "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-tempered-lattice\\SchwartzCompactApprox.olean",
+          "before": "2c34489607214fae31bbe0dd3e2779c4127d0ff520493f84ec85c2d1f8202a0d",
+          "after": "2c34489607214fae31bbe0dd3e2779c4127d0ff520493f84ec85c2d1f8202a0d",
+          "current": "2c34489607214fae31bbe0dd3e2779c4127d0ff520493f84ec85c2d1f8202a0d"
+        },
+        {
+          "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-tempered-lattice\\TemperedLatticeNoRepair.lean",
+          "before": "bd0c74c720d1c7eb56f19d60b8845b887db8c2ba54bfec000f02c4007da11af5",
+          "after": "bd0c74c720d1c7eb56f19d60b8845b887db8c2ba54bfec000f02c4007da11af5",
+          "current": "bd0c74c720d1c7eb56f19d60b8845b887db8c2ba54bfec000f02c4007da11af5"
+        },
+        {
+          "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-tempered-lattice\\TemperedLatticeNoRepair.olean",
+          "before": "aa6e80c3a7f9b2c58fa868dd3a678f8c15adbd01cf71f5a1225b0836eb5ffd10",
+          "after": "aa6e80c3a7f9b2c58fa868dd3a678f8c15adbd01cf71f5a1225b0836eb5ffd10",
+          "current": "aa6e80c3a7f9b2c58fa868dd3a678f8c15adbd01cf71f5a1225b0836eb5ffd10"
+        }
+      ],
+      "log": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-tempered-lattice\\NegativeOmitsCompactCompatibility.lean:12:72: error: Application type mismatch: The argument\n  φ\nhas type\n  𝓢(ℝ, ℂ)\nof sort `Type` but is expected to have type\n  TemperedLatticeBridge.ExtendsCompactPairing σ T\nof sort `Prop` in the application\n  TemperedLatticeBridge.extension_annihilates_lattice_zero σ T hσ φ\n"
+    }
+  ]
+}

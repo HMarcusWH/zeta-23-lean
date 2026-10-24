@@ -1,0 +1,23 @@
+C:\Users\macka\.codex\.chatgpt-projects\g-p-6a353c7268b08191b685956e466d73e4\work\opica-stage22\clean-controls\sources\NegativeFullFiniteSpanFinal.lean:9:2: error: Type mismatch
+  Zeta23.OPICAFollowup.finite_zero_span_positive_only_zero.left data h
+has type
+  (Zeta23.OPICAFollowup.zeroJetRealSpan data).OffLatticeNonnegative →
+    (Zeta23.OPICAFollowup.zeroJetRealSpan data).positive = 0 ∧ (Zeta23.OPICAFollowup.zeroJetRealSpan data).negative = 0
+but is expected to have type
+  (Zeta23.OPICAFollowup.zeroJetRealSpan data).positive = 0 ∧ (Zeta23.OPICAFollowup.zeroJetRealSpan data).negative = 0
+C:\Users\macka\.codex\.chatgpt-projects\g-p-6a353c7268b08191b685956e466d73e4\work\opica-stage22\clean-controls\sources\NegativeFullFiniteSpanFinal.lean:17:72: error: Application type mismatch: The argument
+  h
+has type
+  ∀ j ∈ data, riemannZeta j.2.1 = 0 ∧ 0 < j.2.1.re ∧ j.2.1.re < 1
+but is expected to have type
+  ∀ j ∈ data, ValidJet j
+in the application
+  Zeta23.OPICAFollowup.finite_zero_span_positive_only_zero.left data h
+C:\Users\macka\.codex\.chatgpt-projects\g-p-6a353c7268b08191b685956e466d73e4\work\opica-stage22\clean-controls\sources\NegativeFullFiniteSpanFinal.lean:23:77: error: Application type mismatch: The argument
+  a
+has type
+  Fin n → ℝ
+of sort `Type` but is expected to have type
+  LinearIndependent ℝ fun i => (Zeta23.OPICAFollowup.zeroJetRealSpan (basis i)).distributionOfLinearGrowth ⋯
+of sort `Prop` in the application
+  Zeta23.OPICAFollowup.finite_zero_span_positive_only_zero.right n basis h a

@@ -1,0 +1,62 @@
+{
+  "name": "NegativeParameterFactorial",
+  "file": "NegativeParameterFactorial.lean",
+  "source_sha256": "3f9ececefdaf17ea9d2928916c44cdd8d05c6010c3ba1d4854d327154c24ab95",
+  "expected": "REJECTED",
+  "scope": "Wrong 1/2! normalization against proved actual coefficient",
+  "origin": {
+    "kind": "EXACT_STAGE21_BYTES",
+    "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\NegativeParameterFactorial.lean",
+    "sha256": "3f9ececefdaf17ea9d2928916c44cdd8d05c6010c3ba1d4854d327154c24ab95",
+    "receipt": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\CHECK_RESULT.json",
+    "receipt_sha256": "277a7e7fde8c600848bc59ce730faf3c9ceab1ca436ac36c58c00420f429aa0a"
+  },
+  "required_diagnostic_regex": [
+    "oddJetCoefficient",
+    "-1 / 6",
+    "-1 / 3"
+  ],
+  "passed": true,
+  "observed": "REJECTED_INTENDED_MUTATION",
+  "failure_reasons": [],
+  "requested_axiom_names": [
+    "Zeta23.OPICAFollowup.OPICARightCellTaylor.second_parameter_jet_cubic_coefficient",
+    "Zeta23.OPICAFollowup.OPICARightCellTaylor.missing_parameter_factorial_is_false",
+    "Zeta23.OPICAFollowup.OPICARightCellTaylor.zero_node_actual_dependency"
+  ],
+  "axioms": {
+    "Zeta23.OPICAFollowup.OPICARightCellTaylor.second_parameter_jet_cubic_coefficient": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Zeta23.OPICAFollowup.OPICARightCellTaylor.missing_parameter_factorial_is_false": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Zeta23.OPICAFollowup.OPICARightCellTaylor.zero_node_actual_dependency": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "error_recovery_sorryAx_in_rejected_output": false,
+  "formal_authority_from_failed_declarations": false,
+  "command": [
+    "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+    "env",
+    "lean",
+    "--root=C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\sources",
+    "-DautoImplicit=false",
+    "-DrelaxedAutoImplicit=false",
+    "-DmaxHeartbeats=800000",
+    "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\sources\\NegativeParameterFactorial.lean",
+    "-o",
+    "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\objects\\NegativeParameterFactorial.olean"
+  ],
+  "exit_code": 1,
+  "log": "NegativeParameterFactorial.log",
+  "log_sha256": "18d4f7e02dea8e3187c0ed1503b6cf52ff7224cc3faba050a3c808758627b682",
+  "seconds": 68.57652620004956
+}

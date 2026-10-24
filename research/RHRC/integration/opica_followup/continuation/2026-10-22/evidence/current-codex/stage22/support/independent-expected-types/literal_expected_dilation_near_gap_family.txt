@@ -1,0 +1,31 @@
+theorem expected_dilation_near_gap_family :
+    ∃ C : ℝ, 0 < C ∧ ∀ L : ℝ, 0 < L → L < Real.log 2 →
+      (nearGapCombDistribution L =
+        dilatedCombDistribution L + dilatedCombDistribution (-L) -
+          ((2 * Real.cosh (L/2) : ℝ) : ℂ) • dilatedCombDistribution 0) ∧
+      (∀ K : Set ℝ, ∀ hK : IsCompact K,
+        localSignedCompactRestriction (nearGapCombFamily L) K hK =
+          localSignedCompactRestriction (dilatedCombJordan L) K hK +
+          localSignedCompactRestriction (dilatedCombJordan (-L)) K hK -
+          (2 * Real.cosh (L/2)) • localSignedCompactRestriction (dilatedCombJordan 0) K hK) ∧
+      (nearGapCombFamily L).HasLinearGrowth ∧
+      nearGapCombDistribution L ≠ 0 ∧
+      𝓕 (nearGapCombDistribution L) = nearGapCombDistribution L ∧
+      (∀ φ : SchwartzMap ℝ ℂ,
+        nearGapCombDistribution L
+          (SchwartzMap.compCLMOfContinuousLinearEquiv ℂ
+            (LinearIsometryEquiv.neg ℝ).toContinuousLinearEquiv φ) = nearGapCombDistribution L φ) ∧
+      Measure.map (fun x : ℝ => -x) (nearGapCombFamily L).positive =
+        (nearGapCombFamily L).positive ∧
+      Measure.map (fun x : ℝ => -x) (nearGapCombFamily L).negative =
+        (nearGapCombFamily L).negative ∧
+      (nearGapCombFamily L).positive {0} = 0 ∧
+      (nearGapCombFamily L).negative {0} = 0 ∧
+      (nearGapCombFamily L).positive (Ioo (-Real.exp (-L)) (Real.exp (-L))) = 0 ∧
+      (nearGapCombFamily L).negative (Ioo (-Real.exp (-L)) (Real.exp (-L))) = 0 ∧
+      (1/2 < Real.exp (-L) ∧ Real.exp (-L) < 1) ∧
+      (nearGapCombFamily L).negative integerLatticeᶜ = 0 ∧
+      (nearGapCombFamily L).positive ≠ 0 ∧
+      (nearGapCombFamily L).positive {Real.exp (-L)} = ENNReal.ofReal (Real.exp (-L/2)) ∧
+      (nearGapCombFamily L).negative {Real.exp (-L)} = 0 ∧
+      (∀ R : ℝ, 0 ≤ R → (nearGapCombFamily L).totalVariation.real (Icc (-R) R) ≤ C*(1+R))

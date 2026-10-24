@@ -1,0 +1,46 @@
+{
+  "prior_review": {
+    "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-independent-contract-review\\independent-types\\REVIEW.md",
+    "sha256": "8e9a340ed2b578bb48dc828f9dae4af5a26b08b98fff7fe56c77106cb0914517"
+  },
+  "changed_findings": [
+    {
+      "clause": "HT2 local continuous-compact actual-measure extraction",
+      "from": "OPEN_PENDING_ACTUAL_CONTINUOUS_COMPACT_TEST_COMPANION",
+      "to": "PRIOR_Cc_FINDING_CLOSED_MATHEMATICALLY_AT_EXACT_CLEAN_INSTALLED_SOURCES_WITH_NATIVE_PROOFS",
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\OPICAFollowup\\NearGapLimits.lean",
+        "sha256": "add140c0c5e9bb4c002d4a53d896f656dd380c13f526d44837de112c092f0a03",
+        "expected_sha256": "add140c0c5e9bb4c002d4a53d896f656dd380c13f526d44837de112c092f0a03"
+      },
+      "consumer": "Zeta23.OPICAFollowup.Validation.expected_full_HT2_compact_continuous_extraction",
+      "consumer_source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\OPICAFollowup\\Validation.lean",
+        "sha256": "5c242bc9aca48ca2adac002b629fd5154bab6b09a11aa566f2e3bac2e507faa6",
+        "expected_sha256": "5c242bc9aca48ca2adac002b629fd5154bab6b09a11aa566f2e3bac2e507faa6"
+      }
+    },
+    {
+      "clause": "Frozen paper CT1.3",
+      "from": "SUPPORTING_PROOF_LANE_PENDING_NOT_COVERED_BY_THE_SEVEN_CONSUMERS",
+      "to": "EXACT_FROZEN_SINC_TRIANGLE_CHECK_AND_POSITIVE_SINC_NORMALIZATION_COST_PROVED_AND_INSTALLED_WITH_NATIVE_REPLAY",
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\OPICAFollowup\\NearGapLimits.lean",
+        "sha256": "add140c0c5e9bb4c002d4a53d896f656dd380c13f526d44837de112c092f0a03",
+        "expected_sha256": "add140c0c5e9bb4c002d4a53d896f656dd380c13f526d44837de112c092f0a03"
+      },
+      "consumer": "Zeta23.OPICAFollowup.Validation.expected_ct13_original_pairing",
+      "consumer_source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\OPICAFollowup\\Validation.lean",
+        "sha256": "5c242bc9aca48ca2adac002b629fd5154bab6b09a11aa566f2e3bac2e507faa6",
+        "expected_sha256": "5c242bc9aca48ca2adac002b629fd5154bab6b09a11aa566f2e3bac2e507faa6"
+      }
+    }
+  ],
+  "independent_seven_authorship_finding": "UNCHANGED_SATISFIED_AT_PINNED_CANDIDATE",
+  "all100_root_contracts_and83_definitions": "No statement/domain change; original body byte block preserved",
+  "all28_unit_review": "HT2/CT1 previously explicit supporting clause findings are now mathematically closed at these installed bodies; final full source inventory/cold acceptance remains pending",
+  "new_primary_roots": 0,
+  "human_review": "NOT_ESTABLISHED",
+  "acceptance_granted": false
+}

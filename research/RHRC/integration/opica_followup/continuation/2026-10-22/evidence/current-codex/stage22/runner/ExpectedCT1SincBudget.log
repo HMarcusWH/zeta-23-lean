@@ -1,0 +1,11 @@
+'OPICACT1SincBudgetIndependent.expected_ct13_original_pairing' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'OPICACT1SincBudgetIndependent.expected_ct13_jordan_masses' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OPICACT1SincBudgetIndependent.expected_ct13_first_order_cost' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'OPICACT1SincBudgetIndependent.expected_ct13_second_order_cost' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'OPICACT1SincBudgetIndependent.expected_ct13_not_unit_gap' depends on axioms: [propext, Classical.choice, Quot.sound]

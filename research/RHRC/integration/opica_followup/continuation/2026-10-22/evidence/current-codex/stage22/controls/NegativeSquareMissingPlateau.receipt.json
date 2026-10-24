@@ -1,0 +1,41 @@
+{
+  "name": "NegativeSquareMissingPlateau",
+  "file": "NegativeSquareMissingPlateau.lean",
+  "source_sha256": "0578c573416ef6b91a700e94ade71667a2a0690f0772cdd747f130ff954973a4",
+  "expected": "REJECTED",
+  "scope": "Actual square unit gap needs the genuine plateau condition.",
+  "origin": {
+    "kind": "SEALED_SQUARE_EXAMPLE_SPLIT_IMPORT_ONLY",
+    "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-square-physical\\SEALED_SQUARE_PHYSICAL_2026-10-24\\NegativeSquarePhysicalFinal.lean",
+    "sha256": "22b6be21f52213996abc3a427d7b78b33955bf37a2ab337028acf07c6a7f6a35",
+    "example_index": 0,
+    "adaptation": "Split the three original example bodies into separate files; change only standalone module import."
+  },
+  "required_diagnostic_regex": [
+    "squareGapJordan_gap",
+    "h x = A"
+  ],
+  "passed": true,
+  "observed": "REJECTED_INTENDED_MUTATION",
+  "failure_reasons": [],
+  "requested_axiom_names": [],
+  "axioms": {},
+  "error_recovery_sorryAx_in_rejected_output": false,
+  "formal_authority_from_failed_declarations": false,
+  "command": [
+    "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+    "env",
+    "lean",
+    "--root=C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\sources",
+    "-DautoImplicit=false",
+    "-DrelaxedAutoImplicit=false",
+    "-DmaxHeartbeats=800000",
+    "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\sources\\NegativeSquareMissingPlateau.lean",
+    "-o",
+    "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\objects\\NegativeSquareMissingPlateau.olean"
+  ],
+  "exit_code": 1,
+  "log": "NegativeSquareMissingPlateau.log",
+  "log_sha256": "839ba2e4ebc9edbc1d35ad86241857e11bcd8028d76dc0e8ec236d9b479ae01e",
+  "seconds": 78.44874959997833
+}

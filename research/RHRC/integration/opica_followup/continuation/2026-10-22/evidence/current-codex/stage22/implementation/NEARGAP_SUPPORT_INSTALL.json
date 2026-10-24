@@ -1,0 +1,20 @@
+{
+  "schema": "OPICA_STAGE22_EXACT_PAPER_TOPOLOGY_SUPPORT_ASSEMBLY_V1",
+  "status": "INSTALLED_NATIVE_COMPONENT_OWNER_REPLAY_PENDING",
+  "NearGapLimits_sha256": "add140c0c5e9bb4c002d4a53d896f656dd380c13f526d44837de112c092f0a03",
+  "NearGapLimits_old_mathematical_body_byte_preserved": true,
+  "direct_project_imports_unchanged": true,
+  "additional_Mathlib_import": "import Mathlib.Analysis.Calculus.BumpFunction.SmoothApprox",
+  "CT13_original_paper_formula_not_new_priority": true,
+  "HT2_actual_continuous_compact_measure_topology": true,
+  "validation_before_sha256": "72e95a227065f2d5c7e9588ba7e47c18c847aa80eff9f6836579b5ba7faf8b83",
+  "validation_after_sha256": "5c242bc9aca48ca2adac002b629fd5154bab6b09a11aa566f2e3bac2e507faa6",
+  "consumers": {
+    "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedCT1SincBudget.lean": "fb3e4d769e45309d030f18263aa6ea9a711e7362956294214384acd577752f33",
+    "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedCompactContinuousExtraction.lean": "2a403187ff1e3a96c5ef2cf4d4dc40ed3ba8b760c7981e36bd21769af76d6c9f"
+  },
+  "primary_delta": 0,
+  "review_seal": "UNSET",
+  "RH": "OPEN",
+  "Step4": "OPEN"
+}

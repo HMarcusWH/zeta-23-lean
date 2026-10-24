@@ -1,0 +1,15 @@
+'Zeta23.OPICAFollowup.IndependentCompactExtraction.compact_continuous_schwartz_approximation' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.IndependentCompactExtraction.compact_pairing_difference_bound' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.IndependentCompactExtraction.schwartz_zero_implies_compact_continuous_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.IndependentCompactExtraction.expected_near_gap_compact_continuous_limit_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.IndependentCompactExtraction.expected_near_gap_genuine_zero_measure_extraction' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

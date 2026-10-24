@@ -1,10 +1,12 @@
+> Current checkpoint: [Stage22](STAGE22_HANDOVER.md), checked code `2440dcde7607baa7bcff2ce9626effa1ae9f3f07`, tree `dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99`. All100 original bodies have historical/narrow evidence. Physical/canonical and continuous-compact domain findings are mathematically closed; full export, registry, parent extension, canonical and release acceptance remain OPEN. Earlier statements retain their historical scope.
+
 > Current checkpoint: [Stage21](STAGE21_HANDOVER.md), checked code `139c1a0d88cc0fb2d8a0d8ea71e152b25b14c36e`, tree `3e63b0c72fc04da7bab45388d6096e82e95c4acb`. Ledger:41 historical +59 narrow +0 absent bodies; this is not original-contract/aggregate acceptance. Fresh physical/interface findings and all release obligations remain OPEN. Earlier stage statements below retain their historical scope.
 
 # Task: finish the original 100-root OPICA follow-up
 
 Continue the PR #294 checkout on branch `research/opica-native-followup`. Do not merge the PR,
 create another PR or rewrite protected parent sources. Read root AGENTS.md, this directory's README,
-ROOT_LEDGER_100.json, the latest [STAGE21_HANDOVER.md](STAGE21_HANDOVER.md) and the unchanged
+ROOT_LEDGER_100.json, the latest [STAGE22_HANDOVER.md](STAGE22_HANDOVER.md) and the unchanged
 controlling specifications: PUBLIC_ROOTS.json, BUILD_SPEC.md, BUILD_MANIFEST.json and
 PAPER_CROSSWALK.json two directories up, and the paper under `paper/`.
 

@@ -1,0 +1,262 @@
+{
+  "schema": "OPICA_INDEPENDENT_LITERAL_EXPECTED_CONSUMERS_V1",
+  "created_utc": "2026-10-24T17:45:00.505781+00:00",
+  "record_head": "5ad2fc2df49ed551a8e3040a0dff65939aef015a",
+  "record_tree": "bb9a2c03d02f34db68e59ee89bb80a1e24e31c7b",
+  "actual_checked_tree": "dirty Stage22 assembly; exact imported source and object hashes below",
+  "compiler": "Lean 4.33.0-rc2 Windows x86_64, commit d8b18978322de05a8f3dba51ef03cf5461676c17",
+  "mathlib_rev": "51e6992efd06126df61a496bebf8f49482a4e129",
+  "command": "lake.exe env lean -R ../audit-independent-expected-types ../audit-independent-expected-types/ExpectedFullContracts.lean -o ../audit-independent-expected-types/ExpectedFullContracts.olean",
+  "exit_code": 0,
+  "primary_delta": 0,
+  "independent_first_authorship": {
+    "before_elaboration": true,
+    "producer_root_signatures_consulted_before_first_seal": false,
+    "Validation_or_full_signature_copies_consulted": false,
+    "original_first_hash": "3e9dedc694dbe6c32b9db82842456064bd1eddce50c5bca84c18067b2011f414",
+    "first_sealed_utc": "2026-10-24T17:36:26.2079441Z"
+  },
+  "files": [
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-independent-expected-types\\ExpectedFullContracts.lean",
+      "bytes": 14791,
+      "sha256": "c7e5936ff169cafa803cd31282ef5a5b4efa56b01675903f4ab306e4dd94ab15"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-independent-expected-types\\ExpectedFullContracts.olean",
+      "bytes": 490928,
+      "sha256": "14c1b26c4b850c0fa967b50e050aa032471c921a9112cfe25d990e18d36fd829"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-independent-expected-types\\ORIGINAL_PRE_ELABORATION.lean",
+      "bytes": 5738,
+      "sha256": "3e9dedc694dbe6c32b9db82842456064bd1eddce50c5bca84c18067b2011f414"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-independent-expected-types\\attempt5-axioms.log",
+      "bytes": 1608,
+      "sha256": "ddf4d9574fd277e05caf836b021fb1a2cb20f89fffdee5274e707e26bb4b6be2"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-independent-expected-types\\PROVENANCE.md",
+      "bytes": 1080,
+      "sha256": "5bf079b5745a3014ea6c7e382838684fb123305828455354a9f7c14c4ef41edc"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-independent-expected-types\\ADAPTATION_LOG.md",
+      "bytes": 4098,
+      "sha256": "35a71b8a1c92b27075d867cb3f3d760ef8fcd49b1bd6f6de6f0e1c6b069e2122"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-independent-expected-types\\DOMAIN_AUDIT.md",
+      "bytes": 6232,
+      "sha256": "92aee2b7de57d2006ead070d0602f889d74044dcb32bfdeb529155c4be1aee14"
+    }
+  ],
+  "root_bindings": [
+    {
+      "root": "Zeta23.OPICAFollowup.source_order_uniform_norms",
+      "expected": "Zeta23.OPICAFollowup.IndependentExpected.expected_source_order_uniform_norms",
+      "literal_statement": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-independent-expected-types\\literal_expected_source_order_uniform_norms.txt",
+        "bytes": 1056,
+        "sha256": "207da7dfad9058333d0f2ec3bc114ccf59d0838c588d347ee4c58ed12dfb8146"
+      },
+      "standard_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "root": "Zeta23.OPICAFollowup.native_field_theta_envelope",
+      "expected": "Zeta23.OPICAFollowup.IndependentExpected.expected_native_field_theta_envelope",
+      "literal_statement": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-independent-expected-types\\literal_expected_native_field_theta_envelope.txt",
+        "bytes": 367,
+        "sha256": "7d5b412e4db68627dd9c5dbb6046ba8a20a4561df981fbaa6e153e98e60ac3e4"
+      },
+      "standard_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "root": "Zeta23.OPICAFollowup.near_gap_mass_bound",
+      "expected": "Zeta23.OPICAFollowup.IndependentExpected.expected_near_gap_mass_bound",
+      "literal_statement": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-independent-expected-types\\literal_expected_near_gap_mass_bound.txt",
+        "bytes": 623,
+        "sha256": "aebd0a86f4740c4e841d6b6930700f1a811f94ca19054c1fe8b6b5f45510f099"
+      },
+      "standard_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "root": "Zeta23.OPICAFollowup.near_gap_controlled_limit_zero",
+      "expected": "Zeta23.OPICAFollowup.IndependentExpected.expected_near_gap_controlled_limit_zero",
+      "literal_statement": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-independent-expected-types\\literal_expected_near_gap_controlled_limit_zero.txt",
+        "bytes": 732,
+        "sha256": "72db4deaabaa9c15c0134e6fbd62e90cb12de6fc4eb738d8313aef6425a29a96"
+      },
+      "standard_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "root": "Zeta23.OPICAFollowup.dilation_near_gap_family",
+      "expected": "Zeta23.OPICAFollowup.IndependentExpected.expected_dilation_near_gap_family",
+      "literal_statement": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-independent-expected-types\\literal_expected_dilation_near_gap_family.txt",
+        "bytes": 1986,
+        "sha256": "0eb87f1216c677f83e16449e227cde36d7ff3be84a7e34a143bd80244b088f51"
+      },
+      "standard_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "root": "Zeta23.OPICAFollowup.dilation_normalized_limit_not_measure",
+      "expected": "Zeta23.OPICAFollowup.IndependentExpected.expected_dilation_normalized_limit_not_measure",
+      "literal_statement": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-independent-expected-types\\literal_expected_dilation_normalized_limit_not_measure.txt",
+        "bytes": 1902,
+        "sha256": "9cc2009044dfb862acda9415ee0917c86596be1091f12afc7499bd7507a836ab"
+      },
+      "standard_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "root": "Zeta23.OPICAFollowup.fixed_basis_negative_mass_budget",
+      "expected": "Zeta23.OPICAFollowup.IndependentExpected.expected_fixed_basis_negative_mass_budget",
+      "literal_statement": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-independent-expected-types\\literal_expected_fixed_basis_negative_mass_budget.txt",
+        "bytes": 682,
+        "sha256": "067fe3da80b65cfd362367ef3c8cde7d10fbcaa9e8aef478269fe13b7d190b5a"
+      },
+      "standard_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    }
+  ],
+  "imported_root_module_snapshots": [
+    {
+      "module": "Zeta23.OPICAFollowup.UniformSourceBounds",
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\OPICAFollowup\\UniformSourceBounds.lean",
+        "bytes": 65985,
+        "sha256": "4c27940d617e68a78e17d7d4bde902558e60d6a2783abc86b2759cef0a3ceb04"
+      },
+      "objects": [
+        {
+          "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\.lake\\build\\lib\\lean\\Zeta23\\OPICAFollowup\\UniformSourceBounds.olean",
+          "bytes": 2127424,
+          "sha256": "3e3917f3a8f5c1fddb048afbbd2514a551891aa45bb09211c50bb9d92e1e19f4"
+        }
+      ]
+    },
+    {
+      "module": "Zeta23.OPICAFollowup.NearGapLimits",
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\OPICAFollowup\\NearGapLimits.lean",
+        "bytes": 146479,
+        "sha256": "300aba8c18e0079c7df0b02dd804ed3d2dc266dacd18930c7bab962cf7dd8b35"
+      },
+      "objects": [
+        {
+          "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\.lake\\build\\lib\\lean\\Zeta23\\OPICAFollowup\\NearGapLimits.olean",
+          "bytes": 4747432,
+          "sha256": "426f580beab00ceabdf60653123dbd2992d5a60904f24ba5fce7bb939234e7a1"
+        }
+      ]
+    },
+    {
+      "module": "Zeta23.OPICAFollowup.FiniteSpanSeparation",
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\OPICAFollowup\\FiniteSpanSeparation.lean",
+        "bytes": 61828,
+        "sha256": "69d2d89a32311dec71bc9831b21717097e94a980d7b9dfcd0f8dbf10f8fbb9f5"
+      },
+      "objects": [
+        {
+          "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\.lake\\build\\lib\\lean\\Zeta23\\OPICAFollowup\\FiniteSpanSeparation.olean",
+          "bytes": 1848296,
+          "sha256": "8d518ded33d54fbe8a198b7a2237faca2b13b8dfd41b3505102bfa429e9d5ebe"
+        }
+      ]
+    }
+  ],
+  "frozen_contracts": [
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\research\\RHRC\\integration\\opica_followup\\PUBLIC_ROOTS.json",
+      "bytes": 112056,
+      "sha256": "2239636f347449ecd447fc5ba78d7c75f1c0440d28a862cb72397c4f79597b41"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\research\\RHRC\\integration\\opica_followup\\BUILD_SPEC.md",
+      "bytes": 130001,
+      "sha256": "cacab08834aeb9badd578d90828be99cff33c7a617c609e75bb878eb5fa3b29c"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\research\\RHRC\\integration\\opica_followup\\BUILD_MANIFEST.json",
+      "bytes": 183851,
+      "sha256": "c99ec7acbfe996455525b31088a7d04addd20653787e12098e4e51a4a7ce296e"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\research\\RHRC\\integration\\opica_followup\\paper\\OPICA_Followup_Final_Audited_Paper_2026-10-21.md",
+      "bytes": 119213,
+      "sha256": "9525d5dad6f0a2e3abd6050edeb39e3a234b6a361046e746878a181970a789f0"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\research\\RHRC\\integration\\opica_followup\\paper\\OPICA_Final_Theorem_and_Audit_Ledger_2026-10-21.json",
+      "bytes": 27022,
+      "sha256": "30b59f3eb284b7d453062aafb12ffbda7604627c142102fb8d093c6c5e25d4cb"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\research\\RHRC\\integration\\opica_followup\\paper\\OPICA_Final_Followup_Paper_Contract_2026-10-21.md",
+      "bytes": 3712,
+      "sha256": "760964b24deb3b8c2e8f1f5de38e2072a2bef3e2dd4eec336b567f2bfcecfd5f"
+    }
+  ],
+  "limits": [
+    "This is a fresh consumer proof against snapshotted existing native module objects, not a cold rebuild of all imported sources.",
+    "Parent will replay against clean rebuilt source closure.",
+    "CT1.3 exact sinc value was an extra clause in the original independent first formulation and is being proved separately; not silently represented as covered.",
+    "No human approval, independent-review seal, exact-head CI gate, full-100 acceptance, Step4 or RH conclusion is asserted."
+  ],
+  "full_elaborated_type_export": {
+    "exit_code": 0,
+    "pp_all": true,
+    "files": [
+      {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-independent-expected-types\\FULL_TYPES.native.log",
+        "bytes": 434286,
+        "sha256": "f3cb8b2d10b266db4c8cebc73b4922770253c569737841f31ee1e2aba7c32c14"
+      },
+      {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-independent-expected-types\\TypeExport.lean",
+        "bytes": 660,
+        "sha256": "541d7ab88b59aaf348039f00e6faff0e0a1650650a8d0f48cab8a886612663b2"
+      },
+      {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-independent-expected-types\\TypeExport.setup.json",
+        "bytes": 442,
+        "sha256": "1a0c9375f951127be417d6f3a9791e3f922075ab35addf37b8313f082c8da824"
+      }
+    ]
+  }
+}

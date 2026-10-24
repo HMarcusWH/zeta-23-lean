@@ -1,0 +1,39 @@
+{
+  "command": [
+    "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+    "env",
+    "lean",
+    "--setup",
+    "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-offcritical-real-basis\\ExpectedOffcriticalRealBasis.setup.json",
+    "-R",
+    "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-offcritical-real-basis",
+    "-DautoImplicit=false",
+    "-DrelaxedAutoImplicit=false",
+    "-DmaxHeartbeats=800000",
+    "-o",
+    "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-offcritical-real-basis\\ExpectedOffcriticalRealBasis.olean",
+    "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-offcritical-real-basis\\ExpectedOffcriticalRealBasis.lean"
+  ],
+  "exit_code": 0,
+  "seconds": 87.40599999995902,
+  "log_sha256": "f535314c8483e5e371cf6b1ee169596ceb2afc1bc594c2e53da1e9172a85b803",
+  "source_before": {
+    "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-offcritical-real-basis\\ExpectedOffcriticalRealBasis.lean": "66baee89bba22a69afef5339710e19a457b5a3a6efc244aa64baa3e49e6878fe",
+    "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\OPICAFollowup\\FiniteSpanSeparation.lean": "8e69e7c90abb572cf45d71bd70c0446b6844372d4ae954aeb8274ea3e1f1e5ef",
+    "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\OPICAFollowup\\ConfluentProfiles.lean": "a84c72ac8b91bf053c499c9ca33458f69ad1849f0ba2766e520dfa9fbe61e29f",
+    "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\OPICAFollowup\\CoPoissonJets.lean": "dfb21b90906e2cbc23acdfd46b874c04d4ea6ae0217aa316b50c5b404c0d7134",
+    "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\OPICAFollowup\\ComplexLocalMeasures.lean": "43d96d5474819b79c29853a81f8b4398f16d298470c2100fdade3fcada3a25b8",
+    "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\lean-toolchain": "0d3c76ccd8772d8bcbe207241421a760312b71a6aa82f84194391fdf5cb026d6",
+    "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\lake-manifest.json": "1847b362e15efd927e75aa8b5442e491f998e4a3f730f9dcaca9841f2957c448"
+  },
+  "source_after": {
+    "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-offcritical-real-basis\\ExpectedOffcriticalRealBasis.lean": "66baee89bba22a69afef5339710e19a457b5a3a6efc244aa64baa3e49e6878fe",
+    "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\OPICAFollowup\\FiniteSpanSeparation.lean": "8e69e7c90abb572cf45d71bd70c0446b6844372d4ae954aeb8274ea3e1f1e5ef",
+    "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\OPICAFollowup\\ConfluentProfiles.lean": "a84c72ac8b91bf053c499c9ca33458f69ad1849f0ba2766e520dfa9fbe61e29f",
+    "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\OPICAFollowup\\CoPoissonJets.lean": "dfb21b90906e2cbc23acdfd46b874c04d4ea6ae0217aa316b50c5b404c0d7134",
+    "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\OPICAFollowup\\ComplexLocalMeasures.lean": "43d96d5474819b79c29853a81f8b4398f16d298470c2100fdade3fcada3a25b8",
+    "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\lean-toolchain": "0d3c76ccd8772d8bcbe207241421a760312b71a6aa82f84194391fdf5cb026d6",
+    "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\lake-manifest.json": "1847b362e15efd927e75aa8b5442e491f998e4a3f730f9dcaca9841f2957c448"
+  },
+  "source_unchanged": true
+}

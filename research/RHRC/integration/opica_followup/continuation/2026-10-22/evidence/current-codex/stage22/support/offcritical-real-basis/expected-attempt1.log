@@ -1,0 +1,52 @@
+C:\Users\macka\.codex\.chatgpt-projects\g-p-6a353c7268b08191b685956e466d73e4\work\audit-offcritical-real-basis\ExpectedOffcriticalRealBasis.lean:24:6: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  (LocallyFiniteSignedMeasure.distributionOfLinearGrowth ?mu ?hmu) (complexSchwartzConj ?f)
+in the target expression
+  (c *
+          (∫ (x : ℝ), φ x ∂(normalizedZeroMeasureJet ρ 0).rePart.positive -
+              ∫ (x : ℝ), φ x ∂(normalizedZeroMeasureJet ρ 0).rePart.negative +
+            I *
+              (∫ (x : ℝ), φ x ∂(normalizedZeroMeasureJet ρ 0).imPart.positive -
+                ∫ (x : ℝ), φ x ∂(normalizedZeroMeasureJet ρ 0).imPart.negative)) +
+        (starRingEnd ℂ) c *
+          (starRingEnd ℂ)
+            (∫ (x : ℝ), (complexSchwartzConj φ) x ∂(normalizedZeroMeasureJet ρ 0).rePart.positive -
+                ∫ (x : ℝ), (complexSchwartzConj φ) x ∂(normalizedZeroMeasureJet ρ 0).rePart.negative +
+              I *
+                (∫ (x : ℝ), (complexSchwartzConj φ) x ∂(normalizedZeroMeasureJet ρ 0).imPart.positive -
+                  ∫ (x : ℝ), (complexSchwartzConj φ) x ∂(normalizedZeroMeasureJet ρ 0).imPart.negative))) /
+      2 =
+    ↑c.re * ((normalizedZeroMeasureJet ρ 0).rePart.distributionOfLinearGrowth ⋯) φ -
+      ↑c.im * ((normalizedZeroMeasureJet ρ 0).imPart.distributionOfLinearGrowth ⋯) φ
+
+ρ : ℂ
+hz : riemannZeta ρ = 0
+h0 : 0 < ρ.re
+h1 : ρ.re < 1
+c : ℂ
+φ : 𝓢(ℝ, ℂ)
+⊢ (c *
+          (∫ (x : ℝ), φ x ∂(normalizedZeroMeasureJet ρ 0).rePart.positive -
+              ∫ (x : ℝ), φ x ∂(normalizedZeroMeasureJet ρ 0).rePart.negative +
+            I *
+              (∫ (x : ℝ), φ x ∂(normalizedZeroMeasureJet ρ 0).imPart.positive -
+                ∫ (x : ℝ), φ x ∂(normalizedZeroMeasureJet ρ 0).imPart.negative)) +
+        (starRingEnd ℂ) c *
+          (starRingEnd ℂ)
+            (∫ (x : ℝ), (complexSchwartzConj φ) x ∂(normalizedZeroMeasureJet ρ 0).rePart.positive -
+                ∫ (x : ℝ), (complexSchwartzConj φ) x ∂(normalizedZeroMeasureJet ρ 0).rePart.negative +
+              I *
+                (∫ (x : ℝ), (complexSchwartzConj φ) x ∂(normalizedZeroMeasureJet ρ 0).imPart.positive -
+                  ∫ (x : ℝ), (complexSchwartzConj φ) x ∂(normalizedZeroMeasureJet ρ 0).imPart.negative))) /
+      2 =
+    ↑c.re * ((normalizedZeroMeasureJet ρ 0).rePart.distributionOfLinearGrowth ⋯) φ -
+      ↑c.im * ((normalizedZeroMeasureJet ρ 0).imPart.distributionOfLinearGrowth ⋯) φ
+'IndependentOffcriticalRealBasis.actual_real_imaginary_pair_independent' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'IndependentOffcriticalRealBasis.actual_two_coefficient_euclidean_negative_budget' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'IndependentOffcriticalRealBasis.actual_no_nonzero_positive_combination' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

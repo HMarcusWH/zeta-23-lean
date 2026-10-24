@@ -1,0 +1,22 @@
+{
+  "status": "PASS_PROTOCOL_TESTS_ONLY",
+  "test_count_per_mode": 13,
+  "modes": [
+    {
+      "mode": "normal",
+      "exit_code": 0,
+      "log": "parser-tests.normal.log",
+      "log_sha256": "e1810488ede2e5e1fe6b7a3bdbf6beaaaf1c491ce7fb637ffe1050ec601113fe"
+    },
+    {
+      "mode": "optimized",
+      "exit_code": 0,
+      "log": "parser-tests.optimized.log",
+      "log_sha256": "db8297710f982e67e485fb317ecb3d9ce02669f5c2faedaa69ade3163d84621a"
+    }
+  ],
+  "runner_sha256": "5a9cf1591cd77d02d13ad4ce70000e7b94847105974acc5868329e9d5334b71c",
+  "plan_sha256": "465bc1ef7d42c8b038ff277c34448fcc8a5953427249735cf8a2109aa5e16760",
+  "test_source_sha256": "3026b997b7a95299998193d37e9584dba6bb5b14dc0260840d3706bb7ca14d4a",
+  "native_Stage22_controls_run_by_these_tests": false
+}

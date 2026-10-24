@@ -1,0 +1,41 @@
+{
+  "name": "NegativeZeroDamping",
+  "file": "NegativeZeroDamping.lean",
+  "source_sha256": "6e5b4422cabcc03da45ca8d877321ce71dbcb186109dddc142e14978579d8685",
+  "expected": "REJECTED",
+  "scope": "Rate/physical consumer contract mutation",
+  "origin": {
+    "kind": "EXACT_STAGE21_BYTES",
+    "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\NegativeZeroDamping.lean",
+    "sha256": "6e5b4422cabcc03da45ca8d877321ce71dbcb186109dddc142e14978579d8685",
+    "receipt": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\CHECK_RESULT.json",
+    "receipt_sha256": "277a7e7fde8c600848bc59ce730faf3c9ceab1ca436ac36c58c00420f429aa0a"
+  },
+  "required_diagnostic_regex": [
+    "nativeZeroDisplacementSup",
+    "False"
+  ],
+  "passed": true,
+  "observed": "REJECTED_INTENDED_MUTATION",
+  "failure_reasons": [],
+  "requested_axiom_names": [],
+  "axioms": {},
+  "error_recovery_sorryAx_in_rejected_output": false,
+  "formal_authority_from_failed_declarations": false,
+  "command": [
+    "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+    "env",
+    "lean",
+    "--root=C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\sources",
+    "-DautoImplicit=false",
+    "-DrelaxedAutoImplicit=false",
+    "-DmaxHeartbeats=800000",
+    "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\sources\\NegativeZeroDamping.lean",
+    "-o",
+    "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\objects\\NegativeZeroDamping.olean"
+  ],
+  "exit_code": 1,
+  "log": "NegativeZeroDamping.log",
+  "log_sha256": "3a55e54bb542d84d43cc3a1377425c621b5569db19ddf931b78ae1b1b81d602c",
+  "seconds": 40.0876213000156
+}

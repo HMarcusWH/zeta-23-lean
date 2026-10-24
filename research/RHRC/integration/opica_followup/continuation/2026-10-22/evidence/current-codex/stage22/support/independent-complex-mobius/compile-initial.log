@@ -1,0 +1,3 @@
+'Zeta23.OPICAFollowup.Validation.expected_independent_complete_complex_mobius' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

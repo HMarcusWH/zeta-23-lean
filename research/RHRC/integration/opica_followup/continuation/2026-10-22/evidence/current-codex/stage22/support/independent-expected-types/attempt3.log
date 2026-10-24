@@ -1,0 +1,131 @@
+../audit-independent-expected-types/ExpectedFullContracts.lean:64:25: error: `dsimp` made no progress
+../audit-independent-expected-types/ExpectedFullContracts.lean:122:34: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  IsFiniteMeasure (nearGapCombFamily L).positive
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+../audit-independent-expected-types/ExpectedFullContracts.lean:171:28: error: unsolved goals
+topology : Tendsto (fun L => (↑L ^ 2)⁻¹ • nearGapCombDistribution L) (𝓝[≠] 0) (𝓝 ct1NormalizedLimit)
+pairing :
+  ∀ (φ : 𝓢(ℝ, ℂ)),
+    Tendsto (fun L => (nearGapCombDistribution L) φ / ↑L ^ 2) (𝓝[≠] 0)
+      (𝓝 (∑' (n : ℤ), (↑n ^ 2 * deriv (deriv ⇑φ) ↑n + 2 * ↑n * deriv ⇑φ ↑n)))
+delta :
+  ∀ (φ : 𝓢(ℝ, ℂ)),
+    HasSum
+      (fun n =>
+        (↑n ^ 2 •
+              (TemperedDistribution.derivCLM ℂ) ((TemperedDistribution.derivCLM ℂ) (TemperedDistribution.delta ↑n)) -
+            (2 * ↑n) • (TemperedDistribution.derivCLM ℂ) (TemperedDistribution.delta ↑n))
+          φ)
+      (ct1NormalizedLimit φ)
+localFormula :
+  ∀ (n : ℤ) (φ : 𝓢(ℝ, ℂ)),
+    tsupport ⇑φ ⊆ Icc (↑n - 1 / 2) (↑n + 1 / 2) →
+      ct1NormalizedLimit φ = ↑n ^ 2 * deriv (deriv ⇑φ) ↑n + 2 * ↑n * deriv ⇑φ ↑n
+nonzero : ct1NormalizedLimit ≠ 0
+order :
+  ∀ (n : ℤ),
+    n ≠ 0 →
+      ¬∃ C,
+          ∀ (φ : 𝓢(ℝ, ℂ)),
+            tsupport ⇑φ ⊆ Icc (↑n - 1 / 2) (↑n + 1 / 2) → ‖ct1NormalizedLimit φ‖ ≤ C * (SchwartzMap.seminorm ℝ 0 0) φ
+measure : ¬∃ μ, ∀ (φ : 𝓢(ℝ, ℂ)), ∫ (x : ℝ), φ x ∂μ.positive - ∫ (x : ℝ), φ x ∂μ.negative = ct1NormalizedLimit φ
+variation : Tendsto (fun L => (nearGapCombFamily L).totalVariation.real (Icc (1 / 2) (3 / 2)) / L ^ 2) (𝓝[>] 0) atTop
+M L : ℝ
+hL : M < (nearGapCombFamily L).totalVariation.real (Icc (1 / 2) (3 / 2)) / L ^ 2
+⊢ Icc (1 / 2) (3 / 2) ⊆ Icc (-2) 2
+../audit-independent-expected-types/ExpectedFullContracts.lean:171:10: error: could not synthesize default value for parameter 'h₂' using tactics
+../audit-independent-expected-types/ExpectedFullContracts.lean:171:10: error: Tactic `aesop` failed, failed to prove the goal. Some goals were not explored because the maximum rule application depth (30) was reached. Set option 'maxRuleApplicationDepth' to increase the limit.
+Initial goal:
+  topology : Tendsto (fun L => (↑L ^ 2)⁻¹ • nearGapCombDistribution L) (𝓝[≠] 0) (𝓝 ct1NormalizedLimit)
+  pairing :
+    ∀ (φ : 𝓢(ℝ, ℂ)),
+      Tendsto (fun L => (nearGapCombDistribution L) φ / ↑L ^ 2) (𝓝[≠] 0)
+        (𝓝 (∑' (n : ℤ), (↑n ^ 2 * deriv (deriv ⇑φ) ↑n + 2 * ↑n * deriv ⇑φ ↑n)))
+  delta :
+    ∀ (φ : 𝓢(ℝ, ℂ)),
+      HasSum
+        (fun n =>
+          (↑n ^ 2 •
+                (TemperedDistribution.derivCLM ℂ) ((TemperedDistribution.derivCLM ℂ) (TemperedDistribution.delta ↑n)) -
+              (2 * ↑n) • (TemperedDistribution.derivCLM ℂ) (TemperedDistribution.delta ↑n))
+            φ)
+        (ct1NormalizedLimit φ)
+  localFormula :
+    ∀ (n : ℤ) (φ : 𝓢(ℝ, ℂ)),
+      tsupport ⇑φ ⊆ Icc (↑n - 1 / 2) (↑n + 1 / 2) →
+        ct1NormalizedLimit φ = ↑n ^ 2 * deriv (deriv ⇑φ) ↑n + 2 * ↑n * deriv ⇑φ ↑n
+  nonzero : ct1NormalizedLimit ≠ 0
+  order :
+    ∀ (n : ℤ),
+      n ≠ 0 →
+        ¬∃ C,
+            ∀ (φ : 𝓢(ℝ, ℂ)),
+              tsupport ⇑φ ⊆ Icc (↑n - 1 / 2) (↑n + 1 / 2) → ‖ct1NormalizedLimit φ‖ ≤ C * (SchwartzMap.seminorm ℝ 0 0) φ
+  measure : ¬∃ μ, ∀ (φ : 𝓢(ℝ, ℂ)), ∫ (x : ℝ), φ x ∂μ.positive - ∫ (x : ℝ), φ x ∂μ.negative = ct1NormalizedLimit φ
+  variation : Tendsto (fun L => (nearGapCombFamily L).totalVariation.real (Icc (1 / 2) (3 / 2)) / L ^ 2) (𝓝[>] 0) atTop
+  M L : ℝ
+  hL : M < (nearGapCombFamily L).totalVariation.real (Icc (1 / 2) (3 / 2)) / L ^ 2
+  ⊢ (nearGapCombFamily L).totalVariation (Icc (-2) 2) ≠ ∞
+Remaining goals after safe rules:
+  topology : Tendsto (fun L => (↑L ^ 2)⁻¹ • nearGapCombDistribution L) (𝓝[≠] 0) (𝓝 ct1NormalizedLimit)
+  pairing :
+    ∀ (φ : 𝓢(ℝ, ℂ)),
+      Tendsto (fun L => (nearGapCombDistribution L) φ / ↑L ^ 2) (𝓝[≠] 0)
+        (𝓝 (∑' (n : ℤ), (↑n ^ 2 * deriv (deriv ⇑φ) ↑n + 2 * ↑n * deriv ⇑φ ↑n)))
+  delta :
+    ∀ (φ : 𝓢(ℝ, ℂ)),
+      HasSum
+        (fun n =>
+          (↑n ^ 2 •
+                (TemperedDistribution.derivCLM ℂ) ((TemperedDistribution.derivCLM ℂ) (TemperedDistribution.delta ↑n)) -
+              (2 * ↑n) • (TemperedDistribution.derivCLM ℂ) (TemperedDistribution.delta ↑n))
+            φ)
+        (ct1NormalizedLimit φ)
+  localFormula :
+    ∀ (n : ℤ) (φ : 𝓢(ℝ, ℂ)),
+      tsupport ⇑φ ⊆ Icc (↑n - 1 / 2) (↑n + 1 / 2) →
+        ct1NormalizedLimit φ = ↑n ^ 2 * deriv (deriv ⇑φ) ↑n + 2 * ↑n * deriv ⇑φ ↑n
+  nonzero : ct1NormalizedLimit ≠ 0
+  order :
+    ∀ (n : ℤ),
+      n ≠ 0 →
+        ¬∃ C,
+            ∀ (φ : 𝓢(ℝ, ℂ)),
+              tsupport ⇑φ ⊆ Icc (↑n - 1 / 2) (↑n + 1 / 2) → ‖ct1NormalizedLimit φ‖ ≤ C * (SchwartzMap.seminorm ℝ 0 0) φ
+  measure : ¬∃ μ, ∀ (φ : 𝓢(ℝ, ℂ)), ∫ (x : ℝ), φ x ∂μ.positive - ∫ (x : ℝ), φ x ∂μ.negative = ct1NormalizedLimit φ
+  variation : Tendsto (fun L => (nearGapCombFamily L).totalVariation.real (Icc (1 / 2) (3 / 2)) / L ^ 2) (𝓝[>] 0) atTop
+  M L : ℝ
+  hL : M < (nearGapCombFamily L).totalVariation.real (Icc (1 / 2) (3 / 2)) / L ^ 2
+  ⊢ (nearGapCombFamily L).totalVariation (Icc (-2) 2) ≠ ∞
+../audit-independent-expected-types/ExpectedFullContracts.lean:197:15: error: Function expected at
+  zeroJetRealSpan_gap ?m.239
+but this term has type
+  (FiniteSpan.zeroJetRealSpan ?m.239).HasUnitGap
+
+Note: Expected a function because this term is being applied to the argument
+  validA
+../audit-independent-expected-types/ExpectedFullContracts.lean:183:97: error: unsolved goals
+n : ℕ
+basis : Fin n → List JetDatum
+valid : ∀ (i : Fin n), ∀ j ∈ basis i, ValidJet j
+independent : LinearIndependent ℝ fun i => (zeroJetRealSpan (basis i)).distributionOfLinearGrowth ⋯
+c : ℝ
+hc : 0 < c
+h :
+  ∀ (a : EuclideanSpace ℝ (Fin n)),
+    c * ‖a‖ ≤
+      ∫ (x : ℝ) in integerLatticeᶜ,
+        sincSquared x ∂(zeroJetRealSpan (realBasisCombinationData basis fun i => a.ofLp i)).negative
+a : Fin n → ℝ
+bound :
+  c * ‖WithLp.toLp 2 a‖ ≤
+    ∫ (x : ℝ) in integerLatticeᶜ,
+      sincSquared x ∂(zeroJetRealSpan (realBasisCombinationData basis fun i => (WithLp.toLp 2 a).ofLp i)).negative
+euclidean : ‖WithLp.toLp 2 a‖ = √(∑ i, a i ^ 2)
+b :
+  c * √(∑ i, a i ^ 2) ≤
+    ∫ (x : ℝ) in integerLatticeᶜ, sincSquared x ∂(zeroJetRealSpan (realBasisCombinationData basis a)).negative
+validA : ∀ j ∈ realBasisCombinationData basis a, ValidJet j
+growthA : (FiniteSpan.zeroJetRealSpan (realBasisCombinationData basis a)).HasLinearGrowth
+⊢ c * √(∑ i, a i ^ 2) ≤ ∫ (x : ℝ), sincSquared x ∂(zeroJetRealSpan (realBasisCombinationData basis a)).negative

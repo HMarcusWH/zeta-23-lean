@@ -16,7 +16,7 @@ The historical exact-source subset contains 41 roots. New local candidate gates
 remain separate from aggregate registration and full release acceptance.
 Fifty-nine additional roots passed narrow gates; all100 original bodies now have
 historical or narrow evidence. Full original-contract acceptance remains OPEN.
-Read the continuation STAGE21_HANDOVER.md (and the
+Read the continuation STAGE22_HANDOVER.md (and the
 earlier stage handovers) for exact proof and infrastructure evidence. Read each
 ledger gate rather than adding root names or supporting lemmas to a completion count.
 
@@ -44,7 +44,7 @@ false inequality and repaired supporting forms.
 - Assign a single owner to broad cache-writing builds. Independent narrow
   modules can use separate controlled output paths with real dependencies.
 - Never count a stale inherited object as compilation of modified source.
-- Use the continuation runner for the nine repaired modules and independent
+- Use the continuation runner for all 28 continuation modules and independent
   consumers. It is a narrow gate, not a full-100 receipt.
 - Record exact source hashes, compiler version, checkout/head/tree, command exit
   codes, logs, assumptions and transitive axioms. A successful process with a

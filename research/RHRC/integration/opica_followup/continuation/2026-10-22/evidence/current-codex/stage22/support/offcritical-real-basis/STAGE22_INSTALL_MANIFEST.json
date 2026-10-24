@@ -1,0 +1,206 @@
+{
+  "schema": "OPICA_STAGE22_SUPPORTING_OFFCRITICAL_REAL_PAIR_INSTALL_V1",
+  "created_utc": "2026-10-24T17:07:48.935385+00:00",
+  "status": "PASS_EXACT_PRODUCTION_MODULE_IDENTITY_OVERLAY",
+  "base_code_commit": "139c1a0d88cc0fb2d8a0d8ea71e152b25b14c36e",
+  "base_code_tree": "3e63b0c72fc04da7bab45388d6096e82e95c4acb",
+  "original_raw_staging_receipt_preserved": {
+    "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-offcritical-real-basis\\OFFCRITICAL_REAL_PAIR_RECEIPT.json",
+    "sha256": "56e3daa5dc1c03df968ccdb7481984f80dcd1631ae77524902149885169732f7",
+    "bytes": 102333
+  },
+  "original_raw_staging_receipt_sha256": "56e3daa5dc1c03df968ccdb7481984f80dcd1631ae77524902149885169732f7",
+  "compiler": "Lean (version 4.33.0-rc2, x86_64-w64-windows-gnu, commit d8b18978322de05a8f3dba51ef03cf5461676c17, Release)",
+  "compiler_binary": {
+    "path": "C:\\Users\\macka\\.elan\\toolchains\\leanprover--lean4---v4.33.0-rc2\\bin\\lean.exe",
+    "sha256": "bc137e6662c48eedf2cdf167fb176080e18a15f57e248d214df0cb3939248683",
+    "bytes": 83456
+  },
+  "lean_toolchain": {
+    "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\lean-toolchain",
+    "sha256": "0d3c76ccd8772d8bcbe207241421a760312b71a6aa82f84194391fdf5cb026d6",
+    "bytes": 29
+  },
+  "lake_manifest": {
+    "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\lake-manifest.json",
+    "sha256": "1847b362e15efd927e75aa8b5442e491f998e4a3f730f9dcaca9841f2957c448",
+    "bytes": 3200
+  },
+  "files": [
+    {
+      "install_destination": "Zeta23/OPICAFollowup/OffcriticalRealBasis.lean",
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-offcritical-real-basis\\stage22-payload\\Zeta23\\OPICAFollowup\\OffcriticalRealBasis.lean",
+        "sha256": "382d35c51bd7b8fc3f498fcfce527570dfc46f79f8653653fd1b7b2b365d014a",
+        "bytes": 7344
+      },
+      "previous_staging_source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-offcritical-real-basis\\OffcriticalRealBasis.lean",
+        "sha256": "382d35c51bd7b8fc3f498fcfce527570dfc46f79f8653653fd1b7b2b365d014a",
+        "bytes": 7344
+      },
+      "changes_from_staging": "BYTE_IDENTICAL",
+      "module_identity_compiled": "Zeta23.OPICAFollowup.OffcriticalRealBasis",
+      "object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-offcritical-real-basis\\stage22-payload\\Zeta23\\OPICAFollowup\\OffcriticalRealBasis.olean",
+        "sha256": "4ca01610244677350abe97636701b07dfc2e855906ea5d38fbde0d8985a5fa09",
+        "bytes": 594360
+      },
+      "execution": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-offcritical-real-basis\\stage22-payload\\OffcriticalRealBasis.receipt.json",
+        "sha256": "b41ae586301e4c7b7c8aed9f5152ff7c9679652b998653e699c00976ec9e88c0",
+        "bytes": 5009
+      },
+      "compiler_log": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-offcritical-real-basis\\stage22-payload\\OffcriticalRealBasis.log",
+        "sha256": "3623dbc408b91e3deb92c503a4b852a20de6c4bcb0b28ded7281a0f018d4419e",
+        "bytes": 3110
+      },
+      "axiom_audits": {
+        "OffcriticalRealBasis.canonicalBasis_independent": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "OffcriticalRealBasis.canonical_pair_negative_mass_budget": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "OffcriticalRealBasis.canonical_pair_no_positive_combination": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      }
+    },
+    {
+      "install_destination": "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedOffcriticalRealBasis.lean",
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-offcritical-real-basis\\stage22-payload\\ExpectedOffcriticalRealBasis.lean",
+        "sha256": "f7546bb6d97a10eab5f698ec5062c0eaa26561fe9584efdb0f00424207049321",
+        "bytes": 6162
+      },
+      "previous_staging_source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-offcritical-real-basis\\ExpectedOffcriticalRealBasis.lean",
+        "sha256": "66baee89bba22a69afef5339710e19a457b5a3a6efc244aa64baa3e49e6878fe",
+        "bytes": 6144
+      },
+      "changes_from_staging": "First import replaced with production module path; UTF-8 LF serialization; proof and statement text unchanged",
+      "module_identity_compiled": "ExpectedOffcriticalRealBasis",
+      "object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-offcritical-real-basis\\stage22-payload\\ExpectedOffcriticalRealBasis.olean",
+        "sha256": "64fa1705c68f6712b66693e6125b21bd24ba54bdb8ee23c34119546d5f7539e9",
+        "bytes": 368728
+      },
+      "execution": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-offcritical-real-basis\\stage22-payload\\ExpectedOffcriticalRealBasis.receipt.json",
+        "sha256": "f18a57d1bf0cb48c47710e388146888cb9181584631bbe7c57af425315474145",
+        "bytes": 5121
+      },
+      "compiler_log": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-offcritical-real-basis\\stage22-payload\\ExpectedOffcriticalRealBasis.log",
+        "sha256": "f535314c8483e5e371cf6b1ee169596ceb2afc1bc594c2e53da1e9172a85b803",
+        "bytes": 816
+      },
+      "axiom_audits": {
+        "IndependentOffcriticalRealBasis.actual_offcritical_real_imaginary_pair_independent": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "IndependentOffcriticalRealBasis.actual_offcritical_kappa": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "IndependentOffcriticalRealBasis.actual_offcritical_negative_mass_restriction": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "IndependentOffcriticalRealBasis.actual_real_imaginary_pair_independent": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "IndependentOffcriticalRealBasis.actual_two_coefficient_euclidean_negative_budget": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "IndependentOffcriticalRealBasis.actual_no_nonzero_positive_combination": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      }
+    },
+    {
+      "install_destination": "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/OffcriticalControls.lean",
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-offcritical-real-basis\\stage22-payload\\OffcriticalControls.lean",
+        "sha256": "c9d5d5c1e1eb75785da3f0e8a1f27a50556e07f75fa3742f219c0ec2de38245a",
+        "bytes": 2447
+      },
+      "previous_staging_source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-offcritical-real-basis\\OffcriticalControls.lean",
+        "sha256": "564c86f71845ee6d57ba13bdbf4ee131d605d43def12137316608759c41aa55d",
+        "bytes": 2427
+      },
+      "changes_from_staging": "First import replaced with production module path; UTF-8 LF serialization; proof and statement text unchanged",
+      "module_identity_compiled": "OffcriticalControls",
+      "object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-offcritical-real-basis\\stage22-payload\\OffcriticalControls.olean",
+        "sha256": "52aca1c4e0507ee75423e9dfa81d30967db15ceb5d1ac9973cd66a38efe4e197",
+        "bytes": 153192
+      },
+      "execution": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-offcritical-real-basis\\stage22-payload\\OffcriticalControls.receipt.json",
+        "sha256": "39164d304488a95d99fa38fe89b20c9630f463ff6e9ed3dc56334ec1556e0822",
+        "bytes": 5058
+      },
+      "compiler_log": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-offcritical-real-basis\\stage22-payload\\OffcriticalControls.log",
+        "sha256": "e74aa47ce94496cc6065b8eff3dcad6859a2be6e7cc4f8d53849531621215816",
+        "bytes": 1052
+      },
+      "axiom_audits": {
+        "OffcriticalControls.real_kappa_conjugate_same_measure": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "OffcriticalControls.canonical_imaginary_zero_of_real_kappa": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "OffcriticalControls.canonical_pair_dependent_of_real_kappa": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      }
+    }
+  ],
+  "primary_root_delta": 0,
+  "requires_shared_cache_or_checkout_edits_for_payload_creation": false,
+  "installation": "Copy the three source files byte-for-byte to the listed repository-relative destinations. Both consumers already import Zeta23.OPICAFollowup.OffcriticalRealBasis. Existing namespaces and declaration names are preserved; no further import or namespace replacement is needed.",
+  "separate_supplementary_agent_domain_review": {
+    "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-offcritical-real-basis\\STAGE21_WEIGHTED_BUDGET_SUPPLEMENTARY_AGENT_REVIEW.json",
+    "sha256": "f5926e722d36f9f51b87bd1d6dce9de95c43dac83808e858994b1bcf9caf8a94",
+    "bytes": 7373
+  },
+  "not_human_review": true,
+  "exact_boundary_falsifier": "For real kappa, conjugation gives the same actual normalized zeroth-jet measure; for an actual strip zero the canonical imaginary DISTRIBUTION is zero and the two-vector real basis is dependent. The control does not assert a whole Jordan measure equality to zero.",
+  "authority_limits": [
+    "Supporting only; no new original mandatory roots",
+    "No aggregate or release acceptance",
+    "No human review seal",
+    "No uniform c_rho across zeros, collisions or changing bases",
+    "No actual off-critical-zero existence or excluded-zero conclusion",
+    "RH OPEN",
+    "Step4 OPEN"
+  ]
+}

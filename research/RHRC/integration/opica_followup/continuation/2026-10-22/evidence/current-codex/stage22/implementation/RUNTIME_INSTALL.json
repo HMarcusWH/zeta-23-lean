@@ -1,0 +1,19 @@
+{
+  "schema": "OPICA_STAGE22_REAL_RUNTIME_INSTALL_V1",
+  "status": "INSTALLED_TESTED_COMPONENT_OWNER_REPLAY_PENDING",
+  "archive_sha256": "203dc2e56f80aeb4c238d630d71620882a0b53fc5046790c3feef80b5f81416f",
+  "files": {
+    "research/RHRC/integration/opica_followup/dependency_delta.py": "7f4cc8c619ba4c827b6a5dbe638dcc775e4ce963d2b387c0d1c0e92f662a865f",
+    "research/RHRC/integration/opica_followup/tests/test_coverage.py": "afa552e0c51e2721b533215f8a2790bc2d129329cb2889cac91ffae20ec951e5",
+    "research/RHRC/integration/opica_followup/tests/test_dependency_delta.py": "3d838d8d6366c49925fdbe60caf33c30839b48a0348a625e1af1aec52988ef94",
+    "research/RHRC/integration/opica_followup/tests/test_file_classes.py": "54d0049a603f8fd6dba1c8ac0a2197a839241978082da9b97486ba44b71e0a73"
+  },
+  "component_tests_per_mode": 43,
+  "full_end_to_end_real_receipts": "OPEN",
+  "independent_human_review": "NOT_ESTABLISHED",
+  "existing_validator_and_CI_bytes_changed": false,
+  "review_seal": "UNSET",
+  "full_release_accepted": false,
+  "RH": "OPEN",
+  "Step4": "OPEN"
+}

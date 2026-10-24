@@ -1,0 +1,41 @@
+{
+  "name": "WrongFactorControl",
+  "file": "WrongFactorControl.lean",
+  "source_sha256": "86b58ec82eb522d28b39af39a1c472d299228bcde70e0d134c963c026f9569af",
+  "expected": "REJECTED",
+  "scope": "Original CT1.3 normalization/first-order cost is indispensable.",
+  "origin": {
+    "kind": "SEALED_CT13_IMPORT_ONLY",
+    "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-ct13\\WrongFactorControl.lean",
+    "sha256": "4281f8ae48238583187b622d04c9aaad4f6f758da430134c4c2f1e4222197e7b",
+    "receipt": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-ct13\\negative-controls.json",
+    "receipt_sha256": "5cd02a20613de184f3ab205d099efdeefcc026a3a4b1855dbcde9fae441921bf"
+  },
+  "required_diagnostic_regex": [
+    "sinc_identity_original",
+    "Real.exp L - 1"
+  ],
+  "passed": true,
+  "observed": "REJECTED_INTENDED_MUTATION",
+  "failure_reasons": [],
+  "requested_axiom_names": [],
+  "axioms": {},
+  "error_recovery_sorryAx_in_rejected_output": false,
+  "formal_authority_from_failed_declarations": false,
+  "command": [
+    "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+    "env",
+    "lean",
+    "--root=C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\sources",
+    "-DautoImplicit=false",
+    "-DrelaxedAutoImplicit=false",
+    "-DmaxHeartbeats=800000",
+    "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\sources\\WrongFactorControl.lean",
+    "-o",
+    "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\objects\\WrongFactorControl.olean"
+  ],
+  "exit_code": 1,
+  "log": "WrongFactorControl.log",
+  "log_sha256": "795d1d69c4c285cb38987f9f85dac30506fba053ddeb37dbef761b9052ef6929",
+  "seconds": 82.29403880005702
+}

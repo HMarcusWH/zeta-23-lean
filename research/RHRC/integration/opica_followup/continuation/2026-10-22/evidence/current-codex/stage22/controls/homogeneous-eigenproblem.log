@@ -1,0 +1,6 @@
+C:\Users\macka\.codex\.chatgpt-projects\g-p-6a353c7268b08191b685956e466d73e4\work\opica-stage22\clean-controls\sources\homogeneous-eigenproblem.lean:13:2: error: Type mismatch
+  hn
+has type
+  ∀ (c : ℂ), ¬∀ (φ : ℝ → ℂ), PositiveAxisTest φ → eulerImage ρ φ = c * ∫ (x : ℝ) in Ioi 0, zeroProfile ρ x * φ x
+but is expected to have type
+  ∃ c, ∀ (φ : ℝ → ℂ), PositiveAxisTest φ → eulerImage ρ φ = c * ∫ (x : ℝ) in Ioi 0, zeroProfile ρ x * φ x

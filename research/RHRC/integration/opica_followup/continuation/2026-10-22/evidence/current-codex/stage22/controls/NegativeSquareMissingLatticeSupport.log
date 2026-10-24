@@ -1,0 +1,9 @@
+C:\Users\macka\.codex\.chatgpt-projects\g-p-6a353c7268b08191b685956e466d73e4\work\opica-stage22\clean-controls\sources\NegativeSquareMissingLatticeSupport.lean:19:2: error: Type mismatch
+  square_actual_no_tempered_measure_repair hev hc hi h2 hs hv hp hn σ
+has type
+  σ.totalVariation (range fun n => ↑n)ᶜ = 0 →
+    𝓕 ((squareGapJordan h A hc).distributionOfLinearGrowth ⋯ + SquarePhysicalSupport.correctionDistribution σ) ≠
+      (squareGapJordan h A hc).distributionOfLinearGrowth ⋯ + SquarePhysicalSupport.correctionDistribution σ
+but is expected to have type
+  𝓕 ((squareGapJordan h A hc).distributionOfLinearGrowth ⋯ + SquarePhysicalSupport.correctionDistribution σ) ≠
+    (squareGapJordan h A hc).distributionOfLinearGrowth ⋯ + SquarePhysicalSupport.correctionDistribution σ

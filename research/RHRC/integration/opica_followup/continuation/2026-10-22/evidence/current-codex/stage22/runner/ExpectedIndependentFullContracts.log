@@ -1,0 +1,30 @@
+research\RHRC\integration\opica_followup\continuation\2026-10-22\consumers\ExpectedIndependentFullContracts.lean:221:41: warning: `ContinuousLinearMap.zero_apply` has been deprecated: Use `zero_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.zero_apply` to `zero_apply x`).
+'Zeta23.OPICAFollowup.IndependentExpected.expected_source_order_uniform_norms' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.IndependentExpected.expected_native_field_theta_envelope' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.IndependentExpected.expected_near_gap_mass_bound' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.IndependentExpected.expected_near_gap_controlled_limit_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.IndependentExpected.expected_dilation_near_gap_family' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.IndependentExpected.expected_dilation_normalized_limit_not_measure' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.IndependentExpected.expected_fixed_basis_negative_mass_budget' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.IndependentExpected.actual_basis_independence_iff_Jordan_kernel' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.IndependentExpected.expected_controlled_uniform_tails' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
