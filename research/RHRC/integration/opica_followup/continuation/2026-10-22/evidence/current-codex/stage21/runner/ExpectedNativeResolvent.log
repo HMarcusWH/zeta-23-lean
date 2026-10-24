@@ -1,0 +1,25 @@
+'Zeta23.OPICAFollowup.native_forced_resolvent_unique' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.OPICAFollowup.native_sample_stieltjes_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.OPICAFollowup.native_profile_spectral_norms' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OPICANativeResolventIndependent.audit_nativeLogResolvent' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OPICANativeResolventIndependent.expected_native_forced_resolvent_unique' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'OPICANativeResolventIndependent.expected_native_sample_stieltjes_identity' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'OPICANativeResolventIndependent.expected_native_profile_spectral_norms' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'OPICANativeResolventIndependent.expected_offline_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OPICANativeResolventIndependent.expected_sample_ratio' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OPICANativeResolventIndependent.expected_resolvent_weak_solution' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'OPICANativeResolventIndependent.expected_diagonal_gram' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OPICANativeResolventIndependent.expected_conjugate_coincidence' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'OPICANativeResolventIndependent.expected_critical_line_undivided' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

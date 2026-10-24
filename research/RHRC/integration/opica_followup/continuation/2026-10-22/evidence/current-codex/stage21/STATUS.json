@@ -1,0 +1,103 @@
+{
+  "schema": "OPICA_STAGE21_NARROW_SOURCE_PINNED_V1",
+  "status": "PASS_NARROW_ONLY",
+  "checked_commit": "139c1a0d88cc0fb2d8a0d8ea71e152b25b14c36e",
+  "checked_tree": "3e63b0c72fc04da7bab45388d6096e82e95c4acb",
+  "dirty_status_during_checks": "",
+  "source_unchanged": true,
+  "roots": {
+    "Zeta23.OPICAFollowup.finite_zero_span_positive_only_zero": {
+      "source": "Zeta23/OPICAFollowup/FiniteSpanSeparation.lean",
+      "source_sha256": "8e69e7c90abb572cf45d71bd70c0446b6844372d4ae954aeb8274ea3e1f1e5ef",
+      "consumer": {
+        "path": "consumers/ExpectedFullFiniteSpan.lean",
+        "sha256": "3c8b892698091f69c5987c1f3d2b2e7a0bd3f068610c5355a1fe61fbf5b7eba2",
+        "expected_declaration": "IndependentFullFiniteSpan.full_original_domain_and_independent_basis"
+      },
+      "domain": "ACTUAL_AVAILABLE_ZERO_JETS_BOTH_UNIVERSAL_MEASURE_AND_INDEPENDENT_REAL_BASIS_CLAUSES",
+      "status": "PROVED_NARROW_AGGREGATE_PENDING"
+    },
+    "Zeta23.OPICAFollowup.fixed_basis_negative_mass_budget": {
+      "source": "Zeta23/OPICAFollowup/FiniteSpanSeparation.lean",
+      "source_sha256": "8e69e7c90abb572cf45d71bd70c0446b6844372d4ae954aeb8274ea3e1f1e5ef",
+      "consumer": {
+        "path": "consumers/ExpectedActualFixedBudget.lean",
+        "sha256": "9883387228ae6b161058a81055710bdde19c3ff00177154783577a04b3a0c2bd",
+        "expected_declaration": "IndependentActualFixedBudget.expected_full_actual_euclidean_budget"
+      },
+      "domain": "ACTUAL_CANONICAL_GLOBAL_OFF_INTEGER_NEGATIVE_MASS_LITERAL_EUCLIDEAN_SQRT_SUM_SQUARES",
+      "status": "PROVED_NARROW_AGGREGATE_PENDING"
+    },
+    "Zeta23.OPICAFollowup.actual_zero_measure_span_consumer": {
+      "source": "Zeta23/OPICAFollowup/Consumers.lean",
+      "source_sha256": "3098cbda01dfb1e89c3b3505365c1b60f3f15b0b6d3c35a054c7ee38f16530c8",
+      "consumer": {
+        "path": "consumers/ExpectedSpanPhysicalConsumer.lean",
+        "sha256": "143da66a5595d0206bf10ea6ec0143a887d318318f64e51c259b8fa372f2c444",
+        "expected_declaration": "IndependentSpanPhysicalConsumer.expected_actual_zero_measure_span_consumer"
+      },
+      "domain": "ACTUAL_ZERO_PROFILES_ZEROTH_JET_IDENTIFICATION_SELFDUALITY_GAP_AND_BOTH_SPAN_CONCLUSIONS",
+      "status": "PROVED_NARROW_AGGREGATE_PENDING"
+    }
+  },
+  "runner": "runner/CHECK_RESULT.json",
+  "controls": "controls/CHECK_RESULT.json",
+  "printed_closures": 271,
+  "local_control_counts": {
+    "positive_source_files": 4,
+    "rejected_negative_source_files": 17,
+    "new_finite_span_mutations": 4
+  },
+  "full_original_contract_acceptance": false,
+  "full_release_accepted": false,
+  "aggregate_registration_accepted": false,
+  "independent_human_review": "NOT_ESTABLISHED",
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "independent_closing_inequalities": "OPEN",
+  "paper_unit_evidence_coverage": {
+    "receipt": "PAPER_UNIT_COVERAGE.json",
+    "complete": 28,
+    "partial": 0,
+    "absent": 0,
+    "acceptance_established": false
+  },
+  "record_phase_validation": {
+    "child": {
+      "tests_per_mode": 185,
+      "modes": [
+        "normal",
+        "optimized"
+      ],
+      "receipt": "python/native/summary.json"
+    },
+    "parent": {
+      "tests_per_mode": 82,
+      "modes": [
+        "normal",
+        "optimized"
+      ],
+      "no_skips": true,
+      "real_Linux_tmp_fixtures": true,
+      "receipt": "python/linux/summary.json"
+    },
+    "frozen": {
+      "checks_per_mode": [
+        5112,
+        18862,
+        14672,
+        1274
+      ],
+      "numeric_suites": 3,
+      "numerical_authority": "CONSISTENCY_ONLY",
+      "receipt": "python/native/summary.json"
+    },
+    "proof_or_full_release_authority": false
+  },
+  "retained_workflow_consumers": {
+    "receipt": "workflow-consumers/CHECK_RESULT.json",
+    "W04_W07_closures": 52,
+    "W06_closures": 14,
+    "standard_axioms_only": true
+  }
+}

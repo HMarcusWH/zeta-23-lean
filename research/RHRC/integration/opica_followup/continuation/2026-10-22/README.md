@@ -1,3 +1,5 @@
+> Current checkpoint: [Stage21](STAGE21_HANDOVER.md), checked code `139c1a0d88cc0fb2d8a0d8ea71e152b25b14c36e`, tree `3e63b0c72fc04da7bab45388d6096e82e95c4acb`. Ledger:41 historical +59 narrow +0 absent bodies; this is not original-contract/aggregate acceptance. Fresh physical/interface findings and all release obligations remain OPEN. Earlier stage statements below retain their historical scope.
+
 > Latest: [Stage 20](STAGE20_HANDOVER.md), checked code `9a8b2a4baee49f2056c7945b1544a7bc2893735b`, tree `6aa53d22d50d2aa24046d73b128c64a1d262f7f3`. The unchanged 100-root ledger records 41 historical + 56 narrow + 3 absent. Six original H2a/J5.2/MS1/Q3 roots now have clean full-type/domain/axiom evidence. Full release, RH and Step4 remain OPEN. Earlier stage descriptions below retain their historical scope.
 
 # Continue the OPICA draft directly in this repository

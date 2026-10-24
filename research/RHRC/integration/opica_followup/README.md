@@ -1,3 +1,5 @@
+> Current checkpoint: [Stage21](continuation/2026-10-22/STAGE21_HANDOVER.md), checked code `139c1a0d88cc0fb2d8a0d8ea71e152b25b14c36e`, tree `3e63b0c72fc04da7bab45388d6096e82e95c4acb`. Ledger:41 historical +59 narrow +0 absent bodies; this is not original-contract/aggregate acceptance. Fresh physical/interface findings and all release obligations remain OPEN. Earlier stage statements below retain their historical scope.
+
 # Current draft checkpoint — 24 October 2026
 
 Start at [the continuation guide](continuation/2026-10-22/README.md), root AGENTS.md,

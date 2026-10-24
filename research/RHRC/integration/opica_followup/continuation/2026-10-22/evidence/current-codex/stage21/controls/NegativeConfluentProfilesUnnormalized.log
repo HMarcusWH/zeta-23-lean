@@ -1,0 +1,10 @@
+C:\Users\macka\.codex\.chatgpt-projects\g-p-6a353c7268b08191b685956e466d73e4\work\opica-stage21\clean-controls\NegativeConfluentProfilesUnnormalized.lean:16:2: error: Type mismatch
+  profile_jet_confluent_determinant κ hκ hκ0 m
+has type
+  (profileJetMatrix κ m).det =
+    ((-1) ^ ((∑ j, m j) * (∑ j, m j - 1) / 2) * ∏ j, κ j ^ m j) * ∏ j, ∏ i < j, (κ j - κ i) ^ (m i * m j)
+but is expected to have type
+  (Matrix.of fun n i =>
+        iteratedDeriv (↑((OPICAGroupedConfluent.groupEquiv m).symm i).snd) (fun w => w * (1 / 4 - w) ^ ↑n)
+          (κ ((OPICAGroupedConfluent.groupEquiv m).symm i).fst)).det =
+    ((-1) ^ ((∑ j, m j) * (∑ j, m j - 1) / 2) * ∏ j, κ j ^ m j) * ∏ j, ∏ i < j, (κ j - κ i) ^ (m i * m j)

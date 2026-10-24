@@ -1,0 +1,8 @@
+{
+  "prior_sha256": "132452d55d800e6889df6df5dc6c828ed99f9e5333339d269ced45188e1e5482",
+  "new_sha256": "3098cbda01dfb1e89c3b3505365c1b60f3f15b0b6d3c35a054c7ee38f16530c8",
+  "change": "Restore standalone physical consumer FourierTransform/SchwartzMap notation scope at its insertion site. No theorem/proof body changed.",
+  "failed_build_log": "production-preliminary-build.log",
+  "failed_compile_disposition": "REJECTED_NOT_PROOF_EVIDENCE",
+  "sorryAx_in_failed_log": "Error recovery only; no placeholder in source and no failed declaration accepted."
+}

@@ -1,0 +1,3 @@
+'OPICASampleSign.form_self' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OPICASampleSign.sample_im_ratio' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OPICASampleSign.real_sample_implies_on_line' depends on axioms: [propext, Classical.choice, Quot.sound]

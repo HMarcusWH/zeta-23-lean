@@ -1,0 +1,6 @@
+'IndependentFiniteSpanFalsification.repeated_actual_basis_is_not_independent' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'IndependentFiniteSpanFalsification.reflected_zero_is_the_same_jet' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

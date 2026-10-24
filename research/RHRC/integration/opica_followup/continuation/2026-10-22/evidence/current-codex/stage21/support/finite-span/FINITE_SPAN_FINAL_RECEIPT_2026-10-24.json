@@ -1,0 +1,140 @@
+{
+  "schema": "OPICA_ACTUAL_FINITE_SPAN_FINAL_SCRATCH_RECEIPT_V1",
+  "date_utc": "2026-10-24T16:33:06.329202+00:00",
+  "code_commit": "9a8b2a4baee49f2056c7945b1544a7bc2893735b",
+  "code_tree": "6aa53d22d50d2aa24046d73b128c64a1d262f7f3",
+  "later_owner_record_commit": "36b677c26b01fafeac719413753092c5988c38d3",
+  "later_owner_record_tree": "919a8f82f804c0389253412fb2b61330ac173dc7",
+  "scope": "Scratch formal evidence only; owner must integrate and replay exact production sources. No root-ledger, cold100, aggregate, RH or Step4 acceptance.",
+  "source_sha256": {
+    "FiniteSpanSeparationFullCandidate.lean": "8e69e7c90abb572cf45d71bd70c0446b6844372d4ae954aeb8274ea3e1f1e5ef",
+    "ConsumersSpanFullCandidate.lean": "a5ec14ea0c5754ba762034420b58047f6134baa1e8b52fc405c9c06e3872cc6e"
+  },
+  "temporal_import_provenance": "Primary module gate consumed historical ConfluentProfiles source1773e3 and pinned cached object at9a8. Owner later installed namespace-compatible sourcea84c72; physical/final suites pinned that source walk and consumed existing cached objects. No claim that this lane compiled the relocated Confluent source; exact production replay is mandatory.",
+  "gates": [
+    {
+      "label": "FinalNamespacePinnedModule",
+      "disposition": "PASS_EXACT_SCRATCH_COMPILATION_STANDARD_AXIOMS_ONLY",
+      "exit_code": 0,
+      "seconds": 50.161377399927005,
+      "source_object_input_count": 201,
+      "head_begin": "9a8b2a4baee49f2056c7945b1544a7bc2893735b",
+      "head_end": "9a8b2a4baee49f2056c7945b1544a7bc2893735b",
+      "tree_begin": "6aa53d22d50d2aa24046d73b128c64a1d262f7f3",
+      "tree_end": "6aa53d22d50d2aa24046d73b128c64a1d262f7f3",
+      "source_object_pins_unchanged_during_gate": true,
+      "imported_file_changes_after_completed_gate": [
+        {
+          "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\OPICAFollowup\\ConfluentProfiles.lean",
+          "checked_sha256": "1773e3200a8b3e7284b276d97dcfc5481945e4139852fef8d92e3b64b7b0b0d0",
+          "seal_time_sha256": "a84c72ac8b91bf053c499c9ca33458f69ad1849f0ba2766e520dfa9fbe61e29f"
+        }
+      ],
+      "receipt_sha256": "27ef1ea2b2c2fb42d20fa84f9f703a7e68039809bf2b2976c159dce43e80e819",
+      "log_sha256": "b1805d636104966a46ba48f00438d29b587d57ad5b851adfb240e45f32ac3242",
+      "axiom_print_count": 4,
+      "error_count": 0
+    },
+    {
+      "label": "FinalPhysicalModule",
+      "disposition": "PASS_EXACT_SCRATCH_COMPILATION_STANDARD_AXIOMS_ONLY",
+      "exit_code": 0,
+      "seconds": 62.79562570003327,
+      "source_object_input_count": 203,
+      "head_begin": "36b677c26b01fafeac719413753092c5988c38d3",
+      "head_end": "36b677c26b01fafeac719413753092c5988c38d3",
+      "tree_begin": "919a8f82f804c0389253412fb2b61330ac173dc7",
+      "tree_end": "919a8f82f804c0389253412fb2b61330ac173dc7",
+      "source_object_pins_unchanged_during_gate": true,
+      "imported_file_changes_after_completed_gate": [],
+      "receipt_sha256": "4f92b412a6a4548bf920029274c479c422cb50368f96a94be4444c435016a86d",
+      "log_sha256": "8b92adad586fe6e1c1e9d79ee15d67ae27da1c1e777e875c8102a5b72dc705ef",
+      "axiom_print_count": 1,
+      "error_count": 0
+    },
+    {
+      "label": "FinalAllExpectedAndFalsifiers",
+      "disposition": "PASS_EXACT_SCRATCH_COMPILATION_STANDARD_AXIOMS_ONLY",
+      "exit_code": 0,
+      "seconds": 38.51460660004523,
+      "source_object_input_count": 205,
+      "head_begin": "36b677c26b01fafeac719413753092c5988c38d3",
+      "head_end": "36b677c26b01fafeac719413753092c5988c38d3",
+      "tree_begin": "919a8f82f804c0389253412fb2b61330ac173dc7",
+      "tree_end": "919a8f82f804c0389253412fb2b61330ac173dc7",
+      "source_object_pins_unchanged_during_gate": true,
+      "imported_file_changes_after_completed_gate": [],
+      "receipt_sha256": "f4b352238f9d79fe377528c4a141a61f7b83d1a328a7a90b2eba031c7cd5007e",
+      "log_sha256": "d4772afa8b80f4450b8296e519b0f2ce0ef51fa3693a438226efd217c939a30c",
+      "axiom_print_count": 8,
+      "error_count": 0
+    },
+    {
+      "label": "FinalNegativeContracts",
+      "disposition": "PASS_EXPECTED_REJECTION: four contract-removal controls, five expected diagnostics",
+      "exit_code": 1,
+      "seconds": 60.69519300002139,
+      "source_object_input_count": 203,
+      "head_begin": "36b677c26b01fafeac719413753092c5988c38d3",
+      "head_end": "36b677c26b01fafeac719413753092c5988c38d3",
+      "tree_begin": "919a8f82f804c0389253412fb2b61330ac173dc7",
+      "tree_end": "919a8f82f804c0389253412fb2b61330ac173dc7",
+      "source_object_pins_unchanged_during_gate": true,
+      "imported_file_changes_after_completed_gate": [],
+      "receipt_sha256": "2b0909e8613360f4d4e1a662bec3baab792ab731748b26fe71706d2dd9b741bb",
+      "log_sha256": "377d750b9755d0ec3aef0850057659b977d392fc39e95ffcc63c53b06fa4a883",
+      "axiom_print_count": 0,
+      "error_count": 5
+    }
+  ],
+  "standard_axiom_prints_total": 13,
+  "public_roots": [
+    "Zeta23.OPICAFollowup.finite_zero_span_positive_only_zero",
+    "Zeta23.OPICAFollowup.fixed_basis_negative_mass_budget",
+    "Zeta23.OPICAFollowup.actual_zero_measure_span_consumer"
+  ],
+  "full_expected_types": {
+    "H2b_two_clauses": "IndependentFullFiniteSpan.full_original_domain_and_independent_basis",
+    "global_negative_sqrt_sum_squares_budget": "IndependentActualFixedBudget.expected_full_actual_euclidean_budget",
+    "actual_zero_profiles_jets_separator_and_coefficients": "IndependentSpanPhysicalConsumer.expected_actual_zero_measure_span_consumer"
+  },
+  "physical_domains": [
+    "Actual normalized zero-jet measures: zeta(rho)=0, 0<Re(rho)<1, k<zeroJetOrder(rho)",
+    "Every finite complex combination canonically realified into genuine Jordan parts",
+    "Growth, gap, Fourier selfduality and reflection derived internally",
+    "Coefficient uniqueness and budget explicitly require independence of the selected actual real basis distributions",
+    "Budget is global, off integer lattice, sinc squared, Euclidean norm, fixed basis only; dimension zero included"
+  ],
+  "public_root_composition": {
+    "physical_consumer": [
+      "copoisson_zero_jets_measures",
+      "zero_profile_regular_selfdual",
+      "finite_zero_span_positive_only_zero.1",
+      "finite_zero_span_positive_only_zero.2"
+    ],
+    "budget_injectivity": [
+      "finite_zero_span_positive_only_zero.2"
+    ],
+    "canonical_real_imag_generator_independence": "NOT CLAIMED; explicit actual independent real basis retained"
+  },
+  "positive_falsification": [
+    "Zero actual basis has no strictly positive coefficient budget",
+    "Duplicate actual basis cannot be linearly independent",
+    "Reflected rho and 1-rho give the same jet",
+    "Dirac at integer2 has growth/gap and zero sinc-weighted image but nonzero positive part",
+    "The same Dirac measure is formally not Fourier selfdual"
+  ],
+  "negative_controls": [
+    "Off-lattice nonnegativity removal rejected",
+    "Actual multiplicity-bound removal rejected",
+    "Real basis independence removal rejected for coefficient uniqueness",
+    "Budget theorem API remains a function awaiting independence; missing premise rejected. Mathematical necessity separately established by zero-basis countermodel."
+  ],
+  "claim_firewall": {
+    "RH": "OPEN",
+    "Step4": "OPEN",
+    "cold100": "OPEN",
+    "aggregate_release": "OPEN",
+    "new_original_root_promotion": false
+  }
+}

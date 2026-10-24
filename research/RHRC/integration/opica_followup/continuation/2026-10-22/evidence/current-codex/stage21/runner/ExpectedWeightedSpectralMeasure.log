@@ -1,0 +1,22 @@
+'Zeta23.OPICAFollowup.arithmetic_stieltjes_holomorphic' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.OPICAFollowup.arithmetic_stieltjes_sign_budget' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OPICAWeightedSpectralMeasureIndependent.audit_arithmeticStieltjes' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'OPICAWeightedSpectralMeasureIndependent.expected_arithmetic_stieltjes_holomorphic' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'OPICAWeightedSpectralMeasureIndependent.expected_arithmetic_stieltjes_sign_budget' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'OPICAWeightedSpectralMeasureIndependent.expected_moment_is_source_norm' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'OPICAWeightedSpectralMeasureIndependent.expected_real_point' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OPICAWeightedSpectralMeasureIndependent.expected_point_i' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OPICAWeightedSpectralMeasureIndependent.expected_offline_parameter' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'OPICAWeightedSpectralMeasureIndependent.expected_critical_line_on_cut' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

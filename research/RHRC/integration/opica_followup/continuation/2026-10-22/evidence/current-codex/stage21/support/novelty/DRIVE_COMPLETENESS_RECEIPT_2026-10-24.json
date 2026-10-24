@@ -1,0 +1,61 @@
+{
+  "schema": "OPICA_SCOPED_DRIVE_COMPLETENESS_INCREMENT_V1",
+  "date": "2026-10-24",
+  "authority": "READ_ONLY_REFERENCE_INTAKE_NOT_THEOREM_OR_EXTERNAL_APPROVAL",
+  "supplied_folder_ids": [
+    "1FwRkN6sbJ4_Fhrqe53wpsJtByD2RXILb",
+    "1TgaWlduUJ4QiE6-w6Xx1DGURlYB_y4k5",
+    "1ZxQKfmcz0B60Mj8l2m7msYLVqPIplLDm",
+    "1qdSgjvtcjLLfEoQQ0G63kehXpgbO-V22",
+    "1m0G9_2rQVjSxTeqEJM29p7egB6c_3i_l"
+  ],
+  "direct_all_kind_counts": [
+    162,
+    10,
+    7,
+    9,
+    10
+  ],
+  "provider_pages": 30,
+  "remaining_emitted_continuation_tokens": 0,
+  "all_kind_scans": 29,
+  "scan_cap_each": 1000,
+  "max_items_returned": 162,
+  "total_parent_entries": 468,
+  "scope": "Exact supplied folders and evidenced descendants only; complete returned direct inventories and relevant OPICA continuation recursion. Larger historical master subtree only targeted scans plus historical recursive index; not a new exhaustive read.",
+  "broad_private_drive_queries": false,
+  "drive_mutations": false,
+  "github_mutations": false,
+  "lean_compilations_in_pass": 0,
+  "missing_corpus_body": "Moment–Jet Rigidity and Exact Riesz Boundary Recurrences (19 September)",
+  "located_baseline_bodies": 16,
+  "baseline_total": 17,
+  "coverage_claim": "Claims/dependencies/boundaries reviewed, not all proofs line by line",
+  "previous_main_listing_was_incomplete": true,
+  "report": {
+    "path": "DRIVE_COMPLETENESS_INCREMENT_2026-10-24.md",
+    "sha256": "4d92aeeb14860fc3bed4a540a0b969208b2e9d359dd07cc527ef15ab26121866"
+  },
+  "artifacts": [
+    {
+      "path": "folder-scans.json",
+      "sha256": "bd966481e24caf2733bee77eb41e3c280687994e821217df79afc9ce53f5bc2e"
+    },
+    {
+      "path": "provider-pages.json",
+      "sha256": "823362e648558ea7b01c1c2fd3b6d1e59ab53bbcbf594aacb56debfbc5a56e31"
+    },
+    {
+      "path": "RH_Full_Corpus_Read_Manifest_2026-10-12.snapshot.json",
+      "sha256": "0decc33c62a052677a259bbf94bc1fddb58757793189ff5584682b3010b6dc31"
+    },
+    {
+      "path": "RH_Path_ABC_Recursive_Index_2026-10-20.snapshot.md",
+      "sha256": "9b633de31ba542efa87fd80a5bbe21052e769e2b740baa16efa792dc368d79c7"
+    },
+    {
+      "path": "targeted-reference-reads.json",
+      "sha256": "e1b12218e3a81ca2306237c6de6e71a0875231d17743970eb0043f05cbe1ea1d"
+    }
+  ]
+}

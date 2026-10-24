@@ -1,0 +1,572 @@
+{
+  "schema": "OPICA_STAGE21_CLEAN_CONTROLS_V1",
+  "status": "PASS_CONTROLS_ONLY",
+  "checked_commit": "139c1a0d88cc0fb2d8a0d8ea71e152b25b14c36e",
+  "checked_tree": "3e63b0c72fc04da7bab45388d6096e82e95c4acb",
+  "dirty_status_during_checks": "",
+  "compiler": "Lean (version 4.33.0-rc2, x86_64-w64-windows-gnu, commit d8b18978322de05a8f3dba51ef03cf5461676c17, Release)",
+  "source_unchanged": true,
+  "source_snapshot": "source-before.json",
+  "source_snapshot_sha256": "96566699e7dab407adcbbf4c37a48881512d39383a0f96d39542344182eecd2f",
+  "controls": [
+    {
+      "name": "homogeneous-eigenproblem",
+      "file": "homogeneous-eigenproblem.lean",
+      "source_sha256": "8086da17f426945c622b17df50e60dc656f8f97f14ab230093a384f63ed1f0a0",
+      "log": "homogeneous-eigenproblem.log",
+      "log_sha256": "f3dea624a71e49a4c476516546138c89dfdb58bda82a8305880282bec6ee6aeb",
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "-DautoImplicit=false",
+        "-DrelaxedAutoImplicit=false",
+        "-DmaxHeartbeats=800000",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\homogeneous-eigenproblem.lean"
+      ],
+      "exit_code": 1,
+      "seconds": 41.34820640005637,
+      "expected": "REJECTED",
+      "observed": "REJECTED_INTENDED_MUTATION",
+      "passed": true,
+      "scope": "Stage19 force/sampling contract mutation",
+      "axioms": {}
+    },
+    {
+      "name": "missing-conjugation",
+      "file": "missing-conjugation.lean",
+      "source_sha256": "ad8b5376576185c7d365f029aa3f0e140fcbd80c4616d1355eaadbb30492d437",
+      "log": "missing-conjugation.log",
+      "log_sha256": "9d62712c57e483f60e6909dce47243099abe034812467970d7902cb5a0042702",
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "-DautoImplicit=false",
+        "-DrelaxedAutoImplicit=false",
+        "-DmaxHeartbeats=800000",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\missing-conjugation.lean"
+      ],
+      "exit_code": 1,
+      "seconds": 41.74198350007646,
+      "expected": "REJECTED",
+      "observed": "REJECTED_INTENDED_MUTATION",
+      "passed": true,
+      "scope": "Stage19 force/sampling contract mutation",
+      "axioms": {}
+    },
+    {
+      "name": "missing-lattice-atoms",
+      "file": "missing-lattice-atoms.lean",
+      "source_sha256": "071661e22bb39c2604b73f68d1a7c07e10ed9766c2bfe90aae1f961a3dd7df15",
+      "log": "missing-lattice-atoms.log",
+      "log_sha256": "057072cccc6f9cb6327dae36d0982a6a09216933ff39bbca1652a914828a0e67",
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "-DautoImplicit=false",
+        "-DrelaxedAutoImplicit=false",
+        "-DmaxHeartbeats=800000",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\missing-lattice-atoms.lean"
+      ],
+      "exit_code": 1,
+      "seconds": 41.73690230003558,
+      "expected": "REJECTED",
+      "observed": "REJECTED_INTENDED_MUTATION",
+      "passed": true,
+      "scope": "Stage19 force/sampling contract mutation",
+      "axioms": {}
+    },
+    {
+      "name": "synthetic-spectral-measure",
+      "file": "synthetic-spectral-measure.lean",
+      "source_sha256": "6327f48499d723aade54c6472a41e1a81ed4413fe9324582e81e81a0c094aba8",
+      "log": "synthetic-spectral-measure.log",
+      "log_sha256": "55cfa456501d45faf8142db3d2fc6aa656ec7b6ceb1c1d939e9fe2443cae5088",
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "-DautoImplicit=false",
+        "-DrelaxedAutoImplicit=false",
+        "-DmaxHeartbeats=800000",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\synthetic-spectral-measure.lean"
+      ],
+      "exit_code": 1,
+      "seconds": 40.82347459997982,
+      "expected": "REJECTED",
+      "observed": "REJECTED_INTENDED_MUTATION",
+      "passed": true,
+      "scope": "Stage19 force/sampling contract mutation",
+      "axioms": {}
+    },
+    {
+      "name": "wrong-fourier-2pi",
+      "file": "wrong-fourier-2pi.lean",
+      "source_sha256": "6af30b4d62456cf13ed6311d4bc24857a7e76ac9e842ae86484b33c99aeb9a3f",
+      "log": "wrong-fourier-2pi.log",
+      "log_sha256": "435832385d63fa585dd6d0282bda7e4601f99063472637ea37bd455e555f7303",
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "-DautoImplicit=false",
+        "-DrelaxedAutoImplicit=false",
+        "-DmaxHeartbeats=800000",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\wrong-fourier-2pi.lean"
+      ],
+      "exit_code": 1,
+      "seconds": 39.229611299932,
+      "expected": "REJECTED",
+      "observed": "REJECTED_INTENDED_MUTATION",
+      "passed": true,
+      "scope": "Stage19 force/sampling contract mutation",
+      "axioms": {}
+    },
+    {
+      "name": "wrong-reflection-kappa",
+      "file": "wrong-reflection-kappa.lean",
+      "source_sha256": "d75f23b3d9a6fe9f23bfad03bb9706fd31723204b3f35183951a0b147a4c45c6",
+      "log": "wrong-reflection-kappa.log",
+      "log_sha256": "861a19d0c5943f0f7d2407da452c37011ca7f1313e864ea5eae9db7590bd86d1",
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "-DautoImplicit=false",
+        "-DrelaxedAutoImplicit=false",
+        "-DmaxHeartbeats=800000",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\wrong-reflection-kappa.lean"
+      ],
+      "exit_code": 1,
+      "seconds": 40.330731999943964,
+      "expected": "REJECTED",
+      "observed": "REJECTED_INTENDED_MUTATION",
+      "passed": true,
+      "scope": "Stage19 force/sampling contract mutation",
+      "axioms": {}
+    },
+    {
+      "name": "NegativeMissingQuiet",
+      "file": "NegativeMissingQuiet.lean",
+      "source_sha256": "4148bbf86ad8755ee21aae8051f7aa971fe315cfe4c06a6cc2a13c92086bf9ca",
+      "log": "NegativeMissingQuiet.log",
+      "log_sha256": "c370437cbad450598af8d6bcd52a379e493122e596a338ecf5d98b44987dbb6b",
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "-DautoImplicit=false",
+        "-DrelaxedAutoImplicit=false",
+        "-DmaxHeartbeats=800000",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\NegativeMissingQuiet.lean"
+      ],
+      "exit_code": 1,
+      "seconds": 42.219763599918224,
+      "expected": "REJECTED",
+      "observed": "REJECTED_INTENDED_MUTATION",
+      "passed": true,
+      "scope": "Rate/physical consumer contract mutation",
+      "axioms": {}
+    },
+    {
+      "name": "NegativeMissingSlow",
+      "file": "NegativeMissingSlow.lean",
+      "source_sha256": "ace87626affcca5480f4aa97b963dd227b8d84f17ba75e2313133f76cbd48e63",
+      "log": "NegativeMissingSlow.log",
+      "log_sha256": "0f73a7e2e1dca86066f7c00ea76690ba4961e54c495748b83e678aad1e837834",
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "-DautoImplicit=false",
+        "-DrelaxedAutoImplicit=false",
+        "-DmaxHeartbeats=800000",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\NegativeMissingSlow.lean"
+      ],
+      "exit_code": 1,
+      "seconds": 39.87970300007146,
+      "expected": "REJECTED",
+      "observed": "REJECTED_INTENDED_MUTATION",
+      "passed": true,
+      "scope": "Rate/physical consumer contract mutation",
+      "axioms": {}
+    },
+    {
+      "name": "NegativeSyntheticQuiet",
+      "file": "NegativeSyntheticQuiet.lean",
+      "source_sha256": "9808037f972c802eaf9e75eb2cbafeee118401f30ddda6073495554d15fc83c4",
+      "log": "NegativeSyntheticQuiet.log",
+      "log_sha256": "182aa427abf54826d96c6065aca0a0192c756816433ccd25828da64ace1d14f9",
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "-DautoImplicit=false",
+        "-DrelaxedAutoImplicit=false",
+        "-DmaxHeartbeats=800000",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\NegativeSyntheticQuiet.lean"
+      ],
+      "exit_code": 1,
+      "seconds": 41.739009300014004,
+      "expected": "REJECTED",
+      "observed": "REJECTED_INTENDED_MUTATION",
+      "passed": true,
+      "scope": "Rate/physical consumer contract mutation",
+      "axioms": {}
+    },
+    {
+      "name": "NegativeWindowBoundary",
+      "file": "NegativeWindowBoundary.lean",
+      "source_sha256": "17e071f1a779ebedc2d311a793b5ae1d8d816fd62008ec3743ad7bd07fb39598",
+      "log": "NegativeWindowBoundary.log",
+      "log_sha256": "7c947c785c9714f43af4221904f72fda89020755b348855cdc1c8485f2144f76",
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "-DautoImplicit=false",
+        "-DrelaxedAutoImplicit=false",
+        "-DmaxHeartbeats=800000",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\NegativeWindowBoundary.lean"
+      ],
+      "exit_code": 1,
+      "seconds": 39.47480209998321,
+      "expected": "REJECTED",
+      "observed": "REJECTED_INTENDED_MUTATION",
+      "passed": true,
+      "scope": "Rate/physical consumer contract mutation",
+      "axioms": {}
+    },
+    {
+      "name": "NegativeZeroDamping",
+      "file": "NegativeZeroDamping.lean",
+      "source_sha256": "6e5b4422cabcc03da45ca8d877321ce71dbcb186109dddc142e14978579d8685",
+      "log": "NegativeZeroDamping.log",
+      "log_sha256": "38cbf66acce470e14084cf002c66a3a8338ad7e745de3a06f27bd7e945da63a9",
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "-DautoImplicit=false",
+        "-DrelaxedAutoImplicit=false",
+        "-DmaxHeartbeats=800000",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\NegativeZeroDamping.lean"
+      ],
+      "exit_code": 1,
+      "seconds": 44.57504140003584,
+      "expected": "REJECTED",
+      "observed": "REJECTED_INTENDED_MUTATION",
+      "passed": true,
+      "scope": "Rate/physical consumer contract mutation",
+      "axioms": {}
+    },
+    {
+      "name": "NegativeConfluentProfilesDistinctness",
+      "file": "NegativeConfluentProfilesDistinctness.lean",
+      "source_sha256": "e2e832abd4c1c0e7a568e9896c4e24c673b537d1eb6ceccd2d9f6678f9a058d7",
+      "log": "NegativeConfluentProfilesDistinctness.log",
+      "log_sha256": "e4b6bdd436c941dd20caea58f4588853ec9056f3702f35ba2b932da261cab00c",
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "-DautoImplicit=false",
+        "-DrelaxedAutoImplicit=false",
+        "-DmaxHeartbeats=800000",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\NegativeConfluentProfilesDistinctness.lean"
+      ],
+      "exit_code": 1,
+      "seconds": 40.634093199972995,
+      "expected": "REJECTED",
+      "observed": "REJECTED_INTENDED_MUTATION",
+      "passed": true,
+      "scope": "H2a full statement mutation",
+      "axioms": {}
+    },
+    {
+      "name": "NegativeConfluentProfilesDeterminantSign",
+      "file": "NegativeConfluentProfilesDeterminantSign.lean",
+      "source_sha256": "cbc604c6922a9c02681ba0111fa743bee65ddcc64aff4e140b6272f4257fa522",
+      "log": "NegativeConfluentProfilesDeterminantSign.log",
+      "log_sha256": "99b14a65da9086eafbdde5b758a8ecbc7bff74ec9769b953226666f6570132db",
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "-DautoImplicit=false",
+        "-DrelaxedAutoImplicit=false",
+        "-DmaxHeartbeats=800000",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\NegativeConfluentProfilesDeterminantSign.lean"
+      ],
+      "exit_code": 1,
+      "seconds": 44.615742000052705,
+      "expected": "REJECTED",
+      "observed": "REJECTED_INTENDED_MUTATION",
+      "passed": true,
+      "scope": "H2a full statement mutation",
+      "axioms": {}
+    },
+    {
+      "name": "NegativeConfluentProfilesUnnormalized",
+      "file": "NegativeConfluentProfilesUnnormalized.lean",
+      "source_sha256": "4d58dac153c838998c0cfb004ba4e699f8bcea47ef305fd6f07f0ca1a8a91363",
+      "log": "NegativeConfluentProfilesUnnormalized.log",
+      "log_sha256": "ed5513a62b985ce54f379feb72e4b319896774677f99a898b46d6ec2584cc91f",
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "-DautoImplicit=false",
+        "-DrelaxedAutoImplicit=false",
+        "-DmaxHeartbeats=800000",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\NegativeConfluentProfilesUnnormalized.lean"
+      ],
+      "exit_code": 1,
+      "seconds": 44.9767154000001,
+      "expected": "REJECTED",
+      "observed": "REJECTED_INTENDED_MUTATION",
+      "passed": true,
+      "scope": "H2a full statement mutation",
+      "axioms": {}
+    },
+    {
+      "name": "ConfluentProfilesFactorialControls",
+      "file": "ConfluentProfilesFactorialControls.lean",
+      "source_sha256": "2f8a02dd86401e5ba48f8ae7979b1687a27794a5ae2511d44955d533cb28ca7b",
+      "log": "ConfluentProfilesFactorialControls.log",
+      "log_sha256": "cd07e9b5f8d42b9722ca43b4dfbb8dafcfa6be4a89e5b0742009537e7b269ea9",
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "-DautoImplicit=false",
+        "-DrelaxedAutoImplicit=false",
+        "-DmaxHeartbeats=800000",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\ConfluentProfilesFactorialControls.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 45.812993099913,
+      "expected": "PASS",
+      "observed": "PASS_ACTUAL_FALSIFICATION_CONTROL",
+      "passed": true,
+      "scope": "Actual-kernel normalization/degeneracy falsification",
+      "axioms": {
+        "Zeta23.OPICAFollowup.OPICARightCellTaylor.second_parameter_jet_cubic_coefficient": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "Zeta23.OPICAFollowup.OPICARightCellTaylor.missing_parameter_factorial_is_false": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "Zeta23.OPICAFollowup.OPICARightCellTaylor.zero_node_actual_dependency": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      }
+    },
+    {
+      "name": "NegativeParameterFactorial",
+      "file": "NegativeParameterFactorial.lean",
+      "source_sha256": "3f9ececefdaf17ea9d2928916c44cdd8d05c6010c3ba1d4854d327154c24ab95",
+      "log": "NegativeParameterFactorial.log",
+      "log_sha256": "f8fe760d8253552abf5dd7751e48af38f17e64cff071aecc39c94765229b1659",
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "-DautoImplicit=false",
+        "-DrelaxedAutoImplicit=false",
+        "-DmaxHeartbeats=800000",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\NegativeParameterFactorial.lean"
+      ],
+      "exit_code": 1,
+      "seconds": 46.15440980007406,
+      "expected": "REJECTED",
+      "observed": "REJECTED_INTENDED_MUTATION",
+      "passed": true,
+      "scope": "Wrong 1/2! normalization against proved actual coefficient",
+      "axioms": {
+        "Zeta23.OPICAFollowup.OPICARightCellTaylor.second_parameter_jet_cubic_coefficient": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "Zeta23.OPICAFollowup.OPICARightCellTaylor.missing_parameter_factorial_is_false": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "Zeta23.OPICAFollowup.OPICARightCellTaylor.zero_node_actual_dependency": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      }
+    },
+    {
+      "name": "ConfluentProfilesReflectionControl",
+      "file": "ConfluentProfilesReflectionControl.lean",
+      "source_sha256": "e4ae96fdd49d0e66470c45ce47840b28aff64b32f0fe2ffaa7a438abf3d3a474",
+      "log": "ConfluentProfilesReflectionControl.log",
+      "log_sha256": "c2c4f3a4af50f759102696d318d010a478bdcf4575e83c423e900c0205e33e56",
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "-DautoImplicit=false",
+        "-DrelaxedAutoImplicit=false",
+        "-DmaxHeartbeats=800000",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\ConfluentProfilesReflectionControl.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 45.7057225999888,
+      "expected": "PASS",
+      "observed": "PASS_ACTUAL_FALSIFICATION_CONTROL",
+      "passed": true,
+      "scope": "Actual-kernel normalization/degeneracy falsification",
+      "axioms": {
+        "OPICAGroupedReflectionControl.reflection_duplicate_actual_not_independent": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      }
+    },
+    {
+      "name": "NegativeFullFiniteSpanFinal",
+      "file": "NegativeFullFiniteSpanFinal.lean",
+      "source_sha256": "955cf804f7a05a92ed643893b1493bbafd35fc8a7e1cfe163447fd35ccdf908e",
+      "log": "NegativeFullFiniteSpanFinal.log",
+      "log_sha256": "477027c278bd480253e8df525077ac95117b9cdaf4521d9b8beae17d3dc4739d",
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "-DautoImplicit=false",
+        "-DrelaxedAutoImplicit=false",
+        "-DmaxHeartbeats=800000",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\NegativeFullFiniteSpanFinal.lean"
+      ],
+      "exit_code": 1,
+      "seconds": 43.72919119999278,
+      "expected": "REJECTED",
+      "observed": "REJECTED_INTENDED_MUTATION",
+      "passed": true,
+      "scope": "Actual finite-span clause / independent-basis / reflection / selfduality falsification",
+      "axioms": {}
+    },
+    {
+      "name": "NegativeBudgetIndependenceFinal",
+      "file": "NegativeBudgetIndependenceFinal.lean",
+      "source_sha256": "83ba20582622d40fa279088080ff4234e4c6499f8beac645225277f2624797ea",
+      "log": "NegativeBudgetIndependenceFinal.log",
+      "log_sha256": "1d872e49c82c106fd9797b0e9ee1c5f31a2a5f5977b7aa35d5811b8cd2438e27",
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "-DautoImplicit=false",
+        "-DrelaxedAutoImplicit=false",
+        "-DmaxHeartbeats=800000",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\NegativeBudgetIndependenceFinal.lean"
+      ],
+      "exit_code": 1,
+      "seconds": 47.62272539990954,
+      "expected": "REJECTED",
+      "observed": "REJECTED_INTENDED_MUTATION",
+      "passed": true,
+      "scope": "Actual finite-span clause / independent-basis / reflection / selfduality falsification",
+      "axioms": {}
+    },
+    {
+      "name": "DuplicateBasisControlFinal",
+      "file": "DuplicateBasisControlFinal.lean",
+      "source_sha256": "f4307169d05fd92ab8936f19b0de516fcaabede989e6ff6a7f5750f658b43fd9",
+      "log": "DuplicateBasisControlFinal.log",
+      "log_sha256": "63e1ee48476844d2f77ea918a304af22600c58f3be641a36bfe38add10a85d24",
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "-DautoImplicit=false",
+        "-DrelaxedAutoImplicit=false",
+        "-DmaxHeartbeats=800000",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\DuplicateBasisControlFinal.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 48.47857560007833,
+      "expected": "PASS",
+      "observed": "PASS_ACTUAL_FALSIFICATION_CONTROL",
+      "passed": true,
+      "scope": "Actual finite-span clause / independent-basis / reflection / selfduality falsification",
+      "axioms": {
+        "IndependentFiniteSpanFalsification.repeated_actual_basis_is_not_independent": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "IndependentFiniteSpanFalsification.reflected_zero_is_the_same_jet": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      }
+    },
+    {
+      "name": "WeightedControlsFinal",
+      "file": "WeightedControlsFinal.lean",
+      "source_sha256": "9569499f8cc45570644a3612d7cb84a9c6dd35462809c00785021130507f1d20",
+      "log": "WeightedControlsFinal.log",
+      "log_sha256": "a205c7ad2066e04f7679c32b3ddc5e00034578e1b50c90c2cd920783dca8e62b",
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "-DautoImplicit=false",
+        "-DrelaxedAutoImplicit=false",
+        "-DmaxHeartbeats=800000",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\WeightedControlsFinal.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 43.90766749996692,
+      "expected": "PASS",
+      "observed": "PASS_ACTUAL_FALSIFICATION_CONTROL",
+      "passed": true,
+      "scope": "Actual finite-span clause / independent-basis / reflection / selfduality falsification",
+      "axioms": {
+        "IndependentWeightedBudgetControls.diracTwo_weighted_zero": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "IndependentWeightedBudgetControls.diracTwo_not_selfdual": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      }
+    }
+  ],
+  "negative_source_files": 17,
+  "positive_source_files": 4,
+  "new_finite_span_mutations": 4,
+  "finished_at": "2026-10-24T17:03:29.598801+00:00",
+  "aggregate_accepted": false,
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "classification_repair": {
+    "original_result": "INITIAL_PARSER_RESULT.json",
+    "original_result_sha256": "7065ca4a2803643f2fb1122a861b7e332b6d4c6315a023ddebb80c899a9b1123",
+    "compiler_rerun": false,
+    "compiler_logs_changed": false,
+    "reason": "Lean renders this genuine missing-independence argument failure as error(lean.invalidField):, while the first parser only recognized error:. The original compiler exit1 and exact log are retained. This repairs classification only.",
+    "accepted_error_pattern": "\\berror(?:\\([^)]+\\))?:",
+    "reviewed_expected_failure": "Applying .choose to the still-conditional function LinearIndependent \u2192 exists c; the required independence argument was deliberately omitted."
+  }
+}

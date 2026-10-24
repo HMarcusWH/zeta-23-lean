@@ -1,0 +1,43 @@
+{
+  "base_commit": "36b677c26b01fafeac719413753092c5988c38d3",
+  "module_sha256": "8e69e7c90abb572cf45d71bd70c0446b6844372d4ae954aeb8274ea3e1f1e5ef",
+  "Consumers_prior_sha256": "71de2dd0ef69ed953636f802f2543e86be12ba1bb0cd68d29d6ca28c638e91d7",
+  "Consumers_sha256": "132452d55d800e6889df6df5dc6c828ed99f9e5333339d269ced45188e1e5482",
+  "standalone_physical_source_sha256": "a5ec14ea0c5754ba762034420b58047f6134baa1e8b52fc405c9c06e3872cc6e",
+  "old_consumer_proof_bodies_preserved": true,
+  "imports": [
+    "Zeta23.OPICAFollowup.NativeTransformationWords",
+    "Zeta23.OPICAFollowup.MaskedNativeRate",
+    "Zeta23.OPICAFollowup.NativeWindowRate",
+    "Zeta23.OPICAFollowup.MovingSourceWindowRate",
+    "Zeta23.OPICAFollowup.RobustLaurent",
+    "Zeta23.OPICAFollowup.FiniteSpanSeparation",
+    "Zeta23.OPICAFollowup.FirstCellCost",
+    "Zeta23.OPICAFollowup.SquareDefect",
+    "Zeta23.OPICAFollowup.BoundaryAmplitude",
+    "Zeta23.OPICAFollowup.WeightedMixing",
+    "Zeta23.OPICAFollowup.NearGapLimits",
+    "Zeta23.OPICAFollowup.Counterexamples",
+    "Zeta23.ExceptionalZero.Step4OutputSufficiency",
+    "Zeta23.OPICA.NativeJetAdapter"
+  ],
+  "frozen_13_imports_restored": true,
+  "preexisting_required_NativeJetAdapter_extra": "RETAINED_EXPLICIT_REFINEMENT_PROPOSAL_PENDING",
+  "facade_imports": [
+    "Zeta23.OPICAFollowup.Consumers"
+  ],
+  "consumers": {
+    "ExpectedFullFiniteSpan": "3c8b892698091f69c5987c1f3d2b2e7a0bd3f068610c5355a1fe61fbf5b7eba2",
+    "ExpectedActualFixedBudget": "9883387228ae6b161058a81055710bdde19c3ff00177154783577a04b3a0c2bd",
+    "ExpectedSpanPhysicalConsumer": "143da66a5595d0206bf10ea6ec0143a887d318318f64e51c259b8fa372f2c444",
+    "ExpectedBudgetLimit": "24665dcf253694e0d76c0f9555b10f23aa3cdf1f5122d0dc6c1adbd8e88c9668"
+  },
+  "runner_counts": {
+    "MODULES": 25,
+    "CONSUMERS": 35
+  },
+  "all_other_runner_logic_ast_unchanged": true,
+  "primary_promotion": "NONE_PENDING_CLEAN_SOURCE_RECEIPTS",
+  "RH": "OPEN",
+  "Step4": "OPEN"
+}

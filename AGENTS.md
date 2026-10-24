@@ -14,8 +14,9 @@ blocks retain their historical anchor and do not route the active PR #294.
 The original follow-up requires **100 primary roots in 28 acceptance units**.
 The historical exact-source subset contains 41 roots. New local candidate gates
 remain separate from aggregate registration and full release acceptance.
-Fifty-six additional roots passed narrow gates and 3 original roots still lack
-complete implementations. Read the continuation STAGE20_HANDOVER.md (and the
+Fifty-nine additional roots passed narrow gates; all100 original bodies now have
+historical or narrow evidence. Full original-contract acceptance remains OPEN.
+Read the continuation STAGE21_HANDOVER.md (and the
 earlier stage handovers) for exact proof and infrastructure evidence. Read each
 ledger gate rather than adding root names or supporting lemmas to a completion count.
 

@@ -1,0 +1,3 @@
+'IndependentSpanPhysicalConsumer.expected_actual_zero_measure_span_consumer' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

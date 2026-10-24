@@ -1,0 +1,6 @@
+'IndependentActualFixedBudget.expected_full_actual_euclidean_budget' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'IndependentActualFixedBudget.no_positive_budget_without_independence' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

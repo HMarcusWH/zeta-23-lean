@@ -1,0 +1,11 @@
+{
+  "change": "Add the actual planned public sibling facade to the existing clean build target list. All compiler/consumer/axiom/source-identity/claim-cap checks remain unchanged.",
+  "strengthens_gate": true,
+  "facade_target": "Zeta23.OPICAFollowup",
+  "module_tuple_count": 25,
+  "consumer_tuple_count": 35,
+  "before_sha256": "a85fef93cbab09c33988acc8160aec4ef880383b574c68cf70569cdaa3a9e14d",
+  "after_sha256": "65c479c0b7e4de7e69a913031a4aefef882db898fa6cb452ceb8291269f8bf14",
+  "all_other_bytes_unchanged": true,
+  "release_or_aggregate_authority": false
+}
