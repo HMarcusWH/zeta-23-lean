@@ -4,9 +4,9 @@
   "acceptance_units": 28,
   "current_aggregate_accepted": false,
   "status_counts": {
-    "OPEN_NO_COMPLETE_CANDIDATE": 13,
+    "OPEN_NO_COMPLETE_CANDIDATE": 11,
     "PROVED_IN_ORIGINAL_41_ROOT_SOURCE_BOUND_SUBSET": 41,
-    "PROVED_NARROW_LOCAL_GATES_AGGREGATE_PENDING": 46
+    "PROVED_NARROW_LOCAL_GATES_AGGREGATE_PENDING": 48
   },
   "roots": [
     {
@@ -3922,20 +3922,27 @@
         "register_only_after_proof_and_type_review": true,
         "status": "PLANNED_NOT_PROVED"
       },
-      "current_status": "OPEN_NO_COMPLETE_CANDIDATE",
+      "current_status": "PROVED_NARROW_LOCAL_GATES_AGGREGATE_PENDING",
       "gates": {
-        "implementation": "OPEN",
-        "module_compilation": "NOT_ESTABLISHED",
-        "expected_type_consumer": "NOT_ESTABLISHED",
-        "actual_domain_consumer": "NOT_ESTABLISHED",
-        "axiom_check": "NOT_ESTABLISHED",
+        "implementation": "IMPLEMENTED_FULL_FROZEN_CONTRACT_REVIEWED_NARROW",
+        "module_compilation": "PASS_EXACT_COMMITTED_SOURCE_PINNED_LINUX",
+        "expected_type_consumer": "PASS_INDEPENDENT_FULL_TYPE_AND_DEFINITION_AUDITS",
+        "actual_domain_consumer": "PASS_ACTUAL_OFFLINE_ZERO_GENERIC_EQUALS_ZERO_PROFILE_AND_F2_F3_ROUTES_AGREE",
+        "axiom_check": "STANDARD_ONLY_TRANSITIVE_PRINTED_CLOSURES",
         "aggregate_current_source_export": "OPEN",
         "full_release_acceptance": "OPEN"
       },
-      "source_file_present": false,
-      "declaration_lexically_present": false,
-      "source_sha256": null,
-      "evidence": []
+      "source_file_present": true,
+      "declaration_lexically_present": true,
+      "source_sha256": "38a3bb888d00dc1860c3baae5c85827f6d00a03b470062bb7390ddc46c7c9b18",
+      "evidence": [
+        "evidence/current-codex/stage17/STATUS.json"
+      ],
+      "independent_consumer": {
+        "path": "consumers/ExpectedBoundaryAmplitude.lean",
+        "sha256": "b114b1a7ac9e264cac4f6cf4606ac9a4d6b1b9f4f28b5853dbf11dc6d86ec6cc"
+      },
+      "statement_formalization": "boundaryAmplitude rho := zeta(rho)/b_rho; genericForcedProfile rho x := (1 - S_rho(|x|)/b_rho) - (zeta(rho)/b_rho)|x|^(rho-1) with the actual finite sums; genericForcedProfileDeriv its explicit derivative. For an arbitrary parameter 1/2 < Re rho < 1, Im rho != 0 (not necessarily a zero): h~ lies in LogFormDomain; it satisfies the actual physical force equation int x^2 h~' phi' = kappa (int (h~ - 1) phi + sum_(n >= 1) phi(n)) on positive-axis tests; every LogFormDomain solution of that equation equals h~ on (0, oo); its log profile is LogH1, solves the weak equation (-D^2 + 1/4 - kappa) psi = kappa g on Schwartz tests and is the unique LogH1 weak solution; its log-Fourier transform is kappa zeta(1/2 + i xi)/(a - kappa); it equals nativeLogResolvent kappa; both ends are controlled (h~ = O(x^(Re rho - 1)), |h~'| = |A (rho - 1)| x^(Re rho - 2) near 0; h~ = O(x^(-Re rho)), h~' = O(x^(-Re rho - 1)) at infinity)."
     },
     {
       "id": "OPICA_FOLLOWUP_GENERIC_BOUNDARY_AMPLITUDE",
@@ -3960,20 +3967,27 @@
         "register_only_after_proof_and_type_review": true,
         "status": "PLANNED_NOT_PROVED"
       },
-      "current_status": "OPEN_NO_COMPLETE_CANDIDATE",
+      "current_status": "PROVED_NARROW_LOCAL_GATES_AGGREGATE_PENDING",
       "gates": {
-        "implementation": "OPEN",
-        "module_compilation": "NOT_ESTABLISHED",
-        "expected_type_consumer": "NOT_ESTABLISHED",
-        "actual_domain_consumer": "NOT_ESTABLISHED",
-        "axiom_check": "NOT_ESTABLISHED",
+        "implementation": "IMPLEMENTED_FULL_FROZEN_CONTRACT_REVIEWED_NARROW",
+        "module_compilation": "PASS_EXACT_COMMITTED_SOURCE_PINNED_LINUX",
+        "expected_type_consumer": "PASS_INDEPENDENT_FULL_TYPE_AND_DEFINITION_AUDITS",
+        "actual_domain_consumer": "PASS_NO_PLATEAU_UNBOUNDED_NEAR_ZERO_AND_NOT_L1_WHEN_ZETA_ONE_MINUS_RHO_NONZERO",
+        "axiom_check": "STANDARD_ONLY_TRANSITIVE_PRINTED_CLOSURES",
         "aggregate_current_source_export": "OPEN",
         "full_release_acceptance": "OPEN"
       },
-      "source_file_present": false,
-      "declaration_lexically_present": false,
-      "source_sha256": null,
-      "evidence": []
+      "source_file_present": true,
+      "declaration_lexically_present": true,
+      "source_sha256": "38a3bb888d00dc1860c3baae5c85827f6d00a03b470062bb7390ddc46c7c9b18",
+      "evidence": [
+        "evidence/current-codex/stage17/STATUS.json"
+      ],
+      "independent_consumer": {
+        "path": "consumers/ExpectedBoundaryAmplitude.lean",
+        "sha256": "b114b1a7ac9e264cac4f6cf4606ac9a4d6b1b9f4f28b5853dbf11dc6d86ec6cc"
+      },
+      "statement_formalization": "For 1/2 < Re rho < 1 (the Im rho != 0 hypothesis is not needed): boundaryAmplitude rho = zeta(rho)/b_rho with b_rho = (1 - 2 rho)/kappa; on (0, 1) h~ = 1 - (zeta(rho)/b_rho) x^(rho-1); the plateau h~ = 1 on (0, 1) holds iff zeta(rho) = 0, and then h~ is the zero profile; at infinity |h~ - (-(zeta(1-rho)/b_rho) x^(-rho) + kappa B2({x})/(2x^2))| <= C x^(-3). No integrability of h~ is asserted for generic rho."
     },
     {
       "id": "OPICA_FOLLOWUP_COUPLED_GRAM_COLLISION_CONTROL",
@@ -4346,18 +4360,18 @@
   "evidence_paths_relative_to": "research/RHRC/integration/opica_followup/continuation/2026-10-22",
   "verification_summary": {
     "historical_source_bound_subset_roots": 41,
-    "independently_verified_narrow_roots": 46,
+    "independently_verified_narrow_roots": 48,
     "prior_failed_or_blocked_unaccepted_roots": 0,
-    "open_no_complete_candidate_roots": 13,
+    "open_no_complete_candidate_roots": 11,
     "full_required_roots": 100,
     "acceptance_units": 28,
-    "receipt": "STAGE16_HANDOVER.md",
+    "receipt": "STAGE17_HANDOVER.md",
     "independent_source_repairs": [],
     "independent_consumer_repairs": [],
     "historical41_status_unchanged": true,
     "current_aggregate_accepted": false,
-    "meaning": "41 historical plus 46 narrow local results is not aggregate 87-root acceptance. 13 absent implementations plus all remaining domain/integration gates remain OPEN; original100/28 scope unchanged.",
-    "receipt_scope": "Index of four Stage16, three Stage15, two Stage14, three Stage13, two Stage12, two Stage11, two Stage10, two Stage9, one Stage8, three Stage7, three Stage6, two Stage5, two Stage4 and fifteen retained narrow original-root results, not an aggregate receipt",
+    "meaning": "41 historical plus 48 narrow local results is not aggregate 89-root acceptance. 11 absent implementations plus all remaining domain/integration gates remain OPEN; original100/28 scope unchanged.",
+    "receipt_scope": "Index of two Stage17, four Stage16, three Stage15, two Stage14, three Stage13, two Stage12, two Stage11, two Stage10, two Stage9, one Stage8, three Stage7, three Stage6, two Stage5, two Stage4 and fifteen retained narrow original-root results, not an aggregate receipt",
     "additional_stage1_primary_roots": [
       "laguerre_tail_norm",
       "dilated_comb_fourier",
@@ -4427,6 +4441,10 @@
       "square_defect_origin_positive",
       "square_no_lattice_repair",
       "square_selfdual_projection_fills_gap"
+    ],
+    "additional_stage17_primary_roots": [
+      "generic_forced_profile_unique",
+      "generic_boundary_amplitude"
     ]
   }
 }

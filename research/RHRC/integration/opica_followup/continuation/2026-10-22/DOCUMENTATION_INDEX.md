@@ -2,7 +2,7 @@
 
 Use this index with [root AGENTS.md](../../../../../../AGENTS.md) and the
 [continuation guide](README.md). It describes the 22 October OPICA source
-checkpoint and its staged repairs; read [STAGE16_HANDOVER.md](STAGE16_HANDOVER.md)
+checkpoint and its staged repairs; read [STAGE17_HANDOVER.md](STAGE17_HANDOVER.md)
 for the latest exact sources and gates. Check the live Git head and workflow
 results before editing.
 
@@ -63,6 +63,11 @@ results before editing.
 - [Post-Green research](POST_GREEN_RESEARCH.md): all nine required mathematical
   review conclusions. Repeat the pass when meaningful proof evidence changes.
 
+[Stage 17](STAGE17_HANDOVER.md) proves both BoundaryAmplitude roots (F3): for any 1/2 < Re rho < 1,
+Im rho != 0 (not necessarily a zero), h~ = 1 - S_rho/b_rho - zeta(rho) x^(rho-1)/b_rho is the unique
+log-form-domain solution of the actual force equation and equals the forced log-resolvent, and h~ = 1
+on (0, 1) exactly when zeta(rho) = 0; the [evidence](evidence/current-codex/stage17/STATUS.json) binds
+every log and source.
 [Stage 16](STAGE16_HANDOVER.md) proves all four SquareDefect roots (R2-S3): for even continuous
 self-dual h in L1 and L2 with h = A on [-1, 1] (the actual zero profile with A = 1), tau_h =
 |A - h|^2 dx - |A|^2 sum_(n != 0) delta_n has F tau - tau = d dx with d = h * conj h - |h|^2, d(0) =

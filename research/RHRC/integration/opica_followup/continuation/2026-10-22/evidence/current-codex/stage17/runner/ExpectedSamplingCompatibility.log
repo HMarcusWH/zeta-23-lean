@@ -1,0 +1,23 @@
+'Zeta23.OPICAFollowup.native_sampling_gram_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.OPICAFollowup.native_sampling_form_positive' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OPICASamplingCompatibilityIndependent.audit_profileFormGram' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OPICASamplingCompatibilityIndependent.expected_native_sampling_gram_identity' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'OPICASamplingCompatibilityIndependent.expected_native_sampling_form_positive' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'OPICASamplingCompatibilityIndependent.expected_diagonal' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OPICASamplingCompatibilityIndependent.expected_online_sample_real' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'OPICASamplingCompatibilityIndependent.expected_conjugate_coincidence' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'OPICASamplingCompatibilityIndependent.expected_construction_nonvacuous' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.finite_countercontrol' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OPICASamplingCompatibilityIndependent.expected_countercontrol_nonreal' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
