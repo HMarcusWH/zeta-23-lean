@@ -512,7 +512,7 @@ def protected_errors(repo: Path, protection):
         errors.append('exact source extension rejected: '+str(exc))
         exact_context = None
     if exact_context is not None:
-        reviewed_paths = set(exact_context.documentation_paths) | set(exact_context.implementation_paths)
+        reviewed_paths = set(exact_context.documentation_paths) | set(getattr(exact_context, 'implementation_paths', ()))
     elif documentation_exception_needed:
         reviewed_paths, review_errors = reviewed_documentation_paths(repo)
         errors.extend(review_errors)

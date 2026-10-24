@@ -186,7 +186,7 @@ def continuation_checkpoint(root: Path, here: Path) -> tuple[set[str], list[str]
 
 
 
-PARENT_EXACT_WRAPPER_SHA256 = '1e0e8daec63e98530021bed98d02ee7cfd2e1a48b36e24368c6b38b10ffc7d72'
+PARENT_EXACT_WRAPPER_SHA256 = 'af6a8b9bc9e237dba8223a4317e56f36720cb6b87aa23b5cb6842558d7dbb95f'
 
 
 def exact_policy_context(root: Path):
@@ -483,7 +483,7 @@ def preflight(root: Path = REPO, here: Path = HERE, *, full_registry_verified: b
     exceptions = (set(descriptor['modified_exact_paths'] + descriptor['generated_exact_paths'])
                   | (checkpoint_paths & CONTINUATION_DOCUMENTATION_PATHS))
     if exact_context is not None:
-        exceptions |= set(exact_context.documentation_paths) | set(exact_context.implementation_paths)
+        exceptions |= set(exact_context.documentation_paths) | set(getattr(exact_context, 'implementation_paths', ()))
     for row in protected['files']:
         path = root / row['path']
         if not path.is_file() or path.is_symlink() or not path.resolve().is_relative_to(root.resolve()):
