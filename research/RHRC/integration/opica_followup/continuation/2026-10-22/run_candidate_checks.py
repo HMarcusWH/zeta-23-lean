@@ -16,14 +16,15 @@ MODULES = ('MaskedNativeRate', 'ComplexLocalMeasures', 'AuxiliaryCompletions',
            'MultiplicityTail', 'DilatedComb', 'RenormalizedCoPoisson', 'FirstCellCost',
            'WeightedMixing', 'NearGapLimits', 'ProfileEulerMaclaurin', 'ZeroProfiles',
            'LogFourierSobolev', 'ForcedEuler', 'SamplingCompatibility',
-           'SawtoothForce')
+           'SawtoothForce', 'WeightedSpectralMeasure')
 CONSUMERS = ('ExpectedMasks', 'ExpectedComplex', 'ExpectedAuxiliary',
              'ExpectedMultiplicity', 'ExpectedComb', 'ExpectedFirstCell',
              'ExpectedWeighted', 'ExpectedNearGap', 'ExpectedNearGapLimit',
              'ExpectedNormalizedLimit', 'ExpectedWeightedInverse',
              'ExpectedCoPoissonFamily', 'ExpectedCoPoissonOrderZero', 'ExpectedZeroMeasure',
              'ExpectedEulerMaclaurin', 'ExpectedZeroProfiles', 'ExpectedLogFourierSobolev',
-             'ExpectedForcedEuler', 'ExpectedSamplingCompatibility', 'ExpectedSawtoothForce')
+             'ExpectedForcedEuler', 'ExpectedSamplingCompatibility', 'ExpectedSawtoothForce',
+             'ExpectedWeightedSpectralMeasure')
 ALLOWED_AXIOMS = {'propext', 'Classical.choice', 'Quot.sound'}
 
 
