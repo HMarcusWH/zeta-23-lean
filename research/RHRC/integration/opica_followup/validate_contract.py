@@ -186,7 +186,7 @@ def continuation_checkpoint(root: Path, here: Path) -> tuple[set[str], list[str]
 
 
 
-PARENT_EXACT_WRAPPER_SHA256 = '4f7fc52039351e0ddb763ab75db557a34e635f20e49311b7d006652c657f35d0'
+PARENT_EXACT_WRAPPER_SHA256 = '1e0e8daec63e98530021bed98d02ee7cfd2e1a48b36e24368c6b38b10ffc7d72'
 
 
 def exact_policy_context(root: Path):
@@ -425,7 +425,7 @@ def exact_preparation_projection(context, protected, root):
     if (provider is None or type(context) is not getattr(provider,'ExactPolicyContext',None)
             or Path(getattr(provider,'__file__','')).resolve()!=expected.resolve()
             or expected.is_symlink() or not expected.is_file()
-            or digest(expected)!='62a42ba629ddfff42d44194031e1e53a1c74c2d1b95f316117c36ab975040bca'):
+            or digest(expected)!='0b393f7d1b177a1c497917aa0aaade1355b0512338bc3a143991b4550fae5e44'):
         raise ValueError('genuine strict exact provider context required for preparation projection')
     projected = dict(provider.project(context))
     baseline = {key:protected[key] for key in
@@ -483,7 +483,7 @@ def preflight(root: Path = REPO, here: Path = HERE, *, full_registry_verified: b
     exceptions = (set(descriptor['modified_exact_paths'] + descriptor['generated_exact_paths'])
                   | (checkpoint_paths & CONTINUATION_DOCUMENTATION_PATHS))
     if exact_context is not None:
-        exceptions |= set(exact_context.documentation_paths)
+        exceptions |= set(exact_context.documentation_paths) | set(exact_context.implementation_paths)
     for row in protected['files']:
         path = root / row['path']
         if not path.is_file() or path.is_symlink() or not path.resolve().is_relative_to(root.resolve()):
@@ -561,7 +561,7 @@ import time
 import zipfile
 
 # Replaced only by the exact independently reviewed capture implementation.
-RELEASE_INTAKE_READER_SHA256 = '97e76fbfb042a2200f638b272916bf5767fe79cada3a5afdafc292843e9da743'
+RELEASE_INTAKE_READER_SHA256 = '201b16b4f8b9c3721f14b3271dd397d7c269ddb68f8ce665f8711f90e04a2030'
 RELEASE_RUNTIME_LOCK_SHA256 = '1d507a182bcc46d6cb8689b842b87ecf6b1352da3bc70e9c21e81f7b187d3556'
 RELEASE_COMPANIONS_STATUS = 'ALL_ORIGINAL_RELEASE_COMPANIONS_EXECUTED_AND_REVALIDATED'
 
@@ -1070,7 +1070,7 @@ def _dependency_amendment_errors_v4(register: dict, manifest: dict, root: Path) 
         require(manifest == actual_manifest, 'supplied manifest differs from frozen actual manifest')
         policy = register.get('exact_source_extension_policy')
         require(isinstance(policy, dict)
-                and policy.get('schema') == 'OPICA_EXACT_SUBJECT_EXTENSION_POLICY_V2',
+                and policy.get('schema') in {'OPICA_EXACT_SUBJECT_EXTENSION_POLICY_V2', 'OPICA_EXACT_SUBJECT_EXTENSION_POLICY_V3'},
                 'authenticated exact V2 import policy required')
         context = exact_policy_context(root)
         require(context is not None, 'authenticated exact V2 import context required')

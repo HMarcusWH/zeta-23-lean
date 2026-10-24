@@ -105,6 +105,22 @@ jobs:
           name: rhkg-derived-state
           path: |
             research/RHRC/graph/compiler/REGISTERED_DECLARATION_DEPENDENCIES.jsonl
+            research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-0.jsonl
+            research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-1.jsonl
+            research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-2.jsonl
+            research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-3.jsonl
+            research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-4.jsonl
+            research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-5.jsonl
+            research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-6.jsonl
+            research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-7.jsonl
+            research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-8.jsonl
+            research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-9.jsonl
+            research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-a.jsonl
+            research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-b.jsonl
+            research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-c.jsonl
+            research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-d.jsonl
+            research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-e.jsonl
+            research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-f.jsonl
             research/RHRC/graph/generated/
             research/RHRC/integration/generated/
             research/RHRC/ffbbp/generated/

@@ -62700,5 +62700,183 @@
     "source_policy_reviewed_tree": "54638bfbbaa9a98899f2c6c9ff204766a13a47ff",
     "reviewed_exact_policy_implementation_sha256": "62a42ba629ddfff42d44194031e1e53a1c74c2d1b95f316117c36ab975040bca",
     "classification_implementation_review_sha256": "eccdc050c91f45524854a7d7c50c981992029dc95bfaccd59b18ade2164b4da3"
+  },
+  "registered_dependency_storage_amendment": {
+    "schema": "OPICA_REGISTERED_DEPENDENCY_STORAGE_AMENDMENT_V1",
+    "id": "STORAGE_2026_10_25_01",
+    "status": "IMPLEMENTATION_ONLY_NO_MATHEMATICAL_SCOPE_CHANGE",
+    "authorization": "Do like we do with the other files and split them up?",
+    "original_index_path": "research/RHRC/graph/compiler/REGISTERED_DECLARATION_DEPENDENCIES.jsonl",
+    "additional_generated_paths": [
+      "research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-0.jsonl",
+      "research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-1.jsonl",
+      "research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-2.jsonl",
+      "research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-3.jsonl",
+      "research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-4.jsonl",
+      "research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-5.jsonl",
+      "research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-6.jsonl",
+      "research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-7.jsonl",
+      "research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-8.jsonl",
+      "research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-9.jsonl",
+      "research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-a.jsonl",
+      "research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-b.jsonl",
+      "research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-c.jsonl",
+      "research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-d.jsonl",
+      "research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-e.jsonl",
+      "research/RHRC/graph/compiler/registered_dependencies/REGISTERED_DECLARATION_DEPENDENCIES-f.jsonl"
+    ],
+    "shard_key": "SHA256_UTF8_DECLARATION_FIRST_HEX_NIBBLE",
+    "shard_count": 16,
+    "maximum_shard_bytes": 52428800,
+    "row_schema_version": "RHKG-phase2b-compiler-dependencies-0.4",
+    "index_schema": "RHKG_REGISTERED_DEPENDENCY_SHARDS_V1",
+    "frozen_manifest_sha256": "c99ec7acbfe996455525b31088a7d04addd20653787e12098e4e51a4a7ce296e",
+    "original_projection_sha256": "95475b33fa3365c96a82a42b70385b17e90ab088ff951501b06468825ba0e20d",
+    "original_generated_path_count": 62,
+    "effective_generated_path_count": 78,
+    "preserved_dependency_channels": [
+      "TYPE",
+      "VALUE",
+      "STRUCTURE"
+    ],
+    "primary_roots": 100,
+    "acceptance_units": 28,
+    "theorem_statement_changes": [],
+    "new_assumptions": [],
+    "weakened_checks": [],
+    "policy_grants_theorem_authority": false,
+    "RH": "OPEN",
+    "Step4": "OPEN",
+    "independent_closing_inequalities": "OPEN",
+    "protected_implementation_edits": [
+      {
+        "original": {
+          "path": ".github/workflows/rhrc.yml",
+          "mode": "100644",
+          "git_blob": "1e4c4a58f7757dda05ed93222d45244cc849abb4",
+          "bytes": 32330,
+          "sha256": "a8fb66bada5fb104810deb38efb97fcd71cf3bc8a885c88cdef42dd2cfd4e878"
+        },
+        "current": {
+          "path": ".github/workflows/rhrc.yml",
+          "mode": "100644",
+          "git_blob": "0a545c608b6c9a716231474b1cff1d4ebd1007ec",
+          "bytes": 34074,
+          "sha256": "2b4e582d1450fb039f1d95c1044dafa2166fd0b315ce49570d63e9dbddd01abb"
+        }
+      },
+      {
+        "original": {
+          "path": ".github/workflows/rhrc_opica.yml",
+          "mode": "100644",
+          "git_blob": "230f2ec40168e58cce1a4f98daecf6faa6201898",
+          "bytes": 15809,
+          "sha256": "747662ef3a33d14378c626c879423d3e9a810f37dc6305e9c28107435e2cbcc9"
+        },
+        "current": {
+          "path": ".github/workflows/rhrc_opica.yml",
+          "mode": "100644",
+          "git_blob": "7530f6c10acbdec0172ea24d1f4d835d6c32d0e6",
+          "bytes": 19815,
+          "sha256": "ddfcbf1b422a9409dd0896413c5cc0187493844e4af452611716734ecc7b69bb"
+        }
+      },
+      {
+        "original": {
+          "path": "research/RHRC/graph/build.py",
+          "mode": "100644",
+          "git_blob": "923ae45b8335aed9b79907d7ec22fa7dff4b9d2f",
+          "bytes": 46408,
+          "sha256": "5f6da2a8bb1a58951d99c524be75843c534c2ca02e5ea097e58da81c42235ca4"
+        },
+        "current": {
+          "path": "research/RHRC/graph/build.py",
+          "mode": "100644",
+          "git_blob": "3ec6df228e110f9129792900fbbcc4a1bd020969",
+          "bytes": 46885,
+          "sha256": "c6b5f02e9d2f6ac9eb78d0afb866afe6f698f7a353ef8252893a2df1eaa4d478"
+        }
+      },
+      {
+        "original": {
+          "path": "research/RHRC/graph/validate.py",
+          "mode": "100644",
+          "git_blob": "d3af5957bc3f4fe8a3e1632a1799ae8743e20983",
+          "bytes": 65068,
+          "sha256": "868bdea888fe0297693fcb48672c5615ec6619a90ba016e510b8f23c9766693b"
+        },
+        "current": {
+          "path": "research/RHRC/graph/validate.py",
+          "mode": "100644",
+          "git_blob": "a804f44c9fe4311e6fa38887dc1d1d864f559b52",
+          "bytes": 65141,
+          "sha256": "3c027fba0f0c4dac9d90b57ad2204be8e7eda23fcda2446d6572a56cb1603fbf"
+        }
+      },
+      {
+        "original": {
+          "path": "research/RHRC/integration/candidate_exactify.py",
+          "mode": "100644",
+          "git_blob": "b1a70997c88fae2a1144f19a26746e1f38c933b1",
+          "bytes": 12237,
+          "sha256": "fee7e1870e1204dace06ddc0fe8e674115efb2a06e814ec1650b400b70f6c1a3"
+        },
+        "current": {
+          "path": "research/RHRC/integration/candidate_exactify.py",
+          "mode": "100644",
+          "git_blob": "f6c47c6a9dcb646f04420a7e971830cfa426aea1",
+          "bytes": 12686,
+          "sha256": "dff4392a18a502ab06093cac902ab2f49cb2a43c922957101fb46890f12695b0"
+        }
+      },
+      {
+        "original": {
+          "path": "research/RHRC/ool/rhkg_phase_atlas.py",
+          "mode": "100644",
+          "git_blob": "5f56db3ca3b80b06ed5036eb1460dcb761349b2a",
+          "bytes": 16882,
+          "sha256": "f9286da7ba1e6bc1282555ab82fc991770a347b5bd19e75f93fa011cb762bc0d"
+        },
+        "current": {
+          "path": "research/RHRC/ool/rhkg_phase_atlas.py",
+          "mode": "100644",
+          "git_blob": "a753c0dcc965c871426464b456ac3ee116721a67",
+          "bytes": 17393,
+          "sha256": "6a93969923350b2b05b9e9e533362f9d2df7517ed6b1003d3a8fff9d3bc02d3f"
+        }
+      },
+      {
+        "original": {
+          "path": "research/RHRC/tools/lean_dependency_extract.py",
+          "mode": "100644",
+          "git_blob": "57a6f227974115bbd2b1dbd4f66acbae53668340",
+          "bytes": 9785,
+          "sha256": "31cea01daed1f823dd896be1acfbc89f9e73a7b54f604583d1685cc7df8a8baa"
+        },
+        "current": {
+          "path": "research/RHRC/tools/lean_dependency_extract.py",
+          "mode": "100644",
+          "git_blob": "5d7d0c8a76e84d7b12e06922566f9fea09d88189",
+          "bytes": 10422,
+          "sha256": "bc7e7303d3703e73ba33c320c22d13cb277edb8a9d1f9d0da04cc5ea959054b2"
+        }
+      },
+      {
+        "original": {
+          "path": "research/RHRC/tools/query_dependencies.py",
+          "mode": "100644",
+          "git_blob": "eec8cf678af6126014f831066b3903d2c6b7ce3d",
+          "bytes": 14064,
+          "sha256": "993c9630b76932fa4f2e699e3593159e62efe21353ae77ed019fc9c4404739e5"
+        },
+        "current": {
+          "path": "research/RHRC/tools/query_dependencies.py",
+          "mode": "100644",
+          "git_blob": "6632f7f4c759f0019d4dbfd859260c12f133180a",
+          "bytes": 14455,
+          "sha256": "0acb87de9f6f8e46ab4042611f7752b7e6be3cab077a49bc6e3639152eb6e571"
+        }
+      }
+    ]
   }
 }

@@ -352,7 +352,7 @@ def _source_bound_followup_context_v1(repo: Path):
 # Version2 policy authority is distinct from compiler validity and human review.
 # Bound to the actual independently reviewed exact-subject/caller objects.
 TRUSTED_EXACT_EXTENSION_POLICY_SHA256 = 'd0a5b6927345383ad2693356b9ca85f316abee7b6c1db73501a317958d39a74d'
-EXACT_EXTENSION_PROVIDER_SHA256 = '62a42ba629ddfff42d44194031e1e53a1c74c2d1b95f316117c36ab975040bca'
+EXACT_EXTENSION_PROVIDER_SHA256 = '0b393f7d1b177a1c497917aa0aaade1355b0512338bc3a143991b4550fae5e44'
 
 
 def _exact_source_extension_context(repo: Path):
@@ -367,7 +367,7 @@ def _exact_source_extension_context(repo: Path):
         'independently reviewed exact-subject policy anchor is not established')
     policy = register['exact_source_extension_policy']
     _extension_require(isinstance(policy,dict)
-        and policy.get('schema')=='OPICA_EXACT_SUBJECT_EXTENSION_POLICY_V2',
+        and policy.get('schema') in {'OPICA_EXACT_SUBJECT_EXTENSION_POLICY_V2', 'OPICA_EXACT_SUBJECT_EXTENSION_POLICY_V3'},
         'malformed or unsupported exact source policy')
     provider_path = _safe_checkout_file(repo,FOLLOWUP_FOLDER+'/exact_extension.py')
     _extension_require(hashlib.sha256(provider_path.read_bytes()).hexdigest()==
@@ -512,7 +512,7 @@ def protected_errors(repo: Path, protection):
         errors.append('exact source extension rejected: '+str(exc))
         exact_context = None
     if exact_context is not None:
-        reviewed_paths = set(exact_context.documentation_paths)
+        reviewed_paths = set(exact_context.documentation_paths) | set(exact_context.implementation_paths)
     elif documentation_exception_needed:
         reviewed_paths, review_errors = reviewed_documentation_paths(repo)
         errors.extend(review_errors)

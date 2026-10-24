@@ -317,7 +317,7 @@ ACCEPTED_PARENT = 'd53dd70d38b0762af130b1d19b795af259f505f5'
 ACCEPTED_PARENT_TREE = '12691099f1a155a8bfa3ad4f6689146175b233b2'
 COMPILER_COMMIT = 'd8b18978322de05a8f3dba51ef03cf5461676c17'
 PARENT_BUILDER_SHA256 = 'c4918486016d25b16caa1013666a22979f8ebe86e41369cbf616a8a2b9512ddc'
-PARENT_PROJECTION_VALIDATOR_SHA256 = '4f7fc52039351e0ddb763ab75db557a34e635f20e49311b7d006652c657f35d0'
+PARENT_PROJECTION_VALIDATOR_SHA256 = '1e0e8daec63e98530021bed98d02ee7cfd2e1a48b36e24368c6b38b10ffc7d72'
 FROZEN_FULL_INPUTS = {
     'BUILD_SPEC.md': 'cacab08834aeb9badd578d90828be99cff33c7a617c609e75bb878eb5fa3b29c',
     'BUILD_MANIFEST.json': 'c99ec7acbfe996455525b31088a7d04addd20653787e12098e4e51a4a7ce296e',
@@ -409,7 +409,7 @@ def reviewed_full_contract(repo, contract):
     if 'exact_source_extension_policy' in register:
         exact_policy = register['exact_source_extension_policy']
         require(isinstance(exact_policy,dict) and
-            exact_policy.get('schema')=='OPICA_EXACT_SUBJECT_EXTENSION_POLICY_V2' and
+            exact_policy.get('schema') in {'OPICA_EXACT_SUBJECT_EXTENSION_POLICY_V2', 'OPICA_EXACT_SUBJECT_EXTENSION_POLICY_V3'} and
             review.get('exact_source_extension_policy_sha256')==object_sha256(exact_policy),
             'full semantic review omitted or changed the exact source policy')
     amendment = register.get('implementation_dependency_amendment')

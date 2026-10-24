@@ -75,7 +75,7 @@ jobs:
         if: github.event_name == 'push'
         run: |
           python - <<'PY'
-          import datetime, hashlib, json, os, shutil, subprocess, sys, tempfile
+          import datetime, hashlib, importlib.util, json, os, shutil, subprocess, sys, tempfile
           from pathlib import Path, PurePosixPath
 
           repo = Path.cwd().resolve()
@@ -111,11 +111,35 @@ jobs:
           def sha(data):
               return hashlib.sha256(data).hexdigest()
 
+          def effective_generated_paths(original):
+              # The frozen62 descriptor remains unchanged. Only an actual
+              # authenticated storage context can add the exact16 shard paths.
+              parent_path = source_path('research/RHRC/integration/opica/validate_contract.py')
+              spec = importlib.util.spec_from_file_location('_actual_opica_materialization_parent', parent_path)
+              require(spec is not None and spec.loader is not None, 'Actual parent reader unavailable')
+              parent = importlib.util.module_from_spec(spec)
+              sys.modules[spec.name] = parent
+              spec.loader.exec_module(parent)
+              context = parent._exact_source_extension_context(repo)
+              extra = [] if context is None else list(getattr(context, 'generated_paths', ()))
+              expected = ['research/RHRC/graph/compiler/registered_dependencies/'
+                  + 'REGISTERED_DECLARATION_DEPENDENCIES-' + key + '.jsonl'
+                  for key in '0123456789abcdef']
+              require(not extra or (len(extra) == 16 and set(extra) == set(expected)),
+                  'Authenticated generated storage paths differ from exact16')
+              implementation = [] if context is None else list(getattr(context, 'implementation_paths', ()))
+              require(len(implementation) == len(set(implementation))
+                  and not set(implementation) & (set(original) | set(extra)),
+                  'Implementation sources must remain outside generated writes')
+              return list(original) + sorted(extra), context, sorted(implementation)
+
           manifest = json.loads((repo / 'research/RHRC/integration/opica/BUILD_MANIFEST.json').read_bytes())
           require(manifest.get('schema') == 'OPICA_REPO_BUILD_SPEC_V1', 'Unexpected manifest schema')
-          generated = manifest['regenerate']['paths']
+          original_generated = manifest['regenerate']['paths']
+          generated, storage_context, implementation_paths = effective_generated_paths(original_generated)
           sources = [item['path'] for item in manifest['create'] + manifest['modify']]
-          require(len(generated) == 62 and len(set(generated)) == 62
+          require(len(original_generated) == 62 and len(set(original_generated)) == 62
+              and len(generated) in (62, 78) and len(set(generated)) == len(generated)
               and len(sources) == 59 and len(set(sources)) == 59
               and not set(generated) & set(sources), 'Wrong source/generated inventories')
           require(manifest['regenerate']['producer'] == 'research/RHRC/tools/materialize_derived_state.py --write',
@@ -141,12 +165,16 @@ jobs:
           require(os.environ.get('GITHUB_EVENT_NAME') == 'push' and os.environ.get('GITHUB_SHA') == head,
               'Materialization transport is limited to the actual push head')
           require(not git('status', '--porcelain', '-z'), 'Initial materialization checkout must be clean')
+          fixed_paths = sorted(set(paths(git('ls-files', '-z'))) - set(generated))
+          fixed_source_sha256 = {relative: sha(source_path(relative).read_bytes()) for relative in fixed_paths}
 
           def unchanged_source():
               require(git('rev-parse', 'HEAD').decode().strip() == head
                   and git('rev-parse', 'HEAD^{tree}').decode().strip() == tree, 'Git identity changed')
               actual = {relative: sha(source_path(relative).read_bytes()) for relative in sources}
               require(actual == receipt['sources'], 'The exact 59 compiler-bound source hashes changed')
+              require({relative: sha(source_path(relative).read_bytes()) for relative in fixed_paths}
+                  == fixed_source_sha256, 'A non-generated source changed during canonical production')
               require(subprocess.run(['git', 'diff', '--cached', '--quiet', 'HEAD', '--'], cwd=repo).returncode == 0,
                   'The canonical producer must not stage changes')
               return actual
@@ -155,7 +183,7 @@ jobs:
               tracked = paths(git('diff', '--no-renames', '--name-only', '-z', 'HEAD', '--'))
               untracked = paths(git('ls-files', '--others', '--exclude-standard', '-z'))
               require((set(tracked) | set(untracked)) <= set(generated),
-                  'Producer changed a path outside the exact 62 generated targets')
+                  'Producer changed a path outside the authenticated exact generated targets')
               return tracked, untracked
 
           unchanged_source()
@@ -189,6 +217,11 @@ jobs:
                   'workflow_run_attempt': os.environ['GITHUB_RUN_ATTEMPT'],
                   'producer_argv': producer, 'producer_exit_code': 0,
                   'compiler_receipt_sha256': sha(receipt_bytes), 'source_sha256': source_sha256,
+                  'fixed_source_sha256': fixed_source_sha256,
+                  'original_generated_paths': original_generated,
+                  'additional_generated_storage_paths': sorted(set(generated) - set(original_generated)),
+                  'storage_policy_sha256': None if storage_context is None else storage_context.policy_sha256,
+                  'fixed_implementation_paths': implementation_paths,
                   'generated_files': inventory, 'modified_tracked_paths': tracked, 'untracked_paths': untracked,
                   'independent_review_approved': False, 'independent_human_review_approved': False,
                   'workflow_green_inferred': False, 'RH': 'OPEN', 'Step4': 'OPEN',
@@ -196,12 +229,12 @@ jobs:
               (staging / 'generation.json').write_bytes((json.dumps(generation, indent=2) + '\n').encode('utf-8'))
               require({p.relative_to(staging).as_posix() for p in staging.rglob('*') if p.is_file()}
                   == {'generation.json'} | {'files/' + relative for relative in generated},
-                  'Dedicated artifact inventory differs from the exact 62 generated files')
+                  'Dedicated artifact inventory differs from the authenticated generated files')
               os.replace(staging, output)
           finally:
               if staging.exists():
                   shutil.rmtree(staging)
-          print('Captured all 62 canonical generated files; ' + str(len(tracked))
+          print('Captured all ' + str(len(generated)) + ' authenticated canonical generated files; ' + str(len(tracked))
               + ' tracked changes and ' + str(len(untracked)) + ' untracked changes. Freshness remains required.')
           PY
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
@@ -214,12 +247,30 @@ jobs:
         if: github.event_name == 'push' && !cancelled() && steps.materialize-derived.outcome == 'success'
         run: |
           python - <<'PY'
-          import json, subprocess
+          import importlib.util, json, subprocess, sys
           from pathlib import Path
+          repo = Path.cwd().resolve()
           manifest = json.loads(Path('research/RHRC/integration/opica/BUILD_MANIFEST.json').read_bytes())
-          allowed = manifest['regenerate']['paths']
-          if len(allowed) != 62 or len(set(allowed)) != 62:
-              raise SystemExit('Wrong generated freshness allowlist')
+          original = manifest['regenerate']['paths']
+          if len(original) != 62 or len(set(original)) != 62:
+              raise SystemExit('Wrong original generated freshness allowlist')
+          spec = importlib.util.spec_from_file_location('_actual_opica_freshness_parent',
+              repo / 'research/RHRC/integration/opica/validate_contract.py')
+          if spec is None or spec.loader is None:
+              raise SystemExit('Actual parent reader unavailable')
+          parent = importlib.util.module_from_spec(spec)
+          sys.modules[spec.name] = parent
+          spec.loader.exec_module(parent)
+          context = parent._exact_source_extension_context(repo)
+          extra = [] if context is None else list(getattr(context, 'generated_paths', ()))
+          expected = ['research/RHRC/graph/compiler/registered_dependencies/'
+              + 'REGISTERED_DECLARATION_DEPENDENCIES-' + key + '.jsonl'
+              for key in '0123456789abcdef']
+          if extra and (len(extra) != 16 or set(extra) != set(expected)):
+              raise SystemExit('Authenticated generated freshness paths differ from exact16')
+          allowed = list(original) + sorted(extra)
+          if len(allowed) not in (62, 78) or len(set(allowed)) != len(allowed):
+              raise SystemExit('Wrong authenticated generated freshness allowlist')
           result = subprocess.run(['git', 'diff', '--quiet', 'HEAD', '--', *allowed])
           if result.returncode not in (0, 1):
               raise SystemExit('Generated freshness diff command failed')
@@ -230,7 +281,7 @@ jobs:
           print(json.dumps({'modified_generated_paths': tracked_paths, 'untracked_generated_paths': untracked_paths}))
           if result.returncode or untracked_paths:
               raise SystemExit('Canonical generated files differ from HEAD; review the captured artifact and commit the exact bytes.')
-          print('All 62 canonical generated files match HEAD.')
+          print('All ' + str(len(allowed)) + ' authenticated canonical generated files match HEAD.')
           PY
 
   opica-regression:

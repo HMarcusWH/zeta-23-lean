@@ -1,4 +1,4 @@
-"""V2 exact-subject extension provider proposal. No review anchor is configured here.
+"""Versioned exact-subject extension provider. No review anchor is configured here.
 The original pure structural predicate remains byte-for-byte unchanged.
 """
 from __future__ import annotations
@@ -183,6 +183,9 @@ class ExactPolicyContext:
     actual_tree: str
     actual_source_inventory_sha256: str
     subject_imports_json: bytes
+    generated_paths: frozenset[str] = frozenset()
+    implementation_paths: frozenset[str] = frozenset()
+    storage_amendment_sha256: str | None = None
 
 
 def mutable_original_paths(descriptor):
@@ -325,7 +328,7 @@ def policy_from_v1(candidate, files, descriptor_bytes):
     return policy
 
 
-def validate_policy_context(raw, parent, contract, policy_bytes, trusted_digest, original):
+def _validate_policy_context_v2(raw, parent, contract, policy_bytes, trusted_digest, original):
     """Authenticate exact subjects, then call the unchanged structural predicate.
 
     The checked HEAD and ALL actual bytes remain in raw/cold receipts. They are
@@ -430,6 +433,105 @@ def validate_policy_context(raw, parent, contract, policy_bytes, trusted_digest,
         canonical(imports))
 
 
+STORAGE_SCHEMA = 'OPICA_REGISTERED_DEPENDENCY_STORAGE_AMENDMENT_V1'
+STORAGE_POLICY_SCHEMA = 'OPICA_EXACT_SUBJECT_EXTENSION_POLICY_V3'
+STORAGE_INDEX = 'research/RHRC/graph/compiler/REGISTERED_DECLARATION_DEPENDENCIES.jsonl'
+STORAGE_GENERATED_PATHS = tuple(
+    'research/RHRC/graph/compiler/registered_dependencies/'
+    'REGISTERED_DECLARATION_DEPENDENCIES-' + key + '.jsonl' for key in '0123456789abcdef')
+STORAGE_IMPLEMENTATION_PATHS = frozenset({
+    '.github/workflows/rhrc.yml', '.github/workflows/rhrc_opica.yml',
+    'research/RHRC/tools/lean_dependency_extract.py',
+    'research/RHRC/graph/build.py', 'research/RHRC/graph/validate.py',
+    'research/RHRC/integration/candidate_exactify.py',
+    'research/RHRC/tools/query_dependencies.py', 'research/RHRC/ool/rhkg_phase_atlas.py'})
+
+
+def validate_storage_amendment(amendment, files, old, descriptor):
+    """Authenticate finite storage permissions; preserve every original contract."""
+    required = {
+        'schema': STORAGE_SCHEMA, 'id': 'STORAGE_2026_10_25_01',
+        'status': 'IMPLEMENTATION_ONLY_NO_MATHEMATICAL_SCOPE_CHANGE',
+        'authorization': 'Do like we do with the other files and split them up?',
+        'original_index_path': STORAGE_INDEX,
+        'additional_generated_paths': list(STORAGE_GENERATED_PATHS),
+        'shard_key': 'SHA256_UTF8_DECLARATION_FIRST_HEX_NIBBLE',
+        'shard_count': 16, 'maximum_shard_bytes': 50 * 1024 * 1024,
+        'row_schema_version': 'RHKG-phase2b-compiler-dependencies-0.4',
+        'index_schema': 'RHKG_REGISTERED_DEPENDENCY_SHARDS_V1',
+        'frozen_manifest_sha256': MANIFEST_SHA256,
+        'original_projection_sha256': ORIGINAL_IMPLEMENTATION_SHA256,
+        'original_generated_path_count': 62, 'effective_generated_path_count': 78,
+        'preserved_dependency_channels': ['TYPE', 'VALUE', 'STRUCTURE'],
+        'primary_roots': 100, 'acceptance_units': 28,
+        'theorem_statement_changes': [], 'new_assumptions': [],
+        'weakened_checks': [], 'policy_grants_theorem_authority': False,
+        'RH': 'OPEN', 'Step4': 'OPEN', 'independent_closing_inequalities': 'OPEN'}
+    require(isinstance(amendment, dict) and
+            set(amendment) == set(required) | {'protected_implementation_edits'},
+            'unknown or incomplete registered storage amendment')
+    for key, expected in required.items():
+        require(canonical(amendment.get(key)) == canonical(expected),
+                'storage amendment differs: ' + key)
+    generated = set(STORAGE_GENERATED_PATHS)
+    require(len(descriptor['generated_exact_paths']) == 62 and
+            STORAGE_INDEX in descriptor['generated_exact_paths'] and
+            not generated.intersection(old) and not generated.intersection(
+                mutable_original_paths(descriptor)), 'storage permissions overlap original authorities')
+    require(generated <= set(files) and all(files[p]['mode'] == '100644' for p in generated),
+            'missing or unsupported generated shard path/mode')
+    edits = amendment['protected_implementation_edits']
+    require(isinstance(edits, list), 'exact storage implementation subjects required')
+    current = file_map([row['current'] for row in edits])
+    previous = file_map([row['original'] for row in edits])
+    require(set(current) == set(previous) == STORAGE_IMPLEMENTATION_PATHS,
+            'storage implementation permission set differs')
+    for name in STORAGE_IMPLEMENTATION_PATHS:
+        require(name in old and previous[name] == old[name] and current[name] == files[name]
+                and current[name] != previous[name],
+                'storage implementation original/current source differs: ' + name)
+    return generated, set(current)
+
+
+def validate_policy_context(raw, parent, contract, policy_bytes, trusted_digest, original):
+    """Dispatch only authenticated schemas; malformed V3 never falls back to V2.
+
+    V3 verifies the complete real census and exact implementation pairs first.
+    Its internal V2 view is a structural check under the already trusted V3
+    anchor, never a second claim of independent review or compiler authority.
+    """
+    require(isinstance(trusted_digest, str) and re.fullmatch('[0-9a-f]{64}', trusted_digest),
+            'no independently reviewed exact-subject policy anchor is configured')
+    require(isinstance(policy_bytes, bytes) and digest(policy_bytes) == trusted_digest,
+            'policy differs from independently trusted exact-subject anchor')
+    policy = unique_json(policy_bytes)
+    if policy.get('schema') == 'OPICA_EXACT_SUBJECT_EXTENSION_POLICY_V2':
+        return _validate_policy_context_v2(raw, parent, contract, policy_bytes, trusted_digest, original)
+    require(policy.get('schema') == STORAGE_POLICY_SCHEMA, 'unknown exact policy schema')
+    require(policy.get('complete_path_mode_census') == path_modes(raw['files']),
+            'complete current path/mode census differs')
+    files, old = file_map(raw['files']), file_map(parent['files'])
+    descriptor = unique_json(contract['descriptor_bytes'])
+    amendment = policy.get('registered_dependency_storage_amendment')
+    require(canonical(raw.get('registered_dependency_storage_amendment')) == canonical(amendment),
+            'storage amendment differs from actual source register')
+    generated, implementation = validate_storage_amendment(amendment, files, old, descriptor)
+    view_raw, view_policy = deepcopy(raw), deepcopy(policy)
+    view_raw['files'] = [deepcopy(old[p] if p in implementation else row)
+                         for row in raw['files'] if (p := row['path']) not in generated]
+    view_raw.pop('registered_dependency_storage_amendment')
+    view_policy.pop('registered_dependency_storage_amendment')
+    view_policy['schema'] = 'OPICA_EXACT_SUBJECT_EXTENSION_POLICY_V2'
+    view_policy['complete_path_mode_census'] = path_modes(view_raw['files'])
+    context = _validate_policy_context_v2(view_raw, parent, contract, canonical(view_policy),
+                                         digest(canonical(view_policy)), original)
+    return ExactPolicyContext(context.parent_json,
+        context.exact_allowed_paths | generated | implementation,
+        context.documentation_paths, trusted_digest, raw['checked_commit'], raw['checked_tree'],
+        inventory_digest(raw['files']), context.subject_imports_json,
+        frozenset(generated), frozenset(implementation), digest(canonical(amendment)))
+
+
 def project(context):
     require(isinstance(context, ExactPolicyContext), 'raw context cannot be projected')
     return MappingProxyType(unique_json(context.parent_json))
@@ -489,6 +591,9 @@ def source_bound_context(repo, policy, trusted_digest, parent_helpers):
     raw = {'parent_head':baseline['parent_head'], 'parent_tree':PARENT_TREE, 'checked_commit':head,
            'checked_tree':tree, 'files':files, 'direct_import_snapshots':snapshots,
            'added_audit_sources_in_math_facade':reached}
+    if policy.get('schema') == STORAGE_POLICY_SCHEMA:
+        raw['registered_dependency_storage_amendment'] = register.get(
+            'registered_dependency_storage_amendment')
     for key, path in parent_helpers.FOLLOWUP_GLOBAL_FILES.items():
         raw[key] = unique_json(blobs[path])
     contract = {'descriptor_bytes':blobs[FOLDER+'PARENT_EXTENSION.json'], 'roots_bytes':roots_bytes,

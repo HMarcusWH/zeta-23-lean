@@ -29,6 +29,19 @@ def _load_source_only_shards():
 
 
 SOURCE_ONLY_SHARDS = _load_source_only_shards()
+
+
+def _load_registered_shards():
+    path = RHRC / "integration" / "registered_dependency_shards.py"
+    spec = importlib.util.spec_from_file_location("rhrc_registered_dependency_shards", path)
+    if spec is None or spec.loader is None:
+        raise RuntimeError(f"cannot load registered dependency shard layout from {path}")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+REGISTERED_SHARDS = _load_registered_shards()
 CONTACTS = RHRC / "ool" / "generated" / "RHKG_OOL_ROUTE_CONTACTS.jsonl"
 REPORT = RHRC / "ool" / "generated" / "RHKG_OOL_PHASE_ATLAS.json"
 
@@ -218,7 +231,7 @@ def build() -> tuple[list[dict], dict]:
     if root_names != set(by_candidate_name):
         fail("source-only dependency roots do not match exactified candidate identities")
 
-    registered_rows = load_jsonl(REGISTERED_DEPS)
+    registered_rows = REGISTERED_SHARDS.load_rows(REPO)
     registered_index = index_receipt(registered_rows)
     bindings = json.loads(REGISTERED_BINDINGS.read_text(encoding="utf-8"))["bindings"]
     theorem_by_claim = {row["id"]: row["theorem"] for row in bindings}
@@ -324,7 +337,7 @@ def build() -> tuple[list[dict], dict]:
             "ffbbp_source_only_module_cohort_count": ffbbp["source_only_module_cohort_count"],
             "source_only_candidate_sha256": digest_path(SOURCE_ONLY),
             "source_only_dependency_sha256": SOURCE_ONLY_SHARDS.logical_sha256(),
-            "registered_dependency_sha256": digest_path(REGISTERED_DEPS),
+            "registered_dependency_sha256": REGISTERED_SHARDS.logical_digest(registered_rows)[0],
             "ffbbp_assurance_sha256": digest_path(FFBBP),
             "ool_reference_sha256": digest_path(REFERENCE),
             "projection_frontiers_sha256": digest_path(FRONTIERS),
