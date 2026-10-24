@@ -1,7 +1,7 @@
 # OPICA module status — navigation only
 
 Generated from [ROOT_LEDGER_100.json](ROOT_LEDGER_100.json) and actual source presence.
-Ledger SHA256: `250ac4172fe700c7dd1ffef23c04f1c128007d2be61430723056618c394017e4`.
+Ledger SHA256: `114efdb3340b9d703d49a01a59235e459d25eb63cab4ecd5b42fd42f4dca95a9`.
 
 The original target remains 100 primary roots / 28 acceptance units. Historical
 and narrow local evidence remain separate; every current aggregate/full-release
@@ -12,7 +12,7 @@ gate is OPEN. File presence does not establish proof or type coverage.
 | `AuxiliaryCompletions` | 3 | 0 | 3 | 0 | 0 | [present](../../../../../../Zeta23/OPICAFollowup/AuxiliaryCompletions.lean) |
 | `BalancedCoefficients` | 2 | 2 | 0 | 0 | 0 | [present](../../../../../../Zeta23/OPICAFollowup/BalancedCoefficients.lean) |
 | `BoundaryAmplitude` | 2 | 0 | 2 | 0 | 0 | [present](../../../../../../Zeta23/OPICAFollowup/BoundaryAmplitude.lean) |
-| `CoPoissonJets` | 1 | 0 | 0 | 0 | 1 | planned / missing |
+| `CoPoissonJets` | 1 | 0 | 1 | 0 | 0 | [present](../../../../../../Zeta23/OPICAFollowup/CoPoissonJets.lean) |
 | `ComplexLocalMeasures` | 1 | 0 | 1 | 0 | 0 | [present](../../../../../../Zeta23/OPICAFollowup/ComplexLocalMeasures.lean) |
 | `ConfluentProfiles` | 2 | 0 | 0 | 0 | 2 | planned / missing |
 | `Consumers` | 5 | 0 | 1 | 0 | 4 | [present](../../../../../../Zeta23/OPICAFollowup/Consumers.lean) |
@@ -49,7 +49,7 @@ gate is OPEN. File presence does not establish proof or type coverage.
 | `WeightedSpectralMeasure` | 2 | 0 | 2 | 0 | 0 | [present](../../../../../../Zeta23/OPICAFollowup/WeightedSpectralMeasure.lean) |
 | `ZeroProfiles` | 2 | 0 | 2 | 0 | 0 | [present](../../../../../../Zeta23/OPICAFollowup/ZeroProfiles.lean) |
 | `ZetaLeftLineBounds` | 1 | 1 | 0 | 0 | 0 | [present](../../../../../../Zeta23/OPICAFollowup/ZetaLeftLineBounds.lean) |
-| **Total** | **100** | **41** | **48** | **0** | **11** | |
+| **Total** | **100** | **41** | **49** | **0** | **10** | |
 
 Regenerate with `python refresh_navigation.py --write`; verify with `--check`.
 Read the [named remaining work](REMAINING_WORK.md) and [next-agent task](NEXT_AGENT_PROMPT.md)

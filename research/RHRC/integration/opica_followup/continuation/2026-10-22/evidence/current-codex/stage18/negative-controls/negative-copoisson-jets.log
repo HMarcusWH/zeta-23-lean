@@ -1,0 +1,103 @@
+negative-copoisson-jets.lean:9:45: error: Application type mismatch: The argument
+  hk
+has type
+  k ≤ zeroJetOrder ρ
+but is expected to have type
+  k < zeroJetOrder ρ
+in the application
+  copoisson_zero_jets_measures ρ hz h0 h1 k hk
+negative-copoisson-jets.lean:15:2: error: Type mismatch
+  hint φ
+has type
+  (normalizedZeroMeasureJet ρ 0).integral ⇑φ =
+    (∫ (x : ℝ), zeroJetDensity (spectralKappa ρ) 0 x * φ x) - if 0 = 0 then ∑' (n : ℤ), if n = 0 then 0 else φ ↑n else 0
+but is expected to have type
+  (normalizedZeroMeasureJet ρ 0).integral ⇑φ = ∫ (x : ℝ), zeroJetDensity (spectralKappa ρ) 0 x * φ x
+negative-copoisson-jets.lean:22:2: error: Type mismatch
+  htail
+has type
+  ∃ C,
+    0 ≤ C ∧
+      ∀ (y : ℝ),
+        1 ≤ |y| →
+          ‖zeroJetDensity (spectralKappa ρ) 1 y -
+                ((if 1 = 0 then 1 else 0) -
+                  ((if 1 = 0 then spectralKappa ρ else 0) + if 1 = 1 then 1 else 0) *
+                    (↑(bernoulliTwo |y|) / (2 * ↑|y| ^ 2)))‖ ≤
+            C * |y| ^ (-3)
+but is expected to have type
+  ∃ C,
+    0 ≤ C ∧
+      ∀ (y : ℝ),
+        1 ≤ |y| → ‖zeroJetDensity (spectralKappa ρ) 1 y - ↑(bernoulliTwo |y|) / (2 * ↑|y| ^ 2)‖ ≤ C * |y| ^ (-3)
+negative-copoisson-jets.lean:30:2: error: Type mismatch
+  htail
+has type
+  ∃ C,
+    0 ≤ C ∧
+      ∀ (y : ℝ),
+        1 ≤ |y| →
+          ‖zeroJetDensity (spectralKappa ρ) k y -
+                ((if k = 0 then 1 else 0) -
+                  ((if k = 0 then spectralKappa ρ else 0) + if k = 1 then 1 else 0) *
+                    (↑(bernoulliTwo |y|) / (2 * ↑|y| ^ 2)))‖ ≤
+            C * |y| ^ (-3)
+but is expected to have type
+  ∃ C,
+    0 ≤ C ∧
+      ∀ (y : ℝ),
+        1 ≤ |y| →
+          ‖zeroJetDensity (spectralKappa ρ) k y -
+                ((if k = 0 then 1 else 0) -
+                  ((if k = 0 then spectralKappa ρ else 0) + if k = 1 then 1 else 0) *
+                    (↑(bernoulliTwo |y|) / (2 * ↑|y| ^ 2)))‖ ≤
+            C * |y| ^ (-4)
+negative-copoisson-jets.lean:39:2: error: Type mismatch
+  hchain ψ hψ
+has type
+  (-∫ (x : ℝ) in Ioi 0, zeroJetProfile (spectralKappa ρ) 1 x * deriv (fun y => ↑y ^ 2 * deriv ψ y) x) -
+      spectralKappa ρ * ∫ (x : ℝ) in Ioi 0, zeroJetProfile (spectralKappa ρ) 1 x * ψ x =
+    if 1 = 0 then spectralKappa ρ * (∑' (n : ℕ), ψ (↑n + 1) - ∫ (x : ℝ) in Ioi 0, ψ x)
+    else
+      if 1 = 1 then
+        (∫ (x : ℝ) in Ioi 0, zeroJetProfile (spectralKappa ρ) 0 x * ψ x) +
+          (∑' (n : ℕ), ψ (↑n + 1) - ∫ (x : ℝ) in Ioi 0, ψ x)
+      else ∫ (x : ℝ) in Ioi 0, zeroJetProfile (spectralKappa ρ) (1 - 1) x * ψ x
+but is expected to have type
+  (-∫ (x : ℝ) in Ioi 0, zeroJetProfile (spectralKappa ρ) 1 x * deriv (fun y => ↑y ^ 2 * deriv ψ y) x) -
+      spectralKappa ρ * ∫ (x : ℝ) in Ioi 0, zeroJetProfile (spectralKappa ρ) 1 x * ψ x =
+    ∫ (x : ℝ) in Ioi 0, zeroJetProfile (spectralKappa ρ) 0 x * ψ x
+negative-copoisson-jets.lean:45:2: error: Type mismatch
+  hd
+has type
+  deriv (zeroLocalInverse ρ) (spectralKappa ρ) = -1 / (2 * (ρ - 1 / 2))
+but is expected to have type
+  deriv (zeroLocalInverse ρ) (spectralKappa ρ) = 1 / (2 * (ρ - 1 / 2))
+negative-copoisson-jets.lean:52:2: error: Type mismatch
+  hν
+has type
+  normalizedZeroMeasureJet (1 - ρ) k = normalizedZeroMeasureJet ρ k
+but is expected to have type
+  normalizedZeroMeasureJet (1 - ρ) k ≠ normalizedZeroMeasureJet ρ k
+negative-copoisson-jets.lean:58:2: error: Type mismatch
+  hr
+has type
+  zeroJetOrder (1 - ρ) = zeroJetOrder ρ
+but is expected to have type
+  zeroJetOrder (1 - ρ) = zeroJetOrder ρ + 1
+negative-copoisson-jets.lean:66:2: error: Type mismatch
+  hc φ
+has type
+  (normalizedZeroMeasureJet ((starRingEnd ℂ) ρ) k).integral ⇑φ =
+    (starRingEnd ℂ) ((normalizedZeroMeasureJet ρ k).integral ⇑(complexSchwartzConj φ))
+but is expected to have type
+  (normalizedZeroMeasureJet ((starRingEnd ℂ) ρ) k).integral ⇑φ =
+    (starRingEnd ℂ) ((normalizedZeroMeasureJet ρ k).integral ⇑φ)
+negative-copoisson-jets.lean:70:98: error: Application type mismatch: The argument
+  h1
+has type
+  ρ.re < 1
+but is expected to have type
+  0 < ρ.re
+in the application
+  copoisson_zero_jets_measures ρ hz h1

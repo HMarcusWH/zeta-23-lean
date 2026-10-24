@@ -4,9 +4,9 @@
   "acceptance_units": 28,
   "current_aggregate_accepted": false,
   "status_counts": {
-    "OPEN_NO_COMPLETE_CANDIDATE": 11,
+    "OPEN_NO_COMPLETE_CANDIDATE": 10,
     "PROVED_IN_ORIGINAL_41_ROOT_SOURCE_BOUND_SUBSET": 41,
-    "PROVED_NARROW_LOCAL_GATES_AGGREGATE_PENDING": 48
+    "PROVED_NARROW_LOCAL_GATES_AGGREGATE_PENDING": 49
   },
   "roots": [
     {
@@ -3148,20 +3148,27 @@
         "register_only_after_proof_and_type_review": true,
         "status": "PLANNED_NOT_PROVED"
       },
-      "current_status": "OPEN_NO_COMPLETE_CANDIDATE",
+      "current_status": "PROVED_NARROW_LOCAL_GATES_AGGREGATE_PENDING",
       "gates": {
-        "implementation": "OPEN",
-        "module_compilation": "NOT_ESTABLISHED",
-        "expected_type_consumer": "NOT_ESTABLISHED",
-        "actual_domain_consumer": "NOT_ESTABLISHED",
-        "axiom_check": "NOT_ESTABLISHED",
+        "implementation": "IMPLEMENTED_FULL_FROZEN_CONTRACT_REVIEWED_NARROW",
+        "module_compilation": "PASS_EXACT_COMMITTED_SOURCE_PINNED_LINUX",
+        "expected_type_consumer": "PASS_INDEPENDENT_FULL_TYPE_AND_DEFINITION_AUDITS",
+        "actual_domain_consumer": "PASS_ACTUAL_ZERO_ORDER_ZERO_JET_IS_CP1_MEASURE_K0_CHAIN_IS_FORCED_EULER_REFLECTION_SAME_NODE",
+        "axiom_check": "STANDARD_ONLY_TRANSITIVE_PRINTED_CLOSURES",
         "aggregate_current_source_export": "OPEN",
         "full_release_acceptance": "OPEN"
       },
-      "source_file_present": false,
-      "declaration_lexically_present": false,
-      "source_sha256": null,
-      "evidence": []
+      "source_file_present": true,
+      "declaration_lexically_present": true,
+      "source_sha256": "dfb21b90906e2cbc23acdfd46b874c04d4ea6ae0217aa316b50c5b404c0d7134",
+      "evidence": [
+        "evidence/current-codex/stage18/STATUS.json"
+      ],
+      "independent_consumer": {
+        "path": "consumers/ExpectedCoPoissonJets.lean",
+        "sha256": "871a4419cbb3c02b699d07be9b815bb119d127cce6ab553a4c1d20afad5d7155"
+      },
+      "statement_formalization": "zeroJetOrder rho := analyticOrderNatAt riemannZeta rho; normalizedZeroMeasureJet rho k := the CP1 zeroMeasure at k = 0, and the canonical-Jordan density measure of (1/k!) d^k/dkappa^k g_kappa(|x|) at kappa0 = rho(1 - rho) for k >= 1, with g_kappa the entire kappa-family kappa sum_(1 <= k <= |y|) (e^(-u/2)/k) Sh(1/4 - kappa, u) of the actual finite sums (equal to S_rho(|y|)/b_rho for every strip rho != 1/2). For an actual zero with 0 < Re rho < 1 and every k < m: m >= 1 is the analytic order; the local inverse rho(kappa) is holomorphic at kappa0 with derivative -1/(2rho - 1) and zeta o rho(.) has order m; on Schwartz tests nu_k is (1/k!) d^k/dkappa^k of the actual construction (CP1.7)/b along rho(kappa), explicitly int g_k phi - [k = 0] sum_(n != 0) phi(n) (H1.1); exact open unit gap, zero origin atom, even Jordan parts, linear variation growth; jet densities [k = 0] - ([k = 0] kappa0 + [k = 1]) B2({|x|})/(2x^2) + O(|x|^-3); Fourier self-duality on Schwartz tests and as tempered distributions, also for the real part; the differentiated forced chain (H1.2) (L - kappa0) h0 = kappa0 G, (L - kappa0) h1 = h0 + G, (L - kappa0) hk = h(k-1) on positive-axis tests; 1 - rho has the same multiplicity, node and jets; conj rho has the same multiplicity and nu_k(conj rho)(phi) = conj(nu_k(rho)(conj phi)). Recorded choice: the measure is defined from the kappa-jet of the density and identified with the parameter jets of the actual construction by theorem."
     },
     {
       "id": "OPICA_FOLLOWUP_PROFILE_JET_CONFLUENT_DETERMINANT",
@@ -4360,18 +4367,18 @@
   "evidence_paths_relative_to": "research/RHRC/integration/opica_followup/continuation/2026-10-22",
   "verification_summary": {
     "historical_source_bound_subset_roots": 41,
-    "independently_verified_narrow_roots": 48,
+    "independently_verified_narrow_roots": 49,
     "prior_failed_or_blocked_unaccepted_roots": 0,
-    "open_no_complete_candidate_roots": 11,
+    "open_no_complete_candidate_roots": 10,
     "full_required_roots": 100,
     "acceptance_units": 28,
-    "receipt": "STAGE17_HANDOVER.md",
+    "receipt": "STAGE18_HANDOVER.md",
     "independent_source_repairs": [],
     "independent_consumer_repairs": [],
     "historical41_status_unchanged": true,
     "current_aggregate_accepted": false,
-    "meaning": "41 historical plus 48 narrow local results is not aggregate 89-root acceptance. 11 absent implementations plus all remaining domain/integration gates remain OPEN; original100/28 scope unchanged.",
-    "receipt_scope": "Index of two Stage17, four Stage16, three Stage15, two Stage14, three Stage13, two Stage12, two Stage11, two Stage10, two Stage9, one Stage8, three Stage7, three Stage6, two Stage5, two Stage4 and fifteen retained narrow original-root results, not an aggregate receipt",
+    "meaning": "41 historical plus 49 narrow local results is not aggregate 90-root acceptance. 10 absent implementations plus all remaining domain/integration gates remain OPEN; original100/28 scope unchanged.",
+    "receipt_scope": "Index of one Stage18, two Stage17, four Stage16, three Stage15, two Stage14, three Stage13, two Stage12, two Stage11, two Stage10, two Stage9, one Stage8, three Stage7, three Stage6, two Stage5, two Stage4 and fifteen retained narrow original-root results, not an aggregate receipt",
     "additional_stage1_primary_roots": [
       "laguerre_tail_norm",
       "dilated_comb_fourier",
@@ -4445,6 +4452,9 @@
     "additional_stage17_primary_roots": [
       "generic_forced_profile_unique",
       "generic_boundary_amplitude"
+    ],
+    "additional_stage18_primary_roots": [
+      "copoisson_zero_jets_measures"
     ]
   }
 }
