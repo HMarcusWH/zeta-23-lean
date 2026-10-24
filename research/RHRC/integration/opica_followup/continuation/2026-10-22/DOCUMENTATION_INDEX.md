@@ -2,7 +2,7 @@
 
 Use this index with [root AGENTS.md](../../../../../../AGENTS.md) and the
 [continuation guide](README.md). It describes the 22 October OPICA source
-checkpoint and its staged repairs; read [STAGE15_HANDOVER.md](STAGE15_HANDOVER.md)
+checkpoint and its staged repairs; read [STAGE16_HANDOVER.md](STAGE16_HANDOVER.md)
 for the latest exact sources and gates. Check the live Git head and workflow
 results before editing.
 
@@ -63,6 +63,12 @@ results before editing.
 - [Post-Green research](POST_GREEN_RESEARCH.md): all nine required mathematical
   review conclusions. Repeat the pass when meaningful proof evidence changes.
 
+[Stage 16](STAGE16_HANDOVER.md) proves all four SquareDefect roots (R2-S3): for even continuous
+self-dual h in L1 and L2 with h = A on [-1, 1] (the actual zero profile with A = 1), tau_h =
+|A - h|^2 dx - |A|^2 sum_(n != 0) delta_n has F tau - tau = d dx with d = h * conj h - |h|^2, d(0) =
+||h||^2 - |A|^2 > 0, no lattice-supported correction makes tau self-dual, and the self-dual projection
+has positive density near 0 inside the old gap; the [evidence](evidence/current-codex/stage16/STATUS.json)
+binds every log and source.
 [Stage 15](STAGE15_HANDOVER.md) proves all three NativeResolvent roots (F2): for an actual zero with
 kappa off [1/4, oo), psi = e^(t/2) h(e^t) is the unique H1 weak solution of (-D^2 + 1/4 - kappa) psi =
 kappa g with log-Fourier quotient kappa zeta(1/2 + i xi)/(a - kappa) and equals the forced

@@ -1,0 +1,10 @@
+kappa = (200.04045483238687+0j)  max|Im h| = 0.0
+d(0) = 146.363859   ||h||^2 - 1 = 146.363859   (tail of ||h||^2 beyond L ~ 2 kappa^2/(240 L^3) negligible)
+int d(x) e^{-pi x^2} dx = -3.126e-05   (int |d| e^{-pi x^2} = 70.774)
+a=2.0: tau(F phi) - tau(phi) = -8.390163   int d phi = -8.390164   |diff| = 1.09e-06
+a=0.3: tau(F phi) - tau(phi) = 12.461859   int d phi = 12.461566   |diff| = 2.93e-04
+d(0.00) = 146.3639
+d(0.25) = -82.9923
+d(0.50) = -19.7329
+d(0.75) = 48.9851
+first sign change of d at x ~ 0.1675 (grid step 0.0025); 1/gamma = 0.0707, pi/gamma = 0.2223

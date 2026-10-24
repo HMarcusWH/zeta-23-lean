@@ -1,0 +1,71 @@
+negative-square-defect.lean:11:2: error: Type mismatch
+  (square_fourier_defect hev hcont hint hL2 hsd hvan hpl).right.right.right.right.right.right.right φ
+has type
+  squareGapMeasure h A (𝓕 φ) - squareGapMeasure h A φ = ∫ (x : ℝ), squareDualityDefect h x * φ x
+but is expected to have type
+  squareGapMeasure h A (𝓕 φ) - squareGapMeasure h A φ = 0
+negative-square-defect.lean:16:2: error: Type mismatch
+  (square_defect_origin_positive hev hcont hL2 hpl hne).left
+has type
+  squareDualityDefect h 0 = ↑((∫ (x : ℝ), ‖h x‖ ^ 2) - ‖A‖ ^ 2)
+but is expected to have type
+  squareDualityDefect h 0 = ↑(∫ (x : ℝ), ‖h x‖ ^ 2)
+negative-square-defect.lean:21:2: error: Type mismatch
+  (square_defect_origin_positive hev hcont hL2 hpl hne).right.left
+has type
+  0 < (∫ (x : ℝ), ‖h x‖ ^ 2) - ‖A‖ ^ 2
+but is expected to have type
+  (∫ (x : ℝ), ‖h x‖ ^ 2) - ‖A‖ ^ 2 < 0
+negative-square-defect.lean:26:2: error: Type mismatch
+  (square_defect_origin_positive hev hcont hL2 hpl hne).right.right.left hA
+has type
+  ‖A‖ ^ 2 ≤ (∫ (x : ℝ), ‖h x‖ ^ 2) - ‖A‖ ^ 2
+but is expected to have type
+  2 * ‖A‖ ^ 2 ≤ (∫ (x : ℝ), ‖h x‖ ^ 2) - ‖A‖ ^ 2
+negative-square-defect.lean:33:2: error: Type mismatch
+  square_no_lattice_repair hev hcont hint hL2 hsd hvan hpl hne
+has type
+  ¬∃ c,
+      TemperedLatticeWeights c ∧
+        ∀ (φ : 𝓢(ℝ, ℂ)),
+          squareGapMeasure h A (𝓕 φ) + latticePairing c (𝓕 φ) = squareGapMeasure h A φ + latticePairing c φ
+but is expected to have type
+  ∃ c,
+    TemperedLatticeWeights c ∧
+      ∀ (φ : 𝓢(ℝ, ℂ)), squareGapMeasure h A (𝓕 φ) + latticePairing c (𝓕 φ) = squareGapMeasure h A φ + latticePairing c φ
+negative-square-defect.lean:40:2: error: Type mismatch
+  (square_selfdual_projection_fills_gap hev hcont hint hL2 hsd hpl hne).right.left φ
+has type
+  Zeta23.OPICA.involutionSelfdualProjection fourierFunctional (squareGapMeasure h A) φ =
+    squareGapMeasure h A φ + 1 / 2 * ∫ (x : ℝ), squareDualityDefect h x * φ x
+but is expected to have type
+  Zeta23.OPICA.involutionSelfdualProjection fourierFunctional (squareGapMeasure h A) φ =
+    squareGapMeasure h A φ + ∫ (x : ℝ), squareDualityDefect h x * φ x
+negative-square-defect.lean:49:2: error: Type mismatch
+  (square_selfdual_projection_fills_gap hev hcont hint hL2 hsd hpl hne).right.right
+has type
+  ∃ ε,
+    0 < ε ∧
+      ε < 1 ∧
+        (∀ x ∈ Ioo (-ε) ε, 0 < (squareDualityDefect h x).re ∧ (squareDualityDefect h x).im = 0) ∧
+          ∀ (φ : 𝓢(ℝ, ℂ)),
+            tsupport ⇑φ ⊆ Ioo (-ε) ε →
+              Zeta23.OPICA.involutionSelfdualProjection fourierFunctional (squareGapMeasure h A) φ =
+                ∫ (x : ℝ), squareDualityDefect h x / 2 * φ x
+but is expected to have type
+  ∃ ε,
+    0 < ε ∧
+      ε < 1 ∧
+        (∀ x ∈ Ioo (-ε) ε, (squareDualityDefect h x).re < 0 ∧ (squareDualityDefect h x).im = 0) ∧
+          ∀ (φ : 𝓢(ℝ, ℂ)),
+            tsupport ⇑φ ⊆ Ioo (-ε) ε →
+              Zeta23.OPICA.involutionSelfdualProjection fourierFunctional (squareGapMeasure h A) φ =
+                ∫ (x : ℝ), squareDualityDefect h x / 2 * φ x
+negative-square-defect.lean:55:44: error: Application type mismatch: The argument
+  hvan
+has type
+  Tendsto h (cocompact ℝ) (𝓝 0)
+but is expected to have type
+  𝓕 h = h
+in the application
+  square_fourier_defect hev hcont hint hL2 hvan

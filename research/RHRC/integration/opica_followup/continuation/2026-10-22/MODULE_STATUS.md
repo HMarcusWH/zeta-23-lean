@@ -1,7 +1,7 @@
 # OPICA module status — navigation only
 
 Generated from [ROOT_LEDGER_100.json](ROOT_LEDGER_100.json) and actual source presence.
-Ledger SHA256: `05f873d1d1d1edc68366f1a0a25fe61152fcef5ca18d5883b9b598d1652069b0`.
+Ledger SHA256: `2ec618f5e5b428ee08fed6c307c5a4ac6ba4f0942a6b885e6d8d2ea711a2ee7a`.
 
 The original target remains 100 primary roots / 28 acceptance units. Historical
 and narrow local evidence remain separate; every current aggregate/full-release
@@ -43,13 +43,13 @@ gate is OPEN. File presence does not establish proof or type coverage.
 | `SamplingCompatibility` | 2 | 0 | 2 | 0 | 0 | [present](../../../../../../Zeta23/OPICAFollowup/SamplingCompatibility.lean) |
 | `SawtoothForce` | 3 | 0 | 3 | 0 | 0 | [present](../../../../../../Zeta23/OPICAFollowup/SawtoothForce.lean) |
 | `SourceVerticalBounds` | 1 | 1 | 0 | 0 | 0 | [present](../../../../../../Zeta23/OPICAFollowup/SourceVerticalBounds.lean) |
-| `SquareDefect` | 4 | 0 | 0 | 0 | 4 | planned / missing |
+| `SquareDefect` | 4 | 0 | 4 | 0 | 0 | [present](../../../../../../Zeta23/OPICAFollowup/SquareDefect.lean) |
 | `UniformSourceBounds` | 2 | 2 | 0 | 0 | 0 | [present](../../../../../../Zeta23/OPICAFollowup/UniformSourceBounds.lean) |
 | `WeightedMixing` | 4 | 0 | 4 | 0 | 0 | [present](../../../../../../Zeta23/OPICAFollowup/WeightedMixing.lean) |
 | `WeightedSpectralMeasure` | 2 | 0 | 2 | 0 | 0 | [present](../../../../../../Zeta23/OPICAFollowup/WeightedSpectralMeasure.lean) |
 | `ZeroProfiles` | 2 | 0 | 2 | 0 | 0 | [present](../../../../../../Zeta23/OPICAFollowup/ZeroProfiles.lean) |
 | `ZetaLeftLineBounds` | 1 | 1 | 0 | 0 | 0 | [present](../../../../../../Zeta23/OPICAFollowup/ZetaLeftLineBounds.lean) |
-| **Total** | **100** | **41** | **42** | **0** | **17** | |
+| **Total** | **100** | **41** | **46** | **0** | **13** | |
 
 Regenerate with `python refresh_navigation.py --write`; verify with `--check`.
 Read the [named remaining work](REMAINING_WORK.md) and [next-agent task](NEXT_AGENT_PROMPT.md)
