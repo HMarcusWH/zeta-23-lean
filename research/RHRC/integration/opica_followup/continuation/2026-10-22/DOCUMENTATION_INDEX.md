@@ -4,7 +4,9 @@ Use this index with [root AGENTS.md](../../../../../../AGENTS.md) and the
 [continuation guide](README.md). It describes the 22 October OPICA source
 checkpoint and its staged repairs; read [STAGE18_HANDOVER.md](STAGE18_HANDOVER.md)
 for the latest exact sources and gates. Check the live Git head and workflow
-results before editing.
+results before editing. The next agent starts from [NEXT_AGENT_PROMPT.md](NEXT_AGENT_PROMPT.md). The stage
+pipeline and its Stage 18 scripts are in [tools/stage_record](tools/stage_record/README.md),
+and unregistered proof drafts (no authority) are in [drafts](drafts/README.md).
 
 ## Reading order
 
