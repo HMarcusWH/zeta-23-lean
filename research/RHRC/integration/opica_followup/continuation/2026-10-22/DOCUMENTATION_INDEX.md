@@ -2,7 +2,7 @@
 
 Use this index with [root AGENTS.md](../../../../../../AGENTS.md) and the
 [continuation guide](README.md). It describes the 22 October OPICA source
-checkpoint and its staged repairs; read [STAGE10_HANDOVER.md](STAGE10_HANDOVER.md)
+checkpoint and its staged repairs; read [STAGE11_HANDOVER.md](STAGE11_HANDOVER.md)
 for the latest exact sources and gates. Check the live Git head and workflow
 results before editing.
 
@@ -63,6 +63,12 @@ results before editing.
 - [Post-Green research](POST_GREEN_RESEARCH.md): all nine required mathematical
   review conclusions. Repeat the pass when meaningful proof evidence changes.
 
+[Stage 11](STAGE11_HANDOVER.md) proves both ForcedEuler roots (R2-S1b): at an actual zero,
+-(x^2 h')' = kappa (h - 1 + sum_{n>=1} delta_n) in distributions on (0, oo), with the ordinary part
+between integers, continuity at the integers and the jump n^2 (h'(n+) - h'(n-)) = -kappa producing
+each atom; the nonzero atoms make the Euler image not locally integrable, hence not L^2 and not c h
+for any c, while the form identity (S1.5) is retained; the
+[evidence](evidence/current-codex/stage11/STATUS.json) binds every log and source.
 [Stage 10](STAGE10_HANDOVER.md) proves both LogFourierSobolev roots (R2-S1b, F1-F3): for the
 actual form domain, U h(t) = e^(t/2) h(e^t) is unitary into L^2(R), lies in H^1(R) with the
 explicit weak derivative, and int_0^oo x^2|h'|^2 = int|psi'|^2 + (1/4) int_0^oo |h|^2; the

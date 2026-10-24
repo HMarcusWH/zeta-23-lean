@@ -1,0 +1,71 @@
+negative-forced-euler.lean:9:2: error: Type mismatch
+  (zero_profile_forced_euler ρ hz h0 h1).left φ hφ
+has type
+  eulerImage ρ φ = spectralKappa ρ * ((∫ (x : ℝ) in Ioi 0, (zeroProfile ρ x - 1) * φ x) + ∑' (n : ℕ), φ (↑n + 1))
+but is expected to have type
+  eulerImage ρ φ = -spectralKappa ρ * ((∫ (x : ℝ) in Ioi 0, (zeroProfile ρ x - 1) * φ x) + ∑' (n : ℕ), φ (↑n + 1))
+negative-forced-euler.lean:14:2: error: Type mismatch
+  (zero_profile_forced_euler ρ hz h0 h1).left φ hφ
+has type
+  eulerImage ρ φ = spectralKappa ρ * ((∫ (x : ℝ) in Ioi 0, (zeroProfile ρ x - 1) * φ x) + ∑' (n : ℕ), φ (↑n + 1))
+but is expected to have type
+  eulerImage ρ φ = spectralKappa ρ * ∫ (x : ℝ) in Ioi 0, (zeroProfile ρ x - 1) * φ x
+negative-forced-euler.lean:20:2: error: Type mismatch
+  (zero_profile_forced_euler ρ hz h0 h1).left φ hφ
+has type
+  eulerImage ρ φ = spectralKappa ρ * ((∫ (x : ℝ) in Ioi 0, (zeroProfile ρ x - 1) * φ x) + ∑' (n : ℕ), φ (↑n + 1))
+but is expected to have type
+  eulerImage ρ φ =
+    spectralKappa ρ * ((∫ (x : ℝ) in Ioi 0, (zeroProfile ρ x - 1) * φ x) + ∑' (n : ℕ), φ (↑n + 1) / (↑n + 1) ^ 2)
+negative-forced-euler.lean:26:2: error: Type mismatch
+  (zero_profile_forced_euler ρ hz h0 h1).left φ hφ
+has type
+  eulerImage ρ φ = spectralKappa ρ * ((∫ (x : ℝ) in Ioi 0, (zeroProfile ρ x - 1) * φ x) + ∑' (n : ℕ), φ (↑n + 1))
+but is expected to have type
+  eulerImage ρ φ = spectralKappa ρ * ((∫ (x : ℝ) in Ioi 0, zeroProfile ρ x * φ x) + ∑' (n : ℕ), φ (↑n + 1))
+negative-forced-euler.lean:32:2: error: Type mismatch
+  (zero_profile_forced_euler ρ hz h0 h1).right.right.left x hx hn
+has type
+  HasDerivAt (fun y => ↑y ^ 2 * deriv (zeroProfile ρ) y) (spectralKappa ρ * (1 - zeroProfile ρ x)) x
+but is expected to have type
+  HasDerivAt (fun y => ↑y ^ 2 * deriv (zeroProfile ρ) y) (spectralKappa ρ * (zeroProfile ρ x - 1)) x
+negative-forced-euler.lean:39:2: error: Type mismatch
+  (zero_profile_forced_euler ρ hz h0 h1).right.right.right
+has type
+  ∀ (n : ℕ),
+    1 ≤ n →
+      ContinuousAt (zeroProfile ρ) ↑n ∧
+        ∃ dR dL,
+          HasDerivWithinAt (zeroProfile ρ) dR (Ici ↑n) ↑n ∧
+            HasDerivWithinAt (zeroProfile ρ) dL (Iic ↑n) ↑n ∧ ↑n ^ 2 * (dR - dL) = -spectralKappa ρ
+but is expected to have type
+  ∀ (n : ℕ),
+    1 ≤ n →
+      ContinuousAt (zeroProfile ρ) ↑n ∧
+        ∃ dR dL,
+          HasDerivWithinAt (zeroProfile ρ) dR (Ici ↑n) ↑n ∧
+            HasDerivWithinAt (zeroProfile ρ) dL (Iic ↑n) ↑n ∧ ↑n ^ 2 * (dR - dL) = spectralKappa ρ
+negative-forced-euler.lean:44:2: error: Type mismatch
+  (zero_profile_not_homogeneous_operator_vector ρ hz h0 h1).right.right.left
+has type
+  ¬∃ g,
+      MemLp g 2 (volume.restrict (Ioi 0)) ∧
+        ∀ (φ : ℝ → ℂ), PositiveAxisTest φ → eulerImage ρ φ = ∫ (x : ℝ) in Ioi 0, g x * φ x
+but is expected to have type
+  ∃ g,
+    MemLp g 2 (volume.restrict (Ioi 0)) ∧
+      ∀ (φ : ℝ → ℂ), PositiveAxisTest φ → eulerImage ρ φ = ∫ (x : ℝ) in Ioi 0, g x * φ x
+negative-forced-euler.lean:49:2: error: Type mismatch
+  (zero_profile_not_homogeneous_operator_vector ρ hz h0 h1).right.right.right.left (spectralKappa ρ)
+has type
+  ¬∀ (φ : ℝ → ℂ), PositiveAxisTest φ → eulerImage ρ φ = spectralKappa ρ * ∫ (x : ℝ) in Ioi 0, zeroProfile ρ x * φ x
+but is expected to have type
+  ∀ (φ : ℝ → ℂ), PositiveAxisTest φ → eulerImage ρ φ = spectralKappa ρ * ∫ (x : ℝ) in Ioi 0, zeroProfile ρ x * φ x
+negative-forced-euler.lean:55:31: error: Application type mismatch: The argument
+  h0
+has type
+  0 < ρ.re
+but is expected to have type
+  riemannZeta ρ = 0
+in the application
+  zero_profile_forced_euler ρ h0

@@ -4,9 +4,9 @@
   "acceptance_units": 28,
   "current_aggregate_accepted": false,
   "status_counts": {
-    "OPEN_NO_COMPLETE_CANDIDATE": 29,
+    "OPEN_NO_COMPLETE_CANDIDATE": 27,
     "PROVED_IN_ORIGINAL_41_ROOT_SOURCE_BOUND_SUBSET": 41,
-    "PROVED_NARROW_LOCAL_GATES_AGGREGATE_PENDING": 30
+    "PROVED_NARROW_LOCAL_GATES_AGGREGATE_PENDING": 32
   },
   "roots": [
     {
@@ -2968,20 +2968,27 @@
         "register_only_after_proof_and_type_review": true,
         "status": "PLANNED_NOT_PROVED"
       },
-      "current_status": "OPEN_NO_COMPLETE_CANDIDATE",
+      "current_status": "PROVED_NARROW_LOCAL_GATES_AGGREGATE_PENDING",
       "gates": {
-        "implementation": "OPEN",
-        "module_compilation": "NOT_ESTABLISHED",
-        "expected_type_consumer": "NOT_ESTABLISHED",
-        "actual_domain_consumer": "NOT_ESTABLISHED",
-        "axiom_check": "NOT_ESTABLISHED",
+        "implementation": "IMPLEMENTED_FULL_FROZEN_CONTRACT_REVIEWED_NARROW",
+        "module_compilation": "PASS_EXACT_COMMITTED_SOURCE_PINNED_LINUX",
+        "expected_type_consumer": "PASS_INDEPENDENT_FULL_TYPE_AND_DEFINITION_AUDITS",
+        "actual_domain_consumer": "PASS_ATOM_DETECTED_ON_ACTUAL_TEST_JUMP_MATCHES_STAGE9_AND_CONSTRUCTION_LEVEL_AT_RHO_3_4",
+        "axiom_check": "STANDARD_ONLY_TRANSITIVE_PRINTED_CLOSURES",
         "aggregate_current_source_export": "OPEN",
         "full_release_acceptance": "OPEN"
       },
-      "source_file_present": false,
-      "declaration_lexically_present": false,
-      "source_sha256": null,
-      "evidence": []
+      "source_file_present": true,
+      "declaration_lexically_present": true,
+      "source_sha256": "fbf5c1bb6aabcf2f171ce1d11aeb289ff71ea14243d7099a09f3e05153dd8657",
+      "evidence": [
+        "evidence/current-codex/stage11/STATUS.json"
+      ],
+      "independent_consumer": {
+        "path": "consumers/ExpectedForcedEuler.lean",
+        "sha256": "230723787b3badebfa2862fc6168f6f7e76210fd9c00c009729d3f1906fdfca5"
+      },
+      "statement_formalization": "Distributions on (0, oo): test functions PositiveAxisTest phi (smooth, compact support, tsupport in Ioi 0, complex valued). The Euler image eulerImage rho phi := -int_0^oo h (x^2 phi')' is <-(x^2 h')', phi> with h' the distributional derivative of h. At an actual zero (zeta rho = 0, 0 < Re rho < 1): eulerImage rho phi = kappa (int_0^oo (h - 1) phi + sum_{n>=1} phi(n)) for every test (S1.4); the a.e. derivative deriv h gives the same value int x^2 h' phi'; between integers (x^2 h')' = kappa (1 - h) (ordinary part); at every integer n >= 1 h is continuous (no delta derivative) and the one-sided derivatives satisfy n^2 (h'(n+) - h'(n-)) = -kappa (the actual jump producing the atom kappa delta_n). The proof telescopes exact cell integrations by parts: each cell branch solves (x^2 g')' + kappa g = 0. The identity itself holds for every strip parameter rho != 1/2 (forced_euler_identity); the root states it for actual zeros, where rho != 1/2 is derived."
     },
     {
       "id": "OPICA_FOLLOWUP_ZERO_PROFILE_NOT_HOMOGENEOUS_OPERATOR_VECTOR",
@@ -3006,20 +3013,27 @@
         "register_only_after_proof_and_type_review": true,
         "status": "PLANNED_NOT_PROVED"
       },
-      "current_status": "OPEN_NO_COMPLETE_CANDIDATE",
+      "current_status": "PROVED_NARROW_LOCAL_GATES_AGGREGATE_PENDING",
       "gates": {
-        "implementation": "OPEN",
-        "module_compilation": "NOT_ESTABLISHED",
-        "expected_type_consumer": "NOT_ESTABLISHED",
-        "actual_domain_consumer": "NOT_ESTABLISHED",
-        "axiom_check": "NOT_ESTABLISHED",
+        "implementation": "IMPLEMENTED_FULL_FROZEN_CONTRACT_REVIEWED_NARROW",
+        "module_compilation": "PASS_EXACT_COMMITTED_SOURCE_PINNED_LINUX",
+        "expected_type_consumer": "PASS_INDEPENDENT_FULL_TYPE_AND_DEFINITION_AUDITS",
+        "actual_domain_consumer": "PASS_ATOM_DETECTED_EXACTLY_KAPPA_AND_CONSTRUCTION_LEVEL_NOT_FUNCTION_AT_RHO_3_4",
+        "axiom_check": "STANDARD_ONLY_TRANSITIVE_PRINTED_CLOSURES",
         "aggregate_current_source_export": "OPEN",
         "full_release_acceptance": "OPEN"
       },
-      "source_file_present": false,
-      "declaration_lexically_present": false,
-      "source_sha256": null,
-      "evidence": []
+      "source_file_present": true,
+      "declaration_lexically_present": true,
+      "source_sha256": "fbf5c1bb6aabcf2f171ce1d11aeb289ff71ea14243d7099a09f3e05153dd8657",
+      "evidence": [
+        "evidence/current-codex/stage11/STATUS.json"
+      ],
+      "independent_consumer": {
+        "path": "consumers/ExpectedForcedEuler.lean",
+        "sha256": "230723787b3badebfa2862fc6168f6f7e76210fd9c00c009729d3f1906fdfca5"
+      },
+      "statement_formalization": "At an actual zero: kappa != 0; there is no g locally integrable on (0, oo) with eulerImage rho phi = int_0^oo g phi for all tests (the atoms are detected by shrinking bumps at 1 and dominated convergence); in particular no g in L2(0, oo), so h is not in the operator domain of the L2 self-adjoint realization of -d/dx (x^2 d/dx); for every c in C the homogeneous eigenvalue equation eulerImage rho phi = c int h phi fails; and the positive form identity is retained: LogFormDomain h (zeroProfileDeriv rho) with int_0^oo x^2 |h'|^2 = int |psi'|^2 + (1/4) int_0^oo |h|^2 (S1.5), zeroProfileDeriv the explicit cell derivative (the right derivative on (0, oo), equal to deriv h off the integers)."
     },
     {
       "id": "OPICA_FOLLOWUP_NATIVE_SAMPLING_GRAM_IDENTITY",
@@ -4234,18 +4248,18 @@
   "evidence_paths_relative_to": "research/RHRC/integration/opica_followup/continuation/2026-10-22",
   "verification_summary": {
     "historical_source_bound_subset_roots": 41,
-    "independently_verified_narrow_roots": 30,
+    "independently_verified_narrow_roots": 32,
     "prior_failed_or_blocked_unaccepted_roots": 0,
-    "open_no_complete_candidate_roots": 29,
+    "open_no_complete_candidate_roots": 27,
     "full_required_roots": 100,
     "acceptance_units": 28,
-    "receipt": "STAGE10_HANDOVER.md",
+    "receipt": "STAGE11_HANDOVER.md",
     "independent_source_repairs": [],
     "independent_consumer_repairs": [],
     "historical41_status_unchanged": true,
     "current_aggregate_accepted": false,
-    "meaning": "41 historical plus 30 narrow local results is not aggregate 71-root acceptance. 29 absent implementations plus all remaining domain/integration gates remain OPEN; original100/28 scope unchanged.",
-    "receipt_scope": "Index of two Stage10, two Stage9, one Stage8, three Stage7, three Stage6, two Stage5, two Stage4 and fifteen retained narrow original-root results, not an aggregate receipt",
+    "meaning": "41 historical plus 32 narrow local results is not aggregate 73-root acceptance. 27 absent implementations plus all remaining domain/integration gates remain OPEN; original100/28 scope unchanged.",
+    "receipt_scope": "Index of two Stage11, two Stage10, two Stage9, one Stage8, three Stage7, three Stage6, two Stage5, two Stage4 and fifteen retained narrow original-root results, not an aggregate receipt",
     "additional_stage1_primary_roots": [
       "laguerre_tail_norm",
       "dilated_comb_fourier",
@@ -4287,6 +4301,10 @@
     "additional_stage10_primary_roots": [
       "log_unitary_form_identity",
       "log_fourier_plancherel"
+    ],
+    "additional_stage11_primary_roots": [
+      "zero_profile_forced_euler",
+      "zero_profile_not_homogeneous_operator_vector"
     ]
   }
 }
