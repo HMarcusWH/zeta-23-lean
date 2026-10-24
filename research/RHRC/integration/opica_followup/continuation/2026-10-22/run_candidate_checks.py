@@ -12,23 +12,8 @@ import time
 
 HERE = Path(__file__).resolve().parent
 REPO = HERE.parents[5]
-MODULES = ('MaskedNativeRate', 'ComplexLocalMeasures', 'AuxiliaryCompletions',
-           'MultiplicityTail', 'DilatedComb', 'RenormalizedCoPoisson', 'FirstCellCost',
-           'WeightedMixing', 'NearGapLimits', 'ProfileEulerMaclaurin', 'ZeroProfiles',
-           'LogFourierSobolev', 'ForcedEuler', 'SamplingCompatibility',
-           'SawtoothForce', 'WeightedSpectralMeasure', 'NativeResolvent', 'SquareDefect',
-           'BoundaryAmplitude', 'CoPoissonJets', 'Consumers')
-CONSUMERS = ('ExpectedMasks', 'ExpectedComplex', 'ExpectedAuxiliary',
-             'ExpectedMultiplicity', 'ExpectedComb', 'ExpectedFirstCell',
-             'ExpectedWeighted', 'ExpectedNearGap', 'ExpectedNearGapLimit',
-             'ExpectedNormalizedLimit', 'ExpectedWeightedInverse',
-             'ExpectedCoPoissonFamily', 'ExpectedCoPoissonOrderZero', 'ExpectedZeroMeasure',
-             'ExpectedEulerMaclaurin', 'ExpectedZeroProfiles', 'ExpectedLogFourierSobolev',
-             'ExpectedForcedEuler', 'ExpectedSamplingCompatibility', 'ExpectedSawtoothForce',
-             'ExpectedWeightedSpectralMeasure', 'ExpectedNativeResolvent',
-             'ExpectedSquareDefect', 'ExpectedBoundaryAmplitude',
-             'ExpectedCoPoissonJets', 'ExpectedWordJet', 'ExpectedForceSampling',
-             'ExpectedSampleSign')
+MODULES = ('MaskedNativeRate', 'ComplexLocalMeasures', 'AuxiliaryCompletions', 'MultiplicityTail', 'DilatedComb', 'RenormalizedCoPoisson', 'FirstCellCost', 'WeightedMixing', 'NearGapLimits', 'ProfileEulerMaclaurin', 'ZeroProfiles', 'LogFourierSobolev', 'ForcedEuler', 'SamplingCompatibility', 'SawtoothForce', 'WeightedSpectralMeasure', 'NativeResolvent', 'SquareDefect', 'BoundaryAmplitude', 'CoPoissonJets', 'Consumers', 'NativeWindowRate', 'MovingSourceWindowRate', 'ConfluentProfiles')
+CONSUMERS = ('ExpectedMasks', 'ExpectedComplex', 'ExpectedAuxiliary', 'ExpectedMultiplicity', 'ExpectedComb', 'ExpectedFirstCell', 'ExpectedWeighted', 'ExpectedNearGap', 'ExpectedNearGapLimit', 'ExpectedNormalizedLimit', 'ExpectedWeightedInverse', 'ExpectedCoPoissonFamily', 'ExpectedCoPoissonOrderZero', 'ExpectedZeroMeasure', 'ExpectedEulerMaclaurin', 'ExpectedZeroProfiles', 'ExpectedLogFourierSobolev', 'ExpectedForcedEuler', 'ExpectedSamplingCompatibility', 'ExpectedSawtoothForce', 'ExpectedWeightedSpectralMeasure', 'ExpectedNativeResolvent', 'ExpectedSquareDefect', 'ExpectedBoundaryAmplitude', 'ExpectedCoPoissonJets', 'ExpectedWordJet', 'ExpectedForceSampling', 'ExpectedSampleSign', 'ExpectedPhysicalRates', 'ExpectedArithmeticPhysical', 'ExpectedConfluentProfiles')
 ALLOWED_AXIOMS = {'propext', 'Classical.choice', 'Quot.sound'}
 
 

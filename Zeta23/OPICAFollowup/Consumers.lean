@@ -1,11 +1,15 @@
 import Zeta23.OPICAFollowup.RobustLaurent
 import Zeta23.OPICA.NativeJetAdapter
 import Zeta23.OPICAFollowup.BoundaryAmplitude
+import Zeta23.OPICAFollowup.MaskedNativeRate
+import Zeta23.OPICAFollowup.NativeWindowRate
+import Zeta23.OPICAFollowup.MovingSourceWindowRate
+import Zeta23.ExceptionalZero.Step4OutputSufficiency
 
 /-!
 Actual-source continuation consumers. The word/jet theorem preserves the same
 Step123 output. The force/sampling theorem composes F1-F3 at a hypothetical actual
-off-line zero. The other three original Consumers roots remain OPEN.
+off-line zero. The actual zero-measure span consumer remains OPEN.
 -/
 
 noncomputable section
@@ -230,4 +234,122 @@ theorem actual_force_sampling_consumer {ρ : ℂ} (hz : riemannZeta ρ = 0) (h0 
 end ForceSampling
 
 
+end Zeta23.OPICAFollowup
+
+noncomputable section
+open Set MeasureTheory Filter
+open scoped Topology
+open Zeta23 Zeta23.CCM Zeta23.ExceptionalZero Zeta23.OPICA
+namespace Zeta23.OPICAFollowup
+
+theorem fixed_two_factor_scheduled_mask_rates (T : HorizonSchedule) :
+    Tendsto (positiveRate T (fun n => nativeRawHigh 1 2 1
+      (logSlackY 2 8 (T.time n)) 2 (T.time n))) atTop (𝓝 nativeZeroDisplacementSup) ∧
+    Tendsto (positiveRate T (fun n => nativeAbsorbedHigh 1 2 1 (by norm_num)
+      (logSlackY 2 8 (T.time n)) 2 (T.time n))) atTop (𝓝 nativeZeroDisplacementSup) := by
+  have hNative : Tendsto (fun t : ℝ => Real.log (1+nativePhysicalWindowEnergy 1 2 t)/(2*t))
+      atTop (𝓝 nativeZeroDisplacementSup) := by
+    simpa only [nativePhysicalWindowEnergy,nativeLogWindow,sq_abs] using
+      native_fixed_source_window_rate 1 2 (by norm_num)
+  have h := log_slack_masked_energy_rate_difference 2 1 (by norm_num) (by norm_num)
+    2 0 8 (by norm_num) (by norm_num) (by norm_num) T (fun _ => 1)
+    (fun _ => by norm_num) (Eventually.of_forall fun n => by simp)
+  have hNativeT := hNative.comp T.cofinal
+  exact ⟨by simpa only [Function.comp_apply,sub_add_cancel,zero_add] using h.1.add hNativeT,
+    by simpa only [Function.comp_apply,sub_add_cancel,zero_add] using h.2.add hNativeT⟩
+
+/-- Original fixed r=2,d=1,C=2,Q=1,K=8 physical consumer. Both complete
+high-mask realizations retain the actual theta rate at continuous horizons. -/
+theorem fixed_two_factor_mask_rate_theta :
+    Tendsto (fun T : ℝ => Real.log (1+max
+      (nativeRawHigh 1 2 1 (logSlackY 2 8 T) 2 T) 0)/(2*T)) atTop (𝓝 nativeZeroDisplacementSup) ∧
+    Tendsto (fun T : ℝ => Real.log (1+max
+      (nativeAbsorbedHigh 1 2 1 (by norm_num) (logSlackY 2 8 T) 2 T) 0)/(2*T))
+      atTop (𝓝 nativeZeroDisplacementSup) := by
+  have along (time : ℕ → ℝ) (cofinal : Tendsto time atTop atTop) :
+      Tendsto (fun n => Real.log (1+max
+        (nativeRawHigh 1 2 1 (logSlackY 2 8 (time n)) 2 (time n)) 0)/(2*time n))
+        atTop (𝓝 nativeZeroDisplacementSup) ∧
+      Tendsto (fun n => Real.log (1+max
+        (nativeAbsorbedHigh 1 2 1 (by norm_num) (logSlackY 2 8 (time n)) 2 (time n)) 0)/(2*time n))
+        atTop (𝓝 nativeZeroDisplacementSup) := by
+    let T := NativeWindowProof.Asymptotic.normalizedHorizonSchedule time cofinal
+    have hEq : ∀ᶠ n : ℕ in atTop, T.time n=time n :=
+      (cofinal.eventually_ge_atTop 1).mono fun n hn => max_eq_right hn
+    have h := fixed_two_factor_scheduled_mask_rates T
+    constructor
+    · apply h.1.congr'
+      filter_upwards [hEq] with n hn
+      simp only [positiveRate,hn]
+    · apply h.2.congr'
+      filter_upwards [hEq] with n hn
+      simp only [positiveRate,hn]
+  exact ⟨tendsto_of_seq_tendsto (fun time ht => (along time ht).1),
+    tendsto_of_seq_tendsto (fun time ht => (along time ht).2)⟩
+
+theorem originalPrimeField_allDampedL2_of_native_theta_zero
+    (hTheta : nativeZeroDisplacementSup=0) : NativeOriginalPrimeFieldAllDampedL2 := by
+  obtain ⟨A,hA,hEnv⟩ := native_field_theta_envelope
+  let K := nativeFieldOrderConstant 0
+  have hK : 0 < K := (hEnv 0).1
+  have hBound (t : ℝ) (ht : 0 ≤ t) : |nativeOriginalPrimeField t| ≤ K := by
+    have h := (hEnv 0).2.1 t ht
+    simpa only [hTheta,zero_mul,Real.exp_zero,mul_one,
+      sourceFamily_zero_eq_original.2.1,K] using h
+  intro epsilon hepsilon
+  have hDom : Integrable ((Ici (0 : ℝ)).indicator (fun t : ℝ => K^2*Real.exp (-2*epsilon*t))) :=
+    ((integrableOn_Ici_iff_integrableOn_Ioi (by finiteness)).mpr
+      ((integrableOn_exp_mul_Ioi (by linarith : -2*epsilon<0) 0).const_mul (K^2))).integrable_indicator measurableSet_Ici
+  apply (memLp_two_iff_integrable_sq_norm
+    (nativeOriginalDampedPrimeField_continuous epsilon).aestronglyMeasurable).mpr
+  apply hDom.mono' ((nativeOriginalDampedPrimeField_continuous epsilon).aestronglyMeasurable.norm.pow 2)
+  filter_upwards with t
+  change ‖‖nativeOriginalDampedPrimeField epsilon t‖^2‖ ≤ _
+  by_cases ht : 0 ≤ t
+  · have htmem : t ∈ Ici (0 : ℝ) := ht
+    rw [indicator_of_mem htmem,Real.norm_of_nonneg (sq_nonneg _),nativeOriginalDampedPrimeField_norm_sq]
+    have hsq := pow_le_pow_left₀ (abs_nonneg _) (hBound t ht) 2
+    exact (mul_le_mul_of_nonneg_left hsq (Real.exp_nonneg _)).trans_eq (by ring)
+  · have htmem : t ∉ Ici (0 : ℝ) := ht
+    rw [indicator_of_notMem htmem,nativeOriginalDampedPrimeField_zero_of_neg epsilon (lt_of_not_ge ht)]
+    simp
+
+/-- Explicitly conditional original consumer. The complete observation upper
+law is an OPEN antecedent; this theorem does not construct or assert it. -/
+theorem quiet_balanced_observation_implies_native_cut
+    (time : ℕ → ℝ) (cofinal : Tendsto time atTop atTop)
+    (quiet :
+      (∀ epsilon : ℝ, 0 < epsilon → ∀ᶠ n : ℕ in atTop,
+        Real.log (1+max (nativeRawHigh 1 2 1 (logSlackY 2 8 (time n)) 2 (time n)) 0)/(2*time n) ≤ epsilon) ∨
+      (∀ epsilon : ℝ, 0 < epsilon → ∀ᶠ n : ℕ in atTop,
+        Real.log (1+max (nativeAbsorbedHigh 1 2 1 (by norm_num)
+          (logSlackY 2 8 (time n)) 2 (time n)) 0)/(2*time n) ≤ epsilon)) :
+    nativeZeroDisplacementSup=0 ∧
+    (∀ epsilon : ℝ, 0 < epsilon → MemLp
+      (fun t : ℝ => ((Real.exp (-epsilon*t)*primeFieldFamily 0 t : ℝ) : ℂ)) 2 volume) ∧
+    NativeOriginalPrimeFieldAllDampedL2 ∧ NativeOriginalPrimeFieldAllDampedIntegral ∧ RiemannHypothesis := by
+  have hTheta : nativeZeroDisplacementSup=0 := by
+    by_contra hne
+    have hp : 0 < nativeZeroDisplacementSup := lt_of_le_of_ne native_zero_sup_bounds.1 (Ne.symm hne)
+    have hhalf : 0 < nativeZeroDisplacementSup/2 := by linarith
+    have hlt : nativeZeroDisplacementSup/2 < nativeZeroDisplacementSup := by linarith
+    have hRates := fixed_two_factor_mask_rate_theta
+    rcases quiet with hQuiet | hQuiet
+    · have hLo := (tendsto_order.1 (hRates.1.comp cofinal)).1 (nativeZeroDisplacementSup/2) hlt
+      obtain ⟨n,hn,hq⟩ := (hLo.and (hQuiet _ hhalf)).exists
+      simp only [Function.comp_apply] at hn
+      linarith
+    · have hLo := (tendsto_order.1 (hRates.2.comp cofinal)).1 (nativeZeroDisplacementSup/2) hlt
+      obtain ⟨n,hn,hq⟩ := (hLo.and (hQuiet _ hhalf)).exists
+      simp only [Function.comp_apply] at hn
+      linarith
+  have hL2 := originalPrimeField_allDampedL2_of_native_theta_zero hTheta
+  have hIntegral := nativeOriginalPrimeField_allDampedL2_iff_integral.mp hL2
+  refine ⟨hTheta,?_,hL2,hIntegral,riemannHypothesis_of_step4_AX hIntegral⟩
+  intro epsilon hepsilon
+  exact hL2 epsilon hepsilon
+
+#print axioms fixed_two_factor_mask_rate_theta
+#print axioms originalPrimeField_allDampedL2_of_native_theta_zero
+#print axioms quiet_balanced_observation_implies_native_cut
 end Zeta23.OPICAFollowup

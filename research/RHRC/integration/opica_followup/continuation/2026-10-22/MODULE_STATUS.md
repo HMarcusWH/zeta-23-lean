@@ -14,7 +14,7 @@ gate is OPEN. File presence does not establish proof or type coverage.
 | `BoundaryAmplitude` | 2 | 0 | 2 | 0 | 0 | [present](../../../../../../Zeta23/OPICAFollowup/BoundaryAmplitude.lean) |
 | `CoPoissonJets` | 1 | 0 | 1 | 0 | 0 | [present](../../../../../../Zeta23/OPICAFollowup/CoPoissonJets.lean) |
 | `ComplexLocalMeasures` | 1 | 0 | 1 | 0 | 0 | [present](../../../../../../Zeta23/OPICAFollowup/ComplexLocalMeasures.lean) |
-| `ConfluentProfiles` | 2 | 0 | 0 | 0 | 2 | planned / missing |
+| `ConfluentProfiles` | 2 | 0 | 0 | 0 | 2 | [present](../../../../../../Zeta23/OPICAFollowup/ConfluentProfiles.lean) |
 | `Consumers` | 5 | 0 | 2 | 0 | 3 | [present](../../../../../../Zeta23/OPICAFollowup/Consumers.lean) |
 | `Counterexamples` | 4 | 4 | 0 | 0 | 0 | [present](../../../../../../Zeta23/OPICAFollowup/Counterexamples.lean) |
 | `DilatedComb` | 1 | 0 | 1 | 0 | 0 | [present](../../../../../../Zeta23/OPICAFollowup/DilatedComb.lean) |
@@ -26,7 +26,7 @@ gate is OPEN. File presence does not establish proof or type coverage.
 | `LogFourierSobolev` | 2 | 0 | 2 | 0 | 0 | [present](../../../../../../Zeta23/OPICAFollowup/LogFourierSobolev.lean) |
 | `LogSlackBalance` | 3 | 3 | 0 | 0 | 0 | [present](../../../../../../Zeta23/OPICAFollowup/LogSlackBalance.lean) |
 | `MaskedNativeRate` | 2 | 0 | 2 | 0 | 0 | [present](../../../../../../Zeta23/OPICAFollowup/MaskedNativeRate.lean) |
-| `MovingSourceWindowRate` | 1 | 0 | 0 | 0 | 1 | planned / missing |
+| `MovingSourceWindowRate` | 1 | 0 | 0 | 0 | 1 | [present](../../../../../../Zeta23/OPICAFollowup/MovingSourceWindowRate.lean) |
 | `MultiplicityTail` | 4 | 0 | 4 | 0 | 0 | [present](../../../../../../Zeta23/OPICAFollowup/MultiplicityTail.lean) |
 | `NativeExplicitFormula` | 3 | 3 | 0 | 0 | 0 | [present](../../../../../../Zeta23/OPICAFollowup/NativeExplicitFormula.lean) |
 | `NativeFilters` | 2 | 2 | 0 | 0 | 0 | [present](../../../../../../Zeta23/OPICAFollowup/NativeFilters.lean) |
