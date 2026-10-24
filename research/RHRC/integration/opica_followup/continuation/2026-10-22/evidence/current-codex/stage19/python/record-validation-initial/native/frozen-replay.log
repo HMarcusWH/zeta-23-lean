@@ -1,0 +1,11 @@
+{"suite": "p0", "mode": "normal", "checks": 5112}
+{"suite": "round1", "mode": "normal", "checks": 18862}
+{"suite": "round2", "mode": "normal", "checks": 14672}
+{"suite": "final", "mode": "normal", "checks": 1274}
+{"suite": "p0", "mode": "optimized", "checks": 5112}
+{"suite": "round1", "mode": "optimized", "checks": 18862}
+{"suite": "round2", "mode": "optimized", "checks": 14672}
+{"suite": "final", "mode": "optimized", "checks": 1274}
+{"numerical_suite": "copoisson", "status": "CONSISTENCY_ONLY"}
+{"numerical_suite": "round2", "status": "CONSISTENCY_ONLY"}
+{"numerical_suite": "final", "status": "CONSISTENCY_ONLY"}

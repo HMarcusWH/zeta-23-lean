@@ -1,0 +1,22 @@
+{
+  "reason": "Final refresh initially applied a companion PR scientific disposition by job name to two pending push jobs. Corrected to exact per-job OPEN. API statuses and conclusions were never changed.",
+  "corrected": [
+    {
+      "run": 40097102752,
+      "job": 120885910754,
+      "name": "Narrow repaired candidates (aggregate acceptance remains open)",
+      "old": "PASS_NARROW_ONLY on clean head cea7b2f6/tree377c7f6f with source_unchanged=true;20modules/25consumer files, W01 and W04/W07(52) and W06(14) consumers. Full release and aggregate registration false."
+    },
+    {
+      "run": 40097102752,
+      "job": 120885910775,
+      "name": "Frozen regression and fail-closed evidence tests",
+      "old": "PASS:185child and82focused parent tests normal/optimized;5112/18862/14672/1274 frozen controls per mode;3numerical suites CONSISTENCY_ONLY."
+    }
+  ],
+  "invalid_after_correction": [],
+  "additional_correction": {
+    "job": 120882596910,
+    "reason": "Newly completed push release failure initially retained its earlier queued description; now replaced by exact direct-log FAIL_RELEASE_INCOMPLETE."
+  }
+}

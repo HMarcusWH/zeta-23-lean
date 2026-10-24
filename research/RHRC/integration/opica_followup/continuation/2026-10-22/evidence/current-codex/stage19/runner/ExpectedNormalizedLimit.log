@@ -1,0 +1,21 @@
+'Zeta23.OPICAFollowup.dilation_normalized_limit_not_measure' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.OPICAFollowup.ct1NormalizedLimit_apply' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OPICANormalizedLimitIndependent.expected_dilation_normalized_limit_not_measure' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'OPICANormalizedLimitIndependent.expected_three_comb_normalized_limit' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'OPICANormalizedLimitIndependent.expected_origin_coefficient_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'OPICANormalizedLimitIndependent.expected_integer_coefficients' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'OPICANormalizedLimitIndependent.expected_no_common_normalized_variation' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.ct1NormalizedLimit_fourier_selfdual' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OPICANormalizedLimitIndependent.expected_normalized_limit_selfdual' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

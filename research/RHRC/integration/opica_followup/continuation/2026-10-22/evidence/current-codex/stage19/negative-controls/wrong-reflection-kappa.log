@@ -1,0 +1,9 @@
+Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+C:\Users\macka\.codex\.chatgpt-projects\g-p-6a353c7268b08191b685956e466d73e4\work\opica-stage19\negative-controls\wrong-reflection-kappa.lean:8:63: error: unsolved goals
+ρ : ℂ
+⊢ ρ - ρ ^ 2 = (starRingEnd ℂ) (ρ - ρ ^ 2)

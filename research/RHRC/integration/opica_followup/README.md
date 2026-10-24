@@ -1,27 +1,28 @@
-# Current draft checkpoint — 22 October 2026
+# Current draft checkpoint — 24 October 2026
 
-The combined source and handover are now in the repository. Start at
-[the continuation guide](continuation/2026-10-22/README.md), read root AGENTS.md,
-and use its exact 100-root stage ledger. The original scope remains 100 roots /
-28 acceptance units; full release acceptance, RH, Step 4 and independent closing
-inequalities remain OPEN.
+Start at [the continuation guide](continuation/2026-10-22/README.md), root AGENTS.md,
+[Stage 19](continuation/2026-10-22/STAGE19_HANDOVER.md) and the
+[current ledger](continuation/2026-10-22/ROOT_LEDGER_100.json).
+All 100 original primary roots and 28 acceptance units remain required.
 
-The checkpoint retains the historical 41-root exact-source subset and records six
-additional primary roots with narrow local module, independent consumer and axiom
-checks. It preserves five other unchecked candidates plus all 48 absent primary
-obligations. Local proof evidence and aggregate acceptance remain separate.
-The cold exporter prerequisite fix and repaired parent metadata checks are included.
-The new narrow candidate CI lane does not replace the full release gate.
+The ledger records 41 historical source-bound roots, 50 additional narrow-gate
+roots and 9 absent implementations. This is not aggregate 91-root acceptance.
+Stage 19 verifies the original actual force-sampling consumer at code commit
+`59ff485551771c0ab6322562d18fb8e9d4166da4`, tree `396665de3d14c2db60a4a85c646dd56d718f07ff`, revalidates the existing word/jet primary
+at its changed source hash and records supporting sample-sign mathematics without
+counting another root. Read the
+[source-pinned STATUS](continuation/2026-10-22/evidence/current-codex/stage19/STATUS.json)
+for exact compilation, expected types, physical domains, axioms and workflow dispositions.
 
-Both foundational PDFs, preserved source inputs, independent consumers, prior
-Codex audits, new evidence review and a next-agent prompt are under that guide.
-The versioned CONTINUATION_MANIFEST.json records these additional audit/handover
-paths without altering the frozen original footprint or mandatory theorem scope.
-Final full-extension reconciliation and all-100 compiler linkage remain required.
+The cold full100 receipt, independent review, parent extension, registration,
+canonical regeneration and complete required workflow harvest remain OPEN.
+Full release acceptance, RH, Step 4 and independent closing inequalities remain OPEN.
 
-The following text preserves the earlier 9b baseline description and research
-history. Its statements that the newly repaired candidate primaries remain open
-refer to that earlier checkpoint; use the current ledger for individual gates.
+Both foundational PDFs, frozen contracts, prior evidence and the stage pipeline
+remain under the continuation guide. The following text preserves the earlier
+9b-baseline description and research history; its historical counts and statements
+about unfinished roots retain their earlier source scope. Use the current ledger
+for moving status.
 
 ---
 

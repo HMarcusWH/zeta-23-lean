@@ -1,0 +1,173 @@
+{
+  "schema": "OPICA_STAGE19_INDEPENDENT_PYTHON_VALIDATION_V1",
+  "date": "2026-10-24",
+  "scope": "Child infrastructure, focused parent contract and frozen regression tests only. No Lean or full release authority.",
+  "parent_head": "cea7b2f62ea847c18958cc7385151c8c2b09520d",
+  "parent_tree": "377c7f6f36375a4ac35d3f3ad17ee95b340eb9eb",
+  "working_tree_status": "M Zeta23/OPICAFollowup/Consumers.lean\n M research/RHRC/integration/opica_followup/CONTINUATION_MANIFEST.json\n M research/RHRC/integration/opica_followup/continuation/2026-10-22/run_candidate_checks.py\n M research/RHRC/integration/opica_followup/validate_contract.py\n?? research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedForceSampling.lean",
+  "python_sources_unchanged_across_linux_parent_tests": true,
+  "gates": {
+    "child_normal": {
+      "cwd": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo",
+      "started_at": "2026-10-24T13:44:40.1956098Z",
+      "label": "child-normal",
+      "program": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\tools\\python-3.13.5-embed-amd64\\python.exe",
+      "finished_at": "2026-10-24T13:45:45.2364115Z",
+      "log_sha256": "00786304b97703d2b0449857e7f83a33c3451089b4401c038863659cbeb367ef",
+      "args": [
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "research/RHRC/integration/opica_followup/tests",
+        "-p",
+        "test_*.py"
+      ],
+      "exit_code": 0,
+      "log": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage19\\python\\controlled-temp\\child-normal.log"
+    },
+    "child_optimized": {
+      "cwd": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo",
+      "started_at": "2026-10-24T13:45:45.2773872Z",
+      "label": "child-optimized",
+      "program": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\tools\\python-3.13.5-embed-amd64\\python.exe",
+      "finished_at": "2026-10-24T13:46:33.1779749Z",
+      "log_sha256": "764bc576733d638e08ccc40eb197b8efb0b2c064415adffb8c83309ab02a7e83",
+      "args": [
+        "-B",
+        "-O",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "research/RHRC/integration/opica_followup/tests",
+        "-p",
+        "test_*.py"
+      ],
+      "exit_code": 0,
+      "log": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage19\\python\\controlled-temp\\child-optimized.log"
+    },
+    "linux_parent_normal": {
+      "label": "normal",
+      "command": [
+        "/usr/bin/python3",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "research/RHRC/integration/opica/tests",
+        "-p",
+        "test_contract.py"
+      ],
+      "cwd": "/mnt/c/Users/macka/.codex/.chatgpt-projects/g-p-6a353c7268b08191b685956e466d73e4/work/opica-followup-repo",
+      "started_at": "2026-10-24T13:52:09.014205+00:00",
+      "finished_at": "2026-10-24T13:55:43.455801+00:00",
+      "exit_code": 0,
+      "log": "/mnt/c/Users/macka/.codex/.chatgpt-projects/g-p-6a353c7268b08191b685956e466d73e4/work/opica-stage19/python/linux-parent/parent-contract-normal.log",
+      "log_sha256": "fb4086d483dda4bc039e05575c1c888ea04bf6dbeb5860e74713e604332ed810"
+    },
+    "linux_parent_optimized": {
+      "label": "optimized",
+      "command": [
+        "/usr/bin/python3",
+        "-B",
+        "-O",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "research/RHRC/integration/opica/tests",
+        "-p",
+        "test_contract.py"
+      ],
+      "cwd": "/mnt/c/Users/macka/.codex/.chatgpt-projects/g-p-6a353c7268b08191b685956e466d73e4/work/opica-followup-repo",
+      "started_at": "2026-10-24T13:55:43.456014+00:00",
+      "finished_at": "2026-10-24T14:01:37.555055+00:00",
+      "exit_code": 0,
+      "log": "/mnt/c/Users/macka/.codex/.chatgpt-projects/g-p-6a353c7268b08191b685956e466d73e4/work/opica-stage19/python/linux-parent/parent-contract-optimized.log",
+      "log_sha256": "11ea05e4212b080b495426f5889e4988298d7a0951dc73b442a34f929a076802"
+    },
+    "frozen_replay": {
+      "args": [
+        "-B",
+        "research/RHRC/integration/opica_followup/replay_controls.py",
+        "--modes",
+        "normal",
+        "optimized",
+        "--include-numerical",
+        "--output-dir",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage19\\python\\frozen-controls"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-10-24T13:42:57.7339281Z",
+      "label": "frozen-replay",
+      "log": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage19\\python\\frozen-replay.log",
+      "cwd": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo",
+      "finished_at": "2026-10-24T13:45:52.0285536Z",
+      "log_sha256": "5712cc23631f494f65b223a13b68d5fb0ce56f7345b08be54cec70081c111761",
+      "program": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\tools\\python-3.13.5-embed-amd64\\python.exe"
+    }
+  },
+  "counts": {
+    "child_tests_each_mode": 185,
+    "parent_tests_each_mode": 82,
+    "exact_controls_each_mode": {
+      "p0": 5112,
+      "round1": 18862,
+      "round2": 14672,
+      "final": 1274
+    }
+  },
+  "numerical_dispositions": [
+    {
+      "suite": "copoisson",
+      "status": "PASS_NUMERICAL_CONSISTENCY_ONLY",
+      "interval_certified": false
+    },
+    {
+      "suite": "round2",
+      "status": "PASS_NUMERICAL_CONSISTENCY_NOT_INTERVAL_CERTIFIED",
+      "interval_certified": false
+    },
+    {
+      "suite": "final",
+      "status": "PASS_NUMERICAL_CONSISTENCY_ONLY",
+      "interval_certified": false
+    }
+  ],
+  "runtime": {
+    "windows_python": "3.13.5",
+    "windows_packages": {
+      "sympy": "1.14.0",
+      "mpmath": "1.3.0"
+    },
+    "linux_python": "3.14.4 (main, Aug 20 2026, 10:41:58) [GCC 15.2.0]",
+    "linux_platform": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.43",
+    "full_release_runtime_accepted": false,
+    "runtime_note": "A platform-independent artifact hash lock and acceptance run remain required."
+  },
+  "preserved_failed_attempts": [
+    {
+      "folder": ".",
+      "cause": "Sandbox default temporary directory ACL denied Python fixture file operations.",
+      "child": "185 tests,101 errors",
+      "parent": "82 tests,94 errors"
+    },
+    {
+      "folder": "controlled-temp",
+      "cause": "Child passed after writable TEMP/TMP; parent cannot create source symlink on native Windows (WinError1314).",
+      "parent": "82 tests,1 error,2 skips each mode"
+    },
+    {
+      "folder": "unsandboxed-parent",
+      "cause": "Native Windows symlink privilege still unavailable outside sandbox.",
+      "parent": "82 tests,1 error,1 skip each mode"
+    }
+  ],
+  "status": "PASS_FOCUSED_INFRASTRUCTURE_AND_FROZEN_CONTROLS_ONLY",
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "full100_acceptance": "OPEN"
+}

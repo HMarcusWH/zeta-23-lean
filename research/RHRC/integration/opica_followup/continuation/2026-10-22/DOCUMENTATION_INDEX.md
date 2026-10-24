@@ -2,7 +2,7 @@
 
 Use this index with [root AGENTS.md](../../../../../../AGENTS.md) and the
 [continuation guide](README.md). It describes the 22 October OPICA source
-checkpoint and its staged repairs; read [STAGE18_HANDOVER.md](STAGE18_HANDOVER.md)
+checkpoint and its staged repairs; read [STAGE19_HANDOVER.md](STAGE19_HANDOVER.md)
 for the latest exact sources and gates. Check the live Git head and workflow
 results before editing. The next agent starts from [NEXT_AGENT_PROMPT.md](NEXT_AGENT_PROMPT.md). The stage
 pipeline and its Stage 18 scripts are in [tools/stage_record](tools/stage_record/README.md),
@@ -65,6 +65,13 @@ and unregistered proof drafts (no authority) are in [drafts](drafts/README.md).
 - [Post-Green research](POST_GREEN_RESEARCH.md): all nine required mathematical
   review conclusions. Repeat the pass when meaningful proof evidence changes.
 
+[Stage 19](STAGE19_HANDOVER.md) proves the original actual force-sampling consumer (F1-F3):
+for actual strip zeros with nonreal kappa, both Fourier conventions, the physical lattice force,
+forced log-unitary profile, arithmetic spectral density/sample identity and reflected generic
+boundary amplitude are composed without a homogeneous-eigenproblem conclusion. The existing
+word/jet primary is revalidated at the changed Consumers source hash; ExpectedSampleSign is
+supporting mathematics and is not counted as a primary. The
+[evidence](evidence/current-codex/stage19/STATUS.json) pins the checked commit, tree, sources and logs.
 [Stage 18](STAGE18_HANDOVER.md) proves the CoPoissonJets root (R2-H1): at an actual strip zero of
 multiplicity m, every normalized kappa-jet below m of the actual construction is a gapped, even,
 Fourier self-dual measure with linear growth and the differentiated forced chain; the

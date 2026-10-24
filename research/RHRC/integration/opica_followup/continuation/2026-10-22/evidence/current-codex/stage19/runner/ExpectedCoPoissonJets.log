@@ -1,0 +1,17 @@
+'OPICACoPoissonJetsIndependent.audit_zeroJetOrder' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OPICACoPoissonJetsIndependent.audit_normalizedZeroMeasureJet' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'OPICACoPoissonJetsIndependent.expected_family_is_actual' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OPICACoPoissonJetsIndependent.expected_copoisson_zero_jets_measures' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'OPICACoPoissonJetsIndependent.expected_order_zero_jet' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OPICACoPoissonJetsIndependent.expected_chain_is_forced_euler' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'OPICACoPoissonJetsIndependent.expected_first_jet' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OPICACoPoissonJetsIndependent.expected_reflection_not_new_node' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'OPICACoPoissonJetsIndependent.expected_conj_real_test' depends on axioms: [propext, Classical.choice, Quot.sound]

@@ -1,0 +1,151 @@
+{
+  "schema": "OPICA_STAGE19_CLEAN_NEGATIVE_REPLAY_V1",
+  "status": "PASS_NEGATIVE_REPLAY_ONLY",
+  "checked_commit": "59ff485551771c0ab6322562d18fb8e9d4166da4",
+  "checked_tree": "396665de3d14c2db60a4a85c646dd56d718f07ff",
+  "dirty_status_during_checks": "",
+  "compiler": "Lean (version 4.33.0-rc2, x86_64-w64-windows-gnu, commit d8b18978322de05a8f3dba51ef03cf5461676c17, Release)",
+  "source_before": {
+    "Zeta23/OPICAFollowup/Consumers.lean": "0b7100bd9b2c12069a0bcd072542d091b8335f5690cbc3ca3f956978f0c46fd5",
+    "lean-toolchain": "0d3c76ccd8772d8bcbe207241421a760312b71a6aa82f84194391fdf5cb026d6",
+    "lake-manifest.json": "1847b362e15efd927e75aa8b5442e491f998e4a3f730f9dcaca9841f2957c448",
+    "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedForceSampling.lean": "6fc99bc203b2c9ac3815df43f588cce2da746a1051ecc0ae20f84e4354255904",
+    "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedSampleSign.lean": "9015dee14c0c55719b861b7d7604db0119bb43c3723fef216da512d12a3dcda7",
+    "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedWordJet.lean": "3c14d4f76bdb72d8b5d5715bae34081b7381743433f510da6e8e53f8b4baaa80"
+  },
+  "source_after": {
+    "Zeta23/OPICAFollowup/Consumers.lean": "0b7100bd9b2c12069a0bcd072542d091b8335f5690cbc3ca3f956978f0c46fd5",
+    "lean-toolchain": "0d3c76ccd8772d8bcbe207241421a760312b71a6aa82f84194391fdf5cb026d6",
+    "lake-manifest.json": "1847b362e15efd927e75aa8b5442e491f998e4a3f730f9dcaca9841f2957c448",
+    "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedForceSampling.lean": "6fc99bc203b2c9ac3815df43f588cce2da746a1051ecc0ae20f84e4354255904",
+    "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedSampleSign.lean": "9015dee14c0c55719b861b7d7604db0119bb43c3723fef216da512d12a3dcda7",
+    "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedWordJet.lean": "3c14d4f76bdb72d8b5d5715bae34081b7381743433f510da6e8e53f8b4baaa80"
+  },
+  "source_unchanged": true,
+  "negative_controls": [
+    {
+      "name": "homogeneous-eigenproblem",
+      "file": "negative-controls/homogeneous-eigenproblem.lean",
+      "source_sha256": "8086da17f426945c622b17df50e60dc656f8f97f14ab230093a384f63ed1f0a0",
+      "log": "negative-controls/homogeneous-eigenproblem.log",
+      "log_sha256": "d8216dba71ec6bd4a7db4dc1f496013244c3671386204e3b2026a5b7dbcb5eac",
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "-DautoImplicit=false",
+        "-DrelaxedAutoImplicit=false",
+        "-DmaxHeartbeats=800000",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage19\\negative-controls\\homogeneous-eigenproblem.lean"
+      ],
+      "exit_code": 1,
+      "seconds": 29.3871300999308,
+      "expected": "REJECTED",
+      "observed": "REJECTED_INTENDED_MUTATION"
+    },
+    {
+      "name": "missing-conjugation",
+      "file": "negative-controls/missing-conjugation.lean",
+      "source_sha256": "ad8b5376576185c7d365f029aa3f0e140fcbd80c4616d1355eaadbb30492d437",
+      "log": "negative-controls/missing-conjugation.log",
+      "log_sha256": "8640d4e835670edd377cffc7d0879bfcc8c10d774de5f38d95cb47f02f07e8b2",
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "-DautoImplicit=false",
+        "-DrelaxedAutoImplicit=false",
+        "-DmaxHeartbeats=800000",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage19\\negative-controls\\missing-conjugation.lean"
+      ],
+      "exit_code": 1,
+      "seconds": 29.681245499989018,
+      "expected": "REJECTED",
+      "observed": "REJECTED_INTENDED_MUTATION"
+    },
+    {
+      "name": "missing-lattice-atoms",
+      "file": "negative-controls/missing-lattice-atoms.lean",
+      "source_sha256": "071661e22bb39c2604b73f68d1a7c07e10ed9766c2bfe90aae1f961a3dd7df15",
+      "log": "negative-controls/missing-lattice-atoms.log",
+      "log_sha256": "373250345c1cdb960710c6fb22c3e0336fc4d246ee145526e2c545403c666838",
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "-DautoImplicit=false",
+        "-DrelaxedAutoImplicit=false",
+        "-DmaxHeartbeats=800000",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage19\\negative-controls\\missing-lattice-atoms.lean"
+      ],
+      "exit_code": 1,
+      "seconds": 25.487238600035198,
+      "expected": "REJECTED",
+      "observed": "REJECTED_INTENDED_MUTATION"
+    },
+    {
+      "name": "synthetic-spectral-measure",
+      "file": "negative-controls/synthetic-spectral-measure.lean",
+      "source_sha256": "6327f48499d723aade54c6472a41e1a81ed4413fe9324582e81e81a0c094aba8",
+      "log": "negative-controls/synthetic-spectral-measure.log",
+      "log_sha256": "0cee7def201107048200e9f2cbc6960bf3e1f29ccbfe2ecdf64e101605e71249",
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "-DautoImplicit=false",
+        "-DrelaxedAutoImplicit=false",
+        "-DmaxHeartbeats=800000",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage19\\negative-controls\\synthetic-spectral-measure.lean"
+      ],
+      "exit_code": 1,
+      "seconds": 25.775698500103317,
+      "expected": "REJECTED",
+      "observed": "REJECTED_INTENDED_MUTATION"
+    },
+    {
+      "name": "wrong-fourier-2pi",
+      "file": "negative-controls/wrong-fourier-2pi.lean",
+      "source_sha256": "6af30b4d62456cf13ed6311d4bc24857a7e76ac9e842ae86484b33c99aeb9a3f",
+      "log": "negative-controls/wrong-fourier-2pi.log",
+      "log_sha256": "29f54a0d1afbd94e543b25588c390274c5aac399060fff3d896866378a1d5763",
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "-DautoImplicit=false",
+        "-DrelaxedAutoImplicit=false",
+        "-DmaxHeartbeats=800000",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage19\\negative-controls\\wrong-fourier-2pi.lean"
+      ],
+      "exit_code": 1,
+      "seconds": 24.847125399974175,
+      "expected": "REJECTED",
+      "observed": "REJECTED_INTENDED_MUTATION"
+    },
+    {
+      "name": "wrong-reflection-kappa",
+      "file": "negative-controls/wrong-reflection-kappa.lean",
+      "source_sha256": "d75f23b3d9a6fe9f23bfad03bb9706fd31723204b3f35183951a0b147a4c45c6",
+      "log": "negative-controls/wrong-reflection-kappa.log",
+      "log_sha256": "85c5040b0a090c815e357aad15c5900df8118aa608c445c2def41a5b1848bd64",
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "-DautoImplicit=false",
+        "-DrelaxedAutoImplicit=false",
+        "-DmaxHeartbeats=800000",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage19\\negative-controls\\wrong-reflection-kappa.lean"
+      ],
+      "exit_code": 1,
+      "seconds": 25.69021759997122,
+      "expected": "REJECTED",
+      "observed": "REJECTED_INTENDED_MUTATION"
+    }
+  ],
+  "finished_at": "2026-10-24T14:37:47.788916+00:00",
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "full_release_accepted": false
+}

@@ -1,0 +1,20 @@
+{
+  "status": "CONSISTENCY_ONLY_NOT_FORMAL_OR_RH_EVIDENCE",
+  "precision_decimal_digits": 60,
+  "parameter_is_not_a_zero": true,
+  "fourier_wrong_2pi_mismatch": "2.17710406830821384578306910059986565454200841690109010038505",
+  "correct_conjugation_residual": "8.69692824144828433779738955758388759223266889697601346189823e-62",
+  "missing_conjugation_mismatch": "0.969358735580239317632883029302341991567057778419763108644371",
+  "reflection_same_kappa_residual": "0.0",
+  "reflection_conjugated_kappa_mismatch": "1.0",
+  "positive_gram_nonreal_control": {
+    "identity_residual": "1.24460305557222834142881281075602484811805043374423342662022e-60",
+    "diagonal_norms": [
+      "12.5",
+      "17.5384615384615384615384615384615384615384615384615384615385"
+    ],
+    "gram_determinant": "80.0",
+    "source_is_synthetic_control_not_zeta": true
+  },
+  "interpretation": "Correct conventions agree; wrong scaling/conjugation/reflection fail. Positive resolvent Gram identities coexist with nonreal parameters."
+}
