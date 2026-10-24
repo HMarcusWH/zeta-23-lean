@@ -15,14 +15,14 @@ REPO = HERE.parents[5]
 MODULES = ('MaskedNativeRate', 'ComplexLocalMeasures', 'AuxiliaryCompletions',
            'MultiplicityTail', 'DilatedComb', 'RenormalizedCoPoisson', 'FirstCellCost',
            'WeightedMixing', 'NearGapLimits', 'ProfileEulerMaclaurin', 'ZeroProfiles',
-           'LogFourierSobolev', 'ForcedEuler')
+           'LogFourierSobolev', 'ForcedEuler', 'SamplingCompatibility')
 CONSUMERS = ('ExpectedMasks', 'ExpectedComplex', 'ExpectedAuxiliary',
              'ExpectedMultiplicity', 'ExpectedComb', 'ExpectedFirstCell',
              'ExpectedWeighted', 'ExpectedNearGap', 'ExpectedNearGapLimit',
              'ExpectedNormalizedLimit', 'ExpectedWeightedInverse',
              'ExpectedCoPoissonFamily', 'ExpectedCoPoissonOrderZero', 'ExpectedZeroMeasure',
              'ExpectedEulerMaclaurin', 'ExpectedZeroProfiles', 'ExpectedLogFourierSobolev',
-             'ExpectedForcedEuler')
+             'ExpectedForcedEuler', 'ExpectedSamplingCompatibility')
 ALLOWED_AXIOMS = {'propext', 'Classical.choice', 'Quot.sound'}
 
 

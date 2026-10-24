@@ -224,6 +224,11 @@
       "sha256": "e833dad08f5c3a1fd477ab56f65db12d984fa51e18fd638d2b2aeddae77f9187"
     },
     {
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedSamplingCompatibility.lean",
+      "bytes": 12562,
+      "sha256": "6cbfca4ac5b49becffd45a81a380ef3e4a49a6b9fbe19f134f28a897bf0011e6"
+    },
+    {
       "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedWeighted.lean",
       "bytes": 5650,
       "sha256": "e137ed312f799cd589126a89281470c9f45293bcccf1386598dd66de30639bad"
@@ -4920,8 +4925,8 @@
     },
     {
       "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/run_candidate_checks.py",
-      "bytes": 6653,
-      "sha256": "4d0b513561c80f18148f073d8c2633588c52b30238d79aeb9e1f977855470c90"
+      "bytes": 6711,
+      "sha256": "068e2a2d2cbe175b3908bceeed402f0946d3d21c4662dc3addc43fb0168d463a"
     }
   ]
 }
