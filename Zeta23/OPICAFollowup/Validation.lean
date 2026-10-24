@@ -8432,7 +8432,7 @@ eta data.  Both complex coordinate equations and the absolute convolution
 integrals are retained. -/
 def independentlyIntendedComplexMobius
     (sigma : LocallyFiniteComplexMeasure) (a : ℝ)
-    (ha : 1 / 2 < a) (hm : mixingExponentialMoment a sigma < ∞) : Prop :=
+    (ha : 1 / 2 < a) (hm : mixingExponentialMoment a sigma < (∞ : ℝ≥0∞)) : Prop :=
   let physical := weightedDilationMixture sigma a ha.le hm
   let etaReP := positiveLogMeasure physical.rePart.positive
   let etaReN := positiveLogMeasure physical.rePart.negative
@@ -8454,15 +8454,15 @@ def independentlyIntendedComplexMobius
     sigma.imPart.negative +
       (moebiusPlusComb ∗ etaImP + moebiusMinusComb ∗ etaImN)) ∧
   -- All physical input/output coordinates lie in the weighted algebra.
-  (∀ i : Fin 4, weightedLogNorm a (mixingCoordinate sigma i) < ∞) ∧
+  (∀ i : Fin 4, weightedLogNorm a (mixingCoordinate sigma i) < (∞ : ℝ≥0∞)) ∧
   (∀ i : Fin 4, weightedLogNorm a
-    (positiveLogMeasure (mixingCoordinate physical i)) < ∞) ∧
+    (positiveLogMeasure (mixingCoordinate physical i)) < (∞ : ℝ≥0∞)) ∧
   -- Absolute weighted Fubini for every coordinate, including imaginary ones.
   (∀ i : Fin 4, weightedLogNorm a
-    (absoluteMobius ∗ positiveLogMeasure (mixingCoordinate physical i)) < ∞) ∧
+    (absoluteMobius ∗ positiveLogMeasure (mixingCoordinate physical i)) < (∞ : ℝ≥0∞)) ∧
   (∀ i : Fin 4,
     (∫⁻ x, ∫⁻ y, ENNReal.ofReal (Real.exp (-a * (x + y)))
-      ∂(positiveLogMeasure (mixingCoordinate physical i)) ∂absoluteMobius) < ∞) ∧
+      ∂(positiveLogMeasure (mixingCoordinate physical i)) ∂absoluteMobius) < (∞ : ℝ≥0∞)) ∧
   -- The positive/negative physical Mobius combs form its Jordan pair.
   (moebiusPlusComb ⟂ₘ moebiusMinusComb) ∧
   -- Exact weighted variation norm, not merely an upper bound.
@@ -8472,31 +8472,31 @@ def independentlyIntendedComplexMobius
 
 theorem expected_independent_complete_complex_mobius
     (sigma : LocallyFiniteComplexMeasure) (a : ℝ)
-    (ha : 1 / 2 < a) (hm : mixingExponentialMoment a sigma < ∞) :
+    (ha : 1 / 2 < a) (hm : mixingExponentialMoment a sigma < (∞ : ℝ≥0∞)) :
     independentlyIntendedComplexMobius sigma a ha hm
     := by
   rcases weighted_mobius_inverse sigma a ha hm with
     ⟨hraw, hre, him, hunit, hinvre, hinvim, hsigma, heta, hmul, hn, hmobius⟩
   let physical := weightedDilationMixture sigma a ha.le hm
   have hetaAll (i : Fin 4) : weightedLogNorm a
-      (positiveLogMeasure (mixingCoordinate physical i)) < ∞ := by
+      (positiveLogMeasure (mixingCoordinate physical i)) < (∞ : ℝ≥0∞) := by
     fin_cases i
     · exact heta.1
     · exact heta.2.1
     · exact heta.2.2.1
     · exact heta.2.2.2
-  have habsolute : weightedLogNorm a (moebiusPlusComb + moebiusMinusComb) < ∞ := by
+  have habsolute : weightedLogNorm a (moebiusPlusComb + moebiusMinusComb) < (∞ : ℝ≥0∞) := by
     rw [weightedLogNorm_add]
     exact ENNReal.add_lt_top.mpr (weightedLogNorm_moebiusComb_lt_top ha)
   have hconv (i : Fin 4) : weightedLogNorm a
       ((moebiusPlusComb + moebiusMinusComb) ∗
-        positiveLogMeasure (mixingCoordinate physical i)) < ∞ := by
+        positiveLogMeasure (mixingCoordinate physical i)) < (∞ : ℝ≥0∞) := by
     rw [hmul]
     exact ENNReal.mul_lt_top habsolute (hetaAll i)
   have hfubini (i : Fin 4) :
       (∫⁻ x, ∫⁻ y, ENNReal.ofReal (Real.exp (-a * (x + y)))
         ∂(positiveLogMeasure (mixingCoordinate physical i))
-        ∂(moebiusPlusComb + moebiusMinusComb)) < ∞ := by
+        ∂(moebiusPlusComb + moebiusMinusComb)) < (∞ : ℝ≥0∞) := by
     rw [← Measure.lintegral_conv (by fun_prop :
       Measurable (fun z : ℝ => ENNReal.ofReal (Real.exp (-a * z))))]
     exact hconv i
@@ -8532,7 +8532,7 @@ def postSealMobiusAuxiliaryInterface
 
 theorem expected_independent_complex_mobius_full_interface
     (sigma : LocallyFiniteComplexMeasure) (a : ℝ)
-    (ha : 1 / 2 < a) (hm : mixingExponentialMoment a sigma < ∞) :
+    (ha : 1 / 2 < a) (hm : mixingExponentialMoment a sigma < (∞ : ℝ≥0∞)) :
     independentlyIntendedComplexMobius sigma a ha hm ∧
       postSealMobiusAuxiliaryInterface sigma a := by
   rcases weighted_mobius_inverse sigma a ha hm with
