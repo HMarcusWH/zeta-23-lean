@@ -1,0 +1,8 @@
+test_all_original_source_bytes_and_registry_objects (test_no_scope_promotion.ProtectedHistory.test_all_original_source_bytes_and_registry_objects) ... ok
+test_duplicate_registry_identity_rejected (test_no_scope_promotion.ProtectedHistory.test_duplicate_registry_identity_rejected) ... ok
+test_historical_object_mutation_rejected (test_no_scope_promotion.ProtectedHistory.test_historical_object_mutation_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 7.292s
+
+OK

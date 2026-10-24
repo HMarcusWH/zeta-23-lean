@@ -1,0 +1,137 @@
+{
+  "schema": "OPICA_FOLLOWUP_AMENDMENT_EVALUATION_V1_1",
+  "amendment": {
+    "path": "C:/Users/macka/Downloads/OPICA_Followup_PostGreen_Amendment_v1_1_2026-10-21.md",
+    "sha256": "16bb41d7ecc1b199ed97ace5ba37beb5ffc691ca648b4bc12597911be7250cbd",
+    "role": "Supplemental proposal, evaluated rather than silently substituted for normative statements"
+  },
+  "scope": {
+    "normative_primary_roots": 100,
+    "normative_acceptance_units": 28,
+    "normative_lean_files": 43,
+    "normative_new_paths": 84,
+    "normative_existing_edits": 12,
+    "new_required_roots": [],
+    "new_paths": [],
+    "mandatory_statements_unchanged": true,
+    "proposed_declarations_all_optional": true
+  },
+  "parent_evidence": {
+    "accepted_merge": "d53dd70d38b0762af130b1d19b795af259f505f5",
+    "original_head": "553b4263b58d9fec178320de251ff299a0bd702a",
+    "tree": "12691099f1a155a8bfa3ad4f6689146175b233b2",
+    "head_merge_test_tree_equal": true,
+    "compiler_artifact": "12342876090",
+    "compiler_archive_sha256": "1ffbc5055e27576599e957f3ad8a0a47ed5c69090d1281bd096d3e5cb4d3ad03",
+    "compiler_revalidation": "Parent agent reports unchanged P0 validate_compiler_receipt success, all three raw log hashes match; bindings reparse 613 declarations/76 primary roots/8 constructors/10655 dependency nodes. See work/opica-parent-harvest/parent-artifact-revalidation.json.",
+    "workflow_effective_scopes": 21,
+    "effective_successful_jobs": 59,
+    "conditional_skips": 2,
+    "source_falsifier_disposition": "UNRESOLVED 7/18 under smaller budget, distinct from standalone WP4 PASS 18/18",
+    "RHRC_route": "CONTINUE",
+    "RH": "OPEN"
+  },
+  "candidates": [
+    {
+      "id": "C2",
+      "status": "DERIVED_VALID_NOT_YET_LEAN_PROVED",
+      "statement": "Every real signed Radon measure of polynomial total-variation growth, Fourier-selfdual for exp(-2pi*i*x*xi), with exact punctured unit gap and nonnegative restriction off Z, equals its origin mass times the integer comb.",
+      "proof_assessment": [
+        "Compact autocorrelation smoothing makes f_epsilon Schwartz and its Fourier transform w_epsilon=sincSquared*|Fourier(phi_epsilon)|^2 nonnegative.",
+        "Each w_epsilon is Schwartz and absolutely integrable against polynomial-growth total variation; do not assume bare sincSquared is integrable.",
+        "Uniform convergence f_epsilon->triangle on one fixed compact gives integral f_epsilon->nu({0}); exact origin term in integral w_epsilon is nu({0}).",
+        "Fatou applies to the positive OFF-LATTICE restriction. It yields integral sincSquared dnu_off=0 even if this extended integral was not previously finite.",
+        "Strict positivity of sincSquared off Z forces lattice support. Full distributional selfduality plus integer support implies unit periodicity; compact atom tests give equal weights.",
+        "Evenness follows from Fourier squared equals reflection; it is not an extra hypothesis. Negative scalar combs are allowed."
+      ],
+      "api_gap": [
+        "P0 HasLinearGrowth is O(R), not polynomial O(R^N).",
+        "P0 HasUnitGap removes origin mass; C2 permits it. Do not pass a punctured gap as HasUnitGap.",
+        "P0 regularizedTriangle uses ONE normalized bump, whose Fourier multiplier need not be nonnegative. A double convolution/reflection lemma is required.",
+        "Use toTemperedDistribution with derived temperate-growth instances; generalize translation/pairing support arguments without pretending polynomial growth is linear."
+      ],
+      "boundary_controls": [
+        "c*comb for c positive, zero and negative satisfies exactly the claimed classification.",
+        "A lattice-supported weighted comb is not automatically periodic; periodicity uses selfduality.",
+        "Derivative-of-atom tempered distributions are excluded by the order-zero measure premise.",
+        "For mu=sum_n (n+1/2)^2 delta_(n+1/2), polynomial mass growth holds while bare integral sincSquared dmu diverges; P0's linear-growth dominated-convergence shortcut is unavailable."
+      ],
+      "native_authority": "No actual native positive selfdual sharp-gap measure is constructed."
+    },
+    {
+      "id": "C3",
+      "status": "FIRST_BOUND_FALSIFIED_AS_WRITTEN_SECOND_BOUND_DERIVED_VALID",
+      "tested_identity": "P_epsilon-N_epsilon = D_epsilon + integral f_epsilon dnu - nu({0})",
+      "identity_assessment": "Correct, including the sign of D=<Fourier(nu)-nu,f> and the origin subtraction; w_epsilon(0)=1 and w_epsilon(n)=0 at every nonzero integer.",
+      "error": "The first displayed inequality has no upper restriction on epsilon. Its replacement of the smoothing-support interval [-1-epsilon,1+epsilon] by [-2,2] is invalid when epsilon>1.",
+      "counterexample_json_pointer": "/supplemental_crosswalk/2/falsification",
+      "repair_proposals": [
+        {
+          "kind": "ADDITIONAL_PREMISE_REQUIRES_EXPLICIT_AMENDMENT_APPROVAL",
+          "statement": "Keep the original [-2,2] cost and explicitly require 0<=epsilon<=1 (or the natural nonvacuous 0<epsilon<=1). Do not silently add this to the source proposal."
+        },
+        {
+          "kind": "ALTERED_COST_REQUIRES_EXPLICIT_AMENDMENT_APPROVAL",
+          "statement": "For general epsilon>=0 replace epsilon*TV([-2,2]) by epsilon*TV([-1-epsilon,1+epsilon])."
+        }
+      ],
+      "derivation": [
+        "Triangle is 1-Lipschitz, psi is nonnegative mass one and supported in [-epsilon,epsilon], so |f_epsilon-triangle|<=epsilon.",
+        "The difference vanishes outside [-1-epsilon,1+epsilon]. Integrating against variation gives the general smoothing cost.",
+        "Punctured gap (-a,a) makes |integral triangle dnu - nu({0})| <= (1-a)*TV([-1,1]).",
+        "The exact identity and triangle inequality then yield the repaired first bound."
+      ],
+      "second_bound_assessment": [
+        "R>=1 and epsilon<=1/(2*pi*R) already force epsilon<1, so the stated second bound avoids the first-bound defect.",
+        "From even nonnegative phi and support(phi*reflection(phi)) subset [-epsilon,epsilon], positivity rules out phi support beyond [-epsilon/2,epsilon/2].",
+        "Thus |Fourier(phi)(xi)-1| <= pi*epsilon*|xi| <=1/2 on |xi|<=R, and |Fourier(phi)|^2>=1/4.",
+        "P0 sincSquared_lower_on_signedBudgetRegion gives sincSquared>=4*d^2/(pi^2*R^2); multiplying gives the stated d^2/(pi^2*R^2) coefficient.",
+        "Alternatively prove the half-Fourier lower bound from an explicitly constructed bump supported in [-epsilon/2,epsilon/2], as an explicit regularizer definition, not an unannounced new assumption."
+      ],
+      "native_rate_correction": "An upper bound E_T<=exp(o(T)) for nonnegative E_T yields log(1+E_T)=o(T), not literal E_T=exp(o(T)) without lower control. E_T=exp(-T), or E_T=0, falsifies the latter literal reading.",
+      "native_obligations_open": [
+        "Construct a genuine order-zero measure from the unchanged physical j/Pj source.",
+        "Prove independent tested Fourier-defect estimates rather than repackage high-mask energy.",
+        "Track negative mass, gap deficit, local variation, b_T, c_T and the R_T^2/d_T^2 observation loss in the actual same-source theorem.",
+        "Discharge native J5.2 and all actual observation identities; no NativeCandidate structure may hide these as solved fields."
+      ]
+    },
+    {
+      "id": "C4",
+      "status": "DERIVED_VALID_FOR_FIXED_MEASURE_AND_FULL_DISTRIBUTIONAL_DEFECT",
+      "statement": "A fixed polynomial-growth lattice-supported signed Radon correction cannot make a nonzero positive off-lattice, punctured-unit-gapped component Fourier-selfdual while preserving those conditions.",
+      "proof_assessment": [
+        "For lattice eta, integral w_epsilon deta=eta({0}) exactly; compact regularizer convergence gives integral f_epsilon deta->eta({0}).",
+        "For positive off-lattice nonzero lambda with a unit gap, integral f_epsilon dlambda->0, while Fatou gives liminf integral w_epsilon dlambda>=integral sincSquared dlambda>0 (possibly infinity).",
+        "Full selfduality of lambda+eta would equate the two tested pairings for every shrinking epsilon, a contradiction.",
+        "This direct proof avoids needing the complete periodic-weight conclusion of C2, though C2 also implies the obstruction."
+      ],
+      "quantifier_limit": "The correction eta is one fixed order-zero measure and selfduality is an equality of distributions, or at least all shrinking regularized tests. This is not a claim about one finite scalar test.",
+      "finite_stage_countercontrol": "For any regularizer with f_epsilon(1)>0, eta=c*delta_1 has D_eta=-c*f_epsilon(1); choose c to cancel a chosen component's D_epsilon exactly for that single test. The unit open gap is retained. Such a correction does not establish full selfduality.",
+      "preserved_mandatory_roots": [
+        "square_fourier_defect",
+        "square_defect_origin_positive",
+        "square_no_lattice_repair",
+        "square_selfdual_projection_fills_gap"
+      ],
+      "excluded": "Lattice delta derivatives, epsilon-dependent corrections and uncontrolled limiting total variation require separate analysis."
+    }
+  ],
+  "earlier_script_review": {
+    "confirmed": [
+      "replay_controls.py initially rejects immutable Round2 numerical receipts because that script lacks interval_certified and instead declares PASS_NUMERICAL_CONSISTENCY_NOT_INTERVAL_CERTIFIED, infinite_theorem_certification=false, new_Lean_roots=0 and independent_review=false. Use exact per-suite validators, never edit the frozen script.",
+      "run_checker initially permits a stale preexisting JSON file after a successful process which emits no replacement. Remove/preclude preexisting receipts or use a fresh per-run directory.",
+      "Checker identity was initially hashed once before all executions; bind executed bytes/receipt script_sha256 and recheck sources after execution. These are regression-integrity findings, not a claim of an open full-release bypass."
+    ],
+    "no_major_authority_bypass_found": "capture_parent and preflight explicitly advertise source/preparation only; release and acceptance remain closed. Parent-extension pure routines explicitly require callers to source-bind their baseline and reviewed exact child objects.",
+    "future_wrapper_requirement": "Do not treat ValidatedContext isinstance alone as independent evidence: construct through validate_extension_context using the pinned baseline/descriptor/root bytes, and never deserialize or manually fabricate a validated context.",
+    "child_parser_review": "The child namespace/protocol/module substitutions preserve the parent's public inventory, axiom, type DAG and recursive TYPE/VALUE/STRUCTURE closure design. The builder must freeze a nonempty unique selected-root inventory, compile explicit consumers, bind actual current tree/source before+after, retain all 100 planned roots as pending, and label the 9-root slice partial. No parent mutable globals should be patched."
+  },
+  "claim_firewall": {
+    "all_candidates_formal_status": "OPEN until separately Lean compiled/type-audited",
+    "RH": "OPEN",
+    "Step4": "OPEN",
+    "full_followup": "OPEN",
+    "independent_review": "NOT_ESTABLISHED"
+  }
+}

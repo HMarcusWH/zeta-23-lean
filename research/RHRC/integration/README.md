@@ -6,6 +6,16 @@ and MCM-HMWH.
 
 It does **not** create mathematical theorem authority.
 
+## OPICA follow-up navigation (22 October 2026)
+
+For draft PR #294, start with the [manual route map](../graph/OPICA_FOLLOWUP_CURRENT_STATE.md),
+the [continuation guide](opica_followup/continuation/2026-10-22/README.md),
+the [current root ledger](opica_followup/continuation/2026-10-22/ROOT_LEDGER_100.json) and [current module status](opica_followup/continuation/2026-10-22/MODULE_STATUS.md).
+Those pages distinguish historical source-bound evidence, narrow local gates,
+candidate work and absent obligations, and link the current-stage handover.
+All 100 roots remain required. Aggregate/full-release acceptance, RH and Step 4
+are OPEN. The anchor descriptions below preserve the earlier integration context.
+
 ## Three independent anchors
 
 The integration layer keeps three authorities separate:

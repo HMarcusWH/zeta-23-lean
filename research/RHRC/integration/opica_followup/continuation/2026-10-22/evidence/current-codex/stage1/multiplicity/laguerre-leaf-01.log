@@ -1,0 +1,311 @@
+Zeta23/OPICAFollowup/MultiplicityTail.lean:36:4: error: Type mismatch: After simplification, term
+  IntegrableOn.add hP hQ
+ has type
+  @IntegrableOn ℝ ℝ Real.measureSpace.toMeasurableSpace PseudoMetricSpace.toUniformSpace.toTopologicalSpace
+    NormedAddCommGroup.toENormedAddCommMonoid.toContinuousENorm
+    ((fun x => Real.exp (-x) * eval x P) + fun x => Real.exp (-x) * eval x Q) (Ioi 0) volume
+but is expected to have type
+  @IntegrableOn ℝ ℝ Real.measureSpace.toMeasurableSpace PseudoMetricSpace.toUniformSpace.toTopologicalSpace
+    SeminormedAddGroup.toContinuousENorm (fun x => Real.exp (-x) * eval x P + Real.exp (-x) * eval x Q) (Ioi 0) volume
+Zeta23/OPICAFollowup/MultiplicityTail.lean:39:23: error: not a positivity goal
+Zeta23/OPICAFollowup/MultiplicityTail.lean:40:4: error: Type mismatch: After simplification, term
+  Integrable.const_mul h a
+ has type
+  Integrable (fun x => a * (x ^ n * Real.exp (x * -1))) (volume.restrict (Ioi 0))
+but is expected to have type
+  IntegrableOn (fun x => a * (x ^ n * Real.exp (-x))) (Ioi 0) volume
+Zeta23/OPICAFollowup/MultiplicityTail.lean:49:14: error(lean.unknownIdentifier): Unknown identifier `tendsto_pow_mul_exp_neg_atTop_nhds_zero`
+Zeta23/OPICAFollowup/MultiplicityTail.lean:90:6: error: Tactic `apply` failed: could not unify the conclusion of `@_root_.funext`
+  ?f = ?g
+with the goal
+  Real.instAddCommGroup = Real.normedCommRing.toAddCommGroup
+
+Note: The full type of `@_root_.funext` is
+  ∀ {α : Sort ?u.62} {β : α → Sort ?u.61} {f g : (x : α) → β x}, (∀ (x : α), f x = g x) → f = g
+
+case e'_4
+P Q : ℝ[X]
+x : ℝ
+h :
+  HasDerivAt ((fun x => Real.exp (-x)) * fun x => eval x (P * Q))
+    (Real.exp (-x) * -1 * eval x (P * Q) + Real.exp (-x) * eval x (derivative (P * Q))) x
+⊢ Real.instAddCommGroup = Real.normedCommRing.toAddCommGroup
+Zeta23/OPICAFollowup/MultiplicityTail.lean:91:6: error: `simp` made no progress
+Zeta23/OPICAFollowup/MultiplicityTail.lean:87:79: error: unsolved goals
+case e'_8
+P Q : ℝ[X]
+x : ℝ
+h :
+  HasDerivAt ((fun x => Real.exp (-x)) * fun x => eval x (P * Q))
+    (Real.exp (-x) * -1 * eval x (P * Q) + Real.exp (-x) * eval x (derivative (P * Q))) x
+⊢ (fun x => Real.exp (-x) * eval x (P * Q)) = (fun x => Real.exp (-x)) * fun x => eval x (P * Q)
+
+case e'_9
+P Q : ℝ[X]
+x : ℝ
+h :
+  HasDerivAt ((fun x => Real.exp (-x)) * fun x => eval x (P * Q))
+    (Real.exp (-x) * -1 * eval x (P * Q) + Real.exp (-x) * eval x (derivative (P * Q))) x
+⊢ Real.exp (-x) * eval x (laguerreRodriguesStep P * Q + P * derivative Q) =
+    Real.exp (-x) * -1 * eval x (P * Q) + Real.exp (-x) * eval x (derivative (P * Q))
+Zeta23/OPICAFollowup/MultiplicityTail.lean:99:6: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ∫ (a : ℝ) in Ioi 0,
+    Real.exp (-a) * eval a (laguerreRodriguesStep P) * eval a Q + Real.exp (-a) * eval a P * eval a (derivative Q)
+in the target expression
+  ∫ (x : ℝ) in Ioi 0,
+      Real.exp (-x) * (eval x (laguerreRodriguesStep P) * eval x Q) +
+        Real.exp (-x) * (eval x P * eval x (derivative Q)) =
+    0 - Real.exp (-0) * (eval 0 P * eval 0 Q)
+
+P Q : ℝ[X]
+hd :
+  ∀ (x : ℝ),
+    HasDerivAt (fun x => Real.exp (-x) * eval x (P * Q))
+      (Real.exp (-x) * eval x (laguerreRodriguesStep P * Q + P * derivative Q)) x
+hi : IntegrableOn (fun x => Real.exp (-x) * eval x (laguerreRodriguesStep P * Q + P * derivative Q)) (Ioi 0) volume
+hz : Tendsto (fun x => Real.exp (-x) * eval x (P * Q)) atTop (𝓝 0)
+h :
+  ∫ (x : ℝ) in Ioi 0,
+      Real.exp (-x) * (eval x (laguerreRodriguesStep P) * eval x Q) +
+        Real.exp (-x) * (eval x P * eval x (derivative Q)) =
+    0 - Real.exp (-0) * (eval 0 P * eval 0 Q)
+⊢ laguerreWeightedPair (laguerreRodriguesStep P) Q + laguerreWeightedPair P (derivative Q) = -eval 0 P * eval 0 Q
+Zeta23/OPICAFollowup/MultiplicityTail.lean:166:4: error: Type mismatch: After simplification, term
+  laguerre_iterate_degree_le n (X ^ n)
+ has type
+  (laguerreRodriguesStep^[n] (X ^ n)).natDegree ≤ (X ^ n).natDegree
+but is expected to have type
+  (laguerreRodriguesStep^[n] (X ^ n)).natDegree ≤ n
+Zeta23/OPICAFollowup/MultiplicityTail.lean:189:17: warning: This simp argument is unused:
+  Polynomial.coeff_C
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [hcoeff, hj]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+Zeta23/OPICAFollowup/MultiplicityTail.lean:205:2: error: 'change' tactic failed, pattern
+  laguerreWeightedPair (monicLaguerre n) (monicLaguerre n) = ?m.57
+is not definitionally equal to target
+  ∫ (x : ℝ) in Ioi 0, Real.exp (-x) * eval x (monicLaguerre n) ^ 2 = ↑n.factorial ^ 2
+Zeta23/OPICAFollowup/MultiplicityTail.lean:234:26: error: No applicable extensionality theorem found for type
+  ContinuousENorm ℝ
+
+Note: Extensionality theorems can be registered by marking them with the `[ext]` attribute
+Zeta23/OPICAFollowup/MultiplicityTail.lean:239:6: error: Failed to rewrite using equation theorems for `laguerreSquareProfile`
+Zeta23/OPICAFollowup/MultiplicityTail.lean:256:8: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  Real.exp (-p.re * t) ^ 2
+in the target expression
+  ‖(Ici T).indicator
+          (fun t =>
+            ↑((2 ^ n * p.re ^ n)⁻¹ * eval (2 * p.re * (t - T)) (monicLaguerre n)) *
+              Complex.exp (-(starRingEnd ℂ) p * ↑t))
+          t‖ ^
+      2 =
+    (2 ^ n * p.re ^ n)⁻¹ ^ 2 * Real.exp (-2 * p.re * T) *
+      (Ici 0).indicator (fun x => Real.exp (-x) * eval x (monicLaguerre n) ^ 2) (2 * p.re * (t - T))
+
+case pos
+n : ℕ
+p : ℂ
+T t : ℝ
+hp : 0 < p.re
+ha : 0 < 2 * p.re
+ht : T ≤ t
+hu : 0 ≤ 2 * p.re * (t - T)
+he : Real.exp (-p.re * t) ^ 2 = Real.exp (-2 * p.re * T) * Real.exp (-(2 * p.re * (t - T)))
+⊢ ‖(Ici T).indicator
+          (fun t =>
+            ↑((2 ^ n * p.re ^ n)⁻¹ * eval (2 * p.re * (t - T)) (monicLaguerre n)) *
+              Complex.exp (-(starRingEnd ℂ) p * ↑t))
+          t‖ ^
+      2 =
+    (2 ^ n * p.re ^ n)⁻¹ ^ 2 * Real.exp (-2 * p.re * T) *
+      (Ici 0).indicator (fun x => Real.exp (-x) * eval x (monicLaguerre n) ^ 2) (2 * p.re * (t - T))
+Zeta23/OPICAFollowup/MultiplicityTail.lean:249:33: warning: This simp argument is unused:
+  indicator_of_mem ht
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [monicLaguerreTail, laguerreSquareProfile, indicator_of_mem hu, norm_mul, Complex.norm_real,
+    Real.norm_eq_abs, Complex.norm_exp, Complex.neg_re, Complex.conj_re, Complex.mul_re, Complex.ofReal_re,
+    Complex.ofReal_im, mul_zero, sub_zero, mul_pow, abs_sq]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+Zeta23/OPICAFollowup/MultiplicityTail.lean:250:6: warning: This simp argument is unused:
+  indicator_of_mem hu
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [monicLaguerreTail, indicator_of_mem ht, laguerreSquareProfile, norm_mul, Complex.norm_real,
+    Real.norm_eq_abs, Complex.norm_exp, Complex.neg_re, Complex.conj_re, Complex.mul_re, Complex.ofReal_re,
+    Complex.ofReal_im, mul_zero, sub_zero, mul_pow, abs_sq]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+Zeta23/OPICAFollowup/MultiplicityTail.lean:250:26: warning: This simp argument is unused:
+  norm_mul
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [monicLaguerreTail, indicator_of_mem ht, laguerreSquareProfile, indicator_of_mem hu,
+    Complex.norm_real, Real.norm_eq_abs, Complex.norm_exp, Complex.neg_re, Complex.conj_re, Complex.mul_re,
+    Complex.ofReal_re, Complex.ofReal_im, mul_zero, sub_zero, mul_pow, abs_sq]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+Zeta23/OPICAFollowup/MultiplicityTail.lean:250:35: warning: This simp argument is unused:
+  Complex.norm_real
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [monicLaguerreTail, indicator_of_mem ht, laguerreSquareProfile, indicator_of_mem hu, norm_mul,
+    Real.norm_eq_abs, Complex.norm_exp, Complex.neg_re, Complex.conj_re, Complex.mul_re, Complex.ofReal_re,
+    Complex.ofReal_im, mul_zero, sub_zero, mul_pow, abs_sq]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+Zeta23/OPICAFollowup/MultiplicityTail.lean:250:53: warning: This simp argument is unused:
+  Real.norm_eq_abs
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [monicLaguerreTail, indicator_of_mem ht, laguerreSquareProfile, indicator_of_mem hu, norm_mul,
+    Complex.norm_real, Complex.norm_exp, Complex.neg_re, Complex.conj_re, Complex.mul_re, Complex.ofReal_re,
+    Complex.ofReal_im, mul_zero, sub_zero, mul_pow, abs_sq]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+Zeta23/OPICAFollowup/MultiplicityTail.lean:250:70: warning: This simp argument is unused:
+  Complex.norm_exp
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [monicLaguerreTail, indicator_of_mem ht, laguerreSquareProfile, indicator_of_mem hu, norm_mul,
+    Complex.norm_real, Real.norm_eq_abs, Complex.neg_re, Complex.conj_re, Complex.mul_re, Complex.ofReal_re,
+    Complex.ofReal_im, mul_zero, sub_zero, mul_pow, abs_sq]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+Zeta23/OPICAFollowup/MultiplicityTail.lean:251:6: warning: This simp argument is unused:
+  Complex.neg_re
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [monicLaguerreTail, indicator_of_mem ht, laguerreSquareProfile, indicator_of_mem hu, norm_mul,
+    Complex.norm_real, Real.norm_eq_abs, Complex.norm_exp, Complex.conj_re, Complex.mul_re, Complex.ofReal_re,
+    Complex.ofReal_im, mul_zero, sub_zero, mul_pow, abs_sq]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+Zeta23/OPICAFollowup/MultiplicityTail.lean:251:21: warning: This simp argument is unused:
+  Complex.conj_re
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [monicLaguerreTail, indicator_of_mem ht, laguerreSquareProfile, indicator_of_mem hu, norm_mul,
+    Complex.norm_real, Real.norm_eq_abs, Complex.norm_exp, Complex.neg_re, Complex.mul_re, Complex.ofReal_re,
+    Complex.ofReal_im, mul_zero, sub_zero, mul_pow, abs_sq]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+Zeta23/OPICAFollowup/MultiplicityTail.lean:251:37: warning: This simp argument is unused:
+  Complex.mul_re
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [monicLaguerreTail, indicator_of_mem ht, laguerreSquareProfile, indicator_of_mem hu, norm_mul,
+    Complex.norm_real, Real.norm_eq_abs, Complex.norm_exp, Complex.neg_re, Complex.conj_re, Complex.ofReal_re,
+    Complex.ofReal_im, mul_zero, sub_zero, mul_pow, abs_sq]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+Zeta23/OPICAFollowup/MultiplicityTail.lean:251:52: warning: This simp argument is unused:
+  Complex.ofReal_re
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [monicLaguerreTail, indicator_of_mem ht, laguerreSquareProfile, indicator_of_mem hu, norm_mul,
+    Complex.norm_real, Real.norm_eq_abs, Complex.norm_exp, Complex.neg_re, Complex.conj_re, Complex.mul_re,
+    Complex.ofReal_im, mul_zero, sub_zero, mul_pow, abs_sq]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+Zeta23/OPICAFollowup/MultiplicityTail.lean:252:6: warning: This simp argument is unused:
+  Complex.ofReal_im
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [monicLaguerreTail, indicator_of_mem ht, laguerreSquareProfile, indicator_of_mem hu, norm_mul,
+    Complex.norm_real, Real.norm_eq_abs, Complex.norm_exp, Complex.neg_re, Complex.conj_re, Complex.mul_re,
+    Complex.ofReal_re, mul_zero, sub_zero, mul_pow, abs_sq]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+Zeta23/OPICAFollowup/MultiplicityTail.lean:252:24: warning: This simp argument is unused:
+  mul_zero
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [monicLaguerreTail, indicator_of_mem ht, laguerreSquareProfile, indicator_of_mem hu, norm_mul,
+    Complex.norm_real, Real.norm_eq_abs, Complex.norm_exp, Complex.neg_re, Complex.conj_re, Complex.mul_re,
+    Complex.ofReal_re, Complex.ofReal_im, sub_zero, mul_pow, abs_sq]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+Zeta23/OPICAFollowup/MultiplicityTail.lean:252:33: warning: This simp argument is unused:
+  sub_zero
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [monicLaguerreTail, indicator_of_mem ht, laguerreSquareProfile, indicator_of_mem hu, norm_mul,
+    Complex.norm_real, Real.norm_eq_abs, Complex.norm_exp, Complex.neg_re, Complex.conj_re, Complex.mul_re,
+    Complex.ofReal_re, Complex.ofReal_im, mul_zero, mul_pow, abs_sq]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+Zeta23/OPICAFollowup/MultiplicityTail.lean:252:50: warning: This simp argument is unused:
+  abs_sq
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [monicLaguerreTail, indicator_of_mem ht, laguerreSquareProfile, indicator_of_mem hu, norm_mul,
+    Complex.norm_real, Real.norm_eq_abs, Complex.norm_exp, Complex.neg_re, Complex.conj_re, Complex.mul_re,
+    Complex.ofReal_re, Complex.ofReal_im, mul_zero, sub_zero, mul_pow]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+Zeta23/OPICAFollowup/MultiplicityTail.lean:279:17: error(lean.unknownIdentifier): Unknown identifier `integral_comp_sub_right`
+Zeta23/OPICAFollowup/MultiplicityTail.lean:276:65: error: unsolved goals
+n : ℕ
+p : ℂ
+T : ℝ
+hp : 0 < p.re
+⊢ ((2 * p.re) ^ n)⁻¹ ^ 2 * Real.exp (-2 * p.re * T) * ∫ (a : ℝ), laguerreSquareProfile n (2 * p.re * (a - T)) =
+    Real.exp (-2 * p.re * T) * ↑n.factorial ^ 2 / (2 * p.re) ^ (2 * n + 1)
+Zeta23/OPICAFollowup/MultiplicityTail.lean:288:71: error: typeclass instance problem is stuck
+  MeasureSpace ?m.10
+
+Note: Lean will not try to resolve this typeclass instance problem because the type argument to `MeasureSpace` is a metavariable. This argument must be fully determined before Lean will try to resolve the typeclass.
+
+Hint: Adding type annotations and supplying implicit arguments to functions can give Lean more information for typeclass resolution. For example, if you have a variable `x` that you intend to be a `Nat`, but Lean reports it as having an unresolved type like `?m`, replacing `x` with `(x : Nat)` can get typeclass resolution un-stuck.
+Zeta23/OPICAFollowup/MultiplicityTail.lean:299:5: error: Function expected at
+  monicLaguerreTailL2
+but this term has type
+  ?m.1
+
+Note: Expected a function because this term is being applied to the argument
+  (m - 1)
+
+Hint: The identifier `monicLaguerreTailL2` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+Zeta23/OPICAFollowup/MultiplicityTail.lean:301:5: error: Function expected at
+  monicLaguerreTailL2
+but this term has type
+  ?m.1
+
+Note: Expected a function because this term is being applied to the argument
+  (m - 1)
+
+Hint: The identifier `monicLaguerreTailL2` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+Zeta23/OPICAFollowup/MultiplicityTail.lean:303:5: error: Function expected at
+  monicLaguerreTailL2
+but this term has type
+  ?m.1
+
+Note: Expected a function because this term is being applied to the argument
+  (m - 1)
+
+Hint: The identifier `monicLaguerreTailL2` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+Zeta23/OPICAFollowup/MultiplicityTail.lean:305:16: error: Function expected at
+  monicLaguerreTailL2
+but this term has type
+  x✝
+
+Note: Expected a function because this term is being applied to the argument
+  (m - 1)
+Zeta23/OPICAFollowup/MultiplicityTail.lean:304:69: error: unsolved goals
+x✝ : Sort u_1
+monicLaguerreTailL2 : x✝
+m : ℕ
+hm : 1 ≤ m
+p : ℂ
+hp : 0 < p.re
+T : ℝ
+⊢ (monicLaguerre (m - 1)).Monic ∧
+    (∀ (Q : ℝ[X]), Q.natDegree < m - 1 → laguerreWeightedPair (monicLaguerre (m - 1)) Q = 0) ∧
+      MemLp (monicLaguerreTail (m - 1) p T) 2 volume ∧
+        sorry =ᵐ[volume] monicLaguerreTail (m - 1) p T ∧
+          ‖sorry‖ ^ 2 = Real.exp (-2 * p.re * T) * ↑(m - 1).factorial ^ 2 / (2 * p.re) ^ (2 * (m - 1) + 1) ∧
+            ‖sorry‖ = Real.exp (-p.re * T) * ↑(m - 1).factorial / (2 * p.re) ^ (↑m - 1 / 2)

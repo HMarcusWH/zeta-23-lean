@@ -1,0 +1,18 @@
+'Zeta23.OPICAFollowup.near_gap_controlled_limit_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.OPICAFollowup.nearGap_schwartz_pairing_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.OPICAFollowup.nearGapCombFamily_controlled_limit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OPICANearGapLimitIndependent.expected_near_gap_controlled_limit_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'OPICANearGapLimitIndependent.expected_near_gap_schwartz_pairing_bound' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'OPICANearGapLimitIndependent.expected_CT1_controlled_limit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OPICANearGapLimitIndependent.expected_CT1_family_controlled_limit' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'OPICANearGapLimitIndependent.expected_CT1_terms_nonzero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OPICANearGapLimitIndependent.expected_unit_gap_zero_pairing' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OPICANearGapLimitIndependent.expected_unit_gap_matches_parent' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

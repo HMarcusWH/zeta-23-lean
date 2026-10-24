@@ -1,0 +1,106 @@
+[
+  {
+    "status": "PASS",
+    "base_main_sha": "c3e4c8012945d6b86c2236d9e0cce27e3a4c20d9",
+    "primary_box_count": 6,
+    "control_box_count": 5,
+    "primary_hull": {
+      "Q": 14,
+      "lo_num": 114296060900476,
+      "hi_num": 114914536191100,
+      "den": 281474976710656
+    },
+    "max_refinement_depth": 12,
+    "max_evaluated_cells": 96,
+    "synthetic_controls": "PASS",
+    "new_selector_features_permitted": false,
+    "target_sign_import_permitted": false,
+    "theorem_promotion": false,
+    "rh_claim": false
+  },
+  {
+    "status": "PASS",
+    "primary_box_count": 6,
+    "control_box_count": 5,
+    "primary_hull": {
+      "Q": 14,
+      "lo_num": 114296060900476,
+      "hi_num": 114914536191100,
+      "den": 281474976710656
+    },
+    "max_refinement_depth": 12,
+    "max_evaluated_cells": 96,
+    "deterministic_refinement": true,
+    "target_sign_import_permitted": false
+  },
+  {
+    "status": "PASS",
+    "classification": "TRAJECTORY_RIGIDITY_UNRESOLVED",
+    "evaluated_cell_count": 96,
+    "leaf_count": 97,
+    "max_evaluated_depth": 6,
+    "evaluated_orientation_counts": {
+      "J_NEGATIVE": 0,
+      "J_POSITIVE": 0,
+      "J_UNRESOLVED": 33,
+      "H1_UNRESOLVED": 63
+    },
+    "budget_exhausted_leaf_count": 97,
+    "primary_center_orientations": [
+      {
+        "label": "det_left_o2^-10_r2^-13",
+        "center_e_positive": true,
+        "center_o_positive": true,
+        "J_orientation": "J_POSITIVE",
+        "P2_orientation": "J_POSITIVE"
+      },
+      {
+        "label": "det_right_o2^-10_r2^-13",
+        "center_e_positive": true,
+        "center_o_positive": true,
+        "J_orientation": "J_POSITIVE",
+        "P2_orientation": "J_POSITIVE"
+      },
+      {
+        "label": "det_left_o2^-13_r2^-16",
+        "center_e_positive": true,
+        "center_o_positive": true,
+        "J_orientation": "J_POSITIVE",
+        "P2_orientation": "J_POSITIVE"
+      },
+      {
+        "label": "det_right_o2^-13_r2^-16",
+        "center_e_positive": true,
+        "center_o_positive": true,
+        "J_orientation": "J_POSITIVE",
+        "P2_orientation": "J_POSITIVE"
+      },
+      {
+        "label": "det_left_o2^-16_r2^-19",
+        "center_e_positive": true,
+        "center_o_positive": true,
+        "J_orientation": "J_POSITIVE",
+        "P2_orientation": "J_POSITIVE"
+      },
+      {
+        "label": "det_right_o2^-16_r2^-19",
+        "center_e_positive": true,
+        "center_o_positive": true,
+        "J_orientation": "J_POSITIVE",
+        "P2_orientation": "J_POSITIVE"
+      }
+    ],
+    "orientation_sequence": [],
+    "unresolved_span_count": 1,
+    "unresolved_span_widths": [
+      "9/4096"
+    ],
+    "certified_t_fraction": "0",
+    "distinct_aperture_twin_excluded_outside_fold": false,
+    "P1_P2_crosschecks": true,
+    "theorem_promotion": false,
+    "fb05_closed": false,
+    "negative_root_exclusion": false,
+    "rh_claim": false
+  }
+]

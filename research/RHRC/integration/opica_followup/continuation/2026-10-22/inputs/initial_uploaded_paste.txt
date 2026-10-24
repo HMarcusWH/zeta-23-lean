@@ -1,0 +1,146 @@
+OPICA follow-up PR specification — audit
+Structural checks consistent
+Not implementation-ready without review
+
+The specification is substantially complete as an implementation plan, and its main inventory is internally consistent. However, there are several issues to resolve before treating it as a frozen, executable build contract.
+1. Verified package structure
+100
+Planned Lean theorem roots
+43
+New Lean files
+28
+Coverage units
+3,992
+Recorded structural checks
+
+I independently checked the uploaded JSON inventories:
+- All 100 root IDs and declaration names are unique.
+- Every planned root appears in the paper crosswalk, and every crosswalk reference resolves to a planned root.
+- The 84 proposed new paths, 12 authorized edits and 62 generated-file paths have no duplicates within their inventories.
+- The 43-module proposed import order has no missing or duplicate module entries.
+- The six uploaded specification payloads referenced by the release manifest have matching byte counts and SHA-256 digests.
+- Both uploaded release-manifest copies are byte-identical.
+The supplied validation report records 3,992 successful checks, and its individual result entries agree with that count. These establish specification consistency, not Lean compilation or mathematical validity. All 100 roots remain PLANNED_NOT_PROVED.
+
+Five other listed release payloads, including the complete ZIP package, were not supplied individually, so their recorded hashes and package integrity remain unverified in this review.
+2. Live PR #293 dependency
+I also refreshed the actual GitHub state.
+Item	Live result
+Parent head	553b4263b58d — unchanged
+Parent tree	12691099f1a1 — unchanged
+PR status	Open, draft, unmerged
+Workflow results	20 successful, 1 running
+Individual checks	58 successful, 2 skipped, 1 running
+Remaining check	python-rhrc
+The specification's parent pin is therefore still correct. Its refusal to claim complete parent acceptance is also correct.
+
+The parent intake must be refreshed when the final outstanding job completes; otherwise the child release gate must remain closed.
+3. Parent PR #293 has now finished CI
+21/21 workflows successful
+Draft · Unmerged
+
+The parent has advanced since the earlier intake snapshot. At the same head and tree, all 61 attached checks are now complete: 59 successful and two documented conditional skips.
+
+The push-side OPICA materializer confirms that all 62 canonical generated files match the checked head. The RHKG derived-state check also succeeded.
+
+There is an important workflow-harvest qualification:
+- The dedicated WP4 frozen-feasibility job certified 18/18 tested boxes under a 1,000-node, 1,200-second budget.
+- The separate source-falsifier workflow reported UNRESOLVED, with seven boxes evaluated, under a smaller 500-node, 600-second budget.
+- The broader python-rhrc research disposition remains CONTINUE, with RH explicitly open.
+The two WP4 results are not contradictory proofs: the searches used different resource budgets. They must nevertheless be recorded separately, and the green source-falsifier job must not be described as an 18/18 certificate.
+
+Required change: refresh OPICA_PR293_INTAKE, the parent-acceptance language in the build specification, and affected validation/release hashes. The record should distinguish completed CI from merge acceptance and independent review, neither of which has been established.
+4. Problems to fix in the specification
+Severity	Finding	Required correction
+P1	Incorrect zero-recovery-cost wording	Correct joint_recovery_optimal_norm in both the root inventory and build specification
+P1	99/100 premise fields are empty	Make mathematical assumptions explicit and machine-checkable
+P1	100/100 physical-consumer fields use a generic placeholder	Identify concrete native constructors and consuming declarations
+P2	Actual Lean expected types are not yet specified	Add independently authored signature contracts before proof implementation
+P2	Complete normative build package not available in this upload	Verify the full ZIP, build manifest, source register, scripts and optimized validation receipt
+P2	Parent validator must be extended without weakening P0	Require executable mutation tests demonstrating exact parent-state preservation
+P3	Full scope is one exceptionally large acceptance target	Retain the full scope, but use independently auditable partial milestones during construction
+A. Concrete mathematical wording error
+The planned root joint_recovery_optimal_norm currently says:
+zero cost exactly for the zero target on the zero observation
+
+Taken literally as an exclusivity statement, that is incorrect.
+
+If \(A\) is nonzero but \(\ell=0\), the zero recovery map still has optimal norm zero.
+
+The correct formulation is:
+\[
+\kappa_A=\sup_{Ax\ne0}\frac{|\ell(x)|}{\|Ax\|},
+\]
+
+provided recovery exists, with
+\[
+\kappa_A=0\iff\ell=0.
+\]
+
+When \(A=0\), recoverability forces \(\ell=0\), and the supremum over the empty index set is defined as zero.
+
+This appears to be a specification wording error rather than an error in Round 2's underlying proof, which handles the zero-map convention correctly. It should nevertheless be fixed before constructing a Lean expected type.
+B. The machine-readable theorem contracts are weaker than their descriptions
+This is the most important architectural finding.
+
+The prose build specification frequently records the necessary assumptions correctly. But the actual PUBLIC_ROOTS JSON leaves required_premises empty for 99 roots, and all 100 physical_or_domain_consumer entries repeat the same generic description.
+
+Examples needing explicit machine-verifiable scope include native_sample_stieltjes_identity, native_slow_source_window_rate, weighted_mixture_sharp_gap and quiet_balanced_observation_implies_native_cut.
+
+I would require each root to identify its actual mathematical hypotheses, quantified parameters, source constructor, domain restrictions, expected type consumer and prohibited substitutions. Genuinely assumption-free roots should say so explicitly rather than leaving an ambiguous empty field.
+
+Otherwise, a syntactically valid Lean theorem could prove a weakened conditional statement and still look compliant to a purely structural checker. The planned typed validation is intended to prevent that, but it has not yet been implemented.
+C. The parent-extension protocol needs particularly careful testing
+The design correctly identifies that #293's original validator is intentionally closed: it expects exactly its original 76 roots and associated inventory.
+
+A child must not bypass this by making the parent validator accept arbitrary new names or files.
+
+The proposed validate raw state → verify exact child addition → project parent context → run unchanged P0 checks approach is sensible. I inspected the actual parent validator, and this is a real compatibility problem rather than an invented one.
+
+However, that approach has only been specified, not executed. The eventual tests must demonstrate that unauthorized edits and weakened proof premises fail even when the legitimate child extension is present.
+5. Implementation feasibility
+The four proof lanes make mathematical sense, but they are not equal in difficulty.
+Local algebra and observation controls
+Lower risk
+
+Norm-first comparison, finite-dimensional recovery, Laurent coefficient stability and explicit counterexamples have relatively direct Lean interfaces.
+
+Native arithmetic and J5.2/MS1
+High risk
+
+The exact translated explicit formula, uniform gamma/zeta estimates, physical inverse kernels and full continuous window theorem are substantive analytic formalization projects.
+
+Complex measures and co-Poisson
+High risk
+
+Actual local total variation, Fourier transformation of distributions, infinite measure limits and parameter differentiation must be established before the zero-generated measure consumers are valid.
+
+Native spectral forcing and F1–F3
+High risk
+
+The H⁻¹/H¹ pairing, physical Fourier conventions, weighted zeta spectral measure and source-identical resolvent must all compose without hidden assumptions.
+
+My primary implementation concern is not the directory structure or registry design. It is the size of the genuine infinite-dimensional analytic work. All 100 roots being structurally enumerated is not evidence that the required Mathlib interfaces already exist.
+6. Mathematical consistency assessment
+The proposed root contracts preserve the important boundaries from the two papers: one-copy original source rather than autocorrelation, arbitrary zero multiplicity, fixed versus moving source order, complex conjugation in the Hermitian Gram identities, the actual lattice forcing, and the distinction between a signed high-mask rate and an independently proved upper bound.
+
+I also spot-checked the confluent determinant formula for small multiplicity configurations using exact symbolic arithmetic; those tested cases agreed with the stated expression.
+
+I found no independently established contradiction in the main Q1–Q3, S1–S3 or F1–F3 mathematical targets during this specification review, but that is not an end-to-end proof audit. The substantive analytic results still have PAPER authority until formalized and independently reviewed.
+Final verdict
+Inventory and scope consistency
+
+Proposed dependency architecture
+
+Complete mathematical acceptance contract
+
+Executable child implementation
+
+RH-closing independent constraint
+
+
+The follow-up specification is coherent and close to ready for a controlled implementation handoff. I would correct the recovery-cost wording, strengthen the 100 root-level premise and physical-consumer contracts, refresh the completed parent workflow harvest, and verify the full release bundle before freezing it.
+
+There is no reason to discard the architecture or rewrite it from scratch. These are targeted corrections to make an already substantial specification more resistant to theorem substitution, scope drift and false completion claims.
+
+No files or repository content have been changed.

@@ -1,0 +1,1635 @@
+✔ [3227/3274] Built Zeta23.OPICA.PrimitiveMasks (2.3s)
+✔ [3402/3406] Built Zeta23.OPICA.EnergyRate (3.4s)
+✔ [3403/3406] Built Zeta23.OPICA.DivisorBounds (3.9s)
+⚠ [3404/3406] Built Zeta23.CCM.PoleNeutralCompactInverseCore (2.6s)
+warning: Zeta23/CCM/PoleNeutralCompactInverseCore.lean:81:18: This simp argument is unused:
+  nativePoleCompactInverse
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [nativePoleCompactInverseDerivative, Pi.mul_apply, Pi.sub_apply]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: Zeta23/CCM/PoleNeutralCompactInverseCore.lean:82:8: This simp argument is unused:
+  Pi.mul_apply
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [nativePoleCompactInverse, nativePoleCompactInverseDerivative, Pi.sub_apply]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: Zeta23/CCM/PoleNeutralCompactInverseCore.lean:82:22: This simp argument is unused:
+  Pi.sub_apply
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [nativePoleCompactInverse, nativePoleCompactInverseDerivative, Pi.mul_apply]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: Zeta23/CCM/PoleNeutralCompactInverseCore.lean:79:21: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: Zeta23/CCM/PoleNeutralCompactInverseCore.lean:99:44: This simp argument is unused:
+  nativePoleCompactInverseDerivative
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [nativePoleCompactInverse, Pi.mul_apply, Pi.add_apply]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: Zeta23/CCM/PoleNeutralCompactInverseCore.lean:100:8: This simp argument is unused:
+  Pi.mul_apply
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [nativePoleCompactInverse, nativePoleCompactInverseDerivative, Pi.add_apply]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: Zeta23/CCM/PoleNeutralCompactInverseCore.lean:100:22: This simp argument is unused:
+  Pi.add_apply
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [nativePoleCompactInverse, nativePoleCompactInverseDerivative, Pi.mul_apply]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: Zeta23/CCM/PoleNeutralCompactInverseCore.lean:97:21: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+info: Zeta23/CCM/PoleNeutralCompactInverseCore.lean:264:0: 'Zeta23.CCM.nativePoleCompactInverse_hasDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/PoleNeutralCompactInverseCore.lean:265:0: 'Zeta23.CCM.nativePoleCompactInverseDerivative_hasDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/PoleNeutralCompactInverseCore.lean:266:0: 'Zeta23.CCM.nativePoleCompactInverse_pole_equation' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/PoleNeutralCompactInverseCore.lean:267:0: 'Zeta23.CCM.nativePoleCompactInverse_contDiff_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/PoleNeutralCompactInverseCore.lean:268:0: 'Zeta23.CCM.nativePoleCompactInverse_zero_outside' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/PoleNeutralCompactInverseCore.lean:269:0: 'Zeta23.CCM.nativePoleCompactInverseDerivative_zero_outside' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/PoleNeutralCompactInverseCore.lean:270:0: 'Zeta23.CCM.nativePoleCompactInverse_hasCompactSupport' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/PoleNeutralCompactInverseCore.lean:271:0: 'Zeta23.CCM.nativePoleCompactInverse_clamped_traces' depends on axioms: [propext, Classical.choice, Quot.sound]
+⚠ [3448/3494] Built Zeta23.CCM.UniversalSincDetector (3.0s)
+warning: Zeta23/CCM/UniversalSincDetector.lean:284:58: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: Zeta23/CCM/UniversalSincDetector.lean:287:58: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+info: Zeta23/CCM/UniversalSincDetector.lean:296:0: 'Zeta23.CCM.UniversalSinc.hasSum_width' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/UniversalSincDetector.lean:297:0: 'Zeta23.CCM.UniversalSinc.summable_norm_sinc_sub_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/UniversalSincDetector.lean:298:0: 'Zeta23.CCM.UniversalSinc.product_ne_zero_of_im_ne_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/UniversalSincDetector.lean:299:0: 'Zeta23.CCM.UniversalSinc.fixed_product_ne_zero_of_im_ne_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: Zeta23/CCM/UniversalSincDetector.lean:300:0: 'Zeta23.CCM.UniversalSinc.hasProdUniformlyOn_compact' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/UniversalSincDetector.lean:301:0: 'Zeta23.CCM.UniversalSinc.analyticAt_product' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/UniversalSincDetector.lean:302:0: 'Zeta23.CCM.UniversalSinc.fixed_coincident_factor_zeros' depends on axioms: [propext, Classical.choice, Quot.sound]
+⚠ [3646/3652] Built Zeta23.OPICA.DivisorMask (4.3s)
+warning: Zeta23/OPICA/DivisorMask.lean:38:60: Variable name `he` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _he
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: Zeta23/OPICA/DivisorMask.lean:145:12: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+warning: Zeta23/OPICA/DivisorMask.lean:145:12: 'ring' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: Zeta23/OPICA/DivisorMask.lean:389:83: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: Zeta23/OPICA/DivisorMask.lean:452:46: Variable name `heI` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _heI
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: Zeta23/OPICA/DivisorMask.lean:471:35: Variable name `heI` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _heI
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+⚠ [3650/3686] Built Zeta23.CCM.UniversalSincDetectorBounds (2.6s)
+warning: Zeta23/CCM/UniversalSincDetectorBounds.lean:100:45: This simp argument is unused:
+  Complex.norm_def
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [partialProduct]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: Zeta23/CCM/UniversalSincDetectorBounds.lean:140:50: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+info: Zeta23/CCM/UniversalSincDetectorBounds.lean:155:0: 'Zeta23.CCM.UniversalSinc.product_norm_ofReal_le_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/UniversalSincDetectorBounds.lean:156:0: 'Zeta23.CCM.UniversalSinc.product_norm_ofReal_le_half_pow' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/UniversalSincDetectorBounds.lean:157:0: 'Zeta23.CCM.UniversalSinc.product_norm_ofReal_le_gevrey' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [3681/3686] Built Zeta23.CCM.UniversalSincSourceLaw (2.1s)
+info: Zeta23/CCM/UniversalSincSourceLaw.lean:186:0: 'Zeta23.CCM.UniversalSinc.sourceSampleSum_sub_partial_abs_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/UniversalSincSourceLaw.lean:187:0: 'Zeta23.CCM.UniversalSinc.sourceSampleSum_ae_eq_unclamped' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/UniversalSincSourceLaw.lean:188:0: 'Zeta23.CCM.UniversalSinc.originalSourceLaw_isProbabilityMeasure' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: Zeta23/CCM/UniversalSincSourceLaw.lean:189:0: 'Zeta23.CCM.UniversalSinc.originalSourceLaw_interval_mass' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/UniversalSincSourceLaw.lean:190:0: 'Zeta23.CCM.UniversalSinc.originalSourceLaw_eq_map_scale' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/UniversalSincSourceLaw.lean:191:0: 'Zeta23.CCM.UniversalSinc.fixed_originalSourceLaw_isProbabilityMeasure' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+ℹ [3682/3718] Built Zeta23.CCM.UniversalSincBoxDensity (2.1s)
+info: Zeta23/CCM/UniversalSincBoxDensity.lean:125:0: 'Zeta23.CCM.UniversalSinc.uniformBoxPairDensity_eq_convolution' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: Zeta23/CCM/UniversalSincBoxDensity.lean:126:0: 'Zeta23.CCM.UniversalSinc.originalBoxPairDensity_positive_normalized' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+⚠ [3713/3718] Built Zeta23.CCM.UniversalSincSourceCharacteristic (2.2s)
+warning: Zeta23/CCM/UniversalSincSourceCharacteristic.lean:47:53: This simp argument is unused:
+  neg_mul
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Complex.ofReal_mul, mul_neg, mul_one, one_mul] at hchange
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: Zeta23/CCM/UniversalSincSourceCharacteristic.lean:47:62: This simp argument is unused:
+  one_mul
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Complex.ofReal_mul, mul_neg, mul_one, neg_mul] at hchange
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: Zeta23/CCM/UniversalSincSourceCharacteristic.lean:53:8: This simp argument is unused:
+  zero_add
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Complex.mul_re, Complex.mul_im, Complex.ofReal_re, Complex.ofReal_im, Complex.re_ofNat,
+    Complex.im_ofNat, zero_mul, mul_zero, sub_zero, add_zero]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: Zeta23/CCM/UniversalSincSourceCharacteristic.lean:54:26: 'ring' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: Zeta23/CCM/UniversalSincSourceCharacteristic.lean:54:26: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+warning: Zeta23/CCM/UniversalSincSourceCharacteristic.lean:53:18: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: Zeta23/CCM/UniversalSincSourceCharacteristic.lean:56:12: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: Zeta23/CCM/UniversalSincSourceCharacteristic.lean:151:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: Zeta23/CCM/UniversalSincSourceCharacteristic.lean:152:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+info: Zeta23/CCM/UniversalSincSourceCharacteristic.lean:164:0: 'Zeta23.CCM.UniversalSinc.charFun_centeredUnitBoxLaw' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/UniversalSincSourceCharacteristic.lean:165:0: 'Zeta23.CCM.UniversalSinc.charFun_sourceSamplePartialSum' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/UniversalSincSourceCharacteristic.lean:166:0: 'Zeta23.CCM.UniversalSinc.charFun_originalSourceLaw' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/UniversalSincSourceCharacteristic.lean:167:0: 'Zeta23.CCM.UniversalSinc.fixed_charFun_originalSourceLaw' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/UniversalSincSourceCharacteristic.lean:168:0: 'Zeta23.CCM.UniversalSinc.originalSourceLaw_map_neg' depends on axioms: [propext, Classical.choice, Quot.sound]
+✔ [3714/3718] Built Zeta23.Defs (2.2s)
+✔ [3715/3718] Built Zeta23.Poisson.PaperFT (2.4s)
+ℹ [3807/3833] Built Zeta23.CCM.UniversalSincDetectorInverse (2.1s)
+info: Zeta23/CCM/UniversalSincDetectorInverse.lean:118:0: 'Zeta23.CCM.UniversalSinc.integrable_product_ofReal_norm_moment' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: Zeta23/CCM/UniversalSincDetectorInverse.lean:119:0: 'Zeta23.CCM.UniversalSinc.integrable_product_ofReal' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/UniversalSincDetectorInverse.lean:120:0: 'Zeta23.CCM.UniversalSinc.inverseCandidate_eq_fourier' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/UniversalSincDetectorInverse.lean:121:0: 'Zeta23.CCM.UniversalSinc.contDiff_inverseCandidate' depends on axioms: [propext, Classical.choice, Quot.sound]
+⚠ [3821/3833] Built Zeta23.CCM.UniversalSincSourceTail (6.0s)
+warning: Zeta23/CCM/UniversalSincSourceTail.lean:144:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: Zeta23/CCM/UniversalSincSourceTail.lean:145:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: Zeta23/CCM/UniversalSincSourceTail.lean:147:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+info: Zeta23/CCM/UniversalSincSourceTail.lean:159:0: 'Zeta23.CCM.UniversalSinc.sourceSampleTail_abs_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/UniversalSincSourceTail.lean:160:0: 'Zeta23.CCM.UniversalSinc.multipliable_sinc_tail' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/UniversalSincSourceTail.lean:161:0: 'Zeta23.CCM.UniversalSinc.charFun_originalSourceTailLaw' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/UniversalSincSourceTail.lean:162:0: 'Zeta23.CCM.UniversalSinc.originalSourceLaw_eq_prefix_conv_tail' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+✔ [3824/3833] Built Zeta23.Hypotheses (2.0s)
+✔ [3827/3833] Built Zeta23.Defs.Counting (1.9s)
+⚠ [3828/3833] Built Zeta23.CCM.UniversalSincSourceDensity (2.2s)
+warning: Zeta23/CCM/UniversalSincSourceDensity.lean:22:59: Variable name `ha` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _ha
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: Zeta23/CCM/UniversalSincSourceDensity.lean:22:72: Variable name `hb` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hb
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: Zeta23/CCM/UniversalSincSourceDensity.lean:48:53: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: Zeta23/CCM/UniversalSincSourceDensity.lean:52:19: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: Zeta23/CCM/UniversalSincSourceDensity.lean:76:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: Zeta23/CCM/UniversalSincSourceDensity.lean:125:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: Zeta23/CCM/UniversalSincSourceDensity.lean:147:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+info: Zeta23/CCM/UniversalSincSourceDensity.lean:160:0: 'Zeta23.CCM.UniversalSinc.originalDensityCandidate_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/UniversalSincSourceDensity.lean:161:0: 'Zeta23.CCM.UniversalSinc.continuous_originalDensityCandidate' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: Zeta23/CCM/UniversalSincSourceDensity.lean:162:0: 'Zeta23.CCM.UniversalSinc.originalDensityCandidate_hasCompactSupport' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: Zeta23/CCM/UniversalSincSourceDensity.lean:163:0: 'Zeta23.CCM.UniversalSinc.integral_originalDensityCandidate' depends on axioms: [propext, Classical.choice, Quot.sound]
+⚠ [3829/3836] Built Zeta23.Statement (2.1s)
+warning: Zeta23/Statement.lean:148:30: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+⚠ [3830/3837] Built Zeta23.CCM.UniversalSincSourceDensityTransform (2.5s)
+warning: Zeta23/CCM/UniversalSincSourceDensityTransform.lean:63:8: This simp argument is unused:
+  zero_add
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Complex.mul_re, Complex.mul_im, Complex.ofReal_re, Complex.ofReal_im, Complex.re_ofNat,
+    Complex.im_ofNat, zero_mul, mul_zero, sub_zero, add_zero]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: Zeta23/CCM/UniversalSincSourceDensityTransform.lean:69:6: This simp argument is unused:
+  Complex.re_ofNat
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Complex.mul_re, Complex.mul_im, Complex.ofReal_re, Complex.ofReal_im, Complex.im_ofNat, zero_mul,
+    mul_zero, sub_zero, add_zero, zero_add]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: Zeta23/CCM/UniversalSincSourceDensityTransform.lean:69:24: This simp argument is unused:
+  Complex.im_ofNat
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Complex.mul_re, Complex.mul_im, Complex.ofReal_re, Complex.ofReal_im, Complex.re_ofNat, zero_mul,
+    mul_zero, sub_zero, add_zero, zero_add]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: Zeta23/CCM/UniversalSincSourceDensityTransform.lean:70:6: This simp argument is unused:
+  zero_add
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Complex.mul_re, Complex.mul_im, Complex.ofReal_re, Complex.ofReal_im, Complex.re_ofNat,
+    Complex.im_ofNat, zero_mul, mul_zero, sub_zero, add_zero]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: Zeta23/CCM/UniversalSincSourceDensityTransform.lean:65:26: 'ring' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: Zeta23/CCM/UniversalSincSourceDensityTransform.lean:71:28: 'ring' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: Zeta23/CCM/UniversalSincSourceDensityTransform.lean:65:26: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+warning: Zeta23/CCM/UniversalSincSourceDensityTransform.lean:71:28: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+warning: Zeta23/CCM/UniversalSincSourceDensityTransform.lean:63:18: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: Zeta23/CCM/UniversalSincSourceDensityTransform.lean:64:24: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: Zeta23/CCM/UniversalSincSourceDensityTransform.lean:70:16: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: Zeta23/CCM/UniversalSincSourceDensityTransform.lean:145:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+info: Zeta23/CCM/UniversalSincSourceDensityTransform.lean:174:0: 'Zeta23.CCM.UniversalSinc.paperFT_uniformBoxDensity_ofReal' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/UniversalSincSourceDensityTransform.lean:175:0: 'Zeta23.CCM.UniversalSinc.paperFT_originalBoxPairDensity_ofReal' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: Zeta23/CCM/UniversalSincSourceDensityTransform.lean:176:0: 'Zeta23.CCM.UniversalSinc.paperFT_originalDensityCandidate_ofReal' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+✔ [3832/3841] Built Zeta23.WeilEF.XiLogDeriv (2.3s)
+⚠ [3835/3848] Built Zeta23.CCM.UniversalSincSourceDensityIdentification (2.2s)
+warning: Zeta23/CCM/UniversalSincSourceDensityIdentification.lean:59:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: Zeta23/CCM/UniversalSincSourceDensityIdentification.lean:60:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+info: Zeta23/CCM/UniversalSincSourceDensityIdentification.lean:142:0: 'Zeta23.CCM.UniversalSinc.originalSourceLaw_eq_withDensity' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/UniversalSincSourceDensityIdentification.lean:143:0: 'Zeta23.CCM.UniversalSinc.fourier_originalDensityComplex' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/UniversalSincSourceDensityIdentification.lean:144:0: 'Zeta23.CCM.UniversalSinc.inverseCandidate_eq_originalDensityComplex' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: Zeta23/CCM/UniversalSincSourceDensityIdentification.lean:145:0: 'Zeta23.CCM.UniversalSinc.contDiff_originalDensityCandidate' depends on axioms: [propext, Classical.choice, Quot.sound]
+✔ [3840/3864] Built Zeta23.GammaFacts (2.1s)
+✔ [3851/3867] Built Zeta23.GammaFacts.Series (4.8s)
+✔ [3853/3867] Built Zeta23.ExplicitFormula (5.6s)
+✔ [3854/3867] Built Zeta23.WeilEF.GammaRBracket (2.3s)
+ℹ [3856/3871] Built Zeta23.CCM.UniversalSincSourceSymmetry (1.8s)
+info: Zeta23/CCM/UniversalSincSourceSymmetry.lean:55:0: 'Zeta23.CCM.UniversalSinc.originalDensityCandidate_even' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/UniversalSincSourceSymmetry.lean:56:0: 'Zeta23.CCM.UniversalSinc.originalDensityComplex_even' depends on axioms: [propext, Classical.choice, Quot.sound]
+✔ [3857/3871] Built Zeta23.Analytic.Stirling (4.2s)
+⚠ [3859/3871] Built Zeta23.CCM.NativeIntegerPrimeSource (1.7s)
+warning: Zeta23/CCM/NativeIntegerPrimeSource.lean:46:2: `push_neg` has been deprecated. Prefer using `push Not` instead.
+If you'd rather continue using `push_neg` in your project, you can implement it as follows:
+```
+open Lean.Parser.Tactic in
+macro "push_neg" cfg:optConfig loc:(location)? : tactic =>
+  `(tactic| push $cfg:optConfig Not $[$loc]?)
+```
+info: Zeta23/CCM/NativeIntegerPrimeSource.lean:71:0: 'Zeta23.CCM.native_primeCoefficients_unique' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/NativeIntegerPrimeSource.lean:72:0: 'Zeta23.CCM.native_weighted_dirichlet_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+✔ [3861/3872] Built Zeta23.ExplicitFormula.Bridge (3.6s)
+⚠ [3862/3882] Built Zeta23.CCM.NativeIntegerPrimeField (2.6s)
+warning: Zeta23/CCM/NativeIntegerPrimeField.lean:183:64: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+info: Zeta23/CCM/NativeIntegerPrimeField.lean:223:0: 'Zeta23.CCM.nativePrimeField_eq_history_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/NativeIntegerPrimeField.lean:224:0: 'Zeta23.CCM.nativeIntegerDriveField_eq_history_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/NativeIntegerPrimeField.lean:225:0: 'Zeta23.CCM.nativePrimeField_zero_before_firstPrime' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/NativeIntegerPrimeField.lean:226:0: 'Zeta23.CCM.nativeIntegerDriveField_zero_before_firstPrime' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/NativeIntegerPrimeField.lean:227:0: 'Zeta23.CCM.nativePrimeField_frozen_firstPrime_atom' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/NativeIntegerPrimeField.lean:228:0: 'Zeta23.CCM.nativePrimeField_continuous' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [3866/3888] Built Zeta23.CCM.NativeAbelDiscrepancy (2.1s)
+info: Zeta23/CCM/NativeAbelDiscrepancy.lean:80:0: 'Zeta23.CCM.nativeIntegerAbel_discrepancy_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/NativeAbelDiscrepancy.lean:81:0: 'Zeta23.CCM.nativeIntegerAbel_discrepancy_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [3868/3888] Built Zeta23.GammaFacts.Mu (6.3s)
+info: Zeta23/GammaFacts/Mu.lean:137:2: Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+ℹ [3869/3888] Built Zeta23.CCM.NativeIntegerPrimeConvolution (1.7s)
+info: Zeta23/CCM/NativeIntegerPrimeConvolution.lean:167:0: 'Zeta23.CCM.nativeIntegerPrimePair_fiber' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/NativeIntegerPrimeConvolution.lean:168:0: 'Zeta23.CCM.nativeIntegerTranslateAction_summable_primeField' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/NativeIntegerPrimeConvolution.lean:169:0: 'Zeta23.CCM.nativeIntegerTranslateAction_primeField_eq_integerDriveField' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: Zeta23/CCM/NativeIntegerPrimeConvolution.lean:170:0: 'Zeta23.CCM.nativePrimeField_frozen_causal' depends on axioms: [propext, Classical.choice, Quot.sound]
+⚠ [3870/3888] Built Zeta23.CCM.UniversalSincProductMoments (2.3s)
+warning: Zeta23/CCM/UniversalSincProductMoments.lean:132:30: 'ring' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: Zeta23/CCM/UniversalSincProductMoments.lean:132:30: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+info: Zeta23/CCM/UniversalSincProductMoments.lean:136:0: 'Zeta23.CCM.UniversalSinc.polynomial_sqrt_decay_Ioi_integral' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/UniversalSincProductMoments.lean:137:0: 'Zeta23.CCM.UniversalSinc.polynomial_sqrt_decay_integral' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/UniversalSincProductMoments.lean:138:0: 'Zeta23.CCM.UniversalSinc.product_norm_moment_integral_le_factorial' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: Zeta23/CCM/UniversalSincProductMoments.lean:139:0: 'Zeta23.CCM.UniversalSinc.factorial_two_mul_add_one_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/UniversalSincProductMoments.lean:140:0: 'Zeta23.CCM.UniversalSinc.product_norm_moment_integral_le_gevrey' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+✔ [3871/3888] Built Zeta23.OPICA.LocalData (1.8s)
+⚠ [3872/3891] Built Zeta23.CCM.UniversalSincInverseGevreyBounds (3.3s)
+warning: Zeta23/CCM/UniversalSincInverseGevreyBounds.lean:55:13: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: Zeta23/CCM/UniversalSincInverseGevreyBounds.lean:55:37: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+info: Zeta23/CCM/UniversalSincInverseGevreyBounds.lean:82:4: Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+warning: Zeta23/CCM/UniversalSincInverseGevreyBounds.lean:133:43: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+info: Zeta23/CCM/UniversalSincInverseGevreyBounds.lean:137:0: 'Zeta23.CCM.UniversalSinc.integrable_product_ofReal_smul_moment' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: Zeta23/CCM/UniversalSincInverseGevreyBounds.lean:138:0: 'Zeta23.CCM.UniversalSinc.iteratedDeriv_fourier_product' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/UniversalSincInverseGevreyBounds.lean:139:0: 'Zeta23.CCM.UniversalSinc.norm_iteratedDeriv_fourier_product_le_moment' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: Zeta23/CCM/UniversalSincInverseGevreyBounds.lean:140:0: 'Zeta23.CCM.UniversalSinc.norm_iteratedDeriv_inverseCandidate_le_moment' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: Zeta23/CCM/UniversalSincInverseGevreyBounds.lean:141:0: 'Zeta23.CCM.UniversalSinc.norm_iteratedDeriv_inverseCandidate_le_gevrey' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+ℹ [3873/3891] Built Zeta23.CCM.NativePositiveCompletion (2.5s)
+info: Zeta23/CCM/NativePositiveCompletion.lean:100:0: 'Zeta23.CCM.nativePositiveCompletion_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/NativePositiveCompletion.lean:101:0: 'Zeta23.CCM.nativePositiveCompletion_pos_of_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/NativePositiveCompletion.lean:102:0: 'Zeta23.CCM.nativePositiveCompletion_le_exp' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/NativePositiveCompletion.lean:103:0: 'Zeta23.CCM.nativePositiveCompletion_integrableOn' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [3874/3891] Built Zeta23.GammaFacts.StirlingVert (6.0s)
+info: Zeta23/GammaFacts/StirlingVert.lean:452:6: Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+ℹ [3875/3891] Built Zeta23.CCM.NativeFloorCompletionSource (2.1s)
+info: Zeta23/CCM/NativeFloorCompletionSource.lean:151:0: 'Zeta23.CCM.nativeRationalCausalKernel_weighted_atom' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/NativeFloorCompletionSource.lean:152:0: 'Zeta23.CCM.nativeRationalCausalKernel_integerAction_summable' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: Zeta23/CCM/NativeFloorCompletionSource.lean:153:0: 'Zeta23.CCM.nativeIntegerTranslateAction_rationalKernel_eq_positiveCompletion' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+ℹ [3876/3891] Built Zeta23.CCM.NativeRationalCompletionLaplace (3.8s)
+info: Zeta23/CCM/NativeRationalCompletionLaplace.lean:82:0: 'Zeta23.CCM.nativeRationalCausalKernel_damped_integrableOn' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/NativeRationalCompletionLaplace.lean:83:0: 'Zeta23.CCM.nativeRationalCausalKernel_realLaplace' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/NativeRationalCompletionLaplace.lean:84:0: 'Zeta23.CCM.nativeRationalCausalKernel_signed_integral' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [3877/3905] Built Zeta23.CCM.NativePositiveCompletionCells (2.7s)
+info: Zeta23/CCM/NativePositiveCompletionCells.lean:71:0: 'Zeta23.CCM.nativePositiveCompletionLogDensity_cell' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/NativePositiveCompletionCells.lean:72:0: 'Zeta23.CCM.nativePositiveCompletionLogDensity_cell_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+✔ [3878/3905] Built Zeta23.WeilEF.VerticalLine (9.6s)
+ℹ [3880/3905] Built Zeta23.CCM.NativePositiveCompletionMass (2.1s)
+info: Zeta23/CCM/NativePositiveCompletionMass.lean:64:0: 'Zeta23.CCM.nativePositiveCompletionLogDensity_integrableOn' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/NativePositiveCompletionMass.lean:65:0: 'Zeta23.CCM.nativePositiveCompletion_mass_eq_logIntegral' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/NativePositiveCompletionMass.lean:66:0: 'Zeta23.CCM.nativePositiveCompletionLogDensity_cell_integral_le' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+ℹ [3882/3905] Built Zeta23.CCM.UniversalSincSourceComplexTransform (2.0s)
+info: Zeta23/CCM/UniversalSincSourceComplexTransform.lean:61:0: 'Zeta23.CCM.UniversalSinc.paperFT_originalDensityComplex' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/UniversalSincSourceComplexTransform.lean:62:0: 'Zeta23.CCM.UniversalSinc.fixed_paperFT_originalDensityComplex' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+ℹ [3883/3905] Built Zeta23.CCM.NativePositiveCompletionHead (2.4s)
+info: Zeta23/CCM/NativePositiveCompletionHead.lean:75:57: Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: Zeta23/CCM/NativePositiveCompletionHead.lean:76:46: Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: Zeta23/CCM/NativePositiveCompletionHead.lean:133:0: 'Zeta23.CCM.nativePositiveCompletionLogDensity_cell_integral' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/NativePositiveCompletionHead.lean:134:0: 'Zeta23.CCM.nativePositiveCompletionLogDensity_head_integral' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [3884/3905] Built Zeta23.CCM.UniversalSincSourceFacade (2.2s)
+info: Zeta23/CCM/UniversalSincSourceFacade.lean:218:0: 'Zeta23.CCM.universalSincSource_integral_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/UniversalSincSourceFacade.lean:219:0: 'Zeta23.CCM.paperFT_universalSincSource' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/UniversalSincSourceFacade.lean:220:0: 'Zeta23.CCM.universalSincKernel_support' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/UniversalSincSourceFacade.lean:221:0: 'Zeta23.CCM.universalSincSecondKernel_support' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/UniversalSincSourceFacade.lean:222:0: 'Zeta23.CCM.universalSincSecondSource_integral' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [3885/3905] Built Zeta23.CCM.NativePositiveCompletionTail (6.5s)
+info: Zeta23/CCM/NativePositiveCompletionTail.lean:127:0: 'Zeta23.CCM.nativePositiveCompletionLogDensity_hasSum_tail_cells' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: Zeta23/CCM/NativePositiveCompletionTail.lean:128:0: 'Zeta23.CCM.nativePositiveCompletionLogDensity_tail_integral_le' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+ℹ [3886/3905] Built Zeta23.CCM.OriginalSincNativeSource (1.9s)
+info: Zeta23/CCM/OriginalSincNativeSource.lean:78:0: 'Zeta23.CCM.nativeOriginalSource_supported' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/OriginalSincNativeSource.lean:79:0: 'Zeta23.CCM.nativeOriginalSource_integral' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/OriginalSincNativeSource.lean:80:0: 'Zeta23.CCM.nativeOriginalPrimeField_firstPrime_atom' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [3887/3905] Built Zeta23.CCM.OriginalSincCompactPotential (2.2s)
+info: Zeta23/CCM/OriginalSincCompactPotential.lean:118:0: 'Zeta23.CCM.universalSincSecondKernel_elementary_moments' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/OriginalSincCompactPotential.lean:119:0: 'Zeta23.CCM.originalSincCompactPotential_pole_equation' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/OriginalSincCompactPotential.lean:120:0: 'Zeta23.CCM.originalSincCompactPotential_hasCompactSupport' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/OriginalSincCompactPotential.lean:121:0: 'Zeta23.CCM.originalSincCompactPotential_clamped_traces' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/OriginalSincCompactPotential.lean:122:0: 'Zeta23.CCM.originalSincCompactPotential_memLp_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/OriginalSincCompactPotential.lean:123:0: 'Zeta23.CCM.originalSincCompactPotentialDerivative_memLp_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/OriginalSincCompactPotential.lean:124:0: 'Zeta23.CCM.originalSincCompactPotentialSecondDerivative_memLp_two' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+⚠ [3888/3905] Built Zeta23.CCM.OriginalSincWeightedPoleMoments (3.6s)
+warning: Zeta23/CCM/OriginalSincWeightedPoleMoments.lean:196:40: This simp argument is unused:
+  nativePoleMoment
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [RCLike.re_eq_complex_re, nativeOriginalSource, universalSincSecondSource, nativePoleExponential,
+    Complex.mul_re, Complex.ofReal_re, Complex.ofReal_im, zero_mul, sub_zero]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: Zeta23/CCM/OriginalSincWeightedPoleMoments.lean:208:45: This simp argument is unused:
+  zero_add
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [RCLike.re_eq_complex_re, nativeOriginalSource, universalSincSecondSource, nativePoleExponential,
+    Complex.mul_re, Complex.mul_im, Complex.ofReal_re, Complex.ofReal_im, zero_mul, mul_zero, add_zero, sub_zero]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+info: Zeta23/CCM/OriginalSincWeightedPoleMoments.lean:222:0: 'Zeta23.CCM.nativePoleMoment_deriv' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/OriginalSincWeightedPoleMoments.lean:223:0: 'Zeta23.CCM.nativePoleFirstMoment_deriv' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/OriginalSincWeightedPoleMoments.lean:224:0: 'Zeta23.CCM.nativePoleMoment_differential' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/OriginalSincWeightedPoleMoments.lean:225:0: 'Zeta23.CCM.nativePoleFirstMoment_differential' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/OriginalSincWeightedPoleMoments.lean:226:0: 'Zeta23.CCM.universalSincSecondKernel_first_elementary_moments' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: Zeta23/CCM/OriginalSincWeightedPoleMoments.lean:227:0: 'Zeta23.CCM.nativeOriginalSource_weighted_elementary_moments' depends on axioms: [propext, Classical.choice, Quot.sound]
+✔ [3889/3905] Built Zeta23.OPICAFollowup.NativeSourceFamily (3.8s)
+ℹ [3890/3906] Built Zeta23.CCM.OriginalSincLogDrive (2.9s)
+info: Zeta23/CCM/OriginalSincLogDrive.lean:130:0: 'Zeta23.CCM.nativeOriginalLogDriveSummand_zero_below' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/OriginalSincLogDrive.lean:131:0: 'Zeta23.CCM.nativeOriginalLogDriveSummand_zero_above' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/OriginalSincLogDrive.lean:132:0: 'Zeta23.CCM.nativeOriginalLogDriveSummand_contDiff' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/OriginalSincLogDrive.lean:133:0: 'Zeta23.CCM.nativeOriginalLogDriveSummand_hasCompactSupport' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/OriginalSincLogDrive.lean:134:0: 'Zeta23.CCM.nativeOriginalLogDriveSummand_at_nat' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/OriginalSincLogDrive.lean:135:0: 'Zeta23.CCM.nativeOriginalIntegerDrive_eq_abel_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/OriginalSincLogDrive.lean:136:0: 'Zeta23.CCM.nativeOriginalIntegerDrive_abel_discrepancy_bound' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+ℹ [3891/3906] Built Zeta23.CCM.OriginalSincDriveCancellation (2.9s)
+info: Zeta23/CCM/OriginalSincDriveCancellation.lean:134:0: 'Zeta23.CCM.nativeOriginalLogDriveSummand_integral_eq_exponential' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: Zeta23/CCM/OriginalSincDriveCancellation.lean:135:0: 'Zeta23.CCM.nativeOriginalLogDriveSummand_integral_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/OriginalSincDriveCancellation.lean:136:0: 'Zeta23.CCM.nativeOriginalLogDriveSummand_continuum_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/OriginalSincDriveCancellation.lean:137:0: 'Zeta23.CCM.nativeOriginalIntegerDrive_abs_le_summand_derivative' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+✔ [3892/3906] Built Zeta23.ExceptionalZero.Defs (1.9s)
+ℹ [3893/3906] Built Zeta23.CCM.OriginalSincDriveDerivative (2.8s)
+info: Zeta23/CCM/OriginalSincDriveDerivative.lean:71:0: 'Zeta23.CCM.nativeOriginalLogDriveSummand_hasDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/OriginalSincDriveDerivative.lean:72:0: 'Zeta23.CCM.nativeOriginalLogDriveSummand_deriv' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/OriginalSincDriveDerivative.lean:73:0: 'Zeta23.CCM.nativeOriginalLogDriveSummand_deriv_exp' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [3894/3906] Built Zeta23.CCM.OriginalSincDriveDecay (3.6s)
+info: Zeta23/CCM/OriginalSincDriveDecay.lean:242:0: 'Zeta23.CCM.nativeOriginalLogDriveSummand_derivative_integral_eq' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: Zeta23/CCM/OriginalSincDriveDecay.lean:243:0: 'Zeta23.CCM.nativeOriginalDriveSourceNorm_integrable' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/OriginalSincDriveDecay.lean:244:0: 'Zeta23.CCM.nativeOriginalDriveDerivativeProfile_integrable' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/OriginalSincDriveDecay.lean:245:0: 'Zeta23.CCM.nativeOriginalDriveDecayConstant_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/OriginalSincDriveDecay.lean:246:0: 'Zeta23.CCM.nativeOriginalLogDriveSummand_derivative_integral_le' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: Zeta23/CCM/OriginalSincDriveDecay.lean:247:0: 'Zeta23.CCM.nativeOriginalIntegerDrive_decay' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [3895/3906] Built Zeta23.CCM.OriginalSincDriveLp (3.5s)
+info: Zeta23/CCM/OriginalSincDriveLp.lean:214:0: 'Zeta23.CCM.nativeOriginalIntegerDrive_zero_of_neg' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/OriginalSincDriveLp.lean:215:0: 'Zeta23.CCM.nativeOriginalIntegerDrive_integrable' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/OriginalSincDriveLp.lean:216:0: 'Zeta23.CCM.nativeOriginalDampedIntegerDrive_norm_sq_integrable' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: Zeta23/CCM/OriginalSincDriveLp.lean:217:0: 'Zeta23.CCM.nativeOriginalDampedIntegerDrive_memLp_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/OriginalSincDriveLp.lean:218:0: 'Zeta23.CCM.nativeOriginalDampedIntegerDriveL2_causal' depends on axioms: [propext, Classical.choice, Quot.sound]
+✔ [3896/3908] Built Zeta23.OPICA.NativeArithmeticAdapter (3.7s)
+✔ [3897/3908] Built Zeta23.OPICAFollowup.BalancedCoefficients (4.4s)
+✔ [3898/3908] Built Zeta23.XiPrime.Defs (2.0s)
+✔ [3899/3908] Built Zeta23.PrimeSideTemp (1.8s)
+✔ [3900/3912] Built Zeta23.LinAlg.PosIndex (2.7s)
+✔ [3901/3912] Built Zeta23.LinAlg.HermitianPosPart (3.2s)
+✔ [3902/3912] Built Zeta23.LinAlg.Sylvester (3.6s)
+✔ [3903/3933] Built Zeta23.LinAlg.Inertia (2.8s)
+✔ [3920/3933] Built Zeta23.LinAlg.Weyl (2.8s)
+✔ [3921/3935] Built Zeta23.LinAlg.VonNeumann (3.5s)
+✔ [3922/3938] Built Zeta23.LinAlg.RankTrace (4.6s)
+✔ [3924/3939] Built Zeta23.LinAlg (2.3s)
+⚠ [3927/3944] Built Zeta23.XiPrime.Statement (3.4s)
+warning: Zeta23/XiPrime/Statement.lean:365:69: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+⚠ [3935/3962] Built Zeta23.ZetaReflect (3.6s)
+warning: Zeta23/ZetaReflect.lean:91:17: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+✔ [3950/3969] Built Zeta23.FromPNTPlus.Rectangle (3.9s)
+✔ [3951/3970] Built Zeta23.FromPNTPlus.Tactic.AdditiveCombination (2.1s)
+✔ [3953/3970] Built Zeta23.FromPNTPlus.ZetaConj (2.3s)
+✔ [3954/3970] Built Zeta23.FromPNTPlus.ResidueCalcOnRectangles (7.0s)
+⚠ [3955/3970] Built Zeta23.Statement.Seam (2.1s)
+warning: Zeta23/Statement/Seam.lean:59:13: `ENat.toNat_coe` has been deprecated: Use `ENat.toNat_natCast` instead
+ℹ [3956/3970] Built Zeta23.CCM.NativePositiveCompletionCertificate (89s)
+info: Zeta23/CCM/NativePositiveCompletionCertificate.lean:158:0: 'Zeta23.CCM.nativePositiveCompletion_mass_lt_605_div_621' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/NativePositiveCompletionCertificate.lean:159:0: 'Zeta23.CCM.nativePositiveCompletion_integrable' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/NativePositiveCompletionCertificate.lean:160:0: 'Zeta23.CCM.nativePositiveCompletion_integral_norm_lt_605_div_621' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+✔ [3957/3971] Built Zeta23.Statement.SeamClosed (2.2s)
+✔ [3958/3972] Built Zeta23.Analytic.RectangleLogDeriv (3.0s)
+ℹ [3959/3972] Built Zeta23.CCM.NativeDampedCompletionPrerequisites (2.0s)
+info: Zeta23/CCM/NativeDampedCompletionPrerequisites.lean:125:0: 'Zeta23.CCM.nativeDampedCompletionKernel_integrable' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/NativeDampedCompletionPrerequisites.lean:126:0: 'Zeta23.CCM.nativeDampedCompletionKernel_integral_norm_lt_605_div_621' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: Zeta23/CCM/NativeDampedCompletionPrerequisites.lean:127:0: 'Zeta23.CCM.nativeCompletionL2Delay_norm' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/NativeDampedCompletionPrerequisites.lean:128:0: 'Zeta23.CCM.nativeCompletionL2Delay_causal' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/NativeDampedCompletionPrerequisites.lean:129:0: 'Zeta23.CCM.nativeDampedCompletionPointwise_causal' depends on axioms: [propext, Classical.choice, Quot.sound]
+✔ [3961/3973] Built Zeta23.RvM.Defs (2.1s)
+✔ [3963/3973] Built Zeta23.RvM.CountByIntegral (2.6s)
+⚠ [3964/3973] Built Zeta23.CCM.NativeDampedCompletionOperator (3.2s)
+warning: Zeta23/CCM/NativeDampedCompletionOperator.lean:61:5: Variable name `hepsilon` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hepsilon
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+info: Zeta23/CCM/NativeDampedCompletionOperator.lean:230:0: 'Zeta23.CCM.nativeCompletionL2Delay_continuous' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/NativeDampedCompletionOperator.lean:231:0: 'Zeta23.CCM.nativeDampedCompletionL2Integrand_integrable' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/NativeDampedCompletionOperator.lean:232:0: 'Zeta23.CCM.nativeDampedCompletionL2Operator_apply' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/NativeDampedCompletionOperator.lean:233:0: 'Zeta23.CCM.nativeDampedCompletionL2Operator_norm_lt_605_div_621' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: Zeta23/CCM/NativeDampedCompletionOperator.lean:234:0: 'Zeta23.CCM.nativeDampedCompletionL2Operator_norm_lt_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/NativeDampedCompletionOperator.lean:235:0: 'Zeta23.CCM.nativeCompletionCausalL2_isClosed' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/NativeDampedCompletionOperator.lean:236:0: 'Zeta23.CCM.nativeDampedCompletionL2Operator_causal' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/NativeDampedCompletionOperator.lean:237:0: 'Zeta23.CCM.nativeDampedCompletionCausalL2Operator_coe_apply' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/NativeDampedCompletionOperator.lean:238:0: 'Zeta23.CCM.nativeDampedCompletionCausalL2Operator_norm_lt_605_div_621' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+✔ [3965/3974] Built Zeta23.FromPNTPlus.Auxiliary (2.1s)
+✔ [3966/3974] Built Zeta23.RvM.GammaSide (5.3s)
+✔ [3967/3977] Built Zeta23.RvM.Fold (2.9s)
+ℹ [3969/3979] Built Zeta23.CCM.NativeCompletedInput (2.8s)
+info: Zeta23/CCM/NativeCompletedInput.lean:185:0: 'Zeta23.CCM.nativeCompletionCorrection_integrable' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/NativeCompletedInput.lean:186:0: 'Zeta23.CCM.nativeCompletedInput_integrable' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/NativeCompletedInput.lean:187:0: 'Zeta23.CCM.nativeCompletedInput_abs_le_uniform' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/NativeCompletedInput.lean:188:0: 'Zeta23.CCM.nativeCompletedInput_memLp' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/NativeCompletedInput.lean:189:0: 'Zeta23.CCM.nativeDampedCompletedInputL2_causal' depends on axioms: [propext, Classical.choice, Quot.sound]
+✔ [3970/3979] Built Zeta23.FromPNTPlus.Mathlib.Analysis.SpecialFunctions.Log.Basic (1.8s)
+✔ [3971/3979] Built Zeta23.FromPNTPlus.Sobolev (5.4s)
+⚠ [3972/3979] Built Zeta23.CCM.NativeCompletionIntegerKernel (2.2s)
+warning: Zeta23/CCM/NativeCompletionIntegerKernel.lean:51:88: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+info: Zeta23/CCM/NativeCompletionIntegerKernel.lean:82:0: 'Zeta23.CCM.nativeIntegerTranslateAction_eq_causal_history' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/NativeCompletionIntegerKernel.lean:83:0: 'Zeta23.CCM.nativeCompletionCorrection_eq_rationalKernel' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/NativeCompletionIntegerKernel.lean:84:0: 'Zeta23.CCM.nativeCompletionCorrection_integer_term' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/NativeCompletionIntegerKernel.lean:85:0: 'Zeta23.CCM.nativePositiveCompletion_eq_integerTranslateCorrection' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+✔ [3973/3979] Built Zeta23.FromPNTPlus.EulerMaclaurin (1.0s)
+✔ [3974/3979] Built Zeta23.FromPNTPlus.Fourier (3.1s)
+ℹ [3975/3980] Built Zeta23.CCM.NativeCompletionComplexLaplace (2.9s)
+info: Zeta23/CCM/NativeCompletionComplexLaplace.lean:115:0: 'Zeta23.CCM.nativeRationalCausalKernel_complexDamped_integrableOn' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: Zeta23/CCM/NativeCompletionComplexLaplace.lean:116:0: 'Zeta23.CCM.nativeRationalCausalKernel_complexLaplace' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/NativeCompletionComplexLaplace.lean:117:0: 'Zeta23.CCM.nativeCompletionCorrection_complexLaplace' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [3976/3980] Built Zeta23.CCM.NativeCompletedInputComplexLaplace (2.8s)
+info: Zeta23/CCM/NativeCompletedInputComplexLaplace.lean:78:0: 'Zeta23.CCM.nativeCausalComplexDamping_integrable' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/NativeCompletedInputComplexLaplace.lean:79:0: 'Zeta23.CCM.nativeCompletedInput_complexDamping_eq_convolution' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: Zeta23/CCM/NativeCompletedInputComplexLaplace.lean:80:0: 'Zeta23.CCM.nativeCompletedInput_complexLaplace_eq_c_mul_drive' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+ℹ [3978/4030] Built Zeta23.CCM.NativeIntegerKernelComplexLaplace (4.0s)
+info: Zeta23/CCM/NativeIntegerKernelComplexLaplace.lean:141:0: 'Zeta23.CCM.nativeIntegerLaplaceCoefficient_eq_cpow' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/NativeIntegerKernelComplexLaplace.lean:142:0: 'Zeta23.CCM.nativeIntegerLaplaceCoefficient_summable_norm' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/NativeIntegerKernelComplexLaplace.lean:143:0: 'Zeta23.CCM.nativeIntegerLaplaceCoefficient_tsum' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/NativeIntegerKernelComplexLaplace.lean:144:0: 'Zeta23.CCM.nativePositiveCompletion_complexLaplace_of_half_lt_re' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+✔ [4025/4035] Built Zeta23.Prelude.InstancePriorities (2.1s)
+⚠ [4033/4039] Built Zeta23.FromPNTPlus.StrongPNTPrefix (8.1s)
+warning: Zeta23/FromPNTPlus/StrongPNTPrefix.lean:61:71: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+warning: Zeta23/FromPNTPlus/StrongPNTPrefix.lean:202:9: `Set.setOf_subset_setOf` has been deprecated: Use `Set.ofPred_subset_ofPred` instead
+warning: Zeta23/FromPNTPlus/StrongPNTPrefix.lean:343:10: `Set.notMem_setOf_iff` has been deprecated: Use `Set.notMem_ofPred_iff` instead
+warning: Zeta23/FromPNTPlus/StrongPNTPrefix.lean:368:48: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+warning: Zeta23/FromPNTPlus/StrongPNTPrefix.lean:390:10: `Set.notMem_setOf_iff` has been deprecated: Use `Set.notMem_ofPred_iff` instead
+warning: Zeta23/FromPNTPlus/StrongPNTPrefix.lean:432:48: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+⚠ [4034/4041] Built Zeta23.RvM.Halving (2.8s)
+warning: Zeta23/RvM/Halving.lean:52:55: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+warning: Zeta23/RvM/Halving.lean:62:15: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+warning: Zeta23/RvM/Halving.lean:70:15: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+✔ [4036/4047] Built Zeta23.ThmE.Hypotheses (2.9s)
+⚠ [4037/4047] Built Zeta23.FromPNTPlus.ZetaBounds (25s)
+warning: Zeta23/FromPNTPlus/ZetaBounds.lean:859:13: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+warning: Zeta23/FromPNTPlus/ZetaBounds.lean:952:13: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+warning: Zeta23/FromPNTPlus/ZetaBounds.lean:1092:13: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+warning: Zeta23/FromPNTPlus/ZetaBounds.lean:1099:32: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+warning: Zeta23/FromPNTPlus/ZetaBounds.lean:1105:56: `Set.preimage_setOf_eq` has been deprecated: Use `Set.preimage_ofPred_eq` instead
+warning: Zeta23/FromPNTPlus/ZetaBounds.lean:1115:56: `Set.preimage_setOf_eq` has been deprecated: Use `Set.preimage_ofPred_eq` instead
+warning: Zeta23/FromPNTPlus/ZetaBounds.lean:1119:17: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+warning: Zeta23/FromPNTPlus/ZetaBounds.lean:1135:54: `Set.preimage_setOf_eq` has been deprecated: Use `Set.preimage_ofPred_eq` instead
+warning: Zeta23/FromPNTPlus/ZetaBounds.lean:1157:22: `Set.setOf_subset_setOf` has been deprecated: Use `Set.ofPred_subset_ofPred` instead
+warning: Zeta23/FromPNTPlus/ZetaBounds.lean:1169:15: `Set.setOf_subset_setOf` has been deprecated: Use `Set.ofPred_subset_ofPred` instead
+warning: Zeta23/FromPNTPlus/ZetaBounds.lean:1169:59: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+warning: Zeta23/FromPNTPlus/ZetaBounds.lean:1185:15: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+warning: Zeta23/FromPNTPlus/ZetaBounds.lean:1835:19: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+warning: Zeta23/FromPNTPlus/ZetaBounds.lean:1837:45: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+warning: Zeta23/FromPNTPlus/ZetaBounds.lean:1840:28: `Set.setOf_subset_setOf` has been deprecated: Use `Set.ofPred_subset_ofPred` instead
+warning: Zeta23/FromPNTPlus/ZetaBounds.lean:1844:28: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+warning: Zeta23/FromPNTPlus/ZetaBounds.lean:1900:15: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+warning: Zeta23/FromPNTPlus/ZetaBounds.lean:1906:20: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+warning: Zeta23/FromPNTPlus/ZetaBounds.lean:2091:13: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+warning: Zeta23/FromPNTPlus/ZetaBounds.lean:2884:17: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+warning: Zeta23/FromPNTPlus/ZetaBounds.lean:2940:17: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+✔ [4038/4047] Built Zeta23.RvM.ZetaGrowth (4.1s)
+⚠ [4039/4047] Built Zeta23.WeilEF.Landau (12s)
+warning: Zeta23/WeilEF/Landau.lean:341:13: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+warning: Zeta23/WeilEF/Landau.lean:437:64: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+✔ [4040/4049] Built Zeta23.RvM.LocalCount (11s)
+✔ [4041/4050] Built Zeta23.Assembly.Inputs (1.0s)
+✔ [4042/4051] Built Zeta23.Tail.Basic (1.6s)
+✔ [4043/4054] Built Zeta23.Tail.Grid (2.0s)
+✔ [4044/4054] Built Zeta23.Tail.Count (5.8s)
+✔ [4045/4054] Built Zeta23.Tail.RankOne (2.4s)
+⚠ [4046/4054] Built Zeta23.Tail (4.5s)
+warning: Zeta23/Tail.lean:290:13: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+warning: Zeta23/Tail.lean:399:17: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+⚠ [4047/4058] Built Zeta23.WeilEF.ZeroSummability (4.3s)
+warning: Zeta23/WeilEF/ZeroSummability.lean:189:4: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+✔ [4048/4062] Built Zeta23.WeilEF.GoodHeights (12s)
+✔ [4049/4062] Built Zeta23.GammaFacts.IntMu (68s)
+⚠ [4050/4062] Built Zeta23.WeilEF.Contour (3.7s)
+warning: Zeta23/WeilEF/Contour.lean:69:15: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+✔ [4051/4062] Built Zeta23.GammaFacts.Complete (2.3s)
+✔ [4052/4062] Built Zeta23.WeilEF.ZeroSumLimit (3.5s)
+✔ [4053/4063] Built Zeta23.WeilEF.FullLine (10s)
+✔ [4054/4065] Built Zeta23.WeilEF.Horizontal (8.1s)
+✔ [4055/4065] Built Zeta23.RvM.BacklundDefs (1.8s)
+✔ [4056/4068] Built Zeta23.WeilEF.FullLineAssembly (2.5s)
+⚠ [4057/4068] Built Zeta23.RvM.ReZeroCount (21s)
+warning: Zeta23/RvM/ReZeroCount.lean:272:15: `ENat.toNat_coe` has been deprecated: Use `ENat.toNat_natCast` instead
+ℹ [4058/4068] Built Zeta23.WeilEF.Main (3.7s)
+info: Zeta23/WeilEF/Main.lean:38:2: Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+⚠ [4059/4074] Built Zeta23.RvM.NcountWindow (2.0s)
+warning: Zeta23/RvM/NcountWindow.lean:23:22: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+✔ [4060/4075] Built Zeta23.RvM.Backlund (4.3s)
+✔ [4061/4075] Built Zeta23.TracesBoundsE (1.8s)
+✔ [4062/4077] Built Zeta23.ThmE.IntMuChi (64s)
+✔ [4063/4077] Built Zeta23.RvM.MainTerm (19s)
+⚠ [4064/4080] Built Zeta23.Assembly (20s)
+warning: Zeta23/Assembly.lean:885:47: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+warning: Zeta23/Assembly.lean:958:34: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+warning: Zeta23/Assembly.lean:962:90: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+ℹ [4065/4082] Built Zeta23.ThmE.GammaFactsChiProof (4.9s)
+info: Zeta23/ThmE/GammaFactsChiProof.lean:208:47: Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: Zeta23/ThmE/GammaFactsChiProof.lean:272:17: Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+✔ [4066/4083] Built Zeta23.RvM.Statement (2.4s)
+✔ [4067/4083] Built Zeta23.ExceptionalZero.MeromorphicIdentity (1.7s)
+✔ [4068/4090] Built Zeta23.ExceptionalZero.PoleKiller (2.9s)
+✔ [4069/4092] Built Zeta23.ExceptionalZero.RMSGrowth (2.3s)
+✔ [4071/4092] Built Zeta23.ExceptionalZero.Cancellation (1.4s)
+✔ [4073/4094] Built Zeta23.ExceptionalZero.ProbeFamily (1.5s)
+✔ [4074/4099] Built Zeta23.ExceptionalZero.WeilBridge (1.9s)
+⚠ [4075/4099] Built Zeta23.ExceptionalZero.TwoTranslateWeil (1.9s)
+warning: Zeta23/ExceptionalZero/TwoTranslateWeil.lean:45:2: 'change
+  Complex.exp (Complex.I * z * (t : ℂ)) * conj (Complex.exp (Complex.I * conj z * (t : ℂ))) = 1' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: Zeta23/ExceptionalZero/TwoTranslateWeil.lean:104:30: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+info: Zeta23/ExceptionalZero/TwoTranslateWeil.lean:141:0: 'Zeta23.ExceptionalZero.W_translateRight_both' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/ExceptionalZero/TwoTranslateWeil.lean:142:0: 'Zeta23.ExceptionalZero.W_star_swap' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/ExceptionalZero/TwoTranslateWeil.lean:143:0: 'Zeta23.ExceptionalZero.W_self_im_eq_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+⚠ [4076/4100] Built Zeta23.Poisson.PaperFTConvolution (1.9s)
+warning: Zeta23/Poisson/PaperFTConvolution.lean:41:68: 'ring' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: Zeta23/Poisson/PaperFTConvolution.lean:41:68: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+info: Zeta23/Poisson/PaperFTConvolution.lean:120:0: 'Zeta23.paperFT_mul_convolution_eq_of_continuous_compactSupport' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+✔ [4077/4104] Built Zeta23.ExceptionalZero.WeilLiteratureBridge (2.1s)
+⚠ [4078/4104] Built Zeta23.WeilEF.Effective (19s)
+warning: Zeta23/WeilEF/Effective.lean:624:30: This simp argument is unused:
+  Complex.div_re
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Complex.neg_re]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: Zeta23/WeilEF/Effective.lean:669:14: This simp argument is unused:
+  Complex.norm_ofNat
+
+Hint: Omit it from the simp argument list.
+  [apply] simp
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: Zeta23/WeilEF/Effective.lean:717:23: 'first
+| assumption
+| positivity' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: Zeta23/WeilEF/Effective.lean:759:23: 'first
+| assumption
+| positivity' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: Zeta23/WeilEF/Effective.lean:717:23: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+warning: Zeta23/WeilEF/Effective.lean:759:23: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+warning: Zeta23/WeilEF/Effective.lean:912:17: 'linarith' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: Zeta23/WeilEF/Effective.lean:912:17: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+ℹ [4079/4107] Built Zeta23.ExceptionalZero.TwoTranslateSpectrum (1.9s)
+info: Zeta23/ExceptionalZero/TwoTranslateSpectrum.lean:91:0: 'Zeta23.ExceptionalZero.twoTranslateWeilMatrix_star_apply' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/ExceptionalZero/TwoTranslateSpectrum.lean:92:0: 'Zeta23.ExceptionalZero.twoTranslateWeilMatrix_eigenvalue_iff' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+✔ [4080/4107] Built Zeta23.CCM.Kernel (1.7s)
+⚠ [4081/4113] Built Zeta23.XiPrime.Seam (3.2s)
+warning: Zeta23/XiPrime/Seam.lean:172:8: `ENat.coe_toNat` has been deprecated: Use `ENat.natCast_toNat` instead
+✔ [4082/4113] Built Zeta23.CCM.Components (1.9s)
+✔ [4083/4113] Built Zeta23.XiPrime.ExplicitFormula (2.2s)
+✔ [4084/4113] Built Zeta23.Hypotheses.GzGp (2.1s)
+✔ [4085/4113] Built Zeta23.CCM.FiniteMatrix (1.9s)
+⚠ [4086/4119] Built Zeta23.ZeroSide (7.8s)
+warning: Zeta23/ZeroSide.lean:701:4: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+warning: Zeta23/ZeroSide.lean:706:66: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+warning: Zeta23/ZeroSide.lean:712:52: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+warning: Zeta23/ZeroSide.lean:755:53: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+✔ [4087/4119] Built Zeta23.ExceptionalZero.DisplacementTransfer (3.4s)
+✔ [4089/4119] Built Zeta23.CCM.DividedDifference (2.4s)
+✔ [4091/4119] Built Zeta23.XiPrime.ExplicitFormula.ZeroFree (15s)
+✔ [4093/4119] Built Zeta23.CCM.SourceMatrix (2.3s)
+✔ [4094/4119] Built Zeta23.ExceptionalZero.ZeroIsolation (2.2s)
+✔ [4095/4119] Built Zeta23.ExceptionalZero.FilteredZeroFamily (2.2s)
+✔ [4096/4119] Built Zeta23.CCM.KernelAnalysis (2.0s)
+✔ [4097/4119] Built Zeta23.CCM.FiniteDictionary (2.4s)
+✔ [4098/4119] Built Zeta23.ExceptionalZero.FilteredGrowthEnvelope (2.8s)
+⚠ [4099/4119] Built Zeta23.ExceptionalZero.FilteredZeroRegularity (2.5s)
+warning: Zeta23/ExceptionalZero/FilteredZeroRegularity.lean:14:41: Variable name `hA` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hA
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+✔ [4100/4119] Built Zeta23.ExceptionalZero.FilteredResolvent (2.3s)
+✔ [4101/4119] Built Zeta23.CCM.DictionaryDeterministicRHS (2.2s)
+✔ [4102/4119] Built Zeta23.ExceptionalZero.FilteredPolePersistence (2.8s)
+⚠ [4103/4119] Built Zeta23.ExceptionalZero.FilteredLaplace (3.6s)
+warning: Zeta23/ExceptionalZero/FilteredLaplace.lean:127:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+⚠ [4104/4119] Built Zeta23.CCM.LocalizedBasis (2.7s)
+warning: Zeta23/CCM/LocalizedBasis.lean:117:2: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+info: Zeta23/CCM/LocalizedBasis.lean:204:0: 'Zeta23.CCM.integral_cos_affine' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/LocalizedBasis.lean:205:0: 'Zeta23.CCM.hardWindowCharacterCorrelation_eq_qBasis' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/LocalizedBasis.lean:206:0: 'Zeta23.CCM.hardWindowCharacterCorrelation_centered_eq_qBasis' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: Zeta23/CCM/LocalizedBasis.lean:207:0: 'Zeta23.CCM.two_mul_dictionaryBasisTest_eq_kernel' depends on axioms: [propext, Classical.choice, Quot.sound]
+✔ [4105/4129] Built Zeta23.ExceptionalZero.FilteredResolventMeromorphic (2.5s)
+✔ [4106/4131] Built Zeta23.ExceptionalZero.FilteredLaplaceSubexp (3.1s)
+⚠ [4108/4134] Built Zeta23.CCM.DictionaryAnalysis (2.7s)
+warning: Zeta23/CCM/DictionaryAnalysis.lean:104:4: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+✔ [4109/4134] Built Zeta23.ExceptionalZero.ExposedPole (2.5s)
+⚠ [4110/4136] Built Zeta23.CCM.ComplexMomentIntegral (1.0s)
+warning: Zeta23/CCM/ComplexMomentIntegral.lean:50:18: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+✔ [4111/4136] Built Zeta23.CCM.DictionaryRegularity (2.5s)
+⚠ [4112/4136] Built Zeta23.CCM.Displacement (2.6s)
+warning: Zeta23/CCM/Displacement.lean:61:32: This simp argument is unused:
+  κ
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [poleComponent, poleSeq]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: Zeta23/CCM/Displacement.lean:63:2: 'push_cast' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+✔ [4113/4136] Built Zeta23.ExceptionalZero.WeilFilter (2.8s)
+✔ [4114/4136] Built Zeta23.CCM.DictionaryResidualBranches (2.5s)
+⚠ [4115/4136] Built Zeta23.ExceptionalZero.TwoTranslateCorrelation (2.6s)
+info: Zeta23/ExceptionalZero/TwoTranslateCorrelation.lean:59:2: Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+warning: Zeta23/ExceptionalZero/TwoTranslateCorrelation.lean:47:2: 'change
+  conj (∫ u : ℝ, k u * Complex.exp (I * conj z * (u : ℂ))) =
+    ∫ u : ℝ, k u * Complex.exp (I * (-z) * (u : ℂ))' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+info: Zeta23/ExceptionalZero/TwoTranslateCorrelation.lean:76:6: Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: Zeta23/ExceptionalZero/TwoTranslateCorrelation.lean:164:0: 'Zeta23.ExceptionalZero.star_paperFT_star_eq_paperFT_of_real_even' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: Zeta23/ExceptionalZero/TwoTranslateCorrelation.lean:165:0: 'Zeta23.ExceptionalZero.absolutelySummableZeroFilter_squaredWeil' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: Zeta23/ExceptionalZero/TwoTranslateCorrelation.lean:166:0: 'Zeta23.ExceptionalZero.weilRelativeCorrelation_two_mul_eq_filteredZeroFamily_squared' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+ℹ [4116/4136] Built Zeta23.ExceptionalZero.TwoTranslateVisibility (2.7s)
+info: Zeta23/ExceptionalZero/TwoTranslateVisibility.lean:198:0: 'Zeta23.ExceptionalZero.exists_realEven_contDiff_visible_test' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: Zeta23/ExceptionalZero/TwoTranslateVisibility.lean:199:0: 'Zeta23.ExceptionalZero.exists_realEven_poleKilled_visible_test' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: Zeta23/ExceptionalZero/TwoTranslateVisibility.lean:200:0: 'Zeta23.ExceptionalZero.exists_realEven_poleKilled_test_not_subexponential_of_right_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+⚠ [4117/4136] Built Zeta23.ExceptionalZero.UniversalSincDetectorVisibility (2.6s)
+warning: Zeta23/ExceptionalZero/UniversalSincDetectorVisibility.lean:67:67: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: Zeta23/ExceptionalZero/UniversalSincDetectorVisibility.lean:85:67: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+info: Zeta23/ExceptionalZero/UniversalSincDetectorVisibility.lean:138:0: 'Zeta23.ExceptionalZero.originalSincMultiplier_ne_zero_at_off_line_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: Zeta23/ExceptionalZero/UniversalSincDetectorVisibility.lean:139:0: 'Zeta23.ExceptionalZero.originalSincMultiplier_eq_zero_iff_of_im_ne_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: Zeta23/ExceptionalZero/UniversalSincDetectorVisibility.lean:140:0: 'Zeta23.ExceptionalZero.fixed_originalSincMultiplier_square_ne_zero_at_off_line_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: Zeta23/ExceptionalZero/UniversalSincDetectorVisibility.lean:141:0: 'Zeta23.ExceptionalZero.originalSincMultiplier_deriv_ne_zero_at_elementary_pair' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+✔ [4118/4136] Built Zeta23.CCM.DictionarySourceTest (2.2s)
+✔ [4119/4136] Built Zeta23.CCM.DictionaryResidualSecondOrder (2.4s)
+ℹ [4120/4136] Built Zeta23.ExceptionalZero.TwoTranslateNegativity (2.6s)
+info: Zeta23/ExceptionalZero/TwoTranslateNegativity.lean:240:0: 'Zeta23.ExceptionalZero.twoTranslatePhaseWitness_value' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/ExceptionalZero/TwoTranslateNegativity.lean:241:0: 'Zeta23.ExceptionalZero.not_subexponential_weilRelativeCorrelation_of_right_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: Zeta23/ExceptionalZero/TwoTranslateNegativity.lean:242:0: 'Zeta23.ExceptionalZero.exists_rightHalf_reflection_of_offLine' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: Zeta23/ExceptionalZero/TwoTranslateNegativity.lean:243:0: 'Zeta23.ExceptionalZero.exists_realEven_poleKilled_twoTranslate_negativeWitness_of_offLine_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: Zeta23/ExceptionalZero/TwoTranslateNegativity.lean:244:0: 'Zeta23.ExceptionalZero.exists_realEven_poleKilled_twoTranslate_not_posSemidef_of_offLine_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+ℹ [4121/4136] Built Zeta23.ExceptionalZero.UniversalSincPhysicalDetector (2.5s)
+info: Zeta23/ExceptionalZero/UniversalSincPhysicalDetector.lean:187:0: 'Zeta23.ExceptionalZero.paperFT_originalSincTest' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/ExceptionalZero/UniversalSincPhysicalDetector.lean:188:0: 'Zeta23.ExceptionalZero.paperFT_originalSincSecondTest' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/ExceptionalZero/UniversalSincPhysicalDetector.lean:189:0: 'Zeta23.ExceptionalZero.paperFT_originalSincTest_self_convolution' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: Zeta23/ExceptionalZero/UniversalSincPhysicalDetector.lean:190:0: 'Zeta23.ExceptionalZero.fixed_originalSincTest_square_ne_zero_at_off_line_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: Zeta23/ExceptionalZero/UniversalSincPhysicalDetector.lean:191:0: 'Zeta23.ExceptionalZero.absolutelySummable_originalSincSquaredFilter' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: Zeta23/ExceptionalZero/UniversalSincPhysicalDetector.lean:192:0: 'Zeta23.ExceptionalZero.originalSincCorrelation_eq_filteredSquaredFamily' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: Zeta23/ExceptionalZero/UniversalSincPhysicalDetector.lean:193:0: 'Zeta23.ExceptionalZero.fixed_originalSincCorrelation_not_subexponential_of_right_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: Zeta23/ExceptionalZero/UniversalSincPhysicalDetector.lean:194:0: 'Zeta23.ExceptionalZero.fixed_originalSincTest_not_subexponential_of_right_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+✔ [4122/4136] Built Zeta23.CCM.DictionaryResidualGluing (2.3s)
+✔ [4123/4136] Built Zeta23.ExceptionalZero.TwoTranslateContraction (2.6s)
+ℹ [4124/4136] Built Zeta23.ExceptionalZero.UniversalSincNativeSourceIdentification (2.2s)
+info: Zeta23/ExceptionalZero/UniversalSincNativeSourceIdentification.lean:38:0: 'Zeta23.ExceptionalZero.originalSincSecondTest_eq_native_kernel' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: Zeta23/ExceptionalZero/UniversalSincNativeSourceIdentification.lean:39:0: 'Zeta23.ExceptionalZero.nativeOriginalSource_cast_eq_physical' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+✔ [4125/4136] Built Zeta23.CCM.DictionaryResidualFirstOrderGluing (2.5s)
+✔ [4126/4136] Built Zeta23.ExceptionalZero.NegativeWeilTestSupport (2.7s)
+ℹ [4127/4136] Built Zeta23.ExceptionalZero.NativeOriginalSourceLaplaceVisibility (2.2s)
+info: Zeta23/ExceptionalZero/NativeOriginalSourceLaplaceVisibility.lean:79:0: 'Zeta23.ExceptionalZero.nativeOriginalSourceLaplace_formula' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/ExceptionalZero/NativeOriginalSourceLaplaceVisibility.lean:80:0: 'Zeta23.ExceptionalZero.nativeOriginalSourceLaplace_at_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/ExceptionalZero/NativeOriginalSourceLaplaceVisibility.lean:81:0: 'Zeta23.ExceptionalZero.nativeOriginalSourceLaplace_ne_zero_at_off_line_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+✔ [4128/4136] Built Zeta23.CCM.DictionaryResidualDerivativeIdentities (2.1s)
+ℹ [4129/4166] Built Zeta23.CCM.NativeIntegerDriveComplexLaplace (2.8s)
+info: Zeta23/CCM/NativeIntegerDriveComplexLaplace.lean:138:0: 'Zeta23.CCM.nativeIntegerDriveLaplaceCoefficient_eq_term' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/NativeIntegerDriveComplexLaplace.lean:139:0: 'Zeta23.CCM.nativeIntegerDriveLaplaceCoefficient_summable_norm' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: Zeta23/CCM/NativeIntegerDriveComplexLaplace.lean:140:0: 'Zeta23.CCM.nativeIntegerDriveLaplaceCoefficient_tsum' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/NativeIntegerDriveComplexLaplace.lean:141:0: 'Zeta23.CCM.nativeOriginalSource_complexDamping_integrable' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/NativeIntegerDriveComplexLaplace.lean:142:0: 'Zeta23.CCM.nativeOriginalIntegerDrive_complexLaplace_of_half_lt_re' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+✔ [4130/4170] Built Zeta23.CCM.DictionaryResidualSecondOrderGluing (2.8s)
+✔ [4131/4170] Built Zeta23.CCM.DictionarySymmetry (2.2s)
+✔ [4132/4170] Built Zeta23.CCM.DictionaryTent (2.2s)
+ℹ [4133/4175] Built Zeta23.CCM.CodimOneMatrixCompletion (2.5s)
+info: Zeta23/CCM/CodimOneMatrixCompletion.lean:320:0: 'Zeta23.CCM.codimOneMatrixCompletion' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/CodimOneMatrixCompletion.lean:321:0: 'Zeta23.CCM.codimOneMatrixCompletion_of_basisDiff' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/CodimOneMatrixCompletion.lean:322:0: 'Zeta23.CCM.rank_codimOneMatrixCompletion_of_basisDiff_le_two' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: Zeta23/CCM/CodimOneMatrixCompletion.lean:323:0: 'Zeta23.CCM.rank_ccmCodimOneMatrixCompletion_le_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+⚠ [4134/4176] Built Zeta23.CCM.DictionaryTentTransform (2.8s)
+warning: Zeta23/CCM/DictionaryTentTransform.lean:43:31: 'ring' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: Zeta23/CCM/DictionaryTentTransform.lean:43:31: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+warning: Zeta23/CCM/DictionaryTentTransform.lean:47:29: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: Zeta23/CCM/DictionaryTentTransform.lean:68:31: 'ring' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: Zeta23/CCM/DictionaryTentTransform.lean:68:31: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+warning: Zeta23/CCM/DictionaryTentTransform.lean:72:29: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: Zeta23/CCM/DictionaryTentTransform.lean:82:22: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: Zeta23/CCM/DictionaryTentTransform.lean:92:22: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: Zeta23/CCM/DictionaryTentTransform.lean:209:23: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+ℹ [4136/4176] Built Zeta23.CCM.DictionaryTentMollifier (2.2s)
+info: Zeta23/CCM/DictionaryTentMollifier.lean:149:0: 'Zeta23.CCM.contDiff_two_dictionaryTentMollified' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/DictionaryTentMollifier.lean:150:0: 'Zeta23.CCM.dictionaryTentMollified_hasCompactSupport' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/DictionaryTentMollifier.lean:151:0: 'Zeta23.CCM.dictionaryTentMollifiedReal_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+✔ [4137/4185] Built Zeta23.CCM.DictionaryTentDecay (2.3s)
+✔ [4138/4186] Built Zeta23.CCM.DictionaryPole (2.3s)
+ℹ [4139/4186] Built Zeta23.CCM.DictionaryTentMollifierTransform (2.2s)
+info: Zeta23/CCM/DictionaryTentMollifierTransform.lean:159:0: 'Zeta23.CCM.paperFT_dictionaryTentMollified_factor' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/DictionaryTentMollifierTransform.lean:160:0: 'Zeta23.CCM.norm_paperFT_dictionaryTentMollified_mul_sq_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+⚠ [4140/4186] Built Zeta23.CCM.DictionaryTentZeroSummability (3.2s)
+warning: Zeta23/CCM/DictionaryTentZeroSummability.lean:49:4: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+✔ [4141/4186] Built Zeta23.CCM.DictionaryPoleCompletion (3.0s)
+ℹ [4142/4186] Built Zeta23.CCM.DictionaryTentMollifierSupport (2.3s)
+info: Zeta23/CCM/DictionaryTentMollifierSupport.lean:103:0: 'Zeta23.CCM.dictionaryTentMollified_support_abs_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/DictionaryTentMollifierSupport.lean:104:0: 'Zeta23.CCM.dictionaryTentMollified_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/DictionaryTentMollifierSupport.lean:105:0: 'Zeta23.CCM.dictionaryTent_mollifier_architecture_package' depends on axioms: [propext, Classical.choice, Quot.sound]
+✔ [4143/4186] Built Zeta23.OPICAFollowup.SourceVerticalBounds (3.2s)
+ℹ [4144/4186] Built Zeta23.CCM.DictionaryTentMollifierLimit (2.2s)
+info: Zeta23/CCM/DictionaryTentMollifierLimit.lean:106:0: 'Zeta23.CCM.dictionaryTentMollifierTransform_tendsto_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/DictionaryTentMollifierLimit.lean:107:0: 'Zeta23.CCM.paperFT_dictionaryTentMollified_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [4145/4192] Built Zeta23.CCM.DictionaryZeroSideSummability (2.3s)
+info: Zeta23/CCM/DictionaryZeroSideSummability.lean:132:0: 'Zeta23.CCM.dictionaryTransform_zero_sum_summable' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [4146/4192] Built Zeta23.CCM.DictionaryTentPolePrimeLimit (2.5s)
+info: Zeta23/CCM/DictionaryTentPolePrimeLimit.lean:170:0: 'Zeta23.CCM.dictionaryPoleRHS_dictionaryTentMollified_tendsto' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: Zeta23/CCM/DictionaryTentPolePrimeLimit.lean:171:0: 'Zeta23.CCM.dictionaryPrimeRHS_dictionaryTentMollified_tendsto' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: Zeta23/CCM/DictionaryTentPolePrimeLimit.lean:172:0: 'Zeta23.CCM.dictionaryTent_pole_prime_limit_package' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [4147/4192] Built Zeta23.CCM.DictionaryPoleSource (3.7s)
+info: Zeta23/CCM/DictionaryPoleSource.lean:159:14: Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: Zeta23/CCM/DictionaryPoleSource.lean:165:2: Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: Zeta23/CCM/DictionaryPoleSource.lean:184:14: Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: Zeta23/CCM/DictionaryPoleSource.lean:190:2: Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: Zeta23/CCM/DictionaryPoleSource.lean:201:14: Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: Zeta23/CCM/DictionaryPoleSource.lean:292:6: Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+ℹ [4149/4197] Built Zeta23.CCM.DictionaryTentZeroLimit (2.3s)
+info: Zeta23/CCM/DictionaryTentZeroLimit.lean:142:0: 'Zeta23.CCM.dictionaryTent_zero_sum_mollified_tendsto_gen' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/DictionaryTentZeroLimit.lean:143:0: 'Zeta23.CCM.dictionaryTent_zero_sum_mollified_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+✔ [4153/4197] Built Zeta23.CCM.DictionaryArchPhysical (2.2s)
+✔ [4154/4197] Built Zeta23.OPICAFollowup.NormFirstTransfer (6.3s)
+ℹ [4156/4207] Built Zeta23.OPICAFollowup.ZetaLeftLineBounds (10s)
+info: Zeta23/OPICAFollowup/ZetaLeftLineBounds.lean:323:4: Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+✔ [4163/4208] Built Zeta23.CCM.DictionaryArchBridge (4.0s)
+✔ [4165/4210] Built Zeta23.CCM.DictionaryArchLaplace (3.1s)
+ℹ [4167/4215] Built Zeta23.OPICA.LocallyFiniteSignedMeasure (3.4s)
+info: Zeta23/OPICA/LocallyFiniteSignedMeasure.lean:475:0: 'Zeta23.OPICA.LocallyFiniteSignedMeasure.distributionOfLinearGrowth_injective' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: Zeta23/OPICA/LocallyFiniteSignedMeasure.lean:476:0: 'Zeta23.OPICA.quadraticDecay_integrable_of_linear_growth' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/OPICA/LocallyFiniteSignedMeasure.lean:477:0: 'Zeta23.OPICA.hasTemperateGrowth_of_linear_growth' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/OPICA/LocallyFiniteSignedMeasure.lean:478:0: 'Zeta23.OPICA.LocallyFiniteSignedMeasure.parts_eq_zero_of_distribution_eq_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+✔ [4171/4215] Built Zeta23.CCM.DictionaryArchCompletion (2.4s)
+ℹ [4172/4215] Built Zeta23.CCM.CompactPoleConvolution (2.4s)
+info: Zeta23/CCM/CompactPoleConvolution.lean:96:0: 'Zeta23.CCM.integral_compactPole_left_eq_right' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/CompactPoleConvolution.lean:97:0: 'Zeta23.CCM.universalSincDifferential_reflected' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/CompactPoleConvolution.lean:98:0: 'Zeta23.CCM.compactPole_convolution_left_eq_right' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/CompactPoleConvolution.lean:99:0: 'Zeta23.CCM.universalSincKernel_selfConvolution_eq_source_second' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+✔ [4173/4215] Built Zeta23.OPICA.LocalObstruction (2.6s)
+✔ [4174/4217] Built Zeta23.OPICAFollowup.ComplexLocalMeasures (4.9s)
+✔ [4175/4217] Built Zeta23.CCM.DictionaryArchFourier (3.0s)
+ℹ [4176/4219] Built Zeta23.CCM.NativeCompactTranslateCalculus (2.6s)
+info: Zeta23/CCM/NativeCompactTranslateCalculus.lean:191:0: 'Zeta23.CCM.nativeComplexPrimeField_eq_history_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/NativeCompactTranslateCalculus.lean:192:0: 'Zeta23.CCM.nativeComplexIntegerDrive_eq_history_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/NativeCompactTranslateCalculus.lean:193:0: 'Zeta23.CCM.nativeComplexPrimeField_contDiff' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/NativeCompactTranslateCalculus.lean:194:0: 'Zeta23.CCM.nativeComplexIntegerDrive_contDiff' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/NativeCompactTranslateCalculus.lean:195:0: 'Zeta23.CCM.nativeComplexPrimeField_hasDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/NativeCompactTranslateCalculus.lean:196:0: 'Zeta23.CCM.nativeComplexPrimeField_poleImage' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/NativeCompactTranslateCalculus.lean:197:0: 'Zeta23.CCM.nativeComplexPrimeField_ofReal' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/NativeCompactTranslateCalculus.lean:198:0: 'Zeta23.CCM.nativeComplexIntegerDrive_ofReal' depends on axioms: [propext, Classical.choice, Quot.sound]
+⚠ [4177/4221] Built Zeta23.CCM.DictionaryArchSourceFourier (2.0s)
+warning: Zeta23/CCM/DictionaryArchSourceFourier.lean:180:4: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+info: Zeta23/CCM/DictionaryArchSourceFourier.lean:215:4: Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+✔ [4178/4221] Built Zeta23.OPICA.ResidueLimits (2.7s)
+✔ [4180/4225] Built Zeta23.CCM.DictionaryArchSourceIntegrability (4.4s)
+⚠ [4181/4225] Built Zeta23.OPICA.ObservationCompatibility (4.7s)
+warning: Zeta23/OPICA/ObservationCompatibility.lean:133:28: This simp argument is unused:
+  abs_of_pos hn
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [y, norm_smul, inv_mul_cancel₀ hn.ne']
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [4182/4225] Built Zeta23.CCM.DictionaryArchWeight (2.6s)
+✔ [4183/4225] Built Zeta23.CCM.DictionaryArchSourceDecay (4.6s)
+✔ [4184/4225] Built Zeta23.RHRC.SourceCandidateResolution (687ms)
+✔ [4185/4225] Built Zeta23.RHRC.OpicaTypeExprExport (1.4s)
+⚠ [4186/4225] Built Zeta23.CCM.DictionaryArchMuGrowth (4.0s)
+warning: Zeta23/CCM/DictionaryArchMuGrowth.lean:80:47: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+✔ [4187/4225] Built Zeta23.OPICAFollowup.JointObservation (6.3s)
+✔ [4188/4225] Built Zeta23.CCM.DictionaryArchSourceMuIntegrability (2.5s)
+✔ [4189/4225] Built Zeta23.CCM.DictionaryArchDensityBridge (3.6s)
+✔ [4190/4225] Built Zeta23.OPICAFollowup.Counterexamples (5.0s)
+✔ [4191/4225] Built Zeta23.CCM.DictionaryArchSourceBridge (3.0s)
+ℹ [4192/4225] Built Zeta23.CCM.DictionaryTentArchLimit (3.9s)
+info: Zeta23/CCM/DictionaryTentArchLimit.lean:346:0: 'Zeta23.CCM.integrable_paperFT_dictionaryTent_realAxis_mul_mu' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: Zeta23/CCM/DictionaryTentArchLimit.lean:347:0: 'Zeta23.CCM.dictionaryArchRHS_dictionaryTentMollified_tendsto' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+⚠ [4193/4225] Built Zeta23.CCM.DictionaryArchDiagonal (5.6s)
+info: Zeta23/CCM/DictionaryArchDiagonal.lean:267:12: Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: Zeta23/CCM/DictionaryArchDiagonal.lean:267:12: Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+warning: Zeta23/CCM/DictionaryArchDiagonal.lean:296:19: 'ring' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: Zeta23/CCM/DictionaryArchDiagonal.lean:296:19: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+warning: Zeta23/CCM/DictionaryArchDiagonal.lean:280:15: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+info: Zeta23/CCM/DictionaryArchDiagonal.lean:374:2: Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: Zeta23/CCM/DictionaryArchDiagonal.lean:407:4: Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+✔ [4194/4225] Built Zeta23.CCM.DictionaryArchOffDiagonal (2.8s)
+ℹ [4195/4225] Built Zeta23.CCM.DictionaryTentEFExtension (2.2s)
+info: Zeta23/CCM/DictionaryTentEFExtension.lean:108:0: 'Zeta23.CCM.dictionaryTent_zero_sum_eq_literatureRHS' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/DictionaryTentEFExtension.lean:109:0: 'Zeta23.CCM.dictionaryTent_explicitFormula' depends on axioms: [propext, Classical.choice, Quot.sound]
+⚠ [4196/4225] Built Zeta23.CCM.DictionaryArchDiagonalPhysical (2.7s)
+warning: Zeta23/CCM/DictionaryArchDiagonalPhysical.lean:79:4: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+✔ [4197/4225] Built Zeta23.CCM.DictionaryArchDiagonalEvaluation (2.7s)
+✔ [4198/4225] Built Zeta23.CCM.DictionaryArchEntries (1.9s)
+✔ [4199/4225] Built Zeta23.CCM.DictionaryFiniteExpansion (2.1s)
+✔ [4200/4225] Built Zeta23.CCM.DictionaryPoleLift (2.0s)
+⚠ [4201/4225] Built Zeta23.CCM.LocalizedFiniteSpace (3.7s)
+info: Zeta23/CCM/LocalizedFiniteSpace.lean:49:2: Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+warning: Zeta23/CCM/LocalizedFiniteSpace.lean:124:24: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: Zeta23/CCM/LocalizedFiniteSpace.lean:124:38: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: Zeta23/CCM/LocalizedFiniteSpace.lean:162:4: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+warning: Zeta23/CCM/LocalizedFiniteSpace.lean:158:24: 'ring' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: Zeta23/CCM/LocalizedFiniteSpace.lean:158:24: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+warning: Zeta23/CCM/LocalizedFiniteSpace.lean:179:20: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: Zeta23/CCM/LocalizedFiniteSpace.lean:190:20: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+info: Zeta23/CCM/LocalizedFiniteSpace.lean:873:0: 'Zeta23.CCM.localizedFiniteVector_eq_indicator' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/LocalizedFiniteSpace.lean:874:0: 'Zeta23.CCM.localizedFiniteVector_support_subset' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/LocalizedFiniteSpace.lean:875:0: 'Zeta23.CCM.localizedFiniteVector_hasCompactSupport' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/LocalizedFiniteSpace.lean:876:0: 'Zeta23.CCM.localizedFiniteVector_memLp_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/LocalizedFiniteSpace.lean:877:0: 'Zeta23.CCM.localizedWeilCorrelation_neg' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/LocalizedFiniteSpace.lean:878:0: 'Zeta23.CCM.localizedWeilCorrelation_basis_eq_hardWindow' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/LocalizedFiniteSpace.lean:879:0: 'Zeta23.CCM.localizedWeilCorrelation_basis_eq_qBasis' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/LocalizedFiniteSpace.lean:880:0: 'Zeta23.CCM.localizedWeilCorrelation_finiteVector_eq_basis_sum' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: Zeta23/CCM/LocalizedFiniteSpace.lean:881:0: 'Zeta23.CCM.localizedWeilCorrelation_finiteVector_eq_two_mul_dictionaryTest' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: Zeta23/CCM/LocalizedFiniteSpace.lean:882:0: 'Zeta23.CCM.localizedWeilCorrelation_finiteVector_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+✔ [4202/4225] Built Zeta23.CCM.DictionaryPrimeLift (2.5s)
+✔ [4203/4225] Built Zeta23.CCM.DictionaryArchLift (2.0s)
+✔ [4204/4225] Built Zeta23.CCM.DictionaryRHSIdentity (1.9s)
+ℹ [4205/4225] Built Zeta23.CCM.DictionarySmoothCoreBridge (2.3s)
+info: Zeta23/CCM/DictionarySmoothCoreBridge.lean:106:0: 'Zeta23.CCM.zeroSum_dictionaryTest_zero_sum_eq_quadraticForm' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [4206/4225] Built Zeta23.CCM.DictionarySmoothCorePolarization (2.2s)
+info: Zeta23/CCM/DictionarySmoothCorePolarization.lean:131:0: 'Zeta23.CCM.smoothCoreZeroPolarization_eq_realMatrixPairing' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [4207/4225] Built Zeta23.CCM.DictionaryZeroSideMatrix (3.1s)
+info: Zeta23/CCM/DictionaryZeroSideMatrix.lean:345:0: 'Zeta23.CCM.dictionarySpectralMatrix_zero_entry_summable' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/DictionaryZeroSideMatrix.lean:346:0: 'Zeta23.CCM.zeroSideMatrix_basisDiff_pairing_eq_smoothCoreZeroPolarization' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+ℹ [4208/4225] Built Zeta23.CCM.DictionaryZeroSideCompletion (2.1s)
+info: Zeta23/CCM/DictionaryZeroSideCompletion.lean:149:0: 'Zeta23.CCM.zeroSideDiscrepancy_basisDiff_pairing_eq_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/DictionaryZeroSideCompletion.lean:150:0: 'Zeta23.CCM.zeroSideDiscrepancy_eq_completion' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/DictionaryZeroSideCompletion.lean:151:0: 'Zeta23.CCM.rank_zeroSideDiscrepancy_le_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [4209/4225] Built Zeta23.CCM.DictionaryZeroSideTentDefect (2.6s)
+info: Zeta23/CCM/DictionaryZeroSideTentDefect.lean:642:0: 'Zeta23.CCM.zeroSideDiscrepancy_diagonal_eq_center' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/DictionaryZeroSideTentDefect.lean:643:0: 'Zeta23.CCM.zeroSideDiscrepancy_eq_tentDefect_smul_ones' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/DictionaryZeroSideTentDefect.lean:644:0: 'Zeta23.CCM.rank_zeroSideDiscrepancy_le_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/DictionaryZeroSideTentDefect.lean:645:0: 'Zeta23.CCM.zeroSideMatrix_eq_dictionaryMatrix_iff_tentDefect_eq_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+ℹ [4210/4225] Built Zeta23.CCM.DictionaryZeroSideBridge (2.0s)
+info: Zeta23/CCM/DictionaryZeroSideBridge.lean:72:0: 'Zeta23.CCM.dictionaryTentDefect_eq_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/DictionaryZeroSideBridge.lean:73:0: 'Zeta23.CCM.zeroSideMatrix_eq_dictionaryMatrix' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/DictionaryZeroSideBridge.lean:74:0: 'Zeta23.CCM.zeroSideDiscrepancy_eq_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/DictionaryZeroSideBridge.lean:75:0: 'Zeta23.CCM.zeroSideMatrix_eq_finiteMatrix_add_correction' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [4211/4225] Built Zeta23.CCM.CutoffFreeMatrix (2.1s)
+info: Zeta23/CCM/CutoffFreeMatrix.lean:157:0: 'Zeta23.CCM.cutoffFreeArchComponent_eq_archComponent_sub_two_correction' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: Zeta23/CCM/CutoffFreeMatrix.lean:158:0: 'Zeta23.CCM.cutoffFreeEntry_eq_entry_add_two_correction' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/CutoffFreeMatrix.lean:159:0: 'Zeta23.CCM.cutoffFreeMatrix_eq_dictionaryMatrix' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/CutoffFreeMatrix.lean:160:0: 'Zeta23.CCM.cutoffFreeMatrix_eq_finiteMatrix_add_correction' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/CutoffFreeMatrix.lean:161:0: 'Zeta23.CCM.cutoffFreeMatrixOfCutoff_sq_eq_of_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/CCM/CutoffFreeMatrix.lean:162:0: 'Zeta23.CCM.zeroSideMatrix_eq_cutoffFreeMatrix' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [4212/4225] Built Zeta23.CCM.LocalizedWeilRestriction (2.0s)
+info: Zeta23/CCM/LocalizedWeilRestriction.lean:151:0: 'Zeta23.CCM.localizedWeilHalfTest_finiteVector_eq_dictionaryTest' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: Zeta23/CCM/LocalizedWeilRestriction.lean:152:0: 'Zeta23.CCM.localizedWeilAdditiveRHS_finiteVector_eq_dictionaryQuadraticForm' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: Zeta23/CCM/LocalizedWeilRestriction.lean:153:0: 'Zeta23.CCM.localizedWeilAdditiveRHS_finiteVector_eq_cutoffFreeQuadraticForm' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: Zeta23/CCM/LocalizedWeilRestriction.lean:154:0: 'Zeta23.CCM.localizedWeilAdditiveRHS_finiteVector_eq_cutoffFreeQuadraticForm_ofLambda' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: Zeta23/CCM/LocalizedWeilRestriction.lean:155:0: 'Zeta23.CCM.finiteRestriction_eq_cutoffFreeQuadraticForm_of_matches' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+✔ [4213/4225] Built Zeta23.ExceptionalZero.WeilZeroSideEvenization (2.7s)
+⚠ [4214/4225] Built Zeta23.ExceptionalZero.NativeZeroJetAnalyticFactors (2.5s)
+warning: Zeta23/ExceptionalZero/NativeZeroJetAnalyticFactors.lean:64:4: Try `simp at hpos` instead of `simpa using hpos`
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+warning: Zeta23/ExceptionalZero/NativeZeroJetAnalyticFactors.lean:72:44: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+info: Zeta23/ExceptionalZero/NativeZeroJetAnalyticFactors.lean:225:0: 'Zeta23.ExceptionalZero.nativeZeroMultiplicity_order' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/ExceptionalZero/NativeZeroJetAnalyticFactors.lean:226:0: 'Zeta23.ExceptionalZero.nativeZeroMultiplicity_deriv_order' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/ExceptionalZero/NativeZeroJetAnalyticFactors.lean:227:0: 'Zeta23.ExceptionalZero.nativeOriginalSourceLaplace_analyticAt' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: Zeta23/ExceptionalZero/NativeZeroJetAnalyticFactors.lean:228:0: 'Zeta23.ExceptionalZero.nativeCompletionRationalMultiplier_at_zero_ne_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: Zeta23/ExceptionalZero/NativeZeroJetAnalyticFactors.lean:229:0: 'Zeta23.ExceptionalZero.nativeZeroJetKernelMultiplier_order' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/ExceptionalZero/NativeZeroJetAnalyticFactors.lean:230:0: 'Zeta23.ExceptionalZero.nativeZeroJetInputMultiplier_order' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/ExceptionalZero/NativeZeroJetAnalyticFactors.lean:231:0: 'Zeta23.ExceptionalZero.nativeZeroJetInputMultiplier_jet' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/ExceptionalZero/NativeZeroJetAnalyticFactors.lean:232:0: 'Zeta23.ExceptionalZero.nativeZeroJetSourceFactor_ne_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+✔ [4215/4225] Built Zeta23.OPICAFollowup.NativeSourceTransforms (4.5s)
+✔ [4216/4225] Built Zeta23.OPICAFollowup.NativeExplicitFormula (4.8s)
+✔ [4217/4225] Built Zeta23.OPICAFollowup.NativeFilters (7.0s)
+✔ [4218/4225] Built Zeta23.OPICAFollowup.AuxiliaryCompletions (7.3s)
+✔ [4219/4225] Built Zeta23.OPICAFollowup.ForwardLocalization (13s)
+✔ [4220/4225] Built Zeta23.OPICAFollowup.UniformSourceBounds (11s)
+✔ [4221/4225] Built Zeta23.OPICAFollowup.NativeTransformationWords (5.1s)
+✔ [4222/4225] Built Zeta23.OPICAFollowup.RobustLaurent (4.7s)
+✔ [4223/4225] Built Zeta23.OPICAFollowup.LogSlackBalance (7.3s)
+✔ [4224/4225] Built Zeta23.OPICAFollowup.MaskedNativeRate (2.8s)
+ℹ [4225/4225] Built Zeta23.OPICAFollowup.Validation (6.7s)
+info: Zeta23/OPICAFollowup/Validation.lean:76:0: 'Zeta23.OPICAFollowup.norm_first_log_comparison' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:77:0: 'Zeta23.OPICAFollowup.norm_first_rate_transfer' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:78:0: 'Zeta23.OPICAFollowup.energy_allocation_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:79:0: 'Zeta23.OPICAFollowup.energy_allocation_rate_lower' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:80:0: 'Zeta23.OPICAFollowup.norm_first_scalar_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:81:0: 'Zeta23.OPICAFollowup.norm_first_log_upper' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:82:0: 'Zeta23.OPICAFollowup.norm_first_log_norms' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:83:0: 'Zeta23.OPICAFollowup.norm_first_log_positive_part' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:84:0: 'Zeta23.OPICAFollowup.norm_first_rate_difference' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:85:0: 'Zeta23.OPICAFollowup.nonnegative_rate_extended_congr' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:86:0: 'Zeta23.OPICAFollowup.energy_allocation_log_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:173:0: 'Zeta23.OPICAFollowup.joint_recovery_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:174:0: 'Zeta23.OPICAFollowup.joint_recovery_optimal_norm' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:175:0: 'Zeta23.OPICAFollowup.joint_recovery_noise_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:176:0: 'Zeta23.OPICAFollowup.approx_compatibility_left_null' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:177:0: 'Zeta23.OPICAFollowup.recovery_subexp_budget' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:214:0: 'Zeta23.OPICAFollowup.norm_first_strictly_weaker_control' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:215:0: 'Zeta23.OPICAFollowup.coupled_gram_collision_control' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:361:0: 'Zeta23.OPICAFollowup.sourceFamily_zero_eq_original' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:362:0: 'Zeta23.OPICAFollowup.sourceFamily_support_smooth_moments' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:363:0: 'Zeta23.OPICAFollowup.source_product_vertical_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:364:0: 'Zeta23.OPICAFollowup.history_recovery_cost_control' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:365:0: 'Zeta23.OPICAFollowup.forced_positive_gram_nonreal_control' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:426:0: 'Zeta23.OPICAFollowup.native_binomial_inverse_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:427:0: 'Zeta23.OPICAFollowup.balanced_coeff_divisor_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:428:0: 'Zeta23.OPICAFollowup.Validation.native_j17_original_palette_physical_consumer' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:493:0: 'Zeta23.OPICAFollowup.laurent_coefficient_error_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:494:0: 'Zeta23.OPICAFollowup.laurent_observation_survives' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:515:0: 'Zeta23.OPICAFollowup.gamma_one_vertical_norm_sq' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:516:0: 'Zeta23.OPICAFollowup.gamma_one_vertical_exp_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:517:0: 'Zeta23.OPICAFollowup.gamma_integer_vertical_exp_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:518:0: 'Zeta23.OPICAFollowup.zeta_right_halfplane_value_derivative_bound' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:519:0: 'Zeta23.OPICAFollowup.digamma_integer_vertical_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:520:0: 'Zeta23.OPICAFollowup.zeta_reflected_value_derivative' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:521:0: 'Zeta23.OPICAFollowup.gamma_integer_trig_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:522:0: 'Zeta23.OPICAFollowup.zeta_reflection_uniform_integer_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:523:0: 'Zeta23.OPICAFollowup.zeta_left_line_uniform_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:561:0: 'Zeta23.OPICAFollowup.sourceFamily_laplace_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:562:0: 'Zeta23.OPICAFollowup.nativePrimeField_visiblePole' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:563:0: 'Zeta23.OPICAFollowup.nativePrimePoleData' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:564:0: 'Zeta23.OPICAFollowup.actualZeta_meromorphic' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:565:0: 'Zeta23.OPICAFollowup.nativePrimeTransformGerm_meromorphic' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:566:0: 'Zeta23.OPICAFollowup.primeFieldFamily_physical_laplace' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:567:0: 'Zeta23.OPICAFollowup.Validation.expected_sourceFamily_laplace_identity' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:568:0: 'Zeta23.OPICAFollowup.Validation.expected_nativePrimeField_visiblePole' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:569:0: 'Zeta23.OPICAFollowup.Validation.expected_nativePrimePole_physical_source' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:622:0: 'Zeta23.OPICAFollowup.native_zero_count_summability' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:623:0: 'Zeta23.OPICAFollowup.native_zero_sup_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:624:0: 'Zeta23.OPICAFollowup.native_source_explicit_formula' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:699:0: 'Zeta23.OPICAFollowup.nativeGenerator_unit_or_completion' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:700:0: 'Zeta23.OPICAFollowup.Validation.expected_nativeGenerator_unit_or_completion' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:701:0: 'Zeta23.OPICAFollowup.Validation.expected_source_generator_unit' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:702:0: 'Zeta23.OPICAFollowup.Validation.expected_delay_generator_unit' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:703:0: 'Zeta23.OPICAFollowup.Validation.expected_finiteEuler_generator_units' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:704:0: 'Zeta23.OPICAFollowup.Validation.expected_rational_generator_units' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:705:0: 'Zeta23.OPICAFollowup.Validation.expected_residual_generator_unit' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:706:0: 'Zeta23.OPICAFollowup.Validation.expected_completion_generator_unit' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:732:0: 'Zeta23.OPICAFollowup.sqrt_decay_moment_integral' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:733:0: 'Zeta23.OPICAFollowup.shifted_sqrt_decay_integral_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:734:0: 'Zeta23.OPICAFollowup.fixed_linear_factorial_envelope' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:735:0: 'Zeta23.OPICAFollowup.forwardContour_pointwise_budget' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:736:0: 'Zeta23.OPICAFollowup.forwardKernel_left_contour_budget' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:773:0: 'Zeta23.OPICAFollowup.Validation.expected_realCutoff_physical_transform' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:774:0: 'Zeta23.OPICAFollowup.Validation.expected_nonintegral_residual_cutoff' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:874:0: 'Zeta23.OPICAFollowup.source_order_uniform_norms' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:875:0: 'Zeta23.OPICAFollowup.native_field_theta_envelope' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:876:0: 'Zeta23.OPICAFollowup.Validation.expected_source_order_uniform_norms' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:877:0: 'Zeta23.OPICAFollowup.Validation.expected_native_field_theta_envelope' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:878:0: 'Zeta23.OPICAFollowup.uniform_nativeOrderLogDriveSummand_integral_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:879:0: 'Zeta23.OPICAFollowup.integerDriveFamilyL2_norm_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:1086:0: 'Zeta23.OPICAFollowup.nativeGenerator_transform' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:1087:0: 'Zeta23.OPICAFollowup.forwardKernel_physical_laplace' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:1128:0: 'Zeta23.OPICAFollowup.Validation.expected_fractional_strip_zeta_control' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:1129:0: 'Zeta23.OPICAFollowup.Validation.expected_positive_fractional_gamma_control' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:1130:0: 'Zeta23.OPICAFollowup.bilateralLaplace_inverse' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:1131:0: 'Zeta23.OPICAFollowup.integer_contour_saddle_decay' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:1132:0: 'Zeta23.OPICAFollowup.norm_bilateralLaplace_inverse_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:1158:0: 'Zeta23.OPICAFollowup.forwardKernel_double_exp_decay' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:1159:0: 'Zeta23.OPICAFollowup.forwardKernel_iteratedDeriv_contour_formula' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:1160:0: 'Zeta23.OPICAFollowup.forwardKernel_iteratedDeriv_contour_norm' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:1161:0: 'Zeta23.OPICAFollowup.forwardEntire_fixed_strip_majorant' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:1162:0: 'Zeta23.OPICAFollowup.forwardEntire_vertical_line_shift' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:1163:0: 'Zeta23.OPICAFollowup.Validation.expected_forwardKernel_double_exp_decay' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:1164:0: 'Zeta23.OPICAFollowup.Validation.expected_actual_integer_drive_double_exp_decay' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:1165:0: 'Zeta23.OPICAFollowup.Validation.expected_forward_all_derivatives_at_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:1263:0: 'OPICAContinuationChecks.expected_log_slack_native_decomposition' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:1264:0: 'OPICAContinuationChecks.expected_log_slack_typeI_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:1265:0: 'OPICAContinuationChecks.expected_fixed_two_factor_preparation' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:1267:0: 'Zeta23.OPICAFollowup.forwardKernel_common_finite_tail' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:1268:0: 'Zeta23.OPICAFollowup.small_palette_block_tail_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:1269:0: 'Zeta23.OPICAFollowup.logSlack_filter_mass_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:1270:0: 'Zeta23.OPICAFollowup.log_slack_native_decomposition' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:1271:0: 'Zeta23.OPICAFollowup.log_slack_typeI_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:1272:0: 'Zeta23.OPICAFollowup.fixed_two_factor_preparation' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:1339:0: 'Zeta23.OPICAFollowup.auxDensityCoefficientBudget_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:1340:0: 'Zeta23.OPICAFollowup.auxDensity_descFactorial_ratio' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:1341:0: 'Zeta23.OPICAFollowup.auxProfilePrimitive_expansion' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:1342:0: 'Zeta23.OPICAFollowup.auxProfileDensity_polynomial' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:1343:0: 'Zeta23.OPICAFollowup.auxCompletionProfile_density_L1_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:1344:0: 'Zeta23.OPICAFollowup.auxCompletionProfile_distributional_derivative' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:1345:0: 'Zeta23.OPICAFollowup.auxCompletionProfile_derivative_test_bound' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:1346:0: 'Zeta23.OPICAFollowup.auxProfileFourierTest_iteratedDeriv' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:1347:0: 'Zeta23.OPICAFollowup.auxCompletionProfile_fourier_decay' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:1348:0: 'Zeta23.OPICAFollowup.auxCompletionFilter_integrable_laplace' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:1349:0: 'Zeta23.OPICAFollowup.auxCompletionKernel_initial_laplace' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:1350:0: 'Zeta23.OPICAFollowup.auxCompletionFilter_L1_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:1395:0: 'Zeta23.OPICAFollowup.LocallyFiniteComplexMeasure.totalVariation_restrict_compact' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:1396:0: 'Zeta23.OPICAFollowup.LocallyFiniteComplexMeasure.hasLinearGrowth_iff_totalVariation' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:1397:0: 'Zeta23.OPICAFollowup.LocallyFiniteComplexMeasure.compact_integral_difference_bound' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:1398:0: 'Zeta23.OPICAFollowup.LocalVariationConvergence.tendsto_compact_test' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:1399:0: 'Zeta23.OPICAFollowup.LocallyFiniteComplexMeasure.compactRestriction_scale' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:1445:0: 'Zeta23.OPICAFollowup.forwardKernel_actual_bounded' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:1446:0: 'Zeta23.OPICAFollowup.nativeLargeCoefficients_power_abs_le_divisor' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:1447:0: 'Zeta23.OPICAFollowup.native_balanced_two_realizations' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:1448:0: 'Zeta23.OPICAFollowup.native_balanced_low_masks_explicit' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:1449:0: 'Zeta23.OPICAFollowup.native_balanced_mask_regrouping' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:1492:0: 'OPICAContinuationChecks.actual_dirichlet_square_at_four' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:1493:0: 'OPICAContinuationChecks.pointwise_square_at_four' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Zeta23/OPICAFollowup/Validation.lean:1494:0: 'OPICAContinuationChecks.dirichlet_square_differs_from_pointwise' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+Build completed successfully (4225 jobs).

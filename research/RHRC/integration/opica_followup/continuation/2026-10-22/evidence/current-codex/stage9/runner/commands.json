@@ -1,0 +1,277 @@
+[
+  {
+    "label": "version",
+    "command": [
+      "lake",
+      "env",
+      "lean",
+      "--version"
+    ],
+    "exit_code": 0,
+    "seconds": 1.2199041689991645,
+    "log": "version.log",
+    "log_sha256": "d2b0b0a275a0c043b1650ebc4faf0b9c9c686656f0b0f066fc6f77df4f135d3a"
+  },
+  {
+    "label": "build",
+    "command": [
+      "lake",
+      "build",
+      "Zeta23.OPICAFollowup.MaskedNativeRate",
+      "Zeta23.OPICAFollowup.ComplexLocalMeasures",
+      "Zeta23.OPICAFollowup.AuxiliaryCompletions",
+      "Zeta23.OPICAFollowup.MultiplicityTail",
+      "Zeta23.OPICAFollowup.DilatedComb",
+      "Zeta23.OPICAFollowup.RenormalizedCoPoisson",
+      "Zeta23.OPICAFollowup.FirstCellCost",
+      "Zeta23.OPICAFollowup.WeightedMixing",
+      "Zeta23.OPICAFollowup.NearGapLimits",
+      "Zeta23.OPICAFollowup.ProfileEulerMaclaurin",
+      "Zeta23.OPICAFollowup.ZeroProfiles"
+    ],
+    "exit_code": 0,
+    "seconds": 2.776149139000154,
+    "log": "build.log",
+    "log_sha256": "0a9bd7c9faf86a4139207f566de72be229fc688f63c04290a011c54dd982aa9a"
+  },
+  {
+    "label": "ExpectedMasks",
+    "command": [
+      "lake",
+      "env",
+      "lean",
+      "-DmaxHeartbeats=800000",
+      "-DrelaxedAutoImplicit=false",
+      "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedMasks.lean"
+    ],
+    "exit_code": 0,
+    "seconds": 5.036038881999957,
+    "log": "ExpectedMasks.log",
+    "log_sha256": "cb83a89303dddd0609e02fff506d94305be2fdcb9c9e2a64820eae8fad5b934d"
+  },
+  {
+    "label": "ExpectedComplex",
+    "command": [
+      "lake",
+      "env",
+      "lean",
+      "-DmaxHeartbeats=800000",
+      "-DrelaxedAutoImplicit=false",
+      "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedComplex.lean"
+    ],
+    "exit_code": 0,
+    "seconds": 3.883057517000452,
+    "log": "ExpectedComplex.log",
+    "log_sha256": "9cd49dac8bfdf55f909bd22c7e3973fe0515439d732a971e83d7d145defca5b3"
+  },
+  {
+    "label": "ExpectedAuxiliary",
+    "command": [
+      "lake",
+      "env",
+      "lean",
+      "-DmaxHeartbeats=800000",
+      "-DrelaxedAutoImplicit=false",
+      "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedAuxiliary.lean"
+    ],
+    "exit_code": 0,
+    "seconds": 4.433893477999845,
+    "log": "ExpectedAuxiliary.log",
+    "log_sha256": "4610d15ae3436ed7e4ffeb749097aba47fb3cff38ec67b647bc4e12c48dc5aa0"
+  },
+  {
+    "label": "ExpectedMultiplicity",
+    "command": [
+      "lake",
+      "env",
+      "lean",
+      "-DmaxHeartbeats=800000",
+      "-DrelaxedAutoImplicit=false",
+      "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedMultiplicity.lean"
+    ],
+    "exit_code": 0,
+    "seconds": 4.821598596000513,
+    "log": "ExpectedMultiplicity.log",
+    "log_sha256": "fec715ff3ecadbc41fe1a407ac40635d59623c61d780a6977fef8b4872ddd7d7"
+  },
+  {
+    "label": "ExpectedComb",
+    "command": [
+      "lake",
+      "env",
+      "lean",
+      "-DmaxHeartbeats=800000",
+      "-DrelaxedAutoImplicit=false",
+      "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedComb.lean"
+    ],
+    "exit_code": 0,
+    "seconds": 4.193612392999967,
+    "log": "ExpectedComb.log",
+    "log_sha256": "734c070f4cda62336fd2eee3017a5143b7831b2e17fbe4ef8c33e2c91b227ac6"
+  },
+  {
+    "label": "ExpectedFirstCell",
+    "command": [
+      "lake",
+      "env",
+      "lean",
+      "-DmaxHeartbeats=800000",
+      "-DrelaxedAutoImplicit=false",
+      "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedFirstCell.lean"
+    ],
+    "exit_code": 0,
+    "seconds": 4.030873952000547,
+    "log": "ExpectedFirstCell.log",
+    "log_sha256": "d667c8051a9c672732343d13db87f5c8f43ce87dfbe1046828f7f185e62abad6"
+  },
+  {
+    "label": "ExpectedWeighted",
+    "command": [
+      "lake",
+      "env",
+      "lean",
+      "-DmaxHeartbeats=800000",
+      "-DrelaxedAutoImplicit=false",
+      "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedWeighted.lean"
+    ],
+    "exit_code": 0,
+    "seconds": 4.341919864999909,
+    "log": "ExpectedWeighted.log",
+    "log_sha256": "556520ca8e2b279bca480acbdd48733761c0d413d9bfb2c5ce613ea879966add"
+  },
+  {
+    "label": "ExpectedNearGap",
+    "command": [
+      "lake",
+      "env",
+      "lean",
+      "-DmaxHeartbeats=800000",
+      "-DrelaxedAutoImplicit=false",
+      "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedNearGap.lean"
+    ],
+    "exit_code": 0,
+    "seconds": 4.077121270999669,
+    "log": "ExpectedNearGap.log",
+    "log_sha256": "7dde0cf366e21942beeedfb6567c87e87d48676b116c6fa22f002be5fe3fc0c0"
+  },
+  {
+    "label": "ExpectedNearGapLimit",
+    "command": [
+      "lake",
+      "env",
+      "lean",
+      "-DmaxHeartbeats=800000",
+      "-DrelaxedAutoImplicit=false",
+      "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedNearGapLimit.lean"
+    ],
+    "exit_code": 0,
+    "seconds": 4.826206545999412,
+    "log": "ExpectedNearGapLimit.log",
+    "log_sha256": "31dca0c72e3aa4d7d0f1146aec8fdf7002a30d25f5c568fb3f1572f7ac1c51c1"
+  },
+  {
+    "label": "ExpectedNormalizedLimit",
+    "command": [
+      "lake",
+      "env",
+      "lean",
+      "-DmaxHeartbeats=800000",
+      "-DrelaxedAutoImplicit=false",
+      "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedNormalizedLimit.lean"
+    ],
+    "exit_code": 0,
+    "seconds": 4.611341716999959,
+    "log": "ExpectedNormalizedLimit.log",
+    "log_sha256": "aaedbe0a885c93422c8ad18a50773662cede9d691af83b823c3f753c291d51cd"
+  },
+  {
+    "label": "ExpectedWeightedInverse",
+    "command": [
+      "lake",
+      "env",
+      "lean",
+      "-DmaxHeartbeats=800000",
+      "-DrelaxedAutoImplicit=false",
+      "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedWeightedInverse.lean"
+    ],
+    "exit_code": 0,
+    "seconds": 5.293968236999717,
+    "log": "ExpectedWeightedInverse.log",
+    "log_sha256": "fa3bdbb20c24b24d17aeea0f09b169374952b80838a4f9ece124cc2a371c6aa2"
+  },
+  {
+    "label": "ExpectedCoPoissonFamily",
+    "command": [
+      "lake",
+      "env",
+      "lean",
+      "-DmaxHeartbeats=800000",
+      "-DrelaxedAutoImplicit=false",
+      "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedCoPoissonFamily.lean"
+    ],
+    "exit_code": 0,
+    "seconds": 4.942652757999895,
+    "log": "ExpectedCoPoissonFamily.log",
+    "log_sha256": "bdbeccc5c605c93eff518e855cc3cc7cd96826e54912a362b3a1a162b79e8436"
+  },
+  {
+    "label": "ExpectedCoPoissonOrderZero",
+    "command": [
+      "lake",
+      "env",
+      "lean",
+      "-DmaxHeartbeats=800000",
+      "-DrelaxedAutoImplicit=false",
+      "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedCoPoissonOrderZero.lean"
+    ],
+    "exit_code": 0,
+    "seconds": 4.427502710000226,
+    "log": "ExpectedCoPoissonOrderZero.log",
+    "log_sha256": "2e16306b71740c82de0cdbf87d6327a40ccd8131779e18d59750cba72888b17b"
+  },
+  {
+    "label": "ExpectedZeroMeasure",
+    "command": [
+      "lake",
+      "env",
+      "lean",
+      "-DmaxHeartbeats=800000",
+      "-DrelaxedAutoImplicit=false",
+      "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedZeroMeasure.lean"
+    ],
+    "exit_code": 0,
+    "seconds": 4.1871338130004006,
+    "log": "ExpectedZeroMeasure.log",
+    "log_sha256": "af72983dfbe059c74c19a89f47e4502725c5f82052302def4bd5ce280c5ff292"
+  },
+  {
+    "label": "ExpectedEulerMaclaurin",
+    "command": [
+      "lake",
+      "env",
+      "lean",
+      "-DmaxHeartbeats=800000",
+      "-DrelaxedAutoImplicit=false",
+      "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedEulerMaclaurin.lean"
+    ],
+    "exit_code": 0,
+    "seconds": 5.6035287280001285,
+    "log": "ExpectedEulerMaclaurin.log",
+    "log_sha256": "c82ddc9e09528cc82834b5ee3a67f749ebae6c4264fec058255d3d6a00bced2b"
+  },
+  {
+    "label": "ExpectedZeroProfiles",
+    "command": [
+      "lake",
+      "env",
+      "lean",
+      "-DmaxHeartbeats=800000",
+      "-DrelaxedAutoImplicit=false",
+      "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedZeroProfiles.lean"
+    ],
+    "exit_code": 0,
+    "seconds": 5.146749632999672,
+    "log": "ExpectedZeroProfiles.log",
+    "log_sha256": "7b9fad2ebba927462f2da9eb18d86ba4464e61a2396c5411a1700cad2f0bc039"
+  }
+]

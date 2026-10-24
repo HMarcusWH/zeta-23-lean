@@ -1,0 +1,118 @@
+{
+  "schema": "OPICA_SCOPED_EVIDENCE_PACKAGE_V1",
+  "scope": "ONE_ORIGINAL_WEIGHTED_ROOT_LOCAL_COMPILER_GATES_ONLY",
+  "original_external_folder": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage2-2026-10-22\\weighted",
+  "files": [
+    {
+      "path": "ExpectedWeighted.lean",
+      "bytes": 5650,
+      "sha256": "e137ed312f799cd589126a89281470c9f45293bcccf1386598dd66de30639bad"
+    },
+    {
+      "path": "HANDOVER.md",
+      "bytes": 6772,
+      "sha256": "1e6877b3bf4af4eef1ebbe5e8e3cec58748ab3cc230f772082201e72dabe8a34"
+    },
+    {
+      "path": "POST_GREEN_RESEARCH.md",
+      "bytes": 4583,
+      "sha256": "28de06f965f2b47042817f2057281a4f4e95e4d0f294ca131979b5ed18b08840"
+    },
+    {
+      "path": "STATUS.json",
+      "bytes": 6208,
+      "sha256": "1def942f4d78698ac4ff98a3ecbedf3ecfd2f1a6c22e4aa408fba61f8dc7626d"
+    },
+    {
+      "path": "WeightedMixing-foundation03.lean",
+      "bytes": 7098,
+      "sha256": "35a99332dbb03a0d1949e48f8244439a62e6332dc536fb710d5299dc9fbdc5d8"
+    },
+    {
+      "path": "WeightedMixing.lean",
+      "bytes": 29713,
+      "sha256": "5b0d86adcf72167a45b3922689911a5591da4c3ecab7fd19ceb246de5f00998a"
+    },
+    {
+      "path": "foundation-01.log",
+      "bytes": 1267,
+      "sha256": "8165209703ca2a59a8ce1266d3e1cd20d3cb0122d08a48d92567c754cb7c0282"
+    },
+    {
+      "path": "foundation-02.log",
+      "bytes": 1748,
+      "sha256": "8b630022d0f698782de6c7a92aa5b1b305ffeaf35b80abfa9c3ffea5c99c829d"
+    },
+    {
+      "path": "foundation-03.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "foundation-04.log",
+      "bytes": 2692,
+      "sha256": "8e401c384a91f4359fe16c96c384d5723740e2bddc01768a06b88d43809d4d46"
+    },
+    {
+      "path": "foundation-05.log",
+      "bytes": 1196,
+      "sha256": "8b7612d2a36f34ef166ab966befb677ec12bffc912e1713083ccb2b7059e9bb2"
+    },
+    {
+      "path": "foundation-06.log",
+      "bytes": 4903,
+      "sha256": "08017d8cff3a336db6ff92a220b4a6ea55a34c5fe7aea7910492752dbdeacebc"
+    },
+    {
+      "path": "foundation-07.log",
+      "bytes": 1276,
+      "sha256": "763417aa4397290dc8f335ea9c6df858f7e57d4cf80acc78e15d39c44f7d158f"
+    },
+    {
+      "path": "foundation-08.log",
+      "bytes": 7274,
+      "sha256": "6a1dd7293b7172193b79daf1f77bcded313fb47be75a3bc42f6167850bf682db"
+    },
+    {
+      "path": "foundation-09.log",
+      "bytes": 1176,
+      "sha256": "386b6236475c8405d3e68d45848606f6f82856762cd53f8204fc3256a6e26695"
+    },
+    {
+      "path": "foundation-10.log",
+      "bytes": 356,
+      "sha256": "068b91ba8d6302762c7fc9a25fb81e16bbc7121cc866a1e40ede3669b016a666"
+    },
+    {
+      "path": "foundation-11.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "genuine-save-02.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "genuine-save.log",
+      "bytes": 102,
+      "sha256": "0116a506a9b3432ae97b42f93091d5023f483041f7eb92e564445b4dca72f599"
+    },
+    {
+      "path": "imported-consumers-01.log",
+      "bytes": 956,
+      "sha256": "e5904c8dd86d0333a1a8b78e3fb0c64a044ce629a0cfdf0b17deffd21b5d6bac"
+    },
+    {
+      "path": "imported-consumers-02.log",
+      "bytes": 1074,
+      "sha256": "0f2abbe1b551abf30bf0e0af7a141df065990327aa4cb21872f1006bf5057d4e"
+    }
+  ],
+  "selection": "All raw logs; final exact checked source and consumer; earlier green positive foundation; final handover, status and post-green review.",
+  "excluded": "Unchecked standalone development fragments and packaging scripts; no compiler binaries, archives or caches.",
+  "release_ready": false,
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "independent_closing_inequalities": "OPEN"
+}

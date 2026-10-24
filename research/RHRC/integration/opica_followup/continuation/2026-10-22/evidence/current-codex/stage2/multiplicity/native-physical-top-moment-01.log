@@ -1,0 +1,2 @@
+'Zeta23.OPICAFollowup.nativeAuxiliaryInput_completedPrime' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.OPICAFollowup.native_auxiliary_top_moment' depends on axioms: [propext, Classical.choice, Quot.sound]

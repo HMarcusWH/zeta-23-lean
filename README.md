@@ -1,3 +1,107 @@
+# Zeta23 / RHRC — Lean-backed Riemann Hypothesis research
+
+<!-- OPICA_AGENT_NAVIGATION_2026_10_22 -->
+**RH, Step 4 and the independent closing inequalities remain OPEN.**
+
+This repository preserves the upstream Zeta23 theorem package and develops
+formal mathematics and research under `Zeta23/CCM`, `Zeta23/ExceptionalZero`,
+`Zeta23/OPICA`, `Zeta23/OPICAFollowup` and `research/RHRC`.
+
+## Start here: current OPICA work
+
+The active OPICA follow-up is [draft PR #294](https://github.com/HMarcusWH/zeta-23-lean/pull/294)
+on `research/opica-native-followup`. The latest staged repairs and exact source
+hashes are recorded in the [Stage 2 handover](research/RHRC/integration/opica_followup/continuation/2026-10-22/STAGE2_HANDOVER.md).
+Check the live branch head and workflow evidence before starting work;
+documentation alone creates no proof authority.
+
+The accepted OPICA parent is [merged PR #293](https://github.com/HMarcusWH/zeta-23-lean/pull/293),
+commit `d53dd70d38b0762af130b1d19b795af259f505f5`. Its exact merged/tested-tree
+relationship is recorded in [PARENT_INTAKE.json](research/RHRC/integration/opica_followup/PARENT_INTAKE.json).
+
+Read [AGENTS.md](AGENTS.md), then the [continuation guide](research/RHRC/integration/opica_followup/continuation/2026-10-22/README.md).
+Use the current checkout; historical ZIP overlays and patches must be compared
+with newer work before applying them.
+
+## Current proof and acceptance state
+
+The required scope remains **100 original primary roots / 28 acceptance units**.
+
+| Roots | Evidence and outstanding work |
+| ---: | --- |
+| 41 | Historical exact-source cold subset evidence at `9b6a9a3`; a fresh whole-package receipt is still required. |
+| 15 | Additional original roots passed narrow local module, independent full-type/domain-consumer and standard-axiom checks. Stage 2 adds native moments, residual and memory, weighted mixture and the near-gap mass bound. Aggregate acceptance and the nonzero near-gap family witness remain OPEN. |
+| 1 | The supplied Step 1–3 word/jet consumer fails genuine compilation and remains unaccepted. |
+| 43 | Original roots still lack complete candidate implementations. |
+
+This is not aggregate acceptance of 56 roots or a completed release. The
+[100-root ledger](research/RHRC/integration/opica_followup/continuation/2026-10-22/ROOT_LEDGER_100.json) separates implementation, compilation,
+independent consumers, axioms, aggregate export and release gates for every root.
+The [remaining-work inventory](research/RHRC/integration/opica_followup/continuation/2026-10-22/REMAINING_WORK.md) lists the missing names.
+
+## Repository map for coding agents
+
+| Need | Start here |
+| --- | --- |
+| A complete continuation task | [Next-agent instructions](research/RHRC/integration/opica_followup/continuation/2026-10-22/NEXT_AGENT_PROMPT.md) |
+| Which documents govern which claims | [Documentation and evidence index](research/RHRC/integration/opica_followup/continuation/2026-10-22/DOCUMENTATION_INDEX.md) |
+| Mathematical implementation | [Zeta23/OPICAFollowup](Zeta23/OPICAFollowup) |
+| Frozen theorem contracts | [BUILD_SPEC.md](research/RHRC/integration/opica_followup/BUILD_SPEC.md), [PUBLIC_ROOTS.json](research/RHRC/integration/opica_followup/PUBLIC_ROOTS.json), [PAPER_CROSSWALK.json](research/RHRC/integration/opica_followup/PAPER_CROSSWALK.json) |
+| Foundational PDFs, specification inputs and supporting amendment | [Preserved inputs](research/RHRC/integration/opica_followup/continuation/2026-10-22/inputs) |
+| Current expected-type/domain consumers | [Independent Lean consumers](research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers) |
+| What is checked, failed or pending | [Evidence guide](research/RHRC/integration/opica_followup/continuation/2026-10-22/README.md#evidence-map) and [dated all-job CI harvest](research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage2/ci-harvest/CI_HARVEST.md) |
+| Proof-lane navigation | [OPICA progress map](research/RHRC/graph/OPICA_FOLLOWUP_CURRENT_STATE.md) |
+| Repository knowledge graph and its limits | [RHKG guide](research/RHRC/graph/README.md) |
+| Accepted parent APIs | [Zeta23/OPICA](Zeta23/OPICA) and [parent guide](research/RHRC/integration/opica/README.md) |
+| Mathematical consequences and next research | [Post-Green Research Pass](research/RHRC/integration/opica_followup/continuation/2026-10-22/POST_GREEN_RESEARCH.md) |
+| Original upstream package | [UPSTREAM_README.md](UPSTREAM_README.md) |
+
+## Continue and verify
+
+First capture the actual head, tree and working-tree changes. Keep the exact
+`lean-toolchain` and `lake-manifest.json` pins. Use the repository's normal Lake
+and Mathlib cache setup; the supplied source-only CORE archive omits its optional
+offline runtime and baseline Git pack.
+
+From the repository root, with evidence outside the checkout:
+
+```sh
+python -B research/RHRC/integration/opica_followup/validate_contract.py --phase preflight --output /tmp/opica-preparation.json
+python -B research/RHRC/integration/opica_followup/continuation/2026-10-22/run_candidate_checks.py --lake lake --output-dir /tmp/opica-current-candidates
+python -B -m unittest discover -s research/RHRC/integration/opica_followup/tests -p 'test_*.py'
+python -B -O -m unittest discover -s research/RHRC/integration/opica_followup/tests -p 'test_*.py'
+```
+
+Use equivalent external paths on Windows. The runner checks nine repaired
+modules and eight independent consumer files. Preparation checks only the static draft
+contract. Neither registers all roots nor accepts the full release. Full-release
+readiness remains closed; current CI also has a parent-extension rejection while
+the complete reviewed type/receipt linkage is absent. Read actual job results.
+
+Finish the one retained candidate and 43 absent implementations, full expected
+types and actual-domain controls, dependency and facade reconciliation,
+registration and canonical regeneration. The full child receipt protocol now
+exists with adversarial fixture tests; its independent full review, actual cold
+production/replay and remaining release companions still need completion. Preserve frozen
+statements and all original acceptance gates. Every meaningful green result must
+receive the complete Post-Green Research Pass in AGENTS.md.
+
+## Documentation precedence
+
+Live exact-head compiler/CI evidence comes first. The current ledger and guide
+describe the OPICA draft; frozen specifications define its obligations. Supplied
+historical documents remain evidence of their own checkpoints. The generated
+Control-v2 snapshot below still records its older PR #287 anchor and candidate
+NONE; it is preserved for historical/control validation, not current PR routing.
+Graph connectivity and framework output do not confer theorem authority.
+
+<details>
+<summary>Historical programme and generated control snapshot</summary>
+
+The material below preserves earlier checkpoints. Its dated current/next labels
+and renderer-owned state block describe those recorded states. They do not
+override the current OPICA guide and exact-source evidence linked above.
+
 # Zeta23 / RHRC — Lean-backed Riemann Hypothesis research fork
 
 > **RH remains OPEN.**
@@ -733,3 +837,6 @@ Its [scope, paper inputs and validation commands](research/RHRC/integration/opic
 target the full 25-family construction and its source-bound native adapters.
 The library retains explicit arithmetic, accumulated-budget and source hypotheses;
 RH and the existing closing obligations remain OPEN.
+
+
+</details>

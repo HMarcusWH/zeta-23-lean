@@ -1,0 +1,721 @@
+name: OPICA follow-up draft checkpoint
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [research/opica-native-followup]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: opica-followup-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+env:
+  FOLLOWUP: research/RHRC/integration/opica_followup
+  PYTHONUTF8: '1'
+
+jobs:
+  preparation-contract:
+    name: Draft preparation contract (no theorem authority)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: '3.13'
+      - run: python "$FOLLOWUP/validate_contract.py" --phase preflight --output /tmp/opica-followup-contract.json
+      - name: Verify the ledger-derived module navigation table (no theorem authority)
+        run: python -B "$FOLLOWUP/continuation/2026-10-22/refresh_navigation.py" --check
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: opica-followup-preparation
+          path: /tmp/opica-followup-contract.json
+
+  subset-formal:
+    name: Exact-source implemented subset (full 100 remains required)
+    needs: preparation-contract
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: '3.13'
+      - uses: leanprover/lean-action@24581d74d674803a25a81b10b059c5c0cdd344c6
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-mathlib-cache: true
+      - name: Build typed consumers and export complete subset provenance
+        env:
+          REQUESTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: >-
+          python "$FOLLOWUP/build_receipt.py" --preparation-only
+          --requested-head "$REQUESTED_HEAD"
+          --requested-base d53dd70d38b0762af130b1d19b795af259f505f5
+          --output-dir /tmp/opica-followup-formal
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: opica-followup-subset-formal
+          path: /tmp/opica-followup-formal
+
+  repaired-candidates:
+    name: Narrow repaired candidates (aggregate acceptance remains open)
+    needs: preparation-contract
+    # Compile actual mathematics even when independent preflight metadata is
+    # red. The failed preparation still remains a required failing gate.
+    if: ${{ always() && !cancelled() }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: '3.13'
+      - uses: leanprover/lean-action@24581d74d674803a25a81b10b059c5c0cdd344c6
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-mathlib-cache: true
+      - name: Check current modules, independent consumers and standard axioms
+        run: >-
+          python -B "$FOLLOWUP/continuation/2026-10-22/run_candidate_checks.py"
+          --lake lake --output-dir /tmp/opica-current-candidates
+      - name: W01 same-output word/jet compiler and standard-axiom check (narrow)
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/opica-current-candidates
+          lake build Zeta23.OPICAFollowup.Consumers 2>&1 | tee /tmp/opica-current-candidates/w01-consumer-build.log
+          printf '%s\n' \
+            'import Zeta23.OPICAFollowup.Consumers' \
+            '#print axioms Zeta23.OPICAFollowup.step123_word_jet_consumer' \
+            '#print axioms Zeta23.OPICAFollowup.step123_word_contour_consumer' \
+            > /tmp/opica-w01-axioms.lean
+          lake env lean /tmp/opica-w01-axioms.lean 2>&1 | tee /tmp/opica-current-candidates/w01-axioms.log
+          lake env lean -DmaxHeartbeats=800000 -DrelaxedAutoImplicit=false \
+            "$FOLLOWUP/continuation/2026-10-22/consumers/ExpectedWordJet.lean" 2>&1 \
+            | tee /tmp/opica-current-candidates/w01-independent-consumers.log
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          allowed = {'propext', 'Classical.choice', 'Quot.sound'}
+          for name, expected in (('w01-axioms.log', 2), ('w01-independent-consumers.log', 3)):
+              report = Path('/tmp/opica-current-candidates/' + name).read_text()
+              assert 'sorryAx' not in report, f'Placeholder in {name}'
+              matches = re.findall(r"depends on axioms:\s*\[([^\]]*)\]", report, flags=re.S)
+              assert len(matches) == expected, f'{name}: expected {expected} axiom closures; got {len(matches)}'
+              for row in matches:
+                  actual = {x.strip() for x in row.split(',') if x.strip()}
+                  assert actual <= allowed, f'Nonstandard axioms: {sorted(actual - allowed)}'
+          print('W01 compiler, independent 22-clause type, actual-domain consumer and five standard-only axiom closures: PASS; full100 still OPEN')
+          PY
+      - name: W04 W07 actual foundation modules and independently stated domains
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/opica-current-candidates
+          lake build Zeta23.OPICAFollowup.NativeWindowRate Zeta23.OPICAFollowup.NearGapLimits 2>&1 | tee /tmp/opica-current-candidates/w04-w07-build.log
+          cat > /tmp/opica-w04-w07-expected.lean <<'LEAN'
+          import Zeta23.OPICAFollowup.NativeWindowRate
+          import Zeta23.OPICAFollowup.NearGapLimits
+          open Set MeasureTheory
+          open scoped FourierTransform
+          namespace Zeta23.OPICAFollowup.W04W07Independent
+          theorem expected_window_integrable (d : ℕ) (C T : ℝ) :
+              IntegrableOn (fun t : ℝ => |Zeta23.OPICAFollowup.primeFieldFamily d t| ^ 2)
+                (Icc (T - C * Real.log T) T) :=
+            Zeta23.OPICAFollowup.nativeWindowEnergy_integrable d C T
+          theorem expected_window_nonneg (d : ℕ) (C T : ℝ) :
+              0 ≤ Zeta23.OPICAFollowup.nativeWindowEnergy d C T :=
+            Zeta23.OPICAFollowup.nativeWindowEnergy_nonneg d C T
+          theorem expected_window_causal_zero (d : ℕ) (C T : ℝ)
+              (hT : T < Zeta23.OPICAFollowup.nativeCausalGap) :
+              Zeta23.OPICAFollowup.nativeWindowEnergy d C T = 0 :=
+            Zeta23.OPICAFollowup.nativeWindowEnergy_zero_before_causal_gap d C T hT
+          theorem expected_window_rate_nonneg (d : ℕ) (C T : ℝ) (hT : 0 < T) :
+              0 ≤ Zeta23.OPICAFollowup.nativeWindowLogRate d C T :=
+            Zeta23.OPICAFollowup.nativeWindowLogRate_nonneg d C T hT
+          theorem expected_ct1_origin_coefficient (L : ℝ) :
+              Real.exp (L / 2) + Real.exp (-L / 2) - 2 * Real.cosh (L / 2) = 0 :=
+            Zeta23.OPICAFollowup.nearGapComb_origin_coefficient_zero L
+          theorem expected_ct1_radius {L : ℝ} (hL : 0 < L)
+              (hu : L < Real.log 2) :
+              (1 / 2 : ℝ) < Real.exp (-L) ∧ Real.exp (-L) < 1 :=
+            Zeta23.OPICAFollowup.nearGapComb_radius_bounds hL hu
+          theorem expected_completion_interval {C Theta delta b : ℝ}
+              (hC : 1 < C) (hdelta : Theta + (C - 1) * b < C * delta) :
+              ∃ xi : ℝ, (Theta - delta) / (C - 1) < xi ∧ xi < delta - b :=
+            Zeta23.OPICAFollowup.nativeWindow_rate_parameter_interval hC hdelta
+          theorem expected_exponent_margin {C Theta delta b xi : ℝ}
+              (hC : 1 < C)
+              (hlow : (Theta - delta) / (C - 1) < xi)
+              (hhigh : xi < delta - b) :
+              Theta - C * xi < delta - xi ∧ b < delta - xi :=
+            Zeta23.OPICAFollowup.nativeWindow_rate_exponent_margin hC hlow hhigh
+          #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_completion_interval
+          #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_exponent_margin
+          #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_window_integrable
+          #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_window_nonneg
+          #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_window_causal_zero
+          #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_window_rate_nonneg
+          #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_ct1_origin_coefficient
+          theorem expected_ct1_signed_growth (L : ℝ) :
+              (Zeta23.OPICAFollowup.nearGapCombFamily L).HasLinearGrowth :=
+            Zeta23.OPICAFollowup.nearGapCombFamily_growth L
+          theorem expected_ct1_distribution (L : ℝ) :
+              ∃ D : TemperedDistribution ℝ ℂ,
+                D = Zeta23.OPICAFollowup.nearGapCombDistribution L :=
+            ⟨Zeta23.OPICAFollowup.nearGapCombDistribution L, rfl⟩
+          #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_ct1_signed_growth
+          theorem expected_jordan_add_pairing
+              (mu nu : Zeta23.OPICA.LocallyFiniteSignedMeasure)
+              (hmu : mu.HasLinearGrowth) (hnu : nu.HasLinearGrowth)
+              (f : SchwartzMap ℝ ℂ) :
+              (Zeta23.OPICAFollowup.localJordanAdd mu nu).distributionOfLinearGrowth
+                (Zeta23.OPICAFollowup.nearGap_localJordanAdd_growth mu nu hmu hnu) f =
+              mu.distributionOfLinearGrowth hmu f +
+              nu.distributionOfLinearGrowth hnu f :=
+            Zeta23.OPICAFollowup.nearGap_localJordanAdd_pairing mu nu hmu hnu f
+          theorem expected_ct1_exp_sum_uniform {L : ℝ}
+              (hL : 0 ≤ L) (hu : L ≤ Real.log 2) :
+              Real.exp (L / 2) + Real.exp (-L / 2) ≤ 3 :=
+            Zeta23.OPICAFollowup.nearGap_dilation_exp_sum_le_three hL hu
+          theorem expected_ct1_uniform_scalar_budget {L R : ℝ}
+              (hL : 0 ≤ L) (hu : L ≤ Real.log 2) (hR : 0 ≤ R) :
+              (6 + 4 * R) * (Real.exp (L / 2) + Real.exp (-L / 2)) ≤
+                18 * (1 + R) :=
+            Zeta23.OPICAFollowup.nearGap_dilation_uniform_scalar_budget hL hu hR
+          #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_ct1_exp_sum_uniform
+          #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_ct1_uniform_scalar_budget
+          #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_jordan_add_pairing
+          #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_ct1_distribution
+          theorem expected_ct1_variation_domination (L : ℝ) :
+              (Zeta23.OPICAFollowup.nearGapCombFamily L).totalVariation ≤
+                ((Zeta23.OPICAFollowup.dilatedCombJordan L).totalVariation +
+                 (Zeta23.OPICAFollowup.dilatedCombJordan (-L)).totalVariation) +
+                ENNReal.ofReal |-(2 * Real.cosh (L / 2))| •
+                  (Zeta23.OPICAFollowup.dilatedCombJordan 0).totalVariation :=
+            Zeta23.OPICAFollowup.nearGapCombFamily_variation_le L
+          theorem expected_ct1_positive_variation (t : ℝ) :
+              (Zeta23.OPICAFollowup.dilatedCombJordan t).totalVariation =
+              Zeta23.OPICAFollowup.dilatedCombMeasure t :=
+            Zeta23.OPICAFollowup.nearGap_dilatedComb_variation t
+          theorem expected_ct1_actual_uniform_variation {L R : ℝ}
+              (hL : 0 ≤ L) (hu : L ≤ Real.log 2) (hR : 0 ≤ R) :
+              (Zeta23.OPICAFollowup.nearGapCombFamily L).totalVariation.real
+                (Icc (-R) R) ≤ 18 * (1 + R) :=
+            Zeta23.OPICAFollowup.nearGapCombFamily_uniform_variation hL hu hR
+          theorem expected_ct1_common_schwartz_growth {L : ℝ}
+              (hL : 0 ≤ L) (hu : L ≤ Real.log 2) :
+              Zeta23.OPICAFollowup.CommonLinearMassBound 18
+                (Zeta23.OPICAFollowup.nearGapCombFamily L).totalVariation :=
+            Zeta23.OPICAFollowup.nearGapCombFamily_common_growth hL hu
+          #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_ct1_variation_domination
+          #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_ct1_positive_variation
+          #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_ct1_actual_uniform_variation
+          theorem expected_ct1_uniform_schwartz_tails {L R M : ℝ}
+              (hL : 0 ≤ L) (hu : L ≤ Real.log 2)
+              (hM : 0 ≤ M) (hR : 1 ≤ R)
+              (f : ℝ → ℂ) (hf : Continuous f)
+              (hdecay : ∀ x : ℝ, |x| ^ 3 * ‖f x‖ ≤ M) :
+              IntegrableOn f {x : ℝ | R ≤ |x|}
+                (Zeta23.OPICAFollowup.nearGapCombFamily L).totalVariation ∧
+              (∫ x in {x : ℝ | R ≤ |x|}, ‖f x‖
+                ∂(Zeta23.OPICAFollowup.nearGapCombFamily L).totalVariation) ≤
+                72 * M / R ^ 2 :=
+            Zeta23.OPICAFollowup.nearGapCombFamily_uniform_schwartz_tail
+              hL hu hM hR f hf hdecay
+          #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_ct1_uniform_schwartz_tails
+          #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_ct1_common_schwartz_growth
+          theorem expected_ct1_compact_measure_identity (L : ℝ)
+              (K : Set ℝ) (hK : IsCompact K) :
+              Zeta23.OPICAFollowup.localSignedCompactRestriction
+                (Zeta23.OPICAFollowup.nearGapCombFamily L) K hK =
+              Zeta23.OPICAFollowup.localSignedCompactRestriction
+                (Zeta23.OPICAFollowup.dilatedCombJordan L) K hK +
+              Zeta23.OPICAFollowup.localSignedCompactRestriction
+                (Zeta23.OPICAFollowup.dilatedCombJordan (-L)) K hK -
+              (2 * Real.cosh (L / 2)) •
+                Zeta23.OPICAFollowup.localSignedCompactRestriction
+                  (Zeta23.OPICAFollowup.dilatedCombJordan 0) K hK :=
+            Zeta23.OPICAFollowup.nearGapCombFamily_compactRestriction L K hK
+          theorem expected_dilated_comb_physical_origin (t : ℝ) :
+              Zeta23.OPICAFollowup.localSignedCompactRestriction
+                (Zeta23.OPICAFollowup.dilatedCombJordan t)
+                ({0} : Set ℝ) isCompact_singleton ({0} : Set ℝ) =
+                  Real.exp (t / 2) :=
+            Zeta23.OPICAFollowup.nearGap_dilatedComb_origin_signed t
+          theorem expected_ct1_physical_origin_cancelled (L : ℝ) :
+              Zeta23.OPICAFollowup.localSignedCompactRestriction
+                (Zeta23.OPICAFollowup.nearGapCombFamily L)
+                ({0} : Set ℝ) isCompact_singleton ({0} : Set ℝ) = 0 :=
+            Zeta23.OPICAFollowup.nearGapCombFamily_origin_signed_zero L
+          #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_dilated_comb_physical_origin
+          #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_ct1_physical_origin_cancelled
+          theorem expected_actual_integer_first_gap (t : ℝ) (n : ℤ)
+              (hn : Zeta23.OPICAFollowup.scaledLatticePoint t n ∈
+                Ioo (-Real.exp t) (Real.exp t)) : n = 0 :=
+            Zeta23.OPICAFollowup.scaledLatticePoint_in_first_gap t n hn
+          theorem expected_actual_positive_comb_punctured_gap (t : ℝ) :
+              Zeta23.OPICAFollowup.dilatedCombMeasure t
+                (Ioo (-Real.exp t) (Real.exp t) \ ({0} : Set ℝ)) = 0 :=
+            Zeta23.OPICAFollowup.dilatedCombMeasure_punctured_gap t
+          theorem expected_actual_three_carriers_gap {L : ℝ} (hL : 0 ≤ L) :
+              Zeta23.OPICAFollowup.dilatedCombMeasure L
+                (Ioo (-Real.exp (-L)) (Real.exp (-L)) \ ({0} : Set ℝ)) = 0 ∧
+              Zeta23.OPICAFollowup.dilatedCombMeasure (-L)
+                (Ioo (-Real.exp (-L)) (Real.exp (-L)) \ ({0} : Set ℝ)) = 0 ∧
+              Zeta23.OPICAFollowup.dilatedCombMeasure 0
+                (Ioo (-Real.exp (-L)) (Real.exp (-L)) \ ({0} : Set ℝ)) = 0 :=
+            Zeta23.OPICAFollowup.nearGapComb_three_carriers_punctured_gap hL
+          theorem expected_actual_ct1_signed_compact_gap {L : ℝ}
+              (hL : 0 ≤ L) (K : Set ℝ) (hK : IsCompact K) :
+              Zeta23.OPICAFollowup.localSignedCompactRestriction
+                (Zeta23.OPICAFollowup.nearGapCombFamily L) K hK
+                (Ioo (-Real.exp (-L)) (Real.exp (-L)) \ ({0} : Set ℝ)) = 0 :=
+            Zeta23.OPICAFollowup.nearGapCombFamily_punctured_gap_signed hL K hK
+          #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_actual_integer_first_gap
+          #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_actual_positive_comb_punctured_gap
+          #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_actual_three_carriers_gap
+          theorem expected_signed_origin_collar
+              (mu : Zeta23.OPICA.LocallyFiniteSignedMeasure)
+              (K : Set ℝ) (hK : IsCompact K) (h0 : (0 : ℝ) ∈ K) :
+              Zeta23.OPICAFollowup.localSignedCompactRestriction mu K hK
+                ({0} : Set ℝ) =
+              Zeta23.OPICAFollowup.localSignedCompactRestriction mu
+                ({0} : Set ℝ) isCompact_singleton ({0} : Set ℝ) :=
+            Zeta23.OPICAFollowup.nearGap_signed_origin_restriction_of_mem
+              mu K hK h0
+          theorem expected_ct1_origin_every_compact (L : ℝ)
+              (K : Set ℝ) (hK : IsCompact K) (h0 : (0 : ℝ) ∈ K) :
+              Zeta23.OPICAFollowup.localSignedCompactRestriction
+                (Zeta23.OPICAFollowup.nearGapCombFamily L) K hK
+                ({0} : Set ℝ) = 0 :=
+            Zeta23.OPICAFollowup.nearGapCombFamily_origin_signed_zero_on_compact
+              L K hK h0
+          #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_signed_origin_collar
+          theorem expected_jordan_singleton_no_cancellation
+              (mu : Zeta23.OPICA.LocallyFiniteSignedMeasure) (x : ℝ)
+              (hzero : Zeta23.OPICAFollowup.localSignedCompactRestriction
+                mu ({x} : Set ℝ) isCompact_singleton ({x} : Set ℝ) = 0) :
+              mu.positive ({x} : Set ℝ) = 0 ∧
+                mu.negative ({x} : Set ℝ) = 0 :=
+            Zeta23.OPICAFollowup.nearGap_jordan_singleton_of_signed_zero
+              mu x hzero
+          theorem expected_ct1_origin_jordan_pair_zero (L : ℝ) :
+              (Zeta23.OPICAFollowup.nearGapCombFamily L).positive
+                ({0} : Set ℝ) = 0 ∧
+              (Zeta23.OPICAFollowup.nearGapCombFamily L).negative
+                ({0} : Set ℝ) = 0 :=
+            Zeta23.OPICAFollowup.nearGapCombFamily_origin_jordan_zero L
+          theorem expected_ct1_punctured_jordan_zero {L : ℝ}
+              (hL : 0 ≤ L) :
+              (Zeta23.OPICAFollowup.nearGapCombFamily L).positive
+                (Ioo (-Real.exp (-L)) (Real.exp (-L)) \ ({0} : Set ℝ)) = 0 ∧
+              (Zeta23.OPICAFollowup.nearGapCombFamily L).negative
+                (Ioo (-Real.exp (-L)) (Real.exp (-L)) \ ({0} : Set ℝ)) = 0 :=
+            Zeta23.OPICAFollowup.nearGapCombFamily_punctured_gap_jordan_zero hL
+          theorem expected_ct1_punctured_total_variation_zero {L : ℝ}
+              (hL : 0 ≤ L) :
+              (Zeta23.OPICAFollowup.nearGapCombFamily L).totalVariation
+                (Ioo (-Real.exp (-L)) (Real.exp (-L)) \ ({0} : Set ℝ)) = 0 :=
+            Zeta23.OPICAFollowup.nearGapCombFamily_punctured_gap_variation_zero hL
+          theorem expected_ct1_genuine_jordan_gap {L : ℝ}
+              (hL : 0 ≤ L) :
+              Zeta23.OPICAFollowup.hasNearGap
+                (Zeta23.OPICAFollowup.nearGapCombFamily L)
+                (Real.exp (-L)) :=
+            Zeta23.OPICAFollowup.nearGapCombFamily_actual_gap hL
+          #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_jordan_singleton_no_cancellation
+          #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_ct1_origin_jordan_pair_zero
+          #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_ct1_punctured_jordan_zero
+          #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_ct1_punctured_total_variation_zero
+          theorem expected_integer_comb_offlattice_zero :
+              Zeta23.OPICAFollowup.dilatedCombMeasure 0
+                Zeta23.OPICA.integerLatticeᶜ = 0 :=
+            Zeta23.OPICAFollowup.nearGap_undilatedComb_integer_support
+          theorem expected_negative_jordan_source_bound
+              (mu nu : Zeta23.OPICA.LocallyFiniteSignedMeasure) :
+              (Zeta23.OPICAFollowup.localJordanAdd mu nu).negative ≤
+                mu.negative + nu.negative :=
+            Zeta23.OPICAFollowup.nearGap_localJordanAdd_negative_le mu nu
+          theorem expected_ct1_negative_integer_support (L : ℝ) :
+              (Zeta23.OPICAFollowup.nearGapCombFamily L).negative
+                Zeta23.OPICA.integerLatticeᶜ = 0 :=
+            Zeta23.OPICAFollowup.nearGapCombFamily_negative_integer_support L
+          theorem expected_ct1_offlattice_nonnegative (L : ℝ) :
+              (Zeta23.OPICAFollowup.nearGapCombFamily L).OffLatticeNonnegative :=
+            Zeta23.OPICAFollowup.nearGapCombFamily_offlattice_nonnegative L
+          #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_integer_comb_offlattice_zero
+          #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_negative_jordan_source_bound
+          #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_ct1_negative_integer_support
+          theorem expected_explicit_CT1_source_fourier_selfdual (L : ℝ) :
+              𝓕 (Zeta23.OPICAFollowup.nearGapExplicitDilationDistribution L) =
+                Zeta23.OPICAFollowup.nearGapExplicitDilationDistribution L :=
+            Zeta23.OPICAFollowup.nearGapExplicitDilationDistribution_selfdual L
+          theorem expected_scaled_counting_atom (t : ℝ) (n : ℤ) :
+              Zeta23.OPICAFollowup.scaledLatticeMeasure t
+                ({Zeta23.OPICAFollowup.scaledLatticePoint t n} : Set ℝ) = 1 :=
+            Zeta23.OPICAFollowup.scaledLatticeMeasure_atom t n
+          theorem expected_actual_dilation_atom (t : ℝ) (n : ℤ) :
+              Zeta23.OPICAFollowup.dilatedCombMeasure t
+                ({Zeta23.OPICAFollowup.scaledLatticePoint t n} : Set ℝ) =
+                  ENNReal.ofReal (Real.exp (t / 2)) :=
+            Zeta23.OPICAFollowup.dilatedCombMeasure_atom t n
+          theorem expected_first_ct1_point_not_integer {L : ℝ}
+              (hL : 0 < L) (hu : L < Real.log 2) :
+              Real.exp L ∉ Zeta23.OPICA.integerLattice :=
+            Zeta23.OPICAFollowup.nearGap_first_dilated_point_off_integer hL hu
+          theorem expected_CT1_physical_nonzero_signed_atom {L : ℝ}
+              (hL : 0 < L) (hu : L < Real.log 2) :
+              0 < Zeta23.OPICAFollowup.localSignedCompactRestriction
+                (Zeta23.OPICAFollowup.nearGapCombFamily L)
+                ({Real.exp L} : Set ℝ) isCompact_singleton
+                ({Real.exp L} : Set ℝ) :=
+            Zeta23.OPICAFollowup.nearGapCombFamily_first_atom_signed_pos hL hu
+          #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_scaled_counting_atom
+          #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_actual_dilation_atom
+          #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_first_ct1_point_not_integer
+          theorem expected_CT1_positive_jordan_atom {L : ℝ}
+              (hL : 0 < L) (hu : L < Real.log 2) :
+              0 < (Zeta23.OPICAFollowup.nearGapCombFamily L).positive.real
+                ({Real.exp L} : Set ℝ) :=
+            Zeta23.OPICAFollowup.nearGapCombFamily_first_atom_positive_real_pos hL hu
+          theorem expected_CT1_positive_measure_nonzero {L : ℝ}
+              (hL : 0 < L) (hu : L < Real.log 2) :
+              (Zeta23.OPICAFollowup.nearGapCombFamily L).positive ≠ 0 :=
+            Zeta23.OPICAFollowup.nearGapCombFamily_positive_nonzero hL hu
+          #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_CT1_positive_jordan_atom
+          theorem expected_dilation_near_gap_family
+              (L : ℝ) (hL : 0 < L) (hu : L < Real.log 2) :
+              (∀ K : Set ℝ, ∀ hK : IsCompact K,
+                Zeta23.OPICAFollowup.localSignedCompactRestriction
+                  (Zeta23.OPICAFollowup.nearGapCombFamily L) K hK =
+                Zeta23.OPICAFollowup.localSignedCompactRestriction
+                  (Zeta23.OPICAFollowup.dilatedCombJordan L) K hK +
+                Zeta23.OPICAFollowup.localSignedCompactRestriction
+                  (Zeta23.OPICAFollowup.dilatedCombJordan (-L)) K hK -
+                (2 * Real.cosh (L / 2)) •
+                  Zeta23.OPICAFollowup.localSignedCompactRestriction
+                    (Zeta23.OPICAFollowup.dilatedCombJordan 0) K hK) ∧
+              (Zeta23.OPICAFollowup.nearGapCombFamily L).HasLinearGrowth ∧
+              Zeta23.OPICAFollowup.CommonLinearMassBound 18
+                (Zeta23.OPICAFollowup.nearGapCombFamily L).totalVariation ∧
+              (Zeta23.OPICAFollowup.nearGapCombFamily L).FourierSelfdual
+                (Zeta23.OPICAFollowup.nearGapCombFamily_growth L) ∧
+              (∀ f : SchwartzMap ℝ ℂ,
+                Zeta23.OPICAFollowup.nearGapCombDistribution L
+                  (SchwartzMap.compCLMOfContinuousLinearEquiv ℂ
+                    (LinearIsometryEquiv.neg ℝ (E := ℝ)) f) =
+                Zeta23.OPICAFollowup.nearGapCombDistribution L f) ∧
+              Zeta23.OPICAFollowup.hasNearGap
+                (Zeta23.OPICAFollowup.nearGapCombFamily L) (Real.exp (-L)) ∧
+              ((1 / 2 : ℝ) < Real.exp (-L) ∧ Real.exp (-L) < 1) ∧
+              (Zeta23.OPICAFollowup.nearGapCombFamily L).OffLatticeNonnegative ∧
+              ((Zeta23.OPICAFollowup.nearGapCombFamily L).positive
+                  ({0} : Set ℝ) = 0 ∧
+                (Zeta23.OPICAFollowup.nearGapCombFamily L).negative
+                  ({0} : Set ℝ) = 0) ∧
+              (Zeta23.OPICAFollowup.nearGapCombFamily L).positive ≠ 0 ∧
+              (MeasureTheory.Measure.map (fun x : ℝ => -x)
+                  (Zeta23.OPICAFollowup.nearGapCombFamily L).positive =
+                  (Zeta23.OPICAFollowup.nearGapCombFamily L).positive ∧
+                MeasureTheory.Measure.map (fun x : ℝ => -x)
+                  (Zeta23.OPICAFollowup.nearGapCombFamily L).negative =
+                  (Zeta23.OPICAFollowup.nearGapCombFamily L).negative) ∧
+              ((Zeta23.OPICAFollowup.nearGapCombFamily L).positive.real
+                  ({Real.exp (-L)} : Set ℝ) = Real.exp (-L / 2) ∧
+                (Zeta23.OPICAFollowup.nearGapCombFamily L).negative
+                  ({Real.exp (-L)} : Set ℝ) = 0) :=
+            Zeta23.OPICAFollowup.dilation_near_gap_family L hL hu
+          #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_dilation_near_gap_family
+          theorem expected_selfdual_jordan_even
+              (nu : Zeta23.OPICA.LocallyFiniteSignedMeasure)
+              (hnu : nu.HasLinearGrowth) (hself : nu.FourierSelfdual hnu) :
+              MeasureTheory.Measure.map (fun x : ℝ => -x) nu.positive = nu.positive ∧
+                MeasureTheory.Measure.map (fun x : ℝ => -x) nu.negative = nu.negative :=
+            Zeta23.OPICAFollowup.jordan_even_of_selfdual nu hnu hself
+          theorem expected_CT1_gap_edge_atom {L : ℝ} (hL : 0 < L) (hu : L < Real.log 2) :
+              (Zeta23.OPICAFollowup.nearGapCombFamily L).positive.real
+                  ({Real.exp (-L)} : Set ℝ) = Real.exp (-L / 2) ∧
+                (Zeta23.OPICAFollowup.nearGapCombFamily L).negative
+                  ({Real.exp (-L)} : Set ℝ) = 0 :=
+            Zeta23.OPICAFollowup.nearGapCombFamily_gap_edge_atom hL hu
+          #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_selfdual_jordan_even
+          #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_CT1_gap_edge_atom
+          #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_CT1_positive_measure_nonzero
+          #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_CT1_physical_nonzero_signed_atom
+          theorem expected_CT1_canonical_equals_explicit_if_scalar_bridge
+              (L : ℝ)
+              (hscale :
+                (Zeta23.OPICAFollowup.localJordanScale (-(2 * Real.cosh (L / 2)))
+                  (Zeta23.OPICAFollowup.dilatedCombJordan 0)).distributionOfLinearGrowth
+                  (Zeta23.OPICAFollowup.nearGap_localJordanScale_growth _ _
+                    (Zeta23.OPICAFollowup.dilatedCombJordan_growth 0)) =
+                  (-(((2 * Real.cosh (L / 2) : ℝ) : ℂ))) •
+                    Zeta23.OPICAFollowup.dilatedCombDistribution 0) :
+              Zeta23.OPICAFollowup.nearGapCombDistribution L =
+                Zeta23.OPICAFollowup.nearGapExplicitDilationDistribution L :=
+            Zeta23.OPICAFollowup.nearGapCombDistribution_eq_explicit_of_scale_pairing
+              L hscale
+          theorem expected_CT1_canonical_selfdual_if_scalar_bridge
+              (L : ℝ)
+              (hscale :
+                (Zeta23.OPICAFollowup.localJordanScale (-(2 * Real.cosh (L / 2)))
+                  (Zeta23.OPICAFollowup.dilatedCombJordan 0)).distributionOfLinearGrowth
+                  (Zeta23.OPICAFollowup.nearGap_localJordanScale_growth _ _
+                    (Zeta23.OPICAFollowup.dilatedCombJordan_growth 0)) =
+                  (-(((2 * Real.cosh (L / 2) : ℝ) : ℂ))) •
+                    Zeta23.OPICAFollowup.dilatedCombDistribution 0) :
+              (Zeta23.OPICAFollowup.nearGapCombFamily L).FourierSelfdual
+                (Zeta23.OPICAFollowup.nearGapCombFamily_growth L) :=
+            Zeta23.OPICAFollowup.nearGapCombDistribution_selfdual_of_scale_pairing
+              L hscale
+          #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_CT1_canonical_equals_explicit_if_scalar_bridge
+          theorem expected_CT1_physical_negative_scale_pairing (t c : ℝ)
+              (hc : 0 ≤ c) :
+              (Zeta23.OPICAFollowup.localJordanScale (-c)
+                (Zeta23.OPICAFollowup.dilatedCombJordan t)).distributionOfLinearGrowth
+                (Zeta23.OPICAFollowup.nearGap_localJordanScale_growth
+                  (-c) (Zeta23.OPICAFollowup.dilatedCombJordan t)
+                  (Zeta23.OPICAFollowup.dilatedCombJordan_growth t)) =
+                (-(c : ℂ)) • Zeta23.OPICAFollowup.dilatedCombDistribution t :=
+            Zeta23.OPICAFollowup.nearGap_dilatedComb_negative_scale_pairing t c hc
+          theorem expected_CT1_physical_equals_explicit (L : ℝ) :
+              Zeta23.OPICAFollowup.nearGapCombDistribution L =
+                Zeta23.OPICAFollowup.nearGapExplicitDilationDistribution L :=
+            Zeta23.OPICAFollowup.nearGapCombDistribution_eq_explicit L
+          theorem expected_CT1_physical_fourier_selfdual (L : ℝ) :
+              (Zeta23.OPICAFollowup.nearGapCombFamily L).FourierSelfdual
+                (Zeta23.OPICAFollowup.nearGapCombFamily_growth L) :=
+            Zeta23.OPICAFollowup.nearGapCombFamily_fourier_selfdual L
+          theorem expected_CT1_actual_offinteger_mass_budget
+              {L R d : ℝ} (hL : 0 < L) (hu : L < Real.log 2)
+              (hR : 1 ≤ R) (hd : 0 < d) (hdhalf : d ≤ 1 / 2) :
+              (Zeta23.OPICAFollowup.nearGapCombFamily L).negative
+                (Zeta23.OPICA.signedBudgetRegion R d) = 0 ∧
+              (Zeta23.OPICAFollowup.nearGapCombFamily L).positive.real
+                (Zeta23.OPICA.signedBudgetRegion R d) ≤
+                (Real.pi ^ 2 * R ^ 2 / (4 * d ^ 2)) *
+                  (1 - Real.exp (-L)) * 36 :=
+            Zeta23.OPICAFollowup.nearGapCombFamily_offinteger_mass_budget
+              hL hu hR hd hdhalf
+          #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_CT1_physical_negative_scale_pairing
+          #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_CT1_physical_equals_explicit
+          #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_CT1_physical_fourier_selfdual
+          #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_CT1_actual_offinteger_mass_budget
+          #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_CT1_canonical_selfdual_if_scalar_bridge
+          #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_explicit_CT1_source_fourier_selfdual
+          #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_ct1_offlattice_nonnegative
+          #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_ct1_genuine_jordan_gap
+          #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_ct1_origin_every_compact
+          #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_actual_ct1_signed_compact_gap
+          #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_ct1_compact_measure_identity
+          #print axioms Zeta23.OPICAFollowup.W04W07Independent.expected_ct1_radius
+          end Zeta23.OPICAFollowup.W04W07Independent
+          LEAN
+          lake env lean /tmp/opica-w04-w07-expected.lean 2>&1 | tee /tmp/opica-current-candidates/w04-w07-expected.log
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          data = Path('/tmp/opica-current-candidates/w04-w07-expected.log').read_text()
+          records = re.findall(r'depends on axioms:\s*\[([^\]]*)\]', data, re.S)
+          allowed = {'propext', 'Classical.choice', 'Quot.sound'}
+          assert len(records) == 52, f'Expected fifty-two exact independent axiom receipts, got {len(records)}'
+          for r in records:
+              axioms = {x.strip() for x in r.split(',') if x.strip()}
+              assert axioms <= allowed, f'Unexpected axiom(s): {sorted(axioms - allowed)}'
+          print('W04/W07 foundation and fifty-two independent domain/axiom checks: PASS. Full original roots OPEN')
+          PY
+      - name: W06 logarithmic mixing weights and independent integer-dilation types
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/opica-current-candidates
+          lake build Zeta23.OPICAFollowup.WeightedMixing 2>&1 | tee /tmp/opica-current-candidates/w06-mixing-build.log
+          cat > /tmp/opica-w06-expected.lean <<'LEAN'
+          import Zeta23.OPICAFollowup.WeightedMixing
+          open MeasureTheory
+          namespace Zeta23.OPICAFollowup.W06Independent
+          theorem expected_log_weight (t : ℝ) :
+              Zeta23.OPICAFollowup.positiveLogWeight (Real.exp t) =
+                Real.exp (-t / 2) :=
+            Zeta23.OPICAFollowup.positiveLogWeight_exp t
+          theorem expected_complex_pullback (f : ℝ → ℂ) (t : ℝ) :
+              Zeta23.OPICAFollowup.weightedPositiveLogTest f (Real.exp t) =
+                (Real.exp (-t / 2) : ℂ) * f t :=
+            Zeta23.OPICAFollowup.weightedPositiveLogTest_exp f t
+          theorem expected_origin_excluded (f : ℝ → ℂ) {x : ℝ} (hx : x ≤ 0) :
+              Zeta23.OPICAFollowup.weightedPositiveLogTest f x = 0 :=
+            Zeta23.OPICAFollowup.weightedPositiveLogTest_nonpos f hx
+          theorem expected_physical_integer_dilation
+              (f : ℝ → ℂ) (t : ℝ) (n : ℕ) (hn : 0 < n) :
+              Zeta23.OPICAFollowup.weightedPositiveLogTest f (Real.exp t * (n : ℝ)) =
+                ((Real.exp (-t / 2) / Real.sqrt (n : ℝ) : ℝ) : ℂ) *
+                  f (t + Real.log (n : ℝ)) :=
+            Zeta23.OPICAFollowup.weightedPositiveLogTest_at_dilatedNat f t n hn
+          theorem expected_log_measure_add (mu nu : Measure ℝ) :
+              Zeta23.OPICAFollowup.positiveLogMeasure (mu + nu) =
+                Zeta23.OPICAFollowup.positiveLogMeasure mu +
+                Zeta23.OPICAFollowup.positiveLogMeasure nu :=
+            Zeta23.OPICAFollowup.positiveLogMeasure_add mu nu
+          theorem expected_log_measure_zero :
+              Zeta23.OPICAFollowup.positiveLogMeasure (0 : Measure ℝ) = 0 :=
+            Zeta23.OPICAFollowup.positiveLogMeasure_zero
+          #print axioms Zeta23.OPICAFollowup.W06Independent.expected_log_measure_add
+          #print axioms Zeta23.OPICAFollowup.W06Independent.expected_log_measure_zero
+          theorem expected_finite_logarithmic_additivity {ι : Type*}
+              (s : Finset ι) (mu : ι → Measure ℝ) :
+              Zeta23.OPICAFollowup.positiveLogMeasure (∑ i ∈ s, mu i) =
+                ∑ i ∈ s, Zeta23.OPICAFollowup.positiveLogMeasure (mu i) :=
+            Zeta23.OPICAFollowup.positiveLogMeasure_finset_sum s mu
+          theorem expected_finite_integer_atoms
+              (t : ℝ) (s : Finset ℕ) (hs : ∀ n ∈ s, 0 < n) :
+              Zeta23.OPICAFollowup.positiveLogMeasure
+                (∑ n ∈ s, Measure.dirac (Real.exp t * (n : ℝ))) =
+                ∑ n ∈ s,
+                  ENNReal.ofReal (Real.exp (-t / 2) / Real.sqrt (n : ℝ)) •
+                    Measure.dirac (t + Real.log (n : ℝ)) :=
+            Zeta23.OPICAFollowup.positiveLogMeasure_finite_integer_lattice t s hs
+          theorem expected_countable_log_measure_sum {ι : Type*}
+              (mu : ι → Measure ℝ) :
+              Zeta23.OPICAFollowup.positiveLogMeasure (Measure.sum mu) =
+                Measure.sum (fun i =>
+                  Zeta23.OPICAFollowup.positiveLogMeasure (mu i)) :=
+            Zeta23.OPICAFollowup.positiveLogMeasure_sum mu
+          theorem expected_all_positive_integer_atoms (t : ℝ) :
+              Zeta23.OPICAFollowup.positiveLogMeasure
+                (Zeta23.OPICAFollowup.positiveIntegerLatticeInput t) =
+                Measure.sum (fun n : ℕ =>
+                  ENNReal.ofReal (Real.exp (-t / 2) /
+                    Real.sqrt (((n + 1 : ℕ) : ℝ))) •
+                  Measure.dirac (t + Real.log (((n + 1 : ℕ) : ℝ)))) :=
+            Zeta23.OPICAFollowup.positiveLogMeasure_integerLattice t
+          #print axioms Zeta23.OPICAFollowup.W06Independent.expected_countable_log_measure_sum
+          #print axioms Zeta23.OPICAFollowup.W06Independent.expected_all_positive_integer_atoms
+          #print axioms Zeta23.OPICAFollowup.W06Independent.expected_finite_logarithmic_additivity
+          #print axioms Zeta23.OPICAFollowup.W06Independent.expected_finite_integer_atoms
+          #print axioms Zeta23.OPICAFollowup.W06Independent.expected_log_weight
+          #print axioms Zeta23.OPICAFollowup.W06Independent.expected_complex_pullback
+          #print axioms Zeta23.OPICAFollowup.W06Independent.expected_origin_excluded
+          theorem expected_weighted_log_dirac (t : ℝ) :
+              Zeta23.OPICAFollowup.positiveLogMeasure (Measure.dirac (Real.exp t)) =
+                ENNReal.ofReal (Real.exp (-t / 2)) • Measure.dirac t :=
+            Zeta23.OPICAFollowup.positiveLogMeasure_dirac t
+          #print axioms Zeta23.OPICAFollowup.W06Independent.expected_weighted_log_dirac
+          theorem expected_log_nonpositive_atom {x : ℝ} (hx : x ≤ 0) :
+              Zeta23.OPICAFollowup.positiveLogMeasure (Measure.dirac x) = 0 :=
+            Zeta23.OPICAFollowup.positiveLogMeasure_dirac_nonpos hx
+          theorem expected_log_positive_atom {x : ℝ} (hx : 0 < x) :
+              Zeta23.OPICAFollowup.positiveLogMeasure (Measure.dirac x) =
+                ENNReal.ofReal (Zeta23.OPICAFollowup.positiveLogWeight x) •
+                  (Measure.dirac (Real.log x)) :=
+            Zeta23.OPICAFollowup.positiveLogMeasure_dirac_pos hx
+          #print axioms Zeta23.OPICAFollowup.W06Independent.expected_log_nonpositive_atom
+          #print axioms Zeta23.OPICAFollowup.W06Independent.expected_log_positive_atom
+          theorem expected_weighted_integer_atom (t : ℝ) (n : ℕ) (hn : 0 < n) :
+              Zeta23.OPICAFollowup.positiveLogMeasure
+                (Measure.dirac (Real.exp t * (n : ℝ))) =
+              ENNReal.ofReal (Real.exp (-t / 2) / Real.sqrt (n : ℝ)) •
+                Measure.dirac (t + Real.log (n : ℝ)) :=
+            Zeta23.OPICAFollowup.positiveLogMeasure_dilatedNat_dirac t n hn
+          #print axioms Zeta23.OPICAFollowup.W06Independent.expected_weighted_integer_atom
+          #print axioms Zeta23.OPICAFollowup.W06Independent.expected_physical_integer_dilation
+          end Zeta23.OPICAFollowup.W06Independent
+          LEAN
+          lake env lean /tmp/opica-w06-expected.lean 2>&1 | tee /tmp/opica-current-candidates/w06-expected.log
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          data = Path('/tmp/opica-current-candidates/w06-expected.log').read_text()
+          found = re.findall(r'depends on axioms:\s*\[([^\]]*)\]', data, re.S)
+          allowed = {'propext', 'Classical.choice', 'Quot.sound'}
+          assert len(found) == 14, f'Expected fourteen axiom closures; saw {len(found)}'
+          for row in found:
+              axioms = {x.strip() for x in row.split(',') if x.strip()}
+              assert axioms <= allowed, f'Unexpected axioms: {sorted(axioms - allowed)}'
+          print('W06 source-bound finite transport proofs: PASS; Möbius inversion root still OPEN')
+          PY
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: opica-followup-repaired-candidates
+          path: /tmp/opica-current-candidates
+
+  frozen-regression:
+    name: Frozen regression and fail-closed evidence tests
+    needs: preparation-contract
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: '3.13'
+      - run: |
+          python -m pip install --require-hashes --only-binary=:all: -r "$FOLLOWUP/python-checks.lock"
+      - name: Replay all frozen controls and explicitly noninterval numerical cases
+        run: python "$FOLLOWUP/replay_controls.py" --modes normal optimized --include-numerical --output-dir /tmp/opica-followup-regression
+      - name: Exercise complete child validation suite in both Python modes
+        run: |
+          python -m unittest discover -s "$FOLLOWUP/tests" -p 'test_*.py'
+          python -O -m unittest discover -s "$FOLLOWUP/tests" -p 'test_*.py'
+      - name: Exercise repaired parent contract module without platform skips
+        run: |
+          python -m unittest discover -s research/RHRC/integration/opica/tests -p test_contract.py
+          python -O -m unittest discover -s research/RHRC/integration/opica/tests -p test_contract.py
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: opica-followup-frozen-regression
+          path: /tmp/opica-followup-regression
+
+  full-release-readiness:
+    name: Full release readiness (expected FAIL while scope is incomplete)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: '3.13'
+      - name: Preserve the complete release gate and report its actual disposition
+        run: python "$FOLLOWUP/validate_contract.py" --phase release --output /tmp/opica-followup-release-readiness.json
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: opica-followup-full-release-readiness
+          path: /tmp/opica-followup-release-readiness.json

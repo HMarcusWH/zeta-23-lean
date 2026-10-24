@@ -1,0 +1,94 @@
+Zeta23/OPICAFollowup/MultiplicityTail.lean:36:18: error: unsolved goals
+case e'_6
+P Q : ℝ[X]
+hP : IntegrableOn (fun x => Real.exp (-x) * eval x P) (Ioi 0) volume
+hQ : IntegrableOn (fun x => Real.exp (-x) * eval x Q) (Ioi 0) volume
+⊢ (fun x => Real.exp (-x) * eval x P + Real.exp (-x) * eval x Q) =
+    (fun x => Real.exp (-x) * eval x P) + fun x => Real.exp (-x) * eval x Q
+Zeta23/OPICAFollowup/MultiplicityTail.lean:39:17: error: unsolved goals
+n : ℕ
+a : ℝ
+h : IntegrableOn (fun x => x ^ ↑n * Real.exp (-1 * x ^ 1)) (Ioi 0) volume
+⊢ IntegrableOn (fun x => a * (x ^ n * Real.exp (-x))) (Ioi 0) volume ↔
+    Integrable (fun x => a * (x ^ n * Real.exp (-x))) (volume.restrict (Ioi 0))
+Zeta23/OPICAFollowup/MultiplicityTail.lean:38:59: warning: This simp argument is unused:
+  Pi.add_apply
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Polynomial.eval_add, mul_add]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+Zeta23/OPICAFollowup/MultiplicityTail.lean:43:63: warning: This simp argument is unused:
+  one_mul
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Real.rpow_one, Real.rpow_natCast, Polynomial.eval_monomial, mul_comm, mul_left_comm, mul_assoc,
+    neg_mul, one_mul, mul_neg_one]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+Zeta23/OPICAFollowup/MultiplicityTail.lean:44:17: warning: This simp argument is unused:
+  mul_left_comm
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Real.rpow_one, Real.rpow_natCast, one_mul, Polynomial.eval_monomial, mul_comm, mul_assoc, neg_mul,
+    one_mul, mul_neg_one]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+Zeta23/OPICAFollowup/MultiplicityTail.lean:44:41: warning: This simp argument is unused:
+  neg_mul
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Real.rpow_one, Real.rpow_natCast, one_mul, Polynomial.eval_monomial, mul_comm, mul_left_comm,
+    mul_assoc, one_mul, mul_neg_one]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+Zeta23/OPICAFollowup/MultiplicityTail.lean:44:49: warning: This simp argument is unused:
+  one_mul
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Real.rpow_one, Real.rpow_natCast, one_mul, Polynomial.eval_monomial, mul_comm, mul_left_comm,
+    mul_assoc, neg_mul, mul_neg_one]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+Zeta23/OPICAFollowup/MultiplicityTail.lean:93:32: warning: This simp argument is unused:
+  Pi.mul_apply
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Polynomial.derivative_mul, Polynomial.eval_mul, Polynomial.eval_add, laguerreRodriguesStep,
+    Polynomial.eval_sub]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+Zeta23/OPICAFollowup/MultiplicityTail.lean:190:17: warning: This simp argument is unused:
+  Polynomial.coeff_C
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [hcoeff, hj]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+Zeta23/OPICAFollowup/MultiplicityTail.lean:259:50: warning: This simp argument is unused:
+  abs_sq
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [monicLaguerreTail, indicator_of_mem htmem, laguerreSquareProfile, indicator_of_mem humem, norm_mul,
+    Complex.norm_real, Real.norm_eq_abs, Complex.norm_exp, Complex.neg_re, Complex.conj_re, Complex.mul_re,
+    Complex.ofReal_re, Complex.ofReal_im, mul_zero, sub_zero, mul_pow]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+Zeta23/OPICAFollowup/MultiplicityTail.lean:335:8: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  (2 * p.re) ^ 2
+in the target expression
+  ((2 * p.re) ^ (↑m - 1 / 2)) ^ 2 = (2 * p.re) ^ (2 * (m - 1) + 1)
+
+m : ℕ
+hm : 1 ≤ m
+p : ℂ
+hp : 0 < p.re
+T : ℝ
+hnorm : ‖monicLaguerreTailL2 (m - 1) p T hp‖ ^ 2 = ∫ (t : ℝ), ‖monicLaguerreTail (m - 1) p T t‖ ^ 2
+hsq :
+  ‖monicLaguerreTailL2 (m - 1) p T hp‖ ^ 2 =
+    Real.exp (-2 * p.re * T) * ↑(m - 1).factorial ^ 2 / (2 * p.re) ^ (2 * (m - 1) + 1)
+hMp : 0 < 2 * p.re
+hright : 0 ≤ Real.exp (-p.re * T) * ↑(m - 1).factorial / (2 * p.re) ^ (↑m - 1 / 2)
+hcast : (↑m - 1 / 2) * 2 = ↑(2 * (m - 1) + 1)
+⊢ ((2 * p.re) ^ (↑m - 1 / 2)) ^ 2 = (2 * p.re) ^ (2 * (m - 1) + 1)

@@ -1,0 +1,91 @@
+[
+  {
+    "module": "Zeta23.OPICAFollowup.MaskedNativeRate",
+    "added_direct_project_imports": [],
+    "not_yet_imported_planned_project_modules": [],
+    "planned_definition_names_not_declared_in_candidate": []
+  },
+  {
+    "module": "Zeta23.OPICAFollowup.AuxiliaryCompletions",
+    "added_direct_project_imports": [
+      "Zeta23.OPICA.WeightedLaplace"
+    ],
+    "not_yet_imported_planned_project_modules": [],
+    "planned_definition_names_not_declared_in_candidate": []
+  },
+  {
+    "module": "Zeta23.OPICAFollowup.MultiplicityTail",
+    "added_direct_project_imports": [],
+    "not_yet_imported_planned_project_modules": [],
+    "planned_definition_names_not_declared_in_candidate": [
+      "nativeTruncatedResidual",
+      "tailMemory"
+    ]
+  },
+  {
+    "module": "Zeta23.OPICAFollowup.ComplexLocalMeasures",
+    "added_direct_project_imports": [],
+    "not_yet_imported_planned_project_modules": [],
+    "planned_definition_names_not_declared_in_candidate": []
+  },
+  {
+    "module": "Zeta23.OPICAFollowup.DilatedComb",
+    "added_direct_project_imports": [],
+    "not_yet_imported_planned_project_modules": [
+      "Zeta23.OPICA.SincTriangle"
+    ],
+    "planned_definition_names_not_declared_in_candidate": [
+      "dilatedComb",
+      "combPairing"
+    ]
+  },
+  {
+    "module": "Zeta23.OPICAFollowup.RenormalizedCoPoisson",
+    "added_direct_project_imports": [
+      "Zeta23.ExceptionalZero.ZetaRealStripNonvanishing",
+      "Zeta23.OPICAFollowup.ComplexLocalMeasures"
+    ],
+    "not_yet_imported_planned_project_modules": [
+      "Zeta23.OPICAFollowup.DilatedComb"
+    ],
+    "planned_definition_names_not_declared_in_candidate": [
+      "renormalizedCombKernel",
+      "coPoissonFamily",
+      "coPoissonCutoff",
+      "finiteSumSrho",
+      "normalizationBrho",
+      "zeroMeasure"
+    ]
+  },
+  {
+    "module": "Zeta23.OPICAFollowup.FirstCellCost",
+    "added_direct_project_imports": [
+      "Zeta23.OPICA.SignedHeatSeparator"
+    ],
+    "not_yet_imported_planned_project_modules": [],
+    "planned_definition_names_not_declared_in_candidate": []
+  },
+  {
+    "module": "Zeta23.OPICAFollowup.Consumers",
+    "added_direct_project_imports": [
+      "Zeta23.OPICA.NativeJetAdapter"
+    ],
+    "not_yet_imported_planned_project_modules": [
+      "Zeta23.ExceptionalZero.Step4OutputSufficiency",
+      "Zeta23.OPICAFollowup.BoundaryAmplitude",
+      "Zeta23.OPICAFollowup.Counterexamples",
+      "Zeta23.OPICAFollowup.FiniteSpanSeparation",
+      "Zeta23.OPICAFollowup.FirstCellCost",
+      "Zeta23.OPICAFollowup.MaskedNativeRate",
+      "Zeta23.OPICAFollowup.MovingSourceWindowRate",
+      "Zeta23.OPICAFollowup.NativeTransformationWords",
+      "Zeta23.OPICAFollowup.NativeWindowRate",
+      "Zeta23.OPICAFollowup.NearGapLimits",
+      "Zeta23.OPICAFollowup.SquareDefect",
+      "Zeta23.OPICAFollowup.WeightedMixing"
+    ],
+    "planned_definition_names_not_declared_in_candidate": [
+      "FollowupNativeOutput"
+    ]
+  }
+]

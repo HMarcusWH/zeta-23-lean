@@ -1,0 +1,1061 @@
+﻿2026-10-22T13:45:33.0704508Z Current runner version: '2.338.0'
+2026-10-22T13:45:33.0730225Z ##[group]Runner Image Provisioner
+2026-10-22T13:45:33.0731174Z Hosted Compute Agent
+2026-10-22T13:45:33.0731781Z Version: 20261021.618
+2026-10-22T13:45:33.0732435Z Commit: 21505ad2541d5be6135ed84fc33697146cf75b8e
+2026-10-22T13:45:33.0733131Z Build Date: 2026-10-21T00:45:21Z
+2026-10-22T13:45:33.0733770Z Worker ID: {177516d7-1961-475c-b020-b02557b6289e}
+2026-10-22T13:45:33.0734461Z Region: centralus
+2026-10-22T13:45:33.0734991Z Cloud: Azure
+2026-10-22T13:45:33.0735514Z ##[endgroup]
+2026-10-22T13:45:33.0736829Z ##[group]Operating System
+2026-10-22T13:45:33.0737421Z Ubuntu
+2026-10-22T13:45:33.0737939Z 26.04.1
+2026-10-22T13:45:33.0738717Z LTS
+2026-10-22T13:45:33.0739208Z ##[endgroup]
+2026-10-22T13:45:33.0739765Z ##[group]Runner Image
+2026-10-22T13:45:33.0740347Z Image: ubuntu-26.04
+2026-10-22T13:45:33.0740888Z Version: 20261021.171.10
+2026-10-22T13:45:33.0742142Z Included Software: https://github.com/actions/runner-images/blob/ubuntu26/20261021.171/images/ubuntu/Ubuntu2604-Readme.md
+2026-10-22T13:45:33.0743676Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu26%2F20261021.171
+2026-10-22T13:45:33.0744573Z ##[endgroup]
+2026-10-22T13:45:33.0745669Z ##[group]GITHUB_TOKEN Permissions
+2026-10-22T13:45:33.0747709Z Contents: read
+2026-10-22T13:45:33.0748595Z Metadata: read
+2026-10-22T13:45:33.0749190Z ##[endgroup]
+2026-10-22T13:45:33.0751242Z Secret source: Actions
+2026-10-22T13:45:33.0752194Z Cache mode: write
+2026-10-22T13:45:33.0752845Z Prepare workflow directory
+2026-10-22T13:45:33.1215692Z Prepare all required actions
+2026-10-22T13:45:33.1286476Z Getting action download info
+2026-10-22T13:45:33.3964299Z Download action repository 'actions/checkout@11d5960a326750d5838078e36cf38b85af677262' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-10-22T13:45:33.7270594Z Download action repository 'actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065' (SHA:a26af69be951a213d495a4c3e4e4022e16d87065)
+2026-10-22T13:45:33.9925898Z Download action repository 'actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2026-10-22T13:45:34.8431460Z Complete job name: opica-regression
+2026-10-22T13:45:34.9442359Z ##[group]Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+2026-10-22T13:45:34.9444220Z with:
+2026-10-22T13:45:34.9445135Z   fetch-depth: 0
+2026-10-22T13:45:34.9446165Z   persist-credentials: false
+2026-10-22T13:45:34.9447360Z   repository: HMarcusWH/zeta-23-lean
+2026-10-22T13:45:34.9457461Z   token: ***
+2026-10-22T13:45:34.9458490Z   ssh-strict: true
+2026-10-22T13:45:34.9459404Z   ssh-user: git
+2026-10-22T13:45:34.9460276Z   clean: true
+2026-10-22T13:45:34.9461216Z   sparse-checkout-cone-mode: true
+2026-10-22T13:45:34.9462309Z   fetch-tags: false
+2026-10-22T13:45:34.9463192Z   show-progress: true
+2026-10-22T13:45:34.9464148Z   lfs: false
+2026-10-22T13:45:34.9465010Z   submodules: false
+2026-10-22T13:45:34.9465947Z   set-safe-directory: true
+2026-10-22T13:45:34.9467062Z   allow-unsafe-pr-checkout: false
+2026-10-22T13:45:34.9468638Z env:
+2026-10-22T13:45:34.9469600Z   OPICA: research/RHRC/integration/opica
+2026-10-22T13:45:34.9470732Z   PYTHONUTF8: 1
+2026-10-22T13:45:34.9471965Z ##[endgroup]
+2026-10-22T13:45:35.0540887Z Syncing repository: HMarcusWH/zeta-23-lean
+2026-10-22T13:45:35.0545257Z ##[group]Getting Git version info
+2026-10-22T13:45:35.0547377Z Working directory is '/home/runner/work/zeta-23-lean/zeta-23-lean'
+2026-10-22T13:45:35.0550855Z [command]/usr/bin/git version
+2026-10-22T13:45:35.0552300Z git version 2.55.0
+2026-10-22T13:45:35.0557230Z ##[endgroup]
+2026-10-22T13:45:35.0567609Z Temporarily overriding HOME='/home/runner/work/_temp/872f264f-cc53-43d5-b026-ccd8f2adb56d' before making global git config changes
+2026-10-22T13:45:35.0588083Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-22T13:45:35.0591643Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/zeta-23-lean/zeta-23-lean
+2026-10-22T13:45:35.0713934Z Deleting the contents of '/home/runner/work/zeta-23-lean/zeta-23-lean'
+2026-10-22T13:45:35.0717599Z ##[group]Initializing the repository
+2026-10-22T13:45:35.0722805Z [command]/usr/bin/git init /home/runner/work/zeta-23-lean/zeta-23-lean
+2026-10-22T13:45:35.0912034Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-10-22T13:45:35.0915393Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-10-22T13:45:35.0918697Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-10-22T13:45:35.0921802Z hint: call:
+2026-10-22T13:45:35.0923265Z hint:
+2026-10-22T13:45:35.0925054Z hint: 	git config --global init.defaultBranch <name>
+2026-10-22T13:45:35.0927274Z hint:
+2026-10-22T13:45:35.0929225Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-10-22T13:45:35.0931403Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-10-22T13:45:35.0934059Z hint:
+2026-10-22T13:45:35.0935465Z hint: 	git branch -m <name>
+2026-10-22T13:45:35.0937039Z hint:
+2026-10-22T13:45:35.0939343Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-10-22T13:45:35.0943059Z Initialized empty Git repository in /home/runner/work/zeta-23-lean/zeta-23-lean/.git/
+2026-10-22T13:45:35.0948877Z [command]/usr/bin/git remote add origin https://github.com/HMarcusWH/zeta-23-lean
+2026-10-22T13:45:35.1093933Z ##[endgroup]
+2026-10-22T13:45:35.1095953Z ##[group]Disabling automatic garbage collection
+2026-10-22T13:45:35.1097820Z [command]/usr/bin/git config --local gc.auto 0
+2026-10-22T13:45:35.1213190Z ##[endgroup]
+2026-10-22T13:45:35.1214791Z ##[group]Setting up auth
+2026-10-22T13:45:35.1216576Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-22T13:45:35.1254215Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-22T13:45:35.3326432Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-22T13:45:35.3357850Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-22T13:45:35.3583738Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-22T13:45:35.3615831Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-22T13:45:35.3847642Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-10-22T13:45:35.4183084Z ##[endgroup]
+2026-10-22T13:45:35.4186066Z ##[group]Fetching the repository
+2026-10-22T13:45:35.4197688Z [command]/usr/bin/git -c protocol.version=2 fetch --prune --no-recurse-submodules origin +refs/heads/*:refs/remotes/origin/* +refs/tags/*:refs/tags/* +2735cbb15830808c5e6294c428f857d31ff09219:refs/remotes/pull/294/merge
+2026-10-22T13:45:58.2525587Z From https://github.com/HMarcusWH/zeta-23-lean
+2026-10-22T13:45:58.2526760Z  * [new branch]        archive/t1-route-g-evidence-20260828     -> origin/archive/t1-route-g-evidence-20260828
+2026-10-22T13:45:58.2527786Z  * [new branch]        audit/post271-cofinal-equivalence        -> origin/audit/post271-cofinal-equivalence
+2026-10-22T13:45:58.2529175Z  * [new branch]        ccm/canonical-carrier-bottom-hierarchy   -> origin/ccm/canonical-carrier-bottom-hierarchy
+2026-10-22T13:45:58.2530408Z  * [new branch]        ccm/canonical-real-negative-shift-transfer -> origin/ccm/canonical-real-negative-shift-transfer
+2026-10-22T13:45:58.2531428Z  * [new branch]        ccm/global-parity-bottom-nflow           -> origin/ccm/global-parity-bottom-nflow
+2026-10-22T13:45:58.2532374Z  * [new branch]        ccm/post229-source-coupling-balance      -> origin/ccm/post229-source-coupling-balance
+2026-10-22T13:45:58.2533489Z  * [new branch]        ccm/prime-weight-endpoint-jets           -> origin/ccm/prime-weight-endpoint-jets
+2026-10-22T13:45:58.2534387Z  * [new branch]        ccm/retained-disk-secular-intersection   -> origin/ccm/retained-disk-secular-intersection
+2026-10-22T13:45:58.2535314Z  * [new branch]        ccm/retained-gamma-obstruction-normal-form -> origin/ccm/retained-gamma-obstruction-normal-form
+2026-10-22T13:45:58.2536245Z  * [new branch]        ccm/retained-real-completed-source       -> origin/ccm/retained-real-completed-source
+2026-10-22T13:45:58.2537148Z  * [new branch]        ccm/retained-real-phase-collapse         -> origin/ccm/retained-real-phase-collapse
+2026-10-22T13:45:58.2538017Z  * [new branch]        ccm/retained-source-gram-disk            -> origin/ccm/retained-source-gram-disk
+2026-10-22T13:45:58.2539477Z  * [new branch]        ccm/source-kernel-forbidden-quadrant     -> origin/ccm/source-kernel-forbidden-quadrant
+2026-10-22T13:45:58.2541062Z  * [new branch]        chatgpt/r003-r004-formal-ccm             -> origin/chatgpt/r003-r004-formal-ccm
+2026-10-22T13:45:58.2543272Z  * [new branch]        chore/post116-docs-control-hardening     -> origin/chore/post116-docs-control-hardening
+2026-10-22T13:45:58.2544495Z  * [new branch]        chore/post119-ssot-sync                  -> origin/chore/post119-ssot-sync
+2026-10-22T13:45:58.2545977Z  * [new branch]        chore/r003-roadmap-dumbassery-fix        -> origin/chore/r003-roadmap-dumbassery-fix
+2026-10-22T13:45:58.2547039Z  * [new branch]        chore/rhrc-claim-firewall-v2             -> origin/chore/rhrc-claim-firewall-v2
+2026-10-22T13:45:58.2547890Z  * [new branch]        claude/determined-newton-aplncg          -> origin/claude/determined-newton-aplncg
+2026-10-22T13:45:58.2549031Z  * [new branch]        claude/dreamy-mendel-jrjxnc              -> origin/claude/dreamy-mendel-jrjxnc
+2026-10-22T13:45:58.2549748Z  * [new branch]        claude/eloquent-brown-dm8n8s             -> origin/claude/eloquent-brown-dm8n8s
+2026-10-22T13:45:58.2550401Z  * [new branch]        claude/project-thread-d9vpzl             -> origin/claude/project-thread-d9vpzl
+2026-10-22T13:45:58.2551269Z  * [new branch]        claude/project-thread-l0ckju             -> origin/claude/project-thread-l0ckju
+2026-10-22T13:45:58.2551938Z  * [new branch]        claude/relaxed-babbage-uf9fc9            -> origin/claude/relaxed-babbage-uf9fc9
+2026-10-22T13:45:58.2552859Z  * [new branch]        claude/rh-lean-proof-search-z199m5       -> origin/claude/rh-lean-proof-search-z199m5
+2026-10-22T13:45:58.2553730Z  * [new branch]        cleanup/pr42-lint-20260825               -> origin/cleanup/pr42-lint-20260825
+2026-10-22T13:45:58.2554439Z  * [new branch]        closure/run42c-ool-route-architecture    -> origin/closure/run42c-ool-route-architecture
+2026-10-22T13:45:58.2555206Z  * [new branch]        codex/pr292-completion-20261017          -> origin/codex/pr292-completion-20261017
+2026-10-22T13:45:58.2556338Z  * [new branch]        codex/pr42-wip-handover-20260825         -> origin/codex/pr42-wip-handover-20260825
+2026-10-22T13:45:58.2557239Z  * [new branch]        diagnostics/pr292-rhkg-recursion-20261015 -> origin/diagnostics/pr292-rhkg-recursion-20261015
+2026-10-22T13:45:58.2558037Z  * [new branch]        docs/living-research-ledger-plan-20260901 -> origin/docs/living-research-ledger-plan-20260901
+2026-10-22T13:45:58.2559220Z  * [new branch]        docs/post-107-spectral-sync-20260903     -> origin/docs/post-107-spectral-sync-20260903
+2026-10-22T13:45:58.2559972Z  * [new branch]        docs/post-110-control-plane-20260904     -> origin/docs/post-110-control-plane-20260904
+2026-10-22T13:45:58.2560688Z  * [new branch]        docs/post-113-control-plane-sync         -> origin/docs/post-113-control-plane-sync
+2026-10-22T13:45:58.2561941Z  * [new branch]        docs/post-122-state-sync                 -> origin/docs/post-122-state-sync
+2026-10-22T13:45:58.2562608Z  * [new branch]        docs/post-125-sync-e4a3                  -> origin/docs/post-125-sync-e4a3
+2026-10-22T13:45:58.2563437Z  * [new branch]        docs/post-131-source-decomposition-sync  -> origin/docs/post-131-source-decomposition-sync
+2026-10-22T13:45:58.2564219Z  * [new branch]        docs/post-132-kernel-energy-path-sync    -> origin/docs/post-132-kernel-energy-path-sync
+2026-10-22T13:45:58.2564997Z  * [new branch]        docs/post-134-energy-frontier-sync       -> origin/docs/post-134-energy-frontier-sync
+2026-10-22T13:45:58.2565909Z  * [new branch]        docs/post-137-domination-countercertificate-sync -> origin/docs/post-137-domination-countercertificate-sync
+2026-10-22T13:45:58.2566797Z  * [new branch]        docs/post-138-astra-regular-aperture-reroute -> origin/docs/post-138-astra-regular-aperture-reroute
+2026-10-22T13:45:58.2567609Z  * [new branch]        docs/post-140-fixed-cell-sync            -> origin/docs/post-140-fixed-cell-sync
+2026-10-22T13:45:58.2568539Z  * [new branch]        docs/post-142-fixed-cell-regularity-sync -> origin/docs/post-142-fixed-cell-regularity-sync
+2026-10-22T13:45:58.2569373Z  * [new branch]        docs/post-146-aperture-analytic-sync     -> origin/docs/post-146-aperture-analytic-sync
+2026-10-22T13:45:58.2570178Z  * [new branch]        docs/post-96-control-plane-sync-20260902 -> origin/docs/post-96-control-plane-sync-20260902
+2026-10-22T13:45:58.2570964Z  * [new branch]        docs/post-98-control-plane-sync-20260902 -> origin/docs/post-98-control-plane-sync-20260902
+2026-10-22T13:45:58.2571832Z  * [new branch]        docs/post-parity-bad-control-plane-20260903 -> origin/docs/post-parity-bad-control-plane-20260903
+2026-10-22T13:45:58.2572734Z  * [new branch]        docs/post-parity-control-plane-20260903  -> origin/docs/post-parity-control-plane-20260903
+2026-10-22T13:45:58.2573528Z  * [new branch]        docs/post-w0-research-state-20260901     -> origin/docs/post-w0-research-state-20260901
+2026-10-22T13:45:58.2574356Z  * [new branch]        docs/post-w1-zero-side-evenization-20260901 -> origin/docs/post-w1-zero-side-evenization-20260901
+2026-10-22T13:45:58.2575125Z  * [new branch]        docs/post-w2a-w0-plan-20260901           -> origin/docs/post-w2a-w0-plan-20260901
+2026-10-22T13:45:58.2575869Z  * [new branch]        docs/post125-e4a3-sync                   -> origin/docs/post125-e4a3-sync
+2026-10-22T13:45:58.2576598Z  * [new branch]        docs/post129-canonical-source-sync       -> origin/docs/post129-canonical-source-sync
+2026-10-22T13:45:58.2577337Z  * [new branch]        docs/post148-rhrc-sync                   -> origin/docs/post148-rhrc-sync
+2026-10-22T13:45:58.2578057Z  * [new branch]        docs/post150-arithmetic-frontier-sync    -> origin/docs/post150-arithmetic-frontier-sync
+2026-10-22T13:45:58.2579161Z  * [new branch]        docs/post153-certificate-discrepancy-sync -> origin/docs/post153-certificate-discrepancy-sync
+2026-10-22T13:45:58.2579937Z  * [new branch]        docs/post155-riesz-dtransport-sync       -> origin/docs/post155-riesz-dtransport-sync
+2026-10-22T13:45:58.2580704Z  * [new branch]        docs/post157-production-riesz-sync       -> origin/docs/post157-production-riesz-sync
+2026-10-22T13:45:58.2581477Z  * [new branch]        docs/post159-riesz-cross-parity-sync     -> origin/docs/post159-riesz-cross-parity-sync
+2026-10-22T13:45:58.2582339Z  * [new branch]        docs/post161-same-state-riesz-source-sync -> origin/docs/post161-same-state-riesz-source-sync
+2026-10-22T13:45:58.2583192Z  * [new branch]        docs/post163-mixed-source-riesz-arithmetic-sync -> origin/docs/post163-mixed-source-riesz-arithmetic-sync
+2026-10-22T13:45:58.2584015Z  * [new branch]        docs/post168-fb05-threshold-pivot-sync   -> origin/docs/post168-fb05-threshold-pivot-sync
+2026-10-22T13:45:58.2584860Z  * [new branch]        docs/post170-schur-visibility-barrier-sync -> origin/docs/post170-schur-visibility-barrier-sync
+2026-10-22T13:45:58.2585666Z  * [new branch]        docs/post172-q13-scalar-barrier-sync     -> origin/docs/post172-q13-scalar-barrier-sync
+2026-10-22T13:45:58.2586487Z  * [new branch]        docs/post174-q13-scalar-method-sync      -> origin/docs/post174-q13-scalar-method-sync
+2026-10-22T13:45:58.2587549Z  * [new branch]        docs/post176-fixed-unit-method-sync      -> origin/docs/post176-fixed-unit-method-sync
+2026-10-22T13:45:58.2588606Z  * [new branch]        docs/post178-derivative-unresolved-sync  -> origin/docs/post178-derivative-unresolved-sync
+2026-10-22T13:45:58.2589490Z  * [new branch]        docs/post180-q14-centered-taylor-frontier -> origin/docs/post180-q14-centered-taylor-frontier
+2026-10-22T13:45:58.2590352Z  * [new branch]        docs/post182-schur-contact-orientation-frontier -> origin/docs/post182-schur-contact-orientation-frontier
+2026-10-22T13:45:58.2591359Z  * [new branch]        docs/post184-hermitian-log-drift-remainder-frontier -> origin/docs/post184-hermitian-log-drift-remainder-frontier
+2026-10-22T13:45:58.2592366Z  * [new branch]        docs/post186-remainder-drift-falsification-sync -> origin/docs/post186-remainder-drift-falsification-sync
+2026-10-22T13:45:58.2593271Z  * [new branch]        docs/post190-selector-separability-sync  -> origin/docs/post190-selector-separability-sync
+2026-10-22T13:45:58.2594124Z  * [new branch]        docs/post193-parity-trajectory-sync      -> origin/docs/post193-parity-trajectory-sync
+2026-10-22T13:45:58.2594982Z  * [new branch]        docs/post195-parity-trajectory-sync      -> origin/docs/post195-parity-trajectory-sync
+2026-10-22T13:45:58.2595864Z  * [new branch]        docs/post197-q14-global-monotone-orientation-sync -> origin/docs/post197-q14-global-monotone-orientation-sync
+2026-10-22T13:45:58.2596956Z  * [new branch]        docs/post199-source-decomposition-sync   -> origin/docs/post199-source-decomposition-sync
+2026-10-22T13:45:58.2597823Z  * [new branch]        docs/post201-discrepancy-mechanism-sync  -> origin/docs/post201-discrepancy-mechanism-sync
+2026-10-22T13:45:58.2599177Z  * [new branch]        docs/post203-pair-a-falsification-sync   -> origin/docs/post203-pair-a-falsification-sync
+2026-10-22T13:45:58.2600173Z  * [new branch]        docs/post205-pair-d-canonical-arithmetic-sync -> origin/docs/post205-pair-d-canonical-arithmetic-sync
+2026-10-22T13:45:58.2601126Z  * [new branch]        docs/post207-pair-d-source-m4-sync       -> origin/docs/post207-pair-d-source-m4-sync
+2026-10-22T13:45:58.2602253Z  * [new branch]        docs/post209-pair-d-coercivity-sync      -> origin/docs/post209-pair-d-coercivity-sync
+2026-10-22T13:45:58.2603458Z  * [new branch]        docs/post211-complete-functional-sync    -> origin/docs/post211-complete-functional-sync
+2026-10-22T13:45:58.2604461Z  * [new branch]        docs/post213-complete-source-kernel-sync -> origin/docs/post213-complete-source-kernel-sync
+2026-10-22T13:45:58.2605406Z  * [new branch]        docs/post215-current-state-normalization -> origin/docs/post215-current-state-normalization
+2026-10-22T13:45:58.2606323Z  * [new branch]        docs/post215-retained-secular-frontier-sync -> origin/docs/post215-retained-secular-frontier-sync
+2026-10-22T13:45:58.2607373Z  * [new branch]        docs/post224-closure-plan-sync           -> origin/docs/post224-closure-plan-sync
+2026-10-22T13:45:58.2608553Z  * [new branch]        docs/post227-one-coefficient-transfer-sync -> origin/docs/post227-one-coefficient-transfer-sync
+2026-10-22T13:45:58.2609606Z  * [new branch]        docs/post229-riesz-source-coupling-sync  -> origin/docs/post229-riesz-source-coupling-sync
+2026-10-22T13:45:58.2610914Z  * [new branch]        docs/post231-source-balance-sync         -> origin/docs/post231-source-balance-sync
+2026-10-22T13:45:58.2612142Z  * [new branch]        docs/post237-route-reconciliation        -> origin/docs/post237-route-reconciliation
+2026-10-22T13:45:58.2613188Z  * [new branch]        docs/post247-glasses-state-sync          -> origin/docs/post247-glasses-state-sync
+2026-10-22T13:45:58.2614353Z  * [new branch]        docs/post91-end-to-end-20260902          -> origin/docs/post91-end-to-end-20260902
+2026-10-22T13:45:58.2615606Z  * [new branch]        docs/pre-w2zs-authority-cleanup-20260901 -> origin/docs/pre-w2zs-authority-cleanup-20260901
+2026-10-22T13:45:58.2616850Z  * [new branch]        docs/promote-f0b1a-projection-frontier-20260901 -> origin/docs/promote-f0b1a-projection-frontier-20260901
+2026-10-22T13:45:58.2617864Z  * [new branch]        docs/promote-w2zs-f0b-frontier-20260901  -> origin/docs/promote-w2zs-f0b-frontier-20260901
+2026-10-22T13:45:58.2618942Z  * [new branch]        docs/research-fork-documentation-reset-20260831 -> origin/docs/research-fork-documentation-reset-20260831
+2026-10-22T13:45:58.2619806Z  * [new branch]        docs/sync-g1b1a-merged-state-20260831    -> origin/docs/sync-g1b1a-merged-state-20260831
+2026-10-22T13:45:58.2620526Z  * [new branch]        docs/sync-post-100-20260902              -> origin/docs/sync-post-100-20260902
+2026-10-22T13:45:58.2621299Z  * [new branch]        exceptional-zero/offline-whole-cell-provenance -> origin/exceptional-zero/offline-whole-cell-provenance
+2026-10-22T13:45:58.2622159Z  * [new branch]        experiment/rh-terminal-config-attempt    -> origin/experiment/rh-terminal-config-attempt
+2026-10-22T13:45:58.2623237Z  * [new branch]        experiment/rh-terminal-config-post240-v2 -> origin/experiment/rh-terminal-config-post240-v2
+2026-10-22T13:45:58.2624161Z  * [new branch]        feat/f0-b1c-a-localized-fourier-approx-20260901 -> origin/feat/f0-b1c-a-localized-fourier-approx-20260901
+2026-10-22T13:45:58.2625025Z  * [new branch]        feat/f0b1a-boundary-flat-c2-sector-20260901 -> origin/feat/f0b1a-boundary-flat-c2-sector-20260901
+2026-10-22T13:45:58.2625851Z  * [new branch]        feat/f0b1b-boundary-flat-projection-20260901 -> origin/feat/f0b1b-boundary-flat-projection-20260901
+2026-10-22T13:45:58.2626588Z  * [new branch]        feat/first-bad-rigidity-d1               -> origin/feat/first-bad-rigidity-d1
+2026-10-22T13:45:58.2627336Z  * [new branch]        feat/first-bad-rigidity-d2               -> origin/feat/first-bad-rigidity-d2
+2026-10-22T13:45:58.2627966Z  * [new branch]        feat/first-bad-rigidity-e1               -> origin/feat/first-bad-rigidity-e1
+2026-10-22T13:45:58.2628900Z  * [new branch]        feat/first-bad-rigidity-e2               -> origin/feat/first-bad-rigidity-e2
+2026-10-22T13:45:58.2629566Z  * [new branch]        feat/first-bad-rigidity-e3a              -> origin/feat/first-bad-rigidity-e3a
+2026-10-22T13:45:58.2630347Z  * [new branch]        feat/first-bad-rigidity-e3b1-e4a1        -> origin/feat/first-bad-rigidity-e3b1-e4a1
+2026-10-22T13:45:58.2631101Z  * [new branch]        feat/first-bad-rigidity-e3b2             -> origin/feat/first-bad-rigidity-e3b2
+2026-10-22T13:45:58.2631808Z  * [new branch]        feat/first-bad-rigidity-e4a2             -> origin/feat/first-bad-rigidity-e4a2
+2026-10-22T13:45:58.2632538Z  * [new branch]        feat/first-bad-rigidity-e4a2-endpoint    -> origin/feat/first-bad-rigidity-e4a2-endpoint
+2026-10-22T13:45:58.2633354Z  * [new branch]        feat/first-bad-rigidity-e4a3a-shell-response -> origin/feat/first-bad-rigidity-e4a3a-shell-response
+2026-10-22T13:45:58.2634218Z  * [new branch]        feat/first-bad-rigidity-e4a3b-branch-response -> origin/feat/first-bad-rigidity-e4a3b-branch-response
+2026-10-22T13:45:58.2635203Z  * [new branch]        feat/first-bad-rigidity-e4a3c-source-parity-transfer -> origin/feat/first-bad-rigidity-e4a3c-source-parity-transfer
+2026-10-22T13:45:58.2636236Z  * [new branch]        feat/first-bad-rigidity-e4a4a-source-moment-decomposition -> origin/feat/first-bad-rigidity-e4a4a-source-moment-decomposition
+2026-10-22T13:45:58.2637370Z  * [new branch]        feat/rhrc-control-v2                     -> origin/feat/rhrc-control-v2
+2026-10-22T13:45:58.2638443Z  * [new branch]        feat/w0-two-translate-contraction-20260901 -> origin/feat/w0-two-translate-contraction-20260901
+2026-10-22T13:45:58.2639382Z  * [new branch]        feat/w1-strict-aperture-recentering-20260901 -> origin/feat/w1-strict-aperture-recentering-20260901
+2026-10-22T13:45:58.2640245Z  * [new branch]        feat/w2-zero-side-evenization-20260901   -> origin/feat/w2-zero-side-evenization-20260901
+2026-10-22T13:45:58.2641146Z  * [new branch]        feat/w2a-weil-literature-bridge-20260901 -> origin/feat/w2a-weil-literature-bridge-20260901
+2026-10-22T13:45:58.2642114Z  * [new branch]        feat/wcont-a-quantitative-weil-continuity-20260901 -> origin/feat/wcont-a-quantitative-weil-continuity-20260901
+2026-10-22T13:45:58.2643087Z  * [new branch]        first-bad-rigidity/e4-a4b1-absolute-source-energy -> origin/first-bad-rigidity/e4-a4b1-absolute-source-energy
+2026-10-22T13:45:58.2643963Z  * [new branch]        first-bad-rigidity/e4-a4b2a-one-step-determinant -> origin/first-bad-rigidity/e4-a4b2a-one-step-determinant
+2026-10-22T13:45:58.2644857Z  * [new branch]        first-bad-rigidity/e4-a4r0-aperture-freedom -> origin/first-bad-rigidity/e4-a4r0-aperture-freedom
+2026-10-22T13:45:58.2645629Z  * [new branch]        fix/post-pr3-laplace-summability         -> origin/fix/post-pr3-laplace-summability
+2026-10-22T13:45:58.2646289Z  * [new branch]        main                                     -> origin/main
+2026-10-22T13:45:58.2647183Z  * [new branch]        permansson-v016-formal-verification      -> origin/permansson-v016-formal-verification
+2026-10-22T13:45:58.2648410Z  * [new branch]        proof/cross-parity-correction-functional-riesz -> origin/proof/cross-parity-correction-functional-riesz
+2026-10-22T13:45:58.2649313Z  * [new branch]        proof/e4-a4b0-kernel-source-transport    -> origin/proof/e4-a4b0-kernel-source-transport
+2026-10-22T13:45:58.2650110Z  * [new branch]        proof/e4a4-fb01-fb02-pole-prime-discrepancy -> origin/proof/e4a4-fb01-fb02-pole-prime-discrepancy
+2026-10-22T13:45:58.2651121Z  * [new branch]        proof/e4a4-fb01-frozen-intrinsic-analytic -> origin/proof/e4a4-fb01-frozen-intrinsic-analytic
+2026-10-22T13:45:58.2652030Z  * [new branch]        proof/e4a4-fb01-holomorphy               -> origin/proof/e4a4-fb01-holomorphy
+2026-10-22T13:45:58.2652981Z  * [new branch]        proof/e4a4-fb01-parameter-holomorphy     -> origin/proof/e4a4-fb01-parameter-holomorphy
+2026-10-22T13:45:58.2653827Z  * [new branch]        proof/e4a4-fb02-source-holomorphy-rigidity -> origin/proof/e4a4-fb02-source-holomorphy-rigidity
+2026-10-22T13:45:58.2654593Z  * [new branch]        proof/e4a4-fb03-source-energy-riesz      -> origin/proof/e4a4-fb03-source-energy-riesz
+2026-10-22T13:45:58.2655389Z  * [new branch]        proof/e4a4-fb03e-dtransport-riesz        -> origin/proof/e4a4-fb03e-dtransport-riesz
+2026-10-22T13:45:58.2656105Z  * [new branch]        proof/e4a4-fb04a-riesz-boundary          -> origin/proof/e4a4-fb04a-riesz-boundary
+2026-10-22T13:45:58.2657046Z  * [new branch]        proof/e4a4-fb04b-shifted-cross-parity-riesz -> origin/proof/e4a4-fb04b-shifted-cross-parity-riesz
+2026-10-22T13:45:58.2658010Z  * [new branch]        proof/e4a4-fb04c-mixed-source-m4         -> origin/proof/e4a4-fb04c-mixed-source-m4
+2026-10-22T13:45:58.2659096Z  * [new branch]        proof/e4a4-fb05-complete-source-functional -> origin/proof/e4a4-fb05-complete-source-functional
+2026-10-22T13:45:58.2659896Z  * [new branch]        proof/e4a4-fb05-complete-source-kernel   -> origin/proof/e4a4-fb05-complete-source-kernel
+2026-10-22T13:45:58.2660718Z  * [new branch]        proof/e4a4-fb05-hermitian-n2-schur-log-drift -> origin/proof/e4a4-fb05-hermitian-n2-schur-log-drift
+2026-10-22T13:45:58.2661513Z  * [new branch]        proof/e4a4-fb05-pair-d-coercivity        -> origin/proof/e4a4-fb05-pair-d-coercivity
+2026-10-22T13:45:58.2662262Z  * [new branch]        proof/e4a4-fb05-pair-d-source-m4-energy  -> origin/proof/e4a4-fb05-pair-d-source-m4-energy
+2026-10-22T13:45:58.2663045Z  * [new branch]        proof/e4a4-fb05-schur-envelope-derivative -> origin/proof/e4a4-fb05-schur-envelope-derivative
+2026-10-22T13:45:58.2663842Z  * [new branch]        proof/e4a4-scalar-production-bridge      -> origin/proof/e4a4-scalar-production-bridge
+2026-10-22T13:45:58.2664851Z  * [new branch]        proof/fb05-good-kernel-zero-shift-balance -> origin/proof/fb05-good-kernel-zero-shift-balance
+2026-10-22T13:45:58.2666116Z  * [new branch]        proof/fb05-retained-cross-parity-secular-completion -> origin/proof/fb05-retained-cross-parity-secular-completion
+2026-10-22T13:45:58.2667365Z  * [new branch]        proof/fb05-retained-secular-budget-dichotomy -> origin/proof/fb05-retained-secular-budget-dichotomy
+2026-10-22T13:45:58.2668436Z  * [new branch]        proof/generated-family-final-closure     -> origin/proof/generated-family-final-closure
+2026-10-22T13:45:58.2669255Z  * [new branch]        proof/generated-family-final-gate        -> origin/proof/generated-family-final-gate
+2026-10-22T13:45:58.2670118Z  * [new branch]        proof/post220-zero-shift-schur-classification-sync -> origin/proof/post220-zero-shift-schur-classification-sync
+2026-10-22T13:45:58.2670930Z  * [new branch]        proof/post221-biregular-first-bad        -> origin/proof/post221-biregular-first-bad
+2026-10-22T13:45:58.2671736Z  * [new branch]        proof/post223-cross-parity-correction-collapse -> origin/proof/post223-cross-parity-correction-collapse
+2026-10-22T13:45:58.2672795Z  * [new branch]        proof/post225-cross-parity-predecessor-collapse -> origin/proof/post225-cross-parity-predecessor-collapse
+2026-10-22T13:45:58.2673819Z  * [new branch]        proof/post226-one-coefficient-transfer-collapse -> origin/proof/post226-one-coefficient-transfer-collapse
+2026-10-22T13:45:58.2674879Z  * [new branch]        proof/post282-canonical-contact-calculus -> origin/proof/post282-canonical-contact-calculus
+2026-10-22T13:45:58.2675759Z  * [new branch]        proof/r001-filtered-growth-envelope-v1   -> origin/proof/r001-filtered-growth-envelope-v1
+2026-10-22T13:45:58.2676717Z  * [new branch]        proof/r001-filtered-laplace-holomorphy-v1 -> origin/proof/r001-filtered-laplace-holomorphy-v1
+2026-10-22T13:45:58.2677637Z  * [new branch]        proof/r001-filtered-laplace-integrability-v1 -> origin/proof/r001-filtered-laplace-integrability-v1
+2026-10-22T13:45:58.2678677Z  * [new branch]        proof/r001-filtered-laplace-safe-v1      -> origin/proof/r001-filtered-laplace-safe-v1
+2026-10-22T13:45:58.2679626Z  * [new branch]        proof/r001-filtered-pole-principal-part  -> origin/proof/r001-filtered-pole-principal-part
+2026-10-22T13:45:58.2680644Z  * [new branch]        proof/r001-filtered-pole-principal-part-v2 -> origin/proof/r001-filtered-pole-principal-part-v2
+2026-10-22T13:45:58.2681797Z  * [new branch]        proof/r001-filtered-resolvent-integration -> origin/proof/r001-filtered-resolvent-integration
+2026-10-22T13:45:58.2682655Z  * [new branch]        proof/r001-filtered-resolvent-spike      -> origin/proof/r001-filtered-resolvent-spike
+2026-10-22T13:45:58.2683496Z  * [new branch]        proof/r001-filtered-zero-pole            -> origin/proof/r001-filtered-zero-pole
+2026-10-22T13:45:58.2684391Z  * [new branch]        proof/r001-filtered-zero-regularity-v1   -> origin/proof/r001-filtered-zero-regularity-v1
+2026-10-22T13:45:58.2685367Z  * [new branch]        proof/r001-growth-contradiction          -> origin/proof/r001-growth-contradiction
+2026-10-22T13:45:58.2686268Z  * [new branch]        proof/r001-local-resolvent-remainder     -> origin/proof/r001-local-resolvent-remainder
+2026-10-22T13:45:58.2687094Z  * [new branch]        proof/r001-meromorphic-identity-v1       -> origin/proof/r001-meromorphic-identity-v1
+2026-10-22T13:45:58.2687991Z  * [new branch]        proof/r001-pole-killer-fourier           -> origin/proof/r001-pole-killer-fourier
+2026-10-22T13:45:58.2689005Z  * [new branch]        proof/r001-pole-killer-fourier-integration -> origin/proof/r001-pole-killer-fourier-integration
+2026-10-22T13:45:58.2690025Z  * [new branch]        proof/r001-weil-explicit-formula-seam    -> origin/proof/r001-weil-explicit-formula-seam
+2026-10-22T13:45:58.2690830Z  * [new branch]        proof/r001-zero-isolation                -> origin/proof/r001-zero-isolation
+2026-10-22T13:45:58.2691669Z  * [new branch]        proof/r001-zero-isolation-integration    -> origin/proof/r001-zero-isolation-integration
+2026-10-22T13:45:58.2692543Z  * [new branch]        proof/r001-zero-side-integration-v2      -> origin/proof/r001-zero-side-integration-v2
+2026-10-22T13:45:58.2693401Z  * [new branch]        proof/r003-post30-kernel-foundation      -> origin/proof/r003-post30-kernel-foundation
+2026-10-22T13:45:58.2694363Z  * [new branch]        repair/frameworks-v17-ool277-strict-state -> origin/repair/frameworks-v17-ool277-strict-state
+2026-10-22T13:45:58.2695215Z  * [new branch]        repair/opica294-audit-20261022           -> origin/repair/opica294-audit-20261022
+2026-10-22T13:45:58.2696020Z  * [new branch]        repair/post249-scout-semantics           -> origin/repair/post249-scout-semantics
+2026-10-22T13:45:58.2697045Z  * [new branch]        repair/post269-theorem-control-cofinal-arithmetic -> origin/repair/post269-theorem-control-cofinal-arithmetic
+2026-10-22T13:45:58.2697946Z  * [new branch]        repair/pr294-20261022                    -> origin/repair/pr294-20261022
+2026-10-22T13:45:58.2698929Z  * [new branch]        repair/source-normalization-canonical-20260831 -> origin/repair/source-normalization-canonical-20260831
+2026-10-22T13:45:58.2700031Z  * [new branch]        research/close-rh-parity-first-crossing-shell -> origin/research/close-rh-parity-first-crossing-shell
+2026-10-22T13:45:58.2701197Z  * [new branch]        research/constrained-canonical-finite-wall-20260902 -> origin/research/constrained-canonical-finite-wall-20260902
+2026-10-22T13:45:58.2702346Z  * [new branch]        research/constrained-parity-20260902     -> origin/research/constrained-parity-20260902
+2026-10-22T13:45:58.2703353Z  * [new branch]        research/d0b-bombieri-object-audit-20260830 -> origin/research/d0b-bombieri-object-audit-20260830
+2026-10-22T13:45:58.2704317Z  * [new branch]        research/d0c-cutoff-free-matrix-map-20260830 -> origin/research/d0c-cutoff-free-matrix-map-20260830
+2026-10-22T13:45:58.2705273Z  * [new branch]        research/d0r-r002-ccm-map-separate-20260830 -> origin/research/d0r-r002-ccm-map-separate-20260830
+2026-10-22T13:45:58.2706294Z  * [new branch]        research/e4a4-fb04-selected-residual-certification -> origin/research/e4a4-fb04-selected-residual-certification
+2026-10-22T13:45:58.2707416Z  * [new branch]        research/exceptional-zero-rhrc           -> origin/research/exceptional-zero-rhrc
+2026-10-22T13:45:58.2708589Z  * [new branch]        research/exceptional-zero-rhrc-baseline  -> origin/research/exceptional-zero-rhrc-baseline
+2026-10-22T13:45:58.2709503Z  * [new branch]        research/exceptional-zero-rhrc-work      -> origin/research/exceptional-zero-rhrc-work
+2026-10-22T13:45:58.2710617Z  * [new branch]        research/f0-b1c-b-projection-stability-20260902 -> origin/research/f0-b1c-b-projection-stability-20260902
+2026-10-22T13:45:58.2711728Z  * [new branch]        research/f1-finite-negative-obstruction-20260902 -> origin/research/f1-finite-negative-obstruction-20260902
+2026-10-22T13:45:58.2712713Z  * [new branch]        research/fb05-q14-mixed-drift-selector-audit -> origin/research/fb05-q14-mixed-drift-selector-audit
+2026-10-22T13:45:58.2713846Z  * [new branch]        research/fb05-q14-selector-independence-audit -> origin/research/fb05-q14-selector-independence-audit
+2026-10-22T13:45:58.2714760Z  * [new branch]        research/fb05a-endpoint-scalar-audit     -> origin/research/fb05a-endpoint-scalar-audit
+2026-10-22T13:45:58.2715590Z  * [new branch]        research/fb05b-shifted-state-discriminator -> origin/research/fb05b-shifted-state-discriminator
+2026-10-22T13:45:58.2716470Z  * [new branch]        research/fb05c-q16-cell-determinant-barrier -> origin/research/fb05c-q16-cell-determinant-barrier
+2026-10-22T13:45:58.2717407Z  * [new branch]        research/fb05d-q17-threshold-moment-jet  -> origin/research/fb05d-q17-threshold-moment-jet
+2026-10-22T13:45:58.2718398Z  * [new branch]        research/fb05e-schur-threshold-visibility -> origin/research/fb05e-schur-threshold-visibility
+2026-10-22T13:45:58.2719226Z  * [new branch]        research/fb05f-threshold-barrier-dynamics -> origin/research/fb05f-threshold-barrier-dynamics
+2026-10-22T13:45:58.2720005Z  * [new branch]        research/fb05g-q13-even-scalar-barrier   -> origin/research/fb05g-q13-even-scalar-barrier
+2026-10-22T13:45:58.2720917Z  * [new branch]        research/fb05h-q13-fixed-unit-enclosure  -> origin/research/fb05h-q13-fixed-unit-enclosure
+2026-10-22T13:45:58.2721828Z  * [new branch]        research/fb05i-q14-fixed-unit-derivative -> origin/research/fb05i-q14-fixed-unit-derivative
+2026-10-22T13:45:58.2722775Z  * [new branch]        research/fb05j-q14-correlation-preserving-derivative -> origin/research/fb05j-q14-correlation-preserving-derivative
+2026-10-22T13:45:58.2723715Z  * [new branch]        research/fb05k-q14-remainder-drift-decomposition -> origin/research/fb05k-q14-remainder-drift-decomposition
+2026-10-22T13:45:58.2724575Z  * [new branch]        research/final-answer-runner-v152-overlay -> origin/research/final-answer-runner-v152-overlay
+2026-10-22T13:45:58.2725423Z  * [new branch]        research/finite-zero-side-bridge-20260830 -> origin/research/finite-zero-side-bridge-20260830
+2026-10-22T13:45:58.2726204Z  * [new branch]        research/first-bad-rigidity-20260903     -> origin/research/first-bad-rigidity-20260903
+2026-10-22T13:45:58.2726968Z  * [new branch]        research/first-bad-spectrum-20260903     -> origin/research/first-bad-spectrum-20260903
+2026-10-22T13:45:58.2727921Z  * [new branch]        research/fixed-parity-first-bad-20260903 -> origin/research/fixed-parity-first-bad-20260903
+2026-10-22T13:45:58.2728927Z  * [new branch]        research/g0a-localized-basis-20260830    -> origin/research/g0a-localized-basis-20260830
+2026-10-22T13:45:58.2729763Z  * [new branch]        research/g0b-localized-finite-space-20260831 -> origin/research/g0b-localized-finite-space-20260831
+2026-10-22T13:45:58.2730646Z  * [new branch]        research/g1a-additive-weil-restriction-20260831 -> origin/research/g1a-additive-weil-restriction-20260831
+2026-10-22T13:45:58.2731567Z  * [new branch]        research/g1b0-source-qw-normalization-20260831 -> origin/research/g1b0-source-qw-normalization-20260831
+2026-10-22T13:45:58.2732482Z  * [new branch]        research/g1b1a-source-kappa-finite-space-20260831 -> origin/research/g1b1a-source-kappa-finite-space-20260831
+2026-10-22T13:45:58.2733473Z  * [new branch]        research/h2a-codim-one-matrix-completion-20260828 -> origin/research/h2a-codim-one-matrix-completion-20260828
+2026-10-22T13:45:58.2734415Z  * [new branch]        research/h2b-zero-side-matrix-20260828   -> origin/research/h2b-zero-side-matrix-20260828
+2026-10-22T13:45:58.2735241Z  * [new branch]        research/h2plus-tent-defect-collapse-20260829 -> origin/research/h2plus-tent-defect-collapse-20260829
+2026-10-22T13:45:58.2736187Z  * [new branch]        research/k0-f1e-euclidean-constrained-sector-20260902 -> origin/research/k0-f1e-euclidean-constrained-sector-20260902
+2026-10-22T13:45:58.2737045Z  * [new branch]        research/m4-m5-tent-limit-20260829       -> origin/research/m4-m5-tent-limit-20260829
+2026-10-22T13:45:58.2737848Z  * [new branch]        research/m6-tent-arch-dct-20260829       -> origin/research/m6-tent-arch-dct-20260829
+2026-10-22T13:45:58.2738745Z  * [new branch]        research/m7-tent-zero-tannery-20260829   -> origin/research/m7-tent-zero-tannery-20260829
+2026-10-22T13:45:58.2739500Z  * [new branch]        research/m8-tent-ef-assembly-20260830    -> origin/research/m8-tent-ef-assembly-20260830
+2026-10-22T13:45:58.2740301Z  * [new branch]        research/n-flow-centered-nesting-20260902 -> origin/research/n-flow-centered-nesting-20260902
+2026-10-22T13:45:58.2741101Z  * [new branch]        research/opica-native-followup           -> origin/research/opica-native-followup
+2026-10-22T13:45:58.2741894Z  * [new branch]        research/opica-obstruction-preservation  -> origin/research/opica-obstruction-preservation
+2026-10-22T13:45:58.2742763Z  * [new branch]        research/parity-first-bad-geometry-20260903 -> origin/research/parity-first-bad-geometry-20260903
+2026-10-22T13:45:58.2743528Z  * [new branch]        research/parity-rank-one-20260903        -> origin/research/parity-rank-one-20260903
+2026-10-22T13:45:58.2744371Z  * [new branch]        research/post-f1-control-plane-reset-20260902 -> origin/research/post-f1-control-plane-reset-20260902
+2026-10-22T13:45:58.2745374Z  * [new branch]        research/post189-fb05-joint-selector-separability -> origin/research/post189-fb05-joint-selector-separability
+2026-10-22T13:45:58.2746245Z  * [new branch]        research/post190-fb05-canonical-realizability -> origin/research/post190-fb05-canonical-realizability
+2026-10-22T13:45:58.2747200Z  * [new branch]        research/post192-fb05-q14-parity-trajectory-rigidity -> origin/research/post192-fb05-q14-parity-trajectory-rigidity
+2026-10-22T13:45:58.2748410Z  * [new branch]        research/post194-fb05-q14-parity-trajectory-sharp-enclosure -> origin/research/post194-fb05-q14-parity-trajectory-sharp-enclosure
+2026-10-22T13:45:58.2749414Z  * [new branch]        research/post196-fb05-q14-residual-cell-replay -> origin/research/post196-fb05-q14-residual-cell-replay
+2026-10-22T13:45:58.2750308Z  * [new branch]        research/post198-fb05-q14-parity-source-mechanism -> origin/research/post198-fb05-q14-parity-source-mechanism
+2026-10-22T13:45:58.2751173Z  * [new branch]        research/post200-fb05-q14-discrepancy-mechanism -> origin/research/post200-fb05-q14-discrepancy-mechanism
+2026-10-22T13:45:58.2752066Z  * [new branch]        research/post202-fb05-q14-composite-parity-gap -> origin/research/post202-fb05-q14-composite-parity-gap
+2026-10-22T13:45:58.2753008Z  * [new branch]        research/post204-fb05-pair-d-structural-countermodel -> origin/research/post204-fb05-pair-d-structural-countermodel
+2026-10-22T13:45:58.2753884Z  * [new branch]        research/post214-fb05-kernel-dual-geometry -> origin/research/post214-fb05-kernel-dual-geometry
+2026-10-22T13:45:58.2754727Z  * [new branch]        research/post222-biregular-zero-shift-scalar -> origin/research/post222-biregular-zero-shift-scalar
+2026-10-22T13:45:58.2755481Z  * [new branch]        research/post268-audit-proof-and-ci      -> origin/research/post268-audit-proof-and-ci
+2026-10-22T13:45:58.2756244Z  * [new branch]        research/post272-first-contact-atlas     -> origin/research/post272-first-contact-atlas
+2026-10-22T13:45:58.2756956Z  * [new branch]        research/post274-arch-density-a1         -> origin/research/post274-arch-density-a1
+2026-10-22T13:45:58.2757921Z  * [new branch]        research/post275-small-aperture-ground-spectrum -> origin/research/post275-small-aperture-ground-spectrum
+2026-10-22T13:45:58.2758902Z  * [new branch]        research/post276-ground-sign-strength-audit -> origin/research/post276-ground-sign-strength-audit
+2026-10-22T13:45:58.2759753Z  * [new branch]        research/post277-first-contact-closure-attempt -> origin/research/post277-first-contact-closure-attempt
+2026-10-22T13:45:58.2760664Z  * [new branch]        research/post279-lifted-contact-quotient -> origin/research/post279-lifted-contact-quotient
+2026-10-22T13:45:58.2761563Z  * [new branch]        research/post280-production-saturation-frontier -> origin/research/post280-production-saturation-frontier
+2026-10-22T13:45:58.2762538Z  * [new branch]        research/post281-generated-production-contact -> origin/research/post281-generated-production-contact
+2026-10-22T13:45:58.2763539Z  * [new branch]        research/post287-wp0-wp7-integrated-20261012 -> origin/research/post287-wp0-wp7-integrated-20261012
+2026-10-22T13:45:58.2764389Z  * [new branch]        research/post287-wp0-wp7-single-pr-20261012 -> origin/research/post287-wp0-wp7-single-pr-20261012
+2026-10-22T13:45:58.2765243Z  * [new branch]        research/post288-steps1-3-wp0-wp7        -> origin/research/post288-steps1-3-wp0-wp7
+2026-10-22T13:45:58.2766027Z  * [new branch]        research/post290-step123-output          -> origin/research/post290-step123-output
+2026-10-22T13:45:58.2766810Z  * [new branch]        research/pr247-million-dollar            -> origin/research/pr247-million-dollar
+2026-10-22T13:45:58.2767956Z  * [new branch]        research/r001-two-translate-determinant-x4-20260827 -> origin/research/r001-two-translate-determinant-x4-20260827
+2026-10-22T13:45:58.2769135Z  * [new branch]        research/r001-two-translate-weil-gram-x0-20260825 -> origin/research/r001-two-translate-weil-gram-x0-20260825
+2026-10-22T13:45:58.2770259Z  * [new branch]        research/r001-two-translate-weil-gram-x1-visibility-20260826 -> origin/research/r001-two-translate-weil-gram-x1-visibility-20260826
+2026-10-22T13:45:58.2771274Z  * [new branch]        research/r001-two-translate-weil-gram-x2-20260826 -> origin/research/r001-two-translate-weil-gram-x2-20260826
+2026-10-22T13:45:58.2772203Z  * [new branch]        research/r001-two-translate-weil-gram-x3-20260827 -> origin/research/r001-two-translate-weil-gram-x3-20260827
+2026-10-22T13:45:58.2773118Z  * [new branch]        research/r001-x0-spectrum-postmerge-fix-20260826 -> origin/research/r001-x0-spectrum-postmerge-fix-20260826
+2026-10-22T13:45:58.2774033Z  * [new branch]        research/r001-x45-fixed-test-detector-20260827 -> origin/research/r001-x45-fixed-test-detector-20260827
+2026-10-22T13:45:58.2774998Z  * [new branch]        research/r001-x46-eventual-radius-visibility-20260827 -> origin/research/r001-x46-eventual-radius-visibility-20260827
+2026-10-22T13:45:58.2775840Z  * [new branch]        research/r001-zero-side-theorem          -> origin/research/r001-zero-side-theorem
+2026-10-22T13:45:58.2776622Z  * [new branch]        research/r002-raw-kernel-bridge-20260830 -> origin/research/r002-raw-kernel-bridge-20260830
+2026-10-22T13:45:58.2777381Z  * [new branch]        research/r003-deterministic-rhs          -> origin/research/r003-deterministic-rhs
+2026-10-22T13:45:58.2778298Z  * [new branch]        research/r003-deterministic-rhs-completion -> origin/research/r003-deterministic-rhs-completion
+2026-10-22T13:45:58.2779201Z  * [new branch]        research/r003-dictionary-analytic-control -> origin/research/r003-dictionary-analytic-control
+2026-10-22T13:45:58.2779969Z  * [new branch]        research/r003-dictionary-closure         -> origin/research/r003-dictionary-closure
+2026-10-22T13:45:58.2780743Z  * [new branch]        research/r003-final-closure-20260830     -> origin/research/r003-final-closure-20260830
+2026-10-22T13:45:58.2781480Z  * [new branch]        research/r003-finite-dictionary          -> origin/research/r003-finite-dictionary
+2026-10-22T13:45:58.2782276Z  * [new branch]        research/r003-generic-source-calculus    -> origin/research/r003-generic-source-calculus
+2026-10-22T13:45:58.2783094Z  * [new branch]        research/r003-groskin-normalization-audit -> origin/research/r003-groskin-normalization-audit
+2026-10-22T13:45:58.2783914Z  * [new branch]        research/r003-residual-c2-gluing         -> origin/research/r003-residual-c2-gluing
+2026-10-22T13:45:58.2784692Z  * [new branch]        research/r003-smooth-core-bridge-h0-20260825 -> origin/research/r003-smooth-core-bridge-h0-20260825
+2026-10-22T13:45:58.2785564Z  * [new branch]        research/r003-smooth-core-polarization-h1-20260825 -> origin/research/r003-smooth-core-polarization-h1-20260825
+2026-10-22T13:45:58.2786361Z  * [new branch]        research/r003-tent-transform-decay       -> origin/research/r003-tent-transform-decay
+2026-10-22T13:45:58.2787071Z  * [new branch]        research/r004-exact-displacement         -> origin/research/r004-exact-displacement
+2026-10-22T13:45:58.2787781Z  * [new branch]        research/r004-prolate-commutator         -> origin/research/r004-prolate-commutator
+2026-10-22T13:45:58.2788741Z  * [new branch]        research/r004-prolate-v2                 -> origin/research/r004-prolate-v2
+2026-10-22T13:45:58.2789457Z  * [new branch]        research/rh-closure-parallel-campaign    -> origin/research/rh-closure-parallel-campaign
+2026-10-22T13:45:58.2790268Z  * [new branch]        research/t1m-dictionary-tent-mollifier-20260828 -> origin/research/t1m-dictionary-tent-mollifier-20260828
+2026-10-22T13:45:58.2791109Z  * [new branch]        research/x46-countable-criterion-20260828 -> origin/research/x46-countable-criterion-20260828
+2026-10-22T13:45:58.2791817Z  * [new branch]        rhkg/constitution                        -> origin/rhkg/constitution
+2026-10-22T13:45:58.2792432Z  * [new branch]        rhkg/final-semantic-closure              -> origin/rhkg/final-semantic-closure
+2026-10-22T13:45:58.2793201Z  * [new branch]        rhkg/phase1-census                       -> origin/rhkg/phase1-census
+2026-10-22T13:45:58.2793825Z  * [new branch]        rhkg/phase1-contract-repair              -> origin/rhkg/phase1-contract-repair
+2026-10-22T13:45:58.2794569Z  * [new branch]        rhkg/phase2a-complete-registered-bindings -> origin/rhkg/phase2a-complete-registered-bindings
+2026-10-22T13:45:58.2795351Z  * [new branch]        rhkg/phase2a-promoted-declarations       -> origin/rhkg/phase2a-promoted-declarations
+2026-10-22T13:45:58.2796051Z  * [new branch]        rhkg/phase2b-compiler-dependencies       -> origin/rhkg/phase2b-compiler-dependencies
+2026-10-22T13:45:58.2797016Z  * [new branch]        rhkg/phase2b-extractor-performance-repair -> origin/rhkg/phase2b-extractor-performance-repair
+2026-10-22T13:45:58.2797809Z  * [new branch]        rhkg/phase2b-materialize-and-seal        -> origin/rhkg/phase2b-materialize-and-seal
+2026-10-22T13:45:58.2798776Z  * [new branch]        rhkg/phase2b-seal-static                 -> origin/rhkg/phase2b-seal-static
+2026-10-22T13:45:58.2799477Z  * [new branch]        rhkg/phase2c-dependency-kernel-atlas     -> origin/rhkg/phase2c-dependency-kernel-atlas
+2026-10-22T13:45:58.2800229Z  * [new branch]        rhkg/phase2d-kernel-quotient-frontiers   -> origin/rhkg/phase2d-kernel-quotient-frontiers
+2026-10-22T13:45:58.2801000Z  * [new branch]        rhkg/phase2e-theorem-value-erasure       -> origin/rhkg/phase2e-theorem-value-erasure
+2026-10-22T13:45:58.2801670Z  * [new branch]        rhrc/ffbbp-rhkg-assurance                -> origin/rhrc/ffbbp-rhkg-assurance
+2026-10-22T13:45:58.2802486Z  * [new branch]        rhrc/integration-candidate-exactification -> origin/rhrc/integration-candidate-exactification
+2026-10-22T13:45:58.2803202Z  * [new branch]        rhrc/ool-rhkg-phase-atlas                -> origin/rhrc/ool-rhkg-phase-atlas
+2026-10-22T13:45:58.2803915Z  * [new branch]        theorem/a4r1a-fixed-cell-witness-persistence -> origin/theorem/a4r1a-fixed-cell-witness-persistence
+2026-10-22T13:45:58.2804630Z  * [new branch]        tmp/noop                                 -> origin/tmp/noop
+2026-10-22T13:45:58.2805248Z  * [new branch]        tmp/rhrc-tree-test                       -> origin/tmp/rhrc-tree-test
+2026-10-22T13:45:58.2805866Z  * [new branch]        tmp/rhrc-tree-test2                      -> origin/tmp/rhrc-tree-test2
+2026-10-22T13:45:58.2806461Z  * [new branch]        tmp/rhrc-tree-test3                      -> origin/tmp/rhrc-tree-test3
+2026-10-22T13:45:58.2807054Z  * [new branch]        tmp/rhrc-tree-test4                      -> origin/tmp/rhrc-tree-test4
+2026-10-22T13:45:58.2807657Z  * [new branch]        tmp/rhrc-tree-test5                      -> origin/tmp/rhrc-tree-test5
+2026-10-22T13:45:58.2808308Z  * [new branch]        tmp/rhrc-tree-test6                      -> origin/tmp/rhrc-tree-test6
+2026-10-22T13:45:58.2808928Z  * [new branch]        tmp/rhrc-tree-test7                      -> origin/tmp/rhrc-tree-test7
+2026-10-22T13:45:58.2809518Z  * [new branch]        tmp/rhrc-tree-test8                      -> origin/tmp/rhrc-tree-test8
+2026-10-22T13:45:58.2810089Z  * [new ref]           2735cbb15830808c5e6294c428f857d31ff09219 -> pull/294/merge
+2026-10-22T13:45:58.2811833Z ##[endgroup]
+2026-10-22T13:45:58.2812389Z ##[group]Determining the checkout info
+2026-10-22T13:45:58.2812885Z ##[endgroup]
+2026-10-22T13:45:58.2813289Z [command]/usr/bin/git sparse-checkout disable
+2026-10-22T13:45:58.2814557Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-10-22T13:45:58.2815653Z ##[group]Checking out the ref
+2026-10-22T13:45:58.2816103Z [command]/usr/bin/git checkout --progress --force refs/remotes/pull/294/merge
+2026-10-22T13:45:59.5009345Z Updating files:  59% (1566/2617)
+2026-10-22T13:45:59.8624102Z Updating files:  60% (1571/2617)
+2026-10-22T13:46:00.0349010Z Updating files:  61% (1597/2617)
+2026-10-22T13:46:00.0424812Z Updating files:  62% (1623/2617)
+2026-10-22T13:46:00.0455049Z Updating files:  63% (1649/2617)
+2026-10-22T13:46:00.0462752Z Updating files:  64% (1675/2617)
+2026-10-22T13:46:00.0490918Z Updating files:  65% (1702/2617)
+2026-10-22T13:46:00.0601322Z Updating files:  66% (1728/2617)
+2026-10-22T13:46:00.0606678Z Updating files:  67% (1754/2617)
+2026-10-22T13:46:00.0687430Z Updating files:  68% (1780/2617)
+2026-10-22T13:46:00.0730027Z Updating files:  69% (1806/2617)
+2026-10-22T13:46:00.0755894Z Updating files:  70% (1832/2617)
+2026-10-22T13:46:00.0773668Z Updating files:  71% (1859/2617)
+2026-10-22T13:46:00.0797731Z Updating files:  72% (1885/2617)
+2026-10-22T13:46:00.0856173Z Updating files:  73% (1911/2617)
+2026-10-22T13:46:00.0889262Z Updating files:  74% (1937/2617)
+2026-10-22T13:46:00.0894011Z Updating files:  75% (1963/2617)
+2026-10-22T13:46:00.0899523Z Updating files:  76% (1989/2617)
+2026-10-22T13:46:00.0904761Z Updating files:  77% (2016/2617)
+2026-10-22T13:46:00.0917928Z Updating files:  78% (2042/2617)
+2026-10-22T13:46:00.0968410Z Updating files:  79% (2068/2617)
+2026-10-22T13:46:00.0976197Z Updating files:  80% (2094/2617)
+2026-10-22T13:46:00.0983791Z Updating files:  81% (2120/2617)
+2026-10-22T13:46:00.1005677Z Updating files:  82% (2146/2617)
+2026-10-22T13:46:00.1256944Z Updating files:  83% (2173/2617)
+2026-10-22T13:46:00.1307996Z Updating files:  84% (2199/2617)
+2026-10-22T13:46:00.1321566Z Updating files:  85% (2225/2617)
+2026-10-22T13:46:00.1335808Z Updating files:  86% (2251/2617)
+2026-10-22T13:46:00.1355716Z Updating files:  87% (2277/2617)
+2026-10-22T13:46:00.1370480Z Updating files:  88% (2303/2617)
+2026-10-22T13:46:00.1382842Z Updating files:  89% (2330/2617)
+2026-10-22T13:46:00.1392104Z Updating files:  90% (2356/2617)
+2026-10-22T13:46:00.1400897Z Updating files:  91% (2382/2617)
+2026-10-22T13:46:00.1435428Z Updating files:  92% (2408/2617)
+2026-10-22T13:46:00.1454553Z Updating files:  93% (2434/2617)
+2026-10-22T13:46:00.1473365Z Updating files:  94% (2460/2617)
+2026-10-22T13:46:00.1489322Z Updating files:  95% (2487/2617)
+2026-10-22T13:46:00.1505674Z Updating files:  96% (2513/2617)
+2026-10-22T13:46:00.1524554Z Updating files:  97% (2539/2617)
+2026-10-22T13:46:00.1536331Z Updating files:  98% (2565/2617)
+2026-10-22T13:46:00.1548976Z Updating files:  99% (2591/2617)
+2026-10-22T13:46:00.1549728Z Updating files: 100% (2617/2617)
+2026-10-22T13:46:00.1550519Z Updating files: 100% (2617/2617), done.
+2026-10-22T13:46:00.1587352Z Note: switching to 'refs/remotes/pull/294/merge'.
+2026-10-22T13:46:00.1588021Z 
+2026-10-22T13:46:00.1588771Z You are in 'detached HEAD' state. You can look around, make experimental
+2026-10-22T13:46:00.1589803Z changes and commit them, and you can discard any commits you make in this
+2026-10-22T13:46:00.1590841Z state without impacting any branches by switching back to a branch.
+2026-10-22T13:46:00.1591609Z 
+2026-10-22T13:46:00.1592676Z If you want to create a new branch to retain commits you create, you may
+2026-10-22T13:46:00.1593664Z do so (now or later) by using -c with the switch command. Example:
+2026-10-22T13:46:00.1594319Z 
+2026-10-22T13:46:00.1594595Z   git switch -c <new-branch-name>
+2026-10-22T13:46:00.1595001Z 
+2026-10-22T13:46:00.1595218Z Or undo this operation with:
+2026-10-22T13:46:00.1595612Z 
+2026-10-22T13:46:00.1595888Z   git switch -
+2026-10-22T13:46:00.1596160Z 
+2026-10-22T13:46:00.1597196Z Turn off this advice by setting config variable advice.detachedHead to false
+2026-10-22T13:46:00.1597762Z 
+2026-10-22T13:46:00.1598570Z HEAD is now at 2735cbb1 Merge a77ae60427423e8b6f098596f300c8cecc6392b6 into d53dd70d38b0762af130b1d19b795af259f505f5
+2026-10-22T13:46:00.1654520Z ##[endgroup]
+2026-10-22T13:46:00.1709428Z [command]/usr/bin/git log -1 --format=%H
+2026-10-22T13:46:00.1737659Z 2735cbb15830808c5e6294c428f857d31ff09219
+2026-10-22T13:46:00.1749827Z ##[group]Removing auth
+2026-10-22T13:46:00.1754908Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-22T13:46:00.1785397Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-22T13:46:00.2037066Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-22T13:46:00.2056439Z http.https://github.com/.extraheader
+2026-10-22T13:46:00.2070306Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-10-22T13:46:00.2177262Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-22T13:46:00.2399927Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-22T13:46:00.2427906Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-22T13:46:00.2647752Z ##[endgroup]
+2026-10-22T13:46:00.2909752Z ##[group]Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+2026-10-22T13:46:00.2910268Z with:
+2026-10-22T13:46:00.2910568Z   python-version: 3.14
+2026-10-22T13:46:00.2910899Z   check-latest: false
+2026-10-22T13:46:00.2913422Z   token: ***
+2026-10-22T13:46:00.2913711Z   update-environment: true
+2026-10-22T13:46:00.2914125Z   allow-prereleases: false
+2026-10-22T13:46:00.2914451Z   freethreaded: false
+2026-10-22T13:46:00.2915106Z env:
+2026-10-22T13:46:00.2915415Z   OPICA: research/RHRC/integration/opica
+2026-10-22T13:46:00.2915750Z   PYTHONUTF8: 1
+2026-10-22T13:46:00.2916093Z ##[endgroup]
+2026-10-22T13:46:00.4221578Z ##[group]Installed versions
+2026-10-22T13:46:00.4353624Z (node:2458) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-22T13:46:00.4354725Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-22T13:46:00.4355484Z Successfully set up CPython (3.14.9)
+2026-10-22T13:46:00.4356597Z ##[endgroup]
+2026-10-22T13:46:00.4481419Z ##[group]Run python "$OPICA/check_exact.py" --output /tmp/opica-regression/exact.json
+2026-10-22T13:46:00.4482246Z [36;1mpython "$OPICA/check_exact.py" --output /tmp/opica-regression/exact.json[0m
+2026-10-22T13:46:00.4482917Z [36;1mpython -O "$OPICA/check_exact.py" --output /tmp/opica-regression/exact-optimized.json[0m
+2026-10-22T13:46:00.4533724Z shell: /usr/bin/bash -e {0}
+2026-10-22T13:46:00.4534153Z env:
+2026-10-22T13:46:00.4534540Z   OPICA: research/RHRC/integration/opica
+2026-10-22T13:46:00.4534930Z   PYTHONUTF8: 1
+2026-10-22T13:46:00.4535314Z   pythonLocation: /opt/hostedtoolcache/Python/3.14.9/x64
+2026-10-22T13:46:00.4535898Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.14.9/x64/lib/pkgconfig
+2026-10-22T13:46:00.4536405Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.14.9/x64
+2026-10-22T13:46:00.4536860Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.14.9/x64
+2026-10-22T13:46:00.4537325Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.14.9/x64
+2026-10-22T13:46:00.4537909Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.14.9/x64/lib
+2026-10-22T13:46:00.4538605Z ##[endgroup]
+2026-10-22T13:46:00.8180727Z {
+2026-10-22T13:46:00.8181622Z   "schema": "OPICA_FINITE_EXACT_CHECKS_V1",
+2026-10-22T13:46:00.8182432Z   "status": "PASS",
+2026-10-22T13:46:00.8183595Z   "assertions": 5112,
+2026-10-22T13:46:00.8184312Z   "groups": {
+2026-10-22T13:46:00.8185009Z     "local_residual": 180,
+2026-10-22T13:46:00.8185711Z     "local_completion": 216,
+2026-10-22T13:46:00.8186324Z     "affine_background": 18,
+2026-10-22T13:46:00.8186932Z     "affine_composition": 16,
+2026-10-22T13:46:00.8187339Z     "jet_normalization": 8,
+2026-10-22T13:46:00.8187741Z     "log_comparison": 1250,
+2026-10-22T13:46:00.8188297Z     "scale_comparison": 250,
+2026-10-22T13:46:00.8188706Z     "error_recurrence": 11,
+2026-10-22T13:46:00.8189730Z     "gram_and_projection": 3,
+2026-10-22T13:46:00.8190161Z     "compatibility": 2,
+2026-10-22T13:46:00.8190611Z     "fourier_involution": 2,
+2026-10-22T13:46:00.8191082Z     "divisor_bounds": 2814,
+2026-10-22T13:46:00.8191470Z     "balanced_mask": 4,
+2026-10-22T13:46:00.8192216Z     "fejer_kernel": 338
+2026-10-22T13:46:00.8192670Z   },
+2026-10-22T13:46:00.8193082Z   "fixtures": {
+2026-10-22T13:46:00.8193531Z     "seven_rows": {
+2026-10-22T13:46:00.8193963Z       "consistent_left_null_pairing": "0",
+2026-10-22T13:46:00.8194492Z       "inconsistent_left_null_pairing": "1"
+2026-10-22T13:46:00.8194932Z     },
+2026-10-22T13:46:00.8195409Z     "repeated_prime": {
+2026-10-22T13:46:00.8195801Z       "Y": 10,
+2026-10-22T13:46:00.8196201Z       "Q": 2,
+2026-10-22T13:46:00.8196952Z       "d": 121,
+2026-10-22T13:46:00.8197300Z       "e": 1331,
+2026-10-22T13:46:00.8197690Z       "c2_d": 1,
+2026-10-22T13:46:00.8198031Z       "c2_e": 1,
+2026-10-22T13:46:00.8198576Z       "gcd": 121,
+2026-10-22T13:46:00.8198945Z       "a": 1,
+2026-10-22T13:46:00.8199300Z       "b": 11
+2026-10-22T13:46:00.8199659Z     }
+2026-10-22T13:46:00.8200036Z   },
+2026-10-22T13:46:00.8200413Z   "python": "3.14.9",
+2026-10-22T13:46:00.8201065Z   "checker_sha256": "42a1b29e979a415647b2ad477df4aa8e00b46f1afa52c1748748af4c79aa6985",
+2026-10-22T13:46:00.8202379Z   "authority": "Finite rational/Laurent-polynomial and combinatorial checks only; analytic theorems have written proofs; no Lean or RH proof.",
+2026-10-22T13:46:00.8203702Z   "upstream_checker_sha256": "7e7087814aa6c410790c346fb124321c042a4b18242fe171bda9016b52b7e018",
+2026-10-22T13:46:00.8204543Z   "checked_commit": "2735cbb15830808c5e6294c428f857d31ff09219",
+2026-10-22T13:46:00.8205239Z   "checked_tree": "b1ebc2edbe0c07a486fcb5cae8df742c9e4745ed",
+2026-10-22T13:46:00.8205944Z   "tracked_source_dirty": false
+2026-10-22T13:46:00.8206394Z }
+2026-10-22T13:46:03.4522674Z {
+2026-10-22T13:46:03.4523211Z   "schema": "OPICA_FINITE_EXACT_CHECKS_V1",
+2026-10-22T13:46:03.4523623Z   "status": "PASS",
+2026-10-22T13:46:03.4523985Z   "assertions": 5112,
+2026-10-22T13:46:03.4524326Z   "groups": {
+2026-10-22T13:46:03.4524671Z     "local_residual": 180,
+2026-10-22T13:46:03.4525269Z     "local_completion": 216,
+2026-10-22T13:46:03.4525593Z     "affine_background": 18,
+2026-10-22T13:46:03.4525970Z     "affine_composition": 16,
+2026-10-22T13:46:03.4526312Z     "jet_normalization": 8,
+2026-10-22T13:46:03.4526669Z     "log_comparison": 1250,
+2026-10-22T13:46:03.4527005Z     "scale_comparison": 250,
+2026-10-22T13:46:03.4527327Z     "error_recurrence": 11,
+2026-10-22T13:46:03.4527720Z     "gram_and_projection": 3,
+2026-10-22T13:46:03.4528049Z     "compatibility": 2,
+2026-10-22T13:46:03.4528567Z     "fourier_involution": 2,
+2026-10-22T13:46:03.4528905Z     "divisor_bounds": 2814,
+2026-10-22T13:46:03.4529220Z     "balanced_mask": 4,
+2026-10-22T13:46:03.4529552Z     "fejer_kernel": 338
+2026-10-22T13:46:03.4529838Z   },
+2026-10-22T13:46:03.4530119Z   "fixtures": {
+2026-10-22T13:46:03.4530435Z     "seven_rows": {
+2026-10-22T13:46:03.4530754Z       "consistent_left_null_pairing": "0",
+2026-10-22T13:46:03.4531182Z       "inconsistent_left_null_pairing": "1"
+2026-10-22T13:46:03.4531524Z     },
+2026-10-22T13:46:03.4531823Z     "repeated_prime": {
+2026-10-22T13:46:03.4532155Z       "Y": 10,
+2026-10-22T13:46:03.4532438Z       "Q": 2,
+2026-10-22T13:46:03.4532720Z       "d": 121,
+2026-10-22T13:46:03.4533013Z       "e": 1331,
+2026-10-22T13:46:03.4533324Z       "c2_d": 1,
+2026-10-22T13:46:03.4533608Z       "c2_e": 1,
+2026-10-22T13:46:03.4533884Z       "gcd": 121,
+2026-10-22T13:46:03.4534210Z       "a": 1,
+2026-10-22T13:46:03.4534486Z       "b": 11
+2026-10-22T13:46:03.4534780Z     }
+2026-10-22T13:46:03.4535089Z   },
+2026-10-22T13:46:03.4535370Z   "python": "3.14.9",
+2026-10-22T13:46:03.4535825Z   "checker_sha256": "42a1b29e979a415647b2ad477df4aa8e00b46f1afa52c1748748af4c79aa6985",
+2026-10-22T13:46:03.4536651Z   "authority": "Finite rational/Laurent-polynomial and combinatorial checks only; analytic theorems have written proofs; no Lean or RH proof.",
+2026-10-22T13:46:03.4537476Z   "upstream_checker_sha256": "7e7087814aa6c410790c346fb124321c042a4b18242fe171bda9016b52b7e018",
+2026-10-22T13:46:03.4538093Z   "checked_commit": "2735cbb15830808c5e6294c428f857d31ff09219",
+2026-10-22T13:46:03.4538937Z   "checked_tree": "b1ebc2edbe0c07a486fcb5cae8df742c9e4745ed",
+2026-10-22T13:46:03.4539338Z   "tracked_source_dirty": false
+2026-10-22T13:46:03.4539691Z }
+2026-10-22T13:46:03.4682667Z ##[group]Run python -m unittest discover -s "$OPICA/tests" -p 'test_*.py' -v
+2026-10-22T13:46:03.4683331Z [36;1mpython -m unittest discover -s "$OPICA/tests" -p 'test_*.py' -v[0m
+2026-10-22T13:46:03.4683880Z [36;1mpython -O -m unittest discover -s "$OPICA/tests" -p 'test_*.py' -v[0m
+2026-10-22T13:46:03.4704224Z shell: /usr/bin/bash -e {0}
+2026-10-22T13:46:03.4704546Z env:
+2026-10-22T13:46:03.4704932Z   OPICA: research/RHRC/integration/opica
+2026-10-22T13:46:03.4705287Z   PYTHONUTF8: 1
+2026-10-22T13:46:03.4705704Z   pythonLocation: /opt/hostedtoolcache/Python/3.14.9/x64
+2026-10-22T13:46:03.4706191Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.14.9/x64/lib/pkgconfig
+2026-10-22T13:46:03.4706660Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.14.9/x64
+2026-10-22T13:46:03.4707155Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.14.9/x64
+2026-10-22T13:46:03.4707616Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.14.9/x64
+2026-10-22T13:46:03.4708401Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.14.9/x64/lib
+2026-10-22T13:46:03.4708819Z ##[endgroup]
+2026-10-22T13:46:04.0788338Z test_duplicate_root_rejected (test_contract.ContractMutations.test_duplicate_root_rejected) ... ok
+2026-10-22T13:46:04.0800524Z test_every_new_lean_module_is_in_the_unique_inventory (test_contract.ContractMutations.test_every_new_lean_module_is_in_the_unique_inventory) ... ok
+2026-10-22T13:46:04.0812198Z test_frozen_metadata_consistent (test_contract.ContractMutations.test_frozen_metadata_consistent) ... ok
+2026-10-22T13:46:04.0822508Z test_import_cycle_rejected (test_contract.ContractMutations.test_import_cycle_rejected) ... ok
+2026-10-22T13:46:04.0834108Z test_missing_family_rejected (test_contract.ContractMutations.test_missing_family_rejected) ... ok
+2026-10-22T13:46:07.6621494Z test_missing_files_fail_closed (test_contract.ContractMutations.test_missing_files_fail_closed) ... ok
+2026-10-22T13:46:07.6635158Z test_missing_subclause_root_rejected (test_contract.ContractMutations.test_missing_subclause_root_rejected) ... ok
+2026-10-22T13:46:07.6646495Z test_module_inventory_cannot_duplicate_a_source (test_contract.ContractMutations.test_module_inventory_cannot_duplicate_a_source) ... ok
+2026-10-22T13:46:07.6656100Z test_nested_comment_tokens_are_not_declarations (test_contract.ContractMutations.test_nested_comment_tokens_are_not_declarations) ... ok
+2026-10-22T13:46:07.6665996Z test_placeholder_and_trust_extensions_rejected (test_contract.ContractMutations.test_placeholder_and_trust_extensions_rejected) ... ok
+2026-10-22T13:46:07.6758990Z test_stale_formal_source_identity_rejected (test_contract.ContractMutations.test_stale_formal_source_identity_rejected) ... ok
+2026-10-22T13:46:07.6768683Z test_unterminated_nested_comment_cannot_hide_real_code (test_contract.ContractMutations.test_unterminated_nested_comment_cannot_hide_real_code) ... ok
+2026-10-22T13:46:07.6779149Z test_wrong_module_path_rejected (test_contract.ContractMutations.test_wrong_module_path_rejected) ... ok
+2026-10-22T13:46:08.4682583Z test_41_root_type_table_rejected (test_contract.FollowupSourceBoundProjectionTests.test_41_root_type_table_rejected) ... ok
+2026-10-22T13:46:09.2907292Z test_absent_extension_preserves_historical_view (test_contract.FollowupSourceBoundProjectionTests.test_absent_extension_preserves_historical_view) ... ok
+2026-10-22T13:46:10.0544123Z test_candidate_status_rejected (test_contract.FollowupSourceBoundProjectionTests.test_candidate_status_rejected) ... ok
+2026-10-22T13:46:10.0780575Z test_changed_consumer_rejected (test_contract.FollowupSourceBoundProjectionTests.test_changed_consumer_rejected) ... ok
+2026-10-22T13:46:10.0993264Z test_changed_scope_rejected (test_contract.FollowupSourceBoundProjectionTests.test_changed_scope_rejected) ... ok
+2026-10-22T13:46:10.1204932Z test_changed_source_rejected (test_contract.FollowupSourceBoundProjectionTests.test_changed_source_rejected) ... ok
+2026-10-22T13:46:10.1592216Z test_child_binding_route_rejected_before_projection (test_contract.FollowupSourceBoundProjectionTests.test_child_binding_route_rejected_before_projection) ... ok
+2026-10-22T13:46:10.1902102Z test_child_claim_route_rejected_before_projection (test_contract.FollowupSourceBoundProjectionTests.test_child_claim_route_rejected_before_projection) ... ok
+2026-10-22T13:46:10.2319657Z test_child_dependencies_can_use_only_supplied_immutable_parent_ids (test_contract.FollowupSourceBoundProjectionTests.test_child_dependencies_can_use_only_supplied_immutable_parent_ids) ... ok
+2026-10-22T13:46:10.2540037Z test_child_dependencies_must_be_supplied (test_contract.FollowupSourceBoundProjectionTests.test_child_dependencies_must_be_supplied) ... ok
+2026-10-22T13:46:10.2755607Z test_child_statement_change_cannot_reuse_review_digest (test_contract.FollowupSourceBoundProjectionTests.test_child_statement_change_cannot_reuse_review_digest) ... ok
+2026-10-22T13:46:10.3175320Z test_complete_structural_fixture_is_not_a_compiler_receipt (test_contract.FollowupSourceBoundProjectionTests.test_complete_structural_fixture_is_not_a_compiler_receipt) ... ok
+2026-10-22T13:46:10.3565817Z test_duplicate_child_dependency_rejected (test_contract.FollowupSourceBoundProjectionTests.test_duplicate_child_dependency_rejected) ... ok
+2026-10-22T13:46:10.3791837Z test_duplicate_review_rejected (test_contract.FollowupSourceBoundProjectionTests.test_duplicate_review_rejected) ... ok
+2026-10-22T13:46:10.4080494Z test_empty_and_whitespace_child_statements_rejected (test_contract.FollowupSourceBoundProjectionTests.test_empty_and_whitespace_child_statements_rejected) ... ok
+2026-10-22T13:46:10.4307521Z test_failure_keeps_raw_parent_view_and_empty_allowlist (test_contract.FollowupSourceBoundProjectionTests.test_failure_keeps_raw_parent_view_and_empty_allowlist) ... ok
+2026-10-22T13:46:10.4519051Z test_invalid_type_digest_rejected (test_contract.FollowupSourceBoundProjectionTests.test_invalid_type_digest_rejected) ... ok
+2026-10-22T13:46:10.4736467Z test_malformed_child_dependencies_rejected (test_contract.FollowupSourceBoundProjectionTests.test_malformed_child_dependencies_rejected) ... ok
+2026-10-22T13:46:10.4935535Z test_missing_root_review_rejected (test_contract.FollowupSourceBoundProjectionTests.test_missing_root_review_rejected) ... ok
+2026-10-22T13:46:10.5151044Z test_no_review_object_rejected (test_contract.FollowupSourceBoundProjectionTests.test_no_review_object_rejected) ... ok
+2026-10-22T13:46:10.5366647Z test_other_consumer_surface_rejected (test_contract.FollowupSourceBoundProjectionTests.test_other_consumer_surface_rejected) ... ok
+2026-10-22T13:46:10.5691564Z test_paired_child_routes_do_not_validate_each_other (test_contract.FollowupSourceBoundProjectionTests.test_paired_child_routes_do_not_validate_each_other) ... ok
+2026-10-22T13:46:10.5903692Z test_reordered_review_rejected (test_contract.FollowupSourceBoundProjectionTests.test_reordered_review_rejected) ... ok
+2026-10-22T13:46:10.6187141Z test_self_child_dependency_rejected (test_contract.FollowupSourceBoundProjectionTests.test_self_child_dependency_rejected) ... ok
+2026-10-22T13:46:10.6405988Z test_source_path_escape_rejected (test_contract.FollowupSourceBoundProjectionTests.test_source_path_escape_rejected) ... ok
+2026-10-22T13:46:10.6628467Z test_source_symlink_rejected (test_contract.FollowupSourceBoundProjectionTests.test_source_symlink_rejected) ... ok
+2026-10-22T13:46:10.6842151Z test_stale_type_hash_rejected (test_contract.FollowupSourceBoundProjectionTests.test_stale_type_hash_rejected) ... ok
+2026-10-22T13:46:10.7064443Z test_unknown_child_dependency_rejected (test_contract.FollowupSourceBoundProjectionTests.test_unknown_child_dependency_rejected) ... ok
+2026-10-22T13:46:10.7288554Z test_unproved_status_rejected (test_contract.FollowupSourceBoundProjectionTests.test_unproved_status_rejected) ... ok
+2026-10-22T13:46:10.7672493Z test_v1_review_missing_new_firewall_fields_rejected (test_contract.FollowupSourceBoundProjectionTests.test_v1_review_missing_new_firewall_fields_rejected) ... ok
+2026-10-22T13:46:10.7886006Z test_wrong_binding_source_rejected (test_contract.FollowupSourceBoundProjectionTests.test_wrong_binding_source_rejected) ... ok
+2026-10-22T13:46:10.8083068Z test_wrong_claim_name_rejected (test_contract.FollowupSourceBoundProjectionTests.test_wrong_claim_name_rejected) ... ok
+2026-10-22T13:46:10.8346892Z test_wrong_expected_consumer_rejected (test_contract.FollowupSourceBoundProjectionTests.test_wrong_expected_consumer_rejected) ... ok
+2026-10-22T13:46:10.8350732Z test_adapted_checker_identity_is_separate_from_original_input_anchors (test_contract.FrozenSourceMutations.test_adapted_checker_identity_is_separate_from_original_input_anchors) ... ok
+2026-10-22T13:46:10.8355216Z test_descriptor_omission_cannot_remove_input_from_hash_census (test_contract.FrozenSourceMutations.test_descriptor_omission_cannot_remove_input_from_hash_census) ... ok
+2026-10-22T13:46:10.8359032Z test_duplicate_or_substituted_path_cannot_preserve_inventory_count (test_contract.FrozenSourceMutations.test_duplicate_or_substituted_path_cannot_preserve_inventory_count) ... ok
+2026-10-22T13:46:10.8372687Z test_exact_eight_original_descriptors_are_anchored (test_contract.FrozenSourceMutations.test_exact_eight_original_descriptors_are_anchored) ... ok
+2026-10-22T13:46:10.8376697Z test_paired_data_and_descriptor_hash_swap_cannot_refreeze_input (test_contract.FrozenSourceMutations.test_paired_data_and_descriptor_hash_swap_cannot_refreeze_input) ... ok
+2026-10-22T13:46:10.8378498Z test_claim_and_binding_are_both_source_bound (test_contract.RegistrationMutations.test_claim_and_binding_are_both_source_bound) ... ok
+2026-10-22T13:46:10.8380244Z test_equal_counts_cannot_replace_required_claim_and_binding (test_contract.RegistrationMutations.test_equal_counts_cannot_replace_required_claim_and_binding) ... ok
+2026-10-22T13:46:10.8382046Z test_exact_protected_plus_required_identities (test_contract.RegistrationMutations.test_exact_protected_plus_required_identities) ... ok
+2026-10-22T13:46:10.8383746Z test_missing_binding_never_silently_skipped (test_contract.RegistrationMutations.test_missing_binding_never_silently_skipped) ... ok
+2026-10-22T13:46:10.8385498Z test_new_claim_requires_quantified_statement (test_contract.RegistrationMutations.test_new_claim_requires_quantified_statement) ... ok
+2026-10-22T13:46:10.8387138Z test_new_claim_status_and_cap_remain_exact (test_contract.RegistrationMutations.test_new_claim_status_and_cap_remain_exact) ... ok
+2026-10-22T13:46:10.8388907Z test_new_supporting_claim_cannot_become_route_authority (test_contract.RegistrationMutations.test_new_supporting_claim_cannot_become_route_authority) ... ok
+2026-10-22T13:46:10.8390713Z test_unknown_or_duplicate_registered_dependencies_rejected (test_contract.RegistrationMutations.test_unknown_or_duplicate_registered_dependencies_rejected) ... ok
+2026-10-22T13:46:10.8392357Z test_exact_mapped_compiler_uses_pass (test_contract.ReleaseDependencyMutations.test_exact_mapped_compiler_uses_pass) ... ok
+2026-10-22T13:46:10.8393976Z test_omitted_new_or_old_mapped_root_is_rejected (test_contract.ReleaseDependencyMutations.test_omitted_new_or_old_mapped_root_is_rejected) ... ok
+2026-10-22T13:46:10.8407083Z test_release_receipt_validation_invokes_the_mapping_check (test_contract.ReleaseDependencyMutations.test_release_receipt_validation_invokes_the_mapping_check) ... ok
+2026-10-22T13:46:10.8409115Z test_unrelated_registered_root_cannot_be_added (test_contract.ReleaseDependencyMutations.test_unrelated_registered_root_cannot_be_added) ... ok
+2026-10-22T13:46:10.8423377Z test_complete_receipt_passes_release_body_guard (test_contract.ReleaseEvidenceBoundaryMutations.test_complete_receipt_passes_release_body_guard) ... ok
+2026-10-22T13:46:10.8439073Z test_release_rejects_dag_deletion_or_hidden_premise_under_unchanged_reviewed_digest (test_contract.ReleaseEvidenceBoundaryMutations.test_release_rejects_dag_deletion_or_hidden_premise_under_unchanged_reviewed_digest) ... ok
+2026-10-22T13:46:10.8452851Z test_release_rejects_forged_successful_command_or_log_digest (test_contract.ReleaseEvidenceBoundaryMutations.test_release_rejects_forged_successful_command_or_log_digest) ... ok
+2026-10-22T13:46:10.8476887Z test_release_rejects_omitted_constructor_or_changed_constructor_type (test_contract.ReleaseEvidenceBoundaryMutations.test_release_rejects_omitted_constructor_or_changed_constructor_type) ... ok
+2026-10-22T13:46:10.8486838Z test_release_rejects_wrong_checkout_kind (test_contract.ReleaseEvidenceBoundaryMutations.test_release_rejects_wrong_checkout_kind) ... ok
+2026-10-22T13:46:10.8496627Z test_complete_compiler_evidence_is_checked_at_delta_cli_boundary (test_dependency_delta.DeltaReceiptBoundaryMutations.test_complete_compiler_evidence_is_checked_at_delta_cli_boundary) ... ok
+2026-10-22T13:46:10.8508717Z test_delta_boundary_rejects_extra_axiom_or_fake_export_command (test_dependency_delta.DeltaReceiptBoundaryMutations.test_delta_boundary_rejects_extra_axiom_or_fake_export_command) ... ok
+2026-10-22T13:46:10.8544033Z test_delta_boundary_rejects_missing_constructor_inventory (test_dependency_delta.DeltaReceiptBoundaryMutations.test_delta_boundary_rejects_missing_constructor_inventory) ... ok
+2026-10-22T13:46:10.8555936Z test_delta_boundary_rejects_removed_or_mutated_dag_under_old_digest (test_dependency_delta.DeltaReceiptBoundaryMutations.test_delta_boundary_rejects_removed_or_mutated_dag_under_old_digest) ... ok
+2026-10-22T13:46:10.8565886Z test_delta_repaired_hash_does_not_approve_a_new_hidden_premise (test_dependency_delta.DeltaReceiptBoundaryMutations.test_delta_repaired_hash_does_not_approve_a_new_hidden_premise) ... ok
+2026-10-22T13:46:10.8574323Z test_delta_requires_exact_reviewed_root_digest_inventory (test_dependency_delta.DeltaReceiptBoundaryMutations.test_delta_requires_exact_reviewed_root_digest_inventory) ... ok
+2026-10-22T13:46:10.8589349Z test_delta_source_boundary_checks_actual_parent_identity (test_dependency_delta.DeltaReceiptBoundaryMutations.test_delta_source_boundary_checks_actual_parent_identity) ... ok
+2026-10-22T13:46:10.8592269Z test_duplicate_channel (test_dependency_delta.StructuralDelta.test_duplicate_channel) ... ok
+2026-10-22T13:46:10.8593410Z test_missing_primary_root (test_dependency_delta.StructuralDelta.test_missing_primary_root) ... ok
+2026-10-22T13:46:10.8594699Z test_missing_provenance_channel (test_dependency_delta.StructuralDelta.test_missing_provenance_channel) ... ok
+2026-10-22T13:46:10.8596210Z test_missing_public_dependency_expansion_rejected (test_dependency_delta.StructuralDelta.test_missing_public_dependency_expansion_rejected) ... ok
+2026-10-22T13:46:10.8597625Z test_old_dependency_drift (test_dependency_delta.StructuralDelta.test_old_dependency_drift) ... ok
+2026-10-22T13:46:10.8599244Z test_reachable_helper_cannot_omit_all_provenance_channels (test_dependency_delta.StructuralDelta.test_reachable_helper_cannot_omit_all_provenance_channels) ... ok
+2026-10-22T13:46:10.8600718Z test_sharing_is_not_equivalence (test_dependency_delta.StructuralDelta.test_sharing_is_not_equivalence) ... ok
+2026-10-22T13:46:10.8604840Z test_stale_receipt_head_or_tree_rejected_at_cli_boundary (test_dependency_delta.StructuralDelta.test_stale_receipt_head_or_tree_rejected_at_cli_boundary) ... ok
+2026-10-22T13:46:10.8606151Z test_unverified_receipt (test_dependency_delta.StructuralDelta.test_unverified_receipt) ... ok
+2026-10-22T13:46:10.9216910Z test_all_historical_classifications_and_config_fields_unchanged (test_file_classes.FileClasses.test_all_historical_classifications_and_config_fields_unchanged) ... ok
+2026-10-22T13:46:10.9222938Z test_all_mathematical_and_audit_modules_have_exact_trust (test_file_classes.FileClasses.test_all_mathematical_and_audit_modules_have_exact_trust) ... ok
+2026-10-22T13:46:10.9726484Z test_changed_generic_rule_cannot_reclassify_historical_paths (test_file_classes.FileClasses.test_changed_generic_rule_cannot_reclassify_historical_paths) ... ok
+2026-10-22T13:46:10.9736165Z test_every_new_path_is_classified (test_file_classes.FileClasses.test_every_new_path_is_classified) ... ok
+2026-10-22T13:46:11.0237433Z test_extra_or_wrong_new_role_is_rejected (test_file_classes.FileClasses.test_extra_or_wrong_new_role_is_rejected) ... ok
+2026-10-22T13:46:11.0241440Z test_frozen_manifest_native_semantic_roles_remain_required (test_file_classes.FileClasses.test_frozen_manifest_native_semantic_roles_remain_required) ... ok
+2026-10-22T13:46:11.0242610Z test_generic_zeta_rule_cannot_capture_validation (test_file_classes.FileClasses.test_generic_zeta_rule_cannot_capture_validation) ... ok
+2026-10-22T13:46:11.0243570Z test_historical_archived_lean_stays_fixture (test_file_classes.FileClasses.test_historical_archived_lean_stays_fixture) ... ok
+2026-10-22T13:46:11.0737956Z test_historical_rule_objects_and_order_preserved (test_file_classes.FileClasses.test_historical_rule_objects_and_order_preserved) ... ok
+2026-10-22T13:46:11.1235244Z test_native_adapters_cannot_reenter_frozen_legacy_candidate_population (test_file_classes.FileClasses.test_native_adapters_cannot_reenter_frozen_legacy_candidate_population) ... ok
+2026-10-22T13:46:11.1256103Z test_native_file_refinement_cannot_be_undocumented_or_broadened (test_file_classes.FileClasses.test_native_file_refinement_cannot_be_undocumented_or_broadened) ... ok
+2026-10-22T13:46:11.2266132Z test_old_standalone_role_cannot_be_changed_or_removed (test_file_classes.FileClasses.test_old_standalone_role_cannot_be_changed_or_removed) ... ok
+2026-10-22T13:46:11.2766014Z test_only_three_exact_rule_insertions_are_allowed (test_file_classes.FileClasses.test_only_three_exact_rule_insertions_are_allowed) ... ok
+2026-10-22T13:46:11.3258995Z test_semantic_policy_cannot_be_changed_while_roles_are_appended (test_file_classes.FileClasses.test_semantic_policy_cannot_be_changed_while_roles_are_appended) ... ok
+2026-10-22T13:46:11.3263906Z test_source_register_cannot_authorize_a_third_role_override (test_file_classes.FileClasses.test_source_register_cannot_authorize_a_third_role_override) ... ok
+2026-10-22T13:46:11.3871391Z test_all_original_source_bytes_and_registry_objects (test_no_scope_promotion.ProtectedHistory.test_all_original_source_bytes_and_registry_objects) ... ok
+2026-10-22T13:46:11.3876271Z test_duplicate_registry_identity_rejected (test_no_scope_promotion.ProtectedHistory.test_duplicate_registry_identity_rejected) ... ok
+2026-10-22T13:46:11.3881584Z test_historical_object_mutation_rejected (test_no_scope_promotion.ProtectedHistory.test_historical_object_mutation_rejected) ... ok
+2026-10-22T13:46:11.3890665Z test_physical_utf8_log_bytes_match_recorded_digest_on_every_platform (test_receipt.CompilerLogBytes.test_physical_utf8_log_bytes_match_recorded_digest_on_every_platform) ... ok
+2026-10-22T13:46:11.3892172Z test_ambiguous_candidate (test_receipt.ReceiptMutations.test_ambiguous_candidate) ... ok
+2026-10-22T13:46:11.3895408Z test_complete_fixture (test_receipt.ReceiptMutations.test_complete_fixture) ... ok
+2026-10-22T13:46:11.3901401Z test_constructor_family_is_bound_to_structural_provenance (test_receipt.ReceiptMutations.test_constructor_family_is_bound_to_structural_provenance) ... ok
+2026-10-22T13:46:11.3903147Z test_duplicate_dependency_metadata_rejected (test_receipt.ReceiptMutations.test_duplicate_dependency_metadata_rejected) ... ok
+2026-10-22T13:46:11.3904322Z test_duplicate_root (test_receipt.ReceiptMutations.test_duplicate_root) ... ok
+2026-10-22T13:46:11.3907154Z test_external_boundary_cannot_be_expanded (test_receipt.ReceiptMutations.test_external_boundary_cannot_be_expanded) ... ok
+2026-10-22T13:46:11.3909055Z test_external_constant_is_unexpanded_boundary (test_receipt.ReceiptMutations.test_external_constant_is_unexpanded_boundary) ... ok
+2026-10-22T13:46:11.3910536Z test_extra_axiom (test_receipt.ReceiptMutations.test_extra_axiom) ... ok
+2026-10-22T13:46:11.3912680Z test_fake_public_count (test_receipt.ReceiptMutations.test_fake_public_count) ... ok
+2026-10-22T13:46:11.3914373Z test_generated_congruence_cannot_bypass_axiom_audit (test_receipt.ReceiptMutations.test_generated_congruence_cannot_bypass_axiom_audit) ... ok
+2026-10-22T13:46:11.3916029Z test_generated_congruence_cannot_replace_primary_namespace (test_receipt.ReceiptMutations.test_generated_congruence_cannot_replace_primary_namespace) ... ok
+2026-10-22T13:46:11.3919489Z test_generated_congruence_public_metadata_stays_source_bound (test_receipt.ReceiptMutations.test_generated_congruence_public_metadata_stays_source_bound) ... ok
+2026-10-22T13:46:11.3924311Z test_generated_congruence_requires_exact_mathematical_module_ownership (test_receipt.ReceiptMutations.test_generated_congruence_requires_exact_mathematical_module_ownership) ... ok
+2026-10-22T13:46:11.3928482Z test_generated_congruence_requires_theorem_kind (test_receipt.ReceiptMutations.test_generated_congruence_requires_theorem_kind) ... ok
+2026-10-22T13:46:11.3932331Z test_generated_congruence_suffix_is_exact (test_receipt.ReceiptMutations.test_generated_congruence_suffix_is_exact) ... ok
+2026-10-22T13:46:11.3936329Z test_generated_constructor_congruence_is_enumerated_and_audited (test_receipt.ReceiptMutations.test_generated_constructor_congruence_is_enumerated_and_audited) ... ok
+2026-10-22T13:46:11.3938547Z test_generated_foreign_name_still_requires_all_project_channels (test_receipt.ReceiptMutations.test_generated_foreign_name_still_requires_all_project_channels) ... ok
+2026-10-22T13:46:11.3940931Z test_hidden_typeclass_premise_changes_reviewed_type (test_receipt.ReceiptMutations.test_hidden_typeclass_premise_changes_reviewed_type) ... ok
+2026-10-22T13:46:11.3942562Z test_malformed_protocol_marker_rejected (test_receipt.ReceiptMutations.test_malformed_protocol_marker_rejected) ... ok
+2026-10-22T13:46:11.3943828Z test_missing_root (test_receipt.ReceiptMutations.test_missing_root) ... ok
+2026-10-22T13:46:11.3948025Z test_missing_structure_channel (test_receipt.ReceiptMutations.test_missing_structure_channel) ... ok
+2026-10-22T13:46:11.3949153Z test_missing_terminating_record (test_receipt.ReceiptMutations.test_missing_terminating_record) ... ok
+2026-10-22T13:46:11.3950144Z test_native_evaluation_trust_extension (test_receipt.ReceiptMutations.test_native_evaluation_trust_extension) ... ok
+2026-10-22T13:46:11.3951248Z test_one_missing_project_helper_channel_rejected (test_receipt.ReceiptMutations.test_one_missing_project_helper_channel_rejected) ... ok
+2026-10-22T13:46:11.3952260Z test_public_dependency_metadata_is_source_bound (test_receipt.ReceiptMutations.test_public_dependency_metadata_is_source_bound) ... ok
+2026-10-22T13:46:11.3953650Z test_reachable_private_project_helper_has_all_channels (test_receipt.ReceiptMutations.test_reachable_private_project_helper_has_all_channels) ... ok
+2026-10-22T13:46:11.3955167Z test_reachable_project_helper_cannot_omit_entire_expansion (test_receipt.ReceiptMutations.test_reachable_project_helper_cannot_omit_entire_expansion) ... ok
+2026-10-22T13:46:11.3956513Z test_record_after_termination (test_receipt.ReceiptMutations.test_record_after_termination) ... ok
+2026-10-22T13:46:11.3957554Z test_truncated_dag (test_receipt.ReceiptMutations.test_truncated_dag) ... ok
+2026-10-22T13:46:11.3959375Z test_unknown_public_module_is_rejected_even_in_opica_namespace (test_receipt.ReceiptMutations.test_unknown_public_module_is_rejected_even_in_opica_namespace) ... ok
+2026-10-22T13:46:11.3961344Z test_unreachable_helper_is_not_part_of_root_closure (test_receipt.ReceiptMutations.test_unreachable_helper_is_not_part_of_root_closure) ... ok
+2026-10-22T13:46:11.3962549Z test_wrong_kind (test_receipt.ReceiptMutations.test_wrong_kind) ... ok
+2026-10-22T13:46:11.3964072Z test_wrong_module (test_receipt.ReceiptMutations.test_wrong_module) ... ok
+2026-10-22T13:46:11.3965913Z test_cycles_never_create_a_self_dependency (test_receipt.RegisteredDependencyMapping.test_cycles_never_create_a_self_dependency) ... ok
+2026-10-22T13:46:11.3967195Z test_duplicate_registered_identity_cannot_change_mapping (test_receipt.RegisteredDependencyMapping.test_duplicate_registered_identity_cannot_change_mapping) ... ok
+2026-10-22T13:46:11.3969544Z test_maps_new_and_old_registered_roots_through_all_channels (test_receipt.RegisteredDependencyMapping.test_maps_new_and_old_registered_roots_through_all_channels) ... ok
+2026-10-22T13:46:11.3971807Z test_missing_provenance_channel_is_rejected (test_receipt.RegisteredDependencyMapping.test_missing_provenance_channel_is_rejected) ... ok
+2026-10-22T13:46:11.3973691Z test_reachable_registered_root_cannot_be_an_unexpanded_boundary (test_receipt.RegisteredDependencyMapping.test_reachable_registered_root_cannot_be_an_unexpanded_boundary) ... ok
+2026-10-22T13:46:11.3975808Z test_unrelated_registered_root_is_not_inferred_from_shared_uses (test_receipt.RegisteredDependencyMapping.test_unrelated_registered_root_is_not_inferred_from_shared_uses) ... ok
+2026-10-22T13:46:11.3983880Z test_changed_hidden_premise_cannot_reuse_old_digest (test_receipt.SharedReceiptMutations.test_changed_hidden_premise_cannot_reuse_old_digest) ... ok
+2026-10-22T13:46:11.4010103Z test_command_inventory_log_identity_and_digest_are_required (test_receipt.SharedReceiptMutations.test_command_inventory_log_identity_and_digest_are_required) ... ok
+2026-10-22T13:46:11.4020586Z test_constructor_dag_must_match_public_full_type (test_receipt.SharedReceiptMutations.test_constructor_dag_must_match_public_full_type) ... ok
+2026-10-22T13:46:11.4029770Z test_constructor_family_must_be_inductive (test_receipt.SharedReceiptMutations.test_constructor_family_must_be_inductive) ... ok
+2026-10-22T13:46:11.4040954Z test_constructor_structural_family_links_are_required (test_receipt.SharedReceiptMutations.test_constructor_structural_family_links_are_required) ... ok
+2026-10-22T13:46:11.4048032Z test_dag_metrics_cannot_be_edited_independently (test_receipt.SharedReceiptMutations.test_dag_metrics_cannot_be_edited_independently) ... ok
+2026-10-22T13:46:11.4056007Z test_deleting_public_record_cannot_hide_existing_public_metadata (test_receipt.SharedReceiptMutations.test_deleting_public_record_cannot_hide_existing_public_metadata) ... ok
+2026-10-22T13:46:11.4063150Z test_every_public_helper_digest_is_recomputed (test_receipt.SharedReceiptMutations.test_every_public_helper_digest_is_recomputed) ... ok
+2026-10-22T13:46:11.4085874Z test_exact_build_targets_and_fresh_export_commands_are_required (test_receipt.SharedReceiptMutations.test_exact_build_targets_and_fresh_export_commands_are_required) ... ok
+2026-10-22T13:46:11.4093191Z test_foreign_constructor_entry_cannot_be_invented (test_receipt.SharedReceiptMutations.test_foreign_constructor_entry_cannot_be_invented) ... ok
+2026-10-22T13:46:11.4099842Z test_full_valid_receipt_passes_shared_validation (test_receipt.SharedReceiptMutations.test_full_valid_receipt_passes_shared_validation) ... ok
+2026-10-22T13:46:11.4106626Z test_malformed_dag_rejected_even_with_recomputed_digest (test_receipt.SharedReceiptMutations.test_malformed_dag_rejected_even_with_recomputed_digest) ... ok
+2026-10-22T13:46:11.4115424Z test_missing_constructor_inventory_or_member_rejected (test_receipt.SharedReceiptMutations.test_missing_constructor_inventory_or_member_rejected) ... ok
+2026-10-22T13:46:11.4121570Z test_missing_public_dag_cannot_hide_behind_reviewed_digest (test_receipt.SharedReceiptMutations.test_missing_public_dag_cannot_hide_behind_reviewed_digest) ... ok
+2026-10-22T13:46:11.4128679Z test_nonfinite_negative_or_nonnumeric_timing_is_rejected (test_receipt.SharedReceiptMutations.test_nonfinite_negative_or_nonnumeric_timing_is_rejected) ... ok
+2026-10-22T13:46:11.4135414Z test_normal_parent_commit_cannot_be_labeled_synthetic_merge (test_receipt.SharedReceiptMutations.test_normal_parent_commit_cannot_be_labeled_synthetic_merge) ... ok
+2026-10-22T13:46:11.4167324Z test_public_helpers_remain_namespace_module_kind_and_axiom_checked (test_receipt.SharedReceiptMutations.test_public_helpers_remain_namespace_module_kind_and_axiom_checked) ... ok
+2026-10-22T13:46:11.4174348Z test_repaired_primary_dag_hash_still_must_match_reviewed_type (test_receipt.SharedReceiptMutations.test_repaired_primary_dag_hash_still_must_match_reviewed_type) ... ok
+2026-10-22T13:46:11.4180470Z test_requested_head_is_actual_checked_head_or_direct_parent (test_receipt.SharedReceiptMutations.test_requested_head_is_actual_checked_head_or_direct_parent) ... ok
+2026-10-22T13:46:11.4186622Z test_requested_head_syntax_and_checkout_label_are_required (test_receipt.SharedReceiptMutations.test_requested_head_syntax_and_checkout_label_are_required) ... ok
+2026-10-22T13:46:11.4195251Z test_unicode_type_hash_uses_utf8_without_ascii_escaping (test_receipt.SharedReceiptMutations.test_unicode_type_hash_uses_utf8_without_ascii_escaping) ... ok
+2026-10-22T13:46:11.4203545Z test_valid_constructor_inventory_passes (test_receipt.SharedReceiptMutations.test_valid_constructor_inventory_passes) ... ok
+2026-10-22T13:46:11.4210035Z test_wrong_runtime_pin_is_rejected (test_receipt.SharedReceiptMutations.test_wrong_runtime_pin_is_rejected) ... ok
+2026-10-22T13:46:11.4212101Z test_cancelled_run (test_workflow_harvest.WorkflowMutations.test_cancelled_run) ... ok
+2026-10-22T13:46:11.4213249Z test_complete_success (test_workflow_harvest.WorkflowMutations.test_complete_success) ... ok
+2026-10-22T13:46:11.4216651Z test_current_checkout_and_merge_git_objects_accept (test_workflow_harvest.WorkflowMutations.test_current_checkout_and_merge_git_objects_accept) ... ok
+2026-10-22T13:46:11.4217903Z test_duplicate_run_identity (test_workflow_harvest.WorkflowMutations.test_duplicate_run_identity) ... ok
+2026-10-22T13:46:11.4219226Z test_explicit_event_and_head_selectors_accept_exact_scope (test_workflow_harvest.WorkflowMutations.test_explicit_event_and_head_selectors_accept_exact_scope) ... ok
+2026-10-22T13:46:11.4220448Z test_failed_attached_check (test_workflow_harvest.WorkflowMutations.test_failed_attached_check) ... ok
+2026-10-22T13:46:11.4221571Z test_foreign_head (test_workflow_harvest.WorkflowMutations.test_foreign_head) ... ok
+2026-10-22T13:46:11.4222418Z test_foreign_tree (test_workflow_harvest.WorkflowMutations.test_foreign_tree) ... ok
+2026-10-22T13:46:11.4223473Z test_incomplete_pagination (test_workflow_harvest.WorkflowMutations.test_incomplete_pagination) ... ok
+2026-10-22T13:46:11.4224578Z test_job_event_cannot_disagree_with_its_run (test_workflow_harvest.WorkflowMutations.test_job_event_cannot_disagree_with_its_run) ... ok
+2026-10-22T13:46:11.4226066Z test_latest_failed_rerun_does_not_choose_old_success (test_workflow_harvest.WorkflowMutations.test_latest_failed_rerun_does_not_choose_old_success) ... ok
+2026-10-22T13:46:11.4227457Z test_merge_jobs_cannot_satisfy_required_head_scope (test_workflow_harvest.WorkflowMutations.test_merge_jobs_cannot_satisfy_required_head_scope) ... ok
+2026-10-22T13:46:11.4228465Z test_missing_attempt (test_workflow_harvest.WorkflowMutations.test_missing_attempt) ... ok
+2026-10-22T13:46:11.4229653Z test_normal_one_parent_commit_cannot_be_a_synthetic_merge (test_workflow_harvest.WorkflowMutations.test_normal_one_parent_commit_cannot_be_a_synthetic_merge) ... ok
+2026-10-22T13:46:11.4230967Z test_partial_rerun_retains_failed_history (test_workflow_harvest.WorkflowMutations.test_partial_rerun_retains_failed_history) ... ok
+2026-10-22T13:46:11.4233368Z test_provider_tree_map_cannot_override_real_git_tree (test_workflow_harvest.WorkflowMutations.test_provider_tree_map_cannot_override_real_git_tree) ... ok
+2026-10-22T13:46:11.4234650Z test_push_jobs_cannot_satisfy_required_pr_event (test_workflow_harvest.WorkflowMutations.test_push_jobs_cannot_satisfy_required_pr_event) ... ok
+2026-10-22T13:46:11.4237926Z test_real_synthetic_merge_parents_required (test_workflow_harvest.WorkflowMutations.test_real_synthetic_merge_parents_required) ... ok
+2026-10-22T13:46:11.4239440Z test_running_required_job (test_workflow_harvest.WorkflowMutations.test_running_required_job) ... ok
+2026-10-22T13:46:11.4243158Z test_self_consistent_foreign_harvest_rejected_at_cli_boundary (test_workflow_harvest.WorkflowMutations.test_self_consistent_foreign_harvest_rejected_at_cli_boundary) ... ok
+2026-10-22T13:46:11.4244411Z test_skipped_new_job (test_workflow_harvest.WorkflowMutations.test_skipped_new_job) ... ok
+2026-10-22T13:46:11.4245446Z test_stale_synthetic_merge (test_workflow_harvest.WorkflowMutations.test_stale_synthetic_merge) ... ok
+2026-10-22T13:46:11.4246171Z 
+2026-10-22T13:46:11.4246627Z ----------------------------------------------------------------------
+2026-10-22T13:46:11.4247130Z Ran 187 tests in 7.347s
+2026-10-22T13:46:11.4247287Z 
+2026-10-22T13:46:11.4247557Z OK
+2026-10-22T13:46:12.7140665Z test_duplicate_root_rejected (test_contract.ContractMutations.test_duplicate_root_rejected) ... ok
+2026-10-22T13:46:12.7150732Z test_every_new_lean_module_is_in_the_unique_inventory (test_contract.ContractMutations.test_every_new_lean_module_is_in_the_unique_inventory) ... ok
+2026-10-22T13:46:12.7161793Z test_frozen_metadata_consistent (test_contract.ContractMutations.test_frozen_metadata_consistent) ... ok
+2026-10-22T13:46:12.7170903Z test_import_cycle_rejected (test_contract.ContractMutations.test_import_cycle_rejected) ... ok
+2026-10-22T13:46:12.7182086Z test_missing_family_rejected (test_contract.ContractMutations.test_missing_family_rejected) ... ok
+2026-10-22T13:46:16.3558556Z test_missing_files_fail_closed (test_contract.ContractMutations.test_missing_files_fail_closed) ... ok
+2026-10-22T13:46:16.3571086Z test_missing_subclause_root_rejected (test_contract.ContractMutations.test_missing_subclause_root_rejected) ... ok
+2026-10-22T13:46:16.3582319Z test_module_inventory_cannot_duplicate_a_source (test_contract.ContractMutations.test_module_inventory_cannot_duplicate_a_source) ... ok
+2026-10-22T13:46:16.3591448Z test_nested_comment_tokens_are_not_declarations (test_contract.ContractMutations.test_nested_comment_tokens_are_not_declarations) ... ok
+2026-10-22T13:46:16.3601206Z test_placeholder_and_trust_extensions_rejected (test_contract.ContractMutations.test_placeholder_and_trust_extensions_rejected) ... ok
+2026-10-22T13:46:16.3687545Z test_stale_formal_source_identity_rejected (test_contract.ContractMutations.test_stale_formal_source_identity_rejected) ... ok
+2026-10-22T13:46:16.3698348Z test_unterminated_nested_comment_cannot_hide_real_code (test_contract.ContractMutations.test_unterminated_nested_comment_cannot_hide_real_code) ... ok
+2026-10-22T13:46:16.3709580Z test_wrong_module_path_rejected (test_contract.ContractMutations.test_wrong_module_path_rejected) ... ok
+2026-10-22T13:46:16.3958791Z test_41_root_type_table_rejected (test_contract.FollowupSourceBoundProjectionTests.test_41_root_type_table_rejected) ... ok
+2026-10-22T13:46:16.4196770Z test_absent_extension_preserves_historical_view (test_contract.FollowupSourceBoundProjectionTests.test_absent_extension_preserves_historical_view) ... ok
+2026-10-22T13:46:16.4418822Z test_candidate_status_rejected (test_contract.FollowupSourceBoundProjectionTests.test_candidate_status_rejected) ... ok
+2026-10-22T13:46:16.4644996Z test_changed_consumer_rejected (test_contract.FollowupSourceBoundProjectionTests.test_changed_consumer_rejected) ... ok
+2026-10-22T13:46:16.4871763Z test_changed_scope_rejected (test_contract.FollowupSourceBoundProjectionTests.test_changed_scope_rejected) ... ok
+2026-10-22T13:46:16.5224273Z test_changed_source_rejected (test_contract.FollowupSourceBoundProjectionTests.test_changed_source_rejected) ... ok
+2026-10-22T13:46:16.5570745Z test_child_binding_route_rejected_before_projection (test_contract.FollowupSourceBoundProjectionTests.test_child_binding_route_rejected_before_projection) ... ok
+2026-10-22T13:46:16.5833073Z test_child_claim_route_rejected_before_projection (test_contract.FollowupSourceBoundProjectionTests.test_child_claim_route_rejected_before_projection) ... ok
+2026-10-22T13:46:16.6241045Z test_child_dependencies_can_use_only_supplied_immutable_parent_ids (test_contract.FollowupSourceBoundProjectionTests.test_child_dependencies_can_use_only_supplied_immutable_parent_ids) ... ok
+2026-10-22T13:46:16.6477750Z test_child_dependencies_must_be_supplied (test_contract.FollowupSourceBoundProjectionTests.test_child_dependencies_must_be_supplied) ... ok
+2026-10-22T13:46:16.6673505Z test_child_statement_change_cannot_reuse_review_digest (test_contract.FollowupSourceBoundProjectionTests.test_child_statement_change_cannot_reuse_review_digest) ... ok
+2026-10-22T13:46:16.7072479Z test_complete_structural_fixture_is_not_a_compiler_receipt (test_contract.FollowupSourceBoundProjectionTests.test_complete_structural_fixture_is_not_a_compiler_receipt) ... ok
+2026-10-22T13:46:16.7354381Z test_duplicate_child_dependency_rejected (test_contract.FollowupSourceBoundProjectionTests.test_duplicate_child_dependency_rejected) ... ok
+2026-10-22T13:46:16.7555784Z test_duplicate_review_rejected (test_contract.FollowupSourceBoundProjectionTests.test_duplicate_review_rejected) ... ok
+2026-10-22T13:46:16.7762011Z test_empty_and_whitespace_child_statements_rejected (test_contract.FollowupSourceBoundProjectionTests.test_empty_and_whitespace_child_statements_rejected) ... ok
+2026-10-22T13:46:16.8024604Z test_failure_keeps_raw_parent_view_and_empty_allowlist (test_contract.FollowupSourceBoundProjectionTests.test_failure_keeps_raw_parent_view_and_empty_allowlist) ... ok
+2026-10-22T13:46:16.8254570Z test_invalid_type_digest_rejected (test_contract.FollowupSourceBoundProjectionTests.test_invalid_type_digest_rejected) ... ok
+2026-10-22T13:46:16.8493245Z test_malformed_child_dependencies_rejected (test_contract.FollowupSourceBoundProjectionTests.test_malformed_child_dependencies_rejected) ... ok
+2026-10-22T13:46:16.8722947Z test_missing_root_review_rejected (test_contract.FollowupSourceBoundProjectionTests.test_missing_root_review_rejected) ... ok
+2026-10-22T13:46:16.8950840Z test_no_review_object_rejected (test_contract.FollowupSourceBoundProjectionTests.test_no_review_object_rejected) ... ok
+2026-10-22T13:46:16.9326065Z test_other_consumer_surface_rejected (test_contract.FollowupSourceBoundProjectionTests.test_other_consumer_surface_rejected) ... ok
+2026-10-22T13:46:16.9554184Z test_paired_child_routes_do_not_validate_each_other (test_contract.FollowupSourceBoundProjectionTests.test_paired_child_routes_do_not_validate_each_other) ... ok
+2026-10-22T13:46:16.9789669Z test_reordered_review_rejected (test_contract.FollowupSourceBoundProjectionTests.test_reordered_review_rejected) ... ok
+2026-10-22T13:46:17.0030116Z test_self_child_dependency_rejected (test_contract.FollowupSourceBoundProjectionTests.test_self_child_dependency_rejected) ... ok
+2026-10-22T13:46:17.0332022Z test_source_path_escape_rejected (test_contract.FollowupSourceBoundProjectionTests.test_source_path_escape_rejected) ... ok
+2026-10-22T13:46:17.0556876Z test_source_symlink_rejected (test_contract.FollowupSourceBoundProjectionTests.test_source_symlink_rejected) ... ok
+2026-10-22T13:46:17.0779601Z test_stale_type_hash_rejected (test_contract.FollowupSourceBoundProjectionTests.test_stale_type_hash_rejected) ... ok
+2026-10-22T13:46:17.1007220Z test_unknown_child_dependency_rejected (test_contract.FollowupSourceBoundProjectionTests.test_unknown_child_dependency_rejected) ... ok
+2026-10-22T13:46:17.1362493Z test_unproved_status_rejected (test_contract.FollowupSourceBoundProjectionTests.test_unproved_status_rejected) ... ok
+2026-10-22T13:46:17.1573721Z test_v1_review_missing_new_firewall_fields_rejected (test_contract.FollowupSourceBoundProjectionTests.test_v1_review_missing_new_firewall_fields_rejected) ... ok
+2026-10-22T13:46:17.1800508Z test_wrong_binding_source_rejected (test_contract.FollowupSourceBoundProjectionTests.test_wrong_binding_source_rejected) ... ok
+2026-10-22T13:46:17.2018881Z test_wrong_claim_name_rejected (test_contract.FollowupSourceBoundProjectionTests.test_wrong_claim_name_rejected) ... ok
+2026-10-22T13:46:17.2252147Z test_wrong_expected_consumer_rejected (test_contract.FollowupSourceBoundProjectionTests.test_wrong_expected_consumer_rejected) ... ok
+2026-10-22T13:46:17.2255427Z test_adapted_checker_identity_is_separate_from_original_input_anchors (test_contract.FrozenSourceMutations.test_adapted_checker_identity_is_separate_from_original_input_anchors) ... ok
+2026-10-22T13:46:17.2260188Z test_descriptor_omission_cannot_remove_input_from_hash_census (test_contract.FrozenSourceMutations.test_descriptor_omission_cannot_remove_input_from_hash_census) ... ok
+2026-10-22T13:46:17.2263796Z test_duplicate_or_substituted_path_cannot_preserve_inventory_count (test_contract.FrozenSourceMutations.test_duplicate_or_substituted_path_cannot_preserve_inventory_count) ... ok
+2026-10-22T13:46:17.2277771Z test_exact_eight_original_descriptors_are_anchored (test_contract.FrozenSourceMutations.test_exact_eight_original_descriptors_are_anchored) ... ok
+2026-10-22T13:46:17.2281814Z test_paired_data_and_descriptor_hash_swap_cannot_refreeze_input (test_contract.FrozenSourceMutations.test_paired_data_and_descriptor_hash_swap_cannot_refreeze_input) ... ok
+2026-10-22T13:46:17.2283716Z test_claim_and_binding_are_both_source_bound (test_contract.RegistrationMutations.test_claim_and_binding_are_both_source_bound) ... ok
+2026-10-22T13:46:17.2288868Z test_equal_counts_cannot_replace_required_claim_and_binding (test_contract.RegistrationMutations.test_equal_counts_cannot_replace_required_claim_and_binding) ... ok
+2026-10-22T13:46:17.2290770Z test_exact_protected_plus_required_identities (test_contract.RegistrationMutations.test_exact_protected_plus_required_identities) ... ok
+2026-10-22T13:46:17.2292797Z test_missing_binding_never_silently_skipped (test_contract.RegistrationMutations.test_missing_binding_never_silently_skipped) ... ok
+2026-10-22T13:46:17.2294258Z test_new_claim_requires_quantified_statement (test_contract.RegistrationMutations.test_new_claim_requires_quantified_statement) ... ok
+2026-10-22T13:46:17.2295633Z test_new_claim_status_and_cap_remain_exact (test_contract.RegistrationMutations.test_new_claim_status_and_cap_remain_exact) ... ok
+2026-10-22T13:46:17.2297242Z test_new_supporting_claim_cannot_become_route_authority (test_contract.RegistrationMutations.test_new_supporting_claim_cannot_become_route_authority) ... ok
+2026-10-22T13:46:17.2299212Z test_unknown_or_duplicate_registered_dependencies_rejected (test_contract.RegistrationMutations.test_unknown_or_duplicate_registered_dependencies_rejected) ... ok
+2026-10-22T13:46:17.2300944Z test_exact_mapped_compiler_uses_pass (test_contract.ReleaseDependencyMutations.test_exact_mapped_compiler_uses_pass) ... ok
+2026-10-22T13:46:17.2302306Z test_omitted_new_or_old_mapped_root_is_rejected (test_contract.ReleaseDependencyMutations.test_omitted_new_or_old_mapped_root_is_rejected) ... ok
+2026-10-22T13:46:17.2307475Z test_release_receipt_validation_invokes_the_mapping_check (test_contract.ReleaseDependencyMutations.test_release_receipt_validation_invokes_the_mapping_check) ... ok
+2026-10-22T13:46:17.2309346Z test_unrelated_registered_root_cannot_be_added (test_contract.ReleaseDependencyMutations.test_unrelated_registered_root_cannot_be_added) ... ok
+2026-10-22T13:46:17.2332140Z test_complete_receipt_passes_release_body_guard (test_contract.ReleaseEvidenceBoundaryMutations.test_complete_receipt_passes_release_body_guard) ... ok
+2026-10-22T13:46:17.2348510Z test_release_rejects_dag_deletion_or_hidden_premise_under_unchanged_reviewed_digest (test_contract.ReleaseEvidenceBoundaryMutations.test_release_rejects_dag_deletion_or_hidden_premise_under_unchanged_reviewed_digest) ... ok
+2026-10-22T13:46:17.2362557Z test_release_rejects_forged_successful_command_or_log_digest (test_contract.ReleaseEvidenceBoundaryMutations.test_release_rejects_forged_successful_command_or_log_digest) ... ok
+2026-10-22T13:46:17.2386738Z test_release_rejects_omitted_constructor_or_changed_constructor_type (test_contract.ReleaseEvidenceBoundaryMutations.test_release_rejects_omitted_constructor_or_changed_constructor_type) ... ok
+2026-10-22T13:46:17.2397733Z test_release_rejects_wrong_checkout_kind (test_contract.ReleaseEvidenceBoundaryMutations.test_release_rejects_wrong_checkout_kind) ... ok
+2026-10-22T13:46:17.2407637Z test_complete_compiler_evidence_is_checked_at_delta_cli_boundary (test_dependency_delta.DeltaReceiptBoundaryMutations.test_complete_compiler_evidence_is_checked_at_delta_cli_boundary) ... ok
+2026-10-22T13:46:17.2420082Z test_delta_boundary_rejects_extra_axiom_or_fake_export_command (test_dependency_delta.DeltaReceiptBoundaryMutations.test_delta_boundary_rejects_extra_axiom_or_fake_export_command) ... ok
+2026-10-22T13:46:17.2456332Z test_delta_boundary_rejects_missing_constructor_inventory (test_dependency_delta.DeltaReceiptBoundaryMutations.test_delta_boundary_rejects_missing_constructor_inventory) ... ok
+2026-10-22T13:46:17.2469053Z test_delta_boundary_rejects_removed_or_mutated_dag_under_old_digest (test_dependency_delta.DeltaReceiptBoundaryMutations.test_delta_boundary_rejects_removed_or_mutated_dag_under_old_digest) ... ok
+2026-10-22T13:46:17.2479071Z test_delta_repaired_hash_does_not_approve_a_new_hidden_premise (test_dependency_delta.DeltaReceiptBoundaryMutations.test_delta_repaired_hash_does_not_approve_a_new_hidden_premise) ... ok
+2026-10-22T13:46:17.2487573Z test_delta_requires_exact_reviewed_root_digest_inventory (test_dependency_delta.DeltaReceiptBoundaryMutations.test_delta_requires_exact_reviewed_root_digest_inventory) ... ok
+2026-10-22T13:46:17.2500889Z test_delta_source_boundary_checks_actual_parent_identity (test_dependency_delta.DeltaReceiptBoundaryMutations.test_delta_source_boundary_checks_actual_parent_identity) ... ok
+2026-10-22T13:46:17.2502470Z test_duplicate_channel (test_dependency_delta.StructuralDelta.test_duplicate_channel) ... ok
+2026-10-22T13:46:17.2503591Z test_missing_primary_root (test_dependency_delta.StructuralDelta.test_missing_primary_root) ... ok
+2026-10-22T13:46:17.2504921Z test_missing_provenance_channel (test_dependency_delta.StructuralDelta.test_missing_provenance_channel) ... ok
+2026-10-22T13:46:17.2506349Z test_missing_public_dependency_expansion_rejected (test_dependency_delta.StructuralDelta.test_missing_public_dependency_expansion_rejected) ... ok
+2026-10-22T13:46:17.2507810Z test_old_dependency_drift (test_dependency_delta.StructuralDelta.test_old_dependency_drift) ... ok
+2026-10-22T13:46:17.2509417Z test_reachable_helper_cannot_omit_all_provenance_channels (test_dependency_delta.StructuralDelta.test_reachable_helper_cannot_omit_all_provenance_channels) ... ok
+2026-10-22T13:46:17.2510916Z test_sharing_is_not_equivalence (test_dependency_delta.StructuralDelta.test_sharing_is_not_equivalence) ... ok
+2026-10-22T13:46:17.2515238Z test_stale_receipt_head_or_tree_rejected_at_cli_boundary (test_dependency_delta.StructuralDelta.test_stale_receipt_head_or_tree_rejected_at_cli_boundary) ... ok
+2026-10-22T13:46:17.2516655Z test_unverified_receipt (test_dependency_delta.StructuralDelta.test_unverified_receipt) ... ok
+2026-10-22T13:46:17.3138935Z test_all_historical_classifications_and_config_fields_unchanged (test_file_classes.FileClasses.test_all_historical_classifications_and_config_fields_unchanged) ... ok
+2026-10-22T13:46:17.3144874Z test_all_mathematical_and_audit_modules_have_exact_trust (test_file_classes.FileClasses.test_all_mathematical_and_audit_modules_have_exact_trust) ... ok
+2026-10-22T13:46:17.3663726Z test_changed_generic_rule_cannot_reclassify_historical_paths (test_file_classes.FileClasses.test_changed_generic_rule_cannot_reclassify_historical_paths) ... ok
+2026-10-22T13:46:17.3672248Z test_every_new_path_is_classified (test_file_classes.FileClasses.test_every_new_path_is_classified) ... ok
+2026-10-22T13:46:17.4189654Z test_extra_or_wrong_new_role_is_rejected (test_file_classes.FileClasses.test_extra_or_wrong_new_role_is_rejected) ... ok
+2026-10-22T13:46:17.4194765Z test_frozen_manifest_native_semantic_roles_remain_required (test_file_classes.FileClasses.test_frozen_manifest_native_semantic_roles_remain_required) ... ok
+2026-10-22T13:46:17.4196606Z test_generic_zeta_rule_cannot_capture_validation (test_file_classes.FileClasses.test_generic_zeta_rule_cannot_capture_validation) ... ok
+2026-10-22T13:46:17.4198267Z test_historical_archived_lean_stays_fixture (test_file_classes.FileClasses.test_historical_archived_lean_stays_fixture) ... ok
+2026-10-22T13:46:17.4713808Z test_historical_rule_objects_and_order_preserved (test_file_classes.FileClasses.test_historical_rule_objects_and_order_preserved) ... ok
+2026-10-22T13:46:17.5227826Z test_native_adapters_cannot_reenter_frozen_legacy_candidate_population (test_file_classes.FileClasses.test_native_adapters_cannot_reenter_frozen_legacy_candidate_population) ... ok
+2026-10-22T13:46:17.5250044Z test_native_file_refinement_cannot_be_undocumented_or_broadened (test_file_classes.FileClasses.test_native_file_refinement_cannot_be_undocumented_or_broadened) ... ok
+2026-10-22T13:46:17.6287997Z test_old_standalone_role_cannot_be_changed_or_removed (test_file_classes.FileClasses.test_old_standalone_role_cannot_be_changed_or_removed) ... ok
+2026-10-22T13:46:17.6800952Z test_only_three_exact_rule_insertions_are_allowed (test_file_classes.FileClasses.test_only_three_exact_rule_insertions_are_allowed) ... ok
+2026-10-22T13:46:17.7319725Z test_semantic_policy_cannot_be_changed_while_roles_are_appended (test_file_classes.FileClasses.test_semantic_policy_cannot_be_changed_while_roles_are_appended) ... ok
+2026-10-22T13:46:17.7324908Z test_source_register_cannot_authorize_a_third_role_override (test_file_classes.FileClasses.test_source_register_cannot_authorize_a_third_role_override) ... ok
+2026-10-22T13:46:17.7930657Z test_all_original_source_bytes_and_registry_objects (test_no_scope_promotion.ProtectedHistory.test_all_original_source_bytes_and_registry_objects) ... ok
+2026-10-22T13:46:17.7934750Z test_duplicate_registry_identity_rejected (test_no_scope_promotion.ProtectedHistory.test_duplicate_registry_identity_rejected) ... ok
+2026-10-22T13:46:17.7939439Z test_historical_object_mutation_rejected (test_no_scope_promotion.ProtectedHistory.test_historical_object_mutation_rejected) ... ok
+2026-10-22T13:46:17.7949464Z test_physical_utf8_log_bytes_match_recorded_digest_on_every_platform (test_receipt.CompilerLogBytes.test_physical_utf8_log_bytes_match_recorded_digest_on_every_platform) ... ok
+2026-10-22T13:46:17.7951093Z test_ambiguous_candidate (test_receipt.ReceiptMutations.test_ambiguous_candidate) ... ok
+2026-10-22T13:46:17.7953744Z test_complete_fixture (test_receipt.ReceiptMutations.test_complete_fixture) ... ok
+2026-10-22T13:46:17.7959648Z test_constructor_family_is_bound_to_structural_provenance (test_receipt.ReceiptMutations.test_constructor_family_is_bound_to_structural_provenance) ... ok
+2026-10-22T13:46:17.7961292Z test_duplicate_dependency_metadata_rejected (test_receipt.ReceiptMutations.test_duplicate_dependency_metadata_rejected) ... ok
+2026-10-22T13:46:17.7963145Z test_duplicate_root (test_receipt.ReceiptMutations.test_duplicate_root) ... ok
+2026-10-22T13:46:17.7964884Z test_external_boundary_cannot_be_expanded (test_receipt.ReceiptMutations.test_external_boundary_cannot_be_expanded) ... ok
+2026-10-22T13:46:17.7966409Z test_external_constant_is_unexpanded_boundary (test_receipt.ReceiptMutations.test_external_constant_is_unexpanded_boundary) ... ok
+2026-10-22T13:46:17.7967398Z test_extra_axiom (test_receipt.ReceiptMutations.test_extra_axiom) ... ok
+2026-10-22T13:46:17.7968617Z test_fake_public_count (test_receipt.ReceiptMutations.test_fake_public_count) ... ok
+2026-10-22T13:46:17.7970492Z test_generated_congruence_cannot_bypass_axiom_audit (test_receipt.ReceiptMutations.test_generated_congruence_cannot_bypass_axiom_audit) ... ok
+2026-10-22T13:46:17.7971972Z test_generated_congruence_cannot_replace_primary_namespace (test_receipt.ReceiptMutations.test_generated_congruence_cannot_replace_primary_namespace) ... ok
+2026-10-22T13:46:17.7974059Z test_generated_congruence_public_metadata_stays_source_bound (test_receipt.ReceiptMutations.test_generated_congruence_public_metadata_stays_source_bound) ... ok
+2026-10-22T13:46:17.7977621Z test_generated_congruence_requires_exact_mathematical_module_ownership (test_receipt.ReceiptMutations.test_generated_congruence_requires_exact_mathematical_module_ownership) ... ok
+2026-10-22T13:46:17.7981443Z test_generated_congruence_requires_theorem_kind (test_receipt.ReceiptMutations.test_generated_congruence_requires_theorem_kind) ... ok
+2026-10-22T13:46:17.7984700Z test_generated_congruence_suffix_is_exact (test_receipt.ReceiptMutations.test_generated_congruence_suffix_is_exact) ... ok
+2026-10-22T13:46:17.7987476Z test_generated_constructor_congruence_is_enumerated_and_audited (test_receipt.ReceiptMutations.test_generated_constructor_congruence_is_enumerated_and_audited) ... ok
+2026-10-22T13:46:17.7990129Z test_generated_foreign_name_still_requires_all_project_channels (test_receipt.ReceiptMutations.test_generated_foreign_name_still_requires_all_project_channels) ... ok
+2026-10-22T13:46:17.7992830Z test_hidden_typeclass_premise_changes_reviewed_type (test_receipt.ReceiptMutations.test_hidden_typeclass_premise_changes_reviewed_type) ... ok
+2026-10-22T13:46:17.7994603Z test_malformed_protocol_marker_rejected (test_receipt.ReceiptMutations.test_malformed_protocol_marker_rejected) ... ok
+2026-10-22T13:46:17.7995524Z test_missing_root (test_receipt.ReceiptMutations.test_missing_root) ... ok
+2026-10-22T13:46:17.7998077Z test_missing_structure_channel (test_receipt.ReceiptMutations.test_missing_structure_channel) ... ok
+2026-10-22T13:46:17.7999499Z test_missing_terminating_record (test_receipt.ReceiptMutations.test_missing_terminating_record) ... ok
+2026-10-22T13:46:17.8000983Z test_native_evaluation_trust_extension (test_receipt.ReceiptMutations.test_native_evaluation_trust_extension) ... ok
+2026-10-22T13:46:17.8003092Z test_one_missing_project_helper_channel_rejected (test_receipt.ReceiptMutations.test_one_missing_project_helper_channel_rejected) ... ok
+2026-10-22T13:46:17.8004997Z test_public_dependency_metadata_is_source_bound (test_receipt.ReceiptMutations.test_public_dependency_metadata_is_source_bound) ... ok
+2026-10-22T13:46:17.8007130Z test_reachable_private_project_helper_has_all_channels (test_receipt.ReceiptMutations.test_reachable_private_project_helper_has_all_channels) ... ok
+2026-10-22T13:46:17.8009129Z test_reachable_project_helper_cannot_omit_entire_expansion (test_receipt.ReceiptMutations.test_reachable_project_helper_cannot_omit_entire_expansion) ... ok
+2026-10-22T13:46:17.8010774Z test_record_after_termination (test_receipt.ReceiptMutations.test_record_after_termination) ... ok
+2026-10-22T13:46:17.8011885Z test_truncated_dag (test_receipt.ReceiptMutations.test_truncated_dag) ... ok
+2026-10-22T13:46:17.8013659Z test_unknown_public_module_is_rejected_even_in_opica_namespace (test_receipt.ReceiptMutations.test_unknown_public_module_is_rejected_even_in_opica_namespace) ... ok
+2026-10-22T13:46:17.8016054Z test_unreachable_helper_is_not_part_of_root_closure (test_receipt.ReceiptMutations.test_unreachable_helper_is_not_part_of_root_closure) ... ok
+2026-10-22T13:46:17.8017438Z test_wrong_kind (test_receipt.ReceiptMutations.test_wrong_kind) ... ok
+2026-10-22T13:46:17.8019963Z test_wrong_module (test_receipt.ReceiptMutations.test_wrong_module) ... ok
+2026-10-22T13:46:17.8021759Z test_cycles_never_create_a_self_dependency (test_receipt.RegisteredDependencyMapping.test_cycles_never_create_a_self_dependency) ... ok
+2026-10-22T13:46:17.8023521Z test_duplicate_registered_identity_cannot_change_mapping (test_receipt.RegisteredDependencyMapping.test_duplicate_registered_identity_cannot_change_mapping) ... ok
+2026-10-22T13:46:17.8025193Z test_maps_new_and_old_registered_roots_through_all_channels (test_receipt.RegisteredDependencyMapping.test_maps_new_and_old_registered_roots_through_all_channels) ... ok
+2026-10-22T13:46:17.8026604Z test_missing_provenance_channel_is_rejected (test_receipt.RegisteredDependencyMapping.test_missing_provenance_channel_is_rejected) ... ok
+2026-10-22T13:46:17.8028250Z test_reachable_registered_root_cannot_be_an_unexpanded_boundary (test_receipt.RegisteredDependencyMapping.test_reachable_registered_root_cannot_be_an_unexpanded_boundary) ... ok
+2026-10-22T13:46:17.8029834Z test_unrelated_registered_root_is_not_inferred_from_shared_uses (test_receipt.RegisteredDependencyMapping.test_unrelated_registered_root_is_not_inferred_from_shared_uses) ... ok
+2026-10-22T13:46:17.8037932Z test_changed_hidden_premise_cannot_reuse_old_digest (test_receipt.SharedReceiptMutations.test_changed_hidden_premise_cannot_reuse_old_digest) ... ok
+2026-10-22T13:46:17.8064208Z test_command_inventory_log_identity_and_digest_are_required (test_receipt.SharedReceiptMutations.test_command_inventory_log_identity_and_digest_are_required) ... ok
+2026-10-22T13:46:17.8074059Z test_constructor_dag_must_match_public_full_type (test_receipt.SharedReceiptMutations.test_constructor_dag_must_match_public_full_type) ... ok
+2026-10-22T13:46:17.8083946Z test_constructor_family_must_be_inductive (test_receipt.SharedReceiptMutations.test_constructor_family_must_be_inductive) ... ok
+2026-10-22T13:46:17.8095054Z test_constructor_structural_family_links_are_required (test_receipt.SharedReceiptMutations.test_constructor_structural_family_links_are_required) ... ok
+2026-10-22T13:46:17.8102362Z test_dag_metrics_cannot_be_edited_independently (test_receipt.SharedReceiptMutations.test_dag_metrics_cannot_be_edited_independently) ... ok
+2026-10-22T13:46:17.8110462Z test_deleting_public_record_cannot_hide_existing_public_metadata (test_receipt.SharedReceiptMutations.test_deleting_public_record_cannot_hide_existing_public_metadata) ... ok
+2026-10-22T13:46:17.8117578Z test_every_public_helper_digest_is_recomputed (test_receipt.SharedReceiptMutations.test_every_public_helper_digest_is_recomputed) ... ok
+2026-10-22T13:46:17.8140814Z test_exact_build_targets_and_fresh_export_commands_are_required (test_receipt.SharedReceiptMutations.test_exact_build_targets_and_fresh_export_commands_are_required) ... ok
+2026-10-22T13:46:17.8148096Z test_foreign_constructor_entry_cannot_be_invented (test_receipt.SharedReceiptMutations.test_foreign_constructor_entry_cannot_be_invented) ... ok
+2026-10-22T13:46:17.8155087Z test_full_valid_receipt_passes_shared_validation (test_receipt.SharedReceiptMutations.test_full_valid_receipt_passes_shared_validation) ... ok
+2026-10-22T13:46:17.8162155Z test_malformed_dag_rejected_even_with_recomputed_digest (test_receipt.SharedReceiptMutations.test_malformed_dag_rejected_even_with_recomputed_digest) ... ok
+2026-10-22T13:46:17.8171716Z test_missing_constructor_inventory_or_member_rejected (test_receipt.SharedReceiptMutations.test_missing_constructor_inventory_or_member_rejected) ... ok
+2026-10-22T13:46:17.8177869Z test_missing_public_dag_cannot_hide_behind_reviewed_digest (test_receipt.SharedReceiptMutations.test_missing_public_dag_cannot_hide_behind_reviewed_digest) ... ok
+2026-10-22T13:46:17.8185535Z test_nonfinite_negative_or_nonnumeric_timing_is_rejected (test_receipt.SharedReceiptMutations.test_nonfinite_negative_or_nonnumeric_timing_is_rejected) ... ok
+2026-10-22T13:46:17.8192575Z test_normal_parent_commit_cannot_be_labeled_synthetic_merge (test_receipt.SharedReceiptMutations.test_normal_parent_commit_cannot_be_labeled_synthetic_merge) ... ok
+2026-10-22T13:46:17.8224124Z test_public_helpers_remain_namespace_module_kind_and_axiom_checked (test_receipt.SharedReceiptMutations.test_public_helpers_remain_namespace_module_kind_and_axiom_checked) ... ok
+2026-10-22T13:46:17.8231219Z test_repaired_primary_dag_hash_still_must_match_reviewed_type (test_receipt.SharedReceiptMutations.test_repaired_primary_dag_hash_still_must_match_reviewed_type) ... ok
+2026-10-22T13:46:17.8237348Z test_requested_head_is_actual_checked_head_or_direct_parent (test_receipt.SharedReceiptMutations.test_requested_head_is_actual_checked_head_or_direct_parent) ... ok
+2026-10-22T13:46:17.8244074Z test_requested_head_syntax_and_checkout_label_are_required (test_receipt.SharedReceiptMutations.test_requested_head_syntax_and_checkout_label_are_required) ... ok
+2026-10-22T13:46:17.8252638Z test_unicode_type_hash_uses_utf8_without_ascii_escaping (test_receipt.SharedReceiptMutations.test_unicode_type_hash_uses_utf8_without_ascii_escaping) ... ok
+2026-10-22T13:46:17.8261221Z test_valid_constructor_inventory_passes (test_receipt.SharedReceiptMutations.test_valid_constructor_inventory_passes) ... ok
+2026-10-22T13:46:17.8267678Z test_wrong_runtime_pin_is_rejected (test_receipt.SharedReceiptMutations.test_wrong_runtime_pin_is_rejected) ... ok
+2026-10-22T13:46:17.8270274Z test_cancelled_run (test_workflow_harvest.WorkflowMutations.test_cancelled_run) ... ok
+2026-10-22T13:46:17.8271887Z test_complete_success (test_workflow_harvest.WorkflowMutations.test_complete_success) ... ok
+2026-10-22T13:46:17.8275141Z test_current_checkout_and_merge_git_objects_accept (test_workflow_harvest.WorkflowMutations.test_current_checkout_and_merge_git_objects_accept) ... ok
+2026-10-22T13:46:17.8277734Z test_duplicate_run_identity (test_workflow_harvest.WorkflowMutations.test_duplicate_run_identity) ... ok
+2026-10-22T13:46:17.8279816Z test_explicit_event_and_head_selectors_accept_exact_scope (test_workflow_harvest.WorkflowMutations.test_explicit_event_and_head_selectors_accept_exact_scope) ... ok
+2026-10-22T13:46:17.8281296Z test_failed_attached_check (test_workflow_harvest.WorkflowMutations.test_failed_attached_check) ... ok
+2026-10-22T13:46:17.8282517Z test_foreign_head (test_workflow_harvest.WorkflowMutations.test_foreign_head) ... ok
+2026-10-22T13:46:17.8283479Z test_foreign_tree (test_workflow_harvest.WorkflowMutations.test_foreign_tree) ... ok
+2026-10-22T13:46:17.8284554Z test_incomplete_pagination (test_workflow_harvest.WorkflowMutations.test_incomplete_pagination) ... ok
+2026-10-22T13:46:17.8285877Z test_job_event_cannot_disagree_with_its_run (test_workflow_harvest.WorkflowMutations.test_job_event_cannot_disagree_with_its_run) ... ok
+2026-10-22T13:46:17.8287482Z test_latest_failed_rerun_does_not_choose_old_success (test_workflow_harvest.WorkflowMutations.test_latest_failed_rerun_does_not_choose_old_success) ... ok
+2026-10-22T13:46:17.8289352Z test_merge_jobs_cannot_satisfy_required_head_scope (test_workflow_harvest.WorkflowMutations.test_merge_jobs_cannot_satisfy_required_head_scope) ... ok
+2026-10-22T13:46:17.8290724Z test_missing_attempt (test_workflow_harvest.WorkflowMutations.test_missing_attempt) ... ok
+2026-10-22T13:46:17.8292072Z test_normal_one_parent_commit_cannot_be_a_synthetic_merge (test_workflow_harvest.WorkflowMutations.test_normal_one_parent_commit_cannot_be_a_synthetic_merge) ... ok
+2026-10-22T13:46:17.8293348Z test_partial_rerun_retains_failed_history (test_workflow_harvest.WorkflowMutations.test_partial_rerun_retains_failed_history) ... ok
+2026-10-22T13:46:17.8295981Z test_provider_tree_map_cannot_override_real_git_tree (test_workflow_harvest.WorkflowMutations.test_provider_tree_map_cannot_override_real_git_tree) ... ok
+2026-10-22T13:46:17.8297754Z test_push_jobs_cannot_satisfy_required_pr_event (test_workflow_harvest.WorkflowMutations.test_push_jobs_cannot_satisfy_required_pr_event) ... ok
+2026-10-22T13:46:17.8301516Z test_real_synthetic_merge_parents_required (test_workflow_harvest.WorkflowMutations.test_real_synthetic_merge_parents_required) ... ok
+2026-10-22T13:46:17.8302945Z test_running_required_job (test_workflow_harvest.WorkflowMutations.test_running_required_job) ... ok
+2026-10-22T13:46:17.8306291Z test_self_consistent_foreign_harvest_rejected_at_cli_boundary (test_workflow_harvest.WorkflowMutations.test_self_consistent_foreign_harvest_rejected_at_cli_boundary) ... ok
+2026-10-22T13:46:17.8307751Z test_skipped_new_job (test_workflow_harvest.WorkflowMutations.test_skipped_new_job) ... ok
+2026-10-22T13:46:17.8309077Z test_stale_synthetic_merge (test_workflow_harvest.WorkflowMutations.test_stale_synthetic_merge) ... ok
+2026-10-22T13:46:17.8309686Z 
+2026-10-22T13:46:17.8309957Z ----------------------------------------------------------------------
+2026-10-22T13:46:17.8310835Z Ran 187 tests in 5.118s
+2026-10-22T13:46:17.8311262Z 
+2026-10-22T13:46:17.8319053Z OK
+2026-10-22T13:46:17.8784271Z ##[group]Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+2026-10-22T13:46:17.8784768Z with:
+2026-10-22T13:46:17.8785086Z   name: opica-regression
+2026-10-22T13:46:17.8785447Z   path: /tmp/opica-regression
+2026-10-22T13:46:17.8785801Z   if-no-files-found: error
+2026-10-22T13:46:17.8786179Z   compression-level: 6
+2026-10-22T13:46:17.8786489Z   overwrite: false
+2026-10-22T13:46:17.8786848Z   include-hidden-files: false
+2026-10-22T13:46:17.8787186Z env:
+2026-10-22T13:46:17.8787493Z   OPICA: research/RHRC/integration/opica
+2026-10-22T13:46:17.8787903Z   PYTHONUTF8: 1
+2026-10-22T13:46:17.8788541Z   pythonLocation: /opt/hostedtoolcache/Python/3.14.9/x64
+2026-10-22T13:46:17.8789039Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.14.9/x64/lib/pkgconfig
+2026-10-22T13:46:17.8789568Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.14.9/x64
+2026-10-22T13:46:17.8790169Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.14.9/x64
+2026-10-22T13:46:17.8791207Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.14.9/x64
+2026-10-22T13:46:17.8791675Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.14.9/x64/lib
+2026-10-22T13:46:17.8792140Z ##[endgroup]
+2026-10-22T13:46:18.0445571Z (node:2528) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-22T13:46:18.0446906Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-22T13:46:18.0579936Z With the provided path, there will be 2 files uploaded
+2026-10-22T13:46:18.0639129Z Artifact name is valid!
+2026-10-22T13:46:18.0669174Z Root directory input is valid!
+2026-10-22T13:46:18.3663071Z Beginning upload of artifact content to blob storage
+2026-10-22T13:46:18.3845356Z (node:2528) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-10-22T13:46:18.5091838Z Uploaded bytes 1662
+2026-10-22T13:46:18.5468713Z Finished uploading artifact content to blob storage!
+2026-10-22T13:46:18.5469644Z SHA256 digest of uploaded artifact zip is da0031c5227a9fc4826618f2bf7215495d1557d936e45d6060469342e5aa059d
+2026-10-22T13:46:18.5470821Z Finalizing artifact upload
+2026-10-22T13:46:19.0528899Z Artifact opica-regression.zip successfully finalized. Artifact ID 12430641920
+2026-10-22T13:46:19.0530284Z Artifact opica-regression has been successfully uploaded! Final size is 1662 bytes. Artifact ID is 12430641920
+2026-10-22T13:46:19.0536044Z Artifact download URL: https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39788683241/artifacts/12430641920
+2026-10-22T13:46:19.0704490Z Post job cleanup.
+2026-10-22T13:46:19.1888364Z (node:2540) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-22T13:46:19.1889663Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-22T13:46:19.2064435Z Post job cleanup.
+2026-10-22T13:46:19.2966697Z [command]/usr/bin/git version
+2026-10-22T13:46:19.3005979Z git version 2.55.0
+2026-10-22T13:46:19.3100046Z Temporarily overriding HOME='/home/runner/work/_temp/11c71071-b435-41e2-9f2c-16636314fdb8' before making global git config changes
+2026-10-22T13:46:19.3116810Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-22T13:46:19.3119543Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/zeta-23-lean/zeta-23-lean
+2026-10-22T13:46:19.3219346Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-22T13:46:19.3259957Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-22T13:46:19.3397086Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-22T13:46:19.3435760Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-22T13:46:19.3709380Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-22T13:46:19.3749561Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-22T13:46:19.4204797Z Cleaning up orphan processes
+2026-10-22T13:46:19.4515652Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@11d5960a326750d5838078e36cf38b85af677262, actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065, actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+

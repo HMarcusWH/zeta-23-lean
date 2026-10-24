@@ -1,0 +1,19 @@
+{
+  "schema": "OPICA_INCOMPLETE_PARENT_DEPENDENCY_BUILD_V1",
+  "status": "RUNNING_AT_SNAPSHOT_NOT_A_PASS",
+  "captured_at": "2026-10-22T15:28:46.380658+00:00",
+  "target": "Zeta23.OPICA.NativeJetAdapter",
+  "command": "lake build Zeta23.OPICA.NativeJetAdapter",
+  "audit_checkout": "work/opica-audit28",
+  "toolchain": "leanprover/lean4:v4.33.0-rc2",
+  "base": "9b6a9a3a2badb4cff62a56c1158d9cef8759d30d",
+  "proof_source_authority": "Controlled audit overlay, not full-main compiler evidence",
+  "log_sha256": "8b1ebb5b3759f05f9a50f444b696534bd4408ffadcc1d671446c015a59df25ac",
+  "terminal_session_id": 3609,
+  "runtime_log": "work/opica-stage1-2026-10-22/root-lean/parent-native-jet-01.log",
+  "runtime_runner": "work/opica-stage1-2026-10-22/run_lean.py",
+  "next_action": "Inspect actual process/cache/source and final command disposition. If interrupted resume genuine pinned Lake build. Do not infer consumer acceptance from partial dependency success.",
+  "step123_word_jet_consumer": "UNACCEPTED",
+  "RH": "OPEN",
+  "Step4": "OPEN"
+}

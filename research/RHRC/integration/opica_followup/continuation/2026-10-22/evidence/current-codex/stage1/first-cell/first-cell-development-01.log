@@ -1,0 +1,295 @@
+../opica-stage1-2026-10-22/first-cell/FirstCellDevelopment.lean:163:62: error: unexpected token 'have'; expected ')', ',' or ':'
+../opica-stage1-2026-10-22/first-cell/FirstCellDevelopment.lean:130:54: error: unsolved goals
+delta gamma u : ℝ
+hg : gamma ≠ 0
+hu : 0 < u
+hu1 : u < Real.log 2
+lam : ℂ := ↑delta + ↑gamma * I
+rho : ℂ := coPoissonRho delta gamma
+h0 : coPoissonRho delta gamma ≠ 0
+h1 : coPoissonRho delta gamma ≠ 1
+hh : coPoissonRho delta gamma ≠ 1 / 2
+hL : ↑delta + ↑gamma * I ≠ 0
+hx : Real.exp u ∈ Set.Ioo 1 2
+hpow : ∀ (z : ℂ), ↑(Real.exp u) ^ z = cexp (↑u * z)
+hb : coPoissonOriginNormalizer rho = (1 - 2 * rho) / (rho * (1 - rho))
+hk : rho * (1 - rho) = 1 / 4 - lam ^ 2
+hnum : 1 - 2 * rho = -2 * lam
+hsplit_neg : cexp (↑u * -rho) = ↑(Real.exp (-u / 2)) * cexp (-(lam * ↑u))
+hsplit_pos : cexp (↑u * (rho - 1)) = ↑(Real.exp (-u / 2)) * cexp (lam * ↑u)
+⊢ (↑(Real.exp (-u / 2)) * cexp (-(lam * ↑u)) - ↑(Real.exp (-u / 2)) * cexp (lam * ↑u)) /
+      (-2 * lam / (1 / 4 - lam ^ 2)) =
+    ↑(Real.exp (-u / 2)) * ((1 / 4 - lam ^ 2) / lam) * ((cexp (lam * ↑u) - cexp (-(lam * ↑u))) / 2)
+../opica-stage1-2026-10-22/first-cell/FirstCellDevelopment.lean:181:33: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+../opica-stage1-2026-10-22/first-cell/FirstCellDevelopment.lean:204:13: warning: This simp argument is unused:
+  mul_zero
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Complex.mul_re, Complex.mul_im, Complex.ofReal_re, Complex.ofReal_im, zero_mul, sub_zero, add_zero,
+    zero_add]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+../opica-stage1-2026-10-22/first-cell/FirstCellDevelopment.lean:204:40: warning: This simp argument is unused:
+  zero_add
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Complex.mul_re, Complex.mul_im, Complex.ofReal_re, Complex.ofReal_im, zero_mul, mul_zero, sub_zero,
+    add_zero]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+../opica-stage1-2026-10-22/first-cell/FirstCellDevelopment.lean:284:15: error: Function expected at
+  Real.one_sub_sq_div_two_le_cos
+but this term has type
+  1 - ?m.354 ^ 2 / 2 ≤ Real.cos ?m.354
+
+Note: Expected a function because this term is being applied to the argument
+  v
+../opica-stage1-2026-10-22/first-cell/FirstCellDevelopment.lean:273:27: error: unsolved goals
+G u : ℝ
+hG : 0 < G
+hu : u ∈ Set.Icc (4 * Real.pi / (3 * G)) (5 * Real.pi / (3 * G))
+hangle : 4 * Real.pi / 3 ≤ G * u ∧ G * u ≤ 5 * Real.pi / 3
+v : ℝ := G * u - 3 * Real.pi / 2
+hv : |v| ≤ Real.pi / 6
+hv2 : v ^ 2 ≤ (Real.pi / 6) ^ 2
+⊢ Real.sin (G * u) ≤ -3 / 4
+../opica-stage1-2026-10-22/first-cell/FirstCellDevelopment.lean:340:40: error(lean.unknownIdentifier): Unknown constant `Real.one_le_cosh`
+../opica-stage1-2026-10-22/first-cell/FirstCellDevelopment.lean:354:2: error: Type mismatch: After simplification, term
+  mul_le_mul_of_nonneg_left hsum (Real.exp_nonneg ?m.1475)
+ has type
+  Real.exp ?m.1475 *
+      (delta * (v - 1) * Real.sinh (delta * u) * Real.cos (|gamma| * u) +
+        |gamma| * (1 + v) * Real.cosh (delta * u) * Real.sin (|gamma| * u)) ≤
+    Real.exp ?m.1475 * (-|gamma| / 2)
+but is expected to have type
+  (delta * (1 / (4 * (delta ^ 2 + gamma ^ 2)) - 1) * Real.sinh (delta * u) * Real.cos (|gamma| * u) +
+        |gamma| * (1 + 1 / (4 * (delta ^ 2 + gamma ^ 2))) * Real.cosh (delta * u) * Real.sin (|gamma| * u)) *
+      Real.exp (-u / 2) ≤
+    -|gamma| * (Real.exp (-u / 2) / 2)
+../opica-stage1-2026-10-22/first-cell/FirstCellDevelopment.lean:360:43: error: linarith failed to find a contradiction
+delta gamma : ℝ
+hg : gamma ≠ 0
+x : ℝ
+hx : x ∈ Set.Ioo 1 2
+a✝ : x = 0
+⊢ False
+failed
+../opica-stage1-2026-10-22/first-cell/FirstCellDevelopment.lean:363:47: error: linarith failed to find a contradiction
+delta gamma : ℝ
+hg : gamma ≠ 0
+hlog : ContinuousOn Real.log (Set.Ioo 1 2)
+x : ℝ
+hx : x ∈ Set.Ioo 1 2
+a✝ : x ≤ 0
+⊢ False
+failed
+../opica-stage1-2026-10-22/first-cell/FirstCellDevelopment.lean:368:34: error: invalid 'by' tactic, expected type has not been provided
+../opica-stage1-2026-10-22/first-cell/FirstCellDevelopment.lean:380:20: error: linarith failed to find a contradiction
+case left
+delta gamma : ℝ
+hg : 16 ≤ |gamma|
+ha : 0 < firstCellLowerLog gamma
+hab : firstCellLowerLog gamma < firstCellUpperLog gamma
+hb : firstCellUpperLog gamma < 1 / 3
+hblog : firstCellUpperLog gamma < Real.log (3 / 2)
+hgeometry :
+  ∀ u ∈ Set.Icc (firstCellLowerLog gamma) (firstCellUpperLog gamma), 0 < u ∧ Real.exp u < 3 / 2 ∧ u < Real.log 2
+x : ℝ
+hx : x ∈ Set.Icc (Real.exp (firstCellLowerLog gamma)) (Real.exp (firstCellUpperLog gamma))
+hl : 1 < Real.exp (firstCellLowerLog gamma)
+hu : Real.exp (firstCellUpperLog gamma) < 3 / 2
+a✝ : x ≤ 1
+⊢ False
+failed
+../opica-stage1-2026-10-22/first-cell/FirstCellDevelopment.lean:380:20: error: linarith failed to find a contradiction
+case right
+delta gamma : ℝ
+hg : 16 ≤ |gamma|
+ha : 0 < firstCellLowerLog gamma
+hab : firstCellLowerLog gamma < firstCellUpperLog gamma
+hb : firstCellUpperLog gamma < 1 / 3
+hblog : firstCellUpperLog gamma < Real.log (3 / 2)
+hgeometry :
+  ∀ u ∈ Set.Icc (firstCellLowerLog gamma) (firstCellUpperLog gamma), 0 < u ∧ Real.exp u < 3 / 2 ∧ u < Real.log 2
+x : ℝ
+hx : x ∈ Set.Icc (Real.exp (firstCellLowerLog gamma)) (Real.exp (firstCellUpperLog gamma))
+hl : 1 < Real.exp (firstCellLowerLog gamma)
+hu : Real.exp (firstCellUpperLog gamma) < 3 / 2
+a✝ : 2 ≤ x
+⊢ False
+failed
+../opica-stage1-2026-10-22/first-cell/FirstCellDevelopment.lean:386:11: error(lean.invalidField): Invalid field `max`: The environment does not contain `Function.max`, so it is not possible to project the field `max` from an expression
+  ContinuousOn.neg hc
+of type
+  ∀ x ∈ Set.Icc (Real.exp (firstCellLowerLog gamma)) (Real.exp (firstCellUpperLog gamma)),
+    ContinuousWithinAt (-coPoissonRealDensity (coPoissonRho delta gamma))
+      (Set.Icc (Real.exp (firstCellLowerLog gamma)) (Real.exp (firstCellUpperLog gamma))) x
+../opica-stage1-2026-10-22/first-cell/FirstCellDevelopment.lean:388:10: error: Function expected at
+  ContinuousOn.intervalIntegrable ?m.171
+but this term has type
+  IntervalIntegrable ?m.168 ?m.166 ?m.169 ?m.170
+
+Note: Expected a function because this term is being applied to the argument
+  (Real.exp_le_exp.mpr hab.le)
+../opica-stage1-2026-10-22/first-cell/FirstCellDevelopment.lean:388:10: error: Application type mismatch: The argument
+  hn
+has type
+  ContinuousOn (firstCellNegativePart delta gamma)
+    (Set.Icc (Real.exp (firstCellLowerLog gamma)) (Real.exp (firstCellUpperLog gamma)))
+but is expected to have type
+  ContinuousOn ?m.168 (Set.uIcc ?m.169 ?m.170)
+in the application
+  ContinuousOn.intervalIntegrable hn
+../opica-stage1-2026-10-22/first-cell/FirstCellDevelopment.lean:389:10: error: Function expected at
+  ContinuousOn.intervalIntegrable ?m.195
+but this term has type
+  IntervalIntegrable ?m.192 ?m.190 ?m.193 ?m.194
+
+Note: Expected a function because this term is being applied to the argument
+  (Real.exp_le_exp.mpr hab.le)
+../opica-stage1-2026-10-22/first-cell/FirstCellDevelopment.lean:389:10: error: Application type mismatch: The argument
+  ContinuousOn.mul (Continuous.continuousOn sincSquared_continuous) hn
+has type
+  ContinuousOn (sincSquared * firstCellNegativePart delta gamma)
+    (Set.Icc (Real.exp (firstCellLowerLog gamma)) (Real.exp (firstCellUpperLog gamma)))
+but is expected to have type
+  ContinuousOn ?m.192 (Set.uIcc ?m.193 ?m.194)
+in the application
+  ContinuousOn.intervalIntegrable (ContinuousOn.mul (Continuous.continuousOn sincSquared_continuous) hn)
+../opica-stage1-2026-10-22/first-cell/FirstCellDevelopment.lean:413:4: error: Type mismatch: After simplification, term
+  h
+ has type
+  2 ^ 2 * firstCellLowerLog gamma ^ 2 ≤ Real.sin (Real.pi * Real.exp u) ^ 2
+but is expected to have type
+  4 * firstCellLowerLog gamma ^ 2 ≤ Real.sin (Real.pi * Real.exp u) ^ 2
+../opica-stage1-2026-10-22/first-cell/FirstCellDevelopment.lean:421:4: error: linarith failed to find a contradiction
+gamma u : ℝ
+hg : 16 ≤ |gamma|
+hu : u ∈ Set.Icc (firstCellLowerLog gamma) (firstCellUpperLog gamma)
+ha : 0 < firstCellLowerLog gamma
+hab : firstCellLowerLog gamma < firstCellUpperLog gamma
+hb : firstCellUpperLog gamma < 1 / 3
+hblog : firstCellUpperLog gamma < Real.log (3 / 2)
+hgeometry :
+  ∀ u ∈ Set.Icc (firstCellLowerLog gamma) (firstCellUpperLog gamma), 0 < u ∧ Real.exp u < 3 / 2 ∧ u < Real.log 2
+hup : 0 < u
+hxupper : Real.exp u < 3 / 2
+hu2 : u < Real.log 2
+hgpos : 0 < |gamma|
+hgap : firstCellLowerLog gamma ≤ Real.exp u - 1
+hdhalf : firstCellLowerLog gamma ≤ 1 / 2
+hxlow : 1 < Real.exp u
+hdist : ∀ (n : ℤ), firstCellLowerLog gamma ≤ |Real.exp u - ↑n|
+hs : 2 * firstCellLowerLog gamma ≤ |Real.sin (Real.pi * Real.exp u)|
+hs2 : 4 * firstCellLowerLog gamma ^ 2 ≤ Real.sin (Real.pi * Real.exp u) ^ 2
+hx2 : Real.exp u ^ 2 ≤ 4
+hid : sincSquared (Real.exp u) * (Real.pi ^ 2 * Real.exp u ^ 2) = Real.sin (Real.pi * Real.exp u) ^ 2
+a✝ : sincSquared (Real.exp u) * Real.pi ^ 2 < firstCellLowerLog gamma ^ 2
+⊢ False
+failed
+../opica-stage1-2026-10-22/first-cell/FirstCellDevelopment.lean:424:22: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  |?a| ^ 2
+in the target expression
+  16 / (9 * gamma ^ 2) = 4 ^ 2 * Real.pi ^ 2 / (3 * |gamma|) ^ 2 / Real.pi ^ 2
+
+gamma u : ℝ
+hg : 16 ≤ |gamma|
+hu : u ∈ Set.Icc (firstCellLowerLog gamma) (firstCellUpperLog gamma)
+ha : 0 < firstCellLowerLog gamma
+hab : firstCellLowerLog gamma < firstCellUpperLog gamma
+hb : firstCellUpperLog gamma < 1 / 3
+hblog : firstCellUpperLog gamma < Real.log (3 / 2)
+hgeometry :
+  ∀ u ∈ Set.Icc (firstCellLowerLog gamma) (firstCellUpperLog gamma), 0 < u ∧ Real.exp u < 3 / 2 ∧ u < Real.log 2
+hup : 0 < u
+hxupper : Real.exp u < 3 / 2
+hu2 : u < Real.log 2
+hgpos : 0 < |gamma|
+hgap : firstCellLowerLog gamma ≤ Real.exp u - 1
+hdhalf : firstCellLowerLog gamma ≤ 1 / 2
+hxlow : 1 < Real.exp u
+hdist : ∀ (n : ℤ), firstCellLowerLog gamma ≤ |Real.exp u - ↑n|
+hs : 2 * firstCellLowerLog gamma ≤ |Real.sin (Real.pi * Real.exp u)|
+hs2 : 4 * firstCellLowerLog gamma ^ 2 ≤ Real.sin (Real.pi * Real.exp u) ^ 2
+hx2 : Real.exp u ^ 2 ≤ 4
+hid : sincSquared (Real.exp u) * (Real.pi ^ 2 * Real.exp u ^ 2) = Real.sin (Real.pi * Real.exp u) ^ 2
+hfinal : firstCellLowerLog gamma ^ 2 / Real.pi ^ 2 ≤ sincSquared (Real.exp u)
+⊢ 16 / (9 * gamma ^ 2) = 4 ^ 2 * Real.pi ^ 2 / (3 * |gamma|) ^ 2 / Real.pi ^ 2
+../opica-stage1-2026-10-22/first-cell/FirstCellDevelopment.lean:445:31: error(lean.invalidField): Invalid field `max`: The environment does not contain `Function.max`, so it is not possible to project the field `max` from an expression
+  ContinuousOn.neg (coPoissonRealDensity_continuousOn_firstCell delta gamma ?m.151)
+of type
+  ∀ x ∈ Set.Ioo 1 2, ContinuousWithinAt (-coPoissonRealDensity (coPoissonRho delta gamma)) (Set.Ioo 1 2) x
+../opica-stage1-2026-10-22/first-cell/FirstCellDevelopment.lean:446:4: error: No goals to be solved
+../opica-stage1-2026-10-22/first-cell/FirstCellDevelopment.lean:465:38: error: Function expected at
+  ContinuousOn.intervalIntegrable
+    (ContinuousOn.mul
+      (ContinuousOn.comp hcont (Continuous.continuousOn Real.continuous_exp) fun u hu =>
+        Set.mem_image_of_mem Real.exp hu)
+      (Continuous.continuousOn Real.continuous_exp))
+but this term has type
+  IntervalIntegrable (firstCellNegativePart delta gamma ∘ Real.exp * Real.exp) ?m.331 (firstCellLowerLog gamma)
+    (firstCellUpperLog gamma)
+
+Note: Expected a function because this term is being applied to the argument
+  hab.le
+../opica-stage1-2026-10-22/first-cell/FirstCellDevelopment.lean:475:87: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ?a * (?b * ?c)
+in the target expression
+  |gamma| * Real.exp (-u / 2) / 2 * Real.exp u = |gamma| / 2 * Real.exp (u / 2)
+
+delta gamma : ℝ
+hd : |delta| < 1 / 2
+hg : 16 ≤ |gamma|
+hp :
+  ∀ (u : ℝ),
+    |delta| < 1 / 2 →
+      16 ≤ |gamma| →
+        u ∈ Set.Icc (firstCellLowerLog gamma) (firstCellUpperLog gamma) →
+          coPoissonRealDensity (coPoissonRho delta gamma) (Real.exp u) ≤ -|gamma| * Real.exp (-u / 2) / 2
+hint :
+  IntervalIntegrable (firstCellNegativePart delta gamma) volume (Real.exp (firstCellLowerLog gamma))
+      (Real.exp (firstCellUpperLog gamma)) ∧
+    IntervalIntegrable (fun x => sincSquared x * firstCellNegativePart delta gamma x) volume
+      (Real.exp (firstCellLowerLog gamma)) (Real.exp (firstCellUpperLog gamma))
+ha : 0 < firstCellLowerLog gamma
+hab : firstCellLowerLog gamma < firstCellUpperLog gamma
+hb : firstCellUpperLog gamma < 1 / 3
+hblog : firstCellUpperLog gamma < Real.log (3 / 2)
+hgeometry :
+  ∀ u ∈ Set.Icc (firstCellLowerLog gamma) (firstCellUpperLog gamma), 0 < u ∧ Real.exp u < 3 / 2 ∧ u < Real.log 2
+hexpab : Real.exp (firstCellLowerLog gamma) ≤ Real.exp (firstCellUpperLog gamma)
+hcont :
+  ContinuousOn (firstCellNegativePart delta gamma)
+    (Real.exp '' Set.uIcc (firstCellLowerLog gamma) (firstCellUpperLog gamma))
+hsub :
+  ∫ (x : ℝ) in firstCellLowerLog gamma..firstCellUpperLog gamma,
+      (firstCellNegativePart delta gamma ∘ Real.exp) x * Real.exp x =
+    ∫ (x : ℝ) in Real.exp (firstCellLowerLog gamma)..Real.exp (firstCellUpperLog gamma),
+      firstCellNegativePart delta gamma x
+u : ℝ
+hu : u ∈ Set.Icc (firstCellLowerLog gamma) (firstCellUpperLog gamma)
+hU : coPoissonRealDensity (coPoissonRho delta gamma) (Real.exp u) ≤ -|gamma| * Real.exp (-u / 2) / 2
+hN : |gamma| * Real.exp (-u / 2) / 2 ≤ firstCellNegativePart delta gamma (Real.exp u)
+he : Real.exp (-u / 2) * Real.exp u = Real.exp (u / 2)
+hu0 : 0 ≤ u
+he1 : 1 ≤ Real.exp (u / 2)
+hx : |gamma| * Real.exp (-u / 2) / 2 * Real.exp u ≤ firstCellNegativePart delta gamma (Real.exp u) * Real.exp u
+⊢ |gamma| * Real.exp (-u / 2) / 2 * Real.exp u = |gamma| / 2 * Real.exp (u / 2)
+../opica-stage1-2026-10-22/first-cell/FirstCellDevelopment.lean:476:8: error: Type mismatch
+  LE.le.trans
+    (mul_le_mul_of_nonneg_left he1
+      (le_of_lt
+        (div_pos
+          (lt_of_lt_of_le
+            (Mathlib.Meta.Positivity.pos_of_isNat (Mathlib.Meta.NormNum.isNat_ofNat ℝ (Eq.refl 16))
+              (Eq.refl (Nat.ble 1 16)))
+            hg)
+          (Mathlib.Meta.Positivity.pos_of_isNat (Mathlib.Meta.NormNum.isNat_ofNat ℝ (Eq.refl 2))
+            (Eq.refl (Nat.ble 1 2))))))
+    hx
+has type
+  |gamma| / 2 * 1 ≤ firstCellNegativePart delta gamma (Real.exp u) * Real.exp u
+but is expected to have type
+  |gamma| / 2 ≤ (firstCellNegativePart delta gamma ∘ Real.exp) u * Real.exp u

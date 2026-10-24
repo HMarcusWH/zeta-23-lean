@@ -1,0 +1,47 @@
+{
+  "schema": "OPICA_PARENT_DOCUMENTATION_REVIEW_V1",
+  "id": "PARENT_DOC_REVIEW_STAGE1_2026_10_22_01",
+  "role": "Independent implementation review of the bounded documentation-byte exception; no mathematical scope or parent theorem change",
+  "accepted_parent_commit": "d53dd70d38b0762af130b1d19b795af259f505f5",
+  "accepted_parent_tree": "12691099f1a155a8bfa3ad4f6689146175b233b2",
+  "observed_failure_head": "9ccea78eb5ee0c097bde05424e43de58a589b713",
+  "observed_failure": "Inherited ProtectedHistory and static contract checks rejected six user-authorized navigation documents; the missing full100 review separately rejects child extension",
+  "parent_validator": "research/RHRC/integration/opica/validate_contract.py",
+  "reviewed_parent_validator_sha256": "9f349df6d48e1ef6f756d877e0b49d825f2d3bb88b9372e4019bf51c23817a2c",
+  "fixed_documentation_map_sha256": "60262d0de871b497278af8197fc806b02665e7a1f2b14c5a2a3a5419637cbb86",
+  "exact_documentation_paths": [
+    "AUDIT.md",
+    "FORK_NOTES.md",
+    "research/RHRC/DOCUMENTATION_AUTHORITY.md",
+    "research/RHRC/VALIDATION_PROTOCOL.md",
+    "research/RHRC/graph/OPICA_FOLLOWUP_CURRENT_STATE.md",
+    "research/RHRC/graph/README.md",
+    "research/RHRC/integration/README.md"
+  ],
+  "independent_code_review": [
+    "All seven exact paths and bytes are fixed in parent-owned code and separately sealed; one invalid row or byte removes the entire exception",
+    "Editable source registers, protection descriptors and continuation manifests cannot repin the reviewed bytes",
+    "Missing, traversal, case-aliased, symlink and hardlink paths reject; original protected input object is independently pinned",
+    "Unlisted READMEs, mathematical source and historical registry objects retain their checks",
+    "The full100 root-extension validation/projection and original formal mathematics are unchanged",
+    "Historical renderer blocks and wrapped historical bodies remain byte-identical; renderer checks all14living surfaces"
+  ],
+  "deliberate_reader_pin_update": {
+    "file": "research/RHRC/integration/opica_followup/build_receipt.py",
+    "constant": "PARENT_PROJECTION_VALIDATOR_SHA256",
+    "previous_sha256": "cb46e19672a54db2d133be5aa3e0619b4aa194ee42535d04d763687d8740412b",
+    "new_sha256": "9f349df6d48e1ef6f756d877e0b49d825f2d3bb88b9372e4019bf51c23817a2c",
+    "reason": "Explicit source review above; this pin change is not derived from editable evidence metadata"
+  },
+  "full_root_extension": "STILL_REJECTS_ABSENT_FULL100_REVIEWED_TYPES",
+  "original_primary_roots": 100,
+  "acceptance_units": 28,
+  "frozen_statement_changes": [],
+  "new_assumptions": [],
+  "parent_mathematical_source_changes": [],
+  "human_mathematical_approval": "NOT_ESTABLISHED",
+  "full_release_accepted": false,
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "independent_closing_inequalities": "OPEN"
+}

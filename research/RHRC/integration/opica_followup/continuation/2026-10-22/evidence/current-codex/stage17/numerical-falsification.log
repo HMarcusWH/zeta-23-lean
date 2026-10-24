@@ -1,0 +1,22 @@
+rho = (0.75 + 10.0j): kappa = (100.1875 - 5.0j), |zeta(rho)| = 1.46589, boundary amplitude A = zeta(rho)/b = (0.75445794 + 7.3111967j)
+  plateau: h~(1/2) = (-4.9651229 - 6.3888255j) (1 - A 2^(1-rho) = (-4.9651229 - 6.3888255j)), not 1
+  int_1^50 |h|^2 = 723.7037 (grows like X^(2 Re rho - 1)),  int_1^50 |h~|^2 = 98.480823
+  int_1^200 |h|^2 = 1505.0363 (grows like X^(2 Re rho - 1)),  int_1^200 |h~|^2 = 108.11769
+  tail x =   10.3: h~ = (1.358989 + 0.40270993j), residual * x^3 = 1.13486
+  tail x =   50.7: h~ = (-0.43469279 - 0.023289815j), residual * x^3 = 1.49379
+  tail x =  190.2: h~ = (-0.13288755 + 0.091192992j), residual * x^3 = 1.62143
+  (3) xi =   0.0: F_log psi~ = (1.4639986 + 0.00018231662j), kappa zeta/(a - kappa) = (1.4639986 + 0.00018231635j), rel diff 3.79e-9;  control h truncated at 50 / 200: |diff| = 1.679 / 2.889 (predicted drift scale 2.763)
+  (3) xi =   4.0: F_log psi~ = (-0.72279257 - 0.11566154j), kappa zeta/(a - kappa) = (-0.72279257 - 0.11566155j), rel diff 1.01e-8;  control h truncated at 50 / 200: |diff| = 3.054 / 4.693 (predicted drift scale 4.603)
+  (3) xi =   9.5: F_log psi~ = (-12.505624 - 6.2238695j), kappa zeta/(a - kappa) = (-12.505624 - 6.2238695j), rel diff 9.27e-10;  control h truncated at 50 / 200: |diff| = 34.8 / 49.54 (predicted drift scale 49.44)
+  (3) xi =  17.0: F_log psi~ = (1.065688 + 0.3948255j), kappa zeta/(a - kappa) = (1.065688 + 0.39482549j), rel diff 1.91e-8;  control h truncated at 50 / 200: |diff| = 2.892 / 3.906 (predicted drift scale 3.946)
+rho = (0.6 + 3.0j): kappa = (9.24 - 0.6j), |zeta(rho)| = 0.55861, boundary amplitude A = zeta(rho)/b = (0.15928496 + 0.84674096j)
+  plateau: h~(1/2) = (0.12651615 + 0.72768013j) (1 - A 2^(1-rho) = (0.12651615 + 0.72768013j)), not 1
+  int_1^50 |h|^2 = 6.4114529 (grows like X^(2 Re rho - 1)),  int_1^50 |h~|^2 = 1.8273064
+  int_1^200 |h|^2 = 9.1270561 (grows like X^(2 Re rho - 1)),  int_1^200 |h~|^2 = 2.1814854
+  tail x =   10.3: h~ = (-0.11432207 - 0.16201955j), residual * x^3 = 0.129176
+  tail x =   50.7: h~ = (0.059104748 - 0.047442349j), residual * x^3 = 0.129932
+  tail x =  190.2: h~ = (-0.0024046405 + 0.034228786j), residual * x^3 = 0.148205
+  (3) xi =   0.0: F_log psi~ = (1.5007849 + 0.0026983605j), kappa zeta/(a - kappa) = (1.5007849 + 0.0026983605j), rel diff 3.41e-10;  control h truncated at 50 / 200: |diff| = 0.3944 / 0.644 (predicted drift scale 0.4876)
+  (3) xi =   4.0: F_log psi~ = (0.80752851 - 0.00095737313j), kappa zeta/(a - kappa) = (0.80752851 - 0.00095737381j), rel diff 8.48e-10;  control h truncated at 50 / 200: |diff| = 1.306 / 1.389 (predicted drift scale 1.456)
+  (3) xi =   9.5: F_log psi~ = (0.17286202 - 0.0064049704j), kappa zeta/(a - kappa) = (0.17286202 - 0.0064049694j), rel diff 6.91e-9;  control h truncated at 50 / 200: |diff| = 0.2167 / 0.1875 (predicted drift scale 0.2251)
+  (3) xi =  17.0: F_log psi~ = (0.066210042 + 0.02523419j), kappa zeta/(a - kappa) = (0.066210044 + 0.025234188j), rel diff 2.82e-8;  control h truncated at 50 / 200: |diff| = 0.1044 / 0.08107 (predicted drift scale 0.1045)

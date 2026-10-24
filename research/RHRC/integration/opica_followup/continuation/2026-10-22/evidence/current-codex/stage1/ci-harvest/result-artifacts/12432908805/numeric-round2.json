@@ -1,0 +1,220 @@
+{
+  "status": "PASS_NUMERICAL_CONSISTENCY_NOT_INTERVAL_CERTIFIED",
+  "python": "3.13.16",
+  "mpmath": "1.3.0",
+  "decimal_precision": 50,
+  "cases": 15,
+  "controls": [
+    {
+      "test": "finite_Green_with_boundary",
+      "rho": {
+        "re": "0.7",
+        "im": "2.0"
+      },
+      "R": "6.25",
+      "absolute_error": "2.1548517993319731117484183231448577e-50",
+      "scaled_error": "1.0121389686529996749858099439785986e-51",
+      "boundary": {
+        "re": "-0.23605617685887281609527546999481317",
+        "im": "1.2402324215577828822881248036714994"
+      },
+      "boundary_free_mismatch": "1.2624971200427783598855561420088793"
+    },
+    {
+      "test": "finite_Green_with_boundary",
+      "rho": {
+        "re": "0.5",
+        "im": "4.0"
+      },
+      "R": "7.3",
+      "absolute_error": "3.4211388289180104270598866779538968e-49",
+      "scaled_error": "1.1591438309161520664243845367037123e-51",
+      "boundary": {
+        "re": "-5.9040326023961470798687714356500881",
+        "im": "0.0"
+      },
+      "boundary_free_mismatch": "5.9040326023961470798687714356500881"
+    },
+    {
+      "test": "finite_Green_with_boundary",
+      "rho": {
+        "re": "0.25",
+        "im": "7.0"
+      },
+      "R": "5.4",
+      "absolute_error": "5.4738221262688166832958186847262349e-48",
+      "scaled_error": "9.2138382075029196156754118531309567e-52",
+      "boundary": {
+        "re": "-148.32085140450197838876969323857223",
+        "im": "-200.55786735058830740103650488066122"
+      },
+      "boundary_free_mismatch": "249.44444896123171069568936580240078"
+    },
+    {
+      "test": "finite_sum_EM_consistency",
+      "rho": {
+        "re": "0.7",
+        "im": "2.0"
+      },
+      "rows": [
+        {
+          "x": "100.37",
+          "error": "0.000000040220721986982257471724427278668895",
+          "scaled_x_cubed": "0.040668825903389996697587219858947869"
+        },
+        {
+          "x": "200.37",
+          "error": "0.0000000050515477843038442215371251478145187",
+          "scaled_x_cubed": "0.040637086186064897091840227952058756"
+        },
+        {
+          "x": "400.37",
+          "error": "0.00000000063294945119903791019532672556807673",
+          "scaled_x_cubed": "0.040621280712268006914884354616216162"
+        },
+        {
+          "x": "800.37",
+          "error": "7.9213075865054153985582913937995571e-11",
+          "scaled_x_cubed": "0.040613393842262847465595231603269219"
+        }
+      ],
+      "scope": "finite sample; not a certified asymptotic bound"
+    },
+    {
+      "test": "finite_sum_EM_consistency",
+      "rho": {
+        "re": "0.5",
+        "im": "4.0"
+      },
+      "rows": [
+        {
+          "x": "100.37",
+          "error": "0.000000079222577398758926438346745474507156",
+          "scaled_x_cubed": "0.080105205692000130530257118131688522"
+        },
+        {
+          "x": "200.37",
+          "error": "0.000000010001005072829893908827233337216712",
+          "scaled_x_cubed": "0.080452907197010390761708083090678284"
+        },
+        {
+          "x": "400.37",
+          "error": "0.0000000012563468115792781926014003189501081",
+          "scaled_x_cubed": "0.080629529591102225424242287957335586"
+        },
+        {
+          "x": "800.37",
+          "error": "0.00000000015743484441212392121441138495560623",
+          "scaled_x_cubed": "0.080718533787244847716852214133421072"
+        }
+      ],
+      "scope": "finite sample; not a certified asymptotic bound"
+    },
+    {
+      "test": "finite_sum_EM_consistency",
+      "rho": {
+        "re": "0.25",
+        "im": "7.0"
+      },
+      "rows": [
+        {
+          "x": "100.37",
+          "error": "0.00000013480167987717821073659609104205642",
+          "scaled_x_cubed": "0.13630352165691693540359516809488415"
+        },
+        {
+          "x": "200.37",
+          "error": "0.000000017264064263026630720874310027342361",
+          "scaled_x_cubed": "0.13888045750220664029353663810422496"
+        },
+        {
+          "x": "400.37",
+          "error": "0.0000000021843459469060459719104238830995437",
+          "scaled_x_cubed": "0.14018643939715328894074263185962349"
+        },
+        {
+          "x": "800.37",
+          "error": "0.00000000027470427490904542109003841153268688",
+          "scaled_x_cubed": "0.14084382894107780121817346104978271"
+        }
+      ],
+      "scope": "finite sample; not a certified asymptotic bound"
+    },
+    {
+      "test": "explicit_negative_interval_samples",
+      "delta": "-0.4",
+      "gamma": 16,
+      "sample_count": 17,
+      "min_margin": "5.1072335927149006772446824058540695",
+      "scope": "synthetic parameters; not a hypothetical zero computation"
+    },
+    {
+      "test": "explicit_negative_interval_samples",
+      "delta": "-0.4",
+      "gamma": 20,
+      "sample_count": 17,
+      "min_margin": "6.5336599054772972721927170267141181",
+      "scope": "synthetic parameters; not a hypothetical zero computation"
+    },
+    {
+      "test": "explicit_negative_interval_samples",
+      "delta": "-0.4",
+      "gamma": 40,
+      "sample_count": 17,
+      "min_margin": "13.772824142237342028898227651467344",
+      "scope": "synthetic parameters; not a hypothetical zero computation"
+    },
+    {
+      "test": "explicit_negative_interval_samples",
+      "delta": "0",
+      "gamma": 16,
+      "sample_count": 17,
+      "min_margin": "4.9839336686602534307188281083621994",
+      "scope": "synthetic parameters; not a hypothetical zero computation"
+    },
+    {
+      "test": "explicit_negative_interval_samples",
+      "delta": "0",
+      "gamma": 20,
+      "sample_count": 17,
+      "min_margin": "6.4318210810693620668627369654725785",
+      "scope": "synthetic parameters; not a hypothetical zero computation"
+    },
+    {
+      "test": "explicit_negative_interval_samples",
+      "delta": "0",
+      "gamma": 40,
+      "sample_count": 17,
+      "min_margin": "13.718519270353169687466599894429451",
+      "scope": "synthetic parameters; not a hypothetical zero computation"
+    },
+    {
+      "test": "explicit_negative_interval_samples",
+      "delta": "0.25",
+      "gamma": 16,
+      "sample_count": 17,
+      "min_margin": "5.0320482782293445533770699495551487",
+      "scope": "synthetic parameters; not a hypothetical zero computation"
+    },
+    {
+      "test": "explicit_negative_interval_samples",
+      "delta": "0.25",
+      "gamma": 20,
+      "sample_count": 17,
+      "min_margin": "6.4715757355566512208672869905328128",
+      "scope": "synthetic parameters; not a hypothetical zero computation"
+    },
+    {
+      "test": "explicit_negative_interval_samples",
+      "delta": "0.25",
+      "gamma": 40,
+      "sample_count": 17,
+      "min_margin": "13.739728624731898339271092166207586",
+      "scope": "synthetic parameters; not a hypothetical zero computation"
+    }
+  ],
+  "script_sha256": "87be185b244b86633edd183eb88008d7c72ff31fb0ed83abc3fd36ec45453626",
+  "infinite_theorem_certification": false,
+  "new_Lean_roots": 0,
+  "independent_review": false
+}

@@ -1,0 +1,121 @@
+{
+  "total_count": 1,
+  "jobs": [
+    {
+      "id": 119868154443,
+      "run_id": 39791294271,
+      "workflow_name": "RHRC post-198 Q14 parity source mechanism",
+      "head_branch": "research/opica-native-followup",
+      "run_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/runs/39791294271",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOT94UfM8AAAAb6LLiSw",
+      "head_sha": "9ccea78eb5ee0c097bde05424e43de58a589b713",
+      "url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/jobs/119868154443",
+      "html_url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39791294271/job/119868154443",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-22T13:56:50Z",
+      "started_at": "2026-10-22T14:08:38Z",
+      "completed_at": "2026-10-22T14:33:06Z",
+      "name": "post198-q14-source-mechanism",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-22T14:08:39Z",
+          "completed_at": "2026-10-22T14:08:40Z"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-22T14:08:40Z",
+          "completed_at": "2026-10-22T14:09:40Z"
+        },
+        {
+          "name": "Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-22T14:09:40Z",
+          "completed_at": "2026-10-22T14:09:40Z"
+        },
+        {
+          "name": "Install R003 numerical audit requirements",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-22T14:09:40Z",
+          "completed_at": "2026-10-22T14:10:03Z"
+        },
+        {
+          "name": "Check four-way second-derivative channel implementation",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-22T14:10:03Z",
+          "completed_at": "2026-10-22T14:12:54Z"
+        },
+        {
+          "name": "Check post-#198 source-mechanism scope",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-10-22T14:12:54Z",
+          "completed_at": "2026-10-22T14:12:55Z"
+        },
+        {
+          "name": "Probe post-#198 source-mechanism schedule",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-10-22T14:12:55Z",
+          "completed_at": "2026-10-22T14:12:56Z"
+        },
+        {
+          "name": "Certify post-#198 Q14 parity source mechanism",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-10-22T14:12:56Z",
+          "completed_at": "2026-10-22T14:33:03Z"
+        },
+        {
+          "name": "Post Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15,
+          "started_at": "2026-10-22T14:33:03Z",
+          "completed_at": "2026-10-22T14:33:03Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 16,
+          "started_at": "2026-10-22T14:33:03Z",
+          "completed_at": "2026-10-22T14:33:03Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 17,
+          "started_at": "2026-10-22T14:33:03Z",
+          "completed_at": "2026-10-22T14:33:03Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/check-runs/119868154443",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 1000117228,
+      "runner_name": "GitHub Actions 1000117228",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    }
+  ]
+}

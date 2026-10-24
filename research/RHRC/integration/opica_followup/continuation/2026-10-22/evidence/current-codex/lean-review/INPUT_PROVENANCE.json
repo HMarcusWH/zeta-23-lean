@@ -1,0 +1,50 @@
+{
+  "archive": "C:/Users/macka/Downloads/OPICA_PR294_CORE_Code_Papers_Instructions_2026-10-22.zip",
+  "archive_sha256": "9c076a533291adb814f776018126330b6b2125a852548622ce196c6a0afcf88d",
+  "records": [
+    {
+      "module": "ComplexLocalMeasures.lean",
+      "zip_entry": "OPICA_Single_Source_Kit_2026-10-22/workspace/Zeta23/OPICAFollowup/ComplexLocalMeasures.lean",
+      "loose_file": "C:/Users/macka/Downloads/ComplexLocalMeasures (1).lean",
+      "bytes": 66114,
+      "sha256": "43d96d5474819b79c29853a81f8b4398f16d298470c2100fdade3fcada3a25b8",
+      "byte_identical": true
+    },
+    {
+      "module": "MaskedNativeRate.lean",
+      "zip_entry": "OPICA_Single_Source_Kit_2026-10-22/workspace/Zeta23/OPICAFollowup/MaskedNativeRate.lean",
+      "loose_file": "C:/Users/macka/Downloads/MaskedNativeRate (1).lean",
+      "bytes": 40510,
+      "sha256": "3fcb70e2fa504b5ef14d44c5a9d862f9bac4c8853556ed6e64a6f7e1066545c4",
+      "byte_identical": true
+    },
+    {
+      "module": "AuxiliaryCompletions.lean",
+      "zip_entry": "OPICA_Single_Source_Kit_2026-10-22/workspace/Zeta23/OPICAFollowup/AuxiliaryCompletions.lean",
+      "loose_file": "C:/Users/macka/Downloads/AuxiliaryCompletions (2).lean",
+      "bytes": 77619,
+      "sha256": "4dd849389b193ec3fbdbe718c30d62c7212b2d9e4b369437640d8b81804746dd",
+      "byte_identical": true
+    },
+    {
+      "consumer": "ExpectedMasks.lean",
+      "zip_entry": "OPICA_Single_Source_Kit_2026-10-22/consumers/ExpectedMasks.lean",
+      "bytes": 5457,
+      "sha256": "46ebd67a354c4d73b4fbdd777a62594d10cbafe38b3d8db8029c5ba5570d6503"
+    },
+    {
+      "consumer": "ExpectedComplex.lean",
+      "zip_entry": "OPICA_Single_Source_Kit_2026-10-22/consumers/ExpectedComplex.lean",
+      "bytes": 4688,
+      "sha256": "2d84b62e92e93c133bed5b827e44e583db9d22d7c48bc38868f1ddf5c5373c1c"
+    },
+    {
+      "consumer": "ExpectedAuxiliary.lean",
+      "zip_entry": "OPICA_Single_Source_Kit_2026-10-22/consumers/ExpectedAuxiliary.lean",
+      "bytes": 4395,
+      "sha256": "133c23de7e4f473575d0a18645dc47ae9924c73fe1066c00d63ccb069da31623"
+    }
+  ],
+  "isolated_base": "9b6a9a3a2badb4cff62a56c1158d9cef8759d30d",
+  "main_modified": false
+}

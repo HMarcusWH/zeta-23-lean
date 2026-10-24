@@ -1,0 +1,23 @@
+rho1 = (0.5 + 14.1347251417j)  kappa = (200.040454832 + 0.0j)
+test on (0.6, 3.7): atoms sum = 1.604532088
+  <x^2 h', phi'>      = (13.075354416852 + 0.0j)
+  -<h, (x^2 phi')'>    = (13.075354416852 + 0.0j)
+  kappa(<h-1,phi>+sum) = (13.075354416852 + 0.0j)   |diff| = 1.89e-29
+  without atoms        = (-307.8959743 + 0.0j)   |diff| = 321.0
+  homogeneous kappa<h,phi> = (-8.018922157 + 0.0j)   |diff| = 21.1
+test on (1.2, 1.9): atoms sum = 0.0
+  <x^2 h', phi'>      = (0.011823232696334 + 0.0j)
+  -<h, (x^2 phi')'>    = (0.011823232696334 + 0.0j)
+  kappa(<h-1,phi>+sum) = (0.011823232696334 + 0.0j)   |diff| = 2.31e-30
+  without atoms        = (0.0118232327 + 0.0j)   |diff| = 2.31e-30
+  homogeneous kappa<h,phi> = (0.02325849239 + 0.0j)   |diff| = 0.0114
+test on (2.5, 6.4): atoms sum = 2.553790454
+  <x^2 h', phi'>      = (54.445861139758 + 0.0j)
+  -<h, (x^2 phi')'>    = (54.445861139758 + 0.0j)
+  kappa(<h-1,phi>+sum) = (54.445861139758 + 0.0j)   |diff| = 6.31e-29
+  without atoms        = (-456.4155428 + 0.0j)   |diff| = 511.0
+  homogeneous kappa<h,phi> = (17.80012791 + 0.0j)   |diff| = 36.6
+bump at 1, radius 0.4   : <x^2h',phi'> - kappa<h-1,phi> = 200.04045483239 (kappa = 200.04045483239); kappa<h-1,phi> = -347.102
+bump at 1, radius 0.1   : <x^2h',phi'> - kappa<h-1,phi> = 200.04045483239 (kappa = 200.04045483239); kappa<h-1,phi> = -71.1092
+bump at 1, radius 0.02  : <x^2h',phi'> - kappa<h-1,phi> = 200.04045483239 (kappa = 200.04045483239); kappa<h-1,phi> = -3.18934
+bump at 1, radius 0.004 : <x^2h',phi'> - kappa<h-1,phi> = 200.04045483239 (kappa = 200.04045483239); kappa<h-1,phi> = -0.128959

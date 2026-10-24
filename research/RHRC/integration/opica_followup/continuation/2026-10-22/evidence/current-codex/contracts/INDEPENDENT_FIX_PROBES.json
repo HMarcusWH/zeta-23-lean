@@ -1,0 +1,46 @@
+{
+  "paired_child_routes": {
+    "status": "REJECTED",
+    "message": "OPICA follow-up extension: child supporting objects must remain route-less: Zeta23.OPICAFollowup.sourceFamily_zero_eq_original"
+  },
+  "empty_child_statement_with_honest_digest": {
+    "status": "REJECTED",
+    "message": "OPICA follow-up extension: child quantified statement missing: Zeta23.OPICAFollowup.sourceFamily_zero_eq_original"
+  },
+  "unknown_self_duplicate_child_dependencies": {
+    "status": "REJECTED",
+    "message": "OPICA follow-up extension: child registered dependency identities invalid: Zeta23.OPICAFollowup.sourceFamily_zero_eq_original"
+  },
+  "changed_statement_stale_digest": {
+    "status": "REJECTED",
+    "message": "OPICA follow-up extension: child quantified statement differs from reviewed text: Zeta23.OPICAFollowup.sourceFamily_zero_eq_original"
+  },
+  "subset41_rejected": {
+    "status": "REJECTED",
+    "message": "OPICA follow-up extension: full child reviewed type table absent; subset cannot extend parent"
+  },
+  "actual_current41_fallback": {
+    "errors": [
+      "follow-up extension rejected: OPICA follow-up extension: full child reviewed type table absent; subset cannot extend parent"
+    ],
+    "allowed_delta_count": 0,
+    "raw_context_preserved": true
+  },
+  "builder_exporter_project_imports": {
+    "build_commands": [
+      "[args.lake, 'build', 'Zeta23.OPICAFollowup.Validation', 'Zeta23.RHRC.OpicaTypeExprExport', 'Zeta23.RHRC.SourceCandidateResolution']"
+    ],
+    "exporter_imports": [
+      "Zeta23.OPICAFollowup.Validation",
+      "Zeta23.RHRC.OpicaTypeExprExport",
+      "Zeta23.RHRC.SourceCandidateResolution"
+    ],
+    "all_direct_project_imports_explicitly_named": true,
+    "cold_compiler_rerun_performed_by_this_review": false,
+    "still41_subset_only": true
+  },
+  "pending_full_reader": {
+    "delivered_py_files": [],
+    "state_limitation": "Draft all-100 reader explicitly not delivered. No new full-release authority."
+  }
+}

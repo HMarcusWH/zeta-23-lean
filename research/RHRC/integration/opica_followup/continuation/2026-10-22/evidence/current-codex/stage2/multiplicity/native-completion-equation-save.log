@@ -1,0 +1,4 @@
+'Zeta23.CCM.nativeIntegerTranslate_causal_convolution_comm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.nativeOriginalPrimeField_zero_of_neg' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.nativeCompletedInput_equation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.CCM.nativeCompletedInput_equation_integrable' depends on axioms: [propext, Classical.choice, Quot.sound]

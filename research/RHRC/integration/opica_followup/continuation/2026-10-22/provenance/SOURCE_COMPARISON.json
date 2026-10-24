@@ -1,0 +1,51 @@
+{
+  "tracked_count": 2437,
+  "incoming_changes": [
+    {
+      "path": "Zeta23/OPICAFollowup/AuxiliaryCompletions.lean",
+      "base": "34b87ef216e20efdafc8fe1d52b4c02956aca923e6d37611c67afd736f4144cd",
+      "incoming": "4dd849389b193ec3fbdbe718c30d62c7212b2d9e4b369437640d8b81804746dd",
+      "line_endings_only": false
+    },
+    {
+      "path": "Zeta23/OPICAFollowup/ComplexLocalMeasures.lean",
+      "base": "f0ad4f676760d83099b5e2df839955030ec927cba6797eb95af37159633c4706",
+      "incoming": "43d96d5474819b79c29853a81f8b4398f16d298470c2100fdade3fcada3a25b8",
+      "line_endings_only": false
+    },
+    {
+      "path": "Zeta23/OPICAFollowup/MaskedNativeRate.lean",
+      "base": "44aea4525c8d1029ec5e59f2ae67c9d8c49fc87efc2ca28754d1a630c67f5359",
+      "incoming": "3fcb70e2fa504b5ef14d44c5a9d862f9bac4c8853556ed6e64a6f7e1066545c4",
+      "line_endings_only": false
+    },
+    {
+      "path": "research/RHRC/integration/opica/tests/test_contract.py",
+      "base": "267d5e11d7574d98d9137fb58dc79672503553686bc5f4695f84f1adf42358ad",
+      "incoming": "4d7523ff61b728fb575a955ce8fd52cb2b038439a03927c4762e3ad923e3cebf",
+      "line_endings_only": false
+    },
+    {
+      "path": "research/RHRC/integration/opica/validate_contract.py",
+      "base": "bff086d1b6a6a189a56e04e66cb1ef7a35de383293165d150bc5a627fb89a9ce",
+      "incoming": "cb46e19672a54db2d133be5aa3e0619b4aa194ee42535d04d763687d8740412b",
+      "line_endings_only": false
+    },
+    {
+      "path": "research/RHRC/integration/opica_followup/build_receipt.py",
+      "base": "00451b54e36053210c66889875a2fce6f2d38e59512ba5cd1ea957ab2a6ce6f7",
+      "incoming": "2d531a4e5ce5ff3c34bea01a57632e8f71b268033a067b9c7a0c9928fa275c22",
+      "line_endings_only": false
+    }
+  ],
+  "extra": [
+    "Zeta23/OPICAFollowup/Consumers.lean",
+    "Zeta23/OPICAFollowup/DilatedComb.lean",
+    "Zeta23/OPICAFollowup/FirstCellCost.lean",
+    "Zeta23/OPICAFollowup/MultiplicityTail.lean",
+    "Zeta23/OPICAFollowup/RenormalizedCoPoisson.lean"
+  ],
+  "missing": [],
+  "state_matches_actual_inventory": true,
+  "guards_passed": true
+}

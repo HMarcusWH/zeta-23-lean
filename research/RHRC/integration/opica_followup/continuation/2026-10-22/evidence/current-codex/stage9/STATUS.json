@@ -1,0 +1,159 @@
+{
+ "schema": "OPICA_STAGE9_NARROW_GATE_V1",
+ "status": "PASS_NARROW_LOCAL_GATES_ONLY_AGGREGATE_AND_FULL_RELEASE_OPEN",
+ "checked_commit": "b67ab3f74730f07b0ddbcef6e27214b3e6fb8228",
+ "checked_tree": "609536bfbdd3a502a756897ecfebdfb1381e7648",
+ "dirty_status_during_checks": "",
+ "compiler": "Lean 4.33.0-rc2 commit d8b18978322de05a8f3dba51ef03cf5461676c17 (Linux x86_64), Lake 5.0.0-src+d8b1897",
+ "mathlib": "51e6992efd06126df61a496bebf8f49482a4e129 (pins unchanged; no lake update)",
+ "new_module": {
+  "module": "Zeta23.OPICAFollowup.ZeroProfiles",
+  "project_imports": [
+   "Zeta23.OPICAFollowup.RenormalizedCoPoisson",
+   "Zeta23.OPICAFollowup.ProfileEulerMaclaurin"
+  ],
+  "authority": "BUILD_MANIFEST direct_project_imports of this module is exactly these two modules",
+  "required_definitions_present": [
+   "spectralKappa",
+   "zeroProfile"
+  ]
+ },
+ "existing_lean_sources_changed": false,
+ "cache_owner": "single local process; the module was built from this exact source in the session (lake rebuilds on source hash change), and the runner build re-validated it",
+ "sources": [
+  {
+   "path": "Zeta23/OPICAFollowup/ZeroProfiles.lean",
+   "sha256": "d5ee76f621001bcd97e555cd6a92517349080d4315c86a496289acf49a7af7fc",
+   "bytes": 44291
+  },
+  {
+   "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedZeroProfiles.lean",
+   "sha256": "33ad11294eda85f3b5b3bddb83287e5208ed4bb965d574e42c227ec0ef74a485",
+   "bytes": 9605
+  },
+  {
+   "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/run_candidate_checks.py",
+   "sha256": "c36640e7976806e421f13c23d40c14ad8aacd285a2408fe46f139a74246442cd",
+   "bytes": 6541
+  },
+  {
+   "path": ".github/workflows/rhrc_opica_followup.yml",
+   "sha256": "ae43b1b9a19429ee8f51e9c3099d5825e4b96d50e04914cd896edada942668ad",
+   "bytes": 44419
+  },
+  {
+   "path": "lean-toolchain",
+   "sha256": "0d3c76ccd8772d8bcbe207241421a760312b71a6aa82f84194391fdf5cb026d6",
+   "bytes": 29
+  },
+  {
+   "path": "lake-manifest.json",
+   "sha256": "1847b362e15efd927e75aa8b5442e491f998e4a3f730f9dcaca9841f2957c448",
+   "bytes": 3200
+  }
+ ],
+ "roots": {
+  "Zeta23.OPICAFollowup.zero_profile_regular_selfdual": {
+   "paper": "R2-S1a",
+   "expected_type_consumer": "consumers/ExpectedZeroProfiles.lean (11 receipts, shared)",
+   "actual_domain": "h = 1 - zero-measure density on the line; h(0) = F h(0) = int h = 1; construction clauses at rho = 3/4 (continuity, evenness, plateau)",
+   "premises": "riemannZeta rho = 0, 0 < Re rho < 1 (rho != 1/2 derived from parent real-segment nonvanishing)",
+   "axioms": "propext, Classical.choice, Quot.sound"
+  },
+  "Zeta23.OPICAFollowup.zero_profile_tail_and_jumps": {
+   "paper": "R2-S1a",
+   "expected_type_consumer": "consumers/ExpectedZeroProfiles.lean (11 receipts, shared)",
+   "actual_domain": "uniqueness of the one-sided derivatives in the jump clause; absolute summability of h(n); construction clauses at rho = 3/4 (exact cell derivatives, jump formula)",
+   "premises": "riemannZeta rho = 0, 0 < Re rho < 1",
+   "axioms": "propext, Classical.choice, Quot.sound"
+  },
+  "re_verified_narrow_roots": [
+   "all roots consumed by the sixteen runner consumer files"
+  ]
+ },
+ "gates": [
+  {
+   "label": "narrow runner (11 modules, 16 consumer files)",
+   "log": "runner/CHECK_RESULT.json",
+   "sha256": "3443b9f1c17baa13cd7cb215e13e8dc3cc55383fd67e47b988dfe52f14b458dd",
+   "exit_code": 0,
+   "runner_status": "PASS_NARROW_ONLY",
+   "consumer_receipts": {
+    "ExpectedMasks": 4,
+    "ExpectedComplex": 4,
+    "ExpectedAuxiliary": 6,
+    "ExpectedMultiplicity": 17,
+    "ExpectedComb": 5,
+    "ExpectedFirstCell": 5,
+    "ExpectedWeighted": 9,
+    "ExpectedNearGap": 5,
+    "ExpectedNearGapLimit": 10,
+    "ExpectedNormalizedLimit": 9,
+    "ExpectedWeightedInverse": 17,
+    "ExpectedCoPoissonFamily": 7,
+    "ExpectedCoPoissonOrderZero": 10,
+    "ExpectedZeroMeasure": 7,
+    "ExpectedEulerMaclaurin": 10,
+    "ExpectedZeroProfiles": 11
+   }
+  },
+  {
+   "label": "W04/W07 workflow consumer (unchanged heredoc)",
+   "log": "consumers/opica-w04-w07-expected.log",
+   "sha256": "47bf37f88ae44589a223145e24dd07655b7172bfca6a30bf819bb33c5251ac1e",
+   "exit_code": 0,
+   "standard_axiom_receipts": 52
+  },
+  {
+   "label": "W06 workflow consumer (unchanged heredoc)",
+   "log": "consumers/opica-w06-expected.log",
+   "sha256": "8564fc7fe7d8a2ef4ae561975e207ce6aa8e42accc8c35f0e6ed618ed26078ca",
+   "exit_code": 0,
+   "standard_axiom_receipts": 14
+  },
+  {
+   "label": "W01 consumers and exact-source subset",
+   "note": "not re-run locally: no existing Lean source changed and no W01 or subset module imports the new module; green in CI at the Stage 8 head (see harvest)"
+  },
+  {
+   "label": "child suite and parent contract tests",
+   "result": "child 185/185 and parent 82/82 in normal and optimized Python"
+  },
+  {
+   "label": "frozen control replay",
+   "result": "normal and optimized modes (p0 5112, round1 18862, round2 14672, final 1274 checks each); copoisson, round2 and final numerical suites CONSISTENCY_ONLY"
+  },
+  {
+   "label": "numerical falsification (mpmath 1.3.0, first zero, not interval certified)",
+   "script": "numerical-falsification.py",
+   "script_sha256": "013d6142da3013bf4c3a166ddd4b05c686bdd498f55ce6dd8054af4017f9060a",
+   "log": "numerical-falsification.log",
+   "log_sha256": "e686d02fd1a012049db3967cd6da93eea278c09033eef1065db6727f47da17ef",
+   "result": "F h = h to <= 1.5e-8 at xi = 0.4, 1.7, 3.25, 6.6; int_0^600 h = 0.4999999949; jumps at n = 1, 3, 10 match -kappa/n^2 to eight digits; x^3-scaled tail in [2.5, 9.6] for x in [5.5, 300]"
+  }
+ ],
+ "negative_controls": [
+  {
+   "file": "negative-controls/negative-zero-profiles.lean",
+   "expected": "REJECTED",
+   "observed": "REJECTED (9 errors, exit 1): tail sign -kappa; tail exponent -4; jump +kappa/n^2; h'(1-) = 1; plateau [-2, 2]; anti-self-duality; half-line integral 1; tail without the zero hypothesis; closed strip Re rho <= 1",
+   "log_sha256": "50cc5b52125cf3998783778b21353ed42da62c76b5e785584de3ad848c672a6f"
+  }
+ ],
+ "ci_harvest": {
+  "file": "ci-harvest-eacba23f.json",
+  "sha256": "f6bf1505a6aba261712e829a0812cb7c45ba5eb587baf66ffd15ee6a53ce25c5"
+ },
+ "not_established": [
+  "aggregate current-source export",
+  "full100 compiler receipt production/replay",
+  "facade and registration",
+  "parent-extension acceptance",
+  "canonical regeneration (rhkg-compiler-receipt remains red)",
+  "CI on the Stage 9 head (pending at publication)",
+  "converse direction (integrability of the profile implies a zero): DERIVED informally, not formalized"
+ ],
+ "RH": "OPEN",
+ "Step4": "OPEN",
+ "independent_closing_inequalities": "OPEN"
+}

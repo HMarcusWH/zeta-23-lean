@@ -1,0 +1,327 @@
+{
+  "total_count": 8,
+  "jobs": [
+    {
+      "id": 119867728239,
+      "run_id": 39791293698,
+      "workflow_name": "RHRC parallel closure campaign",
+      "head_branch": "research/opica-native-followup",
+      "run_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/runs/39791293698",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOT94UfM8AAAAb6Kxhbw",
+      "head_sha": "9ccea78eb5ee0c097bde05424e43de58a589b713",
+      "url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/jobs/119867728239",
+      "html_url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39791293698/job/119867728239",
+      "status": "in_progress",
+      "conclusion": null,
+      "created_at": "2026-10-22T13:56:04Z",
+      "started_at": "2026-10-22T14:36:52Z",
+      "completed_at": null,
+      "name": "lean-first-crossing",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-22T14:36:53Z",
+          "completed_at": "2026-10-22T14:36:54Z"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-22T14:36:54Z",
+          "completed_at": "2026-10-22T14:38:06Z"
+        },
+        {
+          "name": "Run leanprover/lean-action@v1",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-22T14:38:06Z",
+          "completed_at": "2026-10-22T14:39:02Z"
+        },
+        {
+          "name": "Build post-#278 parity first-crossing reduction",
+          "status": "in_progress",
+          "conclusion": null,
+          "number": 4,
+          "started_at": "2026-10-22T14:39:02Z",
+          "completed_at": null
+        },
+        {
+          "name": "Audit post-#278 first-crossing theorem axioms",
+          "status": "pending",
+          "conclusion": null,
+          "number": 5,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "pending",
+          "conclusion": null,
+          "number": 10,
+          "started_at": null,
+          "completed_at": null
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/check-runs/119867728239",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 1000117289,
+      "runner_name": "GitHub Actions 1000117289",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    },
+    {
+      "id": 119867728586,
+      "run_id": 39791293698,
+      "workflow_name": "RHRC parallel closure campaign",
+      "head_branch": "research/opica-native-followup",
+      "run_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/runs/39791293698",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOT94UfM8AAAAb6Kxiyg",
+      "head_sha": "9ccea78eb5ee0c097bde05424e43de58a589b713",
+      "url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/jobs/119867728586",
+      "html_url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39791293698/job/119867728586",
+      "status": "in_progress",
+      "conclusion": null,
+      "created_at": "2026-10-22T13:56:04Z",
+      "started_at": "2026-10-22T14:36:51Z",
+      "completed_at": null,
+      "name": "lean-d-bindings",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-22T14:36:52Z",
+          "completed_at": "2026-10-22T14:36:53Z"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-22T14:36:53Z",
+          "completed_at": "2026-10-22T14:38:06Z"
+        },
+        {
+          "name": "Run leanprover/lean-action@v1",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-22T14:38:06Z",
+          "completed_at": "2026-10-22T14:39:39Z"
+        },
+        {
+          "name": "Build Track D and exact obligation bindings",
+          "status": "in_progress",
+          "conclusion": null,
+          "number": 4,
+          "started_at": "2026-10-22T14:39:39Z",
+          "completed_at": null
+        },
+        {
+          "name": "Reject proof escapes in closure-campaign modules",
+          "status": "pending",
+          "conclusion": null,
+          "number": 5,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Audit Track D and obligation-binding theorem axioms",
+          "status": "pending",
+          "conclusion": null,
+          "number": 6,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "pending",
+          "conclusion": null,
+          "number": 12,
+          "started_at": null,
+          "completed_at": null
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/check-runs/119867728586",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 1000117290,
+      "runner_name": "GitHub Actions 1000117290",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    },
+    {
+      "id": 119867728743,
+      "run_id": 39791293698,
+      "workflow_name": "RHRC parallel closure campaign",
+      "head_branch": "research/opica-native-followup",
+      "run_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/runs/39791293698",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOT94UfM8AAAAb6KxjZw",
+      "head_sha": "9ccea78eb5ee0c097bde05424e43de58a589b713",
+      "url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/jobs/119867728743",
+      "html_url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39791293698/job/119867728743",
+      "status": "queued",
+      "conclusion": null,
+      "created_at": "2026-10-22T13:56:04Z",
+      "started_at": "2026-10-22T13:56:04Z",
+      "completed_at": null,
+      "name": "lean-a",
+      "steps": [],
+      "check_run_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/check-runs/119867728743",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 0,
+      "runner_name": "",
+      "runner_group_id": 0,
+      "runner_group_name": ""
+    },
+    {
+      "id": 119867728822,
+      "run_id": 39791293698,
+      "workflow_name": "RHRC parallel closure campaign",
+      "head_branch": "research/opica-native-followup",
+      "run_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/runs/39791293698",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOT94UfM8AAAAb6Kxjtg",
+      "head_sha": "9ccea78eb5ee0c097bde05424e43de58a589b713",
+      "url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/jobs/119867728822",
+      "html_url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39791293698/job/119867728822",
+      "status": "queued",
+      "conclusion": null,
+      "created_at": "2026-10-22T13:56:04Z",
+      "started_at": "2026-10-22T13:56:04Z",
+      "completed_at": null,
+      "name": "fast-integrity",
+      "steps": [],
+      "check_run_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/check-runs/119867728822",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 0,
+      "runner_name": "",
+      "runner_group_id": 0,
+      "runner_group_name": ""
+    },
+    {
+      "id": 119867728885,
+      "run_id": 39791293698,
+      "workflow_name": "RHRC parallel closure campaign",
+      "head_branch": "research/opica-native-followup",
+      "run_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/runs/39791293698",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOT94UfM8AAAAb6Kxj9Q",
+      "head_sha": "9ccea78eb5ee0c097bde05424e43de58a589b713",
+      "url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/jobs/119867728885",
+      "html_url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39791293698/job/119867728885",
+      "status": "queued",
+      "conclusion": null,
+      "created_at": "2026-10-22T13:56:04Z",
+      "started_at": "2026-10-22T13:56:04Z",
+      "completed_at": null,
+      "name": "lean-b",
+      "steps": [],
+      "check_run_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/check-runs/119867728885",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 0,
+      "runner_name": "",
+      "runner_group_id": 0,
+      "runner_group_name": ""
+    },
+    {
+      "id": 119867728959,
+      "run_id": 39791293698,
+      "workflow_name": "RHRC parallel closure campaign",
+      "head_branch": "research/opica-native-followup",
+      "run_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/runs/39791293698",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOT94UfM8AAAAb6KxkPw",
+      "head_sha": "9ccea78eb5ee0c097bde05424e43de58a589b713",
+      "url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/jobs/119867728959",
+      "html_url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39791293698/job/119867728959",
+      "status": "queued",
+      "conclusion": null,
+      "created_at": "2026-10-22T13:56:04Z",
+      "started_at": "2026-10-22T13:56:04Z",
+      "completed_at": null,
+      "name": "lean-contact",
+      "steps": [],
+      "check_run_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/check-runs/119867728959",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 0,
+      "runner_name": "",
+      "runner_group_id": 0,
+      "runner_group_name": ""
+    },
+    {
+      "id": 119867728961,
+      "run_id": 39791293698,
+      "workflow_name": "RHRC parallel closure campaign",
+      "head_branch": "research/opica-native-followup",
+      "run_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/runs/39791293698",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOT94UfM8AAAAb6KxkQQ",
+      "head_sha": "9ccea78eb5ee0c097bde05424e43de58a589b713",
+      "url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/jobs/119867728961",
+      "html_url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39791293698/job/119867728961",
+      "status": "queued",
+      "conclusion": null,
+      "created_at": "2026-10-22T13:56:04Z",
+      "started_at": "2026-10-22T13:56:04Z",
+      "completed_at": null,
+      "name": "lean-c",
+      "steps": [],
+      "check_run_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/check-runs/119867728961",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 0,
+      "runner_name": "",
+      "runner_group_id": 0,
+      "runner_group_name": ""
+    },
+    {
+      "id": 119867729151,
+      "run_id": 39791293698,
+      "workflow_name": "RHRC parallel closure campaign",
+      "head_branch": "research/opica-native-followup",
+      "run_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/runs/39791293698",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOT94UfM8AAAAb6Kxk_w",
+      "head_sha": "9ccea78eb5ee0c097bde05424e43de58a589b713",
+      "url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/jobs/119867729151",
+      "html_url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39791293698/job/119867729151",
+      "status": "queued",
+      "conclusion": null,
+      "created_at": "2026-10-22T13:56:04Z",
+      "started_at": "2026-10-22T13:56:04Z",
+      "completed_at": null,
+      "name": "lean-strength-audit",
+      "steps": [],
+      "check_run_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/check-runs/119867729151",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 0,
+      "runner_name": "",
+      "runner_group_id": 0,
+      "runner_group_name": ""
+    }
+  ]
+}

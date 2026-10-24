@@ -1,0 +1,3491 @@
+{
+  "schema": "OPICA_PR294_BOUNDED_DOCS_SNAPSHOT_V1",
+  "status": "INCOMPLETE_CI_SNAPSHOT_NO_ACCEPTANCE_PROMOTION",
+  "capture_start_utc": "2026-10-22T13:43:50Z",
+  "final_run_job_metadata_observed_through_utc": "2026-10-22T13:47:25Z",
+  "note": "Run/job API reads are sequential bounded observations, not an atomic state; run status can lag a just-completed job. Later completion is outside this snapshot.",
+  "pr": {
+    "number": 294,
+    "url": "https://github.com/HMarcusWH/zeta-23-lean/pull/294",
+    "state": "open",
+    "draft": true,
+    "head": "a77ae60427423e8b6f098596f300c8cecc6392b6",
+    "head_branch": "research/opica-native-followup",
+    "tree": "b1ebc2edbe0c07a486fcb5cae8df742c9e4745ed",
+    "base": "d53dd70d38b0762af130b1d19b795af259f505f5",
+    "synthetic_merge": "2735cbb15830808c5e6294c428f857d31ff09219",
+    "synthetic_merge_tree": "b1ebc2edbe0c07a486fcb5cae8df742c9e4745ed"
+  },
+  "run_count": 22,
+  "events": {
+    "pull_request": 21,
+    "push": 1
+  },
+  "run_status_counts": {
+    "in_progress": 9,
+    "completed": 3,
+    "queued": 10
+  },
+  "materialized_job_count": 55,
+  "job_status_counts": {
+    "completed": 13,
+    "in_progress": 15,
+    "queued": 27
+  },
+  "completed_job_conclusions": {
+    "success": 10,
+    "skipped": 1,
+    "failure": 2
+  },
+  "runs": [
+    {
+      "id": 39788683119,
+      "name": "Permansson v0.1.6 formal verification",
+      "event": "pull_request",
+      "head_sha": "a77ae60427423e8b6f098596f300c8cecc6392b6",
+      "status": "in_progress",
+      "conclusion": null,
+      "attempt": 1,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39788683119"
+    },
+    {
+      "id": 39788683511,
+      "name": "RHRC post-196 Q14 residual cell replay",
+      "event": "pull_request",
+      "head_sha": "a77ae60427423e8b6f098596f300c8cecc6392b6",
+      "status": "in_progress",
+      "conclusion": null,
+      "attempt": 1,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39788683511"
+    },
+    {
+      "id": 39788683487,
+      "name": "RHRC post-190 canonical realizability audit",
+      "event": "pull_request",
+      "head_sha": "a77ae60427423e8b6f098596f300c8cecc6392b6",
+      "status": "completed",
+      "conclusion": "success",
+      "attempt": 1,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39788683487"
+    },
+    {
+      "id": 39788683049,
+      "name": "RHRC post-202 Q14 composite parity gap",
+      "event": "pull_request",
+      "head_sha": "a77ae60427423e8b6f098596f300c8cecc6392b6",
+      "status": "in_progress",
+      "conclusion": null,
+      "attempt": 1,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39788683049"
+    },
+    {
+      "id": 39788683241,
+      "name": "RHRC OPICA full paper components",
+      "event": "pull_request",
+      "head_sha": "a77ae60427423e8b6f098596f300c8cecc6392b6",
+      "status": "queued",
+      "conclusion": null,
+      "attempt": 1,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39788683241"
+    },
+    {
+      "id": 39788683164,
+      "name": "RHRC post-284 source inertia campaign",
+      "event": "pull_request",
+      "head_sha": "a77ae60427423e8b6f098596f300c8cecc6392b6",
+      "status": "queued",
+      "conclusion": null,
+      "attempt": 1,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39788683164"
+    },
+    {
+      "id": 39788683265,
+      "name": "RHRC post-198 Q14 parity source mechanism",
+      "event": "pull_request",
+      "head_sha": "a77ae60427423e8b6f098596f300c8cecc6392b6",
+      "status": "queued",
+      "conclusion": null,
+      "attempt": 1,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39788683265"
+    },
+    {
+      "id": 39788682725,
+      "name": "OPICA follow-up draft checkpoint",
+      "event": "pull_request",
+      "head_sha": "a77ae60427423e8b6f098596f300c8cecc6392b6",
+      "status": "queued",
+      "conclusion": null,
+      "attempt": 1,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39788682725"
+    },
+    {
+      "id": 39788683063,
+      "name": "RHRC post268 complete audit replay",
+      "event": "pull_request",
+      "head_sha": "a77ae60427423e8b6f098596f300c8cecc6392b6",
+      "status": "queued",
+      "conclusion": null,
+      "attempt": 1,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39788683063"
+    },
+    {
+      "id": 39788683458,
+      "name": "RHRC post-282 contact calculus",
+      "event": "pull_request",
+      "head_sha": "a77ae60427423e8b6f098596f300c8cecc6392b6",
+      "status": "queued",
+      "conclusion": null,
+      "attempt": 1,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39788683458"
+    },
+    {
+      "id": 39788683560,
+      "name": "RHRC post290 source and output proof components",
+      "event": "pull_request",
+      "head_sha": "a77ae60427423e8b6f098596f300c8cecc6392b6",
+      "status": "queued",
+      "conclusion": null,
+      "attempt": 1,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39788683560"
+    },
+    {
+      "id": 39788683005,
+      "name": "RHRC parallel closure campaign",
+      "event": "pull_request",
+      "head_sha": "a77ae60427423e8b6f098596f300c8cecc6392b6",
+      "status": "queued",
+      "conclusion": null,
+      "attempt": 1,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39788683005"
+    },
+    {
+      "id": 39788682696,
+      "name": "RHRC post287 WP2 and WP4 interval research",
+      "event": "pull_request",
+      "head_sha": "a77ae60427423e8b6f098596f300c8cecc6392b6",
+      "status": "queued",
+      "conclusion": null,
+      "attempt": 1,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39788682696"
+    },
+    {
+      "id": 39788682749,
+      "name": "RHRC post-222 bi-regular zero-shift scalar",
+      "event": "pull_request",
+      "head_sha": "a77ae60427423e8b6f098596f300c8cecc6392b6",
+      "status": "in_progress",
+      "conclusion": null,
+      "attempt": 1,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39788682749"
+    },
+    {
+      "id": 39788682541,
+      "name": "RHRC post-214 kernel dual geometry",
+      "event": "pull_request",
+      "head_sha": "a77ae60427423e8b6f098596f300c8cecc6392b6",
+      "status": "in_progress",
+      "conclusion": null,
+      "attempt": 1,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39788682541"
+    },
+    {
+      "id": 39788683034,
+      "name": "RHRC post-194 parity trajectory sharp enclosure",
+      "event": "pull_request",
+      "head_sha": "a77ae60427423e8b6f098596f300c8cecc6392b6",
+      "status": "in_progress",
+      "conclusion": null,
+      "attempt": 1,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39788683034"
+    },
+    {
+      "id": 39788683451,
+      "name": "RHRC post287 focused Step3 checks",
+      "event": "pull_request",
+      "head_sha": "a77ae60427423e8b6f098596f300c8cecc6392b6",
+      "status": "in_progress",
+      "conclusion": null,
+      "attempt": 1,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39788683451"
+    },
+    {
+      "id": 39788683222,
+      "name": "RHRC post287 bounded signed-ray probe",
+      "event": "pull_request",
+      "head_sha": "a77ae60427423e8b6f098596f300c8cecc6392b6",
+      "status": "completed",
+      "conclusion": "success",
+      "attempt": 1,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39788683222"
+    },
+    {
+      "id": 39788683619,
+      "name": "RHRC post-192 parity trajectory rigidity",
+      "event": "pull_request",
+      "head_sha": "a77ae60427423e8b6f098596f300c8cecc6392b6",
+      "status": "completed",
+      "conclusion": "success",
+      "attempt": 1,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39788683619"
+    },
+    {
+      "id": 39788683161,
+      "name": "RHRC research and Lean checks",
+      "event": "pull_request",
+      "head_sha": "a77ae60427423e8b6f098596f300c8cecc6392b6",
+      "status": "in_progress",
+      "conclusion": null,
+      "attempt": 1,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39788683161"
+    },
+    {
+      "id": 39788683484,
+      "name": "RHRC post-200 Q14 discrepancy mechanism",
+      "event": "pull_request",
+      "head_sha": "a77ae60427423e8b6f098596f300c8cecc6392b6",
+      "status": "in_progress",
+      "conclusion": null,
+      "attempt": 1,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39788683484"
+    },
+    {
+      "id": 39788674148,
+      "name": "OPICA follow-up draft checkpoint",
+      "event": "push",
+      "head_sha": "a77ae60427423e8b6f098596f300c8cecc6392b6",
+      "status": "queued",
+      "conclusion": null,
+      "attempt": 1,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39788674148"
+    }
+  ],
+  "jobs": [
+    {
+      "run_id": 39788683119,
+      "workflow": "Permansson v0.1.6 formal verification",
+      "workflow_path": ".github/workflows/permansson-formal.yml",
+      "event": "pull_request",
+      "event_head_sha": "a77ae60427423e8b6f098596f300c8cecc6392b6",
+      "attempt": 1,
+      "job_id": 119858568603,
+      "name": "lean-permansson",
+      "status": "completed",
+      "conclusion": "success",
+      "classification": "FORMAL_VALIDITY_GATE",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39788683119/job/119858568603",
+      "steps": [
+        {
+          "number": 1,
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 2,
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 3,
+          "name": "Run leanprover/lean-action@v1",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 4,
+          "name": "Check Permansson Theorem 3.1 measurable-space formalization",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 5,
+          "name": "Reject placeholders and extra axioms",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 10,
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 11,
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ],
+      "actual_disposition": "PASS_COMPILER_BUILD of existing Zeta23.Permansson.Theorem31; no followup-root acceptance inferred",
+      "checked_commits_from_checkout_log": [
+        "2735cbb15830808c5e6294c428f857d31ff09219"
+      ],
+      "checked_tree": "b1ebc2edbe0c07a486fcb5cae8df742c9e4745ed",
+      "decoded_log_sha256": "9013f90358e31f6d463821ec8b1c54910a2a183dba37a03b5f816057ed1a5ef8"
+    },
+    {
+      "run_id": 39788683511,
+      "workflow": "RHRC post-196 Q14 residual cell replay",
+      "workflow_path": ".github/workflows/rhrc_post196_q14_residual_cell_replay.yml",
+      "event": "pull_request",
+      "event_head_sha": "a77ae60427423e8b6f098596f300c8cecc6392b6",
+      "attempt": 1,
+      "job_id": 119858570251,
+      "name": "post196-q14-residual-cell-replay",
+      "status": "in_progress",
+      "conclusion": null,
+      "classification": "RESEARCH_PRODUCING_CHECK",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39788683511/job/119858570251",
+      "steps": [
+        {
+          "number": 1,
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 2,
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 3,
+          "name": "Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 4,
+          "name": "Install R003 numerical audit requirements",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 5,
+          "name": "Check post-#196 residual-cell replay scope",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 6,
+          "name": "Probe frozen post-#196 residual-cell replay schedule",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 7,
+          "name": "Certify unique post-#195 budget-leaf replay",
+          "status": "in_progress",
+          "conclusion": null
+        },
+        {
+          "number": 13,
+          "name": "Post Run actions/setup-python@v5",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 14,
+          "name": "Post Run actions/checkout@v4",
+          "status": "pending",
+          "conclusion": null
+        }
+      ],
+      "actual_disposition": "PENDING_UNOBSERVED_RESULT; no pass or scientific disposition inferred"
+    },
+    {
+      "run_id": 39788683487,
+      "workflow": "RHRC post-190 canonical realizability audit",
+      "workflow_path": ".github/workflows/rhrc_post190_canonical_realizability.yml",
+      "event": "pull_request",
+      "event_head_sha": "a77ae60427423e8b6f098596f300c8cecc6392b6",
+      "attempt": 1,
+      "job_id": 119858569498,
+      "name": "post190-canonical-realizability",
+      "status": "completed",
+      "conclusion": "success",
+      "classification": "RESEARCH_PRODUCING_CHECK",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39788683487/job/119858569498",
+      "steps": [
+        {
+          "number": 1,
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 2,
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 3,
+          "name": "Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 4,
+          "name": "Install R003 numerical audit requirements",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 5,
+          "name": "Check post-#190 canonical-realizability plumbing",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 6,
+          "name": "Probe post-#190 canonical-realizability scope",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 7,
+          "name": "Certify post-#190 canonical realizability",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 13,
+          "name": "Post Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 14,
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 15,
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ],
+      "actual_disposition": "PASS_PLUMBING_AND_RESEARCH_CHECK with canonical realizability layers3/4/5 UNRESOLVED",
+      "checked_commits_from_checkout_log": [
+        "2735cbb15830808c5e6294c428f857d31ff09219"
+      ],
+      "checked_tree": "b1ebc2edbe0c07a486fcb5cae8df742c9e4745ed",
+      "decoded_log_sha256": "f2043d9c8a904a701537764ad90877ba84512ebc4942a1704e3cc32092a59f19"
+    },
+    {
+      "run_id": 39788683049,
+      "workflow": "RHRC post-202 Q14 composite parity gap",
+      "workflow_path": ".github/workflows/rhrc_post202_q14_composite_parity_gap.yml",
+      "event": "pull_request",
+      "event_head_sha": "a77ae60427423e8b6f098596f300c8cecc6392b6",
+      "attempt": 1,
+      "job_id": 119858567623,
+      "name": "post202-q14-composite-parity-gap",
+      "status": "in_progress",
+      "conclusion": null,
+      "classification": "RESEARCH_PRODUCING_CHECK",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39788683049/job/119858567623",
+      "steps": [
+        {
+          "number": 1,
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 2,
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 3,
+          "name": "Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 4,
+          "name": "Install R003 numerical audit requirements",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 5,
+          "name": "Recheck inherited post-#201 paired discrepancy jets",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 6,
+          "name": "Recheck inherited post-#201 discrepancy scope firewall",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 7,
+          "name": "Check post-#202 theorem-aligned parity contrast jets",
+          "status": "in_progress",
+          "conclusion": null
+        },
+        {
+          "number": 8,
+          "name": "Check post-#202 composite parity-gap scope",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 9,
+          "name": "Probe post-#202 composite parity-gap schedule",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 10,
+          "name": "Certify post-#202 Q14 composite parity-gap mechanism",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 19,
+          "name": "Post Run actions/setup-python@v5",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 20,
+          "name": "Post Run actions/checkout@v4",
+          "status": "pending",
+          "conclusion": null
+        }
+      ],
+      "actual_disposition": "PENDING_UNOBSERVED_RESULT; no pass or scientific disposition inferred"
+    },
+    {
+      "run_id": 39788683241,
+      "workflow": "RHRC OPICA full paper components",
+      "workflow_path": ".github/workflows/rhrc_opica.yml",
+      "event": "pull_request",
+      "event_head_sha": "a77ae60427423e8b6f098596f300c8cecc6392b6",
+      "attempt": 1,
+      "job_id": 119858568634,
+      "name": "opica-regression",
+      "status": "completed",
+      "conclusion": "success",
+      "classification": "REGRESSION_GATE",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39788683241/job/119858568634",
+      "steps": [
+        {
+          "number": 1,
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 2,
+          "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 3,
+          "name": "Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 4,
+          "name": "Reproduce all 5112 exact finite controls in both Python modes",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 5,
+          "name": "Exercise fail-closed evidence and authority mutations in both modes",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 6,
+          "name": "Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 11,
+          "name": "Post Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 12,
+          "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 13,
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ],
+      "actual_disposition": "PASS_FINITE_REGRESSION:5112 exact assertions in each normal/optimized mode,187 parent tests each mode; no analytic or RH proof authority",
+      "checked_commits_from_checkout_log": [
+        "2735cbb15830808c5e6294c428f857d31ff09219"
+      ],
+      "checked_tree": "b1ebc2edbe0c07a486fcb5cae8df742c9e4745ed",
+      "decoded_log_sha256": "1330c1e6c423b077c12c22880b011517097c74bbd3e27d9e208f202f94d92953"
+    },
+    {
+      "run_id": 39788683241,
+      "workflow": "RHRC OPICA full paper components",
+      "workflow_path": ".github/workflows/rhrc_opica.yml",
+      "event": "pull_request",
+      "event_head_sha": "a77ae60427423e8b6f098596f300c8cecc6392b6",
+      "attempt": 1,
+      "job_id": 119858569210,
+      "name": "opica-contract",
+      "status": "queued",
+      "conclusion": null,
+      "classification": "FORMAL_VALIDITY_GATE",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39788683241/job/119858569210",
+      "steps": [],
+      "actual_disposition": "PENDING_UNOBSERVED_RESULT; no pass or scientific disposition inferred"
+    },
+    {
+      "run_id": 39788683164,
+      "workflow": "RHRC post-284 source inertia campaign",
+      "workflow_path": ".github/workflows/rhrc_post284_source_inertia.yml",
+      "event": "pull_request",
+      "event_head_sha": "a77ae60427423e8b6f098596f300c8cecc6392b6",
+      "attempt": 1,
+      "job_id": 119858567590,
+      "name": "source-falsifier-research",
+      "status": "in_progress",
+      "conclusion": null,
+      "classification": "RESEARCH_PRODUCING_CHECK",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39788683164/job/119858567590",
+      "steps": [
+        {
+          "number": 1,
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 2,
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 3,
+          "name": "Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 4,
+          "name": "Install research requirements",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 5,
+          "name": "Attached exact SymPy source-inertia falsifier (regression receipt)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 6,
+          "name": "Independent post-284 falsifier suite",
+          "status": "in_progress",
+          "conclusion": null
+        },
+        {
+          "number": 7,
+          "name": "Check disposition firewall",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 8,
+          "name": "Attached log3 K=2 interval certificate (falsifier receipt; research evidence only)",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 9,
+          "name": "Follow-up regressions (M24/M30 exact, M41/M43 interval signs, M42 sanity, M47 formula)",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 10,
+          "name": "Post-285 M74 secular-resolvent regression and negative controls",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 11,
+          "name": "WP7 post287 single-PR claim and evidence-state firewall",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 12,
+          "name": "Post-285 ledger firewall (Steps 18-120 matrix, M70-M77 obligations, proof roots)",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 13,
+          "name": "Post-285 Gate A/D regressions (M70 excursion, M73 Poincar\u00e9, M75 negative window)",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 14,
+          "name": "Post-285 M76 actual-canonical secular margin probe (experimental signal)",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 15,
+          "name": "Post-285 F04 (prime-free, prime cells, seams) and M66 regression, controls and Euler bound",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 16,
+          "name": "Post-285 M55 partial summation and M38 remainder extrema regression and controls",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 17,
+          "name": "Post-285 M71 Andreief interior inertia (Arb-certified minor signs) and aperture controls",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 18,
+          "name": "Post-285 M27 alternating root slopes on the float canonical operator, with controls",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 19,
+          "name": "Post-285 M08 abstract cubic Schur exact regression and controls",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 20,
+          "name": "Post-285 M09 zero-endpoint weighted remainder identity and controls",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 21,
+          "name": "Post-285 M45 odd endpoint source bound (Arb) and controls",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 22,
+          "name": "Post-285 M49 near-edge contact-angle probe (experimental)",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 23,
+          "name": "Post-285 M50 older-prime budget probe (experimental)",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 24,
+          "name": "Post-285 M59/M61 source-moment older-prime balance regression and controls",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 25,
+          "name": "Post-285 M33/M34 sign reversal and remainder oscillation probe",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 26,
+          "name": "Post-285 M44 entering-prime physical jet probe and controls",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 27,
+          "name": "Post-285 M29 source-resolvent derivative probe and controls",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 28,
+          "name": "Post-285 M51 K=2 even-bottom Arb certificate on [1/400, log 16] (research evidence)",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 29,
+          "name": "WP2 materialize and independently verify every K2 M51 Arb interval",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 30,
+          "name": "Post-285 M63 route comparison at the K=2 near-contacts (experimental)",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 31,
+          "name": "Post-285 M76 Arb resolution of the secular-margin grid (research evidence)",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 32,
+          "name": "WP4 D2 Full K3 frozen Q14 384-bit both-parity feasibility gate (UNRESOLVED allowed)",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 33,
+          "name": "WP6 fixed K2 same-source shifted-ray signed-Q falsification (bounded report only)",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 34,
+          "name": "WP5 exact-model altered-prime Arb crossing certificate (non-zeta negative control)",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 35,
+          "name": "Run actions/upload-artifact@v4",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 69,
+          "name": "Post Run actions/setup-python@v5",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 70,
+          "name": "Post Run actions/checkout@v4",
+          "status": "pending",
+          "conclusion": null
+        }
+      ],
+      "actual_disposition": "PENDING_UNOBSERVED_RESULT; no pass or scientific disposition inferred"
+    },
+    {
+      "run_id": 39788683164,
+      "workflow": "RHRC post-284 source inertia campaign",
+      "workflow_path": ".github/workflows/rhrc_post284_source_inertia.yml",
+      "event": "pull_request",
+      "event_head_sha": "a77ae60427423e8b6f098596f300c8cecc6392b6",
+      "attempt": 1,
+      "job_id": 119858567848,
+      "name": "lean-source-inertia",
+      "status": "queued",
+      "conclusion": null,
+      "classification": "FORMAL_VALIDITY_GATE",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39788683164/job/119858567848",
+      "steps": [],
+      "actual_disposition": "PENDING_UNOBSERVED_RESULT; no pass or scientific disposition inferred"
+    },
+    {
+      "run_id": 39788683164,
+      "workflow": "RHRC post-284 source inertia campaign",
+      "workflow_path": ".github/workflows/rhrc_post284_source_inertia.yml",
+      "event": "pull_request",
+      "event_head_sha": "a77ae60427423e8b6f098596f300c8cecc6392b6",
+      "attempt": 1,
+      "job_id": 119858623527,
+      "name": "post287-full-k3",
+      "status": "completed",
+      "conclusion": "skipped",
+      "classification": "RESEARCH_PRODUCING_CHECK",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39788683164/job/119858623527",
+      "steps": [],
+      "actual_disposition": "SKIPPED: full-k3 job runs only for workflow_dispatch with inputs.full_k3; pull_request does not satisfy condition"
+    },
+    {
+      "run_id": 39788683265,
+      "workflow": "RHRC post-198 Q14 parity source mechanism",
+      "workflow_path": ".github/workflows/rhrc_post198_q14_parity_source_mechanism.yml",
+      "event": "pull_request",
+      "event_head_sha": "a77ae60427423e8b6f098596f300c8cecc6392b6",
+      "attempt": 1,
+      "job_id": 119858568172,
+      "name": "post198-q14-source-mechanism",
+      "status": "queued",
+      "conclusion": null,
+      "classification": "RESEARCH_PRODUCING_CHECK",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39788683265/job/119858568172",
+      "steps": [],
+      "actual_disposition": "PENDING_UNOBSERVED_RESULT; no pass or scientific disposition inferred"
+    },
+    {
+      "run_id": 39788682725,
+      "workflow": "OPICA follow-up draft checkpoint",
+      "workflow_path": ".github/workflows/rhrc_opica_followup.yml",
+      "event": "pull_request",
+      "event_head_sha": "a77ae60427423e8b6f098596f300c8cecc6392b6",
+      "attempt": 1,
+      "job_id": 119858567608,
+      "name": "Full release readiness (expected FAIL while scope is incomplete)",
+      "status": "queued",
+      "conclusion": null,
+      "classification": "FORMAL_VALIDITY_GATE",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39788682725/job/119858567608",
+      "steps": [],
+      "actual_disposition": "PENDING_UNOBSERVED_RESULT; no pass or scientific disposition inferred"
+    },
+    {
+      "run_id": 39788682725,
+      "workflow": "OPICA follow-up draft checkpoint",
+      "workflow_path": ".github/workflows/rhrc_opica_followup.yml",
+      "event": "pull_request",
+      "event_head_sha": "a77ae60427423e8b6f098596f300c8cecc6392b6",
+      "attempt": 1,
+      "job_id": 119858568095,
+      "name": "Draft preparation contract (no theorem authority)",
+      "status": "queued",
+      "conclusion": null,
+      "classification": "FORMAL_VALIDITY_GATE",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39788682725/job/119858568095",
+      "steps": [],
+      "actual_disposition": "PENDING_UNOBSERVED_RESULT; no pass or scientific disposition inferred"
+    },
+    {
+      "run_id": 39788683063,
+      "workflow": "RHRC post268 complete audit replay",
+      "workflow_path": ".github/workflows/rhrc_post268_audit.yml",
+      "event": "pull_request",
+      "event_head_sha": "a77ae60427423e8b6f098596f300c8cecc6392b6",
+      "attempt": 1,
+      "job_id": 119858567351,
+      "name": "Audit runner adversarial regressions",
+      "status": "completed",
+      "conclusion": "success",
+      "classification": "REGRESSION_GATE",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39788683063/job/119858567351",
+      "steps": [
+        {
+          "number": 1,
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 2,
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 3,
+          "name": "Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 4,
+          "name": "Test producer-consumer and fail-closed harvest contracts",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 7,
+          "name": "Post Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 8,
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 9,
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ],
+      "actual_disposition": "PASS_AUDIT_RUNNER_REGRESSION; orchestration and fail-closed harvest contracts preserved",
+      "checked_commits_from_checkout_log": [
+        "a77ae60427423e8b6f098596f300c8cecc6392b6"
+      ],
+      "checked_tree": "b1ebc2edbe0c07a486fcb5cae8df742c9e4745ed",
+      "decoded_log_sha256": "9a495717bf94a0d40508091380865b0b0e4f5667686138fab6712a8b3c7c76aa"
+    },
+    {
+      "run_id": 39788683063,
+      "workflow": "RHRC post268 complete audit replay",
+      "workflow_path": ".github/workflows/rhrc_post268_audit.yml",
+      "event": "pull_request",
+      "event_head_sha": "a77ae60427423e8b6f098596f300c8cecc6392b6",
+      "attempt": 1,
+      "job_id": 119858567700,
+      "name": "Extended audit shard 5",
+      "status": "completed",
+      "conclusion": "success",
+      "classification": "REGRESSION_GATE",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39788683063/job/119858567700",
+      "steps": [
+        {
+          "number": 1,
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 2,
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 3,
+          "name": "Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 4,
+          "name": "Install complete numerical environment",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 5,
+          "name": "Run every assigned check without hiding failures",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 6,
+          "name": "Run actions/upload-artifact@v4",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 11,
+          "name": "Post Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 12,
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 13,
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ],
+      "actual_disposition": "PASS_EXTENDED_SHARD5_ONLY; complete44-check harvest not yet observed",
+      "checked_commits_from_checkout_log": [
+        "a77ae60427423e8b6f098596f300c8cecc6392b6"
+      ],
+      "checked_tree": "b1ebc2edbe0c07a486fcb5cae8df742c9e4745ed",
+      "decoded_log_sha256": "a5737110f5c46807a45abbc053a885d7ca308a1fc89ab34f8e05dfcec5027a21"
+    },
+    {
+      "run_id": 39788683063,
+      "workflow": "RHRC post268 complete audit replay",
+      "workflow_path": ".github/workflows/rhrc_post268_audit.yml",
+      "event": "pull_request",
+      "event_head_sha": "a77ae60427423e8b6f098596f300c8cecc6392b6",
+      "attempt": 1,
+      "job_id": 119858567760,
+      "name": "Extended audit shard 0",
+      "status": "queued",
+      "conclusion": null,
+      "classification": "REGRESSION_GATE",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39788683063/job/119858567760",
+      "steps": [],
+      "actual_disposition": "PENDING_UNOBSERVED_RESULT; no pass or scientific disposition inferred"
+    },
+    {
+      "run_id": 39788683063,
+      "workflow": "RHRC post268 complete audit replay",
+      "workflow_path": ".github/workflows/rhrc_post268_audit.yml",
+      "event": "pull_request",
+      "event_head_sha": "a77ae60427423e8b6f098596f300c8cecc6392b6",
+      "attempt": 1,
+      "job_id": 119858567797,
+      "name": "Extended audit shard 4",
+      "status": "queued",
+      "conclusion": null,
+      "classification": "REGRESSION_GATE",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39788683063/job/119858567797",
+      "steps": [],
+      "actual_disposition": "PENDING_UNOBSERVED_RESULT; no pass or scientific disposition inferred"
+    },
+    {
+      "run_id": 39788683063,
+      "workflow": "RHRC post268 complete audit replay",
+      "workflow_path": ".github/workflows/rhrc_post268_audit.yml",
+      "event": "pull_request",
+      "event_head_sha": "a77ae60427423e8b6f098596f300c8cecc6392b6",
+      "attempt": 1,
+      "job_id": 119858567864,
+      "name": "Extended audit shard 7",
+      "status": "queued",
+      "conclusion": null,
+      "classification": "REGRESSION_GATE",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39788683063/job/119858567864",
+      "steps": [],
+      "actual_disposition": "PENDING_UNOBSERVED_RESULT; no pass or scientific disposition inferred"
+    },
+    {
+      "run_id": 39788683063,
+      "workflow": "RHRC post268 complete audit replay",
+      "workflow_path": ".github/workflows/rhrc_post268_audit.yml",
+      "event": "pull_request",
+      "event_head_sha": "a77ae60427423e8b6f098596f300c8cecc6392b6",
+      "attempt": 1,
+      "job_id": 119858567934,
+      "name": "Extended audit shard 1",
+      "status": "completed",
+      "conclusion": "success",
+      "classification": "REGRESSION_GATE",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39788683063/job/119858567934",
+      "steps": [
+        {
+          "number": 1,
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 2,
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 3,
+          "name": "Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 4,
+          "name": "Install complete numerical environment",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 5,
+          "name": "Run every assigned check without hiding failures",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 6,
+          "name": "Run actions/upload-artifact@v4",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 11,
+          "name": "Post Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 12,
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 13,
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ],
+      "actual_disposition": "PASS_EXTENDED_SHARD1_ONLY; complete44-check harvest not yet observed",
+      "checked_commits_from_checkout_log": [
+        "a77ae60427423e8b6f098596f300c8cecc6392b6"
+      ],
+      "checked_tree": "b1ebc2edbe0c07a486fcb5cae8df742c9e4745ed",
+      "decoded_log_sha256": "a499c2260fcc9b651922b13c90fac49544c70605338ffb6bd52e144c113b9839"
+    },
+    {
+      "run_id": 39788683063,
+      "workflow": "RHRC post268 complete audit replay",
+      "workflow_path": ".github/workflows/rhrc_post268_audit.yml",
+      "event": "pull_request",
+      "event_head_sha": "a77ae60427423e8b6f098596f300c8cecc6392b6",
+      "attempt": 1,
+      "job_id": 119858567941,
+      "name": "Extended audit shard 6",
+      "status": "queued",
+      "conclusion": null,
+      "classification": "REGRESSION_GATE",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39788683063/job/119858567941",
+      "steps": [],
+      "actual_disposition": "PENDING_UNOBSERVED_RESULT; no pass or scientific disposition inferred"
+    },
+    {
+      "run_id": 39788683063,
+      "workflow": "RHRC post268 complete audit replay",
+      "workflow_path": ".github/workflows/rhrc_post268_audit.yml",
+      "event": "pull_request",
+      "event_head_sha": "a77ae60427423e8b6f098596f300c8cecc6392b6",
+      "attempt": 1,
+      "job_id": 119858568114,
+      "name": "Extended audit shard 2",
+      "status": "queued",
+      "conclusion": null,
+      "classification": "REGRESSION_GATE",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39788683063/job/119858568114",
+      "steps": [],
+      "actual_disposition": "PENDING_UNOBSERVED_RESULT; no pass or scientific disposition inferred"
+    },
+    {
+      "run_id": 39788683063,
+      "workflow": "RHRC post268 complete audit replay",
+      "workflow_path": ".github/workflows/rhrc_post268_audit.yml",
+      "event": "pull_request",
+      "event_head_sha": "a77ae60427423e8b6f098596f300c8cecc6392b6",
+      "attempt": 1,
+      "job_id": 119858568652,
+      "name": "Extended audit shard 3",
+      "status": "queued",
+      "conclusion": null,
+      "classification": "REGRESSION_GATE",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39788683063/job/119858568652",
+      "steps": [],
+      "actual_disposition": "PENDING_UNOBSERVED_RESULT; no pass or scientific disposition inferred"
+    },
+    {
+      "run_id": 39788683458,
+      "workflow": "RHRC post-282 contact calculus",
+      "workflow_path": ".github/workflows/rhrc_post282_contact_calculus.yml",
+      "event": "pull_request",
+      "event_head_sha": "a77ae60427423e8b6f098596f300c8cecc6392b6",
+      "attempt": 1,
+      "job_id": 119858569266,
+      "name": "lean-compressed-calculus",
+      "status": "queued",
+      "conclusion": null,
+      "classification": "FORMAL_VALIDITY_GATE",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39788683458/job/119858569266",
+      "steps": [],
+      "actual_disposition": "PENDING_UNOBSERVED_RESULT; no pass or scientific disposition inferred"
+    },
+    {
+      "run_id": 39788683458,
+      "workflow": "RHRC post-282 contact calculus",
+      "workflow_path": ".github/workflows/rhrc_post282_contact_calculus.yml",
+      "event": "pull_request",
+      "event_head_sha": "a77ae60427423e8b6f098596f300c8cecc6392b6",
+      "attempt": 1,
+      "job_id": 119858569768,
+      "name": "research-calibration",
+      "status": "queued",
+      "conclusion": null,
+      "classification": "RESEARCH_PRODUCING_CHECK",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39788683458/job/119858569768",
+      "steps": [],
+      "actual_disposition": "PENDING_UNOBSERVED_RESULT; no pass or scientific disposition inferred"
+    },
+    {
+      "run_id": 39788683458,
+      "workflow": "RHRC post-282 contact calculus",
+      "workflow_path": ".github/workflows/rhrc_post282_contact_calculus.yml",
+      "event": "pull_request",
+      "event_head_sha": "a77ae60427423e8b6f098596f300c8cecc6392b6",
+      "attempt": 1,
+      "job_id": 119858569841,
+      "name": "lean-contact-completion",
+      "status": "queued",
+      "conclusion": null,
+      "classification": "FORMAL_VALIDITY_GATE",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39788683458/job/119858569841",
+      "steps": [],
+      "actual_disposition": "PENDING_UNOBSERVED_RESULT; no pass or scientific disposition inferred"
+    },
+    {
+      "run_id": 39788683560,
+      "workflow": "RHRC post290 source and output proof components",
+      "workflow_path": ".github/workflows/rhrc_post290_step123_output.yml",
+      "event": "pull_request",
+      "event_head_sha": "a77ae60427423e8b6f098596f300c8cecc6392b6",
+      "attempt": 1,
+      "job_id": 119858569517,
+      "name": "native-observations",
+      "status": "in_progress",
+      "conclusion": null,
+      "classification": "RESEARCH_PRODUCING_CHECK",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39788683560/job/119858569517",
+      "steps": [
+        {
+          "number": 1,
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 2,
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 3,
+          "name": "Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 4,
+          "name": "Run python -m pip install -r research/RHRC/routes/R003_ccm_bridge/requirements.txt",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 5,
+          "name": "Evaluate all frozen native probe rows with explicit seam cancellation",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 6,
+          "name": "Independently reconstruct every scalar residual and Gram entry at 1024 bits",
+          "status": "in_progress",
+          "conclusion": null
+        },
+        {
+          "number": 7,
+          "name": "Compare the actual producer and checker artifacts without changing their provenance",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 8,
+          "name": "Require the full observation panel; keep universal and generated-detector scope open",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 9,
+          "name": "Run actions/upload-artifact@v4",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 17,
+          "name": "Post Run actions/setup-python@v5",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 18,
+          "name": "Post Run actions/checkout@v4",
+          "status": "pending",
+          "conclusion": null
+        }
+      ],
+      "actual_disposition": "PENDING_UNOBSERVED_RESULT; no pass or scientific disposition inferred"
+    },
+    {
+      "run_id": 39788683560,
+      "workflow": "RHRC post290 source and output proof components",
+      "workflow_path": ".github/workflows/rhrc_post290_step123_output.yml",
+      "event": "pull_request",
+      "event_head_sha": "a77ae60427423e8b6f098596f300c8cecc6392b6",
+      "attempt": 1,
+      "job_id": 119858569927,
+      "name": "exact-controls",
+      "status": "queued",
+      "conclusion": null,
+      "classification": "REGRESSION_GATE",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39788683560/job/119858569927",
+      "steps": [],
+      "actual_disposition": "PENDING_UNOBSERVED_RESULT; no pass or scientific disposition inferred"
+    },
+    {
+      "run_id": 39788683560,
+      "workflow": "RHRC post290 source and output proof components",
+      "workflow_path": ".github/workflows/rhrc_post290_step123_output.yml",
+      "event": "pull_request",
+      "event_head_sha": "a77ae60427423e8b6f098596f300c8cecc6392b6",
+      "attempt": 1,
+      "job_id": 119858569939,
+      "name": "lean-components",
+      "status": "queued",
+      "conclusion": null,
+      "classification": "FORMAL_VALIDITY_GATE",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39788683560/job/119858569939",
+      "steps": [],
+      "actual_disposition": "PENDING_UNOBSERVED_RESULT; no pass or scientific disposition inferred"
+    },
+    {
+      "run_id": 39788683005,
+      "workflow": "RHRC parallel closure campaign",
+      "workflow_path": ".github/workflows/rhrc_closure_campaign.yml",
+      "event": "pull_request",
+      "event_head_sha": "a77ae60427423e8b6f098596f300c8cecc6392b6",
+      "attempt": 1,
+      "job_id": 119858567521,
+      "name": "lean-a",
+      "status": "in_progress",
+      "conclusion": null,
+      "classification": "FORMAL_VALIDITY_GATE",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39788683005/job/119858567521",
+      "steps": [
+        {
+          "number": 1,
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 2,
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 3,
+          "name": "Run leanprover/lean-action@v1",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 4,
+          "name": "Build Track A",
+          "status": "in_progress",
+          "conclusion": null
+        },
+        {
+          "number": 5,
+          "name": "Audit Track A theorem axioms",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 10,
+          "name": "Post Run actions/checkout@v4",
+          "status": "pending",
+          "conclusion": null
+        }
+      ],
+      "actual_disposition": "PENDING_UNOBSERVED_RESULT; no pass or scientific disposition inferred"
+    },
+    {
+      "run_id": 39788683005,
+      "workflow": "RHRC parallel closure campaign",
+      "workflow_path": ".github/workflows/rhrc_closure_campaign.yml",
+      "event": "pull_request",
+      "event_head_sha": "a77ae60427423e8b6f098596f300c8cecc6392b6",
+      "attempt": 1,
+      "job_id": 119858567796,
+      "name": "lean-contact",
+      "status": "in_progress",
+      "conclusion": null,
+      "classification": "FORMAL_VALIDITY_GATE",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39788683005/job/119858567796",
+      "steps": [
+        {
+          "number": 1,
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 2,
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 3,
+          "name": "Run leanprover/lean-action@v1",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 4,
+          "name": "Build post-#277 fixed-N zero-contact surface",
+          "status": "in_progress",
+          "conclusion": null
+        },
+        {
+          "number": 5,
+          "name": "Audit post-#277 zero-contact theorem axioms",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 10,
+          "name": "Post Run actions/checkout@v4",
+          "status": "pending",
+          "conclusion": null
+        }
+      ],
+      "actual_disposition": "PENDING_UNOBSERVED_RESULT; no pass or scientific disposition inferred"
+    },
+    {
+      "run_id": 39788683005,
+      "workflow": "RHRC parallel closure campaign",
+      "workflow_path": ".github/workflows/rhrc_closure_campaign.yml",
+      "event": "pull_request",
+      "event_head_sha": "a77ae60427423e8b6f098596f300c8cecc6392b6",
+      "attempt": 1,
+      "job_id": 119858567955,
+      "name": "lean-strength-audit",
+      "status": "queued",
+      "conclusion": null,
+      "classification": "FORMAL_VALIDITY_GATE",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39788683005/job/119858567955",
+      "steps": [],
+      "actual_disposition": "PENDING_UNOBSERVED_RESULT; no pass or scientific disposition inferred"
+    },
+    {
+      "run_id": 39788683005,
+      "workflow": "RHRC parallel closure campaign",
+      "workflow_path": ".github/workflows/rhrc_closure_campaign.yml",
+      "event": "pull_request",
+      "event_head_sha": "a77ae60427423e8b6f098596f300c8cecc6392b6",
+      "attempt": 1,
+      "job_id": 119858568004,
+      "name": "lean-c",
+      "status": "queued",
+      "conclusion": null,
+      "classification": "FORMAL_VALIDITY_GATE",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39788683005/job/119858568004",
+      "steps": [],
+      "actual_disposition": "PENDING_UNOBSERVED_RESULT; no pass or scientific disposition inferred"
+    },
+    {
+      "run_id": 39788683005,
+      "workflow": "RHRC parallel closure campaign",
+      "workflow_path": ".github/workflows/rhrc_closure_campaign.yml",
+      "event": "pull_request",
+      "event_head_sha": "a77ae60427423e8b6f098596f300c8cecc6392b6",
+      "attempt": 1,
+      "job_id": 119858568006,
+      "name": "lean-first-crossing",
+      "status": "queued",
+      "conclusion": null,
+      "classification": "FORMAL_VALIDITY_GATE",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39788683005/job/119858568006",
+      "steps": [],
+      "actual_disposition": "PENDING_UNOBSERVED_RESULT; no pass or scientific disposition inferred"
+    },
+    {
+      "run_id": 39788683005,
+      "workflow": "RHRC parallel closure campaign",
+      "workflow_path": ".github/workflows/rhrc_closure_campaign.yml",
+      "event": "pull_request",
+      "event_head_sha": "a77ae60427423e8b6f098596f300c8cecc6392b6",
+      "attempt": 1,
+      "job_id": 119858568020,
+      "name": "lean-d-bindings",
+      "status": "queued",
+      "conclusion": null,
+      "classification": "FORMAL_VALIDITY_GATE",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39788683005/job/119858568020",
+      "steps": [],
+      "actual_disposition": "PENDING_UNOBSERVED_RESULT; no pass or scientific disposition inferred"
+    },
+    {
+      "run_id": 39788683005,
+      "workflow": "RHRC parallel closure campaign",
+      "workflow_path": ".github/workflows/rhrc_closure_campaign.yml",
+      "event": "pull_request",
+      "event_head_sha": "a77ae60427423e8b6f098596f300c8cecc6392b6",
+      "attempt": 1,
+      "job_id": 119858568238,
+      "name": "fast-integrity",
+      "status": "queued",
+      "conclusion": null,
+      "classification": "REGRESSION_GATE",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39788683005/job/119858568238",
+      "steps": [],
+      "actual_disposition": "PENDING_UNOBSERVED_RESULT; no pass or scientific disposition inferred"
+    },
+    {
+      "run_id": 39788683005,
+      "workflow": "RHRC parallel closure campaign",
+      "workflow_path": ".github/workflows/rhrc_closure_campaign.yml",
+      "event": "pull_request",
+      "event_head_sha": "a77ae60427423e8b6f098596f300c8cecc6392b6",
+      "attempt": 1,
+      "job_id": 119858568245,
+      "name": "lean-b",
+      "status": "queued",
+      "conclusion": null,
+      "classification": "FORMAL_VALIDITY_GATE",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39788683005/job/119858568245",
+      "steps": [],
+      "actual_disposition": "PENDING_UNOBSERVED_RESULT; no pass or scientific disposition inferred"
+    },
+    {
+      "run_id": 39788682696,
+      "workflow": "RHRC post287 WP2 and WP4 interval research",
+      "workflow_path": ".github/workflows/rhrc_post287_numerical.yml",
+      "event": "pull_request",
+      "event_head_sha": "a77ae60427423e8b6f098596f300c8cecc6392b6",
+      "attempt": 1,
+      "job_id": 119858566986,
+      "name": "wp2-k2-transcript",
+      "status": "queued",
+      "conclusion": null,
+      "classification": "RESEARCH_PRODUCING_CHECK",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39788682696/job/119858566986",
+      "steps": [],
+      "actual_disposition": "PENDING_UNOBSERVED_RESULT; no pass or scientific disposition inferred"
+    },
+    {
+      "run_id": 39788682696,
+      "workflow": "RHRC post287 WP2 and WP4 interval research",
+      "workflow_path": ".github/workflows/rhrc_post287_numerical.yml",
+      "event": "pull_request",
+      "event_head_sha": "a77ae60427423e8b6f098596f300c8cecc6392b6",
+      "attempt": 1,
+      "job_id": 119858567219,
+      "name": "wp4-k2-odd-prerequisite",
+      "status": "in_progress",
+      "conclusion": null,
+      "classification": "RESEARCH_PRODUCING_CHECK",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39788682696/job/119858567219",
+      "steps": [
+        {
+          "number": 1,
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 2,
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 3,
+          "name": "Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 4,
+          "name": "Install pinned Arb dependencies",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 5,
+          "name": "Certify the complete one-dimensional K2 odd predecessor window",
+          "status": "in_progress",
+          "conclusion": null
+        },
+        {
+          "number": 6,
+          "name": "Independently verify the odd-sector rational coverage at higher precision",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 7,
+          "name": "Run actions/upload-artifact@v4",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 13,
+          "name": "Post Run actions/setup-python@v5",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 14,
+          "name": "Post Run actions/checkout@v4",
+          "status": "pending",
+          "conclusion": null
+        }
+      ],
+      "actual_disposition": "PENDING_UNOBSERVED_RESULT; no pass or scientific disposition inferred"
+    },
+    {
+      "run_id": 39788682696,
+      "workflow": "RHRC post287 WP2 and WP4 interval research",
+      "workflow_path": ".github/workflows/rhrc_post287_numerical.yml",
+      "event": "pull_request",
+      "event_head_sha": "a77ae60427423e8b6f098596f300c8cecc6392b6",
+      "attempt": 1,
+      "job_id": 119858567289,
+      "name": "wp4-k3-frozen-feasibility",
+      "status": "queued",
+      "conclusion": null,
+      "classification": "RESEARCH_PRODUCING_CHECK",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39788682696/job/119858567289",
+      "steps": [],
+      "actual_disposition": "PENDING_UNOBSERVED_RESULT; no pass or scientific disposition inferred"
+    },
+    {
+      "run_id": 39788682749,
+      "workflow": "RHRC post-222 bi-regular zero-shift scalar",
+      "workflow_path": ".github/workflows/rhrc_post222_biregular_zero_shift_scalar.yml",
+      "event": "pull_request",
+      "event_head_sha": "a77ae60427423e8b6f098596f300c8cecc6392b6",
+      "attempt": 1,
+      "job_id": 119858566465,
+      "name": "post222-biregular-zero-shift-scalar",
+      "status": "in_progress",
+      "conclusion": null,
+      "classification": "RESEARCH_PRODUCING_CHECK",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39788682749/job/119858566465",
+      "steps": [
+        {
+          "number": 1,
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 2,
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 3,
+          "name": "Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 4,
+          "name": "Install R003 numerical audit requirements",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 5,
+          "name": "Check post-#222 scalar scope and provenance",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 6,
+          "name": "Freeze inherited post-#177 centers for post-#222 replay",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 7,
+          "name": "Independently check post-#222 zero-shift reconstruction",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 8,
+          "name": "Certify post-#222 retained scalar discrimination",
+          "status": "in_progress",
+          "conclusion": null
+        },
+        {
+          "number": 9,
+          "name": "Check certificate claim firewall",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 17,
+          "name": "Post Run actions/setup-python@v5",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 18,
+          "name": "Post Run actions/checkout@v4",
+          "status": "pending",
+          "conclusion": null
+        }
+      ],
+      "actual_disposition": "PENDING_UNOBSERVED_RESULT; no pass or scientific disposition inferred"
+    },
+    {
+      "run_id": 39788682541,
+      "workflow": "RHRC post-214 kernel dual geometry",
+      "workflow_path": ".github/workflows/rhrc_post214_kernel_dual_geometry.yml",
+      "event": "pull_request",
+      "event_head_sha": "a77ae60427423e8b6f098596f300c8cecc6392b6",
+      "attempt": 1,
+      "job_id": 119858566767,
+      "name": "post214-kernel-dual-geometry",
+      "status": "in_progress",
+      "conclusion": null,
+      "classification": "RESEARCH_PRODUCING_CHECK",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39788682541/job/119858566767",
+      "steps": [
+        {
+          "number": 1,
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 2,
+          "name": "Run actions/checkout@v4",
+          "status": "in_progress",
+          "conclusion": null
+        },
+        {
+          "number": 3,
+          "name": "Run actions/setup-python@v5",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 4,
+          "name": "Install R003 numerical audit requirements",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 5,
+          "name": "Check post-#214 kernel dual-geometry scope",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 6,
+          "name": "Freeze inherited post-#214 dual-geometry centers",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 7,
+          "name": "Independently check dual-geometry implementation",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 8,
+          "name": "Certify post-#214 kernel dual geometry",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 9,
+          "name": "Check certificate claim firewall",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 18,
+          "name": "Post Run actions/checkout@v4",
+          "status": "pending",
+          "conclusion": null
+        }
+      ],
+      "actual_disposition": "PENDING_UNOBSERVED_RESULT; no pass or scientific disposition inferred"
+    },
+    {
+      "run_id": 39788683034,
+      "workflow": "RHRC post-194 parity trajectory sharp enclosure",
+      "workflow_path": ".github/workflows/rhrc_post194_parity_trajectory_sharp_enclosure.yml",
+      "event": "pull_request",
+      "event_head_sha": "a77ae60427423e8b6f098596f300c8cecc6392b6",
+      "attempt": 1,
+      "job_id": 119858567259,
+      "name": "post194-parity-trajectory-sharp-enclosure",
+      "status": "in_progress",
+      "conclusion": null,
+      "classification": "RESEARCH_PRODUCING_CHECK",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39788683034/job/119858567259",
+      "steps": [
+        {
+          "number": 1,
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 2,
+          "name": "Run actions/checkout@v4",
+          "status": "in_progress",
+          "conclusion": null
+        },
+        {
+          "number": 3,
+          "name": "Run actions/setup-python@v5",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 4,
+          "name": "Install R003 numerical audit requirements",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 5,
+          "name": "Check canonical second-aperture derivative implementation",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 6,
+          "name": "Check post-#194 sharp trajectory plumbing",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 7,
+          "name": "Probe post-#194 frozen sharp trajectory scope",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 8,
+          "name": "Certify post-#194 sharp parity trajectory enclosure",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 16,
+          "name": "Post Run actions/checkout@v4",
+          "status": "pending",
+          "conclusion": null
+        }
+      ],
+      "actual_disposition": "PENDING_UNOBSERVED_RESULT; no pass or scientific disposition inferred"
+    },
+    {
+      "run_id": 39788683451,
+      "workflow": "RHRC post287 focused Step3 checks",
+      "workflow_path": ".github/workflows/rhrc_post287_focused.yml",
+      "event": "pull_request",
+      "event_head_sha": "a77ae60427423e8b6f098596f300c8cecc6392b6",
+      "attempt": 1,
+      "job_id": 119858569429,
+      "name": "wp5-modified-prime",
+      "status": "completed",
+      "conclusion": "success",
+      "classification": "RESEARCH_PRODUCING_CHECK",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39788683451/job/119858569429",
+      "steps": [
+        {
+          "number": 1,
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 2,
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 3,
+          "name": "Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 4,
+          "name": "Install pinned research dependencies",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 5,
+          "name": "Arb-certify two modified-prime rational endpoint apertures",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 6,
+          "name": "Run actions/upload-artifact@v4",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 11,
+          "name": "Post Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 12,
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 13,
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ],
+      "actual_disposition": "INTERVAL_EVIDENCE for modified-prime finite/model sign contrast at fixed cell/sample endpoints; no actual off-line-zero existence or RH conclusion",
+      "checked_commits_from_checkout_log": [
+        "2735cbb15830808c5e6294c428f857d31ff09219"
+      ],
+      "checked_tree": "b1ebc2edbe0c07a486fcb5cae8df742c9e4745ed",
+      "decoded_log_sha256": "e6be5fd7ff257b5500c2ad6036cfe48f1dc5766afbf57f48ef2d171e82430eb5"
+    },
+    {
+      "run_id": 39788683451,
+      "workflow": "RHRC post287 focused Step3 checks",
+      "workflow_path": ".github/workflows/rhrc_post287_focused.yml",
+      "event": "pull_request",
+      "event_head_sha": "a77ae60427423e8b6f098596f300c8cecc6392b6",
+      "attempt": 1,
+      "job_id": 119858569913,
+      "name": "lean-step3",
+      "status": "in_progress",
+      "conclusion": null,
+      "classification": "FORMAL_VALIDITY_GATE",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39788683451/job/119858569913",
+      "steps": [
+        {
+          "number": 1,
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 2,
+          "name": "Run actions/checkout@v4",
+          "status": "in_progress",
+          "conclusion": null
+        },
+        {
+          "number": 3,
+          "name": "Run leanprover/lean-action@v1",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 4,
+          "name": "Parse all WP0-WP7 source scripts and verify the exact integration contract",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 5,
+          "name": "Exact rational WP4 determinant-curvature and fourth-order coefficient regressions",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 6,
+          "name": "Compile ALL new source theorem roots (collect every failure)",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 7,
+          "name": "Reject source proof escapes",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 14,
+          "name": "Post Run actions/checkout@v4",
+          "status": "pending",
+          "conclusion": null
+        }
+      ],
+      "actual_disposition": "PENDING_UNOBSERVED_RESULT; no pass or scientific disposition inferred"
+    },
+    {
+      "run_id": 39788683222,
+      "workflow": "RHRC post287 bounded signed-ray probe",
+      "workflow_path": ".github/workflows/rhrc_post287_wp6.yml",
+      "event": "pull_request",
+      "event_head_sha": "a77ae60427423e8b6f098596f300c8cecc6392b6",
+      "attempt": 1,
+      "job_id": 119858567740,
+      "name": "wp6-source-specific-signed-ray",
+      "status": "completed",
+      "conclusion": "success",
+      "classification": "RESEARCH_PRODUCING_CHECK",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39788683222/job/119858567740",
+      "steps": [
+        {
+          "number": 1,
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 2,
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 3,
+          "name": "Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 4,
+          "name": "Install pinned research backend",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 5,
+          "name": "Arb-check signs on the genuine K2 negative-shift ray class",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 6,
+          "name": "Run actions/upload-artifact@v4",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 11,
+          "name": "Post Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 12,
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 13,
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ],
+      "actual_disposition": "EXPERIMENTAL_SIGNAL from signed-ray probe; no interval or actual-zero exclusion authority",
+      "checked_commits_from_checkout_log": [
+        "2735cbb15830808c5e6294c428f857d31ff09219"
+      ],
+      "checked_tree": "b1ebc2edbe0c07a486fcb5cae8df742c9e4745ed",
+      "decoded_log_sha256": "bb552c2c2b8ef1a2e9cfcaf2a3785868875e524ccd67162d8c2bf454aca5956d"
+    },
+    {
+      "run_id": 39788683619,
+      "workflow": "RHRC post-192 parity trajectory rigidity",
+      "workflow_path": ".github/workflows/rhrc_post192_parity_trajectory_rigidity.yml",
+      "event": "pull_request",
+      "event_head_sha": "a77ae60427423e8b6f098596f300c8cecc6392b6",
+      "attempt": 1,
+      "job_id": 119858570468,
+      "name": "post192-parity-trajectory-rigidity",
+      "status": "completed",
+      "conclusion": "success",
+      "classification": "RESEARCH_PRODUCING_CHECK",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39788683619/job/119858570468",
+      "steps": [
+        {
+          "number": 1,
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 2,
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 3,
+          "name": "Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 4,
+          "name": "Install R003 numerical audit requirements",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 5,
+          "name": "Check post-#192 parity-trajectory plumbing",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 6,
+          "name": "Probe post-#192 parity-trajectory scope",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 7,
+          "name": "Certify post-#192 parity trajectory rigidity",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 13,
+          "name": "Post Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 14,
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 15,
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ],
+      "actual_disposition": "PASS_CHECK with TRAJECTORY_RIGIDITY_UNRESOLVED:96 evaluated cells,97 leaves,33 J_UNRESOLVED,63 H1_UNRESOLVED;97 budget-exhausted leaves",
+      "checked_commits_from_checkout_log": [
+        "2735cbb15830808c5e6294c428f857d31ff09219"
+      ],
+      "checked_tree": "b1ebc2edbe0c07a486fcb5cae8df742c9e4745ed",
+      "decoded_log_sha256": "0dd7ffcbf9b4d45c4a7fd3a781a4ce965c1d1c4416db9262632614616b676143"
+    },
+    {
+      "run_id": 39788683161,
+      "workflow": "RHRC research and Lean checks",
+      "workflow_path": ".github/workflows/rhrc.yml",
+      "event": "pull_request",
+      "event_head_sha": "a77ae60427423e8b6f098596f300c8cecc6392b6",
+      "attempt": 1,
+      "job_id": 119858567632,
+      "name": "r003-normalization-audit",
+      "status": "in_progress",
+      "conclusion": null,
+      "classification": "REGRESSION_GATE",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39788683161/job/119858567632",
+      "steps": [
+        {
+          "number": 1,
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 2,
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 3,
+          "name": "Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 4,
+          "name": "Install R003 numerical audit requirements",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 5,
+          "name": "Re-run cutoff-free CCM normalization lock",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 6,
+          "name": "Check finite dictionary external oracle guards",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 7,
+          "name": "Check source normalization semantic firewall",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 8,
+          "name": "Check post-150 selected-residual certification plumbing",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 9,
+          "name": "Scout post-150 selected-residual scope",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 10,
+          "name": "Replay checked-in post-150 interval certificates",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 11,
+          "name": "Check post-#163 endpoint-scalar audit plumbing",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 12,
+          "name": "Scout post-#163 endpoint-scalar scope",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 13,
+          "name": "Replay checked-in post-#163 endpoint-scalar certificates",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 14,
+          "name": "Check post-#165 FB-05 shifted-state plumbing",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 15,
+          "name": "Check post-#165 FB-05 shifted-state Arb plumbing",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 16,
+          "name": "Scout post-#165 FB-05 same-state scope",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 17,
+          "name": "Replay checked-in post-#165 FB-05 same-state certificates",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 18,
+          "name": "Check post-#166 Q16 cell-barrier plumbing",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 19,
+          "name": "Scout post-#166 Q16 full-cell determinant barrier",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 20,
+          "name": "Replay post-#166 Q16 adaptive Arb cell audit",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 21,
+          "name": "Check post-#167 cutoff-entry moment-jet algebra",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 22,
+          "name": "Scout post-#167 Q17 threshold crossing",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 23,
+          "name": "Replay post-#167 Q17 threshold candidates",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 24,
+          "name": "Check post-#169 theorem-aligned Schur visibility algebra",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 25,
+          "name": "Scout post-#169 threshold Schur visibility and background drift",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 26,
+          "name": "Replay post-#169 threshold Schur visibility with Arb",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 27,
+          "name": "Check post-#171 threshold-barrier accounting",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 28,
+          "name": "Scout post-#171 threshold-to-threshold Schur barriers",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 29,
+          "name": "Replay post-#171 dangerous barrier points with Arb",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 30,
+          "name": "Check post-#173 q13 scalar-barrier plumbing",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 31,
+          "name": "Scout post-#173 q13 2x2 scalar barrier",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 32,
+          "name": "Certify post-#173 q13 scalar interval barrier",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 33,
+          "name": "Check post-#175 fixed-unit q13 enclosure plumbing",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 34,
+          "name": "Benchmark post-#175 fixed-unit q13 enclosure",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 35,
+          "name": "Certify post-#175 fixed-unit agreement and interval-width gain",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 36,
+          "name": "Check post-#177 fixed-unit derivative plumbing",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 37,
+          "name": "Probe post-#177 Q14 determinant derivative scope",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 38,
+          "name": "Certify post-#177 fixed-unit derivative discrimination",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 39,
+          "name": "Check post-#179 Schur/correlation-preserving derivative plumbing",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 40,
+          "name": "Probe post-#179 exact-center and Schur derivative scope",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 41,
+          "name": "Certify post-#179 correlation-preserving derivative discrimination",
+          "status": "in_progress",
+          "conclusion": null
+        },
+        {
+          "number": 42,
+          "name": "Check post-#185 remainder-drift decomposition plumbing",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 43,
+          "name": "Probe post-#185 frozen remainder-drift scope",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 44,
+          "name": "Certify post-#185 remainder-drift falsification",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 45,
+          "name": "Check post-#187 mixed-drift selector plumbing",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 46,
+          "name": "Probe post-#187 frozen selector scope",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 47,
+          "name": "Certify post-#187 mixed-drift selector audit",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 48,
+          "name": "Check post-#188 selector semantic-independence plumbing",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 49,
+          "name": "Probe post-#188 frozen semantic-independence scope",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 50,
+          "name": "Certify post-#188 selector semantic-independence audit",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 51,
+          "name": "Check post-#189 joint-selector separability plumbing",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 52,
+          "name": "Probe post-#189 frozen joint-selector scope",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 53,
+          "name": "Certify post-#189 joint-selector separability",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 54,
+          "name": "Check PR #247 frozen global-bottom scout scope",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 55,
+          "name": "Run PR #247 frozen global-bottom canonical scout",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 56,
+          "name": "Run PR #247 frozen global-bottom arithmetic scout",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 57,
+          "name": "Assert PR #247 global-bottom scout controls and semantics",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 58,
+          "name": "Check post-#247 remainder/budget ratio scout scope and fixture",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 59,
+          "name": "Replay post-#247 remainder/budget ratio scout controls (Arb)",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 60,
+          "name": "Run post-#247 remainder/budget ratio scout quick grid",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 61,
+          "name": "Audit R004 scalar-shift invariants",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 62,
+          "name": "Reject external reference code as a Lean dependency",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 123,
+          "name": "Post Run actions/setup-python@v5",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 124,
+          "name": "Post Run actions/checkout@v4",
+          "status": "pending",
+          "conclusion": null
+        }
+      ],
+      "actual_disposition": "PENDING_UNOBSERVED_RESULT; no pass or scientific disposition inferred"
+    },
+    {
+      "run_id": 39788683161,
+      "workflow": "RHRC research and Lean checks",
+      "workflow_path": ".github/workflows/rhrc.yml",
+      "event": "pull_request",
+      "event_head_sha": "a77ae60427423e8b6f098596f300c8cecc6392b6",
+      "attempt": 1,
+      "job_id": 119858567961,
+      "name": "python-rhrc",
+      "status": "completed",
+      "conclusion": "failure",
+      "classification": "FORMAL_VALIDITY_GATE",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39788683161/job/119858567961",
+      "steps": [
+        {
+          "number": 1,
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 2,
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 3,
+          "name": "Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 4,
+          "name": "Install RHRC framework requirements",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 5,
+          "name": "RHRC claim and regression suite",
+          "status": "completed",
+          "conclusion": "failure"
+        },
+        {
+          "number": 6,
+          "name": "Control v2 real-history smoke run",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "number": 11,
+          "name": "Post Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "number": 12,
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 13,
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ],
+      "actual_disposition": "FAIL_PARENT_EXTENSION_CONTRACT: full child reviewed type table absent; subset cannot extend parent; followup tracked additions rejected. This is not a Lean proof-body failure.",
+      "checked_commits_from_checkout_log": [
+        "2735cbb15830808c5e6294c428f857d31ff09219"
+      ],
+      "checked_tree": "b1ebc2edbe0c07a486fcb5cae8df742c9e4745ed",
+      "decoded_log_sha256": "a04dea4c859cd4ea2737e1652ba2797dd77ba7fafe4bf78565c74402e31aa4b0"
+    },
+    {
+      "run_id": 39788683161,
+      "workflow": "RHRC research and Lean checks",
+      "workflow_path": ".github/workflows/rhrc.yml",
+      "event": "pull_request",
+      "event_head_sha": "a77ae60427423e8b6f098596f300c8cecc6392b6",
+      "attempt": 1,
+      "job_id": 119858567993,
+      "name": "lean",
+      "status": "in_progress",
+      "conclusion": null,
+      "classification": "FORMAL_VALIDITY_GATE",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39788683161/job/119858567993",
+      "steps": [
+        {
+          "number": 1,
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 2,
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 3,
+          "name": "Run leanprover/lean-action@v1",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 4,
+          "name": "Build CCM formalization",
+          "status": "in_progress",
+          "conclusion": null
+        },
+        {
+          "number": 5,
+          "name": "Build promoted ClaimBindings authority surface",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 6,
+          "name": "Validate promoted R003 theorem bindings",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 7,
+          "name": "Build complete registered theorem authority surface",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 8,
+          "name": "Validate complete registered theorem bindings",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 9,
+          "name": "Build exceptional-zero foundation",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 10,
+          "name": "Build source-candidate compiler resolver",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 11,
+          "name": "Build PR #247 explicit terminal target",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 12,
+          "name": "Build PR #247 arithmetic-equivalence audit",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 13,
+          "name": "Build PR #247 audit-only conditional RH seam",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 14,
+          "name": "Build closure formal surface",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 15,
+          "name": "Validate future premise-free RH closure exact type",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 16,
+          "name": "Reject forbidden placeholders in promoted and closure surfaces",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 17,
+          "name": "Enforce post-245 arithmetic anti-circularity firewall",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 18,
+          "name": "Enforce PR #247 Million Dollar anti-circularity firewall",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 19,
+          "name": "Audit kernel axioms of post-245 arithmetic modules",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 20,
+          "name": "Audit kernel axioms of PR #274 closure modules",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 40,
+          "name": "Post Run actions/checkout@v4",
+          "status": "pending",
+          "conclusion": null
+        }
+      ],
+      "actual_disposition": "PENDING_UNOBSERVED_RESULT; no pass or scientific disposition inferred"
+    },
+    {
+      "run_id": 39788683161,
+      "workflow": "RHRC research and Lean checks",
+      "workflow_path": ".github/workflows/rhrc.yml",
+      "event": "pull_request",
+      "event_head_sha": "a77ae60427423e8b6f098596f300c8cecc6392b6",
+      "attempt": 1,
+      "job_id": 119858568056,
+      "name": "rhkg-compiler-receipt",
+      "status": "in_progress",
+      "conclusion": null,
+      "classification": "FORMAL_VALIDITY_GATE",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39788683161/job/119858568056",
+      "steps": [
+        {
+          "number": 1,
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 2,
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 3,
+          "name": "Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 4,
+          "name": "Install RHRC framework requirements",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 5,
+          "name": "Run leanprover/lean-action@v1",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 6,
+          "name": "Build registered and derived-state Lean exporters",
+          "status": "in_progress",
+          "conclusion": null
+        },
+        {
+          "number": 7,
+          "name": "Validate complete registered theorem bindings",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 8,
+          "name": "Validate committed RHKG state BEFORE any generator writes",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 9,
+          "name": "Verify stale RHKG cannot be accepted (adversarial source/index mutations)",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 10,
+          "name": "Ensure validation did not modify or create derived products",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 11,
+          "name": "Upload exact PR-head RHKG derived state",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 21,
+          "name": "Post Run actions/setup-python@v5",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 22,
+          "name": "Post Run actions/checkout@v4",
+          "status": "pending",
+          "conclusion": null
+        }
+      ],
+      "actual_disposition": "PENDING_UNOBSERVED_RESULT; no pass or scientific disposition inferred"
+    },
+    {
+      "run_id": 39788683484,
+      "workflow": "RHRC post-200 Q14 discrepancy mechanism",
+      "workflow_path": ".github/workflows/rhrc_post200_q14_discrepancy_mechanism.yml",
+      "event": "pull_request",
+      "event_head_sha": "a77ae60427423e8b6f098596f300c8cecc6392b6",
+      "attempt": 1,
+      "job_id": 119858570114,
+      "name": "post200-q14-discrepancy-mechanism",
+      "status": "in_progress",
+      "conclusion": null,
+      "classification": "RESEARCH_PRODUCING_CHECK",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39788683484/job/119858570114",
+      "steps": [
+        {
+          "number": 1,
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 2,
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 3,
+          "name": "Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 4,
+          "name": "Install R003 numerical audit requirements",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 5,
+          "name": "Recheck inherited four-way second-derivative implementation",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 6,
+          "name": "Recheck inherited post-#199 source-mechanism scope firewall",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 7,
+          "name": "Check post-#200 paired discrepancy channel jets",
+          "status": "in_progress",
+          "conclusion": null
+        },
+        {
+          "number": 8,
+          "name": "Check post-#200 discrepancy mechanism scope",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 9,
+          "name": "Probe post-#200 discrepancy mechanism schedule",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 10,
+          "name": "Certify post-#200 Q14 discrepancy mechanism",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 19,
+          "name": "Post Run actions/setup-python@v5",
+          "status": "pending",
+          "conclusion": null
+        },
+        {
+          "number": 20,
+          "name": "Post Run actions/checkout@v4",
+          "status": "pending",
+          "conclusion": null
+        }
+      ],
+      "actual_disposition": "PENDING_UNOBSERVED_RESULT; no pass or scientific disposition inferred"
+    },
+    {
+      "run_id": 39788674148,
+      "workflow": "OPICA follow-up draft checkpoint",
+      "workflow_path": ".github/workflows/rhrc_opica_followup.yml",
+      "event": "push",
+      "event_head_sha": "a77ae60427423e8b6f098596f300c8cecc6392b6",
+      "attempt": 1,
+      "job_id": 119858537091,
+      "name": "Draft preparation contract (no theorem authority)",
+      "status": "completed",
+      "conclusion": "success",
+      "classification": "FORMAL_VALIDITY_GATE",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39788674148/job/119858537091",
+      "steps": [
+        {
+          "number": 1,
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 2,
+          "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 3,
+          "name": "Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 4,
+          "name": "Run python \"$FOLLOWUP/validate_contract.py\" --phase preflight --output /tmp/opica-followup-contract.json",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 5,
+          "name": "Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 9,
+          "name": "Post Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 10,
+          "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 11,
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ],
+      "actual_disposition": "PASS_PREPARATION_ONLY; no current compiler coverage audited and no release readiness",
+      "checked_commits_from_checkout_log": [
+        "a77ae60427423e8b6f098596f300c8cecc6392b6"
+      ],
+      "checked_tree": "b1ebc2edbe0c07a486fcb5cae8df742c9e4745ed",
+      "decoded_log_sha256": "fcae48925f55e1ab8d4ad288df0490e567710283f556f763d7664e53070b12fd"
+    },
+    {
+      "run_id": 39788674148,
+      "workflow": "OPICA follow-up draft checkpoint",
+      "workflow_path": ".github/workflows/rhrc_opica_followup.yml",
+      "event": "push",
+      "event_head_sha": "a77ae60427423e8b6f098596f300c8cecc6392b6",
+      "attempt": 1,
+      "job_id": 119858537507,
+      "name": "Full release readiness (expected FAIL while scope is incomplete)",
+      "status": "completed",
+      "conclusion": "failure",
+      "classification": "FORMAL_VALIDITY_GATE",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39788674148/job/119858537507",
+      "steps": [
+        {
+          "number": 1,
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 2,
+          "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 3,
+          "name": "Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 4,
+          "name": "Preserve the complete release gate and report its actual disposition",
+          "status": "completed",
+          "conclusion": "failure"
+        },
+        {
+          "number": 5,
+          "name": "Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 9,
+          "name": "Post Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "number": 10,
+          "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 11,
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ],
+      "actual_disposition": "FAIL_RELEASE_INCOMPLETE: preparation cannot be promoted to full release;100-root/current receipt/full runtime/parent extension acceptance remain pending",
+      "checked_commits_from_checkout_log": [
+        "a77ae60427423e8b6f098596f300c8cecc6392b6"
+      ],
+      "checked_tree": "b1ebc2edbe0c07a486fcb5cae8df742c9e4745ed",
+      "decoded_log_sha256": "138a90b9a7da671ac9ba51418b519a16313491fb6cfc05efdcc08bb4667dabd5"
+    },
+    {
+      "run_id": 39788674148,
+      "workflow": "OPICA follow-up draft checkpoint",
+      "workflow_path": ".github/workflows/rhrc_opica_followup.yml",
+      "event": "push",
+      "event_head_sha": "a77ae60427423e8b6f098596f300c8cecc6392b6",
+      "attempt": 1,
+      "job_id": 119858813709,
+      "name": "Exact-source implemented subset (full 100 remains required)",
+      "status": "queued",
+      "conclusion": null,
+      "classification": "FORMAL_VALIDITY_GATE",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39788674148/job/119858813709",
+      "steps": [],
+      "actual_disposition": "PENDING_UNOBSERVED_RESULT; no pass or scientific disposition inferred"
+    },
+    {
+      "run_id": 39788674148,
+      "workflow": "OPICA follow-up draft checkpoint",
+      "workflow_path": ".github/workflows/rhrc_opica_followup.yml",
+      "event": "push",
+      "event_head_sha": "a77ae60427423e8b6f098596f300c8cecc6392b6",
+      "attempt": 1,
+      "job_id": 119858813857,
+      "name": "Frozen regression and fail-closed evidence tests",
+      "status": "queued",
+      "conclusion": null,
+      "classification": "REGRESSION_GATE",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39788674148/job/119858813857",
+      "steps": [],
+      "actual_disposition": "PENDING_UNOBSERVED_RESULT; no pass or scientific disposition inferred"
+    },
+    {
+      "run_id": 39788674148,
+      "workflow": "OPICA follow-up draft checkpoint",
+      "workflow_path": ".github/workflows/rhrc_opica_followup.yml",
+      "event": "push",
+      "event_head_sha": "a77ae60427423e8b6f098596f300c8cecc6392b6",
+      "attempt": 1,
+      "job_id": 119858814008,
+      "name": "Narrow repaired candidates (aggregate acceptance remains open)",
+      "status": "queued",
+      "conclusion": null,
+      "classification": "FORMAL_VALIDITY_GATE",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39788674148/job/119858814008",
+      "steps": [],
+      "actual_disposition": "PENDING_UNOBSERVED_RESULT; no pass or scientific disposition inferred"
+    }
+  ],
+  "artifacts": [
+    {
+      "run_id": 39788683241,
+      "id": 12430641920,
+      "name": "opica-regression",
+      "digest": "sha256:da0031c5227a9fc4826618f2bf7215495d1557d936e45d6060469342e5aa059d",
+      "expired_at_fetch": false,
+      "zip_crc_verified": true,
+      "members": [
+        {
+          "path": "exact-optimized.json",
+          "bytes": 1312,
+          "sha256": "dd0d587355ae1e68aebc3c5ade7eb35838a047ce3ac2122edd3c90f696e97d89"
+        },
+        {
+          "path": "exact.json",
+          "bytes": 1312,
+          "sha256": "dd0d587355ae1e68aebc3c5ade7eb35838a047ce3ac2122edd3c90f696e97d89"
+        }
+      ]
+    },
+    {
+      "run_id": 39788683063,
+      "id": 12431380359,
+      "name": "post268-extended-1-a77ae60427423e8b6f098596f300c8cecc6392b6",
+      "digest": "sha256:9ccc110174fb5452742c6734fc09551f4fe0f96cda00a05f3f395a88c4dc2d6b",
+      "expired_at_fetch": false,
+      "zip_crc_verified": true,
+      "members": [
+        {
+          "path": "check_post165_fb05_shifted_state_scope.log",
+          "bytes": 1465,
+          "sha256": "1df3944ce7dbfc2a4bf2c0df7d3335a5e5c96fd6cb13b4615a72495a4274365d"
+        },
+        {
+          "path": "check_post179_fb05_q13_correlation_preserving_derivative_scope.log",
+          "bytes": 68577,
+          "sha256": "dfbea35aea3bf7d1a04f3b0916822ce33ee19b5fb93348a3a0067085f1310b7e"
+        },
+        {
+          "path": "check_post194_fb05_q14_parity_trajectory_sharp_enclosure_scope.log",
+          "bytes": 717,
+          "sha256": "54dfacfc4198b7666084bf130d6bc735a7c31c627efc6515fbaeca3c6a24aed9"
+        },
+        {
+          "path": "check_post204_pair_d_exact_geometry.log",
+          "bytes": 431,
+          "sha256": "0d8703be2f9ef5177489f28fe1c7dfa6a08b69d770ec3ea7c8242fed83a32aa8"
+        },
+        {
+          "path": "check_post214_fb05_kernel_dual_geometry_independent.log",
+          "bytes": 1777,
+          "sha256": "fea07c839338de82d3bfca8bafc0d3c69a6b47dd4d04200edc00e5cad8111aec"
+        },
+        {
+          "path": "check_source_normalization_firewall.log",
+          "bytes": 502,
+          "sha256": "b1cb8ee813fc2af2a9c388b0247a0f4e00c26026dda96043e638c4b7e4650406"
+        },
+        {
+          "path": "environment.txt",
+          "bytes": 89,
+          "sha256": "6e9026a6a6d7527f68004d1697e1229815f5924a05676daebd2db0d3302156d5"
+        },
+        {
+          "path": "extended-1.json",
+          "bytes": 19236,
+          "sha256": "8616877131b6ae25bf54caa0df9d84e9540e62e2d45be5a36f3fed7fb946bbff"
+        }
+      ]
+    },
+    {
+      "run_id": 39788683063,
+      "id": 12430561683,
+      "name": "post268-extended-5-a77ae60427423e8b6f098596f300c8cecc6392b6",
+      "digest": "sha256:2c801a361e6b3aec88c64bcd4f1f23da3b055f45566ef229883100cd0c73c0ef",
+      "expired_at_fetch": false,
+      "zip_crc_verified": true,
+      "members": [
+        {
+          "path": "check_finite_dictionary_reference.log",
+          "bytes": 355,
+          "sha256": "a22f3575c1986daed3a8c4326835856f42f98ed955ee054859a38d36dcaf7def"
+        },
+        {
+          "path": "check_post171_fb05_schur_barrier_scope.log",
+          "bytes": 1862,
+          "sha256": "17d5d9fe5366d44342fcf06ff34d4391c431a67b3838e064b1ee39942a5f03a2"
+        },
+        {
+          "path": "check_post189_fb05_joint_selector_separability_scope.log",
+          "bytes": 541,
+          "sha256": "7ad9f0bfe85203a403659ab85c38609f9f0a693e65cad02eb5508eb6ffcd2333"
+        },
+        {
+          "path": "check_post200_fb05_q14_discrepancy_channel_jets_scope.log",
+          "bytes": 4875,
+          "sha256": "e33a64af35141091e7ad0fd4287923396c1e13a742267d5d617df348dc20d8df"
+        },
+        {
+          "path": "check_post247_global_bottom_scout_results.log",
+          "bytes": 221,
+          "sha256": "d26f01598284197bfee86a2658a96f531772dfc49c6c313434bdfa8572e88649"
+        },
+        {
+          "path": "environment.txt",
+          "bytes": 89,
+          "sha256": "6e9026a6a6d7527f68004d1697e1229815f5924a05676daebd2db0d3302156d5"
+        },
+        {
+          "path": "extended-5.json",
+          "bytes": 15576,
+          "sha256": "2db92af91dae8b8d32ab82c418b5ea5ac1cb640ba3a1600906ce88743b53fdf5"
+        }
+      ]
+    },
+    {
+      "run_id": 39788683451,
+      "id": 12430781782,
+      "name": "post287-wp5-modified-prime",
+      "digest": "sha256:9ba1f579ba9c719aa40f2babe11b8cf30b964ac308e90f9737b9a2986d3da166",
+      "expired_at_fetch": false,
+      "zip_crc_verified": true,
+      "members": [
+        {
+          "path": "post287-wp5.json",
+          "bytes": 4259,
+          "sha256": "6044d5f40acca2df746647d9d025cc7664bbe2dbfea349bde3ece1ab4adae3be"
+        }
+      ]
+    },
+    {
+      "run_id": 39788683222,
+      "id": 12429424782,
+      "name": "post287-wp6-signed-ray",
+      "digest": "sha256:184f1ed1a87e7ff0c10044ca11c806c667d70a42ee3bede3b7f5081fa7ebb6d6",
+      "expired_at_fetch": false,
+      "zip_crc_verified": true,
+      "members": [
+        {
+          "path": "post287-wp6.json",
+          "bytes": 3824,
+          "sha256": "b66568b59d408cb53cde1a81d5862f2a1708afb3a7e1bdb2747f0ae8d6f30751"
+        }
+      ]
+    },
+    {
+      "run_id": 39788674148,
+      "id": 12429323922,
+      "name": "opica-followup-full-release-readiness",
+      "digest": "sha256:39047e8e1d38f3ced0dd7b7ae22c604f3c1373869f5ebc076f4aa7d9b08c8ed7",
+      "expired_at_fetch": false,
+      "zip_crc_verified": true,
+      "members": [
+        {
+          "path": "opica-followup-release-readiness.json",
+          "bytes": 2785,
+          "sha256": "530fe32c5d2585ac051aefbf621999a25454e93f2dd26afc24f23f2d8314a73a"
+        }
+      ]
+    },
+    {
+      "run_id": 39788674148,
+      "id": 12429129070,
+      "name": "opica-followup-preparation",
+      "digest": "sha256:45bbdc819917a203aaf3ab05b158129fa7261019071e5bdbf8993c13e1f09b02",
+      "expired_at_fetch": false,
+      "zip_crc_verified": true,
+      "members": [
+        {
+          "path": "opica-followup-contract.json",
+          "bytes": 2727,
+          "sha256": "12802ecca9a067b19470be871acb69faf820cb4cf70c5e12e0a5bd07b6c19107"
+        }
+      ]
+    }
+  ],
+  "pagination": {
+    "run_per_page": 100,
+    "run_pages": 1,
+    "run_returned_equals_total": true,
+    "jobs_per_page": 100,
+    "all_run_job_returned_equals_total": true,
+    "all_attempts_filter": "all",
+    "artifacts_per_page": 100,
+    "all_run_artifact_returned_equals_total": true
+  },
+  "planned_dependent_jobs_not_yet_materialized": [
+    "PR OPICA subset-formal",
+    "PR OPICA repaired-candidates",
+    "PR OPICA frozen-regression",
+    "post268 complete44-check harvest"
+  ],
+  "current_opica_source_proof_gate": "PENDING: both current subset and narrow repaired-candidate compiler jobs queued; no new current-head receipt harvested",
+  "source_falsifier_research": "CURRENT_RUN_PENDING; historical UNRESOLVED result is not upgraded",
+  "WP4_current_run": "CURRENT_JOBS_PENDING; historical18/18 is not a current-run pass",
+  "historical_cold41_receipt": "Still applies only to9b6a9a3/tree545ea182; not currenta77/treeb1ebc2ed coverage",
+  "full_release_ready": false,
+  "full_100_root_gate": "OPEN",
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "limitations": [
+    "No compiler was rerun locally.",
+    "No pending or skipped job was counted as successful.",
+    "Job SUCCESS is separated from UNRESOLVED research status and finite/model/numerical authority.",
+    "The legacy combined-status API reports pending with0 commit statuses; Actions job metadata is the useful source here.",
+    "55 is the currently materialized job count, not a promise that no later dependent jobs will appear."
+  ]
+}

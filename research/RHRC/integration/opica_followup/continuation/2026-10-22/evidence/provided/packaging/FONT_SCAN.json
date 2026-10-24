@@ -1,0 +1,87 @@
+{
+  "status": "NO_STANDALONE_FONT_FILES_IN_DIRECT_AND_TOP_ARCHIVE_INVENTORIES",
+  "archives": [
+    {
+      "path": "inputs/OPICA_FOLLOWUP_PR_SPEC_PACKAGE_2026-10-21.zip",
+      "entries": 42
+    },
+    {
+      "path": "archive/original_packages/OPICA_Beyond_PR_Round2_Evidence_2026-10-21.zip",
+      "entries": 40
+    },
+    {
+      "path": "archive/original_packages/OPICA_SECOND_KIT_REVIEW_2026-10-22.zip",
+      "entries": 87
+    },
+    {
+      "path": "archive/original_packages/PR293_PostGreen_Research_Evidence_2026-10-21.zip",
+      "entries": 11
+    },
+    {
+      "path": "archive/original_packages/PR294_9b_subset_formal_failure.zip",
+      "entries": 3
+    },
+    {
+      "path": "archive/original_packages/opica-handover-2026-10-21.zip",
+      "entries": 378
+    },
+    {
+      "path": "archive/original_packages/OPICA_EndToEnd_Final_Evidence_2026-10-21.zip",
+      "entries": 70
+    },
+    {
+      "path": "archive/original_packages/OPICA_PR_BUILD_SPEC_PACKAGE_2026-10-21.zip",
+      "entries": 58
+    },
+    {
+      "path": "archive/original_packages/OPICA_FOLLOWUP_HANDOVER_2026-10-21.zip",
+      "entries": 362
+    },
+    {
+      "path": "archive/original_packages/OPICA_Continuation_e52964d_UNCHECKED_2026-10-21.zip",
+      "entries": 40
+    },
+    {
+      "path": "archive/original_packages/OPICA_Beyond_PR_Research_Round1_Evidence_2026-10-21.zip",
+      "entries": 24
+    },
+    {
+      "path": "archive/original_packages/OPICA_Paper_Construction_Evidence_2026-10-21.zip",
+      "entries": 1265
+    },
+    {
+      "path": "archive/alternative_104_root_NOT_CONTROLLING/OPICA_FOLLOWUP_PR_SPEC_PACKAGE_2026-10-21.zip",
+      "entries": 54
+    },
+    {
+      "path": "archive/initial38_handover/inputs/OPICA_FOLLOWUP_PR_SPEC_PACKAGE_2026-10-21.zip",
+      "entries": 42
+    },
+    {
+      "path": "archive/initial38_handover/evidence/parent/pr293-final-formal.zip",
+      "entries": 5
+    },
+    {
+      "path": "archive/second_kit_review/input/PR294_9b_subset_formal_failure.zip",
+      "entries": 3
+    },
+    {
+      "path": "workspace/research/RHRC/integration/post290/spec/inputs/RH_Post290_PoleNeutral_Research_2026-10-13.zip",
+      "entries": 17
+    },
+    {
+      "path": "workspace/research/RHRC/integration/post290/spec/inputs/RH_Constructive_Continuation_2026-10-13(2).zip",
+      "entries": 45
+    },
+    {
+      "path": "workspace/research/RHRC/integration/post290/spec/inputs/ABC_Step4_Research_Package_2026-10-13(1).zip",
+      "entries": 58
+    },
+    {
+      "path": "workspace/research/RHRC/integration/post290/spec/inputs/Step4_Original_Detector_Research_Package_2026-10-13(1).zip",
+      "entries": 53
+    }
+  ],
+  "forbidden_payloads": [],
+  "prior_attempt": "The preceding consolidation context reports a successful recursive 21-ZIP inspection of the unchanged original input family. The redundant deep replay in this final consolidation was interrupted; it is not counted as a new successful recursive verification."
+}

@@ -1,0 +1,24 @@
+rho0 = (0.5 + 14.1347251417347j)  kappa0 = (200.040454832387 + 0.0j)
+|zeta(rho0)| = 6.21e-31  zeta'(rho0) = (0.7832965119 + 0.1246998297j)  (simple zero, m = 1)
+(1) family identity g_kappa(y) = S_rho(y)/b_rho at a generic parameter rho = 0.7 + 5i
+  y =    1.5: |g - S/b| = 7.91e-31
+  y =    7.3: |g - S/b| = 1.84e-30
+  y =   42.9: |g - S/b| = 7.95e-31
+(2) order-zero jet tail at rho0: residual * y^3
+  y =    10.4: |residual| * y^3 = 1.93583
+  y =    55.7: |residual| * y^3 = 3.13293
+  y =   230.2: |residual| * y^3 = 3.25616
+  y =   900.6: |residual| * y^3 = 1.64395
+(3) beyond the multiplicity (k = 1 = m): first kappa-jet of the density
+  y =   10.4: |jet1| * y^(1/2) = 0.105477   |jet1 - (dT - B2/(2y^2))| * y^3 = 0.0286574
+  y =   55.7: |jet1| * y^(1/2) = 0.360896   |jet1 - (dT - B2/(2y^2))| * y^3 = 0.0173755
+  y =  230.2: |jet1| * y^(1/2) = 0.026544   |jet1 - (dT - B2/(2y^2))| * y^3 = 0.0165635
+  gap test supported in (-1/2, 1/2): first construction jet A'(kappa0) H(rho0) = (0.00027434904 + 0.00072887911j)  |.| = 0.0007788 (nonzero: the gap is lost at k = m)
+(4) differentiated forced chain for h1 = -d g/d kappa at kappa0
+  x = 2.37: |-(x^2 h1')' - kappa0 h1 - (h0 - 1)| = 3.16e-30
+  x = 5.61: |-(x^2 h1')' - kappa0 h1 - (h0 - 1)| = 0.0
+  n = 2: jump of x^2 h1' = (-1.000001 + 0.0j) (predicted -1)
+  n = 5: jump of x^2 h1' = (-1.0000004 + 0.0j) (predicted -1)
+(5) reflected branch: rho(kappa) through 1 - rho0 equals 1 - rho(kappa) through rho0
+  kappa0 + (0.3 + 0.1j): |branch(1 - rho0) - (1 - branch(rho0))| = 0.0, kappa(branch) - kappa = 2.52e-29
+  kappa0 + (-1.2 + 0.7j): |branch(1 - rho0) - (1 - branch(rho0))| = 0.0, kappa(branch) - kappa = 5.05e-29

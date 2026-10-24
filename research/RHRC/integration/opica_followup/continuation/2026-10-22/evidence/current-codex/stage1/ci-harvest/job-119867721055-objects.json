@@ -1,0 +1,52 @@
+[
+  {
+    "status": "PASS",
+    "base_main_sha": "48fb064a2664a10e8b5711dba7a5ebb0450ea826",
+    "layer_count": 6,
+    "primary_box_count": 6,
+    "control_box_count": 5,
+    "layer0": "EXACT_TWIN_SURVIVES",
+    "layer1": "EXACT_TWIN_SURVIVES",
+    "layer2_specific": "EXACT_TWIN_EXCLUDED_BY_IDENTITY",
+    "layer2_general_reflection": "EXACT_TWIN_SURVIVES",
+    "theorem_promotion": false,
+    "rh_claim": false
+  },
+  {
+    "status": "PASS",
+    "layer_count": 6,
+    "primary_box_count": 6,
+    "control_box_count": 5,
+    "primary_labels": [
+      "det_left_o2^-10_r2^-13",
+      "det_right_o2^-10_r2^-13",
+      "det_left_o2^-13_r2^-16",
+      "det_right_o2^-13_r2^-16",
+      "det_left_o2^-16_r2^-19",
+      "det_right_o2^-16_r2^-19"
+    ],
+    "adaptive_center_movement_permitted": false,
+    "new_q_n_parity_search_permitted": false
+  },
+  {
+    "status": "PASS",
+    "layer0": "EXACT_TWIN_SURVIVES",
+    "layer1": "EXACT_TWIN_SURVIVES",
+    "layer2_specific": "EXACT_TWIN_EXCLUDED_BY_IDENTITY",
+    "layer2_general_reflection": "EXACT_TWIN_SURVIVES",
+    "layer2_scalar_higher_ball": "[0.348577274968130269957837554265 +/- 2.93e-32]",
+    "layer2_scalar_lower_ball": "[0.334810194556886639717190222815 +/- 3.77e-31]",
+    "layer3": "UNRESOLVED",
+    "layer3_all_arch_scalar_couplings_overlap": true,
+    "layer4": "UNRESOLVED",
+    "layer4_pair_count": 15,
+    "layer4_strong_vector_overlap_pair_count": 0,
+    "layer4_overlap_and_opposite_target_pair_count": 0,
+    "layer5": "UNRESOLVED",
+    "layer5_certified_h1_state_count": 11,
+    "layer5_all_channel_reconstructions_overlap": true,
+    "fb05_closed": false,
+    "negative_root_exclusion": false,
+    "rh_claim": false
+  }
+]

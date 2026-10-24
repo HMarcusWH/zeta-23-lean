@@ -1,0 +1,10 @@
+'Zeta23.OPICAFollowup.complex_local_measure_embedding_faithful' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.LocalVariationConvergence.tendsto_schwartz_common_growth' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.common_linear_cubic_tail' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.OPICAFollowup.LocallyFiniteComplexMeasure.hasLinearGrowth_iff_totalVariation' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

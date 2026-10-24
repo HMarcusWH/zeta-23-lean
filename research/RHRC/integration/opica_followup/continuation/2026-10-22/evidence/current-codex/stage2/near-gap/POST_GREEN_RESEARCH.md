@@ -1,0 +1,15 @@
+# Near-gap scoped Post-Green Research Pass
+
+PROVED locally: `near_gap_mass_bound` for the actual mutually singular locally finite Jordan carrier, literal total variation and actual tempered Fourier selfduality. The constant is exactly pi²R²/(4d²), with the complete frozen a,R,d domain. Four imported theorem consumers pass with only the standard three axioms: the fully unfolded physical statement, its explicit common-linear-C companion, the critical-gap a=1 boundary, and d=1/2 endpoint. Exact source/log identities are in STATUS.json. This source overlay is separate from the Stage1 GitHub head.
+
+The proof uses the genuine Gaussian-regularized sinc/triangle identity and the actual compact distance region. The gap kills the origin mass; off-lattice nonnegativity kills the negative sinc integral; the triangle contributes at most (1-a) times actual local variation. The positive sinc lower bound then gives the stated mass estimate. Evenness is unnecessary for this argument. The retained d<=1/2 premise is not used internally, suggesting a possible supporting domain generalization, without changing the frozen primary signature.
+
+Workflow harvest: this task ran only narrow local module/consumer gates. The separately saved Stage1 live-CI snapshot has its own exact head and pending results; no CI completion or full-release receipt is inferred for this overlay. Failed consumer normalization/copy attempts are preserved and superseded only by the successful final imported gate.
+
+DERIVED: with one bounded local variation budget and a tending to1, mass on each fixed compact region separated from the lattice tends to zero. Conversely a fixed positive observation there forces a local variation cost proportional to1/(1-a). This gives a quantitative obstruction to cost-free gap sharpening, rather than a construction of a nonzero sharp-gap measure.
+
+The controlled Schwartz-limit root still needs compact weak extraction and uniform tails. Off-lattice region bounds alone do not control signed lattice mass or prove total-variation convergence. The CT1 dilation family is the appropriate falsification control: moving positive atoms and signed lattice atoms may cancel weakly while their variation persists; normalization by L² destroys the common variation budget. Its actual nonzero family and normalized nonmeasure limit remain unformalized here.
+
+Highest-leverage next work is the exact `nu_L = D_L + D_-L - 2*cosh(L/2)*D_0` Jordan measure: derive its evenness, selfduality, origin cancellation, gap, off-lattice positivity, nonzero atom and common growth bound from the saved actual-comb APIs. Then prove genuine twice-differentiated Schwartz lattice sums and the nonzero delta-derivative limit, and separately complete weak compactness plus tails. No zero-measure instance substitutes for the missing nonzero family gate.
+
+The other three NearGapLimits primaries, global co-Poisson construction, full package acceptance, RH and Step4 remain OPEN. Independent human review remains NOT_ESTABLISHED.

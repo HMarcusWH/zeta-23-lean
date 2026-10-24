@@ -1,0 +1,63 @@
+{
+  "python": "3.13.5 (tags/v3.13.5:6cb20a2, Jun 11 2025, 16:15:46) [MSC v.1943 64 bit (AMD64)]",
+  "runs": [
+    {
+      "lane": "checkpoint17",
+      "mode": "normal",
+      "argv": [
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\tools\\python-3.13.5-embed-amd64\\python.exe",
+        "-B",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\research\\RHRC\\integration\\opica_followup\\tests\\test_contract.py",
+        "ContinuationCheckpointTests",
+        "-v"
+      ],
+      "exit_code": 0,
+      "log": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-publish-2026-10-22\\contracts\\checkpoint17-normal.log",
+      "sha256": "aed8f2d41f772d4f6fbe1387577c5959003c94d984effb89c814b95d69293910"
+    },
+    {
+      "lane": "checkpoint17",
+      "mode": "optimized",
+      "argv": [
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\tools\\python-3.13.5-embed-amd64\\python.exe",
+        "-B",
+        "-O",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\research\\RHRC\\integration\\opica_followup\\tests\\test_contract.py",
+        "ContinuationCheckpointTests",
+        "-v"
+      ],
+      "exit_code": 0,
+      "log": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-publish-2026-10-22\\contracts\\checkpoint17-optimized.log",
+      "sha256": "4919733cf600d2b0f8630d69163100ee4856e6f87358b865479ce59b6cdc86ec"
+    },
+    {
+      "lane": "child-contract59",
+      "mode": "normal",
+      "argv": [
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\tools\\python-3.13.5-embed-amd64\\python.exe",
+        "-B",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\research\\RHRC\\integration\\opica_followup\\tests\\test_contract.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "log": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-publish-2026-10-22\\contracts\\child-contract59-normal.log",
+      "sha256": "238c4f36059f9cbc1d4911bc905e8076edf9785de9fdab59cb444b3a0191b8e4"
+    },
+    {
+      "lane": "child-contract59",
+      "mode": "optimized",
+      "argv": [
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\tools\\python-3.13.5-embed-amd64\\python.exe",
+        "-B",
+        "-O",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\research\\RHRC\\integration\\opica_followup\\tests\\test_contract.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "log": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-publish-2026-10-22\\contracts\\child-contract59-optimized.log",
+      "sha256": "5be3f91cc8744cdd23a302dec131bc749381a4ec661491543b738cc7c3206790"
+    }
+  ],
+  "scope": "Checkpoint stat/resolve rejection branches use controlled method mocks; not an OS symlink creation claim. Complete contract module also replayed.",
+  "release_acceptance": false
+}

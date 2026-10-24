@@ -1,0 +1,175 @@
+{
+  "formal_lane_targets": {
+    "local": [
+      "Zeta23.OPICAFollowup.NativeTransformationWords",
+      "Zeta23.OPICAFollowup.NormFirstTransfer",
+      "Zeta23.OPICAFollowup.JointObservation",
+      "Zeta23.OPICAFollowup.RobustLaurent",
+      "Zeta23.OPICAFollowup.Counterexamples"
+    ],
+    "arithmetic": [
+      "Zeta23.OPICAFollowup.MaskedNativeRate",
+      "Zeta23.OPICAFollowup.NativeWindowRate",
+      "Zeta23.OPICAFollowup.MovingSourceWindowRate"
+    ],
+    "heat": [
+      "Zeta23.OPICAFollowup.WeightedMixing",
+      "Zeta23.OPICAFollowup.NearGapLimits",
+      "Zeta23.OPICAFollowup.FiniteSpanSeparation",
+      "Zeta23.OPICAFollowup.FirstCellCost",
+      "Zeta23.OPICAFollowup.SquareDefect"
+    ],
+    "spectral": [
+      "Zeta23.OPICAFollowup.BoundaryAmplitude",
+      "Zeta23.OPICAFollowup.SamplingCompatibility"
+    ]
+  },
+  "required_final_build_targets": [
+    "Zeta23.OPICA",
+    "Zeta23.OPICA.Validation",
+    "Zeta23.RHRC.OpicaBindings",
+    "Zeta23.OPICAFollowup",
+    "Zeta23.OPICAFollowup.Validation",
+    "Zeta23.RHRC.OpicaFollowupBindings",
+    "Zeta23.RHRC.RegisteredClaimBindings",
+    "Zeta23.RHRC.DeclarationDependencyExport",
+    "Zeta23.RHRC.SourceCandidateResolution"
+  ],
+  "regenerate": {
+    "producer": "research/RHRC/tools/materialize_derived_state.py --write",
+    "freshness_gate": "research/RHRC/tools/materialize_derived_state.py --check",
+    "paths": [
+      "research/RHRC/ffbbp/generated/RHKG_CANDIDATE_REDUCTION_ASSURANCE.json",
+      "research/RHRC/graph/compiler/REGISTERED_DECLARATION_DEPENDENCIES.jsonl",
+      "research/RHRC/graph/generated/CONTACT_QUOTIENT_DECLARATION_DEPENDENCIES.jsonl",
+      "research/RHRC/graph/generated/CONTACT_QUOTIENT_VIEW.json",
+      "research/RHRC/graph/generated/DEPENDENCY_BRIDGE_FRONTIERS.json",
+      "research/RHRC/graph/generated/DEPENDENCY_COHORT_ATOMS.json",
+      "research/RHRC/graph/generated/DEPENDENCY_COHORT_OVERLAP.json",
+      "research/RHRC/graph/generated/DEPENDENCY_KERNEL_ATLAS.json",
+      "research/RHRC/graph/generated/DEPENDENCY_KERNEL_QUOTIENT.json",
+      "research/RHRC/graph/generated/DEPENDENCY_PROJECTION_FRONTIERS.json",
+      "research/RHRC/graph/generated/DEPENDENCY_PROJECTION_QUOTIENTS.json",
+      "research/RHRC/graph/generated/DEPENDENCY_PROJECTION_SUMMARY.json",
+      "research/RHRC/graph/generated/DEPENDENCY_SIGNATURE_CLASSES.json",
+      "research/RHRC/graph/generated/DOCUMENT_SEMANTIC_CLOSURE.json",
+      "research/RHRC/graph/generated/ENTRYPOINT_REACHABILITY.json",
+      "research/RHRC/graph/generated/MODULE_SEMANTIC_CLOSURE.json",
+      "research/RHRC/graph/generated/REPOSITORY_COVERAGE.json",
+      "research/RHRC/graph/generated/THEOREM_CLAIM_MAP.json",
+      "research/RHRC/graph/generated/THEOREM_DEPENDENCY_CLOSURE.json",
+      "research/RHRC/graph/generated/UNRESOLVED_GRAPH_ITEMS.json",
+      "research/RHRC/graph/generated/lean_declarations.jsonl",
+      "research/RHRC/graph/generated/lean_modules.jsonl",
+      "research/RHRC/graph/generated/lean_source_declarations.jsonl",
+      "research/RHRC/graph/generated/registry_nodes.jsonl",
+      "research/RHRC/graph/generated/relations/relations-0.jsonl",
+      "research/RHRC/graph/generated/relations/relations-1.jsonl",
+      "research/RHRC/graph/generated/relations/relations-2.jsonl",
+      "research/RHRC/graph/generated/relations/relations-3.jsonl",
+      "research/RHRC/graph/generated/relations/relations-4.jsonl",
+      "research/RHRC/graph/generated/relations/relations-5.jsonl",
+      "research/RHRC/graph/generated/relations/relations-6.jsonl",
+      "research/RHRC/graph/generated/relations/relations-7.jsonl",
+      "research/RHRC/graph/generated/relations/relations-8.jsonl",
+      "research/RHRC/graph/generated/relations/relations-9.jsonl",
+      "research/RHRC/graph/generated/relations/relations-a.jsonl",
+      "research/RHRC/graph/generated/relations/relations-b.jsonl",
+      "research/RHRC/graph/generated/relations/relations-c.jsonl",
+      "research/RHRC/graph/generated/relations/relations-d.jsonl",
+      "research/RHRC/graph/generated/relations/relations-e.jsonl",
+      "research/RHRC/graph/generated/relations/relations-f.jsonl",
+      "research/RHRC/graph/generated/repository_files.jsonl",
+      "research/RHRC/integration/generated/RH_CORE_SOURCE_ONLY_THEOREMS.jsonl",
+      "research/RHRC/integration/generated/SOURCE_CANDIDATE_RESOLUTION.jsonl",
+      "research/RHRC/integration/generated/SOURCE_CANDIDATE_SUMMARY.json",
+      "research/RHRC/integration/generated/source_only_dependencies/SOURCE_ONLY_CANDIDATE_DEPENDENCIES-0.jsonl",
+      "research/RHRC/integration/generated/source_only_dependencies/SOURCE_ONLY_CANDIDATE_DEPENDENCIES-1.jsonl",
+      "research/RHRC/integration/generated/source_only_dependencies/SOURCE_ONLY_CANDIDATE_DEPENDENCIES-2.jsonl",
+      "research/RHRC/integration/generated/source_only_dependencies/SOURCE_ONLY_CANDIDATE_DEPENDENCIES-3.jsonl",
+      "research/RHRC/integration/generated/source_only_dependencies/SOURCE_ONLY_CANDIDATE_DEPENDENCIES-4.jsonl",
+      "research/RHRC/integration/generated/source_only_dependencies/SOURCE_ONLY_CANDIDATE_DEPENDENCIES-5.jsonl",
+      "research/RHRC/integration/generated/source_only_dependencies/SOURCE_ONLY_CANDIDATE_DEPENDENCIES-6.jsonl",
+      "research/RHRC/integration/generated/source_only_dependencies/SOURCE_ONLY_CANDIDATE_DEPENDENCIES-7.jsonl",
+      "research/RHRC/integration/generated/source_only_dependencies/SOURCE_ONLY_CANDIDATE_DEPENDENCIES-8.jsonl",
+      "research/RHRC/integration/generated/source_only_dependencies/SOURCE_ONLY_CANDIDATE_DEPENDENCIES-9.jsonl",
+      "research/RHRC/integration/generated/source_only_dependencies/SOURCE_ONLY_CANDIDATE_DEPENDENCIES-a.jsonl",
+      "research/RHRC/integration/generated/source_only_dependencies/SOURCE_ONLY_CANDIDATE_DEPENDENCIES-b.jsonl",
+      "research/RHRC/integration/generated/source_only_dependencies/SOURCE_ONLY_CANDIDATE_DEPENDENCIES-c.jsonl",
+      "research/RHRC/integration/generated/source_only_dependencies/SOURCE_ONLY_CANDIDATE_DEPENDENCIES-d.jsonl",
+      "research/RHRC/integration/generated/source_only_dependencies/SOURCE_ONLY_CANDIDATE_DEPENDENCIES-e.jsonl",
+      "research/RHRC/integration/generated/source_only_dependencies/SOURCE_ONLY_CANDIDATE_DEPENDENCIES-f.jsonl",
+      "research/RHRC/ool/generated/RHKG_OOL_PHASE_ATLAS.json",
+      "research/RHRC/ool/generated/RHKG_OOL_ROUTE_CONTACTS.jsonl"
+    ],
+    "expected_diff_semantics": "These exact existing outputs are all rerun; commit only resulting byte changes. Not a claim that every listed file must change.",
+    "forbidden": "No manual edits; no frozen history changes; do not fabricate new generated paths to silence a checker."
+  },
+  "new_jobs": [
+    {
+      "id": "followup-contract",
+      "class": "FORMAL_VALIDITY_GATE_STATIC",
+      "needs": [],
+      "meaning": "Parent pin and exact source/coverage/protection/extension contract; static pass is not a proof."
+    },
+    {
+      "id": "followup-regression",
+      "class": "REGRESSION_GATE",
+      "needs": [
+        "followup-contract"
+      ],
+      "meaning": "Unchanged39920 finite checks per mode including P0, child mutation/unit tests,33 numerical consistency cases explicitly noninterval-certified."
+    },
+    {
+      "id": "followup-formal",
+      "class": "FORMAL_VALIDITY_GATE",
+      "matrix": [
+        "local",
+        "arithmetic",
+        "heat",
+        "spectral"
+      ],
+      "needs": [
+        "followup-contract"
+      ],
+      "meaning": "Actual Lean targets per lane; missing foundation/measure/explicit-formula proof fails; no partial summary from successful easy lane."
+    },
+    {
+      "id": "followup-aggregate",
+      "class": "FORMAL_VALIDITY_GATE",
+      "needs": [
+        "followup-formal"
+      ],
+      "meaning": "Build sibling facade, typed Validation, P0 audits, global registered bindings and child exporter at one clean tree; recompute complete merged compiler receipt."
+    },
+    {
+      "id": "followup-generated",
+      "class": "REGRESSION_GATE",
+      "needs": [
+        "followup-aggregate"
+      ],
+      "meaning": "Existing canonical producer --check at current tracked tree; no CI repair or changed historical receipt."
+    },
+    {
+      "id": "followup-research-delta",
+      "class": "RESEARCH_PRODUCING_CHECK",
+      "needs": [
+        "followup-aggregate"
+      ],
+      "meaning": "Exact clause/native-consumer and TYPE/VALUE/STRUCTURE delta, prior research dispositions; no equivalence inferred from graph connectivity."
+    },
+    {
+      "id": "followup-summary",
+      "class": "COMPLETENESS_GATE",
+      "needs": [
+        "followup-contract",
+        "followup-regression",
+        "followup-formal",
+        "followup-aggregate",
+        "followup-generated",
+        "followup-research-delta"
+      ],
+      "meaning": "Fail on any missing/skipped/canceled/in-progress/failed required lane; record RH/Step4 OPEN and independent-review status separately."
+    }
+  ]
+}

@@ -1,3 +1,38 @@
+# RHRC — current agent entry point
+
+<!-- OPICA_AGENT_NAVIGATION_2026_10_22 -->
+**RH, Step 4 and the independent closing inequalities remain OPEN.**
+
+For active OPICA work, start with [the root README](../../README.md),
+[root agent instructions](../../AGENTS.md) and the
+[22 October continuation guide](integration/opica_followup/continuation/2026-10-22/README.md).
+The active branch is `research/opica-native-followup`, draft PR #294. The accepted
+OPICA parent is merged PR #293. Read the [Stage 2 handover](integration/opica_followup/continuation/2026-10-22/STAGE2_HANDOVER.md) for new repaired source hashes.
+
+The full target remains 100 original roots in 28 acceptance units: 41 historical
+source-bound roots, fifteen additional narrow local results, one unaccepted
+candidate and 43 absent implementations. These counts do not establish
+aggregate 56-root acceptance. Use the
+[per-root ledger](integration/opica_followup/continuation/2026-10-22/ROOT_LEDGER_100.json)
+for actual proof/consumer/axiom/aggregate stages.
+
+- [Documentation and evidence index](integration/opica_followup/continuation/2026-10-22/DOCUMENTATION_INDEX.md)
+- [Remaining implementations and integration obligations](integration/opica_followup/continuation/2026-10-22/REMAINING_WORK.md)
+- [OPICA navigation graph](graph/OPICA_FOLLOWUP_CURRENT_STATE.md)
+- [Current execution plan](CURRENT_RESEARCH_PLAN.md)
+- [Repository graph semantics](graph/README.md)
+
+The older integration and research programme below remains historical context.
+Its generated control block is checked against the preserved Control-v2 state;
+it does not supersede the live PR or the current OPICA evidence.
+
+<details>
+<summary>Historical programme and generated control snapshot</summary>
+
+The material below preserves earlier checkpoints. Its dated current/next labels
+and renderer-owned state block describe those recorded states. They do not
+override the current OPICA guide and exact-source evidence linked above.
+
 # RHRC — current research state
 
 
@@ -505,3 +540,6 @@ obstructions, signed Fourier rigidity, and actual-source native consumers.
 Its normal import is `Zeta23.OPICA`; compiler instruments and expected-type
 consumers remain audit-only. Component evidence, repository-wide CI and
 independent mathematical review have separate authority.
+
+
+</details>

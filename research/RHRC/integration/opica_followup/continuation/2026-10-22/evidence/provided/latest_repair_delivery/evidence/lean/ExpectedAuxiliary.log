@@ -1,0 +1,19 @@
+/mnt/data/opica_repair_20261022/delivery/consumers/ExpectedAuxiliary.lean:57:69: error: unsolved goals
+⊢ 2 < auxCompletionAlpha 2
+/mnt/data/opica_repair_20261022/delivery/consumers/ExpectedAuxiliary.lean:74:25: error: Application type mismatch: The argument
+  Polynomial.derivative (auxProfilePolynomial 0)
+has type
+  Polynomial ℝ
+but is expected to have type
+  Polynomial ℂ
+in the application
+  Polynomial.eval (↑u) (Polynomial.derivative (auxProfilePolynomial 0))
+/mnt/data/opica_repair_20261022/delivery/consumers/ExpectedAuxiliary.lean:76:12: error(lean.unknownIdentifier): Unknown identifier `add_neg_eq_sub`
+'Zeta23.OPICAFollowup.aux_completion_actual_transform' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.OPICAFollowup.aux_completion_uniform_decay' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.OPICAFollowup.aux_completion_ratio_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.OPICAFollowup.auxCompletionProfile_distributional_derivative' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.auxCompletionKernel_scaled_profile' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.OPICAFollowup.auxCompletionFilledTransform_at_half' depends on axioms: [propext, Classical.choice, Quot.sound]

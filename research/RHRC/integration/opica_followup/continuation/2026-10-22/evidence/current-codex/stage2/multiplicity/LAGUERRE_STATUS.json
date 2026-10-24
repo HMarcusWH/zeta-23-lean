@@ -1,0 +1,83 @@
+{
+  "root": "Zeta23.OPICAFollowup.laguerre_tail_norm",
+  "status": "GREEN_NARROW_EXACT_SOURCE_IMPORTED_EXPECTED_TYPE_ACTUAL_DOMAIN_STANDARD_AXIOMS",
+  "source_sha256": "4fff73ef0f59ae602cfafcbdc9d3fa557316aedaf75429e27be19566a7d3926a",
+  "consumer_sha256": "4ff677a40e47c6a948399ee781346c163b10dbea541bf792b41353bae296ef6d",
+  "source_exit": 0,
+  "consumer_exit": 0,
+  "source_log": "laguerre-final-save.log",
+  "source_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "consumer_log": "expected-multiplicity-final.log",
+  "consumer_log_sha256": "c69be08a8d721eaac83321ee3b4d29025ab80befef4a5985225da09797f5d2dd",
+  "source_warning_records": 0,
+  "consumer_warning_records": 0,
+  "printed_closures": [
+    {
+      "declaration": "Zeta23.OPICAFollowup.laguerre_tail_norm",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "Zeta23.OPICAFollowup.monicLaguerre_exact_norm_sq",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "Zeta23.OPICAFollowup.monicLaguerre_orthogonality",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "Zeta23.OPICAFollowup.laguerre_iterated_ibp",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "Zeta23.OPICAFollowup.monicLaguerreTail_integral_norm_sq",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    }
+  ],
+  "theorem_scope": "Every m>=1, every complex p with Re p>0, every real T; monic polynomial, orthogonality, actual MemLp/L2 representative, squared norm and paper norm",
+  "physical_controls": [
+    "degree0 exactconstant",
+    "literal conjugated exponential and realshift",
+    "vanishes before arbitraryT",
+    "m1 arbitrarysignedordinate and negativeT=-3",
+    "literal integral norm square for everyn,p,T"
+  ],
+  "source_statement_weakening": false,
+  "new_assumptions": [],
+  "project_import_delta": [],
+  "mathlib_import_repair": "Replace invalid/wrong-case Analysis.InnerProductSpace.L2Space by actual MeasureTheory.Function.L2Space",
+  "other_primary_roots": "native_auxiliary_top_moment/native_auxiliary_tail_residual_lower/native_terminal_memory_lower remain absent",
+  "full_aggregate": "OPEN",
+  "full_release": "OPEN",
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "main_source_stable_for_checkpoint": true,
+  "next_work": "Actual causal y=c_k*U_d, stable L2 and physical convolution/Laplace/moments; external until green",
+  "toolchain": "leanprover/lean4:v4.33.0-rc2",
+  "maxHeartbeats": 800000,
+  "LEAN_NUM_THREADS": 1,
+  "isolated_checkout": "work/opica-audit28",
+  "head_at_verification": "9ccea78eb5ee0c097bde05424e43de58a589b713",
+  "saved_olean_sha256": "0e45b6893bc5a46f314bff91646a6602f2136d6c3116f89a95fa5942f8bb45fb",
+  "head_scope": "head_at_verification is the observed main checkout head; verification ran the exact owned source overlay in the isolated checkout, not a whole-main-tree build.",
+  "isolated_base_head": "9b6a9a3a2badb4cff62a56c1158d9cef8759d30d"
+}

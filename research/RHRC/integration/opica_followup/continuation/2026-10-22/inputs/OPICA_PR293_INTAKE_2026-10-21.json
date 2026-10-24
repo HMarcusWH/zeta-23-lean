@@ -1,0 +1,118 @@
+{
+  "schema": "OPICA_FOLLOWUP_PARENT_INTAKE_V1",
+  "observations": {
+    "pr": 293,
+    "url": "https://github.com/HMarcusWH/zeta-23-lean/pull/293",
+    "head": "553b4263b58d9fec178320de251ff299a0bd702a",
+    "head_tree": "12691099f1a155a8bfa3ad4f6689146175b233b2",
+    "base_main": "97926d6a949fed7af0429a373b47abc772012834",
+    "branch": "research/opica-obstruction-preservation",
+    "synthetic_merge": "875a321edf0362bbc170cc3177007c18172eeef0",
+    "observed_state": "OPEN_DRAFT_NOT_MERGED",
+    "final_acceptance": "PENDING_PARENT_PUBLICATION_HEAD_COMPLETION_AND_COMPLETE_HARVEST",
+    "compiler_evidence": {
+      "pr_run": 39586659233,
+      "formal_job": 119177561193,
+      "requested_head": "553b4263b58d9fec178320de251ff299a0bd702a",
+      "actual_checked_commit": "875a321edf0362bbc170cc3177007c18172eeef0",
+      "actual_checked_tree": "12691099f1a155a8bfa3ad4f6689146175b233b2",
+      "release_contract": "PASS_FROM_JOB_LOG",
+      "artifact_id": 12342876090,
+      "artifact_sha256": "1ffbc5055e27576599e957f3ad8a0a47ed5c69090d1281bd096d3e5cb4d3ad03",
+      "complete_artifact_bytes_downloaded_here": false,
+      "root_count": 76
+    },
+    "push_run": 39586645608,
+    "push_formal_job": 119177298628,
+    "latest_observed_push_steps": {
+      "build_receipt": "SUCCESS",
+      "release_contract": "SUCCESS",
+      "materialize_derived_state": "IN_PROGRESS",
+      "generated_freshness": "PENDING"
+    },
+    "whole_pr_green_claimed": false,
+    "review_scope": "Live metadata, selected proof APIs, exact validator/builder/workflow code and current formal-job log; not a complete independent review of613declarations or every research result."
+  },
+  "live_reads": [
+    {
+      "path": "Zeta23/OPICA.lean",
+      "git_blob": "b0e62430f93a6998aa208d17a1e46e605d72cd79",
+      "scope": "complete"
+    },
+    {
+      "path": "Zeta23/OPICA/NativeJetAdapter.lean",
+      "git_blob": "e808791a35fa7240be1aa1059d2f83b156a18986",
+      "scope": "complete"
+    },
+    {
+      "path": "Zeta23/OPICA/NativeArithmeticAdapter.lean",
+      "git_blob": "2f691dcb5b46a71f2dd69cf407b12c2858098498",
+      "scope": "complete"
+    },
+    {
+      "path": "Zeta23/OPICA/LocallyFiniteSignedMeasure.lean",
+      "git_blob": "097f4bf09e3f32f7cb1cd534d2ee4502b98194eb",
+      "scope": "lines1-190"
+    },
+    {
+      "path": "Zeta23/OPICA/EnergyRate.lean",
+      "git_blob": "2f0f55aa46beb7c81ea5c16e528b8e58fd58b745",
+      "scope": "lines1-120"
+    },
+    {
+      "path": "research/RHRC/integration/opica/validate_contract.py",
+      "git_blob": "d0babd1faf37bd266f3281182ac4817d53213fde",
+      "scope": "complete"
+    },
+    {
+      "path": "research/RHRC/integration/opica/build_receipt.py",
+      "git_blob": "a48bab881daaf9c8cfda71dd6b4f073888155660",
+      "scope": "lines1-160"
+    },
+    {
+      "path": "research/RHRC/integration/opica/dependency_delta.py",
+      "git_blob": "a1ba6612b152540cb599f453bfc3d17f8193d93f",
+      "scope": "lines1-90"
+    },
+    {
+      "path": "Zeta23/RHRC/OpicaTypeExprExport.lean",
+      "git_blob": "c024a973c2f03a9ae9138da96973a3b0ae2019c1",
+      "scope": "lines1-75 and155-200; public exportType : Lean.Expr -> IO String confirmed; unsafe memoization remains audit-only"
+    },
+    {
+      "path": "Zeta23/RHRC/OpicaBindings.lean",
+      "scope": "initial section; truncated listing not complete exporter review"
+    },
+    {
+      "path": ".github/workflows/rhrc_opica.yml",
+      "git_blob": "230f2ec40168e58cce1a4f98daecf6faa6201898",
+      "scope": "lines1-230"
+    }
+  ],
+  "previous_source_candidates": [
+    {
+      "path": "Zeta23/WeilEF/Main.lean",
+      "declaration": "Zeta23.WeilEF.EF_lit_zetaZeroConfig",
+      "scope": "Actual zeta compact-test EF exists; new translated native zero-series identification still required."
+    },
+    {
+      "path": "Zeta23/RvM/LocalCount.lean",
+      "declaration": "Zeta23.RvM.zetaZeroConfig_local_count",
+      "scope": "Actual zeta multiplicity-weighted local count; do not use similarly named XiPrime count."
+    },
+    {
+      "path": "Zeta23/CCM/UniversalSincInverseGevreyBounds.lean",
+      "declaration": "Zeta23.CCM.UniversalSinc.norm_iteratedDeriv_inverseCandidate_le_gevrey",
+      "scope": "Existing source regularity candidate; actual source-order norm identities remain to prove."
+    }
+  ],
+  "source_candidate_authority": "Read in preserved parent-base source; require actual parent blob/type match at implementation intake. Not a new local compiler run.",
+  "operational_incidents": [
+    "Initial default Python startup timed out; used /usr/bin/python3 -S for stdlib specification generation.",
+    "Attempted raw repository archive transport was unavailable; no claim of full live-tree reconstruction.",
+    "Drive discovery returned29read-onlyfunctions and no upload/create; plugin search confirmed Drive installed. No upload fabricated."
+  ],
+  "new_Lean_roots": 0,
+  "new_CI_runs": 0,
+  "repo_writes": false
+}

@@ -1,0 +1,541 @@
+name: RHRC research and Lean checks
+
+on:
+  pull_request:
+    branches: ["main"]
+  workflow_dispatch:
+
+concurrency:
+  group: rhrc-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  python-rhrc:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.14'
+      - name: Install RHRC framework requirements
+        run: python -m pip install -r research/RHRC/requirements.txt
+      - name: RHRC claim and regression suite
+        # Checked-in derived snapshots are a materialized-state property, not a
+        # first-pass PR validity gate. The dedicated RHKG job below rebuilds the
+        # complete derived stack from this exact PR tree and validates it.
+        run: python research/RHRC/tools/run_suite.py --skip-derived-state
+      - name: Control v2 real-history smoke run
+        run: |
+          python research/RHRC/control_v2/run_control.py \
+            --output /tmp/RHRC_CONTROL_V2.json
+          python - <<'PY'
+          import json
+          p = json.load(open('/tmp/RHRC_CONTROL_V2.json'))
+          state = json.load(open('research/RHRC/control_v2/CONTROL_STATE.json'))
+          theorem = state['merged_theorem_anchor']
+          assert p['terminal_claim'] == 'RH_OPEN'
+          assert p['theorem_anchor']['pr'] == theorem['pr']
+          assert p['theorem_anchor']['merge_commit'] == theorem['merge_commit']
+          assert p['theorem_anchor']['tree'] == theorem['tree']
+          assert p['control_anchor']['pr'] == 117
+          assert p['theorem_anchor']['merge_commit'] != p['control_anchor']['merge_commit']
+          assert p['route_certificate']['frontier_id'] == 'FIRST_BAD_RIGIDITY_E4_A4R_REGULAR_SCHUR_ENERGY_SIGN'
+          assert p['route_certificate']['selected_action'] == 'E4_A4_REGULAR_SCHUR_ENERGY_SIGN'
+          assert p['selected_first_break']['break_id'] == 'E4A4-SCHUR-FB-05'
+          assert p['route_certificate']['theorem_authority'] is False
+          assert p['route_certificate']['terminal_claim_change'] is False
+          assert all(r['search_paths'] for r in p['retro_receipts'])
+          print('Control v2 smoke: PASS')
+          PY
+
+
+  rhkg-compiler-receipt:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.14'
+      - name: Install RHRC framework requirements
+        run: python -m pip install -r research/RHRC/requirements.txt
+      - uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-mathlib-cache: true
+      - name: Build registered and derived-state Lean exporters
+        run: |
+          lake build \
+            Zeta23.RHRC.RegisteredClaimBindings \
+            Zeta23.RHRC.DeclarationDependencyExport \
+            Zeta23.RHRC.SourceCandidateResolution
+      - name: Validate complete registered theorem bindings
+        run: python3 research/RHRC/tools/registered_theorem_binding_lint.py
+      - name: Validate committed RHKG state BEFORE any generator writes
+        run: python3 research/RHRC/tools/materialize_derived_state.py --check
+      - name: Verify stale RHKG cannot be accepted (adversarial source/index mutations)
+        run: python3 research/RHRC/integration/post287/test_rhkg_staleness.py
+      - name: Ensure validation did not modify or create derived products
+        shell: bash
+        run: |
+          set -euo pipefail
+          git diff --exit-code HEAD -- \
+            research/RHRC/graph/compiler \
+            research/RHRC/graph/generated \
+            research/RHRC/integration/generated \
+            research/RHRC/ffbbp/generated \
+            research/RHRC/ool/generated
+          if [ -n "$(git ls-files --others --exclude-standard -- \
+            research/RHRC/graph/compiler research/RHRC/graph/generated \
+            research/RHRC/integration/generated research/RHRC/ffbbp/generated \
+            research/RHRC/ool/generated)" ]; then
+            echo "Unexpected untracked derived outputs" >&2
+            exit 1
+          fi
+      - name: Upload exact PR-head RHKG derived state
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rhkg-derived-state
+          path: |
+            research/RHRC/graph/compiler/REGISTERED_DECLARATION_DEPENDENCIES.jsonl
+            research/RHRC/graph/generated/
+            research/RHRC/integration/generated/
+            research/RHRC/ffbbp/generated/
+            research/RHRC/ool/generated/
+          if-no-files-found: error
+
+  r003-normalization-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.14'
+      - name: Install R003 numerical audit requirements
+        run: python -m pip install -r research/RHRC/routes/R003_ccm_bridge/requirements.txt
+      - name: Re-run cutoff-free CCM normalization lock
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/compare_ccm_normalizations.py \
+            --output /tmp/CCM_NORMALIZATION_AUDIT.json
+      - name: Check finite dictionary external oracle guards
+        run: python research/RHRC/routes/R003_ccm_bridge/check_finite_dictionary_reference.py
+      - name: Check source normalization semantic firewall
+        run: python research/RHRC/routes/R003_ccm_bridge/check_source_normalization_firewall.py
+      - name: Check post-150 selected-residual certification plumbing
+        run: python research/RHRC/routes/R003_ccm_bridge/check_post150_selected_residual_scope.py
+      - name: Scout post-150 selected-residual scope
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/probe_post150_selected_residual_scope.py \
+            --q-min 2 --q-max 4 --n-min 1 --n-max 5 --samples 2 --top 12 \
+            --output /tmp/POST150_SELECTED_RESIDUAL_DISCOVERY.json
+      - name: Replay checked-in post-150 interval certificates
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/certify_post150_selected_residual_scope.py \
+            --input research/RHRC/routes/R003_ccm_bridge/fixtures/post150_selected_residual_v1.json \
+            --output /tmp/POST150_SELECTED_RESIDUAL_CERTIFICATE.json
+      - name: Check post-#163 endpoint-scalar audit plumbing
+        run: python research/RHRC/routes/R003_ccm_bridge/check_post163_endpoint_scalar_scope.py
+      - name: Scout post-#163 endpoint-scalar scope
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/probe_post163_endpoint_scalar_scope.py \
+            --q-min 1 --q-max 8 --samples 3 --top 12 \
+            --output /tmp/POST163_ENDPOINT_SCALAR_DISCOVERY.json
+      - name: Replay checked-in post-#163 endpoint-scalar certificates
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/certify_post163_endpoint_scalar_scope.py \
+            --input research/RHRC/routes/R003_ccm_bridge/fixtures/post163_endpoint_scalar_v1.json \
+            --output /tmp/POST163_ENDPOINT_SCALAR_CERTIFICATE.json
+      - name: Check post-#165 FB-05 shifted-state plumbing
+        run: python research/RHRC/routes/R003_ccm_bridge/check_post165_fb05_shifted_state_scope.py
+      - name: Check post-#165 FB-05 shifted-state Arb plumbing
+        run: python research/RHRC/routes/R003_ccm_bridge/check_post165_fb05_shifted_state_arb_scope.py
+      - name: Scout post-#165 FB-05 same-state scope
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/probe_post165_fb05_same_state_scope.py \
+            --q-min 1 --q-max 16 --n-min 2 --n-max 8 --samples 3 --top 12 \
+            --output /tmp/POST165_FB05_SAME_STATE_DISCOVERY.json
+      - name: Replay checked-in post-#165 FB-05 same-state certificates
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/certify_post165_fb05_same_state_scope.py \
+            --input research/RHRC/routes/R003_ccm_bridge/fixtures/post165_fb05_same_state_v1.json \
+            --output /tmp/POST165_FB05_SAME_STATE_CERTIFICATE.json
+      - name: Check post-#166 Q16 cell-barrier plumbing
+        run: python research/RHRC/routes/R003_ccm_bridge/check_post166_fb05_cell_barrier_scope.py
+      - name: Scout post-#166 Q16 full-cell determinant barrier
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/probe_post166_fb05_cell_barrier_scope.py \
+            --q 16 --n 3 --parity odd --grid 65 --top 12 --local-seeds 6 \
+            --output /tmp/POST166_FB05_CELL_BARRIER_DISCOVERY.json
+      - name: Replay post-#166 Q16 adaptive Arb cell audit
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/certify_post166_fb05_cell_barrier_scope.py \
+            --input research/RHRC/routes/R003_ccm_bridge/fixtures/post166_fb05_cell_barrier_v1.json \
+            --max-depth 8 \
+            --output /tmp/POST166_FB05_CELL_BARRIER_CERTIFICATE.json
+      - name: Check post-#167 cutoff-entry moment-jet algebra
+        run: python research/RHRC/routes/R003_ccm_bridge/check_post167_fb05_threshold_jet_scope.py
+      - name: Scout post-#167 Q17 threshold crossing
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/probe_post167_fb05_q17_threshold_scope.py \
+            --q 17 --n 3 --parity odd --grid 65 --local-seeds 6 \
+            --output /tmp/POST167_FB05_Q17_THRESHOLD_DISCOVERY.json
+      - name: Replay post-#167 Q17 threshold candidates
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/certify_post167_fb05_q17_threshold_scope.py \
+            --input research/RHRC/routes/R003_ccm_bridge/fixtures/post167_fb05_q17_threshold_v1.json \
+            --discovery /tmp/POST167_FB05_Q17_THRESHOLD_DISCOVERY.json \
+            --output /tmp/POST167_FB05_Q17_THRESHOLD_CERTIFICATE.json
+      - name: Check post-#169 theorem-aligned Schur visibility algebra
+        run: python research/RHRC/routes/R003_ccm_bridge/check_post169_fb05_schur_visibility_scope.py
+      - name: Scout post-#169 threshold Schur visibility and background drift
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/probe_post169_fb05_threshold_pivot_scope.py \
+            --q 17 --n 3 --parity odd --grid 97 \
+            --output /tmp/POST169_FB05_SCHUR_VISIBILITY_DISCOVERY.json
+      - name: Replay post-#169 threshold Schur visibility with Arb
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/certify_post169_fb05_threshold_pivot_scope.py \
+            --input research/RHRC/routes/R003_ccm_bridge/fixtures/post169_fb05_threshold_pivot_v1.json \
+            --output /tmp/POST169_FB05_SCHUR_VISIBILITY_CERTIFICATE.json
+      - name: Check post-#171 threshold-barrier accounting
+        run: python research/RHRC/routes/R003_ccm_bridge/check_post171_fb05_schur_barrier_scope.py
+      - name: Scout post-#171 threshold-to-threshold Schur barriers
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/probe_post171_fb05_threshold_barrier_scope.py \
+            --input research/RHRC/routes/R003_ccm_bridge/fixtures/post171_fb05_threshold_barrier_v1.json \
+            --grid 97 --local-seeds 6 --integration-nodes 8 \
+            --output /tmp/POST171_FB05_THRESHOLD_BARRIER_DISCOVERY.json
+      - name: Replay post-#171 dangerous barrier points with Arb
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/certify_post171_fb05_threshold_barrier_scope.py \
+            --input research/RHRC/routes/R003_ccm_bridge/fixtures/post171_fb05_threshold_barrier_v1.json \
+            --discovery /tmp/POST171_FB05_THRESHOLD_BARRIER_DISCOVERY.json \
+            --output /tmp/POST171_FB05_THRESHOLD_BARRIER_CERTIFICATE.json
+      - name: Check post-#173 q13 scalar-barrier plumbing
+        run: python research/RHRC/routes/R003_ccm_bridge/check_post173_fb05_q13_scalar_barrier_scope.py
+      - name: Scout post-#173 q13 2x2 scalar barrier
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/probe_post173_fb05_q13_scalar_barrier_scope.py \
+            --input research/RHRC/routes/R003_ccm_bridge/fixtures/post173_fb05_q13_scalar_barrier_v1.json \
+            --output /tmp/POST173_Q13_SCALAR_DISCOVERY.json
+      - name: Certify post-#173 q13 scalar interval barrier
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/certify_post173_fb05_q13_scalar_barrier_scope.py \
+            --input research/RHRC/routes/R003_ccm_bridge/fixtures/post173_fb05_q13_scalar_barrier_v1.json \
+            --discovery /tmp/POST173_Q13_SCALAR_DISCOVERY.json \
+            --output /tmp/POST173_Q13_SCALAR_CERTIFICATE.json
+      - name: Check post-#175 fixed-unit q13 enclosure plumbing
+        run: python research/RHRC/routes/R003_ccm_bridge/check_post175_fb05_q13_fixed_unit_enclosure_scope.py
+      - name: Benchmark post-#175 fixed-unit q13 enclosure
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/probe_post175_fb05_q13_fixed_unit_enclosure_scope.py \
+            --input research/RHRC/routes/R003_ccm_bridge/fixtures/post175_fb05_q13_fixed_unit_enclosure_v1.json \
+            --output /tmp/POST175_Q13_FIXED_UNIT_BENCHMARK.json
+      - name: Certify post-#175 fixed-unit agreement and interval-width gain
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/certify_post175_fb05_q13_fixed_unit_enclosure_scope.py \
+            --input research/RHRC/routes/R003_ccm_bridge/fixtures/post175_fb05_q13_fixed_unit_enclosure_v1.json \
+            --benchmark /tmp/POST175_Q13_FIXED_UNIT_BENCHMARK.json \
+            --output /tmp/POST175_Q13_FIXED_UNIT_CERTIFICATE.json
+      - name: Check post-#177 fixed-unit derivative plumbing
+        run: python research/RHRC/routes/R003_ccm_bridge/check_post177_fb05_q13_fixed_unit_derivative_scope.py
+      - name: Probe post-#177 Q14 determinant derivative scope
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/probe_post177_fb05_q13_fixed_unit_derivative_scope.py \
+            --input research/RHRC/routes/R003_ccm_bridge/fixtures/post177_fb05_q13_fixed_unit_derivative_v1.json \
+            --output /tmp/POST177_Q14_DERIVATIVE_SCHEDULE.json
+      - name: Certify post-#177 fixed-unit derivative discrimination
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/certify_post177_fb05_q13_fixed_unit_derivative_scope.py \
+            --input research/RHRC/routes/R003_ccm_bridge/fixtures/post177_fb05_q13_fixed_unit_derivative_v1.json \
+            --schedule /tmp/POST177_Q14_DERIVATIVE_SCHEDULE.json \
+            --output /tmp/POST177_Q14_DERIVATIVE_CERTIFICATE.json
+      - name: Check post-#179 Schur/correlation-preserving derivative plumbing
+        run: python research/RHRC/routes/R003_ccm_bridge/check_post179_fb05_q13_correlation_preserving_derivative_scope.py
+      - name: Probe post-#179 exact-center and Schur derivative scope
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/probe_post179_fb05_q13_correlation_preserving_derivative_scope.py \
+            --input research/RHRC/routes/R003_ccm_bridge/fixtures/post179_fb05_q13_correlation_preserving_derivative_v1.json \
+            --output /tmp/POST179_Q14_CORRELATION_SCHEDULE.json
+      - name: Certify post-#179 correlation-preserving derivative discrimination
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/certify_post179_fb05_q13_correlation_preserving_derivative_scope.py \
+            --input research/RHRC/routes/R003_ccm_bridge/fixtures/post179_fb05_q13_correlation_preserving_derivative_v1.json \
+            --schedule /tmp/POST179_Q14_CORRELATION_SCHEDULE.json \
+            --output /tmp/POST179_Q14_CORRELATION_CERTIFICATE.json
+      - name: Check post-#185 remainder-drift decomposition plumbing
+        run: python research/RHRC/routes/R003_ccm_bridge/check_post185_fb05_q13_remainder_drift_scope.py
+      - name: Probe post-#185 frozen remainder-drift scope
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/probe_post185_fb05_q13_remainder_drift_scope.py \
+            --input research/RHRC/routes/R003_ccm_bridge/fixtures/post185_fb05_q13_remainder_drift_v1.json \
+            --output /tmp/POST185_Q14_REMAINDER_DRIFT_SCHEDULE.json
+      - name: Certify post-#185 remainder-drift falsification
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/certify_post185_fb05_q13_remainder_drift_scope.py \
+            --input research/RHRC/routes/R003_ccm_bridge/fixtures/post185_fb05_q13_remainder_drift_v1.json \
+            --schedule /tmp/POST185_Q14_REMAINDER_DRIFT_SCHEDULE.json \
+            --output /tmp/POST185_Q14_REMAINDER_DRIFT_CERTIFICATE.json
+      - name: Check post-#187 mixed-drift selector plumbing
+        run: python research/RHRC/routes/R003_ccm_bridge/check_post187_fb05_q14_mixed_drift_selector_scope.py
+      - name: Probe post-#187 frozen selector scope
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/probe_post187_fb05_q14_mixed_drift_selector_scope.py \
+            --input research/RHRC/routes/R003_ccm_bridge/fixtures/post187_fb05_q14_mixed_drift_selector_v1.json \
+            --output /tmp/POST187_Q14_SELECTOR_SCHEDULE.json
+      - name: Certify post-#187 mixed-drift selector audit
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/certify_post187_fb05_q14_mixed_drift_selector_scope.py \
+            --input research/RHRC/routes/R003_ccm_bridge/fixtures/post187_fb05_q14_mixed_drift_selector_v1.json \
+            --schedule /tmp/POST187_Q14_SELECTOR_SCHEDULE.json \
+            --output /tmp/POST187_Q14_SELECTOR_CERTIFICATE.json
+      - name: Check post-#188 selector semantic-independence plumbing
+        run: python research/RHRC/routes/R003_ccm_bridge/check_post188_fb05_q14_mixed_drift_selector_independence_scope.py
+      - name: Probe post-#188 frozen semantic-independence scope
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/probe_post188_fb05_q14_mixed_drift_selector_independence_scope.py \
+            --input research/RHRC/routes/R003_ccm_bridge/fixtures/post188_fb05_q14_mixed_drift_selector_independence_v1.json \
+            --output /tmp/POST188_Q14_SELECTOR_INDEPENDENCE_SCHEDULE.json
+      - name: Certify post-#188 selector semantic-independence audit
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/certify_post188_fb05_q14_mixed_drift_selector_independence_scope.py \
+            --input research/RHRC/routes/R003_ccm_bridge/fixtures/post188_fb05_q14_mixed_drift_selector_independence_v1.json \
+            --schedule /tmp/POST188_Q14_SELECTOR_INDEPENDENCE_SCHEDULE.json \
+            --output /tmp/POST188_Q14_SELECTOR_INDEPENDENCE_CERTIFICATE.json
+      - name: Check post-#189 joint-selector separability plumbing
+        run: python research/RHRC/routes/R003_ccm_bridge/check_post189_fb05_joint_selector_separability_scope.py
+      - name: Probe post-#189 frozen joint-selector scope
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/probe_post189_fb05_joint_selector_separability_scope.py \
+            --input research/RHRC/routes/R003_ccm_bridge/fixtures/post189_fb05_joint_selector_separability_v1.json \
+            --output /tmp/POST189_FB05_JOINT_SELECTOR_SCHEDULE.json
+      - name: Certify post-#189 joint-selector separability
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/certify_post189_fb05_joint_selector_separability_scope.py \
+            --input research/RHRC/routes/R003_ccm_bridge/fixtures/post189_fb05_joint_selector_separability_v1.json \
+            --schedule /tmp/POST189_FB05_JOINT_SELECTOR_SCHEDULE.json \
+            --output /tmp/POST189_FB05_JOINT_SELECTOR_CERTIFICATE.json
+      - name: "Check PR #247 frozen global-bottom scout scope"
+        run: python research/RHRC/routes/R003_ccm_bridge/check_post247_global_bottom_scout_scope.py
+      - name: "Run PR #247 frozen global-bottom canonical scout"
+        run: python research/RHRC/routes/R003_ccm_bridge/post247_global_bottom_scout.py > /tmp/POST247_GLOBAL_BOTTOM_SCOUT.json
+      - name: "Run PR #247 frozen global-bottom arithmetic scout"
+        run: python research/RHRC/routes/R003_ccm_bridge/post247_global_bottom_arithmetic_scout.py > /tmp/POST247_GLOBAL_BOTTOM_ARITHMETIC_SCOUT.json
+      - name: "Assert PR #247 global-bottom scout controls and semantics"
+        run: python research/RHRC/routes/R003_ccm_bridge/check_post247_global_bottom_scout_results.py
+      - name: "Check post-#247 remainder/budget ratio scout scope and fixture"
+        run: python research/RHRC/routes/R003_ccm_bridge/check_post247_remainder_budget_ratio_scope.py
+      - name: "Replay post-#247 remainder/budget ratio scout controls (Arb)"
+        run: python research/RHRC/routes/R003_ccm_bridge/check_post247_remainder_budget_ratio_results.py
+      - name: "Run post-#247 remainder/budget ratio scout quick grid"
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/post247_remainder_budget_ratio_scout.py \
+            --quick --out /tmp/POST247_REMAINDER_BUDGET_RATIO_QUICK.json
+          python - <<'PY'
+          import json
+          d = json.load(open('/tmp/POST247_REMAINDER_BUDGET_RATIO_QUICK.json'))
+          s = d['summary']
+          assert d['claim_cap'] == 'EXPERIMENTAL_SIGNAL_ONLY'
+          assert s['real_points'] == s['real_energy_certified_positive'] > 0
+          assert s['A_positive_definite_everywhere'] and s['B_positive_definite_everywhere']
+          assert s['planted_on_line_certified_bad'] == 0
+          assert s['planted_on_line_increment_rank_one_psd_per_parity']
+          assert s['planted_off_line_increment_signature_1_1_per_parity']
+          assert s['planted_off_line_certified_bad'] > 0
+          print('Post-#247 ratio scout quick grid: PASS')
+          PY
+      - name: Audit R004 scalar-shift invariants
+        run: python research/RHRC/routes/R004_prolate_v2/check_normalization_shift_invariants.py
+      - name: Reject external reference code as a Lean dependency
+        run: |
+          if grep -R -n -E 'external[/\\.]connes_cvs|connes_cvs' Zeta23 --include='*.lean'; then
+            echo 'External connes-cvs reference code must not enter the Lean theorem dependency graph'
+            exit 1
+          fi
+
+  lean:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-mathlib-cache: true
+      - name: Build CCM formalization
+        run: lake build Zeta23.CCM
+      - name: Build promoted ClaimBindings authority surface
+        run: lake build Zeta23.CCM.ClaimBindings
+      - name: Validate promoted R003 theorem bindings
+        run: python3 research/RHRC/tools/promoted_binding_lint.py
+      - name: Build complete registered theorem authority surface
+        run: lake build Zeta23.RHRC.RegisteredClaimBindings
+      - name: Validate complete registered theorem bindings
+        run: python3 research/RHRC/tools/registered_theorem_binding_lint.py
+      - name: Build exceptional-zero foundation
+        run: lake build Zeta23.ExceptionalZero
+      - name: Build source-candidate compiler resolver
+        run: lake build Zeta23.RHRC.SourceCandidateResolution
+      # Exactification consumes the freshly regenerated RHKG source census and
+      # is therefore validated in rhkg-compiler-receipt, not against a stale
+      # checked-in graph snapshot in this formal-validity job.
+      - name: "Build PR #247 explicit terminal target"
+        run: lake build Zeta23.ExceptionalZero.GlobalParityBottomTerminalTarget
+      - name: "Build PR #247 arithmetic-equivalence audit"
+        run: lake build Zeta23.ExceptionalZero.GlobalParityBottomArithmeticEquivalenceAudit
+      - name: "Build PR #247 audit-only conditional RH seam"
+        run: lake build Zeta23.ExceptionalZero.GlobalParityBottomConditionalRH
+      - name: Build closure formal surface
+        run: |
+          lake build \
+            Zeta23.CCM.SourceContraction \
+            Zeta23.CCM.SourceContractionLocalized \
+            Zeta23.CCM.CanonicalArchUpperBound \
+            Zeta23.CCM.DictionaryArchFiniteDensity \
+            Zeta23.CCM.CanonicalArchDensityClosure \
+            Zeta23.CCM.CanonicalPoleUniformBound \
+            Zeta23.CCM.CanonicalPoleSourceBound \
+            Zeta23.CCM.CanonicalSmallApertureCoercivity \
+            Zeta23.CCM.CanonicalSmallApertureGroundSpectrum \
+            Zeta23.CCM.CanonicalPrimeSeamTaylor \
+            Zeta23.CCM.ParityGroundPerturbation \
+            Zeta23.CCM.ParityRayleighPerturbation \
+            Zeta23.CCM.CanonicalSeamGroundTransfer \
+            Zeta23.CCM.GroundComparisonPrinciple \
+            Zeta23.CCM.CanonicalGroundPropagation \
+            Zeta23.CCM.CanonicalAllAperturePositivity \
+            Zeta23.CCM.CanonicalSchurCertificate \
+            Zeta23.CCM.CanonicalModeTailBound \
+            Zeta23.CCM.CanonicalUniformDomination \
+            Zeta23.CCM.CanonicalFullSpaceSourceBridge \
+            Zeta23.Spectral \
+            Zeta23.ExceptionalZero.QuantitativeDetectorFamily \
+            Zeta23.ExceptionalZero.QuantitativeCanonicalWitness \
+            Zeta23.ExceptionalZero.GlobalParityBottomSignOpposition \
+            Zeta23.CCM.ParityFirstNegativeBoundary \
+            Zeta23.CCM.ParityZeroPlateau \
+            Zeta23.CCM.ParityKernelTower \
+            Zeta23.CCM.CanonicalParityFirstCrossingShell \
+            Zeta23.CCM.FirstCrossingContactRegime \
+            Zeta23.CCM.FirstCrossingContactEquations \
+            Zeta23.CCM.FirstCrossingSuccessorDeterminant \
+            Zeta23.CCM.FirstCrossingSchurReduction \
+            Zeta23.CCM.FirstCrossingSourceDynamics \
+            Zeta23.CCM.GlobalParityFirstNegativeBoundary \
+            Zeta23.CCM.FirstCrossingGlobalAlignment \
+            Zeta23.CCM.CanonicalCompressedSeamJets \
+            Zeta23.CCM.CanonicalFrozenApertureC2 \
+            Zeta23.CCM.CanonicalCompressedApertureC2 \
+            Zeta23.CCM.ProductionWeightedTestCalculus \
+            Zeta23.CCM.ProductionWeightedGlobalTests \
+            Zeta23.CCM.ProductionNormalSourceAuthority \
+            Zeta23.CCM.FirstCrossingProductionRemainderAuthority \
+            Zeta23.CCM.ProductionPhysicalFunctionalCongruence \
+            Zeta23.CCM.FirstCrossingProductionRemainderValueAuthority \
+            Zeta23.CCM.StationarySchurContact \
+            Zeta23.CCM.FirstCrossingInheritedStationarity \
+            Zeta23.CCM.FirstCrossingProductionTests \
+            Zeta23.CCM.FirstCrossingProductionRemainder \
+            Zeta23.CCM.FirstCrossingProductionFirstVariation \
+            Zeta23.CCM.FirstCrossingProductionResponse \
+            Zeta23.CCM.FirstCrossingProductionCurvatureBridge \
+            Zeta23.CCM.FirstCrossingGeneratedStrictEvenFrontier \
+            Zeta23.ExceptionalZero.GlobalParityFirstNegativeBoundary \
+            Zeta23.CCM.CanonicalApertureLocation \
+            Zeta23.CCM.CanonicalInteriorFirstCrossingBarrier \
+            Zeta23.CCM.CanonicalSeamFirstCrossingBarrier \
+            Zeta23.CCM.CanonicalFirstCrossingBarrier \
+            Zeta23.ExceptionalZero.CanonicalParityFirstCrossingShell \
+            Zeta23.ExceptionalZero.CanonicalFirstCrossingConditionalRH \
+            Zeta23.RHRC.ContactCalculusContract \
+            Zeta23.RHRC.ClosureObligationBindings \
+            Zeta23.RHRC.ClosureStrengthAudit
+      - name: Validate future premise-free RH closure exact type
+        run: |
+          if [ -f Zeta23/ExceptionalZero/GlobalParityBottomRHClosure.lean ]; then
+            test -f Zeta23/ExceptionalZero/GlobalParityBottomExactTypeAudit.lean
+            lake build Zeta23.ExceptionalZero.GlobalParityBottomExactTypeAudit
+          else
+            echo "PR #247 premise-free RH closure absent: RH remains OPEN"
+          fi
+      - name: Reject forbidden placeholders in promoted and closure surfaces
+        run: |
+          python research/RHRC/closure_batch/check_lean_proof_escapes.py --scope closure
+          python research/RHRC/closure_batch/check_lean_proof_escapes.py --scope promoted
+      - name: Enforce post-245 arithmetic anti-circularity firewall
+        run: python3 research/RHRC/tools/arithmetic_firewall_lint.py
+      - name: "Enforce PR #247 Million Dollar anti-circularity firewall"
+        run: python3 research/RHRC/tools/million_dollar_firewall_lint.py
+      - name: Audit kernel axioms of post-245 arithmetic modules
+        run: python3 research/RHRC/tools/axiom_audit.py
+      - name: 'Audit kernel axioms of PR #274 closure modules'
+        run: |
+          python research/RHRC/tools/axiom_audit.py \
+            Zeta23/CCM/CanonicalArchUpperBound.lean \
+            Zeta23/CCM/DictionaryArchFiniteDensity.lean \
+            Zeta23/CCM/CanonicalArchDensityClosure.lean \
+            Zeta23/CCM/CanonicalFullSpaceSourceBridge.lean \
+            Zeta23/CCM/CanonicalModeTailBound.lean \
+            Zeta23/CCM/CanonicalPoleSourceBound.lean \
+            Zeta23/CCM/CanonicalPrimeSeamTaylor.lean \
+            Zeta23/CCM/CanonicalSchurCertificate.lean \
+            Zeta23/CCM/CanonicalSeamGroundTransfer.lean \
+            Zeta23/CCM/CanonicalSmallApertureCoercivity.lean \
+            Zeta23/CCM/CanonicalSmallApertureGroundSpectrum.lean \
+            Zeta23/CCM/CanonicalUniformDomination.lean \
+            Zeta23/CCM/GroundComparisonPrinciple.lean \
+            Zeta23/CCM/ParityRayleighPerturbation.lean \
+            Zeta23/CCM/SourceContraction.lean \
+            Zeta23/CCM/SourceContractionLocalized.lean \
+            Zeta23/ExceptionalZero/QuantitativeDetectorFamily.lean \
+            Zeta23/ExceptionalZero/GlobalParityBottomSignOpposition.lean \
+            Zeta23/CCM/ParityFirstNegativeBoundary.lean \
+            Zeta23/CCM/ParityZeroPlateau.lean \
+            Zeta23/CCM/ParityKernelTower.lean \
+            Zeta23/CCM/CanonicalParityFirstCrossingShell.lean \
+            Zeta23/CCM/FirstCrossingSchurReduction.lean \
+            Zeta23/CCM/FirstCrossingSourceDynamics.lean \
+            Zeta23/CCM/GlobalParityFirstNegativeBoundary.lean \
+            Zeta23/CCM/FirstCrossingGlobalAlignment.lean \
+            Zeta23/CCM/CanonicalCompressedSeamJets.lean \
+            Zeta23/CCM/CanonicalFrozenApertureC2.lean \
+            Zeta23/CCM/CanonicalCompressedApertureC2.lean \
+            Zeta23/CCM/ProductionWeightedTestCalculus.lean \
+            Zeta23/CCM/ProductionWeightedGlobalTests.lean \
+            Zeta23/CCM/ProductionNormalSourceAuthority.lean \
+            Zeta23/CCM/FirstCrossingProductionRemainderAuthority.lean \
+            Zeta23/CCM/ProductionPhysicalFunctionalCongruence.lean \
+            Zeta23/CCM/FirstCrossingProductionRemainderValueAuthority.lean \
+            Zeta23/CCM/StationarySchurContact.lean \
+            Zeta23/CCM/FirstCrossingInheritedStationarity.lean \
+            Zeta23/CCM/FirstCrossingProductionTests.lean \
+            Zeta23/CCM/FirstCrossingProductionRemainder.lean \
+            Zeta23/CCM/FirstCrossingProductionFirstVariation.lean \
+            Zeta23/CCM/FirstCrossingProductionResponse.lean \
+            Zeta23/CCM/FirstCrossingProductionCurvatureBridge.lean \
+            Zeta23/CCM/FirstCrossingGeneratedStrictEvenFrontier.lean \
+            Zeta23/ExceptionalZero/GlobalParityFirstNegativeBoundary.lean \
+            Zeta23/CCM/CanonicalApertureLocation.lean \
+            Zeta23/CCM/CanonicalInteriorFirstCrossingBarrier.lean \
+            Zeta23/CCM/CanonicalSeamFirstCrossingBarrier.lean \
+            Zeta23/CCM/CanonicalFirstCrossingBarrier.lean \
+            Zeta23/ExceptionalZero/CanonicalParityFirstCrossingShell.lean \
+            Zeta23/ExceptionalZero/CanonicalFirstCrossingConditionalRH.lean \
+            Zeta23/RHRC/ContactCalculusContract.lean \
+            Zeta23/RHRC/ClosureObligationBindings.lean \
+            Zeta23/RHRC/ClosureStrengthAudit.lean \
+            Zeta23/Spectral/CanonicalCharacteristic.lean \
+            Zeta23/Spectral/CanonicalOperator.lean \
+            Zeta23/Spectral/CharacteristicCompactBounds.lean \
+            Zeta23/Spectral/CharacteristicNormalization.lean \
+            Zeta23/Spectral/CharacteristicXiIdentification.lean \
+            Zeta23/Spectral/RealZeroLimitTransfer.lean

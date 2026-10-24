@@ -1,0 +1,31 @@
+[
+  {
+    "K3_math_certificate_status": "OPEN_UNLESS_FULL_INTERVALS_ACCEPTED",
+    "K3_required_computation_shards": 30,
+    "K3_required_parities": [
+      "even",
+      "odd"
+    ],
+    "K3_total_cutoff_cells": 15,
+    "does_not_establish": [
+      "Lean compilation or permitted axiom set",
+      "correctness of Arb operations",
+      "true K3 positivity on full window",
+      "RH"
+    ],
+    "lean_modules_wired": 4,
+    "python_ast_parsed": 16,
+    "schema": "post287.wp0_wp7.static_completeness.v1",
+    "status": "SOURCE_SHAPES_PRESENT_NOT_COMPILER_VALIDATED",
+    "terminal_claim": "RH_OPEN",
+    "work_packages": 8,
+    "workflows_wired": 4
+  },
+  {
+    "status": "PASS",
+    "claim_status": "RH_OPEN",
+    "work_packages": 8,
+    "protected_open": 8,
+    "scientific_gate": "ledger consistency only"
+  }
+]

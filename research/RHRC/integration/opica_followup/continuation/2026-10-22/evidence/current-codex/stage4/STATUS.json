@@ -1,0 +1,159 @@
+{
+  "schema": "OPICA_STAGE4_NARROW_GATE_V1",
+  "status": "PASS_NARROW_LOCAL_GATES_ONLY_AGGREGATE_AND_FULL_RELEASE_OPEN",
+  "checked_commit": "f8f5f427ec94598984a9d0910cb5db60fc92b9ea",
+  "checked_tree": "0692af9a960bfa26e67202f6b61c04a394e17ea3",
+  "dirty_status_during_checks": "",
+  "compiler": "Lean 4.33.0-rc2 commit d8b18978322de05a8f3dba51ef03cf5461676c17 (Linux x86_64), Lake 5.0.0-src+d8b1897",
+  "mathlib": "51e6992efd06126df61a496bebf8f49482a4e129 (lake exe cache get; no lake update; pins unchanged)",
+  "cache_owner": "single local process; genuine builds from source for all project modules",
+  "sources": [
+    {
+      "path": "Zeta23/OPICAFollowup/DilatedComb.lean",
+      "sha256": "f78c1f4d68c81d8dc0d7d65b4c355cdb68c2b22a3310e71766a1f9de245a2d31",
+      "bytes": 15390
+    },
+    {
+      "path": "Zeta23/OPICAFollowup/NearGapLimits.lean",
+      "sha256": "3e77deea6ca49cb187e839ac3099a2dd361c31fe4c28bdbcaeef80be47c066b0",
+      "bytes": 69934
+    },
+    {
+      "path": "Zeta23/OPICAFollowup/WeightedMixing.lean",
+      "sha256": "30713fed1c36c09af553428d770745cccdac375b7ba817e0e7babffedff624b5",
+      "bytes": 40095
+    },
+    {
+      "path": "Zeta23/OPICAFollowup/Consumers.lean",
+      "sha256": "537bc6d368dc3785fa0745ba0a245e554a3ca0dca7f9546f553e672be8f5cf16",
+      "bytes": 9333
+    },
+    {
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedWordJet.lean",
+      "sha256": "3c14d4f76bdb72d8b5d5715bae34081b7381743433f510da6e8e53f8b4baaa80",
+      "bytes": 10487
+    },
+    {
+      "path": ".github/workflows/rhrc_opica_followup.yml",
+      "sha256": "ae43b1b9a19429ee8f51e9c3099d5825e4b96d50e04914cd896edada942668ad",
+      "bytes": 44419
+    },
+    {
+      "path": "lean-toolchain",
+      "sha256": "0d3c76ccd8772d8bcbe207241421a760312b71a6aa82f84194391fdf5cb026d6",
+      "bytes": 29
+    },
+    {
+      "path": "lake-manifest.json",
+      "sha256": "1847b362e15efd927e75aa8b5442e491f998e4a3f730f9dcaca9841f2957c448",
+      "bytes": 3200
+    }
+  ],
+  "diagnosis_before_repair": {
+    "head": "40fd51b541f9be19fa0ffd56441c8217a36ddabf",
+    "DilatedComb": "4 errors (introduced in d1777dab): Function.Injective binder, removed mul_lt_mul_left iff form, Set.not_mem_empty renamed",
+    "NearGapLimits": "22 errors including missing open scoped ENNReal (parse errors left four proof bodies unelaborated), zero_le arity, renamed lemmas, normal forms",
+    "WeightedMixing": "6 errors: names in MeasureTheory not MeasureTheory.Measure; orphan docstring",
+    "workflow_CT1_consumer": "Unknown identifier Zeta23.OPICA.localSignedCompactRestriction/localJordanAdd/localJordanScale (declared in Zeta23.OPICAFollowup)",
+    "ci": "No OPICA Lean job completed after 9ccea78e; runs #10-#157 cancelled by concurrency"
+  },
+  "roots": {
+    "Zeta23.OPICAFollowup.dilation_near_gap_family": {
+      "paper": "R1-CT1",
+      "clauses": 12,
+      "added_clauses": [
+        "measure-level evenness of both canonical Jordan parts (jordan_even_of_selfdual)",
+        "exact gap-edge atom: positive.real {exp(-L)} = exp(-L/2), negative {exp(-L)} = 0"
+      ],
+      "expected_type_consumer": "workflow W04/W07 heredoc expected_dilation_near_gap_family (12 clauses) plus expected_selfdual_jordan_even and expected_CT1_gap_edge_atom",
+      "actual_domain": "genuine canonical Jordan pair of D_L + D_-L - 2cosh(L/2) D_0 for every 0<L<log 2; premises only restrict L",
+      "axioms": "propext, Classical.choice, Quot.sound"
+    },
+    "Zeta23.OPICAFollowup.step123_word_jet_consumer": {
+      "paper": [
+        "R1-NB1",
+        "R2-J1"
+      ],
+      "clauses": 22,
+      "repair": "e21cf553 restates the right-zero multiplicity equality for the unfolded selected zero (hmWord) using nativeZeroJetRightZero_mult; no added hypothesis",
+      "expected_type_consumer": "consumers/ExpectedWordJet.lean expected_step123_word_jet_consumer: independent 22-clause restatement with every let expanded",
+      "actual_domain_consumer": "expected_step123_word_jet_actual_domain: parent constructor exists_eachPhase_cofinal_generatedStep123CompleteOutput for every admissible rho, beta, phase, horizon, word and unrestricted history",
+      "axioms": "propext, Classical.choice, Quot.sound"
+    },
+    "re_verified_narrow_roots": [
+      "dilated_comb_fourier",
+      "near_gap_mass_bound",
+      "weighted_mixture_exists_fourier"
+    ]
+  },
+  "gates": [
+    {
+      "label": "narrow runner (9 modules, 8 consumer files)",
+      "log": "runner/CHECK_RESULT.json",
+      "sha256": "8eb0e54fbcd974082a9d5eeb09ff294ee1f7e82b7af97400a09b0a2d0832d962",
+      "exit_code": 0,
+      "standard_axiom_receipts": null,
+      "runner_status": "PASS_NARROW_ONLY"
+    },
+    {
+      "label": "W04/W07 workflow consumer",
+      "log": "consumers/opica-w04-w07-expected.log",
+      "sha256": "47bf37f88ae44589a223145e24dd07655b7172bfca6a30bf819bb33c5251ac1e",
+      "exit_code": 0,
+      "standard_axiom_receipts": 52
+    },
+    {
+      "label": "W06 workflow consumer",
+      "log": "consumers/opica-w06-expected.log",
+      "sha256": "8564fc7fe7d8a2ef4ae561975e207ce6aa8e42accc8c35f0e6ed618ed26078ca",
+      "exit_code": 0,
+      "standard_axiom_receipts": 14
+    },
+    {
+      "label": "W01 root axioms",
+      "log": "consumers/opica-w01-axioms.log",
+      "sha256": "e1c67f8ecc99d2a564f4792ce4d4be0f3f6f4f9ec28fc241563ef85b9557cf15",
+      "exit_code": 0,
+      "standard_axiom_receipts": 2
+    },
+    {
+      "label": "W01 independent consumers",
+      "log": "consumers/ExpectedWordJet.log",
+      "sha256": "15da2bda7b061a9d3e8d0aba5c0fdb2511f92c75e3b2904d2375a35be5c7fdd0",
+      "exit_code": 0,
+      "standard_axiom_receipts": 3
+    },
+    {
+      "label": "Consumers + Validation genuine build",
+      "log": "consumers/consumers-validation-build.log.gz",
+      "sha256": "51b96378a220235be5e7b7070ed7f063ca39ff24342637248ffe0a840794c4c8",
+      "exit_code": 0,
+      "standard_axiom_receipts": null
+    }
+  ],
+  "negative_controls": [
+    {
+      "file": "negative-controls/negative-ct1.lean",
+      "expected": "REJECTED",
+      "observed": "REJECTED (wrong atom mass exp(-L); gap 1 instead of exp(-L))",
+      "log_sha256": "4896c75d5e8a65bf7b1578d06cb9bc43516e9c2a8e2f1efafdeadf499baba122"
+    },
+    {
+      "file": "negative-controls/NegativeWordJet.lean",
+      "expected": "REJECTED",
+      "observed": "REJECTED (pole order count*mult instead of count*mult-1); axiom gate flags sorryAx downstream",
+      "log_sha256": "688e53a772eb2a25386dad403bde72a3b89e405576e8d28660cd9095153ec45b"
+    }
+  ],
+  "not_established": [
+    "aggregate current-source export",
+    "full100 compiler receipt production/replay",
+    "facade and registration",
+    "parent-extension acceptance",
+    "canonical regeneration",
+    "exact-head uncancelled CI (pending at publication)"
+  ],
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "independent_closing_inequalities": "OPEN"
+}

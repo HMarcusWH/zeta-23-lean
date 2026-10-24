@@ -1,0 +1,25 @@
+{
+  "total_count": 1,
+  "artifacts": [
+    {
+      "id": 12433683042,
+      "node_id": "MDg6QXJ0aWZhY3QxMjQzMzY4MzA0Mg==",
+      "name": "post284-source-inertia-lean",
+      "size_in_bytes": 739,
+      "url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/artifacts/12433683042",
+      "archive_download_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/artifacts/12433683042/zip",
+      "expired": false,
+      "digest": "sha256:5298d26f5466a00375e82f015c9e3225e7728bdab23654b23c8d52e83ce1a752",
+      "created_at": "2026-10-22T14:37:57Z",
+      "updated_at": "2026-10-22T14:37:57Z",
+      "expires_at": "2027-01-20T13:56:02Z",
+      "workflow_run": {
+        "id": 39791294300,
+        "repository_id": 1339954300,
+        "head_repository_id": 1339954300,
+        "head_branch": "research/opica-native-followup",
+        "head_sha": "9ccea78eb5ee0c097bde05424e43de58a589b713"
+      }
+    }
+  ]
+}

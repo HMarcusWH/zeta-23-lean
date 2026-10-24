@@ -1,0 +1,162 @@
+{
+ "schema": "OPICA_STAGE10_NARROW_GATE_V1",
+ "status": "PASS_NARROW_LOCAL_GATES_ONLY_AGGREGATE_AND_FULL_RELEASE_OPEN",
+ "checked_commit": "6a796f867f75e4ea59ac7aa6e4ddafe2540194c1",
+ "checked_tree": "e95cb9f22663d9a69ed51c551f217391e0102b77",
+ "dirty_status_during_checks": "",
+ "compiler": "Lean 4.33.0-rc2 commit d8b18978322de05a8f3dba51ef03cf5461676c17 (Linux x86_64), Lake 5.0.0-src+d8b1897",
+ "mathlib": "51e6992efd06126df61a496bebf8f49482a4e129 (pins unchanged; no lake update)",
+ "new_module": {
+  "module": "Zeta23.OPICAFollowup.LogFourierSobolev",
+  "project_imports": [
+   "Zeta23.OPICAFollowup.ComplexLocalMeasures"
+  ],
+  "authority": "BUILD_MANIFEST direct_project_imports of this module is exactly [ComplexLocalMeasures]; other imports are Mathlib modules",
+  "required_definitions_present": [
+   "logFourier",
+   "logUnitary",
+   "LogFormDomain",
+   "logForm"
+  ]
+ },
+ "existing_lean_sources_changed": false,
+ "cache_owner": "single local process; the module was built from this exact source in the session (lake rebuilds on source hash change), and the runner build re-validated it",
+ "sources": [
+  {
+   "path": "Zeta23/OPICAFollowup/LogFourierSobolev.lean",
+   "sha256": "e83a452a615021238d912756f608ad346dd87187f70d0a177db6a2581e9afd9a",
+   "bytes": 54898
+  },
+  {
+   "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedLogFourierSobolev.lean",
+   "sha256": "29b6f838afddbdbf369bcc209583031f6a3f1d5746783217707e5532efa36136",
+   "bytes": 15072
+  },
+  {
+   "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/run_candidate_checks.py",
+   "sha256": "d63474043454df03e64fc88add3abaeab6274b25ae890639aef9a1f2a98b2e08",
+   "bytes": 6602
+  },
+  {
+   "path": ".github/workflows/rhrc_opica_followup.yml",
+   "sha256": "ae43b1b9a19429ee8f51e9c3099d5825e4b96d50e04914cd896edada942668ad",
+   "bytes": 44419
+  },
+  {
+   "path": "lean-toolchain",
+   "sha256": "0d3c76ccd8772d8bcbe207241421a760312b71a6aa82f84194391fdf5cb026d6",
+   "bytes": 29
+  },
+  {
+   "path": "lake-manifest.json",
+   "sha256": "1847b362e15efd927e75aa8b5442e491f998e4a3f730f9dcaca9841f2957c448",
+   "bytes": 3200
+  }
+ ],
+ "roots": {
+  "Zeta23.OPICAFollowup.log_unitary_form_identity": {
+   "paper": "R2-S1b, F1, F2, F3",
+   "expected_type_consumer": "consumers/ExpectedLogFourierSobolev.lean (10 receipts, shared)",
+   "actual_domain": "root compatibility (H1 shift norm of U h equals the log form); non-degenerate domain element h = e^(-x); actual zero profile at an actual zero in the form domain with its explicit right derivative, giving paper identity S1.5",
+   "premises": "LogFormDomain (primitive representation of h by a measurable locally integrable derivative; h and x times the derivative in L2(0,oo))",
+   "axioms": "propext, Classical.choice, Quot.sound"
+  },
+  "Zeta23.OPICAFollowup.log_fourier_plancherel": {
+   "paper": "R2-S1b, F1, F2, F3",
+   "expected_type_consumer": "consumers/ExpectedLogFourierSobolev.lean (10 receipts, shared)",
+   "actual_domain": "convention audit (rfl) and exact conversion to the pinned Mathlib transform; shift norm consistency",
+   "premises": "none for the convention; L1 cap L2 for Plancherel; Mathlib differentiability hypotheses; LogH1 for pairings",
+   "axioms": "propext, Classical.choice, Quot.sound"
+  },
+  "re_verified_narrow_roots": [
+   "all roots consumed by the seventeen runner consumer files"
+  ]
+ },
+ "gates": [
+  {
+   "label": "narrow runner (12 modules, 17 consumer files)",
+   "log": "runner/CHECK_RESULT.json",
+   "sha256": "0effc250925ca2767bfbb377deee0617eb4d1df5cdbcf23cceea474452edb9bc",
+   "exit_code": 0,
+   "runner_status": "PASS_NARROW_ONLY",
+   "consumer_receipts": {
+    "ExpectedMasks": 4,
+    "ExpectedComplex": 4,
+    "ExpectedAuxiliary": 6,
+    "ExpectedMultiplicity": 17,
+    "ExpectedComb": 5,
+    "ExpectedFirstCell": 5,
+    "ExpectedWeighted": 9,
+    "ExpectedNearGap": 5,
+    "ExpectedNearGapLimit": 10,
+    "ExpectedNormalizedLimit": 9,
+    "ExpectedWeightedInverse": 17,
+    "ExpectedCoPoissonFamily": 7,
+    "ExpectedCoPoissonOrderZero": 10,
+    "ExpectedZeroMeasure": 7,
+    "ExpectedEulerMaclaurin": 10,
+    "ExpectedZeroProfiles": 11,
+    "ExpectedLogFourierSobolev": 10
+   }
+  },
+  {
+   "label": "W04/W07 workflow consumer (unchanged heredoc)",
+   "log": "consumers/opica-w04-w07-expected.log",
+   "sha256": "47bf37f88ae44589a223145e24dd07655b7172bfca6a30bf819bb33c5251ac1e",
+   "exit_code": 0,
+   "standard_axiom_receipts": 52
+  },
+  {
+   "label": "W06 workflow consumer (unchanged heredoc)",
+   "log": "consumers/opica-w06-expected.log",
+   "sha256": "8564fc7fe7d8a2ef4ae561975e207ce6aa8e42accc8c35f0e6ed618ed26078ca",
+   "exit_code": 0,
+   "standard_axiom_receipts": 14
+  },
+  {
+   "label": "W01 consumers and exact-source subset",
+   "note": "not re-run locally: no existing Lean source changed and no W01 or subset module imports the new module; green in CI at the Stage 8 head (stage9 harvest)"
+  },
+  {
+   "label": "child suite and parent contract tests",
+   "result": "child 185/185 and parent 82/82 in normal and optimized Python"
+  },
+  {
+   "label": "frozen control replay",
+   "result": "normal and optimized modes (p0 5112, round1 18862, round2 14672, final 1274 checks each); copoisson, round2 and final numerical suites CONSISTENCY_ONLY"
+  },
+  {
+   "label": "numerical falsification (mpmath 1.3.0, not interval certified)",
+   "script": "numerical-falsification.py",
+   "script_sha256": "f9849f88881d0a3336181f5c6c89a4117e62534d20912bc9dfbf3e77bb5d3fbe",
+   "log": "numerical-falsification.log",
+   "log_sha256": "a2b09812f010d624ac6acd05373c07bbbf073fea2140bbbe85fbd417a709012e",
+   "result": "Gaussian: logFourier closed form and Plancherel with factor 1/(2pi) to 12 digits; paper F1.4 source budget: ||w||^2 = 1.2606614 from cell integrals vs (1/2pi) int |zeta(1/2+i xi)|^2/(xi^2+1/4) = 1.260668 (|xi|<400 plus mean-value tail) vs log(2pi) - gamma = 1.2606614"
+  }
+ ],
+ "negative_controls": [
+  {
+   "file": "negative-controls/negative-log-fourier-sobolev.lean",
+   "expected": "REJECTED",
+   "observed": "REJECTED (8 errors, exit 1): form boundary term -1/4; unitary without the e^(t/2) weight; convention F f(xi) instead of F f(xi/(2pi)); Plancherel factor 1; derivative factor 2 pi i xi; weight xi^2 + 1; force shift phi + phi/2; Plancherel without the L2 hypothesis",
+   "log_sha256": "366d2783ca360604bd0371e5a8f244eff463392d57574e6fd6d4351f7f4c10c7"
+  }
+ ],
+ "ci_harvest": {
+  "file": "../stage9/ci-harvest-eacba23f.json",
+  "note": "Stages 9 and 10 are published in one push; the latest harvested head is eacba23f",
+  "sha256": "f6bf1505a6aba261712e829a0812cb7c45ba5eb587baf66ffd15ee6a53ce25c5"
+ },
+ "not_established": [
+  "aggregate current-source export",
+  "full100 compiler receipt production/replay",
+  "facade and registration",
+  "parent-extension acceptance",
+  "canonical regeneration (rhkg-compiler-receipt remains red)",
+  "CI on the Stage 10 head (pending at publication)",
+  "distributional (test-function) form of the weak derivative beyond the primitive representation"
+ ],
+ "RH": "OPEN",
+ "Step4": "OPEN",
+ "independent_closing_inequalities": "OPEN"
+}

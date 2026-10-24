@@ -1,0 +1,193 @@
+{
+  "schema": "OPICA_STAGE14_CI_HARVEST_V1",
+  "head": "b9627cc1e76c7e4541cf86de8d79d31acda8f7d5",
+  "harvested_at": "2026-10-24T07:05Z",
+  "scope": "Complete: all 22 workflow runs GitHub reported for the Stage 11 head b9627cc1 (21 pull_request runs and 1 push run) have completed. No run was cancelled. This completes the partial harvest recorded with Stage 13.",
+  "runs": [
+    {
+      "id": 40052916545,
+      "name": "RHRC post290 source and output proof components",
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 40052915160,
+      "name": "RHRC post287 bounded signed-ray probe",
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 40052915135,
+      "name": "RHRC post-214 kernel dual geometry",
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 40052915128,
+      "name": "Permansson v0.1.6 formal verification",
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 40052915071,
+      "name": "RHRC post-190 canonical realizability audit",
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 40052915226,
+      "name": "RHRC post-192 parity trajectory rigidity",
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 40052915144,
+      "name": "RHRC post-196 Q14 residual cell replay",
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 40052915234,
+      "name": "RHRC post-194 parity trajectory sharp enclosure",
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 40052915119,
+      "name": "RHRC post-222 bi-regular zero-shift scalar",
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 40052915190,
+      "name": "RHRC OPICA full paper components",
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "failure"
+    },
+    {
+      "id": 40052915116,
+      "name": "RHRC parallel closure campaign",
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 40052915134,
+      "name": "RHRC post-198 Q14 parity source mechanism",
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 40052915177,
+      "name": "RHRC research and Lean checks",
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "failure"
+    },
+    {
+      "id": 40052915117,
+      "name": "RHRC post-202 Q14 composite parity gap",
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 40052915209,
+      "name": "RHRC post287 WP2 and WP4 interval research",
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 40052915208,
+      "name": "RHRC post287 focused Step3 checks",
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 40052915110,
+      "name": "OPICA follow-up draft checkpoint",
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "failure"
+    },
+    {
+      "id": 40052915798,
+      "name": "RHRC post-282 contact calculus",
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 40052915186,
+      "name": "RHRC post268 complete audit replay",
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 40052915126,
+      "name": "RHRC post-200 Q14 discrepancy mechanism",
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 40052915443,
+      "name": "RHRC post-284 source inertia campaign",
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 40052912440,
+      "name": "OPICA follow-up draft checkpoint",
+      "event": "push",
+      "status": "completed",
+      "conclusion": "failure"
+    }
+  ],
+  "job_dispositions": {
+    "OPICA follow-up draft checkpoint (PR run 40052915110 and push run 40052912440)": {
+      "Draft preparation contract (no theorem authority)": "success",
+      "Exact-source implemented subset (full 100 remains required)": "success",
+      "Narrow repaired candidates (aggregate acceptance remains open)": "success: runner step over thirteen modules and all eighteen consumer files (including ExpectedForcedEuler); W01, W04/W07 and W06 steps PASS",
+      "Frozen regression and fail-closed evidence tests": "success",
+      "Full release readiness (expected FAIL while scope is incomplete)": "failure, as designed (fail-closed release gate)"
+    },
+    "RHRC OPICA full paper components (40052915190)": {
+      "opica-contract": "failure (pre-existing parent contract gate)",
+      "opica-regression": "success",
+      "opica-formal": "skipped",
+      "opica-dependency-delta": "skipped",
+      "opica-component-summary": "failure (requires every component)"
+    },
+    "RHRC research and Lean checks (40052915177)": {
+      "lean": "success",
+      "r003-normalization-audit": "success",
+      "python-rhrc": "failure (pre-existing RHRC claim/regression suite)",
+      "rhkg-compiler-receipt": "failure at the canonical-state validation (pre-existing; canonical regeneration OPEN)"
+    }
+  },
+  "long_research_replays": {
+    "RHRC post287 WP2 and WP4 interval research (40052915209)": "success (completed 2026-10-24T02:59Z)",
+    "RHRC post-284 source inertia campaign (40052915443)": "success: lean-source-inertia success (build, axiom audit, proof-escape rejection); source-falsifier-research success through every step, including the M51 K=2 Arb certificate, WP2 materialization and independent verification of every K2 M51 Arb interval, the M76 Arb grid, the WP4 D2 K3 feasibility gate (UNRESOLVED allowed), WP6 and the WP5 non-zeta negative control; post287-full-k3 skipped (not requested on pull_request)"
+  },
+  "research_disposition": "All eighteen inherited research replays completed successfully. They are regression and research outputs and create no OPICA theorem authority.",
+  "red_runs": "Exactly the designed fail-closed gates: Full release readiness (PR and push runs of the OPICA follow-up draft checkpoint), opica-contract and opica-component-summary (RHRC OPICA full paper components), python-rhrc and rhkg-compiler-receipt (RHRC research and Lean checks).",
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "independent_closing_inequalities": "OPEN"
+}

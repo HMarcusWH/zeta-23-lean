@@ -1,0 +1,64 @@
+{
+  "status": "FINAL_GENUINE_MODULES_AND_ALL_EIGHT_INDEPENDENT_CONSUMERS_GREEN",
+  "owned_paths": [
+    "Zeta23/OPICAFollowup/RenormalizedCoPoisson.lean",
+    "Zeta23/OPICAFollowup/FirstCellCost.lean",
+    "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedFirstCell.lean"
+  ],
+  "unchanged_authority": "The original BUILD_SPEC/PUBLIC_ROOTS and controlling papers remain unchanged. No parent source, dependency pin, validator, ledger, documentation, commit or remote was edited by this task.",
+  "sources_checked": [
+    "OPICA_Followup_Final_Audited_Paper_2026-10-21, CP1.8-CP1.10 and scalar phase discussion, pages22-23",
+    "OPICA_Beyond_PR_Paper_Round2_2026-10-21, H3.1, page14",
+    "Frozen BUILD_SPEC.md entries zero_measure_first_cell_sign and first_cell_negative_mass_cost",
+    "Actual parent SincTriangle.sincSquared and SignedHeatSeparator.sine_abs_lower_of_integer_distance"
+  ],
+  "first_root": {
+    "name": "Zeta23.OPICAFollowup.zero_measure_first_cell_sign",
+    "parameters": "Every real delta,gamma with |gamma|>3*pi/(2*log2). No sign assumption on gamma and no delta!=0 assumption for the negative-value clause.",
+    "negative_value": "At u=3*pi/(2*|gamma|), u lies strictly in(0,log2) and the literal finite-power-sum real density equals -|gamma|*(1+1/(4*(delta^2+gamma^2)))*exp(-u/2)*cosh(delta*u)<0.",
+    "phase_scope": "If delta!=0 and |gamma|>2*pi/log2, every nonzero complex scalar z has positive and negative real projected density values at points of(1,2). This is the paper's arbitrary nonzero real projection Re(z*density), with both ordinate signs retained.",
+    "proof_reading": [
+      "Nat.floor x=1 is proved for the actual first open cell; both inclusive finite sums reduce to their literal n=1 term.",
+      "Positive real base exp(u) is converted through the actual principal complex logarithm; no complex-power branch identity is assumed.",
+      "Normalizer is (1-2rho)/(rho*(1-rho)); gamma!=0 rules out0,1,1/2 and the lambda/quarter-square exceptional divisions.",
+      "The explicit real formula follows from genuine complex sinh addition and real/imaginary products. Real-density gamma reflection is proved directly rather than assumed by WLOG.",
+      "For phases, A=z*(1/4-lambda^2)/lambda is genuinely nonzero. If Re(A)=0, pi/2 and3pi/2 phases give opposite signs through Im(A). Otherwise pi and2pi phases use nonzero, same-sign sinh(delta*u). All four points are proved to lie in the first open cell before sign use."
+    ]
+  },
+  "second_root": {
+    "name": "Zeta23.OPICAFollowup.first_cell_negative_mass_cost",
+    "parameters": "Every real delta,gamma with |delta|<1/2 and |gamma|>=16, including delta=0 and both positive and negative ordinates.",
+    "interval": "u in[4*pi/(3*|gamma|),5*pi/(3*|gamma|)]; x=exp(u). The closed logarithmic interval lies strictly inside the first open cell and x<3/2.",
+    "conclusions": [
+      "Literal real density <= -|gamma|*exp(-u/2)/2 uniformly on the complete closed interval.",
+      "Lebesgue integral of the actual negative part over the exponential interval >=pi/6.",
+      "Integral of actual parent-normalized sincSquared times that negative part >=8*pi/(27*gamma^2)."
+    ],
+    "proof_reading": [
+      "A cos Taylor bound establishes sin(|gamma|*u)<=-3/4 on the interval. cosh>=1 and an internally derived small hyperbolic-term bound establish the full density inequality.",
+      "The auxiliary hyperbolic estimate is coarser than the paper's3/70 bound but remains sufficient at |gamma|>=16 and yields exactly the frozen final constants; no desired native budget is a caller input.",
+      "Actual density and its negative part are continuous on the first cell; interval integrability of both unweighted and sinc-weighted functions is proved, not supplied.",
+      "The exponential change of variables uses its actual derivative exp(u). The resulting lower constant is exactly(|gamma|/2)*(u2-u1)=pi/6.",
+      "The actual P0 integer-distance sine bound gives sincSquared(exp(u))>=16/(9*gamma^2). Nonnegative multiplication and interval integral monotonicity then yield8*pi/(27*gamma^2)."
+    ]
+  },
+  "independent_consumers": [
+    "Full independently stated sign/phase domain with both strict height thresholds",
+    "Full quantitative cost type with literal negative-part integrals, rather than only helper aliases",
+    "Actual IsNontrivialZero rho specialization using rho.re in(0,1) to derive|delta|<1/2 and reconstruct rho exactly",
+    "Both ordinate endpoints gamma=-16 and gamma=16",
+    "delta=0 cost for both ordinate signs",
+    "Adversarial on-line imaginary projection identically zero on the first cell, showing why removing delta!=0 from the universal phase clause is false",
+    "Adversarial conjugate-ordinate real-profile cancellation under opposite coefficients, invalidating naive additive per-zero repair costs"
+  ],
+  "global_obligations_not_replaced": [
+    "renormalized_copoisson_tempered_family",
+    "renormalized_copoisson_order_zero",
+    "zero_measure_exact_properties"
+  ],
+  "next_global_bridge": "Construct the actual renormalized lattice family on Schwartz tests and prove cancellation/integrability; identify its cutoff local-TV limit including origin correction. Only then bind actual zero specialization to density S_rho/b_rho minus the nonzero integer comb, prove selfduality and linear variation, and consume these local sign/cost roots. The local finite-power-sum function is not an assumed global measure carrier.",
+  "evidence_limits": "Local module checks and expected consumers are not the complete100-root aggregate source-bound receipt or independent human review. Temporary development leaves wrote no object caches and carry no acceptance authority. Final exact-source checks are recorded separately when complete.",
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "full_release_ready": false
+}

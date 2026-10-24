@@ -1,0 +1,85 @@
+{
+  "total_count": 4,
+  "artifacts": [
+    {
+      "id": 12433696971,
+      "node_id": "MDg6QXJ0aWZhY3QxMjQzMzY5Njk3MQ==",
+      "name": "post290-unapproved-field-review-48724d2fa0b9d534ad374aa844dc79cc98348ca8",
+      "size_in_bytes": 394170,
+      "url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/artifacts/12433696971",
+      "archive_download_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/artifacts/12433696971/zip",
+      "expired": false,
+      "digest": "sha256:f3f8ef663c632a477d88803775e4d69d2b89666dad7eb4f034817456a9396c83",
+      "created_at": "2026-10-22T14:32:16Z",
+      "updated_at": "2026-10-22T14:32:16Z",
+      "expires_at": "2027-01-20T13:56:02Z",
+      "workflow_run": {
+        "id": 39791293808,
+        "repository_id": 1339954300,
+        "head_repository_id": 1339954300,
+        "head_branch": "research/opica-native-followup",
+        "head_sha": "9ccea78eb5ee0c097bde05424e43de58a589b713"
+      }
+    },
+    {
+      "id": 12433420298,
+      "node_id": "MDg6QXJ0aWZhY3QxMjQzMzQyMDI5OA==",
+      "name": "post290-native-observations-48724d2fa0b9d534ad374aa844dc79cc98348ca8",
+      "size_in_bytes": 892017,
+      "url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/artifacts/12433420298",
+      "archive_download_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/artifacts/12433420298/zip",
+      "expired": false,
+      "digest": "sha256:e89b2d4cdeada8d758346d5103e592afb311881859668038f22ab3b27fa33fe4",
+      "created_at": "2026-10-22T14:16:07Z",
+      "updated_at": "2026-10-22T14:16:07Z",
+      "expires_at": "2027-01-20T13:56:02Z",
+      "workflow_run": {
+        "id": 39791293808,
+        "repository_id": 1339954300,
+        "head_repository_id": 1339954300,
+        "head_branch": "research/opica-native-followup",
+        "head_sha": "9ccea78eb5ee0c097bde05424e43de58a589b713"
+      }
+    },
+    {
+      "id": 12432579275,
+      "node_id": "MDg6QXJ0aWZhY3QxMjQzMjU3OTI3NQ==",
+      "name": "post290-compiler-48724d2fa0b9d534ad374aa844dc79cc98348ca8",
+      "size_in_bytes": 5556749,
+      "url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/artifacts/12432579275",
+      "archive_download_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/artifacts/12432579275/zip",
+      "expired": false,
+      "digest": "sha256:b165b72c90600c75e56aadebce06525f8c89571b781846f05f2b08d5823c21ca",
+      "created_at": "2026-10-22T14:32:15Z",
+      "updated_at": "2026-10-22T14:32:15Z",
+      "expires_at": "2027-01-20T13:56:02Z",
+      "workflow_run": {
+        "id": 39791293808,
+        "repository_id": 1339954300,
+        "head_repository_id": 1339954300,
+        "head_branch": "research/opica-native-followup",
+        "head_sha": "9ccea78eb5ee0c097bde05424e43de58a589b713"
+      }
+    },
+    {
+      "id": 12432196399,
+      "node_id": "MDg6QXJ0aWZhY3QxMjQzMjE5NjM5OQ==",
+      "name": "post290-exact-controls-48724d2fa0b9d534ad374aa844dc79cc98348ca8",
+      "size_in_bytes": 17357,
+      "url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/artifacts/12432196399",
+      "archive_download_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/artifacts/12432196399/zip",
+      "expired": false,
+      "digest": "sha256:f776ccbad6ffd72fe9dbff16cb08ff2479f51b3ff1438e963b1db82ce7f32b66",
+      "created_at": "2026-10-22T14:09:25Z",
+      "updated_at": "2026-10-22T14:09:25Z",
+      "expires_at": "2027-01-20T13:56:02Z",
+      "workflow_run": {
+        "id": 39791293808,
+        "repository_id": 1339954300,
+        "head_repository_id": 1339954300,
+        "head_branch": "research/opica-native-followup",
+        "head_sha": "9ccea78eb5ee0c097bde05424e43de58a589b713"
+      }
+    }
+  ]
+}

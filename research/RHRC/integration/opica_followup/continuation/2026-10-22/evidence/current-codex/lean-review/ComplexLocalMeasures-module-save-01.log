@@ -1,0 +1,21 @@
+Zeta23/OPICAFollowup/ComplexLocalMeasures.lean:927:2: warning: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+Zeta23/OPICAFollowup/ComplexLocalMeasures.lean:1068:50: warning: This simp argument is unused:
+  NNReal.smul_def
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Measure.add_apply, Measure.smul_apply, ENNReal.smul_def]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+Zeta23/OPICAFollowup/ComplexLocalMeasures.lean:1138:13: warning: `ContinuousLinearMap.add_apply` has been deprecated: Use `add_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.add_apply` to `add_apply x`).
+Zeta23/OPICAFollowup/ComplexLocalMeasures.lean:1138:43: warning: `ContinuousLinearMap.smul_apply` has been deprecated: Use `smul_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.smul_apply` to `smul_apply x`).

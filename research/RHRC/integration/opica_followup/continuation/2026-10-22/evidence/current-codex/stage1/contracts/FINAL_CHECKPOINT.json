@@ -1,0 +1,31 @@
+{
+  "schema": "OPICA_STAGE1_CONTRACTS_CHECKPOINT_V1",
+  "status": "INFRASTRUCTURE_TESTS_GREEN_FULL_PRODUCTION_UNEXERCISED_RELEASE_CLOSED",
+  "main_files_changed": [
+    "research/RHRC/integration/opica_followup/build_receipt.py",
+    "research/RHRC/integration/opica_followup/validate_contract.py",
+    "research/RHRC/integration/opica_followup/tests/test_receipt.py",
+    "research/RHRC/integration/opica_followup/tests/test_contract.py"
+  ],
+  "source_sha256": {
+    "build_receipt.py": "595f6ddca04699c9bc47e61cdcfa3a4c50a6e95d44871cd839b6976e7d688c8a",
+    "validate_contract.py": "4e0fe00909b8e18018bbb8161598237d8cbbac8c6c67a13eb671526e58190766",
+    "tests/test_receipt.py": "05178dec40cd432eb0d2d1707fc9f01073917e16d8b2e3d7f3827afbe6527872",
+    "tests/test_contract.py": "5d18b98b74ad3cef78d9d10755f3a665f5385b4e5b0979b57d4ae8f7fd0fb8e1"
+  },
+  "tests": {"normal": 185, "optimized": 185, "exit_codes": [0, 0], "source_unchanged": true},
+  "original_scope": {"primary_roots": 100, "acceptance_units": 28, "canonical_required_definitions": 83},
+  "real_full_compiler_production_executed": false,
+  "independent_full_review_seal": null,
+  "parent_acceptance_companion": "UNIMPLEMENTED_FAIL_CLOSED",
+  "release_companions": "PARENT_RUNTIME_GENERATED_WORKFLOW_GATES_UNWIRED_FAIL_CLOSED",
+  "evidence": [
+    "HANDOVER.md", "TEST_EXECUTIONS.json", "full-child-normal.log", "full-child-optimized.log",
+    "CURRENT_FIREWALL_PROBES.json", "current-full-production.log", "historical41-release.log",
+    "FIRST_CELL_INDEPENDENT_REVIEW.md"
+  ],
+  "release_ready": false,
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "independent_closing_inequalities": "OPEN"
+}

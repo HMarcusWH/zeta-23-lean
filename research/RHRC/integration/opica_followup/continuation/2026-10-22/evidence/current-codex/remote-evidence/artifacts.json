@@ -1,0 +1,345 @@
+{
+  "total_count": 17,
+  "artifacts": [
+    {
+      "id": 12396550138,
+      "node_id": "MDg6QXJ0aWZhY3QxMjM5NjU1MDEzOA==",
+      "name": "opica-lake-02",
+      "size_in_bytes": 262144136,
+      "url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/artifacts/12396550138",
+      "archive_download_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/artifacts/12396550138/zip",
+      "expired": false,
+      "digest": "sha256:77888237ab55bd88d3528253975ad6ec827d18eb1685d212af53321ec9c9e562",
+      "created_at": "2026-10-22T01:57:38Z",
+      "updated_at": "2026-10-22T01:57:38Z",
+      "expires_at": "2026-10-23T01:57:35Z",
+      "workflow_run": {
+        "id": 39706211959,
+        "repository_id": 1339954300,
+        "head_repository_id": 1339954300,
+        "head_branch": "repair/opica294-audit-20261022",
+        "head_sha": "077aab1aa736299768296afb7929263a8a4cf4bd"
+      }
+    },
+    {
+      "id": 12396550114,
+      "node_id": "MDg6QXJ0aWZhY3QxMjM5NjU1MDExNA==",
+      "name": "opica-toolchain-02",
+      "size_in_bytes": 221638406,
+      "url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/artifacts/12396550114",
+      "archive_download_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/artifacts/12396550114/zip",
+      "expired": false,
+      "digest": "sha256:20beaf93e2a1d2f92560f3f8b7844cea055da636c077f80ca337b18eedda463c",
+      "created_at": "2026-10-22T01:57:26Z",
+      "updated_at": "2026-10-22T01:57:26Z",
+      "expires_at": "2026-10-23T01:57:23Z",
+      "workflow_run": {
+        "id": 39706211959,
+        "repository_id": 1339954300,
+        "head_repository_id": 1339954300,
+        "head_branch": "repair/opica294-audit-20261022",
+        "head_sha": "077aab1aa736299768296afb7929263a8a4cf4bd"
+      }
+    },
+    {
+      "id": 12396266838,
+      "node_id": "MDg6QXJ0aWZhY3QxMjM5NjI2NjgzOA==",
+      "name": "opica-lake-06",
+      "size_in_bytes": 262144136,
+      "url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/artifacts/12396266838",
+      "archive_download_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/artifacts/12396266838/zip",
+      "expired": false,
+      "digest": "sha256:8eb08de3fa3328bc28483c1ece9b014b5c3dcacd5949a8603dd69554bff58fbf",
+      "created_at": "2026-10-22T01:57:54Z",
+      "updated_at": "2026-10-22T01:57:54Z",
+      "expires_at": "2026-10-23T01:57:50Z",
+      "workflow_run": {
+        "id": 39706211959,
+        "repository_id": 1339954300,
+        "head_repository_id": 1339954300,
+        "head_branch": "repair/opica294-audit-20261022",
+        "head_sha": "077aab1aa736299768296afb7929263a8a4cf4bd"
+      }
+    },
+    {
+      "id": 12396236881,
+      "node_id": "MDg6QXJ0aWZhY3QxMjM5NjIzNjg4MQ==",
+      "name": "opica-lake-05",
+      "size_in_bytes": 262144136,
+      "url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/artifacts/12396236881",
+      "archive_download_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/artifacts/12396236881/zip",
+      "expired": false,
+      "digest": "sha256:6ff9341a7713eb88e2e13f76e9062de80cbdd76377ab55755d317072c8f427a9",
+      "created_at": "2026-10-22T01:57:50Z",
+      "updated_at": "2026-10-22T01:57:50Z",
+      "expires_at": "2026-10-23T01:57:46Z",
+      "workflow_run": {
+        "id": 39706211959,
+        "repository_id": 1339954300,
+        "head_repository_id": 1339954300,
+        "head_branch": "repair/opica294-audit-20261022",
+        "head_sha": "077aab1aa736299768296afb7929263a8a4cf4bd"
+      }
+    },
+    {
+      "id": 12396157060,
+      "node_id": "MDg6QXJ0aWZhY3QxMjM5NjE1NzA2MA==",
+      "name": "opica-lake-04",
+      "size_in_bytes": 262144136,
+      "url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/artifacts/12396157060",
+      "archive_download_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/artifacts/12396157060/zip",
+      "expired": false,
+      "digest": "sha256:2b9f16dc1ba8108365ce9100feb576c102b2c6eae9febada8f1bd0153a88d49c",
+      "created_at": "2026-10-22T01:57:46Z",
+      "updated_at": "2026-10-22T01:57:46Z",
+      "expires_at": "2026-10-23T01:57:42Z",
+      "workflow_run": {
+        "id": 39706211959,
+        "repository_id": 1339954300,
+        "head_repository_id": 1339954300,
+        "head_branch": "repair/opica294-audit-20261022",
+        "head_sha": "077aab1aa736299768296afb7929263a8a4cf4bd"
+      }
+    },
+    {
+      "id": 12396077161,
+      "node_id": "MDg6QXJ0aWZhY3QxMjM5NjA3NzE2MQ==",
+      "name": "opica-lake-07",
+      "size_in_bytes": 262144136,
+      "url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/artifacts/12396077161",
+      "archive_download_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/artifacts/12396077161/zip",
+      "expired": false,
+      "digest": "sha256:b0c052849f22d9a50b3ac1ce2e5ec38ba365748edec21cb3dc4e9bde2947ec70",
+      "created_at": "2026-10-22T01:57:57Z",
+      "updated_at": "2026-10-22T01:57:57Z",
+      "expires_at": "2026-10-23T01:57:54Z",
+      "workflow_run": {
+        "id": 39706211959,
+        "repository_id": 1339954300,
+        "head_repository_id": 1339954300,
+        "head_branch": "repair/opica294-audit-20261022",
+        "head_sha": "077aab1aa736299768296afb7929263a8a4cf4bd"
+      }
+    },
+    {
+      "id": 12396007411,
+      "node_id": "MDg6QXJ0aWZhY3QxMjM5NjAwNzQxMQ==",
+      "name": "opica-lake-08",
+      "size_in_bytes": 88280379,
+      "url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/artifacts/12396007411",
+      "archive_download_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/artifacts/12396007411/zip",
+      "expired": false,
+      "digest": "sha256:fb43354ed57b9634133a9119cd4c81501287394c9db0de2871b03394e4e71e2f",
+      "created_at": "2026-10-22T01:58:00Z",
+      "updated_at": "2026-10-22T01:58:00Z",
+      "expires_at": "2026-10-23T01:57:58Z",
+      "workflow_run": {
+        "id": 39706211959,
+        "repository_id": 1339954300,
+        "head_repository_id": 1339954300,
+        "head_branch": "repair/opica294-audit-20261022",
+        "head_sha": "077aab1aa736299768296afb7929263a8a4cf4bd"
+      }
+    },
+    {
+      "id": 12395917030,
+      "node_id": "MDg6QXJ0aWZhY3QxMjM5NTkxNzAzMA==",
+      "name": "opica-pinned-evidence-and-source",
+      "size_in_bytes": 143037359,
+      "url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/artifacts/12395917030",
+      "archive_download_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/artifacts/12395917030/zip",
+      "expired": false,
+      "digest": "sha256:a39438a4a0755947faac14806b5ce12f87cda9ab7909f7a77060a4f9e5ca0e7c",
+      "created_at": "2026-10-22T01:57:15Z",
+      "updated_at": "2026-10-22T01:57:15Z",
+      "expires_at": "2026-10-23T01:57:10Z",
+      "workflow_run": {
+        "id": 39706211959,
+        "repository_id": 1339954300,
+        "head_repository_id": 1339954300,
+        "head_branch": "repair/opica294-audit-20261022",
+        "head_sha": "077aab1aa736299768296afb7929263a8a4cf4bd"
+      }
+    },
+    {
+      "id": 12395808607,
+      "node_id": "MDg6QXJ0aWZhY3QxMjM5NTgwODYwNw==",
+      "name": "opica-lake-03",
+      "size_in_bytes": 262144136,
+      "url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/artifacts/12395808607",
+      "archive_download_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/artifacts/12395808607/zip",
+      "expired": false,
+      "digest": "sha256:a9ed0a5e97cd6ad956b1bf94fa6d9c074936d9f35d6b499a2f1b273c99dc4ef2",
+      "created_at": "2026-10-22T01:57:42Z",
+      "updated_at": "2026-10-22T01:57:42Z",
+      "expires_at": "2026-10-23T01:57:38Z",
+      "workflow_run": {
+        "id": 39706211959,
+        "repository_id": 1339954300,
+        "head_repository_id": 1339954300,
+        "head_branch": "repair/opica294-audit-20261022",
+        "head_sha": "077aab1aa736299768296afb7929263a8a4cf4bd"
+      }
+    },
+    {
+      "id": 12395767505,
+      "node_id": "MDg6QXJ0aWZhY3QxMjM5NTc2NzUwNQ==",
+      "name": "opica-lake-01",
+      "size_in_bytes": 262144136,
+      "url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/artifacts/12395767505",
+      "archive_download_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/artifacts/12395767505/zip",
+      "expired": false,
+      "digest": "sha256:f288670e5b8806ecdcf8b29367fb7a049b77247c73341c3065e1398da43d1ed5",
+      "created_at": "2026-10-22T01:57:34Z",
+      "updated_at": "2026-10-22T01:57:34Z",
+      "expires_at": "2026-10-23T01:57:31Z",
+      "workflow_run": {
+        "id": 39706211959,
+        "repository_id": 1339954300,
+        "head_repository_id": 1339954300,
+        "head_branch": "repair/opica294-audit-20261022",
+        "head_sha": "077aab1aa736299768296afb7929263a8a4cf4bd"
+      }
+    },
+    {
+      "id": 12395622737,
+      "node_id": "MDg6QXJ0aWZhY3QxMjM5NTYyMjczNw==",
+      "name": "opica-lake-00",
+      "size_in_bytes": 262144136,
+      "url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/artifacts/12395622737",
+      "archive_download_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/artifacts/12395622737/zip",
+      "expired": false,
+      "digest": "sha256:f0d5424275094c77282ba9b74d5959d4067606b3e8e4a9e985e2d8459bf74d96",
+      "created_at": "2026-10-22T01:57:30Z",
+      "updated_at": "2026-10-22T01:57:30Z",
+      "expires_at": "2026-10-23T01:57:27Z",
+      "workflow_run": {
+        "id": 39706211959,
+        "repository_id": 1339954300,
+        "head_repository_id": 1339954300,
+        "head_branch": "repair/opica294-audit-20261022",
+        "head_sha": "077aab1aa736299768296afb7929263a8a4cf4bd"
+      }
+    },
+    {
+      "id": 12395591367,
+      "node_id": "MDg6QXJ0aWZhY3QxMjM5NTU5MTM2Nw==",
+      "name": "opica-followup-frozen-regression",
+      "size_in_bytes": 26733,
+      "url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/artifacts/12395591367",
+      "archive_download_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/artifacts/12395591367/zip",
+      "expired": false,
+      "digest": "sha256:4ef37f67fdac5886e8a6fbd0ed337a722c3aa7271044a8968bacd8b0c0d8303d",
+      "created_at": "2026-10-22T01:46:03Z",
+      "updated_at": "2026-10-22T01:46:03Z",
+      "expires_at": "2027-01-20T01:31:51Z",
+      "workflow_run": {
+        "id": 39706211959,
+        "repository_id": 1339954300,
+        "head_repository_id": 1339954300,
+        "head_branch": "repair/opica294-audit-20261022",
+        "head_sha": "077aab1aa736299768296afb7929263a8a4cf4bd"
+      }
+    },
+    {
+      "id": 12395537463,
+      "node_id": "MDg6QXJ0aWZhY3QxMjM5NTUzNzQ2Mw==",
+      "name": "opica-followup-subset-formal",
+      "size_in_bytes": 15930,
+      "url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/artifacts/12395537463",
+      "archive_download_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/artifacts/12395537463/zip",
+      "expired": false,
+      "digest": "sha256:eecf9c5f7368f7133eed7f3c73ae9e9a117fa40c66e81f29c48dc9c2a645ffeb",
+      "created_at": "2026-10-22T01:53:47Z",
+      "updated_at": "2026-10-22T01:53:47Z",
+      "expires_at": "2027-01-20T01:31:51Z",
+      "workflow_run": {
+        "id": 39706211959,
+        "repository_id": 1339954300,
+        "head_repository_id": 1339954300,
+        "head_branch": "repair/opica294-audit-20261022",
+        "head_sha": "077aab1aa736299768296afb7929263a8a4cf4bd"
+      }
+    },
+    {
+      "id": 12395489013,
+      "node_id": "MDg6QXJ0aWZhY3QxMjM5NTQ4OTAxMw==",
+      "name": "opica-toolchain-00",
+      "size_in_bytes": 262144146,
+      "url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/artifacts/12395489013",
+      "archive_download_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/artifacts/12395489013/zip",
+      "expired": false,
+      "digest": "sha256:86e5d281d8b1555192bc7f937fbe8d024a0b735648713b3cc971b990065c2622",
+      "created_at": "2026-10-22T01:57:19Z",
+      "updated_at": "2026-10-22T01:57:19Z",
+      "expires_at": "2026-10-23T01:57:15Z",
+      "workflow_run": {
+        "id": 39706211959,
+        "repository_id": 1339954300,
+        "head_repository_id": 1339954300,
+        "head_branch": "repair/opica294-audit-20261022",
+        "head_sha": "077aab1aa736299768296afb7929263a8a4cf4bd"
+      }
+    },
+    {
+      "id": 12395464082,
+      "node_id": "MDg6QXJ0aWZhY3QxMjM5NTQ2NDA4Mg==",
+      "name": "opica-toolchain-01",
+      "size_in_bytes": 262144146,
+      "url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/artifacts/12395464082",
+      "archive_download_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/artifacts/12395464082/zip",
+      "expired": false,
+      "digest": "sha256:80b6df10e159dfa6291ce9b5e68b77f0adb9266b2993b94e1d1b62fb4c571d9e",
+      "created_at": "2026-10-22T01:57:23Z",
+      "updated_at": "2026-10-22T01:57:23Z",
+      "expires_at": "2026-10-23T01:57:19Z",
+      "workflow_run": {
+        "id": 39706211959,
+        "repository_id": 1339954300,
+        "head_repository_id": 1339954300,
+        "head_branch": "repair/opica294-audit-20261022",
+        "head_sha": "077aab1aa736299768296afb7929263a8a4cf4bd"
+      }
+    },
+    {
+      "id": 12394843553,
+      "node_id": "MDg6QXJ0aWZhY3QxMjM5NDg0MzU1Mw==",
+      "name": "opica-followup-full-release-readiness",
+      "size_in_bytes": 1225,
+      "url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/artifacts/12394843553",
+      "archive_download_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/artifacts/12394843553/zip",
+      "expired": false,
+      "digest": "sha256:755a2969d484071e25639df29e61933df82390e6a8cfecf2fa93ed81af698425",
+      "created_at": "2026-10-22T01:36:38Z",
+      "updated_at": "2026-10-22T01:36:38Z",
+      "expires_at": "2027-01-20T01:31:51Z",
+      "workflow_run": {
+        "id": 39706211959,
+        "repository_id": 1339954300,
+        "head_repository_id": 1339954300,
+        "head_branch": "repair/opica294-audit-20261022",
+        "head_sha": "077aab1aa736299768296afb7929263a8a4cf4bd"
+      }
+    },
+    {
+      "id": 12394624603,
+      "node_id": "MDg6QXJ0aWZhY3QxMjM5NDYyNDYwMw==",
+      "name": "opica-followup-preparation",
+      "size_in_bytes": 1170,
+      "url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/artifacts/12394624603",
+      "archive_download_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/artifacts/12394624603/zip",
+      "expired": false,
+      "digest": "sha256:4c883674ec0bf1e7eb5afe0b740ca7d3acc2988a8140cdc1bbef390d96a2d603",
+      "created_at": "2026-10-22T01:35:14Z",
+      "updated_at": "2026-10-22T01:35:14Z",
+      "expires_at": "2027-01-20T01:31:51Z",
+      "workflow_run": {
+        "id": 39706211959,
+        "repository_id": 1339954300,
+        "head_repository_id": 1339954300,
+        "head_branch": "repair/opica294-audit-20261022",
+        "head_sha": "077aab1aa736299768296afb7929263a8a4cf4bd"
+      }
+    }
+  ]
+}

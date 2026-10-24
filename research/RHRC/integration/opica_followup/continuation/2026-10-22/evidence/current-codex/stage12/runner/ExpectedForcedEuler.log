@@ -1,0 +1,20 @@
+'Zeta23.OPICAFollowup.zero_profile_forced_euler' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.OPICAFollowup.zero_profile_not_homogeneous_operator_vector' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'OPICAForcedEulerIndependent.audit_eulerImage' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OPICAForcedEulerIndependent.expected_zero_profile_forced_euler' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'OPICAForcedEulerIndependent.expected_zero_profile_not_homogeneous_operator_vector' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'OPICAForcedEulerIndependent.expected_test_class_nondegenerate' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'OPICAForcedEulerIndependent.expected_atom_detected' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OPICAForcedEulerIndependent.expected_jump_matches_stage9' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OPICAForcedEulerIndependent.expected_explicit_derivative' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OPICAForcedEulerIndependent.expected_construction_nonvacuous' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

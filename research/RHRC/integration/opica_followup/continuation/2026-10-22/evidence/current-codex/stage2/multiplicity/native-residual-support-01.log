@@ -1,0 +1,77 @@
+C:/Users/macka/.codex/.chatgpt-projects/g-p-6a353c7268b08191b685956e466d73e4/work/opica-stage1-2026-10-22/multiplicity/NativeAuxiliaryResidual.lean:591:69: error: unsolved goals
+case pos
+d : ℕ
+T : ℝ
+hm : Measurable fun t => ↑(nativePrimeTruncation d T t)
+hc : Continuous fun t => ‖↑(primeFieldFamily d t)‖ ^ 2
+t : ℝ
+ht : t ∈ Icc 0 T
+⊢ (?m.165 ≤ t → ?m.166 < t) → primeFieldFamily d t = 0
+
+case neg
+d : ℕ
+T : ℝ
+hm : Measurable fun t => ↑(nativePrimeTruncation d T t)
+hc : Continuous fun t => ‖↑(primeFieldFamily d t)‖ ^ 2
+t : ℝ
+ht : t ∉ Icc 0 T
+⊢ ?m.165 ≤ t → t ≤ ?m.166 → primeFieldFamily d t = 0
+
+d : ℕ
+T : ℝ
+hm : Measurable fun t => ↑(nativePrimeTruncation d T t)
+hc : Continuous fun t => ‖↑(primeFieldFamily d t)‖ ^ 2
+⊢ ℝ
+
+d : ℕ
+T : ℝ
+hm : Measurable fun t => ↑(nativePrimeTruncation d T t)
+hc : Continuous fun t => ‖↑(primeFieldFamily d t)‖ ^ 2
+⊢ ℝ
+C:/Users/macka/.codex/.chatgpt-projects/g-p-6a353c7268b08191b685956e466d73e4/work/opica-stage1-2026-10-22/multiplicity/NativeAuxiliaryResidual.lean:615:88: error: unsolved goals
+case pos
+d : ℕ
+T : ℝ
+z : ℂ
+hc : Continuous fun t => Complex.exp (-z * ↑t) * ↑(primeFieldFamily d t)
+t : ℝ
+ht : t ∈ Icc 0 T
+⊢ (?m.113 ≤ t → ?m.114 < t) → primeFieldFamily d t = 0
+
+case neg
+d : ℕ
+T : ℝ
+z : ℂ
+hc : Continuous fun t => Complex.exp (-z * ↑t) * ↑(primeFieldFamily d t)
+t : ℝ
+ht : t ∉ Icc 0 T
+⊢ ?m.113 ≤ t → t ≤ ?m.114 → primeFieldFamily d t = 0
+
+d : ℕ
+T : ℝ
+z : ℂ
+hc : Continuous fun t => Complex.exp (-z * ↑t) * ↑(primeFieldFamily d t)
+⊢ ℝ
+
+d : ℕ
+T : ℝ
+z : ℂ
+hc : Continuous fun t => Complex.exp (-z * ↑t) * ↑(primeFieldFamily d t)
+⊢ ℝ
+C:/Users/macka/.codex/.chatgpt-projects/g-p-6a353c7268b08191b685956e466d73e4/work/opica-stage1-2026-10-22/multiplicity/NativeAuxiliaryResidual.lean:629:2: error: Type mismatch: After simplification, term
+  Integrable.re h
+ has type
+  @Integrable ℝ PseudoMetricSpace.toUniformSpace.toTopologicalSpace SeminormedAddGroup.toContinuousENorm ℝ
+    Real.measureSpace.toMeasurableSpace (fun x => RCLike.re ↑(auxCompletionKernel k x)) volume
+but is expected to have type
+  @Integrable ℝ PseudoMetricSpace.toUniformSpace.toTopologicalSpace SeminormedAddGroup.toContinuousENorm ℝ
+    Real.measureSpace.toMeasurableSpace (auxCompletionKernel k) volume
+C:/Users/macka/.codex/.chatgpt-projects/g-p-6a353c7268b08191b685956e466d73e4/work/opica-stage1-2026-10-22/multiplicity/NativeAuxiliaryResidual.lean:713:31: error: Invalid `⟨...⟩` notation: The expected type of this term could not be determined
+'Zeta23.OPICAFollowup.nativeTruncatedResidual_memLp_two' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.nativeTruncatedResidual_zero_before' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]

@@ -1,0 +1,35 @@
+{
+  "sha": "9ccea78eb5ee0c097bde05424e43de58a589b713",
+  "node_id": "C_kwDOT94UfNoAKDljY2VhNzhlYjVlZTBjMDk3YmRlMDU0MjRlNDNkZTU4YTU4OWI3MTM",
+  "url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/git/commits/9ccea78eb5ee0c097bde05424e43de58a589b713",
+  "html_url": "https://github.com/HMarcusWH/zeta-23-lean/commit/9ccea78eb5ee0c097bde05424e43de58a589b713",
+  "author": {
+    "name": "HMarcusWH",
+    "email": "Marcus@hmwh.se",
+    "date": "2026-10-22T13:55:42Z"
+  },
+  "committer": {
+    "name": "HMarcusWH",
+    "email": "Marcus@hmwh.se",
+    "date": "2026-10-22T13:55:42Z"
+  },
+  "tree": {
+    "sha": "40ad2bb6e78f9dcd944870233e991220f573a412",
+    "url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/git/trees/40ad2bb6e78f9dcd944870233e991220f573a412"
+  },
+  "message": "Update OPICA agent documentation and proof-lane navigation",
+  "parents": [
+    {
+      "sha": "a77ae60427423e8b6f098596f300c8cecc6392b6",
+      "url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/git/commits/a77ae60427423e8b6f098596f300c8cecc6392b6",
+      "html_url": "https://github.com/HMarcusWH/zeta-23-lean/commit/a77ae60427423e8b6f098596f300c8cecc6392b6"
+    }
+  ],
+  "verification": {
+    "verified": false,
+    "reason": "unsigned",
+    "signature": null,
+    "payload": null,
+    "verified_at": null
+  }
+}

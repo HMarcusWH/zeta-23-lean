@@ -1,0 +1,11 @@
+{
+  "status": "PASS_SYNTAX_ONLY",
+  "tools": [
+    "lake_pinned.py",
+    "run_checks.py",
+    "verify_kit.py",
+    "check_coverage.py",
+    "restore_kit.py",
+    "apply_patch.py"
+  ]
+}

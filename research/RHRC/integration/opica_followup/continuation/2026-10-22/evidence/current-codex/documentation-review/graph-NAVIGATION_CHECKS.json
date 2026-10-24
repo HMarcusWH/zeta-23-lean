@@ -1,0 +1,191 @@
+{
+  "status": "PASS_LOCAL_RELATIVE_LINKS_AND_CLASSIFICATION",
+  "checked_files": [
+    {
+      "path": "research/RHRC/graph/OPICA_FOLLOWUP_CURRENT_STATE.md",
+      "sha256": "0abd2a0488231c313af212341e199328c23c76fd58f7ba5859c974f7ae445990",
+      "existing_graph_classification": {
+        "rule": "rhrc_docs",
+        "file_class": "DOCUMENTATION",
+        "trust_zone": "RESEARCH_ONLY"
+      },
+      "relative_links": [
+        {
+          "target": "../integration/opica_followup/continuation/2026-10-22/README.md",
+          "file_exists": true,
+          "heading_anchor_valid": true
+        },
+        {
+          "target": "../integration/opica_followup/continuation/2026-10-22/ROOT_LEDGER_100.json",
+          "file_exists": true,
+          "heading_anchor_valid": true
+        },
+        {
+          "target": "../integration/opica_followup/PUBLIC_ROOTS.json",
+          "file_exists": true,
+          "heading_anchor_valid": true
+        },
+        {
+          "target": "../integration/opica_followup/continuation/2026-10-22/evidence/provided/cold41/subset/compiler-receipt.json.gz",
+          "file_exists": true,
+          "heading_anchor_valid": true
+        },
+        {
+          "target": "../integration/opica_followup/continuation/2026-10-22/evidence/current-codex/lean-review/STATUS.json",
+          "file_exists": true,
+          "heading_anchor_valid": true
+        },
+        {
+          "target": "../integration/opica_followup/continuation/2026-10-22/evidence/current-codex/lean-review/REVIEW.md",
+          "file_exists": true,
+          "heading_anchor_valid": true
+        },
+        {
+          "target": "../integration/opica_followup/continuation/2026-10-22/ROOT_LEDGER_100.json",
+          "file_exists": true,
+          "heading_anchor_valid": true
+        },
+        {
+          "target": "../integration/opica_followup/continuation/2026-10-22/evidence/historical-codex-review/REVIEW_AND_REMAINING_WORK.md",
+          "file_exists": true,
+          "heading_anchor_valid": true
+        },
+        {
+          "target": "../integration/opica_followup/continuation/2026-10-22/REMAINING_WORK.md",
+          "file_exists": true,
+          "heading_anchor_valid": true
+        },
+        {
+          "target": "../../../Zeta23/OPICAFollowup/MaskedNativeRate.lean",
+          "file_exists": true,
+          "heading_anchor_valid": true
+        },
+        {
+          "target": "../../../Zeta23/OPICAFollowup/ComplexLocalMeasures.lean",
+          "file_exists": true,
+          "heading_anchor_valid": true
+        },
+        {
+          "target": "../../../Zeta23/OPICAFollowup/AuxiliaryCompletions.lean",
+          "file_exists": true,
+          "heading_anchor_valid": true
+        },
+        {
+          "target": "../integration/opica_followup/continuation/2026-10-22/evidence/current-codex/lean-review/SEMANTIC_REVIEW.md",
+          "file_exists": true,
+          "heading_anchor_valid": true
+        },
+        {
+          "target": "../integration/opica_followup/continuation/2026-10-22/provenance/MODULE_IMPORT_REFINEMENTS.json",
+          "file_exists": true,
+          "heading_anchor_valid": true
+        },
+        {
+          "target": "../../../Zeta23/OPICAFollowup/MultiplicityTail.lean",
+          "file_exists": true,
+          "heading_anchor_valid": true
+        },
+        {
+          "target": "../../../Zeta23/OPICAFollowup/DilatedComb.lean",
+          "file_exists": true,
+          "heading_anchor_valid": true
+        },
+        {
+          "target": "../../../Zeta23/OPICAFollowup/RenormalizedCoPoisson.lean",
+          "file_exists": true,
+          "heading_anchor_valid": true
+        },
+        {
+          "target": "../../../Zeta23/OPICAFollowup/FirstCellCost.lean",
+          "file_exists": true,
+          "heading_anchor_valid": true
+        },
+        {
+          "target": "../../../Zeta23/OPICAFollowup/Consumers.lean",
+          "file_exists": true,
+          "heading_anchor_valid": true
+        },
+        {
+          "target": "../integration/opica_followup/continuation/2026-10-22/NEXT_AGENT_PROMPT.md",
+          "file_exists": true,
+          "heading_anchor_valid": true
+        },
+        {
+          "target": "../integration/opica_followup/continuation/2026-10-22/POST_GREEN_RESEARCH.md",
+          "file_exists": true,
+          "heading_anchor_valid": true
+        },
+        {
+          "target": "build.py",
+          "file_exists": true,
+          "heading_anchor_valid": true
+        },
+        {
+          "target": "views.py",
+          "file_exists": true,
+          "heading_anchor_valid": true
+        },
+        {
+          "target": "../tools/materialize_derived_state.py",
+          "file_exists": true,
+          "heading_anchor_valid": true
+        },
+        {
+          "target": "README.md#pr-validation-versus-materialized-snapshots",
+          "file_exists": true,
+          "heading_anchor_valid": true
+        }
+      ],
+      "manual_mermaid_blocks": 2
+    },
+    {
+      "path": "research/RHRC/graph/README.md",
+      "sha256": "f58606b294f6061ae73508dd99c683ba071eb7e7e3112ba18ed940e4929a4fcd",
+      "existing_graph_classification": {
+        "rule": "rhrc_docs",
+        "file_class": "DOCUMENTATION",
+        "trust_zone": "RESEARCH_ONLY"
+      },
+      "relative_links": [
+        {
+          "target": "CONSTITUTION.md",
+          "file_exists": true,
+          "heading_anchor_valid": true
+        },
+        {
+          "target": "OPICA_FOLLOWUP_CURRENT_STATE.md",
+          "file_exists": true,
+          "heading_anchor_valid": true
+        }
+      ],
+      "manual_mermaid_blocks": 0
+    },
+    {
+      "path": "research/RHRC/integration/README.md",
+      "sha256": "506b6e3e435fdc8c8b6882ee6cb2c1b80357cabd4936b76964abe319007c3359",
+      "existing_graph_classification": {
+        "rule": "integration_docs",
+        "file_class": "DOCUMENTATION",
+        "trust_zone": "AUDIT_ONLY"
+      },
+      "relative_links": [
+        {
+          "target": "../graph/OPICA_FOLLOWUP_CURRENT_STATE.md",
+          "file_exists": true,
+          "heading_anchor_valid": true
+        },
+        {
+          "target": "opica_followup/continuation/2026-10-22/README.md",
+          "file_exists": true,
+          "heading_anchor_valid": true
+        }
+      ],
+      "manual_mermaid_blocks": 0
+    }
+  ],
+  "failures": [],
+  "external_link_check": "No network claims;PR294 URL preserved as navigation",
+  "mermaid_check": "Two simple manual flowcharts reviewed;not compiler DAG or generated data",
+  "canonical_graph_regenerated": false,
+  "frozen_graphs_or_registry_edits": false
+}

@@ -1,0 +1,21 @@
+C:/Users/macka/.codex/.chatgpt-projects/g-p-6a353c7268b08191b685956e466d73e4/work/opica-stage2-2026-10-22/weighted/WeightedMixing.lean:158:47: error: unsolved goals
+mu : Measure ℝ
+inst✝ : SFinite mu
+a : ℝ
+ha : 1 / 2 ≤ a
+hm : positiveMixingMoment a mu < ∞
+f : 𝓢(ℝ, ℂ)
+hf : Integrable (⇑f) (positiveDilationMixture mu)
+hp : Integrable (fun z => f (mixtureLatticePoint z)) ((mu.prod Measure.count).withDensity mixtureAmplitude)
+hw : Integrable (fun x => (mixtureAmplitude x).toReal • f (mixtureLatticePoint x)) (mu.prod Measure.count)
+z : ℝ × ℤ
+⊢ ↑(Real.exp (z.1 / 2)) * f (mixtureLatticePoint z) = ↑(Real.exp (z.1 / 2)) * f (mixtureLatticePoint z)
+'Zeta23.OPICAFollowup.LocallyFiniteComplexMeasure.variationControl_le_twice' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.positiveDilationMixture_origin' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.OPICAFollowup.positiveDilationMixture_linearGrowth' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.OPICAFollowup.positiveDilationMixture_integral' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]

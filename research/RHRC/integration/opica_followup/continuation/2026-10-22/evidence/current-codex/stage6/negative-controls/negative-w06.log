@@ -1,0 +1,61 @@
+negative-w06.lean:12:2: error: Type mismatch
+  (weighted_gap_leakage.left σ a ha hm).left
+has type
+  ENNReal.ofReal (riemannZeta ↑(2 * a + 1) / riemannZeta ↑(a + 1 / 2)).re *
+      ∫⁻ (t : ℝ) in Iio 0, ENNReal.ofReal (Real.exp (-a * t)) ∂σ.totalVariation ≤
+    ∫⁻ (x : ℝ) in Ioo 0 1, ENNReal.ofReal (x ^ (-a - 1 / 2)) ∂(weightedDilationMixture σ a ⋯ hm).totalVariation
+but is expected to have type
+  ENNReal.ofReal (riemannZeta ↑(a + 1 / 2) / riemannZeta ↑(2 * a + 1)).re *
+      ∫⁻ (t : ℝ) in Iio 0, ENNReal.ofReal (Real.exp (-a * t)) ∂σ.totalVariation ≤
+    ∫⁻ (x : ℝ) in Ioo 0 1, ENNReal.ofReal (x ^ (-a - 1 / 2)) ∂(weightedDilationMixture σ a ⋯ hm).totalVariation
+negative-w06.lean:17:2: error: Type mismatch
+  (weighted_mobius_inverse σ a ha hm).right.right.right.left
+has type
+  moebiusPlusComb ∗ integerLogComb = Measure.dirac 0 + moebiusMinusComb ∗ integerLogComb
+but is expected to have type
+  moebiusPlusComb ∗ integerLogComb = Measure.dirac 0
+negative-w06.lean:23:44: error: Tactic `assumption` failed
+
+σ : LocallyFiniteComplexMeasure
+a : ℝ
+ha : 1 / 2 < a
+hm : mixingExponentialMoment a σ < ∞
+hgap : (weightedDilationMixture σ a ⋯ hm).variationControl (Ioo (-1) 1 \ {0}) = 0
+⊢ 𝓕 ((weightedDilationMixture σ a ⋯ hm).distributionOfLinearGrowth ⋯) =
+    (weightedDilationMixture σ a ⋯ hm).distributionOfLinearGrowth ⋯
+negative-w06.lean:31:30: error: Application type mismatch: The argument
+  ha
+has type
+  1 / 2 ≤ a
+but is expected to have type
+  1 / 2 < a
+in the application
+  weighted_gap_leakage.left σ a ha
+negative-w06.lean:36:2: error: Type mismatch
+  (weighted_mobius_inverse σ a ha hm).right.right.right.right.right.right.right.right.right.left.right
+has type
+  ↑(∑' (n : ℕ), ↑n ^ (-(a + 1 / 2))) = riemannZeta ↑(a + 1 / 2)
+but is expected to have type
+  ↑(∑' (n : ℕ), ↑n ^ (-(a + 1 / 2))) = riemannZeta ↑a
+negative-w06.lean:46:46: error: Application type mismatch: The argument
+  hgap
+has type
+  (weightedDilationMixture σ a ⋯ hm).variationControl (Ioo 0 1) = 0
+but is expected to have type
+  (weightedDilationMixture σ a ⋯ hm).variationControl (Ioo (-1) 1 \ {0}) = 0
+in the application
+  weighted_mixture_sharp_gap σ a ha hm hself hgap
+negative-w06.lean:51:41: error: Application type mismatch: The argument
+  hb
+has type
+  0 < b
+but is expected to have type
+  1 / 2 < b
+in the application
+  weighted_gap_leakage.right.right.right.right h hc H b hb
+negative-w06.lean:56:2: error: Type mismatch
+  (weighted_mobius_inverse σ a ha hm).right.right.right.right.right.right.right.right.right.right.left
+has type
+  moebiusPlusComb ⟂ₘ moebiusMinusComb
+but is expected to have type
+  moebiusPlusComb = moebiusMinusComb

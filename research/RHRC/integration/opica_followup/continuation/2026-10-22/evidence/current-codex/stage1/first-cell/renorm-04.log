@@ -1,0 +1,311 @@
+Zeta23/OPICAFollowup/RenormalizedCoPoisson.lean:100:62: error: unexpected token 'have'; expected ')', ',' or ':'
+Zeta23/OPICAFollowup/RenormalizedCoPoisson.lean:67:54: error: unsolved goals
+delta gamma u : ℝ
+hg : gamma ≠ 0
+hu : 0 < u
+hu1 : u < Real.log 2
+lam : ℂ := ↑delta + ↑gamma * I
+rho : ℂ := coPoissonRho delta gamma
+h0 : coPoissonRho delta gamma ≠ 0
+h1 : coPoissonRho delta gamma ≠ 1
+hh : coPoissonRho delta gamma ≠ 1 / 2
+hL : ↑delta + ↑gamma * I ≠ 0
+hx : Real.exp u ∈ Set.Ioo 1 2
+hpow : ∀ (z : ℂ), ↑(Real.exp u) ^ z = cexp (↑u * z)
+hb : coPoissonOriginNormalizer rho = (1 - 2 * rho) / (rho * (1 - rho))
+hk : rho * (1 - rho) = 1 / 4 - lam ^ 2
+hnum : 1 - 2 * rho = -2 * lam
+hsplit_neg : cexp (↑u * -rho) = ↑(Real.exp (-u / 2)) * cexp (-(lam * ↑u))
+hsplit_pos : cexp (↑u * (rho - 1)) = ↑(Real.exp (-u / 2)) * cexp (lam * ↑u)
+⊢ (↑(Real.exp (-u / 2)) * cexp (-(lam * ↑u)) - ↑(Real.exp (-u / 2)) * cexp (lam * ↑u)) /
+      (-2 * lam / (1 / 4 - lam ^ 2)) =
+    ↑(Real.exp (-u / 2)) * ((1 / 4 - lam ^ 2) / lam) * ((cexp (lam * ↑u) - cexp (-(lam * ↑u))) / 2)
+Zeta23/OPICAFollowup/RenormalizedCoPoisson.lean:118:33: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Zeta23/OPICAFollowup/RenormalizedCoPoisson.lean:141:13: warning: This simp argument is unused:
+  mul_zero
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Complex.mul_re, Complex.mul_im, Complex.ofReal_re, Complex.ofReal_im, zero_mul, sub_zero, add_zero,
+    zero_add]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+Zeta23/OPICAFollowup/RenormalizedCoPoisson.lean:141:40: warning: This simp argument is unused:
+  zero_add
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Complex.mul_re, Complex.mul_im, Complex.ofReal_re, Complex.ofReal_im, zero_mul, mul_zero, sub_zero,
+    add_zero]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+Zeta23/OPICAFollowup/RenormalizedCoPoisson.lean:178:11: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  Real.cos (?x + Real.pi)
+in the target expression
+  coPoissonRealDensity (coPoissonRho delta |gamma|) (Real.exp (3 * Real.pi / (2 * |gamma|))) =
+    Real.exp (-(3 * Real.pi / (2 * |gamma|)) / 2) *
+      (delta * (1 / (4 * (delta ^ 2 + |gamma| ^ 2)) - 1) * Real.sinh (delta * (3 * Real.pi / (2 * |gamma|))) *
+          Real.cos (Real.pi + Real.pi / 2) +
+        |gamma| * (1 + 1 / (4 * (delta ^ 2 + |gamma| ^ 2))) * Real.cosh (delta * (3 * Real.pi / (2 * |gamma|))) *
+          Real.sin (Real.pi + Real.pi / 2))
+
+delta gamma : ℝ
+hgamma : 3 * Real.pi / (2 * Real.log 2) < |gamma|
+hg : 0 < |gamma|
+hgne : gamma ≠ 0
+hlog : 0 < Real.log 2
+hu : 0 < 3 * Real.pi / (2 * |gamma|)
+hu1 : 3 * Real.pi / (2 * |gamma|) < Real.log 2
+he :
+  coPoissonRealDensity (coPoissonRho delta |gamma|) (Real.exp (3 * Real.pi / (2 * |gamma|))) =
+    Real.exp (-(3 * Real.pi / (2 * |gamma|)) / 2) *
+      (delta * (1 / (4 * (delta ^ 2 + |gamma| ^ 2)) - 1) * Real.sinh (delta * (3 * Real.pi / (2 * |gamma|))) *
+          Real.cos (Real.pi + Real.pi / 2) +
+        |gamma| * (1 + 1 / (4 * (delta ^ 2 + |gamma| ^ 2))) * Real.cosh (delta * (3 * Real.pi / (2 * |gamma|))) *
+          Real.sin (Real.pi + Real.pi / 2))
+hang : |gamma| * (3 * Real.pi / (2 * |gamma|)) = Real.pi + Real.pi / 2
+⊢ 0 < 3 * Real.pi / (2 * |gamma|) ∧
+    3 * Real.pi / (2 * |gamma|) < Real.log 2 ∧
+      coPoissonRealDensity (coPoissonRho delta gamma) (Real.exp (3 * Real.pi / (2 * |gamma|))) =
+          -|gamma| * (1 + 1 / (4 * (delta ^ 2 + gamma ^ 2))) * Real.exp (-(3 * Real.pi / (2 * |gamma|)) / 2) *
+            Real.cosh (delta * (3 * Real.pi / (2 * |gamma|))) ∧
+        coPoissonRealDensity (coPoissonRho delta gamma) (Real.exp (3 * Real.pi / (2 * |gamma|))) < 0
+Zeta23/OPICAFollowup/RenormalizedCoPoisson.lean:235:4: error: unsolved goals
+case inl
+delta gamma : ℝ
+z : ℂ
+A : ℂ := z * ((1 / 4 - (↑delta + ↑gamma * I) ^ 2) / (↑delta + ↑gamma * I))
+hdelta : ¬delta = 0
+hheight : 2 * Real.pi / Real.log 2 < |gamma|
+hz : ¬z = 0
+hgne : ¬gamma = 0
+h : 4⁻¹ - (↑delta + ↑gamma * I) ^ 2 = 0
+hm : ↑delta + ↑gamma * I - 2⁻¹ = 0
+⊢ False
+Zeta23/OPICAFollowup/RenormalizedCoPoisson.lean:236:4: error: unsolved goals
+case inr
+delta gamma : ℝ
+z : ℂ
+A : ℂ := z * ((1 / 4 - (↑delta + ↑gamma * I) ^ 2) / (↑delta + ↑gamma * I))
+hdelta : ¬delta = 0
+hheight : 2 * Real.pi / Real.log 2 < |gamma|
+hz : ¬z = 0
+hgne : ¬gamma = 0
+h : 4⁻¹ - (↑delta + ↑gamma * I) ^ 2 = 0
+hp : ↑delta + ↑gamma * I + 2⁻¹ = 0
+⊢ False
+Zeta23/OPICAFollowup/RenormalizedCoPoisson.lean:251:38: error: No goals to be solved
+Zeta23/OPICAFollowup/RenormalizedCoPoisson.lean:257:10: error(lean.unknownIdentifier): Unknown constant `Real.sinh_eq_zero`
+Zeta23/OPICAFollowup/RenormalizedCoPoisson.lean:258:10: error(lean.unknownIdentifier): Unknown constant `Real.sinh_pos_iff`
+Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+Zeta23/OPICAFollowup/RenormalizedCoPoisson.lean:286:8: error: linarith failed to find a contradiction
+case pos
+delta gamma : ℝ
+hdelta : delta ≠ 0
+hheight : 2 * Real.pi / Real.log 2 < |gamma|
+z : ℂ
+hz : z ≠ 0
+hg : 0 < |gamma|
+hgne : gamma ≠ 0
+A : ℂ := z * ((1 / 4 - (↑delta + ↑gamma * I) ^ 2) / (↑delta + ↑gamma * I))
+hA : A ≠ 0
+hpoint :
+  ∀ (a : ℝ), 0 < a → a ≤ 2 * Real.pi → 0 < a / |gamma| ∧ a / |gamma| < Real.log 2 ∧ Real.exp (a / |gamma|) ∈ Set.Ioo 1 2
+htrig : ∀ (a : ℝ), gamma * (a / |gamma|) = if 0 < gamma then a else -a
+hsinh : ∀ (a : ℝ), 0 < a → Real.sinh (delta * (a / |gamma|)) ≠ 0 ∧ (0 < Real.sinh (delta * (a / |gamma|)) ↔ 0 < delta)
+hAre : A.re = 0
+hAi : A.im ≠ 0
+hu₀ : 0 < Real.pi / 2 / |gamma|
+hu₁ : Real.pi / 2 / |gamma| < Real.log 2
+hx : Real.exp (Real.pi / 2 / |gamma|) ∈ Set.Ioo 1 2
+hv₀ : 0 < 3 * Real.pi / 2 / |gamma|
+hv₁ : 3 * Real.pi / 2 / |gamma| < Real.log 2
+hy : Real.exp (3 * Real.pi / 2 / |gamma|) ∈ Set.Ioo 1 2
+hxf :
+  (z * coPoissonComplexDensity (coPoissonRho delta gamma) (Real.exp (Real.pi / (2 * |gamma|)))).re =
+    have A := z * ((1 / 4 - (↑delta + ↑gamma * I) ^ 2) / (↑delta + ↑gamma * I));
+    Real.exp (-(Real.pi / (2 * |gamma|)) / 2) *
+      (A.re * Real.sinh (delta * (Real.pi / (2 * |gamma|))) * Real.cos (gamma * (Real.pi / (2 * |gamma|))) -
+        A.im * Real.cosh (delta * (Real.pi / (2 * |gamma|))) * Real.sin (gamma * (Real.pi / (2 * |gamma|))))
+hyf :
+  (z * coPoissonComplexDensity (coPoissonRho delta gamma) (Real.exp (3 * Real.pi / (2 * |gamma|)))).re =
+    have A := z * ((1 / 4 - (↑delta + ↑gamma * I) ^ 2) / (↑delta + ↑gamma * I));
+    Real.exp (-(3 * Real.pi / (2 * |gamma|)) / 2) *
+      (A.re * Real.sinh (delta * (3 * Real.pi / (2 * |gamma|))) * Real.cos (gamma * (3 * Real.pi / (2 * |gamma|))) -
+        A.im * Real.cosh (delta * (3 * Real.pi / (2 * |gamma|))) * Real.sin (gamma * (3 * Real.pi / (2 * |gamma|))))
+hhalf : gamma * (Real.pi / (2 * |gamma|)) = if 0 < gamma then Real.pi / 2 else -Real.pi / 2
+hthree : gamma * (3 * Real.pi / (2 * |gamma|)) = if 0 < gamma then Real.pi + Real.pi / 2 else -(Real.pi + Real.pi / 2)
+h✝ : 0 < gamma
+a✝ :
+  0 ≤
+    Real.exp (-(Real.pi / (2 * |gamma|)) / 2) * -(A.im * Real.cosh (delta * (Real.pi / (2 * |gamma|)))) *
+      (Real.exp (-(3 * Real.pi / (2 * |gamma|)) / 2) *
+        -(A.im * Real.cosh (delta * (3 * Real.pi / (2 * |gamma|))) * Real.sin (Real.pi + Real.pi / 2)))
+⊢ False
+failed
+Zeta23/OPICAFollowup/RenormalizedCoPoisson.lean:286:8: error: linarith failed to find a contradiction
+case neg
+delta gamma : ℝ
+hdelta : delta ≠ 0
+hheight : 2 * Real.pi / Real.log 2 < |gamma|
+z : ℂ
+hz : z ≠ 0
+hg : 0 < |gamma|
+hgne : gamma ≠ 0
+A : ℂ := z * ((1 / 4 - (↑delta + ↑gamma * I) ^ 2) / (↑delta + ↑gamma * I))
+hA : A ≠ 0
+hpoint :
+  ∀ (a : ℝ), 0 < a → a ≤ 2 * Real.pi → 0 < a / |gamma| ∧ a / |gamma| < Real.log 2 ∧ Real.exp (a / |gamma|) ∈ Set.Ioo 1 2
+htrig : ∀ (a : ℝ), gamma * (a / |gamma|) = if 0 < gamma then a else -a
+hsinh : ∀ (a : ℝ), 0 < a → Real.sinh (delta * (a / |gamma|)) ≠ 0 ∧ (0 < Real.sinh (delta * (a / |gamma|)) ↔ 0 < delta)
+hAre : A.re = 0
+hAi : A.im ≠ 0
+hu₀ : 0 < Real.pi / 2 / |gamma|
+hu₁ : Real.pi / 2 / |gamma| < Real.log 2
+hx : Real.exp (Real.pi / 2 / |gamma|) ∈ Set.Ioo 1 2
+hv₀ : 0 < 3 * Real.pi / 2 / |gamma|
+hv₁ : 3 * Real.pi / 2 / |gamma| < Real.log 2
+hy : Real.exp (3 * Real.pi / 2 / |gamma|) ∈ Set.Ioo 1 2
+hxf :
+  (z * coPoissonComplexDensity (coPoissonRho delta gamma) (Real.exp (Real.pi / (2 * |gamma|)))).re =
+    have A := z * ((1 / 4 - (↑delta + ↑gamma * I) ^ 2) / (↑delta + ↑gamma * I));
+    Real.exp (-(Real.pi / (2 * |gamma|)) / 2) *
+      (A.re * Real.sinh (delta * (Real.pi / (2 * |gamma|))) * Real.cos (gamma * (Real.pi / (2 * |gamma|))) -
+        A.im * Real.cosh (delta * (Real.pi / (2 * |gamma|))) * Real.sin (gamma * (Real.pi / (2 * |gamma|))))
+hyf :
+  (z * coPoissonComplexDensity (coPoissonRho delta gamma) (Real.exp (3 * Real.pi / (2 * |gamma|)))).re =
+    have A := z * ((1 / 4 - (↑delta + ↑gamma * I) ^ 2) / (↑delta + ↑gamma * I));
+    Real.exp (-(3 * Real.pi / (2 * |gamma|)) / 2) *
+      (A.re * Real.sinh (delta * (3 * Real.pi / (2 * |gamma|))) * Real.cos (gamma * (3 * Real.pi / (2 * |gamma|))) -
+        A.im * Real.cosh (delta * (3 * Real.pi / (2 * |gamma|))) * Real.sin (gamma * (3 * Real.pi / (2 * |gamma|))))
+hhalf : gamma * (Real.pi / (2 * |gamma|)) = if 0 < gamma then Real.pi / 2 else -Real.pi / 2
+hthree : gamma * (3 * Real.pi / (2 * |gamma|)) = if 0 < gamma then Real.pi + Real.pi / 2 else -(Real.pi + Real.pi / 2)
+h✝ : ¬0 < gamma
+a✝ :
+  0 ≤
+    Real.exp (-(Real.pi / (2 * |gamma|)) / 2) *
+        -(A.im * Real.cosh (delta * (Real.pi / (2 * |gamma|))) * Real.sin (-Real.pi / 2)) *
+      (Real.exp (-(3 * Real.pi / (2 * |gamma|)) / 2) *
+        -(A.im * Real.cosh (delta * (3 * Real.pi / (2 * |gamma|))) * -Real.sin (Real.pi + Real.pi / 2)))
+⊢ False
+failed
+Zeta23/OPICAFollowup/RenormalizedCoPoisson.lean:317:37: error(lean.unknownIdentifier): Unknown constant `Real.sinh_neg_iff.mpr`
+Zeta23/OPICAFollowup/RenormalizedCoPoisson.lean:318:11: error(lean.unknownIdentifier): Unknown constant `Real.sinh_neg_iff.mpr`
+Zeta23/OPICAFollowup/RenormalizedCoPoisson.lean:319:23: error(lean.unknownIdentifier): Unknown constant `Real.sinh_pos_iff.mpr`
+Zeta23/OPICAFollowup/RenormalizedCoPoisson.lean:319:63: error(lean.unknownIdentifier): Unknown constant `Real.sinh_pos_iff.mpr`
+Zeta23/OPICAFollowup/RenormalizedCoPoisson.lean:331:8: error: linarith failed to find a contradiction
+case pos
+delta gamma : ℝ
+hdelta : delta ≠ 0
+hheight : 2 * Real.pi / Real.log 2 < |gamma|
+z : ℂ
+hz : z ≠ 0
+hg : 0 < |gamma|
+hgne : gamma ≠ 0
+A : ℂ := z * ((1 / 4 - (↑delta + ↑gamma * I) ^ 2) / (↑delta + ↑gamma * I))
+hA : A ≠ 0
+hpoint :
+  ∀ (a : ℝ), 0 < a → a ≤ 2 * Real.pi → 0 < a / |gamma| ∧ a / |gamma| < Real.log 2 ∧ Real.exp (a / |gamma|) ∈ Set.Ioo 1 2
+htrig : ∀ (a : ℝ), gamma * (a / |gamma|) = if 0 < gamma then a else -a
+hsinh : ∀ (a : ℝ), 0 < a → Real.sinh (delta * (a / |gamma|)) ≠ 0 ∧ (0 < Real.sinh (delta * (a / |gamma|)) ↔ 0 < delta)
+hAre : ¬A.re = 0
+hu₀ : 0 < Real.pi / |gamma|
+hu₁ : Real.pi / |gamma| < Real.log 2
+hx : Real.exp (Real.pi / |gamma|) ∈ Set.Ioo 1 2
+hv₀ : 0 < 2 * Real.pi / |gamma|
+hv₁ : 2 * Real.pi / |gamma| < Real.log 2
+hy : Real.exp (2 * Real.pi / |gamma|) ∈ Set.Ioo 1 2
+hxf :
+  (z * coPoissonComplexDensity (coPoissonRho delta gamma) (Real.exp (Real.pi / |gamma|))).re =
+    have A := z * ((1 / 4 - (↑delta + ↑gamma * I) ^ 2) / (↑delta + ↑gamma * I));
+    Real.exp (-(Real.pi / |gamma|) / 2) *
+      (A.re * Real.sinh (delta * (Real.pi / |gamma|)) * Real.cos (gamma * (Real.pi / |gamma|)) -
+        A.im * Real.cosh (delta * (Real.pi / |gamma|)) * Real.sin (gamma * (Real.pi / |gamma|)))
+hyf :
+  (z * coPoissonComplexDensity (coPoissonRho delta gamma) (Real.exp (2 * Real.pi / |gamma|))).re =
+    have A := z * ((1 / 4 - (↑delta + ↑gamma * I) ^ 2) / (↑delta + ↑gamma * I));
+    Real.exp (-(2 * Real.pi / |gamma|) / 2) *
+      (A.re * Real.sinh (delta * (2 * Real.pi / |gamma|)) * Real.cos (gamma * (2 * Real.pi / |gamma|)) -
+        A.im * Real.cosh (delta * (2 * Real.pi / |gamma|)) * Real.sin (gamma * (2 * Real.pi / |gamma|)))
+hsign : 0 < Real.sinh (delta * (Real.pi / |gamma|)) * Real.sinh (delta * (2 * Real.pi / |gamma|))
+h✝ : 0 < gamma
+a✝ :
+  0 ≤
+    Real.exp (-(Real.pi / |gamma|) / 2) * -(A.re * Real.sinh (delta * (Real.pi / |gamma|))) *
+      (Real.exp (-(2 * Real.pi / |gamma|) / 2) * (A.re * Real.sinh (delta * (2 * Real.pi / |gamma|))))
+⊢ False
+failed
+Zeta23/OPICAFollowup/RenormalizedCoPoisson.lean:331:8: error: linarith failed to find a contradiction
+case neg
+delta gamma : ℝ
+hdelta : delta ≠ 0
+hheight : 2 * Real.pi / Real.log 2 < |gamma|
+z : ℂ
+hz : z ≠ 0
+hg : 0 < |gamma|
+hgne : gamma ≠ 0
+A : ℂ := z * ((1 / 4 - (↑delta + ↑gamma * I) ^ 2) / (↑delta + ↑gamma * I))
+hA : A ≠ 0
+hpoint :
+  ∀ (a : ℝ), 0 < a → a ≤ 2 * Real.pi → 0 < a / |gamma| ∧ a / |gamma| < Real.log 2 ∧ Real.exp (a / |gamma|) ∈ Set.Ioo 1 2
+htrig : ∀ (a : ℝ), gamma * (a / |gamma|) = if 0 < gamma then a else -a
+hsinh : ∀ (a : ℝ), 0 < a → Real.sinh (delta * (a / |gamma|)) ≠ 0 ∧ (0 < Real.sinh (delta * (a / |gamma|)) ↔ 0 < delta)
+hAre : ¬A.re = 0
+hu₀ : 0 < Real.pi / |gamma|
+hu₁ : Real.pi / |gamma| < Real.log 2
+hx : Real.exp (Real.pi / |gamma|) ∈ Set.Ioo 1 2
+hv₀ : 0 < 2 * Real.pi / |gamma|
+hv₁ : 2 * Real.pi / |gamma| < Real.log 2
+hy : Real.exp (2 * Real.pi / |gamma|) ∈ Set.Ioo 1 2
+hxf :
+  (z * coPoissonComplexDensity (coPoissonRho delta gamma) (Real.exp (Real.pi / |gamma|))).re =
+    have A := z * ((1 / 4 - (↑delta + ↑gamma * I) ^ 2) / (↑delta + ↑gamma * I));
+    Real.exp (-(Real.pi / |gamma|) / 2) *
+      (A.re * Real.sinh (delta * (Real.pi / |gamma|)) * Real.cos (gamma * (Real.pi / |gamma|)) -
+        A.im * Real.cosh (delta * (Real.pi / |gamma|)) * Real.sin (gamma * (Real.pi / |gamma|)))
+hyf :
+  (z * coPoissonComplexDensity (coPoissonRho delta gamma) (Real.exp (2 * Real.pi / |gamma|))).re =
+    have A := z * ((1 / 4 - (↑delta + ↑gamma * I) ^ 2) / (↑delta + ↑gamma * I));
+    Real.exp (-(2 * Real.pi / |gamma|) / 2) *
+      (A.re * Real.sinh (delta * (2 * Real.pi / |gamma|)) * Real.cos (gamma * (2 * Real.pi / |gamma|)) -
+        A.im * Real.cosh (delta * (2 * Real.pi / |gamma|)) * Real.sin (gamma * (2 * Real.pi / |gamma|)))
+hsign : 0 < Real.sinh (delta * (Real.pi / |gamma|)) * Real.sinh (delta * (2 * Real.pi / |gamma|))
+h✝ : ¬0 < gamma
+a✝ :
+  0 ≤
+    Real.exp (-(Real.pi / |gamma|) / 2) * -(A.re * Real.sinh (delta * (Real.pi / |gamma|))) *
+      (Real.exp (-(2 * Real.pi / |gamma|) / 2) * (A.re * Real.sinh (delta * (2 * Real.pi / |gamma|))))
+⊢ False
+failed
+Zeta23/OPICAFollowup/RenormalizedCoPoisson.lean:284:51: warning: This simp argument is unused:
+  Real.sin_add_pi
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Real.sin_pi_div_two, Real.sin_neg, zero_mul, zero_sub, neg_neg, mul_neg_one, mul_one]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+Zeta23/OPICAFollowup/RenormalizedCoPoisson.lean:285:26: warning: This simp argument is unused:
+  neg_neg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Real.sin_pi_div_two, Real.sin_add_pi, Real.sin_neg, zero_mul, zero_sub, mul_neg_one, mul_one]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+Zeta23/OPICAFollowup/RenormalizedCoPoisson.lean:285:34: warning: This simp argument is unused:
+  mul_neg_one
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Real.sin_pi_div_two, Real.sin_add_pi, Real.sin_neg, zero_mul, zero_sub, neg_neg, mul_one]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`

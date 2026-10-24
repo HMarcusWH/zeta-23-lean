@@ -1,0 +1,9 @@
+cutoff X = 200 (mean-value tail beyond X)
+gamma = 14.13472514 kappa = 200.0404548: kappa M(kappa) = 12.913181, sampled b = 12.89968693, ratio = 1.00105
+gamma = 21.02203964 kappa = 442.1761506: kappa M(kappa) = 6.2072147, sampled b = 6.184275184, ratio = 1.00371
+cutoff X = 400 (mean-value tail beyond X)
+gamma = 14.13472514 kappa = 200.0404548: kappa M(kappa) = 12.90064, sampled b = 12.89968693, ratio = 1.00007
+gamma = 21.02203964 kappa = 442.1761506: kappa M(kappa) = 6.1853844, sampled b = 6.184275184, ratio = 1.00018
+cutoff X = 800 (mean-value tail beyond X)
+gamma = 14.13472514 kappa = 200.0404548: kappa M(kappa) = 12.899689, sampled b = 12.89968693, ratio = 1.0
+gamma = 21.02203964 kappa = 442.1761506: kappa M(kappa) = 6.184141, sampled b = 6.184275184, ratio = 0.999978

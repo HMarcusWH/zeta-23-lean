@@ -1,0 +1,25 @@
+{
+  "total_count": 1,
+  "artifacts": [
+    {
+      "id": 12432259735,
+      "node_id": "MDg6QXJ0aWZhY3QxMjQzMjI1OTczNQ==",
+      "name": "post287-wp4-k2-odd-prerequisite",
+      "size_in_bytes": 82865,
+      "url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/artifacts/12432259735",
+      "archive_download_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/artifacts/12432259735/zip",
+      "expired": false,
+      "digest": "sha256:a3d051fb86587cbe1217a2afe4b8247c6027169a5c6bffb52c4f303a24175881",
+      "created_at": "2026-10-22T14:29:47Z",
+      "updated_at": "2026-10-22T14:29:47Z",
+      "expires_at": "2027-01-20T13:56:02Z",
+      "workflow_run": {
+        "id": 39791294124,
+        "repository_id": 1339954300,
+        "head_repository_id": 1339954300,
+        "head_branch": "research/opica-native-followup",
+        "head_sha": "9ccea78eb5ee0c097bde05424e43de58a589b713"
+      }
+    }
+  ]
+}

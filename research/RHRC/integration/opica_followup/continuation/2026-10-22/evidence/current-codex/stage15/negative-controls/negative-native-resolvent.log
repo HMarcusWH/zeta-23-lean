@@ -1,0 +1,107 @@
+negative-native-resolvent.lean:10:2: error: Type mismatch
+  (native_forced_resolvent_unique hz h0 h1 hκ).right.right.right.left ξ
+has type
+  logFourier (logUnitary (zeroProfile ρ)) ξ =
+    spectralKappa ρ * riemannZeta (1 / 2 + ↑ξ * I) / (↑(spectralEnergy ξ) - spectralKappa ρ)
+but is expected to have type
+  logFourier (logUnitary (zeroProfile ρ)) ξ =
+    spectralKappa ρ * riemannZeta (1 / 2 + ↑ξ * I) / (↑(spectralEnergy ξ) + spectralKappa ρ)
+negative-native-resolvent.lean:17:2: error: Type mismatch
+  (native_forced_resolvent_unique hz h0 h1 hκ).right.left φ
+has type
+  (∫ (t : ℝ), logUnitaryDeriv (zeroProfile ρ) (zeroProfileDeriv ρ) t * deriv (⇑φ) t) +
+      (1 / 4 - spectralKappa ρ) * ∫ (t : ℝ), logUnitary (zeroProfile ρ) t * φ t =
+    spectralKappa ρ * nativeLogForce φ
+but is expected to have type
+  (∫ (t : ℝ), logUnitaryDeriv (zeroProfile ρ) (zeroProfileDeriv ρ) t * deriv (⇑φ) t) +
+      (1 / 4 + spectralKappa ρ) * ∫ (t : ℝ), logUnitary (zeroProfile ρ) t * φ t =
+    spectralKappa ρ * nativeLogForce φ
+negative-native-resolvent.lean:22:2: error: Invalid projection: Projections cannot be used on functions, and
+  native_forced_resolvent_unique hz h0 h1
+has function type
+  spectralKappa ρ ∈ spectralResolventSet →
+    LogH1 (logUnitary (zeroProfile ρ)) (logUnitaryDeriv (zeroProfile ρ) (zeroProfileDeriv ρ)) ∧
+      (∀ (φ : 𝓢(ℝ, ℂ)),
+          (∫ (t : ℝ), logUnitaryDeriv (zeroProfile ρ) (zeroProfileDeriv ρ) t * deriv (⇑φ) t) +
+              (1 / 4 - spectralKappa ρ) * ∫ (t : ℝ), logUnitary (zeroProfile ρ) t * φ t =
+            spectralKappa ρ * nativeLogForce φ) ∧
+        (∀ (D D' : ℝ → ℂ),
+            LogH1 D D' →
+              (∀ (φ : 𝓢(ℝ, ℂ)),
+                  (∫ (t : ℝ), D' t * deriv (⇑φ) t) + (1 / 4 - spectralKappa ρ) * ∫ (t : ℝ), D t * φ t =
+                    spectralKappa ρ * nativeLogForce φ) →
+                D = logUnitary (zeroProfile ρ)) ∧
+          (∀ (ξ : ℝ),
+              logFourier (logUnitary (zeroProfile ρ)) ξ =
+                spectralKappa ρ * riemannZeta (1 / 2 + ↑ξ * I) / (↑(spectralEnergy ξ) - spectralKappa ρ)) ∧
+            logUnitary (zeroProfile ρ) = nativeLogResolvent (spectralKappa ρ)
+negative-native-resolvent.lean:27:2: error: Type mismatch
+  (native_sample_stieltjes_identity hz h0 h1 hκ).right.right.right.right.right.right.right.right
+has type
+  profileSampleDefect ρ = spectralKappa ρ * arithmeticStieltjes (spectralKappa ρ)
+but is expected to have type
+  profileSampleDefect ρ = arithmeticStieltjes (spectralKappa ρ)
+negative-native-resolvent.lean:32:2: error: Type mismatch
+  (native_sample_stieltjes_identity hz h0 h1 hκ).right.right.right.right.right.right.right.right
+has type
+  profileSampleDefect ρ = spectralKappa ρ * arithmeticStieltjes (spectralKappa ρ)
+but is expected to have type
+  profileSampleDefect ρ = -(spectralKappa ρ * arithmeticStieltjes (spectralKappa ρ))
+negative-native-resolvent.lean:38:2: error: Type mismatch
+  (native_sample_stieltjes_identity hz h0 h1 hκ).right.left n
+has type
+  ∫ (x : ℝ) in ↑n..↑n + 1, ↑(Int.fract x) * zeroProfileDeriv ρ x =
+    zeroProfile ρ (↑n + 1) - ∫ (x : ℝ) in ↑n..↑n + 1, zeroProfile ρ x
+but is expected to have type
+  ∫ (x : ℝ) in ↑n..↑n + 1, ↑(Int.fract x) * zeroProfileDeriv ρ x =
+    zeroProfile ρ ↑n - ∫ (x : ℝ) in ↑n..↑n + 1, zeroProfile ρ x
+negative-native-resolvent.lean:44:2: error: Type mismatch
+  (native_sample_stieltjes_identity hz h0 h1 hκ).right.right.right.right.right.right.right.left
+has type
+  profileSampleDefect ρ =
+    1 / (2 * ↑π) *
+      ∫ (ξ : ℝ),
+        (starRingEnd ℂ) (logFourier sawtoothWeight ξ) * ((↑ξ * I - 1 / 2) * logFourier (logUnitary (zeroProfile ρ)) ξ)
+but is expected to have type
+  profileSampleDefect ρ =
+    1 / (2 * ↑π) *
+      ∫ (ξ : ℝ), logFourier sawtoothWeight ξ * ((↑ξ * I - 1 / 2) * logFourier (logUnitary (zeroProfile ρ)) ξ)
+negative-native-resolvent.lean:50:2: error: Type mismatch
+  (native_profile_spectral_norms hz h0 h1 hκ).left
+has type
+  ∫ (x : ℝ) in Ioi 0, ‖zeroProfile ρ x‖ ^ 2 =
+    ‖spectralKappa ρ‖ ^ 2 * ∫ (ξ : ℝ), (‖↑(spectralEnergy ξ) - spectralKappa ρ‖ ^ 2)⁻¹ ∂arithmeticSpectralMeasure
+but is expected to have type
+  ∫ (x : ℝ) in Ioi 0, ‖zeroProfile ρ x‖ ^ 2 =
+    ∫ (ξ : ℝ), (‖↑(spectralEnergy ξ) - spectralKappa ρ‖ ^ 2)⁻¹ ∂arithmeticSpectralMeasure
+negative-native-resolvent.lean:56:2: error: Type mismatch
+  (native_profile_spectral_norms hz h0 h1 hκ).right.left
+has type
+  logForm (zeroProfileDeriv ρ) =
+    ‖spectralKappa ρ‖ ^ 2 *
+      ∫ (ξ : ℝ), spectralEnergy ξ * (‖↑(spectralEnergy ξ) - spectralKappa ρ‖ ^ 2)⁻¹ ∂arithmeticSpectralMeasure
+but is expected to have type
+  logForm (zeroProfileDeriv ρ) =
+    ‖spectralKappa ρ‖ ^ 2 * ∫ (ξ : ℝ), (‖↑(spectralEnergy ξ) - spectralKappa ρ‖ ^ 2)⁻¹ ∂arithmeticSpectralMeasure
+negative-native-resolvent.lean:64:2: error: Type mismatch
+  ((native_profile_spectral_norms hz h0 h1 hκ).right.right.right.left σ hzσ h0σ h1σ hκσ).left
+has type
+  profileGram ρ σ =
+    spectralKappa ρ * (starRingEnd ℂ) (spectralKappa σ) *
+      ∫ (ξ : ℝ),
+        ((↑(spectralEnergy ξ) - spectralKappa ρ) *
+            (↑(spectralEnergy ξ) - (starRingEnd ℂ) (spectralKappa σ)))⁻¹ ∂arithmeticSpectralMeasure
+but is expected to have type
+  profileGram ρ σ =
+    spectralKappa ρ * spectralKappa σ *
+      ∫ (ξ : ℝ),
+        ((↑(spectralEnergy ξ) - spectralKappa ρ) * (↑(spectralEnergy ξ) - spectralKappa σ))⁻¹ ∂arithmeticSpectralMeasure
+negative-native-resolvent.lean:70:2: error: Type mismatch
+  (native_profile_spectral_norms hz h0 h1 hκ).right.right.right.right
+has type
+  ‖profileSampleDefect ρ‖ ≤
+    ‖spectralKappa ρ‖ * (1 + ‖spectralKappa ρ‖ / |(spectralKappa ρ).im|) *
+      (Real.log (2 * π) - Real.eulerMascheroniConstant)
+but is expected to have type
+  ‖profileSampleDefect ρ‖ ≤
+    ‖spectralKappa ρ‖ * (‖spectralKappa ρ‖ / |(spectralKappa ρ).im|) * (Real.log (2 * π) - Real.eulerMascheroniConstant)

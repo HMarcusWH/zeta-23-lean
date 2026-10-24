@@ -1,0 +1,38 @@
+{
+  "command": [
+    "/mnt/data/opica_repair_20261022/toolchain/bin/lean",
+    "-DmaxHeartbeats=800000",
+    "-DrelaxedAutoImplicit=false",
+    "/mnt/data/opica_repair_20261022/delivery/consumers/ExpectedComplex.lean"
+  ],
+  "returncode": 0,
+  "seconds": 81.93720401500013,
+  "sha256": "2d84b62e92e93c133bed5b827e44e583db9d22d7c48bc38868f1ddf5c5373c1c",
+  "log_sha256": "9cd49dac8bfdf55f909bd22c7e3973fe0515439d732a971e83d7d145defca5b3",
+  "axioms": [
+    [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ]
+  ],
+  "requested_axiom_checks": 4,
+  "no_axioms": 0,
+  "narrow_gate": true,
+  "full_acceptance": false
+}

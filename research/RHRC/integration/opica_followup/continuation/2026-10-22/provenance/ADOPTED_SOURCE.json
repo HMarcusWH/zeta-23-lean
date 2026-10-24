@@ -1,0 +1,72 @@
+{
+  "base": "9b6a9a3a2badb4cff62a56c1158d9cef8759d30d",
+  "guarded": true,
+  "files": [
+    {
+      "path": "Zeta23/OPICAFollowup/AuxiliaryCompletions.lean",
+      "base_sha256": "34b87ef216e20efdafc8fe1d52b4c02956aca923e6d37611c67afd736f4144cd",
+      "current_sha256": "4dd849389b193ec3fbdbe718c30d62c7212b2d9e4b369437640d8b81804746dd",
+      "bytes": 77619
+    },
+    {
+      "path": "Zeta23/OPICAFollowup/ComplexLocalMeasures.lean",
+      "base_sha256": "f0ad4f676760d83099b5e2df839955030ec927cba6797eb95af37159633c4706",
+      "current_sha256": "43d96d5474819b79c29853a81f8b4398f16d298470c2100fdade3fcada3a25b8",
+      "bytes": 66114
+    },
+    {
+      "path": "Zeta23/OPICAFollowup/Consumers.lean",
+      "base_sha256": null,
+      "current_sha256": "d5e0df823e358f4b273313150f2b06ccbd4a1eb049a628087d6e34f061001324",
+      "bytes": 9223
+    },
+    {
+      "path": "Zeta23/OPICAFollowup/DilatedComb.lean",
+      "base_sha256": null,
+      "current_sha256": "3eb6177419b40cf9ffb0fe8c428f2f924cb560c5a87fd4db039e288b63aef3bf",
+      "bytes": 10157
+    },
+    {
+      "path": "Zeta23/OPICAFollowup/FirstCellCost.lean",
+      "base_sha256": null,
+      "current_sha256": "f33cb041e817a158bc2c2d8720ab933d0ea3d73f1b86e734e220eb6d2f5e06e6",
+      "bytes": 14787
+    },
+    {
+      "path": "Zeta23/OPICAFollowup/MaskedNativeRate.lean",
+      "base_sha256": "44aea4525c8d1029ec5e59f2ae67c9d8c49fc87efc2ca28754d1a630c67f5359",
+      "current_sha256": "3fcb70e2fa504b5ef14d44c5a9d862f9bac4c8853556ed6e64a6f7e1066545c4",
+      "bytes": 40510
+    },
+    {
+      "path": "Zeta23/OPICAFollowup/MultiplicityTail.lean",
+      "base_sha256": null,
+      "current_sha256": "5cd8bc952f6a1dcc7894d49b3113569e1d828491149ebdd672cf9d0b8a218780",
+      "bytes": 16010
+    },
+    {
+      "path": "Zeta23/OPICAFollowup/RenormalizedCoPoisson.lean",
+      "base_sha256": null,
+      "current_sha256": "219bb69956bf69f3a517da69eac72e04cd5aab33e350b10d701e0eec58b8bfad",
+      "bytes": 17680
+    },
+    {
+      "path": "research/RHRC/integration/opica/tests/test_contract.py",
+      "base_sha256": "267d5e11d7574d98d9137fb58dc79672503553686bc5f4695f84f1adf42358ad",
+      "current_sha256": "4d7523ff61b728fb575a955ce8fd52cb2b038439a03927c4762e3ad923e3cebf",
+      "bytes": 27204
+    },
+    {
+      "path": "research/RHRC/integration/opica/validate_contract.py",
+      "base_sha256": "bff086d1b6a6a189a56e04e66cb1ef7a35de383293165d150bc5a627fb89a9ce",
+      "current_sha256": "cb46e19672a54db2d133be5aa3e0619b4aa194ee42535d04d763687d8740412b",
+      "bytes": 41000
+    },
+    {
+      "path": "research/RHRC/integration/opica_followup/build_receipt.py",
+      "base_sha256": "00451b54e36053210c66889875a2fce6f2d38e59512ba5cd1ea957ab2a6ce6f7",
+      "current_sha256": "2d531a4e5ce5ff3c34bea01a57632e8f71b268033a067b9c7a0c9928fa275c22",
+      "bytes": 26038
+    }
+  ]
+}

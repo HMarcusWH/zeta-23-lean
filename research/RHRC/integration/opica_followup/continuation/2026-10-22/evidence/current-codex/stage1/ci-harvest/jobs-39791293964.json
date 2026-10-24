@@ -1,0 +1,278 @@
+{
+  "total_count": 5,
+  "jobs": [
+    {
+      "id": 119867721371,
+      "run_id": 39791293964,
+      "workflow_name": "RHRC OPICA full paper components",
+      "head_branch": "research/opica-native-followup",
+      "run_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/runs/39791293964",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOT94UfM8AAAAb6KxGmw",
+      "head_sha": "9ccea78eb5ee0c097bde05424e43de58a589b713",
+      "url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/jobs/119867721371",
+      "html_url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39791293964/job/119867721371",
+      "status": "completed",
+      "conclusion": "failure",
+      "created_at": "2026-10-22T13:56:03Z",
+      "started_at": "2026-10-22T14:03:00Z",
+      "completed_at": "2026-10-22T14:03:34Z",
+      "name": "opica-contract",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-22T14:03:01Z",
+          "completed_at": "2026-10-22T14:03:02Z"
+        },
+        {
+          "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-22T14:03:02Z",
+          "completed_at": "2026-10-22T14:03:26Z"
+        },
+        {
+          "name": "Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-22T14:03:26Z",
+          "completed_at": "2026-10-22T14:03:26Z"
+        },
+        {
+          "name": "Check full source contract and protected baseline",
+          "status": "completed",
+          "conclusion": "failure",
+          "number": 4,
+          "started_at": "2026-10-22T14:03:26Z",
+          "completed_at": "2026-10-22T14:03:30Z"
+        },
+        {
+          "name": "Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-22T14:03:30Z",
+          "completed_at": "2026-10-22T14:03:31Z"
+        },
+        {
+          "name": "Post Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 9,
+          "started_at": "2026-10-22T14:03:31Z",
+          "completed_at": "2026-10-22T14:03:31Z"
+        },
+        {
+          "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-10-22T14:03:31Z",
+          "completed_at": "2026-10-22T14:03:31Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11,
+          "started_at": "2026-10-22T14:03:31Z",
+          "completed_at": "2026-10-22T14:03:32Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/check-runs/119867721371",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 1000117186,
+      "runner_name": "GitHub Actions 1000117186",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    },
+    {
+      "id": 119867721951,
+      "run_id": 39791293964,
+      "workflow_name": "RHRC OPICA full paper components",
+      "head_branch": "research/opica-native-followup",
+      "run_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/runs/39791293964",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOT94UfM8AAAAb6KxI3w",
+      "head_sha": "9ccea78eb5ee0c097bde05424e43de58a589b713",
+      "url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/jobs/119867721951",
+      "html_url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39791293964/job/119867721951",
+      "status": "completed",
+      "conclusion": "failure",
+      "created_at": "2026-10-22T13:56:03Z",
+      "started_at": "2026-10-22T14:29:12Z",
+      "completed_at": "2026-10-22T14:29:44Z",
+      "name": "opica-regression",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-22T14:29:12Z",
+          "completed_at": "2026-10-22T14:29:13Z"
+        },
+        {
+          "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-22T14:29:13Z",
+          "completed_at": "2026-10-22T14:29:30Z"
+        },
+        {
+          "name": "Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-22T14:29:30Z",
+          "completed_at": "2026-10-22T14:29:31Z"
+        },
+        {
+          "name": "Reproduce all 5112 exact finite controls in both Python modes",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-22T14:29:31Z",
+          "completed_at": "2026-10-22T14:29:35Z"
+        },
+        {
+          "name": "Exercise fail-closed evidence and authority mutations in both modes",
+          "status": "completed",
+          "conclusion": "failure",
+          "number": 5,
+          "started_at": "2026-10-22T14:29:35Z",
+          "completed_at": "2026-10-22T14:29:40Z"
+        },
+        {
+          "name": "Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-10-22T14:29:40Z",
+          "completed_at": "2026-10-22T14:29:41Z"
+        },
+        {
+          "name": "Post Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 11,
+          "started_at": "2026-10-22T14:29:41Z",
+          "completed_at": "2026-10-22T14:29:41Z"
+        },
+        {
+          "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12,
+          "started_at": "2026-10-22T14:29:41Z",
+          "completed_at": "2026-10-22T14:29:41Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13,
+          "started_at": "2026-10-22T14:29:41Z",
+          "completed_at": "2026-10-22T14:29:41Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/check-runs/119867721951",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 1000117269,
+      "runner_name": "GitHub Actions 1000117269",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    },
+    {
+      "id": 119872596015,
+      "run_id": 39791293964,
+      "workflow_name": "RHRC OPICA full paper components",
+      "head_branch": "research/opica-native-followup",
+      "run_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/runs/39791293964",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOT94UfM8AAAAb6PaoLw",
+      "head_sha": "9ccea78eb5ee0c097bde05424e43de58a589b713",
+      "url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/jobs/119872596015",
+      "html_url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39791293964/job/119872596015",
+      "status": "completed",
+      "conclusion": "skipped",
+      "created_at": "2026-10-22T14:05:47Z",
+      "started_at": "2026-10-22T14:05:47Z",
+      "completed_at": "2026-10-22T14:03:34Z",
+      "name": "opica-formal",
+      "steps": [],
+      "check_run_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/check-runs/119872596015",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": null,
+      "runner_name": null,
+      "runner_group_id": null,
+      "runner_group_name": null
+    },
+    {
+      "id": 119872916781,
+      "run_id": 39791293964,
+      "workflow_name": "RHRC OPICA full paper components",
+      "head_branch": "research/opica-native-followup",
+      "run_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/runs/39791293964",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOT94UfM8AAAAb6PuNLQ",
+      "head_sha": "9ccea78eb5ee0c097bde05424e43de58a589b713",
+      "url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/jobs/119872916781",
+      "html_url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39791293964/job/119872916781",
+      "status": "completed",
+      "conclusion": "skipped",
+      "created_at": "2026-10-22T14:06:27Z",
+      "started_at": "2026-10-22T14:06:27Z",
+      "completed_at": "2026-10-22T14:03:34Z",
+      "name": "opica-dependency-delta",
+      "steps": [],
+      "check_run_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/check-runs/119872916781",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": null,
+      "runner_name": null,
+      "runner_group_id": null,
+      "runner_group_name": null
+    },
+    {
+      "id": 119883708062,
+      "run_id": 39791293964,
+      "workflow_name": "RHRC OPICA full paper components",
+      "head_branch": "research/opica-native-followup",
+      "run_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/runs/39791293964",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOT94UfM8AAAAb6aA2ng",
+      "head_sha": "9ccea78eb5ee0c097bde05424e43de58a589b713",
+      "url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/jobs/119883708062",
+      "html_url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39791293964/job/119883708062",
+      "status": "queued",
+      "conclusion": null,
+      "created_at": "2026-10-22T14:29:44Z",
+      "started_at": "2026-10-22T14:29:44Z",
+      "completed_at": null,
+      "name": "opica-component-summary",
+      "steps": [],
+      "check_run_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/check-runs/119883708062",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 0,
+      "runner_name": "",
+      "runner_group_id": 0,
+      "runner_group_name": ""
+    }
+  ]
+}

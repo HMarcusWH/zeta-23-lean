@@ -1,0 +1,6 @@
+'Zeta23.OPICAFollowup.log_slack_both_low_masks_subexp' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.OPICAFollowup.log_slack_masked_energy_rate_difference' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.nativeWindowVector_norm_sq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.OPICAFollowup.nativeTypeIWindowVector_tendsto_zero' depends on axioms: [propext, Classical.choice, Quot.sound]

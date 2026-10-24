@@ -1,0 +1,412 @@
+[
+  {
+    "schema_version": "POST200_FB05_Q14_DISCREPANCY_CHANNEL_JET_CHECK_v1",
+    "status": "PASS",
+    "paired_channels": [
+      "pole_prime_discrepancy",
+      "direct_arch_signed"
+    ],
+    "points": [
+      {
+        "label": "Q13_midpoint",
+        "Q": 13,
+        "L": {
+          "ball": "[2.60200334353839767528803615323 +/- 3.34e-30]",
+          "lower": "2.60200334353839767528803615323",
+          "upper": "2.60200334353839767528803615323",
+          "contains_zero": false,
+          "rel_accuracy_bits": 189
+        },
+        "paired_reconstruction": {
+          "matrix_overlap": true,
+          "matrix_prime_overlap": true,
+          "matrix_second_overlap": true
+        },
+        "paired_channel_second_derivative_checks": {
+          "pole_prime_discrepancy": {
+            "first_derivative_difference_ladder": [
+              {
+                "h_bit": 14,
+                "from_first_ok": true
+              },
+              {
+                "h_bit": 18,
+                "from_first_ok": true
+              },
+              {
+                "h_bit": 22,
+                "from_first_ok": true
+              }
+            ],
+            "value_second_difference_final_ok": true
+          },
+          "direct_arch_signed": {
+            "first_derivative_difference_ladder": [
+              {
+                "h_bit": 14,
+                "from_first_ok": true
+              },
+              {
+                "h_bit": 18,
+                "from_first_ok": true
+              },
+              {
+                "h_bit": 22,
+                "from_first_ok": true
+              }
+            ],
+            "value_second_difference_final_ok": true
+          }
+        }
+      },
+      {
+        "label": "Q14_determinant_basin",
+        "Q": 14,
+        "L": {
+          "ball": "[2.66714845418588520311105268755 +/- 3.58e-30]",
+          "lower": "2.66714845418588520311105268755",
+          "upper": "2.66714845418588520311105268755",
+          "contains_zero": false,
+          "rel_accuracy_bits": 189
+        },
+        "paired_reconstruction": {
+          "matrix_overlap": true,
+          "matrix_prime_overlap": true,
+          "matrix_second_overlap": true
+        },
+        "paired_channel_second_derivative_checks": {
+          "pole_prime_discrepancy": {
+            "first_derivative_difference_ladder": [
+              {
+                "h_bit": 14,
+                "from_first_ok": true
+              },
+              {
+                "h_bit": 18,
+                "from_first_ok": true
+              },
+              {
+                "h_bit": 22,
+                "from_first_ok": true
+              }
+            ],
+            "value_second_difference_final_ok": true
+          },
+          "direct_arch_signed": {
+            "first_derivative_difference_ladder": [
+              {
+                "h_bit": 14,
+                "from_first_ok": true
+              },
+              {
+                "h_bit": 18,
+                "from_first_ok": true
+              },
+              {
+                "h_bit": 22,
+                "from_first_ok": true
+              }
+            ],
+            "value_second_difference_final_ok": true
+          }
+        }
+      },
+      {
+        "label": "Q15_midpoint",
+        "Q": 15,
+        "L": {
+          "ball": "[2.74031946167099565183246652799 +/- 7.10e-31]",
+          "lower": "2.74031946167099565183246652799",
+          "upper": "2.74031946167099565183246652799",
+          "contains_zero": false,
+          "rel_accuracy_bits": 189
+        },
+        "paired_reconstruction": {
+          "matrix_overlap": true,
+          "matrix_prime_overlap": true,
+          "matrix_second_overlap": true
+        },
+        "paired_channel_second_derivative_checks": {
+          "pole_prime_discrepancy": {
+            "first_derivative_difference_ladder": [
+              {
+                "h_bit": 14,
+                "from_first_ok": true
+              },
+              {
+                "h_bit": 18,
+                "from_first_ok": true
+              },
+              {
+                "h_bit": 22,
+                "from_first_ok": true
+              }
+            ],
+            "value_second_difference_final_ok": true
+          },
+          "direct_arch_signed": {
+            "first_derivative_difference_ladder": [
+              {
+                "h_bit": 14,
+                "from_first_ok": true
+              },
+              {
+                "h_bit": 18,
+                "from_first_ok": true
+              },
+              {
+                "h_bit": 22,
+                "from_first_ok": true
+              }
+            ],
+            "value_second_difference_final_ok": true
+          }
+        }
+      }
+    ],
+    "checks": {
+      "pairing_occurs_at_matrix_jet_level": true,
+      "paired_M_Mprime_Msecond_reconstruction_required": true,
+      "paired_second_matches_first_derivative_differences": true,
+      "paired_second_matches_value_second_differences": true
+    },
+    "theorem_promotion": false,
+    "rh_claim": false
+  },
+  {
+    "status": "PASS",
+    "base_main_sha": "759c2146a74b8374ec80a97fa2ae4e4e51ab54c0",
+    "research_authority_pr": 199,
+    "routing_sync_pr": 200,
+    "precision_bits": 384,
+    "paired_channels": [
+      "pole_prime_discrepancy",
+      "direct_arch_signed"
+    ],
+    "primary_hull": {
+      "Q": 14,
+      "lo_num": 114296060900476,
+      "hi_num": 114914536191100,
+      "den": 281474976710656
+    },
+    "control_blind_mechanism_selection_required": true,
+    "theorem_promotion": false,
+    "rh_claim": false
+  },
+  {
+    "schema_version": "POST202_FB05_Q14_PARITY_CONTRAST_JET_CHECK_v1",
+    "status": "PASS",
+    "contrast_metadata": {
+      "dimension": 7,
+      "symmetric": true,
+      "trace_zero": true,
+      "nonzero": true,
+      "noninteger_entry_count": 25,
+      "exact_rational_conversion_required": true,
+      "even_norm_sq": 70,
+      "odd_norm_sq": 10
+    },
+    "points": [
+      {
+        "label": "Q13_midpoint",
+        "Q": 13,
+        "L": {
+          "ball": "[2.60200334353839767528803615323 +/- 3.34e-30]",
+          "lower": "2.60200334353839767528803615323",
+          "upper": "2.60200334353839767528803615323",
+          "contains_zero": false,
+          "rel_accuracy_bits": 189
+        },
+        "contrast_checks": {
+          "G_direct_overlap": true,
+          "G_prime_direct_overlap": true,
+          "G_second_direct_overlap": true,
+          "contrast_trace_zero": true,
+          "exact_rational_contrast_conversion": true,
+          "scalar_removed_before_contraction": true
+        },
+        "independent_level_reconstruction": {
+          "G_matches_independent_O_minus_E": true,
+          "G_prime_matches_independent_O_prime_minus_E_prime": true,
+          "G_second_matches_independent_O_second_minus_E_second": true
+        },
+        "finite_difference_ladder": [
+          {
+            "h_bit": 14,
+            "G_prime_from_value_ok": true,
+            "G_second_from_first_ok": true
+          },
+          {
+            "h_bit": 18,
+            "G_prime_from_value_ok": true,
+            "G_second_from_first_ok": true
+          },
+          {
+            "h_bit": 22,
+            "G_prime_from_value_ok": true,
+            "G_second_from_first_ok": true
+          }
+        ],
+        "G_second_from_value_ok": true
+      },
+      {
+        "label": "Q14_determinant_basin",
+        "Q": 14,
+        "L": {
+          "ball": "[2.66714845418588520311105268755 +/- 3.58e-30]",
+          "lower": "2.66714845418588520311105268755",
+          "upper": "2.66714845418588520311105268755",
+          "contains_zero": false,
+          "rel_accuracy_bits": 189
+        },
+        "contrast_checks": {
+          "G_direct_overlap": true,
+          "G_prime_direct_overlap": true,
+          "G_second_direct_overlap": true,
+          "contrast_trace_zero": true,
+          "exact_rational_contrast_conversion": true,
+          "scalar_removed_before_contraction": true
+        },
+        "independent_level_reconstruction": {
+          "G_matches_independent_O_minus_E": true,
+          "G_prime_matches_independent_O_prime_minus_E_prime": true,
+          "G_second_matches_independent_O_second_minus_E_second": true
+        },
+        "finite_difference_ladder": [
+          {
+            "h_bit": 14,
+            "G_prime_from_value_ok": true,
+            "G_second_from_first_ok": true
+          },
+          {
+            "h_bit": 18,
+            "G_prime_from_value_ok": true,
+            "G_second_from_first_ok": true
+          },
+          {
+            "h_bit": 22,
+            "G_prime_from_value_ok": true,
+            "G_second_from_first_ok": true
+          }
+        ],
+        "G_second_from_value_ok": true
+      },
+      {
+        "label": "Q15_midpoint",
+        "Q": 15,
+        "L": {
+          "ball": "[2.74031946167099565183246652799 +/- 7.10e-31]",
+          "lower": "2.74031946167099565183246652799",
+          "upper": "2.74031946167099565183246652799",
+          "contains_zero": false,
+          "rel_accuracy_bits": 189
+        },
+        "contrast_checks": {
+          "G_direct_overlap": true,
+          "G_prime_direct_overlap": true,
+          "G_second_direct_overlap": true,
+          "contrast_trace_zero": true,
+          "exact_rational_contrast_conversion": true,
+          "scalar_removed_before_contraction": true
+        },
+        "independent_level_reconstruction": {
+          "G_matches_independent_O_minus_E": true,
+          "G_prime_matches_independent_O_prime_minus_E_prime": true,
+          "G_second_matches_independent_O_second_minus_E_second": true
+        },
+        "finite_difference_ladder": [
+          {
+            "h_bit": 14,
+            "G_prime_from_value_ok": true,
+            "G_second_from_first_ok": true
+          },
+          {
+            "h_bit": 18,
+            "G_prime_from_value_ok": true,
+            "G_second_from_first_ok": true
+          },
+          {
+            "h_bit": 22,
+            "G_prime_from_value_ok": true,
+            "G_second_from_first_ok": true
+          }
+        ],
+        "G_second_from_value_ok": true
+      }
+    ],
+    "checks": {
+      "theorem_aligned_w_correction_removal": true,
+      "scalar_identity_annihilated_before_transport": true,
+      "exact_rational_contrast_conversion_required": true,
+      "independent_normalized_O_minus_E_reconstruction_required": true,
+      "direct_total_reconstruction_required": true,
+      "G_prime_matches_value_differences": true,
+      "G_second_matches_first_derivative_differences": true,
+      "G_second_matches_value_second_differences": true
+    },
+    "theorem_promotion": false,
+    "rh_claim": false
+  },
+  {
+    "status": "PASS",
+    "base_main_sha": "cd556456c661c797c3602f90c1f54e24add08acd",
+    "research_authority_pr": 201,
+    "routing_sync_pr": 202,
+    "precision_bits": 384,
+    "center_kill_switch_pattern": {
+      "E": "STRICT_POSITIVE",
+      "G": "STRICT_POSITIVE",
+      "G_prime": "NONNEGATIVE",
+      "E_prime": "NONPOSITIVE"
+    },
+    "primary_hull": {
+      "Q": 14,
+      "lo_num": 114296060900476,
+      "hi_num": 114914536191100,
+      "den": 281474976710656
+    },
+    "full_composite_only_classifier_required": true,
+    "exact_rational_contrast_conversion_required": true,
+    "independent_normalized_O_minus_E_reconstruction_required": true,
+    "theorem_promotion": false,
+    "rh_claim": false
+  },
+  {
+    "status": "PASS",
+    "primary_hull": {
+      "Q": 14,
+      "lo_num": 114296060900476,
+      "hi_num": 114914536191100,
+      "den": 281474976710656
+    },
+    "primary_box_count": 6,
+    "control_box_count": 5,
+    "center_kill_switch_pattern": {
+      "E": "STRICT_POSITIVE",
+      "G": "STRICT_POSITIVE",
+      "G_prime": "NONNEGATIVE",
+      "E_prime": "NONPOSITIVE"
+    },
+    "precision_bits": 384,
+    "center_gate_before_full_cover_required": true
+  },
+  {
+    "status": "PASS",
+    "post197_classification": "GLOBAL_MONOTONE_ORIENTATION",
+    "post197_uniform_orientation": "J_POSITIVE",
+    "post201_mechanism_classification": "DISCREPANCY_REPRESENTATION_DEPENDENCY_UNRESOLVED",
+    "center_kill_switch_survives": false,
+    "full_cover_executed": false,
+    "completed_leaf_count": 0,
+    "gap_positive_leaf_count": null,
+    "gap_unresolved_leaf_count": null,
+    "pattern_lock_leaf_count": null,
+    "cooperative_lock_leaf_count": null,
+    "mechanism_classification": "COMPOSITE_PARITY_GAP_PATTERN_FALSIFIED",
+    "control_transfer_status": "PATTERN_FALSIFIED_BEFORE_FULL_COVER",
+    "theorem_promotion": false,
+    "fb05_closed": false,
+    "negative_root_exclusion": false,
+    "rh_claim": false
+  }
+]

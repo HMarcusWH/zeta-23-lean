@@ -1,0 +1,958 @@
+﻿2026-10-22T13:39:43.3244102Z Current runner version: '2.338.0'
+2026-10-22T13:39:43.3320826Z ##[group]Runner Image Provisioner
+2026-10-22T13:39:43.3322424Z Hosted Compute Agent
+2026-10-22T13:39:43.3323800Z Version: 20261012.601
+2026-10-22T13:39:43.3324977Z Commit: f3dc54e1fb89da6852db922499a0233137369e1d
+2026-10-22T13:39:43.3326412Z Build Date: 2026-10-12T17:48:21Z
+2026-10-22T13:39:43.3327761Z Worker ID: {470c6518-07a8-4375-b57f-44b97358fb58}
+2026-10-22T13:39:43.3329169Z Region: eastus
+2026-10-22T13:39:43.3330113Z Cloud: Azure
+2026-10-22T13:39:43.3331188Z ##[endgroup]
+2026-10-22T13:39:43.3334119Z ##[group]Operating System
+2026-10-22T13:39:43.3335473Z Ubuntu
+2026-10-22T13:39:43.3336504Z 26.04.1
+2026-10-22T13:39:43.3337558Z LTS
+2026-10-22T13:39:43.3338461Z ##[endgroup]
+2026-10-22T13:39:43.3339478Z ##[group]Runner Image
+2026-10-22T13:39:43.3340595Z Image: ubuntu-26.04
+2026-10-22T13:39:43.3341575Z Version: 20261012.163.1
+2026-10-22T13:39:43.3344202Z Included Software: https://github.com/actions/runner-images/blob/ubuntu26/20261012.163/images/ubuntu/Ubuntu2604-Readme.md
+2026-10-22T13:39:43.3347095Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu26%2F20261012.163
+2026-10-22T13:39:43.3348936Z ##[endgroup]
+2026-10-22T13:39:43.3351171Z ##[group]GITHUB_TOKEN Permissions
+2026-10-22T13:39:43.3354817Z Contents: read
+2026-10-22T13:39:43.3355873Z Metadata: read
+2026-10-22T13:39:43.3357078Z Packages: read
+2026-10-22T13:39:43.3358079Z ##[endgroup]
+2026-10-22T13:39:43.3361357Z Secret source: Actions
+2026-10-22T13:39:43.3363578Z Cache mode: write
+2026-10-22T13:39:43.3365525Z Prepare workflow directory
+2026-10-22T13:39:43.3894066Z Prepare all required actions
+2026-10-22T13:39:43.3945207Z Getting action download info
+2026-10-22T13:39:43.5752414Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-10-22T13:39:43.6797680Z Download action repository 'actions/setup-python@v5' (SHA:a26af69be951a213d495a4c3e4e4022e16d87065)
+2026-10-22T13:39:43.8469837Z Complete job name: python-rhrc
+2026-10-22T13:39:43.9388257Z ##[group]Run actions/checkout@v4
+2026-10-22T13:39:43.9389168Z with:
+2026-10-22T13:39:43.9389599Z   fetch-depth: 0
+2026-10-22T13:39:43.9390074Z   repository: HMarcusWH/zeta-23-lean
+2026-10-22T13:39:43.9394439Z   token: ***
+2026-10-22T13:39:43.9394884Z   ssh-strict: true
+2026-10-22T13:39:43.9395326Z   ssh-user: git
+2026-10-22T13:39:43.9395779Z   persist-credentials: true
+2026-10-22T13:39:43.9396277Z   clean: true
+2026-10-22T13:39:43.9396729Z   sparse-checkout-cone-mode: true
+2026-10-22T13:39:43.9397258Z   fetch-tags: false
+2026-10-22T13:39:43.9397708Z   show-progress: true
+2026-10-22T13:39:43.9398147Z   lfs: false
+2026-10-22T13:39:43.9398563Z   submodules: false
+2026-10-22T13:39:43.9399015Z   set-safe-directory: true
+2026-10-22T13:39:43.9399517Z   allow-unsafe-pr-checkout: false
+2026-10-22T13:39:43.9400308Z ##[endgroup]
+2026-10-22T13:39:44.0481535Z Syncing repository: HMarcusWH/zeta-23-lean
+2026-10-22T13:39:44.0484502Z ##[group]Getting Git version info
+2026-10-22T13:39:44.0485802Z Working directory is '/home/runner/work/zeta-23-lean/zeta-23-lean'
+2026-10-22T13:39:44.0487518Z [command]/usr/bin/git version
+2026-10-22T13:39:44.0498026Z git version 2.55.0
+2026-10-22T13:39:44.0519876Z ##[endgroup]
+2026-10-22T13:39:44.0536302Z Temporarily overriding HOME='/home/runner/work/_temp/b3e77dfa-863c-4f57-914a-b3abc4eb9ad4' before making global git config changes
+2026-10-22T13:39:44.0538800Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-22T13:39:44.0541733Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/zeta-23-lean/zeta-23-lean
+2026-10-22T13:39:44.0606288Z Deleting the contents of '/home/runner/work/zeta-23-lean/zeta-23-lean'
+2026-10-22T13:39:44.0609441Z ##[group]Initializing the repository
+2026-10-22T13:39:44.0615286Z [command]/usr/bin/git init /home/runner/work/zeta-23-lean/zeta-23-lean
+2026-10-22T13:39:44.0739416Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-10-22T13:39:44.0763200Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-10-22T13:39:44.0765350Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-10-22T13:39:44.0766671Z hint: call:
+2026-10-22T13:39:44.0767361Z hint:
+2026-10-22T13:39:44.0768216Z hint: 	git config --global init.defaultBranch <name>
+2026-10-22T13:39:44.0769227Z hint:
+2026-10-22T13:39:44.0770204Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-10-22T13:39:44.0771828Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-10-22T13:39:44.0773314Z hint:
+2026-10-22T13:39:44.0774010Z hint: 	git branch -m <name>
+2026-10-22T13:39:44.0774800Z hint:
+2026-10-22T13:39:44.0775889Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-10-22T13:39:44.0777658Z Initialized empty Git repository in /home/runner/work/zeta-23-lean/zeta-23-lean/.git/
+2026-10-22T13:39:44.0780619Z [command]/usr/bin/git remote add origin https://github.com/HMarcusWH/zeta-23-lean
+2026-10-22T13:39:44.0808745Z ##[endgroup]
+2026-10-22T13:39:44.0809993Z ##[group]Disabling automatic garbage collection
+2026-10-22T13:39:44.0813453Z [command]/usr/bin/git config --local gc.auto 0
+2026-10-22T13:39:44.0854220Z ##[endgroup]
+2026-10-22T13:39:44.0855607Z ##[group]Setting up auth
+2026-10-22T13:39:44.0863050Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-22T13:39:44.0906228Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-22T13:39:44.1381234Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-22T13:39:44.1428855Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-22T13:39:44.1723914Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-22T13:39:44.1764423Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-22T13:39:44.2049373Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-10-22T13:39:44.2091121Z ##[endgroup]
+2026-10-22T13:39:44.2092081Z ##[group]Fetching the repository
+2026-10-22T13:39:44.2102266Z [command]/usr/bin/git -c protocol.version=2 fetch --prune --no-recurse-submodules origin +refs/heads/*:refs/remotes/origin/* +refs/tags/*:refs/tags/* +2735cbb15830808c5e6294c428f857d31ff09219:refs/remotes/pull/294/merge
+2026-10-22T13:40:04.1077317Z From https://github.com/HMarcusWH/zeta-23-lean
+2026-10-22T13:40:04.1080160Z  * [new branch]        archive/t1-route-g-evidence-20260828     -> origin/archive/t1-route-g-evidence-20260828
+2026-10-22T13:40:04.1083280Z  * [new branch]        audit/post271-cofinal-equivalence        -> origin/audit/post271-cofinal-equivalence
+2026-10-22T13:40:04.1086011Z  * [new branch]        ccm/canonical-carrier-bottom-hierarchy   -> origin/ccm/canonical-carrier-bottom-hierarchy
+2026-10-22T13:40:04.1088804Z  * [new branch]        ccm/canonical-real-negative-shift-transfer -> origin/ccm/canonical-real-negative-shift-transfer
+2026-10-22T13:40:04.1091436Z  * [new branch]        ccm/global-parity-bottom-nflow           -> origin/ccm/global-parity-bottom-nflow
+2026-10-22T13:40:04.1094044Z  * [new branch]        ccm/post229-source-coupling-balance      -> origin/ccm/post229-source-coupling-balance
+2026-10-22T13:40:04.1095614Z  * [new branch]        ccm/prime-weight-endpoint-jets           -> origin/ccm/prime-weight-endpoint-jets
+2026-10-22T13:40:04.1097144Z  * [new branch]        ccm/retained-disk-secular-intersection   -> origin/ccm/retained-disk-secular-intersection
+2026-10-22T13:40:04.1098844Z  * [new branch]        ccm/retained-gamma-obstruction-normal-form -> origin/ccm/retained-gamma-obstruction-normal-form
+2026-10-22T13:40:04.1100953Z  * [new branch]        ccm/retained-real-completed-source       -> origin/ccm/retained-real-completed-source
+2026-10-22T13:40:04.1102521Z  * [new branch]        ccm/retained-real-phase-collapse         -> origin/ccm/retained-real-phase-collapse
+2026-10-22T13:40:04.1104342Z  * [new branch]        ccm/retained-source-gram-disk            -> origin/ccm/retained-source-gram-disk
+2026-10-22T13:40:04.1105554Z  * [new branch]        ccm/source-kernel-forbidden-quadrant     -> origin/ccm/source-kernel-forbidden-quadrant
+2026-10-22T13:40:04.1106492Z  * [new branch]        chatgpt/r003-r004-formal-ccm             -> origin/chatgpt/r003-r004-formal-ccm
+2026-10-22T13:40:04.1107346Z  * [new branch]        chore/post116-docs-control-hardening     -> origin/chore/post116-docs-control-hardening
+2026-10-22T13:40:04.1108148Z  * [new branch]        chore/post119-ssot-sync                  -> origin/chore/post119-ssot-sync
+2026-10-22T13:40:04.1109184Z  * [new branch]        chore/r003-roadmap-dumbassery-fix        -> origin/chore/r003-roadmap-dumbassery-fix
+2026-10-22T13:40:04.1110522Z  * [new branch]        chore/rhrc-claim-firewall-v2             -> origin/chore/rhrc-claim-firewall-v2
+2026-10-22T13:40:04.1111666Z  * [new branch]        claude/determined-newton-aplncg          -> origin/claude/determined-newton-aplncg
+2026-10-22T13:40:04.1112529Z  * [new branch]        claude/dreamy-mendel-jrjxnc              -> origin/claude/dreamy-mendel-jrjxnc
+2026-10-22T13:40:04.1114177Z  * [new branch]        claude/eloquent-brown-dm8n8s             -> origin/claude/eloquent-brown-dm8n8s
+2026-10-22T13:40:04.1115790Z  * [new branch]        claude/project-thread-d9vpzl             -> origin/claude/project-thread-d9vpzl
+2026-10-22T13:40:04.1116577Z  * [new branch]        claude/project-thread-l0ckju             -> origin/claude/project-thread-l0ckju
+2026-10-22T13:40:04.1117605Z  * [new branch]        claude/relaxed-babbage-uf9fc9            -> origin/claude/relaxed-babbage-uf9fc9
+2026-10-22T13:40:04.1118428Z  * [new branch]        claude/rh-lean-proof-search-z199m5       -> origin/claude/rh-lean-proof-search-z199m5
+2026-10-22T13:40:04.1119170Z  * [new branch]        cleanup/pr42-lint-20260825               -> origin/cleanup/pr42-lint-20260825
+2026-10-22T13:40:04.1119930Z  * [new branch]        closure/run42c-ool-route-architecture    -> origin/closure/run42c-ool-route-architecture
+2026-10-22T13:40:04.1120879Z  * [new branch]        codex/pr292-completion-20261017          -> origin/codex/pr292-completion-20261017
+2026-10-22T13:40:04.1121777Z  * [new branch]        codex/pr42-wip-handover-20260825         -> origin/codex/pr42-wip-handover-20260825
+2026-10-22T13:40:04.1122643Z  * [new branch]        diagnostics/pr292-rhkg-recursion-20261015 -> origin/diagnostics/pr292-rhkg-recursion-20261015
+2026-10-22T13:40:04.1123950Z  * [new branch]        docs/living-research-ledger-plan-20260901 -> origin/docs/living-research-ledger-plan-20260901
+2026-10-22T13:40:04.1124807Z  * [new branch]        docs/post-107-spectral-sync-20260903     -> origin/docs/post-107-spectral-sync-20260903
+2026-10-22T13:40:04.1125609Z  * [new branch]        docs/post-110-control-plane-20260904     -> origin/docs/post-110-control-plane-20260904
+2026-10-22T13:40:04.1126381Z  * [new branch]        docs/post-113-control-plane-sync         -> origin/docs/post-113-control-plane-sync
+2026-10-22T13:40:04.1127089Z  * [new branch]        docs/post-122-state-sync                 -> origin/docs/post-122-state-sync
+2026-10-22T13:40:04.1127750Z  * [new branch]        docs/post-125-sync-e4a3                  -> origin/docs/post-125-sync-e4a3
+2026-10-22T13:40:04.1128511Z  * [new branch]        docs/post-131-source-decomposition-sync  -> origin/docs/post-131-source-decomposition-sync
+2026-10-22T13:40:04.1129343Z  * [new branch]        docs/post-132-kernel-energy-path-sync    -> origin/docs/post-132-kernel-energy-path-sync
+2026-10-22T13:40:04.1130184Z  * [new branch]        docs/post-134-energy-frontier-sync       -> origin/docs/post-134-energy-frontier-sync
+2026-10-22T13:40:04.1131355Z  * [new branch]        docs/post-137-domination-countercertificate-sync -> origin/docs/post-137-domination-countercertificate-sync
+2026-10-22T13:40:04.1132329Z  * [new branch]        docs/post-138-astra-regular-aperture-reroute -> origin/docs/post-138-astra-regular-aperture-reroute
+2026-10-22T13:40:04.1133679Z  * [new branch]        docs/post-140-fixed-cell-sync            -> origin/docs/post-140-fixed-cell-sync
+2026-10-22T13:40:04.1134507Z  * [new branch]        docs/post-142-fixed-cell-regularity-sync -> origin/docs/post-142-fixed-cell-regularity-sync
+2026-10-22T13:40:04.1135344Z  * [new branch]        docs/post-146-aperture-analytic-sync     -> origin/docs/post-146-aperture-analytic-sync
+2026-10-22T13:40:04.1136175Z  * [new branch]        docs/post-96-control-plane-sync-20260902 -> origin/docs/post-96-control-plane-sync-20260902
+2026-10-22T13:40:04.1137046Z  * [new branch]        docs/post-98-control-plane-sync-20260902 -> origin/docs/post-98-control-plane-sync-20260902
+2026-10-22T13:40:04.1137942Z  * [new branch]        docs/post-parity-bad-control-plane-20260903 -> origin/docs/post-parity-bad-control-plane-20260903
+2026-10-22T13:40:04.1138838Z  * [new branch]        docs/post-parity-control-plane-20260903  -> origin/docs/post-parity-control-plane-20260903
+2026-10-22T13:40:04.1139683Z  * [new branch]        docs/post-w0-research-state-20260901     -> origin/docs/post-w0-research-state-20260901
+2026-10-22T13:40:04.1140552Z  * [new branch]        docs/post-w1-zero-side-evenization-20260901 -> origin/docs/post-w1-zero-side-evenization-20260901
+2026-10-22T13:40:04.1141370Z  * [new branch]        docs/post-w2a-w0-plan-20260901           -> origin/docs/post-w2a-w0-plan-20260901
+2026-10-22T13:40:04.1142071Z  * [new branch]        docs/post125-e4a3-sync                   -> origin/docs/post125-e4a3-sync
+2026-10-22T13:40:04.1143086Z  * [new branch]        docs/post129-canonical-source-sync       -> origin/docs/post129-canonical-source-sync
+2026-10-22T13:40:04.1144125Z  * [new branch]        docs/post148-rhrc-sync                   -> origin/docs/post148-rhrc-sync
+2026-10-22T13:40:04.1144912Z  * [new branch]        docs/post150-arithmetic-frontier-sync    -> origin/docs/post150-arithmetic-frontier-sync
+2026-10-22T13:40:04.1145789Z  * [new branch]        docs/post153-certificate-discrepancy-sync -> origin/docs/post153-certificate-discrepancy-sync
+2026-10-22T13:40:04.1146622Z  * [new branch]        docs/post155-riesz-dtransport-sync       -> origin/docs/post155-riesz-dtransport-sync
+2026-10-22T13:40:04.1147400Z  * [new branch]        docs/post157-production-riesz-sync       -> origin/docs/post157-production-riesz-sync
+2026-10-22T13:40:04.1148195Z  * [new branch]        docs/post159-riesz-cross-parity-sync     -> origin/docs/post159-riesz-cross-parity-sync
+2026-10-22T13:40:04.1149068Z  * [new branch]        docs/post161-same-state-riesz-source-sync -> origin/docs/post161-same-state-riesz-source-sync
+2026-10-22T13:40:04.1150000Z  * [new branch]        docs/post163-mixed-source-riesz-arithmetic-sync -> origin/docs/post163-mixed-source-riesz-arithmetic-sync
+2026-10-22T13:40:04.1150927Z  * [new branch]        docs/post168-fb05-threshold-pivot-sync   -> origin/docs/post168-fb05-threshold-pivot-sync
+2026-10-22T13:40:04.1151798Z  * [new branch]        docs/post170-schur-visibility-barrier-sync -> origin/docs/post170-schur-visibility-barrier-sync
+2026-10-22T13:40:04.1152647Z  * [new branch]        docs/post172-q13-scalar-barrier-sync     -> origin/docs/post172-q13-scalar-barrier-sync
+2026-10-22T13:40:04.1153631Z  * [new branch]        docs/post174-q13-scalar-method-sync      -> origin/docs/post174-q13-scalar-method-sync
+2026-10-22T13:40:04.1154421Z  * [new branch]        docs/post176-fixed-unit-method-sync      -> origin/docs/post176-fixed-unit-method-sync
+2026-10-22T13:40:04.1155234Z  * [new branch]        docs/post178-derivative-unresolved-sync  -> origin/docs/post178-derivative-unresolved-sync
+2026-10-22T13:40:04.1156091Z  * [new branch]        docs/post180-q14-centered-taylor-frontier -> origin/docs/post180-q14-centered-taylor-frontier
+2026-10-22T13:40:04.1157211Z  * [new branch]        docs/post182-schur-contact-orientation-frontier -> origin/docs/post182-schur-contact-orientation-frontier
+2026-10-22T13:40:04.1158220Z  * [new branch]        docs/post184-hermitian-log-drift-remainder-frontier -> origin/docs/post184-hermitian-log-drift-remainder-frontier
+2026-10-22T13:40:04.1159223Z  * [new branch]        docs/post186-remainder-drift-falsification-sync -> origin/docs/post186-remainder-drift-falsification-sync
+2026-10-22T13:40:04.1160116Z  * [new branch]        docs/post190-selector-separability-sync  -> origin/docs/post190-selector-separability-sync
+2026-10-22T13:40:04.1160934Z  * [new branch]        docs/post193-parity-trajectory-sync      -> origin/docs/post193-parity-trajectory-sync
+2026-10-22T13:40:04.1161715Z  * [new branch]        docs/post195-parity-trajectory-sync      -> origin/docs/post195-parity-trajectory-sync
+2026-10-22T13:40:04.1162653Z  * [new branch]        docs/post197-q14-global-monotone-orientation-sync -> origin/docs/post197-q14-global-monotone-orientation-sync
+2026-10-22T13:40:04.1163961Z  * [new branch]        docs/post199-source-decomposition-sync   -> origin/docs/post199-source-decomposition-sync
+2026-10-22T13:40:04.1164819Z  * [new branch]        docs/post201-discrepancy-mechanism-sync  -> origin/docs/post201-discrepancy-mechanism-sync
+2026-10-22T13:40:04.1165682Z  * [new branch]        docs/post203-pair-a-falsification-sync   -> origin/docs/post203-pair-a-falsification-sync
+2026-10-22T13:40:04.1166959Z  * [new branch]        docs/post205-pair-d-canonical-arithmetic-sync -> origin/docs/post205-pair-d-canonical-arithmetic-sync
+2026-10-22T13:40:04.1168624Z  * [new branch]        docs/post207-pair-d-source-m4-sync       -> origin/docs/post207-pair-d-source-m4-sync
+2026-10-22T13:40:04.1170098Z  * [new branch]        docs/post209-pair-d-coercivity-sync      -> origin/docs/post209-pair-d-coercivity-sync
+2026-10-22T13:40:04.1171621Z  * [new branch]        docs/post211-complete-functional-sync    -> origin/docs/post211-complete-functional-sync
+2026-10-22T13:40:04.1172559Z  * [new branch]        docs/post213-complete-source-kernel-sync -> origin/docs/post213-complete-source-kernel-sync
+2026-10-22T13:40:04.1174016Z  * [new branch]        docs/post215-current-state-normalization -> origin/docs/post215-current-state-normalization
+2026-10-22T13:40:04.1175553Z  * [new branch]        docs/post215-retained-secular-frontier-sync -> origin/docs/post215-retained-secular-frontier-sync
+2026-10-22T13:40:04.1176469Z  * [new branch]        docs/post224-closure-plan-sync           -> origin/docs/post224-closure-plan-sync
+2026-10-22T13:40:04.1177335Z  * [new branch]        docs/post227-one-coefficient-transfer-sync -> origin/docs/post227-one-coefficient-transfer-sync
+2026-10-22T13:40:04.1178205Z  * [new branch]        docs/post229-riesz-source-coupling-sync  -> origin/docs/post229-riesz-source-coupling-sync
+2026-10-22T13:40:04.1179030Z  * [new branch]        docs/post231-source-balance-sync         -> origin/docs/post231-source-balance-sync
+2026-10-22T13:40:04.1179800Z  * [new branch]        docs/post237-route-reconciliation        -> origin/docs/post237-route-reconciliation
+2026-10-22T13:40:04.1180557Z  * [new branch]        docs/post247-glasses-state-sync          -> origin/docs/post247-glasses-state-sync
+2026-10-22T13:40:04.1181296Z  * [new branch]        docs/post91-end-to-end-20260902          -> origin/docs/post91-end-to-end-20260902
+2026-10-22T13:40:04.1182135Z  * [new branch]        docs/pre-w2zs-authority-cleanup-20260901 -> origin/docs/pre-w2zs-authority-cleanup-20260901
+2026-10-22T13:40:04.1183620Z  * [new branch]        docs/promote-f0b1a-projection-frontier-20260901 -> origin/docs/promote-f0b1a-projection-frontier-20260901
+2026-10-22T13:40:04.1184558Z  * [new branch]        docs/promote-w2zs-f0b-frontier-20260901  -> origin/docs/promote-w2zs-f0b-frontier-20260901
+2026-10-22T13:40:04.1185474Z  * [new branch]        docs/research-fork-documentation-reset-20260831 -> origin/docs/research-fork-documentation-reset-20260831
+2026-10-22T13:40:04.1186594Z  * [new branch]        docs/sync-g1b1a-merged-state-20260831    -> origin/docs/sync-g1b1a-merged-state-20260831
+2026-10-22T13:40:04.1187346Z  * [new branch]        docs/sync-post-100-20260902              -> origin/docs/sync-post-100-20260902
+2026-10-22T13:40:04.1188178Z  * [new branch]        exceptional-zero/offline-whole-cell-provenance -> origin/exceptional-zero/offline-whole-cell-provenance
+2026-10-22T13:40:04.1189057Z  * [new branch]        experiment/rh-terminal-config-attempt    -> origin/experiment/rh-terminal-config-attempt
+2026-10-22T13:40:04.1189889Z  * [new branch]        experiment/rh-terminal-config-post240-v2 -> origin/experiment/rh-terminal-config-post240-v2
+2026-10-22T13:40:04.1190813Z  * [new branch]        feat/f0-b1c-a-localized-fourier-approx-20260901 -> origin/feat/f0-b1c-a-localized-fourier-approx-20260901
+2026-10-22T13:40:04.1191785Z  * [new branch]        feat/f0b1a-boundary-flat-c2-sector-20260901 -> origin/feat/f0b1a-boundary-flat-c2-sector-20260901
+2026-10-22T13:40:04.1192992Z  * [new branch]        feat/f0b1b-boundary-flat-projection-20260901 -> origin/feat/f0b1b-boundary-flat-projection-20260901
+2026-10-22T13:40:04.1193925Z  * [new branch]        feat/first-bad-rigidity-d1               -> origin/feat/first-bad-rigidity-d1
+2026-10-22T13:40:04.1194619Z  * [new branch]        feat/first-bad-rigidity-d2               -> origin/feat/first-bad-rigidity-d2
+2026-10-22T13:40:04.1195298Z  * [new branch]        feat/first-bad-rigidity-e1               -> origin/feat/first-bad-rigidity-e1
+2026-10-22T13:40:04.1288680Z  * [new branch]        feat/first-bad-rigidity-e2               -> origin/feat/first-bad-rigidity-e2
+2026-10-22T13:40:04.1290268Z  * [new branch]        feat/first-bad-rigidity-e3a              -> origin/feat/first-bad-rigidity-e3a
+2026-10-22T13:40:04.1291518Z  * [new branch]        feat/first-bad-rigidity-e3b1-e4a1        -> origin/feat/first-bad-rigidity-e3b1-e4a1
+2026-10-22T13:40:04.1293516Z  * [new branch]        feat/first-bad-rigidity-e3b2             -> origin/feat/first-bad-rigidity-e3b2
+2026-10-22T13:40:04.1294981Z  * [new branch]        feat/first-bad-rigidity-e4a2             -> origin/feat/first-bad-rigidity-e4a2
+2026-10-22T13:40:04.1296434Z  * [new branch]        feat/first-bad-rigidity-e4a2-endpoint    -> origin/feat/first-bad-rigidity-e4a2-endpoint
+2026-10-22T13:40:04.1298309Z  * [new branch]        feat/first-bad-rigidity-e4a3a-shell-response -> origin/feat/first-bad-rigidity-e4a3a-shell-response
+2026-10-22T13:40:04.1300347Z  * [new branch]        feat/first-bad-rigidity-e4a3b-branch-response -> origin/feat/first-bad-rigidity-e4a3b-branch-response
+2026-10-22T13:40:04.1302626Z  * [new branch]        feat/first-bad-rigidity-e4a3c-source-parity-transfer -> origin/feat/first-bad-rigidity-e4a3c-source-parity-transfer
+2026-10-22T13:40:04.1305190Z  * [new branch]        feat/first-bad-rigidity-e4a4a-source-moment-decomposition -> origin/feat/first-bad-rigidity-e4a4a-source-moment-decomposition
+2026-10-22T13:40:04.1307117Z  * [new branch]        feat/rhrc-control-v2                     -> origin/feat/rhrc-control-v2
+2026-10-22T13:40:04.1308707Z  * [new branch]        feat/w0-two-translate-contraction-20260901 -> origin/feat/w0-two-translate-contraction-20260901
+2026-10-22T13:40:04.1310396Z  * [new branch]        feat/w1-strict-aperture-recentering-20260901 -> origin/feat/w1-strict-aperture-recentering-20260901
+2026-10-22T13:40:04.1311755Z  * [new branch]        feat/w2-zero-side-evenization-20260901   -> origin/feat/w2-zero-side-evenization-20260901
+2026-10-22T13:40:04.1312649Z  * [new branch]        feat/w2a-weil-literature-bridge-20260901 -> origin/feat/w2a-weil-literature-bridge-20260901
+2026-10-22T13:40:04.1314102Z  * [new branch]        feat/wcont-a-quantitative-weil-continuity-20260901 -> origin/feat/wcont-a-quantitative-weil-continuity-20260901
+2026-10-22T13:40:04.1315132Z  * [new branch]        first-bad-rigidity/e4-a4b1-absolute-source-energy -> origin/first-bad-rigidity/e4-a4b1-absolute-source-energy
+2026-10-22T13:40:04.1316468Z  * [new branch]        first-bad-rigidity/e4-a4b2a-one-step-determinant -> origin/first-bad-rigidity/e4-a4b2a-one-step-determinant
+2026-10-22T13:40:04.1317400Z  * [new branch]        first-bad-rigidity/e4-a4r0-aperture-freedom -> origin/first-bad-rigidity/e4-a4r0-aperture-freedom
+2026-10-22T13:40:04.1318251Z  * [new branch]        fix/post-pr3-laplace-summability         -> origin/fix/post-pr3-laplace-summability
+2026-10-22T13:40:04.1318919Z  * [new branch]        main                                     -> origin/main
+2026-10-22T13:40:04.1319589Z  * [new branch]        permansson-v016-formal-verification      -> origin/permansson-v016-formal-verification
+2026-10-22T13:40:04.1320481Z  * [new branch]        proof/cross-parity-correction-functional-riesz -> origin/proof/cross-parity-correction-functional-riesz
+2026-10-22T13:40:04.1321380Z  * [new branch]        proof/e4-a4b0-kernel-source-transport    -> origin/proof/e4-a4b0-kernel-source-transport
+2026-10-22T13:40:04.1322239Z  * [new branch]        proof/e4a4-fb01-fb02-pole-prime-discrepancy -> origin/proof/e4a4-fb01-fb02-pole-prime-discrepancy
+2026-10-22T13:40:04.1323431Z  * [new branch]        proof/e4a4-fb01-frozen-intrinsic-analytic -> origin/proof/e4a4-fb01-frozen-intrinsic-analytic
+2026-10-22T13:40:04.1324375Z  * [new branch]        proof/e4a4-fb01-holomorphy               -> origin/proof/e4a4-fb01-holomorphy
+2026-10-22T13:40:04.1325187Z  * [new branch]        proof/e4a4-fb01-parameter-holomorphy     -> origin/proof/e4a4-fb01-parameter-holomorphy
+2026-10-22T13:40:04.1326046Z  * [new branch]        proof/e4a4-fb02-source-holomorphy-rigidity -> origin/proof/e4a4-fb02-source-holomorphy-rigidity
+2026-10-22T13:40:04.1326891Z  * [new branch]        proof/e4a4-fb03-source-energy-riesz      -> origin/proof/e4a4-fb03-source-energy-riesz
+2026-10-22T13:40:04.1327676Z  * [new branch]        proof/e4a4-fb03e-dtransport-riesz        -> origin/proof/e4a4-fb03e-dtransport-riesz
+2026-10-22T13:40:04.1328610Z  * [new branch]        proof/e4a4-fb04a-riesz-boundary          -> origin/proof/e4a4-fb04a-riesz-boundary
+2026-10-22T13:40:04.1329463Z  * [new branch]        proof/e4a4-fb04b-shifted-cross-parity-riesz -> origin/proof/e4a4-fb04b-shifted-cross-parity-riesz
+2026-10-22T13:40:04.1330295Z  * [new branch]        proof/e4a4-fb04c-mixed-source-m4         -> origin/proof/e4a4-fb04c-mixed-source-m4
+2026-10-22T13:40:04.1331107Z  * [new branch]        proof/e4a4-fb05-complete-source-functional -> origin/proof/e4a4-fb05-complete-source-functional
+2026-10-22T13:40:04.1331967Z  * [new branch]        proof/e4a4-fb05-complete-source-kernel   -> origin/proof/e4a4-fb05-complete-source-kernel
+2026-10-22T13:40:04.1333250Z  * [new branch]        proof/e4a4-fb05-hermitian-n2-schur-log-drift -> origin/proof/e4a4-fb05-hermitian-n2-schur-log-drift
+2026-10-22T13:40:04.1334161Z  * [new branch]        proof/e4a4-fb05-pair-d-coercivity        -> origin/proof/e4a4-fb05-pair-d-coercivity
+2026-10-22T13:40:04.1334979Z  * [new branch]        proof/e4a4-fb05-pair-d-source-m4-energy  -> origin/proof/e4a4-fb05-pair-d-source-m4-energy
+2026-10-22T13:40:04.1335859Z  * [new branch]        proof/e4a4-fb05-schur-envelope-derivative -> origin/proof/e4a4-fb05-schur-envelope-derivative
+2026-10-22T13:40:04.1336691Z  * [new branch]        proof/e4a4-scalar-production-bridge      -> origin/proof/e4a4-scalar-production-bridge
+2026-10-22T13:40:04.1337528Z  * [new branch]        proof/fb05-good-kernel-zero-shift-balance -> origin/proof/fb05-good-kernel-zero-shift-balance
+2026-10-22T13:40:04.1338503Z  * [new branch]        proof/fb05-retained-cross-parity-secular-completion -> origin/proof/fb05-retained-cross-parity-secular-completion
+2026-10-22T13:40:04.1339491Z  * [new branch]        proof/fb05-retained-secular-budget-dichotomy -> origin/proof/fb05-retained-secular-budget-dichotomy
+2026-10-22T13:40:04.1340360Z  * [new branch]        proof/generated-family-final-closure     -> origin/proof/generated-family-final-closure
+2026-10-22T13:40:04.1341167Z  * [new branch]        proof/generated-family-final-gate        -> origin/proof/generated-family-final-gate
+2026-10-22T13:40:04.1342312Z  * [new branch]        proof/post220-zero-shift-schur-classification-sync -> origin/proof/post220-zero-shift-schur-classification-sync
+2026-10-22T13:40:04.1343672Z  * [new branch]        proof/post221-biregular-first-bad        -> origin/proof/post221-biregular-first-bad
+2026-10-22T13:40:04.1344570Z  * [new branch]        proof/post223-cross-parity-correction-collapse -> origin/proof/post223-cross-parity-correction-collapse
+2026-10-22T13:40:04.1345538Z  * [new branch]        proof/post225-cross-parity-predecessor-collapse -> origin/proof/post225-cross-parity-predecessor-collapse
+2026-10-22T13:40:04.1346510Z  * [new branch]        proof/post226-one-coefficient-transfer-collapse -> origin/proof/post226-one-coefficient-transfer-collapse
+2026-10-22T13:40:04.1347423Z  * [new branch]        proof/post282-canonical-contact-calculus -> origin/proof/post282-canonical-contact-calculus
+2026-10-22T13:40:04.1348275Z  * [new branch]        proof/r001-filtered-growth-envelope-v1   -> origin/proof/r001-filtered-growth-envelope-v1
+2026-10-22T13:40:04.1349132Z  * [new branch]        proof/r001-filtered-laplace-holomorphy-v1 -> origin/proof/r001-filtered-laplace-holomorphy-v1
+2026-10-22T13:40:04.1350034Z  * [new branch]        proof/r001-filtered-laplace-integrability-v1 -> origin/proof/r001-filtered-laplace-integrability-v1
+2026-10-22T13:40:04.1350919Z  * [new branch]        proof/r001-filtered-laplace-safe-v1      -> origin/proof/r001-filtered-laplace-safe-v1
+2026-10-22T13:40:04.1351745Z  * [new branch]        proof/r001-filtered-pole-principal-part  -> origin/proof/r001-filtered-pole-principal-part
+2026-10-22T13:40:04.1352619Z  * [new branch]        proof/r001-filtered-pole-principal-part-v2 -> origin/proof/r001-filtered-pole-principal-part-v2
+2026-10-22T13:40:04.1353897Z  * [new branch]        proof/r001-filtered-resolvent-integration -> origin/proof/r001-filtered-resolvent-integration
+2026-10-22T13:40:04.1354925Z  * [new branch]        proof/r001-filtered-resolvent-spike      -> origin/proof/r001-filtered-resolvent-spike
+2026-10-22T13:40:04.1355719Z  * [new branch]        proof/r001-filtered-zero-pole            -> origin/proof/r001-filtered-zero-pole
+2026-10-22T13:40:04.1356532Z  * [new branch]        proof/r001-filtered-zero-regularity-v1   -> origin/proof/r001-filtered-zero-regularity-v1
+2026-10-22T13:40:04.1357326Z  * [new branch]        proof/r001-growth-contradiction          -> origin/proof/r001-growth-contradiction
+2026-10-22T13:40:04.1358095Z  * [new branch]        proof/r001-local-resolvent-remainder     -> origin/proof/r001-local-resolvent-remainder
+2026-10-22T13:40:04.1358887Z  * [new branch]        proof/r001-meromorphic-identity-v1       -> origin/proof/r001-meromorphic-identity-v1
+2026-10-22T13:40:04.1359640Z  * [new branch]        proof/r001-pole-killer-fourier           -> origin/proof/r001-pole-killer-fourier
+2026-10-22T13:40:04.1360461Z  * [new branch]        proof/r001-pole-killer-fourier-integration -> origin/proof/r001-pole-killer-fourier-integration
+2026-10-22T13:40:04.1361327Z  * [new branch]        proof/r001-weil-explicit-formula-seam    -> origin/proof/r001-weil-explicit-formula-seam
+2026-10-22T13:40:04.1362073Z  * [new branch]        proof/r001-zero-isolation                -> origin/proof/r001-zero-isolation
+2026-10-22T13:40:04.1363059Z  * [new branch]        proof/r001-zero-isolation-integration    -> origin/proof/r001-zero-isolation-integration
+2026-10-22T13:40:04.1364042Z  * [new branch]        proof/r001-zero-side-integration-v2      -> origin/proof/r001-zero-side-integration-v2
+2026-10-22T13:40:04.1364828Z  * [new branch]        proof/r003-post30-kernel-foundation      -> origin/proof/r003-post30-kernel-foundation
+2026-10-22T13:40:04.1365653Z  * [new branch]        repair/frameworks-v17-ool277-strict-state -> origin/repair/frameworks-v17-ool277-strict-state
+2026-10-22T13:40:04.1366442Z  * [new branch]        repair/opica294-audit-20261022           -> origin/repair/opica294-audit-20261022
+2026-10-22T13:40:04.1367192Z  * [new branch]        repair/post249-scout-semantics           -> origin/repair/post249-scout-semantics
+2026-10-22T13:40:04.1368239Z  * [new branch]        repair/post269-theorem-control-cofinal-arithmetic -> origin/repair/post269-theorem-control-cofinal-arithmetic
+2026-10-22T13:40:04.1369051Z  * [new branch]        repair/pr294-20261022                    -> origin/repair/pr294-20261022
+2026-10-22T13:40:04.1369849Z  * [new branch]        repair/source-normalization-canonical-20260831 -> origin/repair/source-normalization-canonical-20260831
+2026-10-22T13:40:04.1370803Z  * [new branch]        research/close-rh-parity-first-crossing-shell -> origin/research/close-rh-parity-first-crossing-shell
+2026-10-22T13:40:04.1371801Z  * [new branch]        research/constrained-canonical-finite-wall-20260902 -> origin/research/constrained-canonical-finite-wall-20260902
+2026-10-22T13:40:04.1373079Z  * [new branch]        research/constrained-parity-20260902     -> origin/research/constrained-parity-20260902
+2026-10-22T13:40:04.1374065Z  * [new branch]        research/d0b-bombieri-object-audit-20260830 -> origin/research/d0b-bombieri-object-audit-20260830
+2026-10-22T13:40:04.1375007Z  * [new branch]        research/d0c-cutoff-free-matrix-map-20260830 -> origin/research/d0c-cutoff-free-matrix-map-20260830
+2026-10-22T13:40:04.1375891Z  * [new branch]        research/d0r-r002-ccm-map-separate-20260830 -> origin/research/d0r-r002-ccm-map-separate-20260830
+2026-10-22T13:40:04.1376833Z  * [new branch]        research/e4a4-fb04-selected-residual-certification -> origin/research/e4a4-fb04-selected-residual-certification
+2026-10-22T13:40:04.1377740Z  * [new branch]        research/exceptional-zero-rhrc           -> origin/research/exceptional-zero-rhrc
+2026-10-22T13:40:04.1378534Z  * [new branch]        research/exceptional-zero-rhrc-baseline  -> origin/research/exceptional-zero-rhrc-baseline
+2026-10-22T13:40:04.1379367Z  * [new branch]        research/exceptional-zero-rhrc-work      -> origin/research/exceptional-zero-rhrc-work
+2026-10-22T13:40:04.1380447Z  * [new branch]        research/f0-b1c-b-projection-stability-20260902 -> origin/research/f0-b1c-b-projection-stability-20260902
+2026-10-22T13:40:04.1381428Z  * [new branch]        research/f1-finite-negative-obstruction-20260902 -> origin/research/f1-finite-negative-obstruction-20260902
+2026-10-22T13:40:04.1382354Z  * [new branch]        research/fb05-q14-mixed-drift-selector-audit -> origin/research/fb05-q14-mixed-drift-selector-audit
+2026-10-22T13:40:04.1383564Z  * [new branch]        research/fb05-q14-selector-independence-audit -> origin/research/fb05-q14-selector-independence-audit
+2026-10-22T13:40:04.1384476Z  * [new branch]        research/fb05a-endpoint-scalar-audit     -> origin/research/fb05a-endpoint-scalar-audit
+2026-10-22T13:40:04.1385320Z  * [new branch]        research/fb05b-shifted-state-discriminator -> origin/research/fb05b-shifted-state-discriminator
+2026-10-22T13:40:04.1386215Z  * [new branch]        research/fb05c-q16-cell-determinant-barrier -> origin/research/fb05c-q16-cell-determinant-barrier
+2026-10-22T13:40:04.1387081Z  * [new branch]        research/fb05d-q17-threshold-moment-jet  -> origin/research/fb05d-q17-threshold-moment-jet
+2026-10-22T13:40:04.1387916Z  * [new branch]        research/fb05e-schur-threshold-visibility -> origin/research/fb05e-schur-threshold-visibility
+2026-10-22T13:40:04.1388764Z  * [new branch]        research/fb05f-threshold-barrier-dynamics -> origin/research/fb05f-threshold-barrier-dynamics
+2026-10-22T13:40:04.1389597Z  * [new branch]        research/fb05g-q13-even-scalar-barrier   -> origin/research/fb05g-q13-even-scalar-barrier
+2026-10-22T13:40:04.1390404Z  * [new branch]        research/fb05h-q13-fixed-unit-enclosure  -> origin/research/fb05h-q13-fixed-unit-enclosure
+2026-10-22T13:40:04.1391230Z  * [new branch]        research/fb05i-q14-fixed-unit-derivative -> origin/research/fb05i-q14-fixed-unit-derivative
+2026-10-22T13:40:04.1392179Z  * [new branch]        research/fb05j-q14-correlation-preserving-derivative -> origin/research/fb05j-q14-correlation-preserving-derivative
+2026-10-22T13:40:04.1393713Z  * [new branch]        research/fb05k-q14-remainder-drift-decomposition -> origin/research/fb05k-q14-remainder-drift-decomposition
+2026-10-22T13:40:04.1394636Z  * [new branch]        research/final-answer-runner-v152-overlay -> origin/research/final-answer-runner-v152-overlay
+2026-10-22T13:40:04.1395509Z  * [new branch]        research/finite-zero-side-bridge-20260830 -> origin/research/finite-zero-side-bridge-20260830
+2026-10-22T13:40:04.1396341Z  * [new branch]        research/first-bad-rigidity-20260903     -> origin/research/first-bad-rigidity-20260903
+2026-10-22T13:40:04.1397136Z  * [new branch]        research/first-bad-spectrum-20260903     -> origin/research/first-bad-spectrum-20260903
+2026-10-22T13:40:04.1397949Z  * [new branch]        research/fixed-parity-first-bad-20260903 -> origin/research/fixed-parity-first-bad-20260903
+2026-10-22T13:40:04.1398777Z  * [new branch]        research/g0a-localized-basis-20260830    -> origin/research/g0a-localized-basis-20260830
+2026-10-22T13:40:04.1399628Z  * [new branch]        research/g0b-localized-finite-space-20260831 -> origin/research/g0b-localized-finite-space-20260831
+2026-10-22T13:40:04.1400548Z  * [new branch]        research/g1a-additive-weil-restriction-20260831 -> origin/research/g1a-additive-weil-restriction-20260831
+2026-10-22T13:40:04.1401493Z  * [new branch]        research/g1b0-source-qw-normalization-20260831 -> origin/research/g1b0-source-qw-normalization-20260831
+2026-10-22T13:40:04.1402447Z  * [new branch]        research/g1b1a-source-kappa-finite-space-20260831 -> origin/research/g1b1a-source-kappa-finite-space-20260831
+2026-10-22T13:40:04.1403804Z  * [new branch]        research/h2a-codim-one-matrix-completion-20260828 -> origin/research/h2a-codim-one-matrix-completion-20260828
+2026-10-22T13:40:04.1404715Z  * [new branch]        research/h2b-zero-side-matrix-20260828   -> origin/research/h2b-zero-side-matrix-20260828
+2026-10-22T13:40:04.1405742Z  * [new branch]        research/h2plus-tent-defect-collapse-20260829 -> origin/research/h2plus-tent-defect-collapse-20260829
+2026-10-22T13:40:04.1406749Z  * [new branch]        research/k0-f1e-euclidean-constrained-sector-20260902 -> origin/research/k0-f1e-euclidean-constrained-sector-20260902
+2026-10-22T13:40:04.1407662Z  * [new branch]        research/m4-m5-tent-limit-20260829       -> origin/research/m4-m5-tent-limit-20260829
+2026-10-22T13:40:04.1408411Z  * [new branch]        research/m6-tent-arch-dct-20260829       -> origin/research/m6-tent-arch-dct-20260829
+2026-10-22T13:40:04.1409184Z  * [new branch]        research/m7-tent-zero-tannery-20260829   -> origin/research/m7-tent-zero-tannery-20260829
+2026-10-22T13:40:04.1409978Z  * [new branch]        research/m8-tent-ef-assembly-20260830    -> origin/research/m8-tent-ef-assembly-20260830
+2026-10-22T13:40:04.1410797Z  * [new branch]        research/n-flow-centered-nesting-20260902 -> origin/research/n-flow-centered-nesting-20260902
+2026-10-22T13:40:04.1411599Z  * [new branch]        research/opica-native-followup           -> origin/research/opica-native-followup
+2026-10-22T13:40:04.1412410Z  * [new branch]        research/opica-obstruction-preservation  -> origin/research/opica-obstruction-preservation
+2026-10-22T13:40:04.1413680Z  * [new branch]        research/parity-first-bad-geometry-20260903 -> origin/research/parity-first-bad-geometry-20260903
+2026-10-22T13:40:04.1414524Z  * [new branch]        research/parity-rank-one-20260903        -> origin/research/parity-rank-one-20260903
+2026-10-22T13:40:04.1415360Z  * [new branch]        research/post-f1-control-plane-reset-20260902 -> origin/research/post-f1-control-plane-reset-20260902
+2026-10-22T13:40:04.1416318Z  * [new branch]        research/post189-fb05-joint-selector-separability -> origin/research/post189-fb05-joint-selector-separability
+2026-10-22T13:40:04.1417269Z  * [new branch]        research/post190-fb05-canonical-realizability -> origin/research/post190-fb05-canonical-realizability
+2026-10-22T13:40:04.1418254Z  * [new branch]        research/post192-fb05-q14-parity-trajectory-rigidity -> origin/research/post192-fb05-q14-parity-trajectory-rigidity
+2026-10-22T13:40:04.1419512Z  * [new branch]        research/post194-fb05-q14-parity-trajectory-sharp-enclosure -> origin/research/post194-fb05-q14-parity-trajectory-sharp-enclosure
+2026-10-22T13:40:04.1420555Z  * [new branch]        research/post196-fb05-q14-residual-cell-replay -> origin/research/post196-fb05-q14-residual-cell-replay
+2026-10-22T13:40:04.1421503Z  * [new branch]        research/post198-fb05-q14-parity-source-mechanism -> origin/research/post198-fb05-q14-parity-source-mechanism
+2026-10-22T13:40:04.1422465Z  * [new branch]        research/post200-fb05-q14-discrepancy-mechanism -> origin/research/post200-fb05-q14-discrepancy-mechanism
+2026-10-22T13:40:04.1423718Z  * [new branch]        research/post202-fb05-q14-composite-parity-gap -> origin/research/post202-fb05-q14-composite-parity-gap
+2026-10-22T13:40:04.1424719Z  * [new branch]        research/post204-fb05-pair-d-structural-countermodel -> origin/research/post204-fb05-pair-d-structural-countermodel
+2026-10-22T13:40:04.1425669Z  * [new branch]        research/post214-fb05-kernel-dual-geometry -> origin/research/post214-fb05-kernel-dual-geometry
+2026-10-22T13:40:04.1426554Z  * [new branch]        research/post222-biregular-zero-shift-scalar -> origin/research/post222-biregular-zero-shift-scalar
+2026-10-22T13:40:04.1427403Z  * [new branch]        research/post268-audit-proof-and-ci      -> origin/research/post268-audit-proof-and-ci
+2026-10-22T13:40:04.1428191Z  * [new branch]        research/post272-first-contact-atlas     -> origin/research/post272-first-contact-atlas
+2026-10-22T13:40:04.1428961Z  * [new branch]        research/post274-arch-density-a1         -> origin/research/post274-arch-density-a1
+2026-10-22T13:40:04.1429813Z  * [new branch]        research/post275-small-aperture-ground-spectrum -> origin/research/post275-small-aperture-ground-spectrum
+2026-10-22T13:40:04.1430873Z  * [new branch]        research/post276-ground-sign-strength-audit -> origin/research/post276-ground-sign-strength-audit
+2026-10-22T13:40:04.1431801Z  * [new branch]        research/post277-first-contact-closure-attempt -> origin/research/post277-first-contact-closure-attempt
+2026-10-22T13:40:04.1432688Z  * [new branch]        research/post279-lifted-contact-quotient -> origin/research/post279-lifted-contact-quotient
+2026-10-22T13:40:04.1433852Z  * [new branch]        research/post280-production-saturation-frontier -> origin/research/post280-production-saturation-frontier
+2026-10-22T13:40:04.1434797Z  * [new branch]        research/post281-generated-production-contact -> origin/research/post281-generated-production-contact
+2026-10-22T13:40:04.1435705Z  * [new branch]        research/post287-wp0-wp7-integrated-20261012 -> origin/research/post287-wp0-wp7-integrated-20261012
+2026-10-22T13:40:04.1436581Z  * [new branch]        research/post287-wp0-wp7-single-pr-20261012 -> origin/research/post287-wp0-wp7-single-pr-20261012
+2026-10-22T13:40:04.1437396Z  * [new branch]        research/post288-steps1-3-wp0-wp7        -> origin/research/post288-steps1-3-wp0-wp7
+2026-10-22T13:40:04.1438145Z  * [new branch]        research/post290-step123-output          -> origin/research/post290-step123-output
+2026-10-22T13:40:04.1438867Z  * [new branch]        research/pr247-million-dollar            -> origin/research/pr247-million-dollar
+2026-10-22T13:40:04.1439733Z  * [new branch]        research/r001-two-translate-determinant-x4-20260827 -> origin/research/r001-two-translate-determinant-x4-20260827
+2026-10-22T13:40:04.1440719Z  * [new branch]        research/r001-two-translate-weil-gram-x0-20260825 -> origin/research/r001-two-translate-weil-gram-x0-20260825
+2026-10-22T13:40:04.1441790Z  * [new branch]        research/r001-two-translate-weil-gram-x1-visibility-20260826 -> origin/research/r001-two-translate-weil-gram-x1-visibility-20260826
+2026-10-22T13:40:04.1443226Z  * [new branch]        research/r001-two-translate-weil-gram-x2-20260826 -> origin/research/r001-two-translate-weil-gram-x2-20260826
+2026-10-22T13:40:04.1444523Z  * [new branch]        research/r001-two-translate-weil-gram-x3-20260827 -> origin/research/r001-two-translate-weil-gram-x3-20260827
+2026-10-22T13:40:04.1445495Z  * [new branch]        research/r001-x0-spectrum-postmerge-fix-20260826 -> origin/research/r001-x0-spectrum-postmerge-fix-20260826
+2026-10-22T13:40:04.1446433Z  * [new branch]        research/r001-x45-fixed-test-detector-20260827 -> origin/research/r001-x45-fixed-test-detector-20260827
+2026-10-22T13:40:04.1447407Z  * [new branch]        research/r001-x46-eventual-radius-visibility-20260827 -> origin/research/r001-x46-eventual-radius-visibility-20260827
+2026-10-22T13:40:04.1448296Z  * [new branch]        research/r001-zero-side-theorem          -> origin/research/r001-zero-side-theorem
+2026-10-22T13:40:04.1449082Z  * [new branch]        research/r002-raw-kernel-bridge-20260830 -> origin/research/r002-raw-kernel-bridge-20260830
+2026-10-22T13:40:04.1449865Z  * [new branch]        research/r003-deterministic-rhs          -> origin/research/r003-deterministic-rhs
+2026-10-22T13:40:04.1450678Z  * [new branch]        research/r003-deterministic-rhs-completion -> origin/research/r003-deterministic-rhs-completion
+2026-10-22T13:40:04.1451540Z  * [new branch]        research/r003-dictionary-analytic-control -> origin/research/r003-dictionary-analytic-control
+2026-10-22T13:40:04.1452335Z  * [new branch]        research/r003-dictionary-closure         -> origin/research/r003-dictionary-closure
+2026-10-22T13:40:04.1453434Z  * [new branch]        research/r003-final-closure-20260830     -> origin/research/r003-final-closure-20260830
+2026-10-22T13:40:04.1454231Z  * [new branch]        research/r003-finite-dictionary          -> origin/research/r003-finite-dictionary
+2026-10-22T13:40:04.1454995Z  * [new branch]        research/r003-generic-source-calculus    -> origin/research/r003-generic-source-calculus
+2026-10-22T13:40:04.1456001Z  * [new branch]        research/r003-groskin-normalization-audit -> origin/research/r003-groskin-normalization-audit
+2026-10-22T13:40:04.1456824Z  * [new branch]        research/r003-residual-c2-gluing         -> origin/research/r003-residual-c2-gluing
+2026-10-22T13:40:04.1457643Z  * [new branch]        research/r003-smooth-core-bridge-h0-20260825 -> origin/research/r003-smooth-core-bridge-h0-20260825
+2026-10-22T13:40:04.1458580Z  * [new branch]        research/r003-smooth-core-polarization-h1-20260825 -> origin/research/r003-smooth-core-polarization-h1-20260825
+2026-10-22T13:40:04.1459447Z  * [new branch]        research/r003-tent-transform-decay       -> origin/research/r003-tent-transform-decay
+2026-10-22T13:40:04.1460203Z  * [new branch]        research/r004-exact-displacement         -> origin/research/r004-exact-displacement
+2026-10-22T13:40:04.1460938Z  * [new branch]        research/r004-prolate-commutator         -> origin/research/r004-prolate-commutator
+2026-10-22T13:40:04.1461636Z  * [new branch]        research/r004-prolate-v2                 -> origin/research/r004-prolate-v2
+2026-10-22T13:40:04.1462416Z  * [new branch]        research/rh-closure-parallel-campaign    -> origin/research/rh-closure-parallel-campaign
+2026-10-22T13:40:04.1463743Z  * [new branch]        research/t1m-dictionary-tent-mollifier-20260828 -> origin/research/t1m-dictionary-tent-mollifier-20260828
+2026-10-22T13:40:04.1464668Z  * [new branch]        research/x46-countable-criterion-20260828 -> origin/research/x46-countable-criterion-20260828
+2026-10-22T13:40:04.1465405Z  * [new branch]        rhkg/constitution                        -> origin/rhkg/constitution
+2026-10-22T13:40:04.1466069Z  * [new branch]        rhkg/final-semantic-closure              -> origin/rhkg/final-semantic-closure
+2026-10-22T13:40:04.1466733Z  * [new branch]        rhkg/phase1-census                       -> origin/rhkg/phase1-census
+2026-10-22T13:40:04.1467407Z  * [new branch]        rhkg/phase1-contract-repair              -> origin/rhkg/phase1-contract-repair
+2026-10-22T13:40:04.1468217Z  * [new branch]        rhkg/phase2a-complete-registered-bindings -> origin/rhkg/phase2a-complete-registered-bindings
+2026-10-22T13:40:04.1469230Z  * [new branch]        rhkg/phase2a-promoted-declarations       -> origin/rhkg/phase2a-promoted-declarations
+2026-10-22T13:40:04.1470021Z  * [new branch]        rhkg/phase2b-compiler-dependencies       -> origin/rhkg/phase2b-compiler-dependencies
+2026-10-22T13:40:04.1470859Z  * [new branch]        rhkg/phase2b-extractor-performance-repair -> origin/rhkg/phase2b-extractor-performance-repair
+2026-10-22T13:40:04.1471673Z  * [new branch]        rhkg/phase2b-materialize-and-seal        -> origin/rhkg/phase2b-materialize-and-seal
+2026-10-22T13:40:04.1472395Z  * [new branch]        rhkg/phase2b-seal-static                 -> origin/rhkg/phase2b-seal-static
+2026-10-22T13:40:04.1473539Z  * [new branch]        rhkg/phase2c-dependency-kernel-atlas     -> origin/rhkg/phase2c-dependency-kernel-atlas
+2026-10-22T13:40:04.1474379Z  * [new branch]        rhkg/phase2d-kernel-quotient-frontiers   -> origin/rhkg/phase2d-kernel-quotient-frontiers
+2026-10-22T13:40:04.1475225Z  * [new branch]        rhkg/phase2e-theorem-value-erasure       -> origin/rhkg/phase2e-theorem-value-erasure
+2026-10-22T13:40:04.1475962Z  * [new branch]        rhrc/ffbbp-rhkg-assurance                -> origin/rhrc/ffbbp-rhkg-assurance
+2026-10-22T13:40:04.1476746Z  * [new branch]        rhrc/integration-candidate-exactification -> origin/rhrc/integration-candidate-exactification
+2026-10-22T13:40:04.1477531Z  * [new branch]        rhrc/ool-rhkg-phase-atlas                -> origin/rhrc/ool-rhkg-phase-atlas
+2026-10-22T13:40:04.1478327Z  * [new branch]        theorem/a4r1a-fixed-cell-witness-persistence -> origin/theorem/a4r1a-fixed-cell-witness-persistence
+2026-10-22T13:40:04.1479058Z  * [new branch]        tmp/noop                                 -> origin/tmp/noop
+2026-10-22T13:40:04.1479637Z  * [new branch]        tmp/rhrc-tree-test                       -> origin/tmp/rhrc-tree-test
+2026-10-22T13:40:04.1480410Z  * [new branch]        tmp/rhrc-tree-test2                      -> origin/tmp/rhrc-tree-test2
+2026-10-22T13:40:04.1481053Z  * [new branch]        tmp/rhrc-tree-test3                      -> origin/tmp/rhrc-tree-test3
+2026-10-22T13:40:04.1481664Z  * [new branch]        tmp/rhrc-tree-test4                      -> origin/tmp/rhrc-tree-test4
+2026-10-22T13:40:04.1482276Z  * [new branch]        tmp/rhrc-tree-test5                      -> origin/tmp/rhrc-tree-test5
+2026-10-22T13:40:04.1483100Z  * [new branch]        tmp/rhrc-tree-test6                      -> origin/tmp/rhrc-tree-test6
+2026-10-22T13:40:04.1483727Z  * [new branch]        tmp/rhrc-tree-test7                      -> origin/tmp/rhrc-tree-test7
+2026-10-22T13:40:04.1484351Z  * [new branch]        tmp/rhrc-tree-test8                      -> origin/tmp/rhrc-tree-test8
+2026-10-22T13:40:04.1484948Z  * [new ref]           2735cbb15830808c5e6294c428f857d31ff09219 -> pull/294/merge
+2026-10-22T13:40:04.1486718Z ##[endgroup]
+2026-10-22T13:40:04.1487225Z ##[group]Determining the checkout info
+2026-10-22T13:40:04.1487778Z ##[endgroup]
+2026-10-22T13:40:04.1488119Z [command]/usr/bin/git sparse-checkout disable
+2026-10-22T13:40:04.1489137Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-10-22T13:40:04.1490167Z ##[group]Checking out the ref
+2026-10-22T13:40:04.1490635Z [command]/usr/bin/git checkout --progress --force refs/remotes/pull/294/merge
+2026-10-22T13:40:05.2623185Z Updating files:  59% (1568/2617)
+2026-10-22T13:40:05.5702006Z Updating files:  60% (1571/2617)
+2026-10-22T13:40:05.7153717Z Updating files:  61% (1597/2617)
+2026-10-22T13:40:05.7225947Z Updating files:  62% (1623/2617)
+2026-10-22T13:40:05.7257170Z Updating files:  63% (1649/2617)
+2026-10-22T13:40:05.7273999Z Updating files:  64% (1675/2617)
+2026-10-22T13:40:05.7301339Z Updating files:  65% (1702/2617)
+2026-10-22T13:40:05.7399427Z Updating files:  66% (1728/2617)
+2026-10-22T13:40:05.7411460Z Updating files:  67% (1754/2617)
+2026-10-22T13:40:05.7487283Z Updating files:  68% (1780/2617)
+2026-10-22T13:40:05.7530964Z Updating files:  69% (1806/2617)
+2026-10-22T13:40:05.7560322Z Updating files:  70% (1832/2617)
+2026-10-22T13:40:05.7581427Z Updating files:  71% (1859/2617)
+2026-10-22T13:40:05.7609560Z Updating files:  72% (1885/2617)
+2026-10-22T13:40:05.7667142Z Updating files:  73% (1911/2617)
+2026-10-22T13:40:05.7700663Z Updating files:  74% (1937/2617)
+2026-10-22T13:40:05.7710284Z Updating files:  75% (1963/2617)
+2026-10-22T13:40:05.7720536Z Updating files:  76% (1989/2617)
+2026-10-22T13:40:05.7731162Z Updating files:  77% (2016/2617)
+2026-10-22T13:40:05.7749802Z Updating files:  78% (2042/2617)
+2026-10-22T13:40:05.7800831Z Updating files:  79% (2068/2617)
+2026-10-22T13:40:05.7813230Z Updating files:  80% (2094/2617)
+2026-10-22T13:40:05.7825750Z Updating files:  81% (2120/2617)
+2026-10-22T13:40:05.7851006Z Updating files:  82% (2146/2617)
+2026-10-22T13:40:05.8083558Z Updating files:  83% (2173/2617)
+2026-10-22T13:40:05.8135034Z Updating files:  84% (2199/2617)
+2026-10-22T13:40:05.8152949Z Updating files:  85% (2225/2617)
+2026-10-22T13:40:05.8170847Z Updating files:  86% (2251/2617)
+2026-10-22T13:40:05.8193825Z Updating files:  87% (2277/2617)
+2026-10-22T13:40:05.8212615Z Updating files:  88% (2303/2617)
+2026-10-22T13:40:05.8229770Z Updating files:  89% (2330/2617)
+2026-10-22T13:40:05.8242870Z Updating files:  90% (2356/2617)
+2026-10-22T13:40:05.8255820Z Updating files:  91% (2382/2617)
+2026-10-22T13:40:05.8292714Z Updating files:  92% (2408/2617)
+2026-10-22T13:40:05.8314890Z Updating files:  93% (2434/2617)
+2026-10-22T13:40:05.8335880Z Updating files:  94% (2460/2617)
+2026-10-22T13:40:05.8355079Z Updating files:  95% (2487/2617)
+2026-10-22T13:40:05.8374749Z Updating files:  96% (2513/2617)
+2026-10-22T13:40:05.8397715Z Updating files:  97% (2539/2617)
+2026-10-22T13:40:05.8414129Z Updating files:  98% (2565/2617)
+2026-10-22T13:40:05.8431419Z Updating files:  99% (2591/2617)
+2026-10-22T13:40:05.8431954Z Updating files: 100% (2617/2617)
+2026-10-22T13:40:05.8432420Z Updating files: 100% (2617/2617), done.
+2026-10-22T13:40:05.8465631Z Note: switching to 'refs/remotes/pull/294/merge'.
+2026-10-22T13:40:05.8466272Z 
+2026-10-22T13:40:05.8466765Z You are in 'detached HEAD' state. You can look around, make experimental
+2026-10-22T13:40:05.8467597Z changes and commit them, and you can discard any commits you make in this
+2026-10-22T13:40:05.8468316Z state without impacting any branches by switching back to a branch.
+2026-10-22T13:40:05.8468720Z 
+2026-10-22T13:40:05.8469029Z If you want to create a new branch to retain commits you create, you may
+2026-10-22T13:40:05.8469713Z do so (now or later) by using -c with the switch command. Example:
+2026-10-22T13:40:05.8470103Z 
+2026-10-22T13:40:05.8470291Z   git switch -c <new-branch-name>
+2026-10-22T13:40:05.8470561Z 
+2026-10-22T13:40:05.8470773Z Or undo this operation with:
+2026-10-22T13:40:05.8471021Z 
+2026-10-22T13:40:05.8471173Z   git switch -
+2026-10-22T13:40:05.8471373Z 
+2026-10-22T13:40:05.8471699Z Turn off this advice by setting config variable advice.detachedHead to false
+2026-10-22T13:40:05.8472148Z 
+2026-10-22T13:40:05.8473027Z HEAD is now at 2735cbb1 Merge a77ae60427423e8b6f098596f300c8cecc6392b6 into d53dd70d38b0762af130b1d19b795af259f505f5
+2026-10-22T13:40:05.8584024Z ##[endgroup]
+2026-10-22T13:40:05.8639007Z [command]/usr/bin/git log -1 --format=%H
+2026-10-22T13:40:05.8676203Z 2735cbb15830808c5e6294c428f857d31ff09219
+2026-10-22T13:40:05.8962083Z ##[group]Run actions/setup-python@v5
+2026-10-22T13:40:05.8962418Z with:
+2026-10-22T13:40:05.8962660Z   python-version: 3.14
+2026-10-22T13:40:05.8963211Z   check-latest: false
+2026-10-22T13:40:05.8965948Z   token: ***
+2026-10-22T13:40:05.8966198Z   update-environment: true
+2026-10-22T13:40:05.8966469Z   allow-prereleases: false
+2026-10-22T13:40:05.8966721Z   freethreaded: false
+2026-10-22T13:40:05.8966955Z ##[endgroup]
+2026-10-22T13:40:06.0395834Z ##[group]Installed versions
+2026-10-22T13:40:06.0500395Z (node:2380) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-22T13:40:06.0501448Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-22T13:40:06.0503038Z Successfully set up CPython (3.14.8)
+2026-10-22T13:40:06.0503749Z ##[endgroup]
+2026-10-22T13:40:06.0708886Z ##[group]Run python -m pip install -r research/RHRC/requirements.txt
+2026-10-22T13:40:06.0709822Z [36;1mpython -m pip install -r research/RHRC/requirements.txt[0m
+2026-10-22T13:40:06.1021874Z shell: /usr/bin/bash -e {0}
+2026-10-22T13:40:06.1022247Z env:
+2026-10-22T13:40:06.1022590Z   pythonLocation: /opt/hostedtoolcache/Python/3.14.8/x64
+2026-10-22T13:40:06.1023359Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.14.8/x64/lib/pkgconfig
+2026-10-22T13:40:06.1023882Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.14.8/x64
+2026-10-22T13:40:06.1024353Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.14.8/x64
+2026-10-22T13:40:06.1024815Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.14.8/x64
+2026-10-22T13:40:06.1025283Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.14.8/x64/lib
+2026-10-22T13:40:06.1025678Z ##[endgroup]
+2026-10-22T13:40:08.9752505Z Collecting cryptography==46.0.4 (from -r research/RHRC/requirements.txt (line 1))
+2026-10-22T13:40:09.0108978Z   Downloading cryptography-46.0.4-cp311-abi3-manylinux_2_34_x86_64.whl.metadata (5.7 kB)
+2026-10-22T13:40:09.1192268Z Collecting cffi>=2.0.0 (from cryptography==46.0.4->-r research/RHRC/requirements.txt (line 1))
+2026-10-22T13:40:09.1235146Z   Downloading cffi-2.1.1-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (2.5 kB)
+2026-10-22T13:40:09.1348958Z Collecting pycparser (from cffi>=2.0.0->cryptography==46.0.4->-r research/RHRC/requirements.txt (line 1))
+2026-10-22T13:40:09.1394124Z   Downloading pycparser-3.12-py3-none-any.whl.metadata (9.7 kB)
+2026-10-22T13:40:09.1465918Z Downloading cryptography-46.0.4-cp311-abi3-manylinux_2_34_x86_64.whl (4.5 MB)
+2026-10-22T13:40:09.2123653Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.5/4.5 MB 77.5 MB/s  0:00:00
+2026-10-22T13:40:09.2163463Z Downloading cffi-2.1.1-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (221 kB)
+2026-10-22T13:40:09.2273213Z Downloading pycparser-3.12-py3-none-any.whl (62 kB)
+2026-10-22T13:40:09.3698204Z Installing collected packages: pycparser, cffi, cryptography
+2026-10-22T13:40:09.7084511Z 
+2026-10-22T13:40:09.7097114Z Successfully installed cffi-2.1.1 cryptography-46.0.4 pycparser-3.12
+2026-10-22T13:40:09.7105694Z 
+2026-10-22T13:40:09.7106107Z [notice] A new release of pip is available: 26.2.1 -> 26.2.2
+2026-10-22T13:40:09.7106951Z [notice] To update, run: pip install --upgrade pip
+2026-10-22T13:40:09.7904829Z ##[group]Run python research/RHRC/tools/run_suite.py --skip-derived-state
+2026-10-22T13:40:09.7905419Z [36;1mpython research/RHRC/tools/run_suite.py --skip-derived-state[0m
+2026-10-22T13:40:09.7968998Z shell: /usr/bin/bash -e {0}
+2026-10-22T13:40:09.7969276Z env:
+2026-10-22T13:40:09.7969577Z   pythonLocation: /opt/hostedtoolcache/Python/3.14.8/x64
+2026-10-22T13:40:09.7970062Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.14.8/x64/lib/pkgconfig
+2026-10-22T13:40:09.7970541Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.14.8/x64
+2026-10-22T13:40:09.7970987Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.14.8/x64
+2026-10-22T13:40:09.7971412Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.14.8/x64
+2026-10-22T13:40:09.7971842Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.14.8/x64/lib
+2026-10-22T13:40:09.7972202Z ##[endgroup]
+2026-10-22T13:40:09.8573535Z + /opt/hostedtoolcache/Python/3.14.8/x64/bin/python /home/runner/work/zeta-23-lean/zeta-23-lean/research/RHRC/integration/opica/validate_contract.py
+2026-10-22T13:40:15.4236506Z {
+2026-10-22T13:40:15.4237389Z   "schema": "OPICA_STATIC_CONTRACT_V1",
+2026-10-22T13:40:15.4237845Z   "status": "FAIL",
+2026-10-22T13:40:15.4238178Z   "errors": [
+2026-10-22T13:40:15.4238996Z     "follow-up extension rejected: OPICA follow-up extension: full child reviewed type table absent; subset cannot extend parent",
+2026-10-22T13:40:15.4240092Z     "unauthorized tracked delta: A\t.github/workflows/rhrc_opica_followup.yml",
+2026-10-22T13:40:15.4241163Z     "unauthorized tracked delta: A\tAGENTS.md",
+2026-10-22T13:40:15.4241825Z     "unauthorized tracked delta: A\tZeta23/OPICAFollowup/AuxiliaryCompletions.lean",
+2026-10-22T13:40:15.4243018Z     "unauthorized tracked delta: A\tZeta23/OPICAFollowup/BalancedCoefficients.lean",
+2026-10-22T13:40:15.4243970Z     "unauthorized tracked delta: A\tZeta23/OPICAFollowup/ComplexLocalMeasures.lean",
+2026-10-22T13:40:15.4244790Z     "unauthorized tracked delta: A\tZeta23/OPICAFollowup/Consumers.lean",
+2026-10-22T13:40:15.4245665Z     "unauthorized tracked delta: A\tZeta23/OPICAFollowup/Counterexamples.lean",
+2026-10-22T13:40:15.4246512Z     "unauthorized tracked delta: A\tZeta23/OPICAFollowup/DilatedComb.lean",
+2026-10-22T13:40:15.4247316Z     "unauthorized tracked delta: A\tZeta23/OPICAFollowup/FirstCellCost.lean",
+2026-10-22T13:40:15.4248162Z     "unauthorized tracked delta: A\tZeta23/OPICAFollowup/ForwardLocalization.lean",
+2026-10-22T13:40:15.4249040Z     "unauthorized tracked delta: A\tZeta23/OPICAFollowup/JointObservation.lean",
+2026-10-22T13:40:15.4249896Z     "unauthorized tracked delta: A\tZeta23/OPICAFollowup/LogSlackBalance.lean",
+2026-10-22T13:40:15.4250747Z     "unauthorized tracked delta: A\tZeta23/OPICAFollowup/MaskedNativeRate.lean",
+2026-10-22T13:40:15.4251598Z     "unauthorized tracked delta: A\tZeta23/OPICAFollowup/MultiplicityTail.lean",
+2026-10-22T13:40:15.4252517Z     "unauthorized tracked delta: A\tZeta23/OPICAFollowup/NativeExplicitFormula.lean",
+2026-10-22T13:40:15.4253695Z     "unauthorized tracked delta: A\tZeta23/OPICAFollowup/NativeFilters.lean",
+2026-10-22T13:40:15.4254520Z     "unauthorized tracked delta: A\tZeta23/OPICAFollowup/NativeSourceFamily.lean",
+2026-10-22T13:40:15.4255404Z     "unauthorized tracked delta: A\tZeta23/OPICAFollowup/NativeSourceTransforms.lean",
+2026-10-22T13:40:15.4256317Z     "unauthorized tracked delta: A\tZeta23/OPICAFollowup/NativeTransformationWords.lean",
+2026-10-22T13:40:15.4257201Z     "unauthorized tracked delta: A\tZeta23/OPICAFollowup/NormFirstTransfer.lean",
+2026-10-22T13:40:15.4258054Z     "unauthorized tracked delta: A\tZeta23/OPICAFollowup/RenormalizedCoPoisson.lean",
+2026-10-22T13:40:15.4258961Z     "unauthorized tracked delta: A\tZeta23/OPICAFollowup/RobustLaurent.lean",
+2026-10-22T13:40:15.4259879Z     "unauthorized tracked delta: A\tZeta23/OPICAFollowup/SourceVerticalBounds.lean",
+2026-10-22T13:40:15.4260851Z     "unauthorized tracked delta: A\tZeta23/OPICAFollowup/UniformSourceBounds.lean",
+2026-10-22T13:40:15.4262197Z     "unauthorized tracked delta: A\tZeta23/OPICAFollowup/Validation.lean",
+2026-10-22T13:40:15.4263717Z     "unauthorized tracked delta: A\tZeta23/OPICAFollowup/ZetaLeftLineBounds.lean",
+2026-10-22T13:40:15.4264639Z     "unauthorized tracked delta: A\tZeta23/RHRC/OpicaFollowupBindings.lean",
+2026-10-22T13:40:15.4265643Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/BUILD_MANIFEST.json",
+2026-10-22T13:40:15.4266732Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/BUILD_SPEC.md",
+2026-10-22T13:40:15.4267867Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/CONTINUATION_MANIFEST.json",
+2026-10-22T13:40:15.4269060Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/PAPER_CROSSWALK.json",
+2026-10-22T13:40:15.4270127Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/PARENT_EXTENSION.json",
+2026-10-22T13:40:15.4271111Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/PARENT_INTAKE.json",
+2026-10-22T13:40:15.4272189Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/POST_GREEN_RESEARCH.md",
+2026-10-22T13:40:15.4273558Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/PROTECTED_STATE.json",
+2026-10-22T13:40:15.4274810Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/PUBLIC_ROOTS.json",
+2026-10-22T13:40:15.4275898Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/README.md",
+2026-10-22T13:40:15.4277288Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/REGRESSION_CONTRACT.json",
+2026-10-22T13:40:15.4278505Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/SOURCE_REGISTER.json",
+2026-10-22T13:40:15.4279681Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/WORKFLOW_CONTRACT.json",
+2026-10-22T13:40:15.4280839Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/build_receipt.py",
+2026-10-22T13:40:15.4281962Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/capture_parent.py",
+2026-10-22T13:40:15.4283514Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/checks/check_final_exact.py",
+2026-10-22T13:40:15.4284784Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/checks/check_final_numeric.py",
+2026-10-22T13:40:15.4286113Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/checks/frozen_round1_check_round1.py",
+2026-10-22T13:40:15.4287540Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/checks/frozen_round2_check_round2.py",
+2026-10-22T13:40:15.4288797Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/checks/frozen_round2_check_round2_numeric.py",
+2026-10-22T13:40:15.4290193Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/checks/replay_copoisson_numeric.py",
+2026-10-22T13:40:15.4291651Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/NEXT_AGENT_PROMPT.md",
+2026-10-22T13:40:15.4293239Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/POST_GREEN_RESEARCH.md",
+2026-10-22T13:40:15.4294663Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/README.md",
+2026-10-22T13:40:15.4296062Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/REMAINING_WORK.md",
+2026-10-22T13:40:15.4297500Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/ROOT_LEDGER_100.json",
+2026-10-22T13:40:15.4298916Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedAuxiliary.lean",
+2026-10-22T13:40:15.4300667Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedComplex.lean",
+2026-10-22T13:40:15.4302263Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedMasks.lean",
+2026-10-22T13:40:15.4304321Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/checkpoint-validation/CHECKPOINT_VALIDATION.json",
+2026-10-22T13:40:15.4306461Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/checkpoint-validation/current-child-normal.log",
+2026-10-22T13:40:15.4308614Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/checkpoint-validation/current-child-optimized.log",
+2026-10-22T13:40:15.4310685Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/contracts/CHECKPOINT_TEST_EXECUTIONS.json",
+2026-10-22T13:40:15.4312676Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/contracts/FIXTURE_PROVENANCE.json",
+2026-10-22T13:40:15.4314857Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/contracts/INDEPENDENT_FIX_PROBES.json",
+2026-10-22T13:40:15.4316732Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/contracts/INPUT_PROVENANCE.json",
+2026-10-22T13:40:15.4318883Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/contracts/PYTHON_ADOPTION_REVIEW.json",
+2026-10-22T13:40:15.4320860Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/contracts/PYTHON_ADOPTION_REVIEW.md",
+2026-10-22T13:40:15.4322714Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/contracts/TEST_EXECUTIONS.json",
+2026-10-22T13:40:15.4324744Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/contracts/checkpoint17-normal.log",
+2026-10-22T13:40:15.4326704Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/contracts/checkpoint17-optimized.log",
+2026-10-22T13:40:15.4328645Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/contracts/child-all-normal.log",
+2026-10-22T13:40:15.4330605Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/contracts/child-all-optimized.log",
+2026-10-22T13:40:15.4332640Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/contracts/child-contract59-normal.log",
+2026-10-22T13:40:15.4334853Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/contracts/child-contract59-optimized.log",
+2026-10-22T13:40:15.4336898Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/contracts/child-extension-normal.log",
+2026-10-22T13:40:15.4338977Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/contracts/child-extension-optimized.log",
+2026-10-22T13:40:15.4340979Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/contracts/parent-full-normal.log",
+2026-10-22T13:40:15.4343222Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/contracts/parent-full-optimized.log",
+2026-10-22T13:40:15.4345487Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/contracts/parent-runnable-normal.log",
+2026-10-22T13:40:15.4347528Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/contracts/parent-runnable-optimized.log",
+2026-10-22T13:40:15.4349645Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/lean-review/AuxiliaryCompletions-module-save-01.exit",
+2026-10-22T13:40:15.4351965Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/lean-review/AuxiliaryCompletions-module-save-01.log",
+2026-10-22T13:40:15.4354252Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/lean-review/CHECK_PROGRESS.json",
+2026-10-22T13:40:15.4356378Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/lean-review/ComplexLocalMeasures-module-save-01.exit",
+2026-10-22T13:40:15.4358576Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/lean-review/ComplexLocalMeasures-module-save-01.log",
+2026-10-22T13:40:15.4360721Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/lean-review/ExpectedAuxiliary-imported-01.exit",
+2026-10-22T13:40:15.4363353Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/lean-review/ExpectedAuxiliary-imported-01.log",
+2026-10-22T13:40:15.4365478Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/lean-review/ExpectedComplex-imported-01.exit",
+2026-10-22T13:40:15.4367578Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/lean-review/ExpectedComplex-imported-01.log",
+2026-10-22T13:40:15.4369587Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/lean-review/ExpectedMasks-imported-01.exit",
+2026-10-22T13:40:15.4371559Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/lean-review/ExpectedMasks-imported-01.log",
+2026-10-22T13:40:15.4373805Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/lean-review/ExpectedMasks-imported-02.exit",
+2026-10-22T13:40:15.4375898Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/lean-review/ExpectedMasks-imported-02.log",
+2026-10-22T13:40:15.4377769Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/lean-review/INPUT_PROVENANCE.json",
+2026-10-22T13:40:15.4379567Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/lean-review/INTERRUPTED_SERIAL_ATTEMPT.json",
+2026-10-22T13:40:15.4381332Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/lean-review/LIVE_STATUS.json",
+2026-10-22T13:40:15.4383443Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/lean-review/MaskedNativeRate-module-save-01.exit",
+2026-10-22T13:40:15.4385613Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/lean-review/MaskedNativeRate-module-save-01.interrupted",
+2026-10-22T13:40:15.4387964Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/lean-review/MaskedNativeRate-module-save-01.log",
+2026-10-22T13:40:15.4389782Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/lean-review/REVIEW.md",
+2026-10-22T13:40:15.4391558Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/lean-review/SEMANTIC_REVIEW.md",
+2026-10-22T13:40:15.4393490Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/lean-review/STATUS.json",
+2026-10-22T13:40:15.4394601Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/remote-evidence/POST_GREEN_RESEARCH.json",
+2026-10-22T13:40:15.4395727Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/remote-evidence/artifacts.json",
+2026-10-22T13:40:15.4396864Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/remote-evidence/cold-receipt-revalidation.json",
+2026-10-22T13:40:15.4398033Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/remote-evidence/cold-revalidation.log",
+2026-10-22T13:40:15.4399147Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/remote-evidence/job-119586736187.log",
+2026-10-22T13:40:15.4400438Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/remote-evidence/job-119586736369.log",
+2026-10-22T13:40:15.4401526Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/remote-evidence/job-119586736403.log",
+2026-10-22T13:40:15.4402611Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/remote-evidence/job-119587800467.log",
+2026-10-22T13:40:15.4404014Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/remote-evidence/job-119587800515.log",
+2026-10-22T13:40:15.4405067Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/remote-evidence/jobs.json",
+2026-10-22T13:40:15.4406085Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/remote-evidence/run.json",
+2026-10-22T13:40:15.4407162Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/remote-evidence/source_commit.json",
+2026-10-22T13:40:15.4408245Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/remote-evidence/workflow-077aab1.yml",
+2026-10-22T13:40:15.4409470Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/remote-evidence/workflow-harvest.json",
+2026-10-22T13:40:15.4410897Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/remote-evidence/workflow-harvest.log",
+2026-10-22T13:40:15.4412005Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/remote-evidence/workflow_commit.json",
+2026-10-22T13:40:15.4413393Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/historical-codex-review/INDEPENDENT_CHECKS.json",
+2026-10-22T13:40:15.4414482Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/historical-codex-review/INPUT_MANIFEST.json",
+2026-10-22T13:40:15.4415735Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/historical-codex-review/MODULE_CONTRACT_GAPS.json",
+2026-10-22T13:40:15.4416889Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/historical-codex-review/OPICA_SECOND_KIT_REVIEW_2026-10-22.zip",
+2026-10-22T13:40:15.4418022Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/historical-codex-review/REMAINING_BUILD_WORK.md",
+2026-10-22T13:40:15.4419141Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/historical-codex-review/REVIEW_AND_REMAINING_WORK.md",
+2026-10-22T13:40:15.4420231Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/historical-codex-review/ROOT_LEDGER_100.json",
+2026-10-22T13:40:15.4421295Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/historical-codex-review/WORKFLOW_REFRESH.md",
+2026-10-22T13:40:15.4422420Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/historical-codex-review/cold-export-prerequisites.patch",
+2026-10-22T13:40:15.4423906Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/historical-codex-review/contracts/CONTRACT_REVIEW.json",
+2026-10-22T13:40:15.4425027Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/historical-codex-review/contracts/CONTRACT_REVIEW.md",
+2026-10-22T13:40:15.4426345Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/historical-codex-review/contracts/INDEPENDENT_PROBES.json",
+2026-10-22T13:40:15.4427523Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/historical-codex-review/maskconsumer/MATHEMATICAL_REVIEW.json",
+2026-10-22T13:40:15.4428704Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/historical-codex-review/maskconsumer/POST_GREEN_RESEARCH.json",
+2026-10-22T13:40:15.4429837Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/historical-codex-review/maskconsumer/STATUS.json",
+2026-10-22T13:40:15.4430875Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/provided/baseline_revalidation.json",
+2026-10-22T13:40:15.4431885Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/provided/cold41/EXPORT_SHA256.txt",
+2026-10-22T13:40:15.4433168Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/provided/cold41/cold-prerequisites.log",
+2026-10-22T13:40:15.4434191Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/provided/cold41/subset/build.log",
+2026-10-22T13:40:15.4435228Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/provided/cold41/subset/compiler-receipt.json.gz",
+2026-10-22T13:40:15.4436270Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/provided/cold41/subset/export.log.gz",
+2026-10-22T13:40:15.4437255Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/provided/cold41/subset/version.log",
+2026-10-22T13:40:15.4438219Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/provided/cold41/version.log",
+2026-10-22T13:40:15.4439298Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/provided/latest_repair_delivery/consumers/ExpectedAuxiliary.lean",
+2026-10-22T13:40:15.4440625Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/provided/latest_repair_delivery/consumers/ExpectedComplex.lean",
+2026-10-22T13:40:15.4441799Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/provided/latest_repair_delivery/consumers/ExpectedMasks.lean",
+2026-10-22T13:40:15.4443317Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/provided/latest_repair_delivery/evidence/child_extension_normal.log",
+2026-10-22T13:40:15.4444566Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/provided/latest_repair_delivery/evidence/child_extension_optimized.log",
+2026-10-22T13:40:15.4445814Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/provided/latest_repair_delivery/evidence/lean/AuxiliaryCompletions.json",
+2026-10-22T13:40:15.4447072Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/provided/latest_repair_delivery/evidence/lean/ComplexLocalMeasures.json",
+2026-10-22T13:40:15.4448299Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/provided/latest_repair_delivery/evidence/lean/ExpectedAuxiliary.log",
+2026-10-22T13:40:15.4449517Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/provided/latest_repair_delivery/evidence/lean/ExpectedComplex.json",
+2026-10-22T13:40:15.4450853Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/provided/latest_repair_delivery/evidence/lean/ExpectedMasks.json",
+2026-10-22T13:40:15.4452068Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/provided/latest_repair_delivery/evidence/lean/MaskedNativeRate.json",
+2026-10-22T13:40:15.4453604Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/provided/latest_repair_delivery/evidence/parent_full_normal.log",
+2026-10-22T13:40:15.4454816Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/provided/latest_repair_delivery/evidence/parent_full_optimized.log",
+2026-10-22T13:40:15.4456091Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/provided/latest_repair_delivery/research/THREE_ROOT_GREEN_PASS.md",
+2026-10-22T13:40:15.4457207Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/provided/packaging/FONT_SCAN.json",
+2026-10-22T13:40:15.4458239Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/provided/packaging/PACKAGING_VALIDATION.json",
+2026-10-22T13:40:15.4459281Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/provided/packaging/PATCH_REPLAY.json",
+2026-10-22T13:40:15.4460308Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/provided/packaging/PYTHON_TEST_RESULTS.json",
+2026-10-22T13:40:15.4461361Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/provided/packaging/application_dry_run.log",
+2026-10-22T13:40:15.4462411Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/provided/packaging/application_guards.json",
+2026-10-22T13:40:15.4463704Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/provided/packaging/application_replay.log",
+2026-10-22T13:40:15.4465036Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/provided/packaging/child_normal.log",
+2026-10-22T13:40:15.4466062Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/provided/packaging/child_optimized.log",
+2026-10-22T13:40:15.4467067Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/provided/packaging/coverage_normal.log",
+2026-10-22T13:40:15.4468090Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/provided/packaging/coverage_optimized.log",
+2026-10-22T13:40:15.4469149Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/provided/packaging/latest_source_receipts.json",
+2026-10-22T13:40:15.4470181Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/provided/packaging/parent_normal.log",
+2026-10-22T13:40:15.4471199Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/provided/packaging/parent_optimized.log",
+2026-10-22T13:40:15.4472202Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/provided/packaging/tool_syntax.json",
+2026-10-22T13:40:15.4473478Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/inputs/AMENDMENT_EVALUATION_UNCHANGED.json",
+2026-10-22T13:40:15.4474473Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/inputs/OPICA_Beyond_PR_Paper_Round2_2026-10-21.md",
+2026-10-22T13:40:15.4475866Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/inputs/OPICA_Beyond_PR_Paper_Round2_2026-10-21.pdf",
+2026-10-22T13:40:15.4476884Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/inputs/OPICA_End_to_End_Audit_Report_2026-10-21.md",
+2026-10-22T13:40:15.4477917Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/inputs/OPICA_FOLLOWUP_BUILD_MANIFEST_2026-10-21.json",
+2026-10-22T13:40:15.4478954Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/inputs/OPICA_FOLLOWUP_PAPER_CROSSWALK_2026-10-21.json",
+2026-10-22T13:40:15.4479998Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/inputs/OPICA_FOLLOWUP_PARENT_EXTENSION_2026-10-21.json",
+2026-10-22T13:40:15.4481035Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/inputs/OPICA_FOLLOWUP_PR_BUILD_SPEC_2026-10-21.md",
+2026-10-22T13:40:15.4482051Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/inputs/OPICA_FOLLOWUP_PR_SPEC_PACKAGE_2026-10-21.zip",
+2026-10-22T13:40:15.4483416Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/inputs/OPICA_FOLLOWUP_PR_SPEC_RELEASE_MANIFEST_2026-10-21.json",
+2026-10-22T13:40:15.4484490Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/inputs/OPICA_FOLLOWUP_PUBLIC_ROOTS_2026-10-21.json",
+2026-10-22T13:40:15.4485554Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/inputs/OPICA_FOLLOWUP_SPEC_VALIDATION_2026-10-21.json",
+2026-10-22T13:40:15.4486607Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/inputs/OPICA_Final_Followup_Paper_Contract_2026-10-21.md",
+2026-10-22T13:40:15.4487667Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/inputs/OPICA_Followup_Final_Audited_Paper_2026-10-21.md",
+2026-10-22T13:40:15.4488718Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/inputs/OPICA_Followup_Final_Audited_Paper_2026-10-21.pdf",
+2026-10-22T13:40:15.4489964Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/inputs/OPICA_Followup_Paper_Contract_2026-10-21.md",
+2026-10-22T13:40:15.4491050Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/inputs/OPICA_Followup_PostGreen_Amendment_v1_1_2026-10-21.md",
+2026-10-22T13:40:15.4492132Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/inputs/OPICA_Lean_Implementation_Contract_2026-10-21.md",
+2026-10-22T13:40:15.4493392Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/inputs/OPICA_PR293_INTAKE_2026-10-21.json",
+2026-10-22T13:40:15.4494376Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/inputs/OPICA_Paper_Construction_v1_0_2026-10-21.md",
+2026-10-22T13:40:15.4495378Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/inputs/Pasted text (2)(20261021-232045).txt",
+2026-10-22T13:40:15.4496327Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/inputs/Pasted text(20261021-175713).txt",
+2026-10-22T13:40:15.4497265Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/inputs/Pasted text(20261021-203542).txt",
+2026-10-22T13:40:15.4498194Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/inputs/Pasted text(20261021-231700).txt",
+2026-10-22T13:40:15.4499264Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/inputs/initial_uploaded_paste.txt",
+2026-10-22T13:40:15.4500178Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/provenance/ADOPTED_SOURCE.json",
+2026-10-22T13:40:15.4501079Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/provenance/IMPORTED_FILES.json",
+2026-10-22T13:40:15.4502009Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/provenance/LOOSE_UPLOAD_COMPARISON.json",
+2026-10-22T13:40:15.4503310Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/provenance/MODULE_IMPORT_REFINEMENTS.json",
+2026-10-22T13:40:15.4504263Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/provenance/SOURCE_COMPARISON.json",
+2026-10-22T13:40:15.4505157Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/provided/MANIFEST.json",
+2026-10-22T13:40:15.4506034Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/provided/README_CORE_DOWNLOAD.txt",
+2026-10-22T13:40:15.4506909Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/provided/START_HERE.md",
+2026-10-22T13:40:15.4507738Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/provided/STATE.json",
+2026-10-22T13:40:15.4508599Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/provided/docs/AGENT_HANDOVER.md",
+2026-10-22T13:40:15.4509508Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/provided/docs/BUILD_INSTRUCTIONS.md",
+2026-10-22T13:40:15.4510463Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/provided/docs/EVIDENCE_AND_PRECEDENCE.md",
+2026-10-22T13:40:15.4511444Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/provided/docs/POST_GREEN_AND_PACKAGING_NOTE.md",
+2026-10-22T13:40:15.4512392Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/provided/docs/REMAINING_WORK.md",
+2026-10-22T13:40:15.4513719Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/provided/patches/current_from_9b.patch",
+2026-10-22T13:40:15.4514706Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/provided/state/GIT_ARCHIVE_BOUNDARIES.json",
+2026-10-22T13:40:15.4515672Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/provided/state/REQUIRED_BUILD_TARGETS.json",
+2026-10-22T13:40:15.4516627Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/provided/state/ROOT_LEDGER_100.json",
+2026-10-22T13:40:15.4517584Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/provided/state/RUNTIME_PART_VERIFICATION.json",
+2026-10-22T13:40:15.4518552Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/provided/state/WORKSPACE_CHANGES.json",
+2026-10-22T13:40:15.4519476Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/provided/tools/apply_patch.py",
+2026-10-22T13:40:15.4520373Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/provided/tools/check_coverage.py",
+2026-10-22T13:40:15.4521263Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/provided/tools/lake_pinned.py",
+2026-10-22T13:40:15.4522262Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/provided/tools/restore_kit.py",
+2026-10-22T13:40:15.4523341Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/provided/tools/run_checks.py",
+2026-10-22T13:40:15.4524216Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/provided/tools/verify_kit.py",
+2026-10-22T13:40:15.4525079Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/refresh_manifest.py",
+2026-10-22T13:40:15.4525913Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/continuation/2026-10-22/run_candidate_checks.py",
+2026-10-22T13:40:15.4526670Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/harvest_workflows.py",
+2026-10-22T13:40:15.4527467Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/paper/OPICA_EndToEnd_Final_Release_Manifest_2026-10-21.json",
+2026-10-22T13:40:15.4528358Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/paper/OPICA_End_to_End_Audit_Report_2026-10-21.md",
+2026-10-22T13:40:15.4529231Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/paper/OPICA_Final_Followup_Paper_Contract_2026-10-21.md",
+2026-10-22T13:40:15.4530142Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/paper/OPICA_Final_Theorem_and_Audit_Ledger_2026-10-21.json",
+2026-10-22T13:40:15.4531040Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/paper/OPICA_Followup_Final_Audited_Paper_2026-10-21.md",
+2026-10-22T13:40:15.4531807Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/parent_extension.py",
+2026-10-22T13:40:15.4532456Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/python-checks.lock",
+2026-10-22T13:40:15.4533225Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/replay_controls.py",
+2026-10-22T13:40:15.4533889Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/requirements-checks.txt",
+2026-10-22T13:40:15.4534568Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/tests/test_contract.py",
+2026-10-22T13:40:15.4535262Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/tests/test_parent_extension.py",
+2026-10-22T13:40:15.4536093Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/tests/test_receipt.py",
+2026-10-22T13:40:15.4536797Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/tests/test_regression_replay.py",
+2026-10-22T13:40:15.4537558Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/tests/test_workflow_harvest.py",
+2026-10-22T13:40:15.4538250Z     "unauthorized tracked delta: A\tresearch/RHRC/integration/opica_followup/validate_contract.py"
+2026-10-22T13:40:15.4538705Z   ],
+2026-10-22T13:40:15.4538908Z   "required_roots": 76,
+2026-10-22T13:40:15.4539152Z   "declared_roots": [
+2026-10-22T13:40:15.4539414Z     "Zeta23.OPICA.unit_mul_simplePole_residue",
+2026-10-22T13:40:15.4539792Z     "Zeta23.OPICA.completion_regularRepresentative_analytic",
+2026-10-22T13:40:15.4540161Z     "Zeta23.OPICA.completion_order",
+2026-10-22T13:40:15.4540460Z     "Zeta23.OPICA.completion_leading_jet",
+2026-10-22T13:40:15.4540778Z     "Zeta23.OPICA.zero_ideal_eq_coordinate_power",
+2026-10-22T13:40:15.4541168Z     "Zeta23.OPICA.truncated_taylor_quotient_equiv",
+2026-10-22T13:40:15.4541510Z     "Zeta23.OPICA.completion_quotient_equiv",
+2026-10-22T13:40:15.4541842Z     "Zeta23.OPICA.residual_congr_preserves_residue",
+2026-10-22T13:40:15.4542223Z     "Zeta23.OPICA.finite_residual_products_preserve_residue",
+2026-10-22T13:40:15.4542641Z     "Zeta23.OPICA.iterated_completion_leading_jet",
+2026-10-22T13:40:15.4543162Z     "Zeta23.OPICA.double_completion_leibniz_factor",
+2026-10-22T13:40:15.4543501Z     "Zeta23.OPICA.affine_transport_corrected_eq",
+2026-10-22T13:40:15.4544025Z     "Zeta23.OPICA.affine_transport_leading_jet",
+2026-10-22T13:40:15.4544505Z     "Zeta23.OPICA.analytic_addition_can_cancel_completed_jet",
+2026-10-22T13:40:15.4544897Z     "Zeta23.OPICA.residue_continuous_of_circle_uniform",
+2026-10-22T13:40:15.4545246Z     "Zeta23.OPICA.escaping_tail_keeps_residue",
+2026-10-22T13:40:15.4545564Z     "Zeta23.OPICA.log_one_add_posPart_sub_le",
+2026-10-22T13:40:15.4545880Z     "Zeta23.OPICA.log_one_add_norm_sub_le",
+2026-10-22T13:40:15.4546183Z     "Zeta23.OPICA.subexpAlong_add",
+2026-10-22T13:40:15.4546462Z     "Zeta23.OPICA.subexpAlong_mul",
+2026-10-22T13:40:15.4546747Z     "Zeta23.OPICA.subexpAlong_const_smul",
+2026-10-22T13:40:15.4547056Z     "Zeta23.OPICA.rate_congr_of_subexp_error",
+2026-10-22T13:40:15.4547380Z     "Zeta23.OPICA.posRate_congr_of_subexp_error",
+2026-10-22T13:40:15.4547704Z     "Zeta23.OPICA.rate_limsup_liminf_congr",
+2026-10-22T13:40:15.4548018Z     "Zeta23.OPICA.rate_congr_of_tempered_scale",
+2026-10-22T13:40:15.4548390Z     "Zeta23.OPICA.posRate_congr_of_positive_tempered_scale",
+2026-10-22T13:40:15.4548749Z     "Zeta23.OPICA.affine_chain_expansion",
+2026-10-22T13:40:15.4549072Z     "Zeta23.OPICA.affine_chain_budget",
+2026-10-22T13:40:15.4549385Z     "Zeta23.OPICA.rate_congr_of_accumulated_budget",
+2026-10-22T13:40:15.4549708Z     "Zeta23.OPICA.quiet_cofinal_rate_zero",
+2026-10-22T13:40:15.4550018Z     "Zeta23.OPICA.quotient_map_injective_iff",
+2026-10-22T13:40:15.4550330Z     "Zeta23.OPICA.faithful_transfer_comp",
+2026-10-22T13:40:15.4550634Z     "Zeta23.OPICA.obstruction_path_nonzero",
+2026-10-22T13:40:15.4550940Z     "Zeta23.OPICA.implication_path_nonzero",
+2026-10-22T13:40:15.4551291Z     "Zeta23.OPICA.divisor_count_submultiplicative",
+2026-10-22T13:40:15.4551623Z     "Zeta23.OPICA.divisor_count_square_le",
+2026-10-22T13:40:15.4551947Z     "Zeta23.OPICA.divisor_count_harmonic_sum_le",
+2026-10-22T13:40:15.4552271Z     "Zeta23.OPICA.divisor_count_sqrt_sum_le",
+2026-10-22T13:40:15.4552581Z     "Zeta23.OPICA.primitive_mask_partition",
+2026-10-22T13:40:15.4553073Z     "Zeta23.OPICA.low_primitive_bilinear_bound",
+2026-10-22T13:40:15.4553401Z     "Zeta23.OPICA.masked_typeI_mixed_bound",
+2026-10-22T13:40:15.4553709Z     "Zeta23.OPICA.masked_typeI_square_bound",
+2026-10-22T13:40:15.4554023Z     "Zeta23.OPICA.balanced_energy_comparison",
+2026-10-22T13:40:15.4554335Z     "Zeta23.OPICA.mask_regrouping_difference",
+2026-10-22T13:40:15.4554646Z     "Zeta23.OPICA.regrouped_mask_rate_congr",
+2026-10-22T13:40:15.4555122Z     "Zeta23.OPICA.laplace_holomorphic_of_weighted_L2",
+2026-10-22T13:40:15.4555543Z     "Zeta23.OPICA.laplace_iteratedDeriv_bound_of_weighted_L2",
+2026-10-22T13:40:15.4555921Z     "Zeta23.OPICA.no_visible_pole_of_weighted_L2",
+2026-10-22T13:40:15.4556259Z     "Zeta23.OPICA.range_distance_of_annihilator",
+2026-10-22T13:40:15.4556615Z     "Zeta23.OPICA.not_mem_rangeClosure_of_annihilator",
+2026-10-22T13:40:15.4556969Z     "Zeta23.OPICA.observation_factors_iff_ker_le",
+2026-10-22T13:40:15.4557305Z     "Zeta23.OPICA.contrast_cannot_recover_sum",
+2026-10-22T13:40:15.4557618Z     "Zeta23.OPICA.gram_integral_posSemidef",
+2026-10-22T13:40:15.4557929Z     "Zeta23.OPICA.gram_integral_not_rank_one",
+2026-10-22T13:40:15.4558279Z     "Zeta23.OPICA.single_vector_bound_not_operator_bound",
+2026-10-22T13:40:15.4558644Z     "Zeta23.OPICA.offDiagonal_mask_not_posSemidef",
+2026-10-22T13:40:15.4558994Z     "Zeta23.OPICA.incompatible_iff_left_annihilator",
+2026-10-22T13:40:15.4559354Z     "Zeta23.OPICA.range_distance_eq_annihilator_sup",
+2026-10-22T13:40:15.4559731Z     "Zeta23.OPICA.seven_samples_six_coefficients_consistent",
+2026-10-22T13:40:15.4560131Z     "Zeta23.OPICA.compatibility_under_invertible_left_map",
+2026-10-22T13:40:15.4560509Z     "Zeta23.OPICA.solutions_preserved_under_left_map",
+2026-10-22T13:40:15.4560850Z     "Zeta23.OPICA.signed_sharp_gap_separator",
+2026-10-22T13:40:15.4561172Z     "Zeta23.OPICA.signed_gap_negative_mass_budget",
+2026-10-22T13:40:15.4561505Z     "Zeta23.OPICA.commutator_anti_invariant",
+2026-10-22T13:40:15.4561965Z     "Zeta23.OPICA.commutator_selfdual_projection_zero",
+2026-10-22T13:40:15.4562291Z     "Zeta23.OPICA.fejer_floor_formula",
+2026-10-22T13:40:15.4562609Z     "Zeta23.OPICA.fejer_nativeCompletion_pointwise",
+2026-10-22T13:40:15.4563093Z     "Zeta23.OPICA.fejer_completion_affine_identity",
+2026-10-22T13:40:15.4563456Z     "Zeta23.OPICA.fejer_logInteger_oneSidedDerivatives",
+2026-10-22T13:40:15.4563839Z     "Zeta23.OPICA.native_completed_input_obstruction_order",
+2026-10-22T13:40:15.4564238Z     "Zeta23.OPICA.native_completed_input_obstruction_jet",
+2026-10-22T13:40:15.4564635Z     "Zeta23.OPICA.native_completed_input_obstruction_ne_zero",
+2026-10-22T13:40:15.4565003Z     "Zeta23.OPICA.native_range_distance_lower",
+2026-10-22T13:40:15.4565340Z     "Zeta23.OPICA.step123_output_opica_view_correct",
+2026-10-22T13:40:15.4565679Z     "Zeta23.OPICA.step123_eachPhase_opica_consumer",
+2026-10-22T13:40:15.4566031Z     "Zeta23.OPICA.native_original_drive_low_mask_bound"
+2026-10-22T13:40:15.4566343Z   ],
+2026-10-22T13:40:15.4566537Z   "missing_roots": [],
+2026-10-22T13:40:15.4566758Z   "missing_files": [],
+2026-10-22T13:40:15.4567218Z   "authority": "Static presence and source checks only. A declaration name is not a proof/type/axiom receipt.",
+2026-10-22T13:40:15.4567831Z   "formal_acceptance": "PENDING_COMPILER_AND_SEMANTIC_REVIEW",
+2026-10-22T13:40:15.4568178Z   "RH": "OPEN",
+2026-10-22T13:40:15.4568385Z   "Step4": "OPEN",
+2026-10-22T13:40:15.4568676Z   "checked_commit": "2735cbb15830808c5e6294c428f857d31ff09219",
+2026-10-22T13:40:15.4569085Z   "checked_tree": "b1ebc2edbe0c07a486fcb5cae8df742c9e4745ed",
+2026-10-22T13:40:15.4569469Z   "tracked_source_dirty": false,
+2026-10-22T13:40:15.4569733Z   "source_sha256": {
+2026-10-22T13:40:15.4570179Z     "Zeta23/OPICA/LocalData.lean": "b1a6797161d972d53f7d42cbbde3fda3debda87cc5fb6a8a48b4b990ca3df96a",
+2026-10-22T13:40:15.4570915Z     "Zeta23/OPICA/LocalObstruction.lean": "b2f5fe89510d5410c5dc79d0a3db6266e19992acbd56e2c1a0fcde210fc4a5dc",
+2026-10-22T13:40:15.4571654Z     "Zeta23/OPICA/LocalQuotients.lean": "3fb370790f2c818633b8d11bc6a0019687b5d73711bf041af74f558d19b602fd",
+2026-10-22T13:40:15.4572380Z     "Zeta23/OPICA/ResidueLimits.lean": "428acec3bacdf08ca55c106ff73849ccb2ccedd17a988d48673caacf86550ec0",
+2026-10-22T13:40:15.4573286Z     "Zeta23/OPICA/AffineTransport.lean": "b4b16d9efe3b18d0b5fecba99f60f2746bae4afe404c9d735b2de334d2f7b4be",
+2026-10-22T13:40:15.4574139Z     "Zeta23/OPICA/EnergyRate.lean": "9930def18890ec411050c6ab54891895645e1caf0b11d822a14b859e7d4d2c14",
+2026-10-22T13:40:15.4574841Z     "Zeta23/OPICA/Composition.lean": "21e3f2dfb4ef09f3eb1d4821bfd4f8ac4698bbedc7f67596661e8d34d3bf8271",
+2026-10-22T13:40:15.4575612Z     "Zeta23/OPICA/ObservationCompatibility.lean": "a2d2588be49f537d09e63e00340c43a08bd06f9eae1bd0e0cd9de567b0cca0e2",
+2026-10-22T13:40:15.4576378Z     "Zeta23/OPICA/DivisorBounds.lean": "5e4fddbb249b8cba2997354d9927762bbb7b743270f0765656c17e2fb81bf3fd",
+2026-10-22T13:40:15.4577094Z     "Zeta23/OPICA/PrimitiveMasks.lean": "80708e3b7f3d0883de8ffe1cf0d1ebfd95954147f3b49233f6cb16f960720d4c",
+2026-10-22T13:40:15.4577801Z     "Zeta23/OPICA/DivisorMask.lean": "4500432934635c2705b406c65205e64f6cd791b1ea3285150dc425bcd654ac98",
+2026-10-22T13:40:15.4578492Z     "Zeta23/OPICA/WeightedLaplace.lean": "45c4215ff3fd26c679e9b796a161767116d7e4e5d3894bb970d7ebe1b0547787",
+2026-10-22T13:40:15.4579217Z     "Zeta23/OPICA/RangeSeparation.lean": "a8b3d3be4a113beee1d47344b1d27610f70a8ee886cf0652cc7f88dae0324d57",
+2026-10-22T13:40:15.4579970Z     "Zeta23/OPICA/NativeJetAdapter.lean": "df17b7dbab0bc21e59eab3366df0925e33be66d70ce98d7016757aaaf762da4c",
+2026-10-22T13:40:15.4580754Z     "Zeta23/OPICA/NativeArithmeticAdapter.lean": "b288f221a9cfc369377add99f668215d2818679a9a51eda26a0ec3da34d0a1e1",
+2026-10-22T13:40:15.4581495Z     "Zeta23/OPICA/Involution.lean": "008d24022826c00d997ced57b2b954b238ab02f1c280b7f8ce2aa2aa73a68aa5",
+2026-10-22T13:40:15.4582257Z     "Zeta23/OPICA/LocallyFiniteSignedMeasure.lean": "676f7ced89628a013244d4747f99a1cfcf8f79cd5ddda25ad1f17e2d52119f75",
+2026-10-22T13:40:15.4583322Z     "Zeta23/OPICA/SincTriangle.lean": "537a04cf43f352b7b89b949cfb5fca4c2d7f39a139dde0573cb73821702d3451",
+2026-10-22T13:40:15.4584053Z     "Zeta23/OPICA/SignedHeatSeparator.lean": "179a7ea8f416f450e3f9db8ba39b972d8422d55b800e5f3427d465ff20b092f1",
+2026-10-22T13:40:15.4584796Z     "Zeta23/OPICA/FejerCompletion.lean": "8a0317dc155973425e4c397c872eb219e7f191f97fd746e77a87bd1ad36d9093",
+2026-10-22T13:40:15.4585549Z     "Zeta23/OPICA/FourierCompatibility.lean": "cf672af0cd547330cd368a5cf1d7dfbca5028234c8ad9f2d91e6ebf78a1b6c76",
+2026-10-22T13:40:15.4586310Z     "Zeta23/OPICA/Counterexamples.lean": "9445235c9eedf1022c2f83e21cfe6d7b327214f7d0eb589cfc858fe121471733",
+2026-10-22T13:40:15.4586975Z     "Zeta23/OPICA.lean": "4c5064ea2ff67199f47c5e623699645093ec62bf3c9dcdef782d5ac1ea21693e",
+2026-10-22T13:40:15.4587629Z     "Zeta23/OPICA/Validation.lean": "e6777f8aa35355383872fe41c1357566455ecd53c52cca6b228d2ad3d582456a",
+2026-10-22T13:40:15.4588345Z     "Zeta23/RHRC/OpicaTypeExprExport.lean": "565f0d14a1ed3eefa7c7b0fb7b58f503e87806846064b97ab8146f22f8c78fbf",
+2026-10-22T13:40:15.4589094Z     "Zeta23/RHRC/OpicaBindings.lean": "1da04adc4dea1b8fa2701f694858d17feaa33c2113109e6bfc2b5abdbcebde3c",
+2026-10-22T13:40:15.4589843Z     "research/RHRC/integration/opica/README.md": "2581011fc4fdfdc7946086df776d6add31e6a62d77d9c2148b9e326865211d9e",
+2026-10-22T13:40:15.4590637Z     "research/RHRC/integration/opica/BUILD_SPEC.md": "97fbb13f569257a25843d8bce971be0586b4a155fad468e6573d2a257a4aeb44",
+2026-10-22T13:40:15.4591464Z     "research/RHRC/integration/opica/BUILD_MANIFEST.json": "7314261622be27a1fd678e1cf37bdc14a224717e73d5929b666d067b6bdab4dc",
+2026-10-22T13:40:15.4592447Z     "research/RHRC/integration/opica/PUBLIC_ROOTS.json": "fc14faa899e504089546d0235676c3539d81197d0ff235437f434cf1e336582d",
+2026-10-22T13:40:15.4593834Z     "research/RHRC/integration/opica/PAPER_CROSSWALK.json": "82bcbfaeb54e84b58298a0309bac97eb4d4d3f76e163bf35d9442ee85ded8218",
+2026-10-22T13:40:15.4594707Z     "research/RHRC/integration/opica/SOURCE_REGISTER.json": "9342b2a3ba9ab08d32c788723920139e47674a61003411db8fd0c384dbaa768d",
+2026-10-22T13:40:15.4595568Z     "research/RHRC/integration/opica/PROTECTED_STATE.json": "0f6a28e2f9ebd14b95f0201e22918d29af6c81ec4dd3f044a85a8413239bb7c7",
+2026-10-22T13:40:15.4596452Z     "research/RHRC/integration/opica/WORKFLOW_CONTRACT.json": "f9142f84bc0efb0b1f38eaed2ccf01195ec30c576127dfba4a37dc074e6740b4",
+2026-10-22T13:40:15.4597481Z     "research/RHRC/integration/opica/POST_GREEN_RESEARCH.md": "6c79c24d9ae60dd0df6d30244a4eb328966c62b3c58ccf03fa01a10906db6dc6",
+2026-10-22T13:40:15.4598356Z     "research/RHRC/integration/opica/validate_contract.py": "cb46e19672a54db2d133be5aa3e0619b4aa194ee42535d04d763687d8740412b",
+2026-10-22T13:40:15.4599226Z     "research/RHRC/integration/opica/build_receipt.py": "c4918486016d25b16caa1013666a22979f8ebe86e41369cbf616a8a2b9512ddc",
+2026-10-22T13:40:15.4600058Z     "research/RHRC/integration/opica/harvest_workflows.py": "a9638457ea44744cd30ae989a28aa15166d8e7b02b60f7dfdc77e4a00f66ed65",
+2026-10-22T13:40:15.4600906Z     "research/RHRC/integration/opica/dependency_delta.py": "f2253307616f93d3e70fcdb3133eff7382a92f91dad89ae793dd195c044e0d23",
+2026-10-22T13:40:15.4601732Z     "research/RHRC/integration/opica/check_exact.py": "42a1b29e979a415647b2ad477df4aa8e00b46f1afa52c1748748af4c79aa6985",
+2026-10-22T13:40:15.4602559Z     "research/RHRC/integration/opica/tests/test_contract.py": "4d7523ff61b728fb575a955ce8fd52cb2b038439a03927c4762e3ad923e3cebf",
+2026-10-22T13:40:15.4603588Z     "research/RHRC/integration/opica/tests/test_receipt.py": "1e3ba58c9a8a8f737265bbb147679c0f6cabc07c3b322590a2866e76deef12c7",
+2026-10-22T13:40:15.4604477Z     "research/RHRC/integration/opica/tests/test_workflow_harvest.py": "1c252390e3915d099bf29767a3eced2bc1f3e80af10ccd500aa85cd3840de7a9",
+2026-10-22T13:40:15.4605393Z     "research/RHRC/integration/opica/tests/test_file_classes.py": "ece94c5e5225d1c0e5c39db8e4d2ecde798884b81bf314df245ff9f3c8d4d483",
+2026-10-22T13:40:15.4606298Z     "research/RHRC/integration/opica/tests/test_no_scope_promotion.py": "6828be2ddf1960c035c4d490210188863ffc36924134e16e169e69945fb6e7ef",
+2026-10-22T13:40:15.4607338Z     "research/RHRC/integration/opica/tests/test_dependency_delta.py": "2b711600657ddaa39b3f7c8a48bea8400e3992e86931744f335098e5382a31f8",
+2026-10-22T13:40:15.4608307Z     "research/RHRC/integration/opica/paper/OPICA_Paper_Construction_v1_0_2026-10-21.md": "6c6d43857636d635c6da018b38046b19cdff4bee780840ac67ae81d32bec1777",
+2026-10-22T13:40:15.4609382Z     "research/RHRC/integration/opica/paper/OPICA_Lean_Implementation_Contract_2026-10-21.md": "ea8c59913b2733b4758b2d7cbdbc698d88dd5570d3d24f057a117ae12398a21a",
+2026-10-22T13:40:15.4610441Z     "research/RHRC/integration/opica/paper/OPICA_Theorem_and_Audit_Ledger_2026-10-21.json": "ff8a163e47208996b0a4ef70197414461f956aee45c470c42b56b9386178c08f",
+2026-10-22T13:40:15.4611309Z     ".github/workflows/rhrc_opica.yml": "747662ef3a33d14378c626c879423d3e9a810f37dc6305e9c28107435e2cbcc9",
+2026-10-22T13:40:15.4612062Z     "Zeta23/RHRC/RegisteredClaimBindings.lean": "4a70b8356707381ae388aee1d392f6e9eaddf57848e83d20800d8773fff4b47a",
+2026-10-22T13:40:15.4612972Z     "research/RHRC/CLAIM_REGISTRY.json": "d01589e5dd549ba0fe5439c606140b81860cf70c3fbf4f2c704d22970ff1f441",
+2026-10-22T13:40:15.4613740Z     "research/RHRC/REGISTERED_THEOREM_BINDINGS.json": "4a750db4f8e46f637befee4c5f093545fa549a450bc69fe475d41481a3c63d19",
+2026-10-22T13:40:15.4614533Z     "research/RHRC/graph/FILE_CLASSES.json": "5a616a8e78dcdd8ab38118f7f098302f5bbc112db63ad897505d31f0ece004cf",
+2026-10-22T13:40:15.4615321Z     "research/RHRC/graph/SEMANTIC_CLOSURE_CONFIG.json": "bac2b6773d5a210269580d9a958b25218a51a0b215f7e5a2674b6ba36a19e5ae",
+2026-10-22T13:40:15.4616086Z     "research/RHRC/tools/run_suite.py": "8960af1cbf4881d0290346c1c38b0e52aa5cef377edb317580d347ec17924214",
+2026-10-22T13:40:15.4616705Z     "README.md": "17bf069eee20c665f2e8d089924965fb68b38f32693aba8354831b76a8fb4069",
+2026-10-22T13:40:15.4617297Z     "research/RHRC/README.md": "608d4f33a6e55ba1b9c8748017588674639af22e6ebced0fadd23bb3d4712fa1",
+2026-10-22T13:40:15.4617992Z     "research/RHRC/CURRENT_RESEARCH_PLAN.md": "36dbe2d154a12b2697ab9b21a03dc79ab45736f11e38266a84e3cea26af69251"
+2026-10-22T13:40:15.4618490Z   },
+2026-10-22T13:40:15.4618693Z   "phase": "preflight"
+2026-10-22T13:40:15.4618925Z }
+2026-10-22T13:40:15.4882067Z Traceback (most recent call last):
+2026-10-22T13:40:15.4897388Z   File "/home/runner/work/zeta-23-lean/zeta-23-lean/research/RHRC/tools/run_suite.py", line 65, in <module>
+2026-10-22T13:40:15.4898519Z     raise SystemExit(main())
+2026-10-22T13:40:15.4898915Z                      ~~~~^^
+2026-10-22T13:40:15.4899669Z   File "/home/runner/work/zeta-23-lean/zeta-23-lean/research/RHRC/tools/run_suite.py", line 29, in main
+2026-10-22T13:40:15.4900534Z     run([sys.executable, str(opica / "validate_contract.py")])
+2026-10-22T13:40:15.4901088Z     ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-10-22T13:40:15.4901889Z   File "/home/runner/work/zeta-23-lean/zeta-23-lean/research/RHRC/tools/run_suite.py", line 12, in run
+2026-10-22T13:40:15.4902699Z     subprocess.run(cmd, cwd=REPO, check=True)
+2026-10-22T13:40:15.4903464Z     ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-10-22T13:40:15.4904208Z   File "/opt/hostedtoolcache/Python/3.14.8/x64/lib/python3.14/subprocess.py", line 578, in run
+2026-10-22T13:40:15.4905021Z     raise CalledProcessError(retcode, process.args,
+2026-10-22T13:40:15.4905538Z                              output=stdout, stderr=stderr)
+2026-10-22T13:40:15.4907047Z subprocess.CalledProcessError: Command '['/opt/hostedtoolcache/Python/3.14.8/x64/bin/python', '/home/runner/work/zeta-23-lean/zeta-23-lean/research/RHRC/integration/opica/validate_contract.py']' returned non-zero exit status 1.
+2026-10-22T13:40:15.4999704Z ##[error]Process completed with exit code 1.
+2026-10-22T13:40:15.5169424Z Post job cleanup.
+2026-10-22T13:40:15.6078265Z [command]/usr/bin/git version
+2026-10-22T13:40:15.6131825Z git version 2.55.0
+2026-10-22T13:40:15.6181425Z Temporarily overriding HOME='/home/runner/work/_temp/b435b80e-c418-4e1c-9275-6c6bd7dc4d9c' before making global git config changes
+2026-10-22T13:40:15.6184241Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-22T13:40:15.6188281Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/zeta-23-lean/zeta-23-lean
+2026-10-22T13:40:15.6240408Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-22T13:40:15.6287473Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-22T13:40:15.6689684Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-22T13:40:15.6730596Z http.https://github.com/.extraheader
+2026-10-22T13:40:15.6749301Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-10-22T13:40:15.6832619Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-22T13:40:15.7304170Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-22T13:40:15.7350254Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-22T13:40:15.7925350Z Cleaning up orphan processes
+2026-10-22T13:40:15.8486960Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+

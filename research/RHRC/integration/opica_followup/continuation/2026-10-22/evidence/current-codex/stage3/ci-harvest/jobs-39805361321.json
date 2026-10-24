@@ -1,0 +1,113 @@
+{
+  "total_count": 4,
+  "jobs": [
+    {
+      "id": 119917056447,
+      "run_id": 39805361321,
+      "workflow_name": "RHRC research and Lean checks",
+      "head_branch": "research/opica-native-followup",
+      "run_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/runs/39805361321",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOT94UfM8AAAAb650Rvw",
+      "head_sha": "6c44ff564df025770a315f9dbfc091fc10ff6f36",
+      "url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/jobs/119917056447",
+      "html_url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39805361321/job/119917056447",
+      "status": "queued",
+      "conclusion": null,
+      "created_at": "2026-10-22T15:29:49Z",
+      "started_at": "2026-10-22T15:29:49Z",
+      "completed_at": null,
+      "name": "python-rhrc",
+      "steps": [],
+      "check_run_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/check-runs/119917056447",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 0,
+      "runner_name": "",
+      "runner_group_id": 0,
+      "runner_group_name": ""
+    },
+    {
+      "id": 119917056824,
+      "run_id": 39805361321,
+      "workflow_name": "RHRC research and Lean checks",
+      "head_branch": "research/opica-native-followup",
+      "run_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/runs/39805361321",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOT94UfM8AAAAb650TOA",
+      "head_sha": "6c44ff564df025770a315f9dbfc091fc10ff6f36",
+      "url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/jobs/119917056824",
+      "html_url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39805361321/job/119917056824",
+      "status": "queued",
+      "conclusion": null,
+      "created_at": "2026-10-22T15:29:49Z",
+      "started_at": "2026-10-22T15:29:49Z",
+      "completed_at": null,
+      "name": "rhkg-compiler-receipt",
+      "steps": [],
+      "check_run_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/check-runs/119917056824",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 0,
+      "runner_name": "",
+      "runner_group_id": 0,
+      "runner_group_name": ""
+    },
+    {
+      "id": 119917056899,
+      "run_id": 39805361321,
+      "workflow_name": "RHRC research and Lean checks",
+      "head_branch": "research/opica-native-followup",
+      "run_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/runs/39805361321",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOT94UfM8AAAAb650Tgw",
+      "head_sha": "6c44ff564df025770a315f9dbfc091fc10ff6f36",
+      "url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/jobs/119917056899",
+      "html_url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39805361321/job/119917056899",
+      "status": "queued",
+      "conclusion": null,
+      "created_at": "2026-10-22T15:29:49Z",
+      "started_at": "2026-10-22T15:29:49Z",
+      "completed_at": null,
+      "name": "lean",
+      "steps": [],
+      "check_run_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/check-runs/119917056899",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 0,
+      "runner_name": "",
+      "runner_group_id": 0,
+      "runner_group_name": ""
+    },
+    {
+      "id": 119917057183,
+      "run_id": 39805361321,
+      "workflow_name": "RHRC research and Lean checks",
+      "head_branch": "research/opica-native-followup",
+      "run_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/runs/39805361321",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOT94UfM8AAAAb650Unw",
+      "head_sha": "6c44ff564df025770a315f9dbfc091fc10ff6f36",
+      "url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/jobs/119917057183",
+      "html_url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39805361321/job/119917057183",
+      "status": "queued",
+      "conclusion": null,
+      "created_at": "2026-10-22T15:29:49Z",
+      "started_at": "2026-10-22T15:29:49Z",
+      "completed_at": null,
+      "name": "r003-normalization-audit",
+      "steps": [],
+      "check_run_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/check-runs/119917057183",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 0,
+      "runner_name": "",
+      "runner_group_id": 0,
+      "runner_group_name": ""
+    }
+  ]
+}

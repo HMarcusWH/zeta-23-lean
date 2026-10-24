@@ -1,0 +1,85 @@
+[
+  {
+    "path": "AUDIT.md",
+    "before_sha256": "3ae31acfb36eef59bb63e0781f6fde66a2a5d3d46b859bc81ffc00dabc8f4e09",
+    "after_sha256": "20f4d509f16ddbbe1ac16aa18a25a193f6cde0c967456e93b99fc5c23958e6d6",
+    "before_bytes": 27820,
+    "after_bytes": 27928,
+    "historical_bytes": {
+      "kind": "historical suffix after navigation separator",
+      "sha256": "79a02a703734e0aaad66647653ccab2986a45a9e444ba4eb83c28778ab0c94dc",
+      "bytes": 26554
+    }
+  },
+  {
+    "path": "FORK_NOTES.md",
+    "before_sha256": "aaab3241840ba6cb3085452fb2791c19391f3c14f43ebcdaabbb2baa3a144cac",
+    "after_sha256": "b186d9d72fde095838dd61192b361d7717916de74a4c754b87b06d7f1e98ee3d",
+    "before_bytes": 21249,
+    "after_bytes": 21357,
+    "historical_bytes": {
+      "kind": "historical suffix after navigation separator",
+      "sha256": "384fa5f32580d4ca1e34ae3809320f8942d3bf994f0269d1b918584db01bf641",
+      "bytes": 19981
+    }
+  },
+  {
+    "path": "research/RHRC/DOCUMENTATION_AUTHORITY.md",
+    "before_sha256": "34df2bc6c5ff56566d29b3a8317f36534dbba6bae7140841b81d5280f01a7f6b",
+    "after_sha256": "d8b9170c288216e01a764b4a948ba3a44350d24c488be02516db65e9616519dc",
+    "before_bytes": 34241,
+    "after_bytes": 34335,
+    "historical_bytes": {
+      "kind": "historical suffix after navigation separator",
+      "sha256": "6ae4ba8e74433afa52f313a67d1d4ad98a7f260b347971cd7591cec6826d5956",
+      "bytes": 33006
+    }
+  },
+  {
+    "path": "research/RHRC/VALIDATION_PROTOCOL.md",
+    "before_sha256": "736a67742c61816f70d9aa0be846d47bfed9e16f3f311172b3217f66c4235289",
+    "after_sha256": "e08baedbe485245772b6055b1e1ef2951270b042355fe5aed0c5d6e8e8e36d9f",
+    "before_bytes": 41426,
+    "after_bytes": 41520,
+    "historical_bytes": {
+      "kind": "historical suffix after navigation separator",
+      "sha256": "c39a39b898f7512596b7962159420f93ee6b2c02a015725d7e1c42228341ff20",
+      "bytes": 40187
+    }
+  },
+  {
+    "path": "research/RHRC/graph/README.md",
+    "before_sha256": "5247bb075493796b493dfcd2137334ebb4718bc4ba1e2c37a9e6fbc98835f06e",
+    "after_sha256": "806d732741e4d5358bf756b10268761aa269d462d98bd95d7432a6e112d32af5",
+    "before_bytes": 17623,
+    "after_bytes": 17821,
+    "historical_bytes": {
+      "kind": "unchanged prefix and historical suffix outside OPICA section",
+      "prefix_sha256": "1e2e9a3f8331a4c5dc7d308ce1f542eacf585081d76390e56172efb20ab6d003",
+      "suffix_sha256": "70833f0054f05e15d6ccf181d6782209293a589b5fa23cc13806c0d87c7be97b"
+    }
+  },
+  {
+    "path": "research/RHRC/integration/README.md",
+    "before_sha256": "cac2f05b95b905ad3d3ea22b59d9a0c36158965306818b7ef05cb997f1543b9e",
+    "after_sha256": "0470a3181ea91a825ba72b05a53f9f54eb43ffcda14863295d121f9d6a0532d3",
+    "before_bytes": 5483,
+    "after_bytes": 5636,
+    "historical_bytes": {
+      "kind": "unchanged prefix and historical suffix outside OPICA section",
+      "prefix_sha256": "1e716e70e42d9b70d3d40ee05620026b5f337d328bc3cc49cfc49ea00b5f8ad1",
+      "suffix_sha256": "8b77e801efde3c52f3a9ba7014af12b8fb5ae8f0087abe67e71167ceefbda565"
+    }
+  },
+  {
+    "path": "research/RHRC/graph/OPICA_FOLLOWUP_CURRENT_STATE.md",
+    "before_sha256": "408b886fb0f220a10562b9cdff77332de86199be2e683dacb1a73ce3a87df72f",
+    "after_sha256": "de9aabe7985f839c39b62e82c3407c97bc21d831e283199ab5d81784fe68f327",
+    "before_bytes": 9501,
+    "after_bytes": 5403,
+    "historical_bytes": {
+      "kind": "entire manual navigation page reviewed; prior Stage1 text archived by exact before bytes",
+      "before_sha256": "408b886fb0f220a10562b9cdff77332de86199be2e683dacb1a73ce3a87df72f"
+    }
+  }
+]

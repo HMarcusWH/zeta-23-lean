@@ -1,0 +1,179 @@
+{
+  "schema": "OPICA_STAGE2_IMPLEMENTATION_CROSSWALK_V1",
+  "id": "STAGE2_2026_10_22_01",
+  "role": "Versioned implementation provenance; no frozen mathematical scope amendment",
+  "original_primary_roots": 100,
+  "acceptance_units": 28,
+  "frozen_statement_changes": [],
+  "new_assumptions": [],
+  "new_mandatory_roots": [],
+  "rows": [
+    {
+      "root": "Zeta23.OPICAFollowup.native_auxiliary_top_moment",
+      "paper_ids": [
+        "J5.2",
+        "MS1"
+      ],
+      "path": "Zeta23/OPICAFollowup/MultiplicityTail.lean",
+      "source_sha256": "43466c43684b91e5f4cff2b34ea5df178d1bf196c35946e8411bab9cdfb2e123",
+      "frozen_contract_sha256": "0340cb8ee6024b630d54fef419a584b263fa8e3f4582822ff3207b44a5ef9708",
+      "evidence": [
+        "evidence/current-codex/stage2/multiplicity/STATUS.json"
+      ],
+      "frozen_project_imports": [
+        "Zeta23.OPICAFollowup.AuxiliaryCompletions",
+        "Zeta23.OPICAFollowup.UniformSourceBounds",
+        "Zeta23.ExceptionalZero.NativeActualInputZeroJets"
+      ],
+      "actual_direct_imports": [
+        "Zeta23.CCM.NativeCompletionEquation",
+        "Mathlib.MeasureTheory.Function.AEEqOfIntegral",
+        "Mathlib.Analysis.Convolution",
+        "Zeta23.OPICAFollowup.AuxiliaryCompletions",
+        "Zeta23.OPICAFollowup.UniformSourceBounds",
+        "Zeta23.ExceptionalZero.NativeActualInputZeroJets",
+        "Mathlib.Analysis.Calculus.Deriv.Polynomial",
+        "Mathlib.MeasureTheory.Integral.Gamma",
+        "Mathlib.MeasureTheory.Function.L2Space"
+      ],
+      "added_project_imports": [
+        "Zeta23.CCM.NativeCompletionEquation"
+      ],
+      "omitted_planned_project_imports": [],
+      "review": "Actual causal c_k*log-weighted integer drive, unchanged parent completion identity, analytic continuation and all lower/top derivative moments. Literal top moment (-1)^m r_k J_d zeta^(m), no extra factorial.",
+      "global_dependency_reconciliation": "OPEN_FULL_COMPILER_DAG_AND_MANIFEST_REVIEW_REQUIRED",
+      "authority": "Manual implementation crosswalk, not compiler-derived registered USES_CONSTANT edges"
+    },
+    {
+      "root": "Zeta23.OPICAFollowup.native_auxiliary_tail_residual_lower",
+      "paper_ids": [
+        "J5.2",
+        "MS1"
+      ],
+      "path": "Zeta23/OPICAFollowup/MultiplicityTail.lean",
+      "source_sha256": "43466c43684b91e5f4cff2b34ea5df178d1bf196c35946e8411bab9cdfb2e123",
+      "frozen_contract_sha256": "c08b494edcb7a884836449d6a4a176afcd422da98403e37d2e9567aac5c1f626",
+      "evidence": [
+        "evidence/current-codex/stage2/multiplicity/STATUS.json"
+      ],
+      "frozen_project_imports": [
+        "Zeta23.OPICAFollowup.AuxiliaryCompletions",
+        "Zeta23.OPICAFollowup.UniformSourceBounds",
+        "Zeta23.ExceptionalZero.NativeActualInputZeroJets"
+      ],
+      "actual_direct_imports": [
+        "Zeta23.CCM.NativeCompletionEquation",
+        "Mathlib.MeasureTheory.Function.AEEqOfIntegral",
+        "Mathlib.Analysis.Convolution",
+        "Zeta23.OPICAFollowup.AuxiliaryCompletions",
+        "Zeta23.OPICAFollowup.UniformSourceBounds",
+        "Zeta23.ExceptionalZero.NativeActualInputZeroJets",
+        "Mathlib.Analysis.Calculus.Deriv.Polynomial",
+        "Mathlib.MeasureTheory.Integral.Gamma",
+        "Mathlib.MeasureTheory.Function.L2Space"
+      ],
+      "added_project_imports": [
+        "Zeta23.CCM.NativeCompletionEquation"
+      ],
+      "omitted_planned_project_imports": [],
+      "review": "Actual finite-history residual, exact conjugated shifted Laguerre pairing and Cauchy-Schwarz; arbitrary multiplicity and every real tail threshold.",
+      "global_dependency_reconciliation": "OPEN_FULL_COMPILER_DAG_AND_MANIFEST_REVIEW_REQUIRED",
+      "authority": "Manual implementation crosswalk, not compiler-derived registered USES_CONSTANT edges"
+    },
+    {
+      "root": "Zeta23.OPICAFollowup.native_terminal_memory_lower",
+      "paper_ids": [
+        "J5.2",
+        "MS1"
+      ],
+      "path": "Zeta23/OPICAFollowup/MultiplicityTail.lean",
+      "source_sha256": "43466c43684b91e5f4cff2b34ea5df178d1bf196c35946e8411bab9cdfb2e123",
+      "frozen_contract_sha256": "e9ba2aea7c8ae83caca8aaa55ce9fd4825ba48f061fc4b36c128ba75779cb3f7",
+      "evidence": [
+        "evidence/current-codex/stage2/multiplicity/STATUS.json"
+      ],
+      "frozen_project_imports": [
+        "Zeta23.OPICAFollowup.AuxiliaryCompletions",
+        "Zeta23.OPICAFollowup.UniformSourceBounds",
+        "Zeta23.ExceptionalZero.NativeActualInputZeroJets"
+      ],
+      "actual_direct_imports": [
+        "Zeta23.CCM.NativeCompletionEquation",
+        "Mathlib.MeasureTheory.Function.AEEqOfIntegral",
+        "Mathlib.Analysis.Convolution",
+        "Zeta23.OPICAFollowup.AuxiliaryCompletions",
+        "Zeta23.OPICAFollowup.UniformSourceBounds",
+        "Zeta23.ExceptionalZero.NativeActualInputZeroJets",
+        "Mathlib.Analysis.Calculus.Deriv.Polynomial",
+        "Mathlib.MeasureTheory.Integral.Gamma",
+        "Mathlib.MeasureTheory.Function.L2Space"
+      ],
+      "added_project_imports": [
+        "Zeta23.CCM.NativeCompletionEquation"
+      ],
+      "omitted_planned_project_imports": [],
+      "review": "Actual required exponentially weighted L1 terminal memory, actual truncated completion tail upper bound and residual lower bound; retain subtraction and positive part.",
+      "global_dependency_reconciliation": "OPEN_FULL_COMPILER_DAG_AND_MANIFEST_REVIEW_REQUIRED",
+      "authority": "Manual implementation crosswalk, not compiler-derived registered USES_CONSTANT edges"
+    },
+    {
+      "root": "Zeta23.OPICAFollowup.weighted_mixture_exists_fourier",
+      "paper_ids": [
+        "R1-HT1"
+      ],
+      "path": "Zeta23/OPICAFollowup/WeightedMixing.lean",
+      "source_sha256": "5b0d86adcf72167a45b3922689911a5591da4c3ecab7fd19ceb246de5f00998a",
+      "frozen_contract_sha256": "1c9b5ee96472b5cbbb9b68c7db555d87143a01e92276273e5f7a2860c8fff0f7",
+      "evidence": [
+        "evidence/current-codex/stage2/weighted/STATUS.json"
+      ],
+      "frozen_project_imports": [
+        "Zeta23.OPICAFollowup.DilatedComb",
+        "Zeta23.CCM.NativeIntegerPrimeConvolution"
+      ],
+      "actual_direct_imports": [
+        "Zeta23.OPICAFollowup.DilatedComb",
+        "Mathlib.MeasureTheory.Integral.Prod",
+        "Mathlib.MeasureTheory.Measure.WithDensity",
+        "Mathlib.MeasureTheory.Integral.Bochner.ContinuousLinearMap",
+        "Mathlib.Tactic"
+      ],
+      "added_project_imports": [],
+      "omitted_planned_project_imports": [
+        "Zeta23.CCM.NativeIntegerPrimeConvolution"
+      ],
+      "review": "Actual noncompact complex parameter measure with true Euclidean variation exponential moment, weighted counting product pushforward, coordinate Jordan construction, absolute Fubini and reflection without conjugation. Planned native convolution import deferred to absent inverse.",
+      "global_dependency_reconciliation": "OPEN_FULL_COMPILER_DAG_AND_MANIFEST_REVIEW_REQUIRED",
+      "authority": "Manual implementation crosswalk, not compiler-derived registered USES_CONSTANT edges"
+    },
+    {
+      "root": "Zeta23.OPICAFollowup.near_gap_mass_bound",
+      "paper_ids": [
+        "R1-HT2"
+      ],
+      "path": "Zeta23/OPICAFollowup/NearGapLimits.lean",
+      "source_sha256": "aa5915cea7e35ea7efb90f4d4d95f6d3773b42666b0690a4a491f8b73fce1c5a",
+      "frozen_contract_sha256": "c4ddf170119a0782b824765d9995fac085b8e3a93f271a3cf60c0216663c9788",
+      "evidence": [
+        "evidence/current-codex/stage2/near-gap/STATUS.json"
+      ],
+      "frozen_project_imports": [
+        "Zeta23.OPICAFollowup.DilatedComb",
+        "Zeta23.OPICA.SignedHeatSeparator"
+      ],
+      "actual_direct_imports": [
+        "Zeta23.OPICAFollowup.DilatedComb",
+        "Zeta23.OPICA.SignedHeatSeparator"
+      ],
+      "added_project_imports": [],
+      "omitted_planned_project_imports": [],
+      "review": "Actual locally finite signed Jordan carrier with genuine Fourier selfduality, linear total variation growth and literal sinc/triangle pairing; no evenness needed. Actual nonzero dilation family remains absent.",
+      "global_dependency_reconciliation": "OPEN_FULL_COMPILER_DAG_AND_MANIFEST_REVIEW_REQUIRED",
+      "authority": "Manual implementation crosswalk, not compiler-derived registered USES_CONSTANT edges"
+    }
+  ],
+  "full_release_accepted": false,
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "independent_closing_inequalities": "OPEN"
+}

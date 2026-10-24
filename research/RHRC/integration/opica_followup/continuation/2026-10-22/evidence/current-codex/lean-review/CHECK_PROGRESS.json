@@ -1,0 +1,6 @@
+{
+  "module": "MaskedNativeRate",
+  "module_exit": 0,
+  "consumer": "ExpectedMasks",
+  "consumer_exit": 0
+}

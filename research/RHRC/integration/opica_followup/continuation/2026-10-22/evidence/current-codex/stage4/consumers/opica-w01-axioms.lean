@@ -1,0 +1,3 @@
+import Zeta23.OPICAFollowup.Consumers
+#print axioms Zeta23.OPICAFollowup.step123_word_jet_consumer
+#print axioms Zeta23.OPICAFollowup.step123_word_contour_consumer

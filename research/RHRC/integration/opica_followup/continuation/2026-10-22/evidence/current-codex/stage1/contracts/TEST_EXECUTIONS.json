@@ -1,0 +1,60 @@
+{
+  "schema": "OPICA_STAGE1_TEST_EXECUTIONS_V1",
+  "tests": [
+    {
+      "mode": "normal",
+      "command": [
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\tools\\python-3.13.5-embed-amd64\\python.exe",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\research\\RHRC\\integration\\opica_followup\\tests",
+        "-p",
+        "test_*.py",
+        "-v"
+      ],
+      "started_at": "2026-10-22T14:33:22.484236+00:00",
+      "finished_at": "2026-10-22T14:34:25.838891+00:00",
+      "exit_code": 0,
+      "tests": 185,
+      "log": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage1-2026-10-22\\contracts\\full-child-normal.log",
+      "sha256": "ae939332915cc8203ad4047be8fea02319f07548a2826d96c8b00c9eb1f046ae"
+    },
+    {
+      "mode": "optimized",
+      "command": [
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\tools\\python-3.13.5-embed-amd64\\python.exe",
+        "-B",
+        "-O",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\research\\RHRC\\integration\\opica_followup\\tests",
+        "-p",
+        "test_*.py",
+        "-v"
+      ],
+      "started_at": "2026-10-22T14:34:25.839055+00:00",
+      "finished_at": "2026-10-22T14:35:30.567127+00:00",
+      "exit_code": 0,
+      "tests": 185,
+      "log": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage1-2026-10-22\\contracts\\full-child-optimized.log",
+      "sha256": "9ceee2e218e61a902890c4dce98f6c188c9ba0c300e97bafc00ff0c99bfb6ee7"
+    }
+  ],
+  "tested_source_sha256": {
+    "build_receipt.py": "595f6ddca04699c9bc47e61cdcfa3a4c50a6e95d44871cd839b6976e7d688c8a",
+    "validate_contract.py": "4e0fe00909b8e18018bbb8161598237d8cbbac8c6c67a13eb671526e58190766",
+    "tests/test_receipt.py": "05178dec40cd432eb0d2d1707fc9f01073917e16d8b2e3d7f3827afbe6527872",
+    "tests/test_contract.py": "5d18b98b74ad3cef78d9d10755f3a665f5385b4e5b0979b57d4ae8f7fd0fb8e1"
+  },
+  "source_unchanged_during_tests": true,
+  "scope": "Python validator/producer rejection logic; synthetic full100 protocol fixtures are not Lean proofs",
+  "compiler_proof_production_executed": false,
+  "release_ready": false,
+  "RH": "OPEN",
+  "Step4": "OPEN"
+}

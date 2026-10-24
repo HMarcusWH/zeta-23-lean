@@ -1,0 +1,13 @@
+'Zeta23.OPICAFollowup.weighted_mixture_exists_fourier' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OPICAWeightedIndependent.expected_weighted_mixture_exists_fourier' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'OPICAWeightedIndependent.expected_positive_actual_measure' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OPICAWeightedIndependent.expected_positive_parameter_atom' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OPICAWeightedIndependent.expected_infinite_output_mass' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OPICAWeightedIndependent.expected_positive_origin' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OPICAWeightedIndependent.expected_imaginary_origin' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OPICAWeightedIndependent.expected_full_product_integrability' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'OPICAWeightedIndependent.expected_real_parameter_output' depends on axioms: [propext, Classical.choice, Quot.sound]

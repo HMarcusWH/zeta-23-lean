@@ -1,0 +1,121 @@
+{
+  "python": "3.13.5 (tags/v3.13.5:6cb20a2, Jun 11 2025, 16:15:46) [MSC v.1943 64 bit (AMD64)]",
+  "runs": [
+    {
+      "lane": "parent-full",
+      "mode": "normal",
+      "argv": [
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\tools\\python-3.13.5-embed-amd64\\python.exe",
+        "-B",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-publish-2026-10-22\\contracts\\run_review_tests.py",
+        "parent-full"
+      ],
+      "cwd": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-publish-2026-10-22\\contracts\\fixture",
+      "exit_code": 1,
+      "log": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-publish-2026-10-22\\contracts\\parent-full-normal.log",
+      "sha256": "7b054d325c8632c91213c99f8c7c872f6a1cb854e551d99d286a01ce7d82b1b1"
+    },
+    {
+      "lane": "parent-full",
+      "mode": "optimized",
+      "argv": [
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\tools\\python-3.13.5-embed-amd64\\python.exe",
+        "-B",
+        "-O",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-publish-2026-10-22\\contracts\\run_review_tests.py",
+        "parent-full"
+      ],
+      "cwd": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-publish-2026-10-22\\contracts\\fixture",
+      "exit_code": 1,
+      "log": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-publish-2026-10-22\\contracts\\parent-full-optimized.log",
+      "sha256": "45d21ffffe7d676e4d4bf83945e0288f73078e98cf0b28a89ebd4a0b2aee2973"
+    },
+    {
+      "lane": "parent-runnable",
+      "mode": "normal",
+      "argv": [
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\tools\\python-3.13.5-embed-amd64\\python.exe",
+        "-B",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-publish-2026-10-22\\contracts\\run_review_tests.py",
+        "parent-runnable"
+      ],
+      "cwd": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-publish-2026-10-22\\contracts\\fixture",
+      "exit_code": 0,
+      "log": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-publish-2026-10-22\\contracts\\parent-runnable-normal.log",
+      "sha256": "eff4e767016ae26f6b5279d61cabb8e8647d5afb2b733b1380e799ed6ee8dc8c"
+    },
+    {
+      "lane": "parent-runnable",
+      "mode": "optimized",
+      "argv": [
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\tools\\python-3.13.5-embed-amd64\\python.exe",
+        "-B",
+        "-O",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-publish-2026-10-22\\contracts\\run_review_tests.py",
+        "parent-runnable"
+      ],
+      "cwd": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-publish-2026-10-22\\contracts\\fixture",
+      "exit_code": 0,
+      "log": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-publish-2026-10-22\\contracts\\parent-runnable-optimized.log",
+      "sha256": "6636252fc651e9a869163570bced2c297e057fde2e9635bb07d4337085f8b53b"
+    },
+    {
+      "lane": "child-extension",
+      "mode": "normal",
+      "argv": [
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\tools\\python-3.13.5-embed-amd64\\python.exe",
+        "-B",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-publish-2026-10-22\\contracts\\run_review_tests.py",
+        "child-extension"
+      ],
+      "cwd": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-publish-2026-10-22\\contracts\\fixture",
+      "exit_code": 0,
+      "log": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-publish-2026-10-22\\contracts\\child-extension-normal.log",
+      "sha256": "404b1f765db9fafd14ea44f2fde6eb397d34b3630e48835b5b700000238fb2de"
+    },
+    {
+      "lane": "child-extension",
+      "mode": "optimized",
+      "argv": [
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\tools\\python-3.13.5-embed-amd64\\python.exe",
+        "-B",
+        "-O",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-publish-2026-10-22\\contracts\\run_review_tests.py",
+        "child-extension"
+      ],
+      "cwd": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-publish-2026-10-22\\contracts\\fixture",
+      "exit_code": 0,
+      "log": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-publish-2026-10-22\\contracts\\child-extension-optimized.log",
+      "sha256": "1b5bb7841c2c4dbf87621ded082f39df5b9c7aa381163cdcea6cdd46c8ffe5be"
+    },
+    {
+      "lane": "child-all",
+      "mode": "normal",
+      "argv": [
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\tools\\python-3.13.5-embed-amd64\\python.exe",
+        "-B",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-publish-2026-10-22\\contracts\\run_review_tests.py",
+        "child-all"
+      ],
+      "cwd": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-publish-2026-10-22\\contracts\\fixture",
+      "exit_code": 0,
+      "log": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-publish-2026-10-22\\contracts\\child-all-normal.log",
+      "sha256": "133adade638dd4b84225fb6d56d6eee8ee6d7b5112b11e3095ea93ad1ff4b45d"
+    },
+    {
+      "lane": "child-all",
+      "mode": "optimized",
+      "argv": [
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\tools\\python-3.13.5-embed-amd64\\python.exe",
+        "-B",
+        "-O",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-publish-2026-10-22\\contracts\\run_review_tests.py",
+        "child-all"
+      ],
+      "cwd": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-publish-2026-10-22\\contracts\\fixture",
+      "exit_code": 0,
+      "log": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-publish-2026-10-22\\contracts\\child-all-optimized.log",
+      "sha256": "f6b372f3cf7501b829d951b120b4173759a22a84bfcc05266751efeead3d48b3"
+    }
+  ]
+}

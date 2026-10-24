@@ -1,0 +1,35 @@
+{
+  "sha": "a77ae60427423e8b6f098596f300c8cecc6392b6",
+  "node_id": "C_kwDOT94UfNoAKGE3N2FlNjA0Mjc0MjNlOGI2ZjA5ODU5NmYzMDBjOGNlY2M2MzkyYjY",
+  "url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/git/commits/a77ae60427423e8b6f098596f300c8cecc6392b6",
+  "html_url": "https://github.com/HMarcusWH/zeta-23-lean/commit/a77ae60427423e8b6f098596f300c8cecc6392b6",
+  "author": {
+    "name": "HMarcusWH",
+    "email": "Marcus@hmwh.se",
+    "date": "2026-10-22T13:38:26Z"
+  },
+  "committer": {
+    "name": "HMarcusWH",
+    "email": "Marcus@hmwh.se",
+    "date": "2026-10-22T13:38:26Z"
+  },
+  "tree": {
+    "sha": "b1ebc2edbe0c07a486fcb5cae8df742c9e4745ed",
+    "url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/git/trees/b1ebc2edbe0c07a486fcb5cae8df742c9e4745ed"
+  },
+  "message": "Consolidate OPICA continuation proofs, evidence and agent handover",
+  "parents": [
+    {
+      "sha": "9b6a9a3a2badb4cff62a56c1158d9cef8759d30d",
+      "url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/git/commits/9b6a9a3a2badb4cff62a56c1158d9cef8759d30d",
+      "html_url": "https://github.com/HMarcusWH/zeta-23-lean/commit/9b6a9a3a2badb4cff62a56c1158d9cef8759d30d"
+    }
+  ],
+  "verification": {
+    "verified": false,
+    "reason": "unsigned",
+    "signature": null,
+    "payload": null,
+    "verified_at": null
+  }
+}

@@ -1,0 +1,37 @@
+'Zeta23.OPICAFollowup.weighted_mobius_inverse' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.OPICAFollowup.weighted_mixture_sharp_gap' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.OPICAFollowup.weighted_gap_leakage' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OPICAWeightedInverseIndependent.audit_integerLogComb' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OPICAWeightedInverseIndependent.expected_moebius_lattice_identity' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'OPICAWeightedInverseIndependent.expected_weighted_mobius_inverse_real' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'OPICAWeightedInverseIndependent.expected_weighted_mixture_sharp_gap' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'OPICAWeightedInverseIndependent.expected_complex_gap_leakage' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'OPICAWeightedInverseIndependent.expected_weighted_gap_leakage_real' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'OPICAWeightedInverseIndependent.expected_point_mixer_leakage_positive' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'OPICAWeightedInverseIndependent.expected_point_mixer_gap' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OPICAWeightedInverseIndependent.expected_point_mixer_sharp_gap_instance' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'OPICAWeightedInverseIndependent.expected_density_leakage' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OPICAWeightedInverseIndependent.expected_leakage_needs_negative_support' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'OPICAWeightedInverseIndependent.expected_density_identification' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'OPICAWeightedInverseIndependent.expected_endpoint_witness_mixture' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.complex_gap_leakage' depends on axioms: [propext, Classical.choice, Quot.sound]

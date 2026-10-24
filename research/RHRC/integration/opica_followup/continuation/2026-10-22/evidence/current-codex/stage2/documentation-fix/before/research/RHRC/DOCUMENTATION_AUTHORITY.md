@@ -1,0 +1,645 @@
+<!-- OPICA_AGENT_NAVIGATION_2026_10_22 -->
+## Current documentation precedence — 22 October 2026
+
+The active OPICA work is draft PR #294, following accepted parent PR #293.
+Read the [current guide](integration/opica_followup/continuation/2026-10-22/README.md),
+[documentation/evidence index](integration/opica_followup/continuation/2026-10-22/DOCUMENTATION_INDEX.md) and
+[100-root stage ledger](integration/opica_followup/continuation/2026-10-22/ROOT_LEDGER_100.json).
+Read the continuation Stage 1 handover for exact repaired source hashes;
+check the live head and actual CI before asserting current acceptance.
+
+The target remains 100 roots / 28 acceptance units: 41 historical source-bound
+roots, ten additional narrow local results, one unaccepted candidate and 48
+absent implementations. Current aggregate/release acceptance remains OPEN.
+The generated Control-v2 block and dated current/next wording below retain their
+historical authority scope. They do not describe current PR routing or accept
+the child package. Frozen specifications define obligations; live exact-source
+compiler/CI evidence determines what is proved. Graph/framework views do not.
+
+RH, Step 4 and the independent closing inequalities remain OPEN.
+
+---
+
+# RHRC documentation authority and update law
+
+This file defines which documentation is authoritative and how to prevent research-state drift after rapid theorem and discovery changes.
+
+## Authority order
+
+When sources disagree:
+
+1. **Live GitHub head + Lean compiler + CI** — exact checked object wins.
+2. **Merged theorem declarations and machine registries** — theorem/claim surfaces.
+3. **Active route README**.
+4. **Living research-control SSOTs** — newest dated research delta plus `CURRENT_RESEARCH_PLAN.md` and current RHRC/root summaries.
+5. **Current external build-plan / handover SSOT**.
+6. **PR-specific settlement documents**.
+7. **Historical roadmaps, audits, numerical receipts, external reviews and old implementation plans**.
+
+Research certificates, exact-rational audits, Arb output and external reviews are routing evidence unless separately theoremized in Lean.
+
+<!-- RHRC_CURRENT_STATE_BEGIN -->
+## Current RHRC state
+
+THEOREM AUTHORITY
+- merged theorem authority = PR #287
+- validated final head = 40495f39b7510b49a7fe3493b42d9fe3880d6d22
+- merge commit = ecc6450f28eb6aed944bda8fe9a09296d033fc3e
+- tree = a105ffd52c96cd0c39712dcdba45e967282efc9d
+- status = MERGED_GREEN_THEOREM_STATE
+- PR #275 full-space small-aperture coercive base = PROVED
+- PR #276 exact legal successor ground >= 1 on 0 < L <= 1/512 = PROVED
+- fixed-N production continuity = PROVED_MERGED_PR_278
+- same-N off-line-zero contact = PROVED_MERGED_PR_278
+- PR #284 compressed contact calculus = PROVED_MERGED_PR_284_C2_AND_INHERITED_FIRST_VARIATION; F04_PAIR_BALANCE_AND_FRONTIER_PROMOTED_AFTER_MERGED_PR_287
+- PR #285 post-284 source-inertia package = PROVED_MERGED_PR_285
+- PR #287 post-285 M70-M77 build = PROVED_MERGED_PR_287
+- PR #272 CofinalCanonicalArithmeticCertificates <-> Mathlib RiemannHypothesis = PROVED / AUDIT-ONLY
+- RH = OPEN
+
+CURRENT RESEARCH FRONTIER
+- current candidate PR = #NONE / NO_OPEN_CANDIDATE_PR
+- candidate theorem-validation head = NONE
+- candidate theorem-validation status = NONE
+- merged experimental research evidence = PR #273 / CERTIFIED_CURRENT_PRIME_GROUND_RESPONSE
+- fixed-N sign opposition = PROVED_MERGED_PR_277
+- global ground propagation strength = RH_SUFFICIENT_AUDIT_PROVED_PR_277
+- uniform domination strength = RH_SUFFICIENT_AUDIT_PROVED_PR_277
+- active obstruction = OBS-060_GROUND_SPECTRUM_FIRST_CROSSING_BARRIER
+- active subobligation = OBS-060O_CONTACT_CONDITIONED_PRODUCTION_SATURATION_EXCLUSION
+- F04 production derivative authority = PROVED_MERGED_PR_287
+- M74 canonical secular instantiation = PROVED_MERGED_PR_287
+- next research target = POST285_CANONICAL_SECULAR_RAY_PRIME_FREE_F04_AND_FULL_ARITHMETIC_SOURCE_INEQUALITY
+- required new information = INDEPENDENT_FULL_ARITHMETIC_SOURCE_RESTRICTION_ON_THE_RESOLVENT_SELECTED_CONTACT_RAY
+- RH-sufficient terminal formulations are not counted as independent sub-RH progress
+
+FRAMEWORK / GRAPH STATE
+- PR #270 = FFBBP 1.7 / OoL-MVS 2.7.7 framework architecture authority
+- post-#276 exactified source-only theorem/lemma roots = 711
+- post-#276 FFBBP source-only module cohorts = 212
+- post-#276 OoL theorem-value-erased frontier contacts = 522
+- post-#276 RHKG relations = 311826
+- framework output -> Lean theorem authority = FORBIDDEN
+
+RESEARCH / CONTROL FIREWALL
+- latest independent bounded research evidence = PR #223
+- merged first-contact atlas evidence = PR #273 / EXPERIMENTAL_SIGNAL_ONLY
+- frozen Control-v2 semantic authority = PR #117
+- selected formal first break = E4A4-SCHUR-FB-05 (historical/frozen control semantics)
+- R003 phase = DISCOVERY
+- confirmatory execution = NOT AUTHORIZED
+- terminal claim = RH_OPEN
+<!-- RHRC_CURRENT_STATE_END -->
+
+## Post-#285 documentation-authority override
+
+PRs #283, #284 and #285 are merged; no candidate PR is open. PR #285 (merge
+`18a63cc`, validated head `d20653c`) is the merged theorem authority, and the
+machine state block above, `CONTROL_STATE.json` and the living surfaces it
+renders are refreshed to it. The authority order is unchanged. The post-285
+master build plan (Steps 18–120, packages M70–M77) and the v1.2 programme master
+are external execution plans at level 5: they never outrank a compiled Lean
+declaration, the claim registry or this file, and a source anchor they cite
+is a pointer to input definitions, not proof of a new proposition.
+
+Workflows run on `pull_request` and `workflow_dispatch` only, so exact-head
+receipts come from PR runs; a merge commit on `main` has no CI receipt of its
+own.
+
+## Post-#276 / PR #277 documentation-authority override
+
+The current three-anchor model is:
+
+```text
+merged theorem authority = PR #276
+current theorem candidate = PR #277
+research evidence anchor = PR #223 (independent bounded Arb)
+control semantic authority = PR #117
+terminal claim = RH_OPEN
+```
+
+PR #277's first theorem head is compiler/axiom validated but is not merged authority. Its promoted claims and control-state entries remain candidate-branch state until the final PR head passes the full workflow set and merges. Historical PR #274 campaign `PLAN.json` and `CAMPAIGN_STATE.json` remain frozen execution provenance.
+
+
+## Post-#247 programme override
+
+PR #246 and PR #247 supersede older "current", "next", and candidate labels below. Historical sections are retained as provenance unless this override explicitly reactivates them.
+
+The active research interpretation is **Riemann Wearing Glasses v2**: one canonical Weil object is viewed through exact spectral, carrier, source and arithmetic coordinates. Coordinate changes do not create information; they are used to expose a nonvacuous arithmetic/analytic law on unconditional objects. Residual-state-only compatibility laws cannot count as new closure information merely because they are renamed: #247 proves residual-state exclusion itself is RH-equivalent.
+
+Canonical post-#247 programme: research/RHRC/routes/R003_ccm_bridge/POST_247_RIEMANN_WEARING_GLASSES_PROGRAM.md. Frozen post-green deltas: RESEARCH_LEADS_POST_247_GLOBAL_BOTTOM_GLASSES_DELTA.md, OBSTRUCTION_LEDGER_POST_247_DELTA.md, and DEAD_ROUTES_POST_247_DELTA.md.
+
+**Claim firewall:** RH remains OPEN.
+
+## Post-#247 authority rule: equivalence and vacuity
+
+A theorem of the form P <-> RiemannHypothesis is theorem authority for the equivalence, **not** authority for P or RH. Likewise, a universal statement over GlobalBottomResidualState must be checked for vacuity: if its only effect is to exclude every residual state, #247 makes it RH-equivalent in strength.
+
+Current-state documentation must distinguish unconditional objects, conditional charts requiring negativity/first-badness/regularity, audit-only RH equivalences, research controls/evidence, and historical frozen deltas.
+
+Historical delta files are immutable evidence. New current state is expressed by a new override/delta, not by silently rewriting old snapshots.
+
+
+## Post-#237 documentation-authority override
+
+The current three-anchor model is:
+```text
+theorem authority  = PR #237
+research evidence  = PR #223
+control semantics  = PR #117
+```
+
+Historical dated deltas remain frozen. The externally supplied historical route audit used during #238 planning is non-authoritative; its route conclusions are accepted only where re-established against live `main`, theorem declarations, workflow results and current firewalls. The reconciliation is recorded in `HISTORICAL_ROUTE_AUDIT_POST_237_RECONCILIATION.md`.
+
+`CONTROL_STATE.json` owns the current descriptive research target. `ACTION_REGISTRY.json` remains the frozen PR #117 control-semantic contract. **RH remains OPEN.**
+
+
+## Post-#231 current-state override
+
+PR #231 proves the generic correction/source-coupling bridge, its production-channel
+rewrite, the exact Gamma shell balance, and the retained factor-preserving source
+balance. On the selected-even / odd-good retained branch, the existing source
+nonvanishing theorem cancels the source factor and gives the exact same-state
+balance
+`q - J = M4 - S*C`.
+
+PR #231 does **not** prove alpha reality/sign, a sign for the source coupling,
+canonical simultaneous odd-bad exclusion, odd-selected closure, parity-complete
+retained-state exclusion, negative-root exclusion, the terminal Mathlib RH seam,
+or RH.
+
+The #231 workflow harvest completed 11/11 attached workflows green on the exact
+validated head `f9623be705955bd98ef563aa75d3244712009cac`. Latest independent
+research evidence remains PR #223; Control-v2 semantic authority remains PR #117.
+
+The next theorem target is `RETAINED_CROSS_PARITY_SOURCE_GRAM_DISK`: use
+good-sector Gram control only as an intermediate bridge, then compose it with
+the #231 same-state source balance. The required new information is
+`GOOD_SECTOR_GRAM_CONTROL_COMPOSED_WITH_RETAINED_SOURCE_BALANCE`.
+A proof of `canonicalOneStepDomination` obtained merely by restating successor
+positivity is not by itself independent FB-05 information.
+
+Detailed post-green pass:
+`RESEARCH_LEADS_POST_231_SOURCE_BALANCE_DELTA.md` and
+`OBSTRUCTION_LEDGER_POST_231_DELTA.md`.
+
+Any older "current", "next", or routing labels below this override are historical
+snapshots unless re-established above.
+
+```text
+ACTION_REGISTRY.current_frontier
+  = frozen PR #117 control-semantic frontier
+
+CONTROL_STATE.active_research_route.next_research_target
+  = current descriptive research operation
+  = RETAINED_CROSS_PARITY_SOURCE_GRAM_DISK
+```
+
+## Post-#229 current-state override
+
+PR #229 proves the generic correction-functional Riesz representation
+`chi(y) = <R b,y>/<c,c>` and the exact alpha/Gamma mixed-resolvent corollaries.
+It does **not** prove that alpha is real, positive, or sign-controlled.
+
+The next theorem target is `CROSS_PARITY_CORRECTION_SOURCE_COUPLING`: formalize
+the derived bridge `star (1-alpha) * <c,c> = cubicShellCoupling (R d)`, rewrite
+it through the production canonical source channels, and then derive the
+retained source-balance identity under an explicit nonzero source moment.
+Those statements are **OPEN / NEXT**, not theorem authority yet.
+
+The #229 workflow harvest completed 13/13 green jobs. Latest independent
+research evidence remains PR #223; Control-v2 semantic authority remains PR #117.
+OBS-059I, simultaneous odd-bad exclusion, odd-selected closure,
+parity-complete retained-state exclusion, the terminal Mathlib RH seam, and RH
+remain OPEN.
+
+Detailed post-green pass:
+`RESEARCH_LEADS_POST_229_RIESZ_DELTA.md` and
+`OBSTRUCTION_LEDGER_POST_229_DELTA.md`.
+
+Any older "current", "next", or routing labels below this override are
+historical snapshots unless re-established above.
+
+## Post-#227 documentation-authority override
+
+The current three-anchor model is:
+
+```text
+theorem authority = PR #227
+research evidence = PR #223
+control semantics = PR #117
+```
+
+PR #226 is prerequisite theorem provenance for the exact predecessor-correction identity. PR #227 is the merged theorem authority for the one-coefficient cross-parity transfer family. The exact validated head is `b8d29733167a95e16f5721eddfced6b650a3b641`; merged commit `7aace87a5644f837e2c8b64bdcf5e66b2dc0b020`; tree `1dd1cdefcf4f4f7929b310697fdd1615a861ca1a`.
+
+The next theorem target is `CROSS_PARITY_CORRECTION_FUNCTIONAL_RIESZ_REPRESENTATION`. Alpha reality/sign remains explicitly unproved. Historical post-#224 documents remain frozen and are not rewritten to pretend #226/#227 existed earlier.
+
+
+## Historical post-#224 documentation-authority override
+
+The current three-anchor model is:
+
+```text
+theorem authority = PR #224
+research evidence = PR #223
+control semantics = PR #117
+```
+
+Theorem promotion is exact-object specific. The promoted #224 declaration is
+`cubicProjectionResidual_eq_oddCubicProjectionSlope_smul`.
+The PR title/body is not authority for the unproved predecessor-correction proportionality.
+
+Historical post-#222/#223 delta documents remain frozen history and are not rewritten to pretend that #224 existed earlier.
+
+
+## Living-current-surface rule
+
+Every file designated as a living/current SSOT must expose the current three-anchor state before historical material. A later append-only override does **not** cure a stale top-level declaration of what is current.
+
+`control_v2/CONTROL_STATE.json` is the machine source for the present descriptive research state. `control_v2/ACTION_REGISTRY.json` remains the frozen PR #117 control-semantic contract unless a deliberate semantic migration changes that contract and its tests together. In particular, `ACTION_REGISTRY.current_frontier` must not be silently reinterpreted as the latest research operation.
+
+## Historical three-anchor model through PR #201
+
+### Theorem-state anchor
+
+```text
+latest theorem-bearing PR = #184
+validated theorem head = a756494ebe7e2530715e996b9a9a341fbe07c683
+merged theorem commit = 6f04e94473eb112b59eeaa2c6fc6ac6cbe7fe30e
+validated theorem tree = 6c77cd470809959a403b3bcc5f08d39f4076fa4c
+```
+
+PR #184 remains the current compiler-validated mathematical authority.
+
+### Research-evidence anchor
+
+```text
+latest merged research PR = #201
+validated research head = be5b98dfce12777436bc40b39a37b04669ae4311
+merged research commit = 319db6f68f65bdcffc0657c03bea76502da59a57
+validated research tree = 840a2e8b0bf690507bc3385fbe122210e6d32c7a
+research disposition = DISCREPANCY_REPRESENTATION_DEPENDENCY_UNRESOLVED
+```
+
+PR #201 is research/falsification authority only. It consumes PR #199's explicit cancellation-preserving escape by forming `D = pole + prime_signed` and `A = direct_arch_signed` at matrix-jet level before parity restriction/transport. The direct #197 `GLOBAL_MONOTONE_ORIENTATION / J_POSITIVE` certificate still replays unchanged, while the paired representation remains dependency-unresolved on all 49 completed leaves. No Lean theorem authority moves.
+
+### Control-plane semantic anchor
+
+```text
+control-plane semantic anchor = PR #117
+merge = 19346f4c00d13bf33db95cbe5325233f86e54c12
+```
+
+This changes only when controller capability/authority semantics change.
+
+## Living SSOT update law
+
+Update these when their underlying state changes:
+
+- root `README.md`, `FORK_NOTES.md`, `AUDIT.md`;
+- `research/RHRC/README.md`;
+- active route README;
+- `research/RHRC/RESEARCH_LEADS.md`;
+- newest dated research delta;
+- `research/RHRC/CURRENT_RESEARCH_PLAN.md`;
+- `research/RHRC/VALIDATION_PROTOCOL.md` when validation anchors/evidence classes change;
+- obstruction/dead-route ledgers when reusable classifications change;
+- `control_v2/CONTROL_STATE.json` when theorem/control anchors or descriptive research state change;
+- `control_v2/ACTION_REGISTRY.json` only when routing priority/first-break semantics change;
+- `routes/ROUTE_REGISTRY.json` when route state/claim surfaces or its living route note changes;
+- retro aliases/regression tests when intentionally hard-coded research vocabulary changes.
+
+Historical dated deltas are not rewritten to look current. Historical regression tests are not repurposed to erase earlier consumed layers.
+
+## Historical synchronized state through PR #201
+
+### Theorem authority through #184
+
+Lean proves the Hermitian 2x2 Schur/contact calculus, exact frozen production log-cover family, fixed-cell production bridge, N2 predecessor/canonical-shell reconstruction and orthogonality, and
+
+```text
+M~(t)=-tI+R~(t)
+P_t' = -envelopeNormSq + remainderEnvelopeDerivative
+remainderEnvelopeDerivative < envelopeNormSq -> P_t' < 0.
+```
+
+No later research PR promotes additional Lean theorem authority.
+
+### Completed research history through #201
+
+```text
+#186 -> broad remainder domination returns DOMINATION_SIGNAL_MIXED
+#190 -> complete seven-selector vector jointly ambiently separable from target sign
+        -> EXACT_TWIN_SURVIVES / EXACT_TWIN_EXCLUDED_BY_IDENTITY retained as historical contracts
+#192 -> canonical production realizability Layer 0 -> Layer 5 executed
+#193 -> first-order Q14 parity trajectory remains finite-width unresolved
+        -> Do **not** infer this from points
+#195 -> validated M,M',M''; J' = o''e - e''o
+        -> PARTIAL_TRAJECTORY_ORIENTATION / 63/64 historical
+#197 -> unique residual leaf replay closes the frozen Q14 cover
+        -> GLOBAL_MONOTONE_ORIENTATION / uniform J_POSITIVE
+        -> certified fraction 1
+        -> bounded distinct-aperture twin exclusion
+#199 -> exact #197 cover replayed unchanged
+        -> four-way and collapsed source mechanisms = SOURCE_DECOMPOSITION_DEPENDENCY_UNRESOLVED
+        -> direct bounded J_POSITIVE unchanged
+#201 -> discrepancy/direct-arch pairing performed before parity restriction/transport
+        -> paired M,M',M'' reconstruction passes
+        -> direct bounded J_POSITIVE unchanged
+        -> paired positive source sums = 0/49
+        -> paired unresolved source sums = 49/49
+        -> DISCREPANCY_REPRESENTATION_DEPENDENCY_UNRESOLVED
+        -> NO_UNIQUE_PRIMARY_LOCK
+```
+
+Historical #195, #197 and #199 states remain preserved. PR #201 advances only the latest research-evidence anchor.
+
+### Historical route after PR #201
+
+```text
+PROVED THROUGH #184
+  exact Hermitian/log-cover/contact algebra
+
+RESEARCHED THROUGH #201
+  frozen Q14 direct orientation is complete and positive
+  independent source attribution loses sign resolution
+  theorem-motivated upstream pole-prime pairing also loses sign resolution
+
+NOW
+  stop source chopping as the default route
+  do not change only source parentheses and call it new mathematics
+  preserve the assembled canonical parity object
+  test a higher-level exact composite parity identity
+  predeclare an exact-center falsification pattern before any full-hull run
+  reuse the exact #197 49-leaf partition only if the center pattern survives
+  if the composite mechanism also fails -> downgrade Pair A representation work and pivot to Pair D / Pair B
+```
+
+A complete signed finite-width cover supports **rigorous bounded research**, not arbitrary-Q theorem authority. A dependency-unresolved decomposition does not negate an independently certified direct sign.
+
+## Historical-state rule
+
+The post-#190, post-#193, post-#195, post-#197 and post-#199 deltas remain historical evidence and must not be edited to pretend they were written after #201. `RESEARCH_LEADS_POST_201_Q14_DISCREPANCY_MECHANISM_DELTA.md` is the newest current delta.
+
+Historical `test_post195_sync.py`, `test_post197_sync.py` and `test_post199_sync.py` continue to verify that their evidence remains represented. `test_post201_sync.py` owns the current #201 assertions.
+
+## Claim firewall
+
+- green research is not theorem promotion;
+- exact executable algebra is not automatically a Lean theorem;
+- ambient algebra countermodels are not automatically canonical arithmetic states;
+- #197 `GLOBAL_MONOTONE_ORIENTATION` is complete bounded research on one frozen Q14 domain;
+- #199 `SOURCE_DECOMPOSITION_DEPENDENCY_UNRESOLVED` is a representation/mechanism classification, not a loss of #197 `J_POSITIVE`;
+- #201 `DISCREPANCY_REPRESENTATION_DEPENDENCY_UNRESOLVED` is another representation/mechanism classification, not a loss of #197 `J_POSITIVE`;
+- 0/49 paired positive source sums means the paired interval graph is unresolved, not that the direct Wronskian is nonpositive;
+- no unique source lock is not a theorem that no source law exists;
+- **Do not count them as two independent** when equivalent formulations encode the same mechanism;
+- theorem authority remains #184;
+- control semantic authority remains #117;
+- negative-root exclusion remains OPEN;
+- **RH remains OPEN.**
+
+## Historical post-#203 authority override
+
+This section is the current synchronization and supersedes any earlier `latest merged research PR`, `newest current delta`, or `NOW` wording above while preserving that wording as history.
+
+### Historical research-evidence anchor at that point
+
+```text
+latest merged research PR = #203
+validated research head = c8196830a8b49e657b28d36b364e1cff68c568d6
+merged research commit = ab660e812a78d482145eadc3e42d186a63fa812b
+validated research tree = 7360e366fe8d623ef63ca902c23522bb72935848
+research disposition = COMPOSITE_PARITY_GAP_PATTERN_FALSIFIED
+```
+
+PR #203 is research/falsification authority only. Its repaired theorem-aligned parity contrast validates exact rational conversion, scalar cancellation before interval transport, and independent normalized `O-E` reconstruction through second order. The preregistered conjunction `E > 0`, `G > 0`, `G' >= 0`, `E' <= 0` fails its six-center gate, so `center_kill_switch_survives = false`, `full_cover_executed = false`, `completed_leaf_count = 0`, and `control_transfer_status = PATTERN_FALSIFIED_BEFORE_FULL_COVER`.
+
+The direct #197 `GLOBAL_MONOTONE_ORIENTATION / J_POSITIVE` certificate is unchanged. The failure consumes the planned simple Pair-A representation-engineering lane; it does not prove every Pair-A theorem impossible.
+
+### Historical route after #203
+
+```text
+Pair-A representation engineering = CONSUMED / DOWNGRADED
+Pair D — same-state two-parity squeeze = HIGHEST INFORMATION / NEXT RESEARCH ROUTE
+Pair B — negative-index separation vs localized critical-line sampling rigidity = SECONDARY
+OBS-059 = OPEN / ACTIVE same-state two-parity squeeze / simultaneous-badness exclusion gap
+```
+
+The theorem anchor remains PR #184. The control-plane semantic anchor remains PR #117. `ACTION_REGISTRY.json` does not change because the selected formal frontier, action scores, concept ID, and `E4A4-SCHUR-FB-05` first-break semantics remain unchanged.
+
+`RESEARCH_LEADS_POST_203_Q14_COMPOSITE_PARITY_GAP_DELTA.md` is the newest current research delta. `OBSTRUCTION_LEDGER_POST_203_DELTA.md` and `DEAD_ROUTES_POST_203_DELTA.md` carry the corresponding obstruction/dead-route updates. Historical post-#201 files and tests remain historical and are not rewritten.
+
+R003 remains `DISCOVERY`; confirmatory execution remains unauthorized. Negative-root exclusion remains OPEN. **RH remains OPEN.**
+
+## Historical post-#205 authority override
+
+This section supersedes the post-#203 authority pointer while preserving all earlier state as history.
+
+### Historical research-evidence anchor at that point
+
+```text
+latest merged research PR = #205
+validated research head = 73b78297da54b9f5b2d47584a8033356a6b2e2a8
+merged research commit = deaa69ae190ada511cf8228f174846184673ff3a
+validated research tree = 3d715612eabf25a9056ab84b0c5e968f71354666
+research disposition = PAIR_D_GENERIC_SIMULTANEOUS_BAD_COUNTERMODEL_CERTIFIED
+```
+
+PR #205 is exact executable research only. It reconstructs historical fixture C1 on the repository's actual radius-3 centered parity geometry and certifies both predecessor sectors positive (`70`, `10`) while both successor sectors admit exact negative witnesses (`-130`, `-410`), with selected even compressed root `-13/42`, reversal symmetry, and exact centered-index commutation. `canonical_realizability=false`.
+
+Evidence class:
+
+```text
+EXACT EXECUTABLE RESEARCH
+RIGOROUS FINITE SYNTHETIC COUNTERMODEL
+```
+
+This strengthens the old DR-012/DR-013 structural countermodel conclusion: generic first-bad/parity/shell/displacement structure is insufficient for simultaneous-badness exclusion. It does not show a canonical retained state has both parities bad.
+
+### Historical route after #205
+
+```text
+Pair-A representation engineering = CONSUMED / DOWNGRADED
+generic structural Pair-D simultaneous-bad exclusion = CONSUMED / FALSIFIED BY C1
+Pair D canonical-arithmetic same-state squeeze = HIGHEST INFORMATION / ACTIVE
+Pair B negative-index separation vs localized critical-line sampling rigidity = SECONDARY
+OBS-059 = OPEN / ACTIVE / CANONICAL-ARITHMETIC ONLY
+```
+
+The next research falsifier is the generic quadratic-normal-defect-versus-`M4` implication. A synthetic pairing must not be named `explicitCanonicalSourceMoment`. If the generic bridge fails, only the generic bridge is consumed; the canonical arithmetic relation remains open.
+
+`RESEARCH_LEADS_POST_205_PAIR_D_STRUCTURAL_COUNTERMODEL_DELTA.md` is the newest current research delta. `OBSTRUCTION_LEDGER_POST_205_DELTA.md` and `DEAD_ROUTES_POST_205_DELTA.md` carry the new obstruction/dead-route refinements. Historical deltas and their evidence classes remain unchanged.
+
+The theorem anchor remains PR #184. The control-plane semantic anchor remains PR #117. `ACTION_REGISTRY.json` remains unchanged because the formal first break and action semantics do not move. R003 remains `DISCOVERY`; confirmatory execution remains unauthorized. Negative-root exclusion remains OPEN. **RH remains OPEN.**
+
+## Historical post-#207 authority override
+
+This section supersedes the post-#205 theorem pointer while preserving all earlier state as history.
+
+### Historical theorem-state anchor at that point
+
+```text
+latest theorem-bearing PR = #207
+validated theorem head = 7e186ede13beece95e8a08b2449cd3accbe5b2f5
+merged theorem commit = 76cf4e3b5ef4b7ab904a861b6d4cb01fdcd8d0e0
+validated theorem tree = d6509407cc7b667b0ff3e7faab2acd525ae32db9
+```
+
+### Historical research-evidence anchor at that point
+
+```text
+latest merged research PR = #205
+research disposition = PAIR_D_GENERIC_SIMULTANEOUS_BAD_COUNTERMODEL_CERTIFIED
+```
+
+The three-anchor model is therefore now: theorem authority PR #207, research-only authority PR #205, control semantic authority PR #117.
+
+PR #207 proves the canonical Pair-D sourceMoment/`M4` energy orientation on the retained even-selected odd-good branch. The living theorem inventory must include
+
+```text
+evenShiftedSourceMomentMomentFour_re_pos_of_even_of_not_oddBad
+evenShiftedMomentFour_ne_zero_of_even_of_not_oddBad
+evenShiftedMixedSourceSeventhJet_ne_zero_of_even_of_not_oddBad
+oddBad_or_sourceMomentMomentFour_re_pos_of_even
+```
+
+The old generic `genericQuadraticNormalPairing != 0 ?-> M4 != 0` next-step proposal is **SUPERSEDED / UNNECESSARY**, not falsified and not a dead route. No unconditional `sourceMoment -> M4` implication has been proved.
+
+`RESEARCH_LEADS_POST_207_PAIR_D_SOURCE_M4_ENERGY_DELTA.md` is the newest current theorem/research delta. `OBSTRUCTION_LEDGER_POST_207_DELTA.md` records the split state of `OBS-059`. Historical post-#205 files remain historical and are not rewritten.
+
+The next theorem extraction is quantitative Pair-D coercivity `-lam * ||Dv||^2 <= re(star(sourceMoment) * M4)` and its retained specialization, followed by #163 mixed-jet/Riesz composition. `ACTION_REGISTRY.json` remains unchanged because the first-break semantics do not move. R003 remains `DISCOVERY`; confirmatory execution remains unauthorized. Negative-root exclusion remains OPEN. **RH remains OPEN.**
+
+## Historical post-#209 authority override
+
+This section supersedes the post-#207 current theorem pointer while preserving all earlier state as history.
+
+### Historical theorem-state anchor at that point
+
+```text
+latest theorem-bearing PR = #209
+validated theorem head = a6f0e5d3db988eeaf3ed54cf283f85b8d23f5392
+merged theorem commit = e029af769e01a547ebbc6ed045509bb2cbdd6cff
+validated theorem tree = 6a75278ebf3f2bd19a77419238872cb81835ec13
+```
+
+### Historical research-evidence anchor at that point
+
+```text
+latest merged research PR = #205
+research disposition = PAIR_D_GENERIC_SIMULTANEOUS_BAD_COUNTERMODEL_CERTIFIED
+```
+
+The three-anchor model is now: theorem authority PR #209, research-only authority PR #205, control semantic authority PR #117.
+
+PR #209 proves quantitative Pair-D coercivity, strict complete-source/seventh-jet anti-alignment on the even-negative/odd-good branch, the retained `oddBad_or_sourceMomentMixedJet_re_neg_of_even` fork, and the nondegenerate `R8 = R9 <-> endpointScalar(L,8)=0` boundary equivalence.
+
+`RESEARCH_LEADS_POST_209_PAIR_D_COERCIVITY_ANTI_ALIGNMENT_DELTA.md` is the newest current theorem/research delta. `OBSTRUCTION_LEDGER_POST_209_DELTA.md` records `OBS-059Q` as CLOSED / PROVED BY #209 and introduces `OBS-059I` as the active independent complete-functional incompatibility sub-obligation. Historical post-#207 files remain historical and are not rewritten.
+
+The next research step is not another extraction from the #207/#209 energy identity. It is a preregistered falsification search for genuinely independent complete-canonical-functional sign/magnitude information, or an independent Riesz high-order limit/sign theorem, on the same retained state.
+
+`ACTION_REGISTRY.json` remains unchanged because the first-break semantics do not move. R003 remains `DISCOVERY`; confirmatory execution remains unauthorized. Endpoint-scalar sign, simultaneous odd-bad exclusion, odd-selected closure, negative-root exclusion and **RH remain OPEN.**
+
+## Historical post-#211 authority override
+
+This section supersedes the post-#209 current theorem pointer while preserving all earlier state as history.
+
+### Historical theorem-state anchor at that point
+
+```text
+latest theorem-bearing PR = #211
+validated theorem head = 704a69e41871269814ba091e9476fe76b2d09844
+merged theorem commit = dd42e6368e48957c9922a9e917e10f60a2582b9f
+validated theorem tree = a735f6149aeaa9f8358394c33fd6dcee8062f68e
+```
+
+### Historical research-evidence anchor at that point
+
+```text
+latest merged research PR = #205
+research disposition = PAIR_D_GENERIC_SIMULTANEOUS_BAD_COUNTERMODEL_CERTIFIED
+```
+
+### Control-semantic anchor
+
+```text
+PR #117
+selected first break = E4A4-SCHUR-FB-05
+terminal claim = RH_OPEN
+```
+
+The newest current post-green delta is `RESEARCH_LEADS_POST_211_COMPLETE_FUNCTIONAL_REPRESENTATION_DELTA.md`. The newest obstruction delta is `OBSTRUCTION_LEDGER_POST_211_DELTA.md`. Historical post-#209 files remain historical and are not rewritten.
+
+PR #211 closes the complete-functional representation prerequisite but not OBS-059I. The next theoremization target is `SOURCE_COORDINATE_KERNEL_FOR_COMPLETE_FUNCTIONAL`; the required new information remains `INDEPENDENT_COMPLETE_CANONICAL_FUNCTIONAL_INCOMPATIBILITY`.
+
+`ACTION_REGISTRY.json`, claim IDs, route digests, action scores and first-break semantics remain unchanged. R003 remains `DISCOVERY`; confirmatory execution remains unauthorized. **RH remains OPEN.**
+
+## Historical post-#213 authority override
+
+```text
+latest theorem-bearing PR = #213
+validated theorem head = 703c3764a7d35aa4801e791a1929efa54c2533a1
+merged theorem commit = ee341a6071d177c75bbea0a5f92ebe3b3bb16696
+validated theorem tree = db00686b2bbb821adb857e5c68f422d19c4f91cd
+
+latest research-only evidence = PR #205
+control semantic authority = PR #117
+terminal claim = RH_OPEN
+```
+
+Newest post-green delta: `RESEARCH_LEADS_POST_213_COMPLETE_SOURCE_KERNEL_DELTA.md`.
+
+Newest obstruction delta: `OBSTRUCTION_LEDGER_POST_213_DELTA.md`.
+
+PR #213 closes `SOURCE_COORDINATE_KERNEL_FOR_COMPLETE_FUNCTIONAL` but does not close `OBS-059I`. The next research operation is `EXACT_KERNEL_ADVERSARIAL_FALSIFICATION`.
+
+Historical post-#211 files remain immutable evidence. No claim IDs, action scores, first-break semantics, route digests, or confirmation permissions change. **RH remains OPEN.**
+
+## Historical post-#215 authority — retained negative-root secular frontier
+
+Historical authority split at that stage after merged-green research PR #215:
+
+```text
+THEOREM AUTHORITY
+PR #213
+validated head = 703c3764a7d35aa4801e791a1929efa54c2533a1
+merge          = ee341a6071d177c75bbea0a5f92ebe3b3bb16696
+tree           = db00686b2bbb821adb857e5c68f422d19c4f91cd
+
+LATEST RESEARCH EVIDENCE
+PR #215
+validated head = 5469fbac77c82ccfc9dad0da4c7ce2b0ba67c47a
+merge          = 191b1b648448c92010286dae54df8502df1f55ce
+tree           = 4e6111c974ae8abbf59a5063d4b1ea760fa39ffd
+disposition    = FULL_SPACE_DUAL_INDEPENDENCE_CERTIFIED
+sign result    = FULL_SPACE_SIGN_INDEFINITE_CERTIFIED
+controls       = DUAL_INDEPENDENCE_SURVIVES_Q13_Q15_CONTROLS
+
+CONTROL SEMANTIC AUTHORITY
+PR #117
+
+terminal claim = RH_OPEN
+```
+
+PR #215 is rigorous bounded Arb research, not Lean theorem promotion. On the exact frozen K=3 even boundary-flat carrier it certifies the M4 covector `(24,144)`, a nonzero source/M4 wedge at Q14
+`[-7.92856142933793718521707742118e-7 +/- 2.44e-37]`, and generalized pairing extrema relative to `||Dv||^2`
+
+```text
+R_min = -7.60547660138399452560501190345e-11
+R_max =  1.02497161190896926446719955942e-6
+```
+
+so the full-carrier pairing is sign-indefinite. Universal full-carrier source/M4 sign and proportionality routes are therefore consumed at this research scope.
+
+The retained-state implication was explicitly `NOT_TESTED` by #215. At that stage, the next route was not a guessed contact state. It was the already theorem-backed **retained negative-root cross-parity secular state**: preserve the same aperture, size, selected parity, negative shift and canonical source functional, and investigate whether the old exact cross-parity secular transfer combines with #209/#213 into an independent incompatibility.
+
+```text
+next research target at that stage = RETAINED_CROSS_PARITY_SECULAR_COMPLETION
+contact-locus route  = LEAD / REQUIRES SAME-STATE CONTACT BRIDGE
+zero-shift response  = RESURRECTED SECONDARY
+resonant pole/tube   = RESURRECTED SECONDARY
+OBS-059I             = OPEN / ACTIVE
+RH                    = OPEN
+```
+
+No claim IDs, action scores, first-break semantics, route digests, confirmation permissions or theorem declarations change in this synchronization.

@@ -1,0 +1,209 @@
+{
+ "schema": "OPICA_STAGE16_NARROW_GATE_V1",
+ "status": "PASS_NARROW_LOCAL_GATES_ONLY_AGGREGATE_AND_FULL_RELEASE_OPEN",
+ "checked_commit": "098194685f9365bf6f091bf8192b9381c7d2ba43",
+ "checked_tree": "d289da1fe7267a183a7031513e834a3bb0e995a5",
+ "dirty_status_during_checks": "",
+ "compiler": "Lean 4.33.0-rc2 commit d8b18978322de05a8f3dba51ef03cf5461676c17 (Linux x86_64), Lake 5.0.0-src+d8b1897",
+ "mathlib": "51e6992efd06126df61a496bebf8f49482a4e129 (pins unchanged; no lake update)",
+ "new_module": {
+  "module": "Zeta23.OPICAFollowup.SquareDefect",
+  "project_imports": [
+   "Zeta23.OPICAFollowup.ZeroProfiles",
+   "Zeta23.OPICA.Involution"
+  ],
+  "mathlib_imports": [
+   "Mathlib.Analysis.Fourier.RiemannLebesgueLemma"
+  ],
+  "authority": "BUILD_MANIFEST direct_project_imports of this module is exactly [ZeroProfiles, OPICA.Involution]",
+  "required_definitions": [
+   "squareGapMeasure",
+   "squareDualityDefect"
+  ],
+  "new_definitions": [
+   "autocorr",
+   "squareGapMeasure",
+   "squareDualityDefect",
+   "latticePairing",
+   "TemperedLatticeWeights",
+   "fourierFunctional"
+  ],
+  "parent_definition_used": "Zeta23.OPICA.involutionSelfdualProjection (unchanged parent source)",
+  "supporting_results": [
+   "fourier_conj_of_selfdual",
+   "fourier_normSq_eq_autocorr",
+   "comb_fourier",
+   "autocorr_eq_fourier",
+   "squareGapMeasure_fourier_defect",
+   "continuous_squareDualityDefect",
+   "tendsto_squareDualityDefect",
+   "squareDualityDefect_im",
+   "squareDualityDefect_zero",
+   "norm_sq_gt",
+   "fourier_shift_int",
+   "no_lattice_repair",
+   "fourier_fourier_schwartz",
+   "squareGapMeasure_reflect",
+   "squareGapMeasure_gap"
+  ]
+ },
+ "existing_lean_sources_changed": false,
+ "cache_owner": "single local process; the module was built from this exact source in the session (lake rebuilds on source hash change), and the runner build re-validated it",
+ "sources": [
+  {
+   "path": "Zeta23/OPICAFollowup/SquareDefect.lean",
+   "sha256": "5ffbffea44889fe0b01d5094f2989a838f57d3f72665116954b346afd4ccf540",
+   "bytes": 33623
+  },
+  {
+   "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedSquareDefect.lean",
+   "sha256": "3735135eb0abad1f30935652c9bcdfc3ccee4e490697fe7a18b29806573176b2",
+   "bytes": 8317
+  },
+  {
+   "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/run_candidate_checks.py",
+   "sha256": "5149593e5338feaec5248de36249e2ebd9f6a498b2b281ded2e042235f8149f5",
+   "bytes": 6938
+  },
+  {
+   "path": ".github/workflows/rhrc_opica_followup.yml",
+   "sha256": "ae43b1b9a19429ee8f51e9c3099d5825e4b96d50e04914cd896edada942668ad",
+   "bytes": 44419
+  },
+  {
+   "path": "lean-toolchain",
+   "sha256": "0d3c76ccd8772d8bcbe207241421a760312b71a6aa82f84194391fdf5cb026d6",
+   "bytes": 29
+  },
+  {
+   "path": "lake-manifest.json",
+   "sha256": "1847b362e15efd927e75aa8b5442e491f998e4a3f730f9dcaca9841f2957c448",
+   "bytes": 3200
+  }
+ ],
+ "roots": {
+  "Zeta23.OPICAFollowup.square_fourier_defect": {
+   "paper": "R2-S3",
+   "expected_type_consumer": "consumers/ExpectedSquareDefect.lean (10 receipts, shared)",
+   "actual_domain": "the actual zero profile h_kappa with A = 1 at an actual zero: evenness, continuity, L1 and L2, ordinary self-duality, vanishing at infinity, the plateau and h != 0 are all discharged from Stage 9, and the S3.1 identity holds for it",
+   "premises": "even, continuous, L1 and L2, F h = h, h -> 0 at infinity, h = A on [-1, 1]",
+   "axioms": "propext, Classical.choice, Quot.sound"
+  },
+  "Zeta23.OPICAFollowup.square_defect_origin_positive": {
+   "paper": "R2-S3",
+   "expected_type_consumer": "consumers/ExpectedSquareDefect.lean (10 receipts, shared)",
+   "actual_domain": "at the actual zero profile d(0) = ||h_kappa||_2^2 - 1 >= 1",
+   "premises": "even, continuous, L2, h = A on [-1, 1], h != 0",
+   "axioms": "propext, Classical.choice, Quot.sound"
+  },
+  "Zeta23.OPICAFollowup.square_no_lattice_repair": {
+   "paper": "R2-S3",
+   "expected_type_consumer": "consumers/ExpectedSquareDefect.lean (10 receipts, shared)",
+   "actual_domain": "no lattice correction repairs the actual square tau_(h_kappa)",
+   "premises": "the square_fourier_defect hypotheses and h != 0",
+   "axioms": "propext, Classical.choice, Quot.sound"
+  },
+  "Zeta23.OPICAFollowup.square_selfdual_projection_fills_gap": {
+   "paper": "R2-S3",
+   "expected_type_consumer": "consumers/ExpectedSquareDefect.lean (10 receipts, shared)",
+   "actual_domain": "the actual square has a positive defect density on some (-eps, eps), 0 < eps < 1",
+   "premises": "even, continuous, L1 and L2, F h = h, h = A on [-1, 1], h != 0",
+   "axioms": "propext, Classical.choice, Quot.sound"
+  },
+  "re_verified_narrow_roots": [
+   "all roots consumed by the twenty-three runner consumer files"
+  ]
+ },
+ "gates": [
+  {
+   "label": "narrow runner (18 modules, 23 consumer files)",
+   "log": "runner/CHECK_RESULT.json",
+   "sha256": "4e66ec4c1146eddbca17d51b508553c9bb2da82c76308adf8a3b0803d92f33b1",
+   "exit_code": 0,
+   "runner_status": "PASS_NARROW_ONLY",
+   "consumer_receipts": {
+    "ExpectedMasks": 4,
+    "ExpectedComplex": 4,
+    "ExpectedAuxiliary": 6,
+    "ExpectedMultiplicity": 17,
+    "ExpectedComb": 5,
+    "ExpectedFirstCell": 5,
+    "ExpectedWeighted": 9,
+    "ExpectedNearGap": 5,
+    "ExpectedNearGapLimit": 10,
+    "ExpectedNormalizedLimit": 9,
+    "ExpectedWeightedInverse": 17,
+    "ExpectedCoPoissonFamily": 7,
+    "ExpectedCoPoissonOrderZero": 10,
+    "ExpectedZeroMeasure": 7,
+    "ExpectedEulerMaclaurin": 10,
+    "ExpectedZeroProfiles": 11,
+    "ExpectedLogFourierSobolev": 10,
+    "ExpectedForcedEuler": 10,
+    "ExpectedSamplingCompatibility": 11,
+    "ExpectedSawtoothForce": 11,
+    "ExpectedWeightedSpectralMeasure": 10,
+    "ExpectedNativeResolvent": 13,
+    "ExpectedSquareDefect": 10
+   }
+  },
+  {
+   "label": "W04/W07 workflow consumer (unchanged heredoc)",
+   "log": "consumers/opica-w04-w07-expected.log",
+   "sha256": "47bf37f88ae44589a223145e24dd07655b7172bfca6a30bf819bb33c5251ac1e",
+   "exit_code": 0,
+   "standard_axiom_receipts": 52
+  },
+  {
+   "label": "W06 workflow consumer (unchanged heredoc)",
+   "log": "consumers/opica-w06-expected.log",
+   "sha256": "8564fc7fe7d8a2ef4ae561975e207ce6aa8e42accc8c35f0e6ed618ed26078ca",
+   "exit_code": 0,
+   "standard_axiom_receipts": 14
+  },
+  {
+   "label": "W01 consumers and exact-source subset",
+   "note": "not re-run locally: no existing Lean source changed and no W01 or subset module imports the new module; green in CI at the Stage 14 head bd918c7c (ci-harvest-bd918c7c.json)"
+  },
+  {
+   "label": "child suite and parent contract tests",
+   "result": "child 185/185 and parent 82/82 in normal and optimized Python"
+  },
+  {
+   "label": "frozen control replay",
+   "result": "normal and optimized modes (p0 5112, round1 18862, round2 14672, final 1274 checks each); copoisson, round2 and final numerical suites CONSISTENCY_ONLY"
+  },
+  {
+   "label": "numerical falsification (numpy 2.1.3 and mpmath 1.3.0, double precision, not interval certified)",
+   "script": "numerical-falsification.py",
+   "script_sha256": "3620996218b55aaca483c7027e0d85609d99c8c3a676fedc100cddd91ae7f7d0",
+   "log": "numerical-falsification.log",
+   "log_sha256": "8f0661999bc933ad6fe52a8dc465b323510234dce053cd0ca23a88eb567f3496",
+   "result": "first zero, grid step 0.0025 on [-400, 400], FFT autocorrelation: d(0) = 146.363859 = ||h||^2 - 1 to the printed digits (||h||^2 = 2 N_11 of Stage 12); int d e^(-pi x^2) = -3e-5 against int |d| e^(-pi x^2) = 70.8 (d annihilates the self-dual Gaussian); tau(F phi) - tau(phi) = int d phi for the non-self-dual Gaussians a = 2 and 0.3 to 1e-6 and 3e-4; EXPERIMENTAL SIGNAL: d changes sign first near x = 0.1675, so the positive interval about 0 is short (d(0.25) < 0); h is real on the critical line, so dropping the conjugation is not numerically visible"
+  }
+ ],
+ "negative_controls": [
+  {
+   "file": "negative-controls/negative-square-defect.lean",
+   "expected": "REJECTED",
+   "observed": "REJECTED (8 errors, exit 1): the square self-dual (zero defect); the origin value ||h||^2 instead of ||h||^2 - |A|^2 (autocorrelation without conjugation); a negative origin value; the plateau bound 2|A|^2; a lattice correction that repairs the defect; the projection tau + d instead of tau + d/2; a negative density inside the gap; the defect identity without self-duality of h",
+   "log_sha256": "a139efe88b80defdaeb8bf20b78d17f8220786fe54ea78dc2d2c780843c30527"
+  }
+ ],
+ "ci_harvest": {
+  "file": "ci-harvest-bd918c7c.json",
+  "sha256": "4f03e4ccd8c60f798eb6df749373b695b739b8513b2b3dfded24ae39c5a3b515",
+  "scope": "complete: all 22 runs on the Stage 14 head bd918c7c; completes the Stage 15 partial harvest"
+ },
+ "not_established": [
+  "aggregate current-source export",
+  "full100 compiler receipt production/replay",
+  "facade and registration",
+  "parent-extension acceptance",
+  "canonical regeneration (rhkg-compiler-receipt remains red)",
+  "CI on the published Stage 16 record head (pending at publication; the Stage 15 commits are published together with it)"
+ ],
+ "RH": "OPEN",
+ "Step4": "OPEN",
+ "independent_closing_inequalities": "OPEN"
+}

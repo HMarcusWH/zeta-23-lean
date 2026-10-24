@@ -1,0 +1,1 @@
+{"status": "COMPLETE_DIAGNOSTIC_RUN_HARVEST_NO_RELEASE_PROMOTION", "jobs": 5, "artifacts": 17, "downloaded_hash_verified_artifacts": 5, "run_conclusion": "failure", "cold_roots": 41, "release_ready": false, "RH": "OPEN"}
