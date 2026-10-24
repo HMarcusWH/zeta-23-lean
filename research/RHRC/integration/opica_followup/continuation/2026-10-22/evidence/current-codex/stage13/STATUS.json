@@ -1,0 +1,192 @@
+{
+ "schema": "OPICA_STAGE13_NARROW_GATE_V1",
+ "status": "PASS_NARROW_LOCAL_GATES_ONLY_AGGREGATE_AND_FULL_RELEASE_OPEN",
+ "checked_commit": "294e60f57ac967e23d0d39291732e4dd12bdeac4",
+ "checked_tree": "1e4784aac58a897fce8be237612be0e71a2d8c84",
+ "dirty_status_during_checks": "",
+ "compiler": "Lean 4.33.0-rc2 commit d8b18978322de05a8f3dba51ef03cf5461676c17 (Linux x86_64), Lake 5.0.0-src+d8b1897",
+ "mathlib": "51e6992efd06126df61a496bebf8f49482a4e129 (pins unchanged; no lake update)",
+ "new_module": {
+  "module": "Zeta23.OPICAFollowup.SawtoothForce",
+  "project_imports": [
+   "Zeta23.OPICAFollowup.LogFourierSobolev",
+   "Zeta23.OPICAFollowup.ProfileEulerMaclaurin"
+  ],
+  "mathlib_imports": [
+   "Mathlib.NumberTheory.Harmonic.EulerMascheroni",
+   "Mathlib.Analysis.SpecialFunctions.Stirling"
+  ],
+  "authority": "BUILD_MANIFEST direct_project_imports of this module is exactly [LogFourierSobolev, ProfileEulerMaclaurin]",
+  "required_definitions": [
+   "sawtoothWeight",
+   "nativeLogForce"
+  ],
+  "new_definitions": [
+   "sawtoothWeight",
+   "sawtoothWeightTD",
+   "nativeLogForce"
+  ],
+  "supporting_results": [
+   "integral_fract_sq_cell",
+   "integral_fract_sq_closed",
+   "tendsto_integral_fract_sq",
+   "mellin_fract",
+   "logFourier_sawtoothWeight",
+   "sawtooth_weighted_zeta_moment",
+   "nativeLogForce_apply",
+   "sawtooth_compact_identity",
+   "sawtooth_jump",
+   "fourier_nativeLogForce",
+   "logH1_schwartz"
+  ]
+ },
+ "existing_lean_sources_changed": false,
+ "cache_owner": "single local process; the module was built from this exact source in the session (lake rebuilds on source hash change), and the runner build re-validated it",
+ "sources": [
+  {
+   "path": "Zeta23/OPICAFollowup/SawtoothForce.lean",
+   "sha256": "b5af67cb5f365b2c3197722a653658615aeabcf579ed505ac93ccdbef0de8f40",
+   "bytes": 46006
+  },
+  {
+   "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedSawtoothForce.lean",
+   "sha256": "fcbaf41bb5a4e4b0be7bf900568f61849e93e39c97bcedf68a498a757b100be0",
+   "bytes": 9258
+  },
+  {
+   "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/run_candidate_checks.py",
+   "sha256": "fe2fb68df8ce5f65a365cfa8a67ab2096ee3ee15785908cf30f79d7163538e8c",
+   "bytes": 6764
+  },
+  {
+   "path": ".github/workflows/rhrc_opica_followup.yml",
+   "sha256": "ae43b1b9a19429ee8f51e9c3099d5825e4b96d50e04914cd896edada942668ad",
+   "bytes": 44419
+  },
+  {
+   "path": "lean-toolchain",
+   "sha256": "0d3c76ccd8772d8bcbe207241421a760312b71a6aa82f84194391fdf5cb026d6",
+   "bytes": 29
+  },
+  {
+   "path": "lake-manifest.json",
+   "sha256": "1847b362e15efd927e75aa8b5442e491f998e4a3f730f9dcaca9841f2957c448",
+   "bytes": 3200
+  }
+ ],
+ "roots": {
+  "Zeta23.OPICAFollowup.sawtooth_integrable_force_identity": {
+   "paper": "F1 (F1.1)",
+   "expected_type_consumer": "consumers/ExpectedSawtoothForce.lean (11 receipts, shared)",
+   "actual_domain": "an independent bump of radius 1/4 at log 2 isolates the single atom 2^(-1/2): the force on it equals 2^(-1/2) - int e^(t/2) phi; the jump of w at log 2 equals that atom weight",
+   "premises": "none",
+   "axioms": "propext, Classical.choice, Quot.sound"
+  },
+  "Zeta23.OPICAFollowup.sawtooth_actual_mellin_fourier": {
+   "paper": "F1 (F1.2, F1.3)",
+   "expected_type_consumer": "consumers/ExpectedSawtoothForce.lean (11 receipts, shared)",
+   "actual_domain": "the two conventions agree on w: logFourier w (2 pi eta) = F w (eta)",
+   "premises": "0 < Re s < 1 for the Mellin clause",
+   "axioms": "propext, Classical.choice, Quot.sound"
+  },
+  "Zeta23.OPICAFollowup.sawtooth_norm_weighted_zeta_moment": {
+   "paper": "F1 (F1.4)",
+   "expected_type_consumer": "consumers/ExpectedSawtoothForce.lean (11 receipts, shared)",
+   "actual_domain": "the budget is a positive zero-free constant: 1/2 < log(2 pi) - EulerGamma < 2",
+   "premises": "none",
+   "axioms": "propext, Classical.choice, Quot.sound"
+  },
+  "re_verified_narrow_roots": [
+   "all roots consumed by the twenty runner consumer files"
+  ]
+ },
+ "gates": [
+  {
+   "label": "narrow runner (15 modules, 20 consumer files)",
+   "log": "runner/CHECK_RESULT.json",
+   "sha256": "0411cb6fe9adbc61523f45b96d45b58a320605bc7c3bf38ee6a231aa0337367b",
+   "exit_code": 0,
+   "runner_status": "PASS_NARROW_ONLY",
+   "consumer_receipts": {
+    "ExpectedMasks": 4,
+    "ExpectedComplex": 4,
+    "ExpectedAuxiliary": 6,
+    "ExpectedMultiplicity": 17,
+    "ExpectedComb": 5,
+    "ExpectedFirstCell": 5,
+    "ExpectedWeighted": 9,
+    "ExpectedNearGap": 5,
+    "ExpectedNearGapLimit": 10,
+    "ExpectedNormalizedLimit": 9,
+    "ExpectedWeightedInverse": 17,
+    "ExpectedCoPoissonFamily": 7,
+    "ExpectedCoPoissonOrderZero": 10,
+    "ExpectedZeroMeasure": 7,
+    "ExpectedEulerMaclaurin": 10,
+    "ExpectedZeroProfiles": 11,
+    "ExpectedLogFourierSobolev": 10,
+    "ExpectedForcedEuler": 10,
+    "ExpectedSamplingCompatibility": 11,
+    "ExpectedSawtoothForce": 11
+   }
+  },
+  {
+   "label": "W04/W07 workflow consumer (unchanged heredoc)",
+   "log": "consumers/opica-w04-w07-expected.log",
+   "sha256": "47bf37f88ae44589a223145e24dd07655b7172bfca6a30bf819bb33c5251ac1e",
+   "exit_code": 0,
+   "standard_axiom_receipts": 52
+  },
+  {
+   "label": "W06 workflow consumer (unchanged heredoc)",
+   "log": "consumers/opica-w06-expected.log",
+   "sha256": "8564fc7fe7d8a2ef4ae561975e207ce6aa8e42accc8c35f0e6ed618ed26078ca",
+   "exit_code": 0,
+   "standard_axiom_receipts": 14
+  },
+  {
+   "label": "W01 consumers and exact-source subset",
+   "note": "not re-run locally: no existing Lean source changed and no W01 or subset module imports the new module; green in CI at the Stage 11 head b9627cc1 (narrow job success in PR run 40052915110 and push run 40052912440; ci-harvest-b9627cc1-partial.json)"
+  },
+  {
+   "label": "child suite and parent contract tests",
+   "result": "child 185/185 and parent 82/82 in normal and optimized Python"
+  },
+  {
+   "label": "frozen control replay",
+   "result": "normal and optimized modes (p0 5112, round1 18862, round2 14672, final 1274 checks each); copoisson, round2 and final numerical suites CONSISTENCY_ONLY"
+  },
+  {
+   "label": "numerical falsification (mpmath 1.3.0, not interval certified)",
+   "script": "numerical-falsification.py",
+   "script_sha256": "b3b6289bcfd015000e1130d65ba5dd1423d88011754f4027531075ae79bf2da7",
+   "log": "numerical-falsification.log",
+   "log_sha256": "b3e3b22871ec34ed806e46593821c522f66adda04d0079f441a91a2f5786bf82",
+   "result": "Mellin transform at s = 0.5, 0.3 + 2i and the first zero 0.5 + 14.134725i against -zeta(s)/s to 3e-7, 1.7e-6 and 3e-7 (cell quadrature to 4000 with the mean-value tail); the cell closed form matches direct quadrature at L = 1, 5, 40 to 15 digits; limit log(2 pi) - gamma = 1.26066140150781; on a compact bump test the force equals the atom sum minus the continuum part exactly, while dropping the atoms or using weights n^(1/2) misses (-1.38 and 2.09 vs 0.075)"
+  }
+ ],
+ "negative_controls": [
+  {
+   "file": "negative-controls/negative-sawtooth-force.lean",
+   "expected": "REJECTED",
+   "observed": "REJECTED (10 errors, exit 1): Mellin transform +zeta(s)/s; log-Fourier denominator 1/2 - i xi; Mathlib-convention force transform zeta(1/2 + i eta); continuum part with a plus sign; atom weights n^(1/2); left limit 1 at log n; budget log(2 pi) + gamma; weighted moment without the Plancherel factor 1/(2 pi); closed form with -2L log L; H^-1 constant equal to the budget instead of its square root",
+   "log_sha256": "fa43f807b7914eb2de0b9d8a5cb33650a1e334cdcbde864d8b520c75f9eb272d"
+  }
+ ],
+ "ci_harvest": {
+  "file": "ci-harvest-b9627cc1-partial.json",
+  "sha256": "143c3e56cb2161d266e14628558fe66f03ab1496450c8520f4458db20926b44e",
+  "note": "partial: 20 of 22 runs on b9627cc1 complete at record time (only designed fail-closed gates red); two long research replays in progress; complete harvest with the next stage"
+ },
+ "not_established": [
+  "aggregate current-source export",
+  "full100 compiler receipt production/replay",
+  "facade and registration",
+  "parent-extension acceptance",
+  "canonical regeneration (rhkg-compiler-receipt remains red)",
+  "CI on the Stage 13 head (pending at publication)"
+ ],
+ "RH": "OPEN",
+ "Step4": "OPEN",
+ "independent_closing_inequalities": "OPEN"
+}

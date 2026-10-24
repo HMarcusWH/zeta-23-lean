@@ -4,7 +4,9 @@ This checkpoint combines the existing PR #294 implementation, the supplied
 22 October repair kit, and the Codex audit/provenance. It is **not a completed
 100-root release**. RH, Step 4 and the independent closing inequalities are OPEN.
 
-The latest [Stage 12 handover](STAGE12_HANDOVER.md) records the native multi-zero sampling
+The latest [Stage 13 handover](STAGE13_HANDOVER.md) records the arithmetic sawtooth force: its
+tempered construction, Mellin/Fourier transforms and weighted zeta moment (F1).
+[Stage 12](STAGE12_HANDOVER.md) records the native multi-zero sampling
 compatibility law and its Gram positivity (R2-S2).
 [Stage 11](STAGE11_HANDOVER.md) records the forced Euler equation of the
 actual zero profiles and why it is not a homogeneous operator equation (R2-S1b).
@@ -41,19 +43,19 @@ The controlling obligations remain the unchanged `PUBLIC_ROOTS.json`,
 `BUILD_SPEC.md`, `BUILD_MANIFEST.json`, `PAPER_CROSSWALK.json` and
 `PARENT_EXTENSION.json` two directories above this file. `ROOT_LEDGER_100.json`
 beside this guide separates each root's implementation, compilation, consumers,
-axioms and aggregate acceptance. `REMAINING_WORK.md` lists the 25 absent proofs.
+axioms and aggregate acceptance. `REMAINING_WORK.md` lists the 22 absent proofs.
 
 - 41 roots have a historical cold exact-source subset receipt at the old base.
-- Thirty-four additional original roots passed independent local module, full-type/
+- Thirty-seven additional original roots passed independent local module, full-type/
   domain consumer and standard-axiom checks, including the CT1 dilation family
   and the same-output word/jet consumer (Stage 4), the HT2 controlled limit and
   CT1 normalized limit (Stage 5), the three remaining R1-HT1 weighted-mixing
   roots (Stage 6), the three remaining R1-CP1 co-Poisson roots (Stage 7), the
   finite-sum Euler-Maclaurin root (Stage 8), the two zero-profile roots (Stage 9),
   the two log-Fourier-Sobolev roots (Stage 10), the two forced-Euler roots
-  (Stage 11) and the two sampling-compatibility roots (Stage 12); aggregate and
-  full acceptance remain pending.
-- 25 original primary implementations are still absent.
+  (Stage 11), the two sampling-compatibility roots (Stage 12) and the three
+  sawtooth-force roots (Stage 13); aggregate and full acceptance remain pending.
+- 22 original primary implementations are still absent.
 
 Consult `evidence/current-codex/` and the ledger for any newer replay evidence in
 this checkpoint. Do not infer a current aggregate receipt from the old subset.
@@ -99,7 +101,7 @@ full release readiness stays closed. Read the Stage 1 infrastructure handover.
 Read `NEXT_AGENT_PROMPT.md`, the exact ledger contracts and
 `evidence/historical-codex-review/` before choosing a proof lane.
 
-Complete the 25 absent roots without replacing them by supporting lemmas. The other four earlier
+Complete the 22 absent roots without replacing them by supporting lemmas. The other four earlier
 candidates now have narrow source/type/domain/axiom evidence in Stage 1.
 The actual native moment/residual/memory chain is now proved locally; fixed and
 moving source window rates are next. The profile/sampling chain beyond R1-CP1 remains
@@ -107,8 +109,8 @@ OPEN; the HT2 controlled limit and the CT1 normalized limit (Stage 5), the weigh
 inverse, sharp gap and leakage roots (Stage 6), the co-Poisson tempered family, order
 zero and zero-measure roots (Stage 7), the finite-sum Euler-Maclaurin root (Stage 8),
 the two zero-profile roots (Stage 9), the two log-Fourier-Sobolev roots (Stage 10),
-the two forced-Euler roots (Stage 11) and the two sampling-compatibility roots (Stage 12)
-now have narrow gates.
+the two forced-Euler roots (Stage 11), the two sampling-compatibility roots (Stage 12)
+and the three sawtooth-force roots (Stage 13) now have narrow gates.
 
 Finish independent full types and physical/domain consumers, actual definitions,
 the public facade, complete declaration/constructor/private-dependency export,

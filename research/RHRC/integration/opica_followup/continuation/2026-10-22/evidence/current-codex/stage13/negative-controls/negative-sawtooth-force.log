@@ -1,0 +1,71 @@
+negative-sawtooth-force.lean:8:2: error: Type mismatch
+  (sawtooth_actual_mellin_fourier.left s h0 h1).right
+has type
+  ∫ (x : ℝ) in Ioi 0, ↑(Int.fract x) * ↑x ^ (-s - 1) = -riemannZeta s / s
+but is expected to have type
+  ∫ (x : ℝ) in Ioi 0, ↑(Int.fract x) * ↑x ^ (-s - 1) = riemannZeta s / s
+negative-sawtooth-force.lean:12:2: error: Type mismatch
+  sawtooth_actual_mellin_fourier.right.left ξ
+has type
+  logFourier sawtoothWeight ξ = -riemannZeta (1 / 2 + ↑ξ * I) / (1 / 2 + ↑ξ * I)
+but is expected to have type
+  logFourier sawtoothWeight ξ = -riemannZeta (1 / 2 + ↑ξ * I) / (1 / 2 - ↑ξ * I)
+negative-sawtooth-force.lean:16:2: error: Type mismatch
+  sawtooth_actual_mellin_fourier.right.right.right φ
+has type
+  (𝓕 nativeLogForce) φ = ∫ (η : ℝ), riemannZeta (1 / 2 + ↑(2 * π * η) * I) * φ η
+but is expected to have type
+  (𝓕 nativeLogForce) φ = ∫ (η : ℝ), riemannZeta (1 / 2 + ↑η * I) * φ η
+negative-sawtooth-force.lean:22:2: error: Type mismatch
+  sawtooth_integrable_force_identity.right.right.right.right.right.left φ hφ hc
+has type
+  nativeLogForce (hc.toSchwartzMap hφ) =
+    ∑' (n : ℕ), ↑((↑n + 1) ^ (-(1 / 2))) * φ (Real.log (↑n + 1)) - ∫ (t : ℝ), ↑(rexp (t / 2)) * φ t
+but is expected to have type
+  nativeLogForce (hc.toSchwartzMap hφ) =
+    ∑' (n : ℕ), ↑((↑n + 1) ^ (-(1 / 2))) * φ (Real.log (↑n + 1)) + ∫ (t : ℝ), ↑(rexp (t / 2)) * φ t
+negative-sawtooth-force.lean:28:2: error: Type mismatch
+  sawtooth_integrable_force_identity.right.right.right.right.right.left φ hφ hc
+has type
+  nativeLogForce (hc.toSchwartzMap hφ) =
+    ∑' (n : ℕ), ↑((↑n + 1) ^ (-(1 / 2))) * φ (Real.log (↑n + 1)) - ∫ (t : ℝ), ↑(rexp (t / 2)) * φ t
+but is expected to have type
+  nativeLogForce (hc.toSchwartzMap hφ) =
+    ∑' (n : ℕ), ↑((↑n + 1) ^ (1 / 2)) * φ (Real.log (↑n + 1)) - ∫ (t : ℝ), ↑(rexp (t / 2)) * φ t
+negative-sawtooth-force.lean:32:2: error: Type mismatch
+  (sawtooth_integrable_force_identity.right.right.right.right.right.right n hn).left
+has type
+  Tendsto sawtoothWeight (𝓝[<] Real.log ↑n) (𝓝 ↑(↑n ^ (-(1 / 2))))
+but is expected to have type
+  Tendsto sawtoothWeight (𝓝[<] Real.log ↑n) (𝓝 1)
+negative-sawtooth-force.lean:36:2: error: Type mismatch
+  sawtooth_norm_weighted_zeta_moment.right.right.right.right.left
+has type
+  ∫ (t : ℝ), ‖sawtoothWeight t‖ ^ 2 = Real.log (2 * π) - Real.eulerMascheroniConstant
+but is expected to have type
+  ∫ (t : ℝ), ‖sawtoothWeight t‖ ^ 2 = Real.log (2 * π) + Real.eulerMascheroniConstant
+negative-sawtooth-force.lean:41:2: error: Type mismatch
+  sawtooth_norm_weighted_zeta_moment.right.right.right.right.right.right.left
+has type
+  1 / (2 * π) * ∫ (ξ : ℝ), ‖riemannZeta (1 / 2 + ↑ξ * I)‖ ^ 2 / (ξ ^ 2 + 1 / 4) =
+    Real.log (2 * π) - Real.eulerMascheroniConstant
+but is expected to have type
+  ∫ (ξ : ℝ), ‖riemannZeta (1 / 2 + ↑ξ * I)‖ ^ 2 / (ξ ^ 2 + 1 / 4) = Real.log (2 * π) - Real.eulerMascheroniConstant
+negative-sawtooth-force.lean:46:2: error: Type mismatch
+  sawtooth_norm_weighted_zeta_moment.right.right.left L hL
+has type
+  ∫ (x : ℝ) in 0..↑L, Int.fract x ^ 2 / x ^ 2 =
+    2 * ↑L - ↑(harmonic L) - 2 * (↑L - 1) * Real.log ↑L + 2 * Real.log (Real.Gamma ↑L)
+but is expected to have type
+  ∫ (x : ℝ) in 0..↑L, Int.fract x ^ 2 / x ^ 2 =
+    2 * ↑L - ↑(harmonic L) - 2 * ↑L * Real.log ↑L + 2 * Real.log (Real.Gamma ↑L)
+negative-sawtooth-force.lean:51:2: error: Type mismatch
+  sawtooth_norm_weighted_zeta_moment.right.right.right.right.right.right.right.right φ
+has type
+  ‖nativeLogForce φ‖ ≤
+    (Real.log (2 * π) - Real.eulerMascheroniConstant) ^ (1 / 2) *
+      ((∫ (t : ℝ), ‖deriv (⇑φ) t‖ ^ 2) + 1 / 4 * ∫ (t : ℝ), ‖φ t‖ ^ 2) ^ (1 / 2)
+but is expected to have type
+  ‖nativeLogForce φ‖ ≤
+    (Real.log (2 * π) - Real.eulerMascheroniConstant) *
+      ((∫ (t : ℝ), ‖deriv (⇑φ) t‖ ^ 2) + 1 / 4 * ∫ (t : ℝ), ‖φ t‖ ^ 2) ^ (1 / 2)
