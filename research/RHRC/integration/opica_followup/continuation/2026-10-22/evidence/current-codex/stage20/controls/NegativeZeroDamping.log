@@ -1,0 +1,3 @@
+C:\Users\macka\.codex\.chatgpt-projects\g-p-6a353c7268b08191b685956e466d73e4\work\opica-stage20\clean-controls\NegativeZeroDamping.lean:6:74: error: unsolved goals
+theta_zero : nativeZeroDisplacementSup = 0
+⊢ False

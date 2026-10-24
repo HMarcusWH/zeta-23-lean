@@ -1,0 +1,14 @@
+'Zeta23.OPICAFollowup.actual_force_sampling_consumer' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OPICAForceSamplingIndependent.expected_actual_force_sampling_consumer' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'OPICAForceSamplingIndependent.audit_spectralKappa' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OPICAForceSamplingIndependent.audit_logFourier' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OPICAForceSamplingIndependent.audit_force' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OPICAForceSamplingIndependent.audit_density' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OPICAForceSamplingIndependent.audit_sample' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OPICAForceSamplingIndependent.audit_boundary' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OPICAForceSamplingIndependent.audit_generic' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OPICAForceSamplingIndependent.offline_kappa' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OPICAForceSamplingIndependent.actual_offline_domain' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OPICAForceSamplingIndependent.actual_right_representative' depends on axioms: [propext, Classical.choice, Quot.sound]

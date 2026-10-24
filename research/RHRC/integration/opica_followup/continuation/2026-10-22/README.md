@@ -1,10 +1,12 @@
+> Latest: [Stage 20](STAGE20_HANDOVER.md), checked code `9a8b2a4baee49f2056c7945b1544a7bc2893735b`, tree `6aa53d22d50d2aa24046d73b128c64a1d262f7f3`. The unchanged 100-root ledger records 41 historical + 56 narrow + 3 absent. Six original H2a/J5.2/MS1/Q3 roots now have clean full-type/domain/axiom evidence. Full release, RH and Step4 remain OPEN. Earlier stage descriptions below retain their historical scope.
+
 # Continue the OPICA draft directly in this repository
 
 This checkpoint combines the existing PR #294 implementation, the supplied
 22 October repair kit, and the Codex audit/provenance. It is **not a completed
 100-root release**. RH, Step 4 and the independent closing inequalities are OPEN.
 
-The latest [Stage 19 handover](STAGE19_HANDOVER.md) records the original actual force-sampling
+The preceding [Stage 19 handover](STAGE19_HANDOVER.md) records the original actual force-sampling
 consumer (F1-F3), with both Fourier conventions, the actual lattice force, spectral sample identity
 and reflected boundary amplitude. The existing word/jet consumer is revalidated; the sample-sign
 consumer is supporting mathematics and is not counted as a primary.
@@ -57,10 +59,10 @@ The controlling obligations remain the unchanged `PUBLIC_ROOTS.json`,
 `BUILD_SPEC.md`, `BUILD_MANIFEST.json`, `PAPER_CROSSWALK.json` and
 `PARENT_EXTENSION.json` two directories above this file. `ROOT_LEDGER_100.json`
 beside this guide separates each root's implementation, compilation, consumers,
-axioms and aggregate acceptance. `REMAINING_WORK.md` lists the 9 absent proofs.
+axioms and aggregate acceptance. `REMAINING_WORK.md` lists the 3 absent proofs.
 
 - 41 roots have a historical cold exact-source subset receipt at the old base.
-- Fifty additional original roots passed independent local module, full-type/
+- Fifty-six additional original roots passed independent local module, full-type/
   domain consumer and standard-axiom checks, including the CT1 dilation family
   and the same-output word/jet consumer (Stage 4), the HT2 controlled limit and
   CT1 normalized limit (Stage 5), the three remaining R1-HT1 weighted-mixing
@@ -73,7 +75,7 @@ axioms and aggregate acceptance. `REMAINING_WORK.md` lists the 9 absent proofs.
   square-defect roots (Stage 16), the two boundary-amplitude roots (Stage 17),
   the zero-jet root (Stage 18) and the actual force-sampling consumer (Stage 19);
   aggregate and full acceptance remain pending.
-- 9 original primary implementations are still absent.
+- 3 original primary implementations are still absent.
 
 Consult `evidence/current-codex/` and the ledger for any newer replay evidence in
 this checkpoint. Do not infer a current aggregate receipt from the old subset.
@@ -96,8 +98,8 @@ python -B research/RHRC/integration/opica_followup/continuation/2026-10-22/run_c
   --lake lake --output-dir /tmp/opica-current-candidates
 ```
 
-The second command builds 21 candidate modules from current source, checks
-28 explicit independent consumer files and their named standard-only axiom closures,
+The second command builds 24 candidate modules from current source, checks
+31 explicit independent consumer files and their named standard-only axiom closures,
 and records source/head/tree/log hashes. It neither registers roots nor accepts
 the complete PR. Use an OS-appropriate external output path on Windows.
 
@@ -119,7 +121,7 @@ full release readiness stays closed. Read the Stage 1 infrastructure handover.
 Read `NEXT_AGENT_PROMPT.md`, the exact ledger contracts and
 `evidence/historical-codex-review/` before choosing a proof lane.
 
-Complete the 9 absent roots without replacing them by supporting lemmas. The other four earlier
+Complete the 3 absent roots without replacing them by supporting lemmas. The other four earlier
 candidates now have narrow source/type/domain/axiom evidence in Stage 1.
 The actual native moment/residual/memory chain is now proved locally; fixed and
 moving source window rates are next. The profile/sampling chain beyond R1-CP1 remains
@@ -149,8 +151,8 @@ full mathematics and independent acceptance companions are still required.
 
 - `inputs/`: both foundational PDFs, original specifications, amendment and
   historical research/input texts. The original controlling files remain above.
-- `consumers/`: 28 independent expected-type/domain and supporting consumer files
-  used by the 21-module narrow replay. Supporting files do not increase the primary-root count.
+- `consumers/`: 31 independent expected-type/domain and supporting consumer files
+  used by the 24-module narrow replay. Supporting files do not increase the primary-root count.
 - `provided/`: unchanged delivery state, documents, tools and old-base patch.
   Some tools require omitted offline-runtime material; read the CORE caveat.
 - `evidence/provided/`: supplied receipts/logs and the historical cold receipt.

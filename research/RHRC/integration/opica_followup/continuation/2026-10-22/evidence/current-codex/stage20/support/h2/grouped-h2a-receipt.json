@@ -1,0 +1,301 @@
+{
+  "schema": "OPICA_GROUPED_H2A_CANDIDATE_V1",
+  "date_utc": "2026-10-24T15:47:36.6498835Z",
+  "claim": "Complete original grouped H2a mathematical contracts locally proved. Production installation and unchanged owner/CI/cold/release gates remain separate obligations.",
+  "compiler_version": "Lean (version 4.33.0-rc2, x86_64-w64-windows-gnu, commit d8b18978322de05a8f3dba51ef03cf5461676c17, Release)",
+  "candidate_base_head": "6dfabc16220951c9569d75196a237077c532d922",
+  "candidate_base_committed_tree": "fe4d1757724db0e3588d73d1865b4c579eaf0323",
+  "candidate_compile_working_status": [
+    " M Zeta23/OPICAFollowup/Consumers.lean",
+    " M Zeta23/OPICAFollowup/NativeWindowRate.lean",
+    " M research/RHRC/integration/opica_followup/continuation/2026-10-22/run_candidate_checks.py",
+    "?? Zeta23/OPICAFollowup/MovingSourceWindowRate.lean",
+    "?? research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedArithmeticPhysical.lean",
+    "?? research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedPhysicalRates.lean"
+  ],
+  "head_at_seal": "6dfabc16220951c9569d75196a237077c532d922",
+  "working_status_at_seal": [
+    " M Zeta23/OPICAFollowup/Consumers.lean",
+    " M Zeta23/OPICAFollowup/NativeWindowRate.lean",
+    " M research/RHRC/integration/opica_followup/continuation/2026-10-22/run_candidate_checks.py",
+    "?? Zeta23/OPICAFollowup/ConfluentProfiles.lean",
+    "?? Zeta23/OPICAFollowup/MovingSourceWindowRate.lean",
+    "?? research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedArithmeticPhysical.lean",
+    "?? research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedConfluentProfiles.lean",
+    "?? research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedPhysicalRates.lean"
+  ],
+  "direct_project_imports": [
+    "Zeta23.OPICAFollowup.CoPoissonJets"
+  ],
+  "import_source_hashes": [
+    {
+      "path": "Zeta23/OPICAFollowup/CoPoissonJets.lean",
+      "sha256": "dfb21b90906e2cbc23acdfd46b874c04d4ea6ae0217aa316b50c5b404c0d7134"
+    },
+    {
+      "path": "Zeta23/OPICAFollowup/ZeroProfiles.lean",
+      "sha256": "d5ee76f621001bcd97e555cd6a92517349080d4315c86a496289acf49a7af7fc"
+    },
+    {
+      "path": "lean-toolchain",
+      "sha256": "0d3c76ccd8772d8bcbe207241421a760312b71a6aa82f84194391fdf5cb026d6"
+    },
+    {
+      "path": "lake-manifest.json",
+      "sha256": "1847b362e15efd927e75aa8b5442e491f998e4a3f730f9dcaca9841f2957c448"
+    }
+  ],
+  "max_heartbeats": 800000,
+  "strict_axiom_name_gates": [
+    {
+      "source": "ConfluentProfilesCandidate.lean",
+      "requested_names": [
+        "Zeta23.OPICAFollowup.profile_jet_confluent_determinant",
+        "Zeta23.OPICAFollowup.finite_zero_jet_independent"
+      ],
+      "printed_names": [
+        "Zeta23.OPICAFollowup.profile_jet_confluent_determinant",
+        "Zeta23.OPICAFollowup.finite_zero_jet_independent"
+      ],
+      "exact_requested_subset_of_printed": true
+    },
+    {
+      "source": "ExpectedConfluentProfiles.lean",
+      "requested_names": [
+        "OPICAConfluentProfilesIndependent.expected_profile_jet_confluent_determinant",
+        "OPICAConfluentProfilesIndependent.expected_finite_zero_jet_independent",
+        "OPICAConfluentProfilesIndependent.expected_exact_local_column"
+      ],
+      "printed_names": [
+        "OPICAConfluentProfilesIndependent.expected_profile_jet_confluent_determinant",
+        "OPICAConfluentProfilesIndependent.expected_finite_zero_jet_independent",
+        "OPICAConfluentProfilesIndependent.expected_exact_local_column"
+      ],
+      "exact_requested_subset_of_printed": true
+    }
+  ],
+  "source_token_scan": "No sorry/admit/axiom token found in successful standalone source",
+  "results": [
+    {
+      "source": "GroupedIndex.lean",
+      "source_sha256": "241869684c596a398871898ee0265424c7a55ad2399b266a171bd0dedbe7f504",
+      "compiler": "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lean.exe",
+      "arguments": [
+        "-o",
+        "GroupedIndex.olean",
+        "GroupedIndex.lean"
+      ],
+      "exit_code": 0,
+      "disposition": "PASS_LOCAL_FORMAL",
+      "log": "GroupedIndex.log",
+      "log_sha256": "2e7ae37412de00026bd23230d138bd2a141ad63ddd139296293d92970864d5f0",
+      "axiom_closure": "propext, Classical.choice, Quot.sound",
+      "compiled_object_sha256": "31a9929ad2102598e267bb07dbdfa291b9755c5c7dc6477ebaf4067f0f7fcd40"
+    },
+    {
+      "source": "GroupedProducts.lean",
+      "source_sha256": "83a757165b337515c40ba7cf4ed13dc285c6a9b72388c8ff78e6e2d01d20a6a3",
+      "compiler": "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lean.exe",
+      "arguments": [
+        "-o",
+        "GroupedProducts.olean",
+        "GroupedProducts.lean"
+      ],
+      "exit_code": 0,
+      "disposition": "PASS_LOCAL_FORMAL",
+      "log": "GroupedProducts.log",
+      "log_sha256": "7e7434785531a78669a7834d691bd0d442a2930b9f61e327c14efc20becfc7bc",
+      "axiom_closure": "propext, Classical.choice, Quot.sound",
+      "compiled_object_sha256": "ce4e55b1a75d7c309186eb8d7ae940f34755485e9272720076af8bdc1edd75ff"
+    },
+    {
+      "source": "GroupedActualConfluent.lean",
+      "source_sha256": "e42779fef21dc97535447d012d4f496cfd0dbc59ab8c7a0f64d71522a8be46a9",
+      "compiler": "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lean.exe",
+      "arguments": [
+        "-o",
+        "GroupedActualConfluent.olean",
+        "GroupedActualConfluent.lean"
+      ],
+      "exit_code": 0,
+      "disposition": "PASS_LOCAL_FORMAL",
+      "log": "GroupedActualConfluent.log",
+      "log_sha256": "224714900296ea2346cc25f147a2043931328cd4fc40facad580e69d3e708738",
+      "axiom_closure": "propext, Classical.choice, Quot.sound",
+      "compiled_object_sha256": "41a081bcb0f074c20552983a897cc05d390b0d615418b92bf305999683a52575"
+    },
+    {
+      "source": "ExpectedGroupedActualConfluent.lean",
+      "source_sha256": "dcb3f0ec2af3e9a51f691b4d1ece2bafc591f31cca835c208e58a2421c6b324d",
+      "compiler": "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lean.exe",
+      "arguments": [
+        "-o",
+        "ExpectedGroupedActualConfluent.olean",
+        "ExpectedGroupedActualConfluent.lean"
+      ],
+      "exit_code": 0,
+      "disposition": "PASS_LOCAL_FORMAL",
+      "log": "ExpectedGroupedActualConfluent.log",
+      "log_sha256": "fe2e3a6e931ef12749a7ed232ea00acebdbad094997e65c3dc2c18cb1385783a",
+      "axiom_closure": "propext, Classical.choice, Quot.sound",
+      "compiled_object_sha256": "40dd52c5af44b53f19ed33151c8c7279949146b08be143adfbb969d43025f15e"
+    },
+    {
+      "source": "GroupedReflectionControl.lean",
+      "source_sha256": "1b1ee960a3424a799135de964356efe1b07a84599fa4e29c34509edb02c9ae55",
+      "compiler": "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lean.exe",
+      "arguments": [
+        "-o",
+        "GroupedReflectionControl.olean",
+        "GroupedReflectionControl.lean"
+      ],
+      "exit_code": 0,
+      "disposition": "PASS_LOCAL_FORMAL",
+      "log": "GroupedReflectionControl.log",
+      "log_sha256": "26d6108b4e3998208b8421e4580f0b81bb0f9b0abb4cdd2477d1d47c7ca597eb",
+      "axiom_closure": "propext, Classical.choice, Quot.sound",
+      "compiled_object_sha256": "da0a441078bd8e6acddabbe12ad2835aa87cbd5a37a259068ef52b8c869f19f3"
+    },
+    {
+      "source": "ConfluentProfilesCandidate.lean",
+      "source_sha256": "1773e3200a8b3e7284b276d97dcfc5481945e4139852fef8d92e3b64b7b0b0d0",
+      "compiler": "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lean.exe",
+      "arguments": [
+        "-o",
+        "ConfluentProfilesCandidate.olean",
+        "ConfluentProfilesCandidate.lean"
+      ],
+      "exit_code": 0,
+      "disposition": "PASS_LOCAL_FORMAL",
+      "log": "ConfluentProfilesCandidate.log",
+      "log_sha256": "f907e18339ad1097153058c529b0f49d6d04094e3f9cb821a33ca7deeb95541d",
+      "axiom_closure": "propext, Classical.choice, Quot.sound",
+      "compiled_object_sha256": "1e2b9fa7586596052026ab1385661520a24cd58a278603d7d4b6a2aaa0a05547"
+    },
+    {
+      "source": "ExpectedConfluentProfiles.lean",
+      "source_sha256": "8a96844c9863ac5610cdd11e3b495339165f7148bb4f0639ceae5dd9a2a7d36e",
+      "compiler": "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lean.exe",
+      "arguments": [
+        "-o",
+        "ExpectedConfluentProfiles.olean",
+        "ExpectedConfluentProfiles.lean"
+      ],
+      "exit_code": 0,
+      "disposition": "PASS_LOCAL_FORMAL",
+      "log": "ExpectedConfluentProfiles.log",
+      "log_sha256": "d9255ddddfee9b43a0bc66144e865b9e5bedbdea1749212bd0a437f4317d21e4",
+      "axiom_closure": "propext, Classical.choice, Quot.sound",
+      "compiled_object_sha256": "1a92f7ae26de828cc2494a811bff192ffdb947defbabd8a505f96539a3847ea3"
+    },
+    {
+      "source": "ConfluentProfilesReflectionControl.lean",
+      "source_sha256": "bd74c75ca5f8b192af8b0b7cbcebec4785d716c5458938c66b12a08ad6abba02",
+      "compiler": "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lean.exe",
+      "arguments": [
+        "-o",
+        "ConfluentProfilesReflectionControl.olean",
+        "ConfluentProfilesReflectionControl.lean"
+      ],
+      "exit_code": 0,
+      "disposition": "PASS_LOCAL_FORMAL",
+      "log": "ConfluentProfilesReflectionControl.log",
+      "log_sha256": "26d6108b4e3998208b8421e4580f0b81bb0f9b0abb4cdd2477d1d47c7ca597eb",
+      "axiom_closure": "propext, Classical.choice, Quot.sound",
+      "compiled_object_sha256": "6a66c00e87b54296c49ddc8920e42b03a476923ebbcda94dbcae0cd685a03fb7"
+    },
+    {
+      "source": "ConfluentProfilesFactorialControls.lean",
+      "source_sha256": "8319e8d742bbe8d9365aec893d78747e63b2b2149c84a491290b83ec4c6d5eb9",
+      "compiler": "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lean.exe",
+      "arguments": [
+        "-o",
+        "ConfluentProfilesFactorialControls.olean",
+        "ConfluentProfilesFactorialControls.lean"
+      ],
+      "exit_code": 0,
+      "disposition": "PASS_LOCAL_FORMAL",
+      "log": "ConfluentProfilesFactorialControls.log",
+      "log_sha256": "c2d24ca0b41d692a435a103b7a60a55c1d38b7a810e152135d469a2d4760546d",
+      "axiom_closure": "propext, Classical.choice, Quot.sound",
+      "compiled_object_sha256": "1b2f37461e0d3380270968b7a7aab996b45c4df1d5274c8dcc2f8c7bc18df58f"
+    },
+    {
+      "source": "NegativeGroupedDistinctness.lean",
+      "source_sha256": "d8d4b69d555330da8f074f21c6a3f4a49f7f209a2bcbc7825cba5ebb6547e876",
+      "compiler": "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lean.exe",
+      "arguments": [
+        "NegativeGroupedDistinctness.lean"
+      ],
+      "exit_code": 1,
+      "disposition": "EXPECTED_REJECTION",
+      "log": "NegativeGroupedDistinctness.log",
+      "log_sha256": "a52e86ce70ec5a0c4724adc129dda88960a280a18a5c97905a406dd126c4ddeb",
+      "rejection_class": "intended theorem-contract type mismatch"
+    },
+    {
+      "source": "NegativeConfluentProfilesDistinctness.lean",
+      "source_sha256": "33e7e683d273001a857672b273f7322a4dda43f08a431b76faaff140651ecc5f",
+      "compiler": "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lean.exe",
+      "arguments": [
+        "NegativeConfluentProfilesDistinctness.lean"
+      ],
+      "exit_code": 1,
+      "disposition": "EXPECTED_REJECTION",
+      "log": "NegativeConfluentProfilesDistinctness.log",
+      "log_sha256": "a5054a938d408d115ff67ea1589c11776e0bc8ed75f70b875dc07b2f78886ed5",
+      "rejection_class": "intended theorem-contract type mismatch"
+    },
+    {
+      "source": "NegativeConfluentProfilesFactorial.lean",
+      "source_sha256": "511db62ce043a084b8c7e318743354de7c3e0279ce5aff4bfc0bac0acc6ff463",
+      "compiler": "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lean.exe",
+      "arguments": [
+        "NegativeConfluentProfilesFactorial.lean"
+      ],
+      "exit_code": 1,
+      "disposition": "EXPECTED_REJECTION",
+      "log": "NegativeConfluentProfilesFactorial.log",
+      "log_sha256": "708d58c6035f4725d3dc7fca411099b9a33ecf5bc5448269c6e82dcd1d002ed2",
+      "rejection_class": "intended theorem-contract type mismatch"
+    },
+    {
+      "source": "NegativeConfluentProfilesDeterminantSign.lean",
+      "source_sha256": "accf46b96aa2a0782704a4b79c8e8d83cd216d45d2c09d7df966e33a8340e640",
+      "compiler": "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lean.exe",
+      "arguments": [
+        "NegativeConfluentProfilesDeterminantSign.lean"
+      ],
+      "exit_code": 1,
+      "disposition": "EXPECTED_REJECTION",
+      "log": "NegativeConfluentProfilesDeterminantSign.log",
+      "log_sha256": "b98ab2ed0ad3543fa7fe95662900f77a6ff4b314a22c05621263ea50c8d5e1e5",
+      "rejection_class": "intended theorem-contract type mismatch"
+    },
+    {
+      "source": "NegativeConfluentProfilesUnnormalized.lean",
+      "source_sha256": "3163612e268975d54f549688be4f0e72ac49de2ac37d3ae1f0db167a6b3fd612",
+      "compiler": "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lean.exe",
+      "arguments": [
+        "NegativeConfluentProfilesUnnormalized.lean"
+      ],
+      "exit_code": 1,
+      "disposition": "EXPECTED_REJECTION",
+      "log": "NegativeConfluentProfilesUnnormalized.log",
+      "log_sha256": "8a4ffea92afa11802b92ec28c54709190c899641aa42ae57bb8dc4ceddece8e7",
+      "rejection_class": "intended theorem-contract type mismatch"
+    }
+  ],
+  "objects_excluded_from_archive": true,
+  "diagnostic_failed_logs_not_proof_evidence": true,
+  "sealed_prior_archives": [
+    {
+      "path": "../audit-math/OPICA_MATH_SUPPORT_2026-10-24.zip",
+      "sha256": "8ad5cc8093ee6219829070c55da8092400c207bfd2a9d7ed43ee4610d2e78533"
+    },
+    {
+      "path": "../audit-math-next/OPICA_RIGHT_CELL_H2A_PROGRESS_2026-10-24.zip",
+      "sha256": "83ead6142514ae602dab781ac2c72f45ab6fac733e7aedd2551701a568acfde3"
+    }
+  ]
+}

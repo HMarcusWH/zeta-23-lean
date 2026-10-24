@@ -1,0 +1,559 @@
+{
+  "schema": "OPICA_INDEPENDENT_H2A_MATH_REVIEW_CONTROLS_V1",
+  "created_utc": "2026-10-24T16:09:27.354546+00:00",
+  "reviewed_commit": "9a8b2a4baee49f2056c7945b1544a7bc2893735b",
+  "reviewed_tree": "6aa53d22d50d2aa24046d73b128c64a1d262f7f3",
+  "sources": [
+    {
+      "path": "Zeta23/OPICAFollowup/ConfluentProfiles.lean",
+      "commit": "9a8b2a4baee49f2056c7945b1544a7bc2893735b",
+      "sha256": "1773e3200a8b3e7284b276d97dcfc5481945e4139852fef8d92e3b64b7b0b0d0",
+      "bytes": 57278
+    },
+    {
+      "path": "Zeta23/OPICAFollowup/CoPoissonJets.lean",
+      "commit": "9a8b2a4baee49f2056c7945b1544a7bc2893735b",
+      "sha256": "dfb21b90906e2cbc23acdfd46b874c04d4ea6ae0217aa316b50c5b404c0d7134",
+      "bytes": 136766
+    },
+    {
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedConfluentProfiles.lean",
+      "commit": "9a8b2a4baee49f2056c7945b1544a7bc2893735b",
+      "sha256": "8b900acfaea1649b339d4670ed83c41a3e9e8b7b236bb6f5a4c257f32a00fbb0",
+      "bytes": 2811
+    },
+    {
+      "path": "research/RHRC/integration/opica_followup/BUILD_SPEC.md",
+      "commit": "9a8b2a4baee49f2056c7945b1544a7bc2893735b",
+      "sha256": "cacab08834aeb9badd578d90828be99cff33c7a617c609e75bb878eb5fa3b29c",
+      "bytes": 130001
+    },
+    {
+      "path": "lean-toolchain",
+      "commit": "9a8b2a4baee49f2056c7945b1544a7bc2893735b",
+      "sha256": "0d3c76ccd8772d8bcbe207241421a760312b71a6aa82f84194391fdf5cb026d6",
+      "bytes": 29
+    },
+    {
+      "path": "lake-manifest.json",
+      "commit": "9a8b2a4baee49f2056c7945b1544a7bc2893735b",
+      "sha256": "1847b362e15efd927e75aa8b5442e491f998e4a3f730f9dcaca9841f2957c448",
+      "bytes": 3200
+    }
+  ],
+  "tests": [
+    {
+      "name": "empty-system",
+      "nodes": [],
+      "multiplicities": [],
+      "matrix": [],
+      "normalized_det": "1",
+      "product_formula": "1",
+      "unnormalized_derivative_det": "1",
+      "scope": "M=0 empty product",
+      "result": "PASS"
+    },
+    {
+      "name": "all-zero-multiplicities",
+      "nodes": [
+        "2",
+        "5"
+      ],
+      "multiplicities": [
+        0,
+        0
+      ],
+      "matrix": [],
+      "normalized_det": "1",
+      "product_formula": "1",
+      "unnormalized_derivative_det": "1",
+      "scope": "zero-dimensional algebra",
+      "result": "PASS"
+    },
+    {
+      "name": "simple-node",
+      "nodes": [
+        "2"
+      ],
+      "multiplicities": [
+        1
+      ],
+      "matrix": [
+        [
+          "2"
+        ]
+      ],
+      "normalized_det": "2",
+      "product_formula": "2",
+      "unnormalized_derivative_det": "2",
+      "scope": "one active node",
+      "result": "PASS"
+    },
+    {
+      "name": "third-order-block",
+      "nodes": [
+        "2"
+      ],
+      "multiplicities": [
+        3
+      ],
+      "matrix": [
+        [
+          "2",
+          "1",
+          "0"
+        ],
+        [
+          "-7/2",
+          "-15/4",
+          "-1"
+        ],
+        [
+          "49/8",
+          "161/16",
+          "11/2"
+        ]
+      ],
+      "normalized_det": "-8",
+      "product_formula": "-8",
+      "unnormalized_derivative_det": "-16",
+      "scope": "normalized k=2 column distinguishes omitted factorial",
+      "result": "PASS"
+    },
+    {
+      "name": "mixed-blocks",
+      "nodes": [
+        "2",
+        "5"
+      ],
+      "multiplicities": [
+        2,
+        3
+      ],
+      "matrix": [
+        [
+          "2",
+          "1",
+          "5",
+          "1",
+          "0"
+        ],
+        [
+          "-7/2",
+          "-15/4",
+          "-95/4",
+          "-39/4",
+          "-1"
+        ],
+        [
+          "49/8",
+          "161/16",
+          "1805/16",
+          "1121/16",
+          "29/2"
+        ],
+        [
+          "-343/32",
+          "-1519/64",
+          "-34295/64",
+          "-28519/64",
+          "-2223/16"
+        ],
+        [
+          "2401/128",
+          "13377/256",
+          "651605/256",
+          "679041/256",
+          "17689/16"
+        ]
+      ],
+      "normalized_det": "364500",
+      "product_formula": "364500",
+      "unnormalized_derivative_det": "729000",
+      "scope": "M=5 cross gap exponent 6 and all factorials",
+      "result": "PASS"
+    },
+    {
+      "name": "ordered-simple-blocks",
+      "nodes": [
+        "2",
+        "5"
+      ],
+      "multiplicities": [
+        1,
+        1
+      ],
+      "matrix": [
+        [
+          "2",
+          "5"
+        ],
+        [
+          "-7/2",
+          "-95/4"
+        ]
+      ],
+      "normalized_det": "-30",
+      "product_formula": "-30",
+      "unnormalized_derivative_det": "-30",
+      "scope": "orientation check",
+      "result": "PASS"
+    },
+    {
+      "name": "reversed-simple-blocks",
+      "nodes": [
+        "5",
+        "2"
+      ],
+      "multiplicities": [
+        1,
+        1
+      ],
+      "matrix": [
+        [
+          "5",
+          "2"
+        ],
+        [
+          "-95/4",
+          "-7/2"
+        ]
+      ],
+      "normalized_det": "30",
+      "product_formula": "30",
+      "unnormalized_derivative_det": "30",
+      "scope": "orientation sign reverses",
+      "result": "PASS"
+    },
+    {
+      "name": "quarter-node",
+      "nodes": [
+        "1/4"
+      ],
+      "multiplicities": [
+        3
+      ],
+      "matrix": [
+        [
+          "1/4",
+          "1",
+          "0"
+        ],
+        [
+          "0",
+          "-1/4",
+          "-1"
+        ],
+        [
+          "0",
+          "0",
+          "1/4"
+        ]
+      ],
+      "normalized_det": "-1/64",
+      "product_formula": "-1/64",
+      "unnormalized_derivative_det": "-1/32",
+      "scope": "entire-family algebra at vanishing radicand",
+      "result": "PASS"
+    },
+    {
+      "name": "zero-node",
+      "nodes": [
+        "0"
+      ],
+      "multiplicities": [
+        1
+      ],
+      "matrix": [
+        [
+          "0"
+        ]
+      ],
+      "normalized_det": "0",
+      "product_formula": "0",
+      "unnormalized_derivative_det": "0",
+      "scope": "violates nonzero-node invertibility hypothesis",
+      "result": "PASS"
+    },
+    {
+      "name": "collision",
+      "nodes": [
+        "2",
+        "2"
+      ],
+      "multiplicities": [
+        1,
+        1
+      ],
+      "matrix": [
+        [
+          "2",
+          "2"
+        ],
+        [
+          "-7/2",
+          "-7/2"
+        ]
+      ],
+      "normalized_det": "0",
+      "product_formula": "0",
+      "unnormalized_derivative_det": "0",
+      "scope": "violates distinct-block node hypothesis",
+      "result": "PASS"
+    },
+    {
+      "name": "dummy-block",
+      "nodes": [
+        "2",
+        "5"
+      ],
+      "multiplicities": [
+        3,
+        0
+      ],
+      "matrix": [
+        [
+          "2",
+          "1",
+          "0"
+        ],
+        [
+          "-7/2",
+          "-15/4",
+          "-1"
+        ],
+        [
+          "49/8",
+          "161/16",
+          "11/2"
+        ]
+      ],
+      "normalized_det": "-8",
+      "product_formula": "-8",
+      "unnormalized_derivative_det": "-16",
+      "scope": "zero block does not contribute a column",
+      "result": "PASS"
+    },
+    {
+      "name": "near-collision-2",
+      "nodes": [
+        "2",
+        "5/2"
+      ],
+      "multiplicities": [
+        2,
+        3
+      ],
+      "matrix": [
+        [
+          "2",
+          "1",
+          "5/2",
+          "1",
+          "0"
+        ],
+        [
+          "-7/2",
+          "-15/4",
+          "-45/8",
+          "-19/4",
+          "-1"
+        ],
+        [
+          "49/8",
+          "161/16",
+          "405/32",
+          "261/16",
+          "7"
+        ],
+        [
+          "-343/32",
+          "-1519/64",
+          "-3645/128",
+          "-3159/64",
+          "-513/16"
+        ],
+        [
+          "2401/128",
+          "13377/256",
+          "32805/512",
+          "35721/256",
+          "243/2"
+        ]
+      ],
+      "normalized_det": "125/128",
+      "product_formula": "125/128",
+      "unnormalized_derivative_det": "125/64",
+      "scope": "auxiliary rational nodes, not invented zeta zeros; determinant degenerates as gap shrinks",
+      "result": "PASS"
+    },
+    {
+      "name": "near-collision-10",
+      "nodes": [
+        "2",
+        "21/10"
+      ],
+      "multiplicities": [
+        2,
+        3
+      ],
+      "matrix": [
+        [
+          "2",
+          "1",
+          "21/10",
+          "1",
+          "0"
+        ],
+        [
+          "-7/2",
+          "-15/4",
+          "-777/200",
+          "-79/20",
+          "-1"
+        ],
+        [
+          "49/8",
+          "161/16",
+          "28749/4000",
+          "4477/400",
+          "29/5"
+        ],
+        [
+          "-343/32",
+          "-1519/64",
+          "-1063713/80000",
+          "-223147/8000",
+          "-8769/400"
+        ],
+        [
+          "2401/128",
+          "13377/256",
+          "39357381/1600000",
+          "2076773/32000",
+          "1369/20"
+        ]
+      ],
+      "normalized_det": "9261/250000000",
+      "product_formula": "9261/250000000",
+      "unnormalized_derivative_det": "9261/125000000",
+      "scope": "auxiliary rational nodes, not invented zeta zeros; determinant degenerates as gap shrinks",
+      "result": "PASS"
+    },
+    {
+      "name": "near-collision-100",
+      "nodes": [
+        "2",
+        "201/100"
+      ],
+      "multiplicities": [
+        2,
+        3
+      ],
+      "matrix": [
+        [
+          "2",
+          "1",
+          "201/100",
+          "1",
+          "0"
+        ],
+        [
+          "-7/2",
+          "-15/4",
+          "-2211/625",
+          "-377/100",
+          "-1"
+        ],
+        [
+          "49/8",
+          "161/16",
+          "97284/15625",
+          "6358/625",
+          "553/100"
+        ],
+        [
+          "-343/32",
+          "-1519/64",
+          "-4280496/390625",
+          "-377036/15625",
+          "-12441/625"
+        ],
+        [
+          "2401/128",
+          "13377/256",
+          "188341824/9765625",
+          "4174016/78125",
+          "184888/3125"
+        ]
+      ],
+      "normalized_det": "8120601/250000000000000000",
+      "product_formula": "8120601/250000000000000000",
+      "unnormalized_derivative_det": "8120601/125000000000000000",
+      "scope": "auxiliary rational nodes, not invented zeta zeros; determinant degenerates as gap shrinks",
+      "result": "PASS"
+    },
+    {
+      "name": "near-collision-1000",
+      "nodes": [
+        "2",
+        "2001/1000"
+      ],
+      "multiplicities": [
+        2,
+        3
+      ],
+      "matrix": [
+        [
+          "2",
+          "1",
+          "2001/1000",
+          "1",
+          "0"
+        ],
+        [
+          "-7/2",
+          "-15/4",
+          "-3503751/1000000",
+          "-469/125",
+          "-1"
+        ],
+        [
+          "49/8",
+          "161/16",
+          "6135068001/1000000000",
+          "10073503/1000000",
+          "5503/1000"
+        ],
+        [
+          "-343/32",
+          "-1519/64",
+          "-10742504069751/1000000000000",
+          "-11886885877/500000000",
+          "-2463657/125000"
+        ],
+        [
+          "2401/128",
+          "13377/256",
+          "18810124626134001/1000000000000000",
+          "10474075682201/200000000000",
+          "5828467901/100000000"
+        ]
+      ],
+      "normalized_det": "8012006001/250000000000000000000000000",
+      "product_formula": "8012006001/250000000000000000000000000",
+      "unnormalized_derivative_det": "8012006001/125000000000000000000000000",
+      "scope": "auxiliary rational nodes, not invented zeta zeros; determinant degenerates as gap shrinks",
+      "result": "PASS"
+    }
+  ],
+  "status": "FIFTEEN_EXACT_RATIONAL_AUXILIARY_TESTS_PASS",
+  "authority_limits": [
+    "Mathematical supporting audit by a non-author agent",
+    "Not a new Lean theorem receipt",
+    "Not external human review",
+    "Not full-100 release seal",
+    "Rational algebra examples are not actual zeta zeros",
+    "RH and Step4 remain OPEN"
+  ]
+}

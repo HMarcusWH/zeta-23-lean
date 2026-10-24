@@ -1,0 +1,18 @@
+'IndependentArithmeticPhysical.expected_literal_raw_high_mask' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'IndependentArithmeticPhysical.expected_literal_absorbed_high_mask' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'IndependentArithmeticPhysical.expected_quiet_full_original_domain' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'IndependentArithmeticPhysical.expected_zero_supremum_all_positive_dampings' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'IndependentArithmeticPhysical.complete_quiet_upper_iff_zero_supremum' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'IndependentArithmeticPhysical.finite_quiet_samples_do_not_supply_cofinal_upper' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

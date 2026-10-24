@@ -1,0 +1,161 @@
+{
+  "schema": "OPICA_STAGE20_PAPER_UNIT_COVERAGE_ONLY_V1",
+  "ledger_sha256": "b865b34214c31316969b35933258dd05b41c73d8b76eeaa6306a1d05a22777c5",
+  "counts": {
+    "COMPLETE_HISTORICAL_OR_NARROW_EVIDENCE_ONLY": 25,
+    "PARTIAL": 2,
+    "ABSENT": 1
+  },
+  "units": {
+    "F1": {
+      "state": "COMPLETE_HISTORICAL_OR_NARROW_EVIDENCE_ONLY",
+      "root_count": 6,
+      "missing": []
+    },
+    "F2": {
+      "state": "COMPLETE_HISTORICAL_OR_NARROW_EVIDENCE_ONLY",
+      "root_count": 8,
+      "missing": []
+    },
+    "F3": {
+      "state": "COMPLETE_HISTORICAL_OR_NARROW_EVIDENCE_ONLY",
+      "root_count": 5,
+      "missing": []
+    },
+    "J5.2": {
+      "state": "COMPLETE_HISTORICAL_OR_NARROW_EVIDENCE_ONLY",
+      "root_count": 18,
+      "missing": []
+    },
+    "MS1": {
+      "state": "COMPLETE_HISTORICAL_OR_NARROW_EVIDENCE_ONLY",
+      "root_count": 11,
+      "missing": []
+    },
+    "R1-AT1": {
+      "state": "COMPLETE_HISTORICAL_OR_NARROW_EVIDENCE_ONLY",
+      "root_count": 6,
+      "missing": []
+    },
+    "R1-AT2": {
+      "state": "COMPLETE_HISTORICAL_OR_NARROW_EVIDENCE_ONLY",
+      "root_count": 2,
+      "missing": []
+    },
+    "R1-CP1": {
+      "state": "PARTIAL",
+      "root_count": 7,
+      "missing": [
+        "Zeta23.OPICAFollowup.actual_zero_measure_span_consumer"
+      ]
+    },
+    "R1-CT1": {
+      "state": "COMPLETE_HISTORICAL_OR_NARROW_EVIDENCE_ONLY",
+      "root_count": 3,
+      "missing": []
+    },
+    "R1-HT1": {
+      "state": "COMPLETE_HISTORICAL_OR_NARROW_EVIDENCE_ONLY",
+      "root_count": 5,
+      "missing": []
+    },
+    "R1-HT2": {
+      "state": "COMPLETE_HISTORICAL_OR_NARROW_EVIDENCE_ONLY",
+      "root_count": 2,
+      "missing": []
+    },
+    "R1-MC1": {
+      "state": "COMPLETE_HISTORICAL_OR_NARROW_EVIDENCE_ONLY",
+      "root_count": 1,
+      "missing": []
+    },
+    "R1-NB1": {
+      "state": "COMPLETE_HISTORICAL_OR_NARROW_EVIDENCE_ONLY",
+      "root_count": 12,
+      "missing": []
+    },
+    "R2-H1": {
+      "state": "PARTIAL",
+      "root_count": 4,
+      "missing": [
+        "Zeta23.OPICAFollowup.actual_zero_measure_span_consumer"
+      ]
+    },
+    "R2-H2a": {
+      "state": "COMPLETE_HISTORICAL_OR_NARROW_EVIDENCE_ONLY",
+      "root_count": 2,
+      "missing": []
+    },
+    "R2-H2b": {
+      "state": "ABSENT",
+      "root_count": 3,
+      "missing": [
+        "Zeta23.OPICAFollowup.finite_zero_span_positive_only_zero",
+        "Zeta23.OPICAFollowup.fixed_basis_negative_mass_budget",
+        "Zeta23.OPICAFollowup.actual_zero_measure_span_consumer"
+      ]
+    },
+    "R2-H3": {
+      "state": "COMPLETE_HISTORICAL_OR_NARROW_EVIDENCE_ONLY",
+      "root_count": 1,
+      "missing": []
+    },
+    "R2-J1": {
+      "state": "COMPLETE_HISTORICAL_OR_NARROW_EVIDENCE_ONLY",
+      "root_count": 4,
+      "missing": []
+    },
+    "R2-O1": {
+      "state": "COMPLETE_HISTORICAL_OR_NARROW_EVIDENCE_ONLY",
+      "root_count": 2,
+      "missing": []
+    },
+    "R2-O2": {
+      "state": "COMPLETE_HISTORICAL_OR_NARROW_EVIDENCE_ONLY",
+      "root_count": 4,
+      "missing": []
+    },
+    "R2-Q1a": {
+      "state": "COMPLETE_HISTORICAL_OR_NARROW_EVIDENCE_ONLY",
+      "root_count": 1,
+      "missing": []
+    },
+    "R2-Q1b": {
+      "state": "COMPLETE_HISTORICAL_OR_NARROW_EVIDENCE_ONLY",
+      "root_count": 1,
+      "missing": []
+    },
+    "R2-Q2": {
+      "state": "COMPLETE_HISTORICAL_OR_NARROW_EVIDENCE_ONLY",
+      "root_count": 4,
+      "missing": []
+    },
+    "R2-Q3": {
+      "state": "COMPLETE_HISTORICAL_OR_NARROW_EVIDENCE_ONLY",
+      "root_count": 9,
+      "missing": []
+    },
+    "R2-S1a": {
+      "state": "COMPLETE_HISTORICAL_OR_NARROW_EVIDENCE_ONLY",
+      "root_count": 3,
+      "missing": []
+    },
+    "R2-S1b": {
+      "state": "COMPLETE_HISTORICAL_OR_NARROW_EVIDENCE_ONLY",
+      "root_count": 4,
+      "missing": []
+    },
+    "R2-S2": {
+      "state": "COMPLETE_HISTORICAL_OR_NARROW_EVIDENCE_ONLY",
+      "root_count": 3,
+      "missing": []
+    },
+    "R2-S3": {
+      "state": "COMPLETE_HISTORICAL_OR_NARROW_EVIDENCE_ONLY",
+      "root_count": 4,
+      "missing": []
+    }
+  },
+  "aggregate_accepted": false,
+  "formal_unit_acceptance_established": false
+}

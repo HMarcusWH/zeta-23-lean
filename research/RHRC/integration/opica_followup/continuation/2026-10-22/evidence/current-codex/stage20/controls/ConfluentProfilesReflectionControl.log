@@ -1,0 +1,3 @@
+'OPICAGroupedReflectionControl.reflection_duplicate_actual_not_independent' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

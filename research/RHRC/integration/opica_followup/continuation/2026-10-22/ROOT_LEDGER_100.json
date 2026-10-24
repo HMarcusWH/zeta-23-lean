@@ -4,9 +4,9 @@
   "acceptance_units": 28,
   "current_aggregate_accepted": false,
   "status_counts": {
-    "OPEN_NO_COMPLETE_CANDIDATE": 9,
+    "OPEN_NO_COMPLETE_CANDIDATE": 3,
     "PROVED_IN_ORIGINAL_41_ROOT_SOURCE_BOUND_SUBSET": 41,
-    "PROVED_NARROW_LOCAL_GATES_AGGREGATE_PENDING": 50
+    "PROVED_NARROW_LOCAL_GATES_AGGREGATE_PENDING": 56
   },
   "roots": [
     {
@@ -2012,20 +2012,29 @@
         "register_only_after_proof_and_type_review": true,
         "status": "PLANNED_NOT_PROVED"
       },
-      "current_status": "OPEN_NO_COMPLETE_CANDIDATE",
+      "current_status": "PROVED_NARROW_LOCAL_GATES_AGGREGATE_PENDING",
       "gates": {
-        "implementation": "OPEN",
-        "module_compilation": "NOT_ESTABLISHED",
-        "expected_type_consumer": "NOT_ESTABLISHED",
-        "actual_domain_consumer": "NOT_ESTABLISHED",
-        "axiom_check": "NOT_ESTABLISHED",
+        "implementation": "IMPLEMENTED_FULL_FROZEN_CONTRACT_REVIEWED_NARROW",
+        "module_compilation": "PASS_EXACT_CLEAN_COMMIT_SOURCE_PINNED_COMPILER",
+        "expected_type_consumer": "PASS_INDEPENDENT_FULL_ORIGINAL_TYPE",
+        "actual_domain_consumer": "PASS_ACTUAL_CONTINUOUS_WINDOW_ALL_SOURCE_ORDERS_C_GT_ONE_THETA_ZERO_ALL_MULTIPLICITIES",
+        "axiom_check": "STANDARD_ONLY_TRANSITIVE_PRINTED_CLOSURES",
         "aggregate_current_source_export": "OPEN",
         "full_release_acceptance": "OPEN"
       },
       "source_file_present": true,
-      "declaration_lexically_present": false,
-      "source_sha256": "b25a378990f42845940ab74dc75574b8dba355b51f5524d33ee1d4592c2f1376",
-      "evidence": []
+      "declaration_lexically_present": true,
+      "source_sha256": "1b388ffd7828390307605cc4804d7d9e1400343a3bafa0858a9d76aa0f369b33",
+      "evidence": [
+        "evidence/current-codex/stage20/STATUS.json",
+        "evidence/current-codex/stage20/runner/CHECK_RESULT.json"
+      ],
+      "independent_consumer": {
+        "path": "consumers/ExpectedPhysicalRates.lean",
+        "sha256": "0adcee1919d6a4bc897a7c9bd0077e772c6faf3dce8e6c7a3ae93bebc1b256c1",
+        "expected_declaration": "IndependentPhysicalWindowRates.expected_fixed_source"
+      },
+      "statement_formalization": "For each fixed d>=0,C>1, Tendsto [log(1+integral_[T-C log T,T]|F_d|^2)/(2T)] atTop (nhds Theta), including the Theta=0 case and arbitrary zero multiplicity. Exact current physical/domain audit: ACTUAL_CONTINUOUS_WINDOW_ALL_SOURCE_ORDERS_C_GT_ONE_THETA_ZERO_ALL_MULTIPLICITIES. Original contracts unchanged; no synthetic substitute or caller-supplied conclusion."
     },
     {
       "id": "OPICA_FOLLOWUP_NATIVE_SLOW_SOURCE_WINDOW_RATE",
@@ -2050,20 +2059,29 @@
         "register_only_after_proof_and_type_review": true,
         "status": "PLANNED_NOT_PROVED"
       },
-      "current_status": "OPEN_NO_COMPLETE_CANDIDATE",
+      "current_status": "PROVED_NARROW_LOCAL_GATES_AGGREGATE_PENDING",
       "gates": {
-        "implementation": "OPEN",
-        "module_compilation": "NOT_ESTABLISHED",
-        "expected_type_consumer": "NOT_ESTABLISHED",
-        "actual_domain_consumer": "NOT_ESTABLISHED",
-        "axiom_check": "NOT_ESTABLISHED",
+        "implementation": "IMPLEMENTED_FULL_FROZEN_CONTRACT_REVIEWED_NARROW",
+        "module_compilation": "PASS_EXACT_CLEAN_COMMIT_SOURCE_PINNED_COMPILER",
+        "expected_type_consumer": "PASS_INDEPENDENT_FULL_ORIGINAL_TYPE",
+        "actual_domain_consumer": "PASS_ARBITRARY_REAL_COFINAL_TIME_ORIGINAL_MS1_SCHEDULE_FINITE_NONPOSITIVE_PREFIX",
+        "axiom_check": "STANDARD_ONLY_TRANSITIVE_PRINTED_CLOSURES",
         "aggregate_current_source_export": "OPEN",
         "full_release_acceptance": "OPEN"
       },
-      "source_file_present": false,
-      "declaration_lexically_present": false,
-      "source_sha256": null,
-      "evidence": []
+      "source_file_present": true,
+      "declaration_lexically_present": true,
+      "source_sha256": "31fb27cf1e3f75a45b2ae1bfbf65625fc8784d7b6aba2f8251f9762be52ee51d",
+      "evidence": [
+        "evidence/current-codex/stage20/STATUS.json",
+        "evidence/current-codex/stage20/runner/CHECK_RESULT.json"
+      ],
+      "independent_consumer": {
+        "path": "consumers/ExpectedPhysicalRates.lean",
+        "sha256": "0adcee1919d6a4bc897a7c9bd0077e772c6faf3dce8e6c7a3ae93bebc1b256c1",
+        "expected_declaration": "IndependentPhysicalWindowRates.expected_slow_source"
+      },
+      "statement_formalization": "For any real cofinal horizons T_n (positive eventually; normalize a finite prefix for HorizonSchedule) and integer d_n with d_n log(d_n+2)=o(T_n), fixed C>1, the actual F_d_n window energy rate tends to Theta; source factor both signs priced. Exact current physical/domain audit: ARBITRARY_REAL_COFINAL_TIME_ORIGINAL_MS1_SCHEDULE_FINITE_NONPOSITIVE_PREFIX. Original contracts unchanged; no synthetic substitute or caller-supplied conclusion."
     },
     {
       "id": "OPICA_FOLLOWUP_COMPLEX_LOCAL_MEASURE_EMBEDDING_FAITHFUL",
@@ -3193,20 +3211,29 @@
         "register_only_after_proof_and_type_review": true,
         "status": "PLANNED_NOT_PROVED"
       },
-      "current_status": "OPEN_NO_COMPLETE_CANDIDATE",
+      "current_status": "PROVED_NARROW_LOCAL_GATES_AGGREGATE_PENDING",
       "gates": {
-        "implementation": "OPEN",
-        "module_compilation": "NOT_ESTABLISHED",
-        "expected_type_consumer": "NOT_ESTABLISHED",
-        "actual_domain_consumer": "NOT_ESTABLISHED",
-        "axiom_check": "NOT_ESTABLISHED",
+        "implementation": "IMPLEMENTED_FULL_FROZEN_CONTRACT_REVIEWED_NARROW",
+        "module_compilation": "PASS_EXACT_CLEAN_COMMIT_SOURCE_PINNED_COMPILER",
+        "expected_type_consumer": "PASS_INDEPENDENT_FULL_ORIGINAL_TYPE",
+        "actual_domain_consumer": "PASS_DISTINCT_NONZERO_NODES_ARBITRARY_MULTIPLICITIES_CANONICAL_NORMALIZED_COLUMNS",
+        "axiom_check": "STANDARD_ONLY_TRANSITIVE_PRINTED_CLOSURES",
         "aggregate_current_source_export": "OPEN",
         "full_release_acceptance": "OPEN"
       },
-      "source_file_present": false,
-      "declaration_lexically_present": false,
-      "source_sha256": null,
-      "evidence": []
+      "source_file_present": true,
+      "declaration_lexically_present": true,
+      "source_sha256": "1773e3200a8b3e7284b276d97dcfc5481945e4139852fef8d92e3b64b7b0b0d0",
+      "evidence": [
+        "evidence/current-codex/stage20/STATUS.json",
+        "evidence/current-codex/stage20/runner/CHECK_RESULT.json"
+      ],
+      "independent_consumer": {
+        "path": "consumers/ExpectedConfluentProfiles.lean",
+        "sha256": "8b900acfaea1649b339d4670ed83c41a3e9e8b7b236bb6f5a4c257f32a00fbb0",
+        "expected_declaration": "OPICAConfluentProfilesIndependent.expected_profile_jet_confluent_determinant"
+      },
+      "statement_formalization": "For distinct nonzero kappa_j and multiplicities m_j, determinant=(-1)^(M(M-1)/2)*prod kappa_j^m_j*prod_{i<j}(kappa_j-kappa_i)^(m_i*m_j), with normalized jets. Exact current physical/domain audit: DISTINCT_NONZERO_NODES_ARBITRARY_MULTIPLICITIES_CANONICAL_NORMALIZED_COLUMNS. Original contracts unchanged; no synthetic substitute or caller-supplied conclusion."
     },
     {
       "id": "OPICA_FOLLOWUP_FINITE_ZERO_JET_INDEPENDENT",
@@ -3231,20 +3258,29 @@
         "register_only_after_proof_and_type_review": true,
         "status": "PLANNED_NOT_PROVED"
       },
-      "current_status": "OPEN_NO_COMPLETE_CANDIDATE",
+      "current_status": "PROVED_NARROW_LOCAL_GATES_AGGREGATE_PENDING",
       "gates": {
-        "implementation": "OPEN",
-        "module_compilation": "NOT_ESTABLISHED",
-        "expected_type_consumer": "NOT_ESTABLISHED",
-        "actual_domain_consumer": "NOT_ESTABLISHED",
-        "axiom_check": "NOT_ESTABLISHED",
+        "implementation": "IMPLEMENTED_FULL_FROZEN_CONTRACT_REVIEWED_NARROW",
+        "module_compilation": "PASS_EXACT_CLEAN_COMMIT_SOURCE_PINNED_COMPILER",
+        "expected_type_consumer": "PASS_INDEPENDENT_FULL_ORIGINAL_TYPE",
+        "actual_domain_consumer": "PASS_ACTUAL_STRIP_ZETA_ZEROS_REFLECTION_QUOTIENT_AVAILABLE_MULTIPLICITY_JET_MEASURES",
+        "axiom_check": "STANDARD_ONLY_TRANSITIVE_PRINTED_CLOSURES",
         "aggregate_current_source_export": "OPEN",
         "full_release_acceptance": "OPEN"
       },
-      "source_file_present": false,
-      "declaration_lexically_present": false,
-      "source_sha256": null,
-      "evidence": []
+      "source_file_present": true,
+      "declaration_lexically_present": true,
+      "source_sha256": "1773e3200a8b3e7284b276d97dcfc5481945e4139852fef8d92e3b64b7b0b0d0",
+      "evidence": [
+        "evidence/current-codex/stage20/STATUS.json",
+        "evidence/current-codex/stage20/runner/CHECK_RESULT.json"
+      ],
+      "independent_consumer": {
+        "path": "consumers/ExpectedConfluentProfiles.lean",
+        "sha256": "8b900acfaea1649b339d4670ed83c41a3e9e8b7b236bb6f5a4c257f32a00fbb0",
+        "expected_declaration": "OPICAConfluentProfilesIndependent.expected_finite_zero_jet_independent"
+      },
+      "statement_formalization": "Independence of the actual finite jet measures follows from their first-cell matrix; do not count reflected rho and1-rho as different kappa nodes. Exact current physical/domain audit: ACTUAL_STRIP_ZETA_ZEROS_REFLECTION_QUOTIENT_AVAILABLE_MULTIPLICITY_JET_MEASURES. Original contracts unchanged; no synthetic substitute or caller-supplied conclusion."
     },
     {
       "id": "OPICA_FOLLOWUP_FINITE_ZERO_SPAN_POSITIVE_ONLY_ZERO",
@@ -4180,20 +4216,29 @@
         "register_only_after_proof_and_type_review": true,
         "status": "PLANNED_NOT_PROVED"
       },
-      "current_status": "OPEN_NO_COMPLETE_CANDIDATE",
+      "current_status": "PROVED_NARROW_LOCAL_GATES_AGGREGATE_PENDING",
       "gates": {
-        "implementation": "OPEN",
-        "module_compilation": "NOT_ESTABLISHED",
-        "expected_type_consumer": "NOT_ESTABLISHED",
-        "actual_domain_consumer": "NOT_ESTABLISHED",
-        "axiom_check": "NOT_ESTABLISHED",
+        "implementation": "IMPLEMENTED_FULL_FROZEN_CONTRACT_REVIEWED_NARROW",
+        "module_compilation": "PASS_EXACT_CLEAN_COMMIT_SOURCE_PINNED_COMPILER",
+        "expected_type_consumer": "PASS_INDEPENDENT_FULL_ORIGINAL_TYPE",
+        "actual_domain_consumer": "PASS_BOTH_COMPLETE_ACTUAL_FIXED_HIGH_MASK_REALIZATIONS_RAW_AND_ABSORBED",
+        "axiom_check": "STANDARD_ONLY_TRANSITIVE_PRINTED_CLOSURES",
         "aggregate_current_source_export": "OPEN",
         "full_release_acceptance": "OPEN"
       },
       "source_file_present": true,
-      "declaration_lexically_present": false,
-      "source_sha256": "0b7100bd9b2c12069a0bcd072542d091b8335f5690cbc3ca3f956978f0c46fd5",
-      "evidence": []
+      "declaration_lexically_present": true,
+      "source_sha256": "71de2dd0ef69ed953636f802f2543e86be12ba1bb0cd68d29d6ca28c638e91d7",
+      "evidence": [
+        "evidence/current-codex/stage20/STATUS.json",
+        "evidence/current-codex/stage20/runner/CHECK_RESULT.json"
+      ],
+      "independent_consumer": {
+        "path": "consumers/ExpectedArithmeticPhysical.lean",
+        "sha256": "550876c3fb6997256437c159c5de514685305c76124b358fd5385a4f038885aa",
+        "expected_declaration": "IndependentArithmeticPhysical.expected_literal_raw_high_mask"
+      },
+      "statement_formalization": "On the fixed actual r2,d1,C2,Q1,K8 construction, both high-mask realizations have positive-part rate exactly Theta by proved native J5.2 plus the two-mask norm-first interface. Exact current physical/domain audit: BOTH_COMPLETE_ACTUAL_FIXED_HIGH_MASK_REALIZATIONS_RAW_AND_ABSORBED. Original contracts unchanged; no synthetic substitute or caller-supplied conclusion."
     },
     {
       "id": "OPICA_FOLLOWUP_QUIET_BALANCED_OBSERVATION_IMPLIES_NATIVE_CUT",
@@ -4219,20 +4264,29 @@
         "register_only_after_proof_and_type_review": true,
         "status": "PLANNED_NOT_PROVED"
       },
-      "current_status": "OPEN_NO_COMPLETE_CANDIDATE",
+      "current_status": "PROVED_NARROW_LOCAL_GATES_AGGREGATE_PENDING",
       "gates": {
-        "implementation": "OPEN",
-        "module_compilation": "NOT_ESTABLISHED",
-        "expected_type_consumer": "NOT_ESTABLISHED",
-        "actual_domain_consumer": "NOT_ESTABLISHED",
-        "axiom_check": "NOT_ESTABLISHED",
+        "implementation": "IMPLEMENTED_FULL_FROZEN_CONTRACT_REVIEWED_NARROW",
+        "module_compilation": "PASS_EXACT_CLEAN_COMMIT_SOURCE_PINNED_COMPILER",
+        "expected_type_consumer": "PASS_INDEPENDENT_FULL_ORIGINAL_TYPE",
+        "actual_domain_consumer": "PASS_EXPLICIT_OPEN_ACTUAL_QUIET_ANTECEDENT_D0_ALL_POSITIVE_DAMPING_LITERAL_L2_NATIVE_CUT_CONDITIONAL_RH",
+        "axiom_check": "STANDARD_ONLY_TRANSITIVE_PRINTED_CLOSURES",
         "aggregate_current_source_export": "OPEN",
         "full_release_acceptance": "OPEN"
       },
       "source_file_present": true,
-      "declaration_lexically_present": false,
-      "source_sha256": "0b7100bd9b2c12069a0bcd072542d091b8335f5690cbc3ca3f956978f0c46fd5",
-      "evidence": []
+      "declaration_lexically_present": true,
+      "source_sha256": "71de2dd0ef69ed953636f802f2543e86be12ba1bb0cd68d29d6ca28c638e91d7",
+      "evidence": [
+        "evidence/current-codex/stage20/STATUS.json",
+        "evidence/current-codex/stage20/runner/CHECK_RESULT.json"
+      ],
+      "independent_consumer": {
+        "path": "consumers/ExpectedArithmeticPhysical.lean",
+        "sha256": "550876c3fb6997256437c159c5de514685305c76124b358fd5385a4f038885aa",
+        "expected_declaration": "IndependentArithmeticPhysical.expected_quiet_full_original_domain"
+      },
+      "statement_formalization": "Explicitly conditional: a proved cofinal zero-rate upper for this complete actual observation implies Theta=0 and literal d0 all-positive-damping L2 (then consumes existing Step4 cut). Preserve the upper as an open antecedent, never an unconditional RH root. Exact current physical/domain audit: EXPLICIT_OPEN_ACTUAL_QUIET_ANTECEDENT_D0_ALL_POSITIVE_DAMPING_LITERAL_L2_NATIVE_CUT_CONDITIONAL_RH. Original contracts unchanged; no synthetic substitute or caller-supplied conclusion."
     },
     {
       "id": "OPICA_FOLLOWUP_STEP123_WORD_JET_CONSUMER",
@@ -4261,7 +4315,7 @@
       "current_status": "PROVED_NARROW_LOCAL_GATES_AGGREGATE_PENDING",
       "gates": {
         "implementation": "IMPLEMENTED_FULL_FROZEN_CONTRACT_REVIEWED_NARROW",
-        "module_compilation": "PASS_EXACT_COMMITTED_SOURCE_PINNED_WINDOWS_STAGE19_REVALIDATION",
+        "module_compilation": "PASS_EXACT_CLEAN_COMMIT_STAGE20_REVALIDATION",
         "expected_type_consumer": "PASS_INDEPENDENT_EXPLICIT_22_CLAUSE_TYPE",
         "actual_domain_consumer": "PASS_PARENT_GENERATED_STEP123_OUTPUT_CONSTRUCTOR",
         "axiom_check": "STANDARD_ONLY_TRANSITIVE_PRINTED_CLOSURES",
@@ -4270,7 +4324,7 @@
       },
       "source_file_present": true,
       "declaration_lexically_present": true,
-      "source_sha256": "0b7100bd9b2c12069a0bcd072542d091b8335f5690cbc3ca3f956978f0c46fd5",
+      "source_sha256": "71de2dd0ef69ed953636f802f2543e86be12ba1bb0cd68d29d6ca28c638e91d7",
       "evidence": [
         "evidence/current-codex/stage3/STATUS.json",
         "evidence/current-codex/stage3/consumer-stage3-01.log",
@@ -4318,6 +4372,37 @@
             "Quot.sound",
             "propext"
           ]
+        },
+        {
+          "stage": 20,
+          "checked_commit": "9a8b2a4baee49f2056c7945b1544a7bc2893735b",
+          "checked_tree": "6aa53d22d50d2aa24046d73b128c64a1d262f7f3",
+          "source_sha256": "71de2dd0ef69ed953636f802f2543e86be12ba1bb0cd68d29d6ca28c638e91d7",
+          "status": "PASS_EXISTING_PRIMARY_NOT_ADDITIONAL_ROOT",
+          "consumer": "ExpectedWordJet",
+          "evidence": [
+            "evidence/current-codex/stage20/runner/CHECK_RESULT.json"
+          ],
+          "historical_source_provenance": {
+            "source_sha256": "0b7100bd9b2c12069a0bcd072542d091b8335f5690cbc3ca3f956978f0c46fd5",
+            "gates": {
+              "implementation": "IMPLEMENTED_FULL_FROZEN_CONTRACT_REVIEWED_NARROW",
+              "module_compilation": "PASS_EXACT_COMMITTED_SOURCE_PINNED_WINDOWS_STAGE19_REVALIDATION",
+              "expected_type_consumer": "PASS_INDEPENDENT_EXPLICIT_22_CLAUSE_TYPE",
+              "actual_domain_consumer": "PASS_PARENT_GENERATED_STEP123_OUTPUT_CONSTRUCTOR",
+              "axiom_check": "STANDARD_ONLY_TRANSITIVE_PRINTED_CLOSURES",
+              "aggregate_current_source_export": "OPEN",
+              "full_release_acceptance": "OPEN"
+            },
+            "evidence": [
+              "evidence/current-codex/stage3/STATUS.json",
+              "evidence/current-codex/stage3/consumer-stage3-01.log",
+              "evidence/current-codex/stage4/STATUS.json",
+              "evidence/current-codex/stage19/STATUS.json",
+              "evidence/current-codex/stage19/runner/CHECK_RESULT.json"
+            ],
+            "current_status": "PROVED_NARROW_LOCAL_GATES_AGGREGATE_PENDING"
+          }
         }
       ]
     },
@@ -4358,7 +4443,7 @@
       },
       "source_file_present": true,
       "declaration_lexically_present": false,
-      "source_sha256": "0b7100bd9b2c12069a0bcd072542d091b8335f5690cbc3ca3f956978f0c46fd5",
+      "source_sha256": "71de2dd0ef69ed953636f802f2543e86be12ba1bb0cd68d29d6ca28c638e91d7",
       "evidence": []
     },
     {
@@ -4390,7 +4475,7 @@
       "current_status": "PROVED_NARROW_LOCAL_GATES_AGGREGATE_PENDING",
       "gates": {
         "implementation": "IMPLEMENTED_FULL_FROZEN_CONTRACT_REVIEWED_NARROW",
-        "module_compilation": "PASS_EXACT_COMMITTED_SOURCE_PINNED_COMPILER",
+        "module_compilation": "PASS_EXACT_CLEAN_COMMIT_STAGE20_REVALIDATION",
         "expected_type_consumer": "PASS_INDEPENDENT_FULL_TYPE_AND_DEFINITION_AUDITS",
         "actual_domain_consumer": "PASS_ACTUAL_STRIP_ZERO_OFFLINE_KAPPA_BOTH_FOURIER_CONVENTIONS_FORCE_SPECTRAL_SAMPLE_AND_REFLECTED_BOUNDARY",
         "axiom_check": "STANDARD_ONLY_TRANSITIVE_PRINTED_CLOSURES",
@@ -4399,7 +4484,7 @@
       },
       "source_file_present": true,
       "declaration_lexically_present": true,
-      "source_sha256": "0b7100bd9b2c12069a0bcd072542d091b8335f5690cbc3ca3f956978f0c46fd5",
+      "source_sha256": "71de2dd0ef69ed953636f802f2543e86be12ba1bb0cd68d29d6ca28c638e91d7",
       "evidence": [
         "evidence/current-codex/stage19/STATUS.json",
         "evidence/current-codex/stage19/runner/CHECK_RESULT.json"
@@ -4408,7 +4493,37 @@
         "path": "consumers/ExpectedForceSampling.lean",
         "sha256": "6fc99bc203b2c9ac3815df43f588cce2da746a1051ecc0ae20f84e4354255904"
       },
-      "statement_formalization": "For every actual zeta zero rho with 0 < Re rho < 1 and Im(kappa) != 0, kappa = rho(1-rho): compose the literal compact-test log-lattice force, its actual tempered Fourier transform, logFourier f xi = Fourier f (xi/(2*pi)), the sawtooth transform, the weak forced log-unitary equation, and the arithmetic resolvent quotient in both Fourier conventions. Retain d omega = |zeta(1/2+i xi)|^2 d xi/(2*pi), b = kappa M(kappa), and the right-half-strip representative rho' in {rho,1-rho} with the same kappa, zero boundary amplitude, generic profile equal to the actual zero profile and the same log-unitary profile. No scalar makes the Euler image a homogeneous multiple of the profile. The independent physical consumer derives Im(kappa) != 0 from the actual off-line strip-zero domain; no existence of an off-line zero is asserted. No actual construction is replaced by a synthetic object."
+      "statement_formalization": "For every actual zeta zero rho with 0 < Re rho < 1 and Im(kappa) != 0, kappa = rho(1-rho): compose the literal compact-test log-lattice force, its actual tempered Fourier transform, logFourier f xi = Fourier f (xi/(2*pi)), the sawtooth transform, the weak forced log-unitary equation, and the arithmetic resolvent quotient in both Fourier conventions. Retain d omega = |zeta(1/2+i xi)|^2 d xi/(2*pi), b = kappa M(kappa), and the right-half-strip representative rho' in {rho,1-rho} with the same kappa, zero boundary amplitude, generic profile equal to the actual zero profile and the same log-unitary profile. No scalar makes the Euler image a homogeneous multiple of the profile. The independent physical consumer derives Im(kappa) != 0 from the actual off-line strip-zero domain; no existence of an off-line zero is asserted. No actual construction is replaced by a synthetic object.",
+      "revalidations": [
+        {
+          "stage": 20,
+          "checked_commit": "9a8b2a4baee49f2056c7945b1544a7bc2893735b",
+          "checked_tree": "6aa53d22d50d2aa24046d73b128c64a1d262f7f3",
+          "source_sha256": "71de2dd0ef69ed953636f802f2543e86be12ba1bb0cd68d29d6ca28c638e91d7",
+          "status": "PASS_EXISTING_PRIMARY_NOT_ADDITIONAL_ROOT",
+          "consumer": "ExpectedForceSampling",
+          "evidence": [
+            "evidence/current-codex/stage20/runner/CHECK_RESULT.json"
+          ],
+          "historical_source_provenance": {
+            "source_sha256": "0b7100bd9b2c12069a0bcd072542d091b8335f5690cbc3ca3f956978f0c46fd5",
+            "gates": {
+              "implementation": "IMPLEMENTED_FULL_FROZEN_CONTRACT_REVIEWED_NARROW",
+              "module_compilation": "PASS_EXACT_COMMITTED_SOURCE_PINNED_COMPILER",
+              "expected_type_consumer": "PASS_INDEPENDENT_FULL_TYPE_AND_DEFINITION_AUDITS",
+              "actual_domain_consumer": "PASS_ACTUAL_STRIP_ZERO_OFFLINE_KAPPA_BOTH_FOURIER_CONVENTIONS_FORCE_SPECTRAL_SAMPLE_AND_REFLECTED_BOUNDARY",
+              "axiom_check": "STANDARD_ONLY_TRANSITIVE_PRINTED_CLOSURES",
+              "aggregate_current_source_export": "OPEN",
+              "full_release_acceptance": "OPEN"
+            },
+            "evidence": [
+              "evidence/current-codex/stage19/STATUS.json",
+              "evidence/current-codex/stage19/runner/CHECK_RESULT.json"
+            ],
+            "current_status": "PROVED_NARROW_LOCAL_GATES_AGGREGATE_PENDING"
+          }
+        }
+      ]
     }
   ],
   "RH": "OPEN",
@@ -4419,18 +4534,18 @@
   "evidence_paths_relative_to": "research/RHRC/integration/opica_followup/continuation/2026-10-22",
   "verification_summary": {
     "historical_source_bound_subset_roots": 41,
-    "independently_verified_narrow_roots": 50,
+    "independently_verified_narrow_roots": 56,
     "prior_failed_or_blocked_unaccepted_roots": 0,
-    "open_no_complete_candidate_roots": 9,
+    "open_no_complete_candidate_roots": 3,
     "full_required_roots": 100,
     "acceptance_units": 28,
-    "receipt": "STAGE19_HANDOVER.md",
+    "receipt": "STAGE20_HANDOVER.md",
     "independent_source_repairs": [],
     "independent_consumer_repairs": [],
     "historical41_status_unchanged": true,
     "current_aggregate_accepted": false,
-    "meaning": "41 historical plus 50 narrow local results is not aggregate 91-root acceptance. 9 absent implementations and all remaining integration/release gates remain OPEN; original100/28 scope unchanged.",
-    "receipt_scope": "One Stage 19 original primary and revalidation of the existing Stage 4 word/jet root; supporting ExpectedSampleSign is not a primary. Prior index: Index of one Stage18, two Stage17, four Stage16, three Stage15, two Stage14, three Stage13, two Stage12, two Stage11, two Stage10, two Stage9, one Stage8, three Stage7, three Stage6, two Stage5, two Stage4 and fifteen retained narrow original-root results, not an aggregate receipt",
+    "meaning": "41 historical plus56 narrow roots is not aggregate97-root acceptance. Three original finite-span primaries and all full-integration/release gates remain OPEN; original100/28 contracts unchanged.",
+    "receipt_scope": "Six Stage20 original primaries, with retained word/jet and force/sampling revalidation; supporting audit declarations are not additional roots. Prior index: One Stage 19 original primary and revalidation of the existing Stage 4 word/jet root; supporting ExpectedSampleSign is not a primary. Prior index: Index of one Stage18, two Stage17, four Stage16, three Stage15, two Stage14, three Stage13, two Stage12, two Stage11, two Stage10, two Stage9, one Stage8, three Stage7, three Stage6, two Stage5, two Stage4 and fifteen retained narrow original-root results, not an aggregate receipt",
     "additional_stage1_primary_roots": [
       "laguerre_tail_norm",
       "dilated_comb_fourier",
@@ -4527,6 +4642,20 @@
         "OPICASampleSign.real_sample_implies_on_line",
         "OPICASampleSign.sample_im_ratio"
       ]
+    },
+    "additional_stage20_primary_roots": [
+      "profile_jet_confluent_determinant",
+      "finite_zero_jet_independent",
+      "native_fixed_source_window_rate",
+      "native_slow_source_window_rate",
+      "fixed_two_factor_mask_rate_theta",
+      "quiet_balanced_observation_implies_native_cut"
+    ],
+    "stage20_checked_source": {
+      "commit": "9a8b2a4baee49f2056c7945b1544a7bc2893735b",
+      "tree": "6aa53d22d50d2aa24046d73b128c64a1d262f7f3",
+      "status": "evidence/current-codex/stage20/STATUS.json",
+      "runner": "evidence/current-codex/stage20/runner/CHECK_RESULT.json"
     }
   }
 }

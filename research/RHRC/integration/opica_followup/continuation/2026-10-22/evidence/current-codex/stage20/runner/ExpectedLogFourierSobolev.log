@@ -1,0 +1,20 @@
+'Zeta23.OPICAFollowup.log_unitary_form_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.OPICAFollowup.log_fourier_plancherel' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OPICALogFourierSobolevIndependent.audit_logFourier' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OPICALogFourierSobolevIndependent.audit_logFormDomain' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OPICALogFourierSobolevIndependent.expected_log_unitary_form_identity' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'OPICALogFourierSobolevIndependent.expected_log_fourier_plancherel' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'OPICALogFourierSobolevIndependent.expected_shift_norm_eq_logForm' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'OPICALogFourierSobolevIndependent.expected_domain_nonempty' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OPICALogFourierSobolevIndependent.expected_zero_profile_in_form_domain' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'OPICALogFourierSobolevIndependent.expected_zero_profile_form_identity' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

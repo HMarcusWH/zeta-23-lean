@@ -1,0 +1,515 @@
+[
+  {
+    "label": "version",
+    "command": [
+      "C:\\Users\\macka\\.elan\\toolchains\\leanprover--lean4---v4.33.0-rc2\\bin\\lake.exe",
+      "env",
+      "lean",
+      "--version"
+    ],
+    "exit_code": 0,
+    "seconds": 4.236420400091447,
+    "log": "version.log",
+    "log_sha256": "79518dda68bc3c4a1d8669c197b30574f76e97149518a00d07b96465045d6dfc"
+  },
+  {
+    "label": "build",
+    "command": [
+      "C:\\Users\\macka\\.elan\\toolchains\\leanprover--lean4---v4.33.0-rc2\\bin\\lake.exe",
+      "build",
+      "Zeta23.OPICAFollowup.MaskedNativeRate",
+      "Zeta23.OPICAFollowup.ComplexLocalMeasures",
+      "Zeta23.OPICAFollowup.AuxiliaryCompletions",
+      "Zeta23.OPICAFollowup.MultiplicityTail",
+      "Zeta23.OPICAFollowup.DilatedComb",
+      "Zeta23.OPICAFollowup.RenormalizedCoPoisson",
+      "Zeta23.OPICAFollowup.FirstCellCost",
+      "Zeta23.OPICAFollowup.WeightedMixing",
+      "Zeta23.OPICAFollowup.NearGapLimits",
+      "Zeta23.OPICAFollowup.ProfileEulerMaclaurin",
+      "Zeta23.OPICAFollowup.ZeroProfiles",
+      "Zeta23.OPICAFollowup.LogFourierSobolev",
+      "Zeta23.OPICAFollowup.ForcedEuler",
+      "Zeta23.OPICAFollowup.SamplingCompatibility",
+      "Zeta23.OPICAFollowup.SawtoothForce",
+      "Zeta23.OPICAFollowup.WeightedSpectralMeasure",
+      "Zeta23.OPICAFollowup.NativeResolvent",
+      "Zeta23.OPICAFollowup.SquareDefect",
+      "Zeta23.OPICAFollowup.BoundaryAmplitude",
+      "Zeta23.OPICAFollowup.CoPoissonJets",
+      "Zeta23.OPICAFollowup.Consumers",
+      "Zeta23.OPICAFollowup.NativeWindowRate",
+      "Zeta23.OPICAFollowup.MovingSourceWindowRate",
+      "Zeta23.OPICAFollowup.ConfluentProfiles"
+    ],
+    "exit_code": 0,
+    "seconds": 17.386971600004472,
+    "log": "build.log",
+    "log_sha256": "167775c3090fb6b0b8f12d3b67c385b7df784204fa9ef4ee2ff77947d2381b1e"
+  },
+  {
+    "label": "ExpectedMasks",
+    "command": [
+      "C:\\Users\\macka\\.elan\\toolchains\\leanprover--lean4---v4.33.0-rc2\\bin\\lake.exe",
+      "env",
+      "lean",
+      "-DmaxHeartbeats=800000",
+      "-DrelaxedAutoImplicit=false",
+      "research\\RHRC\\integration\\opica_followup\\continuation\\2026-10-22\\consumers\\ExpectedMasks.lean"
+    ],
+    "exit_code": 0,
+    "seconds": 38.4251228000503,
+    "log": "ExpectedMasks.log",
+    "log_sha256": "cb83a89303dddd0609e02fff506d94305be2fdcb9c9e2a64820eae8fad5b934d"
+  },
+  {
+    "label": "ExpectedComplex",
+    "command": [
+      "C:\\Users\\macka\\.elan\\toolchains\\leanprover--lean4---v4.33.0-rc2\\bin\\lake.exe",
+      "env",
+      "lean",
+      "-DmaxHeartbeats=800000",
+      "-DrelaxedAutoImplicit=false",
+      "research\\RHRC\\integration\\opica_followup\\continuation\\2026-10-22\\consumers\\ExpectedComplex.lean"
+    ],
+    "exit_code": 0,
+    "seconds": 24.79619499994442,
+    "log": "ExpectedComplex.log",
+    "log_sha256": "9cd49dac8bfdf55f909bd22c7e3973fe0515439d732a971e83d7d145defca5b3"
+  },
+  {
+    "label": "ExpectedAuxiliary",
+    "command": [
+      "C:\\Users\\macka\\.elan\\toolchains\\leanprover--lean4---v4.33.0-rc2\\bin\\lake.exe",
+      "env",
+      "lean",
+      "-DmaxHeartbeats=800000",
+      "-DrelaxedAutoImplicit=false",
+      "research\\RHRC\\integration\\opica_followup\\continuation\\2026-10-22\\consumers\\ExpectedAuxiliary.lean"
+    ],
+    "exit_code": 0,
+    "seconds": 45.80241310002748,
+    "log": "ExpectedAuxiliary.log",
+    "log_sha256": "4610d15ae3436ed7e4ffeb749097aba47fb3cff38ec67b647bc4e12c48dc5aa0"
+  },
+  {
+    "label": "ExpectedMultiplicity",
+    "command": [
+      "C:\\Users\\macka\\.elan\\toolchains\\leanprover--lean4---v4.33.0-rc2\\bin\\lake.exe",
+      "env",
+      "lean",
+      "-DmaxHeartbeats=800000",
+      "-DrelaxedAutoImplicit=false",
+      "research\\RHRC\\integration\\opica_followup\\continuation\\2026-10-22\\consumers\\ExpectedMultiplicity.lean"
+    ],
+    "exit_code": 0,
+    "seconds": 46.12271409993991,
+    "log": "ExpectedMultiplicity.log",
+    "log_sha256": "fec715ff3ecadbc41fe1a407ac40635d59623c61d780a6977fef8b4872ddd7d7"
+  },
+  {
+    "label": "ExpectedComb",
+    "command": [
+      "C:\\Users\\macka\\.elan\\toolchains\\leanprover--lean4---v4.33.0-rc2\\bin\\lake.exe",
+      "env",
+      "lean",
+      "-DmaxHeartbeats=800000",
+      "-DrelaxedAutoImplicit=false",
+      "research\\RHRC\\integration\\opica_followup\\continuation\\2026-10-22\\consumers\\ExpectedComb.lean"
+    ],
+    "exit_code": 0,
+    "seconds": 40.199221699964255,
+    "log": "ExpectedComb.log",
+    "log_sha256": "734c070f4cda62336fd2eee3017a5143b7831b2e17fbe4ef8c33e2c91b227ac6"
+  },
+  {
+    "label": "ExpectedFirstCell",
+    "command": [
+      "C:\\Users\\macka\\.elan\\toolchains\\leanprover--lean4---v4.33.0-rc2\\bin\\lake.exe",
+      "env",
+      "lean",
+      "-DmaxHeartbeats=800000",
+      "-DrelaxedAutoImplicit=false",
+      "research\\RHRC\\integration\\opica_followup\\continuation\\2026-10-22\\consumers\\ExpectedFirstCell.lean"
+    ],
+    "exit_code": 0,
+    "seconds": 41.16452789993491,
+    "log": "ExpectedFirstCell.log",
+    "log_sha256": "d667c8051a9c672732343d13db87f5c8f43ce87dfbe1046828f7f185e62abad6"
+  },
+  {
+    "label": "ExpectedWeighted",
+    "command": [
+      "C:\\Users\\macka\\.elan\\toolchains\\leanprover--lean4---v4.33.0-rc2\\bin\\lake.exe",
+      "env",
+      "lean",
+      "-DmaxHeartbeats=800000",
+      "-DrelaxedAutoImplicit=false",
+      "research\\RHRC\\integration\\opica_followup\\continuation\\2026-10-22\\consumers\\ExpectedWeighted.lean"
+    ],
+    "exit_code": 0,
+    "seconds": 43.522366199991666,
+    "log": "ExpectedWeighted.log",
+    "log_sha256": "556520ca8e2b279bca480acbdd48733761c0d413d9bfb2c5ce613ea879966add"
+  },
+  {
+    "label": "ExpectedNearGap",
+    "command": [
+      "C:\\Users\\macka\\.elan\\toolchains\\leanprover--lean4---v4.33.0-rc2\\bin\\lake.exe",
+      "env",
+      "lean",
+      "-DmaxHeartbeats=800000",
+      "-DrelaxedAutoImplicit=false",
+      "research\\RHRC\\integration\\opica_followup\\continuation\\2026-10-22\\consumers\\ExpectedNearGap.lean"
+    ],
+    "exit_code": 0,
+    "seconds": 41.33914860000368,
+    "log": "ExpectedNearGap.log",
+    "log_sha256": "7dde0cf366e21942beeedfb6567c87e87d48676b116c6fa22f002be5fe3fc0c0"
+  },
+  {
+    "label": "ExpectedNearGapLimit",
+    "command": [
+      "C:\\Users\\macka\\.elan\\toolchains\\leanprover--lean4---v4.33.0-rc2\\bin\\lake.exe",
+      "env",
+      "lean",
+      "-DmaxHeartbeats=800000",
+      "-DrelaxedAutoImplicit=false",
+      "research\\RHRC\\integration\\opica_followup\\continuation\\2026-10-22\\consumers\\ExpectedNearGapLimit.lean"
+    ],
+    "exit_code": 0,
+    "seconds": 33.21079059992917,
+    "log": "ExpectedNearGapLimit.log",
+    "log_sha256": "31dca0c72e3aa4d7d0f1146aec8fdf7002a30d25f5c568fb3f1572f7ac1c51c1"
+  },
+  {
+    "label": "ExpectedNormalizedLimit",
+    "command": [
+      "C:\\Users\\macka\\.elan\\toolchains\\leanprover--lean4---v4.33.0-rc2\\bin\\lake.exe",
+      "env",
+      "lean",
+      "-DmaxHeartbeats=800000",
+      "-DrelaxedAutoImplicit=false",
+      "research\\RHRC\\integration\\opica_followup\\continuation\\2026-10-22\\consumers\\ExpectedNormalizedLimit.lean"
+    ],
+    "exit_code": 0,
+    "seconds": 37.210179800051264,
+    "log": "ExpectedNormalizedLimit.log",
+    "log_sha256": "aaedbe0a885c93422c8ad18a50773662cede9d691af83b823c3f753c291d51cd"
+  },
+  {
+    "label": "ExpectedWeightedInverse",
+    "command": [
+      "C:\\Users\\macka\\.elan\\toolchains\\leanprover--lean4---v4.33.0-rc2\\bin\\lake.exe",
+      "env",
+      "lean",
+      "-DmaxHeartbeats=800000",
+      "-DrelaxedAutoImplicit=false",
+      "research\\RHRC\\integration\\opica_followup\\continuation\\2026-10-22\\consumers\\ExpectedWeightedInverse.lean"
+    ],
+    "exit_code": 0,
+    "seconds": 39.255305200000294,
+    "log": "ExpectedWeightedInverse.log",
+    "log_sha256": "fa3bdbb20c24b24d17aeea0f09b169374952b80838a4f9ece124cc2a371c6aa2"
+  },
+  {
+    "label": "ExpectedCoPoissonFamily",
+    "command": [
+      "C:\\Users\\macka\\.elan\\toolchains\\leanprover--lean4---v4.33.0-rc2\\bin\\lake.exe",
+      "env",
+      "lean",
+      "-DmaxHeartbeats=800000",
+      "-DrelaxedAutoImplicit=false",
+      "research\\RHRC\\integration\\opica_followup\\continuation\\2026-10-22\\consumers\\ExpectedCoPoissonFamily.lean"
+    ],
+    "exit_code": 0,
+    "seconds": 37.84544720000122,
+    "log": "ExpectedCoPoissonFamily.log",
+    "log_sha256": "bdbeccc5c605c93eff518e855cc3cc7cd96826e54912a362b3a1a162b79e8436"
+  },
+  {
+    "label": "ExpectedCoPoissonOrderZero",
+    "command": [
+      "C:\\Users\\macka\\.elan\\toolchains\\leanprover--lean4---v4.33.0-rc2\\bin\\lake.exe",
+      "env",
+      "lean",
+      "-DmaxHeartbeats=800000",
+      "-DrelaxedAutoImplicit=false",
+      "research\\RHRC\\integration\\opica_followup\\continuation\\2026-10-22\\consumers\\ExpectedCoPoissonOrderZero.lean"
+    ],
+    "exit_code": 0,
+    "seconds": 35.13252410001587,
+    "log": "ExpectedCoPoissonOrderZero.log",
+    "log_sha256": "2e16306b71740c82de0cdbf87d6327a40ccd8131779e18d59750cba72888b17b"
+  },
+  {
+    "label": "ExpectedZeroMeasure",
+    "command": [
+      "C:\\Users\\macka\\.elan\\toolchains\\leanprover--lean4---v4.33.0-rc2\\bin\\lake.exe",
+      "env",
+      "lean",
+      "-DmaxHeartbeats=800000",
+      "-DrelaxedAutoImplicit=false",
+      "research\\RHRC\\integration\\opica_followup\\continuation\\2026-10-22\\consumers\\ExpectedZeroMeasure.lean"
+    ],
+    "exit_code": 0,
+    "seconds": 32.36518849991262,
+    "log": "ExpectedZeroMeasure.log",
+    "log_sha256": "af72983dfbe059c74c19a89f47e4502725c5f82052302def4bd5ce280c5ff292"
+  },
+  {
+    "label": "ExpectedEulerMaclaurin",
+    "command": [
+      "C:\\Users\\macka\\.elan\\toolchains\\leanprover--lean4---v4.33.0-rc2\\bin\\lake.exe",
+      "env",
+      "lean",
+      "-DmaxHeartbeats=800000",
+      "-DrelaxedAutoImplicit=false",
+      "research\\RHRC\\integration\\opica_followup\\continuation\\2026-10-22\\consumers\\ExpectedEulerMaclaurin.lean"
+    ],
+    "exit_code": 0,
+    "seconds": 34.54354109999258,
+    "log": "ExpectedEulerMaclaurin.log",
+    "log_sha256": "c82ddc9e09528cc82834b5ee3a67f749ebae6c4264fec058255d3d6a00bced2b"
+  },
+  {
+    "label": "ExpectedZeroProfiles",
+    "command": [
+      "C:\\Users\\macka\\.elan\\toolchains\\leanprover--lean4---v4.33.0-rc2\\bin\\lake.exe",
+      "env",
+      "lean",
+      "-DmaxHeartbeats=800000",
+      "-DrelaxedAutoImplicit=false",
+      "research\\RHRC\\integration\\opica_followup\\continuation\\2026-10-22\\consumers\\ExpectedZeroProfiles.lean"
+    ],
+    "exit_code": 0,
+    "seconds": 42.920670899911784,
+    "log": "ExpectedZeroProfiles.log",
+    "log_sha256": "7b9fad2ebba927462f2da9eb18d86ba4464e61a2396c5411a1700cad2f0bc039"
+  },
+  {
+    "label": "ExpectedLogFourierSobolev",
+    "command": [
+      "C:\\Users\\macka\\.elan\\toolchains\\leanprover--lean4---v4.33.0-rc2\\bin\\lake.exe",
+      "env",
+      "lean",
+      "-DmaxHeartbeats=800000",
+      "-DrelaxedAutoImplicit=false",
+      "research\\RHRC\\integration\\opica_followup\\continuation\\2026-10-22\\consumers\\ExpectedLogFourierSobolev.lean"
+    ],
+    "exit_code": 0,
+    "seconds": 30.229275400051847,
+    "log": "ExpectedLogFourierSobolev.log",
+    "log_sha256": "939898085a5c44e4c6727aad8e14ffb8ee6c724e4033864a3656e4e929d550af"
+  },
+  {
+    "label": "ExpectedForcedEuler",
+    "command": [
+      "C:\\Users\\macka\\.elan\\toolchains\\leanprover--lean4---v4.33.0-rc2\\bin\\lake.exe",
+      "env",
+      "lean",
+      "-DmaxHeartbeats=800000",
+      "-DrelaxedAutoImplicit=false",
+      "research\\RHRC\\integration\\opica_followup\\continuation\\2026-10-22\\consumers\\ExpectedForcedEuler.lean"
+    ],
+    "exit_code": 0,
+    "seconds": 35.42032010003459,
+    "log": "ExpectedForcedEuler.log",
+    "log_sha256": "2362450c5604162a467e82cd37d04f41e75593facb5c4ac7aa7c3e51a5c79949"
+  },
+  {
+    "label": "ExpectedSamplingCompatibility",
+    "command": [
+      "C:\\Users\\macka\\.elan\\toolchains\\leanprover--lean4---v4.33.0-rc2\\bin\\lake.exe",
+      "env",
+      "lean",
+      "-DmaxHeartbeats=800000",
+      "-DrelaxedAutoImplicit=false",
+      "research\\RHRC\\integration\\opica_followup\\continuation\\2026-10-22\\consumers\\ExpectedSamplingCompatibility.lean"
+    ],
+    "exit_code": 0,
+    "seconds": 62.470095999888144,
+    "log": "ExpectedSamplingCompatibility.log",
+    "log_sha256": "8f80a462b075bd745bd9e169acc0b20d714fea4fc0af9a8e28fdcbff99e73f53"
+  },
+  {
+    "label": "ExpectedSawtoothForce",
+    "command": [
+      "C:\\Users\\macka\\.elan\\toolchains\\leanprover--lean4---v4.33.0-rc2\\bin\\lake.exe",
+      "env",
+      "lean",
+      "-DmaxHeartbeats=800000",
+      "-DrelaxedAutoImplicit=false",
+      "research\\RHRC\\integration\\opica_followup\\continuation\\2026-10-22\\consumers\\ExpectedSawtoothForce.lean"
+    ],
+    "exit_code": 0,
+    "seconds": 29.933358200010844,
+    "log": "ExpectedSawtoothForce.log",
+    "log_sha256": "93406d58171176313aae8e6735a722e51c5a2adeb56711a577a76748210ab568"
+  },
+  {
+    "label": "ExpectedWeightedSpectralMeasure",
+    "command": [
+      "C:\\Users\\macka\\.elan\\toolchains\\leanprover--lean4---v4.33.0-rc2\\bin\\lake.exe",
+      "env",
+      "lean",
+      "-DmaxHeartbeats=800000",
+      "-DrelaxedAutoImplicit=false",
+      "research\\RHRC\\integration\\opica_followup\\continuation\\2026-10-22\\consumers\\ExpectedWeightedSpectralMeasure.lean"
+    ],
+    "exit_code": 0,
+    "seconds": 25.403656400041655,
+    "log": "ExpectedWeightedSpectralMeasure.log",
+    "log_sha256": "3b70fe9e7a20a0dc5b5ff1c262e2cad4720e810ca694de0b95395453c6dd285b"
+  },
+  {
+    "label": "ExpectedNativeResolvent",
+    "command": [
+      "C:\\Users\\macka\\.elan\\toolchains\\leanprover--lean4---v4.33.0-rc2\\bin\\lake.exe",
+      "env",
+      "lean",
+      "-DmaxHeartbeats=800000",
+      "-DrelaxedAutoImplicit=false",
+      "research\\RHRC\\integration\\opica_followup\\continuation\\2026-10-22\\consumers\\ExpectedNativeResolvent.lean"
+    ],
+    "exit_code": 0,
+    "seconds": 31.55191769998055,
+    "log": "ExpectedNativeResolvent.log",
+    "log_sha256": "c44a84cb21b84893a16b9f3e5fdec99518b5cb034f620c1deac4726ff565e1fb"
+  },
+  {
+    "label": "ExpectedSquareDefect",
+    "command": [
+      "C:\\Users\\macka\\.elan\\toolchains\\leanprover--lean4---v4.33.0-rc2\\bin\\lake.exe",
+      "env",
+      "lean",
+      "-DmaxHeartbeats=800000",
+      "-DrelaxedAutoImplicit=false",
+      "research\\RHRC\\integration\\opica_followup\\continuation\\2026-10-22\\consumers\\ExpectedSquareDefect.lean"
+    ],
+    "exit_code": 0,
+    "seconds": 381.0506731000496,
+    "log": "ExpectedSquareDefect.log",
+    "log_sha256": "91555d30bfb94957c8f245c8279a8d64d100d3f543882e206f435e7b77b8072c"
+  },
+  {
+    "label": "ExpectedBoundaryAmplitude",
+    "command": [
+      "C:\\Users\\macka\\.elan\\toolchains\\leanprover--lean4---v4.33.0-rc2\\bin\\lake.exe",
+      "env",
+      "lean",
+      "-DmaxHeartbeats=800000",
+      "-DrelaxedAutoImplicit=false",
+      "research\\RHRC\\integration\\opica_followup\\continuation\\2026-10-22\\consumers\\ExpectedBoundaryAmplitude.lean"
+    ],
+    "exit_code": 0,
+    "seconds": 25.28885660006199,
+    "log": "ExpectedBoundaryAmplitude.log",
+    "log_sha256": "82008e6c3ca147d62aef3a1b745ac8df6dd23422a5a0845a5aa7cd9ecafd9274"
+  },
+  {
+    "label": "ExpectedCoPoissonJets",
+    "command": [
+      "C:\\Users\\macka\\.elan\\toolchains\\leanprover--lean4---v4.33.0-rc2\\bin\\lake.exe",
+      "env",
+      "lean",
+      "-DmaxHeartbeats=800000",
+      "-DrelaxedAutoImplicit=false",
+      "research\\RHRC\\integration\\opica_followup\\continuation\\2026-10-22\\consumers\\ExpectedCoPoissonJets.lean"
+    ],
+    "exit_code": 0,
+    "seconds": 16.710962500073947,
+    "log": "ExpectedCoPoissonJets.log",
+    "log_sha256": "8f76478f76b486e35055ed2d0419afeeadf2f995bb30e889e54eec20335faed9"
+  },
+  {
+    "label": "ExpectedWordJet",
+    "command": [
+      "C:\\Users\\macka\\.elan\\toolchains\\leanprover--lean4---v4.33.0-rc2\\bin\\lake.exe",
+      "env",
+      "lean",
+      "-DmaxHeartbeats=800000",
+      "-DrelaxedAutoImplicit=false",
+      "research\\RHRC\\integration\\opica_followup\\continuation\\2026-10-22\\consumers\\ExpectedWordJet.lean"
+    ],
+    "exit_code": 0,
+    "seconds": 30.268321700044908,
+    "log": "ExpectedWordJet.log",
+    "log_sha256": "15da2bda7b061a9d3e8d0aba5c0fdb2511f92c75e3b2904d2375a35be5c7fdd0"
+  },
+  {
+    "label": "ExpectedForceSampling",
+    "command": [
+      "C:\\Users\\macka\\.elan\\toolchains\\leanprover--lean4---v4.33.0-rc2\\bin\\lake.exe",
+      "env",
+      "lean",
+      "-DmaxHeartbeats=800000",
+      "-DrelaxedAutoImplicit=false",
+      "research\\RHRC\\integration\\opica_followup\\continuation\\2026-10-22\\consumers\\ExpectedForceSampling.lean"
+    ],
+    "exit_code": 0,
+    "seconds": 17.659222100046463,
+    "log": "ExpectedForceSampling.log",
+    "log_sha256": "3e741ee10ecbea9eaa36afc6b5c14ae95e5427fcda538c02ebd17f29136d417c"
+  },
+  {
+    "label": "ExpectedSampleSign",
+    "command": [
+      "C:\\Users\\macka\\.elan\\toolchains\\leanprover--lean4---v4.33.0-rc2\\bin\\lake.exe",
+      "env",
+      "lean",
+      "-DmaxHeartbeats=800000",
+      "-DrelaxedAutoImplicit=false",
+      "research\\RHRC\\integration\\opica_followup\\continuation\\2026-10-22\\consumers\\ExpectedSampleSign.lean"
+    ],
+    "exit_code": 0,
+    "seconds": 17.09656889992766,
+    "log": "ExpectedSampleSign.log",
+    "log_sha256": "10901a5a97ad66404544e355010717862aa9da47abeea914df853bf31eb0ea67"
+  },
+  {
+    "label": "ExpectedPhysicalRates",
+    "command": [
+      "C:\\Users\\macka\\.elan\\toolchains\\leanprover--lean4---v4.33.0-rc2\\bin\\lake.exe",
+      "env",
+      "lean",
+      "-DmaxHeartbeats=800000",
+      "-DrelaxedAutoImplicit=false",
+      "research\\RHRC\\integration\\opica_followup\\continuation\\2026-10-22\\consumers\\ExpectedPhysicalRates.lean"
+    ],
+    "exit_code": 0,
+    "seconds": 16.283541099983267,
+    "log": "ExpectedPhysicalRates.log",
+    "log_sha256": "a4bfcc709eea7bc981129134aefcb148ba070d89d1662220c3aa2b9435338f32"
+  },
+  {
+    "label": "ExpectedArithmeticPhysical",
+    "command": [
+      "C:\\Users\\macka\\.elan\\toolchains\\leanprover--lean4---v4.33.0-rc2\\bin\\lake.exe",
+      "env",
+      "lean",
+      "-DmaxHeartbeats=800000",
+      "-DrelaxedAutoImplicit=false",
+      "research\\RHRC\\integration\\opica_followup\\continuation\\2026-10-22\\consumers\\ExpectedArithmeticPhysical.lean"
+    ],
+    "exit_code": 0,
+    "seconds": 17.333965300000273,
+    "log": "ExpectedArithmeticPhysical.log",
+    "log_sha256": "eea357c08b9ee62edb4d722da9349f5d8f025e326b337d5a8d2eb8b363bdeb87"
+  },
+  {
+    "label": "ExpectedConfluentProfiles",
+    "command": [
+      "C:\\Users\\macka\\.elan\\toolchains\\leanprover--lean4---v4.33.0-rc2\\bin\\lake.exe",
+      "env",
+      "lean",
+      "-DmaxHeartbeats=800000",
+      "-DrelaxedAutoImplicit=false",
+      "research\\RHRC\\integration\\opica_followup\\continuation\\2026-10-22\\consumers\\ExpectedConfluentProfiles.lean"
+    ],
+    "exit_code": 0,
+    "seconds": 16.28410809999332,
+    "log": "ExpectedConfluentProfiles.log",
+    "log_sha256": "7466cc503e4b08fd95f8ae4dc13d07f8af1e56c1798ba78c06a1ec6b42304c48"
+  }
+]

@@ -1,7 +1,7 @@
 # OPICA module status — navigation only
 
 Generated from [ROOT_LEDGER_100.json](ROOT_LEDGER_100.json) and actual source presence.
-Ledger SHA256: `bc3d8067c4388e8cb2c828029648269bf28b5074e1fb23266638ec6d10f83d9c`.
+Ledger SHA256: `b865b34214c31316969b35933258dd05b41c73d8b76eeaa6306a1d05a22777c5`.
 
 The original target remains 100 primary roots / 28 acceptance units. Historical
 and narrow local evidence remain separate; every current aggregate/full-release
@@ -14,8 +14,8 @@ gate is OPEN. File presence does not establish proof or type coverage.
 | `BoundaryAmplitude` | 2 | 0 | 2 | 0 | 0 | [present](../../../../../../Zeta23/OPICAFollowup/BoundaryAmplitude.lean) |
 | `CoPoissonJets` | 1 | 0 | 1 | 0 | 0 | [present](../../../../../../Zeta23/OPICAFollowup/CoPoissonJets.lean) |
 | `ComplexLocalMeasures` | 1 | 0 | 1 | 0 | 0 | [present](../../../../../../Zeta23/OPICAFollowup/ComplexLocalMeasures.lean) |
-| `ConfluentProfiles` | 2 | 0 | 0 | 0 | 2 | [present](../../../../../../Zeta23/OPICAFollowup/ConfluentProfiles.lean) |
-| `Consumers` | 5 | 0 | 2 | 0 | 3 | [present](../../../../../../Zeta23/OPICAFollowup/Consumers.lean) |
+| `ConfluentProfiles` | 2 | 0 | 2 | 0 | 0 | [present](../../../../../../Zeta23/OPICAFollowup/ConfluentProfiles.lean) |
+| `Consumers` | 5 | 0 | 4 | 0 | 1 | [present](../../../../../../Zeta23/OPICAFollowup/Consumers.lean) |
 | `Counterexamples` | 4 | 4 | 0 | 0 | 0 | [present](../../../../../../Zeta23/OPICAFollowup/Counterexamples.lean) |
 | `DilatedComb` | 1 | 0 | 1 | 0 | 0 | [present](../../../../../../Zeta23/OPICAFollowup/DilatedComb.lean) |
 | `FiniteSpanSeparation` | 2 | 0 | 0 | 0 | 2 | planned / missing |
@@ -26,7 +26,7 @@ gate is OPEN. File presence does not establish proof or type coverage.
 | `LogFourierSobolev` | 2 | 0 | 2 | 0 | 0 | [present](../../../../../../Zeta23/OPICAFollowup/LogFourierSobolev.lean) |
 | `LogSlackBalance` | 3 | 3 | 0 | 0 | 0 | [present](../../../../../../Zeta23/OPICAFollowup/LogSlackBalance.lean) |
 | `MaskedNativeRate` | 2 | 0 | 2 | 0 | 0 | [present](../../../../../../Zeta23/OPICAFollowup/MaskedNativeRate.lean) |
-| `MovingSourceWindowRate` | 1 | 0 | 0 | 0 | 1 | [present](../../../../../../Zeta23/OPICAFollowup/MovingSourceWindowRate.lean) |
+| `MovingSourceWindowRate` | 1 | 0 | 1 | 0 | 0 | [present](../../../../../../Zeta23/OPICAFollowup/MovingSourceWindowRate.lean) |
 | `MultiplicityTail` | 4 | 0 | 4 | 0 | 0 | [present](../../../../../../Zeta23/OPICAFollowup/MultiplicityTail.lean) |
 | `NativeExplicitFormula` | 3 | 3 | 0 | 0 | 0 | [present](../../../../../../Zeta23/OPICAFollowup/NativeExplicitFormula.lean) |
 | `NativeFilters` | 2 | 2 | 0 | 0 | 0 | [present](../../../../../../Zeta23/OPICAFollowup/NativeFilters.lean) |
@@ -34,7 +34,7 @@ gate is OPEN. File presence does not establish proof or type coverage.
 | `NativeSourceFamily` | 2 | 2 | 0 | 0 | 0 | [present](../../../../../../Zeta23/OPICAFollowup/NativeSourceFamily.lean) |
 | `NativeSourceTransforms` | 3 | 3 | 0 | 0 | 0 | [present](../../../../../../Zeta23/OPICAFollowup/NativeSourceTransforms.lean) |
 | `NativeTransformationWords` | 4 | 4 | 0 | 0 | 0 | [present](../../../../../../Zeta23/OPICAFollowup/NativeTransformationWords.lean) |
-| `NativeWindowRate` | 1 | 0 | 0 | 0 | 1 | [present](../../../../../../Zeta23/OPICAFollowup/NativeWindowRate.lean) |
+| `NativeWindowRate` | 1 | 0 | 1 | 0 | 0 | [present](../../../../../../Zeta23/OPICAFollowup/NativeWindowRate.lean) |
 | `NearGapLimits` | 4 | 0 | 4 | 0 | 0 | [present](../../../../../../Zeta23/OPICAFollowup/NearGapLimits.lean) |
 | `NormFirstTransfer` | 4 | 4 | 0 | 0 | 0 | [present](../../../../../../Zeta23/OPICAFollowup/NormFirstTransfer.lean) |
 | `ProfileEulerMaclaurin` | 1 | 0 | 1 | 0 | 0 | [present](../../../../../../Zeta23/OPICAFollowup/ProfileEulerMaclaurin.lean) |
@@ -49,7 +49,7 @@ gate is OPEN. File presence does not establish proof or type coverage.
 | `WeightedSpectralMeasure` | 2 | 0 | 2 | 0 | 0 | [present](../../../../../../Zeta23/OPICAFollowup/WeightedSpectralMeasure.lean) |
 | `ZeroProfiles` | 2 | 0 | 2 | 0 | 0 | [present](../../../../../../Zeta23/OPICAFollowup/ZeroProfiles.lean) |
 | `ZetaLeftLineBounds` | 1 | 1 | 0 | 0 | 0 | [present](../../../../../../Zeta23/OPICAFollowup/ZetaLeftLineBounds.lean) |
-| **Total** | **100** | **41** | **50** | **0** | **9** | |
+| **Total** | **100** | **41** | **56** | **0** | **3** | |
 
 Regenerate with `python refresh_navigation.py --write`; verify with `--check`.
 Read the [named remaining work](REMAINING_WORK.md) and [next-agent task](NEXT_AGENT_PROMPT.md)

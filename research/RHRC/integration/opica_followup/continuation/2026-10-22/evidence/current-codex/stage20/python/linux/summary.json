@@ -1,0 +1,76 @@
+{
+  "status": "PASS_FOCUSED_PARENT_TESTS_ONLY",
+  "source_before": {
+    "head": "9a8b2a4baee49f2056c7945b1544a7bc2893735b",
+    "tree": "6aa53d22d50d2aa24046d73b128c64a1d262f7f3",
+    "dirty": "M AGENTS.md\n M research/RHRC/integration/opica_followup/CONTINUATION_MANIFEST.json\n M research/RHRC/integration/opica_followup/README.md\n M research/RHRC/integration/opica_followup/continuation/2026-10-22/DOCUMENTATION_INDEX.md\n M research/RHRC/integration/opica_followup/continuation/2026-10-22/MODULE_STATUS.md\n M research/RHRC/integration/opica_followup/continuation/2026-10-22/NEXT_AGENT_PROMPT.md\n M research/RHRC/integration/opica_followup/continuation/2026-10-22/README.md\n M research/RHRC/integration/opica_followup/continuation/2026-10-22/REMAINING_WORK.md\n M research/RHRC/integration/opica_followup/continuation/2026-10-22/ROOT_LEDGER_100.json\n M research/RHRC/integration/opica_followup/validate_contract.py\n?? research/RHRC/integration/opica_followup/continuation/2026-10-22/STAGE20_HANDOVER.md\n?? research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage20/",
+    "files": {
+      "research/RHRC/integration/opica/validate_contract.py": "37784b8c89d75f3aae1aed52ff2fe046c2614d78247edfd717f6b30a2d41953a",
+      "research/RHRC/integration/opica/tests/test_contract.py": "17da5f0929c47499ea6cd11131fece1e50a53ff27adb4179ffa8fc96dfc07fce",
+      "research/RHRC/graph/OPICA_FOLLOWUP_CURRENT_STATE.md": "de9aabe7985f839c39b62e82c3407c97bc21d831e283199ab5d81784fe68f327",
+      "research/RHRC/integration/opica_followup/validate_contract.py": "98486fa523fb3ed03f368f6b66eb97e6e358f3d255a2591f7282b19245e40044",
+      "research/RHRC/integration/opica_followup/CONTINUATION_MANIFEST.json": "a432bd629331724cb9c2a9174ba2f49e21eb55a2bd98fc0ae93cd00c6a02ba39"
+    }
+  },
+  "source_after": {
+    "head": "9a8b2a4baee49f2056c7945b1544a7bc2893735b",
+    "tree": "6aa53d22d50d2aa24046d73b128c64a1d262f7f3",
+    "dirty": "M AGENTS.md\n M research/RHRC/integration/opica_followup/CONTINUATION_MANIFEST.json\n M research/RHRC/integration/opica_followup/README.md\n M research/RHRC/integration/opica_followup/continuation/2026-10-22/DOCUMENTATION_INDEX.md\n M research/RHRC/integration/opica_followup/continuation/2026-10-22/MODULE_STATUS.md\n M research/RHRC/integration/opica_followup/continuation/2026-10-22/NEXT_AGENT_PROMPT.md\n M research/RHRC/integration/opica_followup/continuation/2026-10-22/README.md\n M research/RHRC/integration/opica_followup/continuation/2026-10-22/REMAINING_WORK.md\n M research/RHRC/integration/opica_followup/continuation/2026-10-22/ROOT_LEDGER_100.json\n M research/RHRC/integration/opica_followup/validate_contract.py\n?? research/RHRC/integration/opica_followup/continuation/2026-10-22/STAGE20_HANDOVER.md\n?? research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage20/",
+    "files": {
+      "research/RHRC/integration/opica/validate_contract.py": "37784b8c89d75f3aae1aed52ff2fe046c2614d78247edfd717f6b30a2d41953a",
+      "research/RHRC/integration/opica/tests/test_contract.py": "17da5f0929c47499ea6cd11131fece1e50a53ff27adb4179ffa8fc96dfc07fce",
+      "research/RHRC/graph/OPICA_FOLLOWUP_CURRENT_STATE.md": "de9aabe7985f839c39b62e82c3407c97bc21d831e283199ab5d81784fe68f327",
+      "research/RHRC/integration/opica_followup/validate_contract.py": "98486fa523fb3ed03f368f6b66eb97e6e358f3d255a2591f7282b19245e40044",
+      "research/RHRC/integration/opica_followup/CONTINUATION_MANIFEST.json": "a432bd629331724cb9c2a9174ba2f49e21eb55a2bd98fc0ae93cd00c6a02ba39"
+    }
+  },
+  "source_hashes_unchanged": true,
+  "commands": [
+    {
+      "name": "normal",
+      "command": [
+        "/usr/bin/python3",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "research/RHRC/integration/opica/tests",
+        "-p",
+        "test_contract.py"
+      ],
+      "started_at": "2026-10-24T16:19:58.794657+00:00",
+      "finished_at": "2026-10-24T16:21:12.598771+00:00",
+      "exit_code": 0,
+      "log": "normal.log",
+      "log_sha256": "ab78a939f3f304bab87f02e1ac9f2c81d46968d95f2abc7485e84a2fd9d6068d",
+      "tmpdir": "/tmp/opica-stage20-repaired-normal-dgo71cau"
+    },
+    {
+      "name": "optimized",
+      "command": [
+        "/usr/bin/python3",
+        "-B",
+        "-O",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "research/RHRC/integration/opica/tests",
+        "-p",
+        "test_contract.py"
+      ],
+      "started_at": "2026-10-24T16:19:58.795138+00:00",
+      "finished_at": "2026-10-24T16:21:12.651336+00:00",
+      "exit_code": 0,
+      "log": "optimized.log",
+      "log_sha256": "c1c784dd445ae1b54aaa055f99bb8c9b22fdb4f3b0f63ef2c668b23fb4548d12",
+      "tmpdir": "/tmp/opica-stage20-repaired-optimized-fq9jvrns"
+    }
+  ],
+  "python": "3.14.4 (main, Aug 20 2026, 10:41:58) [GCC 15.2.0]",
+  "platform": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.43",
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "release_accepted": false
+}

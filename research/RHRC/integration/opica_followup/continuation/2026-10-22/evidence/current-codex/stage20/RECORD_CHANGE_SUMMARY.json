@@ -1,0 +1,24 @@
+{
+  "checked_commit": "9a8b2a4baee49f2056c7945b1544a7bc2893735b",
+  "promoted_original_roots": [
+    "profile_jet_confluent_determinant",
+    "finite_zero_jet_independent",
+    "native_fixed_source_window_rate",
+    "native_slow_source_window_rate",
+    "fixed_two_factor_mask_rate_theta",
+    "quiet_balanced_observation_implies_native_cut"
+  ],
+  "frozen_contracts_unchanged": true,
+  "protected_graph_sha256": "de9aabe7985f839c39b62e82c3407c97bc21d831e283199ab5d81784fe68f327",
+  "current_aggregate_accepted": false,
+  "status_counts": {
+    "OPEN_NO_COMPLETE_CANDIDATE": 3,
+    "PROVED_IN_ORIGINAL_41_ROOT_SOURCE_BOUND_SUBSET": 41,
+    "PROVED_NARROW_LOCAL_GATES_AGGREGATE_PENDING": 56
+  },
+  "supporting_not_primary": [
+    "complete_quiet_upper_iff_zero_supremum",
+    "finite_quiet_samples_do_not_supply_cofinal_upper",
+    "all normalization/domain controls"
+  ]
+}

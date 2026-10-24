@@ -1,0 +1,11 @@
+C:\Users\macka\.codex\.chatgpt-projects\g-p-6a353c7268b08191b685956e466d73e4\work\opica-stage20\clean-controls\NegativeSyntheticQuiet.lean:7:76: error: Application type mismatch: The argument
+  quiet
+has type
+  ∀ (epsilon : ℝ), 0 < epsilon → ∀ᶠ (_n : ℕ) in atTop, 0 ≤ epsilon
+but is expected to have type
+  ∀ (epsilon : ℝ),
+    0 < epsilon →
+      ∀ᶠ (n : ℕ) in atTop,
+        Real.log (1 + max (nativeRawHigh 1 2 1 (logSlackY 2 8 (time n)) 2 (time n)) 0) / (2 * time n) ≤ epsilon
+in the application
+  Or.inl quiet

@@ -1,8 +1,10 @@
+> Current source-pinned research report: [Stage 20](STAGE20_HANDOVER.md). Read its exact theorem domains, controls, all-workflow provenance and novelty comparison before using older stage descriptions. Status:41 historical + 56 narrow + 3 absent; full release/RH/Step4 OPEN.
+
 # Documentation and evidence index
 
 Use this index with [root AGENTS.md](../../../../../../AGENTS.md) and the
 [continuation guide](README.md). It describes the 22 October OPICA source
-checkpoint and its staged repairs; read [STAGE19_HANDOVER.md](STAGE19_HANDOVER.md)
+checkpoint and its staged repairs; read [STAGE20_HANDOVER.md](STAGE20_HANDOVER.md)
 for the latest exact sources and gates. Check the live Git head and workflow
 results before editing. The next agent starts from [NEXT_AGENT_PROMPT.md](NEXT_AGENT_PROMPT.md). The stage
 pipeline and its Stage 18 scripts are in [tools/stage_record](tools/stage_record/README.md),

@@ -1,28 +1,14 @@
 # Current draft checkpoint — 24 October 2026
 
 Start at [the continuation guide](continuation/2026-10-22/README.md), root AGENTS.md,
-[Stage 19](continuation/2026-10-22/STAGE19_HANDOVER.md) and the
-[current ledger](continuation/2026-10-22/ROOT_LEDGER_100.json).
+[Stage 20](continuation/2026-10-22/STAGE20_HANDOVER.md) and the [current ledger](continuation/2026-10-22/ROOT_LEDGER_100.json).
 All 100 original primary roots and 28 acceptance units remain required.
 
-The ledger records 41 historical source-bound roots, 50 additional narrow-gate
-roots and 9 absent implementations. This is not aggregate 91-root acceptance.
-Stage 19 verifies the original actual force-sampling consumer at code commit
-`59ff485551771c0ab6322562d18fb8e9d4166da4`, tree `396665de3d14c2db60a4a85c646dd56d718f07ff`, revalidates the existing word/jet primary
-at its changed source hash and records supporting sample-sign mathematics without
-counting another root. Read the
-[source-pinned STATUS](continuation/2026-10-22/evidence/current-codex/stage19/STATUS.json)
-for exact compilation, expected types, physical domains, axioms and workflow dispositions.
+The ledger records 41 historical source-bound roots, 56 additional narrow roots and 3 absent implementations. This is not aggregate 97-root acceptance. Stage 20 verifies the original full confluent determinant, actual zero-jet independence, fixed/slow original-source window rates, both actual fixed high-mask rates and the conditional complete-observation quietness consumer.
 
-The cold full100 receipt, independent review, parent extension, registration,
-canonical regeneration and complete required workflow harvest remain OPEN.
-Full release acceptance, RH, Step 4 and independent closing inequalities remain OPEN.
+Checked code `9a8b2a4baee49f2056c7945b1544a7bc2893735b`, tree `6aa53d22d50d2aa24046d73b128c64a1d262f7f3`. Read [STATUS](continuation/2026-10-22/evidence/current-codex/stage20/STATUS.json) and the handover for exact source/type/domain/axiom evidence, rejected mutations, complete old-head workflow dispositions and the post-green mathematical/novelty assessment. The existing word/jet and force/sampling consumers are revalidated at the changed source hash. Supporting audit lemmas do not add primaries.
 
-Both foundational PDFs, frozen contracts, prior evidence and the stage pipeline
-remain under the continuation guide. The following text preserves the earlier
-9b-baseline description and research history; its historical counts and statements
-about unfinished roots retain their earlier source scope. Use the current ledger
-for moving status.
+The cold full100 receipt, genuine independent review, parent extension, registration, canonical regeneration and complete exact-head workflow harvest remain OPEN. Full release, RH, Step4 and independent closing inequalities remain OPEN. The following preserved baseline narrative retains its historical scope; use the current ledger for moving status.
 
 ---
 
