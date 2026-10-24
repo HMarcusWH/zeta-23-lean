@@ -295,7 +295,7 @@ def _reviewed_child_objects(repo: Path, roots, register, workflow, *, parent_cla
     return claims,bindings
 
 
-def _source_bound_followup_context(repo: Path):
+def _source_bound_followup_context_v1(repo: Path):
     """Return a validated extension, or None for an untouched parent checkout.
 
     Missing/incomplete child material never disables a check. It raises an
@@ -346,6 +346,63 @@ def _source_bound_followup_context(repo: Path):
                 'reviewed_claim_objects':claims,'reviewed_binding_objects':bindings}
     context = extension.validate_extension_context(raw,baseline,contract)
     return (dict(extension.project_parent_context(context)),extension.allowed_child_delta(context))
+
+
+
+# Version2 policy authority is distinct from compiler validity and human review.
+# Deliberately unset pending genuine independent exact-subject/caller review.
+TRUSTED_EXACT_EXTENSION_POLICY_SHA256 = None
+EXACT_EXTENSION_PROVIDER_SHA256 = '62a42ba629ddfff42d44194031e1e53a1c74c2d1b95f316117c36ab975040bca'
+
+
+def _exact_source_extension_context(repo: Path):
+    folder = repo/FOLLOWUP_FOLDER
+    if not folder.exists():
+        return None
+    register = read_json(_safe_checkout_file(repo,FOLLOWUP_FOLDER+'/SOURCE_REGISTER.json'))
+    if 'exact_source_extension_policy' not in register:
+        return None
+    _extension_require(isinstance(TRUSTED_EXACT_EXTENSION_POLICY_SHA256,str)
+        and re.fullmatch('[0-9a-f]{64}',TRUSTED_EXACT_EXTENSION_POLICY_SHA256),
+        'independently reviewed exact-subject policy anchor is not established')
+    policy = register['exact_source_extension_policy']
+    _extension_require(isinstance(policy,dict)
+        and policy.get('schema')=='OPICA_EXACT_SUBJECT_EXTENSION_POLICY_V2',
+        'malformed or unsupported exact source policy')
+    provider_path = _safe_checkout_file(repo,FOLLOWUP_FOLDER+'/exact_extension.py')
+    _extension_require(hashlib.sha256(provider_path.read_bytes()).hexdigest()==
+        EXACT_EXTENSION_PROVIDER_SHA256,'exact source provider changed without review')
+    import importlib.util
+    name = '_opica_exact_source_extension_provider_v2'
+    spec = importlib.util.spec_from_file_location(name,provider_path)
+    provider = importlib.util.module_from_spec(spec)
+    sys.modules[name] = provider
+    spec.loader.exec_module(provider)
+    from types import SimpleNamespace
+    helpers = SimpleNamespace(_source_bound_parent_baseline=_source_bound_parent_baseline,
+        _reviewed_child_objects=_reviewed_child_objects, FOLLOWUP_GLOBAL_FILES=FOLLOWUP_GLOBAL_FILES)
+    return provider.source_bound_context(repo,policy,TRUSTED_EXACT_EXTENSION_POLICY_SHA256,
+                                         helpers)
+
+
+def _source_bound_followup_context(repo: Path):
+    """Explicit version dispatcher: malformed/pending V2 never falls back to V1."""
+    context = _exact_source_extension_context(repo)
+    if context is None:
+        return _source_bound_followup_context_v1(repo)
+    return (json.loads(context.parent_json),context.exact_allowed_paths)
+
+
+def exact_extension_binding(repo: Path):
+    context = _exact_source_extension_context(repo)
+    if context is None:
+        return None
+    return {'schema':'OPICA_EXACT_SUBJECT_POLICY_BINDING_V2',
+        'policy_sha256':context.policy_sha256,'checked_commit':context.actual_commit,
+        'checked_tree':context.actual_tree,
+        'complete_actual_source_inventory_sha256':context.actual_source_inventory_sha256,
+        'projection_scope':'REGISTRY_CONFIG_AND_CLOSED_WORLD_METADATA_ONLY',
+        'compiler_source_type_axiom_dependency_projection':False}
 
 
 def _parent_view_or_raw(repo: Path, keys=None):
@@ -449,7 +506,14 @@ def protected_errors(repo: Path, protection):
                     documentation_exception_needed = True
             except (OSError,ValueError):
                 documentation_exception_needed = True
-    if documentation_exception_needed:
+    try:
+        exact_context = _exact_source_extension_context(Path(repo))
+    except (KeyError,TypeError,ValueError,OSError,subprocess.SubprocessError) as exc:
+        errors.append('exact source extension rejected: '+str(exc))
+        exact_context = None
+    if exact_context is not None:
+        reviewed_paths = set(exact_context.documentation_paths)
+    elif documentation_exception_needed:
         reviewed_paths, review_errors = reviewed_documentation_paths(repo)
         errors.extend(review_errors)
     seen_paths = set()

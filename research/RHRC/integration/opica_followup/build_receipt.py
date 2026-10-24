@@ -317,7 +317,7 @@ ACCEPTED_PARENT = 'd53dd70d38b0762af130b1d19b795af259f505f5'
 ACCEPTED_PARENT_TREE = '12691099f1a155a8bfa3ad4f6689146175b233b2'
 COMPILER_COMMIT = 'd8b18978322de05a8f3dba51ef03cf5461676c17'
 PARENT_BUILDER_SHA256 = 'c4918486016d25b16caa1013666a22979f8ebe86e41369cbf616a8a2b9512ddc'
-PARENT_PROJECTION_VALIDATOR_SHA256 = '37784b8c89d75f3aae1aed52ff2fe046c2614d78247edfd717f6b30a2d41953a'
+PARENT_PROJECTION_VALIDATOR_SHA256 = '3b3ca7cb137d3b6cc239730afd960659c9c5e09492acdd4b8f76b59cb3ade079'
 FROZEN_FULL_INPUTS = {
     'BUILD_SPEC.md': 'cacab08834aeb9badd578d90828be99cff33c7a617c609e75bb878eb5fa3b29c',
     'BUILD_MANIFEST.json': 'c99ec7acbfe996455525b31088a7d04addd20653787e12098e4e51a4a7ce296e',
@@ -406,6 +406,12 @@ def reviewed_full_contract(repo, contract):
     for key, value in required.items():
         require(type(review.get(key)) is type(value) and review[key]==value,
             'full semantic review scope/status differs: '+key)
+    if 'exact_source_extension_policy' in register:
+        exact_policy = register['exact_source_extension_policy']
+        require(isinstance(exact_policy,dict) and
+            exact_policy.get('schema')=='OPICA_EXACT_SUBJECT_EXTENSION_POLICY_V2' and
+            review.get('exact_source_extension_policy_sha256')==object_sha256(exact_policy),
+            'full semantic review omitted or changed the exact source policy')
     amendment = register.get('implementation_dependency_amendment')
     require(isinstance(amendment,dict) and isinstance(amendment.get('id'),str)
         and amendment.get('status')=='IMPLEMENTATION_ONLY_NO_MATHEMATICAL_SCOPE_CHANGE'
@@ -793,10 +799,12 @@ def full_registry_projection(repo, contract, mapped):
         'parent projection implementation changed without independent review')
     spec = importlib.util.spec_from_file_location('opica_parent_contract_for_full_child',path)
     parent = importlib.util.module_from_spec(spec)
+    sys.modules[spec.name] = parent
     spec.loader.exec_module(parent)
     # The parent wrapper verifies immutable baseline bytes and exact original
     # projection restrictions. It never substitutes for the compiler replay.
     context = parent._source_bound_followup_context(Path(repo))
+    policy_binding = parent.exact_extension_binding(Path(repo))
     require(context is not None, 'source-bound full parent projection required')
     claims = unique_json(safe_source(repo,'research/RHRC/CLAIM_REGISTRY.json').read_bytes())['claims']
     require(len(claims)==298 and len({r['id'] for r in claims})==298,
@@ -806,14 +814,35 @@ def full_registry_projection(repo, contract, mapped):
         require(by_id[root['id']].get('dependencies')==mapped[root['full_name']],
             'registered claim edges differ from actual complete compiler uses: '+root['id'])
     return {'status':'EXACT_SOURCE_BOUND_PARENT_PROJECTION_AND_COMPILER_DEPENDENCIES_VERIFIED',
-        'claim_count':298,'binding_count':294,'mapped_registered_dependencies_sha256':object_sha256(mapped)}
+        'claim_count':298,'binding_count':294,'mapped_registered_dependencies_sha256':object_sha256(mapped),
+        'exact_source_extension_policy':policy_binding}
 
 
 def full_commands(contract):
     return [(['lake','env','lean','--version'],'lean-version.log'),
         (['lake','build',*contract['manifest']['required_final_build_targets'],
             'Zeta23.RHRC.OpicaTypeExprExport'],'build.log'),
-        (['lake','env','lean','@EXTERNAL_FULL_EXPORTER@','-o','@EXTERNAL_FULL_OLEAN@'],'bindings.log')]
+        (['lake','env','lean','-R','@EXTERNAL_FULL_ROOT@','@EXTERNAL_FULL_EXPORTER@','-o','@EXTERNAL_FULL_OLEAN@'],'bindings.log')]
+
+
+
+def instantiate_full_command(argv, output, lake):
+    """Keep an external exporter inside its explicit Lean module root.
+
+    The source checkout remains the subprocess cwd and import environment. The
+    external root governs only the generated exporter's module/output identity.
+    No source, parser, axiom, type, dependency or cold-isolation gate is changed.
+    """
+    require(isinstance(argv,list) and bool(argv) and argv[0]=='lake',
+        'full compiler command must start with lake')
+    output = Path(output).absolute()
+    replacements = {'@EXTERNAL_FULL_ROOT@':str(output),
+        '@EXTERNAL_FULL_EXPORTER@':str(output/'FullOpicaFollowupExport.lean'),
+        '@EXTERNAL_FULL_OLEAN@':str(output/'FullOpicaFollowupExport.olean')}
+    require(all(isinstance(token,str) and (not token.startswith('@') or token in replacements)
+        for token in argv), 'unknown full compiler placeholder')
+    return [str(lake) if i==0 else replacements.get(token,token)
+        for i,token in enumerate(argv)]
 
 
 def external_artifact(folder, name):
@@ -916,10 +945,7 @@ def produce_full_receipt(repo, output, requested_head, requested_base, lake='lak
     environment['LAKE_ARTIFACT_CACHE'] = 'false'
     commands = []
     for argv,log in full_commands(contract):
-        actual = [lake if token=='lake' and i==0 else
-            str(output/'FullOpicaFollowupExport.lean') if token=='@EXTERNAL_FULL_EXPORTER@' else
-            str(output/'FullOpicaFollowupExport.olean') if token=='@EXTERNAL_FULL_OLEAN@' else token
-            for i,token in enumerate(argv)]
+        actual = instantiate_full_command(argv,output,lake)
         started = time.monotonic()
         process = subprocess.run(actual,cwd=workspace,env=environment,stdout=subprocess.PIPE,
             stderr=subprocess.STDOUT,timeout=7200)

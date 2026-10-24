@@ -437,5 +437,396 @@ class CollectionTests(unittest.TestCase):
             M.public_github_json('https://example.com/steal')
 
 
+# Exact parent-intake mutations; injected reviews remain FIXTURE_ONLY.
+import json, os, sys, tempfile, zipfile
+from unittest.mock import patch
+acceptance_REPO = Path(__file__).resolve().parents[5]
+acceptance_spec = importlib.util.spec_from_file_location('opica_acceptance_intake_tests',
+    Path(__file__).resolve().parents[1]/'capture_parent.py')
+acceptance_intake = importlib.util.module_from_spec(acceptance_spec)
+sys.modules[acceptance_spec.name] = acceptance_intake
+acceptance_spec.loader.exec_module(acceptance_intake)
+acceptance_legacy = sys.modules[__name__]
+
+class AcceptanceWorkflowEvidenceTests(unittest.TestCase):
+    def setUp(self):
+        self.tmp=tempfile.TemporaryDirectory();self.folder=Path(self.tmp.name)
+        self.addCleanup(self.tmp.cleanup)
+        self.fetch,_=acceptance_legacy.CollectionTests().fake_api()
+        self.raw=M.collect(self.fetch,acceptance_intake.REPOSITORY,acceptance_legacy.HEAD)
+        self.raw['job_policies']=[acceptance_legacy.policy()]
+        self.logs={11:b'FIXTURE_ONLY first actual command log\n',12:b'FIXTURE_ONLY second actual command log\n'}
+        self.raw['job_reviews']={}
+        for attempt,identity in [(1,11),(2,12)]:
+            data=self.logs[identity]
+            (self.folder/('job-'+str(identity)+'.log')).write_bytes(data)
+            review=acceptance_legacy.review(identity=identity,attempt=attempt)
+            review['job_log']={'file':'job-'+str(identity)+'.log','bytes':len(data),
+                'sha256':hashlib.sha256(data).hexdigest()}
+            self.raw['job_reviews']['1:'+str(attempt)+':'+str(identity)]=review
+        self.path=self.folder/'harvest.json'
+        self.write()
+
+    def write(self):
+        report=M.harvest(self.raw)
+        report['raw_collection']=self.raw
+        report['review_provenance']={'author':'FIXTURE_ONLY_NONAUTHOR','not_actual_review':True}
+        self.path.write_text(json.dumps(report),encoding='utf-8')
+
+    def check(self, *, fresh=None, log_bytes=None, expected_head=None, expected_tree=None, refresh=False, previous=None):
+        fetch=fresh or acceptance_legacy.CollectionTests().fake_api()[0]
+        source=self.raw['workflow_sources'][0]['content'].encode()
+        with patch.object(acceptance_intake,'load_evidence_tool',return_value=M),\
+             patch.object(acceptance_intake,'git_bytes',return_value=source):
+            return acceptance_intake.verify_workflow_evidence(acceptance_REPO,self.path,
+                expected_head=expected_head or acceptance_legacy.HEAD,expected_tree=expected_tree or acceptance_legacy.TREE,
+                fetch_json=fetch,fetch_bytes=log_bytes or (lambda url:self.logs[int(url.split('/')[-2])]),
+                refresh_output_bytes=refresh,previous_harvest=previous)
+
+    def test_actual_collector_replays_all_attempts_and_actual_output_bytes(self):
+        result=self.check()
+        self.assertTrue(result['fresh_provider_scope_verified'])
+        self.assertEqual(result['all_attempt_job_count'],2)
+        self.assertEqual(len(result['external_evidence']),2)
+        self.assertFalse(result['independent_review_approved_by_validator'])
+        self.assertEqual(result['human_review'],'NOT_ESTABLISHED')
+
+    def test_serialized_pass_does_not_supply_missing_review(self):
+        report=json.loads(self.path.read_bytes())
+        report['raw_collection']['job_reviews']={}
+        report['execution_status']='PASS'
+        report['review_status']='RECORDED_NOT_INDEPENDENT_APPROVAL'
+        self.path.write_text(json.dumps(report),encoding='utf-8')
+        with self.assertRaisesRegex(ValueError,'job review is missing'):self.check()
+
+    def test_completed_summary_in_progress_cannot_be_blessed_by_review(self):
+        self.raw['job_pages'][-1]['pages'][0]['jobs'][0]['status']='in_progress'
+        self.raw['job_pages'][-1]['pages'][0]['jobs'][0]['conclusion']=None
+        self.raw['job_reviews'].pop('1:2:12')
+        self.write()
+        with self.assertRaisesRegex(ValueError,'execution is incomplete'):self.check()
+
+    def test_latest_failed_attempt_is_not_hidden_by_old_success(self):
+        self.raw['job_pages'][-1]['pages'][0]['jobs'][0]['conclusion']='failure';self.write()
+        with self.assertRaisesRegex(ValueError,'execution is incomplete'):self.check()
+
+    def test_serialized_job_disposition_must_equal_raw_review(self):
+        report=json.loads(self.path.read_bytes())
+        report['effective_jobs'][0]['review']['mathematical_disposition']={'RH':'PROVED'}
+        self.path.write_text(json.dumps(report),encoding='utf-8')
+        with self.assertRaisesRegex(ValueError,'serialized harvest differs'):self.check()
+
+    def test_missing_old_attempt_output_is_not_silently_dropped(self):
+        self.raw['job_reviews'].pop('1:1:11');self.write()
+        with self.assertRaisesRegex(ValueError,'historical attempt lacks'):self.check()
+
+    def test_external_log_hash_and_size_are_actually_checked(self):
+        (self.folder/'job-12.log').write_bytes(b'forged')
+        with self.assertRaisesRegex(ValueError,'log bytes differ'):self.check()
+
+    def test_remote_job_log_must_equal_the_actual_reviewed_input(self):
+        with self.assertRaisesRegex(ValueError,'actual GitHub job log differs'):
+            self.check(log_bytes=lambda url:b'FORGED_DIFFERENT_PROVIDER_LOG',refresh=True)
+
+    def test_no_log_record_cannot_be_replaced_by_commands_or_status(self):
+        for review in self.raw['job_reviews'].values():review.pop('job_log')
+        self.write()
+        with self.assertRaisesRegex(ValueError,'explicit reviewed limitation'):self.check()
+
+    def test_reviewed_log_cannot_escape_its_artifact_folder(self):
+        for review in self.raw['job_reviews'].values():review['job_log']['file']='../elsewhere.log'
+        self.write()
+        with self.assertRaisesRegex(ValueError,'unsafe workflow artifact'):self.check()
+
+    def test_fresh_rerun_is_rejected_instead_of_using_old_favorable_data(self):
+        fetch,_=acceptance_legacy.CollectionTests().fake_api(change=True)
+        with self.assertRaisesRegex(ValueError,'inventory changed'):self.check(fresh=fetch)
+
+    def test_fresh_actual_job_failure_or_scope_drift_is_detected(self):
+        original,_=acceptance_legacy.CollectionTests().fake_api()
+        def altered(url):
+            value=original(url)
+            if '/attempts/2/' in url:value['jobs'][0]['conclusion']='failure'
+            return value
+        with self.assertRaisesRegex(ValueError,'fresh GitHub workflow scope'):self.check(fresh=altered)
+
+    def test_foreign_checked_commit_and_same_tree_child_relaxation_are_rejected(self):
+        with self.assertRaisesRegex(ValueError,'head does not match'):
+            self.check(expected_head='e'*40)
+
+    def test_actual_workflow_git_bytes_are_required(self):
+        with patch.object(acceptance_intake,'load_evidence_tool',return_value=M),\
+             patch.object(acceptance_intake,'git_bytes',return_value=b'wrong source'):
+            with self.assertRaisesRegex(ValueError,'actual Git bytes'):
+                acceptance_intake.verify_workflow_evidence(acceptance_REPO,self.path,expected_head=acceptance_legacy.HEAD,
+                    expected_tree=acceptance_legacy.TREE,fetch_json=acceptance_legacy.CollectionTests().fake_api()[0],
+                    fetch_bytes=lambda url:self.logs[int(url.split('/')[-2])])
+
+    def test_file_alias_is_rejected_with_actual_linux_symlink(self):
+        link=self.folder/'alias.json'
+        link.symlink_to(self.path)
+        with self.assertRaisesRegex(ValueError,'regular evidence'):
+            acceptance_intake.regular_artifact(link)
+
+    def test_json_duplicate_keys_and_nonfinite_values_are_not_accepted(self):
+        for data in ['{"status":"PASS","status":"FAIL"}','{"seconds":NaN}']:
+            with self.assertRaises(ValueError):acceptance_intake.unique_json(data)
+
+    def test_provider_identity_does_not_confuse_review_text_with_actual_execution(self):
+        other=deepcopy(self.raw);other['job_reviews']['1:2:12']['commands'][0]['exit_code']=99
+        self.assertEqual(acceptance_intake.workflow_provider_identity(self.raw,M),acceptance_intake.workflow_provider_identity(other,M))
+        other['job_pages'][-1]['pages'][0]['jobs'][0]['conclusion']='failure'
+        self.assertNotEqual(acceptance_intake.workflow_provider_identity(self.raw,M),acceptance_intake.workflow_provider_identity(other,M))
+
+    def test_additional_synthetic_scope_does_not_relabel_the_checked_head(self):
+        original=acceptance_legacy.CollectionTests().fake_api()[0]
+        from urllib.parse import parse_qs,urlsplit
+        def extra(url):
+            p=urlsplit(url)
+            if p.path.endswith('/git/commits/'+acceptance_legacy.MERGE):
+                return {'sha':acceptance_legacy.MERGE,'tree':{'sha':acceptance_legacy.TREE},
+                    'parents':[{'sha':acceptance_legacy.HEAD},{'sha':acceptance_legacy.OTHER}]}
+            if p.path.endswith('/actions/runs') and parse_qs(p.query)['head_sha']==[acceptance_legacy.MERGE]:
+                return acceptance_legacy.page('workflow_runs',[])
+            if p.path.endswith('/commits/'+acceptance_legacy.MERGE+'/check-runs'):return acceptance_legacy.page('check_runs',[])
+            return original(url)
+        raw=M.collect(extra,acceptance_intake.REPOSITORY,acceptance_legacy.HEAD,acceptance_legacy.MERGE)
+        raw['checked_sha']=acceptance_legacy.HEAD;raw['checked_tree']=acceptance_legacy.TREE
+        raw['job_policies']=self.raw['job_policies'];raw['job_reviews']=self.raw['job_reviews']
+        self.raw=raw;self.write()
+        self.assertEqual(self.check(fresh=extra)['source_bridge']['checked_commit'],acceptance_legacy.HEAD)
+
+    def test_archive_is_reparsed_without_extraction_and_unsafe_paths_fail(self):
+        path=self.folder/'reviewed.zip'
+        with zipfile.ZipFile(path,'w') as archive:archive.writestr('science/result.json','{"RH":"OPEN"}')
+        members=acceptance_intake.workflow_archive_members(path)
+        self.assertEqual(members[0]['path'],'science/result.json')
+        self.assertEqual(members[0]['sha256'],hashlib.sha256(b'{"RH":"OPEN"}').hexdigest())
+        with zipfile.ZipFile(path,'w') as archive:archive.writestr('../unreviewed.json','forged')
+        with self.assertRaisesRegex(ValueError,'unsafe workflow archive'):acceptance_intake.workflow_archive_members(path)
+
+    def test_archive_case_alias_and_symlink_members_fail_closed(self):
+        path=self.folder/'alias.zip'
+        with zipfile.ZipFile(path,'w') as archive:
+            archive.writestr('Result.json','{}');archive.writestr('result.json','{}')
+        with self.assertRaisesRegex(ValueError,'case-aliased'):acceptance_intake.workflow_archive_members(path)
+        info=zipfile.ZipInfo('link');info.create_system=3;info.external_attr=(0o120777<<16)
+        with zipfile.ZipFile(path,'w') as archive:archive.writestr(info,'elsewhere')
+        with self.assertRaisesRegex(ValueError,'symlink member'):acceptance_intake.workflow_archive_members(path)
+
+    def test_real_parent_same_tree_merge_bridge_requires_actual_git_parent(self):
+        source=self.raw['workflow_sources'][0]['content'].encode()
+        def git(repo,*args):
+            if args[0]=='rev-list':return ('e'*40+' '+'d'*40+' '+acceptance_legacy.HEAD).encode()
+            if args[0]=='rev-parse':return acceptance_legacy.TREE.encode()
+            if args[0]=='show':return source
+            self.fail('unexpected Git operation')
+        with patch.object(acceptance_intake,'load_evidence_tool',return_value=M),patch.object(acceptance_intake,'git_bytes',side_effect=git),\
+             patch.object(acceptance_intake,'ACCEPTED_PARENT','e'*40),patch.object(acceptance_intake,'PINNED_HEAD',acceptance_legacy.HEAD),\
+             patch.object(acceptance_intake,'PINNED_TREE',acceptance_legacy.TREE):
+            result=acceptance_intake.verify_workflow_evidence(acceptance_REPO,self.path,expected_head='e'*40,expected_tree=acceptance_legacy.TREE,
+                allow_parent_same_tree=True,fetch_json=acceptance_legacy.CollectionTests().fake_api()[0],
+                fetch_bytes=lambda url:self.logs[int(url.split('/')[-2])])
+            self.assertFalse(result['source_bridge']['merge_sha_ci_run_invented'])
+            with patch.object(acceptance_intake,'git_bytes',return_value=('e'*40+' '+'d'*40+' '+'f'*40).encode()):
+                with self.assertRaisesRegex(ValueError,'does not contain original'):
+                    acceptance_intake.verify_workflow_evidence(acceptance_REPO,self.path,expected_head='e'*40,expected_tree=acceptance_legacy.TREE,
+                        allow_parent_same_tree=True,fetch_json=acceptance_legacy.CollectionTests().fake_api()[0])
+
+    def test_immutable_p0_reader_cannot_be_replaced_by_any_json_status(self):
+        with tempfile.TemporaryDirectory() as temp:
+            repo=Path(temp);relative='research/RHRC/integration/opica/build_receipt.py'
+            path=repo/relative;path.parent.mkdir(parents=True);path.write_text('status="COMPILER_VERIFIED"')
+            with self.assertRaisesRegex(ValueError,'immutable evidence reader changed'):
+                acceptance_intake.load_evidence_tool(repo,relative,'FIXTURE_ONLY',acceptance_intake.PARENT_READER_SHA256)
+
+    def artifact_fixture(self):
+        path=self.folder/'reviewed.zip'
+        with zipfile.ZipFile(path,'w') as archive:archive.writestr('science/result.json','{"RH":"OPEN"}')
+        data=path.read_bytes();digest=hashlib.sha256(data).hexdigest()
+        original=acceptance_legacy.CollectionTests().fake_api()[0]
+        def fetch(url):
+            if url.split('?')[0].endswith('/artifacts'):
+                return acceptance_legacy.page('artifacts',[{'id':123,'name':'actual-fixture-science',
+                    'size_in_bytes':len(data),'digest':'sha256:'+digest,'expired':False,
+                    'workflow_run':{'id':1,'head_sha':acceptance_legacy.HEAD}}])
+            return original(url)
+        raw=M.collect(fetch,acceptance_intake.REPOSITORY,acceptance_legacy.HEAD)
+        raw['job_policies']=self.raw['job_policies'];raw['job_reviews']=self.raw['job_reviews']
+        raw['job_reviews']['1:2:12']['artifacts']=[{'id':123,'file':'reviewed.zip',
+            'sha256':digest,'checked_sha':acceptance_legacy.HEAD,'checked_tree':acceptance_legacy.TREE}]
+        self.raw=raw;self.write()
+        return fetch,data
+
+    def test_archive_is_bound_to_provider_bytes_digest_and_member_reparse(self):
+        fetch,data=self.artifact_fixture()
+        def output(url):
+            return data if url.endswith('/zip') else self.logs[int(url.split('/')[-2])]
+        result=self.check(fresh=fetch,log_bytes=output)
+        archive=next(row for row in result['external_evidence'] if row['kind']=='WORKFLOW_ARCHIVE')
+        self.assertEqual(archive['members'][0]['path'],'science/result.json')
+
+    def test_remote_artifact_drift_cannot_be_blessed_by_local_review(self):
+        fetch,data=self.artifact_fixture()
+        def output(url):
+            return b'FORGED_DIFFERENT_ARCHIVE' if url.endswith('/zip') else self.logs[int(url.split('/')[-2])]
+        with self.assertRaisesRegex(ValueError,'actual GitHub artifact differs'):
+            self.check(fresh=fetch,log_bytes=output,refresh=True)
+
+    def test_artifact_provider_digest_is_not_replaced_by_review_hash(self):
+        fetch,data=self.artifact_fixture()
+        self.raw['job_reviews']['1:2:12']['artifacts'][0]['sha256']='f'*64
+        with self.assertRaisesRegex(ValueError,'provider digest mismatch'):self.write()
+
+    def step_only_fixture(self, *, classification='FORMAL_VALIDITY_GATE'):
+        original=acceptance_legacy.CollectionTests().fake_api()[0]
+        source=b'name: frozen research\njobs:\n  research:\n    runs-on: ubuntu-latest\n    steps:\n      - name: Actual compiler step\n        run: python frozen.py\n'
+        import base64
+        def fetch(url):
+            value=original(url)
+            if '/contents/' in url:
+                value['content']=base64.b64encode(source).decode()
+                value['sha']=hashlib.sha1(b'blob '+str(len(source)).encode()+b'\0'+source).hexdigest()
+            if '/attempts/' in url:
+                for job in value['jobs']:
+                    job['steps']=[{'number':3,'name':'Actual compiler step',
+                        'status':'completed','conclusion':'success'}]
+            return value
+        raw=M.collect(fetch,acceptance_intake.REPOSITORY,acceptance_legacy.HEAD)
+        raw['job_policies']=[{**acceptance_legacy.policy(),'classification':classification}]
+        raw['job_reviews']=self.raw['job_reviews']
+        source_row=raw['workflow_sources'][0]
+        for review in raw['job_reviews'].values():
+            review.pop('job_log');review['classification']=classification
+            review['stdout_disposition']={'available':False,'reason':'FIXTURE_ONLY actual transport failure'}
+            review['commands']=[{'command':'python frozen.py','exit_code':0,
+                'exit_code_provenance':'CI_STEP_CONCLUSION','provider_step_number':3,
+                'provider_step_name':'Actual compiler step','workflow_sha256':source_row['sha256'],
+                'source_lines':[7,7]}]
+        self.raw=raw;self.write()
+        return fetch
+
+    def test_unavailable_full_stdout_can_preserve_exact_compiler_ci_disposition(self):
+        fetch=self.step_only_fixture()
+        result=self.check(fresh=fetch,log_bytes=lambda url:self.fail('stdout is unavailable; must not request it'))
+        self.assertTrue(all(row['full_stdout_claimed'] is False for row in result['external_evidence']))
+        self.assertEqual(result['external_evidence'][0]['commands'][0]['exit_code_provenance'],'CI_STEP_CONCLUSION')
+
+    def test_step_only_success_cannot_invent_a_scientific_json_result(self):
+        fetch=self.step_only_fixture(classification='RESEARCH_PRODUCING_CHECK')
+        with self.assertRaisesRegex(ValueError,'missing scientific outputs'):self.check(fresh=fetch)
+
+    def test_missing_stdout_does_not_authorize_forged_command_or_step(self):
+        fetch=self.step_only_fixture()
+        review=self.raw['job_reviews']['1:2:12']
+        review['commands'][0]['command']='lake build invented_target';self.write()
+        with self.assertRaisesRegex(ValueError,'entire run body'):self.check(fresh=fetch)
+        review['commands'][0]['command']='python frozen.py'
+        review['commands'][0]['provider_step_name']='Invented successful step';self.write()
+        with self.assertRaisesRegex(ValueError,'actual named CI step'):self.check(fresh=fetch)
+
+    def test_step_exit_provenance_and_exact_source_hash_are_mandatory(self):
+        fetch=self.step_only_fixture()
+        self.raw['job_reviews']['1:2:12']['commands'][0]['exit_code_provenance']='GUESSED_FROM_GREEN';self.write()
+        with self.assertRaisesRegex(ValueError,'honest source/CI-step'):self.check(fresh=fetch)
+
+    def test_failed_actual_step_cannot_be_replaced_by_job_status(self):
+        fetch=self.step_only_fixture()
+        self.raw['job_pages'][-1]['pages'][0]['jobs'][0]['steps'][0]['conclusion']='failure';self.write()
+        # Fresh collection catches the mismatch before reviewing the named step.
+        with self.assertRaisesRegex(ValueError,'fresh GitHub workflow scope'):self.check(fresh=fetch)
+
+    def test_proof_command_cannot_be_paired_with_wrong_successful_checkout_step(self):
+        # Nonauthor review reproduced this exact hole in the rejected 60e draft.
+        source='jobs:\n  build:\n    runs-on: ubuntu-latest\n    steps:\n      - name: Checkout\n        uses: actions/checkout@fixed\n      - name: Proof never executed\n        if: false\n        run: lake build Zeta23.RequiredProof\n'
+        digest=hashlib.sha256(source.encode()).hexdigest()
+        job={'id':1,'name':'build','workflow':acceptance_legacy.PATH,'head_sha':acceptance_legacy.HEAD,
+            'steps':[{'number':1,'name':'Checkout','status':'completed','conclusion':'success'}],
+            'review':{'stdout_disposition':{'available':False,'reason':'FIXTURE_ONLY'},'commands':[
+                {'command':'lake build Zeta23.RequiredProof','exit_code':0,'exit_code_provenance':'CI_STEP_CONCLUSION',
+                 'provider_step_number':1,'provider_step_name':'Checkout','workflow_sha256':digest,'source_lines':[9,9]}]}}
+        with self.assertRaisesRegex(ValueError,'no unique shell run body'):
+            acceptance_intake.source_and_provider_command_evidence(job,[{'path':acceptance_legacy.PATH,'source_sha':acceptance_legacy.HEAD,
+                'sha256':digest,'content':source}])
+
+    def test_run_span_must_match_whole_selected_job_and_named_step(self):
+        source='jobs:\n  selected:\n    steps:\n      - name: Proof\n        run: |\n          echo selected\n          lake build Actual\n  elsewhere:\n    steps:\n      - name: Proof\n        run: lake build Other\n'
+        span,body=acceptance_intake.named_job_step_run_body(source,'selected','Proof')
+        self.assertEqual(span,[6,7]);self.assertEqual(body,'echo selected\nlake build Actual')
+        other_span,other_body=acceptance_intake.named_job_step_run_body(source,'elsewhere','Proof')
+        self.assertNotEqual(span,other_span);self.assertNotEqual(body,other_body)
+        with self.assertRaisesRegex(ValueError,'selected static workflow job'):
+            acceptance_intake.named_job_step_run_body(source,'unknown','Proof')
+
+    def test_authorization_is_not_forwarded_to_signed_blob_redirect(self):
+        from urllib.request import HTTPRedirectHandler
+        captured=[]
+        class Response:
+            def __enter__(self):return self
+            def __exit__(self,*args):return False
+            def read(self):return b'FIXTURE_ONLY'
+        def opened(request,timeout):captured.append(request);return Response()
+        with patch.dict(os.environ,{'GITHUB_TOKEN':'FIXTURE_ONLY_TOKEN'}),patch.object(acceptance_intake,'urlopen',side_effect=opened):
+            acceptance_intake.public_github_bytes('https://api.github.com/repos/'+acceptance_intake.REPOSITORY+'/actions/artifacts/1/zip')
+        origin=captured[0]
+        self.assertEqual(origin.get_header('Authorization'),'Bearer FIXTURE_ONLY_TOKEN')
+        redirected=HTTPRedirectHandler().redirect_request(origin,None,302,'Found',{},'https://signed-artifact.example.invalid/archive')
+        self.assertFalse(any(key.lower()=='authorization' for key,value in redirected.header_items()))
+
+    def test_official_archive_digest_and_actual_local_zip_do_not_need_duplicate_download(self):
+        fetch,data=self.artifact_fixture()
+        result=self.check(fresh=fetch,log_bytes=lambda url:self.fail('unnecessary duplicate blob GET'))
+        archive=next(row for row in result['external_evidence'] if row['kind']=='WORKFLOW_ARCHIVE')
+        self.assertFalse(archive['fresh_blob_download_compared'])
+        self.assertEqual(archive['fresh_official_digest'],'sha256:'+hashlib.sha256(data).hexdigest())
+
+    def test_previous_harvest_foreign_or_missing_repository_is_rejected(self):
+        for repository in ['foreign-owner/foreign-repository', None]:
+            with self.subTest(repository=repository):
+                raw=deepcopy(self.raw)
+                if repository is None:raw.pop('repository')
+                else:raw['repository']=repository
+                previous=M.harvest(raw);previous['raw_collection']=raw
+                with self.assertRaisesRegex(ValueError,'foreign previous workflow repository'):
+                    self.check(previous=previous)
+
+    def test_original_previous_harvest_comparisons_are_revalidated_and_bound(self):
+        prior=deepcopy(self.raw)
+        for review in prior['job_reviews'].values():review['mathematical_disposition']={'gate':'OLDER_FIXTURE_ONLY_RESULT'}
+        previous=M.harvest(prior);previous['raw_collection']=prior
+        document=M.harvest(self.raw,previous);document['raw_collection']=self.raw
+        self.path.write_text(json.dumps(document),encoding='utf-8')
+        result=self.check(previous=previous)
+        self.assertIsNotNone(result['previous_harvest_sha256'])
+        self.assertTrue(all(job['fixture_comparison']['status']=='CHANGED' for job in document['effective_jobs']))
+        with self.assertRaisesRegex(ValueError,'serialized harvest differs'):self.check()
+        previous['effective_jobs'][0]['review']['mathematical_disposition']={'gate':'FORGED_OLD_SCIENCE'}
+        with self.assertRaisesRegex(ValueError,'previous reviewed job/output'):
+            self.check(previous=previous)
+
+
+
+
+class AcceptanceIntakeCLITests(unittest.TestCase):
+    def test_acceptance_without_actual_inputs_emits_rejection_not_source_acceptance(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            output=Path(tmp)/'rejection.json'
+            argv=['capture_parent.py','--parent-pr','293','--expected-head',acceptance_intake.ACCEPTED_PARENT,
+                '--expected-tree',acceptance_intake.PINNED_TREE,'--phase','acceptance',
+                '--repo',str(acceptance_REPO),'--output',str(output)]
+            with patch.object(sys,'argv',argv):self.assertEqual(acceptance_intake.main(),1)
+            report=json.loads(output.read_bytes())
+            self.assertEqual(report['phase'],'ACCEPTANCE_REJECTED')
+            self.assertFalse(report['compiler_validated_here'])
+            self.assertFalse(report['full_child_release_accepted'])
+
+    def test_historical_tested_head_is_not_relabelled_accepted_parent(self):
+        with self.assertRaisesRegex(ValueError,'accepted-parent amendment'):
+            acceptance_intake.acceptance_from_evidence(acceptance_REPO,acceptance_intake.PINNED_HEAD,
+                acceptance_intake.PINNED_TREE,None,None)
+
+
+
+
 if __name__ == '__main__':
     unittest.main()

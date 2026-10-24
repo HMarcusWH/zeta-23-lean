@@ -1,0 +1,45 @@
+{
+  "status": "INSTALLED_REVIEWED_RUNTIME_HOOKS_POLICY_AND_FULL_REVIEW_STILL_UNSET",
+  "base_head": "20e19b66330dc5d9d04cb1f4c69672584063019f",
+  "files": [
+    {
+      "path": "research/RHRC/integration/opica/validate_contract.py",
+      "reviewed_proposal_sha256": "6bbf746f4cd7b258195dcb533d6e0f614ae6bae9806ae21ec562bf659625e2fc",
+      "installed_sha256": "6bbf746f4cd7b258195dcb533d6e0f614ae6bae9806ae21ec562bf659625e2fc",
+      "old_sha256": "37784b8c89d75f3aae1aed52ff2fe046c2614d78247edfd717f6b30a2d41953a",
+      "later_checkpoint_pin_preserved": false
+    },
+    {
+      "path": "research/RHRC/integration/opica_followup/build_receipt.py",
+      "reviewed_proposal_sha256": "462fd69d40529bbb4bfcab9d5c9c27d60635300e16525d97cb78304aad359962",
+      "installed_sha256": "462fd69d40529bbb4bfcab9d5c9c27d60635300e16525d97cb78304aad359962",
+      "old_sha256": "ae4421afe295cb3d0c7a7614da6cc0f4e43dee2904281812a233f70a990d1209",
+      "later_checkpoint_pin_preserved": false
+    },
+    {
+      "path": "research/RHRC/integration/opica_followup/exact_extension.py",
+      "reviewed_proposal_sha256": "2f86e41d277805eee7676f405374846dca5f22598e5a55b75c242fcd32ea4b21",
+      "installed_sha256": "2f86e41d277805eee7676f405374846dca5f22598e5a55b75c242fcd32ea4b21",
+      "old_sha256": null,
+      "later_checkpoint_pin_preserved": false
+    },
+    {
+      "path": "research/RHRC/integration/opica_followup/tests/test_receipt.py",
+      "reviewed_proposal_sha256": "d87aee352134fbe7c964bfd8f8261d8d9586289f08f60fe13a6319f1dcac110d",
+      "installed_sha256": "d87aee352134fbe7c964bfd8f8261d8d9586289f08f60fe13a6319f1dcac110d",
+      "old_sha256": "05178dec40cd432eb0d2d1707fc9f01073917e16d8b2e3d7f3827afbe6527872",
+      "later_checkpoint_pin_preserved": false
+    },
+    {
+      "path": "research/RHRC/integration/opica_followup/validate_contract.py",
+      "reviewed_proposal_sha256": "3ba937e1ee0e0ddbc553ebbff1103672a1bcc2cf3596029d2d88ccd8c534420e",
+      "installed_sha256": "deb90f129e68719cdcd6fbb9abda20cb6662e0b08f2839f0b81eb9026c5a7040",
+      "old_sha256": "b4df17bada43c21b3aa14153df412f15d04b39efe66f70657844ddbd5a4723c4",
+      "later_checkpoint_pin_preserved": true
+    }
+  ],
+  "actual_source_replay_required": true,
+  "full_release_accepted": false,
+  "RH": "OPEN",
+  "Step4": "OPEN"
+}

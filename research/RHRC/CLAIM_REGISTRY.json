@@ -2480,6 +2480,1201 @@
       "promotion_cap": "PROVED_UNCONDITIONAL",
       "scope": "NATIVE_ADAPTER",
       "note": "The coefficient envelopes, measurable cutoff and window restrictions remain assumptions. The actual native source bound is constructed; no native upper-rate or higher-source uniformity theorem is asserted."
+    },
+    {
+      "id": "OPICA_FOLLOWUP_SOURCEFAMILY_ZERO_EQ_ORIGINAL",
+      "theorem": "Zeta23.OPICAFollowup.sourceFamily_zero_eq_original",
+      "source": "Zeta23/OPICAFollowup/NativeSourceFamily.lean",
+      "statement": "sourceOrderFamily 0 = CCM.nativeOriginalSource; prime and integer fields at order zero equal the existing nativeOriginalPrimeField and nativeOriginalIntegerDrive.",
+      "dependencies": [],
+      "status": "PROVED_UNCONDITIONAL",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA_FOLLOWUP_SOURCEFAMILY_SUPPORT_SMOOTH_MOMENTS",
+      "theorem": "Zeta23.OPICAFollowup.sourceFamily_support_smooth_moments",
+      "source": "Zeta23/OPICAFollowup/NativeSourceFamily.lean",
+      "statement": "For every d>=0, j_d is smooth with support in [-s0,s0], the physical fields vanish below g=log 2-s0>0, and the required elementary moments vanish with their exact orders.",
+      "dependencies": [],
+      "status": "PROVED_UNCONDITIONAL",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA_FOLLOWUP_SOURCEFAMILY_LAPLACE_IDENTITY",
+      "theorem": "Zeta23.OPICAFollowup.sourceFamily_laplace_identity",
+      "source": "Zeta23/OPICAFollowup/NativeSourceTransforms.lean",
+      "statement": "J_d(z)=(z^2-1/4)^d J_0(z), with J_0 the actual original-source Laplace transform; J_d(p)!=0 at every actual right zero p=rho-1/2.",
+      "dependencies": [],
+      "status": "PROVED_UNCONDITIONAL",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA_FOLLOWUP_FORWARDKERNEL_PHYSICAL_LAPLACE",
+      "theorem": "Zeta23.OPICAFollowup.forwardKernel_physical_laplace",
+      "source": "Zeta23/OPICAFollowup/NativeSourceTransforms.lean",
+      "statement": "For d>=ell and Re z>1/2, the actual integral transform of R_d,ell equals -J_d(z) zeta(z+1/2)^ell zeta'(z+1/2); the RHS extends entirely after the elementary pole cancellation.",
+      "dependencies": [],
+      "status": "PROVED_UNCONDITIONAL",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA_FOLLOWUP_NATIVEPRIMEFIELD_VISIBLEPOLE",
+      "theorem": "Zeta23.OPICAFollowup.nativePrimeField_visiblePole",
+      "source": "Zeta23/OPICAFollowup/NativeSourceTransforms.lean",
+      "statement": "Construct SimplePoleData for the meromorphic continuation of the literal prime field with residue -m J_0(p), for every actual right zero of arbitrary multiplicity m. Prove the source/center identity.",
+      "dependencies": [],
+      "status": "PROVED_UNCONDITIONAL",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA_FOLLOWUP_NATIVEGENERATOR_TRANSFORM",
+      "theorem": "Zeta23.OPICAFollowup.nativeGenerator_transform",
+      "source": "Zeta23/OPICAFollowup/NativeFilters.lean",
+      "statement": "All seven named generator classes have their stated actual time/transform identities: source differentiation, delay, finite Euler, inverse Euler, rational and inverse rational, finite residual power, completion. Endpoint distributions stay in the correction state.",
+      "dependencies": [],
+      "status": "PROVED_UNCONDITIONAL",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA_FOLLOWUP_NATIVEGENERATOR_UNIT_OR_COMPLETION",
+      "theorem": "Zeta23.OPICAFollowup.nativeGenerator_unit_or_completion",
+      "source": "Zeta23/OPICAFollowup/NativeFilters.lean",
+      "statement": "At an actual right zero every generator multiplier is an analytic unit except its explicitly counted zeta completion factor; residual multipliers have value one there.",
+      "dependencies": [],
+      "status": "PROVED_UNCONDITIONAL",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA_FOLLOWUP_NATIVEWORD_CORRECTED_TRANSFORM",
+      "theorem": "Zeta23.OPICAFollowup.nativeWord_corrected_transform",
+      "source": "Zeta23/OPICAFollowup/NativeTransformationWords.lean",
+      "statement": "For every concrete finite native word, transformedField-correction = U Z^p originalPrimeTransform on the identified germs; U(pole)!=0; the time/source adapters agree.",
+      "dependencies": [
+        "OPICA_FOLLOWUP_NATIVEGENERATOR_TRANSFORM",
+        "OPICA_FOLLOWUP_NATIVEPRIMEFIELD_VISIBLEPOLE",
+        "OPICA_FOLLOWUP_SOURCEFAMILY_ZERO_EQ_ORIGINAL"
+      ],
+      "status": "PROVED_UNCONDITIONAL",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA_FOLLOWUP_NATIVEWORD_ORDER_AND_LEADING",
+      "theorem": "Zeta23.OPICAFollowup.nativeWord_order_and_leading",
+      "source": "Zeta23/OPICAFollowup/NativeTransformationWords.lean",
+      "statement": "The corrected order is p*m-1 and leading coefficient is -m J_0(lambda) U(lambda) (zeta^(m)(rho)/m!)^p; nonzero, including p=0 residue case.",
+      "dependencies": [
+        "OPICA_FOLLOWUP_NATIVEPRIMEFIELD_VISIBLEPOLE"
+      ],
+      "status": "PROVED_UNCONDITIONAL",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA_FOLLOWUP_NATIVEWORD_FIRST_NONZERO_DERIVATIVE",
+      "theorem": "Zeta23.OPICAFollowup.nativeWord_first_nonzero_derivative",
+      "source": "Zeta23/OPICAFollowup/NativeTransformationWords.lean",
+      "statement": "For p>=1 all lower derivatives vanish and the derivative of degree p*m-1 is (p*m-1)! times the exact normalized coefficient; retain all affine histories.",
+      "dependencies": [
+        "OPICA_FOLLOWUP_NATIVEPRIMEFIELD_VISIBLEPOLE",
+        "OPICA_L1_COMPLETION_LEADING_JET",
+        "OPICA_L1_COMPLETION_ORDER",
+        "OPICA_L1_COMPLETION_REGULARREPRESENTATIVE_ANALYTIC"
+      ],
+      "status": "PROVED_UNCONDITIONAL",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA_FOLLOWUP_NATIVEWORD_FACTOR_COSTS",
+      "theorem": "Zeta23.OPICAFollowup.nativeWord_factor_costs",
+      "source": "Zeta23/OPICAFollowup/NativeTransformationWords.lean",
+      "statement": "Price local leading-value changes from delays, source order, Euler factors, rational factors and completion count; derivative costs include factorial. No global operator bound inferred from a local unit.",
+      "dependencies": [
+        "OPICA_FOLLOWUP_NATIVEPRIMEFIELD_VISIBLEPOLE",
+        "OPICA_L1_COMPLETION_LEADING_JET"
+      ],
+      "status": "PROVED_UNCONDITIONAL",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA_FOLLOWUP_NORM_FIRST_LOG_COMPARISON",
+      "theorem": "Zeta23.OPICAFollowup.norm_first_log_comparison",
+      "source": "Zeta23/OPICAFollowup/NormFirstTransfer.lean",
+      "statement": "If F=S+B and q=||B||^2-l with q,l real, |log(1+||F||^2)-log(1+max(q,0))| <= 2 log(1+||S||)+log(1+|l|). Required premises: Real or complex Hilbert space; no native rate assumption.",
+      "dependencies": [],
+      "status": "PROVED_UNCONDITIONAL",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA_FOLLOWUP_NORM_FIRST_RATE_TRANSFER",
+      "theorem": "Zeta23.OPICAFollowup.norm_first_rate_transfer",
+      "source": "Zeta23/OPICAFollowup/NormFirstTransfer.lean",
+      "statement": "On a positive cofinal HorizonSchedule, subexponential ||S_n|| and l_n imply rate difference tends to zero; transfer existing limits and extended limsup/liminf.",
+      "dependencies": [
+        "OPICA_FOLLOWUP_NORM_FIRST_LOG_COMPARISON"
+      ],
+      "status": "PROVED_UNCONDITIONAL",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA_FOLLOWUP_ENERGY_ALLOCATION_BOUND",
+      "theorem": "Zeta23.OPICAFollowup.energy_allocation_bound",
+      "source": "Zeta23/OPICAFollowup/NormFirstTransfer.lean",
+      "statement": "||F||^2 <= 2||S||^2 + 2 max(q,0)+2|l| for the same exact decomposition.",
+      "dependencies": [],
+      "status": "PROVED_UNCONDITIONAL",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA_FOLLOWUP_ENERGY_ALLOCATION_RATE_LOWER",
+      "theorem": "Zeta23.OPICAFollowup.energy_allocation_rate_lower",
+      "source": "Zeta23/OPICAFollowup/NormFirstTransfer.lean",
+      "statement": "With low-mask subexponential and full energy rate Theta>0, liminf log(1+max(||S_n||^2,max(q_n,0)))/(2T_n)>=Theta; no branchwise equality or common maximizing branch asserted.",
+      "dependencies": [
+        "OPICA_FOLLOWUP_ENERGY_ALLOCATION_BOUND"
+      ],
+      "status": "PROVED_UNCONDITIONAL",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA_FOLLOWUP_JOINT_RECOVERY_IFF",
+      "theorem": "Zeta23.OPICAFollowup.joint_recovery_iff",
+      "source": "Zeta23/OPICAFollowup/JointObservation.lean",
+      "statement": "Recovery of ell from A=(P,C) exists iff ker P intersect ker C <= ker ell; construct the map on range and extend by orthogonal projection.",
+      "dependencies": [
+        "OPICA_O1_OBSERVATION_FACTORS_IFF_KER_LE"
+      ],
+      "status": "PROVED_UNCONDITIONAL",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA_FOLLOWUP_JOINT_RECOVERY_OPTIMAL_NORM",
+      "theorem": "Zeta23.OPICAFollowup.joint_recovery_optimal_norm",
+      "source": "Zeta23/OPICAFollowup/JointObservation.lean",
+      "statement": "The minimum norm is sup_{Ax!=0}|ell(x)|/||Ax||, with zero cost exactly for the zero target on the zero observation; an attained whole-space extension has that norm.",
+      "dependencies": [
+        "OPICA_O1_OBSERVATION_FACTORS_IFF_KER_LE"
+      ],
+      "status": "PROVED_UNCONDITIONAL",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA_FOLLOWUP_JOINT_RECOVERY_NOISE_BOUND",
+      "theorem": "Zeta23.OPICAFollowup.joint_recovery_noise_bound",
+      "source": "Zeta23/OPICAFollowup/JointObservation.lean",
+      "statement": "If epsilon>=0 and ||y-Ax||<=epsilon then |ell(x)-R y|<=optimalRecoveryCost*epsilon; include history noise in y.",
+      "dependencies": [],
+      "status": "PROVED_UNCONDITIONAL",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA_FOLLOWUP_APPROX_COMPATIBILITY_LEFT_NULL",
+      "theorem": "Zeta23.OPICAFollowup.approx_compatibility_left_null",
+      "source": "Zeta23/OPICAFollowup/JointObservation.lean",
+      "statement": "dist(b,range B)<=epsilon iff an epsilon-approximate solution exists; a unit left-null vector with |<v,b>|>epsilon excludes compatibility.",
+      "dependencies": [],
+      "status": "PROVED_UNCONDITIONAL",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA_FOLLOWUP_RECOVERY_SUBEXP_BUDGET",
+      "theorem": "Zeta23.OPICAFollowup.recovery_subexp_budget",
+      "source": "Zeta23/OPICAFollowup/JointObservation.lean",
+      "statement": "Subexponential recovery norm and observation/history error yield a subexponential recovered error on the same schedule; no quiet target from a quiet contrast alone.",
+      "dependencies": [
+        "OPICA_E2_SUBEXPALONG_MUL"
+      ],
+      "status": "PROVED_UNCONDITIONAL",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA_FOLLOWUP_LAURENT_COEFFICIENT_ERROR_BOUND",
+      "theorem": "Zeta23.OPICAFollowup.laurent_coefficient_error_bound",
+      "source": "Zeta23/OPICAFollowup/RobustLaurent.lean",
+      "statement": "On radius r>0, a common meromorphic neighborhood with only the stated central pole and sup error<=E yields |delta a_j|<=r^(-j) E for integer j>=-1.",
+      "dependencies": [],
+      "status": "PROVED_UNCONDITIONAL",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA_FOLLOWUP_LAURENT_OBSERVATION_SURVIVES",
+      "theorem": "Zeta23.OPICAFollowup.laurent_observation_survives",
+      "source": "Zeta23/OPICAFollowup/RobustLaurent.lean",
+      "statement": "If E<|a_j| r^j, the observed coefficient remains nonzero; equality-sharp monomial counterexample and j! derivative normalization retained.",
+      "dependencies": [
+        "OPICA_FOLLOWUP_LAURENT_COEFFICIENT_ERROR_BOUND"
+      ],
+      "status": "PROVED_UNCONDITIONAL",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA_FOLLOWUP_NATIVEWORD_CONTOUR_CONSUMER",
+      "theorem": "Zeta23.OPICAFollowup.nativeWord_contour_consumer",
+      "source": "Zeta23/OPICAFollowup/RobustLaurent.lean",
+      "statement": "Instantiate j=p*m-1 and the actual word coefficient, affine corrections and any recovery errors; conclude nonvanishing only under the explicit combined circle budget.",
+      "dependencies": [
+        "OPICA_FOLLOWUP_LAURENT_COEFFICIENT_ERROR_BOUND",
+        "OPICA_FOLLOWUP_LAURENT_OBSERVATION_SURVIVES",
+        "OPICA_FOLLOWUP_NATIVEGENERATOR_TRANSFORM",
+        "OPICA_FOLLOWUP_NATIVEPRIMEFIELD_VISIBLEPOLE",
+        "OPICA_FOLLOWUP_NATIVEWORD_CORRECTED_TRANSFORM",
+        "OPICA_FOLLOWUP_SOURCEFAMILY_ZERO_EQ_ORIGINAL"
+      ],
+      "status": "PROVED_UNCONDITIONAL",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA_FOLLOWUP_SOURCE_PRODUCT_VERTICAL_BOUND",
+      "theorem": "Zeta23.OPICAFollowup.source_product_vertical_bound",
+      "source": "Zeta23/OPICAFollowup/SourceVerticalBounds.lean",
+      "statement": "For every real sigma,tau, |Q0(sigma+i tau)|<=8 exp(s0|sigma|) exp(-cq sqrt|tau|), cq=(log 8)sqrt(s0)/4; prove passage through the normal product.",
+      "dependencies": [],
+      "status": "PROVED_UNCONDITIONAL",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA_FOLLOWUP_ZETA_LEFT_LINE_UNIFORM_BOUND",
+      "theorem": "Zeta23.OPICAFollowup.zeta_left_line_uniform_bound",
+      "source": "Zeta23/OPICAFollowup/ZetaLeftLineBounds.lean",
+      "statement": "Exists A0>=1, for all integer n>=1 and real tau: |zeta(-n+i tau)|+|zeta'(-n+i tau)|<=A0^(n+1)(n+2+|tau|)^(n+2).",
+      "dependencies": [],
+      "status": "PROVED_UNCONDITIONAL",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA_FOLLOWUP_FORWARDKERNEL_LEFT_CONTOUR_BUDGET",
+      "theorem": "Zeta23.OPICAFollowup.forwardKernel_left_contour_budget",
+      "source": "Zeta23/OPICAFollowup/ForwardLocalization.lean",
+      "statement": "For fixed d>=ell>=0 and derivative order k, prove the integral envelope C exp(D n) n^(2(ell+1)n+B) for all integer n>=1 before optimizing n.",
+      "dependencies": [
+        "OPICA_FOLLOWUP_SOURCE_PRODUCT_VERTICAL_BOUND",
+        "OPICA_FOLLOWUP_ZETA_LEFT_LINE_UNIFORM_BOUND"
+      ],
+      "status": "PROVED_UNCONDITIONAL",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA_FOLLOWUP_FORWARDKERNEL_DOUBLE_EXP_DECAY",
+      "theorem": "Zeta23.OPICAFollowup.forwardKernel_double_exp_decay",
+      "source": "Zeta23/OPICAFollowup/ForwardLocalization.lean",
+      "statement": "For fixed orders d>=ell,k>=0, exists A,c>0 independent of t with |R_d,ell^(k)(t)|<=A exp(-c exp(t/(2(ell+1)))) for every t>=0; compact initial interval included.",
+      "dependencies": [
+        "OPICA_FOLLOWUP_FORWARDKERNEL_LEFT_CONTOUR_BUDGET",
+        "OPICA_FOLLOWUP_SOURCE_PRODUCT_VERTICAL_BOUND",
+        "OPICA_FOLLOWUP_ZETA_LEFT_LINE_UNIFORM_BOUND"
+      ],
+      "status": "PROVED_UNCONDITIONAL",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA_FOLLOWUP_NATIVE_BINOMIAL_INVERSE_IDENTITY",
+      "theorem": "Zeta23.OPICAFollowup.native_binomial_inverse_identity",
+      "source": "Zeta23/OPICAFollowup/BalancedCoefficients.lean",
+      "statement": "For r>=2 and each real Y>=1, v_Q=s_r+c_r for the actual small/large Mobius split and free integer convolutions; prove local finiteness and original field identity.",
+      "dependencies": [],
+      "status": "PROVED_UNCONDITIONAL",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA_FOLLOWUP_BALANCED_COEFF_DIVISOR_BOUND",
+      "theorem": "Zeta23.OPICAFollowup.balanced_coeff_divisor_bound",
+      "source": "Zeta23/OPICAFollowup/BalancedCoefficients.lean",
+      "statement": "For ell=2r-1, |c_r(n)|<=d_ell(n) and |s_r(n)|<=(2^r-1)d_ell(n) for actual coefficients, retaining nonsquarefree total products.",
+      "dependencies": [],
+      "status": "PROVED_UNCONDITIONAL",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA_FOLLOWUP_LOG_SLACK_NATIVE_DECOMPOSITION",
+      "theorem": "Zeta23.OPICAFollowup.log_slack_native_decomposition",
+      "source": "Zeta23/OPICAFollowup/LogSlackBalance.lean",
+      "statement": "Fixed r>=2,d>=r-1,C>1,eta>=0,K>C+r eta+2r; Q(T) finite squarefree<=T^eta. With stated real Y,Z obtain exact F_d=E_T+B_T on [T-C log T,T], using actual signed tuples and physical product support.",
+      "dependencies": [
+        "OPICA_FOLLOWUP_NATIVE_BINOMIAL_INVERSE_IDENTITY"
+      ],
+      "status": "PROVED_UNCONDITIONAL",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA_FOLLOWUP_LOG_SLACK_TYPEI_ERROR",
+      "theorem": "Zeta23.OPICAFollowup.log_slack_typeI_error",
+      "source": "Zeta23/OPICAFollowup/LogSlackBalance.lean",
+      "statement": "Uniform eventual sup bound C1 T^(r eta) exp(T/2-c T^p), p=(K-C-r eta)/(2r)>1. Constants do not depend on future T or the allowed palette, whose full i log Q delay is paid.",
+      "dependencies": [
+        "OPICA_FOLLOWUP_FORWARDKERNEL_DOUBLE_EXP_DECAY",
+        "OPICA_FOLLOWUP_FORWARDKERNEL_LEFT_CONTOUR_BUDGET",
+        "OPICA_FOLLOWUP_SOURCE_PRODUCT_VERTICAL_BOUND",
+        "OPICA_FOLLOWUP_ZETA_LEFT_LINE_UNIFORM_BOUND"
+      ],
+      "status": "PROVED_UNCONDITIONAL",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA_FOLLOWUP_FIXED_TWO_FACTOR_PREPARATION",
+      "theorem": "Zeta23.OPICAFollowup.fixed_two_factor_preparation",
+      "source": "Zeta23/OPICAFollowup/LogSlackBalance.lean",
+      "statement": "Specialize r=2,d=1,C=2,Q=1,K=8: exp(T/2)T^-4<a,b<=exp(T/2-g)T^4 and sup error<=C1 exp(T/2-cT^(3/2)); source is Pj, not j.",
+      "dependencies": [
+        "OPICA_FOLLOWUP_FORWARDKERNEL_DOUBLE_EXP_DECAY",
+        "OPICA_FOLLOWUP_FORWARDKERNEL_LEFT_CONTOUR_BUDGET",
+        "OPICA_FOLLOWUP_LOG_SLACK_NATIVE_DECOMPOSITION",
+        "OPICA_FOLLOWUP_LOG_SLACK_TYPEI_ERROR",
+        "OPICA_FOLLOWUP_NATIVE_BINOMIAL_INVERSE_IDENTITY",
+        "OPICA_FOLLOWUP_SOURCE_PRODUCT_VERTICAL_BOUND",
+        "OPICA_FOLLOWUP_ZETA_LEFT_LINE_UNIFORM_BOUND"
+      ],
+      "status": "PROVED_UNCONDITIONAL",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA_FOLLOWUP_LOG_SLACK_BOTH_LOW_MASKS_SUBEXP",
+      "theorem": "Zeta23.OPICAFollowup.log_slack_both_low_masks_subexp",
+      "source": "Zeta23/OPICAFollowup/MaskedNativeRate.lean",
+      "statement": "For fixed orders/palette budget, both unabsorbed and absorbed-kernel low-mask budgets have logarithm<=sqrt T+O(log T); prove measurable native masks and exact regrouping.",
+      "dependencies": [
+        "OPICA_A1_DIVISOR_COUNT_HARMONIC_SUM_LE",
+        "OPICA_A1_DIVISOR_COUNT_SQRT_SUM_LE",
+        "OPICA_A1_DIVISOR_COUNT_SQUARE_LE",
+        "OPICA_A1_DIVISOR_COUNT_SUBMULTIPLICATIVE",
+        "OPICA_A2_LOW_PRIMITIVE_BILINEAR_BOUND",
+        "OPICA_A3_MASK_REGROUPING_DIFFERENCE",
+        "OPICA_FOLLOWUP_BALANCED_COEFF_DIVISOR_BOUND",
+        "OPICA_FOLLOWUP_FORWARDKERNEL_DOUBLE_EXP_DECAY",
+        "OPICA_FOLLOWUP_FORWARDKERNEL_LEFT_CONTOUR_BUDGET",
+        "OPICA_FOLLOWUP_SOURCE_PRODUCT_VERTICAL_BOUND",
+        "OPICA_FOLLOWUP_ZETA_LEFT_LINE_UNIFORM_BOUND"
+      ],
+      "status": "PROVED_UNCONDITIONAL",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA_FOLLOWUP_LOG_SLACK_MASKED_ENERGY_RATE_DIFFERENCE",
+      "theorem": "Zeta23.OPICAFollowup.log_slack_masked_energy_rate_difference",
+      "source": "Zeta23/OPICAFollowup/MaskedNativeRate.lean",
+      "statement": "Difference of retained positive-part rate and full physical F_d window rate tends to zero; no claim yet identifying either with Theta.",
+      "dependencies": [
+        "OPICA_A1_DIVISOR_COUNT_HARMONIC_SUM_LE",
+        "OPICA_A1_DIVISOR_COUNT_SQRT_SUM_LE",
+        "OPICA_A1_DIVISOR_COUNT_SQUARE_LE",
+        "OPICA_A1_DIVISOR_COUNT_SUBMULTIPLICATIVE",
+        "OPICA_A2_LOW_PRIMITIVE_BILINEAR_BOUND",
+        "OPICA_A3_MASK_REGROUPING_DIFFERENCE",
+        "OPICA_FOLLOWUP_BALANCED_COEFF_DIVISOR_BOUND",
+        "OPICA_FOLLOWUP_FORWARDKERNEL_DOUBLE_EXP_DECAY",
+        "OPICA_FOLLOWUP_FORWARDKERNEL_LEFT_CONTOUR_BUDGET",
+        "OPICA_FOLLOWUP_LOG_SLACK_BOTH_LOW_MASKS_SUBEXP",
+        "OPICA_FOLLOWUP_LOG_SLACK_TYPEI_ERROR",
+        "OPICA_FOLLOWUP_NATIVE_BINOMIAL_INVERSE_IDENTITY",
+        "OPICA_FOLLOWUP_NORM_FIRST_LOG_COMPARISON",
+        "OPICA_FOLLOWUP_SOURCE_PRODUCT_VERTICAL_BOUND",
+        "OPICA_FOLLOWUP_ZETA_LEFT_LINE_UNIFORM_BOUND"
+      ],
+      "status": "PROVED_UNCONDITIONAL",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA_FOLLOWUP_NATIVE_ZERO_COUNT_SUMMABILITY",
+      "theorem": "Zeta23.OPICAFollowup.native_zero_count_summability",
+      "source": "Zeta23/OPICAFollowup/NativeExplicitFormula.lean",
+      "statement": "Bind zetaZeroConfig, not xi-prime zeros; derive weighted zero summability from actual zeta_local_zero_count, with analytic multiplicities and both imaginary signs.",
+      "dependencies": [],
+      "status": "PROVED_UNCONDITIONAL",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA_FOLLOWUP_NATIVE_SOURCE_EXPLICIT_FORMULA",
+      "theorem": "Zeta23.OPICAFollowup.native_source_explicit_formula",
+      "source": "Zeta23/OPICAFollowup/NativeExplicitFormula.lean",
+      "statement": "For t>s0 prove actual F_d equals the stated absolutely convergent nontrivial and trivial-zero series; retain the canceled elementary term and all signs/source shifts.",
+      "dependencies": [],
+      "status": "PROVED_UNCONDITIONAL",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA_FOLLOWUP_NATIVE_ZERO_SUP_BOUNDS",
+      "theorem": "Zeta23.OPICAFollowup.native_zero_sup_bounds",
+      "source": "Zeta23/OPICAFollowup/NativeExplicitFormula.lean",
+      "statement": "Define Theta as supremum of positive right displacements of actual nontrivial zeros, prove 0<=Theta<=1/2 and the correct supremum-selection property; no maximal zero.",
+      "dependencies": [],
+      "status": "PROVED_UNCONDITIONAL",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA_FOLLOWUP_SOURCE_ORDER_UNIFORM_NORMS",
+      "theorem": "Zeta23.OPICAFollowup.source_order_uniform_norms",
+      "source": "Zeta23/OPICAFollowup/UniformSourceBounds.lean",
+      "statement": "For d>=0 and k=0,1,2, norms of j_d^(k) and ||U_d||_2 are <=exp(C(d+1)log(d+2)) with source-fixed C; physical moments supply continuum cancellation.",
+      "dependencies": [],
+      "status": "PROVED_UNCONDITIONAL",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA_FOLLOWUP_NATIVE_FIELD_THETA_ENVELOPE",
+      "theorem": "Zeta23.OPICAFollowup.native_field_theta_envelope",
+      "source": "Zeta23/OPICAFollowup/UniformSourceBounds.lean",
+      "statement": "|F_d(t)|<=C_d exp(Theta t) for t>=0 and log(1+C_d)<=C(d+1)log(d+2); independently prove coefficients, trivial tail and finite initial interval bounds.",
+      "dependencies": [
+        "OPICA_FOLLOWUP_NATIVE_SOURCE_EXPLICIT_FORMULA",
+        "OPICA_FOLLOWUP_NATIVE_ZERO_COUNT_SUMMABILITY",
+        "OPICA_FOLLOWUP_NATIVE_ZERO_SUP_BOUNDS"
+      ],
+      "status": "PROVED_UNCONDITIONAL",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA_FOLLOWUP_AUX_COMPLETION_ACTUAL_TRANSFORM",
+      "theorem": "Zeta23.OPICAFollowup.aux_completion_actual_transform",
+      "source": "Zeta23/OPICAFollowup/AuxiliaryCompletions.lean",
+      "statement": "Prove the explicit beta-polynomial filter transforms to r_k=(z-1/2)/prod_{j=k+1}^{2k+2}(z+j+1/2), a_k=c_k*N and its true transform domain.",
+      "dependencies": [
+        "OPICA_B1_LAPLACE_HOLOMORPHIC_OF_WEIGHTED_L2",
+        "OPICA_FOLLOWUP_AUX_COMPLETION_UNIFORM_DECAY"
+      ],
+      "status": "PROVED_UNCONDITIONAL",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA_FOLLOWUP_AUX_COMPLETION_UNIFORM_DECAY",
+      "theorem": "Zeta23.OPICAFollowup.aux_completion_uniform_decay",
+      "source": "Zeta23/OPICAFollowup/AuxiliaryCompletions.lean",
+      "statement": "For integer k>=1, |a_k(t)|<=A_k exp(-(k+1/2)t), A_k=2 zeta(k+1)(1+2^(3k+4))/(2pi)^(k+1); retain endpoint atom and prove summability.",
+      "dependencies": [],
+      "status": "PROVED_UNCONDITIONAL",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA_FOLLOWUP_AUX_COMPLETION_RATIO_BOUNDS",
+      "theorem": "Zeta23.OPICAFollowup.aux_completion_ratio_bounds",
+      "source": "Zeta23/OPICAFollowup/AuxiliaryCompletions.lean",
+      "statement": "For fixed actual nontrivial right coordinate p, ||c_k||_1<=2/(k+1)!, ||c_k||_1/|r_k(p)|<=exp(Cp(k+1)), |r_k(p)|/A_k>=exp(-k log(k+1)-Cp(k+1)); constants uniform in k.",
+      "dependencies": [],
+      "status": "PROVED_UNCONDITIONAL",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA_FOLLOWUP_NATIVE_AUXILIARY_TOP_MOMENT",
+      "theorem": "Zeta23.OPICAFollowup.native_auxiliary_top_moment",
+      "source": "Zeta23/OPICAFollowup/MultiplicityTail.lean",
+      "statement": "Actual y_k,d=c_k*U_d has vanishing moments below zero multiplicity minus one and exact top unnormalized derivative (-1)^m r_k(p)J_d(p) zeta^(m)(rho).",
+      "dependencies": [],
+      "status": "PROVED_UNCONDITIONAL",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA_FOLLOWUP_LAGUERRE_TAIL_NORM",
+      "theorem": "Zeta23.OPICAFollowup.laguerre_tail_norm",
+      "source": "Zeta23/OPICAFollowup/MultiplicityTail.lean",
+      "statement": "Degree m-1 monic shifted Laguerre times exp(-conj(p)t) on [T,infinity) has norm exp(-delta T)(m-1)!/(2delta)^(m-1/2), with correct shift and conjugation.",
+      "dependencies": [],
+      "status": "PROVED_UNCONDITIONAL",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA_FOLLOWUP_NATIVE_AUXILIARY_TAIL_RESIDUAL_LOWER",
+      "theorem": "Zeta23.OPICAFollowup.native_auxiliary_tail_residual_lower",
+      "source": "Zeta23/OPICAFollowup/MultiplicityTail.lean",
+      "statement": "Actual finite-truncation residual in L2 has tail norm >=D_rho,d |r_k(p)| exp(delta T), D=(2delta)^(m-1/2)|J_d(p)zeta^(m)(rho)|/(m-1)!.",
+      "dependencies": [
+        "OPICA_B1_LAPLACE_HOLOMORPHIC_OF_WEIGHTED_L2",
+        "OPICA_FOLLOWUP_AUX_COMPLETION_ACTUAL_TRANSFORM",
+        "OPICA_FOLLOWUP_AUX_COMPLETION_UNIFORM_DECAY",
+        "OPICA_FOLLOWUP_LAGUERRE_TAIL_NORM"
+      ],
+      "status": "PROVED_UNCONDITIONAL",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA_FOLLOWUP_NATIVE_TERMINAL_MEMORY_LOWER",
+      "theorem": "Zeta23.OPICAFollowup.native_terminal_memory_lower",
+      "source": "Zeta23/OPICAFollowup/MultiplicityTail.lean",
+      "statement": "Prove exact A6 with positive part and ||y|| subtraction, without assuming global weighted L2 membership of the prime field.",
+      "dependencies": [
+        "OPICA_B1_LAPLACE_HOLOMORPHIC_OF_WEIGHTED_L2",
+        "OPICA_FOLLOWUP_AUX_COMPLETION_ACTUAL_TRANSFORM",
+        "OPICA_FOLLOWUP_AUX_COMPLETION_UNIFORM_DECAY",
+        "OPICA_FOLLOWUP_LAGUERRE_TAIL_NORM"
+      ],
+      "status": "PROVED_UNCONDITIONAL",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA_FOLLOWUP_NATIVE_FIXED_SOURCE_WINDOW_RATE",
+      "theorem": "Zeta23.OPICAFollowup.native_fixed_source_window_rate",
+      "source": "Zeta23/OPICAFollowup/NativeWindowRate.lean",
+      "statement": "For each fixed d>=0,C>1, Tendsto [log(1+integral_[T-C log T,T]|F_d|^2)/(2T)] atTop (nhds Theta), including the Theta=0 case and arbitrary zero multiplicity.",
+      "dependencies": [
+        "OPICA_B1_LAPLACE_HOLOMORPHIC_OF_WEIGHTED_L2",
+        "OPICA_FOLLOWUP_AUX_COMPLETION_ACTUAL_TRANSFORM",
+        "OPICA_FOLLOWUP_AUX_COMPLETION_RATIO_BOUNDS",
+        "OPICA_FOLLOWUP_AUX_COMPLETION_UNIFORM_DECAY",
+        "OPICA_FOLLOWUP_LAGUERRE_TAIL_NORM",
+        "OPICA_FOLLOWUP_NATIVE_FIELD_THETA_ENVELOPE",
+        "OPICA_FOLLOWUP_NATIVE_SOURCE_EXPLICIT_FORMULA",
+        "OPICA_FOLLOWUP_NATIVE_TERMINAL_MEMORY_LOWER",
+        "OPICA_FOLLOWUP_NATIVE_ZERO_COUNT_SUMMABILITY",
+        "OPICA_FOLLOWUP_NATIVE_ZERO_SUP_BOUNDS",
+        "OPICA_FOLLOWUP_SOURCE_ORDER_UNIFORM_NORMS"
+      ],
+      "status": "PROVED_UNCONDITIONAL",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA_FOLLOWUP_NATIVE_SLOW_SOURCE_WINDOW_RATE",
+      "theorem": "Zeta23.OPICAFollowup.native_slow_source_window_rate",
+      "source": "Zeta23/OPICAFollowup/MovingSourceWindowRate.lean",
+      "statement": "For any real cofinal horizons T_n (positive eventually; normalize a finite prefix for HorizonSchedule) and integer d_n with d_n log(d_n+2)=o(T_n), fixed C>1, the actual F_d_n window energy rate tends to Theta; source factor both signs priced.",
+      "dependencies": [
+        "OPICA_B1_LAPLACE_HOLOMORPHIC_OF_WEIGHTED_L2",
+        "OPICA_FOLLOWUP_AUX_COMPLETION_ACTUAL_TRANSFORM",
+        "OPICA_FOLLOWUP_AUX_COMPLETION_RATIO_BOUNDS",
+        "OPICA_FOLLOWUP_AUX_COMPLETION_UNIFORM_DECAY",
+        "OPICA_FOLLOWUP_LAGUERRE_TAIL_NORM",
+        "OPICA_FOLLOWUP_NATIVE_FIELD_THETA_ENVELOPE",
+        "OPICA_FOLLOWUP_NATIVE_SOURCE_EXPLICIT_FORMULA",
+        "OPICA_FOLLOWUP_NATIVE_TERMINAL_MEMORY_LOWER",
+        "OPICA_FOLLOWUP_NATIVE_ZERO_COUNT_SUMMABILITY",
+        "OPICA_FOLLOWUP_NATIVE_ZERO_SUP_BOUNDS",
+        "OPICA_FOLLOWUP_SOURCE_ORDER_UNIFORM_NORMS"
+      ],
+      "status": "PROVED_UNCONDITIONAL",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA_FOLLOWUP_COMPLEX_LOCAL_MEASURE_EMBEDDING_FAITHFUL",
+      "theorem": "Zeta23.OPICAFollowup.complex_local_measure_embedding_faithful",
+      "source": "Zeta23/OPICAFollowup/ComplexLocalMeasures.lean",
+      "statement": "Construct faithful locally finite complex measures/distributions with positive total-variation control and show real parts yield P0 Jordan measures; prove local-TV convergence implies local test convergence and compatible tempered identity under growth.",
+      "dependencies": [],
+      "status": "PROVED_UNCONDITIONAL",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA_FOLLOWUP_DILATED_COMB_FOURIER",
+      "theorem": "Zeta23.OPICAFollowup.dilated_comb_fourier",
+      "source": "Zeta23/OPICAFollowup/DilatedComb.lean",
+      "statement": "F(D_t)=D_-t with coefficient exp(t/2) and heat convention exp(-2pi i x xi); establish actual Schwartz convergence and point-count bound.",
+      "dependencies": [],
+      "status": "PROVED_UNCONDITIONAL",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA_FOLLOWUP_WEIGHTED_MIXTURE_EXISTS_FOURIER",
+      "theorem": "Zeta23.OPICAFollowup.weighted_mixture_exists_fourier",
+      "source": "Zeta23/OPICAFollowup/WeightedMixing.lean",
+      "statement": "Under integral exp(a|t|) d|sigma|<infinity, a>1/2, construct actual locally finite linear-growth mixture and Fourier-reflection law, with its exact origin atom.",
+      "dependencies": [
+        "OPICA_FOLLOWUP_DILATED_COMB_FOURIER"
+      ],
+      "status": "PROVED_UNCONDITIONAL",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA_FOLLOWUP_WEIGHTED_MOBIUS_INVERSE",
+      "theorem": "Zeta23.OPICAFollowup.weighted_mobius_inverse",
+      "source": "Zeta23/OPICAFollowup/WeightedMixing.lean",
+      "statement": "In the stated weighted measure algebra prove eta=N*sigma and sigma=M_mu*eta, using absolute Fubini; norm M_mu is zeta(a+1/2)/zeta(2a+1).",
+      "dependencies": [
+        "OPICA_FOLLOWUP_DILATED_COMB_FOURIER"
+      ],
+      "status": "PROVED_UNCONDITIONAL",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA_FOLLOWUP_WEIGHTED_MIXTURE_SHARP_GAP",
+      "theorem": "Zeta23.OPICAFollowup.weighted_mixture_sharp_gap",
+      "source": "Zeta23/OPICAFollowup/WeightedMixing.lean",
+      "statement": "Self-dual mixture with gap (-1,1) except possible origin is c*integerComb; zero origin forces zero. No positivity premise, but strict a>1/2 retained.",
+      "dependencies": [
+        "OPICA_FOLLOWUP_DILATED_COMB_FOURIER",
+        "OPICA_FOLLOWUP_WEIGHTED_MOBIUS_INVERSE"
+      ],
+      "status": "PROVED_UNCONDITIONAL",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA_FOLLOWUP_WEIGHTED_GAP_LEAKAGE",
+      "theorem": "Zeta23.OPICAFollowup.weighted_gap_leakage",
+      "source": "Zeta23/OPICAFollowup/WeightedMixing.lean",
+      "statement": "Prove exact weighted variation leakage and continuous-density supremum counterpart, including endpoint b supremum distinct from a<b measure integrability.",
+      "dependencies": [
+        "OPICA_FOLLOWUP_DILATED_COMB_FOURIER",
+        "OPICA_FOLLOWUP_WEIGHTED_MOBIUS_INVERSE"
+      ],
+      "status": "PROVED_UNCONDITIONAL",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA_FOLLOWUP_NEAR_GAP_MASS_BOUND",
+      "theorem": "Zeta23.OPICAFollowup.near_gap_mass_bound",
+      "source": "Zeta23/OPICAFollowup/NearGapLimits.lean",
+      "statement": "For gap a in (0,1], fixed R>=1,d in (0,1/2], positivity off Z and self-duality give mass E_R,d <=pi^2 R^2 (1-a)|nu|([-1,1])/(4d^2).",
+      "dependencies": [],
+      "status": "PROVED_UNCONDITIONAL",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA_FOLLOWUP_NEAR_GAP_CONTROLLED_LIMIT_ZERO",
+      "theorem": "Zeta23.OPICAFollowup.near_gap_controlled_limit_zero",
+      "source": "Zeta23/OPICAFollowup/NearGapLimits.lean",
+      "statement": "With one common linear total-variation constant and a_n->1, all Schwartz pairings tend to zero; prove compact-limit extraction and uniform tails, not total-variation convergence.",
+      "dependencies": [
+        "OPICA_FOLLOWUP_NEAR_GAP_MASS_BOUND"
+      ],
+      "status": "PROVED_UNCONDITIONAL",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA_FOLLOWUP_DILATION_NEAR_GAP_FAMILY",
+      "theorem": "Zeta23.OPICAFollowup.dilation_near_gap_family",
+      "source": "Zeta23/OPICAFollowup/NearGapLimits.lean",
+      "statement": "For 0<L<log2, nu_L=D_L+D_-L-2cosh(L/2)D0 is nonzero, even selfdual, origin0, gap e^-L and offlattice positive with the stated growth.",
+      "dependencies": [
+        "OPICA_FOLLOWUP_DILATED_COMB_FOURIER"
+      ],
+      "status": "PROVED_UNCONDITIONAL",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA_FOLLOWUP_DILATION_NORMALIZED_LIMIT_NOT_MEASURE",
+      "theorem": "Zeta23.OPICAFollowup.dilation_normalized_limit_not_measure",
+      "source": "Zeta23/OPICAFollowup/NearGapLimits.lean",
+      "statement": "nu_L/L^2 converges on Schwartz tests to sum_n(n^2 delta_n_second -2n delta_n_first); limit nonzero and not order zero.",
+      "dependencies": [],
+      "status": "PROVED_UNCONDITIONAL",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA_FOLLOWUP_RENORMALIZED_COPOISSON_TEMPERED_FAMILY",
+      "theorem": "Zeta23.OPICAFollowup.renormalized_copoisson_tempered_family",
+      "source": "Zeta23/OPICAFollowup/RenormalizedCoPoisson.lean",
+      "statement": "K_t=D_t+D_-t-exp(t/2)(delta0+dx), integral exp(-lambda t)K_t is an entire tempered-distribution-valued family, by actual cancellation on Schwartz tests.",
+      "dependencies": [
+        "OPICA_FOLLOWUP_DILATED_COMB_FOURIER"
+      ],
+      "status": "PROVED_UNCONDITIONAL",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA_FOLLOWUP_RENORMALIZED_COPOISSON_ORDER_ZERO",
+      "theorem": "Zeta23.OPICAFollowup.renormalized_copoisson_order_zero",
+      "source": "Zeta23/OPICAFollowup/RenormalizedCoPoisson.lean",
+      "statement": "On 0<Re rho<1 prove cutoff local-TV convergence to rho^-1 delta0+[S_rho(|x|)+zeta(rho)|x|^(rho-1)+(1-rho)^-1]dx, including origin correction.",
+      "dependencies": [
+        "OPICA_FOLLOWUP_DILATED_COMB_FOURIER"
+      ],
+      "status": "PROVED_UNCONDITIONAL",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA_FOLLOWUP_ZERO_MEASURE_EXACT_PROPERTIES",
+      "theorem": "Zeta23.OPICAFollowup.zero_measure_exact_properties",
+      "source": "Zeta23/OPICAFollowup/RenormalizedCoPoisson.lean",
+      "statement": "For actual nontrivial rho!=1/2, normalized complex measure has exact unit gap, origin0, even selfduality, linear variation and atom -1 at 1; its real part has the corresponding real properties.",
+      "dependencies": [
+        "OPICA_FOLLOWUP_DILATED_COMB_FOURIER"
+      ],
+      "status": "PROVED_UNCONDITIONAL",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA_FOLLOWUP_ZERO_MEASURE_FIRST_CELL_SIGN",
+      "theorem": "Zeta23.OPICAFollowup.zero_measure_first_cell_sign",
+      "source": "Zeta23/OPICAFollowup/RenormalizedCoPoisson.lean",
+      "statement": "Prove explicit first-cell negative value for |gamma|>3pi/(2log2), and both-sign conclusion for every nonzero real scalar projection at off-line zeros when |gamma|>2pi/log2; do not remove height/domain qualifiers.",
+      "dependencies": [],
+      "status": "PROVED_UNCONDITIONAL",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA_FOLLOWUP_FINITE_SUM_EULER_MACLAURIN_UNIFORM",
+      "theorem": "Zeta23.OPICAFollowup.finite_sum_euler_maclaurin_uniform",
+      "source": "Zeta23/OPICAFollowup/ProfileEulerMaclaurin.lean",
+      "statement": "Prove finite-sum expansion zeta(s)+x^(1-s)/(1-s)-B1({x})x^-s-s B2({x})x^(-s-1)/2+O_s(x^-Re(s)-2), locally uniformly in the required parameter domain; right integer endpoint retained.",
+      "dependencies": [],
+      "status": "PROVED_UNCONDITIONAL",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA_FOLLOWUP_ZERO_PROFILE_REGULAR_SELFDUAL",
+      "theorem": "Zeta23.OPICAFollowup.zero_profile_regular_selfdual",
+      "source": "Zeta23/OPICAFollowup/ZeroProfiles.lean",
+      "statement": "h is even continuous, L1 and L2, equals1 on [-1,1], Fourier-self-dual, with integral on positive halfline1/2; actual zeta zero and functional equation used.",
+      "dependencies": [
+        "OPICA_FOLLOWUP_DILATED_COMB_FOURIER"
+      ],
+      "status": "PROVED_UNCONDITIONAL",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA_FOLLOWUP_ZERO_PROFILE_TAIL_AND_JUMPS",
+      "theorem": "Zeta23.OPICAFollowup.zero_profile_tail_and_jumps",
+      "source": "Zeta23/OPICAFollowup/ZeroProfiles.lean",
+      "statement": "h= kappa B2({x})/(2x^2)+O_rho(x^-3), exact differentiated finite sums imply h'=O(x^-2) between integers and h'(n+)-h'(n-)=-kappa/n^2; xh' belongs L2.",
+      "dependencies": [],
+      "status": "PROVED_UNCONDITIONAL",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA_FOLLOWUP_LOG_UNITARY_FORM_IDENTITY",
+      "theorem": "Zeta23.OPICAFollowup.log_unitary_form_identity",
+      "source": "Zeta23/OPICAFollowup/LogFourierSobolev.lean",
+      "statement": "For the stated actual form domain, integral x^2|h'|^2 = integral |psi'|^2+(1/4)integral |h|^2 with psi=exp(t/2)h(exp t); prove unitary L2 conversion and weak derivative statement.",
+      "dependencies": [],
+      "status": "PROVED_UNCONDITIONAL",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA_FOLLOWUP_LOG_FOURIER_PLANCHEREL",
+      "theorem": "Zeta23.OPICAFollowup.log_fourier_plancherel",
+      "source": "Zeta23/OPICAFollowup/LogFourierSobolev.lean",
+      "statement": "Establish exp(-i xi t) convention and Plancherel factor1/(2pi), differentiation and continuous H^-1,H^1 pairings used by the actual force.",
+      "dependencies": [],
+      "status": "PROVED_UNCONDITIONAL",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA_FOLLOWUP_ZERO_PROFILE_FORCED_EULER",
+      "theorem": "Zeta23.OPICAFollowup.zero_profile_forced_euler",
+      "source": "Zeta23/OPICAFollowup/ForcedEuler.lean",
+      "statement": "On positive axis, -(x^2h')'=kappa(h-1+sum positive_integer_delta) in distributions; actual jumps produce atoms and no delta derivative.",
+      "dependencies": [],
+      "status": "PROVED_UNCONDITIONAL",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA_FOLLOWUP_ZERO_PROFILE_NOT_HOMOGENEOUS_OPERATOR_VECTOR",
+      "theorem": "Zeta23.OPICAFollowup.zero_profile_not_homogeneous_operator_vector",
+      "source": "Zeta23/OPICAFollowup/ForcedEuler.lean",
+      "statement": "Actual nonzero atoms prevent its distributional Euler image being an L2 function and hence prevent using the homogeneous self-adjoint eigenvalue inference; form identity retained.",
+      "dependencies": [
+        "OPICA_FOLLOWUP_LOG_UNITARY_FORM_IDENTITY"
+      ],
+      "status": "PROVED_UNCONDITIONAL",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA_FOLLOWUP_NATIVE_SAMPLING_GRAM_IDENTITY",
+      "theorem": "Zeta23.OPICAFollowup.native_sampling_gram_identity",
+      "source": "Zeta23/OPICAFollowup/SamplingCompatibility.lean",
+      "statement": "Qij=kappa_i(Nij+conj bj)=conj kappa_j(Nij+bi) after proving all sample sums, integrals and boundary limits; retain linear-first pairing convention explicitly translated to Lean.",
+      "dependencies": [
+        "OPICA_FOLLOWUP_DILATED_COMB_FOURIER"
+      ],
+      "status": "PROVED_UNCONDITIONAL",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA_FOLLOWUP_NATIVE_SAMPLING_FORM_POSITIVE",
+      "theorem": "Zeta23.OPICAFollowup.native_sampling_form_positive",
+      "source": "Zeta23/OPICAFollowup/SamplingCompatibility.lean",
+      "statement": "N,Q and Q-N/4 are PSD for any finite actual profiles; divided-difference identity only when denominator nonzero; undivided version retained at conjugate coincidence.",
+      "dependencies": [
+        "OPICA_FOLLOWUP_DILATED_COMB_FOURIER",
+        "OPICA_FOLLOWUP_LOG_UNITARY_FORM_IDENTITY",
+        "OPICA_FOLLOWUP_NATIVE_SAMPLING_GRAM_IDENTITY"
+      ],
+      "status": "PROVED_UNCONDITIONAL",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA_FOLLOWUP_COPOISSON_ZERO_JETS_MEASURES",
+      "theorem": "Zeta23.OPICAFollowup.copoisson_zero_jets_measures",
+      "source": "Zeta23/OPICAFollowup/CoPoissonJets.lean",
+      "statement": "For derivative index k<multiplicity(rho), normalized kappa jets retain genuine local measures, gap/origin, even selfduality and linear variation; prove parameter limits and differentiated forced chain.",
+      "dependencies": [
+        "OPICA_FOLLOWUP_DILATED_COMB_FOURIER"
+      ],
+      "status": "PROVED_UNCONDITIONAL",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA_FOLLOWUP_PROFILE_JET_CONFLUENT_DETERMINANT",
+      "theorem": "Zeta23.OPICAFollowup.profile_jet_confluent_determinant",
+      "source": "Zeta23/OPICAFollowup/ConfluentProfiles.lean",
+      "statement": "For distinct nonzero kappa_j and multiplicities m_j, determinant=(-1)^(M(M-1)/2)*prod kappa_j^m_j*prod_{i<j}(kappa_j-kappa_i)^(m_i*m_j), with normalized jets.",
+      "dependencies": [],
+      "status": "PROVED_UNCONDITIONAL",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA_FOLLOWUP_FINITE_ZERO_JET_INDEPENDENT",
+      "theorem": "Zeta23.OPICAFollowup.finite_zero_jet_independent",
+      "source": "Zeta23/OPICAFollowup/ConfluentProfiles.lean",
+      "statement": "Independence of the actual finite jet measures follows from their first-cell matrix; do not count reflected rho and1-rho as different kappa nodes.",
+      "dependencies": [],
+      "status": "PROVED_UNCONDITIONAL",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA_FOLLOWUP_FINITE_ZERO_SPAN_POSITIVE_ONLY_ZERO",
+      "theorem": "Zeta23.OPICAFollowup.finite_zero_span_positive_only_zero",
+      "source": "Zeta23/OPICAFollowup/FiniteSpanSeparation.lean",
+      "statement": "Any real finite combination nonnegative off Z is zero, and on an independent real basis all coefficients are zero; this does not classify arbitrary infinite/nonlinear families.",
+      "dependencies": [
+        "OPICA_FOLLOWUP_DILATED_COMB_FOURIER",
+        "OPICA_H1_SIGNED_SHARP_GAP_SEPARATOR"
+      ],
+      "status": "PROVED_UNCONDITIONAL",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA_FOLLOWUP_FIXED_BASIS_NEGATIVE_MASS_BUDGET",
+      "theorem": "Zeta23.OPICAFollowup.fixed_basis_negative_mass_budget",
+      "source": "Zeta23/OPICAFollowup/FiniteSpanSeparation.lean",
+      "statement": "For each fixed independent real basis exists c_basis>0 such that global sinc-weighted negative mass >=c_basis*coefficient Euclidean norm; no uniform collision/growing-set constant.",
+      "dependencies": [
+        "OPICA_FOLLOWUP_DILATED_COMB_FOURIER",
+        "OPICA_FOLLOWUP_FINITE_ZERO_SPAN_POSITIVE_ONLY_ZERO",
+        "OPICA_H1_SIGNED_SHARP_GAP_SEPARATOR"
+      ],
+      "status": "PROVED_UNCONDITIONAL",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA_FOLLOWUP_FIRST_CELL_NEGATIVE_MASS_COST",
+      "theorem": "Zeta23.OPICAFollowup.first_cell_negative_mass_cost",
+      "source": "Zeta23/OPICAFollowup/FirstCellCost.lean",
+      "statement": "For |delta|<1/2,|gamma|>=16 on u in [4pi/(3|gamma|),5pi/(3|gamma|)], density<=-|gamma|exp(-u/2)/2; negative mass>=pi/6 and sinc-weighted mass>=8pi/(27gamma^2).",
+      "dependencies": [],
+      "status": "PROVED_UNCONDITIONAL",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA_FOLLOWUP_SQUARE_FOURIER_DEFECT",
+      "theorem": "Zeta23.OPICAFollowup.square_fourier_defect",
+      "source": "Zeta23/OPICAFollowup/SquareDefect.lean",
+      "statement": "For even continuous selfdual nonzero h in L1 intersect L2, h=A on[-1,1] and tending0, tau=|A-h|^2 dx-|A|^2 comb_nonzero has defect (h*conj h-|h|^2)dx and exact gap/sign/origin.",
+      "dependencies": [
+        "OPICA_FOLLOWUP_DILATED_COMB_FOURIER"
+      ],
+      "status": "PROVED_UNCONDITIONAL",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA_FOLLOWUP_SQUARE_DEFECT_ORIGIN_POSITIVE",
+      "theorem": "Zeta23.OPICAFollowup.square_defect_origin_positive",
+      "source": "Zeta23/OPICAFollowup/SquareDefect.lean",
+      "statement": "The continuous C0 defect has value ||h||_2^2-|A|^2>0, including A=0 when h!=0; retain complex conjugation.",
+      "dependencies": [],
+      "status": "PROVED_UNCONDITIONAL",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA_FOLLOWUP_SQUARE_NO_LATTICE_REPAIR",
+      "theorem": "Zeta23.OPICAFollowup.square_no_lattice_repair",
+      "source": "Zeta23/OPICAFollowup/SquareDefect.lean",
+      "statement": "No tempered lattice-supported order-zero correction can make tau selfdual; prove periodicity/atomic-versus-continuous argument, not an assumed absence of corrections.",
+      "dependencies": [
+        "OPICA_FOLLOWUP_DILATED_COMB_FOURIER",
+        "OPICA_FOLLOWUP_SQUARE_DEFECT_ORIGIN_POSITIVE"
+      ],
+      "status": "PROVED_UNCONDITIONAL",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA_FOLLOWUP_SQUARE_SELFDUAL_PROJECTION_FILLS_GAP",
+      "theorem": "Zeta23.OPICAFollowup.square_selfdual_projection_fills_gap",
+      "source": "Zeta23/OPICAFollowup/SquareDefect.lean",
+      "statement": "(tau+F tau)/2 is selfdual but has strictly positive density on a nonempty interval about0 inside the old gap.",
+      "dependencies": [
+        "OPICA_FOLLOWUP_DILATED_COMB_FOURIER",
+        "OPICA_FOLLOWUP_SQUARE_DEFECT_ORIGIN_POSITIVE"
+      ],
+      "status": "PROVED_UNCONDITIONAL",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA_FOLLOWUP_SAWTOOTH_INTEGRABLE_FORCE_IDENTITY",
+      "theorem": "Zeta23.OPICAFollowup.sawtooth_integrable_force_identity",
+      "source": "Zeta23/OPICAFollowup/SawtoothForce.lean",
+      "statement": "w=exp(-t/2){exp t} is L1 intersect L2; g=-(D+1/2)w is tempered and equals N-exp(t/2)dt only as the initially compact-test difference; n=1 jump retained.",
+      "dependencies": [],
+      "status": "PROVED_UNCONDITIONAL",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA_FOLLOWUP_SAWTOOTH_ACTUAL_MELLIN_FOURIER",
+      "theorem": "Zeta23.OPICAFollowup.sawtooth_actual_mellin_fourier",
+      "source": "Zeta23/OPICAFollowup/SawtoothForce.lean",
+      "statement": "For0<Re s<1 derive integral_0^infinity {x}x^(-s-1)=-zeta(s)/s; hence Flog(w)=-zeta(.5+i xi)/(.5+i xi), Flog(g)=zeta(.5+i xi).",
+      "dependencies": [],
+      "status": "PROVED_UNCONDITIONAL",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA_FOLLOWUP_SAWTOOTH_NORM_WEIGHTED_ZETA_MOMENT",
+      "theorem": "Zeta23.OPICAFollowup.sawtooth_norm_weighted_zeta_moment",
+      "source": "Zeta23/OPICAFollowup/SawtoothForce.lean",
+      "statement": "Prove exact finite integer-cell norm identity and limit ||w||_2^2=log(2pi)-EulerGamma=(1/2pi)integral |zeta(.5+i xi)|^2/(xi^2+1/4); conclude g in H^-1.",
+      "dependencies": [],
+      "status": "PROVED_UNCONDITIONAL",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA_FOLLOWUP_ARITHMETIC_STIELTJES_HOLOMORPHIC",
+      "theorem": "Zeta23.OPICAFollowup.arithmetic_stieltjes_holomorphic",
+      "source": "Zeta23/OPICAFollowup/WeightedSpectralMeasure.lean",
+      "statement": "For kappa outside[1/4,infinity), M=integral d omega/(a-kappa) is locally absolutely convergent and holomorphic, a=xi^2+1/4 and d omega=|zeta(.5+i xi)|^2 dxi/(2pi).",
+      "dependencies": [],
+      "status": "PROVED_UNCONDITIONAL",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA_FOLLOWUP_ARITHMETIC_STIELTJES_SIGN_BUDGET",
+      "theorem": "Zeta23.OPICAFollowup.arithmetic_stieltjes_sign_budget",
+      "source": "Zeta23/OPICAFollowup/WeightedSpectralMeasure.lean",
+      "statement": "For Im kappa!=0, Im M/Im kappa=integral d omega/|a-kappa|^2>0 and explicit weighted-source bounds; no real-sample assertion.",
+      "dependencies": [],
+      "status": "PROVED_UNCONDITIONAL",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA_FOLLOWUP_NATIVE_FORCED_RESOLVENT_UNIQUE",
+      "theorem": "Zeta23.OPICAFollowup.native_forced_resolvent_unique",
+      "source": "Zeta23/OPICAFollowup/NativeResolvent.lean",
+      "statement": "For actual off-line zero kappa nonreal, psi=exp(t/2)h(exp t) is the unique H1 solution (-(D^2)+1/4-kappa)psi=kappa g; actual Fourier quotient kappa zeta(.5+i xi)/(a-kappa).",
+      "dependencies": [
+        "OPICA_FOLLOWUP_LOG_UNITARY_FORM_IDENTITY",
+        "OPICA_FOLLOWUP_ZERO_PROFILE_FORCED_EULER"
+      ],
+      "status": "PROVED_UNCONDITIONAL",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA_FOLLOWUP_NATIVE_SAMPLE_STIELTJES_IDENTITY",
+      "theorem": "Zeta23.OPICAFollowup.native_sample_stieltjes_identity",
+      "source": "Zeta23/OPICAFollowup/NativeResolvent.lean",
+      "statement": "Justify sample b_kappa=sum h(n)-1/2 as H^-1,H1 pairing, then prove b=kappa M(kappa), with all endpoint terms, normalization and conjugation.",
+      "dependencies": [
+        "OPICA_FOLLOWUP_DILATED_COMB_FOURIER",
+        "OPICA_FOLLOWUP_LOG_FOURIER_PLANCHEREL",
+        "OPICA_FOLLOWUP_LOG_UNITARY_FORM_IDENTITY",
+        "OPICA_FOLLOWUP_ZERO_PROFILE_FORCED_EULER"
+      ],
+      "status": "PROVED_UNCONDITIONAL",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA_FOLLOWUP_NATIVE_PROFILE_SPECTRAL_NORMS",
+      "theorem": "Zeta23.OPICAFollowup.native_profile_spectral_norms",
+      "source": "Zeta23/OPICAFollowup/NativeResolvent.lean",
+      "statement": "Norm and Euler form equal |kappa|^2 integrals d omega/|a-kappa|^2 and a d omega/|a-kappa|^2. Include mixed compatibility and |b|<=|kappa|(1+|kappa|/|Im kappa|)(log(2pi)-EulerGamma).",
+      "dependencies": [
+        "OPICA_FOLLOWUP_ARITHMETIC_STIELTJES_SIGN_BUDGET",
+        "OPICA_FOLLOWUP_DILATED_COMB_FOURIER",
+        "OPICA_FOLLOWUP_LOG_UNITARY_FORM_IDENTITY",
+        "OPICA_FOLLOWUP_ZERO_PROFILE_FORCED_EULER"
+      ],
+      "status": "PROVED_UNCONDITIONAL",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA_FOLLOWUP_GENERIC_FORCED_PROFILE_UNIQUE",
+      "theorem": "Zeta23.OPICAFollowup.generic_forced_profile_unique",
+      "source": "Zeta23/OPICAFollowup/BoundaryAmplitude.lean",
+      "statement": "For 1/2<Re rho<1, Im rho!=0, htilde=1-Srho/brho-zeta(rho)x^(rho-1)/brho lies in the log form domain and uniquely solves the actual force equation; both ends controlled.",
+      "dependencies": [
+        "OPICA_FOLLOWUP_LOG_UNITARY_FORM_IDENTITY"
+      ],
+      "status": "PROVED_UNCONDITIONAL",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA_FOLLOWUP_GENERIC_BOUNDARY_AMPLITUDE",
+      "theorem": "Zeta23.OPICAFollowup.generic_boundary_amplitude",
+      "source": "Zeta23/OPICAFollowup/BoundaryAmplitude.lean",
+      "statement": "On(0,1), htilde=1-zeta(rho)x^(rho-1)/brho; plateau iff zeta(rho)=0. At infinity the retained homogeneous term is -zeta(1-rho)x^-rho/brho plus the Bernoulli tail; no L1 assertion for generic rho.",
+      "dependencies": [],
+      "status": "PROVED_UNCONDITIONAL",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA_FOLLOWUP_COUPLED_GRAM_COLLISION_CONTROL",
+      "theorem": "Zeta23.OPICAFollowup.coupled_gram_collision_control",
+      "source": "Zeta23/OPICAFollowup/Counterexamples.lean",
+      "statement": "Exact two-exponential rational inner model has coupled cost (2-h^2)/(1-h^2) for0<h<1 and limit2 as h tends to0 from above although its Gram inverse becomes singular.",
+      "dependencies": [],
+      "status": "PROVED_UNCONDITIONAL",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA_FOLLOWUP_NORM_FIRST_STRICTLY_WEAKER_CONTROL",
+      "theorem": "Zeta23.OPICAFollowup.norm_first_strictly_weaker_control",
+      "source": "Zeta23/OPICAFollowup/Counterexamples.lean",
+      "statement": "Constant B_n=exp(theta*T_n),S_n=1 has equal energy rate theta but positive-rate raw energy difference; theta>0.",
+      "dependencies": [
+        "OPICA_FOLLOWUP_NORM_FIRST_LOG_COMPARISON",
+        "OPICA_FOLLOWUP_NORM_FIRST_RATE_TRANSFER"
+      ],
+      "status": "PROVED_UNCONDITIONAL",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA_FOLLOWUP_HISTORY_RECOVERY_COST_CONTROL",
+      "theorem": "Zeta23.OPICAFollowup.history_recovery_cost_control",
+      "source": "Zeta23/OPICAFollowup/Counterexamples.lean",
+      "statement": "Rank-one target with history scale epsilon!=0 has minimum recovery norm1/|epsilon|; epsilon=exp(-aT) yields exponential cost.",
+      "dependencies": [],
+      "status": "PROVED_UNCONDITIONAL",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA_FOLLOWUP_FORCED_POSITIVE_GRAM_NONREAL_CONTROL",
+      "theorem": "Zeta23.OPICAFollowup.forced_positive_gram_nonreal_control",
+      "source": "Zeta23/OPICAFollowup/Counterexamples.lean",
+      "statement": "Positive diagonal A and real forcing g with h_i=kappa_i(A-kappa_i I)^-1g yield the same coupled Gram identities at specified nonreal parameters; prove positivity as applicable, not actual-zero existence.",
+      "dependencies": [],
+      "status": "PROVED_UNCONDITIONAL",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA_FOLLOWUP_FIXED_TWO_FACTOR_MASK_RATE_THETA",
+      "theorem": "Zeta23.OPICAFollowup.fixed_two_factor_mask_rate_theta",
+      "source": "Zeta23/OPICAFollowup/Consumers.lean",
+      "statement": "On the fixed actual r2,d1,C2,Q1,K8 construction, both high-mask realizations have positive-part rate exactly Theta by proved native J5.2 plus the two-mask norm-first interface.",
+      "dependencies": [
+        "OPICA_A1_DIVISOR_COUNT_HARMONIC_SUM_LE",
+        "OPICA_A1_DIVISOR_COUNT_SQRT_SUM_LE",
+        "OPICA_A1_DIVISOR_COUNT_SQUARE_LE",
+        "OPICA_A1_DIVISOR_COUNT_SUBMULTIPLICATIVE",
+        "OPICA_A2_LOW_PRIMITIVE_BILINEAR_BOUND",
+        "OPICA_A3_MASK_REGROUPING_DIFFERENCE",
+        "OPICA_B1_LAPLACE_HOLOMORPHIC_OF_WEIGHTED_L2",
+        "OPICA_FOLLOWUP_AUX_COMPLETION_ACTUAL_TRANSFORM",
+        "OPICA_FOLLOWUP_AUX_COMPLETION_RATIO_BOUNDS",
+        "OPICA_FOLLOWUP_AUX_COMPLETION_UNIFORM_DECAY",
+        "OPICA_FOLLOWUP_BALANCED_COEFF_DIVISOR_BOUND",
+        "OPICA_FOLLOWUP_FORWARDKERNEL_DOUBLE_EXP_DECAY",
+        "OPICA_FOLLOWUP_FORWARDKERNEL_LEFT_CONTOUR_BUDGET",
+        "OPICA_FOLLOWUP_LAGUERRE_TAIL_NORM",
+        "OPICA_FOLLOWUP_LOG_SLACK_BOTH_LOW_MASKS_SUBEXP",
+        "OPICA_FOLLOWUP_LOG_SLACK_MASKED_ENERGY_RATE_DIFFERENCE",
+        "OPICA_FOLLOWUP_LOG_SLACK_TYPEI_ERROR",
+        "OPICA_FOLLOWUP_NATIVE_BINOMIAL_INVERSE_IDENTITY",
+        "OPICA_FOLLOWUP_NATIVE_FIELD_THETA_ENVELOPE",
+        "OPICA_FOLLOWUP_NATIVE_FIXED_SOURCE_WINDOW_RATE",
+        "OPICA_FOLLOWUP_NATIVE_SOURCE_EXPLICIT_FORMULA",
+        "OPICA_FOLLOWUP_NATIVE_TERMINAL_MEMORY_LOWER",
+        "OPICA_FOLLOWUP_NATIVE_ZERO_COUNT_SUMMABILITY",
+        "OPICA_FOLLOWUP_NATIVE_ZERO_SUP_BOUNDS",
+        "OPICA_FOLLOWUP_NORM_FIRST_LOG_COMPARISON",
+        "OPICA_FOLLOWUP_SOURCE_ORDER_UNIFORM_NORMS",
+        "OPICA_FOLLOWUP_SOURCE_PRODUCT_VERTICAL_BOUND",
+        "OPICA_FOLLOWUP_ZETA_LEFT_LINE_UNIFORM_BOUND"
+      ],
+      "status": "PROVED_UNCONDITIONAL",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA_FOLLOWUP_QUIET_BALANCED_OBSERVATION_IMPLIES_NATIVE_CUT",
+      "theorem": "Zeta23.OPICAFollowup.quiet_balanced_observation_implies_native_cut",
+      "source": "Zeta23/OPICAFollowup/Consumers.lean",
+      "statement": "Explicitly conditional: a proved cofinal zero-rate upper for this complete actual observation implies Theta=0 and literal d0 all-positive-damping L2 (then consumes existing Step4 cut). Preserve the upper as an open antecedent, never an unconditional RH root.",
+      "dependencies": [
+        "OPICA_A1_DIVISOR_COUNT_HARMONIC_SUM_LE",
+        "OPICA_A1_DIVISOR_COUNT_SQRT_SUM_LE",
+        "OPICA_A1_DIVISOR_COUNT_SQUARE_LE",
+        "OPICA_A1_DIVISOR_COUNT_SUBMULTIPLICATIVE",
+        "OPICA_A2_LOW_PRIMITIVE_BILINEAR_BOUND",
+        "OPICA_A3_MASK_REGROUPING_DIFFERENCE",
+        "OPICA_B1_LAPLACE_HOLOMORPHIC_OF_WEIGHTED_L2",
+        "OPICA_FOLLOWUP_AUX_COMPLETION_ACTUAL_TRANSFORM",
+        "OPICA_FOLLOWUP_AUX_COMPLETION_RATIO_BOUNDS",
+        "OPICA_FOLLOWUP_AUX_COMPLETION_UNIFORM_DECAY",
+        "OPICA_FOLLOWUP_BALANCED_COEFF_DIVISOR_BOUND",
+        "OPICA_FOLLOWUP_FIXED_TWO_FACTOR_MASK_RATE_THETA",
+        "OPICA_FOLLOWUP_FORWARDKERNEL_DOUBLE_EXP_DECAY",
+        "OPICA_FOLLOWUP_FORWARDKERNEL_LEFT_CONTOUR_BUDGET",
+        "OPICA_FOLLOWUP_LAGUERRE_TAIL_NORM",
+        "OPICA_FOLLOWUP_LOG_SLACK_BOTH_LOW_MASKS_SUBEXP",
+        "OPICA_FOLLOWUP_LOG_SLACK_MASKED_ENERGY_RATE_DIFFERENCE",
+        "OPICA_FOLLOWUP_LOG_SLACK_TYPEI_ERROR",
+        "OPICA_FOLLOWUP_NATIVE_BINOMIAL_INVERSE_IDENTITY",
+        "OPICA_FOLLOWUP_NATIVE_FIELD_THETA_ENVELOPE",
+        "OPICA_FOLLOWUP_NATIVE_FIXED_SOURCE_WINDOW_RATE",
+        "OPICA_FOLLOWUP_NATIVE_SOURCE_EXPLICIT_FORMULA",
+        "OPICA_FOLLOWUP_NATIVE_TERMINAL_MEMORY_LOWER",
+        "OPICA_FOLLOWUP_NATIVE_ZERO_COUNT_SUMMABILITY",
+        "OPICA_FOLLOWUP_NATIVE_ZERO_SUP_BOUNDS",
+        "OPICA_FOLLOWUP_NORM_FIRST_LOG_COMPARISON",
+        "OPICA_FOLLOWUP_SOURCEFAMILY_ZERO_EQ_ORIGINAL",
+        "OPICA_FOLLOWUP_SOURCE_ORDER_UNIFORM_NORMS",
+        "OPICA_FOLLOWUP_SOURCE_PRODUCT_VERTICAL_BOUND",
+        "OPICA_FOLLOWUP_ZETA_LEFT_LINE_UNIFORM_BOUND"
+      ],
+      "status": "PROVED_UNCONDITIONAL",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA_FOLLOWUP_STEP123_WORD_JET_CONSUMER",
+      "theorem": "Zeta23.OPICAFollowup.step123_word_jet_consumer",
+      "source": "Zeta23/OPICAFollowup/Consumers.lean",
+      "statement": "For the existing same Step123CompleteOutput, construct actual original field/pole and full native word observation, preserving source, zero, multiplicity, damping and correction identities; optional contour premise explicit.",
+      "dependencies": [
+        "OPICA_FOLLOWUP_NATIVEGENERATOR_TRANSFORM",
+        "OPICA_FOLLOWUP_NATIVEPRIMEFIELD_VISIBLEPOLE",
+        "OPICA_FOLLOWUP_NATIVEWORD_CORRECTED_TRANSFORM",
+        "OPICA_FOLLOWUP_NATIVEWORD_FIRST_NONZERO_DERIVATIVE",
+        "OPICA_FOLLOWUP_NATIVEWORD_ORDER_AND_LEADING",
+        "OPICA_FOLLOWUP_SOURCEFAMILY_ZERO_EQ_ORIGINAL",
+        "OPICA_L1_COMPLETION_LEADING_JET",
+        "OPICA_L1_COMPLETION_ORDER",
+        "OPICA_L1_COMPLETION_REGULARREPRESENTATIVE_ANALYTIC",
+        "OPICA_NATIVE_NATIVE_COMPLETED_INPUT_OBSTRUCTION_JET",
+        "OPICA_NATIVE_NATIVE_COMPLETED_INPUT_OBSTRUCTION_NE_ZERO",
+        "OPICA_NATIVE_STEP123_OUTPUT_OPICA_VIEW_CORRECT",
+        "R003_BOUNDARY_FLAT_EXACT_DIMENSION",
+        "R003_BOUNDARY_FLAT_FINITE_WEIL_RESTRICTION",
+        "R003_CANONICAL_EUCLIDEAN_QUADRATIC_BRIDGE",
+        "R003_CANONICAL_EUCLIDEAN_SYMMETRIC",
+        "R003_CANONICAL_SOURCE_HERMITIAN",
+        "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
+        "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
+        "R003_LOCALIZED_ADDITIVE_RHS_RESTRICTION",
+        "R003_LOCALIZED_BASIS_CORRELATION",
+        "R003_LOCALIZED_FINITE_SPACE_CORRELATION",
+        "R003_PARITY_CONSTRAINED_SPECTRAL_COMPRESSION",
+        "R003_PARITY_PRESERVING_EUCLIDEAN_NFLOW",
+        "R003_WEIL_COMMON_SUPPORT_BOUND",
+        "R003_WEIL_LOCALIZED_ADDITIVE_SELF_BRIDGE",
+        "R003_WEIL_PAIR_LITERATURE_BRIDGE"
+      ],
+      "status": "PROVED_UNCONDITIONAL",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA_FOLLOWUP_ACTUAL_ZERO_MEASURE_SPAN_CONSUMER",
+      "theorem": "Zeta23.OPICAFollowup.actual_zero_measure_span_consumer",
+      "source": "Zeta23/OPICAFollowup/Consumers.lean",
+      "statement": "Instantiate true zero profile/jet objects and all P0 separator premises on each actual finite real combination; derive the finite-span exclusion without assuming measure status.",
+      "dependencies": [
+        "OPICA_FOLLOWUP_COPOISSON_ZERO_JETS_MEASURES",
+        "OPICA_FOLLOWUP_DILATED_COMB_FOURIER",
+        "OPICA_FOLLOWUP_FINITE_ZERO_SPAN_POSITIVE_ONLY_ZERO",
+        "OPICA_FOLLOWUP_ZERO_PROFILE_REGULAR_SELFDUAL",
+        "OPICA_H1_SIGNED_SHARP_GAP_SEPARATOR"
+      ],
+      "status": "PROVED_UNCONDITIONAL",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
+      "id": "OPICA_FOLLOWUP_ACTUAL_FORCE_SAMPLING_CONSUMER",
+      "theorem": "Zeta23.OPICAFollowup.actual_force_sampling_consumer",
+      "source": "Zeta23/OPICAFollowup/Consumers.lean",
+      "statement": "Compose actual lattice force, log-unitary profile, spectral density, sample identity and generic boundary amplitude with the two Fourier conventions explicitly related. No homogeneous eigenproblem conclusion.",
+      "dependencies": [
+        "OPICA_FOLLOWUP_DILATED_COMB_FOURIER",
+        "OPICA_FOLLOWUP_GENERIC_BOUNDARY_AMPLITUDE",
+        "OPICA_FOLLOWUP_GENERIC_FORCED_PROFILE_UNIQUE",
+        "OPICA_FOLLOWUP_LOG_FOURIER_PLANCHEREL",
+        "OPICA_FOLLOWUP_LOG_UNITARY_FORM_IDENTITY",
+        "OPICA_FOLLOWUP_NATIVE_FORCED_RESOLVENT_UNIQUE",
+        "OPICA_FOLLOWUP_NATIVE_SAMPLE_STIELTJES_IDENTITY",
+        "OPICA_FOLLOWUP_SAWTOOTH_ACTUAL_MELLIN_FOURIER",
+        "OPICA_FOLLOWUP_SAWTOOTH_INTEGRABLE_FORCE_IDENTITY",
+        "OPICA_FOLLOWUP_ZERO_PROFILE_FORCED_EULER",
+        "OPICA_FOLLOWUP_ZERO_PROFILE_NOT_HOMOGENEOUS_OPERATOR_VECTOR"
+      ],
+      "status": "PROVED_UNCONDITIONAL",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
     }
   ]
 }

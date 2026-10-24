@@ -1,0 +1,12 @@
+[
+  {
+    "job_id": 119177134652,
+    "status": 403,
+    "message": "{\"message\":\"Must have admin rights to Repository.\",\"documentation_url\":\"https://docs.github.com/rest/actions/workflow-jobs#download-job-logs-for-a-workflow-run\",\"status\":\"403\"}"
+  },
+  {
+    "job_id": 119177134769,
+    "status": 403,
+    "message": "{\"message\":\"Must have admin rights to Repository.\",\"documentation_url\":\"https://docs.github.com/rest/actions/workflow-jobs#download-job-logs-for-a-workflow-run\",\"status\":\"403\"}"
+  }
+]

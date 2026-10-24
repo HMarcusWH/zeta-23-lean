@@ -549,5 +549,32 @@ class FullReceiptTests(unittest.TestCase):
                     Path(self.tmp.name)/'fresh')
 
 
+class ExternalExporterRootTests(unittest.TestCase):
+    def test_external_exporter_and_object_are_contained_in_explicit_root(self):
+        contract={'manifest':{'required_final_build_targets':['Zeta23.OPICAFollowup']}}
+        argv=receipt.full_commands(contract)[-1][0]
+        folder=Path('external proof artifacts').absolute()
+        actual=receipt.instantiate_full_command(argv,folder,'native lake.exe')
+        self.assertEqual(actual[:5],['native lake.exe','env','lean','-R',str(folder)])
+        self.assertEqual(Path(actual[5]).parent,folder)
+        self.assertEqual(actual[6],'-o')
+        self.assertEqual(Path(actual[7]).parent,folder)
+        self.assertFalse(any('@EXTERNAL_' in token for token in actual))
+
+    def test_unrecognized_root_placeholder_fails_closed(self):
+        with self.assertRaisesRegex(ValueError,'placeholder'):
+            receipt.instantiate_full_command(['lake','@EXTERNAL_UNREVIEWED_ROOT@'],'.','lake')
+
+    def test_nonlake_command_cannot_enter_full_command_mapping(self):
+        with self.assertRaisesRegex(ValueError,'start with lake'):
+            receipt.instantiate_full_command(['shell','-c','payload'],'.','lake')
+
+    def test_version_and_build_protocol_are_unaffected(self):
+        contract={'manifest':{'required_final_build_targets':['A','B']}}
+        rows=receipt.full_commands(contract)
+        self.assertEqual(rows[:2],[(['lake','env','lean','--version'],'lean-version.log'),
+            (['lake','build','A','B','Zeta23.RHRC.OpicaTypeExprExport'],'build.log')])
+
+
 if __name__ == '__main__':
     unittest.main()

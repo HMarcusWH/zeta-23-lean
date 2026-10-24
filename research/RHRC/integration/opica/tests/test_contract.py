@@ -657,8 +657,37 @@ class DocumentationReview(unittest.TestCase):
             self.assertTrue(any('aliased' in e for e in self.review()[1]))
 
     def test_full_root_extension_still_rejects_absent_full_reviewed_types(self):
-        with self.assertRaisesRegex(ValueError,'full child reviewed type table absent'):
+        # Make the original missing-types premise explicit as the live table evolves.
+        original_read = contract.read_json
+        def absent_types(path):
+            value = original_read(path)
+            if Path(path).name == 'WORKFLOW_CONTRACT.json':
+                value = copy.deepcopy(value)
+                value.pop('implemented_root_type_sha256', None)
+            return value
+        with patch.object(contract, 'read_json', side_effect=absent_types), \
+                patch.object(contract, '_exact_source_extension_context', return_value=None), \
+                self.assertRaisesRegex(ValueError,'full child reviewed type table absent'):
             contract._source_bound_followup_context(contract.REPO)
+
+    def test_exact_provider_supports_unregistered_parent_module_import(self):
+        # The original suite loads its actual validator without sys.modules registration.
+        folder = self.repo / contract.FOLLOWUP_FOLDER
+        folder.mkdir(parents=True, exist_ok=True)
+        (folder / 'SOURCE_REGISTER.json').write_text(json.dumps({
+            'exact_source_extension_policy': {'schema': 'OPICA_EXACT_SUBJECT_EXTENSION_POLICY_V2'}}))
+        source = (
+            b"def source_bound_context(repo, policy, anchor, helpers):\n"
+            b"    if helpers._source_bound_parent_baseline.__globals__ is not helpers._reviewed_child_objects.__globals__: raise ValueError('wrong helper origin')\n"
+            b"    if helpers._source_bound_parent_baseline.__name__ != '_source_bound_parent_baseline': raise ValueError('wrong baseline helper')\n"
+            b"    if helpers._reviewed_child_objects.__name__ != '_reviewed_child_objects': raise ValueError('wrong review helper')\n"
+            b"    if set(helpers.FOLLOWUP_GLOBAL_FILES) != {'claim_registry','theorem_bindings','file_classes','semantic_closure'}: raise ValueError('wrong global objects')\n"
+            b"    return ('FIXTURE_ONLY_ACTUAL_HELPER_IDENTITIES', anchor)\n")
+        (folder / 'exact_extension.py').write_bytes(source)
+        with patch.object(contract, 'TRUSTED_EXACT_EXTENSION_POLICY_SHA256', '1' * 64), \
+                patch.object(contract, 'EXACT_EXTENSION_PROVIDER_SHA256', hashlib.sha256(source).hexdigest()):
+            self.assertEqual(contract._exact_source_extension_context(self.repo),
+                             ('FIXTURE_ONLY_ACTUAL_HELPER_IDENTITIES', '1' * 64))
 
 
 if __name__ == '__main__':

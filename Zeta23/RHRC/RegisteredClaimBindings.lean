@@ -114,6 +114,46 @@ import Zeta23.OPICA.RangeSeparation
 import Zeta23.OPICA.ResidueLimits
 import Zeta23.OPICA.SignedHeatSeparator
 import Zeta23.OPICA.WeightedLaplace
+import Zeta23.OPICAFollowup.AuxiliaryCompletions
+import Zeta23.OPICAFollowup.BalancedCoefficients
+import Zeta23.OPICAFollowup.BoundaryAmplitude
+import Zeta23.OPICAFollowup.CoPoissonJets
+import Zeta23.OPICAFollowup.ComplexLocalMeasures
+import Zeta23.OPICAFollowup.ConfluentProfiles
+import Zeta23.OPICAFollowup.Consumers
+import Zeta23.OPICAFollowup.Counterexamples
+import Zeta23.OPICAFollowup.DilatedComb
+import Zeta23.OPICAFollowup.FiniteSpanSeparation
+import Zeta23.OPICAFollowup.FirstCellCost
+import Zeta23.OPICAFollowup.ForcedEuler
+import Zeta23.OPICAFollowup.ForwardLocalization
+import Zeta23.OPICAFollowup.JointObservation
+import Zeta23.OPICAFollowup.LogFourierSobolev
+import Zeta23.OPICAFollowup.LogSlackBalance
+import Zeta23.OPICAFollowup.MaskedNativeRate
+import Zeta23.OPICAFollowup.MovingSourceWindowRate
+import Zeta23.OPICAFollowup.MultiplicityTail
+import Zeta23.OPICAFollowup.NativeExplicitFormula
+import Zeta23.OPICAFollowup.NativeFilters
+import Zeta23.OPICAFollowup.NativeResolvent
+import Zeta23.OPICAFollowup.NativeSourceFamily
+import Zeta23.OPICAFollowup.NativeSourceTransforms
+import Zeta23.OPICAFollowup.NativeTransformationWords
+import Zeta23.OPICAFollowup.NativeWindowRate
+import Zeta23.OPICAFollowup.NearGapLimits
+import Zeta23.OPICAFollowup.NormFirstTransfer
+import Zeta23.OPICAFollowup.ProfileEulerMaclaurin
+import Zeta23.OPICAFollowup.RenormalizedCoPoisson
+import Zeta23.OPICAFollowup.RobustLaurent
+import Zeta23.OPICAFollowup.SamplingCompatibility
+import Zeta23.OPICAFollowup.SawtoothForce
+import Zeta23.OPICAFollowup.SourceVerticalBounds
+import Zeta23.OPICAFollowup.SquareDefect
+import Zeta23.OPICAFollowup.UniformSourceBounds
+import Zeta23.OPICAFollowup.WeightedMixing
+import Zeta23.OPICAFollowup.WeightedSpectralMeasure
+import Zeta23.OPICAFollowup.ZeroProfiles
+import Zeta23.OPICAFollowup.ZetaLeftLineBounds
 
 -- AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE
 #check Zeta23.ExceptionalZero.canonicalPrimeRemainderDominance_iff_riemannHypothesis
@@ -754,3 +794,205 @@ import Zeta23.OPICA.WeightedLaplace
 #print axioms Zeta23.OPICA.step123_eachPhase_opica_consumer
 #check Zeta23.OPICA.native_original_drive_low_mask_bound
 #print axioms Zeta23.OPICA.native_original_drive_low_mask_bound
+
+/- Original100 OPICA follow-up theorems; quantified antecedents remain explicit. -/
+#check Zeta23.OPICAFollowup.sourceFamily_zero_eq_original
+#print axioms Zeta23.OPICAFollowup.sourceFamily_zero_eq_original
+#check Zeta23.OPICAFollowup.sourceFamily_support_smooth_moments
+#print axioms Zeta23.OPICAFollowup.sourceFamily_support_smooth_moments
+#check Zeta23.OPICAFollowup.sourceFamily_laplace_identity
+#print axioms Zeta23.OPICAFollowup.sourceFamily_laplace_identity
+#check Zeta23.OPICAFollowup.forwardKernel_physical_laplace
+#print axioms Zeta23.OPICAFollowup.forwardKernel_physical_laplace
+#check Zeta23.OPICAFollowup.nativePrimeField_visiblePole
+#print axioms Zeta23.OPICAFollowup.nativePrimeField_visiblePole
+#check Zeta23.OPICAFollowup.nativeGenerator_transform
+#print axioms Zeta23.OPICAFollowup.nativeGenerator_transform
+#check Zeta23.OPICAFollowup.nativeGenerator_unit_or_completion
+#print axioms Zeta23.OPICAFollowup.nativeGenerator_unit_or_completion
+#check Zeta23.OPICAFollowup.nativeWord_corrected_transform
+#print axioms Zeta23.OPICAFollowup.nativeWord_corrected_transform
+#check Zeta23.OPICAFollowup.nativeWord_order_and_leading
+#print axioms Zeta23.OPICAFollowup.nativeWord_order_and_leading
+#check Zeta23.OPICAFollowup.nativeWord_first_nonzero_derivative
+#print axioms Zeta23.OPICAFollowup.nativeWord_first_nonzero_derivative
+#check Zeta23.OPICAFollowup.nativeWord_factor_costs
+#print axioms Zeta23.OPICAFollowup.nativeWord_factor_costs
+#check Zeta23.OPICAFollowup.norm_first_log_comparison
+#print axioms Zeta23.OPICAFollowup.norm_first_log_comparison
+#check Zeta23.OPICAFollowup.norm_first_rate_transfer
+#print axioms Zeta23.OPICAFollowup.norm_first_rate_transfer
+#check Zeta23.OPICAFollowup.energy_allocation_bound
+#print axioms Zeta23.OPICAFollowup.energy_allocation_bound
+#check Zeta23.OPICAFollowup.energy_allocation_rate_lower
+#print axioms Zeta23.OPICAFollowup.energy_allocation_rate_lower
+#check Zeta23.OPICAFollowup.joint_recovery_iff
+#print axioms Zeta23.OPICAFollowup.joint_recovery_iff
+#check Zeta23.OPICAFollowup.joint_recovery_optimal_norm
+#print axioms Zeta23.OPICAFollowup.joint_recovery_optimal_norm
+#check Zeta23.OPICAFollowup.joint_recovery_noise_bound
+#print axioms Zeta23.OPICAFollowup.joint_recovery_noise_bound
+#check Zeta23.OPICAFollowup.approx_compatibility_left_null
+#print axioms Zeta23.OPICAFollowup.approx_compatibility_left_null
+#check Zeta23.OPICAFollowup.recovery_subexp_budget
+#print axioms Zeta23.OPICAFollowup.recovery_subexp_budget
+#check Zeta23.OPICAFollowup.laurent_coefficient_error_bound
+#print axioms Zeta23.OPICAFollowup.laurent_coefficient_error_bound
+#check Zeta23.OPICAFollowup.laurent_observation_survives
+#print axioms Zeta23.OPICAFollowup.laurent_observation_survives
+#check Zeta23.OPICAFollowup.nativeWord_contour_consumer
+#print axioms Zeta23.OPICAFollowup.nativeWord_contour_consumer
+#check Zeta23.OPICAFollowup.source_product_vertical_bound
+#print axioms Zeta23.OPICAFollowup.source_product_vertical_bound
+#check Zeta23.OPICAFollowup.zeta_left_line_uniform_bound
+#print axioms Zeta23.OPICAFollowup.zeta_left_line_uniform_bound
+#check Zeta23.OPICAFollowup.forwardKernel_left_contour_budget
+#print axioms Zeta23.OPICAFollowup.forwardKernel_left_contour_budget
+#check Zeta23.OPICAFollowup.forwardKernel_double_exp_decay
+#print axioms Zeta23.OPICAFollowup.forwardKernel_double_exp_decay
+#check Zeta23.OPICAFollowup.native_binomial_inverse_identity
+#print axioms Zeta23.OPICAFollowup.native_binomial_inverse_identity
+#check Zeta23.OPICAFollowup.balanced_coeff_divisor_bound
+#print axioms Zeta23.OPICAFollowup.balanced_coeff_divisor_bound
+#check Zeta23.OPICAFollowup.log_slack_native_decomposition
+#print axioms Zeta23.OPICAFollowup.log_slack_native_decomposition
+#check Zeta23.OPICAFollowup.log_slack_typeI_error
+#print axioms Zeta23.OPICAFollowup.log_slack_typeI_error
+#check Zeta23.OPICAFollowup.fixed_two_factor_preparation
+#print axioms Zeta23.OPICAFollowup.fixed_two_factor_preparation
+#check Zeta23.OPICAFollowup.log_slack_both_low_masks_subexp
+#print axioms Zeta23.OPICAFollowup.log_slack_both_low_masks_subexp
+#check Zeta23.OPICAFollowup.log_slack_masked_energy_rate_difference
+#print axioms Zeta23.OPICAFollowup.log_slack_masked_energy_rate_difference
+#check Zeta23.OPICAFollowup.native_zero_count_summability
+#print axioms Zeta23.OPICAFollowup.native_zero_count_summability
+#check Zeta23.OPICAFollowup.native_source_explicit_formula
+#print axioms Zeta23.OPICAFollowup.native_source_explicit_formula
+#check Zeta23.OPICAFollowup.native_zero_sup_bounds
+#print axioms Zeta23.OPICAFollowup.native_zero_sup_bounds
+#check Zeta23.OPICAFollowup.source_order_uniform_norms
+#print axioms Zeta23.OPICAFollowup.source_order_uniform_norms
+#check Zeta23.OPICAFollowup.native_field_theta_envelope
+#print axioms Zeta23.OPICAFollowup.native_field_theta_envelope
+#check Zeta23.OPICAFollowup.aux_completion_actual_transform
+#print axioms Zeta23.OPICAFollowup.aux_completion_actual_transform
+#check Zeta23.OPICAFollowup.aux_completion_uniform_decay
+#print axioms Zeta23.OPICAFollowup.aux_completion_uniform_decay
+#check Zeta23.OPICAFollowup.aux_completion_ratio_bounds
+#print axioms Zeta23.OPICAFollowup.aux_completion_ratio_bounds
+#check Zeta23.OPICAFollowup.native_auxiliary_top_moment
+#print axioms Zeta23.OPICAFollowup.native_auxiliary_top_moment
+#check Zeta23.OPICAFollowup.laguerre_tail_norm
+#print axioms Zeta23.OPICAFollowup.laguerre_tail_norm
+#check Zeta23.OPICAFollowup.native_auxiliary_tail_residual_lower
+#print axioms Zeta23.OPICAFollowup.native_auxiliary_tail_residual_lower
+#check Zeta23.OPICAFollowup.native_terminal_memory_lower
+#print axioms Zeta23.OPICAFollowup.native_terminal_memory_lower
+#check Zeta23.OPICAFollowup.native_fixed_source_window_rate
+#print axioms Zeta23.OPICAFollowup.native_fixed_source_window_rate
+#check Zeta23.OPICAFollowup.native_slow_source_window_rate
+#print axioms Zeta23.OPICAFollowup.native_slow_source_window_rate
+#check Zeta23.OPICAFollowup.complex_local_measure_embedding_faithful
+#print axioms Zeta23.OPICAFollowup.complex_local_measure_embedding_faithful
+#check Zeta23.OPICAFollowup.dilated_comb_fourier
+#print axioms Zeta23.OPICAFollowup.dilated_comb_fourier
+#check Zeta23.OPICAFollowup.weighted_mixture_exists_fourier
+#print axioms Zeta23.OPICAFollowup.weighted_mixture_exists_fourier
+#check Zeta23.OPICAFollowup.weighted_mobius_inverse
+#print axioms Zeta23.OPICAFollowup.weighted_mobius_inverse
+#check Zeta23.OPICAFollowup.weighted_mixture_sharp_gap
+#print axioms Zeta23.OPICAFollowup.weighted_mixture_sharp_gap
+#check Zeta23.OPICAFollowup.weighted_gap_leakage
+#print axioms Zeta23.OPICAFollowup.weighted_gap_leakage
+#check Zeta23.OPICAFollowup.near_gap_mass_bound
+#print axioms Zeta23.OPICAFollowup.near_gap_mass_bound
+#check Zeta23.OPICAFollowup.near_gap_controlled_limit_zero
+#print axioms Zeta23.OPICAFollowup.near_gap_controlled_limit_zero
+#check Zeta23.OPICAFollowup.dilation_near_gap_family
+#print axioms Zeta23.OPICAFollowup.dilation_near_gap_family
+#check Zeta23.OPICAFollowup.dilation_normalized_limit_not_measure
+#print axioms Zeta23.OPICAFollowup.dilation_normalized_limit_not_measure
+#check Zeta23.OPICAFollowup.renormalized_copoisson_tempered_family
+#print axioms Zeta23.OPICAFollowup.renormalized_copoisson_tempered_family
+#check Zeta23.OPICAFollowup.renormalized_copoisson_order_zero
+#print axioms Zeta23.OPICAFollowup.renormalized_copoisson_order_zero
+#check Zeta23.OPICAFollowup.zero_measure_exact_properties
+#print axioms Zeta23.OPICAFollowup.zero_measure_exact_properties
+#check Zeta23.OPICAFollowup.zero_measure_first_cell_sign
+#print axioms Zeta23.OPICAFollowup.zero_measure_first_cell_sign
+#check Zeta23.OPICAFollowup.finite_sum_euler_maclaurin_uniform
+#print axioms Zeta23.OPICAFollowup.finite_sum_euler_maclaurin_uniform
+#check Zeta23.OPICAFollowup.zero_profile_regular_selfdual
+#print axioms Zeta23.OPICAFollowup.zero_profile_regular_selfdual
+#check Zeta23.OPICAFollowup.zero_profile_tail_and_jumps
+#print axioms Zeta23.OPICAFollowup.zero_profile_tail_and_jumps
+#check Zeta23.OPICAFollowup.log_unitary_form_identity
+#print axioms Zeta23.OPICAFollowup.log_unitary_form_identity
+#check Zeta23.OPICAFollowup.log_fourier_plancherel
+#print axioms Zeta23.OPICAFollowup.log_fourier_plancherel
+#check Zeta23.OPICAFollowup.zero_profile_forced_euler
+#print axioms Zeta23.OPICAFollowup.zero_profile_forced_euler
+#check Zeta23.OPICAFollowup.zero_profile_not_homogeneous_operator_vector
+#print axioms Zeta23.OPICAFollowup.zero_profile_not_homogeneous_operator_vector
+#check Zeta23.OPICAFollowup.native_sampling_gram_identity
+#print axioms Zeta23.OPICAFollowup.native_sampling_gram_identity
+#check Zeta23.OPICAFollowup.native_sampling_form_positive
+#print axioms Zeta23.OPICAFollowup.native_sampling_form_positive
+#check Zeta23.OPICAFollowup.copoisson_zero_jets_measures
+#print axioms Zeta23.OPICAFollowup.copoisson_zero_jets_measures
+#check Zeta23.OPICAFollowup.profile_jet_confluent_determinant
+#print axioms Zeta23.OPICAFollowup.profile_jet_confluent_determinant
+#check Zeta23.OPICAFollowup.finite_zero_jet_independent
+#print axioms Zeta23.OPICAFollowup.finite_zero_jet_independent
+#check Zeta23.OPICAFollowup.finite_zero_span_positive_only_zero
+#print axioms Zeta23.OPICAFollowup.finite_zero_span_positive_only_zero
+#check Zeta23.OPICAFollowup.fixed_basis_negative_mass_budget
+#print axioms Zeta23.OPICAFollowup.fixed_basis_negative_mass_budget
+#check Zeta23.OPICAFollowup.first_cell_negative_mass_cost
+#print axioms Zeta23.OPICAFollowup.first_cell_negative_mass_cost
+#check Zeta23.OPICAFollowup.square_fourier_defect
+#print axioms Zeta23.OPICAFollowup.square_fourier_defect
+#check Zeta23.OPICAFollowup.square_defect_origin_positive
+#print axioms Zeta23.OPICAFollowup.square_defect_origin_positive
+#check Zeta23.OPICAFollowup.square_no_lattice_repair
+#print axioms Zeta23.OPICAFollowup.square_no_lattice_repair
+#check Zeta23.OPICAFollowup.square_selfdual_projection_fills_gap
+#print axioms Zeta23.OPICAFollowup.square_selfdual_projection_fills_gap
+#check Zeta23.OPICAFollowup.sawtooth_integrable_force_identity
+#print axioms Zeta23.OPICAFollowup.sawtooth_integrable_force_identity
+#check Zeta23.OPICAFollowup.sawtooth_actual_mellin_fourier
+#print axioms Zeta23.OPICAFollowup.sawtooth_actual_mellin_fourier
+#check Zeta23.OPICAFollowup.sawtooth_norm_weighted_zeta_moment
+#print axioms Zeta23.OPICAFollowup.sawtooth_norm_weighted_zeta_moment
+#check Zeta23.OPICAFollowup.arithmetic_stieltjes_holomorphic
+#print axioms Zeta23.OPICAFollowup.arithmetic_stieltjes_holomorphic
+#check Zeta23.OPICAFollowup.arithmetic_stieltjes_sign_budget
+#print axioms Zeta23.OPICAFollowup.arithmetic_stieltjes_sign_budget
+#check Zeta23.OPICAFollowup.native_forced_resolvent_unique
+#print axioms Zeta23.OPICAFollowup.native_forced_resolvent_unique
+#check Zeta23.OPICAFollowup.native_sample_stieltjes_identity
+#print axioms Zeta23.OPICAFollowup.native_sample_stieltjes_identity
+#check Zeta23.OPICAFollowup.native_profile_spectral_norms
+#print axioms Zeta23.OPICAFollowup.native_profile_spectral_norms
+#check Zeta23.OPICAFollowup.generic_forced_profile_unique
+#print axioms Zeta23.OPICAFollowup.generic_forced_profile_unique
+#check Zeta23.OPICAFollowup.generic_boundary_amplitude
+#print axioms Zeta23.OPICAFollowup.generic_boundary_amplitude
+#check Zeta23.OPICAFollowup.coupled_gram_collision_control
+#print axioms Zeta23.OPICAFollowup.coupled_gram_collision_control
+#check Zeta23.OPICAFollowup.norm_first_strictly_weaker_control
+#print axioms Zeta23.OPICAFollowup.norm_first_strictly_weaker_control
+#check Zeta23.OPICAFollowup.history_recovery_cost_control
+#print axioms Zeta23.OPICAFollowup.history_recovery_cost_control
+#check Zeta23.OPICAFollowup.forced_positive_gram_nonreal_control
+#print axioms Zeta23.OPICAFollowup.forced_positive_gram_nonreal_control
+#check Zeta23.OPICAFollowup.fixed_two_factor_mask_rate_theta
+#print axioms Zeta23.OPICAFollowup.fixed_two_factor_mask_rate_theta
+#check Zeta23.OPICAFollowup.quiet_balanced_observation_implies_native_cut
+#print axioms Zeta23.OPICAFollowup.quiet_balanced_observation_implies_native_cut
+#check Zeta23.OPICAFollowup.step123_word_jet_consumer
+#print axioms Zeta23.OPICAFollowup.step123_word_jet_consumer
+#check Zeta23.OPICAFollowup.actual_zero_measure_span_consumer
+#print axioms Zeta23.OPICAFollowup.actual_zero_measure_span_consumer
+#check Zeta23.OPICAFollowup.actual_force_sampling_consumer
+#print axioms Zeta23.OPICAFollowup.actual_force_sampling_consumer

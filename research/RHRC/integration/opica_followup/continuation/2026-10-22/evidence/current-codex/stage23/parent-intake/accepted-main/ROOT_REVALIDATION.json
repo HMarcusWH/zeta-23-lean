@@ -1,0 +1,67 @@
+{
+  "status": "PASS_ROOT_REPARSED_EXACT_PARENT_P0_TRANSPORT_ONLY",
+  "checked_commit": "d53dd70d38b0762af130b1d19b795af259f505f5",
+  "checked_tree": "12691099f1a155a8bfa3ad4f6689146175b233b2",
+  "original_transport_manifest_sha256": "e3d61561c246f6af30ccb44a03aa62243c62cf6f7b0c1ee38bba63e66268e234",
+  "actual_strict_reader_sha256": "97e76fbfb042a2200f638b272916bf5767fe79cada3a5afdafc292843e9da743",
+  "actual_original_parent_reader_sha256": "c4918486016d25b16caa1013666a22979f8ebe86e41369cbf616a8a2b9512ddc",
+  "binding": {
+    "checked_commit": "d53dd70d38b0762af130b1d19b795af259f505f5",
+    "checked_tree": "12691099f1a155a8bfa3ad4f6689146175b233b2",
+    "receipt_sha256": "1219564daaf9b0fbe96f5753ffb2d7e34312b0bbc12d86a0330fa421e5a1c4fc",
+    "parent_reader_sha256": "c4918486016d25b16caa1013666a22979f8ebe86e41369cbf616a8a2b9512ddc",
+    "primary_root_count": 76,
+    "public_declarations": 613,
+    "source_count": 59,
+    "logs": [
+      {
+        "log": "lean-version.log",
+        "bytes": 108,
+        "sha256": "79518dda68bc3c4a1d8669c197b30574f76e97149518a00d07b96465045d6dfc",
+        "argv": [
+          "lake",
+          "env",
+          "lean",
+          "--version"
+        ],
+        "exit_code": 0
+      },
+      {
+        "log": "build.log",
+        "bytes": 17926252,
+        "sha256": "d05ba3a091e751275000d009c4377959ddaaef072b315d0f02b85fb4c37f0db5",
+        "argv": [
+          "lake",
+          "build",
+          "Zeta23.OPICA",
+          "Zeta23.OPICA.Validation",
+          "Zeta23.RHRC.OpicaBindings",
+          "Zeta23.RHRC.RegisteredClaimBindings",
+          "Zeta23.RHRC.DeclarationDependencyExport",
+          "Zeta23.RHRC.SourceCandidateResolution"
+        ],
+        "exit_code": 0
+      },
+      {
+        "log": "bindings.log",
+        "bytes": 17114490,
+        "sha256": "0e3d42f9e1e79451a4875a9b1612cdc6fa429728bfc3acbd5c8a6e1f42864c05",
+        "argv": [
+          "lake",
+          "env",
+          "lean",
+          "Zeta23/RHRC/OpicaBindings.lean"
+        ],
+        "exit_code": 0
+      }
+    ],
+    "input_reparsed": true,
+    "fresh_compilation_performed_by_this_reader": false
+  },
+  "historical_baseline_is_warm": true,
+  "current_child_preservation_established": false,
+  "cold_full100_established": false,
+  "full_release_accepted": false,
+  "RH": "OPEN",
+  "Step4": "OPEN"
+}

@@ -1,0 +1,6 @@
+{
+  "original_driver_sha256": "a90618b4e71bab4f810d1c773da0a3c929a7deb0c3e1f4122b1e96e860096978",
+  "initial_failure": "Native Git default MAX_PATH restriction before preflight, logs retained.",
+  "correction": "New short private clone with repository-local core.longpaths=true; source/contract/preflight unchanged.",
+  "new_driver_sha256": "ffe9e2589fd3de69ee7ecd4b86126867ddadb45ad72890dcceb531ad709ed159"
+}

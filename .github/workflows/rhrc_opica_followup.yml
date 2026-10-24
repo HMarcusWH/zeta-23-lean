@@ -1,4 +1,4 @@
-name: OPICA follow-up draft checkpoint
+name: OPICA follow-up original-contract validation
 
 on:
   pull_request:
@@ -19,8 +19,8 @@ env:
   PYTHONUTF8: '1'
 
 jobs:
-  preparation-contract:
-    name: Draft preparation contract (no theorem authority)
+  followup-contract:
+    name: followup-contract
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
@@ -30,7 +30,7 @@ jobs:
           persist-credentials: false
       - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
         with:
-          python-version: '3.13'
+          python-version: '3.13.5'
       - run: python "$FOLLOWUP/validate_contract.py" --phase preflight --output /tmp/opica-followup-contract.json
       - name: Verify the ledger-derived module navigation table (no theorem authority)
         run: python -B "$FOLLOWUP/continuation/2026-10-22/refresh_navigation.py" --check
@@ -40,11 +40,11 @@ jobs:
           name: opica-followup-preparation
           path: /tmp/opica-followup-contract.json
 
-  subset-formal:
-    name: Exact-source implemented subset (full 100 remains required)
-    needs: preparation-contract
+  followup-regression:
+    name: followup-regression
+    needs: followup-contract
     runs-on: ubuntu-latest
-    timeout-minutes: 120
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
@@ -53,36 +53,37 @@ jobs:
           persist-credentials: false
       - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
         with:
-          python-version: '3.13'
-      - uses: leanprover/lean-action@24581d74d674803a25a81b10b059c5c0cdd344c6
-        with:
-          auto-config: false
-          build: false
-          test: false
-          lint: false
-          use-mathlib-cache: true
-      - name: Build typed consumers and export complete subset provenance
-        env:
-          REQUESTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
-        run: >-
-          python "$FOLLOWUP/build_receipt.py" --preparation-only
-          --requested-head "$REQUESTED_HEAD"
-          --requested-base d53dd70d38b0762af130b1d19b795af259f505f5
-          --output-dir /tmp/opica-followup-formal
+          python-version: '3.13.5'
+      - run: |
+          python -m pip install --require-hashes --only-binary=:all: -r "$FOLLOWUP/python-checks.lock"
+      - name: Replay all frozen controls and explicitly noninterval numerical cases
+        run: python "$FOLLOWUP/replay_controls.py" --modes normal optimized --include-numerical --output-dir /tmp/opica-followup-regression
+      - name: Exercise complete child validation suite in both Python modes
+        run: |
+          python -m unittest discover -s "$FOLLOWUP/tests" -p 'test_*.py'
+          python -O -m unittest discover -s "$FOLLOWUP/tests" -p 'test_*.py'
+      - name: Exercise the complete parent validation suite in both modes
+        run: |
+          python -m unittest discover -s research/RHRC/integration/opica/tests -p 'test_*.py'
+          python -O -m unittest discover -s research/RHRC/integration/opica/tests -p 'test_*.py'
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()
         with:
-          name: opica-followup-subset-formal
-          path: /tmp/opica-followup-formal
+          name: opica-followup-frozen-regression
+          path: /tmp/opica-followup-regression
 
-  repaired-candidates:
-    name: Narrow repaired candidates (aggregate acceptance remains open)
-    needs: preparation-contract
+  followup-formal:
+    name: followup-formal (${{ matrix.lane }})
+    needs: followup-contract
     # Compile actual mathematics even when independent preflight metadata is
     # red. The failed preparation still remains a required failing gate.
     if: ${{ always() && !cancelled() }}
     runs-on: ubuntu-latest
-    timeout-minutes: 120
+    timeout-minutes: 180
+    strategy:
+      fail-fast: false
+      matrix:
+        lane: [local, arithmetic, heat, spectral]
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
@@ -91,7 +92,7 @@ jobs:
           persist-credentials: false
       - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
         with:
-          python-version: '3.13'
+          python-version: '3.13.5'
       - uses: leanprover/lean-action@24581d74d674803a25a81b10b059c5c0cdd344c6
         with:
           auto-config: false
@@ -99,12 +100,33 @@ jobs:
           test: false
           lint: false
           use-mathlib-cache: true
+      - name: Compile the exact frozen target list for this lane
+        env:
+          OPICA_LANE: ${{ matrix.lane }}
+        run: |
+          mkdir -p /tmp/opica-current-candidates
+          python - <<'PY'
+          import hashlib,json,os,subprocess
+          from pathlib import Path
+          manifest=Path(os.environ['FOLLOWUP'])/'BUILD_MANIFEST.json'
+          targets=json.loads(manifest.read_bytes())['formal_lane_targets'][os.environ['OPICA_LANE']]
+          command=['lake','build',*targets]
+          with Path('/tmp/opica-current-candidates/lane-build.log').open('wb') as log:
+              code=subprocess.run(command,stdout=log,stderr=subprocess.STDOUT).returncode
+          report={'lane':os.environ['OPICA_LANE'],'command':command,'exit_code':code,
+              'checked_commit':subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),
+              'checked_tree':subprocess.check_output(['git','rev-parse','HEAD^{tree}'],text=True).strip(),
+              'frozen_manifest_sha256':hashlib.sha256(manifest.read_bytes()).hexdigest()}
+          Path('/tmp/opica-current-candidates/lane.json').write_text(json.dumps(report,indent=2)+'\n')
+          raise SystemExit(code)
+          PY
       - name: Check current modules, independent consumers and standard axioms
+        if: ${{ matrix.lane == 'heat' }}
         run: >-
           python -B "$FOLLOWUP/continuation/2026-10-22/run_candidate_checks.py"
           --lake lake --output-dir /tmp/opica-current-candidates
       - name: W01 same-output word/jet compiler and standard-axiom check (narrow)
-        if: always()
+        if: ${{ always() && matrix.lane == 'heat' }}
         shell: bash
         run: |
           set -euo pipefail
@@ -134,7 +156,7 @@ jobs:
           print('W01 compiler, independent 22-clause type, actual-domain consumer and five standard-only axiom closures: PASS; full100 still OPEN')
           PY
       - name: W04 W07 actual foundation modules and independently stated domains
-        if: always()
+        if: ${{ always() && matrix.lane == 'heat' }}
         shell: bash
         run: |
           set -euo pipefail
@@ -553,7 +575,7 @@ jobs:
           print('W04/W07 foundation and fifty-two independent domain/axiom checks: PASS. Full original roots OPEN')
           PY
       - name: W06 logarithmic mixing weights and independent integer-dilation types
-        if: always()
+        if: ${{ always() && matrix.lane == 'heat' }}
         shell: bash
         run: |
           set -euo pipefail
@@ -665,14 +687,14 @@ jobs:
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()
         with:
-          name: opica-followup-repaired-candidates
+          name: opica-followup-formal-${{ matrix.lane }}
           path: /tmp/opica-current-candidates
 
-  frozen-regression:
-    name: Frozen regression and fail-closed evidence tests
-    needs: preparation-contract
+  followup-aggregate:
+    name: followup-aggregate
+    needs: [followup-contract, followup-regression, followup-formal]
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 360
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
@@ -681,27 +703,126 @@ jobs:
           persist-credentials: false
       - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
         with:
-          python-version: '3.13'
-      - run: |
-          python -m pip install --require-hashes --only-binary=:all: -r "$FOLLOWUP/python-checks.lock"
-      - name: Replay all frozen controls and explicitly noninterval numerical cases
-        run: python "$FOLLOWUP/replay_controls.py" --modes normal optimized --include-numerical --output-dir /tmp/opica-followup-regression
-      - name: Exercise complete child validation suite in both Python modes
+          python-version: '3.13.5'
+      - uses: leanprover/lean-action@24581d74d674803a25a81b10b059c5c0cdd344c6
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-mathlib-cache: true
+      - name: Compile every original final target at the clean requested head
         run: |
-          python -m unittest discover -s "$FOLLOWUP/tests" -p 'test_*.py'
-          python -O -m unittest discover -s "$FOLLOWUP/tests" -p 'test_*.py'
-      - name: Exercise repaired parent contract module without platform skips
+          python - <<'PY'
+          import json,os,subprocess
+          from pathlib import Path
+          manifest=json.loads((Path(os.environ['FOLLOWUP'])/'BUILD_MANIFEST.json').read_bytes())
+          subprocess.run(['lake','build',*manifest['required_final_build_targets']],check=True)
+          PY
+      - name: Retain the exact historical subset replay as an additional check
+        env:
+          REQUESTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: >-
+          python "$FOLLOWUP/build_receipt.py" --preparation-only
+          --requested-head "$REQUESTED_HEAD"
+          --requested-base d53dd70d38b0762af130b1d19b795af259f505f5
+          --output-dir /tmp/opica-followup-aggregate/subset
+      - name: Produce and independently revalidate the current-tree parent P0 receipt
+        env:
+          REQUESTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
         run: |
-          python -m unittest discover -s research/RHRC/integration/opica/tests -p test_contract.py
-          python -O -m unittest discover -s research/RHRC/integration/opica/tests -p test_contract.py
+          python research/RHRC/integration/opica/build_receipt.py --requested-head "$REQUESTED_HEAD" --requested-base 97926d6a949fed7af0429a373b47abc772012834 --output-dir /tmp/opica-followup-aggregate/parent-current
+          python research/RHRC/integration/opica/validate_contract.py --phase release --formal-receipt /tmp/opica-followup-aggregate/parent-current/compiler-receipt.json --output /tmp/opica-followup-aggregate/parent-current/release.json
+      - name: Produce the original full100 cold compiler source/type/axiom/dependency receipt
+        env:
+          REQUESTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: >-
+          python "$FOLLOWUP/build_receipt.py"
+          --requested-head "$REQUESTED_HEAD"
+          --requested-base d53dd70d38b0762af130b1d19b795af259f505f5
+          --output-dir /tmp/opica-followup-aggregate/full100
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()
         with:
-          name: opica-followup-frozen-regression
-          path: /tmp/opica-followup-regression
+          name: opica-followup-aggregate
+          path: /tmp/opica-followup-aggregate
 
-  full-release-readiness:
-    name: Full release readiness (expected FAIL while scope is incomplete)
+  followup-generated:
+    name: followup-generated
+    needs: followup-aggregate
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: '3.13.5'
+      - uses: leanprover/lean-action@24581d74d674803a25a81b10b059c5c0cdd344c6
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-mathlib-cache: true
+      - run: >-
+          python -m pip install --require-hashes --only-binary=:all: -r "$FOLLOWUP/python-checks.lock"
+      - name: Check the unchanged complete canonical producer and repository suite
+        run: |
+          python research/RHRC/tools/materialize_derived_state.py --check
+          python research/RHRC/tools/run_suite.py
+          git diff --exit-code
+
+  followup-research-delta:
+    name: followup-research-delta
+    needs: followup-aggregate
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: '3.13.5'
+      - uses: leanprover/lean-action@24581d74d674803a25a81b10b059c5c0cdd344c6
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-mathlib-cache: true
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: opica-followup-aggregate
+          path: /tmp/opica-followup-aggregate
+      - name: Reparse the full receipt and compare original P0 and current private dependency/type evidence
+        run: |
+          mkdir -p /tmp/opica-followup-delta/accepted-main
+          python - <<'PY'
+          import gzip,os
+          from pathlib import Path
+          source=Path(os.environ['FOLLOWUP'])/'continuation/2026-10-22/evidence/current-codex/stage23/parent-intake/accepted-main'
+          target=Path('/tmp/opica-followup-delta/accepted-main')
+          for name in ('compiler-receipt.json','lean-version.log','build.log','bindings.log'):
+              (target/name).write_bytes(gzip.decompress((source/(name+'.gz')).read_bytes()))
+          PY
+          python "$FOLLOWUP/dependency_delta.py" --parent-intake "$FOLLOWUP/PROTECTED_STATE.json" --formal-receipt /tmp/opica-followup-aggregate/full100/compiler-receipt.json --parent-formal-receipt /tmp/opica-followup-delta/accepted-main/compiler-receipt.json --current-parent-formal-receipt /tmp/opica-followup-aggregate/parent-current/compiler-receipt.json --output /tmp/opica-followup-delta/dependency-delta.json
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: opica-followup-research-delta
+          path: /tmp/opica-followup-delta
+
+  followup-summary:
+    name: followup-summary
+    needs: [followup-contract, followup-regression, followup-formal, followup-aggregate, followup-generated, followup-research-delta]
+    if: always()
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
@@ -711,11 +832,31 @@ jobs:
           persist-credentials: false
       - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
         with:
-          python-version: '3.13'
-      - name: Preserve the complete release gate and report its actual disposition
-        run: python "$FOLLOWUP/validate_contract.py" --phase release --output /tmp/opica-followup-release-readiness.json
+          python-version: '3.13.5'
+      - name: Reject every missing, failed, skipped, canceled or unfinished required child lane
+        env:
+          REQUIRED_NEEDS: ${{ toJSON(needs) }}
+          REQUESTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          python - <<'PY'
+          import json,os,subprocess
+          from pathlib import Path
+          expected={'followup-contract','followup-regression','followup-formal','followup-aggregate','followup-generated','followup-research-delta'}
+          needs=json.loads(os.environ['REQUIRED_NEEDS'])
+          if set(needs)!=expected or any(v.get('result')!='success' for v in needs.values()):
+              raise SystemExit('Required child gate missing or unsuccessful: '+json.dumps(needs,sort_keys=True))
+          head=subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip()
+          if head!=os.environ['REQUESTED_HEAD']:
+              raise SystemExit('Summary checked a different head')
+          report={'status':'PASS_REQUIRED_CHILD_LANES_POST_COMPLETION_RELEASE_REVIEW_REQUIRED',
+              'checked_commit':head,'checked_tree':subprocess.check_output(['git','rev-parse','HEAD^{tree}'],text=True).strip(),
+              'needs':needs,'full_release_accepted':False,'workflow_harvest':'REQUIRES_SEPARATE_COMPLETED_ALL_JOB_REVIEW',
+              'independent_human_review':'NOT_ESTABLISHED','RH':'OPEN','Step4':'OPEN','independent_closing_inequalities':'OPEN'}
+          Path('/tmp/opica-followup-summary.json').write_text(json.dumps(report,indent=2)+'\n')
+          print(json.dumps(report,indent=2))
+          PY
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()
         with:
-          name: opica-followup-full-release-readiness
-          path: /tmp/opica-followup-release-readiness.json
+          name: opica-followup-summary
+          path: /tmp/opica-followup-summary.json

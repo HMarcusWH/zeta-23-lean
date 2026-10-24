@@ -1,0 +1,47 @@
+{
+  "status": "REVIEWED_IMPLEMENTATION_INSTALLED_NOT_RELEASE_ACCEPTANCE",
+  "reviewer": "root agent, distinct from implementation agents",
+  "capture_review": "Read all new functions and original capture AST preservation; supplied P0 logs are reparsed against immutable reader and exact Git source; workflow raw/provider/source/output bindings and limited missing-stdout provenance checked.",
+  "capture_controls": "78 normal and 78 optimized tests on actual Linux, no failures/skips; not parent acceptance",
+  "registration_review": "Exact genuine nonauthor mathematical review and full100 type table; all parent objects/order and four OPEN claims preserved",
+  "changes": [
+    {
+      "path": "research/RHRC/integration/opica_followup/capture_parent.py",
+      "before": "b7488359f04427f999162a30b0d76fa5ab7535c5c4affd91f54f9ae754a35fa9",
+      "after": "b4d48718f6271966d2c7429120e295ef4a67c92ae94e2325de2c794c0fd24812"
+    },
+    {
+      "path": "research/RHRC/integration/opica_followup/tests/test_workflow_harvest.py",
+      "before": "fe7af953b7436ca630f3cc97c84a61ff4ebfc94eeebe1f092654b06734d2a546",
+      "after": "902e00cac203ac578f7776301bfa1bf67d4f01aa33da6fa8e97537ef8b8d7654"
+    },
+    {
+      "path": "research/RHRC/CLAIM_REGISTRY.json",
+      "before": "d01589e5dd549ba0fe5439c606140b81860cf70c3fbf4f2c704d22970ff1f441",
+      "after": "d9aca1e236caa3cc262b8b00fa0e2657ef048b18eb6aae2d0ed024b6403253ef"
+    },
+    {
+      "path": "research/RHRC/graph/FILE_CLASSES.json",
+      "before": "5a616a8e78dcdd8ab38118f7f098302f5bbc112db63ad897505d31f0ece004cf",
+      "after": "d61358fa4664af998c504feb8c0c9483917c207932712ffe2bf664ea9b351c83"
+    },
+    {
+      "path": "research/RHRC/graph/SEMANTIC_CLOSURE_CONFIG.json",
+      "before": "bac2b6773d5a210269580d9a958b25218a51a0b215f7e5a2674b6ba36a19e5ae",
+      "after": "27d17a60f726d94556606cad39d520469fd12c7d2650ad02c82f28608bcc5699"
+    },
+    {
+      "path": "research/RHRC/REGISTERED_THEOREM_BINDINGS.json",
+      "before": "4a750db4f8e46f637befee4c5f093545fa549a450bc69fe475d41481a3c63d19",
+      "after": "c808e424ce312d11a466f5652086499de76b678c3192bab467c1c640591be4d0"
+    },
+    {
+      "path": "Zeta23/RHRC/RegisteredClaimBindings.lean",
+      "before": "4a70b8356707381ae388aee1d392f6e9eaddf57848e83d20800d8773fff4b47a",
+      "after": "9e4803509dd087c21942f8d1abc198ef71ad4dee7c633ed5f0b28e13ed31fdc0"
+    }
+  ],
+  "full_release_accepted": false,
+  "RH": "OPEN",
+  "Step4": "OPEN"
+}
