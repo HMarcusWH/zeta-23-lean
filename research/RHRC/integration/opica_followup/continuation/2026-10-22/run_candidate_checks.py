@@ -17,7 +17,7 @@ MODULES = ('MaskedNativeRate', 'ComplexLocalMeasures', 'AuxiliaryCompletions',
            'WeightedMixing', 'NearGapLimits', 'ProfileEulerMaclaurin', 'ZeroProfiles',
            'LogFourierSobolev', 'ForcedEuler', 'SamplingCompatibility',
            'SawtoothForce', 'WeightedSpectralMeasure', 'NativeResolvent', 'SquareDefect',
-           'BoundaryAmplitude', 'CoPoissonJets')
+           'BoundaryAmplitude', 'CoPoissonJets', 'Consumers')
 CONSUMERS = ('ExpectedMasks', 'ExpectedComplex', 'ExpectedAuxiliary',
              'ExpectedMultiplicity', 'ExpectedComb', 'ExpectedFirstCell',
              'ExpectedWeighted', 'ExpectedNearGap', 'ExpectedNearGapLimit',
@@ -27,7 +27,8 @@ CONSUMERS = ('ExpectedMasks', 'ExpectedComplex', 'ExpectedAuxiliary',
              'ExpectedForcedEuler', 'ExpectedSamplingCompatibility', 'ExpectedSawtoothForce',
              'ExpectedWeightedSpectralMeasure', 'ExpectedNativeResolvent',
              'ExpectedSquareDefect', 'ExpectedBoundaryAmplitude',
-             'ExpectedCoPoissonJets')
+             'ExpectedCoPoissonJets', 'ExpectedWordJet', 'ExpectedForceSampling',
+             'ExpectedSampleSign')
 ALLOWED_AXIOMS = {'propext', 'Classical.choice', 'Quot.sound'}
 
 

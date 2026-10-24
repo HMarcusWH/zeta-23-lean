@@ -234,6 +234,11 @@
       "sha256": "a3a18d428b3d35ef2b14f1dce9839e0e70e86a98eb6e7345db062f7cd47d4d4a"
     },
     {
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedForceSampling.lean",
+      "bytes": 6307,
+      "sha256": "6fc99bc203b2c9ac3815df43f588cce2da746a1051ecc0ae20f84e4354255904"
+    },
+    {
       "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedForcedEuler.lean",
       "bytes": 9558,
       "sha256": "230723787b3badebfa2862fc6168f6f7e76210fd9c00c009729d3f1906fdfca5"
@@ -272,6 +277,11 @@
       "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedNormalizedLimit.lean",
       "bytes": 6521,
       "sha256": "e833dad08f5c3a1fd477ab56f65db12d984fa51e18fd638d2b2aeddae77f9187"
+    },
+    {
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedSampleSign.lean",
+      "bytes": 4020,
+      "sha256": "9015dee14c0c55719b861b7d7604db0119bb43c3723fef216da512d12a3dcda7"
     },
     {
       "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedSamplingCompatibility.lean",
@@ -6340,8 +6350,8 @@
     },
     {
       "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/run_candidate_checks.py",
-      "bytes": 7054,
-      "sha256": "7ab6dcfedd1f554edd3d14d484e434f87f55c62af4d69a9b16cf31bb94b6ddfa"
+      "bytes": 7146,
+      "sha256": "1c1acbab0916d21d998a7851248431b991159f237dce5f75a4a62e921870a9db"
     },
     {
       "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/tools/stage_record/README.md",
