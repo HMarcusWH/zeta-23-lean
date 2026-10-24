@@ -1,15 +1,22 @@
-import Zeta23.OPICAFollowup.RobustLaurent
-import Zeta23.OPICA.NativeJetAdapter
-import Zeta23.OPICAFollowup.BoundaryAmplitude
+import Zeta23.OPICAFollowup.NativeTransformationWords
 import Zeta23.OPICAFollowup.MaskedNativeRate
 import Zeta23.OPICAFollowup.NativeWindowRate
 import Zeta23.OPICAFollowup.MovingSourceWindowRate
+import Zeta23.OPICAFollowup.RobustLaurent
+import Zeta23.OPICAFollowup.FiniteSpanSeparation
+import Zeta23.OPICAFollowup.FirstCellCost
+import Zeta23.OPICAFollowup.SquareDefect
+import Zeta23.OPICAFollowup.BoundaryAmplitude
+import Zeta23.OPICAFollowup.WeightedMixing
+import Zeta23.OPICAFollowup.NearGapLimits
+import Zeta23.OPICAFollowup.Counterexamples
 import Zeta23.ExceptionalZero.Step4OutputSufficiency
+import Zeta23.OPICA.NativeJetAdapter
 
 /-!
 Actual-source continuation consumers. The word/jet theorem preserves the same
 Step123 output. The force/sampling theorem composes F1-F3 at a hypothetical actual
-off-line zero. The actual zero-measure span consumer remains OPEN.
+off-line zero. The actual zero-measure span consumer constructs the finite physical span below.
 -/
 
 noncomputable section
@@ -352,4 +359,38 @@ theorem quiet_balanced_observation_implies_native_cut
 #print axioms fixed_two_factor_mask_rate_theta
 #print axioms originalPrimeField_allDampedL2_of_native_theta_zero
 #print axioms quiet_balanced_observation_implies_native_cut
+
+open scoped SchwartzMap FourierTransform
+open Zeta23.OPICA FiniteSpan
+
+/-- Full physical composition: actual zeta zeros and multiplicity-bounded jets
+produce genuine measures, actual zero profiles and all separator premises. -/
+theorem actual_zero_measure_span_consumer (data : List JetDatum)
+    (h : ∀ j ∈ data, ValidJet j) :
+    (∀ j ∈ data, Continuous (zeroProfile j.2.1) ∧ Integrable (zeroProfile j.2.1) ∧
+      MemLp (zeroProfile j.2.1) 2 ∧ 𝓕 (zeroProfile j.2.1) = zeroProfile j.2.1 ∧
+      (j.2.2 = 0 → normalizedZeroMeasureJet j.2.1 j.2.2 = zeroMeasure j.2.1)) ∧
+    (∃ hg : (zeroJetRealSpan data).HasLinearGrowth,
+      (zeroJetRealSpan data).FourierSelfdual hg ∧ (zeroJetRealSpan data).HasUnitGap ∧
+      ((zeroJetRealSpan data).OffLatticeNonnegative →
+        (zeroJetRealSpan data).positive = 0 ∧ (zeroJetRealSpan data).negative = 0)) ∧
+    (∀ n : ℕ, ∀ basis : Fin n → List JetDatum,
+      ∀ hb : ∀ i, ∀ j ∈ basis i, ValidJet j,
+      LinearIndependent ℝ (fun i => (zeroJetRealSpan (basis i)).distributionOfLinearGrowth
+        (zeroJetRealSpan_growth _ (hb i))) →
+      ∀ a : Fin n → ℝ,
+      (zeroJetRealSpan (realBasisCombinationData basis a)).OffLatticeNonnegative → a = 0) := by
+  refine ⟨?_, ⟨zeroJetRealSpan_growth data h, zeroJetRealSpan_selfdual data h,
+    zeroJetRealSpan_gap data, Zeta23.OPICAFollowup.finite_zero_span_positive_only_zero.1 data h⟩, ?_⟩
+  · intro j hj
+    obtain ⟨hz,h0,h1,hk⟩ := h j hj
+    have hp := zero_profile_regular_selfdual j.2.1 hz h0 h1
+    have hjets := copoisson_zero_jets_measures j.2.1 hz h0 h1 j.2.2 hk
+    exact ⟨hp.2.1, hp.2.2.1, hp.2.2.2.1, hp.2.2.2.2.2.1,
+      hjets.2.2.2.2.2.2.1⟩
+  · intro n basis hb hind a hoff
+    exact Zeta23.OPICAFollowup.finite_zero_span_positive_only_zero.2 n basis hb hind a hoff
+
+
+#print axioms Zeta23.OPICAFollowup.actual_zero_measure_span_consumer
 end Zeta23.OPICAFollowup

@@ -18,7 +18,7 @@ gate is OPEN. File presence does not establish proof or type coverage.
 | `Consumers` | 5 | 0 | 4 | 0 | 1 | [present](../../../../../../Zeta23/OPICAFollowup/Consumers.lean) |
 | `Counterexamples` | 4 | 4 | 0 | 0 | 0 | [present](../../../../../../Zeta23/OPICAFollowup/Counterexamples.lean) |
 | `DilatedComb` | 1 | 0 | 1 | 0 | 0 | [present](../../../../../../Zeta23/OPICAFollowup/DilatedComb.lean) |
-| `FiniteSpanSeparation` | 2 | 0 | 0 | 0 | 2 | planned / missing |
+| `FiniteSpanSeparation` | 2 | 0 | 0 | 0 | 2 | [present](../../../../../../Zeta23/OPICAFollowup/FiniteSpanSeparation.lean) |
 | `FirstCellCost` | 1 | 0 | 1 | 0 | 0 | [present](../../../../../../Zeta23/OPICAFollowup/FirstCellCost.lean) |
 | `ForcedEuler` | 2 | 0 | 2 | 0 | 0 | [present](../../../../../../Zeta23/OPICAFollowup/ForcedEuler.lean) |
 | `ForwardLocalization` | 2 | 2 | 0 | 0 | 0 | [present](../../../../../../Zeta23/OPICAFollowup/ForwardLocalization.lean) |

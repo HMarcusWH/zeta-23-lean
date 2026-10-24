@@ -25,7 +25,7 @@ noncomputable section
 open Polynomial Finset
 open scoped BigOperators
 
-namespace OPICAConfluentAudit
+namespace Zeta23.OPICAFollowup.OPICAConfluentAudit
 
 variable {K : Type*} [CommRing K] {M : ℕ}
 
@@ -82,7 +82,7 @@ theorem newtonPolynomial_natDegree [Nontrivial K] (node : Fin M → K) (i : Fin 
     exact Polynomial.monic_X_sub_C _
 
 
-end OPICAConfluentAudit
+end Zeta23.OPICAFollowup.OPICAConfluentAudit
 end
 end
 
@@ -93,7 +93,7 @@ noncomputable section
 open Polynomial Finset
 open scoped BigOperators
 
-namespace OPICAConfluentAudit
+namespace Zeta23.OPICAFollowup.OPICAConfluentAudit
 variable {K : Type*} [CommRing K] {M : ℕ}
 
 def priorMatches (node : Fin M → K) (κ : K) (i : Fin M) : Finset (Fin M) := by
@@ -175,7 +175,7 @@ theorem normalizedHermite_determinant [Nontrivial K] (node : Fin M → K) :
   intro i hi
   exact hasseFunctional_newton_diagonal node i
 
-end OPICAConfluentAudit
+end Zeta23.OPICAFollowup.OPICAConfluentAudit
 end
 end
 
@@ -186,7 +186,7 @@ noncomputable section
 open Polynomial Finset
 open scoped BigOperators
 
-namespace OPICAConfluentAudit
+namespace Zeta23.OPICAFollowup.OPICAConfluentAudit
 variable {K : Type*} [CommRing K] {M : ℕ}
 
 theorem priorMatches_cons_zero (node : Fin M → K) {κ : K} (hκ : κ ≠ 0) (i : Fin M) :
@@ -269,7 +269,7 @@ theorem coordinateHermite_determinant [Nontrivial K] (node : Fin M → K)
   simp_rw [hterm]
   exact Finset.prod_mul_distrib
 
-end OPICAConfluentAudit
+end Zeta23.OPICAFollowup.OPICAConfluentAudit
 end
 end
 
@@ -281,7 +281,7 @@ set_option maxHeartbeats 800000
 open Polynomial Finset
 open scoped BigOperators
 
-namespace OPICAConfluentAudit
+namespace Zeta23.OPICAFollowup.OPICAConfluentAudit
 variable {K : Type*} [CommRing K] {M : ℕ}
 
 theorem affineNegPower (a : K) (n : ℕ) :
@@ -335,7 +335,7 @@ theorem profilePolynomial_confluent_expanded_determinant [Nontrivial K]
     coordinateHermite_determinant node hnode]
   rw [mul_assoc]
 
-end OPICAConfluentAudit
+end Zeta23.OPICAFollowup.OPICAConfluentAudit
 end
 end
 
@@ -344,7 +344,7 @@ section
 
 noncomputable section
 open Polynomial
-namespace OPICAConfluentAudit
+namespace Zeta23.OPICAFollowup.OPICAConfluentAudit
 
 variable {K : Type*} [NontriviallyNormedField K]
 
@@ -373,7 +373,7 @@ theorem hasse_eq_normalized_iteratedDeriv [CharZero K] (p : K[X]) (n : ℕ) (z :
   apply (eq_div_iff (by exact_mod_cast Nat.factorial_ne_zero n : (n.factorial : K) ≠ 0)).mpr
   simpa only [mul_comm] using he'
 
-end OPICAConfluentAudit
+end Zeta23.OPICAFollowup.OPICAConfluentAudit
 end
 end
 
@@ -387,7 +387,7 @@ Taylor coefficient extraction and measure-independence bridge remain separate. -
 noncomputable section
 open Set MeasureTheory Filter Complex
 open scoped Topology
-namespace OPICAActualFirstCellAudit
+namespace Zeta23.OPICAFollowup.OPICAActualFirstCellAudit
 open Zeta23.OPICAFollowup
 
 theorem actual_family_first_cell (κ : ℂ) {y : ℝ} (hy1 : 1 ≤ y) (hy2 : y < 2) :
@@ -434,7 +434,7 @@ theorem actual_normalized_jet_first_log_cell (κ : ℂ) (k : ℕ) {u : ℝ} (hu0
   rw [iteratedDeriv_const_mul_field] at hk
   rw [zeroJetDensity, ← mul_div_assoc, hk]
 
-end OPICAActualFirstCellAudit
+end Zeta23.OPICAFollowup.OPICAActualFirstCellAudit
 end
 end
 
@@ -449,7 +449,7 @@ noncomputable section
 set_option maxHeartbeats 800000
 open Set Filter Complex
 open scoped Topology
-namespace OPICARightCellTaylor
+namespace Zeta23.OPICAFollowup.OPICARightCellTaylor
 open Zeta23.OPICAFollowup
 
 def expMajorant (B : ℝ) : ℝ := ∑' m : ℕ, B ^ m / (m.factorial : ℝ)
@@ -494,7 +494,7 @@ theorem shKernel_sub_partial_norm {B : ℝ} (hB : 0 ≤ B) {w : ℂ} (hw : ‖w�
         gcongr
     _ = _ := by ring
 
-end OPICARightCellTaylor
+end Zeta23.OPICAFollowup.OPICARightCellTaylor
 end
 end
 
@@ -509,7 +509,7 @@ noncomputable section
 set_option maxHeartbeats 800000
 open Set Filter Complex
 open scoped Topology
-namespace OPICARightCellTaylor
+namespace Zeta23.OPICAFollowup.OPICARightCellTaylor
 open Zeta23.OPICAFollowup
 
 def firstPartial (κ : ℂ) (u : ℝ) (n : ℕ) : ℂ :=
@@ -602,7 +602,7 @@ theorem partialJet_eq (κ : ℂ) (k : ℕ) (u : ℝ) (n : ℕ) :
     exact (((differentiable_id.mul (((differentiable_const (1 / 4 : ℂ)).sub
       differentiable_id).pow j)).mul_const _).div_const _).contDiff.contDiffAt
 
-end OPICARightCellTaylor
+end Zeta23.OPICAFollowup.OPICARightCellTaylor
 end
 end
 
@@ -613,7 +613,7 @@ noncomputable section
 open Set Filter Complex
 open scoped Topology
 
-namespace OPICAShCoefficientExtraction
+namespace Zeta23.OPICAFollowup.OPICAShCoefficientExtraction
 
 /-- Uniform higher-order bounds along arbitrarily small positive
 parameters force a leading coefficient to vanish. -/
@@ -670,7 +670,7 @@ theorem odd_coefficients_eq_zero_of_accumulating_remainder_bound
     simpa [show 2 * n + 1 + 2 = 2 * n + 3 by omega] using hub
 
 
-end OPICAShCoefficientExtraction
+end Zeta23.OPICAFollowup.OPICAShCoefficientExtraction
 end
 end
 
@@ -681,7 +681,7 @@ noncomputable section
 open Set MeasureTheory Filter Complex
 open scoped Topology SchwartzMap FourierTransform
 
-namespace OPICAActualMeasureCell
+namespace Zeta23.OPICAFollowup.OPICAActualMeasureCell
 open Zeta23.OPICAFollowup
 
 /-- No integer lies in the open first cell; every lattice sample of a test
@@ -732,7 +732,7 @@ theorem actual_jet_combination_first_cell_integral_zero {ι : Type*} [Fintype ι
     _ = 0 := hp
 
 
-end OPICAActualMeasureCell
+end Zeta23.OPICAFollowup.OPICAActualMeasureCell
 end
 end
 
@@ -743,7 +743,7 @@ noncomputable section
 open Set MeasureTheory Filter Complex
 open scoped Topology SchwartzMap FourierTransform ContDiff
 
-namespace OPICAActualMeasureCell
+namespace Zeta23.OPICAFollowup.OPICAActualMeasureCell
 open Zeta23.OPICAFollowup
 
 /-- The actual finite measure relation forces the physical first-cell
@@ -783,7 +783,7 @@ theorem actual_jet_combination_first_cell_ae_zero {ι : Type*} [Fintype ι]
   simpa only [Complex.real_smul, mul_comm] using he
 
 
-end OPICAActualMeasureCell
+end Zeta23.OPICAFollowup.OPICAActualMeasureCell
 end
 end
 
@@ -794,7 +794,7 @@ noncomputable section
 open Set MeasureTheory Filter Complex
 open scoped Topology SchwartzMap FourierTransform
 
-namespace OPICAActualMeasureCell
+namespace Zeta23.OPICAFollowup.OPICAActualMeasureCell
 open Zeta23.OPICAFollowup
 
 /-- Actual first-cell density vanishing almost everywhere supplies
@@ -837,13 +837,13 @@ theorem first_cell_ae_zero_gives_accumulating_right_cell_zeros
       rw [Finset.mul_sum]
       apply Finset.sum_congr rfl
       intro i _
-      rw [← OPICAActualFirstCellAudit.actual_normalized_jet_first_log_cell
+      rw [← Zeta23.OPICAFollowup.OPICAActualFirstCellAudit.actual_normalized_jet_first_log_cell
         (κ i) (k i) hu0.le hu2]
       ring
     _ = 0 := by rw [Real.exp_log hx0, hz hxcell, mul_zero]
 
 
-end OPICAActualMeasureCell
+end Zeta23.OPICAFollowup.OPICAActualMeasureCell
 end
 end
 
@@ -854,7 +854,7 @@ noncomputable section
 set_option maxHeartbeats 800000
 open Set Filter Complex
 open scoped Topology
-namespace OPICARightCellTaylor
+namespace Zeta23.OPICAFollowup.OPICARightCellTaylor
 
 variable {ι : Type*} [Fintype ι]
 
@@ -905,7 +905,7 @@ theorem finite_combination_remainder (node : ι → ℂ) (order : ι → ℕ) (a
       intro i hi
       ring
 
-end OPICARightCellTaylor
+end Zeta23.OPICAFollowup.OPICARightCellTaylor
 end
 end
 
@@ -916,7 +916,7 @@ noncomputable section
 set_option maxHeartbeats 800000
 open Set Filter Complex
 open scoped Topology
-namespace OPICARightCellTaylor
+namespace Zeta23.OPICAFollowup.OPICARightCellTaylor
 
 variable {ι : Type*} [Fintype ι]
 
@@ -925,7 +925,7 @@ theorem accumulating_rightCell_combination_coefficients_zero (node : ι → ℂ)
     (hacc : ∀ ε : ℝ, 0 < ε → ∃ u : ℝ, 0 < u ∧ u < ε ∧
       ∑ i, a i * rightCellJet (node i) (order i) u = 0) :
     ∀ n : ℕ, ∑ i, a i * oddJetCoefficient (node i) (order i) n = 0 := by
-  apply OPICAShCoefficientExtraction.odd_coefficients_eq_zero_of_accumulating_remainder_bound
+  apply Zeta23.OPICAFollowup.OPICAShCoefficientExtraction.odd_coefficients_eq_zero_of_accumulating_remainder_bound
   intro n
   refine ⟨combinationTaylorConstant node a n, ?_⟩
   intro ε hε
@@ -953,14 +953,14 @@ theorem accumulating_rightCell_combination_polynomial_rows_zero (node : ι → �
     (by exact_mod_cast Nat.factorial_ne_zero (2 * n + 1))
   simpa only [mul_div_assoc] using hr
 
-end OPICARightCellTaylor
+end Zeta23.OPICAFollowup.OPICARightCellTaylor
 end
 end
 
 section
 noncomputable section
-namespace OPICARightCellTaylor
-open Polynomial OPICAConfluentAudit
+namespace Zeta23.OPICAFollowup.OPICARightCellTaylor
+open Polynomial Zeta23.OPICAFollowup.OPICAConfluentAudit
 theorem actual_polynomial_row (κ : ℂ) (k n : ℕ) :
     (Polynomial.hasseDeriv k (X * (C (1 / 4 : ℂ) - X) ^ n)).eval κ =
       iteratedDeriv k (fun w : ℂ => w * (1 / 4 - w) ^ n) κ / (k.factorial : ℂ) := by
@@ -970,7 +970,7 @@ theorem actual_polynomial_row (κ : ℂ) (k n : ℕ) :
   simp
 
 
-end OPICARightCellTaylor
+end Zeta23.OPICAFollowup.OPICARightCellTaylor
 end
 end
 
@@ -985,8 +985,8 @@ noncomputable section
 set_option maxHeartbeats 800000
 open Set MeasureTheory Filter Complex Polynomial Finset
 open scoped Topology SchwartzMap FourierTransform
-namespace OPICAActualMeasureCell
-open Zeta23.OPICAFollowup OPICAConfluentAudit OPICARightCellTaylor
+namespace Zeta23.OPICAFollowup.OPICAActualMeasureCell
+open Zeta23.OPICAFollowup Zeta23.OPICAFollowup.OPICAConfluentAudit Zeta23.OPICAFollowup.OPICARightCellTaylor
 
 theorem expanded_actual_zero_measure_jet_independent {M : ℕ}
     (ρ : Fin M → ℂ) (c : Fin M → ℂ)
@@ -1036,7 +1036,7 @@ theorem expanded_actual_zero_measure_jet_independent {M : ℕ}
   simp_rw [hrow, mul_comm]
   exact hrows (i : ℕ)
 
-end OPICAActualMeasureCell
+end Zeta23.OPICAFollowup.OPICAActualMeasureCell
 end
 end
 
@@ -1046,7 +1046,7 @@ section
 noncomputable section
 set_option maxHeartbeats 800000
 open Finset
-namespace OPICAGroupedConfluent
+namespace Zeta23.OPICAFollowup.OPICAGroupedConfluent
 
 def blockStart {r : ℕ} (m : Fin r → ℕ) (j : Fin r) : ℕ := ∑ i ∈ Iio j, m i
 
@@ -1130,7 +1130,7 @@ theorem grouped_node_product {K : Type*} [CommMonoid K] {r : ℕ}
   rw [← (groupEquiv m).prod_comp]
   simp [groupedNode, Fintype.prod_sigma]
 
-end OPICAGroupedConfluent
+end Zeta23.OPICAFollowup.OPICAGroupedConfluent
 
 end
 end
@@ -1141,8 +1141,8 @@ section
 noncomputable section
 set_option maxHeartbeats 800000
 open Finset
-namespace OPICAGroupedConfluent
-open OPICAConfluentAudit
+namespace Zeta23.OPICAFollowup.OPICAGroupedConfluent
+open Zeta23.OPICAFollowup.OPICAConfluentAudit
 
 theorem prior_match_condition {K : Type*} {r : ℕ} (κ : Fin r → K)
     (hκ : Function.Injective κ) (m : Fin r → ℕ)
@@ -1239,7 +1239,7 @@ theorem grouped_gap_product {K : Type*} [CommRing K] {r : ℕ}
   intro i hi
   rw [← pow_mul]
 
-end OPICAGroupedConfluent
+end Zeta23.OPICAFollowup.OPICAGroupedConfluent
 
 end
 end
@@ -1255,7 +1255,7 @@ set_option maxHeartbeats 800000
 open Set MeasureTheory Filter Complex Polynomial Finset
 open scoped Topology SchwartzMap FourierTransform
 namespace Zeta23.OPICAFollowup
-open OPICAGroupedConfluent OPICAConfluentAudit OPICARightCellTaylor
+open Zeta23.OPICAFollowup.OPICAGroupedConfluent Zeta23.OPICAFollowup.OPICAConfluentAudit Zeta23.OPICAFollowup.OPICARightCellTaylor
 
 def distinctSpectralNodes {r : ℕ} (ρ : Fin r → ℂ) : Prop :=
   Function.Injective (fun j => spectralKappa (ρ j))
@@ -1322,7 +1322,7 @@ theorem finite_zero_jet_independent {r : ℕ} (ρ : Fin r → ℂ)
             (zero_ne_half (hz (e.symm i).1)) (hke i))) := by
     apply Fintype.linearIndependent_iff.mpr
     intro c hc i
-    exact congrFun (OPICAActualMeasureCell.expanded_actual_zero_measure_jet_independent
+    exact congrFun (Zeta23.OPICAFollowup.OPICAActualMeasureCell.expanded_actual_zero_measure_jet_independent
       ρe c (fun i => h0 (e.symm i).1) (fun i => h1 (e.symm i).1)
       (fun i => hz (e.symm i).1) hke hc) i
   have hcomp := hLI.comp e e.injective

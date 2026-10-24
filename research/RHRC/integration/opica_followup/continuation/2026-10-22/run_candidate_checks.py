@@ -12,8 +12,8 @@ import time
 
 HERE = Path(__file__).resolve().parent
 REPO = HERE.parents[5]
-MODULES = ('MaskedNativeRate', 'ComplexLocalMeasures', 'AuxiliaryCompletions', 'MultiplicityTail', 'DilatedComb', 'RenormalizedCoPoisson', 'FirstCellCost', 'WeightedMixing', 'NearGapLimits', 'ProfileEulerMaclaurin', 'ZeroProfiles', 'LogFourierSobolev', 'ForcedEuler', 'SamplingCompatibility', 'SawtoothForce', 'WeightedSpectralMeasure', 'NativeResolvent', 'SquareDefect', 'BoundaryAmplitude', 'CoPoissonJets', 'Consumers', 'NativeWindowRate', 'MovingSourceWindowRate', 'ConfluentProfiles')
-CONSUMERS = ('ExpectedMasks', 'ExpectedComplex', 'ExpectedAuxiliary', 'ExpectedMultiplicity', 'ExpectedComb', 'ExpectedFirstCell', 'ExpectedWeighted', 'ExpectedNearGap', 'ExpectedNearGapLimit', 'ExpectedNormalizedLimit', 'ExpectedWeightedInverse', 'ExpectedCoPoissonFamily', 'ExpectedCoPoissonOrderZero', 'ExpectedZeroMeasure', 'ExpectedEulerMaclaurin', 'ExpectedZeroProfiles', 'ExpectedLogFourierSobolev', 'ExpectedForcedEuler', 'ExpectedSamplingCompatibility', 'ExpectedSawtoothForce', 'ExpectedWeightedSpectralMeasure', 'ExpectedNativeResolvent', 'ExpectedSquareDefect', 'ExpectedBoundaryAmplitude', 'ExpectedCoPoissonJets', 'ExpectedWordJet', 'ExpectedForceSampling', 'ExpectedSampleSign', 'ExpectedPhysicalRates', 'ExpectedArithmeticPhysical', 'ExpectedConfluentProfiles')
+MODULES = ('MaskedNativeRate', 'ComplexLocalMeasures', 'AuxiliaryCompletions', 'MultiplicityTail', 'DilatedComb', 'RenormalizedCoPoisson', 'FirstCellCost', 'WeightedMixing', 'NearGapLimits', 'ProfileEulerMaclaurin', 'ZeroProfiles', 'LogFourierSobolev', 'ForcedEuler', 'SamplingCompatibility', 'SawtoothForce', 'WeightedSpectralMeasure', 'NativeResolvent', 'SquareDefect', 'BoundaryAmplitude', 'CoPoissonJets', 'Consumers', 'NativeWindowRate', 'MovingSourceWindowRate', 'ConfluentProfiles', 'FiniteSpanSeparation')
+CONSUMERS = ('ExpectedMasks', 'ExpectedComplex', 'ExpectedAuxiliary', 'ExpectedMultiplicity', 'ExpectedComb', 'ExpectedFirstCell', 'ExpectedWeighted', 'ExpectedNearGap', 'ExpectedNearGapLimit', 'ExpectedNormalizedLimit', 'ExpectedWeightedInverse', 'ExpectedCoPoissonFamily', 'ExpectedCoPoissonOrderZero', 'ExpectedZeroMeasure', 'ExpectedEulerMaclaurin', 'ExpectedZeroProfiles', 'ExpectedLogFourierSobolev', 'ExpectedForcedEuler', 'ExpectedSamplingCompatibility', 'ExpectedSawtoothForce', 'ExpectedWeightedSpectralMeasure', 'ExpectedNativeResolvent', 'ExpectedSquareDefect', 'ExpectedBoundaryAmplitude', 'ExpectedCoPoissonJets', 'ExpectedWordJet', 'ExpectedForceSampling', 'ExpectedSampleSign', 'ExpectedPhysicalRates', 'ExpectedArithmeticPhysical', 'ExpectedConfluentProfiles', 'ExpectedFullFiniteSpan', 'ExpectedActualFixedBudget', 'ExpectedSpanPhysicalConsumer', 'ExpectedBudgetLimit')
 ALLOWED_AXIOMS = {'propext', 'Classical.choice', 'Quot.sound'}
 
 
@@ -83,7 +83,7 @@ def main() -> int:
         version = command('version', [args.lake, 'env', 'lean', '--version'])
         require('4.33.0-rc2' in version and 'd8b18978322de05a8f3dba51ef03cf5461676c17' in version,
                 'Actual compiler identity differs')
-        command('build', [args.lake, 'build', *('Zeta23.OPICAFollowup.'+m for m in MODULES)])
+        command('build', [args.lake, 'build', 'Zeta23.OPICAFollowup', *('Zeta23.OPICAFollowup.'+m for m in MODULES)])
         report['consumers'] = []
         for name in CONSUMERS:
             source = HERE/'consumers'/(name+'.lean')

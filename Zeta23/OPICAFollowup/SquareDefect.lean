@@ -116,7 +116,7 @@ lemma schwartz_bdd (φ : 𝓢(ℝ, ℂ)) : ∃ C, ∀ x, ‖φ x‖ ≤ C := by
   obtain ⟨C, hC⟩ := φ.decay 0 0
   exact ⟨C, fun x => by simpa using hC.2 x⟩
 
-lemma integrable_mul_schwartz {f : ℝ → ℂ} (hf : Integrable f) (φ : 𝓢(ℝ, ℂ)) :
+lemma square_integrable_mul_schwartz {f : ℝ → ℂ} (hf : Integrable f) (φ : 𝓢(ℝ, ℂ)) :
     Integrable (fun x => f x * φ x) := by
   obtain ⟨C, hC⟩ := schwartz_bdd φ
   exact hf.mul_bdd φ.continuous.aestronglyMeasurable (Eventually.of_forall hC)
@@ -151,9 +151,9 @@ theorem squareGapMeasure_fourier_defect (hint : Integrable h) (hL2 : MemLp h 2) 
         ∫ x, h x * conj (h x) * ψ x := by
     intro ψ
     have i1 : Integrable (fun x => ((‖A‖ ^ 2 : ℝ) : ℂ) * ψ x) := ψ.integrable.const_mul _
-    have i2 : Integrable (fun x => A * (conj (h x) * ψ x)) := (integrable_mul_schwartz hc ψ).const_mul _
-    have i3 : Integrable (fun x => conj A * (h x * ψ x)) := (integrable_mul_schwartz hint ψ).const_mul _
-    have i4 : Integrable (fun x => h x * conj (h x) * ψ x) := integrable_mul_schwartz hN ψ
+    have i2 : Integrable (fun x => A * (conj (h x) * ψ x)) := (square_integrable_mul_schwartz hc ψ).const_mul _
+    have i3 : Integrable (fun x => conj A * (h x * ψ x)) := (square_integrable_mul_schwartz hint ψ).const_mul _
+    have i4 : Integrable (fun x => h x * conj (h x) * ψ x) := square_integrable_mul_schwartz hN ψ
     have e : (fun x => ((‖A - h x‖ ^ 2 : ℝ) : ℂ) * ψ x) = fun x =>
         ((‖A‖ ^ 2 : ℝ) : ℂ) * ψ x - A * (conj (h x) * ψ x) - conj A * (h x * ψ x) +
           h x * conj (h x) * ψ x := funext fun x => by rw [normSq_sub_expand]; ring
@@ -172,7 +172,7 @@ theorem squareGapMeasure_fourier_defect (hint : Integrable h) (hL2 : MemLp h 2) 
     tsum_punctured (comb_summable (𝓕 φ)), tsum_punctured (comb_summable φ), comb_fourier,
     Int.cast_zero, schwartz_fourier_zero]
   have i5 := integrable_autocorr_mul hint hL2 hsd hev φ
-  have i6 : Integrable (fun x => h x * conj (h x) * φ x) := integrable_mul_schwartz hN φ
+  have i6 : Integrable (fun x => h x * conj (h x) * φ x) := square_integrable_mul_schwartz hN φ
   rw [show (∫ x, squareDualityDefect h x * φ x) = (∫ x, autocorr h x * φ x) - ∫ x, h x * conj (h x) * φ x by
     rw [← integral_sub i5 i6]; exact integral_congr_ae (Eventually.of_forall fun x => by
       simp only [squareDualityDefect]; ring)]

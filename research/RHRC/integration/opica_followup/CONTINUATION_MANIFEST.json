@@ -75,8 +75,8 @@
     },
     {
       "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/MODULE_STATUS.md",
-      "bytes": 5591,
-      "sha256": "04615fd9f281501b3cfd6825c0f9051a8949d702eb8c176f69fa2bdb80c109a8"
+      "bytes": 5649,
+      "sha256": "8d4a79a013a60798fa4031bcf60bb4562ee8fd734f46a063b597f8f27fc7c489"
     },
     {
       "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/NEXT_AGENT_PROMPT.md",
@@ -199,6 +199,11 @@
       "sha256": "0c7adcf031fe1e26f7f7e20d4159f7a944e3e712f04c531cc01a2a29c054f332"
     },
     {
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedActualFixedBudget.lean",
+      "bytes": 2265,
+      "sha256": "9883387228ae6b161058a81055710bdde19c3ff00177154783577a04b3a0c2bd"
+    },
+    {
       "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedArithmeticPhysical.lean",
       "bytes": 4829,
       "sha256": "550876c3fb6997256437c159c5de514685305c76124b358fd5385a4f038885aa"
@@ -212,6 +217,11 @@
       "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedBoundaryAmplitude.lean",
       "bytes": 11922,
       "sha256": "b114b1a7ac9e264cac4f6cf4606ac9a4d6b1b9f4f28b5853dbf11dc6d86ec6cc"
+    },
+    {
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedBudgetLimit.lean",
+      "bytes": 2535,
+      "sha256": "24665dcf253694e0d76c0f9555b10f23aa3cdf1f5122d0dc6c1adbd8e88c9668"
     },
     {
       "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedCoPoissonFamily.lean",
@@ -240,8 +250,8 @@
     },
     {
       "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedConfluentProfiles.lean",
-      "bytes": 2811,
-      "sha256": "8b900acfaea1649b339d4670ed83c41a3e9e8b7b236bb6f5a4c257f32a00fbb0"
+      "bytes": 2958,
+      "sha256": "5862885c0235798817be2103c3ae600638327c1b0cc26916ea59e2ad133d6aed"
     },
     {
       "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedEulerMaclaurin.lean",
@@ -262,6 +272,11 @@
       "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedForcedEuler.lean",
       "bytes": 9558,
       "sha256": "230723787b3badebfa2862fc6168f6f7e76210fd9c00c009729d3f1906fdfca5"
+    },
+    {
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedFullFiniteSpan.lean",
+      "bytes": 1390,
+      "sha256": "3c8b892698091f69c5987c1f3d2b2e7a0bd3f068610c5355a1fe61fbf5b7eba2"
     },
     {
       "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedLogFourierSobolev.lean",
@@ -317,6 +332,11 @@
       "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedSawtoothForce.lean",
       "bytes": 9258,
       "sha256": "fcbaf41bb5a4e4b0be7bf900568f61849e93e39c97bcedf68a498a757b100be0"
+    },
+    {
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedSpanPhysicalConsumer.lean",
+      "bytes": 1913,
+      "sha256": "143da66a5595d0206bf10ea6ec0143a887d318318f64e51c259b8fa372f2c444"
     },
     {
       "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedSquareDefect.lean",
@@ -7680,8 +7700,8 @@
     },
     {
       "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/run_candidate_checks.py",
-      "bytes": 7112,
-      "sha256": "77af41e460a6c7e0caa3d1741e0bbb0e278f71de355a85712f7a95673affab8c"
+      "bytes": 7270,
+      "sha256": "65c479c0b7e4de7e69a913031a4aefef882db898fa6cb452ceb8291269f8bf14"
     },
     {
       "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/tools/stage_record/README.md",
