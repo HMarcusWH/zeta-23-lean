@@ -1,5 +1,58 @@
 # Current execution plan — OPICA follow-up
 
+<!-- RHRC_CURRENT_STATE_BEGIN -->
+## Current RHRC state
+
+THEOREM AUTHORITY
+- merged theorem authority = PR #287
+- validated final head = 40495f39b7510b49a7fe3493b42d9fe3880d6d22
+- merge commit = ecc6450f28eb6aed944bda8fe9a09296d033fc3e
+- tree = a105ffd52c96cd0c39712dcdba45e967282efc9d
+- status = MERGED_GREEN_THEOREM_STATE
+- PR #275 full-space small-aperture coercive base = PROVED
+- PR #276 exact legal successor ground >= 1 on 0 < L <= 1/512 = PROVED
+- fixed-N production continuity = PROVED_MERGED_PR_278
+- same-N off-line-zero contact = PROVED_MERGED_PR_278
+- PR #284 compressed contact calculus = PROVED_MERGED_PR_284_C2_AND_INHERITED_FIRST_VARIATION; F04_PAIR_BALANCE_AND_FRONTIER_PROMOTED_AFTER_MERGED_PR_287
+- PR #285 post-284 source-inertia package = PROVED_MERGED_PR_285
+- PR #287 post-285 M70-M77 build = PROVED_MERGED_PR_287
+- PR #272 CofinalCanonicalArithmeticCertificates <-> Mathlib RiemannHypothesis = PROVED / AUDIT-ONLY
+- RH = OPEN
+
+CURRENT RESEARCH FRONTIER
+- current candidate PR = #NONE / NO_OPEN_CANDIDATE_PR
+- candidate theorem-validation head = NONE
+- candidate theorem-validation status = NONE
+- merged experimental research evidence = PR #273 / CERTIFIED_CURRENT_PRIME_GROUND_RESPONSE
+- fixed-N sign opposition = PROVED_MERGED_PR_277
+- global ground propagation strength = RH_SUFFICIENT_AUDIT_PROVED_PR_277
+- uniform domination strength = RH_SUFFICIENT_AUDIT_PROVED_PR_277
+- active obstruction = OBS-060_GROUND_SPECTRUM_FIRST_CROSSING_BARRIER
+- active subobligation = OBS-060O_CONTACT_CONDITIONED_PRODUCTION_SATURATION_EXCLUSION
+- F04 production derivative authority = PROVED_MERGED_PR_287
+- M74 canonical secular instantiation = PROVED_MERGED_PR_287
+- next research target = POST285_CANONICAL_SECULAR_RAY_PRIME_FREE_F04_AND_FULL_ARITHMETIC_SOURCE_INEQUALITY
+- required new information = INDEPENDENT_FULL_ARITHMETIC_SOURCE_RESTRICTION_ON_THE_RESOLVENT_SELECTED_CONTACT_RAY
+- RH-sufficient terminal formulations are not counted as independent sub-RH progress
+
+FRAMEWORK / GRAPH STATE
+- PR #270 = FFBBP 1.7 / OoL-MVS 2.7.7 framework architecture authority
+- post-#276 exactified source-only theorem/lemma roots = 711
+- post-#276 FFBBP source-only module cohorts = 212
+- post-#276 OoL theorem-value-erased frontier contacts = 522
+- post-#276 RHKG relations = 311826
+- framework output -> Lean theorem authority = FORBIDDEN
+
+RESEARCH / CONTROL FIREWALL
+- latest independent bounded research evidence = PR #223
+- merged first-contact atlas evidence = PR #273 / EXPERIMENTAL_SIGNAL_ONLY
+- frozen Control-v2 semantic authority = PR #117
+- selected formal first break = E4A4-SCHUR-FB-05 (historical/frozen control semantics)
+- R003 phase = DISCOVERY
+- confirmatory execution = NOT AUTHORIZED
+- terminal claim = RH_OPEN
+<!-- RHRC_CURRENT_STATE_END -->
+
 <!-- OPICA_AGENT_NAVIGATION_2026_10_22 -->
 **RH, Step 4 and the independent closing inequalities remain OPEN.**
 
@@ -90,59 +143,6 @@ PR #278 starts from that merged state and is fail-closed. Its first formal targe
 The contact route uses the repository's existing IntrinsicPredecessorRegular regular/singular split, not a synthetic predecessor-bottom notion. It does not identify a parity-compressed zero mode with an ambient full-space kernel. A2 whole-form seam envelopes and A3 fixed-cell no-crossing remain separate OPEN obligations.
 
 **Claim firewall: RH remains OPEN.**
-
-<!-- RHRC_CURRENT_STATE_BEGIN -->
-## Current RHRC state
-
-THEOREM AUTHORITY
-- merged theorem authority = PR #287
-- validated final head = 40495f39b7510b49a7fe3493b42d9fe3880d6d22
-- merge commit = ecc6450f28eb6aed944bda8fe9a09296d033fc3e
-- tree = a105ffd52c96cd0c39712dcdba45e967282efc9d
-- status = MERGED_GREEN_THEOREM_STATE
-- PR #275 full-space small-aperture coercive base = PROVED
-- PR #276 exact legal successor ground >= 1 on 0 < L <= 1/512 = PROVED
-- fixed-N production continuity = PROVED_MERGED_PR_278
-- same-N off-line-zero contact = PROVED_MERGED_PR_278
-- PR #284 compressed contact calculus = PROVED_MERGED_PR_284_C2_AND_INHERITED_FIRST_VARIATION; F04_PAIR_BALANCE_AND_FRONTIER_PROMOTED_AFTER_MERGED_PR_287
-- PR #285 post-284 source-inertia package = PROVED_MERGED_PR_285
-- PR #287 post-285 M70-M77 build = PROVED_MERGED_PR_287
-- PR #272 CofinalCanonicalArithmeticCertificates <-> Mathlib RiemannHypothesis = PROVED / AUDIT-ONLY
-- RH = OPEN
-
-CURRENT RESEARCH FRONTIER
-- current candidate PR = #NONE / NO_OPEN_CANDIDATE_PR
-- candidate theorem-validation head = NONE
-- candidate theorem-validation status = NONE
-- merged experimental research evidence = PR #273 / CERTIFIED_CURRENT_PRIME_GROUND_RESPONSE
-- fixed-N sign opposition = PROVED_MERGED_PR_277
-- global ground propagation strength = RH_SUFFICIENT_AUDIT_PROVED_PR_277
-- uniform domination strength = RH_SUFFICIENT_AUDIT_PROVED_PR_277
-- active obstruction = OBS-060_GROUND_SPECTRUM_FIRST_CROSSING_BARRIER
-- active subobligation = OBS-060O_CONTACT_CONDITIONED_PRODUCTION_SATURATION_EXCLUSION
-- F04 production derivative authority = PROVED_MERGED_PR_287
-- M74 canonical secular instantiation = PROVED_MERGED_PR_287
-- next research target = POST285_CANONICAL_SECULAR_RAY_PRIME_FREE_F04_AND_FULL_ARITHMETIC_SOURCE_INEQUALITY
-- required new information = INDEPENDENT_FULL_ARITHMETIC_SOURCE_RESTRICTION_ON_THE_RESOLVENT_SELECTED_CONTACT_RAY
-- RH-sufficient terminal formulations are not counted as independent sub-RH progress
-
-FRAMEWORK / GRAPH STATE
-- PR #270 = FFBBP 1.7 / OoL-MVS 2.7.7 framework architecture authority
-- post-#276 exactified source-only theorem/lemma roots = 711
-- post-#276 FFBBP source-only module cohorts = 212
-- post-#276 OoL theorem-value-erased frontier contacts = 522
-- post-#276 RHKG relations = 311826
-- framework output -> Lean theorem authority = FORBIDDEN
-
-RESEARCH / CONTROL FIREWALL
-- latest independent bounded research evidence = PR #223
-- merged first-contact atlas evidence = PR #273 / EXPERIMENTAL_SIGNAL_ONLY
-- frozen Control-v2 semantic authority = PR #117
-- selected formal first break = E4A4-SCHUR-FB-05 (historical/frozen control semantics)
-- R003 phase = DISCOVERY
-- confirmatory execution = NOT AUTHORIZED
-- terminal claim = RH_OPEN
-<!-- RHRC_CURRENT_STATE_END -->
 
 ## Post-#287 override
 

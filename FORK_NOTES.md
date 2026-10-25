@@ -1,3 +1,5 @@
+# Fork notes — RHRC current state through merged theorem PR #272 and framework PR #270
+
 <!-- OPICA_AGENT_NAVIGATION_2026_10_22 -->
 ## Current fork navigation — 22 October 2026
 
@@ -19,8 +21,6 @@ compiler/CI evidence determines what is proved. Graph/framework views do not.
 RH, Step 4 and the independent closing inequalities remain OPEN.
 
 ---
-
-# Fork notes — RHRC current state through merged theorem PR #272 and framework PR #270
 
 > **RH remains OPEN.**
 

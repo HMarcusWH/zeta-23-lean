@@ -1,3 +1,5 @@
+# RHRC formal audit — merged theorem authority PR #272; research evidence PR #223
+
 <!-- OPICA_AGENT_NAVIGATION_2026_10_22 -->
 ## Current audit routing — 22 October 2026
 
@@ -19,8 +21,6 @@ compiler/CI evidence determines what is proved. Graph/framework views do not.
 RH, Step 4 and the independent closing inequalities remain OPEN.
 
 ---
-
-# RHRC formal audit — merged theorem authority PR #272; research evidence PR #223
 
 > **RH remains OPEN.**
 

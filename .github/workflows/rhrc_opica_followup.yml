@@ -21,7 +21,7 @@ env:
 jobs:
   followup-contract:
     name: followup-contract
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
@@ -43,7 +43,7 @@ jobs:
   followup-regression:
     name: followup-regression
     needs: followup-contract
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
@@ -83,7 +83,7 @@ jobs:
     # Compile actual mathematics even when independent preflight metadata is
     # red. The failed preparation still remains a required failing gate.
     if: ${{ always() && !cancelled() }}
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 180
     strategy:
       fail-fast: false
@@ -698,7 +698,7 @@ jobs:
   followup-aggregate:
     name: followup-aggregate
     needs: [followup-contract, followup-regression, followup-formal]
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 360
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
@@ -755,7 +755,7 @@ jobs:
   followup-generated:
     name: followup-generated
     needs: followup-aggregate
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 360
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
@@ -784,7 +784,7 @@ jobs:
   followup-research-delta:
     name: followup-research-delta
     needs: followup-aggregate
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 360
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
@@ -828,7 +828,7 @@ jobs:
     name: followup-summary
     needs: [followup-contract, followup-regression, followup-formal, followup-aggregate, followup-generated, followup-research-delta]
     if: always()
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
