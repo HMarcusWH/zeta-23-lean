@@ -1,0 +1,15 @@
+C:/Users/macka/.codex/.chatgpt-projects/g-p-6a353c7268b08191b685956e466d73e4/work/opica-stage2-2026-10-22/weighted/WeightedMixing.lean:68:4: error(lean.unknownIdentifier): Unknown constant `MeasureTheory.Measure.withDensity_apply`
+C:/Users/macka/.codex/.chatgpt-projects/g-p-6a353c7268b08191b685956e466d73e4/work/opica-stage2-2026-10-22/weighted/WeightedMixing.lean:66:51: error: unsolved goals
+mu : Measure ℝ
+inst✝ : SFinite mu
+⊢ ((mu.prod Measure.count).withDensity mixtureAmplitude) (mixtureLatticePoint ⁻¹' {0}) =
+    ∫⁻ (t : ℝ), ENNReal.ofReal (Real.exp (t / 2)) ∂mu
+C:/Users/macka/.codex/.chatgpt-projects/g-p-6a353c7268b08191b685956e466d73e4/work/opica-stage2-2026-10-22/weighted/WeightedMixing.lean:77:4: error(lean.unknownIdentifier): Unknown constant `MeasureTheory.Measure.withDensity_apply`
+C:/Users/macka/.codex/.chatgpt-projects/g-p-6a353c7268b08191b685956e466d73e4/work/opica-stage2-2026-10-22/weighted/WeightedMixing.lean:74:71: error: unsolved goals
+mu : Measure ℝ
+inst✝ : SFinite mu
+s : Set ℝ
+hs : MeasurableSet s
+hpre : MeasurableSet (mixtureLatticePoint ⁻¹' s)
+⊢ ((mu.prod Measure.count).withDensity mixtureAmplitude) (mixtureLatticePoint ⁻¹' s) =
+    ∫⁻ (t : ℝ), (dilatedCombMeasure t) s ∂mu

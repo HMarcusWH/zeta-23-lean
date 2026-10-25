@@ -1,0 +1,197 @@
+{
+  "schema": "OPICA_STAGE1_IMPLEMENTATION_CROSSWALK_V1",
+  "id": "STAGE1_2026_10_22_01",
+  "role": "Versioned implementation/proof provenance; no frozen mathematical scope amendment",
+  "original_primary_roots": 100,
+  "acceptance_units": 28,
+  "frozen_statement_changes": [],
+  "new_assumptions": [],
+  "new_mandatory_roots": [],
+  "rows": [
+    {
+      "root": "Zeta23.OPICAFollowup.laguerre_tail_norm",
+      "paper_ids": [
+        "J5.2",
+        "MS1"
+      ],
+      "path": "Zeta23/OPICAFollowup/MultiplicityTail.lean",
+      "source_sha256": "4fff73ef0f59ae602cfafcbdc9d3fa557316aedaf75429e27be19566a7d3926a",
+      "frozen_contract_sha256": "1263681afe4037c0ea3b7611b645f47660f5bdcee61ca19f8ab784790119bb3d",
+      "evidence": [
+        "evidence/current-codex/stage1/multiplicity/LAGUERRE_STATUS.json"
+      ],
+      "frozen_project_imports": [
+        "Zeta23.OPICAFollowup.AuxiliaryCompletions",
+        "Zeta23.OPICAFollowup.UniformSourceBounds",
+        "Zeta23.ExceptionalZero.NativeActualInputZeroJets"
+      ],
+      "actual_direct_imports": [
+        "Zeta23.OPICAFollowup.AuxiliaryCompletions",
+        "Zeta23.OPICAFollowup.UniformSourceBounds",
+        "Zeta23.ExceptionalZero.NativeActualInputZeroJets",
+        "Mathlib.Analysis.Calculus.Deriv.Polynomial",
+        "Mathlib.MeasureTheory.Integral.Gamma",
+        "Mathlib.MeasureTheory.Function.L2Space"
+      ],
+      "added_project_imports": [],
+      "omitted_planned_project_imports": [],
+      "scope": "Full named narrow primary; other required roots/interfaces in the same module remain separate",
+      "global_dependency_reconciliation": "OPEN_FULL_COMPILER_DAG_AND_MANIFEST_REVIEW_REQUIRED",
+      "supporting_dependency_review": {
+        "reason": "Correct the Mathlib L2Space import and derive Rodrigues/orthogonality/exact norm using actual integrals. Project imports match the frozen plan.",
+        "supporting_lemmas": [
+          "laguerre_iterated_ibp",
+          "monicLaguerre_orthogonality",
+          "monicLaguerre_exact_norm_sq",
+          "monicLaguerreTail_integral_norm_sq"
+        ],
+        "downstream_open": [
+          "native_auxiliary_top_moment",
+          "native_auxiliary_tail_residual_lower",
+          "native_terminal_memory_lower"
+        ]
+      },
+      "dependency_review_authority": "Manual proof/implementation crosswalk, not a compiler-derived USES_CONSTANT edge set"
+    },
+    {
+      "root": "Zeta23.OPICAFollowup.dilated_comb_fourier",
+      "paper_ids": [
+        "R1-HT1",
+        "R1-CT1",
+        "R1-CP1"
+      ],
+      "path": "Zeta23/OPICAFollowup/DilatedComb.lean",
+      "source_sha256": "6fd8a4016305e8898b58c64c38807b50d417e5a763487d5ccad5c6cabd4ecfc1",
+      "frozen_contract_sha256": "39f466e74af1e0f3ec70ce1cc814519ec17b57ae0abf7d3513e002ef2b9fdc64",
+      "evidence": [
+        "evidence/current-codex/stage1/comb/STATUS.json"
+      ],
+      "frozen_project_imports": [
+        "Zeta23.OPICAFollowup.ComplexLocalMeasures",
+        "Zeta23.OPICA.SincTriangle"
+      ],
+      "actual_direct_imports": [
+        "Zeta23.OPICAFollowup.ComplexLocalMeasures",
+        "Zeta23.OPICA.SincTriangle",
+        "Mathlib.MeasureTheory.Measure.Count",
+        "Mathlib.MeasureTheory.Integral.Bochner.SumMeasure",
+        "Mathlib.Analysis.Fourier.PoissonSummation",
+        "Mathlib.Analysis.Distribution.SchwartzSpace.Fourier",
+        "Mathlib.Tactic"
+      ],
+      "added_project_imports": [],
+      "omitted_planned_project_imports": [],
+      "scope": "Full named narrow primary; other required roots/interfaces in the same module remain separate",
+      "global_dependency_reconciliation": "OPEN_FULL_COMPILER_DAG_AND_MANIFEST_REVIEW_REQUIRED",
+      "supporting_dependency_review": {
+        "reason": "Restore the planned SincTriangle import; derive local growth from counting, then apply genuine Schwartz scaling through a continuous linear equivalence and Poisson summation. No new project import.",
+        "supporting_lemmas": [
+          "scaledLatticeMeasure_interval_bound",
+          "dilatedCombDistribution_apply",
+          "scaled_poisson_schwartz",
+          "dilatedCombMeasure_origin"
+        ],
+        "downstream_open": [
+          "weighted_mixture_exists_fourier",
+          "weighted_mobius_inverse",
+          "renormalized_copoisson_tempered_family"
+        ]
+      },
+      "dependency_review_authority": "Manual proof/implementation crosswalk, not a compiler-derived USES_CONSTANT edge set"
+    },
+    {
+      "root": "Zeta23.OPICAFollowup.zero_measure_first_cell_sign",
+      "paper_ids": [
+        "R1-CP1"
+      ],
+      "path": "Zeta23/OPICAFollowup/RenormalizedCoPoisson.lean",
+      "source_sha256": "ad5546231c74696031e5980dac9b8b445d6ff388326679fd4f8fbd68dedda39f",
+      "frozen_contract_sha256": "157b43b7080125799fa7a5b0b2d945f28d37e382dcc592375b7e00debf90c7ee",
+      "evidence": [
+        "evidence/current-codex/stage1/first-cell/STATUS.json"
+      ],
+      "frozen_project_imports": [
+        "Zeta23.OPICAFollowup.DilatedComb"
+      ],
+      "actual_direct_imports": [
+        "Zeta23.OPICAFollowup.ComplexLocalMeasures",
+        "Zeta23.ExceptionalZero.ZetaRealStripNonvanishing",
+        "Mathlib.Analysis.SpecialFunctions.Complex.Log",
+        "Mathlib.Analysis.SpecialFunctions.Trigonometric.Complex",
+        "Mathlib.Analysis.SpecialFunctions.Trigonometric.DerivHyp",
+        "Mathlib.Analysis.Real.Pi.Bounds",
+        "Mathlib.Tactic"
+      ],
+      "added_project_imports": [
+        "Zeta23.ExceptionalZero.ZetaRealStripNonvanishing",
+        "Zeta23.OPICAFollowup.ComplexLocalMeasures"
+      ],
+      "omitted_planned_project_imports": [
+        "Zeta23.OPICAFollowup.DilatedComb"
+      ],
+      "scope": "Full named narrow primary; other required roots/interfaces in the same module remain separate",
+      "global_dependency_reconciliation": "OPEN_FULL_COMPILER_DAG_AND_MANIFEST_REVIEW_REQUIRED",
+      "supporting_dependency_review": {
+        "reason": "This primary proves the literal finite-sum first-cell formula directly, using ComplexLocalMeasures and actual zeta-strip nonvanishing. The planned DilatedComb import is still needed by the absent global construction; its omission here does not certify that construction or the full module interface.",
+        "supporting_lemmas": [
+          "coPoisson_first_cell_sum",
+          "coPoisson_first_cell_exp",
+          "coPoisson_first_cell_real",
+          "coPoisson_phase_both_signs"
+        ],
+        "downstream_open": [
+          "renormalized_copoisson_tempered_family",
+          "renormalized_copoisson_order_zero",
+          "zero_measure_exact_properties",
+          "actual_zero_measure_span_consumer"
+        ]
+      },
+      "dependency_review_authority": "Manual proof/implementation crosswalk, not a compiler-derived USES_CONSTANT edge set"
+    },
+    {
+      "root": "Zeta23.OPICAFollowup.first_cell_negative_mass_cost",
+      "paper_ids": [
+        "R2-H3"
+      ],
+      "path": "Zeta23/OPICAFollowup/FirstCellCost.lean",
+      "source_sha256": "badaa178fb17a03b71b01bbf17372ee73688fcb5f8607cb5a47c0f55412ceeeb",
+      "frozen_contract_sha256": "ae8f42a5286e065bc4da3c070e9dece9dd299ffcfabff0bcf4dbc2deb4c4bca9",
+      "evidence": [
+        "evidence/current-codex/stage1/first-cell/STATUS.json"
+      ],
+      "frozen_project_imports": [
+        "Zeta23.OPICAFollowup.RenormalizedCoPoisson"
+      ],
+      "actual_direct_imports": [
+        "Zeta23.OPICAFollowup.RenormalizedCoPoisson",
+        "Zeta23.OPICA.SignedHeatSeparator",
+        "Mathlib.Analysis.Real.Pi.Bounds",
+        "Mathlib.Analysis.SpecialFunctions.Trigonometric.Bounds",
+        "Mathlib.MeasureTheory.Integral.IntervalIntegral.IntegrationByParts",
+        "Mathlib.Tactic"
+      ],
+      "added_project_imports": [
+        "Zeta23.OPICA.SignedHeatSeparator"
+      ],
+      "omitted_planned_project_imports": [],
+      "scope": "Full named narrow primary; other required roots/interfaces in the same module remain separate",
+      "global_dependency_reconciliation": "OPEN_FULL_COMPILER_DAG_AND_MANIFEST_REVIEW_REQUIRED",
+      "supporting_dependency_review": {
+        "reason": "The added accepted SignedHeatSeparator import supplies the genuine pi-normalized sinc-squared weight and inequalities; all density and interval estimates are derived from the literal finite sum.",
+        "supporting_lemmas": [
+          "firstCell_density_upper",
+          "firstCell_interval_integrable",
+          "firstCell_sinc_lower"
+        ],
+        "downstream_open": [
+          "fixed_basis_negative_mass_budget",
+          "actual_zero_measure_span_consumer"
+        ]
+      },
+      "dependency_review_authority": "Manual proof/implementation crosswalk, not a compiler-derived USES_CONSTANT edge set"
+    }
+  ],
+  "full_release_accepted": false,
+  "RH": "OPEN",
+  "Step4": "OPEN"
+}

@@ -1,0 +1,180 @@
+{
+  "schema": "OPICA_STAGE21_PAPER_UNIT_COVERAGE_ONLY_V1",
+  "ledger_sha256": "5af21a7274a94005b66950715d425e25de20b7feafcf0455962d832389891168",
+  "counts": {
+    "COMPLETE_HISTORICAL_OR_NARROW_EVIDENCE_ONLY": 28
+  },
+  "units": {
+    "F1": {
+      "state": "COMPLETE_HISTORICAL_OR_NARROW_EVIDENCE_ONLY",
+      "root_count": 6,
+      "missing_bodies": [],
+      "full_contract_unit_acceptance": false
+    },
+    "F2": {
+      "state": "COMPLETE_HISTORICAL_OR_NARROW_EVIDENCE_ONLY",
+      "root_count": 8,
+      "missing_bodies": [],
+      "full_contract_unit_acceptance": false
+    },
+    "F3": {
+      "state": "COMPLETE_HISTORICAL_OR_NARROW_EVIDENCE_ONLY",
+      "root_count": 5,
+      "missing_bodies": [],
+      "full_contract_unit_acceptance": false
+    },
+    "J5.2": {
+      "state": "COMPLETE_HISTORICAL_OR_NARROW_EVIDENCE_ONLY",
+      "root_count": 18,
+      "missing_bodies": [],
+      "full_contract_unit_acceptance": false
+    },
+    "MS1": {
+      "state": "COMPLETE_HISTORICAL_OR_NARROW_EVIDENCE_ONLY",
+      "root_count": 11,
+      "missing_bodies": [],
+      "full_contract_unit_acceptance": false
+    },
+    "R1-AT1": {
+      "state": "COMPLETE_HISTORICAL_OR_NARROW_EVIDENCE_ONLY",
+      "root_count": 6,
+      "missing_bodies": [],
+      "full_contract_unit_acceptance": false
+    },
+    "R1-AT2": {
+      "state": "COMPLETE_HISTORICAL_OR_NARROW_EVIDENCE_ONLY",
+      "root_count": 2,
+      "missing_bodies": [],
+      "full_contract_unit_acceptance": false
+    },
+    "R1-CP1": {
+      "state": "COMPLETE_HISTORICAL_OR_NARROW_EVIDENCE_ONLY",
+      "root_count": 7,
+      "missing_bodies": [],
+      "full_contract_unit_acceptance": false
+    },
+    "R1-CT1": {
+      "state": "COMPLETE_HISTORICAL_OR_NARROW_EVIDENCE_ONLY",
+      "root_count": 3,
+      "missing_bodies": [],
+      "full_contract_unit_acceptance": false
+    },
+    "R1-HT1": {
+      "state": "COMPLETE_HISTORICAL_OR_NARROW_EVIDENCE_ONLY",
+      "root_count": 5,
+      "missing_bodies": [],
+      "full_contract_unit_acceptance": false
+    },
+    "R1-HT2": {
+      "state": "COMPLETE_HISTORICAL_OR_NARROW_EVIDENCE_ONLY",
+      "root_count": 2,
+      "missing_bodies": [],
+      "full_contract_unit_acceptance": false
+    },
+    "R1-MC1": {
+      "state": "COMPLETE_HISTORICAL_OR_NARROW_EVIDENCE_ONLY",
+      "root_count": 1,
+      "missing_bodies": [],
+      "full_contract_unit_acceptance": false
+    },
+    "R1-NB1": {
+      "state": "COMPLETE_HISTORICAL_OR_NARROW_EVIDENCE_ONLY",
+      "root_count": 12,
+      "missing_bodies": [],
+      "full_contract_unit_acceptance": false
+    },
+    "R2-H1": {
+      "state": "COMPLETE_HISTORICAL_OR_NARROW_EVIDENCE_ONLY",
+      "root_count": 4,
+      "missing_bodies": [],
+      "full_contract_unit_acceptance": false
+    },
+    "R2-H2a": {
+      "state": "COMPLETE_HISTORICAL_OR_NARROW_EVIDENCE_ONLY",
+      "root_count": 2,
+      "missing_bodies": [],
+      "full_contract_unit_acceptance": false
+    },
+    "R2-H2b": {
+      "state": "COMPLETE_HISTORICAL_OR_NARROW_EVIDENCE_ONLY",
+      "root_count": 3,
+      "missing_bodies": [],
+      "full_contract_unit_acceptance": false
+    },
+    "R2-H3": {
+      "state": "COMPLETE_HISTORICAL_OR_NARROW_EVIDENCE_ONLY",
+      "root_count": 1,
+      "missing_bodies": [],
+      "full_contract_unit_acceptance": false
+    },
+    "R2-J1": {
+      "state": "COMPLETE_HISTORICAL_OR_NARROW_EVIDENCE_ONLY",
+      "root_count": 4,
+      "missing_bodies": [],
+      "full_contract_unit_acceptance": false
+    },
+    "R2-O1": {
+      "state": "COMPLETE_HISTORICAL_OR_NARROW_EVIDENCE_ONLY",
+      "root_count": 2,
+      "missing_bodies": [],
+      "full_contract_unit_acceptance": false
+    },
+    "R2-O2": {
+      "state": "COMPLETE_HISTORICAL_OR_NARROW_EVIDENCE_ONLY",
+      "root_count": 4,
+      "missing_bodies": [],
+      "full_contract_unit_acceptance": false
+    },
+    "R2-Q1a": {
+      "state": "COMPLETE_HISTORICAL_OR_NARROW_EVIDENCE_ONLY",
+      "root_count": 1,
+      "missing_bodies": [],
+      "full_contract_unit_acceptance": false
+    },
+    "R2-Q1b": {
+      "state": "COMPLETE_HISTORICAL_OR_NARROW_EVIDENCE_ONLY",
+      "root_count": 1,
+      "missing_bodies": [],
+      "full_contract_unit_acceptance": false
+    },
+    "R2-Q2": {
+      "state": "COMPLETE_HISTORICAL_OR_NARROW_EVIDENCE_ONLY",
+      "root_count": 4,
+      "missing_bodies": [],
+      "full_contract_unit_acceptance": false
+    },
+    "R2-Q3": {
+      "state": "COMPLETE_HISTORICAL_OR_NARROW_EVIDENCE_ONLY",
+      "root_count": 9,
+      "missing_bodies": [],
+      "full_contract_unit_acceptance": false
+    },
+    "R2-S1a": {
+      "state": "COMPLETE_HISTORICAL_OR_NARROW_EVIDENCE_ONLY",
+      "root_count": 3,
+      "missing_bodies": [],
+      "full_contract_unit_acceptance": false
+    },
+    "R2-S1b": {
+      "state": "COMPLETE_HISTORICAL_OR_NARROW_EVIDENCE_ONLY",
+      "root_count": 4,
+      "missing_bodies": [],
+      "full_contract_unit_acceptance": false
+    },
+    "R2-S2": {
+      "state": "COMPLETE_HISTORICAL_OR_NARROW_EVIDENCE_ONLY",
+      "root_count": 3,
+      "missing_bodies": [],
+      "full_contract_unit_acceptance": false
+    },
+    "R2-S3": {
+      "state": "COMPLETE_HISTORICAL_OR_NARROW_EVIDENCE_ONLY",
+      "root_count": 4,
+      "missing_bodies": [],
+      "full_contract_unit_acceptance": false
+    }
+  },
+  "aggregate_accepted": false,
+  "formal_unit_acceptance_established": false,
+  "physical_interface_findings_still_open": true
+}

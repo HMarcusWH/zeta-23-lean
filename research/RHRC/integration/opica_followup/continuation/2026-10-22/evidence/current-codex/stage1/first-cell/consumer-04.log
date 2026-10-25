@@ -1,0 +1,9 @@
+'Zeta23.OPICAFollowup.zero_measure_first_cell_sign' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.OPICAFollowup.first_cell_negative_mass_cost' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OPICAStageOneExpected.expected_actual_zero_first_cell_cost' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OPICAStageOneExpected.expected_online_imaginary_projection_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'OPICAStageOneExpected.expected_conjugate_pair_first_cell_cancellation' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

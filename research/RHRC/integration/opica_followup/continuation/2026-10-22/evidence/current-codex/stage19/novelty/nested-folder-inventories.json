@@ -1,0 +1,1531 @@
+[
+  {
+    "key": "delivery",
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "Action completed."
+        }
+      ],
+      "structuredContent": {
+        "files": [
+          {
+            "id": "1yQo0-r5tiMxDNkVwt5k4tGtht2ZzRjJr",
+            "title": "run_lean_checks.py",
+            "mime_type": "text/x-python",
+            "size": "7132",
+            "url": "https://drive.google.com/file/d/1yQo0-r5tiMxDNkVwt5k4tGtht2ZzRjJr/view?usp=drivesdk",
+            "display_url": "https://drive.google.com/file/d/1yQo0-r5tiMxDNkVwt5k4tGtht2ZzRjJr/view?usp=drivesdk",
+            "file_or_folder": "file",
+            "created_time": "2026-10-21T20:01:32.440Z",
+            "modified_time": "2026-10-21T20:01:32.440Z",
+            "parent_ids": null,
+            "drive_id": null,
+            "current_user_can_share": null,
+            "has_augmented_permissions": null,
+            "shared": false,
+            "permissions": null,
+            "source_visibility_status": "not_shared",
+            "can_download": true,
+            "can_list_children": false
+          },
+          {
+            "id": "1q70ZTLANsAwpwF94-mDRF6sp2wrjt8nL",
+            "title": "continue_from_wip.patch",
+            "mime_type": "text/x-diff",
+            "size": "76880",
+            "url": "https://drive.google.com/file/d/1q70ZTLANsAwpwF94-mDRF6sp2wrjt8nL/view?usp=drivesdk",
+            "display_url": "https://drive.google.com/file/d/1q70ZTLANsAwpwF94-mDRF6sp2wrjt8nL/view?usp=drivesdk",
+            "file_or_folder": "file",
+            "created_time": "2026-10-21T20:01:26.884Z",
+            "modified_time": "2026-10-21T20:01:26.884Z",
+            "parent_ids": null,
+            "drive_id": null,
+            "current_user_can_share": null,
+            "has_augmented_permissions": null,
+            "shared": false,
+            "permissions": null,
+            "source_visibility_status": "not_shared",
+            "can_download": true,
+            "can_list_children": false
+          },
+          {
+            "id": "1vyuKS1lZhFxD3h_TrrVFkTF5n1QzD-HO",
+            "title": "continue_from_checkpoint.patch",
+            "mime_type": "text/x-diff",
+            "size": "148757",
+            "url": "https://drive.google.com/file/d/1vyuKS1lZhFxD3h_TrrVFkTF5n1QzD-HO/view?usp=drivesdk",
+            "display_url": "https://drive.google.com/file/d/1vyuKS1lZhFxD3h_TrrVFkTF5n1QzD-HO/view?usp=drivesdk",
+            "file_or_folder": "file",
+            "created_time": "2026-10-21T20:01:22.033Z",
+            "modified_time": "2026-10-21T20:01:22.033Z",
+            "parent_ids": null,
+            "drive_id": null,
+            "current_user_can_share": null,
+            "has_augmented_permissions": null,
+            "shared": false,
+            "permissions": null,
+            "source_visibility_status": "not_shared",
+            "can_download": true,
+            "can_list_children": false
+          },
+          {
+            "id": "1RFcJ_23jAL6InFbZOTIQn3oB37UnGPxX",
+            "title": "apply_overlay.py",
+            "mime_type": "text/x-python",
+            "size": "3630",
+            "url": "https://drive.google.com/file/d/1RFcJ_23jAL6InFbZOTIQn3oB37UnGPxX/view?usp=drivesdk",
+            "display_url": "https://drive.google.com/file/d/1RFcJ_23jAL6InFbZOTIQn3oB37UnGPxX/view?usp=drivesdk",
+            "file_or_folder": "file",
+            "created_time": "2026-10-21T20:01:16.339Z",
+            "modified_time": "2026-10-21T20:01:16.339Z",
+            "parent_ids": null,
+            "drive_id": null,
+            "current_user_can_share": null,
+            "has_augmented_permissions": null,
+            "shared": false,
+            "permissions": null,
+            "source_visibility_status": "not_shared",
+            "can_download": true,
+            "can_list_children": false
+          },
+          {
+            "id": "1D6Of8UKjpgwh2__QbjV8MAPH0AdlsMzr",
+            "title": "RESULTS.json",
+            "mime_type": "application/json",
+            "size": "2120",
+            "url": "https://drive.google.com/file/d/1D6Of8UKjpgwh2__QbjV8MAPH0AdlsMzr/view?usp=drivesdk",
+            "display_url": "https://drive.google.com/file/d/1D6Of8UKjpgwh2__QbjV8MAPH0AdlsMzr/view?usp=drivesdk",
+            "file_or_folder": "file",
+            "created_time": "2026-10-21T20:01:12.073Z",
+            "modified_time": "2026-10-21T20:01:12.073Z",
+            "parent_ids": null,
+            "drive_id": null,
+            "current_user_can_share": null,
+            "has_augmented_permissions": null,
+            "shared": false,
+            "permissions": null,
+            "source_visibility_status": "not_shared",
+            "can_download": true,
+            "can_list_children": false
+          },
+          {
+            "id": "1jhRiLXeESMv29ppvHErSV230kX7emgnW",
+            "title": "RELEASE_MANIFEST.json",
+            "mime_type": "application/json",
+            "size": "6991",
+            "url": "https://drive.google.com/file/d/1jhRiLXeESMv29ppvHErSV230kX7emgnW/view?usp=drivesdk",
+            "display_url": "https://drive.google.com/file/d/1jhRiLXeESMv29ppvHErSV230kX7emgnW/view?usp=drivesdk",
+            "file_or_folder": "file",
+            "created_time": "2026-10-21T20:01:07.040Z",
+            "modified_time": "2026-10-21T20:01:07.040Z",
+            "parent_ids": null,
+            "drive_id": null,
+            "current_user_can_share": null,
+            "has_augmented_permissions": null,
+            "shared": false,
+            "permissions": null,
+            "source_visibility_status": "not_shared",
+            "can_download": true,
+            "can_list_children": false
+          },
+          {
+            "id": "1TkHHqNNFhaX1zWpx19asYYfdxjMzalkP",
+            "title": "README.md",
+            "mime_type": "text/markdown",
+            "size": "8319",
+            "url": "https://drive.google.com/file/d/1TkHHqNNFhaX1zWpx19asYYfdxjMzalkP/view?usp=drivesdk",
+            "display_url": "https://drive.google.com/file/d/1TkHHqNNFhaX1zWpx19asYYfdxjMzalkP/view?usp=drivesdk",
+            "file_or_folder": "file",
+            "created_time": "2026-10-21T20:01:03.159Z",
+            "modified_time": "2026-10-21T20:01:03.159Z",
+            "parent_ids": null,
+            "drive_id": null,
+            "current_user_can_share": null,
+            "has_augmented_permissions": null,
+            "shared": false,
+            "permissions": null,
+            "source_visibility_status": "not_shared",
+            "can_download": true,
+            "can_list_children": false
+          },
+          {
+            "id": "13xWpjXuy1sTitHXhUCiBlSI4UcoLE4Es",
+            "title": "POST_GREEN_RESEARCH.md",
+            "mime_type": "text/markdown",
+            "size": "6281",
+            "url": "https://drive.google.com/file/d/13xWpjXuy1sTitHXhUCiBlSI4UcoLE4Es/view?usp=drivesdk",
+            "display_url": "https://drive.google.com/file/d/13xWpjXuy1sTitHXhUCiBlSI4UcoLE4Es/view?usp=drivesdk",
+            "file_or_folder": "file",
+            "created_time": "2026-10-21T20:00:59.180Z",
+            "modified_time": "2026-10-21T20:00:59.180Z",
+            "parent_ids": null,
+            "drive_id": null,
+            "current_user_can_share": null,
+            "has_augmented_permissions": null,
+            "shared": false,
+            "permissions": null,
+            "source_visibility_status": "not_shared",
+            "can_download": true,
+            "can_list_children": false
+          },
+          {
+            "id": "1ItH46Lbs7TfWuqcOoPaLZvaV_4SNV6Fa",
+            "title": "PAPER_PROOFS.md",
+            "mime_type": "text/markdown",
+            "size": "15317",
+            "url": "https://drive.google.com/file/d/1ItH46Lbs7TfWuqcOoPaLZvaV_4SNV6Fa/view?usp=drivesdk",
+            "display_url": "https://drive.google.com/file/d/1ItH46Lbs7TfWuqcOoPaLZvaV_4SNV6Fa/view?usp=drivesdk",
+            "file_or_folder": "file",
+            "created_time": "2026-10-21T20:00:51.816Z",
+            "modified_time": "2026-10-21T20:00:51.816Z",
+            "parent_ids": null,
+            "drive_id": null,
+            "current_user_can_share": null,
+            "has_augmented_permissions": null,
+            "shared": false,
+            "permissions": null,
+            "source_visibility_status": "not_shared",
+            "can_download": true,
+            "can_list_children": false
+          },
+          {
+            "id": "1NRKnpOD5VFM8ZA9i7vW77VDSph8JqDf7",
+            "title": "OVERLAY_MANIFEST.json",
+            "mime_type": "application/json",
+            "size": "2825",
+            "url": "https://drive.google.com/file/d/1NRKnpOD5VFM8ZA9i7vW77VDSph8JqDf7/view?usp=drivesdk",
+            "display_url": "https://drive.google.com/file/d/1NRKnpOD5VFM8ZA9i7vW77VDSph8JqDf7/view?usp=drivesdk",
+            "file_or_folder": "file",
+            "created_time": "2026-10-21T20:00:46.092Z",
+            "modified_time": "2026-10-21T20:00:46.092Z",
+            "parent_ids": null,
+            "drive_id": null,
+            "current_user_can_share": null,
+            "has_augmented_permissions": null,
+            "shared": false,
+            "permissions": null,
+            "source_visibility_status": "not_shared",
+            "can_download": true,
+            "can_list_children": false
+          },
+          {
+            "id": "1qo8cVAKQXSGignVC8TOP8TXscRJLg7l5",
+            "title": "DEPENDENCY_REVIEW.json",
+            "mime_type": "application/json",
+            "size": "909",
+            "url": "https://drive.google.com/file/d/1qo8cVAKQXSGignVC8TOP8TXscRJLg7l5/view?usp=drivesdk",
+            "display_url": "https://drive.google.com/file/d/1qo8cVAKQXSGignVC8TOP8TXscRJLg7l5/view?usp=drivesdk",
+            "file_or_folder": "file",
+            "created_time": "2026-10-21T20:00:41.731Z",
+            "modified_time": "2026-10-21T20:00:41.731Z",
+            "parent_ids": null,
+            "drive_id": null,
+            "current_user_can_share": null,
+            "has_augmented_permissions": null,
+            "shared": false,
+            "permissions": null,
+            "source_visibility_status": "not_shared",
+            "can_download": true,
+            "can_list_children": false
+          },
+          {
+            "id": "1uFyiPel9wIw2tzhSh5jjkkOkYIoeSwqu",
+            "title": "overlay",
+            "mime_type": "application/vnd.google-apps.folder",
+            "size": null,
+            "url": "https://drive.google.com/drive/folders/1uFyiPel9wIw2tzhSh5jjkkOkYIoeSwqu",
+            "display_url": "https://drive.google.com/drive/folders/1uFyiPel9wIw2tzhSh5jjkkOkYIoeSwqu",
+            "file_or_folder": "folder",
+            "created_time": "2026-10-21T19:57:25.946Z",
+            "modified_time": "2026-10-21T19:57:25.946Z",
+            "parent_ids": null,
+            "drive_id": null,
+            "current_user_can_share": null,
+            "has_augmented_permissions": null,
+            "shared": false,
+            "permissions": null,
+            "source_visibility_status": "not_shared",
+            "can_download": true,
+            "can_list_children": true
+          },
+          {
+            "id": "1dUASMrG17DqaFXHq_vzXKI0kIRQttsUP",
+            "title": "fragments",
+            "mime_type": "application/vnd.google-apps.folder",
+            "size": null,
+            "url": "https://drive.google.com/drive/folders/1dUASMrG17DqaFXHq_vzXKI0kIRQttsUP",
+            "display_url": "https://drive.google.com/drive/folders/1dUASMrG17DqaFXHq_vzXKI0kIRQttsUP",
+            "file_or_folder": "folder",
+            "created_time": "2026-10-21T19:57:23.655Z",
+            "modified_time": "2026-10-21T19:57:23.655Z",
+            "parent_ids": null,
+            "drive_id": null,
+            "current_user_can_share": null,
+            "has_augmented_permissions": null,
+            "shared": false,
+            "permissions": null,
+            "source_visibility_status": "not_shared",
+            "can_download": true,
+            "can_list_children": true
+          },
+          {
+            "id": "1WhZ2Lr0Tr_Uk60tZpau-YI7mNeVs1UWu",
+            "title": "evidence",
+            "mime_type": "application/vnd.google-apps.folder",
+            "size": null,
+            "url": "https://drive.google.com/drive/folders/1WhZ2Lr0Tr_Uk60tZpau-YI7mNeVs1UWu",
+            "display_url": "https://drive.google.com/drive/folders/1WhZ2Lr0Tr_Uk60tZpau-YI7mNeVs1UWu",
+            "file_or_folder": "folder",
+            "created_time": "2026-10-21T19:57:21.616Z",
+            "modified_time": "2026-10-21T19:57:21.616Z",
+            "parent_ids": null,
+            "drive_id": null,
+            "current_user_can_share": null,
+            "has_augmented_permissions": null,
+            "shared": false,
+            "permissions": null,
+            "source_visibility_status": "not_shared",
+            "can_download": true,
+            "can_list_children": true
+          },
+          {
+            "id": "1vf7T7Va8vpv03DGQl8UzsuBK37SeN-k9",
+            "title": "consumers",
+            "mime_type": "application/vnd.google-apps.folder",
+            "size": null,
+            "url": "https://drive.google.com/drive/folders/1vf7T7Va8vpv03DGQl8UzsuBK37SeN-k9",
+            "display_url": "https://drive.google.com/drive/folders/1vf7T7Va8vpv03DGQl8UzsuBK37SeN-k9",
+            "file_or_folder": "folder",
+            "created_time": "2026-10-21T19:57:19.307Z",
+            "modified_time": "2026-10-21T19:57:19.307Z",
+            "parent_ids": null,
+            "drive_id": null,
+            "current_user_can_share": null,
+            "has_augmented_permissions": null,
+            "shared": false,
+            "permissions": null,
+            "source_visibility_status": "not_shared",
+            "can_download": true,
+            "can_list_children": true
+          },
+          {
+            "id": "1gwy99lzXGdET0btz67OHeRepewMzlIdQ",
+            "title": "checks",
+            "mime_type": "application/vnd.google-apps.folder",
+            "size": null,
+            "url": "https://drive.google.com/drive/folders/1gwy99lzXGdET0btz67OHeRepewMzlIdQ",
+            "display_url": "https://drive.google.com/drive/folders/1gwy99lzXGdET0btz67OHeRepewMzlIdQ",
+            "file_or_folder": "folder",
+            "created_time": "2026-10-21T19:57:17.016Z",
+            "modified_time": "2026-10-21T19:57:17.016Z",
+            "parent_ids": null,
+            "drive_id": null,
+            "current_user_can_share": null,
+            "has_augmented_permissions": null,
+            "shared": false,
+            "permissions": null,
+            "source_visibility_status": "not_shared",
+            "can_download": true,
+            "can_list_children": true
+          }
+        ]
+      },
+      "isError": false
+    }
+  },
+  {
+    "key": "inputs",
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "Action completed."
+        }
+      ],
+      "structuredContent": {
+        "files": [
+          {
+            "id": "1bLJ23Qs9-T1gofYhfCdW5JCSvNdOAFcE",
+            "title": "opica-handover-2026-10-21.zip",
+            "mime_type": "application/zip",
+            "size": "88803504",
+            "url": "https://drive.google.com/file/d/1bLJ23Qs9-T1gofYhfCdW5JCSvNdOAFcE/view?usp=drivesdk",
+            "display_url": "https://drive.google.com/file/d/1bLJ23Qs9-T1gofYhfCdW5JCSvNdOAFcE/view?usp=drivesdk",
+            "file_or_folder": "file",
+            "created_time": "2026-10-21T20:06:29.651Z",
+            "modified_time": "2026-10-21T20:06:29.651Z",
+            "parent_ids": null,
+            "drive_id": null,
+            "current_user_can_share": null,
+            "has_augmented_permissions": null,
+            "shared": false,
+            "permissions": null,
+            "source_visibility_status": "not_shared",
+            "can_download": true,
+            "can_list_children": false
+          },
+          {
+            "id": "1Ox30QYan9vUL7i4mFyAvzHg32h0Ftbx9",
+            "title": "OPICA_FOLLOWUP_HANDOVER_2026-10-21.zip",
+            "mime_type": "application/zip",
+            "size": "88766096",
+            "url": "https://drive.google.com/file/d/1Ox30QYan9vUL7i4mFyAvzHg32h0Ftbx9/view?usp=drivesdk",
+            "display_url": "https://drive.google.com/file/d/1Ox30QYan9vUL7i4mFyAvzHg32h0Ftbx9/view?usp=drivesdk",
+            "file_or_folder": "file",
+            "created_time": "2026-10-21T20:06:02.012Z",
+            "modified_time": "2026-10-21T20:06:02.012Z",
+            "parent_ids": null,
+            "drive_id": null,
+            "current_user_can_share": null,
+            "has_augmented_permissions": null,
+            "shared": false,
+            "permissions": null,
+            "source_visibility_status": "not_shared",
+            "can_download": true,
+            "can_list_children": false
+          }
+        ]
+      },
+      "isError": false
+    }
+  },
+  {
+    "key": "mainpaged",
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "Action completed."
+        }
+      ],
+      "structuredContent": {
+        "results": [
+          {
+            "url": "https://drive.google.com/file/d/1vcpulvlN_fwLqbCJaPJFQfQUQeSErFTq/view?usp=drivesdk",
+            "title": "OPICA_FOLLOWUP_PR_BUILD_SPEC_2026-10-21.md",
+            "id": "1vcpulvlN_fwLqbCJaPJFQfQUQeSErFTq",
+            "mime_type": "text/markdown",
+            "size": "120129",
+            "file_or_folder": "file",
+            "created_at": "2026-10-21T12:30:54.079Z",
+            "updated_at": "2026-10-21T12:30:54.079Z",
+            "viewedByMeTime": null,
+            "display_title": "OPICA_FOLLOWUP_PR_BUILD_SPEC_2026-10-21.md",
+            "display_url": "https://drive.google.com/file/d/1vcpulvlN_fwLqbCJaPJFQfQUQeSErFTq/view?usp=drivesdk",
+            "parent_ids": [
+              "1FwRkN6sbJ4_Fhrqe53wpsJtByD2RXILb"
+            ],
+            "shared": false,
+            "can_download": true,
+            "can_list_children": false
+          },
+          {
+            "url": "https://drive.google.com/file/d/1vViEEmJaLUYZAoL5OrEPQeOzkepZtUhS/view?usp=drivesdk",
+            "title": "OPICA_Final_Followup_Paper_Contract_2026-10-21.md",
+            "id": "1vViEEmJaLUYZAoL5OrEPQeOzkepZtUhS",
+            "mime_type": "text/markdown",
+            "size": "3712",
+            "file_or_folder": "file",
+            "created_at": "2026-10-21T03:28:04.572Z",
+            "updated_at": "2026-10-21T03:28:04.572Z",
+            "viewedByMeTime": null,
+            "display_title": "OPICA_Final_Followup_Paper_Contract_2026-10-21.md",
+            "display_url": "https://drive.google.com/file/d/1vViEEmJaLUYZAoL5OrEPQeOzkepZtUhS/view?usp=drivesdk",
+            "parent_ids": [
+              "1FwRkN6sbJ4_Fhrqe53wpsJtByD2RXILb"
+            ],
+            "shared": false,
+            "can_download": true,
+            "can_list_children": false
+          },
+          {
+            "url": "https://drive.google.com/file/d/1RHiWlDXIGTBCRNg-h89ALZqtU4zHBGI9/view?usp=drivesdk",
+            "title": "OPICA_End_to_End_Audit_Report_2026-10-21.md",
+            "id": "1RHiWlDXIGTBCRNg-h89ALZqtU4zHBGI9",
+            "mime_type": "text/markdown",
+            "size": "4218",
+            "file_or_folder": "file",
+            "created_at": "2026-10-21T03:27:49.785Z",
+            "updated_at": "2026-10-21T03:27:49.785Z",
+            "viewedByMeTime": null,
+            "display_title": "OPICA_End_to_End_Audit_Report_2026-10-21.md",
+            "display_url": "https://drive.google.com/file/d/1RHiWlDXIGTBCRNg-h89ALZqtU4zHBGI9/view?usp=drivesdk",
+            "parent_ids": [
+              "1FwRkN6sbJ4_Fhrqe53wpsJtByD2RXILb"
+            ],
+            "shared": false,
+            "can_download": true,
+            "can_list_children": false
+          },
+          {
+            "url": "https://drive.google.com/file/d/1maOApH-lKrmHZgzh85Gq3RTc5Ot9WFwW/view?usp=drivesdk",
+            "title": "OPICA_Followup_Final_Audited_Paper_2026-10-21.md",
+            "id": "1maOApH-lKrmHZgzh85Gq3RTc5Ot9WFwW",
+            "mime_type": "text/markdown",
+            "size": "119213",
+            "file_or_folder": "file",
+            "created_at": "2026-10-21T03:27:26.750Z",
+            "updated_at": "2026-10-21T03:27:26.750Z",
+            "viewedByMeTime": null,
+            "display_title": "OPICA_Followup_Final_Audited_Paper_2026-10-21.md",
+            "display_url": "https://drive.google.com/file/d/1maOApH-lKrmHZgzh85Gq3RTc5Ot9WFwW/view?usp=drivesdk",
+            "parent_ids": [
+              "1FwRkN6sbJ4_Fhrqe53wpsJtByD2RXILb"
+            ],
+            "shared": false,
+            "can_download": true,
+            "can_list_children": false
+          },
+          {
+            "url": "https://drive.google.com/file/d/1hwB3dU1hVe4hbLh5E2Rzta16Ye63k0Sk/view?usp=drivesdk",
+            "title": "OPICA_Followup_Final_Audited_Paper_2026-10-21.pdf",
+            "id": "1hwB3dU1hVe4hbLh5E2Rzta16Ye63k0Sk",
+            "mime_type": "application/pdf",
+            "size": "273314",
+            "file_or_folder": "file",
+            "created_at": "2026-10-21T03:27:17.237Z",
+            "updated_at": "2026-10-21T03:27:17.237Z",
+            "viewedByMeTime": null,
+            "display_title": "OPICA_Followup_Final_Audited_Paper_2026-10-21.pdf",
+            "display_url": "https://drive.google.com/file/d/1hwB3dU1hVe4hbLh5E2Rzta16Ye63k0Sk/view?usp=drivesdk",
+            "parent_ids": [
+              "1FwRkN6sbJ4_Fhrqe53wpsJtByD2RXILb"
+            ],
+            "shared": false,
+            "can_download": true,
+            "can_list_children": false
+          },
+          {
+            "url": "https://drive.google.com/file/d/1oSQIKwbGERKcjHf-MFOMt0pPAtgOfFHK/view?usp=drivesdk",
+            "title": "OPICA_Followup_Paper_Contract_2026-10-21.md",
+            "id": "1oSQIKwbGERKcjHf-MFOMt0pPAtgOfFHK",
+            "mime_type": "text/markdown",
+            "size": "8968",
+            "file_or_folder": "file",
+            "created_at": "2026-10-21T01:20:58.673Z",
+            "updated_at": "2026-10-21T01:20:58.673Z",
+            "viewedByMeTime": null,
+            "display_title": "OPICA_Followup_Paper_Contract_2026-10-21.md",
+            "display_url": "https://drive.google.com/file/d/1oSQIKwbGERKcjHf-MFOMt0pPAtgOfFHK/view?usp=drivesdk",
+            "parent_ids": [
+              "1FwRkN6sbJ4_Fhrqe53wpsJtByD2RXILb"
+            ],
+            "shared": false,
+            "can_download": true,
+            "can_list_children": false
+          },
+          {
+            "url": "https://drive.google.com/file/d/1tZy7fAAVYYgQF5AUAsCmyVK93A6Bx_sU/view?usp=drivesdk",
+            "title": "OPICA_Beyond_PR_Paper_Round2_2026-10-21.md",
+            "id": "1tZy7fAAVYYgQF5AUAsCmyVK93A6Bx_sU",
+            "mime_type": "text/markdown",
+            "size": "55463",
+            "file_or_folder": "file",
+            "created_at": "2026-10-21T01:20:41.797Z",
+            "updated_at": "2026-10-21T01:20:41.797Z",
+            "viewedByMeTime": null,
+            "display_title": "OPICA_Beyond_PR_Paper_Round2_2026-10-21.md",
+            "display_url": "https://drive.google.com/file/d/1tZy7fAAVYYgQF5AUAsCmyVK93A6Bx_sU/view?usp=drivesdk",
+            "parent_ids": [
+              "1FwRkN6sbJ4_Fhrqe53wpsJtByD2RXILb"
+            ],
+            "shared": false,
+            "can_download": true,
+            "can_list_children": false
+          },
+          {
+            "url": "https://drive.google.com/file/d/12dl22hT7otTrRX7rTjF6JvH2Ng2fmOAo/view?usp=drivesdk",
+            "title": "OPICA_Beyond_PR_Paper_Round2_2026-10-21.pdf",
+            "id": "12dl22hT7otTrRX7rTjF6JvH2Ng2fmOAo",
+            "mime_type": "application/pdf",
+            "size": "159924",
+            "file_or_folder": "file",
+            "created_at": "2026-10-21T01:20:32.266Z",
+            "updated_at": "2026-10-21T01:20:32.266Z",
+            "viewedByMeTime": null,
+            "display_title": "OPICA_Beyond_PR_Paper_Round2_2026-10-21.pdf",
+            "display_url": "https://drive.google.com/file/d/12dl22hT7otTrRX7rTjF6JvH2Ng2fmOAo/view?usp=drivesdk",
+            "parent_ids": [
+              "1FwRkN6sbJ4_Fhrqe53wpsJtByD2RXILb"
+            ],
+            "shared": false,
+            "can_download": true,
+            "can_list_children": false
+          },
+          {
+            "url": "https://drive.google.com/file/d/1M_EmuJczExFmIA5IN51sOCN8xaF0rUl6/view?usp=drivesdk",
+            "title": "OPICA_Beyond_PR_Research_Round1_2026-10-21.md",
+            "id": "1M_EmuJczExFmIA5IN51sOCN8xaF0rUl6",
+            "mime_type": "text/markdown",
+            "size": "60249",
+            "file_or_folder": "file",
+            "created_at": "2026-10-21T00:39:58.203Z",
+            "updated_at": "2026-10-21T00:39:58.203Z",
+            "viewedByMeTime": null,
+            "display_title": "OPICA_Beyond_PR_Research_Round1_2026-10-21.md",
+            "display_url": "https://drive.google.com/file/d/1M_EmuJczExFmIA5IN51sOCN8xaF0rUl6/view?usp=drivesdk",
+            "parent_ids": [
+              "1FwRkN6sbJ4_Fhrqe53wpsJtByD2RXILb"
+            ],
+            "shared": false,
+            "can_download": true,
+            "can_list_children": false
+          },
+          {
+            "url": "https://drive.google.com/file/d/1KdqrErEfIvCBwVzB802oy4Iee7sMTmen/view?usp=drivesdk",
+            "title": "OPICA_PR_BUILD_SPEC_2026-10-21.md",
+            "id": "1KdqrErEfIvCBwVzB802oy4Iee7sMTmen",
+            "mime_type": "text/markdown",
+            "size": "73901",
+            "file_or_folder": "file",
+            "created_at": "2026-10-20T23:13:28.426Z",
+            "updated_at": "2026-10-20T23:13:28.426Z",
+            "viewedByMeTime": "2026-10-20T23:55:49.669Z",
+            "display_title": "OPICA_PR_BUILD_SPEC_2026-10-21.md",
+            "display_url": "https://drive.google.com/file/d/1KdqrErEfIvCBwVzB802oy4Iee7sMTmen/view?usp=drivesdk",
+            "parent_ids": [
+              "1FwRkN6sbJ4_Fhrqe53wpsJtByD2RXILb"
+            ],
+            "shared": false,
+            "can_download": true,
+            "can_list_children": false
+          },
+          {
+            "url": "https://drive.google.com/file/d/1VXzJPBiBDGVayks5NprQ6m1UZP5_3kTP/view?usp=drivesdk",
+            "title": "OPICA_Lean_Implementation_Contract_2026-10-21.md",
+            "id": "1VXzJPBiBDGVayks5NprQ6m1UZP5_3kTP",
+            "mime_type": "text/markdown",
+            "size": "20949",
+            "file_or_folder": "file",
+            "created_at": "2026-10-20T22:43:00.702Z",
+            "updated_at": "2026-10-20T22:43:00.702Z",
+            "viewedByMeTime": null,
+            "display_title": "OPICA_Lean_Implementation_Contract_2026-10-21.md",
+            "display_url": "https://drive.google.com/file/d/1VXzJPBiBDGVayks5NprQ6m1UZP5_3kTP/view?usp=drivesdk",
+            "parent_ids": [
+              "1FwRkN6sbJ4_Fhrqe53wpsJtByD2RXILb"
+            ],
+            "shared": false,
+            "can_download": true,
+            "can_list_children": false
+          },
+          {
+            "url": "https://drive.google.com/file/d/1Yyxs-ZsxwMpoJUit7qJWjTlzdLt7mZR9/view?usp=drivesdk",
+            "title": "OPICA_Paper_Construction_v1_0_2026-10-21.md",
+            "id": "1Yyxs-ZsxwMpoJUit7qJWjTlzdLt7mZR9",
+            "mime_type": "text/markdown",
+            "size": "90649",
+            "file_or_folder": "file",
+            "created_at": "2026-10-20T22:42:46.957Z",
+            "updated_at": "2026-10-20T22:42:46.957Z",
+            "viewedByMeTime": null,
+            "display_title": "OPICA_Paper_Construction_v1_0_2026-10-21.md",
+            "display_url": "https://drive.google.com/file/d/1Yyxs-ZsxwMpoJUit7qJWjTlzdLt7mZR9/view?usp=drivesdk",
+            "parent_ids": [
+              "1FwRkN6sbJ4_Fhrqe53wpsJtByD2RXILb"
+            ],
+            "shared": false,
+            "can_download": true,
+            "can_list_children": false
+          },
+          {
+            "url": "https://drive.google.com/file/d/1szTD2BjLOVs4PGHXPDoFwCWrdmwhsKK3/view?usp=drivesdk",
+            "title": "OPICA_Paper_Construction_v1_0_2026-10-21.pdf",
+            "id": "1szTD2BjLOVs4PGHXPDoFwCWrdmwhsKK3",
+            "mime_type": "application/pdf",
+            "size": "221311",
+            "file_or_folder": "file",
+            "created_at": "2026-10-20T22:42:39.176Z",
+            "updated_at": "2026-10-20T22:42:39.176Z",
+            "viewedByMeTime": null,
+            "display_title": "OPICA_Paper_Construction_v1_0_2026-10-21.pdf",
+            "display_url": "https://drive.google.com/file/d/1szTD2BjLOVs4PGHXPDoFwCWrdmwhsKK3/view?usp=drivesdk",
+            "parent_ids": [
+              "1FwRkN6sbJ4_Fhrqe53wpsJtByD2RXILb"
+            ],
+            "shared": false,
+            "can_download": true,
+            "can_list_children": false
+          },
+          {
+            "url": "https://docs.google.com/document/d/12wbmpTjHahWx_4n8rzydePVo13jwUIHNvK2GogVyr2E/edit?usp=drivesdk",
+            "title": "RH Step 4 — Complete Session Delivery Index — 20 October 2026",
+            "id": "12wbmpTjHahWx_4n8rzydePVo13jwUIHNvK2GogVyr2E",
+            "mime_type": "application/vnd.google-apps.document",
+            "size": "4790",
+            "file_or_folder": "file",
+            "created_at": "2026-10-20T20:25:59.200Z",
+            "updated_at": "2026-10-20T20:47:35.560Z",
+            "viewedByMeTime": "2026-10-20T20:47:35.560Z",
+            "display_title": "RH Step 4 — Complete Session Delivery Index — 20 October 2026",
+            "display_url": "https://docs.google.com/document/d/12wbmpTjHahWx_4n8rzydePVo13jwUIHNvK2GogVyr2E/edit?usp=drivesdk",
+            "parent_ids": [
+              "1FwRkN6sbJ4_Fhrqe53wpsJtByD2RXILb"
+            ],
+            "shared": false,
+            "can_download": true,
+            "can_list_children": false
+          },
+          {
+            "url": "https://drive.google.com/file/d/1_Ci8DcO5acf7kTeJvAqMkqaczHNG1NYb/view?usp=drivesdk",
+            "title": "RH_Step4_Complete_Session_Learned_State_2026-10-20.md",
+            "id": "1_Ci8DcO5acf7kTeJvAqMkqaczHNG1NYb",
+            "mime_type": "text/markdown",
+            "size": "100942",
+            "file_or_folder": "file",
+            "created_at": "2026-10-20T20:46:17.041Z",
+            "updated_at": "2026-10-20T20:46:17.041Z",
+            "viewedByMeTime": null,
+            "display_title": "RH_Step4_Complete_Session_Learned_State_2026-10-20.md",
+            "display_url": "https://drive.google.com/file/d/1_Ci8DcO5acf7kTeJvAqMkqaczHNG1NYb/view?usp=drivesdk",
+            "parent_ids": [
+              "1FwRkN6sbJ4_Fhrqe53wpsJtByD2RXILb"
+            ],
+            "shared": false,
+            "can_download": true,
+            "can_list_children": false
+          },
+          {
+            "url": "https://drive.google.com/file/d/1F1Ae0USXq0p0obiMDj6yitWaYsa6iXwb/view?usp=drivesdk",
+            "title": "RH_Structural_Pivot_and_Signed_Heat_Separator_2026-10-20.md",
+            "id": "1F1Ae0USXq0p0obiMDj6yitWaYsa6iXwb",
+            "mime_type": "text/markdown",
+            "size": "12387",
+            "file_or_folder": "file",
+            "created_at": "2026-10-20T20:20:16.412Z",
+            "updated_at": "2026-10-20T20:20:16.412Z",
+            "viewedByMeTime": null,
+            "display_title": "RH_Structural_Pivot_and_Signed_Heat_Separator_2026-10-20.md",
+            "display_url": "https://drive.google.com/file/d/1F1Ae0USXq0p0obiMDj6yitWaYsa6iXwb/view?usp=drivesdk",
+            "parent_ids": [
+              "1FwRkN6sbJ4_Fhrqe53wpsJtByD2RXILb"
+            ],
+            "shared": false,
+            "can_download": true,
+            "can_list_children": false
+          },
+          {
+            "url": "https://drive.google.com/file/d/1eO_QNnwswL_VzTjIgbWGgk0MUQLYIiEW/view?usp=drivesdk",
+            "title": "RH_Final_Gap_Residual_and_Handoff_Audit_2026-10-20.md",
+            "id": "1eO_QNnwswL_VzTjIgbWGgk0MUQLYIiEW",
+            "mime_type": "text/markdown",
+            "size": "27485",
+            "file_or_folder": "file",
+            "created_at": "2026-10-20T17:51:44.539Z",
+            "updated_at": "2026-10-20T17:51:44.539Z",
+            "viewedByMeTime": null,
+            "display_title": "RH_Final_Gap_Residual_and_Handoff_Audit_2026-10-20.md",
+            "display_url": "https://drive.google.com/file/d/1eO_QNnwswL_VzTjIgbWGgk0MUQLYIiEW/view?usp=drivesdk",
+            "parent_ids": [
+              "1FwRkN6sbJ4_Fhrqe53wpsJtByD2RXILb"
+            ],
+            "shared": false,
+            "can_download": true,
+            "can_list_children": false
+          },
+          {
+            "url": "https://drive.google.com/file/d/18ezzYo7AMhm1t4Uc2zWl3X3_6s-EiUmz/view?usp=drivesdk",
+            "title": "RH_Final_Gap_Residual_and_Handoff_Audit_2026-10-20.pdf",
+            "id": "18ezzYo7AMhm1t4Uc2zWl3X3_6s-EiUmz",
+            "mime_type": "application/pdf",
+            "size": "107742",
+            "file_or_folder": "file",
+            "created_at": "2026-10-20T17:51:34.267Z",
+            "updated_at": "2026-10-20T17:51:34.267Z",
+            "viewedByMeTime": null,
+            "display_title": "RH_Final_Gap_Residual_and_Handoff_Audit_2026-10-20.pdf",
+            "display_url": "https://drive.google.com/file/d/18ezzYo7AMhm1t4Uc2zWl3X3_6s-EiUmz/view?usp=drivesdk",
+            "parent_ids": [
+              "1FwRkN6sbJ4_Fhrqe53wpsJtByD2RXILb"
+            ],
+            "shared": false,
+            "can_download": true,
+            "can_list_children": false
+          },
+          {
+            "url": "https://docs.google.com/document/d/1KcUovuIEsqhmJ25Yqn3U-ItDmLVEVRJx-_Ltpp_CYTA/edit?usp=drivesdk",
+            "title": "RH Step 4 — Divisor-Controlled Mask Transfer and Moving-Source Continuation — 2026-10-20",
+            "id": "1KcUovuIEsqhmJ25Yqn3U-ItDmLVEVRJx-_Ltpp_CYTA",
+            "mime_type": "application/vnd.google-apps.document",
+            "size": "14933",
+            "file_or_folder": "file",
+            "created_at": "2026-10-20T16:58:42.068Z",
+            "updated_at": "2026-10-20T17:06:34.857Z",
+            "viewedByMeTime": "2026-10-20T17:06:34.857Z",
+            "display_title": "RH Step 4 — Divisor-Controlled Mask Transfer and Moving-Source Continuation — 2026-10-20",
+            "display_url": "https://docs.google.com/document/d/1KcUovuIEsqhmJ25Yqn3U-ItDmLVEVRJx-_Ltpp_CYTA/edit?usp=drivesdk",
+            "parent_ids": [
+              "1FwRkN6sbJ4_Fhrqe53wpsJtByD2RXILb"
+            ],
+            "shared": false,
+            "can_download": true,
+            "can_list_children": false
+          },
+          {
+            "url": "https://drive.google.com/file/d/1NiNy6FGisx82ilHtIFrlGske8mtdkMt-/view?usp=drivesdk",
+            "title": "RH_Scheduled_Corridor_Audit_2026-10-20.md",
+            "id": "1NiNy6FGisx82ilHtIFrlGske8mtdkMt-",
+            "mime_type": "text/markdown",
+            "size": "32978",
+            "file_or_folder": "file",
+            "created_at": "2026-10-20T16:30:49.952Z",
+            "updated_at": "2026-10-20T16:30:49.952Z",
+            "viewedByMeTime": null,
+            "display_title": "RH_Scheduled_Corridor_Audit_2026-10-20.md",
+            "display_url": "https://drive.google.com/file/d/1NiNy6FGisx82ilHtIFrlGske8mtdkMt-/view?usp=drivesdk",
+            "parent_ids": [
+              "1FwRkN6sbJ4_Fhrqe53wpsJtByD2RXILb"
+            ],
+            "shared": false,
+            "can_download": true,
+            "can_list_children": false
+          },
+          {
+            "url": "https://drive.google.com/file/d/1VKfVSeQsirw7-Dvhh1WPg5FBccwtrueu/view?usp=drivesdk",
+            "title": "RH_Scheduled_Corridor_Audit_2026-10-20.pdf",
+            "id": "1VKfVSeQsirw7-Dvhh1WPg5FBccwtrueu",
+            "mime_type": "application/pdf",
+            "size": "119219",
+            "file_or_folder": "file",
+            "created_at": "2026-10-20T16:29:03.530Z",
+            "updated_at": "2026-10-20T16:29:03.530Z",
+            "viewedByMeTime": null,
+            "display_title": "RH_Scheduled_Corridor_Audit_2026-10-20.pdf",
+            "display_url": "https://drive.google.com/file/d/1VKfVSeQsirw7-Dvhh1WPg5FBccwtrueu/view?usp=drivesdk",
+            "parent_ids": [
+              "1FwRkN6sbJ4_Fhrqe53wpsJtByD2RXILb"
+            ],
+            "shared": false,
+            "can_download": true,
+            "can_list_children": false
+          },
+          {
+            "url": "https://drive.google.com/file/d/1dVuB7DeCpLvLWbuwIQskQiv6bIHXRV67/view?usp=drivesdk",
+            "title": "RH_Joint_Evidence_Table_ABCD_Canvas_2026-10-20.md",
+            "id": "1dVuB7DeCpLvLWbuwIQskQiv6bIHXRV67",
+            "mime_type": "text/markdown",
+            "size": "52847",
+            "file_or_folder": "file",
+            "created_at": "2026-10-20T14:07:46.499Z",
+            "updated_at": "2026-10-20T14:07:46.499Z",
+            "viewedByMeTime": null,
+            "display_title": "RH_Joint_Evidence_Table_ABCD_Canvas_2026-10-20.md",
+            "display_url": "https://drive.google.com/file/d/1dVuB7DeCpLvLWbuwIQskQiv6bIHXRV67/view?usp=drivesdk",
+            "parent_ids": [
+              "1FwRkN6sbJ4_Fhrqe53wpsJtByD2RXILb"
+            ],
+            "shared": false,
+            "can_download": true,
+            "can_list_children": false
+          },
+          {
+            "url": "https://drive.google.com/file/d/1t8nMVG1s4Fvpa6EPXhaZvhgMEp5_xain/view?usp=drivesdk",
+            "title": "RH_Joint_Evidence_Table_ABCD_Canvas_2026-10-20.pdf",
+            "id": "1t8nMVG1s4Fvpa6EPXhaZvhgMEp5_xain",
+            "mime_type": "application/pdf",
+            "size": "139859",
+            "file_or_folder": "file",
+            "created_at": "2026-10-20T14:07:37.147Z",
+            "updated_at": "2026-10-20T14:07:37.147Z",
+            "viewedByMeTime": null,
+            "display_title": "RH_Joint_Evidence_Table_ABCD_Canvas_2026-10-20.pdf",
+            "display_url": "https://drive.google.com/file/d/1t8nMVG1s4Fvpa6EPXhaZvhgMEp5_xain/view?usp=drivesdk",
+            "parent_ids": [
+              "1FwRkN6sbJ4_Fhrqe53wpsJtByD2RXILb"
+            ],
+            "shared": false,
+            "can_download": true,
+            "can_list_children": false
+          },
+          {
+            "url": "https://drive.google.com/file/d/1YY3LV_1-uXBJQB76XBbspBuKqEHDUftj/view?usp=drivesdk",
+            "title": "RH_Moving_Canvas_Step4_Investigation_2026-10-20.md",
+            "id": "1YY3LV_1-uXBJQB76XBbspBuKqEHDUftj",
+            "mime_type": "text/markdown",
+            "size": "50302",
+            "file_or_folder": "file",
+            "created_at": "2026-10-20T13:07:50.319Z",
+            "updated_at": "2026-10-20T13:07:50.319Z",
+            "viewedByMeTime": null,
+            "display_title": "RH_Moving_Canvas_Step4_Investigation_2026-10-20.md",
+            "display_url": "https://drive.google.com/file/d/1YY3LV_1-uXBJQB76XBbspBuKqEHDUftj/view?usp=drivesdk",
+            "parent_ids": [
+              "1FwRkN6sbJ4_Fhrqe53wpsJtByD2RXILb"
+            ],
+            "shared": false,
+            "can_download": true,
+            "can_list_children": false
+          },
+          {
+            "url": "https://drive.google.com/file/d/1uZSU4GoUUQLQcPOI4b8sDHjtcUfuirxi/view?usp=drivesdk",
+            "title": "RH_Moving_Canvas_Step4_Investigation_2026-10-20.pdf",
+            "id": "1uZSU4GoUUQLQcPOI4b8sDHjtcUfuirxi",
+            "mime_type": "application/pdf",
+            "size": "438490",
+            "file_or_folder": "file",
+            "created_at": "2026-10-20T13:07:46.947Z",
+            "updated_at": "2026-10-20T13:07:46.947Z",
+            "viewedByMeTime": null,
+            "display_title": "RH_Moving_Canvas_Step4_Investigation_2026-10-20.pdf",
+            "display_url": "https://drive.google.com/file/d/1uZSU4GoUUQLQcPOI4b8sDHjtcUfuirxi/view?usp=drivesdk",
+            "parent_ids": [
+              "1FwRkN6sbJ4_Fhrqe53wpsJtByD2RXILb"
+            ],
+            "shared": false,
+            "can_download": true,
+            "can_list_children": false
+          },
+          {
+            "url": "https://drive.google.com/file/d/1KAEhlobyVRBXXYNIz3GDGk3MOhoIZ8hu/view?usp=drivesdk",
+            "title": "RH_Step4_Full_Reassessment_and_Proof_Attempts_2026-10-20.md",
+            "id": "1KAEhlobyVRBXXYNIz3GDGk3MOhoIZ8hu",
+            "mime_type": "text/markdown",
+            "size": "309582",
+            "file_or_folder": "file",
+            "created_at": "2026-10-20T10:58:06.424Z",
+            "updated_at": "2026-10-20T10:58:06.424Z",
+            "viewedByMeTime": null,
+            "display_title": "RH_Step4_Full_Reassessment_and_Proof_Attempts_2026-10-20.md",
+            "display_url": "https://drive.google.com/file/d/1KAEhlobyVRBXXYNIz3GDGk3MOhoIZ8hu/view?usp=drivesdk",
+            "parent_ids": [
+              "1FwRkN6sbJ4_Fhrqe53wpsJtByD2RXILb"
+            ],
+            "shared": false,
+            "can_download": true,
+            "can_list_children": false
+          },
+          {
+            "url": "https://drive.google.com/file/d/1Lt2W4UKt556jzsSRw4mPoCxHh1GYQ4Hh/view?usp=drivesdk",
+            "title": "RH_Step4_Full_Reassessment_and_Proof_Attempts_2026-10-20.pdf",
+            "id": "1Lt2W4UKt556jzsSRw4mPoCxHh1GYQ4Hh",
+            "mime_type": "application/pdf",
+            "size": "548924",
+            "file_or_folder": "file",
+            "created_at": "2026-10-20T10:56:47.317Z",
+            "updated_at": "2026-10-20T10:56:47.317Z",
+            "viewedByMeTime": null,
+            "display_title": "RH_Step4_Full_Reassessment_and_Proof_Attempts_2026-10-20.pdf",
+            "display_url": "https://drive.google.com/file/d/1Lt2W4UKt556jzsSRw4mPoCxHh1GYQ4Hh/view?usp=drivesdk",
+            "parent_ids": [
+              "1FwRkN6sbJ4_Fhrqe53wpsJtByD2RXILb"
+            ],
+            "shared": false,
+            "can_download": true,
+            "can_list_children": false
+          },
+          {
+            "url": "https://drive.google.com/file/d/1btDiSHf9jtlXDtdiOTuVeIQNP6Lpmad6/view?usp=drivesdk",
+            "title": "NEXT_SESSION_START_HERE_RH_Step4_2026-10-20.txt",
+            "id": "1btDiSHf9jtlXDtdiOTuVeIQNP6Lpmad6",
+            "mime_type": "text/plain",
+            "size": "4563",
+            "file_or_folder": "file",
+            "created_at": "2026-10-20T01:21:45.890Z",
+            "updated_at": "2026-10-20T01:21:45.890Z",
+            "viewedByMeTime": null,
+            "display_title": "NEXT_SESSION_START_HERE_RH_Step4_2026-10-20.txt",
+            "display_url": "https://drive.google.com/file/d/1btDiSHf9jtlXDtdiOTuVeIQNP6Lpmad6/view?usp=drivesdk",
+            "parent_ids": [
+              "1FwRkN6sbJ4_Fhrqe53wpsJtByD2RXILb"
+            ],
+            "shared": false,
+            "can_download": true,
+            "can_list_children": false
+          },
+          {
+            "url": "https://drive.google.com/file/d/1XKmCohMPWdKqt7sbocIk7EQTHV9Sel_m/view?usp=drivesdk",
+            "title": "RH_Step4_Self_Handover_Complete_Project_Reaudit_2026-10-20.md",
+            "id": "1XKmCohMPWdKqt7sbocIk7EQTHV9Sel_m",
+            "mime_type": "text/markdown",
+            "size": "35292",
+            "file_or_folder": "file",
+            "created_at": "2026-10-20T01:21:41.785Z",
+            "updated_at": "2026-10-20T01:21:41.785Z",
+            "viewedByMeTime": "2026-10-20T01:25:01.309Z",
+            "display_title": "RH_Step4_Self_Handover_Complete_Project_Reaudit_2026-10-20.md",
+            "display_url": "https://drive.google.com/file/d/1XKmCohMPWdKqt7sbocIk7EQTHV9Sel_m/view?usp=drivesdk",
+            "parent_ids": [
+              "1FwRkN6sbJ4_Fhrqe53wpsJtByD2RXILb"
+            ],
+            "shared": false,
+            "can_download": true,
+            "can_list_children": false
+          },
+          {
+            "url": "https://drive.google.com/file/d/1QDMcKAWWH_qpQmbO5pzPY8aMa4u2BtPS/view?usp=drivesdk",
+            "title": "RH_Step4_Self_Handover_Complete_Project_Reaudit_2026-10-20.pdf",
+            "id": "1QDMcKAWWH_qpQmbO5pzPY8aMa4u2BtPS",
+            "mime_type": "application/pdf",
+            "size": "172104",
+            "file_or_folder": "file",
+            "created_at": "2026-10-20T01:21:37.268Z",
+            "updated_at": "2026-10-20T01:21:37.268Z",
+            "viewedByMeTime": "2026-10-20T01:24:57.477Z",
+            "display_title": "RH_Step4_Self_Handover_Complete_Project_Reaudit_2026-10-20.pdf",
+            "display_url": "https://drive.google.com/file/d/1QDMcKAWWH_qpQmbO5pzPY8aMa4u2BtPS/view?usp=drivesdk",
+            "parent_ids": [
+              "1FwRkN6sbJ4_Fhrqe53wpsJtByD2RXILb"
+            ],
+            "shared": false,
+            "can_download": true,
+            "can_list_children": false
+          },
+          {
+            "url": "https://docs.google.com/document/d/17HxV310Ziu59Le0TamMGVYcEBX-aHskf1RBhO2LkJDs/edit?usp=drivesdk",
+            "title": "RH Path ABC — Full Recursive Folder Index — 2026-10-14",
+            "id": "17HxV310Ziu59Le0TamMGVYcEBX-aHskf1RBhO2LkJDs",
+            "mime_type": "application/vnd.google-apps.document",
+            "size": "83731",
+            "file_or_folder": "file",
+            "created_at": "2026-10-14T12:32:54.964Z",
+            "updated_at": "2026-10-20T01:12:02.485Z",
+            "viewedByMeTime": "2026-10-20T01:12:02.485Z",
+            "display_title": "RH Path ABC — Full Recursive Folder Index — 2026-10-14",
+            "display_url": "https://docs.google.com/document/d/17HxV310Ziu59Le0TamMGVYcEBX-aHskf1RBhO2LkJDs/edit?usp=drivesdk",
+            "parent_ids": [
+              "1FwRkN6sbJ4_Fhrqe53wpsJtByD2RXILb"
+            ],
+            "shared": false,
+            "can_download": true,
+            "can_list_children": false
+          },
+          {
+            "url": "https://drive.google.com/file/d/1I6wfBG4Busof5pMMJx_FLikkmapRcOtF/view?usp=drivesdk",
+            "title": "RH_Step4_Full_Thread_Drive_Audit_2026-10-20.md",
+            "id": "1I6wfBG4Busof5pMMJx_FLikkmapRcOtF",
+            "mime_type": "text/markdown",
+            "size": "15945",
+            "file_or_folder": "file",
+            "created_at": "2026-10-20T01:01:48.247Z",
+            "updated_at": "2026-10-20T01:03:16.855Z",
+            "viewedByMeTime": null,
+            "display_title": "RH_Step4_Full_Thread_Drive_Audit_2026-10-20.md",
+            "display_url": "https://drive.google.com/file/d/1I6wfBG4Busof5pMMJx_FLikkmapRcOtF/view?usp=drivesdk",
+            "parent_ids": [
+              "1FwRkN6sbJ4_Fhrqe53wpsJtByD2RXILb"
+            ],
+            "shared": false,
+            "can_download": true,
+            "can_list_children": false
+          },
+          {
+            "url": "https://drive.google.com/file/d/1kH6Muq2HwWs5sfBX6CrnTJogU2Gs77AI/view?usp=drivesdk",
+            "title": "RH_Path_ABC_Recursive_Index_2026-10-20.md",
+            "id": "1kH6Muq2HwWs5sfBX6CrnTJogU2Gs77AI",
+            "mime_type": "text/markdown",
+            "size": "213518",
+            "file_or_folder": "file",
+            "created_at": "2026-10-20T00:27:09.927Z",
+            "updated_at": "2026-10-20T00:33:35.271Z",
+            "viewedByMeTime": null,
+            "display_title": "RH_Path_ABC_Recursive_Index_2026-10-20.md",
+            "display_url": "https://drive.google.com/file/d/1kH6Muq2HwWs5sfBX6CrnTJogU2Gs77AI/view?usp=drivesdk",
+            "parent_ids": [
+              "1FwRkN6sbJ4_Fhrqe53wpsJtByD2RXILb"
+            ],
+            "shared": false,
+            "can_download": true,
+            "can_list_children": false
+          },
+          {
+            "url": "https://drive.google.com/file/d/1wVlPeRhsqg1QtuBo3Yn2AMvkcUiSWHtD/view?usp=drivesdk",
+            "title": "RH_Native_Cubic_Selector_Restriction_2026-10-19.pdf",
+            "id": "1wVlPeRhsqg1QtuBo3Yn2AMvkcUiSWHtD",
+            "mime_type": "application/pdf",
+            "size": "389665",
+            "file_or_folder": "file",
+            "created_at": "2026-10-19T21:18:50.447Z",
+            "updated_at": "2026-10-19T21:18:50.447Z",
+            "viewedByMeTime": null,
+            "display_title": "RH_Native_Cubic_Selector_Restriction_2026-10-19.pdf",
+            "display_url": "https://drive.google.com/file/d/1wVlPeRhsqg1QtuBo3Yn2AMvkcUiSWHtD/view?usp=drivesdk",
+            "parent_ids": [
+              "1FwRkN6sbJ4_Fhrqe53wpsJtByD2RXILb"
+            ],
+            "shared": false,
+            "can_download": true,
+            "can_list_children": false
+          },
+          {
+            "url": "https://drive.google.com/file/d/1u7naXU-fO6M7470UHscG1wWwXQ_me5IA/view?usp=drivesdk",
+            "title": "RH_Zero_Replication_and_Prime_Phase_Test_2026-10-19.pdf",
+            "id": "1u7naXU-fO6M7470UHscG1wWwXQ_me5IA",
+            "mime_type": "application/pdf",
+            "size": "271251",
+            "file_or_folder": "file",
+            "created_at": "2026-10-19T20:24:38.450Z",
+            "updated_at": "2026-10-19T20:24:38.450Z",
+            "viewedByMeTime": null,
+            "display_title": "RH_Zero_Replication_and_Prime_Phase_Test_2026-10-19.pdf",
+            "display_url": "https://drive.google.com/file/d/1u7naXU-fO6M7470UHscG1wWwXQ_me5IA/view?usp=drivesdk",
+            "parent_ids": [
+              "1FwRkN6sbJ4_Fhrqe53wpsJtByD2RXILb"
+            ],
+            "shared": false,
+            "can_download": true,
+            "can_list_children": false
+          },
+          {
+            "url": "https://drive.google.com/file/d/1xoPxfDjhRqoaGYLkeHpcf0-0KqTqFRuB/view?usp=drivesdk",
+            "title": "RH_Step4_Approach_Failure_and_Reset_Audit_2026-10-19.pdf",
+            "id": "1xoPxfDjhRqoaGYLkeHpcf0-0KqTqFRuB",
+            "mime_type": "application/pdf",
+            "size": "89110",
+            "file_or_folder": "file",
+            "created_at": "2026-10-19T19:45:38.255Z",
+            "updated_at": "2026-10-19T19:45:38.255Z",
+            "viewedByMeTime": "2026-10-20T00:14:57.534Z",
+            "display_title": "RH_Step4_Approach_Failure_and_Reset_Audit_2026-10-19.pdf",
+            "display_url": "https://drive.google.com/file/d/1xoPxfDjhRqoaGYLkeHpcf0-0KqTqFRuB/view?usp=drivesdk",
+            "parent_ids": [
+              "1FwRkN6sbJ4_Fhrqe53wpsJtByD2RXILb"
+            ],
+            "shared": false,
+            "can_download": true,
+            "can_list_children": false
+          },
+          {
+            "url": "https://drive.google.com/file/d/1i0K18H5azj702_OyqhqKyoXLLaDxMBDv/view?usp=drivesdk",
+            "title": "RH_Step4_Approach_Failure_and_Reset_Audit_2026-10-19.md",
+            "id": "1i0K18H5azj702_OyqhqKyoXLLaDxMBDv",
+            "mime_type": "text/markdown",
+            "size": "16447",
+            "file_or_folder": "file",
+            "created_at": "2026-10-19T19:45:26.287Z",
+            "updated_at": "2026-10-19T19:45:26.287Z",
+            "viewedByMeTime": null,
+            "display_title": "RH_Step4_Approach_Failure_and_Reset_Audit_2026-10-19.md",
+            "display_url": "https://drive.google.com/file/d/1i0K18H5azj702_OyqhqKyoXLLaDxMBDv/view?usp=drivesdk",
+            "parent_ids": [
+              "1FwRkN6sbJ4_Fhrqe53wpsJtByD2RXILb"
+            ],
+            "shared": false,
+            "can_download": true,
+            "can_list_children": false
+          },
+          {
+            "url": "https://drive.google.com/file/d/19I9TY5pJMtekVZMr0HYQffSG0HILazbR/view?usp=drivesdk",
+            "title": "Step4_Graph_Grounded_Native_Certificate_Construction_2026-10-19.pdf",
+            "id": "19I9TY5pJMtekVZMr0HYQffSG0HILazbR",
+            "mime_type": "application/pdf",
+            "size": "322317",
+            "file_or_folder": "file",
+            "created_at": "2026-10-19T19:03:00.526Z",
+            "updated_at": "2026-10-19T19:06:55.967Z",
+            "viewedByMeTime": null,
+            "display_title": "Step4_Graph_Grounded_Native_Certificate_Construction_2026-10-19.pdf",
+            "display_url": "https://drive.google.com/file/d/19I9TY5pJMtekVZMr0HYQffSG0HILazbR/view?usp=drivesdk",
+            "parent_ids": [
+              "1FwRkN6sbJ4_Fhrqe53wpsJtByD2RXILb"
+            ],
+            "shared": false,
+            "can_download": true,
+            "can_list_children": false
+          },
+          {
+            "url": "https://drive.google.com/file/d/11vgeMyrSUUKGEzhrv2mqIMrVHqmb6E8y/view?usp=drivesdk",
+            "title": "Step4_Original_Detector_Schur_Phase_Test_2026-10-19.pdf",
+            "id": "11vgeMyrSUUKGEzhrv2mqIMrVHqmb6E8y",
+            "mime_type": "application/pdf",
+            "size": "246289",
+            "file_or_folder": "file",
+            "created_at": "2026-10-19T18:06:35.317Z",
+            "updated_at": "2026-10-19T18:06:35.317Z",
+            "viewedByMeTime": null,
+            "display_title": "Step4_Original_Detector_Schur_Phase_Test_2026-10-19.pdf",
+            "display_url": "https://drive.google.com/file/d/11vgeMyrSUUKGEzhrv2mqIMrVHqmb6E8y/view?usp=drivesdk",
+            "parent_ids": [
+              "1FwRkN6sbJ4_Fhrqe53wpsJtByD2RXILb"
+            ],
+            "shared": false,
+            "can_download": true,
+            "can_list_children": false
+          },
+          {
+            "url": "https://drive.google.com/file/d/1M691gxJcQ7Ip2RhErDrbMVcB9rPwPfAW/view?usp=drivesdk",
+            "title": "RH_PostBootstrap_Progress_and_Closure_Audit_2026-10-19.md",
+            "id": "1M691gxJcQ7Ip2RhErDrbMVcB9rPwPfAW",
+            "mime_type": "text/markdown",
+            "size": "14882",
+            "file_or_folder": "file",
+            "created_at": "2026-10-19T17:37:27.209Z",
+            "updated_at": "2026-10-19T17:37:27.209Z",
+            "viewedByMeTime": null,
+            "display_title": "RH_PostBootstrap_Progress_and_Closure_Audit_2026-10-19.md",
+            "display_url": "https://drive.google.com/file/d/1M691gxJcQ7Ip2RhErDrbMVcB9rPwPfAW/view?usp=drivesdk",
+            "parent_ids": [
+              "1FwRkN6sbJ4_Fhrqe53wpsJtByD2RXILb"
+            ],
+            "shared": false,
+            "can_download": true,
+            "can_list_children": false
+          },
+          {
+            "url": "https://drive.google.com/file/d/1PTKvVRnOVHNkRz3UVRY85jVafZdsAPr5/view?usp=drivesdk",
+            "title": "Step4_Coupled_Prime_Band_Bootstrap_Audit_2026-10-19.pdf",
+            "id": "1PTKvVRnOVHNkRz3UVRY85jVafZdsAPr5",
+            "mime_type": "application/pdf",
+            "size": "302288",
+            "file_or_folder": "file",
+            "created_at": "2026-10-19T17:00:53.542Z",
+            "updated_at": "2026-10-19T17:00:53.542Z",
+            "viewedByMeTime": null,
+            "display_title": "Step4_Coupled_Prime_Band_Bootstrap_Audit_2026-10-19.pdf",
+            "display_url": "https://drive.google.com/file/d/1PTKvVRnOVHNkRz3UVRY85jVafZdsAPr5/view?usp=drivesdk",
+            "parent_ids": [
+              "1FwRkN6sbJ4_Fhrqe53wpsJtByD2RXILb"
+            ],
+            "shared": false,
+            "can_download": true,
+            "can_list_children": false
+          },
+          {
+            "url": "https://drive.google.com/file/d/128j-qFtMmPd_NipUgWUniurzG8rPSSYY/view?usp=drivesdk",
+            "title": "Step4_Conditional_Prime_Energy_and_Complete_Native_Countertest_2026-10-19.pdf",
+            "id": "128j-qFtMmPd_NipUgWUniurzG8rPSSYY",
+            "mime_type": "application/pdf",
+            "size": "371163",
+            "file_or_folder": "file",
+            "created_at": "2026-10-19T16:16:09.073Z",
+            "updated_at": "2026-10-19T16:16:09.073Z",
+            "viewedByMeTime": null,
+            "display_title": "Step4_Conditional_Prime_Energy_and_Complete_Native_Countertest_2026-10-19.pdf",
+            "display_url": "https://drive.google.com/file/d/128j-qFtMmPd_NipUgWUniurzG8rPSSYY/view?usp=drivesdk",
+            "parent_ids": [
+              "1FwRkN6sbJ4_Fhrqe53wpsJtByD2RXILb"
+            ],
+            "shared": false,
+            "can_download": true,
+            "can_list_children": false
+          },
+          {
+            "url": "https://drive.google.com/file/d/13e5R5jG84WjR3jySKzrB76ovWIjO5VMI/view?usp=drivesdk",
+            "title": "Step4_High_Moments_and_Deterministic_Prime_Signs_2026-10-19.pdf",
+            "id": "13e5R5jG84WjR3jySKzrB76ovWIjO5VMI",
+            "mime_type": "application/pdf",
+            "size": "375097",
+            "file_or_folder": "file",
+            "created_at": "2026-10-19T13:02:33.984Z",
+            "updated_at": "2026-10-19T13:02:33.984Z",
+            "viewedByMeTime": null,
+            "display_title": "Step4_High_Moments_and_Deterministic_Prime_Signs_2026-10-19.pdf",
+            "display_url": "https://drive.google.com/file/d/13e5R5jG84WjR3jySKzrB76ovWIjO5VMI/view?usp=drivesdk",
+            "parent_ids": [
+              "1FwRkN6sbJ4_Fhrqe53wpsJtByD2RXILb"
+            ],
+            "shared": false,
+            "can_download": true,
+            "can_list_children": false
+          },
+          {
+            "url": "https://drive.google.com/file/d/1ee03-gh9SkA7fR3SiqWDqy7fgmKezE6x/view?usp=drivesdk",
+            "title": "Step4_Exact_Cancellation_Scale_and_Source_Visible_Critical_Mode_2026-10-19.pdf",
+            "id": "1ee03-gh9SkA7fR3SiqWDqy7fgmKezE6x",
+            "mime_type": "application/pdf",
+            "size": "424419",
+            "file_or_folder": "file",
+            "created_at": "2026-10-19T03:00:43.063Z",
+            "updated_at": "2026-10-19T03:00:43.063Z",
+            "viewedByMeTime": null,
+            "display_title": "Step4_Exact_Cancellation_Scale_and_Source_Visible_Critical_Mode_2026-10-19.pdf",
+            "display_url": "https://drive.google.com/file/d/1ee03-gh9SkA7fR3SiqWDqy7fgmKezE6x/view?usp=drivesdk",
+            "parent_ids": [
+              "1FwRkN6sbJ4_Fhrqe53wpsJtByD2RXILb"
+            ],
+            "shared": false,
+            "can_download": true,
+            "can_list_children": false
+          },
+          {
+            "url": "https://drive.google.com/file/d/1DwiNUAUiIA48GdF86kt2i4zjyXPG72o5/view?usp=drivesdk",
+            "title": "Step4_Rough_Squarefree_Coupling_and_Quantified_Native_Cancellation_2026-10-19.pdf",
+            "id": "1DwiNUAUiIA48GdF86kt2i4zjyXPG72o5",
+            "mime_type": "application/pdf",
+            "size": "459665",
+            "file_or_folder": "file",
+            "created_at": "2026-10-19T01:16:35.923Z",
+            "updated_at": "2026-10-19T01:16:35.923Z",
+            "viewedByMeTime": null,
+            "display_title": "Step4_Rough_Squarefree_Coupling_and_Quantified_Native_Cancellation_2026-10-19.pdf",
+            "display_url": "https://drive.google.com/file/d/1DwiNUAUiIA48GdF86kt2i4zjyXPG72o5/view?usp=drivesdk",
+            "parent_ids": [
+              "1FwRkN6sbJ4_Fhrqe53wpsJtByD2RXILb"
+            ],
+            "shared": false,
+            "can_download": true,
+            "can_list_children": false
+          },
+          {
+            "url": "https://drive.google.com/file/d/1m4Lc5okHfGCethq6tZidm8Ldll1HUn9A/view?usp=drivesdk",
+            "title": "Step4_Observer_Scope_and_Character_Free_Signed_Energy_2026-10-19.pdf",
+            "id": "1m4Lc5okHfGCethq6tZidm8Ldll1HUn9A",
+            "mime_type": "application/pdf",
+            "size": "390427",
+            "file_or_folder": "file",
+            "created_at": "2026-10-19T00:42:03.633Z",
+            "updated_at": "2026-10-19T00:42:03.633Z",
+            "viewedByMeTime": null,
+            "display_title": "Step4_Observer_Scope_and_Character_Free_Signed_Energy_2026-10-19.pdf",
+            "display_url": "https://drive.google.com/file/d/1m4Lc5okHfGCethq6tZidm8Ldll1HUn9A/view?usp=drivesdk",
+            "parent_ids": [
+              "1FwRkN6sbJ4_Fhrqe53wpsJtByD2RXILb"
+            ],
+            "shared": false,
+            "can_download": true,
+            "can_list_children": false
+          },
+          {
+            "url": "https://drive.google.com/file/d/17rBr8rM2Fu1s6dd4j2MOwSWOi18EXpGd/view?usp=drivesdk",
+            "title": "Step4_Native_Observer_and_Cubic_Twist_Audit_2026-10-19.pdf",
+            "id": "17rBr8rM2Fu1s6dd4j2MOwSWOi18EXpGd",
+            "mime_type": "application/pdf",
+            "size": "435057",
+            "file_or_folder": "file",
+            "created_at": "2026-10-19T00:36:26.096Z",
+            "updated_at": "2026-10-19T00:36:26.096Z",
+            "viewedByMeTime": null,
+            "display_title": "Step4_Native_Observer_and_Cubic_Twist_Audit_2026-10-19.pdf",
+            "display_url": "https://drive.google.com/file/d/17rBr8rM2Fu1s6dd4j2MOwSWOi18EXpGd/view?usp=drivesdk",
+            "parent_ids": [
+              "1FwRkN6sbJ4_Fhrqe53wpsJtByD2RXILb"
+            ],
+            "shared": false,
+            "can_download": true,
+            "can_list_children": false
+          },
+          {
+            "url": "https://drive.google.com/file/d/1EeCdWb6fkUueawn6klIR4x5O5wmVYklj/view?usp=drivesdk",
+            "title": "RH_Step4_Remaining_Requirements_2026-10-19.md",
+            "id": "1EeCdWb6fkUueawn6klIR4x5O5wmVYklj",
+            "mime_type": "text/markdown",
+            "size": "24614",
+            "file_or_folder": "file",
+            "created_at": "2026-10-18T23:47:07.124Z",
+            "updated_at": "2026-10-18T23:47:07.124Z",
+            "viewedByMeTime": null,
+            "display_title": "RH_Step4_Remaining_Requirements_2026-10-19.md",
+            "display_url": "https://drive.google.com/file/d/1EeCdWb6fkUueawn6klIR4x5O5wmVYklj/view?usp=drivesdk",
+            "parent_ids": [
+              "1FwRkN6sbJ4_Fhrqe53wpsJtByD2RXILb"
+            ],
+            "shared": false,
+            "can_download": true,
+            "can_list_children": false
+          },
+          {
+            "url": "https://drive.google.com/file/d/1xChhD4BQBoBS6EA4rZRlrRO7EGko-1Cl/view?usp=drivesdk",
+            "title": "Step4_Single_Schedule_Trace_and_Filter_Audit_2026-10-19.pdf",
+            "id": "1xChhD4BQBoBS6EA4rZRlrRO7EGko-1Cl",
+            "mime_type": "application/pdf",
+            "size": "441158",
+            "file_or_folder": "file",
+            "created_at": "2026-10-18T23:22:46.796Z",
+            "updated_at": "2026-10-18T23:22:46.796Z",
+            "viewedByMeTime": null,
+            "display_title": "Step4_Single_Schedule_Trace_and_Filter_Audit_2026-10-19.pdf",
+            "display_url": "https://drive.google.com/file/d/1xChhD4BQBoBS6EA4rZRlrRO7EGko-1Cl/view?usp=drivesdk",
+            "parent_ids": [
+              "1FwRkN6sbJ4_Fhrqe53wpsJtByD2RXILb"
+            ],
+            "shared": false,
+            "can_download": true,
+            "can_list_children": false
+          },
+          {
+            "url": "https://drive.google.com/file/d/1wZzsazOx8uSSWHXJWhA4PntgVAmpOdf-/view?usp=drivesdk",
+            "title": "Step4_Stable_Causal_Filters_and_Moving_Factor_Test_2026-10-18.pdf",
+            "id": "1wZzsazOx8uSSWHXJWhA4PntgVAmpOdf-",
+            "mime_type": "application/pdf",
+            "size": "387043",
+            "file_or_folder": "file",
+            "created_at": "2026-10-18T21:45:13.526Z",
+            "updated_at": "2026-10-18T21:45:13.526Z",
+            "viewedByMeTime": null,
+            "display_title": "Step4_Stable_Causal_Filters_and_Moving_Factor_Test_2026-10-18.pdf",
+            "display_url": "https://drive.google.com/file/d/1wZzsazOx8uSSWHXJWhA4PntgVAmpOdf-/view?usp=drivesdk",
+            "parent_ids": [
+              "1FwRkN6sbJ4_Fhrqe53wpsJtByD2RXILb"
+            ],
+            "shared": false,
+            "can_download": true,
+            "can_list_children": false
+          },
+          {
+            "url": "https://drive.google.com/file/d/1OAT2tUkdAHBLoH3omMn4OO3vMoyMVjfN/view?usp=drivesdk",
+            "title": "Step4_Mixed_Correlations_and_Narrower_Corridor_2026-10-18.pdf",
+            "id": "1OAT2tUkdAHBLoH3omMn4OO3vMoyMVjfN",
+            "mime_type": "application/pdf",
+            "size": "532247",
+            "file_or_folder": "file",
+            "created_at": "2026-10-18T20:27:47.267Z",
+            "updated_at": "2026-10-18T20:27:47.267Z",
+            "viewedByMeTime": null,
+            "display_title": "Step4_Mixed_Correlations_and_Narrower_Corridor_2026-10-18.pdf",
+            "display_url": "https://drive.google.com/file/d/1OAT2tUkdAHBLoH3omMn4OO3vMoyMVjfN/view?usp=drivesdk",
+            "parent_ids": [
+              "1FwRkN6sbJ4_Fhrqe53wpsJtByD2RXILb"
+            ],
+            "shared": false,
+            "can_download": true,
+            "can_list_children": false
+          },
+          {
+            "url": "https://drive.google.com/file/d/18bNQfefGHqfFSZeUXe3x9gWoN2wbYW17/view?usp=drivesdk",
+            "title": "Step4_Native_Source_and_High_Conductor_Closure_Path_2026-10-18.pdf",
+            "id": "18bNQfefGHqfFSZeUXe3x9gWoN2wbYW17",
+            "mime_type": "application/pdf",
+            "size": "494033",
+            "file_or_folder": "file",
+            "created_at": "2026-10-18T18:22:12.589Z",
+            "updated_at": "2026-10-18T18:22:12.589Z",
+            "viewedByMeTime": null,
+            "display_title": "Step4_Native_Source_and_High_Conductor_Closure_Path_2026-10-18.pdf",
+            "display_url": "https://drive.google.com/file/d/18bNQfefGHqfFSZeUXe3x9gWoN2wbYW17/view?usp=drivesdk",
+            "parent_ids": [
+              "1FwRkN6sbJ4_Fhrqe53wpsJtByD2RXILb"
+            ],
+            "shared": false,
+            "can_download": true,
+            "can_list_children": false
+          },
+          {
+            "url": "https://drive.google.com/file/d/15z-gBtILK1F4sgOTqfs7vyQ90aA3Ykec/view?usp=drivesdk",
+            "title": "Step4_Synthesis_Closure_Path_After_PR292_2026-10-18.pdf",
+            "id": "15z-gBtILK1F4sgOTqfs7vyQ90aA3Ykec",
+            "mime_type": "application/pdf",
+            "size": "550031",
+            "file_or_folder": "file",
+            "created_at": "2026-10-18T16:59:50.339Z",
+            "updated_at": "2026-10-18T16:59:50.339Z",
+            "viewedByMeTime": null,
+            "display_title": "Step4_Synthesis_Closure_Path_After_PR292_2026-10-18.pdf",
+            "display_url": "https://drive.google.com/file/d/15z-gBtILK1F4sgOTqfs7vyQ90aA3Ykec/view?usp=drivesdk",
+            "parent_ids": [
+              "1FwRkN6sbJ4_Fhrqe53wpsJtByD2RXILb"
+            ],
+            "shared": false,
+            "can_download": true,
+            "can_list_children": false
+          },
+          {
+            "url": "https://drive.google.com/file/d/1ivPPYrDpoxc-p5n5zQVczpiNXfi1gVI4/view?usp=drivesdk",
+            "title": "Step4_Historical_Paths_ABCD_Revival_Audit_After_PR292_2026-10-18.pdf",
+            "id": "1ivPPYrDpoxc-p5n5zQVczpiNXfi1gVI4",
+            "mime_type": "application/pdf",
+            "size": "436957",
+            "file_or_folder": "file",
+            "created_at": "2026-10-18T13:18:57.041Z",
+            "updated_at": "2026-10-18T13:18:57.041Z",
+            "viewedByMeTime": null,
+            "display_title": "Step4_Historical_Paths_ABCD_Revival_Audit_After_PR292_2026-10-18.pdf",
+            "display_url": "https://drive.google.com/file/d/1ivPPYrDpoxc-p5n5zQVczpiNXfi1gVI4/view?usp=drivesdk",
+            "parent_ids": [
+              "1FwRkN6sbJ4_Fhrqe53wpsJtByD2RXILb"
+            ],
+            "shared": false,
+            "can_download": true,
+            "can_list_children": false
+          },
+          {
+            "url": "https://drive.google.com/file/d/1ejSjNm_6txlofe3VgAqtG4mpgzIF6WS_/view?usp=drivesdk",
+            "title": "Step4_Round4_Logarithmic_Windows_and_Signed_Closure_Path_2026-10-18.pdf",
+            "id": "1ejSjNm_6txlofe3VgAqtG4mpgzIF6WS_",
+            "mime_type": "application/pdf",
+            "size": "573570",
+            "file_or_folder": "file",
+            "created_at": "2026-10-18T12:02:24.776Z",
+            "updated_at": "2026-10-18T12:02:24.776Z",
+            "viewedByMeTime": null,
+            "display_title": "Step4_Round4_Logarithmic_Windows_and_Signed_Closure_Path_2026-10-18.pdf",
+            "display_url": "https://drive.google.com/file/d/1ejSjNm_6txlofe3VgAqtG4mpgzIF6WS_/view?usp=drivesdk",
+            "parent_ids": [
+              "1FwRkN6sbJ4_Fhrqe53wpsJtByD2RXILb"
+            ],
+            "shared": false,
+            "can_download": true,
+            "can_list_children": false
+          },
+          {
+            "url": "https://drive.google.com/file/d/1-pEortzOVIOCtG1K9VzyYnR0IBtWLOzz/view?usp=drivesdk",
+            "title": "Step4_Round3_Causal_Tails_and_Closing_Path_2026-10-18.pdf",
+            "id": "1-pEortzOVIOCtG1K9VzyYnR0IBtWLOzz",
+            "mime_type": "application/pdf",
+            "size": "671432",
+            "file_or_folder": "file",
+            "created_at": "2026-10-18T04:27:27.391Z",
+            "updated_at": "2026-10-18T04:27:27.391Z",
+            "viewedByMeTime": null,
+            "display_title": "Step4_Round3_Causal_Tails_and_Closing_Path_2026-10-18.pdf",
+            "display_url": "https://drive.google.com/file/d/1-pEortzOVIOCtG1K9VzyYnR0IBtWLOzz/view?usp=drivesdk",
+            "parent_ids": [
+              "1FwRkN6sbJ4_Fhrqe53wpsJtByD2RXILb"
+            ],
+            "shared": false,
+            "can_download": true,
+            "can_list_children": false
+          },
+          {
+            "url": "https://drive.google.com/file/d/1lFrjfdYPT36UMsV1e8JIngmzds79Tm9P/view?usp=drivesdk",
+            "title": "Step4_Round2_Closing_Paths_2026-10-18.pdf",
+            "id": "1lFrjfdYPT36UMsV1e8JIngmzds79Tm9P",
+            "mime_type": "application/pdf",
+            "size": "717688",
+            "file_or_folder": "file",
+            "created_at": "2026-10-18T03:08:27.643Z",
+            "updated_at": "2026-10-18T03:08:27.643Z",
+            "viewedByMeTime": null,
+            "display_title": "Step4_Round2_Closing_Paths_2026-10-18.pdf",
+            "display_url": "https://drive.google.com/file/d/1lFrjfdYPT36UMsV1e8JIngmzds79Tm9P/view?usp=drivesdk",
+            "parent_ids": [
+              "1FwRkN6sbJ4_Fhrqe53wpsJtByD2RXILb"
+            ],
+            "shared": false,
+            "can_download": true,
+            "can_list_children": false
+          },
+          {
+            "url": "https://drive.google.com/file/d/1tbZWIpLvDeTnycs5z1o8CuQEfbVS-8PO/view?usp=drivesdk",
+            "title": "Step4_Native_Closure_Investigation_2026-10-18.pdf",
+            "id": "1tbZWIpLvDeTnycs5z1o8CuQEfbVS-8PO",
+            "mime_type": "application/pdf",
+            "size": "523054",
+            "file_or_folder": "file",
+            "created_at": "2026-10-18T02:15:04.848Z",
+            "updated_at": "2026-10-18T02:15:04.848Z",
+            "viewedByMeTime": null,
+            "display_title": "Step4_Native_Closure_Investigation_2026-10-18.pdf",
+            "display_url": "https://drive.google.com/file/d/1tbZWIpLvDeTnycs5z1o8CuQEfbVS-8PO/view?usp=drivesdk",
+            "parent_ids": [
+              "1FwRkN6sbJ4_Fhrqe53wpsJtByD2RXILb"
+            ],
+            "shared": false,
+            "can_download": true,
+            "can_list_children": false
+          },
+          {
+            "url": "https://drive.google.com/file/d/1qJposr3qfVlyvmXZK5uyYhXorHlDJBUq/view?usp=drivesdk",
+            "title": "RH_Path_ABC_Recursive_Index_2026-10-14.md",
+            "id": "1qJposr3qfVlyvmXZK5uyYhXorHlDJBUq",
+            "mime_type": "text/markdown",
+            "size": "177665",
+            "file_or_folder": "file",
+            "created_at": "2026-10-14T14:55:01.878Z",
+            "updated_at": "2026-10-14T14:55:01.878Z",
+            "viewedByMeTime": null,
+            "display_title": "RH_Path_ABC_Recursive_Index_2026-10-14.md",
+            "display_url": "https://drive.google.com/file/d/1qJposr3qfVlyvmXZK5uyYhXorHlDJBUq/view?usp=drivesdk",
+            "parent_ids": [
+              "1FwRkN6sbJ4_Fhrqe53wpsJtByD2RXILb"
+            ],
+            "shared": false,
+            "can_download": true,
+            "can_list_children": false
+          }
+        ]
+      },
+      "isError": false
+    }
+  }
+]

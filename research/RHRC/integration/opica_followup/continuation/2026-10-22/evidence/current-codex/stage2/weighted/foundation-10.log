@@ -1,0 +1,5 @@
+'Zeta23.OPICAFollowup.weightedDilationMixture_pairing' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.OPICAFollowup.weightedDilationMixture_growth' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.OPICAFollowup.positiveDilationMixture_fourier_pairing' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

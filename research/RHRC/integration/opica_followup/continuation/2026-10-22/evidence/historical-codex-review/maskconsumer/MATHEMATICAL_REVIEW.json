@@ -1,0 +1,60 @@
+{
+  "review_status": "COMPLETE_READINESS_REVIEW_MASKS_FAIL_CONSUMERS_BLOCKED_IMPORT_CACHE",
+  "scope": "Exact uploaded MaskedNativeRate.lean and Consumers.lean only; isolated audit checkout, no main edits",
+  "checkout_head": "9b6a9a3a2badb4cff62a56c1158d9cef8759d30d",
+  "compiler": "leanprover--lean4---v4.33.0-rc2; pinned lake.exe; LEAN_NUM_THREADS=1",
+  "input_sha256": {
+    "MaskedNativeRate.lean": "10cc4687e499d97e0dbb6f4c64cca630c278179165b5118f686296658189e993",
+    "Consumers.lean": "d5e0df823e358f4b273313150f2b06ccbd4a1eb049a628087d6e34f061001324"
+  },
+  "source_preservation": "Both isolated candidate files byte-identical to input. A local repair draft was interrupted and restored at root request; draft and exact input-to-draft diff are preserved externally only and carry no acceptance.",
+  "formal_results": {
+    "masks_uploaded_pass_1": "IMPORT_CACHE_MISSING: LogSlackBalance.olean",
+    "masks_uploaded_pass_2": "FAIL: 30 error diagnostics and 3 warnings in exact uploaded source, after SHA-source-matching LogSlackBalance cache copied from main",
+    "masks_modified_pass_3": "INTERRUPTED, no authority; log empty; repair abandoned and restored",
+    "consumers_uploaded_pass_1": "IMPORT_CACHE_MISSING: NativeJetAdapter.olean",
+    "consumers_body_elaboration": "NOT_REACHED",
+    "nativejet_targeted_prerequisite": "INTERRUPTED_REVIEW_BOUND, terminal exit1 after intentional Ctrl-C; no actual prerequisite error observed; NativeJetAdapter.olean still absent. Partial successful baseline outputs are preparation only, not a completed target.",
+    "nativejet_build_limit": "Root complete source-import-closure inspection reported 208 missing project oleans at 23:14:52UTC. Incremental Lake 4131/4143 counter did not imply only 12 total dependencies remained. Root directed stop rather than an extended inherited parent rebuild.",
+    "owned_processes": "All owned unified-exec sessions terminal; no writer remains",
+    "accepted_new_primary_roots": 0
+  },
+  "mask_source_errors": [
+    {"line":299,"declaration":"scheduled_sqrt_div_time","issue":"Unfold the pointwise inverse/composition before the sqrt^2=T field identity; current nlinarith cannot close the actual inverse goal."},
+    {"line":326,"declaration":"log_sqrt_power_envelope","issue":"mul_le_mul returns 1*1 <= exp(sqrt T)*T^b; the expected lower bound 1 needs normalization."},
+    {"line":357,"declaration":"finite_low_budget_polynomial","issue":"Real.sqrt_le_iff is an iff theorem with no supplied nonnegativity argument in the pinned API. Supply its two conjuncts."},
+    {"line":478,"declaration":"superlinear_decay_tendsto","issue":"ring is executed after field_simp has already closed the goal."},
+    {"line":482,"declaration":"superlinear_decay_tendsto","issue":"The comparison limit still has target A*0 and exp(-1*T), and association differs; normalize the scalar zero and functions before squeeze_zero'. Later errors in this lemma cascade."},
+    {"line":499,"declaration":"nativeWindowFunction_memLp","issue":"The continuous compact-interval integrability invocation has an unresolved measure. Supply an explicit real Lebesgue IntegrableOn type."},
+    {"line":504,"declaration":"nativeWindowVector","issue":"Lp real codomain with untyped volume leaves its domain unresolved. Annotate volume : Measure real, also in the three later vector definitions. Most remaining errors cascade from these missing definitions."}
+  ],
+  "mask_contract_review": {
+    "varying_palette": "Source drive, coefficients, actual L2 vectors and masks depend on Q n at each horizon; no fixed-drive rate theorem is misused. Q is fixed only within each individual window.",
+    "scope": "Fixed r>=2 and d>=r-1, arbitrary C>1, eta>=0, K>C+r*eta+2r, arbitrary positive cofinal real horizon schedule, arbitrary squarefree Q n with eventual Q n<=T n^eta. Real Y=e^(T/(2r))*T^(-K/r) remains unrounded.",
+    "physical_fields": "F is actual primeFieldFamily d restricted to the literal window. B is the actual finite balanced coefficient field. S=F-B is bounded using genuine log_slack_typeI_error and native physical identities inside the proof, not a supplied desired bound.",
+    "low_budget": "Explicit raw and absorbed bounds retain Q and Q^r amplitude before squaring; after Q<=T^eta these give exp(sqrt T) times fixed powers of T. The source coefficient orders remain 2r-1 and r respectively.",
+    "dirichlet_power": "All absorbed coefficient observations explicitly type (nativeLargeCoefficients Q Y ^ r : ArithmeticFunction real), retaining genuine Dirichlet convolution at nonsquarefree total indices.",
+    "rate_orientation": "Public theorem states full physical rate minus retained positive-part rate tends to zero; frozen prose gives retained minus full. Equivalent by negating a zero limit, but an independent frozen-orientation consumer should establish it explicitly after compilation.",
+    "uniform_constant_interface": "The low-mask theorem's comment claims constants precede horizon/palette, but the public type places tau and Q before the existential constants. The body chooses explicit constants depending only on r,d,C,eta, so the method supports uniformity; the public theorem does not expose that independence. Add a strengthened independently checked statement with constants before tau,Q (or explicit constants) if the frozen O-constant dependence is enforced at the interface.",
+    "initial_interval": "Empty/short initial windows are allowed as actual restricted L2 functions. The budget and rate arguments use eventual T>=1; no hidden initial nonempty-window assumption was found.",
+    "claim_firewall": "No supplied Theta-rate, signed upper, native quietness, or RH conclusion is used. Neither candidate proves RH."
+  },
+  "consumer_contract_review": {
+    "same_output": "Selected right zero is exactly nativeZeroJetRightZero rho from the same GeneratedStep123CompleteOutput; source/field/input and existing same-state/range obstruction are preserved.",
+    "local_history_scope": "Primary theorem quantifies every NativeWord and every NativeWordHistory at that zero. No NativeWordHistoryContinuationDomain or common global history certificate is added.",
+    "multiplicity": "Analytic multiplicity is transferred by actual reflection lemma. Integer Laurent order is p*m-1; normalized limit covers p=0, and derivative clause covers every p>0 including p*m=1.",
+    "physical_transform": "Actual causal state integrability and Laplace equality in a proved safe right half-plane are retained, followed by local meromorphic correction and actual original prime-field pole/residue.",
+    "damping": "Actual nativeZeroJetParameter+damping=center and damping positivity persist together with the actual native completed-input adjoint obstruction inner product.",
+    "optional_contour": "The optional companion explicitly requires common punctured-disk analyticity, meromorphic observation and actual contour error budgets; none of these become premises of the local primary.",
+    "source_read_conclusion": "No material mathematical scope substitution found by source review, but compiler/axiom/independent-consumer gates are still required. Four other original Consumers roots remain explicitly OPEN."
+  },
+  "next_required_gates": [
+    "In a subsequent fully prepared environment, compile exact uploaded Consumers to distinguish proof errors from its currently blocked import cache. The inherited dependency rebuild is deliberately stopped in this review.",
+    "Repair uploaded Masks source diagnostics in a separately authorized implementation task; current review preserves original inputs.",
+    "Check independent exact frozen primary consumer types, including rate-sign orientation and low-constant uniformity.",
+    "Print actual transitive axioms of each primary and compare only standard logical axioms; run no-sorry/no-placeholder and source-bound export gates.",
+    "Run adversarial Dirichlet versus pointwise coefficient control Q=1,Y=3/2,r=2,n=4, arbitrary changing palette schedule, p=0 and p*m=1 local word consumers.",
+    "Root must integrate only accepted exact-source roots into aggregate and regenerate the full source-bound receipt; isolated leaf results alone are not release acceptance."
+  ],
+  "research_state": "OPEN: all new candidates remain unaccepted in this review; RH OPEN"
+}

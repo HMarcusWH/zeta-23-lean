@@ -1,0 +1,150 @@
+{
+ "schema": "OPICA_STAGE8_NARROW_GATE_V1",
+ "status": "PASS_NARROW_LOCAL_GATES_ONLY_AGGREGATE_AND_FULL_RELEASE_OPEN",
+ "checked_commit": "e2903338a04689d65ec91ef4fb73616937055f24",
+ "checked_tree": "ce889f8c256c2c39ade1eac9a36df6b4bad6ea77",
+ "dirty_status_during_checks": "",
+ "compiler": "Lean 4.33.0-rc2 commit d8b18978322de05a8f3dba51ef03cf5461676c17 (Linux x86_64), Lake 5.0.0-src+d8b1897",
+ "mathlib": "51e6992efd06126df61a496bebf8f49482a4e129 (pins unchanged; no lake update)",
+ "new_module": {
+  "module": "Zeta23.OPICAFollowup.ProfileEulerMaclaurin",
+  "project_imports": [],
+  "authority": "BUILD_MANIFEST direct_project_imports of this module is exactly []; only Mathlib modules are imported",
+  "required_definitions_present": [
+   "bernoulliOneRight",
+   "bernoulliTwo"
+  ]
+ },
+ "existing_lean_sources_changed": false,
+ "cache_owner": "single local process; the module was built from this exact source in the session (lake rebuilds on source hash change), and the runner build re-validated it",
+ "sources": [
+  {
+   "path": "Zeta23/OPICAFollowup/ProfileEulerMaclaurin.lean",
+   "sha256": "c4ee9e0c04d0f7c53b26c92dee78287800e6ddd331377832cb8b271885441c8b",
+   "bytes": 43512
+  },
+  {
+   "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedEulerMaclaurin.lean",
+   "sha256": "2a6736080dec794de13cdcaeb249aeb81264876f26d0c95940918ea522f96ff4",
+   "bytes": 12911
+  },
+  {
+   "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/run_candidate_checks.py",
+   "sha256": "ca8f59bcfd91d226fa6a0b067b6a40a0e9b455441e921e38707e79bcabe0a810",
+   "bytes": 6501
+  },
+  {
+   "path": ".github/workflows/rhrc_opica_followup.yml",
+   "sha256": "ae43b1b9a19429ee8f51e9c3099d5825e4b96d50e04914cd896edada942668ad",
+   "bytes": 44419
+  },
+  {
+   "path": "lean-toolchain",
+   "sha256": "0d3c76ccd8772d8bcbe207241421a760312b71a6aa82f84194391fdf5cb026d6",
+   "bytes": 29
+  },
+  {
+   "path": "lake-manifest.json",
+   "sha256": "1847b362e15efd927e75aa8b5442e491f998e4a3f730f9dcaca9841f2957c448",
+   "bytes": 3200
+  }
+ ],
+ "roots": {
+  "Zeta23.OPICAFollowup.finite_sum_euler_maclaurin_uniform": {
+   "paper": "R2-S1a, R2-H1, F3 (display S1.3)",
+   "expected_type_consumer": "consumers/ExpectedEulerMaclaurin.lean (10 receipts)",
+   "actual_domain": "O-form for every fixed parameter; right-closed endpoint jump; composition with the actual CP1 finiteSumSrho at s = rho and 1 - rho (B1/x terms cancel); at actual zeros S_rho = b_rho + (2rho-1)B2/(2x^2) + O(x^-3) uniformly for x >= 1; exact cell-derivative bound; nonvacuous at s = 1/2, x = 1",
+   "method": "Abel summation; zeta continuation from the Dirichlet series by Mellin holomorphy and the identity theorem on a star-convex domain; two integrations by parts against continuous periodic B2/2, B3/3",
+   "domain": "0 < Re s, s != 1; real cutoffs x >= 1 (bound clause for x > 0)",
+   "uniformity": "explicit constant polynomial in |s|: uniform on bounded parameter sets, not in the height",
+   "axioms": "propext, Classical.choice, Quot.sound"
+  },
+  "re_verified_narrow_roots": [
+   "all roots consumed by the fifteen runner consumer files"
+  ]
+ },
+ "gates": [
+  {
+   "label": "narrow runner (10 modules, 15 consumer files)",
+   "log": "runner/CHECK_RESULT.json",
+   "sha256": "c416504999bb1b64a524e0264a18604af73900020524605d3ac4620e0fd5c214",
+   "exit_code": 0,
+   "runner_status": "PASS_NARROW_ONLY",
+   "consumer_receipts": {
+    "ExpectedMasks": 4,
+    "ExpectedComplex": 4,
+    "ExpectedAuxiliary": 6,
+    "ExpectedMultiplicity": 17,
+    "ExpectedComb": 5,
+    "ExpectedFirstCell": 5,
+    "ExpectedWeighted": 9,
+    "ExpectedNearGap": 5,
+    "ExpectedNearGapLimit": 10,
+    "ExpectedNormalizedLimit": 9,
+    "ExpectedWeightedInverse": 17,
+    "ExpectedCoPoissonFamily": 7,
+    "ExpectedCoPoissonOrderZero": 10,
+    "ExpectedZeroMeasure": 7,
+    "ExpectedEulerMaclaurin": 10
+   }
+  },
+  {
+   "label": "W04/W07 workflow consumer (unchanged heredoc)",
+   "log": "consumers/opica-w04-w07-expected.log",
+   "sha256": "47bf37f88ae44589a223145e24dd07655b7172bfca6a30bf819bb33c5251ac1e",
+   "exit_code": 0,
+   "standard_axiom_receipts": 52
+  },
+  {
+   "label": "W06 workflow consumer (unchanged heredoc)",
+   "log": "consumers/opica-w06-expected.log",
+   "sha256": "8564fc7fe7d8a2ef4ae561975e207ce6aa8e42accc8c35f0e6ed618ed26078ca",
+   "exit_code": 0,
+   "standard_axiom_receipts": 14
+  },
+  {
+   "label": "W01 consumers and exact-source subset",
+   "note": "not re-run locally: no existing Lean source changed and no W01 or subset module imports the new module; green in CI at d58f536a"
+  },
+  {
+   "label": "child suite and parent contract tests",
+   "result": "child 185/185 and parent 82/82 in normal and optimized Python"
+  },
+  {
+   "label": "frozen control replay",
+   "result": "normal and optimized modes (p0 5112, round1 18862, round2 14672, final 1274 checks each); copoisson, round2 and final numerical suites CONSISTENCY_ONLY"
+  },
+  {
+   "label": "numerical falsification (mpmath 1.3.0, not interval certified)",
+   "script": "numerical-falsification.py",
+   "script_sha256": "1a3cb5b30a76bb68ba90dcb01d638946d405509ce4826cfaa47e2145146b7a83",
+   "log": "numerical-falsification.log",
+   "log_sha256": "6dd53f50603bc68d5e3f702517027fd343bf69dd5dc204a8cb40d000b7303c28",
+   "result": "identity residual <= 2.64e-9 (tail truncation) at 5 parameters x 5 cutoffs incl. both sides of x = 10; left-closed convention misses by 0.50; R(1/2,1) matches to 10 digits; x^3-scaled S_rho tail at the first zero in [0.36, 1.35] for x in [5.5, 300]"
+  }
+ ],
+ "negative_controls": [
+  {
+   "file": "negative-controls/negative-euler-maclaurin.lean",
+   "expected": "REJECTED",
+   "observed": "REJECTED (8 type mismatches, exit 1): B1 at integers +1/2 (left endpoint); left-closed sum over [1, n); sign +B1; B2 coefficient s instead of s/2; remainder exponent -Re s - 3; closed half-plane Re s >= 0; divergent Dirichlet tsum in place of zeta; cutoff 0 < x",
+   "log_sha256": "9436312677555e80aec4065bd9d9b2b9e910406bc03765099b9b880b80eedd48"
+  }
+ ],
+ "ci_harvest": {
+  "file": "ci-harvest-d58f536a.json",
+  "sha256": "04c2609b83a2664d84ec67645070eb976f93427cb6f1ed4b1fbace8a2be144a4"
+ },
+ "not_established": [
+  "aggregate current-source export",
+  "full100 compiler receipt production/replay",
+  "facade and registration",
+  "parent-extension acceptance",
+  "canonical regeneration (rhkg-compiler-receipt remains red)",
+  "CI on the Stage 8 head (pending at publication)",
+  "parameter-derivative (s-jet) bounds of the remainder (derivable by Cauchy estimates; not stated in the root)"
+ ],
+ "RH": "OPEN",
+ "Step4": "OPEN",
+ "independent_closing_inequalities": "OPEN"
+}

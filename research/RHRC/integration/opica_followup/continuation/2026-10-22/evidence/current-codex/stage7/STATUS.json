@@ -1,0 +1,180 @@
+{
+ "schema": "OPICA_STAGE7_NARROW_GATE_V1",
+ "status": "PASS_NARROW_LOCAL_GATES_ONLY_AGGREGATE_AND_FULL_RELEASE_OPEN",
+ "checked_commit": "0d7158a3fcc8560cc3ae486fb255ed6763cf8c2a",
+ "checked_tree": "306ff84b596926fd2573205c639ac7934dd5a77e",
+ "dirty_status_during_checks": "",
+ "compiler": "Lean 4.33.0-rc2 commit d8b18978322de05a8f3dba51ef03cf5461676c17 (Linux x86_64), Lake 5.0.0-src+d8b1897",
+ "mathlib": "51e6992efd06126df61a496bebf8f49482a4e129 (pins unchanged; no lake update)",
+ "project_import_delta": {
+  "module": "Zeta23.OPICAFollowup.RenormalizedCoPoisson",
+  "added": [
+   "Zeta23.OPICAFollowup.DilatedComb"
+  ],
+  "authority": "BUILD_MANIFEST direct_project_imports of this module is exactly [Zeta23.OPICAFollowup.DilatedComb]; no Mathlib import changed"
+ },
+ "parent_source_preservation": "The parent part of RenormalizedCoPoisson.lean is byte-identical (CRLF kept); the diff against 3a9dd319 removes only two docstring lines.",
+ "required_definitions_present": [
+  "renormalizedCombKernel",
+  "coPoissonFamily",
+  "coPoissonCutoff",
+  "finiteSumSrho",
+  "normalizationBrho",
+  "zeroMeasure"
+ ],
+ "cache_owner": "single local process; genuine module builds from the committed source",
+ "sources": [
+  {
+   "path": "Zeta23/OPICAFollowup/RenormalizedCoPoisson.lean",
+   "sha256": "3a3ecb500669fb3986786a7e697cd3aed940c8e058c829893e55a4a75a9a75de",
+   "bytes": 180705
+  },
+  {
+   "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedCoPoissonFamily.lean",
+   "sha256": "1fd0255554f7a095a9ae441731c4329ea3220f994d7d5a9713fc42ada7073cfe",
+   "bytes": 5435
+  },
+  {
+   "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedCoPoissonOrderZero.lean",
+   "sha256": "68a01d31ef49ae9ac79dc06b1752577758413740cc4190fd4dca3763061c8453",
+   "bytes": 8228
+  },
+  {
+   "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedZeroMeasure.lean",
+   "sha256": "01f2f5d3c22aedcae2a3ec06b403129c78b7c76bf89b5673cd3b3e28968e9fe7",
+   "bytes": 10645
+  },
+  {
+   "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/run_candidate_checks.py",
+   "sha256": "9d9c6192822baf87bcb122eee9011605e8ee876427dea313adba0567ae44c0b5",
+   "bytes": 6437
+  },
+  {
+   "path": ".github/workflows/rhrc_opica_followup.yml",
+   "sha256": "ae43b1b9a19429ee8f51e9c3099d5825e4b96d50e04914cd896edada942668ad",
+   "bytes": 44419
+  },
+  {
+   "path": "lean-toolchain",
+   "sha256": "0d3c76ccd8772d8bcbe207241421a760312b71a6aa82f84194391fdf5cb026d6",
+   "bytes": 29
+  },
+  {
+   "path": "lake-manifest.json",
+   "sha256": "1847b362e15efd927e75aa8b5442e491f998e4a3f730f9dcaca9841f2957c448",
+   "bytes": 3200
+  }
+ ],
+ "roots": {
+  "Zeta23.OPICAFollowup.renormalized_copoisson_tempered_family": {
+   "paper": "R1-CP1",
+   "expected_type_consumer": "consumers/ExpectedCoPoissonFamily.lean (7 receipts)",
+   "actual_domain": "literal CP1.1 pairing, decay constant 2 zeta(2), entire testwise, self-dual pairing",
+   "formalization_choice": "entire = testwise holomorphy of lam -> V_lam(phi); each V_lam tempered",
+   "axioms": "propext, Classical.choice, Quot.sound"
+  },
+  "Zeta23.OPICAFollowup.renormalized_copoisson_order_zero": {
+   "paper": "R1-CP1",
+   "expected_type_consumer": "consumers/ExpectedCoPoissonOrderZero.lean (10 receipts)",
+   "actual_domain": "origin atoms 1/rho and (1-e^(-rho T))/rho on compact windows, near-origin density, cutoff pairings converge to V, parent local-test convergence, nonvacuous at rho = 1/2",
+   "method": "lattice-ray change of variables with term-by-term integration on both sides; CP1.6 via the parent Euler-Maclaurin identity; dominated convergence with majorant C|x|^(sigma-1); genuine complex variation bound of density-plus-atom differences",
+   "axioms": "propext, Classical.choice, Quot.sound"
+  },
+  "Zeta23.OPICAFollowup.zero_measure_exact_properties": {
+   "paper": "R1-CP1",
+   "expected_type_consumer": "consumers/ExpectedZeroMeasure.lean (7 receipts)",
+   "actual_domain": "real part satisfies parent HasUnitGap, FourierSelfdual, HasLinearGrowth; atom -1 at -1; not OffLatticeNonnegative above |gamma| > 3pi/(2 log 2); construction clauses nonvacuous at rho = 3/4",
+   "axioms": "propext, Classical.choice, Quot.sound"
+  },
+  "re_verified_narrow_roots": [
+   "zero_measure_first_cell_sign",
+   "and all roots consumed by the fourteen runner consumer files"
+  ]
+ },
+ "gates": [
+  {
+   "label": "narrow runner (9 modules, 14 consumer files)",
+   "log": "runner/CHECK_RESULT.json",
+   "sha256": "5512138fec912b5d4b7df42852aba0c1b20a44056f05b1483f5e318d7c025974",
+   "exit_code": 0,
+   "runner_status": "PASS_NARROW_ONLY",
+   "consumer_receipts": {
+    "ExpectedMasks": 4,
+    "ExpectedComplex": 4,
+    "ExpectedAuxiliary": 6,
+    "ExpectedMultiplicity": 17,
+    "ExpectedComb": 5,
+    "ExpectedFirstCell": 5,
+    "ExpectedWeighted": 9,
+    "ExpectedNearGap": 5,
+    "ExpectedNearGapLimit": 10,
+    "ExpectedNormalizedLimit": 9,
+    "ExpectedWeightedInverse": 17,
+    "ExpectedCoPoissonFamily": 7,
+    "ExpectedCoPoissonOrderZero": 10,
+    "ExpectedZeroMeasure": 7
+   }
+  },
+  {
+   "label": "W04/W07 workflow consumer (unchanged heredoc)",
+   "log": "consumers/opica-w04-w07-expected.log",
+   "sha256": "47bf37f88ae44589a223145e24dd07655b7172bfca6a30bf819bb33c5251ac1e",
+   "exit_code": 0,
+   "standard_axiom_receipts": 52
+  },
+  {
+   "label": "W06 workflow consumer (unchanged heredoc)",
+   "log": "consumers/opica-w06-expected.log",
+   "sha256": "8564fc7fe7d8a2ef4ae561975e207ce6aa8e42accc8c35f0e6ed618ed26078ca",
+   "exit_code": 0,
+   "standard_axiom_receipts": 14
+  },
+  {
+   "label": "W01 consumers and exact-source subset",
+   "note": "not re-run locally: no W01 or subset module imports RenormalizedCoPoisson; green in CI at 3a9dd319"
+  },
+  {
+   "label": "child suite and parent contract tests",
+   "result": "child 185/185 and parent 82/82 in normal and optimized Python"
+  },
+  {
+   "label": "frozen control replay",
+   "result": "normal and optimized modes (p0 5112, round1 18862, round2 14672, final 1274 checks each); copoisson, round2 and final numerical suites CONSISTENCY_ONLY"
+  }
+ ],
+ "negative_controls": [
+  {
+   "file": "negative-controls/negative-cp1-family.lean",
+   "expected": "REJECTED",
+   "observed": "REJECTED: kernel sign D_t - D_(-t); missing origin atom; decay e^(-k t); anti-self-duality; constant zeta(k)",
+   "log_sha256": "94b4df3ea61a4e8bd1e406ff096d1172fdaf1b1f087dac20e4bd416e5179977e"
+  },
+  {
+   "file": "negative-controls/negative-cp1-order-zero.lean",
+   "expected": "REJECTED",
+   "observed": "REJECTED: origin coefficient 1/(1-rho); missing zeta(rho)|x|^(rho-1); closed strip Re rho <= 1; cutoff atom (1+e^(-rho T))/rho; A_t-only synthetic cutoff; parameter lam = rho",
+   "log_sha256": "df6b15fa60b815d3cfbb79585ea6372534d1208f0170c4ce9f6d1666eae5163f"
+  },
+  {
+   "file": "negative-controls/negative-cp1-zero-measure.lean",
+   "expected": "REJECTED",
+   "observed": "REJECTED: self-duality without zeta(rho) = 0; atom +1 at 1; b_rho = 1/rho + 1/(1-rho); rho = 1/2 allowed; gap (-2,2); missing b_rho D_0 correction",
+   "log_sha256": "f9ca792e1a8c69f96ae5847fcfdc1465b451904297aa0c01236f06caeae38d18"
+  }
+ ],
+ "ci_harvest": {
+  "file": "ci-harvest-3a9dd319.json",
+  "sha256": "8d76e90a0f5907335ae440c4de90bf8dc51f2d5220ecf4e62eba8fc8d0b2daef"
+ },
+ "not_established": [
+  "aggregate current-source export",
+  "full100 compiler receipt production/replay",
+  "facade and registration",
+  "parent-extension acceptance",
+  "canonical regeneration (rhkg-compiler-receipt remains red)",
+  "CI on the Stage 7 head (pending at publication)"
+ ],
+ "RH": "OPEN",
+ "Step4": "OPEN",
+ "independent_closing_inequalities": "OPEN"
+}

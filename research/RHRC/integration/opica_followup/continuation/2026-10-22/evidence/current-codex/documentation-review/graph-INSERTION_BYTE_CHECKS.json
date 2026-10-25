@@ -1,0 +1,16 @@
+[
+  {
+    "path": "research/RHRC/graph/README.md",
+    "before_sha256": "b1af42aee100b66d2755f8310023dbcea0f190333746b7e4be4e5cb835fc305f",
+    "after_sha256": "f58606b294f6061ae73508dd99c683ba071eb7e7e3112ba18ed940e4929a4fcd",
+    "outside_inserted_section_byte_identical": true,
+    "inserted_utf8_bytes": 493
+  },
+  {
+    "path": "research/RHRC/integration/README.md",
+    "before_sha256": "c62f7c6b85c4fa778e8c9dcd0dc3fcc26af8ff274e9ab1b1316e67d42d38a464",
+    "after_sha256": "506b6e3e435fdc8c8b6882ee6cb2c1b80357cabd4936b76964abe319007c3359",
+    "outside_inserted_section_byte_identical": true,
+    "inserted_utf8_bytes": 560
+  }
+]

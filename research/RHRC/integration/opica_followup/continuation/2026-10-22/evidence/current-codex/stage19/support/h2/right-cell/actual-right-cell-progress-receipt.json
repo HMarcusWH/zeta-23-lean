@@ -1,0 +1,266 @@
+{
+  "schema": "OPICA_ACTUAL_RIGHT_CELL_PROGRESS_V1",
+  "date_utc": "2026-10-24T15:05:34.8775198Z",
+  "claim": "Verified supporting research only; frozen grouped H2a primary roots remain OPEN.",
+  "compiler_version": "Lean (version 4.33.0-rc2, x86_64-w64-windows-gnu, commit d8b18978322de05a8f3dba51ef03cf5461676c17, Release)",
+  "repository_head_at_seal": "59ff485551771c0ab6322562d18fb8e9d4166da4",
+  "repository_committed_tree_at_seal": "396665de3d14c2db60a4a85c646dd56d718f07ff",
+  "repository_working_status_at_seal": [
+    " M AGENTS.md",
+    " M research/RHRC/graph/OPICA_FOLLOWUP_CURRENT_STATE.md",
+    " M research/RHRC/integration/opica_followup/CONTINUATION_MANIFEST.json",
+    " M research/RHRC/integration/opica_followup/README.md",
+    " M research/RHRC/integration/opica_followup/continuation/2026-10-22/DOCUMENTATION_INDEX.md",
+    " M research/RHRC/integration/opica_followup/continuation/2026-10-22/MODULE_STATUS.md",
+    " M research/RHRC/integration/opica_followup/continuation/2026-10-22/NEXT_AGENT_PROMPT.md",
+    " M research/RHRC/integration/opica_followup/continuation/2026-10-22/README.md",
+    " M research/RHRC/integration/opica_followup/continuation/2026-10-22/REMAINING_WORK.md",
+    " M research/RHRC/integration/opica_followup/continuation/2026-10-22/ROOT_LEDGER_100.json",
+    " M research/RHRC/integration/opica_followup/continuation/2026-10-22/drafts/README.md",
+    " M research/RHRC/integration/opica_followup/validate_contract.py",
+    "?? research/RHRC/integration/opica_followup/continuation/2026-10-22/STAGE19_HANDOVER.md",
+    "?? research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage19/",
+    "?? research/RHRC/integration/opica_followup/continuation/2026-10-22/tools/stage_record/stage19_replay_clean_workflow_consumers.py",
+    "?? research/RHRC/integration/opica_followup/continuation/2026-10-22/tools/stage_record/stage19_run_clean_negative_controls.py",
+    "?? research/RHRC/integration/opica_followup/continuation/2026-10-22/tools/stage_record/stage19_update_stage19_records.py"
+  ],
+  "import_source_hashes": [
+    {
+      "path": "Zeta23/OPICAFollowup/CoPoissonJets.lean",
+      "sha256": "dfb21b90906e2cbc23acdfd46b874c04d4ea6ae0217aa316b50c5b404c0d7134"
+    },
+    {
+      "path": "Zeta23/OPICAFollowup/ZeroProfiles.lean",
+      "sha256": "d5ee76f621001bcd97e555cd6a92517349080d4315c86a496289acf49a7af7fc"
+    },
+    {
+      "path": "lean-toolchain",
+      "sha256": "0d3c76ccd8772d8bcbe207241421a760312b71a6aa82f84194391fdf5cb026d6"
+    },
+    {
+      "path": "lake-manifest.json",
+      "sha256": "1847b362e15efd927e75aa8b5442e491f998e4a3f730f9dcaca9841f2957c448"
+    }
+  ],
+  "sealed_algebra_dependency_zip": "../audit-math/OPICA_MATH_SUPPORT_2026-10-24.zip",
+  "sealed_algebra_dependency_zip_sha256": "8ad5cc8093ee6219829070c55da8092400c207bfd2a9d7ed43ee4610d2e78533",
+  "child_receipts": [
+    "sh-coefficient-extraction-receipt.json",
+    "actual-measure-cell-receipt.json"
+  ],
+  "results": [
+    {
+      "source": "ShFiniteTaylor.lean",
+      "source_sha256": "59f266e1dc8043bb502665133b6b1b7db4e4832482b169cfb380c59ff7f6f525",
+      "compiler": "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lean.exe",
+      "arguments": [
+        "-o",
+        "ShFiniteTaylor.olean",
+        "ShFiniteTaylor.lean"
+      ],
+      "exit_code": 0,
+      "disposition": "PASS_SUPPORT_ONLY",
+      "log": "ShFiniteTaylor.log",
+      "log_sha256": "26053c5faf77e23e47d9a9a0d79873e5424f166292d108db576ee958c879bf90",
+      "axiom_closure": "propext, Classical.choice, Quot.sound",
+      "checked_repository_head": "59ff485551771c0ab6322562d18fb8e9d4166da4",
+      "checked_repository_committed_tree": "396665de3d14c2db60a4a85c646dd56d718f07ff",
+      "working_tree_note": "Production Lean sources unchanged; Stage19 documentation/evidence mutations began during this scratch campaign. Per-run status snapshots supplied for final physical injection and independent consumer; committed tree is not a claim of a clean working tree."
+    },
+    {
+      "source": "ActualJetTaylor.lean",
+      "source_sha256": "d7f58cfc9cfd1486a95a15996aa72d7e284b6e0c61f45487fa00014329993df7",
+      "compiler": "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lean.exe",
+      "arguments": [
+        "-o",
+        "ActualJetTaylor.olean",
+        "ActualJetTaylor.lean"
+      ],
+      "exit_code": 0,
+      "disposition": "PASS_SUPPORT_ONLY",
+      "log": "ActualJetTaylor.log",
+      "log_sha256": "a91d5d8d0cef65981f75277774c959188e768c585dfdfd1d44a8a3188a026290",
+      "axiom_closure": "propext, Classical.choice, Quot.sound",
+      "checked_repository_head": "59ff485551771c0ab6322562d18fb8e9d4166da4",
+      "checked_repository_committed_tree": "396665de3d14c2db60a4a85c646dd56d718f07ff",
+      "working_tree_note": "Production Lean sources unchanged; Stage19 documentation/evidence mutations began during this scratch campaign. Per-run status snapshots supplied for final physical injection and independent consumer; committed tree is not a claim of a clean working tree."
+    },
+    {
+      "source": "ExpectedActualJetTaylor.lean",
+      "source_sha256": "323dfafb3150ed9183a92a3c962654122e776abe3df5977f7998bd7f9f4a369c",
+      "compiler": "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lean.exe",
+      "arguments": [
+        "-o",
+        "ExpectedActualJetTaylor.olean",
+        "ExpectedActualJetTaylor.lean"
+      ],
+      "exit_code": 0,
+      "disposition": "PASS_SUPPORT_ONLY",
+      "log": "ExpectedActualJetTaylor.log",
+      "log_sha256": "fcc804a8598e12192ac11a306d3f3d9fb2c27382c8a031b51a0d11b97b000c8e",
+      "axiom_closure": "propext, Classical.choice, Quot.sound",
+      "checked_repository_head": "59ff485551771c0ab6322562d18fb8e9d4166da4",
+      "checked_repository_committed_tree": "396665de3d14c2db60a4a85c646dd56d718f07ff",
+      "working_tree_note": "Production Lean sources unchanged; Stage19 documentation/evidence mutations began during this scratch campaign. Per-run status snapshots supplied for final physical injection and independent consumer; committed tree is not a claim of a clean working tree."
+    },
+    {
+      "source": "RightCellCoefficientBridge.lean",
+      "source_sha256": "0b6e196d60c43f4f784bc37bc89ef02726f780d5bbc4ef88c2632f431e0dc247",
+      "compiler": "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lean.exe",
+      "arguments": [
+        "-o",
+        "RightCellCoefficientBridge.olean",
+        "RightCellCoefficientBridge.lean"
+      ],
+      "exit_code": 0,
+      "disposition": "PASS_SUPPORT_ONLY",
+      "log": "RightCellCoefficientBridge.log",
+      "log_sha256": "b86e04754a03c0b296fd258d644f7177885853cfc2717f4b5550d164c0113886",
+      "axiom_closure": "propext, Classical.choice, Quot.sound",
+      "checked_repository_head": "59ff485551771c0ab6322562d18fb8e9d4166da4",
+      "checked_repository_committed_tree": "396665de3d14c2db60a4a85c646dd56d718f07ff",
+      "working_tree_note": "Production Lean sources unchanged; Stage19 documentation/evidence mutations began during this scratch campaign. Per-run status snapshots supplied for final physical injection and independent consumer; committed tree is not a claim of a clean working tree."
+    },
+    {
+      "source": "RightCellIndependence.lean",
+      "source_sha256": "32c1eec398495b8a19e65c5f9b9f07004e4566105a7bb39dde08c586c98f7934",
+      "compiler": "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lean.exe",
+      "arguments": [
+        "-o",
+        "RightCellIndependence.olean",
+        "RightCellIndependence.lean"
+      ],
+      "exit_code": 0,
+      "disposition": "PASS_SUPPORT_ONLY",
+      "log": "RightCellIndependence.log",
+      "log_sha256": "c8ffd3c368ce8e0ef06c6ee12226bdee421d56288e6ed8e98ff3a11742b6fd52",
+      "axiom_closure": "propext, Classical.choice, Quot.sound",
+      "checked_repository_head": "59ff485551771c0ab6322562d18fb8e9d4166da4",
+      "checked_repository_committed_tree": "396665de3d14c2db60a4a85c646dd56d718f07ff",
+      "working_tree_note": "Production Lean sources unchanged; Stage19 documentation/evidence mutations began during this scratch campaign. Per-run status snapshots supplied for final physical injection and independent consumer; committed tree is not a claim of a clean working tree."
+    },
+    {
+      "source": "FiniteJetCombinationRemainder.lean",
+      "source_sha256": "a6be6979529762ca17b8331488a8e5f9a62d21c6e8b67b3b98e0e0186fc61373",
+      "compiler": "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lean.exe",
+      "arguments": [
+        "-o",
+        "FiniteJetCombinationRemainder.olean",
+        "FiniteJetCombinationRemainder.lean"
+      ],
+      "exit_code": 0,
+      "disposition": "PASS_SUPPORT_ONLY",
+      "log": "FiniteJetCombinationRemainder.log",
+      "log_sha256": "53817407302e501aeb99a0befc86d7b43c13888ed619c7749860581b48c60444",
+      "axiom_closure": "propext, Classical.choice, Quot.sound",
+      "checked_repository_head": "59ff485551771c0ab6322562d18fb8e9d4166da4",
+      "checked_repository_committed_tree": "396665de3d14c2db60a4a85c646dd56d718f07ff",
+      "working_tree_note": "Production Lean sources unchanged; Stage19 documentation/evidence mutations began during this scratch campaign. Per-run status snapshots supplied for final physical injection and independent consumer; committed tree is not a claim of a clean working tree."
+    },
+    {
+      "source": "AccumulatingRightCellCoefficientBridge.lean",
+      "source_sha256": "24793e105e3c93af3ea061166bbbbd2fa80b53f7d4da89118224547d1cb15a77",
+      "compiler": "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lean.exe",
+      "arguments": [
+        "-o",
+        "AccumulatingRightCellCoefficientBridge.olean",
+        "AccumulatingRightCellCoefficientBridge.lean"
+      ],
+      "exit_code": 0,
+      "disposition": "PASS_SUPPORT_ONLY",
+      "log": "AccumulatingRightCellCoefficientBridge.log",
+      "log_sha256": "418c6b26393241d2464b90e3cdb0ea442382ca474a052221c5b0cb1ab2dacc1a",
+      "axiom_closure": "propext, Classical.choice, Quot.sound",
+      "checked_repository_head": "59ff485551771c0ab6322562d18fb8e9d4166da4",
+      "checked_repository_committed_tree": "396665de3d14c2db60a4a85c646dd56d718f07ff",
+      "working_tree_note": "Production Lean sources unchanged; Stage19 documentation/evidence mutations began during this scratch campaign. Per-run status snapshots supplied for final physical injection and independent consumer; committed tree is not a claim of a clean working tree."
+    },
+    {
+      "source": "ExpandedActualMeasureIndependence.lean",
+      "source_sha256": "9fbcec1be1ed58df6194444fea640dd128adc7607ad4203c81dd6a2099495fa6",
+      "compiler": "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lean.exe",
+      "arguments": [
+        "-o",
+        "ExpandedActualMeasureIndependence.olean",
+        "ExpandedActualMeasureIndependence.lean"
+      ],
+      "exit_code": 0,
+      "disposition": "PASS_SUPPORT_ONLY",
+      "log": "ExpandedActualMeasureIndependence.log",
+      "log_sha256": "16f432eb3a711a8dfe60ed7b2e554a36d4ba153d5233f767475f1c5412632cdf",
+      "axiom_closure": "propext, Classical.choice, Quot.sound",
+      "checked_repository_head": "59ff485551771c0ab6322562d18fb8e9d4166da4",
+      "checked_repository_committed_tree": "396665de3d14c2db60a4a85c646dd56d718f07ff",
+      "working_tree_note": "Production Lean sources unchanged; Stage19 documentation/evidence mutations began during this scratch campaign. Per-run status snapshots supplied for final physical injection and independent consumer; committed tree is not a claim of a clean working tree."
+    },
+    {
+      "source": "ExpectedExpandedActualMeasureIndependence.lean",
+      "source_sha256": "b9e6ee1b10d1fa42447182345f05a6144249595631a86acd45d78614a952c116",
+      "compiler": "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lean.exe",
+      "arguments": [
+        "-o",
+        "ExpectedExpandedActualMeasureIndependence.olean",
+        "ExpectedExpandedActualMeasureIndependence.lean"
+      ],
+      "exit_code": 0,
+      "disposition": "PASS_SUPPORT_ONLY",
+      "log": "ExpectedExpandedActualMeasureIndependence.log",
+      "log_sha256": "735fd8ec13b9ce5048d22a3605163387afc4d08c9bb0b951ca6653da3437f7af",
+      "axiom_closure": "propext, Classical.choice, Quot.sound",
+      "checked_repository_head": "59ff485551771c0ab6322562d18fb8e9d4166da4",
+      "checked_repository_committed_tree": "396665de3d14c2db60a4a85c646dd56d718f07ff",
+      "working_tree_note": "Production Lean sources unchanged; Stage19 documentation/evidence mutations began during this scratch campaign. Per-run status snapshots supplied for final physical injection and independent consumer; committed tree is not a claim of a clean working tree."
+    },
+    {
+      "source": "ActualJetControls.lean",
+      "source_sha256": "9b645970e10006a472835d48de48ae521e27031cf2238bb1931b9e18cdd36614",
+      "compiler": "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lean.exe",
+      "arguments": [
+        "-o",
+        "ActualJetControls.olean",
+        "ActualJetControls.lean"
+      ],
+      "exit_code": 0,
+      "disposition": "PASS_SUPPORT_ONLY",
+      "log": "ActualJetControls.log",
+      "log_sha256": "d85a00bb2c00495437c70a521f40924b7f61b3c401905c2db6d75c9195a44076",
+      "axiom_closure": "propext, Classical.choice, Quot.sound",
+      "checked_repository_head": "59ff485551771c0ab6322562d18fb8e9d4166da4",
+      "checked_repository_committed_tree": "396665de3d14c2db60a4a85c646dd56d718f07ff",
+      "working_tree_note": "Production Lean sources unchanged; Stage19 documentation/evidence mutations began during this scratch campaign. Per-run status snapshots supplied for final physical injection and independent consumer; committed tree is not a claim of a clean working tree."
+    },
+    {
+      "source": "SequenceCoefficientExtraction.lean",
+      "source_sha256": "1f15c0e95ed6d39bf8886630bd9c43167fc24e6e605c53fb41d7790dec9b2824",
+      "compiler": "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lean.exe",
+      "arguments": [
+        "-o",
+        "SequenceCoefficientExtraction.olean",
+        "SequenceCoefficientExtraction.lean"
+      ],
+      "exit_code": 0,
+      "disposition": "PASS_SUPPORT_ONLY",
+      "log": "SequenceCoefficientExtraction.log",
+      "log_sha256": "7e977d4c38a405eaf7ae75e64641ea7fc51237504bdcb4e419ef54b49f1041ce",
+      "axiom_closure": "propext, Classical.choice, Quot.sound",
+      "checked_repository_head": "59ff485551771c0ab6322562d18fb8e9d4166da4",
+      "checked_repository_committed_tree": "396665de3d14c2db60a4a85c646dd56d718f07ff",
+      "working_tree_note": "Production Lean sources unchanged; Stage19 documentation/evidence mutations began during this scratch campaign. Per-run status snapshots supplied for final physical injection and independent consumer; committed tree is not a claim of a clean working tree."
+    },
+    {
+      "source": "NegativeActualJetFactorial.lean",
+      "source_sha256": "e854770b18c8469c952114115c241f58fa0fd5e0bd96826d4167634011fa4251",
+      "compiler": "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lean.exe",
+      "arguments": [
+        "NegativeActualJetFactorial.lean"
+      ],
+      "exit_code": 1,
+      "disposition": "EXPECTED_REJECTION",
+      "log": "NegativeActualJetFactorial.log",
+      "log_sha256": "2c8bb8e74acc4ce162a453bb7956e12563152499f95b6f2d196be19123ce70bb",
+      "reason": "Expected -1/3 coefficient rejected against proved normalized -1/6."
+    }
+  ],
+  "objects_not_for_publication": true,
+  "retained_failed_logs_are_not_proof_evidence": true
+}

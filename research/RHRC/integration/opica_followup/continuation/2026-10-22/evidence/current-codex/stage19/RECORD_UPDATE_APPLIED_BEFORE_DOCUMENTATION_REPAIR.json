@@ -1,0 +1,83 @@
+{
+  "schema": "OPICA_STAGE19_RECORD_UPDATE_PLAN_V1",
+  "mode": "APPLY",
+  "checked_commit": "59ff485551771c0ab6322562d18fb8e9d4166da4",
+  "checked_tree": "396665de3d14c2db60a4a85c646dd56d718f07ff",
+  "status": "evidence/current-codex/stage19/STATUS.json",
+  "status_sha256": "30e4b338c863276a1316ce5d9198bc3a323d0e3ca7eb4266b2b1d97d69d9f62a",
+  "runner": "evidence/current-codex/stage19/runner/CHECK_RESULT.json",
+  "runner_sha256": "5f60b38d8b55fc58d9c8d30a4ef5d08b9b567c9a3c6c08e9c27ee83377ef02b5",
+  "only_new_primary": "Zeta23.OPICAFollowup.actual_force_sampling_consumer",
+  "existing_primary_revalidated": "Zeta23.OPICAFollowup.step123_word_jet_consumer",
+  "supporting_only": "ExpectedSampleSign",
+  "expected_counts": {
+    "PROVED_IN_ORIGINAL_41_ROOT_SOURCE_BOUND_SUBSET": 41,
+    "PROVED_NARROW_LOCAL_GATES_AGGREGATE_PENDING": 50,
+    "OPEN_NO_COMPLETE_CANDIDATE": 9
+  },
+  "current_aggregate_accepted": false,
+  "full_release_accepted": false,
+  "modules_checked": 21,
+  "consumer_files_checked": 28,
+  "changes": [
+    {
+      "path": "AGENTS.md",
+      "before_sha256": "9cc0684419e909bbdd288608a0e1439c7838165080483c39b9f336e5ef4a2295",
+      "after_sha256": "6b6ec6761f2110bdcb24b2510c206d6434b5e7cb034287a44ab81dc892905e27",
+      "bytes": 5373
+    },
+    {
+      "path": "research/RHRC/graph/OPICA_FOLLOWUP_CURRENT_STATE.md",
+      "before_sha256": "de9aabe7985f839c39b62e82c3407c97bc21d831e283199ab5d81784fe68f327",
+      "after_sha256": "b89d8082f72f68a5f25818e031dc6b91cba2331ecc2d036ad4d04a3de7afc30a",
+      "bytes": 5814
+    },
+    {
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/DOCUMENTATION_INDEX.md",
+      "before_sha256": "0de7b66d5ab69a383c87d353c7cc26ce9989a84bfd51448c7ab7984319b6fcff",
+      "after_sha256": "d4eb21c9dfe52d7e145606a30b19edb806b05e9837173408df01c9a57a74434b",
+      "bytes": 14873
+    },
+    {
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/NEXT_AGENT_PROMPT.md",
+      "before_sha256": "7fccdca5b0cb7d40e02981a085403aff831a4ea77f222ce304f673c2f237d21b",
+      "after_sha256": "e363c2157c88811d77f1aa69676f7e046642bbb0746305c76503ddb5e51668df",
+      "bytes": 7882
+    },
+    {
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/README.md",
+      "before_sha256": "23cd8f94d4c884da1497af192306213595efb50b861eac2c7f4d05a512a3f671",
+      "after_sha256": "21be05eecba87ff2a88537eb823c595fee425a199494532dfd099475f582ed64",
+      "bytes": 11802
+    },
+    {
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/REMAINING_WORK.md",
+      "before_sha256": "e195b414e44251ad7467a9df88a0034eedc6633ea9f4f1d5d18f03044f28c40a",
+      "after_sha256": "caa7e04a8265ac7ff8279fb03941cf8639b5951751cdd18f2b03d202677385ce",
+      "bytes": 5903
+    },
+    {
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/ROOT_LEDGER_100.json",
+      "before_sha256": "114efdb3340b9d703d49a01a59235e459d25eb63cab4ecd5b42fd42f4dca95a9",
+      "after_sha256": "bc3d8067c4388e8cb2c828029648269bf28b5074e1fb23266638ec6d10f83d9c",
+      "bytes": 275837
+    },
+    {
+      "path": "research/RHRC/integration/opica_followup/README.md",
+      "before_sha256": "7ebb9ef6ea7d592c3f14293f3f7cb4bd7964f309202d9dcef109ea094cc20d2d",
+      "after_sha256": "12497f4622034b00c7c32eb33e7d7275b46b9c4014a5bf0a3b277aaadf5e334e",
+      "bytes": 13685
+    }
+  ],
+  "owner_next_steps": [
+    "Review this exact plan",
+    "Apply only after proof/evidence review",
+    "refresh_navigation.py --write then --check",
+    "refresh_manifest.py",
+    "preparation and full-release disposition gates",
+    "record commit, final exact-head source/workflow reconciliation"
+  ],
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "independent_closing_inequalities": "OPEN"
+}

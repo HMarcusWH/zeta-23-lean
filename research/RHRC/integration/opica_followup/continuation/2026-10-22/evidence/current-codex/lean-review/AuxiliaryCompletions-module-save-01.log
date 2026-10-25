@@ -1,0 +1,34 @@
+Zeta23/OPICAFollowup/AuxiliaryCompletions.lean:877:8: warning: 'ring' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+Zeta23/OPICAFollowup/AuxiliaryCompletions.lean:877:8: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+Zeta23/OPICAFollowup/AuxiliaryCompletions.lean:910:6: warning: 'ring' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+Zeta23/OPICAFollowup/AuxiliaryCompletions.lean:910:6: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+Zeta23/OPICAFollowup/AuxiliaryCompletions.lean:1071:63: warning: This simp argument is unused:
+  zero_mul
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [zero_add, fourier_coe_apply, ofReal_zero, mul_zero, zero_div, Complex.exp_zero, mul_one] at hp
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+Zeta23/OPICAFollowup/AuxiliaryCompletions.lean:1122:2: warning: 'push_cast at h' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+Zeta23/OPICAFollowup/AuxiliaryCompletions.lean:1123:2: warning: 'norm_num at h' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+Zeta23/OPICAFollowup/AuxiliaryCompletions.lean:1155:6: warning: 'push_cast' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+Zeta23/OPICAFollowup/AuxiliaryCompletions.lean:1419:54: warning: Variable name `hne` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hne
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`

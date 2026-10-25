@@ -1,0 +1,26 @@
+{
+  "status": "PASS_FINITE_EXACT_ONLY",
+  "counts": {
+    "corrected_resolvent_cell_equation": 1,
+    "homogeneous_tail_subtraction": 1,
+    "sawtooth_force_between_jumps": 1,
+    "spectral_coordinate_exact": 1,
+    "spectral_shift_exact": 1,
+    "log_telescoping_exact": 300,
+    "sawtooth_partial_norm_rational_part": 300,
+    "native_shape_sampling_identity": 126,
+    "herglotz_norm_identity": 126,
+    "source_pairing_imaginary_identity": 126,
+    "positive_spectral_form": 126,
+    "priced_nonreal_sampling_upper": 126,
+    "finite_mellin_telescoping": 30,
+    "undivided_stieltjes_kernel": 9
+  },
+  "total_checks": 1274,
+  "optimized": true,
+  "python": "3.13.5",
+  "sympy": "1.14.0",
+  "script_sha256": "87b2c328252dff666f2f414cf3fb09bf46abd95d64d241dbce223a2707448225",
+  "actual_offline_zeros_used": false,
+  "analytic_theorems_certified": false
+}

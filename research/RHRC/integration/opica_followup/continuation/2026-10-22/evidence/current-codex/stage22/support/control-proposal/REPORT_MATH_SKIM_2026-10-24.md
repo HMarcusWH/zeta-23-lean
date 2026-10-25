@@ -1,0 +1,21 @@
+Read-only mathematical/novelty skim on2026-10-24. Reviewer lane: jet_rate_research. This is an agent review and grants no human approval, independent release seal, or aggregate acceptance.
+
+Checked code pin: `2440dcde7607baa7bcff2ce9626effa1ae9f3f07`; tree `dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99`. Owner worktree remained clean when this note was written. Reviewed corrected outside-checkout template: `work/opica-stage22/STAGE22_HANDOVER.template.md`, SHA256 `7eddb1f606ff44a489a1d8308c3aeed63ef7fd26a4b7f4fefaad15f359f9e851`. This binds the template, not the later rendered report or record commit.
+
+One substantive error was found and corrected by the owner: the compiled sinc-weight control uses a positive Dirac mass at the nonzero integer2, not an off-integer point. Its unit gap/growth and vanishing sinc weight coexist with failure of self-duality. At an off-integer point sinc-squared is positive. The corrected template expressly retains the earlier narrative error and changes no theorem.
+
+The fixed-basis coercivity discussion correctly separates classical finite-dimensional norm equivalence from the source-specific construction of actual zero-jet measures, realification and domain adapters. It makes no collision-uniform or varying-zero bound claim. The canonical recovery cost is not identified with the negative-mass coercivity constant; jointly estimating them is labelled a lead.
+
+The published-primary comparisons are appropriately limited:
+
+- [Gautschi1962](https://www.cs.purdue.edu/homes/wxg/selected_works/section_01/016.pdf) studies inverse Vandermonde/confluent matrices and upper bounds; [Gautschi1978](https://www.cs.purdue.edu/homes/wxg/selected_works/section_01/062.pdf) adds lower bounds. Generic invertibility/conditioning is classical.
+- [Burnol2004](https://numdam.org/item/10.5802/jtnb.434.pdf), Theorems3.1–3.3 and Section7, treats multiplicity-indexed evaluators in Sonine/extended Sonine Hilbert spaces. The template correctly leaves an exact identification with OPICA's actual locally finite normalized κ-jet measures unproved. [Burnol2007](https://numdam.org/articles/10.5802/aif.2268/) supplies the classical co-Poisson context.
+- [Baake–Strungaru, Corollary4.5](https://arxiv.org/html/2202.09175v2) equates tempered, strongly tempered and slowly increasing Radon measures on uniformly discrete support. Integer support is uniformly discrete. The compact-cutoff Lean interface supplies a direct proof of the required annihilation statement; it is not a new lattice counterexample to that equivalence.
+
+The CT1.3 interpretation is correct: the actual near-gap family has an atom at `exp(-L)<1` and therefore fails the exact unit-gap hypothesis. The positive budget is linear in L and in the gap deficit to first order; its L⁻²-normalized blow-up forbids the stated unjustified topology/rate extension. It does not falsify the fixed exact-gap finite-span theorem. The formula belongs to the frozen original paper, and no new discovery priority is asserted.
+
+The common-variation counterexample is mathematically correct for n≥1. For `η_n=n(δ_(1/n)+δ_(-1/n)-2δ_0)`, the second-difference bound on each Schwartz test is at most `‖φ''‖∞/n`. A continuous compact test equal to |x| on [-1,1] pairs to2, while total variation on [-1,1] is4n. The template correctly labels this DERIVED, not Lean-formalized, not an actual zero-jet family and not self-dual. It therefore attacks a generic topology upgrade, not the proved HT2 theorem with a common variation bound.
+
+Control-scope caveat: a failed negative consumer demonstrates that the proposed proof application/formula mutation is not accepted by Lean; it does not itself prove that every target is mathematically false. In particular, `NegativeBudgetIndependenceFinal` has a trivially true bare target `∃c>0`, but its chosen budget application is still a function awaiting `LinearIndependent`. The positive repeated-basis and reflected-jet controls establish actual failures of the independence hypotheses. The runner preserves this distinction and grants no authority to error-recovery declarations.
+
+No other substantive mathematical correction was found in the requested skim. This does not establish the unperformed full-release review, the missing17th-paper comparison, worldwide priority, RH, or Step4.

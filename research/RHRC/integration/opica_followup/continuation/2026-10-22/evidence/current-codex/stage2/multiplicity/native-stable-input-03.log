@@ -1,0 +1,6 @@
+'Zeta23.OPICAFollowup.nativeAuxiliaryStableVector_norm_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.OPICAFollowup.nativeAuxiliaryStableVector_factorial_bound' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.nativeAuxiliaryStableVector_coe_input' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.OPICAFollowup.nativeAuxiliaryInput_memLp_two' depends on axioms: [propext, Classical.choice, Quot.sound]

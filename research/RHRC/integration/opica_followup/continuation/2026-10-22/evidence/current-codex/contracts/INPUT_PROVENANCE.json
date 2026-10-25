@@ -1,0 +1,89 @@
+{
+  "archive": "C:\\Users\\macka\\Downloads\\OPICA_PR294_CORE_Code_Papers_Instructions_2026-10-22.zip",
+  "archive_sha256": "9c076a533291adb814f776018126330b6b2125a852548622ce196c6a0afcf88d",
+  "entries": 2696,
+  "selected_extracted": [
+    {
+      "path": "START_HERE.md",
+      "bytes": 4540,
+      "sha256": "0e2a7398cb3b94bdcaf258b439d5d6d5b6b4adaa06844cd41f122f52460bc357"
+    },
+    {
+      "path": "STATE.json",
+      "bytes": 2025,
+      "sha256": "c01307144bab2797a0c4008d4e3235212ad63f085949deda4438d5bfeb0e77d1"
+    },
+    {
+      "path": "state/WORKSPACE_CHANGES.json",
+      "bytes": 2973,
+      "sha256": "baf26ef49f64920fbfec09e8c54b4f5a79ce6db615a5965e389b399d72581570"
+    },
+    {
+      "path": "state/GIT_ARCHIVE_BOUNDARIES.json",
+      "bytes": 1832,
+      "sha256": "80c59de2367d040177952be8580544956bfe83d56f3403d5ef9ae25e9e9f1725"
+    },
+    {
+      "path": "docs/BUILD_INSTRUCTIONS.md",
+      "bytes": 12246,
+      "sha256": "f23ae4f8dcd9d226990d25cc6a91e4483417ff4f411427d5d5aa32d8fa8e2659"
+    },
+    {
+      "path": "docs/EVIDENCE_AND_PRECEDENCE.md",
+      "bytes": 4151,
+      "sha256": "094d01e322667704492c11637f801192aacf5e923b0f8da9be76fe49ace6b744"
+    },
+    {
+      "path": "evidence/packaging/PYTHON_TEST_RESULTS.json",
+      "bytes": 763,
+      "sha256": "e9deb88e8b4ebc9e37d356222cdfab5318ebe59ff4acab4df1c93a3aab882110"
+    },
+    {
+      "path": "evidence/packaging/parent_normal.log",
+      "bytes": 9682,
+      "sha256": "fa649e86111c0ba6394b71e9142450a757f3f90b8803f9eeb2d8473bca9b1d8f"
+    },
+    {
+      "path": "evidence/packaging/parent_optimized.log",
+      "bytes": 9682,
+      "sha256": "d59cec2b56d5f7b3138055574f0839f3a975d18deb371d49a8d0abd51db30a86"
+    },
+    {
+      "path": "evidence/packaging/child_normal.log",
+      "bytes": 2977,
+      "sha256": "c36df07b851914162a56b304ec483d3d56a6bb899e7cfe63817077c51b5d2343"
+    },
+    {
+      "path": "evidence/packaging/child_optimized.log",
+      "bytes": 2977,
+      "sha256": "f92839b46210bb570c1a0ed1bb01ff6b6c1e466c04de485cfc50f2d96254ddf0"
+    },
+    {
+      "path": "workspace/research/RHRC/integration/opica/validate_contract.py",
+      "bytes": 41000,
+      "sha256": "cb46e19672a54db2d133be5aa3e0619b4aa194ee42535d04d763687d8740412b"
+    },
+    {
+      "path": "workspace/research/RHRC/integration/opica/tests/test_contract.py",
+      "bytes": 27204,
+      "sha256": "4d7523ff61b728fb575a955ce8fd52cb2b038439a03927c4762e3ad923e3cebf"
+    },
+    {
+      "path": "workspace/research/RHRC/integration/opica_followup/build_receipt.py",
+      "bytes": 26038,
+      "sha256": "2d531a4e5ce5ff3c34bea01a57632e8f71b268033a067b9c7a0c9928fa275c22"
+    },
+    {
+      "path": "tools/run_checks.py",
+      "bytes": 6678,
+      "sha256": "441fd7622273f0449727335e888be027e0ea0f150b16fda714dd933802fb5751"
+    },
+    {
+      "path": "tools/lake_pinned.py",
+      "bytes": 1689,
+      "sha256": "73d3fb786d13721382761e9ff1a98610714f7871c3e99930f676686deee428d7"
+    }
+  ],
+  "pending_full_receipt_reader_py_paths": [],
+  "manifest_validation_scope": "Selected files only; not entire runtime or archive proof validation"
+}

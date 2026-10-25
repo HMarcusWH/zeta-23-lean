@@ -1,0 +1,40 @@
+C:/Users/macka/.codex/.chatgpt-projects/g-p-6a353c7268b08191b685956e466d73e4/work/opica-stage1-2026-10-22/multiplicity/NativeAuxiliaryMoments.lean:269:49: error: unsolved goals
+case heq
+f g : ℝ → ℂ
+z : ℂ
+hf : Integrable (fun t => Complex.exp (-z * ↑t) * f t) volume
+hg : Integrable (fun t => Complex.exp (-z * ↑t) * g t) volume
+df : ℝ → ℂ := fun t => Complex.exp (-z * ↑t) * f t
+dg : ℝ → ℂ := fun t => Complex.exp (-z * ↑t) * g t
+⊢ (fun t => Complex.exp (-z * ↑t) * ∫ (s : ℝ), f s * g (t - s)) = df
+
+f g : ℝ → ℂ
+z : ℂ
+hf : Integrable (fun t => Complex.exp (-z * ↑t) * f t) volume
+hg : Integrable (fun t => Complex.exp (-z * ↑t) * g t) volume
+df : ℝ → ℂ := fun t => Complex.exp (-z * ↑t) * f t
+dg : ℝ → ℂ := fun t => Complex.exp (-z * ↑t) * g t
+heq : (fun t => Complex.exp (-z * ↑t) * ∫ (s : ℝ), f s * g (t - s)) = df
+⊢ Integrable (fun t => Complex.exp (-z * ↑t) * ∫ (s : ℝ), f s * g (t - s)) volume ∧
+    ∫ (t : ℝ), Complex.exp (-z * ↑t) * ∫ (s : ℝ), f s * g (t - s) =
+      (∫ (t : ℝ), Complex.exp (-z * ↑t) * f t) * ∫ (t : ℝ), Complex.exp (-z * ↑t) * g t
+C:/Users/macka/.codex/.chatgpt-projects/g-p-6a353c7268b08191b685956e466d73e4/work/opica-stage1-2026-10-22/multiplicity/NativeAuxiliaryMoments.lean:273:9: error: expected token
+C:/Users/macka/.codex/.chatgpt-projects/g-p-6a353c7268b08191b685956e466d73e4/work/opica-stage1-2026-10-22/multiplicity/NativeAuxiliaryMoments.lean:315:9: error: invalid 'by' tactic, expected type has not been provided
+C:/Users/macka/.codex/.chatgpt-projects/g-p-6a353c7268b08191b685956e466d73e4/work/opica-stage1-2026-10-22/multiplicity/NativeAuxiliaryMoments.lean:354:47: error: unsolved goals
+k d : ℕ
+z : ℂ
+hz : 0 < z.re
+U : Set ℂ := {w | 0 < w.re}
+ha : AnalyticOnNhd ℂ (nativeAuxiliaryInputLaplace k d) U
+hb : AnalyticOnNhd ℂ (nativeAuxiliaryInputContinuation k d) U
+he : nativeAuxiliaryInputLaplace k d =ᶠ[𝓝 1] nativeAuxiliaryInputContinuation k d
+⊢ 1 ∈ U
+'Zeta23.OPICAFollowup.nativeAuxiliaryInput_initial_laplace' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.nativeAuxiliaryInputLaplace_eq_continuation' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.nativeAuxiliaryMoment_integrable' depends on axioms: [propext, Classical.choice, Quot.sound]

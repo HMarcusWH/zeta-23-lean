@@ -1,0 +1,25 @@
+{
+  "schema": "OPICA_STAGE22_FULL_ORIGINAL_SQUARE_DOMAIN_ASSEMBLY_V1",
+  "status": "INSTALLED_FRESH_OWNER_REPLAY_PENDING",
+  "input_sha256": {
+    "SchwartzCompactApprox.lean": "f2ceb97fa0d10b67bcf7036709e898087dfd04bf44808098ac0f4461a1600ad9",
+    "TemperedLatticeNoRepair.lean": "bd0c74c720d1c7eb56f19d60b8845b887db8c2ba54bfec000f02c4007da11af5",
+    "ExpectedTemperedLatticeNoRepair.lean": "9e9edd98bda335a4b3a04aa490a7816639ca7620f14757e53fba30f1c52d7cc8",
+    "SquareDefectFullDomainAssembled.lean": "98c3688c4e293519aa79e3da6aaba02bcb2bca6d132ae18f16dbc4c58986ff48"
+  },
+  "source_file": "Zeta23/OPICAFollowup/SquareDefect.lean",
+  "source_sha256": "98c3688c4e293519aa79e3da6aaba02bcb2bca6d132ae18f16dbc4c58986ff48",
+  "old_physical_body_preserved_byte_exact": true,
+  "new_imports": "Three Mathlib imports recorded by prepared assembly; no new direct project import.",
+  "consumer": "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedFullSquareDomain.lean",
+  "consumer_sha256": "ff528b9e71454374dab8f944d565156fca26425dd8ef8b62dedd4d558f7dc5ea",
+  "validation_before_sha256": "ad9b16d1df0c40cb188862d38fc490db82e0bdd9925a0f0cf8befb89aa80231d",
+  "validation_after_sha256": "3d11b91f89e9f8042fbecf432106651e487dd0b5c7eab95e0dbcff17a7d427cc",
+  "runner_before_sha256": "bd4eb604c9a40148af5ddbb245cc68015ffaff73884a424c0177fabc94346477",
+  "runner_after_sha256": "b715e865edc756302d424d8d350d8a89d6d78e089bac89d2fd1a9c394a7077db",
+  "old_original_primaries_changed": false,
+  "primary_root_delta": 0,
+  "full_review_seal": "UNSET",
+  "RH": "OPEN",
+  "Step4": "OPEN"
+}

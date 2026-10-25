@@ -1,0 +1,17 @@
+'Zeta23.OPICAFollowup.sawtooth_integrable_force_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.OPICAFollowup.sawtooth_actual_mellin_fourier' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.OPICAFollowup.sawtooth_norm_weighted_zeta_moment' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OPICASawtoothForceIndependent.audit_nativeLogForce' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OPICASawtoothForceIndependent.expected_sawtooth_integrable_force_identity' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'OPICASawtoothForceIndependent.expected_sawtooth_actual_mellin_fourier' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'OPICASawtoothForceIndependent.expected_sawtooth_norm_weighted_zeta_moment' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'OPICASawtoothForceIndependent.expected_single_atom' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OPICASawtoothForceIndependent.expected_jump_matches_atom' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OPICASawtoothForceIndependent.expected_conventions' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OPICASawtoothForceIndependent.expected_budget_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]

@@ -1,0 +1,218 @@
+{
+  "total_count": 4,
+  "jobs": [
+    {
+      "id": 119868502278,
+      "run_id": 39791293893,
+      "workflow_name": "RHRC research and Lean checks",
+      "head_branch": "research/opica-native-followup",
+      "run_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/runs/39791293893",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOT94UfM8AAAAb6LgxBg",
+      "head_sha": "9ccea78eb5ee0c097bde05424e43de58a589b713",
+      "url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/jobs/119868502278",
+      "html_url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39791293893/job/119868502278",
+      "status": "in_progress",
+      "conclusion": null,
+      "created_at": "2026-10-22T13:57:28Z",
+      "started_at": "2026-10-22T14:29:40Z",
+      "completed_at": null,
+      "name": "rhkg-compiler-receipt",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-22T14:29:41Z",
+          "completed_at": "2026-10-22T14:29:43Z"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-22T14:29:43Z",
+          "completed_at": "2026-10-22T14:30:00Z"
+        },
+        {
+          "name": "Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-22T14:30:00Z",
+          "completed_at": "2026-10-22T14:30:01Z"
+        },
+        {
+          "name": "Install RHRC framework requirements",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-22T14:30:01Z",
+          "completed_at": "2026-10-22T14:30:03Z"
+        },
+        {
+          "name": "Run leanprover/lean-action@v1",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-22T14:30:03Z",
+          "completed_at": "2026-10-22T14:31:39Z"
+        },
+        {
+          "name": "Build registered and derived-state Lean exporters",
+          "status": "in_progress",
+          "conclusion": null,
+          "number": 6,
+          "started_at": "2026-10-22T14:31:39Z",
+          "completed_at": null
+        },
+        {
+          "name": "Validate complete registered theorem bindings",
+          "status": "pending",
+          "conclusion": null,
+          "number": 7,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Validate committed RHKG state BEFORE any generator writes",
+          "status": "pending",
+          "conclusion": null,
+          "number": 8,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Verify stale RHKG cannot be accepted (adversarial source/index mutations)",
+          "status": "pending",
+          "conclusion": null,
+          "number": 9,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Ensure validation did not modify or create derived products",
+          "status": "pending",
+          "conclusion": null,
+          "number": 10,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Upload exact PR-head RHKG derived state",
+          "status": "pending",
+          "conclusion": null,
+          "number": 11,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Post Run actions/setup-python@v5",
+          "status": "pending",
+          "conclusion": null,
+          "number": 21,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "pending",
+          "conclusion": null,
+          "number": 22,
+          "started_at": null,
+          "completed_at": null
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/check-runs/119868502278",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 1000117272,
+      "runner_name": "GitHub Actions 1000117272",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    },
+    {
+      "id": 119868502718,
+      "run_id": 39791293893,
+      "workflow_name": "RHRC research and Lean checks",
+      "head_branch": "research/opica-native-followup",
+      "run_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/runs/39791293893",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOT94UfM8AAAAb6Lgyvg",
+      "head_sha": "9ccea78eb5ee0c097bde05424e43de58a589b713",
+      "url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/jobs/119868502718",
+      "html_url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39791293893/job/119868502718",
+      "status": "queued",
+      "conclusion": null,
+      "created_at": "2026-10-22T13:57:28Z",
+      "started_at": "2026-10-22T13:57:28Z",
+      "completed_at": null,
+      "name": "lean",
+      "steps": [],
+      "check_run_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/check-runs/119868502718",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 0,
+      "runner_name": "",
+      "runner_group_id": 0,
+      "runner_group_name": ""
+    },
+    {
+      "id": 119868502896,
+      "run_id": 39791293893,
+      "workflow_name": "RHRC research and Lean checks",
+      "head_branch": "research/opica-native-followup",
+      "run_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/runs/39791293893",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOT94UfM8AAAAb6LgzcA",
+      "head_sha": "9ccea78eb5ee0c097bde05424e43de58a589b713",
+      "url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/jobs/119868502896",
+      "html_url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39791293893/job/119868502896",
+      "status": "queued",
+      "conclusion": null,
+      "created_at": "2026-10-22T13:57:28Z",
+      "started_at": "2026-10-22T13:57:28Z",
+      "completed_at": null,
+      "name": "python-rhrc",
+      "steps": [],
+      "check_run_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/check-runs/119868502896",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 0,
+      "runner_name": "",
+      "runner_group_id": 0,
+      "runner_group_name": ""
+    },
+    {
+      "id": 119868502929,
+      "run_id": 39791293893,
+      "workflow_name": "RHRC research and Lean checks",
+      "head_branch": "research/opica-native-followup",
+      "run_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/runs/39791293893",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOT94UfM8AAAAb6LgzkQ",
+      "head_sha": "9ccea78eb5ee0c097bde05424e43de58a589b713",
+      "url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/jobs/119868502929",
+      "html_url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39791293893/job/119868502929",
+      "status": "queued",
+      "conclusion": null,
+      "created_at": "2026-10-22T13:57:28Z",
+      "started_at": "2026-10-22T13:57:28Z",
+      "completed_at": null,
+      "name": "r003-normalization-audit",
+      "steps": [],
+      "check_run_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/check-runs/119868502929",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 0,
+      "runner_name": "",
+      "runner_group_id": 0,
+      "runner_group_name": ""
+    }
+  ]
+}

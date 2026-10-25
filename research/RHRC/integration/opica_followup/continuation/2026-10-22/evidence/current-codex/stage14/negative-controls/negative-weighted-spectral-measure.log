@@ -1,0 +1,52 @@
+negative-weighted-spectral-measure.lean:9:2: error: Type mismatch
+  arithmetic_stieltjes_holomorphic.right.right.right.right.left
+has type
+  ∫ (ξ : ℝ), (spectralEnergy ξ)⁻¹ ∂arithmeticSpectralMeasure = Real.log (2 * π) - Real.eulerMascheroniConstant
+but is expected to have type
+  ∫ (ξ : ℝ), (spectralEnergy ξ)⁻¹ ∂arithmeticSpectralMeasure = Real.log (2 * π) + Real.eulerMascheroniConstant
+negative-weighted-spectral-measure.lean:14:2: error: Type mismatch
+  arithmetic_stieltjes_holomorphic.right.right.right.right.left
+has type
+  ∫ (ξ : ℝ), (spectralEnergy ξ)⁻¹ ∂arithmeticSpectralMeasure = Real.log (2 * π) - Real.eulerMascheroniConstant
+but is expected to have type
+  ∫ (ξ : ℝ), (spectralEnergy ξ)⁻¹ ∂arithmeticSpectralMeasure = 2 * π * (Real.log (2 * π) - Real.eulerMascheroniConstant)
+negative-weighted-spectral-measure.lean:17:2: error: Type mismatch
+  arithmetic_stieltjes_holomorphic.right.right.right.right.right.right.right.right
+has type
+  DifferentiableOn ℂ arithmeticStieltjes spectralResolventSet
+but is expected to have type
+  DifferentiableOn ℂ arithmeticStieltjes univ
+negative-weighted-spectral-measure.lean:22:2: error: Type mismatch
+  arithmetic_stieltjes_holomorphic.right.right.right.right.right.right.right.left κ hκ
+has type
+  HasDerivAt arithmeticStieltjes (∫ (ξ : ℝ), ((↑(spectralEnergy ξ) - κ) ^ 2)⁻¹ ∂arithmeticSpectralMeasure) κ
+but is expected to have type
+  HasDerivAt arithmeticStieltjes (-∫ (ξ : ℝ), ((↑(spectralEnergy ξ) - κ) ^ 2)⁻¹ ∂arithmeticSpectralMeasure) κ
+negative-weighted-spectral-measure.lean:26:2: error: Type mismatch
+  arithmetic_stieltjes_holomorphic.right.right.right.right.right.right.left κ
+has type
+  κ ∈ spectralResolventSet → Integrable (fun ξ => (↑(spectralEnergy ξ) - κ)⁻¹) arithmeticSpectralMeasure
+but is expected to have type
+  Integrable (fun ξ => (↑(spectralEnergy ξ) - κ)⁻¹) arithmeticSpectralMeasure
+negative-weighted-spectral-measure.lean:31:2: error: Type mismatch
+  (arithmetic_stieltjes_sign_budget hκ).right.left
+has type
+  (arithmeticStieltjes κ).im / κ.im = ∫ (ξ : ℝ), (‖↑(spectralEnergy ξ) - κ‖ ^ 2)⁻¹ ∂arithmeticSpectralMeasure
+but is expected to have type
+  (arithmeticStieltjes κ).im / κ.im = -∫ (ξ : ℝ), (‖↑(spectralEnergy ξ) - κ‖ ^ 2)⁻¹ ∂arithmeticSpectralMeasure
+negative-weighted-spectral-measure.lean:35:2: error: Invalid projection: Projections cannot be used on functions, and
+  arithmetic_stieltjes_sign_budget
+has function type
+  κ.im ≠ 0 →
+    Integrable (fun ξ => (‖↑(spectralEnergy ξ) - κ‖ ^ 2)⁻¹) arithmeticSpectralMeasure ∧
+      (arithmeticStieltjes κ).im / κ.im = ∫ (ξ : ℝ), (‖↑(spectralEnergy ξ) - κ‖ ^ 2)⁻¹ ∂arithmeticSpectralMeasure ∧
+        0 < ∫ (ξ : ℝ), (‖↑(spectralEnergy ξ) - κ‖ ^ 2)⁻¹ ∂arithmeticSpectralMeasure ∧
+          ‖arithmeticStieltjes κ‖ ≤ (1 + ‖κ‖ / |κ.im|) * (Real.log (2 * π) - Real.eulerMascheroniConstant) ∧
+            ∫ (ξ : ℝ), (‖↑(spectralEnergy ξ) - κ‖ ^ 2)⁻¹ ∂arithmeticSpectralMeasure ≤
+              (1 + ‖κ‖ / |κ.im|) * (Real.log (2 * π) - Real.eulerMascheroniConstant) / |κ.im|
+negative-weighted-spectral-measure.lean:39:2: error: Type mismatch
+  (arithmetic_stieltjes_sign_budget hκ).right.right.right.left
+has type
+  ‖arithmeticStieltjes κ‖ ≤ (1 + ‖κ‖ / |κ.im|) * (Real.log (2 * π) - Real.eulerMascheroniConstant)
+but is expected to have type
+  ‖arithmeticStieltjes κ‖ ≤ ‖κ‖ / |κ.im| * (Real.log (2 * π) - Real.eulerMascheroniConstant)

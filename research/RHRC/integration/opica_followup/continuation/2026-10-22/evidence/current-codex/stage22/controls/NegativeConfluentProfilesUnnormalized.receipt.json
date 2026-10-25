@@ -1,0 +1,41 @@
+{
+  "name": "NegativeConfluentProfilesUnnormalized",
+  "file": "NegativeConfluentProfilesUnnormalized.lean",
+  "source_sha256": "4d58dac153c838998c0cfb004ba4e699f8bcea47ef305fd6f07f0ca1a8a91363",
+  "expected": "REJECTED",
+  "scope": "H2a full statement mutation",
+  "origin": {
+    "kind": "EXACT_STAGE21_BYTES",
+    "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\NegativeConfluentProfilesUnnormalized.lean",
+    "sha256": "4d58dac153c838998c0cfb004ba4e699f8bcea47ef305fd6f07f0ca1a8a91363",
+    "receipt": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\CHECK_RESULT.json",
+    "receipt_sha256": "277a7e7fde8c600848bc59ce730faf3c9ceab1ca436ac36c58c00420f429aa0a"
+  },
+  "required_diagnostic_regex": [
+    "iteratedDeriv",
+    "profile_jet_confluent_determinant"
+  ],
+  "passed": true,
+  "observed": "REJECTED_INTENDED_MUTATION",
+  "failure_reasons": [],
+  "requested_axiom_names": [],
+  "axioms": {},
+  "error_recovery_sorryAx_in_rejected_output": false,
+  "formal_authority_from_failed_declarations": false,
+  "command": [
+    "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+    "env",
+    "lean",
+    "--root=C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\sources",
+    "-DautoImplicit=false",
+    "-DrelaxedAutoImplicit=false",
+    "-DmaxHeartbeats=800000",
+    "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\sources\\NegativeConfluentProfilesUnnormalized.lean",
+    "-o",
+    "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\objects\\NegativeConfluentProfilesUnnormalized.olean"
+  ],
+  "exit_code": 1,
+  "log": "NegativeConfluentProfilesUnnormalized.log",
+  "log_sha256": "6e2324f51ad8d10793a85ca6129337c5ebeaa1fb5e2a3d78df80e512e0641ef7",
+  "seconds": 49.081044299993664
+}

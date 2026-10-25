@@ -1,0 +1,188 @@
+{
+  "scope": "Read-only independent recomputation of candidate evidence, not human/release/seal approval",
+  "receipt_sha256": "de281ff16417250f86408b4c424bab9c39ff4cd91197ab5363b63bbcd7b45b77",
+  "exit_code": 0,
+  "source_unchanged": true,
+  "log_sha256": "7f364c4d3c20987a9036f8945ba524ddfd01b3b9fb735614050a2ba95a0a6108",
+  "recorded_log_sha256": "7f364c4d3c20987a9036f8945ba524ddfd01b3b9fb735614050a2ba95a0a6108",
+  "closure_count": 17,
+  "all_closures_standard_only": true,
+  "closures": [
+    {
+      "name": "Zeta23.OPICAFollowup.TemperedLatticeBridge.scaledBump_derivative_bound",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "Zeta23.OPICAFollowup.TemperedLatticeBridge.cutoff_tendsto",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "Zeta23.OPICAFollowup.TemperedLatticeBridge.compactApprox_apply",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "Zeta23.OPICAFollowup.TemperedLatticeBridge.compactApprox_hasCompactSupport",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "Zeta23.OPICAFollowup.TemperedLatticeBridge.compactApprox_tendsto",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "Zeta23.OPICAFollowup.TemperedLatticeBridge.compactApprox_zero",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "Zeta23.OPICAFollowup.TemperedLatticeBridge.eq_of_compact_agreement",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "Zeta23.OPICAFollowup.TemperedLatticeBridge.extension_unique",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "Zeta23.OPICAFollowup.TemperedLatticeBridge.extension_annihilates_lattice_zero",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "Zeta23.OPICAFollowup.TemperedLatticeBridge.extension_congr_on_lattice",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "Zeta23.OPICAFollowup.square_actual_no_distribution_tempered_measure_repair",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "Zeta23.OPICAFollowup.square_actual_no_selfdual_and_distribution_tempered_measure_repair",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "Zeta23.OPICAFollowup.expected_original_distribution_tempered_domain",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "Zeta23.OPICAFollowup.expected_existing_strong_domain_is_instance",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "Zeta23.OPICAFollowup.expected_compact_extension_unique",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "Zeta23.OPICAFollowup.expected_full_domain_mixed_selfdual_barrier",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "Zeta23.OPICAFollowup.compact_compatibility_cannot_be_omitted",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    }
+  ],
+  "recorded_file_count": 205,
+  "all_recorded_files_match": true,
+  "archive": {
+    "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-tempered-lattice\\SEALED_TEMPERED_LATTICE_2026-10-24.zip",
+    "sha256": "462475c1c9c77f5a92e5ea4ccbee6d67f26c1fbf0b02a14b1a2fa9ca929e2c50",
+    "expected": "462475c1c9c77f5a92e5ea4ccbee6d67f26c1fbf0b02a14b1a2fa9ca929e2c50"
+  },
+  "manifest": {
+    "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-tempered-lattice\\SEALED_TEMPERED_LATTICE_2026-10-24\\SEAL_MANIFEST.json",
+    "sha256": "d6dbb1c59703df4307a82a3f4a8d8da4178a26f791c8ee6a450709f3eb13fea7",
+    "expected": "d6dbb1c59703df4307a82a3f4a8d8da4178a26f791c8ee6a450709f3eb13fea7"
+  },
+  "assembly": {
+    "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-tempered-lattice\\SquareDefectFullDomainAssembled.lean",
+    "sha256": "98c3688c4e293519aa79e3da6aaba02bcb2bca6d132ae18f16dbc4c58986ff48",
+    "expected": "98c3688c4e293519aa79e3da6aaba02bcb2bca6d132ae18f16dbc4c58986ff48",
+    "physical_body_exact_after_extra_import_prefix": true,
+    "direct_extra_imports": [
+      "import Mathlib.Analysis.Distribution.SchwartzSpace.Deriv",
+      "import Mathlib.Analysis.Calculus.BumpFunction.Basic",
+      "import Mathlib.Tactic"
+    ],
+    "owner_production_replay": "NOT_ESTABLISHED_BY_THIS_REVIEW"
+  },
+  "expected_consumer_provenance": {
+    "required_types_exact": 93,
+    "additional_full_signature_types_exact": 7,
+    "selected_full_type_coverage": 100,
+    "full_signature_authoring": "Producer confirms complete written-source-signature copies; not independently authored expected types.",
+    "build_spec_requirement": "BUILD_SPEC.md:745 requires independently written expected intended types; copied actual inferred types alone are insufficient.",
+    "independent_semantic_review": "The non-author review independently compares frozen clauses/actual constructions/domains, but does not relabel producer authoring or set acceptance statuses.",
+    "acceptance_remains_required": true
+  },
+  "human_review": "NOT_ESTABLISHED",
+  "seal_created": false,
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "independent_closing_inequalities": "OPEN",
+  "aggregate": "OPEN",
+  "full_release": "OPEN"
+}

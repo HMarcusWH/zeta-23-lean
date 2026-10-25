@@ -1,0 +1,135 @@
+{
+  "schema": "OPICA_STAGE20_NARROW_SOURCE_PINNED_V1",
+  "status": "PASS_NARROW_ONLY",
+  "checked_commit": "9a8b2a4baee49f2056c7945b1544a7bc2893735b",
+  "checked_tree": "6aa53d22d50d2aa24046d73b128c64a1d262f7f3",
+  "dirty_status_during_checks": "",
+  "source_unchanged": true,
+  "roots": {
+    "Zeta23.OPICAFollowup.native_fixed_source_window_rate": {
+      "source": "Zeta23/OPICAFollowup/NativeWindowRate.lean",
+      "source_sha256": "1b388ffd7828390307605cc4804d7d9e1400343a3bafa0858a9d76aa0f369b33",
+      "consumer": {
+        "path": "consumers/ExpectedPhysicalRates.lean",
+        "sha256": "0adcee1919d6a4bc897a7c9bd0077e772c6faf3dce8e6c7a3ae93bebc1b256c1",
+        "expected_declaration": "IndependentPhysicalWindowRates.expected_fixed_source"
+      },
+      "domain": "ACTUAL_CONTINUOUS_WINDOW_ALL_SOURCE_ORDERS_C_GT_ONE_THETA_ZERO_ALL_MULTIPLICITIES",
+      "status": "PROVED_NARROW_AGGREGATE_PENDING"
+    },
+    "Zeta23.OPICAFollowup.native_slow_source_window_rate": {
+      "source": "Zeta23/OPICAFollowup/MovingSourceWindowRate.lean",
+      "source_sha256": "31fb27cf1e3f75a45b2ae1bfbf65625fc8784d7b6aba2f8251f9762be52ee51d",
+      "consumer": {
+        "path": "consumers/ExpectedPhysicalRates.lean",
+        "sha256": "0adcee1919d6a4bc897a7c9bd0077e772c6faf3dce8e6c7a3ae93bebc1b256c1",
+        "expected_declaration": "IndependentPhysicalWindowRates.expected_slow_source"
+      },
+      "domain": "ARBITRARY_REAL_COFINAL_TIME_ORIGINAL_MS1_SCHEDULE_FINITE_NONPOSITIVE_PREFIX",
+      "status": "PROVED_NARROW_AGGREGATE_PENDING"
+    },
+    "Zeta23.OPICAFollowup.profile_jet_confluent_determinant": {
+      "source": "Zeta23/OPICAFollowup/ConfluentProfiles.lean",
+      "source_sha256": "1773e3200a8b3e7284b276d97dcfc5481945e4139852fef8d92e3b64b7b0b0d0",
+      "consumer": {
+        "path": "consumers/ExpectedConfluentProfiles.lean",
+        "sha256": "8b900acfaea1649b339d4670ed83c41a3e9e8b7b236bb6f5a4c257f32a00fbb0",
+        "expected_declaration": "OPICAConfluentProfilesIndependent.expected_profile_jet_confluent_determinant"
+      },
+      "domain": "DISTINCT_NONZERO_NODES_ARBITRARY_MULTIPLICITIES_CANONICAL_NORMALIZED_COLUMNS",
+      "status": "PROVED_NARROW_AGGREGATE_PENDING"
+    },
+    "Zeta23.OPICAFollowup.finite_zero_jet_independent": {
+      "source": "Zeta23/OPICAFollowup/ConfluentProfiles.lean",
+      "source_sha256": "1773e3200a8b3e7284b276d97dcfc5481945e4139852fef8d92e3b64b7b0b0d0",
+      "consumer": {
+        "path": "consumers/ExpectedConfluentProfiles.lean",
+        "sha256": "8b900acfaea1649b339d4670ed83c41a3e9e8b7b236bb6f5a4c257f32a00fbb0",
+        "expected_declaration": "OPICAConfluentProfilesIndependent.expected_finite_zero_jet_independent"
+      },
+      "domain": "ACTUAL_STRIP_ZETA_ZEROS_REFLECTION_QUOTIENT_AVAILABLE_MULTIPLICITY_JET_MEASURES",
+      "status": "PROVED_NARROW_AGGREGATE_PENDING"
+    },
+    "Zeta23.OPICAFollowup.fixed_two_factor_mask_rate_theta": {
+      "source": "Zeta23/OPICAFollowup/Consumers.lean",
+      "source_sha256": "71de2dd0ef69ed953636f802f2543e86be12ba1bb0cd68d29d6ca28c638e91d7",
+      "consumer": {
+        "path": "consumers/ExpectedArithmeticPhysical.lean",
+        "sha256": "550876c3fb6997256437c159c5de514685305c76124b358fd5385a4f038885aa",
+        "expected_declaration": "IndependentArithmeticPhysical.expected_literal_raw_high_mask"
+      },
+      "domain": "BOTH_COMPLETE_ACTUAL_FIXED_HIGH_MASK_REALIZATIONS_RAW_AND_ABSORBED",
+      "status": "PROVED_NARROW_AGGREGATE_PENDING"
+    },
+    "Zeta23.OPICAFollowup.quiet_balanced_observation_implies_native_cut": {
+      "source": "Zeta23/OPICAFollowup/Consumers.lean",
+      "source_sha256": "71de2dd0ef69ed953636f802f2543e86be12ba1bb0cd68d29d6ca28c638e91d7",
+      "consumer": {
+        "path": "consumers/ExpectedArithmeticPhysical.lean",
+        "sha256": "550876c3fb6997256437c159c5de514685305c76124b358fd5385a4f038885aa",
+        "expected_declaration": "IndependentArithmeticPhysical.expected_quiet_full_original_domain"
+      },
+      "domain": "EXPLICIT_OPEN_ACTUAL_QUIET_ANTECEDENT_D0_ALL_POSITIVE_DAMPING_LITERAL_L2_NATIVE_CUT_CONDITIONAL_RH",
+      "status": "PROVED_NARROW_AGGREGATE_PENDING"
+    }
+  },
+  "runner": "runner/CHECK_RESULT.json",
+  "controls": "controls/CHECK_RESULT.json",
+  "printed_closures": 266,
+  "local_control_counts": {
+    "positive": 2,
+    "rejected_mutations": 15
+  },
+  "historical_workflow_harvest": "../stage19/workflow/LATER_HARVEST.json",
+  "exact_new_head_CI": "NOT_INHERITED_FROM_OLD_HEAD",
+  "full_release_accepted": false,
+  "aggregate_registration_accepted": false,
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "independent_closing_inequalities": "OPEN",
+  "paper_unit_evidence_coverage": {
+    "receipt": "PAPER_UNIT_COVERAGE.json",
+    "complete": 25,
+    "partial": 2,
+    "absent": 1,
+    "acceptance_established": false
+  },
+  "record_phase_validation": {
+    "child": {
+      "tests_per_mode": 185,
+      "modes": [
+        "normal",
+        "optimized"
+      ],
+      "receipt": "python/native/summary.json"
+    },
+    "parent": {
+      "tests_per_mode": 82,
+      "modes": [
+        "normal",
+        "optimized"
+      ],
+      "no_skips": true,
+      "real_Linux_tmp_fixtures": true,
+      "receipt": "python/linux/summary.json"
+    },
+    "frozen": {
+      "checks_per_mode": [
+        5112,
+        18862,
+        14672,
+        1274
+      ],
+      "numeric_suites": 3,
+      "numerical_authority": "CONSISTENCY_ONLY",
+      "receipt": "python/native/summary.json"
+    },
+    "proof_or_full_release_authority": false
+  },
+  "retained_workflow_consumers": {
+    "receipt": "workflow-consumers/CHECK_RESULT.json",
+    "W04_W07_closures": 52,
+    "W06_closures": 14,
+    "standard_axioms_only": true
+  }
+}

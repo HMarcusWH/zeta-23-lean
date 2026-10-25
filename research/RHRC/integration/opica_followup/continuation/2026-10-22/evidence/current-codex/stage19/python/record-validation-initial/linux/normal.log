@@ -1,0 +1,22 @@
+...............F..................................................................
+======================================================================
+FAIL: test_exact_seven_reviewed_files_pass (test_contract.DocumentationReview.test_exact_seven_reviewed_files_pass)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/c/Users/macka/.codex/.chatgpt-projects/g-p-6a353c7268b08191b685956e466d73e4/work/opica-followup-repo/research/RHRC/integration/opica/tests/test_contract.py", line 531, in test_exact_seven_reviewed_files_pass
+    self.assertEqual(errors,[])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^
+AssertionError: Lists differ: ['documentation review rejected: reviewed [77 chars].md'] != []
+
+First list contains 1 additional elements.
+First extra element 0:
+'documentation review rejected: reviewed documentation bytes changed: research/RHRC/graph/OPICA_FOLLOWUP_CURRENT_STATE.md'
+
++ []
+- ['documentation review rejected: reviewed documentation bytes changed: '
+-  'research/RHRC/graph/OPICA_FOLLOWUP_CURRENT_STATE.md']
+
+----------------------------------------------------------------------
+Ran 82 tests in 245.984s
+
+FAILED (failures=1)

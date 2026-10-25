@@ -1,0 +1,13 @@
+'Zeta23.OPICAFollowup.expected_original_distribution_tempered_domain' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.expected_existing_strong_domain_is_instance' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.expected_compact_extension_unique' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.OPICAFollowup.expected_full_domain_mixed_selfdual_barrier' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.compact_compatibility_cannot_be_omitted' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

@@ -1,0 +1,199 @@
+[
+  {
+    "adaptive_point_search": false,
+    "adaptive_precision_increase": false,
+    "arb_precision_bits": 384,
+    "frozen_K": 3,
+    "frozen_center_count": 3,
+    "frozen_parity": "even",
+    "rh_claim": false,
+    "status": "PASS",
+    "theorem_promotion": false
+  },
+  {
+    "status": "PASS",
+    "centers": [
+      {
+        "label": "Q13_midpoint",
+        "Q": 13,
+        "center_num": 140737488355328,
+        "den": 281474976710656,
+        "primary": false,
+        "fast_wedge": -8.708480514561605e-05,
+        "fast_R_min": -2.5205066499575527e-08,
+        "fast_R_max": 3.731181729802576e-05
+      },
+      {
+        "label": "Q14_determinant_basin",
+        "Q": 14,
+        "center_num": 114605298545788,
+        "den": 281474976710656,
+        "primary": true,
+        "fast_wedge": -7.928560469351765e-07,
+        "fast_R_min": -7.605474740510818e-11,
+        "fast_R_max": 1.0249716144901035e-06
+      },
+      {
+        "label": "Q15_midpoint",
+        "Q": 15,
+        "center_num": 140737488355328,
+        "den": 281474976710656,
+        "primary": false,
+        "fast_wedge": -6.0132714612867375e-05,
+        "fast_R_min": -1.6330751711773233e-08,
+        "fast_R_max": 2.7457748629681838e-05
+      }
+    ],
+    "adaptive_point_search": false,
+    "claim_cap": "POST214_EXACT_KERNEL_DUAL_GEOMETRY_RESEARCH_ONLY"
+  },
+  {
+    "exact_geometry": {
+      "D_energy_gram": [
+        [
+          "40",
+          "72"
+        ],
+        [
+          "72",
+          "180"
+        ]
+      ],
+      "D_energy_gram_det": "2016",
+      "basis": [
+        [
+          "0",
+          "1"
+        ],
+        [
+          "1",
+          "0"
+        ],
+        [
+          "-4",
+          "-9"
+        ],
+        [
+          "6",
+          "16"
+        ],
+        [
+          "-4",
+          "-9"
+        ],
+        [
+          "1",
+          "0"
+        ],
+        [
+          "0",
+          "1"
+        ]
+      ],
+      "dimension": 2,
+      "moment_four_covector": [
+        "24",
+        "144"
+      ],
+      "quadratic_normal": [
+        "5",
+        "0",
+        "-3",
+        "-4",
+        "-3",
+        "0",
+        "5"
+      ],
+      "quadratic_normal_denominator": "84",
+      "scalar_identity_annihilation": [
+        "0",
+        "0"
+      ]
+    },
+    "precision_bits": 192,
+    "rh_claim": false,
+    "rows": [
+      {
+        "Q": 13,
+        "classification": "FULL_SPACE_DUAL_INDEPENDENCE_CERTIFIED",
+        "full_space_sign_indefinite_certified": true,
+        "label": "Q13_midpoint",
+        "wedge_excludes_zero": true
+      },
+      {
+        "Q": 14,
+        "classification": "FULL_SPACE_DUAL_INDEPENDENCE_CERTIFIED",
+        "full_space_sign_indefinite_certified": true,
+        "label": "Q14_determinant_basin",
+        "wedge_excludes_zero": true
+      },
+      {
+        "Q": 15,
+        "classification": "FULL_SPACE_DUAL_INDEPENDENCE_CERTIFIED",
+        "full_space_sign_indefinite_certified": true,
+        "label": "Q15_midpoint",
+        "wedge_excludes_zero": true
+      }
+    ],
+    "status": "PASS",
+    "symbolic_det_identity": true,
+    "theorem_promotion": false
+  },
+  {
+    "Q": 13,
+    "classification": "FULL_SPACE_DUAL_INDEPENDENCE_CERTIFIED",
+    "full_space_sign_indefinite_certified": true,
+    "label": "Q13_midpoint",
+    "wedge_excludes_zero": true
+  },
+  {
+    "Q": 14,
+    "classification": "FULL_SPACE_DUAL_INDEPENDENCE_CERTIFIED",
+    "full_space_sign_indefinite_certified": true,
+    "label": "Q14_determinant_basin",
+    "wedge_excludes_zero": true
+  },
+  {
+    "Q": 15,
+    "classification": "FULL_SPACE_DUAL_INDEPENDENCE_CERTIFIED",
+    "full_space_sign_indefinite_certified": true,
+    "label": "Q15_midpoint",
+    "wedge_excludes_zero": true
+  },
+  {
+    "status": "PASS",
+    "classification": "FULL_SPACE_DUAL_INDEPENDENCE_CERTIFIED",
+    "sign_route_classification": "FULL_SPACE_SIGN_INDEFINITE_CERTIFIED",
+    "control_transfer_status": "DUAL_INDEPENDENCE_SURVIVES_Q13_Q15_CONTROLS",
+    "primary_wedge": {
+      "ball": "[-7.92856142933793718521707742118e-7 +/- 2.44e-37]",
+      "lower": "-7.92856142933793718521707742118e-7",
+      "upper": "-7.92856142933793718521707742118e-7",
+      "contains_zero": false,
+      "rel_accuracy_bits": 345
+    },
+    "primary_R_min": {
+      "ball": "[-7.60547660138399452560501190345e-11 +/- 1.90e-41]",
+      "lower": "-7.60547660138399452560501190345e-11",
+      "upper": "-7.60547660138399452560501190345e-11",
+      "contains_zero": false,
+      "rel_accuracy_bits": 335
+    },
+    "primary_R_max": {
+      "ball": "[1.02497161190896926446719955942e-6 +/- 3.03e-36]",
+      "lower": "1.02497161190896926446719955942e-6",
+      "upper": "1.02497161190896926446719955942e-6",
+      "contains_zero": false,
+      "rel_accuracy_bits": 349
+    },
+    "obs_059i_closed": false,
+    "rh_claim": false
+  },
+  {
+    "status": "PASS",
+    "classification": "FULL_SPACE_DUAL_INDEPENDENCE_CERTIFIED",
+    "sign_route_classification": "FULL_SPACE_SIGN_INDEFINITE_CERTIFIED",
+    "control_transfer_status": "DUAL_INDEPENDENCE_SURVIVES_Q13_Q15_CONTROLS",
+    "rh_claim": false
+  }
+]

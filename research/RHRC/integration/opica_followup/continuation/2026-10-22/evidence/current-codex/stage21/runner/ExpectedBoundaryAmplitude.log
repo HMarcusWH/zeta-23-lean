@@ -1,0 +1,14 @@
+'Zeta23.OPICAFollowup.generic_forced_profile_unique' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.OPICAFollowup.generic_boundary_amplitude' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OPICABoundaryAmplitudeIndependent.audit_genericForcedProfile' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'OPICABoundaryAmplitudeIndependent.expected_generic_forced_profile_unique' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'OPICABoundaryAmplitudeIndependent.expected_generic_boundary_amplitude' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'OPICABoundaryAmplitudeIndependent.expected_actual_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OPICABoundaryAmplitudeIndependent.expected_no_plateau' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OPICABoundaryAmplitudeIndependent.expected_not_integrable' depends on axioms: [propext, Classical.choice, Quot.sound]

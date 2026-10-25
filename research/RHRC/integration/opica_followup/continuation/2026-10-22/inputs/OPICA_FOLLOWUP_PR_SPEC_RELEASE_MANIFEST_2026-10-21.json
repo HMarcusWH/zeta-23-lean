@@ -1,0 +1,94 @@
+{
+  "schema": "OPICA_FOLLOWUP_SPEC_RELEASE_V1",
+  "date": "2026-10-21",
+  "authority": "SPECIFICATION_NOT_FORMALIZATION",
+  "parent_head": "553b4263b58d9fec178320de251ff299a0bd702a",
+  "parent_tree": "12691099f1a155a8bfa3ad4f6689146175b233b2",
+  "parent_draft": true,
+  "parent_merged": false,
+  "whole_parent_green_claimed": false,
+  "spec_words_whitespace": 13539,
+  "new_files": 84,
+  "new_Lean_files": 43,
+  "existing_authoritative_edits": 12,
+  "existing_generated_allowlist": 62,
+  "proposed_primary_roots": 100,
+  "paper_groups": 26,
+  "separate_analytic_bridges": [
+    "J5.2",
+    "MS1"
+  ],
+  "structural_assertions_per_mode": 3992,
+  "modes": [
+    "normal",
+    "python -O"
+  ],
+  "new_Lean_roots": 0,
+  "new_CI_runs": 0,
+  "repository_writes": false,
+  "paper_independently_reviewed": false,
+  "drive_uploaded": false,
+  "zip_crc_pass": true,
+  "zip_payloads_verified": 41,
+  "zip_entries": 42,
+  "files": [
+    {
+      "name": "OPICA_FOLLOWUP_BUILD_MANIFEST_2026-10-21.json",
+      "bytes": 183851,
+      "sha256": "c99ec7acbfe996455525b31088a7d04addd20653787e12098e4e51a4a7ce296e"
+    },
+    {
+      "name": "OPICA_FOLLOWUP_DELIVERY_STATUS_2026-10-21.json",
+      "bytes": 555,
+      "sha256": "0325021a9fe319af4b519b18bcd1dc8df059e92730471340b6ceb774eb186d5c"
+    },
+    {
+      "name": "OPICA_FOLLOWUP_IMPORT_DAG_2026-10-21.dot",
+      "bytes": 10683,
+      "sha256": "3c374750c866703b3960fdda7dd0040883c5aa155da8d8b5314ce6d54320bf79"
+    },
+    {
+      "name": "OPICA_FOLLOWUP_PAPER_CROSSWALK_2026-10-21.json",
+      "bytes": 30150,
+      "sha256": "9e1252631f26fb81f4a5c60ac714e483c076be5c9858e25056e3835933ce6451"
+    },
+    {
+      "name": "OPICA_FOLLOWUP_PARENT_EXTENSION_2026-10-21.json",
+      "bytes": 21319,
+      "sha256": "2b88b5497861679e6b1f686af6c8b5b7dbe5a5887841be43d862ba9836187ac3"
+    },
+    {
+      "name": "OPICA_FOLLOWUP_PR_BUILD_SPEC_2026-10-21.md",
+      "bytes": 130001,
+      "sha256": "cacab08834aeb9badd578d90828be99cff33c7a617c609e75bb878eb5fa3b29c"
+    },
+    {
+      "name": "OPICA_FOLLOWUP_PUBLIC_ROOTS_2026-10-21.json",
+      "bytes": 112056,
+      "sha256": "2239636f347449ecd447fc5ba78d7c75f1c0440d28a862cb72397c4f79597b41"
+    },
+    {
+      "name": "OPICA_FOLLOWUP_SPEC_VALIDATION_2026-10-21.json",
+      "bytes": 649201,
+      "sha256": "db7ea97d40baf1543e5aa7d8aa789d2880f25374af0ed7bbe68d9ffca112a836"
+    },
+    {
+      "name": "OPICA_FOLLOWUP_SPEC_VALIDATION_OPTIMIZED_2026-10-21.json",
+      "bytes": 649200,
+      "sha256": "36b49923bcd89e4b5b4abd4bdf7e36e87aee3833602211f49fdb4036190a6a39"
+    },
+    {
+      "name": "OPICA_PR293_INTAKE_2026-10-21.json",
+      "bytes": 4922,
+      "sha256": "a3c3344fccfb958b2455d9de3a79c2bea1a7496c2ecf8a96659e12cd19d54aa8"
+    },
+    {
+      "name": "OPICA_FOLLOWUP_PR_SPEC_PACKAGE_2026-10-21.zip",
+      "bytes": 539899,
+      "sha256": "1122130a305ee76a51a5aac69e01c2570a2820213b4d3d9311a38eeff3b85c8f"
+    }
+  ],
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "self_hash_excluded": true
+}

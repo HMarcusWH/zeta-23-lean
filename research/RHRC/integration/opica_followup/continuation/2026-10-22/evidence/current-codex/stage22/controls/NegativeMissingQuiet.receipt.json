@@ -1,0 +1,41 @@
+{
+  "name": "NegativeMissingQuiet",
+  "file": "NegativeMissingQuiet.lean",
+  "source_sha256": "4148bbf86ad8755ee21aae8051f7aa971fe315cfe4c06a6cc2a13c92086bf9ca",
+  "expected": "REJECTED",
+  "scope": "Rate/physical consumer contract mutation",
+  "origin": {
+    "kind": "EXACT_STAGE21_BYTES",
+    "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\NegativeMissingQuiet.lean",
+    "sha256": "4148bbf86ad8755ee21aae8051f7aa971fe315cfe4c06a6cc2a13c92086bf9ca",
+    "receipt": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\CHECK_RESULT.json",
+    "receipt_sha256": "277a7e7fde8c600848bc59ce730faf3c9ceab1ca436ac36c58c00420f429aa0a"
+  },
+  "required_diagnostic_regex": [
+    "Invalid projection",
+    "quiet_balanced_observation_implies_native_cut"
+  ],
+  "passed": true,
+  "observed": "REJECTED_INTENDED_MUTATION",
+  "failure_reasons": [],
+  "requested_axiom_names": [],
+  "axioms": {},
+  "error_recovery_sorryAx_in_rejected_output": false,
+  "formal_authority_from_failed_declarations": false,
+  "command": [
+    "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+    "env",
+    "lean",
+    "--root=C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\sources",
+    "-DautoImplicit=false",
+    "-DrelaxedAutoImplicit=false",
+    "-DmaxHeartbeats=800000",
+    "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\sources\\NegativeMissingQuiet.lean",
+    "-o",
+    "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\objects\\NegativeMissingQuiet.olean"
+  ],
+  "exit_code": 1,
+  "log": "NegativeMissingQuiet.log",
+  "log_sha256": "7a93dcf73d84271d37c2cedb8121e1e7172cf767626fc25cdc5cc7c20fc6f2f2",
+  "seconds": 41.7328563000774
+}

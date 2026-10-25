@@ -1,0 +1,26 @@
+{
+  "base_commit": "36b677c26b01fafeac719413753092c5988c38d3",
+  "changes": [
+    {
+      "path": "Zeta23/OPICAFollowup/ConfluentProfiles.lean",
+      "prior_sha256": "1773e3200a8b3e7284b276d97dcfc5481945e4139852fef8d92e3b64b7b0b0d0",
+      "new_sha256": "a84c72ac8b91bf053c499c9ca33458f69ad1849f0ba2766e520dfa9fbe61e29f",
+      "reversible_helper_name_change_only": true
+    },
+    {
+      "path": "Zeta23/OPICAFollowup/SquareDefect.lean",
+      "prior_sha256": "5ffbffea44889fe0b01d5094f2989a838f57d3f72665116954b346afd4ccf540",
+      "new_sha256": "da73276d089068c1711f3854a9520fbcbbbc877d77ccc33fe20cb9ceb83d64d1",
+      "reversible_helper_name_change_only": true
+    },
+    {
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedConfluentProfiles.lean",
+      "prior_sha256": "8b900acfaea1649b339d4670ed83c41a3e9e8b7b236bb6f5a4c257f32a00fbb0",
+      "new_sha256": "5862885c0235798817be2103c3ae600638327c1b0cc26916ea59e2ad133d6aed",
+      "reversible_helper_name_change_only": true
+    }
+  ],
+  "original_primary_names_unchanged": true,
+  "frozen_contracts_unchanged": true,
+  "parser_changed": false
+}

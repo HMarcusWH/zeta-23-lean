@@ -1,0 +1,149 @@
+{
+ "schema": "OPICA_STAGE5_NARROW_GATE_V1",
+ "status": "PASS_NARROW_LOCAL_GATES_ONLY_AGGREGATE_AND_FULL_RELEASE_OPEN",
+ "checked_commit": "0cb2abec41e97708d6969033ff219a180ff65faa",
+ "checked_tree": "94ac77583b5ab6465a74e53e7f438ef7ed0a36d4",
+ "dirty_status_during_checks": "",
+ "compiler": "Lean 4.33.0-rc2 commit d8b18978322de05a8f3dba51ef03cf5461676c17 (Linux x86_64), Lake 5.0.0-src+d8b1897",
+ "mathlib": "51e6992efd06126df61a496bebf8f49482a4e129 (pins unchanged; no lake update)",
+ "mathlib_helper_import_delta": {
+  "module": "Zeta23.OPICAFollowup.NearGapLimits",
+  "added": [
+   "Mathlib.Analysis.Normed.Group.Tannery"
+  ],
+  "authority": "BUILD_SPEC: Mathlib helper imports remain on the frozen revision and are recorded in the actual source receipt; no project import changed"
+ },
+ "cache_owner": "single local process; genuine module builds from the committed source",
+ "sources": [
+  {
+   "path": "Zeta23/OPICAFollowup/NearGapLimits.lean",
+   "sha256": "300aba8c18e0079c7df0b02dd804ed3d2dc266dacd18930c7bab962cf7dd8b35",
+   "bytes": 146479
+  },
+  {
+   "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedNearGapLimit.lean",
+   "sha256": "dbd1ba447e025ceea3797e6843ba741365d404ddf3392bae47d665caa39405be",
+   "bytes": 7742
+  },
+  {
+   "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedNormalizedLimit.lean",
+   "sha256": "e833dad08f5c3a1fd477ab56f65db12d984fa51e18fd638d2b2aeddae77f9187",
+   "bytes": 6521
+  },
+  {
+   "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/run_candidate_checks.py",
+   "sha256": "867f4c0c81c9c4d6e2e4690641df415d89bb493d956eca79690ed0c937d96a86",
+   "bytes": 6317
+  },
+  {
+   "path": ".github/workflows/rhrc_opica_followup.yml",
+   "sha256": "ae43b1b9a19429ee8f51e9c3099d5825e4b96d50e04914cd896edada942668ad",
+   "bytes": 44419
+  },
+  {
+   "path": "lean-toolchain",
+   "sha256": "0d3c76ccd8772d8bcbe207241421a760312b71a6aa82f84194391fdf5cb026d6",
+   "bytes": 29
+  },
+  {
+   "path": "lake-manifest.json",
+   "sha256": "1847b362e15efd927e75aa8b5442e491f998e4a3f730f9dcaca9841f2957c448",
+   "bytes": 3200
+  }
+ ],
+ "roots": {
+  "Zeta23.OPICAFollowup.near_gap_controlled_limit_zero": {
+   "paper": "R1-HT2",
+   "statement": "Locally finite real Jordan pairs nu_n with one common linear total-variation constant C, canonical Fourier self-duality, off-lattice nonnegativity and near gaps a_n in (0,1], a_n -> 1: every Schwartz pairing nu_n(phi) tends to 0.",
+   "method": "Quantitative and compactness-free: nearGap_schwartz_pairing_bound |nu(phi)| <= (1-a)2C(2N+3)K + 2 Lip(phi) d C(1+N) + 2K (pi^2 N^2/(4d^2))(1-a)(2C) + 4C(9B+8K)/N^2, from translated sinc/triangle identities, integer tent interpolation, the near-gap mass bound and the uniform cubic tail; then an epsilon argument.",
+   "implementation_refinement": "Contract text names compact-limit extraction; the identical conclusion is proved by the explicit estimate above with no compact extraction, limiting measure or total-variation convergence. The source evenness premise is derived (jordan_even_of_selfdual), not assumed.",
+   "expected_type_consumer": "consumers/ExpectedNearGapLimit.lean expected_near_gap_controlled_limit_zero (all predicates expanded) and expected_near_gap_schwartz_pairing_bound",
+   "actual_domain": "genuine CT1 sequence L_n = log 2/(n+2), all premises from CT1 constructors; every term a nonzero distribution (parent faithfulness); unit-gap boundary agrees with the parent sharp-gap separator",
+   "axioms": "propext, Classical.choice, Quot.sound"
+  },
+  "Zeta23.OPICAFollowup.dilation_normalized_limit_not_measure": {
+   "paper": "R1-CT1",
+   "statement": "nu_L / L^2 -> T = (x^2 Sha')' = sum_n (n^2 delta_n'' - 2n delta_n') as L -> 0 (L != 0) in the tempered-distribution topology and on every test; T(phi) = sum_n (n^2 phi''(n) + 2n phi'(n)); local form near each integer; T != 0; not order zero at any nonzero integer; not given by any locally finite Jordan pair; normalized variation near 1 diverges.",
+   "method": "Profile q_n(t) = e^(t/2)(phi(e^t n) - phi(n)) with explicit derivatives, symmetric second-difference estimate from two mean-value inequalities, uniform lattice decay from Schwartz seminorms, Tannery dominated convergence; quadratic bumps (x-n)^2 b_eps for non-order-zero.",
+   "supporting_result": "ct1NormalizedLimit_fourier_selfdual: T is canonically Fourier self-dual",
+   "expected_type_consumer": "consumers/ExpectedNormalizedLimit.lean expected_dilation_normalized_limit_not_measure (existential restatement pinned by the explicit lattice formula)",
+   "actual_domain": "explicit three-comb pairing e^(L/2) sum phi(e^L n) + e^(-L/2) sum phi(e^-L n) - 2cosh(L/2) sum phi(n) on 0 < L < log 2 as L -> 0+; origin coefficient zero; coefficient 2n^2 at every nonzero integer; no common normalized variation constant",
+   "axioms": "propext, Classical.choice, Quot.sound"
+  },
+  "re_verified_narrow_roots": [
+   "near_gap_mass_bound",
+   "dilation_near_gap_family",
+   "dilated_comb_fourier",
+   "weighted_mixture_exists_fourier",
+   "and all roots consumed by the ten runner consumer files"
+  ]
+ },
+ "gates": [
+  {
+   "label": "narrow runner (9 modules, 10 consumer files)",
+   "log": "runner/CHECK_RESULT.json",
+   "sha256": "ac7d52316f958e33832ebad42dd2fca6044537c5b3cc111e0dafe5565d0b1147",
+   "exit_code": 0,
+   "runner_status": "PASS_NARROW_ONLY",
+   "consumer_receipts": {
+    "ExpectedMasks": 4,
+    "ExpectedComplex": 4,
+    "ExpectedAuxiliary": 6,
+    "ExpectedMultiplicity": 17,
+    "ExpectedComb": 5,
+    "ExpectedFirstCell": 5,
+    "ExpectedWeighted": 9,
+    "ExpectedNearGap": 5,
+    "ExpectedNearGapLimit": 10,
+    "ExpectedNormalizedLimit": 9
+   }
+  },
+  {
+   "label": "W04/W07 workflow consumer (unchanged heredoc) on the new NearGapLimits",
+   "log": "consumers/opica-w04-w07-expected.log",
+   "sha256": "47bf37f88ae44589a223145e24dd07655b7172bfca6a30bf819bb33c5251ac1e",
+   "exit_code": 0,
+   "standard_axiom_receipts": 52
+  },
+  {
+   "label": "W06 workflow consumer (unchanged heredoc)",
+   "log": "consumers/opica-w06-expected.log",
+   "sha256": "8564fc7fe7d8a2ef4ae561975e207ce6aa8e42accc8c35f0e6ed618ed26078ca",
+   "exit_code": 0,
+   "standard_axiom_receipts": 14
+  },
+  {
+   "label": "W01 consumers",
+   "note": "not re-run: Zeta23.OPICAFollowup.Consumers and its import closure do not import NearGapLimits and are unchanged since Stage 4; CI on 6a2e20b passed W01"
+  }
+ ],
+ "negative_controls": [
+  {
+   "file": "negative-controls/negative-ht2.lean",
+   "expected": "REJECTED",
+   "observed": "REJECTED: gaps -> 1/2; total-variation conclusion; missing off-lattice premise; constant CT1 member claimed zero",
+   "log_sha256": "5eb73ddbc453a2b98fc00132e78c2a2f4dd15394f76e677101566106471d9dba"
+  },
+  {
+   "file": "negative-controls/negative-ct1-limit.lean",
+   "expected": "REJECTED",
+   "observed": "REJECTED: wrong first-derivative sign; normalization L instead of L^2; measure representation claimed; non-order-zero claimed at the origin (n != 0 premise)",
+   "log_sha256": "ac6295c87a81ac8165e219e4dd3f7ecadf9b911b4c120b83fd91d0183c4f2ea3"
+  }
+ ],
+ "ci_harvest": {
+  "file": "ci-harvest-6a2e20b.json",
+  "sha256": "a5ce9fc9366e8b99b9bd1e107def403cf2b4980301cb550f5d50321d0e8c3b28"
+ },
+ "not_established": [
+  "aggregate current-source export",
+  "full100 compiler receipt production/replay",
+  "facade and registration",
+  "parent-extension acceptance",
+  "canonical regeneration (rhkg-compiler-receipt remains red)",
+  "CI on the Stage 5 head (pending at publication)"
+ ],
+ "RH": "OPEN",
+ "Step4": "OPEN",
+ "independent_closing_inequalities": "OPEN"
+}

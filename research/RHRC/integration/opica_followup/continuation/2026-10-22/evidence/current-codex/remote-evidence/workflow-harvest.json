@@ -1,0 +1,1065 @@
+{
+  "status": "COMPLETE_DIAGNOSTIC_RUN_HARVEST_NO_RELEASE_PROMOTION",
+  "repository": "HMarcusWH/zeta-23-lean",
+  "run_id": 39706211959,
+  "run_url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39706211959",
+  "event": "push",
+  "event_head_sha": "077aab1aa736299768296afb7929263a8a4cf4bd",
+  "head_branch": "repair/opica294-audit-20261022",
+  "run_attempt": 1,
+  "run_status": "completed",
+  "run_conclusion": "failure",
+  "job_pagination": {
+    "per_page": 100,
+    "pages_fetched": 1,
+    "returned_count": 5,
+    "total_count": 5,
+    "complete": true,
+    "filter": "all"
+  },
+  "artifact_pagination": {
+    "per_page": 100,
+    "pages_fetched": 1,
+    "returned_count": 17,
+    "total_count": 17,
+    "complete": true
+  },
+  "all_jobs": [
+    {
+      "id": 119586736187,
+      "name": "Draft preparation contract (no theorem authority)",
+      "classification": "FORMAL_VALIDITY_GATE",
+      "status": "completed",
+      "conclusion": "success",
+      "run_attempt": 1,
+      "checked_commit": "077aab1aa736299768296afb7929263a8a4cf4bd",
+      "checkout_log_verified": true,
+      "checked_tree": "547f98dc78eeb361f9a2fffd8cf7cb1c3afa5860",
+      "event_head_sha": "077aab1aa736299768296afb7929263a8a4cf4bd",
+      "disposition": "PASS_PREPARATION_ONLY; lexical/metadata contract, no new theorem authority",
+      "steps": [
+        {
+          "number": 1,
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 2,
+          "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 3,
+          "name": "Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 4,
+          "name": "Run python \"$FOLLOWUP/validate_contract.py\" --phase preflight --output /tmp/opica-followup-contract.json",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 5,
+          "name": "Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 9,
+          "name": "Post Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 10,
+          "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 11,
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "id": 119586736369,
+      "name": "Isolated cold prerequisite audit and pinned environment export",
+      "classification": "FORMAL_VALIDITY_GATE",
+      "status": "completed",
+      "conclusion": "success",
+      "run_attempt": 1,
+      "checked_commit": "9b6a9a3a2badb4cff62a56c1158d9cef8759d30d",
+      "checkout_log_verified": true,
+      "checked_tree": "545ea182910db9c8d05c4c7e8ee229d119a9aa28",
+      "event_head_sha": "077aab1aa736299768296afb7929263a8a4cf4bd",
+      "disposition": "PASS_SOURCE_BOUND_SUBSET_ONLY at9b; cold project prerequisites, expected-type consumers and complete41-root export",
+      "steps": [
+        {
+          "number": 1,
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 2,
+          "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 3,
+          "name": "Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 4,
+          "name": "Run leanprover/lean-action@24581d74d674803a25a81b10b059c5c0cdd344c6",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 5,
+          "name": "Cold project build with every direct exporter prerequisite",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 6,
+          "name": "Export exact source and portable compiler inputs without credentials",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 7,
+          "name": "Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 8,
+          "name": "Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 9,
+          "name": "Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 10,
+          "name": "Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 11,
+          "name": "Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 12,
+          "name": "Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 13,
+          "name": "Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 14,
+          "name": "Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 15,
+          "name": "Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 16,
+          "name": "Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 17,
+          "name": "Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 18,
+          "name": "Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 19,
+          "name": "Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 20,
+          "name": "Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 21,
+          "name": "Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 22,
+          "name": "Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 23,
+          "name": "Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 24,
+          "name": "Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 25,
+          "name": "Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 49,
+          "name": "Post Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 50,
+          "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 51,
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "id": 119586736403,
+      "name": "Full release readiness (expected FAIL while scope is incomplete)",
+      "classification": "FORMAL_VALIDITY_GATE",
+      "status": "completed",
+      "conclusion": "failure",
+      "run_attempt": 1,
+      "checked_commit": "077aab1aa736299768296afb7929263a8a4cf4bd",
+      "checkout_log_verified": true,
+      "checked_tree": "547f98dc78eeb361f9a2fffd8cf7cb1c3afa5860",
+      "event_head_sha": "077aab1aa736299768296afb7929263a8a4cf4bd",
+      "disposition": "FAIL_RELEASE_INCOMPLETE: preparation cannot be promoted to full release",
+      "steps": [
+        {
+          "number": 1,
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 2,
+          "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 3,
+          "name": "Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 4,
+          "name": "Preserve the complete release gate and report its actual disposition",
+          "status": "completed",
+          "conclusion": "failure"
+        },
+        {
+          "number": 5,
+          "name": "Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 9,
+          "name": "Post Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "number": 10,
+          "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 11,
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "id": 119587800467,
+      "name": "Exact-source implemented subset (full 100 remains required)",
+      "classification": "FORMAL_VALIDITY_GATE",
+      "status": "completed",
+      "conclusion": "failure",
+      "run_attempt": 1,
+      "checked_commit": "077aab1aa736299768296afb7929263a8a4cf4bd",
+      "checkout_log_verified": true,
+      "checked_tree": "547f98dc78eeb361f9a2fffd8cf7cb1c3afa5860",
+      "event_head_sha": "077aab1aa736299768296afb7929263a8a4cf4bd",
+      "disposition": "FAIL_EXPORT_IMPORT_CACHE: OpicaTypeExprExport.olean absent; no receipt produced by this job",
+      "steps": [
+        {
+          "number": 1,
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 2,
+          "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 3,
+          "name": "Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 4,
+          "name": "Run leanprover/lean-action@24581d74d674803a25a81b10b059c5c0cdd344c6",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 5,
+          "name": "Build typed consumers and export complete subset provenance",
+          "status": "completed",
+          "conclusion": "failure"
+        },
+        {
+          "number": 6,
+          "name": "Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 11,
+          "name": "Post Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "number": 12,
+          "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 13,
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "id": 119587800515,
+      "name": "Frozen regression and fail-closed evidence tests",
+      "classification": "REGRESSION_GATE",
+      "status": "completed",
+      "conclusion": "success",
+      "run_attempt": 1,
+      "checked_commit": "077aab1aa736299768296afb7929263a8a4cf4bd",
+      "checkout_log_verified": true,
+      "checked_tree": "547f98dc78eeb361f9a2fffd8cf7cb1c3afa5860",
+      "event_head_sha": "077aab1aa736299768296afb7929263a8a4cf4bd",
+      "disposition": "PASS_FROZEN_REGRESSION_ONLY; finite/symbolic replays and explicitly numerical consistency checks, not analytic theorem or RH authority",
+      "steps": [
+        {
+          "number": 1,
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 2,
+          "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 3,
+          "name": "Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 4,
+          "name": "Run python -m pip install --require-hashes --only-binary=:all: -r \"$FOLLOWUP/python-checks.lock\"",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 5,
+          "name": "Replay all frozen controls and explicitly noninterval numerical cases",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 6,
+          "name": "Exercise complete child validation suite in both Python modes",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 7,
+          "name": "Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 13,
+          "name": "Post Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 14,
+          "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 15,
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    }
+  ],
+  "all_artifacts": [
+    {
+      "id": 12396550138,
+      "name": "opica-lake-02",
+      "size_in_bytes": 262144136,
+      "sha256_digest": "sha256:77888237ab55bd88d3528253975ad6ec827d18eb1685d212af53321ec9c9e562",
+      "expired_at_fetch": false,
+      "created_at": "2026-10-22T01:57:38Z",
+      "expires_at": "2026-10-23T01:57:35Z",
+      "downloaded_hash_verified": false,
+      "scope": "Portable toolchain/Lake cache fragment; metadata harvested, multi-gigabyte environment bytes not downloaded; no additional theorem authority inferred."
+    },
+    {
+      "id": 12396550114,
+      "name": "opica-toolchain-02",
+      "size_in_bytes": 221638406,
+      "sha256_digest": "sha256:20beaf93e2a1d2f92560f3f8b7844cea055da636c077f80ca337b18eedda463c",
+      "expired_at_fetch": false,
+      "created_at": "2026-10-22T01:57:26Z",
+      "expires_at": "2026-10-23T01:57:23Z",
+      "downloaded_hash_verified": false,
+      "scope": "Portable toolchain/Lake cache fragment; metadata harvested, multi-gigabyte environment bytes not downloaded; no additional theorem authority inferred."
+    },
+    {
+      "id": 12396266838,
+      "name": "opica-lake-06",
+      "size_in_bytes": 262144136,
+      "sha256_digest": "sha256:8eb08de3fa3328bc28483c1ece9b014b5c3dcacd5949a8603dd69554bff58fbf",
+      "expired_at_fetch": false,
+      "created_at": "2026-10-22T01:57:54Z",
+      "expires_at": "2026-10-23T01:57:50Z",
+      "downloaded_hash_verified": false,
+      "scope": "Portable toolchain/Lake cache fragment; metadata harvested, multi-gigabyte environment bytes not downloaded; no additional theorem authority inferred."
+    },
+    {
+      "id": 12396236881,
+      "name": "opica-lake-05",
+      "size_in_bytes": 262144136,
+      "sha256_digest": "sha256:6ff9341a7713eb88e2e13f76e9062de80cbdd76377ab55755d317072c8f427a9",
+      "expired_at_fetch": false,
+      "created_at": "2026-10-22T01:57:50Z",
+      "expires_at": "2026-10-23T01:57:46Z",
+      "downloaded_hash_verified": false,
+      "scope": "Portable toolchain/Lake cache fragment; metadata harvested, multi-gigabyte environment bytes not downloaded; no additional theorem authority inferred."
+    },
+    {
+      "id": 12396157060,
+      "name": "opica-lake-04",
+      "size_in_bytes": 262144136,
+      "sha256_digest": "sha256:2b9f16dc1ba8108365ce9100feb576c102b2c6eae9febada8f1bd0153a88d49c",
+      "expired_at_fetch": false,
+      "created_at": "2026-10-22T01:57:46Z",
+      "expires_at": "2026-10-23T01:57:42Z",
+      "downloaded_hash_verified": false,
+      "scope": "Portable toolchain/Lake cache fragment; metadata harvested, multi-gigabyte environment bytes not downloaded; no additional theorem authority inferred."
+    },
+    {
+      "id": 12396077161,
+      "name": "opica-lake-07",
+      "size_in_bytes": 262144136,
+      "sha256_digest": "sha256:b0c052849f22d9a50b3ac1ce2e5ec38ba365748edec21cb3dc4e9bde2947ec70",
+      "expired_at_fetch": false,
+      "created_at": "2026-10-22T01:57:57Z",
+      "expires_at": "2026-10-23T01:57:54Z",
+      "downloaded_hash_verified": false,
+      "scope": "Portable toolchain/Lake cache fragment; metadata harvested, multi-gigabyte environment bytes not downloaded; no additional theorem authority inferred."
+    },
+    {
+      "id": 12396007411,
+      "name": "opica-lake-08",
+      "size_in_bytes": 88280379,
+      "sha256_digest": "sha256:fb43354ed57b9634133a9119cd4c81501287394c9db0de2871b03394e4e71e2f",
+      "expired_at_fetch": false,
+      "created_at": "2026-10-22T01:58:00Z",
+      "expires_at": "2026-10-23T01:57:58Z",
+      "downloaded_hash_verified": false,
+      "scope": "Portable toolchain/Lake cache fragment; metadata harvested, multi-gigabyte environment bytes not downloaded; no additional theorem authority inferred."
+    },
+    {
+      "id": 12395917030,
+      "name": "opica-pinned-evidence-and-source",
+      "size_in_bytes": 143037359,
+      "sha256_digest": "sha256:a39438a4a0755947faac14806b5ce12f87cda9ab7909f7a77060a4f9e5ca0e7c",
+      "expired_at_fetch": false,
+      "created_at": "2026-10-22T01:57:15Z",
+      "expires_at": "2026-10-23T01:57:10Z",
+      "crc_verified": true,
+      "members": [
+        {
+          "path": "evidence/cold-prerequisites.log",
+          "bytes": 131634
+        },
+        {
+          "path": "evidence/subset/OpicaFollowupBindings.olean",
+          "bytes": 376304
+        },
+        {
+          "path": "evidence/EXPORT_SHA256.txt",
+          "bytes": 1218
+        },
+        {
+          "path": "evidence/subset/build.log",
+          "bytes": 122140
+        },
+        {
+          "path": "evidence/subset/compiler-receipt.json",
+          "bytes": 30189993
+        },
+        {
+          "path": "evidence/subset/export.log",
+          "bytes": 11449410
+        },
+        {
+          "path": "evidence/subset/version.log",
+          "bytes": 110
+        },
+        {
+          "path": "evidence/version.log",
+          "bytes": 110
+        },
+        {
+          "path": "source/checkout.txt",
+          "bytes": 82
+        },
+        {
+          "path": "source/source-objects.pack",
+          "bytes": 77219940
+        },
+        {
+          "path": "source/source.tar.zst",
+          "bytes": 62643410
+        }
+      ],
+      "downloaded_hash_verified": true
+    },
+    {
+      "id": 12395808607,
+      "name": "opica-lake-03",
+      "size_in_bytes": 262144136,
+      "sha256_digest": "sha256:a9ed0a5e97cd6ad956b1bf94fa6d9c074936d9f35d6b499a2f1b273c99dc4ef2",
+      "expired_at_fetch": false,
+      "created_at": "2026-10-22T01:57:42Z",
+      "expires_at": "2026-10-23T01:57:38Z",
+      "downloaded_hash_verified": false,
+      "scope": "Portable toolchain/Lake cache fragment; metadata harvested, multi-gigabyte environment bytes not downloaded; no additional theorem authority inferred."
+    },
+    {
+      "id": 12395767505,
+      "name": "opica-lake-01",
+      "size_in_bytes": 262144136,
+      "sha256_digest": "sha256:f288670e5b8806ecdcf8b29367fb7a049b77247c73341c3065e1398da43d1ed5",
+      "expired_at_fetch": false,
+      "created_at": "2026-10-22T01:57:34Z",
+      "expires_at": "2026-10-23T01:57:31Z",
+      "downloaded_hash_verified": false,
+      "scope": "Portable toolchain/Lake cache fragment; metadata harvested, multi-gigabyte environment bytes not downloaded; no additional theorem authority inferred."
+    },
+    {
+      "id": 12395622737,
+      "name": "opica-lake-00",
+      "size_in_bytes": 262144136,
+      "sha256_digest": "sha256:f0d5424275094c77282ba9b74d5959d4067606b3e8e4a9e985e2d8459bf74d96",
+      "expired_at_fetch": false,
+      "created_at": "2026-10-22T01:57:30Z",
+      "expires_at": "2026-10-23T01:57:27Z",
+      "downloaded_hash_verified": false,
+      "scope": "Portable toolchain/Lake cache fragment; metadata harvested, multi-gigabyte environment bytes not downloaded; no additional theorem authority inferred."
+    },
+    {
+      "id": 12395591367,
+      "name": "opica-followup-frozen-regression",
+      "size_in_bytes": 26733,
+      "sha256_digest": "sha256:4ef37f67fdac5886e8a6fbd0ed337a722c3aa7271044a8968bacd8b0c0d8303d",
+      "expired_at_fetch": false,
+      "created_at": "2026-10-22T01:46:03Z",
+      "expires_at": "2027-01-20T01:31:51Z",
+      "crc_verified": true,
+      "members": [
+        {
+          "path": "final-normal.json",
+          "bytes": 860
+        },
+        {
+          "path": "final-normal.log",
+          "bytes": 860
+        },
+        {
+          "path": "final-optimized.json",
+          "bytes": 859
+        },
+        {
+          "path": "final-optimized.log",
+          "bytes": 859
+        },
+        {
+          "path": "numeric-copoisson.json",
+          "bytes": 1452
+        },
+        {
+          "path": "numeric-copoisson.log",
+          "bytes": 1452
+        },
+        {
+          "path": "numeric-final.json",
+          "bytes": 2736
+        },
+        {
+          "path": "numeric-final.log",
+          "bytes": 2736
+        },
+        {
+          "path": "numeric-round2.json",
+          "bytes": 6993
+        },
+        {
+          "path": "numeric-round2.log",
+          "bytes": 6993
+        },
+        {
+          "path": "p0-normal.json",
+          "bytes": 1313
+        },
+        {
+          "path": "p0-normal.log",
+          "bytes": 1313
+        },
+        {
+          "path": "p0-optimized.json",
+          "bytes": 1313
+        },
+        {
+          "path": "p0-optimized.log",
+          "bytes": 1313
+        },
+        {
+          "path": "round1-normal.json",
+          "bytes": 1841
+        },
+        {
+          "path": "round1-normal.log",
+          "bytes": 1841
+        },
+        {
+          "path": "round1-optimized.json",
+          "bytes": 1840
+        },
+        {
+          "path": "round1-optimized.log",
+          "bytes": 1840
+        },
+        {
+          "path": "round2-normal.json",
+          "bytes": 1857
+        },
+        {
+          "path": "round2-normal.log",
+          "bytes": 1857
+        },
+        {
+          "path": "round2-optimized.json",
+          "bytes": 1856
+        },
+        {
+          "path": "round2-optimized.log",
+          "bytes": 1856
+        },
+        {
+          "path": "summary.json",
+          "bytes": 36573
+        }
+      ],
+      "downloaded_hash_verified": true
+    },
+    {
+      "id": 12395537463,
+      "name": "opica-followup-subset-formal",
+      "size_in_bytes": 15930,
+      "sha256_digest": "sha256:eecf9c5f7368f7133eed7f3c73ae9e9a117fa40c66e81f29c48dc9c2a645ffeb",
+      "expired_at_fetch": false,
+      "created_at": "2026-10-22T01:53:47Z",
+      "expires_at": "2027-01-20T01:31:51Z",
+      "crc_verified": true,
+      "members": [
+        {
+          "path": "export.log",
+          "bytes": 225
+        },
+        {
+          "path": "build.log",
+          "bytes": 131503
+        },
+        {
+          "path": "version.log",
+          "bytes": 110
+        }
+      ],
+      "downloaded_hash_verified": true
+    },
+    {
+      "id": 12395489013,
+      "name": "opica-toolchain-00",
+      "size_in_bytes": 262144146,
+      "sha256_digest": "sha256:86e5d281d8b1555192bc7f937fbe8d024a0b735648713b3cc971b990065c2622",
+      "expired_at_fetch": false,
+      "created_at": "2026-10-22T01:57:19Z",
+      "expires_at": "2026-10-23T01:57:15Z",
+      "downloaded_hash_verified": false,
+      "scope": "Portable toolchain/Lake cache fragment; metadata harvested, multi-gigabyte environment bytes not downloaded; no additional theorem authority inferred."
+    },
+    {
+      "id": 12395464082,
+      "name": "opica-toolchain-01",
+      "size_in_bytes": 262144146,
+      "sha256_digest": "sha256:80b6df10e159dfa6291ce9b5e68b77f0adb9266b2993b94e1d1b62fb4c571d9e",
+      "expired_at_fetch": false,
+      "created_at": "2026-10-22T01:57:23Z",
+      "expires_at": "2026-10-23T01:57:19Z",
+      "downloaded_hash_verified": false,
+      "scope": "Portable toolchain/Lake cache fragment; metadata harvested, multi-gigabyte environment bytes not downloaded; no additional theorem authority inferred."
+    },
+    {
+      "id": 12394843553,
+      "name": "opica-followup-full-release-readiness",
+      "size_in_bytes": 1225,
+      "sha256_digest": "sha256:755a2969d484071e25639df29e61933df82390e6a8cfecf2fa93ed81af698425",
+      "expired_at_fetch": false,
+      "created_at": "2026-10-22T01:36:38Z",
+      "expires_at": "2027-01-20T01:31:51Z",
+      "crc_verified": true,
+      "members": [
+        {
+          "path": "opica-followup-release-readiness.json",
+          "bytes": 2738
+        }
+      ],
+      "downloaded_hash_verified": true
+    },
+    {
+      "id": 12394624603,
+      "name": "opica-followup-preparation",
+      "size_in_bytes": 1170,
+      "sha256_digest": "sha256:4c883674ec0bf1e7eb5afe0b740ca7d3acc2988a8140cdc1bbef390d96a2d603",
+      "expired_at_fetch": false,
+      "created_at": "2026-10-22T01:35:14Z",
+      "expires_at": "2027-01-20T01:31:51Z",
+      "crc_verified": true,
+      "members": [
+        {
+          "path": "opica-followup-contract.json",
+          "bytes": 2680
+        }
+      ],
+      "downloaded_hash_verified": true
+    }
+  ],
+  "artifact_report_summaries": [
+    {
+      "path": "final-normal.json",
+      "status": "PASS_FINITE_EXACT_ONLY",
+      "total_checks": 1274,
+      "cases": null,
+      "interval_certified": null,
+      "Lean_proof_authority": null
+    },
+    {
+      "path": "final-optimized.json",
+      "status": "PASS_FINITE_EXACT_ONLY",
+      "total_checks": 1274,
+      "cases": null,
+      "interval_certified": null,
+      "Lean_proof_authority": null
+    },
+    {
+      "path": "numeric-copoisson.json",
+      "status": "PASS_NUMERICAL_CONSISTENCY_ONLY",
+      "total_checks": null,
+      "cases": 6,
+      "interval_certified": false,
+      "Lean_proof_authority": null
+    },
+    {
+      "path": "numeric-final.json",
+      "status": "PASS_NUMERICAL_CONSISTENCY_ONLY",
+      "total_checks": null,
+      "cases": 12,
+      "interval_certified": false,
+      "Lean_proof_authority": null
+    },
+    {
+      "path": "numeric-round2.json",
+      "status": "PASS_NUMERICAL_CONSISTENCY_NOT_INTERVAL_CERTIFIED",
+      "total_checks": null,
+      "cases": 15,
+      "interval_certified": null,
+      "Lean_proof_authority": null
+    },
+    {
+      "path": "opica-followup-contract.json",
+      "status": "PASS_PREPARATION_ONLY",
+      "total_checks": null,
+      "cases": null,
+      "interval_certified": null,
+      "Lean_proof_authority": null
+    },
+    {
+      "path": "opica-followup-release-readiness.json",
+      "status": "FAIL_RELEASE_INCOMPLETE",
+      "total_checks": null,
+      "cases": null,
+      "interval_certified": null,
+      "Lean_proof_authority": null
+    },
+    {
+      "path": "p0-normal.json",
+      "status": "PASS",
+      "total_checks": 5112,
+      "cases": null,
+      "interval_certified": null,
+      "Lean_proof_authority": null
+    },
+    {
+      "path": "p0-optimized.json",
+      "status": "PASS",
+      "total_checks": 5112,
+      "cases": null,
+      "interval_certified": null,
+      "Lean_proof_authority": null
+    },
+    {
+      "path": "round1-normal.json",
+      "status": "PASS_FINITE_EXACT_CONTROLS_ONLY",
+      "total_checks": 18862,
+      "cases": null,
+      "interval_certified": null,
+      "Lean_proof_authority": false
+    },
+    {
+      "path": "round1-optimized.json",
+      "status": "PASS_FINITE_EXACT_CONTROLS_ONLY",
+      "total_checks": 18862,
+      "cases": null,
+      "interval_certified": null,
+      "Lean_proof_authority": false
+    },
+    {
+      "path": "round2-normal.json",
+      "status": "PASS_EXACT_ALGEBRA_CONTROLS_ONLY",
+      "total_checks": 14672,
+      "cases": null,
+      "interval_certified": null,
+      "Lean_proof_authority": null
+    },
+    {
+      "path": "round2-optimized.json",
+      "status": "PASS_EXACT_ALGEBRA_CONTROLS_ONLY",
+      "total_checks": 14672,
+      "cases": null,
+      "interval_certified": null,
+      "Lean_proof_authority": null
+    }
+  ],
+  "regression_summary": {
+    "status": "PASS_FROZEN_REGRESSION_ONLY",
+    "exact_reports": 8,
+    "numerical_reports": 3,
+    "interval_certified": false,
+    "Lean_proof_authority": false,
+    "release_runtime_accepted": false,
+    "finite_checks_per_python_mode": 39920,
+    "child_validation_tests_each_python_mode": 131,
+    "actual_offline_zero_evidence": "NONE; finite fixtures and generic nonzero numerical parameters only"
+  },
+  "historical_subset": {
+    "status": "PASS_OFFLINE_REVALIDATION_OF_HISTORICAL_41_ROOT_SUBSET_ONLY",
+    "checked_commit": "9b6a9a3a2badb4cff62a56c1158d9cef8759d30d",
+    "checked_tree": "545ea182910db9c8d05c4c7e8ee229d119a9aa28",
+    "workflow_commit": "077aab1aa736299768296afb7929263a8a4cf4bd",
+    "workflow_run": 39706211959,
+    "workflow_attempt": 1,
+    "source_files_verified_against_git_objects": 2437,
+    "source_manifest_sha256": "bc26ce33e9ba228a15270374579b254af279d65bd984062bdaac9a0d3b68627b",
+    "commands": [
+      {
+        "log": "version.log",
+        "sha256": "d2b0b0a275a0c043b1650ebc4faf0b9c9c686656f0b0f066fc6f77df4f135d3a",
+        "bytes": 110,
+        "exit_code": 0
+      },
+      {
+        "log": "build.log",
+        "sha256": "1f4de0ff8f05cc7b100a134ed8d556ddef74068920a0a59bde6c88ad2455749b",
+        "bytes": 122140,
+        "exit_code": 0
+      },
+      {
+        "log": "export.log",
+        "sha256": "89921360d993711b14f7d1515086220a51ef1b93a884c6e49ccdc43350042025",
+        "bytes": 11449410,
+        "exit_code": 0
+      }
+    ],
+    "compiled_export_sha256": "06612c8080365a0bdb74b9d74b293a1a4741d3e34b90b3a5cb50e15ba2e46e31",
+    "receipt_sha256": "6465c4d3b794f940579884e2d70c90f89a29b594e6406e4b843cc346ecdc5327",
+    "receipt_bytes": 30189993,
+    "primary_roots": 41,
+    "missing_primary_roots": 59,
+    "public_declarations": 1270,
+    "constructors": 16,
+    "dependency_nodes": 7359,
+    "dependency_channels": 8196,
+    "axiom_union": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "compiler_records_revalidated": true,
+    "compiler_export_reparsed_equal": true,
+    "github_artifact_id": 12395917030,
+    "github_artifact_sha256": "a39438a4a0755947faac14806b5ce12f87cda9ab7909f7a77060a4f9e5ca0e7c",
+    "github_artifact_crc_verified": true,
+    "github_artifact_checkout_verified": true,
+    "package_sha256": "9c076a533291adb814f776018126330b6b2125a852548622ce196c6a0afcf88d",
+    "package_cold_files_equal_github_artifact": [
+      {
+        "path": "cold-prerequisites.log",
+        "bytes": 131634,
+        "sha256": "2e3713c0348068860f7d8e67eb49a5b1e54d360a5d24f4780ef42100d7cad15a"
+      },
+      {
+        "path": "EXPORT_SHA256.txt",
+        "bytes": 1218,
+        "sha256": "149c25b467f51e2f7a0880c3cf2f22c259809deafa3f462c552cbad39db2afbe"
+      },
+      {
+        "path": "subset/compiler-receipt.json",
+        "bytes": 30189993,
+        "sha256": "6465c4d3b794f940579884e2d70c90f89a29b594e6406e4b843cc346ecdc5327"
+      },
+      {
+        "path": "subset/build.log",
+        "bytes": 122140,
+        "sha256": "1f4de0ff8f05cc7b100a134ed8d556ddef74068920a0a59bde6c88ad2455749b"
+      },
+      {
+        "path": "subset/OpicaFollowupBindings.olean",
+        "bytes": 376304,
+        "sha256": "06612c8080365a0bdb74b9d74b293a1a4741d3e34b90b3a5cb50e15ba2e46e31"
+      },
+      {
+        "path": "subset/export.log",
+        "bytes": 11449410,
+        "sha256": "89921360d993711b14f7d1515086220a51ef1b93a884c6e49ccdc43350042025"
+      },
+      {
+        "path": "subset/version.log",
+        "bytes": 110,
+        "sha256": "d2b0b0a275a0c043b1650ebc4faf0b9c9c686656f0b0f066fc6f77df4f135d3a"
+      },
+      {
+        "path": "version.log",
+        "bytes": 110,
+        "sha256": "d2b0b0a275a0c043b1650ebc4faf0b9c9c686656f0b0f066fc6f77df4f135d3a"
+      }
+    ],
+    "release_ready": false,
+    "RH": "OPEN",
+    "Step4": "OPEN",
+    "new_uploaded_repairs_compiler_coverage": "NOT_ESTABLISHED_BY_THIS_HISTORICAL_RECEIPT",
+    "compiler_rerun": "NONE; offline evidence revalidation only",
+    "human_independent_review": "NOT_ESTABLISHED"
+  },
+  "comparison_with_previous_state": "Cold job repairs the absent direct-exporter-prerequisite/cache coverage for the original9b41-root source. It does not rewrite the failed ordinary subset job result, change the100-root requirement, or cover the subsequently uploaded repairs.",
+  "release_ready": false,
+  "full_100_primary_gate": "OPEN",
+  "new_uploads_formal_coverage": "NOT_ESTABLISHED",
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "evidence_limits": [
+    "Offline revalidation was performed; no new Lean compilation was run by this verifier.",
+    "Only the5 result artifacts were downloaded; all12 portable environment fragments are metadata-only in this harvest.",
+    "Successful finite/numerical regression does not certify the infinite analytic statements or actual off-line zeta-zero existence.",
+    "Independent human review remains NOT_ESTABLISHED."
+  ]
+}

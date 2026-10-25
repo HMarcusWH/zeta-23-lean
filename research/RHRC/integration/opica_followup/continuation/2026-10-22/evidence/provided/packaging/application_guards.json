@@ -1,0 +1,11 @@
+{
+  "valid_base_exit": 0,
+  "tracked_mutation_exit": 2,
+  "conflicting_new_path_exit": 2,
+  "named_tests": [
+    "valid exact base",
+    "reject tracked mutation",
+    "reject conflicting new path"
+  ],
+  "status": "PASS_THREE_GUARDS"
+}

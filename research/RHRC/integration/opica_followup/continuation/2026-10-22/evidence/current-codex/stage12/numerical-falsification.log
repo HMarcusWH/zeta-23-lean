@@ -1,0 +1,30 @@
+cutoff L = 200
+kappa_1 = (200.040454832 + 0.0j)  kappa_2 = (442.176150574 + 0.0j)
+b_1 = (12.89968468 + 0.0j)  b_2 = (6.184264823 + 0.0j)
+(i,j)=(1,1) N=(73.68138703 + 0.0j) Q=(17319.71702 + 0.0j)  |Q - k_i(N+conj b_j)|=5.22e-5  |Q - conj k_j(N+b_i)|=5.22e-5  L^2 |res|/|k_i k_j| = 5.221e-5
+   Q_ii - N_ii/4 = 17301.29667 (>= 0), N_ii = 73.68138703 (> 0)
+(i,j)=(1,2) N=(-18.44763021 + 0.0j) Q=(-2453.169084 + 0.0j)  |Q - k_i(N+conj b_j)|=0.000106  |Q - conj k_j(N+b_i)|=0.000115  L^2 |res|/|k_i k_j| = 4.801e-5
+(i,j)=(2,1) N=(-18.44763021 + 0.0j) Q=(-2453.169084 + 0.0j)  |Q - k_i(N+conj b_j)|=0.000115  |Q - conj k_j(N+b_i)|=0.000106  L^2 |res|/|k_i k_j| = 5.222e-5
+(i,j)=(2,2) N=(252.1803774 + 0.0j) Q=(114242.6832 + 0.0j)  |Q - k_i(N+conj b_j)|=0.000235  |Q - conj k_j(N+b_i)|=0.000235  L^2 |res|/|k_i k_j| = 4.803e-5
+   Q_ii - N_ii/4 = 114179.6381 (>= 0), N_ii = 252.1803774 (> 0)
+divided difference N_12/(k1 conj k2) = (-0.00020855828 + 0.0j) vs (M1 - conj M2)/(k1 - conj k2) = (-0.0002085582796 + 0.0j)
+cutoff L = 400
+kappa_1 = (200.040454832 + 0.0j)  kappa_2 = (442.176150574 + 0.0j)
+b_1 = (12.89968693 + 0.0j)  b_2 = (6.184275184 + 0.0j)
+(i,j)=(1,1) N=(73.68138905 + 0.0j) Q=(17319.71783 + 0.0j)  |Q - k_i(N+conj b_j)|=6.74e-6  |Q - conj k_j(N+b_i)|=6.74e-6  L^2 |res|/|k_i k_j| = 2.694e-5
+   Q_ii - N_ii/4 = 17301.29748 (>= 0), N_ii = 73.68138905 (> 0)
+(i,j)=(1,2) N=(-18.44762573 + 0.0j) Q=(-2453.166207 + 0.0j)  |Q - k_i(N+conj b_j)|=1.43e-5  |Q - conj k_j(N+b_i)|=1.49e-5  L^2 |res|/|k_i k_j| = 2.589e-5
+(i,j)=(2,1) N=(-18.44762573 + 0.0j) Q=(-2453.166207 + 0.0j)  |Q - k_i(N+conj b_j)|=1.49e-5  |Q - conj k_j(N+b_i)|=1.43e-5  L^2 |res|/|k_i k_j| = 2.694e-5
+(i,j)=(2,2) N=(252.1803873 + 0.0j) Q=(114242.6919 + 0.0j)  |Q - k_i(N+conj b_j)|=3.16e-5  |Q - conj k_j(N+b_i)|=3.16e-5  L^2 |res|/|k_i k_j| = 2.589e-5
+   Q_ii - N_ii/4 = 114179.6468 (>= 0), N_ii = 252.1803873 (> 0)
+divided difference N_12/(k1 conj k2) = (-0.0002085582294 + 0.0j) vs (M1 - conj M2)/(k1 - conj k2) = (-0.0002085582293 + 0.0j)
+falsification 1: dropping the continuum term -1/2 (b = S instead of S - 1/2) at L = 200
+  |Q_11 - k_1(N_11 + conj(S_1 - 1/2))| = 5.22e-5;  |Q_11 - k_1(N_11 + conj S_1)| = 100.0201752 (= |k_1|/2 = 100.0202274)
+  on-line zeros have real kappa and real b, so the conjugations in (S2.1) are not numerically visible here
+falsification 2: the paper's finite countercontrol h_i = kappa_i (A - kappa_i)^(-1) g with nonreal kappa
+  max (S2.1) residual = 1.22e-20; eig N = ['0.00396822', '0.694367', '7.47551']; eig Q = ['0.00790336', '0.945787', '16.5338']; Im kappa = ['2.0', '-1.0', '0.25']
+falsification 3: without the zero hypothesis (rho = 3/4) the sample sum diverges
+  L = 100: sum_{n <= L} h(n) = 50.777227, sum / L^(3/4) = 1.60572
+  L = 400: sum_{n <= L} h(n) = 148.61031, sum / L^(3/4) = 1.66151
+  L = 1600: sum_{n <= L} h(n) = 427.70243, sum / L^(3/4) = 1.69064
+  predicted growth constant (4/3) zeta(3/4)/b = 1.72064 (h(n) ~ zeta(rho) n^(rho-1)/b)

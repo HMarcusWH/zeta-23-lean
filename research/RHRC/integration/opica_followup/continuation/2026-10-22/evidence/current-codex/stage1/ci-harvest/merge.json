@@ -1,0 +1,40 @@
+{
+  "sha": "48724d2fa0b9d534ad374aa844dc79cc98348ca8",
+  "node_id": "C_kwDOT94UfNoAKDQ4NzI0ZDJmYTBiOWQ1MzRhZDM3NGFhODQ0ZGM3OWNjOTgzNDhjYTg",
+  "url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/git/commits/48724d2fa0b9d534ad374aa844dc79cc98348ca8",
+  "html_url": "https://github.com/HMarcusWH/zeta-23-lean/commit/48724d2fa0b9d534ad374aa844dc79cc98348ca8",
+  "author": {
+    "name": "Marcus Hermansson",
+    "email": "marcus@hmwh.se",
+    "date": "2026-10-22T13:55:58Z"
+  },
+  "committer": {
+    "name": "GitHub",
+    "email": "noreply@github.com",
+    "date": "2026-10-22T13:55:58Z"
+  },
+  "tree": {
+    "sha": "40ad2bb6e78f9dcd944870233e991220f573a412",
+    "url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/git/trees/40ad2bb6e78f9dcd944870233e991220f573a412"
+  },
+  "message": "Merge 9ccea78eb5ee0c097bde05424e43de58a589b713 into d53dd70d38b0762af130b1d19b795af259f505f5",
+  "parents": [
+    {
+      "sha": "d53dd70d38b0762af130b1d19b795af259f505f5",
+      "url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/git/commits/d53dd70d38b0762af130b1d19b795af259f505f5",
+      "html_url": "https://github.com/HMarcusWH/zeta-23-lean/commit/d53dd70d38b0762af130b1d19b795af259f505f5"
+    },
+    {
+      "sha": "9ccea78eb5ee0c097bde05424e43de58a589b713",
+      "url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/git/commits/9ccea78eb5ee0c097bde05424e43de58a589b713",
+      "html_url": "https://github.com/HMarcusWH/zeta-23-lean/commit/9ccea78eb5ee0c097bde05424e43de58a589b713"
+    }
+  ],
+  "verification": {
+    "verified": true,
+    "reason": "valid",
+    "signature": "-----BEGIN PGP SIGNATURE-----\n\nwsFcBAABCAAQBQJq2hXuCRC1aQ7uu5UhlAAAFgEQAGGmmBVKb6jZqWOFBDDtXF7t\nOGFVDa7wkFBF5vqsIbzVwlh/7DyzMj7s8miDq2zRETs7e+jSlyDOtq8h4HtiPRt3\nb0pBrmPYNA/8krogMxHx7KCG0iReAlcsqgA25BI/uTChTTqyQCodZ04maGTMLwQw\nhCFEppbKchJH8R5UjdgA25AGJnxG/jo4A7kkm7Bq4RquuFJUrghlLzg/xRk4bvRJ\nTkPdVh/SjGVvCrxZA9zdnpN+1vftviCicWmkpF5GKXGTfHksFiIuj9+MmauQd4U4\nbUGxoLVDUgEA9fyW0rRvk0JMldqzdiJd66bxvm2nIac7kj4fqGV32z0qz+q6QWIx\neTfjUw8397qSassHuhcu8qdma379SL+4Lxi7l6GmYE/4+TEQBy08mzV7em6Ka7H6\neXEfDk6ZlB8ToEhNyjlQFI2YBACET9CnGRbgyBfaJGO5f3KD4zTWkiAh3v1XKWys\nu/BuNGQYu3Zbqr/NqlBLzXseSsnsQVwZXhrw/MMjZjnOKV3fHyu39l3YFG6peFpN\nxLTu744OekUTNTbWdmjGQTp9nC4oyF1O61smALhtQuoDeUelsfeIZ8PY2Mxt6gDj\nDuHAgocI0Xy9cRN7CV2g+NsM2mQ18g1kcigtCzuhaGLUeGDKS7hjdNhS94M7YNig\nADd6Gzw06TyO2lEDu1ED\n=byn4\n-----END PGP SIGNATURE-----\n",
+    "payload": "tree 40ad2bb6e78f9dcd944870233e991220f573a412\nparent d53dd70d38b0762af130b1d19b795af259f505f5\nparent 9ccea78eb5ee0c097bde05424e43de58a589b713\nauthor Marcus Hermansson <marcus@hmwh.se> 1792677358 +0000\ncommitter GitHub <noreply@github.com> 1792677358 +0000\n\nMerge 9ccea78eb5ee0c097bde05424e43de58a589b713 into d53dd70d38b0762af130b1d19b795af259f505f5\n",
+    "verified_at": "2026-10-22T13:55:59Z"
+  }
+}

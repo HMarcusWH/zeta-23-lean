@@ -1,0 +1,162 @@
+{
+ "schema": "OPICA_STAGE11_NARROW_GATE_V1",
+ "status": "PASS_NARROW_LOCAL_GATES_ONLY_AGGREGATE_AND_FULL_RELEASE_OPEN",
+ "checked_commit": "5b8ad4288f9ebff5c34483c1c38f8132c32bb3ff",
+ "checked_tree": "3114caac6900813b1ab49dc6048bb3c628358c47",
+ "dirty_status_during_checks": "",
+ "compiler": "Lean 4.33.0-rc2 commit d8b18978322de05a8f3dba51ef03cf5461676c17 (Linux x86_64), Lake 5.0.0-src+d8b1897",
+ "mathlib": "51e6992efd06126df61a496bebf8f49482a4e129 (pins unchanged; no lake update)",
+ "new_module": {
+  "module": "Zeta23.OPICAFollowup.ForcedEuler",
+  "project_imports": [
+   "Zeta23.OPICAFollowup.ZeroProfiles",
+   "Zeta23.OPICAFollowup.LogFourierSobolev"
+  ],
+  "authority": "BUILD_MANIFEST direct_project_imports of this module is exactly [ZeroProfiles, LogFourierSobolev]; other imports come through them",
+  "new_definitions": [
+   "PositiveAxisTest",
+   "eulerImage",
+   "zeroProfileDeriv",
+   "atomBump"
+  ]
+ },
+ "existing_lean_sources_changed": false,
+ "cache_owner": "single local process; the module was built from this exact source in the session (lake rebuilds on source hash change), and the runner build re-validated it",
+ "sources": [
+  {
+   "path": "Zeta23/OPICAFollowup/ForcedEuler.lean",
+   "sha256": "fbf5c1bb6aabcf2f171ce1d11aeb289ff71ea14243d7099a09f3e05153dd8657",
+   "bytes": 41382
+  },
+  {
+   "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedForcedEuler.lean",
+   "sha256": "230723787b3badebfa2862fc6168f6f7e76210fd9c00c009729d3f1906fdfca5",
+   "bytes": 9558
+  },
+  {
+   "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/run_candidate_checks.py",
+   "sha256": "4d0b513561c80f18148f073d8c2633588c52b30238d79aeb9e1f977855470c90",
+   "bytes": 6653
+  },
+  {
+   "path": ".github/workflows/rhrc_opica_followup.yml",
+   "sha256": "ae43b1b9a19429ee8f51e9c3099d5825e4b96d50e04914cd896edada942668ad",
+   "bytes": 44419
+  },
+  {
+   "path": "lean-toolchain",
+   "sha256": "0d3c76ccd8772d8bcbe207241421a760312b71a6aa82f84194391fdf5cb026d6",
+   "bytes": 29
+  },
+  {
+   "path": "lake-manifest.json",
+   "sha256": "1847b362e15efd927e75aa8b5442e491f998e4a3f730f9dcaca9841f2957c448",
+   "bytes": 3200
+  }
+ ],
+ "roots": {
+  "Zeta23.OPICAFollowup.zero_profile_forced_euler": {
+   "paper": "R2-S1b (S1.4)",
+   "expected_type_consumer": "consumers/ExpectedForcedEuler.lean (10 receipts, shared)",
+   "actual_domain": "atom detected on an independent bump test at 1 (Euler image minus ordinary part equals kappa); jump clause equals the Stage 9 jump -kappa/n^2 and its one-sided derivatives are unique; explicit derivative is the right derivative and the a.e. derivative; identity at rho = 3/4",
+   "premises": "riemannZeta rho = 0, 0 < Re rho < 1 (rho != 1/2 derived)",
+   "axioms": "propext, Classical.choice, Quot.sound"
+  },
+  "Zeta23.OPICAFollowup.zero_profile_not_homogeneous_operator_vector": {
+   "paper": "R2-S1b",
+   "expected_type_consumer": "consumers/ExpectedForcedEuler.lean (10 receipts, shared)",
+   "actual_domain": "kappa != 0 with the detected atom; Euler image not a function at rho = 3/4; form identity via Stage 10",
+   "premises": "riemannZeta rho = 0, 0 < Re rho < 1",
+   "axioms": "propext, Classical.choice, Quot.sound"
+  },
+  "re_verified_narrow_roots": [
+   "all roots consumed by the eighteen runner consumer files"
+  ]
+ },
+ "gates": [
+  {
+   "label": "narrow runner (13 modules, 18 consumer files)",
+   "log": "runner/CHECK_RESULT.json",
+   "sha256": "b8b26ca45f68f5d5cef19e1e6e29c808a68c0f11bafa92598be8f81603fcb568",
+   "exit_code": 0,
+   "runner_status": "PASS_NARROW_ONLY",
+   "consumer_receipts": {
+    "ExpectedMasks": 4,
+    "ExpectedComplex": 4,
+    "ExpectedAuxiliary": 6,
+    "ExpectedMultiplicity": 17,
+    "ExpectedComb": 5,
+    "ExpectedFirstCell": 5,
+    "ExpectedWeighted": 9,
+    "ExpectedNearGap": 5,
+    "ExpectedNearGapLimit": 10,
+    "ExpectedNormalizedLimit": 9,
+    "ExpectedWeightedInverse": 17,
+    "ExpectedCoPoissonFamily": 7,
+    "ExpectedCoPoissonOrderZero": 10,
+    "ExpectedZeroMeasure": 7,
+    "ExpectedEulerMaclaurin": 10,
+    "ExpectedZeroProfiles": 11,
+    "ExpectedLogFourierSobolev": 10,
+    "ExpectedForcedEuler": 10
+   }
+  },
+  {
+   "label": "W04/W07 workflow consumer (unchanged heredoc)",
+   "log": "consumers/opica-w04-w07-expected.log",
+   "sha256": "47bf37f88ae44589a223145e24dd07655b7172bfca6a30bf819bb33c5251ac1e",
+   "exit_code": 0,
+   "standard_axiom_receipts": 52
+  },
+  {
+   "label": "W06 workflow consumer (unchanged heredoc)",
+   "log": "consumers/opica-w06-expected.log",
+   "sha256": "8564fc7fe7d8a2ef4ae561975e207ce6aa8e42accc8c35f0e6ed618ed26078ca",
+   "exit_code": 0,
+   "standard_axiom_receipts": 14
+  },
+  {
+   "label": "W01 consumers and exact-source subset",
+   "note": "not re-run locally: no existing Lean source changed and no W01 or subset module imports the new module; green in CI at the Stage 10 head 7b156e06 (ci-harvest-7b156e06.json)"
+  },
+  {
+   "label": "child suite and parent contract tests",
+   "result": "child 185/185 and parent 82/82 in normal and optimized Python"
+  },
+  {
+   "label": "frozen control replay",
+   "result": "normal and optimized modes (p0 5112, round1 18862, round2 14672, final 1274 checks each); copoisson, round2 and final numerical suites CONSISTENCY_ONLY"
+  },
+  {
+   "label": "numerical falsification (mpmath 1.3.0, not interval certified)",
+   "script": "numerical-falsification.py",
+   "script_sha256": "0ef1e6d2d8e08c1fe0547390db236df839cd99d1f60ba35fc5b60382c8102a99",
+   "log": "numerical-falsification.log",
+   "log_sha256": "56bafd0a3fe774031db5b2425dd9119c919b49f54704aba1d368e258cd0ff970",
+   "result": "first zero, three bump tests on (0.6, 3.7), (1.2, 1.9), (2.5, 6.4): <x^2 h', phi'> = -<h, (x^2 phi')'> = kappa(<h-1,phi> + sum phi(n)) to <= 7e-29; dropping the atoms or the -1 (homogeneous kappa h) misses by 11 to 511; scaled bumps at 1 of radius 0.4 to 0.004: Euler image minus continuum part = kappa = 200.04045483239 to 14 digits while the continuum part tends to 0"
+  }
+ ],
+ "negative_controls": [
+  {
+   "file": "negative-controls/negative-forced-euler.lean",
+   "expected": "REJECTED",
+   "observed": "REJECTED (9 errors, exit 1): force sign -kappa; no atoms; atom weight kappa/n^2; continuum part h instead of h - 1; ordinary part kappa (h - 1); jump +kappa; L2 Euler image; homogeneous eigenvector with c = kappa; no zero hypothesis",
+   "log_sha256": "3aad05100f2a48d4b67da1a9f2d8ce990fd57f23a4398d64dd67664d7fc7ed1d"
+  }
+ ],
+ "ci_harvest": {
+  "file": "ci-harvest-7b156e06.json",
+  "sha256": "efb6a8d8cf2182acc7046a40429357fdfcf817dc2580074c82024cac07c44a16"
+ },
+ "not_established": [
+  "aggregate current-source export",
+  "full100 compiler receipt production/replay",
+  "facade and registration",
+  "parent-extension acceptance",
+  "canonical regeneration (rhkg-compiler-receipt remains red)",
+  "CI on the Stage 11 head (pending at publication)"
+ ],
+ "RH": "OPEN",
+ "Step4": "OPEN",
+ "independent_closing_inequalities": "OPEN"
+}

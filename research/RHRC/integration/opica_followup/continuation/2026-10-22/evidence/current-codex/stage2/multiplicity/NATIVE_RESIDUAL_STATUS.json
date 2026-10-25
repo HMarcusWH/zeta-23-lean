@@ -1,0 +1,35 @@
+{
+  "root": "Zeta23.OPICAFollowup.native_auxiliary_tail_residual_lower",
+  "status": "EXTERNAL_EXACT_SOURCE_LEAF_GREEN_IMPORTED_PLANNED_MODULE_CONSUMER_PENDING",
+  "source": "NativeTailLower.lean",
+  "source_sha256": "e8c7234188f29ec1260dca345e0ac5c5a0ee5b59eaae492b48c4261094b74467",
+  "source_log": "native-tail-lower-04.log",
+  "source_log_sha256": "6d8096b2ed6cf812f1ac313d936c8369beb015b7d384cf15691578806ff34fd7",
+  "source_exit": 0,
+  "source_warning_records": 0,
+  "printed_root_transitive_axioms": ["propext", "Classical.choice", "Quot.sound"],
+  "full_domain": "Every natural source order d, every k>=1, every actual right zero rho of arbitrary actual multiplicity, every real T",
+  "actual_residual": "nativeTruncatedResidual k d T = literal c_k*logweightedU_d minus literal a_k*(F_d*indicator_[0,T])",
+  "full_leaf_conclusions": [
+    "D=(2delta)^(m-1/2)*norm(J_d(p)*zeta^(m)(rho))/(m-1)! is positive",
+    "actual residual MemLp2 and actual L2 representative",
+    "pointwise residual vanishes for all t<T",
+    "all actual finite-truncation image moments j<m vanish",
+    "actual shifted conjugated Laguerre Hilbert pairing retains exact unnormalized top moment",
+    "actual residual norm >= D*norm(r_k(p))*exp(delta*T)"
+  ],
+  "canonical_required_definitions": {
+    "nativeTruncatedResidual": "Genuine actual finite-history difference, implemented externally",
+    "tailMemory": "Exact weighted L1 memory integral, implemented externally"
+  },
+  "source_order_and_zero_multiplicity_distinct": true,
+  "global_prime_field_L2_assumed": false,
+  "new_caller_mathematical_premises": [],
+  "planned_consumer": "ExpectedNativeAuxiliary.lean",
+  "consumer_status": "Prepared; planned-module imported verification pending Stage2",
+  "new_primary_count_promoted": 0,
+  "main_source_edited": false,
+  "full_aggregate": "OPEN",
+  "RH": "OPEN",
+  "Step4": "OPEN"
+}

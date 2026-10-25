@@ -1,0 +1,11 @@
+{
+  "status": "DERIVED_ADDENDUM_NOT_LEAN_THEOREM",
+  "addendum_sha256": "54f1d9c06d37f1699b72daa76cb245aedb52cbbfa66dd6e15bb1bd344d891253",
+  "original_note_sha256": "92cc2e03a9a67670cc994ab95e72feded20d329a60fb97f2c1edcbf75845ffef",
+  "original_retained_unchanged": true,
+  "missing_manuscript": "PAPER9_MOMENT_JET_RIGIDITY",
+  "paper17_body_available": true,
+  "optional_even_refinement": true,
+  "new_Lean_declarations": 0,
+  "originality_claim": false
+}

@@ -1,0 +1,3 @@
+'Zeta23.OPICAFollowup.SquareSpanExpected.full_actual_square_jet_lattice_composition' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

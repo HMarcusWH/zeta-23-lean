@@ -1,0 +1,27 @@
+[
+  {
+    "receipt": "evidence/latest_repair_delivery/evidence/lean/ComplexLocalMeasures.json",
+    "recorded_exit_code": null,
+    "note": "Consumer receipt retained as supplied; inspect its explicit source field/hash."
+  },
+  {
+    "receipt": "evidence/latest_repair_delivery/evidence/lean/AuxiliaryCompletions.json",
+    "recorded_exit_code": null,
+    "note": "Consumer receipt retained as supplied; inspect its explicit source field/hash."
+  },
+  {
+    "receipt": "evidence/latest_repair_delivery/evidence/lean/ExpectedMasks.json",
+    "recorded_exit_code": null,
+    "note": "Consumer receipt retained as supplied; inspect its explicit source field/hash."
+  },
+  {
+    "receipt": "evidence/latest_repair_delivery/evidence/lean/MaskedNativeRate.json",
+    "recorded_exit_code": null,
+    "note": "Consumer receipt retained as supplied; inspect its explicit source field/hash."
+  },
+  {
+    "receipt": "evidence/latest_repair_delivery/evidence/lean/ExpectedComplex.json",
+    "recorded_exit_code": null,
+    "note": "Consumer receipt retained as supplied; inspect its explicit source field/hash."
+  }
+]

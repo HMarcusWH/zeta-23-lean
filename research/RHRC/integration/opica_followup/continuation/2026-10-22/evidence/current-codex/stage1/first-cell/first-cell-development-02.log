@@ -1,0 +1,55 @@
+../opica-stage1-2026-10-22/first-cell/FirstCellDevelopment.lean:182:33: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+../opica-stage1-2026-10-22/first-cell/FirstCellDevelopment.lean:205:13: warning: This simp argument is unused:
+  mul_zero
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Complex.mul_re, Complex.mul_im, Complex.ofReal_re, Complex.ofReal_im, zero_mul, sub_zero, add_zero,
+    zero_add]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+../opica-stage1-2026-10-22/first-cell/FirstCellDevelopment.lean:205:40: warning: This simp argument is unused:
+  zero_add
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Complex.mul_re, Complex.mul_im, Complex.ofReal_re, Complex.ofReal_im, zero_mul, mul_zero, sub_zero,
+    add_zero]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+../opica-stage1-2026-10-22/first-cell/FirstCellDevelopment.lean:357:24: error: `ring_nf` made no progress on the goal
+../opica-stage1-2026-10-22/first-cell/FirstCellDevelopment.lean:372:2: error: Type mismatch: After simplification, term
+  Eq.symm (heq x hx)
+ has type
+  Real.exp (-Real.log x / 2) *
+      (delta * (1 / (4 * (delta ^ 2 + gamma ^ 2)) - 1) * Real.sinh (delta * Real.log x) *
+          Real.cos (gamma * Real.log x) +
+        gamma * (1 + 1 / (4 * (delta ^ 2 + gamma ^ 2))) * Real.cosh (delta * Real.log x) *
+          Real.sin (gamma * Real.log x)) =
+    coPoissonRealDensity (coPoissonRho delta gamma) x
+but is expected to have type
+  coPoissonRealDensity (coPoissonRho delta gamma) x =
+    Real.exp (-Real.log x / 2) *
+      (delta * (1 / (4 * (delta ^ 2 + gamma ^ 2)) - 1) * Real.sinh (delta * Real.log x) *
+          Real.cos (gamma * Real.log x) +
+        gamma * (1 + 1 / (4 * (delta ^ 2 + gamma ^ 2))) * Real.cosh (delta * Real.log x) *
+          Real.sin (gamma * Real.log x))
+../opica-stage1-2026-10-22/first-cell/FirstCellDevelopment.lean:438:48: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+../opica-stage1-2026-10-22/first-cell/FirstCellDevelopment.lean:492:8: error: Type mismatch: After simplification, term
+  LE.le.trans
+    (mul_le_mul_of_nonneg_left he1
+      (le_of_lt
+        (div_pos
+          (lt_of_lt_of_le
+            (Mathlib.Meta.Positivity.pos_of_isNat (Mathlib.Meta.NormNum.isNat_ofNat ℝ (Eq.refl 16))
+              (Eq.refl (Nat.ble 1 16)))
+            hg)
+          (Mathlib.Meta.Positivity.pos_of_isNat (Mathlib.Meta.NormNum.isNat_ofNat ℝ (Eq.refl 2))
+            (Eq.refl (Nat.ble 1 2))))))
+    hx
+ has type
+  @LE.le ℝ Real.instPreorder.toLE (|gamma| / 2) (firstCellNegativePart delta gamma (Real.exp u) * Real.exp u)
+but is expected to have type
+  @LE.le ℝ Real.instLE (|gamma| / 2) ((firstCellNegativePart delta gamma ∘ Real.exp * Real.exp) u)

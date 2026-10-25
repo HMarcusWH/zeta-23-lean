@@ -1,0 +1,31 @@
+# MultiplicityTail Stage2 boundary and next mathematics
+
+All work here belongs to theory's owned MultiplicityTail source/consumer. The Stage2 extension is now integrated into the main working tree after the owner's Stage1 commit/push96dfba7082fb0cc7a93f7b25e31d449951ee9e4d. No frozen specification, parent mathematical source, ledger, validation or unrelated module was edited. Both owned files are final and frozen for the integrating owner's snapshot. Theory made no commit or push.
+
+## Exact current candidate and gates
+
+Final actual source `work/opica-followup-repo/Zeta23/OPICAFollowup/MultiplicityTail.lean` has SHA256 `43466c43684b91e5f4cff2b34ea5df178d1bf196c35946e8411bab9cdfb2e123`. Final actual consumer `research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedMultiplicity.lean` has SHA256 `7457d65c129374a9f13bbee5e2dd67f53882eb64fd56dfb0d6ff5e673e85498f`. Exact mirrors are `MultiplicityTail.Stage2.lean` and `ExpectedMultiplicity.Stage2.lean` in this evidence directory. The original Laguerre signature and proof body are preserved; the other three full native primary roots and both canonical required definitions are now implemented.
+
+Final genuine planned-module save in the isolated checkout passed exit0 with an empty log (`multiplicity-stage2-final-save.log`). The independent imported final consumer passed exit0 without warnings (`expected-multiplicity-stage2-final.log`). All17 fully qualified printed transitive closures contain only propext, Classical.choice, Quot.sound, including all4 primary roots and independently stated native expected THEOREMs. The consumer explicitly expands actual convolutions, log-weighted drive, simple-zero sign, residual and weighted L1 memory. Source and consumer use LF; git diff --check passed. `STATUS.json` records exact object/log/olean hashes, commands' effective options, imports and scope. All intermediate failures and earlier external proof sources remain preserved. There is no active theory compiler or writer; both owned main files are frozen. No aggregate/full-release/RH promotion is asserted by these narrow gates.
+
+`NativeCompletionEquation` was genuinely saved in the isolated cache from unchanged source SHA455f705f4f6e352e1b9fff7867b101e14afc1da30c79e7cf54697c1418969224, using its cached parent dependency. Its four printed closures were standard-only. It is the one added project dependency: actual causal arithmetic commutation, without global prime-field L2. The other added imports are Mathlib AEEqOfIntegral and Convolution. Preserve the original three project imports and record the dependency refinement explicitly.
+
+## Full mathematical scope
+
+The actual input is c_k convolved with `integerDriveFamily d`, whose coefficient is log(n)/sqrt(n). It is not the unweighted integer-source history. Actual arithmetic commutation proves a_k*F_d=c_k*U_d. Strong L2 convolution and a genuine representative prove stability, before any prime-field global L2 assertion.
+
+At every actual right zero rho, with p=rho-1/2 and m=zeroMult(rho), all actual y moments below m-1 vanish and the top equals `(-1)^m*r_k(p)*J_d(p)*iteratedDeriv m zeta rho`, nonzero. k,d are arbitrary naturals for this root. No simple-zero premise, synthetic source, factorization packet or desired moment is caller data. A connected right half-plane continues the actual integral from its genuine initial safe identity; the raw totalized formula is never used at the removable elementary point.
+
+For k>=1 and every real T, the finite truncation is the actual F_d times indicator_[0,T]. Its completed image is in L2, and all moments j<m vanish by the genuine a_k transform. `nativeTruncatedResidual` is literally y minus that image. It is L2 and vanishes pointwise before T. The actual normalized shifted/conjugated Laguerre tail test pairs with its retained top moment, giving the exact positive D and exponential lower bound.
+
+`tailMemory alpha d T` is exactly `integral_[0,T] exp(-alpha*(T-s))*abs(F_d(s)) ds`, a weighted L1 memory. A4 bounds the tail of the actual finite-history image by A_k/sqrt(2alpha_k) times this memory. A tail restriction/triangle argument gives exact A6 with subtraction norm(y), the max positive part and sqrt(2alpha_k)/A_k. No global F_d L2 assumption appears. All real T are covered; the paper only needs T>=0.
+
+## Next high-leverage lane after integration, not started here
+
+The paper's window theorem can use these genuine native estimates, actual uniform source costs and the actual Theta field envelope. Verify all required upstream roots are integrated before invoking them. For 0<b<Theta, choose one actual right zero with delta>(Theta+(C-1)b)/C, then a fixed xi satisfying (Theta-delta)/(C-1)<xi<delta-b. Fix that zero and its multiplicity before the horizon limit. Choose k(T)=max(1,floor(xi*T/log T)).
+
+The actual source factor J_d(p)=(p^2-1/4)^d J_0(p) prices both signs of its logarithm by O_p(d+1). The source L2 budget prices d log(d+2). A5 prices norm(c_k)/abs(r_k) by exp(C_p(k+1)) and abs(r_k)/A_k below by exp(-k log(k+1)-C_p(k+1)). These make the A6 subtraction negligible and give memory lower rate delta-xi when d log(d+2)=o(T). The old-memory part before T-C log T has upper rate Theta-C xi, strictly below delta-xi. Cauchy--Schwarz on the terminal window gives energy lower rate at least delta-xi>b, then b approaches Theta. The upper energy bound and Theta=0 case are separate straightforward obligations once the actual envelope is available. Continuous horizons and arbitrary cofinal real schedules must be handled, not only integer times.
+
+## Claim firewall and falsification traps
+
+These are lower/growth obstructions, not a signed zero-rate upper estimate or an RH proof. D is positive for each fixed rho but not uniform over zeros; it can degenerate with collisions, multiplicity or approach to the critical line. Do not select rho as a function of T without new cost bounds. At T=0 the truncation is zero almost everywhere and A6 has zero positive part; negative T gives an empty truncation interval and remains consistent. Source order d, completion index k and actual zero multiplicity m are distinct. Endpoint atoms were already retained by the genuine auxiliary completion theorem. Full release, RH and Step4 remain OPEN.

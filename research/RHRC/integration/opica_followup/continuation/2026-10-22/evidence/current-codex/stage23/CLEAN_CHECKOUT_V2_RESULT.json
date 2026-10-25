@@ -1,0 +1,60 @@
+{
+  "status": "PASS_REAL_CLEAN_GIT_CHECKOUT_PREFLIGHT_ONLY",
+  "checked_commit": "20e19b66330dc5d9d04cb1f4c69672584063019f",
+  "checked_tree": "6652f6050fe6a13ca54826f38e9ee44ccd0212e6",
+  "clone": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\c23-20e19b66",
+  "commands": [
+    {
+      "label": "clone",
+      "command": [
+        "git",
+        "-c",
+        "core.autocrlf=false",
+        "clone",
+        "--config",
+        "core.longpaths=true",
+        "--shared",
+        "--no-hardlinks",
+        "--no-checkout",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\c23-20e19b66"
+      ],
+      "exit_code": 0,
+      "log_sha256": "d5a61aa696a1a62b1c615edcfe940b9238f48ce225a445a41e3005f57082813f"
+    },
+    {
+      "label": "checkout",
+      "command": [
+        "git",
+        "-c",
+        "core.autocrlf=false",
+        "-c",
+        "core.longpaths=true",
+        "checkout",
+        "--detach",
+        "20e19b66330dc5d9d04cb1f4c69672584063019f"
+      ],
+      "exit_code": 0,
+      "log_sha256": "ebe875b4258af621c2e93e9121ee838c367c897c4e13d209752d44350e119697"
+    },
+    {
+      "label": "preflight",
+      "command": [
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\tools\\python-3.13.5-embed-amd64\\python.exe",
+        "research/RHRC/integration/opica_followup/validate_contract.py",
+        "--phase",
+        "preflight",
+        "--output",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage23\\CLEAN_CHECKOUT_V2_PREFLIGHT.json"
+      ],
+      "exit_code": 0,
+      "log_sha256": "e0e7dd96b5dc850a6373282df527aa67991fa359977de0a97b2105237c094530"
+    }
+  ],
+  "source_unchanged": true,
+  "compiler_objects_present": false,
+  "preflight_sha256": "84c66e631990165a5ec1365479a9ea0f3901cfad7c059865841f3deb20feb5a0",
+  "full_release_accepted": false,
+  "RH": "OPEN",
+  "Step4": "OPEN"
+}

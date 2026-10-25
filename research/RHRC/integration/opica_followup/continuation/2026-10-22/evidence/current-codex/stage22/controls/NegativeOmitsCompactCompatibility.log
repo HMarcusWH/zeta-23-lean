@@ -1,0 +1,8 @@
+C:\Users\macka\.codex\.chatgpt-projects\g-p-6a353c7268b08191b685956e466d73e4\work\opica-stage22\clean-controls\sources\NegativeOmitsCompactCompatibility.lean:12:72: error: Application type mismatch: The argument
+  φ
+has type
+  𝓢(ℝ, ℂ)
+of sort `Type` but is expected to have type
+  TemperedLatticeBridge.ExtendsCompactPairing σ T
+of sort `Prop` in the application
+  TemperedLatticeBridge.extension_annihilates_lattice_zero σ T hσ φ

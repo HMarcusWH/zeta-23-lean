@@ -1,0 +1,116 @@
+C:\Users\macka\.codex\.chatgpt-projects\g-p-6a353c7268b08191b685956e466d73e4\work\opica-stage1-2026-10-22\multiplicity\NativeAuxiliaryStableInput.lean:78:28: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ‖?m.262 ^ 2‖
+in the target expression
+  ‖((fun x => ‖↑(auxCompletionFilter k x)‖) ^ 2) t‖ ≤ K ^ 2 * Real.exp (-2 * a * t)
+
+case pos
+k : ℕ
+hm : AEStronglyMeasurable (fun t => ↑(auxCompletionFilter k t)) volume
+K : ℝ := ↑(k + 2) / ↑(k + 1).factorial
+a : ℝ := ↑k + 3 / 2
+ha : 0 < a
+hdom : Integrable ((Ici 0).indicator fun t => K ^ 2 * Real.exp (-2 * a * t)) volume
+t : ℝ
+ht : t ∈ Ici 0
+⊢ ‖((fun x => ‖↑(auxCompletionFilter k x)‖) ^ 2) t‖ ≤ K ^ 2 * Real.exp (-2 * a * t)
+C:\Users\macka\.codex\.chatgpt-projects\g-p-6a353c7268b08191b685956e466d73e4\work\opica-stage1-2026-10-22\multiplicity\NativeAuxiliaryStableInput.lean:85:31: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  auxCompletionFilter k t
+in the target expression
+  ‖((fun x => ‖↑(auxCompletionFilter k x)‖) ^ 2) t‖ ≤ 0
+
+case neg
+k : ℕ
+hm : AEStronglyMeasurable (fun t => ↑(auxCompletionFilter k t)) volume
+K : ℝ := ↑(k + 2) / ↑(k + 1).factorial
+a : ℝ := ↑k + 3 / 2
+ha : 0 < a
+hdom : Integrable ((Ici 0).indicator fun t => K ^ 2 * Real.exp (-2 * a * t)) volume
+t : ℝ
+ht : t ∉ Ici 0
+⊢ ‖((fun x => ‖↑(auxCompletionFilter k x)‖) ^ 2) t‖ ≤ 0
+C:\Users\macka\.codex\.chatgpt-projects\g-p-6a353c7268b08191b685956e466d73e4\work\opica-stage1-2026-10-22\multiplicity\NativeAuxiliaryStableInput.lean:139:2: error: linarith failed to find a contradiction
+c : ℝ → ℝ
+hc : Measurable c
+hc2 : MemLp (fun s => ↑(c s)) 2 volume
+f : ↥NativeCompletionL2
+x : ℝ
+hker : Integrable (fun s => ‖↑(c s)‖ ^ 2) volume
+hf : Integrable (fun s => ‖↑↑f (x - s)‖ ^ 2) volume
+hm : StronglyMeasurable fun s => ↑(c s) * ↑↑f (x - s)
+s : ℝ
+a✝ : ((fun s => ‖↑(c s)‖ ^ 2) + fun s => ‖↑↑f (x - s)‖ ^ 2) s / 2 < ‖↑(c s)‖ * ‖↑↑f (x - s)‖
+⊢ False
+failed
+C:\Users\macka\.codex\.chatgpt-projects\g-p-6a353c7268b08191b685956e466d73e4\work\opica-stage1-2026-10-22\multiplicity\NativeAuxiliaryStableInput.lean:155:10: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ‖?a * ?b‖
+in the target expression
+  (fun a => ‖↑(c a) * ↑↑f (x - a)‖) s ≤ (fun x_1 => ((fun s => ‖↑(c s)‖ ^ 2) + fun s => ‖↑↑f (x - s)‖ ^ 2) x_1 / 2) s
+
+c : ℝ → ℝ
+hc : Measurable c
+hc2 : MemLp (fun s => ↑(c s)) 2 volume
+f : ↥NativeCompletionL2
+x : ℝ
+hker : Integrable (fun s => ‖↑(c s)‖ ^ 2) volume
+hf : Integrable (fun s => ‖↑↑f (x - s)‖ ^ 2) volume
+s : ℝ
+⊢ (fun a => ‖↑(c a) * ↑↑f (x - a)‖) s ≤ (fun x_1 => ((fun s => ‖↑(c s)‖ ^ 2) + fun s => ‖↑↑f (x - s)‖ ^ 2) x_1 / 2) s
+C:\Users\macka\.codex\.chatgpt-projects\g-p-6a353c7268b08191b685956e466d73e4\work\opica-stage1-2026-10-22\multiplicity\NativeAuxiliaryStableInput.lean:163:33: error: expected token
+C:\Users\macka\.codex\.chatgpt-projects\g-p-6a353c7268b08191b685956e466d73e4\work\opica-stage1-2026-10-22\multiplicity\NativeAuxiliaryStableInput.lean:185:61: error: expected token
+C:\Users\macka\.codex\.chatgpt-projects\g-p-6a353c7268b08191b685956e466d73e4\work\opica-stage1-2026-10-22\multiplicity\NativeAuxiliaryStableInput.lean:198:86: error: expected token
+C:\Users\macka\.codex\.chatgpt-projects\g-p-6a353c7268b08191b685956e466d73e4\work\opica-stage1-2026-10-22\multiplicity\NativeAuxiliaryStableInput.lean:208:8: warning: declaration uses `sorry`
+C:\Users\macka\.codex\.chatgpt-projects\g-p-6a353c7268b08191b685956e466d73e4\work\opica-stage1-2026-10-22\multiplicity\NativeAuxiliaryStableInput.lean:208:55: warning: Variable name `hc` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hc
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+C:\Users\macka\.codex\.chatgpt-projects\g-p-6a353c7268b08191b685956e466d73e4\work\opica-stage1-2026-10-22\multiplicity\NativeAuxiliaryStableInput.lean:209:5: warning: Variable name `hc1` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hc1
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+C:\Users\macka\.codex\.chatgpt-projects\g-p-6a353c7268b08191b685956e466d73e4\work\opica-stage1-2026-10-22\multiplicity\NativeAuxiliaryStableInput.lean:209:26: warning: Variable name `hc2` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hc2
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+C:\Users\macka\.codex\.chatgpt-projects\g-p-6a353c7268b08191b685956e466d73e4\work\opica-stage1-2026-10-22\multiplicity\NativeAuxiliaryStableInput.lean:235:14: error(lean.unknownIdentifier): Unknown identifier `measurePreserving_sub_left`
+C:\Users\macka\.codex\.chatgpt-projects\g-p-6a353c7268b08191b685956e466d73e4\work\opica-stage1-2026-10-22\multiplicity\NativeAuxiliaryStableInput.lean:227:98: error: unsolved goals
+k d : ℕ
+hg :
+  ↑↑(causalFilterL2Value (auxCompletionFilter k) ↑(auxiliaryDriveCausalVector d)) =ᵐ[volume]
+    causalFilterPointwise (auxCompletionFilter k) ↑(auxiliaryDriveCausalVector d)
+t : ℝ
+⊢ (fun a => ↑(auxCompletionFilter k a) * ↑↑↑(auxiliaryDriveCausalVector d) (t - a)) =ᵐ[volume] fun a =>
+    ↑(auxCompletionFilter k a) * ↑(integerDriveFamily d (t - a))
+C:\Users\macka\.codex\.chatgpt-projects\g-p-6a353c7268b08191b685956e466d73e4\work\opica-stage1-2026-10-22\multiplicity\NativeAuxiliaryStableInput.lean:249:2: error: unsolved goals
+case pos
+k d : ℕ
+t : ℝ
+ht : t < 0
+s : ℝ
+hs : s < 0
+⊢ 0 = 0 s
+C:\Users\macka\.codex\.chatgpt-projects\g-p-6a353c7268b08191b685956e466d73e4\work\opica-stage1-2026-10-22\multiplicity\NativeAuxiliaryStableInput.lean:250:2: error: unsolved goals
+case neg
+k d : ℕ
+t : ℝ
+ht : t < 0
+s : ℝ
+hs : ¬s < 0
+⊢ 0 = 0 s
+'Zeta23.OPICAFollowup.nativeAuxiliaryStableVector_norm_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.OPICAFollowup.nativeAuxiliaryStableVector_factorial_bound' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.nativeAuxiliaryStableVector_coe_input' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.nativeAuxiliaryInput_memLp_two' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]

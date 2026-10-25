@@ -1,0 +1,35 @@
+{
+  "sha": "96dfba7082fb0cc7a93f7b25e31d449951ee9e4d",
+  "node_id": "C_kwDOT94UfNoAKDk2ZGZiYTcwODJmYjBjYzdhOTNmN2IyNWUzMWQ0NDk5NTFlZTllNGQ",
+  "url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/git/commits/96dfba7082fb0cc7a93f7b25e31d449951ee9e4d",
+  "html_url": "https://github.com/HMarcusWH/zeta-23-lean/commit/96dfba7082fb0cc7a93f7b25e31d449951ee9e4d",
+  "author": {
+    "name": "HMarcusWH",
+    "email": "Marcus@hmwh.se",
+    "date": "2026-10-22T15:09:44Z"
+  },
+  "committer": {
+    "name": "HMarcusWH",
+    "email": "Marcus@hmwh.se",
+    "date": "2026-10-22T15:09:44Z"
+  },
+  "tree": {
+    "sha": "c7a86500bcb1fb9fee009cb4b4500ed8927aae82",
+    "url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/git/trees/c7a86500bcb1fb9fee009cb4b4500ed8927aae82"
+  },
+  "message": "OPICA: verify Laguerre, comb and first-cell proofs; harden full receipts",
+  "parents": [
+    {
+      "sha": "9ccea78eb5ee0c097bde05424e43de58a589b713",
+      "url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/git/commits/9ccea78eb5ee0c097bde05424e43de58a589b713",
+      "html_url": "https://github.com/HMarcusWH/zeta-23-lean/commit/9ccea78eb5ee0c097bde05424e43de58a589b713"
+    }
+  ],
+  "verification": {
+    "verified": false,
+    "reason": "unsigned",
+    "signature": null,
+    "payload": null,
+    "verified_at": null
+  }
+}

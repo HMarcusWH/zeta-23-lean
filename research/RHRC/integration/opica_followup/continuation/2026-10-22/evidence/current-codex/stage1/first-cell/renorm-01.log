@@ -1,0 +1,170 @@
+Zeta23/OPICAFollowup/RenormalizedCoPoisson.lean:42:5: error: Application type mismatch: The argument
+  LT.lt.le hx.left
+has type
+  1 ≤ x
+but is expected to have type
+  ↑1 ≤ x
+in the application
+  And.intro (LT.lt.le hx.left)
+Zeta23/OPICAFollowup/RenormalizedCoPoisson.lean:41:54: error: linarith failed to find a contradiction
+rho : ℂ
+x : ℝ
+hx : x ∈ Set.Ioo 1 2
+a✝ : x < 0
+⊢ False
+failed
+Zeta23/OPICAFollowup/RenormalizedCoPoisson.lean:53:64: error: unsolved goals
+case refine_1
+delta gamma : ℝ
+hg : ¬gamma = 0
+h : 2⁻¹ + ↑delta + ↑gamma * I = 0
+⊢ False
+
+case refine_2
+delta gamma : ℝ
+hg : ¬gamma = 0
+h : 2⁻¹ + ↑delta + ↑gamma * I = 1
+⊢ False
+
+case refine_3
+delta gamma : ℝ
+hg : ¬gamma = 0
+h : 2⁻¹ + ↑delta + ↑gamma * I = 2⁻¹
+⊢ False
+
+case refine_4
+delta gamma : ℝ
+hg : ¬gamma = 0
+h : ↑delta + ↑gamma * I = 0
+⊢ False
+Zeta23/OPICAFollowup/RenormalizedCoPoisson.lean:64:54: error: unsolved goals
+case hsplit
+delta gamma u : ℝ
+hg : gamma ≠ 0
+hu : 0 < u
+hu1 : u < Real.log 2
+lam : ℂ := ↑delta + ↑gamma * I
+rho : ℂ := coPoissonRho delta gamma
+h0 : coPoissonRho delta gamma ≠ 0
+h1 : coPoissonRho delta gamma ≠ 1
+hh : coPoissonRho delta gamma ≠ 1 / 2
+hL : ↑delta + ↑gamma * I ≠ 0
+hx : Real.exp u ∈ Set.Ioo 1 2
+hpow : ∀ (z : ℂ), ↑(Real.exp u) ^ z = cexp (↑u * z)
+hb : coPoissonOriginNormalizer rho = (1 - 2 * rho) / (rho * (1 - rho))
+hk : rho * (1 - rho) = 1 / 4 - lam ^ 2
+hnum : 1 - 2 * rho = -2 * lam
+⊢ ?m.241
+
+delta gamma u : ℝ
+hg : gamma ≠ 0
+hu : 0 < u
+hu1 : u < Real.log 2
+lam : ℂ := ↑delta + ↑gamma * I
+rho : ℂ := coPoissonRho delta gamma
+h0 : coPoissonRho delta gamma ≠ 0
+h1 : coPoissonRho delta gamma ≠ 1
+hh : coPoissonRho delta gamma ≠ 1 / 2
+hL : ↑delta + ↑gamma * I ≠ 0
+hx : Real.exp u ∈ Set.Ioo 1 2
+hpow : ∀ (z : ℂ), ↑(Real.exp u) ^ z = cexp (↑u * z)
+hb : coPoissonOriginNormalizer rho = (1 - 2 * rho) / (rho * (1 - rho))
+hk : rho * (1 - rho) = 1 / 4 - lam ^ 2
+hnum : 1 - 2 * rho = -2 * lam
+hsplit : ?m.241
+⊢ coPoissonComplexDensity (coPoissonRho delta gamma) (Real.exp u) =
+    ↑(Real.exp (-u / 2)) * ((1 / 4 - (↑delta + ↑gamma * I) ^ 2) / (↑delta + ↑gamma * I)) *
+      sinh ((↑delta + ↑gamma * I) * ↑u)
+Zeta23/OPICAFollowup/RenormalizedCoPoisson.lean:76:13: error: unexpected token '₋'; expected command
+Zeta23/OPICAFollowup/RenormalizedCoPoisson.lean:105:4: error: No goals to be solved
+Zeta23/OPICAFollowup/RenormalizedCoPoisson.lean:122:4: error(lean.unknownIdentifier): Unknown constant `Complex.sinh_re`
+Zeta23/OPICAFollowup/RenormalizedCoPoisson.lean:122:20: error(lean.unknownIdentifier): Unknown constant `Complex.sinh_im`
+Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+Zeta23/OPICAFollowup/RenormalizedCoPoisson.lean:117:85: error: unsolved goals
+delta gamma u : ℝ
+hg : gamma ≠ 0
+hu : 0 < u
+hu1 : u < Real.log 2
+hre : ((1 / 4 - (↑delta + ↑gamma * I) ^ 2) / (↑delta + ↑gamma * I)).re = delta * (1 / (4 * (delta ^ 2 + gamma ^ 2)) - 1)
+him :
+  ((1 / 4 - (↑delta + ↑gamma * I) ^ 2) / (↑delta + ↑gamma * I)).im = -gamma * (1 + 1 / (4 * (delta ^ 2 + gamma ^ 2)))
+⊢ Real.exp (u * (-1 / 2)) * delta * (delta ^ 2 * 4 + gamma ^ 2 * 4)⁻¹ * (sinh (↑delta * ↑u + ↑gamma * I * ↑u)).re -
+          Real.exp (u * (-1 / 2)) * delta * (sinh (↑delta * ↑u + ↑gamma * I * ↑u)).re +
+        Real.exp (u * (-1 / 2)) * gamma * (delta ^ 2 * 4 + gamma ^ 2 * 4)⁻¹ *
+          (sinh (↑delta * ↑u + ↑gamma * I * ↑u)).im +
+      Real.exp (u * (-1 / 2)) * gamma * (sinh (↑delta * ↑u + ↑gamma * I * ↑u)).im =
+    Real.exp (u * (-1 / 2)) * delta * (delta ^ 2 * 4 + gamma ^ 2 * 4)⁻¹ * Real.sinh (u * delta) * Real.cos (u * gamma) -
+          Real.exp (u * (-1 / 2)) * delta * Real.sinh (u * delta) * Real.cos (u * gamma) +
+        Real.exp (u * (-1 / 2)) * gamma * (delta ^ 2 * 4 + gamma ^ 2 * 4)⁻¹ * Real.cosh (u * delta) *
+          Real.sin (u * gamma) +
+      Real.exp (u * (-1 / 2)) * gamma * Real.cosh (u * delta) * Real.sin (u * gamma)
+Zeta23/OPICAFollowup/RenormalizedCoPoisson.lean:122:36: warning: This simp argument is unused:
+  Complex.add_re
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Complex.mul_re, Complex.ofReal_re, Complex.ofReal_im, zero_mul, sub_zero, Complex.sinh_re,
+    Complex.sinh_im, Complex.add_im, Complex.mul_im, Complex.I_re, Complex.I_im, mul_zero, mul_one, add_zero, zero_add]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+Zeta23/OPICAFollowup/RenormalizedCoPoisson.lean:122:51: warning: This simp argument is unused:
+  Complex.add_im
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Complex.mul_re, Complex.ofReal_re, Complex.ofReal_im, zero_mul, sub_zero, Complex.sinh_re,
+    Complex.sinh_im, Complex.add_re, Complex.mul_im, Complex.I_re, Complex.I_im, mul_zero, mul_one, add_zero, zero_add]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+Zeta23/OPICAFollowup/RenormalizedCoPoisson.lean:123:4: warning: This simp argument is unused:
+  Complex.I_re
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Complex.mul_re, Complex.ofReal_re, Complex.ofReal_im, zero_mul, sub_zero, Complex.sinh_re,
+    Complex.sinh_im, Complex.add_re, Complex.add_im, Complex.mul_im, Complex.I_im, mul_zero, mul_one, add_zero,
+    zero_add]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+Zeta23/OPICAFollowup/RenormalizedCoPoisson.lean:123:17: warning: This simp argument is unused:
+  Complex.I_im
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Complex.mul_re, Complex.ofReal_re, Complex.ofReal_im, zero_mul, sub_zero, Complex.sinh_re,
+    Complex.sinh_im, Complex.add_re, Complex.add_im, Complex.mul_im, Complex.I_re, mul_zero, mul_one, add_zero,
+    zero_add]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+Zeta23/OPICAFollowup/RenormalizedCoPoisson.lean:123:30: warning: This simp argument is unused:
+  mul_zero
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Complex.mul_re, Complex.ofReal_re, Complex.ofReal_im, zero_mul, sub_zero, Complex.sinh_re,
+    Complex.sinh_im, Complex.add_re, Complex.add_im, Complex.mul_im, Complex.I_re, Complex.I_im, mul_one, add_zero,
+    zero_add]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+Zeta23/OPICAFollowup/RenormalizedCoPoisson.lean:123:39: warning: This simp argument is unused:
+  mul_one
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Complex.mul_re, Complex.ofReal_re, Complex.ofReal_im, zero_mul, sub_zero, Complex.sinh_re,
+    Complex.sinh_im, Complex.add_re, Complex.add_im, Complex.mul_im, Complex.I_re, Complex.I_im, mul_zero, add_zero,
+    zero_add]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+Zeta23/OPICAFollowup/RenormalizedCoPoisson.lean:123:56: warning: This simp argument is unused:
+  zero_add
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Complex.mul_re, Complex.ofReal_re, Complex.ofReal_im, zero_mul, sub_zero, Complex.sinh_re,
+    Complex.sinh_im, Complex.add_re, Complex.add_im, Complex.mul_im, Complex.I_re, Complex.I_im, mul_zero, mul_one,
+    add_zero]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+Zeta23/OPICAFollowup/RenormalizedCoPoisson.lean:140:45: error: unexpected token '|'; expected ')'
+Zeta23/OPICAFollowup/RenormalizedCoPoisson.lean:187:75: error: unexpected token 'by'; expected ')', ',' or ':'
+Zeta23/OPICAFollowup/RenormalizedCoPoisson.lean:193:42: error: unexpected token '|'; expected ')'
+Zeta23/OPICAFollowup/RenormalizedCoPoisson.lean:325:46: error: unexpected token '|'; expected ')'

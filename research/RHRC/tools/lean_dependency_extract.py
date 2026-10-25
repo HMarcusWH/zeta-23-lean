@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+import importlib.util
 import json
 import os
 import subprocess
@@ -13,6 +14,19 @@ REPO = ROOT.parents[1]
 MANIFEST = ROOT / "REGISTERED_THEOREM_BINDINGS.json"
 RECEIPT = ROOT / "graph" / "compiler" / "REGISTERED_DECLARATION_DEPENDENCIES.jsonl"
 SCHEMA_VERSION = "RHKG-phase2b-compiler-dependencies-0.4"
+
+
+def _load_registered_shards():
+    path = ROOT / "integration" / "registered_dependency_shards.py"
+    spec = importlib.util.spec_from_file_location("rhrc_registered_dependency_shards", path)
+    if spec is None or spec.loader is None:
+        raise RuntimeError(f"cannot load registered dependency shard layout from {path}")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+REGISTERED_SHARDS = _load_registered_shards()
 
 
 def fail(message: str) -> None:
@@ -227,27 +241,27 @@ def main() -> int:
     parse_started = time.monotonic()
     rows = parse_output(stdout, roots)
     parse_elapsed = time.monotonic() - parse_started
-    rendered = render_receipt(rows)
+    rendered = (REGISTERED_SHARDS.write_rows(rows, REPO) if args.write
+                else REGISTERED_SHARDS.render_storage(rows))
+    logical_bytes = sum(len(rendered[path]) for path in REGISTERED_SHARDS.SHARD_PATHS)
     dependency_count = sum(len(row["dependencies"]) for row in rows)
     print(
         "lean_dependency_extract: parsed "
         f"{len(rows)} declarations / {dependency_count} dependencies "
-        f"in {parse_elapsed:.2f}s; receipt={len(rendered)} bytes",
+        f"in {parse_elapsed:.2f}s; receipt={logical_bytes} bytes (16 shards and index)",
         flush=True,
     )
-    current = RECEIPT.read_bytes() if RECEIPT.exists() else None
-
     if args.write:
-        RECEIPT.parent.mkdir(parents=True, exist_ok=True)
-        RECEIPT.write_bytes(rendered)
         print(
             "lean_dependency_extract: WROTE "
             f"{len(rows)} declarations from {len(roots)} registered roots"
         )
         return 0
 
-    if current != rendered:
-        fail("checked-in compiler dependency receipt is stale or missing")
+    try:
+        REGISTERED_SHARDS.check_storage(rendered, REPO)
+    except (ValueError, OSError) as exc:
+        fail("checked-in compiler dependency receipt is stale or missing: " + str(exc))
 
     print(
         "lean_dependency_extract: PASS "

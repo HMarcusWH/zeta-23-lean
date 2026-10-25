@@ -1,0 +1,2062 @@
+{
+  "schema": "OPICA_POST_GREEN_OFFCRITICAL_REAL_PAIR_SUPPORTING_V1",
+  "created_utc": "2026-10-24T17:03:14.156838+00:00",
+  "base_commit": "139c1a0d88cc0fb2d8a0d8ea71e152b25b14c36e",
+  "base_tree": "3e63b0c72fc04da7bab45388d6096e82e95c4acb",
+  "worktree_status": "",
+  "status": "PASS_SUPPORTING_ONLY",
+  "registered_primary_delta": 0,
+  "compiler": "Lean (version 4.33.0-rc2, x86_64-w64-windows-gnu, commit d8b18978322de05a8f3dba51ef03cf5461676c17, Release)",
+  "compiler_binary": {
+    "path": "C:\\Users\\macka\\.elan\\toolchains\\leanprover--lean4---v4.33.0-rc2\\bin\\lean.exe",
+    "sha256": "bc137e6662c48eedf2cdf167fb176080e18a15f57e248d214df0cb3939248683",
+    "bytes": 83456
+  },
+  "lean_toolchain": {
+    "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\lean-toolchain",
+    "sha256": "0d3c76ccd8772d8bcbe207241421a760312b71a6aa82f84194391fdf5cb026d6",
+    "bytes": 29
+  },
+  "lake_manifest": {
+    "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\lake-manifest.json",
+    "sha256": "1847b362e15efd927e75aa8b5442e491f998e4a3f730f9dcaca9841f2957c448",
+    "bytes": 3200
+  },
+  "checks": [
+    {
+      "module": "OffcriticalRealBasis",
+      "disposition": "FORMAL_VALIDITY_PASS",
+      "execution": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-offcritical-real-basis\\OffcriticalRealBasis.receipt.json",
+        "sha256": "063d59652debe6134d7465382ca5221bcf5496eeeadc66e03830169e47c9f1dd",
+        "bytes": 4020
+      },
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-offcritical-real-basis\\OffcriticalRealBasis.lean",
+        "sha256": "382d35c51bd7b8fc3f498fcfce527570dfc46f79f8653653fd1b7b2b365d014a",
+        "bytes": 7344
+      },
+      "object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-offcritical-real-basis\\OffcriticalRealBasis.olean",
+        "sha256": "4764dc60097356f02365f68ecbf74c43ea4d74ed3f9780cf1cec503f26003cad",
+        "bytes": 593944
+      },
+      "compiler_log": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-offcritical-real-basis\\attempt4.log",
+        "sha256": "11bc7530682be7a53dd7d887f9c5623da95046088f72924a84be1b4526ace146",
+        "bytes": 2851
+      },
+      "axiom_audits": {
+        "OffcriticalRealBasis.canonicalBasis_independent": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "OffcriticalRealBasis.canonical_pair_negative_mass_budget": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "OffcriticalRealBasis.canonical_pair_no_positive_combination": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      "seconds": 69.43700000003446
+    },
+    {
+      "module": "ExpectedOffcriticalRealBasis",
+      "disposition": "FORMAL_VALIDITY_PASS",
+      "execution": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-offcritical-real-basis\\ExpectedOffcriticalRealBasis.receipt.json",
+        "sha256": "e9726132d1b57ec7f3633d7476fc8556bb5a8cbd6a3c7a85389f04cfba6d3012",
+        "bytes": 4235
+      },
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-offcritical-real-basis\\ExpectedOffcriticalRealBasis.lean",
+        "sha256": "66baee89bba22a69afef5339710e19a457b5a3a6efc244aa64baa3e49e6878fe",
+        "bytes": 6144
+      },
+      "object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-offcritical-real-basis\\ExpectedOffcriticalRealBasis.olean",
+        "sha256": "f865f555b5cb9ae81e91e5dc13d4da9aa4ddea30dda0314029467aacdc71a611",
+        "bytes": 368696
+      },
+      "compiler_log": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-offcritical-real-basis\\expected-attempt3.log",
+        "sha256": "f535314c8483e5e371cf6b1ee169596ceb2afc1bc594c2e53da1e9172a85b803",
+        "bytes": 816
+      },
+      "axiom_audits": {
+        "IndependentOffcriticalRealBasis.actual_offcritical_real_imaginary_pair_independent": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "IndependentOffcriticalRealBasis.actual_offcritical_kappa": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "IndependentOffcriticalRealBasis.actual_offcritical_negative_mass_restriction": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "IndependentOffcriticalRealBasis.actual_real_imaginary_pair_independent": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "IndependentOffcriticalRealBasis.actual_two_coefficient_euclidean_negative_budget": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "IndependentOffcriticalRealBasis.actual_no_nonzero_positive_combination": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      "seconds": 87.40599999995902
+    },
+    {
+      "module": "OffcriticalControls",
+      "disposition": "FORMAL_VALIDITY_PASS",
+      "execution": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-offcritical-real-basis\\OffcriticalControls.receipt.json",
+        "sha256": "b3cbd581822f1a7e92c6e3c707bdaee852b2e6455a0fe417fb4afdcbb3915973",
+        "bytes": 4190
+      },
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-offcritical-real-basis\\OffcriticalControls.lean",
+        "sha256": "564c86f71845ee6d57ba13bdbf4ee131d605d43def12137316608759c41aa55d",
+        "bytes": 2427
+      },
+      "object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-offcritical-real-basis\\OffcriticalControls.olean",
+        "sha256": "900e691faea913169619c8a28c6ac05271795f80962e86ac6dfa77bee151aacf",
+        "bytes": 153144
+      },
+      "compiler_log": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-offcritical-real-basis\\controls-attempt1.log",
+        "sha256": "6fdad1b9749841bc28f103c87ec8666630435f3e08b8b53329e54620347ec130",
+        "bytes": 1020
+      },
+      "axiom_audits": {
+        "OffcriticalControls.real_kappa_conjugate_same_measure": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "OffcriticalControls.canonical_imaginary_zero_of_real_kappa": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "OffcriticalControls.canonical_pair_dependent_of_real_kappa": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      "seconds": 72.10900000005495
+    }
+  ],
+  "production_source_dependency_closure": {
+    "Zeta23.OPICAFollowup.FiniteSpanSeparation": {
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\OPICAFollowup\\FiniteSpanSeparation.lean",
+        "sha256": "8e69e7c90abb572cf45d71bd70c0446b6844372d4ae954aeb8274ea3e1f1e5ef",
+        "bytes": 54366
+      },
+      "native_object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\.lake\\build\\lib\\lean\\Zeta23\\OPICAFollowup\\FiniteSpanSeparation.olean",
+        "sha256": "e0ae93473d15d31b30eba3ed8607c5155ba332e4a7e5411f0302516f86e1428b",
+        "bytes": 1384168
+      },
+      "imports": [
+        "Zeta23.OPICAFollowup.ConfluentProfiles",
+        "Zeta23.OPICA.SignedHeatSeparator",
+        "Mathlib.MeasureTheory.Measure.WithDensity",
+        "Mathlib.MeasureTheory.VectorMeasure.Variation.SignedMeasure",
+        "Mathlib.MeasureTheory.Constructions.BorelSpace.Basic",
+        "Mathlib.Analysis.Normed.Module.FiniteDimension",
+        "Mathlib.Topology.Order.Compact",
+        "Mathlib.Analysis.InnerProductSpace.PiL2",
+        "Mathlib.Tactic"
+      ]
+    },
+    "Zeta23.OPICA.SignedHeatSeparator": {
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\OPICA\\SignedHeatSeparator.lean",
+        "sha256": "179a7ea8f416f450e3f9db8ba39b972d8422d55b800e5f3427d465ff20b092f1",
+        "bytes": 28442
+      },
+      "native_object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\.lake\\build\\lib\\lean\\Zeta23\\OPICA\\SignedHeatSeparator.olean",
+        "sha256": "3d99ed91a202666f03b130f8ef960afafbc2ee240f4c41b85ada5ff945a2a149",
+        "bytes": 868520
+      },
+      "imports": [
+        "Zeta23.OPICA.SincTriangle",
+        "Mathlib.Analysis.Calculus.BumpFunction.Convolution",
+        "Mathlib.MeasureTheory.Integral.DominatedConvergence",
+        "Mathlib.Analysis.SpecialFunctions.Trigonometric.Bounds",
+        "Mathlib.Topology.MetricSpace.HausdorffDistance"
+      ]
+    },
+    "Zeta23.OPICA.SincTriangle": {
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\OPICA\\SincTriangle.lean",
+        "sha256": "537a04cf43f352b7b89b949cfb5fca4c2d7f39a139dde0573cb73821702d3451",
+        "bytes": 13709
+      },
+      "native_object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\.lake\\build\\lib\\lean\\Zeta23\\OPICA\\SincTriangle.olean",
+        "sha256": "a190de3408fc80735cdd387f40f84b62b4ed7700920f42f98e33dc700e526ac7",
+        "bytes": 782872
+      },
+      "imports": [
+        "Mathlib.Analysis.SpecialFunctions.Trigonometric.Sinc",
+        "Mathlib.Tactic.Linarith",
+        "Mathlib.Tactic.NormNum",
+        "Zeta23.OPICA.LocallyFiniteSignedMeasure",
+        "Mathlib.MeasureTheory.Measure.IntegralCharFun",
+        "Mathlib.Analysis.Fourier.Convolution",
+        "Mathlib.Analysis.Fourier.Inversion",
+        "Mathlib.Analysis.Calculus.BumpFunction.Convolution",
+        "Mathlib.Analysis.Calculus.ContDiff.Convolution"
+      ]
+    },
+    "Zeta23.OPICA.LocallyFiniteSignedMeasure": {
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\OPICA\\LocallyFiniteSignedMeasure.lean",
+        "sha256": "676f7ced89628a013244d4747f99a1cfcf8f79cd5ddda25ad1f17e2d52119f75",
+        "bytes": 25016
+      },
+      "native_object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\.lake\\build\\lib\\lean\\Zeta23\\OPICA\\LocallyFiniteSignedMeasure.olean",
+        "sha256": "9ef46f16cb3d443c595f57efeb814a86651b2b95524cfc9bcb737c184cae665a",
+        "bytes": 693168
+      },
+      "imports": [
+        "Mathlib.Analysis.Distribution.TemperedDistribution",
+        "Mathlib.Analysis.PSeries",
+        "Mathlib.MeasureTheory.Measure.MutuallySingular",
+        "Mathlib.MeasureTheory.Integral.Bochner.Set",
+        "Mathlib.Tactic.Linarith",
+        "Mathlib.Tactic.NormNum",
+        "Mathlib.Tactic.FieldSimp",
+        "Mathlib.Tactic.Ring",
+        "Mathlib.Tactic.Positivity",
+        "Mathlib.Analysis.Calculus.BumpFunction.Convolution",
+        "Mathlib.MeasureTheory.Integral.RieszMarkovKakutani.Real",
+        "Mathlib.MeasureTheory.Integral.DominatedConvergence"
+      ]
+    },
+    "Zeta23.OPICAFollowup.ConfluentProfiles": {
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\OPICAFollowup\\ConfluentProfiles.lean",
+        "sha256": "a84c72ac8b91bf053c499c9ca33458f69ad1849f0ba2766e520dfa9fbe61e29f",
+        "bytes": 58244
+      },
+      "native_object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\.lake\\build\\lib\\lean\\Zeta23\\OPICAFollowup\\ConfluentProfiles.olean",
+        "sha256": "d403c406579c1b56bd9b4dea2573c809e3127f6fabbd0ab87124630fdf52e540",
+        "bytes": 1807304
+      },
+      "imports": [
+        "Zeta23.OPICAFollowup.CoPoissonJets",
+        "Mathlib.Algebra.Polynomial.Taylor",
+        "Mathlib.LinearAlgebra.Matrix.Block",
+        "Mathlib.Tactic.Ring",
+        "Mathlib.Algebra.BigOperators.Intervals",
+        "Mathlib.Algebra.Polynomial.HasseDeriv",
+        "Mathlib.Analysis.Calculus.Deriv.Polynomial",
+        "Mathlib.Analysis.Calculus.IteratedDeriv.Defs",
+        "Mathlib.Analysis.Distribution.AEEqOfIntegralContDiff",
+        "Mathlib.Algebra.BigOperators.Fin",
+        "Mathlib.Data.Fintype.EquivFin"
+      ]
+    },
+    "Zeta23.OPICAFollowup.CoPoissonJets": {
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\OPICAFollowup\\CoPoissonJets.lean",
+        "sha256": "dfb21b90906e2cbc23acdfd46b874c04d4ea6ae0217aa316b50c5b404c0d7134",
+        "bytes": 136766
+      },
+      "native_object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\.lake\\build\\lib\\lean\\Zeta23\\OPICAFollowup\\CoPoissonJets.olean",
+        "sha256": "7dbe3039b40dc28eea348057405b8f6843245517b577c5d95e8d1305b140d647",
+        "bytes": 4910864
+      },
+      "imports": [
+        "Zeta23.OPICAFollowup.ZeroProfiles",
+        "Mathlib.Analysis.SpecialFunctions.Trigonometric.Series"
+      ]
+    },
+    "Zeta23.OPICAFollowup.ZeroProfiles": {
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\OPICAFollowup\\ZeroProfiles.lean",
+        "sha256": "d5ee76f621001bcd97e555cd6a92517349080d4315c86a496289acf49a7af7fc",
+        "bytes": 44291
+      },
+      "native_object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\.lake\\build\\lib\\lean\\Zeta23\\OPICAFollowup\\ZeroProfiles.olean",
+        "sha256": "551a9265f0cbd82cbd752553e651bebe3cf77f8ee40fd7c955df47eb2083965d",
+        "bytes": 2481976
+      },
+      "imports": [
+        "Zeta23.OPICAFollowup.RenormalizedCoPoisson",
+        "Zeta23.OPICAFollowup.ProfileEulerMaclaurin"
+      ]
+    },
+    "Zeta23.OPICAFollowup.ProfileEulerMaclaurin": {
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\OPICAFollowup\\ProfileEulerMaclaurin.lean",
+        "sha256": "c4ee9e0c04d0f7c53b26c92dee78287800e6ddd331377832cb8b271885441c8b",
+        "bytes": 43512
+      },
+      "native_object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\.lake\\build\\lib\\lean\\Zeta23\\OPICAFollowup\\ProfileEulerMaclaurin.olean",
+        "sha256": "2b8a7518e9587b0a29651898afebbebfd17e15a1ea80b2074300e384962f7aeb",
+        "bytes": 2068480
+      },
+      "imports": [
+        "Mathlib.NumberTheory.AbelSummation",
+        "Mathlib.NumberTheory.LSeries.RiemannZeta",
+        "Mathlib.Analysis.MellinTransform",
+        "Mathlib.Analysis.SpecialFunctions.ImproperIntegrals",
+        "Mathlib.Analysis.SpecialFunctions.Integrals.Basic",
+        "Mathlib.Analysis.SpecialFunctions.Pow.Deriv",
+        "Mathlib.Analysis.SpecialFunctions.Pow.Asymptotics",
+        "Mathlib.Analysis.Complex.CauchyIntegral",
+        "Mathlib.Analysis.Analytic.IsolatedZeros",
+        "Mathlib.Analysis.Convex.PathConnected",
+        "Mathlib.Topology.Algebra.Order.Floor",
+        "Mathlib.MeasureTheory.Integral.IntegralEqImproper",
+        "Mathlib.Tactic"
+      ]
+    },
+    "Zeta23.OPICAFollowup.RenormalizedCoPoisson": {
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\OPICAFollowup\\RenormalizedCoPoisson.lean",
+        "sha256": "3a3ecb500669fb3986786a7e697cd3aed940c8e058c829893e55a4a75a9a75de",
+        "bytes": 180705
+      },
+      "native_object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\.lake\\build\\lib\\lean\\Zeta23\\OPICAFollowup\\RenormalizedCoPoisson.olean",
+        "sha256": "d0a8f5736b47d7c83df5f81984202561612238da184030cb238e2c84c343810d",
+        "bytes": 6326296
+      },
+      "imports": [
+        "Zeta23.OPICAFollowup.ComplexLocalMeasures",
+        "Zeta23.OPICAFollowup.DilatedComb",
+        "Zeta23.ExceptionalZero.ZetaRealStripNonvanishing",
+        "Mathlib.Analysis.SpecialFunctions.Complex.Log",
+        "Mathlib.Analysis.SpecialFunctions.Trigonometric.Complex",
+        "Mathlib.Analysis.SpecialFunctions.Trigonometric.DerivHyp",
+        "Mathlib.Analysis.Real.Pi.Bounds",
+        "Mathlib.Tactic"
+      ]
+    },
+    "Zeta23.ExceptionalZero.ZetaRealStripNonvanishing": {
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\ExceptionalZero\\ZetaRealStripNonvanishing.lean",
+        "sha256": "e621c5f5378796060ba85ba8db59998a40a6a3e35a11a37e9df53f10cdc8f43f",
+        "bytes": 6002
+      },
+      "native_object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\.lake\\build\\lib\\lean\\Zeta23\\ExceptionalZero\\ZetaRealStripNonvanishing.olean",
+        "sha256": "a5ae95cf31bee7f5082b257d5361b43ef615cfc5a19e993f454567633af31cab",
+        "bytes": 336840
+      },
+      "imports": [
+        "Zeta23.FromPNTPlus.ZetaBounds",
+        "Zeta23.ExceptionalZero.FilteredResolventMeromorphic",
+        "Mathlib.Analysis.SpecialFunctions.ImproperIntegrals"
+      ]
+    },
+    "Zeta23.ExceptionalZero.FilteredResolventMeromorphic": {
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\ExceptionalZero\\FilteredResolventMeromorphic.lean",
+        "sha256": "9558a404b5c07d233d289acb0347e49838b8ac74be07be824b5db77a62c8f9aa",
+        "bytes": 7866
+      },
+      "native_object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\.lake\\build\\lib\\lean\\Zeta23\\ExceptionalZero\\FilteredResolventMeromorphic.olean",
+        "sha256": "3f5f02568e952cf32e54bd39817edbc3bb28955ed4c7f29cc2903948bdefdc13",
+        "bytes": 258160
+      },
+      "imports": [
+        "Zeta23.ExceptionalZero.FilteredPolePersistence",
+        "Mathlib.Analysis.Meromorphic.Basic"
+      ]
+    },
+    "Zeta23.ExceptionalZero.FilteredPolePersistence": {
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\ExceptionalZero\\FilteredPolePersistence.lean",
+        "sha256": "1e1284f9cabc44716ed44266e04a4503c0642732ba346c28d0ed07d77824157c",
+        "bytes": 11926
+      },
+      "native_object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\.lake\\build\\lib\\lean\\Zeta23\\ExceptionalZero\\FilteredPolePersistence.olean",
+        "sha256": "ef9c7a9c033ec855997919cb27d44971ff10e6dd955129a2f5cb95a9c3001610",
+        "bytes": 340056
+      },
+      "imports": [
+        "Zeta23.ExceptionalZero.FilteredResolvent",
+        "Zeta23.ExceptionalZero.ZeroIsolation",
+        "Mathlib.Analysis.Complex.LocallyUniformLimit"
+      ]
+    },
+    "Zeta23.ExceptionalZero.ZeroIsolation": {
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\ExceptionalZero\\ZeroIsolation.lean",
+        "sha256": "8445d336a72bc7b0c5a81d5023aa2360884d016e090b3d6c6e46c309de3b9b1b",
+        "bytes": 2287
+      },
+      "native_object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\.lake\\build\\lib\\lean\\Zeta23\\ExceptionalZero\\ZeroIsolation.olean",
+        "sha256": "856cbde1bfa0f5329c3b5c39b51fd3d2d8b64d3f081d243781caee9d91850c6a",
+        "bytes": 86224
+      },
+      "imports": [
+        "Zeta23.XiPrime.ExplicitFormula.ZeroFree"
+      ]
+    },
+    "Zeta23.XiPrime.ExplicitFormula.ZeroFree": {
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\XiPrime\\ExplicitFormula\\ZeroFree.lean",
+        "sha256": "f6c02ad70463cf479e015ea9f02ab44d1f90027b5ffe4a9b03097cf16e0ecf54",
+        "bytes": 79810
+      },
+      "native_object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\.lake\\build\\lib\\lean\\Zeta23\\XiPrime\\ExplicitFormula\\ZeroFree.olean",
+        "sha256": "e49d4e5576712e5bf06f7cd987829cc60a54a373f11bf7754763b6f029b56316",
+        "bytes": 4334416
+      },
+      "imports": [
+        "Zeta23.XiPrime.ExplicitFormula",
+        "Zeta23.WeilEF.ZeroSumLimit",
+        "Zeta23.GammaFacts.StirlingVert",
+        "Zeta23.GammaFacts.Series",
+        "Zeta23.GammaFacts.Complete",
+        "Zeta23.RvM.Statement",
+        "Zeta23.Assembly"
+      ]
+    },
+    "Zeta23.Assembly": {
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\Assembly.lean",
+        "sha256": "ff1c57696310e3b9cf0bb39ce7fcfc4f4c4ba654a605daa30b66c3c9b900e7cf",
+        "bytes": 88268
+      },
+      "native_object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\.lake\\build\\lib\\lean\\Zeta23\\Assembly.olean",
+        "sha256": "b06f1f21d793445c26412ca217128c90bb98008b09458df30a4e30f93e91f3d7",
+        "bytes": 4919440
+      },
+      "imports": [
+        "Zeta23.LinAlg",
+        "Zeta23.Defs",
+        "Zeta23.Defs.Counting",
+        "Zeta23.Assembly.Inputs",
+        "Zeta23.Hypotheses",
+        "Zeta23.PrimeSideTemp",
+        "Zeta23.TracesBoundsE",
+        "Mathlib.Analysis.Matrix.Normed",
+        "Mathlib.Analysis.SpecialFunctions.Pow.Asymptotics",
+        "Mathlib.Analysis.Complex.ExponentialBounds",
+        "Mathlib.Analysis.Real.Pi.Bounds"
+      ]
+    },
+    "Zeta23.TracesBoundsE": {
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\TracesBoundsE.lean",
+        "sha256": "4e44c73d585d13f594f3f09199e59660b742b46a1a446ccf004cadeb48692954",
+        "bytes": 2610
+      },
+      "native_object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\.lake\\build\\lib\\lean\\Zeta23\\TracesBoundsE.olean",
+        "sha256": "b6bfef98643fbc07cbe6d08abdf8d4674377f95d29af289900c981042c9a4ec9",
+        "bytes": 51024
+      },
+      "imports": [
+        "Zeta23.PrimeSideTemp"
+      ]
+    },
+    "Zeta23.PrimeSideTemp": {
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\PrimeSideTemp.lean",
+        "sha256": "143b8a1d2dd5ac52ccde472e53ee7a34d1794dd3c7992466f2b01236f72088cc",
+        "bytes": 5608
+      },
+      "native_object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\.lake\\build\\lib\\lean\\Zeta23\\PrimeSideTemp.olean",
+        "sha256": "421c0bd0f109bbc1c25b5e4850faff8703d525db59e78f887302ccf98c405c3f",
+        "bytes": 51544
+      },
+      "imports": [
+        "Zeta23.Defs"
+      ]
+    },
+    "Zeta23.Defs": {
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\Defs.lean",
+        "sha256": "216b34de76394522aea610c57d342f3dfe8aa1c3d9d6b2ec11509de92f1c6bb0",
+        "bytes": 16255
+      },
+      "native_object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\.lake\\build\\lib\\lean\\Zeta23\\Defs.olean",
+        "sha256": "e212b1f360bf572f81ee93da5419fbf0401bb915c77a477f5c93e277b7793f1c",
+        "bytes": 251816
+      },
+      "imports": [
+        "Mathlib.Analysis.CStarAlgebra.Classes",
+        "Mathlib.Analysis.SpecialFunctions.Gamma.Digamma",
+        "Mathlib.Analysis.SpecialFunctions.Pow.Complex",
+        "Mathlib.NumberTheory.ArithmeticFunction.VonMangoldt",
+        "Mathlib.MeasureTheory.Integral.Bochner.Basic",
+        "Mathlib.MeasureTheory.Measure.Lebesgue.Basic",
+        "Mathlib.Algebra.BigOperators.Finprod",
+        "Mathlib.Data.Set.Card",
+        "Mathlib.Data.Matrix.Basic"
+      ]
+    },
+    "Zeta23.Hypotheses": {
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\Hypotheses.lean",
+        "sha256": "b64911caaf69328e0ca4fced1fd1f80fdca02d57bce390db34843b9849ccb4e2",
+        "bytes": 10275
+      },
+      "native_object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\.lake\\build\\lib\\lean\\Zeta23\\Hypotheses.olean",
+        "sha256": "7fc57611230eaf734c4846c77195188bef4348783cd7f43ae2a01973c74eb402",
+        "bytes": 113000
+      },
+      "imports": [
+        "Zeta23.Defs",
+        "Mathlib.Analysis.Calculus.ContDiff.Defs",
+        "Mathlib.MeasureTheory.Integral.IntervalIntegral.Basic"
+      ]
+    },
+    "Zeta23.Assembly.Inputs": {
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\Assembly\\Inputs.lean",
+        "sha256": "4774543e7049159ac2bfd6de313a77edbc7222a5ea9cd1d98b3accc8568da273",
+        "bytes": 3558
+      },
+      "native_object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\.lake\\build\\lib\\lean\\Zeta23\\Assembly\\Inputs.olean",
+        "sha256": "41f3a91c6710900f6d97c24014aa9fd3e5ca0682449f0685386e9d75c3802831",
+        "bytes": 77040
+      },
+      "imports": [
+        "Zeta23.LinAlg",
+        "Zeta23.Defs"
+      ]
+    },
+    "Zeta23.LinAlg": {
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\LinAlg.lean",
+        "sha256": "a08efc558bdaae67271c6ca0ef87847284237b1bf0c4409595ba72abec96805f",
+        "bytes": 383
+      },
+      "native_object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\.lake\\build\\lib\\lean\\Zeta23\\LinAlg.olean",
+        "sha256": "f5ed8c0c406bf81a42929a391cf1b7d351873cf3b952e297a3f0fab389da3bfd",
+        "bytes": 2256
+      },
+      "imports": [
+        "Zeta23.LinAlg.HermitianPosPart",
+        "Zeta23.LinAlg.Inertia",
+        "Zeta23.LinAlg.PosIndex",
+        "Zeta23.LinAlg.RankTrace",
+        "Zeta23.LinAlg.Sylvester",
+        "Zeta23.LinAlg.VonNeumann",
+        "Zeta23.LinAlg.Weyl"
+      ]
+    },
+    "Zeta23.LinAlg.Weyl": {
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\LinAlg\\Weyl.lean",
+        "sha256": "5f126ae63912edab0e037d171e2efc5c96f43e5a2b31406539debcb07cd341f2",
+        "bytes": 6572
+      },
+      "native_object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\.lake\\build\\lib\\lean\\Zeta23\\LinAlg\\Weyl.olean",
+        "sha256": "c440d1ed143faf1b2ec0377f39a9eb2a2350acebb6015a6e47a72a2130dc8795",
+        "bytes": 248608
+      },
+      "imports": [
+        "Zeta23.LinAlg.PosIndex",
+        "Zeta23.LinAlg.Sylvester",
+        "Mathlib.Algebra.Order.Chebyshev"
+      ]
+    },
+    "Zeta23.LinAlg.Sylvester": {
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\LinAlg\\Sylvester.lean",
+        "sha256": "771c4cf2318ea8b10fca7f8e49ad1c44245823a0d3378987501f6d185f07bc69",
+        "bytes": 14792
+      },
+      "native_object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\.lake\\build\\lib\\lean\\Zeta23\\LinAlg\\Sylvester.olean",
+        "sha256": "50e4952f11f33d446ea5c7806e91bff17d14741e23d4b9e8890a2cf537c4a0af",
+        "bytes": 756496
+      },
+      "imports": [
+        "Zeta23.LinAlg.HermitianPosPart",
+        "Mathlib.LinearAlgebra.FiniteDimensional.Lemmas"
+      ]
+    },
+    "Zeta23.LinAlg.HermitianPosPart": {
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\LinAlg\\HermitianPosPart.lean",
+        "sha256": "a488f6a6132be89eab1b6d50ae6bcd61a4cde02e119891b18ce05d9cb9b70dba",
+        "bytes": 8662
+      },
+      "native_object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\.lake\\build\\lib\\lean\\Zeta23\\LinAlg\\HermitianPosPart.olean",
+        "sha256": "da1091d42a350ffbce0eba0b632e56ef134046167d02c9e85dbf4ef5a200c9be",
+        "bytes": 398304
+      },
+      "imports": [
+        "Zeta23.LinAlg.PosIndex"
+      ]
+    },
+    "Zeta23.LinAlg.PosIndex": {
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\LinAlg\\PosIndex.lean",
+        "sha256": "0e9147cbd62fe6b56991759d7cf30f27d5888d0fc3ceff874306edb455d5d2bf",
+        "bytes": 5246
+      },
+      "native_object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\.lake\\build\\lib\\lean\\Zeta23\\LinAlg\\PosIndex.olean",
+        "sha256": "55fd4252eb4f2d8fa256e917b4271367081d0778828e4481118b799d5b7daafe",
+        "bytes": 207944
+      },
+      "imports": [
+        "Mathlib.Analysis.Matrix.PosDef"
+      ]
+    },
+    "Zeta23.LinAlg.VonNeumann": {
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\LinAlg\\VonNeumann.lean",
+        "sha256": "92c98919fef5f4dee319d466c1c95e45bb60d56b4808cbc5c5b33e98bb23fd1b",
+        "bytes": 10163
+      },
+      "native_object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\.lake\\build\\lib\\lean\\Zeta23\\LinAlg\\VonNeumann.olean",
+        "sha256": "9026325d8a34f14cb5608c4e91ecc704de4af017076f4a90cec62ff10a28a2ad",
+        "bytes": 433080
+      },
+      "imports": [
+        "Zeta23.LinAlg.PosIndex",
+        "Mathlib.Analysis.Convex.Birkhoff",
+        "Mathlib.Algebra.Order.Rearrangement"
+      ]
+    },
+    "Zeta23.LinAlg.RankTrace": {
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\LinAlg\\RankTrace.lean",
+        "sha256": "07cac47a6ade4f27d2990669570ebebafcd055b714ab721de58b5d0fcec60560",
+        "bytes": 12285
+      },
+      "native_object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\.lake\\build\\lib\\lean\\Zeta23\\LinAlg\\RankTrace.olean",
+        "sha256": "4b5e0fa5f66d14f806f854d2a2785b3f607a4da1cabd793cb6cf9d9ae959d45a",
+        "bytes": 869056
+      },
+      "imports": [
+        "Zeta23.LinAlg.PosIndex",
+        "Zeta23.LinAlg.VonNeumann",
+        "Zeta23.LinAlg.HermitianPosPart"
+      ]
+    },
+    "Zeta23.LinAlg.Inertia": {
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\LinAlg\\Inertia.lean",
+        "sha256": "bf8814f8e47994afef14757f2b26a7e702cc8c02c335b61667dd404b820e25be",
+        "bytes": 6676
+      },
+      "native_object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\.lake\\build\\lib\\lean\\Zeta23\\LinAlg\\Inertia.olean",
+        "sha256": "40000aad30a7e473f311c086533362a36959794b69f23d01d79e8f559a10426a",
+        "bytes": 359816
+      },
+      "imports": [
+        "Zeta23.LinAlg.Sylvester"
+      ]
+    },
+    "Zeta23.Defs.Counting": {
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\Defs\\Counting.lean",
+        "sha256": "0d403d6d4d3f4cdfa370b374376dede2d56fa79e1b0146d48ce8c4321496ee0d",
+        "bytes": 2976
+      },
+      "native_object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\.lake\\build\\lib\\lean\\Zeta23\\Defs\\Counting.olean",
+        "sha256": "630c0de1787a375e4e480d7bb333e3a322ffc9a648e97a4ce87f0d9f0ecc9ac5",
+        "bytes": 45800
+      },
+      "imports": [
+        "Zeta23.Defs"
+      ]
+    },
+    "Zeta23.RvM.Statement": {
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\RvM\\Statement.lean",
+        "sha256": "3226fbc3de1b223a067d1d454c1e7400ac81c652dbbb58f494e42a6a583061f6",
+        "bytes": 785
+      },
+      "native_object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\.lake\\build\\lib\\lean\\Zeta23\\RvM\\Statement.olean",
+        "sha256": "3323745cd4d033088fd71f4445d778b821b61d545af922ff8d123b0c9b610ecd",
+        "bytes": 5024
+      },
+      "imports": [
+        "Zeta23.RvM.MainTerm"
+      ]
+    },
+    "Zeta23.RvM.MainTerm": {
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\RvM\\MainTerm.lean",
+        "sha256": "e1e5eb11901595177457869b70d6d7dbb0a5c2c27ede33955efafec5f93c301f",
+        "bytes": 26351
+      },
+      "native_object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\.lake\\build\\lib\\lean\\Zeta23\\RvM\\MainTerm.olean",
+        "sha256": "f65ebe2f308866f7acf0408942ca53abc3c8579adecf42380bf240bca36cad13",
+        "bytes": 1217056
+      },
+      "imports": [
+        "Zeta23.RvM.Defs",
+        "Zeta23.RvM.LocalCount",
+        "Zeta23.Hypotheses",
+        "Zeta23.WeilEF.XiLogDeriv",
+        "Zeta23.Analytic.RectangleLogDeriv",
+        "Zeta23.RvM.GammaSide",
+        "Zeta23.RvM.Backlund",
+        "Zeta23.RvM.Fold",
+        "Zeta23.RvM.NcountWindow"
+      ]
+    },
+    "Zeta23.RvM.NcountWindow": {
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\RvM\\NcountWindow.lean",
+        "sha256": "f8b4ff9a1577af9064de082d250a4433392578a96e235209214bdaaeffaf2482",
+        "bytes": 2060
+      },
+      "native_object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\.lake\\build\\lib\\lean\\Zeta23\\RvM\\NcountWindow.olean",
+        "sha256": "f669cd24bf1c61f39cb0bf8cb5477a4dfaf62fb93289c9e29d64fed2cf0a5d26",
+        "bytes": 56080
+      },
+      "imports": [
+        "Zeta23.Statement.SeamClosed"
+      ]
+    },
+    "Zeta23.Statement.SeamClosed": {
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\Statement\\SeamClosed.lean",
+        "sha256": "b2b03190fb3cf4520d273f8bdb9fc7a89939381c8aaff360e5845108b4d8b88d",
+        "bytes": 2480
+      },
+      "native_object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\.lake\\build\\lib\\lean\\Zeta23\\Statement\\SeamClosed.olean",
+        "sha256": "a4f53c9f17f9b456d56c5851d3c4e145f266ff4d719d640808e204cbee527bed",
+        "bytes": 25384
+      },
+      "imports": [
+        "Zeta23.Statement.Seam",
+        "Zeta23.ZetaReflect"
+      ]
+    },
+    "Zeta23.ZetaReflect": {
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\ZetaReflect.lean",
+        "sha256": "a26102a11755034d1a84c7e76cc7c827924e6c2962fcf91dab754041153b435e",
+        "bytes": 15872
+      },
+      "native_object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\.lake\\build\\lib\\lean\\Zeta23\\ZetaReflect.olean",
+        "sha256": "c659eefb431518c120510a53342ac046a65786258bd33beb677cd5cf13308d5a",
+        "bytes": 399248
+      },
+      "imports": [
+        "Zeta23.Statement",
+        "Mathlib.Analysis.Normed.Module.Connected",
+        "Mathlib.Analysis.Analytic.Uniqueness",
+        "Mathlib.Analysis.SpecialFunctions.Trigonometric.Complex",
+        "Mathlib.Analysis.SpecialFunctions.Trigonometric.Deriv",
+        "Mathlib.Analysis.SpecialFunctions.Complex.Analytic",
+        "Mathlib.Analysis.Calculus.Deriv.Star",
+        "Mathlib.Analysis.Complex.CauchyIntegral",
+        "Mathlib.Analysis.SpecialFunctions.Gamma.Basic"
+      ]
+    },
+    "Zeta23.Statement": {
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\Statement.lean",
+        "sha256": "3458af8531decf948319517543f731dcdc2c5a7de47e9339f9a443530e60d205",
+        "bytes": 10475
+      },
+      "native_object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\.lake\\build\\lib\\lean\\Zeta23\\Statement.olean",
+        "sha256": "f0da32cc602c3ddf7443903f33be609d9ac5ddd1c4df63ed34b76b7e7e648811",
+        "bytes": 177968
+      },
+      "imports": [
+        "Zeta23.Hypotheses",
+        "Zeta23.Defs.Counting",
+        "Mathlib.NumberTheory.LSeries.RiemannZeta",
+        "Mathlib.Analysis.Analytic.Order"
+      ]
+    },
+    "Zeta23.Statement.Seam": {
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\Statement\\Seam.lean",
+        "sha256": "d16cbfbbfff2cfe3d4df0425957ae20fd1828d8faf39e70f11a2acd85b45c7e3",
+        "bytes": 5584
+      },
+      "native_object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\.lake\\build\\lib\\lean\\Zeta23\\Statement\\Seam.olean",
+        "sha256": "edfb23ed6190d23630d08044ffe65384ef6a2d74b92bb4009e96efce6a7a128b",
+        "bytes": 144208
+      },
+      "imports": [
+        "Zeta23.Statement",
+        "Mathlib.Analysis.Complex.CauchyIntegral",
+        "Mathlib.Analysis.Complex.ReImTopology",
+        "Mathlib.Analysis.Normed.Module.Connected",
+        "Mathlib.LinearAlgebra.Complex.FiniteDimensional",
+        "Mathlib.NumberTheory.LSeries.Nonvanishing"
+      ]
+    },
+    "Zeta23.RvM.Fold": {
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\RvM\\Fold.lean",
+        "sha256": "2f1ba3640d30c967327bb0aff86832bdb1d327fe9ee810ae40bd96c55e12131a",
+        "bytes": 11145
+      },
+      "native_object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\.lake\\build\\lib\\lean\\Zeta23\\RvM\\Fold.olean",
+        "sha256": "28a9fec9742ee592ba6aa7d088e31baf0570ac83e137ead66db9ce1d48869889",
+        "bytes": 426856
+      },
+      "imports": [
+        "Zeta23.RvM.Defs",
+        "Zeta23.RvM.CountByIntegral",
+        "Zeta23.WeilEF.XiLogDeriv",
+        "Zeta23.FromPNTPlus.ZetaConj"
+      ]
+    },
+    "Zeta23.FromPNTPlus.ZetaConj": {
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\FromPNTPlus\\ZetaConj.lean",
+        "sha256": "6160b5a4e5cbcc346a67f973a4ed7d68f535eb79d803c10882eef74a6c2b8fb5",
+        "bytes": 1820
+      },
+      "native_object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\.lake\\build\\lib\\lean\\Zeta23\\FromPNTPlus\\ZetaConj.olean",
+        "sha256": "bd4b446faf0c9d234e7f5578de679ae226c120d5b0dec128f8235290d1f9a881",
+        "bytes": 56968
+      },
+      "imports": [
+        "Mathlib.Analysis.Calculus.Deriv.Star",
+        "Mathlib.Analysis.Normed.Module.Connected",
+        "Mathlib.NumberTheory.Harmonic.ZetaAsymp"
+      ]
+    },
+    "Zeta23.WeilEF.XiLogDeriv": {
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\WeilEF\\XiLogDeriv.lean",
+        "sha256": "ff98bfa205ba351b510a68fdae02a695a4671091b5e3c33509e37412a4b1bd9f",
+        "bytes": 5874
+      },
+      "native_object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\.lake\\build\\lib\\lean\\Zeta23\\WeilEF\\XiLogDeriv.olean",
+        "sha256": "4663a2034d67f18218beac85de7b533dfc2671dc0b03a066eb80743fe2c42de2",
+        "bytes": 215584
+      },
+      "imports": [
+        "Mathlib.NumberTheory.LSeries.RiemannZeta",
+        "Mathlib.Analysis.SpecialFunctions.Gamma.Deligne",
+        "Mathlib.Analysis.Calculus.LogDeriv",
+        "Mathlib.Analysis.Complex.CauchyIntegral",
+        "Zeta23.Statement"
+      ]
+    },
+    "Zeta23.RvM.CountByIntegral": {
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\RvM\\CountByIntegral.lean",
+        "sha256": "2a3bb9d814f6e3edc26015f6a6363439b827080c0d62aa348af7cf9bf4af665e",
+        "bytes": 8255
+      },
+      "native_object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\.lake\\build\\lib\\lean\\Zeta23\\RvM\\CountByIntegral.olean",
+        "sha256": "de0ee765ee7ca52426c75aba6b9c14aba7769608c7fd01f8839f82e6f969d88c",
+        "bytes": 307280
+      },
+      "imports": [
+        "Zeta23.Analytic.RectangleLogDeriv",
+        "Zeta23.Statement.SeamClosed"
+      ]
+    },
+    "Zeta23.Analytic.RectangleLogDeriv": {
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\Analytic\\RectangleLogDeriv.lean",
+        "sha256": "6606f32e30fe5f7a5c0660e2c9ecb8bb041144e52b090fe880d2c0e4734f5755",
+        "bytes": 22611
+      },
+      "native_object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\.lake\\build\\lib\\lean\\Zeta23\\Analytic\\RectangleLogDeriv.olean",
+        "sha256": "d85c64b7536b88771307db4e9a090084e33c0317ee57416889c887772c27aed5",
+        "bytes": 567288
+      },
+      "imports": [
+        "Zeta23.FromPNTPlus.ResidueCalcOnRectangles",
+        "Mathlib.Analysis.Analytic.Order",
+        "Mathlib.Analysis.Calculus.LogDeriv"
+      ]
+    },
+    "Zeta23.FromPNTPlus.ResidueCalcOnRectangles": {
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\FromPNTPlus\\ResidueCalcOnRectangles.lean",
+        "sha256": "081d38aa0c5eec725a1582eea3bdf4e51d604f6c2ebb3c9729d91df3aa092956",
+        "bytes": 61604
+      },
+      "native_object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\.lake\\build\\lib\\lean\\Zeta23\\FromPNTPlus\\ResidueCalcOnRectangles.olean",
+        "sha256": "c47af524491c3114c4c8fa994e78009da2a6b3bc0bfce0331ce01d4c9e81c81f",
+        "bytes": 2755320
+      },
+      "imports": [
+        "Mathlib.Analysis.Complex.CauchyIntegral",
+        "Mathlib.Analysis.Complex.Convex",
+        "Mathlib.Analysis.Complex.RemovableSingularity",
+        "Mathlib.Analysis.SpecialFunctions.Integrals.Basic",
+        "Mathlib.Analysis.Meromorphic.NormalForm",
+        "Zeta23.FromPNTPlus.Rectangle",
+        "Zeta23.FromPNTPlus.Tactic.AdditiveCombination"
+      ]
+    },
+    "Zeta23.FromPNTPlus.Tactic.AdditiveCombination": {
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\FromPNTPlus\\Tactic\\AdditiveCombination.lean",
+        "sha256": "0c59de0160092cc7eb521c09de7b9a35719d5a33b4fee0795bd312a5c9c3d200",
+        "bytes": 8964
+      },
+      "native_object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\.lake\\build\\lib\\lean\\Zeta23\\FromPNTPlus\\Tactic\\AdditiveCombination.olean",
+        "sha256": "f2ba6e03471a1340be48ba3c27efd2af28257230d7bd73d63e22882f5622b5df",
+        "bytes": 829984
+      },
+      "imports": [
+        "Mathlib.Tactic.Abel",
+        "Mathlib.Tactic.LinearCombinationPrime"
+      ]
+    },
+    "Zeta23.FromPNTPlus.Rectangle": {
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\FromPNTPlus\\Rectangle.lean",
+        "sha256": "6cf1dfca9dd3bbe3db9c58acf135a5ea20669808418ad994ed27f67931ea53d9",
+        "bytes": 13915
+      },
+      "native_object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\.lake\\build\\lib\\lean\\Zeta23\\FromPNTPlus\\Rectangle.olean",
+        "sha256": "7f1d03ae6301f582c6d60d0e2cfc7b91343649b01db9d9d3c88d4ac20e0cb880",
+        "bytes": 618008
+      },
+      "imports": [
+        "Mathlib.Analysis.Complex.Convex",
+        "Mathlib.Analysis.InnerProductSpace.Basic",
+        "Mathlib.Analysis.Normed.Order.Lattice",
+        "Mathlib.Order.Interval.Set.Monotone"
+      ]
+    },
+    "Zeta23.RvM.Defs": {
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\RvM\\Defs.lean",
+        "sha256": "32662cdfc84f70be58210feaf6a7f8db3588565c74d52e030d1edb9ef32d8671",
+        "bytes": 2916
+      },
+      "native_object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\.lake\\build\\lib\\lean\\Zeta23\\RvM\\Defs.olean",
+        "sha256": "39151d9ad6938bace0e02905ae11caab53b9229481d6797eca71bd16b01cc5d3",
+        "bytes": 71880
+      },
+      "imports": [
+        "Zeta23.Statement.SeamClosed",
+        "Mathlib.MeasureTheory.Integral.IntervalIntegral.Basic",
+        "Mathlib.Analysis.Calculus.LogDeriv"
+      ]
+    },
+    "Zeta23.RvM.Backlund": {
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\RvM\\Backlund.lean",
+        "sha256": "64a52ae59879ba2bf46aabfad96d8e591f2e4cbc01b755a5d9d024d4229685ba",
+        "bytes": 22659
+      },
+      "native_object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\.lake\\build\\lib\\lean\\Zeta23\\RvM\\Backlund.olean",
+        "sha256": "78a781789110c454755a49186fc1ab804cdad5e90602e123c4d8a25aa8df4f19",
+        "bytes": 817904
+      },
+      "imports": [
+        "Zeta23.RvM.ZetaGrowth",
+        "Zeta23.RvM.BacklundDefs",
+        "Zeta23.RvM.ReZeroCount",
+        "Zeta23.Statement",
+        "Zeta23.FromPNTPlus.StrongPNTPrefix",
+        "Mathlib.Analysis.SpecialFunctions.Integrals.Basic"
+      ]
+    },
+    "Zeta23.FromPNTPlus.StrongPNTPrefix": {
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\FromPNTPlus\\StrongPNTPrefix.lean",
+        "sha256": "ce842f7e65f1764273f3ff331f4218a0ed94688f36e28c7e4b5bf1f05c5af180",
+        "bytes": 26710
+      },
+      "native_object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\.lake\\build\\lib\\lean\\Zeta23\\FromPNTPlus\\StrongPNTPrefix.olean",
+        "sha256": "56a3deca5de3d60ee8f07fe8a4b504379cb149dcb5af5fcd7ec83946498a6fe7",
+        "bytes": 1348488
+      },
+      "imports": [
+        "Zeta23.Prelude.InstancePriorities",
+        "Mathlib.Algebra.Lie.OfAssociative",
+        "Mathlib.Algebra.Order.BigOperators.GroupWithZero.Finset",
+        "Mathlib.Analysis.CStarAlgebra.Classes",
+        "Mathlib.Analysis.Complex.HasPrimitives",
+        "Mathlib.Data.Rat.Cast.OfScientific",
+        "Mathlib.Algebra.Order.Star.Real",
+        "Mathlib.RingTheory.SimpleRing.Principal",
+        "Mathlib.Analysis.Complex.BorelCaratheodory",
+        "Mathlib.Analysis.Analytic.Order",
+        "Mathlib.Analysis.Normed.Module.Connected"
+      ]
+    },
+    "Zeta23.Prelude.InstancePriorities": {
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\Prelude\\InstancePriorities.lean",
+        "sha256": "2c9d2ee602987da89bbbe621149fad2b4a2476699f60535706a12b2fe9833f8e",
+        "bytes": 1997
+      },
+      "native_object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\.lake\\build\\lib\\lean\\Zeta23\\Prelude\\InstancePriorities.olean",
+        "sha256": "d592cd02f039135c4239d0e2082ec4dd0b79ff0dddb7a82c107988f229c361d5",
+        "bytes": 3248
+      },
+      "imports": [
+        "Mathlib.Algebra.Lie.OfAssociative"
+      ]
+    },
+    "Zeta23.RvM.ReZeroCount": {
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\RvM\\ReZeroCount.lean",
+        "sha256": "7e37c415190d1dc2a30ed85d23ede62243aaaa164cb3930cb9c11632bc33bb05",
+        "bytes": 17826
+      },
+      "native_object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\.lake\\build\\lib\\lean\\Zeta23\\RvM\\ReZeroCount.olean",
+        "sha256": "1aa3541d23c8082c61f4b617363cee6f88605da6843b78489f21ed802e951b87",
+        "bytes": 1193848
+      },
+      "imports": [
+        "Zeta23.RvM.BacklundDefs",
+        "Zeta23.RvM.ZetaGrowth",
+        "Zeta23.RvM.LocalCount",
+        "Zeta23.ZetaReflect"
+      ]
+    },
+    "Zeta23.RvM.LocalCount": {
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\RvM\\LocalCount.lean",
+        "sha256": "f23b7b226a62a7622e09bd867136faf00567e2c14a1fc697cf83b5aa5f065b45",
+        "bytes": 15684
+      },
+      "native_object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\.lake\\build\\lib\\lean\\Zeta23\\RvM\\LocalCount.olean",
+        "sha256": "f996a62422334f85d2c984d79e8f24bef23568b2959dd1221ff81b9701a65c09",
+        "bytes": 1243688
+      },
+      "imports": [
+        "Zeta23.Prelude.InstancePriorities",
+        "Zeta23.Statement.SeamClosed",
+        "Zeta23.Defs.Counting",
+        "Zeta23.FromPNTPlus.StrongPNTPrefix",
+        "Zeta23.RvM.ZetaGrowth",
+        "Zeta23.RvM.Halving"
+      ]
+    },
+    "Zeta23.RvM.Halving": {
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\RvM\\Halving.lean",
+        "sha256": "de1713457eee0763fdb1e02634939664d9ce000bb8e736f2c18b85425b7c5d30",
+        "bytes": 3852
+      },
+      "native_object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\.lake\\build\\lib\\lean\\Zeta23\\RvM\\Halving.olean",
+        "sha256": "7db19374f1545a92a38f162ab8ebf591d20b58784559eb96fd6288b1b3009b84",
+        "bytes": 175456
+      },
+      "imports": [
+        "Zeta23.Defs.Counting"
+      ]
+    },
+    "Zeta23.RvM.ZetaGrowth": {
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\RvM\\ZetaGrowth.lean",
+        "sha256": "91a33dcf908921bfaa05ec64f4c20f40d83593228f956d945cd71c272a98ef44",
+        "bytes": 11776
+      },
+      "native_object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\.lake\\build\\lib\\lean\\Zeta23\\RvM\\ZetaGrowth.olean",
+        "sha256": "6faa8eb35adf78039a6e003fe032cb37a50febde13db17ca884ad2e0cf19ce95",
+        "bytes": 739968
+      },
+      "imports": [
+        "Zeta23.FromPNTPlus.ZetaBounds",
+        "Mathlib.NumberTheory.ZetaValues",
+        "Mathlib.Analysis.Real.Pi.Bounds"
+      ]
+    },
+    "Zeta23.FromPNTPlus.ZetaBounds": {
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\FromPNTPlus\\ZetaBounds.lean",
+        "sha256": "62ab370e278be47e7fbd03ab74b1442010da1fc17b9dec96ea952e9259bfcd06",
+        "bytes": 151573
+      },
+      "native_object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\.lake\\build\\lib\\lean\\Zeta23\\FromPNTPlus\\ZetaBounds.olean",
+        "sha256": "a6110ed14f274aadfe618ce4786ef1fd5f914cf56ca3ee93ee35d4cdbf74ae39",
+        "bytes": 6913840
+      },
+      "imports": [
+        "Batteries.Tactic.Lemma",
+        "Mathlib.MeasureTheory.Function.Floor",
+        "Mathlib.MeasureTheory.Order.Group.Lattice",
+        "Mathlib.NumberTheory.Harmonic.Bounds",
+        "Mathlib.NumberTheory.LSeries.Nonvanishing",
+        "Zeta23.FromPNTPlus.Auxiliary",
+        "Zeta23.FromPNTPlus.Fourier",
+        "Zeta23.FromPNTPlus.Mathlib.Analysis.SpecialFunctions.Log.Basic",
+        "Zeta23.FromPNTPlus.ResidueCalcOnRectangles",
+        "Zeta23.FromPNTPlus.EulerMaclaurin"
+      ]
+    },
+    "Zeta23.FromPNTPlus.EulerMaclaurin": {
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\FromPNTPlus\\EulerMaclaurin.lean",
+        "sha256": "0e2b201e2a99db8650c565f14c2d4c65ff54a59a29f81137a63a00f2d1776ab6",
+        "bytes": 4231
+      },
+      "native_object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\.lake\\build\\lib\\lean\\Zeta23\\FromPNTPlus\\EulerMaclaurin.olean",
+        "sha256": "b871ada1e399058534e48217faec69fd1b25146d13a54c98836c35706cfe1d49",
+        "bytes": 48920
+      },
+      "imports": [
+        "Mathlib.NumberTheory.AbelSummation"
+      ]
+    },
+    "Zeta23.FromPNTPlus.Mathlib.Analysis.SpecialFunctions.Log.Basic": {
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\FromPNTPlus\\Mathlib\\Analysis\\SpecialFunctions\\Log\\Basic.lean",
+        "sha256": "b345f59bff825700221040fb575823d6902383ff1ab340b2ff849d8382460954",
+        "bytes": 1257
+      },
+      "native_object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\.lake\\build\\lib\\lean\\Zeta23\\FromPNTPlus\\Mathlib\\Analysis\\SpecialFunctions\\Log\\Basic.olean",
+        "sha256": "8b7fe584f597672a296e2fbcb8ced1172c7c3bb4e652cf3148e8ee59ab3c5dd4",
+        "bytes": 46416
+      },
+      "imports": [
+        "Mathlib.Algebra.Order.Floor.Defs",
+        "Mathlib.Algebra.Order.Floor.Ring",
+        "Mathlib.Algebra.Order.Floor.Semiring",
+        "Mathlib.Analysis.SpecialFunctions.Log.Basic",
+        "Mathlib.Analysis.SpecialFunctions.Pow.Continuity"
+      ]
+    },
+    "Zeta23.FromPNTPlus.Fourier": {
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\FromPNTPlus\\Fourier.lean",
+        "sha256": "8d53e47135861fd5afaa2ff273737e09353dc9ae0ba8b6875baa16f3a167b1bc",
+        "bytes": 9623
+      },
+      "native_object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\.lake\\build\\lib\\lean\\Zeta23\\FromPNTPlus\\Fourier.olean",
+        "sha256": "1f21bd730ef5e95dcac33c1b3e60b6e203bf4086ec0ff4af5dd615d1725dda91",
+        "bytes": 552392
+      },
+      "imports": [
+        "Mathlib.Analysis.Distribution.SchwartzSpace.Deriv",
+        "Mathlib.MeasureTheory.Integral.IntegralEqImproper",
+        "Mathlib.Topology.ContinuousMap.Bounded.Basic",
+        "Mathlib.Order.Filter.ZeroAndBoundedAtFilter",
+        "Mathlib.Analysis.Fourier.FourierTransformDeriv",
+        "Zeta23.FromPNTPlus.Sobolev"
+      ]
+    },
+    "Zeta23.FromPNTPlus.Sobolev": {
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\FromPNTPlus\\Sobolev.lean",
+        "sha256": "e3f254f6e772ebf941f67b4ad978858b6355b00433a943a4e318c22425959062",
+        "bytes": 16500
+      },
+      "native_object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\.lake\\build\\lib\\lean\\Zeta23\\FromPNTPlus\\Sobolev.olean",
+        "sha256": "ea2f4786844359672a50fe5f4920722fa626e6ca82e97429f2ca87e0f1adefda",
+        "bytes": 1041672
+      },
+      "imports": [
+        "Mathlib.Analysis.Calculus.Deriv.Support",
+        "Mathlib.Analysis.Distribution.SchwartzSpace.Deriv",
+        "Mathlib.Order.Filter.ZeroAndBoundedAtFilter"
+      ]
+    },
+    "Zeta23.FromPNTPlus.Auxiliary": {
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\FromPNTPlus\\Auxiliary.lean",
+        "sha256": "8852b7ebc572ae4eda1f3c3e94f4cc072b1c744c2b71ae297bec3ebb74b00069",
+        "bytes": 3865
+      },
+      "native_object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\.lake\\build\\lib\\lean\\Zeta23\\FromPNTPlus\\Auxiliary.olean",
+        "sha256": "f81955c58b7ccf0dd6b10bf8f08978c01ce95b6f4e671cf9cf9dfb504b35f695",
+        "bytes": 173240
+      },
+      "imports": [
+        "Mathlib.Analysis.Complex.RealDeriv",
+        "Mathlib.Analysis.InnerProductSpace.Basic"
+      ]
+    },
+    "Zeta23.RvM.BacklundDefs": {
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\RvM\\BacklundDefs.lean",
+        "sha256": "83b7dcab714041eb8146a9b80f143ee7e6be7c742891074a638d7c2eaa4e1e95",
+        "bytes": 1002
+      },
+      "native_object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\.lake\\build\\lib\\lean\\Zeta23\\RvM\\BacklundDefs.olean",
+        "sha256": "bf62dede4ed468443c51f6b9b24d20ea5f3968fd5e60db7eca06b57466d4a8cf",
+        "bytes": 15936
+      },
+      "imports": [
+        "Zeta23.Prelude.InstancePriorities",
+        "Mathlib.NumberTheory.LSeries.RiemannZeta"
+      ]
+    },
+    "Zeta23.RvM.GammaSide": {
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\RvM\\GammaSide.lean",
+        "sha256": "1c1b862f6645e0f9d16872bc25c8e4e986258777ce3b3a67d4da9f2aa3149573",
+        "bytes": 9746
+      },
+      "native_object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\.lake\\build\\lib\\lean\\Zeta23\\RvM\\GammaSide.olean",
+        "sha256": "9abef9c8ca0d736be68e0d77243c9be94bb0f764378813a77ca9ffa105aa40c1",
+        "bytes": 789336
+      },
+      "imports": [
+        "Zeta23.RvM.Defs",
+        "Mathlib.Analysis.Complex.CauchyIntegral",
+        "Mathlib.Analysis.SpecialFunctions.Gamma.Deligne",
+        "Mathlib.Analysis.SpecialFunctions.Gamma.Digamma",
+        "Mathlib.Analysis.SpecialFunctions.Pow.Deriv",
+        "Mathlib.Analysis.Real.Pi.Bounds"
+      ]
+    },
+    "Zeta23.GammaFacts.Complete": {
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\GammaFacts\\Complete.lean",
+        "sha256": "d43b2d4f3fa0c1d22210e1f671b875a88b09747247e67becbbc38f85f34f2fb0",
+        "bytes": 1291
+      },
+      "native_object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\.lake\\build\\lib\\lean\\Zeta23\\GammaFacts\\Complete.olean",
+        "sha256": "867a7c6a360a1620c87f1a672b54dfe384145c23ca4797be0536acf463362691",
+        "bytes": 6920
+      },
+      "imports": [
+        "Zeta23.Hypotheses",
+        "Zeta23.GammaFacts",
+        "Zeta23.GammaFacts.Mu",
+        "Zeta23.GammaFacts.IntMu",
+        "Zeta23.GammaFacts.StirlingVert"
+      ]
+    },
+    "Zeta23.GammaFacts.StirlingVert": {
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\GammaFacts\\StirlingVert.lean",
+        "sha256": "c982dc94e4193d2b3c69fd1f939b9055b6368332fd24d38bdf5bad37c487b661",
+        "bytes": 33054
+      },
+      "native_object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\.lake\\build\\lib\\lean\\Zeta23\\GammaFacts\\StirlingVert.olean",
+        "sha256": "65053911d77727169cf610c3ed53c3cb8399179b833cbbad8e427230d63248c3",
+        "bytes": 1969384
+      },
+      "imports": [
+        "Zeta23.GammaFacts.Mu",
+        "Mathlib.NumberTheory.Harmonic.EulerMascheroni",
+        "Mathlib.Analysis.SpecialFunctions.Integrals.Basic",
+        "Mathlib.Analysis.SumIntegralComparisons",
+        "Mathlib.Analysis.PSeries"
+      ]
+    },
+    "Zeta23.GammaFacts.Mu": {
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\GammaFacts\\Mu.lean",
+        "sha256": "71e4d99a73604b9e09009d897a0bbbaf5d3a950a470758f07738ccc67a171c97",
+        "bytes": 20861
+      },
+      "native_object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\.lake\\build\\lib\\lean\\Zeta23\\GammaFacts\\Mu.olean",
+        "sha256": "4b67933702aca1f49f480fa8b9291e266e35aa45eb7edb4f2a71894ccb399760",
+        "bytes": 1497736
+      },
+      "imports": [
+        "Zeta23.Analytic.Stirling",
+        "Mathlib.Analysis.Real.Pi.Bounds"
+      ]
+    },
+    "Zeta23.Analytic.Stirling": {
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\Analytic\\Stirling.lean",
+        "sha256": "db1638101a09faf22aac70ae379c3f37df5b7767e123bf4f6b6f2892d75d999d",
+        "bytes": 12691
+      },
+      "native_object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\.lake\\build\\lib\\lean\\Zeta23\\Analytic\\Stirling.olean",
+        "sha256": "0f22febf3af62778f6a9ecf03649c8626474887cc6d0005fb12d54da2f292f01",
+        "bytes": 611920
+      },
+      "imports": [
+        "Zeta23.GammaFacts.Series"
+      ]
+    },
+    "Zeta23.GammaFacts.Series": {
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\GammaFacts\\Series.lean",
+        "sha256": "15a7ed9d63288e9630300898f9a1ed78fee3bf32c889f81cb5081d17d76a4f59",
+        "bytes": 24181
+      },
+      "native_object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\.lake\\build\\lib\\lean\\Zeta23\\GammaFacts\\Series.olean",
+        "sha256": "477c32ae83ae9fa58ed16361252148656804b41b761a6fe441624de20d8f7590",
+        "bytes": 929712
+      },
+      "imports": [
+        "Zeta23.GammaFacts",
+        "Mathlib.Analysis.Calculus.LogDerivUniformlyOn",
+        "Mathlib.Analysis.Normed.Module.MultipliableUniformlyOn",
+        "Mathlib.NumberTheory.Harmonic.EulerMascheroni",
+        "Mathlib.Analysis.SpecialFunctions.Gamma.Beta",
+        "Mathlib.Analysis.Complex.IntegerCompl",
+        "Mathlib.Analysis.PSeries"
+      ]
+    },
+    "Zeta23.GammaFacts": {
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\GammaFacts.lean",
+        "sha256": "a93c29cf24e253f6f3b7af0fadf18cbc5fe9fe1a67c6e060322f425d2d677674",
+        "bytes": 5822
+      },
+      "native_object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\.lake\\build\\lib\\lean\\Zeta23\\GammaFacts.olean",
+        "sha256": "52d5f58c705bf351e9ccd68d50a78568945bba05e2364113baa93fc55d1f74bd",
+        "bytes": 156720
+      },
+      "imports": [
+        "Zeta23.Defs",
+        "Mathlib.Analysis.Calculus.Deriv.Star",
+        "Mathlib.Analysis.Complex.CauchyIntegral",
+        "Mathlib.Analysis.Complex.Basic"
+      ]
+    },
+    "Zeta23.GammaFacts.IntMu": {
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\GammaFacts\\IntMu.lean",
+        "sha256": "1a5e17a5e2482f5119a8e0b0f00b738fe4eece35edba818094c4f92c35d0c5a7",
+        "bytes": 25210
+      },
+      "native_object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\.lake\\build\\lib\\lean\\Zeta23\\GammaFacts\\IntMu.olean",
+        "sha256": "c22b5a10e099015322591012a08e57c04d3f788a722c02f463ee8c754fe185a4",
+        "bytes": 2176928
+      },
+      "imports": [
+        "Zeta23.GammaFacts.Mu"
+      ]
+    },
+    "Zeta23.WeilEF.ZeroSumLimit": {
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\WeilEF\\ZeroSumLimit.lean",
+        "sha256": "c7b260f4df56cb6e24cb606d80a62e86202ed95d92bfe4c732b3d913a1b859e5",
+        "bytes": 3918
+      },
+      "native_object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\.lake\\build\\lib\\lean\\Zeta23\\WeilEF\\ZeroSumLimit.olean",
+        "sha256": "44acddd93d0550603ea16cae8c1b49495c56510ef674280e601e4680bfa7138f",
+        "bytes": 179408
+      },
+      "imports": [
+        "Zeta23.WeilEF.Contour",
+        "Zeta23.WeilEF.ZeroSummability"
+      ]
+    },
+    "Zeta23.WeilEF.ZeroSummability": {
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\WeilEF\\ZeroSummability.lean",
+        "sha256": "1379d830367ec69855fc21d18c9fc5f69393d032e5ff878e779177cf14b8caf8",
+        "bytes": 13772
+      },
+      "native_object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\.lake\\build\\lib\\lean\\Zeta23\\WeilEF\\ZeroSummability.olean",
+        "sha256": "a5e7dc7a1fb262d0d28af45f39093b9669160a97a8d0171a0ccd422e8ffec46d",
+        "bytes": 809152
+      },
+      "imports": [
+        "Zeta23.Tail",
+        "Zeta23.RvM.LocalCount",
+        "Zeta23.ExplicitFormula",
+        "Zeta23.Poisson.PaperFT"
+      ]
+    },
+    "Zeta23.Poisson.PaperFT": {
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\Poisson\\PaperFT.lean",
+        "sha256": "c0737d803c0238ad8fffa5c1e8511ed09683d3b4dbcf440448e747f10e40f4cb",
+        "bytes": 10048
+      },
+      "native_object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\.lake\\build\\lib\\lean\\Zeta23\\Poisson\\PaperFT.olean",
+        "sha256": "c569c7861c0755525ba1e0dd8eee615c88e418daf0f7d30934d5feb0a2aa9bc0",
+        "bytes": 389864
+      },
+      "imports": [
+        "Mathlib.Analysis.Fourier.FourierTransform",
+        "Mathlib.MeasureTheory.Integral.IntegralEqImproper",
+        "Mathlib.Analysis.Calculus.Deriv.Support",
+        "Mathlib.Analysis.Calculus.ContDiff.Deriv",
+        "Zeta23.Defs"
+      ]
+    },
+    "Zeta23.ExplicitFormula": {
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\ExplicitFormula.lean",
+        "sha256": "f602f5ffe70f42eb5397b5128fc681f89cce7094a19b66e4de69ad4ed0cb8ae4",
+        "bytes": 38989
+      },
+      "native_object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\.lake\\build\\lib\\lean\\Zeta23\\ExplicitFormula.olean",
+        "sha256": "d96713d926d758ccfaf14892af0ab57fc9ceca33cd97a51e3c6ada9a6b186394",
+        "bytes": 1402144
+      },
+      "imports": [
+        "Mathlib.Analysis.Fourier.Inversion",
+        "Mathlib.Analysis.Fourier.Convolution",
+        "Mathlib.Analysis.Calculus.ContDiff.Convolution",
+        "Mathlib.Analysis.SpecialFunctions.ImproperIntegrals",
+        "Mathlib.Analysis.SpecialFunctions.Integrals.Basic",
+        "Zeta23.Defs"
+      ]
+    },
+    "Zeta23.Tail": {
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\Tail.lean",
+        "sha256": "3b189de1bec9e254e13b821d1596d430d47f115e1206b23f31a58d16656f1815",
+        "bytes": 34617
+      },
+      "native_object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\.lake\\build\\lib\\lean\\Zeta23\\Tail.olean",
+        "sha256": "c580c9d4c975fa5c4b7d7f7c8f6979a97e186211246dc0885de4fba9637cd04e",
+        "bytes": 1445392
+      },
+      "imports": [
+        "Zeta23.Defs",
+        "Zeta23.Assembly.Inputs",
+        "Zeta23.Tail.Basic",
+        "Zeta23.Tail.Grid",
+        "Zeta23.Tail.Count",
+        "Zeta23.Tail.RankOne",
+        "Mathlib.Topology.Instances.Matrix",
+        "Mathlib.Order.Filter.AtTopBot.Field"
+      ]
+    },
+    "Zeta23.Tail.RankOne": {
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\Tail\\RankOne.lean",
+        "sha256": "97e080ce5adcd2fa7715fc6ba5ab32ae153d9b967292650e64084afde5d2faba",
+        "bytes": 9443
+      },
+      "native_object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\.lake\\build\\lib\\lean\\Zeta23\\Tail\\RankOne.olean",
+        "sha256": "a141409065772ad9374f43510a258450605eb8ba67981d4626e22af002e6240d",
+        "bytes": 340640
+      },
+      "imports": [
+        "Zeta23.LinAlg.Sylvester",
+        "Mathlib.Analysis.Normed.Group.InfiniteSum",
+        "Mathlib.Topology.Algebra.InfiniteSum.Real"
+      ]
+    },
+    "Zeta23.Tail.Count": {
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\Tail\\Count.lean",
+        "sha256": "737b90b4b51a1a68c0c36d924b06672b684cc8b144bd1511a569ebc2228b163d",
+        "bytes": 24909
+      },
+      "native_object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\.lake\\build\\lib\\lean\\Zeta23\\Tail\\Count.olean",
+        "sha256": "ed9ac252d96b84eb443314127a024661ff810ff019f627f37c5c5083e69e3899",
+        "bytes": 1755352
+      },
+      "imports": [
+        "Zeta23.Tail.Basic",
+        "Mathlib.Analysis.SpecialFunctions.Log.Basic",
+        "Mathlib.Algebra.BigOperators.Fin",
+        "Mathlib.Algebra.BigOperators.Field",
+        "Mathlib.Analysis.Complex.ExponentialBounds"
+      ]
+    },
+    "Zeta23.Tail.Basic": {
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\Tail\\Basic.lean",
+        "sha256": "073496f8fa3fe6e7166c4dadbb65c42478bd38bf485c7106b26edc41120b7947",
+        "bytes": 3657
+      },
+      "native_object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\.lake\\build\\lib\\lean\\Zeta23\\Tail\\Basic.olean",
+        "sha256": "5ef88e447c7f600ec9d7e2a88b6cdb2ae6c6bb24649ccda5d6a2460b0e0ae51f",
+        "bytes": 173376
+      },
+      "imports": [
+        "Mathlib.Analysis.SpecialFunctions.Pow.Real"
+      ]
+    },
+    "Zeta23.Tail.Grid": {
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\Tail\\Grid.lean",
+        "sha256": "e00fa4129ec4df0b206c4b70f31c34e9998f6cb4745d3a212bb72d2833c538cf",
+        "bytes": 6896
+      },
+      "native_object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\.lake\\build\\lib\\lean\\Zeta23\\Tail\\Grid.olean",
+        "sha256": "96307591659b870f3fd6bbc6458adf204c91045daa60e98c9a1a35dc23160397",
+        "bytes": 1112552
+      },
+      "imports": [
+        "Zeta23.Tail.Basic",
+        "Mathlib.Analysis.SpecialFunctions.Trigonometric.Basic",
+        "Mathlib.Algebra.BigOperators.Fin"
+      ]
+    },
+    "Zeta23.WeilEF.Contour": {
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\WeilEF\\Contour.lean",
+        "sha256": "a3940e639287e7ce10ca73853000c2c61edf8a2ed4748974e331d6df0ac68a5d",
+        "bytes": 8685
+      },
+      "native_object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\.lake\\build\\lib\\lean\\Zeta23\\WeilEF\\Contour.olean",
+        "sha256": "7476bfd02b76a9548d39595c20e46a80880559530440717e53fa020fd6e74f1d",
+        "bytes": 432456
+      },
+      "imports": [
+        "Zeta23.WeilEF.VerticalLine",
+        "Zeta23.WeilEF.GoodHeights",
+        "Zeta23.Analytic.RectangleLogDeriv",
+        "Zeta23.RvM.CountByIntegral",
+        "Zeta23.Statement.SeamClosed"
+      ]
+    },
+    "Zeta23.WeilEF.GoodHeights": {
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\WeilEF\\GoodHeights.lean",
+        "sha256": "24a22156d99341d701adb4a220bccd1682f8477fed95c27cc6e859f52eca9c3d",
+        "bytes": 19038
+      },
+      "native_object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\.lake\\build\\lib\\lean\\Zeta23\\WeilEF\\GoodHeights.olean",
+        "sha256": "9b01a21a9008b4715a5bd1d9a9368c22e8855bea314badad28388c6aaa371117",
+        "bytes": 1241520
+      },
+      "imports": [
+        "Zeta23.WeilEF.Landau",
+        "Zeta23.RvM.LocalCount",
+        "Zeta23.Tail"
+      ]
+    },
+    "Zeta23.WeilEF.Landau": {
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\WeilEF\\Landau.lean",
+        "sha256": "f1f4ac5dffd80092c8e27481e3cd177b2c83937125130c16b1ee56d31c4d89fb",
+        "bytes": 32896
+      },
+      "native_object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\.lake\\build\\lib\\lean\\Zeta23\\WeilEF\\Landau.olean",
+        "sha256": "896129e314d054206cb4cc4a388f4cfd0622eaad7c6bd349b8a922110d5166d9",
+        "bytes": 1836008
+      },
+      "imports": [
+        "Zeta23.RvM.ZetaGrowth",
+        "Zeta23.FromPNTPlus.StrongPNTPrefix",
+        "Zeta23.Statement"
+      ]
+    },
+    "Zeta23.WeilEF.VerticalLine": {
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\WeilEF\\VerticalLine.lean",
+        "sha256": "2df131b682e2a2bcee51de18059c4e336a94fa5900f9e47399031a195bdcbfcf",
+        "bytes": 44283
+      },
+      "native_object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\.lake\\build\\lib\\lean\\Zeta23\\WeilEF\\VerticalLine.olean",
+        "sha256": "89bb8130b6cdee2df8601adeb92f93cf8bbf5274af6cc94c893e0c6a634431ae",
+        "bytes": 2344824
+      },
+      "imports": [
+        "Zeta23.WeilEF.XiLogDeriv",
+        "Zeta23.GammaFacts.StirlingVert",
+        "Mathlib.NumberTheory.LSeries.Dirichlet",
+        "Zeta23.ExplicitFormula",
+        "Zeta23.ExplicitFormula.Bridge",
+        "Zeta23.WeilEF.GammaRBracket",
+        "Zeta23.Poisson.PaperFT",
+        "Mathlib.Analysis.SpecialFunctions.JapaneseBracket"
+      ]
+    },
+    "Zeta23.WeilEF.GammaRBracket": {
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\WeilEF\\GammaRBracket.lean",
+        "sha256": "3b9d237b07e090f4f25cd11a2b54a74ae0fd561779511b55dd2763691d427c24",
+        "bytes": 6141
+      },
+      "native_object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\.lake\\build\\lib\\lean\\Zeta23\\WeilEF\\GammaRBracket.olean",
+        "sha256": "77d5fb0faf79a71640facda39b9d0689eb1056116cb343cf500ebbbba6e24b60",
+        "bytes": 402328
+      },
+      "imports": [
+        "Mathlib.Analysis.SpecialFunctions.Gamma.Deligne",
+        "Mathlib.Analysis.SpecialFunctions.Gamma.Digamma",
+        "Zeta23.GammaFacts.Series"
+      ]
+    },
+    "Zeta23.ExplicitFormula.Bridge": {
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\ExplicitFormula\\Bridge.lean",
+        "sha256": "0d25f1f01122a9997546afd4e4188d04631e1148e87adc79b8f9352c381b3fba",
+        "bytes": 12112
+      },
+      "native_object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\.lake\\build\\lib\\lean\\Zeta23\\ExplicitFormula\\Bridge.olean",
+        "sha256": "b6166245c02ab079cca5e07dbda6ce0edf3b5cc9d7e8ca46e6522ed91b6a74c6",
+        "bytes": 526224
+      },
+      "imports": [
+        "Zeta23.ExplicitFormula",
+        "Zeta23.Hypotheses",
+        "Zeta23.Poisson.PaperFT",
+        "Mathlib.Analysis.SpecialFunctions.JapaneseBracket"
+      ]
+    },
+    "Zeta23.XiPrime.ExplicitFormula": {
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\XiPrime\\ExplicitFormula.lean",
+        "sha256": "d100377bfd2646bd7fb20fcb2a482456eeccd09e4d34aec8546a1e6b429c321e",
+        "bytes": 10714
+      },
+      "native_object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\.lake\\build\\lib\\lean\\Zeta23\\XiPrime\\ExplicitFormula.olean",
+        "sha256": "3dbea81647c5cc40e04ec15ab36f0c7e315389f168853f33681b06332de5ca99",
+        "bytes": 53928
+      },
+      "imports": [
+        "this",
+        "Zeta23.XiPrime.Seam",
+        "Zeta23.WeilEF.Main",
+        "Zeta23.WeilEF.Effective"
+      ]
+    },
+    "Zeta23.WeilEF.Effective": {
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\WeilEF\\Effective.lean",
+        "sha256": "249f0ff220ddeebc014bc82b880a6d97121ba10b579a2f6ae8c0805e5991baaf",
+        "bytes": 45719
+      },
+      "native_object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\.lake\\build\\lib\\lean\\Zeta23\\WeilEF\\Effective.olean",
+        "sha256": "e1b450ab97c7e538a0b19e9f55723a63b270374695ba3af9f5e7103a937a5e12",
+        "bytes": 3205128
+      },
+      "imports": [
+        "Zeta23.RvM.ZetaGrowth",
+        "Zeta23.RvM.LocalCount",
+        "Zeta23.RvM.CountByIntegral",
+        "Zeta23.GammaFacts.StirlingVert",
+        "Zeta23.WeilEF.Landau",
+        "Mathlib.NumberTheory.LSeries.HurwitzZetaValues",
+        "Zeta23.ThmE.GammaFactsChiProof"
+      ]
+    },
+    "Zeta23.ThmE.GammaFactsChiProof": {
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\ThmE\\GammaFactsChiProof.lean",
+        "sha256": "4c54051657ac81fa4604b55cf333f6076df90aae4fc6258e41a9544bff81e76a",
+        "bytes": 21271
+      },
+      "native_object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\.lake\\build\\lib\\lean\\Zeta23\\ThmE\\GammaFactsChiProof.olean",
+        "sha256": "32dca7f1cff0602a3de51df30ddf661c1be58697cb7302800d72483c457c72b6",
+        "bytes": 1239224
+      },
+      "imports": [
+        "Zeta23.ThmE.Hypotheses",
+        "Zeta23.GammaFacts.Complete",
+        "Zeta23.WeilEF.GammaRBracket",
+        "Zeta23.ThmE.IntMuChi"
+      ]
+    },
+    "Zeta23.ThmE.IntMuChi": {
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\ThmE\\IntMuChi.lean",
+        "sha256": "557b3aff6e363881a6c8cc0785da535f7ced76915fc1a7e16818f41a0546e229",
+        "bytes": 32841
+      },
+      "native_object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\.lake\\build\\lib\\lean\\Zeta23\\ThmE\\IntMuChi.olean",
+        "sha256": "34ded0e604edf7d8c707e036f1ae87799c12fbe9faee7ae5a6205c25bfa6c0c7",
+        "bytes": 2734248
+      },
+      "imports": [
+        "Zeta23.ThmE.Hypotheses",
+        "Zeta23.GammaFacts.IntMu"
+      ]
+    },
+    "Zeta23.ThmE.Hypotheses": {
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\ThmE\\Hypotheses.lean",
+        "sha256": "71e110346f37789777718d6b9e4ff68e41b4a726a3efe47a3803ecf89f2fad08",
+        "bytes": 14037
+      },
+      "native_object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\.lake\\build\\lib\\lean\\Zeta23\\ThmE\\Hypotheses.olean",
+        "sha256": "85abe08e7ae86f5d57682562ba8f84c6114f6a484369acbad2c17f2f8d243c72",
+        "bytes": 376968
+      },
+      "imports": [
+        "Zeta23.Hypotheses",
+        "Mathlib.NumberTheory.DirichletCharacter.Basic"
+      ]
+    },
+    "Zeta23.WeilEF.Main": {
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\WeilEF\\Main.lean",
+        "sha256": "c4899fd268f4219903430537dbd74fb0dd8750cb411fc90d69c3a01a5648dbb0",
+        "bytes": 13185
+      },
+      "native_object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\.lake\\build\\lib\\lean\\Zeta23\\WeilEF\\Main.olean",
+        "sha256": "b2a70278bdb9c6e927b0652533cd1779b2f8f181c9525ab37b7336a87cf46790",
+        "bytes": 569320
+      },
+      "imports": [
+        "Zeta23.WeilEF.ZeroSummability",
+        "Zeta23.WeilEF.FullLineAssembly"
+      ]
+    },
+    "Zeta23.WeilEF.FullLineAssembly": {
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\WeilEF\\FullLineAssembly.lean",
+        "sha256": "eaeb9735aa17afa42b3dd6c2e2e25fb5c725f7959c30e4cb46a3e7a9228ce81f",
+        "bytes": 4713
+      },
+      "native_object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\.lake\\build\\lib\\lean\\Zeta23\\WeilEF\\FullLineAssembly.olean",
+        "sha256": "b77c9e273e045f720498abdbfaef5b524e0609ca0428f38a89997f2b6a97f5aa",
+        "bytes": 289096
+      },
+      "imports": [
+        "Zeta23.WeilEF.FullLine",
+        "Zeta23.WeilEF.Horizontal",
+        "Zeta23.WeilEF.ZeroSumLimit"
+      ]
+    },
+    "Zeta23.WeilEF.Horizontal": {
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\WeilEF\\Horizontal.lean",
+        "sha256": "60fa56485acfedf5d0ec0e9bf7f6cf6b42ca453432bcc3271ed25668ad606667",
+        "bytes": 9375
+      },
+      "native_object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\.lake\\build\\lib\\lean\\Zeta23\\WeilEF\\Horizontal.olean",
+        "sha256": "44764ed3d78d30fa539c182da9c32608971f5d0218aefea5425441e2cc093a49",
+        "bytes": 912816
+      },
+      "imports": [
+        "Zeta23.WeilEF.FullLine"
+      ]
+    },
+    "Zeta23.WeilEF.FullLine": {
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\WeilEF\\FullLine.lean",
+        "sha256": "ae4bdd8b6fb5ad3f0b4bf0b951cd7d19802240f255b4d963d0ce96c8ed37e1a0",
+        "bytes": 23630
+      },
+      "native_object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\.lake\\build\\lib\\lean\\Zeta23\\WeilEF\\FullLine.olean",
+        "sha256": "0da34cb7af596c9fb6f97f65f7d35d5e02ef3474f78b78fae45401ed276a9bab",
+        "bytes": 1241128
+      },
+      "imports": [
+        "Zeta23.WeilEF.Contour"
+      ]
+    },
+    "Zeta23.XiPrime.Seam": {
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\XiPrime\\Seam.lean",
+        "sha256": "0c6268e5023d870abb1f157c4fd74388902bbf2e115266e30da0f63a88a4c760",
+        "bytes": 21626
+      },
+      "native_object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\.lake\\build\\lib\\lean\\Zeta23\\XiPrime\\Seam.olean",
+        "sha256": "912e9bfc313461572f727d116c91e2446444bbbeb77c0525f34c4857eb6efc7b",
+        "bytes": 828824
+      },
+      "imports": [
+        "Zeta23.XiPrime.Statement",
+        "Zeta23.ZetaReflect",
+        "Zeta23.RvM.Fold",
+        "Zeta23.RvM.GammaSide",
+        "Zeta23.RvM.CountByIntegral",
+        "Zeta23.WeilEF.Effective",
+        "Zeta23.Analytic.RectangleLogDeriv",
+        "Mathlib.Analysis.Complex.CauchyIntegral",
+        "Mathlib.Analysis.Calculus.Deriv.Shift"
+      ]
+    },
+    "Zeta23.XiPrime.Statement": {
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\XiPrime\\Statement.lean",
+        "sha256": "e60a3f9309d0ce98042247bfdc3bebbf2ea6d73308471131f2e84ec7e0ce394a",
+        "bytes": 26072
+      },
+      "native_object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\.lake\\build\\lib\\lean\\Zeta23\\XiPrime\\Statement.olean",
+        "sha256": "6e91687905f46515ca76d3fc4a7e0e8420ec987ed5e234fdee9404349766c055",
+        "bytes": 468088
+      },
+      "imports": [
+        "Zeta23.XiPrime.Defs",
+        "Zeta23.Hypotheses",
+        "Zeta23.PrimeSideTemp",
+        "Zeta23.LinAlg",
+        "Mathlib.Order.Filter.AtTopBot.Basic",
+        "Mathlib.Analysis.Complex.CauchyIntegral"
+      ]
+    },
+    "Zeta23.XiPrime.Defs": {
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\XiPrime\\Defs.lean",
+        "sha256": "e3c6ad6f1ad96a6022a7632576f071312dcede283c043c44454435472b20bc39",
+        "bytes": 15259
+      },
+      "native_object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\.lake\\build\\lib\\lean\\Zeta23\\XiPrime\\Defs.olean",
+        "sha256": "cd3a657edad9ea32418d94e2d29cdae5e3e9565ba3579b1cb2060445661f9960",
+        "bytes": 109080
+      },
+      "imports": [
+        "Zeta23.Defs",
+        "Mathlib.NumberTheory.LSeries.RiemannZeta",
+        "Mathlib.NumberTheory.ArithmeticFunction.Misc",
+        "Mathlib.Analysis.Analytic.Order",
+        "Mathlib.Analysis.Calculus.LogDeriv",
+        "Mathlib.MeasureTheory.Integral.IntervalIntegral.Basic"
+      ]
+    },
+    "Zeta23.ExceptionalZero.FilteredResolvent": {
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\ExceptionalZero\\FilteredResolvent.lean",
+        "sha256": "5d5702dfd43a0685034c4d1fc8e818eb1e5ee51b2aef6e51343d93b5be9217ac",
+        "bytes": 2405
+      },
+      "native_object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\.lake\\build\\lib\\lean\\Zeta23\\ExceptionalZero\\FilteredResolvent.olean",
+        "sha256": "e62e65b5fa225219fce66685e5131379f46eb6e4e4dd35e309f9f20c04b6edb4",
+        "bytes": 167480
+      },
+      "imports": [
+        "Zeta23.ExceptionalZero.FilteredZeroFamily"
+      ]
+    },
+    "Zeta23.ExceptionalZero.FilteredZeroFamily": {
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\ExceptionalZero\\FilteredZeroFamily.lean",
+        "sha256": "ac5f88139e27f8d8c5ba85d6bf36623a52c555cda6ff3adb85a2497a860ad766",
+        "bytes": 2791
+      },
+      "native_object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\.lake\\build\\lib\\lean\\Zeta23\\ExceptionalZero\\FilteredZeroFamily.olean",
+        "sha256": "505d2a58b2e26d020da29b5877930ee985a697c64b4ec04600fde7bbd05e9042",
+        "bytes": 146976
+      },
+      "imports": [
+        "Zeta23.ExceptionalZero.Defs",
+        "Zeta23.XiPrime.ExplicitFormula.ZeroFree"
+      ]
+    },
+    "Zeta23.ExceptionalZero.Defs": {
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\ExceptionalZero\\Defs.lean",
+        "sha256": "54e0c7b8bbff85d4a108dd41dad987e1d51189f173888ec6628b4c387c384396",
+        "bytes": 1210
+      },
+      "native_object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\.lake\\build\\lib\\lean\\Zeta23\\ExceptionalZero\\Defs.olean",
+        "sha256": "08f525ed1b470a5c5e3f4008139deef127eac492246f6451f7c85db657d5cd8b",
+        "bytes": 18320
+      },
+      "imports": [
+        "Mathlib.Analysis.SpecialFunctions.Log.Basic"
+      ]
+    },
+    "Zeta23.OPICAFollowup.DilatedComb": {
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\OPICAFollowup\\DilatedComb.lean",
+        "sha256": "f78c1f4d68c81d8dc0d7d65b4c355cdb68c2b22a3310e71766a1f9de245a2d31",
+        "bytes": 15390
+      },
+      "native_object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\.lake\\build\\lib\\lean\\Zeta23\\OPICAFollowup\\DilatedComb.olean",
+        "sha256": "640360c2093070c2df0578ff8f190f6e51bc27bcba54b3335994ef993922b796",
+        "bytes": 604200
+      },
+      "imports": [
+        "Zeta23.OPICAFollowup.ComplexLocalMeasures",
+        "Zeta23.OPICA.SincTriangle",
+        "Mathlib.MeasureTheory.Measure.Count",
+        "Mathlib.MeasureTheory.Integral.Bochner.SumMeasure",
+        "Mathlib.Analysis.Fourier.PoissonSummation",
+        "Mathlib.Analysis.Distribution.SchwartzSpace.Fourier",
+        "Mathlib.Tactic"
+      ]
+    },
+    "Zeta23.OPICAFollowup.ComplexLocalMeasures": {
+      "source": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\OPICAFollowup\\ComplexLocalMeasures.lean",
+        "sha256": "43d96d5474819b79c29853a81f8b4398f16d298470c2100fdade3fcada3a25b8",
+        "bytes": 66114
+      },
+      "native_object": {
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\.lake\\build\\lib\\lean\\Zeta23\\OPICAFollowup\\ComplexLocalMeasures.olean",
+        "sha256": "0418f144baf0a2d8b1922d51b72eff48eb983a92163460656714689b74c8e99d",
+        "bytes": 1648744
+      },
+      "imports": [
+        "Mathlib.MeasureTheory.VectorMeasure.Decomposition.JordanSub",
+        "Zeta23.OPICA.LocallyFiniteSignedMeasure",
+        "Mathlib.MeasureTheory.Measure.Complex",
+        "Mathlib.MeasureTheory.VectorMeasure.Variation.Basic",
+        "Mathlib.MeasureTheory.VectorMeasure.Variation.SignedMeasure",
+        "Mathlib.MeasureTheory.VectorMeasure.Integral",
+        "Mathlib.Tactic"
+      ]
+    }
+  },
+  "what_became_formally_true": [
+    "For an actual zeta strip zero with Im kappa nonzero, the canonical real and imaginary normalized zeroth-jet distributions are linearly independent over R.",
+    "For every such actual zero, one c_rho>0 bounds the global off-integer-lattice sinc-squared weighted canonical negative mass below by c_rho sqrt(a^2+b^2), for all real a,b.",
+    "No nonzero such real combination is off-lattice nonnegative.",
+    "For an actual strip zero, Re rho != 1/2 implies Im kappa !=0, using the proved real-strip zeta nonvanishing; no separate ordinate assumption.",
+    "If kappa is real, conjugation gives the same actual normalized zeroth-jet measure (identity or reflection), the canonical imaginary distribution is zero, and the pair is dependent."
+  ],
+  "workflow_harvest": {
+    "formal_validity": "Three isolated native modules pass, with independent physical consumers and standard axiom closures.",
+    "regression": "The positive real-kappa boundary controls prove actual identities, rather than a numerical surrogate.",
+    "research_producing": "The previously explicit real-basis independence assumption is now derived for the actual canonical pair at every actual off-critical strip zero.",
+    "github": "No GitHub workflow result is asserted or borrowed by this local supporting receipt."
+  },
+  "what_changed": "H2a complex independence at rho and conjugate rho now supplies the missing canonical REAL-basis prerequisite for the original fixed-basis budget. The original root inventory and release claims are untouched.",
+  "upstream_implications": [
+    {
+      "label": "DERIVED",
+      "statement": "Conjugation-orbit selection, followed by an invertible realification change of basis, is the natural upstream organization for real zero-jet spans."
+    },
+    {
+      "label": "LEAD / HYPOTHESIS",
+      "statement": "Generalize the two-column argument to finite conjugation-closed distinct-kappa jet families, quotienting reflection first."
+    }
+  ],
+  "downstream_implications": [
+    {
+      "label": "DERIVED",
+      "statement": "Every nonzero canonical real/imaginary combination attached to an actual off-critical zero has a strictly positive quantitative weighted negative-mass obstruction."
+    },
+    {
+      "label": "DERIVED",
+      "statement": "The same fixed-pair constant controls every complex phase by setting a=Re z,b=-Im z; writing the actual singleton phase measure requires the corresponding faithful measure identity."
+    },
+    {
+      "label": "OPEN",
+      "statement": "No independent upper bound makes this negative mass impossible; no off-critical zero is excluded."
+    }
+  ],
+  "resurrected_routes": [
+    {
+      "label": "PROVED",
+      "statement": "The canonical off-critical real-pair route no longer needs caller-supplied real-basis independence."
+    },
+    {
+      "label": "OPEN",
+      "statement": "Growing, colliding, infinite-dimensional and nonlinear positive-repair routes remain outside this fixed-pair theorem."
+    }
+  ],
+  "new_RH_relevant_clues": [
+    {
+      "label": "LEAD / HYPOTHESIS",
+      "statement": "Use the phase-uniform signed-mass obstruction as a concrete target for an independent analytic upper estimate or quantitative conditioning study."
+    }
+  ],
+  "falsification_checks": [
+    {
+      "label": "PROVED",
+      "statement": "At real kappa the actual imaginary distribution vanishes, so the pair theorem cannot extend unchanged across the collision."
+    },
+    {
+      "label": "OPEN",
+      "statement": "This does not prove degeneration along any sequence of actual off-critical zeros or assert such zeros exist. No uniform collision constant or zero-free region follows."
+    },
+    {
+      "label": "DERIVED",
+      "statement": "Homogeneity and sign reversal preserve the fixed-pair scope; scaling does not create an absolute lower bound independent of coefficient norm."
+    }
+  ],
+  "highest_leverage_next_moves": [
+    "Prove the general conjugation-orbit realification basis theorem once, retaining actual available multiplicities and reflection quotienting.",
+    "Inspect which independent analytic quantity could upper-bound the same actual sinc-squared negative mass; test first for hidden RH equivalence.",
+    "Quantify pair conditioning only under explicit actual-family continuity, weighted variation convergence and node separation; do not infer a uniform constant from independence."
+  ],
+  "authority_limits": [
+    "Supporting mathematics only",
+    "No mandatory root promotion",
+    "No release acceptance",
+    "No off-critical zero existence",
+    "No simplicity assumption",
+    "No project axiom",
+    "No synthetic measure substitution",
+    "No uniform c_rho",
+    "RH OPEN",
+    "Step4 OPEN"
+  ]
+}

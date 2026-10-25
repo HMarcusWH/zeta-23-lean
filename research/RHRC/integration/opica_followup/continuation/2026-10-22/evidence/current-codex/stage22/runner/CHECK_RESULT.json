@@ -1,0 +1,2593 @@
+{
+  "schema": "OPICA_NARROW_CANDIDATE_REPLAY_V1",
+  "status": "PASS_NARROW_ONLY",
+  "full_release_accepted": false,
+  "aggregate_registration_accepted": false,
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "independent_closing_inequalities": "OPEN",
+  "commands": [
+    {
+      "label": "version",
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "--version"
+      ],
+      "exit_code": 0,
+      "seconds": 1.9710651000496,
+      "log": "version.log",
+      "log_sha256": "79518dda68bc3c4a1d8669c197b30574f76e97149518a00d07b96465045d6dfc"
+    },
+    {
+      "label": "build",
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "build",
+        "Zeta23.OPICAFollowup",
+        "Zeta23.OPICAFollowup.MaskedNativeRate",
+        "Zeta23.OPICAFollowup.ComplexLocalMeasures",
+        "Zeta23.OPICAFollowup.AuxiliaryCompletions",
+        "Zeta23.OPICAFollowup.MultiplicityTail",
+        "Zeta23.OPICAFollowup.DilatedComb",
+        "Zeta23.OPICAFollowup.RenormalizedCoPoisson",
+        "Zeta23.OPICAFollowup.FirstCellCost",
+        "Zeta23.OPICAFollowup.WeightedMixing",
+        "Zeta23.OPICAFollowup.NearGapLimits",
+        "Zeta23.OPICAFollowup.ProfileEulerMaclaurin",
+        "Zeta23.OPICAFollowup.ZeroProfiles",
+        "Zeta23.OPICAFollowup.LogFourierSobolev",
+        "Zeta23.OPICAFollowup.ForcedEuler",
+        "Zeta23.OPICAFollowup.SamplingCompatibility",
+        "Zeta23.OPICAFollowup.SawtoothForce",
+        "Zeta23.OPICAFollowup.WeightedSpectralMeasure",
+        "Zeta23.OPICAFollowup.NativeResolvent",
+        "Zeta23.OPICAFollowup.SquareDefect",
+        "Zeta23.OPICAFollowup.BoundaryAmplitude",
+        "Zeta23.OPICAFollowup.CoPoissonJets",
+        "Zeta23.OPICAFollowup.Consumers",
+        "Zeta23.OPICAFollowup.NativeWindowRate",
+        "Zeta23.OPICAFollowup.MovingSourceWindowRate",
+        "Zeta23.OPICAFollowup.ConfluentProfiles",
+        "Zeta23.OPICAFollowup.FiniteSpanSeparation",
+        "Zeta23.OPICAFollowup.NativeFilters",
+        "Zeta23.OPICAFollowup.JointObservation",
+        "Zeta23.OPICAFollowup.Validation"
+      ],
+      "exit_code": 0,
+      "seconds": 10.814847499947064,
+      "log": "build.log",
+      "log_sha256": "b26f14ebcf7999e1b08beac7665233ed1d8fefc7e72cd5a1573780c98ebcdc86"
+    },
+    {
+      "label": "ExpectedMasks",
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "-DmaxHeartbeats=800000",
+        "-DrelaxedAutoImplicit=false",
+        "research\\RHRC\\integration\\opica_followup\\continuation\\2026-10-22\\consumers\\ExpectedMasks.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 39.24994070001412,
+      "log": "ExpectedMasks.log",
+      "log_sha256": "cb83a89303dddd0609e02fff506d94305be2fdcb9c9e2a64820eae8fad5b934d"
+    },
+    {
+      "label": "ExpectedComplex",
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "-DmaxHeartbeats=800000",
+        "-DrelaxedAutoImplicit=false",
+        "research\\RHRC\\integration\\opica_followup\\continuation\\2026-10-22\\consumers\\ExpectedComplex.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 40.476030099904165,
+      "log": "ExpectedComplex.log",
+      "log_sha256": "9cd49dac8bfdf55f909bd22c7e3973fe0515439d732a971e83d7d145defca5b3"
+    },
+    {
+      "label": "ExpectedAuxiliary",
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "-DmaxHeartbeats=800000",
+        "-DrelaxedAutoImplicit=false",
+        "research\\RHRC\\integration\\opica_followup\\continuation\\2026-10-22\\consumers\\ExpectedAuxiliary.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 37.33295539999381,
+      "log": "ExpectedAuxiliary.log",
+      "log_sha256": "4610d15ae3436ed7e4ffeb749097aba47fb3cff38ec67b647bc4e12c48dc5aa0"
+    },
+    {
+      "label": "ExpectedMultiplicity",
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "-DmaxHeartbeats=800000",
+        "-DrelaxedAutoImplicit=false",
+        "research\\RHRC\\integration\\opica_followup\\continuation\\2026-10-22\\consumers\\ExpectedMultiplicity.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 48.702486900030635,
+      "log": "ExpectedMultiplicity.log",
+      "log_sha256": "fec715ff3ecadbc41fe1a407ac40635d59623c61d780a6977fef8b4872ddd7d7"
+    },
+    {
+      "label": "ExpectedComb",
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "-DmaxHeartbeats=800000",
+        "-DrelaxedAutoImplicit=false",
+        "research\\RHRC\\integration\\opica_followup\\continuation\\2026-10-22\\consumers\\ExpectedComb.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 45.90140600001905,
+      "log": "ExpectedComb.log",
+      "log_sha256": "734c070f4cda62336fd2eee3017a5143b7831b2e17fbe4ef8c33e2c91b227ac6"
+    },
+    {
+      "label": "ExpectedFirstCell",
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "-DmaxHeartbeats=800000",
+        "-DrelaxedAutoImplicit=false",
+        "research\\RHRC\\integration\\opica_followup\\continuation\\2026-10-22\\consumers\\ExpectedFirstCell.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 41.0536702000536,
+      "log": "ExpectedFirstCell.log",
+      "log_sha256": "d667c8051a9c672732343d13db87f5c8f43ce87dfbe1046828f7f185e62abad6"
+    },
+    {
+      "label": "ExpectedWeighted",
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "-DmaxHeartbeats=800000",
+        "-DrelaxedAutoImplicit=false",
+        "research\\RHRC\\integration\\opica_followup\\continuation\\2026-10-22\\consumers\\ExpectedWeighted.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 41.95103430002928,
+      "log": "ExpectedWeighted.log",
+      "log_sha256": "556520ca8e2b279bca480acbdd48733761c0d413d9bfb2c5ce613ea879966add"
+    },
+    {
+      "label": "ExpectedNearGap",
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "-DmaxHeartbeats=800000",
+        "-DrelaxedAutoImplicit=false",
+        "research\\RHRC\\integration\\opica_followup\\continuation\\2026-10-22\\consumers\\ExpectedNearGap.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 43.93749499996193,
+      "log": "ExpectedNearGap.log",
+      "log_sha256": "7dde0cf366e21942beeedfb6567c87e87d48676b116c6fa22f002be5fe3fc0c0"
+    },
+    {
+      "label": "ExpectedNearGapLimit",
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "-DmaxHeartbeats=800000",
+        "-DrelaxedAutoImplicit=false",
+        "research\\RHRC\\integration\\opica_followup\\continuation\\2026-10-22\\consumers\\ExpectedNearGapLimit.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 41.31716219999362,
+      "log": "ExpectedNearGapLimit.log",
+      "log_sha256": "31dca0c72e3aa4d7d0f1146aec8fdf7002a30d25f5c568fb3f1572f7ac1c51c1"
+    },
+    {
+      "label": "ExpectedNormalizedLimit",
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "-DmaxHeartbeats=800000",
+        "-DrelaxedAutoImplicit=false",
+        "research\\RHRC\\integration\\opica_followup\\continuation\\2026-10-22\\consumers\\ExpectedNormalizedLimit.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 35.19021849997807,
+      "log": "ExpectedNormalizedLimit.log",
+      "log_sha256": "aaedbe0a885c93422c8ad18a50773662cede9d691af83b823c3f753c291d51cd"
+    },
+    {
+      "label": "ExpectedWeightedInverse",
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "-DmaxHeartbeats=800000",
+        "-DrelaxedAutoImplicit=false",
+        "research\\RHRC\\integration\\opica_followup\\continuation\\2026-10-22\\consumers\\ExpectedWeightedInverse.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 38.53944129997399,
+      "log": "ExpectedWeightedInverse.log",
+      "log_sha256": "fa3bdbb20c24b24d17aeea0f09b169374952b80838a4f9ece124cc2a371c6aa2"
+    },
+    {
+      "label": "ExpectedCoPoissonFamily",
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "-DmaxHeartbeats=800000",
+        "-DrelaxedAutoImplicit=false",
+        "research\\RHRC\\integration\\opica_followup\\continuation\\2026-10-22\\consumers\\ExpectedCoPoissonFamily.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 41.92716000007931,
+      "log": "ExpectedCoPoissonFamily.log",
+      "log_sha256": "bdbeccc5c605c93eff518e855cc3cc7cd96826e54912a362b3a1a162b79e8436"
+    },
+    {
+      "label": "ExpectedCoPoissonOrderZero",
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "-DmaxHeartbeats=800000",
+        "-DrelaxedAutoImplicit=false",
+        "research\\RHRC\\integration\\opica_followup\\continuation\\2026-10-22\\consumers\\ExpectedCoPoissonOrderZero.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 35.642777800094336,
+      "log": "ExpectedCoPoissonOrderZero.log",
+      "log_sha256": "2e16306b71740c82de0cdbf87d6327a40ccd8131779e18d59750cba72888b17b"
+    },
+    {
+      "label": "ExpectedZeroMeasure",
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "-DmaxHeartbeats=800000",
+        "-DrelaxedAutoImplicit=false",
+        "research\\RHRC\\integration\\opica_followup\\continuation\\2026-10-22\\consumers\\ExpectedZeroMeasure.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 45.755313299945556,
+      "log": "ExpectedZeroMeasure.log",
+      "log_sha256": "af72983dfbe059c74c19a89f47e4502725c5f82052302def4bd5ce280c5ff292"
+    },
+    {
+      "label": "ExpectedEulerMaclaurin",
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "-DmaxHeartbeats=800000",
+        "-DrelaxedAutoImplicit=false",
+        "research\\RHRC\\integration\\opica_followup\\continuation\\2026-10-22\\consumers\\ExpectedEulerMaclaurin.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 51.19171470007859,
+      "log": "ExpectedEulerMaclaurin.log",
+      "log_sha256": "c82ddc9e09528cc82834b5ee3a67f749ebae6c4264fec058255d3d6a00bced2b"
+    },
+    {
+      "label": "ExpectedZeroProfiles",
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "-DmaxHeartbeats=800000",
+        "-DrelaxedAutoImplicit=false",
+        "research\\RHRC\\integration\\opica_followup\\continuation\\2026-10-22\\consumers\\ExpectedZeroProfiles.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 46.973720800015144,
+      "log": "ExpectedZeroProfiles.log",
+      "log_sha256": "7b9fad2ebba927462f2da9eb18d86ba4464e61a2396c5411a1700cad2f0bc039"
+    },
+    {
+      "label": "ExpectedLogFourierSobolev",
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "-DmaxHeartbeats=800000",
+        "-DrelaxedAutoImplicit=false",
+        "research\\RHRC\\integration\\opica_followup\\continuation\\2026-10-22\\consumers\\ExpectedLogFourierSobolev.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 48.44064799998887,
+      "log": "ExpectedLogFourierSobolev.log",
+      "log_sha256": "939898085a5c44e4c6727aad8e14ffb8ee6c724e4033864a3656e4e929d550af"
+    },
+    {
+      "label": "ExpectedForcedEuler",
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "-DmaxHeartbeats=800000",
+        "-DrelaxedAutoImplicit=false",
+        "research\\RHRC\\integration\\opica_followup\\continuation\\2026-10-22\\consumers\\ExpectedForcedEuler.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 45.657512499950826,
+      "log": "ExpectedForcedEuler.log",
+      "log_sha256": "2362450c5604162a467e82cd37d04f41e75593facb5c4ac7aa7c3e51a5c79949"
+    },
+    {
+      "label": "ExpectedSamplingCompatibility",
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "-DmaxHeartbeats=800000",
+        "-DrelaxedAutoImplicit=false",
+        "research\\RHRC\\integration\\opica_followup\\continuation\\2026-10-22\\consumers\\ExpectedSamplingCompatibility.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 42.10393380001187,
+      "log": "ExpectedSamplingCompatibility.log",
+      "log_sha256": "8f80a462b075bd745bd9e169acc0b20d714fea4fc0af9a8e28fdcbff99e73f53"
+    },
+    {
+      "label": "ExpectedSawtoothForce",
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "-DmaxHeartbeats=800000",
+        "-DrelaxedAutoImplicit=false",
+        "research\\RHRC\\integration\\opica_followup\\continuation\\2026-10-22\\consumers\\ExpectedSawtoothForce.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 54.20768180000596,
+      "log": "ExpectedSawtoothForce.log",
+      "log_sha256": "93406d58171176313aae8e6735a722e51c5a2adeb56711a577a76748210ab568"
+    },
+    {
+      "label": "ExpectedWeightedSpectralMeasure",
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "-DmaxHeartbeats=800000",
+        "-DrelaxedAutoImplicit=false",
+        "research\\RHRC\\integration\\opica_followup\\continuation\\2026-10-22\\consumers\\ExpectedWeightedSpectralMeasure.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 40.05884900002275,
+      "log": "ExpectedWeightedSpectralMeasure.log",
+      "log_sha256": "3b70fe9e7a20a0dc5b5ff1c262e2cad4720e810ca694de0b95395453c6dd285b"
+    },
+    {
+      "label": "ExpectedNativeResolvent",
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "-DmaxHeartbeats=800000",
+        "-DrelaxedAutoImplicit=false",
+        "research\\RHRC\\integration\\opica_followup\\continuation\\2026-10-22\\consumers\\ExpectedNativeResolvent.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 68.56941620004363,
+      "log": "ExpectedNativeResolvent.log",
+      "log_sha256": "c44a84cb21b84893a16b9f3e5fdec99518b5cb034f620c1deac4726ff565e1fb"
+    },
+    {
+      "label": "ExpectedSquareDefect",
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "-DmaxHeartbeats=800000",
+        "-DrelaxedAutoImplicit=false",
+        "research\\RHRC\\integration\\opica_followup\\continuation\\2026-10-22\\consumers\\ExpectedSquareDefect.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 76.89484970003832,
+      "log": "ExpectedSquareDefect.log",
+      "log_sha256": "91555d30bfb94957c8f245c8279a8d64d100d3f543882e206f435e7b77b8072c"
+    },
+    {
+      "label": "ExpectedBoundaryAmplitude",
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "-DmaxHeartbeats=800000",
+        "-DrelaxedAutoImplicit=false",
+        "research\\RHRC\\integration\\opica_followup\\continuation\\2026-10-22\\consumers\\ExpectedBoundaryAmplitude.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 75.59258820000105,
+      "log": "ExpectedBoundaryAmplitude.log",
+      "log_sha256": "82008e6c3ca147d62aef3a1b745ac8df6dd23422a5a0845a5aa7cd9ecafd9274"
+    },
+    {
+      "label": "ExpectedCoPoissonJets",
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "-DmaxHeartbeats=800000",
+        "-DrelaxedAutoImplicit=false",
+        "research\\RHRC\\integration\\opica_followup\\continuation\\2026-10-22\\consumers\\ExpectedCoPoissonJets.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 69.64370369992685,
+      "log": "ExpectedCoPoissonJets.log",
+      "log_sha256": "8f76478f76b486e35055ed2d0419afeeadf2f995bb30e889e54eec20335faed9"
+    },
+    {
+      "label": "ExpectedWordJet",
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "-DmaxHeartbeats=800000",
+        "-DrelaxedAutoImplicit=false",
+        "research\\RHRC\\integration\\opica_followup\\continuation\\2026-10-22\\consumers\\ExpectedWordJet.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 82.71377949998714,
+      "log": "ExpectedWordJet.log",
+      "log_sha256": "15da2bda7b061a9d3e8d0aba5c0fdb2511f92c75e3b2904d2375a35be5c7fdd0"
+    },
+    {
+      "label": "ExpectedForceSampling",
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "-DmaxHeartbeats=800000",
+        "-DrelaxedAutoImplicit=false",
+        "research\\RHRC\\integration\\opica_followup\\continuation\\2026-10-22\\consumers\\ExpectedForceSampling.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 93.48530990001746,
+      "log": "ExpectedForceSampling.log",
+      "log_sha256": "3e741ee10ecbea9eaa36afc6b5c14ae95e5427fcda538c02ebd17f29136d417c"
+    },
+    {
+      "label": "ExpectedSampleSign",
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "-DmaxHeartbeats=800000",
+        "-DrelaxedAutoImplicit=false",
+        "research\\RHRC\\integration\\opica_followup\\continuation\\2026-10-22\\consumers\\ExpectedSampleSign.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 93.42841880000196,
+      "log": "ExpectedSampleSign.log",
+      "log_sha256": "10901a5a97ad66404544e355010717862aa9da47abeea914df853bf31eb0ea67"
+    },
+    {
+      "label": "ExpectedPhysicalRates",
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "-DmaxHeartbeats=800000",
+        "-DrelaxedAutoImplicit=false",
+        "research\\RHRC\\integration\\opica_followup\\continuation\\2026-10-22\\consumers\\ExpectedPhysicalRates.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 89.13061470002867,
+      "log": "ExpectedPhysicalRates.log",
+      "log_sha256": "a4bfcc709eea7bc981129134aefcb148ba070d89d1662220c3aa2b9435338f32"
+    },
+    {
+      "label": "ExpectedArithmeticPhysical",
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "-DmaxHeartbeats=800000",
+        "-DrelaxedAutoImplicit=false",
+        "research\\RHRC\\integration\\opica_followup\\continuation\\2026-10-22\\consumers\\ExpectedArithmeticPhysical.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 68.58548140001949,
+      "log": "ExpectedArithmeticPhysical.log",
+      "log_sha256": "eea357c08b9ee62edb4d722da9349f5d8f025e326b337d5a8d2eb8b363bdeb87"
+    },
+    {
+      "label": "ExpectedConfluentProfiles",
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "-DmaxHeartbeats=800000",
+        "-DrelaxedAutoImplicit=false",
+        "research\\RHRC\\integration\\opica_followup\\continuation\\2026-10-22\\consumers\\ExpectedConfluentProfiles.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 35.693377199932,
+      "log": "ExpectedConfluentProfiles.log",
+      "log_sha256": "7466cc503e4b08fd95f8ae4dc13d07f8af1e56c1798ba78c06a1ec6b42304c48"
+    },
+    {
+      "label": "ExpectedFullFiniteSpan",
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "-DmaxHeartbeats=800000",
+        "-DrelaxedAutoImplicit=false",
+        "research\\RHRC\\integration\\opica_followup\\continuation\\2026-10-22\\consumers\\ExpectedFullFiniteSpan.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 30.59903630008921,
+      "log": "ExpectedFullFiniteSpan.log",
+      "log_sha256": "26b06f24463776b61dddfbc509738c803794394907b271756a07c0095fa84b08"
+    },
+    {
+      "label": "ExpectedActualFixedBudget",
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "-DmaxHeartbeats=800000",
+        "-DrelaxedAutoImplicit=false",
+        "research\\RHRC\\integration\\opica_followup\\continuation\\2026-10-22\\consumers\\ExpectedActualFixedBudget.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 37.33828669996001,
+      "log": "ExpectedActualFixedBudget.log",
+      "log_sha256": "5f6343bacfded0e31a91c030df871b8ad32b518aae5d6e6d4bdaced6ac7a9e22"
+    },
+    {
+      "label": "ExpectedSpanPhysicalConsumer",
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "-DmaxHeartbeats=800000",
+        "-DrelaxedAutoImplicit=false",
+        "research\\RHRC\\integration\\opica_followup\\continuation\\2026-10-22\\consumers\\ExpectedSpanPhysicalConsumer.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 44.43649359990377,
+      "log": "ExpectedSpanPhysicalConsumer.log",
+      "log_sha256": "7838b6de646641ca4e54b88f9766208c762b257921b24e8bb7110ff6a813aadc"
+    },
+    {
+      "label": "ExpectedBudgetLimit",
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "-DmaxHeartbeats=800000",
+        "-DrelaxedAutoImplicit=false",
+        "research\\RHRC\\integration\\opica_followup\\continuation\\2026-10-22\\consumers\\ExpectedBudgetLimit.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 40.44485319999512,
+      "log": "ExpectedBudgetLimit.log",
+      "log_sha256": "fec6f4d42eda9ed5c460dbb3a5635e9139c63326a248d326e3698adf8c3868aa"
+    },
+    {
+      "label": "ExpectedSquarePhysical",
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "-DmaxHeartbeats=800000",
+        "-DrelaxedAutoImplicit=false",
+        "research\\RHRC\\integration\\opica_followup\\continuation\\2026-10-22\\consumers\\ExpectedSquarePhysical.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 39.16187230008654,
+      "log": "ExpectedSquarePhysical.log",
+      "log_sha256": "e248eb806038bc3ced8904b7b4f9892a4b728ffa4071ca9c1a0986d35fed4c73"
+    },
+    {
+      "label": "ExpectedSquareSpanComposition",
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "-DmaxHeartbeats=800000",
+        "-DrelaxedAutoImplicit=false",
+        "research\\RHRC\\integration\\opica_followup\\continuation\\2026-10-22\\consumers\\ExpectedSquareSpanComposition.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 45.04555039992556,
+      "log": "ExpectedSquareSpanComposition.log",
+      "log_sha256": "e8e192b79390f8896413b0649103c553fe92ce535eccde74261a9a3fbcc3d132"
+    },
+    {
+      "label": "ExpectedCanonicalInterfaces",
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "-DmaxHeartbeats=800000",
+        "-DrelaxedAutoImplicit=false",
+        "research\\RHRC\\integration\\opica_followup\\continuation\\2026-10-22\\consumers\\ExpectedCanonicalInterfaces.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 46.139839399955235,
+      "log": "ExpectedCanonicalInterfaces.log",
+      "log_sha256": "69c9e470f360d18d26aa92a06a1bc62d813da63d072807ecd6619ee96a1b0de8"
+    },
+    {
+      "label": "ExpectedOffcriticalRealBasis",
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "-DmaxHeartbeats=800000",
+        "-DrelaxedAutoImplicit=false",
+        "research\\RHRC\\integration\\opica_followup\\continuation\\2026-10-22\\consumers\\ExpectedOffcriticalRealBasis.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 46.04834390000906,
+      "log": "ExpectedOffcriticalRealBasis.log",
+      "log_sha256": "f535314c8483e5e371cf6b1ee169596ceb2afc1bc594c2e53da1e9172a85b803"
+    },
+    {
+      "label": "ExpectedOffcriticalControls",
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "-DmaxHeartbeats=800000",
+        "-DrelaxedAutoImplicit=false",
+        "research\\RHRC\\integration\\opica_followup\\continuation\\2026-10-22\\consumers\\ExpectedOffcriticalControls.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 41.071753600030206,
+      "log": "ExpectedOffcriticalControls.log",
+      "log_sha256": "d0507674f6ba98208abbf5c812be72e8e5ae4f42a12fdd7a05bad8d11a80c25d"
+    },
+    {
+      "label": "ExpectedFullSquareDomain",
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "-DmaxHeartbeats=800000",
+        "-DrelaxedAutoImplicit=false",
+        "research\\RHRC\\integration\\opica_followup\\continuation\\2026-10-22\\consumers\\ExpectedFullSquareDomain.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 50.9505935999332,
+      "log": "ExpectedFullSquareDomain.log",
+      "log_sha256": "8d145b57335914568c2e3e2b68b377c79f0240530f1c69cd4c07a018ca7f2a98"
+    },
+    {
+      "label": "ExpectedIndependentFullContracts",
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "-DmaxHeartbeats=800000",
+        "-DrelaxedAutoImplicit=false",
+        "research\\RHRC\\integration\\opica_followup\\continuation\\2026-10-22\\consumers\\ExpectedIndependentFullContracts.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 56.99345710000489,
+      "log": "ExpectedIndependentFullContracts.log",
+      "log_sha256": "167fee1a55996eeb9498484fb005fdd41f245643ccff2861642dab69830a4214"
+    },
+    {
+      "label": "ExpectedCT1SincBudget",
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "-DmaxHeartbeats=800000",
+        "-DrelaxedAutoImplicit=false",
+        "research\\RHRC\\integration\\opica_followup\\continuation\\2026-10-22\\consumers\\ExpectedCT1SincBudget.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 45.10303680005018,
+      "log": "ExpectedCT1SincBudget.log",
+      "log_sha256": "9e08ee15f1b92185871e51c3142c90212b08f55640253d9a70e02da96b6012ca"
+    },
+    {
+      "label": "ExpectedCompactContinuousExtraction",
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "-DmaxHeartbeats=800000",
+        "-DrelaxedAutoImplicit=false",
+        "research\\RHRC\\integration\\opica_followup\\continuation\\2026-10-22\\consumers\\ExpectedCompactContinuousExtraction.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 47.17074370000046,
+      "log": "ExpectedCompactContinuousExtraction.log",
+      "log_sha256": "205f4185c313ff9ed5450cbb5c0956bd966c7c9f008145cfc1032ae3fc004d69"
+    }
+  ],
+  "head": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+  "tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+  "dirty_status": "",
+  "consumers": [
+    {
+      "name": "ExpectedMasks",
+      "source_sha256": "46ebd67a354c4d73b4fbdd777a62594d10cbafe38b3d8db8029c5ba5570d6503",
+      "axioms": {
+        "Zeta23.OPICAFollowup.log_slack_both_low_masks_subexp": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "Zeta23.OPICAFollowup.log_slack_masked_energy_rate_difference": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "Zeta23.OPICAFollowup.nativeWindowVector_norm_sq": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "Zeta23.OPICAFollowup.nativeTypeIWindowVector_tendsto_zero": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ]
+      },
+      "status": "PASS_NARROW_TYPE_DOMAIN_AND_AXIOM_CHECK_ONLY"
+    },
+    {
+      "name": "ExpectedComplex",
+      "source_sha256": "2d84b62e92e93c133bed5b827e44e583db9d22d7c48bc38868f1ddf5c5373c1c",
+      "axioms": {
+        "Zeta23.OPICAFollowup.complex_local_measure_embedding_faithful": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "Zeta23.OPICAFollowup.LocalVariationConvergence.tendsto_schwartz_common_growth": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "Zeta23.OPICAFollowup.common_linear_cubic_tail": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "Zeta23.OPICAFollowup.LocallyFiniteComplexMeasure.hasLinearGrowth_iff_totalVariation": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ]
+      },
+      "status": "PASS_NARROW_TYPE_DOMAIN_AND_AXIOM_CHECK_ONLY"
+    },
+    {
+      "name": "ExpectedAuxiliary",
+      "source_sha256": "133c23de7e4f473575d0a18645dc47ae9924c73fe1066c00d63ccb069da31623",
+      "axioms": {
+        "Zeta23.OPICAFollowup.aux_completion_actual_transform": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "Zeta23.OPICAFollowup.aux_completion_uniform_decay": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "Zeta23.OPICAFollowup.aux_completion_ratio_bounds": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "Zeta23.OPICAFollowup.auxCompletionProfile_distributional_derivative": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "Zeta23.OPICAFollowup.auxCompletionKernel_scaled_profile": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "Zeta23.OPICAFollowup.auxCompletionFilledTransform_at_half": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ]
+      },
+      "status": "PASS_NARROW_TYPE_DOMAIN_AND_AXIOM_CHECK_ONLY"
+    },
+    {
+      "name": "ExpectedMultiplicity",
+      "source_sha256": "7457d65c129374a9f13bbee5e2dd67f53882eb64fd56dfb0d6ff5e673e85498f",
+      "axioms": {
+        "Zeta23.OPICAFollowup.laguerre_tail_norm": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "Zeta23.OPICAFollowup.monicLaguerre_exact_norm_sq": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "Zeta23.OPICAFollowup.monicLaguerre_orthogonality": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "Zeta23.OPICAFollowup.laguerre_iterated_ibp": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "Zeta23.OPICAFollowup.monicLaguerreTail_integral_norm_sq": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "Zeta23.OPICAFollowup.native_auxiliary_top_moment": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "Zeta23.OPICAFollowup.native_auxiliary_tail_residual_lower": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "Zeta23.OPICAFollowup.native_terminal_memory_lower": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "Zeta23.OPICAFollowup.Validation.expected_native_auxiliary_top_moment": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "Zeta23.OPICAFollowup.nativeAuxiliaryInput_completedPrime": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "Zeta23.OPICAFollowup.nativeAuxiliaryInputLaplace_eq_continuation": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "Zeta23.OPICAFollowup.Validation.expected_actual_logweighted_drive": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "Zeta23.OPICAFollowup.Validation.expected_actual_auxiliary_integrand": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "Zeta23.OPICAFollowup.Validation.expected_actual_auxiliary_safe_laplace": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "Zeta23.OPICAFollowup.Validation.expected_actual_simple_zero_phase": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "Zeta23.OPICAFollowup.Validation.expected_native_auxiliary_tail_residual_lower": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "Zeta23.OPICAFollowup.Validation.expected_native_terminal_memory_lower": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ]
+      },
+      "status": "PASS_NARROW_TYPE_DOMAIN_AND_AXIOM_CHECK_ONLY"
+    },
+    {
+      "name": "ExpectedComb",
+      "source_sha256": "3a5305b65175d6b046075ecbebc9a9f37690e6677bb74ed9d3bd8796d58100f9",
+      "axioms": {
+        "Zeta23.OPICAFollowup.dilated_comb_fourier": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "Zeta23.OPICAFollowup.expected_dilated_comb_fourier": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "Zeta23.OPICAFollowup.dilatedCombMeasure_origin": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "Zeta23.OPICAFollowup.expected_comb_absolute_pairing": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "Zeta23.OPICAFollowup.expected_comb_negative_dilation": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ]
+      },
+      "status": "PASS_NARROW_TYPE_DOMAIN_AND_AXIOM_CHECK_ONLY"
+    },
+    {
+      "name": "ExpectedFirstCell",
+      "source_sha256": "a3a18d428b3d35ef2b14f1dce9839e0e70e86a98eb6e7345db062f7cd47d4d4a",
+      "axioms": {
+        "Zeta23.OPICAFollowup.zero_measure_first_cell_sign": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "Zeta23.OPICAFollowup.first_cell_negative_mass_cost": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICAStageOneExpected.expected_actual_zero_first_cell_cost": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICAStageOneExpected.expected_online_imaginary_projection_zero": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICAStageOneExpected.expected_conjugate_pair_first_cell_cancellation": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ]
+      },
+      "status": "PASS_NARROW_TYPE_DOMAIN_AND_AXIOM_CHECK_ONLY"
+    },
+    {
+      "name": "ExpectedWeighted",
+      "source_sha256": "e137ed312f799cd589126a89281470c9f45293bcccf1386598dd66de30639bad",
+      "axioms": {
+        "Zeta23.OPICAFollowup.weighted_mixture_exists_fourier": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICAWeightedIndependent.expected_weighted_mixture_exists_fourier": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICAWeightedIndependent.expected_positive_actual_measure": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICAWeightedIndependent.expected_positive_parameter_atom": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICAWeightedIndependent.expected_infinite_output_mass": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICAWeightedIndependent.expected_positive_origin": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICAWeightedIndependent.expected_imaginary_origin": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICAWeightedIndependent.expected_full_product_integrability": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICAWeightedIndependent.expected_real_parameter_output": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ]
+      },
+      "status": "PASS_NARROW_TYPE_DOMAIN_AND_AXIOM_CHECK_ONLY"
+    },
+    {
+      "name": "ExpectedNearGap",
+      "source_sha256": "e6e20f293af961a40dbd26f944fa56fe1f7247c43acbf656c9afed3b53981e76",
+      "axioms": {
+        "Zeta23.OPICAFollowup.near_gap_mass_bound": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICAStageTwoExpected.expected_near_gap_full_physical_type": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICAStageTwoExpected.expected_common_linear_constant": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICAStageTwoExpected.expected_critical_gap_zero_region": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICAStageTwoExpected.expected_half_distance_endpoint": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ]
+      },
+      "status": "PASS_NARROW_TYPE_DOMAIN_AND_AXIOM_CHECK_ONLY"
+    },
+    {
+      "name": "ExpectedNearGapLimit",
+      "source_sha256": "dbd1ba447e025ceea3797e6843ba741365d404ddf3392bae47d665caa39405be",
+      "axioms": {
+        "Zeta23.OPICAFollowup.near_gap_controlled_limit_zero": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "Zeta23.OPICAFollowup.nearGap_schwartz_pairing_bound": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "Zeta23.OPICAFollowup.nearGapCombFamily_controlled_limit": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICANearGapLimitIndependent.expected_near_gap_controlled_limit_zero": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICANearGapLimitIndependent.expected_near_gap_schwartz_pairing_bound": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICANearGapLimitIndependent.expected_CT1_controlled_limit": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICANearGapLimitIndependent.expected_CT1_family_controlled_limit": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICANearGapLimitIndependent.expected_CT1_terms_nonzero": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICANearGapLimitIndependent.expected_unit_gap_zero_pairing": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICANearGapLimitIndependent.expected_unit_gap_matches_parent": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ]
+      },
+      "status": "PASS_NARROW_TYPE_DOMAIN_AND_AXIOM_CHECK_ONLY"
+    },
+    {
+      "name": "ExpectedNormalizedLimit",
+      "source_sha256": "e833dad08f5c3a1fd477ab56f65db12d984fa51e18fd638d2b2aeddae77f9187",
+      "axioms": {
+        "Zeta23.OPICAFollowup.dilation_normalized_limit_not_measure": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "Zeta23.OPICAFollowup.ct1NormalizedLimit_apply": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICANormalizedLimitIndependent.expected_dilation_normalized_limit_not_measure": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICANormalizedLimitIndependent.expected_three_comb_normalized_limit": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICANormalizedLimitIndependent.expected_origin_coefficient_zero": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICANormalizedLimitIndependent.expected_integer_coefficients": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICANormalizedLimitIndependent.expected_no_common_normalized_variation": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "Zeta23.OPICAFollowup.ct1NormalizedLimit_fourier_selfdual": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICANormalizedLimitIndependent.expected_normalized_limit_selfdual": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ]
+      },
+      "status": "PASS_NARROW_TYPE_DOMAIN_AND_AXIOM_CHECK_ONLY"
+    },
+    {
+      "name": "ExpectedWeightedInverse",
+      "source_sha256": "d803b68b053f867a4ca7fd51484dbc13ddd1508accca481aadd2d133f5dc5773",
+      "axioms": {
+        "Zeta23.OPICAFollowup.weighted_mobius_inverse": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "Zeta23.OPICAFollowup.weighted_mixture_sharp_gap": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "Zeta23.OPICAFollowup.weighted_gap_leakage": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICAWeightedInverseIndependent.audit_integerLogComb": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICAWeightedInverseIndependent.expected_moebius_lattice_identity": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICAWeightedInverseIndependent.expected_weighted_mobius_inverse_real": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICAWeightedInverseIndependent.expected_weighted_mixture_sharp_gap": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICAWeightedInverseIndependent.expected_complex_gap_leakage": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICAWeightedInverseIndependent.expected_weighted_gap_leakage_real": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICAWeightedInverseIndependent.expected_point_mixer_leakage_positive": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICAWeightedInverseIndependent.expected_point_mixer_gap": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICAWeightedInverseIndependent.expected_point_mixer_sharp_gap_instance": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICAWeightedInverseIndependent.expected_density_leakage": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICAWeightedInverseIndependent.expected_leakage_needs_negative_support": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICAWeightedInverseIndependent.expected_density_identification": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICAWeightedInverseIndependent.expected_endpoint_witness_mixture": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "Zeta23.OPICAFollowup.complex_gap_leakage": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ]
+      },
+      "status": "PASS_NARROW_TYPE_DOMAIN_AND_AXIOM_CHECK_ONLY"
+    },
+    {
+      "name": "ExpectedCoPoissonFamily",
+      "source_sha256": "1fd0255554f7a095a9ae441731c4329ea3220f994d7d5a9713fc42ada7073cfe",
+      "axioms": {
+        "Zeta23.OPICAFollowup.renormalized_copoisson_tempered_family": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICACoPoissonFamilyIndependent.audit_coPoissonA": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICACoPoissonFamilyIndependent.expected_renormalized_copoisson_tempered_family": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICACoPoissonFamilyIndependent.expected_kernel_pairing": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICACoPoissonFamilyIndependent.expected_decay_N2": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICACoPoissonFamilyIndependent.expected_family_analytic": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICACoPoissonFamilyIndependent.expected_family_selfdual_pairing": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ]
+      },
+      "status": "PASS_NARROW_TYPE_DOMAIN_AND_AXIOM_CHECK_ONLY"
+    },
+    {
+      "name": "ExpectedCoPoissonOrderZero",
+      "source_sha256": "68a01d31ef49ae9ac79dc06b1752577758413740cc4190fd4dca3763061c8453",
+      "axioms": {
+        "Zeta23.OPICAFollowup.renormalized_copoisson_order_zero": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICACoPoissonOrderZeroIndependent.audit_cutoff_density": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICACoPoissonOrderZeroIndependent.audit_limit_measure": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICACoPoissonOrderZeroIndependent.expected_renormalized_copoisson_order_zero": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICACoPoissonOrderZeroIndependent.expected_limit_origin_atom": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICACoPoissonOrderZeroIndependent.expected_cutoff_origin_atom": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICACoPoissonOrderZeroIndependent.expected_limit_density_near_origin": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICACoPoissonOrderZeroIndependent.expected_cutoff_pairing_tendsto": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICACoPoissonOrderZeroIndependent.expected_local_test_convergence": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICACoPoissonOrderZeroIndependent.expected_nonvacuous_half": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ]
+      },
+      "status": "PASS_NARROW_TYPE_DOMAIN_AND_AXIOM_CHECK_ONLY"
+    },
+    {
+      "name": "ExpectedZeroMeasure",
+      "source_sha256": "01f2f5d3c22aedcae2a3ec06b403129c78b7c76bf89b5673cd3b3e28968e9fe7",
+      "axioms": {
+        "Zeta23.OPICAFollowup.zero_measure_exact_properties": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICAZeroMeasureIndependent.audit_parts": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICAZeroMeasureIndependent.expected_zero_measure_exact_properties": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICAZeroMeasureIndependent.expected_real_part_H1_hypotheses": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICAZeroMeasureIndependent.expected_atom_minus_one": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICAZeroMeasureIndependent.expected_not_offlattice_nonnegative": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICAZeroMeasureIndependent.expected_construction_nonvacuous": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ]
+      },
+      "status": "PASS_NARROW_TYPE_DOMAIN_AND_AXIOM_CHECK_ONLY"
+    },
+    {
+      "name": "ExpectedEulerMaclaurin",
+      "source_sha256": "2a6736080dec794de13cdcaeb249aeb81264876f26d0c95940918ea522f96ff4",
+      "axioms": {
+        "Zeta23.OPICAFollowup.finite_sum_euler_maclaurin_uniform": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICAEulerMaclaurinIndependent.audit_rightPowerSum": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICAEulerMaclaurinIndependent.audit_remainder": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICAEulerMaclaurinIndependent.expected_finite_sum_euler_maclaurin_uniform": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICAEulerMaclaurinIndependent.expected_isBigO": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICAEulerMaclaurinIndependent.expected_right_endpoint_jump": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICAEulerMaclaurinIndependent.expected_srho_expansion": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICAEulerMaclaurinIndependent.expected_srho_tail_at_zero": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICAEulerMaclaurinIndependent.expected_remainder_derivative_bound": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICAEulerMaclaurinIndependent.expected_nonvacuous_half": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ]
+      },
+      "status": "PASS_NARROW_TYPE_DOMAIN_AND_AXIOM_CHECK_ONLY"
+    },
+    {
+      "name": "ExpectedZeroProfiles",
+      "source_sha256": "33ad11294eda85f3b5b3bddb83287e5208ed4bb965d574e42c227ec0ef74a485",
+      "axioms": {
+        "Zeta23.OPICAFollowup.zero_profile_regular_selfdual": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "Zeta23.OPICAFollowup.zero_profile_tail_and_jumps": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICAZeroProfilesIndependent.audit_zeroProfile": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICAZeroProfilesIndependent.audit_srhoCellDeriv": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICAZeroProfilesIndependent.expected_zero_profile_regular_selfdual": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICAZeroProfilesIndependent.expected_zero_profile_tail_and_jumps": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICAZeroProfilesIndependent.expected_profile_is_one_minus_zero_density": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICAZeroProfilesIndependent.expected_origin_value": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICAZeroProfilesIndependent.expected_jump_unique": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICAZeroProfilesIndependent.expected_lattice_values_summable": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICAZeroProfilesIndependent.expected_construction_nonvacuous": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ]
+      },
+      "status": "PASS_NARROW_TYPE_DOMAIN_AND_AXIOM_CHECK_ONLY"
+    },
+    {
+      "name": "ExpectedLogFourierSobolev",
+      "source_sha256": "29b6f838afddbdbf369bcc209583031f6a3f1d5746783217707e5532efa36136",
+      "axioms": {
+        "Zeta23.OPICAFollowup.log_unitary_form_identity": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "Zeta23.OPICAFollowup.log_fourier_plancherel": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICALogFourierSobolevIndependent.audit_logFourier": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICALogFourierSobolevIndependent.audit_logFormDomain": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICALogFourierSobolevIndependent.expected_log_unitary_form_identity": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICALogFourierSobolevIndependent.expected_log_fourier_plancherel": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICALogFourierSobolevIndependent.expected_shift_norm_eq_logForm": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICALogFourierSobolevIndependent.expected_domain_nonempty": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICALogFourierSobolevIndependent.expected_zero_profile_in_form_domain": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICALogFourierSobolevIndependent.expected_zero_profile_form_identity": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ]
+      },
+      "status": "PASS_NARROW_TYPE_DOMAIN_AND_AXIOM_CHECK_ONLY"
+    },
+    {
+      "name": "ExpectedForcedEuler",
+      "source_sha256": "230723787b3badebfa2862fc6168f6f7e76210fd9c00c009729d3f1906fdfca5",
+      "axioms": {
+        "Zeta23.OPICAFollowup.zero_profile_forced_euler": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "Zeta23.OPICAFollowup.zero_profile_not_homogeneous_operator_vector": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICAForcedEulerIndependent.audit_eulerImage": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICAForcedEulerIndependent.expected_zero_profile_forced_euler": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICAForcedEulerIndependent.expected_zero_profile_not_homogeneous_operator_vector": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICAForcedEulerIndependent.expected_test_class_nondegenerate": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICAForcedEulerIndependent.expected_atom_detected": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICAForcedEulerIndependent.expected_jump_matches_stage9": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICAForcedEulerIndependent.expected_explicit_derivative": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICAForcedEulerIndependent.expected_construction_nonvacuous": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ]
+      },
+      "status": "PASS_NARROW_TYPE_DOMAIN_AND_AXIOM_CHECK_ONLY"
+    },
+    {
+      "name": "ExpectedSamplingCompatibility",
+      "source_sha256": "6cbfca4ac5b49becffd45a81a380ef3e4a49a6b9fbe19f134f28a897bf0011e6",
+      "axioms": {
+        "Zeta23.OPICAFollowup.native_sampling_gram_identity": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "Zeta23.OPICAFollowup.native_sampling_form_positive": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICASamplingCompatibilityIndependent.audit_profileFormGram": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICASamplingCompatibilityIndependent.expected_native_sampling_gram_identity": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICASamplingCompatibilityIndependent.expected_native_sampling_form_positive": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICASamplingCompatibilityIndependent.expected_diagonal": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICASamplingCompatibilityIndependent.expected_online_sample_real": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICASamplingCompatibilityIndependent.expected_conjugate_coincidence": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICASamplingCompatibilityIndependent.expected_construction_nonvacuous": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "Zeta23.OPICAFollowup.finite_countercontrol": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICASamplingCompatibilityIndependent.expected_countercontrol_nonreal": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ]
+      },
+      "status": "PASS_NARROW_TYPE_DOMAIN_AND_AXIOM_CHECK_ONLY"
+    },
+    {
+      "name": "ExpectedSawtoothForce",
+      "source_sha256": "fcbaf41bb5a4e4b0be7bf900568f61849e93e39c97bcedf68a498a757b100be0",
+      "axioms": {
+        "Zeta23.OPICAFollowup.sawtooth_integrable_force_identity": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "Zeta23.OPICAFollowup.sawtooth_actual_mellin_fourier": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "Zeta23.OPICAFollowup.sawtooth_norm_weighted_zeta_moment": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICASawtoothForceIndependent.audit_nativeLogForce": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICASawtoothForceIndependent.expected_sawtooth_integrable_force_identity": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICASawtoothForceIndependent.expected_sawtooth_actual_mellin_fourier": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICASawtoothForceIndependent.expected_sawtooth_norm_weighted_zeta_moment": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICASawtoothForceIndependent.expected_single_atom": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICASawtoothForceIndependent.expected_jump_matches_atom": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICASawtoothForceIndependent.expected_conventions": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICASawtoothForceIndependent.expected_budget_bounds": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ]
+      },
+      "status": "PASS_NARROW_TYPE_DOMAIN_AND_AXIOM_CHECK_ONLY"
+    },
+    {
+      "name": "ExpectedWeightedSpectralMeasure",
+      "source_sha256": "3f5843a25bc9b01179292b46b963e5807c59d459d5cc8e19b273475bfe40ee71",
+      "axioms": {
+        "Zeta23.OPICAFollowup.arithmetic_stieltjes_holomorphic": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "Zeta23.OPICAFollowup.arithmetic_stieltjes_sign_budget": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICAWeightedSpectralMeasureIndependent.audit_arithmeticStieltjes": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICAWeightedSpectralMeasureIndependent.expected_arithmetic_stieltjes_holomorphic": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICAWeightedSpectralMeasureIndependent.expected_arithmetic_stieltjes_sign_budget": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICAWeightedSpectralMeasureIndependent.expected_moment_is_source_norm": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICAWeightedSpectralMeasureIndependent.expected_real_point": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICAWeightedSpectralMeasureIndependent.expected_point_i": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICAWeightedSpectralMeasureIndependent.expected_offline_parameter": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICAWeightedSpectralMeasureIndependent.expected_critical_line_on_cut": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ]
+      },
+      "status": "PASS_NARROW_TYPE_DOMAIN_AND_AXIOM_CHECK_ONLY"
+    },
+    {
+      "name": "ExpectedNativeResolvent",
+      "source_sha256": "df50d36b3726e70979f0bce5ba28d39348f22d46aed30d49c4f4fa5ae2f6196b",
+      "axioms": {
+        "Zeta23.OPICAFollowup.native_forced_resolvent_unique": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "Zeta23.OPICAFollowup.native_sample_stieltjes_identity": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "Zeta23.OPICAFollowup.native_profile_spectral_norms": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICANativeResolventIndependent.audit_nativeLogResolvent": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICANativeResolventIndependent.expected_native_forced_resolvent_unique": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICANativeResolventIndependent.expected_native_sample_stieltjes_identity": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICANativeResolventIndependent.expected_native_profile_spectral_norms": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICANativeResolventIndependent.expected_offline_zero": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICANativeResolventIndependent.expected_sample_ratio": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICANativeResolventIndependent.expected_resolvent_weak_solution": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICANativeResolventIndependent.expected_diagonal_gram": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICANativeResolventIndependent.expected_conjugate_coincidence": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICANativeResolventIndependent.expected_critical_line_undivided": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ]
+      },
+      "status": "PASS_NARROW_TYPE_DOMAIN_AND_AXIOM_CHECK_ONLY"
+    },
+    {
+      "name": "ExpectedSquareDefect",
+      "source_sha256": "3735135eb0abad1f30935652c9bcdfc3ccee4e490697fe7a18b29806573176b2",
+      "axioms": {
+        "Zeta23.OPICAFollowup.square_fourier_defect": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "Zeta23.OPICAFollowup.square_defect_origin_positive": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "Zeta23.OPICAFollowup.square_no_lattice_repair": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "Zeta23.OPICAFollowup.square_selfdual_projection_fills_gap": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICASquareDefectIndependent.audit_projection": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICASquareDefectIndependent.expected_square_fourier_defect": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICASquareDefectIndependent.expected_square_defect_origin_positive": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICASquareDefectIndependent.expected_square_no_lattice_repair": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICASquareDefectIndependent.expected_square_selfdual_projection_fills_gap": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICASquareDefectIndependent.expected_actual_square": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ]
+      },
+      "status": "PASS_NARROW_TYPE_DOMAIN_AND_AXIOM_CHECK_ONLY"
+    },
+    {
+      "name": "ExpectedBoundaryAmplitude",
+      "source_sha256": "b114b1a7ac9e264cac4f6cf4606ac9a4d6b1b9f4f28b5853dbf11dc6d86ec6cc",
+      "axioms": {
+        "Zeta23.OPICAFollowup.generic_forced_profile_unique": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "Zeta23.OPICAFollowup.generic_boundary_amplitude": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICABoundaryAmplitudeIndependent.audit_genericForcedProfile": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICABoundaryAmplitudeIndependent.expected_generic_forced_profile_unique": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICABoundaryAmplitudeIndependent.expected_generic_boundary_amplitude": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICABoundaryAmplitudeIndependent.expected_actual_zero": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICABoundaryAmplitudeIndependent.expected_no_plateau": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICABoundaryAmplitudeIndependent.expected_not_integrable": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ]
+      },
+      "status": "PASS_NARROW_TYPE_DOMAIN_AND_AXIOM_CHECK_ONLY"
+    },
+    {
+      "name": "ExpectedCoPoissonJets",
+      "source_sha256": "871a4419cbb3c02b699d07be9b815bb119d127cce6ab553a4c1d20afad5d7155",
+      "axioms": {
+        "OPICACoPoissonJetsIndependent.audit_zeroJetOrder": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICACoPoissonJetsIndependent.audit_normalizedZeroMeasureJet": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICACoPoissonJetsIndependent.expected_family_is_actual": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICACoPoissonJetsIndependent.expected_copoisson_zero_jets_measures": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICACoPoissonJetsIndependent.expected_order_zero_jet": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICACoPoissonJetsIndependent.expected_chain_is_forced_euler": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICACoPoissonJetsIndependent.expected_first_jet": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICACoPoissonJetsIndependent.expected_reflection_not_new_node": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICACoPoissonJetsIndependent.expected_conj_real_test": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ]
+      },
+      "status": "PASS_NARROW_TYPE_DOMAIN_AND_AXIOM_CHECK_ONLY"
+    },
+    {
+      "name": "ExpectedWordJet",
+      "source_sha256": "3c14d4f76bdb72d8b5d5715bae34081b7381743433f510da6e8e53f8b4baaa80",
+      "axioms": {
+        "OPICAWordJetIndependent.expected_step123_word_jet_consumer": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICAWordJetIndependent.expected_step123_word_jet_actual_domain": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICAWordJetIndependent.expected_step123_word_right_zero": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ]
+      },
+      "status": "PASS_NARROW_TYPE_DOMAIN_AND_AXIOM_CHECK_ONLY"
+    },
+    {
+      "name": "ExpectedForceSampling",
+      "source_sha256": "6fc99bc203b2c9ac3815df43f588cce2da746a1051ecc0ae20f84e4354255904",
+      "axioms": {
+        "Zeta23.OPICAFollowup.actual_force_sampling_consumer": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICAForceSamplingIndependent.expected_actual_force_sampling_consumer": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICAForceSamplingIndependent.audit_spectralKappa": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICAForceSamplingIndependent.audit_logFourier": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICAForceSamplingIndependent.audit_force": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICAForceSamplingIndependent.audit_density": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICAForceSamplingIndependent.audit_sample": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICAForceSamplingIndependent.audit_boundary": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICAForceSamplingIndependent.audit_generic": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICAForceSamplingIndependent.offline_kappa": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICAForceSamplingIndependent.actual_offline_domain": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICAForceSamplingIndependent.actual_right_representative": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ]
+      },
+      "status": "PASS_NARROW_TYPE_DOMAIN_AND_AXIOM_CHECK_ONLY"
+    },
+    {
+      "name": "ExpectedSampleSign",
+      "source_sha256": "9015dee14c0c55719b861b7d7604db0119bb43c3723fef216da512d12a3dcda7",
+      "axioms": {
+        "OPICASampleSign.form_self": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICASampleSign.sample_im_ratio": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICASampleSign.real_sample_implies_on_line": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ]
+      },
+      "status": "PASS_NARROW_TYPE_DOMAIN_AND_AXIOM_CHECK_ONLY"
+    },
+    {
+      "name": "ExpectedPhysicalRates",
+      "source_sha256": "0adcee1919d6a4bc897a7c9bd0077e772c6faf3dce8e6c7a3ae93bebc1b256c1",
+      "axioms": {
+        "Zeta23.OPICAFollowup.native_fixed_source_window_rate": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "Zeta23.OPICAFollowup.native_slow_source_window_rate": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "IndependentPhysicalWindowRates.expected_fixed_source": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "IndependentPhysicalWindowRates.expected_slow_source": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "IndependentPhysicalWindowRates.expected_order_zero": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "IndependentPhysicalWindowRates.expected_nonpositive_finite_prefix": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "IndependentPhysicalWindowRates.expected_both_source_factor_log_signs": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "IndependentPhysicalWindowRates.expected_literal_rate_definition": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "IndependentPhysicalWindowRates.expected_zero_supremum_case": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "IndependentPhysicalWindowRates.zero_order_cost_correction_control": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "IndependentPhysicalWindowRates.upper_rate_does_not_force_zero_control": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ]
+      },
+      "status": "PASS_NARROW_TYPE_DOMAIN_AND_AXIOM_CHECK_ONLY"
+    },
+    {
+      "name": "ExpectedArithmeticPhysical",
+      "source_sha256": "550876c3fb6997256437c159c5de514685305c76124b358fd5385a4f038885aa",
+      "axioms": {
+        "IndependentArithmeticPhysical.expected_literal_raw_high_mask": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "IndependentArithmeticPhysical.expected_literal_absorbed_high_mask": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "IndependentArithmeticPhysical.expected_quiet_full_original_domain": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "IndependentArithmeticPhysical.expected_zero_supremum_all_positive_dampings": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "IndependentArithmeticPhysical.complete_quiet_upper_iff_zero_supremum": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "IndependentArithmeticPhysical.finite_quiet_samples_do_not_supply_cofinal_upper": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ]
+      },
+      "status": "PASS_NARROW_TYPE_DOMAIN_AND_AXIOM_CHECK_ONLY"
+    },
+    {
+      "name": "ExpectedConfluentProfiles",
+      "source_sha256": "5862885c0235798817be2103c3ae600638327c1b0cc26916ea59e2ad133d6aed",
+      "axioms": {
+        "OPICAConfluentProfilesIndependent.expected_profile_jet_confluent_determinant": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICAConfluentProfilesIndependent.expected_finite_zero_jet_independent": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICAConfluentProfilesIndependent.expected_exact_local_column": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ]
+      },
+      "status": "PASS_NARROW_TYPE_DOMAIN_AND_AXIOM_CHECK_ONLY"
+    },
+    {
+      "name": "ExpectedFullFiniteSpan",
+      "source_sha256": "3c8b892698091f69c5987c1f3d2b2e7a0bd3f068610c5355a1fe61fbf5b7eba2",
+      "axioms": {
+        "IndependentFullFiniteSpan.full_original_domain_and_independent_basis": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ]
+      },
+      "status": "PASS_NARROW_TYPE_DOMAIN_AND_AXIOM_CHECK_ONLY"
+    },
+    {
+      "name": "ExpectedActualFixedBudget",
+      "source_sha256": "9883387228ae6b161058a81055710bdde19c3ff00177154783577a04b3a0c2bd",
+      "axioms": {
+        "IndependentActualFixedBudget.expected_full_actual_euclidean_budget": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "IndependentActualFixedBudget.no_positive_budget_without_independence": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ]
+      },
+      "status": "PASS_NARROW_TYPE_DOMAIN_AND_AXIOM_CHECK_ONLY"
+    },
+    {
+      "name": "ExpectedSpanPhysicalConsumer",
+      "source_sha256": "143da66a5595d0206bf10ea6ec0143a887d318318f64e51c259b8fa372f2c444",
+      "axioms": {
+        "IndependentSpanPhysicalConsumer.expected_actual_zero_measure_span_consumer": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ]
+      },
+      "status": "PASS_NARROW_TYPE_DOMAIN_AND_AXIOM_CHECK_ONLY"
+    },
+    {
+      "name": "ExpectedBudgetLimit",
+      "source_sha256": "24665dcf253694e0d76c0f9555b10f23aa3cdf1f5122d0dc6c1adbd8e88c9668",
+      "axioms": {
+        "PostGreenFixedBasis.coefficients_tendsto_zero_of_actual_negative_mass_tendsto_zero": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ]
+      },
+      "status": "PASS_NARROW_TYPE_DOMAIN_AND_AXIOM_CHECK_ONLY"
+    },
+    {
+      "name": "ExpectedSquarePhysical",
+      "source_sha256": "b1b33c58a0f778f78b6ea8830969b209b3cbfe53796e2ede4daaaefa07bac575",
+      "axioms": {
+        "Zeta23.OPICAFollowup.SquarePhysicalExpected.full_actual_square_measure": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "Zeta23.OPICAFollowup.SquarePhysicalExpected.all_actual_tempered_corrections": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "Zeta23.OPICAFollowup.SquarePhysicalExpected.full_actual_projection": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "Zeta23.OPICAFollowup.SquarePhysicalExpected.nonzero_lattice_atom_retained": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "Zeta23.OPICAFollowup.SquarePhysicalExpected.no_gap_without_plateau": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "Zeta23.OPICAFollowup.SquarePhysicalExpected.zero_square_degenerate": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ]
+      },
+      "status": "PASS_NARROW_TYPE_DOMAIN_AND_AXIOM_CHECK_ONLY"
+    },
+    {
+      "name": "ExpectedSquareSpanComposition",
+      "source_sha256": "bdc119dc93bfdd0321ce30867f71b7ab0aca109adef4d3978c448528b252bdd2",
+      "axioms": {
+        "Zeta23.OPICAFollowup.SquareSpanExpected.full_actual_square_jet_lattice_composition": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ]
+      },
+      "status": "PASS_NARROW_TYPE_DOMAIN_AND_AXIOM_CHECK_ONLY"
+    },
+    {
+      "name": "ExpectedCanonicalInterfaces",
+      "source_sha256": "da2fffd4a18ae4598417f23dfaee33cc99b0a7da24dcdef19ba388bb3f14d800",
+      "axioms": {
+        "Zeta23.OPICAFollowup.Validation.expected_canonical_recovery": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "Zeta23.OPICAFollowup.Validation.expected_filter_causal_actions": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "Zeta23.OPICAFollowup.Validation.expected_followup_native_output": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "Zeta23.OPICAFollowup.Validation.expected_followup_native_output_each_phase": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ]
+      },
+      "status": "PASS_NARROW_TYPE_DOMAIN_AND_AXIOM_CHECK_ONLY"
+    },
+    {
+      "name": "ExpectedOffcriticalRealBasis",
+      "source_sha256": "8f9880d1e9e6776372c13ff951706bac726b788c51cc8cd72fa75553a010d507",
+      "axioms": {
+        "IndependentOffcriticalRealBasis.actual_offcritical_real_imaginary_pair_independent": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "IndependentOffcriticalRealBasis.actual_offcritical_kappa": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "IndependentOffcriticalRealBasis.actual_offcritical_negative_mass_restriction": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "IndependentOffcriticalRealBasis.actual_real_imaginary_pair_independent": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "IndependentOffcriticalRealBasis.actual_two_coefficient_euclidean_negative_budget": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "IndependentOffcriticalRealBasis.actual_no_nonzero_positive_combination": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ]
+      },
+      "status": "PASS_NARROW_TYPE_DOMAIN_AND_AXIOM_CHECK_ONLY"
+    },
+    {
+      "name": "ExpectedOffcriticalControls",
+      "source_sha256": "82cb98b85b98b3b8a8cd1ae62db99e6a2e09c096595447281571b16938e29e9f",
+      "axioms": {
+        "OffcriticalControls.real_kappa_conjugate_same_measure": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OffcriticalControls.canonical_imaginary_zero_of_real_kappa": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OffcriticalControls.canonical_pair_dependent_of_real_kappa": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ]
+      },
+      "status": "PASS_NARROW_TYPE_DOMAIN_AND_AXIOM_CHECK_ONLY"
+    },
+    {
+      "name": "ExpectedFullSquareDomain",
+      "source_sha256": "ff528b9e71454374dab8f944d565156fca26425dd8ef8b62dedd4d558f7dc5ea",
+      "axioms": {
+        "Zeta23.OPICAFollowup.expected_original_distribution_tempered_domain": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "Zeta23.OPICAFollowup.expected_existing_strong_domain_is_instance": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "Zeta23.OPICAFollowup.expected_compact_extension_unique": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "Zeta23.OPICAFollowup.expected_full_domain_mixed_selfdual_barrier": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "Zeta23.OPICAFollowup.compact_compatibility_cannot_be_omitted": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ]
+      },
+      "status": "PASS_NARROW_TYPE_DOMAIN_AND_AXIOM_CHECK_ONLY"
+    },
+    {
+      "name": "ExpectedIndependentFullContracts",
+      "source_sha256": "c7e5936ff169cafa803cd31282ef5a5b4efa56b01675903f4ab306e4dd94ab15",
+      "axioms": {
+        "Zeta23.OPICAFollowup.IndependentExpected.expected_source_order_uniform_norms": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "Zeta23.OPICAFollowup.IndependentExpected.expected_native_field_theta_envelope": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "Zeta23.OPICAFollowup.IndependentExpected.expected_near_gap_mass_bound": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "Zeta23.OPICAFollowup.IndependentExpected.expected_near_gap_controlled_limit_zero": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "Zeta23.OPICAFollowup.IndependentExpected.expected_dilation_near_gap_family": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "Zeta23.OPICAFollowup.IndependentExpected.expected_dilation_normalized_limit_not_measure": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "Zeta23.OPICAFollowup.IndependentExpected.expected_fixed_basis_negative_mass_budget": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "Zeta23.OPICAFollowup.IndependentExpected.actual_basis_independence_iff_Jordan_kernel": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "Zeta23.OPICAFollowup.IndependentExpected.expected_controlled_uniform_tails": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ]
+      },
+      "status": "PASS_NARROW_TYPE_DOMAIN_AND_AXIOM_CHECK_ONLY"
+    },
+    {
+      "name": "ExpectedCT1SincBudget",
+      "source_sha256": "fb3e4d769e45309d030f18263aa6ea9a711e7362956294214384acd577752f33",
+      "axioms": {
+        "OPICACT1SincBudgetIndependent.expected_ct13_original_pairing": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICACT1SincBudgetIndependent.expected_ct13_jordan_masses": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICACT1SincBudgetIndependent.expected_ct13_first_order_cost": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICACT1SincBudgetIndependent.expected_ct13_second_order_cost": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "OPICACT1SincBudgetIndependent.expected_ct13_not_unit_gap": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ]
+      },
+      "status": "PASS_NARROW_TYPE_DOMAIN_AND_AXIOM_CHECK_ONLY"
+    },
+    {
+      "name": "ExpectedCompactContinuousExtraction",
+      "source_sha256": "2a403187ff1e3a96c5ef2cf4d4dc40ed3ba8b760c7981e36bd21769af76d6c9f",
+      "axioms": {
+        "Zeta23.OPICAFollowup.IndependentCompactExtractionConsumer.expected_full_HT2_compact_continuous_extraction": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ]
+      },
+      "status": "PASS_NARROW_TYPE_DOMAIN_AND_AXIOM_CHECK_ONLY"
+    }
+  ],
+  "source_unchanged": true
+}

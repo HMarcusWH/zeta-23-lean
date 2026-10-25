@@ -1,0 +1,15 @@
+{
+  "schema": "OPICA_LIVE_PR_RECONCILIATION_V1",
+  "observed_at": "2026-10-24 17:13:09 UTC",
+  "url": "https://github.com/HMarcusWH/zeta-23-lean/pull/294",
+  "state": "open",
+  "draft": true,
+  "merged": false,
+  "head": "cea7b2f62ea847c18958cc7385151c8c2b09520d",
+  "branch": "research/opica-native-followup",
+  "base": "d53dd70d38b0762af130b1d19b795af259f505f5",
+  "merge_commit_sha": "299c15a432a11c432ff108d6fa864d0f0a428c14",
+  "updated_at": "2026-10-24T13:11:57Z",
+  "full_response_sha256_not_recorded": true,
+  "authority": "Read-only live API reconciliation; no new-head CI inherited."
+}

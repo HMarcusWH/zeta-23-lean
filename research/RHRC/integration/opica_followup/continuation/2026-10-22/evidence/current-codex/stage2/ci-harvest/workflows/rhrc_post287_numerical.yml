@@ -1,0 +1,149 @@
+name: RHRC post287 WP2 and WP4 interval research
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: rhrc-post287-numerical-${{ github.event.pull_request.number || github.ref }}-${{ github.sha }}
+  cancel-in-progress: true
+
+jobs:
+  wp2-k2-transcript:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Install pinned python-flint and research dependencies
+        run: python -m pip install -r research/RHRC/routes/R003_ccm_bridge/requirements.txt
+      - name: Reject nonfinite Taylor remainders before accepting numerical evidence
+        run: python research/RHRC/routes/R003_ccm_bridge/post287/test_wp2_wp4_finite_bounds.py
+      - name: WP2 / WP4 validate canonical Eq4.4 normalization and exact parity carriers
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/post287/wp2_wp4_normalization_gate.py \
+            --output /tmp/wp2-wp4-normalization.json --precision-bits 256
+      - name: Produce every rational M51 interval and its exact Arb lower enclosure
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/post287/wp2_k2_even_transcript.py --output-dir /tmp/wp2-k2 --cells 1-15 --precision-bits 128
+      - name: No-search independent interval checker at higher precision
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/post287/wp2_verify_transcript.py /tmp/wp2-k2 --precision-bits 192
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: post287-wp2-k2-complete-transcript
+          path: |
+            /tmp/wp2-k2
+            /tmp/wp2-wp4-normalization.json
+
+  wp4-k2-odd-prerequisite:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Install pinned Arb dependencies
+        run: python -m pip install -r research/RHRC/routes/R003_ccm_bridge/requirements.txt
+      - name: Certify the complete one-dimensional K2 odd predecessor window
+        shell: bash
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/post287/wp4_k2_odd_prerequisite.py \
+            --out /tmp/wp4-k2-odd --precision-bits 128 --max-depth 30 --max-tiles 5000
+      - name: Independently verify the odd-sector rational coverage at higher precision
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/post287/wp4_k2_odd_prerequisite.py \
+            --verify /tmp/wp4-k2-odd --precision-bits 192
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: post287-wp4-k2-odd-prerequisite
+          path: /tmp/wp4-k2-odd/
+
+  wp4-k3-frozen-feasibility:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    outputs:
+      disposition: ${{ steps.result.outputs.disposition }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Install pinned Arb evaluation backend
+        run: python -m pip install -r research/RHRC/routes/R003_ccm_bridge/requirements.txt
+      - name: Evaluate the frozen Q14 384-bit full K3 two-parity feasibility boxes
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/post287/wp4_k3_frozen_q14_gate.py --precision-bits 384 --max-depth 40 --max-boxes 0 --max-nodes 1000 --time-seconds 1200 --output /tmp/wp4-k3-feasibility.json
+      - name: Report K3 gate disposition (UNRESOLVED is not positivity)
+        id: result
+        if: always()
+        shell: bash
+        run: |
+          if test -f /tmp/wp4-k3-feasibility.json; then
+            python - <<'PY'
+          import json, os
+          d=json.load(open('/tmp/wp4-k3-feasibility.json'))
+          message=f"WP4 K3 frozen-box gate: {d['gate']}; {d['tested_boxes']}/{d['frozen_boxes']} frozen boxes evaluated. NOT a continuous K3 positivity theorem; RH_OPEN."
+          print(message)
+          with open(os.environ['GITHUB_STEP_SUMMARY'],'a') as f:
+              f.write(message+'\n')
+          with open(os.environ['GITHUB_OUTPUT'],'a') as f:
+              f.write('disposition='+d['gate']+'\n')
+          PY
+          fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: post287-wp4-k3-gate
+          path: /tmp/wp4-k3-feasibility.json
+
+  wp4-k3-fourth-order-alternative:
+    needs: wp4-k3-frozen-feasibility
+    if: needs.wp4-k3-frozen-feasibility.outputs.disposition == 'UNRESOLVED'
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Install pinned Arb and symbolic backends
+        run: python -m pip install -r research/RHRC/routes/R003_ccm_bridge/requirements.txt
+      - name: Verify the order-four fixed-unit evaluator against independently established jets 0-2
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/post287/wp4_fourth_order_validate.py \
+            --output /tmp/wp4-fourth-order-low-jets.json --precision-bits 192
+      - name: Execute the one predeclared fourth-order Q14 alternative on all frozen boxes
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/post287/wp4_k3_fourth_order_fallback.py \
+            --output /tmp/wp4-fourth-order-frozen-boxes.json --precision-bits 384 \
+            --max-boxes 0 --seconds 15000
+      - name: Summarize exact interval outcome without upgrading an unresolved gate
+        if: always()
+        shell: bash
+        run: |
+          if test -f /tmp/wp4-fourth-order-frozen-boxes.json; then
+            python - <<'PY'
+          import json,os
+          d=json.load(open('/tmp/wp4-fourth-order-frozen-boxes.json'))
+          x=f"WP4 order-four fallback: {d['gate']} for {d['tested_boxes']}/{d['frozen_boxes']} frozen K3 boxes; all-aperture positivity NOT established; RH_OPEN."
+          print(x)
+          with open(os.environ['GITHUB_STEP_SUMMARY'],'a') as f:
+              f.write(x+'\n')
+          PY
+          fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: post287-wp4-k3-fourth-order-frozen
+          path: |
+            /tmp/wp4-fourth-order-low-jets.json
+            /tmp/wp4-fourth-order-frozen-boxes.json

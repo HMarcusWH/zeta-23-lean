@@ -1,0 +1,1451 @@
+{
+  "schema": "OPICA_STAGE22_31_CLEAN_CONTROLS_V1",
+  "status": "PASS_CONTROLS_ONLY",
+  "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+  "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+  "original21_preserved_byte_exact": true,
+  "source_count": 31,
+  "negative_source_files": 27,
+  "positive_source_files": 4,
+  "plan_sha256": "465bc1ef7d42c8b038ff277c34448fcc8a5953427249735cf8a2109aa5e16760",
+  "runner_sha256": "5a9cf1591cd77d02d13ad4ce70000e7b94847105974acc5868329e9d5334b71c",
+  "started_at": "2026-10-24T18:21:12.067447+00:00",
+  "controls": [
+    {
+      "name": "homogeneous-eigenproblem",
+      "file": "homogeneous-eigenproblem.lean",
+      "source_sha256": "8086da17f426945c622b17df50e60dc656f8f97f14ab230093a384f63ed1f0a0",
+      "expected": "REJECTED",
+      "scope": "Stage19 force/sampling contract mutation",
+      "origin": {
+        "kind": "EXACT_STAGE21_BYTES",
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\homogeneous-eigenproblem.lean",
+        "sha256": "8086da17f426945c622b17df50e60dc656f8f97f14ab230093a384f63ed1f0a0",
+        "receipt": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\CHECK_RESULT.json",
+        "receipt_sha256": "277a7e7fde8c600848bc59ce730faf3c9ceab1ca436ac36c58c00420f429aa0a"
+      },
+      "required_diagnostic_regex": [
+        "eulerImage",
+        "PositiveAxisTest"
+      ],
+      "passed": true,
+      "observed": "REJECTED_INTENDED_MUTATION",
+      "failure_reasons": [],
+      "requested_axiom_names": [],
+      "axioms": {},
+      "error_recovery_sorryAx_in_rejected_output": false,
+      "formal_authority_from_failed_declarations": false,
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "--root=C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\sources",
+        "-DautoImplicit=false",
+        "-DrelaxedAutoImplicit=false",
+        "-DmaxHeartbeats=800000",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\sources\\homogeneous-eigenproblem.lean",
+        "-o",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\objects\\homogeneous-eigenproblem.olean"
+      ],
+      "exit_code": 1,
+      "log": "homogeneous-eigenproblem.log",
+      "log_sha256": "301190740279523ab72a91044a28b0ac598ebfd2152bcb4a5c594b0306b8dfb6",
+      "seconds": 51.154044799972326
+    },
+    {
+      "name": "missing-conjugation",
+      "file": "missing-conjugation.lean",
+      "source_sha256": "ad8b5376576185c7d365f029aa3f0e140fcbd80c4616d1355eaadbb30492d437",
+      "expected": "REJECTED",
+      "scope": "Stage19 force/sampling contract mutation",
+      "origin": {
+        "kind": "EXACT_STAGE21_BYTES",
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\missing-conjugation.lean",
+        "sha256": "ad8b5376576185c7d365f029aa3f0e140fcbd80c4616d1355eaadbb30492d437",
+        "receipt": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\CHECK_RESULT.json",
+        "receipt_sha256": "277a7e7fde8c600848bc59ce730faf3c9ceab1ca436ac36c58c00420f429aa0a"
+      },
+      "required_diagnostic_regex": [
+        "native_sample_stieltjes_identity",
+        "starRingEnd"
+      ],
+      "passed": true,
+      "observed": "REJECTED_INTENDED_MUTATION",
+      "failure_reasons": [],
+      "requested_axiom_names": [],
+      "axioms": {},
+      "error_recovery_sorryAx_in_rejected_output": false,
+      "formal_authority_from_failed_declarations": false,
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "--root=C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\sources",
+        "-DautoImplicit=false",
+        "-DrelaxedAutoImplicit=false",
+        "-DmaxHeartbeats=800000",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\sources\\missing-conjugation.lean",
+        "-o",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\objects\\missing-conjugation.olean"
+      ],
+      "exit_code": 1,
+      "log": "missing-conjugation.log",
+      "log_sha256": "cf89295eb456c13577876ad7e12956537e458a6a3afaacd5466a5e88a5e1310e",
+      "seconds": 51.268752700067125
+    },
+    {
+      "name": "missing-lattice-atoms",
+      "file": "missing-lattice-atoms.lean",
+      "source_sha256": "071661e22bb39c2604b73f68d1a7c07e10ed9766c2bfe90aae1f961a3dd7df15",
+      "expected": "REJECTED",
+      "scope": "Stage19 force/sampling contract mutation",
+      "origin": {
+        "kind": "EXACT_STAGE21_BYTES",
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\missing-lattice-atoms.lean",
+        "sha256": "071661e22bb39c2604b73f68d1a7c07e10ed9766c2bfe90aae1f961a3dd7df15",
+        "receipt": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\CHECK_RESULT.json",
+        "receipt_sha256": "277a7e7fde8c600848bc59ce730faf3c9ceab1ca436ac36c58c00420f429aa0a"
+      },
+      "required_diagnostic_regex": [
+        "nativeLogForce",
+        "sawtooth_integrable_force_identity"
+      ],
+      "passed": true,
+      "observed": "REJECTED_INTENDED_MUTATION",
+      "failure_reasons": [],
+      "requested_axiom_names": [],
+      "axioms": {},
+      "error_recovery_sorryAx_in_rejected_output": false,
+      "formal_authority_from_failed_declarations": false,
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "--root=C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\sources",
+        "-DautoImplicit=false",
+        "-DrelaxedAutoImplicit=false",
+        "-DmaxHeartbeats=800000",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\sources\\missing-lattice-atoms.lean",
+        "-o",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\objects\\missing-lattice-atoms.olean"
+      ],
+      "exit_code": 1,
+      "log": "missing-lattice-atoms.log",
+      "log_sha256": "3a25fa348e98af7739a34e4e792f73460b6560bc98cecb8cc43c31cf0809a1c6",
+      "seconds": 48.20968880003784
+    },
+    {
+      "name": "synthetic-spectral-measure",
+      "file": "synthetic-spectral-measure.lean",
+      "source_sha256": "6327f48499d723aade54c6472a41e1a81ed4413fe9324582e81e81a0c094aba8",
+      "expected": "REJECTED",
+      "scope": "Stage19 force/sampling contract mutation",
+      "origin": {
+        "kind": "EXACT_STAGE21_BYTES",
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\synthetic-spectral-measure.lean",
+        "sha256": "6327f48499d723aade54c6472a41e1a81ed4413fe9324582e81e81a0c094aba8",
+        "receipt": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\CHECK_RESULT.json",
+        "receipt_sha256": "277a7e7fde8c600848bc59ce730faf3c9ceab1ca436ac36c58c00420f429aa0a"
+      },
+      "required_diagnostic_regex": [
+        "arithmeticSpectralMeasure",
+        "not definitionally equal"
+      ],
+      "passed": true,
+      "observed": "REJECTED_INTENDED_MUTATION",
+      "failure_reasons": [],
+      "requested_axiom_names": [],
+      "axioms": {},
+      "error_recovery_sorryAx_in_rejected_output": false,
+      "formal_authority_from_failed_declarations": false,
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "--root=C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\sources",
+        "-DautoImplicit=false",
+        "-DrelaxedAutoImplicit=false",
+        "-DmaxHeartbeats=800000",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\sources\\synthetic-spectral-measure.lean",
+        "-o",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\objects\\synthetic-spectral-measure.olean"
+      ],
+      "exit_code": 1,
+      "log": "synthetic-spectral-measure.log",
+      "log_sha256": "c7d1cb13ab4455d4e168177cab34662156f0e79e36d14451f1de239287c7b28a",
+      "seconds": 47.88446440000553
+    },
+    {
+      "name": "wrong-fourier-2pi",
+      "file": "wrong-fourier-2pi.lean",
+      "source_sha256": "6af30b4d62456cf13ed6311d4bc24857a7e76ac9e842ae86484b33c99aeb9a3f",
+      "expected": "REJECTED",
+      "scope": "Stage19 force/sampling contract mutation",
+      "origin": {
+        "kind": "EXACT_STAGE21_BYTES",
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\wrong-fourier-2pi.lean",
+        "sha256": "6af30b4d62456cf13ed6311d4bc24857a7e76ac9e842ae86484b33c99aeb9a3f",
+        "receipt": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\CHECK_RESULT.json",
+        "receipt_sha256": "277a7e7fde8c600848bc59ce730faf3c9ceab1ca436ac36c58c00420f429aa0a"
+      },
+      "required_diagnostic_regex": [
+        "logFourier",
+        "logFourier_eq_fourier"
+      ],
+      "passed": true,
+      "observed": "REJECTED_INTENDED_MUTATION",
+      "failure_reasons": [],
+      "requested_axiom_names": [],
+      "axioms": {},
+      "error_recovery_sorryAx_in_rejected_output": false,
+      "formal_authority_from_failed_declarations": false,
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "--root=C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\sources",
+        "-DautoImplicit=false",
+        "-DrelaxedAutoImplicit=false",
+        "-DmaxHeartbeats=800000",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\sources\\wrong-fourier-2pi.lean",
+        "-o",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\objects\\wrong-fourier-2pi.olean"
+      ],
+      "exit_code": 1,
+      "log": "wrong-fourier-2pi.log",
+      "log_sha256": "b438a7c6f57b6482e0c84569117dac1ea6a848150b3d30497cd6c1e48b4eaf1a",
+      "seconds": 38.80920669995248
+    },
+    {
+      "name": "wrong-reflection-kappa",
+      "file": "wrong-reflection-kappa.lean",
+      "source_sha256": "d75f23b3d9a6fe9f23bfad03bb9706fd31723204b3f35183951a0b147a4c45c6",
+      "expected": "REJECTED",
+      "scope": "Stage19 force/sampling contract mutation",
+      "origin": {
+        "kind": "EXACT_STAGE21_BYTES",
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\wrong-reflection-kappa.lean",
+        "sha256": "d75f23b3d9a6fe9f23bfad03bb9706fd31723204b3f35183951a0b147a4c45c6",
+        "receipt": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\CHECK_RESULT.json",
+        "receipt_sha256": "277a7e7fde8c600848bc59ce730faf3c9ceab1ca436ac36c58c00420f429aa0a"
+      },
+      "required_diagnostic_regex": [
+        "unsolved goals",
+        "starRingEnd"
+      ],
+      "passed": true,
+      "observed": "REJECTED_INTENDED_MUTATION",
+      "failure_reasons": [],
+      "requested_axiom_names": [],
+      "axioms": {},
+      "error_recovery_sorryAx_in_rejected_output": false,
+      "formal_authority_from_failed_declarations": false,
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "--root=C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\sources",
+        "-DautoImplicit=false",
+        "-DrelaxedAutoImplicit=false",
+        "-DmaxHeartbeats=800000",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\sources\\wrong-reflection-kappa.lean",
+        "-o",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\objects\\wrong-reflection-kappa.olean"
+      ],
+      "exit_code": 1,
+      "log": "wrong-reflection-kappa.log",
+      "log_sha256": "1cf92ed9c0f67bfa13316037a2440767e4bcda28bc266415af83e8a03d483af5",
+      "seconds": 39.402880399953574
+    },
+    {
+      "name": "NegativeMissingQuiet",
+      "file": "NegativeMissingQuiet.lean",
+      "source_sha256": "4148bbf86ad8755ee21aae8051f7aa971fe315cfe4c06a6cc2a13c92086bf9ca",
+      "expected": "REJECTED",
+      "scope": "Rate/physical consumer contract mutation",
+      "origin": {
+        "kind": "EXACT_STAGE21_BYTES",
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\NegativeMissingQuiet.lean",
+        "sha256": "4148bbf86ad8755ee21aae8051f7aa971fe315cfe4c06a6cc2a13c92086bf9ca",
+        "receipt": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\CHECK_RESULT.json",
+        "receipt_sha256": "277a7e7fde8c600848bc59ce730faf3c9ceab1ca436ac36c58c00420f429aa0a"
+      },
+      "required_diagnostic_regex": [
+        "Invalid projection",
+        "quiet_balanced_observation_implies_native_cut"
+      ],
+      "passed": true,
+      "observed": "REJECTED_INTENDED_MUTATION",
+      "failure_reasons": [],
+      "requested_axiom_names": [],
+      "axioms": {},
+      "error_recovery_sorryAx_in_rejected_output": false,
+      "formal_authority_from_failed_declarations": false,
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "--root=C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\sources",
+        "-DautoImplicit=false",
+        "-DrelaxedAutoImplicit=false",
+        "-DmaxHeartbeats=800000",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\sources\\NegativeMissingQuiet.lean",
+        "-o",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\objects\\NegativeMissingQuiet.olean"
+      ],
+      "exit_code": 1,
+      "log": "NegativeMissingQuiet.log",
+      "log_sha256": "7a93dcf73d84271d37c2cedb8121e1e7172cf767626fc25cdc5cc7c20fc6f2f2",
+      "seconds": 41.7328563000774
+    },
+    {
+      "name": "NegativeMissingSlow",
+      "file": "NegativeMissingSlow.lean",
+      "source_sha256": "ace87626affcca5480f4aa97b963dd227b8d84f17ba75e2313133f76cbd48e63",
+      "expected": "REJECTED",
+      "scope": "Rate/physical consumer contract mutation",
+      "origin": {
+        "kind": "EXACT_STAGE21_BYTES",
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\NegativeMissingSlow.lean",
+        "sha256": "ace87626affcca5480f4aa97b963dd227b8d84f17ba75e2313133f76cbd48e63",
+        "receipt": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\CHECK_RESULT.json",
+        "receipt_sha256": "277a7e7fde8c600848bc59ce730faf3c9ceab1ca436ac36c58c00420f429aa0a"
+      },
+      "required_diagnostic_regex": [
+        "native_slow_source_window_rate",
+        "Tendsto"
+      ],
+      "passed": true,
+      "observed": "REJECTED_INTENDED_MUTATION",
+      "failure_reasons": [],
+      "requested_axiom_names": [],
+      "axioms": {},
+      "error_recovery_sorryAx_in_rejected_output": false,
+      "formal_authority_from_failed_declarations": false,
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "--root=C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\sources",
+        "-DautoImplicit=false",
+        "-DrelaxedAutoImplicit=false",
+        "-DmaxHeartbeats=800000",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\sources\\NegativeMissingSlow.lean",
+        "-o",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\objects\\NegativeMissingSlow.olean"
+      ],
+      "exit_code": 1,
+      "log": "NegativeMissingSlow.log",
+      "log_sha256": "a6347c6d836654b3f37958a418584f04fbd4996b91b7ca33557a3faaef930bc3",
+      "seconds": 39.633399199927226
+    },
+    {
+      "name": "NegativeSyntheticQuiet",
+      "file": "NegativeSyntheticQuiet.lean",
+      "source_sha256": "9808037f972c802eaf9e75eb2cbafeee118401f30ddda6073495554d15fc83c4",
+      "expected": "REJECTED",
+      "scope": "Rate/physical consumer contract mutation",
+      "origin": {
+        "kind": "EXACT_STAGE21_BYTES",
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\NegativeSyntheticQuiet.lean",
+        "sha256": "9808037f972c802eaf9e75eb2cbafeee118401f30ddda6073495554d15fc83c4",
+        "receipt": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\CHECK_RESULT.json",
+        "receipt_sha256": "277a7e7fde8c600848bc59ce730faf3c9ceab1ca436ac36c58c00420f429aa0a"
+      },
+      "required_diagnostic_regex": [
+        "nativeRawHigh",
+        "Application type mismatch"
+      ],
+      "passed": true,
+      "observed": "REJECTED_INTENDED_MUTATION",
+      "failure_reasons": [],
+      "requested_axiom_names": [],
+      "axioms": {},
+      "error_recovery_sorryAx_in_rejected_output": false,
+      "formal_authority_from_failed_declarations": false,
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "--root=C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\sources",
+        "-DautoImplicit=false",
+        "-DrelaxedAutoImplicit=false",
+        "-DmaxHeartbeats=800000",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\sources\\NegativeSyntheticQuiet.lean",
+        "-o",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\objects\\NegativeSyntheticQuiet.olean"
+      ],
+      "exit_code": 1,
+      "log": "NegativeSyntheticQuiet.log",
+      "log_sha256": "600c69a322a277d54cd4b9f9256fe6d64598d1444b880c7d2f16f8e1f3ce5e60",
+      "seconds": 47.07876430009492
+    },
+    {
+      "name": "NegativeWindowBoundary",
+      "file": "NegativeWindowBoundary.lean",
+      "source_sha256": "17e071f1a779ebedc2d311a793b5ae1d8d816fd62008ec3743ad7bd07fb39598",
+      "expected": "REJECTED",
+      "scope": "Rate/physical consumer contract mutation",
+      "origin": {
+        "kind": "EXACT_STAGE21_BYTES",
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\NegativeWindowBoundary.lean",
+        "sha256": "17e071f1a779ebedc2d311a793b5ae1d8d816fd62008ec3743ad7bd07fb39598",
+        "receipt": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\CHECK_RESULT.json",
+        "receipt_sha256": "277a7e7fde8c600848bc59ce730faf3c9ceab1ca436ac36c58c00420f429aa0a"
+      },
+      "required_diagnostic_regex": [
+        "unsolved goals",
+        "False"
+      ],
+      "passed": true,
+      "observed": "REJECTED_INTENDED_MUTATION",
+      "failure_reasons": [],
+      "requested_axiom_names": [],
+      "axioms": {},
+      "error_recovery_sorryAx_in_rejected_output": false,
+      "formal_authority_from_failed_declarations": false,
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "--root=C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\sources",
+        "-DautoImplicit=false",
+        "-DrelaxedAutoImplicit=false",
+        "-DmaxHeartbeats=800000",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\sources\\NegativeWindowBoundary.lean",
+        "-o",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\objects\\NegativeWindowBoundary.olean"
+      ],
+      "exit_code": 1,
+      "log": "NegativeWindowBoundary.log",
+      "log_sha256": "85b5a287f75c358ed4530f75170c17169d42f2bdad30f35bc4be2df905591532",
+      "seconds": 46.23724739998579
+    },
+    {
+      "name": "NegativeZeroDamping",
+      "file": "NegativeZeroDamping.lean",
+      "source_sha256": "6e5b4422cabcc03da45ca8d877321ce71dbcb186109dddc142e14978579d8685",
+      "expected": "REJECTED",
+      "scope": "Rate/physical consumer contract mutation",
+      "origin": {
+        "kind": "EXACT_STAGE21_BYTES",
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\NegativeZeroDamping.lean",
+        "sha256": "6e5b4422cabcc03da45ca8d877321ce71dbcb186109dddc142e14978579d8685",
+        "receipt": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\CHECK_RESULT.json",
+        "receipt_sha256": "277a7e7fde8c600848bc59ce730faf3c9ceab1ca436ac36c58c00420f429aa0a"
+      },
+      "required_diagnostic_regex": [
+        "nativeZeroDisplacementSup",
+        "False"
+      ],
+      "passed": true,
+      "observed": "REJECTED_INTENDED_MUTATION",
+      "failure_reasons": [],
+      "requested_axiom_names": [],
+      "axioms": {},
+      "error_recovery_sorryAx_in_rejected_output": false,
+      "formal_authority_from_failed_declarations": false,
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "--root=C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\sources",
+        "-DautoImplicit=false",
+        "-DrelaxedAutoImplicit=false",
+        "-DmaxHeartbeats=800000",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\sources\\NegativeZeroDamping.lean",
+        "-o",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\objects\\NegativeZeroDamping.olean"
+      ],
+      "exit_code": 1,
+      "log": "NegativeZeroDamping.log",
+      "log_sha256": "3a55e54bb542d84d43cc3a1377425c621b5569db19ddf931b78ae1b1b81d602c",
+      "seconds": 40.0876213000156
+    },
+    {
+      "name": "NegativeConfluentProfilesDistinctness",
+      "file": "NegativeConfluentProfilesDistinctness.lean",
+      "source_sha256": "e2e832abd4c1c0e7a568e9896c4e24c673b537d1eb6ceccd2d9f6678f9a058d7",
+      "expected": "REJECTED",
+      "scope": "H2a full statement mutation",
+      "origin": {
+        "kind": "EXACT_STAGE21_BYTES",
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\NegativeConfluentProfilesDistinctness.lean",
+        "sha256": "e2e832abd4c1c0e7a568e9896c4e24c673b537d1eb6ceccd2d9f6678f9a058d7",
+        "receipt": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\CHECK_RESULT.json",
+        "receipt_sha256": "277a7e7fde8c600848bc59ce730faf3c9ceab1ca436ac36c58c00420f429aa0a"
+      },
+      "required_diagnostic_regex": [
+        "distinctSpectralNodes",
+        "LinearIndependent"
+      ],
+      "passed": true,
+      "observed": "REJECTED_INTENDED_MUTATION",
+      "failure_reasons": [],
+      "requested_axiom_names": [],
+      "axioms": {},
+      "error_recovery_sorryAx_in_rejected_output": false,
+      "formal_authority_from_failed_declarations": false,
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "--root=C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\sources",
+        "-DautoImplicit=false",
+        "-DrelaxedAutoImplicit=false",
+        "-DmaxHeartbeats=800000",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\sources\\NegativeConfluentProfilesDistinctness.lean",
+        "-o",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\objects\\NegativeConfluentProfilesDistinctness.olean"
+      ],
+      "exit_code": 1,
+      "log": "NegativeConfluentProfilesDistinctness.log",
+      "log_sha256": "2b17241701fa5e0330d476fe0d5b64388782efdde5fcf3ec01eb43a4ca94e401",
+      "seconds": 36.809532699990086
+    },
+    {
+      "name": "NegativeConfluentProfilesDeterminantSign",
+      "file": "NegativeConfluentProfilesDeterminantSign.lean",
+      "source_sha256": "cbc604c6922a9c02681ba0111fa743bee65ddcc64aff4e140b6272f4257fa522",
+      "expected": "REJECTED",
+      "scope": "H2a full statement mutation",
+      "origin": {
+        "kind": "EXACT_STAGE21_BYTES",
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\NegativeConfluentProfilesDeterminantSign.lean",
+        "sha256": "cbc604c6922a9c02681ba0111fa743bee65ddcc64aff4e140b6272f4257fa522",
+        "receipt": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\CHECK_RESULT.json",
+        "receipt_sha256": "277a7e7fde8c600848bc59ce730faf3c9ceab1ca436ac36c58c00420f429aa0a"
+      },
+      "required_diagnostic_regex": [
+        "profile_jet_confluent_determinant",
+        "profileJetMatrix"
+      ],
+      "passed": true,
+      "observed": "REJECTED_INTENDED_MUTATION",
+      "failure_reasons": [],
+      "requested_axiom_names": [],
+      "axioms": {},
+      "error_recovery_sorryAx_in_rejected_output": false,
+      "formal_authority_from_failed_declarations": false,
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "--root=C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\sources",
+        "-DautoImplicit=false",
+        "-DrelaxedAutoImplicit=false",
+        "-DmaxHeartbeats=800000",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\sources\\NegativeConfluentProfilesDeterminantSign.lean",
+        "-o",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\objects\\NegativeConfluentProfilesDeterminantSign.olean"
+      ],
+      "exit_code": 1,
+      "log": "NegativeConfluentProfilesDeterminantSign.log",
+      "log_sha256": "05adb528e162769c95026ad8a29df948bbce9e69ece50590882ff56b314a3ca8",
+      "seconds": 45.69863370002713
+    },
+    {
+      "name": "NegativeConfluentProfilesUnnormalized",
+      "file": "NegativeConfluentProfilesUnnormalized.lean",
+      "source_sha256": "4d58dac153c838998c0cfb004ba4e699f8bcea47ef305fd6f07f0ca1a8a91363",
+      "expected": "REJECTED",
+      "scope": "H2a full statement mutation",
+      "origin": {
+        "kind": "EXACT_STAGE21_BYTES",
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\NegativeConfluentProfilesUnnormalized.lean",
+        "sha256": "4d58dac153c838998c0cfb004ba4e699f8bcea47ef305fd6f07f0ca1a8a91363",
+        "receipt": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\CHECK_RESULT.json",
+        "receipt_sha256": "277a7e7fde8c600848bc59ce730faf3c9ceab1ca436ac36c58c00420f429aa0a"
+      },
+      "required_diagnostic_regex": [
+        "iteratedDeriv",
+        "profile_jet_confluent_determinant"
+      ],
+      "passed": true,
+      "observed": "REJECTED_INTENDED_MUTATION",
+      "failure_reasons": [],
+      "requested_axiom_names": [],
+      "axioms": {},
+      "error_recovery_sorryAx_in_rejected_output": false,
+      "formal_authority_from_failed_declarations": false,
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "--root=C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\sources",
+        "-DautoImplicit=false",
+        "-DrelaxedAutoImplicit=false",
+        "-DmaxHeartbeats=800000",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\sources\\NegativeConfluentProfilesUnnormalized.lean",
+        "-o",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\objects\\NegativeConfluentProfilesUnnormalized.olean"
+      ],
+      "exit_code": 1,
+      "log": "NegativeConfluentProfilesUnnormalized.log",
+      "log_sha256": "6e2324f51ad8d10793a85ca6129337c5ebeaa1fb5e2a3d78df80e512e0641ef7",
+      "seconds": 49.081044299993664
+    },
+    {
+      "name": "ConfluentProfilesFactorialControls",
+      "file": "ConfluentProfilesFactorialControls.lean",
+      "source_sha256": "2f8a02dd86401e5ba48f8ae7979b1687a27794a5ae2511d44955d533cb28ca7b",
+      "expected": "PASS",
+      "scope": "Actual-kernel normalization/degeneracy falsification",
+      "origin": {
+        "kind": "EXACT_STAGE21_BYTES",
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\ConfluentProfilesFactorialControls.lean",
+        "sha256": "2f8a02dd86401e5ba48f8ae7979b1687a27794a5ae2511d44955d533cb28ca7b",
+        "receipt": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\CHECK_RESULT.json",
+        "receipt_sha256": "277a7e7fde8c600848bc59ce730faf3c9ceab1ca436ac36c58c00420f429aa0a"
+      },
+      "required_diagnostic_regex": [],
+      "passed": true,
+      "observed": "PASS_ACTUAL_FALSIFICATION_CONTROL",
+      "failure_reasons": [],
+      "requested_axiom_names": [
+        "Zeta23.OPICAFollowup.OPICARightCellTaylor.second_parameter_jet_cubic_coefficient",
+        "Zeta23.OPICAFollowup.OPICARightCellTaylor.missing_parameter_factorial_is_false",
+        "Zeta23.OPICAFollowup.OPICARightCellTaylor.zero_node_actual_dependency"
+      ],
+      "axioms": {
+        "Zeta23.OPICAFollowup.OPICARightCellTaylor.second_parameter_jet_cubic_coefficient": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "Zeta23.OPICAFollowup.OPICARightCellTaylor.missing_parameter_factorial_is_false": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "Zeta23.OPICAFollowup.OPICARightCellTaylor.zero_node_actual_dependency": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      "error_recovery_sorryAx_in_rejected_output": false,
+      "formal_authority_from_failed_declarations": false,
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "--root=C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\sources",
+        "-DautoImplicit=false",
+        "-DrelaxedAutoImplicit=false",
+        "-DmaxHeartbeats=800000",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\sources\\ConfluentProfilesFactorialControls.lean",
+        "-o",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\objects\\ConfluentProfilesFactorialControls.olean"
+      ],
+      "exit_code": 0,
+      "log": "ConfluentProfilesFactorialControls.log",
+      "log_sha256": "d1d9279e05fd130adac0c6f09cff3e5e70963fd77cbac1543fb965638043c175",
+      "seconds": 71.99533679999877
+    },
+    {
+      "name": "NegativeParameterFactorial",
+      "file": "NegativeParameterFactorial.lean",
+      "source_sha256": "3f9ececefdaf17ea9d2928916c44cdd8d05c6010c3ba1d4854d327154c24ab95",
+      "expected": "REJECTED",
+      "scope": "Wrong 1/2! normalization against proved actual coefficient",
+      "origin": {
+        "kind": "EXACT_STAGE21_BYTES",
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\NegativeParameterFactorial.lean",
+        "sha256": "3f9ececefdaf17ea9d2928916c44cdd8d05c6010c3ba1d4854d327154c24ab95",
+        "receipt": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\CHECK_RESULT.json",
+        "receipt_sha256": "277a7e7fde8c600848bc59ce730faf3c9ceab1ca436ac36c58c00420f429aa0a"
+      },
+      "required_diagnostic_regex": [
+        "oddJetCoefficient",
+        "-1 / 6",
+        "-1 / 3"
+      ],
+      "passed": true,
+      "observed": "REJECTED_INTENDED_MUTATION",
+      "failure_reasons": [],
+      "requested_axiom_names": [
+        "Zeta23.OPICAFollowup.OPICARightCellTaylor.second_parameter_jet_cubic_coefficient",
+        "Zeta23.OPICAFollowup.OPICARightCellTaylor.missing_parameter_factorial_is_false",
+        "Zeta23.OPICAFollowup.OPICARightCellTaylor.zero_node_actual_dependency"
+      ],
+      "axioms": {
+        "Zeta23.OPICAFollowup.OPICARightCellTaylor.second_parameter_jet_cubic_coefficient": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "Zeta23.OPICAFollowup.OPICARightCellTaylor.missing_parameter_factorial_is_false": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "Zeta23.OPICAFollowup.OPICARightCellTaylor.zero_node_actual_dependency": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      "error_recovery_sorryAx_in_rejected_output": false,
+      "formal_authority_from_failed_declarations": false,
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "--root=C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\sources",
+        "-DautoImplicit=false",
+        "-DrelaxedAutoImplicit=false",
+        "-DmaxHeartbeats=800000",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\sources\\NegativeParameterFactorial.lean",
+        "-o",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\objects\\NegativeParameterFactorial.olean"
+      ],
+      "exit_code": 1,
+      "log": "NegativeParameterFactorial.log",
+      "log_sha256": "18d4f7e02dea8e3187c0ed1503b6cf52ff7224cc3faba050a3c808758627b682",
+      "seconds": 68.57652620004956
+    },
+    {
+      "name": "ConfluentProfilesReflectionControl",
+      "file": "ConfluentProfilesReflectionControl.lean",
+      "source_sha256": "e4ae96fdd49d0e66470c45ce47840b28aff64b32f0fe2ffaa7a438abf3d3a474",
+      "expected": "PASS",
+      "scope": "Actual-kernel normalization/degeneracy falsification",
+      "origin": {
+        "kind": "EXACT_STAGE21_BYTES",
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\ConfluentProfilesReflectionControl.lean",
+        "sha256": "e4ae96fdd49d0e66470c45ce47840b28aff64b32f0fe2ffaa7a438abf3d3a474",
+        "receipt": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\CHECK_RESULT.json",
+        "receipt_sha256": "277a7e7fde8c600848bc59ce730faf3c9ceab1ca436ac36c58c00420f429aa0a"
+      },
+      "required_diagnostic_regex": [],
+      "passed": true,
+      "observed": "PASS_ACTUAL_FALSIFICATION_CONTROL",
+      "failure_reasons": [],
+      "requested_axiom_names": [
+        "OPICAGroupedReflectionControl.reflection_duplicate_actual_not_independent"
+      ],
+      "axioms": {
+        "OPICAGroupedReflectionControl.reflection_duplicate_actual_not_independent": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      "error_recovery_sorryAx_in_rejected_output": false,
+      "formal_authority_from_failed_declarations": false,
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "--root=C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\sources",
+        "-DautoImplicit=false",
+        "-DrelaxedAutoImplicit=false",
+        "-DmaxHeartbeats=800000",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\sources\\ConfluentProfilesReflectionControl.lean",
+        "-o",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\objects\\ConfluentProfilesReflectionControl.olean"
+      ],
+      "exit_code": 0,
+      "log": "ConfluentProfilesReflectionControl.log",
+      "log_sha256": "c2c4f3a4af50f759102696d318d010a478bdcf4575e83c423e900c0205e33e56",
+      "seconds": 75.42400990007445
+    },
+    {
+      "name": "NegativeFullFiniteSpanFinal",
+      "file": "NegativeFullFiniteSpanFinal.lean",
+      "source_sha256": "955cf804f7a05a92ed643893b1493bbafd35fc8a7e1cfe163447fd35ccdf908e",
+      "expected": "REJECTED",
+      "scope": "Actual finite-span clause / independent-basis / reflection / selfduality falsification",
+      "origin": {
+        "kind": "EXACT_STAGE21_BYTES",
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\NegativeFullFiniteSpanFinal.lean",
+        "sha256": "955cf804f7a05a92ed643893b1493bbafd35fc8a7e1cfe163447fd35ccdf908e",
+        "receipt": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\CHECK_RESULT.json",
+        "receipt_sha256": "277a7e7fde8c600848bc59ce730faf3c9ceab1ca436ac36c58c00420f429aa0a"
+      },
+      "required_diagnostic_regex": [
+        "OffLatticeNonnegative",
+        "finite_zero_span_positive_only_zero"
+      ],
+      "passed": true,
+      "observed": "REJECTED_INTENDED_MUTATION",
+      "failure_reasons": [],
+      "requested_axiom_names": [],
+      "axioms": {},
+      "error_recovery_sorryAx_in_rejected_output": false,
+      "formal_authority_from_failed_declarations": false,
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "--root=C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\sources",
+        "-DautoImplicit=false",
+        "-DrelaxedAutoImplicit=false",
+        "-DmaxHeartbeats=800000",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\sources\\NegativeFullFiniteSpanFinal.lean",
+        "-o",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\objects\\NegativeFullFiniteSpanFinal.olean"
+      ],
+      "exit_code": 1,
+      "log": "NegativeFullFiniteSpanFinal.log",
+      "log_sha256": "6d5902fcff9c7de009261f8443beca7f1d7aff09ee9343701ffbd1c31a69589d",
+      "seconds": 71.25534419994801
+    },
+    {
+      "name": "NegativeBudgetIndependenceFinal",
+      "file": "NegativeBudgetIndependenceFinal.lean",
+      "source_sha256": "83ba20582622d40fa279088080ff4234e4c6499f8beac645225277f2624797ea",
+      "expected": "REJECTED",
+      "scope": "Actual finite-span clause / independent-basis / reflection / selfduality falsification",
+      "origin": {
+        "kind": "EXACT_STAGE21_BYTES",
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\NegativeBudgetIndependenceFinal.lean",
+        "sha256": "83ba20582622d40fa279088080ff4234e4c6499f8beac645225277f2624797ea",
+        "receipt": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\CHECK_RESULT.json",
+        "receipt_sha256": "277a7e7fde8c600848bc59ce730faf3c9ceab1ca436ac36c58c00420f429aa0a"
+      },
+      "required_diagnostic_regex": [
+        "Invalid field `choose`",
+        "LinearIndependent"
+      ],
+      "passed": true,
+      "observed": "REJECTED_INTENDED_MUTATION",
+      "failure_reasons": [],
+      "requested_axiom_names": [],
+      "axioms": {},
+      "error_recovery_sorryAx_in_rejected_output": false,
+      "formal_authority_from_failed_declarations": false,
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "--root=C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\sources",
+        "-DautoImplicit=false",
+        "-DrelaxedAutoImplicit=false",
+        "-DmaxHeartbeats=800000",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\sources\\NegativeBudgetIndependenceFinal.lean",
+        "-o",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\objects\\NegativeBudgetIndependenceFinal.olean"
+      ],
+      "exit_code": 1,
+      "log": "NegativeBudgetIndependenceFinal.log",
+      "log_sha256": "bd958256d8191b9ed1bc8c9e21d3f7b2df1a6b7c2108c4aab78dcb3b85af9b68",
+      "seconds": 68.36467769998126
+    },
+    {
+      "name": "DuplicateBasisControlFinal",
+      "file": "DuplicateBasisControlFinal.lean",
+      "source_sha256": "f4307169d05fd92ab8936f19b0de516fcaabede989e6ff6a7f5750f658b43fd9",
+      "expected": "PASS",
+      "scope": "Actual finite-span clause / independent-basis / reflection / selfduality falsification",
+      "origin": {
+        "kind": "EXACT_STAGE21_BYTES",
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\DuplicateBasisControlFinal.lean",
+        "sha256": "f4307169d05fd92ab8936f19b0de516fcaabede989e6ff6a7f5750f658b43fd9",
+        "receipt": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\CHECK_RESULT.json",
+        "receipt_sha256": "277a7e7fde8c600848bc59ce730faf3c9ceab1ca436ac36c58c00420f429aa0a"
+      },
+      "required_diagnostic_regex": [],
+      "passed": true,
+      "observed": "PASS_ACTUAL_FALSIFICATION_CONTROL",
+      "failure_reasons": [],
+      "requested_axiom_names": [
+        "IndependentFiniteSpanFalsification.repeated_actual_basis_is_not_independent",
+        "IndependentFiniteSpanFalsification.reflected_zero_is_the_same_jet"
+      ],
+      "axioms": {
+        "IndependentFiniteSpanFalsification.repeated_actual_basis_is_not_independent": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "IndependentFiniteSpanFalsification.reflected_zero_is_the_same_jet": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      "error_recovery_sorryAx_in_rejected_output": false,
+      "formal_authority_from_failed_declarations": false,
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "--root=C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\sources",
+        "-DautoImplicit=false",
+        "-DrelaxedAutoImplicit=false",
+        "-DmaxHeartbeats=800000",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\sources\\DuplicateBasisControlFinal.lean",
+        "-o",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\objects\\DuplicateBasisControlFinal.olean"
+      ],
+      "exit_code": 0,
+      "log": "DuplicateBasisControlFinal.log",
+      "log_sha256": "63e1ee48476844d2f77ea918a304af22600c58f3be641a36bfe38add10a85d24",
+      "seconds": 67.3056360000046
+    },
+    {
+      "name": "WeightedControlsFinal",
+      "file": "WeightedControlsFinal.lean",
+      "source_sha256": "9569499f8cc45570644a3612d7cb84a9c6dd35462809c00785021130507f1d20",
+      "expected": "PASS",
+      "scope": "Actual finite-span clause / independent-basis / reflection / selfduality falsification",
+      "origin": {
+        "kind": "EXACT_STAGE21_BYTES",
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\WeightedControlsFinal.lean",
+        "sha256": "9569499f8cc45570644a3612d7cb84a9c6dd35462809c00785021130507f1d20",
+        "receipt": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\CHECK_RESULT.json",
+        "receipt_sha256": "277a7e7fde8c600848bc59ce730faf3c9ceab1ca436ac36c58c00420f429aa0a"
+      },
+      "required_diagnostic_regex": [],
+      "passed": true,
+      "observed": "PASS_ACTUAL_FALSIFICATION_CONTROL",
+      "failure_reasons": [],
+      "requested_axiom_names": [
+        "IndependentWeightedBudgetControls.diracTwo_weighted_zero",
+        "IndependentWeightedBudgetControls.diracTwo_not_selfdual"
+      ],
+      "axioms": {
+        "IndependentWeightedBudgetControls.diracTwo_weighted_zero": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "IndependentWeightedBudgetControls.diracTwo_not_selfdual": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      "error_recovery_sorryAx_in_rejected_output": false,
+      "formal_authority_from_failed_declarations": false,
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "--root=C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\sources",
+        "-DautoImplicit=false",
+        "-DrelaxedAutoImplicit=false",
+        "-DmaxHeartbeats=800000",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\sources\\WeightedControlsFinal.lean",
+        "-o",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\objects\\WeightedControlsFinal.olean"
+      ],
+      "exit_code": 0,
+      "log": "WeightedControlsFinal.log",
+      "log_sha256": "e308c595513f66b84e74b3584b9500d8652b74fd8affa09bed6231ba76afaaa6",
+      "seconds": 72.09987469995394
+    },
+    {
+      "name": "NegativeCanonicalRecoveryWrongCost",
+      "file": "NegativeCanonicalRecoveryWrongCost.lean",
+      "source_sha256": "db3decd152f2a1876ab07134c19aca8373bb3fb600db5bb3ea87598875d3fae6",
+      "expected": "REJECTED",
+      "scope": "Canonical exact recovery cost cannot acquire an unproved +1.",
+      "origin": {
+        "kind": "EXACT_SEALED_CANONICAL_MUTATION",
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-release\\NegativeCanonicalRecoveryWrongCost.lean",
+        "sha256": "db3decd152f2a1876ab07134c19aca8373bb3fb600db5bb3ea87598875d3fae6",
+        "receipt": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-release\\stage22-type-control-receipt.json",
+        "receipt_sha256": "3cd6991c88e4e4cd40d0b74432056c6faae92bf6f9a6f30e93e0b7e0054744d6"
+      },
+      "required_diagnostic_regex": [
+        "orthogonalRecovery_norm_eq_optimalRecoveryCost",
+        "sSup"
+      ],
+      "passed": true,
+      "observed": "REJECTED_INTENDED_MUTATION",
+      "failure_reasons": [],
+      "requested_axiom_names": [
+        "Zeta23.OPICAFollowup.Validation.expected_canonical_recovery",
+        "Zeta23.OPICAFollowup.Validation.expected_filter_causal_actions",
+        "Zeta23.OPICAFollowup.Validation.expected_followup_native_output",
+        "Zeta23.OPICAFollowup.Validation.expected_followup_native_output_each_phase"
+      ],
+      "axioms": {
+        "Zeta23.OPICAFollowup.Validation.expected_canonical_recovery": [
+          "propext",
+          "sorryAx",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "Zeta23.OPICAFollowup.Validation.expected_filter_causal_actions": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "Zeta23.OPICAFollowup.Validation.expected_followup_native_output": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "Zeta23.OPICAFollowup.Validation.expected_followup_native_output_each_phase": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      "error_recovery_sorryAx_in_rejected_output": true,
+      "formal_authority_from_failed_declarations": false,
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "--root=C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\sources",
+        "-DautoImplicit=false",
+        "-DrelaxedAutoImplicit=false",
+        "-DmaxHeartbeats=800000",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\sources\\NegativeCanonicalRecoveryWrongCost.lean",
+        "-o",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\objects\\NegativeCanonicalRecoveryWrongCost.olean"
+      ],
+      "exit_code": 1,
+      "log": "NegativeCanonicalRecoveryWrongCost.log",
+      "log_sha256": "1c32e74b04e45512960a86d222f1285f74bdaee5c5f134f79841f5429acdb1a6",
+      "seconds": 75.58292920002714
+    },
+    {
+      "name": "NegativeCanonicalEulerWrongMultiplier",
+      "file": "NegativeCanonicalEulerWrongMultiplier.lean",
+      "source_sha256": "4c823a480c003cfc57f122ec4f8e4ca8154f51b3b23fef248837a1f476648f9f",
+      "expected": "REJECTED",
+      "scope": "Actual Euler action cannot acquire an unproved +1 multiplier.",
+      "origin": {
+        "kind": "EXACT_SEALED_CANONICAL_MUTATION",
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-release\\NegativeCanonicalEulerWrongMultiplier.lean",
+        "sha256": "4c823a480c003cfc57f122ec4f8e4ca8154f51b3b23fef248837a1f476648f9f",
+        "receipt": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-release\\stage22-type-control-receipt.json",
+        "receipt_sha256": "3cd6991c88e4e4cd40d0b74432056c6faae92bf6f9a6f30e93e0b7e0054744d6"
+      },
+      "required_diagnostic_regex": [
+        "finiteEulerFilter_laplace",
+        "finiteEulerMultiplier"
+      ],
+      "passed": true,
+      "observed": "REJECTED_INTENDED_MUTATION",
+      "failure_reasons": [],
+      "requested_axiom_names": [
+        "Zeta23.OPICAFollowup.Validation.expected_canonical_recovery",
+        "Zeta23.OPICAFollowup.Validation.expected_filter_causal_actions",
+        "Zeta23.OPICAFollowup.Validation.expected_followup_native_output",
+        "Zeta23.OPICAFollowup.Validation.expected_followup_native_output_each_phase"
+      ],
+      "axioms": {
+        "Zeta23.OPICAFollowup.Validation.expected_canonical_recovery": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "Zeta23.OPICAFollowup.Validation.expected_filter_causal_actions": [
+          "propext",
+          "sorryAx",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "Zeta23.OPICAFollowup.Validation.expected_followup_native_output": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "Zeta23.OPICAFollowup.Validation.expected_followup_native_output_each_phase": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      "error_recovery_sorryAx_in_rejected_output": true,
+      "formal_authority_from_failed_declarations": false,
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "--root=C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\sources",
+        "-DautoImplicit=false",
+        "-DrelaxedAutoImplicit=false",
+        "-DmaxHeartbeats=800000",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\sources\\NegativeCanonicalEulerWrongMultiplier.lean",
+        "-o",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\objects\\NegativeCanonicalEulerWrongMultiplier.olean"
+      ],
+      "exit_code": 1,
+      "log": "NegativeCanonicalEulerWrongMultiplier.log",
+      "log_sha256": "4ab0124e2c315aebe32b88b6d3819fb3b5a772f8ae8ca06740bf554b0ee4313e",
+      "seconds": 90.94002380000893
+    },
+    {
+      "name": "NegativeCanonicalResidualWrongPower",
+      "file": "NegativeCanonicalResidualWrongPower.lean",
+      "source_sha256": "b230e8ba674ca3a6f9188ca2eef6941aee12d3f61ca6e9e87ce730f20f51cc68",
+      "expected": "REJECTED",
+      "scope": "Actual real-cutoff residual cannot change power r to r+1.",
+      "origin": {
+        "kind": "EXACT_SEALED_CANONICAL_MUTATION",
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-release\\NegativeCanonicalResidualWrongPower.lean",
+        "sha256": "b230e8ba674ca3a6f9188ca2eef6941aee12d3f61ca6e9e87ce730f20f51cc68",
+        "receipt": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-release\\stage22-type-control-receipt.json",
+        "receipt_sha256": "3cd6991c88e4e4cd40d0b74432056c6faae92bf6f9a6f30e93e0b7e0054744d6"
+      },
+      "required_diagnostic_regex": [
+        "truncatedInverseResidual_laplace",
+        "r \\+ 1"
+      ],
+      "passed": true,
+      "observed": "REJECTED_INTENDED_MUTATION",
+      "failure_reasons": [],
+      "requested_axiom_names": [
+        "Zeta23.OPICAFollowup.Validation.expected_canonical_recovery",
+        "Zeta23.OPICAFollowup.Validation.expected_filter_causal_actions",
+        "Zeta23.OPICAFollowup.Validation.expected_followup_native_output",
+        "Zeta23.OPICAFollowup.Validation.expected_followup_native_output_each_phase"
+      ],
+      "axioms": {
+        "Zeta23.OPICAFollowup.Validation.expected_canonical_recovery": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "Zeta23.OPICAFollowup.Validation.expected_filter_causal_actions": [
+          "propext",
+          "sorryAx",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "Zeta23.OPICAFollowup.Validation.expected_followup_native_output": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "Zeta23.OPICAFollowup.Validation.expected_followup_native_output_each_phase": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      "error_recovery_sorryAx_in_rejected_output": true,
+      "formal_authority_from_failed_declarations": false,
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "--root=C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\sources",
+        "-DautoImplicit=false",
+        "-DrelaxedAutoImplicit=false",
+        "-DmaxHeartbeats=800000",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\sources\\NegativeCanonicalResidualWrongPower.lean",
+        "-o",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\objects\\NegativeCanonicalResidualWrongPower.olean"
+      ],
+      "exit_code": 1,
+      "log": "NegativeCanonicalResidualWrongPower.log",
+      "log_sha256": "56093a8bdcb137fe136cf4859637dd1c769a761017c2b3ea9eab09223fffbb92",
+      "seconds": 91.23896590003278
+    },
+    {
+      "name": "NegativeSquareMissingPlateau",
+      "file": "NegativeSquareMissingPlateau.lean",
+      "source_sha256": "0578c573416ef6b91a700e94ade71667a2a0690f0772cdd747f130ff954973a4",
+      "expected": "REJECTED",
+      "scope": "Actual square unit gap needs the genuine plateau condition.",
+      "origin": {
+        "kind": "SEALED_SQUARE_EXAMPLE_SPLIT_IMPORT_ONLY",
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-square-physical\\SEALED_SQUARE_PHYSICAL_2026-10-24\\NegativeSquarePhysicalFinal.lean",
+        "sha256": "22b6be21f52213996abc3a427d7b78b33955bf37a2ab337028acf07c6a7f6a35",
+        "example_index": 0,
+        "adaptation": "Split the three original example bodies into separate files; change only standalone module import."
+      },
+      "required_diagnostic_regex": [
+        "squareGapJordan_gap",
+        "h x = A"
+      ],
+      "passed": true,
+      "observed": "REJECTED_INTENDED_MUTATION",
+      "failure_reasons": [],
+      "requested_axiom_names": [],
+      "axioms": {},
+      "error_recovery_sorryAx_in_rejected_output": false,
+      "formal_authority_from_failed_declarations": false,
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "--root=C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\sources",
+        "-DautoImplicit=false",
+        "-DrelaxedAutoImplicit=false",
+        "-DmaxHeartbeats=800000",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\sources\\NegativeSquareMissingPlateau.lean",
+        "-o",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\objects\\NegativeSquareMissingPlateau.olean"
+      ],
+      "exit_code": 1,
+      "log": "NegativeSquareMissingPlateau.log",
+      "log_sha256": "839ba2e4ebc9edbc1d35ad86241857e11bcd8028d76dc0e8ec236d9b479ae01e",
+      "seconds": 78.44874959997833
+    },
+    {
+      "name": "NegativeSquareMissingLatticeSupport",
+      "file": "NegativeSquareMissingLatticeSupport.lean",
+      "source_sha256": "80a3fb09c136e0c3d9420007bc11b39614e547c328dd86ffe06c4f9bae354f4c",
+      "expected": "REJECTED",
+      "scope": "Actual all-temperate-measure no-repair needs actual lattice support.",
+      "origin": {
+        "kind": "SEALED_SQUARE_EXAMPLE_SPLIT_IMPORT_ONLY",
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-square-physical\\SEALED_SQUARE_PHYSICAL_2026-10-24\\NegativeSquarePhysicalFinal.lean",
+        "sha256": "22b6be21f52213996abc3a427d7b78b33955bf37a2ab337028acf07c6a7f6a35",
+        "example_index": 1,
+        "adaptation": "Split the three original example bodies into separate files; change only standalone module import."
+      },
+      "required_diagnostic_regex": [
+        "square_actual_no_tempered_measure_repair",
+        "totalVariation"
+      ],
+      "passed": true,
+      "observed": "REJECTED_INTENDED_MUTATION",
+      "failure_reasons": [],
+      "requested_axiom_names": [],
+      "axioms": {},
+      "error_recovery_sorryAx_in_rejected_output": false,
+      "formal_authority_from_failed_declarations": false,
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "--root=C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\sources",
+        "-DautoImplicit=false",
+        "-DrelaxedAutoImplicit=false",
+        "-DmaxHeartbeats=800000",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\sources\\NegativeSquareMissingLatticeSupport.lean",
+        "-o",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\objects\\NegativeSquareMissingLatticeSupport.olean"
+      ],
+      "exit_code": 1,
+      "log": "NegativeSquareMissingLatticeSupport.log",
+      "log_sha256": "54305ec544fc1b60a656e4e5f69342d9fb5ad29cfe622844cd5cc6aae921ea22",
+      "seconds": 77.486853600014
+    },
+    {
+      "name": "NegativeSquareMissingTemperedGrowth",
+      "file": "NegativeSquareMissingTemperedGrowth.lean",
+      "source_sha256": "33d361e92f73c057433d53629afed0f4a4278199065b75d0a657e7aa50ce388b",
+      "expected": "REJECTED",
+      "scope": "The canonical Schwartz embedding needs actual temperate variation growth.",
+      "origin": {
+        "kind": "SEALED_SQUARE_EXAMPLE_SPLIT_IMPORT_ONLY",
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-square-physical\\SEALED_SQUARE_PHYSICAL_2026-10-24\\NegativeSquarePhysicalFinal.lean",
+        "sha256": "22b6be21f52213996abc3a427d7b78b33955bf37a2ab337028acf07c6a7f6a35",
+        "example_index": 2,
+        "adaptation": "Split the three original example bodies into separate files; change only standalone module import."
+      },
+      "required_diagnostic_regex": [
+        "failed to synthesize",
+        "HasTemperateGrowth"
+      ],
+      "passed": true,
+      "observed": "REJECTED_INTENDED_MUTATION",
+      "failure_reasons": [],
+      "requested_axiom_names": [],
+      "axioms": {},
+      "error_recovery_sorryAx_in_rejected_output": false,
+      "formal_authority_from_failed_declarations": false,
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "--root=C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\sources",
+        "-DautoImplicit=false",
+        "-DrelaxedAutoImplicit=false",
+        "-DmaxHeartbeats=800000",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\sources\\NegativeSquareMissingTemperedGrowth.lean",
+        "-o",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\objects\\NegativeSquareMissingTemperedGrowth.olean"
+      ],
+      "exit_code": 1,
+      "log": "NegativeSquareMissingTemperedGrowth.log",
+      "log_sha256": "9e2124d57877d10e0da1a938e4e02860f9046e4c05c6a5f16c8fc69e0b8e3007",
+      "seconds": 81.19603780005127
+    },
+    {
+      "name": "NegativeOmitsCompactCompatibility",
+      "file": "NegativeOmitsCompactCompatibility.lean",
+      "source_sha256": "0ed8a24d7c41dc1b2e1f6a4da0e32432690eb09a758966d4db213ee91354f931",
+      "expected": "REJECTED",
+      "scope": "Support of an unrelated measure does not constrain an arbitrary tempered distribution without compact compatibility.",
+      "origin": {
+        "kind": "SEALED_COMPACT_COMPATIBILITY_IMPORT_ONLY",
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-tempered-lattice\\SEALED_TEMPERED_LATTICE_2026-10-24\\NegativeOmitsCompactCompatibility.lean",
+        "sha256": "a45273eb9bf5e980dc7c5a1e900493773cd8fcd606c07dd886644b0fdb0a46f2"
+      },
+      "required_diagnostic_regex": [
+        "extension_annihilates_lattice_zero",
+        "ExtendsCompactPairing"
+      ],
+      "passed": true,
+      "observed": "REJECTED_INTENDED_MUTATION",
+      "failure_reasons": [],
+      "requested_axiom_names": [],
+      "axioms": {},
+      "error_recovery_sorryAx_in_rejected_output": false,
+      "formal_authority_from_failed_declarations": false,
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "--root=C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\sources",
+        "-DautoImplicit=false",
+        "-DrelaxedAutoImplicit=false",
+        "-DmaxHeartbeats=800000",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\sources\\NegativeOmitsCompactCompatibility.lean",
+        "-o",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\objects\\NegativeOmitsCompactCompatibility.olean"
+      ],
+      "exit_code": 1,
+      "log": "NegativeOmitsCompactCompatibility.log",
+      "log_sha256": "dfdf4e54ee6b68ad882d5c64dae319c0edf5d3b75aa29e7ee2bc1e9f7a21a28b",
+      "seconds": 82.8957487998996
+    },
+    {
+      "name": "WrongFactorControl",
+      "file": "WrongFactorControl.lean",
+      "source_sha256": "86b58ec82eb522d28b39af39a1c472d299228bcde70e0d134c963c026f9569af",
+      "expected": "REJECTED",
+      "scope": "Original CT1.3 normalization/first-order cost is indispensable.",
+      "origin": {
+        "kind": "SEALED_CT13_IMPORT_ONLY",
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-ct13\\WrongFactorControl.lean",
+        "sha256": "4281f8ae48238583187b622d04c9aaad4f6f758da430134c4c2f1e4222197e7b",
+        "receipt": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-ct13\\negative-controls.json",
+        "receipt_sha256": "5cd02a20613de184f3ab205d099efdeefcc026a3a4b1855dbcde9fae441921bf"
+      },
+      "required_diagnostic_regex": [
+        "sinc_identity_original",
+        "Real.exp L - 1"
+      ],
+      "passed": true,
+      "observed": "REJECTED_INTENDED_MUTATION",
+      "failure_reasons": [],
+      "requested_axiom_names": [],
+      "axioms": {},
+      "error_recovery_sorryAx_in_rejected_output": false,
+      "formal_authority_from_failed_declarations": false,
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "--root=C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\sources",
+        "-DautoImplicit=false",
+        "-DrelaxedAutoImplicit=false",
+        "-DmaxHeartbeats=800000",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\sources\\WrongFactorControl.lean",
+        "-o",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\objects\\WrongFactorControl.olean"
+      ],
+      "exit_code": 1,
+      "log": "WrongFactorControl.log",
+      "log_sha256": "795d1d69c4c285cb38987f9f85dac30506fba053ddeb37dbef761b9052ef6929",
+      "seconds": 82.29403880005702
+    },
+    {
+      "name": "WrongSlopeControl",
+      "file": "WrongSlopeControl.lean",
+      "source_sha256": "7ece309a4518a32b24b7b473436dc91901ba0f72fbb3819aa66b5ac668d00dcb",
+      "expected": "REJECTED",
+      "scope": "Original CT1.3 normalization/first-order cost is indispensable.",
+      "origin": {
+        "kind": "SEALED_CT13_IMPORT_ONLY",
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-ct13\\WrongSlopeControl.lean",
+        "sha256": "842ba28c1c5525ac4af74cc223d38008b1339ef89f7142261c24c8c8b1c54976",
+        "receipt": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-ct13\\negative-controls.json",
+        "receipt_sha256": "5cd02a20613de184f3ab205d099efdeefcc026a3a4b1855dbcde9fae441921bf"
+      },
+      "required_diagnostic_regex": [
+        "positive_sinc_mass_slope",
+        "Tendsto"
+      ],
+      "passed": true,
+      "observed": "REJECTED_INTENDED_MUTATION",
+      "failure_reasons": [],
+      "requested_axiom_names": [],
+      "axioms": {},
+      "error_recovery_sorryAx_in_rejected_output": false,
+      "formal_authority_from_failed_declarations": false,
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "--root=C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\sources",
+        "-DautoImplicit=false",
+        "-DrelaxedAutoImplicit=false",
+        "-DmaxHeartbeats=800000",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\sources\\WrongSlopeControl.lean",
+        "-o",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\objects\\WrongSlopeControl.olean"
+      ],
+      "exit_code": 1,
+      "log": "WrongSlopeControl.log",
+      "log_sha256": "1323772d780031012524e79ed5368c35edc389344be3ccc71cf53cec65bca8ca",
+      "seconds": 82.67091560002882
+    },
+    {
+      "name": "NegativeNoCommonBudget",
+      "file": "NegativeNoCommonBudget.lean",
+      "source_sha256": "22c593dde15e6bbf7fe239f26278f5407ef8c1c47c75f3422a2fef3d101cafaa",
+      "expected": "REJECTED",
+      "scope": "Per-member linear growth does not replace one common TV bound in Schwartz-to-continuous-compact extraction.",
+      "origin": {
+        "kind": "SEALED_CC_COMMON_TV_IMPORT_ONLY",
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-independent-expected-types\\NegativeNoCommonBudget.lean",
+        "sha256": "bac9ae8d548269fc83c53a3ed3a47a9a5cd1cedfe12e579aa75315d4db97ccdb",
+        "receipt": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-independent-expected-types\\HT2_COMPACT_CONTINUOUS_EXTRACTION_RECEIPT.json",
+        "receipt_sha256": "5ef5cf6895d2204c3c258a2db546310e3ca6adaf0889d6f2cd1b082a99a75e6c"
+      },
+      "required_diagnostic_regex": [
+        "unsolved goals",
+        "CommonLinearMassBound"
+      ],
+      "passed": true,
+      "observed": "REJECTED_INTENDED_MUTATION",
+      "failure_reasons": [],
+      "requested_axiom_names": [],
+      "axioms": {},
+      "error_recovery_sorryAx_in_rejected_output": false,
+      "formal_authority_from_failed_declarations": false,
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "--root=C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\sources",
+        "-DautoImplicit=false",
+        "-DrelaxedAutoImplicit=false",
+        "-DmaxHeartbeats=800000",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\sources\\NegativeNoCommonBudget.lean",
+        "-o",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\objects\\NegativeNoCommonBudget.olean"
+      ],
+      "exit_code": 1,
+      "log": "NegativeNoCommonBudget.log",
+      "log_sha256": "f2081514d9550354960d0bc545fe4158b945daecce9589526362f0e64688f1ba",
+      "seconds": 66.41715540003497
+    }
+  ],
+  "aggregate_accepted": false,
+  "independent_review": "NOT_ESTABLISHED",
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "compiler": "Lean (version 4.33.0-rc2, x86_64-w64-windows-gnu, commit d8b18978322de05a8f3dba51ef03cf5461676c17, Release)",
+  "compiler_version_command": [
+    "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+    "env",
+    "lean",
+    "--version"
+  ],
+  "compiler_version_log_sha256": "79518dda68bc3c4a1d8669c197b30574f76e97149518a00d07b96465045d6dfc",
+  "native_lake_sha256": "e9a4e68da4cce55520db3cb34ff11990daed21bd2f2a7c3ed0f55cd5dc7441f6",
+  "environment": {
+    "LEAN_NUM_THREADS": "1"
+  },
+  "workers": 2,
+  "source_unchanged": true,
+  "shared_build_cache_unchanged": true,
+  "source_snapshot_sha256": "fc58cef9a93017ae59b764654ca83d676f2dead5ae8b2b1f6e16ba396a094daa",
+  "finished_at": "2026-10-24T18:38:23.054229+00:00"
+}

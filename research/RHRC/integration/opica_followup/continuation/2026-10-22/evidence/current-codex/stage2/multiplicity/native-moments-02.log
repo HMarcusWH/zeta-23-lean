@@ -1,0 +1,5 @@
+'Zeta23.OPICAFollowup.nativeAuxiliaryInput_initial_laplace' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.OPICAFollowup.nativeAuxiliaryInputLaplace_eq_continuation' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.nativeAuxiliaryMoment_integrable' depends on axioms: [propext, Classical.choice, Quot.sound]

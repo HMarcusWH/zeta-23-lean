@@ -1,0 +1,225 @@
+{
+  "schema": "OPICA_NONAUTHOR_COMPLEX_MOBIUS_PROVENANCE_REVIEW_V1",
+  "status": "INDEPENDENT_INTENDED_COMPLEX_INVERSION_CLAUSE_MATHEMATICALLY_REVIEWED",
+  "initial_sha256": "65a1985b68c25a03a33739d0509597e24eb31f45be9d4a78c305e1a38a74986e",
+  "source_sha256": "be6500f2109d084430278f41cedce0c0ae6f9eb523bb2e642c7590dddecbec17",
+  "native_receipt_sha256": "3ec09d4311b3d7c280a1d3350c37b4f6b0a9ae447db5d2dc3d617505654115a7",
+  "initial_literal_predicate_and_theorem_type_unchanged": true,
+  "checks": [
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-independent-complex-mobius\\INITIAL_INTENDED_TYPE.lean.txt",
+      "recorded_sha256": "65a1985b68c25a03a33739d0509597e24eb31f45be9d4a78c305e1a38a74986e",
+      "actual_sha256": "65a1985b68c25a03a33739d0509597e24eb31f45be9d4a78c305e1a38a74986e",
+      "bytes": 2918,
+      "matches": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-independent-complex-mobius\\IndependentComplexMobius.InitialCore.lean",
+      "recorded_sha256": "e9561834c41436f7cbb44eac8948527bdd520a33c611aa9184cbc74590dec40d",
+      "actual_sha256": "e9561834c41436f7cbb44eac8948527bdd520a33c611aa9184cbc74590dec40d",
+      "bytes": 4598,
+      "matches": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-independent-complex-mobius\\IndependentComplexMobius.InitialCore.olean",
+      "recorded_sha256": "e32c02b018e451076fef3f3e335193be6d680de58747d3550c2bde540d40e923",
+      "actual_sha256": "e32c02b018e451076fef3f3e335193be6d680de58747d3550c2bde540d40e923",
+      "bytes": 197664,
+      "matches": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-independent-complex-mobius\\IndependentComplexMobius.lean",
+      "recorded_sha256": "be6500f2109d084430278f41cedce0c0ae6f9eb523bb2e642c7590dddecbec17",
+      "actual_sha256": "be6500f2109d084430278f41cedce0c0ae6f9eb523bb2e642c7590dddecbec17",
+      "bytes": 6635,
+      "matches": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-independent-complex-mobius\\IndependentComplexMobius.olean",
+      "recorded_sha256": "3776e8a7f0bd563606918848090f77b61c0fe1ba42f55561308bcbe2ba4c73ed",
+      "actual_sha256": "3776e8a7f0bd563606918848090f77b61c0fe1ba42f55561308bcbe2ba4c73ed",
+      "bytes": 211760,
+      "matches": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-independent-complex-mobius\\compile-initial.log",
+      "recorded_sha256": "10275abcbf6b88952c20600e0de0a91f4de6c9a55276fb4b442f4c1ea5eaf0c1",
+      "actual_sha256": "10275abcbf6b88952c20600e0de0a91f4de6c9a55276fb4b442f4c1ea5eaf0c1",
+      "bytes": 143,
+      "matches": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-independent-complex-mobius\\compile-full-interface.log",
+      "recorded_sha256": "d816fa862c0dcdca52f71fad42801853cc3b15b3af182f9431ca0a01a24352df",
+      "actual_sha256": "d816fa862c0dcdca52f71fad42801853cc3b15b3af182f9431ca0a01a24352df",
+      "bytes": 292,
+      "matches": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-independent-complex-mobius\\ControlMissingImaginary.lean",
+      "recorded_sha256": "be68f43a6fb72fe44550069e66fec8adb2204ae6c6ac5b8f94c95afde7a0eecb",
+      "actual_sha256": "be68f43a6fb72fe44550069e66fec8adb2204ae6c6ac5b8f94c95afde7a0eecb",
+      "bytes": 7048,
+      "matches": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-independent-complex-mobius\\ControlMissingImaginary.log",
+      "recorded_sha256": "e19f08da8ec031d8d6997dbe8dc7e4729fac6c60f0debd4bccce43689de820a0",
+      "actual_sha256": "e19f08da8ec031d8d6997dbe8dc7e4729fac6c60f0debd4bccce43689de820a0",
+      "bytes": 1476,
+      "matches": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-independent-complex-mobius\\ControlMissingPhysicalInterface.lean",
+      "recorded_sha256": "4cb4d2e3bc19c7435d5898d47f8567688fd006fa9b9805ad0d9e63a2da60c6f1",
+      "actual_sha256": "4cb4d2e3bc19c7435d5898d47f8567688fd006fa9b9805ad0d9e63a2da60c6f1",
+      "bytes": 7034,
+      "matches": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-independent-complex-mobius\\ControlMissingPhysicalInterface.log",
+      "recorded_sha256": "521b41156aecd27b9c5f74b2a16312b7a7967013e41d4038672a398a24838c58",
+      "actual_sha256": "521b41156aecd27b9c5f74b2a16312b7a7967013e41d4038672a398a24838c58",
+      "bytes": 668,
+      "matches": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-independent-complex-mobius\\ControlWrongExactNorm.lean",
+      "recorded_sha256": "686eddfbe27050df083825ae6c1ea1257db5edf3f98479807dd229e87d0c5ca0",
+      "actual_sha256": "686eddfbe27050df083825ae6c1ea1257db5edf3f98479807dd229e87d0c5ca0",
+      "bytes": 6635,
+      "matches": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-independent-complex-mobius\\ControlWrongExactNorm.log",
+      "recorded_sha256": "d4e7ba2cd16429624e3452d50cc9b341a42cf0c673eb03fcbc4fad2b9df00662",
+      "actual_sha256": "d4e7ba2cd16429624e3452d50cc9b341a42cf0c673eb03fcbc4fad2b9df00662",
+      "bytes": 1351,
+      "matches": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-independent-complex-mobius\\make-controls.ps1",
+      "recorded_sha256": "c67368a5d59b9bb969de2b4cd597e434fed4e2cb63a0c0723fac72abe2eddd81",
+      "actual_sha256": "c67368a5d59b9bb969de2b4cd597e434fed4e2cb63a0c0723fac72abe2eddd81",
+      "bytes": 1928,
+      "matches": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-independent-complex-mobius\\PROVENANCE.md",
+      "recorded_sha256": "7ae6b9a60bb6c734586918e97d5876c79e10a3e56ed075e11fd1b46c695131ee",
+      "actual_sha256": "7ae6b9a60bb6c734586918e97d5876c79e10a3e56ed075e11fd1b46c695131ee",
+      "bytes": 4787,
+      "matches": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-independent-complex-mobius\\POST_GREEN_RESEARCH.md",
+      "recorded_sha256": "09fa0f130fe70f97988ce5d8385f62f0ffee5f5018d9f2a3a4ca191a3c031506",
+      "actual_sha256": "09fa0f130fe70f97988ce5d8385f62f0ffee5f5018d9f2a3a4ca191a3c031506",
+      "bytes": 2916,
+      "matches": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\OPICAFollowup\\WeightedMixing.lean",
+      "recorded_sha256": "5225572875d72ef14c2adc912d0548b92f5bccf9fcec807830e5ef01ef04cf50",
+      "actual_sha256": "5225572875d72ef14c2adc912d0548b92f5bccf9fcec807830e5ef01ef04cf50",
+      "matches": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\.lake\\build\\lib\\lean\\Zeta23\\OPICAFollowup\\WeightedMixing.olean",
+      "recorded_sha256": "a45b698c6cf12304c8651b97897e92def7fa3c6a8cdbdab83246f1376219edeb",
+      "actual_sha256": "a45b698c6cf12304c8651b97897e92def7fa3c6a8cdbdab83246f1376219edeb",
+      "matches": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\research\\RHRC\\integration\\opica_followup\\PUBLIC_ROOTS.json",
+      "recorded_sha256": "2239636f347449ecd447fc5ba78d7c75f1c0440d28a862cb72397c4f79597b41",
+      "actual_sha256": "2239636f347449ecd447fc5ba78d7c75f1c0440d28a862cb72397c4f79597b41",
+      "matches": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\research\\RHRC\\integration\\opica_followup\\BUILD_SPEC.md",
+      "recorded_sha256": "cacab08834aeb9badd578d90828be99cff33c7a617c609e75bb878eb5fa3b29c",
+      "actual_sha256": "cacab08834aeb9badd578d90828be99cff33c7a617c609e75bb878eb5fa3b29c",
+      "matches": true
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\research\\RHRC\\integration\\opica_followup\\PAPER_CROSSWALK.json",
+      "recorded_sha256": "9e1252631f26fb81f4a5c60ac714e483c076be5c9858e25056e3835933ce6451",
+      "actual_sha256": "9e1252631f26fb81f4a5c60ac714e483c076be5c9858e25056e3835933ce6451",
+      "matches": true
+    }
+  ],
+  "observed_standard_axiom_closures": [
+    {
+      "name": "Zeta23.OPICAFollowup.Validation.expected_independent_complete_complex_mobius",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "Zeta23.OPICAFollowup.Validation.expected_independent_complete_complex_mobius",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "Zeta23.OPICAFollowup.Validation.expected_independent_complex_mobius_full_interface",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    }
+  ],
+  "negative_controls": [
+    {
+      "name": "MissingImaginary",
+      "exit_code": 1,
+      "detected": "True cannot satisfy imaginary forward/inverse equations",
+      "object_emitted": false,
+      "log_sha256": "e19f08da8ec031d8d6997dbe8dc7e4729fac6c60f0debd4bccce43689de820a0",
+      "actual_object_exists": false
+    },
+    {
+      "name": "MissingPhysicalInterface",
+      "exit_code": 1,
+      "detected": "True cannot satisfy raw physical mixture-coordinate equalities",
+      "object_emitted": false,
+      "log_sha256": "521b41156aecd27b9c5f74b2a16312b7a7967013e41d4038672a398a24838c58",
+      "actual_object_exists": false
+    },
+    {
+      "name": "WrongExactNorm",
+      "exit_code": 1,
+      "detected": "zeta denominator 2*a+2 mismatches exact 2*a+1",
+      "object_emitted": false,
+      "log_sha256": "d4e7ba2cd16429624e3452d50cc9b341a42cf0c673eb03fcbc4fad2b9df00662",
+      "actual_object_exists": false
+    }
+  ],
+  "frozen_root": "Zeta23.OPICAFollowup.weighted_mobius_inverse",
+  "expected_consumer": "Zeta23.OPICAFollowup.Validation.expected_independent_complete_complex_mobius",
+  "postseal_companion": "Zeta23.OPICAFollowup.Validation.expected_independent_complex_mobius_full_interface",
+  "reviewed_clauses": [
+    "Arbitrary actual locally finite complex sigma with strict a>1/2 and its true mixing exponential moment; eta is the actual weightedDilationMixture, not supplied desired data.",
+    "Both real and imaginary forward eta=N*sigma and inverse sigma=M_mu*eta identities. Jordan signs expand the correct complex identities without subtracting infinite positive measures.",
+    "Every one of the four actual input/output coordinates has finite weighted logarithmic norm; absolute Mobius convolution and literal double-integral finiteness expose the absolute weighted Fubini condition.",
+    "Actual disjoint positive/negative Mobius combs, and exact weighted total-variation norm equal to the real positive zeta quotient with denominator zeta(2a+1).",
+    "The independently sealed predicate is an explicit transparent definition whose entire body was read; it is not a premise assuming the desired inversion. Its proof extracts actual proved identities and derives absolute finiteness and the exact real norm.",
+    "Postseal auxiliary raw-coordinate/convolution-multiplicativity/zeta-series clauses are honestly postseal and do not inherit blind-authorship status."
+  ],
+  "provenance_basis": "Trusted fresh-fork task prohibited prior production-root/Validation reading; preserved literal initial source and explicit chronology, independently recomputed pins, unchanged first intended core and successful first elaboration. This is agent authorship evidence, not human identity authentication.",
+  "old_required_weighted_signature_copies": "Remain diagnostic. General-complex sharp-gap and complex/density leakage companions cover their frozen clauses separately; this new core closes the residual independent complex-inversion intended-type clause.",
+  "production_binding": "PENDING_APPEND_REVIEW_REBUILD_AND_ACTUAL_FULL_TYPE_EXPORT",
+  "human_review": "NOT_ESTABLISHED",
+  "seal_created": false,
+  "registry_accepted": false,
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "independent_closing_inequalities": "OPEN",
+  "full_release": "OPEN"
+}

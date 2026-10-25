@@ -1,0 +1,68 @@
+{
+  "name": "NegativeCanonicalRecoveryWrongCost",
+  "file": "NegativeCanonicalRecoveryWrongCost.lean",
+  "source_sha256": "db3decd152f2a1876ab07134c19aca8373bb3fb600db5bb3ea87598875d3fae6",
+  "expected": "REJECTED",
+  "scope": "Canonical exact recovery cost cannot acquire an unproved +1.",
+  "origin": {
+    "kind": "EXACT_SEALED_CANONICAL_MUTATION",
+    "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-release\\NegativeCanonicalRecoveryWrongCost.lean",
+    "sha256": "db3decd152f2a1876ab07134c19aca8373bb3fb600db5bb3ea87598875d3fae6",
+    "receipt": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-release\\stage22-type-control-receipt.json",
+    "receipt_sha256": "3cd6991c88e4e4cd40d0b74432056c6faae92bf6f9a6f30e93e0b7e0054744d6"
+  },
+  "required_diagnostic_regex": [
+    "orthogonalRecovery_norm_eq_optimalRecoveryCost",
+    "sSup"
+  ],
+  "passed": true,
+  "observed": "REJECTED_INTENDED_MUTATION",
+  "failure_reasons": [],
+  "requested_axiom_names": [
+    "Zeta23.OPICAFollowup.Validation.expected_canonical_recovery",
+    "Zeta23.OPICAFollowup.Validation.expected_filter_causal_actions",
+    "Zeta23.OPICAFollowup.Validation.expected_followup_native_output",
+    "Zeta23.OPICAFollowup.Validation.expected_followup_native_output_each_phase"
+  ],
+  "axioms": {
+    "Zeta23.OPICAFollowup.Validation.expected_canonical_recovery": [
+      "propext",
+      "sorryAx",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Zeta23.OPICAFollowup.Validation.expected_filter_causal_actions": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Zeta23.OPICAFollowup.Validation.expected_followup_native_output": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Zeta23.OPICAFollowup.Validation.expected_followup_native_output_each_phase": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "error_recovery_sorryAx_in_rejected_output": true,
+  "formal_authority_from_failed_declarations": false,
+  "command": [
+    "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+    "env",
+    "lean",
+    "--root=C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\sources",
+    "-DautoImplicit=false",
+    "-DrelaxedAutoImplicit=false",
+    "-DmaxHeartbeats=800000",
+    "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\sources\\NegativeCanonicalRecoveryWrongCost.lean",
+    "-o",
+    "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\objects\\NegativeCanonicalRecoveryWrongCost.olean"
+  ],
+  "exit_code": 1,
+  "log": "NegativeCanonicalRecoveryWrongCost.log",
+  "log_sha256": "1c32e74b04e45512960a86d222f1285f74bdaee5c5f134f79841f5429acdb1a6",
+  "seconds": 75.58292920002714
+}

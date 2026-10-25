@@ -1,0 +1,8 @@
+'Zeta23.OPICAFollowup.aux_completion_actual_transform' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.OPICAFollowup.aux_completion_uniform_decay' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.OPICAFollowup.aux_completion_ratio_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.OPICAFollowup.auxCompletionProfile_distributional_derivative' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.auxCompletionKernel_scaled_profile' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.OPICAFollowup.auxCompletionFilledTransform_at_half' depends on axioms: [propext, Classical.choice, Quot.sound]

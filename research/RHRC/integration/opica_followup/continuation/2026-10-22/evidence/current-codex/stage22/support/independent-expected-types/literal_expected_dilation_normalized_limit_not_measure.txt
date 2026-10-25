@@ -1,0 +1,29 @@
+theorem expected_dilation_normalized_limit_not_measure :
+    ∃ T : TemperedDistribution ℝ ℂ,
+      T = ct1NormalizedLimit ∧ T ≠ 0 ∧
+      Tendsto (fun L : ℝ => ((L : ℂ)^2)⁻¹ • nearGapCombDistribution L)
+        (𝓝[≠] 0) (𝓝 T) ∧
+      (∀ φ : SchwartzMap ℝ ℂ,
+        Tendsto (fun L : ℝ => (nearGapCombDistribution L φ) / (L : ℂ)^2)
+          (𝓝[≠] 0) (𝓝 (T φ))) ∧
+      (∀ φ : SchwartzMap ℝ ℂ,
+        T φ = ∑' n : ℤ, ((n : ℂ)^2 * deriv (deriv φ) n + 2*(n : ℂ)*deriv φ n)) ∧
+      (∀ φ : SchwartzMap ℝ ℂ, HasSum (fun n : ℤ =>
+        ((n : ℂ)^2 • (TemperedDistribution.derivCLM ℂ)
+          ((TemperedDistribution.derivCLM ℂ) (TemperedDistribution.delta (n : ℝ))) -
+          (2*(n : ℂ)) • (TemperedDistribution.derivCLM ℂ)
+            (TemperedDistribution.delta (n : ℝ))) φ) (T φ)) ∧
+      (∀ n : ℤ, ∀ φ : SchwartzMap ℝ ℂ,
+        tsupport (φ : ℝ → ℂ) ⊆ Icc ((n : ℝ)-1/2) ((n : ℝ)+1/2) →
+        T φ = (n : ℂ)^2 * deriv (deriv φ) n + 2*(n : ℂ)*deriv φ n) ∧
+      (∀ n : ℤ, n ≠ 0 → ¬ ∃ C : ℝ, ∀ φ : SchwartzMap ℝ ℂ,
+        tsupport (φ : ℝ → ℂ) ⊆ Icc ((n : ℝ)-1/2) ((n : ℝ)+1/2) →
+        ‖T φ‖ ≤ C * SchwartzMap.seminorm ℝ 0 0 φ) ∧
+      (¬ ∃ μ : LocallyFiniteSignedMeasure, ∀ φ : SchwartzMap ℝ ℂ,
+        (∫ x : ℝ, φ x ∂μ.positive) - (∫ x : ℝ, φ x ∂μ.negative) = T φ) ∧
+      (¬ ∃ μ : LocallyFiniteSignedMeasure, ∃ growth : μ.HasLinearGrowth,
+        μ.distributionOfLinearGrowth growth = T) ∧
+      Tendsto (fun L : ℝ => (nearGapCombFamily L).totalVariation.real (Icc (1/2) (3/2)) / L^2)
+        (𝓝[>] 0) atTop ∧
+      (∀ M : ℝ, ∀ᶠ L : ℝ in 𝓝[>] 0,
+        M < (nearGapCombFamily L).totalVariation.real (Icc (-2) 2) / L^2)

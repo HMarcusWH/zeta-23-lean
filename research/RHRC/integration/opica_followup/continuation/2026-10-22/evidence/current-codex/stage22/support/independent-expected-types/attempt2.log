@@ -1,0 +1,160 @@
+../audit-independent-expected-types/ExpectedFullContracts.lean:24:2: error: Type mismatch
+  source_order_uniform_norms
+has type
+  ∃ C,
+    0 < C ∧
+      ∀ (d : ℕ),
+        (∀ k ≤ 2,
+            (∀ (x : ℝ),
+                |iteratedDeriv k (sourceOrderFamily d) x| + ∫ (u : ℝ), |iteratedDeriv k (sourceOrderFamily d) u| ≤
+                  Real.exp (C * (↑d + 1) * Real.log (↑d + 2))) ∧
+              eLpNorm (iteratedDeriv k (sourceOrderFamily d)) ∞ volume ≤
+                  ENNReal.ofReal (Real.exp (C * (↑d + 1) * Real.log (↑d + 2))) ∧
+                (eLpNorm (iteratedDeriv k (sourceOrderFamily d)) ∞ volume).toReal +
+                    ∫ (u : ℝ), |iteratedDeriv k (sourceOrderFamily d) u| ≤
+                  Real.exp (C * (↑d + 1) * Real.log (↑d + 2))) ∧
+          MemLp (integerDriveFamily d) 2 volume ∧
+            ‖integerDriveFamilyL2 d‖ ≤ Real.exp (C * (↑d + 1) * Real.log (↑d + 2)) ∧
+              ∀ (t : ℝ), ∫ (x : ℝ), uniform_nativeOrderLogDriveSummand d t x = 0
+but is expected to have type
+  ∃ C,
+    0 < C ∧
+      ∀ (d : ℕ),
+        (∀ k ≤ 2,
+            ∀ (x : ℝ),
+              (∫ (u : ℝ), |iteratedDeriv k (sourceOrderFamily d) u|) + |iteratedDeriv k (sourceOrderFamily d) x| ≤
+                Real.exp (C * (↑d + 1) * Real.log (↑d + 2))) ∧
+          MemLp (integerDriveFamily d) 2 volume ∧
+            ‖integerDriveFamilyL2 d‖ ≤ Real.exp (C * (↑d + 1) * Real.log (↑d + 2)) ∧
+              sourceWeightedMoment 0 (1 / 2) (sourceOrderFamily d) = 0 ∧
+                sourceWeightedMoment 1 (1 / 2) (sourceOrderFamily d) = 0
+../audit-independent-expected-types/ExpectedFullContracts.lean:32:2: error: Type mismatch
+  native_field_theta_envelope
+has type
+  ∃ C,
+    0 < C ∧
+      ∀ (d : ℕ),
+        0 < nativeFieldOrderConstant d ∧
+          (∀ (t : ℝ),
+              0 ≤ t → |primeFieldFamily d t| ≤ nativeFieldOrderConstant d * Real.exp (nativeZeroDisplacementSup * t)) ∧
+            Real.log (1 + nativeFieldOrderConstant d) ≤ C * (↑d + 1) * Real.log (↑d + 2)
+but is expected to have type
+  ∃ C,
+    0 < C ∧
+      ∃ A,
+        (∀ (d : ℕ), 0 < A d) ∧
+          (∀ (d : ℕ), Real.log (1 + A d) ≤ C * (↑d + 1) * Real.log (↑d + 2)) ∧
+            ∀ (d : ℕ) (t : ℝ), 0 ≤ t → |primeFieldFamily d t| ≤ A d * Real.exp (nativeZeroDisplacementSup * t)
+../audit-independent-expected-types/ExpectedFullContracts.lean:43:58: error: Application type mismatch: The argument
+  a
+has type
+  ℝ
+of sort `Type` but is expected to have type
+  ?m.151 ≤ 1
+of sort `Prop` in the application
+  near_gap_mass_bound ν growth selfdual ?m.154 a
+../audit-independent-expected-types/ExpectedFullContracts.lean:58:50: error: Application type mismatch: The argument
+  growth
+has type
+  ∀ (n : ℕ), (ν n).HasLinearGrowth
+but is expected to have type
+  ∀ (n : ℕ), (ν n).FourierSelfdual ⋯
+in the application
+  near_gap_controlled_limit_zero ν C common growth
+../audit-independent-expected-types/ExpectedFullContracts.lean:80:2: error: Type mismatch
+  dilation_near_gap_family
+has type
+  ∀ (L : ℝ),
+    0 < L →
+      L < Real.log 2 →
+        (∀ (K : Set ℝ) (hK : IsCompact K),
+            localSignedCompactRestriction (nearGapCombFamily L) K hK =
+              localSignedCompactRestriction (dilatedCombJordan L) K hK +
+                  localSignedCompactRestriction (dilatedCombJordan (-L)) K hK -
+                (2 * Real.cosh (L / 2)) • localSignedCompactRestriction (dilatedCombJordan 0) K hK) ∧
+          (nearGapCombFamily L).HasLinearGrowth ∧
+            CommonLinearMassBound 18 (nearGapCombFamily L).totalVariation ∧
+              (nearGapCombFamily L).FourierSelfdual ⋯ ∧
+                (∀ (f : 𝓢(ℝ, ℂ)),
+                    (nearGapCombDistribution L)
+                        ((SchwartzMap.compCLMOfContinuousLinearEquiv ℂ ↑(LinearIsometryEquiv.neg ℝ)) f) =
+                      (nearGapCombDistribution L) f) ∧
+                  hasNearGap (nearGapCombFamily L) (Real.exp (-L)) ∧
+                    (1 / 2 < Real.exp (-L) ∧ Real.exp (-L) < 1) ∧
+                      (nearGapCombFamily L).OffLatticeNonnegative ∧
+                        ((nearGapCombFamily L).positive {0} = 0 ∧ (nearGapCombFamily L).negative {0} = 0) ∧
+                          (nearGapCombFamily L).positive ≠ 0 ∧
+                            (Measure.map (fun x => -x) (nearGapCombFamily L).positive = (nearGapCombFamily L).positive ∧
+                                Measure.map (fun x => -x) (nearGapCombFamily L).negative =
+                                  (nearGapCombFamily L).negative) ∧
+                              (nearGapCombFamily L).positive.real {Real.exp (-L)} = Real.exp (-L / 2) ∧
+                                (nearGapCombFamily L).negative {Real.exp (-L)} = 0
+but is expected to have type
+  ∃ C,
+    0 < C ∧
+      ∀ (L : ℝ),
+        0 < L →
+          L < Real.log 2 →
+            nearGapCombDistribution L =
+                dilatedCombDistribution L + dilatedCombDistribution (-L) -
+                  ↑(2 * Real.cosh (L / 2)) • dilatedCombDistribution 0 ∧
+              nearGapCombDistribution L ≠ 0 ∧
+                𝓕 (nearGapCombDistribution L) = nearGapCombDistribution L ∧
+                  Measure.map (fun x => -x) (nearGapCombFamily L).positive = (nearGapCombFamily L).positive ∧
+                    Measure.map (fun x => -x) (nearGapCombFamily L).negative = (nearGapCombFamily L).negative ∧
+                      (nearGapCombFamily L).positive {0} = 0 ∧
+                        (nearGapCombFamily L).negative {0} = 0 ∧
+                          (nearGapCombFamily L).positive (Ioo (-Real.exp (-L)) (Real.exp (-L))) = 0 ∧
+                            (nearGapCombFamily L).negative (Ioo (-Real.exp (-L)) (Real.exp (-L))) = 0 ∧
+                              (nearGapCombFamily L).negative integerLatticeᶜ = 0 ∧
+                                (nearGapCombFamily L).positive {Real.exp (-L)} = ENNReal.ofReal (Real.exp (-L / 2)) ∧
+                                  (∀ (R : ℝ),
+                                      0 ≤ R → (nearGapCombFamily L).totalVariation.real (Icc (-R) R) ≤ C * (1 + R)) ∧
+                                    (nearGapCombFamily L).integral sincSquared =
+                                      2 * (Real.exp L - 1) / Real.exp L ^ (3 / 2)
+../audit-independent-expected-types/ExpectedFullContracts.lean:94:2: error: Type mismatch
+  dilation_normalized_limit_not_measure
+has type
+  Tendsto (fun L => (↑L ^ 2)⁻¹ • nearGapCombDistribution L) (𝓝[≠] 0) (𝓝 ct1NormalizedLimit) ∧
+    (∀ (φ : 𝓢(ℝ, ℂ)),
+        Tendsto (fun L => (nearGapCombDistribution L) φ / ↑L ^ 2) (𝓝[≠] 0)
+          (𝓝 (∑' (n : ℤ), (↑n ^ 2 * deriv (deriv ⇑φ) ↑n + 2 * ↑n * deriv ⇑φ ↑n)))) ∧
+      (∀ (φ : 𝓢(ℝ, ℂ)),
+          HasSum
+            (fun n =>
+              (↑n ^ 2 •
+                    (TemperedDistribution.derivCLM ℂ)
+                      ((TemperedDistribution.derivCLM ℂ) (TemperedDistribution.delta ↑n)) -
+                  (2 * ↑n) • (TemperedDistribution.derivCLM ℂ) (TemperedDistribution.delta ↑n))
+                φ)
+            (ct1NormalizedLimit φ)) ∧
+        (∀ (n : ℤ) (φ : 𝓢(ℝ, ℂ)),
+            tsupport ⇑φ ⊆ Icc (↑n - 1 / 2) (↑n + 1 / 2) →
+              ct1NormalizedLimit φ = ↑n ^ 2 * deriv (deriv ⇑φ) ↑n + 2 * ↑n * deriv ⇑φ ↑n) ∧
+          ct1NormalizedLimit ≠ 0 ∧
+            (∀ (n : ℤ),
+                n ≠ 0 →
+                  ¬∃ C,
+                      ∀ (φ : 𝓢(ℝ, ℂ)),
+                        tsupport ⇑φ ⊆ Icc (↑n - 1 / 2) (↑n + 1 / 2) →
+                          ‖ct1NormalizedLimit φ‖ ≤ C * (SchwartzMap.seminorm ℝ 0 0) φ) ∧
+              (¬∃ μ, ∀ (φ : 𝓢(ℝ, ℂ)), ∫ (x : ℝ), φ x ∂μ.positive - ∫ (x : ℝ), φ x ∂μ.negative = ct1NormalizedLimit φ) ∧
+                Tendsto (fun L => (nearGapCombFamily L).totalVariation.real (Icc (1 / 2) (3 / 2)) / L ^ 2) (𝓝[>] 0)
+                  atTop
+but is expected to have type
+  ∃ T,
+    T ≠ 0 ∧
+      (∀ (φ : 𝓢(ℝ, ℂ)), Tendsto (fun L => (nearGapCombDistribution L) φ / ↑L ^ 2) (𝓝[>] 0) (𝓝 (T φ))) ∧
+        (∀ (φ : 𝓢(ℝ, ℂ)), T φ = ∑' (n : ℤ), (↑n ^ 2 * deriv (deriv ⇑φ) ↑n + 2 * ↑n * deriv ⇑φ ↑n)) ∧
+          (¬∃ μ, ∃ (growth : μ.HasLinearGrowth), μ.distributionOfLinearGrowth growth = T) ∧
+            ∀ (M : ℝ), ∀ᶠ (L : ℝ) in 𝓝[>] 0, M < (nearGapCombFamily L).totalVariation.real (Icc (-2) 2) / L ^ 2
+../audit-independent-expected-types/ExpectedFullContracts.lean:105:53: error: Application type mismatch: The argument
+  independent
+has type
+  ∀ (a : Fin n → ℝ),
+    (zeroJetRealSpan (realBasisCombinationData basis a)).positive = 0 →
+      (zeroJetRealSpan (realBasisCombinationData basis a)).negative = 0 → a = 0
+but is expected to have type
+  LinearIndependent ℝ fun i => (zeroJetRealSpan (basis i)).distributionOfLinearGrowth ⋯
+in the application
+  fixed_basis_negative_mass_budget basis valid independent

@@ -1,0 +1,64 @@
+{
+  "status": "PASS_STAGE2_NAVIGATION_SCOPE_AND_HISTORY",
+  "new_links_checked": 41,
+  "historical_control_blocks": [
+    {
+      "path": "AUDIT.md",
+      "blocks": 1,
+      "identical": true
+    },
+    {
+      "path": "FORK_NOTES.md",
+      "blocks": 1,
+      "identical": true
+    },
+    {
+      "path": "README.md",
+      "blocks": 1,
+      "identical": true
+    },
+    {
+      "path": "research/RHRC/CURRENT_RESEARCH_PLAN.md",
+      "blocks": 1,
+      "identical": true
+    },
+    {
+      "path": "research/RHRC/DOCUMENTATION_AUTHORITY.md",
+      "blocks": 1,
+      "identical": true
+    },
+    {
+      "path": "research/RHRC/README.md",
+      "blocks": 1,
+      "identical": true
+    },
+    {
+      "path": "research/RHRC/VALIDATION_PROTOCOL.md",
+      "blocks": 1,
+      "identical": true
+    }
+  ],
+  "historical_bodies": [
+    {
+      "path": "README.md",
+      "historical_body_byte_identical": true
+    },
+    {
+      "path": "research/RHRC/CURRENT_RESEARCH_PLAN.md",
+      "historical_body_byte_identical": true
+    },
+    {
+      "path": "research/RHRC/README.md",
+      "historical_body_byte_identical": true
+    }
+  ],
+  "ledger_counts": {
+    "OPEN_NO_COMPLETE_CANDIDATE": 43,
+    "PRIOR_CANDIDATE_FAILED_OR_BLOCKED_UNACCEPTED": 1,
+    "PROVED_IN_ORIGINAL_41_ROOT_SOURCE_BOUND_SUBSET": 41,
+    "PROVED_NARROW_LOCAL_GATES_AGGREGATE_PENDING": 15
+  },
+  "original100_contracts_unchanged": true,
+  "proof_or_release_authority": false,
+  "problems": []
+}

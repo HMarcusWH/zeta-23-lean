@@ -1,0 +1,33 @@
+{
+  "base": "9b6a9a3a2badb4cff62a56c1158d9cef8759d30d",
+  "method": "Byte-exact2437-file9b fixture; only3 archive Python overlays",
+  "file_count": 2437,
+  "candidate_overlays": [
+    {
+      "path": "research/RHRC/integration/opica/tests/test_contract.py",
+      "bytes": 27204,
+      "sha256": "4d7523ff61b728fb575a955ce8fd52cb2b038439a03927c4762e3ad923e3cebf",
+      "git_blob": "dffb6b1ccb543fbb046ea30f7fe92749f1723957",
+      "candidate_overlay": true
+    },
+    {
+      "path": "research/RHRC/integration/opica/validate_contract.py",
+      "bytes": 41000,
+      "sha256": "cb46e19672a54db2d133be5aa3e0619b4aa194ee42535d04d763687d8740412b",
+      "git_blob": "de240a3b97568485283dfaa4569f84958d07f17e",
+      "candidate_overlay": true
+    },
+    {
+      "path": "research/RHRC/integration/opica_followup/build_receipt.py",
+      "bytes": 26038,
+      "sha256": "2d531a4e5ce5ff3c34bea01a57632e8f71b268033a067b9c7a0c9928fa275c22",
+      "git_blob": "c9760558673221e7468682cc26ee26662952aa0a",
+      "candidate_overlay": true
+    }
+  ],
+  "all_other_files_match_immutable_head": true,
+  "object_alternates": [
+    "C:/Users/macka/.codex/.chatgpt-projects/g-p-6a353c7268b08191b685956e466d73e4/work/opica-followup-repo/.git/objects",
+    "C:/Users/macka/.codex/.chatgpt-projects/g-p-6a353c7268b08191b685956e466d73e4/work/pr290/.git/objects"
+  ]
+}

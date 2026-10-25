@@ -1,0 +1,32 @@
+{
+  "total_count": 1,
+  "jobs": [
+    {
+      "id": 119917053354,
+      "run_id": 39805361338,
+      "workflow_name": "RHRC post-202 Q14 composite parity gap",
+      "head_branch": "research/opica-native-followup",
+      "run_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/runs/39805361338",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOT94UfM8AAAAb650Fqg",
+      "head_sha": "6c44ff564df025770a315f9dbfc091fc10ff6f36",
+      "url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/jobs/119917053354",
+      "html_url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39805361338/job/119917053354",
+      "status": "queued",
+      "conclusion": null,
+      "created_at": "2026-10-22T15:29:48Z",
+      "started_at": "2026-10-22T15:29:48Z",
+      "completed_at": null,
+      "name": "post202-q14-composite-parity-gap",
+      "steps": [],
+      "check_run_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/check-runs/119917053354",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 0,
+      "runner_name": "",
+      "runner_group_id": 0,
+      "runner_group_name": ""
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+../audit-independent-expected-types/InterfaceChecks.lean:5:0: error: Unknown option `pp.width`
+near_gap_mass_bound : ∀ (nu : LocallyFiniteSignedMeasure) (hnu : nu.HasLinearGrowth),
+  nu.FourierSelfdual hnu →
+    ∀ {a R d : ℝ},
+      0 < a →
+        a ≤ 1 →
+          hasNearGap nu a →
+            nu.OffLatticeNonnegative →
+              1 ≤ R →
+                0 < d →
+                  d ≤ 1 / 2 →
+                    nu.negative (signedBudgetRegion R d) = 0 ∧
+                      nu.positive.real (signedBudgetRegion R d) ≤
+                        Real.pi ^ 2 * R ^ 2 / (4 * d ^ 2) * (1 - a) * nu.totalVariation.real (Set.Icc (-1) 1)
+near_gap_controlled_limit_zero : ∀ (nu : ℕ → LocallyFiniteSignedMeasure) (C : ℝ)
+  (hC : ∀ (n : ℕ), CommonLinearMassBound C (nu n).totalVariation),
+  (∀ (n : ℕ), (nu n).FourierSelfdual ⋯) →
+    ∀ (a : ℕ → ℝ),
+      (∀ (n : ℕ), 0 < a n) →
+        (∀ (n : ℕ), a n ≤ 1) →
+          (∀ (n : ℕ), hasNearGap (nu n) (a n)) →
+            (∀ (n : ℕ), (nu n).OffLatticeNonnegative) →
+              Filter.Tendsto a Filter.atTop (nhds 1) →
+                ∀ (φ : SchwartzMap ℝ ℂ),
+                  Filter.Tendsto (fun n => ((nu n).distributionOfLinearGrowth ⋯) φ) Filter.atTop (nhds 0)
+@fixed_basis_negative_mass_budget : ∀ {n : ℕ} (basis : Fin n → List FiniteSpan.JetDatum)
+  (valid : ∀ (i : Fin n), ∀ j ∈ basis i, FiniteSpan.ValidJet j),
+  (LinearIndependent ℝ fun i => (zeroJetRealSpan (basis i)).distributionOfLinearGrowth ⋯) →
+    ∃ c_basis,
+      0 < c_basis ∧
+        ∀ (a : EuclideanSpace ℝ (Fin n)),
+          c_basis * ‖a‖ ≤
+            ∫ (x : ℝ) in integerLatticeᶜ,
+              sincSquared x ∂(zeroJetRealSpan (FiniteSpan.realBasisCombinationData basis fun i => a.ofLp i)).negative
+../audit-independent-expected-types/InterfaceChecks.lean:9:8: error(lean.unknownIdentifier): Unknown identifier `sourceFamily_moments`
+sourceFamily_support_smooth_moments : ∀ (d : ℕ),
+  ContDiff ℝ (↑⊤) (sourceOrderFamily d) ∧
+    Zeta23.CCM.NativeSourceSupported Zeta23.CCM.UniversalSinc.fixedScale (sourceOrderFamily d) ∧
+      0 < nativeCausalGap ∧
+        (∀ t < nativeCausalGap, primeFieldFamily d t = 0 ∧ integerDriveFamily d t = 0) ∧
+          ∀ k < d + 2,
+            sourceWeightedMoment k (1 / 2) (sourceOrderFamily d) = 0 ∧
+              sourceWeightedMoment k (-1 / 2) (sourceOrderFamily d) = 0
+nearGapCombDistribution_eq_explicit : ∀ (L : ℝ), nearGapCombDistribution L = nearGapExplicitDilationDistribution L
+@nearGapCombFamily_gap_edge_atom : ∀ {L : ℝ},
+  0 < L →
+    L < Real.log 2 →
+      (nearGapCombFamily L).positive.real {Real.exp (-L)} = Real.exp (-L / 2) ∧
+        (nearGapCombFamily L).negative {Real.exp (-L)} = 0
+../audit-independent-expected-types/InterfaceChecks.lean:13:8: error(lean.unknownIdentifier): Unknown identifier `nearGapCombFamily_sinc_pairing`
+../audit-independent-expected-types/InterfaceChecks.lean:14:8: error(lean.unknownIdentifier): Unknown identifier `nearGapCombFamily_triangle_pairing`
+ct1NormalizedLimit_apply : ∀ (φ : SchwartzMap ℝ ℂ),
+  ct1NormalizedLimit φ = ∑' (n : ℤ), (↑n ^ 2 * deriv (deriv ⇑φ) ↑n + 2 * ↑n * deriv ⇑φ ↑n)
+@nearGapCombFamily_uniform_schwartz_tail : ∀ {L R M : ℝ},
+  0 ≤ L →
+    L ≤ Real.log 2 →
+      0 ≤ M →
+        1 ≤ R →
+          ∀ (f : ℝ → ℂ),
+            Continuous f →
+              (∀ (x : ℝ), |x| ^ 3 * ‖f x‖ ≤ M) →
+                MeasureTheory.IntegrableOn f {x | R ≤ |x|} (nearGapCombFamily L).totalVariation ∧
+                  ∫ (x : ℝ) in {x | R ≤ |x|}, ‖f x‖ ∂(nearGapCombFamily L).totalVariation ≤ 72 * M / R ^ 2

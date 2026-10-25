@@ -1,0 +1,87 @@
+{
+  "python": "3.13.5 (tags/v3.13.5:6cb20a2, Jun 11 2025, 16:15:46) [MSC v.1943 64 bit (AMD64)]",
+  "runs": [
+    {
+      "lane": "checkpoint",
+      "mode": "normal",
+      "argv": [
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\tools\\python-3.13.5-embed-amd64\\python.exe",
+        "-B",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-publish-2026-10-22\\contracts\\run_documentation_gate_tests.py",
+        "checkpoint"
+      ],
+      "exit_code": 0,
+      "log": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-publish-2026-10-22\\contracts\\documentation-checkpoint-normal.log",
+      "sha256": "65706b3f7e7bf1516c718fdfa75a94b37c52e1097b077bd287f28af5c8be3050"
+    },
+    {
+      "lane": "checkpoint",
+      "mode": "optimized",
+      "argv": [
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\tools\\python-3.13.5-embed-amd64\\python.exe",
+        "-B",
+        "-O",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-publish-2026-10-22\\contracts\\run_documentation_gate_tests.py",
+        "checkpoint"
+      ],
+      "exit_code": 0,
+      "log": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-publish-2026-10-22\\contracts\\documentation-checkpoint-optimized.log",
+      "sha256": "94f1f012516d71408c6d25e3071f8bd2a7186e538ceaaa5d3c1b35d5400522fc"
+    },
+    {
+      "lane": "contract",
+      "mode": "normal",
+      "argv": [
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\tools\\python-3.13.5-embed-amd64\\python.exe",
+        "-B",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-publish-2026-10-22\\contracts\\run_documentation_gate_tests.py",
+        "contract"
+      ],
+      "exit_code": 0,
+      "log": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-publish-2026-10-22\\contracts\\documentation-contract-normal.log",
+      "sha256": "9cc236cc8901b9491b86a8813ae85052c95e3ae7e3149928dc9e2697dd44fbbc"
+    },
+    {
+      "lane": "contract",
+      "mode": "optimized",
+      "argv": [
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\tools\\python-3.13.5-embed-amd64\\python.exe",
+        "-B",
+        "-O",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-publish-2026-10-22\\contracts\\run_documentation_gate_tests.py",
+        "contract"
+      ],
+      "exit_code": 0,
+      "log": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-publish-2026-10-22\\contracts\\documentation-contract-optimized.log",
+      "sha256": "91e8f4f66302bfdeab07414fbf862af6bd23a63cb4d29471011c6d777aa39822"
+    },
+    {
+      "lane": "all-child",
+      "mode": "normal",
+      "argv": [
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\tools\\python-3.13.5-embed-amd64\\python.exe",
+        "-B",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-publish-2026-10-22\\contracts\\run_documentation_gate_tests.py",
+        "all-child"
+      ],
+      "exit_code": 0,
+      "log": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-publish-2026-10-22\\contracts\\documentation-all-child-normal.log",
+      "sha256": "b47728c3c0a4164b0e5a475b21cde4b965c1b9577d94cf39d647cc7ed377fb26"
+    },
+    {
+      "lane": "all-child",
+      "mode": "optimized",
+      "argv": [
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\tools\\python-3.13.5-embed-amd64\\python.exe",
+        "-B",
+        "-O",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-publish-2026-10-22\\contracts\\run_documentation_gate_tests.py",
+        "all-child"
+      ],
+      "exit_code": 0,
+      "log": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-publish-2026-10-22\\contracts\\documentation-all-child-optimized.log",
+      "sha256": "c7ce5ce35a2ce64149992b3f4b2f84abed822bac23a516968a9cb1e7717b6b25"
+    }
+  ],
+  "scope": "Exact documentation whitelist, pinned byte protection, parent-protection restoration on failed checkpoint; not mathematical acceptance."
+}

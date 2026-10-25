@@ -1,0 +1,107 @@
+{
+  "schema": "OPICA_STAGE2_PARENT_DOCUMENTATION_REVIEW_V1",
+  "reviewed_paths": [
+    {
+      "path": "AUDIT.md",
+      "bytes": 27928,
+      "sha256": "20f4d509f16ddbbe1ac16aa18a25a193f6cde0c967456e93b99fc5c23958e6d6"
+    },
+    {
+      "path": "FORK_NOTES.md",
+      "bytes": 21357,
+      "sha256": "b186d9d72fde095838dd61192b361d7717916de74a4c754b87b06d7f1e98ee3d"
+    },
+    {
+      "path": "research/RHRC/DOCUMENTATION_AUTHORITY.md",
+      "bytes": 34335,
+      "sha256": "d8b9170c288216e01a764b4a948ba3a44350d24c488be02516db65e9616519dc"
+    },
+    {
+      "path": "research/RHRC/VALIDATION_PROTOCOL.md",
+      "bytes": 41520,
+      "sha256": "e08baedbe485245772b6055b1e1ef2951270b042355fe5aed0c5d6e8e8e36d9f"
+    },
+    {
+      "path": "research/RHRC/graph/OPICA_FOLLOWUP_CURRENT_STATE.md",
+      "bytes": 5403,
+      "sha256": "de9aabe7985f839c39b62e82c3407c97bc21d831e283199ab5d81784fe68f327"
+    },
+    {
+      "path": "research/RHRC/graph/README.md",
+      "bytes": 17821,
+      "sha256": "806d732741e4d5358bf756b10268761aa269d462d98bd95d7432a6e112d32af5"
+    },
+    {
+      "path": "research/RHRC/integration/README.md",
+      "bytes": 5636,
+      "sha256": "0470a3181ea91a825ba72b05a53f9f54eb43ffcda14863295d121f9d6a0532d3"
+    }
+  ],
+  "new_documentation_seal": "4132519489b06e10a4883cf694e9b5ab55c7e34bced08fa840bc6586f70b7c4d",
+  "parent_validator_sha256": "37784b8c89d75f3aae1aed52ff2fe046c2614d78247edfd717f6b30a2d41953a",
+  "child_builder_sha256": "ae4421afe295cb3d0c7a7614da6cc0f4e43dee2904281812a233f70a990d1209",
+  "parent_logic_unchanged_except_two_review_data_assignments": true,
+  "child_logic_unchanged_except_parent_pin": true,
+  "PROTECTED_STATE_sha256": "0f6a28e2f9ebd14b95f0201e22918d29af6c81ec4dd3f044a85a8413239bb7c7",
+  "PROTECTED_STATE_OBJECT_SHA256": "5ad6d198133f07a5ed7ac8abc9ec9bb6523db4a9729b69a61f7fe15a7820ce99",
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "full_release_ready": false,
+  "status": "PASS_STAGE2_EXACT_SEVEN_DOCS_AND_FOCUSED_PARENT_PIN_GATES",
+  "gates": [
+    {
+      "file": "doc-linux-normal.log",
+      "tests": 14,
+      "exit_code": 0,
+      "skips": 0,
+      "sha256": "7226f38f24f478ae7f325d34680f0cca5bc2fe3a00c7b2de03b52cfa1e7317d4"
+    },
+    {
+      "file": "doc-linux-optimized.log",
+      "tests": 14,
+      "exit_code": 0,
+      "skips": 0,
+      "sha256": "19b2b5af62de27785c9788ed33d2ac5d9ec46ab4d7878b420cede86028794bbf"
+    },
+    {
+      "file": "protected-history.log",
+      "tests": 3,
+      "exit_code": 0,
+      "skips": 0,
+      "sha256": "77a545ec41f481e32ae9c3c9b732c63e568046556d57ec2b727992ccf8076312"
+    }
+  ],
+  "child_pin_gates": [
+    {
+      "status": "PASS_CHILD_EXACT_PARENT_PIN_AND_STALE_FORGERY_REJECTIONS",
+      "parent_sha256": "37784b8c89d75f3aae1aed52ff2fe046c2614d78247edfd717f6b30a2d41953a",
+      "checks": 4,
+      "actual_pin_matches": true,
+      "actual_full100_absence_still_rejected": true,
+      "mutated_parent_rejected": true,
+      "editable_register_cannot_repin": true,
+      "RH": "OPEN",
+      "full_release_ready": false
+    },
+    {
+      "status": "PASS_CHILD_EXACT_PARENT_PIN_AND_STALE_FORGERY_REJECTIONS",
+      "parent_sha256": "37784b8c89d75f3aae1aed52ff2fe046c2614d78247edfd717f6b30a2d41953a",
+      "checks": 4,
+      "actual_pin_matches": true,
+      "actual_full100_absence_still_rejected": true,
+      "mutated_parent_rejected": true,
+      "editable_register_cannot_repin": true,
+      "RH": "OPEN",
+      "full_release_ready": false
+    }
+  ],
+  "historical_blocks": "All4originalP0document bodies byte-exact; graph/integration READMEoutsideOPICAsections byte-exact; prior manualgraph preserved in beforecopy and96dfcommit.",
+  "links_checked": 43,
+  "broken_relative_links": 0,
+  "manifest_refresh_run_here": false,
+  "full201_current_rerun": "NOT_RERUN within explicit bounded finalpush window. Stage1 full201 normal/-O genuineLinux gates remain historical; parentexecutablelogic unchanged by ASTcomparison, currentmapcases and ProtectedHistory rerun.",
+  "frozen_now": true,
+  "active_processes": 0,
+  "independent_human_review": "NOT_ESTABLISHED",
+  "child_newline_conventions": "Exact HEAD CRLF; byte comparison differs only in PARENT_PROJECTION_VALIDATOR_SHA256 constant"
+}

@@ -1,0 +1,39 @@
+[
+  {
+    "status": "INTERVAL_CHECK_PASS",
+    "intervals": 350,
+    "terminal_claim": "RH_OPEN",
+    "source_digests": {
+      "research/RHRC/routes/R003_ccm_bridge/canonical_source_arb.py": "a15ab51b55ebac3abadd05fd8bbcb76cdcf05752279b399f71bf64b9ac040d54",
+      "research/RHRC/routes/R003_ccm_bridge/canonical_source_numeric.py": "bf3130a29f849e10a486512ac77b95e490d3842d04bfe84f411b54c88e5d4128",
+      "research/RHRC/routes/R003_ccm_bridge/post150_selected_residual.py": "41d7b7652600b5e281cd6c47ace3ef89753b1cf7d9fb831bae37f84eaa609cb7",
+      "research/RHRC/routes/R003_ccm_bridge/post166_fb05_cell_interval.py": "39d003d11a262dba7e43e1300c8d86b5620578724ad94bdcf52fffe807cdfaf3",
+      "research/RHRC/routes/R003_ccm_bridge/post167_fb05_threshold_jet.py": "2c9c0c65ade61b9d97fd5771e54241dd1a096933729f66c7cf3ad8ad429f0605",
+      "research/RHRC/routes/R003_ccm_bridge/post169_fb05_schur_visibility.py": "190da3a63403ffe83cf82a8c07a7c9692ee44fce5687906fe904dfb5fd4464c4",
+      "research/RHRC/routes/R003_ccm_bridge/post173_fb05_q13_scalar_barrier.py": "92dc66091a3b52e91657d2c52f46229425a1a0d40463a88bff41dfb6531c3b0f",
+      "research/RHRC/routes/R003_ccm_bridge/post175_fb05_q13_fixed_unit_enclosure.py": "c0f35b90027dad3e799f7a1ece34ced98608703c989769e9768ae59ea69eaca2",
+      "research/RHRC/routes/R003_ccm_bridge/post177_fb05_q13_fixed_unit_derivative.py": "161e2a9947c8db75b4a4b5f4684af074c05772d3a752651f2136d53b5d5cdd21",
+      "research/RHRC/routes/R003_ccm_bridge/post194_fb05_q14_fixed_unit_second_derivative.py": "3e9a43007afa7b749a622af4a56128adbd54cc3efac251b863abc62edbd7040e",
+      "research/RHRC/routes/R003_ccm_bridge/post247_remainder_budget_ratio_scout.py": "0016ea5291f5164b949174dc3b3fac70b44002d63912e4d310a91b4ccb50ffb1",
+      "research/RHRC/routes/R003_ccm_bridge/post285/post285_m51_k2_even_bottom_certificate.py": "3dc045594d5236420452ece91f56482e1c0b680eaa470369687beecfdec6abf9",
+      "research/RHRC/routes/R003_ccm_bridge/fixtures/post175_fb05_q13_fixed_unit_enclosure_v1.json": "be515d085ae4b1712c5ce259771d5970455020e92ab5e1fae4e30ff9ba0758fd",
+      "research/RHRC/routes/R003_ccm_bridge/requirements.txt": "5844b2c81e73269e51c8d4a9ec2ab707a3d6a33c72e66b49b79932ebb4df54a7",
+      "research/RHRC/routes/R003_ccm_bridge/post287/certificate_integrity.py": "b3f7895876ef6d38c15eb539e362afb6ba16e3f5a33ce5523a5cd8bba301b27b",
+      "research/RHRC/routes/R003_ccm_bridge/post287/wp2_k2_even_transcript.py": "84e38079c3120b134c3de9559e1b3fcc7fcbf1e44c55cdfee70df43ab05e28c1",
+      "research/RHRC/routes/R003_ccm_bridge/post287/test_wp2_wp4_finite_bounds.py": "6081b14170f9e9d8bac91da7db426152b85eeea40ac18691868861a033e55809",
+      "research/RHRC/routes/R003_ccm_bridge/post287/wp2_verify_transcript.py": "6e873dd570c0113048c48b2057ea42c92c6c66570ce12cae7da60244ffde6730",
+      "research/RHRC/routes/R003_ccm_bridge/post287/wp2_wp4_normalization_gate.py": "b5326d3dd461eef5bd57abf1e91b10e6d45187f22133fd24422b6de2a7fc19f8",
+      "research/RHRC/routes/R003_ccm_bridge/post287/wp2_literature_form_arb_probe.py": "8fcbdf650f32983de8b89f9000bb3aa2a7dce56b6738ee828966336703acfd5c",
+      "research/RHRC/routes/R003_ccm_bridge/post287/wp4_k2_odd_prerequisite.py": "b060d82f3886d3c1c3834acd77a34c5ac68ccafaf81c2f53e1bdc8f808b32b99",
+      "research/RHRC/routes/R003_ccm_bridge/post287/wp4_k3_frozen_q14_gate.py": "e9b977026609cd643cf256b0656f887da3e032aac8701cda6529cdd21d2551e4",
+      "research/RHRC/routes/R003_ccm_bridge/post287/wp4_k3_fourth_order_fallback.py": "834bc450dc9712357fda57df9246b6468c3d3fa5784f588aeae0cbbafb522091",
+      "research/RHRC/routes/R003_ccm_bridge/post287/wp4_fourth_order_validate.py": "a1da3b208338920179a2b6925840da8ea0f6f4a381d9ef93210ddb225f69b1e8",
+      "research/RHRC/routes/R003_ccm_bridge/post287/wp4_k3_full_continuum.py": "5ab7eaee1e2de65bf0dabe3a40ba4c55658a4f6b079f4da2de49dc70b174c348",
+      "research/RHRC/routes/R003_ccm_bridge/post287/wp4_k3_verify_full_transcript.py": "e82bfb126de17f150710f4b85aa0e571a3617cdb8e3a9f17002d009792192896",
+      "research/RHRC/routes/R003_ccm_bridge/post287/wp4_k3_assemble_shards.py": "10e687be8a25f653055cacd1822c1f52ea27a623e022a404de25585b07d904ae",
+      "research/RHRC/routes/R004_prolate_v2/run_commutator_gauntlet_v2.py": "5c632c667ddc74dc01d6e42e7987f32f04a3244e9194edbefca2e79be5da72f3"
+    },
+    "manifest_sha256": "a11b9071f10bc226d467ab37d6568b1474143e7bba58a067013f6dc8b15cf541",
+    "precision_bits": 192
+  }
+]

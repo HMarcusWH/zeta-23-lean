@@ -1,0 +1,14 @@
+../audit-independent-expected-types/CompactContinuousExtraction.lean:31:28: error: Application type mismatch: The argument
+  ∞
+has type
+  ℝ≥0∞
+but is expected to have type
+  WithTop ℕ∞
+in the application
+  ContDiff ℝ ∞
+../audit-independent-expected-types/CompactContinuousExtraction.lean:34:33: error: Type mismatch
+  tsupport_smul_subset_left ?m.341
+has type
+  ∀ (g : ?m.333 → ?m.336), (tsupport fun x => ?m.341 x • g x) ⊆ tsupport ?m.341
+but is expected to have type
+  x ∈ tsupport ↑χ

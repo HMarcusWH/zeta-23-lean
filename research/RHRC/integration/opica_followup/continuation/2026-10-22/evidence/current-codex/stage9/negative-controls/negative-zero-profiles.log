@@ -1,0 +1,72 @@
+negative-zero-profiles.lean:10:2: error: Type mismatch
+  (zero_profile_tail_and_jumps ρ hz h0 h1).left
+has type
+  ∃ C,
+    0 ≤ C ∧
+      ∀ (x : ℝ), 1 ≤ |x| → ‖zeroProfile ρ x - spectralKappa ρ * ↑(bernoulliTwo |x|) / (2 * ↑|x| ^ 2)‖ ≤ C * |x| ^ (-3)
+but is expected to have type
+  ∃ C,
+    0 ≤ C ∧
+      ∀ (x : ℝ), 1 ≤ |x| → ‖zeroProfile ρ x + spectralKappa ρ * ↑(bernoulliTwo |x|) / (2 * ↑|x| ^ 2)‖ ≤ C * |x| ^ (-3)
+negative-zero-profiles.lean:16:2: error: Type mismatch
+  (zero_profile_tail_and_jumps ρ hz h0 h1).left
+has type
+  ∃ C,
+    0 ≤ C ∧
+      ∀ (x : ℝ), 1 ≤ |x| → ‖zeroProfile ρ x - spectralKappa ρ * ↑(bernoulliTwo |x|) / (2 * ↑|x| ^ 2)‖ ≤ C * |x| ^ (-3)
+but is expected to have type
+  ∃ C,
+    0 ≤ C ∧
+      ∀ (x : ℝ), 1 ≤ |x| → ‖zeroProfile ρ x - spectralKappa ρ * ↑(bernoulliTwo |x|) / (2 * ↑|x| ^ 2)‖ ≤ C * |x| ^ (-4)
+negative-zero-profiles.lean:23:2: error: Type mismatch
+  (zero_profile_tail_and_jumps ρ hz h0 h1).right.right.right.right.left
+has type
+  ∀ (n : ℕ),
+    ∃ dR dL,
+      HasDerivWithinAt (zeroProfile ρ) dR (Ici ↑(n + 1)) ↑(n + 1) ∧
+        HasDerivWithinAt (zeroProfile ρ) dL (Iic ↑(n + 1)) ↑(n + 1) ∧ dR - dL = -spectralKappa ρ / ↑(n + 1) ^ 2
+but is expected to have type
+  ∀ (n : ℕ),
+    ∃ dR dL,
+      HasDerivWithinAt (zeroProfile ρ) dR (Ici ↑(n + 1)) ↑(n + 1) ∧
+        HasDerivWithinAt (zeroProfile ρ) dL (Iic ↑(n + 1)) ↑(n + 1) ∧ dR - dL = spectralKappa ρ / ↑(n + 1) ^ 2
+negative-zero-profiles.lean:27:2: error: Type mismatch
+  (zero_profile_tail_and_jumps ρ hz h0 h1).right.right.right.right.right.left
+has type
+  HasDerivWithinAt (zeroProfile ρ) 0 (Iic 1) 1
+but is expected to have type
+  HasDerivWithinAt (zeroProfile ρ) 1 (Iic 1) 1
+negative-zero-profiles.lean:31:2: error: Type mismatch
+  (zero_profile_regular_selfdual ρ hz h0 h1).right.right.right.right.left
+has type
+  ∀ (x : ℝ), |x| ≤ 1 → zeroProfile ρ x = 1
+but is expected to have type
+  ∀ (x : ℝ), |x| ≤ 2 → zeroProfile ρ x = 1
+negative-zero-profiles.lean:35:2: error: Type mismatch
+  (zero_profile_regular_selfdual ρ hz h0 h1).right.right.right.right.right.left
+has type
+  𝓕 (zeroProfile ρ) = zeroProfile ρ
+but is expected to have type
+  𝓕 (zeroProfile ρ) = -zeroProfile ρ
+negative-zero-profiles.lean:39:2: error: Type mismatch
+  (zero_profile_regular_selfdual ρ hz h0 h1).right.right.right.right.right.right.right.right.right
+has type
+  ∫ (x : ℝ) in Ioi 0, zeroProfile ρ x = 1 / 2
+but is expected to have type
+  ∫ (x : ℝ) in Ioi 0, zeroProfile ρ x = 1
+negative-zero-profiles.lean:45:33: error: Application type mismatch: The argument
+  h0
+has type
+  0 < ρ.re
+but is expected to have type
+  riemannZeta ρ = 0
+in the application
+  zero_profile_tail_and_jumps ρ h0
+negative-zero-profiles.lean:49:41: error: Application type mismatch: The argument
+  h1
+has type
+  ρ.re ≤ 1
+but is expected to have type
+  ρ.re < 1
+in the application
+  zero_profile_regular_selfdual ρ hz h0 h1

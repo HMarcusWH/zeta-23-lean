@@ -1,0 +1,92 @@
+{
+  "status": "PRIVATE_LINUX_DEPENDENCIES_READY",
+  "exit_code": 0,
+  "command": [
+    "/var/tmp/opica-linux-433rc2-20261024/lean-4.33.0-rc2-linux/bin/lake",
+    "exe",
+    "cache",
+    "get"
+  ],
+  "seconds": 160.184610436,
+  "packages": [
+    {
+      "name": "plausible",
+      "commit": "123d15766ba49356c02ebad2a4462dfe12d79899",
+      "tree": "1df1ffdb3d662200ad45e410c68aacff76d1fbc1",
+      "source": "/mnt/c/Users/macka/.codex/.chatgpt-projects/g-p-6a353c7268b08191b685956e466d73e4/work/pr290/.lake/packages/plausible",
+      "private_clone": "/var/tmp/opica-linux-433rc2-20261024/packages/plausible",
+      "inherited_native_build_objects": false
+    },
+    {
+      "name": "LeanSearchClient",
+      "commit": "f5c090429dff3cf66cb65562526c9ea6e8edfbcb",
+      "tree": "431681acd0fc1410d3db4eb89752018bd399b14e",
+      "source": "/mnt/c/Users/macka/.codex/.chatgpt-projects/g-p-6a353c7268b08191b685956e466d73e4/work/pr290/.lake/packages/LeanSearchClient",
+      "private_clone": "/var/tmp/opica-linux-433rc2-20261024/packages/LeanSearchClient",
+      "inherited_native_build_objects": false
+    },
+    {
+      "name": "importGraph",
+      "commit": "bb3469a87774349fe01898d8bf2fc6a1ce6411ca",
+      "tree": "0891265502eb6718a14fd40760e762f371b4a72f",
+      "source": "/mnt/c/Users/macka/.codex/.chatgpt-projects/g-p-6a353c7268b08191b685956e466d73e4/work/pr290/.lake/packages/importGraph",
+      "private_clone": "/var/tmp/opica-linux-433rc2-20261024/packages/importGraph",
+      "inherited_native_build_objects": false
+    },
+    {
+      "name": "proofwidgets",
+      "commit": "222c58dad7706a6e7cae46c0edd65ea881d3ee27",
+      "tree": "410ccf8617a53af7c5534455b0d80cc702e837f4",
+      "source": "/mnt/c/Users/macka/.codex/.chatgpt-projects/g-p-6a353c7268b08191b685956e466d73e4/work/pr290/.lake/packages/proofwidgets",
+      "private_clone": "/var/tmp/opica-linux-433rc2-20261024/packages/proofwidgets",
+      "inherited_native_build_objects": false
+    },
+    {
+      "name": "aesop",
+      "commit": "7db8190085343afde2f5d2cdcc9bac719b6ec02c",
+      "tree": "cfffae8acc28cb304ff1cb24afcbba0cdf957557",
+      "source": "/mnt/c/Users/macka/.codex/.chatgpt-projects/g-p-6a353c7268b08191b685956e466d73e4/work/pr290/.lake/packages/aesop",
+      "private_clone": "/var/tmp/opica-linux-433rc2-20261024/packages/aesop",
+      "inherited_native_build_objects": false
+    },
+    {
+      "name": "Qq",
+      "commit": "ef42f8944eaf5b6cbfbe75d1917d824c7dd6cf33",
+      "tree": "c15652868106a96765c25dfeed01025e2a8cdc49",
+      "source": "/mnt/c/Users/macka/.codex/.chatgpt-projects/g-p-6a353c7268b08191b685956e466d73e4/work/pr290/.lake/packages/Qq",
+      "private_clone": "/var/tmp/opica-linux-433rc2-20261024/packages/Qq",
+      "inherited_native_build_objects": false
+    },
+    {
+      "name": "batteries",
+      "commit": "76e1c118b0700b4ceafe99532e887d6431625e1a",
+      "tree": "9d0aee6b2d05b2bb599f5e0c35617ef602f2e6c5",
+      "source": "/mnt/c/Users/macka/.codex/.chatgpt-projects/g-p-6a353c7268b08191b685956e466d73e4/work/pr290/.lake/packages/batteries",
+      "private_clone": "/var/tmp/opica-linux-433rc2-20261024/packages/batteries",
+      "inherited_native_build_objects": false
+    },
+    {
+      "name": "Cli",
+      "commit": "1319485273bf87833fa472afbcefdedecb16b45f",
+      "tree": "422055578e0ada4db1e19c027ced577439d34820",
+      "source": "/mnt/c/Users/macka/.codex/.chatgpt-projects/g-p-6a353c7268b08191b685956e466d73e4/work/pr290/.lake/packages/Cli",
+      "private_clone": "/var/tmp/opica-linux-433rc2-20261024/packages/Cli",
+      "inherited_native_build_objects": false
+    },
+    {
+      "name": "mathlib",
+      "commit": "51e6992efd06126df61a496bebf8f49482a4e129",
+      "tree": "e7bfd7bc39c98874e58fa69f2644bb0fa9c0e5bf",
+      "source": "/mnt/c/Users/macka/.codex/.chatgpt-projects/g-p-6a353c7268b08191b685956e466d73e4/work/pr290/.lake/packages/mathlib",
+      "private_clone": "/var/tmp/opica-linux-433rc2-20261024/packages/mathlib",
+      "inherited_native_build_objects": false
+    }
+  ],
+  "cache_client": "/var/tmp/opica-linux-433rc2-20261024/cache-client",
+  "project_object_count": 0,
+  "native_cache_modified": false,
+  "full_cold_receipt_created": false,
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "finished_at": "2026-10-24T18:51:37.033252+00:00"
+}

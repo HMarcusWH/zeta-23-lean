@@ -1,0 +1,22 @@
+'Zeta23.OPICAFollowup.renormalized_copoisson_order_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OPICACoPoissonOrderZeroIndependent.audit_cutoff_density' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OPICACoPoissonOrderZeroIndependent.audit_limit_measure' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OPICACoPoissonOrderZeroIndependent.expected_renormalized_copoisson_order_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'OPICACoPoissonOrderZeroIndependent.expected_limit_origin_atom' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'OPICACoPoissonOrderZeroIndependent.expected_cutoff_origin_atom' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'OPICACoPoissonOrderZeroIndependent.expected_limit_density_near_origin' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'OPICACoPoissonOrderZeroIndependent.expected_cutoff_pairing_tendsto' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'OPICACoPoissonOrderZeroIndependent.expected_local_test_convergence' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'OPICACoPoissonOrderZeroIndependent.expected_nonvacuous_half' depends on axioms: [propext, Classical.choice, Quot.sound]

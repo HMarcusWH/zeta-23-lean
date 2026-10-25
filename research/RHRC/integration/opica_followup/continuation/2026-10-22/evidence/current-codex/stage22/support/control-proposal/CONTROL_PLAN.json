@@ -1,0 +1,573 @@
+{
+  "schema": "OPICA_STAGE22_31_CONTROL_PLAN_V1",
+  "status": "PREPARED_NOT_RUN_AT_STAGE22_PIN",
+  "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+  "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+  "original21_preserved_byte_exact": true,
+  "source_count": 31,
+  "negative_source_count": 27,
+  "positive_source_count": 4,
+  "new_groups": {
+    "canonical": 3,
+    "square_physical": 3,
+    "compact_compatibility": 1,
+    "CT13": 2,
+    "continuous_compact_common_TV": 1
+  },
+  "planned_owner_source_manifest": "planned-source-manifest.json",
+  "planned_owner_source_manifest_sha256": "fc58cef9a93017ae59b764654ca83d676f2dead5ae8b2b1f6e16ba396a094daa",
+  "source_reader_sha256": "ae4421afe295cb3d0c7a7614da6cc0f4e43dee2904281812a233f70a990d1209",
+  "controls": [
+    {
+      "name": "homogeneous-eigenproblem",
+      "file": "homogeneous-eigenproblem.lean",
+      "source_sha256": "8086da17f426945c622b17df50e60dc656f8f97f14ab230093a384f63ed1f0a0",
+      "expected": "REJECTED",
+      "scope": "Stage19 force/sampling contract mutation",
+      "origin": {
+        "kind": "EXACT_STAGE21_BYTES",
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\homogeneous-eigenproblem.lean",
+        "sha256": "8086da17f426945c622b17df50e60dc656f8f97f14ab230093a384f63ed1f0a0",
+        "receipt": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\CHECK_RESULT.json",
+        "receipt_sha256": "277a7e7fde8c600848bc59ce730faf3c9ceab1ca436ac36c58c00420f429aa0a"
+      },
+      "required_diagnostic_regex": [
+        "eulerImage",
+        "PositiveAxisTest"
+      ]
+    },
+    {
+      "name": "missing-conjugation",
+      "file": "missing-conjugation.lean",
+      "source_sha256": "ad8b5376576185c7d365f029aa3f0e140fcbd80c4616d1355eaadbb30492d437",
+      "expected": "REJECTED",
+      "scope": "Stage19 force/sampling contract mutation",
+      "origin": {
+        "kind": "EXACT_STAGE21_BYTES",
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\missing-conjugation.lean",
+        "sha256": "ad8b5376576185c7d365f029aa3f0e140fcbd80c4616d1355eaadbb30492d437",
+        "receipt": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\CHECK_RESULT.json",
+        "receipt_sha256": "277a7e7fde8c600848bc59ce730faf3c9ceab1ca436ac36c58c00420f429aa0a"
+      },
+      "required_diagnostic_regex": [
+        "native_sample_stieltjes_identity",
+        "starRingEnd"
+      ]
+    },
+    {
+      "name": "missing-lattice-atoms",
+      "file": "missing-lattice-atoms.lean",
+      "source_sha256": "071661e22bb39c2604b73f68d1a7c07e10ed9766c2bfe90aae1f961a3dd7df15",
+      "expected": "REJECTED",
+      "scope": "Stage19 force/sampling contract mutation",
+      "origin": {
+        "kind": "EXACT_STAGE21_BYTES",
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\missing-lattice-atoms.lean",
+        "sha256": "071661e22bb39c2604b73f68d1a7c07e10ed9766c2bfe90aae1f961a3dd7df15",
+        "receipt": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\CHECK_RESULT.json",
+        "receipt_sha256": "277a7e7fde8c600848bc59ce730faf3c9ceab1ca436ac36c58c00420f429aa0a"
+      },
+      "required_diagnostic_regex": [
+        "nativeLogForce",
+        "sawtooth_integrable_force_identity"
+      ]
+    },
+    {
+      "name": "synthetic-spectral-measure",
+      "file": "synthetic-spectral-measure.lean",
+      "source_sha256": "6327f48499d723aade54c6472a41e1a81ed4413fe9324582e81e81a0c094aba8",
+      "expected": "REJECTED",
+      "scope": "Stage19 force/sampling contract mutation",
+      "origin": {
+        "kind": "EXACT_STAGE21_BYTES",
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\synthetic-spectral-measure.lean",
+        "sha256": "6327f48499d723aade54c6472a41e1a81ed4413fe9324582e81e81a0c094aba8",
+        "receipt": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\CHECK_RESULT.json",
+        "receipt_sha256": "277a7e7fde8c600848bc59ce730faf3c9ceab1ca436ac36c58c00420f429aa0a"
+      },
+      "required_diagnostic_regex": [
+        "arithmeticSpectralMeasure",
+        "not definitionally equal"
+      ]
+    },
+    {
+      "name": "wrong-fourier-2pi",
+      "file": "wrong-fourier-2pi.lean",
+      "source_sha256": "6af30b4d62456cf13ed6311d4bc24857a7e76ac9e842ae86484b33c99aeb9a3f",
+      "expected": "REJECTED",
+      "scope": "Stage19 force/sampling contract mutation",
+      "origin": {
+        "kind": "EXACT_STAGE21_BYTES",
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\wrong-fourier-2pi.lean",
+        "sha256": "6af30b4d62456cf13ed6311d4bc24857a7e76ac9e842ae86484b33c99aeb9a3f",
+        "receipt": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\CHECK_RESULT.json",
+        "receipt_sha256": "277a7e7fde8c600848bc59ce730faf3c9ceab1ca436ac36c58c00420f429aa0a"
+      },
+      "required_diagnostic_regex": [
+        "logFourier",
+        "logFourier_eq_fourier"
+      ]
+    },
+    {
+      "name": "wrong-reflection-kappa",
+      "file": "wrong-reflection-kappa.lean",
+      "source_sha256": "d75f23b3d9a6fe9f23bfad03bb9706fd31723204b3f35183951a0b147a4c45c6",
+      "expected": "REJECTED",
+      "scope": "Stage19 force/sampling contract mutation",
+      "origin": {
+        "kind": "EXACT_STAGE21_BYTES",
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\wrong-reflection-kappa.lean",
+        "sha256": "d75f23b3d9a6fe9f23bfad03bb9706fd31723204b3f35183951a0b147a4c45c6",
+        "receipt": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\CHECK_RESULT.json",
+        "receipt_sha256": "277a7e7fde8c600848bc59ce730faf3c9ceab1ca436ac36c58c00420f429aa0a"
+      },
+      "required_diagnostic_regex": [
+        "unsolved goals",
+        "starRingEnd"
+      ]
+    },
+    {
+      "name": "NegativeMissingQuiet",
+      "file": "NegativeMissingQuiet.lean",
+      "source_sha256": "4148bbf86ad8755ee21aae8051f7aa971fe315cfe4c06a6cc2a13c92086bf9ca",
+      "expected": "REJECTED",
+      "scope": "Rate/physical consumer contract mutation",
+      "origin": {
+        "kind": "EXACT_STAGE21_BYTES",
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\NegativeMissingQuiet.lean",
+        "sha256": "4148bbf86ad8755ee21aae8051f7aa971fe315cfe4c06a6cc2a13c92086bf9ca",
+        "receipt": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\CHECK_RESULT.json",
+        "receipt_sha256": "277a7e7fde8c600848bc59ce730faf3c9ceab1ca436ac36c58c00420f429aa0a"
+      },
+      "required_diagnostic_regex": [
+        "Invalid projection",
+        "quiet_balanced_observation_implies_native_cut"
+      ]
+    },
+    {
+      "name": "NegativeMissingSlow",
+      "file": "NegativeMissingSlow.lean",
+      "source_sha256": "ace87626affcca5480f4aa97b963dd227b8d84f17ba75e2313133f76cbd48e63",
+      "expected": "REJECTED",
+      "scope": "Rate/physical consumer contract mutation",
+      "origin": {
+        "kind": "EXACT_STAGE21_BYTES",
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\NegativeMissingSlow.lean",
+        "sha256": "ace87626affcca5480f4aa97b963dd227b8d84f17ba75e2313133f76cbd48e63",
+        "receipt": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\CHECK_RESULT.json",
+        "receipt_sha256": "277a7e7fde8c600848bc59ce730faf3c9ceab1ca436ac36c58c00420f429aa0a"
+      },
+      "required_diagnostic_regex": [
+        "native_slow_source_window_rate",
+        "Tendsto"
+      ]
+    },
+    {
+      "name": "NegativeSyntheticQuiet",
+      "file": "NegativeSyntheticQuiet.lean",
+      "source_sha256": "9808037f972c802eaf9e75eb2cbafeee118401f30ddda6073495554d15fc83c4",
+      "expected": "REJECTED",
+      "scope": "Rate/physical consumer contract mutation",
+      "origin": {
+        "kind": "EXACT_STAGE21_BYTES",
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\NegativeSyntheticQuiet.lean",
+        "sha256": "9808037f972c802eaf9e75eb2cbafeee118401f30ddda6073495554d15fc83c4",
+        "receipt": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\CHECK_RESULT.json",
+        "receipt_sha256": "277a7e7fde8c600848bc59ce730faf3c9ceab1ca436ac36c58c00420f429aa0a"
+      },
+      "required_diagnostic_regex": [
+        "nativeRawHigh",
+        "Application type mismatch"
+      ]
+    },
+    {
+      "name": "NegativeWindowBoundary",
+      "file": "NegativeWindowBoundary.lean",
+      "source_sha256": "17e071f1a779ebedc2d311a793b5ae1d8d816fd62008ec3743ad7bd07fb39598",
+      "expected": "REJECTED",
+      "scope": "Rate/physical consumer contract mutation",
+      "origin": {
+        "kind": "EXACT_STAGE21_BYTES",
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\NegativeWindowBoundary.lean",
+        "sha256": "17e071f1a779ebedc2d311a793b5ae1d8d816fd62008ec3743ad7bd07fb39598",
+        "receipt": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\CHECK_RESULT.json",
+        "receipt_sha256": "277a7e7fde8c600848bc59ce730faf3c9ceab1ca436ac36c58c00420f429aa0a"
+      },
+      "required_diagnostic_regex": [
+        "unsolved goals",
+        "False"
+      ]
+    },
+    {
+      "name": "NegativeZeroDamping",
+      "file": "NegativeZeroDamping.lean",
+      "source_sha256": "6e5b4422cabcc03da45ca8d877321ce71dbcb186109dddc142e14978579d8685",
+      "expected": "REJECTED",
+      "scope": "Rate/physical consumer contract mutation",
+      "origin": {
+        "kind": "EXACT_STAGE21_BYTES",
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\NegativeZeroDamping.lean",
+        "sha256": "6e5b4422cabcc03da45ca8d877321ce71dbcb186109dddc142e14978579d8685",
+        "receipt": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\CHECK_RESULT.json",
+        "receipt_sha256": "277a7e7fde8c600848bc59ce730faf3c9ceab1ca436ac36c58c00420f429aa0a"
+      },
+      "required_diagnostic_regex": [
+        "nativeZeroDisplacementSup",
+        "False"
+      ]
+    },
+    {
+      "name": "NegativeConfluentProfilesDistinctness",
+      "file": "NegativeConfluentProfilesDistinctness.lean",
+      "source_sha256": "e2e832abd4c1c0e7a568e9896c4e24c673b537d1eb6ceccd2d9f6678f9a058d7",
+      "expected": "REJECTED",
+      "scope": "H2a full statement mutation",
+      "origin": {
+        "kind": "EXACT_STAGE21_BYTES",
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\NegativeConfluentProfilesDistinctness.lean",
+        "sha256": "e2e832abd4c1c0e7a568e9896c4e24c673b537d1eb6ceccd2d9f6678f9a058d7",
+        "receipt": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\CHECK_RESULT.json",
+        "receipt_sha256": "277a7e7fde8c600848bc59ce730faf3c9ceab1ca436ac36c58c00420f429aa0a"
+      },
+      "required_diagnostic_regex": [
+        "distinctSpectralNodes",
+        "LinearIndependent"
+      ]
+    },
+    {
+      "name": "NegativeConfluentProfilesDeterminantSign",
+      "file": "NegativeConfluentProfilesDeterminantSign.lean",
+      "source_sha256": "cbc604c6922a9c02681ba0111fa743bee65ddcc64aff4e140b6272f4257fa522",
+      "expected": "REJECTED",
+      "scope": "H2a full statement mutation",
+      "origin": {
+        "kind": "EXACT_STAGE21_BYTES",
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\NegativeConfluentProfilesDeterminantSign.lean",
+        "sha256": "cbc604c6922a9c02681ba0111fa743bee65ddcc64aff4e140b6272f4257fa522",
+        "receipt": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\CHECK_RESULT.json",
+        "receipt_sha256": "277a7e7fde8c600848bc59ce730faf3c9ceab1ca436ac36c58c00420f429aa0a"
+      },
+      "required_diagnostic_regex": [
+        "profile_jet_confluent_determinant",
+        "profileJetMatrix"
+      ]
+    },
+    {
+      "name": "NegativeConfluentProfilesUnnormalized",
+      "file": "NegativeConfluentProfilesUnnormalized.lean",
+      "source_sha256": "4d58dac153c838998c0cfb004ba4e699f8bcea47ef305fd6f07f0ca1a8a91363",
+      "expected": "REJECTED",
+      "scope": "H2a full statement mutation",
+      "origin": {
+        "kind": "EXACT_STAGE21_BYTES",
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\NegativeConfluentProfilesUnnormalized.lean",
+        "sha256": "4d58dac153c838998c0cfb004ba4e699f8bcea47ef305fd6f07f0ca1a8a91363",
+        "receipt": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\CHECK_RESULT.json",
+        "receipt_sha256": "277a7e7fde8c600848bc59ce730faf3c9ceab1ca436ac36c58c00420f429aa0a"
+      },
+      "required_diagnostic_regex": [
+        "iteratedDeriv",
+        "profile_jet_confluent_determinant"
+      ]
+    },
+    {
+      "name": "ConfluentProfilesFactorialControls",
+      "file": "ConfluentProfilesFactorialControls.lean",
+      "source_sha256": "2f8a02dd86401e5ba48f8ae7979b1687a27794a5ae2511d44955d533cb28ca7b",
+      "expected": "PASS",
+      "scope": "Actual-kernel normalization/degeneracy falsification",
+      "origin": {
+        "kind": "EXACT_STAGE21_BYTES",
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\ConfluentProfilesFactorialControls.lean",
+        "sha256": "2f8a02dd86401e5ba48f8ae7979b1687a27794a5ae2511d44955d533cb28ca7b",
+        "receipt": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\CHECK_RESULT.json",
+        "receipt_sha256": "277a7e7fde8c600848bc59ce730faf3c9ceab1ca436ac36c58c00420f429aa0a"
+      },
+      "required_diagnostic_regex": []
+    },
+    {
+      "name": "NegativeParameterFactorial",
+      "file": "NegativeParameterFactorial.lean",
+      "source_sha256": "3f9ececefdaf17ea9d2928916c44cdd8d05c6010c3ba1d4854d327154c24ab95",
+      "expected": "REJECTED",
+      "scope": "Wrong 1/2! normalization against proved actual coefficient",
+      "origin": {
+        "kind": "EXACT_STAGE21_BYTES",
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\NegativeParameterFactorial.lean",
+        "sha256": "3f9ececefdaf17ea9d2928916c44cdd8d05c6010c3ba1d4854d327154c24ab95",
+        "receipt": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\CHECK_RESULT.json",
+        "receipt_sha256": "277a7e7fde8c600848bc59ce730faf3c9ceab1ca436ac36c58c00420f429aa0a"
+      },
+      "required_diagnostic_regex": [
+        "oddJetCoefficient",
+        "-1 / 6",
+        "-1 / 3"
+      ]
+    },
+    {
+      "name": "ConfluentProfilesReflectionControl",
+      "file": "ConfluentProfilesReflectionControl.lean",
+      "source_sha256": "e4ae96fdd49d0e66470c45ce47840b28aff64b32f0fe2ffaa7a438abf3d3a474",
+      "expected": "PASS",
+      "scope": "Actual-kernel normalization/degeneracy falsification",
+      "origin": {
+        "kind": "EXACT_STAGE21_BYTES",
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\ConfluentProfilesReflectionControl.lean",
+        "sha256": "e4ae96fdd49d0e66470c45ce47840b28aff64b32f0fe2ffaa7a438abf3d3a474",
+        "receipt": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\CHECK_RESULT.json",
+        "receipt_sha256": "277a7e7fde8c600848bc59ce730faf3c9ceab1ca436ac36c58c00420f429aa0a"
+      },
+      "required_diagnostic_regex": []
+    },
+    {
+      "name": "NegativeFullFiniteSpanFinal",
+      "file": "NegativeFullFiniteSpanFinal.lean",
+      "source_sha256": "955cf804f7a05a92ed643893b1493bbafd35fc8a7e1cfe163447fd35ccdf908e",
+      "expected": "REJECTED",
+      "scope": "Actual finite-span clause / independent-basis / reflection / selfduality falsification",
+      "origin": {
+        "kind": "EXACT_STAGE21_BYTES",
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\NegativeFullFiniteSpanFinal.lean",
+        "sha256": "955cf804f7a05a92ed643893b1493bbafd35fc8a7e1cfe163447fd35ccdf908e",
+        "receipt": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\CHECK_RESULT.json",
+        "receipt_sha256": "277a7e7fde8c600848bc59ce730faf3c9ceab1ca436ac36c58c00420f429aa0a"
+      },
+      "required_diagnostic_regex": [
+        "OffLatticeNonnegative",
+        "finite_zero_span_positive_only_zero"
+      ]
+    },
+    {
+      "name": "NegativeBudgetIndependenceFinal",
+      "file": "NegativeBudgetIndependenceFinal.lean",
+      "source_sha256": "83ba20582622d40fa279088080ff4234e4c6499f8beac645225277f2624797ea",
+      "expected": "REJECTED",
+      "scope": "Actual finite-span clause / independent-basis / reflection / selfduality falsification",
+      "origin": {
+        "kind": "EXACT_STAGE21_BYTES",
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\NegativeBudgetIndependenceFinal.lean",
+        "sha256": "83ba20582622d40fa279088080ff4234e4c6499f8beac645225277f2624797ea",
+        "receipt": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\CHECK_RESULT.json",
+        "receipt_sha256": "277a7e7fde8c600848bc59ce730faf3c9ceab1ca436ac36c58c00420f429aa0a"
+      },
+      "required_diagnostic_regex": [
+        "Invalid field `choose`",
+        "LinearIndependent"
+      ]
+    },
+    {
+      "name": "DuplicateBasisControlFinal",
+      "file": "DuplicateBasisControlFinal.lean",
+      "source_sha256": "f4307169d05fd92ab8936f19b0de516fcaabede989e6ff6a7f5750f658b43fd9",
+      "expected": "PASS",
+      "scope": "Actual finite-span clause / independent-basis / reflection / selfduality falsification",
+      "origin": {
+        "kind": "EXACT_STAGE21_BYTES",
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\DuplicateBasisControlFinal.lean",
+        "sha256": "f4307169d05fd92ab8936f19b0de516fcaabede989e6ff6a7f5750f658b43fd9",
+        "receipt": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\CHECK_RESULT.json",
+        "receipt_sha256": "277a7e7fde8c600848bc59ce730faf3c9ceab1ca436ac36c58c00420f429aa0a"
+      },
+      "required_diagnostic_regex": []
+    },
+    {
+      "name": "WeightedControlsFinal",
+      "file": "WeightedControlsFinal.lean",
+      "source_sha256": "9569499f8cc45570644a3612d7cb84a9c6dd35462809c00785021130507f1d20",
+      "expected": "PASS",
+      "scope": "Actual finite-span clause / independent-basis / reflection / selfduality falsification",
+      "origin": {
+        "kind": "EXACT_STAGE21_BYTES",
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\WeightedControlsFinal.lean",
+        "sha256": "9569499f8cc45570644a3612d7cb84a9c6dd35462809c00785021130507f1d20",
+        "receipt": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\CHECK_RESULT.json",
+        "receipt_sha256": "277a7e7fde8c600848bc59ce730faf3c9ceab1ca436ac36c58c00420f429aa0a"
+      },
+      "required_diagnostic_regex": []
+    },
+    {
+      "name": "NegativeCanonicalRecoveryWrongCost",
+      "file": "NegativeCanonicalRecoveryWrongCost.lean",
+      "source_sha256": "db3decd152f2a1876ab07134c19aca8373bb3fb600db5bb3ea87598875d3fae6",
+      "expected": "REJECTED",
+      "scope": "Canonical exact recovery cost cannot acquire an unproved +1.",
+      "origin": {
+        "kind": "EXACT_SEALED_CANONICAL_MUTATION",
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-release\\NegativeCanonicalRecoveryWrongCost.lean",
+        "sha256": "db3decd152f2a1876ab07134c19aca8373bb3fb600db5bb3ea87598875d3fae6",
+        "receipt": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-release\\stage22-type-control-receipt.json",
+        "receipt_sha256": "3cd6991c88e4e4cd40d0b74432056c6faae92bf6f9a6f30e93e0b7e0054744d6"
+      },
+      "required_diagnostic_regex": [
+        "orthogonalRecovery_norm_eq_optimalRecoveryCost",
+        "sSup"
+      ]
+    },
+    {
+      "name": "NegativeCanonicalEulerWrongMultiplier",
+      "file": "NegativeCanonicalEulerWrongMultiplier.lean",
+      "source_sha256": "4c823a480c003cfc57f122ec4f8e4ca8154f51b3b23fef248837a1f476648f9f",
+      "expected": "REJECTED",
+      "scope": "Actual Euler action cannot acquire an unproved +1 multiplier.",
+      "origin": {
+        "kind": "EXACT_SEALED_CANONICAL_MUTATION",
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-release\\NegativeCanonicalEulerWrongMultiplier.lean",
+        "sha256": "4c823a480c003cfc57f122ec4f8e4ca8154f51b3b23fef248837a1f476648f9f",
+        "receipt": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-release\\stage22-type-control-receipt.json",
+        "receipt_sha256": "3cd6991c88e4e4cd40d0b74432056c6faae92bf6f9a6f30e93e0b7e0054744d6"
+      },
+      "required_diagnostic_regex": [
+        "finiteEulerFilter_laplace",
+        "finiteEulerMultiplier"
+      ]
+    },
+    {
+      "name": "NegativeCanonicalResidualWrongPower",
+      "file": "NegativeCanonicalResidualWrongPower.lean",
+      "source_sha256": "b230e8ba674ca3a6f9188ca2eef6941aee12d3f61ca6e9e87ce730f20f51cc68",
+      "expected": "REJECTED",
+      "scope": "Actual real-cutoff residual cannot change power r to r+1.",
+      "origin": {
+        "kind": "EXACT_SEALED_CANONICAL_MUTATION",
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-release\\NegativeCanonicalResidualWrongPower.lean",
+        "sha256": "b230e8ba674ca3a6f9188ca2eef6941aee12d3f61ca6e9e87ce730f20f51cc68",
+        "receipt": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-release\\stage22-type-control-receipt.json",
+        "receipt_sha256": "3cd6991c88e4e4cd40d0b74432056c6faae92bf6f9a6f30e93e0b7e0054744d6"
+      },
+      "required_diagnostic_regex": [
+        "truncatedInverseResidual_laplace",
+        "r \\+ 1"
+      ]
+    },
+    {
+      "name": "NegativeSquareMissingPlateau",
+      "file": "NegativeSquareMissingPlateau.lean",
+      "source_sha256": "0578c573416ef6b91a700e94ade71667a2a0690f0772cdd747f130ff954973a4",
+      "expected": "REJECTED",
+      "scope": "Actual square unit gap needs the genuine plateau condition.",
+      "origin": {
+        "kind": "SEALED_SQUARE_EXAMPLE_SPLIT_IMPORT_ONLY",
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-square-physical\\SEALED_SQUARE_PHYSICAL_2026-10-24\\NegativeSquarePhysicalFinal.lean",
+        "sha256": "22b6be21f52213996abc3a427d7b78b33955bf37a2ab337028acf07c6a7f6a35",
+        "example_index": 0,
+        "adaptation": "Split the three original example bodies into separate files; change only standalone module import."
+      },
+      "required_diagnostic_regex": [
+        "squareGapJordan_gap",
+        "h x = A"
+      ]
+    },
+    {
+      "name": "NegativeSquareMissingLatticeSupport",
+      "file": "NegativeSquareMissingLatticeSupport.lean",
+      "source_sha256": "80a3fb09c136e0c3d9420007bc11b39614e547c328dd86ffe06c4f9bae354f4c",
+      "expected": "REJECTED",
+      "scope": "Actual all-temperate-measure no-repair needs actual lattice support.",
+      "origin": {
+        "kind": "SEALED_SQUARE_EXAMPLE_SPLIT_IMPORT_ONLY",
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-square-physical\\SEALED_SQUARE_PHYSICAL_2026-10-24\\NegativeSquarePhysicalFinal.lean",
+        "sha256": "22b6be21f52213996abc3a427d7b78b33955bf37a2ab337028acf07c6a7f6a35",
+        "example_index": 1,
+        "adaptation": "Split the three original example bodies into separate files; change only standalone module import."
+      },
+      "required_diagnostic_regex": [
+        "square_actual_no_tempered_measure_repair",
+        "totalVariation"
+      ]
+    },
+    {
+      "name": "NegativeSquareMissingTemperedGrowth",
+      "file": "NegativeSquareMissingTemperedGrowth.lean",
+      "source_sha256": "33d361e92f73c057433d53629afed0f4a4278199065b75d0a657e7aa50ce388b",
+      "expected": "REJECTED",
+      "scope": "The canonical Schwartz embedding needs actual temperate variation growth.",
+      "origin": {
+        "kind": "SEALED_SQUARE_EXAMPLE_SPLIT_IMPORT_ONLY",
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-square-physical\\SEALED_SQUARE_PHYSICAL_2026-10-24\\NegativeSquarePhysicalFinal.lean",
+        "sha256": "22b6be21f52213996abc3a427d7b78b33955bf37a2ab337028acf07c6a7f6a35",
+        "example_index": 2,
+        "adaptation": "Split the three original example bodies into separate files; change only standalone module import."
+      },
+      "required_diagnostic_regex": [
+        "failed to synthesize",
+        "HasTemperateGrowth"
+      ]
+    },
+    {
+      "name": "NegativeOmitsCompactCompatibility",
+      "file": "NegativeOmitsCompactCompatibility.lean",
+      "source_sha256": "0ed8a24d7c41dc1b2e1f6a4da0e32432690eb09a758966d4db213ee91354f931",
+      "expected": "REJECTED",
+      "scope": "Support of an unrelated measure does not constrain an arbitrary tempered distribution without compact compatibility.",
+      "origin": {
+        "kind": "SEALED_COMPACT_COMPATIBILITY_IMPORT_ONLY",
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-tempered-lattice\\SEALED_TEMPERED_LATTICE_2026-10-24\\NegativeOmitsCompactCompatibility.lean",
+        "sha256": "a45273eb9bf5e980dc7c5a1e900493773cd8fcd606c07dd886644b0fdb0a46f2"
+      },
+      "required_diagnostic_regex": [
+        "extension_annihilates_lattice_zero",
+        "ExtendsCompactPairing"
+      ]
+    },
+    {
+      "name": "WrongFactorControl",
+      "file": "WrongFactorControl.lean",
+      "source_sha256": "86b58ec82eb522d28b39af39a1c472d299228bcde70e0d134c963c026f9569af",
+      "expected": "REJECTED",
+      "scope": "Original CT1.3 normalization/first-order cost is indispensable.",
+      "origin": {
+        "kind": "SEALED_CT13_IMPORT_ONLY",
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-ct13\\WrongFactorControl.lean",
+        "sha256": "4281f8ae48238583187b622d04c9aaad4f6f758da430134c4c2f1e4222197e7b",
+        "receipt": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-ct13\\negative-controls.json",
+        "receipt_sha256": "5cd02a20613de184f3ab205d099efdeefcc026a3a4b1855dbcde9fae441921bf"
+      },
+      "required_diagnostic_regex": [
+        "sinc_identity_original",
+        "Real.exp L - 1"
+      ]
+    },
+    {
+      "name": "WrongSlopeControl",
+      "file": "WrongSlopeControl.lean",
+      "source_sha256": "7ece309a4518a32b24b7b473436dc91901ba0f72fbb3819aa66b5ac668d00dcb",
+      "expected": "REJECTED",
+      "scope": "Original CT1.3 normalization/first-order cost is indispensable.",
+      "origin": {
+        "kind": "SEALED_CT13_IMPORT_ONLY",
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-ct13\\WrongSlopeControl.lean",
+        "sha256": "842ba28c1c5525ac4af74cc223d38008b1339ef89f7142261c24c8c8b1c54976",
+        "receipt": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-ct13\\negative-controls.json",
+        "receipt_sha256": "5cd02a20613de184f3ab205d099efdeefcc026a3a4b1855dbcde9fae441921bf"
+      },
+      "required_diagnostic_regex": [
+        "positive_sinc_mass_slope",
+        "Tendsto"
+      ]
+    },
+    {
+      "name": "NegativeNoCommonBudget",
+      "file": "NegativeNoCommonBudget.lean",
+      "source_sha256": "22c593dde15e6bbf7fe239f26278f5407ef8c1c47c75f3422a2fef3d101cafaa",
+      "expected": "REJECTED",
+      "scope": "Per-member linear growth does not replace one common TV bound in Schwartz-to-continuous-compact extraction.",
+      "origin": {
+        "kind": "SEALED_CC_COMMON_TV_IMPORT_ONLY",
+        "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-independent-expected-types\\NegativeNoCommonBudget.lean",
+        "sha256": "bac9ae8d548269fc83c53a3ed3a47a9a5cd1cedfe12e579aa75315d4db97ccdb",
+        "receipt": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-independent-expected-types\\HT2_COMPACT_CONTINUOUS_EXTRACTION_RECEIPT.json",
+        "receipt_sha256": "5ef5cf6895d2204c3c258a2db546310e3ca6adaf0889d6f2cd1b082a99a75e6c"
+      },
+      "required_diagnostic_regex": [
+        "unsolved goals",
+        "CommonLinearMassBound"
+      ]
+    }
+  ],
+  "runtime_policy": "No owner source/cache writers; owner authorized overlap with read-only44 consumer replay after broad build. No build command; all Lean outputs external.",
+  "source_pin_drift": "FAIL_CLOSED; regenerate proposal after explicitly reviewed source/pin change.",
+  "release_ready": false,
+  "aggregate_accepted": false,
+  "RH": "OPEN",
+  "Step4": "OPEN"
+}

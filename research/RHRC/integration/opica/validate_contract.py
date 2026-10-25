@@ -59,6 +59,365 @@ def read_json(path: Path):
     return json.loads(path.read_text(encoding='utf-8'))
 
 
+# One explicitly reviewed child extension; this changes only the parent's
+# closed-world registry/configuration/delta view, never its mathematical gates.
+FOLLOWUP_FOLDER = 'research/RHRC/integration/opica_followup'
+FOLLOWUP_PARENT = 'd53dd70d38b0762af130b1d19b795af259f505f5'
+FOLLOWUP_TREE = '12691099f1a155a8bfa3ad4f6689146175b233b2'
+FOLLOWUP_EXTENSION_MODULE_SHA256 = '95475b33fa3365c96a82a42b70385b17e90ab088ff951501b06468825ba0e20d'
+FOLLOWUP_GLOBAL_FILES = {
+    'claim_registry': 'research/RHRC/CLAIM_REGISTRY.json',
+    'theorem_bindings': 'research/RHRC/REGISTERED_THEOREM_BINDINGS.json',
+    'file_classes': 'research/RHRC/graph/FILE_CLASSES.json',
+    'semantic_closure': 'research/RHRC/graph/SEMANTIC_CLOSURE_CONFIG.json',
+}
+
+# Separately reviewed Stage1 documentation navigation bytes. This exact seven-
+# file exception is independent of the full100-root child extension below.
+# Neither an editable child register nor a continuation manifest can repin it.
+# The original PROTECTED_STATE.json and historical registry objects stay frozen.
+FOLLOWUP_DOCUMENTATION_PATHS = frozenset({
+    'AUDIT.md', 'FORK_NOTES.md',
+    'research/RHRC/DOCUMENTATION_AUTHORITY.md',
+    'research/RHRC/VALIDATION_PROTOCOL.md',
+    'research/RHRC/graph/OPICA_FOLLOWUP_CURRENT_STATE.md',
+    'research/RHRC/graph/README.md', 'research/RHRC/integration/README.md',
+})
+FOLLOWUP_DOCUMENTATION_REVIEW = (
+    ('AUDIT.md', 27928, '20f4d509f16ddbbe1ac16aa18a25a193f6cde0c967456e93b99fc5c23958e6d6'),
+    ('FORK_NOTES.md', 21357, 'b186d9d72fde095838dd61192b361d7717916de74a4c754b87b06d7f1e98ee3d'),
+    ('research/RHRC/DOCUMENTATION_AUTHORITY.md', 34335, 'd8b9170c288216e01a764b4a948ba3a44350d24c488be02516db65e9616519dc'),
+    ('research/RHRC/VALIDATION_PROTOCOL.md', 41520, 'e08baedbe485245772b6055b1e1ef2951270b042355fe5aed0c5d6e8e8e36d9f'),
+    ('research/RHRC/graph/OPICA_FOLLOWUP_CURRENT_STATE.md', 5403, 'de9aabe7985f839c39b62e82c3407c97bc21d831e283199ab5d81784fe68f327'),
+    ('research/RHRC/graph/README.md', 17821, '806d732741e4d5358bf756b10268761aa269d462d98bd95d7432a6e112d32af5'),
+    ('research/RHRC/integration/README.md', 5636, '0470a3181ea91a825ba72b05a53f9f54eb43ffcda14863295d121f9d6a0532d3'),
+)
+FOLLOWUP_DOCUMENTATION_REVIEW_SHA256 = '4132519489b06e10a4883cf694e9b5ab55c7e34bced08fa840bc6586f70b7c4d'
+PROTECTED_STATE_OBJECT_SHA256 = '5ad6d198133f07a5ed7ac8abc9ec9bb6523db4a9729b69a61f7fe15a7820ce99'
+
+
+def _canonical_object_sha256(document):
+    return hashlib.sha256(json.dumps(document,sort_keys=True,separators=(',', ':'),
+        ensure_ascii=False).encode('utf-8')).hexdigest()
+
+
+def reviewed_documentation_paths(repo: Path):
+    """Return the exact all-or-nothing documentation exception, never proof scope.
+
+    A separate fixed seal prevents self-repinning the table while editing a
+    manifest. The parent validator's own source identity is pinned by the full
+    child builder; changing that trusted code requires independent review.
+    """
+    try:
+        rows = [{'path':p,'bytes':size,'sha256':digest}
+                for p,size,digest in FOLLOWUP_DOCUMENTATION_REVIEW]
+        paths = [row['path'] for row in rows]
+        if (len(rows) != 7 or len({p.casefold() for p in paths}) != 7
+                or set(paths) != FOLLOWUP_DOCUMENTATION_PATHS
+                or paths != sorted(paths)
+                or _canonical_object_sha256(rows) != FOLLOWUP_DOCUMENTATION_REVIEW_SHA256):
+            raise ValueError('exact sealed seven-path inventory required')
+        identities = set()
+        for row in rows:
+            path = _safe_checkout_file(Path(repo).absolute(),row['path'])
+            if path.resolve() != Path(repo).resolve()/row['path']:
+                raise ValueError('aliased documentation path: '+row['path'])
+            stat = path.stat()
+            identity = (stat.st_dev,stat.st_ino)
+            if stat.st_nlink != 1 or identity in identities:
+                raise ValueError('aliased documentation file: '+row['path'])
+            identities.add(identity)
+            data = path.read_bytes()
+            if len(data) != row['bytes'] or hashlib.sha256(data).hexdigest() != row['sha256']:
+                raise ValueError('reviewed documentation bytes changed: '+row['path'])
+        return set(paths), []
+    except (OSError,ValueError,TypeError,KeyError) as exc:
+        return set(), ['documentation review rejected: '+str(exc)]
+
+
+def _extension_require(condition, message):
+    # Deliberately not an assert: python -O must retain every rejection.
+    if not condition:
+        raise ValueError('OPICA follow-up extension: ' + message)
+
+
+def _safe_checkout_file(repo: Path, relative: str) -> Path:
+    from pathlib import PurePosixPath
+    _extension_require(isinstance(relative,str) and relative and '\\' not in relative
+        and ':' not in relative and not PurePosixPath(relative).is_absolute()
+        and all(p not in {'','.','..'} for p in relative.split('/')), 'unsafe path')
+    path = repo / relative
+    _extension_require(not any(p.is_symlink() for p in [path, *path.parents]
+        if p.is_relative_to(repo)), 'symlink in source path: '+relative)
+    _extension_require(path.is_file() and path.resolve().is_relative_to(repo.resolve()),
+                       'missing or escaped source: '+relative)
+    return path
+
+
+def _git_tree_entries(repo: Path, revision: str):
+    raw = subprocess.check_output(['git','ls-tree','-r','-z',revision],cwd=repo)
+    result = {}
+    for entry in raw.split(b'\0'):
+        if not entry:
+            continue
+        meta, name = entry.split(b'\t',1)
+        mode,kind,oid = meta.decode('ascii').split()
+        path = name.decode('utf-8')
+        _extension_require(kind=='blob' and mode in {'100644','100755'},
+                           'unsupported committed source mode: '+path)
+        _extension_require(path not in result, 'duplicate tree path')
+        result[path] = (mode,oid)
+    return result
+
+
+def _source_bound_parent_baseline(repo: Path, baseline):
+    """Verify the frozen capture against actual immutable Git objects, not HEAD.
+
+    This permits a child checkout without moving HEAD or trusting a mutable
+    capture. Batch mode avoids one Git process per source file.
+    """
+    tree = subprocess.check_output(['git','rev-parse',FOLLOWUP_PARENT+'^{tree}'],
+                                   cwd=repo,text=True).strip()
+    _extension_require(tree==FOLLOWUP_TREE, 'accepted parent tree mismatch')
+    entries = _git_tree_entries(repo,FOLLOWUP_PARENT)
+    rows = baseline.get('files')
+    _extension_require(isinstance(rows,list) and all(isinstance(r,dict) for r in rows),
+                       'parent source inventory malformed')
+    by_path = {r.get('path'):r for r in rows}
+    _extension_require(len(by_path)==len(rows) and set(by_path)==set(entries),
+                       'parent source census differs from accepted Git tree')
+    names = list(entries)
+    request = b''.join((entries[name][1]+'\n').encode('ascii') for name in names)
+    process = subprocess.run(['git','cat-file','--batch'],cwd=repo,input=request,
+                             stdout=subprocess.PIPE,stderr=subprocess.PIPE,check=True)
+    output = process.stdout
+    position = 0
+    globals_from_git = {}
+    for name in names:
+        end = output.find(b'\n',position)
+        _extension_require(end>=0, 'truncated parent object header')
+        oid,kind,size_string = output[position:end].decode('ascii').split()
+        size = int(size_string)
+        start = end+1
+        data = output[start:start+size]
+        _extension_require(len(data)==size and output[start+size:start+size+1]==b'\n',
+                           'truncated parent object body')
+        position = start+size+1
+        mode,expected_oid = entries[name]
+        actual_oid = hashlib.sha1(b'blob '+str(size).encode()+b'\0'+data).hexdigest()
+        expected = {'path':name,'mode':mode,'git_blob':expected_oid,
+                    'bytes':size,'sha256':hashlib.sha256(data).hexdigest()}
+        _extension_require(kind=='blob' and oid==expected_oid and actual_oid==oid
+                           and by_path[name]==expected, 'parent bytes differ: '+name)
+        if name in FOLLOWUP_GLOBAL_FILES.values():
+            globals_from_git[name] = json.loads(data)
+    _extension_require(position==len(output), 'unexpected parent object stream suffix')
+    for key,name in FOLLOWUP_GLOBAL_FILES.items():
+        _extension_require(baseline.get(key)==globals_from_git[name],
+                           'parent registry/configuration capture differs: '+key)
+
+
+def _reviewed_child_objects(repo: Path, roots, register, workflow, *, parent_claims=()):
+    """Consume independently recorded review objects, never derive them from raw registries.
+
+    These structural bindings are not compiler authority. The unchanged parent
+    receipt gate and complete child compiler gate are still required separately.
+    """
+    required = {r['full_name']:r for r in roots}
+    _extension_require(len(required)==100 and len(roots)==100,'100-root inventory required')
+    types = workflow.get('implemented_root_type_sha256')
+    _extension_require(isinstance(types,dict) and set(types)==set(required),
+                       'full child reviewed type table absent; subset cannot extend parent')
+    review = register.get('accepted_registry_extension')
+    _extension_require(isinstance(review,dict)
+        and review.get('schema')=='OPICA_FOLLOWUP_REVIEWED_REGISTRY_V2'
+        and review.get('scope')=='FULL_100_ORIGINAL_ROOTS',
+        'full independent registry-object review is absent')
+    records = review.get('roots')
+    _extension_require(isinstance(records,list) and len(records)==100
+        and [r.get('full_name') for r in records]==[r['full_name'] for r in roots],
+        'reviewed root order/identity mismatch')
+    parent_ids = [row.get('id') for row in parent_claims]
+    child_ids = [row.get('id') for row in roots]
+    _extension_require(all(isinstance(identity, str) and identity for identity in parent_ids)
+        and len(parent_ids) == len(set(parent_ids)), 'invalid immutable parent claim census')
+    _extension_require(all(isinstance(identity, str) and identity for identity in child_ids)
+        and len(child_ids) == len(set(child_ids))
+        and not set(parent_ids).intersection(child_ids), 'invalid or reused child identity')
+    known_claims = set(parent_ids) | set(child_ids)
+    claims, bindings = [], []
+    for root,record in zip(roots,records):
+        name = root['full_name']
+        digest = types[name]
+        _extension_require(isinstance(digest,str) and re.fullmatch('[0-9a-f]{64}',digest)
+            and record.get('type_sha256')==digest,'unreviewed exact type: '+name)
+        source = _safe_checkout_file(repo,root['path'])
+        _extension_require(record.get('source_sha256')==hashlib.sha256(source.read_bytes()).hexdigest(),
+                           'stale reviewed proof source: '+name)
+        consumer = record.get('expected_type_consumer')
+        _extension_require(isinstance(consumer,dict), 'missing expected-type consumer: '+name)
+        consumer_path = consumer.get('path')
+        _extension_require(consumer_path=='Zeta23/OPICAFollowup/Validation.lean',
+                           'wrong independent expected-type surface: '+name)
+        consumer_file = _safe_checkout_file(repo,consumer_path)
+        _extension_require(consumer.get('sha256')==hashlib.sha256(consumer_file.read_bytes()).hexdigest()
+            and consumer.get('declaration')==root['expected_type_consumer'],
+            'stale/mismatched independently stated consumer: '+name)
+        _extension_require(record.get('status')=='PROOF_TYPE_AND_SOURCE_REVIEWED',
+                           'unreviewed candidate cannot register: '+name)
+        claim, binding = record.get('claim'),record.get('binding')
+        _extension_require(isinstance(claim,dict) and isinstance(binding,dict),
+                           'exact reviewed objects missing: '+name)
+        for obj in (claim,binding):
+            _extension_require(obj.get('id')==root['id'] and obj.get('theorem')==name
+                and obj.get('source')==root['path'], 'reviewed source/name differs: '+name)
+        _extension_require(claim.get('status')=='PROVED_UNCONDITIONAL'
+            and claim.get('promotion_cap')=='PROVED_UNCONDITIONAL',
+            'supporting theorem status differs: '+name)
+        # These rows will be REMOVED from the parent projection. The parent's
+        # registration_errors therefore cannot police their claim firewall.
+        _extension_require(claim.get('route') is None and binding.get('route') is None,
+                           'child supporting objects must remain route-less: '+name)
+        statement = claim.get('statement')
+        _extension_require(isinstance(statement, str) and bool(statement.strip()),
+                           'child quantified statement missing: '+name)
+        _extension_require(record.get('statement_sha256') ==
+            hashlib.sha256(statement.encode('utf-8')).hexdigest(),
+            'child quantified statement differs from reviewed text: '+name)
+        dependencies = claim.get('dependencies')
+        _extension_require(isinstance(dependencies, list)
+            and all(isinstance(identity, str) and identity for identity in dependencies)
+            and len(dependencies) == len(set(dependencies))
+            and set(dependencies) <= known_claims and root['id'] not in dependencies,
+            'child registered dependency identities invalid: '+name)
+        claims.append(claim)
+        bindings.append(binding)
+    return claims,bindings
+
+
+def _source_bound_followup_context_v1(repo: Path):
+    """Return a validated extension, or None for an untouched parent checkout.
+
+    Missing/incomplete child material never disables a check. It raises an
+    explicit error; the caller then runs the original unprojected parent checks.
+    """
+    folder = repo/FOLLOWUP_FOLDER
+    present = folder.exists() or any((repo/name).exists() for name in (
+        'Zeta23/OPICAFollowup','Zeta23/OPICAFollowup.lean',
+        'Zeta23/RHRC/OpicaFollowupBindings.lean'))
+    if not present:
+        return None
+    extension_path = _safe_checkout_file(repo,FOLLOWUP_FOLDER+'/parent_extension.py')
+    _extension_require(hashlib.sha256(extension_path.read_bytes()).hexdigest()==
+        FOLLOWUP_EXTENSION_MODULE_SHA256,'unreviewed projection implementation')
+    import importlib.util
+    module_name = '_opica_source_bound_followup_extension'
+    spec = importlib.util.spec_from_file_location(module_name,extension_path)
+    extension = importlib.util.module_from_spec(spec)
+    sys.modules[module_name] = extension
+    spec.loader.exec_module(extension)
+    descriptor_bytes = _safe_checkout_file(repo,FOLLOWUP_FOLDER+'/PARENT_EXTENSION.json').read_bytes()
+    roots_bytes = _safe_checkout_file(repo,FOLLOWUP_FOLDER+'/PUBLIC_ROOTS.json').read_bytes()
+    baseline = read_json(_safe_checkout_file(repo,FOLLOWUP_FOLDER+'/PROTECTED_STATE.json'))
+    _source_bound_parent_baseline(repo,baseline)
+    roots = json.loads(roots_bytes)['roots']
+    register = read_json(_safe_checkout_file(repo,FOLLOWUP_FOLDER+'/SOURCE_REGISTER.json'))
+    workflow = read_json(_safe_checkout_file(repo,FOLLOWUP_FOLDER+'/WORKFLOW_CONTRACT.json'))
+    claims,bindings = _reviewed_child_objects(repo,roots,register,workflow,
+        parent_claims=baseline['claim_registry']['claims'])
+    index_raw = subprocess.check_output(['git','ls-files','--stage','-z'],cwd=repo)
+    files = []
+    for item in index_raw.split(b'\0'):
+        if not item:
+            continue
+        meta,name_bytes = item.split(b'\t',1)
+        mode,oid,stage = meta.decode('ascii').split()
+        name = name_bytes.decode('utf-8')
+        _extension_require(stage=='0' and mode in {'100644','100755'},
+                           'unmerged/symlink source entry: '+name)
+        data = _safe_checkout_file(repo,name).read_bytes()
+        actual_oid = hashlib.sha1(b'blob '+str(len(data)).encode()+b'\0'+data).hexdigest()
+        _extension_require(oid==actual_oid,'unstaged source change: '+name)
+        files.append({'path':name,'mode':mode,'git_blob':oid,'bytes':len(data),
+                      'sha256':hashlib.sha256(data).hexdigest()})
+    raw = {'parent_head':baseline['parent_head'],'parent_tree':FOLLOWUP_TREE,'files':files}
+    raw.update({key:read_json(_safe_checkout_file(repo,name)) for key,name in FOLLOWUP_GLOBAL_FILES.items()})
+    contract = {'descriptor_bytes':descriptor_bytes,'roots_bytes':roots_bytes,
+                'reviewed_claim_objects':claims,'reviewed_binding_objects':bindings}
+    context = extension.validate_extension_context(raw,baseline,contract)
+    return (dict(extension.project_parent_context(context)),extension.allowed_child_delta(context))
+
+
+
+# Version2 policy authority is distinct from compiler validity and human review.
+# Bound to the actual independently reviewed exact-subject/caller objects.
+TRUSTED_EXACT_EXTENSION_POLICY_SHA256 = '14610a9ebba2d1e13bd42f263aa430df624dfdd8af9b195fc885b4379cee77e9'
+EXACT_EXTENSION_PROVIDER_SHA256 = '0b393f7d1b177a1c497917aa0aaade1355b0512338bc3a143991b4550fae5e44'
+
+
+def _exact_source_extension_context(repo: Path):
+    folder = repo/FOLLOWUP_FOLDER
+    if not folder.exists():
+        return None
+    register = read_json(_safe_checkout_file(repo,FOLLOWUP_FOLDER+'/SOURCE_REGISTER.json'))
+    if 'exact_source_extension_policy' not in register:
+        return None
+    _extension_require(isinstance(TRUSTED_EXACT_EXTENSION_POLICY_SHA256,str)
+        and re.fullmatch('[0-9a-f]{64}',TRUSTED_EXACT_EXTENSION_POLICY_SHA256),
+        'independently reviewed exact-subject policy anchor is not established')
+    policy = register['exact_source_extension_policy']
+    _extension_require(isinstance(policy,dict)
+        and policy.get('schema') in {'OPICA_EXACT_SUBJECT_EXTENSION_POLICY_V2', 'OPICA_EXACT_SUBJECT_EXTENSION_POLICY_V3'},
+        'malformed or unsupported exact source policy')
+    provider_path = _safe_checkout_file(repo,FOLLOWUP_FOLDER+'/exact_extension.py')
+    _extension_require(hashlib.sha256(provider_path.read_bytes()).hexdigest()==
+        EXACT_EXTENSION_PROVIDER_SHA256,'exact source provider changed without review')
+    import importlib.util
+    name = '_opica_exact_source_extension_provider_v2'
+    spec = importlib.util.spec_from_file_location(name,provider_path)
+    provider = importlib.util.module_from_spec(spec)
+    sys.modules[name] = provider
+    spec.loader.exec_module(provider)
+    from types import SimpleNamespace
+    helpers = SimpleNamespace(_source_bound_parent_baseline=_source_bound_parent_baseline,
+        _reviewed_child_objects=_reviewed_child_objects, FOLLOWUP_GLOBAL_FILES=FOLLOWUP_GLOBAL_FILES)
+    return provider.source_bound_context(repo,policy,TRUSTED_EXACT_EXTENSION_POLICY_SHA256,
+                                         helpers)
+
+
+def _source_bound_followup_context(repo: Path):
+    """Explicit version dispatcher: malformed/pending V2 never falls back to V1."""
+    context = _exact_source_extension_context(repo)
+    if context is None:
+        return _source_bound_followup_context_v1(repo)
+    return (json.loads(context.parent_json),context.exact_allowed_paths)
+
+
+def exact_extension_binding(repo: Path):
+    context = _exact_source_extension_context(repo)
+    if context is None:
+        return None
+    return {'schema':'OPICA_EXACT_SUBJECT_POLICY_BINDING_V2',
+        'policy_sha256':context.policy_sha256,'checked_commit':context.actual_commit,
+        'checked_tree':context.actual_tree,
+        'complete_actual_source_inventory_sha256':context.actual_source_inventory_sha256,
+        'projection_scope':'REGISTRY_CONFIG_AND_CLOSED_WORLD_METADATA_ONLY',
+        'compiler_source_type_axiom_dependency_projection':False}
+
+
+def _parent_view_or_raw(repo: Path, keys=None):
+    selected = set(FOLLOWUP_GLOBAL_FILES) if keys is None else set(keys)
+    raw = {key:read_json(repo/name) for key,name in FOLLOWUP_GLOBAL_FILES.items() if key in selected}
+    try:
+        validated = _source_bound_followup_context(repo)
+    except (KeyError,TypeError,ValueError,OSError,subprocess.CalledProcessError) as exc:
+        return raw,frozenset(),['follow-up extension rejected: '+str(exc)]
+    if validated is None:
+        return raw,frozenset(),[]
+    projected,allowed = validated
+    return {key:value for key,value in projected.items() if key in selected},allowed,[]
+
+
 def frozen_source_errors(register):
     errors = []
     for field, expected in [('paper_inputs',FROZEN_PAPER_SHA256),
@@ -133,19 +492,54 @@ def forbidden_lean(text):
 
 def protected_errors(repo: Path, protection):
     errors = []
+    # Compare the passed object as well as the separately pinned input file.
+    # Editing a protected entry alongside a changed document cannot re-freeze it.
+    if _canonical_object_sha256(protection) != PROTECTED_STATE_OBJECT_SHA256:
+        errors.append('frozen protection object changed')
+    reviewed_paths, review_errors = set(), []
+    documentation_exception_needed = False
     for entry in protection['byte_protected_files']:
-        path = repo / entry['path']
-        if not path.is_file():
-            errors.append('protected file missing: ' + entry['path'])
+        if entry['path'] in FOLLOWUP_DOCUMENTATION_PATHS:
+            try:
+                data = _safe_checkout_file(Path(repo).absolute(),entry['path']).read_bytes()
+                if len(data) != entry['bytes'] or hashlib.sha256(data).hexdigest() != entry['sha256']:
+                    documentation_exception_needed = True
+            except (OSError,ValueError):
+                documentation_exception_needed = True
+    try:
+        exact_context = _exact_source_extension_context(Path(repo))
+    except (KeyError,TypeError,ValueError,OSError,subprocess.SubprocessError) as exc:
+        errors.append('exact source extension rejected: '+str(exc))
+        exact_context = None
+    if exact_context is not None:
+        reviewed_paths = set(exact_context.documentation_paths) | set(getattr(exact_context, 'implementation_paths', ()))
+    elif documentation_exception_needed:
+        reviewed_paths, review_errors = reviewed_documentation_paths(repo)
+        errors.extend(review_errors)
+    seen_paths = set()
+    for entry in protection['byte_protected_files']:
+        relative = entry['path']
+        if relative.casefold() in seen_paths:
+            errors.append('duplicate or aliased protected path: '+relative)
+        seen_paths.add(relative.casefold())
+        try:
+            path = _safe_checkout_file(Path(repo).absolute(),relative)
+        except (OSError,ValueError) as exc:
+            errors.append('protected file missing or unsafe: '+relative+': '+str(exc))
             continue
         data = path.read_bytes()
         if len(data) != entry['bytes'] or hashlib.sha256(data).hexdigest() != entry['sha256']:
-            errors.append('protected bytes changed: ' + entry['path'])
+            if relative not in reviewed_paths:
+                errors.append('protected bytes changed: ' + relative)
     for name, key, baseline_key in [
         ('CLAIM_REGISTRY.json', 'claims', 'claim_objects_all_existing'),
         ('REGISTERED_THEOREM_BINDINGS.json', 'bindings', 'registered_bindings_all_existing'),
     ]:
-        actual = read_json(repo / 'research/RHRC' / name)[key]
+        try:
+            actual = read_json(_safe_checkout_file(Path(repo).absolute(),'research/RHRC/'+name))[key]
+        except (OSError,ValueError,KeyError) as exc:
+            errors.append('protected registry missing or unsafe: '+name+': '+str(exc))
+            continue
         old = protection[baseline_key]
         ids = [item['id'] for item in actual]
         if len(ids) != len(set(ids)):
@@ -201,7 +595,7 @@ def registration_errors(claims, bindings, roots, protection, manifest):
     return errors
 
 
-def config_errors(classes, closure, baseline_classes, baseline_closure, modules, baseline_paths):
+def _legacy_config_errors(classes, closure, baseline_classes, baseline_closure, modules, baseline_paths):
     errors = []
     old_rules = baseline_classes['rules']
     positions = [index for index,rule in enumerate(old_rules) if rule['id'] == 'zeta_lean']
@@ -234,6 +628,20 @@ def config_errors(classes, closure, baseline_classes, baseline_closure, modules,
     if closure != expected_closure:
         errors.append('semantic closure config must preserve every immutable field/role and append exactly the 26 OPICA roles')
     return errors
+
+
+def config_errors(classes, closure, baseline_classes, baseline_closure, modules, baseline_paths):
+    """Authenticate only the actual raw config pair before strict legacy checks."""
+    raw_classes = read_json(REPO/FOLLOWUP_GLOBAL_FILES['file_classes'])
+    raw_closure = read_json(REPO/FOLLOWUP_GLOBAL_FILES['semantic_closure'])
+    if classes == raw_classes and closure == raw_closure:
+        projected, _, errors = _parent_view_or_raw(REPO,
+            keys={'file_classes','semantic_closure'})
+        if errors:
+            return errors
+        classes, closure = projected['file_classes'], projected['semantic_closure']
+    return _legacy_config_errors(classes,closure,baseline_classes,baseline_closure,
+        modules,baseline_paths)
 
 
 def classification_errors(classes, modules, register):
@@ -318,8 +726,11 @@ def formal_receipt_errors(repo, receipt, manifest, roots):
         errors.append('formal receipt compiler evidence invalid: '+str(exc))
     else:
         try:
-            claims = read_json(repo/'research/RHRC/CLAIM_REGISTRY.json')['claims']
-            bindings = read_json(repo/'research/RHRC/REGISTERED_THEOREM_BINDINGS.json')['bindings']
+            parent_view,_,extension_errors = _parent_view_or_raw(repo,
+                ('claim_registry','theorem_bindings'))
+            errors += extension_errors
+            claims = parent_view['claim_registry']['claims']
+            bindings = parent_view['theorem_bindings']['bindings']
             errors += registered_dependency_errors(claims,bindings,roots,receipt['dependencies'])
         except (KeyError,TypeError,ValueError) as exc:
             errors.append('formal receipt registered dependency mapping invalid: '+str(exc))
@@ -392,11 +803,13 @@ def check(repo: Path):
             strip_lean_comments(path.read_text(encoding='utf-8')))
         (declared if present else missing_roots).append(root['full_name'])
     errors += ['required theorem declaration absent: ' + name for name in missing_roots]
-    claims = read_json(repo/'research/RHRC/CLAIM_REGISTRY.json')['claims']
-    bindings = read_json(repo/'research/RHRC/REGISTERED_THEOREM_BINDINGS.json')['bindings']
+    parent_view,child_delta,extension_errors = _parent_view_or_raw(repo)
+    errors += extension_errors
+    claims = parent_view['claim_registry']['claims']
+    bindings = parent_view['theorem_bindings']['bindings']
     errors += registration_errors(claims,bindings,public['primary_roots'],protection,manifest)
-    classes = read_json(repo/'research/RHRC/graph/FILE_CLASSES.json')
-    closure = read_json(repo/'research/RHRC/graph/SEMANTIC_CLOSURE_CONFIG.json')
+    classes = parent_view['file_classes']
+    closure = parent_view['semantic_closure']
     roles = closure['standalone_module_roles']
     baseline_classes,baseline_closure,baseline_paths = baseline_configs(repo,manifest['base_commit'])
     errors += config_errors(classes,closure,baseline_classes,baseline_closure,manifest['modules'],baseline_paths)
@@ -424,8 +837,8 @@ def check(repo: Path):
     for item in manifest['modules']:
         if item['trust_zone'] != 'AUDIT_ONLY' and item['module'] not in reachable:
             errors.append('mathematical module absent from facade: ' + item['module'])
-    allowed_new = {x['path'] for x in manifest['create']}
-    allowed_old = {x['path'] for x in manifest['modify']} | set(manifest['regenerate']['paths'])
+    allowed_new = {x['path'] for x in manifest['create']} | set(child_delta)
+    allowed_old = {x['path'] for x in manifest['modify']} | set(manifest['regenerate']['paths']) | set(child_delta)
     changed = subprocess.check_output(['git', 'diff', '--no-renames', '--name-status',
         manifest['base_commit']], cwd=repo, text=True).splitlines()
     for line in changed:

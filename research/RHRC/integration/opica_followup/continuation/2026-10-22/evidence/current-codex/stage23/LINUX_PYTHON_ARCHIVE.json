@@ -1,0 +1,12 @@
+{
+  "status": "PRIMARY_PUBLISHER_ARCHIVE_DIGEST_VERIFIED",
+  "api": "https://api.github.com/repos/astral-sh/python-build-standalone/releases/tags/20250612",
+  "release_id": 224906751,
+  "tag": "20250612",
+  "asset_id": 263292431,
+  "url": "https://github.com/astral-sh/python-build-standalone/releases/download/20250612/cpython-3.13.5%2B20250612-x86_64-unknown-linux-gnu-install_only_stripped.tar.gz",
+  "bytes": 35446094,
+  "sha256": "5c63e7ffe47baff0a96a685c94fb5075612817741feb4e85ec3cc082c742b4f8",
+  "archive": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\tools\\cpython-3.13.5+20250612-x86_64-unknown-linux-gnu-install_only_stripped.tar.gz",
+  "runtime_execution": "NOT_YET_RUN"
+}

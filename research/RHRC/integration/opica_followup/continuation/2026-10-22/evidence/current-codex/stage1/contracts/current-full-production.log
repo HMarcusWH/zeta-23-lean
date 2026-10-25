@@ -1,0 +1,16 @@
+Traceback (most recent call last):
+  File "C:\Users\macka\.codex\.chatgpt-projects\g-p-6a353c7268b08191b685956e466d73e4\work\opica-followup-repo\research\RHRC\integration\opica_followup\build_receipt.py", line 1062, in <module>
+    raise SystemExit(main())
+                     ~~~~^^
+  File "C:\Users\macka\.codex\.chatgpt-projects\g-p-6a353c7268b08191b685956e466d73e4\work\opica-followup-repo\research\RHRC\integration\opica_followup\build_receipt.py", line 988, in main
+    report = produce_full_receipt(REPO,args.output_dir,args.requested_head,args.requested_base,args.lake)
+  File "C:\Users\macka\.codex\.chatgpt-projects\g-p-6a353c7268b08191b685956e466d73e4\work\opica-followup-repo\research\RHRC\integration\opica_followup\build_receipt.py", line 902, in produce_full_receipt
+    reviewed = reviewed_full_contract(repo,contract)
+  File "C:\Users\macka\.codex\.chatgpt-projects\g-p-6a353c7268b08191b685956e466d73e4\work\opica-followup-repo\research\RHRC\integration\opica_followup\build_receipt.py", line 394, in reviewed_full_contract
+    require(isinstance(FULL_REVIEW_SHA256, str) and SHA256.fullmatch(FULL_REVIEW_SHA256),
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        'independent full100 review seal is not established')
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\macka\.codex\.chatgpt-projects\g-p-6a353c7268b08191b685956e466d73e4\work\opica-followup-repo\research\RHRC\integration\opica_followup\build_receipt.py", line 53, in require
+    raise ValueError(description)
+ValueError: independent full100 review seal is not established

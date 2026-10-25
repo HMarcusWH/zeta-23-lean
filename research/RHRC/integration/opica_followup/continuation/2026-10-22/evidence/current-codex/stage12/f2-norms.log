@@ -1,0 +1,2 @@
+cutoff X = 400: kappa^2 int d omega/(a-kappa)^2 = 73.68101629 vs N_11 = 73.68138905 (ratio 0.99999494)
+              kappa^2 int a d omega/(a-kappa)^2 = 17319.83398 vs Q_11 = 17319.71783 (ratio 1.0000067)

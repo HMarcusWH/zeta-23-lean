@@ -1,0 +1,15 @@
+C:\Users\macka\.codex\.chatgpt-projects\g-p-6a353c7268b08191b685956e466d73e4\work\opica-stage20\clean-controls\NegativeParameterFactorial.lean:28:7: warning: Variable name `i` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _i
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+'OPICARightCellTaylor.second_parameter_jet_cubic_coefficient' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OPICARightCellTaylor.missing_parameter_factorial_is_false' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OPICARightCellTaylor.zero_node_actual_dependency' depends on axioms: [propext, Classical.choice, Quot.sound]
+C:\Users\macka\.codex\.chatgpt-projects\g-p-6a353c7268b08191b685956e466d73e4\work\opica-stage20\clean-controls\NegativeParameterFactorial.lean:43:2: error: Type mismatch
+  OPICARightCellTaylor.second_parameter_jet_cubic_coefficient
+has type
+  OPICARightCellTaylor.oddJetCoefficient (1 / 4) 2 1 = -1 / 6
+but is expected to have type
+  OPICARightCellTaylor.oddJetCoefficient (1 / 4) 2 1 = -1 / 3

@@ -3,6 +3,10 @@ import copy
 import hashlib
 import json
 import importlib.util
+import os
+import shutil
+import subprocess
+import tempfile
 from pathlib import Path
 import unittest
 from unittest.mock import patch
@@ -289,6 +293,411 @@ class ReleaseEvidenceBoundaryMutations(unittest.TestCase):
     def test_release_rejects_wrong_checkout_kind(self):
         self.formal['checkout_kind'] = 'SYNTHETIC_MERGE'
         self.assertTrue(any('checkout kind' in e for e in self.errors()))
+
+
+
+class FollowupSourceBoundProjectionTests(unittest.TestCase):
+    """Synthetic registry fixtures test only rejection mechanics, not Lean proofs."""
+    def setUp(self):
+        import tempfile
+        self.temp = tempfile.TemporaryDirectory()
+        self.addCleanup(self.temp.cleanup)
+        self.repo = Path(self.temp.name)
+        child = HERE.parent/'opica_followup'
+        self.roots = json.loads((child/'PUBLIC_ROOTS.json').read_text())['roots']
+        self.types = {r['full_name']:hashlib.sha256(r['full_name'].encode()).hexdigest()
+                      for r in self.roots}
+        consumer = self.repo/'Zeta23/OPICAFollowup/Validation.lean'
+        consumer.parent.mkdir(parents=True,exist_ok=True)
+        consumer.write_text('-- SYNTHETIC REVIEW TEST ONLY; no proof authority\n')
+        consumer_hash = hashlib.sha256(consumer.read_bytes()).hexdigest()
+        rows = []
+        for root in self.roots:
+            source = self.repo/root['path']
+            source.parent.mkdir(parents=True,exist_ok=True)
+            source.write_text('-- SYNTHETIC MODULE TEST ONLY\n')
+        for root in self.roots:
+            # Validation is not a mathematical root module, so remains distinct.
+            claim = {'id':root['id'],'theorem':root['full_name'],'source':root['path'],
+                     'status':'PROVED_UNCONDITIONAL','promotion_cap':'PROVED_UNCONDITIONAL',
+                     'statement':'SYNTHETIC TEST OBJECT; NEVER REGISTER', 'dependencies':[]}
+            binding = {k:claim[k] for k in ('id','theorem','source')}
+            rows.append({'full_name':root['full_name'], 'type_sha256':self.types[root['full_name']],
+                'source_sha256':hashlib.sha256((self.repo/root['path']).read_bytes()).hexdigest(),
+                'expected_type_consumer':{'path':'Zeta23/OPICAFollowup/Validation.lean',
+                    'sha256':consumer_hash,'declaration':root['expected_type_consumer']},
+                'status':'PROOF_TYPE_AND_SOURCE_REVIEWED',
+                'statement_sha256':hashlib.sha256(claim['statement'].encode('utf-8')).hexdigest(),
+                'claim':claim,'binding':binding})
+        self.register = {'accepted_registry_extension':{
+            'schema':'OPICA_FOLLOWUP_REVIEWED_REGISTRY_V2','scope':'FULL_100_ORIGINAL_ROOTS','roots':rows}}
+        self.workflow = {'implemented_root_type_sha256':self.types}
+
+    def check_review(self):
+        return contract._reviewed_child_objects(self.repo,self.roots,self.register,self.workflow)
+
+    def reject_review(self):
+        with self.assertRaises(ValueError):
+            self.check_review()
+
+    def test_complete_structural_fixture_is_not_a_compiler_receipt(self):
+        claims,bindings = self.check_review()
+        self.assertEqual(len(claims),100)
+        self.assertEqual(len(bindings),100)
+        self.assertEqual([c['id'] for c in claims],[r['id'] for r in self.roots])
+        self.assertNotIn('compiler_receipt',self.register)
+
+    def test_v1_review_missing_new_firewall_fields_rejected(self):
+        self.register['accepted_registry_extension']['schema']='OPICA_FOLLOWUP_REVIEWED_REGISTRY_V1'
+        self.reject_review()
+
+    def test_child_claim_route_rejected_before_projection(self):
+        self.register['accepted_registry_extension']['roots'][0]['claim']['route']='R001_exceptional_zero'
+        self.reject_review()
+
+    def test_child_binding_route_rejected_before_projection(self):
+        self.register['accepted_registry_extension']['roots'][0]['binding']['route']='R001_exceptional_zero'
+        self.reject_review()
+
+    def test_paired_child_routes_do_not_validate_each_other(self):
+        row=self.register['accepted_registry_extension']['roots'][0]
+        row['claim']['route']=row['binding']['route']='R001_exceptional_zero'
+        self.reject_review()
+
+    def test_empty_and_whitespace_child_statements_rejected(self):
+        row=self.register['accepted_registry_extension']['roots'][0]
+        for text in ('', ' ', '\n\t'):
+            with self.subTest(text=text):
+                row['claim']['statement']=text
+                row['statement_sha256']=hashlib.sha256(text.encode()).hexdigest()
+                self.reject_review()
+
+    def test_child_statement_change_cannot_reuse_review_digest(self):
+        self.register['accepted_registry_extension']['roots'][0]['claim']['statement']='Different quantified assertion'
+        self.reject_review()
+
+    def test_child_dependencies_must_be_supplied(self):
+        self.register['accepted_registry_extension']['roots'][0]['claim'].pop('dependencies')
+        self.reject_review()
+
+    def test_unknown_child_dependency_rejected(self):
+        self.register['accepted_registry_extension']['roots'][0]['claim']['dependencies']=['UNKNOWN']
+        self.reject_review()
+
+    def test_self_child_dependency_rejected(self):
+        row=self.register['accepted_registry_extension']['roots'][0]
+        row['claim']['dependencies']=[row['claim']['id']]
+        self.reject_review()
+
+    def test_duplicate_child_dependency_rejected(self):
+        other=self.roots[1]['id']
+        self.register['accepted_registry_extension']['roots'][0]['claim']['dependencies']=[other,other]
+        self.reject_review()
+
+    def test_malformed_child_dependencies_rejected(self):
+        row=self.register['accepted_registry_extension']['roots'][0]
+        for dependencies in ('UNKNOWN', {}, [None], [''], [False]):
+            with self.subTest(dependencies=dependencies):
+                row['claim']['dependencies']=dependencies
+                self.reject_review()
+
+    def test_child_dependencies_can_use_only_supplied_immutable_parent_ids(self):
+        row=self.register['accepted_registry_extension']['roots'][0]
+        row['claim']['dependencies']=['PARENT_FIXTURE']
+        self.reject_review()
+        claims,_=contract._reviewed_child_objects(self.repo,self.roots,self.register,self.workflow,
+            parent_claims=[{'id':'PARENT_FIXTURE'}])
+        self.assertEqual(claims[0]['dependencies'],['PARENT_FIXTURE'])
+
+    def test_41_root_type_table_rejected(self):
+        self.workflow['implemented_root_type_sha256'] = dict(list(self.types.items())[:41])
+        self.reject_review()
+
+    def test_no_review_object_rejected(self):
+        self.register.pop('accepted_registry_extension')
+        self.reject_review()
+
+    def test_missing_root_review_rejected(self):
+        self.register['accepted_registry_extension']['roots'].pop()
+        self.reject_review()
+
+    def test_reordered_review_rejected(self):
+        self.register['accepted_registry_extension']['roots'].reverse()
+        self.reject_review()
+
+    def test_duplicate_review_rejected(self):
+        rows = self.register['accepted_registry_extension']['roots']
+        rows[-1] = copy.deepcopy(rows[0])
+        self.reject_review()
+
+    def test_stale_type_hash_rejected(self):
+        self.register['accepted_registry_extension']['roots'][0]['type_sha256']='0'*64
+        self.reject_review()
+
+    def test_invalid_type_digest_rejected(self):
+        first=self.roots[0]['full_name']
+        self.types[first]='this is not a type hash'
+        self.register['accepted_registry_extension']['roots'][0]['type_sha256']=self.types[first]
+        self.reject_review()
+
+    def test_changed_source_rejected(self):
+        (self.repo/self.roots[0]['path']).write_text('-- changed after review\n')
+        self.reject_review()
+
+    def test_changed_consumer_rejected(self):
+        (self.repo/'Zeta23/OPICAFollowup/Validation.lean').write_text('-- changed consumer\n')
+        self.reject_review()
+
+    def test_wrong_expected_consumer_rejected(self):
+        self.register['accepted_registry_extension']['roots'][0]['expected_type_consumer']['declaration']='typeOf_actual'
+        self.reject_review()
+
+    def test_other_consumer_surface_rejected(self):
+        self.register['accepted_registry_extension']['roots'][0]['expected_type_consumer']['path']='README.md'
+        self.reject_review()
+
+    def test_candidate_status_rejected(self):
+        self.register['accepted_registry_extension']['roots'][0]['status']='UNCHECKED'
+        self.reject_review()
+
+    def test_wrong_claim_name_rejected(self):
+        self.register['accepted_registry_extension']['roots'][0]['claim']['theorem']='False.elim'
+        self.reject_review()
+
+    def test_wrong_binding_source_rejected(self):
+        self.register['accepted_registry_extension']['roots'][0]['binding']['source']='Zeta23.lean'
+        self.reject_review()
+
+    def test_unproved_status_rejected(self):
+        self.register['accepted_registry_extension']['roots'][0]['claim']['status']='OPEN'
+        self.reject_review()
+
+    def test_changed_scope_rejected(self):
+        self.register['accepted_registry_extension']['scope']='CURRENT_SUBSET'
+        self.reject_review()
+
+    def test_source_symlink_rejected(self):
+        target=self.repo/self.roots[0]['path']
+        data=target.read_bytes()
+        outside=self.repo/'outside.lean'
+        outside.write_bytes(data)
+        target.unlink()
+        target.symlink_to(outside)
+        self.reject_review()
+
+    def test_source_path_escape_rejected(self):
+        for name in ('../escape','/absolute','a/../b','a\\b','a//b','C:/x'):
+            with self.subTest(name=name),self.assertRaises(ValueError):
+                contract._safe_checkout_file(self.repo,name)
+
+    def test_failure_keeps_raw_parent_view_and_empty_allowlist(self):
+        raw={key:{'fixture':key} for key in contract.FOLLOWUP_GLOBAL_FILES}
+        by_path={self.repo/path:raw[key] for key,path in contract.FOLLOWUP_GLOBAL_FILES.items()}
+        with patch.object(contract,'read_json',side_effect=lambda p:by_path[p]), \
+             patch.object(contract,'_source_bound_followup_context',side_effect=ValueError('missing full child')):
+            view,allowed,errors=contract._parent_view_or_raw(self.repo)
+        self.assertEqual(view,raw)
+        self.assertEqual(allowed,frozenset())
+        self.assertTrue(errors)
+
+    def test_absent_extension_preserves_historical_view(self):
+        raw={key:{'fixture':key} for key in contract.FOLLOWUP_GLOBAL_FILES}
+        by_path={self.repo/path:raw[key] for key,path in contract.FOLLOWUP_GLOBAL_FILES.items()}
+        with patch.object(contract,'read_json',side_effect=lambda p:by_path[p]), \
+             patch.object(contract,'_source_bound_followup_context',return_value=None):
+            view,allowed,errors=contract._parent_view_or_raw(self.repo)
+        self.assertEqual(view,raw)
+        self.assertEqual(allowed,frozenset())
+        self.assertEqual(errors,[])
+
+
+class DocumentationReview(unittest.TestCase):
+    def setUp(self):
+        self.temporary = tempfile.TemporaryDirectory()
+        self.addCleanup(self.temporary.cleanup)
+        self.repo = Path(self.temporary.name)
+        # This tests the sealed Stage1 review, whose bytes intentionally predate
+        # later current-document navigation edits. Read its genuine Git objects;
+        # an unavailable or altered historical fixture must fail, never skip.
+        fixture_head = '0b0b84421d0c8c1fd955bb1f1730561ae560e445'
+        for relative, size, digest in contract.FOLLOWUP_DOCUMENTATION_REVIEW:
+            data = subprocess.check_output([
+                'git', '-C', str(contract.REPO), 'show', fixture_head + ':' + relative,
+            ])
+            self.assertEqual(len(data), size, relative)
+            self.assertEqual(hashlib.sha256(data).hexdigest(), digest, relative)
+            target = self.repo/relative
+            target.parent.mkdir(parents=True,exist_ok=True)
+            target.write_bytes(data)
+        registry = self.repo/'research/RHRC'
+        (registry/'CLAIM_REGISTRY.json').write_text(json.dumps({'claims':[]}))
+        (registry/'REGISTERED_THEOREM_BINDINGS.json').write_text(json.dumps({'bindings':[]}))
+
+    def review(self):
+        return contract.reviewed_documentation_paths(self.repo)
+
+    def test_exact_seven_reviewed_files_pass(self):
+        paths,errors = self.review()
+        self.assertEqual(errors,[])
+        self.assertEqual(paths,contract.FOLLOWUP_DOCUMENTATION_PATHS)
+        self.assertEqual(len(paths),7)
+
+    def test_any_changed_reviewed_byte_rejects_entire_exception(self):
+        for relative in sorted(contract.FOLLOWUP_DOCUMENTATION_PATHS):
+            with self.subTest(path=relative):
+                path = self.repo/relative
+                original = path.read_bytes()
+                path.write_bytes(original+b'\nforged navigation\n')
+                paths,errors = self.review()
+                self.assertEqual(paths,set())
+                self.assertTrue(any('bytes changed' in e for e in errors))
+                path.write_bytes(original)
+
+    def test_missing_file_rejects_entire_exception(self):
+        (self.repo/'research/RHRC/graph/OPICA_FOLLOWUP_CURRENT_STATE.md').unlink()
+        paths,errors = self.review()
+        self.assertEqual(paths,set())
+        self.assertTrue(any('missing' in e for e in errors))
+
+    def test_unlisted_readme_source_and_registry_never_gain_byte_exception(self):
+        for relative in ['README.md','Zeta23/OPICA/Example.lean','research/RHRC/CLAIM_REGISTRY.json']:
+            with self.subTest(path=relative):
+                path = self.repo/relative
+                path.parent.mkdir(parents=True,exist_ok=True)
+                old = b'{"claims":[]}' if relative.endswith('.json') else b'frozen bytes\n'
+                new = b'{"claims":[],"forgery":true}' if relative.endswith('.json') else b'changed bytes\n'
+                path.write_bytes(new)
+                protection = {'byte_protected_files':[{'path':relative,'bytes':len(old),
+                    'sha256':hashlib.sha256(old).hexdigest()}],
+                    'claim_objects_all_existing':[],'registered_bindings_all_existing':[]}
+                errors = contract.protected_errors(self.repo,protection)
+                self.assertIn('protected bytes changed: '+relative,errors)
+
+    def test_historical_registry_objects_still_reject_mutation(self):
+        (self.repo/'research/RHRC/CLAIM_REGISTRY.json').write_text(json.dumps({'claims':[{'id':'OLD','status':'PROVED'}]}))
+        protection = {'byte_protected_files':[],
+            'claim_objects_all_existing':[{'id':'OLD','status':'OPEN'}],
+            'registered_bindings_all_existing':[]}
+        self.assertIn('historical registry object changed: OLD',contract.protected_errors(self.repo,protection))
+
+    def test_edited_manifest_or_register_cannot_repin_document(self):
+        target = self.repo/'AUDIT.md'
+        target.write_bytes(target.read_bytes()+b'\nforged\n')
+        forged = [{'path':relative,'bytes':(self.repo/relative).stat().st_size,
+            'sha256':hashlib.sha256((self.repo/relative).read_bytes()).hexdigest()}
+            for relative in sorted(contract.FOLLOWUP_DOCUMENTATION_PATHS)]
+        folder = self.repo/contract.FOLLOWUP_FOLDER
+        folder.mkdir(parents=True)
+        for name in ['SOURCE_REGISTER.json','CONTINUATION_MANIFEST.json','DOCUMENTATION_REVIEW.json']:
+            (folder/name).write_text(json.dumps({'artifacts':forged,'documentation_review':forged}))
+        self.assertEqual(self.review()[0],set())
+        self.assertTrue(self.review()[1])
+
+    def test_protection_object_cannot_self_repin_changed_document(self):
+        protection = contract.read_json(HERE/'PROTECTED_STATE.json')
+        original = copy.deepcopy(protection)
+        target = self.repo/'AUDIT.md'
+        target.write_bytes(target.read_bytes()+b'\nforged\n')
+        for entry in protection['byte_protected_files']:
+            if entry['path']=='AUDIT.md':
+                entry.update(bytes=target.stat().st_size,sha256=hashlib.sha256(target.read_bytes()).hexdigest())
+        errors = contract.protected_errors(self.repo,protection)
+        self.assertIn('frozen protection object changed',errors)
+        self.assertTrue(any('documentation review rejected' in e for e in errors))
+        self.assertEqual(contract.read_json(HERE/'PROTECTED_STATE.json'),original)
+
+    def test_table_cannot_self_repin_without_separate_seal(self):
+        target = self.repo/'AUDIT.md'
+        target.write_bytes(target.read_bytes()+b'\nforged\n')
+        forged = tuple((p,target.stat().st_size,hashlib.sha256(target.read_bytes()).hexdigest())
+            if p=='AUDIT.md' else (p,n,h) for p,n,h in contract.FOLLOWUP_DOCUMENTATION_REVIEW)
+        with patch.object(contract,'FOLLOWUP_DOCUMENTATION_REVIEW',forged):
+            self.assertEqual(self.review()[0],set())
+            self.assertTrue(any('sealed seven-path' in e for e in self.review()[1]))
+
+    def test_traversal_case_and_duplicate_table_paths_rejected(self):
+        first = contract.FOLLOWUP_DOCUMENTATION_REVIEW[0]
+        for relative in ['../AUDIT.md','audit.md','research/../AUDIT.md','C:/AUDIT.md','AUDIT.md/extra','FORK_NOTES.md']:
+            with self.subTest(path=relative):
+                forged = ((relative,*first[1:]),*contract.FOLLOWUP_DOCUMENTATION_REVIEW[1:])
+                with patch.object(contract,'FOLLOWUP_DOCUMENTATION_REVIEW',forged):
+                    self.assertEqual(self.review()[0],set())
+                    self.assertTrue(self.review()[1])
+
+    def test_symlink_rejected_even_if_target_has_exact_reviewed_bytes(self):
+        path = self.repo/'AUDIT.md'
+        target = self.repo/'exact-audit-copy.md'
+        path.rename(target)
+        try:
+            path.symlink_to(target)
+        except OSError as exc:
+            self.skipTest('host cannot create symlink: '+str(exc))
+        self.assertEqual(self.review()[0],set())
+        self.assertTrue(any('symlink' in e for e in self.review()[1]))
+
+    def test_hardlink_alias_rejected_even_with_exact_bytes(self):
+        path = self.repo/'AUDIT.md'
+        alias = self.repo/'exact-audit-alias.md'
+        try:
+            os.link(path,alias)
+        except OSError as exc:
+            self.skipTest('host cannot create hardlink: '+str(exc))
+        self.assertEqual(self.review()[0],set())
+        self.assertTrue(any('aliased' in e for e in self.review()[1]))
+
+    def test_symlink_guard_without_host_link_privilege(self):
+        target = self.repo/'AUDIT.md'
+        original = Path.is_symlink
+        with patch.object(Path,'is_symlink',lambda path: path==target or original(path)):
+            self.assertEqual(self.review()[0],set())
+            self.assertTrue(any('symlink' in e for e in self.review()[1]))
+
+    def test_hardlink_guard_without_host_link_privilege(self):
+        target = self.repo/'AUDIT.md'
+        original = Path.stat
+        def aliased_stat(path,*args,**kwargs):
+            result = original(path,*args,**kwargs)
+            if path==target:
+                fields = list(result)
+                fields[3] = 2
+                return os.stat_result(fields)
+            return result
+        with patch.object(Path,'stat',aliased_stat):
+            self.assertEqual(self.review()[0],set())
+            self.assertTrue(any('aliased' in e for e in self.review()[1]))
+
+    def test_full_root_extension_still_rejects_absent_full_reviewed_types(self):
+        # Make the original missing-types premise explicit as the live table evolves.
+        original_read = contract.read_json
+        def absent_types(path):
+            value = original_read(path)
+            if Path(path).name == 'WORKFLOW_CONTRACT.json':
+                value = copy.deepcopy(value)
+                value.pop('implemented_root_type_sha256', None)
+            return value
+        with patch.object(contract, 'read_json', side_effect=absent_types), \
+                patch.object(contract, '_exact_source_extension_context', return_value=None), \
+                self.assertRaisesRegex(ValueError,'full child reviewed type table absent'):
+            contract._source_bound_followup_context(contract.REPO)
+
+    def test_exact_provider_supports_unregistered_parent_module_import(self):
+        # The original suite loads its actual validator without sys.modules registration.
+        folder = self.repo / contract.FOLLOWUP_FOLDER
+        folder.mkdir(parents=True, exist_ok=True)
+        (folder / 'SOURCE_REGISTER.json').write_text(json.dumps({
+            'exact_source_extension_policy': {'schema': 'OPICA_EXACT_SUBJECT_EXTENSION_POLICY_V2'}}))
+        source = (
+            b"def source_bound_context(repo, policy, anchor, helpers):\n"
+            b"    if helpers._source_bound_parent_baseline.__globals__ is not helpers._reviewed_child_objects.__globals__: raise ValueError('wrong helper origin')\n"
+            b"    if helpers._source_bound_parent_baseline.__name__ != '_source_bound_parent_baseline': raise ValueError('wrong baseline helper')\n"
+            b"    if helpers._reviewed_child_objects.__name__ != '_reviewed_child_objects': raise ValueError('wrong review helper')\n"
+            b"    if set(helpers.FOLLOWUP_GLOBAL_FILES) != {'claim_registry','theorem_bindings','file_classes','semantic_closure'}: raise ValueError('wrong global objects')\n"
+            b"    return ('FIXTURE_ONLY_ACTUAL_HELPER_IDENTITIES', anchor)\n")
+        (folder / 'exact_extension.py').write_bytes(source)
+        with patch.object(contract, 'TRUSTED_EXACT_EXTENSION_POLICY_SHA256', '1' * 64), \
+                patch.object(contract, 'EXACT_EXTENSION_PROVIDER_SHA256', hashlib.sha256(source).hexdigest()):
+            self.assertEqual(contract._exact_source_extension_context(self.repo),
+                             ('FIXTURE_ONLY_ACTUAL_HELPER_IDENTITIES', '1' * 64))
 
 
 if __name__ == '__main__':

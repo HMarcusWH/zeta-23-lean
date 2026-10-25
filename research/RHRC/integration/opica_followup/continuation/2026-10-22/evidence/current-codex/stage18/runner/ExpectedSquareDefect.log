@@ -1,0 +1,16 @@
+'Zeta23.OPICAFollowup.square_fourier_defect' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.OPICAFollowup.square_defect_origin_positive' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.OPICAFollowup.square_no_lattice_repair' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.OPICAFollowup.square_selfdual_projection_fills_gap' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OPICASquareDefectIndependent.audit_projection' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OPICASquareDefectIndependent.expected_square_fourier_defect' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OPICASquareDefectIndependent.expected_square_defect_origin_positive' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'OPICASquareDefectIndependent.expected_square_no_lattice_repair' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'OPICASquareDefectIndependent.expected_square_selfdual_projection_fills_gap' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'OPICASquareDefectIndependent.expected_actual_square' depends on axioms: [propext, Classical.choice, Quot.sound]

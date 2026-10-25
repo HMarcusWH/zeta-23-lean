@@ -1,0 +1,41 @@
+{
+  "name": "NegativeNoCommonBudget",
+  "file": "NegativeNoCommonBudget.lean",
+  "source_sha256": "22c593dde15e6bbf7fe239f26278f5407ef8c1c47c75f3422a2fef3d101cafaa",
+  "expected": "REJECTED",
+  "scope": "Per-member linear growth does not replace one common TV bound in Schwartz-to-continuous-compact extraction.",
+  "origin": {
+    "kind": "SEALED_CC_COMMON_TV_IMPORT_ONLY",
+    "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-independent-expected-types\\NegativeNoCommonBudget.lean",
+    "sha256": "bac9ae8d548269fc83c53a3ed3a47a9a5cd1cedfe12e579aa75315d4db97ccdb",
+    "receipt": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-independent-expected-types\\HT2_COMPACT_CONTINUOUS_EXTRACTION_RECEIPT.json",
+    "receipt_sha256": "5ef5cf6895d2204c3c258a2db546310e3ca6adaf0889d6f2cd1b082a99a75e6c"
+  },
+  "required_diagnostic_regex": [
+    "unsolved goals",
+    "CommonLinearMassBound"
+  ],
+  "passed": true,
+  "observed": "REJECTED_INTENDED_MUTATION",
+  "failure_reasons": [],
+  "requested_axiom_names": [],
+  "axioms": {},
+  "error_recovery_sorryAx_in_rejected_output": false,
+  "formal_authority_from_failed_declarations": false,
+  "command": [
+    "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+    "env",
+    "lean",
+    "--root=C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\sources",
+    "-DautoImplicit=false",
+    "-DrelaxedAutoImplicit=false",
+    "-DmaxHeartbeats=800000",
+    "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\sources\\NegativeNoCommonBudget.lean",
+    "-o",
+    "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\objects\\NegativeNoCommonBudget.olean"
+  ],
+  "exit_code": 1,
+  "log": "NegativeNoCommonBudget.log",
+  "log_sha256": "f2081514d9550354960d0bc545fe4158b945daecce9589526362f0e64688f1ba",
+  "seconds": 66.41715540003497
+}

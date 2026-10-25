@@ -1,0 +1,9 @@
+'OPICAConfluentProfilesIndependent.expected_profile_jet_confluent_determinant' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'OPICAConfluentProfilesIndependent.expected_finite_zero_jet_independent' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'OPICAConfluentProfilesIndependent.expected_exact_local_column' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

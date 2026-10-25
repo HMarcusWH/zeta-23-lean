@@ -21,6 +21,19 @@ views = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(views)
 
 
+def _load_registered_shards():
+    path = ROOT / "integration" / "registered_dependency_shards.py"
+    spec = importlib.util.spec_from_file_location("rhrc_registered_dependency_shards", path)
+    if spec is None or spec.loader is None:
+        raise RuntimeError(f"cannot load registered dependency shard layout from {path}")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+REGISTERED_SHARDS = _load_registered_shards()
+
+
 def load(name: str) -> dict:
     return json.loads((GENERATED / name).read_text(encoding="utf-8"))
 
@@ -34,11 +47,7 @@ def load_jsonl(path: Path) -> list[dict]:
 
 
 def load_compiler_receipt() -> list[dict]:
-    return [
-        json.loads(line)
-        for line in COMPILER_RECEIPT.read_text(encoding="utf-8").splitlines()
-        if line.strip()
-    ]
+    return REGISTERED_SHARDS.load_rows(ROOT.parents[1])
 
 
 def projected_claim_entry(

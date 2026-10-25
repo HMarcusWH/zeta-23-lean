@@ -1,0 +1,14 @@
+negative-ct1.lean:5:2: error: Type mismatch
+  Zeta23.OPICAFollowup.nearGapCombFamily_gap_edge_atom hL hu
+has type
+  (Zeta23.OPICAFollowup.nearGapCombFamily L).positive.real {Real.exp (-L)} = Real.exp (-L / 2) ∧
+    (Zeta23.OPICAFollowup.nearGapCombFamily L).negative {Real.exp (-L)} = 0
+but is expected to have type
+  (Zeta23.OPICAFollowup.nearGapCombFamily L).positive.real {Real.exp (-L)} = Real.exp (-L) ∧
+    (Zeta23.OPICAFollowup.nearGapCombFamily L).negative {Real.exp (-L)} = 0
+negative-ct1.lean:8:2: error: Type mismatch
+  (Zeta23.OPICAFollowup.dilation_near_gap_family L hL hu).right.right.right.right.right.left
+has type
+  Zeta23.OPICAFollowup.hasNearGap (Zeta23.OPICAFollowup.nearGapCombFamily L) (Real.exp (-L))
+but is expected to have type
+  Zeta23.OPICAFollowup.hasNearGap (Zeta23.OPICAFollowup.nearGapCombFamily L) 1

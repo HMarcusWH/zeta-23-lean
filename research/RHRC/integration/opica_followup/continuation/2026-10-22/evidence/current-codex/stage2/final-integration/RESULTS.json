@@ -1,0 +1,166 @@
+{
+  "schema": "OPICA_STAGE2_FINAL_INTEGRATION_V1",
+  "started": "2026-10-22T15:25:54.365964+00:00",
+  "source_sha256": {
+    "research/RHRC/integration/opica_followup/build_receipt.py": "6cb701fb6427fc1625a74d3745804da637cd73e8af73183b82c7b46bd4bbdcf5",
+    "research/RHRC/integration/opica_followup/validate_contract.py": "c59f96cc50730c1f9949649cdb893ad85b0605ccdb25c7c4c2ae3256da65c38e",
+    "research/RHRC/integration/opica/validate_contract.py": "37784b8c89d75f3aae1aed52ff2fe046c2614d78247edfd717f6b30a2d41953a",
+    "research/RHRC/integration/opica/tests/test_contract.py": "17da5f0929c47499ea6cd11131fece1e50a53ff27adb4179ffa8fc96dfc07fce",
+    "research/RHRC/integration/opica_followup/tests/test_receipt.py": "05178dec40cd432eb0d2d1707fc9f01073917e16d8b2e3d7f3827afbe6527872",
+    "research/RHRC/integration/opica_followup/tests/test_contract.py": "5d18b98b74ad3cef78d9d10755f3a665f5385b4e5b0979b57d4ae8f7fd0fb8e1"
+  },
+  "commands": [
+    {
+      "label": "child-normal",
+      "command": [
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\tools\\python-3.13.5-embed-amd64\\python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "research/RHRC/integration/opica_followup/tests",
+        "-p",
+        "test_*.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "seconds": 33.30322719994001,
+      "log_sha256": "30e517f5a9ff72856298972e9b33df5793a9b882df281ddd7b74413354409805"
+    },
+    {
+      "label": "preparation-normal",
+      "command": [
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\tools\\python-3.13.5-embed-amd64\\python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "research/RHRC/integration/opica_followup/validate_contract.py",
+        "--phase",
+        "preflight",
+        "--output",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage2-2026-10-22\\final-integration\\preparation-normal.json"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "seconds": 6.542630400042981,
+      "log_sha256": "75607960620110655b5ac1c38f2682499a1c2627e3c90218bcbc414de7aebff2"
+    },
+    {
+      "label": "child-optimized",
+      "command": [
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\tools\\python-3.13.5-embed-amd64\\python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "-O",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "research/RHRC/integration/opica_followup/tests",
+        "-p",
+        "test_*.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "seconds": 30.317737599951215,
+      "log_sha256": "9d6f69cf5911314ad6abd7f52da4ab23caab5d4180c1a29783d5ad8e77a235f2"
+    },
+    {
+      "label": "preparation-optimized",
+      "command": [
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\tools\\python-3.13.5-embed-amd64\\python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "-O",
+        "research/RHRC/integration/opica_followup/validate_contract.py",
+        "--phase",
+        "preflight",
+        "--output",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage2-2026-10-22\\final-integration\\preparation-optimized.json"
+      ],
+      "exit_code": 1,
+      "expected_exit_code": 0,
+      "seconds": 6.113203799934126,
+      "log_sha256": "aa84b533aed4712c6f870ae9c87bebf3249eb6b1138af27ce827a3961960a69f"
+    },
+    {
+      "label": "release-must-remain-closed",
+      "command": [
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\tools\\python-3.13.5-embed-amd64\\python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "research/RHRC/integration/opica_followup/validate_contract.py",
+        "--phase",
+        "release",
+        "--output",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage2-2026-10-22\\final-integration\\release-closed.json"
+      ],
+      "exit_code": 1,
+      "expected_exit_code": 1,
+      "seconds": 3.0251146000809968,
+      "log_sha256": "6be5afef947fc56f2f2d7106cdfb95e8ff60a3027e7b392a4f962553ac329f30"
+    },
+    {
+      "label": "renderer",
+      "command": [
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\tools\\python-3.13.5-embed-amd64\\python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "research/RHRC/control_v2/render_current_state.py",
+        "--check"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "seconds": 0.11179650004487485,
+      "log_sha256": "6fb8ac72eedea39f2bc0bec2bff89965cdbadbdb578f799879265df4c61df135"
+    },
+    {
+      "label": "navigation",
+      "command": [
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\tools\\python-3.13.5-embed-amd64\\python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "research/RHRC/integration/opica_followup/continuation/2026-10-22/refresh_navigation.py",
+        "--check"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "seconds": 0.12955919990781695,
+      "log_sha256": "16556ce33098ed199e5b2d7a3fe59797f685bcf7bbf3e788ffc2fdbe105f5372"
+    },
+    {
+      "label": "diff-check",
+      "command": [
+        "git",
+        "-c",
+        "core.whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol",
+        "diff",
+        "--check",
+        "--",
+        ".",
+        ":!*.log"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "seconds": 0.1410347999772057,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "release_accepted": false,
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "independent_closing_inequalities": "OPEN",
+  "source_unchanged": true,
+  "status": "FAIL",
+  "finished": "2026-10-22T15:27:14.161426+00:00"
+}

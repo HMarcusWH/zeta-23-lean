@@ -1,0 +1,182 @@
+{
+ "schema": "OPICA_STAGE14_NARROW_GATE_V1",
+ "status": "PASS_NARROW_LOCAL_GATES_ONLY_AGGREGATE_AND_FULL_RELEASE_OPEN",
+ "checked_commit": "496990ad01f2408cfca5edd81b9dc40428d120af",
+ "checked_tree": "e3b3430e60eeea0cd3fabe501c6eae0d5eec39ac",
+ "dirty_status_during_checks": "",
+ "compiler": "Lean 4.33.0-rc2 commit d8b18978322de05a8f3dba51ef03cf5461676c17 (Linux x86_64), Lake 5.0.0-src+d8b1897",
+ "mathlib": "51e6992efd06126df61a496bebf8f49482a4e129 (pins unchanged; no lake update)",
+ "new_module": {
+  "module": "Zeta23.OPICAFollowup.WeightedSpectralMeasure",
+  "project_imports": [
+   "Zeta23.OPICAFollowup.SawtoothForce"
+  ],
+  "authority": "BUILD_MANIFEST direct_project_imports of this module is exactly [SawtoothForce]",
+  "required_definitions": [
+   "arithmeticSpectralMeasure",
+   "spectralEnergy",
+   "arithmeticStieltjes"
+  ],
+  "new_definitions": [
+   "spectralEnergy",
+   "arithmeticDensity",
+   "arithmeticSpectralMeasure",
+   "arithmeticStieltjes",
+   "spectralResolventSet"
+  ],
+  "supporting_results": [
+   "arithmetic_weighted_moment",
+   "integral_arithmeticSpectralMeasure",
+   "integrable_arithmeticSpectralMeasure_iff",
+   "budget_pos",
+   "arithmeticSpectralMeasure_univ_pos",
+   "norm_inv_sub_le",
+   "exists_gap",
+   "gap_ball",
+   "isOpen_spectralResolventSet",
+   "integrable_resolvent_kernel"
+  ]
+ },
+ "existing_lean_sources_changed": false,
+ "cache_owner": "single local process; the module was built from this exact source in the session (lake rebuilds on source hash change), and the runner build re-validated it",
+ "sources": [
+  {
+   "path": "Zeta23/OPICAFollowup/WeightedSpectralMeasure.lean",
+   "sha256": "0fdc93080087bea2d07cab551261df7bbb9964fd4a8163e00b35c014b7cc789d",
+   "bytes": 20690
+  },
+  {
+   "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedWeightedSpectralMeasure.lean",
+   "sha256": "3f5843a25bc9b01179292b46b963e5807c59d459d5cc8e19b273475bfe40ee71",
+   "bytes": 8710
+  },
+  {
+   "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/run_candidate_checks.py",
+   "sha256": "0b97c2780b967d71b29cc362df96802031f5f3398c52e27799a915849a818ab6",
+   "bytes": 6839
+  },
+  {
+   "path": ".github/workflows/rhrc_opica_followup.yml",
+   "sha256": "ae43b1b9a19429ee8f51e9c3099d5825e4b96d50e04914cd896edada942668ad",
+   "bytes": 44419
+  },
+  {
+   "path": "lean-toolchain",
+   "sha256": "0d3c76ccd8772d8bcbe207241421a760312b71a6aa82f84194391fdf5cb026d6",
+   "bytes": 29
+  },
+  {
+   "path": "lake-manifest.json",
+   "sha256": "1847b362e15efd927e75aa8b5442e491f998e4a3f730f9dcaca9841f2957c448",
+   "bytes": 3200
+  }
+ ],
+ "roots": {
+  "Zeta23.OPICAFollowup.arithmetic_stieltjes_holomorphic": {
+   "paper": "F2",
+   "expected_type_consumer": "consumers/ExpectedWeightedSpectralMeasure.lean (10 receipts, shared)",
+   "actual_domain": "the weighted moment equals the F1 source norm ||w||_2^2 of the actual sawtooth weight; at kappa = -1 M is real and positive; an off-line strip parameter (Re rho != 1/2, Im rho != 0) gives kappa = rho(1 - rho) with Im kappa = (1 - 2 Re rho) Im rho != 0 in the resolvent set, where M is differentiable; a critical-line parameter gives real kappa = 1/4 + (Im rho)^2 on the cut, outside the resolvent set",
+   "premises": "kappa in the resolvent set C \\ [1/4, oo) for the pointwise clauses",
+   "axioms": "propext, Classical.choice, Quot.sound"
+  },
+  "Zeta23.OPICAFollowup.arithmetic_stieltjes_sign_budget": {
+   "paper": "F2",
+   "expected_type_consumer": "consumers/ExpectedWeightedSpectralMeasure.lean (10 receipts, shared)",
+   "actual_domain": "at kappa = i: Im M(i) > 0 and |M(i)| <= 2(log(2 pi) - gamma); at an off-line strip parameter Im M/Im kappa > 0",
+   "premises": "Im kappa != 0",
+   "axioms": "propext, Classical.choice, Quot.sound"
+  },
+  "re_verified_narrow_roots": [
+   "all roots consumed by the twenty-one runner consumer files"
+  ]
+ },
+ "gates": [
+  {
+   "label": "narrow runner (16 modules, 21 consumer files)",
+   "log": "runner/CHECK_RESULT.json",
+   "sha256": "6b6273cf316d912d9a8242440fe0929509999e9bd61546c27a675a4bc030e5e8",
+   "exit_code": 0,
+   "runner_status": "PASS_NARROW_ONLY",
+   "consumer_receipts": {
+    "ExpectedMasks": 4,
+    "ExpectedComplex": 4,
+    "ExpectedAuxiliary": 6,
+    "ExpectedMultiplicity": 17,
+    "ExpectedComb": 5,
+    "ExpectedFirstCell": 5,
+    "ExpectedWeighted": 9,
+    "ExpectedNearGap": 5,
+    "ExpectedNearGapLimit": 10,
+    "ExpectedNormalizedLimit": 9,
+    "ExpectedWeightedInverse": 17,
+    "ExpectedCoPoissonFamily": 7,
+    "ExpectedCoPoissonOrderZero": 10,
+    "ExpectedZeroMeasure": 7,
+    "ExpectedEulerMaclaurin": 10,
+    "ExpectedZeroProfiles": 11,
+    "ExpectedLogFourierSobolev": 10,
+    "ExpectedForcedEuler": 10,
+    "ExpectedSamplingCompatibility": 11,
+    "ExpectedSawtoothForce": 11,
+    "ExpectedWeightedSpectralMeasure": 10
+   }
+  },
+  {
+   "label": "W04/W07 workflow consumer (unchanged heredoc)",
+   "log": "consumers/opica-w04-w07-expected.log",
+   "sha256": "47bf37f88ae44589a223145e24dd07655b7172bfca6a30bf819bb33c5251ac1e",
+   "exit_code": 0,
+   "standard_axiom_receipts": 52
+  },
+  {
+   "label": "W06 workflow consumer (unchanged heredoc)",
+   "log": "consumers/opica-w06-expected.log",
+   "sha256": "8564fc7fe7d8a2ef4ae561975e207ce6aa8e42accc8c35f0e6ed618ed26078ca",
+   "exit_code": 0,
+   "standard_axiom_receipts": 14
+  },
+  {
+   "label": "W01 consumers and exact-source subset",
+   "note": "not re-run locally: no existing Lean source changed and no W01 or subset module imports the new module; green in CI at the Stage 11 head b9627cc1 (ci-harvest-b9627cc1.json)"
+  },
+  {
+   "label": "child suite and parent contract tests",
+   "result": "child 185/185 and parent 82/82 in normal and optimized Python"
+  },
+  {
+   "label": "frozen control replay",
+   "result": "normal and optimized modes (p0 5112, round1 18862, round2 14672, final 1274 checks each); copoisson, round2 and final numerical suites CONSISTENCY_ONLY"
+  },
+  {
+   "label": "numerical falsification (mpmath 1.3.0, not interval certified)",
+   "script": "numerical-falsification.py",
+   "script_sha256": "ff1f45d05b688fce1c064f2f9923550e12a3747d1a334f315253adeafea7ae46",
+   "log": "numerical-falsification.log",
+   "log_sha256": "94d487290b8a6acee5b98835fc8b3b80575d5648dc4c41ea1b080d88176e75f8",
+   "result": "24-point Gauss-Legendre per unit interval on |xi| < 400 with mean-value tail: int d omega/a = 1.2606680 vs log(2 pi) - gamma = 1.2606614; M(-1) = 0.46037 real positive; at kappa = i, 1 + 5i, 0.2 + 0.01i and 200 + 3i the bounds |M| <= (1 + |kappa|/|Im kappa|) budget and the sign-integral bound hold with margin and the reversed sign fails; central finite differences of M agree with int d omega/(a - kappa)^2 to 8 digits (6 near the cut edge); Im M/Im kappa = int d omega/|a - kappa|^2 is an algebraic identity on the same nodes, not an independent check"
+  }
+ ],
+ "negative_controls": [
+  {
+   "file": "negative-controls/negative-weighted-spectral-measure.lean",
+   "expected": "REJECTED",
+   "observed": "REJECTED (8 errors, exit 1): weighted moment log(2 pi) + gamma; moment with 2 pi instead of the density factor 1/(2 pi); holomorphic on all of C; derivative with a minus sign; integrability without the resolvent hypothesis; sign identity with a minus sign; positivity without Im kappa != 0; budget factor |kappa|/|Im kappa| without the 1",
+   "log_sha256": "c8c31b8fa13f9e554514d5d81a8eea90723fe49ae284d7cf5f0bbf57fcbead52"
+  }
+ ],
+ "ci_harvest": {
+  "file": "ci-harvest-b9627cc1.json",
+  "sha256": "c76265b06580540a8c54b8026915e69fecb5391d0ca74f9bfa4692aefc1c1b92"
+ },
+ "not_established": [
+  "aggregate current-source export",
+  "full100 compiler receipt production/replay",
+  "facade and registration",
+  "parent-extension acceptance",
+  "canonical regeneration (rhkg-compiler-receipt remains red)",
+  "CI on the Stage 14 head (pending at publication)"
+ ],
+ "RH": "OPEN",
+ "Step4": "OPEN",
+ "independent_closing_inequalities": "OPEN"
+}

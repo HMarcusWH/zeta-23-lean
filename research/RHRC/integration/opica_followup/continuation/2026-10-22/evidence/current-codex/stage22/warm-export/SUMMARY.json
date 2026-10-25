@@ -1,0 +1,27 @@
+{
+  "status": "PASS_UNACCEPTED_WARM_EXPORT_PARSER_ONLY",
+  "checked_source": {
+    "requested_head": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+    "requested_base": "d53dd70d38b0762af130b1d19b795af259f505f5",
+    "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+    "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+    "checkout_kind": "PR_HEAD"
+  },
+  "declared_root_queries": 100,
+  "source_unchanged": true,
+  "seconds": 1963.833784300019,
+  "collections": {
+    "declarations": 3788,
+    "constructors": 18,
+    "generated_equations": 351,
+    "dependency_declarations": 16333,
+    "dependencies": 27549
+  },
+  "wire_bytes": 45591229,
+  "parsed_bytes": 127986822,
+  "wire_sha256": "60d11cab7988b1539b347d97c5b1e2e9d7b671a48ef26873fad4e21882b01d62",
+  "full_release_accepted": false,
+  "cold_isolation": false,
+  "RH": "OPEN",
+  "Step4": "OPEN"
+}

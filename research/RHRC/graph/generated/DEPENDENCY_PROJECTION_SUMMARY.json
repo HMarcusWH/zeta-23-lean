@@ -533,6 +533,806 @@
           "root_theorem": "Zeta23.OPICA.quiet_cofinal_rate_zero"
         },
         {
+          "claim_id": "OPICA_FOLLOWUP_ACTUAL_FORCE_SAMPLING_CONSUMER",
+          "external_boundary_count": 3045,
+          "external_boundary_sha256": "79bfe2a15f1a0a4a4553746c56e66af4dc6bdf36b7fb172b5cbdf228cc7ff982",
+          "local_dependency_count": 806,
+          "local_dependency_sha256": "4137297d4daec2bfc67f22b4af960fb31d2ade91f3eb0181007be9c905dd52e2",
+          "root_theorem": "Zeta23.OPICAFollowup.actual_force_sampling_consumer"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_ACTUAL_ZERO_MEASURE_SPAN_CONSUMER",
+          "external_boundary_count": 3051,
+          "external_boundary_sha256": "fe47ba89106be289b8ef5ed02cd1d438e4e228fac655fcb4b8aa0bba12563f39",
+          "local_dependency_count": 843,
+          "local_dependency_sha256": "1135dd48d1378018452bcfa57854a5f5ddea7a4782e9b05d1687801b48cb0b07",
+          "root_theorem": "Zeta23.OPICAFollowup.actual_zero_measure_span_consumer"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_APPROX_COMPATIBILITY_LEFT_NULL",
+          "external_boundary_count": 176,
+          "external_boundary_sha256": "3dac6965d7ab096d6b1e862670d29986bba5ceebce684d960d8f0a6446bbe2cc",
+          "local_dependency_count": 4,
+          "local_dependency_sha256": "a6efcb85d294af1a2718164a7ec0227306c920d9f60e260297a913c419aa32f4",
+          "root_theorem": "Zeta23.OPICAFollowup.approx_compatibility_left_null"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_ARITHMETIC_STIELTJES_HOLOMORPHIC",
+          "external_boundary_count": 1482,
+          "external_boundary_sha256": "cedabc61313ec8829392f16d1f36b150a36a48be39759fd2b6bf443a9931b1b4",
+          "local_dependency_count": 106,
+          "local_dependency_sha256": "494fd1361411db5d07e443801e89712533ec46b6677142d634eb5ed15165ee40",
+          "root_theorem": "Zeta23.OPICAFollowup.arithmetic_stieltjes_holomorphic"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_ARITHMETIC_STIELTJES_SIGN_BUDGET",
+          "external_boundary_count": 1497,
+          "external_boundary_sha256": "debb1c7c643541a279c727a5406a536215be80544fa38cbc3044165c6a80a47c",
+          "local_dependency_count": 97,
+          "local_dependency_sha256": "212daf0d0d282ba4ee8444503318e6102c3bcc8c2e8e87a191de7524bb09a735",
+          "root_theorem": "Zeta23.OPICAFollowup.arithmetic_stieltjes_sign_budget"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_AUX_COMPLETION_ACTUAL_TRANSFORM",
+          "external_boundary_count": 1517,
+          "external_boundary_sha256": "64c21f5c94941204fa51bd30951fad3459010c4ac5bba187fdb4c7f1b5334b20",
+          "local_dependency_count": 177,
+          "local_dependency_sha256": "b5be6e3564abff4e54addb715965442dd2b3e273c56132244eff330b33935e4b",
+          "root_theorem": "Zeta23.OPICAFollowup.aux_completion_actual_transform"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_AUX_COMPLETION_RATIO_BOUNDS",
+          "external_boundary_count": 1144,
+          "external_boundary_sha256": "2e7f7283cc9d2d433283c2c7413f8cfda729a3cdc78239e37c15e28a39badc3b",
+          "local_dependency_count": 83,
+          "local_dependency_sha256": "541e203077fd3b31dcd03b7f09fd861582a3a67a76506508a540e0ca84fb9300",
+          "root_theorem": "Zeta23.OPICAFollowup.aux_completion_ratio_bounds"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_AUX_COMPLETION_UNIFORM_DECAY",
+          "external_boundary_count": 1105,
+          "external_boundary_sha256": "8140d637154ecb1bc60a11ad12a6dfcf101afa9be7e9c1579ef8aabbba960e80",
+          "local_dependency_count": 86,
+          "local_dependency_sha256": "968a2a53d200a381a0b37b3164c9f4122e83298bc7b7b2fc1607ec947450fb70",
+          "root_theorem": "Zeta23.OPICAFollowup.aux_completion_uniform_decay"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_BALANCED_COEFF_DIVISOR_BOUND",
+          "external_boundary_count": 457,
+          "external_boundary_sha256": "3cdd2137822b5983e223608c9483b0138848893d0282d64ac2dadb8f245bc9a0",
+          "local_dependency_count": 30,
+          "local_dependency_sha256": "3d54b62f36e6e4b5cc0adbe9564c92c07a848d68871800766e3b28d41278489e",
+          "root_theorem": "Zeta23.OPICAFollowup.balanced_coeff_divisor_bound"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_COMPLEX_LOCAL_MEASURE_EMBEDDING_FAITHFUL",
+          "external_boundary_count": 1246,
+          "external_boundary_sha256": "32929559a8ab532258aacaa467b30b1e010bad7d462de66f43f76a7379ecde83",
+          "local_dependency_count": 177,
+          "local_dependency_sha256": "b3eb448e633bbe436cffbfd1b195c2c1ca8bd56046f3ce9d788d45d917f82ee0",
+          "root_theorem": "Zeta23.OPICAFollowup.complex_local_measure_embedding_faithful"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_COPOISSON_ZERO_JETS_MEASURES",
+          "external_boundary_count": 2794,
+          "external_boundary_sha256": "bd8f9f740e64781c0f21b85da9b4d0518de01235379c2004eb1e33041f5e173a",
+          "local_dependency_count": 665,
+          "local_dependency_sha256": "8379aa20970a838d1a3e5ad8387db6b4a161617f367649c336c3930da610bb05",
+          "root_theorem": "Zeta23.OPICAFollowup.copoisson_zero_jets_measures"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_COUPLED_GRAM_COLLISION_CONTROL",
+          "external_boundary_count": 666,
+          "external_boundary_sha256": "84aea632d97afb47267ca182b3d895abe6168620b4c34dcf6f3c7e45233c3944",
+          "local_dependency_count": 18,
+          "local_dependency_sha256": "61d300f5cbefb428d885ea4ef2b04c57c712508a56438d09b465e2bd700f1aec",
+          "root_theorem": "Zeta23.OPICAFollowup.coupled_gram_collision_control"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_DILATED_COMB_FOURIER",
+          "external_boundary_count": 933,
+          "external_boundary_sha256": "1d4b110c0f777fd53d472b00ab396eae88c288e183ba6f7864814b404e4b7552",
+          "local_dependency_count": 72,
+          "local_dependency_sha256": "859ed3b1ae04c9a3dd40806afaea8c0c00872c0ef5e774c10709a857bfe517bf",
+          "root_theorem": "Zeta23.OPICAFollowup.dilated_comb_fourier"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_DILATION_NEAR_GAP_FAMILY",
+          "external_boundary_count": 1348,
+          "external_boundary_sha256": "67abfb9495f6bd01bf49773933b867c804f450a2d9f1bb644f651c7327f6c68a",
+          "local_dependency_count": 213,
+          "local_dependency_sha256": "1927f6d2783deccf292bef0815f0475feb4d5df016e56c3f572eb472478b34e9",
+          "root_theorem": "Zeta23.OPICAFollowup.dilation_near_gap_family"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_DILATION_NORMALIZED_LIMIT_NOT_MEASURE",
+          "external_boundary_count": 1453,
+          "external_boundary_sha256": "d28c695322fba07da534d9be3d017683ad631a7912adb5d28e5c94219323f1a4",
+          "local_dependency_count": 186,
+          "local_dependency_sha256": "629f8cc3e82369fdec706dc37b5deb98d21806b833f018cbd831e75c8de4ebbb",
+          "root_theorem": "Zeta23.OPICAFollowup.dilation_normalized_limit_not_measure"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_ENERGY_ALLOCATION_BOUND",
+          "external_boundary_count": 209,
+          "external_boundary_sha256": "619b73eadb81b27678444e8ce737e47abccaa1ab12eec42bc583ec91392c9edc",
+          "local_dependency_count": 0,
+          "local_dependency_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "root_theorem": "Zeta23.OPICAFollowup.energy_allocation_bound"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_ENERGY_ALLOCATION_RATE_LOWER",
+          "external_boundary_count": 369,
+          "external_boundary_sha256": "2fa282b38b861586a6abdef203d24ad295ed3fe5c235339bc291fc277aef9d72",
+          "local_dependency_count": 12,
+          "local_dependency_sha256": "21640b7dda9508dac6e6bfca29a8750defebbb993d99d08b087e49f0fa1f2df9",
+          "root_theorem": "Zeta23.OPICAFollowup.energy_allocation_rate_lower"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_FINITE_SUM_EULER_MACLAURIN_UNIFORM",
+          "external_boundary_count": 1179,
+          "external_boundary_sha256": "a4c440bbef23f56eced433a10cbd8bec9ae8f58f2c56392d7eb9d3ad70194d7a",
+          "local_dependency_count": 63,
+          "local_dependency_sha256": "d584d155496063acc6583b2c35cc33a205bc2149a4a09ffbe0887efd338342cd",
+          "root_theorem": "Zeta23.OPICAFollowup.finite_sum_euler_maclaurin_uniform"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_FINITE_ZERO_JET_INDEPENDENT",
+          "external_boundary_count": 2654,
+          "external_boundary_sha256": "d3b1274fa7ad7b654467dfb9eea6f835899d91b5b4da91ab1d41962dc17cfe72",
+          "local_dependency_count": 510,
+          "local_dependency_sha256": "c2ed05bf38b5c5e424fc3de938df6cef487b19bc735d868e77be4ff022ec5096",
+          "root_theorem": "Zeta23.OPICAFollowup.finite_zero_jet_independent"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_FINITE_ZERO_SPAN_POSITIVE_ONLY_ZERO",
+          "external_boundary_count": 2873,
+          "external_boundary_sha256": "1a98fec43c1f3904c4369a2a438fd4f3eef860c396a3705b9415b3ce543a55c9",
+          "local_dependency_count": 733,
+          "local_dependency_sha256": "d3c19294ce06a552e619d45fed1aa7c60d1236f5feb14e6e9230997b5a5e5b3b",
+          "root_theorem": "Zeta23.OPICAFollowup.finite_zero_span_positive_only_zero"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_FIRST_CELL_NEGATIVE_MASS_COST",
+          "external_boundary_count": 791,
+          "external_boundary_sha256": "6f8a1aa6c08f7d7d82809ae88575b2d5c8888a791325ef3f844311b99e7d26ca",
+          "local_dependency_count": 35,
+          "local_dependency_sha256": "a6f6db32f1c7f3051753635bf37f945857f00df39840402507ec98b0b0f1b0d6",
+          "root_theorem": "Zeta23.OPICAFollowup.first_cell_negative_mass_cost"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_FIXED_BASIS_NEGATIVE_MASS_BUDGET",
+          "external_boundary_count": 3000,
+          "external_boundary_sha256": "0ca45b166f5094ba7ee629a453d168306aa1c09cdbc97fc69e2c634cb0d8a555",
+          "local_dependency_count": 816,
+          "local_dependency_sha256": "99cdde986de90d3c5f1520b56e720ec86d859af4695e3bbb6c6d33ebcd51b842",
+          "root_theorem": "Zeta23.OPICAFollowup.fixed_basis_negative_mass_budget"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_FIXED_TWO_FACTOR_MASK_RATE_THETA",
+          "external_boundary_count": 4135,
+          "external_boundary_sha256": "146cffa4f18014de6a59a1447e429bd96b7ee7332ca3c831fb55d629d9b8d8d6",
+          "local_dependency_count": 1927,
+          "local_dependency_sha256": "ce677c41e13eccdfcaa5de96f54e1403c8b82bbe3ad39a8934bef7f9d2515bed",
+          "root_theorem": "Zeta23.OPICAFollowup.fixed_two_factor_mask_rate_theta"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_FIXED_TWO_FACTOR_PREPARATION",
+          "external_boundary_count": 2739,
+          "external_boundary_sha256": "55a11053c577418b55285cc5ff1a9b3200e0dea69a426ee27697c4e75422e381",
+          "local_dependency_count": 671,
+          "local_dependency_sha256": "a844408b598f7b5f156715b9c91bac7b759ae2ef5020a1bea6a5d24686cd2f9a",
+          "root_theorem": "Zeta23.OPICAFollowup.fixed_two_factor_preparation"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_FORCED_POSITIVE_GRAM_NONREAL_CONTROL",
+          "external_boundary_count": 456,
+          "external_boundary_sha256": "bb03bdea19712e9861fe78857d98c57c141d249375042d2cb4578d8f35477e1e",
+          "local_dependency_count": 17,
+          "local_dependency_sha256": "719dd744e5f5acb65f266af93b156683840ceb5a818ecb1853c43ef1e6f0d6ff",
+          "root_theorem": "Zeta23.OPICAFollowup.forced_positive_gram_nonreal_control"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_FORWARDKERNEL_DOUBLE_EXP_DECAY",
+          "external_boundary_count": 2484,
+          "external_boundary_sha256": "9b373a6cab77087021b70bf7d6e72914aacc723a289fb67874516b6ae476c217",
+          "local_dependency_count": 521,
+          "local_dependency_sha256": "dfef5b5961e42e0d3a8185ca00504c79dfcfb1f2700a1a1685f19915886a35b7",
+          "root_theorem": "Zeta23.OPICAFollowup.forwardKernel_double_exp_decay"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_FORWARDKERNEL_LEFT_CONTOUR_BUDGET",
+          "external_boundary_count": 1892,
+          "external_boundary_sha256": "d086f2abe8d8efff71ae493718967620a1b356b93e7e89442e5a813eac259196",
+          "local_dependency_count": 330,
+          "local_dependency_sha256": "b6564059f40e934276ea6ec9fafba9e3938bf4da7186b8300ce1a3551592f69f",
+          "root_theorem": "Zeta23.OPICAFollowup.forwardKernel_left_contour_budget"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_FORWARDKERNEL_PHYSICAL_LAPLACE",
+          "external_boundary_count": 1527,
+          "external_boundary_sha256": "9c8071485ea80ca5911beea1363b37952f53ac7e8588af3bb33e3f78c0f2175e",
+          "local_dependency_count": 252,
+          "local_dependency_sha256": "fbc5b2a57100077936d9c8adb8e5da0a6eea1f6469c3378a8df79106947929eb",
+          "root_theorem": "Zeta23.OPICAFollowup.forwardKernel_physical_laplace"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_GENERIC_BOUNDARY_AMPLITUDE",
+          "external_boundary_count": 1158,
+          "external_boundary_sha256": "dd9421ab79fcd08bd4e650e66db7e5005088c005f1b9617e3b8da2548f4b75b6",
+          "local_dependency_count": 86,
+          "local_dependency_sha256": "48dda2d4ec406fd3c03a840875256aa22cfa80ff91215af3c8ea4af4d41cb376",
+          "root_theorem": "Zeta23.OPICAFollowup.generic_boundary_amplitude"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_GENERIC_FORCED_PROFILE_UNIQUE",
+          "external_boundary_count": 2133,
+          "external_boundary_sha256": "c56c2499ebf059679fe4773572146b1912c4ed9b71317f7f2feecd05749e83f9",
+          "local_dependency_count": 366,
+          "local_dependency_sha256": "04634b22e2bc8589814f3b56aa177c23d2208f71b87742d14ce869f3436bb254",
+          "root_theorem": "Zeta23.OPICAFollowup.generic_forced_profile_unique"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_HISTORY_RECOVERY_COST_CONTROL",
+          "external_boundary_count": 529,
+          "external_boundary_sha256": "1d07155ce07aa0edaf6fe3bbce9f9e357e046b5ef730363557708f6506481bff",
+          "local_dependency_count": 33,
+          "local_dependency_sha256": "62b218ad322e0b2947008f17709eb08ff7a48593f3285ed527995629423e6c5f",
+          "root_theorem": "Zeta23.OPICAFollowup.history_recovery_cost_control"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_JOINT_RECOVERY_IFF",
+          "external_boundary_count": 235,
+          "external_boundary_sha256": "a8373e0ab017a6d1d37981e79b255fa200b32ab614bc541b7b71c492dc43a05e",
+          "local_dependency_count": 10,
+          "local_dependency_sha256": "6ba96fdb4b5467e3b2ac84637a992c7850b6905cdde904e0cf9a50cca677bb50",
+          "root_theorem": "Zeta23.OPICAFollowup.joint_recovery_iff"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_JOINT_RECOVERY_NOISE_BOUND",
+          "external_boundary_count": 129,
+          "external_boundary_sha256": "4d164323f2151cf1c3f527c5449a72fa41d51485ca96420f5a1c57fbd4083cfc",
+          "local_dependency_count": 4,
+          "local_dependency_sha256": "bacd6f7b3758ddc49412cd19f098e4c331150ddf849469c63f97a3d6a1c7d015",
+          "root_theorem": "Zeta23.OPICAFollowup.joint_recovery_noise_bound"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_JOINT_RECOVERY_OPTIMAL_NORM",
+          "external_boundary_count": 365,
+          "external_boundary_sha256": "7d9d7b4afee98c8a32bd0b2f098b0f40a4fb61b7875f24123eb54ce2312badf5",
+          "local_dependency_count": 10,
+          "local_dependency_sha256": "6ba96fdb4b5467e3b2ac84637a992c7850b6905cdde904e0cf9a50cca677bb50",
+          "root_theorem": "Zeta23.OPICAFollowup.joint_recovery_optimal_norm"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_LAGUERRE_TAIL_NORM",
+          "external_boundary_count": 869,
+          "external_boundary_sha256": "ee56855d04d9e85ab7ea2744efbf215bc8929abb5dea2a80060a0070a97ff263",
+          "local_dependency_count": 38,
+          "local_dependency_sha256": "b2af9366109480c751e080a397ae08a827db342fcc3e986b87afa7b252ede78a",
+          "root_theorem": "Zeta23.OPICAFollowup.laguerre_tail_norm"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_LAURENT_COEFFICIENT_ERROR_BOUND",
+          "external_boundary_count": 489,
+          "external_boundary_sha256": "f4402c9c96d3f7e516e240d3ab8f0dac1aea54aa51536776b700ed0b7d2d06c9",
+          "local_dependency_count": 18,
+          "local_dependency_sha256": "d9e1b0ad207fae325a2175995081836eb1c2c654f6c96540ee2b001dded40c8b",
+          "root_theorem": "Zeta23.OPICAFollowup.laurent_coefficient_error_bound"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_LAURENT_OBSERVATION_SURVIVES",
+          "external_boundary_count": 505,
+          "external_boundary_sha256": "427a47afde12317469bcd125248d949565d39ff317a7648804f1a461bd2261b7",
+          "local_dependency_count": 19,
+          "local_dependency_sha256": "b011bd367c541cec6eec3c4e2cce38031072baebea4d86a3c70d6ad4f13c4f3c",
+          "root_theorem": "Zeta23.OPICAFollowup.laurent_observation_survives"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_LOG_FOURIER_PLANCHEREL",
+          "external_boundary_count": 870,
+          "external_boundary_sha256": "8f9a27929eeff8f13d0bbe69ddae2a209311b18bcd669a9cf7087d73d39aa3f0",
+          "local_dependency_count": 23,
+          "local_dependency_sha256": "38ebc79b39ea2f0812c0599b5c2b8553f7c17475bc76cb981c9c5899ab43b504",
+          "root_theorem": "Zeta23.OPICAFollowup.log_fourier_plancherel"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_LOG_SLACK_BOTH_LOW_MASKS_SUBEXP",
+          "external_boundary_count": 2788,
+          "external_boundary_sha256": "444419271b5b01625716c3a24c4f7a613ecfafcd4fdb21367cc2e3049df7ef99",
+          "local_dependency_count": 715,
+          "local_dependency_sha256": "ca7a83b65995ff7d4dd98a7fa6cd36b7337ec13368b8e7f4cd83c1f58a4dce9a",
+          "root_theorem": "Zeta23.OPICAFollowup.log_slack_both_low_masks_subexp"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_LOG_SLACK_MASKED_ENERGY_RATE_DIFFERENCE",
+          "external_boundary_count": 2886,
+          "external_boundary_sha256": "62b97badbd323270f5d20149e170704a1334b5e7e1fdff28aa521f63acd58fd6",
+          "local_dependency_count": 822,
+          "local_dependency_sha256": "b6904a393adcb362cf016d8b1e3ed6b45884f5d846b0fae03fc4619be6eb90ab",
+          "root_theorem": "Zeta23.OPICAFollowup.log_slack_masked_energy_rate_difference"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_LOG_SLACK_NATIVE_DECOMPOSITION",
+          "external_boundary_count": 987,
+          "external_boundary_sha256": "ad7615272f64a95a930bc2fb458b60ae56989a14783ff9d7b8bf4a39911fe9e6",
+          "local_dependency_count": 192,
+          "local_dependency_sha256": "4ad76e2c4efb55ccb7def9f5f5c892159019961b913f6ee35ce0ddfe52a96208",
+          "root_theorem": "Zeta23.OPICAFollowup.log_slack_native_decomposition"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_LOG_SLACK_TYPEI_ERROR",
+          "external_boundary_count": 2635,
+          "external_boundary_sha256": "52d0d928ebf732eaf0787ee30a0620e3b94ce7ddfe2595ffb9c867d3594bad9b",
+          "local_dependency_count": 601,
+          "local_dependency_sha256": "f9b5633c9350085015e2a26afd98c48838cdfb9de7e2db07f0b4d12d0982e28c",
+          "root_theorem": "Zeta23.OPICAFollowup.log_slack_typeI_error"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_LOG_UNITARY_FORM_IDENTITY",
+          "external_boundary_count": 850,
+          "external_boundary_sha256": "0ad0a291c6a8382731d754502c6a203face9de13ba1f1c2651e38dcd738b88eb",
+          "local_dependency_count": 44,
+          "local_dependency_sha256": "066f0399fc8a98516c1fd8f15a661b67adddefb9053b8c2a1a6f013abb9f8ee8",
+          "root_theorem": "Zeta23.OPICAFollowup.log_unitary_form_identity"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NATIVEGENERATOR_TRANSFORM",
+          "external_boundary_count": 1665,
+          "external_boundary_sha256": "3294650acb69bbd3a3bf54fd371beee1b512050031d958f601646f71cbe2d7ff",
+          "local_dependency_count": 456,
+          "local_dependency_sha256": "d66f5e1cf0d94ed881c7d129955cdec97d4be7e2a6bceac8e45286ad22635e14",
+          "root_theorem": "Zeta23.OPICAFollowup.nativeGenerator_transform"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NATIVEGENERATOR_UNIT_OR_COMPLETION",
+          "external_boundary_count": 828,
+          "external_boundary_sha256": "ba1753ef8e2ab47d2ee79de0cf93d514fc59ea8b285db0cacd5578b4a279b0a2",
+          "local_dependency_count": 86,
+          "local_dependency_sha256": "18108aea7207cdb3006ac6a738004dc1bd696cc90b9ca541bc53abf2284959aa",
+          "root_theorem": "Zeta23.OPICAFollowup.nativeGenerator_unit_or_completion"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NATIVEPRIMEFIELD_VISIBLEPOLE",
+          "external_boundary_count": 1705,
+          "external_boundary_sha256": "c45738fb2f7e3cf7d56b2fdc18e04100203ea3cb020f889d25312bbdde3479cc",
+          "local_dependency_count": 312,
+          "local_dependency_sha256": "48ef1200f6931798ce68ab48f25ab46c8fce4eb250ce46f6c23f30b998e0f5f2",
+          "root_theorem": "Zeta23.OPICAFollowup.nativePrimeField_visiblePole"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NATIVEWORD_CONTOUR_CONSUMER",
+          "external_boundary_count": 2166,
+          "external_boundary_sha256": "50248a0d60bb82f2d0ccd15350bdc3ea5ab733126edc2a5f68095d5eb07026f9",
+          "local_dependency_count": 732,
+          "local_dependency_sha256": "d7cbb76125c7b93e3c3e56c930443e5a1fe71c82b8791933c91e680792d726d8",
+          "root_theorem": "Zeta23.OPICAFollowup.nativeWord_contour_consumer"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NATIVEWORD_CORRECTED_TRANSFORM",
+          "external_boundary_count": 2060,
+          "external_boundary_sha256": "6a135d21c4145a540711c1b445cd6b237a05561f9195b6eddd7a75166a3c1fbd",
+          "local_dependency_count": 665,
+          "local_dependency_sha256": "6635a450661b616daa508c6f51637f2e422c956f3b5dd8b0c185e31a0028d99c",
+          "root_theorem": "Zeta23.OPICAFollowup.nativeWord_corrected_transform"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NATIVEWORD_FACTOR_COSTS",
+          "external_boundary_count": 1864,
+          "external_boundary_sha256": "8f893bf5d5fd97550ae407b32060f25b425c77e25e753dec2f145410249153ae",
+          "local_dependency_count": 442,
+          "local_dependency_sha256": "8132a920490005c6de3565b150eb747411c8a824c1cd288d2a333ee5045f1256",
+          "root_theorem": "Zeta23.OPICAFollowup.nativeWord_factor_costs"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NATIVEWORD_FIRST_NONZERO_DERIVATIVE",
+          "external_boundary_count": 1828,
+          "external_boundary_sha256": "244d84221c2f912d41ca16f293aa481ac878294c993efb816bb6942551c45bae",
+          "local_dependency_count": 437,
+          "local_dependency_sha256": "d700dd78c7e7e60fa585eae5d1bb82fc54cf16dbdf9936b1de3aa375d0ba4180",
+          "root_theorem": "Zeta23.OPICAFollowup.nativeWord_first_nonzero_derivative"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NATIVEWORD_ORDER_AND_LEADING",
+          "external_boundary_count": 1845,
+          "external_boundary_sha256": "198252b24728a3e172e7619651acfd66ecef2ca9d633e7f050338f27036e9fe6",
+          "local_dependency_count": 440,
+          "local_dependency_sha256": "3d524872612cc97a052925a69112335949d665efc8e01dd0d251d3e3de38c39b",
+          "root_theorem": "Zeta23.OPICAFollowup.nativeWord_order_and_leading"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NATIVE_AUXILIARY_TAIL_RESIDUAL_LOWER",
+          "external_boundary_count": 2584,
+          "external_boundary_sha256": "d229fe92e63b1dd7253b8f748f2f16900a5d5bddfb16807fc4c6cbb3e78a3b86",
+          "local_dependency_count": 835,
+          "local_dependency_sha256": "2592afdc7362525ab3ff2b75935b05b9c1eb1658204ee26e4bb686a4edac1562",
+          "root_theorem": "Zeta23.OPICAFollowup.native_auxiliary_tail_residual_lower"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NATIVE_AUXILIARY_TOP_MOMENT",
+          "external_boundary_count": 2295,
+          "external_boundary_sha256": "71ecffa79f730adb81ff59baf90a3db216d74b83bc828095164a1c6875922c22",
+          "local_dependency_count": 640,
+          "local_dependency_sha256": "1daf97eebf980a1011ca5d77b7f1d8081ad6b6b7842634e3efc05ed9c9cd9dd4",
+          "root_theorem": "Zeta23.OPICAFollowup.native_auxiliary_top_moment"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NATIVE_BINOMIAL_INVERSE_IDENTITY",
+          "external_boundary_count": 420,
+          "external_boundary_sha256": "3ac634331804b59cb50b5dc615551961435f2b48499e7522c2aa332f542df162",
+          "local_dependency_count": 34,
+          "local_dependency_sha256": "6dabf1119a8b27b41a3d90777d1a944a765194bfdc1b50952635ffeacb5a3342",
+          "root_theorem": "Zeta23.OPICAFollowup.native_binomial_inverse_identity"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NATIVE_FIELD_THETA_ENVELOPE",
+          "external_boundary_count": 3316,
+          "external_boundary_sha256": "6ada3d49cd622ee4c5b8d8010f1981424c84a3bfc05f1d7b4b0945c5406e9d74",
+          "local_dependency_count": 935,
+          "local_dependency_sha256": "74842e0df7d1e0c4ff60ce938d2931a22467be79376b39e1314d68eceddee70e",
+          "root_theorem": "Zeta23.OPICAFollowup.native_field_theta_envelope"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NATIVE_FIXED_SOURCE_WINDOW_RATE",
+          "external_boundary_count": 3867,
+          "external_boundary_sha256": "2c97e60b89d99c99fa79941ff17d71dfaaad3cad0a1c67fa720e46d329ca0f6c",
+          "local_dependency_count": 1553,
+          "local_dependency_sha256": "4a502f6f44f90f15dd06154e6ee4a872e7e37ea4162088943e8c48d726addcb7",
+          "root_theorem": "Zeta23.OPICAFollowup.native_fixed_source_window_rate"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NATIVE_FORCED_RESOLVENT_UNIQUE",
+          "external_boundary_count": 2474,
+          "external_boundary_sha256": "433ee7b4f5f988b2f499e43feecc66d30fb414f3d0c765a31863d737e0b989a1",
+          "local_dependency_count": 434,
+          "local_dependency_sha256": "e551f9c4f53a974ce83018e6acaf0b5ac4f798411063abbbd9ce6b902f885ea7",
+          "root_theorem": "Zeta23.OPICAFollowup.native_forced_resolvent_unique"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NATIVE_PROFILE_SPECTRAL_NORMS",
+          "external_boundary_count": 2954,
+          "external_boundary_sha256": "4ef7a44a319fb685e3fbc8c600df396524a08275152bbc2434cc5beb93355f9c",
+          "local_dependency_count": 738,
+          "local_dependency_sha256": "ca2f611a61f3ffbd5f793ee383b159c10d6ef98a246903558211a97857e8dda8",
+          "root_theorem": "Zeta23.OPICAFollowup.native_profile_spectral_norms"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NATIVE_SAMPLE_STIELTJES_IDENTITY",
+          "external_boundary_count": 2890,
+          "external_boundary_sha256": "010910a64a3f1b9dd1f5ee72c1d71ab0d613793e2f84c1510d3b91ba78088f29",
+          "local_dependency_count": 703,
+          "local_dependency_sha256": "f3eca068cd928ff8dcabc0f5c12eace5cc3a4562b4769fdce131ca4732e3195d",
+          "root_theorem": "Zeta23.OPICAFollowup.native_sample_stieltjes_identity"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NATIVE_SAMPLING_FORM_POSITIVE",
+          "external_boundary_count": 2693,
+          "external_boundary_sha256": "01e7636e90c5f3022fd875776f1ca935d257be92334771abc255cd0a4f59b7fe",
+          "local_dependency_count": 554,
+          "local_dependency_sha256": "30dde76b0142b98f997616cb0fa0a026310145a8ad7b16a9a9ff23b0e75f1c69",
+          "root_theorem": "Zeta23.OPICAFollowup.native_sampling_form_positive"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NATIVE_SAMPLING_GRAM_IDENTITY",
+          "external_boundary_count": 2524,
+          "external_boundary_sha256": "c67668dd13ff27b12f6592defc92e318f26f36366745adc4a639f2b1f7b3fd0a",
+          "local_dependency_count": 498,
+          "local_dependency_sha256": "a89d9978a524d167fbc390f7142dd766754b670fdfcfa3d161ca4b33ffce81ce",
+          "root_theorem": "Zeta23.OPICAFollowup.native_sampling_gram_identity"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NATIVE_SLOW_SOURCE_WINDOW_RATE",
+          "external_boundary_count": 3866,
+          "external_boundary_sha256": "e0665bf1db2bc08f5fc4aefd13eccf8685dbd266dd8eafb3d7f1c403a2905372",
+          "local_dependency_count": 1552,
+          "local_dependency_sha256": "2e24480f27874198fd6a315ac21a373d041ab8db6a61fa2979746e2df57c89e6",
+          "root_theorem": "Zeta23.OPICAFollowup.native_slow_source_window_rate"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NATIVE_SOURCE_EXPLICIT_FORMULA",
+          "external_boundary_count": 3240,
+          "external_boundary_sha256": "5d4cb10b346bd6ab966577aaf2ed8db6f85adbea079e429604e5ca27ecd4bc5a",
+          "local_dependency_count": 855,
+          "local_dependency_sha256": "e9999d8ae807c349c9af654b54d03199f519a0feb52ea3f99d6aa28399b98861",
+          "root_theorem": "Zeta23.OPICAFollowup.native_source_explicit_formula"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NATIVE_TERMINAL_MEMORY_LOWER",
+          "external_boundary_count": 2578,
+          "external_boundary_sha256": "9d9e108c02c5472838e6571a779c8e0e1cd05c0bf926c29730a33ba866cb53bc",
+          "local_dependency_count": 827,
+          "local_dependency_sha256": "44ed8968fd840a3f8478f4276aecdafdb1ce741ca17a1aa72b1d43865e76f6a6",
+          "root_theorem": "Zeta23.OPICAFollowup.native_terminal_memory_lower"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NATIVE_ZERO_COUNT_SUMMABILITY",
+          "external_boundary_count": 1966,
+          "external_boundary_sha256": "c1ecd9a7e4df7c72f171ebb7467c337c0c915a142c786e7dc0f16b45c41100f9",
+          "local_dependency_count": 228,
+          "local_dependency_sha256": "812f5969428d627571028b8fe2553a222ae7a305dd6532632ded25411e3a4374",
+          "root_theorem": "Zeta23.OPICAFollowup.native_zero_count_summability"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NATIVE_ZERO_SUP_BOUNDS",
+          "external_boundary_count": 736,
+          "external_boundary_sha256": "c680ba388a08c5974072627a54aaf1677a01047b532d5d9bf132c83a19e97d1e",
+          "local_dependency_count": 51,
+          "local_dependency_sha256": "87966f60b162f045753bd95b3b84bf5107527013392704695952242cee1e63d6",
+          "root_theorem": "Zeta23.OPICAFollowup.native_zero_sup_bounds"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NEAR_GAP_CONTROLLED_LIMIT_ZERO",
+          "external_boundary_count": 1375,
+          "external_boundary_sha256": "27ec6871c60ed7da378ce4077053ac94d8396c3288db1441f2bf00c641286d55",
+          "local_dependency_count": 154,
+          "local_dependency_sha256": "8854fe2e3b72339b14fe7c735208c986ff4932958aab93407c099a6d6a930626",
+          "root_theorem": "Zeta23.OPICAFollowup.near_gap_controlled_limit_zero"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NEAR_GAP_MASS_BOUND",
+          "external_boundary_count": 1108,
+          "external_boundary_sha256": "5811e71da6a6740705b28ea9759b79bb89bd74dedc83ca68d51fada6f5d099e4",
+          "local_dependency_count": 112,
+          "local_dependency_sha256": "cd167a840a96289caad2fc2553cc39cf4575d4f983d60e3539d3f51792821f6b",
+          "root_theorem": "Zeta23.OPICAFollowup.near_gap_mass_bound"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NORM_FIRST_LOG_COMPARISON",
+          "external_boundary_count": 287,
+          "external_boundary_sha256": "c1aa9afadb0aa5a2e028ac0475cfefa23349cdaa4a5fe8a0791bf2813bf16499",
+          "local_dependency_count": 5,
+          "local_dependency_sha256": "68e48d163aab8507f96ddd27b4956fe0c237c2b15d3d8d5cc28af39e8c81eafc",
+          "root_theorem": "Zeta23.OPICAFollowup.norm_first_log_comparison"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NORM_FIRST_RATE_TRANSFER",
+          "external_boundary_count": 413,
+          "external_boundary_sha256": "eb9664d72c9e310f90f5c3b0be4619667d4d7a24cf483d9a3790e23a7f85fb7b",
+          "local_dependency_count": 19,
+          "local_dependency_sha256": "d63a2e06b3a4f1bb722d529fbc5b7317e4ef2b09567ce15bd78e1a1ca0f6fc25",
+          "root_theorem": "Zeta23.OPICAFollowup.norm_first_rate_transfer"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NORM_FIRST_STRICTLY_WEAKER_CONTROL",
+          "external_boundary_count": 528,
+          "external_boundary_sha256": "f0428d43dd1da929d13a5b5529c480c6472be09e931a34342d01dc96804094ea",
+          "local_dependency_count": 27,
+          "local_dependency_sha256": "253cc55e7d6df34e279703d5c538a945f1b511c7b4c0741174b366a49a07e18d",
+          "root_theorem": "Zeta23.OPICAFollowup.norm_first_strictly_weaker_control"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_PROFILE_JET_CONFLUENT_DETERMINANT",
+          "external_boundary_count": 613,
+          "external_boundary_sha256": "4e126067d9264382c2e1e79947319fb0b205c9f64dbf855e4d299d5d4c9d62bd",
+          "local_dependency_count": 54,
+          "local_dependency_sha256": "752978d7c4655ce35f9e00062aa1cd94e06b178c9e57e3e5cff1974aab59e771",
+          "root_theorem": "Zeta23.OPICAFollowup.profile_jet_confluent_determinant"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_QUIET_BALANCED_OBSERVATION_IMPLIES_NATIVE_CUT",
+          "external_boundary_count": 4201,
+          "external_boundary_sha256": "07d92cece9e149e966a53028914d5d4f7d7fdcd305508aee0434d53c3b94aa32",
+          "local_dependency_count": 2235,
+          "local_dependency_sha256": "44c07b404bd6b242afe6c446d5fb3af03b6b58db27c9eb1bf507c652bae3068f",
+          "root_theorem": "Zeta23.OPICAFollowup.quiet_balanced_observation_implies_native_cut"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_RECOVERY_SUBEXP_BUDGET",
+          "external_boundary_count": 264,
+          "external_boundary_sha256": "ea11834de79345a5cf996e95822524588539e29475d7e47a9ed63772e40f19d1",
+          "local_dependency_count": 9,
+          "local_dependency_sha256": "36b9689a26c26416a52bcc6c89a82eb0e6de72c55122e91b18bba2ddae0bcd6c",
+          "root_theorem": "Zeta23.OPICAFollowup.recovery_subexp_budget"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_RENORMALIZED_COPOISSON_ORDER_ZERO",
+          "external_boundary_count": 2206,
+          "external_boundary_sha256": "29e1a1a4af5ce61c95795775c6756029d74c3384bef032e264fd6aa3d51c2d3c",
+          "local_dependency_count": 334,
+          "local_dependency_sha256": "19c83c3649d9c1302e972a30a53e9e7e4853c58f24301dc30e9a70fab7effa18",
+          "root_theorem": "Zeta23.OPICAFollowup.renormalized_copoisson_order_zero"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_RENORMALIZED_COPOISSON_TEMPERED_FAMILY",
+          "external_boundary_count": 1199,
+          "external_boundary_sha256": "1563d9879cec8481ab7199eb094b9bbab6400e0835ba065091346d13b8276dd8",
+          "local_dependency_count": 137,
+          "local_dependency_sha256": "000b6c794160e86cd4e117e33706dcc346638440cab5b7bfee0c0db3c29f2b95",
+          "root_theorem": "Zeta23.OPICAFollowup.renormalized_copoisson_tempered_family"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_SAWTOOTH_ACTUAL_MELLIN_FOURIER",
+          "external_boundary_count": 1283,
+          "external_boundary_sha256": "44dfced4393142ce0ec1139d1025153f4fe6305910bc5cf2070cfd7e98f77b45",
+          "local_dependency_count": 65,
+          "local_dependency_sha256": "684676727376fe813ed176687d4f2d50e22faf256dde419744d41230d191f01f",
+          "root_theorem": "Zeta23.OPICAFollowup.sawtooth_actual_mellin_fourier"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_SAWTOOTH_INTEGRABLE_FORCE_IDENTITY",
+          "external_boundary_count": 1341,
+          "external_boundary_sha256": "3d1120f20c88e512926a82f7e6daad610ee2401bcccca11d6ff060c0924dd6ec",
+          "local_dependency_count": 75,
+          "local_dependency_sha256": "f31ee8c64a3a621b40d07dac0f134edf8b93ff4c0dc265a9dbdde5fcc057c274",
+          "root_theorem": "Zeta23.OPICAFollowup.sawtooth_integrable_force_identity"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_SAWTOOTH_NORM_WEIGHTED_ZETA_MOMENT",
+          "external_boundary_count": 1543,
+          "external_boundary_sha256": "9cc40e48a6689b4031b264d5189bf92d1ffb4f44e8a7f7828c31356b77d31532",
+          "local_dependency_count": 92,
+          "local_dependency_sha256": "da680a2144d83553e4331fde3d2c81317ec50e8a240f76c58e95fd94e4b2c36b",
+          "root_theorem": "Zeta23.OPICAFollowup.sawtooth_norm_weighted_zeta_moment"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_SOURCEFAMILY_LAPLACE_IDENTITY",
+          "external_boundary_count": 1623,
+          "external_boundary_sha256": "ab88a693b1dc2626430a750eb3595dd96ee64244abfae3cb30f861cbf5015024",
+          "local_dependency_count": 279,
+          "local_dependency_sha256": "4a393eeacde24b5dfe36423e0687559945c64f58fe6198adba5256797dd70153",
+          "root_theorem": "Zeta23.OPICAFollowup.sourceFamily_laplace_identity"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_SOURCEFAMILY_SUPPORT_SMOOTH_MOMENTS",
+          "external_boundary_count": 1440,
+          "external_boundary_sha256": "5a6e0fddfb8c02062e1e59d40c16589b1f06d99de0c5a3daa0837d28886d9c37",
+          "local_dependency_count": 230,
+          "local_dependency_sha256": "f51d8f53a5661b503d713a0f95065744c9f3e4eef7bb2e7019230bd0171869eb",
+          "root_theorem": "Zeta23.OPICAFollowup.sourceFamily_support_smooth_moments"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_SOURCEFAMILY_ZERO_EQ_ORIGINAL",
+          "external_boundary_count": 104,
+          "external_boundary_sha256": "9978e95a4f64687239efe95242bdc4404994301d37fe93b2f5ef68f0ea895952",
+          "local_dependency_count": 35,
+          "local_dependency_sha256": "5b50ed997b26f2ac1a03b2e95633d0b4e5df1391c11c0893c6aa0958bbd1da70",
+          "root_theorem": "Zeta23.OPICAFollowup.sourceFamily_zero_eq_original"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_SOURCE_ORDER_UNIFORM_NORMS",
+          "external_boundary_count": 1753,
+          "external_boundary_sha256": "7ae1d1cbe38a047c970aa0a138e41db7e91854da2472b5cb872ba918008de41a",
+          "local_dependency_count": 356,
+          "local_dependency_sha256": "18386178ab65c56edff9d92ffcd7c26a10c3ff7fc8b12ac3b6fa489b2a8447ec",
+          "root_theorem": "Zeta23.OPICAFollowup.source_order_uniform_norms"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_SOURCE_PRODUCT_VERTICAL_BOUND",
+          "external_boundary_count": 721,
+          "external_boundary_sha256": "ea1f46914fea14d93317d5b59c9442bbc7c6c29d017b8360aae9985f954c684e",
+          "local_dependency_count": 37,
+          "local_dependency_sha256": "2612ec5dcfe80cb60a90ebf77d67f947beb710b6ae81fe27b3c813395ce64edb",
+          "root_theorem": "Zeta23.OPICAFollowup.source_product_vertical_bound"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_SQUARE_DEFECT_ORIGIN_POSITIVE",
+          "external_boundary_count": 451,
+          "external_boundary_sha256": "0aaae89e3b9f43ba818650d1a4ca475984bdf700c1e755b4a38d82e36c48a9da",
+          "local_dependency_count": 7,
+          "local_dependency_sha256": "8d943140d13db9b5d53f505cbde41ba0329e655400203c9e7e72eb3f23d3af52",
+          "root_theorem": "Zeta23.OPICAFollowup.square_defect_origin_positive"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_SQUARE_FOURIER_DEFECT",
+          "external_boundary_count": 1209,
+          "external_boundary_sha256": "89f306335df6fae70bec2b90cee22fd5e07ade4876138f73adc091b5747bab0a",
+          "local_dependency_count": 104,
+          "local_dependency_sha256": "d73da4818c22fda24fea157cf57b8c42749aba56f64be49157909a8884ff09c5",
+          "root_theorem": "Zeta23.OPICAFollowup.square_fourier_defect"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_SQUARE_NO_LATTICE_REPAIR",
+          "external_boundary_count": 1312,
+          "external_boundary_sha256": "8ce6d50ca659f80ef386282094e66989113696e3a0301df281deb05d5bfcf76e",
+          "local_dependency_count": 111,
+          "local_dependency_sha256": "6002c880c79539706d2b9d8b6d2480929fe47b71d585ac2a80c0a322adf6460c",
+          "root_theorem": "Zeta23.OPICAFollowup.square_no_lattice_repair"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_SQUARE_SELFDUAL_PROJECTION_FILLS_GAP",
+          "external_boundary_count": 1257,
+          "external_boundary_sha256": "20d93f009270a9ddddc7a0958e0b79ac057437d0085afe2ee37dca0e28982dc5",
+          "local_dependency_count": 118,
+          "local_dependency_sha256": "81ab5171966788eda2ddaa83050d7b15baa4113b5598312683d999b629da18e4",
+          "root_theorem": "Zeta23.OPICAFollowup.square_selfdual_projection_fills_gap"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_STEP123_WORD_JET_CONSUMER",
+          "external_boundary_count": 4468,
+          "external_boundary_sha256": "2442177a75a8a0f0e99625ddb423a887d184e54ef45bea80f181fc653fcc1302",
+          "local_dependency_count": 3189,
+          "local_dependency_sha256": "2c52c7df8462968316aee668341a81ab631e36b7a48837ebb304e2dba6343638",
+          "root_theorem": "Zeta23.OPICAFollowup.step123_word_jet_consumer"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_WEIGHTED_GAP_LEAKAGE",
+          "external_boundary_count": 1860,
+          "external_boundary_sha256": "e2d207d757a12d2ec83efcc778afb0adcbc599fad9e9353757121cd4582e6b54",
+          "local_dependency_count": 275,
+          "local_dependency_sha256": "fbc93928245b4544153762ab7d25c43f48280a7bfae601538abd4c1ae0aa47bc",
+          "root_theorem": "Zeta23.OPICAFollowup.weighted_gap_leakage"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_WEIGHTED_MIXTURE_EXISTS_FOURIER",
+          "external_boundary_count": 1259,
+          "external_boundary_sha256": "e8f2269d91947eda9ea4a8bafb15f06a270bcd1149fc80b6046b6c21710f4c5c",
+          "local_dependency_count": 189,
+          "local_dependency_sha256": "372f3cde8debbc412bda6f61c736a2e3d6924ec19d84a630415ebda1dfc8ab95",
+          "root_theorem": "Zeta23.OPICAFollowup.weighted_mixture_exists_fourier"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_WEIGHTED_MIXTURE_SHARP_GAP",
+          "external_boundary_count": 1810,
+          "external_boundary_sha256": "7f7b4925331082fd074414d40792e4abf94b81a4781c245571eeeb413e07fc58",
+          "local_dependency_count": 298,
+          "local_dependency_sha256": "860928661648f74c1fca9763001f4209570aec19194804ed44a882b262a317a8",
+          "root_theorem": "Zeta23.OPICAFollowup.weighted_mixture_sharp_gap"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_WEIGHTED_MOBIUS_INVERSE",
+          "external_boundary_count": 1553,
+          "external_boundary_sha256": "8673a4813a5f256147142d2870efafc27c98ddfc175ddd6694dcf6d6c6679e24",
+          "local_dependency_count": 199,
+          "local_dependency_sha256": "5e8c4d12189252fdb93688a05fbb43c513c8b1059bb8c0c47cb127e6e2d05379",
+          "root_theorem": "Zeta23.OPICAFollowup.weighted_mobius_inverse"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_ZERO_MEASURE_EXACT_PROPERTIES",
+          "external_boundary_count": 2268,
+          "external_boundary_sha256": "6a71d1cf4d86db3e3ca9929b253e67b9b9220b6e9acfaa924a756456f4857eb1",
+          "local_dependency_count": 389,
+          "local_dependency_sha256": "d6821f5dbfb7ccdeaf8ae647aaab48ea7f18d0a9896047ba30f7f7a2e53d554e",
+          "root_theorem": "Zeta23.OPICAFollowup.zero_measure_exact_properties"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_ZERO_MEASURE_FIRST_CELL_SIGN",
+          "external_boundary_count": 593,
+          "external_boundary_sha256": "fce1c480979a93017804beaefb1f4a4ddcf77052ad007d9eac62fe13783b19dc",
+          "local_dependency_count": 17,
+          "local_dependency_sha256": "046d7bfeb12864489bfbbc6fce84345f8f6d33d753b3f2660d532050523a2298",
+          "root_theorem": "Zeta23.OPICAFollowup.zero_measure_first_cell_sign"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_ZERO_PROFILE_FORCED_EULER",
+          "external_boundary_count": 1513,
+          "external_boundary_sha256": "04632680bda1e07bb332e5f825de76141f244a34028547f9496cf31666185d60",
+          "local_dependency_count": 152,
+          "local_dependency_sha256": "29bf0ea487fd820331312ac6399e79c3079c59ee29e5efcb131f55f602631b42",
+          "root_theorem": "Zeta23.OPICAFollowup.zero_profile_forced_euler"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_ZERO_PROFILE_NOT_HOMOGENEOUS_OPERATOR_VECTOR",
+          "external_boundary_count": 2036,
+          "external_boundary_sha256": "9e1e0223f4329934cc3d77d26f46e189704a61a7a4c30fd25987fc650373b64c",
+          "local_dependency_count": 290,
+          "local_dependency_sha256": "ab0116a613085a4807f87ac286c33d662e71f640a843838023ace229a3f90064",
+          "root_theorem": "Zeta23.OPICAFollowup.zero_profile_not_homogeneous_operator_vector"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_ZERO_PROFILE_REGULAR_SELFDUAL",
+          "external_boundary_count": 2409,
+          "external_boundary_sha256": "58db6498b359f31e8ffc92c09f21dae038800f31266c6c4e2c4b538d1c8f4a45",
+          "local_dependency_count": 445,
+          "local_dependency_sha256": "d12a973296dc84572652571a92c8a5a73f0fecb509f7ecf5f14f5b288b678bfe",
+          "root_theorem": "Zeta23.OPICAFollowup.zero_profile_regular_selfdual"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_ZERO_PROFILE_TAIL_AND_JUMPS",
+          "external_boundary_count": 1703,
+          "external_boundary_sha256": "063db1567425b1b56c400d04916f805444e96f9bf2ef38cd3dcc5b947e396e82",
+          "local_dependency_count": 195,
+          "local_dependency_sha256": "ad3b160d7accd5185cb90eeb4683b1781b508ee3f781eaa1fc1f8ee0e2b5e8d1",
+          "root_theorem": "Zeta23.OPICAFollowup.zero_profile_tail_and_jumps"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_ZETA_LEFT_LINE_UNIFORM_BOUND",
+          "external_boundary_count": 1256,
+          "external_boundary_sha256": "9fc3c6d36a9fc0ae6f6fd2af1488b54336e1c4e306df99305aa1bc4c45145726",
+          "local_dependency_count": 74,
+          "local_dependency_sha256": "0b152a377bfde78a854d1ea99cb85237cb9a14633ec9cf546583407d45a1d992",
+          "root_theorem": "Zeta23.OPICAFollowup.zeta_left_line_uniform_bound"
+        },
+        {
           "claim_id": "OPICA_H1_SIGNED_SHARP_GAP_SEPARATOR",
           "external_boundary_count": 1128,
           "external_boundary_sha256": "e0c7eada0c306079885ced903d1e4db11ef6f9daa52fa8dcb0636c872e0d36b3",
@@ -2265,6 +3065,806 @@
           "local_dependency_count": 2,
           "local_dependency_sha256": "d5d9d475f9c28f500d1218bd334cd3d2402ba977913331483008c80dd8e44562",
           "root_theorem": "Zeta23.OPICA.quiet_cofinal_rate_zero"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_ACTUAL_FORCE_SAMPLING_CONSUMER",
+          "external_boundary_count": 147,
+          "external_boundary_sha256": "62bc53ca3b8ca16354b92324b5c0505e427356b3f1ae45e842dbed1ab497fc6f",
+          "local_dependency_count": 16,
+          "local_dependency_sha256": "b20fb3d332385602aa539394b898cfef75cc216940d5fda8c4014ad4876f8fe8",
+          "root_theorem": "Zeta23.OPICAFollowup.actual_force_sampling_consumer"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_ACTUAL_ZERO_MEASURE_SPAN_CONSUMER",
+          "external_boundary_count": 114,
+          "external_boundary_sha256": "e70135e80a4e781fa598cbf900fa36014e9c72746aba5dc173953a32e84f20db",
+          "local_dependency_count": 18,
+          "local_dependency_sha256": "0978bf30f904c41053f179dd319d3a4ad29f86794cf39e1dbbb1f28e2800722f",
+          "root_theorem": "Zeta23.OPICAFollowup.actual_zero_measure_span_consumer"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_APPROX_COMPATIBILITY_LEFT_NULL",
+          "external_boundary_count": 100,
+          "external_boundary_sha256": "4b4981fbed9511454e673783a3f5a06deeab8c89bb0b9128ee198412a5f86ba0",
+          "local_dependency_count": 1,
+          "local_dependency_sha256": "1cabc1dae7ce338c2361c0ec0488fdde1b0accdbb5c2198885ea6c5dc612d4b8",
+          "root_theorem": "Zeta23.OPICAFollowup.approx_compatibility_left_null"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_ARITHMETIC_STIELTJES_HOLOMORPHIC",
+          "external_boundary_count": 117,
+          "external_boundary_sha256": "9b2133fe0ec6f00e464d89e2678b8b0d22ea2a1a18b5beafc3998c1ad7f7db83",
+          "local_dependency_count": 5,
+          "local_dependency_sha256": "41e814369bbcb885f05fd60c906b894ced89b6b95c224794cc7113e1e61957be",
+          "root_theorem": "Zeta23.OPICAFollowup.arithmetic_stieltjes_holomorphic"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_ARITHMETIC_STIELTJES_SIGN_BUDGET",
+          "external_boundary_count": 70,
+          "external_boundary_sha256": "241dee63e8f942f23f19df41bca0a8a81d17e0db12587ab75841f555631d7f02",
+          "local_dependency_count": 3,
+          "local_dependency_sha256": "6db7462fc6686fe919d460c79d7a7ff74783de700b91df40491d7ceef7e39867",
+          "root_theorem": "Zeta23.OPICAFollowup.arithmetic_stieltjes_sign_budget"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_AUX_COMPLETION_ACTUAL_TRANSFORM",
+          "external_boundary_count": 71,
+          "external_boundary_sha256": "eb0d91ce207c52f4cc164cd829502eb11af655d6f328d7d4981c4d0a9dd49479",
+          "local_dependency_count": 6,
+          "local_dependency_sha256": "0a554b2ed454854eafc09b5706350b70fdf86aa65750fb8ff85034a426edbf6b",
+          "root_theorem": "Zeta23.OPICAFollowup.aux_completion_actual_transform"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_AUX_COMPLETION_RATIO_BOUNDS",
+          "external_boundary_count": 62,
+          "external_boundary_sha256": "e7caa623be9390f5f11dfe69e87a4328f2fba7773ce6782c9cee88f9208c67d9",
+          "local_dependency_count": 6,
+          "local_dependency_sha256": "199b7412345479995bd98dfa6a5fcb98706f58aebfde6d4b39cfd74d888dc83d",
+          "root_theorem": "Zeta23.OPICAFollowup.aux_completion_ratio_bounds"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_AUX_COMPLETION_UNIFORM_DECAY",
+          "external_boundary_count": 43,
+          "external_boundary_sha256": "c63c46e8ffbd9d4f958522c0d9d5686e77850dcbc4de34d01f87f1b9b96d41ab",
+          "local_dependency_count": 4,
+          "local_dependency_sha256": "279887835b6907d8f1d9d674dfe8232a9ff67fac26aa2c0b6786c1b9188853fd",
+          "root_theorem": "Zeta23.OPICAFollowup.aux_completion_uniform_decay"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_BALANCED_COEFF_DIVISOR_BOUND",
+          "external_boundary_count": 35,
+          "external_boundary_sha256": "93656e6b52869485e3b81822799a0b0626451bde0cb601164e3a6350cb20b8c1",
+          "local_dependency_count": 3,
+          "local_dependency_sha256": "2f50255e8633e4ec766bf3ebd43664c587dc2bb7943a6f1fd2b0ce59b8b883a0",
+          "root_theorem": "Zeta23.OPICAFollowup.balanced_coeff_divisor_bound"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_COMPLEX_LOCAL_MEASURE_EMBEDDING_FAITHFUL",
+          "external_boundary_count": 99,
+          "external_boundary_sha256": "c4ece501cc0c02b85506eeb3ea3ba91b1464487f1eeebacee4eae14923b8024f",
+          "local_dependency_count": 18,
+          "local_dependency_sha256": "f1efb6296ce56b78fbfdaf6a1a63e2953656fd7ccaf64bd124b2747e9625cca3",
+          "root_theorem": "Zeta23.OPICAFollowup.complex_local_measure_embedding_faithful"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_COPOISSON_ZERO_JETS_MEASURES",
+          "external_boundary_count": 160,
+          "external_boundary_sha256": "b4c925e48da875b909533afd351270d5096c75c2ed490010b55f6f69d8d7b2c7",
+          "local_dependency_count": 26,
+          "local_dependency_sha256": "c5aa298d2161e086ddd8e121a1c98f8ff1760b3f482e2372a3eab2c09bc5bf6e",
+          "root_theorem": "Zeta23.OPICAFollowup.copoisson_zero_jets_measures"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_COUPLED_GRAM_COLLISION_CONTROL",
+          "external_boundary_count": 79,
+          "external_boundary_sha256": "3feae5eb1716409db9ad5bec5aa7eae2eadf3e0be2900f1bccb67c476420be53",
+          "local_dependency_count": 5,
+          "local_dependency_sha256": "dbc9e8f1c1863068020b7c2c76c51ddf0bd75f7ce6353c8536cc82d42fd64583",
+          "root_theorem": "Zeta23.OPICAFollowup.coupled_gram_collision_control"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_DILATED_COMB_FOURIER",
+          "external_boundary_count": 101,
+          "external_boundary_sha256": "fab4fbf9a458160e3517f4f5f9094abc6365e468ee9735368443790a2ab3bf94",
+          "local_dependency_count": 2,
+          "local_dependency_sha256": "28fbdf6171f5aabbce502d79af50672283f0a1980f275c91ae367fb8d1ef8242",
+          "root_theorem": "Zeta23.OPICAFollowup.dilated_comb_fourier"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_DILATION_NEAR_GAP_FAMILY",
+          "external_boundary_count": 160,
+          "external_boundary_sha256": "9d81320d73409bb9cb68b2db0d0f11e9d34666143702d8542dcabbeb12ffdf73",
+          "local_dependency_count": 14,
+          "local_dependency_sha256": "6b112eb862131d97dfd37a5c287a475e7f951bd63dc41e86a0476a1820e73ffe",
+          "root_theorem": "Zeta23.OPICAFollowup.dilation_near_gap_family"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_DILATION_NORMALIZED_LIMIT_NOT_MEASURE",
+          "external_boundary_count": 171,
+          "external_boundary_sha256": "52851811983b84638029543ccf1e71ec3290afbdd8710b806a7da5d81b937652",
+          "local_dependency_count": 7,
+          "local_dependency_sha256": "36f74a499b42cddafc93f6df9cc68fcb888f14fc506ad90388eea42942cd7b92",
+          "root_theorem": "Zeta23.OPICAFollowup.dilation_normalized_limit_not_measure"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_ENERGY_ALLOCATION_BOUND",
+          "external_boundary_count": 40,
+          "external_boundary_sha256": "121420709f56265563f7e12daffb8ca765fe7c4c9e227c04f53d0ff83a77570a",
+          "local_dependency_count": 0,
+          "local_dependency_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "root_theorem": "Zeta23.OPICAFollowup.energy_allocation_bound"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_ENERGY_ALLOCATION_RATE_LOWER",
+          "external_boundary_count": 43,
+          "external_boundary_sha256": "fb210a1881cce31647b7b26719acebdf7d36340adf41ca69920a560f728c811d",
+          "local_dependency_count": 4,
+          "local_dependency_sha256": "1463e2a88320a11450626d7a4290d12d0adcd54668c21847cf78397d50a13085",
+          "root_theorem": "Zeta23.OPICAFollowup.energy_allocation_rate_lower"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_FINITE_SUM_EULER_MACLAURIN_UNIFORM",
+          "external_boundary_count": 110,
+          "external_boundary_sha256": "07157c346615b71ad6bd807907698b1ddf6de1a313493daeb5dc08442e73b6f0",
+          "local_dependency_count": 4,
+          "local_dependency_sha256": "96dd4104db7bc6daf1c2b2013cd57875e95d660936925fea95303b5a7072a769",
+          "root_theorem": "Zeta23.OPICAFollowup.finite_sum_euler_maclaurin_uniform"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_FINITE_ZERO_JET_INDEPENDENT",
+          "external_boundary_count": 90,
+          "external_boundary_sha256": "ed97fc488d013ac6409a2f458a50fa04f7ff3b53ce1f4c3541de1c245b670d24",
+          "local_dependency_count": 8,
+          "local_dependency_sha256": "ed18a5daa73499f4e6d3739bdbc8bfbf75d91b65c460a8af06b6673bb4efce84",
+          "root_theorem": "Zeta23.OPICAFollowup.finite_zero_jet_independent"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_FINITE_ZERO_SPAN_POSITIVE_ONLY_ZERO",
+          "external_boundary_count": 86,
+          "external_boundary_sha256": "32704d9e481724c4873729cb3ef224da2af974fca3b6194c3540f98f54643d3d",
+          "local_dependency_count": 12,
+          "local_dependency_sha256": "4d386568b45ad039591f99794adcf06bf814e17662e957d212a9414c2fc95243",
+          "root_theorem": "Zeta23.OPICAFollowup.finite_zero_span_positive_only_zero"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_FIRST_CELL_NEGATIVE_MASS_COST",
+          "external_boundary_count": 40,
+          "external_boundary_sha256": "1f8fdc0e9c837ebd6adec6db6a840f3ba15b8780d4c764c0ef50caddd8c22858",
+          "local_dependency_count": 6,
+          "local_dependency_sha256": "d2decfd382bd7f67e88d6814c17c03cc50ede6b8be7037f55a433623ca4998f6",
+          "root_theorem": "Zeta23.OPICAFollowup.first_cell_negative_mass_cost"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_FIXED_BASIS_NEGATIVE_MASS_BUDGET",
+          "external_boundary_count": 107,
+          "external_boundary_sha256": "459fd08247c692bb1e9d26764d4c713f80e2d61142b326639a80360c9aca228a",
+          "local_dependency_count": 12,
+          "local_dependency_sha256": "4dc74019cd548f38dba44b611d9df8f044aa9658d269342f9235b139c8eb168a",
+          "root_theorem": "Zeta23.OPICAFollowup.fixed_basis_negative_mass_budget"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_FIXED_TWO_FACTOR_MASK_RATE_THETA",
+          "external_boundary_count": 51,
+          "external_boundary_sha256": "579a02312e0f14a346cc61474e8750aa732bce383324d662c1d6dc97c13f4259",
+          "local_dependency_count": 4,
+          "local_dependency_sha256": "0e3ab205d81e0f4c97be52a52ea702b0642f3cce7242fe330dbc57c054bbbe15",
+          "root_theorem": "Zeta23.OPICAFollowup.fixed_two_factor_mask_rate_theta"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_FIXED_TWO_FACTOR_PREPARATION",
+          "external_boundary_count": 69,
+          "external_boundary_sha256": "2712342b9f2dd63b3e238cfea101e1e292d828791872e77844d23c3f27809e2d",
+          "local_dependency_count": 8,
+          "local_dependency_sha256": "de23cd4ede6c9485086efa418bd951804f57aa685159d9f2d14a24c8a6402fde",
+          "root_theorem": "Zeta23.OPICAFollowup.fixed_two_factor_preparation"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_FORCED_POSITIVE_GRAM_NONREAL_CONTROL",
+          "external_boundary_count": 70,
+          "external_boundary_sha256": "b2319d8fb11ef45a40043f5460ea4f6ac900e771ef707c800b7158388e416938",
+          "local_dependency_count": 4,
+          "local_dependency_sha256": "a85ea883276ce1897c21c164b6213dd02f85e7bc699fce51b76821a6d68cde5f",
+          "root_theorem": "Zeta23.OPICAFollowup.forced_positive_gram_nonreal_control"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_FORWARDKERNEL_DOUBLE_EXP_DECAY",
+          "external_boundary_count": 44,
+          "external_boundary_sha256": "d5b1a0c4af04ffcb7e57d29f8e4955cd35cb520d9784226668ad23768620dd42",
+          "local_dependency_count": 1,
+          "local_dependency_sha256": "a1e68e6d7aec71973157ca52bd7aca745e3912d2f58c11f975c021c5d627bb1f",
+          "root_theorem": "Zeta23.OPICAFollowup.forwardKernel_double_exp_decay"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_FORWARDKERNEL_LEFT_CONTOUR_BUDGET",
+          "external_boundary_count": 54,
+          "external_boundary_sha256": "39ec11cc0dd0d9a86e1eff27fd33a1f177c3bdd6d96bfa3ceffae09e45667d3b",
+          "local_dependency_count": 1,
+          "local_dependency_sha256": "f0e5a5e33299e5869279d44177de95493dd6e99f642d1315e4e485adedadc951",
+          "root_theorem": "Zeta23.OPICAFollowup.forwardKernel_left_contour_budget"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_FORWARDKERNEL_PHYSICAL_LAPLACE",
+          "external_boundary_count": 74,
+          "external_boundary_sha256": "a3b02e727e90df0715aeaaab1110c2922f6f1686fa99769ca9d916190fb66991",
+          "local_dependency_count": 4,
+          "local_dependency_sha256": "fbc972c8627fb799d2116b80d4390498e6c52a90cd7f943c8f0e9eeced19ddee",
+          "root_theorem": "Zeta23.OPICAFollowup.forwardKernel_physical_laplace"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_GENERIC_BOUNDARY_AMPLITUDE",
+          "external_boundary_count": 60,
+          "external_boundary_sha256": "0b6147c81e503499a191bb48936d7c1904bdadf152e9574b740d001581bfc205",
+          "local_dependency_count": 6,
+          "local_dependency_sha256": "30e5f5baf623eb87563d002fef5008787351a7c4ac7e1bc77d87fcb4881bf18b",
+          "root_theorem": "Zeta23.OPICAFollowup.generic_boundary_amplitude"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_GENERIC_FORCED_PROFILE_UNIQUE",
+          "external_boundary_count": 109,
+          "external_boundary_sha256": "50388977424674484e6c9e2b7b4833377c5ab65a982a8344f48a98a6dd467218",
+          "local_dependency_count": 13,
+          "local_dependency_sha256": "5080d828ea270179de0982fc7d98e44627d02516e0c04afa03ddf9a432b2c820",
+          "root_theorem": "Zeta23.OPICAFollowup.generic_forced_profile_unique"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_HISTORY_RECOVERY_COST_CONTROL",
+          "external_boundary_count": 104,
+          "external_boundary_sha256": "35e8da075f04091c1cf604136eb59cc9d05658db8ab581681e12189eb0264f3a",
+          "local_dependency_count": 8,
+          "local_dependency_sha256": "e86db95ec59e146a913bf2d2f882b7f9100e8a2928e0a9cd5541816af96649c7",
+          "root_theorem": "Zeta23.OPICAFollowup.history_recovery_cost_control"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_JOINT_RECOVERY_IFF",
+          "external_boundary_count": 59,
+          "external_boundary_sha256": "daad48f949de7cb54cd8dad84dcfae1f7b48980ac541a74ea535b54a632bd1c2",
+          "local_dependency_count": 1,
+          "local_dependency_sha256": "0910e87298d4b639baf503e873dd3361d31eda2fd214411139bd7ecdca08506c",
+          "root_theorem": "Zeta23.OPICAFollowup.joint_recovery_iff"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_JOINT_RECOVERY_NOISE_BOUND",
+          "external_boundary_count": 77,
+          "external_boundary_sha256": "9c84276d5ed55fb147e071b1087de61b3edc4d675a7eb375fd25aec7744fd30f",
+          "local_dependency_count": 1,
+          "local_dependency_sha256": "0910e87298d4b639baf503e873dd3361d31eda2fd214411139bd7ecdca08506c",
+          "root_theorem": "Zeta23.OPICAFollowup.joint_recovery_noise_bound"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_JOINT_RECOVERY_OPTIMAL_NORM",
+          "external_boundary_count": 92,
+          "external_boundary_sha256": "8894532d1c69f3de9c4e339fc61c6c7309e70fdc29a358033ff35b2b82cd20e1",
+          "local_dependency_count": 1,
+          "local_dependency_sha256": "0910e87298d4b639baf503e873dd3361d31eda2fd214411139bd7ecdca08506c",
+          "root_theorem": "Zeta23.OPICAFollowup.joint_recovery_optimal_norm"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_LAGUERRE_TAIL_NORM",
+          "external_boundary_count": 97,
+          "external_boundary_sha256": "b85c1144095089d3f0c7a66e6640e9d14ca321f10298997833c9365169262604",
+          "local_dependency_count": 4,
+          "local_dependency_sha256": "307eaf2fe2698beb68d70a212a2ccc2d0e8c8329edb49de6f6da43fde189641d",
+          "root_theorem": "Zeta23.OPICAFollowup.laguerre_tail_norm"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_LAURENT_COEFFICIENT_ERROR_BOUND",
+          "external_boundary_count": 46,
+          "external_boundary_sha256": "1604f694be0964c9de440a09729432e940b1b1b1b587f266e246cc6dde1454e8",
+          "local_dependency_count": 2,
+          "local_dependency_sha256": "6b66a140511f6f5272f8b900f9448db06599a44eb971c8f83ef36c4ee390df4f",
+          "root_theorem": "Zeta23.OPICAFollowup.laurent_coefficient_error_bound"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_LAURENT_OBSERVATION_SURVIVES",
+          "external_boundary_count": 44,
+          "external_boundary_sha256": "6367fb3619242affa4ea4bb124346e058a6ecf7a6766a2eaeac3a99dc5f7fc12",
+          "local_dependency_count": 2,
+          "local_dependency_sha256": "6b66a140511f6f5272f8b900f9448db06599a44eb971c8f83ef36c4ee390df4f",
+          "root_theorem": "Zeta23.OPICAFollowup.laurent_observation_survives"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_LOG_FOURIER_PLANCHEREL",
+          "external_boundary_count": 100,
+          "external_boundary_sha256": "882afdc366ff059ea8977ee364a65b917e45242ab11d071e4fd8e4dfcd43823c",
+          "local_dependency_count": 2,
+          "local_dependency_sha256": "41ddd9cc7e535b40efdb4284aef1c7a54cfaaffd5ba9973bf6359585de1e0292",
+          "root_theorem": "Zeta23.OPICAFollowup.log_fourier_plancherel"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_LOG_SLACK_BOTH_LOW_MASKS_SUBEXP",
+          "external_boundary_count": 45,
+          "external_boundary_sha256": "f95ece28935e2879111c7dc53ef71737110b80fd0cd8d6d88eeadd10f2d55f99",
+          "local_dependency_count": 9,
+          "local_dependency_sha256": "2c6c35b551dabd25b327f08e17bf2784fd2f1a3249620b2414fe1fec5d0c55c0",
+          "root_theorem": "Zeta23.OPICAFollowup.log_slack_both_low_masks_subexp"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_LOG_SLACK_MASKED_ENERGY_RATE_DIFFERENCE",
+          "external_boundary_count": 47,
+          "external_boundary_sha256": "bf8f20cddb90afd0bc35d10c11e767d623c1087d1be3cd384186904bf6dbbb49",
+          "local_dependency_count": 7,
+          "local_dependency_sha256": "1588abc43764df8b87a9dbc6c1059c5ed489e677d457f0673fe707224890ae00",
+          "root_theorem": "Zeta23.OPICAFollowup.log_slack_masked_energy_rate_difference"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_LOG_SLACK_NATIVE_DECOMPOSITION",
+          "external_boundary_count": 68,
+          "external_boundary_sha256": "a018c8723909afd665779d622627b4165715cd097b34477541e753a02dfe41bd",
+          "local_dependency_count": 8,
+          "local_dependency_sha256": "de23cd4ede6c9485086efa418bd951804f57aa685159d9f2d14a24c8a6402fde",
+          "root_theorem": "Zeta23.OPICAFollowup.log_slack_native_decomposition"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_LOG_SLACK_TYPEI_ERROR",
+          "external_boundary_count": 49,
+          "external_boundary_sha256": "497916816f9130e64d116188330a674346309dff690b4da0ecac38281aeea465",
+          "local_dependency_count": 2,
+          "local_dependency_sha256": "5948cea1bb8eb3e3159257bf68bf0536025ecba988dacfd104b468d9e73d7d78",
+          "root_theorem": "Zeta23.OPICAFollowup.log_slack_typeI_error"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_LOG_UNITARY_FORM_IDENTITY",
+          "external_boundary_count": 69,
+          "external_boundary_sha256": "d0841327543504a8e89442b9f7f0beac0b9e5eb7edbfd093101ac6f9b9ae2c42",
+          "local_dependency_count": 5,
+          "local_dependency_sha256": "efcb12b9696c0b0c0226c9e569e4591050bb4b9b100c244e07398868dfe6c5f4",
+          "root_theorem": "Zeta23.OPICAFollowup.log_unitary_form_identity"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NATIVEGENERATOR_TRANSFORM",
+          "external_boundary_count": 36,
+          "external_boundary_sha256": "049b4cdb47ce785b46a3e7468e804b24cc3deed05430d479043ff1b130a2c925",
+          "local_dependency_count": 13,
+          "local_dependency_sha256": "9fefa3246447f1e39877339d6a866ece7424fd261b746eba234171a55cbba058",
+          "root_theorem": "Zeta23.OPICAFollowup.nativeGenerator_transform"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NATIVEGENERATOR_UNIT_OR_COMPLETION",
+          "external_boundary_count": 55,
+          "external_boundary_sha256": "613707cf51e5c4a6bb5b4d6d48573f78ca896d057c8b0d360458570a114a3109",
+          "local_dependency_count": 8,
+          "local_dependency_sha256": "90118cc649cd736b103f28e0aa81a131e0224fdc975f7e78bb061b26a35e4a3c",
+          "root_theorem": "Zeta23.OPICAFollowup.nativeGenerator_unit_or_completion"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NATIVEPRIMEFIELD_VISIBLEPOLE",
+          "external_boundary_count": 56,
+          "external_boundary_sha256": "f4ab327c8d97f430539934b24fee3a254b439b4ef19025a2c8a8e539b5e09d65",
+          "local_dependency_count": 13,
+          "local_dependency_sha256": "71e29e28a4606f7ea538743b1010c238257e7b05caafc90bc3ab32b1d3415db9",
+          "root_theorem": "Zeta23.OPICAFollowup.nativePrimeField_visiblePole"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NATIVEWORD_CONTOUR_CONSUMER",
+          "external_boundary_count": 93,
+          "external_boundary_sha256": "2f4c4be2f4aff50e1153f03297df18861e5e33aa9d1c6d63c51f79a6ea9ca039",
+          "local_dependency_count": 23,
+          "local_dependency_sha256": "8c07ef91b6bbf22fc69536866f541435f1d651347ac9871d9410126dd156d143",
+          "root_theorem": "Zeta23.OPICAFollowup.nativeWord_contour_consumer"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NATIVEWORD_CORRECTED_TRANSFORM",
+          "external_boundary_count": 78,
+          "external_boundary_sha256": "97bbc8a61447ee377ffebc12a44f582174c11cc44217457212b95805a4ed0a9e",
+          "local_dependency_count": 30,
+          "local_dependency_sha256": "93d8ff1bd34ccda42607edd399e43a45ce257ab2e810fded7a57efc3fd864869",
+          "root_theorem": "Zeta23.OPICAFollowup.nativeWord_corrected_transform"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NATIVEWORD_FACTOR_COSTS",
+          "external_boundary_count": 63,
+          "external_boundary_sha256": "1789fd21f9cf8703b9d9d4a47e3e65bc6ec4591a8997b71aca320fcd0c152400",
+          "local_dependency_count": 13,
+          "local_dependency_sha256": "cbb0f7ba03453f751de696379761ec1f87bd8cddd87f9a37edd27409c211cadf",
+          "root_theorem": "Zeta23.OPICAFollowup.nativeWord_factor_costs"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NATIVEWORD_FIRST_NONZERO_DERIVATIVE",
+          "external_boundary_count": 63,
+          "external_boundary_sha256": "ca7427633b3674f2cad13ee259591a66defb79be21c0167f2988290fc4a935f4",
+          "local_dependency_count": 10,
+          "local_dependency_sha256": "69040f9777d204a900fed91e68d03cbc4fa9f09827619481336a288b93a0ea94",
+          "root_theorem": "Zeta23.OPICAFollowup.nativeWord_first_nonzero_derivative"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NATIVEWORD_ORDER_AND_LEADING",
+          "external_boundary_count": 75,
+          "external_boundary_sha256": "514fe16529a6ba1db1b5b37370b61ff9f8ca019fd8e04ead89be2800cbbe7f91",
+          "local_dependency_count": 11,
+          "local_dependency_sha256": "7e35c02ff599e7b67dd192904fc398da12091196a914c8e53b6e6710dea27b58",
+          "root_theorem": "Zeta23.OPICAFollowup.nativeWord_order_and_leading"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NATIVE_AUXILIARY_TAIL_RESIDUAL_LOWER",
+          "external_boundary_count": 106,
+          "external_boundary_sha256": "e8a626b4d2c62f2679db50c940fe67a7dd755745c36f972e319e107f4e6049cb",
+          "local_dependency_count": 10,
+          "local_dependency_sha256": "15cc7e43fe4d7917e04c2a740af890f7586340471da5a2bdde6ca2350d5da2dd",
+          "root_theorem": "Zeta23.OPICAFollowup.native_auxiliary_tail_residual_lower"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NATIVE_AUXILIARY_TOP_MOMENT",
+          "external_boundary_count": 133,
+          "external_boundary_sha256": "f972858327ebf74c7f38d79f449f7405057b18fee4836d3c5a86ffa7b1107977",
+          "local_dependency_count": 16,
+          "local_dependency_sha256": "6ef57cac4f44d644e9469724269a93835603d2ff37214f3ad866f78815f34c42",
+          "root_theorem": "Zeta23.OPICAFollowup.native_auxiliary_top_moment"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NATIVE_BINOMIAL_INVERSE_IDENTITY",
+          "external_boundary_count": 32,
+          "external_boundary_sha256": "4ed3df97686e75efbbf55353ea54eb2803ace1c519a51290379006ddfc5a67aa",
+          "local_dependency_count": 7,
+          "local_dependency_sha256": "615528a8d8b6ca6d173a78e11b1daba520facb1f717277cf67c0e78ef78109d2",
+          "root_theorem": "Zeta23.OPICAFollowup.native_binomial_inverse_identity"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NATIVE_FIELD_THETA_ENVELOPE",
+          "external_boundary_count": 30,
+          "external_boundary_sha256": "23fb0bb1a4277225575938a4bd5f5fcbabeec8b8aa575b6887f6b9513d42a2d2",
+          "local_dependency_count": 3,
+          "local_dependency_sha256": "78ea15a7346e7d4b9a3f700362e0fd3ce811f40a4d5d95df5703974f9dc79d8a",
+          "root_theorem": "Zeta23.OPICAFollowup.native_field_theta_envelope"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NATIVE_FIXED_SOURCE_WINDOW_RATE",
+          "external_boundary_count": 52,
+          "external_boundary_sha256": "dfea1ba20de2f1342536739b81cafbb49912594b34b33f7cb899756d2bc904fc",
+          "local_dependency_count": 2,
+          "local_dependency_sha256": "f46ec808b5946b4a2ed7bccfb28d501f92585a79491ce62f74a634fc027ff203",
+          "root_theorem": "Zeta23.OPICAFollowup.native_fixed_source_window_rate"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NATIVE_FORCED_RESOLVENT_UNIQUE",
+          "external_boundary_count": 85,
+          "external_boundary_sha256": "43a46ea2fea49354954c9afd0f4a59b22b55fcfa31c9993683a06a927cfe44b8",
+          "local_dependency_count": 11,
+          "local_dependency_sha256": "4136fe15f190de96113bda75573d503ca9bc293567ae7f68e2118035e72cea3f",
+          "root_theorem": "Zeta23.OPICAFollowup.native_forced_resolvent_unique"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NATIVE_PROFILE_SPECTRAL_NORMS",
+          "external_boundary_count": 83,
+          "external_boundary_sha256": "80c0cd9bcdf522fee75966b605a1e1c9b573541d8c4dedc7c062b04b849ebff0",
+          "local_dependency_count": 11,
+          "local_dependency_sha256": "40e7da547d39d1d73d2b9f53aa91f2dbbccc9efd7dedd8a06a755c5a833f7011",
+          "root_theorem": "Zeta23.OPICAFollowup.native_profile_spectral_norms"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NATIVE_SAMPLE_STIELTJES_IDENTITY",
+          "external_boundary_count": 97,
+          "external_boundary_sha256": "5fab7d04e605c3cdeee6fab4298cae5207d80df0b7b30018850d1bd0c9416181",
+          "local_dependency_count": 10,
+          "local_dependency_sha256": "4197c12699f3d2fad02d95e14d4063f3fb373ea4992d9506a3c15e39a6e8abba",
+          "root_theorem": "Zeta23.OPICAFollowup.native_sample_stieltjes_identity"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NATIVE_SAMPLING_FORM_POSITIVE",
+          "external_boundary_count": 69,
+          "external_boundary_sha256": "9d68e349bc9c2b5f165dca7fadba712ea67b4884e6339a2431021983d76d45e5",
+          "local_dependency_count": 5,
+          "local_dependency_sha256": "6ba35e0938827f855d94ee81796d5ee9cda8150f5aa474acfac75107f2579cf0",
+          "root_theorem": "Zeta23.OPICAFollowup.native_sampling_form_positive"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NATIVE_SAMPLING_GRAM_IDENTITY",
+          "external_boundary_count": 96,
+          "external_boundary_sha256": "250e2fdf55e994bd031c8c2064c7ed578a7a92f1dda2348997e729678ab5fb8d",
+          "local_dependency_count": 8,
+          "local_dependency_sha256": "73091346b52acbf9c868dfa017ab3590adb237fd42a69246b544a2d0684b18b5",
+          "root_theorem": "Zeta23.OPICAFollowup.native_sampling_gram_identity"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NATIVE_SLOW_SOURCE_WINDOW_RATE",
+          "external_boundary_count": 56,
+          "external_boundary_sha256": "e49a1b0dead4011eaf8070680fef8105990fe1afb9217e6abd32641922ff89b9",
+          "local_dependency_count": 2,
+          "local_dependency_sha256": "f46ec808b5946b4a2ed7bccfb28d501f92585a79491ce62f74a634fc027ff203",
+          "root_theorem": "Zeta23.OPICAFollowup.native_slow_source_window_rate"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NATIVE_SOURCE_EXPLICIT_FORMULA",
+          "external_boundary_count": 46,
+          "external_boundary_sha256": "ad811ef542a5403355fdf7f5cba4aa7fca449ed5a15b3c78b5d1cf5e2ba72331",
+          "local_dependency_count": 9,
+          "local_dependency_sha256": "60c9b3300faec31de174fea8266c66f142f7ba1769127f8a5af1e8771e8f8746",
+          "root_theorem": "Zeta23.OPICAFollowup.native_source_explicit_formula"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NATIVE_TERMINAL_MEMORY_LOWER",
+          "external_boundary_count": 96,
+          "external_boundary_sha256": "8714110daa62c3ba0f8e29d94bbbd67501ffad403fc97da187c9b5866766a11b",
+          "local_dependency_count": 12,
+          "local_dependency_sha256": "9b93fbe8a7ea8d7aabeeb6b4d86a491bf6504d95ef7a4caf94898b4c36041885",
+          "root_theorem": "Zeta23.OPICAFollowup.native_terminal_memory_lower"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NATIVE_ZERO_COUNT_SUMMABILITY",
+          "external_boundary_count": 41,
+          "external_boundary_sha256": "70792ebbe2f6c814c2e1e3041178941c4422d4e36010aaf6fd17119ea797c2e1",
+          "local_dependency_count": 5,
+          "local_dependency_sha256": "52f0d3727a4a7c51c1e72fbda1aa0495c57d0c57ae2f45da83ebe17019d629d0",
+          "root_theorem": "Zeta23.OPICAFollowup.native_zero_count_summability"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NATIVE_ZERO_SUP_BOUNDS",
+          "external_boundary_count": 34,
+          "external_boundary_sha256": "91e252b4bcaa23e2a79dac0b234fab439b4e8648927f5ebe4a2bb4f602953c6c",
+          "local_dependency_count": 4,
+          "local_dependency_sha256": "6eb49a45b3b86f7486034b8a15a8e9956d417db51595eea7d41bd5f01868e6ef",
+          "root_theorem": "Zeta23.OPICAFollowup.native_zero_sup_bounds"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NEAR_GAP_CONTROLLED_LIMIT_ZERO",
+          "external_boundary_count": 54,
+          "external_boundary_sha256": "c72caf6499e2d1bd8eae94445cbf8cf3f40ae1b1f6bd5363daed43a32fe79f78",
+          "local_dependency_count": 10,
+          "local_dependency_sha256": "407c96e7e9bb5c331cd9cf4acee21934b656320c9938fb440ab2ed230c72fc20",
+          "root_theorem": "Zeta23.OPICAFollowup.near_gap_controlled_limit_zero"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NEAR_GAP_MASS_BOUND",
+          "external_boundary_count": 46,
+          "external_boundary_sha256": "51beae3174ea53ab9265e896863faf73ad23f55d4356c1aea6bf0b17a41696fc",
+          "local_dependency_count": 9,
+          "local_dependency_sha256": "48d467833edf29113865cd5c04eea45a415983ba2ffb3cb37a583934417df7e0",
+          "root_theorem": "Zeta23.OPICAFollowup.near_gap_mass_bound"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NORM_FIRST_LOG_COMPARISON",
+          "external_boundary_count": 43,
+          "external_boundary_sha256": "434b4fcd03d17c49b6d18992b8ebc35fa30b40a0d27fd7b80ef7660fb89afeaf",
+          "local_dependency_count": 0,
+          "local_dependency_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "root_theorem": "Zeta23.OPICAFollowup.norm_first_log_comparison"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NORM_FIRST_RATE_TRANSFER",
+          "external_boundary_count": 37,
+          "external_boundary_sha256": "61450fa4f9cc7bf71e3c162a78dca1549279f222b1500b4a4cf6874029e451a1",
+          "local_dependency_count": 4,
+          "local_dependency_sha256": "1463e2a88320a11450626d7a4290d12d0adcd54668c21847cf78397d50a13085",
+          "root_theorem": "Zeta23.OPICAFollowup.norm_first_rate_transfer"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NORM_FIRST_STRICTLY_WEAKER_CONTROL",
+          "external_boundary_count": 39,
+          "external_boundary_sha256": "40856d9d76b738197d7b7c928a2962c0cde2c365696784966a22590716f2c928",
+          "local_dependency_count": 7,
+          "local_dependency_sha256": "f5043e54101e140db0aa9cb3b1c8c9fda51ed3c5c2eddf1d2499e340d390f949",
+          "root_theorem": "Zeta23.OPICAFollowup.norm_first_strictly_weaker_control"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_PROFILE_JET_CONFLUENT_DETERMINANT",
+          "external_boundary_count": 45,
+          "external_boundary_sha256": "1ebbfcb3d255feb32f9c2922b1fe8b72d5422d2387716e5434e2f89032f5cac4",
+          "local_dependency_count": 1,
+          "local_dependency_sha256": "760630777369f147424b54642ae01889f9e9815744a6307d3107175e796cc392",
+          "root_theorem": "Zeta23.OPICAFollowup.profile_jet_confluent_determinant"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_QUIET_BALANCED_OBSERVATION_IMPLIES_NATIVE_CUT",
+          "external_boundary_count": 82,
+          "external_boundary_sha256": "6318ed5720438e6678b7eb3efb40d4eab856bea0f31752a75a82947c3fa0402a",
+          "local_dependency_count": 7,
+          "local_dependency_sha256": "3cc707c1f3b8a11a3601887fb5ad720bdfc8ef48e2e196952e0aa3fc2ca1a03d",
+          "root_theorem": "Zeta23.OPICAFollowup.quiet_balanced_observation_implies_native_cut"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_RECOVERY_SUBEXP_BUDGET",
+          "external_boundary_count": 41,
+          "external_boundary_sha256": "2da69d5f32e6769f14a7a00f2b9a5d8d178c3f50793f050ea33c45d54ca568ca",
+          "local_dependency_count": 2,
+          "local_dependency_sha256": "ec4837547a0844649ad04fafc351ae11f9f45cdc965078aee34a1fa03b9c08bc",
+          "root_theorem": "Zeta23.OPICAFollowup.recovery_subexp_budget"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_RENORMALIZED_COPOISSON_ORDER_ZERO",
+          "external_boundary_count": 114,
+          "external_boundary_sha256": "9cd3d38f068802cedb2d8245a518c6097ba6c3a103347359376ac118a38b15a5",
+          "local_dependency_count": 10,
+          "local_dependency_sha256": "257ab7d9849d92363e33fc98cf7cea2d6ba11830ede1cbe082fac358f88a5ac3",
+          "root_theorem": "Zeta23.OPICAFollowup.renormalized_copoisson_order_zero"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_RENORMALIZED_COPOISSON_TEMPERED_FAMILY",
+          "external_boundary_count": 159,
+          "external_boundary_sha256": "f923b8e88f5901bc2d3cb201caa713ddef4f74fd346413cac82b4d5cc76d822d",
+          "local_dependency_count": 6,
+          "local_dependency_sha256": "51178dca528678b3081ec9a701eb4a6eb527af932957c4077384e670bfbfa0b6",
+          "root_theorem": "Zeta23.OPICAFollowup.renormalized_copoisson_tempered_family"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_SAWTOOTH_ACTUAL_MELLIN_FOURIER",
+          "external_boundary_count": 114,
+          "external_boundary_sha256": "c42107d07ead0e450da678ad0d87b9dbac6d80fecf69afbc5c69ca6a8b5b290f",
+          "local_dependency_count": 3,
+          "local_dependency_sha256": "43a44d13665044514a961762383a293920866a9732ae27b717f60aab8490799d",
+          "root_theorem": "Zeta23.OPICAFollowup.sawtooth_actual_mellin_fourier"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_SAWTOOTH_INTEGRABLE_FORCE_IDENTITY",
+          "external_boundary_count": 120,
+          "external_boundary_sha256": "eff2486416a4b334535ac67ffd512aa3ac4a5d9064d221e36191eaf44b50dd0a",
+          "local_dependency_count": 2,
+          "local_dependency_sha256": "3b5cc01aa5e7446889aa14b74ad2415402d71158a91a034fef47c796788df50a",
+          "root_theorem": "Zeta23.OPICAFollowup.sawtooth_integrable_force_identity"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_SAWTOOTH_NORM_WEIGHTED_ZETA_MOMENT",
+          "external_boundary_count": 117,
+          "external_boundary_sha256": "6595e363e6b6a74ee87fc234f3e648c8cd5793631f0e8979ec0d6647d71e5691",
+          "local_dependency_count": 3,
+          "local_dependency_sha256": "a38498c558c6fdae06574db364818076e098cb254383fbd9001ef8d5574c5b11",
+          "root_theorem": "Zeta23.OPICAFollowup.sawtooth_norm_weighted_zeta_moment"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_SOURCEFAMILY_LAPLACE_IDENTITY",
+          "external_boundary_count": 43,
+          "external_boundary_sha256": "9a82b0c9fe1479e40c879cc83fe84b19ab47f970501c3595189f6bc168fd049b",
+          "local_dependency_count": 5,
+          "local_dependency_sha256": "92d85593f18ee6ea64b96c6237d8c14f3f75b1ad47f13570fcb5ae830d169d24",
+          "root_theorem": "Zeta23.OPICAFollowup.sourceFamily_laplace_identity"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_SOURCEFAMILY_SUPPORT_SMOOTH_MOMENTS",
+          "external_boundary_count": 38,
+          "external_boundary_sha256": "f9f04a3e87b964522e33fff611bde6e6d5f69b389ce02920ab8b2bd207db586e",
+          "local_dependency_count": 7,
+          "local_dependency_sha256": "2e1727d38c94d9ce516da1d04b277b34d1eb775716ec40e313a96ef39dc38272",
+          "root_theorem": "Zeta23.OPICAFollowup.sourceFamily_support_smooth_moments"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_SOURCEFAMILY_ZERO_EQ_ORIGINAL",
+          "external_boundary_count": 6,
+          "external_boundary_sha256": "da477d5ffe6deceea146396b517392f5f423db7956067916ce1deb51c5a2f8e3",
+          "local_dependency_count": 6,
+          "local_dependency_sha256": "9ae231b355484b82e8275567b21fe1c7f52e372ad1659ab3e4c3ec0cd2bc4dc1",
+          "root_theorem": "Zeta23.OPICAFollowup.sourceFamily_zero_eq_original"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_SOURCE_ORDER_UNIFORM_NORMS",
+          "external_boundary_count": 81,
+          "external_boundary_sha256": "779d3252bd1754b38fd2bac596d7a77d5de5a32c83eecdfe7d8b547e733acca5",
+          "local_dependency_count": 4,
+          "local_dependency_sha256": "daaa25096a4927472aa8ec462b93e3b6e5e191654e73aa8d1db127f55aa00544",
+          "root_theorem": "Zeta23.OPICAFollowup.source_order_uniform_norms"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_SOURCE_PRODUCT_VERTICAL_BOUND",
+          "external_boundary_count": 29,
+          "external_boundary_sha256": "bb9972fc2c9357e0c18ca0a60a039d741ac2ab3cc642560a21701ce1945e7c50",
+          "local_dependency_count": 3,
+          "local_dependency_sha256": "0c9d15087aecddef6e9290b034dd5f97e6cd413e41a04506a0bf5d436380c898",
+          "root_theorem": "Zeta23.OPICAFollowup.source_product_vertical_bound"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_SQUARE_DEFECT_ORIGIN_POSITIVE",
+          "external_boundary_count": 67,
+          "external_boundary_sha256": "1501b50b3cba4eb3ff4a210405869f5fb6d9ca7fbd25ae901142b41c3a526d84",
+          "local_dependency_count": 1,
+          "local_dependency_sha256": "78c738d219c8e2231c79610e00e95473166d1dfb98056311d4287deb725fdef4",
+          "root_theorem": "Zeta23.OPICAFollowup.square_defect_origin_positive"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_SQUARE_FOURIER_DEFECT",
+          "external_boundary_count": 105,
+          "external_boundary_sha256": "a2ff232d8b4817cf8c3f80e1d88f6baf0110bc444a29fd3b99cdc990fe0796d9",
+          "local_dependency_count": 2,
+          "local_dependency_sha256": "bce9d74d6d507915edebf6ca7307717843b6ff962bdb3b366a919d81fb970d0c",
+          "root_theorem": "Zeta23.OPICAFollowup.square_fourier_defect"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_SQUARE_NO_LATTICE_REPAIR",
+          "external_boundary_count": 78,
+          "external_boundary_sha256": "3880178856423e5caa89951b5ffd1fb6cd8fc5c4ad3f157061c1ecd6d4d9ed11",
+          "local_dependency_count": 3,
+          "local_dependency_sha256": "a0e1ad14ec283426557443df768cf3f2de000e93e6904353e39676ab191377fc",
+          "root_theorem": "Zeta23.OPICAFollowup.square_no_lattice_repair"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_SQUARE_SELFDUAL_PROJECTION_FILLS_GAP",
+          "external_boundary_count": 111,
+          "external_boundary_sha256": "842e82eaa78f7ee90370e6430748c7301f13ce09e0d195f8e46a351182b0e574",
+          "local_dependency_count": 4,
+          "local_dependency_sha256": "d397871d6e33b7c45d7b7eeb3775e7f618bcd4aec442666501d21e57b8d87a8b",
+          "root_theorem": "Zeta23.OPICAFollowup.square_selfdual_projection_fills_gap"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_STEP123_WORD_JET_CONSUMER",
+          "external_boundary_count": 152,
+          "external_boundary_sha256": "11804cc9f45e9632ed7cfccb7cb3065a8d1e27fe2dea30b272e1f7fda25004ff",
+          "local_dependency_count": 61,
+          "local_dependency_sha256": "f4c0d44a04db12f6f1a81a2d2185bc099943235fe800ee4da668eaeaa6f12779",
+          "root_theorem": "Zeta23.OPICAFollowup.step123_word_jet_consumer"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_WEIGHTED_GAP_LEAKAGE",
+          "external_boundary_count": 103,
+          "external_boundary_sha256": "b488f811ea6bc139f326f22bba6535b0944b9c6b8a7c6dd5074734537b361c5b",
+          "local_dependency_count": 15,
+          "local_dependency_sha256": "93ccac26ab9b33c76f25ab6824f609d47400669a33ed34a251157fa9a00d98d8",
+          "root_theorem": "Zeta23.OPICAFollowup.weighted_gap_leakage"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_WEIGHTED_MIXTURE_EXISTS_FOURIER",
+          "external_boundary_count": 115,
+          "external_boundary_sha256": "1a973f76f3786866d980a9ae5c962c37e4e75863ff3482fc9e8eec4687e55503",
+          "local_dependency_count": 13,
+          "local_dependency_sha256": "498c6f8124590de1a19749bd99940f251c865ab4e0dfe6b4156a9ea53397093e",
+          "root_theorem": "Zeta23.OPICAFollowup.weighted_mixture_exists_fourier"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_WEIGHTED_MIXTURE_SHARP_GAP",
+          "external_boundary_count": 132,
+          "external_boundary_sha256": "37d87a05be887d6c35a8d9d51b5fdd3e3998ae0130ea20a424c8729137ced574",
+          "local_dependency_count": 11,
+          "local_dependency_sha256": "8429e8de094070b54ded4a590f434c98d7975ac17a43ab17082e0e892b175518",
+          "root_theorem": "Zeta23.OPICAFollowup.weighted_mixture_sharp_gap"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_WEIGHTED_MOBIUS_INVERSE",
+          "external_boundary_count": 79,
+          "external_boundary_sha256": "0f2bdd7e7291755e96aa23f1c56ffae276991582ddeeaf89cf83170fec2fb9d0",
+          "local_dependency_count": 15,
+          "local_dependency_sha256": "c0caee6ec9e3a61d780ff1b82fa08d1b793e7e6d09e6c1f2dbeba680c50d3ac2",
+          "root_theorem": "Zeta23.OPICAFollowup.weighted_mobius_inverse"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_ZERO_MEASURE_EXACT_PROPERTIES",
+          "external_boundary_count": 122,
+          "external_boundary_sha256": "d4ddc942828cf6b106b12530f61fb04484191930e35681726ef1ad76700a8324",
+          "local_dependency_count": 22,
+          "local_dependency_sha256": "0970fdea07a85817c47c82c62d16889bc19f9c39f33add3c84852e9d9dd4e24d",
+          "root_theorem": "Zeta23.OPICAFollowup.zero_measure_exact_properties"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_ZERO_MEASURE_FIRST_CELL_SIGN",
+          "external_boundary_count": 51,
+          "external_boundary_sha256": "b466bcfc4ed0678d559465d7b3c5725b9fe76324c4e45d4aded40561f4ae1979",
+          "local_dependency_count": 3,
+          "local_dependency_sha256": "1639460ec799233a0d4431a22a30d5a5adef417c79ff8b955fe9f9a6f5958391",
+          "root_theorem": "Zeta23.OPICAFollowup.zero_measure_first_cell_sign"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_ZERO_PROFILE_FORCED_EULER",
+          "external_boundary_count": 102,
+          "external_boundary_sha256": "ba938d471a58c87f16d9ec03b411c05ad5e334c90dc7404465b850edb9733c0b",
+          "local_dependency_count": 4,
+          "local_dependency_sha256": "4c3a65c8dc2bbfb4426d102d392419b3007ceef8b7ef505bcdd4a08e877a6694",
+          "root_theorem": "Zeta23.OPICAFollowup.zero_profile_forced_euler"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_ZERO_PROFILE_NOT_HOMOGENEOUS_OPERATOR_VECTOR",
+          "external_boundary_count": 77,
+          "external_boundary_sha256": "9d0ae4cc0abd5ccd855856f08d5ccfc33f20d973f59421701bec969796e1da58",
+          "local_dependency_count": 8,
+          "local_dependency_sha256": "611912c1bf35bf7db774f0aa1628f504db8cd5b79ead068d0f403ddcc8ce87bd",
+          "root_theorem": "Zeta23.OPICAFollowup.zero_profile_not_homogeneous_operator_vector"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_ZERO_PROFILE_REGULAR_SELFDUAL",
+          "external_boundary_count": 108,
+          "external_boundary_sha256": "b5cb7d95e51a81d7e9f3443e3f462d9d88b1400176dde06e2d68ab1557465235",
+          "local_dependency_count": 5,
+          "local_dependency_sha256": "8f3203da4a318b6fe35bb954b658cd4cff26c08d3d935c0572a7eea31242f502",
+          "root_theorem": "Zeta23.OPICAFollowup.zero_profile_regular_selfdual"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_ZERO_PROFILE_TAIL_AND_JUMPS",
+          "external_boundary_count": 117,
+          "external_boundary_sha256": "fd8bdc6213c584b00f384694c43180560cea0be32d5581bf8fbd1bd7548f6212",
+          "local_dependency_count": 6,
+          "local_dependency_sha256": "3240863c90595f820de984ab74f07c8aef8fbb43511949c0c2d64ee19fca0253",
+          "root_theorem": "Zeta23.OPICAFollowup.zero_profile_tail_and_jumps"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_ZETA_LEFT_LINE_UNIFORM_BOUND",
+          "external_boundary_count": 59,
+          "external_boundary_sha256": "5a687220317fae8ab7676f0712830dd94587cfe670ae2ac0809ce2048afdf313",
+          "local_dependency_count": 0,
+          "local_dependency_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "root_theorem": "Zeta23.OPICAFollowup.zeta_left_line_uniform_bound"
         },
         {
           "claim_id": "OPICA_H1_SIGNED_SHARP_GAP_SEPARATOR",
@@ -4001,6 +5601,806 @@
           "root_theorem": "Zeta23.OPICA.quiet_cofinal_rate_zero"
         },
         {
+          "claim_id": "OPICA_FOLLOWUP_ACTUAL_FORCE_SAMPLING_CONSUMER",
+          "external_boundary_count": 3031,
+          "external_boundary_sha256": "8c7212defa72339b791c4efce7e75492804473dcf5252110415a595a85859872",
+          "local_dependency_count": 805,
+          "local_dependency_sha256": "2488d8fd4bd31688509f154dab589744c7d9a238f78858f0b2f0fb3f536714d3",
+          "root_theorem": "Zeta23.OPICAFollowup.actual_force_sampling_consumer"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_ACTUAL_ZERO_MEASURE_SPAN_CONSUMER",
+          "external_boundary_count": 3042,
+          "external_boundary_sha256": "c59157f0442a009d735b9f9f2bdf50945be26e19d7ee79abf6f3e6c8a213115a",
+          "local_dependency_count": 840,
+          "local_dependency_sha256": "c837bdca1969c19604080f8117faec27eef17b4f22456d8b3ff150fbfc7b5a0d",
+          "root_theorem": "Zeta23.OPICAFollowup.actual_zero_measure_span_consumer"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_APPROX_COMPATIBILITY_LEFT_NULL",
+          "external_boundary_count": 174,
+          "external_boundary_sha256": "1b4e60827b0a71ed86c9800e6ec92014b9d2b24f494a1ecbb5d70dc53e9715d4",
+          "local_dependency_count": 4,
+          "local_dependency_sha256": "a6efcb85d294af1a2718164a7ec0227306c920d9f60e260297a913c419aa32f4",
+          "root_theorem": "Zeta23.OPICAFollowup.approx_compatibility_left_null"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_ARITHMETIC_STIELTJES_HOLOMORPHIC",
+          "external_boundary_count": 1479,
+          "external_boundary_sha256": "647a1a9fdacce3768a3741b7b1ab3eea40a2049489337d367ef6576c5ead936e",
+          "local_dependency_count": 106,
+          "local_dependency_sha256": "494fd1361411db5d07e443801e89712533ec46b6677142d634eb5ed15165ee40",
+          "root_theorem": "Zeta23.OPICAFollowup.arithmetic_stieltjes_holomorphic"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_ARITHMETIC_STIELTJES_SIGN_BUDGET",
+          "external_boundary_count": 1493,
+          "external_boundary_sha256": "c8c27bdd8d7139b235afd55bdcc87d1f16b4892d9af752950fd315217d043f4b",
+          "local_dependency_count": 97,
+          "local_dependency_sha256": "212daf0d0d282ba4ee8444503318e6102c3bcc8c2e8e87a191de7524bb09a735",
+          "root_theorem": "Zeta23.OPICAFollowup.arithmetic_stieltjes_sign_budget"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_AUX_COMPLETION_ACTUAL_TRANSFORM",
+          "external_boundary_count": 1512,
+          "external_boundary_sha256": "ffdcedc1925f0f52205d7bb4dda4b6e2ad448521f2ab5966bc9acab8a19e9349",
+          "local_dependency_count": 176,
+          "local_dependency_sha256": "4bb8110d83418cad9e6805b15f76ff4d5dea48b1bfce8443cb4a37ab4040c3a9",
+          "root_theorem": "Zeta23.OPICAFollowup.aux_completion_actual_transform"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_AUX_COMPLETION_RATIO_BOUNDS",
+          "external_boundary_count": 1141,
+          "external_boundary_sha256": "c98b1a7a5af982c4eade979985ba8baf230fca7bc209c81ca74022eba9b46d30",
+          "local_dependency_count": 83,
+          "local_dependency_sha256": "541e203077fd3b31dcd03b7f09fd861582a3a67a76506508a540e0ca84fb9300",
+          "root_theorem": "Zeta23.OPICAFollowup.aux_completion_ratio_bounds"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_AUX_COMPLETION_UNIFORM_DECAY",
+          "external_boundary_count": 1103,
+          "external_boundary_sha256": "cd117b71b0c996381d1f05ab1a265a723f725580d57c8a849406e8006cd2a12d",
+          "local_dependency_count": 86,
+          "local_dependency_sha256": "968a2a53d200a381a0b37b3164c9f4122e83298bc7b7b2fc1607ec947450fb70",
+          "root_theorem": "Zeta23.OPICAFollowup.aux_completion_uniform_decay"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_BALANCED_COEFF_DIVISOR_BOUND",
+          "external_boundary_count": 457,
+          "external_boundary_sha256": "3cdd2137822b5983e223608c9483b0138848893d0282d64ac2dadb8f245bc9a0",
+          "local_dependency_count": 30,
+          "local_dependency_sha256": "3d54b62f36e6e4b5cc0adbe9564c92c07a848d68871800766e3b28d41278489e",
+          "root_theorem": "Zeta23.OPICAFollowup.balanced_coeff_divisor_bound"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_COMPLEX_LOCAL_MEASURE_EMBEDDING_FAITHFUL",
+          "external_boundary_count": 1231,
+          "external_boundary_sha256": "0390a1c4db2a52507169bb99407624a6f054063cf35400ead96461023beb36db",
+          "local_dependency_count": 175,
+          "local_dependency_sha256": "5bf26b46e35c803d2e604338b53e92777df92b25e8cea2c762b4140131c27431",
+          "root_theorem": "Zeta23.OPICAFollowup.complex_local_measure_embedding_faithful"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_COPOISSON_ZERO_JETS_MEASURES",
+          "external_boundary_count": 2783,
+          "external_boundary_sha256": "c800726d948ece9cc3d1306bfe29e85b299e19cddbd7841315b15123e5296479",
+          "local_dependency_count": 664,
+          "local_dependency_sha256": "7aab801dc3604511e2534c106cc7284c8d40f208874b764dda04e30a02e2d8b6",
+          "root_theorem": "Zeta23.OPICAFollowup.copoisson_zero_jets_measures"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_COUPLED_GRAM_COLLISION_CONTROL",
+          "external_boundary_count": 663,
+          "external_boundary_sha256": "9ce304bf27e0b856f0f7357fe58d17f35fe8b362ca164d6aa7d395218dae8587",
+          "local_dependency_count": 18,
+          "local_dependency_sha256": "61d300f5cbefb428d885ea4ef2b04c57c712508a56438d09b465e2bd700f1aec",
+          "root_theorem": "Zeta23.OPICAFollowup.coupled_gram_collision_control"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_DILATED_COMB_FOURIER",
+          "external_boundary_count": 925,
+          "external_boundary_sha256": "3c6f579c3ad220790debe3852914f419039ce1ccf2c32440475db801748020c3",
+          "local_dependency_count": 72,
+          "local_dependency_sha256": "859ed3b1ae04c9a3dd40806afaea8c0c00872c0ef5e774c10709a857bfe517bf",
+          "root_theorem": "Zeta23.OPICAFollowup.dilated_comb_fourier"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_DILATION_NEAR_GAP_FAMILY",
+          "external_boundary_count": 1337,
+          "external_boundary_sha256": "da0dc5ea22c52ce5e3a8f636e64b0aadfab63fcd1abebb14770b4f56bc9f8315",
+          "local_dependency_count": 211,
+          "local_dependency_sha256": "4b6c0555977df15a78d0c2c10cf3cf7d7ec4c2d46d96bb5a216d6c68e1777fc4",
+          "root_theorem": "Zeta23.OPICAFollowup.dilation_near_gap_family"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_DILATION_NORMALIZED_LIMIT_NOT_MEASURE",
+          "external_boundary_count": 1442,
+          "external_boundary_sha256": "33681012864a2b3f144d61a9c4e5b28ef74c989fccfdab70a5d614c53f136603",
+          "local_dependency_count": 186,
+          "local_dependency_sha256": "629f8cc3e82369fdec706dc37b5deb98d21806b833f018cbd831e75c8de4ebbb",
+          "root_theorem": "Zeta23.OPICAFollowup.dilation_normalized_limit_not_measure"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_ENERGY_ALLOCATION_BOUND",
+          "external_boundary_count": 209,
+          "external_boundary_sha256": "619b73eadb81b27678444e8ce737e47abccaa1ab12eec42bc583ec91392c9edc",
+          "local_dependency_count": 0,
+          "local_dependency_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "root_theorem": "Zeta23.OPICAFollowup.energy_allocation_bound"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_ENERGY_ALLOCATION_RATE_LOWER",
+          "external_boundary_count": 368,
+          "external_boundary_sha256": "3ac249c7169ea47052755178a9aa29cce1a96de52487d94f9bb861f160410c70",
+          "local_dependency_count": 11,
+          "local_dependency_sha256": "3b9a562b4519cf94360b9a22b6b074ca51fd9b0d6da4a4a7bf0b268892f9cc66",
+          "root_theorem": "Zeta23.OPICAFollowup.energy_allocation_rate_lower"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_FINITE_SUM_EULER_MACLAURIN_UNIFORM",
+          "external_boundary_count": 1176,
+          "external_boundary_sha256": "7577766353d79115df56967db95523c73fde86d5d123907a85d5396a4c5be54d",
+          "local_dependency_count": 63,
+          "local_dependency_sha256": "d584d155496063acc6583b2c35cc33a205bc2149a4a09ffbe0887efd338342cd",
+          "root_theorem": "Zeta23.OPICAFollowup.finite_sum_euler_maclaurin_uniform"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_FINITE_ZERO_JET_INDEPENDENT",
+          "external_boundary_count": 2648,
+          "external_boundary_sha256": "e8e763a315d031b60c9f04b5d1451a1d20fe4e609504916a4a040e943a82a848",
+          "local_dependency_count": 509,
+          "local_dependency_sha256": "0f2a56754b071501c7e5ba54263dfaf7955258c3a437c6a02143ea5232963941",
+          "root_theorem": "Zeta23.OPICAFollowup.finite_zero_jet_independent"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_FINITE_ZERO_SPAN_POSITIVE_ONLY_ZERO",
+          "external_boundary_count": 2863,
+          "external_boundary_sha256": "77edf3c45b8e30c7e38aa5dde4ad88a0caf3be4af0470e1a894c3397dccd7ac2",
+          "local_dependency_count": 730,
+          "local_dependency_sha256": "1f1d37fef0a8fe6a1a1a6bc8f6bca63269871c8c70bcca204a562a3680c8fbd2",
+          "root_theorem": "Zeta23.OPICAFollowup.finite_zero_span_positive_only_zero"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_FIRST_CELL_NEGATIVE_MASS_COST",
+          "external_boundary_count": 789,
+          "external_boundary_sha256": "32e36d321776c5742be0b37ae5bb08adab52053efcb30abe3400c81dc8350d56",
+          "local_dependency_count": 35,
+          "local_dependency_sha256": "a6f6db32f1c7f3051753635bf37f945857f00df39840402507ec98b0b0f1b0d6",
+          "root_theorem": "Zeta23.OPICAFollowup.first_cell_negative_mass_cost"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_FIXED_BASIS_NEGATIVE_MASS_BUDGET",
+          "external_boundary_count": 2988,
+          "external_boundary_sha256": "1b2f515caa4ef659ff4c06c5a520eea964b8000835ac80c6c72d1c82f81b58c1",
+          "local_dependency_count": 813,
+          "local_dependency_sha256": "24b2edfb960e1a84b681b9e6f088c6cff88c6169e05d26aab2366ce295a6d8c7",
+          "root_theorem": "Zeta23.OPICAFollowup.fixed_basis_negative_mass_budget"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_FIXED_TWO_FACTOR_MASK_RATE_THETA",
+          "external_boundary_count": 4126,
+          "external_boundary_sha256": "38dac86b40f3356da9e9220904d9699e65dd3a068ce428371ba795bb8ac54506",
+          "local_dependency_count": 1923,
+          "local_dependency_sha256": "1c5c56ea65848e72be249da4e9b87863a7dcc95d64ab53167d19e7c7998f80a9",
+          "root_theorem": "Zeta23.OPICAFollowup.fixed_two_factor_mask_rate_theta"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_FIXED_TWO_FACTOR_PREPARATION",
+          "external_boundary_count": 2738,
+          "external_boundary_sha256": "9aaac41e2c3a20830bd80aa80507f72ea8fae03df2eb6606bf515a3db870adbc",
+          "local_dependency_count": 668,
+          "local_dependency_sha256": "bcdf03d36eb55d7b2b76826e177e932ebbd753fd842500c3ed594fd50e22dac1",
+          "root_theorem": "Zeta23.OPICAFollowup.fixed_two_factor_preparation"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_FORCED_POSITIVE_GRAM_NONREAL_CONTROL",
+          "external_boundary_count": 456,
+          "external_boundary_sha256": "bb03bdea19712e9861fe78857d98c57c141d249375042d2cb4578d8f35477e1e",
+          "local_dependency_count": 17,
+          "local_dependency_sha256": "719dd744e5f5acb65f266af93b156683840ceb5a818ecb1853c43ef1e6f0d6ff",
+          "root_theorem": "Zeta23.OPICAFollowup.forced_positive_gram_nonreal_control"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_FORWARDKERNEL_DOUBLE_EXP_DECAY",
+          "external_boundary_count": 2483,
+          "external_boundary_sha256": "fe447cab09743f2dcf7320e22607b253668782367a3156b295a207a9b4451af7",
+          "local_dependency_count": 519,
+          "local_dependency_sha256": "19b33232eb928dddee51736df2321030481ae9e0e4b00664571454599313a460",
+          "root_theorem": "Zeta23.OPICAFollowup.forwardKernel_double_exp_decay"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_FORWARDKERNEL_LEFT_CONTOUR_BUDGET",
+          "external_boundary_count": 1889,
+          "external_boundary_sha256": "8aeb04a1a3987a50b39c4d724b925e96436d62f25485608c80ba89434f392b2d",
+          "local_dependency_count": 330,
+          "local_dependency_sha256": "b6564059f40e934276ea6ec9fafba9e3938bf4da7186b8300ce1a3551592f69f",
+          "root_theorem": "Zeta23.OPICAFollowup.forwardKernel_left_contour_budget"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_FORWARDKERNEL_PHYSICAL_LAPLACE",
+          "external_boundary_count": 1523,
+          "external_boundary_sha256": "361dce03264d1171af3edd5bfe66a6de765063e63ab389df3a87603deff69496",
+          "local_dependency_count": 251,
+          "local_dependency_sha256": "e043de1758d5a4899ee3ed0185c0ba59f0e4745e09c24fe06df1a5b36b17f460",
+          "root_theorem": "Zeta23.OPICAFollowup.forwardKernel_physical_laplace"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_GENERIC_BOUNDARY_AMPLITUDE",
+          "external_boundary_count": 1155,
+          "external_boundary_sha256": "65f1ee3e621c78feaea0df1ba41e6e274b821d92d62b87b58915930ede9e8963",
+          "local_dependency_count": 86,
+          "local_dependency_sha256": "48dda2d4ec406fd3c03a840875256aa22cfa80ff91215af3c8ea4af4d41cb376",
+          "root_theorem": "Zeta23.OPICAFollowup.generic_boundary_amplitude"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_GENERIC_FORCED_PROFILE_UNIQUE",
+          "external_boundary_count": 2120,
+          "external_boundary_sha256": "14816eaccd7756e5af8ef0c40d5fbad7cc959a39e41b3bafe32e65a76530b925",
+          "local_dependency_count": 366,
+          "local_dependency_sha256": "04634b22e2bc8589814f3b56aa177c23d2208f71b87742d14ce869f3436bb254",
+          "root_theorem": "Zeta23.OPICAFollowup.generic_forced_profile_unique"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_HISTORY_RECOVERY_COST_CONTROL",
+          "external_boundary_count": 514,
+          "external_boundary_sha256": "52aca7116d78b6036f6fe8de613d9755f6c472dc16fb4fcbe88f5592f6545dc6",
+          "local_dependency_count": 32,
+          "local_dependency_sha256": "b272488f42fb19146f9cd9712bcbd86ca5a25b8f478e7963185f4eacdf4a090f",
+          "root_theorem": "Zeta23.OPICAFollowup.history_recovery_cost_control"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_JOINT_RECOVERY_IFF",
+          "external_boundary_count": 228,
+          "external_boundary_sha256": "0f61dd33a9b32f1862f3e298ca59e78292dac745461b39e2770149bff0406088",
+          "local_dependency_count": 10,
+          "local_dependency_sha256": "6ba96fdb4b5467e3b2ac84637a992c7850b6905cdde904e0cf9a50cca677bb50",
+          "root_theorem": "Zeta23.OPICAFollowup.joint_recovery_iff"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_JOINT_RECOVERY_NOISE_BOUND",
+          "external_boundary_count": 123,
+          "external_boundary_sha256": "32d646650c3c17ca294ec9ed9413260714fcfc84dc827e5eb0cb310ee44d28a1",
+          "local_dependency_count": 4,
+          "local_dependency_sha256": "bacd6f7b3758ddc49412cd19f098e4c331150ddf849469c63f97a3d6a1c7d015",
+          "root_theorem": "Zeta23.OPICAFollowup.joint_recovery_noise_bound"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_JOINT_RECOVERY_OPTIMAL_NORM",
+          "external_boundary_count": 358,
+          "external_boundary_sha256": "1d1faa2674103090971a0b6a23e169207620380da2e54f1135c721fd7559fdf4",
+          "local_dependency_count": 10,
+          "local_dependency_sha256": "6ba96fdb4b5467e3b2ac84637a992c7850b6905cdde904e0cf9a50cca677bb50",
+          "root_theorem": "Zeta23.OPICAFollowup.joint_recovery_optimal_norm"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_LAGUERRE_TAIL_NORM",
+          "external_boundary_count": 868,
+          "external_boundary_sha256": "28df7a3cf2f92c99c6cebd1c5be74f4766987cf944f5f0793769a4ddc883ae57",
+          "local_dependency_count": 38,
+          "local_dependency_sha256": "b2af9366109480c751e080a397ae08a827db342fcc3e986b87afa7b252ede78a",
+          "root_theorem": "Zeta23.OPICAFollowup.laguerre_tail_norm"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_LAURENT_COEFFICIENT_ERROR_BOUND",
+          "external_boundary_count": 487,
+          "external_boundary_sha256": "c0dfc869563ce01ca078258ac438054469d77b190ac9b1eb5dc6466a23848ef8",
+          "local_dependency_count": 18,
+          "local_dependency_sha256": "d9e1b0ad207fae325a2175995081836eb1c2c654f6c96540ee2b001dded40c8b",
+          "root_theorem": "Zeta23.OPICAFollowup.laurent_coefficient_error_bound"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_LAURENT_OBSERVATION_SURVIVES",
+          "external_boundary_count": 503,
+          "external_boundary_sha256": "ff870342197cf6f65ca782d1ba82b40b4f59a7879db68e1d45ac3185a1403033",
+          "local_dependency_count": 19,
+          "local_dependency_sha256": "b011bd367c541cec6eec3c4e2cce38031072baebea4d86a3c70d6ad4f13c4f3c",
+          "root_theorem": "Zeta23.OPICAFollowup.laurent_observation_survives"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_LOG_FOURIER_PLANCHEREL",
+          "external_boundary_count": 869,
+          "external_boundary_sha256": "4c3535c8a1a406a48ed5cbf8e129c60400bcb611a8528e0befd2b9e8c412d446",
+          "local_dependency_count": 22,
+          "local_dependency_sha256": "b022ce4bbfafe7bf02bc5c46a3b3d405c7c2727a8189b074b0491a1103023a5f",
+          "root_theorem": "Zeta23.OPICAFollowup.log_fourier_plancherel"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_LOG_SLACK_BOTH_LOW_MASKS_SUBEXP",
+          "external_boundary_count": 2786,
+          "external_boundary_sha256": "7726a555c7b5f0cb9a8aa754e2a90895519018e20383567d248e29118f11f129",
+          "local_dependency_count": 712,
+          "local_dependency_sha256": "da59acefbc2f65d3833029a1c80ed0ff10a202fd82610785bfbea36a53214e81",
+          "root_theorem": "Zeta23.OPICAFollowup.log_slack_both_low_masks_subexp"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_LOG_SLACK_MASKED_ENERGY_RATE_DIFFERENCE",
+          "external_boundary_count": 2883,
+          "external_boundary_sha256": "d44d412b82e001005dffd12cbb3862470208ea354f442da4969890d9ec082715",
+          "local_dependency_count": 819,
+          "local_dependency_sha256": "d9f862f0af5993e0396056275550ad874855c46dab42a686294e743a20b75d27",
+          "root_theorem": "Zeta23.OPICAFollowup.log_slack_masked_energy_rate_difference"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_LOG_SLACK_NATIVE_DECOMPOSITION",
+          "external_boundary_count": 985,
+          "external_boundary_sha256": "f75e3a2a9bc77e62ec54d81ad3cd7149205898883ebe734d9e8ea6dd6e492f4c",
+          "local_dependency_count": 191,
+          "local_dependency_sha256": "aca4d151ceb39c7d3e16bc58afaaafb6a4bcbf0d75ff7dda2befd41f3ffbde13",
+          "root_theorem": "Zeta23.OPICAFollowup.log_slack_native_decomposition"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_LOG_SLACK_TYPEI_ERROR",
+          "external_boundary_count": 2634,
+          "external_boundary_sha256": "4cd5a08ce8dc573e30fe3b9ab00d5e53332d5526d89d4a528a271ca8a360c5c5",
+          "local_dependency_count": 599,
+          "local_dependency_sha256": "c267d8aa59799affa4b21745e9cf6560838a186c8b9b0457e07dda0ae77450b3",
+          "root_theorem": "Zeta23.OPICAFollowup.log_slack_typeI_error"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_LOG_UNITARY_FORM_IDENTITY",
+          "external_boundary_count": 849,
+          "external_boundary_sha256": "41f0490c7464fd2590113e7af0c8bc9071ca18d15d0abab63493ccfd2d040e23",
+          "local_dependency_count": 43,
+          "local_dependency_sha256": "5769d53ea54cd1e7974d74c337fb296492ceccbfbaea8f6789c0ca2be80366fe",
+          "root_theorem": "Zeta23.OPICAFollowup.log_unitary_form_identity"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NATIVEGENERATOR_TRANSFORM",
+          "external_boundary_count": 1661,
+          "external_boundary_sha256": "2de832993ae5bded94b8dffe7afbb8c84320110a7a0e84074133bc2f558ba649",
+          "local_dependency_count": 456,
+          "local_dependency_sha256": "d66f5e1cf0d94ed881c7d129955cdec97d4be7e2a6bceac8e45286ad22635e14",
+          "root_theorem": "Zeta23.OPICAFollowup.nativeGenerator_transform"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NATIVEGENERATOR_UNIT_OR_COMPLETION",
+          "external_boundary_count": 826,
+          "external_boundary_sha256": "ca2f671c53b8813f4aa6625156d65f662b368b3ef7339a95f35355a2180d4a30",
+          "local_dependency_count": 86,
+          "local_dependency_sha256": "18108aea7207cdb3006ac6a738004dc1bd696cc90b9ca541bc53abf2284959aa",
+          "root_theorem": "Zeta23.OPICAFollowup.nativeGenerator_unit_or_completion"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NATIVEPRIMEFIELD_VISIBLEPOLE",
+          "external_boundary_count": 1701,
+          "external_boundary_sha256": "56578718cf1cfe069b7c6a6d7a91f7a0ec1bd73f708e7b497f9022787e17e9a2",
+          "local_dependency_count": 312,
+          "local_dependency_sha256": "48ef1200f6931798ce68ab48f25ab46c8fce4eb250ce46f6c23f30b998e0f5f2",
+          "root_theorem": "Zeta23.OPICAFollowup.nativePrimeField_visiblePole"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NATIVEWORD_CONTOUR_CONSUMER",
+          "external_boundary_count": 2161,
+          "external_boundary_sha256": "53eb819fe6e4f69c05f9ce66afc9388cdfe330a462d92ae882e98eaa791e4f8c",
+          "local_dependency_count": 730,
+          "local_dependency_sha256": "ac537f541593efc3be030365fa981266f82f1b873a1b0d50d34edbed23e79dc8",
+          "root_theorem": "Zeta23.OPICAFollowup.nativeWord_contour_consumer"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NATIVEWORD_CORRECTED_TRANSFORM",
+          "external_boundary_count": 2056,
+          "external_boundary_sha256": "275169d2cdecf86eb13b85a0b8db4446b5bb347de51a3356ff368fea9a44dff5",
+          "local_dependency_count": 663,
+          "local_dependency_sha256": "65125e9ef741f87d73ba77a0f3a3747576f43091d388009118c6b9b7438baea7",
+          "root_theorem": "Zeta23.OPICAFollowup.nativeWord_corrected_transform"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NATIVEWORD_FACTOR_COSTS",
+          "external_boundary_count": 1860,
+          "external_boundary_sha256": "50dc232caa759c4d1abe0ad2996f75838c9abe1d8773ca4b44b3982a05a9d736",
+          "local_dependency_count": 442,
+          "local_dependency_sha256": "8132a920490005c6de3565b150eb747411c8a824c1cd288d2a333ee5045f1256",
+          "root_theorem": "Zeta23.OPICAFollowup.nativeWord_factor_costs"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NATIVEWORD_FIRST_NONZERO_DERIVATIVE",
+          "external_boundary_count": 1821,
+          "external_boundary_sha256": "54c154946ee3e38f673d9959ae47bda9a9af36607f6432b271ad02df3af1d141",
+          "local_dependency_count": 426,
+          "local_dependency_sha256": "25a8beb5a30cf261d77e839fd3537adf3e64247253c2488be72c1a90d2f512e5",
+          "root_theorem": "Zeta23.OPICAFollowup.nativeWord_first_nonzero_derivative"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NATIVEWORD_ORDER_AND_LEADING",
+          "external_boundary_count": 1838,
+          "external_boundary_sha256": "a0084d78c731b2acbd5f4d3920e6630c40cd5e682c9e5cd0b3af556a878de33a",
+          "local_dependency_count": 428,
+          "local_dependency_sha256": "aa85f6f207efe55180fca64d352964efc3c266f6e5c694e96d1beca6cce25262",
+          "root_theorem": "Zeta23.OPICAFollowup.nativeWord_order_and_leading"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NATIVE_AUXILIARY_TAIL_RESIDUAL_LOWER",
+          "external_boundary_count": 2572,
+          "external_boundary_sha256": "c221be79250541749f3427fb805381202ba97c16e2a64c3f717b28d7a371cf3d",
+          "local_dependency_count": 831,
+          "local_dependency_sha256": "f253d26d367533af5bb7e15b5a3ab05fb8254e3a77ad3ff3de3f234447a50cf2",
+          "root_theorem": "Zeta23.OPICAFollowup.native_auxiliary_tail_residual_lower"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NATIVE_AUXILIARY_TOP_MOMENT",
+          "external_boundary_count": 2284,
+          "external_boundary_sha256": "240928012b5bde9b7d984ef5ced6efc229bfb52ed9206e1e8e9325e5bbe84395",
+          "local_dependency_count": 637,
+          "local_dependency_sha256": "6efba2ac5cb077f33c119191cd569de95218a5fc3166468035ae110bd29022db",
+          "root_theorem": "Zeta23.OPICAFollowup.native_auxiliary_top_moment"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NATIVE_BINOMIAL_INVERSE_IDENTITY",
+          "external_boundary_count": 417,
+          "external_boundary_sha256": "d32afacc83d1e42245942bc55b4a57100c080ccf6b2f1375346cd8ff4cd0195f",
+          "local_dependency_count": 33,
+          "local_dependency_sha256": "675439de54ed12835f01621e95a679c54d350c9604d0d4f5b6a3b734d2ac150e",
+          "root_theorem": "Zeta23.OPICAFollowup.native_binomial_inverse_identity"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NATIVE_FIELD_THETA_ENVELOPE",
+          "external_boundary_count": 3312,
+          "external_boundary_sha256": "1f9bbcb2f44fd57dae278a73c186fd703b9ab42b0c51ad1ac1f94e2a10d06f85",
+          "local_dependency_count": 934,
+          "local_dependency_sha256": "7be3bed8f4c03207c08b52989cbd49cce71ce0d3a788bdb4c9e018583697cec9",
+          "root_theorem": "Zeta23.OPICAFollowup.native_field_theta_envelope"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NATIVE_FIXED_SOURCE_WINDOW_RATE",
+          "external_boundary_count": 3857,
+          "external_boundary_sha256": "cced832dddceaf32c5e133eaae31b0dbb76201c8a03c8abc5438880e2d87d784",
+          "local_dependency_count": 1549,
+          "local_dependency_sha256": "e1d1d4167ba09d3b2c23ba105fcf62eb4b8d069680cc613bbcd117791bda67bc",
+          "root_theorem": "Zeta23.OPICAFollowup.native_fixed_source_window_rate"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NATIVE_FORCED_RESOLVENT_UNIQUE",
+          "external_boundary_count": 2461,
+          "external_boundary_sha256": "93051fef6119a39b05bd536b89d79515f4d2fa2ea2fe0492fb516f3a28c92e14",
+          "local_dependency_count": 433,
+          "local_dependency_sha256": "6673562ef3bc5191ecf183fe7f574ef0e8483c4e2deb56243aa151167156d2c7",
+          "root_theorem": "Zeta23.OPICAFollowup.native_forced_resolvent_unique"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NATIVE_PROFILE_SPECTRAL_NORMS",
+          "external_boundary_count": 2939,
+          "external_boundary_sha256": "a6843703d4732f19182dd740adca2f3cdc6583ce14f39d5e31fdc8f75aefa80e",
+          "local_dependency_count": 737,
+          "local_dependency_sha256": "c0a1e052e75e6d5077401ece08389d90731bd6023da33de280a70f151b633197",
+          "root_theorem": "Zeta23.OPICAFollowup.native_profile_spectral_norms"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NATIVE_SAMPLE_STIELTJES_IDENTITY",
+          "external_boundary_count": 2875,
+          "external_boundary_sha256": "78553bcd1ab5d77e8cc393d288296537dacfa1af60375f7ed04138b023bcf0e8",
+          "local_dependency_count": 702,
+          "local_dependency_sha256": "139c7f8ec3e57ae47068cb27714046ba1bbd03f774be251603c4dc759b026b13",
+          "root_theorem": "Zeta23.OPICAFollowup.native_sample_stieltjes_identity"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NATIVE_SAMPLING_FORM_POSITIVE",
+          "external_boundary_count": 2681,
+          "external_boundary_sha256": "9afb38e1432d3571ff13653e1edd52bd2ffc455c9a9dec0aa40d2f1a7f3b1bad",
+          "local_dependency_count": 553,
+          "local_dependency_sha256": "f8b7234d4a75fb79b9ef5ee11a4ac9acbc37e5568cd3f9aea3b48f32f1e6222c",
+          "root_theorem": "Zeta23.OPICAFollowup.native_sampling_form_positive"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NATIVE_SAMPLING_GRAM_IDENTITY",
+          "external_boundary_count": 2512,
+          "external_boundary_sha256": "d867c8990c2fbe5b98816272a0b234df9f372d41337291f29b509ede7ed8f55d",
+          "local_dependency_count": 497,
+          "local_dependency_sha256": "b0133564803437ae8376ccfcca6663c7af45e15d738ad90a1f080c1cc0da21b4",
+          "root_theorem": "Zeta23.OPICAFollowup.native_sampling_gram_identity"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NATIVE_SLOW_SOURCE_WINDOW_RATE",
+          "external_boundary_count": 3856,
+          "external_boundary_sha256": "c36868d000d16844cff7cdf23084d805251167c52389da71ad215a18b28889e3",
+          "local_dependency_count": 1548,
+          "local_dependency_sha256": "28a946f34199f73dee2bb42a31adb81bdcd712791785f52fabd44a101fd9df21",
+          "root_theorem": "Zeta23.OPICAFollowup.native_slow_source_window_rate"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NATIVE_SOURCE_EXPLICIT_FORMULA",
+          "external_boundary_count": 3237,
+          "external_boundary_sha256": "15d2d8243c870ccbb3c0b661e5c973216b52def56aa724a613a79dd491a66372",
+          "local_dependency_count": 854,
+          "local_dependency_sha256": "412d210589a38654734f497b2d9d0d020ba0268f5fd6aefe59a063c60520d5e6",
+          "root_theorem": "Zeta23.OPICAFollowup.native_source_explicit_formula"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NATIVE_TERMINAL_MEMORY_LOWER",
+          "external_boundary_count": 2566,
+          "external_boundary_sha256": "74d3967fc7039bcc7163462d7fd70e693a784b23099bdd2a0663500a5e06f427",
+          "local_dependency_count": 823,
+          "local_dependency_sha256": "2c42241504c2134e6da3b5302898b5b6a6e1e2ee96f58bf8434e9323b44a4859",
+          "root_theorem": "Zeta23.OPICAFollowup.native_terminal_memory_lower"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NATIVE_ZERO_COUNT_SUMMABILITY",
+          "external_boundary_count": 1965,
+          "external_boundary_sha256": "03482388ca80c98c346e41d8cfd59526d2350190606a28b4ca13ab8110773b5a",
+          "local_dependency_count": 227,
+          "local_dependency_sha256": "5828acb9bd0dd4bb46cedf748cec7880f39e7a83ef851154dc6d4d64ce3ca529",
+          "root_theorem": "Zeta23.OPICAFollowup.native_zero_count_summability"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NATIVE_ZERO_SUP_BOUNDS",
+          "external_boundary_count": 732,
+          "external_boundary_sha256": "888071efdd135bd76db60e6f4ce3c9875b8adf12b428f21deff8b9a0c4c79db3",
+          "local_dependency_count": 51,
+          "local_dependency_sha256": "87966f60b162f045753bd95b3b84bf5107527013392704695952242cee1e63d6",
+          "root_theorem": "Zeta23.OPICAFollowup.native_zero_sup_bounds"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NEAR_GAP_CONTROLLED_LIMIT_ZERO",
+          "external_boundary_count": 1363,
+          "external_boundary_sha256": "267c1d26cf48b4b2a34b6aed20439a14c0d74f506e5ea88f448fffc9044f114d",
+          "local_dependency_count": 151,
+          "local_dependency_sha256": "fce3b040776054741ed9a2d0a840fe246d664d626ec2627085d970640bfc696f",
+          "root_theorem": "Zeta23.OPICAFollowup.near_gap_controlled_limit_zero"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NEAR_GAP_MASS_BOUND",
+          "external_boundary_count": 1096,
+          "external_boundary_sha256": "f1d4d3de301804b665f5bdfd74e160c5722d3fb2cfd5151d7d2e07b569ea1f8f",
+          "local_dependency_count": 109,
+          "local_dependency_sha256": "cd57ae72f74a8688542f5a939621b13f759ad1b5ebbe59a2cb95e71312a9ae40",
+          "root_theorem": "Zeta23.OPICAFollowup.near_gap_mass_bound"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NORM_FIRST_LOG_COMPARISON",
+          "external_boundary_count": 287,
+          "external_boundary_sha256": "c1aa9afadb0aa5a2e028ac0475cfefa23349cdaa4a5fe8a0791bf2813bf16499",
+          "local_dependency_count": 5,
+          "local_dependency_sha256": "68e48d163aab8507f96ddd27b4956fe0c237c2b15d3d8d5cc28af39e8c81eafc",
+          "root_theorem": "Zeta23.OPICAFollowup.norm_first_log_comparison"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NORM_FIRST_RATE_TRANSFER",
+          "external_boundary_count": 412,
+          "external_boundary_sha256": "e7808fdf5eaa46a1294d9723ed319a1cad9a9f8ff236bd25ab947bac587f6ebf",
+          "local_dependency_count": 18,
+          "local_dependency_sha256": "b618427a17f5c2c7daaee947a43033a35486ba52a7fdfaf6eec5545ca80d2ea3",
+          "root_theorem": "Zeta23.OPICAFollowup.norm_first_rate_transfer"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NORM_FIRST_STRICTLY_WEAKER_CONTROL",
+          "external_boundary_count": 527,
+          "external_boundary_sha256": "c98d8b4d483688a26e23afb02627c1ba43d6d9233abd527cca2abcfa9b30aaee",
+          "local_dependency_count": 26,
+          "local_dependency_sha256": "577b385b38e4e216cc49ade6107a93a4158271ef00cb874628450fe6eb1842c2",
+          "root_theorem": "Zeta23.OPICAFollowup.norm_first_strictly_weaker_control"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_PROFILE_JET_CONFLUENT_DETERMINANT",
+          "external_boundary_count": 611,
+          "external_boundary_sha256": "aba5c60a00c73666f0b6c5fdce54111bf9936cb81e6ce8cf87bae6a981120097",
+          "local_dependency_count": 54,
+          "local_dependency_sha256": "752978d7c4655ce35f9e00062aa1cd94e06b178c9e57e3e5cff1974aab59e771",
+          "root_theorem": "Zeta23.OPICAFollowup.profile_jet_confluent_determinant"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_QUIET_BALANCED_OBSERVATION_IMPLIES_NATIVE_CUT",
+          "external_boundary_count": 4192,
+          "external_boundary_sha256": "f8f385c8c96e36e07b8869232596c204431258f2d3e7c6fcbceb92ff280d45cb",
+          "local_dependency_count": 2230,
+          "local_dependency_sha256": "7ec63d836c01d07dd6e672ccc7ac7207dcff54b2e62f363aa2b07f2eaac45094",
+          "root_theorem": "Zeta23.OPICAFollowup.quiet_balanced_observation_implies_native_cut"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_RECOVERY_SUBEXP_BUDGET",
+          "external_boundary_count": 261,
+          "external_boundary_sha256": "5a23be6d8dcc112301a9bc0580b5c73cb067fa141fe54cdeb62aaa44112a1bb2",
+          "local_dependency_count": 8,
+          "local_dependency_sha256": "de43bd24d56e24be3227c2fdc4946b6a36fddaa74f78f1b492a2f48577b186ce",
+          "root_theorem": "Zeta23.OPICAFollowup.recovery_subexp_budget"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_RENORMALIZED_COPOISSON_ORDER_ZERO",
+          "external_boundary_count": 2194,
+          "external_boundary_sha256": "1ec1b7b65fd10785dfe987f36a35ed6b55996c35f770b4c4f812e6c209eeb01e",
+          "local_dependency_count": 333,
+          "local_dependency_sha256": "762075945a98578a7ed10c3e9ca9ee9d4b0a131e4d8da1552e8d895196e0452f",
+          "root_theorem": "Zeta23.OPICAFollowup.renormalized_copoisson_order_zero"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_RENORMALIZED_COPOISSON_TEMPERED_FAMILY",
+          "external_boundary_count": 1184,
+          "external_boundary_sha256": "460a38db3790972aad92971baf4d1cbdadbcee5f7d8e01ba08a92585eccb6a53",
+          "local_dependency_count": 137,
+          "local_dependency_sha256": "000b6c794160e86cd4e117e33706dcc346638440cab5b7bfee0c0db3c29f2b95",
+          "root_theorem": "Zeta23.OPICAFollowup.renormalized_copoisson_tempered_family"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_SAWTOOTH_ACTUAL_MELLIN_FOURIER",
+          "external_boundary_count": 1272,
+          "external_boundary_sha256": "5ea298069e44e361856ae8184e00b7686bfcb4ffeb5b14dfd6c1433e340aefc9",
+          "local_dependency_count": 65,
+          "local_dependency_sha256": "684676727376fe813ed176687d4f2d50e22faf256dde419744d41230d191f01f",
+          "root_theorem": "Zeta23.OPICAFollowup.sawtooth_actual_mellin_fourier"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_SAWTOOTH_INTEGRABLE_FORCE_IDENTITY",
+          "external_boundary_count": 1330,
+          "external_boundary_sha256": "944f0971f27383f21ae1f62f2c470e350117a262a1b6b7bd2aa0415933043d57",
+          "local_dependency_count": 75,
+          "local_dependency_sha256": "f31ee8c64a3a621b40d07dac0f134edf8b93ff4c0dc265a9dbdde5fcc057c274",
+          "root_theorem": "Zeta23.OPICAFollowup.sawtooth_integrable_force_identity"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_SAWTOOTH_NORM_WEIGHTED_ZETA_MOMENT",
+          "external_boundary_count": 1532,
+          "external_boundary_sha256": "9c105d3c06c4dd239a54999fbdf34170a74544ab18c0a4adc22e8c36dc5e146b",
+          "local_dependency_count": 92,
+          "local_dependency_sha256": "da680a2144d83553e4331fde3d2c81317ec50e8a240f76c58e95fd94e4b2c36b",
+          "root_theorem": "Zeta23.OPICAFollowup.sawtooth_norm_weighted_zeta_moment"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_SOURCEFAMILY_LAPLACE_IDENTITY",
+          "external_boundary_count": 1619,
+          "external_boundary_sha256": "a3016ded4e892d0cd6b2f3cb6630521dfecafb0b465325b4a6a13c913881fb85",
+          "local_dependency_count": 279,
+          "local_dependency_sha256": "4a393eeacde24b5dfe36423e0687559945c64f58fe6198adba5256797dd70153",
+          "root_theorem": "Zeta23.OPICAFollowup.sourceFamily_laplace_identity"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_SOURCEFAMILY_SUPPORT_SMOOTH_MOMENTS",
+          "external_boundary_count": 1436,
+          "external_boundary_sha256": "d0f4d82085397d71efb7f01687fa6bc2e4595b3e5a1bc382435bd382ba7ef86d",
+          "local_dependency_count": 230,
+          "local_dependency_sha256": "f51d8f53a5661b503d713a0f95065744c9f3e4eef7bb2e7019230bd0171869eb",
+          "root_theorem": "Zeta23.OPICAFollowup.sourceFamily_support_smooth_moments"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_SOURCEFAMILY_ZERO_EQ_ORIGINAL",
+          "external_boundary_count": 101,
+          "external_boundary_sha256": "379f11bb18da6e7914fb2fb1fdb26f8555194e564875f1e3cad84abdc06cc2ef",
+          "local_dependency_count": 35,
+          "local_dependency_sha256": "5b50ed997b26f2ac1a03b2e95633d0b4e5df1391c11c0893c6aa0958bbd1da70",
+          "root_theorem": "Zeta23.OPICAFollowup.sourceFamily_zero_eq_original"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_SOURCE_ORDER_UNIFORM_NORMS",
+          "external_boundary_count": 1749,
+          "external_boundary_sha256": "91483aca78382d787fbd2c6a717f9ae32ba4a6fd3253fe19a167518170ca5528",
+          "local_dependency_count": 356,
+          "local_dependency_sha256": "18386178ab65c56edff9d92ffcd7c26a10c3ff7fc8b12ac3b6fa489b2a8447ec",
+          "root_theorem": "Zeta23.OPICAFollowup.source_order_uniform_norms"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_SOURCE_PRODUCT_VERTICAL_BOUND",
+          "external_boundary_count": 720,
+          "external_boundary_sha256": "01ebf509baf29a12739410222f2fe166700518ae7d9622d369dcf3c14d21cce7",
+          "local_dependency_count": 36,
+          "local_dependency_sha256": "f41f2663794f72b69a9e53b46c805cf13731cb5b8734f038b7db2b68ac0777d3",
+          "root_theorem": "Zeta23.OPICAFollowup.source_product_vertical_bound"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_SQUARE_DEFECT_ORIGIN_POSITIVE",
+          "external_boundary_count": 451,
+          "external_boundary_sha256": "0aaae89e3b9f43ba818650d1a4ca475984bdf700c1e755b4a38d82e36c48a9da",
+          "local_dependency_count": 7,
+          "local_dependency_sha256": "8d943140d13db9b5d53f505cbde41ba0329e655400203c9e7e72eb3f23d3af52",
+          "root_theorem": "Zeta23.OPICAFollowup.square_defect_origin_positive"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_SQUARE_FOURIER_DEFECT",
+          "external_boundary_count": 1203,
+          "external_boundary_sha256": "1d5cb23e6bcbf99552205d01c5a137fff8f3adc66b90295bb98f1fde76bbda0e",
+          "local_dependency_count": 104,
+          "local_dependency_sha256": "d73da4818c22fda24fea157cf57b8c42749aba56f64be49157909a8884ff09c5",
+          "root_theorem": "Zeta23.OPICAFollowup.square_fourier_defect"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_SQUARE_NO_LATTICE_REPAIR",
+          "external_boundary_count": 1307,
+          "external_boundary_sha256": "e56515412e49197443eea998fed36c2f5f7844392aea453f18b0252add974fa3",
+          "local_dependency_count": 111,
+          "local_dependency_sha256": "6002c880c79539706d2b9d8b6d2480929fe47b71d585ac2a80c0a322adf6460c",
+          "root_theorem": "Zeta23.OPICAFollowup.square_no_lattice_repair"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_SQUARE_SELFDUAL_PROJECTION_FILLS_GAP",
+          "external_boundary_count": 1252,
+          "external_boundary_sha256": "67ac62eb41165ca9bf372987d4074fd3a17d0db1231da464f541512b66421773",
+          "local_dependency_count": 118,
+          "local_dependency_sha256": "81ab5171966788eda2ddaa83050d7b15baa4113b5598312683d999b629da18e4",
+          "root_theorem": "Zeta23.OPICAFollowup.square_selfdual_projection_fills_gap"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_STEP123_WORD_JET_CONSUMER",
+          "external_boundary_count": 2321,
+          "external_boundary_sha256": "37418a39a6a20af777d9d2c0a691d5edeaaece10a8a8d717b29788ab8783a870",
+          "local_dependency_count": 972,
+          "local_dependency_sha256": "33c42321a3d3652ef45c0d31a3b6a7948cb99d493f00d62bd47071b32471b6bf",
+          "root_theorem": "Zeta23.OPICAFollowup.step123_word_jet_consumer"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_WEIGHTED_GAP_LEAKAGE",
+          "external_boundary_count": 1853,
+          "external_boundary_sha256": "409381a35ae6f4dad48a41969926bcd329f14d519d9bfd87646343627de09584",
+          "local_dependency_count": 275,
+          "local_dependency_sha256": "fbc93928245b4544153762ab7d25c43f48280a7bfae601538abd4c1ae0aa47bc",
+          "root_theorem": "Zeta23.OPICAFollowup.weighted_gap_leakage"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_WEIGHTED_MIXTURE_EXISTS_FOURIER",
+          "external_boundary_count": 1248,
+          "external_boundary_sha256": "dcdb76b8c423ff8aec68a75c52a48b8df93a87071999fe431f404b92d2a5a0b6",
+          "local_dependency_count": 188,
+          "local_dependency_sha256": "f9f6e5396a59bd722ff39c213dacddc009ef455a5e2ebdece9735920e9154fea",
+          "root_theorem": "Zeta23.OPICAFollowup.weighted_mixture_exists_fourier"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_WEIGHTED_MIXTURE_SHARP_GAP",
+          "external_boundary_count": 1797,
+          "external_boundary_sha256": "13d6774bc84c49e19fbe8615a4c6644de1fbfd915508502cd366d59fdbd5fbc8",
+          "local_dependency_count": 295,
+          "local_dependency_sha256": "9c22796527f8d74e23e2373961caf7eb839bb4e45c5b8b4ea48ac395c2e10be1",
+          "root_theorem": "Zeta23.OPICAFollowup.weighted_mixture_sharp_gap"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_WEIGHTED_MOBIUS_INVERSE",
+          "external_boundary_count": 1545,
+          "external_boundary_sha256": "ea2a9df3422efc52ea019a1fa7807bf0809fdbcf2fe28477908547b7af99a993",
+          "local_dependency_count": 199,
+          "local_dependency_sha256": "5e8c4d12189252fdb93688a05fbb43c513c8b1059bb8c0c47cb127e6e2d05379",
+          "root_theorem": "Zeta23.OPICAFollowup.weighted_mobius_inverse"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_ZERO_MEASURE_EXACT_PROPERTIES",
+          "external_boundary_count": 2255,
+          "external_boundary_sha256": "d345423a43d15ebdd27d314aa27651627f6c17a25dd93a3f940ad3b650769b81",
+          "local_dependency_count": 388,
+          "local_dependency_sha256": "ff4fe829fdd280e72beaf7985ffe8cd816b1c6c1a4a435924efd531b8d0e9bca",
+          "root_theorem": "Zeta23.OPICAFollowup.zero_measure_exact_properties"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_ZERO_MEASURE_FIRST_CELL_SIGN",
+          "external_boundary_count": 592,
+          "external_boundary_sha256": "bdcec7170795c05bf3b21e4f7ab11d3f04498563d421a0aab73a8baf24b6344a",
+          "local_dependency_count": 17,
+          "local_dependency_sha256": "046d7bfeb12864489bfbbc6fce84345f8f6d33d753b3f2660d532050523a2298",
+          "root_theorem": "Zeta23.OPICAFollowup.zero_measure_first_cell_sign"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_ZERO_PROFILE_FORCED_EULER",
+          "external_boundary_count": 1512,
+          "external_boundary_sha256": "6c95c5a396babe54ccb4ded6455838a0f53bc4d45492e6d40e5ebfa77240fb83",
+          "local_dependency_count": 151,
+          "local_dependency_sha256": "6046f3f75aba3ff81295faf2542f0f78ee1a1a60f77a292b6fedeec0ee6fcd7e",
+          "root_theorem": "Zeta23.OPICAFollowup.zero_profile_forced_euler"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_ZERO_PROFILE_NOT_HOMOGENEOUS_OPERATOR_VECTOR",
+          "external_boundary_count": 2034,
+          "external_boundary_sha256": "d83c40cff92702e0005c45bedc11d0533f303a610828b8285698beeb6a223114",
+          "local_dependency_count": 289,
+          "local_dependency_sha256": "ae808b27b094907a98ad32390ce816268347278793bcb247ec47e61a0c723cdc",
+          "root_theorem": "Zeta23.OPICAFollowup.zero_profile_not_homogeneous_operator_vector"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_ZERO_PROFILE_REGULAR_SELFDUAL",
+          "external_boundary_count": 2397,
+          "external_boundary_sha256": "0eba20cd36733e292e742f5263e9f7972bf5e75c5c81afc8d13e9f4e80486837",
+          "local_dependency_count": 444,
+          "local_dependency_sha256": "49ed78f47c16010a422393723bb9ed117f62e416728bc273c77f691f099defd1",
+          "root_theorem": "Zeta23.OPICAFollowup.zero_profile_regular_selfdual"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_ZERO_PROFILE_TAIL_AND_JUMPS",
+          "external_boundary_count": 1701,
+          "external_boundary_sha256": "8f9c09837a6c8c67697da8f37298781ba8d290bd42156db4c22989f654457495",
+          "local_dependency_count": 194,
+          "local_dependency_sha256": "65709ac351fb15d66eb234b73fc93d31f10ef5a9f71f938b4a809baab3fa0ee3",
+          "root_theorem": "Zeta23.OPICAFollowup.zero_profile_tail_and_jumps"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_ZETA_LEFT_LINE_UNIFORM_BOUND",
+          "external_boundary_count": 1253,
+          "external_boundary_sha256": "a12fb47e17dc8e0b444a0e9fd59baec9093ba8b5b0a8b292fdcf63f394519281",
+          "local_dependency_count": 74,
+          "local_dependency_sha256": "0b152a377bfde78a854d1ea99cb85237cb9a14633ec9cf546583407d45a1d992",
+          "root_theorem": "Zeta23.OPICAFollowup.zeta_left_line_uniform_bound"
+        },
+        {
           "claim_id": "OPICA_H1_SIGNED_SHARP_GAP_SEPARATOR",
           "external_boundary_count": 1120,
           "external_boundary_sha256": "8d1789070cadb0a1a29b2900280c097d674f97cfbd4f6ee77567d1d236e86ed7",
@@ -5733,6 +8133,806 @@
           "local_dependency_count": 3,
           "local_dependency_sha256": "33a796297455af68e2450eebf86f82a2ee354a501e27cba861c6116e91b67207",
           "root_theorem": "Zeta23.OPICA.quiet_cofinal_rate_zero"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_ACTUAL_FORCE_SAMPLING_CONSUMER",
+          "external_boundary_count": 225,
+          "external_boundary_sha256": "7d4ff067dd535a62bc8e9c460b7240f2da5a70f59f2f07099a6db6ab959125b4",
+          "local_dependency_count": 37,
+          "local_dependency_sha256": "be9fe7e6371fd48c985ef9c89b96087ac9debae7cbeeb88e8a0b987f9c3372cf",
+          "root_theorem": "Zeta23.OPICAFollowup.actual_force_sampling_consumer"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_ACTUAL_ZERO_MEASURE_SPAN_CONSUMER",
+          "external_boundary_count": 246,
+          "external_boundary_sha256": "51b85e6da318290b1e8882a22b9516fde45f7a5ff8edfef3790f680e54d04555",
+          "local_dependency_count": 87,
+          "local_dependency_sha256": "5b79ea0079f0618359e57186c88be2e0e60992e5921c3d5fa0a79365b9eb0104",
+          "root_theorem": "Zeta23.OPICAFollowup.actual_zero_measure_span_consumer"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_APPROX_COMPATIBILITY_LEFT_NULL",
+          "external_boundary_count": 100,
+          "external_boundary_sha256": "4b4981fbed9511454e673783a3f5a06deeab8c89bb0b9128ee198412a5f86ba0",
+          "local_dependency_count": 1,
+          "local_dependency_sha256": "1cabc1dae7ce338c2361c0ec0488fdde1b0accdbb5c2198885ea6c5dc612d4b8",
+          "root_theorem": "Zeta23.OPICAFollowup.approx_compatibility_left_null"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_ARITHMETIC_STIELTJES_HOLOMORPHIC",
+          "external_boundary_count": 140,
+          "external_boundary_sha256": "0fad957bfb2de55c7342ea1d8750ef19971ccb0cfc4a879adb233170a627c831",
+          "local_dependency_count": 7,
+          "local_dependency_sha256": "d7420b4d6793b08ac538271cde83e99ffe510c666a7091345c830a714e087a88",
+          "root_theorem": "Zeta23.OPICAFollowup.arithmetic_stieltjes_holomorphic"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_ARITHMETIC_STIELTJES_SIGN_BUDGET",
+          "external_boundary_count": 87,
+          "external_boundary_sha256": "c39c64b67c78b7db5d56dc20bbb640171ad2ac2eb5bcb6b1f3fe70a6c71c9b8f",
+          "local_dependency_count": 6,
+          "local_dependency_sha256": "5b88f04161101d16028a85b44499addea842dde05164386d2df9b79ff1bc0fe8",
+          "root_theorem": "Zeta23.OPICAFollowup.arithmetic_stieltjes_sign_budget"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_AUX_COMPLETION_ACTUAL_TRANSFORM",
+          "external_boundary_count": 100,
+          "external_boundary_sha256": "303ae404d1fcaa8b60d984c15ffb587fa852b24f04b34e8a97492b0b6e892ec9",
+          "local_dependency_count": 11,
+          "local_dependency_sha256": "b3e770712973c50391a1fcf3a0b75ade2e4abaf1f0f056017756b8a609d07179",
+          "root_theorem": "Zeta23.OPICAFollowup.aux_completion_actual_transform"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_AUX_COMPLETION_RATIO_BOUNDS",
+          "external_boundary_count": 102,
+          "external_boundary_sha256": "4ca128bc70a43ab6d6353d2903ffd30a2395f1a5fe76f8e1a9fc701519b52178",
+          "local_dependency_count": 21,
+          "local_dependency_sha256": "e96c245b0e376f018b297350fb3feede8a9e2e40a0750bb20d71f0bcd835571e",
+          "root_theorem": "Zeta23.OPICAFollowup.aux_completion_ratio_bounds"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_AUX_COMPLETION_UNIFORM_DECAY",
+          "external_boundary_count": 104,
+          "external_boundary_sha256": "88538010a0ca331de195490f6ad3adbdb3b835a28615ab3f0ee84d69d78f1d0e",
+          "local_dependency_count": 11,
+          "local_dependency_sha256": "039fd6bb857642979afc54c9f73115e3ed59a764da6af853912b525d264b095d",
+          "root_theorem": "Zeta23.OPICAFollowup.aux_completion_uniform_decay"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_BALANCED_COEFF_DIVISOR_BOUND",
+          "external_boundary_count": 77,
+          "external_boundary_sha256": "d00c7177b1a083d54e83a5e46891fc070ccfb30171d278c4ee2aa47b013d94fe",
+          "local_dependency_count": 13,
+          "local_dependency_sha256": "509fdacf5a966929f582536840151759f0eba3945622e1d9c51eff7b7e350820",
+          "root_theorem": "Zeta23.OPICAFollowup.balanced_coeff_divisor_bound"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_COMPLEX_LOCAL_MEASURE_EMBEDDING_FAITHFUL",
+          "external_boundary_count": 219,
+          "external_boundary_sha256": "f54660f105f9d44bf349ff6e2d88e44bce5a3d2cc91cb842bf9a9d06e8345c78",
+          "local_dependency_count": 51,
+          "local_dependency_sha256": "e14fb7a02c977c251e0535ad7c0ab2bc007882663d35a973bf18a384dabb8e57",
+          "root_theorem": "Zeta23.OPICAFollowup.complex_local_measure_embedding_faithful"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_COPOISSON_ZERO_JETS_MEASURES",
+          "external_boundary_count": 310,
+          "external_boundary_sha256": "5ca2ff64a9747f51d727578dcb5e847b41ef5445595f7cb664608a6079f176a8",
+          "local_dependency_count": 96,
+          "local_dependency_sha256": "2154d20623276ea6b96363cdd92c90b2c8306c39c1b34f7b0a1bd138b5310f28",
+          "root_theorem": "Zeta23.OPICAFollowup.copoisson_zero_jets_measures"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_COUPLED_GRAM_COLLISION_CONTROL",
+          "external_boundary_count": 112,
+          "external_boundary_sha256": "be51b2a219622bdde894e9f18a76231ca14c8e6e55edbcd3611330ec1af4012a",
+          "local_dependency_count": 8,
+          "local_dependency_sha256": "c2dc1d95c51651f689537fc9176790ac82b4efe362313d81a1f2f6c23f0073ab",
+          "root_theorem": "Zeta23.OPICAFollowup.coupled_gram_collision_control"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_DILATED_COMB_FOURIER",
+          "external_boundary_count": 140,
+          "external_boundary_sha256": "084dc814bd14d4bfdb0961dd4368038d61c0ac9ca0c9b61d69f11a0655a9f62d",
+          "local_dependency_count": 26,
+          "local_dependency_sha256": "34c6d4de6a875b4ea0032a7996a817c6171db210249a029d57b4d6ef96109cf8",
+          "root_theorem": "Zeta23.OPICAFollowup.dilated_comb_fourier"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_DILATION_NEAR_GAP_FAMILY",
+          "external_boundary_count": 211,
+          "external_boundary_sha256": "0ff617e5077a2d445d1300d992539ab888a79cc1167960fa5fb4a496a8b2f0ec",
+          "local_dependency_count": 45,
+          "local_dependency_sha256": "1f6bd8178b6adaed00b8113516bb4652aee98e0e80c50c2baccb81b59fdf6006",
+          "root_theorem": "Zeta23.OPICAFollowup.dilation_near_gap_family"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_DILATION_NORMALIZED_LIMIT_NOT_MEASURE",
+          "external_boundary_count": 212,
+          "external_boundary_sha256": "1872faafabe9259fa4f8261e135659a2c791b621f786b4e255aa83083e6a6410",
+          "local_dependency_count": 41,
+          "local_dependency_sha256": "210037c0721c015d8530ccfdea2592bec541c88fe15c4b1a505c5019b9316f20",
+          "root_theorem": "Zeta23.OPICAFollowup.dilation_normalized_limit_not_measure"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_ENERGY_ALLOCATION_BOUND",
+          "external_boundary_count": 40,
+          "external_boundary_sha256": "121420709f56265563f7e12daffb8ca765fe7c4c9e227c04f53d0ff83a77570a",
+          "local_dependency_count": 0,
+          "local_dependency_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "root_theorem": "Zeta23.OPICAFollowup.energy_allocation_bound"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_ENERGY_ALLOCATION_RATE_LOWER",
+          "external_boundary_count": 66,
+          "external_boundary_sha256": "cd4d20d6fd4271e47e337f53ae8ef038e6773138f7265a6a17ca8bb5ca955bfd",
+          "local_dependency_count": 8,
+          "local_dependency_sha256": "40fdf81c5f2debc0ce368a92466ef89d1035b61503b49eab61ef33c2f5b7f50c",
+          "root_theorem": "Zeta23.OPICAFollowup.energy_allocation_rate_lower"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_FINITE_SUM_EULER_MACLAURIN_UNIFORM",
+          "external_boundary_count": 131,
+          "external_boundary_sha256": "f373f83bac2c951d8624d34108edfce178c467ba96c3ead5d212991f78964c41",
+          "local_dependency_count": 8,
+          "local_dependency_sha256": "6fc6b603a071caf7ab0a907ded3a68c0fc0ea0e682158b08350b96dfb26367d4",
+          "root_theorem": "Zeta23.OPICAFollowup.finite_sum_euler_maclaurin_uniform"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_FINITE_ZERO_JET_INDEPENDENT",
+          "external_boundary_count": 210,
+          "external_boundary_sha256": "d3da0bfa78bcb2d8922d7527396e8b4b34126f2d1160d5fed3165e475136e89b",
+          "local_dependency_count": 61,
+          "local_dependency_sha256": "860877dbd77b649aceacf9132af72fe85753ff223af92dd16240df7715c37774",
+          "root_theorem": "Zeta23.OPICAFollowup.finite_zero_jet_independent"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_FINITE_ZERO_SPAN_POSITIVE_ONLY_ZERO",
+          "external_boundary_count": 230,
+          "external_boundary_sha256": "48172aaaf04cca210ea6620cc3e471e2077b17a16c38167ed31435ea71e5bafd",
+          "local_dependency_count": 79,
+          "local_dependency_sha256": "3101b232a92c9337b5c1651fe2a39633cc9330cb9022d21b0c0186209c35eb25",
+          "root_theorem": "Zeta23.OPICAFollowup.finite_zero_span_positive_only_zero"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_FIRST_CELL_NEGATIVE_MASS_COST",
+          "external_boundary_count": 83,
+          "external_boundary_sha256": "80e4fc17dc3935dd7cccb6f5b3bd03165c49f07fbeb818b8c33101cfd5b60f38",
+          "local_dependency_count": 15,
+          "local_dependency_sha256": "31e760c3f7ee749961b273c1eca97bd4d2fe7515bc74f7f09cc9b0098e9813ba",
+          "root_theorem": "Zeta23.OPICAFollowup.first_cell_negative_mass_cost"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_FIXED_BASIS_NEGATIVE_MASS_BUDGET",
+          "external_boundary_count": 240,
+          "external_boundary_sha256": "3f040ae455c11ba29277225fd22e06749812b3a14cb3cfc11c47a615c1b62bc4",
+          "local_dependency_count": 79,
+          "local_dependency_sha256": "0b3a375aa0b6535b0813e623f9c8ec851c3b58b5dc9a10c6b30579cd916b3d37",
+          "root_theorem": "Zeta23.OPICAFollowup.fixed_basis_negative_mass_budget"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_FIXED_TWO_FACTOR_MASK_RATE_THETA",
+          "external_boundary_count": 222,
+          "external_boundary_sha256": "15d29a28076f24d2eb17254cef519c180facb60ed3949af14bc5cc4aa483c960",
+          "local_dependency_count": 99,
+          "local_dependency_sha256": "05263225ab7f0a58c87c00d7e4bc43c7ec12f56309c70b4825345e5a04c6a0c6",
+          "root_theorem": "Zeta23.OPICAFollowup.fixed_two_factor_mask_rate_theta"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_FIXED_TWO_FACTOR_PREPARATION",
+          "external_boundary_count": 174,
+          "external_boundary_sha256": "553009aa5debff4aa8f0a721d4ecca4722034b623ca12716ff1226e0a58e0991",
+          "local_dependency_count": 62,
+          "local_dependency_sha256": "657f2a7290cdd755e8b56fe5f618f5fb44bf10b3a07b01be1e5c15fd7a31aadb",
+          "root_theorem": "Zeta23.OPICAFollowup.fixed_two_factor_preparation"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_FORCED_POSITIVE_GRAM_NONREAL_CONTROL",
+          "external_boundary_count": 75,
+          "external_boundary_sha256": "0c40aa3aa5268b68cb7e451da9bbc6bb42edb9d7c63190dabc6854fca0db9323",
+          "local_dependency_count": 5,
+          "local_dependency_sha256": "d74509ef87f3f6ef84aa24993988684a1e4b25acc76e0dbddda31a12687e89ee",
+          "root_theorem": "Zeta23.OPICAFollowup.forced_positive_gram_nonreal_control"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_FORWARDKERNEL_DOUBLE_EXP_DECAY",
+          "external_boundary_count": 108,
+          "external_boundary_sha256": "73f0ff403c004c00029c505d6a4c795bf7ebc243ff69cae10c1dbabdf0e92ce1",
+          "local_dependency_count": 34,
+          "local_dependency_sha256": "3de0fb270956bd6aabe0868b5ab1c5761cebdfffe4d5cf06443cdb4d4ed9e505",
+          "root_theorem": "Zeta23.OPICAFollowup.forwardKernel_double_exp_decay"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_FORWARDKERNEL_LEFT_CONTOUR_BUDGET",
+          "external_boundary_count": 121,
+          "external_boundary_sha256": "3cae2384d097505d2390bc462dcad3cf66f675ce7b046e0d1b12b05467d33da5",
+          "local_dependency_count": 31,
+          "local_dependency_sha256": "82e507854e81cce1261e652cc1fd91bc0f2b52f63dd0d56c3cacbab9de00bcbb",
+          "root_theorem": "Zeta23.OPICAFollowup.forwardKernel_left_contour_budget"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_FORWARDKERNEL_PHYSICAL_LAPLACE",
+          "external_boundary_count": 137,
+          "external_boundary_sha256": "a3efac8b440b3382b70e782633ce8a03427907a634ce4c2fd842cc2510fa6796",
+          "local_dependency_count": 41,
+          "local_dependency_sha256": "c8d5513985de9159f3846f1ad8c727e6539a7adf25199a0b4d23210d334a1949",
+          "root_theorem": "Zeta23.OPICAFollowup.forwardKernel_physical_laplace"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_GENERIC_BOUNDARY_AMPLITUDE",
+          "external_boundary_count": 82,
+          "external_boundary_sha256": "dcf4bf6302e800b7c65514879b84d8f8a00de1c86d6a75e8064cfc02668b740d",
+          "local_dependency_count": 10,
+          "local_dependency_sha256": "a1762e2f727a8fd50fcff7d4612e65042f91187462aa0eb889f84a93a2b29848",
+          "root_theorem": "Zeta23.OPICAFollowup.generic_boundary_amplitude"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_GENERIC_FORCED_PROFILE_UNIQUE",
+          "external_boundary_count": 206,
+          "external_boundary_sha256": "47a4ff56add9c61982b1c3b0f01f50ceaf641348a9dc38a8c2aa559598ca0ae9",
+          "local_dependency_count": 37,
+          "local_dependency_sha256": "0ca3448571609f7caf0750d4289dc7a3f2f8299e0bf87358f38da1397e5b30db",
+          "root_theorem": "Zeta23.OPICAFollowup.generic_forced_profile_unique"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_HISTORY_RECOVERY_COST_CONTROL",
+          "external_boundary_count": 186,
+          "external_boundary_sha256": "b8a7b78f3dc48eb046e526400d7cb9eb80fb6446d7e669e87121a626f9cb0746",
+          "local_dependency_count": 24,
+          "local_dependency_sha256": "b004930b1b41e46d5ac1ae26a12e34b12f5321d98248634285b91d22ba268cba",
+          "root_theorem": "Zeta23.OPICAFollowup.history_recovery_cost_control"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_JOINT_RECOVERY_IFF",
+          "external_boundary_count": 72,
+          "external_boundary_sha256": "5142ca930c7db438b87e3b51744656be2059ec4eed53fcbb76ea6c19732e3dc2",
+          "local_dependency_count": 4,
+          "local_dependency_sha256": "bacd6f7b3758ddc49412cd19f098e4c331150ddf849469c63f97a3d6a1c7d015",
+          "root_theorem": "Zeta23.OPICAFollowup.joint_recovery_iff"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_JOINT_RECOVERY_NOISE_BOUND",
+          "external_boundary_count": 90,
+          "external_boundary_sha256": "0c1dc0278c2c342ccd50993b74555dc4d1c1ee062fe236c37c174bd611840660",
+          "local_dependency_count": 4,
+          "local_dependency_sha256": "bacd6f7b3758ddc49412cd19f098e4c331150ddf849469c63f97a3d6a1c7d015",
+          "root_theorem": "Zeta23.OPICAFollowup.joint_recovery_noise_bound"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_JOINT_RECOVERY_OPTIMAL_NORM",
+          "external_boundary_count": 105,
+          "external_boundary_sha256": "ad139538b2181d54297efb974531d72f3c0db4a89ee3bcd17a5db2a6c92e8dec",
+          "local_dependency_count": 4,
+          "local_dependency_sha256": "bacd6f7b3758ddc49412cd19f098e4c331150ddf849469c63f97a3d6a1c7d015",
+          "root_theorem": "Zeta23.OPICAFollowup.joint_recovery_optimal_norm"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_LAGUERRE_TAIL_NORM",
+          "external_boundary_count": 140,
+          "external_boundary_sha256": "b8aa38baec0b502dfb77565a7cf0694951cba47bbe3d154cd12b1c56315819fc",
+          "local_dependency_count": 7,
+          "local_dependency_sha256": "b740219168cea23c1a7675102542d8e5ce2b4986f618b56f93ac782f716cf6ef",
+          "root_theorem": "Zeta23.OPICAFollowup.laguerre_tail_norm"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_LAURENT_COEFFICIENT_ERROR_BOUND",
+          "external_boundary_count": 106,
+          "external_boundary_sha256": "a91b2377633b1170488afce92d588a08d6284ec34811d12a1c944009ca9236be",
+          "local_dependency_count": 5,
+          "local_dependency_sha256": "17fca65934c491d2e3c1844d5887fa80cecc06f2c010b55eb5ef35d1309df6f5",
+          "root_theorem": "Zeta23.OPICAFollowup.laurent_coefficient_error_bound"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_LAURENT_OBSERVATION_SURVIVES",
+          "external_boundary_count": 107,
+          "external_boundary_sha256": "b36d199ad96ee16a0abfece6190ed92e53f795fc482d54ca8cb6cea307ce8158",
+          "local_dependency_count": 5,
+          "local_dependency_sha256": "17fca65934c491d2e3c1844d5887fa80cecc06f2c010b55eb5ef35d1309df6f5",
+          "root_theorem": "Zeta23.OPICAFollowup.laurent_observation_survives"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_LOG_FOURIER_PLANCHEREL",
+          "external_boundary_count": 106,
+          "external_boundary_sha256": "2f95a434eac3d0769ee3006bd0a6d1ecce7029826ed007897560c205213646fb",
+          "local_dependency_count": 3,
+          "local_dependency_sha256": "14c3db5abda6bc42906380eaf27d1e422d6e0768b6894cfee2406e32b4d0a81d",
+          "root_theorem": "Zeta23.OPICAFollowup.log_fourier_plancherel"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_LOG_SLACK_BOTH_LOW_MASKS_SUBEXP",
+          "external_boundary_count": 188,
+          "external_boundary_sha256": "02369a3d82824a97c2e575a735590b245dc4f38d9e9bd28476671fef5ecf54bf",
+          "local_dependency_count": 91,
+          "local_dependency_sha256": "2a7db6ff15eeaed855e7e0b7dbcb201403dae62a6c4ff1884c5a81a5df383a65",
+          "root_theorem": "Zeta23.OPICAFollowup.log_slack_both_low_masks_subexp"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_LOG_SLACK_MASKED_ENERGY_RATE_DIFFERENCE",
+          "external_boundary_count": 187,
+          "external_boundary_sha256": "2778ae29894625f202a5e159d430bc24d35647151c6b052720ccc5169e2bbc46",
+          "local_dependency_count": 89,
+          "local_dependency_sha256": "ef0ed3f66983bf9b2860eae661a2450faec4077dd7294a961a03acb090507efd",
+          "root_theorem": "Zeta23.OPICAFollowup.log_slack_masked_energy_rate_difference"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_LOG_SLACK_NATIVE_DECOMPOSITION",
+          "external_boundary_count": 174,
+          "external_boundary_sha256": "bfdda39b89b3f1f5327082b589ade8ec9d21fbf6a24e5efe88e14c62214bc122",
+          "local_dependency_count": 62,
+          "local_dependency_sha256": "657f2a7290cdd755e8b56fe5f618f5fb44bf10b3a07b01be1e5c15fd7a31aadb",
+          "root_theorem": "Zeta23.OPICAFollowup.log_slack_native_decomposition"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_LOG_SLACK_TYPEI_ERROR",
+          "external_boundary_count": 157,
+          "external_boundary_sha256": "cf5f8e087256b1b0079edbcb47f9c05b0fb30824c9bf1f8e07c46b35500a5116",
+          "local_dependency_count": 45,
+          "local_dependency_sha256": "0ac28656b83e29982a363a39a32a82db0d50cbe7e11fb0afa4d412ca5e0258d1",
+          "root_theorem": "Zeta23.OPICAFollowup.log_slack_typeI_error"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_LOG_UNITARY_FORM_IDENTITY",
+          "external_boundary_count": 85,
+          "external_boundary_sha256": "2e2b3d3f88e5a0b3f1f056a7009a2afb5031d98a9b0365c944b496e615530cd2",
+          "local_dependency_count": 8,
+          "local_dependency_sha256": "74b6c2765ad7744d845eaf185a11731df4095d14d086406cc2ccb18d562af996",
+          "root_theorem": "Zeta23.OPICAFollowup.log_unitary_form_identity"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NATIVEGENERATOR_TRANSFORM",
+          "external_boundary_count": 220,
+          "external_boundary_sha256": "afc796fb0b90e8d22a51cdbfea06e143fa3b44b7db2a0faf0823e10bf3ea0531",
+          "local_dependency_count": 145,
+          "local_dependency_sha256": "437ebe5aa36943c02a0103636a963aa639101ee3bab7e0af418d4323ec1caf28",
+          "root_theorem": "Zeta23.OPICAFollowup.nativeGenerator_transform"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NATIVEGENERATOR_UNIT_OR_COMPLETION",
+          "external_boundary_count": 111,
+          "external_boundary_sha256": "2fd5ea6501b3ccf2fbc4eea9943821535007d7fffbabbe0ec6b78382a6214fcf",
+          "local_dependency_count": 44,
+          "local_dependency_sha256": "e75890e9b87a18217c71d826baddccc093cefd529ff4329a9a057bd68eb64969",
+          "root_theorem": "Zeta23.OPICAFollowup.nativeGenerator_unit_or_completion"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NATIVEPRIMEFIELD_VISIBLEPOLE",
+          "external_boundary_count": 143,
+          "external_boundary_sha256": "5d44affd068bb35857f46d6c15b193819a90a3d74543bee247c08738e5f15843",
+          "local_dependency_count": 50,
+          "local_dependency_sha256": "d860da33ef45e7648fb93166031e5e8c828c511a9576ffa26add66559ed2311f",
+          "root_theorem": "Zeta23.OPICAFollowup.nativePrimeField_visiblePole"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NATIVEWORD_CONTOUR_CONSUMER",
+          "external_boundary_count": 287,
+          "external_boundary_sha256": "c939b15a0ba80305fdd47f7cb75faa13adf078ebf48b6a85d41586b5153e50b8",
+          "local_dependency_count": 200,
+          "local_dependency_sha256": "f7884a0118f2cafb683e08f5dcaa5de4ecb00e329bb0af6b8c9c9253660c9439",
+          "root_theorem": "Zeta23.OPICAFollowup.nativeWord_contour_consumer"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NATIVEWORD_CORRECTED_TRANSFORM",
+          "external_boundary_count": 266,
+          "external_boundary_sha256": "fefc3bff7dc6b5fdd187259e2aef6089725ad7e86ab89793c7df9907c567c1c8",
+          "local_dependency_count": 210,
+          "local_dependency_sha256": "d2e6770dc02cf9fc813c3bc41a2b8f40fc2ccd5215847ac53e1068b104784cc3",
+          "root_theorem": "Zeta23.OPICAFollowup.nativeWord_corrected_transform"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NATIVEWORD_FACTOR_COSTS",
+          "external_boundary_count": 235,
+          "external_boundary_sha256": "c0879b5f75b9c4418704378e70bd46fb565d0d17c78979aa48a6aeb85530a0fd",
+          "local_dependency_count": 116,
+          "local_dependency_sha256": "13f52958c75ae3f4d92f5e8b6ce84958f6f5d34addd012657a4e526006ef46b4",
+          "root_theorem": "Zeta23.OPICAFollowup.nativeWord_factor_costs"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NATIVEWORD_FIRST_NONZERO_DERIVATIVE",
+          "external_boundary_count": 241,
+          "external_boundary_sha256": "bf3090d8907591b412fe99d49fdcc3a0b9168ec2ea41561adbb0bb4be7372902",
+          "local_dependency_count": 132,
+          "local_dependency_sha256": "30c285da2670ba7c2e463343aa0569e31a779cae7d30dca59cd04237fd436950",
+          "root_theorem": "Zeta23.OPICAFollowup.nativeWord_first_nonzero_derivative"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NATIVEWORD_ORDER_AND_LEADING",
+          "external_boundary_count": 251,
+          "external_boundary_sha256": "fbd782d3e367fc261da2d43fb9a6695f5a5f90c7cfba02456b24b6511ae10dc4",
+          "local_dependency_count": 130,
+          "local_dependency_sha256": "f2ab7d0e9fb2153dfbd89961bb295f940799d62e254d359d291c5ccae6a07394",
+          "root_theorem": "Zeta23.OPICAFollowup.nativeWord_order_and_leading"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NATIVE_AUXILIARY_TAIL_RESIDUAL_LOWER",
+          "external_boundary_count": 246,
+          "external_boundary_sha256": "b70ba0660f33947f5cd9d4819346b7fbdec80becb2558ed0df5c80cc31fb346e",
+          "local_dependency_count": 94,
+          "local_dependency_sha256": "30e2d92ef82d65f0892cfa0e45be82d828ce3cfd9439ccd9e27b69f3bb516f78",
+          "root_theorem": "Zeta23.OPICAFollowup.native_auxiliary_tail_residual_lower"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NATIVE_AUXILIARY_TOP_MOMENT",
+          "external_boundary_count": 246,
+          "external_boundary_sha256": "fcb4b4ebde24e9a3887eb6af46c659a1446f9b7bfff1e9fe752fd5e5b01ad1d4",
+          "local_dependency_count": 84,
+          "local_dependency_sha256": "7d5ff1d9875b384e2d2b5cd8907b48bc513a7970f30fec6a1ca9844b7bb5641a",
+          "root_theorem": "Zeta23.OPICAFollowup.native_auxiliary_top_moment"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NATIVE_BINOMIAL_INVERSE_IDENTITY",
+          "external_boundary_count": 92,
+          "external_boundary_sha256": "6b6e943ff97f9a4fc943eb09aa6892f9c2298bd589a1e010edfd4796489036fb",
+          "local_dependency_count": 18,
+          "local_dependency_sha256": "e5b598b8c7d3440e2ed7bb1ba2167c9a9475eed21e51fb84f1a0b99795f92530",
+          "root_theorem": "Zeta23.OPICAFollowup.native_binomial_inverse_identity"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NATIVE_FIELD_THETA_ENVELOPE",
+          "external_boundary_count": 164,
+          "external_boundary_sha256": "668b14398ed33b3512acea80b93834a2c97ac13cfa39c75d8494d2c82fd8cda0",
+          "local_dependency_count": 67,
+          "local_dependency_sha256": "bd21fe0d2544339bd5ccd26f1443c7c7cb9025a4d579e1084c859804a4c344a9",
+          "root_theorem": "Zeta23.OPICAFollowup.native_field_theta_envelope"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NATIVE_FIXED_SOURCE_WINDOW_RATE",
+          "external_boundary_count": 151,
+          "external_boundary_sha256": "a6ecca7a1891543615dfe35b7675eed430a7378ddf400edb3967ceccf3d5628a",
+          "local_dependency_count": 49,
+          "local_dependency_sha256": "d1a6020053fc2ba42c13c899bcaea8711d3710ad63fd81b4659197551246b1d4",
+          "root_theorem": "Zeta23.OPICAFollowup.native_fixed_source_window_rate"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NATIVE_FORCED_RESOLVENT_UNIQUE",
+          "external_boundary_count": 188,
+          "external_boundary_sha256": "56fad0ff6f823538ba17b2a4c39538d80fdad3b725c5f9ec3eec460f9cc6dba4",
+          "local_dependency_count": 31,
+          "local_dependency_sha256": "74ba756fad2efa64c978307fcbf3a9cc2f1c792b6dcf250caf477ebf4c81c34e",
+          "root_theorem": "Zeta23.OPICAFollowup.native_forced_resolvent_unique"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NATIVE_PROFILE_SPECTRAL_NORMS",
+          "external_boundary_count": 130,
+          "external_boundary_sha256": "50c1f0a02f6bb69ab17068e9fd7fde3b9dcb8bf5fa1cdc21661e65381c4ae019",
+          "local_dependency_count": 23,
+          "local_dependency_sha256": "3a78982dab396863675f6448850d8a1158cc93af7bd46b6340641c3c74f06f66",
+          "root_theorem": "Zeta23.OPICAFollowup.native_profile_spectral_norms"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NATIVE_SAMPLE_STIELTJES_IDENTITY",
+          "external_boundary_count": 127,
+          "external_boundary_sha256": "8e17336c4b06cf954ac136e7f000043d773e4ca0814f6aa99d7f734f1f6f94a0",
+          "local_dependency_count": 26,
+          "local_dependency_sha256": "0c6f56833e136c5cedb9e4cc9f18cddbeffe9fcec3614f77f87011768b156e85",
+          "root_theorem": "Zeta23.OPICAFollowup.native_sample_stieltjes_identity"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NATIVE_SAMPLING_FORM_POSITIVE",
+          "external_boundary_count": 118,
+          "external_boundary_sha256": "0d84e9f274f224daac165d64c1e7d0b00e5c598353d4f37eba856d5e1ff7a0f7",
+          "local_dependency_count": 11,
+          "local_dependency_sha256": "ba3a30c7f1d82834428787dd00ebf09aea12bb93279d912c25540511bf65bd9f",
+          "root_theorem": "Zeta23.OPICAFollowup.native_sampling_form_positive"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NATIVE_SAMPLING_GRAM_IDENTITY",
+          "external_boundary_count": 112,
+          "external_boundary_sha256": "4c48db29a072c3d24d722be223e884d682ef69c9429f9c5b6401f231cce6c9bb",
+          "local_dependency_count": 15,
+          "local_dependency_sha256": "1b443e4948d2a3f42e01c156444e24ef54ae66ff043993fe8348e51274976d5b",
+          "root_theorem": "Zeta23.OPICAFollowup.native_sampling_gram_identity"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NATIVE_SLOW_SOURCE_WINDOW_RATE",
+          "external_boundary_count": 152,
+          "external_boundary_sha256": "297ab88e6f4e42ec89a147e89635ee46f67a7c67858ce03ff239f331e08d4b53",
+          "local_dependency_count": 49,
+          "local_dependency_sha256": "d1a6020053fc2ba42c13c899bcaea8711d3710ad63fd81b4659197551246b1d4",
+          "root_theorem": "Zeta23.OPICAFollowup.native_slow_source_window_rate"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NATIVE_SOURCE_EXPLICIT_FORMULA",
+          "external_boundary_count": 142,
+          "external_boundary_sha256": "6d3ae97d6aa51b5787c561f7b4a2f22f6d4d499e61f29f9404f12fabf2588cf7",
+          "local_dependency_count": 54,
+          "local_dependency_sha256": "9f47c8c17c419ca68cbaec1cf91b685565ea7d787a00bf3e556e2cbf8cd1d9bb",
+          "root_theorem": "Zeta23.OPICAFollowup.native_source_explicit_formula"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NATIVE_TERMINAL_MEMORY_LOWER",
+          "external_boundary_count": 246,
+          "external_boundary_sha256": "e0a768d62f6138102722091c4ef2312ff50e08c3775302c02a8e47bd942e7735",
+          "local_dependency_count": 83,
+          "local_dependency_sha256": "448402a60be9f4a2026c5dc6ab3b3257412ed07857491eb9970e69d393660e1c",
+          "root_theorem": "Zeta23.OPICAFollowup.native_terminal_memory_lower"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NATIVE_ZERO_COUNT_SUMMABILITY",
+          "external_boundary_count": 82,
+          "external_boundary_sha256": "005dddfdea4de20f5de2d6b5ec6e4c30db6c99660fd801331bf28962d7c8e7d6",
+          "local_dependency_count": 19,
+          "local_dependency_sha256": "82a413aad5b3c333036ffa157c0cbee1356c0b03ca5e34f327f4b1d11a8c4939",
+          "root_theorem": "Zeta23.OPICAFollowup.native_zero_count_summability"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NATIVE_ZERO_SUP_BOUNDS",
+          "external_boundary_count": 71,
+          "external_boundary_sha256": "f22eceda46a1a5d041d550da35f6d30c557ccc7831fa9b0e5bafa5996f14e46e",
+          "local_dependency_count": 19,
+          "local_dependency_sha256": "5f4f522b1410c10fe50a7fe90b1b56418a3ac0a0a4e66378fe2c1b56c76b11bc",
+          "root_theorem": "Zeta23.OPICAFollowup.native_zero_sup_bounds"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NEAR_GAP_CONTROLLED_LIMIT_ZERO",
+          "external_boundary_count": 104,
+          "external_boundary_sha256": "f04f913efa765aa405f7b75acbd33c2ed1c682d3a486afad75c3cc1f7fc41aa9",
+          "local_dependency_count": 20,
+          "local_dependency_sha256": "9413b1f27925c64e65fdd7383449cfdc958504a99ca8b079a2bcb66f81f68184",
+          "root_theorem": "Zeta23.OPICAFollowup.near_gap_controlled_limit_zero"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NEAR_GAP_MASS_BOUND",
+          "external_boundary_count": 118,
+          "external_boundary_sha256": "642062a8caebbccf4349bb9de8c654861741ebadb25e45530f9990a9ef3febfc",
+          "local_dependency_count": 19,
+          "local_dependency_sha256": "5f6f557dcf63ed5ced25a7d864e814bab186a4c7a6fc6e7dd2b8bab412b154ba",
+          "root_theorem": "Zeta23.OPICAFollowup.near_gap_mass_bound"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NORM_FIRST_LOG_COMPARISON",
+          "external_boundary_count": 43,
+          "external_boundary_sha256": "434b4fcd03d17c49b6d18992b8ebc35fa30b40a0d27fd7b80ef7660fb89afeaf",
+          "local_dependency_count": 0,
+          "local_dependency_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "root_theorem": "Zeta23.OPICAFollowup.norm_first_log_comparison"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NORM_FIRST_RATE_TRANSFER",
+          "external_boundary_count": 64,
+          "external_boundary_sha256": "98d7a2a0a9fe2ce1a28543f9ee675e0e686a3d62f996684048473766d3ed1ea6",
+          "local_dependency_count": 8,
+          "local_dependency_sha256": "40fdf81c5f2debc0ce368a92466ef89d1035b61503b49eab61ef33c2f5b7f50c",
+          "root_theorem": "Zeta23.OPICAFollowup.norm_first_rate_transfer"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_NORM_FIRST_STRICTLY_WEAKER_CONTROL",
+          "external_boundary_count": 52,
+          "external_boundary_sha256": "1c6208391e68a82e91f40047f5964b4355f82ca2825610cb9fc9df8553abb7fb",
+          "local_dependency_count": 10,
+          "local_dependency_sha256": "e094e21ac4eb0da2ebde2b81fbcd1f1f795d2f886702f57d429e9878f5f4ade5",
+          "root_theorem": "Zeta23.OPICAFollowup.norm_first_strictly_weaker_control"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_PROFILE_JET_CONFLUENT_DETERMINANT",
+          "external_boundary_count": 78,
+          "external_boundary_sha256": "0cc6e5c4b48d8939c0d39d375d3346d8835e0e77892ade4c89726dca9b094979",
+          "local_dependency_count": 7,
+          "local_dependency_sha256": "155465668005d2090e80c27bf6f3634b0ea399e48f5c500df0429d095933fe32",
+          "root_theorem": "Zeta23.OPICAFollowup.profile_jet_confluent_determinant"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_QUIET_BALANCED_OBSERVATION_IMPLIES_NATIVE_CUT",
+          "external_boundary_count": 244,
+          "external_boundary_sha256": "57fe4e3b38a7b3c025891b603503cfa965e56ee51656efc315268f55b7e2cd21",
+          "local_dependency_count": 107,
+          "local_dependency_sha256": "f1f576a5d69d92fab290d723877782f5e64fe6b16967507c4f910c17073c750e",
+          "root_theorem": "Zeta23.OPICAFollowup.quiet_balanced_observation_implies_native_cut"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_RECOVERY_SUBEXP_BUDGET",
+          "external_boundary_count": 70,
+          "external_boundary_sha256": "f998753cf91809b81ad0f061a7a6a422dd527f09ab167e87447d2e87c545d3f7",
+          "local_dependency_count": 6,
+          "local_dependency_sha256": "9a973d4cc045769986c89f6501143f4ea2ab2cb3eb19f22889c43e6a5645fb9b",
+          "root_theorem": "Zeta23.OPICAFollowup.recovery_subexp_budget"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_RENORMALIZED_COPOISSON_ORDER_ZERO",
+          "external_boundary_count": 264,
+          "external_boundary_sha256": "5a7d751aee8f5a05644d8fb66d6c4c4a345f11ecde5d9d336475266ad27aa92a",
+          "local_dependency_count": 70,
+          "local_dependency_sha256": "ae30ea73295bf59c7f727beb528c38e0c7713fa1886dd15a7490ef037dec5f3c",
+          "root_theorem": "Zeta23.OPICAFollowup.renormalized_copoisson_order_zero"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_RENORMALIZED_COPOISSON_TEMPERED_FAMILY",
+          "external_boundary_count": 251,
+          "external_boundary_sha256": "d80583fd15dfd8b2f62107bae174dbef0052fbbe8cf88a5cebf55431db562f6b",
+          "local_dependency_count": 46,
+          "local_dependency_sha256": "050f379bd9f6c7447b33954bf930cb6ceef545fa167aed9b9361ac64cd4ef882",
+          "root_theorem": "Zeta23.OPICAFollowup.renormalized_copoisson_tempered_family"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_SAWTOOTH_ACTUAL_MELLIN_FOURIER",
+          "external_boundary_count": 176,
+          "external_boundary_sha256": "90546b38e93b512cff530cc018ed137db3f2e4cf5862c08f5a803e9e51cb1858",
+          "local_dependency_count": 11,
+          "local_dependency_sha256": "72549c493d39fe2b8a4c72aedfa307f8d40d49edcf5ce1e49650dd1d6ca7b769",
+          "root_theorem": "Zeta23.OPICAFollowup.sawtooth_actual_mellin_fourier"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_SAWTOOTH_INTEGRABLE_FORCE_IDENTITY",
+          "external_boundary_count": 177,
+          "external_boundary_sha256": "4e6c0693d82136b1a5d3435b4ffe2665be96d403bf627babc1b0eeca946418aa",
+          "local_dependency_count": 10,
+          "local_dependency_sha256": "8af052ee7911bd5733cbbb9f46217715c69971e602c2261d0ed0b45b8484a725",
+          "root_theorem": "Zeta23.OPICAFollowup.sawtooth_integrable_force_identity"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_SAWTOOTH_NORM_WEIGHTED_ZETA_MOMENT",
+          "external_boundary_count": 185,
+          "external_boundary_sha256": "cf9003889245c477b819ad65f6b8e5e8ab7d7d3375a84d8a829427ab9633e20b",
+          "local_dependency_count": 12,
+          "local_dependency_sha256": "64ddb52b0b8ca0aa9366f4884f2b132a538f19d009ddb02b29ac0c6955161dff",
+          "root_theorem": "Zeta23.OPICAFollowup.sawtooth_norm_weighted_zeta_moment"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_SOURCEFAMILY_LAPLACE_IDENTITY",
+          "external_boundary_count": 138,
+          "external_boundary_sha256": "dc9dcab3c1b2a72d495e4f0903dc61f833ff4681d09165bb8495b984a0c938bb",
+          "local_dependency_count": 45,
+          "local_dependency_sha256": "8b62b023a8b8bfe9d7a1ab27b96adb6c05d3f91735e3d2352c57d996d295967a",
+          "root_theorem": "Zeta23.OPICAFollowup.sourceFamily_laplace_identity"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_SOURCEFAMILY_SUPPORT_SMOOTH_MOMENTS",
+          "external_boundary_count": 121,
+          "external_boundary_sha256": "81db1226c7741b393037a983e567caf1454a822aa0771370ef3c8990ef4287a7",
+          "local_dependency_count": 37,
+          "local_dependency_sha256": "bd10d422609d218e359a4d7c688cd643987fa79fa595ebbdf145bdb8963f9a1c",
+          "root_theorem": "Zeta23.OPICAFollowup.sourceFamily_support_smooth_moments"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_SOURCEFAMILY_ZERO_EQ_ORIGINAL",
+          "external_boundary_count": 100,
+          "external_boundary_sha256": "cf69a838e26cc29df2ed72f794a249fb2d7cd58628075ed1f95030feb52f8889",
+          "local_dependency_count": 35,
+          "local_dependency_sha256": "5b50ed997b26f2ac1a03b2e95633d0b4e5df1391c11c0893c6aa0958bbd1da70",
+          "root_theorem": "Zeta23.OPICAFollowup.sourceFamily_zero_eq_original"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_SOURCE_ORDER_UNIFORM_NORMS",
+          "external_boundary_count": 143,
+          "external_boundary_sha256": "497d62a3562e0ee790305f83b54cbcd24e0230dc2ea52773bb7adf5214fe881d",
+          "local_dependency_count": 34,
+          "local_dependency_sha256": "e394e3e8469a89be5060d4d5378e4b3842de8153299d51ff3aa5e55ef9120827",
+          "root_theorem": "Zeta23.OPICAFollowup.source_order_uniform_norms"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_SOURCE_PRODUCT_VERTICAL_BOUND",
+          "external_boundary_count": 62,
+          "external_boundary_sha256": "155e62a5047c91a29447dd73ad9c15af8726d677363587e95e6634c03d19b1b3",
+          "local_dependency_count": 10,
+          "local_dependency_sha256": "e03c4801c68f5d60f3ed02676138d9a6da9fc2a0c6dfede141acb0ebdd018a0d",
+          "root_theorem": "Zeta23.OPICAFollowup.source_product_vertical_bound"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_SQUARE_DEFECT_ORIGIN_POSITIVE",
+          "external_boundary_count": 81,
+          "external_boundary_sha256": "ecc1119e85912a301e5f7ca44403aaa373d022ac162305f78d7ad0e0fabc8c3c",
+          "local_dependency_count": 2,
+          "local_dependency_sha256": "ce5dcf53437f131ba020b193889f57324fa30da6bfc02261f7ae253970be22c6",
+          "root_theorem": "Zeta23.OPICAFollowup.square_defect_origin_positive"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_SQUARE_FOURIER_DEFECT",
+          "external_boundary_count": 113,
+          "external_boundary_sha256": "e2df5c69cd68b42cf4cbb12e20ce3820e0e650c1a1fd1eedac5d53319d2b8ade",
+          "local_dependency_count": 3,
+          "local_dependency_sha256": "1bf01428e7c28f4bdc20fd80e1be96d42bad00d13387bfb795b997459962dcb0",
+          "root_theorem": "Zeta23.OPICAFollowup.square_fourier_defect"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_SQUARE_NO_LATTICE_REPAIR",
+          "external_boundary_count": 105,
+          "external_boundary_sha256": "afb43cb170b68115dd790723837513a320b84fee3866e5cfe7cf870a78a37f85",
+          "local_dependency_count": 3,
+          "local_dependency_sha256": "a0e1ad14ec283426557443df768cf3f2de000e93e6904353e39676ab191377fc",
+          "root_theorem": "Zeta23.OPICAFollowup.square_no_lattice_repair"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_SQUARE_SELFDUAL_PROJECTION_FILLS_GAP",
+          "external_boundary_count": 173,
+          "external_boundary_sha256": "7734c2d0b16d1493f7203a7026e2aa579ba0b7827b186193c297822f75feb099",
+          "local_dependency_count": 8,
+          "local_dependency_sha256": "18d3bfea2574e56b7a33d3c55731650d52ab876eb0b30596f77759dcd1f14dbd",
+          "root_theorem": "Zeta23.OPICAFollowup.square_selfdual_projection_fills_gap"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_STEP123_WORD_JET_CONSUMER",
+          "external_boundary_count": 794,
+          "external_boundary_sha256": "90fee148eaa38438f9a4b7f373563553ba570d6b79e32cde04ccb91924ba161b",
+          "local_dependency_count": 992,
+          "local_dependency_sha256": "58c687d6e1c98628058c7e5118230ed79694573d1d63b91f57f23400679c9e05",
+          "root_theorem": "Zeta23.OPICAFollowup.step123_word_jet_consumer"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_WEIGHTED_GAP_LEAKAGE",
+          "external_boundary_count": 156,
+          "external_boundary_sha256": "a344a5232a9c92c0a469b9235eb8b6be6b99f9a5841a8759f64bef438fe8e20b",
+          "local_dependency_count": 45,
+          "local_dependency_sha256": "4d915c90d8ee76257c2ad3a52cd5dc27b9685de911ffa5a6d345fcbda926ca9e",
+          "root_theorem": "Zeta23.OPICAFollowup.weighted_gap_leakage"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_WEIGHTED_MIXTURE_EXISTS_FOURIER",
+          "external_boundary_count": 216,
+          "external_boundary_sha256": "7bc88b8329a86a432cb0c6b43aa88cdde88965b3c807d3720b2dcdf9a2604329",
+          "local_dependency_count": 67,
+          "local_dependency_sha256": "337bfd0b2c72403cfa4373396d58df0cc70c638b1fb9595264a19e3e2f27a180",
+          "root_theorem": "Zeta23.OPICAFollowup.weighted_mixture_exists_fourier"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_WEIGHTED_MIXTURE_SHARP_GAP",
+          "external_boundary_count": 211,
+          "external_boundary_sha256": "4e68fd484ca0e00c45cf051fc5a2a1fe52f7dc07b17ea59cb66fe6b7412ecab6",
+          "local_dependency_count": 59,
+          "local_dependency_sha256": "98a93c7059e7b71778b86529ed138916b48a61fca16c21759ef470fc7bb0f18a",
+          "root_theorem": "Zeta23.OPICAFollowup.weighted_mixture_sharp_gap"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_WEIGHTED_MOBIUS_INVERSE",
+          "external_boundary_count": 147,
+          "external_boundary_sha256": "aa351f468941a2e98cce02070adac55504e63f5e1306e81a8038cf0b12a7d566",
+          "local_dependency_count": 40,
+          "local_dependency_sha256": "aeb7a92b72128225b5192de3552b2c4dd5a58809a23d4ec048e2ae73c3529495",
+          "root_theorem": "Zeta23.OPICAFollowup.weighted_mobius_inverse"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_ZERO_MEASURE_EXACT_PROPERTIES",
+          "external_boundary_count": 256,
+          "external_boundary_sha256": "acce7cf89cf75798952d95a5cb16bff49da4f651dbfb0cd35468ceebb2c7b952",
+          "local_dependency_count": 70,
+          "local_dependency_sha256": "9c60f51da34dd27d597ff83eb81e6be68173dd18c8a2255b94eae502355a6a05",
+          "root_theorem": "Zeta23.OPICAFollowup.zero_measure_exact_properties"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_ZERO_MEASURE_FIRST_CELL_SIGN",
+          "external_boundary_count": 77,
+          "external_boundary_sha256": "74b9140aaae14d22d7bf4a70f76f57e615934dd46f865d39de40ec9772a7714e",
+          "local_dependency_count": 6,
+          "local_dependency_sha256": "b0f36ea27d684a457b0a4fda65ea454c2285ba636b646e669c9fd5b131ccfa3e",
+          "root_theorem": "Zeta23.OPICAFollowup.zero_measure_first_cell_sign"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_ZERO_PROFILE_FORCED_EULER",
+          "external_boundary_count": 134,
+          "external_boundary_sha256": "95e81b55faeae2c7f87e33ba015066de2f0cbef522279b6d40194ecc9ff05504",
+          "local_dependency_count": 8,
+          "local_dependency_sha256": "d077a8b9a41f17ddfe024aba30e0affda6cc1da98276e8b1fdc85a9956e24113",
+          "root_theorem": "Zeta23.OPICAFollowup.zero_profile_forced_euler"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_ZERO_PROFILE_NOT_HOMOGENEOUS_OPERATOR_VECTOR",
+          "external_boundary_count": 131,
+          "external_boundary_sha256": "2e378f6d559a180b22cff94711c895a19d49f36b15aac1229faba2c1b6ad8a91",
+          "local_dependency_count": 17,
+          "local_dependency_sha256": "a2588d24e9d09035061061a71c5372c974fcfd82d1e91de1c75729ed4608c16b",
+          "root_theorem": "Zeta23.OPICAFollowup.zero_profile_not_homogeneous_operator_vector"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_ZERO_PROFILE_REGULAR_SELFDUAL",
+          "external_boundary_count": 178,
+          "external_boundary_sha256": "e9491194a2c9fa1706edf1541c22521efa503a7cdbe2f55798b826f66f680c58",
+          "local_dependency_count": 47,
+          "local_dependency_sha256": "c4ed44a83214ed38b19a59ec7565851ed29dfe75eec0833ada18537f5e366264",
+          "root_theorem": "Zeta23.OPICAFollowup.zero_profile_regular_selfdual"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_ZERO_PROFILE_TAIL_AND_JUMPS",
+          "external_boundary_count": 136,
+          "external_boundary_sha256": "243f9477f8594731f97d337c2efce2393450e15256f02c7396407f6355dacafd",
+          "local_dependency_count": 13,
+          "local_dependency_sha256": "4161740b8aa55d5b4f0102e37e2a68a6b2a7568e3a2ad7cbedaa66ebbc66ebc8",
+          "root_theorem": "Zeta23.OPICAFollowup.zero_profile_tail_and_jumps"
+        },
+        {
+          "claim_id": "OPICA_FOLLOWUP_ZETA_LEFT_LINE_UNIFORM_BOUND",
+          "external_boundary_count": 59,
+          "external_boundary_sha256": "5a687220317fae8ab7676f0712830dd94587cfe670ae2ac0809ce2048afdf313",
+          "local_dependency_count": 0,
+          "local_dependency_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "root_theorem": "Zeta23.OPICAFollowup.zeta_left_line_uniform_bound"
         },
         {
           "claim_id": "OPICA_H1_SIGNED_SHARP_GAP_SEPARATOR",

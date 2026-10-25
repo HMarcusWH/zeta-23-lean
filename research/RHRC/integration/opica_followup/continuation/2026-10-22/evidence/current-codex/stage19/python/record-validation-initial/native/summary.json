@@ -1,0 +1,76 @@
+{
+  "status": "PASS_TESTS_AND_FROZEN_REPLAY_ONLY",
+  "source_before": {
+    "head": "59ff485551771c0ab6322562d18fb8e9d4166da4",
+    "tree": "396665de3d14c2db60a4a85c646dd56d718f07ff",
+    "dirty": "M AGENTS.md\n M research/RHRC/graph/OPICA_FOLLOWUP_CURRENT_STATE.md\n M research/RHRC/integration/opica_followup/CONTINUATION_MANIFEST.json\n M research/RHRC/integration/opica_followup/README.md\n M research/RHRC/integration/opica_followup/continuation/2026-10-22/DOCUMENTATION_INDEX.md\n M research/RHRC/integration/opica_followup/continuation/2026-10-22/MODULE_STATUS.md\n M research/RHRC/integration/opica_followup/continuation/2026-10-22/NEXT_AGENT_PROMPT.md\n M research/RHRC/integration/opica_followup/continuation/2026-10-22/README.md\n M research/RHRC/integration/opica_followup/continuation/2026-10-22/REMAINING_WORK.md\n M research/RHRC/integration/opica_followup/continuation/2026-10-22/ROOT_LEDGER_100.json\n M research/RHRC/integration/opica_followup/continuation/2026-10-22/drafts/README.md\n M research/RHRC/integration/opica_followup/validate_contract.py\n?? research/RHRC/integration/opica_followup/continuation/2026-10-22/STAGE19_HANDOVER.md\n?? research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage19/\n?? research/RHRC/integration/opica_followup/continuation/2026-10-22/tools/stage_record/stage19_replay_clean_workflow_consumers.py\n?? research/RHRC/integration/opica_followup/continuation/2026-10-22/tools/stage_record/stage19_run_clean_negative_controls.py\n?? research/RHRC/integration/opica_followup/continuation/2026-10-22/tools/stage_record/stage19_update_stage19_records.py"
+  },
+  "source_after": {
+    "head": "59ff485551771c0ab6322562d18fb8e9d4166da4",
+    "tree": "396665de3d14c2db60a4a85c646dd56d718f07ff",
+    "dirty": "M AGENTS.md\n M research/RHRC/graph/OPICA_FOLLOWUP_CURRENT_STATE.md\n M research/RHRC/integration/opica_followup/CONTINUATION_MANIFEST.json\n M research/RHRC/integration/opica_followup/README.md\n M research/RHRC/integration/opica_followup/continuation/2026-10-22/DOCUMENTATION_INDEX.md\n M research/RHRC/integration/opica_followup/continuation/2026-10-22/MODULE_STATUS.md\n M research/RHRC/integration/opica_followup/continuation/2026-10-22/NEXT_AGENT_PROMPT.md\n M research/RHRC/integration/opica_followup/continuation/2026-10-22/README.md\n M research/RHRC/integration/opica_followup/continuation/2026-10-22/REMAINING_WORK.md\n M research/RHRC/integration/opica_followup/continuation/2026-10-22/ROOT_LEDGER_100.json\n M research/RHRC/integration/opica_followup/continuation/2026-10-22/drafts/README.md\n M research/RHRC/integration/opica_followup/validate_contract.py\n?? research/RHRC/integration/opica_followup/continuation/2026-10-22/STAGE19_HANDOVER.md\n?? research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage19/\n?? research/RHRC/integration/opica_followup/continuation/2026-10-22/tools/stage_record/stage19_replay_clean_workflow_consumers.py\n?? research/RHRC/integration/opica_followup/continuation/2026-10-22/tools/stage_record/stage19_run_clean_negative_controls.py\n?? research/RHRC/integration/opica_followup/continuation/2026-10-22/tools/stage_record/stage19_update_stage19_records.py"
+  },
+  "commands": [
+    {
+      "name": "child-normal",
+      "command": [
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\tools\\python-3.13.5-embed-amd64\\python.exe",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "research/RHRC/integration/opica_followup/tests",
+        "-p",
+        "test_*.py"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-10-24T14:58:22.508192+00:00",
+      "finished_at": "2026-10-24T14:58:49.494517+00:00",
+      "log": "child-normal.log",
+      "log_sha256": "e0ca10e65b2021022d11df62bc8e349e368254b773bcf05d53d9e0391aa4a4dd"
+    },
+    {
+      "name": "child-optimized",
+      "command": [
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\tools\\python-3.13.5-embed-amd64\\python.exe",
+        "-B",
+        "-O",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "research/RHRC/integration/opica_followup/tests",
+        "-p",
+        "test_*.py"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-10-24T14:58:49.494629+00:00",
+      "finished_at": "2026-10-24T14:59:13.924205+00:00",
+      "log": "child-optimized.log",
+      "log_sha256": "3c22ea4152420f0748c3cbbdda39e596fff15e7cf38ea80bf08aa1e33a943007"
+    },
+    {
+      "name": "frozen-replay",
+      "command": [
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\tools\\python-3.13.5-embed-amd64\\python.exe",
+        "-B",
+        "research/RHRC/integration/opica_followup/replay_controls.py",
+        "--modes",
+        "normal",
+        "optimized",
+        "--include-numerical",
+        "--output-dir",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage19\\record-validation\\native\\frozen"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-10-24T14:59:13.924336+00:00",
+      "finished_at": "2026-10-24T15:00:50.295722+00:00",
+      "log": "frozen-replay.log",
+      "log_sha256": "5712cc23631f494f65b223a13b68d5fb0ce56f7345b08be54cec70081c111761"
+    }
+  ],
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "release_accepted": false
+}

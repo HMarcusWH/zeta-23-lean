@@ -1,0 +1,22 @@
+{
+  "status": "PASS_CONTROLS_ONLY",
+  "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+  "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+  "source_count": 31,
+  "negative": 27,
+  "positive": 4,
+  "positive_standard_axiom_closures": 8,
+  "source_unchanged": true,
+  "shared_build_cache_unchanged": true,
+  "archive": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22-control-proposal\\OPICA_STAGE22_31_CONTROL_REPLAY_2026-10-24.zip",
+  "archive_sha256": "2933db901f3fecd1e20a2f22a9813df3faad72b48b47d23eaeca25afe0fde1a8",
+  "receipt": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\CHECK_RESULT.json",
+  "receipt_sha256": "61c6166d5c2a3adf61b4a74c95b5921eb104947f354adfdbdac4882a43e9148a",
+  "runner": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22-control-proposal\\run_controls.py",
+  "runner_sha256": "5a9cf1591cd77d02d13ad4ce70000e7b94847105974acc5868329e9d5334b71c",
+  "new_primary_roots": 0,
+  "aggregate_accepted": false,
+  "independent_review": "NOT_ESTABLISHED",
+  "RH": "OPEN",
+  "Step4": "OPEN"
+}

@@ -1,0 +1,22 @@
+C:\Users\macka\.codex\.chatgpt-projects\g-p-6a353c7268b08191b685956e466d73e4\work\opica-stage22\clean-controls\sources\NegativeBudgetIndependenceFinal.lean:7:56: error(lean.invalidField): Invalid field `choose`: The environment does not contain `Function.choose`, so it is not possible to project the field `choose` from an expression
+  fixed_basis_negative_mass_budget basis valid
+of type
+  (LinearIndependent ℝ fun i => (Zeta23.OPICAFollowup.zeroJetRealSpan (basis i)).distributionOfLinearGrowth ⋯) →
+    ∃ c_basis,
+      0 < c_basis ∧
+        ∀ (a : EuclideanSpace ℝ (Fin n)),
+          c_basis * ‖a‖ ≤
+            ∫ (x : ℝ) in Zeta23.OPICA.integerLatticeᶜ,
+              Zeta23.OPICA.sincSquared
+                x ∂(Zeta23.OPICAFollowup.zeroJetRealSpan (realBasisCombinationData basis fun i => a.ofLp i)).negative
+C:\Users\macka\.codex\.chatgpt-projects\g-p-6a353c7268b08191b685956e466d73e4\work\opica-stage22\clean-controls\sources\NegativeBudgetIndependenceFinal.lean:8:51: error(lean.invalidField): Invalid field `choose_spec`: The environment does not contain `Function.choose_spec`, so it is not possible to project the field `choose_spec` from an expression
+  fixed_basis_negative_mass_budget basis valid
+of type
+  (LinearIndependent ℝ fun i => (Zeta23.OPICAFollowup.zeroJetRealSpan (basis i)).distributionOfLinearGrowth ⋯) →
+    ∃ c_basis,
+      0 < c_basis ∧
+        ∀ (a : EuclideanSpace ℝ (Fin n)),
+          c_basis * ‖a‖ ≤
+            ∫ (x : ℝ) in Zeta23.OPICA.integerLatticeᶜ,
+              Zeta23.OPICA.sincSquared
+                x ∂(Zeta23.OPICAFollowup.zeroJetRealSpan (realBasisCombinationData basis fun i => a.ofLp i)).negative

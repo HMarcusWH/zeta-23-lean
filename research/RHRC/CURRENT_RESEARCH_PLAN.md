@@ -1,43 +1,4 @@
-# RHRC current research plan
-
-> **Claim firewall: RH remains OPEN.**
-
-Live GitHub head + exact compiler/CI evidence are authoritative dynamically. This file is the current execution SSOT.
-
-## Post-#264 integration override
-
-This block supersedes older repository/integration-current labels below without
-rewriting the historical mathematical roadmap.
-
-- exact theorem authority remains PR #262; RH remains OPEN;
-- RHKG semantic-closure authority = PR #263;
-- Lean-exact source-candidate integration foundation = PR #264;
-- RH_FORMAL_CORE theorem/lemma source surface = 2,356 candidates;
-- uniquely resolved public source-only theorem/lemma population = 680;
-- current integration operation = FFBBP v1.6 RHKG snapshot reduction assurance;
-- FFBBP RUN42C qualification remains restricted to its named finite-synthetic
-  diagnostic profile and is **not** inherited by the v1.6 RHKG assurance layer;
-- the FFBBP RHKG adapter is snapshot Xi only: no autonomous transition-closure
-  claim, no mathematical relevance ranking, no theorem promotion;
-- selected reduction target = module + exact visibility class, for
-  post-reference cohort navigation only;
-- mathematical theorem programme remains the post-#247/#262 Glasses-v2 route,
-  including unconditional arithmetic control, endpoint-weight structure,
-  prime-power seams, and first-crossing mechanisms.
-
-The integration programme is intended to improve theorem selection and route
-falsification; it does not replace Lean as proof authority.
-
-
-## Post-#277 / PR #278 first-contact closure-attempt override
-
-PR #277 is merged theorem authority: exact same-fixed-N ground sign opposition is PROVED under an off-line zero; the stronger global propagation and uniform domination premises are audit-classified as RH-sufficient and are not treated as sub-RH lemmas.
-
-PR #278 starts from that merged state and is fail-closed. Its first formal target is production fixed-N legal-ground continuity on L > 0, including exact gluing at every logarithmic integer cutoff seam. The first checked-in contact theorem is conditional on the named continuity interface and yields an exact same-N zero contact by IVT. The stronger first-negative-boundary refinement, regular/singular predecessor zero-shift normalization, branch-specific canonical arithmetic exclusion, and any premise-free Mathlib RiemannHypothesis theorem remain OPEN until separately compiler-proved.
-
-The contact route uses the repository's existing IntrinsicPredecessorRegular regular/singular split, not a synthetic predecessor-bottom notion. It does not identify a parity-compressed zero mode with an ambient full-space kernel. A2 whole-form seam envelopes and A3 fixed-cell no-crossing remain separate OPEN obligations.
-
-**Claim firewall: RH remains OPEN.**
+# Current execution plan — OPICA follow-up
 
 <!-- RHRC_CURRENT_STATE_BEGIN -->
 ## Current RHRC state
@@ -91,6 +52,97 @@ RESEARCH / CONTROL FIREWALL
 - confirmatory execution = NOT AUTHORIZED
 - terminal claim = RH_OPEN
 <!-- RHRC_CURRENT_STATE_END -->
+
+<!-- OPICA_AGENT_NAVIGATION_2026_10_22 -->
+**RH, Step 4 and the independent closing inequalities remain OPEN.**
+
+Continue draft PR #294 on `research/opica-native-followup`. Before editing, read
+[AGENTS.md](../../AGENTS.md), the
+[current guide](integration/opica_followup/continuation/2026-10-22/README.md),
+[100-root ledger](integration/opica_followup/continuation/2026-10-22/ROOT_LEDGER_100.json)
+and [next-agent task](integration/opica_followup/continuation/2026-10-22/NEXT_AGENT_PROMPT.md).
+Capture the live head/tree/status and reconcile concurrent work.
+
+The scope is unchanged: 100 original roots and 28 acceptance units. The current
+Stage 2 checkpoint records 41 historical source-bound roots, fifteen additional
+narrow local results, one unaccepted candidate and 43 absent implementations.
+Read its exact source/gate evidence in the continuation STAGE2_HANDOVER.md. Full current-tree aggregate acceptance remains OPEN.
+
+1. Finish the retained same-output word/jet consumer against genuine parent
+   dependencies, with independent full-type, physical-domain and axiom checks.
+   Laguerre, comb, first-cell, native moments/residual/memory, weighted mixture
+   and the near-gap mass estimate now have narrow green evidence.
+2. Complete the 43 absent roots in their planned modules. The highest-information
+   chains are actual native window rates and the
+   global co-Poisson/measure construction feeding profiles and sampling.
+   Generic formulas do not construct these missing native objects.
+3. Exercise the new all-100 child receipt producer/reader on actual full
+   mathematics after independent review; finish its still-closed parent/runtime/
+   workflow companions, full consumer/facade coverage and reviewed registration. Parent
+   projection must continue rejecting incomplete or self-certified metadata.
+4. Reconcile implementation imports explicitly, regenerate canonical outputs
+   with the prescribed producer and verify every exact-head acceptance gate.
+   A navigation diagram does not replace the generated compiler graph.
+5. Harvest every workflow, inspect the successful proofs and complete all nine
+   Post-Green Research conclusions after meaningful green results.
+
+Use the [named remaining-work inventory](integration/opica_followup/continuation/2026-10-22/REMAINING_WORK.md)
+and [progress map](graph/OPICA_FOLLOWUP_CURRENT_STATE.md) to assign proof lanes.
+The Post-Green Amendment remains supporting research; no optional proposal has
+become a mandatory primary. Do not weaken frozen statements, invent premises,
+or turn a subset/metadata check into full release authority.
+
+The historical programme below records earlier research targets and their own
+authority anchors. Its current/next wording does not override this execution
+plan or live compiler/workflow evidence.
+
+<details>
+<summary>Historical programme and generated control snapshot</summary>
+
+The material below preserves earlier checkpoints. Its dated current/next labels
+and renderer-owned state block describe those recorded states. They do not
+override the current OPICA guide and exact-source evidence linked above.
+
+# RHRC current research plan
+
+> **Claim firewall: RH remains OPEN.**
+
+Live GitHub head + exact compiler/CI evidence are authoritative dynamically. This file is the current execution SSOT.
+
+## Post-#264 integration override
+
+This block supersedes older repository/integration-current labels below without
+rewriting the historical mathematical roadmap.
+
+- exact theorem authority remains PR #262; RH remains OPEN;
+- RHKG semantic-closure authority = PR #263;
+- Lean-exact source-candidate integration foundation = PR #264;
+- RH_FORMAL_CORE theorem/lemma source surface = 2,356 candidates;
+- uniquely resolved public source-only theorem/lemma population = 680;
+- current integration operation = FFBBP v1.6 RHKG snapshot reduction assurance;
+- FFBBP RUN42C qualification remains restricted to its named finite-synthetic
+  diagnostic profile and is **not** inherited by the v1.6 RHKG assurance layer;
+- the FFBBP RHKG adapter is snapshot Xi only: no autonomous transition-closure
+  claim, no mathematical relevance ranking, no theorem promotion;
+- selected reduction target = module + exact visibility class, for
+  post-reference cohort navigation only;
+- mathematical theorem programme remains the post-#247/#262 Glasses-v2 route,
+  including unconditional arithmetic control, endpoint-weight structure,
+  prime-power seams, and first-crossing mechanisms.
+
+The integration programme is intended to improve theorem selection and route
+falsification; it does not replace Lean as proof authority.
+
+
+## Post-#277 / PR #278 first-contact closure-attempt override
+
+PR #277 is merged theorem authority: exact same-fixed-N ground sign opposition is PROVED under an off-line zero; the stronger global propagation and uniform domination premises are audit-classified as RH-sufficient and are not treated as sub-RH lemmas.
+
+PR #278 starts from that merged state and is fail-closed. Its first formal target is production fixed-N legal-ground continuity on L > 0, including exact gluing at every logarithmic integer cutoff seam. The first checked-in contact theorem is conditional on the named continuity interface and yields an exact same-N zero contact by IVT. The stronger first-negative-boundary refinement, regular/singular predecessor zero-shift normalization, branch-specific canonical arithmetic exclusion, and any premise-free Mathlib RiemannHypothesis theorem remain OPEN until separately compiler-proved.
+
+The contact route uses the repository's existing IntrinsicPredecessorRegular regular/singular split, not a synthetic predecessor-bottom notion. It does not identify a parity-compressed zero mode with an ambient full-space kernel. A2 whole-form seam envelopes and A3 fixed-cell no-crossing remain separate OPEN obligations.
+
+**Claim firewall: RH remains OPEN.**
 
 ## Post-#287 override
 
@@ -1610,3 +1662,6 @@ use the existing original drive, physical completion, selected zero and same
 generated output. They provide no independent arithmetic upper, J5.2/MS1 input,
 contact-to-heat construction, or Step 4 closing theorem. Existing OPEN claims,
 D2 dispositions and independent-review gates retain their prior authority.
+
+
+</details>

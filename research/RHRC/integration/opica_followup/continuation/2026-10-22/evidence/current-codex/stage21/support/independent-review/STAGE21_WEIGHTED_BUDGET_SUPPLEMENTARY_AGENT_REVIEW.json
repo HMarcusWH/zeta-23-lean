@@ -1,0 +1,123 @@
+{
+  "schema": "OPICA_STAGE21_WEIGHTED_BUDGET_SUPPLEMENTARY_AGENT_REVIEW_V1",
+  "created_utc": "2026-10-24T17:06:56.585714+00:00",
+  "kind": "SUPPLEMENTARY_AGENT_MATHEMATICAL_DOMAIN_REVIEW",
+  "not_human_review": true,
+  "approval_or_review_seal": false,
+  "base_code_commit": "139c1a0d88cc0fb2d8a0d8ea71e152b25b14c36e",
+  "sources": [
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\OPICAFollowup\\FiniteSpanSeparation.lean",
+      "sha256": "8e69e7c90abb572cf45d71bd70c0446b6844372d4ae954aeb8274ea3e1f1e5ef"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\OPICA\\SignedHeatSeparator.lean",
+      "sha256": "179a7ea8f416f450e3f9db8ba39b972d8422d55b800e5f3427d465ff20b092f1"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\OPICA\\LocallyFiniteSignedMeasure.lean",
+      "sha256": "676f7ced89628a013244d4747f99a1cfcf8f79cd5ddda25ad1f17e2d52119f75"
+    }
+  ],
+  "assessment": "NO_NEW_DOMAIN_OR_VACUITY_DEFECT_FOUND",
+  "findings": [
+    {
+      "topic": "Actual Jordan carrier",
+      "assessment": "The locally finite signed carrier requires mutually singular positive/negative parts. The common nonnegative sinc-squared density preserves singularity, so weighted total variation really is the sum of the two weighted Jordan parts.",
+      "declarations": [
+        "LocallyFiniteSignedMeasure",
+        "sincWeightedJordan",
+        "sincWeightedSigned_jordan"
+      ]
+    },
+    {
+      "topic": "Finiteness and toReal",
+      "assessment": "Linear growth is required and separately proved for the actual sums and their Jordan parts. It proves sinc-squared integrability and finite weighted measures before totalVariation.real univ is used. Thus ENNReal.toReal does not collapse an infinite quantity to zero in the budget argument.",
+      "declarations": [
+        "zeroJetRealSpan_growth",
+        "sinc_weight_finite",
+        "sincSquared_integrable_of_linear_growth",
+        "signed_variation_norm_core"
+      ]
+    },
+    {
+      "topic": "Exact factor two",
+      "assessment": "Fourier self-duality is on the embedded actual distribution. The signed sinc/triangle pairing is justified through smooth compact approximations and dominated convergence. The actual open unit gap makes both triangle integrals zero (triangle vanishes at the boundary). Hence weighted positive and negative masses agree, giving TV=2 negative; this is not an assumed sign or positivity conclusion.",
+      "declarations": [
+        "signed_sinc_triangle_pairing",
+        "unitTriangle_integral_zero_of_gap",
+        "sinc_pairing_zero_of_gap",
+        "weighted_variation_eq_twice_negative"
+      ]
+    },
+    {
+      "topic": "Global versus off-lattice",
+      "assessment": "The sinc-squared weight vanishes at nonzero integers but is one at zero. The proof correctly requires a zero origin atom, derived from the unit gap, before identifying global and off-lattice weighted mass. Removing the gap/origin argument would be invalid.",
+      "declarations": [
+        "singleton_zero_of_unit_gap",
+        "negative_sinc_off_lattice_eq_global"
+      ]
+    },
+    {
+      "topic": "Weight kernel and faithfulness",
+      "assessment": "Multiplication by the sinc weight alone is not faithful because lattice-supported measures lie in its kernel. The proof does not make that assumption: a zero weighted actual combination is passed through the self-dual sharp-gap separator, and actual-distribution independence then forces every coefficient to vanish.",
+      "declarations": [
+        "sincWeightedSigned_zero_iff_zero",
+        "signed_sharp_gap_separator",
+        "actualFixedBasisWeightedMap_injective"
+      ]
+    },
+    {
+      "topic": "Euclidean norm and normalization",
+      "assessment": "The domain is EuclideanSpace R (Fin n), the L2 coefficient norm. The local codomain norm is actual finite signed total variation, with nondegeneracy, triangle and scalar laws proved. Finite-dimensional continuity/compactness supplies one positive lower constant for that fixed injective map. Dividing its constant by two when replacing TV by negative mass is correct.",
+      "declarations": [
+        "fixed_space_positive_homogeneous_budget",
+        "fixed_linear_signed_variation_budget",
+        "fixed_basis_negative_mass_budget"
+      ]
+    },
+    {
+      "topic": "Zero and empty cases",
+      "assessment": "Zero coefficients give zero measure and zero lower bound. For n=0 the positive constant statement is harmless and trivial; the generic compactness argument handles the subsingleton case explicitly. For n>0, the independence hypothesis excludes zero or duplicated basis vectors. Empty component lists cannot silently satisfy nontrivial independence.",
+      "declarations": [
+        "fixed_space_positive_homogeneous_budget",
+        "fixed_basis_negative_mass_budget"
+      ]
+    },
+    {
+      "topic": "Actual-zero and multiplicity domain",
+      "assessment": "ValidJet requires an actual zeta zero, the full open strip and a jet below actual multiplicity. The budget derives growth/self-duality/gap from those exact actual measures. It supplies no existence of an off-critical zero, assumes no simplicity, and has no conclusion-shaped budget hypothesis. The off-critical supporting pair theorem remains conditional on its actual-zero input.",
+      "declarations": [
+        "ValidJet",
+        "actualZeroJetSum_growth",
+        "actualZeroJetSum_fourier",
+        "zeroJetRealSpan_gap",
+        "canonical_pair_negative_mass_budget"
+      ]
+    }
+  ],
+  "scope_limits": [
+    "Fixed finite independent real basis only",
+    "Existential basis-dependent constant, no effective value supplied",
+    "Global off-lattice sinc-squared weighted negative mass; no fixed compact-region mass lower bound asserted",
+    "No uniform constant over collisions, moving bases or growing dimension",
+    "No independent analytic upper estimate or zero exclusion",
+    "No off-critical zero existence assertion",
+    "Not human independent review or release acceptance",
+    "RH OPEN",
+    "Step4 OPEN"
+  ],
+  "boundary_falsifier": {
+    "label": "PROVED_IN_SEPARATE_SUPPORTING_CONTROL",
+    "statement": "When kappa is real, normalizedZeroMeasureJet(conj rho,0)=normalizedZeroMeasureJet(rho,0) as actual measures; at an actual strip zero the canonical imaginary distribution is zero and the canonical real/imaginary pair is dependent.",
+    "source": {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-offcritical-real-basis\\OffcriticalControls.lean",
+      "sha256": "564c86f71845ee6d57ba13bdbf4ee131d605d43def12137316608759c41aa55d"
+    }
+  },
+  "next_information_gain": [
+    "Generalize realification by conjugation orbits after reflection quotienting",
+    "Seek an independent upper bound on the same actual weighted mass and audit it for hidden RH equivalence",
+    "Quantify conditioning only under explicit actual-family continuity, weighted variation convergence and separation hypotheses"
+  ]
+}

@@ -1,0 +1,154 @@
+'Zeta23.OPICAFollowup.W04W07Independent.expected_completion_interval' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.W04W07Independent.expected_exponent_margin' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.W04W07Independent.expected_window_integrable' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.W04W07Independent.expected_window_nonneg' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.W04W07Independent.expected_window_causal_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.W04W07Independent.expected_window_rate_nonneg' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.W04W07Independent.expected_ct1_origin_coefficient' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.W04W07Independent.expected_ct1_signed_growth' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.W04W07Independent.expected_ct1_exp_sum_uniform' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.W04W07Independent.expected_ct1_uniform_scalar_budget' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.W04W07Independent.expected_jordan_add_pairing' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.W04W07Independent.expected_ct1_distribution' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.W04W07Independent.expected_ct1_variation_domination' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.W04W07Independent.expected_ct1_positive_variation' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.W04W07Independent.expected_ct1_actual_uniform_variation' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.W04W07Independent.expected_ct1_uniform_schwartz_tails' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.W04W07Independent.expected_ct1_common_schwartz_growth' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.W04W07Independent.expected_dilated_comb_physical_origin' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.W04W07Independent.expected_ct1_physical_origin_cancelled' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.W04W07Independent.expected_actual_integer_first_gap' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.W04W07Independent.expected_actual_positive_comb_punctured_gap' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.W04W07Independent.expected_actual_three_carriers_gap' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.W04W07Independent.expected_signed_origin_collar' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.W04W07Independent.expected_jordan_singleton_no_cancellation' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.W04W07Independent.expected_ct1_origin_jordan_pair_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.W04W07Independent.expected_ct1_punctured_jordan_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.W04W07Independent.expected_ct1_punctured_total_variation_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.W04W07Independent.expected_integer_comb_offlattice_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.W04W07Independent.expected_negative_jordan_source_bound' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.W04W07Independent.expected_ct1_negative_integer_support' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.W04W07Independent.expected_scaled_counting_atom' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.W04W07Independent.expected_actual_dilation_atom' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.W04W07Independent.expected_first_ct1_point_not_integer' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.W04W07Independent.expected_CT1_positive_jordan_atom' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.W04W07Independent.expected_dilation_near_gap_family' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.W04W07Independent.expected_selfdual_jordan_even' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.W04W07Independent.expected_CT1_gap_edge_atom' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.W04W07Independent.expected_CT1_positive_measure_nonzero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.W04W07Independent.expected_CT1_physical_nonzero_signed_atom' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.W04W07Independent.expected_CT1_canonical_equals_explicit_if_scalar_bridge' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.W04W07Independent.expected_CT1_physical_negative_scale_pairing' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.W04W07Independent.expected_CT1_physical_equals_explicit' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.W04W07Independent.expected_CT1_physical_fourier_selfdual' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.W04W07Independent.expected_CT1_actual_offinteger_mass_budget' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.W04W07Independent.expected_CT1_canonical_selfdual_if_scalar_bridge' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.W04W07Independent.expected_explicit_CT1_source_fourier_selfdual' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.W04W07Independent.expected_ct1_offlattice_nonnegative' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.W04W07Independent.expected_ct1_genuine_jordan_gap' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.W04W07Independent.expected_ct1_origin_every_compact' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.W04W07Independent.expected_actual_ct1_signed_compact_gap' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.W04W07Independent.expected_ct1_compact_measure_identity' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.W04W07Independent.expected_ct1_radius' depends on axioms: [propext, Classical.choice, Quot.sound]

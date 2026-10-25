@@ -1,0 +1,125 @@
+{
+  "schema": "OPICA_STAGE1_DOCUMENTATION_ONLY_REVIEW_GATE_V1",
+  "status": "PASS_EXACT_SEVEN_DOCUMENTS_AND_ALL_201_PARENT_TESTS_BOTH_MODES",
+  "changed_code": [
+    {
+      "path": "research/RHRC/integration/opica/validate_contract.py",
+      "sha256": "9f349df6d48e1ef6f756d877e0b49d825f2d3bb88b9372e4019bf51c23817a2c"
+    },
+    {
+      "path": "research/RHRC/integration/opica/tests/test_contract.py",
+      "sha256": "17da5f0929c47499ea6cd11131fece1e50a53ff27adb4179ffa8fc96dfc07fce"
+    }
+  ],
+  "original_protection_sha256": "0f6a28e2f9ebd14b95f0201e22918d29af6c81ec4dd3f044a85a8413239bb7c7",
+  "original_protection_canonical_sha256": "5ad6d198133f07a5ed7ac8abc9ec9bb6523db4a9729b69a61f7fe15a7820ce99",
+  "reviewed_documents": [
+    {
+      "path": "AUDIT.md",
+      "bytes": 27820,
+      "sha256": "3ae31acfb36eef59bb63e0781f6fde66a2a5d3d46b859bc81ffc00dabc8f4e09"
+    },
+    {
+      "path": "FORK_NOTES.md",
+      "bytes": 21249,
+      "sha256": "aaab3241840ba6cb3085452fb2791c19391f3c14f43ebcdaabbb2baa3a144cac"
+    },
+    {
+      "path": "research/RHRC/DOCUMENTATION_AUTHORITY.md",
+      "bytes": 34241,
+      "sha256": "34df2bc6c5ff56566d29b3a8317f36534dbba6bae7140841b81d5280f01a7f6b"
+    },
+    {
+      "path": "research/RHRC/VALIDATION_PROTOCOL.md",
+      "bytes": 41426,
+      "sha256": "736a67742c61816f70d9aa0be846d47bfed9e16f3f311172b3217f66c4235289"
+    },
+    {
+      "path": "research/RHRC/graph/OPICA_FOLLOWUP_CURRENT_STATE.md",
+      "bytes": 9501,
+      "sha256": "408b886fb0f220a10562b9cdff77332de86199be2e683dacb1a73ce3a87df72f"
+    },
+    {
+      "path": "research/RHRC/graph/README.md",
+      "bytes": 17623,
+      "sha256": "5247bb075493796b493dfcd2137334ebb4718bc4ba1e2c37a9e6fbc98835f06e"
+    },
+    {
+      "path": "research/RHRC/integration/README.md",
+      "bytes": 5483,
+      "sha256": "cac2f05b95b905ad3d3ea22b59d9a0c36158965306818b7ef05cb997f1543b9e"
+    }
+  ],
+  "independent_fixed_documentation_seal": "60262d0de871b497278af8197fc806b02665e7a1f2b14c5a2a3a5419637cbb86",
+  "code_review": "Root independently reviewed exact parent-owned seal/path/scope logic and unchanged full child context before updating its caller pin.",
+  "native_identity": {
+    "schema": "EXACT_WSL_NATIVE_PYTHON_TEST_ISOLATION_V1",
+    "status": "SOURCE_BYTES_AND_GIT_IDENTITY_VERIFIED",
+    "native_path": "/tmp/opica-stage1-parent-review-mtef1ta7",
+    "head": "9ccea78eb5ee0c097bde05424e43de58a589b713",
+    "tree": "40ad2bb6e78f9dcd944870233e991220f573a412",
+    "source_count": 2869,
+    "source_manifest_sha256": "a4873e621183df1a9e4c13f0ade7f4ff204bd8d5b701567c6072e6712a14f644",
+    "git_objects_alternates": "/mnt/c/Users/macka/.codex/.chatgpt-projects/g-p-6a353c7268b08191b685956e466d73e4/work/opica-followup-repo/.git/objects",
+    "GIT_NO_LAZY_FETCH": "1",
+    "GIT_OPTIONAL_LOCKS": "0",
+    "normalization": "NONE",
+    "compiler_rerun": "NONE",
+    "recorded_utc": "2026-10-22T15:06:04.422652+00:00",
+    "tests": [
+      {
+        "mode": "normal",
+        "exit_code": 0,
+        "log": "parent-suite-native-final-normal.log",
+        "sha256": "587ab84434d4edfbe6ac393a27960fc1e440f1562ebc89ce5ee51a4b03424dd2"
+      },
+      {
+        "mode": "optimized",
+        "exit_code": 0,
+        "log": "parent-suite-native-final-optimized.log",
+        "sha256": "c01a16c11c566fb0c352b5a1845d7150562ccfce5eb99270ecf88347b8ce6b95"
+      }
+    ],
+    "all_snapshot_sources_unchanged_after_tests": true
+  },
+  "gates": [
+    {
+      "mode": "normal",
+      "file": "parent-suite-native-final-normal.log",
+      "sha256": "587ab84434d4edfbe6ac393a27960fc1e440f1562ebc89ce5ee51a4b03424dd2",
+      "exit_code": 0,
+      "tests": 201,
+      "skips": 0,
+      "errors": 0
+    },
+    {
+      "mode": "optimized",
+      "file": "parent-suite-native-final-optimized.log",
+      "sha256": "c01a16c11c566fb0c352b5a1845d7150562ccfce5eb99270ecf88347b8ce6b95",
+      "exit_code": 0,
+      "tests": 201,
+      "skips": 0,
+      "errors": 0
+    }
+  ],
+  "main_sources_changed_since_capture": [
+    "research/RHRC/integration/opica_followup/continuation/2026-10-22/STAGE1_HANDOVER.md"
+  ],
+  "focus_documents_validator_tests_and_frozen_protection_unchanged_since_capture": true,
+  "former_environment_blocks": {
+    "missing_historical_blob": "Genuinely fetched d3da5bc92550feebdd2a144bd560a3a033696522 (README.md at97926d6a949fed7af0429a373b47abc772012834); real baseline test passed.",
+    "Windows1314": "Original symlink test preserved. Genuine Linux symlink and hardlink tests passed without mocks/skips in final suites.",
+    "NTFS_WSL_suites": "Both explicitly interrupted by SIGINT; no pass claimed. Final native snapshot suites supersede them.",
+    "initial_native_calls": "Start-directory error preserved. Final single-session setup and absolute native tests directory succeeded."
+  },
+  "fourteen_new_cases": "Exact7docs; changedbyte; missingfile; unlistedREADME/source/registry; historicalobjectmutation; editablemanifest/registerforgery; protectionselfrepin; tablewithoutseal; traversal/case/duplicates; genuine symlink/hardlink; deterministic guards; missingfull100typereview still rejected.",
+  "new_Lean_theorems": 0,
+  "compiler_rerun": "NONE",
+  "proof_gate_bypass": false,
+  "full_child_context": "STILL_REJECTS_ABSENT_FULL100_REVIEWED_TYPES",
+  "full_release_ready": false,
+  "global_measure_construction": "OPEN",
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "independent_human_review": "NOT_ESTABLISHED"
+}

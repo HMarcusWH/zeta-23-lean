@@ -1,0 +1,17 @@
+theorem expected_source_order_uniform_norms :
+    ∃ C : ℝ, 0 < C ∧ ∀ d : ℕ,
+      (∀ k : ℕ, k ≤ 2 → ∀ x : ℝ,
+        (∫ u : ℝ, |iteratedDeriv k (sourceOrderFamily d) u|) +
+          |iteratedDeriv k (sourceOrderFamily d) x| ≤
+            Real.exp (C * (d + 1) * Real.log (d + 2))) ∧
+      (∀ k : ℕ, k ≤ 2 →
+        (eLpNorm (iteratedDeriv k (sourceOrderFamily d)) ∞ volume).toReal +
+          (∫ u : ℝ, |iteratedDeriv k (sourceOrderFamily d) u|) ≤
+            Real.exp (C * (d + 1) * Real.log (d + 2)) ∧
+        eLpNorm (iteratedDeriv k (sourceOrderFamily d)) ∞ volume ≤
+          ENNReal.ofReal (Real.exp (C * (d + 1) * Real.log (d + 2)))) ∧
+      MemLp (integerDriveFamily d) 2 volume ∧
+      ‖integerDriveFamilyL2 d‖ ≤ Real.exp (C * (d + 1) * Real.log (d + 2)) ∧
+      (∀ t : ℝ, ∫ x : ℝ, uniform_nativeOrderLogDriveSummand d t x = 0) ∧
+      sourceWeightedMoment 0 (1/2) (sourceOrderFamily d) = 0 ∧
+      sourceWeightedMoment 1 (1/2) (sourceOrderFamily d) = 0

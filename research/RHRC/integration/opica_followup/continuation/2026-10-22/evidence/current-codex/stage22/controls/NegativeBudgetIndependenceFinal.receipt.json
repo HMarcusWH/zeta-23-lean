@@ -1,0 +1,41 @@
+{
+  "name": "NegativeBudgetIndependenceFinal",
+  "file": "NegativeBudgetIndependenceFinal.lean",
+  "source_sha256": "83ba20582622d40fa279088080ff4234e4c6499f8beac645225277f2624797ea",
+  "expected": "REJECTED",
+  "scope": "Actual finite-span clause / independent-basis / reflection / selfduality falsification",
+  "origin": {
+    "kind": "EXACT_STAGE21_BYTES",
+    "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\NegativeBudgetIndependenceFinal.lean",
+    "sha256": "83ba20582622d40fa279088080ff4234e4c6499f8beac645225277f2624797ea",
+    "receipt": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\clean-controls\\CHECK_RESULT.json",
+    "receipt_sha256": "277a7e7fde8c600848bc59ce730faf3c9ceab1ca436ac36c58c00420f429aa0a"
+  },
+  "required_diagnostic_regex": [
+    "Invalid field `choose`",
+    "LinearIndependent"
+  ],
+  "passed": true,
+  "observed": "REJECTED_INTENDED_MUTATION",
+  "failure_reasons": [],
+  "requested_axiom_names": [],
+  "axioms": {},
+  "error_recovery_sorryAx_in_rejected_output": false,
+  "formal_authority_from_failed_declarations": false,
+  "command": [
+    "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+    "env",
+    "lean",
+    "--root=C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\sources",
+    "-DautoImplicit=false",
+    "-DrelaxedAutoImplicit=false",
+    "-DmaxHeartbeats=800000",
+    "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\sources\\NegativeBudgetIndependenceFinal.lean",
+    "-o",
+    "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\objects\\NegativeBudgetIndependenceFinal.olean"
+  ],
+  "exit_code": 1,
+  "log": "NegativeBudgetIndependenceFinal.log",
+  "log_sha256": "bd958256d8191b9ed1bc8c9e21d3f7b2df1a6b7c2108c4aab78dcb3b85af9b68",
+  "seconds": 68.36467769998126
+}

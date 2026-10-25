@@ -1,0 +1,59 @@
+[
+  {
+    "status": "PASS",
+    "base_main_sha": "6d43209a7a392927169d1d1765704e8510fefbfc",
+    "research_authority_pr": 195,
+    "routing_sync_pr": 196,
+    "precision_bits": 384,
+    "max_evaluated_cells": 96,
+    "followup_evaluated_cells": 1,
+    "primary_hull": {
+      "Q": 14,
+      "lo_num": 114296060900476,
+      "hi_num": 114914536191100,
+      "den": 281474976710656
+    },
+    "adaptive_budget_increase_permitted": false,
+    "recursive_followup_subdivision_permitted": false,
+    "theorem_promotion": false,
+    "rh_claim": false
+  },
+  {
+    "status": "PASS",
+    "primary_hull": {
+      "Q": 14,
+      "lo_num": 114296060900476,
+      "hi_num": 114914536191100,
+      "den": 281474976710656
+    },
+    "max_evaluated_cells": 96,
+    "followup_evaluated_cells": 1,
+    "one_cell_followup_only": true
+  },
+  {
+    "status": "PASS",
+    "post195_classification": "PARTIAL_TRAJECTORY_ORIENTATION",
+    "post195_evaluated_cell_count": 96,
+    "post195_leaf_count": 49,
+    "post195_budget_exhausted_leaf_count": 1,
+    "budget_leaf_fraction_of_hull": "1/64",
+    "followup_evaluated_cell_count": 1,
+    "replayed_cell_orientation": "J_POSITIVE",
+    "replayed_method_orientations": {
+      "A": "J_UNRESOLVED",
+      "B": "J_POSITIVE",
+      "C": "J_POSITIVE"
+    },
+    "completed_classification": "GLOBAL_MONOTONE_ORIENTATION",
+    "completed_uniform_orientation": "J_POSITIVE",
+    "completed_unresolved_span_count": 0,
+    "certified_t_fraction": "1",
+    "full_hull_signed_monotonicity": true,
+    "global_positive_hull": true,
+    "bounded_distinct_aperture_twin_exclusion": true,
+    "theorem_promotion": false,
+    "fb05_closed": false,
+    "negative_root_exclusion": false,
+    "rh_claim": false
+  }
+]

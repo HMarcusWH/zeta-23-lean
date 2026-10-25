@@ -1,0 +1,15 @@
+# Final candidate evidence and acceptance boundary
+
+This supplements, without changing, BRIDGE_REVIEW_ADDENDUM.md and the preserved initial/Stage22 findings.
+
+The final fully qualified bridge closure run also passes: 17 declarations, each using exactly `propext`, `Classical.choice` and `Quot.sound`. Its native receipt exits 0 with unchanged source inventory. Log SHA-256 is `7f364c4d3c20987a9036f8945ba524ddfd01b3b9fb735614050a2ba95a0a6108`. FINAL_EVIDENCE.json recomputes the log/receipt/source hashes and all printed closures.
+
+The producer archive is `SEALED_TEMPERED_LATTICE_2026-10-24.zip`, SHA-256 `462475c1c9c77f5a92e5ea4ccbee6d67f26c1fbf0b02a14b1a2fa9ca929e2c50`; its extracted manifest hashes to `d6dbb1c59703df4307a82a3f4a8d8da4178a26f791c8ee6a450709f3eb13fea7`. “Sealed” identifies pinned producer bytes, not accepted independent review.
+
+The prepared combined Square source hashes to `98c3688c4e293519aa79e3da6aaba02bcb2bca6d132ae18f16dbc4c58986ff48`. I independently checked the original c65b physical module is its exact byte block after three added Mathlib imports. The analytic and bridge bodies are appended after removing scratch imports and qualifying print names. This preparation is not itself a native production replay; final owner integration, direct-import refinement and exact clean-pin verification remain necessary.
+
+There is one explicit expected-type **acceptance/provenance** issue distinct from the resolved mathematical S3 gap. BUILD_SPEC.md:745 requires an independently written expected type for the intended statement and says a copied actual inferred type is insufficient. The producer confirms the seven `_full_signature` companions are complete written-source-signature copies, not independent expected-type authorship. The warm 100/100 report is exactly 93 required-name types plus seven source-copy full-signature types; it is computable type coverage. My actual non-author semantic review independently assessed the frozen clauses and actual domains, but it does not change who authored those formal expected types.
+
+Before accepting a full review object, retain explicit provenance and ensure the independently written intended-type requirement is actually satisfied. All seven full companions must also be included in physical/unit/export coverage. `expected_dilation_near_gap_family` alone proves only nonzero distribution; the complete family clauses need the explicitly reviewed full physical expected statement. Source-copy equality, an approval-shaped status string, and this review's existence cannot substitute for that requirement. This report neither rewrites those types nor grants permission to set a seal.
+
+The mathematical disposition remains: no additional statement/domain gap found in the exact Stage22 assembled candidate plus the final compiled bridge, with complete carried-forward 100-root/28-unit/83-definition findings. The final owner clean-pin review and full cold protocol are still separate work. This is actual non-author model review; independent human review remains NOT_ESTABLISHED. RH, Step4, independent closing inequalities, aggregate acceptance and full release remain OPEN.

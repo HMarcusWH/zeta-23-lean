@@ -1,0 +1,76 @@
+negative-cp1-zero-measure.lean:9:35: error: Application type mismatch: The argument
+  h0
+has type
+  0 < ρ.re
+but is expected to have type
+  riemannZeta ρ = 0
+in the application
+  zero_measure_exact_properties ρ h0
+negative-cp1-zero-measure.lean:13:2: error: Type mismatch
+  (zero_measure_exact_properties ρ hz h0 h1 hh).right.right.right.right.right.right.right.right.right.right.left.left
+has type
+  (zeroMeasure ρ).rePart.positive {1} = 0
+but is expected to have type
+  (zeroMeasure ρ).rePart.positive {1} = 1
+negative-cp1-zero-measure.lean:17:2: error: Type mismatch
+  (zero_measure_exact_properties ρ hz h0 h1 hh).right.left
+has type
+  normalizationBrho ρ = 1 / ρ - 1 / (1 - ρ)
+but is expected to have type
+  normalizationBrho ρ = 1 / ρ + 1 / (1 - ρ)
+negative-cp1-zero-measure.lean:21:2: error: Invalid projection: Projections cannot be used on functions, and
+  zero_measure_exact_properties ρ hz h0 h1
+has function type
+  ρ ≠ 1 / 2 →
+    normalizationBrho ρ = (1 - 2 * ρ) / coPoissonKappa ρ ∧
+      normalizationBrho ρ = 1 / ρ - 1 / (1 - ρ) ∧
+        normalizationBrho ρ ≠ 0 ∧
+          (∀ (φ : 𝓢(ℝ, ℂ)),
+              (zeroMeasure ρ).integral ⇑φ =
+                ((coPoissonFamily (ρ - 1 / 2)) φ - 1 / (1 - ρ) * (φ 0 + ∫ (x : ℝ), φ x) -
+                    normalizationBrho ρ * (dilatedCombDistribution 0) φ) /
+                  normalizationBrho ρ) ∧
+            (∀ (φ : 𝓢(ℝ, ℂ)),
+                (zeroMeasure ρ).integral ⇑φ =
+                  (∫ (x : ℝ), coPoissonComplexDensity ρ x * φ x) - ∑' (n : ℤ), if n = 0 then 0 else φ ↑n) ∧
+              (zeroMeasure ρ).HasLinearGrowth ∧
+                𝓕 ((zeroMeasure ρ).distributionOfLinearGrowth ⋯) = (zeroMeasure ρ).distributionOfLinearGrowth ⋯ ∧
+                  (Measure.map (fun x => -x) (zeroMeasure ρ).rePart.positive = (zeroMeasure ρ).rePart.positive ∧
+                      Measure.map (fun x => -x) (zeroMeasure ρ).rePart.negative = (zeroMeasure ρ).rePart.negative ∧
+                        Measure.map (fun x => -x) (zeroMeasure ρ).imPart.positive = (zeroMeasure ρ).imPart.positive ∧
+                          Measure.map (fun x => -x) (zeroMeasure ρ).imPart.negative = (zeroMeasure ρ).imPart.negative) ∧
+                    (zeroMeasure ρ).variationControl (Ioo (-1) 1) = 0 ∧
+                      (zeroMeasure ρ).variationControl {0} = 0 ∧
+                        ((zeroMeasure ρ).rePart.positive {1} = 0 ∧
+                            (zeroMeasure ρ).rePart.negative {1} = 1 ∧
+                              (zeroMeasure ρ).imPart.positive {1} = 0 ∧ (zeroMeasure ρ).imPart.negative {1} = 0) ∧
+                          (((zeroMeasure ρ).rePart.positive =
+                                volume.withDensity fun x => ENNReal.ofReal (coPoissonRealDensity ρ x)) ∧
+                              (zeroMeasure ρ).rePart.negative =
+                                (volume.withDensity fun x => ENNReal.ofReal (-coPoissonRealDensity ρ x)) +
+                                  puncturedLattice) ∧
+                            (zeroMeasure ρ).rePart.HasLinearGrowth ∧
+                              𝓕 ((zeroMeasure ρ).rePart.distributionOfLinearGrowth ⋯) =
+                                  (zeroMeasure ρ).rePart.distributionOfLinearGrowth ⋯ ∧
+                                ((zeroMeasure ρ).rePart.positive (Ioo (-1) 1) = 0 ∧
+                                    (zeroMeasure ρ).rePart.negative (Ioo (-1) 1) = 0) ∧
+                                  ((zeroMeasure ρ).rePart.positive {0} = 0 ∧ (zeroMeasure ρ).rePart.negative {0} = 0) ∧
+                                    ((zeroMeasure ρ).rePart.positive.real {1} = 0 ∧
+                                        (zeroMeasure ρ).rePart.negative.real {1} = 1) ∧
+                                      (zeroMeasure ρ).rePart.negative ≠ 0
+negative-cp1-zero-measure.lean:25:2: error: Type mismatch
+  (zero_measure_exact_properties ρ hz h0 h1 hh).right.right.right.right.right.right.right.right.left
+has type
+  (zeroMeasure ρ).variationControl (Ioo (-1) 1) = 0
+but is expected to have type
+  (zeroMeasure ρ).variationControl (Ioo (-2) 2) = 0
+negative-cp1-zero-measure.lean:30:2: error: Type mismatch
+  (zero_measure_exact_properties ρ hz h0 h1 hh).right.right.right.left φ
+has type
+  (zeroMeasure ρ).integral ⇑φ =
+    ((coPoissonFamily (ρ - 1 / 2)) φ - 1 / (1 - ρ) * (φ 0 + ∫ (x : ℝ), φ x) -
+        normalizationBrho ρ * (dilatedCombDistribution 0) φ) /
+      normalizationBrho ρ
+but is expected to have type
+  (zeroMeasure ρ).integral ⇑φ =
+    ((coPoissonFamily (ρ - 1 / 2)) φ - 1 / (1 - ρ) * (φ 0 + ∫ (x : ℝ), φ x)) / normalizationBrho ρ

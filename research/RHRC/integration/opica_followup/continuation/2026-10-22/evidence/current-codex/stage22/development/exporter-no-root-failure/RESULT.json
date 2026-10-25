@@ -1,0 +1,27 @@
+{
+  "schema": "OPICA_UNACCEPTED_WARM_FULL100_EXPORT_SMOKE_V1",
+  "status": "FAIL",
+  "identity": {
+    "requested_head": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+    "requested_base": "d53dd70d38b0762af130b1d19b795af259f505f5",
+    "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+    "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+    "checkout_kind": "PR_HEAD"
+  },
+  "cold_isolation": false,
+  "full_release_accepted": false,
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "command": [
+    "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+    "env",
+    "lean",
+    "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\warm-export-smoke\\WarmFull100Export.lean",
+    "-o",
+    "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\warm-export-smoke\\WarmFull100Export.olean"
+  ],
+  "exit_code": 1,
+  "seconds": 2.992164699942805,
+  "log_sha256": "5c943986020dd1a394d9a996c4f82406b904950a199285ef767eb38f92fb9818",
+  "failure": "ValueError: actual warm exporter compiler failed"
+}

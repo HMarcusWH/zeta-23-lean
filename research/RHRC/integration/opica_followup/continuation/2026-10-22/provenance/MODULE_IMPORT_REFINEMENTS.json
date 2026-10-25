@@ -1,0 +1,377 @@
+{
+  "schema": "OPICA_CONTINUATION_MODULE_IMPORT_REFINEMENTS_V1",
+  "date": "2026-10-22",
+  "role": "Implementation-dependency provenance only; frozen manifests and all100contracts remain unchanged",
+  "baseline_head": "9b6a9a3a2badb4cff62a56c1158d9cef8759d30d",
+  "existing_dependency_overlay": "DEP_2026_10_21_03 in research/RHRC/integration/opica_followup/SOURCE_REGISTER.json",
+  "existing_dependency_overlay_changed": false,
+  "frozen_build_manifest_sha256": "c99ec7acbfe996455525b31088a7d04addd20653787e12098e4e51a4a7ce296e",
+  "frozen_public_roots_sha256": "2239636f347449ecd447fc5ba78d7c75f1c0440d28a862cb72397c4f79597b41",
+  "independent_receipt": "evidence/current-codex/lean-review/STATUS.json",
+  "independent_receipt_scope": "Three exact repaired modules and unchanged independent consumers only; standard axiom output in receipt. WIP imports are inventoried, not certified.",
+  "global_reconciliation": "OPEN: record or validate the continuation implementation import delta separately before any aggregate/full-release promotion. No frozen manifest bytes were changed.",
+  "required_roots": 100,
+  "acceptance_units": 28,
+  "aggregate_promotion": false,
+  "full_release_acceptance": "OPEN",
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "rows": [
+    {
+      "module": "Zeta23.OPICAFollowup.AuxiliaryCompletions",
+      "path": "Zeta23/OPICAFollowup/AuxiliaryCompletions.lean",
+      "source_sha256": "4dd849389b193ec3fbdbe718c30d62c7212b2d9e4b369437640d8b81804746dd",
+      "validation_status": "GREEN_INDEPENDENT_NARROW_MODULE_AND_CONSUMER_GATES_AGGREGATE_OPEN",
+      "frozen_direct_project_imports": [
+        "Zeta23.OPICAFollowup.NativeSourceTransforms"
+      ],
+      "actual_direct_imports": [
+        "Mathlib.Analysis.Fourier.PoissonSummation",
+        "Mathlib.MeasureTheory.Measure.Haar.NormedSpace",
+        "Mathlib.Analysis.Complex.Convex",
+        "Zeta23.OPICA.WeightedLaplace",
+        "Zeta23.OPICAFollowup.NativeSourceTransforms",
+        "Mathlib.Analysis.Calculus.Deriv.Polynomial",
+        "Mathlib.Data.Nat.Choose.Sum"
+      ],
+      "actual_direct_project_imports": [
+        "Zeta23.OPICA.WeightedLaplace",
+        "Zeta23.OPICAFollowup.NativeSourceTransforms"
+      ],
+      "added_project_imports": [
+        "Zeta23.OPICA.WeightedLaplace"
+      ],
+      "omitted_planned_project_imports": [],
+      "baseline_9b_source_present": true,
+      "baseline_9b_direct_imports": [
+        "Zeta23.OPICAFollowup.NativeSourceTransforms",
+        "Mathlib.Analysis.Calculus.Deriv.Polynomial",
+        "Mathlib.Data.Nat.Choose.Sum"
+      ],
+      "reconciliation_status": "IMPLEMENTATION_REFINEMENT_RECORDED_HERE;GLOBAL_SOURCE_REGISTER_AND_EXACT_IMPORT_CONTRACT_RECONCILIATION_OPEN",
+      "reason": "WeightedLaplace supplies the proved holomorphic actual Laplace transform of a constructed weighted-L2 causal kernel. The kernel decay and weighted-L2 premise are derived in this module; no desired transform, rate, or RH conclusion is assumed. Poisson/Haar/complex-convex/polynomial/binomial Mathlib imports implement the literal beta, endpoint, scaling and continuation proofs.",
+      "theorem_statement_changes_authorized": [],
+      "new_assumptions_authorized": [],
+      "aggregate_dependency_audit": "OPEN"
+    },
+    {
+      "module": "Zeta23.OPICAFollowup.ComplexLocalMeasures",
+      "path": "Zeta23/OPICAFollowup/ComplexLocalMeasures.lean",
+      "source_sha256": "43d96d5474819b79c29853a81f8b4398f16d298470c2100fdade3fcada3a25b8",
+      "validation_status": "GREEN_INDEPENDENT_NARROW_MODULE_AND_CONSUMER_GATES_AGGREGATE_OPEN",
+      "frozen_direct_project_imports": [
+        "Zeta23.OPICA.LocallyFiniteSignedMeasure"
+      ],
+      "actual_direct_imports": [
+        "Mathlib.MeasureTheory.VectorMeasure.Decomposition.JordanSub",
+        "Zeta23.OPICA.LocallyFiniteSignedMeasure",
+        "Mathlib.MeasureTheory.Measure.Complex",
+        "Mathlib.MeasureTheory.VectorMeasure.Variation.Basic",
+        "Mathlib.MeasureTheory.VectorMeasure.Variation.SignedMeasure",
+        "Mathlib.MeasureTheory.VectorMeasure.Integral",
+        "Mathlib.Tactic"
+      ],
+      "actual_direct_project_imports": [
+        "Zeta23.OPICA.LocallyFiniteSignedMeasure"
+      ],
+      "added_project_imports": [],
+      "omitted_planned_project_imports": [],
+      "baseline_9b_source_present": true,
+      "baseline_9b_direct_imports": [
+        "Mathlib.MeasureTheory.VectorMeasure.Decomposition.JordanSub",
+        "Zeta23.OPICA.LocallyFiniteSignedMeasure",
+        "Mathlib.MeasureTheory.Measure.Complex",
+        "Mathlib.MeasureTheory.VectorMeasure.Variation.Basic",
+        "Mathlib.MeasureTheory.VectorMeasure.Variation.SignedMeasure",
+        "Mathlib.MeasureTheory.VectorMeasure.Integral",
+        "Mathlib.Tactic"
+      ],
+      "reconciliation_status": "PROJECT_IMPORT_SET_MATCHES_FROZEN_PLAN",
+      "reason": "Frozen parent LocallyFiniteSignedMeasure project dependency is unchanged. Mathlib Jordan decomposition, finite complex measures and actual variation/integral APIs implement genuine locally finite complex restrictions and common-growth tempered convergence.",
+      "theorem_statement_changes_authorized": [],
+      "new_assumptions_authorized": [],
+      "aggregate_dependency_audit": "OPEN"
+    },
+    {
+      "module": "Zeta23.OPICAFollowup.Consumers",
+      "path": "Zeta23/OPICAFollowup/Consumers.lean",
+      "source_sha256": "d5e0df823e358f4b273313150f2b06ccbd4a1eb049a628087d6e34f061001324",
+      "validation_status": "WIP_UNACCEPTED_NO_NEW_COMPILER_ACCEPTANCE",
+      "frozen_direct_project_imports": [
+        "Zeta23.OPICAFollowup.NativeTransformationWords",
+        "Zeta23.OPICAFollowup.MaskedNativeRate",
+        "Zeta23.OPICAFollowup.NativeWindowRate",
+        "Zeta23.OPICAFollowup.MovingSourceWindowRate",
+        "Zeta23.OPICAFollowup.RobustLaurent",
+        "Zeta23.OPICAFollowup.FiniteSpanSeparation",
+        "Zeta23.OPICAFollowup.FirstCellCost",
+        "Zeta23.OPICAFollowup.SquareDefect",
+        "Zeta23.OPICAFollowup.BoundaryAmplitude",
+        "Zeta23.OPICAFollowup.WeightedMixing",
+        "Zeta23.OPICAFollowup.NearGapLimits",
+        "Zeta23.OPICAFollowup.Counterexamples",
+        "Zeta23.ExceptionalZero.Step4OutputSufficiency"
+      ],
+      "actual_direct_imports": [
+        "Zeta23.OPICAFollowup.RobustLaurent",
+        "Zeta23.OPICA.NativeJetAdapter"
+      ],
+      "actual_direct_project_imports": [
+        "Zeta23.OPICAFollowup.RobustLaurent",
+        "Zeta23.OPICA.NativeJetAdapter"
+      ],
+      "added_project_imports": [
+        "Zeta23.OPICA.NativeJetAdapter"
+      ],
+      "omitted_planned_project_imports": [
+        "Zeta23.OPICAFollowup.NativeTransformationWords",
+        "Zeta23.OPICAFollowup.MaskedNativeRate",
+        "Zeta23.OPICAFollowup.NativeWindowRate",
+        "Zeta23.OPICAFollowup.MovingSourceWindowRate",
+        "Zeta23.OPICAFollowup.FiniteSpanSeparation",
+        "Zeta23.OPICAFollowup.FirstCellCost",
+        "Zeta23.OPICAFollowup.SquareDefect",
+        "Zeta23.OPICAFollowup.BoundaryAmplitude",
+        "Zeta23.OPICAFollowup.WeightedMixing",
+        "Zeta23.OPICAFollowup.NearGapLimits",
+        "Zeta23.OPICAFollowup.Counterexamples",
+        "Zeta23.ExceptionalZero.Step4OutputSufficiency"
+      ],
+      "baseline_9b_source_present": false,
+      "baseline_9b_direct_imports": null,
+      "reconciliation_status": "PARTIAL_WIP_IMPORT_DELTA_RECORDED;FULL_FROZEN_CONTRACT_RECONCILIATION_OPEN",
+      "reason": "This is an explicitly partial conditional-consumer candidate. Its current import subset must not be treated as completing the full planned native-rate, source-span, or other original consumer contracts.",
+      "theorem_statement_changes_authorized": [],
+      "new_assumptions_authorized": [],
+      "aggregate_dependency_audit": "OPEN"
+    },
+    {
+      "module": "Zeta23.OPICAFollowup.DilatedComb",
+      "path": "Zeta23/OPICAFollowup/DilatedComb.lean",
+      "source_sha256": "6fd8a4016305e8898b58c64c38807b50d417e5a763487d5ccad5c6cabd4ecfc1",
+      "validation_status": "GREEN_INDEPENDENT_NARROW_MODULE_AND_CONSUMER_GATES_AGGREGATE_OPEN",
+      "frozen_direct_project_imports": [
+        "Zeta23.OPICAFollowup.ComplexLocalMeasures",
+        "Zeta23.OPICA.SincTriangle"
+      ],
+      "actual_direct_imports": [
+        "Zeta23.OPICAFollowup.ComplexLocalMeasures",
+        "Zeta23.OPICA.SincTriangle",
+        "Mathlib.MeasureTheory.Measure.Count",
+        "Mathlib.MeasureTheory.Integral.Bochner.SumMeasure",
+        "Mathlib.Analysis.Fourier.PoissonSummation",
+        "Mathlib.Analysis.Distribution.SchwartzSpace.Fourier",
+        "Mathlib.Tactic"
+      ],
+      "actual_direct_project_imports": [
+        "Zeta23.OPICAFollowup.ComplexLocalMeasures",
+        "Zeta23.OPICA.SincTriangle"
+      ],
+      "added_project_imports": [],
+      "omitted_planned_project_imports": [],
+      "baseline_9b_source_present": false,
+      "baseline_9b_direct_imports": null,
+      "reconciliation_status": "PARTIAL_WIP_IMPORT_DELTA_RECORDED;FULL_FROZEN_CONTRACT_RECONCILIATION_OPEN",
+      "reason": "Stage1 exact narrow proof and interface/import delta reviewed in STAGE1_PROOF_CROSSWALK.json. Other original roots and global dependency reconciliation remain OPEN.",
+      "theorem_statement_changes_authorized": [],
+      "new_assumptions_authorized": [],
+      "aggregate_dependency_audit": "OPEN",
+      "independent_receipt": "evidence/current-codex/stage1/comb/STATUS.json"
+    },
+    {
+      "module": "Zeta23.OPICAFollowup.FirstCellCost",
+      "path": "Zeta23/OPICAFollowup/FirstCellCost.lean",
+      "source_sha256": "badaa178fb17a03b71b01bbf17372ee73688fcb5f8607cb5a47c0f55412ceeeb",
+      "validation_status": "GREEN_INDEPENDENT_NARROW_MODULE_AND_CONSUMER_GATES_AGGREGATE_OPEN",
+      "frozen_direct_project_imports": [
+        "Zeta23.OPICAFollowup.RenormalizedCoPoisson"
+      ],
+      "actual_direct_imports": [
+        "Zeta23.OPICAFollowup.RenormalizedCoPoisson",
+        "Zeta23.OPICA.SignedHeatSeparator",
+        "Mathlib.Analysis.Real.Pi.Bounds",
+        "Mathlib.Analysis.SpecialFunctions.Trigonometric.Bounds",
+        "Mathlib.MeasureTheory.Integral.IntervalIntegral.IntegrationByParts",
+        "Mathlib.Tactic"
+      ],
+      "actual_direct_project_imports": [
+        "Zeta23.OPICAFollowup.RenormalizedCoPoisson",
+        "Zeta23.OPICA.SignedHeatSeparator"
+      ],
+      "added_project_imports": [
+        "Zeta23.OPICA.SignedHeatSeparator"
+      ],
+      "omitted_planned_project_imports": [],
+      "baseline_9b_source_present": false,
+      "baseline_9b_direct_imports": null,
+      "reconciliation_status": "PARTIAL_WIP_IMPORT_DELTA_RECORDED;FULL_FROZEN_CONTRACT_RECONCILIATION_OPEN",
+      "reason": "Stage1 exact narrow proof and interface/import delta reviewed in STAGE1_PROOF_CROSSWALK.json. Other original roots and global dependency reconciliation remain OPEN.",
+      "theorem_statement_changes_authorized": [],
+      "new_assumptions_authorized": [],
+      "aggregate_dependency_audit": "OPEN",
+      "independent_receipt": "evidence/current-codex/stage1/first-cell/STATUS.json"
+    },
+    {
+      "module": "Zeta23.OPICAFollowup.MaskedNativeRate",
+      "path": "Zeta23/OPICAFollowup/MaskedNativeRate.lean",
+      "source_sha256": "3fcb70e2fa504b5ef14d44c5a9d862f9bac4c8853556ed6e64a6f7e1066545c4",
+      "validation_status": "GREEN_INDEPENDENT_NARROW_MODULE_AND_CONSUMER_GATES_AGGREGATE_OPEN",
+      "frozen_direct_project_imports": [
+        "Zeta23.OPICAFollowup.LogSlackBalance",
+        "Zeta23.OPICAFollowup.NormFirstTransfer",
+        "Zeta23.OPICA.DivisorMask"
+      ],
+      "actual_direct_imports": [
+        "Mathlib.Analysis.SpecialFunctions.Pow.Asymptotics",
+        "Mathlib.MeasureTheory.Function.L2Space",
+        "Zeta23.OPICAFollowup.LogSlackBalance",
+        "Zeta23.OPICAFollowup.NormFirstTransfer",
+        "Zeta23.OPICA.DivisorMask"
+      ],
+      "actual_direct_project_imports": [
+        "Zeta23.OPICAFollowup.LogSlackBalance",
+        "Zeta23.OPICAFollowup.NormFirstTransfer",
+        "Zeta23.OPICA.DivisorMask"
+      ],
+      "added_project_imports": [],
+      "omitted_planned_project_imports": [],
+      "baseline_9b_source_present": true,
+      "baseline_9b_direct_imports": [
+        "Zeta23.OPICAFollowup.LogSlackBalance",
+        "Zeta23.OPICAFollowup.NormFirstTransfer",
+        "Zeta23.OPICA.DivisorMask"
+      ],
+      "reconciliation_status": "PROJECT_IMPORT_SET_MATCHES_FROZEN_PLAN",
+      "reason": "All frozen direct project imports are retained. Added Mathlib L2-space and asymptotics APIs construct the actual varying window vectors and derive their scheduled norm limit.",
+      "theorem_statement_changes_authorized": [],
+      "new_assumptions_authorized": [],
+      "aggregate_dependency_audit": "OPEN"
+    },
+    {
+      "module": "Zeta23.OPICAFollowup.MultiplicityTail",
+      "path": "Zeta23/OPICAFollowup/MultiplicityTail.lean",
+      "source_sha256": "43466c43684b91e5f4cff2b34ea5df178d1bf196c35946e8411bab9cdfb2e123",
+      "validation_status": "GREEN_INDEPENDENT_NARROW_MODULE_AND_CONSUMER_GATES_AGGREGATE_OPEN",
+      "frozen_direct_project_imports": [
+        "Zeta23.OPICAFollowup.AuxiliaryCompletions",
+        "Zeta23.OPICAFollowup.UniformSourceBounds",
+        "Zeta23.ExceptionalZero.NativeActualInputZeroJets"
+      ],
+      "actual_direct_imports": [
+        "Zeta23.CCM.NativeCompletionEquation",
+        "Mathlib.MeasureTheory.Function.AEEqOfIntegral",
+        "Mathlib.Analysis.Convolution",
+        "Zeta23.OPICAFollowup.AuxiliaryCompletions",
+        "Zeta23.OPICAFollowup.UniformSourceBounds",
+        "Zeta23.ExceptionalZero.NativeActualInputZeroJets",
+        "Mathlib.Analysis.Calculus.Deriv.Polynomial",
+        "Mathlib.MeasureTheory.Integral.Gamma",
+        "Mathlib.MeasureTheory.Function.L2Space"
+      ],
+      "actual_direct_project_imports": [
+        "Zeta23.CCM.NativeCompletionEquation",
+        "Zeta23.OPICAFollowup.AuxiliaryCompletions",
+        "Zeta23.OPICAFollowup.UniformSourceBounds",
+        "Zeta23.ExceptionalZero.NativeActualInputZeroJets"
+      ],
+      "added_project_imports": [
+        "Zeta23.CCM.NativeCompletionEquation"
+      ],
+      "omitted_planned_project_imports": [],
+      "baseline_9b_source_present": false,
+      "baseline_9b_direct_imports": null,
+      "reconciliation_status": "PROJECT_IMPORT_SET_MATCHES_FROZEN_PLAN",
+      "reason": "Stage2 exact narrow proof/import review in STAGE2_PROOF_CROSSWALK.json; all other original roots and full dependency reconciliation remain required.",
+      "theorem_statement_changes_authorized": [],
+      "new_assumptions_authorized": [],
+      "aggregate_dependency_audit": "OPEN",
+      "independent_receipt": "evidence/current-codex/stage2/multiplicity/STATUS.json"
+    },
+    {
+      "module": "Zeta23.OPICAFollowup.RenormalizedCoPoisson",
+      "path": "Zeta23/OPICAFollowup/RenormalizedCoPoisson.lean",
+      "source_sha256": "ad5546231c74696031e5980dac9b8b445d6ff388326679fd4f8fbd68dedda39f",
+      "validation_status": "GREEN_INDEPENDENT_NARROW_MODULE_AND_CONSUMER_GATES_AGGREGATE_OPEN",
+      "frozen_direct_project_imports": [
+        "Zeta23.OPICAFollowup.DilatedComb"
+      ],
+      "actual_direct_imports": [
+        "Zeta23.OPICAFollowup.ComplexLocalMeasures",
+        "Zeta23.ExceptionalZero.ZetaRealStripNonvanishing",
+        "Mathlib.Analysis.SpecialFunctions.Complex.Log",
+        "Mathlib.Analysis.SpecialFunctions.Trigonometric.Complex",
+        "Mathlib.Analysis.SpecialFunctions.Trigonometric.DerivHyp",
+        "Mathlib.Analysis.Real.Pi.Bounds",
+        "Mathlib.Tactic"
+      ],
+      "actual_direct_project_imports": [
+        "Zeta23.OPICAFollowup.ComplexLocalMeasures",
+        "Zeta23.ExceptionalZero.ZetaRealStripNonvanishing"
+      ],
+      "added_project_imports": [
+        "Zeta23.ExceptionalZero.ZetaRealStripNonvanishing",
+        "Zeta23.OPICAFollowup.ComplexLocalMeasures"
+      ],
+      "omitted_planned_project_imports": [
+        "Zeta23.OPICAFollowup.DilatedComb"
+      ],
+      "baseline_9b_source_present": false,
+      "baseline_9b_direct_imports": null,
+      "reconciliation_status": "PARTIAL_WIP_IMPORT_DELTA_RECORDED;FULL_FROZEN_CONTRACT_RECONCILIATION_OPEN",
+      "reason": "Stage1 exact narrow proof and interface/import delta reviewed in STAGE1_PROOF_CROSSWALK.json. Other original roots and global dependency reconciliation remain OPEN.",
+      "theorem_statement_changes_authorized": [],
+      "new_assumptions_authorized": [],
+      "aggregate_dependency_audit": "OPEN",
+      "independent_receipt": "evidence/current-codex/stage1/first-cell/STATUS.json"
+    },
+    {
+      "module": "Zeta23.OPICAFollowup.NearGapLimits",
+      "path": "Zeta23/OPICAFollowup/NearGapLimits.lean",
+      "source_sha256": "aa5915cea7e35ea7efb90f4d4d95f6d3773b42666b0690a4a491f8b73fce1c5a",
+      "frozen_direct_project_imports": [
+        "Zeta23.OPICAFollowup.DilatedComb",
+        "Zeta23.OPICA.SignedHeatSeparator"
+      ],
+      "actual_direct_imports": [
+        "Zeta23.OPICAFollowup.DilatedComb",
+        "Zeta23.OPICA.SignedHeatSeparator"
+      ],
+      "actual_direct_project_imports": [
+        "Zeta23.OPICAFollowup.DilatedComb",
+        "Zeta23.OPICA.SignedHeatSeparator"
+      ],
+      "added_project_imports": [],
+      "omitted_planned_project_imports": [],
+      "validation_status": "GREEN_INDEPENDENT_NARROW_MODULE_AND_CONSUMER_GATES_AGGREGATE_OPEN",
+      "independent_receipt": "evidence/current-codex/stage2/near-gap/STATUS.json",
+      "reason": "Stage2 exact narrow proof/import review in STAGE2_PROOF_CROSSWALK.json; all other original roots and full dependency reconciliation remain required."
+    },
+    {
+      "module": "Zeta23.OPICAFollowup.WeightedMixing",
+      "path": "Zeta23/OPICAFollowup/WeightedMixing.lean",
+      "source_sha256": "5b0d86adcf72167a45b3922689911a5591da4c3ecab7fd19ceb246de5f00998a",
+      "frozen_direct_project_imports": [
+        "Zeta23.OPICAFollowup.DilatedComb",
+        "Zeta23.CCM.NativeIntegerPrimeConvolution"
+      ],
+      "actual_direct_imports": [
+        "Zeta23.OPICAFollowup.DilatedComb",
+        "Mathlib.MeasureTheory.Integral.Prod",
+        "Mathlib.MeasureTheory.Measure.WithDensity",
+        "Mathlib.MeasureTheory.Integral.Bochner.ContinuousLinearMap",
+        "Mathlib.Tactic"
+      ],
+      "actual_direct_project_imports": [
+        "Zeta23.OPICAFollowup.DilatedComb"
+      ],
+      "added_project_imports": [],
+      "omitted_planned_project_imports": [
+        "Zeta23.CCM.NativeIntegerPrimeConvolution"
+      ],
+      "validation_status": "GREEN_INDEPENDENT_NARROW_MODULE_AND_CONSUMER_GATES_AGGREGATE_OPEN",
+      "independent_receipt": "evidence/current-codex/stage2/weighted/STATUS.json",
+      "reason": "Stage2 exact narrow proof/import review in STAGE2_PROOF_CROSSWALK.json; all other original roots and full dependency reconciliation remain required."
+    }
+  ],
+  "latest_stage_crosswalk": "provenance/STAGE2_PROOF_CROSSWALK.json"
+}

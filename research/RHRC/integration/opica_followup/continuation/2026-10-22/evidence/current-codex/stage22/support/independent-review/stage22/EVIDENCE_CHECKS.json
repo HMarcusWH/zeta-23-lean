@@ -1,0 +1,135 @@
+{
+  "review_kind": "ACTUAL_NONAUTHOR_MATHEMATICAL_CONTRACT_REVIEW",
+  "review_status": "COMPLETED_WITH_EXPLICIT_S3_BROADER_DOMAIN_GAP",
+  "human_review": "NOT_ESTABLISHED",
+  "seal_created": false,
+  "owner_head": "139c1a0d88cc0fb2d8a0d8ea71e152b25b14c36e",
+  "owner_tree": "3e63b0c72fc04da7bab45388d6096e82e95c4acb",
+  "all100_root_source_present": true,
+  "all100_required_expected_consumers_present": true,
+  "canonical_definitions": 83,
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "independent_closing_inequalities": "OPEN",
+  "aggregate": "OPEN",
+  "full_release": "OPEN",
+  "checks": [
+    {
+      "lane": "full-source-signature-coverage",
+      "kind": "source",
+      "file": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-release\\CompareFullSignatureCoverage.lean",
+      "expected_sha256": "b687771e14ec7add76b4e4fc2df0fd207eb2037774f6d99cc180d89fb504654b",
+      "actual_sha256": "b687771e14ec7add76b4e4fc2df0fd207eb2037774f6d99cc180d89fb504654b",
+      "matches": true,
+      "exit_code": 0
+    },
+    {
+      "lane": "full-source-signature-coverage",
+      "kind": "log",
+      "file": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-release\\CompareFullSignatureCoverage.log",
+      "expected_sha256": "b65f18effee4aacc3869ef8e5671a2ac8b4533789e04e970563b2efbb2bff536",
+      "actual_sha256": "b65f18effee4aacc3869ef8e5671a2ac8b4533789e04e970563b2efbb2bff536",
+      "matches": true,
+      "exit_code": 0
+    },
+    {
+      "lane": "negative-RecoveryWrongCost",
+      "kind": "source",
+      "file": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-release\\NegativeCanonicalRecoveryWrongCost.lean",
+      "expected_sha256": "db3decd152f2a1876ab07134c19aca8373bb3fb600db5bb3ea87598875d3fae6",
+      "actual_sha256": "db3decd152f2a1876ab07134c19aca8373bb3fb600db5bb3ea87598875d3fae6",
+      "matches": true,
+      "exit_code": 1
+    },
+    {
+      "lane": "negative-RecoveryWrongCost",
+      "kind": "log",
+      "file": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-release\\NegativeCanonicalRecoveryWrongCost.log",
+      "expected_sha256": "ebd3e4f6b0e67d9fffb2cfe21cac398e8c7728b1b313babf4f517ebd4e3b1333",
+      "actual_sha256": "ebd3e4f6b0e67d9fffb2cfe21cac398e8c7728b1b313babf4f517ebd4e3b1333",
+      "matches": true,
+      "exit_code": 1
+    },
+    {
+      "lane": "negative-EulerWrongMultiplier",
+      "kind": "source",
+      "file": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-release\\NegativeCanonicalEulerWrongMultiplier.lean",
+      "expected_sha256": "4c823a480c003cfc57f122ec4f8e4ca8154f51b3b23fef248837a1f476648f9f",
+      "actual_sha256": "4c823a480c003cfc57f122ec4f8e4ca8154f51b3b23fef248837a1f476648f9f",
+      "matches": true,
+      "exit_code": 1
+    },
+    {
+      "lane": "negative-EulerWrongMultiplier",
+      "kind": "log",
+      "file": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-release\\NegativeCanonicalEulerWrongMultiplier.log",
+      "expected_sha256": "b605832dda78c4397504fa3dbb67d46db3fa8a1c5947d7a43c053cc51f1c9551",
+      "actual_sha256": "b605832dda78c4397504fa3dbb67d46db3fa8a1c5947d7a43c053cc51f1c9551",
+      "matches": true,
+      "exit_code": 1
+    },
+    {
+      "lane": "negative-ResidualWrongPower",
+      "kind": "source",
+      "file": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-release\\NegativeCanonicalResidualWrongPower.lean",
+      "expected_sha256": "b230e8ba674ca3a6f9188ca2eef6941aee12d3f61ca6e9e87ce730f20f51cc68",
+      "actual_sha256": "b230e8ba674ca3a6f9188ca2eef6941aee12d3f61ca6e9e87ce730f20f51cc68",
+      "matches": true,
+      "exit_code": 1
+    },
+    {
+      "lane": "negative-ResidualWrongPower",
+      "kind": "log",
+      "file": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-release\\NegativeCanonicalResidualWrongPower.log",
+      "expected_sha256": "abfa870d4a514987f0c4c4147a822b3c34287cffc4d5ba3a867fa8d194a38cc1",
+      "actual_sha256": "abfa870d4a514987f0c4c4147a822b3c34287cffc4d5ba3a867fa8d194a38cc1",
+      "matches": true,
+      "exit_code": 1
+    },
+    {
+      "lane": "square-physical",
+      "kind": "source",
+      "file": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-square-physical\\SquareDefectPhysicalFullCandidate.lean",
+      "expected_sha256": "c65b7b8eb6894a89a12a85e36ea660c97ca8deeb47900392786b20ae81b4ee58",
+      "actual_sha256": "c65b7b8eb6894a89a12a85e36ea660c97ca8deeb47900392786b20ae81b4ee58",
+      "matches": true
+    },
+    {
+      "lane": "square-physical",
+      "kind": "source",
+      "file": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-square-physical\\SquareSpanCompositionFinal.lean",
+      "expected_sha256": "f3ce3f8eca2b25d5c5522b98eec48e83b3b07fc28f1856708837b06b78f6259f",
+      "actual_sha256": "f3ce3f8eca2b25d5c5522b98eec48e83b3b07fc28f1856708837b06b78f6259f",
+      "matches": true
+    },
+    {
+      "lane": "square-physical",
+      "kind": "source",
+      "file": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-square-physical\\ExpectedSquarePhysicalFinal.lean",
+      "expected_sha256": "aa954b908dde1f81697bb1c164eba16600d714523deb825f7a8dc58591fcd5e7",
+      "actual_sha256": "aa954b908dde1f81697bb1c164eba16600d714523deb825f7a8dc58591fcd5e7",
+      "matches": true
+    },
+    {
+      "lane": "square-physical",
+      "kind": "source",
+      "file": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-square-physical\\ExpectedSquareSpanCompositionFinal.lean",
+      "expected_sha256": "375d23d913681a26882d76223b61ce94cee68cbffa29226964dfc79933663b1a",
+      "actual_sha256": "375d23d913681a26882d76223b61ce94cee68cbffa29226964dfc79933663b1a",
+      "matches": true
+    },
+    {
+      "lane": "square-physical",
+      "kind": "source",
+      "file": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-square-physical\\NegativeSquarePhysicalFinal.lean",
+      "expected_sha256": "22b6be21f52213996abc3a427d7b78b33955bf37a2ab337028acf07c6a7f6a35",
+      "actual_sha256": "22b6be21f52213996abc3a427d7b78b33955bf37a2ab337028acf07c6a7f6a35",
+      "matches": true
+    },
+    {
+      "lane": "square-original-prefix",
+      "matches": true,
+      "prefix_sha256": "da73276d089068c1711f3854a9520fbcbbbc877d77ccc33fe20cb9ceb83d64d1"
+    }
+  ]
+}

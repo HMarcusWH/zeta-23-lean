@@ -1,0 +1,3 @@
+'Zeta23.OPICAFollowup.IndependentCompactExtractionConsumer.expected_full_HT2_compact_continuous_extraction' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

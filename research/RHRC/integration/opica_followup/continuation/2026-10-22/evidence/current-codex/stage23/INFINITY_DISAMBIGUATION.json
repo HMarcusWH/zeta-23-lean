@@ -1,0 +1,11 @@
+{
+  "status": "NOTATION_DISAMBIGUATION_ONLY_NEW_NATIVE_REPLAY_REQUIRED",
+  "failed_commit": "16f70efbdf5661224e3de3eff8a3d7e74f1c2309",
+  "failed_source_sha256": "40cc520872719be87631e7e27000f5a51c8f370d77599c18b9e73040fccd35f9",
+  "repaired_source_sha256": "a91355ff92cbfef741a0f05acb728116c6a09aceba23362fe0263adf779655bf",
+  "explicit_ENNReal_infinity_annotations": 11,
+  "original_validation_byte_prefix_preserved": true,
+  "standalone_independent_source_unchanged": true,
+  "original_theorem_contracts_changed": false,
+  "full_release_accepted": false
+}

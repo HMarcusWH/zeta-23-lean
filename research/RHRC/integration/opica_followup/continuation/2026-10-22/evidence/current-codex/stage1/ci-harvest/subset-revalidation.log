@@ -1,0 +1,84 @@
+[
+  {
+    "artifact_id": 12432294070,
+    "status": "OFFLINE_REVALIDATED_41_ROOT_SUBSET_ONLY",
+    "checked_commit": "9ccea78eb5ee0c097bde05424e43de58a589b713",
+    "checked_tree": "40ad2bb6e78f9dcd944870233e991220f573a412",
+    "source_files_verified_against_git_objects": 2661,
+    "source_manifest_sha256": "b0f654f8afe383708555f1656c1838c27b8d23a2f67d3d401d8ae186fb705940",
+    "receipt_sha256": "f3f7b891be2bfb11e82c68bf7ace3caff2a4b31f706a1d12d1b2bbbb9701b9b6",
+    "commands": [
+      {
+        "log": "version.log",
+        "sha256": "d2b0b0a275a0c043b1650ebc4faf0b9c9c686656f0b0f066fc6f77df4f135d3a",
+        "exit_code": 0
+      },
+      {
+        "log": "build.log",
+        "sha256": "9a7a8f9a142951dd1da6f13ff1a070a067da081f20d715dec43ae6c32a9944cc",
+        "exit_code": 0
+      },
+      {
+        "log": "export.log",
+        "sha256": "0e1f9dfd9ecd1c47702f4c5f810cd56fc1dbb8d9133e7d9369cc3e18b47d1998",
+        "exit_code": 0
+      }
+    ],
+    "public_declarations": 1379,
+    "constructors": 16,
+    "dependency_nodes": 7658,
+    "primary_roots": 41,
+    "remaining_roots": 59,
+    "axiom_union": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "compiler_records_revalidated": true,
+    "export_reparsed_equal": true,
+    "release_ready": false,
+    "RH": "OPEN",
+    "Step4": "OPEN"
+  },
+  {
+    "artifact_id": 12434630011,
+    "status": "OFFLINE_REVALIDATED_41_ROOT_SUBSET_ONLY",
+    "checked_commit": "9ccea78eb5ee0c097bde05424e43de58a589b713",
+    "checked_tree": "40ad2bb6e78f9dcd944870233e991220f573a412",
+    "source_files_verified_against_git_objects": 2661,
+    "source_manifest_sha256": "b0f654f8afe383708555f1656c1838c27b8d23a2f67d3d401d8ae186fb705940",
+    "receipt_sha256": "ba4a4be1a79b7180f4406065f399e9a573c27684660654339d156b113cf6faac",
+    "commands": [
+      {
+        "log": "version.log",
+        "sha256": "d2b0b0a275a0c043b1650ebc4faf0b9c9c686656f0b0f066fc6f77df4f135d3a",
+        "exit_code": 0
+      },
+      {
+        "log": "build.log",
+        "sha256": "3bc05f66441cf310ac745072e3ce783f7199976787094e656792654217785ef0",
+        "exit_code": 0
+      },
+      {
+        "log": "export.log",
+        "sha256": "0e1f9dfd9ecd1c47702f4c5f810cd56fc1dbb8d9133e7d9369cc3e18b47d1998",
+        "exit_code": 0
+      }
+    ],
+    "public_declarations": 1379,
+    "constructors": 16,
+    "dependency_nodes": 7658,
+    "primary_roots": 41,
+    "remaining_roots": 59,
+    "axiom_union": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "compiler_records_revalidated": true,
+    "export_reparsed_equal": true,
+    "release_ready": false,
+    "RH": "OPEN",
+    "Step4": "OPEN"
+  }
+]

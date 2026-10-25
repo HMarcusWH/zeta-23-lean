@@ -1,0 +1,182 @@
+{
+  "scope": "Supporting research only; no original H2a/H2b/J5.2/MS1 root promoted",
+  "bundle_created_utc": "2026-10-24T14:36:59.8240210Z",
+  "files": [
+    {
+      "path": "ActualFirstCell.failed-initial.log",
+      "sha256": "aa70fe1f663d2bf67a9aac506b8f92a89f0d3177cd840f95e24f484c7efe19e3"
+    },
+    {
+      "path": "ActualFirstCell.lean",
+      "sha256": "eb9c6db2542fbe6ad73b539c618aa8ebfb141fe4c39b14fe71c5a677822ab44e"
+    },
+    {
+      "path": "ActualFirstCell.log",
+      "sha256": "4b0ecce6bc6310953c3edba2014557ca5b34c284cea4f7c9d450de69aef2ec4a"
+    },
+    {
+      "path": "AffineConfluent.failed-200000.log",
+      "sha256": "ca6611e3e74d627ebfb71fdc5ca5600c65c923b7135e19d108f025ba17982854"
+    },
+    {
+      "path": "AffineConfluent.lean",
+      "sha256": "8213e875d8faae9fda4a41d8910bb64c4973711d82373f179844abbe075e6183"
+    },
+    {
+      "path": "AffineConfluent.log",
+      "sha256": "f0232a1bd5b40c0f7e7f5c2450a8b498d0d8ec1729537a2c2fc21515f3f796bd"
+    },
+    {
+      "path": "check_confluent_controls.py",
+      "sha256": "39acfe8cd88368a04878e6423f25451fbee4a787347faf69db856b389ce8f927"
+    },
+    {
+      "path": "confluent-algebra-receipt.json",
+      "sha256": "f0b4b3ba60dec4823e6c2552b5502e48f4d5b216c317d144b5c1b253dcb45224"
+    },
+    {
+      "path": "confluent-algebra-receipt.outer-current-head-only.json",
+      "sha256": "eab4346a12a9800ea97717c905e86cdfe71b117a5767f1a4cde61cf4faac3b93"
+    },
+    {
+      "path": "confluent-algebra-receipt.partial-affine-failed.json",
+      "sha256": "eb6de94607eb2df20a8ba6e63f3d97139863818a1fcd57e4ff2200d713b3b813"
+    },
+    {
+      "path": "confluent-algebra-receipt.partial-expected-failed.json",
+      "sha256": "6c0980f5b16e20ff2d98e1f44edf4a16bcda3dfa6154c4b8183935b6c7d124d4"
+    },
+    {
+      "path": "confluent-controls.json",
+      "sha256": "216dff5c2ce0413edf92f923e2b31add4dec7136dceb8cb2a952c50038f29778"
+    },
+    {
+      "path": "ConfluentAlgebra.lean",
+      "sha256": "89182b42729b89bbb7762b8f61626f8d6879f21a36a17afea5936cc350278d04"
+    },
+    {
+      "path": "ConfluentAlgebra.log",
+      "sha256": "3ebd6e8f2002405f00c14f7fb17ff67a22bce05b7fc8c1e55460d0501a9ed0c7"
+    },
+    {
+      "path": "CoordinateConfluent.lean",
+      "sha256": "e08fb1cc080e175ee0a1c2a3928bb107420f03d4419b200253b1a4f662e1500c"
+    },
+    {
+      "path": "CoordinateConfluent.log",
+      "sha256": "65161eb1164fa0c34a16461551e7213120a07399c6e2dfdaaf8ed006c051bbad"
+    },
+    {
+      "path": "ExpectedActualFirstCell.lean",
+      "sha256": "d1d7ea3d043f5e1bf34500e7d81f2f8462115742fc41070cc1a2fad7e1f05b82"
+    },
+    {
+      "path": "ExpectedActualFirstCell.log",
+      "sha256": "5355f0ecfdea33e1b9be553755f7930814d8738142aa39373b53dd48eb03f85f"
+    },
+    {
+      "path": "ExpectedConfluentAlgebra.failed-initial.log",
+      "sha256": "bc67395ddac8739a6ac7543cb7936f8f5b8100664fc0dcc3f1bd612f75008194"
+    },
+    {
+      "path": "ExpectedConfluentAlgebra.failed-inline-deciders.log",
+      "sha256": "8c99281351aad502911d68f209998252bd6f83a69c0c11dd840354b72e2447d8"
+    },
+    {
+      "path": "ExpectedConfluentAlgebra.lean",
+      "sha256": "1edd3331e5f27f94f351f3fb90bc115dc171246e4c0499308f9012fbc9d35868"
+    },
+    {
+      "path": "ExpectedConfluentAlgebra.log",
+      "sha256": "e0191e92dbdc6896dd6f002987b486cb2ee47932b42ca6ade0d8bcd3f1b3b474"
+    },
+    {
+      "path": "ExpectedNormalizedJetBlock.lean",
+      "sha256": "16091437d7596f4df6cf70653d10cfba5985fc319a6ab04d321666e73e77ba4c"
+    },
+    {
+      "path": "ExpectedNormalizedJetBlock.log",
+      "sha256": "5f8b96a48cb33fa826e308f9aaa7178058646cc04fd78a0baf891f3f9e3394f5"
+    },
+    {
+      "path": "HasseNormalizedDerivative.failed-initial.log",
+      "sha256": "e70b899727022880618f5aac1197cab0467ffd3b79a24f6f053cfbdd9776c55d"
+    },
+    {
+      "path": "HasseNormalizedDerivative.lean",
+      "sha256": "ce7f03101b0aee68cd0457e1dcca832c5ec90cc61b26f228389fc8b2eaa261d9"
+    },
+    {
+      "path": "HasseNormalizedDerivative.log",
+      "sha256": "dcf7f17c3880400ee27657ee36955ec2fd46b57c8f4b5c4e51aeaaed535b3874"
+    },
+    {
+      "path": "MATHEMATICAL_AUDIT_2026-10-24.md",
+      "sha256": "1b2077d80f7bc4821f53031c858181a65654d5435470df42a7c7ae54706e47be"
+    },
+    {
+      "path": "NegativeConfluentFactorial.lean",
+      "sha256": "7885c3781924a2ebf721ce015ad238a95e813bb4b296e576a1c7a44e6ef938c5"
+    },
+    {
+      "path": "NegativeConfluentFactorial.log",
+      "sha256": "91a99a54ad944ab7bfeda7234d821af8b74869e3209b810990f24a50164e373b"
+    },
+    {
+      "path": "NegativeConfluentSign.lean",
+      "sha256": "fe2a05d66c5e64c32b6bd1c809347ecd7afe5bd6d4dfd453ccde77dace5a79af"
+    },
+    {
+      "path": "NegativeConfluentSign.log",
+      "sha256": "81e9e0405767749faad240b46ee5a07b28247df9a2fd5c3b0442ab696dc6c45e"
+    },
+    {
+      "path": "NegativeZeroNode.lean",
+      "sha256": "66ba37eda162e6cfa73e9cc10abb7cda85d5598bcdeeee72d0cbb49ca95a5098"
+    },
+    {
+      "path": "NegativeZeroNode.log",
+      "sha256": "dfe3332ba08ad193b686bf041e087649d7be53000bd041af10c890ea9e5b58f0"
+    },
+    {
+      "path": "NewtonHermite.lean",
+      "sha256": "3bf01d19e2496d0e52291afe75f88f620c465af63aeed09dc785fd90d88a996d"
+    },
+    {
+      "path": "NewtonHermite.log",
+      "sha256": "c5fee3a258bb39c5034ef11a748fc1609eb09eb200aab6a2ff4ec2dbb5adfe1e"
+    },
+    {
+      "path": "normalized-jet-receipt.json",
+      "sha256": "15b30b30ec05ed6e44922e2ee2602c2a31461dc21e3554a7be8fb900121d2a21"
+    },
+    {
+      "path": "NormalizedJetBlock.lean",
+      "sha256": "d2fe82d88a16e1d7f6dae948de193792d59065c2a56f0674abd359fa8bfc475e"
+    },
+    {
+      "path": "NormalizedJetBlock.log",
+      "sha256": "f58265b34500e1da1236f5bc62d2ecf37e6cda3d326ce7be8e91650bb611a3c7"
+    },
+    {
+      "path": "PhysicalBoundaryCountercontrol.failed-initial.log",
+      "sha256": "9dd6d4c9ed22af33e31b1d1af4ea81b34f6510a2f210bfde997ed72fc59f419a"
+    },
+    {
+      "path": "PhysicalBoundaryCountercontrol.lean",
+      "sha256": "dce6447114c70b747d8d076530a5f0a65e5a434d818cb989d648beef0b0e4da5"
+    },
+    {
+      "path": "PhysicalBoundaryCountercontrol.log",
+      "sha256": "d9a41a0d614f4ee35f14ae238f09c5dc2e5dac6f7913281125196ef57366b407"
+    },
+    {
+      "path": "run_confluent_algebra_audit.ps1",
+      "sha256": "a167d49bcc3bcdedc76cf5ab9b512af9e921fb583469c033713a6c0c34e87a7a"
+    },
+    {
+      "path": "run_normalized_jet_audit.ps1",
+      "sha256": "7349585ca77cd6d177a44c3c464f399a6dfcf379fa9e5382335b1420787427ca"
+    }
+  ]
+}

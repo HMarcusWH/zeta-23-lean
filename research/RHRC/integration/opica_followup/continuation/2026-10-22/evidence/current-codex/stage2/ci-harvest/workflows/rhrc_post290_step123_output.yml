@@ -1,0 +1,441 @@
+name: RHRC post290 source and output proof components
+
+on:
+  push:
+    branches: [research/post290-step123-output]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: rhrc-post290-output-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+env:
+  OPENBLAS_NUM_THREADS: '1'
+  OMP_NUM_THREADS: '1'
+
+jobs:
+  lean-components:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/cache/restore@v4
+        id: project-cache
+        with:
+          path: .lake/build
+          key: post290-components-${{ hashFiles('lean-toolchain', 'lake-manifest.json') }}-${{ github.sha }}
+          restore-keys: post290-components-${{ hashFiles('lean-toolchain', 'lake-manifest.json') }}-
+      - uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-mathlib-cache: true
+      - name: Compile each implemented component; full producer remains a separate gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          targets=(
+            Zeta23.ExceptionalZero.Step123SameStateN39
+            Zeta23.CCM.Step123SameStateN39
+            Zeta23.RHRC.Step123OutputContractCheck
+            Zeta23.ExceptionalZero.Step123SameStateN14
+            Zeta23.CCM.Step123SameStateN21
+            Zeta23.CCM.Step123SameStateN23
+            Zeta23.CCM.Step123SameStateN36
+            Zeta23.ExceptionalZero.Step123SameStateN37
+            Zeta23.CCM.Step123SameStateN38
+            Zeta23.CCM.Step123NativeFieldRecord
+            Zeta23.ExceptionalZero.Step123CompleteOutput
+            Zeta23.RHRC.Step123CompleteOutputConsumer
+            Zeta23.CCM.CanonicalPhysicalTrialRealization
+            Zeta23.CCM.NativeWeilResponseBounds
+            Zeta23.CCM.NativeWeilResponse
+            Zeta23.CCM.OriginalDetectorNativeForcing
+            Zeta23.CCM.OriginalDetectorCompactDuality
+            Zeta23.CCM.OriginalDetectorLocalDuality
+            Zeta23.CCM.OriginalDetectorPrimeHistoryCovariance
+            Zeta23.CCM.OriginalDetectorFourHistoryLocalDuality
+            Zeta23.CCM.OriginalDetectorFourHistoryTransfer
+            Zeta23.CCM.OriginalDetectorFourHistorySignedTransfer
+            Zeta23.CCM.OriginalDetectorFourHistoryLocalXBound
+            Zeta23.CCM.OriginalDetectorExteriorPairing
+            Zeta23.CCM.OriginalDetectorBoundaryHistorySplit
+            Zeta23.CCM.Step123OriginalBoundaryEvidence
+            Zeta23.ExceptionalZero.GeneratedStep123BoundaryPacket
+            Zeta23.CCM.Step123NativeArithmeticRangeEvidence
+            Zeta23.CCM.Step123NativeSourceSpectralEvidence
+            Zeta23.CCM.Step123NativeAmbientGalerkin
+            Zeta23.CCM.OriginalDetectorForcingError
+            Zeta23.CCM.OriginalDetectorFourPrimeHistories
+            Zeta23.CCM.NativeOriginalExteriorHistory
+            Zeta23.CCM.Step123OutputData
+            Zeta23.CCM.Step123OutputFieldEvidence
+            Zeta23.CCM.Step123NativeResidualOutput
+            Zeta23.CCM.Step123PhysicalImageIdentity
+            Zeta23.CCM.OriginalDetectorActualForcingError
+            Zeta23.CCM.OriginalDetectorEtaControl
+            Zeta23.CCM.OriginalDetectorSourceRate
+            Zeta23.CCM.OriginalDetectorSchurLoss
+            Zeta23.ExceptionalZero.Step123OutputProducer
+            Zeta23.ExceptionalZero.Step4OutputSufficiency
+            Zeta23.CCM.NativeExteriorSourceRecord
+            Zeta23.CCM.Step123NativeCorePacket
+            Zeta23.CCM.NativeCompletionPublicAPI
+            Zeta23.CCM.OriginalSincNativeConvolution
+            Zeta23.CCM.NativeCompactTranslateCalculus
+            Zeta23.CCM.NativeIntegerDriveFiniteOrderBounds
+            Zeta23.CCM.PoleNeutralCompactH2SourceCongruence
+            Zeta23.CCM.CanonicalPoleNeutralTrialResidualChannels
+            Zeta23.CCM.CanonicalPoleNeutralPublicAPI
+            Zeta23.CCM.OriginalDetectorOddPaddingIdentity
+            Zeta23.CCM.OriginalDetectorPaddedPhaseScalar
+            Zeta23.CCM.OriginalDetectorPaddedFiniteNativeFormConcreteRate
+            Zeta23.CCM.OriginalDetectorPaddedFinitePhysicalUnitBridge
+            Zeta23.CCM.FinitePhysicalNormalization
+            Zeta23.ExceptionalZero.UniversalSincActualVisibility
+            Zeta23.CCM.UniversalSincPhysicalBounds
+            Zeta23.ExceptionalZero.NativeAnalyticOutputSufficiency
+            Zeta23.ExceptionalZero.NativeActualInputZeroJets
+            Zeta23.ExceptionalZero.NativeZeroJetAnalyticFactors
+            Zeta23.ExceptionalZero.NativeRangeZeroJetObstruction
+            Zeta23.ExceptionalZero.NativeOriginalSourceLaplaceVisibility
+            Zeta23.ExceptionalZero.NativeActualKernelZeroJets
+            Zeta23.CCM.OriginalDetectorPositiveFourierPaddingReal
+            Zeta23.CCM.OriginalDetectorPositiveFourierPadding
+            Zeta23.CCM.OriginalDetectorPaddedRetainedSelection
+            Zeta23.CCM.OriginalDetectorPaddedPhaseQuantitativeRates
+            Zeta23.CCM.OriginalDetectorPaddedFourierQuantitativeRates
+            Zeta23.CCM.OriginalDetectorPaddedFiniteWindowImageJets
+            Zeta23.CCM.OriginalDetectorPaddedFiniteWindowImageAsymptotics
+            Zeta23.CCM.OriginalDetectorPaddedFiniteWindowImage
+            Zeta23.CCM.OriginalDetectorPaddedFiniteWindowHigherFlat
+            Zeta23.CCM.OriginalDetectorPaddedFiniteWindowBoundaryFlat
+            Zeta23.CCM.OriginalDetectorPaddedFinitePositivity
+            Zeta23.CCM.OriginalDetectorPaddedFinitePoleImageTransport
+            Zeta23.CCM.OriginalDetectorPaddedFinitePoleImageNonzero
+            Zeta23.CCM.OriginalDetectorPaddedFinitePoleImageC4
+            Zeta23.CCM.OriginalDetectorPaddedFinitePoleImageAsymptotics
+            Zeta23.CCM.OriginalDetectorPaddedFinitePoleImage
+            Zeta23.CCM.OriginalDetectorPaddedFinitePhaseWeilPadding
+            Zeta23.CCM.OriginalDetectorPaddedFinitePhaseSymmetry
+            Zeta23.CCM.OriginalDetectorPaddedFinitePhasePlane
+            Zeta23.CCM.OriginalDetectorPaddedFinitePhaseNormalization
+            Zeta23.CCM.OriginalDetectorPaddedFinitePhaseNormControl
+            Zeta23.CCM.OriginalDetectorPaddedFinitePhaseNativeTransport
+            Zeta23.CCM.OriginalDetectorPaddedFinitePhaseNativeProducer
+            Zeta23.CCM.OriginalDetectorPaddedFinitePhaseMass
+            Zeta23.CCM.OriginalDetectorPaddedFinitePhaseL1Errors
+            Zeta23.CCM.OriginalDetectorPaddedFinitePhaseDepth
+            Zeta23.CCM.OriginalDetectorPaddedFinitePhaseCarrier
+            Zeta23.CCM.OriginalDetectorPaddedFinitePhaseApproximation
+            Zeta23.CCM.OriginalDetectorPaddedFiniteNormalizedErrors
+            Zeta23.CCM.OriginalDetectorPaddedFiniteNativeFormRate
+            Zeta23.CCM.OriginalDetectorPaddedFiniteH1Rate
+            Zeta23.CCM.OriginalDetectorNativeRetainedSelection
+            Zeta23.CCM.OriginalDetectorFiniteTransport
+            Zeta23.CCM.OriginalDetectorFinitePhaseNativeProducer
+            Zeta23.CCM.OriginalDetectorAdmissibleSelector
+            Zeta23.CCM.NativePositiveCompletionComplexLaplace
+            Zeta23.CCM.NativeLaplaceHalfPlaneContinuation
+            Zeta23.CCM.NativeIntegerKernelComplexLaplace
+            Zeta23.CCM.NativeIntegerDriveComplexLaplace
+            Zeta23.CCM.NativeDampedCompletionPointwiseBridge
+            Zeta23.CCM.NativeCompletionComplexLaplace
+            Zeta23.CCM.NativeCompletedInputZetaLaplace
+            Zeta23.CCM.NativeCompletedInputRangeOfPrimeLp
+            Zeta23.CCM.NativeCompletedInputComplexLaplace
+            Zeta23.CCM.NativeCausalRangeObstruction
+            Zeta23.CCM.NativeCausalLaplaceDerivatives
+            Zeta23.CCM.NativeCausalKernelLaplaceDerivatives
+            Zeta23.CCM.NativeCausalAnalyticObstruction
+            Zeta23.CCM.NativeCausalAdjointZeroJets
+            Zeta23.CCM.CompactPoleConvolution
+            Zeta23.CCM.CanonicalDeepThresholdGap
+            Zeta23.CCM.PoleNeutralCompactH2Uniqueness
+            Zeta23.CCM.PoleNeutralCompactH2
+            Zeta23.CCM.PoleNeutralCompactL2Energy
+            Zeta23.CCM.PoleNeutralCompactInverseCore
+            Zeta23.CCM.NativeCausalLaplaceMoments
+            Zeta23.CCM.NativeCausalExponentialWitness
+            Zeta23.CCM.CompactComplexIntegralFTC
+            Zeta23.CCM.PoleNeutralCompactL2Regularity
+            Zeta23.CCM.OriginalDetectorFinitePhaseDepth
+            Zeta23.CCM.OriginalDetectorFinitePhaseNativeTransport
+            Zeta23.CCM.OriginalDetectorFinitePhaseWeilPadding
+            Zeta23.CCM.OriginalDetectorFinitePhaseNormalization
+            Zeta23.CCM.OriginalDetectorFinitePhaseNormControl
+            Zeta23.CCM.OriginalDetectorFinitePhaseMass
+            Zeta23.CCM.OriginalDetectorFinitePhaseL1Errors
+            Zeta23.CCM.OriginalDetectorOriginalPhaseL1Bounds
+            Zeta23.CCM.OriginalDetectorFinitePhaseApproximation
+            Zeta23.CCM.OriginalDetectorFinitePhaseCarrier
+            Zeta23.CCM.OriginalDetectorFinitePhasePlane
+            Zeta23.CCM.CanonicalPoleNeutralGroundConstraints
+            Zeta23.CCM.OriginalDetectorFinitePoleImageNonzero
+            Zeta23.CCM.CanonicalPoleNeutralTrialResidualBounds
+            Zeta23.CCM.OriginalDetectorFinitePoleImageAsymptotics
+            Zeta23.CCM.OriginalDetectorFinitePhysicalNorm
+            Zeta23.CCM.OriginalDetectorFinitePoleImageTransport
+            Zeta23.CCM.OriginalDetectorFinitePoleImage
+            Zeta23.CCM.OriginalDetectorFiniteWindowHigherFlat
+            Zeta23.CCM.OriginalDetectorFiniteWindowImageAsymptotics
+            Zeta23.CCM.NativeCompletionEquation
+            Zeta23.CCM.NativeAdjointResidual
+            Zeta23.ExceptionalZero.OriginalDetectorPhaseDepth
+            Zeta23.CCM.OriginalDetectorFiniteWindowBoundaryFlat
+            Zeta23.CCM.NativeCompletionIntegerKernel
+            Zeta23.CCM.OriginalDetectorFiniteWindowImageJets
+            Zeta23.CCM.NativeCompletedInput
+            Zeta23.CCM.OriginalDetectorFiniteWindowImage
+            Zeta23.CCM.OriginalDetectorFourierTailAsymptotics
+            Zeta23.CCM.NativeDampedCompletionResidual
+            Zeta23.CCM.OriginalSincSourceSign
+            Zeta23.CCM.OriginalSincDriveLp
+            Zeta23.CCM.OriginalSincDriveDecay
+            Zeta23.CCM.OriginalDetectorFourierTailBounds
+            Zeta23.CCM.OriginalDetectorFourierScalarTailBounds
+            Zeta23.CCM.OriginalDetectorFourierCoefficientBounds
+            Zeta23.CCM.NativeDampedCompletionOperator
+            Zeta23.CCM.UniversalSincDetector
+            Zeta23.ExceptionalZero.UniversalSincSignedExcursions
+            Zeta23.ExceptionalZero.UniversalSincOriginalPhaseDepth
+            Zeta23.CCM.NativeDampedCompletionPrerequisites
+            Zeta23.CCM.OriginalDetectorWindowBounds
+            Zeta23.CCM.OriginalDetectorDividedLobeBounds
+            Zeta23.CCM.OriginalSincDriveCancellation
+            Zeta23.CCM.OriginalSincDriveDerivative
+            Zeta23.CCM.PoleNeutralCompactInverseL2Bound
+            Zeta23.ExceptionalZero.UniversalSincInitialLaplace
+            Zeta23.ExceptionalZero.UniversalSincSignedTailTransform
+            Zeta23.ExceptionalZero.UniversalSincSignedPoleBound
+            Zeta23.CCM.IsometricDetectorSchur
+            Zeta23.CCM.IsometricGroundSchur
+            Zeta23.CCM.NativeDetectorSchur
+            Zeta23.CCM.NativeSelectedGroundSchur
+            Zeta23.CCM.DetectorRetainedSchurState
+            Zeta23.CCM.OriginalDetectorFourierPrerequisites
+            Zeta23.CCM.OriginalSincWeightedPoleMoments
+            Zeta23.CCM.NativeAbelDiscrepancy
+            Zeta23.CCM.OriginalSincLogDrive
+            Zeta23.ExceptionalZero.PositiveLaplaceBoundary
+            Zeta23.ExceptionalZero.PositiveLaplaceAnalytic
+            Zeta23.ExceptionalZero.UniversalSincSignedLaplace
+            Zeta23.CCM.UniversalSincDetectorBounds
+            Zeta23.CCM.UniversalSincDetectorInverse
+            Zeta23.CCM.UniversalSincProductMoments
+            Zeta23.CCM.UniversalSincInverseGevreyBounds
+            Zeta23.CCM.UniversalSincSourceLaw
+            Zeta23.CCM.UniversalSincSourceCharacteristic
+            Zeta23.CCM.UniversalSincSourceTail
+            Zeta23.CCM.UniversalSincBoxDensity
+            Zeta23.CCM.UniversalSincSourceDensity
+            Zeta23.CCM.UniversalSincSourceDensityTransform
+            Zeta23.CCM.UniversalSincSourceDensityIdentification
+            Zeta23.CCM.UniversalSincSourceComplexTransform
+            Zeta23.CCM.UniversalSincSourceSymmetry
+            Zeta23.CCM.UniversalSincSourceFacade
+            Zeta23.CCM.OriginalSincNativeSource
+            Zeta23.CCM.OriginalSincNativeMass
+            Zeta23.ExceptionalZero.UniversalSincNativeSourceIdentification
+            Zeta23.ExceptionalZero.UniversalSincPhysicalDetector
+            Zeta23.ExceptionalZero.UniversalSincDetectorVisibility
+            Zeta23.ExceptionalZero.ZetaRealStripNonvanishing
+            Zeta23.ExceptionalZero.UniversalSincCorrelationReal
+            Zeta23.ExceptionalZero.PositiveMomentSeries
+            Zeta23.ExceptionalZero.PositiveMGFContinuation
+            Zeta23.ExceptionalZero.PositiveLaplaceTilt
+            Zeta23.CCM.CanonicalPoleNeutralGeometry
+            Zeta23.CCM.CanonicalPoleNeutralCarrier
+            Zeta23.CCM.CanonicalPoleNeutralNesting
+            Zeta23.CCM.CanonicalPoleExponentialMoments
+            Zeta23.CCM.CanonicalPoleNeutralIntertwining
+            Zeta23.CCM.CanonicalPoleNeutralNormals
+            Zeta23.CCM.CanonicalPoleNeutralCubicWitness
+            Zeta23.CCM.CanonicalPoleNeutralSourceMoment
+            Zeta23.CCM.CanonicalPoleNeutralIndexRigidity
+            Zeta23.CCM.CanonicalPoleNeutralSimpleEvenTie
+            Zeta23.CCM.CanonicalPoleNeutralShiftedSecular
+            Zeta23.CCM.CanonicalPoleNeutralTiePackage
+            Zeta23.CCM.CanonicalPoleNeutralBottomNFlow
+            Zeta23.CCM.FiniteBottomGapSelector
+            Zeta23.CCM.CanonicalDeepThresholdSelection
+            Zeta23.CCM.NativePoleNeutralTrialDepth
+            Zeta23.CCM.NativeDeepThresholdGround
+            Zeta23.CCM.NativeDeepThresholdInverseBudgets
+            Zeta23.CCM.NativeDeepThresholdSimplicity
+            Zeta23.CCM.NativeDeepThresholdEvenMoment
+            Zeta23.CCM.PoleNeutralCompactInverse
+            Zeta23.CCM.OriginalSincCompactPotential
+            Zeta23.CCM.PoleNeutralUniqueness
+            Zeta23.CCM.CanonicalTrialResidualChannels
+            Zeta23.CCM.NativeIntegerPrimeSource
+            Zeta23.CCM.NativeIntegerPrimeField
+            Zeta23.CCM.NativeIntegerPrimeConvolution
+            Zeta23.CCM.NativePositiveCompletion
+            Zeta23.CCM.NativePositiveCompletionCells
+            Zeta23.CCM.NativePositiveCompletionMass
+            Zeta23.CCM.NativePositiveCompletionHead
+            Zeta23.CCM.NativePositiveCompletionTail
+            Zeta23.CCM.NativePositiveCompletionCertificate
+            Zeta23.CCM.NativeFloorCompletionSource
+            Zeta23.CCM.NativeRationalCompletionLaplace
+            Zeta23.CCM.Step123PrimeSeam
+          )
+          lake build "${targets[@]}" 2>&1 | tee -a /tmp/post290-compiler.txt
+      - name: Reject proof escapes
+        run: python research/RHRC/closure_batch/check_lean_proof_escapes.py --scope promoted
+      - name: Exact component types and admitted axioms through existing compiler resolver
+        shell: bash
+        run: |
+          set -euo pipefail
+          export POST290_CHECKED_HEAD="$(git rev-parse HEAD)"
+          export POST290_CHECKED_TREE="$(git rev-parse HEAD^{tree})"
+          lake build Zeta23.RHRC.Step123OutputBindings
+          lake env lean Zeta23/RHRC/Step123OutputBindings.lean | tee /tmp/post290-bindings.txt
+          python research/RHRC/routes/R003_ccm_bridge/post290/build_formal_receipt.py --log /tmp/post290-bindings.txt --out /tmp/STEP123_FORMAL_OUTPUT.json
+      - name: Build UNAPPROVED 44-field semantic-review dossier from exact compiler roots
+        shell: bash
+        run: |
+          set -euo pipefail
+          python research/RHRC/routes/R003_ccm_bridge/post290/prepare_field_review_package.py \
+            --formal /tmp/STEP123_FORMAL_OUTPUT.json \
+            --out-dir /tmp/post290-field-review
+      - uses: actions/cache/save@v4
+        if: always()
+        with:
+          path: .lake/build
+          key: ${{ steps.project-cache.outputs.cache-primary-key }}
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: post290-compiler-${{ github.sha }}
+          path: |
+            /tmp/post290-compiler.txt
+            /tmp/post290-bindings.txt
+            /tmp/STEP123_FORMAL_OUTPUT.json
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: post290-unapproved-field-review-${{ github.sha }}
+          path: /tmp/post290-field-review/
+          if-no-files-found: ignore
+
+  exact-controls:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - run: python -m pip install -r research/RHRC/routes/R003_ccm_bridge/requirements.txt
+      - name: Replay exact geometry, adjoint signs, ties and retained Schur controls
+        run: |
+          python research/RHRC/integration/post290/spec/validate_spec.py
+          python research/RHRC/routes/R003_ccm_bridge/post290/source_lineage_check.py
+          python research/RHRC/routes/R003_ccm_bridge/post290/test_pole_neutral_exact.py
+          python research/RHRC/routes/R003_ccm_bridge/post290/test_strict_odd_and_tie_exact.py
+          python research/RHRC/routes/R003_ccm_bridge/post290/test_detector_schur_provenance.py
+          python research/RHRC/routes/R003_ccm_bridge/post290/test_deep_threshold_exact.py
+          python research/RHRC/routes/R003_ccm_bridge/post290/test_inverse_budgets_and_gap_exact.py
+          python research/RHRC/routes/R003_ccm_bridge/post290/test_argon_continuum_and_roots_exact.py
+          python research/RHRC/routes/R003_ccm_bridge/post290/test_required_research_controls.py --out research/RHRC/routes/R003_ccm_bridge/post290/evidence/required_research_controls.json
+          python -O research/RHRC/routes/R003_ccm_bridge/post290/test_required_research_controls.py --out research/RHRC/routes/R003_ccm_bridge/post290/evidence/required_research_controls.json
+          python research/RHRC/integration/test_source_only_dependency_extract.py
+          python -O research/RHRC/integration/test_source_only_dependency_extract.py
+          python research/RHRC/routes/R003_ccm_bridge/post290/test_actual_input_zero_jets.py
+          python -O research/RHRC/routes/R003_ccm_bridge/post290/test_actual_input_zero_jets.py
+          python research/RHRC/routes/R003_ccm_bridge/post290/test_forcing_history.py
+          python -O research/RHRC/routes/R003_ccm_bridge/post290/test_forcing_history.py
+          python research/RHRC/routes/R003_ccm_bridge/post290/test_k3_resume.py
+          python research/RHRC/routes/R003_ccm_bridge/post290/test_k3_replay_shards.py
+          python research/RHRC/routes/R003_ccm_bridge/post290/test_k3_seams.py
+          python research/RHRC/routes/R003_ccm_bridge/post290/test_native_divisor_controls.py
+          python research/RHRC/routes/R003_ccm_bridge/post290/test_native_mass_candidate.py
+          python -m py_compile research/RHRC/routes/R003_ccm_bridge/post290/compare_representations.py research/RHRC/routes/R003_ccm_bridge/post290/countermodel_survival.py research/RHRC/routes/R003_ccm_bridge/post290/build_step4_handoff.py research/RHRC/routes/R003_ccm_bridge/post290/materialize_step123_outputs.py research/RHRC/routes/R003_ccm_bridge/post290/prepare_field_review_package.py
+          python research/RHRC/routes/R003_ccm_bridge/post290/test_step123_research_artifacts.py
+          python -O research/RHRC/routes/R003_ccm_bridge/post290/test_step123_research_artifacts.py
+          python research/RHRC/routes/R003_ccm_bridge/post290/test_symbolic_step123_artifacts.py
+          python -O research/RHRC/routes/R003_ccm_bridge/post290/test_symbolic_step123_artifacts.py
+          python research/RHRC/routes/R003_ccm_bridge/post290/test_output_mutations.py
+          python -O research/RHRC/routes/R003_ccm_bridge/post290/test_output_mutations.py
+          python research/RHRC/routes/R003_ccm_bridge/post290/test_mandatory_mutation_matrix.py
+          python -O research/RHRC/routes/R003_ccm_bridge/post290/test_mandatory_mutation_matrix.py
+          python research/RHRC/routes/R003_ccm_bridge/post290/test_d2_source_equivalence.py
+          python -O research/RHRC/routes/R003_ccm_bridge/post290/test_d2_source_equivalence.py
+          python research/RHRC/routes/R003_ccm_bridge/post290/test_d2_q14_forensics.py
+          python -O research/RHRC/routes/R003_ccm_bridge/post290/test_d2_q14_forensics.py
+          python research/RHRC/routes/R003_ccm_bridge/post290/test_reviewed_workflow_harvest.py
+          python -O research/RHRC/routes/R003_ccm_bridge/post290/test_reviewed_workflow_harvest.py
+          python research/RHRC/routes/R003_ccm_bridge/post290/test_native_input_binding.py
+          python -O research/RHRC/routes/R003_ccm_bridge/post290/test_native_input_binding.py
+          python research/RHRC/routes/R003_ccm_bridge/post290/test_harvest_phases.py
+          python -O research/RHRC/routes/R003_ccm_bridge/post290/test_harvest_phases.py
+          python research/RHRC/routes/R003_ccm_bridge/post290/test_graph_precheck_receipt.py
+          python -O research/RHRC/routes/R003_ccm_bridge/post290/test_graph_precheck_receipt.py
+          python research/RHRC/routes/R003_ccm_bridge/post290/test_review_provenance.py
+          python -O research/RHRC/routes/R003_ccm_bridge/post290/test_review_provenance.py
+          python research/RHRC/routes/R003_ccm_bridge/post290/test_formal_receipt.py
+          python -O research/RHRC/routes/R003_ccm_bridge/post290/test_formal_receipt.py
+          python -m py_compile research/RHRC/routes/R003_ccm_bridge/post290/d2_source_equivalence.py research/RHRC/routes/R003_ccm_bridge/post290/derive_acceptance_manifest.py research/RHRC/routes/R003_ccm_bridge/post290/output_contract_check.py research/RHRC/routes/R003_ccm_bridge/post290/build_formal_receipt.py research/RHRC/routes/R003_ccm_bridge/post290/harvest_workflows.py
+          python research/RHRC/routes/R003_ccm_bridge/post290/d2_source_equivalence.py --out /tmp/post290-source-identity.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: post290-exact-controls-${{ github.sha }}
+          path: research/RHRC/routes/R003_ccm_bridge/post290/evidence/
+
+  native-observations:
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - run: python -m pip install -r research/RHRC/routes/R003_ccm_bridge/requirements.txt
+      - name: Evaluate all frozen native probe rows with explicit seam cancellation
+        run: python research/RHRC/routes/R003_ccm_bridge/post290/evaluate_native_output.py --bits 384 --out /tmp/post290-native/native_panel.json
+      - name: Independently reconstruct every scalar residual and Gram entry at 1024 bits
+        run: python research/RHRC/routes/R003_ccm_bridge/post290/verify_native_output.py /tmp/post290-native/native_panel.json --out /tmp/post290-native/native_panel_check.json
+      - name: Compare the actual producer and checker artifacts without changing their provenance
+        run: python research/RHRC/routes/R003_ccm_bridge/post290/compare_representations.py --panel /tmp/post290-native/native_panel.json --checker /tmp/post290-native/native_panel_check.json --out /tmp/post290-native/CONSTRAINTS.json
+      - name: Require the full observation panel; keep universal and generated-detector scope open
+        run: |
+          python - <<'PY'
+          import json, subprocess
+          from pathlib import Path
+          d=json.loads(Path('/tmp/post290-native/native_panel.json').read_text())
+          c=json.loads(Path('/tmp/post290-native/native_panel_check.json').read_text())
+          r=json.loads(Path('/tmp/post290-native/CONSTRAINTS.json').read_text())
+          if (r.get('finite_panel_reproduced') is not True or r.get('consistent_pair_count')!=44
+              or r.get('discrepancies') or r.get('unresolved')
+              or r.get('source_identity')!=d.get('source_identity')):
+              raise SystemExit('Actual native producer/checker comparison did not reproduce all 44 pairs')
+          assert d['source_identity']['commit']==subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip()
+          assert d['source_identity']['tree']==subprocess.check_output(['git','rev-parse','HEAD^{tree}'],text=True).strip()
+          assert d['source_identity']['working_tree_dirty'] is False
+          assert d['frozen_panel_complete'] is True and d['pair_count']==44 and d['row_count']==176
+          assert d['evaluated_rows']==176 and d['unresolved_rows']==0
+          assert c['verified_pairs']==44 and c['unresolved_pairs']==0
+          assert c['universal_theorem_authority'] is False and c['terminal_claim']=='RH_OPEN'
+          print('176 native probe rows freshly checked; universal detector and ground claims OPEN.')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: post290-native-observations-${{ github.sha }}
+          path: /tmp/post290-native/

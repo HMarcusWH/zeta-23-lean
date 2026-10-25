@@ -1,0 +1,113 @@
+{
+  "total_count": 1,
+  "jobs": [
+    {
+      "id": 119867721148,
+      "run_id": 39791293755,
+      "workflow_name": "RHRC post-196 Q14 residual cell replay",
+      "head_branch": "research/opica-native-followup",
+      "run_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/runs/39791293755",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOT94UfM8AAAAb6KxFvA",
+      "head_sha": "9ccea78eb5ee0c097bde05424e43de58a589b713",
+      "url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/jobs/119867721148",
+      "html_url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39791293755/job/119867721148",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-22T13:56:03Z",
+      "started_at": "2026-10-22T14:03:31Z",
+      "completed_at": "2026-10-22T14:13:56Z",
+      "name": "post196-q14-residual-cell-replay",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-22T14:03:32Z",
+          "completed_at": "2026-10-22T14:03:33Z"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-22T14:03:33Z",
+          "completed_at": "2026-10-22T14:04:40Z"
+        },
+        {
+          "name": "Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-22T14:04:40Z",
+          "completed_at": "2026-10-22T14:04:40Z"
+        },
+        {
+          "name": "Install R003 numerical audit requirements",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-22T14:04:40Z",
+          "completed_at": "2026-10-22T14:04:59Z"
+        },
+        {
+          "name": "Check post-#196 residual-cell replay scope",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-22T14:04:59Z",
+          "completed_at": "2026-10-22T14:05:00Z"
+        },
+        {
+          "name": "Probe frozen post-#196 residual-cell replay schedule",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-10-22T14:05:00Z",
+          "completed_at": "2026-10-22T14:05:01Z"
+        },
+        {
+          "name": "Certify unique post-#195 budget-leaf replay",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-10-22T14:05:01Z",
+          "completed_at": "2026-10-22T14:13:53Z"
+        },
+        {
+          "name": "Post Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13,
+          "started_at": "2026-10-22T14:13:53Z",
+          "completed_at": "2026-10-22T14:13:53Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 14,
+          "started_at": "2026-10-22T14:13:53Z",
+          "completed_at": "2026-10-22T14:13:54Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15,
+          "started_at": "2026-10-22T14:13:54Z",
+          "completed_at": "2026-10-22T14:13:54Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/check-runs/119867721148",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 1000117195,
+      "runner_name": "GitHub Actions 1000117195",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    }
+  ]
+}

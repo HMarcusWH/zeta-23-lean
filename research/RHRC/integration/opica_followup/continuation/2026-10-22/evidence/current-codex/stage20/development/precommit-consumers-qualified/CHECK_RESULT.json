@@ -1,0 +1,302 @@
+{
+  "status": "PASS_PRECOMMIT_TARGETED_ONLY",
+  "checked_base": "6dfabc16220951c9569d75196a237077c532d922",
+  "dirty_status": " M Zeta23/OPICAFollowup/Consumers.lean\n M Zeta23/OPICAFollowup/NativeWindowRate.lean\n M research/RHRC/integration/opica_followup/continuation/2026-10-22/run_candidate_checks.py\n?? Zeta23/OPICAFollowup/MovingSourceWindowRate.lean\n?? research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedArithmeticPhysical.lean\n?? research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedPhysicalRates.lean\n",
+  "source_before": {
+    "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedPhysicalRates.lean": "0adcee1919d6a4bc897a7c9bd0077e772c6faf3dce8e6c7a3ae93bebc1b256c1",
+    "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedArithmeticPhysical.lean": "550876c3fb6997256437c159c5de514685305c76124b358fd5385a4f038885aa",
+    "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedWordJet.lean": "3c14d4f76bdb72d8b5d5715bae34081b7381743433f510da6e8e53f8b4baaa80",
+    "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedForceSampling.lean": "6fc99bc203b2c9ac3815df43f588cce2da746a1051ecc0ae20f84e4354255904",
+    "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedSampleSign.lean": "9015dee14c0c55719b861b7d7604db0119bb43c3723fef216da512d12a3dcda7",
+    "Zeta23/OPICAFollowup/Consumers.lean": "71de2dd0ef69ed953636f802f2543e86be12ba1bb0cd68d29d6ca28c638e91d7",
+    "Zeta23/OPICAFollowup/NativeWindowRate.lean": "1b388ffd7828390307605cc4804d7d9e1400343a3bafa0858a9d76aa0f369b33",
+    "Zeta23/OPICAFollowup/MovingSourceWindowRate.lean": "31fb27cf1e3f75a45b2ae1bfbf65625fc8784d7b6aba2f8251f9762be52ee51d"
+  },
+  "source_after": {
+    "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedPhysicalRates.lean": "0adcee1919d6a4bc897a7c9bd0077e772c6faf3dce8e6c7a3ae93bebc1b256c1",
+    "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedArithmeticPhysical.lean": "550876c3fb6997256437c159c5de514685305c76124b358fd5385a4f038885aa",
+    "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedWordJet.lean": "3c14d4f76bdb72d8b5d5715bae34081b7381743433f510da6e8e53f8b4baaa80",
+    "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedForceSampling.lean": "6fc99bc203b2c9ac3815df43f588cce2da746a1051ecc0ae20f84e4354255904",
+    "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedSampleSign.lean": "9015dee14c0c55719b861b7d7604db0119bb43c3723fef216da512d12a3dcda7",
+    "Zeta23/OPICAFollowup/Consumers.lean": "71de2dd0ef69ed953636f802f2543e86be12ba1bb0cd68d29d6ca28c638e91d7",
+    "Zeta23/OPICAFollowup/NativeWindowRate.lean": "1b388ffd7828390307605cc4804d7d9e1400343a3bafa0858a9d76aa0f369b33",
+    "Zeta23/OPICAFollowup/MovingSourceWindowRate.lean": "31fb27cf1e3f75a45b2ae1bfbf65625fc8784d7b6aba2f8251f9762be52ee51d"
+  },
+  "source_unchanged": true,
+  "checks": [
+    {
+      "name": "ExpectedPhysicalRates",
+      "exit_code": 0,
+      "seconds": 32.87411440000869,
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "-DautoImplicit=false",
+        "-DrelaxedAutoImplicit=false",
+        "-DmaxHeartbeats=800000",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\research\\RHRC\\integration\\opica_followup\\continuation\\2026-10-22\\consumers\\ExpectedPhysicalRates.lean"
+      ],
+      "source_sha256": "0adcee1919d6a4bc897a7c9bd0077e772c6faf3dce8e6c7a3ae93bebc1b256c1",
+      "log": "ExpectedPhysicalRates.log",
+      "log_sha256": "81852b07a9aab10c722095e88cab2a4c697de042adb13c8ee2108a4c5224b38c",
+      "axioms": {
+        "Zeta23.OPICAFollowup.native_fixed_source_window_rate": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "Zeta23.OPICAFollowup.native_slow_source_window_rate": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "IndependentPhysicalWindowRates.expected_fixed_source": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "IndependentPhysicalWindowRates.expected_slow_source": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "IndependentPhysicalWindowRates.expected_order_zero": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "IndependentPhysicalWindowRates.expected_nonpositive_finite_prefix": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "IndependentPhysicalWindowRates.expected_both_source_factor_log_signs": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "IndependentPhysicalWindowRates.expected_literal_rate_definition": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "IndependentPhysicalWindowRates.expected_zero_supremum_case": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "IndependentPhysicalWindowRates.zero_order_cost_correction_control": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "IndependentPhysicalWindowRates.upper_rate_does_not_force_zero_control": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      }
+    },
+    {
+      "name": "ExpectedArithmeticPhysical",
+      "exit_code": 0,
+      "seconds": 34.811883999966085,
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "-DautoImplicit=false",
+        "-DrelaxedAutoImplicit=false",
+        "-DmaxHeartbeats=800000",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\research\\RHRC\\integration\\opica_followup\\continuation\\2026-10-22\\consumers\\ExpectedArithmeticPhysical.lean"
+      ],
+      "source_sha256": "550876c3fb6997256437c159c5de514685305c76124b358fd5385a4f038885aa",
+      "log": "ExpectedArithmeticPhysical.log",
+      "log_sha256": "eea357c08b9ee62edb4d722da9349f5d8f025e326b337d5a8d2eb8b363bdeb87",
+      "axioms": {
+        "IndependentArithmeticPhysical.expected_literal_raw_high_mask": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "IndependentArithmeticPhysical.expected_literal_absorbed_high_mask": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "IndependentArithmeticPhysical.expected_quiet_full_original_domain": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "IndependentArithmeticPhysical.expected_zero_supremum_all_positive_dampings": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "IndependentArithmeticPhysical.complete_quiet_upper_iff_zero_supremum": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "IndependentArithmeticPhysical.finite_quiet_samples_do_not_supply_cofinal_upper": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      }
+    },
+    {
+      "name": "ExpectedWordJet",
+      "exit_code": 0,
+      "seconds": 31.08794310002122,
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "-DautoImplicit=false",
+        "-DrelaxedAutoImplicit=false",
+        "-DmaxHeartbeats=800000",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\research\\RHRC\\integration\\opica_followup\\continuation\\2026-10-22\\consumers\\ExpectedWordJet.lean"
+      ],
+      "source_sha256": "3c14d4f76bdb72d8b5d5715bae34081b7381743433f510da6e8e53f8b4baaa80",
+      "log": "ExpectedWordJet.log",
+      "log_sha256": "15da2bda7b061a9d3e8d0aba5c0fdb2511f92c75e3b2904d2375a35be5c7fdd0",
+      "axioms": {
+        "OPICAWordJetIndependent.expected_step123_word_jet_consumer": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "OPICAWordJetIndependent.expected_step123_word_jet_actual_domain": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "OPICAWordJetIndependent.expected_step123_word_right_zero": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      }
+    },
+    {
+      "name": "ExpectedForceSampling",
+      "exit_code": 0,
+      "seconds": 32.48351479996927,
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "-DautoImplicit=false",
+        "-DrelaxedAutoImplicit=false",
+        "-DmaxHeartbeats=800000",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\research\\RHRC\\integration\\opica_followup\\continuation\\2026-10-22\\consumers\\ExpectedForceSampling.lean"
+      ],
+      "source_sha256": "6fc99bc203b2c9ac3815df43f588cce2da746a1051ecc0ae20f84e4354255904",
+      "log": "ExpectedForceSampling.log",
+      "log_sha256": "3e741ee10ecbea9eaa36afc6b5c14ae95e5427fcda538c02ebd17f29136d417c",
+      "axioms": {
+        "Zeta23.OPICAFollowup.actual_force_sampling_consumer": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "OPICAForceSamplingIndependent.expected_actual_force_sampling_consumer": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "OPICAForceSamplingIndependent.audit_spectralKappa": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "OPICAForceSamplingIndependent.audit_logFourier": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "OPICAForceSamplingIndependent.audit_force": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "OPICAForceSamplingIndependent.audit_density": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "OPICAForceSamplingIndependent.audit_sample": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "OPICAForceSamplingIndependent.audit_boundary": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "OPICAForceSamplingIndependent.audit_generic": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "OPICAForceSamplingIndependent.offline_kappa": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "OPICAForceSamplingIndependent.actual_offline_domain": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "OPICAForceSamplingIndependent.actual_right_representative": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      }
+    },
+    {
+      "name": "ExpectedSampleSign",
+      "exit_code": 0,
+      "seconds": 27.69698329991661,
+      "command": [
+        "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+        "env",
+        "lean",
+        "-DautoImplicit=false",
+        "-DrelaxedAutoImplicit=false",
+        "-DmaxHeartbeats=800000",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\research\\RHRC\\integration\\opica_followup\\continuation\\2026-10-22\\consumers\\ExpectedSampleSign.lean"
+      ],
+      "source_sha256": "9015dee14c0c55719b861b7d7604db0119bb43c3723fef216da512d12a3dcda7",
+      "log": "ExpectedSampleSign.log",
+      "log_sha256": "10901a5a97ad66404544e355010717862aa9da47abeea914df853bf31eb0ea67",
+      "axioms": {
+        "OPICASampleSign.form_self": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "OPICASampleSign.sample_im_ratio": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "OPICASampleSign.real_sample_implies_on_line": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      }
+    }
+  ],
+  "printed_closures": 35,
+  "aggregate_accepted": false,
+  "RH": "OPEN",
+  "Step4": "OPEN"
+}

@@ -1,0 +1,52 @@
+../audit-offcritical-real-basis/OffcriticalRealBasis.lean:19:35: warning: Try `simp at h1` instead of `simpa using h1`
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+../audit-offcritical-real-basis/OffcriticalRealBasis.lean:22:34: error: Tactic `subst` failed: did not find equation for eliminating 'j'
+
+case «0»
+ρ : ℂ
+hz : riemannZeta ρ = 0
+h0 : 0 < ρ.re
+h1 : ρ.re < 1
+j : JetDatum
+hk : 0 < zeroJetOrder ρ
+hj : j ∈ ![[(1, ρ, 0)], [(-I, ρ, 0)]] ⟨0, ⋯⟩
+⊢ ValidJet j
+../audit-offcritical-real-basis/OffcriticalRealBasis.lean:22:34: error: Tactic `subst` failed: did not find equation for eliminating 'j'
+
+case «1»
+ρ : ℂ
+hz : riemannZeta ρ = 0
+h0 : 0 < ρ.re
+h1 : ρ.re < 1
+j : JetDatum
+hk : 0 < zeroJetOrder ρ
+hj : j ∈ ![[(1, ρ, 0)], [(-I, ρ, 0)]] ⟨1, ⋯⟩
+⊢ ValidJet j
+../audit-offcritical-real-basis/OffcriticalRealBasis.lean:21:45: warning: This simp argument is unused:
+  Matrix.cons_val_zero
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [canonicalBasis, Matrix.cons_val_one, List.mem_singleton] at hj
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+../audit-offcritical-real-basis/OffcriticalRealBasis.lean:21:67: warning: This simp argument is unused:
+  Matrix.cons_val_one
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [canonicalBasis, Matrix.cons_val_zero, List.mem_singleton] at hj
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+../audit-offcritical-real-basis/OffcriticalRealBasis.lean:22:4: warning: This simp argument is unused:
+  List.mem_singleton
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [canonicalBasis, Matrix.cons_val_zero, Matrix.cons_val_one] at hj
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+../audit-offcritical-real-basis/OffcriticalRealBasis.lean:26:5: error: Ambiguous term
+  zeroJetRealSpan
+Possible interpretations:
+  FiniteSpan.zeroJetRealSpan [(c, ρ, 0)] : LocallyFiniteSignedMeasure
+  
+  Zeta23.OPICAFollowup.zeroJetRealSpan [(c, ρ, 0)] : LocallyFiniteSignedMeasure

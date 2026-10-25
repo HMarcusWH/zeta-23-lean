@@ -1,0 +1,155 @@
+{
+  "domain": "[1/512,log16]",
+  "legal_odd_generator": [
+    1,
+    -2,
+    0,
+    2,
+    -1
+  ],
+  "norm_square": 10,
+  "not_a_lean_theorem": true,
+  "precision_bits": 128,
+  "records": [
+    {
+      "Q": 1,
+      "accepted": 72,
+      "file": "k2_odd_Q01.json",
+      "sha256": "e9d4727dce1964538c52974689b9f203ac1d89b10f9d884aa3025bdd2217eac9",
+      "unresolved": 0
+    },
+    {
+      "Q": 2,
+      "accepted": 6,
+      "file": "k2_odd_Q02.json",
+      "sha256": "4fcd922757d3d3a295131c641ccb4828cf7e437a9aef6d424a53531cf4e34e87",
+      "unresolved": 0
+    },
+    {
+      "Q": 3,
+      "accepted": 16,
+      "file": "k2_odd_Q03.json",
+      "sha256": "bba5b7e96c08ba0160f216c3fbe61af43de737808c214f509ad419cdccd2181e",
+      "unresolved": 0
+    },
+    {
+      "Q": 4,
+      "accepted": 10,
+      "file": "k2_odd_Q04.json",
+      "sha256": "f0599c406f73fbdfe4f20b71103668e50d77af670f96fbbf70866e30704a458b",
+      "unresolved": 0
+    },
+    {
+      "Q": 5,
+      "accepted": 28,
+      "file": "k2_odd_Q05.json",
+      "sha256": "d168ddb1f00d263c7dc555da32c2d712d4dbe6586d716758df369c0f7bd3f049",
+      "unresolved": 0
+    },
+    {
+      "Q": 6,
+      "accepted": 19,
+      "file": "k2_odd_Q06.json",
+      "sha256": "f150dbe4b38dbf470d4c2d90734e7276af69dd0a674925afe18acb24d18860d8",
+      "unresolved": 0
+    },
+    {
+      "Q": 7,
+      "accepted": 16,
+      "file": "k2_odd_Q07.json",
+      "sha256": "8cf001e4129bd902aa5e98694619705beb61167eaec1c626f6849db20e563ee3",
+      "unresolved": 0
+    },
+    {
+      "Q": 8,
+      "accepted": 20,
+      "file": "k2_odd_Q08.json",
+      "sha256": "8a2006dc97ff48e6731ed7841be34ee6ec78dba82ad97d6174be4cbac07931fe",
+      "unresolved": 0
+    },
+    {
+      "Q": 9,
+      "accepted": 29,
+      "file": "k2_odd_Q09.json",
+      "sha256": "f24620b61ae2205ada53913795526c8896b05cef58b70aed4cd90877dbb5658a",
+      "unresolved": 0
+    },
+    {
+      "Q": 10,
+      "accepted": 16,
+      "file": "k2_odd_Q10.json",
+      "sha256": "5e3c57ed993b1e476d4ea995b57c4e93ad6f114932830fe3c60b3c12bdc3f58e",
+      "unresolved": 0
+    },
+    {
+      "Q": 11,
+      "accepted": 16,
+      "file": "k2_odd_Q11.json",
+      "sha256": "bd593d21919fd623bf9d23c19d8671ae13aa45d74c28fa0464135a749e342d98",
+      "unresolved": 0
+    },
+    {
+      "Q": 12,
+      "accepted": 16,
+      "file": "k2_odd_Q12.json",
+      "sha256": "95f40ff2d5c5db9d81c8d2b31ec11469574d6c62fe563dca5476aef2b39197d5",
+      "unresolved": 0
+    },
+    {
+      "Q": 13,
+      "accepted": 22,
+      "file": "k2_odd_Q13.json",
+      "sha256": "603d5e5bd01c46c994508fd4d4eb8c175ea0b9d0e9ee488dac3ef50a792c209b",
+      "unresolved": 0
+    },
+    {
+      "Q": 14,
+      "accepted": 45,
+      "file": "k2_odd_Q14.json",
+      "sha256": "a86750b19a576bd2ca1ce03b07b753ac865e7d8582a12e2e64d8f1f45561817e",
+      "unresolved": 0
+    },
+    {
+      "Q": 15,
+      "accepted": 19,
+      "file": "k2_odd_Q15.json",
+      "sha256": "4a1e135ae69f766511ed98f0c47e17120b5e958911dcbb53fe29ff4517c05ef1",
+      "unresolved": 0
+    }
+  ],
+  "schema": "post287.wp4.k2-odd-prerequisite.v1",
+  "source": "complete fixed-Q production Eq4.4",
+  "source_commit": "48724d2fa0b9d534ad374aa844dc79cc98348ca8",
+  "source_digests": {
+    "research/RHRC/routes/R003_ccm_bridge/canonical_source_arb.py": "a15ab51b55ebac3abadd05fd8bbcb76cdcf05752279b399f71bf64b9ac040d54",
+    "research/RHRC/routes/R003_ccm_bridge/canonical_source_numeric.py": "bf3130a29f849e10a486512ac77b95e490d3842d04bfe84f411b54c88e5d4128",
+    "research/RHRC/routes/R003_ccm_bridge/fixtures/post175_fb05_q13_fixed_unit_enclosure_v1.json": "be515d085ae4b1712c5ce259771d5970455020e92ab5e1fae4e30ff9ba0758fd",
+    "research/RHRC/routes/R003_ccm_bridge/post150_selected_residual.py": "41d7b7652600b5e281cd6c47ace3ef89753b1cf7d9fb831bae37f84eaa609cb7",
+    "research/RHRC/routes/R003_ccm_bridge/post166_fb05_cell_interval.py": "39d003d11a262dba7e43e1300c8d86b5620578724ad94bdcf52fffe807cdfaf3",
+    "research/RHRC/routes/R003_ccm_bridge/post167_fb05_threshold_jet.py": "2c9c0c65ade61b9d97fd5771e54241dd1a096933729f66c7cf3ad8ad429f0605",
+    "research/RHRC/routes/R003_ccm_bridge/post169_fb05_schur_visibility.py": "190da3a63403ffe83cf82a8c07a7c9692ee44fce5687906fe904dfb5fd4464c4",
+    "research/RHRC/routes/R003_ccm_bridge/post173_fb05_q13_scalar_barrier.py": "92dc66091a3b52e91657d2c52f46229425a1a0d40463a88bff41dfb6531c3b0f",
+    "research/RHRC/routes/R003_ccm_bridge/post175_fb05_q13_fixed_unit_enclosure.py": "c0f35b90027dad3e799f7a1ece34ced98608703c989769e9768ae59ea69eaca2",
+    "research/RHRC/routes/R003_ccm_bridge/post177_fb05_q13_fixed_unit_derivative.py": "161e2a9947c8db75b4a4b5f4684af074c05772d3a752651f2136d53b5d5cdd21",
+    "research/RHRC/routes/R003_ccm_bridge/post194_fb05_q14_fixed_unit_second_derivative.py": "3e9a43007afa7b749a622af4a56128adbd54cc3efac251b863abc62edbd7040e",
+    "research/RHRC/routes/R003_ccm_bridge/post247_remainder_budget_ratio_scout.py": "0016ea5291f5164b949174dc3b3fac70b44002d63912e4d310a91b4ccb50ffb1",
+    "research/RHRC/routes/R003_ccm_bridge/post285/post285_m51_k2_even_bottom_certificate.py": "3dc045594d5236420452ece91f56482e1c0b680eaa470369687beecfdec6abf9",
+    "research/RHRC/routes/R003_ccm_bridge/post287/certificate_integrity.py": "b3f7895876ef6d38c15eb539e362afb6ba16e3f5a33ce5523a5cd8bba301b27b",
+    "research/RHRC/routes/R003_ccm_bridge/post287/test_wp2_wp4_finite_bounds.py": "6081b14170f9e9d8bac91da7db426152b85eeea40ac18691868861a033e55809",
+    "research/RHRC/routes/R003_ccm_bridge/post287/wp2_k2_even_transcript.py": "84e38079c3120b134c3de9559e1b3fcc7fcbf1e44c55cdfee70df43ab05e28c1",
+    "research/RHRC/routes/R003_ccm_bridge/post287/wp2_literature_form_arb_probe.py": "8fcbdf650f32983de8b89f9000bb3aa2a7dce56b6738ee828966336703acfd5c",
+    "research/RHRC/routes/R003_ccm_bridge/post287/wp2_verify_transcript.py": "6e873dd570c0113048c48b2057ea42c92c6c66570ce12cae7da60244ffde6730",
+    "research/RHRC/routes/R003_ccm_bridge/post287/wp2_wp4_normalization_gate.py": "b5326d3dd461eef5bd57abf1e91b10e6d45187f22133fd24422b6de2a7fc19f8",
+    "research/RHRC/routes/R003_ccm_bridge/post287/wp4_fourth_order_validate.py": "a1da3b208338920179a2b6925840da8ea0f6f4a381d9ef93210ddb225f69b1e8",
+    "research/RHRC/routes/R003_ccm_bridge/post287/wp4_k2_odd_prerequisite.py": "b060d82f3886d3c1c3834acd77a34c5ac68ccafaf81c2f53e1bdc8f808b32b99",
+    "research/RHRC/routes/R003_ccm_bridge/post287/wp4_k3_assemble_shards.py": "10e687be8a25f653055cacd1822c1f52ea27a623e022a404de25585b07d904ae",
+    "research/RHRC/routes/R003_ccm_bridge/post287/wp4_k3_fourth_order_fallback.py": "834bc450dc9712357fda57df9246b6468c3d3fa5784f588aeae0cbbafb522091",
+    "research/RHRC/routes/R003_ccm_bridge/post287/wp4_k3_frozen_q14_gate.py": "e9b977026609cd643cf256b0656f887da3e032aac8701cda6529cdd21d2551e4",
+    "research/RHRC/routes/R003_ccm_bridge/post287/wp4_k3_full_continuum.py": "5ab7eaee1e2de65bf0dabe3a40ba4c55658a4f6b079f4da2de49dc70b174c348",
+    "research/RHRC/routes/R003_ccm_bridge/post287/wp4_k3_verify_full_transcript.py": "e82bfb126de17f150710f4b85aa0e571a3617cdb8e3a9f17002d009792192896",
+    "research/RHRC/routes/R003_ccm_bridge/requirements.txt": "5844b2c81e73269e51c8d4a9ec2ab707a3d6a33c72e66b49b79932ebb4df54a7",
+    "research/RHRC/routes/R004_prolate_v2/run_commutator_gauntlet_v2.py": "5c632c667ddc74dc01d6e42e7987f32f04a3244e9194edbefca2e79be5da72f3"
+  },
+  "status": "INTERVAL_EVIDENCE",
+  "terminal_claim": "RH_OPEN"
+}

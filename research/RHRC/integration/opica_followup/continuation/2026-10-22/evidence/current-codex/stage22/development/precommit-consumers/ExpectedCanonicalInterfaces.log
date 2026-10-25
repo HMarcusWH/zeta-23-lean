@@ -1,0 +1,10 @@
+'Zeta23.OPICAFollowup.Validation.expected_canonical_recovery' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.OPICAFollowup.Validation.expected_filter_causal_actions' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.Validation.expected_followup_native_output' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.Validation.expected_followup_native_output_each_phase' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

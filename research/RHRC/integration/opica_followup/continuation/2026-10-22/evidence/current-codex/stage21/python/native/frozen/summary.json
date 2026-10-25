@@ -1,0 +1,884 @@
+{
+  "schema": "OPICA_FOLLOWUP_REGRESSION_REPLAY_V1",
+  "status": "PASS_FROZEN_REGRESSION_ONLY",
+  "python": "3.13.5",
+  "packages": {
+    "sympy": "1.14.0",
+    "mpmath": "1.3.0"
+  },
+  "python313_runtime": true,
+  "release_runtime_accepted": false,
+  "runtime_note": "A platform-independent artifact hash lock and acceptance run remain required.",
+  "exact": [
+    {
+      "script": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\research\\RHRC\\integration\\opica\\check_exact.py",
+      "command": [
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\tools\\python-3.13.5-embed-amd64\\python.exe",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\research\\RHRC\\integration\\opica\\check_exact.py",
+        "--output",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\record-validation\\native\\frozen\\p0-normal.json"
+      ],
+      "exit_code": 0,
+      "executed_script_sha256": "42a1b29e979a415647b2ad477df4aa8e00b46f1afa52c1748748af4c79aa6985",
+      "receipt_sha256": "0a2d3d35c3f1f5efac01c5e215233a720efe30624874478b3353c74367276eb8",
+      "result": {
+        "schema": "OPICA_FINITE_EXACT_CHECKS_V1",
+        "status": "PASS",
+        "assertions": 5112,
+        "groups": {
+          "local_residual": 180,
+          "local_completion": 216,
+          "affine_background": 18,
+          "affine_composition": 16,
+          "jet_normalization": 8,
+          "log_comparison": 1250,
+          "scale_comparison": 250,
+          "error_recurrence": 11,
+          "gram_and_projection": 3,
+          "compatibility": 2,
+          "fourier_involution": 2,
+          "divisor_bounds": 2814,
+          "balanced_mask": 4,
+          "fejer_kernel": 338
+        },
+        "fixtures": {
+          "seven_rows": {
+            "consistent_left_null_pairing": "0",
+            "inconsistent_left_null_pairing": "1"
+          },
+          "repeated_prime": {
+            "Y": 10,
+            "Q": 2,
+            "d": 121,
+            "e": 1331,
+            "c2_d": 1,
+            "c2_e": 1,
+            "gcd": 121,
+            "a": 1,
+            "b": 11
+          }
+        },
+        "python": "3.13.5",
+        "checker_sha256": "42a1b29e979a415647b2ad477df4aa8e00b46f1afa52c1748748af4c79aa6985",
+        "authority": "Finite rational/Laurent-polynomial and combinatorial checks only; analytic theorems have written proofs; no Lean or RH proof.",
+        "upstream_checker_sha256": "7e7087814aa6c410790c346fb124321c042a4b18242fe171bda9016b52b7e018",
+        "checked_commit": "139c1a0d88cc0fb2d8a0d8ea71e152b25b14c36e",
+        "checked_tree": "3e63b0c72fc04da7bab45388d6096e82e95c4acb",
+        "tracked_source_dirty": true
+      },
+      "suite": "p0",
+      "mode": "normal",
+      "expected_checks": 5112,
+      "checker_sha256": "42a1b29e979a415647b2ad477df4aa8e00b46f1afa52c1748748af4c79aa6985"
+    },
+    {
+      "script": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\research\\RHRC\\integration\\opica_followup\\checks\\frozen_round1_check_round1.py",
+      "command": [
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\tools\\python-3.13.5-embed-amd64\\python.exe",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\research\\RHRC\\integration\\opica_followup\\checks\\frozen_round1_check_round1.py",
+        "--output",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\record-validation\\native\\frozen\\round1-normal.json"
+      ],
+      "exit_code": 0,
+      "executed_script_sha256": "2348097d4b2918fb06fd0a92e34a79e27bcbc3baaf9cef3a4d60a1eddb8450a8",
+      "receipt_sha256": "77bb61f27425e1750be2b95be8907335d8fb972ca0794548b483684f32802111",
+      "result": {
+        "status": "PASS_FINITE_EXACT_CONTROLS_ONLY",
+        "python": "3.13.5",
+        "optimized": false,
+        "checks": {
+          "local_native_shaped_order": 225,
+          "local_native_shaped_leading": 225,
+          "jet_normalization": 180,
+          "raw_jet_cancellation_control": 1,
+          "square_root_log_comparison_forward": 1369,
+          "square_root_log_comparison_reverse": 1369,
+          "energy_error_not_subexponential_fixture": 4,
+          "mobius_inverse_coefficients": 180,
+          "literal_dirichlet_partition": 4860,
+          "balanced_coefficient_envelope": 4860,
+          "typeI_coefficient_envelope": 4860,
+          "exact_mask_partition": 108,
+          "native_partition_energy_triage": 108,
+          "repeated_prime_control": 1,
+          "noncompact_origin_moment": 1,
+          "positive_gap_density_lower_coefficient": 1,
+          "subcritical_gap_zero_origin": 30,
+          "subcritical_gap_support": 30,
+          "subcritical_gap_off_lattice_positive": 30,
+          "subcritical_gap_nonzero": 30,
+          "normalization_TV_lower": 30,
+          "sinc_triangle_floor_formula_fixture": 30,
+          "approximate_gap_pairing_bound_fixture": 30,
+          "normalized_dilation_distribution_coefficients": 13,
+          "two_zero_gram_determinant": 40,
+          "coupled_zero_data_cancels_conditioning_blowup": 40,
+          "collision_energy_bounded_fixture": 40,
+          "copoisson_origin_correction_identity": 35,
+          "copoisson_final_origin_zero": 35,
+          "copoisson_first_interval_coefficient": 35,
+          "copoisson_explicit_negative_density_factor": 35,
+          "copoisson_reflection_finite_sum_cancellation": 27
+        },
+        "total_checks": 18862,
+        "checker_sha256": "2348097d4b2918fb06fd0a92e34a79e27bcbc3baaf9cef3a4d60a1eddb8450a8",
+        "infinite_analytic_proof": false,
+        "native_zeta_zeros_computed": false,
+        "lean_compiled": false,
+        "native_source_simulated": false,
+        "scope": "Algebraic identities and rational fixtures only; universal arguments are in the paper."
+      },
+      "suite": "round1",
+      "mode": "normal",
+      "expected_checks": 18862,
+      "checker_sha256": "2348097d4b2918fb06fd0a92e34a79e27bcbc3baaf9cef3a4d60a1eddb8450a8"
+    },
+    {
+      "script": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\research\\RHRC\\integration\\opica_followup\\checks\\frozen_round2_check_round2.py",
+      "command": [
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\tools\\python-3.13.5-embed-amd64\\python.exe",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\research\\RHRC\\integration\\opica_followup\\checks\\frozen_round2_check_round2.py",
+        "--output",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\record-validation\\native\\frozen\\round2-normal.json"
+      ],
+      "exit_code": 0,
+      "executed_script_sha256": "86452973526f9711b0c027e7609bf986a6d1bc9eaec82134d9eeeb9893e32c29",
+      "receipt_sha256": "53910f4598cf04060733511c0265b9d4cdc92ffe2b40bc895e66c1f5a3a6a09b",
+      "result": {
+        "status": "PASS_EXACT_ALGEBRA_CONTROLS_ONLY",
+        "python": "3.13.5",
+        "sympy": "1.14.0",
+        "optimized": false,
+        "group_counts": {
+          "moving_contour_degree_bookkeeping": 1920,
+          "factorial_exponent_envelope": 1920,
+          "box_block_factor_bound": 4950,
+          "logarithmic_slack_exponent": 135,
+          "cutoff_nonempty_scale": 405,
+          "all_TypeI_remaining_arguments": 1620,
+          "balanced_upper_endpoint_identity": 135,
+          "balanced_product_support": 614,
+          "sharp_contour_monomial_cancellation": 504,
+          "strict_coefficient_recovery_margin": 504,
+          "Taylor_vs_derivative_factorial": 432,
+          "confluent_profile_jet_determinant": 6,
+          "finite_zero_jet_independence_fixture": 6,
+          "confluent_rank": 6,
+          "joint_history_recovery_identity": 20,
+          "exact_recovery_norm_squared": 20,
+          "contrast_alone_loses_observation": 20,
+          "oversampled_identity_has_no_fake_incompatibility": 2,
+          "Euler_cell_symbolic_identity": 1,
+          "actual_integer_derivative_jump": 1,
+          "Bernoulli_tail_sign": 1,
+          "rational_complex_jump_controls": 504,
+          "forced_source_Gram_identity": 27,
+          "sampling_boundary_identity": 27,
+          "divided_difference_Gram_identity": 27,
+          "forced_model_positive_norm_with_nonreal_parameter": 9,
+          "Hermitian_Gram_controls": 3,
+          "square_duality_defect_algebra": 1,
+          "negative_interval_coefficient_bound": 425,
+          "negative_interval_margin": 425,
+          "first_interval_stays_below_three_halves": 1,
+          "weighted_negative_mass_constant": 1
+        },
+        "total_checks": 14672,
+        "script_sha256": "86452973526f9711b0c027e7609bf986a6d1bc9eaec82134d9eeeb9893e32c29",
+        "scope": "Finite rational, symbolic and matrix identities. No infinite-analytic proof, actual off-line-zero computation or Lean verification. Synthetic nonreal spectral parameters are not zeta zeros.",
+        "new_Lean_roots": 0,
+        "independent_review": false
+      },
+      "suite": "round2",
+      "mode": "normal",
+      "expected_checks": 14672,
+      "checker_sha256": "86452973526f9711b0c027e7609bf986a6d1bc9eaec82134d9eeeb9893e32c29"
+    },
+    {
+      "script": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\research\\RHRC\\integration\\opica_followup\\checks\\check_final_exact.py",
+      "command": [
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\tools\\python-3.13.5-embed-amd64\\python.exe",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\research\\RHRC\\integration\\opica_followup\\checks\\check_final_exact.py",
+        "--output",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\record-validation\\native\\frozen\\final-normal.json"
+      ],
+      "exit_code": 0,
+      "executed_script_sha256": "87b2c328252dff666f2f414cf3fb09bf46abd95d64d241dbce223a2707448225",
+      "receipt_sha256": "aafbe896afc022f0c6ad9e9abd11e35e1750d88bef9b2bda6e19d43a986d090a",
+      "result": {
+        "status": "PASS_FINITE_EXACT_ONLY",
+        "counts": {
+          "corrected_resolvent_cell_equation": 1,
+          "homogeneous_tail_subtraction": 1,
+          "sawtooth_force_between_jumps": 1,
+          "spectral_coordinate_exact": 1,
+          "spectral_shift_exact": 1,
+          "log_telescoping_exact": 300,
+          "sawtooth_partial_norm_rational_part": 300,
+          "native_shape_sampling_identity": 126,
+          "herglotz_norm_identity": 126,
+          "source_pairing_imaginary_identity": 126,
+          "positive_spectral_form": 126,
+          "priced_nonreal_sampling_upper": 126,
+          "finite_mellin_telescoping": 30,
+          "undivided_stieltjes_kernel": 9
+        },
+        "total_checks": 1274,
+        "optimized": false,
+        "python": "3.13.5",
+        "sympy": "1.14.0",
+        "script_sha256": "87b2c328252dff666f2f414cf3fb09bf46abd95d64d241dbce223a2707448225",
+        "actual_offline_zeros_used": false,
+        "analytic_theorems_certified": false
+      },
+      "suite": "final",
+      "mode": "normal",
+      "expected_checks": 1274,
+      "checker_sha256": "87b2c328252dff666f2f414cf3fb09bf46abd95d64d241dbce223a2707448225"
+    },
+    {
+      "script": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\research\\RHRC\\integration\\opica\\check_exact.py",
+      "command": [
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\tools\\python-3.13.5-embed-amd64\\python.exe",
+        "-O",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\research\\RHRC\\integration\\opica\\check_exact.py",
+        "--output",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\record-validation\\native\\frozen\\p0-optimized.json"
+      ],
+      "exit_code": 0,
+      "executed_script_sha256": "42a1b29e979a415647b2ad477df4aa8e00b46f1afa52c1748748af4c79aa6985",
+      "receipt_sha256": "0a2d3d35c3f1f5efac01c5e215233a720efe30624874478b3353c74367276eb8",
+      "result": {
+        "schema": "OPICA_FINITE_EXACT_CHECKS_V1",
+        "status": "PASS",
+        "assertions": 5112,
+        "groups": {
+          "local_residual": 180,
+          "local_completion": 216,
+          "affine_background": 18,
+          "affine_composition": 16,
+          "jet_normalization": 8,
+          "log_comparison": 1250,
+          "scale_comparison": 250,
+          "error_recurrence": 11,
+          "gram_and_projection": 3,
+          "compatibility": 2,
+          "fourier_involution": 2,
+          "divisor_bounds": 2814,
+          "balanced_mask": 4,
+          "fejer_kernel": 338
+        },
+        "fixtures": {
+          "seven_rows": {
+            "consistent_left_null_pairing": "0",
+            "inconsistent_left_null_pairing": "1"
+          },
+          "repeated_prime": {
+            "Y": 10,
+            "Q": 2,
+            "d": 121,
+            "e": 1331,
+            "c2_d": 1,
+            "c2_e": 1,
+            "gcd": 121,
+            "a": 1,
+            "b": 11
+          }
+        },
+        "python": "3.13.5",
+        "checker_sha256": "42a1b29e979a415647b2ad477df4aa8e00b46f1afa52c1748748af4c79aa6985",
+        "authority": "Finite rational/Laurent-polynomial and combinatorial checks only; analytic theorems have written proofs; no Lean or RH proof.",
+        "upstream_checker_sha256": "7e7087814aa6c410790c346fb124321c042a4b18242fe171bda9016b52b7e018",
+        "checked_commit": "139c1a0d88cc0fb2d8a0d8ea71e152b25b14c36e",
+        "checked_tree": "3e63b0c72fc04da7bab45388d6096e82e95c4acb",
+        "tracked_source_dirty": true
+      },
+      "suite": "p0",
+      "mode": "optimized",
+      "expected_checks": 5112,
+      "checker_sha256": "42a1b29e979a415647b2ad477df4aa8e00b46f1afa52c1748748af4c79aa6985"
+    },
+    {
+      "script": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\research\\RHRC\\integration\\opica_followup\\checks\\frozen_round1_check_round1.py",
+      "command": [
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\tools\\python-3.13.5-embed-amd64\\python.exe",
+        "-O",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\research\\RHRC\\integration\\opica_followup\\checks\\frozen_round1_check_round1.py",
+        "--output",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\record-validation\\native\\frozen\\round1-optimized.json"
+      ],
+      "exit_code": 0,
+      "executed_script_sha256": "2348097d4b2918fb06fd0a92e34a79e27bcbc3baaf9cef3a4d60a1eddb8450a8",
+      "receipt_sha256": "490e41c222e6133c4e9b5a187bdd67a71ed733629dfe83e6d0263eb4e9f17aa4",
+      "result": {
+        "status": "PASS_FINITE_EXACT_CONTROLS_ONLY",
+        "python": "3.13.5",
+        "optimized": true,
+        "checks": {
+          "local_native_shaped_order": 225,
+          "local_native_shaped_leading": 225,
+          "jet_normalization": 180,
+          "raw_jet_cancellation_control": 1,
+          "square_root_log_comparison_forward": 1369,
+          "square_root_log_comparison_reverse": 1369,
+          "energy_error_not_subexponential_fixture": 4,
+          "mobius_inverse_coefficients": 180,
+          "literal_dirichlet_partition": 4860,
+          "balanced_coefficient_envelope": 4860,
+          "typeI_coefficient_envelope": 4860,
+          "exact_mask_partition": 108,
+          "native_partition_energy_triage": 108,
+          "repeated_prime_control": 1,
+          "noncompact_origin_moment": 1,
+          "positive_gap_density_lower_coefficient": 1,
+          "subcritical_gap_zero_origin": 30,
+          "subcritical_gap_support": 30,
+          "subcritical_gap_off_lattice_positive": 30,
+          "subcritical_gap_nonzero": 30,
+          "normalization_TV_lower": 30,
+          "sinc_triangle_floor_formula_fixture": 30,
+          "approximate_gap_pairing_bound_fixture": 30,
+          "normalized_dilation_distribution_coefficients": 13,
+          "two_zero_gram_determinant": 40,
+          "coupled_zero_data_cancels_conditioning_blowup": 40,
+          "collision_energy_bounded_fixture": 40,
+          "copoisson_origin_correction_identity": 35,
+          "copoisson_final_origin_zero": 35,
+          "copoisson_first_interval_coefficient": 35,
+          "copoisson_explicit_negative_density_factor": 35,
+          "copoisson_reflection_finite_sum_cancellation": 27
+        },
+        "total_checks": 18862,
+        "checker_sha256": "2348097d4b2918fb06fd0a92e34a79e27bcbc3baaf9cef3a4d60a1eddb8450a8",
+        "infinite_analytic_proof": false,
+        "native_zeta_zeros_computed": false,
+        "lean_compiled": false,
+        "native_source_simulated": false,
+        "scope": "Algebraic identities and rational fixtures only; universal arguments are in the paper."
+      },
+      "suite": "round1",
+      "mode": "optimized",
+      "expected_checks": 18862,
+      "checker_sha256": "2348097d4b2918fb06fd0a92e34a79e27bcbc3baaf9cef3a4d60a1eddb8450a8"
+    },
+    {
+      "script": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\research\\RHRC\\integration\\opica_followup\\checks\\frozen_round2_check_round2.py",
+      "command": [
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\tools\\python-3.13.5-embed-amd64\\python.exe",
+        "-O",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\research\\RHRC\\integration\\opica_followup\\checks\\frozen_round2_check_round2.py",
+        "--output",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\record-validation\\native\\frozen\\round2-optimized.json"
+      ],
+      "exit_code": 0,
+      "executed_script_sha256": "86452973526f9711b0c027e7609bf986a6d1bc9eaec82134d9eeeb9893e32c29",
+      "receipt_sha256": "a82d26f5f710437b162a23b260ea8aa8e774f2a7e5319ec9d04b9d84a6927d63",
+      "result": {
+        "status": "PASS_EXACT_ALGEBRA_CONTROLS_ONLY",
+        "python": "3.13.5",
+        "sympy": "1.14.0",
+        "optimized": true,
+        "group_counts": {
+          "moving_contour_degree_bookkeeping": 1920,
+          "factorial_exponent_envelope": 1920,
+          "box_block_factor_bound": 4950,
+          "logarithmic_slack_exponent": 135,
+          "cutoff_nonempty_scale": 405,
+          "all_TypeI_remaining_arguments": 1620,
+          "balanced_upper_endpoint_identity": 135,
+          "balanced_product_support": 614,
+          "sharp_contour_monomial_cancellation": 504,
+          "strict_coefficient_recovery_margin": 504,
+          "Taylor_vs_derivative_factorial": 432,
+          "confluent_profile_jet_determinant": 6,
+          "finite_zero_jet_independence_fixture": 6,
+          "confluent_rank": 6,
+          "joint_history_recovery_identity": 20,
+          "exact_recovery_norm_squared": 20,
+          "contrast_alone_loses_observation": 20,
+          "oversampled_identity_has_no_fake_incompatibility": 2,
+          "Euler_cell_symbolic_identity": 1,
+          "actual_integer_derivative_jump": 1,
+          "Bernoulli_tail_sign": 1,
+          "rational_complex_jump_controls": 504,
+          "forced_source_Gram_identity": 27,
+          "sampling_boundary_identity": 27,
+          "divided_difference_Gram_identity": 27,
+          "forced_model_positive_norm_with_nonreal_parameter": 9,
+          "Hermitian_Gram_controls": 3,
+          "square_duality_defect_algebra": 1,
+          "negative_interval_coefficient_bound": 425,
+          "negative_interval_margin": 425,
+          "first_interval_stays_below_three_halves": 1,
+          "weighted_negative_mass_constant": 1
+        },
+        "total_checks": 14672,
+        "script_sha256": "86452973526f9711b0c027e7609bf986a6d1bc9eaec82134d9eeeb9893e32c29",
+        "scope": "Finite rational, symbolic and matrix identities. No infinite-analytic proof, actual off-line-zero computation or Lean verification. Synthetic nonreal spectral parameters are not zeta zeros.",
+        "new_Lean_roots": 0,
+        "independent_review": false
+      },
+      "suite": "round2",
+      "mode": "optimized",
+      "expected_checks": 14672,
+      "checker_sha256": "86452973526f9711b0c027e7609bf986a6d1bc9eaec82134d9eeeb9893e32c29"
+    },
+    {
+      "script": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\research\\RHRC\\integration\\opica_followup\\checks\\check_final_exact.py",
+      "command": [
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\tools\\python-3.13.5-embed-amd64\\python.exe",
+        "-O",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\research\\RHRC\\integration\\opica_followup\\checks\\check_final_exact.py",
+        "--output",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\record-validation\\native\\frozen\\final-optimized.json"
+      ],
+      "exit_code": 0,
+      "executed_script_sha256": "87b2c328252dff666f2f414cf3fb09bf46abd95d64d241dbce223a2707448225",
+      "receipt_sha256": "9a7b3c15790cf842b0ee1bbe14c92b4d4a59e6b8422944fdb4ae5c39634a92f2",
+      "result": {
+        "status": "PASS_FINITE_EXACT_ONLY",
+        "counts": {
+          "corrected_resolvent_cell_equation": 1,
+          "homogeneous_tail_subtraction": 1,
+          "sawtooth_force_between_jumps": 1,
+          "spectral_coordinate_exact": 1,
+          "spectral_shift_exact": 1,
+          "log_telescoping_exact": 300,
+          "sawtooth_partial_norm_rational_part": 300,
+          "native_shape_sampling_identity": 126,
+          "herglotz_norm_identity": 126,
+          "source_pairing_imaginary_identity": 126,
+          "positive_spectral_form": 126,
+          "priced_nonreal_sampling_upper": 126,
+          "finite_mellin_telescoping": 30,
+          "undivided_stieltjes_kernel": 9
+        },
+        "total_checks": 1274,
+        "optimized": true,
+        "python": "3.13.5",
+        "sympy": "1.14.0",
+        "script_sha256": "87b2c328252dff666f2f414cf3fb09bf46abd95d64d241dbce223a2707448225",
+        "actual_offline_zeros_used": false,
+        "analytic_theorems_certified": false
+      },
+      "suite": "final",
+      "mode": "optimized",
+      "expected_checks": 1274,
+      "checker_sha256": "87b2c328252dff666f2f414cf3fb09bf46abd95d64d241dbce223a2707448225"
+    }
+  ],
+  "numerical": [
+    {
+      "script": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\research\\RHRC\\integration\\opica_followup\\checks\\replay_copoisson_numeric.py",
+      "command": [
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\tools\\python-3.13.5-embed-amd64\\python.exe",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\record-validation\\native\\frozen\\opica-copoisson-b650uhqe\\checks\\replay_copoisson_numeric.py"
+      ],
+      "exit_code": 0,
+      "executed_script_sha256": "298de5d144cdc18adcd0173843460d43be4611187228cb276dc03095704a5859",
+      "receipt_sha256": "5bf037bf47c75c665eed1a591141aa1637aed1070886c5a1dc767968f100022e",
+      "result": {
+        "status": "PASS_NUMERICAL_CONSISTENCY_ONLY",
+        "python": "3.13.5",
+        "mpmath": "1.3.0",
+        "precision_decimal": 40,
+        "cases": [
+          {
+            "rho": "(0.25 + 0.0j)",
+            "gaussian_b": "0.5",
+            "absolute_difference": "1.43492962747e-42",
+            "comparison_pass": true
+          },
+          {
+            "rho": "(0.25 + 0.0j)",
+            "gaussian_b": "2.0",
+            "absolute_difference": "2.29588740395e-41",
+            "comparison_pass": true
+          },
+          {
+            "rho": "(0.75 + 0.8j)",
+            "gaussian_b": "0.5",
+            "absolute_difference": "7.2549139452e-42",
+            "comparison_pass": true
+          },
+          {
+            "rho": "(0.75 + 0.8j)",
+            "gaussian_b": "2.0",
+            "absolute_difference": "1.294546916e-41",
+            "comparison_pass": true
+          },
+          {
+            "rho": "(0.65 + 10.0j)",
+            "gaussian_b": "0.5",
+            "absolute_difference": "1.44609656342e-42",
+            "comparison_pass": true
+          },
+          {
+            "rho": "(0.65 + 10.0j)",
+            "gaussian_b": "2.0",
+            "absolute_difference": "1.82918354277e-42",
+            "comparison_pass": true
+          }
+        ],
+        "interval_certified": false,
+        "hypothetical_zeta_zeros_evaluated": false,
+        "full_analytic_proof": false,
+        "scope": "Gaussian-test comparison of renormalized lattice integral with explicit density+atom formula at six NONZERO generic zeta arguments. Truncations are numerical controls, not rigorous remainder certificates.",
+        "script_sha256": "298de5d144cdc18adcd0173843460d43be4611187228cb276dc03095704a5859"
+      },
+      "suite": "copoisson",
+      "checker_sha256": "298de5d144cdc18adcd0173843460d43be4611187228cb276dc03095704a5859"
+    },
+    {
+      "script": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\research\\RHRC\\integration\\opica_followup\\checks\\frozen_round2_check_round2_numeric.py",
+      "command": [
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\tools\\python-3.13.5-embed-amd64\\python.exe",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\research\\RHRC\\integration\\opica_followup\\checks\\frozen_round2_check_round2_numeric.py",
+        "--output",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\record-validation\\native\\frozen\\numeric-round2.json"
+      ],
+      "exit_code": 0,
+      "executed_script_sha256": "87be185b244b86633edd183eb88008d7c72ff31fb0ed83abc3fd36ec45453626",
+      "receipt_sha256": "e88d2a6771fef80060bb8835381dcb8fae83f7b9c18138c0d0c8e85bd395348d",
+      "result": {
+        "status": "PASS_NUMERICAL_CONSISTENCY_NOT_INTERVAL_CERTIFIED",
+        "python": "3.13.5",
+        "mpmath": "1.3.0",
+        "decimal_precision": 50,
+        "cases": 15,
+        "controls": [
+          {
+            "test": "finite_Green_with_boundary",
+            "rho": {
+              "re": "0.7",
+              "im": "2.0"
+            },
+            "R": "6.25",
+            "absolute_error": "2.1548517993319731117484183231448577e-50",
+            "scaled_error": "1.0121389686529996749858099439785986e-51",
+            "boundary": {
+              "re": "-0.23605617685887281609527546999481317",
+              "im": "1.2402324215577828822881248036714994"
+            },
+            "boundary_free_mismatch": "1.2624971200427783598855561420088793"
+          },
+          {
+            "test": "finite_Green_with_boundary",
+            "rho": {
+              "re": "0.5",
+              "im": "4.0"
+            },
+            "R": "7.3",
+            "absolute_error": "3.4211388289180104270598866779538968e-49",
+            "scaled_error": "1.1591438309161520664243845367037123e-51",
+            "boundary": {
+              "re": "-5.9040326023961470798687714356500881",
+              "im": "0.0"
+            },
+            "boundary_free_mismatch": "5.9040326023961470798687714356500881"
+          },
+          {
+            "test": "finite_Green_with_boundary",
+            "rho": {
+              "re": "0.25",
+              "im": "7.0"
+            },
+            "R": "5.4",
+            "absolute_error": "5.4738221262688166832958186847262349e-48",
+            "scaled_error": "9.2138382075029196156754118531309567e-52",
+            "boundary": {
+              "re": "-148.32085140450197838876969323857223",
+              "im": "-200.55786735058830740103650488066122"
+            },
+            "boundary_free_mismatch": "249.44444896123171069568936580240078"
+          },
+          {
+            "test": "finite_sum_EM_consistency",
+            "rho": {
+              "re": "0.7",
+              "im": "2.0"
+            },
+            "rows": [
+              {
+                "x": "100.37",
+                "error": "0.000000040220721986982257471724427278668895",
+                "scaled_x_cubed": "0.040668825903389996697587219858947869"
+              },
+              {
+                "x": "200.37",
+                "error": "0.0000000050515477843038442215371251478145187",
+                "scaled_x_cubed": "0.040637086186064897091840227952058756"
+              },
+              {
+                "x": "400.37",
+                "error": "0.00000000063294945119903791019532672556807673",
+                "scaled_x_cubed": "0.040621280712268006914884354616216162"
+              },
+              {
+                "x": "800.37",
+                "error": "7.9213075865054153985582913937995571e-11",
+                "scaled_x_cubed": "0.040613393842262847465595231603269219"
+              }
+            ],
+            "scope": "finite sample; not a certified asymptotic bound"
+          },
+          {
+            "test": "finite_sum_EM_consistency",
+            "rho": {
+              "re": "0.5",
+              "im": "4.0"
+            },
+            "rows": [
+              {
+                "x": "100.37",
+                "error": "0.000000079222577398758926438346745474507156",
+                "scaled_x_cubed": "0.080105205692000130530257118131688522"
+              },
+              {
+                "x": "200.37",
+                "error": "0.000000010001005072829893908827233337216712",
+                "scaled_x_cubed": "0.080452907197010390761708083090678284"
+              },
+              {
+                "x": "400.37",
+                "error": "0.0000000012563468115792781926014003189501081",
+                "scaled_x_cubed": "0.080629529591102225424242287957335586"
+              },
+              {
+                "x": "800.37",
+                "error": "0.00000000015743484441212392121441138495560623",
+                "scaled_x_cubed": "0.080718533787244847716852214133421072"
+              }
+            ],
+            "scope": "finite sample; not a certified asymptotic bound"
+          },
+          {
+            "test": "finite_sum_EM_consistency",
+            "rho": {
+              "re": "0.25",
+              "im": "7.0"
+            },
+            "rows": [
+              {
+                "x": "100.37",
+                "error": "0.00000013480167987717821073659609104205642",
+                "scaled_x_cubed": "0.13630352165691693540359516809488415"
+              },
+              {
+                "x": "200.37",
+                "error": "0.000000017264064263026630720874310027342361",
+                "scaled_x_cubed": "0.13888045750220664029353663810422496"
+              },
+              {
+                "x": "400.37",
+                "error": "0.0000000021843459469060459719104238830995437",
+                "scaled_x_cubed": "0.14018643939715328894074263185962349"
+              },
+              {
+                "x": "800.37",
+                "error": "0.00000000027470427490904542109003841153268688",
+                "scaled_x_cubed": "0.14084382894107780121817346104978271"
+              }
+            ],
+            "scope": "finite sample; not a certified asymptotic bound"
+          },
+          {
+            "test": "explicit_negative_interval_samples",
+            "delta": "-0.4",
+            "gamma": 16,
+            "sample_count": 17,
+            "min_margin": "5.1072335927149006772446824058540695",
+            "scope": "synthetic parameters; not a hypothetical zero computation"
+          },
+          {
+            "test": "explicit_negative_interval_samples",
+            "delta": "-0.4",
+            "gamma": 20,
+            "sample_count": 17,
+            "min_margin": "6.5336599054772972721927170267141181",
+            "scope": "synthetic parameters; not a hypothetical zero computation"
+          },
+          {
+            "test": "explicit_negative_interval_samples",
+            "delta": "-0.4",
+            "gamma": 40,
+            "sample_count": 17,
+            "min_margin": "13.772824142237342028898227651467344",
+            "scope": "synthetic parameters; not a hypothetical zero computation"
+          },
+          {
+            "test": "explicit_negative_interval_samples",
+            "delta": "0",
+            "gamma": 16,
+            "sample_count": 17,
+            "min_margin": "4.9839336686602534307188281083621994",
+            "scope": "synthetic parameters; not a hypothetical zero computation"
+          },
+          {
+            "test": "explicit_negative_interval_samples",
+            "delta": "0",
+            "gamma": 20,
+            "sample_count": 17,
+            "min_margin": "6.4318210810693620668627369654725785",
+            "scope": "synthetic parameters; not a hypothetical zero computation"
+          },
+          {
+            "test": "explicit_negative_interval_samples",
+            "delta": "0",
+            "gamma": 40,
+            "sample_count": 17,
+            "min_margin": "13.718519270353169687466599894429451",
+            "scope": "synthetic parameters; not a hypothetical zero computation"
+          },
+          {
+            "test": "explicit_negative_interval_samples",
+            "delta": "0.25",
+            "gamma": 16,
+            "sample_count": 17,
+            "min_margin": "5.0320482782293445533770699495551487",
+            "scope": "synthetic parameters; not a hypothetical zero computation"
+          },
+          {
+            "test": "explicit_negative_interval_samples",
+            "delta": "0.25",
+            "gamma": 20,
+            "sample_count": 17,
+            "min_margin": "6.4715757355566512208672869905328128",
+            "scope": "synthetic parameters; not a hypothetical zero computation"
+          },
+          {
+            "test": "explicit_negative_interval_samples",
+            "delta": "0.25",
+            "gamma": 40,
+            "sample_count": 17,
+            "min_margin": "13.739728624731898339271092166207586",
+            "scope": "synthetic parameters; not a hypothetical zero computation"
+          }
+        ],
+        "script_sha256": "87be185b244b86633edd183eb88008d7c72ff31fb0ed83abc3fd36ec45453626",
+        "infinite_theorem_certification": false,
+        "new_Lean_roots": 0,
+        "independent_review": false
+      },
+      "suite": "round2",
+      "checker_sha256": "87be185b244b86633edd183eb88008d7c72ff31fb0ed83abc3fd36ec45453626"
+    },
+    {
+      "script": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\research\\RHRC\\integration\\opica_followup\\checks\\check_final_numeric.py",
+      "command": [
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\tools\\python-3.13.5-embed-amd64\\python.exe",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\research\\RHRC\\integration\\opica_followup\\checks\\check_final_numeric.py",
+        "--output",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage21\\record-validation\\native\\frozen\\numeric-final.json"
+      ],
+      "exit_code": 0,
+      "executed_script_sha256": "ee00bdfcd7d8f3d4bbf552f2fc54ff363ad672c4514de67f8cebfd6926b1e08d",
+      "receipt_sha256": "73bdeea6d5dd0aa177649d4bf039126a75fb9971e29dae1860d051dc7bd9f8fc",
+      "result": {
+        "status": "PASS_NUMERICAL_CONSISTENCY_ONLY",
+        "cases": 12,
+        "controls": [
+          {
+            "test": "physical_resolvent_log_transform",
+            "rho": "(0.7 + 2.0j)",
+            "xi": "0.0",
+            "N": 400,
+            "absolute_error": "2.09244416308292663e-11",
+            "generic_nonzero_zeta_argument": true
+          },
+          {
+            "test": "physical_resolvent_log_transform",
+            "rho": "(0.7 + 2.0j)",
+            "xi": "0.0",
+            "N": 1600,
+            "absolute_error": "1.63472551197266444e-13",
+            "generic_nonzero_zeta_argument": true
+          },
+          {
+            "test": "physical_resolvent_log_transform",
+            "rho": "(0.75 + 3.0j)",
+            "xi": "1.25",
+            "N": 400,
+            "absolute_error": "4.71758674535194246e-11",
+            "generic_nonzero_zeta_argument": true
+          },
+          {
+            "test": "physical_resolvent_log_transform",
+            "rho": "(0.75 + 3.0j)",
+            "xi": "1.25",
+            "N": 1600,
+            "absolute_error": "3.68561540362499165e-13",
+            "generic_nonzero_zeta_argument": true
+          },
+          {
+            "test": "physical_resolvent_log_transform",
+            "rho": "(0.8 + 1.5j)",
+            "xi": "-0.75",
+            "N": 400,
+            "absolute_error": "1.27345927005473476e-11",
+            "generic_nonzero_zeta_argument": true
+          },
+          {
+            "test": "physical_resolvent_log_transform",
+            "rho": "(0.8 + 1.5j)",
+            "xi": "-0.75",
+            "N": 1600,
+            "absolute_error": "9.94892766602799602e-14",
+            "generic_nonzero_zeta_argument": true
+          },
+          {
+            "test": "physical_resolvent_log_transform",
+            "rho": "(0.65 + 4.0j)",
+            "xi": "2.0",
+            "N": 400,
+            "absolute_error": "8.69461493716534071e-11",
+            "generic_nonzero_zeta_argument": true
+          },
+          {
+            "test": "physical_resolvent_log_transform",
+            "rho": "(0.65 + 4.0j)",
+            "xi": "2.0",
+            "N": 1600,
+            "absolute_error": "6.79265150460274515e-13",
+            "generic_nonzero_zeta_argument": true
+          },
+          {
+            "test": "sawtooth_norm_exact_partial_sum",
+            "N": 2,
+            "remaining_integral": "0.146955762627703242",
+            "elementary_tail_upper": "0.5"
+          },
+          {
+            "test": "sawtooth_norm_exact_partial_sum",
+            "N": 10,
+            "remaining_integral": "0.0325063692059496811",
+            "elementary_tail_upper": "0.1"
+          },
+          {
+            "test": "sawtooth_norm_exact_partial_sum",
+            "N": 100,
+            "remaining_integral": "0.0033250056387262028",
+            "elementary_tail_upper": "0.01"
+          },
+          {
+            "test": "sawtooth_norm_exact_partial_sum",
+            "N": 1000,
+            "remaining_integral": "0.000333250005563887298",
+            "elementary_tail_upper": "0.001"
+          }
+        ],
+        "mpmath": "1.3.0",
+        "dps": 45,
+        "interval_certified": false,
+        "actual_zeta_zeros_used": false,
+        "script_sha256": "ee00bdfcd7d8f3d4bbf552f2fc54ff363ad672c4514de67f8cebfd6926b1e08d"
+      },
+      "suite": "final",
+      "checker_sha256": "ee00bdfcd7d8f3d4bbf552f2fc54ff363ad672c4514de67f8cebfd6926b1e08d"
+    }
+  ],
+  "interval_certified": false,
+  "Lean_proof_authority": false,
+  "RH": "OPEN",
+  "Step4": "OPEN"
+}

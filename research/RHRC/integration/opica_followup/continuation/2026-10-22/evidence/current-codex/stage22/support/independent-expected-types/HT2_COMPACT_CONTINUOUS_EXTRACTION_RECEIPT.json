@@ -1,0 +1,168 @@
+{
+  "schema": "OPICA_HT2_COMPACT_CONTINUOUS_EXTRACTION_V1",
+  "created_utc": "2026-10-24T18:03:44.010040+00:00",
+  "head": "5ad2fc2df49ed551a8e3040a0dff65939aef015a",
+  "head_tree": "bb9a2c03d02f34db68e59ee89bb80a1e24e31c7b",
+  "checked_source_state": "Dirty Stage22 assembly; existing native NearGap object read-only; new helper and consumer freshly compiled to scratch outputs.",
+  "compiler": "Lean4.33.0-rc2 Windows native, d8b18978322de05a8f3dba51ef03cf5461676c17",
+  "mathlib": "51e6992efd06126df61a496bebf8f49482a4e129",
+  "new_primary_roots": 0,
+  "gates": {
+    "helper_native": {
+      "exit_code": 0,
+      "log": "compact-attempt3.log"
+    },
+    "literal_consumer_native": {
+      "exit_code": 0,
+      "log": "compact-positive-consumer.log"
+    },
+    "negative_missing_common_TV": {
+      "exit_code": 1,
+      "log": "compact-negative-no-common-budget.log",
+      "meaning": "Rejected at missing CommonLinearMassBound premise; interface control, not a counterexample theorem."
+    }
+  },
+  "theorems": [
+    "Zeta23.OPICAFollowup.IndependentCompactExtraction.compact_continuous_schwartz_approximation",
+    "Zeta23.OPICAFollowup.IndependentCompactExtraction.compact_pairing_difference_bound",
+    "Zeta23.OPICAFollowup.IndependentCompactExtraction.schwartz_zero_implies_compact_continuous_zero",
+    "Zeta23.OPICAFollowup.IndependentCompactExtraction.expected_near_gap_compact_continuous_limit_zero",
+    "Zeta23.OPICAFollowup.IndependentCompactExtraction.expected_near_gap_genuine_zero_measure_extraction",
+    "Zeta23.OPICAFollowup.IndependentCompactExtractionConsumer.expected_full_HT2_compact_continuous_extraction"
+  ],
+  "all_printed_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "topology": "Every continuous compactly supported complex test, actual signed Jordan integrals; actual zero signed-measure limit and strictMono identity subsequence.",
+  "scope_limits": [
+    "Not general Radon weak-star compactness for arbitrary bounded sequences.",
+    "Not convergence of Jordan positive and negative parts separately.",
+    "Not total-variation convergence.",
+    "Production append and production-import consumer require owner exact-source replay.",
+    "No human approval, review seal, CI pass, full-release acceptance, RH or Step4 theorem is asserted."
+  ],
+  "domain": "Arbitrary original HT2 signed measures with one common actual linear TV bound, Fourier self-duality, positivity off integers, literal gaps 0<a_n<=1 and a_n->1. Explicit per-member growth witnesses are consequences of the common bound.",
+  "original_seven_preserved": [
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-independent-expected-types\\ExpectedFullContracts.lean",
+      "bytes": 14791,
+      "sha256": "c7e5936ff169cafa803cd31282ef5a5b4efa56b01675903f4ab306e4dd94ab15"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-independent-expected-types\\ORIGINAL_PRE_ELABORATION.lean",
+      "bytes": 5738,
+      "sha256": "3e9dedc694dbe6c32b9db82842456064bd1eddce50c5bca84c18067b2011f414"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-independent-expected-types\\INDEPENDENT_EXPECTED_CONSUMERS_RECEIPT.json",
+      "bytes": 13442,
+      "sha256": "959adba7d5748e66e8a292a0471a7bbf2abec5560e7f5c623b5c9efeaa1378cd"
+    }
+  ],
+  "dependencies": [
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\Zeta23\\OPICAFollowup\\NearGapLimits.lean",
+      "bytes": 146479,
+      "sha256": "300aba8c18e0079c7df0b02dd804ed3d2dc266dacd18930c7bab962cf7dd8b35"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\.lake\\build\\lib\\lean\\Zeta23\\OPICAFollowup\\NearGapLimits.olean",
+      "bytes": 4747432,
+      "sha256": "426f580beab00ceabdf60653123dbd2992d5a60904f24ba5fce7bb939234e7a1"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\pr290\\.lake\\packages\\mathlib\\Mathlib\\Analysis\\Calculus\\BumpFunction\\SmoothApprox.lean",
+      "bytes": 3764,
+      "sha256": "495bf04f44ace1acd8d2952e0dd7dc99ce25eaf219898ee66b9d3b4be0317eb6"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\pr290\\.lake\\packages\\mathlib\\.lake\\build\\lib\\lean\\Mathlib\\Analysis\\Calculus\\BumpFunction\\SmoothApprox.olean",
+      "bytes": 33016,
+      "sha256": "d6045dae85a5f38415f8823f1172bc09ee14b2d9d2475eb8041fd5db1d13db9c"
+    }
+  ],
+  "files": [
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-independent-expected-types\\CompactContinuousExtraction.lean",
+      "bytes": 11488,
+      "sha256": "65759fc7d1ebc2d0056b56e73a9afaf8b31f9632d00d0300ab9d725ae91dc093"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-independent-expected-types\\CompactContinuousExtraction.olean",
+      "bytes": 393240,
+      "sha256": "b7599bec3a7d2bdb48f0485d720d0d706920cc32e345351cf633ed0af94f36bd"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-independent-expected-types\\ExpectedCompactContinuousExtraction.lean",
+      "bytes": 2248,
+      "sha256": "20ede7c2007f36d37ff5fab91a9534ec88d7559f9c93ed1f462897d8351641e5"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-independent-expected-types\\ExpectedCompactContinuousExtraction.olean",
+      "bytes": 37104,
+      "sha256": "7135af85d7f12024fba0f50044b2842ced290418e864859e089f0664e2e0082f"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-independent-expected-types\\ExpectedCompactContinuousExtraction.setup.json",
+      "bytes": 479,
+      "sha256": "1812b0786e96b1c06327a793d02bd50714a484101b197e13a34fd9dbffafae4f"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-independent-expected-types\\ExpectedCompactContinuousExtractionProduction.lean",
+      "bytes": 2295,
+      "sha256": "2a403187ff1e3a96c5ef2cf4d4dc40ed3ba8b760c7981e36bd21769af76d6c9f"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-independent-expected-types\\NearGapLimitsCompactExtraction.append.lean",
+      "bytes": 11582,
+      "sha256": "f4f11c2b31a2f70dbff00ae5b4e7154b31dadc0d98a27c2019a3d6f931eb6ca0"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-independent-expected-types\\NegativeNoCommonBudget.lean",
+      "bytes": 853,
+      "sha256": "bac9ae8d548269fc83c53a3ed3a47a9a5cd1cedfe12e579aa75315d4db97ccdb"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-independent-expected-types\\NegativeNoCommonBudget.setup.json",
+      "bytes": 466,
+      "sha256": "319c0211c3dc6c0d2e981af8e727b57db654a639f2f0719ba0a23216811394d1"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-independent-expected-types\\compact-attempt1.log",
+      "bytes": 530,
+      "sha256": "f1b90d4d21cdeea225db357ac43f5cc16b82c100d0f5be44eff81616a2f919f9"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-independent-expected-types\\compact-attempt2.log",
+      "bytes": 709,
+      "sha256": "c8925b001b3cb8adc4035fe1a9fa8299b72542a3e134a409806699e1893a2b02"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-independent-expected-types\\compact-attempt3.log",
+      "bytes": 799,
+      "sha256": "06bce2db0b0cbf08db0271bcec35645417378feffd2bfa3ed3bf3a634fcc936d"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-independent-expected-types\\compact-positive-consumer.log",
+      "bytes": 172,
+      "sha256": "45657169524ec001cb5d076b388ca597e407e62349b19ea9e7d5375e91cd4cd4"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-independent-expected-types\\compact-negative-no-common-budget.log",
+      "bytes": 461,
+      "sha256": "7ede6783e2369da7e6dc938219b512815ccb9c655537895f012c0c6ccff64ad8"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-independent-expected-types\\HT2_COMPACT_EXTRACTION_README.md",
+      "bytes": 3676,
+      "sha256": "eda904eaf0792500265d25307fe10499aacc976eff83b4ef48ea159a919e4ec8"
+    },
+    {
+      "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-independent-expected-types\\seal_compact_extraction.py",
+      "bytes": 4705,
+      "sha256": "386983dbab7310a8cb29eb01715409a1da53b6c1f17583ee114cae4ed7dd19b1"
+    }
+  ]
+}

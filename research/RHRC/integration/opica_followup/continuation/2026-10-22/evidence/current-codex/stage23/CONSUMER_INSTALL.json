@@ -1,0 +1,30 @@
+{
+  "schema": "OPICA_APPEND_ONLY_REVIEW_CONSUMER_INSTALL_V1",
+  "base_head": "06afa88e0c5ca48bc7e84cb1cf5a4400a5a493b2",
+  "original_validation_sha256": "5c242bc9aca48ca2adac002b629fd5154bab6b09a11aa566f2e3bac2e507faa6",
+  "new_validation_sha256": "40cc520872719be87631e7e27000f5a51c8f370d77599c18b9e73040fccd35f9",
+  "old_validation_byte_prefix_preserved": true,
+  "new_primary_roots": [],
+  "consumers": [
+    {
+      "source": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-independent-complex-mobius\\IndependentComplexMobius.lean",
+      "source_sha256": "be6500f2109d084430278f41cedce0c0ae6f9eb523bb2e642c7590dddecbec17",
+      "target": "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedIndependentComplexMobius.lean"
+    },
+    {
+      "source": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-independent-full-review\\ExpectedSquareFullDomainCompound.lean",
+      "source_sha256": "8e3e6d6597769160548972daba8de3a2d4ce414000e9c087f512afdad7940b6b",
+      "target": "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedSquareFullDomainCompound.lean"
+    }
+  ],
+  "source_square_semantic_peer_reviewer": "owner, who did not author the wrapper",
+  "square_peer_review_scope": "Both genuine conjuncts retain shared original hypotheses, original polynomial root use, and universal compact-compatible actual-measure distribution domain.",
+  "square_peer_review_does_not_establish": [
+    "compiler acceptance at the installed source",
+    "human approval",
+    "full release"
+  ],
+  "full_release_accepted": false,
+  "RH": "OPEN",
+  "Step4": "OPEN"
+}

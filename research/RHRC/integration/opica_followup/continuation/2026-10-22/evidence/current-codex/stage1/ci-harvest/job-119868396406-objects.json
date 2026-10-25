@@ -1,0 +1,11 @@
+[
+  {
+    "status": "PASS_SOURCE_BOUND_SUBSET_ONLY",
+    "primary_roots": 41,
+    "remaining": 59,
+    "public_declarations": 1379,
+    "constructors": 16,
+    "dependency_nodes": 7658,
+    "release_ready": false
+  }
+]

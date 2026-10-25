@@ -1,0 +1,14 @@
+'Zeta23.OPICAFollowup.finite_sum_euler_maclaurin_uniform' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OPICAEulerMaclaurinIndependent.audit_rightPowerSum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OPICAEulerMaclaurinIndependent.audit_remainder' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OPICAEulerMaclaurinIndependent.expected_finite_sum_euler_maclaurin_uniform' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'OPICAEulerMaclaurinIndependent.expected_isBigO' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OPICAEulerMaclaurinIndependent.expected_right_endpoint_jump' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OPICAEulerMaclaurinIndependent.expected_srho_expansion' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OPICAEulerMaclaurinIndependent.expected_srho_tail_at_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OPICAEulerMaclaurinIndependent.expected_remainder_derivative_bound' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'OPICAEulerMaclaurinIndependent.expected_nonvacuous_half' depends on axioms: [propext, Classical.choice, Quot.sound]

@@ -1,0 +1,13 @@
+{
+  "schema": "OPICA_STAGE19_DOCUMENTATION_REPAIR_V1",
+  "trigger": "Parent DocumentationReview.test_exact_seven_reviewed_files_pass failed after manual navigation edit",
+  "action": "Restored exact59ff committed manual graph bytes; no parent validator, review hash, protected-state object or test changed",
+  "path": "research/RHRC/graph/OPICA_FOLLOWUP_CURRENT_STATE.md",
+  "restored_sha256": "de9aabe7985f839c39b62e82c3407c97bc21d831e283199ab5d81784fe68f327",
+  "failed_log": "record-validation-initial/linux/normal.log",
+  "mathematical_source_changes": [],
+  "original_applied_plan_preserved": true,
+  "required_followup": "Rerun both complete unmodified parent test modes",
+  "RH": "OPEN",
+  "Step4": "OPEN"
+}

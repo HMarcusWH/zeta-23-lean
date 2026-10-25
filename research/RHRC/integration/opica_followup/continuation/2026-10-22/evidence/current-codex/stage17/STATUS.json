@@ -1,0 +1,195 @@
+{
+ "schema": "OPICA_STAGE17_NARROW_GATE_V1",
+ "status": "PASS_NARROW_LOCAL_GATES_ONLY_AGGREGATE_AND_FULL_RELEASE_OPEN",
+ "checked_commit": "ff73372615bad86e613081318cebf2b453def4bf",
+ "checked_tree": "cf212d4798df70380f5b730a43bbe220a72aadeb",
+ "dirty_status_during_checks": "",
+ "compiler": "Lean 4.33.0-rc2 commit d8b18978322de05a8f3dba51ef03cf5461676c17 (Linux x86_64), Lake 5.0.0-src+d8b1897",
+ "mathlib": "51e6992efd06126df61a496bebf8f49482a4e129 (pins unchanged; no lake update)",
+ "new_module": {
+  "module": "Zeta23.OPICAFollowup.BoundaryAmplitude",
+  "project_imports": [
+   "Zeta23.OPICAFollowup.NativeResolvent",
+   "Zeta23.OPICAFollowup.ProfileEulerMaclaurin"
+  ],
+  "authority": "BUILD_MANIFEST direct_project_imports of this module is exactly [NativeResolvent, ProfileEulerMaclaurin]",
+  "required_definitions": [
+   "genericForcedProfile",
+   "boundaryAmplitude"
+  ],
+  "new_definitions": [
+   "boundaryAmplitude",
+   "genericForcedProfile",
+   "genericForcedProfileDeriv"
+  ],
+  "supporting_results": [
+   "genericForcedProfile_near_zero",
+   "genericForcedProfile_tail",
+   "genericForcedProfileDeriv_tail",
+   "norm_genericForcedProfile_le_near_zero",
+   "norm_genericForcedProfile_le_tail",
+   "norm_genericForcedProfileDeriv_le_tail",
+   "norm_genericForcedProfileDeriv_near_zero",
+   "norm_zeroProfileDeriv_le_generic",
+   "memLp_two_of_power_bound",
+   "genericForcedProfile_mem_logFormDomain",
+   "PositiveAxisTest.exists_Ioo",
+   "power_euler",
+   "generic_forced_euler",
+   "log_weak_compact_of",
+   "genericForcedProfile_weak_equation",
+   "integrable_exp_neg_mul_abs",
+   "norm_logUnitary_generic_le",
+   "norm_logUnitaryDeriv_generic_le",
+   "logFourier_generic_undivided",
+   "weak_solution_unique",
+   "eq_nativeLogResolvent_of_logFourier"
+  ]
+ },
+ "existing_lean_sources_changed": false,
+ "cache_owner": "single local process; the module was built from this exact source in the session (lake rebuilds on source hash change), and the runner build re-validated it",
+ "sources": [
+  {
+   "path": "Zeta23/OPICAFollowup/BoundaryAmplitude.lean",
+   "sha256": "38a3bb888d00dc1860c3baae5c85827f6d00a03b470062bb7390ddc46c7c9b18",
+   "bytes": 59923
+  },
+  {
+   "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedBoundaryAmplitude.lean",
+   "sha256": "b114b1a7ac9e264cac4f6cf4606ac9a4d6b1b9f4f28b5853dbf11dc6d86ec6cc",
+   "bytes": 11922
+  },
+  {
+   "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/run_candidate_checks.py",
+   "sha256": "aa6e1f86f7a6a55bbc76f909a616cd90775b23981428f1fc514cd99f367ce158",
+   "bytes": 6999
+  },
+  {
+   "path": ".github/workflows/rhrc_opica_followup.yml",
+   "sha256": "ae43b1b9a19429ee8f51e9c3099d5825e4b96d50e04914cd896edada942668ad",
+   "bytes": 44419
+  },
+  {
+   "path": "lean-toolchain",
+   "sha256": "0d3c76ccd8772d8bcbe207241421a760312b71a6aa82f84194391fdf5cb026d6",
+   "bytes": 29
+  },
+  {
+   "path": "lake-manifest.json",
+   "sha256": "1847b362e15efd927e75aa8b5442e491f998e4a3f730f9dcaca9841f2957c448",
+   "bytes": 3200
+  }
+ ],
+ "roots": {
+  "Zeta23.OPICAFollowup.generic_forced_profile_unique": {
+   "paper": "F3",
+   "expected_type_consumer": "consumers/ExpectedBoundaryAmplitude.lean (8 receipts, shared)",
+   "actual_domain": "at an actual off-line zero with 1/2 < Re rho < 1 the generic profile is the zero profile and the F2 and F3 routes to the forced log-resolvent agree",
+   "premises": "1/2 < Re rho < 1, Im rho != 0 (no zero hypothesis)",
+   "axioms": "propext, Classical.choice, Quot.sound"
+  },
+  "Zeta23.OPICAFollowup.generic_boundary_amplitude": {
+   "paper": "F3",
+   "expected_type_consumer": "consumers/ExpectedBoundaryAmplitude.lean (8 receipts, shared)",
+   "actual_domain": "zeta(rho) != 0 gives no plateau and an unbounded profile near 0; zeta(1 - rho) != 0 gives a profile not integrable on (1, oo)",
+   "premises": "1/2 < Re rho < 1 (Im rho != 0 not needed)",
+   "axioms": "propext, Classical.choice, Quot.sound"
+  },
+  "re_verified_narrow_roots": [
+   "all roots consumed by the twenty-four runner consumer files"
+  ]
+ },
+ "gates": [
+  {
+   "label": "narrow runner (19 modules, 24 consumer files)",
+   "log": "runner/CHECK_RESULT.json",
+   "sha256": "db857a674710279cb474d863dfc2ecd515a7348d44e3165331b582e63bd74a7a",
+   "exit_code": 0,
+   "runner_status": "PASS_NARROW_ONLY",
+   "consumer_receipts": {
+    "ExpectedMasks": 4,
+    "ExpectedComplex": 4,
+    "ExpectedAuxiliary": 6,
+    "ExpectedMultiplicity": 17,
+    "ExpectedComb": 5,
+    "ExpectedFirstCell": 5,
+    "ExpectedWeighted": 9,
+    "ExpectedNearGap": 5,
+    "ExpectedNearGapLimit": 10,
+    "ExpectedNormalizedLimit": 9,
+    "ExpectedWeightedInverse": 17,
+    "ExpectedCoPoissonFamily": 7,
+    "ExpectedCoPoissonOrderZero": 10,
+    "ExpectedZeroMeasure": 7,
+    "ExpectedEulerMaclaurin": 10,
+    "ExpectedZeroProfiles": 11,
+    "ExpectedLogFourierSobolev": 10,
+    "ExpectedForcedEuler": 10,
+    "ExpectedSamplingCompatibility": 11,
+    "ExpectedSawtoothForce": 11,
+    "ExpectedWeightedSpectralMeasure": 10,
+    "ExpectedNativeResolvent": 13,
+    "ExpectedSquareDefect": 10,
+    "ExpectedBoundaryAmplitude": 8
+   }
+  },
+  {
+   "label": "W04/W07 workflow consumer (unchanged heredoc)",
+   "log": "consumers/opica-w04-w07-expected.log",
+   "sha256": "47bf37f88ae44589a223145e24dd07655b7172bfca6a30bf819bb33c5251ac1e",
+   "exit_code": 0,
+   "standard_axiom_receipts": 52
+  },
+  {
+   "label": "W06 workflow consumer (unchanged heredoc)",
+   "log": "consumers/opica-w06-expected.log",
+   "sha256": "8564fc7fe7d8a2ef4ae561975e207ce6aa8e42accc8c35f0e6ed618ed26078ca",
+   "exit_code": 0,
+   "standard_axiom_receipts": 14
+  },
+  {
+   "label": "W01 consumers and exact-source subset",
+   "note": "not re-run locally: no existing Lean source changed and no W01 or subset module imports the new module; green in CI at the Stage 16 record head c6ce649d (ci-harvest-c6ce649d-partial.json)"
+  },
+  {
+   "label": "child suite and parent contract tests",
+   "result": "child 185/185 and parent 82/82 in normal and optimized Python"
+  },
+  {
+   "label": "frozen control replay",
+   "result": "normal and optimized modes (p0 5112, round1 18862, round2 14672, final 1274 checks each); copoisson, round2 and final numerical suites CONSISTENCY_ONLY"
+  },
+  {
+   "label": "numerical falsification (mpmath 1.3.0, not interval certified)",
+   "script": "numerical-falsification.py",
+   "script_sha256": "7bd9395199c0b0298fc4705beeab53597c8aaa0af865c1cf7230deddc473f49f",
+   "log": "numerical-falsification.log",
+   "log_sha256": "deacbde5c1fc295f6383eee30713103147ef9cee72f19c9eaa8cf4922aff1814",
+   "result": "generic parameters rho = 0.75 + 10i and 0.6 + 3i (not zeros, kappa nonreal), cells to L = 200 with analytic power tails: F_log of e^(t/2) h~(e^t), computed directly from the finite sums, equals kappa zeta(1/2 + i xi)/(a - kappa) to <= 3e-8 relative at xi = 0, 4, 9.5, 17 (the first numerical test of the F2 quotient off the cut); the truncated transforms of h = 1 - S/b drift at the predicted scale |A| X^(Re rho - 1/2)/|rho - s|; int_1^200 |h|^2 = 1505 against int_1^200 |h~|^2 = 108 (rho = 0.75 + 10i); tail residual * x^3 bounded (0.13 to 1.62); h~(1/2) = 1 - A 2^(1 - rho) != 1"
+  }
+ ],
+ "negative_controls": [
+  {
+   "file": "negative-controls/negative-boundary-amplitude.lean",
+   "expected": "REJECTED",
+   "observed": "REJECTED (9 errors, exit 1): the near-zero term with a plus sign; the plateau iff zeta(rho) != 0; the tail term x^(rho - 1) with zeta(rho); the log-form-domain claim on 0 < Re rho; the resolvent identification without Im rho != 0; the quotient with a + kappa; the force equation without the comb; the resolvent at conj kappa; the near-zero exponent Re rho",
+   "log_sha256": "e57fc4a3a1731a14c8511291e92556e715231bf6b61dc33eaffe8d60b3bbfe93"
+  }
+ ],
+ "ci_harvest": {
+  "file": "ci-harvest-c6ce649d-partial.json",
+  "sha256": "58d9ffb8578100de1e261cae20786eea90185537fd0fa2a109c28c84a1fb73ef",
+  "scope": "19 of 22 runs complete; three research replays in progress at publication and superseded by the next push"
+ },
+ "not_established": [
+  "aggregate current-source export",
+  "full100 compiler receipt production/replay",
+  "facade and registration",
+  "parent-extension acceptance",
+  "canonical regeneration (rhkg-compiler-receipt remains red)",
+  "CI on the published head (pending at publication)"
+ ],
+ "RH": "OPEN",
+ "Step4": "OPEN",
+ "independent_closing_inequalities": "OPEN"
+}

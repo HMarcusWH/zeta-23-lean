@@ -1,0 +1,68 @@
+{
+  "name": "NegativeCanonicalResidualWrongPower",
+  "file": "NegativeCanonicalResidualWrongPower.lean",
+  "source_sha256": "b230e8ba674ca3a6f9188ca2eef6941aee12d3f61ca6e9e87ce730f20f51cc68",
+  "expected": "REJECTED",
+  "scope": "Actual real-cutoff residual cannot change power r to r+1.",
+  "origin": {
+    "kind": "EXACT_SEALED_CANONICAL_MUTATION",
+    "path": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-release\\NegativeCanonicalResidualWrongPower.lean",
+    "sha256": "b230e8ba674ca3a6f9188ca2eef6941aee12d3f61ca6e9e87ce730f20f51cc68",
+    "receipt": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-release\\stage22-type-control-receipt.json",
+    "receipt_sha256": "3cd6991c88e4e4cd40d0b74432056c6faae92bf6f9a6f30e93e0b7e0054744d6"
+  },
+  "required_diagnostic_regex": [
+    "truncatedInverseResidual_laplace",
+    "r \\+ 1"
+  ],
+  "passed": true,
+  "observed": "REJECTED_INTENDED_MUTATION",
+  "failure_reasons": [],
+  "requested_axiom_names": [
+    "Zeta23.OPICAFollowup.Validation.expected_canonical_recovery",
+    "Zeta23.OPICAFollowup.Validation.expected_filter_causal_actions",
+    "Zeta23.OPICAFollowup.Validation.expected_followup_native_output",
+    "Zeta23.OPICAFollowup.Validation.expected_followup_native_output_each_phase"
+  ],
+  "axioms": {
+    "Zeta23.OPICAFollowup.Validation.expected_canonical_recovery": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Zeta23.OPICAFollowup.Validation.expected_filter_causal_actions": [
+      "propext",
+      "sorryAx",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Zeta23.OPICAFollowup.Validation.expected_followup_native_output": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Zeta23.OPICAFollowup.Validation.expected_followup_native_output_each_phase": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "error_recovery_sorryAx_in_rejected_output": true,
+  "formal_authority_from_failed_declarations": false,
+  "command": [
+    "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe",
+    "env",
+    "lean",
+    "--root=C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\sources",
+    "-DautoImplicit=false",
+    "-DrelaxedAutoImplicit=false",
+    "-DmaxHeartbeats=800000",
+    "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\sources\\NegativeCanonicalResidualWrongPower.lean",
+    "-o",
+    "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-stage22\\clean-controls\\objects\\NegativeCanonicalResidualWrongPower.olean"
+  ],
+  "exit_code": 1,
+  "log": "NegativeCanonicalResidualWrongPower.log",
+  "log_sha256": "56093a8bdcb137fe136cf4859637dd1c769a761017c2b3ea9eab09223fffbb92",
+  "seconds": 91.23896590003278
+}

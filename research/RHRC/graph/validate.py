@@ -254,6 +254,7 @@ def main() -> int:
     relations = [row for _, rows in relation_shards for row in rows]
     errors.extend(relation_shard_file_errors())
     errors.extend(graph_build.SOURCE_ONLY_SHARDS.shard_file_errors())
+    errors.extend(graph_build.REGISTERED_SHARDS.shard_file_errors(REPO))
     errors.extend(relation_shard_row_errors(relation_shards))
 
     schema = json.loads(GRAPH_SCHEMA.read_text(encoding="utf-8"))

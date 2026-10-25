@@ -1,0 +1,32 @@
+{
+  "total_count": 1,
+  "jobs": [
+    {
+      "id": 119867723329,
+      "run_id": 39791294806,
+      "workflow_name": "RHRC post-222 bi-regular zero-shift scalar",
+      "head_branch": "research/opica-native-followup",
+      "run_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/runs/39791294806",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOT94UfM8AAAAb6KxOQQ",
+      "head_sha": "9ccea78eb5ee0c097bde05424e43de58a589b713",
+      "url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/actions/jobs/119867723329",
+      "html_url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39791294806/job/119867723329",
+      "status": "queued",
+      "conclusion": null,
+      "created_at": "2026-10-22T13:56:03Z",
+      "started_at": "2026-10-22T13:56:03Z",
+      "completed_at": null,
+      "name": "post222-biregular-zero-shift-scalar",
+      "steps": [],
+      "check_run_url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/check-runs/119867723329",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 0,
+      "runner_name": "",
+      "runner_group_id": 0,
+      "runner_group_name": ""
+    }
+  ]
+}

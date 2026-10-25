@@ -1,0 +1,7 @@
+theorem expected_native_field_theta_envelope :
+    ∃ C : ℝ, 0 < C ∧ ∃ A : ℕ → ℝ,
+      A = nativeFieldOrderConstant ∧
+      (∀ d, 0 < A d) ∧
+      (∀ d, Real.log (1 + A d) ≤ C * (d + 1) * Real.log (d + 2)) ∧
+      ∀ d : ℕ, ∀ t : ℝ, 0 ≤ t →
+        |primeFieldFamily d t| ≤ A d * Real.exp (nativeZeroDisplacementSup * t)

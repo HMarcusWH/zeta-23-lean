@@ -1,0 +1,14 @@
+[
+  {
+    "numerical_suite": "copoisson",
+    "status": "CONSISTENCY_ONLY"
+  },
+  {
+    "numerical_suite": "round2",
+    "status": "CONSISTENCY_ONLY"
+  },
+  {
+    "numerical_suite": "final",
+    "status": "CONSISTENCY_ONLY"
+  }
+]

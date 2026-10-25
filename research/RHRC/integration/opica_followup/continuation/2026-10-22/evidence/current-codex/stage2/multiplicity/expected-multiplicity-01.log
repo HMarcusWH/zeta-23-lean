@@ -1,0 +1,5 @@
+'Zeta23.OPICAFollowup.laguerre_tail_norm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.OPICAFollowup.monicLaguerre_exact_norm_sq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.OPICAFollowup.monicLaguerre_orthogonality' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.OPICAFollowup.laguerre_iterated_ibp' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.OPICAFollowup.monicLaguerreTail_integral_norm_sq' depends on axioms: [propext, Classical.choice, Quot.sound]

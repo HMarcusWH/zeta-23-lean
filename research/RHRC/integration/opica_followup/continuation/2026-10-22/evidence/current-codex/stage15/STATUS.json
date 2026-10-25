@@ -1,0 +1,207 @@
+{
+ "schema": "OPICA_STAGE15_NARROW_GATE_V1",
+ "status": "PASS_NARROW_LOCAL_GATES_ONLY_AGGREGATE_AND_FULL_RELEASE_OPEN",
+ "checked_commit": "ee783dd8c400971f9a887552f6544dd1ac572cab",
+ "checked_tree": "8e97f1648f18d8ae41ef07ce9f99ee6eb9953f01",
+ "dirty_status_during_checks": "",
+ "compiler": "Lean 4.33.0-rc2 commit d8b18978322de05a8f3dba51ef03cf5461676c17 (Linux x86_64), Lake 5.0.0-src+d8b1897",
+ "mathlib": "51e6992efd06126df61a496bebf8f49482a4e129 (pins unchanged; no lake update)",
+ "new_module": {
+  "module": "Zeta23.OPICAFollowup.NativeResolvent",
+  "project_imports": [
+   "Zeta23.OPICAFollowup.WeightedSpectralMeasure",
+   "Zeta23.OPICAFollowup.SamplingCompatibility"
+  ],
+  "authority": "BUILD_MANIFEST direct_project_imports of this module is exactly [WeightedSpectralMeasure, SamplingCompatibility]",
+  "required_definitions": [
+   "nativeLogResolvent"
+  ],
+  "new_definitions": [
+   "nativeLogResolvent",
+   "logTest",
+   "cutoffBump",
+   "truncTest",
+   "logShift"
+  ],
+  "supporting_results": [
+   "log_weak_compact",
+   "weak_extend",
+   "zeroProfile_weak_equation",
+   "fourier_deriv_of_primitive",
+   "fourier_quotient_of_weak",
+   "weak_unique",
+   "LogH1.sub",
+   "integral_conj_mul_fourier",
+   "integral_conj_mul_logFourier",
+   "logFourier_zeroProfile_undivided",
+   "logFourier_zeroProfile_quotient",
+   "logFourier_zeroProfile_deriv",
+   "integrable_resolvent_quotient",
+   "logUnitary_zeroProfile_eq_nativeLogResolvent",
+   "zeroProfile_weak_unique",
+   "integral_fract_mul_deriv_cell",
+   "profileSampleDefect_eq_integral",
+   "profileSampleDefect_eq_pairing",
+   "profileSampleDefect_eq_fourier_pairing",
+   "profileSampleDefect_eq_kappa_stieltjes",
+   "zeroProfile_norm_spectral",
+   "zeroProfile_form_spectral",
+   "profileGram_spectral",
+   "profileFormGram_spectral",
+   "resolvent_difference",
+   "arithmeticStieltjes_conj"
+  ],
+  "unpromoted": "logFourier_zeroProfile_undivided holds for every actual zero in the strip, critical-line zeros included; the removable a.e. quotient remark for critical-line zeros remains unpromoted (BUILD_SPEC F2 note)"
+ },
+ "existing_lean_sources_changed": false,
+ "cache_owner": "single local process; the module was built from this exact source in the session (lake rebuilds on source hash change), and the runner build re-validated it",
+ "sources": [
+  {
+   "path": "Zeta23/OPICAFollowup/NativeResolvent.lean",
+   "sha256": "16b2965ef6cdbdcccd0b564f03ac72cc25146cab530a2fe605b68169d004cf2d",
+   "bytes": 110452
+  },
+  {
+   "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedNativeResolvent.lean",
+   "sha256": "df50d36b3726e70979f0bce5ba28d39348f22d46aed30d49c4f4fa5ae2f6196b",
+   "bytes": 14219
+  },
+  {
+   "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/run_candidate_checks.py",
+   "sha256": "48909678c5c49d7296a2dd7e9904bab570220bb8d409345ab78f06a4b8f16e90",
+   "bytes": 6885
+  },
+  {
+   "path": ".github/workflows/rhrc_opica_followup.yml",
+   "sha256": "ae43b1b9a19429ee8f51e9c3099d5825e4b96d50e04914cd896edada942668ad",
+   "bytes": 44419
+  },
+  {
+   "path": "lean-toolchain",
+   "sha256": "0d3c76ccd8772d8bcbe207241421a760312b71a6aa82f84194391fdf5cb026d6",
+   "bytes": 29
+  },
+  {
+   "path": "lake-manifest.json",
+   "sha256": "1847b362e15efd927e75aa8b5442e491f998e4a3f730f9dcaca9841f2957c448",
+   "bytes": 3200
+  }
+ ],
+ "roots": {
+  "Zeta23.OPICAFollowup.native_forced_resolvent_unique": {
+   "paper": "F2",
+   "expected_type_consumer": "consumers/ExpectedNativeResolvent.lean (13 receipts, shared)",
+   "actual_domain": "an actual off-line zero (Re rho != 1/2, Im rho != 0) has Im kappa = (1 - 2 Re rho) Im rho != 0, so its log profile is the forced log-resolvent; the resolvent is itself an H1 weak solution; at a critical-line zero the supporting undivided identity reads (xi^2 - (Im rho)^2) F_log psi = kappa zeta(1/2 + i xi), both sides vanishing at xi = Im rho",
+   "premises": "actual zero, 0 < Re rho < 1, kappa in the resolvent set C \\ [1/4, oo) (contains every nonreal kappa; recorded refinement: proved on the full resolvent set)",
+   "axioms": "propext, Classical.choice, Quot.sound"
+  },
+  "Zeta23.OPICAFollowup.native_sample_stieltjes_identity": {
+   "paper": "F2",
+   "expected_type_consumer": "consumers/ExpectedNativeResolvent.lean (13 receipts, shared)",
+   "actual_domain": "for nonreal kappa: b/kappa = M(kappa), Im(b/kappa)/Im kappa = int d omega/|a - kappa|^2 > 0 (agreeing with the Stage 12 sampling ratio) and b != 0",
+   "premises": "actual zero, 0 < Re rho < 1, kappa in the resolvent set",
+   "axioms": "propext, Classical.choice, Quot.sound"
+  },
+  "Zeta23.OPICAFollowup.native_profile_spectral_norms": {
+   "paper": "F2",
+   "expected_type_consumer": "consumers/ExpectedNativeResolvent.lean (13 receipts, shared)",
+   "actual_domain": "the diagonal mixed pairing N(rho, rho) equals the norm formula cast to C; at the conjugate zero conj rho (conjugate coincidence) the undivided identity forces b_(conj rho) = conj b_rho",
+   "premises": "actual zero, 0 < Re rho < 1, Im kappa != 0; the mixed clauses quantify over a second actual zero with kappa_sigma in the resolvent set",
+   "axioms": "propext, Classical.choice, Quot.sound"
+  },
+  "re_verified_narrow_roots": [
+   "all roots consumed by the twenty-two runner consumer files"
+  ]
+ },
+ "gates": [
+  {
+   "label": "narrow runner (17 modules, 22 consumer files)",
+   "log": "runner/CHECK_RESULT.json",
+   "sha256": "efd5bb1fac43b5c9a048ab60bf9b60ab613aff307387e7eead19fc17a265b421",
+   "exit_code": 0,
+   "runner_status": "PASS_NARROW_ONLY",
+   "consumer_receipts": {
+    "ExpectedMasks": 4,
+    "ExpectedComplex": 4,
+    "ExpectedAuxiliary": 6,
+    "ExpectedMultiplicity": 17,
+    "ExpectedComb": 5,
+    "ExpectedFirstCell": 5,
+    "ExpectedWeighted": 9,
+    "ExpectedNearGap": 5,
+    "ExpectedNearGapLimit": 10,
+    "ExpectedNormalizedLimit": 9,
+    "ExpectedWeightedInverse": 17,
+    "ExpectedCoPoissonFamily": 7,
+    "ExpectedCoPoissonOrderZero": 10,
+    "ExpectedZeroMeasure": 7,
+    "ExpectedEulerMaclaurin": 10,
+    "ExpectedZeroProfiles": 11,
+    "ExpectedLogFourierSobolev": 10,
+    "ExpectedForcedEuler": 10,
+    "ExpectedSamplingCompatibility": 11,
+    "ExpectedSawtoothForce": 11,
+    "ExpectedWeightedSpectralMeasure": 10,
+    "ExpectedNativeResolvent": 13
+   }
+  },
+  {
+   "label": "W04/W07 workflow consumer (unchanged heredoc)",
+   "log": "consumers/opica-w04-w07-expected.log",
+   "sha256": "47bf37f88ae44589a223145e24dd07655b7172bfca6a30bf819bb33c5251ac1e",
+   "exit_code": 0,
+   "standard_axiom_receipts": 52
+  },
+  {
+   "label": "W06 workflow consumer (unchanged heredoc)",
+   "log": "consumers/opica-w06-expected.log",
+   "sha256": "8564fc7fe7d8a2ef4ae561975e207ce6aa8e42accc8c35f0e6ed618ed26078ca",
+   "exit_code": 0,
+   "standard_axiom_receipts": 14
+  },
+  {
+   "label": "W01 consumers and exact-source subset",
+   "note": "not re-run locally: no existing Lean source changed and no W01 or subset module imports the new module; green in CI at the Stage 14 head bd918c7c (ci-harvest-bd918c7c-partial.json)"
+  },
+  {
+   "label": "child suite and parent contract tests",
+   "result": "child 185/185 and parent 82/82 in normal and optimized Python"
+  },
+  {
+   "label": "frozen control replay",
+   "result": "normal and optimized modes (p0 5112, round1 18862, round2 14672, final 1274 checks each); copoisson, round2 and final numerical suites CONSISTENCY_ONLY"
+  },
+  {
+   "label": "numerical falsification (mpmath 1.3.0, not interval certified)",
+   "script": "numerical-falsification.py",
+   "script_sha256": "87e5166a50bb6c8f89716278ada4212ba86c4a5f239e72bba6b837e10e60acf8",
+   "log": "numerical-falsification.log",
+   "log_sha256": "a3a6577bf73ac41f2366774a45f71b2205fb4bdd63ab311e9c03db6bf83c5cc9",
+   "result": "mpmath cell quadrature to L = 200 and 400 at the first two zeros (on the critical line: kappa on the cut, so the off-cut roots are not tested): b = sum h(n) - 1/2 agrees with int_0^oo {x} dh/dx dx and with the log-variable pairing int w (dpsi/dt - psi/2) to 1.7e-8 / 3.8e-8 at L = 400 (residual ~ L^-3); |b| = 12.90 / 6.18 below the H^-1-H1 bound 147.8 / 379.5; the undivided identity (a - kappa) F_log psi = kappa zeta(1/2 + i xi), with F_log psi computed from h, holds to <= 4e-7 relative at five frequencies per zero while the control a + kappa fails by O(1); endpoint h(n) instead of h(n + 1) is off by about 0.9; EXPERIMENTAL SIGNAL: F_log psi(gamma) = kappa i zeta_prime(rho)/(2 gamma) to 1e-9"
+  }
+ ],
+ "negative_controls": [
+  {
+   "file": "negative-controls/negative-native-resolvent.lean",
+   "expected": "REJECTED",
+   "observed": "REJECTED (11 errors, exit 1): quotient denominator a + kappa; weak equation with 1/4 + kappa; identification without the resolvent hypothesis (no critical-line principal value); sample M(kappa) without kappa; sample -kappa M(kappa); cell endpoint h(n) instead of h(n + 1); Fourier pairing without the conjugate weight transform; norm without |kappa|^2; Euler form without the weight a; mixed pairing with kappa_sigma instead of conj kappa_sigma; budget factor without the 1",
+   "log_sha256": "5de27d9c4a5690f65423eecb31ca1a67facb91a1757d849b0f8b057f2fa1ea7c"
+  }
+ ],
+ "ci_harvest": {
+  "file": "ci-harvest-bd918c7c-partial.json",
+  "sha256": "27b4e460716d13c69facd302afeb0b01824aefd519b4cabf78fd31081e2c5f00",
+  "scope": "20 of 22 runs complete; two long research replays in progress at publication"
+ },
+ "not_established": [
+  "aggregate current-source export",
+  "full100 compiler receipt production/replay",
+  "facade and registration",
+  "parent-extension acceptance",
+  "canonical regeneration (rhkg-compiler-receipt remains red)",
+  "CI on the Stage 14 head (pending at publication)"
+ ],
+ "RH": "OPEN",
+ "Step4": "OPEN",
+ "independent_closing_inequalities": "OPEN"
+}

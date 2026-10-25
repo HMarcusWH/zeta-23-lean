@@ -1,0 +1,45 @@
+{
+  "schema": "OPICA_FINITE_EXACT_CHECKS_V1",
+  "status": "PASS",
+  "assertions": 5112,
+  "groups": {
+    "local_residual": 180,
+    "local_completion": 216,
+    "affine_background": 18,
+    "affine_composition": 16,
+    "jet_normalization": 8,
+    "log_comparison": 1250,
+    "scale_comparison": 250,
+    "error_recurrence": 11,
+    "gram_and_projection": 3,
+    "compatibility": 2,
+    "fourier_involution": 2,
+    "divisor_bounds": 2814,
+    "balanced_mask": 4,
+    "fejer_kernel": 338
+  },
+  "fixtures": {
+    "seven_rows": {
+      "consistent_left_null_pairing": "0",
+      "inconsistent_left_null_pairing": "1"
+    },
+    "repeated_prime": {
+      "Y": 10,
+      "Q": 2,
+      "d": 121,
+      "e": 1331,
+      "c2_d": 1,
+      "c2_e": 1,
+      "gcd": 121,
+      "a": 1,
+      "b": 11
+    }
+  },
+  "python": "3.13.5",
+  "checker_sha256": "42a1b29e979a415647b2ad477df4aa8e00b46f1afa52c1748748af4c79aa6985",
+  "authority": "Finite rational/Laurent-polynomial and combinatorial checks only; analytic theorems have written proofs; no Lean or RH proof.",
+  "upstream_checker_sha256": "7e7087814aa6c410790c346fb124321c042a4b18242fe171bda9016b52b7e018",
+  "checked_commit": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+  "checked_tree": "dee5bc2fa3148ad42e3ef1fef17c4acf6a408f99",
+  "tracked_source_dirty": false
+}

@@ -1,0 +1,25 @@
+research\RHRC\integration\opica_followup\continuation\2026-10-22\consumers\ExpectedSquarePhysical.lean:85:24: warning: This simp argument is unused:
+  Measure.smul_apply
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [squareGapJordan, puncturedLattice_one]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+'Zeta23.OPICAFollowup.SquarePhysicalExpected.full_actual_square_measure' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.SquarePhysicalExpected.all_actual_tempered_corrections' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.SquarePhysicalExpected.full_actual_projection' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.SquarePhysicalExpected.nonzero_lattice_atom_retained' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.SquarePhysicalExpected.no_gap_without_plateau' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.SquarePhysicalExpected.zero_square_degenerate' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

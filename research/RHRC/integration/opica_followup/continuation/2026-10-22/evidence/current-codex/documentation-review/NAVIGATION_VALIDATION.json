@@ -1,0 +1,44 @@
+{
+  "status": "PASS_NEW_NAVIGATION",
+  "new_local_links_checked": 143,
+  "policy": "Validate newly introduced links; frozen/preexisting historical links are retained",
+  "historical_control_preservation": [
+    {
+      "path": "AUDIT.md",
+      "block_byte_identical": true,
+      "entire_previous_document_preserved": true
+    },
+    {
+      "path": "FORK_NOTES.md",
+      "block_byte_identical": true,
+      "entire_previous_document_preserved": true
+    },
+    {
+      "path": "README.md",
+      "block_byte_identical": true,
+      "entire_previous_document_preserved": true
+    },
+    {
+      "path": "research/RHRC/CURRENT_RESEARCH_PLAN.md",
+      "block_byte_identical": true,
+      "entire_previous_document_preserved": true
+    },
+    {
+      "path": "research/RHRC/DOCUMENTATION_AUTHORITY.md",
+      "block_byte_identical": true,
+      "entire_previous_document_preserved": true
+    },
+    {
+      "path": "research/RHRC/README.md",
+      "block_byte_identical": true,
+      "entire_previous_document_preserved": true
+    },
+    {
+      "path": "research/RHRC/VALIDATION_PROTOCOL.md",
+      "block_byte_identical": true,
+      "entire_previous_document_preserved": true
+    }
+  ],
+  "mathematical_source_changes": [],
+  "problems": []
+}

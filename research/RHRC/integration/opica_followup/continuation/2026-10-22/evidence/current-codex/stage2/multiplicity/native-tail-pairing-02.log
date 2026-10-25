@@ -1,0 +1,31 @@
+C:/Users/macka/.codex/.chatgpt-projects/g-p-6a353c7268b08191b685956e466d73e4/work/opica-stage1-2026-10-22/multiplicity/NativeTailPairing.lean:883:42: error: Application type mismatch: The argument
+  t
+has type
+  ℂ
+but is expected to have type
+  ℝ
+in the application
+  f t
+C:/Users/macka/.codex/.chatgpt-projects/g-p-6a353c7268b08191b685956e466d73e4/work/opica-stage1-2026-10-22/multiplicity/NativeTailPairing.lean:931:8: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ↑↑(MemLp.toLp (monicLaguerreTail n p T) ⋯) t
+in the target expression
+  inner ℂ (↑↑(monicLaguerreTailL2 n p T hp) t) (↑↑↑(nativeTruncatedResidualVector k d T) t) =
+    ↑(eval t Q) * Complex.exp (-p * ↑t) * nativeTruncatedResidual k d T t
+
+k d : ℕ
+T : ℝ
+hk : 1 ≤ k
+rho : ↑zetaZeroConfig.carrier
+hright : 1 / 2 < (↑rho).re
+p : ℂ := ↑rho - 1 / 2
+n : ℕ := zeroMult ↑rho - 1
+hp : 0 < p.re
+hm : 1 ≤ zeroMult ↑rho
+Q : ℝ[X] := scaledMonicLaguerrePolynomial n (2 * p.re) T
+ha : 2 * p.re ≠ 0
+t : ℝ
+hpsi : ↑↑(MemLp.toLp (monicLaguerreTail n p T) ⋯) t = monicLaguerreTail n p T t
+hres : ↑↑↑(nativeTruncatedResidualVector k d T) t = nativeTruncatedResidual k d T t
+⊢ inner ℂ (↑↑(monicLaguerreTailL2 n p T hp) t) (↑↑↑(nativeTruncatedResidualVector k d T) t) =
+    ↑(eval t Q) * Complex.exp (-p * ↑t) * nativeTruncatedResidual k d T t
+'Zeta23.OPICAFollowup.nativeResidual_laguerre_inner' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]

@@ -1,0 +1,35 @@
+{
+  "sha": "6c44ff564df025770a315f9dbfc091fc10ff6f36",
+  "node_id": "C_kwDOT94UfNoAKDZjNDRmZjU2NGRmMDI1NzcwYTMxNWY5ZGJmYzA5MWZjMTBmZjZmMzY",
+  "url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/git/commits/6c44ff564df025770a315f9dbfc091fc10ff6f36",
+  "html_url": "https://github.com/HMarcusWH/zeta-23-lean/commit/6c44ff564df025770a315f9dbfc091fc10ff6f36",
+  "author": {
+    "name": "HMarcusWH",
+    "email": "Marcus@hmwh.se",
+    "date": "2026-10-22T15:29:24Z"
+  },
+  "committer": {
+    "name": "HMarcusWH",
+    "email": "Marcus@hmwh.se",
+    "date": "2026-10-22T15:29:24Z"
+  },
+  "tree": {
+    "sha": "acf035882020db4f151bfd4cdd588b22dd276d35",
+    "url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/git/trees/acf035882020db4f151bfd4cdd588b22dd276d35"
+  },
+  "message": "OPICA: prove native memory chain, weighted mixture and near-gap mass bound",
+  "parents": [
+    {
+      "sha": "96dfba7082fb0cc7a93f7b25e31d449951ee9e4d",
+      "url": "https://api.github.com/repos/HMarcusWH/zeta-23-lean/git/commits/96dfba7082fb0cc7a93f7b25e31d449951ee9e4d",
+      "html_url": "https://github.com/HMarcusWH/zeta-23-lean/commit/96dfba7082fb0cc7a93f7b25e31d449951ee9e4d"
+    }
+  ],
+  "verification": {
+    "verified": false,
+    "reason": "unsigned",
+    "signature": null,
+    "payload": null,
+    "verified_at": null
+  }
+}

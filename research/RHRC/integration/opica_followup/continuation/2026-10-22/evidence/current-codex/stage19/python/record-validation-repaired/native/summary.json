@@ -1,0 +1,49 @@
+{
+  "status": "PASS_CHILD_TESTS_ONLY",
+  "commands": [
+    {
+      "name": "normal",
+      "command": [
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\tools\\python-3.13.5-embed-amd64\\python.exe",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "research/RHRC/integration/opica_followup/tests",
+        "-p",
+        "test_*.py"
+      ],
+      "started_at": "2026-10-24T15:11:50.404744+00:00",
+      "finished_at": "2026-10-24T15:12:22.099762+00:00",
+      "exit_code": 0,
+      "log": "normal.log",
+      "log_sha256": "068b22d343988558158e6e7b551c389febf5b2716d8a37249da40f42847b0f52"
+    },
+    {
+      "name": "optimized",
+      "command": [
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\tools\\python-3.13.5-embed-amd64\\python.exe",
+        "-B",
+        "-O",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "research/RHRC/integration/opica_followup/tests",
+        "-p",
+        "test_*.py"
+      ],
+      "started_at": "2026-10-24T15:11:50.404822+00:00",
+      "finished_at": "2026-10-24T15:12:22.107895+00:00",
+      "exit_code": 0,
+      "log": "optimized.log",
+      "log_sha256": "6e45428b26d98efb6b22a22122b36c5b7fe8acfaad58130ba8f57ac5983111e3"
+    }
+  ],
+  "manifest_before": "2ffd59aebdc469e307d9416b31d3521fb747647cf9bf0022b9b8b1422d953407",
+  "manifest_after": "2ffd59aebdc469e307d9416b31d3521fb747647cf9bf0022b9b8b1422d953407",
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "release_accepted": false
+}

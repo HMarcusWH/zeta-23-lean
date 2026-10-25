@@ -1,0 +1,1 @@
+{"status": "PASS_CHILD_EXACT_PARENT_PIN_AND_STALE_FORGERY_REJECTIONS", "parent_sha256": "37784b8c89d75f3aae1aed52ff2fe046c2614d78247edfd717f6b30a2d41953a", "checks": 4, "actual_pin_matches": true, "actual_full100_absence_still_rejected": true, "mutated_parent_rejected": true, "editable_register_cannot_repin": true, "RH": "OPEN", "full_release_ready": false}

@@ -1,0 +1,151 @@
+{
+  "schema": "OPICA_INDEPENDENT_FULL_COMPLEX_MOBIUS_LEAF_V1",
+  "owner_head": "2440dcde7607baa7bcff2ce9626effa1ae9f3f07",
+  "owner_tracked_status_after_leaves": "CLEAN",
+  "owner_mutations_performed": false,
+  "initial_type_sealed_before_production_statement_and_elaboration": true,
+  "initial_type_sha256": "65A1985B68C25A03A33739D0509597E24EB31F45BE9D4A78C305E1A38A74986E",
+  "initial_type_time_local": "2026-10-24T20:53:18.2484332+02:00",
+  "initial_type_adaptations": [],
+  "initial_compile_exit_code": 0,
+  "full_interface_compile_exit_code": 0,
+  "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "primary_consumer": "Zeta23.OPICAFollowup.Validation.expected_independent_complete_complex_mobius",
+  "postseal_companion": "Zeta23.OPICAFollowup.Validation.expected_independent_complex_mobius_full_interface",
+  "controls": [
+    {
+      "name": "MissingImaginary",
+      "exit_code": 1,
+      "detected": "True cannot satisfy imaginary forward/inverse equations",
+      "object_emitted": false
+    },
+    {
+      "name": "MissingPhysicalInterface",
+      "exit_code": 1,
+      "detected": "True cannot satisfy raw physical mixture-coordinate equalities",
+      "object_emitted": false
+    },
+    {
+      "name": "WrongExactNorm",
+      "exit_code": 1,
+      "detected": "zeta denominator 2*a+2 mismatches exact 2*a+1",
+      "object_emitted": false
+    }
+  ],
+  "command_template": "C:/Users/macka/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lake.exe env lean -R ../audit-independent-complex-mobius ../audit-independent-complex-mobius/NAME.lean -o ../audit-independent-complex-mobius/NAME.olean",
+  "command_cwd": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo",
+  "files": [
+    {
+      "path": "INITIAL_INTENDED_TYPE.lean.txt",
+      "sha256": "65A1985B68C25A03A33739D0509597E24EB31F45BE9D4A78C305E1A38A74986E",
+      "bytes": 2918
+    },
+    {
+      "path": "IndependentComplexMobius.InitialCore.lean",
+      "sha256": "E9561834C41436F7CBB44EAC8948527BDD520A33C611AA9184CBC74590DEC40D",
+      "bytes": 4598
+    },
+    {
+      "path": "IndependentComplexMobius.InitialCore.olean",
+      "sha256": "E32C02B018E451076FEF3F3E335193BE6D680DE58747D3550C2BDE540D40E923",
+      "bytes": 197664
+    },
+    {
+      "path": "IndependentComplexMobius.lean",
+      "sha256": "BE6500F2109D084430278F41CEDCE0C0AE6F9EB523BB2E642C7590DDDECBEC17",
+      "bytes": 6635
+    },
+    {
+      "path": "IndependentComplexMobius.olean",
+      "sha256": "3776E8A7F0BD563606918848090F77B61C0FE1BA42F55561308BCBE2BA4C73ED",
+      "bytes": 211760
+    },
+    {
+      "path": "compile-initial.log",
+      "sha256": "10275ABCBF6B88952C20600E0DE0A91F4DE6C9A55276FB4B442F4C1EA5EAF0C1",
+      "bytes": 143
+    },
+    {
+      "path": "compile-full-interface.log",
+      "sha256": "D816FA862C0DCDCA52F71FAD42801853CC3B15B3AF182F9431CA0A01A24352DF",
+      "bytes": 292
+    },
+    {
+      "path": "ControlMissingImaginary.lean",
+      "sha256": "BE68F43A6FB72FE44550069E66FEC8ADB2204AE6C6AC5B8F94C95AFDE7A0EECB",
+      "bytes": 7048
+    },
+    {
+      "path": "ControlMissingImaginary.log",
+      "sha256": "E19F08DA8EC031D8D6997DBE8DC7E4729FAC6C60F0DEBD4BCCCE43689DE820A0",
+      "bytes": 1476
+    },
+    {
+      "path": "ControlMissingPhysicalInterface.lean",
+      "sha256": "4CB4D2E3BC19C7435D5898D47F8567688FD006FA9B9805AD0D9E63A2DA60C6F1",
+      "bytes": 7034
+    },
+    {
+      "path": "ControlMissingPhysicalInterface.log",
+      "sha256": "521B41156AECD27B9C5F74B2A16312B7A7967013E41D4038672A398A24838C58",
+      "bytes": 668
+    },
+    {
+      "path": "ControlWrongExactNorm.lean",
+      "sha256": "686EDDFBE27050DF083825AE6C1EA1257DB5EDF3F98479807DD229E87D0C5CA0",
+      "bytes": 6635
+    },
+    {
+      "path": "ControlWrongExactNorm.log",
+      "sha256": "D4E7BA2CD16429624E3452D50CC9B341A42CF0C673EB03FCBC4FAD2B9DF00662",
+      "bytes": 1351
+    },
+    {
+      "path": "make-controls.ps1",
+      "sha256": "C67368A5D59B9BB969DE2B4CD597E434FED4E2CB63A0C0723FAC72ABE2EDDD81",
+      "bytes": 1928
+    },
+    {
+      "path": "PROVENANCE.md",
+      "sha256": "7AE6B9A60BB6C734586918E97D5876C79E10A3E56ED075E11FD1B46C695131EE",
+      "bytes": 4787
+    },
+    {
+      "path": "POST_GREEN_RESEARCH.md",
+      "sha256": "09FA0F130FE70F97988CE5D8385F62F0FFEE5F5018D9F2A3A4CA191A3C031506",
+      "bytes": 2916
+    }
+  ],
+  "owner_files": [
+    {
+      "path": "Zeta23/OPICAFollowup/WeightedMixing.lean",
+      "sha256": "5225572875D72EF14C2ADC912D0548B92F5BCCF9FCEC807830E5EF01EF04CF50"
+    },
+    {
+      "path": ".lake/build/lib/lean/Zeta23/OPICAFollowup/WeightedMixing.olean",
+      "sha256": "A45B698C6CF12304C8651B97897E92DEF7FA3C6A8CDBDAB83246F1376219EDEB"
+    },
+    {
+      "path": "research/RHRC/integration/opica_followup/PUBLIC_ROOTS.json",
+      "sha256": "2239636F347449ECD447FC5BA78D7C75F1C0440D28A862CB72397C4F79597B41"
+    },
+    {
+      "path": "research/RHRC/integration/opica_followup/BUILD_SPEC.md",
+      "sha256": "CACAB08834AEB9BADD578D90828BE99CFF33C7A617C609E75BB878EB5FA3B29C"
+    },
+    {
+      "path": "research/RHRC/integration/opica_followup/PAPER_CROSSWALK.json",
+      "sha256": "9E1252631F26FB81F4A5C60AC714E483C076BE5C9858E25056E3835933CE6451"
+    }
+  ],
+  "claims": {
+    "new_root": false,
+    "human_approval": false,
+    "seal_or_registry": false,
+    "RH": "OPEN"
+  }
+}

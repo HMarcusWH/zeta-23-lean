@@ -1,0 +1,3483 @@
+{
+  "schema": "OPICA_PARENT_ADAPTER_COMPLETION_V1",
+  "status": "GENUINE_PARENT_MODULE_BUILD_PASS_NOT_CHILD_ACCEPTANCE",
+  "captured_at": "2026-10-22T15:33:21.528243+00:00",
+  "main_head": "6c44ff564df025770a315f9dbfc091fc10ff6f36",
+  "parent_command": {
+    "label": "parent-native-jet-01",
+    "cwd": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-audit28",
+    "command": [
+      "C:\\Users\\macka\\.elan\\toolchains\\leanprover--lean4---v4.33.0-rc2\\bin\\lake.exe",
+      "build",
+      "Zeta23.OPICA.NativeJetAdapter"
+    ],
+    "started": "2026-10-22T14:01:30.899278+00:00",
+    "base_head": "9b6a9a3a2badb4cff62a56c1158d9cef8759d30d",
+    "scope": "Isolated source overlay; source hashes must be bound before proof promotion",
+    "exit_code": 0,
+    "seconds": 5278.56476400001,
+    "finished": "2026-10-22T15:29:29.499370+00:00",
+    "log_sha256": "119d15cd03cfdc6dfa147d3eb87f627bee97e41e29cec5f383842179e408a02b"
+  },
+  "project_import_sources": [
+    {
+      "module": "Zeta23.Analytic.RectangleLogDeriv",
+      "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+      "main_sha256": "6606f32e30fe5f7a5c0660e2c9ecb8bb041144e52b090fe880d2c0e4734f5755",
+      "audit_sha256": "6606f32e30fe5f7a5c0660e2c9ecb8bb041144e52b090fe880d2c0e4734f5755",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.Analytic.Stirling",
+      "path": "Zeta23/Analytic/Stirling.lean",
+      "main_sha256": "db1638101a09faf22aac70ae379c3f37df5b7767e123bf4f6b6f2892d75d999d",
+      "audit_sha256": "db1638101a09faf22aac70ae379c3f37df5b7767e123bf4f6b6f2892d75d999d",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.Assembly",
+      "path": "Zeta23/Assembly.lean",
+      "main_sha256": "ff1c57696310e3b9cf0bb39ce7fcfc4f4c4ba654a605daa30b66c3c9b900e7cf",
+      "audit_sha256": "ff1c57696310e3b9cf0bb39ce7fcfc4f4c4ba654a605daa30b66c3c9b900e7cf",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.Assembly.Inputs",
+      "path": "Zeta23/Assembly/Inputs.lean",
+      "main_sha256": "4774543e7049159ac2bfd6de313a77edbc7222a5ea9cd1d98b3accc8568da273",
+      "audit_sha256": "4774543e7049159ac2bfd6de313a77edbc7222a5ea9cd1d98b3accc8568da273",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.BoundaryFlatApproximation",
+      "path": "Zeta23/CCM/BoundaryFlatApproximation.lean",
+      "main_sha256": "1280b442bcc167aa768d58a0cd854f0d59cda0fc0be983878e238ad184ab10c8",
+      "audit_sha256": "1280b442bcc167aa768d58a0cd854f0d59cda0fc0be983878e238ad184ab10c8",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.BoundaryFlatFiniteSpace",
+      "path": "Zeta23/CCM/BoundaryFlatFiniteSpace.lean",
+      "main_sha256": "4db4411d64b0c97370db263efd3b64f8e2bfc3f90cd7e694e13fb69bc4b83f56",
+      "audit_sha256": "4db4411d64b0c97370db263efd3b64f8e2bfc3f90cd7e694e13fb69bc4b83f56",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.BoundaryFlatProjection",
+      "path": "Zeta23/CCM/BoundaryFlatProjection.lean",
+      "main_sha256": "0ab97e2b051dfc92fb8dd61756e9fe2933e243ded734c76f2afd480bcc697282",
+      "audit_sha256": "0ab97e2b051dfc92fb8dd61756e9fe2933e243ded734c76f2afd480bcc697282",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.CanonicalApertureAnalyticPrimitives",
+      "path": "Zeta23/CCM/CanonicalApertureAnalyticPrimitives.lean",
+      "main_sha256": "71325f1eb6140dd651c5dab8ea1d1eef6de77defd7f4b6dc7897463499ddceed",
+      "audit_sha256": "71325f1eb6140dd651c5dab8ea1d1eef6de77defd7f4b6dc7897463499ddceed",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.CanonicalApertureArchDomain",
+      "path": "Zeta23/CCM/CanonicalApertureArchDomain.lean",
+      "main_sha256": "36cbae1d23574529cd0a0652c3524ab80e85b06038c5c88e51fe3f22c1816617",
+      "audit_sha256": "36cbae1d23574529cd0a0652c3524ab80e85b06038c5c88e51fe3f22c1816617",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.CanonicalApertureComplexBridge",
+      "path": "Zeta23/CCM/CanonicalApertureComplexBridge.lean",
+      "main_sha256": "0ccef45acc55d9a761d891d56de0b146f3b9a7b21f3821c7016e69489e1d7413",
+      "audit_sha256": "0ccef45acc55d9a761d891d56de0b146f3b9a7b21f3821c7016e69489e1d7413",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.CanonicalApertureComplexSource",
+      "path": "Zeta23/CCM/CanonicalApertureComplexSource.lean",
+      "main_sha256": "c26a32263c69ef3f57cae496d19803e75a25eecf0d0ea7055441de443557c844",
+      "audit_sha256": "c26a32263c69ef3f57cae496d19803e75a25eecf0d0ea7055441de443557c844",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.CanonicalApertureContinuity",
+      "path": "Zeta23/CCM/CanonicalApertureContinuity.lean",
+      "main_sha256": "e70f3a128808b2474d66e477ffc45eb86683a2c424e5b76c1ade4355abefb3d4",
+      "audit_sha256": "e70f3a128808b2474d66e477ffc45eb86683a2c424e5b76c1ade4355abefb3d4",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.CanonicalApertureHolomorphy",
+      "path": "Zeta23/CCM/CanonicalApertureHolomorphy.lean",
+      "main_sha256": "38ee0e78bba907ef1027cbb3da85a0307176918bb058cde5e2cfe2fd129c00ae",
+      "audit_sha256": "38ee0e78bba907ef1027cbb3da85a0307176918bb058cde5e2cfe2fd129c00ae",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.CanonicalApertureParameterHolomorphy",
+      "path": "Zeta23/CCM/CanonicalApertureParameterHolomorphy.lean",
+      "main_sha256": "eba24e65d7d154d45413d2eb04f0710de6b2f7286bb6651d0f9451389e4854db",
+      "audit_sha256": "eba24e65d7d154d45413d2eb04f0710de6b2f7286bb6651d0f9451389e4854db",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.CanonicalApertureRegularityScaffold",
+      "path": "Zeta23/CCM/CanonicalApertureRegularityScaffold.lean",
+      "main_sha256": "7dc8bb92f9ea8c8e5f6efb732104823e265a7f483479e6e6bccdfaf0525eba03",
+      "audit_sha256": "7dc8bb92f9ea8c8e5f6efb732104823e265a7f483479e6e6bccdfaf0525eba03",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.CanonicalApertureScalarHalfPlane",
+      "path": "Zeta23/CCM/CanonicalApertureScalarHalfPlane.lean",
+      "main_sha256": "2c6bc7d52bb841fac5cfbb89dc9eb3439678ba9d684f6748c621f062ff6a591d",
+      "audit_sha256": "2c6bc7d52bb841fac5cfbb89dc9eb3439678ba9d684f6748c621f062ff6a591d",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.CanonicalApertureSourceHolomorphy",
+      "path": "Zeta23/CCM/CanonicalApertureSourceHolomorphy.lean",
+      "main_sha256": "37e3db061891f4b03b80734334f44a919a510ae4584e343dd0089a6245a48ff4",
+      "audit_sha256": "37e3db061891f4b03b80734334f44a919a510ae4584e343dd0089a6245a48ff4",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.CanonicalCenteredIndexCoercivity",
+      "path": "Zeta23/CCM/CanonicalCenteredIndexCoercivity.lean",
+      "main_sha256": "5d30ad31ba7f7d7979a47e5c2210a45cbbef160048ae442456be0a603e0b2209",
+      "audit_sha256": "5d30ad31ba7f7d7979a47e5c2210a45cbbef160048ae442456be0a603e0b2209",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.CanonicalCenteredIndexPoincare",
+      "path": "Zeta23/CCM/CanonicalCenteredIndexPoincare.lean",
+      "main_sha256": "8c0c0a2c06fdf4377bb8fe02eb46c1051dbea0d9f90386e66803ca965c132227",
+      "audit_sha256": "8c0c0a2c06fdf4377bb8fe02eb46c1051dbea0d9f90386e66803ca965c132227",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.CanonicalDeepThresholdGap",
+      "path": "Zeta23/CCM/CanonicalDeepThresholdGap.lean",
+      "main_sha256": "4a96755f4cb91088d38116f75945654385c2db0013f0d3bf138ef1e6af537a6f",
+      "audit_sha256": "4a96755f4cb91088d38116f75945654385c2db0013f0d3bf138ef1e6af537a6f",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.CanonicalPhysicalTrialRealization",
+      "path": "Zeta23/CCM/CanonicalPhysicalTrialRealization.lean",
+      "main_sha256": "519b2b39e380595af2e9ff4172a320fcb59e7990bd3dd84df11c3d0bded45a21",
+      "audit_sha256": "519b2b39e380595af2e9ff4172a320fcb59e7990bd3dd84df11c3d0bded45a21",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.CanonicalPoleExponentialMoments",
+      "path": "Zeta23/CCM/CanonicalPoleExponentialMoments.lean",
+      "main_sha256": "6ecebf9af0805411cd5e6add3485d3a87a28719b6a17b4cc08d0fd0ce90c5289",
+      "audit_sha256": "6ecebf9af0805411cd5e6add3485d3a87a28719b6a17b4cc08d0fd0ce90c5289",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.CanonicalPoleNeutralBottomNFlow",
+      "path": "Zeta23/CCM/CanonicalPoleNeutralBottomNFlow.lean",
+      "main_sha256": "74df511e2b22d3722b2dc12664795acd4ac6647fa5365995264a59bafe20d2c1",
+      "audit_sha256": "74df511e2b22d3722b2dc12664795acd4ac6647fa5365995264a59bafe20d2c1",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.CanonicalPoleNeutralCarrier",
+      "path": "Zeta23/CCM/CanonicalPoleNeutralCarrier.lean",
+      "main_sha256": "c105da764725316e6d256e342cfed7a5db2f857ed5f1a332199de22a1617927d",
+      "audit_sha256": "c105da764725316e6d256e342cfed7a5db2f857ed5f1a332199de22a1617927d",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.CanonicalPoleNeutralGeometry",
+      "path": "Zeta23/CCM/CanonicalPoleNeutralGeometry.lean",
+      "main_sha256": "4e6ec5473c2072570890563219c0e6fc170160865945b343f1cb4d8029df878a",
+      "audit_sha256": "4e6ec5473c2072570890563219c0e6fc170160865945b343f1cb4d8029df878a",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.CanonicalPoleNeutralGroundConstraints",
+      "path": "Zeta23/CCM/CanonicalPoleNeutralGroundConstraints.lean",
+      "main_sha256": "432417a321bf163e59b02c89ebd025123b34b2328bc7d3f70345d129f3f56383",
+      "audit_sha256": "432417a321bf163e59b02c89ebd025123b34b2328bc7d3f70345d129f3f56383",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.CanonicalPoleNeutralIndexRigidity",
+      "path": "Zeta23/CCM/CanonicalPoleNeutralIndexRigidity.lean",
+      "main_sha256": "fda3f8cd2a7116943368d3474591c1d837e97c52e909c454f45b04cde519d1a7",
+      "audit_sha256": "fda3f8cd2a7116943368d3474591c1d837e97c52e909c454f45b04cde519d1a7",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.CanonicalPoleNeutralIntertwining",
+      "path": "Zeta23/CCM/CanonicalPoleNeutralIntertwining.lean",
+      "main_sha256": "e0ddedbcc5d9a0ebf3d2c278158c0358d7f2e9b827f1fddfb3e0da41568f1f2e",
+      "audit_sha256": "e0ddedbcc5d9a0ebf3d2c278158c0358d7f2e9b827f1fddfb3e0da41568f1f2e",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.CanonicalPoleNeutralNesting",
+      "path": "Zeta23/CCM/CanonicalPoleNeutralNesting.lean",
+      "main_sha256": "6eafb09261ac35a2f43de288a8d7986062d3c36645946109f86afcc250bf7d27",
+      "audit_sha256": "6eafb09261ac35a2f43de288a8d7986062d3c36645946109f86afcc250bf7d27",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.CanonicalPoleNeutralNormals",
+      "path": "Zeta23/CCM/CanonicalPoleNeutralNormals.lean",
+      "main_sha256": "6ba64dc7ae340d2286d55d92a342fc180607a2cd7f79261418c0646650b2d289",
+      "audit_sha256": "6ba64dc7ae340d2286d55d92a342fc180607a2cd7f79261418c0646650b2d289",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.CanonicalPoleNeutralPublicAPI",
+      "path": "Zeta23/CCM/CanonicalPoleNeutralPublicAPI.lean",
+      "main_sha256": "8cbc264589d13a25d9fad21fe4aaab42310d49acf87f7337e60a9c7af482a55f",
+      "audit_sha256": "8cbc264589d13a25d9fad21fe4aaab42310d49acf87f7337e60a9c7af482a55f",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.CanonicalPoleNeutralShiftedSecular",
+      "path": "Zeta23/CCM/CanonicalPoleNeutralShiftedSecular.lean",
+      "main_sha256": "f210682858a328216e916fd9a103dfa62dc2e790029dd3ef4e5fb11c8111353f",
+      "audit_sha256": "f210682858a328216e916fd9a103dfa62dc2e790029dd3ef4e5fb11c8111353f",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.CanonicalPoleNeutralSimpleEvenTie",
+      "path": "Zeta23/CCM/CanonicalPoleNeutralSimpleEvenTie.lean",
+      "main_sha256": "5edb03fc03e79d18eac8e58c4366727691c3131314c67d379f31f0c76b69f1d3",
+      "audit_sha256": "5edb03fc03e79d18eac8e58c4366727691c3131314c67d379f31f0c76b69f1d3",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.CanonicalPoleNeutralSourceMoment",
+      "path": "Zeta23/CCM/CanonicalPoleNeutralSourceMoment.lean",
+      "main_sha256": "d56526e02d2bcbdceabe08373049c32796546057c54ab911c0363cdf0473bf02",
+      "audit_sha256": "d56526e02d2bcbdceabe08373049c32796546057c54ab911c0363cdf0473bf02",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.CanonicalPoleNeutralTiePackage",
+      "path": "Zeta23/CCM/CanonicalPoleNeutralTiePackage.lean",
+      "main_sha256": "72c71fac7cf7171840871ab310303fdd1a507c043d5f43e58dde88d60cb4ddbd",
+      "audit_sha256": "72c71fac7cf7171840871ab310303fdd1a507c043d5f43e58dde88d60cb4ddbd",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.CanonicalPoleNeutralTrialResidualBounds",
+      "path": "Zeta23/CCM/CanonicalPoleNeutralTrialResidualBounds.lean",
+      "main_sha256": "50392a9838678c4d274957297e30ab4a30ec0ffdcb139f8e2e0332bbefdc9938",
+      "audit_sha256": "50392a9838678c4d274957297e30ab4a30ec0ffdcb139f8e2e0332bbefdc9938",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.CanonicalPoleNeutralTrialResidualChannels",
+      "path": "Zeta23/CCM/CanonicalPoleNeutralTrialResidualChannels.lean",
+      "main_sha256": "255ac1bbe5c549cb79b85330b521fc98cb69b1925857a4406286c016ff72e6df",
+      "audit_sha256": "255ac1bbe5c549cb79b85330b521fc98cb69b1925857a4406286c016ff72e6df",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.CanonicalPolePrimeDiscrepancy",
+      "path": "Zeta23/CCM/CanonicalPolePrimeDiscrepancy.lean",
+      "main_sha256": "fb7e2bd16ac9c5af5a42538b5828a8e73bb66e05e3ba0316417d8d46aaf83d50",
+      "audit_sha256": "fb7e2bd16ac9c5af5a42538b5828a8e73bb66e05e3ba0316417d8d46aaf83d50",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.CanonicalPolePrimeDiscrepancyIntegrability",
+      "path": "Zeta23/CCM/CanonicalPolePrimeDiscrepancyIntegrability.lean",
+      "main_sha256": "fafab038caae156614c2babe562917824f4e02285880f026ca2db03a51f3b00e",
+      "audit_sha256": "fafab038caae156614c2babe562917824f4e02285880f026ca2db03a51f3b00e",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.CanonicalPolePrimeRiesz",
+      "path": "Zeta23/CCM/CanonicalPolePrimeRiesz.lean",
+      "main_sha256": "54168857543560d538ff11c9d4c38fc2ae152ba053010b46ef726f91f3a4c1b0",
+      "audit_sha256": "54168857543560d538ff11c9d4c38fc2ae152ba053010b46ef726f91f3a4c1b0",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.CanonicalRieszBoundary",
+      "path": "Zeta23/CCM/CanonicalRieszBoundary.lean",
+      "main_sha256": "fabc93e449e2b2808e1f744190ac21f08e9579837d19a8fd398b47805e159408",
+      "audit_sha256": "fabc93e449e2b2808e1f744190ac21f08e9579837d19a8fd398b47805e159408",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.CanonicalSecularResolvent",
+      "path": "Zeta23/CCM/CanonicalSecularResolvent.lean",
+      "main_sha256": "b139d16ce7870e0a0f40e801ee619d4b42a69b1db3a26580d6b10b81b837b800",
+      "audit_sha256": "b139d16ce7870e0a0f40e801ee619d4b42a69b1db3a26580d6b10b81b837b800",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.CanonicalShiftedSecular",
+      "path": "Zeta23/CCM/CanonicalShiftedSecular.lean",
+      "main_sha256": "9367dae41e73048173e5bd2bc8d05bae7c0c427ed3072dd6fc04391236d1e139",
+      "audit_sha256": "9367dae41e73048173e5bd2bc8d05bae7c0c427ed3072dd6fc04391236d1e139",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.CanonicalSourceChannels",
+      "path": "Zeta23/CCM/CanonicalSourceChannels.lean",
+      "main_sha256": "f2e43a63b569ce1f755b01babbe9fd419ff6bb44b09a960515196d99d7fdb720",
+      "audit_sha256": "f2e43a63b569ce1f755b01babbe9fd419ff6bb44b09a960515196d99d7fdb720",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.CanonicalSourceEnergy",
+      "path": "Zeta23/CCM/CanonicalSourceEnergy.lean",
+      "main_sha256": "507f0caa0daab1a15ea6b29f5c8f3ff75606b8deb9e77e12817a6e5fff6b7191",
+      "audit_sha256": "507f0caa0daab1a15ea6b29f5c8f3ff75606b8deb9e77e12817a6e5fff6b7191",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.CanonicalSourceEnergyJets",
+      "path": "Zeta23/CCM/CanonicalSourceEnergyJets.lean",
+      "main_sha256": "5d67148ca078336de9fd395a868377fc58eb78169d3b19d7af56e4258cf16c90",
+      "audit_sha256": "5d67148ca078336de9fd395a868377fc58eb78169d3b19d7af56e4258cf16c90",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.CanonicalSourceMomentAtoms",
+      "path": "Zeta23/CCM/CanonicalSourceMomentAtoms.lean",
+      "main_sha256": "5b0aeb95bf24e5d9b43b648ef6d331c9293ec25d97fe3e69da5b46a2386b9fb2",
+      "audit_sha256": "5b0aeb95bf24e5d9b43b648ef6d331c9293ec25d97fe3e69da5b46a2386b9fb2",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.CanonicalSourceMomentJets",
+      "path": "Zeta23/CCM/CanonicalSourceMomentJets.lean",
+      "main_sha256": "5592365bb5510b09bb5c60f48373268e1653c0cbcef7a9fc384911236adf807d",
+      "audit_sha256": "5592365bb5510b09bb5c60f48373268e1653c0cbcef7a9fc384911236adf807d",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.CanonicalSourceRieszEnergy",
+      "path": "Zeta23/CCM/CanonicalSourceRieszEnergy.lean",
+      "main_sha256": "0150b99797ecb6764cff98930d5cb94627cb8839bde37851f5b3aa90596060b9",
+      "audit_sha256": "0150b99797ecb6764cff98930d5cb94627cb8839bde37851f5b3aa90596060b9",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.CanonicalTrialResidualChannels",
+      "path": "Zeta23/CCM/CanonicalTrialResidualChannels.lean",
+      "main_sha256": "8698b68a407788a21a49485bc0e4962f5a285338c921857ad2aec6a263cd981d",
+      "audit_sha256": "8698b68a407788a21a49485bc0e4962f5a285338c921857ad2aec6a263cd981d",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.CellMinimalRegularFirstBad",
+      "path": "Zeta23/CCM/CellMinimalRegularFirstBad.lean",
+      "main_sha256": "f51f8026d7e66a22588bde575b069ab9eea0eb8b0016d6b03e0ad8daea4b70f9",
+      "audit_sha256": "f51f8026d7e66a22588bde575b069ab9eea0eb8b0016d6b03e0ad8daea4b70f9",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.CodimOneMatrixCompletion",
+      "path": "Zeta23/CCM/CodimOneMatrixCompletion.lean",
+      "main_sha256": "e4e799fa2b156813c9fe85c1b92c1f0a4a0c3a30f44317026ee908ceb7825f7a",
+      "audit_sha256": "e4e799fa2b156813c9fe85c1b92c1f0a4a0c3a30f44317026ee908ceb7825f7a",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.CompactComplexIntegralFTC",
+      "path": "Zeta23/CCM/CompactComplexIntegralFTC.lean",
+      "main_sha256": "410f651e31421d123be107a3fcb870ed952994bb168683b52cf4b0aa8a60501e",
+      "audit_sha256": "410f651e31421d123be107a3fcb870ed952994bb168683b52cf4b0aa8a60501e",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.CompactPoleConvolution",
+      "path": "Zeta23/CCM/CompactPoleConvolution.lean",
+      "main_sha256": "7ba3a6c0e2f7328ad0bcf0815d0b0fe972bda240bf96afe471ff663e50cb5cf0",
+      "audit_sha256": "7ba3a6c0e2f7328ad0bcf0815d0b0fe972bda240bf96afe471ff663e50cb5cf0",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.ComplexMomentIntegral",
+      "path": "Zeta23/CCM/ComplexMomentIntegral.lean",
+      "main_sha256": "a386d8506fde12a6d5d9c66b9ad2b5fdeecd704251249051989f34bd0d5a749f",
+      "audit_sha256": "a386d8506fde12a6d5d9c66b9ad2b5fdeecd704251249051989f34bd0d5a749f",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.Components",
+      "path": "Zeta23/CCM/Components.lean",
+      "main_sha256": "015e04bad2f7c74e1bef8c456f44e758b164ba08ac1aaa80d2a861e6ab9ae158",
+      "audit_sha256": "015e04bad2f7c74e1bef8c456f44e758b164ba08ac1aaa80d2a861e6ab9ae158",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.ConstrainedCanonicalSector",
+      "path": "Zeta23/CCM/ConstrainedCanonicalSector.lean",
+      "main_sha256": "15e85d13c9952b8bf138d329604b03be4ac116d632eb194a3c11d79123d7a5f2",
+      "audit_sha256": "15e85d13c9952b8bf138d329604b03be4ac116d632eb194a3c11d79123d7a5f2",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.ConstrainedEuclideanSector",
+      "path": "Zeta23/CCM/ConstrainedEuclideanSector.lean",
+      "main_sha256": "91ace1ffce6c31a928c8d8dccaf0f1a8a566ec6e2b123de2a2b6cf8c6125b458",
+      "audit_sha256": "91ace1ffce6c31a928c8d8dccaf0f1a8a566ec6e2b123de2a2b6cf8c6125b458",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.ConstrainedParity",
+      "path": "Zeta23/CCM/ConstrainedParity.lean",
+      "main_sha256": "940b702ae5082b360c662790f6cbab368757888a8a5457dd505b6c9d9dc78807",
+      "audit_sha256": "940b702ae5082b360c662790f6cbab368757888a8a5457dd505b6c9d9dc78807",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.ConstrainedParityGeometry",
+      "path": "Zeta23/CCM/ConstrainedParityGeometry.lean",
+      "main_sha256": "78577f99b5eddaf6010f1887c645de571b63b258e4c44e8618478ac6cfe3ea68",
+      "audit_sha256": "78577f99b5eddaf6010f1887c645de571b63b258e4c44e8618478ac6cfe3ea68",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.ConstrainedParitySpectrum",
+      "path": "Zeta23/CCM/ConstrainedParitySpectrum.lean",
+      "main_sha256": "fc342bd293cf69590c50fb9de7b8f4605a55ed81bd2efa4bf41a6a066a5cc84c",
+      "audit_sha256": "fc342bd293cf69590c50fb9de7b8f4605a55ed81bd2efa4bf41a6a066a5cc84c",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.CubicExplicitSecular",
+      "path": "Zeta23/CCM/CubicExplicitSecular.lean",
+      "main_sha256": "5cf4dab14fbbb94b531a1e5f4cd1f0e9c0f37fef3f749b19873b29629844842e",
+      "audit_sha256": "5cf4dab14fbbb94b531a1e5f4cd1f0e9c0f37fef3f749b19873b29629844842e",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.CubicNormalizedSchur",
+      "path": "Zeta23/CCM/CubicNormalizedSchur.lean",
+      "main_sha256": "ee963d54f29cb07e3d51e8ba375f7384957cf73454e4596025787d16a3fd34a8",
+      "audit_sha256": "ee963d54f29cb07e3d51e8ba375f7384957cf73454e4596025787d16a3fd34a8",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.CubicSecularEquation",
+      "path": "Zeta23/CCM/CubicSecularEquation.lean",
+      "main_sha256": "7e5e983a1fc7950d4827ec2ba627951239458c754357eebe6a144fc746b54ecc",
+      "audit_sha256": "7e5e983a1fc7950d4827ec2ba627951239458c754357eebe6a144fc746b54ecc",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.CubicSecularMetric",
+      "path": "Zeta23/CCM/CubicSecularMetric.lean",
+      "main_sha256": "8224e1dc3aec5b2edb54c869c149b599c647143d276eb91ee54587d68ab5f9bd",
+      "audit_sha256": "8224e1dc3aec5b2edb54c869c149b599c647143d276eb91ee54587d68ab5f9bd",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.CubicShellIncidence",
+      "path": "Zeta23/CCM/CubicShellIncidence.lean",
+      "main_sha256": "ef673dedcea5b27dd2799c73b7f8fce9a97c1a8a2f5b1c82c3bf105b028a76aa",
+      "audit_sha256": "ef673dedcea5b27dd2799c73b7f8fce9a97c1a8a2f5b1c82c3bf105b028a76aa",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.CutoffFreeMatrix",
+      "path": "Zeta23/CCM/CutoffFreeMatrix.lean",
+      "main_sha256": "6ba99df957ab60315d250b5db4e3f26352d7dc6f6b4715b70c4def29e35de7fb",
+      "audit_sha256": "6ba99df957ab60315d250b5db4e3f26352d7dc6f6b4715b70c4def29e35de7fb",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.DetectorRetainedSchurState",
+      "path": "Zeta23/CCM/DetectorRetainedSchurState.lean",
+      "main_sha256": "0a3a36aef9fa502dcc6664d07693d83d1996a1f543ef4616fb31bd045d21db89",
+      "audit_sha256": "0a3a36aef9fa502dcc6664d07693d83d1996a1f543ef4616fb31bd045d21db89",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.DictionaryAnalysis",
+      "path": "Zeta23/CCM/DictionaryAnalysis.lean",
+      "main_sha256": "a5d60efc8de449e012fa2ebeadafd56bc680ee8866dfa5058efb8f3e56e28cea",
+      "audit_sha256": "a5d60efc8de449e012fa2ebeadafd56bc680ee8866dfa5058efb8f3e56e28cea",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.DictionaryArchBridge",
+      "path": "Zeta23/CCM/DictionaryArchBridge.lean",
+      "main_sha256": "bdbcd5dee98fbe3b3f43214e1e221f2ea0c35c22d699ad25c312fa4283a773b2",
+      "audit_sha256": "bdbcd5dee98fbe3b3f43214e1e221f2ea0c35c22d699ad25c312fa4283a773b2",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.DictionaryArchCompletion",
+      "path": "Zeta23/CCM/DictionaryArchCompletion.lean",
+      "main_sha256": "9ac9a2f03e1eaca633720a5db7c6a1050d4a9d91d54c2a9118f19783be3bd49c",
+      "audit_sha256": "9ac9a2f03e1eaca633720a5db7c6a1050d4a9d91d54c2a9118f19783be3bd49c",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.DictionaryArchDensityBridge",
+      "path": "Zeta23/CCM/DictionaryArchDensityBridge.lean",
+      "main_sha256": "00713cee1cd6791c96a1257183bb00e2830e82c42f8f2b9a552df16867ac37cf",
+      "audit_sha256": "00713cee1cd6791c96a1257183bb00e2830e82c42f8f2b9a552df16867ac37cf",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.DictionaryArchDiagonal",
+      "path": "Zeta23/CCM/DictionaryArchDiagonal.lean",
+      "main_sha256": "ad39d3c98c96a094080465b5a909339c2d901b6574038e3d707294e378dc4fcd",
+      "audit_sha256": "ad39d3c98c96a094080465b5a909339c2d901b6574038e3d707294e378dc4fcd",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.DictionaryArchDiagonalEvaluation",
+      "path": "Zeta23/CCM/DictionaryArchDiagonalEvaluation.lean",
+      "main_sha256": "d1a5cff05bacbdd8f66f3bdd36297f95a229eeb86149dd347f80956e1252a1f4",
+      "audit_sha256": "d1a5cff05bacbdd8f66f3bdd36297f95a229eeb86149dd347f80956e1252a1f4",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.DictionaryArchDiagonalPhysical",
+      "path": "Zeta23/CCM/DictionaryArchDiagonalPhysical.lean",
+      "main_sha256": "16c72812625157b865122a0b452bf5f5be28f91b8d1966294c9f237e7d6ebd44",
+      "audit_sha256": "16c72812625157b865122a0b452bf5f5be28f91b8d1966294c9f237e7d6ebd44",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.DictionaryArchEntries",
+      "path": "Zeta23/CCM/DictionaryArchEntries.lean",
+      "main_sha256": "0105ef2458a58198ca5e38c97816e26f5ea045db5f46debc3f4fa1d5ff4aa557",
+      "audit_sha256": "0105ef2458a58198ca5e38c97816e26f5ea045db5f46debc3f4fa1d5ff4aa557",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.DictionaryArchFourier",
+      "path": "Zeta23/CCM/DictionaryArchFourier.lean",
+      "main_sha256": "95e5477b8743bc9a8bcfb1e934b4c79a4b4354e3d628167e93ee60cd4055877f",
+      "audit_sha256": "95e5477b8743bc9a8bcfb1e934b4c79a4b4354e3d628167e93ee60cd4055877f",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.DictionaryArchLaplace",
+      "path": "Zeta23/CCM/DictionaryArchLaplace.lean",
+      "main_sha256": "1db2c4537a6d7550e73883a8004f7965c0d83030395f945c115e69eb6e32d241",
+      "audit_sha256": "1db2c4537a6d7550e73883a8004f7965c0d83030395f945c115e69eb6e32d241",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.DictionaryArchLift",
+      "path": "Zeta23/CCM/DictionaryArchLift.lean",
+      "main_sha256": "78517d0edae426583e9e5b325e87944c67b66e5753980e01eeab2103f565c508",
+      "audit_sha256": "78517d0edae426583e9e5b325e87944c67b66e5753980e01eeab2103f565c508",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.DictionaryArchMuGrowth",
+      "path": "Zeta23/CCM/DictionaryArchMuGrowth.lean",
+      "main_sha256": "39b803409c3379f5a8051933e58480b20f37d5c2da86f6f916bb1f16ac5d2782",
+      "audit_sha256": "39b803409c3379f5a8051933e58480b20f37d5c2da86f6f916bb1f16ac5d2782",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.DictionaryArchOffDiagonal",
+      "path": "Zeta23/CCM/DictionaryArchOffDiagonal.lean",
+      "main_sha256": "d973a7ce59d945557acebd4b8699ad654a1b9487d373ce8af0383a8f089971b5",
+      "audit_sha256": "d973a7ce59d945557acebd4b8699ad654a1b9487d373ce8af0383a8f089971b5",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.DictionaryArchPhysical",
+      "path": "Zeta23/CCM/DictionaryArchPhysical.lean",
+      "main_sha256": "d3d84b16a9294ecfea562f75c0f42b179f52be6930563ef4a0440003def0c83e",
+      "audit_sha256": "d3d84b16a9294ecfea562f75c0f42b179f52be6930563ef4a0440003def0c83e",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.DictionaryArchSourceBridge",
+      "path": "Zeta23/CCM/DictionaryArchSourceBridge.lean",
+      "main_sha256": "2b386d9a4bca2e026bd4c9b75fd5d46516c796f855a8b57816c86ac58efe46bc",
+      "audit_sha256": "2b386d9a4bca2e026bd4c9b75fd5d46516c796f855a8b57816c86ac58efe46bc",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.DictionaryArchSourceDecay",
+      "path": "Zeta23/CCM/DictionaryArchSourceDecay.lean",
+      "main_sha256": "ad38696b515034bec6d75f22cc5963c65f6c6e420bdbaac0afd9808021d0d3b1",
+      "audit_sha256": "ad38696b515034bec6d75f22cc5963c65f6c6e420bdbaac0afd9808021d0d3b1",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.DictionaryArchSourceFourier",
+      "path": "Zeta23/CCM/DictionaryArchSourceFourier.lean",
+      "main_sha256": "c9b64bc78006768d873ce371b9e719a6a1e0b14224c228c7054db4ccb60cab69",
+      "audit_sha256": "c9b64bc78006768d873ce371b9e719a6a1e0b14224c228c7054db4ccb60cab69",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.DictionaryArchSourceIntegrability",
+      "path": "Zeta23/CCM/DictionaryArchSourceIntegrability.lean",
+      "main_sha256": "d1886dbd5fb0e7cbbc1a044a64fb2ec35580c4756616b3e92e6cfcfce25caa71",
+      "audit_sha256": "d1886dbd5fb0e7cbbc1a044a64fb2ec35580c4756616b3e92e6cfcfce25caa71",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.DictionaryArchSourceMuIntegrability",
+      "path": "Zeta23/CCM/DictionaryArchSourceMuIntegrability.lean",
+      "main_sha256": "3069b2436972f9f67dabe15d538ee6bcd5091605446773eb59e3780a57a1c179",
+      "audit_sha256": "3069b2436972f9f67dabe15d538ee6bcd5091605446773eb59e3780a57a1c179",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.DictionaryArchWeight",
+      "path": "Zeta23/CCM/DictionaryArchWeight.lean",
+      "main_sha256": "cab77cf21915388e225315dd3e346150f2760bf63714ac8ab7e29cb2c02e9a34",
+      "audit_sha256": "cab77cf21915388e225315dd3e346150f2760bf63714ac8ab7e29cb2c02e9a34",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.DictionaryDeterministicRHS",
+      "path": "Zeta23/CCM/DictionaryDeterministicRHS.lean",
+      "main_sha256": "0c012a1c1fbf2c680660d461c63dae7e2fb1ff16a59e262a2b4752a5746b9ecd",
+      "audit_sha256": "0c012a1c1fbf2c680660d461c63dae7e2fb1ff16a59e262a2b4752a5746b9ecd",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.DictionaryFiniteExpansion",
+      "path": "Zeta23/CCM/DictionaryFiniteExpansion.lean",
+      "main_sha256": "5d9d6b459348aa1095bb177dc27eda14a19d8a249aa3e1eacac9e2f1864e8c54",
+      "audit_sha256": "5d9d6b459348aa1095bb177dc27eda14a19d8a249aa3e1eacac9e2f1864e8c54",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.DictionaryPole",
+      "path": "Zeta23/CCM/DictionaryPole.lean",
+      "main_sha256": "55cec0f2122abf9c33a8f01df339ec3e26fca463c90f9ba85c1c555c394e7083",
+      "audit_sha256": "55cec0f2122abf9c33a8f01df339ec3e26fca463c90f9ba85c1c555c394e7083",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.DictionaryPoleCompletion",
+      "path": "Zeta23/CCM/DictionaryPoleCompletion.lean",
+      "main_sha256": "0bea4e62f4e7a06ce012ceea86a45bb81a67048910ed8e845c7266fc3ffea687",
+      "audit_sha256": "0bea4e62f4e7a06ce012ceea86a45bb81a67048910ed8e845c7266fc3ffea687",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.DictionaryPoleLift",
+      "path": "Zeta23/CCM/DictionaryPoleLift.lean",
+      "main_sha256": "62e0926d9159a5931b13c54f88b3d1c89c3d630578c37285cd6cdcdfe1639e40",
+      "audit_sha256": "62e0926d9159a5931b13c54f88b3d1c89c3d630578c37285cd6cdcdfe1639e40",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.DictionaryPoleSource",
+      "path": "Zeta23/CCM/DictionaryPoleSource.lean",
+      "main_sha256": "464f82c2da9e2e6ded5e6753b9d49097f4868c22ab372e8b8c215e569504eead",
+      "audit_sha256": "464f82c2da9e2e6ded5e6753b9d49097f4868c22ab372e8b8c215e569504eead",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.DictionaryPrimeLift",
+      "path": "Zeta23/CCM/DictionaryPrimeLift.lean",
+      "main_sha256": "71b182121eb45fd399d3e02aba843eb882c448e2a38ad6e9a6e7ec4582f60be8",
+      "audit_sha256": "71b182121eb45fd399d3e02aba843eb882c448e2a38ad6e9a6e7ec4582f60be8",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.DictionaryRHSIdentity",
+      "path": "Zeta23/CCM/DictionaryRHSIdentity.lean",
+      "main_sha256": "f3b7fd3f765f8b64c6f8964faf166394bf92ebaaf2924c79f45107ca7a18e28d",
+      "audit_sha256": "f3b7fd3f765f8b64c6f8964faf166394bf92ebaaf2924c79f45107ca7a18e28d",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.DictionaryRegularity",
+      "path": "Zeta23/CCM/DictionaryRegularity.lean",
+      "main_sha256": "e3873a3c3e7ff7b75227547299cc398ebe342fa0cc1f63083a4d5bd39ba19dd0",
+      "audit_sha256": "e3873a3c3e7ff7b75227547299cc398ebe342fa0cc1f63083a4d5bd39ba19dd0",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.DictionaryResidualBranches",
+      "path": "Zeta23/CCM/DictionaryResidualBranches.lean",
+      "main_sha256": "88e55b0e97b0f14f084bf230b31a60732a01c48fa53a456d794147cc882a2ce8",
+      "audit_sha256": "88e55b0e97b0f14f084bf230b31a60732a01c48fa53a456d794147cc882a2ce8",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.DictionaryResidualDerivativeIdentities",
+      "path": "Zeta23/CCM/DictionaryResidualDerivativeIdentities.lean",
+      "main_sha256": "a4704fb582a2a00ab40f09fcfdb99e93dd027d0fffafd16f528ccbdbcee23b57",
+      "audit_sha256": "a4704fb582a2a00ab40f09fcfdb99e93dd027d0fffafd16f528ccbdbcee23b57",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.DictionaryResidualFirstOrderGluing",
+      "path": "Zeta23/CCM/DictionaryResidualFirstOrderGluing.lean",
+      "main_sha256": "9804ce76d5cf6890524f5fb7ad9e0c7743084476e33eef6cb906db8192842b50",
+      "audit_sha256": "9804ce76d5cf6890524f5fb7ad9e0c7743084476e33eef6cb906db8192842b50",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.DictionaryResidualGluing",
+      "path": "Zeta23/CCM/DictionaryResidualGluing.lean",
+      "main_sha256": "98560078c833c457b3d90e5939a76d25e83e323b4e9fca5904fab6bc065f66e5",
+      "audit_sha256": "98560078c833c457b3d90e5939a76d25e83e323b4e9fca5904fab6bc065f66e5",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.DictionaryResidualSecondOrder",
+      "path": "Zeta23/CCM/DictionaryResidualSecondOrder.lean",
+      "main_sha256": "58b9ea69ea792675ca9237dc6cf3426b9141e5fca7612ace16433f6e198f2a31",
+      "audit_sha256": "58b9ea69ea792675ca9237dc6cf3426b9141e5fca7612ace16433f6e198f2a31",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.DictionaryResidualSecondOrderGluing",
+      "path": "Zeta23/CCM/DictionaryResidualSecondOrderGluing.lean",
+      "main_sha256": "0e11109d7fc944fb6e8b62e71d6d10504a78b185b2af875c01e944b420a5518b",
+      "audit_sha256": "0e11109d7fc944fb6e8b62e71d6d10504a78b185b2af875c01e944b420a5518b",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.DictionarySmoothCoreBridge",
+      "path": "Zeta23/CCM/DictionarySmoothCoreBridge.lean",
+      "main_sha256": "ea1cd14a97f1eac7d9cd661fb385a2edc3f7bbb8c625cad38c83e8cad8e28bcf",
+      "audit_sha256": "ea1cd14a97f1eac7d9cd661fb385a2edc3f7bbb8c625cad38c83e8cad8e28bcf",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.DictionarySmoothCorePolarization",
+      "path": "Zeta23/CCM/DictionarySmoothCorePolarization.lean",
+      "main_sha256": "faaab57249d6e84b5dccd3d42b9f7b916f59f25d5abd41f83c2ec662e06c68b4",
+      "audit_sha256": "faaab57249d6e84b5dccd3d42b9f7b916f59f25d5abd41f83c2ec662e06c68b4",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.DictionarySourceTest",
+      "path": "Zeta23/CCM/DictionarySourceTest.lean",
+      "main_sha256": "2dcf172e96a37450dca972476557a9ee4db0c9c6fa463c1a8742e1f454dcd7e1",
+      "audit_sha256": "2dcf172e96a37450dca972476557a9ee4db0c9c6fa463c1a8742e1f454dcd7e1",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.DictionarySymmetry",
+      "path": "Zeta23/CCM/DictionarySymmetry.lean",
+      "main_sha256": "a605fa5d3474d2e8a29bb142982cf16bcf24710640200400ec95dff0f50ab113",
+      "audit_sha256": "a605fa5d3474d2e8a29bb142982cf16bcf24710640200400ec95dff0f50ab113",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.DictionaryTent",
+      "path": "Zeta23/CCM/DictionaryTent.lean",
+      "main_sha256": "b7d1a2e4471923af51d2048ac8d67eb738d7a7ffb296e96bd12e5137e7cc598f",
+      "audit_sha256": "b7d1a2e4471923af51d2048ac8d67eb738d7a7ffb296e96bd12e5137e7cc598f",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.DictionaryTentArchLimit",
+      "path": "Zeta23/CCM/DictionaryTentArchLimit.lean",
+      "main_sha256": "191dfd7fc42e0a715825770fd8fd01623488c09a5f4f4ff5e8084db907277e4f",
+      "audit_sha256": "191dfd7fc42e0a715825770fd8fd01623488c09a5f4f4ff5e8084db907277e4f",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.DictionaryTentDecay",
+      "path": "Zeta23/CCM/DictionaryTentDecay.lean",
+      "main_sha256": "72df2d93d3b6c5452c2916f827e17b193e50ad392ff0101f42a78330a69e6e19",
+      "audit_sha256": "72df2d93d3b6c5452c2916f827e17b193e50ad392ff0101f42a78330a69e6e19",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.DictionaryTentEFExtension",
+      "path": "Zeta23/CCM/DictionaryTentEFExtension.lean",
+      "main_sha256": "586887bfd97064ad4c8ab3fa8d725490141f17c460506e8aa253dd7495dc882f",
+      "audit_sha256": "586887bfd97064ad4c8ab3fa8d725490141f17c460506e8aa253dd7495dc882f",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.DictionaryTentMollifier",
+      "path": "Zeta23/CCM/DictionaryTentMollifier.lean",
+      "main_sha256": "4a03ec09a18aae33d94686806434f6280c2f17e3951cbc0aaf1ba34ce895e6ba",
+      "audit_sha256": "4a03ec09a18aae33d94686806434f6280c2f17e3951cbc0aaf1ba34ce895e6ba",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.DictionaryTentMollifierLimit",
+      "path": "Zeta23/CCM/DictionaryTentMollifierLimit.lean",
+      "main_sha256": "b52db46d1d9041ab4147951ef7214182620156963991292597a4d4d3c2eaa2e1",
+      "audit_sha256": "b52db46d1d9041ab4147951ef7214182620156963991292597a4d4d3c2eaa2e1",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.DictionaryTentMollifierSupport",
+      "path": "Zeta23/CCM/DictionaryTentMollifierSupport.lean",
+      "main_sha256": "5b6dc446f4404a7e2834eabf08edfa276555ba3ce137edd6d2708bf9a8685498",
+      "audit_sha256": "5b6dc446f4404a7e2834eabf08edfa276555ba3ce137edd6d2708bf9a8685498",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.DictionaryTentMollifierTransform",
+      "path": "Zeta23/CCM/DictionaryTentMollifierTransform.lean",
+      "main_sha256": "1a733cf2e109f801f637a8cc8ee0957d5f40cbbfcc1145d3dc5b2e2e7d58de2c",
+      "audit_sha256": "1a733cf2e109f801f637a8cc8ee0957d5f40cbbfcc1145d3dc5b2e2e7d58de2c",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.DictionaryTentPolePrimeLimit",
+      "path": "Zeta23/CCM/DictionaryTentPolePrimeLimit.lean",
+      "main_sha256": "1f3eb2d85fcccc29021951e1cf90db2ad971afa69646ba1c9581f03a6b601375",
+      "audit_sha256": "1f3eb2d85fcccc29021951e1cf90db2ad971afa69646ba1c9581f03a6b601375",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.DictionaryTentTransform",
+      "path": "Zeta23/CCM/DictionaryTentTransform.lean",
+      "main_sha256": "bd46e7345d9484a4a2d04170f2627e58d2f8d3a90d4731f81cde88e4d37424dd",
+      "audit_sha256": "bd46e7345d9484a4a2d04170f2627e58d2f8d3a90d4731f81cde88e4d37424dd",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.DictionaryTentZeroLimit",
+      "path": "Zeta23/CCM/DictionaryTentZeroLimit.lean",
+      "main_sha256": "170cdefa7d5c0e828e14815f3780f0d573cc156dae1670937b0817db5d3b4821",
+      "audit_sha256": "170cdefa7d5c0e828e14815f3780f0d573cc156dae1670937b0817db5d3b4821",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.DictionaryTentZeroSummability",
+      "path": "Zeta23/CCM/DictionaryTentZeroSummability.lean",
+      "main_sha256": "d30c296dce3d2d87525704745335f050f38d58bffeba57a06f8fa641b231bdf9",
+      "audit_sha256": "d30c296dce3d2d87525704745335f050f38d58bffeba57a06f8fa641b231bdf9",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.DictionaryZeroSideBridge",
+      "path": "Zeta23/CCM/DictionaryZeroSideBridge.lean",
+      "main_sha256": "1dd153f1f6dc0309175cec80c0ef7926159e673d28c538c3fffab24b442fffaf",
+      "audit_sha256": "1dd153f1f6dc0309175cec80c0ef7926159e673d28c538c3fffab24b442fffaf",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.DictionaryZeroSideCompletion",
+      "path": "Zeta23/CCM/DictionaryZeroSideCompletion.lean",
+      "main_sha256": "6d350d1df716541665a16b93514a04ef20554080fb125016e86b25015f12070c",
+      "audit_sha256": "6d350d1df716541665a16b93514a04ef20554080fb125016e86b25015f12070c",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.DictionaryZeroSideMatrix",
+      "path": "Zeta23/CCM/DictionaryZeroSideMatrix.lean",
+      "main_sha256": "e5f565ff010a449abb3074137a662d0fa32c00874c98c5b73116093994c009e2",
+      "audit_sha256": "e5f565ff010a449abb3074137a662d0fa32c00874c98c5b73116093994c009e2",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.DictionaryZeroSideSummability",
+      "path": "Zeta23/CCM/DictionaryZeroSideSummability.lean",
+      "main_sha256": "052bc813958365d6611ec0a5a96875d7bfca0659969449ee4130f08b6d04f7aa",
+      "audit_sha256": "052bc813958365d6611ec0a5a96875d7bfca0659969449ee4130f08b6d04f7aa",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.DictionaryZeroSideTentDefect",
+      "path": "Zeta23/CCM/DictionaryZeroSideTentDefect.lean",
+      "main_sha256": "ee236eeb27cfa5c215b11b22684a80fda8598014adb76f9f6df87a3f627fd42f",
+      "audit_sha256": "ee236eeb27cfa5c215b11b22684a80fda8598014adb76f9f6df87a3f627fd42f",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.Displacement",
+      "path": "Zeta23/CCM/Displacement.lean",
+      "main_sha256": "c9234b821a82ee7dff66f52e23965936a7c8dd70cccc0814915cb20ccd16c261",
+      "audit_sha256": "c9234b821a82ee7dff66f52e23965936a7c8dd70cccc0814915cb20ccd16c261",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.DividedDifference",
+      "path": "Zeta23/CCM/DividedDifference.lean",
+      "main_sha256": "019f3eb0a574eef7aeb4a488f43c03b3e56bce77d6d46d4c31281a3c5c571e40",
+      "audit_sha256": "019f3eb0a574eef7aeb4a488f43c03b3e56bce77d6d46d4c31281a3c5c571e40",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.FiniteBottomGapSelector",
+      "path": "Zeta23/CCM/FiniteBottomGapSelector.lean",
+      "main_sha256": "7ee7bb68ee6313cf335c68567ae055c27e9c3ae897d922a17b7029f1c229ff29",
+      "audit_sha256": "7ee7bb68ee6313cf335c68567ae055c27e9c3ae897d922a17b7029f1c229ff29",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.FiniteDictionary",
+      "path": "Zeta23/CCM/FiniteDictionary.lean",
+      "main_sha256": "2f1ff7c6ff82de77919f3936c96e445fb728bff9b7988ec1e7b4d9f980dc1b52",
+      "audit_sha256": "2f1ff7c6ff82de77919f3936c96e445fb728bff9b7988ec1e7b4d9f980dc1b52",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.FiniteMatrix",
+      "path": "Zeta23/CCM/FiniteMatrix.lean",
+      "main_sha256": "d92b78f0d9491f85d327d64c51b3ccff0dd91c6b977036f03a463c2c15e07274",
+      "audit_sha256": "d92b78f0d9491f85d327d64c51b3ccff0dd91c6b977036f03a463c2c15e07274",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.FinitePhysicalNormalization",
+      "path": "Zeta23/CCM/FinitePhysicalNormalization.lean",
+      "main_sha256": "c2dff9b13fb2f909615aebaf0fc40c7571faef7f1c4416535073ac378ec84f39",
+      "audit_sha256": "c2dff9b13fb2f909615aebaf0fc40c7571faef7f1c4416535073ac378ec84f39",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.FirstBadIntrinsicBlock",
+      "path": "Zeta23/CCM/FirstBadIntrinsicBlock.lean",
+      "main_sha256": "2484b264b2e5ffc875a3db69ddf804b08a7218f025d6b5d6ea0bef24b8ba6e22",
+      "audit_sha256": "2484b264b2e5ffc875a3db69ddf804b08a7218f025d6b5d6ea0bef24b8ba6e22",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.FirstBadRigidity",
+      "path": "Zeta23/CCM/FirstBadRigidity.lean",
+      "main_sha256": "de28b549855735564d8288e26c86cf08dc916696cd76ee84e88c1d24034dc206",
+      "audit_sha256": "de28b549855735564d8288e26c86cf08dc916696cd76ee84e88c1d24034dc206",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.FirstBadShiftedSchur",
+      "path": "Zeta23/CCM/FirstBadShiftedSchur.lean",
+      "main_sha256": "ac8b723c006739051918d24260a8497c75b84cd53f782696ec73ed0a6b57c468",
+      "audit_sha256": "ac8b723c006739051918d24260a8497c75b84cd53f782696ec73ed0a6b57c468",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.FirstBadSpectralInterfaces",
+      "path": "Zeta23/CCM/FirstBadSpectralInterfaces.lean",
+      "main_sha256": "0b45f4b9e9f21746b3f060b96b8c57d5457ad9effed29ad3e3fccb89b1333377",
+      "audit_sha256": "0b45f4b9e9f21746b3f060b96b8c57d5457ad9effed29ad3e3fccb89b1333377",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.FrozenCanonicalSourceAnalytic",
+      "path": "Zeta23/CCM/FrozenCanonicalSourceAnalytic.lean",
+      "main_sha256": "54f0084b1e7a79321c6204a062d0dbdee510feed3c27548ff43271b77327a5db",
+      "audit_sha256": "54f0084b1e7a79321c6204a062d0dbdee510feed3c27548ff43271b77327a5db",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.FrozenCanonicalSourceComplex",
+      "path": "Zeta23/CCM/FrozenCanonicalSourceComplex.lean",
+      "main_sha256": "a261e502dbefae877741acfe62f48cf045dda775e04a2e26743bb77315b16cc1",
+      "audit_sha256": "a261e502dbefae877741acfe62f48cf045dda775e04a2e26743bb77315b16cc1",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.FrozenIntrinsicPredecessorAnalytic",
+      "path": "Zeta23/CCM/FrozenIntrinsicPredecessorAnalytic.lean",
+      "main_sha256": "c2451c6e826c3f92f4764df7cb5353cf469c14991b6fe65426e4b7a500b4e774",
+      "audit_sha256": "c2451c6e826c3f92f4764df7cb5353cf469c14991b6fe65426e4b7a500b4e774",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.FrozenIntrinsicPredecessorComplex",
+      "path": "Zeta23/CCM/FrozenIntrinsicPredecessorComplex.lean",
+      "main_sha256": "400712c9678235cf05b83c6119a208d0a9db0cde8ec022b044e82e74248c25d9",
+      "audit_sha256": "400712c9678235cf05b83c6119a208d0a9db0cde8ec022b044e82e74248c25d9",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.FrozenIntrinsicPredecessorHolomorphy",
+      "path": "Zeta23/CCM/FrozenIntrinsicPredecessorHolomorphy.lean",
+      "main_sha256": "fe8e91e1027119e89934aa8c9c6910500bfc404802dde4663269c9de0fe31c15",
+      "audit_sha256": "fe8e91e1027119e89934aa8c9c6910500bfc404802dde4663269c9de0fe31c15",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.GlobalFirstBad",
+      "path": "Zeta23/CCM/GlobalFirstBad.lean",
+      "main_sha256": "4b9fc806f0f3babc0a13ceb6b4d7e7f13130320661014deb92d3390f1c27eb55",
+      "audit_sha256": "4b9fc806f0f3babc0a13ceb6b4d7e7f13130320661014deb92d3390f1c27eb55",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.GlobalParityBottomSourceMoment",
+      "path": "Zeta23/CCM/GlobalParityBottomSourceMoment.lean",
+      "main_sha256": "4e8ac020521de9a92ae4d37066133e1be2cd371fa9f9dbf60b13f764388f51a0",
+      "audit_sha256": "4e8ac020521de9a92ae4d37066133e1be2cd371fa9f9dbf60b13f764388f51a0",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.GlobalParityBottomSpectrum",
+      "path": "Zeta23/CCM/GlobalParityBottomSpectrum.lean",
+      "main_sha256": "f3bb61facfd756df13bd5d402b3790766ebae2fc66fc0f62226b28b95fede83c",
+      "audit_sha256": "f3bb61facfd756df13bd5d402b3790766ebae2fc66fc0f62226b28b95fede83c",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.IsometricDetectorSchur",
+      "path": "Zeta23/CCM/IsometricDetectorSchur.lean",
+      "main_sha256": "e60b5643c626bfec5027d3d3a0f4721e202287eb3c128bca2b213d9ec1f77875",
+      "audit_sha256": "e60b5643c626bfec5027d3d3a0f4721e202287eb3c128bca2b213d9ec1f77875",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.IsometricGroundSchur",
+      "path": "Zeta23/CCM/IsometricGroundSchur.lean",
+      "main_sha256": "0046a02686fe6df846bf7b78c7e7a286ee96543fad1fd8068b2420ad169f65ad",
+      "audit_sha256": "0046a02686fe6df846bf7b78c7e7a286ee96543fad1fd8068b2420ad169f65ad",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.Kernel",
+      "path": "Zeta23/CCM/Kernel.lean",
+      "main_sha256": "150938fa3f40c021db5ecee96f2d3d2e09f6df9adab98973f3cf899e593ca02a",
+      "audit_sha256": "150938fa3f40c021db5ecee96f2d3d2e09f6df9adab98973f3cf899e593ca02a",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.KernelAnalysis",
+      "path": "Zeta23/CCM/KernelAnalysis.lean",
+      "main_sha256": "ca8470816a50c2beb6ae35b2e9f3d575db86f958cfe8e706448b057488837fb6",
+      "audit_sha256": "ca8470816a50c2beb6ae35b2e9f3d575db86f958cfe8e706448b057488837fb6",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.LiftedPredecessorDeterminantRigidity",
+      "path": "Zeta23/CCM/LiftedPredecessorDeterminantRigidity.lean",
+      "main_sha256": "6f8dd9aedff70370cf10de198ea6c871cfdac69fd5fb152e8af2dcb400172296",
+      "audit_sha256": "6f8dd9aedff70370cf10de198ea6c871cfdac69fd5fb152e8af2dcb400172296",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.LiftedPredecessorRegularity",
+      "path": "Zeta23/CCM/LiftedPredecessorRegularity.lean",
+      "main_sha256": "c352ee316c1074a22020f0e77b43a8bdd006466d785b5cc0f55b2f0798f965eb",
+      "audit_sha256": "c352ee316c1074a22020f0e77b43a8bdd006466d785b5cc0f55b2f0798f965eb",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.LocalizedBasis",
+      "path": "Zeta23/CCM/LocalizedBasis.lean",
+      "main_sha256": "9bc60c98939d4fa8cd64c82504ca2060f03fb00ce5ccefda006884d788976e6c",
+      "audit_sha256": "9bc60c98939d4fa8cd64c82504ca2060f03fb00ce5ccefda006884d788976e6c",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.LocalizedFiniteSpace",
+      "path": "Zeta23/CCM/LocalizedFiniteSpace.lean",
+      "main_sha256": "d75346311470781aedfca62853b4d68459340ce6b8dc01d1e84129f8b657f9d0",
+      "audit_sha256": "d75346311470781aedfca62853b4d68459340ce6b8dc01d1e84129f8b657f9d0",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.LocalizedFourierApproximation",
+      "path": "Zeta23/CCM/LocalizedFourierApproximation.lean",
+      "main_sha256": "3ab0731a9e30d69e1a41c84e3ff742904e1a4baa1a86d99d106848b12f33785e",
+      "audit_sha256": "3ab0731a9e30d69e1a41c84e3ff742904e1a4baa1a86d99d106848b12f33785e",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.LocalizedWeilRestriction",
+      "path": "Zeta23/CCM/LocalizedWeilRestriction.lean",
+      "main_sha256": "880239c5717b4681768e6b1f17eac8efef624342f1f4b91df2a5bcfc98d0614e",
+      "audit_sha256": "880239c5717b4681768e6b1f17eac8efef624342f1f4b91df2a5bcfc98d0614e",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.MixedSourceDerivativeTransport",
+      "path": "Zeta23/CCM/MixedSourceDerivativeTransport.lean",
+      "main_sha256": "74e5010bb938ecfb223ce06a567df0e8830455fd20da5b7b427a3fb75a989f38",
+      "audit_sha256": "74e5010bb938ecfb223ce06a567df0e8830455fd20da5b7b427a3fb75a989f38",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.NativeAbelDiscrepancy",
+      "path": "Zeta23/CCM/NativeAbelDiscrepancy.lean",
+      "main_sha256": "ecf17dc596fa2c4ba065138bb6bd970e46d2b64daf7c7213d77aa2c8de5070ed",
+      "audit_sha256": "ecf17dc596fa2c4ba065138bb6bd970e46d2b64daf7c7213d77aa2c8de5070ed",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.NativeAdjointResidual",
+      "path": "Zeta23/CCM/NativeAdjointResidual.lean",
+      "main_sha256": "001c774999266f4f8a358ea841da904bea5c7d9ce572edda60397d8476236953",
+      "audit_sha256": "001c774999266f4f8a358ea841da904bea5c7d9ce572edda60397d8476236953",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.NativeCausalAdjointZeroJets",
+      "path": "Zeta23/CCM/NativeCausalAdjointZeroJets.lean",
+      "main_sha256": "cc8fabcc64b5083e23c5663df5516860b0f1455e847d7317f186549a9ededf6e",
+      "audit_sha256": "cc8fabcc64b5083e23c5663df5516860b0f1455e847d7317f186549a9ededf6e",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.NativeCausalAnalyticObstruction",
+      "path": "Zeta23/CCM/NativeCausalAnalyticObstruction.lean",
+      "main_sha256": "cbffbf4b8fc04b2940e009b948ec89ea645cc36073eeb6ef58eba967c0726ee2",
+      "audit_sha256": "cbffbf4b8fc04b2940e009b948ec89ea645cc36073eeb6ef58eba967c0726ee2",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.NativeCausalExponentialWitness",
+      "path": "Zeta23/CCM/NativeCausalExponentialWitness.lean",
+      "main_sha256": "632f506822f6198e4d11f7b71cf33b7b6ed52bf0f5672d963f0c8a30801be1a1",
+      "audit_sha256": "632f506822f6198e4d11f7b71cf33b7b6ed52bf0f5672d963f0c8a30801be1a1",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.NativeCausalKernelLaplaceDerivatives",
+      "path": "Zeta23/CCM/NativeCausalKernelLaplaceDerivatives.lean",
+      "main_sha256": "94409a7c328f9dbcbd51d411a4508232562b7a61676ba612dfedbb9a0fd47ecc",
+      "audit_sha256": "94409a7c328f9dbcbd51d411a4508232562b7a61676ba612dfedbb9a0fd47ecc",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.NativeCausalLaplaceDerivatives",
+      "path": "Zeta23/CCM/NativeCausalLaplaceDerivatives.lean",
+      "main_sha256": "6429c9a0e52ee6728a77ab771cb79444eaf5d2a466deb54bf0cf1ff404f647e7",
+      "audit_sha256": "6429c9a0e52ee6728a77ab771cb79444eaf5d2a466deb54bf0cf1ff404f647e7",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.NativeCausalLaplaceMoments",
+      "path": "Zeta23/CCM/NativeCausalLaplaceMoments.lean",
+      "main_sha256": "88be977d4743a2eafe7e0df15f5bf9e6e34da2f935bbeeb11fe8223f8a501bde",
+      "audit_sha256": "88be977d4743a2eafe7e0df15f5bf9e6e34da2f935bbeeb11fe8223f8a501bde",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.NativeCausalRangeObstruction",
+      "path": "Zeta23/CCM/NativeCausalRangeObstruction.lean",
+      "main_sha256": "56f4800e925ecc284a58870986a75294a96d7e7f9a1f03d9b82275e4c0ecfbc5",
+      "audit_sha256": "56f4800e925ecc284a58870986a75294a96d7e7f9a1f03d9b82275e4c0ecfbc5",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.NativeCompactTranslateCalculus",
+      "path": "Zeta23/CCM/NativeCompactTranslateCalculus.lean",
+      "main_sha256": "6152803d0b6447dccc2c3900660982f4ab26cb69f34a980de8be6f3eb22b647b",
+      "audit_sha256": "6152803d0b6447dccc2c3900660982f4ab26cb69f34a980de8be6f3eb22b647b",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.NativeCompletedInput",
+      "path": "Zeta23/CCM/NativeCompletedInput.lean",
+      "main_sha256": "2bb3e73dd4a5fff7ac264f1f026d131fbe18483c41ae39510dd7703d9d6c9558",
+      "audit_sha256": "2bb3e73dd4a5fff7ac264f1f026d131fbe18483c41ae39510dd7703d9d6c9558",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.NativeCompletedInputComplexLaplace",
+      "path": "Zeta23/CCM/NativeCompletedInputComplexLaplace.lean",
+      "main_sha256": "66ebaa16a0a51ed9989e1f8b1143391a0da9f169ae22e5d1f34c13257d2b7d02",
+      "audit_sha256": "66ebaa16a0a51ed9989e1f8b1143391a0da9f169ae22e5d1f34c13257d2b7d02",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.NativeCompletedInputZetaLaplace",
+      "path": "Zeta23/CCM/NativeCompletedInputZetaLaplace.lean",
+      "main_sha256": "98017007b9ea60b76e2a20bc8fe58b3ceed5f82048316588e43251b8510fd579",
+      "audit_sha256": "98017007b9ea60b76e2a20bc8fe58b3ceed5f82048316588e43251b8510fd579",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.NativeCompletionComplexLaplace",
+      "path": "Zeta23/CCM/NativeCompletionComplexLaplace.lean",
+      "main_sha256": "63917260ba41ea9114a123ce96d4702f3ec83dad6ddf6b5716ff8cea66afd71a",
+      "audit_sha256": "63917260ba41ea9114a123ce96d4702f3ec83dad6ddf6b5716ff8cea66afd71a",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.NativeCompletionEquation",
+      "path": "Zeta23/CCM/NativeCompletionEquation.lean",
+      "main_sha256": "455f705f4f6e352e1b9fff7867b101e14afc1da30c79e7cf54697c1418969224",
+      "audit_sha256": "455f705f4f6e352e1b9fff7867b101e14afc1da30c79e7cf54697c1418969224",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.NativeCompletionIntegerKernel",
+      "path": "Zeta23/CCM/NativeCompletionIntegerKernel.lean",
+      "main_sha256": "f310c212b8e6f0d40edb9b84f3085ee29ca668e136b724e64b18e837884838f4",
+      "audit_sha256": "f310c212b8e6f0d40edb9b84f3085ee29ca668e136b724e64b18e837884838f4",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.NativeCompletionPublicAPI",
+      "path": "Zeta23/CCM/NativeCompletionPublicAPI.lean",
+      "main_sha256": "ab75ccb0ab1b08923f749b7d70caef68ab0e479f31d28671309ac7b577622fac",
+      "audit_sha256": "ab75ccb0ab1b08923f749b7d70caef68ab0e479f31d28671309ac7b577622fac",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.NativeDampedCompletionOperator",
+      "path": "Zeta23/CCM/NativeDampedCompletionOperator.lean",
+      "main_sha256": "e0921f97810403c3d7f488905c93ac4426a09cd93d0d5fb5ccaa85c563452367",
+      "audit_sha256": "e0921f97810403c3d7f488905c93ac4426a09cd93d0d5fb5ccaa85c563452367",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.NativeDampedCompletionPrerequisites",
+      "path": "Zeta23/CCM/NativeDampedCompletionPrerequisites.lean",
+      "main_sha256": "e3a9742b2353159ae02715666f1610bf9ec54b999434d874ef7852d7e5d36d87",
+      "audit_sha256": "e3a9742b2353159ae02715666f1610bf9ec54b999434d874ef7852d7e5d36d87",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.NativeDampedCompletionResidual",
+      "path": "Zeta23/CCM/NativeDampedCompletionResidual.lean",
+      "main_sha256": "1bf12ec27e3e12e787e7c2c09638f96220825309835ddcfdc628477d05dd07a7",
+      "audit_sha256": "1bf12ec27e3e12e787e7c2c09638f96220825309835ddcfdc628477d05dd07a7",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.NativeDeepThresholdEvenMoment",
+      "path": "Zeta23/CCM/NativeDeepThresholdEvenMoment.lean",
+      "main_sha256": "040bd493792cb0f7cd25c1938901690e45ce8a6d28ab7ce79ed555be525a067a",
+      "audit_sha256": "040bd493792cb0f7cd25c1938901690e45ce8a6d28ab7ce79ed555be525a067a",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.NativeDeepThresholdGround",
+      "path": "Zeta23/CCM/NativeDeepThresholdGround.lean",
+      "main_sha256": "81a9a6b6d770269742539e9e186783c4ba77dfcb5d98288f22794c16cbb9a864",
+      "audit_sha256": "81a9a6b6d770269742539e9e186783c4ba77dfcb5d98288f22794c16cbb9a864",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.NativeDeepThresholdInverseBudgets",
+      "path": "Zeta23/CCM/NativeDeepThresholdInverseBudgets.lean",
+      "main_sha256": "dec6c0acb312d2c4e8ffec412025abad459879f161f652afa0ebcceeb7c2cb67",
+      "audit_sha256": "dec6c0acb312d2c4e8ffec412025abad459879f161f652afa0ebcceeb7c2cb67",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.NativeDeepThresholdSimplicity",
+      "path": "Zeta23/CCM/NativeDeepThresholdSimplicity.lean",
+      "main_sha256": "4ab531222b3d99d11b41a87bd9d67c62fa90725f53a5ffd2b44ad4f202fdde5a",
+      "audit_sha256": "4ab531222b3d99d11b41a87bd9d67c62fa90725f53a5ffd2b44ad4f202fdde5a",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.NativeDetectorSchur",
+      "path": "Zeta23/CCM/NativeDetectorSchur.lean",
+      "main_sha256": "cbcd315c087b929c61383cddff2a01cee5cf08a309999bfa6f26eb4c8126022d",
+      "audit_sha256": "cbcd315c087b929c61383cddff2a01cee5cf08a309999bfa6f26eb4c8126022d",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.NativeExteriorSourceRecord",
+      "path": "Zeta23/CCM/NativeExteriorSourceRecord.lean",
+      "main_sha256": "ddd5d118c428c5102996663007560bb40f09ce6706d6790a558a4fa2609323d1",
+      "audit_sha256": "ddd5d118c428c5102996663007560bb40f09ce6706d6790a558a4fa2609323d1",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.NativeFloorCompletionSource",
+      "path": "Zeta23/CCM/NativeFloorCompletionSource.lean",
+      "main_sha256": "d8268164de0c4082da29b4502efde38293c4fc01b1de0c62ef2f616419863267",
+      "audit_sha256": "d8268164de0c4082da29b4502efde38293c4fc01b1de0c62ef2f616419863267",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.NativeIntegerDriveComplexLaplace",
+      "path": "Zeta23/CCM/NativeIntegerDriveComplexLaplace.lean",
+      "main_sha256": "e23f6bc6c04dd4714e32b82a64b14ca64b44f2f4cb774e1b1122cf4dd71973c2",
+      "audit_sha256": "e23f6bc6c04dd4714e32b82a64b14ca64b44f2f4cb774e1b1122cf4dd71973c2",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.NativeIntegerDriveFiniteOrderBounds",
+      "path": "Zeta23/CCM/NativeIntegerDriveFiniteOrderBounds.lean",
+      "main_sha256": "b4e2280a103c293d86deafa847d974e5f78f983f5ab8c4b86a66e66c1d9af1e4",
+      "audit_sha256": "b4e2280a103c293d86deafa847d974e5f78f983f5ab8c4b86a66e66c1d9af1e4",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.NativeIntegerKernelComplexLaplace",
+      "path": "Zeta23/CCM/NativeIntegerKernelComplexLaplace.lean",
+      "main_sha256": "132d86a9b4d8ce482048b19538d13f10ef35b60da5dbc2b425a9a0ae397d3a53",
+      "audit_sha256": "132d86a9b4d8ce482048b19538d13f10ef35b60da5dbc2b425a9a0ae397d3a53",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.NativeIntegerPrimeConvolution",
+      "path": "Zeta23/CCM/NativeIntegerPrimeConvolution.lean",
+      "main_sha256": "12773a269785022413552e6382cc1f99882d08b507215d4cea69a9ef47960406",
+      "audit_sha256": "12773a269785022413552e6382cc1f99882d08b507215d4cea69a9ef47960406",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.NativeIntegerPrimeField",
+      "path": "Zeta23/CCM/NativeIntegerPrimeField.lean",
+      "main_sha256": "5e33af26755dc29d578d1e29cd53341d8130bdb62bae67231364060520008247",
+      "audit_sha256": "5e33af26755dc29d578d1e29cd53341d8130bdb62bae67231364060520008247",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.NativeIntegerPrimeSource",
+      "path": "Zeta23/CCM/NativeIntegerPrimeSource.lean",
+      "main_sha256": "c98e58682a18bc073cd794200dfd351edef65e9a0ac3bfe0f7d522216f651b31",
+      "audit_sha256": "c98e58682a18bc073cd794200dfd351edef65e9a0ac3bfe0f7d522216f651b31",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.NativeLaplaceHalfPlaneContinuation",
+      "path": "Zeta23/CCM/NativeLaplaceHalfPlaneContinuation.lean",
+      "main_sha256": "32a75791bdeaf3c297b1608dad69264d645fc3da0045e4f482180ac2237113ac",
+      "audit_sha256": "32a75791bdeaf3c297b1608dad69264d645fc3da0045e4f482180ac2237113ac",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.NativeOriginalExteriorHistory",
+      "path": "Zeta23/CCM/NativeOriginalExteriorHistory.lean",
+      "main_sha256": "1d11fac369f5b1c73acc6ff73fafc2eacb4c6babe06ddf95ec577bb7cbf3adc0",
+      "audit_sha256": "1d11fac369f5b1c73acc6ff73fafc2eacb4c6babe06ddf95ec577bb7cbf3adc0",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.NativePoleNeutralTrialDepth",
+      "path": "Zeta23/CCM/NativePoleNeutralTrialDepth.lean",
+      "main_sha256": "fc8ecf4817b574efee804f8dd217cc0e6a30472f20c66efc9854e8e401b2a5de",
+      "audit_sha256": "fc8ecf4817b574efee804f8dd217cc0e6a30472f20c66efc9854e8e401b2a5de",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.NativePositiveCompletion",
+      "path": "Zeta23/CCM/NativePositiveCompletion.lean",
+      "main_sha256": "9a19cc764b2d58da9235199a1497c06675eef2b8b251f057ad4c73ceae8d9816",
+      "audit_sha256": "9a19cc764b2d58da9235199a1497c06675eef2b8b251f057ad4c73ceae8d9816",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.NativePositiveCompletionCells",
+      "path": "Zeta23/CCM/NativePositiveCompletionCells.lean",
+      "main_sha256": "3db128fd2c9e42f375f992383df1be092214cba943e922bf13ca3185fddf29af",
+      "audit_sha256": "3db128fd2c9e42f375f992383df1be092214cba943e922bf13ca3185fddf29af",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.NativePositiveCompletionCertificate",
+      "path": "Zeta23/CCM/NativePositiveCompletionCertificate.lean",
+      "main_sha256": "ebc53d747d47cdff115806439f4903bfc9865865a66c1190fcf2929c91dfb396",
+      "audit_sha256": "ebc53d747d47cdff115806439f4903bfc9865865a66c1190fcf2929c91dfb396",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.NativePositiveCompletionComplexLaplace",
+      "path": "Zeta23/CCM/NativePositiveCompletionComplexLaplace.lean",
+      "main_sha256": "4cc3df5964cc1e4fd3261c971d7383aa570dabcda826bd11152ad1ae91a962a3",
+      "audit_sha256": "4cc3df5964cc1e4fd3261c971d7383aa570dabcda826bd11152ad1ae91a962a3",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.NativePositiveCompletionHead",
+      "path": "Zeta23/CCM/NativePositiveCompletionHead.lean",
+      "main_sha256": "cdf6e2bd01ea53991e344280b8819102c5b8e641f7eeeb4134e42604084df775",
+      "audit_sha256": "cdf6e2bd01ea53991e344280b8819102c5b8e641f7eeeb4134e42604084df775",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.NativePositiveCompletionMass",
+      "path": "Zeta23/CCM/NativePositiveCompletionMass.lean",
+      "main_sha256": "f79bf37b31d3b9374a127679751349773e3dd41a9da9652ed46612245e9e3159",
+      "audit_sha256": "f79bf37b31d3b9374a127679751349773e3dd41a9da9652ed46612245e9e3159",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.NativePositiveCompletionTail",
+      "path": "Zeta23/CCM/NativePositiveCompletionTail.lean",
+      "main_sha256": "54e104804c9e57ba72e08e0bcd65a2ebd7fc8eae0f3a0a0dda68ee53d421b371",
+      "audit_sha256": "54e104804c9e57ba72e08e0bcd65a2ebd7fc8eae0f3a0a0dda68ee53d421b371",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.NativeRationalCompletionLaplace",
+      "path": "Zeta23/CCM/NativeRationalCompletionLaplace.lean",
+      "main_sha256": "018dcd3d5216b170ae2a95f47be80c3d3adb105eee49ab650a65829d4f4a7864",
+      "audit_sha256": "018dcd3d5216b170ae2a95f47be80c3d3adb105eee49ab650a65829d4f4a7864",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.NativeSelectedGroundSchur",
+      "path": "Zeta23/CCM/NativeSelectedGroundSchur.lean",
+      "main_sha256": "0805d689e9a5bf06444e3020542f26142c44cc0e09b4ed587cf26b0b63df56bc",
+      "audit_sha256": "0805d689e9a5bf06444e3020542f26142c44cc0e09b4ed587cf26b0b63df56bc",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.NativeWeilResponse",
+      "path": "Zeta23/CCM/NativeWeilResponse.lean",
+      "main_sha256": "0ebc3954a20596f32b92f1a9f6b96f959ea5e9758d639b3eaea298cb072ff377",
+      "audit_sha256": "0ebc3954a20596f32b92f1a9f6b96f959ea5e9758d639b3eaea298cb072ff377",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.NativeWeilResponseBounds",
+      "path": "Zeta23/CCM/NativeWeilResponseBounds.lean",
+      "main_sha256": "2f5a08c9b3349cb3e9892922db3de846f91a70db81e2d4f180502587b12aaf5e",
+      "audit_sha256": "2f5a08c9b3349cb3e9892922db3de846f91a70db81e2d4f180502587b12aaf5e",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.NestedFinite",
+      "path": "Zeta23/CCM/NestedFinite.lean",
+      "main_sha256": "79ef07318b23d95d90751c2736856fe0b84c005205dbea4580523a7a78ec04a5",
+      "audit_sha256": "79ef07318b23d95d90751c2736856fe0b84c005205dbea4580523a7a78ec04a5",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorActualForcingError",
+      "path": "Zeta23/CCM/OriginalDetectorActualForcingError.lean",
+      "main_sha256": "d18020649fa3f6d327364443b867995ebd9466bb425452adf36872c1dae0a0f7",
+      "audit_sha256": "d18020649fa3f6d327364443b867995ebd9466bb425452adf36872c1dae0a0f7",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorAdmissibleSelector",
+      "path": "Zeta23/CCM/OriginalDetectorAdmissibleSelector.lean",
+      "main_sha256": "ebb34a9d646a9be7131fa457fecf9b98c29f71d49ab20b18603a4fccccc3643e",
+      "audit_sha256": "ebb34a9d646a9be7131fa457fecf9b98c29f71d49ab20b18603a4fccccc3643e",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorBoundaryHistorySplit",
+      "path": "Zeta23/CCM/OriginalDetectorBoundaryHistorySplit.lean",
+      "main_sha256": "6f73b4ef426736108d2f8d11adebb8564cfd1d9277943abf6b9af44006912608",
+      "audit_sha256": "6f73b4ef426736108d2f8d11adebb8564cfd1d9277943abf6b9af44006912608",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorDividedLobeBounds",
+      "path": "Zeta23/CCM/OriginalDetectorDividedLobeBounds.lean",
+      "main_sha256": "28c82027dbce7e24d9fcac13034cdd224e2446653d7d1c25316361fcf1dc4671",
+      "audit_sha256": "28c82027dbce7e24d9fcac13034cdd224e2446653d7d1c25316361fcf1dc4671",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorEtaControl",
+      "path": "Zeta23/CCM/OriginalDetectorEtaControl.lean",
+      "main_sha256": "d1e60c1c2f59d87604ce1135e4efc7de445c4f76a2978f3fa0498d0fd9d63542",
+      "audit_sha256": "d1e60c1c2f59d87604ce1135e4efc7de445c4f76a2978f3fa0498d0fd9d63542",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorExteriorPairing",
+      "path": "Zeta23/CCM/OriginalDetectorExteriorPairing.lean",
+      "main_sha256": "8a76a949fcfa0f8dc66303728a68df5d9e91499bdd59131b2d37be9297a87518",
+      "audit_sha256": "8a76a949fcfa0f8dc66303728a68df5d9e91499bdd59131b2d37be9297a87518",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorFinitePhaseApproximation",
+      "path": "Zeta23/CCM/OriginalDetectorFinitePhaseApproximation.lean",
+      "main_sha256": "321d6f813d5c21a6a91c86fa41497d3a2957d78e1cdf0c57539ae89b19194552",
+      "audit_sha256": "321d6f813d5c21a6a91c86fa41497d3a2957d78e1cdf0c57539ae89b19194552",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorFinitePhaseCarrier",
+      "path": "Zeta23/CCM/OriginalDetectorFinitePhaseCarrier.lean",
+      "main_sha256": "1ba204e47deafc577e4c9219176c6566e6a610e211fe6763a7b5530259708a33",
+      "audit_sha256": "1ba204e47deafc577e4c9219176c6566e6a610e211fe6763a7b5530259708a33",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorFinitePhaseDepth",
+      "path": "Zeta23/CCM/OriginalDetectorFinitePhaseDepth.lean",
+      "main_sha256": "2f56ffb2df0a22157f361aa62adf304539357cddb06c60d0586a9c5d8f1d16ff",
+      "audit_sha256": "2f56ffb2df0a22157f361aa62adf304539357cddb06c60d0586a9c5d8f1d16ff",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorFinitePhaseL1Errors",
+      "path": "Zeta23/CCM/OriginalDetectorFinitePhaseL1Errors.lean",
+      "main_sha256": "1965009dc9728bc3d39d98662cf19b23dcc9d46cdb9cd3db9a5ecf73f6003b1d",
+      "audit_sha256": "1965009dc9728bc3d39d98662cf19b23dcc9d46cdb9cd3db9a5ecf73f6003b1d",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorFinitePhaseMass",
+      "path": "Zeta23/CCM/OriginalDetectorFinitePhaseMass.lean",
+      "main_sha256": "c8fc030e0cacbf994b066aeaf97bdb3b087850d4abe84185a618ddc93b441c70",
+      "audit_sha256": "c8fc030e0cacbf994b066aeaf97bdb3b087850d4abe84185a618ddc93b441c70",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorFinitePhaseNativeProducer",
+      "path": "Zeta23/CCM/OriginalDetectorFinitePhaseNativeProducer.lean",
+      "main_sha256": "f007b58d4e130dcd6e2b0884d04625fcad32f1153d22c5cfca0688292da2a34e",
+      "audit_sha256": "f007b58d4e130dcd6e2b0884d04625fcad32f1153d22c5cfca0688292da2a34e",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorFinitePhaseNativeTransport",
+      "path": "Zeta23/CCM/OriginalDetectorFinitePhaseNativeTransport.lean",
+      "main_sha256": "0bc1c804172c59a49fed018c03fd94b24e7a4a2a6735dab9dacf0fb8493591b8",
+      "audit_sha256": "0bc1c804172c59a49fed018c03fd94b24e7a4a2a6735dab9dacf0fb8493591b8",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorFinitePhaseNormControl",
+      "path": "Zeta23/CCM/OriginalDetectorFinitePhaseNormControl.lean",
+      "main_sha256": "5f93bde195756eb4160b8c361a40a2c6fd4f511347febe0a165c4c1310c9c904",
+      "audit_sha256": "5f93bde195756eb4160b8c361a40a2c6fd4f511347febe0a165c4c1310c9c904",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorFinitePhaseNormalization",
+      "path": "Zeta23/CCM/OriginalDetectorFinitePhaseNormalization.lean",
+      "main_sha256": "0cc9081127941fd45ef6f66bb1718ea4002575291367fc1943cfabd8db7fd499",
+      "audit_sha256": "0cc9081127941fd45ef6f66bb1718ea4002575291367fc1943cfabd8db7fd499",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorFinitePhasePlane",
+      "path": "Zeta23/CCM/OriginalDetectorFinitePhasePlane.lean",
+      "main_sha256": "05efadf928fcf813d34e7c91f59dd6b2d6395ef67bb96c56357220e868855d02",
+      "audit_sha256": "05efadf928fcf813d34e7c91f59dd6b2d6395ef67bb96c56357220e868855d02",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorFinitePhaseWeilPadding",
+      "path": "Zeta23/CCM/OriginalDetectorFinitePhaseWeilPadding.lean",
+      "main_sha256": "bd73d1c72d94640b182612e4498be482c3aa56ba6de604e6a9196e8375ce36ea",
+      "audit_sha256": "bd73d1c72d94640b182612e4498be482c3aa56ba6de604e6a9196e8375ce36ea",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorFinitePhysicalNorm",
+      "path": "Zeta23/CCM/OriginalDetectorFinitePhysicalNorm.lean",
+      "main_sha256": "dbf319cd4456f4c65a5f8db9117db36183d512b50a52459fa817c63676f09c00",
+      "audit_sha256": "dbf319cd4456f4c65a5f8db9117db36183d512b50a52459fa817c63676f09c00",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorFinitePoleImage",
+      "path": "Zeta23/CCM/OriginalDetectorFinitePoleImage.lean",
+      "main_sha256": "153a9425709ee7896f2997675c0f34d496a427bdd92eae01a9d3d66561292703",
+      "audit_sha256": "153a9425709ee7896f2997675c0f34d496a427bdd92eae01a9d3d66561292703",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorFinitePoleImageAsymptotics",
+      "path": "Zeta23/CCM/OriginalDetectorFinitePoleImageAsymptotics.lean",
+      "main_sha256": "e51dfa757d3c1e1e74e43cc8e0e5058afe003f6373f41241361963e1cd918f2b",
+      "audit_sha256": "e51dfa757d3c1e1e74e43cc8e0e5058afe003f6373f41241361963e1cd918f2b",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorFinitePoleImageNonzero",
+      "path": "Zeta23/CCM/OriginalDetectorFinitePoleImageNonzero.lean",
+      "main_sha256": "15474ef72b035de09d270374dc9f323920810d0d088be4029e0a5d35afa9de18",
+      "audit_sha256": "15474ef72b035de09d270374dc9f323920810d0d088be4029e0a5d35afa9de18",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorFinitePoleImageTransport",
+      "path": "Zeta23/CCM/OriginalDetectorFinitePoleImageTransport.lean",
+      "main_sha256": "0031d90404a483548bcbf06cdaae8639f74f59f47dccc7c669b4c66ba95ef423",
+      "audit_sha256": "0031d90404a483548bcbf06cdaae8639f74f59f47dccc7c669b4c66ba95ef423",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorFiniteWindowBoundaryFlat",
+      "path": "Zeta23/CCM/OriginalDetectorFiniteWindowBoundaryFlat.lean",
+      "main_sha256": "ba0a1313a2a78e9b424e43f08dada76e7fc43d9b0ba659719791db7cfbfcfb58",
+      "audit_sha256": "ba0a1313a2a78e9b424e43f08dada76e7fc43d9b0ba659719791db7cfbfcfb58",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorFiniteWindowHigherFlat",
+      "path": "Zeta23/CCM/OriginalDetectorFiniteWindowHigherFlat.lean",
+      "main_sha256": "2f282c8783aa15043bc73b2bebc2d5a8f1e2e1e204c023a560988214f4cddc70",
+      "audit_sha256": "2f282c8783aa15043bc73b2bebc2d5a8f1e2e1e204c023a560988214f4cddc70",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorFiniteWindowImage",
+      "path": "Zeta23/CCM/OriginalDetectorFiniteWindowImage.lean",
+      "main_sha256": "1f7b481307bae3a6df35b440cd20f49ee080850fb3c60d9e8f4ae925d6463232",
+      "audit_sha256": "1f7b481307bae3a6df35b440cd20f49ee080850fb3c60d9e8f4ae925d6463232",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorFiniteWindowImageAsymptotics",
+      "path": "Zeta23/CCM/OriginalDetectorFiniteWindowImageAsymptotics.lean",
+      "main_sha256": "8cb13fd8048550fcb6d96c05e1499221404ac5505af01397d2f55d09cafa03fa",
+      "audit_sha256": "8cb13fd8048550fcb6d96c05e1499221404ac5505af01397d2f55d09cafa03fa",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorFiniteWindowImageJets",
+      "path": "Zeta23/CCM/OriginalDetectorFiniteWindowImageJets.lean",
+      "main_sha256": "40aae16ccb7b2724733243475dbf41c2ab274e51fabbbdbc10630a53886b7bd5",
+      "audit_sha256": "40aae16ccb7b2724733243475dbf41c2ab274e51fabbbdbc10630a53886b7bd5",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorForcingError",
+      "path": "Zeta23/CCM/OriginalDetectorForcingError.lean",
+      "main_sha256": "0c34fb1d555fac94ac1d203c456d760713e220eccc38142d9b201340aaffda0c",
+      "audit_sha256": "0c34fb1d555fac94ac1d203c456d760713e220eccc38142d9b201340aaffda0c",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorFourHistoryLocalDuality",
+      "path": "Zeta23/CCM/OriginalDetectorFourHistoryLocalDuality.lean",
+      "main_sha256": "2bc977f560369890df8bb41322d0271bc8a47ca42fea48bda759739fdd63d60e",
+      "audit_sha256": "2bc977f560369890df8bb41322d0271bc8a47ca42fea48bda759739fdd63d60e",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorFourHistoryLocalXBound",
+      "path": "Zeta23/CCM/OriginalDetectorFourHistoryLocalXBound.lean",
+      "main_sha256": "21c20893cccd3f3a3ebda21a03e614f10e4bec335a11d59413f014b17a4ee862",
+      "audit_sha256": "21c20893cccd3f3a3ebda21a03e614f10e4bec335a11d59413f014b17a4ee862",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorFourHistorySignedTransfer",
+      "path": "Zeta23/CCM/OriginalDetectorFourHistorySignedTransfer.lean",
+      "main_sha256": "ecf61e12e3026485dfda388ed504f6390b037825a2d5e5b8bde29224f4fb90b5",
+      "audit_sha256": "ecf61e12e3026485dfda388ed504f6390b037825a2d5e5b8bde29224f4fb90b5",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorFourHistoryTransfer",
+      "path": "Zeta23/CCM/OriginalDetectorFourHistoryTransfer.lean",
+      "main_sha256": "41424dcde157918badd9801a12d9169d73577d2372bd1050cfbda4bc61f79a99",
+      "audit_sha256": "41424dcde157918badd9801a12d9169d73577d2372bd1050cfbda4bc61f79a99",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorFourPrimeHistories",
+      "path": "Zeta23/CCM/OriginalDetectorFourPrimeHistories.lean",
+      "main_sha256": "5a4fa3bb5f20d9e98fb02fa106a91a0483c1bd654127f9d8cc4fb64a752a0440",
+      "audit_sha256": "5a4fa3bb5f20d9e98fb02fa106a91a0483c1bd654127f9d8cc4fb64a752a0440",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorFourierCoefficientBounds",
+      "path": "Zeta23/CCM/OriginalDetectorFourierCoefficientBounds.lean",
+      "main_sha256": "cc62a2b9ce6fb8b808ce1759b8806ae9aeb4f2d372163825a7a1e972cbcc6f0a",
+      "audit_sha256": "cc62a2b9ce6fb8b808ce1759b8806ae9aeb4f2d372163825a7a1e972cbcc6f0a",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorFourierPrerequisites",
+      "path": "Zeta23/CCM/OriginalDetectorFourierPrerequisites.lean",
+      "main_sha256": "cb28a2d9f17864a5c470e8c4f6cd158e15d4a3064f0127653cedb7baa0c76131",
+      "audit_sha256": "cb28a2d9f17864a5c470e8c4f6cd158e15d4a3064f0127653cedb7baa0c76131",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorFourierScalarTailBounds",
+      "path": "Zeta23/CCM/OriginalDetectorFourierScalarTailBounds.lean",
+      "main_sha256": "cf086509356ee4fbab09b9e45f3f3780c1d53640eb50b57713d269aaae1e0634",
+      "audit_sha256": "cf086509356ee4fbab09b9e45f3f3780c1d53640eb50b57713d269aaae1e0634",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorFourierTailAsymptotics",
+      "path": "Zeta23/CCM/OriginalDetectorFourierTailAsymptotics.lean",
+      "main_sha256": "a2238a751688683cf736679a52f543add8c57be58fb8ad273a06ce81d6fb19e6",
+      "audit_sha256": "a2238a751688683cf736679a52f543add8c57be58fb8ad273a06ce81d6fb19e6",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorFourierTailBounds",
+      "path": "Zeta23/CCM/OriginalDetectorFourierTailBounds.lean",
+      "main_sha256": "b9c5d8e794dee3de664d304b3b2b9dbfd6280c34b3292485e0b04e7278f64cdb",
+      "audit_sha256": "b9c5d8e794dee3de664d304b3b2b9dbfd6280c34b3292485e0b04e7278f64cdb",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorLocalDuality",
+      "path": "Zeta23/CCM/OriginalDetectorLocalDuality.lean",
+      "main_sha256": "254fefdc767369e4b225ed31724dc64278e76f338f65a47273b0527dfae0b0ab",
+      "audit_sha256": "254fefdc767369e4b225ed31724dc64278e76f338f65a47273b0527dfae0b0ab",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorNativeForcing",
+      "path": "Zeta23/CCM/OriginalDetectorNativeForcing.lean",
+      "main_sha256": "d7d79aa75357b782b2e3f78d1e9fc60e97755c13296f05efb30b3077550bf72b",
+      "audit_sha256": "d7d79aa75357b782b2e3f78d1e9fc60e97755c13296f05efb30b3077550bf72b",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorOddPaddingIdentity",
+      "path": "Zeta23/CCM/OriginalDetectorOddPaddingIdentity.lean",
+      "main_sha256": "1c1b7471e8342e08f172d4ffc7efa1691f6023d12c2e5dcf73c5d5e8f245ec8d",
+      "audit_sha256": "1c1b7471e8342e08f172d4ffc7efa1691f6023d12c2e5dcf73c5d5e8f245ec8d",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorOriginalPhaseL1Bounds",
+      "path": "Zeta23/CCM/OriginalDetectorOriginalPhaseL1Bounds.lean",
+      "main_sha256": "5773f6ed30acb5af77d1ab6b2b6be183369ac005694aac4fe51a7fe75c974b40",
+      "audit_sha256": "5773f6ed30acb5af77d1ab6b2b6be183369ac005694aac4fe51a7fe75c974b40",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorPaddedFiniteH1Rate",
+      "path": "Zeta23/CCM/OriginalDetectorPaddedFiniteH1Rate.lean",
+      "main_sha256": "94f54c223c3718ba15f00275f07622b875105be9254302044e532b18aeb2d00f",
+      "audit_sha256": "94f54c223c3718ba15f00275f07622b875105be9254302044e532b18aeb2d00f",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorPaddedFiniteNativeFormConcreteRate",
+      "path": "Zeta23/CCM/OriginalDetectorPaddedFiniteNativeFormConcreteRate.lean",
+      "main_sha256": "abbe854e8697f5e33068c3596e3a3a9c0dbd1cd654acdec4f3ed0121d09dc24c",
+      "audit_sha256": "abbe854e8697f5e33068c3596e3a3a9c0dbd1cd654acdec4f3ed0121d09dc24c",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorPaddedFiniteNativeFormRate",
+      "path": "Zeta23/CCM/OriginalDetectorPaddedFiniteNativeFormRate.lean",
+      "main_sha256": "e9362cd3c874a135454f04047b73e712754c000f64424b1d34c6ad49dd8c383b",
+      "audit_sha256": "e9362cd3c874a135454f04047b73e712754c000f64424b1d34c6ad49dd8c383b",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorPaddedFiniteNormalizedErrors",
+      "path": "Zeta23/CCM/OriginalDetectorPaddedFiniteNormalizedErrors.lean",
+      "main_sha256": "e56cb04a5653208059688919ec0418acc828d260132cb32735e79adaab82e2b8",
+      "audit_sha256": "e56cb04a5653208059688919ec0418acc828d260132cb32735e79adaab82e2b8",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorPaddedFinitePhaseApproximation",
+      "path": "Zeta23/CCM/OriginalDetectorPaddedFinitePhaseApproximation.lean",
+      "main_sha256": "8dd42c4fa64b4ad98f3d0864839ddacb524cd5d6ff31540f726b210275d28322",
+      "audit_sha256": "8dd42c4fa64b4ad98f3d0864839ddacb524cd5d6ff31540f726b210275d28322",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorPaddedFinitePhaseCarrier",
+      "path": "Zeta23/CCM/OriginalDetectorPaddedFinitePhaseCarrier.lean",
+      "main_sha256": "0f0b60784b0d24c1e02fb32390f7e588785717689066138948846e8856d3c3e8",
+      "audit_sha256": "0f0b60784b0d24c1e02fb32390f7e588785717689066138948846e8856d3c3e8",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorPaddedFinitePhaseDepth",
+      "path": "Zeta23/CCM/OriginalDetectorPaddedFinitePhaseDepth.lean",
+      "main_sha256": "12b675df2d85e211584049fbd99bddb31b99c1f2d51fa9c24cbb7b858069ef43",
+      "audit_sha256": "12b675df2d85e211584049fbd99bddb31b99c1f2d51fa9c24cbb7b858069ef43",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorPaddedFinitePhaseL1Errors",
+      "path": "Zeta23/CCM/OriginalDetectorPaddedFinitePhaseL1Errors.lean",
+      "main_sha256": "eda4c8167b5f91b23ab3965866bfe5d6856b0ab6663bac7e8bd5a7df4cecc98c",
+      "audit_sha256": "eda4c8167b5f91b23ab3965866bfe5d6856b0ab6663bac7e8bd5a7df4cecc98c",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorPaddedFinitePhaseMass",
+      "path": "Zeta23/CCM/OriginalDetectorPaddedFinitePhaseMass.lean",
+      "main_sha256": "66a079fd2d9c3055383c5284262eedcf7e68cab7200f02ba85aa13a90f0dd308",
+      "audit_sha256": "66a079fd2d9c3055383c5284262eedcf7e68cab7200f02ba85aa13a90f0dd308",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorPaddedFinitePhaseNativeProducer",
+      "path": "Zeta23/CCM/OriginalDetectorPaddedFinitePhaseNativeProducer.lean",
+      "main_sha256": "b11851ae6a8e2c12bef9a62edec1a6a82817155ffd7ec304bf5ec60c1c253610",
+      "audit_sha256": "b11851ae6a8e2c12bef9a62edec1a6a82817155ffd7ec304bf5ec60c1c253610",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorPaddedFinitePhaseNativeTransport",
+      "path": "Zeta23/CCM/OriginalDetectorPaddedFinitePhaseNativeTransport.lean",
+      "main_sha256": "b82a5f4645e7588583ad0c62433710edad4ab2601832e1cf5f015e715d26bc32",
+      "audit_sha256": "b82a5f4645e7588583ad0c62433710edad4ab2601832e1cf5f015e715d26bc32",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorPaddedFinitePhaseNormControl",
+      "path": "Zeta23/CCM/OriginalDetectorPaddedFinitePhaseNormControl.lean",
+      "main_sha256": "4fa03539adf6d25b7d3e9baa2ed87e3617c80cce59a6a71d7a3bcc701792b1cc",
+      "audit_sha256": "4fa03539adf6d25b7d3e9baa2ed87e3617c80cce59a6a71d7a3bcc701792b1cc",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorPaddedFinitePhaseNormalization",
+      "path": "Zeta23/CCM/OriginalDetectorPaddedFinitePhaseNormalization.lean",
+      "main_sha256": "01158c1d2d07a540ad57e66180dc1418e3d6e4468b14511061d2175d6f43adb0",
+      "audit_sha256": "01158c1d2d07a540ad57e66180dc1418e3d6e4468b14511061d2175d6f43adb0",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorPaddedFinitePhasePlane",
+      "path": "Zeta23/CCM/OriginalDetectorPaddedFinitePhasePlane.lean",
+      "main_sha256": "f208bb153381694223783b252db535675b2eebc7190e7473db9aa908c3d83a98",
+      "audit_sha256": "f208bb153381694223783b252db535675b2eebc7190e7473db9aa908c3d83a98",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorPaddedFinitePhaseSymmetry",
+      "path": "Zeta23/CCM/OriginalDetectorPaddedFinitePhaseSymmetry.lean",
+      "main_sha256": "0ade377a713bdce0d0f63e4730db17d16d1633500ea7702f00c3297695ea3908",
+      "audit_sha256": "0ade377a713bdce0d0f63e4730db17d16d1633500ea7702f00c3297695ea3908",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorPaddedFinitePhaseWeilPadding",
+      "path": "Zeta23/CCM/OriginalDetectorPaddedFinitePhaseWeilPadding.lean",
+      "main_sha256": "74e18e34cbb461920674bfcc6ea73468404030623318fa7600200b36672b039c",
+      "audit_sha256": "74e18e34cbb461920674bfcc6ea73468404030623318fa7600200b36672b039c",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorPaddedFinitePhysicalUnitBridge",
+      "path": "Zeta23/CCM/OriginalDetectorPaddedFinitePhysicalUnitBridge.lean",
+      "main_sha256": "0a02119bb68421779fb668fe732080e186cf148c7b2d6ab96e7a4c4042d3d87b",
+      "audit_sha256": "0a02119bb68421779fb668fe732080e186cf148c7b2d6ab96e7a4c4042d3d87b",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorPaddedFinitePoleImage",
+      "path": "Zeta23/CCM/OriginalDetectorPaddedFinitePoleImage.lean",
+      "main_sha256": "8fa4aa023cefb2b3087b11896a32ebae803cd81411fd2cee76af29809aca0096",
+      "audit_sha256": "8fa4aa023cefb2b3087b11896a32ebae803cd81411fd2cee76af29809aca0096",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorPaddedFinitePoleImageAsymptotics",
+      "path": "Zeta23/CCM/OriginalDetectorPaddedFinitePoleImageAsymptotics.lean",
+      "main_sha256": "b11482f6de8e07a3766fc2a0d441c64091031a4d2b592ff9f0a52aa2cf296937",
+      "audit_sha256": "b11482f6de8e07a3766fc2a0d441c64091031a4d2b592ff9f0a52aa2cf296937",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorPaddedFinitePoleImageC4",
+      "path": "Zeta23/CCM/OriginalDetectorPaddedFinitePoleImageC4.lean",
+      "main_sha256": "11a7b4600182ca930013339f389fb1f51c832ad3cb0dbd1097565ea583d8feb9",
+      "audit_sha256": "11a7b4600182ca930013339f389fb1f51c832ad3cb0dbd1097565ea583d8feb9",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorPaddedFinitePoleImageNonzero",
+      "path": "Zeta23/CCM/OriginalDetectorPaddedFinitePoleImageNonzero.lean",
+      "main_sha256": "2a484ac7b6e2eabe773f2e75b702bf799f348a16acf4b8a55a5921cd3f5f1ec5",
+      "audit_sha256": "2a484ac7b6e2eabe773f2e75b702bf799f348a16acf4b8a55a5921cd3f5f1ec5",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorPaddedFinitePoleImageTransport",
+      "path": "Zeta23/CCM/OriginalDetectorPaddedFinitePoleImageTransport.lean",
+      "main_sha256": "2394ff90ff09e3a69cbcb6422e19061ea5d1332996470a2cac7d8a62553a1787",
+      "audit_sha256": "2394ff90ff09e3a69cbcb6422e19061ea5d1332996470a2cac7d8a62553a1787",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorPaddedFinitePositivity",
+      "path": "Zeta23/CCM/OriginalDetectorPaddedFinitePositivity.lean",
+      "main_sha256": "efd27c4110fdc8945afa3576ebdaf05bb15541c116a6242d14add171461aabe7",
+      "audit_sha256": "efd27c4110fdc8945afa3576ebdaf05bb15541c116a6242d14add171461aabe7",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorPaddedFiniteWindowBoundaryFlat",
+      "path": "Zeta23/CCM/OriginalDetectorPaddedFiniteWindowBoundaryFlat.lean",
+      "main_sha256": "dc53ea1fb5cfea9ce546c8d8258efe5e218c3681e7356c9601de95c6b920bf2b",
+      "audit_sha256": "dc53ea1fb5cfea9ce546c8d8258efe5e218c3681e7356c9601de95c6b920bf2b",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorPaddedFiniteWindowHigherFlat",
+      "path": "Zeta23/CCM/OriginalDetectorPaddedFiniteWindowHigherFlat.lean",
+      "main_sha256": "2bc4e97cc1e1063804049d0dd473f6357fd667a205e9172f470f3f0072a5c100",
+      "audit_sha256": "2bc4e97cc1e1063804049d0dd473f6357fd667a205e9172f470f3f0072a5c100",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorPaddedFiniteWindowImage",
+      "path": "Zeta23/CCM/OriginalDetectorPaddedFiniteWindowImage.lean",
+      "main_sha256": "6ddb7f7299a71fbc7fa3fd2cfcb940a1e5c159fab849d143ed989db81c409d5e",
+      "audit_sha256": "6ddb7f7299a71fbc7fa3fd2cfcb940a1e5c159fab849d143ed989db81c409d5e",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorPaddedFiniteWindowImageAsymptotics",
+      "path": "Zeta23/CCM/OriginalDetectorPaddedFiniteWindowImageAsymptotics.lean",
+      "main_sha256": "800f17dcc41af1710dba17b2f1556a7f50e1f24134338026b5c03354b38140be",
+      "audit_sha256": "800f17dcc41af1710dba17b2f1556a7f50e1f24134338026b5c03354b38140be",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorPaddedFiniteWindowImageJets",
+      "path": "Zeta23/CCM/OriginalDetectorPaddedFiniteWindowImageJets.lean",
+      "main_sha256": "e2289bbd485dfcd2d76004b24f3b0e4e7464b7855b741a70aa8de2150c607290",
+      "audit_sha256": "e2289bbd485dfcd2d76004b24f3b0e4e7464b7855b741a70aa8de2150c607290",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorPaddedFourierQuantitativeRates",
+      "path": "Zeta23/CCM/OriginalDetectorPaddedFourierQuantitativeRates.lean",
+      "main_sha256": "9076a924d1924b6b9708f5d1dc5b3eed377ee90417afca9e75ee274117e7d73f",
+      "audit_sha256": "9076a924d1924b6b9708f5d1dc5b3eed377ee90417afca9e75ee274117e7d73f",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorPaddedPhaseQuantitativeRates",
+      "path": "Zeta23/CCM/OriginalDetectorPaddedPhaseQuantitativeRates.lean",
+      "main_sha256": "8f9c8337db445a4911eb27137818e726df4ecb71906d494fb1ad8ec10895552e",
+      "audit_sha256": "8f9c8337db445a4911eb27137818e726df4ecb71906d494fb1ad8ec10895552e",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorPaddedPhaseScalar",
+      "path": "Zeta23/CCM/OriginalDetectorPaddedPhaseScalar.lean",
+      "main_sha256": "7334dbf8d5a65be3ca4a7bb9a09dce3f8878b400744e03bf208035a00e9c1338",
+      "audit_sha256": "7334dbf8d5a65be3ca4a7bb9a09dce3f8878b400744e03bf208035a00e9c1338",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorPaddedRetainedSelection",
+      "path": "Zeta23/CCM/OriginalDetectorPaddedRetainedSelection.lean",
+      "main_sha256": "ebae4fd74f6833bc0219cd318a96c1003e1858a6bc7236d9f807d7374f8b6a7c",
+      "audit_sha256": "ebae4fd74f6833bc0219cd318a96c1003e1858a6bc7236d9f807d7374f8b6a7c",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorPositiveFourierPadding",
+      "path": "Zeta23/CCM/OriginalDetectorPositiveFourierPadding.lean",
+      "main_sha256": "4adf6fdde231967b9a258923d9019909a689b327d7048c6a14044216fdc4d451",
+      "audit_sha256": "4adf6fdde231967b9a258923d9019909a689b327d7048c6a14044216fdc4d451",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorPositiveFourierPaddingReal",
+      "path": "Zeta23/CCM/OriginalDetectorPositiveFourierPaddingReal.lean",
+      "main_sha256": "d873911908caa2ce077c78990bb71c0f1edacb814eface0512aac32dc60623e8",
+      "audit_sha256": "d873911908caa2ce077c78990bb71c0f1edacb814eface0512aac32dc60623e8",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorPrimeHistoryCovariance",
+      "path": "Zeta23/CCM/OriginalDetectorPrimeHistoryCovariance.lean",
+      "main_sha256": "2118128a811dc1aa4260283519afcc04e65aca9bfda6e6ae86a2de28cbe96407",
+      "audit_sha256": "2118128a811dc1aa4260283519afcc04e65aca9bfda6e6ae86a2de28cbe96407",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.OriginalDetectorWindowBounds",
+      "path": "Zeta23/CCM/OriginalDetectorWindowBounds.lean",
+      "main_sha256": "cd3bdfed9a283ab09db43b3915f4b5ea29dbb73442f4569e6879543be8908940",
+      "audit_sha256": "cd3bdfed9a283ab09db43b3915f4b5ea29dbb73442f4569e6879543be8908940",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.OriginalSincCompactPotential",
+      "path": "Zeta23/CCM/OriginalSincCompactPotential.lean",
+      "main_sha256": "8fe89209cf3872af3a23db044b6f45a10b4962fbda661d6e357c086474a66f32",
+      "audit_sha256": "8fe89209cf3872af3a23db044b6f45a10b4962fbda661d6e357c086474a66f32",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.OriginalSincDriveCancellation",
+      "path": "Zeta23/CCM/OriginalSincDriveCancellation.lean",
+      "main_sha256": "84471dfcfc9e2581215be6c3c4f56c830f2fa99435ae2af4f62b3fff8d93e6e5",
+      "audit_sha256": "84471dfcfc9e2581215be6c3c4f56c830f2fa99435ae2af4f62b3fff8d93e6e5",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.OriginalSincDriveDecay",
+      "path": "Zeta23/CCM/OriginalSincDriveDecay.lean",
+      "main_sha256": "3c2286848ff7afeb6308496b678e038b588c928f1a7aa9dc8bc7b0e2f30581bb",
+      "audit_sha256": "3c2286848ff7afeb6308496b678e038b588c928f1a7aa9dc8bc7b0e2f30581bb",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.OriginalSincDriveDerivative",
+      "path": "Zeta23/CCM/OriginalSincDriveDerivative.lean",
+      "main_sha256": "c4fa8f0ef61846b2f041e273fa4bb2f347bbf57ba45c5fc0d04aaef053154921",
+      "audit_sha256": "c4fa8f0ef61846b2f041e273fa4bb2f347bbf57ba45c5fc0d04aaef053154921",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.OriginalSincDriveLp",
+      "path": "Zeta23/CCM/OriginalSincDriveLp.lean",
+      "main_sha256": "0ef01fc796ec689604c4984c9b9cc2d449d64b4047f37cc15fceab3e8948991d",
+      "audit_sha256": "0ef01fc796ec689604c4984c9b9cc2d449d64b4047f37cc15fceab3e8948991d",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.OriginalSincLogDrive",
+      "path": "Zeta23/CCM/OriginalSincLogDrive.lean",
+      "main_sha256": "81fb5e7a9f7538ab50e87b9d91864ef683564b7042e735617124d1764f60ec00",
+      "audit_sha256": "81fb5e7a9f7538ab50e87b9d91864ef683564b7042e735617124d1764f60ec00",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.OriginalSincNativeConvolution",
+      "path": "Zeta23/CCM/OriginalSincNativeConvolution.lean",
+      "main_sha256": "7bbc06b9483820db2059add35ae71474629f225aa6e54a71942c1849daecb0a6",
+      "audit_sha256": "7bbc06b9483820db2059add35ae71474629f225aa6e54a71942c1849daecb0a6",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.OriginalSincNativeMass",
+      "path": "Zeta23/CCM/OriginalSincNativeMass.lean",
+      "main_sha256": "0dc0bea6123acc04235e1383e241dcbaf0c2af5d62cfaf718c8d643f84f4b23b",
+      "audit_sha256": "0dc0bea6123acc04235e1383e241dcbaf0c2af5d62cfaf718c8d643f84f4b23b",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.OriginalSincNativeSource",
+      "path": "Zeta23/CCM/OriginalSincNativeSource.lean",
+      "main_sha256": "aa45eed6367f434a6198dc4f10d582ab2251f314c38e92449dddcdb2780b4ab5",
+      "audit_sha256": "aa45eed6367f434a6198dc4f10d582ab2251f314c38e92449dddcdb2780b4ab5",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.OriginalSincWeightedPoleMoments",
+      "path": "Zeta23/CCM/OriginalSincWeightedPoleMoments.lean",
+      "main_sha256": "23a6d76f054165800710444c01c953faf3d8132e6430315e5cbf69152c865b3a",
+      "audit_sha256": "23a6d76f054165800710444c01c953faf3d8132e6430315e5cbf69152c865b3a",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.ParityBadness",
+      "path": "Zeta23/CCM/ParityBadness.lean",
+      "main_sha256": "8ac9e459196ad8cc174a2c32101c1539b9829fb8526b22b9dd5daf2549ace09c",
+      "audit_sha256": "8ac9e459196ad8cc174a2c32101c1539b9829fb8526b22b9dd5daf2549ace09c",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.ParityCompressionRankOne",
+      "path": "Zeta23/CCM/ParityCompressionRankOne.lean",
+      "main_sha256": "45bb65109bbe43e0bdd35f5bffc0bb528fe8435a918ec6e814682e3215c54fef",
+      "audit_sha256": "45bb65109bbe43e0bdd35f5bffc0bb528fe8435a918ec6e814682e3215c54fef",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.ParityCubicFactorization",
+      "path": "Zeta23/CCM/ParityCubicFactorization.lean",
+      "main_sha256": "0b0850767faebb9b919286c3bdb0330039844368f65440c429ad81536aa8badf",
+      "audit_sha256": "0b0850767faebb9b919286c3bdb0330039844368f65440c429ad81536aa8badf",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.ParityNormalSpace",
+      "path": "Zeta23/CCM/ParityNormalSpace.lean",
+      "main_sha256": "98dabccfe8317492bf37b9fef5264103740df39acc290c207d626a5a7a409398",
+      "audit_sha256": "98dabccfe8317492bf37b9fef5264103740df39acc290c207d626a5a7a409398",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.ParitySourceMomentFourRigidity",
+      "path": "Zeta23/CCM/ParitySourceMomentFourRigidity.lean",
+      "main_sha256": "c89765b9ec6e2a47ba3082eaebd5123a2210af552af5649edf1dd1b1da70b55e",
+      "audit_sha256": "c89765b9ec6e2a47ba3082eaebd5123a2210af552af5649edf1dd1b1da70b55e",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.PoleNeutralCompactH2",
+      "path": "Zeta23/CCM/PoleNeutralCompactH2.lean",
+      "main_sha256": "04993c73a5388bfad648113e5ec99485095e9dbbfacce6619da12149aa77c060",
+      "audit_sha256": "04993c73a5388bfad648113e5ec99485095e9dbbfacce6619da12149aa77c060",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.PoleNeutralCompactH2SourceCongruence",
+      "path": "Zeta23/CCM/PoleNeutralCompactH2SourceCongruence.lean",
+      "main_sha256": "c00c00a48d85cdd0daee4d74ccf9f902845e7c88703ea3f576220495c0da0234",
+      "audit_sha256": "c00c00a48d85cdd0daee4d74ccf9f902845e7c88703ea3f576220495c0da0234",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.PoleNeutralCompactH2Uniqueness",
+      "path": "Zeta23/CCM/PoleNeutralCompactH2Uniqueness.lean",
+      "main_sha256": "02d30fe5b4b2e994778930bf12166f4ed46d4f6c619224b034a6fb35bbdc6b95",
+      "audit_sha256": "02d30fe5b4b2e994778930bf12166f4ed46d4f6c619224b034a6fb35bbdc6b95",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.PoleNeutralCompactInverse",
+      "path": "Zeta23/CCM/PoleNeutralCompactInverse.lean",
+      "main_sha256": "5578ea082132cf33d89a4e1cf70d3eb268b8bbb144c4a859be04b3c4404d1207",
+      "audit_sha256": "5578ea082132cf33d89a4e1cf70d3eb268b8bbb144c4a859be04b3c4404d1207",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.PoleNeutralCompactInverseCore",
+      "path": "Zeta23/CCM/PoleNeutralCompactInverseCore.lean",
+      "main_sha256": "de25100399d4ade4fdfcf06e75af7a8e97efd21c2c94541c38989b9ffc785f0a",
+      "audit_sha256": "de25100399d4ade4fdfcf06e75af7a8e97efd21c2c94541c38989b9ffc785f0a",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.PoleNeutralCompactL2Energy",
+      "path": "Zeta23/CCM/PoleNeutralCompactL2Energy.lean",
+      "main_sha256": "2295fa91fbb47f72a7c946d3d1f8edd550c6f0e196211c03254144506ec988e2",
+      "audit_sha256": "2295fa91fbb47f72a7c946d3d1f8edd550c6f0e196211c03254144506ec988e2",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.PoleNeutralCompactL2Regularity",
+      "path": "Zeta23/CCM/PoleNeutralCompactL2Regularity.lean",
+      "main_sha256": "128e8aa08c396afacf8bae5fd019b36d5865719bf824b0bf6be875803448ee2c",
+      "audit_sha256": "128e8aa08c396afacf8bae5fd019b36d5865719bf824b0bf6be875803448ee2c",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.QuadraticNormalMatrixMoment",
+      "path": "Zeta23/CCM/QuadraticNormalMatrixMoment.lean",
+      "main_sha256": "6ec46b704626e6a5ab9870d6a57e7bba3d8fdd6167da762cfe1ae794b7ceeb18",
+      "audit_sha256": "6ec46b704626e6a5ab9870d6a57e7bba3d8fdd6167da762cfe1ae794b7ceeb18",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.QuadraticNormalSourceJets",
+      "path": "Zeta23/CCM/QuadraticNormalSourceJets.lean",
+      "main_sha256": "ac021efd549acd9e4b8fcc4ffd341f7492739da3c10986c1e203239e8081aaa3",
+      "audit_sha256": "ac021efd549acd9e4b8fcc4ffd341f7492739da3c10986c1e203239e8081aaa3",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.SecularDeterminantKernel",
+      "path": "Zeta23/CCM/SecularDeterminantKernel.lean",
+      "main_sha256": "16825cabe46f391da04f0f543ce1a862867fd02ea75a6bed199c4537a7649d40",
+      "audit_sha256": "16825cabe46f391da04f0f543ce1a862867fd02ea75a6bed199c4537a7649d40",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.SourceContraction",
+      "path": "Zeta23/CCM/SourceContraction.lean",
+      "main_sha256": "54fb656a6339d217c3f89b0e9c1ad97ab1c70dd80aa13b8d19481b2a8a1a4f94",
+      "audit_sha256": "54fb656a6339d217c3f89b0e9c1ad97ab1c70dd80aa13b8d19481b2a8a1a4f94",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.SourceContractionLocalized",
+      "path": "Zeta23/CCM/SourceContractionLocalized.lean",
+      "main_sha256": "3e553684187ae43404fdaaef526141d8b6d84d3859d1e01145e0414daf0416b0",
+      "audit_sha256": "3e553684187ae43404fdaaef526141d8b6d84d3859d1e01145e0414daf0416b0",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.SourceDerivativeTransport",
+      "path": "Zeta23/CCM/SourceDerivativeTransport.lean",
+      "main_sha256": "8e74db248d9576b75d221ae08321c2a17c0dbbb3b4d0664fce74c66dee79c23a",
+      "audit_sha256": "8e74db248d9576b75d221ae08321c2a17c0dbbb3b4d0664fce74c66dee79c23a",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.SourceExplicitCubicDefect",
+      "path": "Zeta23/CCM/SourceExplicitCubicDefect.lean",
+      "main_sha256": "d9425c91a38c0d1ad883003458b98c00dbad0c2ee8cda50a548f57462bebaff5",
+      "audit_sha256": "d9425c91a38c0d1ad883003458b98c00dbad0c2ee8cda50a548f57462bebaff5",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.SourceLatticeCoordinates",
+      "path": "Zeta23/CCM/SourceLatticeCoordinates.lean",
+      "main_sha256": "ce1dcb28cc9c46e7833a5cf327141d4e439d2e3b79500369444bf32f44930fef",
+      "audit_sha256": "ce1dcb28cc9c46e7833a5cf327141d4e439d2e3b79500369444bf32f44930fef",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.SourceMatrix",
+      "path": "Zeta23/CCM/SourceMatrix.lean",
+      "main_sha256": "c31e5ccecc40fab64f879fe04b11e9709292582623a9c438229d3c37176c3bfc",
+      "audit_sha256": "c31e5ccecc40fab64f879fe04b11e9709292582623a9c438229d3c37176c3bfc",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.SourceMomentDecomposition",
+      "path": "Zeta23/CCM/SourceMomentDecomposition.lean",
+      "main_sha256": "bd3a6d56c892dc1bc536ef7393069ec88c3451decbb7f3f7e265f2d6399ca92e",
+      "audit_sha256": "bd3a6d56c892dc1bc536ef7393069ec88c3451decbb7f3f7e265f2d6399ca92e",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.SourceMomentVandermondeFiltration",
+      "path": "Zeta23/CCM/SourceMomentVandermondeFiltration.lean",
+      "main_sha256": "d65e4256a3916913f56f9889df22011b74e4bcee62d0dcba94cdd4db0d1fb98e",
+      "audit_sha256": "d65e4256a3916913f56f9889df22011b74e4bcee62d0dcba94cdd4db0d1fb98e",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.SourceNormalizationRepair",
+      "path": "Zeta23/CCM/SourceNormalizationRepair.lean",
+      "main_sha256": "e92fb4a67284ba4b47c185056b9a3e6de6c675990d05078ffb4ace90243628d7",
+      "audit_sha256": "e92fb4a67284ba4b47c185056b9a3e6de6c675990d05078ffb4ace90243628d7",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.SourceSignCountermodels",
+      "path": "Zeta23/CCM/SourceSignCountermodels.lean",
+      "main_sha256": "628497f4f6e5911f12ab6486601acd2e1ee6bdce6700e21f19be92626fb771d5",
+      "audit_sha256": "628497f4f6e5911f12ab6486601acd2e1ee6bdce6700e21f19be92626fb771d5",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.SourceWeilMatrixReconciliation",
+      "path": "Zeta23/CCM/SourceWeilMatrixReconciliation.lean",
+      "main_sha256": "a16f2c72086017536ec645572360fe999c170ba16eb39a6c450144b42bc59c95",
+      "audit_sha256": "a16f2c72086017536ec645572360fe999c170ba16eb39a6c450144b42bc59c95",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.Step123NativeAmbientGalerkin",
+      "path": "Zeta23/CCM/Step123NativeAmbientGalerkin.lean",
+      "main_sha256": "96d554ea71f12099bee30abbbe66dd2b1760e986017df02675b98d1ec1d90747",
+      "audit_sha256": "96d554ea71f12099bee30abbbe66dd2b1760e986017df02675b98d1ec1d90747",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.Step123NativeArithmeticRangeEvidence",
+      "path": "Zeta23/CCM/Step123NativeArithmeticRangeEvidence.lean",
+      "main_sha256": "d294d41bdc7c0b80e656e2b67b77bd6213c4e3161e08493414ce404bc7c2189e",
+      "audit_sha256": "d294d41bdc7c0b80e656e2b67b77bd6213c4e3161e08493414ce404bc7c2189e",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.Step123NativeCorePacket",
+      "path": "Zeta23/CCM/Step123NativeCorePacket.lean",
+      "main_sha256": "9c4b8f0b72b929aca38f0e06a10087711d9c36dd54557e27dd6251c37aba755f",
+      "audit_sha256": "9c4b8f0b72b929aca38f0e06a10087711d9c36dd54557e27dd6251c37aba755f",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.Step123NativeFieldRecord",
+      "path": "Zeta23/CCM/Step123NativeFieldRecord.lean",
+      "main_sha256": "9f1e316b5d4e1067fa6c69a1332433bb0d5f668200c2f127cbf2132e47f63983",
+      "audit_sha256": "9f1e316b5d4e1067fa6c69a1332433bb0d5f668200c2f127cbf2132e47f63983",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.Step123NativeResidualOutput",
+      "path": "Zeta23/CCM/Step123NativeResidualOutput.lean",
+      "main_sha256": "3c965b4d8346f54fa7b095f04ff603dfc874d0af82929ba562ec0c66b0f230bd",
+      "audit_sha256": "3c965b4d8346f54fa7b095f04ff603dfc874d0af82929ba562ec0c66b0f230bd",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.Step123NativeSourceSpectralEvidence",
+      "path": "Zeta23/CCM/Step123NativeSourceSpectralEvidence.lean",
+      "main_sha256": "481b2b3ae719c83bdb3afff25b985b075c6a0d721794998f7d441bc0b7a521c8",
+      "audit_sha256": "481b2b3ae719c83bdb3afff25b985b075c6a0d721794998f7d441bc0b7a521c8",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.Step123OriginalBoundaryEvidence",
+      "path": "Zeta23/CCM/Step123OriginalBoundaryEvidence.lean",
+      "main_sha256": "28c015eb0cffa61afd1ad1057a0948f2545d7d3c307bed989c6b815f0acaed78",
+      "audit_sha256": "28c015eb0cffa61afd1ad1057a0948f2545d7d3c307bed989c6b815f0acaed78",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.Step123OutputData",
+      "path": "Zeta23/CCM/Step123OutputData.lean",
+      "main_sha256": "1f6b1c1568ba2df9b8b5c33e8f7b3f2d63e5042ce807ea82c5b7bafc95e2ee21",
+      "audit_sha256": "1f6b1c1568ba2df9b8b5c33e8f7b3f2d63e5042ce807ea82c5b7bafc95e2ee21",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.Step123OutputFieldEvidence",
+      "path": "Zeta23/CCM/Step123OutputFieldEvidence.lean",
+      "main_sha256": "bd77176dd87db62c5290f8653ac85b400270e2fa58eddc9d3442831015e3066b",
+      "audit_sha256": "bd77176dd87db62c5290f8653ac85b400270e2fa58eddc9d3442831015e3066b",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.Step123PhysicalImageIdentity",
+      "path": "Zeta23/CCM/Step123PhysicalImageIdentity.lean",
+      "main_sha256": "c18d3802221fb765be807772acfc519eed9c4dd858eb9589709a1d05993400da",
+      "audit_sha256": "c18d3802221fb765be807772acfc519eed9c4dd858eb9589709a1d05993400da",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.Step123SameStateN21",
+      "path": "Zeta23/CCM/Step123SameStateN21.lean",
+      "main_sha256": "8991078012730c63c5da747f6c089278e038ac16d5df6059c3857ca3446b8d77",
+      "audit_sha256": "8991078012730c63c5da747f6c089278e038ac16d5df6059c3857ca3446b8d77",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.Step123SameStateN23",
+      "path": "Zeta23/CCM/Step123SameStateN23.lean",
+      "main_sha256": "914e1615b7bb681933dcdda6083deaaa89c942f0b0a3d5c374709577d3a0af93",
+      "audit_sha256": "914e1615b7bb681933dcdda6083deaaa89c942f0b0a3d5c374709577d3a0af93",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.Step123SameStateN36",
+      "path": "Zeta23/CCM/Step123SameStateN36.lean",
+      "main_sha256": "1036db8418747ee0fb90e2717e520c0ffd9a5af100b0eba1edd7031a868773b5",
+      "audit_sha256": "1036db8418747ee0fb90e2717e520c0ffd9a5af100b0eba1edd7031a868773b5",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.Step123SameStateN38",
+      "path": "Zeta23/CCM/Step123SameStateN38.lean",
+      "main_sha256": "f4391ee848e41c67ff3133b088d2c8295115c685f6bdab5f109131eb66ddd475",
+      "audit_sha256": "f4391ee848e41c67ff3133b088d2c8295115c685f6bdab5f109131eb66ddd475",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.Step123SameStateN39",
+      "path": "Zeta23/CCM/Step123SameStateN39.lean",
+      "main_sha256": "90446cdc6dc3538cc1622a0d0b737fc32dfc04e0c19923aa6bcca2fa564d151c",
+      "audit_sha256": "90446cdc6dc3538cc1622a0d0b737fc32dfc04e0c19923aa6bcca2fa564d151c",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.UniversalSincBoxDensity",
+      "path": "Zeta23/CCM/UniversalSincBoxDensity.lean",
+      "main_sha256": "15873714c11d916cc1ead94ce1867e16851081aa5008e9b67ee067d77977c7fa",
+      "audit_sha256": "15873714c11d916cc1ead94ce1867e16851081aa5008e9b67ee067d77977c7fa",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.UniversalSincDetector",
+      "path": "Zeta23/CCM/UniversalSincDetector.lean",
+      "main_sha256": "a383785569a65c36424cd8d273c822792df1b8041dc859b91f51ed5827ddb552",
+      "audit_sha256": "a383785569a65c36424cd8d273c822792df1b8041dc859b91f51ed5827ddb552",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.UniversalSincDetectorBounds",
+      "path": "Zeta23/CCM/UniversalSincDetectorBounds.lean",
+      "main_sha256": "1d17ea7cfca55b16f767dd95ecf08406d0b411f0219075d6e344902050e7589e",
+      "audit_sha256": "1d17ea7cfca55b16f767dd95ecf08406d0b411f0219075d6e344902050e7589e",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.UniversalSincDetectorInverse",
+      "path": "Zeta23/CCM/UniversalSincDetectorInverse.lean",
+      "main_sha256": "2618ca928cf074a0bb9fe25198785498c93b34f7d3c0f2cc68d352175c5c30f6",
+      "audit_sha256": "2618ca928cf074a0bb9fe25198785498c93b34f7d3c0f2cc68d352175c5c30f6",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.UniversalSincInverseGevreyBounds",
+      "path": "Zeta23/CCM/UniversalSincInverseGevreyBounds.lean",
+      "main_sha256": "cf3edde9b5cbc5b22bb7b1972b5588da83c4edac0b9f09269015c472a4408353",
+      "audit_sha256": "cf3edde9b5cbc5b22bb7b1972b5588da83c4edac0b9f09269015c472a4408353",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.UniversalSincPhysicalBounds",
+      "path": "Zeta23/CCM/UniversalSincPhysicalBounds.lean",
+      "main_sha256": "a95a81960a2e6b50bd743bfcd262cfba72a88f5322061308f1983e0a442860d5",
+      "audit_sha256": "a95a81960a2e6b50bd743bfcd262cfba72a88f5322061308f1983e0a442860d5",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.UniversalSincProductMoments",
+      "path": "Zeta23/CCM/UniversalSincProductMoments.lean",
+      "main_sha256": "50de885dbb65101ca693d5b53dca7f68684938f0ac2ad8af950e8002bef50112",
+      "audit_sha256": "50de885dbb65101ca693d5b53dca7f68684938f0ac2ad8af950e8002bef50112",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.UniversalSincSourceCharacteristic",
+      "path": "Zeta23/CCM/UniversalSincSourceCharacteristic.lean",
+      "main_sha256": "a808f258bf178d0f24427239aef16ba1cc19270a0d80b76b666308c33ed3f5f2",
+      "audit_sha256": "a808f258bf178d0f24427239aef16ba1cc19270a0d80b76b666308c33ed3f5f2",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.UniversalSincSourceComplexTransform",
+      "path": "Zeta23/CCM/UniversalSincSourceComplexTransform.lean",
+      "main_sha256": "cbc280a8956c98e47ca4b26bb40a6a8e8922c9d217b8bd473331c5869a035138",
+      "audit_sha256": "cbc280a8956c98e47ca4b26bb40a6a8e8922c9d217b8bd473331c5869a035138",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.UniversalSincSourceDensity",
+      "path": "Zeta23/CCM/UniversalSincSourceDensity.lean",
+      "main_sha256": "81fd80185a7c128b43d6980764390e202eedb524cbc5e414fe6f67ffc566ea75",
+      "audit_sha256": "81fd80185a7c128b43d6980764390e202eedb524cbc5e414fe6f67ffc566ea75",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.UniversalSincSourceDensityIdentification",
+      "path": "Zeta23/CCM/UniversalSincSourceDensityIdentification.lean",
+      "main_sha256": "20447aaa7c158e923cbedaacfce6ceda3c318f745b7e36f98bab1dbefa541413",
+      "audit_sha256": "20447aaa7c158e923cbedaacfce6ceda3c318f745b7e36f98bab1dbefa541413",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.UniversalSincSourceDensityTransform",
+      "path": "Zeta23/CCM/UniversalSincSourceDensityTransform.lean",
+      "main_sha256": "5b78515458e0a9e3016f7edc143489fd64db03f97d51c60d77dea7e253ed6ad5",
+      "audit_sha256": "5b78515458e0a9e3016f7edc143489fd64db03f97d51c60d77dea7e253ed6ad5",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.UniversalSincSourceFacade",
+      "path": "Zeta23/CCM/UniversalSincSourceFacade.lean",
+      "main_sha256": "99602adbc72ba8097fc20167da33f489932616055180b2aec33c45857dbbbf7b",
+      "audit_sha256": "99602adbc72ba8097fc20167da33f489932616055180b2aec33c45857dbbbf7b",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.UniversalSincSourceLaw",
+      "path": "Zeta23/CCM/UniversalSincSourceLaw.lean",
+      "main_sha256": "215bc9901ebaeeec2c89e1299c56e98ca5691748b41a117ea0ccd181b629a78a",
+      "audit_sha256": "215bc9901ebaeeec2c89e1299c56e98ca5691748b41a117ea0ccd181b629a78a",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.UniversalSincSourceSymmetry",
+      "path": "Zeta23/CCM/UniversalSincSourceSymmetry.lean",
+      "main_sha256": "f81de1ff6a76765e840785b8f9bb4a446a36e1ce28a1145debd98447c29774af",
+      "audit_sha256": "f81de1ff6a76765e840785b8f9bb4a446a36e1ce28a1145debd98447c29774af",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.UniversalSincSourceTail",
+      "path": "Zeta23/CCM/UniversalSincSourceTail.lean",
+      "main_sha256": "c93f6a56ed21c2478c35398325427b3ee66f83e939784854205fc47641811c7d",
+      "audit_sha256": "c93f6a56ed21c2478c35398325427b3ee66f83e939784854205fc47641811c7d",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.ZeroResonanceCoupling",
+      "path": "Zeta23/CCM/ZeroResonanceCoupling.lean",
+      "main_sha256": "a8a795c37c141386bf0665b8dd4015b34b4ed118efc9f54fb98acbf4755353c0",
+      "audit_sha256": "a8a795c37c141386bf0665b8dd4015b34b4ed118efc9f54fb98acbf4755353c0",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.ZeroShiftSchurDichotomy",
+      "path": "Zeta23/CCM/ZeroShiftSchurDichotomy.lean",
+      "main_sha256": "e93ab2dbe58f49cc1f0d2c9fd8a8acdfc3148f1d9046fcb9c80cbdd2b64b1738",
+      "audit_sha256": "e93ab2dbe58f49cc1f0d2c9fd8a8acdfc3148f1d9046fcb9c80cbdd2b64b1738",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.ZeroShiftSchurEndpoint",
+      "path": "Zeta23/CCM/ZeroShiftSchurEndpoint.lean",
+      "main_sha256": "29c251071244c8c967b6900b09bc3952ca712efb2bcfcf32dabb2b14cb691b96",
+      "audit_sha256": "29c251071244c8c967b6900b09bc3952ca712efb2bcfcf32dabb2b14cb691b96",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.CCM.ZeroShiftShellResponse",
+      "path": "Zeta23/CCM/ZeroShiftShellResponse.lean",
+      "main_sha256": "627bf2e2ff748918d1b1eadfa2123d3dc9a26996187453d1094a6d5fbb80199c",
+      "audit_sha256": "627bf2e2ff748918d1b1eadfa2123d3dc9a26996187453d1094a6d5fbb80199c",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.Defs",
+      "path": "Zeta23/Defs.lean",
+      "main_sha256": "216b34de76394522aea610c57d342f3dfe8aa1c3d9d6b2ec11509de92f1c6bb0",
+      "audit_sha256": "216b34de76394522aea610c57d342f3dfe8aa1c3d9d6b2ec11509de92f1c6bb0",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.Defs.Counting",
+      "path": "Zeta23/Defs/Counting.lean",
+      "main_sha256": "0d403d6d4d3f4cdfa370b374376dede2d56fa79e1b0146d48ce8c4321496ee0d",
+      "audit_sha256": "0d403d6d4d3f4cdfa370b374376dede2d56fa79e1b0146d48ce8c4321496ee0d",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.ExceptionalZero.BoundaryFlatFiniteWeil",
+      "path": "Zeta23/ExceptionalZero/BoundaryFlatFiniteWeil.lean",
+      "main_sha256": "b3283d2af2827a37010094dc86e7f7df5c805805d450637f19acc1987be92c81",
+      "audit_sha256": "b3283d2af2827a37010094dc86e7f7df5c805805d450637f19acc1987be92c81",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.ExceptionalZero.Cancellation",
+      "path": "Zeta23/ExceptionalZero/Cancellation.lean",
+      "main_sha256": "d0d3f39bc57fb8a45213c69396d1b0336371fefae2c75b83812b28d9965710ae",
+      "audit_sha256": "d0d3f39bc57fb8a45213c69396d1b0336371fefae2c75b83812b28d9965710ae",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.ExceptionalZero.Defs",
+      "path": "Zeta23/ExceptionalZero/Defs.lean",
+      "main_sha256": "54e0c7b8bbff85d4a108dd41dad987e1d51189f173888ec6628b4c387c384396",
+      "audit_sha256": "54e0c7b8bbff85d4a108dd41dad987e1d51189f173888ec6628b4c387c384396",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.ExceptionalZero.DisplacementTransfer",
+      "path": "Zeta23/ExceptionalZero/DisplacementTransfer.lean",
+      "main_sha256": "3839c3d60d82c67e352a6fa0c4d29e627c32b6b4abeebd70eabd877df46f5343",
+      "audit_sha256": "3839c3d60d82c67e352a6fa0c4d29e627c32b6b4abeebd70eabd877df46f5343",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.ExceptionalZero.ExposedPole",
+      "path": "Zeta23/ExceptionalZero/ExposedPole.lean",
+      "main_sha256": "2e5dd019210806dd1d8d9e7aff49b4d3711b5c725bc49632d4f9be74c3268b5e",
+      "audit_sha256": "2e5dd019210806dd1d8d9e7aff49b4d3711b5c725bc49632d4f9be74c3268b5e",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.ExceptionalZero.FilteredGrowthEnvelope",
+      "path": "Zeta23/ExceptionalZero/FilteredGrowthEnvelope.lean",
+      "main_sha256": "447a32356c25f5c3a25aa89fb29d2b621ae84000e38ab6e60c15de6b1fa5a848",
+      "audit_sha256": "447a32356c25f5c3a25aa89fb29d2b621ae84000e38ab6e60c15de6b1fa5a848",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.ExceptionalZero.FilteredLaplace",
+      "path": "Zeta23/ExceptionalZero/FilteredLaplace.lean",
+      "main_sha256": "5b39dbf0603dab822a86ad0650482d59c65383ea33586a0cff13d040c1149626",
+      "audit_sha256": "5b39dbf0603dab822a86ad0650482d59c65383ea33586a0cff13d040c1149626",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.ExceptionalZero.FilteredLaplaceSubexp",
+      "path": "Zeta23/ExceptionalZero/FilteredLaplaceSubexp.lean",
+      "main_sha256": "9ad900941efa6de7abbf26b4ae2089feec46e9ca5cbe63d161c940e0ef9d0209",
+      "audit_sha256": "9ad900941efa6de7abbf26b4ae2089feec46e9ca5cbe63d161c940e0ef9d0209",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.ExceptionalZero.FilteredPolePersistence",
+      "path": "Zeta23/ExceptionalZero/FilteredPolePersistence.lean",
+      "main_sha256": "1e1284f9cabc44716ed44266e04a4503c0642732ba346c28d0ed07d77824157c",
+      "audit_sha256": "1e1284f9cabc44716ed44266e04a4503c0642732ba346c28d0ed07d77824157c",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.ExceptionalZero.FilteredResolvent",
+      "path": "Zeta23/ExceptionalZero/FilteredResolvent.lean",
+      "main_sha256": "5d5702dfd43a0685034c4d1fc8e818eb1e5ee51b2aef6e51343d93b5be9217ac",
+      "audit_sha256": "5d5702dfd43a0685034c4d1fc8e818eb1e5ee51b2aef6e51343d93b5be9217ac",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.ExceptionalZero.FilteredResolventMeromorphic",
+      "path": "Zeta23/ExceptionalZero/FilteredResolventMeromorphic.lean",
+      "main_sha256": "9558a404b5c07d233d289acb0347e49838b8ac74be07be824b5db77a62c8f9aa",
+      "audit_sha256": "9558a404b5c07d233d289acb0347e49838b8ac74be07be824b5db77a62c8f9aa",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.ExceptionalZero.FilteredZeroFamily",
+      "path": "Zeta23/ExceptionalZero/FilteredZeroFamily.lean",
+      "main_sha256": "ac5f88139e27f8d8c5ba85d6bf36623a52c555cda6ff3adb85a2497a860ad766",
+      "audit_sha256": "ac5f88139e27f8d8c5ba85d6bf36623a52c555cda6ff3adb85a2497a860ad766",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.ExceptionalZero.FilteredZeroRegularity",
+      "path": "Zeta23/ExceptionalZero/FilteredZeroRegularity.lean",
+      "main_sha256": "83be6b685989ee54986496229151776d0f5c6805ea23fd0d2680441dfaf9b89c",
+      "audit_sha256": "83be6b685989ee54986496229151776d0f5c6805ea23fd0d2680441dfaf9b89c",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.ExceptionalZero.GeneratedStep123BoundaryPacket",
+      "path": "Zeta23/ExceptionalZero/GeneratedStep123BoundaryPacket.lean",
+      "main_sha256": "179341e6e3486cd9332ab44817bb69bc11d320f347d0a9a9ccf57770d3386940",
+      "audit_sha256": "179341e6e3486cd9332ab44817bb69bc11d320f347d0a9a9ccf57770d3386940",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.ExceptionalZero.MeromorphicIdentity",
+      "path": "Zeta23/ExceptionalZero/MeromorphicIdentity.lean",
+      "main_sha256": "607923ed6eef85289d5522ffc158047afa36baa1f6d29bb8f77d97679c1a90a1",
+      "audit_sha256": "607923ed6eef85289d5522ffc158047afa36baa1f6d29bb8f77d97679c1a90a1",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.ExceptionalZero.NativeActualInputZeroJets",
+      "path": "Zeta23/ExceptionalZero/NativeActualInputZeroJets.lean",
+      "main_sha256": "04a808f91da07d2c5cb9109bb899f50996f8e21aa9bbb3b14289edd7252f9d7d",
+      "audit_sha256": "04a808f91da07d2c5cb9109bb899f50996f8e21aa9bbb3b14289edd7252f9d7d",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.ExceptionalZero.NativeActualKernelZeroJets",
+      "path": "Zeta23/ExceptionalZero/NativeActualKernelZeroJets.lean",
+      "main_sha256": "eccb11f016b6152a9c0f523bcf141a6e08b13e3ea0ce033f786dac5b097532cf",
+      "audit_sha256": "eccb11f016b6152a9c0f523bcf141a6e08b13e3ea0ce033f786dac5b097532cf",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.ExceptionalZero.NativeOriginalSourceLaplaceVisibility",
+      "path": "Zeta23/ExceptionalZero/NativeOriginalSourceLaplaceVisibility.lean",
+      "main_sha256": "4099933bd79abc49e7fcd10ac41aeecec196b6c7681176fadee7a1e9d0792355",
+      "audit_sha256": "4099933bd79abc49e7fcd10ac41aeecec196b6c7681176fadee7a1e9d0792355",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.ExceptionalZero.NativeRangeZeroJetObstruction",
+      "path": "Zeta23/ExceptionalZero/NativeRangeZeroJetObstruction.lean",
+      "main_sha256": "efbe49dde8eb871d29e67d167a24a82ccb05b405e56178d6a5e51f96e2149825",
+      "audit_sha256": "efbe49dde8eb871d29e67d167a24a82ccb05b405e56178d6a5e51f96e2149825",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.ExceptionalZero.NativeZeroJetAnalyticFactors",
+      "path": "Zeta23/ExceptionalZero/NativeZeroJetAnalyticFactors.lean",
+      "main_sha256": "d65d5e5aa7ffe220abd1ac619e07f75215a09cdbc668f7a464743f5dd6946c4b",
+      "audit_sha256": "d65d5e5aa7ffe220abd1ac619e07f75215a09cdbc668f7a464743f5dd6946c4b",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.ExceptionalZero.NegativeWeilTestSupport",
+      "path": "Zeta23/ExceptionalZero/NegativeWeilTestSupport.lean",
+      "main_sha256": "8ae77fd091d9be13a03e34c4b592ab778c0f454850d37d8fe9f14ae0b49f1423",
+      "audit_sha256": "8ae77fd091d9be13a03e34c4b592ab778c0f454850d37d8fe9f14ae0b49f1423",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.ExceptionalZero.PoleKiller",
+      "path": "Zeta23/ExceptionalZero/PoleKiller.lean",
+      "main_sha256": "34bb57e09607596ee338528e738f258791ec439d58850ea81ba5eca4fc5e25c3",
+      "audit_sha256": "34bb57e09607596ee338528e738f258791ec439d58850ea81ba5eca4fc5e25c3",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.ExceptionalZero.PositiveLaplaceAnalytic",
+      "path": "Zeta23/ExceptionalZero/PositiveLaplaceAnalytic.lean",
+      "main_sha256": "cabb020c72ed9ebaa11be24cba910d6601966b319c80d2da3ffb19a5c9adcef1",
+      "audit_sha256": "cabb020c72ed9ebaa11be24cba910d6601966b319c80d2da3ffb19a5c9adcef1",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.ExceptionalZero.PositiveLaplaceBoundary",
+      "path": "Zeta23/ExceptionalZero/PositiveLaplaceBoundary.lean",
+      "main_sha256": "00c16b2b069c6cc8585979e43851e225df0cd15aa4de1917d56f853de4559b53",
+      "audit_sha256": "00c16b2b069c6cc8585979e43851e225df0cd15aa4de1917d56f853de4559b53",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.ExceptionalZero.PositiveLaplaceTilt",
+      "path": "Zeta23/ExceptionalZero/PositiveLaplaceTilt.lean",
+      "main_sha256": "c36c6013995e0f1ad71cb94996db033f3424d2878becf2febdd8943d87e67eb8",
+      "audit_sha256": "c36c6013995e0f1ad71cb94996db033f3424d2878becf2febdd8943d87e67eb8",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.ExceptionalZero.PositiveMGFContinuation",
+      "path": "Zeta23/ExceptionalZero/PositiveMGFContinuation.lean",
+      "main_sha256": "f189dad7fbb95f1133a05d7f6860c319529070ebb4d45f7f939811600e163e3c",
+      "audit_sha256": "f189dad7fbb95f1133a05d7f6860c319529070ebb4d45f7f939811600e163e3c",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.ExceptionalZero.PositiveMomentSeries",
+      "path": "Zeta23/ExceptionalZero/PositiveMomentSeries.lean",
+      "main_sha256": "8c7d90c960d6e81f7323e05505dd56df13214ccee13fe73ec8a6ed993c663921",
+      "audit_sha256": "8c7d90c960d6e81f7323e05505dd56df13214ccee13fe73ec8a6ed993c663921",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.ExceptionalZero.ProbeFamily",
+      "path": "Zeta23/ExceptionalZero/ProbeFamily.lean",
+      "main_sha256": "c83660922113f3968c5e4564b2b8818653e97506f066e73b653fcaf7c5b98649",
+      "audit_sha256": "c83660922113f3968c5e4564b2b8818653e97506f066e73b653fcaf7c5b98649",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.ExceptionalZero.RMSGrowth",
+      "path": "Zeta23/ExceptionalZero/RMSGrowth.lean",
+      "main_sha256": "103860a4690fb3ec62d9e09120fbc4b555f283455f822346f197f904fec21a34",
+      "audit_sha256": "103860a4690fb3ec62d9e09120fbc4b555f283455f822346f197f904fec21a34",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.ExceptionalZero.Step123CompleteOutput",
+      "path": "Zeta23/ExceptionalZero/Step123CompleteOutput.lean",
+      "main_sha256": "56a55c6810bd93e4692510da18f31e43c11864bd7bee97a1999f807b800d8166",
+      "audit_sha256": "56a55c6810bd93e4692510da18f31e43c11864bd7bee97a1999f807b800d8166",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.ExceptionalZero.Step123OutputProducer",
+      "path": "Zeta23/ExceptionalZero/Step123OutputProducer.lean",
+      "main_sha256": "a6d1c9a0eca5a318d52d48dec887c2cd43f53c006c5b39677a4cb74544536372",
+      "audit_sha256": "a6d1c9a0eca5a318d52d48dec887c2cd43f53c006c5b39677a4cb74544536372",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.ExceptionalZero.Step123SameStateN14",
+      "path": "Zeta23/ExceptionalZero/Step123SameStateN14.lean",
+      "main_sha256": "e9ed06f01b138401aa72188de43c3feefcff03881c743e7cd84cce2f2a0b117b",
+      "audit_sha256": "e9ed06f01b138401aa72188de43c3feefcff03881c743e7cd84cce2f2a0b117b",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.ExceptionalZero.Step123SameStateN37",
+      "path": "Zeta23/ExceptionalZero/Step123SameStateN37.lean",
+      "main_sha256": "8f7e43ac46b70d36a0231b08ed99adc02eaf249d0676cc22334b67cc2931cfd5",
+      "audit_sha256": "8f7e43ac46b70d36a0231b08ed99adc02eaf249d0676cc22334b67cc2931cfd5",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.ExceptionalZero.TwoTranslateContraction",
+      "path": "Zeta23/ExceptionalZero/TwoTranslateContraction.lean",
+      "main_sha256": "f45ded2aa74fa2e67ba2ba9e15913aafb2b3ae99476d7f02b17c7d2b1ccc510c",
+      "audit_sha256": "f45ded2aa74fa2e67ba2ba9e15913aafb2b3ae99476d7f02b17c7d2b1ccc510c",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.ExceptionalZero.TwoTranslateCorrelation",
+      "path": "Zeta23/ExceptionalZero/TwoTranslateCorrelation.lean",
+      "main_sha256": "faa6e0c5b206d8dd7bbb75e51399b4325f9980c8af95afb1e7d97fb36688d624",
+      "audit_sha256": "faa6e0c5b206d8dd7bbb75e51399b4325f9980c8af95afb1e7d97fb36688d624",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.ExceptionalZero.TwoTranslateNegativity",
+      "path": "Zeta23/ExceptionalZero/TwoTranslateNegativity.lean",
+      "main_sha256": "4a253e63123ae27d7aa73c0dc050b68ece8bd6e4a711111c3d98af1903813166",
+      "audit_sha256": "4a253e63123ae27d7aa73c0dc050b68ece8bd6e4a711111c3d98af1903813166",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.ExceptionalZero.TwoTranslateSpectrum",
+      "path": "Zeta23/ExceptionalZero/TwoTranslateSpectrum.lean",
+      "main_sha256": "3797bcefa81ab64f2196326365f1057ef5d5b32def5c25b31a4decadf322d755",
+      "audit_sha256": "3797bcefa81ab64f2196326365f1057ef5d5b32def5c25b31a4decadf322d755",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.ExceptionalZero.TwoTranslateVisibility",
+      "path": "Zeta23/ExceptionalZero/TwoTranslateVisibility.lean",
+      "main_sha256": "57a18b80bc9861db3c6bb0afdcc433283b6ba4e33fe7eb2815e7bd4370abf801",
+      "audit_sha256": "57a18b80bc9861db3c6bb0afdcc433283b6ba4e33fe7eb2815e7bd4370abf801",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.ExceptionalZero.TwoTranslateWeil",
+      "path": "Zeta23/ExceptionalZero/TwoTranslateWeil.lean",
+      "main_sha256": "38eb0ff7df6564731378ef7be7eb65cc1214cd689786e3085cf782c810f1f931",
+      "audit_sha256": "38eb0ff7df6564731378ef7be7eb65cc1214cd689786e3085cf782c810f1f931",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.ExceptionalZero.UniversalSincCorrelationReal",
+      "path": "Zeta23/ExceptionalZero/UniversalSincCorrelationReal.lean",
+      "main_sha256": "22287a2fe0d63647579448a490f49f6ef77c9925f1202114d876325f75d2d702",
+      "audit_sha256": "22287a2fe0d63647579448a490f49f6ef77c9925f1202114d876325f75d2d702",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.ExceptionalZero.UniversalSincDetectorVisibility",
+      "path": "Zeta23/ExceptionalZero/UniversalSincDetectorVisibility.lean",
+      "main_sha256": "d642f61a22a64f5209846025ceb921d0a2419f408b084088cd1e40167970e599",
+      "audit_sha256": "d642f61a22a64f5209846025ceb921d0a2419f408b084088cd1e40167970e599",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.ExceptionalZero.UniversalSincInitialLaplace",
+      "path": "Zeta23/ExceptionalZero/UniversalSincInitialLaplace.lean",
+      "main_sha256": "3d6ea8a0e0401579a759b0b89a0daedbcf2111af3c45ae70e4e598017da4eee7",
+      "audit_sha256": "3d6ea8a0e0401579a759b0b89a0daedbcf2111af3c45ae70e4e598017da4eee7",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.ExceptionalZero.UniversalSincNativeSourceIdentification",
+      "path": "Zeta23/ExceptionalZero/UniversalSincNativeSourceIdentification.lean",
+      "main_sha256": "3f6f8c18413b9c382869f67b4cb4862cd4da5b57427b3d93a0a9eceba0ef5f0e",
+      "audit_sha256": "3f6f8c18413b9c382869f67b4cb4862cd4da5b57427b3d93a0a9eceba0ef5f0e",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.ExceptionalZero.UniversalSincOriginalPhaseDepth",
+      "path": "Zeta23/ExceptionalZero/UniversalSincOriginalPhaseDepth.lean",
+      "main_sha256": "5f78810dc8e78b93b4609ab526c1441c4914ed7b6ae4ef863b2c778c21ea6726",
+      "audit_sha256": "5f78810dc8e78b93b4609ab526c1441c4914ed7b6ae4ef863b2c778c21ea6726",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.ExceptionalZero.UniversalSincPhysicalDetector",
+      "path": "Zeta23/ExceptionalZero/UniversalSincPhysicalDetector.lean",
+      "main_sha256": "ddbcc8592a572e1f137f9c324b0dd89dd654664ea079abdd38779f01e20869f2",
+      "audit_sha256": "ddbcc8592a572e1f137f9c324b0dd89dd654664ea079abdd38779f01e20869f2",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.ExceptionalZero.UniversalSincSignedExcursions",
+      "path": "Zeta23/ExceptionalZero/UniversalSincSignedExcursions.lean",
+      "main_sha256": "1f5e424e248cf555cd982c208bacbf237a7002617b1b0cc2a02c24fdbfb55655",
+      "audit_sha256": "1f5e424e248cf555cd982c208bacbf237a7002617b1b0cc2a02c24fdbfb55655",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.ExceptionalZero.UniversalSincSignedLaplace",
+      "path": "Zeta23/ExceptionalZero/UniversalSincSignedLaplace.lean",
+      "main_sha256": "870226d2e324f8251c8a2552922f620e9f91799eff19d6293f9b30fd24fdd3f0",
+      "audit_sha256": "870226d2e324f8251c8a2552922f620e9f91799eff19d6293f9b30fd24fdd3f0",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.ExceptionalZero.UniversalSincSignedPoleBound",
+      "path": "Zeta23/ExceptionalZero/UniversalSincSignedPoleBound.lean",
+      "main_sha256": "ab3cf4312bcece8b72ce029d8dfcb69ae1e3028040b8b7c70aa8a91bae81f8ef",
+      "audit_sha256": "ab3cf4312bcece8b72ce029d8dfcb69ae1e3028040b8b7c70aa8a91bae81f8ef",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.ExceptionalZero.UniversalSincSignedTailTransform",
+      "path": "Zeta23/ExceptionalZero/UniversalSincSignedTailTransform.lean",
+      "main_sha256": "15ee48b13bbf8298d342ecd63fd2b2ad5e07376274b839b6ffcc498e94313012",
+      "audit_sha256": "15ee48b13bbf8298d342ecd63fd2b2ad5e07376274b839b6ffcc498e94313012",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.ExceptionalZero.WeilBridge",
+      "path": "Zeta23/ExceptionalZero/WeilBridge.lean",
+      "main_sha256": "d5b629d763afcf5a08b33058582261658a7d9dbe6feee9c59a7b8e4a5b64da49",
+      "audit_sha256": "d5b629d763afcf5a08b33058582261658a7d9dbe6feee9c59a7b8e4a5b64da49",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.ExceptionalZero.WeilContinuity",
+      "path": "Zeta23/ExceptionalZero/WeilContinuity.lean",
+      "main_sha256": "e41ff5a56fbaeb90caaf779486272129661e25795dc8cc8e2260b13756eddeb4",
+      "audit_sha256": "e41ff5a56fbaeb90caaf779486272129661e25795dc8cc8e2260b13756eddeb4",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.ExceptionalZero.WeilFilter",
+      "path": "Zeta23/ExceptionalZero/WeilFilter.lean",
+      "main_sha256": "80504bcc54e7ae8afc2ac9d241dd32bca3c3657d16e4588661ad5eac2e3a8fa1",
+      "audit_sha256": "80504bcc54e7ae8afc2ac9d241dd32bca3c3657d16e4588661ad5eac2e3a8fa1",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.ExceptionalZero.WeilLiteratureBridge",
+      "path": "Zeta23/ExceptionalZero/WeilLiteratureBridge.lean",
+      "main_sha256": "e6f021acad2d13e7328abdea1e02bfdae7e8278ae27fab9741f9a185389734e4",
+      "audit_sha256": "e6f021acad2d13e7328abdea1e02bfdae7e8278ae27fab9741f9a185389734e4",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.ExceptionalZero.WeilZeroSideEvenization",
+      "path": "Zeta23/ExceptionalZero/WeilZeroSideEvenization.lean",
+      "main_sha256": "d4e03a226ee0b6e47e01724d3e4a0f5f6cf1e5c73551d48b91c5683a804c7237",
+      "audit_sha256": "d4e03a226ee0b6e47e01724d3e4a0f5f6cf1e5c73551d48b91c5683a804c7237",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.ExceptionalZero.ZeroIsolation",
+      "path": "Zeta23/ExceptionalZero/ZeroIsolation.lean",
+      "main_sha256": "8445d336a72bc7b0c5a81d5023aa2360884d016e090b3d6c6e46c309de3b9b1b",
+      "audit_sha256": "8445d336a72bc7b0c5a81d5023aa2360884d016e090b3d6c6e46c309de3b9b1b",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.ExceptionalZero.ZetaRealStripNonvanishing",
+      "path": "Zeta23/ExceptionalZero/ZetaRealStripNonvanishing.lean",
+      "main_sha256": "e621c5f5378796060ba85ba8db59998a40a6a3e35a11a37e9df53f10cdc8f43f",
+      "audit_sha256": "e621c5f5378796060ba85ba8db59998a40a6a3e35a11a37e9df53f10cdc8f43f",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.ExplicitFormula",
+      "path": "Zeta23/ExplicitFormula.lean",
+      "main_sha256": "f602f5ffe70f42eb5397b5128fc681f89cce7094a19b66e4de69ad4ed0cb8ae4",
+      "audit_sha256": "f602f5ffe70f42eb5397b5128fc681f89cce7094a19b66e4de69ad4ed0cb8ae4",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.ExplicitFormula.Bridge",
+      "path": "Zeta23/ExplicitFormula/Bridge.lean",
+      "main_sha256": "0d25f1f01122a9997546afd4e4188d04631e1148e87adc79b8f9352c381b3fba",
+      "audit_sha256": "0d25f1f01122a9997546afd4e4188d04631e1148e87adc79b8f9352c381b3fba",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.FromPNTPlus.Auxiliary",
+      "path": "Zeta23/FromPNTPlus/Auxiliary.lean",
+      "main_sha256": "8852b7ebc572ae4eda1f3c3e94f4cc072b1c744c2b71ae297bec3ebb74b00069",
+      "audit_sha256": "8852b7ebc572ae4eda1f3c3e94f4cc072b1c744c2b71ae297bec3ebb74b00069",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.FromPNTPlus.EulerMaclaurin",
+      "path": "Zeta23/FromPNTPlus/EulerMaclaurin.lean",
+      "main_sha256": "0e2b201e2a99db8650c565f14c2d4c65ff54a59a29f81137a63a00f2d1776ab6",
+      "audit_sha256": "0e2b201e2a99db8650c565f14c2d4c65ff54a59a29f81137a63a00f2d1776ab6",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.FromPNTPlus.Fourier",
+      "path": "Zeta23/FromPNTPlus/Fourier.lean",
+      "main_sha256": "8d53e47135861fd5afaa2ff273737e09353dc9ae0ba8b6875baa16f3a167b1bc",
+      "audit_sha256": "8d53e47135861fd5afaa2ff273737e09353dc9ae0ba8b6875baa16f3a167b1bc",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.FromPNTPlus.Mathlib.Analysis.SpecialFunctions.Log.Basic",
+      "path": "Zeta23/FromPNTPlus/Mathlib/Analysis/SpecialFunctions/Log/Basic.lean",
+      "main_sha256": "b345f59bff825700221040fb575823d6902383ff1ab340b2ff849d8382460954",
+      "audit_sha256": "b345f59bff825700221040fb575823d6902383ff1ab340b2ff849d8382460954",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.FromPNTPlus.Rectangle",
+      "path": "Zeta23/FromPNTPlus/Rectangle.lean",
+      "main_sha256": "6cf1dfca9dd3bbe3db9c58acf135a5ea20669808418ad994ed27f67931ea53d9",
+      "audit_sha256": "6cf1dfca9dd3bbe3db9c58acf135a5ea20669808418ad994ed27f67931ea53d9",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.FromPNTPlus.ResidueCalcOnRectangles",
+      "path": "Zeta23/FromPNTPlus/ResidueCalcOnRectangles.lean",
+      "main_sha256": "081d38aa0c5eec725a1582eea3bdf4e51d604f6c2ebb3c9729d91df3aa092956",
+      "audit_sha256": "081d38aa0c5eec725a1582eea3bdf4e51d604f6c2ebb3c9729d91df3aa092956",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.FromPNTPlus.Sobolev",
+      "path": "Zeta23/FromPNTPlus/Sobolev.lean",
+      "main_sha256": "e3f254f6e772ebf941f67b4ad978858b6355b00433a943a4e318c22425959062",
+      "audit_sha256": "e3f254f6e772ebf941f67b4ad978858b6355b00433a943a4e318c22425959062",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.FromPNTPlus.StrongPNTPrefix",
+      "path": "Zeta23/FromPNTPlus/StrongPNTPrefix.lean",
+      "main_sha256": "ce842f7e65f1764273f3ff331f4218a0ed94688f36e28c7e4b5bf1f05c5af180",
+      "audit_sha256": "ce842f7e65f1764273f3ff331f4218a0ed94688f36e28c7e4b5bf1f05c5af180",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.FromPNTPlus.Tactic.AdditiveCombination",
+      "path": "Zeta23/FromPNTPlus/Tactic/AdditiveCombination.lean",
+      "main_sha256": "0c59de0160092cc7eb521c09de7b9a35719d5a33b4fee0795bd312a5c9c3d200",
+      "audit_sha256": "0c59de0160092cc7eb521c09de7b9a35719d5a33b4fee0795bd312a5c9c3d200",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.FromPNTPlus.ZetaBounds",
+      "path": "Zeta23/FromPNTPlus/ZetaBounds.lean",
+      "main_sha256": "62ab370e278be47e7fbd03ab74b1442010da1fc17b9dec96ea952e9259bfcd06",
+      "audit_sha256": "62ab370e278be47e7fbd03ab74b1442010da1fc17b9dec96ea952e9259bfcd06",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.FromPNTPlus.ZetaConj",
+      "path": "Zeta23/FromPNTPlus/ZetaConj.lean",
+      "main_sha256": "6160b5a4e5cbcc346a67f973a4ed7d68f535eb79d803c10882eef74a6c2b8fb5",
+      "audit_sha256": "6160b5a4e5cbcc346a67f973a4ed7d68f535eb79d803c10882eef74a6c2b8fb5",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.GammaFacts",
+      "path": "Zeta23/GammaFacts.lean",
+      "main_sha256": "a93c29cf24e253f6f3b7af0fadf18cbc5fe9fe1a67c6e060322f425d2d677674",
+      "audit_sha256": "a93c29cf24e253f6f3b7af0fadf18cbc5fe9fe1a67c6e060322f425d2d677674",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.GammaFacts.Complete",
+      "path": "Zeta23/GammaFacts/Complete.lean",
+      "main_sha256": "d43b2d4f3fa0c1d22210e1f671b875a88b09747247e67becbbc38f85f34f2fb0",
+      "audit_sha256": "d43b2d4f3fa0c1d22210e1f671b875a88b09747247e67becbbc38f85f34f2fb0",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.GammaFacts.IntMu",
+      "path": "Zeta23/GammaFacts/IntMu.lean",
+      "main_sha256": "1a5e17a5e2482f5119a8e0b0f00b738fe4eece35edba818094c4f92c35d0c5a7",
+      "audit_sha256": "1a5e17a5e2482f5119a8e0b0f00b738fe4eece35edba818094c4f92c35d0c5a7",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.GammaFacts.Mu",
+      "path": "Zeta23/GammaFacts/Mu.lean",
+      "main_sha256": "71e4d99a73604b9e09009d897a0bbbaf5d3a950a470758f07738ccc67a171c97",
+      "audit_sha256": "71e4d99a73604b9e09009d897a0bbbaf5d3a950a470758f07738ccc67a171c97",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.GammaFacts.Series",
+      "path": "Zeta23/GammaFacts/Series.lean",
+      "main_sha256": "15a7ed9d63288e9630300898f9a1ed78fee3bf32c889f81cb5081d17d76a4f59",
+      "audit_sha256": "15a7ed9d63288e9630300898f9a1ed78fee3bf32c889f81cb5081d17d76a4f59",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.GammaFacts.StirlingVert",
+      "path": "Zeta23/GammaFacts/StirlingVert.lean",
+      "main_sha256": "c982dc94e4193d2b3c69fd1f939b9055b6368332fd24d38bdf5bad37c487b661",
+      "audit_sha256": "c982dc94e4193d2b3c69fd1f939b9055b6368332fd24d38bdf5bad37c487b661",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.Hypotheses",
+      "path": "Zeta23/Hypotheses.lean",
+      "main_sha256": "b64911caaf69328e0ca4fced1fd1f80fdca02d57bce390db34843b9849ccb4e2",
+      "audit_sha256": "b64911caaf69328e0ca4fced1fd1f80fdca02d57bce390db34843b9849ccb4e2",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.Hypotheses.GzGp",
+      "path": "Zeta23/Hypotheses/GzGp.lean",
+      "main_sha256": "b9c32b106e93af85179e3973db2c22e76918cca167959be9e2757fc0e07e7c2a",
+      "audit_sha256": "b9c32b106e93af85179e3973db2c22e76918cca167959be9e2757fc0e07e7c2a",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.LinAlg",
+      "path": "Zeta23/LinAlg.lean",
+      "main_sha256": "a08efc558bdaae67271c6ca0ef87847284237b1bf0c4409595ba72abec96805f",
+      "audit_sha256": "a08efc558bdaae67271c6ca0ef87847284237b1bf0c4409595ba72abec96805f",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.LinAlg.HermitianPosPart",
+      "path": "Zeta23/LinAlg/HermitianPosPart.lean",
+      "main_sha256": "a488f6a6132be89eab1b6d50ae6bcd61a4cde02e119891b18ce05d9cb9b70dba",
+      "audit_sha256": "a488f6a6132be89eab1b6d50ae6bcd61a4cde02e119891b18ce05d9cb9b70dba",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.LinAlg.Inertia",
+      "path": "Zeta23/LinAlg/Inertia.lean",
+      "main_sha256": "bf8814f8e47994afef14757f2b26a7e702cc8c02c335b61667dd404b820e25be",
+      "audit_sha256": "bf8814f8e47994afef14757f2b26a7e702cc8c02c335b61667dd404b820e25be",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.LinAlg.PosIndex",
+      "path": "Zeta23/LinAlg/PosIndex.lean",
+      "main_sha256": "0e9147cbd62fe6b56991759d7cf30f27d5888d0fc3ceff874306edb455d5d2bf",
+      "audit_sha256": "0e9147cbd62fe6b56991759d7cf30f27d5888d0fc3ceff874306edb455d5d2bf",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.LinAlg.RankTrace",
+      "path": "Zeta23/LinAlg/RankTrace.lean",
+      "main_sha256": "07cac47a6ade4f27d2990669570ebebafcd055b714ab721de58b5d0fcec60560",
+      "audit_sha256": "07cac47a6ade4f27d2990669570ebebafcd055b714ab721de58b5d0fcec60560",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.LinAlg.Sylvester",
+      "path": "Zeta23/LinAlg/Sylvester.lean",
+      "main_sha256": "771c4cf2318ea8b10fca7f8e49ad1c44245823a0d3378987501f6d185f07bc69",
+      "audit_sha256": "771c4cf2318ea8b10fca7f8e49ad1c44245823a0d3378987501f6d185f07bc69",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.LinAlg.VonNeumann",
+      "path": "Zeta23/LinAlg/VonNeumann.lean",
+      "main_sha256": "92c98919fef5f4dee319d466c1c95e45bb60d56b4808cbc5c5b33e98bb23fd1b",
+      "audit_sha256": "92c98919fef5f4dee319d466c1c95e45bb60d56b4808cbc5c5b33e98bb23fd1b",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.LinAlg.Weyl",
+      "path": "Zeta23/LinAlg/Weyl.lean",
+      "main_sha256": "5f126ae63912edab0e037d171e2efc5c96f43e5a2b31406539debcb07cd341f2",
+      "audit_sha256": "5f126ae63912edab0e037d171e2efc5c96f43e5a2b31406539debcb07cd341f2",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.OPICA.LocalData",
+      "path": "Zeta23/OPICA/LocalData.lean",
+      "main_sha256": "b1a6797161d972d53f7d42cbbde3fda3debda87cc5fb6a8a48b4b990ca3df96a",
+      "audit_sha256": "b1a6797161d972d53f7d42cbbde3fda3debda87cc5fb6a8a48b4b990ca3df96a",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.OPICA.LocalObstruction",
+      "path": "Zeta23/OPICA/LocalObstruction.lean",
+      "main_sha256": "b2f5fe89510d5410c5dc79d0a3db6266e19992acbd56e2c1a0fcde210fc4a5dc",
+      "audit_sha256": "b2f5fe89510d5410c5dc79d0a3db6266e19992acbd56e2c1a0fcde210fc4a5dc",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.OPICA.NativeJetAdapter",
+      "path": "Zeta23/OPICA/NativeJetAdapter.lean",
+      "main_sha256": "df17b7dbab0bc21e59eab3366df0925e33be66d70ce98d7016757aaaf762da4c",
+      "audit_sha256": "df17b7dbab0bc21e59eab3366df0925e33be66d70ce98d7016757aaaf762da4c",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.OPICA.RangeSeparation",
+      "path": "Zeta23/OPICA/RangeSeparation.lean",
+      "main_sha256": "a8b3d3be4a113beee1d47344b1d27610f70a8ee886cf0652cc7f88dae0324d57",
+      "audit_sha256": "a8b3d3be4a113beee1d47344b1d27610f70a8ee886cf0652cc7f88dae0324d57",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.Poisson.PaperFT",
+      "path": "Zeta23/Poisson/PaperFT.lean",
+      "main_sha256": "c0737d803c0238ad8fffa5c1e8511ed09683d3b4dbcf440448e747f10e40f4cb",
+      "audit_sha256": "c0737d803c0238ad8fffa5c1e8511ed09683d3b4dbcf440448e747f10e40f4cb",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.Poisson.PaperFTConvolution",
+      "path": "Zeta23/Poisson/PaperFTConvolution.lean",
+      "main_sha256": "c1ca19f4612cd9325637320fa6b52fb68159862b625be607c32185ab9bc7f69e",
+      "audit_sha256": "c1ca19f4612cd9325637320fa6b52fb68159862b625be607c32185ab9bc7f69e",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.Prelude.InstancePriorities",
+      "path": "Zeta23/Prelude/InstancePriorities.lean",
+      "main_sha256": "2c9d2ee602987da89bbbe621149fad2b4a2476699f60535706a12b2fe9833f8e",
+      "audit_sha256": "2c9d2ee602987da89bbbe621149fad2b4a2476699f60535706a12b2fe9833f8e",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.PrimeSideTemp",
+      "path": "Zeta23/PrimeSideTemp.lean",
+      "main_sha256": "143b8a1d2dd5ac52ccde472e53ee7a34d1794dd3c7992466f2b01236f72088cc",
+      "audit_sha256": "143b8a1d2dd5ac52ccde472e53ee7a34d1794dd3c7992466f2b01236f72088cc",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.RvM.Backlund",
+      "path": "Zeta23/RvM/Backlund.lean",
+      "main_sha256": "64a52ae59879ba2bf46aabfad96d8e591f2e4cbc01b755a5d9d024d4229685ba",
+      "audit_sha256": "64a52ae59879ba2bf46aabfad96d8e591f2e4cbc01b755a5d9d024d4229685ba",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.RvM.BacklundDefs",
+      "path": "Zeta23/RvM/BacklundDefs.lean",
+      "main_sha256": "83b7dcab714041eb8146a9b80f143ee7e6be7c742891074a638d7c2eaa4e1e95",
+      "audit_sha256": "83b7dcab714041eb8146a9b80f143ee7e6be7c742891074a638d7c2eaa4e1e95",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.RvM.CountByIntegral",
+      "path": "Zeta23/RvM/CountByIntegral.lean",
+      "main_sha256": "2a3bb9d814f6e3edc26015f6a6363439b827080c0d62aa348af7cf9bf4af665e",
+      "audit_sha256": "2a3bb9d814f6e3edc26015f6a6363439b827080c0d62aa348af7cf9bf4af665e",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.RvM.Defs",
+      "path": "Zeta23/RvM/Defs.lean",
+      "main_sha256": "32662cdfc84f70be58210feaf6a7f8db3588565c74d52e030d1edb9ef32d8671",
+      "audit_sha256": "32662cdfc84f70be58210feaf6a7f8db3588565c74d52e030d1edb9ef32d8671",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.RvM.Fold",
+      "path": "Zeta23/RvM/Fold.lean",
+      "main_sha256": "2f1ba3640d30c967327bb0aff86832bdb1d327fe9ee810ae40bd96c55e12131a",
+      "audit_sha256": "2f1ba3640d30c967327bb0aff86832bdb1d327fe9ee810ae40bd96c55e12131a",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.RvM.GammaSide",
+      "path": "Zeta23/RvM/GammaSide.lean",
+      "main_sha256": "1c1b862f6645e0f9d16872bc25c8e4e986258777ce3b3a67d4da9f2aa3149573",
+      "audit_sha256": "1c1b862f6645e0f9d16872bc25c8e4e986258777ce3b3a67d4da9f2aa3149573",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.RvM.Halving",
+      "path": "Zeta23/RvM/Halving.lean",
+      "main_sha256": "de1713457eee0763fdb1e02634939664d9ce000bb8e736f2c18b85425b7c5d30",
+      "audit_sha256": "de1713457eee0763fdb1e02634939664d9ce000bb8e736f2c18b85425b7c5d30",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.RvM.LocalCount",
+      "path": "Zeta23/RvM/LocalCount.lean",
+      "main_sha256": "f23b7b226a62a7622e09bd867136faf00567e2c14a1fc697cf83b5aa5f065b45",
+      "audit_sha256": "f23b7b226a62a7622e09bd867136faf00567e2c14a1fc697cf83b5aa5f065b45",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.RvM.MainTerm",
+      "path": "Zeta23/RvM/MainTerm.lean",
+      "main_sha256": "e1e5eb11901595177457869b70d6d7dbb0a5c2c27ede33955efafec5f93c301f",
+      "audit_sha256": "e1e5eb11901595177457869b70d6d7dbb0a5c2c27ede33955efafec5f93c301f",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.RvM.NcountWindow",
+      "path": "Zeta23/RvM/NcountWindow.lean",
+      "main_sha256": "f8b4ff9a1577af9064de082d250a4433392578a96e235209214bdaaeffaf2482",
+      "audit_sha256": "f8b4ff9a1577af9064de082d250a4433392578a96e235209214bdaaeffaf2482",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.RvM.ReZeroCount",
+      "path": "Zeta23/RvM/ReZeroCount.lean",
+      "main_sha256": "7e37c415190d1dc2a30ed85d23ede62243aaaa164cb3930cb9c11632bc33bb05",
+      "audit_sha256": "7e37c415190d1dc2a30ed85d23ede62243aaaa164cb3930cb9c11632bc33bb05",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.RvM.Statement",
+      "path": "Zeta23/RvM/Statement.lean",
+      "main_sha256": "3226fbc3de1b223a067d1d454c1e7400ac81c652dbbb58f494e42a6a583061f6",
+      "audit_sha256": "3226fbc3de1b223a067d1d454c1e7400ac81c652dbbb58f494e42a6a583061f6",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.RvM.ZetaGrowth",
+      "path": "Zeta23/RvM/ZetaGrowth.lean",
+      "main_sha256": "91a33dcf908921bfaa05ec64f4c20f40d83593228f956d945cd71c272a98ef44",
+      "audit_sha256": "91a33dcf908921bfaa05ec64f4c20f40d83593228f956d945cd71c272a98ef44",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.Statement",
+      "path": "Zeta23/Statement.lean",
+      "main_sha256": "3458af8531decf948319517543f731dcdc2c5a7de47e9339f9a443530e60d205",
+      "audit_sha256": "3458af8531decf948319517543f731dcdc2c5a7de47e9339f9a443530e60d205",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.Statement.Seam",
+      "path": "Zeta23/Statement/Seam.lean",
+      "main_sha256": "d16cbfbbfff2cfe3d4df0425957ae20fd1828d8faf39e70f11a2acd85b45c7e3",
+      "audit_sha256": "d16cbfbbfff2cfe3d4df0425957ae20fd1828d8faf39e70f11a2acd85b45c7e3",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.Statement.SeamClosed",
+      "path": "Zeta23/Statement/SeamClosed.lean",
+      "main_sha256": "b2b03190fb3cf4520d273f8bdb9fc7a89939381c8aaff360e5845108b4d8b88d",
+      "audit_sha256": "b2b03190fb3cf4520d273f8bdb9fc7a89939381c8aaff360e5845108b4d8b88d",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.Tail",
+      "path": "Zeta23/Tail.lean",
+      "main_sha256": "3b189de1bec9e254e13b821d1596d430d47f115e1206b23f31a58d16656f1815",
+      "audit_sha256": "3b189de1bec9e254e13b821d1596d430d47f115e1206b23f31a58d16656f1815",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.Tail.Basic",
+      "path": "Zeta23/Tail/Basic.lean",
+      "main_sha256": "073496f8fa3fe6e7166c4dadbb65c42478bd38bf485c7106b26edc41120b7947",
+      "audit_sha256": "073496f8fa3fe6e7166c4dadbb65c42478bd38bf485c7106b26edc41120b7947",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.Tail.Count",
+      "path": "Zeta23/Tail/Count.lean",
+      "main_sha256": "737b90b4b51a1a68c0c36d924b06672b684cc8b144bd1511a569ebc2228b163d",
+      "audit_sha256": "737b90b4b51a1a68c0c36d924b06672b684cc8b144bd1511a569ebc2228b163d",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.Tail.Grid",
+      "path": "Zeta23/Tail/Grid.lean",
+      "main_sha256": "e00fa4129ec4df0b206c4b70f31c34e9998f6cb4745d3a212bb72d2833c538cf",
+      "audit_sha256": "e00fa4129ec4df0b206c4b70f31c34e9998f6cb4745d3a212bb72d2833c538cf",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.Tail.RankOne",
+      "path": "Zeta23/Tail/RankOne.lean",
+      "main_sha256": "97e080ce5adcd2fa7715fc6ba5ab32ae153d9b967292650e64084afde5d2faba",
+      "audit_sha256": "97e080ce5adcd2fa7715fc6ba5ab32ae153d9b967292650e64084afde5d2faba",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.ThmE.GammaFactsChiProof",
+      "path": "Zeta23/ThmE/GammaFactsChiProof.lean",
+      "main_sha256": "4c54051657ac81fa4604b55cf333f6076df90aae4fc6258e41a9544bff81e76a",
+      "audit_sha256": "4c54051657ac81fa4604b55cf333f6076df90aae4fc6258e41a9544bff81e76a",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.ThmE.Hypotheses",
+      "path": "Zeta23/ThmE/Hypotheses.lean",
+      "main_sha256": "71e110346f37789777718d6b9e4ff68e41b4a726a3efe47a3803ecf89f2fad08",
+      "audit_sha256": "71e110346f37789777718d6b9e4ff68e41b4a726a3efe47a3803ecf89f2fad08",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.ThmE.IntMuChi",
+      "path": "Zeta23/ThmE/IntMuChi.lean",
+      "main_sha256": "557b3aff6e363881a6c8cc0785da535f7ced76915fc1a7e16818f41a0546e229",
+      "audit_sha256": "557b3aff6e363881a6c8cc0785da535f7ced76915fc1a7e16818f41a0546e229",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.TracesBoundsE",
+      "path": "Zeta23/TracesBoundsE.lean",
+      "main_sha256": "4e44c73d585d13f594f3f09199e59660b742b46a1a446ccf004cadeb48692954",
+      "audit_sha256": "4e44c73d585d13f594f3f09199e59660b742b46a1a446ccf004cadeb48692954",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.WeilEF.Contour",
+      "path": "Zeta23/WeilEF/Contour.lean",
+      "main_sha256": "a3940e639287e7ce10ca73853000c2c61edf8a2ed4748974e331d6df0ac68a5d",
+      "audit_sha256": "a3940e639287e7ce10ca73853000c2c61edf8a2ed4748974e331d6df0ac68a5d",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.WeilEF.Effective",
+      "path": "Zeta23/WeilEF/Effective.lean",
+      "main_sha256": "249f0ff220ddeebc014bc82b880a6d97121ba10b579a2f6ae8c0805e5991baaf",
+      "audit_sha256": "249f0ff220ddeebc014bc82b880a6d97121ba10b579a2f6ae8c0805e5991baaf",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.WeilEF.FullLine",
+      "path": "Zeta23/WeilEF/FullLine.lean",
+      "main_sha256": "ae4bdd8b6fb5ad3f0b4bf0b951cd7d19802240f255b4d963d0ce96c8ed37e1a0",
+      "audit_sha256": "ae4bdd8b6fb5ad3f0b4bf0b951cd7d19802240f255b4d963d0ce96c8ed37e1a0",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.WeilEF.FullLineAssembly",
+      "path": "Zeta23/WeilEF/FullLineAssembly.lean",
+      "main_sha256": "eaeb9735aa17afa42b3dd6c2e2e25fb5c725f7959c30e4cb46a3e7a9228ce81f",
+      "audit_sha256": "eaeb9735aa17afa42b3dd6c2e2e25fb5c725f7959c30e4cb46a3e7a9228ce81f",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.WeilEF.GammaRBracket",
+      "path": "Zeta23/WeilEF/GammaRBracket.lean",
+      "main_sha256": "3b9d237b07e090f4f25cd11a2b54a74ae0fd561779511b55dd2763691d427c24",
+      "audit_sha256": "3b9d237b07e090f4f25cd11a2b54a74ae0fd561779511b55dd2763691d427c24",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.WeilEF.GoodHeights",
+      "path": "Zeta23/WeilEF/GoodHeights.lean",
+      "main_sha256": "24a22156d99341d701adb4a220bccd1682f8477fed95c27cc6e859f52eca9c3d",
+      "audit_sha256": "24a22156d99341d701adb4a220bccd1682f8477fed95c27cc6e859f52eca9c3d",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.WeilEF.Horizontal",
+      "path": "Zeta23/WeilEF/Horizontal.lean",
+      "main_sha256": "60fa56485acfedf5d0ec0e9bf7f6cf6b42ca453432bcc3271ed25668ad606667",
+      "audit_sha256": "60fa56485acfedf5d0ec0e9bf7f6cf6b42ca453432bcc3271ed25668ad606667",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.WeilEF.Landau",
+      "path": "Zeta23/WeilEF/Landau.lean",
+      "main_sha256": "f1f4ac5dffd80092c8e27481e3cd177b2c83937125130c16b1ee56d31c4d89fb",
+      "audit_sha256": "f1f4ac5dffd80092c8e27481e3cd177b2c83937125130c16b1ee56d31c4d89fb",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.WeilEF.Main",
+      "path": "Zeta23/WeilEF/Main.lean",
+      "main_sha256": "c4899fd268f4219903430537dbd74fb0dd8750cb411fc90d69c3a01a5648dbb0",
+      "audit_sha256": "c4899fd268f4219903430537dbd74fb0dd8750cb411fc90d69c3a01a5648dbb0",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.WeilEF.VerticalLine",
+      "path": "Zeta23/WeilEF/VerticalLine.lean",
+      "main_sha256": "2df131b682e2a2bcee51de18059c4e336a94fa5900f9e47399031a195bdcbfcf",
+      "audit_sha256": "2df131b682e2a2bcee51de18059c4e336a94fa5900f9e47399031a195bdcbfcf",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.WeilEF.XiLogDeriv",
+      "path": "Zeta23/WeilEF/XiLogDeriv.lean",
+      "main_sha256": "ff98bfa205ba351b510a68fdae02a695a4671091b5e3c33509e37412a4b1bd9f",
+      "audit_sha256": "ff98bfa205ba351b510a68fdae02a695a4671091b5e3c33509e37412a4b1bd9f",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.WeilEF.ZeroSumLimit",
+      "path": "Zeta23/WeilEF/ZeroSumLimit.lean",
+      "main_sha256": "c7b260f4df56cb6e24cb606d80a62e86202ed95d92bfe4c732b3d913a1b859e5",
+      "audit_sha256": "c7b260f4df56cb6e24cb606d80a62e86202ed95d92bfe4c732b3d913a1b859e5",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.WeilEF.ZeroSummability",
+      "path": "Zeta23/WeilEF/ZeroSummability.lean",
+      "main_sha256": "1379d830367ec69855fc21d18c9fc5f69393d032e5ff878e779177cf14b8caf8",
+      "audit_sha256": "1379d830367ec69855fc21d18c9fc5f69393d032e5ff878e779177cf14b8caf8",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.XiPrime.Defs",
+      "path": "Zeta23/XiPrime/Defs.lean",
+      "main_sha256": "e3c6ad6f1ad96a6022a7632576f071312dcede283c043c44454435472b20bc39",
+      "audit_sha256": "e3c6ad6f1ad96a6022a7632576f071312dcede283c043c44454435472b20bc39",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.XiPrime.ExplicitFormula",
+      "path": "Zeta23/XiPrime/ExplicitFormula.lean",
+      "main_sha256": "d100377bfd2646bd7fb20fcb2a482456eeccd09e4d34aec8546a1e6b429c321e",
+      "audit_sha256": "d100377bfd2646bd7fb20fcb2a482456eeccd09e4d34aec8546a1e6b429c321e",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.XiPrime.ExplicitFormula.ZeroFree",
+      "path": "Zeta23/XiPrime/ExplicitFormula/ZeroFree.lean",
+      "main_sha256": "f6c02ad70463cf479e015ea9f02ab44d1f90027b5ffe4a9b03097cf16e0ecf54",
+      "audit_sha256": "f6c02ad70463cf479e015ea9f02ab44d1f90027b5ffe4a9b03097cf16e0ecf54",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.XiPrime.Seam",
+      "path": "Zeta23/XiPrime/Seam.lean",
+      "main_sha256": "0c6268e5023d870abb1f157c4fd74388902bbf2e115266e30da0f63a88a4c760",
+      "audit_sha256": "0c6268e5023d870abb1f157c4fd74388902bbf2e115266e30da0f63a88a4c760",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.XiPrime.Statement",
+      "path": "Zeta23/XiPrime/Statement.lean",
+      "main_sha256": "e60a3f9309d0ce98042247bfdc3bebbf2ea6d73308471131f2e84ec7e0ce394a",
+      "audit_sha256": "e60a3f9309d0ce98042247bfdc3bebbf2ea6d73308471131f2e84ec7e0ce394a",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.ZeroSide",
+      "path": "Zeta23/ZeroSide.lean",
+      "main_sha256": "42e54f8fc3f7ab29c402e3b4244a9be2214e8b17af2af9c88729c2678e4edb07",
+      "audit_sha256": "42e54f8fc3f7ab29c402e3b4244a9be2214e8b17af2af9c88729c2678e4edb07",
+      "equal": true
+    },
+    {
+      "module": "Zeta23.ZetaReflect",
+      "path": "Zeta23/ZetaReflect.lean",
+      "main_sha256": "a26102a11755034d1a84c7e76cc7c827924e6c2962fcf91dab754041153b435e",
+      "audit_sha256": "a26102a11755034d1a84c7e76cc7c827924e6c2962fcf91dab754041153b435e",
+      "equal": true
+    }
+  ],
+  "all_project_import_sources_match_main": true,
+  "consumer_source_sha256": "d5e0df823e358f4b273313150f2b06ccbd4a1eb049a628087d6e34f061001324",
+  "consumer_source_main_audit_equal": true,
+  "consumer_status": "COMPILER_FAILED_UNACCEPTED",
+  "consumer_session": 78565,
+  "root_counts_unchanged": true,
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "consumer_command": {
+    "label": "consumer-stage3-01",
+    "cwd": "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-audit28",
+    "command": [
+      "C:\\Users\\macka\\.elan\\toolchains\\leanprover--lean4---v4.33.0-rc2\\bin\\lake.exe",
+      "build",
+      "Zeta23.OPICAFollowup.Consumers"
+    ],
+    "started": "2026-10-22T15:31:09.539838+00:00",
+    "base_head": "9b6a9a3a2badb4cff62a56c1158d9cef8759d30d",
+    "scope": "Isolated source overlay; source hashes must be bound before proof promotion",
+    "exit_code": 1,
+    "seconds": 41.99156260001473,
+    "finished": "2026-10-22T15:31:51.570445+00:00",
+    "log_sha256": "477d90acdc1d4c19a183ea44a47549b8ffa289f353dd58432c39e35b7af8e647"
+  },
+  "consumer_errors": [
+    "error: Zeta23/OPICAFollowup/Consumers.lean:113:2: unsolved goals",
+    "error: Lean exited with code 1",
+    "error: build failed"
+  ]
+}

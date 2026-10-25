@@ -1,0 +1,5 @@
+'Zeta23.OPICAFollowup.near_gap_mass_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OPICAStageTwoExpected.expected_near_gap_full_physical_type' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OPICAStageTwoExpected.expected_common_linear_constant' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OPICAStageTwoExpected.expected_critical_gap_zero_region' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OPICAStageTwoExpected.expected_half_distance_endpoint' depends on axioms: [propext, Classical.choice, Quot.sound]

@@ -1,0 +1,110 @@
+C:/Users/macka/.codex/.chatgpt-projects/g-p-6a353c7268b08191b685956e466d73e4/work/opica-stage2-2026-10-22/weighted/WeightedMixing.lean:435:54: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  FourierTransform 𝓢(ℝ, ℂ) (ℝ → ℂ)
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+C:/Users/macka/.codex/.chatgpt-projects/g-p-6a353c7268b08191b685956e466d73e4/work/opica-stage2-2026-10-22/weighted/WeightedMixing.lean:438:38: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  (weightedDilationMixture ?sigma ?a ?ha ?hm).integral ⇑?f
+in the target expression
+  (weightedDilationMixture sigma a ha hm).integral (𝓕 f) =
+    (reflectedMixingMeasure sigma).integral fun t => (dilatedCombDistribution t) f
+
+sigma : LocallyFiniteComplexMeasure
+a : ℝ
+ha : 1 / 2 ≤ a
+hm : mixingExponentialMoment a sigma < ∞
+f : 𝓢(ℝ, ℂ)
+⊢ (weightedDilationMixture sigma a ha hm).integral (𝓕 f) =
+    (reflectedMixingMeasure sigma).integral fun t => (dilatedCombDistribution t) f
+C:/Users/macka/.codex/.chatgpt-projects/g-p-6a353c7268b08191b685956e466d73e4/work/opica-stage2-2026-10-22/weighted/WeightedMixing.lean:449:6: warning: declaration uses `sorry`
+C:/Users/macka/.codex/.chatgpt-projects/g-p-6a353c7268b08191b685956e466d73e4/work/opica-stage2-2026-10-22/weighted/WeightedMixing.lean:457:2: warning: 'exact weightedDilationMixture_fourier_pairing sigma a ha hm f' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+C:/Users/macka/.codex/.chatgpt-projects/g-p-6a353c7268b08191b685956e466d73e4/work/opica-stage2-2026-10-22/weighted/WeightedMixing.lean:462:2: warning: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+C:/Users/macka/.codex/.chatgpt-projects/g-p-6a353c7268b08191b685956e466d73e4/work/opica-stage2-2026-10-22/weighted/WeightedMixing.lean:463:9: error(lean.unknownIdentifier): Unknown constant `ENNReal.lintegral_ofReal_ne_top_iff_integrable`
+C:/Users/macka/.codex/.chatgpt-projects/g-p-6a353c7268b08191b685956e466d73e4/work/opica-stage2-2026-10-22/weighted/WeightedMixing.lean:465:6: error: No goals to be solved
+C:/Users/macka/.codex/.chatgpt-projects/g-p-6a353c7268b08191b685956e466d73e4/work/opica-stage2-2026-10-22/weighted/WeightedMixing.lean:481:2: warning: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+C:/Users/macka/.codex/.chatgpt-projects/g-p-6a353c7268b08191b685956e466d73e4/work/opica-stage2-2026-10-22/weighted/WeightedMixing.lean:483:2: warning: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+C:/Users/macka/.codex/.chatgpt-projects/g-p-6a353c7268b08191b685956e466d73e4/work/opica-stage2-2026-10-22/weighted/WeightedMixing.lean:479:87: error: unsolved goals
+mu nu : Measure ℝ
+inst✝¹ : IsLocallyFiniteMeasure mu
+inst✝ : IsLocallyFiniteMeasure nu
+this✝ : IsFiniteMeasure (mu.restrict {0}) :=
+  isFiniteMeasure_restrict.mpr (LT.lt.ne (IsCompact.measure_lt_top isCompact_singleton))
+this : IsFiniteMeasure (nu.restrict {0}) :=
+  isFiniteMeasure_restrict.mpr (LT.lt.ne (IsCompact.measure_lt_top isCompact_singleton))
+⊢ ((mu.restrict {0}) {0}).toReal - ((nu.restrict {0}) {0}).toReal = (mu {0}).toReal - (nu {0}).toReal
+C:/Users/macka/.codex/.chatgpt-projects/g-p-6a353c7268b08191b685956e466d73e4/work/opica-stage2-2026-10-22/weighted/WeightedMixing.lean:487:29: warning: This simp argument is unused:
+  Measure.restrict_apply (measurableSet_singleton 0)
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [measureReal_def, inter_self]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+C:/Users/macka/.codex/.chatgpt-projects/g-p-6a353c7268b08191b685956e466d73e4/work/opica-stage2-2026-10-22/weighted/WeightedMixing.lean:487:80: warning: This simp argument is unused:
+  inter_self
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [measureReal_def, Measure.restrict_apply (measurableSet_singleton 0)]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+C:/Users/macka/.codex/.chatgpt-projects/g-p-6a353c7268b08191b685956e466d73e4/work/opica-stage2-2026-10-22/weighted/WeightedMixing.lean:492:92: error: unsolved goals
+sigma : LocallyFiniteComplexMeasure
+a : ℝ
+ha : 1 / 2 ≤ a
+hm : mixingExponentialMoment a sigma < ∞
+m : Fin 4 → Measure ℝ := fun i => positiveDilationMixture (mixingCoordinate sigma i)
+hfinite : ∀ (i : Fin 4), IsLocallyFiniteMeasure (m i)
+this✝² : IsLocallyFiniteMeasure (m 0)
+this✝¹ : IsLocallyFiniteMeasure (m 1)
+this✝ : IsLocallyFiniteMeasure (m 2)
+this : IsLocallyFiniteMeasure (m 3)
+hatom : ∀ (i : Fin 4), (m i).real {0} = ∫ (t : ℝ), Real.exp (t / 2) ∂mixingCoordinate sigma i
+⊢ {
+      re :=
+        ∫ (t : ℝ), Real.exp (t * (1 / 2)) ∂sigma.rePart.positive -
+          ∫ (t : ℝ), Real.exp (t * (1 / 2)) ∂sigma.rePart.negative,
+      im :=
+        ∫ (t : ℝ), Real.exp (t * (1 / 2)) ∂sigma.imPart.positive -
+          ∫ (t : ℝ), Real.exp (t * (1 / 2)) ∂sigma.imPart.negative } =
+    ∫ (x : ℝ), cexp (↑x * (1 / 2)) ∂sigma.rePart.positive - ∫ (x : ℝ), cexp (↑x * (1 / 2)) ∂sigma.rePart.negative +
+        I * ∫ (x : ℝ), cexp (↑x * (1 / 2)) ∂sigma.imPart.positive -
+      I * ∫ (x : ℝ), cexp (↑x * (1 / 2)) ∂sigma.imPart.negative
+C:/Users/macka/.codex/.chatgpt-projects/g-p-6a353c7268b08191b685956e466d73e4/work/opica-stage2-2026-10-22/weighted/WeightedMixing.lean:508:50: warning: This simp argument is unused:
+  integral_ofReal
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [LocallyFiniteComplexMeasure.integral, mixingCoordinate]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+'Zeta23.OPICAFollowup.weightedDilationMixture_pairing' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.OPICAFollowup.weightedDilationMixture_growth' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.OPICAFollowup.positiveDilationMixture_fourier_pairing' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

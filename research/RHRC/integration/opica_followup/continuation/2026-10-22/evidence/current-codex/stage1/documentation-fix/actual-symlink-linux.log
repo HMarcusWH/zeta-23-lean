@@ -1,0 +1,8 @@
+test_source_symlink_rejected (test_contract.FollowupSourceBoundProjectionTests.test_source_symlink_rejected) ... ok
+test_symlink_guard_without_host_link_privilege (test_documentation_review.DocumentationReview.test_symlink_guard_without_host_link_privilege) ... ok
+test_symlink_rejected_even_if_target_has_exact_reviewed_bytes (test_documentation_review.DocumentationReview.test_symlink_rejected_even_if_target_has_exact_reviewed_bytes) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 2.171s
+
+OK

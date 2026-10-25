@@ -1,0 +1,121 @@
+'Zeta23.OPICAFollowup.laguerre_tail_norm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.OPICAFollowup.monicLaguerre_exact_norm_sq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.OPICAFollowup.monicLaguerre_orthogonality' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.OPICAFollowup.laguerre_iterated_ibp' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.OPICAFollowup.monicLaguerreTail_integral_norm_sq' depends on axioms: [propext, Classical.choice, Quot.sound]
+C:/Users/macka/.codex/.chatgpt-projects/g-p-6a353c7268b08191b685956e466d73e4/work/opica-followup-repo/research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedMultiplicity.lean:94:2: error: Type mismatch: After simplification, term
+  native_auxiliary_top_moment k d rho hright
+ has type
+  And (MemLp (nativeAuxiliaryInput k d) 2 volume)
+    (↑↑↑(nativeAuxiliaryStableVector k d) =ᵐ[volume] nativeAuxiliaryInput k d ∧
+      (∀ (t : ℝ),
+          ∫ (s : ℝ), ↑(auxCompletionKernel k s) * ↑(primeFieldFamily d (t - s)) =
+            ∫ (s : ℝ), ↑(auxCompletionFilter k s) * ↑(integerDriveFamily d (t - s))) ∧
+        ‖nativeAuxiliaryStableVector k d‖ ≤ (∫ (s : ℝ), ‖auxCompletionFilter k s‖) * ‖auxiliaryDriveCausalVector d‖ ∧
+          (∀ j < zeroMult ↑rho - 1,
+              Integrable
+                  (fun t =>
+                    ↑t ^ j * Complex.exp (-(↑rho - 1 / 2) * ↑t) *
+                      ∫ (s : ℝ), ↑(auxCompletionFilter k s) * ↑(integerDriveFamily d (t - s)))
+                  volume ∧
+                ∫ (t : ℝ),
+                    ↑t ^ j * Complex.exp (-(↑rho - 1 / 2) * ↑t) *
+                      ∫ (s : ℝ), ↑(auxCompletionFilter k s) * ↑(integerDriveFamily d (t - s)) =
+                  0) ∧
+            Integrable
+                (fun t =>
+                  ↑t ^ (zeroMult ↑rho - 1) * Complex.exp (-(↑rho - 1 / 2) * ↑t) *
+                    ∫ (s : ℝ), ↑(auxCompletionFilter k s) * ↑(integerDriveFamily d (t - s)))
+                volume ∧
+              ∫ (t : ℝ),
+                    ↑t ^ (zeroMult ↑rho - 1) * Complex.exp (-(↑rho - 1 / 2) * ↑t) *
+                      ∫ (s : ℝ), ↑(auxCompletionFilter k s) * ↑(integerDriveFamily d (t - s)) =
+                  (-1) ^ zeroMult ↑rho * auxRationalFactor k (↑rho - 1 / 2) * sourceFamilyLaplace d (↑rho - 1 / 2) *
+                    iteratedDeriv (zeroMult ↑rho) riemannZeta ↑rho ∧
+                ∫ (t : ℝ),
+                    ↑t ^ (zeroMult ↑rho - 1) * Complex.exp (-(↑rho - 1 / 2) * ↑t) *
+                      ∫ (s : ℝ), ↑(auxCompletionFilter k s) * ↑(integerDriveFamily d (t - s)) ≠
+                  0)
+but is expected to have type
+  And (MemLp (fun t => ∫ (s : ℝ), ↑(auxCompletionFilter k s) * ↑(integerDriveFamily d (t - s))) 2 volume)
+    ((↑↑↑(nativeAuxiliaryStableVector k d) =ᵐ[volume] fun t =>
+        ∫ (s : ℝ), ↑(auxCompletionFilter k s) * ↑(integerDriveFamily d (t - s))) ∧
+      (∀ (t : ℝ),
+          ∫ (s : ℝ), ↑(auxCompletionKernel k s) * ↑(primeFieldFamily d (t - s)) =
+            ∫ (s : ℝ), ↑(auxCompletionFilter k s) * ↑(integerDriveFamily d (t - s))) ∧
+        ‖nativeAuxiliaryStableVector k d‖ ≤ (∫ (s : ℝ), ‖auxCompletionFilter k s‖) * ‖auxiliaryDriveCausalVector d‖ ∧
+          (∀ j < zeroMult ↑rho - 1,
+              Integrable
+                  (fun t =>
+                    ↑t ^ j * Complex.exp (-(↑rho - 1 / 2) * ↑t) *
+                      ∫ (s : ℝ), ↑(auxCompletionFilter k s) * ↑(integerDriveFamily d (t - s)))
+                  volume ∧
+                ∫ (t : ℝ),
+                    ↑t ^ j * Complex.exp (-(↑rho - 1 / 2) * ↑t) *
+                      ∫ (s : ℝ), ↑(auxCompletionFilter k s) * ↑(integerDriveFamily d (t - s)) =
+                  0) ∧
+            Integrable
+                (fun t =>
+                  ↑t ^ (zeroMult ↑rho - 1) * Complex.exp (-(↑rho - 1 / 2) * ↑t) *
+                    ∫ (s : ℝ), ↑(auxCompletionFilter k s) * ↑(integerDriveFamily d (t - s)))
+                volume ∧
+              ∫ (t : ℝ),
+                    ↑t ^ (zeroMult ↑rho - 1) * Complex.exp (-(↑rho - 1 / 2) * ↑t) *
+                      ∫ (s : ℝ), ↑(auxCompletionFilter k s) * ↑(integerDriveFamily d (t - s)) =
+                  (-1) ^ zeroMult ↑rho * auxRationalFactor k (↑rho - 1 / 2) * sourceFamilyLaplace d (↑rho - 1 / 2) *
+                    iteratedDeriv (zeroMult ↑rho) riemannZeta ↑rho ∧
+                ∫ (t : ℝ),
+                    ↑t ^ (zeroMult ↑rho - 1) * Complex.exp (-(↑rho - 1 / 2) * ↑t) *
+                      ∫ (s : ℝ), ↑(auxCompletionFilter k s) * ↑(integerDriveFamily d (t - s)) ≠
+                  0)
+C:/Users/macka/.codex/.chatgpt-projects/g-p-6a353c7268b08191b685956e466d73e4/work/opica-followup-repo/research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedMultiplicity.lean:96:0: warning: Definition `expected_actual_auxiliary_factorial_stability` is a proposition; use `theorem` instead of `def`
+
+Note: This linter can be disabled with `set_option linter.defProp false`
+C:/Users/macka/.codex/.chatgpt-projects/g-p-6a353c7268b08191b685956e466d73e4/work/opica-followup-repo/research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedMultiplicity.lean:101:0: warning: Definition `expected_actual_logweighted_drive` is a proposition; use `theorem` instead of `def`
+
+Note: This linter can be disabled with `set_option linter.defProp false`
+C:/Users/macka/.codex/.chatgpt-projects/g-p-6a353c7268b08191b685956e466d73e4/work/opica-followup-repo/research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedMultiplicity.lean:107:0: warning: Definition `expected_actual_auxiliary_integrand` is a proposition; use `theorem` instead of `def`
+
+Note: This linter can be disabled with `set_option linter.defProp false`
+C:/Users/macka/.codex/.chatgpt-projects/g-p-6a353c7268b08191b685956e466d73e4/work/opica-followup-repo/research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedMultiplicity.lean:111:0: warning: Definition `expected_actual_auxiliary_safe_laplace` is a proposition; use `theorem` instead of `def`
+
+Note: This linter can be disabled with `set_option linter.defProp false`
+C:/Users/macka/.codex/.chatgpt-projects/g-p-6a353c7268b08191b685956e466d73e4/work/opica-followup-repo/research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedMultiplicity.lean:118:0: warning: Definition `expected_actual_simple_zero_phase` is a proposition; use `theorem` instead of `def`
+
+Note: This linter can be disabled with `set_option linter.defProp false`
+C:/Users/macka/.codex/.chatgpt-projects/g-p-6a353c7268b08191b685956e466d73e4/work/opica-followup-repo/research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedMultiplicity.lean:129:0: warning: Definition `expected_native_auxiliary_tail_residual_lower` is a proposition; use `theorem` instead of `def`
+
+Note: This linter can be disabled with `set_option linter.defProp false`
+C:/Users/macka/.codex/.chatgpt-projects/g-p-6a353c7268b08191b685956e466d73e4/work/opica-followup-repo/research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedMultiplicity.lean:144:0: warning: Definition `expected_native_residual_literal` is a proposition; use `theorem` instead of `def`
+
+Note: This linter can be disabled with `set_option linter.defProp false`
+C:/Users/macka/.codex/.chatgpt-projects/g-p-6a353c7268b08191b685956e466d73e4/work/opica-followup-repo/research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedMultiplicity.lean:152:0: warning: Definition `expected_native_terminal_memory_lower` is a proposition; use `theorem` instead of `def`
+
+Note: This linter can be disabled with `set_option linter.defProp false`
+'Zeta23.OPICAFollowup.native_auxiliary_top_moment' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.OPICAFollowup.Validation.expected_native_auxiliary_top_moment' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.nativeAuxiliaryInput_completedPrime' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.OPICAFollowup.nativeAuxiliaryInputLaplace_eq_continuation' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.Validation.expected_actual_logweighted_drive' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.Validation.expected_actual_auxiliary_integrand' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.Validation.expected_actual_auxiliary_safe_laplace' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.Validation.expected_actual_simple_zero_phase' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.Validation.expected_native_auxiliary_tail_residual_lower' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.Validation.expected_native_terminal_memory_lower' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

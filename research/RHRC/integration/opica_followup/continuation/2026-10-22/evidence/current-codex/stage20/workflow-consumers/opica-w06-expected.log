@@ -1,0 +1,40 @@
+'Zeta23.OPICAFollowup.W06Independent.expected_log_measure_add' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.W06Independent.expected_log_measure_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.W06Independent.expected_countable_log_measure_sum' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.W06Independent.expected_all_positive_integer_atoms' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.W06Independent.expected_finite_logarithmic_additivity' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.W06Independent.expected_finite_integer_atoms' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.W06Independent.expected_log_weight' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.OPICAFollowup.W06Independent.expected_complex_pullback' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.W06Independent.expected_origin_excluded' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.W06Independent.expected_weighted_log_dirac' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.W06Independent.expected_log_nonpositive_atom' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.W06Independent.expected_log_positive_atom' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.W06Independent.expected_weighted_integer_atom' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Zeta23.OPICAFollowup.W06Independent.expected_physical_integer_dilation' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

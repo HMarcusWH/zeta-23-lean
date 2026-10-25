@@ -1,0 +1,92 @@
+[
+  {
+    "name": "build_receipt.py",
+    "bytes": 26040,
+    "sha256": "aec907fd83b8dfacf67c5ad148fc2564b6c119a1093c4cc6e8bb2d43496c909e"
+  },
+  {
+    "name": "validate_contract.py",
+    "bytes": 39196,
+    "sha256": "147a283aab1a9f015159f6736aed052e5a5481d61023d795ccd5707567ff3229"
+  },
+  {
+    "name": "test_contract.py",
+    "bytes": 24007,
+    "sha256": "8c46db4d941a1efe90c5ed21356437afbde1aee84eeab0ecdc6f176cb26a4c2f"
+  },
+  {
+    "name": "child_extension_optimized.log",
+    "bytes": 125,
+    "sha256": "a08f96d6de436aac02e13ea9b61c38d74a9ffdbabd731bbb0c14030def916372"
+  },
+  {
+    "name": "child_extension_normal.log",
+    "bytes": 125,
+    "sha256": "9cca007f57de27c4f453f0cff1914db4d5cad62b7cb6599751c094d6b495e83a"
+  },
+  {
+    "name": "parent_projection_selected_optimized.log",
+    "bytes": 129,
+    "sha256": "fa768894feb4b142891a5fc2672f06ec2299f86466afba6b398d36f6922fb107"
+  },
+  {
+    "name": "parent_projection_selected_normal.log",
+    "bytes": 129,
+    "sha256": "59626aaeaefe3cf120ec7f763263f52a012e17b796eb6c511b5c62d0e8034856"
+  },
+  {
+    "name": "export.log",
+    "bytes": 225,
+    "sha256": "2615fb0dbc8944fc1cd3ec6383e67aece33f51ddf71b9955d253fc36536c068c"
+  },
+  {
+    "name": "build.log",
+    "bytes": 131512,
+    "sha256": "c3ed0f2d17a511bc40b3386a4c678671e232051a111e13471760bfd86a4b26ec"
+  },
+  {
+    "name": "PR294_9b_subset_formal_failure.zip",
+    "bytes": 15878,
+    "sha256": "8a83803e516fc5e4817a375c30efaefb75a3d980e0e26f7c2a9f21410d9b67e1"
+  },
+  {
+    "name": "MaskedNativeRate.lean",
+    "bytes": 37879,
+    "sha256": "10cc4687e499d97e0dbb6f4c64cca630c278179165b5118f686296658189e993"
+  },
+  {
+    "name": "AuxiliaryCompletions.lean",
+    "bytes": 72445,
+    "sha256": "e638865949655e7429517a81eb05e05589802c0f60f2d555026bbea0d224ff8b"
+  },
+  {
+    "name": "ComplexLocalMeasures.lean",
+    "bytes": 65346,
+    "sha256": "598e34aa741f21f07b346442074d5a0270b317b02ccc44baac628832b78dbd85"
+  },
+  {
+    "name": "MultiplicityTail.lean",
+    "bytes": 16010,
+    "sha256": "5cd8bc952f6a1dcc7894d49b3113569e1d828491149ebdd672cf9d0b8a218780"
+  },
+  {
+    "name": "DilatedComb.lean",
+    "bytes": 10157,
+    "sha256": "3eb6177419b40cf9ffb0fe8c428f2f924cb560c5a87fd4db039e288b63aef3bf"
+  },
+  {
+    "name": "RenormalizedCoPoisson.lean",
+    "bytes": 17680,
+    "sha256": "219bb69956bf69f3a517da69eac72e04cd5aab33e350b10d701e0eec58b8bfad"
+  },
+  {
+    "name": "FirstCellCost.lean",
+    "bytes": 14787,
+    "sha256": "f33cb041e817a158bc2c2d8720ab933d0ea3d73f1b86e734e220eb6d2f5e06e6"
+  },
+  {
+    "name": "Consumers.lean",
+    "bytes": 9223,
+    "sha256": "d5e0df823e358f4b273313150f2b06ccbd4a1eb049a628087d6e34f061001324"
+  }
+]

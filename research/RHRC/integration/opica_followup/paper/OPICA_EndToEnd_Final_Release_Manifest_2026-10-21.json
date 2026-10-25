@@ -1,0 +1,66 @@
+{
+  "schema": "OPICA_FINAL_AUDITED_PAPER_RELEASE_V1",
+  "date": "2026-10-21",
+  "authority": "DERIVED_PAPER_SELF_AUDIT",
+  "independent_review": false,
+  "scope_completed": "Consolidated follow-up paper and bounded end-to-end audit of stated results and direct dependencies",
+  "entire_OPICA_exclusion_programme_complete": false,
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "new_Lean_roots": 0,
+  "new_CI_runs": 0,
+  "repo_writes": false,
+  "paper_pages": 41,
+  "paper_words_whitespace": 15075,
+  "inherited_followup_result_groups": 23,
+  "new_sampling_completion_groups": 3,
+  "total_result_groups": 26,
+  "expanded_inherited_analytic_dependencies": [
+    "J5.2",
+    "MS1"
+  ],
+  "exact_checks_per_mode": 39920,
+  "modes": [
+    "normal",
+    "python -O"
+  ],
+  "numerical_cases": 33,
+  "numerical_interval_certified": false,
+  "original_input_payloads_hash_verified": 1326,
+  "zip_payloads_verified": 69,
+  "zip_entries": 70,
+  "zip_CRC_pass": true,
+  "files": [
+    {
+      "name": "OPICA_End_to_End_Audit_Report_2026-10-21.md",
+      "bytes": 4218,
+      "sha256": "efa8e5c88c98e43e486270047599965358aa461168215904331caf13397f90c6"
+    },
+    {
+      "name": "OPICA_Final_Followup_Paper_Contract_2026-10-21.md",
+      "bytes": 3712,
+      "sha256": "760964b24deb3b8c2e8f1f5de38e2072a2bef3e2dd4eec336b567f2bfcecfd5f"
+    },
+    {
+      "name": "OPICA_Final_Theorem_and_Audit_Ledger_2026-10-21.json",
+      "bytes": 27022,
+      "sha256": "30b59f3eb284b7d453062aafb12ffbda7604627c142102fb8d093c6c5e25d4cb"
+    },
+    {
+      "name": "OPICA_Followup_Final_Audited_Paper_2026-10-21.md",
+      "bytes": 119213,
+      "sha256": "9525d5dad6f0a2e3abd6050edeb39e3a234b6a361046e746878a181970a789f0"
+    },
+    {
+      "name": "OPICA_Followup_Final_Audited_Paper_2026-10-21.pdf",
+      "bytes": 273314,
+      "sha256": "62834e97937d0e43b57a2149d27082c7c8a4bea709ea74bc87525a83f7c2f806"
+    },
+    {
+      "name": "OPICA_EndToEnd_Final_Evidence_2026-10-21.zip",
+      "bytes": 3044029,
+      "sha256": "e82c6833afb27956ecdb981b1fbb63c1e60aab832fc2b7ddc18c7618484e03e7"
+    }
+  ],
+  "self_hash_excluded": true
+}

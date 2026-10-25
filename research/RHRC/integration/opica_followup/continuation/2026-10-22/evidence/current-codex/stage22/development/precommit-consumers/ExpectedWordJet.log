@@ -1,0 +1,5 @@
+'OPICAWordJetIndependent.expected_step123_word_jet_consumer' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OPICAWordJetIndependent.expected_step123_word_jet_actual_domain' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'OPICAWordJetIndependent.expected_step123_word_right_zero' depends on axioms: [propext, Classical.choice, Quot.sound]

@@ -1,0 +1,9 @@
+import ExpectedFullContracts
+set_option pp.all true
+#check @Zeta23.OPICAFollowup.IndependentExpected.expected_source_order_uniform_norms
+#check @Zeta23.OPICAFollowup.IndependentExpected.expected_native_field_theta_envelope
+#check @Zeta23.OPICAFollowup.IndependentExpected.expected_near_gap_mass_bound
+#check @Zeta23.OPICAFollowup.IndependentExpected.expected_near_gap_controlled_limit_zero
+#check @Zeta23.OPICAFollowup.IndependentExpected.expected_dilation_near_gap_family
+#check @Zeta23.OPICAFollowup.IndependentExpected.expected_dilation_normalized_limit_not_measure
+#check @Zeta23.OPICAFollowup.IndependentExpected.expected_fixed_basis_negative_mass_budget

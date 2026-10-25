@@ -1,0 +1,17 @@
+C:\Users\macka\.codex\.chatgpt-projects\g-p-6a353c7268b08191b685956e466d73e4\work\opica-stage20\clean-controls\NegativeMissingQuiet.lean:5:8: error: Invalid projection: Projections cannot be used on functions, and
+  quiet_balanced_observation_implies_native_cut time cofinal
+has function type
+  ((∀ (epsilon : ℝ),
+        0 < epsilon →
+          ∀ᶠ (n : ℕ) in atTop,
+            Real.log (1 + max (nativeRawHigh 1 2 1 (logSlackY 2 8 (time n)) 2 (time n)) 0) / (2 * time n) ≤ epsilon) ∨
+      ∀ (epsilon : ℝ),
+        0 < epsilon →
+          ∀ᶠ (n : ℕ) in atTop,
+            Real.log (1 + max (nativeAbsorbedHigh 1 2 1 ⋯ (logSlackY 2 8 (time n)) 2 (time n)) 0) / (2 * time n) ≤
+              epsilon) →
+    nativeZeroDisplacementSup = 0 ∧
+      (∀ (epsilon : ℝ),
+          0 < epsilon →
+            MeasureTheory.MemLp (fun t => ↑(Real.exp (-epsilon * t) * primeFieldFamily 0 t)) 2 MeasureTheory.volume) ∧
+        CCM.NativeOriginalPrimeFieldAllDampedL2 ∧ CCM.NativeOriginalPrimeFieldAllDampedIntegral ∧ RiemannHypothesis

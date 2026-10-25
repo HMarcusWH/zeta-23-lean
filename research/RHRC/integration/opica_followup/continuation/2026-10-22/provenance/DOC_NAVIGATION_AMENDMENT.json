@@ -1,0 +1,38 @@
+{
+  "schema": "OPICA_DOCUMENTATION_NAVIGATION_AMENDMENT_V1",
+  "id": "DOC_NAV_2026_10_22_01",
+  "status": "DOCUMENTATION_ONLY_NO_MATHEMATICAL_SCOPE_CHANGE",
+  "source_checkpoint": "a77ae60427423e8b6f098596f300c8cecc6392b6",
+  "frozen_public_roots_sha256": "2239636f347449ecd447fc5ba78d7c75f1c0440d28a862cb72397c4f79597b41",
+  "original_primary_roots": 100,
+  "acceptance_units": 28,
+  "additional_exact_documentation_paths": [
+    "AUDIT.md",
+    "FORK_NOTES.md",
+    "research/RHRC/DOCUMENTATION_AUTHORITY.md",
+    "research/RHRC/VALIDATION_PROTOCOL.md",
+    "research/RHRC/graph/OPICA_FOLLOWUP_CURRENT_STATE.md",
+    "research/RHRC/graph/README.md",
+    "research/RHRC/integration/README.md"
+  ],
+  "existing_authorized_navigation_updates": [
+    "README.md",
+    "research/RHRC/README.md",
+    "research/RHRC/CURRENT_RESEARCH_PLAN.md",
+    "research/RHRC/integration/opica/README.md"
+  ],
+  "authority": "Exact reviewed documentation bytes only, listed in CONTINUATION_MANIFEST.json and conditionally checked by the preparation gate",
+  "protected_parent_exception": "Only verified pinned paths intersecting the seven exact documentation paths; tampering rejects the exception and restores original protection",
+  "historical_control_blocks": "PRESERVED_BYTE_FOR_BYTE; renderer and Control-v2 state unchanged",
+  "frozen_statement_changes": [],
+  "new_mandatory_roots": [],
+  "new_assumptions": [],
+  "mathematical_source_changes": [],
+  "registry_changes": [],
+  "canonical_generated_graph_changes": [],
+  "manual_graph_role": "Navigation and status only, no compiler-DAG or theorem-implication authority",
+  "full_release_accepted": false,
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "independent_closing_inequalities": "OPEN"
+}

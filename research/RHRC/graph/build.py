@@ -96,6 +96,20 @@ def _load_source_only_shards():
 # relations (16 fixed shards; see integration/source_only_shards.py).
 SOURCE_ONLY_SHARDS = _load_source_only_shards()
 
+
+def _load_registered_shards():
+    path = RHRC / "integration" / "registered_dependency_shards.py"
+    spec = importlib.util.spec_from_file_location("rhrc_registered_dependency_shards", path)
+    if spec is None or spec.loader is None:
+        raise RuntimeError(f"cannot load registered dependency shard layout from {path}")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+REGISTERED_SHARDS = _load_registered_shards()
+DECLARED_COMPILER_GENERATED_PRODUCTS = REGISTERED_SHARDS.SHARD_PATHS
+
 DECLARED_INTEGRATION_GENERATED_PRODUCTS = [
     "research/RHRC/integration/generated/SOURCE_CANDIDATE_RESOLUTION.jsonl",
     "research/RHRC/integration/generated/RH_CORE_SOURCE_ONLY_THEOREMS.jsonl",
@@ -119,6 +133,7 @@ DECLARED_CONTACT_QUOTIENT_GENERATED_PRODUCTS = [
 
 ALL_DECLARED_GENERATED_PRODUCTS = (
     DECLARED_GENERATED_PRODUCTS
+    + DECLARED_COMPILER_GENERATED_PRODUCTS
     + DECLARED_CONTACT_QUOTIENT_GENERATED_PRODUCTS
     + DECLARED_INTEGRATION_GENERATED_PRODUCTS
     + DECLARED_FFBBP_GENERATED_PRODUCTS
@@ -126,6 +141,8 @@ ALL_DECLARED_GENERATED_PRODUCTS = (
 )
 
 GENERATED_PRODUCT_PRODUCER = {
+    **{path: "research/RHRC/tools/lean_dependency_extract.py"
+       for path in DECLARED_COMPILER_GENERATED_PRODUCTS},
     **{
         path: "research/RHRC/graph/build.py"
         for path in DECLARED_GENERATED_PRODUCTS
@@ -217,13 +234,7 @@ def load_compiler_dependency_receipt() -> list[dict]:
         "LOCAL_DEPENDENCY",
         "EXTERNAL_BOUNDARY",
     }
-    for number, line in enumerate(path.read_text(encoding="utf-8").splitlines(), start=1):
-        if not line.strip():
-            continue
-        try:
-            row = json.loads(line)
-        except json.JSONDecodeError as exc:
-            raise RuntimeError(f"{path}:{number}: invalid JSON: {exc}") from exc
+    for number, row in enumerate(REGISTERED_SHARDS.load_rows(REPO), start=1):
         if row.get("schema_version") != "RHKG-phase2b-compiler-dependencies-0.4":
             raise RuntimeError(
                 f"{path}:{number}: compiler dependency receipt is not Phase 2B current"

@@ -2,11 +2,21 @@
   "entries": [
     {
       "claim_mentions": [],
+      "document_id": "rh:document:AGENTS.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:AGENTS.md",
+      "heading_count": 3,
+      "path": "AGENTS.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
       "document_id": "rh:document:AUDIT.md",
       "document_role": "DOCUMENTATION_ARTIFACT",
       "file_class": "DOCUMENTATION",
       "file_id": "rh:file:AUDIT.md",
-      "heading_count": 28,
+      "heading_count": 29,
       "path": "AUDIT.md",
       "route_mentions": [
         "R003_ccm_bridge"
@@ -18,7 +28,7 @@
       "document_role": "DOCUMENTATION_ARTIFACT",
       "file_class": "DOCUMENTATION",
       "file_id": "rh:file:FORK_NOTES.md",
-      "heading_count": 18,
+      "heading_count": 19,
       "path": "FORK_NOTES.md",
       "route_mentions": [
         "R003_ccm_bridge"
@@ -30,7 +40,7 @@
       "document_role": "DOCUMENTATION_ARTIFACT",
       "file_class": "DOCUMENTATION",
       "file_id": "rh:file:README.md",
-      "heading_count": 32,
+      "heading_count": 38,
       "path": "README.md",
       "route_mentions": [
         "R003_ccm_bridge"
@@ -92,7 +102,7 @@
       "document_role": "DOCUMENTATION_ARTIFACT",
       "file_class": "DOCUMENTATION",
       "file_id": "rh:file:research/RHRC/CURRENT_RESEARCH_PLAN.md",
-      "heading_count": 71,
+      "heading_count": 72,
       "path": "research/RHRC/CURRENT_RESEARCH_PLAN.md",
       "route_mentions": [
         "R003_ccm_bridge"
@@ -119,7 +129,7 @@
       "document_role": "LIVING_AUTHORITY_INDEX",
       "file_class": "LIVING_SSOT",
       "file_id": "rh:file:research/RHRC/DOCUMENTATION_AUTHORITY.md",
-      "heading_count": 42,
+      "heading_count": 43,
       "path": "research/RHRC/DOCUMENTATION_AUTHORITY.md",
       "route_mentions": [
         "R003_ccm_bridge"
@@ -195,7 +205,7 @@
       "document_role": "LIVING_PROJECT_STATE",
       "file_class": "LIVING_SSOT",
       "file_id": "rh:file:research/RHRC/README.md",
-      "heading_count": 23,
+      "heading_count": 24,
       "path": "research/RHRC/README.md",
       "route_mentions": [
         "R003_ccm_bridge"
@@ -266,7 +276,7 @@
       "document_role": "LIVING_VALIDATION_PROTOCOL",
       "file_class": "LIVING_SSOT",
       "file_id": "rh:file:research/RHRC/VALIDATION_PROTOCOL.md",
-      "heading_count": 41,
+      "heading_count": 42,
       "path": "research/RHRC/VALIDATION_PROTOCOL.md",
       "route_mentions": [
         "R003_ccm_bridge"
@@ -406,6 +416,16 @@
       "route_mentions": []
     },
     {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/graph/OPICA_FOLLOWUP_CURRENT_STATE.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/graph/OPICA_FOLLOWUP_CURRENT_STATE.md",
+      "heading_count": 4,
+      "path": "research/RHRC/graph/OPICA_FOLLOWUP_CURRENT_STATE.md",
+      "route_mentions": []
+    },
+    {
       "claim_mentions": [
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "C_RH",
@@ -417,7 +437,7 @@
       "document_role": "DOCUMENTATION_ARTIFACT",
       "file_class": "DOCUMENTATION",
       "file_id": "rh:file:research/RHRC/graph/README.md",
-      "heading_count": 12,
+      "heading_count": 13,
       "path": "research/RHRC/graph/README.md",
       "route_mentions": []
     },
@@ -427,7 +447,7 @@
       "document_role": "DOCUMENTATION_ARTIFACT",
       "file_class": "DOCUMENTATION",
       "file_id": "rh:file:research/RHRC/integration/README.md",
-      "heading_count": 6,
+      "heading_count": 7,
       "path": "research/RHRC/integration/README.md",
       "route_mentions": []
     },
@@ -469,7 +489,7 @@
       "document_role": "DOCUMENTATION_ARTIFACT",
       "file_class": "DOCUMENTATION",
       "file_id": "rh:file:research/RHRC/integration/opica/README.md",
-      "heading_count": 1,
+      "heading_count": 2,
       "path": "research/RHRC/integration/opica/README.md",
       "route_mentions": []
     },
@@ -491,6 +511,1277 @@
       "file_id": "rh:file:research/RHRC/integration/opica/paper/OPICA_Paper_Construction_v1_0_2026-10-21.md",
       "heading_count": 74,
       "path": "research/RHRC/integration/opica/paper/OPICA_Paper_Construction_v1_0_2026-10-21.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/BUILD_SPEC.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/BUILD_SPEC.md",
+      "heading_count": 165,
+      "path": "research/RHRC/integration/opica_followup/BUILD_SPEC.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/POST_GREEN_RESEARCH.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/POST_GREEN_RESEARCH.md",
+      "heading_count": 61,
+      "path": "research/RHRC/integration/opica_followup/POST_GREEN_RESEARCH.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/README.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/README.md",
+      "heading_count": 5,
+      "path": "research/RHRC/integration/opica_followup/README.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/DOCUMENTATION_INDEX.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/DOCUMENTATION_INDEX.md",
+      "heading_count": 5,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/DOCUMENTATION_INDEX.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/MODULE_STATUS.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/MODULE_STATUS.md",
+      "heading_count": 1,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/MODULE_STATUS.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/NEXT_AGENT_PROMPT.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/NEXT_AGENT_PROMPT.md",
+      "heading_count": 5,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/NEXT_AGENT_PROMPT.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/POST_GREEN_RESEARCH.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/POST_GREEN_RESEARCH.md",
+      "heading_count": 10,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/POST_GREEN_RESEARCH.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/README.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/README.md",
+      "heading_count": 5,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/README.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/REMAINING_WORK.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/REMAINING_WORK.md",
+      "heading_count": 1,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/REMAINING_WORK.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/STAGE10_HANDOVER.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/STAGE10_HANDOVER.md",
+      "heading_count": 4,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/STAGE10_HANDOVER.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/STAGE11_HANDOVER.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/STAGE11_HANDOVER.md",
+      "heading_count": 4,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/STAGE11_HANDOVER.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/STAGE12_HANDOVER.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/STAGE12_HANDOVER.md",
+      "heading_count": 4,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/STAGE12_HANDOVER.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/STAGE13_HANDOVER.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/STAGE13_HANDOVER.md",
+      "heading_count": 4,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/STAGE13_HANDOVER.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/STAGE14_HANDOVER.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/STAGE14_HANDOVER.md",
+      "heading_count": 4,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/STAGE14_HANDOVER.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/STAGE15_HANDOVER.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/STAGE15_HANDOVER.md",
+      "heading_count": 4,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/STAGE15_HANDOVER.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/STAGE16_HANDOVER.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/STAGE16_HANDOVER.md",
+      "heading_count": 4,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/STAGE16_HANDOVER.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/STAGE17_HANDOVER.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/STAGE17_HANDOVER.md",
+      "heading_count": 4,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/STAGE17_HANDOVER.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/STAGE18_HANDOVER.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/STAGE18_HANDOVER.md",
+      "heading_count": 4,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/STAGE18_HANDOVER.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/STAGE19_HANDOVER.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/STAGE19_HANDOVER.md",
+      "heading_count": 11,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/STAGE19_HANDOVER.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/STAGE1_HANDOVER.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/STAGE1_HANDOVER.md",
+      "heading_count": 4,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/STAGE1_HANDOVER.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/STAGE20_HANDOVER.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/STAGE20_HANDOVER.md",
+      "heading_count": 11,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/STAGE20_HANDOVER.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/STAGE21_HANDOVER.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/STAGE21_HANDOVER.md",
+      "heading_count": 11,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/STAGE21_HANDOVER.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/STAGE22_HANDOVER.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/STAGE22_HANDOVER.md",
+      "heading_count": 11,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/STAGE22_HANDOVER.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/STAGE23_INTEGRATION_CHECKPOINT.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/STAGE23_INTEGRATION_CHECKPOINT.md",
+      "heading_count": 1,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/STAGE23_INTEGRATION_CHECKPOINT.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/STAGE2_HANDOVER.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/STAGE2_HANDOVER.md",
+      "heading_count": 6,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/STAGE2_HANDOVER.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/STAGE4_HANDOVER.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/STAGE4_HANDOVER.md",
+      "heading_count": 5,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/STAGE4_HANDOVER.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/STAGE5_HANDOVER.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/STAGE5_HANDOVER.md",
+      "heading_count": 4,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/STAGE5_HANDOVER.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/STAGE6_HANDOVER.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/STAGE6_HANDOVER.md",
+      "heading_count": 4,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/STAGE6_HANDOVER.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/STAGE7_HANDOVER.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/STAGE7_HANDOVER.md",
+      "heading_count": 4,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/STAGE7_HANDOVER.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/STAGE8_HANDOVER.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/STAGE8_HANDOVER.md",
+      "heading_count": 4,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/STAGE8_HANDOVER.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/STAGE9_HANDOVER.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/STAGE9_HANDOVER.md",
+      "heading_count": 4,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/STAGE9_HANDOVER.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/drafts/README.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/drafts/README.md",
+      "heading_count": 1,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/drafts/README.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/contracts/PYTHON_ADOPTION_REVIEW.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/contracts/PYTHON_ADOPTION_REVIEW.md",
+      "heading_count": 6,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/contracts/PYTHON_ADOPTION_REVIEW.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/documentation-review/CI_SNAPSHOT.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/documentation-review/CI_SNAPSHOT.md",
+      "heading_count": 4,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/documentation-review/CI_SNAPSHOT.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/documentation-review/POST_GREEN_RESEARCH.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/documentation-review/POST_GREEN_RESEARCH.md",
+      "heading_count": 10,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/documentation-review/POST_GREEN_RESEARCH.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/lean-review/REVIEW.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/lean-review/REVIEW.md",
+      "heading_count": 4,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/lean-review/REVIEW.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/lean-review/SEMANTIC_REVIEW.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/lean-review/SEMANTIC_REVIEW.md",
+      "heading_count": 7,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/lean-review/SEMANTIC_REVIEW.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage1/INTEGRATION_POST_GREEN.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage1/INTEGRATION_POST_GREEN.md",
+      "heading_count": 10,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage1/INTEGRATION_POST_GREEN.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage1/ci-harvest/CI_HARVEST.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage1/ci-harvest/CI_HARVEST.md",
+      "heading_count": 1,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage1/ci-harvest/CI_HARVEST.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage1/comb/POST_GREEN_RESEARCH.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage1/comb/POST_GREEN_RESEARCH.md",
+      "heading_count": 10,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage1/comb/POST_GREEN_RESEARCH.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage1/contracts/FIRST_CELL_INDEPENDENT_REVIEW.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage1/contracts/FIRST_CELL_INDEPENDENT_REVIEW.md",
+      "heading_count": 3,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage1/contracts/FIRST_CELL_INDEPENDENT_REVIEW.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage1/contracts/HANDOVER.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage1/contracts/HANDOVER.md",
+      "heading_count": 6,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage1/contracts/HANDOVER.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage1/first-cell/POST_GREEN_RESEARCH.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage1/first-cell/POST_GREEN_RESEARCH.md",
+      "heading_count": 9,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage1/first-cell/POST_GREEN_RESEARCH.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage1/multiplicity/NEXT_NATIVE_BRIDGE.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage1/multiplicity/NEXT_NATIVE_BRIDGE.md",
+      "heading_count": 2,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage1/multiplicity/NEXT_NATIVE_BRIDGE.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage1/multiplicity/POST_GREEN_RESEARCH.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage1/multiplicity/POST_GREEN_RESEARCH.md",
+      "heading_count": 10,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage1/multiplicity/POST_GREEN_RESEARCH.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage19/novelty/OPICA_NOVELTY_AND_DRIVE_AUDIT_2026-10-24.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage19/novelty/OPICA_NOVELTY_AND_DRIVE_AUDIT_2026-10-24.md",
+      "heading_count": 7,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage19/novelty/OPICA_NOVELTY_AND_DRIVE_AUDIT_2026-10-24.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage19/novelty/SAMPLE_SIGN_INDEPENDENT_AUDIT_2026-10-24.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage19/novelty/SAMPLE_SIGN_INDEPENDENT_AUDIT_2026-10-24.md",
+      "heading_count": 6,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage19/novelty/SAMPLE_SIGN_INDEPENDENT_AUDIT_2026-10-24.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage19/python/VALIDATION.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage19/python/VALIDATION.md",
+      "heading_count": 1,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage19/python/VALIDATION.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage19/support/h2/MATHEMATICAL_AUDIT_2026-10-24.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage19/support/h2/MATHEMATICAL_AUDIT_2026-10-24.md",
+      "heading_count": 9,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage19/support/h2/MATHEMATICAL_AUDIT_2026-10-24.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage19/support/h2/right-cell/RIGHT_CELL_H2A_PROGRESS_2026-10-24.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage19/support/h2/right-cell/RIGHT_CELL_H2A_PROGRESS_2026-10-24.md",
+      "heading_count": 6,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage19/support/h2/right-cell/RIGHT_CELL_H2A_PROGRESS_2026-10-24.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage19/support/rate/POST_GREEN_RATE_REPORT_2026-10-24.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage19/support/rate/POST_GREEN_RATE_REPORT_2026-10-24.md",
+      "heading_count": 10,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage19/support/rate/POST_GREEN_RATE_REPORT_2026-10-24.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage19/workflow/HARVEST.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage19/workflow/HARVEST.md",
+      "heading_count": 12,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage19/workflow/HARVEST.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage19/workflow/LATER_HARVEST.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage19/workflow/LATER_HARVEST.md",
+      "heading_count": 6,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage19/workflow/LATER_HARVEST.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage2/FINAL_INTEGRATION_NOTE.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage2/FINAL_INTEGRATION_NOTE.md",
+      "heading_count": 1,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage2/FINAL_INTEGRATION_NOTE.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage2/INTEGRATION_POST_GREEN.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage2/INTEGRATION_POST_GREEN.md",
+      "heading_count": 10,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage2/INTEGRATION_POST_GREEN.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage2/ci-harvest/CI_HARVEST.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage2/ci-harvest/CI_HARVEST.md",
+      "heading_count": 1,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage2/ci-harvest/CI_HARVEST.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage2/documentation-fix/before/AUDIT.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage2/documentation-fix/before/AUDIT.md",
+      "heading_count": 29,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage2/documentation-fix/before/AUDIT.md",
+      "route_mentions": [
+        "R003_ccm_bridge"
+      ]
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage2/documentation-fix/before/FORK_NOTES.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage2/documentation-fix/before/FORK_NOTES.md",
+      "heading_count": 19,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage2/documentation-fix/before/FORK_NOTES.md",
+      "route_mentions": [
+        "R003_ccm_bridge"
+      ]
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage2/documentation-fix/before/research/RHRC/DOCUMENTATION_AUTHORITY.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage2/documentation-fix/before/research/RHRC/DOCUMENTATION_AUTHORITY.md",
+      "heading_count": 43,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage2/documentation-fix/before/research/RHRC/DOCUMENTATION_AUTHORITY.md",
+      "route_mentions": [
+        "R003_ccm_bridge"
+      ]
+    },
+    {
+      "claim_mentions": [
+        "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_PRIME_REMAINDER_NORMAL_FORM"
+      ],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage2/documentation-fix/before/research/RHRC/VALIDATION_PROTOCOL.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage2/documentation-fix/before/research/RHRC/VALIDATION_PROTOCOL.md",
+      "heading_count": 42,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage2/documentation-fix/before/research/RHRC/VALIDATION_PROTOCOL.md",
+      "route_mentions": [
+        "R003_ccm_bridge"
+      ]
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage2/documentation-fix/before/research/RHRC/graph/OPICA_FOLLOWUP_CURRENT_STATE.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage2/documentation-fix/before/research/RHRC/graph/OPICA_FOLLOWUP_CURRENT_STATE.md",
+      "heading_count": 5,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage2/documentation-fix/before/research/RHRC/graph/OPICA_FOLLOWUP_CURRENT_STATE.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [
+        "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
+        "C_RH",
+        "R001_PRIME_UPPER",
+        "R001_PRIME_UPPER_EQUIV_RH",
+        "R002_WINDOWED_VISIBILITY"
+      ],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage2/documentation-fix/before/research/RHRC/graph/README.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage2/documentation-fix/before/research/RHRC/graph/README.md",
+      "heading_count": 13,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage2/documentation-fix/before/research/RHRC/graph/README.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage2/documentation-fix/before/research/RHRC/integration/README.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage2/documentation-fix/before/research/RHRC/integration/README.md",
+      "heading_count": 7,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage2/documentation-fix/before/research/RHRC/integration/README.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage2/multiplicity/NATIVE_RESIDUAL_POST_GREEN.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage2/multiplicity/NATIVE_RESIDUAL_POST_GREEN.md",
+      "heading_count": 10,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage2/multiplicity/NATIVE_RESIDUAL_POST_GREEN.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage2/multiplicity/NATIVE_TOP_MOMENT_POST_GREEN.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage2/multiplicity/NATIVE_TOP_MOMENT_POST_GREEN.md",
+      "heading_count": 10,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage2/multiplicity/NATIVE_TOP_MOMENT_POST_GREEN.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage2/multiplicity/NEXT_NATIVE_BRIDGE.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage2/multiplicity/NEXT_NATIVE_BRIDGE.md",
+      "heading_count": 2,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage2/multiplicity/NEXT_NATIVE_BRIDGE.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage2/multiplicity/POST_GREEN_RESEARCH.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage2/multiplicity/POST_GREEN_RESEARCH.md",
+      "heading_count": 10,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage2/multiplicity/POST_GREEN_RESEARCH.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage2/multiplicity/STABLE_INPUT_POST_GREEN.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage2/multiplicity/STABLE_INPUT_POST_GREEN.md",
+      "heading_count": 10,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage2/multiplicity/STABLE_INPUT_POST_GREEN.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage2/multiplicity/STAGE2_NEXT_MATH_HANDOVER.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage2/multiplicity/STAGE2_NEXT_MATH_HANDOVER.md",
+      "heading_count": 5,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage2/multiplicity/STAGE2_NEXT_MATH_HANDOVER.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage2/multiplicity/STAGE2_POST_GREEN_RESEARCH.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage2/multiplicity/STAGE2_POST_GREEN_RESEARCH.md",
+      "heading_count": 10,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage2/multiplicity/STAGE2_POST_GREEN_RESEARCH.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage2/near-gap/POST_GREEN_RESEARCH.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage2/near-gap/POST_GREEN_RESEARCH.md",
+      "heading_count": 1,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage2/near-gap/POST_GREEN_RESEARCH.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage2/weighted/HANDOVER.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage2/weighted/HANDOVER.md",
+      "heading_count": 8,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage2/weighted/HANDOVER.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage2/weighted/POST_GREEN_RESEARCH.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage2/weighted/POST_GREEN_RESEARCH.md",
+      "heading_count": 7,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage2/weighted/POST_GREEN_RESEARCH.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage20/support/h2/H2A_GROUPED_PROOF_REPORT_2026-10-24.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage20/support/h2/H2A_GROUPED_PROOF_REPORT_2026-10-24.md",
+      "heading_count": 4,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage20/support/h2/H2A_GROUPED_PROOF_REPORT_2026-10-24.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage20/support/independent-review/H2A_INDEPENDENT_MATHEMATICAL_REVIEW_2026-10-24.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage20/support/independent-review/H2A_INDEPENDENT_MATHEMATICAL_REVIEW_2026-10-24.md",
+      "heading_count": 10,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage20/support/independent-review/H2A_INDEPENDENT_MATHEMATICAL_REVIEW_2026-10-24.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage20/support/rates/POST_GREEN_ARITHMETIC_CONSUMERS_2026-10-24.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage20/support/rates/POST_GREEN_ARITHMETIC_CONSUMERS_2026-10-24.md",
+      "heading_count": 10,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage20/support/rates/POST_GREEN_ARITHMETIC_CONSUMERS_2026-10-24.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage20/support/rates/POST_GREEN_FULL_WINDOW_RATES_2026-10-24.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage20/support/rates/POST_GREEN_FULL_WINDOW_RATES_2026-10-24.md",
+      "heading_count": 10,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage20/support/rates/POST_GREEN_FULL_WINDOW_RATES_2026-10-24.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage21/support/budget/POST_GREEN_FIXED_BASIS_BUDGET_2026-10-24.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage21/support/budget/POST_GREEN_FIXED_BASIS_BUDGET_2026-10-24.md",
+      "heading_count": 10,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage21/support/budget/POST_GREEN_FIXED_BASIS_BUDGET_2026-10-24.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage21/support/independent-review/ALL100_REVIEW_MATRIX.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage21/support/independent-review/ALL100_REVIEW_MATRIX.md",
+      "heading_count": 1,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage21/support/independent-review/ALL100_REVIEW_MATRIX.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage21/support/independent-review/INDEPENDENT_FINDINGS.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage21/support/independent-review/INDEPENDENT_FINDINGS.md",
+      "heading_count": 11,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage21/support/independent-review/INDEPENDENT_FINDINGS.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage21/support/novelty/DRIVE_COMPLETENESS_INCREMENT_2026-10-24.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage21/support/novelty/DRIVE_COMPLETENESS_INCREMENT_2026-10-24.md",
+      "heading_count": 5,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage21/support/novelty/DRIVE_COMPLETENESS_INCREMENT_2026-10-24.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage21/support/novelty/TEN_ROOT_NOVELTY_SYNTHESIS_2026-10-24.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage21/support/novelty/TEN_ROOT_NOVELTY_SYNTHESIS_2026-10-24.md",
+      "heading_count": 15,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage21/support/novelty/TEN_ROOT_NOVELTY_SYNTHESIS_2026-10-24.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage22/support/control-proposal/README.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage22/support/control-proposal/README.md",
+      "heading_count": 0,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage22/support/control-proposal/README.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage22/support/control-proposal/REPORT_MATH_SKIM_2026-10-24.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage22/support/control-proposal/REPORT_MATH_SKIM_2026-10-24.md",
+      "heading_count": 0,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage22/support/control-proposal/REPORT_MATH_SKIM_2026-10-24.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage22/support/independent-complex-mobius/POST_GREEN_RESEARCH.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage22/support/independent-complex-mobius/POST_GREEN_RESEARCH.md",
+      "heading_count": 1,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage22/support/independent-complex-mobius/POST_GREEN_RESEARCH.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage22/support/independent-complex-mobius/PROVENANCE.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage22/support/independent-complex-mobius/PROVENANCE.md",
+      "heading_count": 3,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage22/support/independent-complex-mobius/PROVENANCE.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage22/support/independent-expected-types/ADAPTATION_LOG.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage22/support/independent-expected-types/ADAPTATION_LOG.md",
+      "heading_count": 1,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage22/support/independent-expected-types/ADAPTATION_LOG.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage22/support/independent-expected-types/DOMAIN_AUDIT.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage22/support/independent-expected-types/DOMAIN_AUDIT.md",
+      "heading_count": 2,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage22/support/independent-expected-types/DOMAIN_AUDIT.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage22/support/independent-expected-types/HT2_COMPACT_EXTRACTION_README.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage22/support/independent-expected-types/HT2_COMPACT_EXTRACTION_README.md",
+      "heading_count": 1,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage22/support/independent-expected-types/HT2_COMPACT_EXTRACTION_README.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage22/support/independent-expected-types/PROVENANCE.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage22/support/independent-expected-types/PROVENANCE.md",
+      "heading_count": 1,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage22/support/independent-expected-types/PROVENANCE.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage22/support/independent-review/after-bridge/BRIDGE_REVIEW_ADDENDUM.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage22/support/independent-review/after-bridge/BRIDGE_REVIEW_ADDENDUM.md",
+      "heading_count": 6,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage22/support/independent-review/after-bridge/BRIDGE_REVIEW_ADDENDUM.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage22/support/independent-review/after-bridge/FINAL_EVIDENCE_AND_ACCEPTANCE.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage22/support/independent-review/after-bridge/FINAL_EVIDENCE_AND_ACCEPTANCE.md",
+      "heading_count": 1,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage22/support/independent-review/after-bridge/FINAL_EVIDENCE_AND_ACCEPTANCE.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage22/support/independent-review/full-review-preparation/complex-mobius-review/REVIEW.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage22/support/independent-review/full-review-preparation/complex-mobius-review/REVIEW.md",
+      "heading_count": 1,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage22/support/independent-review/full-review-preparation/complex-mobius-review/REVIEW.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage22/support/independent-review/ht2-ct13/REVIEW.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage22/support/independent-review/ht2-ct13/REVIEW.md",
+      "heading_count": 6,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage22/support/independent-review/ht2-ct13/REVIEW.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage22/support/independent-review/independent-types/REVIEW.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage22/support/independent-review/independent-types/REVIEW.md",
+      "heading_count": 6,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage22/support/independent-review/independent-types/REVIEW.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage22/support/independent-review/stage22/ALL100_ROOT_MATRIX.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage22/support/independent-review/stage22/ALL100_ROOT_MATRIX.md",
+      "heading_count": 1,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage22/support/independent-review/stage22/ALL100_ROOT_MATRIX.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage22/support/independent-review/stage22/ALL28_UNIT_MATRIX.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage22/support/independent-review/stage22/ALL28_UNIT_MATRIX.md",
+      "heading_count": 1,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage22/support/independent-review/stage22/ALL28_UNIT_MATRIX.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage22/support/independent-review/stage22/REREVIEW_FINDINGS.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage22/support/independent-review/stage22/REREVIEW_FINDINGS.md",
+      "heading_count": 8,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage22/support/independent-review/stage22/REREVIEW_FINDINGS.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage22/support/post-green/DERIVED_FINITE_POSITIVE_TEST_OBSERVABILITY_2026-10-24.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage22/support/post-green/DERIVED_FINITE_POSITIVE_TEST_OBSERVABILITY_2026-10-24.md",
+      "heading_count": 6,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage22/support/post-green/DERIVED_FINITE_POSITIVE_TEST_OBSERVABILITY_2026-10-24.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage22/support/post-green/DERIVED_FINITE_POSITIVE_TEST_OBSERVABILITY_ADDENDUM_2026-10-24.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage22/support/post-green/DERIVED_FINITE_POSITIVE_TEST_OBSERVABILITY_ADDENDUM_2026-10-24.md",
+      "heading_count": 1,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage22/support/post-green/DERIVED_FINITE_POSITIVE_TEST_OBSERVABILITY_ADDENDUM_2026-10-24.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage3/POST_GREEN_RESEARCH.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage3/POST_GREEN_RESEARCH.md",
+      "heading_count": 1,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/current-codex/stage3/POST_GREEN_RESEARCH.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/historical-codex-review/REMAINING_BUILD_WORK.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/historical-codex-review/REMAINING_BUILD_WORK.md",
+      "heading_count": 25,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/historical-codex-review/REMAINING_BUILD_WORK.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/historical-codex-review/REVIEW_AND_REMAINING_WORK.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/historical-codex-review/REVIEW_AND_REMAINING_WORK.md",
+      "heading_count": 7,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/historical-codex-review/REVIEW_AND_REMAINING_WORK.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/historical-codex-review/WORKFLOW_REFRESH.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/historical-codex-review/WORKFLOW_REFRESH.md",
+      "heading_count": 1,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/historical-codex-review/WORKFLOW_REFRESH.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/historical-codex-review/contracts/CONTRACT_REVIEW.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/historical-codex-review/contracts/CONTRACT_REVIEW.md",
+      "heading_count": 7,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/historical-codex-review/contracts/CONTRACT_REVIEW.md",
+      "route_mentions": [
+        "R001_exceptional_zero"
+      ]
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/provided/latest_repair_delivery/research/THREE_ROOT_GREEN_PASS.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/provided/latest_repair_delivery/research/THREE_ROOT_GREEN_PASS.md",
+      "heading_count": 10,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/evidence/provided/latest_repair_delivery/research/THREE_ROOT_GREEN_PASS.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/inputs/OPICA_Beyond_PR_Paper_Round2_2026-10-21.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/inputs/OPICA_Beyond_PR_Paper_Round2_2026-10-21.md",
+      "heading_count": 39,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/inputs/OPICA_Beyond_PR_Paper_Round2_2026-10-21.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/inputs/OPICA_End_to_End_Audit_Report_2026-10-21.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/inputs/OPICA_End_to_End_Audit_Report_2026-10-21.md",
+      "heading_count": 8,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/inputs/OPICA_End_to_End_Audit_Report_2026-10-21.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/inputs/OPICA_FOLLOWUP_PR_BUILD_SPEC_2026-10-21.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/inputs/OPICA_FOLLOWUP_PR_BUILD_SPEC_2026-10-21.md",
+      "heading_count": 165,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/inputs/OPICA_FOLLOWUP_PR_BUILD_SPEC_2026-10-21.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/inputs/OPICA_Final_Followup_Paper_Contract_2026-10-21.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/inputs/OPICA_Final_Followup_Paper_Contract_2026-10-21.md",
+      "heading_count": 6,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/inputs/OPICA_Final_Followup_Paper_Contract_2026-10-21.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/inputs/OPICA_Followup_Final_Audited_Paper_2026-10-21.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/inputs/OPICA_Followup_Final_Audited_Paper_2026-10-21.md",
+      "heading_count": 91,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/inputs/OPICA_Followup_Final_Audited_Paper_2026-10-21.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/inputs/OPICA_Followup_Paper_Contract_2026-10-21.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/inputs/OPICA_Followup_Paper_Contract_2026-10-21.md",
+      "heading_count": 12,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/inputs/OPICA_Followup_Paper_Contract_2026-10-21.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/inputs/OPICA_Followup_PostGreen_Amendment_v1_1_2026-10-21.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/inputs/OPICA_Followup_PostGreen_Amendment_v1_1_2026-10-21.md",
+      "heading_count": 7,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/inputs/OPICA_Followup_PostGreen_Amendment_v1_1_2026-10-21.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/inputs/OPICA_Lean_Implementation_Contract_2026-10-21.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/inputs/OPICA_Lean_Implementation_Contract_2026-10-21.md",
+      "heading_count": 36,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/inputs/OPICA_Lean_Implementation_Contract_2026-10-21.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/inputs/OPICA_Paper_Construction_v1_0_2026-10-21.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/inputs/OPICA_Paper_Construction_v1_0_2026-10-21.md",
+      "heading_count": 74,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/inputs/OPICA_Paper_Construction_v1_0_2026-10-21.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/provided/START_HERE.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/provided/START_HERE.md",
+      "heading_count": 5,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/provided/START_HERE.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/provided/docs/AGENT_HANDOVER.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/provided/docs/AGENT_HANDOVER.md",
+      "heading_count": 1,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/provided/docs/AGENT_HANDOVER.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [
+        "C_RH"
+      ],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/provided/docs/BUILD_INSTRUCTIONS.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/provided/docs/BUILD_INSTRUCTIONS.md",
+      "heading_count": 11,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/provided/docs/BUILD_INSTRUCTIONS.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/provided/docs/EVIDENCE_AND_PRECEDENCE.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/provided/docs/EVIDENCE_AND_PRECEDENCE.md",
+      "heading_count": 6,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/provided/docs/EVIDENCE_AND_PRECEDENCE.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/provided/docs/POST_GREEN_AND_PACKAGING_NOTE.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/provided/docs/POST_GREEN_AND_PACKAGING_NOTE.md",
+      "heading_count": 10,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/provided/docs/POST_GREEN_AND_PACKAGING_NOTE.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/provided/docs/REMAINING_WORK.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/provided/docs/REMAINING_WORK.md",
+      "heading_count": 24,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/provided/docs/REMAINING_WORK.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/continuation/2026-10-22/tools/stage_record/README.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/continuation/2026-10-22/tools/stage_record/README.md",
+      "heading_count": 4,
+      "path": "research/RHRC/integration/opica_followup/continuation/2026-10-22/tools/stage_record/README.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/paper/OPICA_End_to_End_Audit_Report_2026-10-21.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/paper/OPICA_End_to_End_Audit_Report_2026-10-21.md",
+      "heading_count": 8,
+      "path": "research/RHRC/integration/opica_followup/paper/OPICA_End_to_End_Audit_Report_2026-10-21.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/paper/OPICA_Final_Followup_Paper_Contract_2026-10-21.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/paper/OPICA_Final_Followup_Paper_Contract_2026-10-21.md",
+      "heading_count": 6,
+      "path": "research/RHRC/integration/opica_followup/paper/OPICA_Final_Followup_Paper_Contract_2026-10-21.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/opica_followup/paper/OPICA_Followup_Final_Audited_Paper_2026-10-21.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/opica_followup/paper/OPICA_Followup_Final_Audited_Paper_2026-10-21.md",
+      "heading_count": 91,
+      "path": "research/RHRC/integration/opica_followup/paper/OPICA_Followup_Final_Audited_Paper_2026-10-21.md",
       "route_mentions": []
     },
     {
@@ -1785,7 +3076,7 @@
       ]
     }
   ],
-  "entry_count": 160,
+  "entry_count": 287,
   "graph_theorem_promotion": false,
   "mention_semantics": "claim_mentions and route_mentions are exact textual-token navigation hints only; they do not establish support, implication, supersession, or theorem authority.",
   "schema_version": "RHKG-final-document-closure-1.0",

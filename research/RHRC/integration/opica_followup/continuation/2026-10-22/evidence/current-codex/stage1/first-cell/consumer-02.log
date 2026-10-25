@@ -1,0 +1,58 @@
+research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedFirstCell.lean:51:50: warning: 'ring' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedFirstCell.lean:51:50: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedFirstCell.lean:59:2: error: Type mismatch
+  h.right
+has type
+  Real.pi / 6 ≤ firstCellNegativeMass delta (-16) ∧ 8 * Real.pi / 6912 ≤ firstCellNegativeSincMass delta (-16)
+but is expected to have type
+  Real.pi / 6 ≤ firstCellNegativeMass delta (-16) ∧ 8 * Real.pi / (27 * 256) ≤ firstCellNegativeSincMass delta (-16)
+research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedFirstCell.lean:66:2: error: Type mismatch
+  h.right
+has type
+  Real.pi / 6 ≤ firstCellNegativeMass delta 16 ∧ 8 * Real.pi / 6912 ≤ firstCellNegativeSincMass delta 16
+but is expected to have type
+  Real.pi / 6 ≤ firstCellNegativeMass delta 16 ∧ 8 * Real.pi / (27 * 256) ≤ firstCellNegativeSincMass delta 16
+research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedFirstCell.lean:85:4: error: Type mismatch: After simplification, term
+  hQ
+ has type
+  ((1 / 4 - (↑0 + ↑gamma * I) ^ 2) / (↑0 + ↑gamma * I)).re = 0
+but is expected to have type
+  ((1 / 4 - (↑gamma * I) ^ 2) / (↑gamma * I)).re = 0
+research/RHRC/integration/opica_followup/continuation/2026-10-22/consumers/ExpectedFirstCell.lean:87:6: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  (I * ((1 / 4 - (0 + ↑gamma * I) ^ 2) / (0 + ↑gamma * I))).im
+in the target expression
+  (I * coPoissonComplexDensity (coPoissonRho 0 gamma) (Real.exp (Real.log x))).re =
+    Real.exp (-Real.log x / 2) *
+      ((I * ((1 / 4 - (↑0 + ↑gamma * I) ^ 2) / (↑0 + ↑gamma * I))).re * Real.sinh (0 * Real.log x) *
+          Real.cos (gamma * Real.log x) -
+        (I * ((1 / 4 - (↑0 + ↑gamma * I) ^ 2) / (↑0 + ↑gamma * I))).im * Real.cosh (0 * Real.log x) *
+          Real.sin (gamma * Real.log x))
+
+gamma x : ℝ
+hg : gamma ≠ 0
+hx : x ∈ Ioo 1 2
+hxpos : 0 < x
+h :
+  (I * coPoissonComplexDensity (coPoissonRho 0 gamma) (Real.exp (Real.log x))).re =
+    Real.exp (-Real.log x / 2) *
+      ((I * ((1 / 4 - (↑0 + ↑gamma * I) ^ 2) / (↑0 + ↑gamma * I))).re * Real.sinh (0 * Real.log x) *
+          Real.cos (gamma * Real.log x) -
+        (I * ((1 / 4 - (↑0 + ↑gamma * I) ^ 2) / (↑0 + ↑gamma * I))).im * Real.cosh (0 * Real.log x) *
+          Real.sin (gamma * Real.log x))
+hQ : ((1 / 4 - (↑0 + ↑gamma * I) ^ 2) / (↑0 + ↑gamma * I)).re = 0 * (1 / (4 * (0 ^ 2 + gamma ^ 2)) - 1)
+hAi : (I * ((1 / 4 - (0 + ↑gamma * I) ^ 2) / (0 + ↑gamma * I))).im = 0
+⊢ (I * coPoissonComplexDensity (coPoissonRho 0 gamma) x).re = 0
+'Zeta23.OPICAFollowup.zero_measure_first_cell_sign' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.OPICAFollowup.first_cell_negative_mass_cost' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OPICAStageOneExpected.expected_actual_zero_first_cell_cost' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OPICAStageOneExpected.expected_online_imaginary_projection_zero' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'OPICAStageOneExpected.expected_conjugate_pair_first_cell_cancellation' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

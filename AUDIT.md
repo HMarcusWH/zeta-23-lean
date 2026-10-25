@@ -1,5 +1,27 @@
 # RHRC formal audit — merged theorem authority PR #272; research evidence PR #223
 
+<!-- OPICA_AGENT_NAVIGATION_2026_10_22 -->
+## Current audit routing — 22 October 2026
+
+The active OPICA work is draft PR #294, following accepted parent PR #293.
+Read the [continuation guide](research/RHRC/integration/opica_followup/continuation/2026-10-22/README.md),
+[documentation and evidence index](research/RHRC/integration/opica_followup/continuation/2026-10-22/DOCUMENTATION_INDEX.md),
+[current root ledger](research/RHRC/integration/opica_followup/continuation/2026-10-22/ROOT_LEDGER_100.json) and [current module status](research/RHRC/integration/opica_followup/continuation/2026-10-22/MODULE_STATUS.md).
+Use the current-stage handover and exact source/evidence links from those pages;
+check the live head and actual CI before asserting current acceptance.
+
+The target remains 100 roots / 28 acceptance units. The ledger separates
+historical source-bound results, narrow local gates, candidates and absent
+implementations; current aggregate/release acceptance remains OPEN.
+The generated Control-v2 block and dated current/next wording below retain their
+historical authority scope. They do not describe current PR routing or accept
+the child package. Frozen specifications define obligations; live exact-source
+compiler/CI evidence determines what is proved. Graph/framework views do not.
+
+RH, Step 4 and the independent closing inequalities remain OPEN.
+
+---
+
 > **RH remains OPEN.**
 
 <!-- RHRC_CURRENT_STATE_BEGIN -->

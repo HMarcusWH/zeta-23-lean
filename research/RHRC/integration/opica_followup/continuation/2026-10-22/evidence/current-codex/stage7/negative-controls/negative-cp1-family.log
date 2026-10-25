@@ -1,0 +1,37 @@
+negative-cp1-family.lean:9:2: error: Type mismatch
+  renormalized_copoisson_tempered_family.left t
+has type
+  renormalizedCombKernel t =
+    dilatedCombDistribution t + dilatedCombDistribution (-t) -
+      ↑(Real.exp (t / 2)) • (TemperedDistribution.delta 0 + 𝓕 (TemperedDistribution.delta 0))
+but is expected to have type
+  renormalizedCombKernel t =
+    dilatedCombDistribution t - dilatedCombDistribution (-t) -
+      ↑(Real.exp (t / 2)) • (TemperedDistribution.delta 0 + 𝓕 (TemperedDistribution.delta 0))
+negative-cp1-family.lean:14:2: error: Type mismatch
+  renormalized_copoisson_tempered_family.left t
+has type
+  renormalizedCombKernel t =
+    dilatedCombDistribution t + dilatedCombDistribution (-t) -
+      ↑(Real.exp (t / 2)) • (TemperedDistribution.delta 0 + 𝓕 (TemperedDistribution.delta 0))
+but is expected to have type
+  renormalizedCombKernel t =
+    dilatedCombDistribution t + dilatedCombDistribution (-t) - ↑(Real.exp (t / 2)) • 𝓕 (TemperedDistribution.delta 0)
+negative-cp1-family.lean:19:2: error: Type mismatch
+  renormalized_copoisson_tempered_family.right.right.right.left t φ k hk
+has type
+  ‖(coPoissonA t) φ‖ ≤ latticeZetaConst k * (SchwartzMap.seminorm ℂ k 0) φ * Real.exp ((1 / 2 - ↑k) * t)
+but is expected to have type
+  ‖(coPoissonA t) φ‖ ≤ latticeZetaConst k * (SchwartzMap.seminorm ℂ k 0) φ * Real.exp (-↑k * t)
+negative-cp1-family.lean:22:2: error: Type mismatch
+  renormalized_copoisson_tempered_family.right.right.right.right.right.right.right.right.right.right.left lam
+has type
+  𝓕 (coPoissonFamily lam) = coPoissonFamily lam
+but is expected to have type
+  𝓕 (coPoissonFamily lam) = -coPoissonFamily lam
+negative-cp1-family.lean:25:2: error: Type mismatch
+  renormalized_copoisson_tempered_family.right.right.right.right.left k hk
+has type
+  ↑(latticeZetaConst k) = 2 * riemannZeta ↑k
+but is expected to have type
+  ↑(latticeZetaConst k) = riemannZeta ↑k

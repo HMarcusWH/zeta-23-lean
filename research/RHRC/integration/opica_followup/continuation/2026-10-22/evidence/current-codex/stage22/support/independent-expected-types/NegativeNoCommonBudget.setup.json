@@ -1,0 +1,18 @@
+{
+  "package": "Zeta23",
+  "isModule": false,
+  "plugins": [],
+  "dynlibs": [],
+  "options": {
+    "relaxedAutoImplicit": false,
+    "maxHeartbeats": 800000
+  },
+  "importArts": {
+    "CompactContinuousExtraction": [
+      [
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\audit-independent-expected-types\\CompactContinuousExtraction.olean"
+      ]
+    ]
+  },
+  "name": "NegativeNoCommonBudget"
+}

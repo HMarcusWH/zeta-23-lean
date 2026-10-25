@@ -1,0 +1,108 @@
+negative-boundary-amplitude.lean:8:2: error: Type mismatch
+  (generic_boundary_amplitude h12 h1).right.right.left
+has type
+  ∀ x ∈ Ioo 0 1, genericForcedProfile ρ x = 1 - boundaryAmplitude ρ * ↑x ^ (ρ - 1)
+but is expected to have type
+  ∀ x ∈ Ioo 0 1, genericForcedProfile ρ x = 1 + boundaryAmplitude ρ * ↑x ^ (ρ - 1)
+negative-boundary-amplitude.lean:12:2: error: Type mismatch
+  (generic_boundary_amplitude h12 h1).right.right.right.left
+has type
+  (∀ x ∈ Ioo 0 1, genericForcedProfile ρ x = 1) ↔ riemannZeta ρ = 0
+but is expected to have type
+  (∀ x ∈ Ioo 0 1, genericForcedProfile ρ x = 1) ↔ riemannZeta ρ ≠ 0
+negative-boundary-amplitude.lean:18:2: error: Type mismatch
+  (generic_boundary_amplitude h12 h1).right.right.right.right.right
+has type
+  ∃ C,
+    0 ≤ C ∧
+      ∀ (x : ℝ),
+        1 ≤ x →
+          ‖genericForcedProfile ρ x -
+                (-(riemannZeta (1 - ρ) / normalizationBrho ρ) * ↑x ^ (-ρ) +
+                  spectralKappa ρ * ↑(bernoulliTwo x) / (2 * ↑x ^ 2))‖ ≤
+            C * x ^ (-3)
+but is expected to have type
+  ∃ C,
+    0 ≤ C ∧
+      ∀ (x : ℝ),
+        1 ≤ x →
+          ‖genericForcedProfile ρ x -
+                (-(riemannZeta ρ / normalizationBrho ρ) * ↑x ^ (ρ - 1) +
+                  spectralKappa ρ * ↑(bernoulliTwo x) / (2 * ↑x ^ 2))‖ ≤
+            C * x ^ (-3)
+negative-boundary-amplitude.lean:22:33: error: Application type mismatch: The argument
+  h0
+has type
+  0 < ρ.re
+but is expected to have type
+  1 / 2 < re ?m.12
+in the application
+  generic_forced_profile_unique h0
+negative-boundary-amplitude.lean:26:2: error: Invalid projection: Projections cannot be used on functions, and
+  generic_forced_profile_unique h12 h1
+has function type
+  ρ.im ≠ 0 →
+    LogFormDomain (genericForcedProfile ρ) (genericForcedProfileDeriv ρ) ∧
+      (∀ (φ : ℝ → ℂ),
+          PositiveAxisTest φ →
+            ∫ (x : ℝ) in Ioi 0, ↑x ^ 2 * genericForcedProfileDeriv ρ x * deriv φ x =
+              spectralKappa ρ * ((∫ (x : ℝ) in Ioi 0, (genericForcedProfile ρ x - 1) * φ x) + ∑' (n : ℕ), φ (↑n + 1))) ∧
+        (∀ (g g' : ℝ → ℂ),
+            LogFormDomain g g' →
+              (∀ (φ : ℝ → ℂ),
+                  PositiveAxisTest φ →
+                    ∫ (x : ℝ) in Ioi 0, ↑x ^ 2 * g' x * deriv φ x =
+                      spectralKappa ρ * ((∫ (x : ℝ) in Ioi 0, (g x - 1) * φ x) + ∑' (n : ℕ), φ (↑n + 1))) →
+                ∀ (x : ℝ), 0 < x → g x = genericForcedProfile ρ x) ∧
+          LogH1 (logUnitary (genericForcedProfile ρ))
+              (logUnitaryDeriv (genericForcedProfile ρ) (genericForcedProfileDeriv ρ)) ∧
+            (∀ (φ : 𝓢(ℝ, ℂ)),
+                (∫ (t : ℝ), logUnitaryDeriv (genericForcedProfile ρ) (genericForcedProfileDeriv ρ) t * deriv (⇑φ) t) +
+                    (1 / 4 - spectralKappa ρ) * ∫ (t : ℝ), logUnitary (genericForcedProfile ρ) t * φ t =
+                  spectralKappa ρ * nativeLogForce φ) ∧
+              (∀ (D D' : ℝ → ℂ),
+                  LogH1 D D' →
+                    (∀ (φ : 𝓢(ℝ, ℂ)),
+                        (∫ (t : ℝ), D' t * deriv (⇑φ) t) + (1 / 4 - spectralKappa ρ) * ∫ (t : ℝ), D t * φ t =
+                          spectralKappa ρ * nativeLogForce φ) →
+                      D = logUnitary (genericForcedProfile ρ)) ∧
+                (∀ (ξ : ℝ),
+                    logFourier (logUnitary (genericForcedProfile ρ)) ξ =
+                      spectralKappa ρ * riemannZeta (1 / 2 + ↑ξ * I) / (↑(spectralEnergy ξ) - spectralKappa ρ)) ∧
+                  logUnitary (genericForcedProfile ρ) = nativeLogResolvent (spectralKappa ρ) ∧
+                    (∀ (x : ℝ),
+                        0 < x → x ≤ 1 → ‖genericForcedProfile ρ x‖ ≤ (1 + ‖boundaryAmplitude ρ‖) * x ^ (ρ.re - 1)) ∧
+                      (∀ (x : ℝ),
+                          0 < x →
+                            x < 1 →
+                              ‖genericForcedProfileDeriv ρ x‖ = ‖boundaryAmplitude ρ * (ρ - 1)‖ * x ^ (ρ.re - 2)) ∧
+                        (∃ C, 0 ≤ C ∧ ∀ (x : ℝ), 1 ≤ x → ‖genericForcedProfile ρ x‖ ≤ C * x ^ (-ρ.re)) ∧
+                          ∃ C, 0 ≤ C ∧ ∀ (x : ℝ), 1 ≤ x → ‖genericForcedProfileDeriv ρ x‖ ≤ C * x ^ (-ρ.re - 1)
+negative-boundary-amplitude.lean:31:2: error: Type mismatch
+  (generic_forced_profile_unique h12 h1 him).right.right.right.right.right.right.left ξ
+has type
+  logFourier (logUnitary (genericForcedProfile ρ)) ξ =
+    spectralKappa ρ * riemannZeta (1 / 2 + ↑ξ * I) / (↑(spectralEnergy ξ) - spectralKappa ρ)
+but is expected to have type
+  logFourier (logUnitary (genericForcedProfile ρ)) ξ =
+    spectralKappa ρ * riemannZeta (1 / 2 + ↑ξ * I) / (↑(spectralEnergy ξ) + spectralKappa ρ)
+negative-boundary-amplitude.lean:37:2: error: Type mismatch
+  (generic_forced_profile_unique h12 h1 him).right.left φ hφ
+has type
+  ∫ (x : ℝ) in Ioi 0, ↑x ^ 2 * genericForcedProfileDeriv ρ x * deriv φ x =
+    spectralKappa ρ * ((∫ (x : ℝ) in Ioi 0, (genericForcedProfile ρ x - 1) * φ x) + ∑' (n : ℕ), φ (↑n + 1))
+but is expected to have type
+  ∫ (x : ℝ) in Ioi 0, ↑x ^ 2 * genericForcedProfileDeriv ρ x * deriv φ x =
+    spectralKappa ρ * ∫ (x : ℝ) in Ioi 0, (genericForcedProfile ρ x - 1) * φ x
+negative-boundary-amplitude.lean:41:2: error: Type mismatch
+  (generic_forced_profile_unique h12 h1 him).right.right.right.right.right.right.right.left
+has type
+  logUnitary (genericForcedProfile ρ) = nativeLogResolvent (spectralKappa ρ)
+but is expected to have type
+  logUnitary (genericForcedProfile ρ) = nativeLogResolvent ((starRingEnd ℂ) (spectralKappa ρ))
+negative-boundary-amplitude.lean:46:2: error: Type mismatch
+  (generic_forced_profile_unique h12 h1 him).right.right.right.right.right.right.right.right.left
+has type
+  ∀ (x : ℝ), 0 < x → x ≤ 1 → ‖genericForcedProfile ρ x‖ ≤ (1 + ‖boundaryAmplitude ρ‖) * x ^ (ρ.re - 1)
+but is expected to have type
+  ∀ (x : ℝ), 0 < x → x ≤ 1 → ‖genericForcedProfile ρ x‖ ≤ (1 + ‖boundaryAmplitude ρ‖) * x ^ ρ.re

@@ -1,0 +1,135 @@
+{
+  "status": "PASS_DOCUMENTATION_REVISION",
+  "runs": [
+    {
+      "label": "preflight",
+      "mode": "normal",
+      "command": [
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\tools\\python-3.13.5-embed-amd64\\python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\research\\RHRC\\integration\\opica_followup\\validate_contract.py",
+        "--phase",
+        "preflight",
+        "--output",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-docs-2026-10-22\\preflight-normal.json"
+      ],
+      "exit_code": 0,
+      "disposition": "PASS_PREPARATION_ONLY",
+      "log": "preflight-normal.log",
+      "log_sha256": "20f1de7c3ee8d3a634cff26833acfd57902d8c7823dc4e759f47829a644025b2"
+    },
+    {
+      "label": "release",
+      "mode": "normal",
+      "command": [
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\tools\\python-3.13.5-embed-amd64\\python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\research\\RHRC\\integration\\opica_followup\\validate_contract.py",
+        "--phase",
+        "release",
+        "--output",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-docs-2026-10-22\\release-normal.json"
+      ],
+      "exit_code": 1,
+      "disposition": "FAIL_RELEASE_INCOMPLETE",
+      "log": "release-normal.log",
+      "log_sha256": "ca69b1244525da62b2c52eafd0b2d8cb94b6d840987aa1ba172abf2ee46b4c70"
+    },
+    {
+      "label": "child-suite",
+      "mode": "normal",
+      "command": [
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\tools\\python-3.13.5-embed-amd64\\python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\research\\RHRC\\integration\\opica_followup\\tests",
+        "-p",
+        "test_*.py"
+      ],
+      "exit_code": 0,
+      "disposition": "Ran 149 tests",
+      "log": "child-suite-normal.log",
+      "log_sha256": "e6a23c56582466718e317982509478cb5a29993c448e54f42ef6670b61e9643a"
+    },
+    {
+      "label": "preflight",
+      "mode": "optimized",
+      "command": [
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\tools\\python-3.13.5-embed-amd64\\python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "-O",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\research\\RHRC\\integration\\opica_followup\\validate_contract.py",
+        "--phase",
+        "preflight",
+        "--output",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-docs-2026-10-22\\preflight-optimized.json"
+      ],
+      "exit_code": 0,
+      "disposition": "PASS_PREPARATION_ONLY",
+      "log": "preflight-optimized.log",
+      "log_sha256": "20f1de7c3ee8d3a634cff26833acfd57902d8c7823dc4e759f47829a644025b2"
+    },
+    {
+      "label": "release",
+      "mode": "optimized",
+      "command": [
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\tools\\python-3.13.5-embed-amd64\\python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "-O",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\research\\RHRC\\integration\\opica_followup\\validate_contract.py",
+        "--phase",
+        "release",
+        "--output",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-docs-2026-10-22\\release-optimized.json"
+      ],
+      "exit_code": 1,
+      "disposition": "FAIL_RELEASE_INCOMPLETE",
+      "log": "release-optimized.log",
+      "log_sha256": "ca69b1244525da62b2c52eafd0b2d8cb94b6d840987aa1ba172abf2ee46b4c70"
+    },
+    {
+      "label": "child-suite",
+      "mode": "optimized",
+      "command": [
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\tools\\python-3.13.5-embed-amd64\\python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "-O",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "C:\\Users\\macka\\.codex\\.chatgpt-projects\\g-p-6a353c7268b08191b685956e466d73e4\\work\\opica-followup-repo\\research\\RHRC\\integration\\opica_followup\\tests",
+        "-p",
+        "test_*.py"
+      ],
+      "exit_code": 0,
+      "disposition": "Ran 149 tests",
+      "log": "child-suite-optimized.log",
+      "log_sha256": "a8f783cb6d1b8f2ba445d5e2e74abd20172f819064266f62bee7a3634dc97005"
+    }
+  ],
+  "unchanged_original_contracts": 100,
+  "unchanged_normative_workflow_jobs": 7,
+  "actual_draft_workflow_jobs": 5,
+  "mathematical_source_changes": [],
+  "aggregate_acceptance": false,
+  "full_release_accepted": false,
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "independent_closing_inequalities": "OPEN"
+}

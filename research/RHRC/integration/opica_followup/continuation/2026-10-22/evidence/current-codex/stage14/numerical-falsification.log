@@ -1,0 +1,24 @@
+cutoff X = 400, 9600 nodes
+weighted moment int d omega/a = 1.2606680297 (+ tail 5.02e-03) vs log(2 pi) - gamma = 1.2606614015
+kappa = (-1+0j): M = (0.4603742143+0j)
+   M'(kappa): finite difference (0.21321161+0j) vs int d omega/(a-kappa)^2 = (0.21321161+0j)
+kappa = 1j: M = (0.3296063247+0.3495416765j)
+   Im M/Im kappa = 0.3495416765 vs int d omega/|a-kappa|^2 = 0.3495416765  (diff 5.6e-17)
+   |M| = 0.480437 <= (1+|k|/|Im k|) budget = 2.521323;  int d omega/|a-k|^2 = 0.349542 <= 2.521323
+   falsification: -int d omega/|a-k|^2 = -0.349542 has the wrong sign; |k|/|Im k| budget = 1.260661
+   M'(kappa): finite difference (-0.20730542+0.23047853j) vs int d omega/(a-kappa)^2 = (-0.20730542+0.23047853j)
+kappa = (1+5j): M = (0.1422043097+0.1181315583j)
+   Im M/Im kappa = 0.0236263117 vs int d omega/|a-kappa|^2 = 0.0236263117  (diff 3.5e-18)
+   |M| = 0.184871 <= (1+|k|/|Im k|) budget = 2.546289;  int d omega/|a-k|^2 = 0.023626 <= 0.509258
+   falsification: -int d omega/|a-k|^2 = -0.023626 has the wrong sign; |k|/|Im k| budget = 1.285627
+   M'(kappa): finite difference (-0.01707925+0.00125356j) vs int d omega/(a-kappa)^2 = (-0.01707925+0.00125356j)
+kappa = (0.2+0.01j): M = (3.4500707684+0.4230964593j)
+   Im M/Im kappa = 42.3096459278 vs int d omega/|a-kappa|^2 = 42.3096459278  (diff 7.1e-15)
+   |M| = 3.475917 <= (1+|k|/|Im k|) budget = 26.505386;  int d omega/|a-k|^2 = 42.309646 <= 2650.538629
+   falsification: -int d omega/|a-k|^2 = -42.309646 has the wrong sign; |k|/|Im k| budget = 25.244725
+   M'(kappa): finite difference (40.14261282+12.84078707j) vs int d omega/(a-kappa)^2 = (40.14253023+12.84071795j)
+kappa = (200+3j): M = (0.0644079206+0.0052799377j)
+   Im M/Im kappa = 0.0017599792 vs int d omega/|a-kappa|^2 = 0.0017599792  (diff 6.5e-19)
+   |M| = 0.064624 <= (1+|k|/|Im k|) budget = 85.314209;  int d omega/|a-k|^2 = 0.001760 <= 28.438070
+   falsification: -int d omega/|a-k|^2 = -0.001760 has the wrong sign; |k|/|Im k| budget = 84.053548
+   M'(kappa): finite difference (0.00168108+7.23e-06j) vs int d omega/(a-kappa)^2 = (0.00168108+7.23e-06j)

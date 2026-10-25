@@ -1,0 +1,36 @@
+negative-ht2.lean:13:66: error: Application type mismatch: The argument
+  hlim
+has type
+  Tendsto a atTop (𝓝 (1 / 2))
+but is expected to have type
+  Tendsto a atTop (𝓝 1)
+in the application
+  near_gap_controlled_limit_zero nu C hC hself a ha ha1 hgap hoff hlim
+negative-ht2.lean:22:2: error: Type mismatch
+  near_gap_controlled_limit_zero nu C hC hself a ha ha1 hgap hoff hlim
+has type
+  ∀ (φ : SchwartzMap ℝ ℂ), Tendsto (fun n => ((nu n).distributionOfLinearGrowth ⋯) φ) atTop (𝓝 0)
+but is expected to have type
+  Tendsto (fun n => (nu n).totalVariation.real (Icc (-1) 1)) atTop (𝓝 0)
+negative-ht2.lean:31:74: error: Tactic `assumption` failed
+
+nu : ℕ → LocallyFiniteSignedMeasure
+C : ℝ
+hC : ∀ (n : ℕ), CommonLinearMassBound C (nu n).totalVariation
+hself : ∀ (n : ℕ), (nu n).FourierSelfdual ⋯
+a : ℕ → ℝ
+ha : ∀ (n : ℕ), 0 < a n
+ha1 : ∀ (n : ℕ), a n ≤ 1
+hgap : ∀ (n : ℕ), hasNearGap (nu n) (a n)
+hlim : Tendsto a atTop (𝓝 1)
+φ : SchwartzMap ℝ ℂ
+n : ℕ
+⊢ (nu n).OffLatticeNonnegative
+negative-ht2.lean:36:4: error: Application type mismatch: The argument
+  tendsto_const_nhds
+has type
+  Tendsto (fun x => ?m.19) ?m.20 (𝓝 ?m.19)
+but is expected to have type
+  Tendsto (fun x => L) atTop (𝓝 0)
+in the application
+  nearGapCombFamily_controlled_limit (fun x => L) (fun x => hL) (fun x => hu) tendsto_const_nhds

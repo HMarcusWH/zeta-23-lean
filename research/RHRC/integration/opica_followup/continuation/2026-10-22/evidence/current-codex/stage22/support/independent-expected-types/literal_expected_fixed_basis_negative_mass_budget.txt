@@ -1,0 +1,11 @@
+theorem expected_fixed_basis_negative_mass_budget
+    {n : ℕ} (basis : Fin n → List JetDatum)
+    (valid : ∀ i, ∀ j ∈ basis i, ValidJet j)
+    (independent : LinearIndependent ℝ (fun i =>
+      (zeroJetRealSpan (basis i)).distributionOfLinearGrowth (zeroJetRealSpan_growth _ (valid i)))) :
+    ∃ c : ℝ, 0 < c ∧ ∀ a : Fin n → ℝ,
+      (c * Real.sqrt (∑ i, (a i)^2) ≤
+        ∫ x : ℝ in integerLatticeᶜ, sincSquared x
+          ∂(zeroJetRealSpan (realBasisCombinationData basis a)).negative) ∧
+      c * Real.sqrt (∑ i, (a i)^2) ≤
+        ∫ x : ℝ, sincSquared x ∂(zeroJetRealSpan (realBasisCombinationData basis a)).negative

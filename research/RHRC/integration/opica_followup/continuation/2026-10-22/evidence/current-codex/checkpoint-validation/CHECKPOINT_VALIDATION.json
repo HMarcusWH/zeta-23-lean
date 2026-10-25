@@ -1,0 +1,42 @@
+{
+  "schema": "OPICA_CHECKPOINT_VALIDATION_V1",
+  "date": "2026-10-22",
+  "base_commit": "9b6a9a3a2badb4cff62a56c1158d9cef8759d30d",
+  "working_tree": "Combined draft overlays; not a fresh clean-commit aggregate receipt",
+  "python": "3.13.5 native Windows",
+  "child_test_command": "python [-O] -m unittest discover -s research/RHRC/integration/opica_followup/tests -p test_*.py",
+  "child_runs": [
+    {
+      "mode": "normal",
+      "tests": 148,
+      "result": "PASS",
+      "log": "current-child-normal.log",
+      "sha256": "600cdbdc4eed37c3c5ac6106e8ae508c2dfe649e03174017da0a27200f2d4d6d"
+    },
+    {
+      "mode": "optimized",
+      "tests": 148,
+      "result": "PASS",
+      "log": "current-child-optimized.log",
+      "sha256": "e9425f9d08239cee5c4f35748237448c1b79aa968457772b9d85c3fff981c2ee"
+    }
+  ],
+  "parent_tests": "66 runnable per mode passed; full68 native runs retain2 environment failures (symlink privilege and unavailable historical Git object). Supplied Linux68 evidence is separate.",
+  "checkpoint_contract_tests": "../contracts/CHECKPOINT_TEST_EXECUTIONS.json",
+  "lean_results": "../lean-review/STATUS.json",
+  "scope": {
+    "historical_exact_source_subset_roots": 41,
+    "additional_narrow_local_primary_roots": 6,
+    "other_unaccepted_candidates": 5,
+    "absent_complete_candidates": 48,
+    "original_primary_roots": 100,
+    "acceptance_units": 28
+  },
+  "preflight_scope": "Preparation and exact artifact inventory only; rerun after manifest refresh",
+  "workflow_syntax": "Parsed five jobs; unchanged full-release command and distinct narrow candidate lane",
+  "full_release_accepted": false,
+  "aggregate_registration_accepted": false,
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "independent_closing_inequalities": "OPEN"
+}

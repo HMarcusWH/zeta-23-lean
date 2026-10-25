@@ -1,0 +1,1295 @@
+{
+  "schema": "OPICA_STAGE2_STAGE1_HEAD_BOUNDED_CI_V1",
+  "status": "PENDING_CI_NO_RESULT_PROMOTION",
+  "capture_start_utc": "2026-10-22T15:15:02Z",
+  "job_artifact_reads_finished_utc": "2026-10-22T15:15:54Z",
+  "source": {
+    "head": "96dfba7082fb0cc7a93f7b25e31d449951ee9e4d",
+    "tree": "c7a86500bcb1fb9fee009cb4b4500ed8927aae82",
+    "PR": 294,
+    "draft": true
+  },
+  "run_count": 22,
+  "events": {
+    "pull_request": 21,
+    "push": 1
+  },
+  "materialized_job_count": 38,
+  "job_status_counts": {
+    "queued": 37,
+    "completed": 1
+  },
+  "completed_conclusions": {
+    "skipped": 1
+  },
+  "scientific_completed_results": 0,
+  "artifacts_observed": 0,
+  "jobs": [
+    {
+      "run_id": 39802254947,
+      "workflow_path": ".github/workflows/rhrc.yml",
+      "event": "pull_request",
+      "head_sha": "96dfba7082fb0cc7a93f7b25e31d449951ee9e4d",
+      "workflow_attempt": 1,
+      "job_attempt": 1,
+      "job_id": 119906023497,
+      "name": "r003-normalization-audit",
+      "classification": "REGRESSION GATE",
+      "status": "queued",
+      "conclusion": null,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39802254947/job/119906023497",
+      "disposition": "PENDING: queued; no formal or scientific result observed.",
+      "previous_9cce_job": {
+        "job_id": 119868502929,
+        "status": "queued",
+        "conclusion": null,
+        "disposition": "PENDING: queued; result and scientific disposition unobserved."
+      }
+    },
+    {
+      "run_id": 39802254947,
+      "workflow_path": ".github/workflows/rhrc.yml",
+      "event": "pull_request",
+      "head_sha": "96dfba7082fb0cc7a93f7b25e31d449951ee9e4d",
+      "workflow_attempt": 1,
+      "job_attempt": 1,
+      "job_id": 119906023933,
+      "name": "rhkg-compiler-receipt",
+      "classification": "FORMAL VALIDITY GATE",
+      "status": "queued",
+      "conclusion": null,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39802254947/job/119906023933",
+      "disposition": "PENDING: queued; no formal or scientific result observed.",
+      "previous_9cce_job": {
+        "job_id": 119868502278,
+        "status": "in_progress",
+        "conclusion": null,
+        "disposition": "PENDING: in_progress; result and scientific disposition unobserved."
+      }
+    },
+    {
+      "run_id": 39802254947,
+      "workflow_path": ".github/workflows/rhrc.yml",
+      "event": "pull_request",
+      "head_sha": "96dfba7082fb0cc7a93f7b25e31d449951ee9e4d",
+      "workflow_attempt": 1,
+      "job_attempt": 1,
+      "job_id": 119906023981,
+      "name": "python-rhrc",
+      "classification": "FORMAL VALIDITY GATE",
+      "status": "queued",
+      "conclusion": null,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39802254947/job/119906023981",
+      "disposition": "PENDING: queued; no formal or scientific result observed.",
+      "previous_9cce_job": {
+        "job_id": 119868502896,
+        "status": "queued",
+        "conclusion": null,
+        "disposition": "PENDING: queued; result and scientific disposition unobserved."
+      }
+    },
+    {
+      "run_id": 39802254947,
+      "workflow_path": ".github/workflows/rhrc.yml",
+      "event": "pull_request",
+      "head_sha": "96dfba7082fb0cc7a93f7b25e31d449951ee9e4d",
+      "workflow_attempt": 1,
+      "job_attempt": 1,
+      "job_id": 119906024041,
+      "name": "lean",
+      "classification": "FORMAL VALIDITY GATE",
+      "status": "queued",
+      "conclusion": null,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39802254947/job/119906024041",
+      "disposition": "PENDING: queued; no formal or scientific result observed.",
+      "previous_9cce_job": {
+        "job_id": 119868502718,
+        "status": "queued",
+        "conclusion": null,
+        "disposition": "PENDING: queued; result and scientific disposition unobserved."
+      }
+    },
+    {
+      "run_id": 39802254782,
+      "workflow_path": ".github/workflows/rhrc_post284_source_inertia.yml",
+      "event": "pull_request",
+      "head_sha": "96dfba7082fb0cc7a93f7b25e31d449951ee9e4d",
+      "workflow_attempt": 1,
+      "job_attempt": 1,
+      "job_id": 119906070329,
+      "name": "source-falsifier-research",
+      "classification": "RESEARCH-PRODUCING CHECK",
+      "status": "queued",
+      "conclusion": null,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39802254782/job/119906070329",
+      "disposition": "PENDING: queued; no formal or scientific result observed.",
+      "previous_9cce_job": {
+        "job_id": 119868443140,
+        "status": "in_progress",
+        "conclusion": null,
+        "disposition": "PENDING: in_progress; result and scientific disposition unobserved."
+      }
+    },
+    {
+      "run_id": 39802254782,
+      "workflow_path": ".github/workflows/rhrc_post284_source_inertia.yml",
+      "event": "pull_request",
+      "head_sha": "96dfba7082fb0cc7a93f7b25e31d449951ee9e4d",
+      "workflow_attempt": 1,
+      "job_attempt": 1,
+      "job_id": 119906070392,
+      "name": "lean-source-inertia",
+      "classification": "FORMAL VALIDITY GATE",
+      "status": "queued",
+      "conclusion": null,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39802254782/job/119906070392",
+      "disposition": "PENDING: queued; no formal or scientific result observed.",
+      "previous_9cce_job": {
+        "job_id": 119868517154,
+        "status": "completed",
+        "conclusion": "success",
+        "disposition": "PASS existing source-inertia Lean target; running source-falsifier result remains separate."
+      }
+    },
+    {
+      "run_id": 39802254782,
+      "workflow_path": ".github/workflows/rhrc_post284_source_inertia.yml",
+      "event": "pull_request",
+      "head_sha": "96dfba7082fb0cc7a93f7b25e31d449951ee9e4d",
+      "workflow_attempt": 1,
+      "job_attempt": 1,
+      "job_id": 119906132292,
+      "name": "post287-full-k3",
+      "classification": "RESEARCH-PRODUCING CHECK",
+      "status": "completed",
+      "conclusion": "skipped",
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39802254782/job/119906132292",
+      "disposition": "SKIPPED: workflow_dispatch plus full_k3 input required; pull_request condition false. No scientific result.",
+      "previous_9cce_job": {
+        "job_id": 119868464175,
+        "status": "completed",
+        "conclusion": "skipped",
+        "disposition": "SKIPPED: post287-full-k3 requires workflow_dispatch/full_k3 input."
+      }
+    },
+    {
+      "run_id": 39802254904,
+      "workflow_path": ".github/workflows/rhrc_post200_q14_discrepancy_mechanism.yml",
+      "event": "pull_request",
+      "head_sha": "96dfba7082fb0cc7a93f7b25e31d449951ee9e4d",
+      "workflow_attempt": 1,
+      "job_attempt": 1,
+      "job_id": 119905864641,
+      "name": "post200-q14-discrepancy-mechanism",
+      "classification": "RESEARCH-PRODUCING CHECK",
+      "status": "queued",
+      "conclusion": null,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39802254904/job/119905864641",
+      "disposition": "PENDING: queued; no formal or scientific result observed.",
+      "previous_9cce_job": {
+        "job_id": 119868478872,
+        "status": "in_progress",
+        "conclusion": null,
+        "disposition": "PENDING: in_progress; result and scientific disposition unobserved."
+      }
+    },
+    {
+      "run_id": 39802254962,
+      "workflow_path": ".github/workflows/rhrc_post194_parity_trajectory_sharp_enclosure.yml",
+      "event": "pull_request",
+      "head_sha": "96dfba7082fb0cc7a93f7b25e31d449951ee9e4d",
+      "workflow_attempt": 1,
+      "job_attempt": 1,
+      "job_id": 119905868587,
+      "name": "post194-parity-trajectory-sharp-enclosure",
+      "classification": "RESEARCH-PRODUCING CHECK",
+      "status": "queued",
+      "conclusion": null,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39802254962/job/119905868587",
+      "disposition": "PENDING: queued; no formal or scientific result observed.",
+      "previous_9cce_job": {
+        "job_id": 119867722158,
+        "status": "completed",
+        "conclusion": "success",
+        "disposition": "PARTIAL_TRAJECTORY_ORIENTATION;63/64 certified fraction, one unresolved span, no global positive hull."
+      }
+    },
+    {
+      "run_id": 39802254749,
+      "workflow_path": ".github/workflows/rhrc_post214_kernel_dual_geometry.yml",
+      "event": "pull_request",
+      "head_sha": "96dfba7082fb0cc7a93f7b25e31d449951ee9e4d",
+      "workflow_attempt": 1,
+      "job_attempt": 1,
+      "job_id": 119905865910,
+      "name": "post214-kernel-dual-geometry",
+      "classification": "RESEARCH-PRODUCING CHECK",
+      "status": "queued",
+      "conclusion": null,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39802254749/job/119905865910",
+      "disposition": "PENDING: queued; no formal or scientific result observed.",
+      "previous_9cce_job": {
+        "job_id": 119867716007,
+        "status": "completed",
+        "conclusion": "success",
+        "disposition": "FULL_SPACE_DUAL_INDEPENDENCE_CERTIFIED and FULL_SPACE_SIGN_INDEFINITE_CERTIFIED; Q13/Q15 controls survive; obs_059i remains open."
+      }
+    },
+    {
+      "run_id": 39802255101,
+      "workflow_path": ".github/workflows/rhrc_post190_canonical_realizability.yml",
+      "event": "pull_request",
+      "head_sha": "96dfba7082fb0cc7a93f7b25e31d449951ee9e4d",
+      "workflow_attempt": 1,
+      "job_attempt": 1,
+      "job_id": 119905865970,
+      "name": "post190-canonical-realizability",
+      "classification": "RESEARCH-PRODUCING CHECK",
+      "status": "queued",
+      "conclusion": null,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39802255101/job/119905865970",
+      "disposition": "PENDING: queued; no formal or scientific result observed.",
+      "previous_9cce_job": {
+        "job_id": 119867721055,
+        "status": "completed",
+        "conclusion": "success",
+        "disposition": "PASS execution; layers3/4/5 UNRESOLVED, no negative-root exclusion or RH claim."
+      }
+    },
+    {
+      "run_id": 39802254970,
+      "workflow_path": ".github/workflows/rhrc_opica_followup.yml",
+      "event": "pull_request",
+      "head_sha": "96dfba7082fb0cc7a93f7b25e31d449951ee9e4d",
+      "workflow_attempt": 1,
+      "job_attempt": 1,
+      "job_id": 119905868049,
+      "name": "Full release readiness (expected FAIL while scope is incomplete)",
+      "classification": "FORMAL VALIDITY GATE",
+      "status": "queued",
+      "conclusion": null,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39802254970/job/119905868049",
+      "disposition": "PENDING: queued; no formal or scientific result observed.",
+      "previous_9cce_job": {
+        "job_id": 119867732131,
+        "status": "completed",
+        "conclusion": "failure",
+        "disposition": "FAIL_RELEASE_INCOMPLETE: preparation cannot promote full100-root/current-receipt/runtime/parent-extension acceptance."
+      }
+    },
+    {
+      "run_id": 39802254970,
+      "workflow_path": ".github/workflows/rhrc_opica_followup.yml",
+      "event": "pull_request",
+      "head_sha": "96dfba7082fb0cc7a93f7b25e31d449951ee9e4d",
+      "workflow_attempt": 1,
+      "job_attempt": 1,
+      "job_id": 119905868314,
+      "name": "Draft preparation contract (no theorem authority)",
+      "classification": "FORMAL VALIDITY GATE",
+      "status": "queued",
+      "conclusion": null,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39802254970/job/119905868314",
+      "disposition": "PENDING: queued; no formal or scientific result observed.",
+      "previous_9cce_job": {
+        "job_id": 119867731538,
+        "status": "completed",
+        "conclusion": "success",
+        "disposition": "PASS_PREPARATION_ONLY: hash-pinned224-artifact inventory,100 planned roots, no compiler coverage audited or release authority."
+      }
+    },
+    {
+      "run_id": 39802254761,
+      "workflow_path": ".github/workflows/permansson-formal.yml",
+      "event": "pull_request",
+      "head_sha": "96dfba7082fb0cc7a93f7b25e31d449951ee9e4d",
+      "workflow_attempt": 1,
+      "job_attempt": 1,
+      "job_id": 119905864042,
+      "name": "lean-permansson",
+      "classification": "FORMAL VALIDITY GATE",
+      "status": "queued",
+      "conclusion": null,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39802254761/job/119905864042",
+      "disposition": "PENDING: queued; no formal or scientific result observed.",
+      "previous_9cce_job": {
+        "job_id": 119867722916,
+        "status": "completed",
+        "conclusion": "success",
+        "disposition": "PASS: existing Permansson Theorem31 compiler build; no follow-up-root acceptance inferred."
+      }
+    },
+    {
+      "run_id": 39802254688,
+      "workflow_path": ".github/workflows/rhrc_post287_numerical.yml",
+      "event": "pull_request",
+      "head_sha": "96dfba7082fb0cc7a93f7b25e31d449951ee9e4d",
+      "workflow_attempt": 1,
+      "job_attempt": 1,
+      "job_id": 119905862757,
+      "name": "wp4-k3-frozen-feasibility",
+      "classification": "RESEARCH-PRODUCING CHECK",
+      "status": "queued",
+      "conclusion": null,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39802254688/job/119905862757",
+      "disposition": "PENDING: queued; no formal or scientific result observed.",
+      "previous_9cce_job": {
+        "job_id": 119867723185,
+        "status": "queued",
+        "conclusion": null,
+        "disposition": "PENDING: queued; result and scientific disposition unobserved."
+      }
+    },
+    {
+      "run_id": 39802254688,
+      "workflow_path": ".github/workflows/rhrc_post287_numerical.yml",
+      "event": "pull_request",
+      "head_sha": "96dfba7082fb0cc7a93f7b25e31d449951ee9e4d",
+      "workflow_attempt": 1,
+      "job_attempt": 1,
+      "job_id": 119905863767,
+      "name": "wp2-k2-transcript",
+      "classification": "RESEARCH-PRODUCING CHECK",
+      "status": "queued",
+      "conclusion": null,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39802254688/job/119905863767",
+      "disposition": "PENDING: queued; no formal or scientific result observed.",
+      "previous_9cce_job": {
+        "job_id": 119867722691,
+        "status": "in_progress",
+        "conclusion": null,
+        "disposition": "PENDING: in_progress; result and scientific disposition unobserved."
+      }
+    },
+    {
+      "run_id": 39802254688,
+      "workflow_path": ".github/workflows/rhrc_post287_numerical.yml",
+      "event": "pull_request",
+      "head_sha": "96dfba7082fb0cc7a93f7b25e31d449951ee9e4d",
+      "workflow_attempt": 1,
+      "job_attempt": 1,
+      "job_id": 119905864600,
+      "name": "wp4-k2-odd-prerequisite",
+      "classification": "RESEARCH-PRODUCING CHECK",
+      "status": "queued",
+      "conclusion": null,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39802254688/job/119905864600",
+      "disposition": "PENDING: queued; no formal or scientific result observed.",
+      "previous_9cce_job": {
+        "job_id": 119867723073,
+        "status": "completed",
+        "conclusion": "success",
+        "disposition": "INTERVAL_CHECK_PASS:350 intervals,192-bit precision; this K2 prerequisite is not the dedicated K3 18/18 gate or full continuum positivity."
+      }
+    },
+    {
+      "run_id": 39802255283,
+      "workflow_path": ".github/workflows/rhrc_post192_parity_trajectory_rigidity.yml",
+      "event": "pull_request",
+      "head_sha": "96dfba7082fb0cc7a93f7b25e31d449951ee9e4d",
+      "workflow_attempt": 1,
+      "job_attempt": 1,
+      "job_id": 119905866941,
+      "name": "post192-parity-trajectory-rigidity",
+      "classification": "RESEARCH-PRODUCING CHECK",
+      "status": "queued",
+      "conclusion": null,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39802255283/job/119905866941",
+      "disposition": "PENDING: queued; no formal or scientific result observed.",
+      "previous_9cce_job": {
+        "job_id": 119867723667,
+        "status": "completed",
+        "conclusion": "success",
+        "disposition": "TRAJECTORY_RIGIDITY_UNRESOLVED;96 cells/97 leaves,33 J_UNRESOLVED/63 H1_UNRESOLVED;97 budget-exhausted leaves."
+      }
+    },
+    {
+      "run_id": 39802254648,
+      "workflow_path": ".github/workflows/rhrc_post287_focused.yml",
+      "event": "pull_request",
+      "head_sha": "96dfba7082fb0cc7a93f7b25e31d449951ee9e4d",
+      "workflow_attempt": 1,
+      "job_attempt": 1,
+      "job_id": 119905864004,
+      "name": "lean-step3",
+      "classification": "FORMAL VALIDITY GATE",
+      "status": "queued",
+      "conclusion": null,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39802254648/job/119905864004",
+      "disposition": "PENDING: queued; no formal or scientific result observed.",
+      "previous_9cce_job": {
+        "job_id": 119868075053,
+        "status": "completed",
+        "conclusion": "success",
+        "disposition": "PASS actual Step3 Lean target plus source-shape/ledger consistency; K3 full-window mathematical certificate remains OPEN."
+      }
+    },
+    {
+      "run_id": 39802254648,
+      "workflow_path": ".github/workflows/rhrc_post287_focused.yml",
+      "event": "pull_request",
+      "head_sha": "96dfba7082fb0cc7a93f7b25e31d449951ee9e4d",
+      "workflow_attempt": 1,
+      "job_attempt": 1,
+      "job_id": 119905864994,
+      "name": "wp5-modified-prime",
+      "classification": "RESEARCH-PRODUCING CHECK",
+      "status": "queued",
+      "conclusion": null,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39802254648/job/119905864994",
+      "disposition": "PENDING: queued; no formal or scientific result observed.",
+      "previous_9cce_job": {
+        "job_id": 119868075038,
+        "status": "completed",
+        "conclusion": "success",
+        "disposition": "INTERVAL_EVIDENCE: altered-prime model sign contrast on fixed cell/sample endpoints; no actual off-line-zero existence or RH conclusion."
+      }
+    },
+    {
+      "run_id": 39802254620,
+      "workflow_path": ".github/workflows/rhrc_post196_q14_residual_cell_replay.yml",
+      "event": "pull_request",
+      "head_sha": "96dfba7082fb0cc7a93f7b25e31d449951ee9e4d",
+      "workflow_attempt": 1,
+      "job_attempt": 1,
+      "job_id": 119905864025,
+      "name": "post196-q14-residual-cell-replay",
+      "classification": "RESEARCH-PRODUCING CHECK",
+      "status": "queued",
+      "conclusion": null,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39802254620/job/119905864025",
+      "disposition": "PENDING: queued; no formal or scientific result observed.",
+      "previous_9cce_job": {
+        "job_id": 119867721148,
+        "status": "completed",
+        "conclusion": "success",
+        "disposition": "GLOBAL_MONOTONE_ORIENTATION, J_POSITIVE across49 completed leaves; bounded distinct-aperture twin exclusion only; no negative-root exclusion."
+      }
+    },
+    {
+      "run_id": 39802254775,
+      "workflow_path": ".github/workflows/rhrc_post287_wp6.yml",
+      "event": "pull_request",
+      "head_sha": "96dfba7082fb0cc7a93f7b25e31d449951ee9e4d",
+      "workflow_attempt": 1,
+      "job_attempt": 1,
+      "job_id": 119905866922,
+      "name": "wp6-source-specific-signed-ray",
+      "classification": "RESEARCH-PRODUCING CHECK",
+      "status": "queued",
+      "conclusion": null,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39802254775/job/119905866922",
+      "disposition": "PENDING: queued; no formal or scientific result observed.",
+      "previous_9cce_job": {
+        "job_id": 119867723209,
+        "status": "completed",
+        "conclusion": "success",
+        "disposition": "EXPERIMENTAL_SIGNAL, signs [[true,false],[false,true]]; numerical mixed signs only."
+      }
+    },
+    {
+      "run_id": 39802255202,
+      "workflow_path": ".github/workflows/rhrc_post198_q14_parity_source_mechanism.yml",
+      "event": "pull_request",
+      "head_sha": "96dfba7082fb0cc7a93f7b25e31d449951ee9e4d",
+      "workflow_attempt": 1,
+      "job_attempt": 1,
+      "job_id": 119905866013,
+      "name": "post198-q14-source-mechanism",
+      "classification": "RESEARCH-PRODUCING CHECK",
+      "status": "queued",
+      "conclusion": null,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39802255202/job/119905866013",
+      "disposition": "PENDING: queued; no formal or scientific result observed.",
+      "previous_9cce_job": {
+        "job_id": 119868154443,
+        "status": "completed",
+        "conclusion": "success",
+        "disposition": "SOURCE_DECOMPOSITION_DEPENDENCY_UNRESOLVED; no unique collapsed uniform lock."
+      }
+    },
+    {
+      "run_id": 39802255427,
+      "workflow_path": ".github/workflows/rhrc_post290_step123_output.yml",
+      "event": "pull_request",
+      "head_sha": "96dfba7082fb0cc7a93f7b25e31d449951ee9e4d",
+      "workflow_attempt": 1,
+      "job_attempt": 1,
+      "job_id": 119905868118,
+      "name": "lean-components",
+      "classification": "FORMAL VALIDITY GATE",
+      "status": "queued",
+      "conclusion": null,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39802255427/job/119905868118",
+      "disposition": "PENDING: queued; no formal or scientific result observed.",
+      "previous_9cce_job": {
+        "job_id": 119867728904,
+        "status": "in_progress",
+        "conclusion": null,
+        "disposition": "PENDING: in_progress; result and scientific disposition unobserved."
+      }
+    },
+    {
+      "run_id": 39802255427,
+      "workflow_path": ".github/workflows/rhrc_post290_step123_output.yml",
+      "event": "pull_request",
+      "head_sha": "96dfba7082fb0cc7a93f7b25e31d449951ee9e4d",
+      "workflow_attempt": 1,
+      "job_attempt": 1,
+      "job_id": 119905868262,
+      "name": "native-observations",
+      "classification": "RESEARCH-PRODUCING CHECK",
+      "status": "queued",
+      "conclusion": null,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39802255427/job/119905868262",
+      "disposition": "PENDING: queued; no formal or scientific result observed.",
+      "previous_9cce_job": {
+        "job_id": 119867729029,
+        "status": "completed",
+        "conclusion": "success",
+        "disposition": "CHECKED_WITH_OPEN_UNIVERSAL_SCOPE;44 evaluated finite native probe cells; no universal analytic conclusion."
+      }
+    },
+    {
+      "run_id": 39802255427,
+      "workflow_path": ".github/workflows/rhrc_post290_step123_output.yml",
+      "event": "pull_request",
+      "head_sha": "96dfba7082fb0cc7a93f7b25e31d449951ee9e4d",
+      "workflow_attempt": 1,
+      "job_attempt": 1,
+      "job_id": 119905868891,
+      "name": "exact-controls",
+      "classification": "REGRESSION GATE",
+      "status": "queued",
+      "conclusion": null,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39802255427/job/119905868891",
+      "disposition": "PENDING: queued; no formal or scientific result observed.",
+      "previous_9cce_job": {
+        "job_id": 119867728638,
+        "status": "completed",
+        "conclusion": "success",
+        "disposition": "PASS exact finite/synthetic validator controls; no actual-zeta/Lean proof authority promoted from the replays."
+      }
+    },
+    {
+      "run_id": 39802255051,
+      "workflow_path": ".github/workflows/rhrc_post222_biregular_zero_shift_scalar.yml",
+      "event": "pull_request",
+      "head_sha": "96dfba7082fb0cc7a93f7b25e31d449951ee9e4d",
+      "workflow_attempt": 1,
+      "job_attempt": 1,
+      "job_id": 119905893091,
+      "name": "post222-biregular-zero-shift-scalar",
+      "classification": "RESEARCH-PRODUCING CHECK",
+      "status": "queued",
+      "conclusion": null,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39802255051/job/119905893091",
+      "disposition": "PENDING: queued; no formal or scientific result observed.",
+      "previous_9cce_job": {
+        "job_id": 119867723329,
+        "status": "queued",
+        "conclusion": null,
+        "disposition": "PENDING: queued; result and scientific disposition unobserved."
+      }
+    },
+    {
+      "run_id": 39802254976,
+      "workflow_path": ".github/workflows/rhrc_post202_q14_composite_parity_gap.yml",
+      "event": "pull_request",
+      "head_sha": "96dfba7082fb0cc7a93f7b25e31d449951ee9e4d",
+      "workflow_attempt": 1,
+      "job_attempt": 1,
+      "job_id": 119905864771,
+      "name": "post202-q14-composite-parity-gap",
+      "classification": "RESEARCH-PRODUCING CHECK",
+      "status": "queued",
+      "conclusion": null,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39802254976/job/119905864771",
+      "disposition": "PENDING: queued; no formal or scientific result observed.",
+      "previous_9cce_job": {
+        "job_id": 119868170447,
+        "status": "completed",
+        "conclusion": "success",
+        "disposition": "COMPOSITE_PARITY_GAP_PATTERN_FALSIFIED before full cover; zero completed leaves. Green preserves falsification."
+      }
+    },
+    {
+      "run_id": 39802254886,
+      "workflow_path": ".github/workflows/rhrc_closure_campaign.yml",
+      "event": "pull_request",
+      "head_sha": "96dfba7082fb0cc7a93f7b25e31d449951ee9e4d",
+      "workflow_attempt": 1,
+      "job_attempt": 1,
+      "job_id": 119906510010,
+      "name": "lean-a",
+      "classification": "FORMAL VALIDITY GATE",
+      "status": "queued",
+      "conclusion": null,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39802254886/job/119906510010",
+      "disposition": "PENDING: queued; no formal or scientific result observed.",
+      "previous_9cce_job": {
+        "job_id": 119867728743,
+        "status": "queued",
+        "conclusion": null,
+        "disposition": "PENDING: queued; result and scientific disposition unobserved."
+      }
+    },
+    {
+      "run_id": 39802254886,
+      "workflow_path": ".github/workflows/rhrc_closure_campaign.yml",
+      "event": "pull_request",
+      "head_sha": "96dfba7082fb0cc7a93f7b25e31d449951ee9e4d",
+      "workflow_attempt": 1,
+      "job_attempt": 1,
+      "job_id": 119906510219,
+      "name": "fast-integrity",
+      "classification": "REGRESSION GATE",
+      "status": "queued",
+      "conclusion": null,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39802254886/job/119906510219",
+      "disposition": "PENDING: queued; no formal or scientific result observed.",
+      "previous_9cce_job": {
+        "job_id": 119867728822,
+        "status": "queued",
+        "conclusion": null,
+        "disposition": "PENDING: queued; result and scientific disposition unobserved."
+      }
+    },
+    {
+      "run_id": 39802254886,
+      "workflow_path": ".github/workflows/rhrc_closure_campaign.yml",
+      "event": "pull_request",
+      "head_sha": "96dfba7082fb0cc7a93f7b25e31d449951ee9e4d",
+      "workflow_attempt": 1,
+      "job_attempt": 1,
+      "job_id": 119906510232,
+      "name": "lean-contact",
+      "classification": "FORMAL VALIDITY GATE",
+      "status": "queued",
+      "conclusion": null,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39802254886/job/119906510232",
+      "disposition": "PENDING: queued; no formal or scientific result observed.",
+      "previous_9cce_job": {
+        "job_id": 119867728959,
+        "status": "queued",
+        "conclusion": null,
+        "disposition": "PENDING: queued; result and scientific disposition unobserved."
+      }
+    },
+    {
+      "run_id": 39802254886,
+      "workflow_path": ".github/workflows/rhrc_closure_campaign.yml",
+      "event": "pull_request",
+      "head_sha": "96dfba7082fb0cc7a93f7b25e31d449951ee9e4d",
+      "workflow_attempt": 1,
+      "job_attempt": 1,
+      "job_id": 119906510446,
+      "name": "lean-d-bindings",
+      "classification": "FORMAL VALIDITY GATE",
+      "status": "queued",
+      "conclusion": null,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39802254886/job/119906510446",
+      "disposition": "PENDING: queued; no formal or scientific result observed.",
+      "previous_9cce_job": {
+        "job_id": 119867728586,
+        "status": "in_progress",
+        "conclusion": null,
+        "disposition": "PENDING: in_progress; result and scientific disposition unobserved."
+      }
+    },
+    {
+      "run_id": 39802254886,
+      "workflow_path": ".github/workflows/rhrc_closure_campaign.yml",
+      "event": "pull_request",
+      "head_sha": "96dfba7082fb0cc7a93f7b25e31d449951ee9e4d",
+      "workflow_attempt": 1,
+      "job_attempt": 1,
+      "job_id": 119906510452,
+      "name": "lean-c",
+      "classification": "FORMAL VALIDITY GATE",
+      "status": "queued",
+      "conclusion": null,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39802254886/job/119906510452",
+      "disposition": "PENDING: queued; no formal or scientific result observed.",
+      "previous_9cce_job": {
+        "job_id": 119867728961,
+        "status": "queued",
+        "conclusion": null,
+        "disposition": "PENDING: queued; result and scientific disposition unobserved."
+      }
+    },
+    {
+      "run_id": 39802254886,
+      "workflow_path": ".github/workflows/rhrc_closure_campaign.yml",
+      "event": "pull_request",
+      "head_sha": "96dfba7082fb0cc7a93f7b25e31d449951ee9e4d",
+      "workflow_attempt": 1,
+      "job_attempt": 1,
+      "job_id": 119906510564,
+      "name": "lean-first-crossing",
+      "classification": "FORMAL VALIDITY GATE",
+      "status": "queued",
+      "conclusion": null,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39802254886/job/119906510564",
+      "disposition": "PENDING: queued; no formal or scientific result observed.",
+      "previous_9cce_job": {
+        "job_id": 119867728239,
+        "status": "in_progress",
+        "conclusion": null,
+        "disposition": "PENDING: in_progress; result and scientific disposition unobserved."
+      }
+    },
+    {
+      "run_id": 39802254886,
+      "workflow_path": ".github/workflows/rhrc_closure_campaign.yml",
+      "event": "pull_request",
+      "head_sha": "96dfba7082fb0cc7a93f7b25e31d449951ee9e4d",
+      "workflow_attempt": 1,
+      "job_attempt": 1,
+      "job_id": 119906510628,
+      "name": "lean-b",
+      "classification": "FORMAL VALIDITY GATE",
+      "status": "queued",
+      "conclusion": null,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39802254886/job/119906510628",
+      "disposition": "PENDING: queued; no formal or scientific result observed.",
+      "previous_9cce_job": {
+        "job_id": 119867728885,
+        "status": "queued",
+        "conclusion": null,
+        "disposition": "PENDING: queued; result and scientific disposition unobserved."
+      }
+    },
+    {
+      "run_id": 39802254886,
+      "workflow_path": ".github/workflows/rhrc_closure_campaign.yml",
+      "event": "pull_request",
+      "head_sha": "96dfba7082fb0cc7a93f7b25e31d449951ee9e4d",
+      "workflow_attempt": 1,
+      "job_attempt": 1,
+      "job_id": 119906510831,
+      "name": "lean-strength-audit",
+      "classification": "FORMAL VALIDITY GATE",
+      "status": "queued",
+      "conclusion": null,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39802254886/job/119906510831",
+      "disposition": "PENDING: queued; no formal or scientific result observed.",
+      "previous_9cce_job": {
+        "job_id": 119867729151,
+        "status": "queued",
+        "conclusion": null,
+        "disposition": "PENDING: queued; result and scientific disposition unobserved."
+      }
+    },
+    {
+      "run_id": 39802243626,
+      "workflow_path": ".github/workflows/rhrc_opica_followup.yml",
+      "event": "push",
+      "head_sha": "96dfba7082fb0cc7a93f7b25e31d449951ee9e4d",
+      "workflow_attempt": 1,
+      "job_attempt": 1,
+      "job_id": 119905826608,
+      "name": "Draft preparation contract (no theorem authority)",
+      "classification": "FORMAL VALIDITY GATE",
+      "status": "queued",
+      "conclusion": null,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39802243626/job/119905826608",
+      "disposition": "PENDING: queued; no formal or scientific result observed.",
+      "previous_9cce_job": {
+        "job_id": 119867678855,
+        "status": "completed",
+        "conclusion": "success",
+        "disposition": "PASS_PREPARATION_ONLY: hash-pinned224-artifact inventory,100 planned roots, no compiler coverage audited or release authority."
+      }
+    },
+    {
+      "run_id": 39802243626,
+      "workflow_path": ".github/workflows/rhrc_opica_followup.yml",
+      "event": "push",
+      "head_sha": "96dfba7082fb0cc7a93f7b25e31d449951ee9e4d",
+      "workflow_attempt": 1,
+      "job_attempt": 1,
+      "job_id": 119905826703,
+      "name": "Full release readiness (expected FAIL while scope is incomplete)",
+      "classification": "FORMAL VALIDITY GATE",
+      "status": "queued",
+      "conclusion": null,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/39802243626/job/119905826703",
+      "disposition": "PENDING: queued; no formal or scientific result observed.",
+      "previous_9cce_job": {
+        "job_id": 119867679374,
+        "status": "completed",
+        "conclusion": "failure",
+        "disposition": "FAIL_RELEASE_INCOMPLETE: preparation cannot promote full100-root/current-receipt/runtime/parent-extension acceptance."
+      }
+    }
+  ],
+  "declared_not_yet_materialized": [
+    {
+      "run_id": 39802254585,
+      "event": "pull_request",
+      "workflow_path": ".github/workflows/rhrc_post268_audit.yml",
+      "declared_job_key": "runner-regressions",
+      "name": "Audit runner adversarial regressions",
+      "classification": "REGRESSION GATE",
+      "status": "NOT_MATERIALIZED_AS_OF_JOB_READ",
+      "if_condition": null,
+      "disposition": "DECLARED FUTURE GATE; not a job result and never passed by inference."
+    },
+    {
+      "run_id": 39802254585,
+      "event": "pull_request",
+      "workflow_path": ".github/workflows/rhrc_post268_audit.yml",
+      "declared_job_key": "extended",
+      "name": "Extended audit shard 0",
+      "classification": "REGRESSION GATE",
+      "status": "NOT_MATERIALIZED_AS_OF_JOB_READ",
+      "if_condition": null,
+      "disposition": "DECLARED FUTURE GATE; not a job result and never passed by inference."
+    },
+    {
+      "run_id": 39802254585,
+      "event": "pull_request",
+      "workflow_path": ".github/workflows/rhrc_post268_audit.yml",
+      "declared_job_key": "extended",
+      "name": "Extended audit shard 1",
+      "classification": "REGRESSION GATE",
+      "status": "NOT_MATERIALIZED_AS_OF_JOB_READ",
+      "if_condition": null,
+      "disposition": "DECLARED FUTURE GATE; not a job result and never passed by inference."
+    },
+    {
+      "run_id": 39802254585,
+      "event": "pull_request",
+      "workflow_path": ".github/workflows/rhrc_post268_audit.yml",
+      "declared_job_key": "extended",
+      "name": "Extended audit shard 2",
+      "classification": "REGRESSION GATE",
+      "status": "NOT_MATERIALIZED_AS_OF_JOB_READ",
+      "if_condition": null,
+      "disposition": "DECLARED FUTURE GATE; not a job result and never passed by inference."
+    },
+    {
+      "run_id": 39802254585,
+      "event": "pull_request",
+      "workflow_path": ".github/workflows/rhrc_post268_audit.yml",
+      "declared_job_key": "extended",
+      "name": "Extended audit shard 3",
+      "classification": "REGRESSION GATE",
+      "status": "NOT_MATERIALIZED_AS_OF_JOB_READ",
+      "if_condition": null,
+      "disposition": "DECLARED FUTURE GATE; not a job result and never passed by inference."
+    },
+    {
+      "run_id": 39802254585,
+      "event": "pull_request",
+      "workflow_path": ".github/workflows/rhrc_post268_audit.yml",
+      "declared_job_key": "extended",
+      "name": "Extended audit shard 4",
+      "classification": "REGRESSION GATE",
+      "status": "NOT_MATERIALIZED_AS_OF_JOB_READ",
+      "if_condition": null,
+      "disposition": "DECLARED FUTURE GATE; not a job result and never passed by inference."
+    },
+    {
+      "run_id": 39802254585,
+      "event": "pull_request",
+      "workflow_path": ".github/workflows/rhrc_post268_audit.yml",
+      "declared_job_key": "extended",
+      "name": "Extended audit shard 5",
+      "classification": "REGRESSION GATE",
+      "status": "NOT_MATERIALIZED_AS_OF_JOB_READ",
+      "if_condition": null,
+      "disposition": "DECLARED FUTURE GATE; not a job result and never passed by inference."
+    },
+    {
+      "run_id": 39802254585,
+      "event": "pull_request",
+      "workflow_path": ".github/workflows/rhrc_post268_audit.yml",
+      "declared_job_key": "extended",
+      "name": "Extended audit shard 6",
+      "classification": "REGRESSION GATE",
+      "status": "NOT_MATERIALIZED_AS_OF_JOB_READ",
+      "if_condition": null,
+      "disposition": "DECLARED FUTURE GATE; not a job result and never passed by inference."
+    },
+    {
+      "run_id": 39802254585,
+      "event": "pull_request",
+      "workflow_path": ".github/workflows/rhrc_post268_audit.yml",
+      "declared_job_key": "extended",
+      "name": "Extended audit shard 7",
+      "classification": "REGRESSION GATE",
+      "status": "NOT_MATERIALIZED_AS_OF_JOB_READ",
+      "if_condition": null,
+      "disposition": "DECLARED FUTURE GATE; not a job result and never passed by inference."
+    },
+    {
+      "run_id": 39802254585,
+      "event": "pull_request",
+      "workflow_path": ".github/workflows/rhrc_post268_audit.yml",
+      "declared_job_key": "harvest",
+      "name": "Complete 44-check execution harvest",
+      "classification": "REGRESSION GATE",
+      "status": "NOT_MATERIALIZED_AS_OF_JOB_READ",
+      "if_condition": "always()",
+      "disposition": "DECLARED FUTURE GATE; not a job result and never passed by inference."
+    },
+    {
+      "run_id": 39802255381,
+      "event": "pull_request",
+      "workflow_path": ".github/workflows/rhrc_post282_contact_calculus.yml",
+      "declared_job_key": "lean-compressed-calculus",
+      "name": "lean-compressed-calculus",
+      "classification": "FORMAL VALIDITY GATE",
+      "status": "NOT_MATERIALIZED_AS_OF_JOB_READ",
+      "if_condition": null,
+      "disposition": "DECLARED FUTURE GATE; not a job result and never passed by inference."
+    },
+    {
+      "run_id": 39802255381,
+      "event": "pull_request",
+      "workflow_path": ".github/workflows/rhrc_post282_contact_calculus.yml",
+      "declared_job_key": "lean-contact-completion",
+      "name": "lean-contact-completion",
+      "classification": "FORMAL VALIDITY GATE",
+      "status": "NOT_MATERIALIZED_AS_OF_JOB_READ",
+      "if_condition": null,
+      "disposition": "DECLARED FUTURE GATE; not a job result and never passed by inference."
+    },
+    {
+      "run_id": 39802255381,
+      "event": "pull_request",
+      "workflow_path": ".github/workflows/rhrc_post282_contact_calculus.yml",
+      "declared_job_key": "research-calibration",
+      "name": "research-calibration",
+      "classification": "RESEARCH-PRODUCING CHECK",
+      "status": "NOT_MATERIALIZED_AS_OF_JOB_READ",
+      "if_condition": null,
+      "disposition": "DECLARED FUTURE GATE; not a job result and never passed by inference."
+    },
+    {
+      "run_id": 39802255381,
+      "event": "pull_request",
+      "workflow_path": ".github/workflows/rhrc_post282_contact_calculus.yml",
+      "declared_job_key": "arb-contact-balance",
+      "name": "arb-contact-balance",
+      "classification": "RESEARCH-PRODUCING CHECK",
+      "status": "NOT_MATERIALIZED_AS_OF_JOB_READ",
+      "if_condition": null,
+      "disposition": "DECLARED FUTURE GATE; not a job result and never passed by inference."
+    },
+    {
+      "run_id": 39802255381,
+      "event": "pull_request",
+      "workflow_path": ".github/workflows/rhrc_post282_contact_calculus.yml",
+      "declared_job_key": "contact-calculus-complete",
+      "name": "contact-calculus-complete",
+      "classification": "FORMAL VALIDITY GATE",
+      "status": "NOT_MATERIALIZED_AS_OF_JOB_READ",
+      "if_condition": "always()",
+      "disposition": "DECLARED FUTURE GATE; not a job result and never passed by inference."
+    },
+    {
+      "run_id": 39802254677,
+      "event": "pull_request",
+      "workflow_path": ".github/workflows/rhrc_opica.yml",
+      "declared_job_key": "opica-contract",
+      "name": "opica-contract",
+      "classification": "FORMAL VALIDITY GATE",
+      "status": "NOT_MATERIALIZED_AS_OF_JOB_READ",
+      "if_condition": null,
+      "disposition": "DECLARED FUTURE GATE; not a job result and never passed by inference."
+    },
+    {
+      "run_id": 39802254677,
+      "event": "pull_request",
+      "workflow_path": ".github/workflows/rhrc_opica.yml",
+      "declared_job_key": "opica-formal",
+      "name": "opica-formal",
+      "classification": "FORMAL VALIDITY GATE",
+      "status": "NOT_MATERIALIZED_AS_OF_JOB_READ",
+      "if_condition": null,
+      "disposition": "DECLARED FUTURE GATE; not a job result and never passed by inference."
+    },
+    {
+      "run_id": 39802254677,
+      "event": "pull_request",
+      "workflow_path": ".github/workflows/rhrc_opica.yml",
+      "declared_job_key": "opica-regression",
+      "name": "opica-regression",
+      "classification": "REGRESSION GATE",
+      "status": "NOT_MATERIALIZED_AS_OF_JOB_READ",
+      "if_condition": null,
+      "disposition": "DECLARED FUTURE GATE; not a job result and never passed by inference."
+    },
+    {
+      "run_id": 39802254677,
+      "event": "pull_request",
+      "workflow_path": ".github/workflows/rhrc_opica.yml",
+      "declared_job_key": "opica-dependency-delta",
+      "name": "opica-dependency-delta",
+      "classification": "FORMAL VALIDITY GATE",
+      "status": "NOT_MATERIALIZED_AS_OF_JOB_READ",
+      "if_condition": null,
+      "disposition": "DECLARED FUTURE GATE; not a job result and never passed by inference."
+    },
+    {
+      "run_id": 39802254677,
+      "event": "pull_request",
+      "workflow_path": ".github/workflows/rhrc_opica.yml",
+      "declared_job_key": "opica-component-summary",
+      "name": "opica-component-summary",
+      "classification": "FORMAL VALIDITY GATE",
+      "status": "NOT_MATERIALIZED_AS_OF_JOB_READ",
+      "if_condition": "always()",
+      "disposition": "DECLARED FUTURE GATE; not a job result and never passed by inference."
+    },
+    {
+      "run_id": 39802254970,
+      "event": "pull_request",
+      "workflow_path": ".github/workflows/rhrc_opica_followup.yml",
+      "declared_job_key": "subset-formal",
+      "name": "Exact-source implemented subset (full 100 remains required)",
+      "classification": "FORMAL VALIDITY GATE",
+      "status": "NOT_MATERIALIZED_AS_OF_JOB_READ",
+      "if_condition": null,
+      "disposition": "DECLARED FUTURE GATE; not a job result and never passed by inference."
+    },
+    {
+      "run_id": 39802254970,
+      "event": "pull_request",
+      "workflow_path": ".github/workflows/rhrc_opica_followup.yml",
+      "declared_job_key": "repaired-candidates",
+      "name": "Narrow repaired candidates (aggregate acceptance remains open)",
+      "classification": "FORMAL VALIDITY GATE",
+      "status": "NOT_MATERIALIZED_AS_OF_JOB_READ",
+      "if_condition": null,
+      "disposition": "DECLARED FUTURE GATE; not a job result and never passed by inference."
+    },
+    {
+      "run_id": 39802254970,
+      "event": "pull_request",
+      "workflow_path": ".github/workflows/rhrc_opica_followup.yml",
+      "declared_job_key": "frozen-regression",
+      "name": "Frozen regression and fail-closed evidence tests",
+      "classification": "REGRESSION GATE",
+      "status": "NOT_MATERIALIZED_AS_OF_JOB_READ",
+      "if_condition": null,
+      "disposition": "DECLARED FUTURE GATE; not a job result and never passed by inference."
+    },
+    {
+      "run_id": 39802254688,
+      "event": "pull_request",
+      "workflow_path": ".github/workflows/rhrc_post287_numerical.yml",
+      "declared_job_key": "wp4-k3-fourth-order-alternative",
+      "name": "wp4-k3-fourth-order-alternative",
+      "classification": "RESEARCH-PRODUCING CHECK",
+      "status": "NOT_MATERIALIZED_AS_OF_JOB_READ",
+      "if_condition": "needs.wp4-k3-frozen-feasibility.outputs.disposition == 'UNRESOLVED'",
+      "disposition": "DECLARED FUTURE GATE; not a job result and never passed by inference."
+    },
+    {
+      "run_id": 39802254886,
+      "event": "pull_request",
+      "workflow_path": ".github/workflows/rhrc_closure_campaign.yml",
+      "declared_job_key": "campaign-complete",
+      "name": "campaign-complete",
+      "classification": "FORMAL VALIDITY GATE",
+      "status": "NOT_MATERIALIZED_AS_OF_JOB_READ",
+      "if_condition": null,
+      "disposition": "DECLARED FUTURE GATE; not a job result and never passed by inference."
+    },
+    {
+      "run_id": 39802243626,
+      "event": "push",
+      "workflow_path": ".github/workflows/rhrc_opica_followup.yml",
+      "declared_job_key": "subset-formal",
+      "name": "Exact-source implemented subset (full 100 remains required)",
+      "classification": "FORMAL VALIDITY GATE",
+      "status": "NOT_MATERIALIZED_AS_OF_JOB_READ",
+      "if_condition": null,
+      "disposition": "DECLARED FUTURE GATE; not a job result and never passed by inference."
+    },
+    {
+      "run_id": 39802243626,
+      "event": "push",
+      "workflow_path": ".github/workflows/rhrc_opica_followup.yml",
+      "declared_job_key": "repaired-candidates",
+      "name": "Narrow repaired candidates (aggregate acceptance remains open)",
+      "classification": "FORMAL VALIDITY GATE",
+      "status": "NOT_MATERIALIZED_AS_OF_JOB_READ",
+      "if_condition": null,
+      "disposition": "DECLARED FUTURE GATE; not a job result and never passed by inference."
+    },
+    {
+      "run_id": 39802243626,
+      "event": "push",
+      "workflow_path": ".github/workflows/rhrc_opica_followup.yml",
+      "declared_job_key": "frozen-regression",
+      "name": "Frozen regression and fail-closed evidence tests",
+      "classification": "REGRESSION GATE",
+      "status": "NOT_MATERIALIZED_AS_OF_JOB_READ",
+      "if_condition": null,
+      "disposition": "DECLARED FUTURE GATE; not a job result and never passed by inference."
+    }
+  ],
+  "workflow_sources": [
+    {
+      "run_id": 39802254585,
+      "path": ".github/workflows/rhrc_post268_audit.yml",
+      "sha256": "ed5962f4a176c874f67cf34bad832c232d6280afaea34781389aadd923e270b3",
+      "git_blob": "84b9a7d4b5e262ce7fa096bf2a4a2bbb3a4effe6"
+    },
+    {
+      "run_id": 39802255381,
+      "path": ".github/workflows/rhrc_post282_contact_calculus.yml",
+      "sha256": "88f2a127ea6f0a067bd2c7af73c1faf157391cc553798dd02d854f8b34325dc3",
+      "git_blob": "6ea89aa318201ee001f54ada9face98384353874"
+    },
+    {
+      "run_id": 39802254947,
+      "path": ".github/workflows/rhrc.yml",
+      "sha256": "a8fb66bada5fb104810deb38efb97fcd71cf3bc8a885c88cdef42dd2cfd4e878",
+      "git_blob": "1e4c4a58f7757dda05ed93222d45244cc849abb4"
+    },
+    {
+      "run_id": 39802254782,
+      "path": ".github/workflows/rhrc_post284_source_inertia.yml",
+      "sha256": "0ef4b6db1901bd08c59457bc37e10e0cbe26c3df8b510dd6e0db3e7173bab548",
+      "git_blob": "97d9956eca5d0b47fee44da99a8d4c0950a19ae4"
+    },
+    {
+      "run_id": 39802254677,
+      "path": ".github/workflows/rhrc_opica.yml",
+      "sha256": "747662ef3a33d14378c626c879423d3e9a810f37dc6305e9c28107435e2cbcc9",
+      "git_blob": "230f2ec40168e58cce1a4f98daecf6faa6201898"
+    },
+    {
+      "run_id": 39802254904,
+      "path": ".github/workflows/rhrc_post200_q14_discrepancy_mechanism.yml",
+      "sha256": "5eaa6d0711cf59660ceb75f24ae48d3619cd392b14c9845a713d4a7f5a230ee6",
+      "git_blob": "dc55e5148f99e945c6d1c86a63e25fdda62ed0f9"
+    },
+    {
+      "run_id": 39802254962,
+      "path": ".github/workflows/rhrc_post194_parity_trajectory_sharp_enclosure.yml",
+      "sha256": "98d27f8d43bc7c835766f9568714f270275fb4aa920e1d04ffeef1107137064e",
+      "git_blob": "e3d24acbff6f1d82fcd60c6b136c2b56fb9867ae"
+    },
+    {
+      "run_id": 39802254749,
+      "path": ".github/workflows/rhrc_post214_kernel_dual_geometry.yml",
+      "sha256": "611d1afe3e53314cc17b1fc11e115ce5b8629b6ee689ea48e042a545db52df8d",
+      "git_blob": "768f22fe9b21f64fc080e10bdd1e9e8e106348c5"
+    },
+    {
+      "run_id": 39802255101,
+      "path": ".github/workflows/rhrc_post190_canonical_realizability.yml",
+      "sha256": "7b26143d06d6b7b685aecbd3d664a1f39507952d9e1a9908deafeb9b2b36bca9",
+      "git_blob": "b63ca1ee726e6e9b6ce2f3f14b1c30a3c4b5c6bf"
+    },
+    {
+      "run_id": 39802254970,
+      "path": ".github/workflows/rhrc_opica_followup.yml",
+      "sha256": "456c93f80c147c8d1d659cd52c7c9b6a939bed102d5a6617b2b060c0be8e947d",
+      "git_blob": "54606b956435765cce003f6d03fb32f5a557803c"
+    },
+    {
+      "run_id": 39802254761,
+      "path": ".github/workflows/permansson-formal.yml",
+      "sha256": "71c79208d69eaef4b23c0697718edf970c5d2fa08b3ee6537f2a5035585972f6",
+      "git_blob": "7926007c27b81f71e658ef29549bd5ef5bb98444"
+    },
+    {
+      "run_id": 39802254688,
+      "path": ".github/workflows/rhrc_post287_numerical.yml",
+      "sha256": "58d8c586d425b747a9a0c4b2e378d8614c14975d6a1670d23980b39811780a96",
+      "git_blob": "28d7da771673d5fd03b5e42434a74182c5a86803"
+    },
+    {
+      "run_id": 39802255283,
+      "path": ".github/workflows/rhrc_post192_parity_trajectory_rigidity.yml",
+      "sha256": "f4f7c315c69356eb8121c5bfa546080f1e761220efaa45de0fc73437e7b346a1",
+      "git_blob": "c75653d1a621a169e7b311ec3812711c435ad305"
+    },
+    {
+      "run_id": 39802254648,
+      "path": ".github/workflows/rhrc_post287_focused.yml",
+      "sha256": "7708f47a950e7acd64a914bade3c9e54447a92291d03dfbd3b423ed6f7d123a5",
+      "git_blob": "b0d1be5be4c4779a7da6c16738533039cb82217f"
+    },
+    {
+      "run_id": 39802254620,
+      "path": ".github/workflows/rhrc_post196_q14_residual_cell_replay.yml",
+      "sha256": "85ab1134a7e2709e40c00b7cd9b69db1ec08978cb47987218bd6ae3b2f7402fc",
+      "git_blob": "ac52f609c660ff6d7770c03f762efc5398acd30a"
+    },
+    {
+      "run_id": 39802254775,
+      "path": ".github/workflows/rhrc_post287_wp6.yml",
+      "sha256": "4d8e501b8d8045ad1a25872da01c0174bb27f13c7172651ed62720517423ac61",
+      "git_blob": "3a47a39fe33870aa0253c6c49108c960120cfd40"
+    },
+    {
+      "run_id": 39802255202,
+      "path": ".github/workflows/rhrc_post198_q14_parity_source_mechanism.yml",
+      "sha256": "ed0656ea0b9a6953f461b6ff361989e086b95c71d1740352ada78db91c2438a4",
+      "git_blob": "34f403f97efd7d065bfc55cd5d8fd5efdc34a9d2"
+    },
+    {
+      "run_id": 39802255427,
+      "path": ".github/workflows/rhrc_post290_step123_output.yml",
+      "sha256": "6e1851f6282c60a185b797a0ae54cf5fa1d73736c7fe0d9ff565c1a557db297e",
+      "git_blob": "b8808497e7b4b6d39071bfa9982001506d3e2ff8"
+    },
+    {
+      "run_id": 39802255051,
+      "path": ".github/workflows/rhrc_post222_biregular_zero_shift_scalar.yml",
+      "sha256": "b4865f02c603c9a413b82c56bbe267e6bb077b885055747cdddd6e684db0ac4a",
+      "git_blob": "4b854360b5b4f1eba8d78e4d68f11737d5cb07df"
+    },
+    {
+      "run_id": 39802254976,
+      "path": ".github/workflows/rhrc_post202_q14_composite_parity_gap.yml",
+      "sha256": "5c0da1a08984abc047b7a768ac91a61d143ca9689eec89d65b1c345e7311a369",
+      "git_blob": "84409cf0d29676f96b84ee290279b0b21e6a5348"
+    },
+    {
+      "run_id": 39802254886,
+      "path": ".github/workflows/rhrc_closure_campaign.yml",
+      "sha256": "61ecc78037a8d97329d54cb75a00963410e8418ab3d878d93064ee2bbf847e74",
+      "git_blob": "a0591839e50762f3e675199247048bae2059f7e0"
+    },
+    {
+      "run_id": 39802243626,
+      "path": ".github/workflows/rhrc_opica_followup.yml",
+      "sha256": "456c93f80c147c8d1d659cd52c7c9b6a939bed102d5a6617b2b060c0be8e947d",
+      "git_blob": "54606b956435765cce003f6d03fb32f5a557803c"
+    }
+  ],
+  "pagination": {
+    "runs_per_page": 100,
+    "run_returned_equals_total": true,
+    "jobs_per_page": 100,
+    "job_filter": "all",
+    "all_job_counts_complete": true,
+    "artifacts_per_page": 100,
+    "all_artifact_counts_complete": true
+  },
+  "critical_gates": {
+    "parent_regression_201_docfix": "Workflow pending; job not materialized. Local native201normal/-O evidence is separate; no GitHub confirmation yet.",
+    "narrow_7_proofs": "Both push/PR jobs not materialized; no current-head source compiler result inferred.",
+    "implemented_41_subset": "Both push/PR jobs not materialized;9cce receipts retain only their own source scope.",
+    "source_falsifier": "Queued; previous unresolved results not upgraded.",
+    "WP4_K3": "Queued; no new18/18 or continuum positivity.",
+    "RHRC_smoke": "Queued; previous CONTINUE is not a new run result."
+  },
+  "comparison": "No completed new scientific result exists to compare. Prior9cce dispositions are preserved per matching workflow/event/job, as historical evidence only.",
+  "limits": "Sequential bounded reads, not atomic; pending runs may materialize more jobs later. No log or artifact download was needed because the only completion is an explicit conditional skip.",
+  "near_gap_overlay": "Separate local module/consumer gates created afterStage1push; not covered by this head.",
+  "full_release_ready": false,
+  "RH": "OPEN",
+  "Step4": "OPEN",
+  "independent_human_review": "NOT_ESTABLISHED"
+}

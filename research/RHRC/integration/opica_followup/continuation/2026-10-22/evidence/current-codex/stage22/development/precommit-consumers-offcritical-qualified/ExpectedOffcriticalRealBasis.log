@@ -1,0 +1,16 @@
+'IndependentOffcriticalRealBasis.actual_offcritical_real_imaginary_pair_independent' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'IndependentOffcriticalRealBasis.actual_offcritical_kappa' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IndependentOffcriticalRealBasis.actual_offcritical_negative_mass_restriction' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'IndependentOffcriticalRealBasis.actual_real_imaginary_pair_independent' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'IndependentOffcriticalRealBasis.actual_two_coefficient_euclidean_negative_budget' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'IndependentOffcriticalRealBasis.actual_no_nonzero_positive_combination' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

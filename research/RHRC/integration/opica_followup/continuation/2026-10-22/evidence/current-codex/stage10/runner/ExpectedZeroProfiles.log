@@ -1,0 +1,21 @@
+'Zeta23.OPICAFollowup.zero_profile_regular_selfdual' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.OPICAFollowup.zero_profile_tail_and_jumps' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OPICAZeroProfilesIndependent.audit_zeroProfile' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OPICAZeroProfilesIndependent.audit_srhoCellDeriv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OPICAZeroProfilesIndependent.expected_zero_profile_regular_selfdual' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'OPICAZeroProfilesIndependent.expected_zero_profile_tail_and_jumps' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'OPICAZeroProfilesIndependent.expected_profile_is_one_minus_zero_density' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'OPICAZeroProfilesIndependent.expected_origin_value' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OPICAZeroProfilesIndependent.expected_jump_unique' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OPICAZeroProfilesIndependent.expected_lattice_values_summable' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'OPICAZeroProfilesIndependent.expected_construction_nonvacuous' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

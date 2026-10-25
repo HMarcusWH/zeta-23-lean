@@ -1,0 +1,16 @@
+'Zeta23.OPICAFollowup.Validation.expected_independent_complete_complex_mobius' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+../audit-independent-complex-mobius/ControlMissingPhysicalInterface.lean:127:9: error: Application type mismatch: The argument
+  hraw
+has type
+  True
+but is expected to have type
+  ∀ (i : Fin 4),
+    positiveLogMeasure (positiveDilationMixture (mixingCoordinate sigma i)) = integerLogComb ∗ mixingCoordinate sigma i
+in the application
+  And.intro hraw
+'Zeta23.OPICAFollowup.Validation.expected_independent_complex_mobius_full_interface' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]

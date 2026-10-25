@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import argparse
 import hashlib
+import importlib.util
 import json
 import os
 import subprocess
@@ -27,6 +28,19 @@ LEAN_TOOLCHAIN = REPO / "lean-toolchain"
 
 SCHEMA_VERSION = "RHRC-lean-candidate-receipt-1.0"
 PROTOCOL_PREFIX = "RHRC_CANDIDATE_RESULT\t"
+
+
+def _load_registered_shards():
+    path = RHRC / "integration" / "registered_dependency_shards.py"
+    spec = importlib.util.spec_from_file_location("rhrc_registered_dependency_shards", path)
+    if spec is None or spec.loader is None:
+        raise RuntimeError(f"cannot load registered dependency shard layout from {path}")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+REGISTERED_SHARDS = _load_registered_shards()
 
 
 def fail(message: str) -> None:
@@ -202,9 +216,9 @@ def build_receipts() -> list[dict]:
         fail("RHKG coverage does not expose a valid subject digest")
 
     source_surface_bytes = SOURCE_DECLARATIONS.read_bytes()
-    compiler_receipt_bytes = COMPILER_RECEIPT.read_bytes()
     source_surface_sha256 = hashlib.sha256(source_surface_bytes).hexdigest()
-    compiler_receipt_sha256 = hashlib.sha256(compiler_receipt_bytes).hexdigest()
+    compiler_rows = REGISTERED_SHARDS.load_rows(REPO)
+    compiler_receipt_sha256 = REGISTERED_SHARDS.logical_digest(compiler_rows)[0]
     lean_toolchain = LEAN_TOOLCHAIN.read_text(encoding="utf-8").strip()
 
     source_rows = load_jsonl(SOURCE_DECLARATIONS)
@@ -212,7 +226,6 @@ def build_receipts() -> list[dict]:
     if not candidates:
         fail("RH_FORMAL_CORE theorem/lemma candidate population is empty")
 
-    compiler_rows = load_jsonl(COMPILER_RECEIPT)
     compiler_by_name = {row["declaration"]: row for row in compiler_rows}
     resolver = parse_output(run_lean(candidates), candidates)
 

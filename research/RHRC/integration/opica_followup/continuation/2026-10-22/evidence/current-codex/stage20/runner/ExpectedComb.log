@@ -1,0 +1,5 @@
+'Zeta23.OPICAFollowup.dilated_comb_fourier' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.OPICAFollowup.expected_dilated_comb_fourier' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.OPICAFollowup.dilatedCombMeasure_origin' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.OPICAFollowup.expected_comb_absolute_pairing' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.OPICAFollowup.expected_comb_negative_dilation' depends on axioms: [propext, Classical.choice, Quot.sound]

@@ -1,0 +1,24 @@
+C:\Users\macka\.codex\.chatgpt-projects\g-p-6a353c7268b08191b685956e466d73e4\work\opica-followup-repo\research\RHRC\integration\opica_followup\continuation\2026-10-22\consumers\ExpectedPhysicalRates.lean:39:4: warning: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+'Zeta23.OPICAFollowup.native_fixed_source_window_rate' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.OPICAFollowup.native_slow_source_window_rate' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IndependentPhysicalWindowRates.expected_fixed_source' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IndependentPhysicalWindowRates.expected_slow_source' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IndependentPhysicalWindowRates.expected_order_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IndependentPhysicalWindowRates.expected_nonpositive_finite_prefix' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'IndependentPhysicalWindowRates.expected_both_source_factor_log_signs' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'IndependentPhysicalWindowRates.expected_literal_rate_definition' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'IndependentPhysicalWindowRates.expected_zero_supremum_case' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IndependentPhysicalWindowRates.zero_order_cost_correction_control' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'IndependentPhysicalWindowRates.upper_rate_does_not_force_zero_control' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
