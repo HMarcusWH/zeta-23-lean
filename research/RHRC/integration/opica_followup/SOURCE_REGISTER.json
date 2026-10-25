@@ -58701,11 +58701,11 @@
     "protected_documentation_edits": [
       {
         "current": {
-          "bytes": 27928,
-          "git_blob": "1060400fe92138e10e9d233546a4a2b37c7504ca",
-          "mode": "100644",
           "path": "AUDIT.md",
-          "sha256": "20f4d509f16ddbbe1ac16aa18a25a193f6cde0c967456e93b99fc5c23958e6d6"
+          "mode": "100644",
+          "git_blob": "f8ac9db7a1141e2db2e30d009dd1cc4b37883609",
+          "bytes": 27928,
+          "sha256": "5617357cacc00964ceb13a5223425e51ce0ff96591e6ed51c74c29629777a5bf"
         },
         "original": {
           "bytes": 26554,
@@ -58718,11 +58718,11 @@
       },
       {
         "current": {
-          "bytes": 21357,
-          "git_blob": "e576ea68ad6f91949b614aee9c6f41438bb5e501",
-          "mode": "100644",
           "path": "FORK_NOTES.md",
-          "sha256": "b186d9d72fde095838dd61192b361d7717916de74a4c754b87b06d7f1e98ee3d"
+          "mode": "100644",
+          "git_blob": "2c109945e5f15e996e74de125672158a61569b5a",
+          "bytes": 21357,
+          "sha256": "aa17cb7876d0c4b06e1cebcf230284c1f62df7890ce3b9a3054306b2dc660a08"
         },
         "original": {
           "bytes": 19981,
@@ -58802,8 +58802,8 @@
         "role": "DOCUMENTATION_ONLY_NO_THEOREM_AUTHORITY"
       }
     ],
-    "reviewed_against_commit": "b144555b10f99bf60483ef24037a16459acf98b2",
-    "reviewed_against_tree": "832bf37b5f4f5a6c086aa36e9784282d05ff24db",
+    "reviewed_against_commit": "cafcffc23be85b224b5c1dd00439560ccf05667a",
+    "reviewed_against_tree": "59d643b6679e4be5be769b4bb1f1142065ceb0bd",
     "roots_sha256": "2239636f347449ecd447fc5ba78d7c75f1c0440d28a862cb72397c4f79597b41",
     "schema": "OPICA_EXACT_SUBJECT_EXTENSION_POLICY_V3",
     "separate_required_gates": [
@@ -62935,7 +62935,7 @@
     "mathematical_review_commit": "a38725951357898a5dfdd3caadc903958199c01d",
     "mathematical_review_tree": "04498b31ddd7a369155ceb8d61c244a57bd962c9",
     "full_release": "OPEN",
-    "exact_source_extension_policy_sha256": "c608cd49d009f19f6e53cd10b32c487bb494f15a82b18ac68f546e2c01c02f69",
+    "exact_source_extension_policy_sha256": "05b2f1f7001c3ede52211b0550449341af7756b9fc696453227191f215fe3ca1",
     "expected_statement_authorship_and_review_provenance": {
       "required_copied_expected_name_provenance": {
         "Zeta23.OPICAFollowup.Validation.expected_weighted_mobius_inverse": {
@@ -62986,49 +62986,50 @@
       }
     },
     "compiler_evidence_scope": "Actual complete2440 full-type/private-closure export plus unchanged41 math sources and exact oldValidation prefix, with actuala387 append mini export and kernel predicate-body equality. This review is not a same-tree complete cold execution; the original final cold producer must recompute and match every final actual type/source/dependency.",
-    "source_policy_reviewed_commit": "b144555b10f99bf60483ef24037a16459acf98b2",
-    "source_policy_reviewed_tree": "832bf37b5f4f5a6c086aa36e9784282d05ff24db",
+    "source_policy_reviewed_commit": "cafcffc23be85b224b5c1dd00439560ccf05667a",
+    "source_policy_reviewed_tree": "59d643b6679e4be5be769b4bb1f1142065ceb0bd",
     "reviewed_exact_policy_implementation_sha256": "0b393f7d1b177a1c497917aa0aaade1355b0512338bc3a143991b4550fae5e44",
     "classification_implementation_review_sha256": "eccdc050c91f45524854a7d7c50c981992029dc95bfaccd59b18ade2164b4da3",
     "registered_dependency_storage_amendment_sha256": "71d2c4039537706284be83003a1c0baf5e227db198634281091c2b44333f9904",
-    "storage_implementation_review_sha256": "d0dad9e3db707692e093c26b325aab5c7e26eb4471cd6de23236923439600a26",
+    "storage_implementation_review_sha256": "5079772ab34a934c9a37e0dbecb5f71b126b2417b0428e1acb5d8c2f9fea848d",
     "storage_implementation_review_provenance": {
-      "checked_commit": "b144555b10f99bf60483ef24037a16459acf98b2",
-      "checked_tree": "832bf37b5f4f5a6c086aa36e9784282d05ff24db",
-      "review_scope": "EXACT_STORAGE_SOURCE_AND_POLICY_EXTENSION_ONLY_NO_NEW_MATHEMATICAL_REVIEW",
-      "unchanged_prior_full_review_raw_sha256": "7ef0e13c9b3b8d55e3061a3bdefb1f35d6edcab00e9b68850b5e349cc877af65",
+      "checked_commit": "cafcffc23be85b224b5c1dd00439560ccf05667a",
+      "checked_tree": "59d643b6679e4be5be769b4bb1f1142065ceb0bd",
+      "review_scope": "EXACT_CI_RUNNER_AND_DOCUMENT_PLACEMENT_POLICY_REFRESH_ONLY_NO_NEW_MATHEMATICAL_REVIEW",
+      "unchanged_prior_full_review_raw_sha256": "c888cff70326ae6e6cf0196cf56f0f6333f79195b8105b409f386c409be114c7",
+      "unchanged_storage_implementation_amendment_sha256": "71d2c4039537706284be83003a1c0baf5e227db198634281091c2b44333f9904",
       "evidence": {
-        "core_source_review": {
-          "file": "work/audit-registered-sharding-review/REVIEW.md",
-          "sha256": "6098393d6f1ee426eadf3b9bb8425de443b2c91cddf43b5e04d5d8ca58b470b9"
+        "prior_genuine_storage_review": {
+          "file": "work/audit-registered-sharding-review/STORAGE_REVIEW_FINAL.json",
+          "sha256": "d0dad9e3db707692e093c26b325aab5c7e26eb4471cd6de23236923439600a26"
         },
-        "core_protocol_replay": {
-          "file": "work/audit-registered-sharding-review/RECEIPT.json",
-          "sha256": "068ccfa534c73c7fcc0680f27a036d196659eef9bdc3b585028fb033c2c3762a"
+        "prior_genuine_policy_review": {
+          "file": "work/audit-registered-sharding-review/final-b144-bound-review/ACTUAL_POLICY_REVIEW.json",
+          "sha256": "8c33490e09bfd35aa4bccec05e27498055bdadfb26ff98cec2b6f2212415ae3c"
         },
-        "actual_independent_stream_replay": {
-          "file": "work/audit-registered-sharding-review/ACTUAL_STREAM_REPLAY.json",
-          "sha256": "067e3cdbc724da6269db39e647f2bf39403cd7cc38b9c2ccaaad0451f5ec0120"
+        "actual_six_path_candidate_tests": {
+          "file": "work/audit-required-checks-31f-v2/TARGETED_CANDIDATE_TESTS.json",
+          "sha256": "00931decf2bb2c5e62c0c96fe20f41556735a119b401548bcdcc21cf65893be6"
         },
-        "actual_author_roundtrip": {
-          "file": "work/audit-registered-shards/ACTUAL_ROUNDTRIP.json",
-          "sha256": "7b4745f6596a6f643753b05bb5789bcaa4e4f431af882558a71e62cd8885988c"
+        "actual_candidate_log": {
+          "file": "work/audit-required-checks-31f-v2/TARGETED_CANDIDATE_TESTS.log",
+          "sha256": "0f0b7a9f7c313f77a904e54b0385830bc725fdfe976463c872ee1edc535669f9"
         },
-        "final_V3_and_legacy_replay": {
-          "file": "work/audit-registered-sharding-review/final-protocol-replay/V3_PROTOCOL_REPLAY.json",
-          "sha256": "36a1365ab3cda3b81c7dd5f5edf6a1d52134afcd2b548f390607b96ec48962a4"
+        "actual_candidate_manifest": {
+          "file": "work/audit-required-checks-31f-v2/CANDIDATES.json",
+          "sha256": "839528728f26f2efd5ec33235b877562809dbfbd89218ebd1ceb1b1a6c392e69"
         },
-        "CI_structure_and_adversaries": {
-          "file": "work/audit-storage-amendment-site-review/ci-controls-final/RECEIPT.json",
-          "sha256": "7282c4b51abbcba3f420a14f920c5cc387ce12e9dd7b6b625d0edb1b399083ec"
+        "actual_installed_six_tests_normal_and_optimized": {
+          "file": "work/audit-required-checks-31f-v2/ACTUAL_FINAL_RECEIPT.json",
+          "sha256": "77363273ac34bec13b2f0bde9c99d5fd32aebb7b0af4faa058ed00765425dd9f"
         },
-        "new_source_classification_review": {
-          "file": "work/audit-storage-amendment-site-review/NEW_SOURCE_CLASSIFICATION_REVIEW.json",
-          "sha256": "ae48de60c620dbac9e8ccf78b5de8eb0eac4e5aa08619d314137255ae995feef"
+        "actual_installed_six_tests_normal_log": {
+          "file": "work/audit-required-checks-31f-v2/ACTUAL_FINAL_normal.log",
+          "sha256": "c79c8ebdea5224d0e9e93db6cb56cc2bc9bc6929ab70986e57a4f0d5d96f19f9"
         },
-        "prior_genuine_full_mathematical_review": {
-          "file": "work/audit-independent-full-review/final-fb2f-bound-review/FULL_REVIEW.json",
-          "sha256": "7ef0e13c9b3b8d55e3061a3bdefb1f35d6edcab00e9b68850b5e349cc877af65"
+        "actual_installed_six_tests_optimized_log": {
+          "file": "work/audit-required-checks-31f-v2/ACTUAL_FINAL_optimized.log",
+          "sha256": "a2d66832df7863ff8d3d9d390cf93f1ebfa607705655cd15da854711247adb23"
         }
       },
       "human_review": "NOT_ESTABLISHED",
