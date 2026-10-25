@@ -49,17 +49,17 @@
   "inherits_runtime_qualification": false,
   "input_snapshot": {
     "candidate_count": 5548,
-    "candidate_resolution_sha256": "373ea740f52e3c77f657a8eb9ae728ff0cf9f4bafe53a07e4db173e2a4a124d5",
-    "candidate_source_surface_sha256": "760b65347e10269039c68e40d68b9d36d36ce2a2b332005a6f18f52a6cb8fb41",
-    "candidate_summary_sha256": "bd6636c289820cb430f512d06d52d57722e83ea14faf5cef169039c236db1edd",
+    "candidate_resolution_sha256": "439cccff362c96035029f35510e06aedcc6978c64b9a45ab067b408371ce7110",
+    "candidate_source_surface_sha256": "ee9eb8826753f83dbaa03b35c40a6b51fb2dede8ebe01edbfbc28969478ecaa2",
+    "candidate_summary_sha256": "43e465748099e08d49392e0fdc3648db8907ce31b811b93e1a07810e2e76e07d",
     "lean_toolchain": "leanprover/lean4:v4.33.0-rc2",
-    "registered_compiler_receipt_sha256": "2f1f67d4d2f55ed320928a91f2ec7cb11f4baa77280be714c8e74c73b6969485",
-    "rhkg_subject_digest_sha256": "88ac5c09322e5895349bbd53fee1c6034e0d6b73a5b625467586372b3196ba4c",
-    "source_only_public_theorem_count": 1795
+    "registered_compiler_receipt_sha256": "78c7ecda2299328e5dc57ad31c8d5892b65f5b8f78ed4091e5b7efd7c3061cb4",
+    "rhkg_subject_digest_sha256": "7f01c3d8597efbefa379de96589d8be48ebfa43a1f574e73973b03e5f6c68fed",
+    "source_only_public_theorem_count": 1775
   },
   "qualification_identity": {
-    "execution_digest": "89e3c3beb4a8b175f9d2dba8a36c5896439735739ba319e795d14ddb6cac4880",
-    "execution_id": "RHKG_CANDIDATE_SNAPSHOT:88ac5c09322e5895",
+    "execution_digest": "2eb423138468e5a63d4f0679de360398f0f1a129b2e0732c02259a71788100c7",
+    "execution_id": "RHKG_CANDIDATE_SNAPSHOT:7f01c3d8597efbef",
     "profile_digest": "0ab841ca4f9c683bcf206c0cd2e434f07f35b3861073feb370f10195cac49929",
     "profile_id": "RHRC_FFBBP_V17_RHKG_SNAPSHOT_PROFILE",
     "protocol_digest": "30fd49aa7806e29ea8ce750cb91ad0f9edb3d655b9697f6a6dd82d3666a4ac26",
@@ -1264,7 +1264,7 @@
         "fiber_count": 657,
         "full_state_count": 5548,
         "max_fiber_size": 69,
-        "mixed_value_fiber_count": 405,
+        "mixed_value_fiber_count": 406,
         "passed": false
       },
       "id": "MODULE_ONLY_SNAPSHOT",
@@ -1281,7 +1281,7 @@
       "decision_factorization": {
         "collision_fiber_count": 846,
         "counterexamples": [],
-        "fiber_count": 1181,
+        "fiber_count": 1183,
         "full_state_count": 5548,
         "max_fiber_size": 67,
         "mixed_value_fiber_count": 0,
@@ -1292,7 +1292,7 @@
       "diagnostic_factorization": {
         "collision_fiber_count": 846,
         "counterexamples": [],
-        "fiber_count": 1181,
+        "fiber_count": 1183,
         "full_state_count": 5548,
         "max_fiber_size": 67,
         "mixed_value_fiber_count": 0,
@@ -1480,12 +1480,23 @@
               "\"NOT_SOURCE_ONLY_PUBLIC_THEOREM\"",
               "\"SOURCE_ONLY_PUBLIC_THEOREM\""
             ]
+          },
+          {
+            "member_ids": [
+              "rh:source-decl:85191508266474d1e2f87b96a9468d165f909429bb76b9871370118779ed753b",
+              "rh:source-decl:90dfa34ed5c6419f6f6640a8bb63e0944484490e3a36bfc7c87a15412935d164"
+            ],
+            "reduction_key": "[\"d691199a2d24185a8d6d3097c88c026c669ddbab9bee3b702bbd1986c57599bc\"]",
+            "values": [
+              "\"NOT_SOURCE_ONLY_PUBLIC_THEOREM\"",
+              "\"SOURCE_ONLY_PUBLIC_THEOREM\""
+            ]
           }
         ],
         "fiber_count": 5452,
         "full_state_count": 5548,
         "max_fiber_size": 6,
-        "mixed_value_fiber_count": 15,
+        "mixed_value_fiber_count": 16,
         "passed": false
       },
       "declared_use": "CURRENT_SNAPSHOT_DECISION_PROBE_ONLY",
@@ -1718,7 +1729,7 @@
         "fiber_count": 5452,
         "full_state_count": 5548,
         "max_fiber_size": 6,
-        "mixed_value_fiber_count": 24,
+        "mixed_value_fiber_count": 25,
         "passed": false
       },
       "id": "TYPE_DIGEST_SNAPSHOT",
@@ -1736,7 +1747,7 @@
   "schema_version": "RHRC-FFBBP-RHKG-assurance-report-2.0",
   "selected_reduction": "MODULE_VISIBILITY_SNAPSHOT",
   "selected_reduction_disposition": "PASS_FOR_POST_REFERENCE_COHORT_NAVIGATION_ONLY",
-  "source_only_module_cohort_count": 443,
+  "source_only_module_cohort_count": 441,
   "source_only_module_cohorts": [
     {
       "count": 67,
@@ -2878,20 +2889,6 @@
       "module": "Zeta23.CCM.ZeroShiftSchurClassification"
     },
     {
-      "count": 8,
-      "declarations": [
-        "Zeta23.CCM.nativeInput_allRangeClosure_of_originalPrimeField_allDampedL2",
-        "Zeta23.CCM.nativeOriginalDampedPrimeField_continuous",
-        "Zeta23.CCM.nativeOriginalDampedPrimeField_memLp_iff_halfLineIntegral",
-        "Zeta23.CCM.nativeOriginalDampedPrimeField_norm_sq",
-        "Zeta23.CCM.nativeOriginalPrimeField_allDampedL2_iff_integral",
-        "Zeta23.ExceptionalZero.riemannHypothesis_of_nativeInput_allRangeClosure",
-        "Zeta23.ExceptionalZero.riemannHypothesis_of_originalPrimeField_allDampedIntegral",
-        "Zeta23.ExceptionalZero.riemannHypothesis_of_originalPrimeField_allDampedL2"
-      ],
-      "module": "Zeta23.ExceptionalZero.NativeAnalyticOutputSufficiency"
-    },
-    {
       "count": 7,
       "declarations": [
         "Zeta23.CCM.ccmCodimOneMatrixCompletion",
@@ -2955,19 +2952,6 @@
         "Zeta23.CCM.quadraticNormalSource_has_physical_authority"
       ],
       "module": "Zeta23.CCM.FirstCrossingProductionTests"
-    },
-    {
-      "count": 7,
-      "declarations": [
-        "Zeta23.CCM.nativeCompletedInput_mem_rangeClosure_of_prime_memLp",
-        "Zeta23.CCM.nativeCompletedInput_mem_range_of_prime_memLp",
-        "Zeta23.CCM.nativeCompletedInput_operator_eq_of_prime_memLp",
-        "Zeta23.CCM.nativeDampedCompletedInput_equation",
-        "Zeta23.CCM.nativeOriginalDampedPrimeFieldL2_causal",
-        "Zeta23.CCM.nativeOriginalDampedPrimeFieldL2_coeFn",
-        "Zeta23.CCM.nativeOriginalDampedPrimeField_zero_of_neg"
-      ],
-      "module": "Zeta23.CCM.NativeCompletedInputRangeOfPrimeLp"
     },
     {
       "count": 7,
@@ -3472,17 +3456,6 @@
     {
       "count": 5,
       "declarations": [
-        "Zeta23.CCM.nativeDampedCompletionL2Operator_coeFn_pointwise",
-        "Zeta23.CCM.nativeDampedCompletionL2Operator_setIntegral_pointwise",
-        "Zeta23.CCM.nativeDampedCompletionPointwise_integrable",
-        "Zeta23.CCM.nativeDampedCompletionPointwise_integrable_prod_on_finite_set",
-        "Zeta23.CCM.nativeDampedCompletionPointwise_memLp"
-      ],
-      "module": "Zeta23.CCM.NativeDampedCompletionPointwiseBridge"
-    },
-    {
-      "count": 5,
-      "declarations": [
         "Zeta23.CCM.originalDetectorFinitePhasePlane_inner_eq_Gram",
         "Zeta23.CCM.originalDetectorFinitePhasePlane_inner_eq_nativeEnergy",
         "Zeta23.CCM.originalDetectorFinitePhasePlane_rayleigh_identity",
@@ -3611,17 +3584,6 @@
         "Zeta23.ExceptionalZero.exists_generatedStep123Output_forcingError_cofinal_atLateness"
       ],
       "module": "Zeta23.ExceptionalZero.Step123SameStateN37"
-    },
-    {
-      "count": 5,
-      "declarations": [
-        "Zeta23.ExceptionalZero.riemannHypothesis_of_any_step4_output_cut",
-        "Zeta23.ExceptionalZero.riemannHypothesis_of_detectorSchurLoss_subexponential",
-        "Zeta23.ExceptionalZero.riemannHypothesis_of_originalDetectorSchurSubexponential",
-        "Zeta23.ExceptionalZero.riemannHypothesis_of_step4_AX",
-        "Zeta23.ExceptionalZero.riemannHypothesis_of_step4_BY"
-      ],
-      "module": "Zeta23.ExceptionalZero.Step4OutputSufficiency"
     },
     {
       "count": 5,
@@ -4045,6 +4007,16 @@
         "Zeta23.ExceptionalZero.exists_generatedStep123Output_imageErrors_cofinal_atLateness"
       ],
       "module": "Zeta23.ExceptionalZero.Step123SameStateN14"
+    },
+    {
+      "count": 4,
+      "declarations": [
+        "Zeta23.ExceptionalZero.riemannHypothesis_of_any_step4_output_cut",
+        "Zeta23.ExceptionalZero.riemannHypothesis_of_detectorSchurLoss_subexponential",
+        "Zeta23.ExceptionalZero.riemannHypothesis_of_originalDetectorSchurSubexponential",
+        "Zeta23.ExceptionalZero.riemannHypothesis_of_step4_BY"
+      ],
+      "module": "Zeta23.ExceptionalZero.Step4OutputSufficiency"
     },
     {
       "count": 4,
@@ -5697,6 +5669,13 @@
     {
       "count": 1,
       "declarations": [
+        "Zeta23.CCM.nativeDampedCompletionPointwise_memLp"
+      ],
+      "module": "Zeta23.CCM.NativeDampedCompletionPointwiseBridge"
+    },
+    {
+      "count": 1,
+      "declarations": [
         "Zeta23.CCM.nativeDampedCompletionPointwise_causal"
       ],
       "module": "Zeta23.CCM.NativeDampedCompletionPrerequisites"
@@ -6197,10 +6176,10 @@
   "theorem_promotion": false,
   "theory_version": "1.7",
   "visibility_counts": {
-    "ALREADY_IN_REGISTERED_DEPENDENCY_CLOSURE": 3021,
+    "ALREADY_IN_REGISTERED_DEPENDENCY_CLOSURE": 3041,
     "ALREADY_REGISTERED_ROOT": 112,
     "PRIVATE_OR_INTERNAL_SOURCE_OBJECT": 617,
-    "SOURCE_ONLY_PUBLIC_THEOREM": 1795,
+    "SOURCE_ONLY_PUBLIC_THEOREM": 1775,
     "UNRESOLVED_SOURCE_IDENTITY": 3
   }
 }

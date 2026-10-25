@@ -5,6 +5,7 @@ import json
 import importlib.util
 import os
 import shutil
+import subprocess
 import tempfile
 from pathlib import Path
 import unittest
@@ -515,10 +516,19 @@ class DocumentationReview(unittest.TestCase):
         self.temporary = tempfile.TemporaryDirectory()
         self.addCleanup(self.temporary.cleanup)
         self.repo = Path(self.temporary.name)
-        for relative in contract.FOLLOWUP_DOCUMENTATION_PATHS:
+        # This tests the sealed Stage1 review, whose bytes intentionally predate
+        # later current-document navigation edits. Read its genuine Git objects;
+        # an unavailable or altered historical fixture must fail, never skip.
+        fixture_head = '0b0b84421d0c8c1fd955bb1f1730561ae560e445'
+        for relative, size, digest in contract.FOLLOWUP_DOCUMENTATION_REVIEW:
+            data = subprocess.check_output([
+                'git', '-C', str(contract.REPO), 'show', fixture_head + ':' + relative,
+            ])
+            self.assertEqual(len(data), size, relative)
+            self.assertEqual(hashlib.sha256(data).hexdigest(), digest, relative)
             target = self.repo/relative
             target.parent.mkdir(parents=True,exist_ok=True)
-            shutil.copyfile(contract.REPO/relative,target)
+            target.write_bytes(data)
         registry = self.repo/'research/RHRC'
         (registry/'CLAIM_REGISTRY.json').write_text(json.dumps({'claims':[]}))
         (registry/'REGISTERED_THEOREM_BINDINGS.json').write_text(json.dumps({'bindings':[]}))

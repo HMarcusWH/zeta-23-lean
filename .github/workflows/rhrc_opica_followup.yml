@@ -129,7 +129,7 @@ jobs:
         if: ${{ matrix.lane == 'heat' }}
         run: >-
           python -B "$FOLLOWUP/continuation/2026-10-22/run_candidate_checks.py"
-          --lake lake --output-dir /tmp/opica-current-candidates
+          --lake lake --output-dir /tmp/opica-current-candidates/narrow
       - name: W01 same-output word/jet compiler and standard-axiom check (narrow)
         if: ${{ always() && matrix.lane == 'heat' }}
         shell: bash
