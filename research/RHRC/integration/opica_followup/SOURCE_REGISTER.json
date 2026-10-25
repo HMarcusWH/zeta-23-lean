@@ -10924,9 +10924,9 @@
         "file": {
           "path": "research/RHRC/integration/opica_followup/CONTINUATION_MANIFEST.json",
           "mode": "100644",
-          "git_blob": "b84adf606fdc68ac3efb03a76e7883a5e7109c80",
+          "git_blob": "1e72836756acd8fd5d0d56f493372b1f2ef92559",
           "bytes": 616971,
-          "sha256": "1f4accffab9b27205b17f097c2a7a40e96790c28ad01c2c12266d5b0f1664f60"
+          "sha256": "bc123d8d43b19eb15f63ab64c88b9dbbae0ac8e1bfb00c28b20147cbc9b553e3"
         },
         "review_status": "OPEN_REQUIRES_INDEPENDENT_REVIEW",
         "role": "CONTINUATION_SOURCE_PINNED_EVIDENCE_OR_METADATA",
@@ -58802,8 +58802,8 @@
         "role": "DOCUMENTATION_ONLY_NO_THEOREM_AUTHORITY"
       }
     ],
-    "reviewed_against_commit": "cafcffc23be85b224b5c1dd00439560ccf05667a",
-    "reviewed_against_tree": "59d643b6679e4be5be769b4bb1f1142065ceb0bd",
+    "reviewed_against_commit": "ec521b61b9c30301e2062819f56d6656ae74ed63",
+    "reviewed_against_tree": "e9f1d029b8ef15ae015088fff67d06f29adc783b",
     "roots_sha256": "2239636f347449ecd447fc5ba78d7c75f1c0440d28a862cb72397c4f79597b41",
     "schema": "OPICA_EXACT_SUBJECT_EXTENSION_POLICY_V3",
     "separate_required_gates": [
@@ -62935,7 +62935,7 @@
     "mathematical_review_commit": "a38725951357898a5dfdd3caadc903958199c01d",
     "mathematical_review_tree": "04498b31ddd7a369155ceb8d61c244a57bd962c9",
     "full_release": "OPEN",
-    "exact_source_extension_policy_sha256": "05b2f1f7001c3ede52211b0550449341af7756b9fc696453227191f215fe3ca1",
+    "exact_source_extension_policy_sha256": "14610a9ebba2d1e13bd42f263aa430df624dfdd8af9b195fc885b4379cee77e9",
     "expected_statement_authorship_and_review_provenance": {
       "required_copied_expected_name_provenance": {
         "Zeta23.OPICAFollowup.Validation.expected_weighted_mobius_inverse": {
@@ -62986,50 +62986,30 @@
       }
     },
     "compiler_evidence_scope": "Actual complete2440 full-type/private-closure export plus unchanged41 math sources and exact oldValidation prefix, with actuala387 append mini export and kernel predicate-body equality. This review is not a same-tree complete cold execution; the original final cold producer must recompute and match every final actual type/source/dependency.",
-    "source_policy_reviewed_commit": "cafcffc23be85b224b5c1dd00439560ccf05667a",
-    "source_policy_reviewed_tree": "59d643b6679e4be5be769b4bb1f1142065ceb0bd",
+    "source_policy_reviewed_commit": "ec521b61b9c30301e2062819f56d6656ae74ed63",
+    "source_policy_reviewed_tree": "e9f1d029b8ef15ae015088fff67d06f29adc783b",
     "reviewed_exact_policy_implementation_sha256": "0b393f7d1b177a1c497917aa0aaade1355b0512338bc3a143991b4550fae5e44",
     "classification_implementation_review_sha256": "eccdc050c91f45524854a7d7c50c981992029dc95bfaccd59b18ade2164b4da3",
     "registered_dependency_storage_amendment_sha256": "71d2c4039537706284be83003a1c0baf5e227db198634281091c2b44333f9904",
-    "storage_implementation_review_sha256": "5079772ab34a934c9a37e0dbecb5f71b126b2417b0428e1acb5d8c2f9fea848d",
+    "storage_implementation_review_sha256": "ad372c6bd4b4b68e6fa7e5bb1bfcfd0403599698e782eca71daf2d15dcd42992",
     "storage_implementation_review_provenance": {
-      "checked_commit": "cafcffc23be85b224b5c1dd00439560ccf05667a",
-      "checked_tree": "59d643b6679e4be5be769b4bb1f1142065ceb0bd",
-      "review_scope": "EXACT_CI_RUNNER_AND_DOCUMENT_PLACEMENT_POLICY_REFRESH_ONLY_NO_NEW_MATHEMATICAL_REVIEW",
-      "unchanged_prior_full_review_raw_sha256": "c888cff70326ae6e6cf0196cf56f0f6333f79195b8105b409f386c409be114c7",
+      "checked_commit": "ec521b61b9c30301e2062819f56d6656ae74ed63",
+      "checked_tree": "e9f1d029b8ef15ae015088fff67d06f29adc783b",
+      "review_scope": "EXACT_CHECKPOINT_MANIFEST_AND_LITERAL_PIN_POLICY_REFRESH_ONLY_NO_NEW_MATHEMATICAL_REVIEW",
+      "unchanged_prior_full_review_raw_sha256": "8779853333245ba0e4a5cc731a2e76d2f3d5b7f804b3f91a4f819c5e02d3377a",
       "unchanged_storage_implementation_amendment_sha256": "71d2c4039537706284be83003a1c0baf5e227db198634281091c2b44333f9904",
       "evidence": {
-        "prior_genuine_storage_review": {
-          "file": "work/audit-registered-sharding-review/STORAGE_REVIEW_FINAL.json",
-          "sha256": "d0dad9e3db707692e093c26b325aab5c7e26eb4471cd6de23236923439600a26"
+        "prior_genuine_storage_policy_review": {
+          "file": "work/audit-ci-compatibility-review/STORAGE_REVIEW_REFRESH.json",
+          "sha256": "5079772ab34a934c9a37e0dbecb5f71b126b2417b0428e1acb5d8c2f9fea848d"
         },
         "prior_genuine_policy_review": {
-          "file": "work/audit-registered-sharding-review/final-b144-bound-review/ACTUAL_POLICY_REVIEW.json",
-          "sha256": "8c33490e09bfd35aa4bccec05e27498055bdadfb26ff98cec2b6f2212415ae3c"
+          "file": "work/audit-ci-compatibility-review/reviewed-objects/ACTUAL_POLICY_REVIEW.json",
+          "sha256": "00c6c58f595b8cc9106ef5961b97c35017cccd391dd12884c7bd116eec011da0"
         },
-        "actual_six_path_candidate_tests": {
-          "file": "work/audit-required-checks-31f-v2/TARGETED_CANDIDATE_TESTS.json",
-          "sha256": "00931decf2bb2c5e62c0c96fe20f41556735a119b401548bcdcc21cf65893be6"
-        },
-        "actual_candidate_log": {
-          "file": "work/audit-required-checks-31f-v2/TARGETED_CANDIDATE_TESTS.log",
-          "sha256": "0f0b7a9f7c313f77a904e54b0385830bc725fdfe976463c872ee1edc535669f9"
-        },
-        "actual_candidate_manifest": {
-          "file": "work/audit-required-checks-31f-v2/CANDIDATES.json",
-          "sha256": "839528728f26f2efd5ec33235b877562809dbfbd89218ebd1ceb1b1a6c392e69"
-        },
-        "actual_installed_six_tests_normal_and_optimized": {
-          "file": "work/audit-required-checks-31f-v2/ACTUAL_FINAL_RECEIPT.json",
-          "sha256": "77363273ac34bec13b2f0bde9c99d5fd32aebb7b0af4faa058ed00765425dd9f"
-        },
-        "actual_installed_six_tests_normal_log": {
-          "file": "work/audit-required-checks-31f-v2/ACTUAL_FINAL_normal.log",
-          "sha256": "c79c8ebdea5224d0e9e93db6cb56cc2bc9bc6929ab70986e57a4f0d5d96f19f9"
-        },
-        "actual_installed_six_tests_optimized_log": {
-          "file": "work/audit-required-checks-31f-v2/ACTUAL_FINAL_optimized.log",
-          "sha256": "a2d66832df7863ff8d3d9d390cf93f1ebfa607705655cd15da854711247adb23"
+        "unchanged_original_manifest_refresher": {
+          "file": "research/RHRC/integration/opica_followup/continuation/2026-10-22/refresh_manifest.py",
+          "sha256": "851f011cfe01c49edbb5459afe1d9452c1429f984ec0c6740fb6e91498104593"
         }
       },
       "human_review": "NOT_ESTABLISHED",
