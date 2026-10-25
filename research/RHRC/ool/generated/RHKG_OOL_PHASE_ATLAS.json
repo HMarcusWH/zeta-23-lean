@@ -58,14 +58,14 @@
     "right_claim_id": "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL"
   },
   "input_snapshot": {
-    "ffbbp_assurance_sha256": "75d17e7682ac156e7e0b7ed3916426759f6b3c0c9bedb2bf1c61a54ecbd24612",
+    "ffbbp_assurance_sha256": "fba31bcdf3cb1ac6d6e4d1de91ed284a196837c01c4cc72d29f6e2d1d8749f8f",
     "ffbbp_selected_reduction": "MODULE_VISIBILITY_SNAPSHOT",
     "ffbbp_source_only_module_cohort_count": 441,
     "ool_reference_sha256": "29661d7205b5044fc6fda4c9e733095a2196ba3ce682ed21bef4824616db9bca",
     "projection_frontiers_sha256": "9a05c8b8192f8d6ce8405b657d1f539b7116a48fb6466556c1a4a83342cf89ee",
     "registered_dependency_sha256": "78c7ecda2299328e5dc57ad31c8d5892b65f5b8f78ed4091e5b7efd7c3061cb4",
     "source_only_candidate_count": 1775,
-    "source_only_candidate_sha256": "7e6cfba6d562a5ad4236f1472f8cbfdf71d3a3af07b5b622dadbaa7b1ad76370",
+    "source_only_candidate_sha256": "11a36c5119c7c01ee560db2b75ede5a1a4b7f74dd6afa9bde46a726cd40cf073",
     "source_only_dependency_sha256": "3f6623de8a85f1f11500327c59c288f468498818bb92c7065f03d9d02700ec79"
   },
   "interface_families": {

@@ -775,6 +775,12 @@ jobs:
           use-mathlib-cache: true
       - run: >-
           python -m pip install --require-hashes --only-binary=:all: -r "$FOLLOWUP/python-checks.lock"
+      - name: Build registered and derived-state Lean exporters
+        run: |
+          lake build \
+            Zeta23.RHRC.RegisteredClaimBindings \
+            Zeta23.RHRC.DeclarationDependencyExport \
+            Zeta23.RHRC.SourceCandidateResolution
       - name: Check the unchanged complete canonical producer and repository suite
         run: |
           python research/RHRC/tools/materialize_derived_state.py --check
