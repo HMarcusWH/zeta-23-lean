@@ -4,6 +4,7 @@ from __future__ import annotations
 import argparse
 import importlib.util
 import json
+import runpy
 import shlex
 from pathlib import Path
 import subprocess
@@ -236,20 +237,81 @@ class WorkflowBoundaryTests(unittest.TestCase):
         TEMP_ROOT.mkdir(exist_ok=True)
         with tempfile.TemporaryDirectory(dir=TEMP_ROOT) as tmp:
             projection = Path(tmp).resolve()
+            frozen_test = projection / "research/RHRC/graph/tests/test_post292_review_file_classes.py"
+            frozen_test.parent.mkdir(parents=True)
+            frozen_test.write_text("# Command fixture; never executed here\n", encoding="utf-8")
             with patch.object(suite, "run") as commands:
                 suite.run_round2_suite(argparse.Namespace(ancestor_projection=projection, skip_derived_state=False))
             calls = [call.args[0] for call in commands.call_args_list]
             dispatches = [argv for argv in calls if "--ancestor-projection" in argv]
             self.assertEqual(len(dispatches), 2)
-            self.assertTrue(all(argv[-1] == str(projection) for argv in dispatches))
+            self.assertTrue(all(argv[argv.index("--ancestor-projection") + 1] == str(projection) for argv in dispatches))
+            self.assertTrue(all("--output" in argv and not Path(argv[-1]).is_relative_to(REPO) for argv in dispatches))
             self.assertTrue(any(str(projection / "research/RHRC/tools/run_suite.py") in argv for argv in calls))
             self.assertTrue(any(str(projection / "research/RHRC/integration/opica_followup/tests") in argv for argv in calls))
+            graph = [call for call in commands.call_args_list if "-s" in call.args[0]
+                     and Path(call.args[0][call.args[0].index("-s") + 1]).parts[-2:] == ("graph", "tests")]
+            expected = {path.name for path in (suite.ROOT / "graph/tests").glob("test_*.py")}
+            self.assertEqual({call.args[0][call.args[0].index("-p") + 1] for call in graph}, expected)
+            for call in graph:
+                argv = call.args[0]
+                pattern = argv[argv.index("-p") + 1]
+                if pattern == "test_post292_review_file_classes.py":
+                    self.assertEqual(Path(argv[argv.index("-s") + 1]), frozen_test.parent)
+                    self.assertEqual(call.kwargs["cwd"], projection)
+                else:
+                    self.assertEqual(Path(argv[argv.index("-s") + 1]), suite.ROOT / "graph/tests")
+
+    def test_missing_frozen_historical_graph_test_cannot_be_silently_omitted(self):
+        TEMP_ROOT.mkdir(exist_ok=True)
+        with tempfile.TemporaryDirectory(dir=TEMP_ROOT) as tmp, patch.object(suite, "run"):
+            with self.assertRaisesRegex(ValueError, "exact historical graph classification test"):
+                suite.run_base_suite(argparse.Namespace(skip_derived_state=True),
+                    include_ancestor=False, historical_projection=Path(tmp))
+
+    def test_actual_ancestor_dispatch_arguments_pass_both_real_cli_parsers(self):
+        """Exercise each real parser with the suite's exact emitted command."""
+        TEMP_ROOT.mkdir(exist_ok=True)
+        with tempfile.TemporaryDirectory(dir=TEMP_ROOT) as tmp:
+            projection = Path(tmp).resolve()
+            frozen_test = projection / "research/RHRC/graph/tests/test_post292_review_file_classes.py"
+            frozen_test.parent.mkdir(parents=True)
+            frozen_test.write_text("# Parser fixture; never executed here\n", encoding="utf-8")
+            with patch.object(suite, "run") as commands:
+                suite.run_round2_suite(argparse.Namespace(ancestor_projection=projection, skip_derived_state=False))
+            dispatches = [call.args[0] for call in commands.call_args_list if "--ancestor-projection" in call.args[0]]
+            original_parse = argparse.ArgumentParser.parse_args
+            class ParsedOnly(Exception):
+                pass
+            outputs = []
+            for argv in dispatches:
+                index = next(i for i, item in enumerate(argv) if item.endswith("validate_contract.py"))
+                parsed = []
+                def parse_only(parser, *args, **kwargs):
+                    namespace = original_parse(parser, *args, **kwargs)
+                    parsed.append(namespace)
+                    raise ParsedOnly()
+                with patch.object(sys, "argv", argv[index:]), \
+                        patch.object(argparse.ArgumentParser, "parse_args", autospec=True, side_effect=parse_only):
+                    with self.assertRaises(ParsedOnly):
+                        runpy.run_path(argv[index], run_name="__main__")
+                self.assertEqual(len(parsed), 1)
+                self.assertEqual(parsed[0].phase, "preflight")
+                self.assertEqual(parsed[0].ancestor_projection, projection)
+                self.assertIsNotNone(parsed[0].output)
+                self.assertFalse(parsed[0].output.is_relative_to(REPO))
+                self.assertFalse(parsed[0].output.is_relative_to(projection))
+                outputs.append(parsed[0].output)
+            self.assertEqual(len(set(outputs)), 2)
 
     def test_protected_python_only_caller_remains_diagnostic_and_authenticates_projection(self):
         TEMP_ROOT.mkdir(exist_ok=True)
         with tempfile.TemporaryDirectory(dir=TEMP_ROOT) as tmp:
             output = Path(tmp).resolve()
             projection = output / "source"
+            frozen_test = projection / "research/RHRC/graph/tests/test_post292_review_file_classes.py"
+            frozen_test.parent.mkdir(parents=True)
+            frozen_test.write_text("# Diagnostic command fixture; never executed here\n", encoding="utf-8")
             (output / "source-before.json").write_text(json.dumps({
                 "checked_commit": "a" * 40, "checked_tree": "b" * 40}), encoding="utf-8")
             args = argparse.Namespace(ancestor_projection=None, skip_derived_state=True)

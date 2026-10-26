@@ -352,4 +352,193 @@ class CoreCompositionBoundaryTests(unittest.TestCase):
             with self.assertRaises(ValueError):dispatch.require_runtime_checkout(Path(tmp))
 
 
+class RegisteredFortyDependencyTests(unittest.TestCase):
+    """Synthetic directed use graphs test metadata rejection, not Lean authority."""
+    @classmethod
+    def setUpClass(cls):
+        cls.claims=io.load_strict_json(receipt.REPO/"research/RHRC/CLAIM_REGISTRY.json",16*1024*1024)
+        cls.bindings=io.load_strict_json(receipt.REPO/"research/RHRC/REGISTERED_THEOREM_BINDINGS.json",16*1024*1024)
+        cls.public=io.load_strict_json(HERE/"PUBLIC_ROOTS.json",16*1024*1024)
+        def old(relative):
+            raw=subprocess.run(["git","-C",str(receipt.REPO),"show",receipt.contract.FROZEN_COMMIT+":"+relative],capture_output=True,check=True).stdout
+            return io.loads_strict_json(raw,16*1024*1024)
+        cls.old_claims=old("research/RHRC/CLAIM_REGISTRY.json")
+        cls.old_bindings=old("research/RHRC/REGISTERED_THEOREM_BINDINGS.json")
+        cls.mapper=staticmethod(receipt.frozen_tool(receipt.REPO,"research/RHRC/integration/opica/build_receipt.py",
+            "_opica2_mapping_protocol_fixture").mapped_registered_dependencies)
+        cls.roots=[row for row in cls.public["roots"] if row["required_for_full_core"]]
+        names={row["id"]:row["proposed_public_name"] for row in cls.roots}
+        cls.a,cls.b,cls.unrelated=names["OPICA2_P01"],names["OPICA2_P02"],names["OPICA2_P03"]
+        cls.old_name=cls.old_bindings["bindings"][0]["theorem"]
+        cls.old_id=cls.old_bindings["bindings"][0]["id"]
+        cls.private="_private.Zeta23.OPICARound2.Protocol.0.loadBearingHelper"
+        uses={name:{} for name in names.values()}
+        uses[cls.a]={"VALUE":[cls.private]}
+        uses[cls.private]={"TYPE":[cls.b]}
+        uses[cls.b]={"STRUCTURE":[cls.old_name]}
+        uses[cls.unrelated]={"VALUE":[cls.old_name]}
+        uses[cls.old_name]={}
+        cls.parsed={"declarations":[{"name":row["proposed_public_name"],"module":row["module"],"kind":"THEOREM","type_sha256":"0"*64} for row in cls.roots],
+            "dependencies":[{"source":source,"channel":channel,"targets":edges.get(channel,[])} for source,edges in uses.items() for channel in ("TYPE","VALUE","STRUCTURE")]}
+        mapped=cls.mapper([row["proposed_public_name"] for row in cls.roots],cls.bindings["bindings"],cls.parsed["dependencies"])
+        cls.correct=deepcopy(cls.claims)
+        for claim in cls.correct["claims"]:
+            if claim["id"] in names:claim["dependencies"]=mapped[names[claim["id"]]]
+
+    def check(self,claims=None,parsed=None,bindings=None):
+        return receipt._registered_dependency_report(claims or self.correct,bindings or self.bindings,
+            self.public,self.old_claims,self.old_bindings,parsed or self.parsed,self.mapper)
+
+    def test_exact_transitive_private_all_channel_mapping_excludes_reverse_shared_use(self):
+        report=self.check()
+        self.assertEqual(len(report["rows"]),40)
+        a=next(row for row in report["rows"] if row["claim_id"]=="OPICA2_P01")
+        self.assertEqual(a["dependencies"],sorted(["OPICA2_P02",self.old_id]))
+        self.assertNotIn("OPICA2_P03",a["dependencies"])
+        self.assertFalse(report["full_core_accepted"])
+        self.assertIn("not mathematical necessity or independence",report["interpretation"])
+
+    def test_planning_extra_missing_and_pruned_private_dependencies_rejected(self):
+        for kind in ("missing","extra","transitive","private_channel","private_edge"):
+            with self.subTest(kind=kind):
+                claims,parsed=deepcopy(self.correct),deepcopy(self.parsed)
+                target=next(row for row in claims["claims"] if row["id"]=="OPICA2_P01")
+                if kind=="missing":target["dependencies"]=[]
+                elif kind=="extra":target["dependencies"]=sorted(target["dependencies"]+["OPICA2_P03"])
+                elif kind=="transitive":target["dependencies"].remove(self.old_id)
+                elif kind=="private_channel":parsed["dependencies"]=[row for row in parsed["dependencies"] if not(row["source"]==self.private and row["channel"]=="STRUCTURE")]
+                else:next(row for row in parsed["dependencies"] if row["source"]==self.private and row["channel"]=="TYPE")["targets"]=[]
+                with self.assertRaises(ValueError):self.check(claims,parsed)
+
+    def test_original_objects_and_actual_registered_root_identity_are_immutable(self):
+        claims=deepcopy(self.correct)
+        next(row for row in claims["claims"] if row["id"]==self.old_claims["claims"][0]["id"])["statement"]+=" altered"
+        with self.assertRaises(ValueError):self.check(claims=claims)
+        bindings=deepcopy(self.bindings)
+        next(row for row in bindings["bindings"] if row["id"]==self.old_id)["source"]="Zeta23/Other.lean"
+        with self.assertRaises(ValueError):self.check(bindings=bindings)
+        parsed=deepcopy(self.parsed)
+        parsed["declarations"]=[row for row in parsed["declarations"] if row["name"]!=self.a]
+        with self.assertRaises(ValueError):self.check(parsed=parsed)
+
+
+class PackageGitLinkTests(unittest.TestCase):
+    """Gitlink fixtures validate filesystem provenance, never theorem authority."""
+    @staticmethod
+    def fixture(root, entries):
+        index, blobs = {}, {}
+        for name, (mode, payload) in entries.items():
+            path=root/name;path.parent.mkdir(parents=True,exist_ok=True);path.write_bytes(payload)
+            oid=hashlib.sha1(b"blob "+str(len(payload)).encode()+b"\0"+payload).hexdigest()
+            index[name]={"mode":mode,"git_blob":oid};blobs[oid]=payload
+        return index,blobs
+
+    def test_exact_native_mocked_and_materialized_committed_links(self):
+        import os
+        entries={
+            "scripts/bench/size/run.py":("120000",b"run"),
+            "scripts/bench/size/run":("100755",b"print('pinned size')\n"),
+            "scripts/bench/build/fake-root/bin/lean.py":("120000",b"lean"),
+            "scripts/bench/build/fake-root/bin/lean":("100755",b"print('pinned lean')\n"),
+            "docs/README.md":("120000",b"../README.md"),
+            "README.md":("100644",b"Tracked package documentation\n")}
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);index,blobs=self.fixture(root,entries)
+            links=frozenset(name for name,row in index.items() if row["mode"]=="120000")
+            self.assertEqual(receipt.validate_package_symlinks(root,index,allow_materialized=True,read_blob=blobs.__getitem__),links)
+            with self.assertRaises(ValueError):receipt.validate_package_symlinks(root,index,read_blob=blobs.__getitem__)
+            original=Path.is_symlink
+            def is_link(path):return path in {root/name for name in links} or original(path)
+            def read_link(path):return entries[Path(path).relative_to(root).as_posix()][1].decode()
+            with patch.object(Path,"is_symlink",is_link),patch.object(receipt.os,"readlink",side_effect=read_link):
+                verified=receipt.validate_package_symlinks(root,index,read_blob=blobs.__getitem__)
+                receipt.reject_untracked_source_providers(root,set(index),verified_package_links=verified)
+                with self.assertRaises(ValueError):receipt.reject_untracked_source_providers(root,set(index))
+            # CI/Linux additionally exercises real symlinks. The mocked native
+            # case above covers the same validator branch on Windows without
+            # requesting the user's symlink-creation privilege.
+            if os.name!="nt":
+                for name in links:
+                    path=root/name;path.unlink();path.symlink_to(entries[name][1].decode())
+                verified=receipt.validate_package_symlinks(root,index,read_blob=blobs.__getitem__)
+                self.assertEqual(verified,links)
+                receipt.reject_untracked_source_providers(root,set(index),verified_package_links=verified)
+
+    def test_package_link_literal_target_chain_and_blob_mutations_fail(self):
+        cases=[
+            {"link.py":("120000",b"../outside"),"run":("100755",b"source")},
+            {"link.py":("120000",b"/absolute"),"run":("100755",b"source")},
+            {"link.py":("120000",b"C:\\outside"),"run":("100755",b"source")},
+            {"link.py":("120000",b"missing"),"run":("100755",b"source")},
+            {"a.py":("120000",b"b.py"),"b.py":("120000",b"a.py")},
+        ]
+        for entries in cases:
+            with self.subTest(entries=entries),tempfile.TemporaryDirectory() as tmp:
+                root=Path(tmp);index,blobs=self.fixture(root,entries)
+                with self.assertRaises(ValueError):receipt.validate_package_symlinks(root,index,allow_materialized=True,read_blob=blobs.__getitem__)
+        for mutation in ("literal","target","missing","untracked","reader"):
+            with self.subTest(mutation=mutation),tempfile.TemporaryDirectory() as tmp:
+                root=Path(tmp);index,blobs=self.fixture(root,{"link.py":("120000",b"run"),"run":("100755",b"pinned")})
+                reader=blobs.__getitem__
+                if mutation=="literal":(root/"link.py").write_bytes(b"different")
+                elif mutation=="target":(root/"run").write_bytes(b"tampered")
+                elif mutation=="missing":(root/"link.py").unlink()
+                elif mutation=="untracked":del index["run"]
+                else:reader=lambda _:b"not the committed blob"
+                with self.assertRaises(ValueError):receipt.validate_package_symlinks(root,index,allow_materialized=True,read_blob=reader)
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp)
+            entries={f"link{k}.py":("120000",f"link{k+1}.py".encode()) for k in range(33)}
+            entries["link33.py"]=("100644",b"plain")
+            index,blobs=self.fixture(root,entries)
+            with self.assertRaises(ValueError):receipt.validate_package_symlinks(root,index,allow_materialized=True,read_blob=blobs.__getitem__)
+
+    def test_untracked_and_wrong_mode_links_cannot_use_package_exception(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);index,blobs=self.fixture(root,{"link.py":("100644",b"run"),"run":("100755",b"pinned")})
+            self.assertEqual(receipt.validate_package_symlinks(root,index,read_blob=blobs.__getitem__),frozenset())
+            original=Path.is_symlink
+            def is_link(path):return path==root/"link.py" or original(path)
+            with patch.object(Path,"is_symlink",is_link):
+                with self.assertRaises(ValueError):receipt.reject_untracked_source_providers(root,set(index))
+            (root/"ignored.md").write_bytes(b"run")
+            def ignored_link(path):return path==root/"ignored.md" or original(path)
+            with patch.object(Path,"is_symlink",ignored_link):
+                with self.assertRaises(ValueError):receipt.reject_untracked_source_providers(root,set(index))
+            (root/"ignored.md").unlink()
+            (root/"ignored.py").write_bytes(b"unexpected source")
+            with self.assertRaises(ValueError):receipt.reject_untracked_source_providers(root,set(index))
+
+    def test_linked_parent_or_plain_target_cannot_escape_through_filesystem_alias(self):
+        for alias in ("parent","leaf"):
+            with self.subTest(alias=alias),tempfile.TemporaryDirectory() as tmp:
+                root=Path(tmp)
+                index,blobs=self.fixture(root,{"dir/link.py":("120000",b"run"),"dir/run":("100755",b"pinned")})
+                original=Path.is_symlink
+                bad=root/"dir" if alias=="parent" else root/"dir/run"
+                def is_link(path):return path==bad or original(path)
+                with patch.object(Path,"is_symlink",is_link):
+                    with self.assertRaises(ValueError):receipt.validate_package_symlinks(root,index,allow_materialized=True,read_blob=blobs.__getitem__)
+
+    def test_package_index_and_pinned_package_integration(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            repo=Path(tmp);package=repo/".lake/packages/mathlib"
+            index,blobs=self.fixture(package,{"scripts/link.py":("120000",b"run"),"scripts/run":("100755",b"pinned")})
+            tree=b"".join((row["mode"]+" blob "+row["git_blob"]+"\t"+name).encode()+b"\0" for name,row in index.items())
+            self.assertEqual(receipt.package_git_index(tree),index)
+            for bad in (tree+tree,tree.replace(b"120000 blob",b"160000 commit"),tree.replace(b"scripts/link.py",b"../escape.py")):
+                with self.subTest(tree=bad),self.assertRaises(ValueError):receipt.package_git_index(bad)
+            def run(argv,**kwargs):
+                if "ls-tree" in argv:return SimpleNamespace(stdout=tree,returncode=0)
+                if "config" in argv:return SimpleNamespace(stdout=b"false\n",returncode=0)
+                if "cat-file" in argv:return SimpleNamespace(stdout=blobs[argv[-1]],returncode=0)
+                raise AssertionError("Unexpected test command")
+            def git(_, *args):return "1"*40 if args[0]=="rev-parse" else ""
+            manifest={"packages":[{"name":"mathlib","type":"git","rev":"1"*40}]}
+            with patch.object(receipt,"load_strict_json",return_value=manifest),patch.object(receipt.contract,"git",side_effect=git),patch.object(receipt.subprocess,"run",side_effect=run):
+                self.assertEqual(receipt.validate_packages(repo),[{"name":"mathlib","commit":"1"*40}])
+                (package/"scripts/run").write_bytes(b"changed despite clean status")
+                with self.assertRaises(ValueError):receipt.validate_packages(repo)
+
+
 if __name__=="__main__":unittest.main()

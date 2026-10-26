@@ -3683,7 +3683,6 @@
       "dependencies": [],
       "source": "Zeta23/OPICARound2/CausalProbe.lean",
       "theorem": "Zeta23.OPICARound2.delayed_original_source",
-      "route": "OPICA_ROUND2_SUPPORTING_MATHEMATICS",
       "promotion_cap": "PROVED_UNCONDITIONAL"
     },
     {
@@ -3695,7 +3694,6 @@
       ],
       "source": "Zeta23/OPICARound2/CausalProbe.lean",
       "theorem": "Zeta23.OPICARound2.native_probe_transforms",
-      "route": "OPICA_ROUND2_SUPPORTING_MATHEMATICS",
       "promotion_cap": "PROVED_UNCONDITIONAL"
     },
     {
@@ -3707,7 +3705,6 @@
       ],
       "source": "Zeta23/OPICARound2/CausalProbe.lean",
       "theorem": "Zeta23.OPICARound2.native_probe_integer_action",
-      "route": "OPICA_ROUND2_SUPPORTING_MATHEMATICS",
       "promotion_cap": "PROVED_UNCONDITIONAL"
     },
     {
@@ -3719,7 +3716,6 @@
       ],
       "source": "Zeta23/OPICARound2/CausalProbe.lean",
       "theorem": "Zeta23.OPICARound2.native_probe_zero_separation",
-      "route": "OPICA_ROUND2_SUPPORTING_MATHEMATICS",
       "promotion_cap": "PROVED_UNCONDITIONAL"
     },
     {
@@ -3731,7 +3727,6 @@
       ],
       "source": "Zeta23/OPICARound2/CausalProbe.lean",
       "theorem": "Zeta23.OPICARound2.rh_of_native_probe_range",
-      "route": "OPICA_ROUND2_SUPPORTING_MATHEMATICS",
       "promotion_cap": "PROVED_UNCONDITIONAL"
     },
     {
@@ -3743,7 +3738,6 @@
       ],
       "source": "Zeta23/OPICARound2/ProbeGram.lean",
       "theorem": "Zeta23.OPICARound2.probe_tail_and_correlation",
-      "route": "OPICA_ROUND2_SUPPORTING_MATHEMATICS",
       "promotion_cap": "PROVED_UNCONDITIONAL"
     },
     {
@@ -3756,7 +3750,6 @@
       ],
       "source": "Zeta23/OPICARound2/ProbeGram.lean",
       "theorem": "Zeta23.OPICARound2.probe_target_column",
-      "route": "OPICA_ROUND2_SUPPORTING_MATHEMATICS",
       "promotion_cap": "PROVED_UNCONDITIONAL"
     },
     {
@@ -3768,7 +3761,6 @@
       ],
       "source": "Zeta23/OPICARound2/ProbeGram.lean",
       "theorem": "Zeta23.OPICARound2.probe_finite_gram_positive",
-      "route": "OPICA_ROUND2_SUPPORTING_MATHEMATICS",
       "promotion_cap": "PROVED_UNCONDITIONAL"
     },
     {
@@ -3781,7 +3773,6 @@
       ],
       "source": "Zeta23/OPICARound2/ProbeGram.lean",
       "theorem": "Zeta23.OPICARound2.probe_schur_error",
-      "route": "OPICA_ROUND2_SUPPORTING_MATHEMATICS",
       "promotion_cap": "PROVED_UNCONDITIONAL"
     },
     {
@@ -3793,7 +3784,6 @@
       ],
       "source": "Zeta23/OPICARound2/ProbeGram.lean",
       "theorem": "Zeta23.OPICARound2.probe_monotone_innovation",
-      "route": "OPICA_ROUND2_SUPPORTING_MATHEMATICS",
       "promotion_cap": "PROVED_UNCONDITIONAL"
     },
     {
@@ -3806,7 +3796,6 @@
       ],
       "source": "Zeta23/OPICARound2/ProbeGram.lean",
       "theorem": "Zeta23.OPICARound2.probe_dirichlet_norm",
-      "route": "OPICA_ROUND2_SUPPORTING_MATHEMATICS",
       "promotion_cap": "PROVED_UNCONDITIONAL"
     },
     {
@@ -3820,7 +3809,6 @@
       ],
       "source": "Zeta23/OPICARound2/ProbeGram.lean",
       "theorem": "Zeta23.OPICARound2.rh_of_probe_error_limit",
-      "route": "OPICA_ROUND2_SUPPORTING_MATHEMATICS",
       "promotion_cap": "PROVED_UNCONDITIONAL"
     },
     {
@@ -3833,7 +3821,6 @@
       ],
       "source": "Zeta23/OPICARound2/TruncationControls.lean",
       "theorem": "Zeta23.OPICARound2.native_mobius_probe_inverse",
-      "route": "OPICA_ROUND2_SUPPORTING_MATHEMATICS",
       "promotion_cap": "PROVED_UNCONDITIONAL"
     },
     {
@@ -3847,7 +3834,6 @@
       ],
       "source": "Zeta23/OPICARound2/TruncationControls.lean",
       "theorem": "Zeta23.OPICARound2.integer_partial_divergence_and_safe_cutoff",
-      "route": "OPICA_ROUND2_SUPPORTING_MATHEMATICS",
       "promotion_cap": "PROVED_UNCONDITIONAL"
     },
     {
@@ -3860,7 +3846,6 @@
       ],
       "source": "Zeta23/OPICARound2/TruncationControls.lean",
       "theorem": "Zeta23.OPICARound2.mobius_partial_zero_barrier",
-      "route": "OPICA_ROUND2_SUPPORTING_MATHEMATICS",
       "promotion_cap": "PROVED_UNCONDITIONAL"
     },
     {
@@ -3872,7 +3857,6 @@
       ],
       "source": "Zeta23/OPICARound2/TruncationControls.lean",
       "theorem": "Zeta23.OPICARound2.noncausal_probe_leakage",
-      "route": "OPICA_ROUND2_SUPPORTING_MATHEMATICS",
       "promotion_cap": "PROVED_UNCONDITIONAL"
     },
     {
@@ -3882,7 +3866,6 @@
       "dependencies": [],
       "source": "Zeta23/OPICARound2/DualCertificates.lean",
       "theorem": "Zeta23.OPICARound2.laplace_jet_gram",
-      "route": "OPICA_ROUND2_SUPPORTING_MATHEMATICS",
       "promotion_cap": "PROVED_UNCONDITIONAL"
     },
     {
@@ -3895,7 +3878,6 @@
       ],
       "source": "Zeta23/OPICARound2/DualCertificates.lean",
       "theorem": "Zeta23.OPICARound2.simultaneous_zero_distance",
-      "route": "OPICA_ROUND2_SUPPORTING_MATHEMATICS",
       "promotion_cap": "PROVED_UNCONDITIONAL"
     },
     {
@@ -3907,7 +3889,6 @@
       ],
       "source": "Zeta23/OPICARound2/CertifiedEvaluation.lean",
       "theorem": "Zeta23.OPICARound2.finite_residual_certificate",
-      "route": "OPICA_ROUND2_SUPPORTING_MATHEMATICS",
       "promotion_cap": "PROVED_UNCONDITIONAL"
     },
     {
@@ -3921,7 +3902,6 @@
       ],
       "source": "Zeta23/OPICARound2/ClassicalAdapter.lean",
       "theorem": "Zeta23.OPICARound2.native_compact_muntz_adapter",
-      "route": "OPICA_ROUND2_SUPPORTING_MATHEMATICS",
       "promotion_cap": "PROVED_UNCONDITIONAL"
     },
     {
@@ -3934,7 +3914,6 @@
       ],
       "source": "Zeta23/OPICARound2/RegionalCertificates.lean",
       "theorem": "Zeta23.OPICARound2.native_product_box_margin",
-      "route": "OPICA_ROUND2_SUPPORTING_MATHEMATICS",
       "promotion_cap": "PROVED_UNCONDITIONAL"
     },
     {
@@ -3948,7 +3927,6 @@
       ],
       "source": "Zeta23/OPICARound2/RegionalCertificates.lean",
       "theorem": "Zeta23.OPICARound2.zero_region_of_finite_probe_certificate",
-      "route": "OPICA_ROUND2_SUPPORTING_MATHEMATICS",
       "promotion_cap": "PROVED_UNCONDITIONAL"
     },
     {
@@ -3960,7 +3938,6 @@
       ],
       "source": "Zeta23/OPICARound2/CertifiedEvaluation.lean",
       "theorem": "Zeta23.OPICARound2.native_source_prefix_error",
-      "route": "OPICA_ROUND2_SUPPORTING_MATHEMATICS",
       "promotion_cap": "PROVED_UNCONDITIONAL"
     },
     {
@@ -3976,7 +3953,6 @@
       ],
       "source": "Zeta23/OPICARound2/TruncationControls.lean",
       "theorem": "Zeta23.OPICARound2.native_dictionary_prefix_rigidity",
-      "route": "OPICA_ROUND2_SUPPORTING_MATHEMATICS",
       "promotion_cap": "PROVED_UNCONDITIONAL"
     },
     {
@@ -3990,7 +3966,6 @@
       ],
       "source": "Zeta23/OPICARound2/ProbeGram.lean",
       "theorem": "Zeta23.OPICARound2.native_probe_pole_moment_constraints",
-      "route": "OPICA_ROUND2_SUPPORTING_MATHEMATICS",
       "promotion_cap": "PROVED_UNCONDITIONAL"
     },
     {
@@ -4004,7 +3979,6 @@
       ],
       "source": "Zeta23/OPICARound2/TruncationControls.lean",
       "theorem": "Zeta23.OPICARound2.native_completed_output_bernoulli_tail",
-      "route": "OPICA_ROUND2_SUPPORTING_MATHEMATICS",
       "promotion_cap": "PROVED_UNCONDITIONAL"
     },
     {
@@ -4018,7 +3992,6 @@
       ],
       "source": "Zeta23/OPICARound2/FixedFilter.lean",
       "theorem": "Zeta23.OPICARound2.native_probe_fixed_stable_filter",
-      "route": "OPICA_ROUND2_SUPPORTING_MATHEMATICS",
       "promotion_cap": "PROVED_UNCONDITIONAL"
     },
     {
@@ -4030,7 +4003,6 @@
       ],
       "source": "Zeta23/OPICARound2/FilteredClassicalComparison.lean",
       "theorem": "Zeta23.OPICARound2.filtered_probe_classical_comparison",
-      "route": "OPICA_ROUND2_SUPPORTING_MATHEMATICS",
       "promotion_cap": "PROVED_UNCONDITIONAL"
     },
     {
@@ -4044,7 +4016,6 @@
       ],
       "source": "Zeta23/OPICARound2/FiniteFilteredBaseline.lean",
       "theorem": "Zeta23.OPICARound2.filtered_four_column_region_certificate",
-      "route": "OPICA_ROUND2_SUPPORTING_MATHEMATICS",
       "promotion_cap": "PROVED_UNCONDITIONAL"
     },
     {
@@ -4059,7 +4030,6 @@
       ],
       "source": "Zeta23/OPICARound2/TruncationControls.lean",
       "theorem": "Zeta23.OPICARound2.native_undamped_nonrange_and_input_cost",
-      "route": "OPICA_ROUND2_SUPPORTING_MATHEMATICS",
       "promotion_cap": "PROVED_UNCONDITIONAL"
     },
     {
@@ -4075,7 +4045,6 @@
       ],
       "source": "Zeta23/OPICARound2/CertifiedEvaluation.lean",
       "theorem": "Zeta23.OPICARound2.native_probe_adaptive_error_budgets",
-      "route": "OPICA_ROUND2_SUPPORTING_MATHEMATICS",
       "promotion_cap": "PROVED_UNCONDITIONAL"
     },
     {
@@ -4085,7 +4054,6 @@
       "dependencies": [],
       "source": "Zeta23/OPICARound2/ProfileControls.lean",
       "theorem": "Zeta23.OPICARound2.finite_quadratic_profile_selfdual_obstruction",
-      "route": "OPICA_ROUND2_SUPPORTING_MATHEMATICS",
       "promotion_cap": "PROVED_UNCONDITIONAL"
     },
     {
@@ -4095,7 +4063,6 @@
       "dependencies": [],
       "source": "Zeta23/OPICARound2/ProfileControls.lean",
       "theorem": "Zeta23.OPICARound2.fixed_imaginary_direction_positive_test_margin",
-      "route": "OPICA_ROUND2_SUPPORTING_MATHEMATICS",
       "promotion_cap": "PROVED_UNCONDITIONAL"
     },
     {
@@ -4105,7 +4072,6 @@
       "dependencies": [],
       "source": "Zeta23/OPICARound2/NativeCuts.lean",
       "theorem": "Zeta23.OPICARound2.native_damping_abscissa_and_cut_equivalence",
-      "route": "OPICA_ROUND2_SUPPORTING_MATHEMATICS",
       "promotion_cap": "PROVED_UNCONDITIONAL"
     },
     {
@@ -4115,7 +4081,6 @@
       "dependencies": [],
       "source": "Zeta23/OPICARound2/SyntheticControls.lean",
       "theorem": "Zeta23.OPICARound2.positive_equal_power_causal_twins",
-      "route": "OPICA_ROUND2_SUPPORTING_MATHEMATICS",
       "promotion_cap": "PROVED_UNCONDITIONAL"
     },
     {
@@ -4125,7 +4090,6 @@
       "dependencies": [],
       "source": "Zeta23/OPICARound2/NativeJumpControls.lean",
       "theorem": "Zeta23.OPICARound2.native_jump_gain_negative_ordered_minor",
-      "route": "OPICA_ROUND2_SUPPORTING_MATHEMATICS",
       "promotion_cap": "PROVED_UNCONDITIONAL"
     },
     {
@@ -4135,7 +4099,6 @@
       "dependencies": [],
       "source": "Zeta23/OPICARound2/CT1Controls.lean",
       "theorem": "Zeta23.OPICARound2.ct1_scalar_limit_classification",
-      "route": "OPICA_ROUND2_SUPPORTING_MATHEMATICS",
       "promotion_cap": "PROVED_UNCONDITIONAL"
     },
     {
@@ -4145,7 +4108,6 @@
       "dependencies": [],
       "source": "Zeta23/OPICARound2/FiniteNeutralApproximation.lean",
       "theorem": "Zeta23.OPICARound2.finite_pole_neutral_approximation",
-      "route": "OPICA_ROUND2_SUPPORTING_MATHEMATICS",
       "promotion_cap": "PROVED_UNCONDITIONAL"
     },
     {
@@ -4158,7 +4120,6 @@
       ],
       "source": "Zeta23/OPICARound2/FixedFilter.lean",
       "theorem": "Zeta23.OPICARound2.rh_of_fixed_filtered_native_approximation",
-      "route": "OPICA_ROUND2_SUPPORTING_MATHEMATICS",
       "promotion_cap": "PROVED_UNCONDITIONAL"
     },
     {
@@ -4168,7 +4129,6 @@
       "dependencies": [],
       "source": "Zeta23/OPICARound2/ProfileControls.lean",
       "theorem": "Zeta23.OPICARound2.phase_complete_positive_test_observability",
-      "route": "OPICA_ROUND2_SUPPORTING_MATHEMATICS",
       "promotion_cap": "PROVED_UNCONDITIONAL"
     }
   ]

@@ -16,7 +16,8 @@ def run(cmd: list[str], *, cwd: Path = REPO) -> None:
     subprocess.run(cmd, cwd=cwd, check=True)
 
 
-def run_base_suite(args: argparse.Namespace, *, include_ancestor: bool = True) -> None:
+def run_base_suite(args: argparse.Namespace, *, include_ancestor: bool = True,
+                   historical_projection: Path | None = None) -> None:
     opica = ROOT / "integration" / "opica"
     if include_ancestor:
         run([sys.executable, str(opica / "validate_contract.py")])
@@ -28,7 +29,18 @@ def run_base_suite(args: argparse.Namespace, *, include_ancestor: bool = True) -
     run([sys.executable, str(ROOT / "tools" / "lean_imports.py")])
     run([sys.executable, str(ROOT / "tools" / "arithmetic_firewall_lint.py")])
     run([sys.executable, str(ROOT / "tools" / "million_dollar_firewall_lint.py")])
-    run([sys.executable, "-m", "unittest", "discover", "-s", str(ROOT / "graph" / "tests"), "-p", "test_*.py", "-v"])
+    graph_tests = ROOT / "graph" / "tests"
+    if historical_projection is None:
+        run([sys.executable, "-m", "unittest", "discover", "-s", str(graph_tests), "-p", "test_*.py", "-v"])
+    else:
+        historical = "test_post292_review_file_classes.py"
+        files = sorted(graph_tests.glob("test_*.py"))
+        frozen_tests = historical_projection / "research/RHRC/graph/tests"
+        if historical not in {path.name for path in files} or not (frozen_tests / historical).is_file():
+            raise ValueError("The exact historical graph classification test is required")
+        for path in files:
+            folder, cwd = (frozen_tests, historical_projection) if path.name == historical else (graph_tests, REPO)
+            run([sys.executable, "-m", "unittest", "discover", "-s", str(folder), "-p", path.name, "-v"], cwd=cwd)
     if not args.skip_derived_state:
         run([sys.executable, str(ROOT / "graph" / "build.py"), "--check"])
         run([sys.executable, str(ROOT / "graph" / "validate.py")])
@@ -151,12 +163,15 @@ def run_round2_suite(args: argparse.Namespace) -> None:
         raise ValueError("Round2 suite requires explicit --ancestor-projection PATH")
     else:
         projection = args.ancestor_projection.resolve()
+    report_output = diagnostic_output or REPO.parent / "opica2-suite-runs" / uuid.uuid4().hex
+    report_output.mkdir(parents=True, exist_ok=True)
     round2 = ROOT / "integration" / "opica_round2"
     run([sys.executable, "-B", str(round2 / "ancestor_projection.py"), "verify",
          "--repo", str(REPO), "--destination", str(projection)])
     for name in ("opica", "opica_followup"):
         run([sys.executable, "-B", str(ROOT / "integration" / name / "validate_contract.py"),
-             "--phase", "preflight", "--ancestor-projection", str(projection)])
+             "--phase", "preflight", "--ancestor-projection", str(projection),
+             "--output", str(report_output / (name + "-static-preflight.json"))])
         for mode in ([], ["-O"]):
             run([sys.executable, *mode, "-B", "-m", "unittest", "discover", "-s",
                  str(ROOT / "integration" / name / "tests"), "-p", "test_contract.py",
@@ -171,7 +186,7 @@ def run_round2_suite(args: argparse.Namespace) -> None:
             run([sys.executable, *mode, "-m", "unittest", "discover", "-s",
                  str(projection / "research/RHRC/integration/opica_followup/tests"), "-p", "test_*.py", "-v"],
                 cwd=projection)
-    run_base_suite(args, include_ancestor=False)
+    run_base_suite(args, include_ancestor=False, historical_projection=projection)
     run([sys.executable, "-B", str(round2 / "run_checks.py"), "contract", "--scope", "full-core"])
     for mode in ([], ["-O"]):
         for pattern in DIAGNOSTIC_TEST_FILES if diagnostic else ("test_*.py",):

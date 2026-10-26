@@ -84,19 +84,39 @@ A later working copy may contain pending appended proofs; only the checked snaps
 
 **New RH-relevant clues — LEAD.** Test whether source-preserving error budgets and the actual boundary cost constrain a proposed family more tightly in combination. Compare centered second-order and corrected fourth-order bounds using certified derivative norms. Examine growing or infinite profile families outside the proved finite quadratic no-repair class. Test combinations with Paths A, C and D rather than treating causal approximation as the sole route.
 
-**Falsification checks.** Derivative norms may grow with prefix precision, so formal error order alone is not a complexity improvement. A finite source is never identified with the original. The canonical target tail is nonzero beyond every finite horizon and is not transferred to an approximate source without proof. Changing coefficients, filters or source precision invalidates old budgets. Causal nonrange is distinct from closure, Euclidean spectral norms from entrywise surrogates, and a finite-family obstruction from an unrestricted theorem.
+**Falsification checks.** For fixed source scale, the actual raw-prefix derivative norms do not grow with prefix precision: the DERIVED contraction below supplies fixed-prefix upper bounds. Numerical enclosure widths and costs associated with changing scale, coefficients, filters or horizons still require separate control. A finite source is never identified with the original. The canonical target tail is nonzero beyond every finite horizon and is not transferred to an approximate source without proof. Changing coefficients, filters or source precision invalidates old budgets unless an explicit proved transport is applied. Causal nonrange is distinct from closure, Euclidean spectral norms from entrywise surrogates, and a finite-family obstruction from an unrestricted theorem.
 
 **Highest-leverage next moves.** Complete the exact-head source/export, all paired semantic controls, genuine baseline/current76/100 replays and complete workflow harvest. Then seek a new independently source-matched restriction, or a certified trial family that tests the terminal approximation premise. Success is mathematical information gain, not root or CI count.
 
 Given everything now formally true, source-faithful finite experiments become possible with explicit absolute errors. The decisive question remains which independent arithmetic restriction can conflict with a surviving hypothetical off-line witness. The next experiment should test that independence and try to falsify it before a larger implementation campaign.
 
+### Raw-prefix contraction: a post-green consequence
+
+**DERIVED; not yet a separately named Lean theorem.** Fix the same positive source scale and let `M >= R >= 12`. For each derivative order `0 <= k <= 4`, the actual raw prefixes satisfy
+
+`||D^k probePrefixJ M||_2 <= ||D^k probePrefixJ R||_2`.
+
+The finite-product Fourier formula, `partialProduct_norm_antitone`, `probePrefixJ_derivative_fourier_norm` and `probeL2_error_of_logFourier_bound` with constant one give this implication. Additional box factors have modulus at most one on the real Fourier axis; the common translation contributes only a unit-modulus phase. Equivalently, the extra probability convolution contracts the relevant L2 norm. This uses the actual raw source construction and its existing regularity assumptions.
+
+**Upstream and downstream implications.** A single certified raw-prefix bound at a fixed `R` can bound every later raw-prefix derivative norm needed by P23. In particular, the corrected source remainder can use `v_M^2 * C_(R,4) / 8`. This removes a supposed growth of these mathematical constants with `M`. It does not control coefficient growth, changing source scale, numerical work, or the missing native approximation limit. A certificate implementation needs an authenticated transport before reusing a bound under a different source identity.
+
+**Falsification check.** Do not extend this contraction claim directly to `probePrefixCorrectedJ M`. Its Fourier multiplier includes the changing factor `1 - v_M * tau^2 / 2`; adjacent corrected amplitudes increase near small nonzero frequencies at fourth order. This already rules out that pointwise extension, while leaving total corrected L2 monotonicity unestablished. The raw derivative bound used in the corrected remainder remains valid.
+
+**Highest-leverage next move.** Formalize the small named raw-prefix norm wrapper and test whether fixed-prefix constants materially improve the native source-error budget. Keep all four terminal restrictions OPEN.
+
+### Validation integration checkpoint
+
+The package-source guard now authenticates committed Git symlinks and their in-package target blobs; project source links remain rejected. The mathematical provider and consumer files are unchanged. The core composer separately checks the forty new claim dependency lists against actual transitive TYPE/VALUE/STRUCTURE compiler uses, preserving all 298 prior claim objects and 294 prior bindings. Those lists still require the genuine compiler-export migration before acceptance.
+
+The final ordinary Python discovery passed 185 tests normally and 185 with `-O`, holding exactly one real native fixture test for the committed run. All nine pinned packages passed the source check. A private repaired caller fixture passed 43 real diagnostic commands and 656 tests; this is fixture evidence, not a PR-head compiler result. The original full Windows attempt retains its historical symlink-privilege error and skip. Cold compiler export, genuine ancestor/current replays, generated-state refresh and full workflow harvest remain pending. No full-core, release or human-review acceptance is inferred.
+
 ### Current source fingerprints
 
-Authority: successful scoped native development checks; no cold/release acceptance inferred.
+Authority: successful scoped native development checks except the explicitly pending facade row; no cold/release acceptance inferred.
 
 | Source | SHA256 | Native check |
 |---|---|---|
-| `Zeta23/OPICARound2.lean` | `5765f6db4344132ec3d83f1bbf30327fd949233e1b747f1e35fd0d051cb3d665` | `OPICARound2-20261026T034732-eddf02ab` |
+| `Zeta23/OPICARound2.lean` | `f4f276cd6c5c42574087e0bd4b946f53fc19ee17e83f24b59899bfad9733babe` | Four direct imports corrected; native recheck pending |
 | `Zeta23/OPICARound2/All.lean` | `952a21c3d50d8eba010d69946eeadef99a8910aa3434e49de9435fd36b89fafa` | `All-20261026T030822-c61b517b` |
 | `Zeta23/OPICARound2/CT1Controls.lean` | `1d7bc6fc342ad0ab2c280ae8c48906cf3190945b3061e6cbf685f012310114e3` | `CT1Controls-20261025T221350-5be97340` |
 | `Zeta23/OPICARound2/CausalProbe.lean` | `3d126c355060b94f13db6143260daf35f3251d23fa7f4694e4eb04d529f83502` | `CausalProbe-20261025T220410-76eb5787` |

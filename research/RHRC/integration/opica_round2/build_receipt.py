@@ -318,8 +318,11 @@ def source_manifest(repo: Path, *, clean: bool = True) -> list[dict[str, Any]]:
     return sorted(rows, key=lambda r: r["path"])
 
 
-def reject_untracked_source_providers(repo: Path, tracked: set[str]) -> None:
+def reject_untracked_source_providers(repo: Path, tracked: set[str], *,
+                                     verified_package_links: frozenset[str] = frozenset()) -> None:
     """Git status alone misses ignored source files that could shadow imports."""
+    require(type(verified_package_links) is frozenset and verified_package_links <= tracked,
+            "Package link exceptions must be verified committed paths")
     for directory, names, files in os.walk(repo, followlinks=False):
         base = Path(directory)
         names[:] = [name for name in names if name not in {".git", ".lake"}]
@@ -327,11 +330,118 @@ def reject_untracked_source_providers(repo: Path, tracked: set[str]) -> None:
             require(not (base/name).is_symlink(), "Linked project source directory is not accepted")
         for name in files:
             path = base/name
+            relative = path.relative_to(repo).as_posix()
+            if path.is_symlink():
+                require(relative in verified_package_links,
+                        "Unverified linked source file is not accepted: " + relative)
             if path.suffix.lower() not in {".lean", ".py"}:
                 continue
-            relative = path.relative_to(repo).as_posix()
-            require(relative in tracked and not path.is_symlink(),
+            require(relative in tracked and (not path.is_symlink() or relative in verified_package_links),
                     "Ignored/untracked source provider outside the committed census: " + relative)
+
+
+def package_git_index(payload: bytes) -> dict[str, dict[str, str]]:
+    """Read exact package modes and object IDs; a name-only census loses Gitlinks."""
+    result = {}
+    for entry in payload.split(b"\0"):
+        if not entry:
+            continue
+        metadata, raw_name = entry.split(b"\t", 1)
+        mode, kind, blob = metadata.decode("ascii").split()
+        name = raw_name.decode("utf-8", errors="strict")
+        contract.safe_relative(name)
+        require(kind == "blob" and mode in {"100644", "100755", "120000"}
+                and re.fullmatch(r"[0-9a-f]{40}", blob) and name not in result,
+                "Unsupported or duplicate pinned package Git object: " + name)
+        result[name] = {"mode": mode, "git_blob": blob}
+    return result
+
+
+def _package_link_target(source: str, target: str) -> str:
+    from pathlib import PurePosixPath, PureWindowsPath
+    require(target and not any(ord(c) < 32 for c in target) and "\\" not in target
+            and not PurePosixPath(target).is_absolute() and not PureWindowsPath(target).drive,
+            "Package Gitlink must have a literal relative in-package target: " + source)
+    parts = list(PurePosixPath(source).parent.parts)
+    for part in PurePosixPath(target).parts:
+        if part in {"", "."}:
+            continue
+        if part == "..":
+            require(bool(parts), "Package Gitlink escapes its package: " + source)
+            parts.pop()
+        else:
+            parts.append(part)
+    name = "/".join(parts)
+    contract.safe_relative(name)
+    return name
+
+
+def validate_package_symlinks(package: Path, index: Mapping[str, Mapping[str, str]], *,
+                              allow_materialized: bool = False, read_blob=None) -> frozenset[str]:
+    """Authenticate every committed link and its bounded tracked-file target chain.
+
+    Native symlinks must expose the exact committed readlink bytes. Git's
+    core.symlinks=false checkout representation is accepted only when explicitly
+    enabled and its regular pointer file is byte-identical to that same blob.
+    Neither form admits linked directories, external targets or untracked files.
+    """
+    root = package.resolve()
+    require(type(allow_materialized) is bool, "Materialized-link policy must be Boolean")
+    blobs = {}
+
+    def committed(oid):
+        require(type(oid) is str and re.fullmatch(r"[0-9a-f]{40}", oid), "Invalid package blob identity")
+        if oid not in blobs:
+            data = read_blob(oid) if read_blob is not None else subprocess.run(
+                ["git", "-C", str(package), "cat-file", "blob", oid],
+                check=True, capture_output=True).stdout
+            require(type(data) is bytes and hashlib.sha1(b"blob " + str(len(data)).encode("ascii") + b"\0" + data).hexdigest() == oid,
+                    "Package blob reader returned another committed object")
+            blobs[oid] = data
+        return blobs[oid]
+
+    def path_without_linked_parents(relative):
+        contract.safe_relative(relative)
+        path = root / relative
+        parent = root
+        for component in Path(relative).parts[:-1]:
+            parent = parent / component
+            require(parent.is_dir() and not parent.is_symlink() and parent.resolve() == parent,
+                    "Linked or missing package source directory is not accepted: " + relative)
+        return path
+
+    links = {name for name, row in index.items() if row["mode"] == "120000"}
+    for first in sorted(links):
+        current, visited = first, set()
+        for _ in range(33):
+            require(current not in visited and current in index,
+                    "Cyclic or untracked package Gitlink target: " + current)
+            visited.add(current)
+            record = index[current]
+            path = path_without_linked_parents(current)
+            expected = committed(record["git_blob"])
+            if record["mode"] == "120000":
+                require(len(visited) <= 32, "Package Gitlink chain exceeds 32 links")
+                if path.is_symlink():
+                    literal = os.readlink(path).encode("utf-8", errors="strict")
+                else:
+                    require(allow_materialized and path.is_file(),
+                            "Missing or unapproved materialized package Gitlink: " + current)
+                    literal = path.read_bytes()
+                require(literal == expected,
+                        "Package Gitlink literal differs from its committed blob: " + current)
+                current = _package_link_target(current, expected.decode("utf-8", errors="strict"))
+                continue
+            require(record["mode"] in {"100644", "100755"} and path.is_file()
+                    and not path.is_symlink() and path.resolve() == path,
+                    "Package Gitlink must terminate at a committed plain file: " + current)
+            actual = path.read_bytes()
+            require(actual == expected and hashlib.sha256(actual).digest() == hashlib.sha256(expected).digest(),
+                    "Package Gitlink target bytes differ from the committed blob: " + current)
+            break
+        else:
+            require(False, "Package Gitlink chain has no bounded plain-file target")
+    return frozenset(links)
 
 
 def validate_query_plan(plan: Mapping[str, Any]) -> None:
@@ -424,8 +534,22 @@ def validate_packages(repo: Path) -> list[dict[str, str]]:
         require(contract.git(package,"rev-parse","HEAD") == revision
                 and not contract.git(package,"status","--porcelain","--untracked-files=all"),
                 "Pinned package source is dirty or differs from its commit: " + name)
-        paths = set(contract.git(package,"ls-tree","-r","--name-only","HEAD").splitlines())
-        reject_untracked_source_providers(package, paths)
+        tree = subprocess.run(["git", "-C", str(package), "ls-tree", "-r", "-z", "HEAD"],
+                              check=True, capture_output=True)
+        index = package_git_index(tree.stdout)
+        allow_materialized = False
+        if any(item["mode"] == "120000" for item in index.values()):
+            config = subprocess.run(["git", "-C", str(package), "config", "--bool", "--get", "core.symlinks"],
+                                    capture_output=True)
+            require(type(config.returncode) is int and config.returncode in {0, 1}
+                    and (config.returncode == 1 or config.stdout.strip() in {b"true", b"false"}),
+                    "Cannot determine exact pinned package symlink checkout policy: " + name)
+            allow_materialized = config.returncode == 0 and config.stdout.strip() == b"false"
+        try:
+            verified_links = validate_package_symlinks(package, index, allow_materialized=allow_materialized)
+            reject_untracked_source_providers(package, set(index), verified_package_links=verified_links)
+        except InvalidCertificate as exc:
+            raise InvalidCertificate(exc.code, "Pinned package " + name + ": " + str(exc)) from exc
         result.append({"name":name,"commit":revision})
     return sorted(result,key=lambda r:r["name"])
 
@@ -912,6 +1036,87 @@ def verify_compiler_bundle(repo: Path, artifacts: Path, receipt: Mapping[str,Any
             "bundle_sha256":contract.digest(artifacts/"bundle.json"),"provider_authenticity_established_here":False}
 
 
+def _registered_dependency_report(claims: Mapping[str,Any], bindings: Mapping[str,Any],
+                                  public: Mapping[str,Any], old_claims: Mapping[str,Any],
+                                  old_bindings: Mapping[str,Any], parsed: Mapping[str,Any], mapper) -> dict:
+    """Pure exact-use comparison; caller supplies independently verified compiler data."""
+    by_claim=_indexed_bindings(claims["claims"],"id")
+    by_binding=_indexed_bindings(bindings["bindings"],"id")
+    old_claim_by_id=_indexed_bindings(old_claims["claims"],"id")
+    old_binding_by_id=_indexed_bindings(old_bindings["bindings"],"id")
+    require(len(old_claim_by_id)==298 and len(old_binding_by_id)==294,
+            "Frozen registered claim/binding population changed")
+    roots=[row for row in public["roots"] if row["required_for_full_core"]]
+    require(len(roots)==40 and {row["id"] for row in roots}==contract.MANDATORY,
+            "Required public registered root identities differ from the exact forty")
+    require(len(by_claim)==338 and set(by_claim)==set(old_claim_by_id)|contract.MANDATORY
+            and len(by_binding)==334 and set(by_binding)==set(old_binding_by_id)|contract.MANDATORY,
+            "Registered population is not the frozen parent plus exactly forty required claims")
+    require(len({row["theorem"] for row in by_binding.values()})==334,
+            "Registered theorem names are not distinct")
+    for identity,record in old_claim_by_id.items():
+        require(canonical_sha256(by_claim[identity])==canonical_sha256(record),
+                "Original registered claim object changed: "+identity)
+    for identity,record in old_binding_by_id.items():
+        require(canonical_sha256(by_binding[identity])==canonical_sha256(record),
+                "Original registered theorem binding changed: "+identity)
+    require(canonical_sha256(bindings.get("candidate_bindings",[]))
+            ==canonical_sha256(old_bindings.get("candidate_bindings",[])),
+            "Original candidate binding objects changed")
+    declarations={row["name"]:row for row in parsed["declarations"]}
+    for root in roots:
+        identity,name=root["id"],root["proposed_public_name"]
+        claim,binding=by_claim[identity],by_binding[identity]
+        require(claim["theorem"]==binding["theorem"]==name
+                and claim["source"]==binding["source"]==root["module"].replace(".","/")+".lean"
+                and claim["status"]==claim["promotion_cap"]=="PROVED_UNCONDITIONAL",
+                "New registered source/name/status identity changed: "+identity)
+        require(name in declarations and declarations[name]["module"]==root["module"]
+                and declarations[name]["kind"]=="THEOREM",
+                "Actual compiler declaration is absent or differs from the registered root: "+identity)
+    mapped=mapper([row["proposed_public_name"] for row in roots],bindings["bindings"],parsed["dependencies"])
+    rows=[]
+    for root in sorted(roots,key=lambda row:row["id"]):
+        identity,name=root["id"],root["proposed_public_name"]
+        actual=by_claim[identity].get("dependencies")
+        require(type(actual) is list and all(type(value) is str for value in actual)
+                and actual==sorted(set(actual)) and actual==mapped[name],
+                "New registered dependencies differ from exact transitive TYPE/VALUE/STRUCTURE compiler uses: "+identity)
+        rows.append({"claim_id":identity,"theorem":name,"dependencies":mapped[name],
+                     "compiler_type_sha256":declarations[name]["type_sha256"]})
+    return {"schema":"OPICA2_NEW_REGISTERED_DEPENDENCIES_V1",
+            "status":"PASS_EXACT_FORTY_REGISTERED_COMPILER_USES","rows":rows,
+            "registered_binding_universe":334,"preserved_original_claims":298,
+            "preserved_original_proved_bindings":294,"compared_new_claims":40,
+            "mapping_sha256":canonical_sha256(rows),
+            "rule":"EXACT_TRANSITIVE_TYPE_VALUE_STRUCTURE_REGISTERED_CONSTANT_USES",
+            "interpretation":"Directed compiler-use provenance through private helpers; not mathematical necessity or independence.",
+            "fresh_compiler_replay":False,"provider_authenticity_established_here":False,
+            "full_core_accepted":False,"full_release_accepted":False,"RH":"OPEN","Step4":"OPEN"}
+
+
+def verify_registered_claim_dependencies(repo: Path, parsed: Mapping[str,Any]) -> dict:
+    """Bind the exact new forty claim edges without invoking a frozen release CLI."""
+    claim_path="research/RHRC/CLAIM_REGISTRY.json"
+    binding_path="research/RHRC/REGISTERED_THEOREM_BINDINGS.json"
+    public_path="research/RHRC/integration/opica_round2/PUBLIC_ROOTS.json"
+    def old(path):
+        payload=subprocess.run(["git","-C",str(repo),"show",contract.FROZEN_COMMIT+":"+path],
+                               capture_output=True,check=True).stdout
+        return loads_strict_json(payload,16*1024*1024)
+    claims=load_strict_json(contract.file_at(repo,claim_path),16*1024*1024)
+    bindings=load_strict_json(contract.file_at(repo,binding_path),16*1024*1024)
+    public=load_strict_json(contract.file_at(repo,public_path),16*1024*1024)
+    parent=frozen_tool(repo,"research/RHRC/integration/opica/build_receipt.py",
+                       "_opica2_frozen_registered_use_mapper")
+    report=_registered_dependency_report(claims,bindings,public,old(claim_path),old(binding_path),
+                                         parsed,parent.mapped_registered_dependencies)
+    report["source_files"]=[{"path":path,"sha256":contract.digest(contract.file_at(repo,path))}
+                            for path in (claim_path,binding_path,public_path)]
+    report["frozen_ancestor"]=contract.FROZEN_COMMIT
+    return report
+
+
 def compose_core_evidence(repo: Path, raw_receipt_path: Path, artifacts: Path, plan: Mapping[str,Any], *,
                           clause_evidence: Path, control_evidence: Path,
                           optimized_control_evidence: Path, ancestry_evidence: Path) -> dict:
@@ -930,6 +1135,7 @@ def compose_core_evidence(repo: Path, raw_receipt_path: Path, artifacts: Path, p
     raw=load_strict_json(raw_receipt_path,32*1024*1024)
     verified=verify_receipt_artifacts(raw,repo,artifacts,compiler_plan)
     isolation=verify_compiler_bundle(repo,artifacts,raw,compiler_plan)
+    registered_dependencies=verify_registered_claim_dependencies(repo,verified["parsed"])
     canonical=load_strict_json(here/"PAPER_CROSSWALK.json",16*1024*1024)
     require(canonical_sha256(load_strict_json(clause_evidence,16*1024*1024))==canonical_sha256(canonical),"Supplied clause evidence differs from the committed complete crosswalk")
     bindings=_indexed_bindings(canonical["scoped_control_bindings"],"control_id")
@@ -956,6 +1162,7 @@ def compose_core_evidence(repo: Path, raw_receipt_path: Path, artifacts: Path, p
             "normal_control_evidence_sha256":contract.digest(control_evidence),
             "optimized_control_evidence_sha256":contract.digest(optimized_control_evidence),
             "ancestry_evidence_sha256":contract.digest(ancestry_evidence),"isolation":isolation,
+            "registered_claim_dependencies":registered_dependencies,
             "coverage":coverage,"control_dispositions":dispositions,
             "ancestry":{"status":ancestry["status"],"report_sha256":ancestry["report_sha256"],
                         "fresh_compiler_replay":False,"provider_authenticity_established_here":False},
