@@ -16,10 +16,10 @@ import sys
 from typing import Any, Mapping
 
 try:
-    from .certificate_io import InvalidCertificate, canonical_sha256, failure_envelope, load_strict_json, loads_strict_json, validate_schema
+    from .certificate_io import InvalidCertificate, canonical_bytes, canonical_sha256, failure_envelope, load_strict_json, loads_strict_json, validate_schema
     from . import validate_contract as contract
 except ImportError:
-    from certificate_io import InvalidCertificate, canonical_sha256, failure_envelope, load_strict_json, loads_strict_json, validate_schema
+    from certificate_io import InvalidCertificate, canonical_bytes, canonical_sha256, failure_envelope, load_strict_json, loads_strict_json, validate_schema
     import validate_contract as contract
 
 HERE = Path(__file__).resolve().parent
@@ -33,10 +33,28 @@ FACADE_BUILD_TARGETS = ("Zeta23.OPICARound2", "Zeta23.OPICARound2.All",
     "Zeta23.OPICARound2.Validation", "Zeta23.RHRC.OpicaRound2Bindings")
 AUDIT_BUILD_TARGETS = ("Zeta23.RHRC.DeclarationDependencyExport",
     "Zeta23.RHRC.SourceCandidateResolution", "Zeta23.RHRC.OpicaTypeExprExport")
+COMPILER_MAX_BYTES = 128 * 1024 * 1024
+COMPILER_MAX_NODES = 8_000_000
 
 def require(ok, message):
     if not ok:
         raise InvalidCertificate("compiler_evidence", message)
+
+
+def compiler_canonical_bytes(value: Any) -> bytes:
+    """Compiler records have an explicit budget; ordinary certificates do not."""
+    payload = canonical_bytes(value, max_nodes=COMPILER_MAX_NODES)
+    require(len(payload) <= COMPILER_MAX_BYTES, "Compiler JSON exceeds the byte budget")
+    return payload
+
+
+def compiler_canonical_sha256(value: Any) -> str:
+    return hashlib.sha256(compiler_canonical_bytes(value)).hexdigest()
+
+
+def load_compiler_json(path: Path | str) -> Any:
+    """Use the common strict lexer/structure checks with compiler-only limits."""
+    return load_strict_json(path, COMPILER_MAX_BYTES, max_nodes=COMPILER_MAX_NODES)
 
 
 def frozen_tool(repo: Path, relative: str, module_name: str):
@@ -642,7 +660,7 @@ def produce_receipt(repo: Path, output: Path, plan: Mapping[str, Any], *,
     execute(*recipe[2])
     parsed = parse_compiler_output((output/"bindings.stdout.log").read_text(encoding="utf-8"),
                                    plan["roots"], mathematical_modules=modules)
-    (output/"compiler-records.json").write_text(json.dumps(parsed, ensure_ascii=False, indent=2)+"\n", encoding="utf-8")
+    (output/"compiler-records.json").write_bytes(compiler_canonical_bytes(parsed))
     require(source_manifest(repo) == sources and contract.git(repo, "rev-parse", "HEAD") == head,
             "Source checkout changed during compiler execution")
     require(validate_environment(repo) == environment, "Pinned package sources changed during compilation")
@@ -654,9 +672,9 @@ def produce_receipt(repo: Path, output: Path, plan: Mapping[str, Any], *,
         "exporter_object_sha256": contract.digest(output/"Round2Export.olean"),
         "raw_compiler_log_sha256": contract.digest(output/"bindings.stdout.log"),
         "independent_queries_sha256": canonical_sha256(plan), "commands": commands,
-        "root_records_sha256": canonical_sha256(parsed["declarations"]),
-        "constructor_records_sha256": canonical_sha256(parsed["constructors"]),
-        "dependency_records_sha256": canonical_sha256({k: parsed[k] for k in ("dependency_declarations", "dependencies")}),
+        "root_records_sha256": compiler_canonical_sha256(parsed["declarations"]),
+        "constructor_records_sha256": compiler_canonical_sha256(parsed["constructors"]),
+        "dependency_records_sha256": compiler_canonical_sha256({k: parsed[k] for k in ("dependency_declarations", "dependencies")}),
         "reparsed_records_match": True, "axioms": sorted({a for d in parsed["declarations"] for a in d["axioms"]}),
         "required_clauses": clauses, "covered_clauses": [], "ancestor_baseline_replay": False,
         "ancestor_current_compatibility": False, "implementation_state": "INCOMPLETE",
@@ -708,11 +726,11 @@ def verify_receipt_artifacts(receipt: Mapping[str, Any], repo: Path, artifacts: 
     modules = plan["mathematical_modules"] + plan["validation_modules"]
     parsed = parse_compiler_output((artifacts/"bindings.stdout.log").read_text(encoding="utf-8"),
                                    plan["roots"], mathematical_modules=modules)
-    saved = load_strict_json(artifacts/"compiler-records.json", 64*1024*1024)
+    saved = load_compiler_json(artifacts/"compiler-records.json")
     require(saved == parsed, "Serialized compiler records differ from the independent raw-log parse")
-    require(receipt["root_records_sha256"] == canonical_sha256(parsed["declarations"])
-            and receipt["constructor_records_sha256"] == canonical_sha256(parsed["constructors"])
-            and receipt["dependency_records_sha256"] == canonical_sha256({k: parsed[k] for k in ("dependency_declarations", "dependencies")})
+    require(receipt["root_records_sha256"] == compiler_canonical_sha256(parsed["declarations"])
+            and receipt["constructor_records_sha256"] == compiler_canonical_sha256(parsed["constructors"])
+            and receipt["dependency_records_sha256"] == compiler_canonical_sha256({k: parsed[k] for k in ("dependency_declarations", "dependencies")})
             and receipt["axioms"] == sorted({a for d in parsed["declarations"] for a in d["axioms"]}),
             "Receipt hashes or axioms differ from compiler evidence")
     environment = validate_environment(repo)

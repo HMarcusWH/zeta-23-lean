@@ -110,13 +110,19 @@ The package-source guard now authenticates committed Git symlinks and their in-p
 
 The final ordinary Python discovery passed 185 tests normally and 185 with `-O`, holding exactly one real native fixture test for the committed run. All nine pinned packages passed the source check. A private repaired caller fixture passed 43 real diagnostic commands and 656 tests; this is fixture evidence, not a PR-head compiler result. The original full Windows attempt retains its historical symlink-privilege error and skip. Cold compiler export, genuine ancestor/current replays, generated-state refresh and full workflow harvest remain pending. No full-core, release or human-review acceptance is inferred.
 
+### Exact-head build and export follow-up
+
+At head `54c2559f66f9ea7eb2622f60b0273993772d6d6c`, the six-target warm native build passed with all 1,389 tracked Lean source hashes unchanged. Its printed axiom records stayed within the standard three. The corrected minimal facade was included. Genuine CI controls passed 186 tests in each Python mode; their four sets of seven paired native fixtures were independently reparsed against source, log and object hashes. These are scoped compiler/control results, not cold aggregate or release acceptance.
+
+The exact-type export resolved 1,111 reviewed queries and enumerated 2,716 public declarations with a complete private dependency traversal. The producer then rejected the valid data at its certificate-sized JSON node limit, so no accepted compiler receipt or bundle was issued. The repair gives compiler records a separate bounded budget and compact encoding while preserving ordinary certificate limits. Actual proof-use checks also identified twelve metadata rows polluted by following `#print` audit commands. The reviewed correction retains genuine proof references across all 375 consumers and all 125 required clauses; it changes no mathematical statement or proof and does not relax the VALUE check. A fresh producer replay, registry dependency migration, canonical generated-state checks, ancestry replays and complete workflow harvest remain required.
+
 ### Current source fingerprints
 
-Authority: successful scoped native development checks except the explicitly pending facade row; no cold/release acceptance inferred.
+Authority: successful scoped native development checks; no cold/release acceptance inferred.
 
 | Source | SHA256 | Native check |
 |---|---|---|
-| `Zeta23/OPICARound2.lean` | `f4f276cd6c5c42574087e0bd4b946f53fc19ee17e83f24b59899bfad9733babe` | Four direct imports corrected; native recheck pending |
+| `Zeta23/OPICARound2.lean` | `f4f276cd6c5c42574087e0bd4b946f53fc19ee17e83f24b59899bfad9733babe` | Exact-head warm build `54c2559`, receipt `20261026T065053Z-30587639` |
 | `Zeta23/OPICARound2/All.lean` | `952a21c3d50d8eba010d69946eeadef99a8910aa3434e49de9435fd36b89fafa` | `All-20261026T030822-c61b517b` |
 | `Zeta23/OPICARound2/CT1Controls.lean` | `1d7bc6fc342ad0ab2c280ae8c48906cf3190945b3061e6cbf685f012310114e3` | `CT1Controls-20261025T221350-5be97340` |
 | `Zeta23/OPICARound2/CausalProbe.lean` | `3d126c355060b94f13db6143260daf35f3251d23fa7f4694e4eb04d529f83502` | `CausalProbe-20261025T220410-76eb5787` |

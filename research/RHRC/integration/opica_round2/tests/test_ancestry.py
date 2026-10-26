@@ -421,6 +421,36 @@ class CurrentArtifactReparseBoundaries(unittest.TestCase):
             with self.assertRaisesRegex(InvalidCertificate, '[Ss]ymlink'):
                 self.verify(receipt, artifacts)
 
+    def test_large_current_compiler_data_uses_explicit_budget(self):
+        # Synthetic payload tests the receipt boundary, not Lean type validity.
+        self.parsed['declarations'][0]['type_expression'] = [[0]*100_000]*10
+        receipt, artifacts, data = self.fixture()
+        self.assertEqual(self.verify(receipt, artifacts)['parsed'], data['parsed'])
+        changed=copy.deepcopy(data)
+        changed['parsed']['declarations'][0]['type_expression'][0][0]=True
+        self.write_receipt(receipt, changed)
+        with self.assertRaisesRegex(InvalidCertificate, 'raw-log reparse'):
+            self.verify(receipt, artifacts)
+
+    def test_current_strict_numbers_do_not_change_legacy_duration_format(self):
+        path=self.root/'legacy-duration.json'
+        path.write_bytes(b'{"duration_seconds":0.125,"exit_code":0}')
+        self.assertEqual(self.delta.legacy_json(path)['duration_seconds'], 0.125)
+        with self.assertRaises(InvalidCertificate):self.delta.compiler.load_compiler_json(path)
+        for raw in (b'{"duration_seconds":NaN}', b'{"x":1,"x":2}'):
+            path.write_bytes(raw)
+            with self.assertRaises(InvalidCertificate):self.delta.legacy_json(path)
+
+    def test_comparison_hashes_large_compiler_records_without_relaxing_equality(self):
+        baseline=copy.deepcopy(self.parsed)
+        baseline['declarations'][0]['type_expression']=[[0]*100_000]*10
+        current=copy.deepcopy(baseline)
+        result=self.delta.compare_exports(baseline,current,{'fixture_only'})
+        self.assertEqual(result['status'],'PASS_EXACT_ORIGINAL_COMPILER_EXPORT_EQUALITY')
+        current['declarations'][0]['type_expression'][0][0]=True
+        with self.assertRaisesRegex(InvalidCertificate, 'declaration/type/axiom changed'):
+            self.delta.compare_exports(baseline,current,{'fixture_only'})
+
 
 if __name__ == '__main__':
     unittest.main()

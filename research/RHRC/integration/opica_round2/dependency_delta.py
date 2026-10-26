@@ -172,7 +172,7 @@ def produce_current_export(repo: Path, output: Path, *, population: int,
         "fresh_compiler_process_executed":True,"frozen_legacy_release_gate_rebound":False,
         "ancestor_baseline_replay":False,"ancestor_current_compatibility":False,
         "full_core_accepted":False,"full_release_accepted":False,"RH":"OPEN","Step4":"OPEN"}
-    (output/"current-compiler-receipt.json").write_bytes((json.dumps(result,indent=2)+"\n").encode("utf-8"))
+    (output/"current-compiler-receipt.json").write_bytes(compiler.compiler_canonical_bytes(result))
     return result
 
 
@@ -187,7 +187,9 @@ def verify_current_export(repo: Path, receipt_path: Path, artifacts: Path, *,pop
         from .ancestor_projection import inspect_descendant
     except ImportError:
         from ancestor_projection import inspect_descendant
-    data=legacy_json(receipt_path)
+    # This new schema has no legacy finite-duration floats. Keep its large
+    # compiler payload strict without changing the sealed legacy receipt reader.
+    data=compiler.load_compiler_json(receipt_path)
     validate_current_export_envelope(data)
     require(data.get("schema")=="OPICA2_CURRENT_ANCESTOR_EXPORT_V1"
             and data.get("population")==population,"Current ancestor export schema/population differs")
@@ -227,7 +229,7 @@ def verify_current_export(repo: Path, receipt_path: Path, artifacts: Path, *,pop
     require("version 4.33.0-rc2," in version and "d8b18978322de05a8f3dba51ef03cf5461676c17" in version,
             "Current replay compiler pin differs")
     parsed=_parse_current(plan,artifact("bindings.stdout.log").read_text(encoding="utf-8"))
-    require(canonical_sha256(parsed)==canonical_sha256(data.get("parsed")),
+    require(compiler.compiler_canonical_sha256(parsed)==compiler.compiler_canonical_sha256(data.get("parsed")),
             "Current raw-log reparse differs from claimed records")
     return {"schema":"OPICA2_CURRENT_ANCESTOR_REPARSE_V1","population":population,
             "checked_commit":expected_commit,"checked_tree":expected_tree,"parsed":parsed,
@@ -282,11 +284,11 @@ def compare_exports(baseline: Mapping[str, Any], current: Mapping[str, Any],
     require(root_names and root_names <= set(old) and root_names <= set(new), "Missing original root")
     differences = []
     for name, row in old.items():
-        if canonical_sha256(new.get(name)) != canonical_sha256(row):
+        if compiler.compiler_canonical_sha256(new.get(name)) != compiler.compiler_canonical_sha256(row):
             differences.append(name)
     require(not differences, "Original compiler declaration/type/axiom changed: " + ", ".join(differences[:10]))
-    require(canonical_sha256(current.get("constructors")) == canonical_sha256(baseline.get("constructors"))
-            and canonical_sha256(current.get("generated_equations", {})) == canonical_sha256(baseline.get("generated_equations", {})),
+    require(compiler.compiler_canonical_sha256(current.get("constructors")) == compiler.compiler_canonical_sha256(baseline.get("constructors"))
+            and compiler.compiler_canonical_sha256(current.get("generated_equations", {})) == compiler.compiler_canonical_sha256(baseline.get("generated_equations", {})),
             "Original constructor/generated-equation metadata changed")
     old_channels, new_channels = channels(baseline), channels(current)
     require(old_channels == new_channels, "Original transitive TYPE/VALUE/STRUCTURE use graph changed")
@@ -295,7 +297,7 @@ def compare_exports(baseline: Mapping[str, Any], current: Mapping[str, Any],
         result = {r["name"]: r for r in rows}
         require(len(result) == len(rows), "Duplicate dependency metadata")
         return result
-    require(canonical_sha256(nodes(baseline)) == canonical_sha256(nodes(current)),
+    require(compiler.compiler_canonical_sha256(nodes(baseline)) == compiler.compiler_canonical_sha256(nodes(current)),
             "Original private/helper/kind/module dependency metadata changed")
     return {"status": "PASS_EXACT_ORIGINAL_COMPILER_EXPORT_EQUALITY", "original_roots": len(root_names),
             "original_public_declarations": len(old), "dependency_channels": len(old_channels),
@@ -357,7 +359,8 @@ def verify_legacy(repo: Path, receipt_path: Path, artifacts: Path, *, population
         sources = data.get("source_manifest")
         require(type(sources) is list and sources and data.get("source_manifest_sha256") == builder.object_sha256(sources),
                 "Original100 source inventory hash differs")
-    require(all(canonical_sha256(data.get(key)) == canonical_sha256(value) for key, value in parsed.items()),
+    require(all(compiler.compiler_canonical_sha256(data.get(key)) == compiler.compiler_canonical_sha256(value)
+                for key, value in parsed.items()),
             "Reparsed legacy records differ from receipt")
     names = [r["path"] for r in sources]
     require(len(set(names)) == len(names), "Duplicate legacy source record")

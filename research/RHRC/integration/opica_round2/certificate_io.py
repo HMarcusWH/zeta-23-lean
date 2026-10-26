@@ -19,6 +19,9 @@ HERE = Path(__file__).resolve().parent
 MAX_BYTES = 4 * 1024 * 1024
 MAX_ITEMS = 100_000
 MAX_NODES = 1_000_000
+# Explicit callers may select a larger bounded structure budget. Ordinary
+# certificates, schema checks and canonical hashes retain MAX_NODES by default.
+MAX_EXPLICIT_NODES = 8_000_000
 INTEGER = re.compile(r"-?(?:0|[1-9][0-9]*)\Z")
 RATIONAL = re.compile(r"-?(?:0|[1-9][0-9]*)(?:/[1-9][0-9]*)?\Z")
 HASH = re.compile(r"[0-9a-f]{64}\Z")
@@ -61,13 +64,15 @@ def _json_integer(value: str) -> int:
     return int(value)
 
 
-def _bounded_tree(value: Any) -> None:
+def _bounded_tree(value: Any, *, max_nodes: int = MAX_NODES) -> None:
+    require(type(max_nodes) is int and 0 < max_nodes <= MAX_EXPLICIT_NODES,
+            "node_limit", "Invalid JSON structure budget")
     pending = [(value, 0)]
     nodes = 0
     while pending:
         item, depth = pending.pop()
         nodes += 1
-        require(nodes <= MAX_NODES and depth <= 64, "structure_size", "JSON structure exceeds limits")
+        require(nodes <= max_nodes and depth <= 64, "structure_size", "JSON structure exceeds limits")
         if type(item) is dict:
             require(len(item) <= MAX_ITEMS, "object_size", "Too many object members")
             require(all(type(k) is str and len(k) <= 1024 for k in item), "key_size", "Invalid object key")
@@ -84,7 +89,8 @@ def _bounded_tree(value: Any) -> None:
                         "integer_size", "JSON integer exceeds the resource limit")
 
 
-def loads_strict_json(data: bytes | str, max_bytes: int = MAX_BYTES) -> Any:
+def loads_strict_json(data: bytes | str, max_bytes: int = MAX_BYTES, *,
+                      max_nodes: int = MAX_NODES) -> Any:
     require(type(max_bytes) is int and 0 < max_bytes <= 64 * MAX_BYTES,
             "byte_limit", "Invalid JSON byte limit")
     raw = data.encode("utf-8") if type(data) is str else data
@@ -95,11 +101,12 @@ def loads_strict_json(data: bytes | str, max_bytes: int = MAX_BYTES) -> Any:
                          parse_constant=_reject_number, parse_int=_json_integer)
     except (UnicodeError, json.JSONDecodeError, RecursionError) as exc:
         raise InvalidCertificate("invalid_json", str(exc)) from exc
-    _bounded_tree(obj)
+    _bounded_tree(obj, max_nodes=max_nodes)
     return obj
 
 
-def load_strict_json(path: Path | str, max_bytes: int = MAX_BYTES) -> Any:
+def load_strict_json(path: Path | str, max_bytes: int = MAX_BYTES, *,
+                     max_nodes: int = MAX_NODES) -> Any:
     require(type(max_bytes) is int and 0 < max_bytes <= 64 * MAX_BYTES,
             "byte_limit", "Invalid JSON byte limit")
     path = Path(path)
@@ -107,17 +114,17 @@ def load_strict_json(path: Path | str, max_bytes: int = MAX_BYTES) -> Any:
     require(path.stat().st_size <= max_bytes, "file_size", "JSON file exceeds byte limit")
     with path.open("rb") as handle:
         data = handle.read(max_bytes + 1)
-    return loads_strict_json(data, max_bytes)
+    return loads_strict_json(data, max_bytes, max_nodes=max_nodes)
 
 
-def canonical_bytes(obj: Any) -> bytes:
-    _bounded_tree(obj)
+def canonical_bytes(obj: Any, *, max_nodes: int = MAX_NODES) -> bytes:
+    _bounded_tree(obj, max_nodes=max_nodes)
     return json.dumps(obj, ensure_ascii=False, sort_keys=True, separators=(",", ":"),
                       allow_nan=False).encode("utf-8")
 
 
-def canonical_sha256(obj: Any) -> str:
-    return hashlib.sha256(canonical_bytes(obj)).hexdigest()
+def canonical_sha256(obj: Any, *, max_nodes: int = MAX_NODES) -> str:
+    return hashlib.sha256(canonical_bytes(obj, max_nodes=max_nodes)).hexdigest()
 
 
 def parse_integer(value: Any, *, minimum: int | None = None, maximum: int | None = None) -> int:

@@ -19610,10 +19610,6 @@
           "path": "Zeta23/OPICARound2/Validation/CausalProbe.lean",
           "line": 124,
           "required_load_bearing_declarations": [
-            "Zeta23.OPICARound2.delayed_original_source",
-            "Zeta23.OPICARound2.native_probe_integer_action",
-            "Zeta23.OPICARound2.native_probe_transforms",
-            "Zeta23.OPICARound2.native_probe_zero_separation",
             "Zeta23.OPICARound2.rh_of_native_probe_range"
           ],
           "verification_required": "Full compiler type+axioms and VALUE-dependency reachability; no type equality to a conjunction bundle is inferred."
@@ -19681,7 +19677,7 @@
           "literal_statement_sha256": "4a65a4e7854c108ad92c8e9c7882740d43fdb6982f2c5dc7f0cd1bb9c5d88b67"
         }
       ],
-      "semantic_binding_sha256": "b10b2c648fa0a33c911e1532831792c755c9bf265a58d80b2970b0d0a64ed28e",
+      "semantic_binding_sha256": "0d55e5becdcefeab427af15776b41277a5c2d3cb8006b6ebb924e2d49476e92a",
       "scoped_control_bindings_sha256": "af70ad361644d31962f1738b6a392e6ac7bd2391113a14ef6447cc063430a3b9",
       "reviewed_control_applicability": {}
     },
@@ -22450,76 +22446,7 @@
           "path": "Zeta23/OPICARound2/Validation/TruncationControls.lean",
           "line": 656,
           "required_load_bearing_declarations": [
-            "Zeta23.OPICARound2.JPlus_analyticAt",
-            "Zeta23.OPICARound2.JPlus_exponential_bound",
-            "Zeta23.OPICARound2.endpoint_probeV_essential_left",
-            "Zeta23.OPICARound2.endpoint_probeW_essential_left",
-            "Zeta23.OPICARound2.integer_partial_divergence_and_safe_cutoff",
-            "Zeta23.OPICARound2.native_2047_omission_residual_lower",
-            "Zeta23.OPICARound2.native_affine_constraint_closure",
-            "Zeta23.OPICARound2.native_affine_constraint_superexponential_tail",
-            "Zeta23.OPICARound2.native_completed_output_bernoulli_identity",
-            "Zeta23.OPICARound2.native_completed_output_bernoulli_remainder_bound",
-            "Zeta23.OPICARound2.native_completed_output_bernoulli_tail",
-            "Zeta23.OPICARound2.native_dictionary_prefix_rigidity",
-            "Zeta23.OPICARound2.native_finite_trial_tail_identity",
-            "Zeta23.OPICARound2.native_floor_bernoulli_expansion",
-            "Zeta23.OPICARound2.native_floor_physical_cutoff_bound",
-            "Zeta23.OPICARound2.native_isolated_pulse_lower_bound",
-            "Zeta23.OPICARound2.native_mobius_delayed_barrier",
-            "Zeta23.OPICARound2.native_mobius_probe_inverse",
-            "Zeta23.OPICARound2.native_mobius_residual_norm_tendsto_atTop",
-            "Zeta23.OPICARound2.native_negative_output_envelope",
-            "Zeta23.OPICARound2.native_negative_output_evaluation_bound",
-            "Zeta23.OPICARound2.native_prefix_coefficient_bound",
-            "Zeta23.OPICARound2.native_prefix_coordinate_convergence",
-            "Zeta23.OPICARound2.native_prefix_coordinate_error",
-            "Zeta23.OPICARound2.native_prefix_eigenvalue_pos",
-            "Zeta23.OPICARound2.native_prefix_gram_posDef",
-            "Zeta23.OPICARound2.native_prefix_gram_residual_bound",
-            "Zeta23.OPICARound2.native_probeW_real_laplace_arbitrarily_small_rate",
-            "Zeta23.OPICARound2.native_probe_adjoint_negative_literal_consumer",
-            "Zeta23.OPICARound2.native_probe_adjoint_negative_norm_bound",
-            "Zeta23.OPICARound2.native_probe_adjoint_positive_part_zero",
-            "Zeta23.OPICARound2.native_probe_adjoint_right_zero_norm_bound",
-            "Zeta23.OPICARound2.native_probe_boundary_power_cost",
-            "Zeta23.OPICARound2.native_probe_boundary_taylor_bounds",
-            "Zeta23.OPICARound2.native_probe_bounded_input_gap",
-            "Zeta23.OPICARound2.native_probe_range_boundary_order",
-            "Zeta23.OPICARound2.native_probe_successful_input_norms_tendsto_atTop",
-            "Zeta23.OPICARound2.native_probe_target_not_mem_range",
-            "Zeta23.OPICARound2.native_probe_visible_boundary_input_cost",
-            "Zeta23.OPICARound2.native_probe_visible_critical_zero_of_RH",
-            "Zeta23.OPICARound2.native_squarefree_omission_bound",
-            "Zeta23.OPICARound2.native_undamped_nonrange_and_input_cost",
-            "Zeta23.OPICARound2.noncausal_probe_leakage",
-            "Zeta23.OPICARound2.positive_power_tradeoff",
-            "Zeta23.OPICARound2.probeAffineCorrection_late_assignment",
-            "Zeta23.OPICARound2.probeAffineCorrection_output_rpow",
-            "Zeta23.OPICARound2.probeBernoulliDifferential_all_order",
-            "Zeta23.OPICARound2.probeBernoulliDifferential_tail_bound",
-            "Zeta23.OPICARound2.probeBernoulliRemainder_every_fixed_exponential",
-            "Zeta23.OPICARound2.probeDivisorDefect_inversion",
-            "Zeta23.OPICARound2.probeFiniteBernoulliRemainder_superexponential",
-            "Zeta23.OPICARound2.probeFullEvaluation_bound",
-            "Zeta23.OPICARound2.probeIntegerTailConstant_eq_original",
-            "Zeta23.OPICARound2.probeIntegerTargetPrefixL2_norm_tendsto_atTop",
-            "Zeta23.OPICARound2.probeIntegerTargetPrefix_tail_square_paper",
-            "Zeta23.OPICARound2.probeNativeTailAmplitude_norm_lower",
-            "Zeta23.OPICARound2.probeNegativeWeightedMass_bound",
-            "Zeta23.OPICARound2.probePulseSeparation_paper_lower",
-            "Zeta23.OPICARound2.probePulseShift_residual",
-            "Zeta23.OPICARound2.probePulse_pairing",
-            "Zeta23.OPICARound2.probe_boundary_meromorphic_order_nonneg",
-            "Zeta23.OPICARound2.probe_compact_bernoulli_parts",
-            "Zeta23.OPICARound2.probe_normalized_periodic_bernoulli_zeta_bound",
-            "Zeta23.OPICARound2.probe_source_zero_count_bound",
-            "Zeta23.OPICARound2.sourcePrefixColumns_linearIndependent",
-            "Zeta23.OPICARound2.sourcePrefixColumns_linearIndependent_essential",
-            "Zeta23.OPICARound2.sourcePrefixEssential_quantitative",
-            "Zeta23.OPICARound2.sourcePrefixGram_posDef_essential",
-            "Zeta23.OPICARound2.sourcePrefixLeastEigenvalue_pos",
-            "Zeta23.OPICARound2.sourcePrefixLeastEigenvalue_pos_essential"
+            "Zeta23.OPICARound2.native_probe_adjoint_right_zero_norm_bound"
           ],
           "verification_required": "Full compiler type+axioms and VALUE-dependency reachability; no type equality to a conjunction bundle is inferred."
         },
@@ -22711,7 +22638,7 @@
           "literal_statement_sha256": "fc9023631380869156a228bbb8e238bbc2b5ceb95f9dda6e603d57e3056d15de"
         }
       ],
-      "semantic_binding_sha256": "42299e14d86a609458c30fae89d3491e7b85932b3eaa5d097f8ccf8b4a2d6ddb",
+      "semantic_binding_sha256": "31832ce3c0e44df31775c8ef09b655894acf88698bf86dada963a0cfc5061680",
       "scoped_control_bindings_sha256": "20653388afedb38fa1303d5b67873061de619a7f481d35f8cac4fd83255a0504",
       "reviewed_control_applicability": {}
     },
@@ -23058,7 +22985,6 @@
           "line": 26,
           "required_load_bearing_declarations": [
             "Zeta23.OPICARound2.laplaceJetGram_det_zero_of_repeated_nodes",
-            "Zeta23.OPICARound2.laplaceJetGram_entry",
             "Zeta23.OPICARound2.laplaceJetGram_not_posDef_of_repeated_nodes"
           ],
           "verification_required": "Full compiler type+axioms and VALUE-dependency reachability; no type equality to a conjunction bundle is inferred."
@@ -23160,7 +23086,7 @@
           "literal_statement_sha256": "15c01a583f0ed25c1c12de9a612a1e1c82ba446a711adb4e2c6f93a73b3c81d1"
         }
       ],
-      "semantic_binding_sha256": "9d9be41f40b60c6c2f759e99934893826decdd49ecbf254b4da4e80baca372ba",
+      "semantic_binding_sha256": "5ee9d2a1ed98669ac9c9aefa9bbac8d87104076293c3941e0c2a848b1abf58ab",
       "scoped_control_bindings_sha256": "66d079e2d64eaabb471e601f236402bc93d0140226d6c394fa0ef8062d0583be",
       "reviewed_control_applicability": {}
     },
@@ -23222,8 +23148,7 @@
           "path": "Zeta23/OPICARound2/Validation/DualCertificates.lean",
           "line": 76,
           "required_load_bearing_declarations": [
-            "Zeta23.OPICARound2.dualOrdinary_product_matrix",
-            "Zeta23.OPICARound2.laplaceJetGram_posDef"
+            "Zeta23.OPICARound2.dualOrdinary_product_matrix"
           ],
           "verification_required": "Full compiler type+axioms and VALUE-dependency reachability; no type equality to a conjunction bundle is inferred."
         }
@@ -23315,7 +23240,7 @@
           "literal_statement_sha256": "e7024d9b7c541d9fe3979568f1c9859fcb250dde4957528501e98b2ea6d4412d"
         }
       ],
-      "semantic_binding_sha256": "e714a8d39529a5f90545566b95ce87bd49cba1eb3653debc2661a4885e145aa2",
+      "semantic_binding_sha256": "4e76d720d077841e414518db83130468d17c2eaa913aa32eaea80aa500fc396c",
       "scoped_control_bindings_sha256": "66d079e2d64eaabb471e601f236402bc93d0140226d6c394fa0ef8062d0583be",
       "reviewed_control_applicability": {}
     },
@@ -23592,8 +23517,7 @@
           "path": "Zeta23/OPICARound2/Validation/DualCertificates.lean",
           "line": 196,
           "required_load_bearing_declarations": [
-            "Zeta23.OPICARound2.dualSingleNativeGram_ratio_laguerre",
-            "Zeta23.OPICARound2.simultaneous_zero_distance"
+            "Zeta23.OPICARound2.dualSingleNativeGram_ratio_laguerre"
           ],
           "verification_required": "Full compiler type+axioms and VALUE-dependency reachability; no type equality to a conjunction bundle is inferred."
         }
@@ -23670,7 +23594,7 @@
           "literal_statement_sha256": "78180c276909dabd2a9111b0e473dcbfb14bfd5d234cfbbdd336fd08721be735"
         }
       ],
-      "semantic_binding_sha256": "58c749a0a98c497d1ee7279ffaec2a755af16c0b60a79b864392ebb06cd7b58d",
+      "semantic_binding_sha256": "93357e24223c5e2003347dc42add9c2f088d09e34e1502cf15515bd99ea02409",
       "scoped_control_bindings_sha256": "e555b7619900beba453c92c7cf220a49c11c19c1c5fbc2b1a60267217e9f7240",
       "reviewed_control_applicability": {}
     },
@@ -24185,8 +24109,7 @@
             "Zeta23.OPICARound2.nativeMuntzPf_L2_logarithmic_identity",
             "Zeta23.OPICARound2.nativeMuntzPf_dilation_L2_identity",
             "Zeta23.OPICARound2.nativeMuntzPf_dilation_logarithmic_identity",
-            "Zeta23.OPICARound2.nativeMuntzPf_logarithmic_identity",
-            "Zeta23.OPICARound2.native_compact_muntz_adapter"
+            "Zeta23.OPICARound2.nativeMuntzPf_logarithmic_identity"
           ],
           "verification_required": "Full compiler type+axioms and VALUE-dependency reachability; no type equality to a conjunction bundle is inferred."
         },
@@ -24285,7 +24208,7 @@
           "literal_statement_sha256": "13c451fbb4e1e8f01bbbc18c97a4ef3f9970ef40d2e9e3dc2c4d30e44656b1ef"
         }
       ],
-      "semantic_binding_sha256": "9b08576c3a16a699632d2b12e6e1911dde2777137fc9daf02bed7bf784902212",
+      "semantic_binding_sha256": "c0c0b1a321b2a0e2ecfb56a03dace1636a9b249fce332a4aa1fd1ea7fbbd47eb",
       "scoped_control_bindings_sha256": "4aa655b6d4a4a5d3473af98a2caf37bcea68ca70043672323b0225598c50a454",
       "reviewed_control_applicability": {}
     },
@@ -26908,17 +26831,11 @@
           "path": "Zeta23/OPICARound2/Validation/ProbeGram.lean",
           "line": 244,
           "required_load_bearing_declarations": [
-            "Zeta23.OPICARound2.native_probe_pole_moment_constraints",
             "Zeta23.OPICARound2.probeDirichletPolynomial",
             "Zeta23.OPICARound2.probeDirichletPolynomial_deriv_one",
-            "Zeta23.OPICARound2.probe_dirichlet_norm",
-            "Zeta23.OPICARound2.probe_finite_gram_positive",
-            "Zeta23.OPICARound2.probe_monotone_innovation",
-            "Zeta23.OPICARound2.probe_pole_constrained_derivative_bound",
-            "Zeta23.OPICARound2.probe_schur_error",
-            "Zeta23.OPICARound2.probe_tail_and_correlation",
-            "Zeta23.OPICARound2.probe_target_column",
-            "Zeta23.OPICARound2.rh_of_probe_error_limit"
+            "Zeta23.OPICARound2.probeFiniteOutput",
+            "Zeta23.OPICARound2.probeResidual",
+            "Zeta23.OPICARound2.probe_pole_constrained_derivative_bound"
           ],
           "verification_required": "Full compiler type+axioms and VALUE-dependency reachability; no type equality to a conjunction bundle is inferred."
         }
@@ -27003,7 +26920,7 @@
           "literal_statement_sha256": "cb02b371eaf508d37fd307929ceadb1ebce1c1ea97df31da374e3235d361fba5"
         }
       ],
-      "semantic_binding_sha256": "c694690f0ef435c7e16260760e7711e3ad19859f154268c9317c24a62e820db7",
+      "semantic_binding_sha256": "c98112d537131129ebd63eaec7bb1ccd2b88b49841205b80da3e1e57bef99f62",
       "scoped_control_bindings_sha256": "1cf8a9323dcfb1a453409e86864e7a5087c279b842b40ed35297375bcbac96fd",
       "reviewed_control_applicability": {}
     },
@@ -28986,8 +28903,7 @@
           "path": "Zeta23/OPICARound2/Validation/FiniteFilteredBaseline.lean",
           "line": 83,
           "required_load_bearing_declarations": [
-            "Zeta23.OPICARound2.filtered_baseline_reflected_rectangle_nonvanishing",
-            "Zeta23.OPICARound2.filtered_four_column_region_certificate"
+            "Zeta23.OPICARound2.filtered_baseline_reflected_rectangle_nonvanishing"
           ],
           "verification_required": "Full compiler type+axioms and VALUE-dependency reachability; no type equality to a conjunction bundle is inferred."
         }
@@ -29061,7 +28977,7 @@
           "literal_statement_sha256": "5a56251dd1778e5f637fb4dda75d8a09478aae76b933cae8e55ab6a16bb12d36"
         }
       ],
-      "semantic_binding_sha256": "05312406a65400e4098dc85d441e6ae48f5d4eb23a8a6d85001ffb28beeb4b3c",
+      "semantic_binding_sha256": "699db4c24d0629cbf5c787223519fcae385372d6a2c2d78fb6fe003297b74418",
       "scoped_control_bindings_sha256": "2749cd77fcbec8fa514012dd7f9802ab0e4e445064ced1b25bc182f7850b2bc1",
       "reviewed_control_applicability": {}
     },
@@ -30764,7 +30680,7 @@
           "path": "Zeta23/OPICARound2/Validation/ProfileControls.lean",
           "line": 265,
           "required_load_bearing_declarations": [
-            "Zeta23.OPICARound2.finite_quadratic_profile_selfdual_obstruction",
+            "Zeta23.OPICAFollowup.zero_ne_half",
             "Zeta23.OPICARound2.profile_actual_quadratic_odd_jump"
           ],
           "verification_required": "Full compiler type+axioms and VALUE-dependency reachability; no type equality to a conjunction bundle is inferred."
@@ -30877,7 +30793,7 @@
           "literal_statement_sha256": "f9a690d66b246ed87bc8f4ff7a1c0a00aa2f0f24a1ba809cf04a392a95882548"
         }
       ],
-      "semantic_binding_sha256": "b825f9c30edd3be8e048d7329dbc27f4ceda436fcf0aed2598d9cd2da1654422",
+      "semantic_binding_sha256": "8e73ae9a480c2f209e9dd5c8d2bab7decae6aedca859951b291121a30de5bb17",
       "scoped_control_bindings_sha256": "cbbdb779a46b6c2152f20205ffca57b0fd801c1887267520766853dd4fd52c2e",
       "reviewed_control_applicability": {
         "OPICA2_G10": {
@@ -33770,9 +33686,8 @@
           "path": "Zeta23/OPICARound2/Validation/CT1Controls.lean",
           "line": 69,
           "required_load_bearing_declarations": [
-            "Zeta23.OPICARound2.ct1_order_zero_scalar_limit_is_zero",
-            "Zeta23.OPICARound2.ct1_scalar_limit_classification",
-            "Zeta23.OPICARound2.ct1_scalar_order_zero_at_integer"
+            "Zeta23.OPICARound2.Validation.ct1_actual_nonzero_test",
+            "Zeta23.OPICARound2.ct1_scalar_limit_classification"
           ],
           "verification_required": "Full compiler type+axioms and VALUE-dependency reachability; no type equality to a conjunction bundle is inferred."
         }
@@ -33861,7 +33776,7 @@
           "literal_statement_sha256": "a2b1e02e9c1cf1e5770b29c1a87426e96c840fcbd3554aac3a42a708a5eb9258"
         }
       ],
-      "semantic_binding_sha256": "581123f915dd8a1aa2bb798bcc39801da1be6e1b8e0691e317e3bfd0f0e60226",
+      "semantic_binding_sha256": "3acc3c8a5a177b0800545411cf200566d79b61959ef397ab4948708745af7004",
       "scoped_control_bindings_sha256": "762ac4a9d8856ae667e0298eb041e910cf529cf9a45396842d9706e495f26a1f",
       "reviewed_control_applicability": {
         "OPICA2_G10": {
@@ -34183,14 +34098,9 @@
           "path": "Zeta23/OPICARound2/Validation/FiniteNeutralApproximation.lean",
           "line": 140,
           "required_load_bearing_declarations": [
-            "Zeta23.OPICARound2.exists_finite_neutral_X_approx",
-            "Zeta23.OPICARound2.finite_pole_neutral_approximation",
-            "Zeta23.OPICARound2.neutralRepair_X_bound_fixed_aperture",
-            "Zeta23.OPICARound2.neutralRepair_X_cost",
-            "Zeta23.OPICARound2.neutralRepair_exact",
-            "Zeta23.OPICARound2.neutralRepair_native_legal_C2",
-            "Zeta23.OPICARound2.neutralRepair_native_moments",
-            "Zeta23.OPICARound2.neutral_parity_components"
+            "Zeta23.CCM.centeredIndex",
+            "Zeta23.CCM.oddSourceWitnessK2",
+            "Zeta23.CCM.positiveEvenSourceWitness"
           ],
           "verification_required": "Full compiler type+axioms and VALUE-dependency reachability; no type equality to a conjunction bundle is inferred."
         }
@@ -34312,7 +34222,7 @@
           "literal_statement_sha256": "8fd3b5d342e823151804722289c70a072ff4cedd30f9f9fb60cd08da731ea86e"
         }
       ],
-      "semantic_binding_sha256": "6b9d66a6236ee3f683c543add2f6de69ad753062b81343a2a7e32ce18f35d57c",
+      "semantic_binding_sha256": "b9e997c3e5e3e37206dea156a4b816ea3030c9d3c9bfeb536a0e426067cf5948",
       "scoped_control_bindings_sha256": "c21bd4128c1a6dbcc232182ec3d86cf145de84d6e03c1b3c3a2d9cf91934aba9",
       "reviewed_control_applicability": {}
     },
@@ -35094,13 +35004,7 @@
           "path": "Zeta23/OPICARound2/Validation/ProfileControls.lean",
           "line": 147,
           "required_load_bearing_declarations": [
-            "Zeta23.OPICARound2.fixed_imaginary_direction_positive_test_margin",
-            "Zeta23.OPICARound2.phase_complete_positive_test_observability",
-            "Zeta23.OPICARound2.profile_canonical_basis_physical_pairings",
-            "Zeta23.OPICARound2.profile_finite_cone_eq_univ",
-            "Zeta23.OPICARound2.profile_four_positive_test_observability",
-            "Zeta23.OPICARound2.profile_height_free_point_margin",
-            "Zeta23.OPICARound2.profile_signed_nonnegative_of_positive_tests"
+            "Zeta23.OPICARound2.profile_canonical_basis_physical_pairings"
           ],
           "verification_required": "Full compiler type+axioms and VALUE-dependency reachability; no type equality to a conjunction bundle is inferred."
         }
@@ -35184,7 +35088,7 @@
           "literal_statement_sha256": "ed87c9f8bc5f2b3bcc77eea06eccc598bac15ca59268c1b4bdcab868c8af7d2e"
         }
       ],
-      "semantic_binding_sha256": "605066a4e4813fe083e81464d338a912006ec46b38604186f085993f76a766d1",
+      "semantic_binding_sha256": "80d0baaff1bfc2121fec73d95523cba8eb8004a9045d249635117aea34fb7779",
       "scoped_control_bindings_sha256": "1685450fcc9b216f355221e7485633d7dd2436c80bdb062a24961c163bd1ad9e",
       "reviewed_control_applicability": {}
     },

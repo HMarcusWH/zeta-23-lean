@@ -541,4 +541,60 @@ class PackageGitLinkTests(unittest.TestCase):
                 with self.assertRaises(ValueError):receipt.validate_packages(repo)
 
 
+class CompilerJSONBudgetTests(unittest.TestCase):
+    def test_default_certificate_limits_remain_unchanged(self):
+        self.assertEqual((io.MAX_BYTES, io.MAX_NODES, io.MAX_ITEMS), (4*1024*1024, 1_000_000, 100_000))
+        value = [[0]*100_000]*10  # 1,000,011 value nodes; no oversized array.
+        raw = json.dumps(value, separators=(",", ":")).encode()
+        self.assertLess(len(raw), io.MAX_BYTES)
+        with self.assertRaises(io.InvalidCertificate):io.loads_strict_json(raw)
+        with self.assertRaises(io.InvalidCertificate):io.canonical_sha256(value)
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp)/"records.json"; path.write_bytes(raw)
+            self.assertEqual(receipt.load_compiler_json(path), value)
+        self.assertEqual(receipt.compiler_canonical_bytes(value), raw)
+        self.assertEqual(receipt.compiler_canonical_sha256(value), hashlib.sha256(raw).hexdigest())
+
+    def test_compiler_structure_budget_is_still_bounded(self):
+        self.assertEqual((receipt.COMPILER_MAX_BYTES, receipt.COMPILER_MAX_NODES), (128*1024*1024, 8_000_000))
+        # Counts every serialized occurrence, even when Python shares a list.
+        with self.assertRaises(io.InvalidCertificate):
+            receipt.compiler_canonical_bytes([[0]*100_000]*80)
+        self.assertEqual(io.loads_strict_json("[0]", max_nodes=2), [0])
+        with self.assertRaises(io.InvalidCertificate):io.loads_strict_json("[0]", max_nodes=1)
+        for budget in (True, False, 0, -1, 8_000_001, 1.0):
+            with self.subTest(budget=budget), self.assertRaises(io.InvalidCertificate):
+                io.canonical_bytes({}, max_nodes=budget)
+
+    def test_compiler_lexer_and_other_structure_guards_are_unchanged(self):
+        refused = ('{"x":1,"x":2}', '{"x":NaN}', '{"x":Infinity}', '{"x":1.5}',
+                   '{"x":1e5}', '{"x":-0}', '{"x":'+str(1 << 601)+'}',
+                   '['*66+']'*66, json.dumps([0]*100_001), json.dumps("x"*(1024*1024+1)))
+        with tempfile.TemporaryDirectory() as tmp:
+            path=Path(tmp)/"bad.json"
+            for raw in refused:
+                path.write_bytes(raw.encode())
+                with self.subTest(prefix=raw[:40]), self.assertRaises(io.InvalidCertificate):
+                    receipt.load_compiler_json(path)
+        for value in (1.5, {"x":set()}, {"x":1 << 601}):
+            with self.subTest(value_type=type(value).__name__), self.assertRaises(io.InvalidCertificate):
+                receipt.compiler_canonical_bytes(value)
+        self.assertNotEqual(receipt.compiler_canonical_bytes(True), receipt.compiler_canonical_bytes(1))
+
+    def test_compiler_file_and_serialization_byte_caps_fail_closed(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path=Path(tmp)/"large.json"
+            with path.open("wb") as handle:
+                handle.seek(receipt.COMPILER_MAX_BYTES); handle.write(b"0")
+            with self.assertRaises(io.InvalidCertificate):receipt.load_compiler_json(path)
+        with patch.object(receipt, "canonical_bytes", return_value=b"x"*11), \
+                patch.object(receipt, "COMPILER_MAX_BYTES", 10):
+            with self.assertRaises(io.InvalidCertificate):receipt.compiler_canonical_bytes({})
+
+    def test_small_canonical_hashes_are_identical(self):
+        for value in ({"z":[1, True, None], "a":"λ"}, [], 0, False):
+            self.assertEqual(receipt.compiler_canonical_bytes(value), io.canonical_bytes(value))
+            self.assertEqual(receipt.compiler_canonical_sha256(value), io.canonical_sha256(value))
+
+
 if __name__=="__main__":unittest.main()
